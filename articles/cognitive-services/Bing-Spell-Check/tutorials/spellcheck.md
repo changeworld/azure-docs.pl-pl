@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Uzyskiwanie wyników sprawdzania pisowni za pomocą interfejsu API sprawdzania pisowni Bing'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Jak korzystać z interfejsu API sprawdzania pisowni Bing.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 0a7b8637ae3ca7342a04f6bf3f8a808539d980eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc3a30418615d1c6b30ca4059292425076327f00
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863414"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500803"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Samouczek: Tworzenie klienta sprawdzania pisowni w postaci strony internetowej
 
@@ -319,7 +319,7 @@ Otwórz utworzoną stronę internetową w przeglądarce. Gdy zostanie wyświetlo
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Use and display requirements (Wymagania dotyczące użycia i wyświetlania)](../UseAndDisplayRequirements.md)

@@ -12,12 +12,12 @@ ms.date: 06/18/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efe9ac4580afc066c3addfd6e19004d0562284c4
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 1bdf275bbafa9c46cfc4577ac2843da0be74c7ef
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68425951"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477280"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Dodawanie aplikacji galerii do organizacji usługi Azure AD
 
@@ -102,7 +102,7 @@ Azure Active Directory (Azure AD) zawiera galerię zawierającą tysiące wstęp
 
 Po dodaniu aplikacji do organizacji usługi Azure AD [Wybierz metodę logowania](what-is-single-sign-on.md#choosing-a-single-sign-on-method) jednokrotnego, której chcesz użyć, i zapoznaj się z odpowiednim artykułem poniżej:
 
-- [Konfigurowanie logowania jednokrotnego opartego na protokole SAML](configure-single-sign-on-portal.md)
+- [Konfigurowanie logowania jednokrotnego opartego na protokole SAML](configure-single-sign-on-non-gallery-applications.md)
 - [Konfigurowanie logowania jednokrotnego przy użyciu hasła](configure-password-single-sign-on-non-gallery-applications.md)
 - [Konfiguruj logowanie połączone](configure-linked-sign-on.md)
 

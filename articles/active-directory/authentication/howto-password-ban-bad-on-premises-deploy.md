@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11532fbae4565ec1fc3625abe60b98d2ccd26fec
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 01a9cc4ec4788422337b77b285ed8ee440f6acd4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319745"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346892"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -135,11 +135,11 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
         ```
 
         > [!NOTE]
-        > Ten tryb kończy się niepowodzeniem, jeśli wymagane jest uwierzytelnianie wieloskładnikowe systemu Azure. W takim przypadku należy użyć jednego z dwóch poprzednich trybów uwierzytelniania lub użyć jednego z poniższych obejść. Zalecamy, aby wymagania usługi MFA były pomijane wyłącznie w celach testowych.
+        > Ten tryb kończy się niepowodzeniem, jeśli dla Twojego konta jest wymagane uwierzytelnianie wieloskładnikowe systemu Azure. W takim przypadku należy użyć jednego z dwóch poprzednich trybów uwierzytelniania lub zamiast tego użyć innego konta, które nie wymaga uwierzytelniania MFA.
         >
-        > Jeśli Twoje konto platformy Azure jest przeznaczone do korzystania z uwierzytelniania wieloskładnikowego, możesz zamiast tego użyć innego konta, które nie wymaga uwierzytelniania wieloskładnikowego.
+        > Możesz również sprawdzić, czy uwierzytelnianie wieloskładnikowe jest wymagane, jeśli usługa Azure Device Registration (która jest używana w ramach okładki przez usługę Azure AD Password Protection) została skonfigurowana w taki sposób, aby globalnie wymagała uwierzytelniania wieloskładnikowego. Aby obejść ten sposób, możesz użyć innego konta, które obsługuje usługę MFA z jednym z poprzednich dwóch trybów uwierzytelniania, lub można także tymczasowo osłabić wymaganie usługi Azure Device Registration MFA. W tym celu przejdź do portalu zarządzania systemu Azure, a następnie przejdź do pozycji Azure Active Directory, następnie kliknij pozycję urządzenia, następnie pozycję Ustawienia urządzenia, a następnie ustaw opcję Wymagaj uwierzytelniania wieloskładnikowego w celu dołączenia do urządzeń. Należy koniecznie zmienić konfigurację tego ustawienia z powrotem na wartość tak po zakończeniu rejestracji.
         >
-        > Możesz również sprawdzić, czy uwierzytelnianie wieloskładnikowe jest wymagane, jeśli usługa Azure Device Registration (która jest używana w ramach okładki przez usługę Azure AD Password Protection) została skonfigurowana w taki sposób, aby globalnie wymagała uwierzytelniania wieloskładnikowego. W celu obejścia tego problemu można użyć innego konta, które nie wymaga uwierzytelniania MFA, lub chwilowo można tymczasowo osłabić wymaganie usługi Azure Device Registration MFA. W tym celu przejdź do portalu zarządzania systemu Azure, a następnie przejdź do pozycji Azure Active Directory, następnie kliknij pozycję urządzenia, następnie pozycję Ustawienia urządzenia, a następnie ustaw opcję Wymagaj uwierzytelniania wieloskładnikowego w celu dołączenia do urządzeń.  Należy koniecznie zmienić konfigurację tego ustawienia z powrotem na wartość tak po zakończeniu rejestracji.
+        > Zalecamy, aby wymagania usługi MFA były pomijane wyłącznie w celach testowych.
 
        Obecnie nie musisz określać parametru *-ForestCredential* , który jest zarezerwowany dla przyszłych funkcji.
 
@@ -179,11 +179,11 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
         ```
 
         > [!NOTE]
-        > Ten tryb kończy się niepowodzeniem, jeśli wymagane jest uwierzytelnianie wieloskładnikowe systemu Azure. W takim przypadku należy użyć jednego z dwóch poprzednich trybów uwierzytelniania lub użyć jednego z poniższych obejść. Zalecamy, aby wymagania usługi MFA były pomijane wyłącznie w celach testowych.
+        > Ten tryb kończy się niepowodzeniem, jeśli dla Twojego konta jest wymagane uwierzytelnianie wieloskładnikowe systemu Azure. W takim przypadku należy użyć jednego z dwóch poprzednich trybów uwierzytelniania lub zamiast tego użyć innego konta, które nie wymaga uwierzytelniania MFA.
         >
-        > Jeśli Twoje konto platformy Azure jest przeznaczone do korzystania z uwierzytelniania wieloskładnikowego, możesz zamiast tego użyć innego konta, które nie wymaga uwierzytelniania wieloskładnikowego.
+        > Możesz również sprawdzić, czy uwierzytelnianie wieloskładnikowe jest wymagane, jeśli usługa Azure Device Registration (która jest używana w ramach okładki przez usługę Azure AD Password Protection) została skonfigurowana w taki sposób, aby globalnie wymagała uwierzytelniania wieloskładnikowego. Aby obejść ten sposób, możesz użyć innego konta, które obsługuje usługę MFA z jednym z poprzednich dwóch trybów uwierzytelniania, lub można także tymczasowo osłabić wymaganie usługi Azure Device Registration MFA. W tym celu przejdź do portalu zarządzania systemu Azure, a następnie przejdź do pozycji Azure Active Directory, następnie kliknij pozycję urządzenia, następnie pozycję Ustawienia urządzenia, a następnie ustaw opcję Wymagaj uwierzytelniania wieloskładnikowego w celu dołączenia do urządzeń. Należy koniecznie zmienić konfigurację tego ustawienia z powrotem na wartość tak po zakończeniu rejestracji.
         >
-        > Możesz również sprawdzić, czy uwierzytelnianie wieloskładnikowe jest wymagane, jeśli usługa Azure Device Registration (która jest używana w ramach okładki przez usługę Azure AD Password Protection) została skonfigurowana w taki sposób, aby globalnie wymagała uwierzytelniania wieloskładnikowego. W celu obejścia tego problemu można użyć innego konta, które nie wymaga uwierzytelniania MFA, lub chwilowo można tymczasowo osłabić wymaganie usługi Azure Device Registration MFA. W tym celu przejdź do portalu zarządzania systemu Azure, a następnie przejdź do pozycji Azure Active Directory, następnie kliknij pozycję urządzenia, następnie pozycję Ustawienia urządzenia, a następnie ustaw opcję Wymagaj uwierzytelniania wieloskładnikowego w celu dołączenia do urządzeń.  Należy koniecznie zmienić konfigurację tego ustawienia z powrotem na wartość tak po zakończeniu rejestracji.
+        > Zalecamy, aby wymagania usługi MFA były pomijane wyłącznie w celach testowych.
 
        Te przykłady zakończyły się powodzeniem tylko wtedy, gdy obecnie zalogowany użytkownik jest również Active Directory administratorem domeny dla domeny katalogu głównego. Jeśli tak nie jest, możesz podać alternatywne poświadczenia domeny za pomocą parametru *-ForestCredential* .
 

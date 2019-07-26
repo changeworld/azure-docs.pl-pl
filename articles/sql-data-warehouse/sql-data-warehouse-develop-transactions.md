@@ -1,8 +1,8 @@
 ---
-title: Za pomocą transakcji w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Porady dotyczące wykonywania transakcji w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
+title: Korzystanie z transakcji w Azure SQL Data Warehouse | Microsoft Docs
+description: Wskazówki dotyczące implementowania transakcji w Azure SQL Data Warehouse na potrzeby tworzenia rozwiązań.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,31 +10,31 @@ ms.subservice: development
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b6f95607c7cfc574d647be3046cef4a4b61906f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f00f8a25d0abf3af6d76b372b44145546a79879
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861744"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479605"
 ---
-# <a name="using-transactions-in-sql-data-warehouse"></a>W usłudze SQL Data Warehouse za pomocą transakcji
-Porady dotyczące wykonywania transakcji w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
+# <a name="using-transactions-in-sql-data-warehouse"></a>Korzystanie z transakcji w SQL Data Warehouse
+Wskazówki dotyczące implementowania transakcji w Azure SQL Data Warehouse na potrzeby tworzenia rozwiązań.
 
 ## <a name="what-to-expect"></a>Czego oczekiwać
-Jak można oczekiwać, usługa SQL Data Warehouse obsługuje transakcje jako część obciążenia magazynu danych. Jednak aby upewnić się, że wydajność usługi SQL Data Warehouse opiera się na dużą skalę niektóre funkcje są ograniczone w porównaniu do programu SQL Server. W tym artykule wyróżniono różnice i wyświetla listę innych. 
+Zgodnie z oczekiwaniami SQL Data Warehouse obsługuje transakcje w ramach obciążenia magazynu danych. Jednak w celu zapewnienia, że wydajność SQL Data Warehouse jest utrzymywana na dużą skalę, niektóre funkcje są ograniczone w porównaniu z SQL Server. W tym artykule omówiono różnice i inne elementy. 
 
 ## <a name="transaction-isolation-levels"></a>Poziomy izolacji transakcji
-Usługa SQL Data Warehouse implementuje transakcje ACID. Poziom izolacji transakcji pomocy technicznej są jednak ograniczone do READ UNCOMMITTED; Nie można zmienić na tym poziomie. Jeśli READ UNCOMMITTED jest istotna, można zaimplementować wiele metod, aby zapobiec odczytów danych kodowania. Najbardziej popularnych metod Użyj CTAS i przełączanie partycji tabeli (często nazywany przewijania wzorca okna), aby uniemożliwić użytkownikom wykonywanie zapytań o dane, które nadal przygotowywany jest. Widoki, które są wstępnie przefiltrować dane są także popularne podejście.  
+SQL Data Warehouse implementuje transakcje KWASowe. Jednak poziom izolacji obsługi transakcyjnej jest ograniczony do odczytu niezatwierdzonego; nie można zmienić tego poziomu. Jeśli odczytanie jest niezatwierdzone, można zaimplementować szereg metod kodowania, aby zapobiec utracie danych. Najpopularniejsze metody używają zarówno CTAS, jak i przełączania partycji tabeli (często nazywanego wzorcem okna przewijania), aby uniemożliwić użytkownikom wykonywanie zapytań o dane, które są nadal przygotowywane. Widoki, które wstępnie filtrują dane, są również popularnym podejściem.  
 
 ## <a name="transaction-size"></a>Rozmiar transakcji
-Transakcja modyfikacji danych jednego ma ograniczony rozmiar. Ten limit dotyczy poszczególnych dystrybucji. W związku z tym łączny przydział może obliczana poprzez pomnożenie limit według liczby dystrybucji. Aby przybliżony maksymalna liczba wierszy w ramach transakcji dzielnikiem zakończenia dystrybucji całkowity rozmiar każdego wiersza. W przypadku kolumn o zmiennej długości należy wziąć pod uwagę biorąc długość kolumny, średnia, a nie o maksymalnym rozmiarze.
+Ograniczenie pojedynczej transakcji modyfikacji danych jest ograniczone. Limit jest stosowany do dystrybucji. W związku z tym łączne alokacje można obliczyć przez pomnożenie limitu przez liczbę dystrybucji. Aby przybliżyć maksymalną liczbę wierszy w transakcji, Podziel limit dystrybucji o łączny rozmiar każdego wiersza. W przypadku kolumn o zmiennej długości należy wziąć pod uwagę średnią długość kolumny zamiast używać maksymalnego rozmiaru.
 
-Zostały wprowadzone w tabeli poniżej następujące założenia:
+W tabeli poniżej przedstawiono następujące założenia:
 
-* Wystąpiło równomiernego rozłożenia danych 
-* Średnia długość wiersza to 250 bajtów
+* Wystąpił parzysty rozkład danych 
+* Średnia długość wiersza to 250 bajtów.
 
-## <a name="gen2"></a>Gen2
+## <a name="gen2"></a>Druga generacja
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Limit na dystrybucję (GB) | Liczba dystrybucji | Maksymalny rozmiar transakcji (GB) | Liczba wierszy na dystrybucję | Maksymalna liczba wierszy na transakcję |
 | --- | --- | --- | --- | --- | --- |
@@ -46,16 +46,16 @@ Zostały wprowadzone w tabeli poniżej następujące założenia:
 | DW1000c |7.5 |60 |450 |30,000,000 |1,800,000,000 |
 | DW1500c |11.25 |60 |675 |45,000,000 |2,700,000,000 |
 | DW2000c |15 |60 |900 |60,000,000 |3,600,000,000 |
-| DW2500c |18.75 |60 |1125 |75,000,000 |4,500,000,000 |
+| DW2500c |18,75 |60 |1125 |75 000 000 |4 500 000 000 |
 | DW3000c |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
-| DW5000c |37.5 |60 |2,250 |150,000,000 |9,000,000,000 |
+| DW5000c |37,5 |60 |2 250 |150 000 000 |9 000 000 000 |
 | DW6000c |45 |60 |2,700 |180,000,000 |10,800,000,000 |
-| DW7500c |56.25 |60 |3,375 |225,000,000 |13,500,000,000 |
-| DW10000c |75 |60 |4,500 |300 000 000 |18,000,000,000 |
-| DW15000c |112.5 |60 |6,750 |450,000,000 |27,000,000,000 |
-| DW30000c |225 |60 |13,500 |900,000,000 |54,000,000,000 |
+| DW7500c |56,25 |60 |3 375 |225 000 000 |13 500 000 000 |
+| DW10000c |75 |60 |4 500 |300 000 000 |18 000 000 000 |
+| DW15000c |112,5 |60 |6 750 |450 000 000 |27 000 000 000 |
+| DW30000c |225 |60 |13 500 |900,000,000 |54 000 000 000 |
 
-## <a name="gen1"></a>Gen1
+## <a name="gen1"></a>Pierwsza generacja
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Limit na dystrybucję (GB) | Liczba dystrybucji | Maksymalny rozmiar transakcji (GB) | Liczba wierszy na dystrybucję | Maksymalna liczba wierszy na transakcję |
 | --- | --- | --- | --- | --- | --- |
@@ -72,25 +72,25 @@ Zostały wprowadzone w tabeli poniżej następujące założenia:
 | DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
-Limit rozmiaru transakcji jest stosowane osobno do każdej transakcji lub operacji. Nie jest ona stosowana we wszystkich równoczesnych transakcji. W związku z tym każda transakcja może zapisywać w dzienniku takiej ilości danych. 
+Limit rozmiaru transakcji jest stosowany dla transakcji lub operacji. Nie jest on stosowany we wszystkich współbieżnych transakcjach. W związku z tym każda transakcja może zapisywać tę ilość danych w dzienniku. 
 
-Optymalizuj i zminimalizować ilość danych zapisanych w dzienniku, można znaleźć w temacie [transakcji najlepsze praktyki](sql-data-warehouse-develop-best-practices-transactions.md) artykułu.
+Aby zoptymalizować i zminimalizować ilość danych zapisywana w dzienniku, zapoznaj się z artykułem [najlepsze rozwiązania](sql-data-warehouse-develop-best-practices-transactions.md) w zakresie transakcji.
 
 > [!WARNING]
-> Rozmiar maksymalny transakcji może odbyć się tylko do wyznaczania wartości skrótu, a nawet tabel ROUND_ROBIN rozproszonego, gdzie jest rozprzestrzenianie się dane. Jeśli transakcja jest zapisuje dane w sposób niesymetryczne dystrybucje limit jest prawdopodobnie zostanie osiągnięty przed rozmiar maksymalny transakcji.
+> Maksymalny rozmiar transakcji można uzyskać tylko w przypadku tabel rozproszonych lub ROUND_ROBIN rozproszonej, gdzie rozproszenie danych jest parzyste. Jeśli transakcja zapisuje dane w sposób skośny do dystrybucji, to limit jest prawdopodobnie osiągnięty przed maksymalnym rozmiarem transakcji.
 > <!--REPLICATED_TABLE-->
 > 
 > 
 
 ## <a name="transaction-state"></a>Stan transakcji
-Usługa SQL Data Warehouse funkcja XACT_STATE() raportu nie powiodło się transakcji przy użyciu wartości od -2. Ta wartość oznacza, że transakcji nie powiodło się i jest oznaczony do tylko wycofywania.
+SQL Data Warehouse używa funkcji XACT_STATE (), aby zgłosić nieudaną transakcję przy użyciu wartości-2. Ta wartość oznacza, że transakcja zakończyła się niepowodzeniem i jest oznaczona wyłącznie do wycofania.
 
 > [!NOTE]
-> Użyj-2 przy użyciu funkcji XACT_STATE do oznaczania transakcji nie powiodło się reprezentuje różne zachowanie programu SQL Server. Program SQL Server używa wartość -1, który reprezentuje transakcję niemożliwą do zatwierdzenia. Program SQL Server może tolerować błędy wewnątrz transakcji bez konieczności można oznaczyć jako niemożliwą do zatwierdzenia. Na przykład `SELECT 1/0` może spowodować wystąpienie błędu, ale nie wymusić transakcji w stanie niemożliwą do zatwierdzenia. Program SQL Server pozwala również odczyty w transakcję niemożliwą do zatwierdzenia. Jednak usługa SQL Data Warehouse pozwala na to zrobić. Jeśli wystąpi błąd w obrębie transakcji SQL Data Warehouse automatycznie przejdzie w stan-2 i nie można wprowadzić dowolne dodatkowo wybrać instrukcji, dopóki instrukcja została wycofana. W związku z tym jest ważne sprawdzić, czy kodu aplikacji, aby sprawdzić, czy używa XACT_STATE() jako użytkownik może zaistnieć potrzeba modyfikacji kodu.
+> Użycie-2 przez funkcję XACT_STATE w celu określenia nieudanej transakcji reprezentuje inne zachowanie SQL Server. SQL Server używa wartości-1 do reprezentowania transakcji niezatwierdzonej. SQL Server może tolerować błędy wewnątrz transakcji, bez konieczności oznaczania jej jako niezatwierdzonej. Na przykład `SELECT 1/0` może wystąpić błąd, ale nie wymusić transakcji w stanie niezatwierdzonym. SQL Server również zezwala na odczyty w transakcji niezatwierdzonej. Jednak SQL Data Warehouse nie zezwala na to. Jeśli wystąpi błąd w ramach transakcji SQL Data Warehouse, automatycznie wprowadzi stan-2 i nie będzie można wykonać żadnych dalszych instrukcji SELECT do momentu wycofania instrukcji z powrotem. W związku z tym ważne jest, aby sprawdzić, czy kod aplikacji jest używany XACT_STATE (), ponieważ może być konieczne wprowadzenie modyfikacji kodu.
 > 
 > 
 
-Na przykład w programie SQL Server, może zostać wyświetlony transakcji, która wygląda podobnie do poniższego:
+Na przykład w SQL Server może zostać wyświetlona transakcja, która wygląda następująco:
 
 ```sql
 SET NOCOUNT ON;
@@ -128,13 +128,13 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Powyższy kod daje następujący komunikat o błędzie:
+Poprzedni kod daje następujący komunikat o błędzie:
 
-Msg 111233, poziom 16, stan 1, wiersz 1 111233; Bieżąca transakcja została przerwana, a wszystkie oczekujące zmiany mają została wycofana. Przyczyna: Transakcji w stanie tylko do wycofania nie została jawnie wycofana przed DDL, DML lub instrukcji SELECT.
+Msg 111233, poziom 16, stan 1, wiersz 1 111233; Bieżąca transakcja została przerwana, a wszystkie oczekujące zmiany zostały wycofane. Przyczyna: Transakcja w stanie "tylko wycofania" nie została jawnie wycofana przed instrukcją DDL, DML lub SELECT.
 
-Nie otrzymasz dane wyjściowe funkcji ERROR_ *.
+Nie otrzymasz danych wyjściowych funkcji ERROR_ *.
 
-W usłudze SQL Data Warehouse, kod musi być nieco zmienić:
+W SQL Data Warehouse kod musi być nieco zmieniony:
 
 ```sql
 SET NOCOUNT ON;
@@ -171,32 +171,32 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Obserwuje się oczekiwane zachowanie. Błąd w transakcji jest zarządzane i funkcje ERROR_ * Podaj wartości, zgodnie z oczekiwaniami.
+Oczekiwane zachowanie jest teraz obserwowane. Błąd w transakcji jest zarządzany, a funkcje ERROR_ * zapewniają wartości zgodnie z oczekiwaniami.
 
-To wszystkie, które uległy zmianie, wycofywanie transakcji musieli się odbyć przed odczytu informacji o błędzie w bloku CATCH.
+Wszystko, co zostało zmienione, polega na tym, że WYCOFANie transakcji musiało wystąpić przed odczytaniem informacji o błędzie w bloku CATCH.
 
-## <a name="errorline-function"></a>ERROR_LINE() — funkcja
-Warto również zauważyć, że usługa SQL Data Warehouse wdrożenia lub nie obsługuje ERROR_LINE() — funkcja. Jeśli ma to w kodzie, należy usunąć go, aby były zgodne z usługą SQL Data Warehouse. Zamiast tego użyj etykiety zapytanie w swoim kodzie zaimplementować podobne funkcje. Aby uzyskać więcej informacji, zobacz [etykiety](sql-data-warehouse-develop-label.md) artykułu.
+## <a name="errorline-function"></a>Error_Line () — funkcja
+Warto również zauważyć, że SQL Data Warehouse nie implementuje ani nie obsługuje funkcji ERROR_LINE (). Jeśli masz ten kod, musisz go usunąć, aby był zgodny z SQL Data Warehouse. Zamiast zaimplementować równoważne funkcje, użyj etykiet zapytań w kodzie. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [etykiet](sql-data-warehouse-develop-label.md) .
 
-## <a name="using-throw-and-raiserror"></a>Przy użyciu THROW i RAISERROR
-THROW jest nowoczesną implementację występowanie wyjątków w usłudze SQL Data Warehouse, ale obsługiwane jest również RAISERROR. Istnieje kilka różnic, które są warte jednak zwracając uwagę.
+## <a name="using-throw-and-raiserror"></a>Korzystanie z funkcji THROW i RAISERROR
+THROW to bardziej nowoczesny implementacja do wywoływania wyjątków w SQL Data Warehouse ale jest również obsługiwana wartość RAISERROR. Istnieje jednak kilka różnic, które warto zwrócić uwagę.
 
-* Liczby komunikatów o błędach zdefiniowane przez użytkownika nie może być w zakresie 150 000 100 000 THROW
-* Komunikaty o błędach RAISERROR są ustalone na poziomie 50 000
-* Korzystanie z sys.messages nie jest obsługiwane.
+* Liczby komunikatów o błędach zdefiniowane przez użytkownika nie mogą znajdować się w zakresie 100 000 – 150 000 dla THROW
+* Komunikaty o błędach instrukcji RAISERROR są stałe o 50 000
+* Użycie widoku sys. messages nie jest obsługiwane
 
 ## <a name="limitations"></a>Ograniczenia
-Usługa SQL Data Warehouse ma kilka ograniczeń, które odnoszą się do transakcji.
+SQL Data Warehouse ma kilka innych ograniczeń odnoszących się do transakcji.
 
-Są one w następujący sposób:
+Są one następujące:
 
-* Nie transakcji rozproszonych
-* Nie transakcji zagnieżdżonych dozwolone
-* Bez zapisywania punktów dozwolone
-* Brak transakcji o nazwie
-* Nie zaznaczonych transakcji
-* Brak obsługi języka DDL, takie jak CREATE TABLE wewnątrz transakcji użytkownika
+* Brak transakcji rozproszonych
+* Brak dozwolonych transakcji zagnieżdżonych
+* Brak dozwolonych punktów zapisu
+* Brak nazwanych transakcji
+* Brak oznaczonych transakcji
+* Brak obsługi języka DDL, takiego jak CREATE TABLE wewnątrz transakcji zdefiniowanej przez użytkownika
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat optymalizowania transakcji, zobacz [transakcji najlepsze praktyki](sql-data-warehouse-develop-best-practices-transactions.md). Aby poznać najlepsze rozwiązania SQL Data Warehouse, zobacz temat [najlepsze rozwiązania SQL Data Warehouse](sql-data-warehouse-best-practices.md).
+Aby dowiedzieć się więcej na temat optymalizowania transakcji, zobacz [najlepsze rozwiązania](sql-data-warehouse-develop-best-practices-transactions.md)w zakresie transakcji. Aby dowiedzieć się więcej o innych SQL Data Warehouse najlepszych rozwiązaniach, zobacz [SQL Data Warehouse Best Practices](sql-data-warehouse-best-practices.md).
 

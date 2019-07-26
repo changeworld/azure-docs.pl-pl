@@ -1,19 +1,18 @@
 ---
 title: Przenoszenie magazynu Recovery Services w ramach subskrypcji platformy Azure lub innej grupy zasobów
 description: Instrukcje dotyczące przenoszenia magazynu usługi Recovery Services między subskrypcjami i grupami zasobów platformy Azure.
-services: backup
 author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 57263dfd1e226f2ff4321b2d097d30106fae87fa
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 0e351a842a303430e66a52a87305cba23f774ef2
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304920"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465813"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Przenoszenie magazynu Recovery Services w ramach subskrypcji i grup zasobów platformy Azure
 
@@ -143,7 +142,7 @@ Aby przejść do nowej subskrypcji, podać `--destination-subscription-id` param
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wiele różnych typów zasobów można przenosić między grupami zasobów i subskrypcjami.
 

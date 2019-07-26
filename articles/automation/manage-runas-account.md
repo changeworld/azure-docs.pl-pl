@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie kontami Uruchom jako usługi Azure Automation
-description: W tym artykule opisano sposób zarządzania konta Uruchom jako przy użyciu programu PowerShell lub w portalu.
+title: Zarządzaj kontami Azure Automation Uruchom jako
+description: W tym artykule opisano sposób zarządzania kontami Uruchom jako przy użyciu programu PowerShell lub portalu.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,88 +9,88 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 49b8554f6064f036d4305cf7a5c1450c2f18c48d
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 318a9c2df7902ae89a731ca45b24b8bb6241faa1
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798476"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498391"
 ---
-# <a name="manage-azure-automation-run-as-accounts"></a>Zarządzanie kontami Uruchom jako usługi Azure Automation
+# <a name="manage-azure-automation-run-as-accounts"></a>Zarządzaj kontami Azure Automation Uruchom jako
 
-Konta Uruchom jako w usłudze Azure Automation są używane do zapewnienia uwierzytelniania do zarządzania zasobami na platformie Azure przy użyciu poleceń cmdlet platformy Azure.
+Konta Uruchom jako w Azure Automation są używane do uwierzytelniania zasobów na platformie Azure za pomocą poleceń cmdlet platformy Azure.
 
-Podczas tworzenia konta Uruchom jako tworzy nowego użytkownika nazwy głównej usługi w usłudze Azure Active Directory i przypisuje rolę Współautor do tego użytkownika na poziomie subskrypcji. W przypadku elementów runbook, użyj hybrydowych procesów roboczych Runbook na maszynach wirtualnych platformy Azure, można użyć [zarządzanych tożsamości dla zasobów platformy Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) zamiast konta Uruchom jako do uwierzytelniania do zasobów platformy Azure.
+Podczas tworzenia konta Uruchom jako zostaje utworzony nowy użytkownik głównej nazwy usługi w Azure Active Directory i przypisze rolę współautor do tego użytkownika na poziomie subskrypcji. W przypadku elementów Runbook, które używają hybrydowych procesów roboczych elementów Runbook na maszynach wirtualnych platformy Azure, można używać [tożsamości zarządzanych dla zasobów platformy Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) zamiast kont Uruchom jako do uwierzytelniania w zasobach platformy Azure.
 
 Istnieją dwa typy kont Uruchom jako:
 
-* **Konto platformy Azure Uruchom jako** — to konto jest używane do zarządzania [modelu wdrażania usługi Resource Manager](../azure-resource-manager/resource-manager-deployment-model.md) zasobów.
+* **Konto Uruchom jako platformy Azure** — to konto służy do zarządzania zasobami [modelu wdrażania Menedżer zasobów](../azure-resource-manager/resource-manager-deployment-model.md) .
   * Tworzy aplikację usługi Azure AD z certyfikatem z podpisem własnym, tworzy konto jednostki usługi dla aplikacji w usłudze Azure AD i przypisuje rolę Współautor dla konta w bieżącej subskrypcji. To ustawienie możesz zmienić na rolę Właściciel lub inną. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach w usłudze Azure Automation](automation-role-based-access-control.md).
   * Tworzy zasób certyfikatu usługi Automation o nazwie *AzureRunAsCertificate* na określonym koncie usługi Automation. Zasób certyfikatu zawiera klucz prywatny certyfikatu używany przez aplikację Azure AD.
   * Tworzy zasób połączenia usługi Automation o nazwie *AzureRunAsConnection* na określonym koncie usługi Automation. Zasób połączenia zawiera identyfikator aplikacji, identyfikator dzierżawy, identyfikator subskrypcji i odcisk palca certyfikatu.
 
-* **Usługa Azure klasycznego konta Uruchom jako** — to konto jest używane do zarządzania [klasycznego modelu wdrażania](../azure-resource-manager/resource-manager-deployment-model.md) zasobów.
-  * Tworzy certyfikat zarządzania w ramach subskrypcji
+* **Klasyczne konto Uruchom jako platformy Azure** — to konto służy do zarządzania zasobami [klasycznego modelu wdrażania](../azure-resource-manager/resource-manager-deployment-model.md) .
+  * Tworzy certyfikat zarządzania w subskrypcji
   * Tworzy zasób certyfikatu usługi Automation o nazwie *AzureClassicRunAsCertificate* na określonym koncie usługi Automation. Zasób certyfikatu zawiera klucz prywatny certyfikatu używany przez certyfikat zarządzania.
   * Tworzy zasób połączenia usługi Automation o nazwie *AzureClassicRunAsConnection* na określonym koncie usługi Automation. Zasób połączenia zawiera nazwę subskrypcji, identyfikator subskrypcji i nazwę zasobu certyfikatu.
-  * Musi być administrator współpracujący dla subskrypcji do utworzenia lub Odnów
-  
-  > [!NOTE]
-  > Subskrypcje dostawcy rozwiązań w chmurze (Azure CSP) platformy Azure obsługują tylko model usługi Azure Resource Manager, usługi — z usługi Azure Resource Manager nie są dostępne w programie. Korzystając z subskrypcją dostawcy CSP Azure klasycznego konta Uruchom jako nie utworzyć. Azure konta Uruchom jako nadal tworzona. Aby dowiedzieć się więcej na temat subskrypcji dostawcy usług Kryptograficznych, zobacz [usług dostępnych w ramach subskrypcji programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
+  * Aby można było utworzyć lub odnowić subskrypcję, musi być współadministratorem
 
   > [!NOTE]
-  > Jednostka usługi dla konta Uruchom jako nie ma uprawnień do odczytu usługi Azure Active Directory domyślnie. Jeśli chcesz dodać uprawnienia do odczytu lub zarządzać usługą Azure Active directory, należy udzielić tego uprawnienia podmiotu zabezpieczeń w usłudze **uprawnienia do interfejsu API**. Aby dowiedzieć się więcej, zobacz [Dodawanie uprawnień dostępu do interfejsów API sieci web](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+  > Subskrypcje dostawcy rozwiązań w chmurze platformy Azure (CSP) obsługują tylko model Azure Resource Manager, usługi nieAzure Resource Managerowe nie są dostępne w programie. W przypadku korzystania z subskrypcji programu CSP klasyczne konto Uruchom jako platformy Azure nie zostanie utworzone. Nadal można utworzyć konto Uruchom jako platformy Azure. Aby dowiedzieć się więcej o subskrypcjach dostawcy usług kryptograficznych, zobacz [dostępne usługi w subskrypcjach programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
 
-## <a name="permissions"></a>Uprawnienia do konfigurowania konta Uruchom jako
+  > [!NOTE]
+  > Nazwa główna usługi dla konta Uruchom jako nie ma uprawnień do odczytania Azure Active Directory domyślnie. Jeśli chcesz dodać uprawnienia do odczytu lub zarządzania usługą Azure Active Directory, musisz udzielić tego uprawnienia w jednostce usługi w obszarze **uprawnienia interfejsu API**. Aby dowiedzieć się więcej, zobacz [Dodawanie uprawnień dostępu do interfejsów API sieci Web](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
-Aby utworzyć lub zaktualizować konto Uruchom jako, musi mieć określone uprawnienia i uprawnienia. Administrator globalny usługi Azure Active Directory i właściciel subskrypcji może wykonanie wszystkich zadań. W sytuacji, w którym masz rozdzielenia obowiązków w poniższej tabeli przedstawiono listę zadań, równoważne polecenia cmdlet i wymagane uprawnienia:
+## <a name="permissions"></a>Uprawnienia do konfigurowania kont Uruchom jako
 
-|Zadanie|Polecenia cmdlet  |Minimalny poziom uprawnień  |Gdzie można ustawić uprawnienia|
+W celu utworzenia lub zaktualizowania konta Uruchom jako wymagane są określone uprawnienia. Administrator globalny w Azure Active Directory i właściciel subskrypcji może ukończyć wszystkie zadania. W przypadku rozdzielenia obowiązków w poniższej tabeli przedstawiono listę zadań, potrzebne odpowiednie polecenie cmdlet i uprawnienia:
+
+|Zadanie|Polecenia cmdlet  |Minimalne uprawnienia  |Ustawianie uprawnień|
 |---|---------|---------|---|
-|Tworzenie aplikacji usługi Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Rola dla deweloperów aplikacji<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Strona główna > Usługa Azure Active Directory > Rejestracje aplikacji |
-|Dodawanie poświadczeń do aplikacji.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Administrator aplikacji lub administrator GLOBALNY<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Strona główna > Usługa Azure Active Directory > Rejestracje aplikacji|
-|Utwórz i Pobierz jednostkę usługi Azure AD|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Administrator aplikacji lub administrator GLOBALNY<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Strona główna > Usługa Azure Active Directory > Rejestracje aplikacji|
-|Przypisz lub uzyskać rolę RBAC dla określonego podmiotu zabezpieczeń|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Musi mieć następujące uprawnienia:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>Lub ODP.:</br></br>Administrator dostępu użytkownika lub właściciela        | [Subskrypcja](../role-based-access-control/role-assignments-portal.md)</br>Strona główna > Subskrypcje > \<Nazwa subskrypcji\> — kontrola dostępu (IAM)|
-|Tworzenie lub usuwanie certyfikatu usługi Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Współautor dla grupy zasobów         |Grupa zasobów konta usługi Automation|
-|Tworzenie lub usuwanie połączenia usługi Automation|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Współautor dla grupy zasobów |Grupa zasobów konta usługi Automation|
+|Tworzenie aplikacji usługi Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Rola dewelopera aplikacji<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>> Domowe Azure Active Directory > rejestracji aplikacji |
+|Dodaj poświadczenie do aplikacji.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Administrator aplikacji lub Administrator globalny<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>> Domowe Azure Active Directory > rejestracji aplikacji|
+|Tworzenie i pobieranie jednostki usługi Azure AD|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Administrator aplikacji lub Administrator globalny<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>> Domowe Azure Active Directory > rejestracji aplikacji|
+|Przypisz lub uzyskaj rolę RBAC dla określonego podmiotu zabezpieczeń|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Wymagane są następujące uprawnienia:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>Lub:</br></br>Administrator lub właściciel dostępu użytkowników        | [Subskrypcja](../role-based-access-control/role-assignments-portal.md)</br>Subskrypcje > domowej > \<nazwa\> subskrypcji — Access Control (IAM)|
+|Utwórz lub Usuń certyfikat usługi Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Współautor w grupie zasobów         |Grupa zasobów konta usługi Automation|
+|Tworzenie lub usuwanie połączenia automatyzacji|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Współautor w grupie zasobów |Grupa zasobów konta usługi Automation|
 
-<sup>1</sup> użytkownicy inni niż administratorzy w dzierżawie usługi Azure AD mogą [rejestrować aplikacje usługi AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Jeśli dzierżawy usługi Azure AD **użytkownicy mogą rejestrować aplikacje** opcji **ustawienia użytkownika**strona jest ustawiona na **tak**. Jeśli wartością ustawienia rejestracji aplikacji jest równa **nie**, użytkownik wykonujący tę akcję musi być zdefiniowana w powyższej tabeli.
+<sup>1</sup> Użytkownicy niebędący administratorami w dzierżawie usługi Azure AD mogą [rejestrować aplikacje usługi AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) , jeśli opcja **Użytkownicy** dzierżawy usługi Azure AD na stronie **Ustawienia użytkownika** ma wartość **tak**. Jeśli ustawienie rejestracje aplikacji ma wartość **nie**, użytkownik wykonujący tę akcję musi być zdefiniowany w powyższej tabeli.
 
-Jeśli nie jesteś członkiem wystąpienia usługi Active Directory subskrypcji przed dodaniem do **administratora globalnego** roli w subskrypcji dodawane jako Gość. W takiej sytuacji pojawi się `You do not have permissions to create…` ostrzeżenia na **Dodawanie konta usługi Automation** strony. Użytkownicy dodani do **administratora globalnego** roli najpierw może być usunięty z wystąpienia usługi Active Directory dla subskrypcji i ponownie dodani, aby zostali pełnymi użytkownikami w usłudze Active Directory. Aby zweryfikować tę sytuację, w okienku **Azure Active Directory** w witrynie Azure Portal wybierz kolejno pozycje **Użytkownicy i grupy** i **Wszyscy użytkownicy**, a po wybraniu określonego użytkownika wybierz pozycję **Profil**. Wartość atrybutu **Typ użytkownika** na liście profilów użytkowników nie powinna być równa **Gość**.
+Jeśli nie jesteś członkiem wystąpienia Active Directory subskrypcji przed dodaniem do roli **administratora globalnego** subskrypcji, zostanie on dodany jako gość. W takiej sytuacji pojawi się `You do not have permissions to create…` ostrzeżenie na stronie **Dodawanie konta usługi Automation** . Użytkownicy, którzy zostali dodani do roli **administratora globalnego** , mogą zostać usunięci z wystąpienia Active Directory subskrypcji i dodany do nich jako pełny użytkownik w Active Directory. Aby zweryfikować tę sytuację, w okienku **Azure Active Directory** w witrynie Azure Portal wybierz kolejno pozycje **Użytkownicy i grupy** i **Wszyscy użytkownicy**, a po wybraniu określonego użytkownika wybierz pozycję **Profil**. Wartość atrybutu **Typ użytkownika** na liście profilów użytkowników nie powinna być równa **Gość**.
 
-## <a name="permissions-classic"></a>Uprawnienia do konfigurowania konta klasycznego konta Uruchom jako
+## <a name="permissions-classic"></a>Uprawnienia do konfigurowania klasycznych kont Uruchom jako
 
-Aby skonfigurować lub odnawiania konta klasycznego konta Uruchom jako, musisz mieć **kontem administratora współpracującego** roli na poziomie subskrypcji. Aby dowiedzieć się więcej o uprawnieniach klasycznym, zobacz [Administratorzy subskrypcji platformy Azure classic](../role-based-access-control/classic-administrators.md#add-a-co-administrator).
+Aby skonfigurować lub odnowić klasyczne konta Uruchom jako, musisz mieć  rolę współadministrator na poziomie subskrypcji. Aby dowiedzieć się więcej na temat uprawnień klasycznych, zobacz [klasycznej subskrypcji platformy Azure](../role-based-access-control/classic-administrators.md#add-a-co-administrator).
 
-## <a name="create-a-run-as-account-in-the-portal"></a>Utwórz konto Uruchom jako w portalu
+## <a name="create-a-run-as-account-in-the-portal"></a>Tworzenie konta Uruchom jako w portalu
 
-W tej części wykonaj poniższe kroki, aby zaktualizować konto usługi Azure Automation w witrynie Azure Portal. Utwórz osobno konta Uruchom jako i klasyczne konto Uruchom jako. Jeśli nie trzeba zarządzać zasobami klasycznymi, można po prostu utworzyć konto Uruchom jako platformy Azure.  
+W tej części wykonaj poniższe kroki, aby zaktualizować konto usługi Azure Automation w witrynie Azure Portal. Utwórz osobno konta Uruchom jako i klasyczne konto Uruchom jako. Jeśli nie trzeba zarządzać zasobami klasycznymi, można po prostu utworzyć konto Uruchom jako platformy Azure.
 
 1. Zaloguj się do witryny Azure Portal przy użyciu konta, które jest członkiem roli Administratorzy subskrypcji i współadministratorem subskrypcji.
 2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Automation**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz opcję **Konta automatyzacji**.
 3. Na stronie **Konta usługi Automation** wybierz swoje konto usługi Automation z listy kont usługi Automation.
-4. W okienku po lewej stronie wybierz pozycję **Konta Uruchom jako** w sekcji **Ustawienia konta**.  
-5. W zależności od tego, które konto jest wymagane, wybierz pozycję **Konto Uruchom jako platformy Azure** lub **Klasyczne konto Uruchom jako platformy Azure**. Po wybraniu danej pozycji zostanie wyświetlone okienko **Dodawanie konta Uruchom jako platformy Azure** lub **Dodawanie klasycznego konta Uruchom jako platformy Azure**. Po zapoznaniu się z omówieniem kliknij pozycję **Utwórz**, aby kontynuować tworzenie konta Uruchom jako.  
-6. W trakcie tworzenia konta Uruchom jako na platformie Azure postęp można śledzić po wybraniu z menu opcji **Powiadomienia**. Wyświetlany jest również baner z informacją o utworzeniu konta. Ten proces może potrwać kilka minut.  
+4. W okienku po lewej stronie wybierz pozycję **Konta Uruchom jako** w sekcji **Ustawienia konta**.
+5. W zależności od tego, które konto jest wymagane, wybierz pozycję **Konto Uruchom jako platformy Azure** lub **Klasyczne konto Uruchom jako platformy Azure**. Po wybraniu danej pozycji zostanie wyświetlone okienko **Dodawanie konta Uruchom jako platformy Azure** lub **Dodawanie klasycznego konta Uruchom jako platformy Azure**. Po zapoznaniu się z omówieniem kliknij pozycję **Utwórz**, aby kontynuować tworzenie konta Uruchom jako.
+6. W trakcie tworzenia konta Uruchom jako na platformie Azure postęp można śledzić po wybraniu z menu opcji **Powiadomienia**. Wyświetlany jest również baner z informacją o utworzeniu konta. Ten proces może potrwać kilka minut.
 
 ## <a name="create-run-as-account-using-powershell"></a>Tworzenie konta Uruchom jako przy użyciu programu PowerShell
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Poniższa lista zawiera wymagania, aby utworzyć konto Uruchom jako w programie PowerShell:
+Poniższa lista zawiera wymagania dotyczące tworzenia konta Uruchom jako w programie PowerShell:
 
-* Windows 10 lub Windows Server 2016 z modułami usługi Azure Resource Manager 3.4.1 i nowszych. Skrypt programu PowerShell nie obsługuje starszych wersji systemu Windows.
+* System Windows 10 lub Windows Server 2016 z Azure Resource Manager modules i nowszymi. Skrypt programu PowerShell nie obsługuje starszych wersji systemu Windows.
 * Program Azure PowerShell 1.0 lub nowszy. Informacje o wersji PowerShell 1.0 można znaleźć w temacie [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Jak zainstalować i skonfigurować program Azure PowerShell).
 * Konto usługi Automation, które jest przywoływane jako wartość parametrów *–AutomationAccountName* i *-ApplicationDisplayName*.
-* Uprawnieniami odpowiadającymi wymieniony w [wymagane uprawnienia, aby skonfigurować konta Uruchom jako](#permissions)
+* Uprawnienia równoważne z informacjami wymienionymi w [wymaganych uprawnieniach do konfigurowania kont Uruchom jako](#permissions)
 
-Aby uzyskać wartości *SubscriptionID*, *ResourceGroup*, i *AutomationAccountName*, które są wymagane parametry skryptu, wykonaj następujące czynności:
+Aby uzyskać wartości dla identyfikatora *subskrypcji*, *zasobów*i *AutomationAccountName*, które są wymagane parametry skryptu, wykonaj następujące czynności:
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Automation**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz opcję **Konta automatyzacji**.
-1. Na stronie konta usługi Automation wybierz konto usługi Automation, a następnie w obszarze **Ustawienia konta** wybierz pozycję **Właściwości**.  
-1. Uwaga **identyfikator subskrypcji**, **nazwa**, i **grupy zasobów** wartości na **właściwości** strony.
+1. Na stronie konta usługi Automation wybierz konto usługi Automation, a następnie w obszarze **Ustawienia konta** wybierz pozycję **Właściwości**.
+1. Zanotuj wartości **Identyfikator subskrypcji**, **nazwę**i **grupę zasobów** na stronie **Właściwości** .
 
-   ![Strona "Właściwości" konta usługi Automation](media/manage-runas-account/automation-account-properties.png)
+   ![Strona "właściwości" konta usługi Automation](media/manage-runas-account/automation-account-properties.png)
 
 Ten skrypt programu PowerShell obsługuje następujące konfiguracje:
 
@@ -104,7 +104,7 @@ Ten skrypt programu PowerShell obsługuje następujące konfiguracje:
 
 1. Zapisz na komputerze poniższy skrypt. W tym przykładzie zapisz plik pod nazwą *New-RunAsAccount.ps1*.
 
-   Skrypt używa wielu poleceń cmdlet usługi Azure Resource Manager do tworzenia zasobów. Poprzedni [uprawnienia](#permissions) tabeli przedstawiono polecenia cmdlet i ich uprawnienia potrzebne.
+   Skrypt używa wielu Azure Resource Manager poleceń cmdlet do tworzenia zasobów. Powyższa tabela [uprawnień](#permissions) zawiera polecenia cmdlet i ich uprawnienia.
 
     ```powershell
     #Requires -RunAsAdministrator
@@ -158,18 +158,18 @@ Ten skrypt programu PowerShell obsługuje następujące konfiguracje:
         Export-Certificate -Cert ("Cert:\localmachine\my\" + $Cert.Thumbprint) -FilePath $certPathCer -Type CERT | Write-Verbose
     }
 
-    function CreateServicePrincipal([System.Security.Cryptography.X509Certificates.X509Certificate2] $PfxCert, [string] $applicationDisplayName) {  
+    function CreateServicePrincipal([System.Security.Cryptography.X509Certificates.X509Certificate2] $PfxCert, [string] $applicationDisplayName) {
         $keyValue = [System.Convert]::ToBase64String($PfxCert.GetRawCertData())
         $keyId = (New-Guid).Guid
 
         # Create an Azure AD application, AD App Credential, AD ServicePrincipal
 
         # Requires Application Developer Role, but works with Application administrator or GLOBAL ADMIN
-        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $keyId) 
+        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $keyId)
         # Requires Application administrator or GLOBAL ADMIN
         $ApplicationCredential = New-AzureRmADAppCredential -ApplicationId $Application.ApplicationId -CertValue $keyValue -StartDate $PfxCert.NotBefore -EndDate $PfxCert.NotAfter
         # Requires Application administrator or GLOBAL ADMIN
-        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId
         $GetServicePrincipal = Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id
 
         # Sleep here for a few seconds to allow the service principal application to become active (ordinarily takes a few seconds)
@@ -187,7 +187,7 @@ Ten skrypt programu PowerShell obsługuje następujące konfiguracje:
     }
 
     function CreateAutomationCertificateAsset ([string] $resourceGroup, [string] $automationAccountName, [string] $certifcateAssetName, [string] $certPath, [string] $certPlainPassword, [Boolean] $Exportable) {
-        $CertPassword = ConvertTo-SecureString $certPlainPassword -AsPlainText -Force   
+        $CertPassword = ConvertTo-SecureString $certPlainPassword -AsPlainText -Force
         Remove-AzureRmAutomationCertificate -ResourceGroupName $resourceGroup -AutomationAccountName $automationAccountName -Name $certifcateAssetName -ErrorAction SilentlyContinue
         New-AzureRmAutomationCertificate -ResourceGroupName $resourceGroup -AutomationAccountName $automationAccountName -Path $certPath -Name $certifcateAssetName -Password $CertPassword -Exportable:$Exportable  | write-verbose
     }
@@ -212,7 +212,7 @@ Ten skrypt programu PowerShell obsługuje następujące konfiguracje:
     # Enable-AzureRmAlias
 
 
-    Connect-AzureRmAccount -Environment $EnvironmentName 
+    Connect-AzureRmAccount -Environment $EnvironmentName
     $Subscription = Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
     # Create a Run As account by using a service principal
@@ -286,32 +286,32 @@ Ten skrypt programu PowerShell obsługuje następujące konfiguracje:
     ```
 
     > [!IMPORTANT]
-    > **Add-AzureRmAccount** teraz jest aliasem dla **Connect-AzureRMAccount**. Podczas wyszukiwania biblioteki elementów, jeśli nie widzisz **Connect-AzureRMAccount**, możesz użyć **Add-AzureRmAccount**, możesz też [Aktualizuj moduły](automation-update-azure-modules.md) w automatyzacji Konto.
+    > **Add-AzureRmAccount** jest teraz aliasem dla polecenia **Connect-AzureRmAccount**. Podczas wyszukiwania elementów biblioteki, jeśli nie widzisz pozycji **Connect-AzureRMAccount**, możesz użyć polecenie **Add-AzureRMAccount**lub [zaktualizować moduły](automation-update-azure-modules.md) na koncie usługi Automation.
 
 1. Na komputerze uruchom program **Windows PowerShell** z ekranu **Start** z podwyższonym poziomem uprawnień użytkownika.
-1. Z powłoki wiersza polecenia z podwyższonym poziomem uprawnień użytkownika przejdź do folderu zawierającego skrypt utworzony w kroku 1.  
+1. Z powłoki wiersza polecenia z podwyższonym poziomem uprawnień użytkownika przejdź do folderu zawierającego skrypt utworzony w kroku 1.
 1. Wykonaj skrypt, używając wartości parametrów wymaganej konfiguracji.
 
-    **Tworzenie konta Uruchom jako przy użyciu certyfikatu z podpisem własnym**  
+    **Tworzenie konta Uruchom jako przy użyciu certyfikatu z podpisem własnym**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false
     ```
 
-    **Tworzenie konta Uruchom jako i klasycznego konta Uruchom jako przy użyciu certyfikatu z podpisem własnym**  
+    **Tworzenie konta Uruchom jako i klasycznego konta Uruchom jako przy użyciu certyfikatu z podpisem własnym**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true
     ```
 
-    **Tworzenie konta Uruchom jako i klasycznego konta Uruchom jako przy użyciu certyfikatu przedsiębiorstwa**  
+    **Tworzenie konta Uruchom jako i klasycznego konta Uruchom jako przy użyciu certyfikatu przedsiębiorstwa**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>
     ```
 
     **Tworzenie konta Uruchom jako i klasycznego konta Uruchom jako przy użyciu certyfikatu z podpisem własnym w chmurze usługi Azure Government**
-  
+
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment
     ```
@@ -323,7 +323,7 @@ Po pomyślnym wykonaniu skryptu pamiętaj o następujących kwestiach:
 
 * Jeśli zostało utworzone klasyczne konto Uruchom jako z certyfikatem publicznym z podpisem własnym (plik CER), skrypt tworzy i zapisuje je w folderze plików tymczasowych na komputerze w ramach profilu użytkownika *%USERPROFILE%\AppData\Local\Temp* użytego do uruchomienia sesji programu PowerShell.
 
-* Jeśli zostało utworzone klasyczne konto Uruchom jako z publicznym certyfikatem przedsiębiorstwa (plik CER), użyj tego certyfikatu. Postępuj zgodnie z instrukcjami dotyczącymi [przekazywania certyfikatu interfejsu API zarządzania do witryny Azure portal](../azure-api-management-certs.md).
+* Jeśli zostało utworzone klasyczne konto Uruchom jako z publicznym certyfikatem przedsiębiorstwa (plik CER), użyj tego certyfikatu. Postępuj zgodnie z instrukcjami dotyczącymi [przekazywania certyfikatu interfejsu API zarządzania do Azure Portal](../azure-api-management-certs.md).
 
 ## <a name="delete-a-run-as-or-classic-run-as-account"></a>Usuwanie konta Uruchom jako lub klasycznego konta Uruchom jako
 
@@ -345,9 +345,9 @@ W tej sekcji opisano sposób usuwania i ponownego tworzenia konta Uruchom jako l
 
 ## <a name="cert-renewal"></a>Odnawianie certyfikatu z podpisem własnym
 
-W pewnym momencie przed wygaśnięciem ważności konta Uruchom jako należy odnowić certyfikat. Jeśli uważasz, że bezpieczeństwo konta Uruchom jako zostało naruszone, możesz je usunąć i utworzyć ponownie. W tej sekcji opisano kroki umożliwiające wykonanie tych operacji.
+W pewnym momencie przed wygaśnięciem konta Uruchom jako należy odnowić certyfikat. Jeśli uważasz, że bezpieczeństwo konta Uruchom jako zostało naruszone, możesz je usunąć i utworzyć ponownie. W tej sekcji opisano kroki umożliwiające wykonanie tych operacji.
 
-Certyfikat z podpisem własnym utworzony dla konta Uruchom jako wygasa rok od daty utworzenia. Można go odnowić w dowolnym momencie przed wygaśnięciem jego ważności. Po odnowieniu bieżący ważny certyfikat zostanie zachowany w celu zapewnienia, że wszelkie elementy runbook, które są umieszczane w kolejce lub aktywnie działające i które uwierzytelniają się przy użyciu konta Uruchom jako nie ma negatywny wpływ na. Certyfikat pozostanie ważny aż do daty wygaśnięcia.
+Certyfikat z podpisem własnym utworzony dla konta Uruchom jako wygasa rok od daty utworzenia. Można go odnowić w dowolnym momencie przed wygaśnięciem jego ważności. Po odnowieniu bieżący prawidłowy certyfikat jest zachowywany, aby upewnić się, że wszystkie elementy Runbook, które są w kolejce lub aktywnie uruchomione, i które uwierzytelniają się przy użyciu konta Uruchom jako, nie mają negatywnego wpływu. Certyfikat pozostanie ważny aż do daty wygaśnięcia.
 
 > [!NOTE]
 > Jeśli konto Uruchom jako usługi Automation skonfigurowano do użycia certyfikatu wystawionego przez urząd certyfikacji przedsiębiorstwa, w przypadku użycia tej opcji certyfikat przedsiębiorstwa jest zastępowany certyfikatem z podpisem własnym.
@@ -356,7 +356,7 @@ Aby odnowić certyfikat, wykonaj następujące czynności:
 
 1. W witrynie Azure Portal otwórz konto usługi Automation.
 
-1. Wybierz **konta Uruchom jako** w obszarze **ustawienia konta**.
+1. Wybierz pozycję **konta Uruchom jako** w obszarze **Ustawienia konta**.
 
     ![Okienko właściwości konta usługi Automation](media/manage-runas-account/automation-account-properties-pane.png)
 
@@ -368,16 +368,53 @@ Aby odnowić certyfikat, wykonaj następujące czynności:
 
 1. W trakcie odnawiania certyfikatu postęp można śledzić po wybraniu z menu opcji **Powiadomienia**.
 
-## <a name="limiting-run-as-account-permissions"></a>Ograniczenie uprawnień konta — Uruchom jako
+## <a name="auto-cert-renewal"></a>Konfigurowanie automatycznego odnawiania certyfikatów przy użyciu elementu Runbook usługi Automation
 
-Aby kontrolować, przeznaczone dla usługi Automation w odniesieniu do zasobów na platformie Azure, możesz uruchomić [AutomationRunAsAccountRoleAssignments.ps1 aktualizacji](https://aka.ms/AA5hug8) skryptu w galerii programu PowerShell, aby zmienić swoje istniejące konto Uruchom jako nazwę główną usługi do Tworzenie i używanie niestandardową definicję roli. Ta rola będzie miał uprawnienia do wszystkich zasobów, z wyjątkiem [usługi Key Vault](https://docs.microsoft.com/azure/key-vault/). 
+Aby automatycznie odnowić certyfikaty, można użyć elementu Runbook usługi Automation. Poniższy skrypt w serwisie [GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) umożliwia korzystanie z tej funkcji na koncie usługi Automation.
+
+- `GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1` Skrypt tworzy tygodniowy harmonogram odnawiania certyfikatów konta Uruchom jako.
+- Skrypt dodaje element Runbook **Update-AutomationRunAsCredential** do konta usługi Automation.
+  - Kod elementu Runbook można także wyświetlić w witrynie GitHub w skrypcie: [Update-AutomationRunAsCredential. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1).
+  - W razie potrzeby można także użyć kodu programu PowerShell w pliku do ręcznego odnowienia certyfikatów.
+
+Aby natychmiast przetestować proces odnawiania, wykonaj następujące czynności:
+
+1. Edytuj element Runbook **Update-AutomationRunAsCredential** i umieść znak komentarza (`#`) w wierszu 122 przed `Exit(1)` poleceniem, jak pokazano poniżej.
+
+   ```powershell
+   #Exit(1)
+   ```
+
+2. Opublikuj element Runbook.
+3. Uruchom element Runbook.
+4. Zweryfikuj pomyślne odnowienie przy użyciu następującego kodu:
+
+   ```powershell
+   (Get-AzAutomationCertificate -AutomationAccountName TestAA
+                                -Name AzureRunAsCertificate
+                                -ResourceGroupName TestAutomation).ExpiryTime.DateTime
+   ```
+
+   ```Output
+   Thursday, November 7, 2019 7:00:00 PM
+   ```
+
+5. Po zakończeniu testu Edytuj element Runbook, a następnie Usuń znak komentarza dodany w **kroku 1**.
+6. **Opublikuj** element Runbook.
+
+> [!NOTE]
+> Aby wykonać skrypt, musisz być **administratorem globalnym** lub **administratorem firmy** w Azure Active Directory.
+
+## <a name="limiting-run-as-account-permissions"></a>Ograniczanie uprawnień konta Uruchom jako
+
+Aby kontrolować cel automatyzacji względem zasobów na platformie Azure, można uruchomić skrypt [Update-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug8) w galerii programu PowerShell, aby zmienić nazwę główną usługi konta Uruchom jako, aby utworzyć rolę niestandardową i korzystać z niej. definicji. Ta rola będzie miała uprawnienia do wszystkich zasobów, z wyjątkiem [Key Vault](https://docs.microsoft.com/azure/key-vault/).
 
 > [!IMPORTANT]
-> Po uruchomieniu `Update-AutomationRunAsAccountRoleAssignments.ps1` skryptu, elementy runbook, które dostęp do magazynu kluczy przy użyciu konta Uruchom jako nie będą już działać. Należy przejrzeć elementy runbook na Twoim koncie dla wywołań do magazynu kluczy Azure.
+> Po uruchomieniu `Update-AutomationRunAsAccountRoleAssignments.ps1` skryptu elementy Runbook, które uzyskują dostęp do magazynu kluczy za pomocą kont Uruchom jako, nie będą już działać. Elementy Runbook na koncie należy przeglądać na potrzeby wywołań usługi Azure — Magazyn kluczy.
 >
-> Aby umożliwić dostęp do magazynu kluczy z poziomu elementów runbook usługi Azure Automation, konieczne będzie [dodać konto Uruchom jako do tego magazynu kluczy uprawnień](#add-permissions-to-key-vault).
+> Aby umożliwić dostęp do magazynu kluczy z Azure Automation elementów Runbook, należy [dodać konto Uruchom jako do uprawnień magazynu](#add-permissions-to-key-vault)kluczy.
 
-Jeśli musisz ograniczyć nazwy głównej usługi RunAs możliwościach dalsze, możesz dodać innych typów zasobów, aby `NotActions` definicji ról niestandardowych. Poniższy przykład ogranicza dostęp do `Microsoft.Compute`. Jeśli ten element, aby dodać **NotActions** definicji roli tej roli nie będzie dostępu do wszystkich zasobów obliczeniowych. Aby dowiedzieć się więcej na temat definicji ról, zobacz [poznać definicje ról na potrzeby zasobów platformy Azure](../role-based-access-control/role-definitions.md).
+Jeśli konieczne jest ograniczenie działania `NotActions` jednostki usługi runas, można dodać inne typy zasobów do definicji roli niestandardowej. Poniższy przykład ogranicza dostęp do `Microsoft.Compute`programu. W przypadku dodania tego elementu do  nienaruszonych definicji roli ta rola nie będzie w stanie uzyskać dostępu do żadnego zasobu obliczeniowego. Aby dowiedzieć się więcej na temat definicji ról, zobacz [Omówienie definicji ról dla zasobów platformy Azure](../role-based-access-control/role-definitions.md).
 
 ```powershell
 $roleDefinition = Get-AzureRmRoleDefinition -Name 'Automation RunAs Contributor'
@@ -385,20 +422,20 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzureRMRoleDefinition
 ```
 
-Aby ustalić, czy jednostki usługi używany przez Twoje konto Uruchom jako w **Współautor** lub niestandardową definicję roli przejdź do konta usługi Automation, a w obszarze **ustawienia konta**, wybierz opcję **Uruchom jako konta** > **Azure konto Uruchom jako**. W obszarze **roli** można znaleźć definicji roli, który jest używany. 
+Aby określić, czy nazwa główna usługi używana przez konto Uruchom jako znajduje się w **współautor** , czy niestandardowa definicja roli przejdź do konta usługi Automation, a następnie w obszarze **Ustawienia konta**wybierz pozycję konta **Uruchom jako** > **platformy Azure.** . W obszarze **rola** znajdziesz definicję roli, która jest używana.
 
-[![](media/manage-runas-account/verify-role.png "Sprawdź roli konta Uruchom jako")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+[![](media/manage-runas-account/verify-role.png "Weryfikowanie roli konta Uruchom jako")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 
-Aby określić definicję roli używane przez konta Uruchom jako usługi Automation dla wielu kont usługi Automation lub subskrypcji, możesz użyć [AutomationRunAsAccountRoleAssignments.ps1 wyboru](https://aka.ms/AA5hug5) skryptu w galerii programu PowerShell.
+Aby określić definicję roli używaną przez konta Uruchom jako usługi Automation dla wielu subskrypcji lub kont usługi Automation, można użyć skryptu [check-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug5) w Galeria programu PowerShell.
 
-### <a name="add-permissions-to-key-vault"></a>Dodaj uprawnienia do usługi Key Vault
+### <a name="add-permissions-to-key-vault"></a>Dodawanie uprawnień do Key Vault
 
-Jeśli chcesz zezwolić usłudze Azure Automation do zarządzania usługi Key Vault i używa niestandardową definicję roli, musisz wykonać dodatkowe kroki, aby umożliwić takie zachowanie nazwy głównej usługi konta Uruchom jako:
+Jeśli chcesz zezwolić Azure Automation na zarządzanie Key Vault, a nazwa główna usługi konta Uruchom jako używa niestandardowej definicji roli, musisz podjąć dodatkowe kroki, aby zezwolić na to zachowanie:
 
-* Udziel uprawnień do usługi Key Vault
-* Ustawienie zasad dostępu
+* Udziel uprawnień do Key Vault
+* Ustawianie zasad dostępu
 
-Możesz użyć [AutomationRunAsAccountRoleAssignmentToKeyVault.ps1 Rozszerz](https://aka.ms/AA5hugb) skryptu w galerii programu PowerShell, aby udzielić uprawnień konta Uruchom jako do magazynu kluczy, lub odwiedź witrynę [udzielić aplikacji dostępu do magazynu kluczy ](../key-vault/key-vault-group-permissions-for-apps.md) więcej informacji na temat ustawień uprawnień do magazynu kluczy.
+Aby uzyskać więcej informacji na temat ustawień, można użyć skryptu [extend-AutomationRunAsAccountRoleAssignmentToKeyVault. ps1](https://aka.ms/AA5hugb) w Galeria programu PowerShell, aby nadać mu uprawnienia konta Uruchom jako lub odwiedzić [Magazyn kluczy](../key-vault/key-vault-group-permissions-for-apps.md) . uprawnienia dotyczące magazynu kluczy.
 
 ## <a name="misconfiguration"></a>Błąd konfiguracji
 
@@ -423,5 +460,5 @@ Te problemy związane z kontem Uruchom jako można szybko rozwiązać, usuwając
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać więcej informacji na temat nazw głównych usług, zobacz [obiekty aplikacji i jednostki usługi](../active-directory/develop/app-objects-and-service-principals.md).
-* Aby uzyskać więcej informacji na temat certyfikatów i usług platformy Azure, zobacz [Omówienie certyfikatów usług Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+* Aby uzyskać więcej informacji na temat jednostek usługi, zobacz [obiekty aplikacji i obiekty główne usługi](../active-directory/develop/app-objects-and-service-principals.md).
+* Aby uzyskać więcej informacji na temat certyfikatów i usług Azure, zobacz [Omówienie certyfikatów dla platformy Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

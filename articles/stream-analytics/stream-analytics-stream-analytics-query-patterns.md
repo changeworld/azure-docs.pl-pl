@@ -1,6 +1,6 @@
 ---
-title: Typowe wzorce zapytań w usłudze Azure Stream Analytics
-description: W tym artykule opisano kilka typowych wzorców zapytań i projekty, które są przydatne w zadaniach usługi Azure Stream Analytics.
+title: Typowe wzorce zapytań w Azure Stream Analytics
+description: W tym artykule opisano kilka typowych wzorców zapytań i projektów, które są przydatne w Azure Stream Analytics zadaniach.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -8,30 +8,30 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: 88df7ae0d4e6054d82302ad5f0adabcf656cb0f5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 729385a2ce9feb6e69f9be29c2175b403093be3f
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620804"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413370"
 ---
-# <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Przykłady dla typowych wzorców użycia usługi Stream Analytics zapytania
+# <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Przykłady zapytań dla typowych wzorców użycia Stream Analytics
 
-Zapytania w usłudze Azure Stream Analytics są wyrażone w język zapytań przypominający SQL. Konstrukcji języka są udokumentowane w artykule [dokumentacja języka zapytań usługi Stream Analytics](/stream-analytics-query/stream-analytics-query-language-reference) przewodnik. 
+Zapytania w Azure Stream Analytics są wyrażane w języku zapytań przypominającym język SQL. Konstrukcje językowe są udokumentowane w podręczniku [Skorowidz języka zapytań Stream Analytics](/stream-analytics-query/stream-analytics-query-language-reference) . 
 
-Projekt kwerendy można wyrazić proste logiki przekazywanego do przenoszenia danych zdarzenia ze strumienia wejściowego z jednego do danych wyjściowych magazynu danych lub jego wykorzystania sformatowanego wzorzec dopasowania i danych czasowych analizy do obliczania wartości zagregowanych za pośrednictwem różnych okien czasu, podobnie jak w [kompilacji IoT rozwiązanie przy użyciu usługi Stream Analytics](stream-analytics-build-an-iot-solution-using-stream-analytics.md) przewodnik. Możesz dołączyć dane z wielu danych wejściowych, aby połączyć przesyłanie strumieniowe zdarzeń i możecie wyszukiwań względem statyczne dane referencyjne wzbogacić wartości zdarzenia. Możesz również zapisać dane do wielu danych wyjściowych.
+Projekt zapytania może zawierać prostą logikę przekazującą, która umożliwia przenoszenie danych zdarzeń z jednego strumienia wejściowego do wyjściowego magazynu danych lub umożliwia rozbudowane dopasowanie wzorców i analizy czasowej w celu obliczenia agregacji w różnych oknach czasu, jak w przypadku [kompilowania rozwiązania IoT przez Korzystanie z](stream-analytics-build-an-iot-solution-using-stream-analytics.md) przewodnika Stream Analytics. Można przyłączyć dane z wielu wejść do łączenia zdarzeń przesyłania strumieniowego, a także odszukać statyczne dane referencyjne w celu wzbogacania wartości zdarzeń. Możesz również zapisywać dane w wielu danych wyjściowych.
 
-W tym artykule opisano rozwiązania kilka typowych wzorców zapytań, w oparciu o scenariuszy w rzeczywistych warunkach.
+W tym artykule przedstawiono rozwiązania kilku typowych wzorców zapytań w oparciu o rzeczywiste scenariusze.
 
 ## <a name="work-with-complex-data-types-in-json-and-avro"></a>Praca ze złożonymi typami danych w formatach JSON i AVRO
 
-Usługa Azure Stream Analytics obsługuje przetwarzanie zdarzeń w pliku CSV, JSON i Avro formaty danych.
+Azure Stream Analytics obsługuje przetwarzanie zdarzeń w formatach danych CSV, JSON i Avro.
 
-JSON i Avro mogą zawierać złożonych typów, takich jak zagnieżdżone obiekty (rekordy) lub tablicami. Aby uzyskać więcej informacji na temat pracy z tych złożonych typów danych, dotyczą [danych podczas analizowania kodu JSON i AVRO](stream-analytics-parsing-json.md) artykułu.
+Zarówno kod JSON, jak i Avro mogą zawierać złożone typy, takie jak obiekty zagnieżdżone (rekordy) lub tablice. Aby uzyskać więcej informacji na temat pracy z tymi złożonymi typami danych, zapoznaj się z artykułem [Analizowanie danych JSON i Avro](stream-analytics-parsing-json.md) .
 
 ## <a name="query-example-convert-data-types"></a>Przykład zapytania: Konwertowanie typów danych
 
-**Opis**: Zdefiniuj typy właściwości dotyczących strumienia wejściowego. Na przykład wagi samochodu pochodzi na strumień wejściowy jako ciągi znaków i musi zostać skonwertowany do **INT** przeprowadzić **suma**.
+**Opis**: Zdefiniuj typy właściwości strumienia wejściowego. Na przykład waga samochodu odbywa się w strumieniu wejściowym jako ciągi i musi być konwertowana na **typ int** , aby wykonać **sumę**.
 
 **Dane wejściowe**:
 
@@ -59,12 +59,12 @@ JSON i Avro mogą zawierać złożonych typów, takich jak zagnieżdżone obiekt
         TumblingWindow(second, 10)
 ```
 
-**Explanation**: Użyj **RZUTOWANIA** instrukcji w **wagi** pola, aby określić typ jej danych. Zobacz listę obsługiwanych typów danych w [typy danych (Azure Stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics).
+**Wyjaśnienie**: Użyj instrukcji **Cast** w polu **waga** , aby określić jej typ danych. Zapoznaj się z listą obsługiwanych typów danych w [typach danych (Azure Stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics).
 
-## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Przykład zapytania: Użyj LIKE/NOT takich jak na dopasowanie wzorca
+## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Przykład zapytania: Użyj LIKE/NOT LIKE do dopasowania wzorca
 
-**Opis**: Sprawdź, czy wartość pola w zdarzeniu ze wzorcem niektórych.
-Na przykład Sprawdź, czy wynik zwraca talerzy licencji A zaczynać się i kończyć ciągiem 9.
+**Opis**: Sprawdź, czy wartość pola w zdarzeniu jest zgodna z określonym wzorcem.
+Na przykład sprawdź, czy wynik zwraca tablice licencji, które zaczynają się od i kończą się od 9.
 
 **Dane wejściowe**:
 
@@ -72,14 +72,14 @@ Na przykład Sprawdź, czy wynik zwraca talerzy licencji A zaczynać się i koń
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
+| Umożliwił |ABC-369 |2015-01-01T00:00:03.0000000Z |
 
 **Dane wyjściowe**:
 
 | Tworzenie | LicensePlate | Time |
 | --- | --- | --- |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
+| Umożliwił |ABC-369 |2015-01-01T00:00:03.0000000Z |
 
 **Rozwiązanie**:
 
@@ -92,11 +92,11 @@ Na przykład Sprawdź, czy wynik zwraca talerzy licencji A zaczynać się i koń
         LicensePlate LIKE 'A%9'
 ```
 
-**Explanation**: Użyj **takich jak** instrukcję, aby sprawdzić **LicensePlate** polu wartość. Powinna rozpoczynać się literą, A, a następnie mają dowolny ciąg zawierający zero lub więcej znaków i następnie kończyć się znakiem liczby 9. 
+**Wyjaśnienie**: Użyj instrukcji **like** , aby sprawdzić wartość pola **LicensePlate** . Powinna zaczynać się od litery A, a następnie zawierać dowolny ciąg z zero lub więcej znaków, a następnie kończyć się cyfrą 9. 
 
-## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Przykład zapytania: Określ logiki dla różnych przypadków/wartości (instrukcji CASE)
+## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Przykład zapytania: Określanie logiki dla różnych przypadków/wartości (instrukcje CASE)
 
-**Opis**: Podaj inną obliczeń dla pola, na podstawie określonego kryterium. Na przykład można podać, że przekazany ciąg opisu ile samochodów tego samego upewnij z szczególny przypadek 1.
+**Opis**: Podaj inne obliczenie dla pola w oparciu o określone kryterium. Na przykład Podaj opis ciągu, ile samochodów tego samego zakończono, z specjalnym przypadkiem 1.
 
 **Dane wejściowe**:
 
@@ -121,7 +121,7 @@ Na przykład Sprawdź, czy wynik zwraca talerzy licencji A zaczynać się i koń
             WHEN COUNT(*) = 1 THEN CONCAT('1 ', Make)
             ELSE CONCAT(CAST(COUNT(*) AS NVARCHAR(MAX)), ' ', Make, 's')
         END AS CarsPassed,
-        System.TimeStamp() AS Time
+        System.TimeStamp() AS AsaTime
     FROM
         Input TIMESTAMP BY Time
     GROUP BY
@@ -129,11 +129,11 @@ Na przykład Sprawdź, czy wynik zwraca talerzy licencji A zaczynać się i koń
         TumblingWindow(second, 10)
 ```
 
-**Explanation**: **Przypadek** wyrażenie porównuje wyrażenie zbiór proste wyrażenia do obliczenia wyniku. W tym przykładzie pojazdu sprawia, że wraz z liczbą 1 zwrócił opis ciągu innego niż pojazdu sprawia, że wraz z liczbą inna niż 1.
+**Wyjaśnienie**: Wyrażenie **Case** porównuje wyrażenie z zestawem prostych wyrażeń, aby określić wynik. W tym przykładzie nastąpi przekroczenie przez pojazd liczby 1 zwróconej przez inną liczbę znaków niż 1.
 
-## <a name="query-example-send-data-to-multiple-outputs"></a>Przykład zapytania: Wysyłanie danych do wielu danych wyjściowych
+## <a name="query-example-send-data-to-multiple-outputs"></a>Przykład zapytania: Wysyłanie danych do wielu wyjść
 
-**Opis**: Wysłać dane do wielu celów dane wyjściowe z jednego zadania. Na przykład analizować dane oparte na wartościach progowych alertu i archiwizowanie wszystkich zdarzeń do usługi blob storage.
+**Opis**: Wysyłanie danych do wielu elementów docelowych danych wyjściowych z jednego zadania. Na przykład Analizuj dane dla alertu opartego na progach i Archiwizuj wszystkie zdarzenia w usłudze BLOB Storage.
 
 **Dane wejściowe**:
 
@@ -173,7 +173,7 @@ Na przykład Sprawdź, czy wynik zwraca talerzy licencji A zaczynać się i koń
 
     SELECT
         Make,
-        System.TimeStamp() AS Time,
+        System.TimeStamp() AS AsaTime,
         COUNT(*) AS [Count]
     INTO
         AlertOutput
@@ -186,9 +186,9 @@ Na przykład Sprawdź, czy wynik zwraca talerzy licencji A zaczynać się i koń
         [Count] >= 3
 ```
 
-**Explanation**: **INTO** klauzuli informuje usługi Stream Analytics której dane wyjściowe do zapisywania danych do tej instrukcji. Pierwszego zapytania jest przekazywanie danych otrzymanych do pliku wyjściowego o nazwie **ArchiveOutput**. Drugie zapytanie jest kilka prostych agregacji i filtrowanie i przesyła wyniki do podrzędnego systemu zgłaszania alertów **AlertOutput**.
+**Wyjaśnienie**: Klauzula **into** informuje Stream Analytics, do których danych wyjściowych należy zapisać dane z tej instrukcji. Pierwsze zapytanie jest przekazywane do danych wyjściowych o nazwie **ArchiveOutput**. Drugie zapytanie wykonuje prostą agregację i filtrowanie, a następnie wysyła wyniki do systemu alertów podrzędnych, **AlertOutput**.
 
-Należy pamiętać, że także ponownie użyć wyników wspólnych wyrażeń tabel (wyrażeń CTE) (takich jak **WITH** instrukcji) w wielu instrukcji w danych wyjściowych. Ta opcja ma jednocześnie ma dodatkową zaletę otwierania mniejszej liczby czytelników do źródła danych wejściowych.
+Należy zauważyć, że można również ponownie wykorzystać wyniki wspólnych wyrażeń tabel (cyklicznych) (takich **jak instrukcje)** w wielu instrukcjach wyjściowych. Ta opcja umożliwia dodanie mniejszej liczby czytelników do źródła danych wejściowych.
 
 Na przykład: 
 
@@ -205,9 +205,9 @@ Na przykład:
     SELECT * INTO ToyotaOutput FROM AllRedCars WHERE Make = 'Toyota'
 ```
 
-## <a name="query-example-count-unique-values"></a>Przykład zapytania: Liczba unikatowych wartości
+## <a name="query-example-count-unique-values"></a>Przykład zapytania: Zlicz unikatowe wartości
 
-**Opis**: Liczbę unikatowych wartości pól, które pojawiają się w strumieniu w przedziale czasu. Na przykład jak wiele unikatowych sprawia, że samochodów przekazywane stoisku płatny w oknie 2-sekundowych?
+**Opis**: Zlicz liczbę unikatowych wartości pól, które pojawiają się w strumieniu w przedziale czasu. Na przykład ile unikatowych ilości samochodów jest przenoszona przez połączenie płatne w 2-sekundowym oknie?
 
 **Dane wejściowe**:
 
@@ -226,24 +226,24 @@ Na przykład:
 | 2 |2015-01-01T00:00:02.000Z |
 | 1 |2015-01-01T00:00:04.000Z |
 
-**Rozwiązanie:**
+**Narzędzie**
 
 ```SQL
 SELECT
      COUNT(DISTINCT Make) AS CountMake,
-     System.TIMESTAMP() AS TIME
+     System.TIMESTAMP() AS AsaTIME
 FROM Input TIMESTAMP BY TIME
 GROUP BY 
      TumblingWindow(second, 2)
 ```
 
 
-**Objaśnienie:** 
-**COUNT (DISTINCT upewnij)** zwraca liczbę unikatowych wartości w **wprowadzić** kolumny w przedziale czasu.
+**Wyjaśnienie:** 
+**liczba (różne marki)** zwraca liczbę unikatowych wartości w kolumnie **Utwórz** w przedziale czasu.
 
-## <a name="query-example-determine-if-a-value-has-changed"></a>Przykład zapytania: Określić, jeśli wartość została zmieniona
+## <a name="query-example-determine-if-a-value-has-changed"></a>Przykład zapytania: Ustalanie, czy zmieniono wartość
 
-**Opis**: Spójrz na poprzedniej wartości, aby ustalić, czy jest inny niż bieżąca wartość. Na przykład jest poprzedniego samochodu na drodze płatny wykonującego ten sam jako bieżący samochodu?
+**Opis**: Sprawdź poprzednią wartość, aby określić, czy jest różna od bieżącej wartości. Czy na przykład jest to poprzedni samochód na trasie, tak samo jak w przypadku bieżącego samochodu?
 
 **Dane wejściowe**:
 
@@ -270,11 +270,11 @@ GROUP BY
         LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
 ```
 
-**Explanation**: Użyj **LAG** wgląd do strumienia wejściowego jednego zdarzenia Wstecz i uzyskanie **wprowadzić** wartość. Następnie porównaj ją do **wprowadzić** wartość bieżącego zdarzenia i dane wyjściowe zdarzenia są różne.
+**Wyjaśnienie**: Użyj **opóźnienia** , aby przejść do strumienia wejściowego po jednym zdarzeniu i pobrać wartość **Utwórz** . Następnie porównaj ją z wartością **Utwórz** w bieżącym zdarzeniu i Wyprowadź zdarzenie, jeśli są różne.
 
 ## <a name="query-example-find-the-first-event-in-a-window"></a>Przykład zapytania: Znajdź pierwsze zdarzenie w oknie
 
-**Opis**: Znajdź pierwszy samochodu co 10-minutowych interwałach.
+**Opis**: Znajdź pierwszy samochód w co 10 minut.
 
 **Dane wejściowe**:
 
@@ -308,7 +308,7 @@ GROUP BY
         IsFirst(minute, 10) = 1
 ```
 
-Teraz możemy zmienić problemu i Znajdź pierwszego samochodu określonego upewnij w co 10-minutowych interwałach.
+Teraz Zmieńmy ten problem i znajdziesz pierwszy samochód z określonej marki w każdym 10-minutowym przedziale czasu.
 
 | LicensePlate | Tworzenie | Time |
 | --- | --- | --- |
@@ -333,7 +333,7 @@ Teraz możemy zmienić problemu i Znajdź pierwszego samochodu określonego upew
 
 ## <a name="query-example-find-the-last-event-in-a-window"></a>Przykład zapytania: Znajdź ostatnie zdarzenie w oknie
 
-**Opis**: Znajdź ostatnie samochodu co 10-minutowych interwałach.
+**Opis**: Znajdź ostatni samochód w co 10 minut.
 
 **Dane wejściowe**:
 
@@ -377,12 +377,11 @@ Teraz możemy zmienić problemu i Znajdź pierwszego samochodu określonego upew
         AND Input.Time = LastInWindow.LastEventTime
 ```
 
-**Explanation**: Istnieją dwa kroki w zapytaniu. Pierwszy z nich umożliwia znalezienie najnowszych sygnatura czasowa w systemie windows 10 minut. Drugi etap łączy wyniki pierwszego zapytania przy użyciu oryginalnego strumienia, aby znaleźć zdarzenia, które odpowiadają ostatniego sygnatury czasowe każdego okna. 
+**Wyjaśnienie**: Zapytanie zawiera dwa etapy. Pierwsza z nich znajduje najnowszą sygnaturę czasową w 10-minutowych oknach. Drugi krok sprzęga wyniki pierwszego zapytania z oryginalnym strumieniem, aby znaleźć zdarzenia zgodne z ostatnimi sygnaturami czasowymi w poszczególnych oknach. 
 
-## <a name="query-example-detect-the-absence-of-events"></a>Przykład zapytania: Wykrywanie braku zdarzeń
+## <a name="query-example-locate-correlated-events-in-a-stream"></a>Przykład zapytania: Lokalizowanie skorelowanych zdarzeń w strumieniu
 
-**Opis**: Sprawdź, czy strumień nie ma żadnej wartości, która spełnia określone kryterium.
-Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadzono drogowej płatny w ciągu ostatnich 90 sekund?
+**Opis**: Znajdź skorelowane zdarzenia w strumieniu. Na przykład, jeśli w ciągu ostatnich 90 sekund nastąpiło połączenie z 2 kolejnymi samochodami z tej samej marki?
 
 **Dane wejściowe**:
 
@@ -414,11 +413,11 @@ Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadz
         LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
 ```
 
-**Explanation**: Użyj **LAG** wgląd do strumienia wejściowego jednego zdarzenia Wstecz i uzyskanie **wprowadzić** wartość. Aby porównać **upewnij** wartość w bieżącym zdarzeniu, a następnie dane wyjściowe zdarzenia, jeśli są takie same. Można również użyć **LAG** można pobrać danych dotyczących samochodów poprzedniego.
+**Wyjaśnienie**: Użyj **opóźnienia** , aby przejść do strumienia wejściowego po jednym zdarzeniu i pobrać wartość **Utwórz** . Porównaj ją z wartością **Make** w bieżącym zdarzeniu, a następnie Wyprowadź zdarzenie, jeśli są takie same. Możesz również użyć **zwłoki** , aby pobrać dane dotyczące poprzedniego samochodu.
 
-## <a name="query-example-detect-the-duration-between-events"></a>Przykład zapytania: Wykrywanie czas trwania między zdarzeniami
+## <a name="query-example-detect-the-duration-between-events"></a>Przykład zapytania: Wykrywanie czasu trwania między zdarzeniami
 
-**Opis**: Znajdź czas trwania podanego zdarzenia. Na przykład biorąc pod uwagę kliknięć w sieci web, określ czas spędzony na danej funkcji.
+**Opis**: Znajdź czas trwania danego zdarzenia. Na przykład, uwzględniając strumienia kliknięć sieci Web, określ czas spędzony na funkcji.
 
 **Dane wejściowe**:  
 
@@ -448,11 +447,11 @@ Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadz
         Event = 'end'
 ```
 
-**Explanation**: Użyj **ostatniego** funkcję, aby pobrać ostatniego **czasu** wartości w przypadku typu zdarzenia **Start**. **Ostatniego** używa funkcji **PARTITION BY [użytkownik]** do wskazania, że wynik jest obliczana na unikatowych użytkowników. Zapytanie ma 1-godzinnego próg Maksymalny odstęp czasu między **Start** i **zatrzymać** zdarzeń, ale można skonfigurować zgodnie z potrzebami **(LIMIT DURATION(hour, 1)** .
+**Wyjaśnienie**: Użyj **ostatniej** funkcji, aby pobrać ostatnią wartość **czasu** , gdy typ zdarzenia został **uruchomiony**. **Ostatnia** funkcja używa **partycji przez [użytkownika]** , aby wskazać, że wynik jest obliczany dla unikatowego użytkownika. W zapytaniu obowiązuje maksymalny próg czasu między zdarzeniami **uruchamiania** i zatrzymywania, ale  można go skonfigurować zgodnie z wymaganiami **(czas trwania (godzina, 1)** .
 
-## <a name="query-example-detect-the-duration-of-a-condition"></a>Przykład zapytania: Wykrywanie warunku czas trwania
-**Opis**: Sprawdzanie, ile warunku wystąpił.
-Na przykład załóżmy, że usterka spowodowała wszystkich samochodów niepoprawne ciężar (ponad 20 000 funtach) i musi zostać obliczony czas trwania tego błędu.
+## <a name="query-example-detect-the-duration-of-a-condition"></a>Przykład zapytania: Wykrywanie czasu trwania warunku
+**Opis**: Dowiedz się, jak długo wystąpił warunek.
+Załóżmy na przykład, że usterka spowodowała, że wszystkie samochody mają niepoprawną wagę (powyżej 20 000 funtów), a czas trwania tego błędu musi być obliczany.
 
 **Dane wejściowe**:
 
@@ -494,11 +493,11 @@ Na przykład załóżmy, że usterka spowodowała wszystkich samochodów niepopr
         AND previousWeight > 20000
 ```
 
-**Explanation**: Użyj **LAG** Aby wyświetlić strumień wejściowy przez 24 godziny i poszukaj wystąpień gdzie **StartFault** i **StopFault** są objęte wagi < 20000.
+**Wyjaśnienie**: Użyj **opóźnienia** , aby wyświetlić strumień wejściowy przez 24 godziny i wyszukać wystąpienia, w których **StartFault** i **StopFault** są objęte wagami < 20000.
 
-## <a name="query-example-fill-missing-values"></a>Przykład zapytania: Wypełnienie brakujących wartości
+## <a name="query-example-fill-missing-values"></a>Przykład zapytania: Wypełnij brakujące wartości
 
-**Opis**: Dla strumienia zdarzeń, które nie mają wartości należy utworzyć strumień zdarzeń z regularnych odstępach czasu. Na przykład generują zdarzenie co 5 sekund, któremu podlega najbardziej niedawno widziany punktu danych.
+**Opis**: W przypadku strumienia zdarzeń, które mają brakujące wartości, program tworzy strumień zdarzeń ze regularnymi interwałami. Na przykład Wygeneruj zdarzenie co 5 sekund, które raportuje ostatnio widziany punkt danych.
 
 **Dane wejściowe**:
 
@@ -511,7 +510,7 @@ Na przykład załóżmy, że usterka spowodowała wszystkich samochodów niepopr
 | "2014-01-01T06:01:30" |5 |
 | "2014-01-01T06:01:35" |6 |
 
-**Dane wyjściowe (10 pierwszych wierszy)** :
+**Dane wyjściowe (pierwsze 10 wierszy)** :
 
 | windowend | lastevent.t | lastevent.value |
 | --- | --- | --- |
@@ -537,41 +536,41 @@ Na przykład załóżmy, że usterka spowodowała wszystkich samochodów niepopr
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 ```
 
-**Explanation**: To zapytanie generuje zdarzenia co 5 sekund, a także generuje ostatniego zdarzenia, która została otrzymana wcześniej. [Okna Hopping](/stream-analytics-query/hopping-window-azure-stream-analytics) czas trwania określa, jak daleko wstecz wygląda zapytanie można znaleźć najnowsze zdarzenie (300 sekund w tym przykładzie).
+**Wyjaśnienie**: To zapytanie generuje zdarzenia co 5 sekund i wyświetla ostatnie zdarzenie, które zostało odebrane wcześniej. Czas trwania [okna przeskoku](/stream-analytics-query/hopping-window-azure-stream-analytics) określa, jak daleko z tyłu zapytanie szuka najnowszego zdarzenia (300 sekund w tym przykładzie).
 
 
-## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Przykład zapytania: Korelowanie dwa typy zdarzeń w ramach tego samego strumienia
+## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Przykład zapytania: Skorelowanie dwóch typów zdarzeń w ramach tego samego strumienia
 
-**Opis**: Czasami alertów muszą być generowane na podstawie wielu typów zdarzeń, które wystąpiły w zakresie czasu. Na przykład w scenariuszu IoT dla głównego piekarników alert musi zostać wygenerowany podczas temperatura wentylator jest mniejsza niż 40 i maksymalna moc w ciągu ostatnich 3 minut jest mniejsza niż 10.
+**Opis**: Czasami alerty muszą być generowane na podstawie wielu typów zdarzeń, które wystąpiły w określonym przedziale czasu. Na przykład w scenariuszu IoT dla piekarników domowych należy wygenerować alert, gdy temperatura wentylatora jest mniejsza niż 40, a maksymalna moc w ciągu ostatnich 3 minut jest mniejsza niż 10.
 
 **Dane wejściowe**:
 
 | time | deviceId | sensorName | value |
 | --- | --- | --- | --- |
-| "2018-01-01T16:01:00" | "Oven1" | "temp" |120 |
-| "2018-01-01T16:01:00" | "Oven1" | "power" |15 |
-| "2018-01-01T16:02:00" | "Oven1" | "temp" |100 |
-| "2018-01-01T16:02:00" | "Oven1" | "power" |15 |
-| "2018-01-01T16:03:00" | "Oven1" | "temp" |70 |
-| "2018-01-01T16:03:00" | "Oven1" | "power" |15 |
-| "2018-01-01T16:04:00" | "Oven1" | "temp" |50 |
-| "2018-01-01T16:04:00" | "Oven1" | "power" |15 |
-| "2018-01-01T16:05:00" | "Oven1" | "temp" |30 |
-| "2018-01-01T16:05:00" | "Oven1" | "power" |8 |
-| "2018-01-01T16:06:00" | "Oven1" | "temp" |20 |
-| "2018-01-01T16:06:00" | "Oven1" | "power" |8 |
-| "2018-01-01T16:07:00" | "Oven1" | "temp" |20 |
-| "2018-01-01T16:07:00" | "Oven1" | "power" |8 |
-| "2018-01-01T16:08:00" | "Oven1" | "temp" |20 |
-| "2018-01-01T16:08:00" | "Oven1" | "power" |8 |
+| "2018-01-01T16:01:00" | "Oven1" | temp |120 |
+| "2018-01-01T16:01:00" | "Oven1" | awansowan |15 |
+| "2018-01-01T16:02:00" | "Oven1" | temp |100 |
+| "2018-01-01T16:02:00" | "Oven1" | awansowan |15 |
+| "2018-01-01T16:03:00" | "Oven1" | temp |70 |
+| "2018-01-01T16:03:00" | "Oven1" | awansowan |15 |
+| "2018-01-01T16:04:00" | "Oven1" | temp |50 |
+| "2018-01-01T16:04:00" | "Oven1" | awansowan |15 |
+| "2018-01-01T16:05:00" | "Oven1" | temp |30 |
+| "2018-01-01T16:05:00" | "Oven1" | awansowan |8 |
+| "2018-01-01T16:06:00" | "Oven1" | temp |20 |
+| "2018-01-01T16:06:00" | "Oven1" | awansowan |8 |
+| "2018-01-01T16:07:00" | "Oven1" | temp |20 |
+| "2018-01-01T16:07:00" | "Oven1" | awansowan |8 |
+| "2018-01-01T16:08:00" | "Oven1" | temp |20 |
+| "2018-01-01T16:08:00" | "Oven1" | awansowan |8 |
 
 **Dane wyjściowe**:
 
-| eventTime | deviceId | Temp | alertMessage | maxPowerDuringLast3mins |
+| eventTime | deviceId | temp | Określony komunikat alarmu | maxPowerDuringLast3mins |
 | --- | --- | --- | --- | --- | 
-| "2018-01-01T16:05:00" | "Oven1" |30 | "Short circuit ogrzewania elementów" |15 |
-| "2018-01-01T16:06:00" | "Oven1" |20 | "Short circuit ogrzewania elementów" |15 |
-| "2018-01-01T16:07:00" | "Oven1" |20 | "Short circuit ogrzewania elementów" |15 |
+| "2018-01-01T16:05:00" | "Oven1" |30 | "Elementy ogrzewania dla krótkich obwodów" |15 |
+| "2018-01-01T16:06:00" | "Oven1" |20 | "Elementy ogrzewania dla krótkich obwodów" |15 |
+| "2018-01-01T16:07:00" | "Oven1" |20 | "Elementy ogrzewania dla krótkich obwodów" |15 |
 
 **Rozwiązanie**:
 
@@ -611,11 +610,11 @@ WHERE
     AND t2.maxPower > 10
 ```
 
-**Explanation**: Pierwsze zapytanie `max_power_during_last_3_mins`, używa [okna ruchomej](/stream-analytics-query/sliding-window-azure-stream-analytics) można znaleźć maksymalną wartość czujnik zasilania dla każdego urządzenia w ciągu ostatnich 3 minut. Drugie zapytanie jest dołączony do pierwszego zapytania do odnalezienia wartości zasilania w oknie najnowszych istotne dla bieżącego zdarzenia. A następnie, pod warunkiem warunki są spełnione, alert jest generowany dla tego urządzenia.
+**Wyjaśnienie**: Pierwsze zapytanie `max_power_during_last_3_mins`używa [przesuwanego okna](/stream-analytics-query/sliding-window-azure-stream-analytics) , aby znaleźć maksymalną wartość czujnika napięcia dla każdego urządzenia, w ciągu ostatnich 3 minut. Drugie zapytanie jest przyłączone do pierwszego zapytania, aby znaleźć wartość mocy w najnowszym oknie odpowiednim dla bieżącego zdarzenia. A następnie, pod warunkiem, że są spełnione, generowany jest alert dla urządzenia.
 
-## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Przykład zapytania: Przetwarzanie zdarzeń niezależnie od urządzenia zegara pochylanie (substreams)
+## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Przykład zapytania: Przetwarzaj zdarzenia niezależnie od przesunięcia zegara urządzenia (podstrumieńy)
 
-**Opis**: Zdarzenia mogą pojawić się opóźnienia lub poza kolejnością z powodu wynikających z przesunięcia czasowego zegara między producentami zdarzeń, pochyla zegara między partycjami lub opóźnienia sieci. W poniższym przykładzie zegara urządzenia TollID 2 jest pięć sekund za TollID 1 i zegara urządzenia dla TollID 3 to dziesięć sekund za TollID 1. 
+**Opis**: Zdarzenia mogą być opóźnione lub nieaktualne z powodu pochylenia zegara między producentami zdarzeń, nachylenia zegara między partycjami lub opóźnienia sieci. W poniższym przykładzie zegar urządzenia dla TollID 2 ma pięć sekund w tle TollID 1, a zegar urządzenia dla TollID 3 to dziesięć sekund za TollID 1. 
 
 **Dane wejściowe**:
 
@@ -652,11 +651,11 @@ FROM input
 GROUP BY TUMBLINGWINDOW(second, 5), TollId
 ```
 
-**Explanation**: [TIMESTAMP BY OVER](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) klauzuli patrzy na osi czasu każdego urządzenia, osobno przy użyciu substreams. Zdarzenia danych wyjściowych dla każdej TollID są generowane, ponieważ są one obliczane, co oznacza, że zdarzenia w kolejności, w odniesieniu do każdego TollID zamiast jest zmieniana tak, jakby wszystkie urządzenia były na tej samej zegara.
+**Wyjaśnienie**: Klauzula [timestamp by over](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) wyszukuje osobno każdy oś czasu za pomocą podstrumienia. Zdarzenia wyjściowe dla każdego TollID są generowane w miarę ich obliczania, co oznacza, że zdarzenia są wykonywane w kolejności w odniesieniu do każdego TollIDu, a nie w kolejności, w jakiej wszystkie urządzenia były w tym samym zegarze.
 
 ## <a name="query-example-remove-duplicate-events-in-a-window"></a>Przykład zapytania: Usuń zduplikowane zdarzenia w oknie
 
-**Opis**: Podczas wykonywania operacji takich jak obliczanie wartości średnie zdarzeń w danym przedziale czasowym, zduplikowane zdarzenia powinny być filtrowane. W poniższym przykładzie drugie zdarzenie jest duplikatem pierwszego.
+**Opis**: Podczas wykonywania operacji, takich jak Obliczanie średniej wartości dla zdarzeń w danym przedziale czasu, należy filtrować powtarzające się zdarzenia. W poniższym przykładzie drugie zdarzenie jest duplikatem pierwszego.
 
 **Dane wejściowe**:  
 
@@ -699,16 +698,16 @@ FROM Temp
 GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
-**Explanation**: [COUNT (DISTINCT czasu)](/stream-analytics-query/count-azure-stream-analytics) zwraca liczbę unikatowych wartości w kolumnie czas w przedziale czasu. Dane wyjściowe tego kroku można następnie użyć do obliczenia średniej na urządzeniu przez odrzucenie duplikatów.
+**Wyjaśnienie**: [Licznik (DISTINCT Time)](/stream-analytics-query/count-azure-stream-analytics) zwraca liczbę unikatowych wartości w kolumnie Time w przedziale czasu. Następnie możesz użyć danych wyjściowych tego kroku, aby obliczyć średnią dla każdego urządzenia przez odrzucenie duplikatów.
 
-## <a name="geofencing-and-geospatial-queries"></a>Geofencing i dane geograficzne zapytań
-Usługa Azure Stream Analytics zapewnia wbudowanych funkcji geoprzestrzennych, które mogą służyć do implementacji scenariuszy, takich jak zarządzanie flotą, zastąpienie, udostępnianie podłączone samochody i śledzenie zasobów. Dane geograficzne mogą być pozyskiwane w formatach GeoJSON lub WELL-KNOWN strumienia zdarzeń w ramach lub odwołują się do danych. Aby uzyskać więcej informacji, zobacz [Geofencing i dane geograficzne scenariuszy agregacji za pomocą usługi Azure Stream Analytics](geospatial-scenarios.md) artykułu.
+## <a name="geofencing-and-geospatial-queries"></a>Geoogrodzenie i zapytania geograficzne
+Azure Stream Analytics udostępnia wbudowane funkcje geoprzestrzenne, które mogą służyć do implementowania scenariuszy takich jak zarządzanie flotą, udostępnianie samochodu, samochody połączone i śledzenie zasobów. Dane geograficzne można pozyskać w formatach GeoJSON lub WKT w ramach strumienia zdarzeń lub danych referencyjnych. Aby uzyskać więcej informacji, zapoznaj się z scenariuszami geoprzestrzennymi [i agregacjami geograficznymi przy użyciu Azure Stream Analytics](geospatial-scenarios.md) artykułu.
 
-## <a name="language-extensibility-through-javascript-and-c"></a>Rozszerzalność języka przy użyciu języka JavaScript iC#
-Langugae zapytania w usłudze Azure Stream Ananlytics można rozszerzyć za pomocą funkcji niestandardowych napisanych w języku JavaScript lub C# języków. Aby uzyskać więcej informacji, zobacz artykuły foolowing:
-* [Funkcje usługi Azure Stream Analytics JavaScript zdefiniowane przez użytkownika](stream-analytics-javascript-user-defined-functions.md)
-* [Usługa Azure Stream Analytics JavaScript agregacje zdefiniowane przez użytkownika](stream-analytics-javascript-user-defined-aggregates.md)
-* [Programowanie .NET Standard funkcje zdefiniowane przez użytkownika dla zadań usługi Azure Stream Analytics Edge](stream-analytics-edge-csharp-udf-methods.md)
+## <a name="language-extensibility-through-javascript-and-c"></a>Rozszerzalność języka za poorednictwem języka JavaScript iC#
+Usługę Azure Stream Ananlytics Query langugae można rozszerzyć za pomocą funkcji niestandardowych zapisanych w C# języku JavaScript lub językach. Aby uzyskać więcej informacji, zobacz artykuły z foolowing:
+* [Azure Stream Analytics funkcje języka JavaScript zdefiniowane przez użytkownika](stream-analytics-javascript-user-defined-functions.md)
+* [Azure Stream Analytics kodu JavaScript zdefiniowanych przez użytkownika](stream-analytics-javascript-user-defined-aggregates.md)
+* [Opracowywanie .NET Standard funkcji zdefiniowanych przez użytkownika dla zadań Azure Stream Analytics Edge](stream-analytics-edge-csharp-udf-methods.md)
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 

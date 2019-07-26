@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a21f037b9f24749895ec6d3b7aff6626936437d3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
-ms.translationtype: HT
+ms.openlocfilehash: a4947349e64d5f9bf95a9213701dc62a0e018b8f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385308"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501306"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -222,6 +222,92 @@ Podaj szczegóły, które mają być wyświetlane w witrynie Marketplace, w tym 
 W tym polu można wprowadzić do 3 000 znaków tekstu. Aby uzyskać dodatkowe wskazówki, zobacz artykuł [Napisz doskonały opis aplikacji](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
 - **Słowa kluczowe wyszukiwania**: Wprowadź do trzech słów kluczowych wyszukiwania, których klienci mogą używać w celu znalezienia oferty w portalu Marketplace.
 - **Instrukcje dotyczące** rozpoczynania pracy (wymagane): Wyjaśnij, jak skonfigurować i rozpocząć korzystanie z aplikacji dla potencjalnych klientów.  Ten przewodnik Szybki Start może zawierać linki do bardziej szczegółowej dokumentacji online. W tym polu można wprowadzić do 3 000 znaków tekstu. 
+
+#### <a name="description"></a>**Opis**
+
+To pole jest wymagane. Elementy do uwzględnienia w opisie: 
+
+* Jasno opisz swoją wartość oferty w pierwszych kilku zdaniach opisu.  
+* Należy pamiętać, że pierwsze niektóre zdania mogą być wyświetlane w wynikach wyszukiwania.  
+* Nie należy polegać na funkcjach i funkcjach, aby sprzedawać produkt. Zamiast tego należy skoncentrować się na dostarczanej wartości.  
+* Korzystaj z specyficznych dla branży słownictwa lub takich słów, jak to możliwe. 
+
+Podstawowe składniki Twojej pozycji wartości powinny zawierać następujące informacje: 
+
+* Opis produktu. 
+* Typ użytkownika, który korzysta z produktu. 
+* Klienci muszą lub cierpili adresy produktów. 
+
+Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz użyć tagów HTML do sformatowania opisu. 
+
+1. Jeśli chcesz utworzyć akapity, Dodaj `<p>` BEGGING tekstu i Dodaj `</p>` na końcu.
+
+    **Przykład**: 
+
+    `<p>`Jest to mój pierwszy akapit. `</p>` <br>
+    `<p>`Jest to mój drugi akapit. `</p>` <br>
+
+    Powyższy sposób będzie wyglądać następująco:
+
+    <p> Jest to mój pierwszy akapit. </p>
+    <p> Jest to mój drugi akapit. </p>
+
+1. Jeśli chcesz dodać **punktowaną listę elementów**, umieść swój tekst w `<li>` tagach poniżej. Można kopiować i `<li>` wklejać więcej punktowanych elementów (elementów między tagami i `</li>` ) w `<ul>` tagach i `</ul>` . Upewnij się, `<ul></ul>`że dodajesz. 
+
+    **Przykład**:
+
+    ```
+    <ul> 
+        <li>add text here</li> 
+        <li> add text here </li> 
+        <li> add text here </li> 
+    </ul> 
+    ```
+
+    Powyższy sposób będzie wyglądać następująco:
+    <ul> 
+        <li>tutaj Dodaj tekst</li> 
+        <li> tutaj Dodaj tekst </li> 
+        <li> tutaj Dodaj tekst </li> 
+    </ul> 
+
+1. Aby  pogrubić zawartość `<b>` , Dodaj na początku tekstu, który ma być pogrubiony, `</b>` i Dodaj na końcu tekstu, który ma być pogrubiony. 
+
+    **Przykład**: `<b>`BEZPŁATNA WERSJA PRÓBNA`</b>`
+    
+    Powyższe spowodowałoby pogrubienie słów BEZPŁATNEj wersji PRÓBnej w opisie oferty w sklepie. 
+
+    **BEZPŁATNA WERSJA PRÓBNA**
+
+1. Aby dodać **podziały wierszy** między zawartością, Dodaj `<br>` przed zawartością, którą chcesz uruchomić w nowym wierszu. Jeśli chcesz pozostawić miejsce i upewnić się, że zawartość zaczyna się w nowym wierszu, Dodaj `<br><br>` przed zawartością. 
+
+    **Przykład**:
+
+    To jest wiersz tekstu. `<br>`To jest wiersz tekstu, który zostanie uruchomiony w nowym wierszu. `<br><br>`To jest wiersz, w którym rozpocznie się dwa wiersze poniżej. 
+
+    Powyższy sposób będzie wyglądać następująco:
+
+    To jest wiersz tekstu. <br> To jest wiersz tekstu, który zostanie uruchomiony w nowym wierszu. <br><br> To jest wiersz, w którym rozpocznie się dwa wiersze poniżej. 
+
+1. Jeśli chcesz **zwiększyć rozmiar tekstu**, najpierw wybierz, jak duży ma być tekst. Skorzystaj z poniższych przykładów. Po wybraniu rozmiaru tekstu Dodaj odpowiednie `<H*></H*>` Tagi na początku i na końcu tekstu. 
+
+    **Przykład**:
+
+    `<h1>`To jest nagłówek 1`</h1>` <br>
+    `<h2>`To jest nagłówek 2`</h2>` <br>
+    `<h3>`To jest nagłówek 3`</h3>` <br>
+    `<h4>`Jest to nagłówek 4`</h4>` <br>
+    `<h5>`Jest to nagłówek 5`</h5>` <br>
+    `<h6>`To jest nagłówek 6`</h6>` 
+
+    Powyższy sposób będzie wyglądać następująco:
+
+    <h1>To jest nagłówek 1</h1> 
+    <h2>To jest nagłówek 2</h2> 
+    <h3>To jest nagłówek 3</h3> 
+    <h4>Jest to nagłówek 4</h4> 
+    <h5>Jest to nagłówek 5</h5> 
+    <h6>To jest nagłówek 6</h6> 
 
 #### <a name="links"></a>Łącza
 

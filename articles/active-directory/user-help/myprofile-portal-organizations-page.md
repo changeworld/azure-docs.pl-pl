@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie Twojej organizacji z poziomu portalu Mój profil (wersja zapoznawcza) — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Ogólne omówienie o stronie organizacje portalu Mój profil.
+title: Zarządzanie organizacjami z poziomu portalu My profile (wersja zapoznawcza) — Azure Active Directory | Microsoft Docs
+description: Ogólne omówienie strony organizacji portalu My profile.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,49 +12,52 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6a0ff4190a1712b91bf58fafd80a03fc2737e7a4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475522"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383004"
 ---
-# <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Zarządzanie Twojej organizacji z poziomu portalu Mój profil (wersja zapoznawcza)
-Możesz zarządzać Twojej organizacji z **organizacje** strony **Mój profil** portalu.
+# <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Zarządzanie organizacjami z poziomu portalu My profile (wersja zapoznawcza)
 
-Istnieją dwa typy widoczne w organizacji **organizacje** strony:
+Organizacjami możesz zarządzać na stronie **organizacji** portalu **My profile** .
 
-- **Organizacji macierzystej.** Twoja organizacja głównego jest organizacja, która jest właścicielem konta firmowego lub szkolnego. Nie możesz opuścić organizacji macierzystego.
+Na stronie **organizacje** są wyświetlane dwa typy organizacji:
 
-- **Inne organizacje.** Inne organizacje są wszystkie grupy, która już zalogowano się do wcześniej przy użyciu swojego konta firmowego lub szkolnego. W dowolnej chwili możesz opuścić dowolnego z tych organizacji.
+- **Organizacja główna.** Organizacja główna jest organizacją, która jest właścicielem Twojego konta służbowego. Nie możesz opuścić swojej organizacji.
+
+- **Inne organizacje.** Inne organizacje to wszystkie grupy, do których użytkownik zalogował się wcześniej przy użyciu konta służbowego. W każdej chwili możesz opuścić każdą z tych organizacji.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
-## <a name="view-your-organizations"></a>Wyświetlanie Twojej organizacji
-1. Zaloguj się do swojego konta firmowego lub szkolnego, a następnie przejdź do swojej https://myprofile.microsoft.com/ strony.
+## <a name="view-your-organizations"></a>Wyświetlanie organizacji
 
-2. Wybierz **organizacje** z lewego okienka nawigacji lub wybierz **Zarządzanie organizacjami** link z **organizacje** bloku.
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź do https://myprofile.microsoft.com/ strony.
 
-    ![Strona Moje profilu, pokazujący wyróżnione łącza organizacji](media/myprofile-portal/myprofile-portal-organizations.png)
+2. W okienku nawigacji po lewej stronie wybierz pozycję **organizacje** lub wybierz łącze **Zarządzaj organizacjami** w bloku **organizacje** .
 
-3. Przejrzyj informacje dotyczące Twojego **główna organizacji**. 
+    ![Strona Moje profile z wyświetlonymi wyróżnionymi linkami organizacji](media/myprofile-portal/myprofile-portal-organizations.png)
 
-    ![Organizacje strony](media/myprofile-portal/myprofile-portal-organization-page.png)
+3. Przejrzyj informacje dotyczące **organizacji domowej**. 
 
-3. Zapoznaj się z innych organizacji skojarzone, upewniając się, rozpoznajesz wszystkie organizacje połączony z kontem.
+    ![Strona organizacji](media/myprofile-portal/myprofile-portal-organization-page.png)
+
+4. Zapoznaj się z innymi skojarzonymi organizacjami, aby rozpoznać wszystkie organizacje połączone z Twoim kontem.
 
 ## <a name="leave-an-organization"></a>Opuszczanie organizacji
-Możesz pozostawić każdej organizacji, które nie są główną organizacji.
+
+Możesz opuścić każdą organizację, która nie jest Twoją organizacją domową.
 
 >[!Important]
->Jeśli opuścisz organizację przez pomyłkę, nie ma możliwości jej cofnąć. Musisz dodać ponownie tę organizację.
+>Jeśli pozostawisz organizację przez pomyłkę, nie ma możliwości jej cofnięcia. Musisz ponownie dodać organizację.
 
-1. Zaloguj się do konta usługi z **innych organizacji, czy mogę pracować z** obszaru.
+1. Zaloguj się do swojego konta z **innych organizacji** , które pracują z obszarem.
 
-2. Wybierz **opuścić organizację**, a następnie wybierz pozycję **tak** aby upewnić się, aby pozostawić organizacji.
+2. Wybierz pozycję **Opuść organizację**, a następnie wybierz pozycję **tak** , aby potwierdzić, że chcesz opuścić organizację.
 
-    ![Strona organizacje wyróżnione opuszczenie organizacji Link](media/myprofile-portal/myprofile-portal-organizations-leave.png)
+    ![Strona organizacje z wyróżnionym łączem Opuść organizację](media/myprofile-portal/myprofile-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Po obejrzeniu Twojej organizacji, można wybrać wyświetlanie i zarządzanie swoje [informacje zabezpieczające](user-help-security-info-overview.md), połączone [urządzeń](myprofile-portal-devices-page.md), lub widoku jak Twoja organizacja [używa danych](myprofile-portal-privacy-page.md).
+- Po wyświetleniu organizacji możesz wyświetlić [informacje zabezpieczające](user-help-security-info-overview.md), połączone [urządzenia](myprofile-portal-devices-page.md)lub określić sposób korzystania z [danych](myprofile-portal-privacy-page.md)przez organizację.

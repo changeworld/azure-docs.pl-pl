@@ -17,21 +17,18 @@ ms.date: 07/12/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27fa3d7be5238527f86e9dfde3be70ae09259d69
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 2d9d5fdb9091d51c67fd5d778bac189c08647741
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302738"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359754"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Polecenia cmdlet programu PowerShell usługi Azure AD do raportowania
 
-Za pomocą raportów usługi Azure Active Directory (Azure AD) możesz uzyskać informacje potrzebne do określenia sposobu działania środowiska. Dane raportu można pobrać przy użyciu poleceń cmdlet programu PowerShell usługi Azure AD na potrzeby raportowania.
+Dzięki raportom Azure Active Directory (Azure AD) możesz uzyskać szczegółowe informacje o działaniach związanych ze wszystkimi operacjami zapisu w Twoim kierunku (dzienniki inspekcji) i danych uwierzytelniania (dzienniki logowania). Chociaż informacje są dostępne za pomocą programu MS interfejs API programu Graph, teraz można pobrać te same dane przy użyciu poleceń cmdlet programu PowerShell usługi Azure AD na potrzeby raportowania.
 
-Ten artykuł zawiera omówienie polecenia cmdlet programu.
-
-
-
+Ten artykuł zawiera omówienie poleceń cmdlet programu PowerShell, które mają być używane na potrzeby dzienników inspekcji i dzienników logowania.
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
 
@@ -76,7 +73,7 @@ Na poniższej ilustracji przedstawiono przykład tego polecenia.
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Przegląd raportów usługi Azure AD](overview-reports.md).
 - [Raport dotyczący dzienników inspekcji](concept-audit-logs.md). 

@@ -1,58 +1,56 @@
 ---
-title: Rozwiązywanie problemów z bramą aplikacji platformy Azure z usługą App Service — przekierowania do adresu URL usługi App Service
-description: Ten artykuł zawiera informacje na temat sposobu rozwiązania problemu przekierowania stosowania usługi Azure Application Gateway w usłudze Azure App Service
+title: Rozwiązywanie problemów z usługą Azure Application Gateway przy użyciu App Service — przekierowanie do adresu URL App Service
+description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z przekierowaniami, gdy usługa Azure Application Gateway jest używana z usługą Azure App Service
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 07/19/2019
 ms.author: absha
-ms.openlocfilehash: f456cfec82a315a2be877a52e4f3f1850b992736
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7baadfb549b19bb12757c82d723578202b5cf8ad
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715201"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347883"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service"></a>Rozwiązywanie problemów z bramy aplikacji przy użyciu usługi App Service
+# <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Rozwiązywanie problemów z App Service w programie Application Gateway
 
-Dowiedz się, jak zdiagnozować i rozwiązać problemy napotkane przy użyciu bramy aplikacji i usługi App Service jako serwera wewnętrznej bazy danych.
+Dowiedz się, jak diagnozować i rozwiązywać problemy występujące, gdy serwer aplikacji jest używany jako miejsce docelowe zaplecza z Application Gateway
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W tym artykule dowiesz się, jak rozwiązywać problemy z następujących problemów:
+W tym artykule opisano sposób rozwiązywania następujących problemów:
 
 > [!div class="checklist"]
-> * Adres URL usługi App Service, pobieranie udostępnianych w przeglądarce po przekierowania
-> * Domeny pliku ARRAffinity Cookie usługi App Service jest ustawiona na nazwę hosta usługi App Service (example.azurewebsites.net) zamiast oryginalnej hosta
+> * Adres URL App Service wyświetlany w przeglądarce w przypadku przekierowania
+> * Domena plików cookie ARRAffinity App Service ustawiona na App Service hostname (example.azurewebsites.net) zamiast oryginalnego hosta
 
-Gdy skonfigurujesz publiczny połączonego z usługi App Service w puli zaplecza bramy aplikacji, a w przypadku przekierowania skonfigurowane w kodzie aplikacji może zobaczysz, że gdy uzyskujesz dostęp do bramy aplikacji, nastąpi przekierowanie przez przeglądarkę bezpośrednio do aplikacji Adres URL usługi.
+Gdy aplikacja zaplecza wysyła odpowiedź przekierowania, możesz chcieć przekierować klienta na inny adres URL niż określony przez aplikację zaplecza. Można na przykład wykonać tę czynność, gdy usługa App Service jest hostowana za bramą aplikacji i wymaga, aby klient przetworzył przekierowanie do swojej ścieżki względnej. (Na przykład przekierowanie z contoso.azurewebsites.net/path1 do contoso.azurewebsites.net/path2). Gdy usługa App Service wyśle odpowiedź przekierowania, używa tej samej nazwy hosta w nagłówku lokalizacji swojej odpowiedzi jako tej w żądaniu odbieranym od bramy aplikacji. Klient wyśle żądanie bezpośrednio do contoso.azurewebsites.net/path2 zamiast przechodzenia przez bramę Application Gateway (contoso.com/path2). Pomijanie bramy aplikacji nie jest pożądane.
 
-Ten problem może się zdarzyć z następujących głównych przyczyn:
+Ten problem może wystąpić z następujących powodów:
 
-- Masz przekierowania skonfigurowane w usłudze App Service. Przekierowywanie można tak proste, jak dodawanie znaku ukośnika na końcu żądania.
-- Masz uwierzytelniania usługi Azure AD, co powoduje, że przekierowanie.
-- Włączono przełącznik "Wybierz nazwę hosta z Address wewnętrznej bazy danych" w ustawieniach protokołu HTTP bramy Application Gateway.
-- Nie masz domenę niestandardową, zarejestrowane przy użyciu usługi App Service.
+- Skonfigurowano przekierowanie na App Service. Przekierowanie może być proste, dodając końcowy ukośnik do żądania.
+- Masz uwierzytelnianie usługi Azure AD, które powoduje przekierowanie.
 
-Ponadto podczas korzystania z usługi aplikacji za bramą aplikacji i korzystania z domeny niestandardowej do dostępu do bramy aplikacji, może zostać wyświetlony czy nazwy domeny "example.azurewebsites.net" mają wartość domeny pliku cookie ARRAffinity ustawiony przez usługę App Service. Jeśli chcesz, aby Twoje oryginalna nazwa hosta, należy także domeny pliku cookie, postępuj zgodnie z rozwiązania, w tym artykule.
+Ponadto, jeśli używasz App Services za Application Gateway, nazwa domeny skojarzona z Application Gateway (example.com) różni się od nazwy domeny App Service (Powiedz example.azurewebsites.net), z tego powodu należy zauważyć, że wartość domeny dla plików cookie ARRAffinity ustawiona przez App Service będzie zawierać nazwę domeny "example.azurewebsites.net", która nie jest pożądana. Oryginalna nazwa hosta (example.com) powinna być wartością nazwy domeny w pliku cookie.
 
 ## <a name="sample-configuration"></a>Przykładowa konfiguracja
 
-- Odbiornik HTTP: Podstawowy lub połączenia obejmujące wiele lokacji
+- Odbiornik HTTP: Podstawowa lub wielolokacja
 - Pula adresów zaplecza: App Service
-- Ustawienia HTTP: "Wybierz nazwę hosta z adresu wewnętrznej bazy danych" włączone
-- Sonda: "Wybierz nazwę hosta z ustawień protokołu HTTP" włączone
+- Ustawienia protokołu HTTP: Włączono "Wybieranie nazwy hosta z adresu zaplecza"
+- Badane Włączono "Wybieranie nazwy hosta z ustawień protokołu HTTP"
 
 ## <a name="cause"></a>Przyczyna
 
-Usługa App Service może zostać oceniony jedynie przy użyciu skonfigurowanej nazwy hostów w ustawieniach domenę niestandardową, domyślnie, jest "example.azurewebsites.net" i ma dostęp do usługi App Service przy użyciu bramy aplikacji przy użyciu nazwy hosta nie zostanie zarejestrowane w usłudze App Service lub za pomocą Usługa Application Gateway pełni kwalifikowaną nazwę domeny, musisz zastąpić nazwę hosta w żądaniu oryginalnej nazwy hosta usługi App Service.
+Ponieważ App Service jest usługą wielodostępnym, używa nagłówka hosta w żądaniu, aby skierować żądanie do właściwego punktu końcowego. Jednak domyślna nazwa domeny usług App Services, *. azurewebsites.net (Powiedz contoso.azurewebsites.net), różni się od nazwy domeny bramy aplikacji (Powiedz contoso.com). Ponieważ oryginalne żądanie od klienta ma nazwę hosta usługi Application Gateway (contoso.com), należy skonfigurować bramę aplikacji tak, aby zmienić nazwę hosta w oryginalnym żądaniu dla hosta usług aplikacji, gdy kieruje żądanie do zaplecze usługi App Service.  Można to osiągnąć za pomocą przełącznika "Wybierz nazwę hosta z adresu zaplecza" w konfiguracji ustawienia HTTP Application Gateway i przełącznika "Wybierz nazwę hosta z ustawień protokołu HTTP zaplecza" w konfiguracji sondy kondycji.
 
-Aby to osiągnąć z usługą Application Gateway, możemy użyć przełącznika "Wybierz nazwę hosta z wewnętrznej bazy danych Address" w ustawieniach protokołu HTTP i sondowania do pracy, używamy "Wybierz nazwę hosta z ustawienia HTTP zaplecza" w konfiguracji sondowania.
 
-![appservice-1](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
 
-Ze względu na to gdy usługi App Service jest przekierowanie, używa nazwy hosta "example.azurewebsites.net" w nagłówku Location zamiast oryginalna nazwa hosta, chyba że skonfigurowano inaczej. Można sprawdzić na przykład nagłówki żądania i odpowiedzi poniżej.
+![appService-1](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
+
+Z tego powodu, gdy App Service przekierowania, w nagłówku lokalizacji zostanie użyta nazwa hosta przesłonięta "contoso.azurewebsites.net", a nie oryginalna nazwa hosta "contoso.com", chyba że została skonfigurowana inaczej. Możesz sprawdzić przykładowe nagłówki żądania i odpowiedzi poniżej.
 ```
 ## Request headers to Application Gateway:
 
@@ -66,44 +64,51 @@ Host: www.contoso.com
 
 Status Code: 301 Moved Permanently
 
-Location: http://example.azurewebsites.net/path/
+Location: http://contoso.azurewebsites.net/path/
 
 Server: Microsoft-IIS/10.0
 
-Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=example.azurewebsites.net
+Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=contoso.azurewebsites.net
 
 X-Powered-By: ASP.NET
 ```
-W powyższym przykładzie można zauważyć, że nagłówek odpowiedzi zawiera kod stanu 301 przekierowania i nagłówek location ma nazwę hosta usługi App Service, zamiast oryginalna nazwa hosta "www.contoso.com".
+W powyższym przykładzie można zauważyć, że nagłówek odpowiedzi ma kod stanu 301 dla przekierowania, a nagłówek lokalizacji ma App Service nazwę hosta, a nie oryginalną nazwę hosta "www.contoso.com".
 
-## <a name="solution"></a>Rozwiązanie
+## <a name="solution-rewrite-the-location-header"></a>Rozwiązanie: Zapisz ponownie nagłówek lokalizacji
 
-Ten problem można rozwiązać przekierowanie nie ma potrzeby na stronie aplikacji, jeśli nie jest to możliwe, przekazujemy tego samego nagłówka hosta odbiera Application Gateway w usłudze App Service również zamiast wykonywania przesłonięcia hosta.
+W nagłówku lokalizacji musi być ustawiona nazwa hosta dla nazwy domeny bramy aplikacji. W tym celu należy utworzyć [regułę ponownego zapisywania](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) z warunkiem, który oblicza, czy nagłówek lokalizacji w odpowiedzi zawiera azurewebsites.NET i wykonuje akcję ponownego zapisania nagłówka lokalizacji w celu utworzenia nazwy hosta bramy aplikacji.  Zapoznaj się z instrukcjami dotyczącymi [ponownego zapisywania nagłówka lokalizacji](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url).
 
-Po czynność tę możemy wykonać, usługi App Service wykona przekierowanie (jeśli istnieje) w tej samej oryginalnego nagłówka hosta, który wskazuje usługa Application Gateway i nie swój własny.
+> [!NOTE]
+> Obsługa ponownego zapisywania nagłówka HTTP jest dostępna tylko dla [jednostki SKU Standard_V2 i WAF_v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) Application Gateway. W przypadku korzystania z jednostki SKU w wersji 1 zdecydowanie zalecamy Migrowanie [z wersji od 1 do v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2) , aby można było korzystać z funkcji ponownego zapisywania i innych [zaawansowanych możliwości](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) dostępnych w wersji 2 jednostki SKU.
 
-Aby to osiągnąć, należy posiadać domenę niestandardową i postępuj zgodnie z procesem wymienione poniżej.
+## <a name="alternate-solution-use-app-services-custom-domain-instead-of-default-domain-name"></a>Alternatywne rozwiązanie: Użyj niestandardowej domeny usługi App Service zamiast domyślnej nazwy domeny
 
-- Zarejestruj domeny do listy niestandardowej domeny usługi App Service. W tym celu musisz mieć rekord CNAME w domenę niestandardową, która wskazuje nazwę FQDN usługi App Service. Aby uzyskać więcej informacji, zobacz [mapowanie istniejącej niestandardowej nazwy DNS w usłudze Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
+W przypadku korzystania z jednostki SKU w wersji 1 nie będzie można ponownie zapisać nagłówka lokalizacji, ponieważ ta funkcja jest dostępna tylko dla jednostki SKU w wersji 2. W związku z tym, aby rozwiązać problem z przekierowaniem, należy przekazać tę samą nazwę hosta, która Application Gateway otrzymuje również do App Service, a nie do przesłonięcia hosta.
 
-![appservice-2](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+Po wykonaniu tej czynności App Service przekierowania (jeśli istnieją) w tym samym oryginalnym nagłówku hosta, który wskazuje na Application Gateway, a nie własny.
 
-- Po zakończeniu tej operacji usługi App Service jest gotowy do akceptowania nazwy hosta "www.contoso.com". Teraz Zmień wpis CNAME w systemie DNS, aby wskazywać z powrotem nazwy FQDN bramy aplikacji. Na przykład "appgw.eastus.cloudapp.azure.com".
+Aby to osiągnąć, musisz być członkiem domeny niestandardowej i postępować zgodnie z procesem opisanym poniżej.
 
-- Upewnij się, że domenę "www.contoso.com" jest rozpoznawany jako nazwa FQDN bramy aplikacji podczas wykonywania zapytania DNS.
+- Zarejestruj domenę na liście domen niestandardowych App Service. W tym celu w domenie niestandardowej musi znajdować się rekord CNAME wskazujący na App Service nazwy FQDN. Aby uzyskać więcej informacji, zobacz [Mapowanie istniejącej niestandardowej nazwy DNS na Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
 
-- Ustaw swojej niestandardowej sondy, aby wyłączyć "Wybierz nazwę hosta z ustawienia HTTP zaplecza". To jest możliwe z poziomu portalu, usuwając zaznaczenie pola wyboru w obszarze Ustawienia sondowania i w programie PowerShell, nie korzystając - PickHostNameFromBackendHttpSettings przełącznika w poleceniu Set-AzApplicationGatewayProbeConfig. W polu nazwy hosta sondy wprowadź Twojej nazwy FQDN usługi App Service "example.azurewebsites.net", zgodnie z żądaniami badań wysyłanych z bramy aplikacji prowadzi to do nagłówka hosta.
+![appService-2](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+
+- Po wykonaniu tej czynności App Service jest gotowy do zaakceptowania nazwy hosta "www.contoso.com". Teraz Zmień wpis CNAME w systemie DNS, aby wskazywał z powrotem do Application Gateway FQDN. Na przykład "appgw.eastus.cloudapp.azure.com".
+
+- Upewnij się, że domena "www.contoso.com" jest rozpoznawana jako Application Gateway FQDN podczas wykonywania zapytania DNS.
+
+- Ustaw niestandardową sondę, aby wyłączyć "Wybieranie nazwy hosta z ustawień protokołu HTTP zaplecza". Można to zrobić z poziomu portalu, usuwając zaznaczenie pola wyboru w ustawieniach sondy i w programie PowerShell, nie używając przełącznika-PickHostNameFromBackendHttpSettings w poleceniu Set-AzApplicationGatewayProbeConfig. W polu Nazwa hosta sondy wprowadź App Service nazwę FQDN "example.azurewebsites.net", ponieważ żądania sondowania wysyłane z Application Gateway będą miały tę wartość w nagłówku hosta.
 
   > [!NOTE]
-  > Podczas wykonywania kroku dalej, upewnij się, że swojej niestandardowej sondy nie jest skojarzona z ustawienia zaplecza HTTP, ponieważ będą nadal ustawienia protokołu HTTP jest włączana na tym etapie przełącznika "Wybierz nazwę hosta z wewnętrznej bazy danych Address".
+  > Podczas wykonywania następnego kroku upewnij się, że niestandardowa Sonda nie jest skojarzona z ustawieniami protokołu HTTP zaplecza, ponieważ ustawienia protokołu HTTP nadal mają włączony przełącznik "Wybierz nazwę hosta z adresu zaplecza" w tym momencie.
 
-- Określ ustawienia HTTP usługi Application Gateway można wyłączyć "Wybierz nazwę hosta z wewnętrznej bazy danych Address". Można to zrobić z poziomu portalu, usuwając zaznaczenie pola wyboru, a w programie PowerShell, nie korzystając - PickHostNameFromBackendAddress przełącznika w poleceniu Set-AzApplicationGatewayBackendHttpSettings.
+- Ustaw ustawienia HTTP Application Gateway, aby wyłączyć "Wybieranie nazwy hosta z adresu zaplecza". Można to zrobić z poziomu portalu, usuwając zaznaczenie pola wyboru i w programie PowerShell, nie używając przełącznika-PickHostNameFromBackendAddress w poleceniu Set-AzApplicationGatewayBackendHttpSettings.
 
-- Sprawdź kondycję wewnętrznej bazy danych, jeśli jest w dobrej kondycji i skojarzyć niestandardowej sondy do ustawień HTTP zaplecza.
+- Skojarz niestandardową sondę z powrotem z ustawieniami protokołu HTTP zaplecza i Sprawdź kondycję zaplecza, jeśli jest w dobrej kondycji.
 
-- Po zakończeniu tej operacji usługa Application Gateway obecnie może przekazywać tej samej nazwy hosta "www.contoso.com" w usłudze App Service, a następnie nastąpi przekierowanie na tej samej nazwy hosta. Można sprawdzić na przykład nagłówki żądania i odpowiedzi poniżej.
+- Po wykonaniu tej czynności Application Gateway powinien teraz przekazać tej samej nazwie hosta "www.contoso.com" do App Service, a przekierowanie będzie odbywać się na tej samej nazwie hosta. Możesz sprawdzić przykładowe nagłówki żądania i odpowiedzi poniżej.
 
-Aby zaimplementować kroków wymienionych powyżej dla istniejącej konfiguracji za pomocą programu PowerShell, należy wykonać poniższy przykładowy skrypt programu PowerShell. Należy pamiętać o tym, jak firma Microsoft nie używano przełączniki - PickHostname w konfiguracji sondowania i ustawienia protokołu HTTP.
+Aby zaimplementować kroki wymienione powyżej przy użyciu programu PowerShell dla istniejącej instalacji, wykonaj poniższe przykładowe skrypty programu PowerShell. Należy pamiętać, że nie używamy przełączników-PickHostname w konfiguracji ustawień sondowania i HTTP.
 
 ```azurepowershell-interactive
 $gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG
@@ -133,6 +138,6 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
   X-Powered-By: ASP.NET
   ```
-  ## <a name="next-steps"></a>Kolejne kroki
+  ## <a name="next-steps"></a>Następne kroki
 
-Jeśli poprzednie kroki nie rozwiązują ten problem, otwórz [bilet pomocy technicznej](https://azure.microsoft.com/support/options/).
+Jeśli powyższe kroki nie rozwiążą problemu, Otwórz [bilet pomocy technicznej](https://azure.microsoft.com/support/options/).

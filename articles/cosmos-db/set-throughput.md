@@ -1,112 +1,112 @@
 ---
 title: Aprowizowanie przepływności na kontenerach Azure Cosmos i bazy danych
-description: Dowiedz się, jak ustawić aprowizowanej przepływności baz danych i kontenerów usługi Azure Cosmos.
+description: Dowiedz się, jak ustawić zainicjowaną przepływność dla kontenerów i baz danych platformy Azure Cosmos.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: adf0891203321ca02c47494f1865ca78a833e301
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 2bcd428e2de90251d4d64111b1c3e6b6f812ac4c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561392"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467620"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
 Bazy danych Azure Cosmos jest jednostką zarządzania w usłudze zestaw kontenerów. Bazy danych zawiera zestaw kontenerów niezależnej od schematu. Kontener usługi Azure Cosmos jest jednostką skalowalności, zarówno dla przepływności i magazynu. Kontener w poziomie jest podzielona na partycje w zestawie maszyn w obrębie regionu platformy Azure i są rozproszone we wszystkich regionach platformy Azure skojarzony z Twoim kontem usługi Azure Cosmos.
 
-Za pomocą usługi Azure Cosmos DB może aprowizować przepływność mierzoną w dwóch stopniach szczegółowości:
+Za pomocą Azure Cosmos DB można zainicjować przepływność przy dwóch stopniach szczegółowości:
  
 - Kontenery usługi Azure Cosmos
 - Baz danych Azure Cosmos
 
-## <a name="set-throughput-on-a-container"></a>Ustawianie przepływności do kontenera  
+## <a name="set-throughput-on-a-container"></a>Ustawianie przepływności dla kontenera  
 
-Przepływność, którego obsługę zainicjowano na kontenerze usługi Azure Cosmos jest zastrzeżone wyłącznie dla tego kontenera. Kontener odbiera aprowizowanej przepływności przez cały czas. Aprowizowana przepływność na kontenerze jest finansowo przez umowy SLA. Aby dowiedzieć się, jak skonfigurować przepływność na kontenerze, zobacz [Aprowizowanie przepływności na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
+Przepływność obsługiwana w kontenerze usługi Azure Cosmos jest zarezerwowana wyłącznie dla tego kontenera. Kontener odbiera aprowizowanej przepływności przez cały czas. Aprowizowana przepływność na kontenerze jest finansowo przez umowy SLA. Aby dowiedzieć się, jak skonfigurować przepływność na kontenerze, zobacz temat [udostępnianie przepływności w kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
 
-Ustawienie aprowizowaną przepływność na kontenerze jest najczęściej używanych opcji. Można elastycznie skalować przepływność dla kontenera, aprowizując dowolnej ilości przepływność przy użyciu [jednostek żądań (ru)](request-units.md). 
+Ustawienie przedziału czasu obsługi administracyjnej w kontenerze to najczęściej używana opcja. Można elastycznie skalować przepływność dla kontenera przez zainicjowanie dowolnej ilości przepływności przy użyciu [jednostek żądań (jednostek ru)](request-units.md). 
 
-Przepływność aprowizowana w kontenerze usługi Azure Cosmos jest równomiernie rozłożone między partycjami logicznymi kontenera. Nie można selektywnie określić przepływność dla partycji logicznej. Ponieważ jedną lub więcej partycji logicznej kontenera są hostowane przez partycję fizyczną, partycje fizyczne należeć wyłącznie do kontenera i obsługuje przepływnością aprowizowaną dla kontenera. 
+Przepływność obsługiwana w kontenerze usługi Azure Cosmos jest równomiernie rozłożona na wszystkie partycje logiczne kontenera. Nie można selektywnie określić przepływności dla partycji logicznych. Ponieważ co najmniej jedna partycja logiczna kontenera jest hostowana przez partycję fizyczną, partycje fizyczne należą wyłącznie do kontenera i obsługują przepływność zainicjowaną na tym kontenerze. 
 
-W przypadku obciążeń uruchomionych na partycji logicznej zużywa więcej niż przepływność, która została przydzielona do tej partycji logicznej, operacji pobrać limited szybkości. W przypadku wystąpienia szybkości możesz zwiększysz aprowizowaną przepływność dla całego kontenera lub ponów próbę wykonania operacji. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [partycjami logicznymi](partition-data.md).
+Jeśli obciążenie uruchomione na partycji logicznej zużywa więcej niż przepływność, która została przypisana do tej partycji logicznej, liczba operacji jest ograniczona. Po wystąpieniu ograniczenia szybkości można zwiększyć zainicjowaną przepływność dla całego kontenera lub wykonać operację ponownie. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [partycjami logicznymi](partition-data.md).
 
-Firma Microsoft zaleca, można skonfigurować przepływność na poziomie szczegółowości kontenera podczas mają gwarancji wydajności dla kontenera.
+Zalecamy skonfigurowanie przepływności na poziomie szczegółowości kontenera, gdy potrzebna jest gwarantowana wydajność dla kontenera.
 
-Na poniższej ilustracji przedstawiono, jak fizyczną partycję hostuje jedną lub więcej partycji logicznej kontenera:
+Na poniższej ilustracji przedstawiono, w jaki sposób partycja fizyczna hostuje co najmniej jedną partycję logiczną kontenera:
 
-![Partycję fizyczną](./media/set-throughput/resource-partition.png)
+![Partycja fizyczna](./media/set-throughput/resource-partition.png)
 
-## <a name="set-throughput-on-a-database"></a>Ustawianie przepływności w bazie danych
+## <a name="set-throughput-on-a-database"></a>Ustawianie przepływności dla bazy danych
 
-Podczas aprowizowania przepływności w bazie danych Azure Cosmos przepływność jest udostępniany we wszystkich kontenerach w bazie danych. Wyjątkiem jest, jeśli określono aprowizowaną przepływność w określonych kontenerach w bazie danych. Udostępnianie z poziomu bazy danych przepływnością między jego kontenerów jest analogiczne do hostowania bazy danych w klastrze maszyn. Ponieważ wszystkie kontenery w bazie danych są współdzielone zasoby, które są dostępne na maszynie, naturalny nie uzyskasz przewidywalną wydajność na dowolnym określonym kontenerze. Aby dowiedzieć się, jak skonfigurować aprowizowanej przepływności w bazie danych, zobacz [Konfiguruj aprowizowaną przepływność w bazie danych Azure Cosmos](how-to-provision-database-throughput.md).
+W przypadku aprowizacji przepływności w bazie danych Azure Cosmos przepływność jest udostępniana dla wszystkich kontenerów w bazie danych. Wyjątek polega na tym, że określona przepływność została zainicjowana w określonych kontenerach w bazie danych. Udostępnianie Przełożonej przepływności na poziomie bazy danych między kontenerami jest analogiczne do hostowania bazy danych w klastrze maszyn. Ze względu na to, że wszystkie kontenery w ramach bazy danych współużytkują zasoby dostępne na komputerze, nie ma możliwości przewidywalnej wydajności w żadnym konkretnym kontenerze. Aby dowiedzieć się, jak skonfigurować zainicjowaną przepływność dla bazy danych, zobacz [Konfigurowanie aprowizacji przepływności w bazie danych Azure Cosmos](how-to-provision-database-throughput.md).
 
-Ustawienie przepływności na bazie danych Azure Cosmos gwarantuje otrzymywać aprowizowana przepływność dla tej bazy danych przez cały czas. Ponieważ wszystkie kontenery w bazie danych mają aprowizowanej przepływności, usługi Azure Cosmos DB nie zapewnia żadnych przewidywalnej przepływności gwarancje dla danego kontenera w tej bazie danych. Część przepływność, którą może odbierać określonego kontenera jest zależna od:
+Ustawienie przepływności w bazie danych usługi Azure Cosmos gwarantuje, że dla tej bazy danych jest odbierana przepustowość. Ponieważ wszystkie kontenery w ramach bazy danych współużytkują przepływność, Azure Cosmos DB nie zapewnia żadnych przewidywalnych gwarancji przepływności dla określonego kontenera w tej bazie danych. Część przepływność, którą może odbierać określonego kontenera jest zależna od:
 
 * Liczba kontenerów.
 * Wybór kluczy partycji dla różnych kontenerów.
 * Rozkład obciążenia między różne partycje logiczne kontenerów. 
 
-Zaleca się skonfigurować przepływność w bazie danych, podczas udostępniania informacji o przepływności w wielu kontenerach, ale nie chcesz przeznaczyć przepływność dowolnego określonego kontenera. 
+Zalecamy skonfigurowanie przepływności dla bazy danych, jeśli chcesz udostępnić przepływność w wielu kontenerach, ale nie chcesz przeznaczyć przepływności do żadnego konkretnego kontenera. 
 
-W poniższych przykładach pokazano, gdzie jest preferowane zaprowizować przepływność na poziomie bazy danych:
+W poniższych przykładach pokazano, gdzie preferowany jest udostępnienie przepływności na poziomie bazy danych:
 
-* Udostępnianie aprowizowanej przepływności bazy danych w zestawie kontenerów jest przydatne w przypadku aplikacji wielodostępnych. Każdy użytkownik może być reprezentowany przez różne kontenera usługi Azure Cosmos.
+* Udostępnienie przepływności aprowizacji bazy danych w zestawie kontenerów jest przydatne w przypadku aplikacji wielodostępnych. Każdy użytkownik może być reprezentowany przez różne kontenera usługi Azure Cosmos.
 
-* Udostępnianie aprowizowanej przepływności bazy danych przez zestaw kontenerów jest przydatne w przypadku, gdy migracja bazy danych NoSQL, takiego jak MongoDB lub bazy danych Cassandra hostowanych w klastrze maszyn wirtualnych lub fizycznych serwerów lokalnych do usługi Azure Cosmos DB. Pomyśl o aprowizowanej przepływności, skonfigurowanym w bazie danych Azure Cosmos jako odpowiednik logiczny, ale bardziej ekonomiczne i elastyczna, jak moc obliczeniową bazy danych MongoDB lub bazy danych Cassandra klastra.  
+* Udostępnianie przeprowadzonej przepływności bazy danych w zestawie kontenerów jest przydatne w przypadku migrowania bazy danych NoSQL, takiej jak MongoDB lub Cassandra, hostowanej w klastrze maszyn wirtualnych lub lokalnych serwerów fizycznych do Azure Cosmos DB. Zastanów się o zainicjowanej przepływności skonfigurowanej w bazie danych Azure Cosmos jako logiczne równoważne, ale tańsze i elastyczne, do tej pojemności obliczeniowej klastra MongoDB lub Cassandra.  
 
-Wszystkie kontenery utworzone w bazie danych z aprowizowaną przepływnością musi zostać utworzona z [klucza partycji](partition-data.md). W dowolnym czasie, przepływność przydzielanych do kontenera w bazie danych jest rozłożona na wszystkie partycje logiczne tego kontenera. W przypadku kontenerów, które współużytkują aprowizowanej przepływności skonfigurowane w bazie danych nie umożliwiają selektywne stosowanie przepływności do określonego kontenera lub partycji logicznej. 
+Wszystkie kontenery utworzone w bazie danych z zainicjowaną przepływność muszą zostać utworzone za pomocą [klucza partycji](partition-data.md). W dowolnym czasie, przepływność przydzielanych do kontenera w bazie danych jest rozłożona na wszystkie partycje logiczne tego kontenera. W przypadku kontenerów, które współużytkują zainicjowaną przepływność skonfigurowaną w bazie danych, nie można wybiórczo zastosować przepływności do określonego kontenera lub partycji logicznej. 
 
-Jeśli obciążenie na partycji logicznej zużywa więcej niż z przepływnością, którą jest przydzielany do określonej partycji logicznej, operacji są ograniczone szybkości. Sytuacji ograniczania szybkości, można zwiększyć przepływność dla całej bazy danych lub ponów próbę wykonania operacji. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [partycjami logicznymi](partition-data.md).
+Jeśli obciążenie partycji logicznej zużywa więcej niż przepływność przydzieloną do określonej partycji logicznej, operacje są ograniczone proporcjonalnie. W przypadku wystąpienia ograniczenia szybkości można zwiększyć przepływność całej bazy danych lub wykonać operację ponownie. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [partycjami logicznymi](partition-data.md).
 
-Wiele partycjami logicznymi, które należą do różnych kontenerów, które współużytkują przepływnością aprowizowaną do bazy danych mogą być hostowane na jednej partycji fizycznych. Chociaż w jednej partycji logicznej kontenera zawsze ma zakres partycji fizycznych, *"L"* partycjami logicznymi w *"C"* kontenery, które współużytkują aprowizowanej przepływności bazy danych może być mapowania oraz w serwisie *"R"* partycje fizyczne. 
+Wiele partycji logicznych, które należą do różnych kontenerów, które współdzielą przepływność udostępnioną dla bazy danych, może być hostowana na jednej partycji fizycznej. Chociaż jedna partycja logiczna kontenera jest zawsze objęta zakresem partycji fizycznej, partycje logiczne *"L"* w kontenerach *"C"* , które współdzielą przepływność dla bazy danych, mogą być mapowane i hostowane na komputerze fizycznym *"R"* Partition. 
 
-Na poniższej ilustracji przedstawiono, jak fizyczną partycję można hostować jeden lub więcej partycjami logicznymi, które należą do różnych kontenerów w bazie danych:
+Na poniższej ilustracji przedstawiono, w jaki sposób partycja fizyczna może hostować co najmniej jedną partycję logiczną, która należy do różnych kontenerów w bazie danych:
 
-![Partycję fizyczną](./media/set-throughput/resource-partition2.png)
+![Partycja fizyczna](./media/set-throughput/resource-partition2.png)
 
-## <a name="set-throughput-on-a-database-and-a-container"></a>Ustawianie przepływności na bazę danych i kontener
+## <a name="set-throughput-on-a-database-and-a-container"></a>Ustawianie przepływności dla bazy danych i kontenera
 
-Możesz połączyć dwa modele. Przepływność inicjowania obsługi administracyjnej, zarówno w bazie danych, jak i w kontenerze jest dozwolone. Poniższy przykład pokazuje, jak aprowizować przepływność mierzoną w bazie danych Azure Cosmos i kontener:
+Można połączyć te dwa modele. Przepływność aprowizacji zarówno dla bazy danych, jak i kontenera jest dozwolona. Poniższy przykład pokazuje, jak aprowizować przepływność mierzoną w bazie danych Azure Cosmos i kontener:
 
-* Można utworzyć bazy danych Azure Cosmos o nazwie *Z* z aprowizowanej przepływności równej *"K"* (RUS). 
-* Następnie należy utworzyć pięć kontenerów o nazwie *A*, *B*, *C*, *D*, i *E* w bazie danych. Podczas tworzenia kontenera B, upewnij się umożliwić **Aprowizowanie dedykowanej przepływności dla tego kontenera** opcji i skonfigurować jawnie *"P"* RUs aprowizowaną przepływność w tym kontenerze. Należy pamiętać, że możesz skonfigurować przepływność udostępnione i dedykowane tylko podczas tworzenia bazy danych i kontenera. 
+* Można utworzyć bazę danych usługi Azure Cosmos o nazwie *z* z zainicjowaną przepływność *"K"* jednostek ru. 
+* Następnie utwórz pięć kontenerów o nazwie *a*, *B*, *C*, *D*i *E* w ramach bazy danych. Podczas tworzenia kontenera B upewnij się, że włączono **dedykowaną przepływność dla tej opcji kontenera** , a następnie jawnie Skonfiguruj *"P"* jednostek ru na potrzeby aprowizacji dla tego kontenera. Należy pamiętać, że w przypadku tworzenia bazy danych i kontenera można skonfigurować udostępnioną i dedykowaną przepływność. 
 
    ![Ustawianie przepływności na poziomie kontenera](./media/set-throughput/coll-level-throughput.png)
 
-* *"K"* jednostek żądania przepływności jest współużytkowany przez cztery kontenery *A*, *C*, *D*, i *E*. Dokładne zalecenia dotyczące ilości przepustowość dostępna dla *A*, *C*, *D*, lub *E* różni się. Nie istnieją żadne umowy SLA dla każdego kontenera poszczególnych przepływności.
-* Kontener o nazwie *B* jest gwarantowane, Pobierz *"P"* jednostek żądania przepływności przez cały czas. Jest wspierana przez umowy SLA.
+* Przepływność jednostek ru *"K"* jest udostępniana w czterech kontenerach *a*, *C*, *D*i *E*. Dokładna ilość przepływności *dostępna dla,* *C*, *D*lub *E* jest różna. Dla każdego z przepływności poszczególnych kontenerów nie ma umowy SLA.
+* Kontener o nazwie *B* jest zagwarantowany do uzyskania jednostek ru przepływności *"P"* przez cały czas. Jest ona obsługiwana przez umowy SLA.
 
-## <a name="update-throughput-on-a-database-or-a-container"></a>Przepływność aktualizacji w bazie danych lub kontener
+## <a name="update-throughput-on-a-database-or-a-container"></a>Aktualizowanie przepływności dla bazy danych lub kontenera
 
-Po utworzeniu kontenera usługi Azure Cosmos lub bazy danych, możesz zaktualizować aprowizowanej przepływności. Nie ma żadnego limitu z maksymalną przepływnością na skonfigurowanym w bazie danych lub kontenera. Minimalnej aprowizowanej przepływności zależy od następujących czynników: 
+Po utworzeniu kontenera usługi Azure Cosmos lub bazy danych można zaktualizować zainicjowaną przepływność. Nie ma żadnego limitu maksymalnej alokowanej przepływności, którą można skonfigurować dla bazy danych lub kontenera. Minimalna zainicjowana przepływność zależy od następujących czynników: 
 
-* Rozmiar maksymalny danych, które nigdy nie są przechowywane w kontenerze
-* Maksymalna przepływność, które kiedykolwiek aprowizować w kontenerze
-* Maksymalna liczba kontenerów Azure Cosmos, które warto utworzyć w bazie danych z udostępnionej przepływności. 
+* Maksymalny rozmiar danych, który został kiedykolwiek przechowywany w kontenerze
+* Maksymalna przepływność, która została kiedykolwiek zainicjowana w kontenerze
+* Maksymalna liczba kontenerów usługi Azure Cosmos, które kiedykolwiek tworzysz w bazie danych o udostępnionej przepływności. 
 
-Można programowo pobrać minimalna przepływność w kontenerze lub bazy danych za pomocą zestawów SDK lub Wyświetl wartości w witrynie Azure portal. Korzystając z zestawu .NET SDK [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) metoda umożliwia skalowanie wartość aprowizowanej przepływności. Podczas korzystania z zestawu SDK Java [RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples) metoda umożliwia skalowanie wartość aprowizowanej przepływności. 
+Minimalną przepływność kontenera lub bazy danych można pobrać programowo przy użyciu zestawów SDK lub wyświetlić wartość w Azure Portal. W przypadku korzystania z zestawu .NET SDK Metoda [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) umożliwia skalowanie wartości przepływności. W przypadku korzystania z zestawu SDK języka Java [RequestOptions. setOfferThroughput](sql-api-java-samples.md#offer-examples) Metoda pozwala skalować wartość przepływności. 
 
-Korzystając z zestawu .NET SDK [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) metoda pozwala pobrać minimalna przepływność w kontenerze lub bazy danych. 
+W przypadku korzystania z zestawu .NET SDK Metoda [DocumentClient. ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) umożliwia pobieranie minimalnej przepływności kontenera lub bazy danych. 
 
-Aprowizowana przepływność w kontenerze lub bazy danych można skalować w dowolnym momencie. Podczas wykonywania operacji skalowania w celu zwiększenia przepływności, może potrwać dłuższy czas ze względu na system zadań w celu obsługi administracyjnej wymaganych zasobów. Można sprawdzić stan operacji skalowania w witrynie Azure portal lub programowo przy użyciu zestawów SDK. Korzystając z zestawu .net SDK, można uzyskać stanu operacji skalowania za pomocą `DocumentClient.ReadOfferAsync` metody.
+W dowolnym momencie można skalować zainicjowaną przepływność kontenera lub bazy danych. Po wykonaniu operacji skalowania w celu zwiększenia przepływności może upłynąć dłuższy czas, ponieważ zadania systemowe zainicjują wymagane zasoby. Stan operacji skalowania można sprawdzić w Azure Portal lub programowo przy użyciu zestawów SDK. Korzystając z zestawu SDK platformy .NET, można uzyskać stan operacji skalowania przy użyciu `DocumentClient.ReadOfferAsync` metody.
 
 ## <a name="comparison-of-models"></a>Porównanie modeli
 
 |**Parametr**  |**Przepływność aprowizowana w bazie danych**  |**Przepływność aprowizowana w kontenerze**|
 |---------|---------|---------|
-|Minimalny (RUS) |400 (po pierwsze cztery kontenery każdego kontenera dodatkowe wymaga co najmniej 100 jednostek ru na sekundę). |400|
+|Minimalny (RUS) |400 (po pierwszych czterech kontenerach każdy dodatkowy kontener wymaga co najmniej 100 jednostek ru na sekundę). |400|
 |Minimalna jednostek żądań na kontener|100|400|
-|Maksymalna (RUS)|Bez ograniczeń w bazie danych.|Bez ograniczeń w kontenerze.|
-|Jednostki zarezerwowane przypisane lub będą dostępne do określonego kontenera|Nie gwarancji. Przypisane do danego kontenera (RUS) są zależne od właściwości. Właściwości mogą być wybór kontenery, które współużytkują przepływność z kluczami partycji, dystrybucji obciążenia i liczbę kontenerów. |Wszystkie jednostki zarezerwowane skonfigurowane w kontenerze są przeznaczone wyłącznie do kontenera.|
-|Maksymalny rozmiar magazynu dla kontenera|Bez ograniczeń.|Bez ograniczeń.|
+|Maksymalna (RUS)|Bez ograniczeń, w bazie danych.|Bez ograniczeń, w kontenerze.|
+|Jednostek ru przypisane lub dostępne dla określonego kontenera|Nie gwarancji. Jednostek ru przypisane do danego kontenera zależą od właściwości. Właściwościami mogą być wybór kluczy partycji kontenerów, które współdzielą przepływność, rozkład obciążenia oraz liczbę kontenerów. |Wszystkie jednostki zarezerwowane skonfigurowane w kontenerze są przeznaczone wyłącznie do kontenera.|
+|Maksymalny rozmiar magazynu dla kontenera|Ograniczona.|Ograniczona.|
 |Maksymalna przepływność na partycji logicznej kontenera|10K (RUS)|10K (RUS)|
 |Maksymalna pojemność (danych + indeksu) w jednej partycji logicznej kontenera|10 GB|10 GB|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [partycjami logicznymi](partition-data.md).
-* Dowiedz się, jak [aprowizowanie przepływności na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
-* Dowiedz się, jak [aprowizowanie przepływności na bazie danych Azure Cosmos](how-to-provision-database-throughput.md).
+* Dowiedz się więcej na temat [partycji logicznych](partition-data.md).
+* Dowiedz się, jak [zainicjować przepływność na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
+* Dowiedz się, jak [udostępnić przepływność w bazie danych Azure Cosmos](how-to-provision-database-throughput.md).
 

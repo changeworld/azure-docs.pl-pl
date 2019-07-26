@@ -34,6 +34,13 @@ sections:
             image:
               src: /media/common/i_learn-about.svg
             title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  - title: Bezpieczne aplikacje przykładowe
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/secure-web-app">Aplikacja internetowa w kontenerze systemu Linux</a>
   - title: Pojęcia
     items:
       - type: list

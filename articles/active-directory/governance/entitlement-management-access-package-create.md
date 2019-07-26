@@ -1,10 +1,10 @@
 ---
-title: Utwórz nowy pakiet dostępu w usłudze Azure AD uprawnienie management (wersja zapoznawcza) — usługi Azure Active Directory
-description: Dowiedz się, jak utworzyć nowy pakiet dostępu do zasobów, które chcesz udostępnić w usłudze Azure Active Directory Zarządzanie uprawnieniami (wersja zapoznawcza).
+title: Utwórz nowy pakiet dostępu w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza) — Azure Active Directory
+description: Dowiedz się, jak utworzyć nowy pakiet dostępu do zasobów, które chcesz udostępnić w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,120 +12,120 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/16/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5ff842d1645d2b47a436eca4fc8dc614a9fb63
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 83eee019ee8530297689b85e6f3300fed4392610
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190372"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489175"
 ---
-# <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Utwórz nowy pakiet dostępu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
+# <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Tworzenie nowego pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
 
 > [!IMPORTANT]
-> Zarządzanie uprawnieniami w usłudze Azure Active Directory (Azure AD) jest obecnie w publicznej wersji zapoznawczej.
+> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pakiet dostępu umożliwia wykonywanie jednorazowej konfiguracji zasobów i zasad, który automatycznie zarządza dostępu przez cały okres istnienia pakiet dostępu. W tym artykule opisano sposób tworzenia nowego pakietu dostępu.
+Pakiet dostępu umożliwia jednorazowe skonfigurowanie zasobów i zasad, które automatycznie zarządzają dostępem do czasu życia pakietu dostępu. W tym artykule opisano sposób tworzenia nowego pakietu dostępu.
 
 ## <a name="overview"></a>Omówienie
 
-Wszystkie pakiety dostępu muszą znajdować się w kontenerze o nazwie katalogu. Wykaz określa jakie zasoby można dodawać do dostępu do pakietu. Jeśli nie określisz katalogu pakietu dostępu będzie umieszczana w katalogu ogólne. Obecnie nie można przenieść istniejący pakiet dostęp do innego katalogu.
+Wszystkie pakiety dostępu muszą być umieszczone w kontenerze o nazwie wykaz. Katalog definiuje zasoby, które można dodać do pakietu dostępu. Jeśli nie określisz katalogu, pakiet dostępu zostanie umieszczony w katalogu ogólnym. Obecnie nie można przenieść istniejącego pakietu dostępu do innego katalogu.
 
-Wszystkie pakiety dostępu musi mieć co najmniej jedne zasady. Zasady określają, kto może żądać dostępu do pakietu, a także ustawienia zatwierdzania i wygaśnięcia. Podczas tworzenia nowego pakietu dostępu, można utworzyć początkową zasad dla użytkowników w katalogu dla użytkowników spoza katalogu dla administratora tylko bezpośredniego przypisania lub możesz później utworzyć zasady.
+Wszystkie pakiety dostępu muszą mieć co najmniej jedną zasadę. Zasady określają, kto może zażądać pakietu dostępu, a także ustawień zatwierdzania i wygasania. Podczas tworzenia nowego pakietu dostępu można utworzyć zasady początkowe dla użytkowników w katalogu, w przypadku użytkowników, którzy nie są w katalogu, tylko do przypisywania bezpośrednio dla administratorów lub wybrać opcję tworzenia zasad później.
 
-Na poniższym diagramie przedstawiono procedurę wysokiego poziomu służącą do utworzenia nowego pakietu dostępu.
+Na poniższym diagramie przedstawiono proces wysokiego poziomu służący do tworzenia nowego pakietu dostępu.
 
 ![Tworzenie procesu pakietu dostępu](./media/entitlement-management-access-package-create/access-package-process.png)
 
-## <a name="start-new-access-package"></a>Rozpocznij nowy pakiet dostępu
+## <a name="start-new-access-package"></a>Uruchom nowy pakiet dostępu
 
-**Rola wymagań wstępnych:** Administrator użytkownika lub właściciela katalogu
+**Rola wymagana wstępnie:** Administrator użytkownika lub właściciel katalogu
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-1. Kliknij przycisk **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. Kliknij **Azure Active Directory** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów**.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu**.
 
-    ![Zarządzanie uprawnieniami w witrynie Azure portal](./media/entitlement-management-shared/elm-access-packages.png)
+    ![Zarządzanie prawami w Azure Portal](./media/entitlement-management-shared/elm-access-packages.png)
 
-1. Kliknij przycisk **nowy pakiet dostępu**.
+1. Kliknij pozycję **nowy pakiet dostępu**.
 
-## <a name="basics"></a>Podstawy
+## <a name="basics"></a>Ustawienia podstawowe
 
-Na **podstawy** karcie należy nazwij pakiet dostępu i określić, którego katalogu, aby utworzyć pakiet dostępu w.
+Na karcie **podstawowe** można nadać pakietowi dostępu nazwę i określić katalog, w którym ma zostać utworzony pakiet dostępu.
 
-1. Wprowadź nazwę wyświetlaną i Opis pakietu dostępu. Użytkownicy będą widzieć te informacje podczas przesyłania żądania dostępu do pakietu.
+1. Wprowadź nazwę wyświetlaną i Opis pakietu dostępu. Użytkownicy będą widzieć te informacje podczas przesyłania żądania dla pakietu dostępu.
 
-1. W **katalogu** listy rozwijanej, wybierz katalog ma zostać utworzona dostępu do pakietu w. Na przykład może mieć właściciela katalogu, który zarządza wszystkich zasobów marketingowych, które mogą być wymagane. W takim przypadku można wybrać marketingu katalogu.
+1. Z listy rozwijanej **wykaz** wybierz katalog, w którym chcesz utworzyć pakiet dostępu. Na przykład może istnieć właściciel katalogu, który zarządza wszystkimi zasobami marketingowymi, które mogą być żądane. W takim przypadku można wybrać Katalog Marketing.
 
-    Widoczne są tylko katalogi ma uprawnienia do tworzenia pakietów dostępu w. Aby utworzyć pakiet dostępu w istniejącego katalogu, musi być co najmniej jeden administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów.
+    Zostaną wyświetlone tylko wykazy, do których masz uprawnienia do tworzenia pakietów dostępu w programie. Aby utworzyć pakiet dostępu w istniejącym wykazie, musisz mieć co najmniej uprawnienia administratora, właściciela katalogu lub Menedżera pakietów dostępu.
 
     ![Pakiet dostępu — podstawy](./media/entitlement-management-access-package-create/basics.png)
 
-    Jeśli chcesz utworzyć pakiet dostępu w nowy katalog, kliknij przycisk **Utwórz nową**. Wprowadź nazwę katalogu i opis, a następnie kliknij przycisk **Utwórz**.
+    Jeśli chcesz utworzyć pakiet dostępu w nowym wykazie, kliknij przycisk **Utwórz nowy**. Wprowadź nazwę wykazu i opis, a następnie kliknij przycisk **Utwórz**.
 
-    Tworzenie pakietu dostępu i wszystkie zasoby zawarte w nim zostaną dodane do nowego katalogu. Ponadto automatycznie zostaniesz pierwszym właściciel katalogu. Możesz dodać dodatkowe katalogu właścicieli.
+    Tworzony pakiet dostępu i wszystkie zawarte w nim zasoby zostaną dodane do nowego katalogu. Ponadto automatycznie staje się pierwszym właścicielem katalogu. Możesz dodać dodatkowych właścicieli katalogu.
 
-    Aby utworzyć nowy katalog, musi być co najmniej użytkownika administrator lub twórca katalogu.
+    Aby utworzyć nowy katalog, musisz być co najmniej administratorem użytkownika lub członkiem katalogu.
 
 1. Kliknij przycisk **Dalej**.
 
 ## <a name="resource-roles"></a>Role zasobów
 
-Na **role zasobów** karcie Wybierz zasoby do uwzględnienia w pakiecie dostępu.
+Na karcie **role zasobów** Wybierz zasoby do uwzględnienia w pakiecie dostępu.
 
-1. Kliknij typ zasobu, które chcesz dodać (**grup**, **aplikacje**, lub **witryny programu SharePoint**).
+1. Kliknij typ zasobu, który chcesz dodać (**grupy**, **aplikacje**lub **witryny programu SharePoint**).
 
-1. W wyświetlonym okienku wybierz opcję należy wybrać co najmniej jednego zasobu z listy.
+1. W wyświetlonym okienku wybierz pozycję co najmniej jeden zasób z listy.
 
-    ![Pakiet dostępu — role zasobów](./media/entitlement-management-access-package-create/resource-roles.png)
+    ![Dostęp do ról zasobów](./media/entitlement-management-access-package-create/resource-roles.png)
 
-    Jeśli tworzysz pakiet dostępu w katalogu ogólne lub nowy katalog, będzie można wybrać dowolnego zasobu z katalogu, którego jesteś właścicielem. Musi być co najmniej jeden administrator użytkowników lub twórca w katalogu.
+    Jeśli tworzysz pakiet dostępu w wykazie ogólnym lub w nowym katalogu, będziesz mieć możliwość wybrania dowolnego zasobu z katalogu, którego jesteś członkiem. Musisz być co najmniej administratorem użytkownika lub autorem katalogu.
 
-    Jeśli tworzysz pakiet dostępu w istniejącego katalogu, można wybrać dowolnego zasobu, który znajduje się już w katalogu bez konieczności posiadania go.
+    Jeśli tworzysz pakiet dostępu w istniejącym wykazie, możesz wybrać dowolny zasób, który znajduje się już w katalogu bez jego właściciela.
 
-    Jeśli jesteś administratorem użytkownika lub właściciela katalogu jest istnieje dodatkowa opcja wybierania zasobów, których jesteś właścicielem, które nie są jeszcze w wykazie. Wybranie zasobów nie jest obecnie w wybrany katalog, to te zasoby również zostaną dodane do katalogu dla innych administratorów wykazu do tworzenia pakietów dostępu. Jeśli chcesz wybrać zasoby, które są aktualnie wybrany katalog wyboru **tylko** pole wyboru w górnej części wybierz opcję przesuwanie.
+    Jeśli jesteś administratorem lub właścicielem katalogu, masz dodatkową możliwość wyboru zasobów, których jesteś właścicielem, które nie znajdują się jeszcze w wykazie. W przypadku wybrania zasobów, które nie są obecnie w wybranym wykazie, te zasoby zostaną również dodane do wykazu dla innych administratorów wykazu do tworzenia pakietów dostępu za pomocą programu. Jeśli chcesz tylko wybrać zasoby, które znajdują się obecnie w wybranym wykazie, zaznacz pole wyboru **Zobacz tylko** w górnej części strony wybieranie.
 
-1. Po wybraniu zasobów, w **roli** listy, wybierz rolę, ma być można przypisać użytkowników dla zasobu.
+1. Po wybraniu zasobów na liście **rola** wybierz rolę, do której użytkownicy mają być przypisani.
 
-    ![Pakiet dostępu — Wybór roli zasobu](./media/entitlement-management-access-package-create/resource-roles-role.png)
+    ![Dostęp do pakietu — wybór roli zasobów](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
 1. Kliknij przycisk **Dalej**.
 
 ## <a name="policy"></a>Zasady
 
-Na **zasad** kartę, Utwórz pierwszą zasadę, aby określić, kto może żądać dostępu do pakietu, a także ustawienia zatwierdzania i wygaśnięcia. Później należy utworzyć zasady umożliwiające dodatkowe grupy użytkowników do żądania pakietu dostęp z własnych ustawień zatwierdzania i wygaśnięcia. Możesz również utworzyć zasady później.
+Na karcie **zasady** Utwórz pierwsze zasady, aby określić, kto może zażądać pakietu dostępu, a także ustawienia zatwierdzenia i wygaśnięcia. Później możesz utworzyć więcej zasad, aby umożliwić dodatkowym grupom użytkowników zażądanie pakietu dostępu przy użyciu własnych ustawień zatwierdzenia i wygaśnięcia. Możesz również utworzyć zasady później.
 
-1. Ustaw **Utwórz pierwszą zasadę** Przełącz, aby **teraz** lub **później**.
+1. Ustaw przełącznik **Utwórz pierwsze zasady** na **teraz** lub **później**.
 
-    ![Pakiet — zasady dostępu](./media/entitlement-management-access-package-create/policy.png)
+    ![Dostęp do pakietu — zasady](./media/entitlement-management-access-package-create/policy.png)
 
-1. Jeśli wybierzesz **później**, przejdź w dół do [przeglądu + Utwórz](#review--create) sekcję, aby utworzyć pakiet dostępu.
+1. W przypadku wybrania opcji **później**przejdź do sekcji [Recenzja + tworzenie](#review--create) , aby utworzyć pakiet dostępu.
 
-1. Jeśli wybierzesz **teraz**, wykonaj kroki w jednym z następujących sekcji zasady.
+1. Jeśli wybierzesz opcję **teraz**, wykonaj czynności opisane w jednej z poniższych sekcji zasad.
 
 [!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
 
 ## <a name="review--create"></a>Przeglądanie + tworzenie
 
-Na **Przejrzyj + Utwórz** karcie, można przejrzeć ustawienia i wyboru dla każdego błędu weryfikacji.
+Na karcie **Przegląd i tworzenie** możesz przejrzeć ustawienia i sprawdzić, czy występują błędy walidacji.
 
 1. Przejrzyj ustawienia pakietu dostępu
 
-    ![Pakiet dostępu — ustawienie zasad obsługi zasad](./media/entitlement-management-access-package-create/review-create.png)
+    ![Dostęp do pakietu — ustawienie zasad włączania zasad](./media/entitlement-management-access-package-create/review-create.png)
 
-1. Kliknij przycisk **Utwórz** do utworzenia pakietu dostępu.
+1. Kliknij przycisk **Utwórz** , aby utworzyć pakiet dostępu.
 
-    Nowy pakiet dostępu pojawia się na liście dostępu do pakietów.
+    Nowy pakiet dostępu zostanie wyświetlony na liście pakietów dostępu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Edytowanie istniejącego pakietu dostępu i zarządzanie nim](entitlement-management-access-package-edit.md)
-- [Dodawanie właściciela katalogu lub dostęp do Menedżera pakietów](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [Tworzenie i zarządzanie nimi katalogu](entitlement-management-catalog-create.md)
+- [Dodawanie właściciela katalogu lub Menedżera pakietów programu Access](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
+- [Tworzenie wykazu i zarządzanie nim](entitlement-management-catalog-create.md)

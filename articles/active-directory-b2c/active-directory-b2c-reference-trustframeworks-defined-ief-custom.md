@@ -1,6 +1,6 @@
 ---
-title: Odwołanie — struktury zaufania w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Temat o zasadach niestandardowych usługi Azure Active Directory B2C i platformy środowiska tożsamości.
+title: Struktury zaufania odwołań w Azure Active Directory B2C | Microsoft Docs
+description: Temat dotyczący Azure Active Directory B2C zasad niestandardowych i struktury obsługi tożsamości.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,118 +10,118 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 47e45a7dac8abc65f414fedd0fd910e3a7a78113
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e96ddcb904bbda6c3123ffc9d3da50ff80823689
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508822"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500015"
 ---
-# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definiowanie relacji zaufania struktur za pomocą platformy środowiska tożsamości usługi Azure AD B2C
+# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definiowanie struktur zaufania za pomocą środowiska Azure AD B2C Identity Framework
 
-Usługa Azure Active Directory B2C (Azure AD B2C), niestandardowe zasady, które używają platformy środowiska tożsamości zapewnić organizacji scentralizowanej usłudze. Ta usługa zmniejsza złożoność Federację tożsamości w dużych społeczności zainteresowania. Złożoność jest redukowana do pojedynczą relacją zaufania i wymiany jednej metadanych.
+Azure Active Directory B2C (Azure AD B2C) zasady niestandardowe, które używają struktury obsługi tożsamości, zapewniają organizacji scentralizowaną usługę. Ta usługa zmniejsza złożoność federacji tożsamości w dużej społeczności interesu. Złożoność jest zredukowana do jednej relacji zaufania i wymiany pojedynczej metadanych.
 
-Azure AD B2C zasady niestandardowe, które umożliwiają struktura środowiska tożsamości należy odpowiedzieć na następujące pytania:
+Azure AD B2C zasady niestandardowe wykorzystują platformę obsługi tożsamości, aby można było odpowiedzieć na następujące pytania:
 
-- Co to są informacje prawne, zabezpieczeń, ochrony prywatności i zasady ochrony danych, które należy przestrzegać?
-- Kim są kontakty i jakie procesy staje się akredytowanych uczestnika?
-- Kim są dostawcy informacji o tożsamości akredytowanych (znany także jako "dostawców oświadczeń") i do czego oferują one?
-- Kim są akredytowanych jednostki uzależnionej strony (i ewentualnie co one wymagają)?
-- Co to są techniczne "na potrzeby przesyłu" wymagania współdziałania dla uczestników?
-- Co to są reguły operational "środowiska uruchomieniowego", które musi także zostać wymuszony wymiany informacji o tożsamości cyfrowej?
+- Jakie są zasady prawne, zabezpieczenia, prywatność i ochrony danych, które muszą być przestrzegane?
+- Kim są kontakty i jakie są procesy, które mają być akredytowany uczestnik?
+- Którzy są akredytowanymi dostawcami informacji o tożsamościach (nazywanymi także "dostawcami oświadczeń") i jakie są one oferowane?
+- Którzy są akredytowanymi jednostkami uzależnionymi (i opcjonalnie, czego wymagają)?
+- Jakie są techniczne wymagania dotyczące współdziałania dla uczestników?
+- Jakie są reguły operacyjne środowiska uruchomieniowego, które należy wymusić w przypadku wymiany informacji o tożsamości cyfrowej?
 
-Odpowiedzi na te pytania, utworzenia niestandardowych zasad usługi Azure AD B2C, korzystających z platformy środowiska tożsamości Użyj Framework zaufania (TF). Zastanówmy się, że ta konstrukcja i go zawiera.
+Aby odpowiedzieć na wszystkie te pytania, Azure AD B2C zasad niestandardowych, które używają struktury obsługi tożsamości, użyj konstrukcji Trust Framework (TF). Rozważmy tę konstrukcję i jej zawartość.
 
-## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>Zrozumienie podstaw zarządzania w ramach zaufania i Federacji
+## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>Zrozumienie struktury zaufania i usługi federacyjnej Management Foundation
 
-W ramach zaufania jest napisane specyfikacji tożsamości, zabezpieczeń, ochrony prywatności i zasady ochrony danych, do których uczestnicy społeczności zainteresowania muszą być zgodne.
+Struktura zaufania to zapisywana Specyfikacja zasad tożsamości, zabezpieczeń, ochrony prywatności i danych, do których uczestnicy społeczności interesy muszą być zgodni.
 
-Tożsamość federacyjna stanowi podstawę do osiągnięcia weryfikacji tożsamości użytkownika końcowego w skali Internetu. Przez delegowanie zarządzania tożsamościami stronom trzecim, jednej tożsamości cyfrowych dla użytkownika końcowego mogą być używane wiele jednostek zależnych.  
+Tożsamość federacyjna stanowi podstawę do osiągnięcia zapewnienia tożsamości użytkowników końcowych na skalę internetową. Delegując Zarządzanie tożsamościami do stron trzecich, można użyć pojedynczej tożsamości cyfrowej dla użytkownika końcowego z wieloma jednostkami uzależnionymi.  
 
-Weryfikacji tożsamości wymaga, że dostawcy tożsamości (IdPs) i dostawców atrybut (AtPs) stosować się do określonych bezpieczeństwa, prywatności i zasad operacyjnych i rozwiązań.  Jeśli nie mogą wykonywać bezpośrednie inspekcji, jednostki uzależnione (jednostek uzależnionych) należy opracować relacje zaufania za pomocą dostawców tożsamości i AtPs zdecydują się na pracy z.  
+Program Identity Assurance wymaga, aby dostawcy tożsamości (dostawców tożsamości) i dostawcy atrybutów (AtPs) przestrzegały określonych zasad i praktyk dotyczących zabezpieczeń, ochrony prywatności oraz działania.  Jeśli nie mogą wykonać inspekcji bezpośrednich, jednostki uzależnione (RPS pliku) muszą opracowywać relacje zaufania z dostawców tożsamości i AtPs, które zdecydują się z nimi pracować.  
 
-Wraz z rozwojem liczba konsumenci i dostawcy informacji o tożsamości cyfrowej trudno jest nadal parowania Zarządzanie te relacje zaufania lub nawet parowania exchange techniczne metadanych, które są wymagane dla łączności sieci.  Koncentratory Federacji zostały osiągnięte tylko ograniczony sukces w rozwiązywaniu tych problemów.
+W miarę zwiększania się liczby klientów i dostawców informacji o tożsamości cyfrowej można nadal korzystać z zarządzania buforowaniem tych relacji zaufania, a nawet do wymiany metadanych technicznych wymaganych do łączności sieciowej.  Centra federacyjne osiągnęły tylko ograniczone sukcesy podczas rozwiązywania tych problemów.
 
-### <a name="what-a-trust-framework-specification-defines"></a>Specyfikacja zaufania Framework definiuje
-TFs są linchpins modelu Framework zaufania Otwórz tożsamości programu Exchange (OIX), gdzie każdy społeczności zainteresowania podlega szczególnych specyfikacji TF. Definiuje specyfikacji TF:
+### <a name="what-a-trust-framework-specification-defines"></a>Co definiuje Specyfikacja struktury zaufania
+TFs to linchpins modelu struktury zaufania Open Identity Exchange (OIX), gdzie każda społeczność interesów podlega określonej specyfikacji TF. Taka Specyfikacja TF definiuje:
 
-- **Bezpieczeństwo i prywatność metryki community zainteresowania z definicji:**
-    - Poziomy gwarancji (Dowaniu), które są oferowane/wymagane przez uczestników; na przykład, uporządkowany zestaw oceny zaufania autentyczności informacje o tożsamości cyfrowej.
-    - Poziomy ochrony (LOP), które są oferowane/wymagane przez uczestników; na przykład, uporządkowany zestaw klasyfikacje zaufanie do ochrony informacji tożsamości cyfrowej, który jest obsługiwany przez uczestnicy społeczności zainteresowania.
+- **Metryki bezpieczeństwa i ochrony prywatności dla społeczności interesu z definicją:**
+    - Poziom gwarancji (DOWANIU) oferowany/wymagany przez uczestników; na przykład uporządkowany zestaw ocen zaufania do autentyczności informacji o tożsamości cyfrowej.
+    - Poziomy ochrony (LOP), które są oferowane/wymagane przez uczestników; na przykład uporządkowany zestaw klasyfikacji zaufania do ochrony informacji o tożsamości cyfrowej, które są obsługiwane przez uczestników w społeczności zainteresowania.
 
-- **Opis informacji cyfrowych tożsamość o ma oferowana/jest wymagana przez uczestników**.
+- **Opis informacji o tożsamości cyfrowej oferowanych/wymaganych przez uczestników**.
 
-- **Techniczne zasad do produkcji i użycie informacji o tożsamości cyfrowej, a zatem pomiaru Dowaniu i LOP. Te zasady napisane zazwyczaj obejmują następujące kategorie zasad:**
-    - Tożsamość sprawdzania zasad, na przykład: *Jak zdecydowanie jest sprawdzane informacje o tożsamości danej osoby?*
-    - Zasady zabezpieczeń, na przykład: *Jak zdecydowanie są informacje o integralności i poufności chronione?*
-    - Zasady ochrony prywatności, na przykład: *Jaki formant użytkownika ma za pośrednictwem osobowe (PII)* ?
-    - Przeżywalność zasady, na przykład: *Jeśli dostawca zaprzestaje operacje, jakie ciągłości działania i ochrony danych osobowych funkcji?*
+- **Zasady techniczne dotyczące produkcji i zużycia informacji o tożsamości cyfrowej, a tym samym do mierzenia DOWANIU i LOP. Te zapisywane zasady zwykle obejmują następujące kategorie zasad:**
+    - Zasady sprawdzania tożsamości, na przykład: *Jak mocne informacje o tożsamości osoby zbadane?*
+    - Zasady zabezpieczeń, na przykład: *Jak silnie są chronione informacje o integralności i poufności informacji?*
+    - Zasady ochrony prywatności, na przykład: *Jaką kontrolę ma użytkownik nad osobistymi informacjami o tożsamościach*?
+    - Zasady dotyczące, na przykład: *Jeśli dostawca zaprzestanie operacji, jak działa ciągłość i ochrona funkcji dane OSOBowe?*
 
-- **Profile techniczne dla celów produkcyjnych i użycie informacji o tożsamości cyfrowej. Tego typu profile uwzględniają:**
-    - Interfejsy zakresu, dla których informacji o tożsamości cyfrowej znajduje się w temacie Dowaniu określony.
-    - Wymagania techniczne współdziałania w sprawie podczas transmisji.
+- **Profile techniczne do produkcji i użycia informacji o tożsamości cyfrowej. Te profile obejmują:**
+    - Interfejsy zakresu, dla których informacje o tożsamości cyfrowej są dostępne w określonym DOWANIU.
+    - Wymagania techniczne dotyczące współdziałania z okablowaniem.
 
-- **Opisy różnych ról, które mogą wykonywać uczestnicy społeczności i wymagania kwalifikacyjne, które są wymagane do spełnienia tych ról.**
+- **Opisy różnych ról, które uczestnicy społeczności mogą wykonywać, oraz kwalifikacji, które są wymagane do spełnienia tych ról.**
 
-Ten sposób specyfikacji TF decyduje, jak informacje o tożsamości są wymieniane między uczestnikami społeczności zainteresowania: jednostek uzależnionych, tożsamości i dostawców atrybut i atrybut weryfikatory.
+W ten sposób Specyfikacja TF reguluje sposób wymiany informacji o tożsamości między uczestnikami społeczności zainteresowania: jednostkami uzależnionymi, tożsamościami i dostawcami atrybutów oraz inspektorami atrybutów.
 
-Specyfikacja TF jest jeden lub wiele dokumentów, które służą jako odniesienie do nadzoru społeczności zainteresowań, który reguluje potwierdzenia i użycie informacji o tożsamości cyfrowej w ramach społeczności. To zbiór udokumentowanego zasadom i procedurom, zaprojektowane, aby ustanowić zaufanie w tożsamości cyfrowych, które są używane w transakcji internetowych między członkami społeczności zainteresowania.  
+Specyfikacja TF to jeden lub wiele dokumentów, które stanowią odniesienie do zarządzania społecznością interesu, która reguluje potwierdzenie i użycie informacji o tożsamości cyfrowej w społeczności. Jest to udokumentowany zestaw zasad i procedur służących do ustanawiania relacji zaufania z tożsamościami cyfrowymi, które są używane dla transakcji online między członkami społeczności.  
 
-Innymi słowy Specyfikacja TF definiuje reguły do tworzenia ekosystemu tożsamości federacyjnych możliwego do użycia dla społeczności.
+Innymi słowy, Specyfikacja TF definiuje reguły do tworzenia ekosystemu dla federacyjnego tożsamości federacyjnych dla społeczności.
 
-Obecnie ma umowy powszechne korzyści takie podejście. Brak żadnych wątpliwości, specyfikacje framework ułatwienie rozwoju ekosystemu tożsamości cyfrowej weryfikowalny właściwości zabezpieczeń i zapewnienia prywatności, co oznacza, że można się ponownie między wieloma społeczności o wspólnych zainteresowaniach zaufania.
+Obecnie istnieje szeroka umowa na korzyść tego podejścia. Nie ma wątpliwości, że specyfikacje struktury zaufania ułatwiają rozwój ekosystemów tożsamości cyfrowych z zweryfikowanymi zabezpieczeniami, gwarancjami i ochroną prywatności, co oznacza, że mogą być ponownie używane w wielu społecznościach zainteresowania.
 
-W tym Przyczyna, niestandardowe zasady usługi Azure AD B2C, korzystających z platformy środowiska tożsamości używa specyfikację jako podstawa jej reprezentacji danych TF ułatwiające współdziałania.  
+Z tego powodu Azure AD B2C zasad niestandardowych, które wykorzystują platformę obsługi tożsamości, wykorzystują specyfikację jako podstawę reprezentacji danych dla TF, aby ułatwić współdziałanie.  
 
-Funkcje B2C niestandardowe zasady usługi Azure korzystających z platformy środowiska tożsamości reprezentują specyfikacji TF jako kombinację danych człowieka, jak i czytelny dla komputerów. Niektóre sekcje w tym modelu (zazwyczaj sekcje, które są bardziej opracowane głównie pod kątem zarządzania) są reprezentowane jako odwołania w opublikowanej dokumentacji zasad zabezpieczeń i prywatności wraz z procedur powiązanych (jeśli istnieje). Innych sekcjach opisano szczegółowo metadanych i środowisko uruchomieniowe reguł konfiguracji, które ułatwiają automatyzację operacyjnej.
+Azure AD B2C zasady niestandardowe, które wykorzystują platformę obsługi tożsamości, reprezentują specyfikacje TF jako mieszankę danych do odczytu ludzi i maszyn. Niektóre sekcje tego modelu (zwykle sekcje, które są bardziej zorientowane na zarządzanie) są reprezentowane jako odwołania do opublikowanych dokumentacji zasad zabezpieczeń i ochrony prywatności wraz z pokrewnymi procedurami (jeśli istnieją). Inne sekcje zawierają szczegółowe informacje na temat metadanych konfiguracji i reguł środowiska uruchomieniowego, które ułatwiają automatyzację operacyjną.
 
-## <a name="understand-trust-framework-policies"></a>Omówienie zasad zaufania Framework
+## <a name="understand-trust-framework-policies"></a>Omówienie zasad dotyczących struktury zaufania
 
-Pod względem implementacji specyfikacji TF składa się z zestawu zasad, umożliwiające pełną kontrolę nad tożsamości zachowania i doświadczenia.  Usługa Azure AD B2C niestandardowych zasad korzystających z platformy środowiska tożsamości umożliwiają tworzenie i tworzyć własne TF za pośrednictwem takie deklaratywne zasad, które można zdefiniować i skonfigurować:
+W przypadku wdrożenia Specyfikacja TF zawiera zestaw zasad, które umożliwiają pełną kontrolę nad zachowaniami i środowiskami tożsamości.  Azure AD B2C zasady niestandardowe, które wykorzystują platformę obsługi tożsamości, umożliwiają tworzenie własnych narzędzi do tworzenia i konfigurowania ich za pomocą zasad deklaratywnych, które można definiować i konfigurować:
 
-- Odwołanie do dokumentu lub odwołania, które definiują ekosystemu tożsamości federacyjnej, społeczności, które odnoszą się do TF. Są one linki do dokumentacji TF. Reguły (wstępnie zdefiniowane) operational "środowiska uruchomieniowego", lub podróży użytkownika, które zautomatyzować i/lub kontroli programu exchange i użycie oświadczenia. Te podróży użytkownika są skojarzone z Dowaniu (i LOP). Zasady mogą więc podróży użytkownika ze zróżnicowanymi LOAs (i LOPs).
+- Odwołanie do dokumentu lub odwołania, które definiują ekosystem tożsamości federacyjnej społeczności, która odnosi się do TF. Są to linki do dokumentacji TF. Reguły (wstępnie zdefiniowane) operacyjne "środowisko uruchomieniowe" lub użytkownika, które automatyzują i/lub kontrolują wymianę i użycie oświadczeń. Te podróże użytkowników są skojarzone z DOWANIU (i LOP). W związku z tym zasady mogą korzystać z różnych LOAs (i LOPs).
 
-- Dostawcy tożsamości i atrybut, lub dostawców oświadczeń, w społeczności odsetek i profile techniczne, które obsługują wraz z akredytacji Dowaniu/LOP (out-of-band), które odnoszą się do nich.
+- Dostawcy tożsamości i atrybutów albo dostawcy oświadczeń w społeczności zainteresowania i obsługiwane przez nich profile techniczne wraz z (poza pasmem) akredytacji DOWANIU/LOP, które odnoszą się do nich.
 
-- Integracja za pomocą atrybutu weryfikatory lub dostawców oświadczeń.
+- Integracja z inspektorami atrybutów lub dostawcami oświadczeń.
 
-- Jednostki uzależnione w społeczności (przez wnioskowania).
+- Jednostki uzależnione w społeczności (przez wnioskowanie).
 
-- Metadane do ustanowienia komunikacji sieciowej między uczestnikami. Te metadane, oraz profile techniczne są używane podczas wykonywania transakcji można zainstalować "na potrzeby przesyłu" współdziałanie jednostkę uzależnioną i innych uczestników społeczności.
+- Metadane służące do ustanawiania komunikacji sieciowej między uczestnikami. Te metadane, wraz z profilami technicznymi, są używane podczas transakcji do podłączania "współdziałania" w ramach interoperacyjności między jednostką uzależnioną i innymi uczestnikami społeczności.
 
-- Konwersja protokołu, jeśli istnieje (na przykład, SAML 2.0, OAuth2, WS-Federation i OpenID Connect).
+- Konwersja protokołu (na przykład SAML 2,0, OAuth2, WS-Federation i OpenID Connect Connect).
 
 - Wymagania dotyczące uwierzytelniania.
 
-- Wieloskładnikowe orkiestracji ewentualne.
+- Aranżacja wieloskładnikowego, jeśli istnieje.
 
-- Udostępniony schemat dla wszystkich oświadczeń, które są dostępne i mapowań, aby uczestnicy społeczności zainteresowania.
+- Udostępniony schemat dla wszystkich oświadczeń, które są dostępne i są przeznaczone dla uczestników społeczności zainteresowania.
 
-- Wszystkie przekształcenia oświadczeń, wraz z minimalizacji danych, w tym kontekście, w celu umożliwienia programu exchange i użycie oświadczenia.
+- Wszelkie przekształcenia oświadczeń wraz z możliwym minimalizacją danych w tym kontekście, aby utrzymać wymianę i użycie oświadczeń.
 
-- Powiązania i szyfrowania.
+- Powiązanie i szyfrowanie.
 
 - Magazyn oświadczeń.
 
-### <a name="understand-claims"></a>Zrozumienie oświadczeń
+### <a name="understand-claims"></a>Omówienie oświadczeń
 
 > [!NOTE]
-> Firma Microsoft wspólnie dotyczą wszystkich możliwych typów informacji o tożsamości, która może być wymieniane jako "oświadczenia": oświadczeń o poświadczenia uwierzytelniania użytkownika końcowego, konsultacji tożsamości, komunikację urządzenia, lokalizacji fizycznej, atrybuty, dane identyfikacyjne i tak dalej.  
+> Odwołujemy się do wszystkich możliwych typów informacji o tożsamości, które mogą być wymieniane jako "oświadczenia": oświadczenia dotyczące poświadczeń uwierzytelniania użytkownika końcowego, tożsamości przed sprawdzeniem, urządzenia komunikacyjnego, lokalizacji fizycznej, atrybutów danych osobowych, i tak dalej.  
 >
-> Używamy "oświadczenia" — zamiast "atrybuty"--, ponieważ w transakcji w trybie online tych artefaktów danych nie są fakty, które można bezpośrednio sprawdzić przez jednostkę uzależnioną. Przeciwnie są one potwierdzenia lub oświadczeń o fakty, dla których uzależnionej muszą tworzyć wystarczający poziom zaufania, aby udzielić transakcji żądanych przez użytkownika końcowego.  
+> Stosujemy termin "oświadczenia" — a nie "atrybuty" — ponieważ w transakcjach online te artefakty danych nie są faktami, które mogą być bezpośrednio zweryfikowane przez jednostkę uzależnioną. Nie są to jednak potwierdzenia lub oświadczenia dotyczące faktów, dla których jednostka uzależniona musi opracować wystarczający poziom zaufania, aby przyznać żądaną transakcję użytkownika końcowego.  
 >
-> Korzystamy również termin "oświadczenia", ponieważ zasady niestandardowej usługi Azure AD B2C, które używają platformy środowiska tożsamości są zaprojektowane w celu uproszczenia exchange wszystkich typów informacji o tożsamości cyfrowej w spójny sposób niezależnie od tego, czy jest podstawowym protokole zdefiniowane dla pobierania uwierzytelniania lub atrybutu użytkownika.  Podobnie, używany jest termin "dostawców oświadczeń" do zbiorczo odwoływania się do dostawcy tożsamości, dostawców atrybut i atrybut weryfikatory, gdy nie chcemy rozróżnić określonych funkcji.   
+> Stosujemy również termin "oświadczenia", ponieważ Azure AD B2C zasady niestandardowe korzystające z platformy Identity Experience są przeznaczone do uproszczenia wymiany wszystkich typów informacji o tożsamości cyfrowej w spójny sposób, bez względu na to, czy podstawowy protokół to zdefiniowane do uwierzytelniania użytkownika lub pobierania atrybutów.  Podobnie w przypadku używania "dostawców oświadczeń" do zbiorczego odwoływania się do dostawców tożsamości, dostawców atrybutów i inspektorów atrybutów, gdy nie chcemy rozróżnić określonych funkcji.   
 
-Ten sposób ich określają, jak informacje o tożsamości są wymieniane między jednostki uzależnionej, tożsamości i dostawców atrybut i atrybut weryfikatory. Kontrolują one tożsamość i dostawców atrybutu są wymagane do uwierzytelniania na jednostki uzależnionej ze stron. Powinny zostać uznane jako języka specyficznego dla domeny (DSL), oznacza to, język komputera, który specjalizuje się w domenie określonej aplikacji za pomocą dziedziczenia, *Jeśli* instrukcji, polimorfizmu.
+W ten sposób określają sposób wymiany informacji o tożsamości między jednostką uzależnioną, tożsamością i dostawcami atrybutów oraz inspektorami atrybutów. Określają, które tożsamości i dostawcy atrybutów są wymagane do uwierzytelniania jednostki uzależnionej. Powinny one być traktowane jako język specyficzny dla domeny (DSL), czyli język komputerowy, który jest wyspecjalizowany dla konkretnej domeny aplikacji z dziedziczeniem, *Jeśli* instrukcje, polimorfizm.
 
-Zasady te stanowią czytelnym część konstrukcji TF w zasadach niestandardowych usługi Azure AD B2C, korzystanie z platformy środowiska tożsamości. Obejmują one wszystkich operacyjnej szczegóły, w tym metadane i profile techniczne, definicje schematów oświadczenia, funkcje przekształcania oświadczeń i podróży użytkownika, które są wypełnione w ułatwienia operacyjnej aranżacji i automatyzacji dostawców oświadczeń.  
+Te zasady stanowią część do odczytu maszynowego konstrukcji TF w Azure AD B2C zasad niestandardowych wykorzystujących strukturę środowiska tożsamości. Obejmują one wszystkie szczegóły operacyjne, w tym metadane dostawców oświadczeń i profile techniczne, definicje schematów oświadczeń, funkcje przekształcania oświadczeń i przedziały użytkowników, które zostały wypełnione, aby ułatwić organizację operacyjną i automatyzację.  
 
-One są zakłada się, że *dokumentów życia* ponieważ nie istnieje szansa, że ich zawartość będzie zmieniają się z upływem czasu dotyczące aktywnych uczestników zadeklarowane w zasadach. Istnieje również ryzyko wprowadzenia warunki i postanowienia dla bycia uczestnikiem mogą ulec zmianie.  
+Przyjęto założenie, że *dokumenty są żywe* , ponieważ ich zawartość ulegnie zmianie z upływem czasu dla aktywnych uczestników zadeklarowanych w ramach zasad. Istnieje również możliwość, że warunki i postanowienia dotyczące uczestnika mogą ulec zmianie.  
 
-Federacji instalacji i konserwacji są znacznie uproszczone dzięki osłony jednostki uzależnionej stron z trwającą reconfigurations zaufania i łączność, jak różne oświadczenia dostawcy/weryfikatory join lub pozostaw (reprezentowane przez społeczność) zestawu zasad.
+Konfiguracja i konserwacja Federacji są znacznie uproszczone przez osłony stron uzależnionych od trwającego zaufania i ponownej konfiguracji łączności jako różne dostawcy oświadczeń/osoby weryfikujące lub opuszczają (społeczność reprezentowana przez program) zestaw zasad.
 
-Współdziałanie jest inny znaczące wyzwane. Dodatkowe oświadczenia dostawcy/weryfikatorzy muszą być zintegrowane, ponieważ jednostki uzależnione prawdopodobnie nie obsługuje niezbędnych protokołów. Niestandardowe zasady usługi Azure AD B2C rozwiązują ten problem, dzięki obsłudze protokoły będące standardami branżowymi i stosując podróży konkretnego użytkownika dla żądania przeniesienia, gdy jednostek uzależnionych i dostawców atrybut nie obsługują tego samego protokołu.  
+Współdziałanie jest innym znaczącym wyzwaniem. Dodatkowi dostawcy oświadczeń/weryfikatory muszą być zintegrowane, ponieważ jednostki uzależnione mogą obsługiwać wszystkie wymagane protokoły. Azure AD B2C zasady niestandardowe rozwiązują ten problem przez obsługę protokołów standardowych w branży i przez zastosowanie konkretnych podróży użytkowników do transpozycji żądań, gdy jednostki uzależnione i dostawcy atrybutów nie obsługują tego samego protokołu.  
 
-Podróży użytkownika obejmują profile protokołu i metadanych, które są używane do podłączenia "na potrzeby przesyłu" współdziałanie jednostkę uzależnioną i innych uczestników. Dostępne są także reguły operacyjnej w czasie wykonywania, które są stosowane do komunikatów żądań/odpowiedzi wymiany informacji o tożsamości wymuszania zgodności z zasadami opublikowane w ramach specyfikacji TF. Koncepcja podróży użytkownika jest kluczem do dostosowywania środowiska klienta. On również rzuca światło na, jak system działa na poziomie protokołu.
+Podróże użytkowników obejmują profile protokołów i metadane, które są używane do podłączania "współdziałania" w sieci i innych uczestników. Istnieją także reguły środowiska uruchomieniowego, które są stosowane do komunikatów żądania/odpowiedzi wymiany informacji o tożsamości w celu wymuszenia zgodności z opublikowanymi zasadami w ramach specyfikacji TF. Pomysłem podróży użytkowników jest kluczowe dostosowanie środowiska klienta. Powoduje również, że system działa na poziomie protokołu.
 
-Na tej podstawie jednostki uzależnionej strony aplikacji i portale można w zależności od ich kontekstami wywoływanie niestandardowych zasad usługi Azure AD B2C, wykorzystujące platformy środowiska tożsamości przekazanie nazwy określone zasady i uzyskać dokładne zachowanie i informacji wymiany chcą, bez żadnych bez żadnych problemów i ryzyka.
+Na tej podstawie aplikacje i portale jednostki uzależnionej mogą, w zależności od kontekstu, wywołać Azure AD B2C zasady niestandardowe, które wykorzystują platformę obsługi tożsamości, przekazując nazwę określonych zasad i uzyskują precyzyjne zachowanie i wymianę informacji chcą bez żadnych muss, Fuss lub ryzyka.

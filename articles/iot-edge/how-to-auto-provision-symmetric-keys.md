@@ -1,5 +1,5 @@
 ---
-title: Inicjowanie obsługi administracyjnej urządzeń za pomocą usługi DPS przy użyciu zaświadczania klucza symetrycznego — Azure IoT Edge | Microsoft Docs
+title: Zainicjuj obsługę administracyjną urządzeń za pomocą usługi DPS z zaświadczeniem klucza symetrycznego — Azure IoT Edge | Microsoft Docs
 description: Korzystanie z zaświadczania klucza symetrycznego do testowania automatycznej aprowizacji urządzeń dla Azure IoT Edge przy użyciu usługi Device Provisioning
 author: kgremban
 manager: philmea
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91162271bf36e1d68e087a60723497e7fc261ec
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275737"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414594"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Tworzenie i Inicjowanie obsługi urządzenia IoT Edge przy użyciu zaświadczania klucza symetrycznego
 
-Urządzenia w usłudze Azure IoT Edge mogą być automatycznie aprowizowane za pomocą [usługi Device Provisioning](../iot-dps/index.yml) podobnie jak w przypadku urządzeń, których nie włączono usługi edge. Jeśli znasz procesu automatycznego aprowizowania, zapoznaj się z [automatycznej aprowizacji pojęcia](../iot-dps/concepts-auto-provisioning.md) przed kontynuowaniem.
+Urządzenia w usłudze Azure IoT Edge mogą być autoprovisioned przy użyciu [usługi Device Provisioning](../iot-dps/index.yml) podobnie jak w przypadku urządzeń, których nie włączono usługi edge. Jeśli znasz procesu autoprovisioning, zapoznaj się z [pojęcia autoprovisioning](../iot-dps/concepts-auto-provisioning.md) przed kontynuowaniem.
 
 W tym artykule opisano sposób tworzenia rejestracji indywidualnej usługi Device Provisioning przy użyciu zaświadczania klucza symetrycznego na urządzeniu IoT Edge, wykonując następujące czynności:
 
@@ -165,8 +165,7 @@ Podczas aprowizacji urządzenia potrzebne są następujące informacje:
 
 Postępuj zgodnie z instrukcjami dotyczącymi architektury urządzenia. Upewnij się, że Konfigurowanie środowiska uruchomieniowego usługi IoT Edge do automatycznego, nie ręcznego inicjowania obsługi.
 
-* [Zainstaluj środowisko uruchomieniowe Azure IoT Edge w systemie Linux (x64)](how-to-install-iot-edge-linux.md)
-* [Zainstaluj środowisko uruchomieniowe Azure IoT Edge w systemie Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)
+[Zainstaluj środowisko uruchomieniowe Azure IoT Edge w systemie Linux](how-to-install-iot-edge-linux.md)
 
 Sekcja w pliku konfiguracyjnym dla udostępniania klucza symetrycznego wygląda następująco:
 
@@ -188,7 +187,7 @@ Zastąp wartości symboli zastępczych `{registration_id}`dla `{scope_id}`, `{sy
 
 Postępuj zgodnie z instrukcjami, aby zainstalować środowisko uruchomieniowe IoT Edge na urządzeniu, dla którego Wygenerowano pochodny klucz urządzenia. Upewnij się, że Konfigurowanie środowiska uruchomieniowego usługi IoT Edge do automatycznego, nie ręcznego inicjowania obsługi.
 
-[Zainstaluj i automatycznie Udostępnij IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[Instalowanie i automatyczne Inicjowanie obsługi IoT Edge w systemie Windows](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>Sprawdź pomyślnej instalacji
 

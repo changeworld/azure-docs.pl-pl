@@ -2,8 +2,8 @@
   href: /azure/hdinsight
 - name: Omówienie
   items:
-    - name: Co to jest pakiet Enterprise Security w usłudze HDInsight?
-      href: apache-domain-joined-introduction.md
+    - name: Co to są zabezpieczenia przedsiębiorstwa w usłudze HDInsight?
+      href: hdinsight-security-overview.md
 - name: Samouczki
   items:
     - name: Kontrola dostępu na podstawie ról platformy Apache HBase z użyciem usługi Apache Ranger

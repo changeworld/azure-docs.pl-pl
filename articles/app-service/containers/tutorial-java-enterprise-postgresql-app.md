@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: dcd1ef5c54885b758ac9a301616d79a163999bc9
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 2d26d9e145030e5972289c224dc2f76078d67527
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509638"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498479"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Samouczek: Tworzenie aplikacji internetowej języka Java EE korzystającej z bazy danych Postgres na platformie Azure
 
-Ten samouczek pokazuje, jak utworzyć aplikację internetową Java Enterprise Edition (EE) w usłudze Azure App Service i połączyć ją z bazą danych Postgres. Po ukończeniu tego samouczka będziesz mieć działającą w usłudze [Azure App Service dla systemu Linux](app-service-linux-intro.md) aplikację [WildFly](https://www.wildfly.org/about/), która umożliwia przechowywanie danych w usłudze [Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/).
+W tym samouczku pokazano, jak utworzyć aplikację sieci Web Java Enterprise Edition (EE) na Azure App Service i połączyć ją z bazą danych Postgres. Po ukończeniu tego samouczka będziesz mieć działającą w usłudze [Azure App Service dla systemu Linux](app-service-linux-intro.md) aplikację [WildFly](https://www.wildfly.org/about/), która umożliwia przechowywanie danych w usłudze [Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -38,7 +38,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="clone-and-edit-the-sample-app"></a>Klonowanie i edytowanie aplikacji przykładowej
 
-W tym kroku zostanie sklonuj przykładową aplikację i skonfigurować Model obiektu projektu Maven (POM lub *pom.xml*) do wdrożenia.
+W tym kroku utworzysz przykładową aplikację i skonfigurujesz model obiektów projektu Maven (pliku pom lub *pliku pom. XML*) dla wdrożenia.
 
 ### <a name="clone-the-sample"></a>Klonowanie przykładu
 
@@ -104,7 +104,7 @@ Aktualnie aplikacja korzysta z bazy danych H2 w pamięci. Aby utworzyć nową ka
 
 ## <a name="provision-a-postgres-database"></a>Aprowizowanie bazy danych Postgres
 
-Aby zainicjować obsługę serwera bazy danych Postgres, otwórz terminal i użyj [az postgres server utworzyć](https://docs.microsoft.com/cli/azure/postgres/server) polecenia, jak pokazano w poniższym przykładzie. Zastąp symbole zastępcze (włącznie z nawiasami) wybranej wartości, przy użyciu tego samego zasobu grupy, które wcześniej podane dla swojego wystąpienia usługi App Service. Poświadczenia administratora, podaj będzie włączyć dostęp w przyszłości, więc należy koniecznie Zapisz je w celu późniejszego użycia.
+Aby zainicjować obsługę administracyjną serwera bazy danych Postgres, Otwórz Terminal i użyj polecenia [AZ Postgres Server Create](https://docs.microsoft.com/cli/azure/postgres/server) , jak pokazano w poniższym przykładzie. Zamień symbole zastępcze (w tym nawiasy kątowe) na wybrane wartości, korzystając z tej samej grupy zasobów, która została podana wcześniej dla wystąpienia App Service. Poświadczenia administratora będą włączane w przyszłości, dlatego należy zanotować je do późniejszego użycia.
 
 ```bash
 az postgres server create \
@@ -116,7 +116,7 @@ az postgres server create \
     --admin-password <administrator password> \
 ```
 
-Po uruchomieniu tego polecenia, przejdź do witryny Azure portal, a następnie przejdź do bazy danych Postgres. Gdy pojawi się blok, skopiuj wartości „Nazwa serwera” i „Nazwa logowania administratora serwera”. Zostaną one użyte później.
+Po uruchomieniu tego polecenia przejdź do Azure Portal i przejdź do bazy danych Postgres. Gdy pojawi się blok, skopiuj wartości „Nazwa serwera” i „Nazwa logowania administratora serwera”. Zostaną one użyte później.
 
 ### <a name="allow-access-to-azure-services"></a>Zezwalanie na dostęp do usług platformy Azure
 
@@ -163,26 +163,26 @@ Następny krok obejmuje modyfikację konfiguracji interfejsu API transakcji jęz
 
 ## <a name="configure-the-wildfly-application-server"></a>Konfigurowanie serwera aplikacji WildFly
 
-Przed wdrożeniem ponownie skonfigurowanej aplikacji musimy zaktualizować serwer aplikacji WildFly o moduł Postgres i jego zależności. Więcej informacji o konfiguracji znajduje się w temacie [server skonfigurować WildFly](configure-language-java.md#configure-java-ee-wildfly).
+Przed wdrożeniem ponownie skonfigurowanej aplikacji musimy zaktualizować serwer aplikacji WildFly o moduł Postgres i jego zależności. Więcej informacji o konfiguracji można znaleźć na [serwerze konfiguracji WildFly](configure-language-java.md#configure-java-ee-wildfly).
 
-Aby skonfigurować serwer, musimy cztery pliki w *wildfly_config /* katalogu:
+Aby skonfigurować serwer, potrzebne będą cztery pliki w *wildfly_config/* katalogu:
 
 - **postgresql-42.2.5.jar**: ten plik JAR jest sterownikiem JDBC dla bazy danych Postgres. Więcej informacji można znaleźć na [oficjalnej witrynie](https://jdbc.postgresql.org/index.html).
 - **postgres-module.xml**: ten plik XML służy do deklarowania nazwy modułu Postgres (org.postgres). Umożliwia on również wskazanie zasobów i zależności niezbędnych do korzystania z tego modułu.
-- **jboss_cli_commands.cl**: ten plik zawiera polecenia konfiguracji, które zostaną wykonane w interfejsie wiersza polecenia oprogramowania JBoss. Polecenia te pozwalają na przykład dodać moduł Postgres do serwera aplikacji WildFly, podać poświadczenia, zadeklarować nazwę JNDI i ustawić próg limitu czasu. Jeśli nie znasz dobrze interfejsu wiersza polecenia oprogramowania JBoss, zapoznaj się z [oficjalną dokumentacją](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
-- **startup_script.sh**: ten skrypt powłoki jest wykonywany przy każdym uruchomieniu wystąpienia usługi App Service. Skrypt wykonuje tylko jedną funkcję: przekazanie w potoku poleceń w *jboss_cli_commands.cli* JBoss interfejsu wiersza polecenia.
+- **jboss_cli_commands. CLI**: ten plik zawiera polecenia konfiguracji, które zostaną wykonane w interfejsie wiersza polecenia oprogramowania JBoss. Polecenia te pozwalają na przykład dodać moduł Postgres do serwera aplikacji WildFly, podać poświadczenia, zadeklarować nazwę JNDI i ustawić próg limitu czasu. Jeśli nie znasz dobrze interfejsu wiersza polecenia oprogramowania JBoss, zapoznaj się z [oficjalną dokumentacją](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
+- **startup_script.sh**: ten skrypt powłoki jest wykonywany przy każdym uruchomieniu wystąpienia usługi App Service. Skrypt wykonuje tylko jedną funkcję: przeprzewody poleceń z *jboss_cli_commands. CLI* do interfejsu wiersza polecenia JBoss.
 
 Zdecydowanie zalecamy zapoznanie się z zawartością tych plików, zwłaszcza pliku *jboss_cli_commands.cli*.
 
 ### <a name="ftp-the-configuration-files"></a>Przesyłanie plików konfiguracji za pośrednictwem połączenia FTP
 
-Firma Microsoft będzie należy FTP zawartość *wildfly_config /* do naszych wystąpienia usługi App Service. Aby uzyskać poświadczenia protokołu FTP, kliknij przycisk **Pobierz profil publikowania** widoczny w bloku usługi App Service w witrynie Azure Portal. Nazwa użytkownika i hasło protokołu FTP znajdują się w pobranym dokumencie XML. Więcej informacji na temat profilu publikowania można znaleźć w [tym dokumencie](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
+Będziemy musieli za pomocą protokołu FTP zawartości *wildfly_config/* do naszego wystąpienia App Service. Aby uzyskać poświadczenia protokołu FTP, kliknij przycisk **Pobierz profil publikowania** widoczny w bloku usługi App Service w witrynie Azure Portal. Nazwa użytkownika i hasło protokołu FTP znajdują się w pobranym dokumencie XML. Więcej informacji na temat profilu publikowania można znaleźć w [tym dokumencie](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
-Za pomocą narzędzia FTP, co pozwala przenieść cztery pliki w *wildfly_config /* do */home/site/wdrożeń/tools/* . Pamiętaj o tym, że należy przesłać same pliki, a nie katalog.
+Za pomocą wybranego przez siebie narzędzia FTP Przenieś cztery pliki w *wildfly_config/* do */Home/site/Deployments/Tools/* . Pamiętaj o tym, że należy przesłać same pliki, a nie katalog.
 
 ### <a name="finalize-app-service"></a>Finalizowanie usługi App Service
 
-W bloku usługi App Service przejdź do panelu „Ustawienia aplikacji”. W obszarze "Środowiska uruchomieniowego" Ustaw pole "Pliku startowego" */home/site/deployments/tools/startup_script.sh*. Gwarantuje to uruchomienie skryptu powłoki po utworzeniu wystąpienia usługi App Service, ale przed uruchomieniem serwera WildFly.
+W bloku usługi App Service przejdź do panelu „Ustawienia aplikacji”. W obszarze "środowisko uruchomieniowe" Ustaw wartość pola "plik startowy" na */Home/site/Deployments/Tools/startup_script.sh*. Gwarantuje to uruchomienie skryptu powłoki po utworzeniu wystąpienia usługi App Service, ale przed uruchomieniem serwera WildFly.
 
 Na koniec uruchom ponownie usługę App Service. Przycisk znajduje się w panelu „Przegląd”.
 
@@ -194,7 +194,7 @@ W oknie terminalu ponownie skompiluj i wdróż aplikację.
 mvn clean install -DskipTests azure-webapp:deploy
 ```
 
-Gratulacje! Twoja aplikacja używa teraz bazy danych Postgres. Wszystkie rekordy utworzone w aplikacji będą przechowywane w bazie danych Postgres, a nie w poprzednio używanej bazie danych H3 w pamięci. Aby to sprawdzić, możesz utworzyć rekord i ponownie uruchomić usługę App Service. Rekordy nadal będą dostępne po ponownym uruchomieniu aplikacji.
+Gratulacje! Aplikacja używa teraz bazy danych Postgres, a wszystkie rekordy utworzone w aplikacji będą przechowywane w Postgres, a nie w poprzedniej bazie danych H2 w pamięci. Aby to sprawdzić, możesz utworzyć rekord i ponownie uruchomić usługę App Service. Rekordy nadal będą dostępne po ponownym uruchomieniu aplikacji.
 
 ## <a name="clean-up"></a>Czyszczenie
 
@@ -204,7 +204,7 @@ Jeśli nie potrzebujesz tych zasobów w innym samouczku (zobacz Następne kroki)
 az group delete --name <your-resource-group>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

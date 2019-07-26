@@ -1,68 +1,67 @@
 ---
-title: Wspólne atrybuty zabezpieczeń dla usługi Azure Backup
-description: Lista kontrolna typowych atrybutów zabezpieczeń do oceny usługi Azure Backup
-services: backup
+title: Atrybuty zabezpieczeń dla Azure Backup
+description: Lista kontrolna atrybutów zabezpieczeń do oceny Azure Backup
 author: utraghuv
 manager: barbkess
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 595cc4eff70e2df4cb6d7f1d6a0c1a2748b34bf2
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: c2500c6c9ff6882e521f4edce02426a92a0bd39f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565632"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464930"
 ---
-# <a name="security-attributes-for-azure-backup"></a>Atrybuty zabezpieczeń dla usługi Azure Backup
+# <a name="security-attributes-for-azure-backup"></a>Atrybuty zabezpieczeń dla Azure Backup
 
-W tym artykule opisano atrybuty zabezpieczeń wbudowanych w usługę Azure Backup. 
+W tym artykule opisano atrybuty zabezpieczeń wbudowane w Azure Backup. 
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Zapobiegawczych
+## <a name="preventative"></a>Zapobiegawczej
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Tak | Dzięki szyfrowaniu usługi storage dla kont magazynu. |
-| Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Nie | Przy użyciu protokołu HTTPS. |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Nie |  |
-| Szyfrowanie na poziomie kolumny (Azure Data Services)| Nie |  |
-| Wywołania interfejsu API szyfrowane| Tak |  |
+| Szyfrowanie w spoczynku (takie jak szyfrowanie po stronie serwera, szyfrowanie po stronie serwera z kluczami zarządzanymi przez klienta i inne funkcje szyfrowania)| Tak | Korzystanie z szyfrowania usługi Storage dla kont magazynu. |
+| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Nie | Przy użyciu protokołu HTTPS. |
+| Obsługa kluczy szyfrowania (CMK, BYOK itp.)| Nie |  |
+| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| Nie |  |
+| Wywołania interfejsu API są szyfrowane| Tak |  |
 
-## <a name="network-segmentation"></a>Segmentacji sieci
+## <a name="network-segmentation"></a>Segmentacja sieci
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Obsługa punktu końcowego usługi| Nie |  |
+| Obsługa punktów końcowych usługi| Nie |  |
 | Obsługa iniekcji sieci wirtualnej| Nie |  |
-| Izolacja sieci i zapory pomocy technicznej| Tak | Wymuszanie tunelowania jest obsługiwana dla kopii zapasowych maszyn wirtualnych. Wymuszone tunelowanie nie jest obsługiwana w przypadku obciążeń uruchomionych maszyn wirtualnych. |
+| Izolacja sieci i obsługa zapór| Tak | Wymuszone tunelowanie jest obsługiwane w przypadku kopii zapasowej maszyny wirtualnej. Wymuszone tunelowanie nie jest obsługiwane w przypadku obciążeń uruchamianych wewnątrz maszyn wirtualnych. |
 | Obsługa tunelowania wymuszonego| Nie |  |
 
 ## <a name="detection"></a>Wykrywanie
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Tak | Usługa log Analytics jest świadczona za pośrednictwem dzienników diagnostycznych. Zobacz [monitora usługi Azure Backup chronionych obciążeń przy użyciu usługi Log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) Aby uzyskać więcej informacji. |
+| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Yes | Log Analytics jest obsługiwana za pośrednictwem dzienników diagnostycznych. Aby uzyskać więcej informacji, zobacz [monitorowanie Azure Backup chronionych obciążeń przy użyciu log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) . |
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| Tak | Uwierzytelnianie jest za pomocą usługi Azure Active Directory. |
-| Autoryzacja| Tak | Klient utworzył i wbudowane role kontroli RBAC są używane. Zobacz [Use Role-Based kontroli dostępu do zarządzania punkty odzyskiwania usługi Azure Backup](/azure/backup/backup-rbac-rs-vault) Aby uzyskać więcej informacji. |
+| Authentication| Tak | Uwierzytelnianie odbywa się za Azure Active Directory. |
+| Authorization| Tak | Są używane wbudowane role RBAC klienta. Aby uzyskać więcej informacji, zobacz temat [używanie Access Control opartych na rolach w celu zarządzania Azure Backup punktów odzyskiwania](/azure/backup/backup-rbac-rs-vault) . |
 
 
 ## <a name="audit-trail"></a>Dziennik inspekcji
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji| Tak | Dzienniki aktywności są rejestrowane wszystkie akcje klienta wyzwalane w witrynie Azure portal. |
-| Rejestrowanie płaszczyzny danych i inspekcji| Nie | Płaszczyzna danych w usłudze Azure Backup nie można nawiązać połączenia z bezpośrednio.  |
+| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak | Wszystkie akcje wyzwalane przez klienta z Azure Portal są rejestrowane w dziennikach aktywności. |
+| Rejestrowanie i inspekcja płaszczyzny danych| Nie | Nie można bezpośrednio połączyć Azure Backup płaszczyzny danych.  |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Tak|  |
+| Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| Yes|  |

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Application Insights OpenCensus rozproszonego śledzenia lokalnej usługi przesyłania dalej (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Do przodu OpenCensus rozproszonych śledzi i rozciąga się od języków, takich jak Python, a następnie przejść do usługi Azure Application Insights
+title: Usługa Azure Application Insights OpenCensus — moduł przekazujący śledzenie rozproszone (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Przekazuj OpenCensus rozproszone i rozpięte z języków, takich jak Python, i przejdź do platformy Azure Application Insights
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,77 +12,77 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa64755b636005f4ed8ea5c074ffaada51fb8dd9
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699350"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348155"
 ---
-# <a name="local-forwarder-preview"></a>Lokalne usługi przesyłania dalej (wersja zapoznawcza)
+# <a name="local-forwarder-preview"></a>Lokalna usługa przesyłania dalej (wersja zapoznawcza)
 
-Lokalne usługi przesyłania dalej jest agent, który gromadzi informacje o usłudze Application Insights lub [OpenCensus](https://opencensus.io/) dane telemetryczne z różnych zestawów SDK i kieruje je do usługi Application Insights. Jest w stanie działać w obszarze Windows i Linux. Może również być może zostać uruchomiony w systemie macOS, ale który nie jest oficjalnie obsługiwany w tej chwili.
+Lokalna usługa przesyłania dalej to Agent, który zbiera dane telemetryczne Application Insights lub [OpenCensus](https://opencensus.io/) z różnych zestawów SDK i przekierowuje je do Application Insights. Może działać w systemach Windows i Linux. Może być również możliwe uruchomienie go w ramach macOS, ale nie jest to oficjalnie obsługiwane.
 
-## <a name="running-local-forwarder"></a>Uruchamianie lokalne usługi przesyłania dalej
+## <a name="running-local-forwarder"></a>Uruchamianie lokalnego usługi przesyłania dalej
 
-Lokalne usługi przesyłania dalej jest [projekt typu open source w serwisie GitHub](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases). Istnieje szereg sposobów, aby uruchomić lokalnej usługi przesyłania dalej na wielu platformach.
+Lokalna usługa przesyłania dalej to [projekt Open Source w usłudze GitHub](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases). Istnieją różne sposoby uruchamiania lokalnego usługi przesyłania dalej na wielu platformach.
 
 ### <a name="windows"></a>Windows
 
-#### <a name="windows-service"></a>Windows Service
+#### <a name="windows-service"></a>Usługa systemu Windows
 
-Jest najprostszym sposobem uruchamiania lokalnego usługi przesyłania dalej w obszarze Windows przez zainstalowanie go jako usługę Windows. Wersja zawiera plik wykonywalny usługi Windows (*WindowsServiceHost/Microsoft.LocalForwarder.WindowsServiceHost.exe*) który można łatwo zarejestrować w systemie operacyjnym.
+Najprostszym sposobem uruchamiania lokalnego usługi przesyłania dalej w systemie Windows jest zainstalowanie jej jako usługi systemu Windows. Wydanie zawiera plik wykonywalny usługi systemu Windows (*WindowsServiceHost/Microsoft. LocalForwarder. WindowsServiceHost. exe*), który może być łatwo zarejestrowany w systemie operacyjnym.
 
 > [!NOTE]
-> Usługa lokalnej usługi przesyłania dalej wymaga co najmniej programu .NET Framework 4.7. Jeśli nie masz programu .NET Framework 4.7 usługi instalacji, ale nie rozpocznie się. Najnowsza wersja programu .NET Framework dostęp do **[odwiedź stronę pobierania programu .NET Framework](
+> Lokalna usługa przesyłania dalej wymaga co najmniej .NET Framework 4,7. Jeśli nie masz .NET Framework 4,7, usługa zostanie zainstalowana, ale nie zostanie uruchomiona. Najnowsza wersja programu .NET Framework dostęp do **[odwiedź stronę pobierania programu .NET Framework](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
-1. Pobierz LF. Plik WindowsServiceHost.zip [stronie wersji lokalnej usługi przesyłania dalej](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) w witrynie GitHub.
+1. Pobierz LF. Plik WindowsServiceHost. zip z [lokalnej strony wersji usługi przesyłania dalej](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) w witrynie GitHub.
 
-    ![Zrzut ekranu przedstawiający stronę pobierania wersji lokalnej usługi przesyłania dalej](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
+    ![Zrzut ekranu strony pobierania wersji usługi przesyłania dalej](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
-2. W tym przykładzie w celu ułatwienia demonstracji, po prostu wyodrębnimy pliku .zip do ścieżki `C:\LF-WindowsServiceHost`.
+2. W tym przykładzie w celu ułatwienia demonstracji po prostu wyodrębnimy plik. zip do ścieżki `C:\LF-WindowsServiceHost`.
 
-    Aby zarejestrować usługę i skonfigurować go na uruchomienie przy rozruchu systemu, uruchom następujące polecenie w wierszu polecenia jako Administrator:
+    Aby zarejestrować usługę i skonfigurować ją do uruchamiania przy rozruchu systemu, uruchom następujące polecenie w wierszu polecenia jako administrator:
 
     ```
     sc create "Local Forwarder" binpath="C:\LF-WindowsServiceHost\Microsoft.LocalForwarder.WindowsServiceHost.exe" start=auto
     ```
     
-    Powinna pojawić się odpowiedź dla:
+    Powinna zostać wyświetlona odpowiedź:
     
     `[SC] CreateService SUCCESS`
     
-    Aby zbadać nowej usługi przy użyciu typu usługi graficznego interfejsu użytkownika ``services.msc``
+    Aby przeanalizować nową usługę za pomocą typu graficznego interfejsu użytkownika usług``services.msc``
         
-     ![Zrzut ekranu przedstawiający usługi modułu przekazującego lokalne](./media/opencensus-local-forwarder/002-services.png)
+     ![Zrzut ekranu usługi lokalnego przesyłania dalej](./media/opencensus-local-forwarder/002-services.png)
 
-3. **Kliknij prawym przyciskiem myszy** nowej lokalnej usługi przesyłania dalej, a następnie wybierz pozycję **Start**. Usługi staną się teraz uruchomiony.
+3. **Kliknij prawym przyciskiem myszy** nową lokalną usługę przesyłania dalej i wybierz pozycję **Uruchom**. Usługa zostanie teraz uruchomiona.
 
-4. Domyślnie usługa została utworzona bez żadnych akcji odzyskiwania. Możesz **kliknij prawym przyciskiem myszy** i wybierz **właściwości** > **odzyskiwania** skonfigurować automatyczne odpowiedzi na awarię usługi.
+4. Domyślnie usługa jest tworzona bez żadnych akcji odzyskiwania. Możesz **kliknąć prawym przyciskiem myszy** i wybrać pozycję **Właściwości** > **odzyskiwanie** , aby skonfigurować automatyczne reagowanie na awarię usługi.
 
-    Lub jeśli wolisz skonfigurować automatyczne odzyskiwanie programowe przypadku wystąpienia awarii, możesz użyć:
+    Lub jeśli wolisz ustawiać automatyczne opcje odzyskiwania w przypadku wystąpienia błędów, możesz użyć:
 
     ```
     sc failure "Local Forwarder" reset= 432000 actions= restart/1000/restart/1000/restart/1000
     ```
 
-5. W tej samej lokalizacji co Twoje ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` pliku, który w tym przykładzie jest ``C:\LF-WindowsServiceHost`` istnieje plik o nazwie ``LocalForwarder.config``. Jest to plik opartymi na języku xml, który pozwala na dostosowanie konfiguracji usługi localforwader i określ klucz Instrumentacji zasobu usługi Application Insights przekazywane dane rozproszonego śledzenia. 
+5. W tej samej lokalizacji ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` , w której znajduje się plik, w tym ``C:\LF-WindowsServiceHost`` przykładzie istnieje plik o nazwie. ``LocalForwarder.config`` Jest to plik oparty na formacie XML, który umożliwia dostosowanie konfiguracji localforwader i określenie klucza Instrumentacji zasobu Application Insights, do którego mają być przekazywane dane śledzenia rozproszonego. 
 
-    Po wprowadzeniu zmian w ``LocalForwarder.config`` plik, aby dodać klucz instrumentacji, należy pamiętać o ponownym uruchomieniu **lokalna Usługa przesyłania dalej** umożliwia zmiany zaczęły obowiązywać.
+    Po przeprowadzeniu edycji ``LocalForwarder.config`` pliku w celu dodania klucza Instrumentacji należy ponownie uruchomić **usługę przesyłania dalej** , aby umożliwić wprowadzenie zmian.
     
-6. Aby upewnić się, że żądane ustawienia zostały spełnione i lokalne usługi przesyłania dalej nasłuchuje danych śledzenia jako oczekiwana wyboru ``LocalForwarder.log`` pliku. Powinny zostać wyświetlone wyniki podobne do poniższej ilustracji w dolnej części pliku:
+6. Aby upewnić się, że żądane ustawienia są na miejscu i że lokalny moduł przesyłania dalej nasłuchuje danych śledzenia zgodnie z ``LocalForwarder.log`` oczekiwaniami, sprawdź plik. Powinny być widoczne wyniki podobne do poniższej ilustracji w dolnej części pliku:
 
-    ![Zrzut ekranu LocalForwarder.log pliku](./media/opencensus-local-forwarder/003-log-file.png)
+    ![Zrzut ekranu przedstawiający plik LocalForwarder. log](./media/opencensus-local-forwarder/003-log-file.png)
 
 #### <a name="console-application"></a>Aplikacja konsolowa
 
-Dla niektórych zastosowań, może być korzystne uruchomić lokalnej usługi przesyłania dalej jako aplikację konsolową w języku. Wersja jest dostarczany z następujących wersji pliku wykonywalnego hosta konsoli:
-* plik binarny platformy .NET Core zależny od struktury */ConsoleHost/publish/Microsoft.LocalForwarder.ConsoleHost.dll*. Uruchomienie tych danych binarnych wymaga platformy .NET Core zainstalowanego środowiska uruchomieniowego; Ten plik do pobrania można znaleźć [strony](https://www.microsoft.com/net/download/dotnet-core/2.1) Aby uzyskać szczegółowe informacje.
+W przypadku niektórych przypadków użycia może być korzystne uruchomienie lokalnego modułu przekazującego jako aplikacji konsolowej. Wydanie zawiera następujące wersje wykonywalne hosta konsoli:
+* zależny od platformy .NET Core */ConsoleHost/Publish/Microsoft.LocalForwarder.ConsoleHost.dll*binarny. Uruchomienie tego pliku binarnego wymaga zainstalowania środowiska uruchomieniowego platformy .NET Core; Aby uzyskać szczegółowe informacje, zobacz tę [stronę](https://www.microsoft.com/net/download/dotnet-core/2.1) pobierania.
   ```batchfile
   E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
   ```
-* autonomiczny zestaw .NET Core plików binarnych dla x86 i x64 64. Nie wymagają one środowisko uruchomieniowe programu .NET Core do uruchomienia. */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
+* własny zestaw plików binarnych platformy .NET Core dla platform x86 i x64. Nie wymaga to uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
   ```batchfile
   E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
   E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
@@ -90,26 +90,26 @@ Dla niektórych zastosowań, może być korzystne uruchomić lokalnej usługi pr
 
 ### <a name="linux"></a>Linux
 
-Podobnie jak w przypadku Windows, wersja jest dostarczany z następujących wersji pliku wykonywalnego hosta konsoli:
-* plik binarny platformy .NET Core zależny od struktury */ConsoleHost/publish/Microsoft.LocalForwarder.ConsoleHost.dll*. Uruchomienie tych danych binarnych wymaga platformy .NET Core zainstalowanego środowiska uruchomieniowego; Ten plik do pobrania można znaleźć [strony](https://www.microsoft.com/net/download/dotnet-core/2.1) Aby uzyskać szczegółowe informacje.
+Podobnie jak w przypadku systemu Windows, wydanie zawiera następujące wersje wykonywalne hosta konsoli:
+* zależny od platformy .NET Core */ConsoleHost/Publish/Microsoft.LocalForwarder.ConsoleHost.dll*binarny. Uruchomienie tego pliku binarnego wymaga zainstalowania środowiska uruchomieniowego platformy .NET Core; Aby uzyskać szczegółowe informacje, zobacz tę [stronę](https://www.microsoft.com/net/download/dotnet-core/2.1) pobierania.
 
 ```batchfile
 dotnet Microsoft.LocalForwarder.ConsoleHost.dll
 ```
 
-* niezależna platformy .NET Core zestaw plików binarnych dla systemu linux-64. Ta nie wymaga środowisko uruchomieniowe programu .NET Core do uruchomienia. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
+* własny zestaw plików binarnych platformy .NET Core dla systemu Linux-64. To nie wymaga uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
 
 ```batchfile
 user@machine:~/ConsoleHost/linux-x64/publish$ sudo chmod +x Microsoft.LocalForwarder.ConsoleHost
 user@machine:~/ConsoleHost/linux-x64/publish$ ./Microsoft.LocalForwarder.ConsoleHost
 ```
 
-Wielu użytkowników systemu Linux chcesz uruchomić lokalnej usługi przesyłania dalej jako demon. Systemy Linux są dostarczane z różnych rozwiązań do zarządzania usługami, takimi jak Upstart, sysv lub systemd. Niezależnie od używanej wersji określonego jest, służy do uruchamiania lokalnego usługi przesyłania dalej w sposób, który jest najbardziej odpowiednie dla danego scenariusza.
+Wielu użytkowników systemu Linux będzie chcą uruchamiać lokalny moduł przesyłania dalej jako demon. Systemy Linux są dostarczane z różnymi rozwiązaniami do zarządzania usługami, takimi jak sysv i system. Niezależnie od konkretnej wersji, można użyć jej do uruchamiania lokalnego usługi przesyłania dalej w sposób, który jest najbardziej odpowiedni dla Twojego scenariusza.
 
-Na przykład utwórz usługi demona przy użyciu systemd. Użyjemy wersji zależny od struktury, ale takie same może odbywać się dla nich niezależna także.
+Na przykład Utwórzmy usługę demona przy użyciu systemu. Użyjemy wersji zależnej od struktury, ale ten sam można wykonać dla samego siebie.
 
-* Utwórz następujący plik usługi o nazwie *localforwarder.service* i umieść go w */lib/systemd/system*.
-W tym przykładzie przyjęto założenie, nazwa użytkownika to SAMPLE_USER i zostały skopiowane pliki binarne framework zależnych od lokalnej usługi przesyłania dalej (z */ConsoleHost/publikowanie*) do */home/SAMPLE_USER/LOCALFORWARDER_DIR*.
+* Utwórz następujący plik usługi o nazwie *localforwarder. Service* i umieść go w usłudze */lib/systemd/system*.
+W tym przykładzie przyjęto założenie, że Twoja nazwa użytkownika to SAMPLE_USER i skopiowano pliki binarne zależne od platformy (z */ConsoleHost/Publish*) do */Home/SAMPLE_USER/LOCALFORWARDER_DIR*.
 
 ```
 # localforwarder.service
@@ -134,27 +134,27 @@ ExecStart=/usr/bin/env dotnet /home/SAMPLE_USER/LOCALFORWARDER_DIR/Microsoft.Loc
 WantedBy=multi-user.target
 ```
 
-* Uruchom następujące polecenie, aby nakazać systemd, aby uruchomić lokalnej usługi przesyłania dalej na każdym rozruchu
+* Uruchom następujące polecenie, aby poinstruować system w celu uruchomienia lokalnej usługi przesyłania dalej na każdym rozruchu
 
 ```
 systemctl enable localforwarder
 ```
 
-* Uruchom następujące polecenie, aby nakazać systemd, aby natychmiast rozpocząć lokalnej usługi przesyłania dalej
+* Uruchom następujące polecenie, aby poinstruować system o konieczności natychmiastowego uruchomienia usługi przesyłania dalej
 
 ```
 systemctl start localforwarder
 ```
 
-* Monitorowanie usługi, sprawdzając * *.log* plików w katalogu /home/SAMPLE_USER/LOCALFORWARDER_DIR.
+* Monitoruj usługę, sprawdzając pliki * *. log* w katalogu/Home/SAMPLE_USER/LOCALFORWARDER_DIR.
 
 ### <a name="mac"></a>Mac
-Lokalne usługi przesyłania dalej, mogą działać z systemem macOS, ale obecnie nie jest oficjalnie obsługiwana.
+Lokalna usługa przesyłania dalej może współpracować z usługą macOS, ale nie jest obecnie oficjalnie obsługiwana.
 
-### <a name="self-hosting"></a>Hostingu samodzielnego
-Lokalne usługi przesyłania dalej również jest dystrybuowane jako pakiet NuGet programu .NET Standard, co umożliwia hostowanie w aplikacji .NET.
+### <a name="self-hosting"></a>Samoobsługowe hosting
+Lokalna usługa przesyłania dalej jest również dystrybuowana jako pakiet NuGet .NET Standard, co umożliwia hostowanie go w ramach własnej aplikacji .NET.
 
-```C#
+```csharp
 using Library;
 ...
 Host host = new Host();
@@ -167,19 +167,19 @@ host.Run(config, TimeSpan.FromSeconds(5));
 host.Stop();
 ```
 
-## <a name="configuring-local-forwarder"></a>Konfigurowanie lokalnej usługi przesyłania dalej
+## <a name="configuring-local-forwarder"></a>Konfigurowanie usługi przesyłania dalej lokalnego
 
-* Podczas uruchamiania jednego z hostów lokalnej usługi przesyłania dalej własne (konsoli hosta lub Host usługi Windows), można znaleźć **LocalForwarder.config** umieszczone obok pliku binarnego.
-* W przypadku hostowania własnym lokalnym NuGet usługi przesyłania dalej, konfiguracji tego samego formatu musi być podana w kodzie (patrz sekcja hostingu samodzielnego). Składnia konfiguracji można znaleźć [LocalForwarder.config](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/ConsoleHost/LocalForwarder.config) w repozytorium GitHub. 
+* Podczas uruchamiania jednego z lokalnych hostów usługi przesyłania dalej (hosta konsoli lub hosta usługi systemu Windows) znajduje się plik **LocalForwarder. config** umieszczony obok pliku binarnego.
+* W przypadku samoobsługowego programu NuGet lokalnego usługi przesyłania dalej konfiguracja tego samego formatu musi być podana w kodzie (zobacz sekcję dotyczącą samoobsługowego udostępniania). W przypadku składni konfiguracji Sprawdź [plik LocalForwarder. config](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/ConsoleHost/LocalForwarder.config) w repozytorium GitHub. 
 
 > [!NOTE]
-> Konfiguracja może zmienić wersji, więc należy zwrócić uwagę, do której wersji używasz.
+> Konfiguracja może ulec zmianie z wersji na wydanie, więc należy zwrócić uwagę na wersję, której używasz.
 
-## <a name="monitoring-local-forwarder"></a>Monitorowanie lokalne usługi przesyłania dalej
+## <a name="monitoring-local-forwarder"></a>Monitorowanie lokalnej usługi przesyłania dalej
 
-Zapisy są zapisywane w do systemu plików, obok pliku wykonywalnego, który uruchamia lokalnej usługi przesyłania dalej (Wyszukaj * *.log* plików). Możesz umieścić plik o nazwie *NLog.config* obok pliku wykonywalnego zapewnienie konfigurację zamiast domyślna. Zobacz [dokumentacji](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) opisu formatu.
+Ślady są zapisywane w systemie plików obok pliku wykonywalnego, w którym działa lokalna usługa przesyłania dalej (wyszukiwanie plików * *. log* ). Możesz umieścić plik o nazwie *nLOG. config* obok pliku wykonywalnego, aby zapewnić własną konfigurację zamiast domyślnej. Opis formatu można znaleźć w [dokumentacji](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) .
 
-Jeśli nie podano żadnego pliku konfiguracji (jest to ustawienie domyślne), lokalne usługi przesyłania dalej użyje domyślnej konfiguracji, który można znaleźć [tutaj](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config).
+Jeśli nie podano pliku konfiguracji (co jest ustawieniem domyślnym), lokalna usługa przesyłania dalej będzie używać konfiguracji domyślnej, którą można znaleźć [tutaj](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

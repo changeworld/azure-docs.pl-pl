@@ -1,138 +1,105 @@
 ---
-title: Jak zwiększyć dokładność wykrywania w usłudze Azure Active Directory Identity Protection (odświeżane) | Dokumentacja firmy Microsoft
-description: Jak zwiększyć dokładność wykrywania w usłudze Azure Active Directory Identity Protection (odświeżane).
+title: Jak poprawić dokładność wykrywania w Azure Active Directory Identity Protection (odświeżone) | Microsoft Docs
+description: Jak poprawić dokładność wykrywania w Azure Active Directory Identity Protection (odświeżone).
 services: active-directory
-keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7724d69a9294b420ca061d5ad26ad64826372203
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 32bb8de7970fc167a6a95e9d9c3c71e4e1dc0150
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453297"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333939"
 ---
-# <a name="how-to-improve-the-detection-accuracy"></a>Instrukcje: Zwiększania dokładności wykrywania 
+# <a name="how-to-improve-the-detection-accuracy"></a>Instrukcje: Zwiększ dokładność wykrywania 
 
-Identity Protection udostępnia mechanizmy, aby przekazać opinię z usługą Azure AD na wykrywanie ryzyka w danym środowisku. Aby przekazać opinię, można potwierdzić stanu wykrytych ryzykownych użytkowników lub zdarzeń logowania. Microsoft użytkownicy tej opinii do podejmowanie akcji na bieżącym wykryć zagrożenia i zwiększyć dokładność wykrywania w przyszłości. 
-
+Usługa Identity Protection udostępnia mechanizmy przekazywania informacji zwrotnych do usługi Azure AD na potrzeby wykrywania ryzyka w danym środowisku. Aby przekazać opinię, można potwierdzić stan wykrytego ryzykownego zdarzenia użytkownika lub logowania. Użytkownicy firmy Microsoft mogą wykonać akcję dotyczącą bieżącego wykrywania ryzyka i poprawić dokładność wykrycia w przyszłości. 
 
 ## <a name="what-is-detection"></a>Co to jest wykrywanie?
 
-Wykrywanie polega na identyfikacji podejrzanych działań w połączeniu z kontami użytkowników. Podejrzane działania usługi Azure AD może wykryć, są nazywane [zdarzenie o podwyższonym ryzyku](../reports-monitoring/concept-risk-events.md). Proces wykrywania opiera się na adaptacyjne algorytmy uczenia maszynowego i algorytmów heurystycznych w celu wykrycia zdarzenia o podwyższonym ryzyku dla użytkowników.
+Wykrywanie to proces identyfikowania podejrzanych działań w połączeniu z kontami użytkowników. Podejrzane działania mogą być wykrywane przez usługę Azure AD jako [zdarzenie ryzyka](../reports-monitoring/concept-risk-events.md). Proces wykrywania jest oparty na adaptacyjnych algorytmach uczenia maszynowego i heurystycznych w celu wykrywania zdarzeń ryzyka dla użytkowników.
 
-Wyniki wykrywania są używane do ustalenia, czy użytkownicy i logowania są zagrożone. 
+Wyniki wykrywania służą do określenia, czy użytkownicy i logowania są zagrożone. 
 
+## <a name="how-can-i-improve-the-detection-accuracy"></a>Jak można poprawić dokładność wykrywania?
 
-## <a name="how-can-i-improve-the-detection-accuracy"></a>Jak mogę poprawić dokładność wykrywania
+Ponieważ wykrywanie jest procesem zautomatyzowanym, istnieje możliwość, że raporty usługi Azure AD będą fałszywie pozytywne. Dokładność wykrywania można poprawić, przekazując informacje zwrotne do usługi Azure AD dotyczące wyników wykrywania.
 
-Ponieważ wykrywania jest zautomatyzowany proces jest możliwe, że usługa Azure AD zgłasza wyniki fałszywie dodatnie. Aby zwiększyć dokładność wykrywania, należy opinii do usługi Azure AD dotyczące wyników wykrywania.
+Istnieją trzy sposoby ulepszania dokładności wykrywania: Potwierdź złamane logowanie, potwierdź bezpieczne logowanie i Odrzuć ryzyko związane z użytkownikiem. Można to zrobić z następujących raportów:
 
-Istnieją trzy sposoby, aby zwiększyć dokładność wykrywania: Upewnij się, których bezpieczeństwo zostało naruszone logowania, comfirm bezpiecznego logowania i odrzucić ryzyka związanego z użytkownikiem. Można to zrobić, z następujących raportów:
+- **Raport dotyczący ryzykownych logowań —** W raporcie ryzykowne logowania można potwierdzić, że logowanie jest bezpieczne lub naruszone
+- **Raport dotyczący ryzykownych użytkowników —** W raporcie ryzykowni użytkownicy można odrzucić ryzyko związane z użytkownikiem 
 
-- **Raport dotyczący ryzykownych logowań —** w raport dotyczący ryzykownych logowań, można potwierdzić, że operacje logowania są bezpieczne lub ze złamanymi zabezpieczeniami
+Twoja opinia jest przetwarzana przez usługę Azure AD w celu poprawienia dokładności wyników wykrywania. Zwykle wyrażasz opinię w ramach ryzyka użytkownika lub związanego z logowaniem. Aby uzyskać więcej informacji, zobacz [jak zbadać ryzykowne Użytkownicy i logowania](howto-investigate-risky-users-signins.md).
 
-- **Raport ryzykownych użytkowników —** w raporcie ryzykownych użytkowników należy odrzucić ryzyka związanego z użytkownikiem 
+## <a name="confirm-compromised"></a>Potwierdź naruszenie bezpieczeństwa
 
-Twoja opinia jest przetwarzany przez usługę Azure AD, aby poprawić dokładność wyników wykrywania. Zazwyczaj można przekazać opinię, jako część ryzyka związanego z użytkownikiem lub badania ryzyka logowania. Aby uzyskać więcej informacji, zobacz [sposobu badania ryzykownych użytkowników oraz operacje logowania](howto-investigate-risky-users-signins.md).
+Potwierdzenie zdarzenia logowania jako sygnałów złamanych do usługi Azure AD, że logowanie nie zostało autoryzowane przez właściciela tożsamości. Po wybraniu opcji "Potwierdź złamane" usługa Azure AD będzie
 
+- Zwiększ ryzyko dla użytkownika, którego dotyczy ten użytkownik.
+- Pomóż zoptymalizować Uczenie maszynowe, które wykrywa zdarzenia ryzyka
+- Wykonaj dodatkowe środki, aby dodatkowo chronić organizację
 
-## <a name="confirm-compromised"></a>Upewnij się, naruszenia zabezpieczeń
+Aby potwierdzić złamane Logowanie:
 
-Potwierdzanie zdarzeń logowania, ponieważ naruszenia zabezpieczeń sygnały do usługi Azure AD, logowania nie zostało autoryzowane przez właściciela tożsamości. Po wybraniu przycisku "Potwierdź złamane" usługi Azure AD będzie
+- **Raport dotyczący ryzykownych** logowań — ta opcja pozwala potwierdzić złamane logowanie w przypadku co najmniej jednego zdarzenia logowania.
 
-- Zwiększenie ryzyka użytkownika, którego dotyczy wysokiego związanego z użytkownikiem.
+   ![Odrzuć ryzyko związane z użytkownikiem](./media/howto-improve-detection-accuracy/07.png)
 
-- Przyczynić się do zoptymalizowania machine learning, który wykrywa zdarzenia o podwyższonym ryzyku
+- **Widok szczegółów raportu** dotyczącego ryzykownych logowań — ta opcja umożliwia potwierdzenie zaatakowanego konta dla wybranego zdarzenia logowania w raporcie ryzykowne logowania. 
+
+   ![Odrzuć ryzyko związane z użytkownikiem](./media/howto-improve-detection-accuracy/04.png)
  
-- Wykonaj dodatkowe środki, aby jeszcze lepiej chronić Twojej organizacji
+## <a name="confirm-safe"></a>Potwierdź bezpieczeństwo
 
+Potwierdzenie zdarzenia logowania jako bezpiecznego sygnałów do usługi Azure AD, że logowanie **zostało** autoryzowane przez odpowiedniego właściciela tożsamości. Po wybraniu opcji "Potwierdź bezpieczną" usługa Azure AD będzie:
 
-
-Aby potwierdzić, którego bezpieczeństwo zostało naruszone logowania:
-
-- **Raport dotyczący ryzykownych logowań** — ta opcja umożliwia upewnij się, których bezpieczeństwo zostało naruszone logowania dla co najmniej jeden zdarzenia logowania.
-
-    ![Odrzuć ryzyka związanego z użytkownikiem](./media/howto-improve-detection-accuracy/07.png)
-
-- **Raport dotyczący ryzykownych logowań w widoku szczegółów** — ta opcja umożliwia potwierdzenie zagrożone konto dla wybranego zdarzenia logowania w raport dotyczący ryzykownych logowań. 
-
-    ![Odrzuć ryzyka związanego z użytkownikiem](./media/howto-improve-detection-accuracy/04.png)
-
-
+- Przywróć udział ryzyka użytkownika dla wybranych logowań
+- Zamknij bazowe zdarzenia ryzyka
+- Pomóż zoptymalizować Uczenie maszynowe, które wykrywa zdarzenia ryzyka
+- Wykonaj dodatkowe środki, aby dodatkowo chronić organizację
  
-## <a name="confirm-safe"></a>Upewnij się, bezpieczne
+Aby potwierdzić bezpieczne logowanie w programie:
 
+- **Raport dotyczący ryzykownych** logowań — ta opcja umożliwia potwierdzenie bezpiecznego logowania w przypadku co najmniej jednego zdarzenia logowania.
 
-Potwierdzanie zdarzeń logowania jako bezpieczne sygnałów do usługi Azure AD, logowania **został** autoryzowane przez właściciela odpowiedniej tożsamości. Po wybraniu przycisku "Potwierdź bezpieczne" usługi Azure AD wykonują następujące czynności:
+   ![Odrzuć ryzyko związane z użytkownikiem](./media/howto-improve-detection-accuracy/08.png)
 
-- Przywróć udział ryzyka użytkownika wybrane sesje logowania
+- **Widok szczegółów raportu** dotyczącego ryzykownych logowań — ta opcja umożliwia potwierdzenie bezpiecznego logowania na potrzeby wybranego zdarzenia logowania w raporcie ryzykowne operacje logowania. 
 
-- Zamknij zdarzeń związanych z ryzykiem
+   ![Odrzuć ryzyko związane z użytkownikiem](./media/howto-improve-detection-accuracy/05.png)
 
-- Przyczynić się do zoptymalizowania machine learning, który wykrywa zdarzenia o podwyższonym ryzyku
+## <a name="dismiss-user-risk"></a>Odrzuć ryzyko związane z użytkownikiem
 
-- Wykonaj dodatkowe środki, aby jeszcze lepiej chronić Twojej organizacji
- 
+Jeśli masz już akcje naprawcze dla użytkownika o podwyższonym ryzyku lub uważasz, że zostały one oznaczone jako ryzykowne, możesz odrzucić ryzyko związane z użytkownikiem. Odrzucanie ryzyka użytkownika powoduje przywrócenie stanu niezwiązanego z ryzykiem. Wszystkie wcześniejsze ryzykowne logowania i zdarzenia ryzyka dla wybranego użytkownika zostaną odrzucone.
 
-Aby sprawdzić, bezpiecznego logowania w:
+Zgłoszone ryzyko użytkownika można odrzucić w programie:
 
-- **Raport dotyczący ryzykownych logowań** — ta opcja umożliwia potwierdzenie bezpiecznego logowania dla co najmniej jeden zdarzenia logowania.
+- **Raport dotyczący ryzykownych użytkowników** — ta opcja umożliwia odrzucanie ryzyka użytkownika dla co najmniej jednego z wybranych użytkowników.
 
-    ![Odrzuć ryzyka związanego z użytkownikiem](./media/howto-improve-detection-accuracy/08.png)
+   ![Odrzuć ryzyko związane z użytkownikiem](./media/howto-improve-detection-accuracy/02.png)
 
-- **Raport dotyczący ryzykownych logowań w widoku szczegółów** — ta opcja umożliwia potwierdzenie bezpiecznego logowania dla wybranych zdarzeń logowania w raport dotyczący ryzykownych logowań. 
+- **Widok szczegółów** — ta opcja umożliwia odrzucanie ryzyka użytkownika dla wybranego użytkownika w raporcie o ryzyku użytkownika. 
 
-    ![Odrzuć ryzyka związanego z użytkownikiem](./media/howto-improve-detection-accuracy/05.png)
-
-
-
-
-## <a name="dismiss-user-risk"></a>Odrzuć ryzyka związanego z użytkownikiem
-
-Jeśli już podjęte działania korygujące ryzyka użytkownika lub uważają, że błędnie zostały oznaczone jako ryzykowne, można zignorować ryzyka związanego z użytkownikiem. Odrzucanie ryzyka związanego z użytkownikiem przywraca użytkownika — ryzykowne stan. Wszystkie wcześniejsze ryzykowne logowania i ryzyka zdarzenia dla wybranego użytkownika zostanie zamknięty.
-
-
-Można zignorować ryzyka użytkownika zgłoszonego:
-
-- **Raport ryzykownych użytkowników** — ta opcja umożliwia odrzucanie ryzyka związanego z użytkownikiem dla jednego lub więcej wybranych użytkowników.
-
-    ![Odrzuć ryzyka związanego z użytkownikiem](./media/howto-improve-detection-accuracy/02.png)
-
-- **Widok szczegółów** — ta opcja umożliwia odrzucić ryzyka użytkownika dla wybranego użytkownika w raporcie ryzyka użytkownika. 
-
-    ![Odrzuć ryzyka związanego z użytkownikiem](./media/howto-improve-detection-accuracy/01.png)
-
+   ![Odrzuć ryzyko związane z użytkownikiem](./media/howto-improve-detection-accuracy/01.png)
 
 **Co należy wiedzieć:**
 
-- Nie można cofnąć tej akcji.
-
-- Może upłynąć kilka minut, zanim ta akcja zakończona, dlatego nie należy ponownie przesłać żądanie.
-
-- Tę akcję można wykonać tylko, jeśli usługi AD zarządza poświadczeń użytkownika. 
-
-
+- Nie można przywrócić tej akcji.
+- Wykonanie tej akcji może potrwać kilka minut, dlatego nie należy ponownie przesyłać żądania.
+- Tę akcję można wykonać tylko wtedy, gdy AD zarządza poświadczeniami użytkownika. 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Odrzucanie ryzyka związanego z użytkownikiem jest jednym ze sposobów, aby odblokować je, jeśli zostały zablokowane przez użytkownika zasady o podwyższonym ryzyku i nie może samodzielnie korygowanie z powodu niemający resetowania hasła i/lub włączone uwierzytelnianie wieloskładnikowe. W takiej sytuacji najlepiej jest zapewnienie użytkownika, a następnie rejestruje resetowania haseł i uwierzytelniania Wieloskładnikowego, tak, aby mogli wykonać samodzielną korektę wszystkie zdarzenia o podwyższonym ryzyku w przyszłości.
-
+Odrzucanie ryzyka użytkownika jest jednym ze sposobów odblokowania ich, jeśli zostały zablokowane przez zasady ryzyka użytkownika i nie może zostać skorygowany z powodu braku możliwości resetowania haseł i/lub włączenia uwierzytelniania MFA. W tej sytuacji najlepszym rozwiązaniem jest upewnienie się, że użytkownik będzie rejestrował się do resetowania haseł i uwierzytelniania wieloskładnikowego, aby umożliwić samodzielne korygowanie wszelkich przyszłych zdarzeń związanych z ryzykiem.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać omówienie programu Azure AD Identity Protection, zobacz [Omówienie usługi Azure AD Identity Protection](overview-v2.md).
-
-
+Aby zapoznać się z omówieniem Azure AD Identity Protection, zobacz [omówienie Azure AD Identity Protection](overview-v2.md).

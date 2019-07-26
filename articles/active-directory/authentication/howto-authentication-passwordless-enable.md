@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f5eba18e34f65f7bc8a625babca92b86e06b4c
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ad2f25aac7f74c74eb63fd4666c5184ae751ec1f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867331"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499928"
 ---
 # <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>Włącz logowanie bezhasło dla usługi Azure AD (wersja zapoznawcza)
 
 ## <a name="requirements"></a>Wymagania
 
 * Azure Multi-Factor Authentication
-* Podgląd rejestracji połączonej
+* Podgląd połączonej rejestracji z włączonymi użytkownikami dla SSPR
 * Wersja zapoznawcza klucza zabezpieczeń FIDO2 wymaga zgodnych kluczy zabezpieczeń FIDO2
 * Pakiet WebAuthN wymaga przeglądarki Microsoft Edge w systemie Windows 10 w wersji 1809 lub nowszej
 * Logowanie systemu Windows opartego na FIDO2 wymaga usługi Azure AD przyłączonej do systemu Windows 10 w wersji 1809 lub nowszej
@@ -54,7 +54,7 @@ Aby włączyć dostawcę poświadczeń dla określonych grup urządzeń, użyj n
    1. Nazwa: Klucze zabezpieczeń logowania systemu Windows
    1. Opis: Włącza klucze zabezpieczeń FIDO, które mają być używane podczas logowania do systemu Windows
    1. Platforma: System Windows 10 i nowsze
-   1. Typ platformy: Niestandardowy
+   1. Typ platformy: Niestandardowa
    1. Niestandardowe ustawienia OMA-URI:
       1. Nazwa: Włącz klucze zabezpieczeń FIDO dla logowania do systemu Windows
       1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
@@ -171,7 +171,7 @@ Aby uzyskać informacje na temat logowania za pomocą aplikacji Microsoft Authen
 
 W publicznej wersji zapoznawczej nie jest dostępna obsługa administracyjna i dezaktywowanie kluczy zabezpieczeń przez administratora.
 
-#### <a name="hybrid-azure-ad-join"></a>Dołączenie hybrydowe do usługi Azure AD
+#### <a name="hybrid-azure-ad-join"></a>Dołączenie do hybrydowej usługi Azure AD
 
 Użytkownicy korzystający z logowania jednokrotnego WIA korzystający z poświadczeń zarządzanych, takich jak FIDO2 klucze zabezpieczeń lub logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator muszą przyłączać hybrydowo do systemu Windows 10, aby uzyskać korzyści z logowania jednokrotnego. Jednak klucze zabezpieczeń działają tylko dla Azure Active Directory przyłączonych maszyn. Zalecamy wypróbowanie tylko kluczy zabezpieczeń FIDO2 dla ekranu blokady systemu Windows na czystej Azure Active Directory przyłączonych maszyn. To ograniczenie nie ma zastosowania do sieci Web.
 
@@ -179,7 +179,7 @@ Użytkownicy korzystający z logowania jednokrotnego WIA korzystający z poświa
 
 Pracujemy nad obsługą funkcji, która umożliwia zmianę nazwy UPN na urządzeniach hybrydowych AADJ i AADJ. W przypadku zmiany nazwy UPN użytkownika nie można już modyfikować kluczy zabezpieczeń FIDO2 dla tego konta. Dlatego jedyną metodą jest zresetowanie urządzenia i konieczność jego ponownego zarejestrowania.
 
-### <a name="authenticator-app"></a>Aplikacja Authenticator
+### <a name="authenticator-app"></a>Aplikacja uwierzytelniania
 
 #### <a name="ad-fs-integration"></a>Integracja AD FS
 
@@ -193,7 +193,7 @@ Użytkownicy końcowi korzystający z usług MFA za pomocą lokalnego serwera us
 
 Jedno z wymagań wstępnych dotyczących tworzenia nowego, silnego poświadczenia polega na tym, że urządzenie, na którym się znajduje, jest zarejestrowane w ramach dzierżawy usługi Azure AD, do pojedynczego użytkownika. Ze względu na ograniczenia rejestracji urządzeń urządzenie może być rejestrowane tylko w jednej dzierżawie. Ten limit oznacza, że tylko jedno konto służbowe w aplikacji Microsoft Authenticator może być włączone do logowania za pomocą telefonu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Informacje o rejestracji urządzeń](../devices/overview.md)
 

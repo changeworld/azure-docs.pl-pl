@@ -1,42 +1,42 @@
 ---
-title: Uzyskiwanie dostępu do zmiany źródła danych w usłudze Azure Cosmos DB usługi Azure Cosmos DB
-description: W tym artykule opisano różne opcje dostępne do odczytu i dostęp do zmiany źródła danych w usłudze Azure Cosmos DB usługi Azure Cosmos DB.
+title: Uzyskiwanie dostępu do źródła zmian w Azure Cosmos DB Azure Cosmos DB
+description: W tym artykule opisano różne opcje dostępne do odczytu i dostępu do źródła zmian w Azure Cosmos DB Azure Cosmos DB.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: e008b44ee2859f319d0250658d7c2beb190af1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d52ba1abc22aae6121ea6a36f943851dfcca7a0
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967171"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467662"
 ---
-# <a name="reading-azure-cosmos-db-change-feed"></a>Kanał informacyjny zmian czytania usługi Azure Cosmos DB
+# <a name="reading-azure-cosmos-db-change-feed"></a>Odczytywanie kanału informacyjnego zmiany Azure Cosmos DB
 
-Możesz pracować z zestawienia zmian usługi Azure Cosmos DB przy użyciu dowolnej z następujących opcji:
+Ze źródłem zmian Azure Cosmos DB można korzystać z jednej z następujących opcji:
 
-* Użycie usługi Azure Functions
-* Za pomocą zmiany źródła danych z biblioteką procesora
-* Przy użyciu zestawu SDK do interfejsu API SQL usługi Azure Cosmos DB
+* Używanie Azure Functions
+* Korzystanie z biblioteki procesora źródła zmian
+* Korzystanie z zestawu SDK interfejsu API Azure Cosmos DB SQL
 
-## <a name="using-azure-functions"></a>Użycie usługi Azure Functions
+## <a name="using-azure-functions"></a>Używanie Azure Functions
 
-Usługa Azure Functions to najprostszy i zalecana opcja. Po utworzeniu wyzwalacza usługi Azure Cosmos DB w aplikacji usługi Azure Functions, można wybrać kontener, aby połączyć, a funkcja platformy Azure pobiera wyzwalane, gdy brak zmian do kontenera. Wyzwalacze mogą być tworzone przy użyciu portalu Azure Functions w portalu usługi Azure Cosmos DB lub programowo przy użyciu zestawów SDK. Program Visual Studio i programu VS Code obsługuje do zapisania usługi Azure Functions, i interfejsu wiersza polecenia usługi Azure Functions nawet służy do tworzenia aplikacji dla wielu platform. Można napisać i debugować kod na pulpicie i następnie wdrażanie funkcji za pomocą jednego kliknięcia. Zobacz [obliczeniowych bez użycia serwera bazy danych, przy użyciu usługi Azure Functions](serverless-computing-database.md) i [przy użyciu zmian źródła danych za pomocą usługi Azure Functions](change-feed-functions.md)) artykuły, aby dowiedzieć się więcej.
+Azure Functions jest najprostszą i zalecaną opcją. Po utworzeniu wyzwalacza Azure Functions dla Cosmos DB, można wybrać kontener do połączenia, a funkcja platformy Azure zostanie wyzwolona za każdym razem, gdy nastąpi zmiana do kontenera. Wyzwalacze można tworzyć przy użyciu portalu Azure Functions, portalu Azure Cosmos DB lub programowo przy użyciu zestawów SDK. Program Visual Studio i VS Code zapewniają pomoc techniczną do pisania Azure Functions i można nawet użyć interfejsu wiersza polecenia Azure Functions do tworzenia aplikacji dla wielu platform. Można napisać i debugować kod na pulpicie, a następnie wdrożyć funkcję jednym kliknięciem. Aby dowiedzieć się więcej, zobacz artykuł [Przetwarzanie baz danych bez serwera przy użyciu Azure Functions](serverless-computing-database.md) i [Używanie kanału informacyjnego zmian z Azure Functions](change-feed-functions.md)).
 
-## <a name="using-the-change-feed-processor-library"></a>Za pomocą zmiany źródła danych z biblioteką procesora
+## <a name="using-the-change-feed-processor-library"></a>Korzystanie z biblioteki procesora źródła zmian
 
-Zmiana źródła danych z biblioteką procesora ukrywa złożoność i wciąż daje pełną kontrolę nad zestawienia zmian. Biblioteka jest zgodny ze wzorcem obserwatora, gdzie funkcji przetwarzania jest wywoływana przez bibliotekę. Jeśli masz zestawienia zmian wysokiej przepływności, można utworzyć wystąpienie wielu klientów na odczytywanie zestawienia zmian. Ponieważ używasz bibliotece procesora zestawienia zmian go automatycznie dzieli obciążenie między różnych klientów bez konieczności implementowania tę logikę. Wszystkie złożoności odbywa się przez bibliotekę. Jeśli chcesz mieć własną usługę równoważenia obciążenia, a następnie można wdrożyć `IPartitionLoadBalancingStrategy` dla niestandardowych partycji strategię, aby przetworzyć zmiany źródła danych. Aby dowiedzieć się więcej, zobacz [przy użyciu zmian źródła danych z biblioteką procesora](change-feed-processor.md).
+Biblioteka procesora kanału informacyjnego zmian powoduje ukrycie złożoności i zapewnia pełną kontrolę nad źródłem zmian. Biblioteka jest zgodna ze wzorcem obserwatora, gdzie funkcja przetwarzania jest wywoływana przez bibliotekę. W przypadku kanału informacyjnego o wysokiej przepływności można utworzyć wystąpienie wielu klientów w celu odczytania źródła zmian. Ze względu na to, że korzystasz z biblioteki procesora źródła zmian, będzie ona automatycznie dzielić obciążenie między różnymi klientami, bez konieczności implementowania tej logiki. Cała złożoność jest obsługiwana przez bibliotekę. Jeśli chcesz mieć własny moduł równoważenia obciążenia, możesz wdrożyć `IPartitionLoadBalancingStrategy` dla niestandardowej strategii partycji, aby przetwarzać Źródło zmian. Aby dowiedzieć się więcej, zobacz [Korzystanie z biblioteki procesora źródła zmian](change-feed-processor.md).
 
-## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Przy użyciu zestawu SDK do interfejsu API SQL usługi Azure Cosmos DB
+## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Korzystanie z zestawu SDK interfejsu API Azure Cosmos DB SQL
 
-Umożliwia skorzystanie z zestawu SDK, formantu zestawienia zmian niskiego poziomu. Można zarządzać punktu kontrolnego, dostęp do określonej partycji logicznej itp klucza. Jeśli masz wielu elementów odczytujących, możesz użyć `ChangeFeedOptions` rozłożenie obciążenia odczytu w różnych wątkach lub różnych klientów. 
+Zestaw SDK otrzymuje kontrolę nad źródłem zmian. Punkt kontrolny można zarządzać, uzyskiwać dostęp do określonego klucza partycji logicznej itp. Jeśli masz wielu czytników, możesz użyć `ChangeFeedOptions` do dystrybucji wczytywania odczytu do różnych wątków lub różnych klientów. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Można teraz kontynuować, aby dowiedzieć się więcej na temat zmiany źródła danych w następujących artykułach:
 
-* [Omówienie Kanał informacyjny zmian](change-feed.md)
+* [Przegląd źródła zmian](change-feed.md)
 * [Za pomocą zmian źródła danych za pomocą usługi Azure Functions](change-feed-functions.md)
 * [Za pomocą zmian źródła danych z biblioteką procesora](change-feed-processor.md)

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/30/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8ec5c39342f0477bd2b529da38fd4d1292476c93
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e8ae2fd99ee57062a0bf99f0550e58a5bb4857a3
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183137"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68426929"
 ---
-Poniższa tabela zawiera listę dostępnych regionów obsługiwanych funkcji, które są po ogólnym udostępnieniu produktu
+W poniższej tabeli wymieniono dostępne regiony obsługiwane przez usługi.
 
-|Region geopolityczny | Regiony świadczenia usługi Azure|
+|Region geopolityczny | Regiony platformy Azure|
 |---|---|
 |Ameryka Północna | Wschodnie stany USA, Zachodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA 2, Środkowe stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowo-zachodnie stany USA, Kanada Środkowa, Kanada Wschodnia |
 |Ameryka Południowa |Brazylia Południowa |
@@ -25,10 +25,9 @@ Poniższa tabela zawiera listę dostępnych regionów obsługiwanych funkcji, kt
 | Azja | Azja Wschodnia, Azja Południowo-Wschodnia |
 | Japonia  | Japońska Zachodnia, Japonia Wschodnia |
 | Australia | Australia Południowo-Wschodnia, Australia Wschodnia | 
-| Dla instytucji rządowych w Australii | Australia Środkowa, Australia Środkowa 2 |
+| Australia rządowa | Australia Środkowa, Australia Środkowa 2 |
 | Indie | Indie Zachodnie, Indie Środkowe, Indie Południowe |
 | Korea Południowa | Korea Środkowa, Korea Południowa |
-| Republika Południowej Afryki | Północna RPA, Zachodnia RPA |
+| RPA | Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki |
 
-* Aby uzyskać informacji na temat usługi ExpressRoute w wersji zapoznawczej, zobacz [wirtualne sieci WAN i usługa ExpressRoute — wersja zapoznawcza](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register).
-* Aby uzyskać informacji na temat korzystania z wersji zapoznawczej punkt lokacja, zobacz [wirtualne sieci WAN i punkt lokacja — w wersji zapoznawczej](../articles/virtual-wan/virtual-wan-point-to-site-portal.md#register).
+* Aby uzyskać informacje na temat usługi ExpressRoute Preview, zobacz [Virtual WAN i ExpressRoute-Preview](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register).

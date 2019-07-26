@@ -1,6 +1,6 @@
 ---
-title: Strategie wdrażania i najlepsze rozwiązania dotyczące optymalizacji wydajności — Usługa Azure Search
-description: Dowiedz się, techniki i najlepsze rozwiązania dotyczące dostrajania wydajności usługi Azure Search i konfigurowania optymalnej skali.
+title: Strategie wdrażania i najlepsze rozwiązania w zakresie optymalizacji wydajności — Azure Search
+description: Poznaj techniki i najlepsze rozwiązania dotyczące dostrajania Azure Search wydajności i konfigurowania optymalnej skali.
 author: LiamCavanagh
 manager: jlembicz
 services: search
@@ -10,102 +10,102 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 32352a857f0a74dc008dc1ad76b4a5951a36b956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4578e26df5a6c29e80a0bbd2e0a30725e3733ee
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024546"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370639"
 ---
-# <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Strategie wdrażania i najlepsze rozwiązania dotyczące optymalizacji wydajności w usłudze Azure Search
+# <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Strategie wdrażania i najlepsze rozwiązania w zakresie optymalizacji wydajności na Azure Search
 
-W tym artykule opisano najlepsze rozwiązania w przypadku zaawansowanych scenariuszy z zaawansowanymi wymaganiami dotyczącymi skalowalności i dostępności. 
+W tym artykule opisano najlepsze rozwiązania dla zaawansowanych scenariuszy z zaawansowanymi wymaganiami dotyczącymi skalowalności i dostępności. 
 
-## <a name="develop-baseline-numbers"></a>Tworzenie numerów linii bazowej
-Podczas optymalizacji wydajności wyszukiwania, należy skoncentrować się na skrócenie czasu wykonywania zapytania. Aby to zrobić, musisz wiedzieć, obciążenie zapytaniami typowe wygląda następująco. Poniższe wskazówki mogą pomóc w przyjeździe do linii bazowej kwerendy numerów.
+## <a name="develop-baseline-numbers"></a>Opracowywanie numerów linii bazowej
+Podczas optymalizowania pod kątem wydajności wyszukiwania należy skoncentrować się na skróceniu czasu wykonywania zapytania. Aby to zrobić, musisz wiedzieć, jak wygląda typowe obciążenie zapytania. Poniższe wskazówki mogą pomóc dotrzeć do numerów bazowych zapytań.
 
-1. Wybierz z docelowym czasem oczekiwania (lub maksymalną ilość czasu), które żądania w typowym wyszukiwaniu powinien wykonać, aby zakończyć.
-2. Tworzenie i testowanie rzeczywiste obciążenie dla usługi wyszukiwania przy użyciu realistycznej zestaw danych, aby zmierzyć te stawki opóźnienia.
-3. Uruchom o niskiej liczbie zapytań na sekundę (QPS) i stopniowo zwiększać liczbę wykonane w teście, dopóki opóźnienie kwerendy nie spadnie poniżej zdefiniowanego docelowym czasem oczekiwania. Jest to ważne testów porównawczych pomocne dla skalowania w miarę wzrostu użycia w aplikacji.
-4. Wszędzie tam, gdzie to możliwe, należy ponownie używać połączeń HTTP. Korzystając z zestawu .NET SDK usługi Azure Search, oznacza to, należy używać ponownie wystąpienie lub [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) wystąpienia i korzystają z interfejsu API REST, należy używać ponownie pojedynczego HttpClient.
-5. Różnią się treść żądania zapytań, więc wyszukiwania odbywa się za pośrednictwem różnych części Twojego indeksu. Zmiana jest ważne, ponieważ jeśli takie same żądania wyszukiwania są wykonywane stale, buforowania danych, rozpocznie się zapewnienie wydajności wyglądają lepiej niż go przy użyciu bardziej różnorodnych zapytania ustawić.
-6. Tak, aby pobrać różnego rodzaju zapytania, różnią się struktury żądań zapytań. Nie wszystkie zapytania wyszukiwania wykonuje się na tym samym poziomie. Na przykład sugestii wyszukiwania lub wyszukiwania dokumentu jest zwykle szybsze niż zapytanie o znaczna liczba zestawów reguł i filtrów. Kompozycja testu powinien zawierać różne zapytania około zgodnie z tym samym, zgodnie z oczekiwaniami w środowisku produkcyjnym.  
+1. Wybierz oczekiwany czas oczekiwania (lub maksymalną ilość czasu), przez który należy wykonać typowe żądanie wyszukiwania.
+2. Twórz i testuj rzeczywiste obciążenie usługi wyszukiwania za pomocą realistycznego zestawu danych, aby zmierzyć te stawki opóźnienia.
+3. Zacznij od niskiej liczby zapytań na sekundę (zapytań) i stopniowo Zwiększaj liczbę wykonywanych testów do momentu spadku opóźnienia zapytania poniżej zdefiniowanego opóźnienia docelowego. Jest to ważny test, który ułatwia planowanie skalowania w miarę zwiększania użycia aplikacji.
+4. Gdy to możliwe, należy ponownie użyć połączeń HTTP. Jeśli używasz zestawu SDK Azure Search .NET, oznacza to, że należy ponownie użyć wystąpienia lub wystąpienia [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) , a jeśli korzystasz z interfejsu API REST, należy ponownie użyć pojedynczej HttpClient.
+5. Różnej treści żądań zapytań, dzięki czemu wyszukiwanie odbywa się na różnych częściach indeksu. Odmiana jest ważna, ponieważ w przypadku ciągłego wykonywania tych samych żądań wyszukiwania buforowanie danych rozpocznie się, aby wydajność była lepsza niż w przypadku bardziej nieznaczącego zestawu zapytań.
+6. Różnicowanie struktury żądań zapytań w celu uzyskania różnych typów zapytań. Nie każde zapytanie wyszukiwania wykonuje się na tym samym poziomie. Na przykład wyszukiwanie dokumentów lub sugestia wyszukiwania jest zwykle szybsze niż zapytanie o znaczną liczbę aspektów i filtrów. Kompozycja testowa powinna zawierać różne zapytania, w przybliżeniu tak samo jak w środowisku produkcyjnym.  
 
-Podczas tworzenia tych testów obciążenia, istnieją pewne cechy usługi Azure Search, które należy uwzględnić:
+Podczas tworzenia tych obciążeń testowych istnieją pewne cechy Azure Search, które należy wziąć pod uwagę:
 
-+ Można przeciążać usługi wypychając zbyt wiele kwerend wyszukiwania, w tym samym czasie. W takim przypadku zobaczysz kody odpowiedzi HTTP 503. Aby uniknąć 503 podczas testowania, należy uruchomić z różnymi zakresami żądania wyszukiwania, aby zobaczyć różnice w kursach opóźnienia, jak dodać więcej żądań wyszukiwania.
++ Istnieje możliwość przeciążenia usługi przez wypychanie zbyt wielu zapytań wyszukiwania jednocześnie. W takim przypadku zobaczysz kody odpowiedzi HTTP 503. Aby uniknąć 503 podczas testowania, Zacznij od różnych zakresów żądań wyszukiwania, aby zobaczyć różnice w współczynniku opóźnień podczas dodawania kolejnych żądań wyszukiwania.
 
-+ Usługa Azure Search nie powoduje uruchomienia zadania indeksowania w tle. Jeśli usługa obsługuje z zapytaniami i indeksowaniem obciążeń jednocześnie, to uwzględniać wprowadzając albo zadania indeksowania do testów zapytania lub za pośrednictwem opcje uruchamiania zadania indeksowania podczas poza godzinami szczytu.
++ Azure Search nie uruchamia zadań indeksowania w tle. Jeśli usługa obsługuje współbieżne obciążenia zapytań i indeksowania, należy to uwzględnić, wprowadzając zadania indeksowania do testów zapytań lub przez Eksplorowanie opcji uruchamiania zadań indeksowania w godzinach szczytu.
 
 > [!NOTE]
-> [Testowanie programu Visual Studio obciążenia](https://www.visualstudio.com/docs/test/performance-testing/run-performance-tests-app-before-release) jest naprawdę dobre sposób wykonywania Twojego testu porównawczego testy jako umożliwia wykonywanie żądań HTTP, która byłaby potrzebna do wykonywania zapytań względem usługi Azure Search i umożliwia przetwarzanie równoległe żądania.
+> [Testowanie obciążenia programu Visual Studio](https://www.visualstudio.com/docs/test/performance-testing/run-performance-tests-app-before-release) to naprawdę dobry sposób na przeprowadzenie testów porównawczych, ponieważ umożliwia wykonywanie żądań HTTP w miarę potrzeb do wykonywania zapytań dotyczących Azure Search i umożliwia przetwarzanie równoległe żądań.
 > 
 > 
 
-## <a name="scaling-for-high-query-volume-and-throttled-requests"></a>Ograniczone żądania i skalowania dla zapytania wysoki woluminu
-Otrzymujesz zbyt wiele żądań ograniczone lub przekracza ceny opóźnienie docelowej z obciążenie zapytaniami zwiększona, możesz przejrzeć zmniejszyć opóźnienie kursy w jeden z dwóch sposobów:
+## <a name="scaling-for-high-query-volume-and-throttled-requests"></a>Skalowanie dla dużej liczby zapytań i żądań z ograniczeniami
+Gdy otrzymujesz zbyt wiele żądań z ograniczeniami lub przekroczą docelową szybkość opóźnienia z zwiększonego obciążenia zapytania, możesz przyjrzeć się zmniejszeniu szybkości opóźnienia na jeden z dwóch sposobów:
 
-1. **Zwiększ repliki:**  Replika jest jak kopię danych, dzięki czemu usługa Azure Search równoważyć obciążenie żądaniami względem wielu kopii.  Wszystkie Równoważenie obciążenia i replikacja danych za pośrednictwem replik jest zarządzana przez usługę Azure Search można zmienić liczbę replik przydzielone dla usługi w dowolnym momencie.  Możesz przydzielić maksymalnie 12 replik w standardową usługę wyszukiwania i 3 repliki w usłudze wyszukiwania podstawowego. Repliki mogą być dostosowane z [witryny Azure portal](search-create-service-portal.md) lub [PowerShell](search-manage-powershell.md).
-2. **Zwiększ warstwy wyszukiwania:**  Usługa Azure Search jest dostępna w [liczba warstw](https://azure.microsoft.com/pricing/details/search/) i każdy z tych warstw oferuje różne poziomy wydajności.  W niektórych przypadkach może mieć wiele zapytań warstwy, które znajdują się na nie może dostarczyć stawek wystarczająco małe opóźnienia, nawet wtedy, gdy replik maksymalnego limitu. W takim przypadku warto rozważyć korzystanie z jednej z warstw wyszukiwania wyższej, np. warstwa S3 wyszukiwania platformy Azure, która dobrze nadaje się dla scenariuszy z dużą liczbą dokumentów i obciążeń związanych z zapytaniami w zastosowaniach wymagających maksymalnej.
+1. **Zwiększ repliki:**  Replika jest taka sama jak Kopia danych umożliwiająca Azure Search równoważenia obciążenia żądaniami w wielu kopiach.  Wszystkie obciążenia i replikacja danych między replikami są zarządzane przez Azure Search i można w dowolnym momencie zmienić liczbę replik przyznanych dla usługi.  Możesz przydzielić maksymalnie 12 replik w standardowej usłudze wyszukiwania i 3 replikach w podstawowej usłudze wyszukiwania. Repliki można dostosować za pomocą [Azure Portal](search-create-service-portal.md) lub [programu PowerShell](search-manage-powershell.md).
+2. **Zwiększ poziom wyszukiwania:**  Azure Search zawiera [wiele warstw](https://azure.microsoft.com/pricing/details/search/) , a każda z tych warstw oferuje różne poziomy wydajności.  W niektórych przypadkach może istnieć wiele zapytań, w przypadku których nie można zapewnić wystarczająco małych opóźnień, nawet gdy repliki są maxed. W takim przypadku warto rozważyć użycie jednej z wyższych warstw wyszukiwania, takich jak warstwa Azure Search S3, która jest odpowiednia dla scenariuszy z dużą liczbą dokumentów i bardzo wysokich obciążeń związanych z zapytaniami.
 
-## <a name="scaling-for-slow-individual-queries"></a>Skalowanie na potrzeby wolnych pojedynczych zapytań
-Inną przyczyną szybkości duże opóźnienia jest pojedyncze zapytanie trwała zbyt długo, aby zakończyć. W tym przypadku Dodawanie replik nie pomoże. Możliwe opcje, które mogą pomóc następujące dwie opcje:
+## <a name="scaling-for-slow-individual-queries"></a>Skalowanie dla powolnych pojedynczych zapytań
+Kolejną przyczyną częstych opóźnień jest wykonanie pojedynczej kwerendy trwa zbyt długo. W takim przypadku Dodawanie replik nie będzie pomocne. Dostępne są dwie opcje, które mogą pomóc w następujących kwestiach:
 
-1. **Zwiększ partycje** partycja to mechanizm służący do podziału danych na dodatkowe zasoby. Dodawanie drugiej partycji dzieli dane na dwa, trzeci partycji dzieli je na 3 i tak dalej. Jeden dodatni efekt uboczny to, że wolniejsze zapytania czasami działać szybciej z powodu przetwarzania równoległego. Firma Microsoft zostały zanotowane przetwarzania równoległego zapytań selektywność niski, takich jak zapytania, które odpowiadają wiele dokumentów lub aspektami podanie liczby przez dużą liczbę dokumentów. Ponieważ znaczące obliczenie jest wymagany do oceniania dokładność dokumentów lub do zliczania liczby dokumentów, dodając dodatkowe partycje pomaga szybciej wprowadzać zapytania.  
+1. **Zwiększ partycje** Partycja to mechanizm dzielenia danych między dodatkowe zasoby. Dodanie drugiej partycji dzieli dane na dwie, trzecia partycja dzieli ją na trzy itd. Jeden dodatni efekt uboczny polega na tym, że wolniejsze zapytania czasami przyspieszają działanie z powodu równoległego przetwarzania danych. Zanotowano przetwarzanie równoległe na temat niskich zapytań selektywnych, takich jak zapytania, które pasują do wielu dokumentów, lub aspektów dostarczających liczniki w dużej liczbie dokumentów. Ponieważ do oceny dokładność dokumentów lub obliczenia liczby dokumentów wymagane jest znaczące obliczenie, dodawanie dodatkowych partycji ułatwia wykonywanie zapytań.  
    
-   Może to być maksymalnie 12 partycjami w standardową usługę wyszukiwania i 1 partycji w usłudze wyszukiwania podstawowego.  Partycje mogą być dostosowane z [witryny Azure portal](search-create-service-portal.md) lub [PowerShell](search-manage-powershell.md).
+   W usłudze wyszukiwania w warstwie Standardowa może znajdować się maksymalnie 12 partycji i 1 partycja.  Partycje można dostosować za pomocą [Azure Portal](search-create-service-portal.md) lub [programu PowerShell](search-manage-powershell.md).
 
-2. **Limit dużej kardynalności pola:** Pole dużej kardynalności składa się z aspektów lub Filtrowanie pola, które ma znaczącą liczbę unikatowych wartości, a w rezultacie zużywa znaczące ilości zasobów podczas obliczania wyników. Na przykład ustawienie pola Identyfikator produktu lub opisu jako obsługująca filtrowanie/tworzenie aspektów jest traktowany jako dużej kardynalności, ponieważ większość wartości z dokumentu do dokumentu są unikatowe. Wszędzie tam, gdzie to możliwe, należy ograniczyć liczbę pól dużej kardynalności.
+2. **Ogranicz wysokie wartości pól kardynalności:** Pole wysoka Kardynalność składa się z pola z możliwością tworzenia lub filtrowania, które ma znaczną liczbę unikatowych wartości, a w efekcie zużywa znaczące zasoby podczas obliczania wyników. Na przykład ustawienie identyfikatora produktu lub pola opisu jako wartości do przefiltrowania/filtrowania będzie traktowane jako wysoka Kardynalność, ponieważ większość wartości z dokumentu do dokumentu jest unikatowa. Wszędzie tam, gdzie to możliwe, należy ograniczyć liczbę pól o dużej kardynalności.
 
-3. **Zwiększ warstwy wyszukiwania:**  Przenoszenie do wyższej warstwy usługi Azure Search może być inny sposób, aby zwiększyć wydajność spowalniać zapytania. Każdej warstwy wyższej zapewnia szybsze procesory CPU i pamięci, które mają pozytywny wpływ na wydajność zapytań.
+3. **Zwiększ poziom wyszukiwania:**  Przechodzenie do wyższej warstwy Azure Search może być innym sposobem poprawy wydajności wolnych zapytań. Każda wyższa warstwa zapewnia szybszy procesor CPU i więcej pamięci, z których oba mają pozytywny wpływ na wydajność zapytań.
 
-## <a name="scaling-for-availability"></a>Skalowanie na potrzeby dostępności
-Repliki nie tylko zmniejszyć opóźnienie zapytań, ale można również zezwolić w celu zapewnienia wysokiej dostępności. Za pomocą pojedynczej repliki należy oczekiwać okresowe przestoje związane z ponownym uruchomieniu serwera po aktualizacji oprogramowania lub inne zdarzenia konserwacji, które zostanie przeprowadzona.  W wyniku należy wziąć pod uwagę, jeśli aplikacja wymaga wysokiej dostępności wyszukiwania (zapytania) oraz operacje zapisu (indeksowania zdarzenia). Usługa Azure Search udostępnia opcje umowa SLA na wszystkich ofert płatnych wyszukiwania z następującymi atrybutami:
+## <a name="scaling-for-availability"></a>Skalowanie pod kątem dostępności
+Repliki nie tylko skracają opóźnienia zapytań, ale mogą też zapewnić wysoką dostępność. W przypadku pojedynczej repliki należy oczekiwać okresowego przestoju spowodowanego ponownym uruchomieniem serwera po aktualizacji oprogramowania lub w przypadku innych zdarzeń konserwacji, które nastąpią.  W związku z tym ważne jest, aby wziąć pod uwagę, czy aplikacja wymaga wysokiej dostępności wyszukiwania (zapytania), a także zapisów (zdarzenia indeksowania). Azure Search oferuje opcje umowy SLA dotyczącej wszystkich płatnych ofert wyszukiwania o następujących atrybutach:
 
-* 2 repliki w celu zapewnienia wysokiej dostępności obciążeń (zapytania) tylko do odczytu
-* co najmniej 3 replik wysokiej dostępności z obciążeniami odczytu i zapisu (zapytań i indeksowania)
+* 2 repliki w celu zapewnienia wysokiej dostępności obciążeń tylko do odczytu (zapytania)
+* 3 lub więcej replik wysokiej dostępności obciążeń odczytu i zapisu (zapytania i indeksowanie)
 
-Aby uzyskać szczegółowe informacje na temat tego, odwiedź [Umowa dotycząca poziomu usług Azure Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Aby uzyskać więcej informacji na ten temat, odwiedź [Umowa dotycząca poziomu usług Azure Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-Repliki są kopie danych, o wiele replik umożliwia usłudze Azure Search na komputerze ponownego uruchamiania i obsługi dla jednej z replik zezwalając wykonywania zapytania kontynuować z innymi replikami. Z drugiej strony Jeśli nie podejmiesz natychmiast replik, będzie wiąże się spadku wydajności zapytań, przy założeniu, że repliki te zostały niewystarczająco wykorzystywanych zasobów.
+Ponieważ repliki są kopiami danych, dzięki czemu wiele replik umożliwia Azure Search wykonywanie ponownych uruchomień maszyn i ich konserwację w odniesieniu do jednej repliki, jednocześnie pozwalając na kontynuowanie wykonywania zapytania na innych replikach. Z drugiej strony, Jeśli przełączysz repliki, nastąpi pogorszenie wydajności zapytania, przy założeniu, że te repliki były zasobami wykorzystywanymi.
 
-## <a name="scaling-for-geo-distributed-workloads-and-geo-redundancy"></a>Skalowanie rozproszone geograficznie obciążenia i nadmiarowości geograficznej
-W przypadku obciążeń rozproszone geograficznie użytkowników, którzy znajdują się oni daleko od centrum danych hostującego usługi Azure Search mają większe opóźnienia. Jeden środki zaradcze jest do udostępniania wielu usług wyszukiwania w regionach z zbliża dla tych użytkowników. Usługa Azure Search nie jest aktualnie dostępny zautomatyzowaną metodę replikacji geograficznej indeksów usługi Azure Search w regionach, ale istnieje kilka technik, które mogą być używane, które mogą ułatwić ten proces proste do wdrożenia i zarządzania nimi. Te są opisane w kolejnych sekcjach.
+## <a name="scaling-for-geo-distributed-workloads-and-geo-redundancy"></a>Skalowanie dla obciążeń rozproszonych geograficznie i nadmiarowości geograficznej
+W przypadku obciążeń rozproszonych geograficznie użytkownicy, którzy znajdują się daleko od Azure Search hostingu centrum danych, będą mieć wyższe stawki opóźnienia. Jednym środkiem ograniczającym jest zainicjowanie obsługi wielu usług wyszukiwania w regionach z bliższą bliskością tych użytkowników. Azure Search obecnie nie zapewnia zautomatyzowanej metody replikowania geograficznie Azure Search indeksów między regionami, ale istnieje kilka technik, które mogą być używane, aby ten proces był prosty do wdrożenia i zarządzania. Są one opisane w następnych sekcjach.
 
-Celem rozproszone geograficznie zestaw usług wyszukiwania ma dwa lub więcej indeksów, dostępne w co najmniej dwóch regionach, w którym użytkownik jest kierowany do usługi Azure Search, która zapewnia najniższe opóźnienie, jak pokazano w tym przykładzie:
+Celem rozproszonego geograficznie zestawu usług wyszukiwania jest posiadanie co najmniej dwóch indeksów dostępnych w co najmniej dwóch regionach, w których użytkownik jest kierowany do usługi Azure Search, która zapewnia najniższe opóźnienie, jak pokazano w tym przykładzie:
 
-   ![Cross kartę usługi według regionów][1]
+   ![Wiele kart usług według regionów][1]
 
-### <a name="keeping-data-in-sync-across-multiple-azure-search-services"></a>Synchronizacja danych w wielu usługach Azure Search
-Dostępne są dwie opcje przechowywania wyszukiwania rozproszonego usługi synchronizacji składające się z przy użyciu [indeksatora wyszukiwania w usłudze Azure](search-indexer-overview.md) lub interfejsu API wypychania (nazywane także [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/)).  
+### <a name="keeping-data-in-sync-across-multiple-azure-search-services"></a>Utrzymywanie synchronizacji danych w wielu Azure Search usługach
+Istnieją dwie opcje utrzymywania synchronizacji usług wyszukiwania rozproszonego, które składają się z użycia indeksatora [Azure Search](search-indexer-overview.md) lub interfejsu API wypychania (nazywanego również [interfejsem API REST Azure Search](https://docs.microsoft.com/rest/api/searchservice/)).  
 
-### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Korzystać z indeksatorów w celu zaktualizowania zawartości na wiele usług
+### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Używanie indeksatorów do aktualizowania zawartości w wielu usługach
 
-Jeśli już używasz indeksatora w jednej usłudze, można skonfigurować drugi indeksatora na drugi usługę do używania tego samego obiektu źródła danych, pobieranie danych z tej samej lokalizacji. Każda usługa w każdym regionie ma swój własny indeksatora i indeksu docelowego (indeksu wyszukiwania nie jest udostępniony, co oznacza, że dane są powielane), ale każdy indeksatora odwołuje się do tego samego źródła danych.
+Jeśli używasz już indeksatora w jednej usłudze, możesz skonfigurować drugi indeksator dla drugiej usługi tak, aby korzystał z tego samego obiektu źródła danych, pobierając dane z tej samej lokalizacji. Każda usługa w każdym regionie ma swój własny indeksator i docelowy indeks (indeks wyszukiwania nie jest udostępniony, co oznacza, że dane są duplikowane), ale każdy indeksator odwołuje się do tego samego źródła danych.
 
-Poniżej przedstawiono wizualizację wysokiego poziomu, jak będzie wyglądać danej architekturze.
+Poniżej znajduje się wysoce wysoki poziom wizualizacji, która będzie wyglądać na architekturę.
 
-   ![Pojedyncze źródło danych przy użyciu kombinacji usługi i rozproszone indeksatora][2]
+   ![Pojedyncze źródło danych z rozproszoną usługą indeksatora i kombinacjami usług][2]
 
-### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Używanie interfejsów API REST do wypychania aktualizacji zawartości od wielu usług
-Jeśli używasz usługi Azure Search interfejs API REST do [wypychania zawartości w indeksie usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/update-index), można zachować różne usługi wyszukiwania w synchronizacji, wypychając zmiany do wszystkich usług wyszukiwania, zawsze wtedy, gdy wymagana jest aktualizacja. W kodzie upewnij się obsługiwać przypadki, gdzie aktualizacji do jednego wyszukiwania usługi nie powiedzie się, ale nie powiedzie się z innymi usługami wyszukiwania.
+### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Używanie interfejsów API REST do wypychania aktualizacji zawartości w wielu usługach
+Jeśli używasz interfejsu API REST Azure Search do wypychania [zawartości w indeksie Azure Search](https://docs.microsoft.com/rest/api/searchservice/update-index), możesz zapewnić synchronizację różnych usług wyszukiwania przez wypychanie zmian do wszystkich usług wyszukiwania, gdy wymagana jest aktualizacja. W kodzie, pamiętaj, aby obsługiwać przypadki, w których aktualizacja jednej usługi wyszukiwania kończy się niepowodzeniem, ale powiodła się dla innych usług wyszukiwania.
 
-## <a name="leverage-azure-traffic-manager"></a>Korzystać z usługi Azure Traffic Manager
-[Usługa Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) umożliwia kierowanie żądań do wielu zlokalizowane geograficznie witryn sieci Web, które następnie są wspierane przez wiele usług wyszukiwania platformy Azure. Jedną z zalet usługi Traffic Manager to, że można ją sondy usługi Azure Search, aby upewnić się, że jest dostępny i przekierowywać użytkowników do usługi wyszukiwania alternatywne w przypadku przestoju. Ponadto jeśli są routingu żądań wyszukiwania za pośrednictwem witryny sieci Web systemu Azure, usługi Azure Traffic Manager umożliwia należy załadować saldo przypadki, gdzie witryny sieci Web działa, ale nie w usłudze Azure Search. Oto przykład jakie architektury, która korzysta z usługi Traffic Manager.
+## <a name="leverage-azure-traffic-manager"></a>Korzystanie z usługi Azure Traffic Manager
+[Usługa Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) umożliwia kierowanie żądań do wielu witryn sieci Web zlokalizowanych w lokalizacji geograficznej, które są następnie obsługiwane przez wiele usług Azure Search. Jedną z zalet Traffic Manager jest to, że może ona sondować Azure Search, aby upewnić się, że jest ona dostępna i będzie kierować użytkowników do alternatywnych usług wyszukiwania w przypadku przestoju. Ponadto w przypadku routingu żądań wyszukiwania za pomocą usługi Azure Web Sites usługa Azure Traffic Manager umożliwia Równoważenie obciążenia, w przypadku których witryna internetowa jest niedostępna, ale nie Azure Search. Oto przykład architektury, która wykorzystuje Traffic Manager.
 
-   ![Między + tab usług według regionów, przy użyciu centralnej Traffic Manager][3]
+   ![Wiele kart usług według regionów z centralnym Traffic Manager][3]
 
 ## <a name="monitor-performance"></a>Monitorowanie wydajności
-Usługa Azure Search udostępnia możliwość analizowania i monitorowania wydajności usługi za pośrednictwem [analiza ruchu wyszukiwania](search-traffic-analytics.md). Gdy możesz włączyć tę funkcję i dodać Instrumentację do aplikacji klienckiej operacji wyszukiwania pojedynczych, jak również zagregowanych metryk można opcjonalnie logowania do konta usługi Azure Storage, które następnie mogą być przetwarzane do analizy lub wizualizowane w usłudze Power BI. Przechwytywanie metryki w ten sposób zapewniają statystyki wydajności, takie jak średnia liczba zapytań lub zapytań czasy reakcji. Ponadto rejestrowanie operacji pozwala przejść do szczegółów operacji wyszukiwania określonych.
+Azure Search umożliwia analizowanie i monitorowanie wydajności usługi za pomocą [analizy ruchu wyszukiwania](search-traffic-analytics.md). Po włączeniu tej funkcji i dodaniu instrumentacji do aplikacji klienckiej można opcjonalnie rejestrować pojedyncze operacje wyszukiwania, a także zagregowane metryki na koncie usługi Azure Storage, które można następnie przetworzyć w celu analizy lub wizualizacji w Power BI. Metryki przechwyty w ten sposób zapewniają statystyki wydajności, takie jak średnia liczba zapytań lub czasy odpowiedzi na zapytanie. Ponadto rejestrowanie operacji umożliwia przechodzenie do szczegółów określonych operacji wyszukiwania.
 
-Analiza ruchu jest przydatne dla zrozumienia, opóźnienie stawki z punktu widzenia tej usługi Azure Search. Ponieważ metryki wydajności zapytań, które są rejestrowane są na podstawie czasu potrzebnego przez zapytanie do pełnego przetworzenia w usłudze Azure Search (od momentu, w którym jest wymagane, gdy zostanie wysłane), jesteś w stanie skorzystać z tej można ustalić, czy po stronie usługi Azure Search lub szczegółowymi informacjami dotyczącymi problemów z opóźnieniem Środowisko IDE, usługi, np. informacji od opóźnienia sieci.  
+Analiza ruchu jest przydatna do poznania stawek opóźnienia z tej Azure Search perspektywą. Ponieważ zarejestrowane metryki wydajności zapytań są oparte na czasie, w którym zapytanie ma być w pełni przetwarzane w Azure Search (od momentu, w którym żądanie jest wysyłane), można użyć tego do ustalenia, czy problemy z opóźnieniami pochodzą z usługi Azure Search lub po stronie usług środowisko IDE usługi, takie jak z opóźnienia sieci.  
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat cen limity usług i warstw dla każdego z nich, zobacz [limitów w usłudze Azure Search usług](search-limits-quotas-capacity.md).
+## <a name="next-steps"></a>Następne kroki
+Aby dowiedzieć się więcej o limitach warstw cenowych i usług dla każdej z nich, zobacz [limity usługi w Azure Search](search-limits-quotas-capacity.md).
 
-Odwiedź stronę [planowania pojemności](search-capacity-planning.md) Aby dowiedzieć się więcej na temat kombinacji partycji i replik.
+Odwiedź stronę [Planowanie pojemności](search-capacity-planning.md) , aby dowiedzieć się więcej na temat kombinacji partycji i repliki.
 
-Aby uzyskać więcej Przechodzenie do szczegółów na wydajność i obejrzeć kilka prezentacji, jak zaimplementować optymalizacje omówionych w tym artykule Obejrzyj poniższy film wideo:
+Aby uzyskać więcej szczegółów na temat wydajności i zobaczyć, jak zaimplementować optymalizacje omówione w tym artykule, Obejrzyj następujące wideo:
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
 > 

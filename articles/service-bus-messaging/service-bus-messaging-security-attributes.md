@@ -1,6 +1,6 @@
 ---
-title: Wspólne atrybuty zabezpieczeń dla komunikatów usługi Azure Service Bus
-description: Lista kontrolna typowych atrybutów zabezpieczeń do oceny, komunikatów usługi Azure Service Bus
+title: Atrybuty zabezpieczeń dla Azure Service Bus Messaging
+description: Lista kontrolna atrybutów zabezpieczeń do oceny Azure Service Bus komunikatów
 services: service-bus-messaging
 ms.service: service-bus-messaging
 documentationcenter: ''
@@ -9,50 +9,50 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d68ffe6561da6a23c288dfabd1d3eb6b34099bb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e1d6e041b47a261b549fb8b608cf09d0d6362dd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003114"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443895"
 ---
-# <a name="security-attributes-for-azure-service-bus-messaging"></a>Atrybuty zabezpieczeń dla komunikatów usługi Azure Service Bus
+# <a name="security-attributes-for-azure-service-bus-messaging"></a>Atrybuty zabezpieczeń dla Azure Service Bus Messaging
 
-W tym artykule opisano atrybuty zabezpieczeń wbudowanych w komunikatów usługi Azure Service Bus.
+W tym artykule opisano atrybuty zabezpieczeń wbudowane w Azure Service Bus komunikatów.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Zapobiegawczych
+## <a name="preventative"></a>Zapobiegawczej
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>|  Tak po stronie serwera szyfrowania podczas spoczynku domyślnie. | Klucze zarządzaną przez klienta i scenariusza BYOK nie są jeszcze obsługiwane. Szyfrowanie po stronie klienta jest odpowiedzialny za klienta |
-| Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | Obsługuje standardowego mechanizmu HTTPS/TLS. |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Nie |   |
-| Szyfrowanie na poziomie kolumny (Azure Data Services)| ND | |
-| Wywołania interfejsu API szyfrowane| Yes | Wywołania interfejsu API odbywa się za pomocą [usługi Azure Resource Manager](../azure-resource-manager/index.yml) i HTTPS. |
+| Szyfrowanie w spoczynku (takie jak szyfrowanie po stronie serwera, szyfrowanie po stronie serwera z kluczami zarządzanymi przez klienta i inne funkcje szyfrowania)|  Tak w przypadku szyfrowania po stronie serwera domyślnie. | Klucze zarządzane przez klienta i BYOK nie są jeszcze obsługiwane. Szyfrowanie po stronie klienta jest odpowiedzialnością klienta |
+| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Yes | Obsługuje standardowy mechanizm HTTPS/TLS. |
+| Obsługa kluczy szyfrowania (CMK, BYOK itp.)| Nie |   |
+| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |
+| Wywołania interfejsu API są szyfrowane| Tak | Wywołania interfejsu API są nawiązywane za pośrednictwem [Azure Resource Manager](../azure-resource-manager/index.yml) i https. |
 
-## <a name="network-segmentation"></a>Segmentacji sieci
+## <a name="network-segmentation"></a>Segmentacja sieci
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Obsługa punktu końcowego usługi| Tak (tylko w warstwie Premium) | Punkty końcowe usługi sieci wirtualnej są obsługiwane w przypadku [warstwy usługi Service Bus w warstwie Premium](service-bus-premium-messaging.md) tylko. |
+| Obsługa punktów końcowych usługi| Tak (tylko warstwa Premium) | Punkty końcowe usługi sieci wirtualnej są obsługiwane tylko w przypadku [Service Bus warstwy Premium](service-bus-premium-messaging.md) . |
 | Obsługa iniekcji sieci wirtualnej| Nie | |
-| Izolacja sieci i zapory pomocy technicznej| Tak (tylko w warstwie Premium) |  |
+| Izolacja sieci i obsługa zapór| Tak (tylko warstwa Premium) |  |
 | Obsługa tunelowania wymuszonego| Nie |  |
 
 ## <a name="detection"></a>Wykrywanie
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Obsługiwane za pośrednictwem [usługa Azure Monitor i alerty](service-bus-metrics-azure-monitor.md). |
+| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Yes | Obsługiwane za pośrednictwem [Azure monitor i alertów](service-bus-metrics-azure-monitor.md). |
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| Yes | Zarządzane za pośrednictwem [usługi Azure Active Directory tożsamości usługi zarządzanej](service-bus-managed-service-identity.md); zobacz [usługi Service Bus, uwierzytelnianie i autoryzacja](service-bus-authentication-and-authorization.md).|
-| Autoryzacja| Tak | Obsługuje autoryzację za pośrednictwem [RBAC](service-bus-role-based-access-control.md) (wersja zapoznawcza) i tokenu sygnatury dostępu Współdzielonego, zobacz [usługi Service Bus, uwierzytelnianie i autoryzacja](service-bus-authentication-and-authorization.md). |
+| Authentication| Yes | Zarządzane przez [Azure Active Directory tożsamość usługi zarządzanej](service-bus-managed-service-identity.md); Zobacz [Service Bus uwierzytelnianie i autoryzacja](service-bus-authentication-and-authorization.md).|
+| Authorization| Yes | Obsługuje autoryzację za pośrednictwem [RBAC](service-bus-role-based-access-control.md) (wersja zapoznawcza) i token SAS; Zobacz [Service Bus uwierzytelnianie i autoryzacja](service-bus-authentication-and-authorization.md). |
 
 
 
@@ -60,11 +60,11 @@ W tym artykule opisano atrybuty zabezpieczeń wbudowanych w komunikatów usługi
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji| Tak | Dzienniki czynności są dostępne; zobacz [dzienników diagnostycznych usługi Service Bus](service-bus-diagnostic-logs.md).  |
-| Rejestrowanie płaszczyzny danych i inspekcji| Nie |  |
+| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Yes | Dzienniki operacji są dostępne; Zobacz [Service Bus dzienników diagnostycznych](service-bus-diagnostic-logs.md).  |
+| Rejestrowanie i inspekcja płaszczyzny danych| Nie |  |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Tak | Obsługuje przechowywanie wersji dostawcy zasobu za pośrednictwem [interfejsu API usługi Azure Resource Manager](/rest/api/resources/).|
+| Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| Yes | Obsługuje przechowywanie wersji dostawcy zasobów za pomocą [interfejsu API Azure Resource Manager](/rest/api/resources/).|

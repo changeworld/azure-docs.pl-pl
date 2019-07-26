@@ -1,6 +1,6 @@
 ---
-title: Mapowania obszaru roboczego usługi Azure Automation i Log Analytics
-description: W tym artykule opisano mapowania dozwolone między kontem usługi Automation i obszar roboczy usługi Log Analytics, pozwalające obsługiwać rozwiązanie
+title: Mapowania obszaru roboczego Azure Automation i Log Analytics
+description: W tym artykule opisano mapowania dozwolone między kontem usługi Automation i obszarem roboczym Log Analytics do obsługi rozwiązania
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,22 +9,22 @@ ms.author: robreed
 ms.date: 05/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9faa261f4b6293d778c5da685f630a21fd88f600
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cd4500b4ef6492f0b6499bb1e9aa1a773313e860
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478580"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498365"
 ---
 # <a name="workspace-mappings"></a>Mapowania obszaru roboczego
 
-Podczas włączania rozwiązań, takich jak zarządzanie aktualizacjami, śledzenie zmian i spisu lub uruchamianie/zatrzymywanie maszyn wirtualnych podczas szczytu rozwiązania, tylko w określonych regionach są obsługiwane w przypadku łączenia z obszarem roboczym usługi Log Analytics i konto usługi Automation. To mapowanie dotyczy tylko konto usługi Automation i obszaru roboczego usługi Log Analytics. Zasoby raporty do obszaru roboczego konto usługi Automation i Log Analytics może znajdować się w innych regionach.
+Podczas włączania rozwiązań, takich jak Update Management, Change Tracking i spisu, lub uruchamiania/zatrzymywania maszyn wirtualnych w rozwiązaniu offline, tylko niektóre regiony są obsługiwane na potrzeby łączenia obszaru roboczego Log Analytics i konta usługi Automation. To mapowanie ma zastosowanie tylko do konta usługi Automation i obszaru roboczego Log Analytics. Zasoby raportowane do konta usługi Automation lub obszaru roboczego Log Analytics mogą znajdować się w innych regionach.
 
-## <a name="supported-mappings"></a>Obsługiwanych mapowań
+## <a name="supported-mappings"></a>Obsługiwane mapowania
 
 W poniższej tabeli przedstawiono obsługiwane mapowania:
 
-|**Regionu obszaru roboczego usługi log Analytics**|**Region usługi Azure Automation**|
+|**Log Analytics region obszaru roboczego**|**Region Azure Automation**|
 |---|---|
 |**USA**||
 |EastUS<sup>1</sup>|EastUS2|
@@ -40,53 +40,53 @@ W poniższej tabeli przedstawiono obsługiwane mapowania:
 |**Europa**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
-|**Administracja USA**||
+|**US Gov**||
 |USGovVirginia|USGovVirginia|
 
-<sup>1</sup> EastUS mapowania obszarów roboczych usługi Log Analytics do kont usługi Automation nie jest dokładnie mapowania regionu, ale jest poprawny mapowania.
+<sup>1</sup> mapowanie Wschodnie dla obszarów roboczych log Analytics na konta usługi Automation nie jest dokładnym mapowaniem regionu do regionu, ale jest poprawnym mapowaniem.
 
-<sup>2</sup> ze względu na ograniczenia wydajności region nie jest dostępna podczas tworzenia nowych zasobów. Obejmuje to obszary robocze kont usługi Automation i Log Analytics. Jednak istniejących połączonych zasobów w regionie powinny nadal działać.
+<sup>2</sup> ze względu na ograniczenia pojemności region nie jest dostępny podczas tworzenia nowych zasobów. Obejmuje to konta usługi Automation i Log Analytics obszary robocze. Jednak istniejące połączone zasoby w regionie powinny być nadal wykonywane.
 
-## <a name="unlink-workspace"></a>Odłączanie obszaru roboczego
+## <a name="unlink-workspace"></a>Odłącz obszar roboczy
 
-Jeśli zdecydujesz, że już nie chcesz zintegrować konta usługi Automation z obszarem roboczym usługi Log Analytics, możesz odłączyć konta bezpośrednio w witrynie Azure portal. Przed kontynuowaniem należy najpierw usunąć zarządzania aktualizacjami, śledzenie zmian i spisu lub uruchamianie/zatrzymywanie maszyn wirtualnych podczas szczytu rozwiązania, jeśli są używane. Jeśli nie usuniesz je, ten proces nie będą mogli kontynuować. Zapoznaj się z artykułem dla danego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane do usunięcia go.
+Jeśli zdecydujesz, że nie chcesz już integrować konta usługi Automation z obszarem roboczym Log Analytics, możesz odłączyć swoje konto bezpośrednio od Azure Portal. Przed kontynuowaniem należy najpierw usunąć Update Management, Change Tracking i spis, a także rozpocząć lub zatrzymać maszyny wirtualne w przypadku ich używania. Jeśli ich nie usuniesz, ten proces nie zostanie zablokowany. Zapoznaj się z artykułem dotyczącym określonego rozwiązania, które zostało zaimportowane, aby poznać kroki wymagane do jego usunięcia.
 
-Po usunięciu tych rozwiązań, można wykonać poniższe kroki, aby odłączyć konto usługi Automation.
+Po usunięciu tych rozwiązań możesz wykonać następujące czynności, aby odłączyć konto usługi Automation.
 
 > [!NOTE]
-> Niektóre rozwiązania, w tym wcześniejsze wersje rozwiązania do monitorowania usługi Azure SQL zostały utworzone zasoby usługi automation i może również muszą zostać usunięte przed odłączanie obszaru roboczego.
+> Niektóre rozwiązania, w tym wcześniejsze wersje rozwiązania Azure SQL monitoring, mogły utworzyć zasoby automatyzacji i mogą być również musiały zostać usunięte przed odłączeniem obszaru roboczego.
 
-1. W witrynie Azure Portal otwórz konto usługi Automation, a na automatyzację konta wybierz stronę **połączony obszar roboczy** sekcji **powiązane zasoby** po lewej stronie.
+1. W Azure Portal Otwórz konto usługi Automation, a na stronie konto usługi Automation wybierz opcję **połączony obszar roboczy** w sekcji **zasoby powiązane** z pozostałą częścią.
 
-2. Na stronie odłączania obszaru roboczego kliknij **odłączanie obszaru roboczego**. Zostanie wyświetlony monit sprawdzający, czy chcesz kontynuować.
+2. Na stronie Odłącz obszar roboczy kliknij pozycję **Odłącz obszar roboczy**. Zostanie wyświetlony monit o zweryfikowanie, czy chcesz kontynuować.
 
-3. Gdy usługa Azure Automation usiłuje odłączyć konto obszaru roboczego usługi Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
+3. Mimo że Azure Automation próbuje odłączyć konto do obszaru roboczego Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
 
-Jeśli używane jest rozwiązanie do zarządzania aktualizacjami, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
+Jeśli użyto rozwiązania Update Management, opcjonalnie możesz chcieć usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
-* Zaplanowanie aktualizacji — będzie mieć nazwy zgodne utworzonych wdrożeń aktualizacji)
+* Harmonogramy aktualizacji — każda z nich będzie mieć nazwy zgodne z utworzonymi wdrożeniami aktualizacji)
 
-* Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda będzie miała podobnie do maszyna1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8).
+* Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda z nich będzie nazywana podobnie do `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`).
 
-Jeśli uruchamianie/zatrzymywanie maszyn wirtualnych jest używana podczas szczytu rozwiązania, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
+Jeśli wykorzystano Uruchamianie/zatrzymywanie maszyn wirtualnych w rozwiązaniu off-godzinnym, opcjonalnie możesz chcieć usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
-* Uruchamianie i zatrzymywanie maszyn wirtualnych elementu runbook harmonogramy
-* Uruchamianie i zatrzymywanie elementów runbook maszyny Wirtualnej
+* Uruchamianie i zatrzymywanie harmonogramów elementów Runbook maszyny wirtualnej
+* Uruchamianie i zatrzymywanie elementów Runbook maszyny wirtualnej
 * Zmienne
 
-Alternatywnie można również odłączyć obszaru roboczego z konta usługi Automation z obszaru roboczego usługi Log Analytics. W obszarze roboczym wybierz **konta usługi Automation** w obszarze **powiązane zasoby**. Na stronie konta automatyzacji wybierz **odłączyć konto**.
+Możesz również odłączyć obszar roboczy od konta usługi Automation z poziomu obszaru roboczego Log Analytics. W obszarze roboczym wybierz pozycję **konto usługi Automation** w obszarze **powiązane zasoby**. Na stronie konto usługi Automation wybierz opcję **Odłącz konto**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak dołączyć następujących rozwiązań:
+Dowiedz się, jak dołączyć następujące rozwiązania:
 
-Aktualizowanie zarządzania i śledzenia zmian i spisu:
+Update Management i Change Tracking i spisu:
 
 * Z [maszyny wirtualnej](../automation-onboard-solutions-from-vm.md)
-* Z usługi [konta usługi Automation](../automation-onboard-solutions-from-automation-account.md)
-* Gdy [przeglądania wielu maszyn](../automation-onboard-solutions-from-browse.md)
-* Z [elementu runbook](../automation-onboard-solutions.md)
+* Na [koncie usługi Automation](../automation-onboard-solutions-from-automation-account.md)
+* Podczas [przeglądania wielu maszyn](../automation-onboard-solutions-from-browse.md)
+* Z [elementu Runbook](../automation-onboard-solutions.md)
 
 Uruchamianie lub zatrzymywanie maszyn wirtualnych po godzinach pracy
 
-* [Wdrażanie uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu](../automation-solution-vm-management.md)
+* [Wdróż maszyny wirtualne uruchamiania/zatrzymywania poza godzinami pracy](../automation-solution-vm-management.md)

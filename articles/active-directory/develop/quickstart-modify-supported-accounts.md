@@ -1,5 +1,5 @@
 ---
-title: Modyfikowanie kont obsługiwanych przez aplikacje zarejestrowane za pomocą platformy tożsamości firmy Microsoft | Azure
+title: Modyfikowanie firmy Microsoft identyfikacja kont aplikacji platformy | Azure
 description: Konfigurowanie aplikacji zarejestrowanej za pomocą platformy tożsamości firmy Microsoft pod kątem zmiany zbioru osób (kont) z dostępem do aplikacji.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00d99ae48abfcb3e4d4abc0d63565994df45f746
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: be62dabc01e00465fa5227c5531fa18a16cf10a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545724"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380783"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Szybki start: Modyfikowanie kont obsługiwane przez aplikację
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Szybki start: Modyfikowanie kont obsługiwanych przez aplikację
 
 Podczas rejestrowania aplikacji na platformie tożsamości firmy Microsoft możesz zdecydować, że aplikacja powinna być dostępna tylko dla użytkowników w Twojej organizacji. Możesz także planować udostępnienie aplikacji użytkownikom w organizacjach zewnętrznych lub użytkownikom w organizacjach zewnętrznych i użytkownikom nienależącym do organizacji (kontom osobistym).
 
@@ -44,7 +44,7 @@ Przed skonfigurowaniem aplikacji wykonaj następujące kroki:
 
 1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi, a następnie wybierz pozycję **rejestracje aplikacji**.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** a następnie wybierz pozycję **rejestracje aplikacji**.
 1. Znajdź i wybierz aplikację do skonfigurowania. Po wybraniu aplikacji zobaczysz stronę **Przegląd** aplikacji lub główną stronę rejestracji.
 1. Postępuj zgodnie z instrukcjami, aby [zmienić rejestrację aplikacji pod kątem obsługi różnych kont](#change-the-application-registration-to-support-different-accounts).
 1. W przypadku aplikacji z jedną stroną [włącz niejawne udzielenie uwierzytelniania OAuth 2.0](#enable-oauth-20-implicit-grant-for-single-page-applications).

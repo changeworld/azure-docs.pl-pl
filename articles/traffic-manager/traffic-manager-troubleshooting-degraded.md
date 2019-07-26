@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z negatywny wpływ na dostępność stanu w usłudze Azure Traffic Manager
-description: Jak rozwiązywać problemy z profilami usługi Traffic Manager, gdy jest on wyświetlany jako negatywny wpływ na dostępność stanu.
+title: Rozwiązywanie problemów ze stanem obniżonej wydajności na platformie Azure Traffic Manager
+description: Jak rozwiązywać problemy z profilami Traffic Manager, gdy jest on wyświetlany jako obniżony stan.
 services: traffic-manager
 documentationcenter: ''
 author: chadmath
@@ -11,43 +11,43 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: f01dfe78d5d5e322258b0ee98cec314f9afe33c0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19a654215377ba0fac7dacf800bf87a3481679c0
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60329755"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357231"
 ---
-# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Rozwiązywanie problemów ze stanem obniżonej wydajności w usłudze Azure Traffic Manager
+# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Rozwiązywanie problemów ze stanem obniżonej wydajności na platformie Azure Traffic Manager
 
-W tym artykule opisano, jak rozwiązywać problemy z profilem usługi Azure Traffic Manager, który jest wyświetlany stan obniżonej wydajności. W tym scenariuszu należy wziąć pod uwagę skonfigurowano profil usługi Traffic Manager, wskazując cloudapp.net hostowanych usług. Wyświetlaniem kondycji usługi Traffic Manager **obniżony** stanu, a następnie stan co najmniej jeden punkt końcowy może być **obniżony**:
+W tym artykule opisano sposób rozwiązywania problemów z profilem usługi Azure Traffic Manager, w którym jest wyświetlany stan obniżonej sprawności. Pierwszym krokiem w rozwiązywaniu problemów z nieobniżonym stanem Traffic Manager na platformie Azure jest włączenie rejestrowania diagnostycznego.  Aby uzyskać więcej informacji, zobacz [Włączanie dzienników diagnostycznych](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) . W tym scenariuszu należy zastanowić się, że skonfigurowano profil Traffic Manager wskazujący niektóre usługi hostowane w usłudze cloudapp.net. Jeśli kondycja Traffic Manager zostanie wyświetlony stan **obniżonej wydajności** , może to spowodować **spadek**stanu co najmniej jednego punktu końcowego:
 
-![Stan punktu końcowego o obniżonym poziomie](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
+![stan nieprawidłowego punktu końcowego](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-Wyświetlaniem kondycji usługi Traffic Manager **nieaktywny** stanu, a następnie obie punktów końcowych może być **wyłączone**:
+Jeśli kondycja Traffic Manager wyświetla stan nieaktywny  , wówczas oba punkty końcowe mogą być **wyłączone**:
 
-![Nieaktywne stan usługi Traffic Manager](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
+![Stan nieaktywnej Traffic Manager](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
-## <a name="understanding-traffic-manager-probes"></a>Sondy usługi Traffic Manager opis
+## <a name="understanding-traffic-manager-probes"></a>Zrozumienie Traffic Manager sond
 
-* Usługa Traffic Manager uważa się usługi ONLINE, tylko wtedy, gdy sondy odbiera odpowiedź HTTP 200 powrót po awarii z ścieżka sondy punktu końcowego. Druga odpowiedź – 200 jest błąd.
-* Przekierowanie 30 x kończy się niepowodzeniem, nawet jeśli adresu URL zwraca wartość 200.
-* Dla sondy protokołu HTTPs błędy certyfikatów są ignorowane.
-* Rzeczywista zawartość ścieżka sondy nie ma znaczenia, tak długo, jak zwracany jest 200. Sondowanie adres URL do zawartości statycznej takich jak "/ favicon.ico" jest to typowa technika. Zawartość dynamiczna, takich jak strony ASP może nie zawsze zwrócić 200, nawet wtedy, gdy aplikacja jest w dobrej kondycji.
-* Najlepszym rozwiązaniem jest, aby ustawić ścieżkę sondowania coś, co ma za mało logikę w celu określenia, że witryna jest w górę lub w dół. W poprzednim przykładzie, ustawiając dla ścieżki "/ favicon.ico", obejmuje tylko testowanie tym w3wp.exe odpowiada. To sondowanie nie może wskazywać, czy aplikacja sieci web jest w dobrej kondycji. Lepszym rozwiązaniem byłoby ustawić ścieżkę na coś, takie jak "/ Probe.aspx" zawierający logikę w celu określenia kondycji lokacji. Na przykład można użyć liczników wydajności do wykorzystania procesora CPU lub mierzenia liczby żądań zakończonych niepowodzeniem. Lub może próbować uzyskać dostęp do zasobów bazy danych lub stanu sesji, aby upewnić się, że działa aplikacja sieci web.
-* Jeśli wszystkie punkty końcowe w profilu są ograniczone, usługa Traffic Manager traktuje wszystkie punkty końcowe jako w dobrej kondycji i kieruje ruch do wszystkich punktów końcowych. Takie zachowanie gwarantuje, że problemy z mechanizmu sondowania spowoduje pełną awarii usługi.
+* Traffic Manager traktuje punkt końcowy jako w trybie ONLINE tylko wtedy, gdy sonda odbiera odpowiedź HTTP 200 z powrotem ze ścieżki sondy. Każda inna odpowiedź inna niż 200 jest niepowodzeniem.
+* Przekierowanie 30x kończy się niepowodzeniem, nawet jeśli przekierowywany adres URL zwróci wartość 200.
+* W przypadku sond HTTPs Błędy certyfikatów są ignorowane.
+* Rzeczywista zawartość ścieżki sondy nie ma znaczenia, o ile jest zwracana 200. Badanie adresu URL do pewnej zawartości statycznej, takiej jak "/favicon.ico", jest typową techniką. Zawartość dynamiczna, podobnie jak strony ASP, może nie zawsze zwracać 200 nawet wtedy, gdy aplikacja jest w dobrej kondycji.
+* Najlepszym rozwiązaniem jest ustawienie dla ścieżki sondy elementu, który ma wystarczającą logikę, aby określić, że lokacja jest w górę lub w dół. W poprzednim przykładzie, ustawiając ścieżkę na "/favicon.ico", tylko test w3wp. exe odpowiada. To sondowanie może nie wskazywać, że aplikacja sieci Web jest w dobrej kondycji. Lepszym rozwiązaniem jest ustawienie ścieżki do elementu, takiego jak "/Probe.aspx", który ma logikę do określenia kondycji lokacji. Można na przykład użyć liczników wydajności do użycia procesora CPU lub zmierzyć liczbę żądań zakończonych niepowodzeniem. Możesz też próbować uzyskać dostęp do zasobów bazy danych lub stanu sesji, aby upewnić się, że aplikacja sieci Web działa.
+* Jeśli wszystkie punkty końcowe w profilu mają obniżoną wydajność, Traffic Manager traktuje wszystkie punkty końcowe jako zdrowe i kieruje ruch do wszystkich punktów końcowych. Takie zachowanie zapewnia, że problemy z mechanizmem sondowania nie powodują kompletnego przestoju usługi.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Aby rozwiązać błąd sondowania, należy to narzędzie, które zawiera kod stanu HTTP zwracany z adresem URL badania. Istnieje wiele narzędzi, które pokazują nieprzetworzona odpowiedź HTTP.
+Aby rozwiązać problem z awarią sondy, potrzebne jest narzędzie, które pokazuje kod stanu HTTP Return z adresu URL sondy. Dostępnych jest wiele narzędzi, które pokazują nieprzetworzoną odpowiedź HTTP.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [curl](https://curl.haxx.se/)
+* [odsłon](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
-Ponadto możesz użyć karcie sieciowej narzędzi debugowania F12 w przeglądarce Internet Explorer do wyświetlania odpowiedzi HTTP.
+Ponadto możesz użyć karty sieć narzędzi debugowania F12 w programie Internet Explorer, aby wyświetlić odpowiedzi HTTP.
 
-W tym przykładzie chcemy, aby zobaczyć odpowiedź z naszej adresu URL sondy: http:\//watestsdp2008r2.cloudapp.net:80/Probe. Poniższy przykład programu PowerShell ilustruje ten problem.
+W tym przykładzie chcemy zobaczyć odpowiedź z naszego adresu URL sondy: http:\//watestsdp2008r2.cloudapp.NET:80/Probe. Poniższy przykład programu PowerShell ilustruje ten problem.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -59,9 +59,9 @@ Przykładowe dane wyjściowe:
     ---------- -----------------
            301 Moved Permanently
 
-Należy zauważyć, że odebraliśmy odpowiedzi przekierowania. Jak wspomniano wcześniej, StatusCode wszelkie inne niż 200 jest uznawany za błąd. Usługa Traffic Manager zmiany stanu punktu końcowego Offline. Aby rozwiązać ten problem, sprawdź konfigurację witryny sieci Web, aby upewnić się, że odpowiednie StatusCode mogą być zwrócone ze ścieżki sondy. Skonfiguruj ponownie sondy usługi Traffic Manager, aby wskazywała ścieżkę, która zwraca wartość 200.
+Zwróć uwagę, że odebrano odpowiedź przekierowania. Jak wspomniano wcześniej, każdy kod błędu inny niż 200 jest traktowany jako błąd. Traffic Manager zmienia stan punktu końcowego na offline. Aby rozwiązać ten problem, sprawdź konfigurację witryny sieci Web, aby upewnić się, że można zwrócić prawidłowy kod StatusCode ze ścieżki sondy. Skonfiguruj ponownie sondę Traffic Manager, aby wskazywała ścieżkę zwracającą 200.
 
-Twoje sondy jest przy użyciu protokołu HTTPS, może być konieczne wyłączenie sprawdzania, aby uniknąć błędów certyfikatu SSL/TLS w trakcie testu certyfikatu. Poniższe instrukcje PowerShell wyłączyć weryfikację certyfikatów dla bieżącej sesji programu PowerShell:
+Jeśli sonda korzysta z protokołu HTTPS, może być konieczne wyłączenie sprawdzania certyfikatu w celu uniknięcia błędów protokołu SSL/TLS podczas testu. Następujące instrukcje programu PowerShell Wyłącz weryfikację certyfikatu dla bieżącej sesji programu PowerShell:
 
 ```powershell
 add-type @"
@@ -80,9 +80,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Metody routingu ruchu w usłudze Traffic Manager](traffic-manager-routing-methods.md)
+[Informacje o metodach routingu ruchu Traffic Manager](traffic-manager-routing-methods.md)
 
-[Co to jest usługa Traffic Manager](traffic-manager-overview.md)
+[Co to jest Traffic Manager](traffic-manager-overview.md)
 
 [Cloud Services](https://go.microsoft.com/fwlink/?LinkId=314074)
 

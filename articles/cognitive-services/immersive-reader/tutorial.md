@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ba00842200d8a896fa1ffaccad8826d1c3173462
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
-ms.translationtype: HT
+ms.openlocfilehash: 73f9ee597682cc995f3a2cc783abeee92bf11bd2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488804"
+ms.locfileid: "68501141"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Samouczek: Uruchamianie czytnika immersyjnego (Node.js)
 
@@ -262,7 +262,7 @@ Możesz dołączyć zawartość matematyczną w czytniku immersyjny przy użyciu
 
 2. Przejdź do strony _http://localhost:3000_ . Gdy uruchamiasz czytnik immersyjny i przewijasz do dołu, zobaczysz formułę matematyczną.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Poznaj [zestaw SDK czytnika immersyjny](https://github.com/Microsoft/immersive-reader-sdk) i [Kompendium zestawu SDK czytnika immersyjny](./reference.md)
-* Wyświetl przykłady kodu w witrynie [GitHub](https://github.com/microsoft/immersive-reader-sdk/samples/advanced-csharp)
+* Wyświetl przykłady kodu w witrynie [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/advanced-csharp)

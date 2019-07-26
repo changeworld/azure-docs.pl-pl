@@ -1,7 +1,7 @@
 ---
 title: Uruchamianie eksperymentów i wnioskowania w sieci wirtualnej
 titleSuffix: Azure Machine Learning service
-description: Uruchamiaj eksperymenty uczenia maszynowego i wnioskowania zabezpieczanie wewnątrz sieci wirtualnej platformy Azure. Dowiedz się, jak utworzyć obliczeniowych elementów docelowych do trenowania modelu oraz sposób wnioskowanie w ramach sieci wirtualnej. Dowiedz się więcej o wymaganiach dotyczących zabezpieczonej sieci wirtualnych, takich jak wymaga portów przychodzących i wychodzących.
+description: Uruchom eksperymenty uczenia maszynowego i zabezpieczenia wnioskowania w sieci wirtualnej platformy Azure. Dowiedz się, jak tworzyć cele obliczeniowe dla szkolenia modeli oraz jak w sieci wirtualnej. Dowiedz się więcej o wymaganiach dotyczących zabezpieczonych sieci wirtualnych, takich jak Wymagaj portów przychodzących i wychodzących.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,22 +10,22 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 07/10/2019
-ms.openlocfilehash: 06004f766cb8e9b12c2353bbe5e432e77df03cee
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 412eaac2f82a6d09761dcac53192916df215831f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797696"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358793"
 ---
-# <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Bezpiecznego uruchamiania eksperymentów oraz wnioskowania wewnątrz sieci wirtualnej platformy Azure
+# <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Bezpieczne uruchamianie eksperymentów i wnioskowania wewnątrz sieci wirtualnej platformy Azure
 
-W tym artykule dowiesz się, jak można uruchamiać eksperymenty i wnioskowania wewnątrz sieci wirtualnej. Sieć wirtualna działa jak granica bezpieczeństwa, izolowanie zasobów platformy Azure z publicznego Internetu. Usługa Azure virtual network można również dołączyć do sieci lokalnej. Umożliwia ona bezpiecznie szkolenie modeli i uzyskiwać dostęp do Twojej wdrożonej modeli do wnioskowania. Wnioskowanie lub oceniania modelu, jest faza użycia wdrożony model do przewidywania najczęściej w danych produkcyjnych.
+W tym artykule dowiesz się, jak uruchamiać eksperymenty i wnioskowanie w sieci wirtualnej. Sieć wirtualna działa jako granica zabezpieczeń, izolowanie zasobów platformy Azure od publicznego Internetu. Możesz również dołączyć do sieci wirtualnej platformy Azure do sieci lokalnej. Pozwala ona na bezpieczne uczenie modeli i uzyskiwanie dostępu do wdrożonych modeli na potrzeby wnioskowania. Wnioskowanie lub ocenianie modelu to faza, w której wdrożony model jest używany do prognozowania, najczęściej dotyczący danych produkcyjnych.
 
-Usługa Azure Machine Learning, zależy od innych usług platformy Azure za zasoby obliczeniowe. Zasoby obliczeniowe (celów obliczeń) są używane do uczenia i wdrażania modeli. Te obliczenia obiekty docelowe mogą być tworzone w sieci wirtualnej. Na przykład można użyć maszyny wirtualnej do nauki o danych firmy Microsoft do nauczenia modelu, a następnie wdrożyć model do usługi Azure Kubernetes Service (AKS). Aby uzyskać więcej informacji na temat sieci wirtualnych, zobacz [Omówienie usługi Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+Usługa Azure Machine Learning opiera się na innych usługach platformy Azure dla zasobów obliczeniowych. Zasoby obliczeniowe (cele obliczeniowe) są używane do uczenia i wdrażania modeli. Te obiekty docelowe obliczeń można tworzyć wewnątrz sieci wirtualnej. Na przykład można użyć Data Science Virtual Machine firmy Microsoft do uczenia modelu, a następnie wdrożenia modelu w usłudze Azure Kubernetes Service (AKS). Aby uzyskać więcej informacji na temat sieci wirtualnych, zobacz [Omówienie usługi Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym dokumencie przyjęto założenie, że znasz sieci wirtualnych platformy Azure i adresu IP sieci ogólnie rzecz biorąc. W tym dokumencie założono również, że utworzono sieć wirtualną i podsieć do korzystania z zasobów obliczeniowych. Jeśli nie jesteś zaznajomiony z sieciami wirtualnymi platformy Azure, przeczytaj następujące artykuły, aby dowiedzieć się więcej o usłudze:
+W tym dokumencie przyjęto założenie, że znasz usługi Azure Virtual Networks i sieć IP. W tym dokumencie założono również, że utworzono sieć wirtualną i podsieć, która ma być używana z zasobami obliczeniowymi. Jeśli nie znasz usługi Azure Virtual Networks, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o usłudze:
 
 * [Adresowanie IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
 * [Grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview)
@@ -35,141 +35,141 @@ W tym dokumencie przyjęto założenie, że znasz sieci wirtualnych platformy Az
 ## <a name="storage-account-for-your-workspace"></a>Konto magazynu dla obszaru roboczego
 
 > [!IMPORTANT]
-> __Domyślne konto magazynu__ dla usługi Azure Machine Learning można umieścić w sieci wirtualnej usługi __tylko podczas wykonywania eksperymentów__.
+> __Domyślne konto magazynu__ dla usługi Azure Machine Learning można umieścić w sieci wirtualnej __tylko podczas__przeprowadzania eksperymentów.
 >
-> Dla __kont innych niż domyślne magazynu w ramach eksperymentów__, lub jeśli używasz konta magazynu dla __wnioskowania__, konieczne jest posiadanie __nieograniczony dostęp do konta magazynu__.
+> W przypadku __kont magazynu innych niż domyślne na potrzeby eksperymentowania__lub jeśli używasz konta magazynu do wnioskowania , musisz mieć __nieograniczony dostęp do konta magazynu__.
 > 
-> Jeśli nie masz pewności, jeśli zmodyfikowano tych ustawień lub nie można znaleźć __zmienić domyślną regułę dostępu sieciowego__ w [zapory Konfigurowanie usługi Azure Storage i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security). Wykonaj kroki, aby zezwolić na dostęp ze wszystkich sieci, podczas wnioskowania lub modelu oceniania.
+> Jeśli nie masz pewności, czy zostały zmodyfikowane te ustawienia, zobacz __Zmiana domyślnej reguły dostępu do sieci__ w artykule [Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security). Wykonaj kroki, aby zezwolić na dostęp ze wszystkich sieci podczas wnioskowania, lub ocenianie modelu.
 
-Aby użyć miejsca domyślne konto usługi Azure Storage dla obszaru roboczego w sieci wirtualnej użyć następujące czynności:
+Aby użyć ustawienia domyślne konto usługi Azure Storage dla obszaru roboczego w sieci wirtualnej, wykonaj następujące czynności:
 
-1. Tworzenie obliczeń eksperymentowania, np. Usługi Machine Learning obliczenia za sieci wirtualnej, lub Dołącz obliczeń eksperymentowania z obszarem roboczym, np. Klaster HDInsight lub maszynę wirtualną. Aby uzyskać więcej informacji, zobacz [obliczeniowego usługi użyj Machine Learning](#use-machine-learning-compute) i [Użyj maszyny wirtualnej lub klastra HDInsight](#use-a-virtual-machine-or-hdinsight-cluster) sekcje w tym dokumencie
-2. Przejdź do magazynu dołączone do obszaru roboczego. ![Obraz witryny Azure portal pokazujący usługi Azure Storage, który jest dołączony do obszaru roboczego usługi Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)
-3. Na stronie usługi Azure Storage wybierz __zapory i sieci wirtualne__. ![Obraz Azure portal przedstawiający zapory i wirtualnych sieci sekcji na stronie usługi Azure Storage](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
-4. Na __zapory i sieci wirtualne__ strony wybierz następujące pozycje:
+1. Tworzenie obliczeń eksperymentów przykładowych. Środowisko obliczeniowe usługi Machine Learning za siecią wirtualną lub dołączenie obliczeń eksperymentowania do obszaru roboczego. Klaster usługi HDInsight lub maszyna wirtualna. Aby uzyskać więcej informacji, zobacz [używanie środowisko obliczeniowe usługi Machine Learning](#use-machine-learning-compute) i [Używanie maszyny wirtualnej lub klastra usługi HDInsight](#use-a-virtual-machine-or-hdinsight-cluster) w tym dokumencie.
+2. Przejdź do magazynu dołączonego do obszaru roboczego. ![Obraz Azure Portal przedstawiający usługę Azure Storage dołączoną do obszaru roboczego usługi Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)
+3. Na stronie Magazyn platformy Azure wybierz pozycję __zapory i sieci wirtualne__. ![Ilustracja przedstawiająca Azure Portal w sekcji zapory i sieci wirtualne na stronie usługi Azure Storage](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+4. Na stronie __zapory i sieci wirtualne__ wybierz następujące wpisy:
     - Wybierz pozycję __Wybrane sieci__.
-    - W obszarze __sieci wirtualne__, wybierz opcję __Dodaj istniejącą sieć wirtualną__ można dodać sieci wirtualnej, w którym znajduje się obliczeń eksperymentowanie w usłudze. (Zobacz krok 1.)
-    - Wybierz __dozwolonych zaufanych usług firmy Microsoft dostęp do tego konta magazynu__.
-![Obraz Azure portal przedstawiający zapory i wirtualnych sieci strony w ramach usługi Azure Storage](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png) 
+    - W obszarze __sieci wirtualne__wybierz pozycję __Dodaj istniejącą sieć wirtualną__ , aby dodać sieć wirtualną, w której znajduje się obliczenie eksperymentu. (Zobacz krok 1).
+    - Wybierz opcję __Zezwalaj zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu__.
+![Obraz Azure Portal przedstawiający zapory i sieci wirtualne w obszarze usługi Azure Storage](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png) 
 
-5. Podczas uruchamiania eksperymentu, w kodzie eksperymentowania, zmiany konfiguracji uruchamiania, używanie usługi blob storage:
+5. Podczas działania eksperymentu w kodzie eksperymentu Zmień konfigurację uruchamiania, aby używała magazynu obiektów blob:
     ```python
     run_config.source_directory_data_store = "workspaceblobstore"
     ```
     
-## <a name="key-vault-for-your-workspace"></a>Magazyn kluczy dla Twojego obszaru roboczego
-Wystąpienia usługi Key Vault skojarzone z obszarem roboczym jest używany przez usługę Azure Machine Learning do przechowywania poświadczeń różnych rodzajów:
-* Parametry połączenia konta magazynu skojarzone
+## <a name="key-vault-for-your-workspace"></a>Magazyn kluczy dla obszaru roboczego
+Key Vault wystąpienie skojarzone z obszarem roboczym jest używane przez usługę Azure Machine Learning do przechowywania poświadczeń różnych rodzajów:
+* Powiązane parametry połączenia konta magazynu
 * Hasła do wystąpień repozytorium kontenerów platformy Azure
-* Połączenie z danymi ciągi magazynów. 
+* Parametry połączenia z magazynami danych. 
 
-Aby użyć eksperymentowanie w usłudze Azure Machine Learning możliwości za pomocą usługi Key Vault za zaporą sieci wirtualnej, wykonaj następujące czynności:
-1. Przejdź do usługi Key Vault, skojarzone z obszarem roboczym. ![Obraz witryny Azure portal pokazujący usługi Key Vault, który jest skojarzony z obszarem roboczym usługi Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-key-vault.png)
-2. Na stronie usługi Key Vault wybierz __zapory i sieci wirtualne__ sekcji. ![Obraz Azure portal przedstawiający zapory i wirtualnych sieci sekcji na stronie usługi Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
-3. Na __zapory i sieci wirtualne__ strony wybierz następujące pozycje:
+Aby korzystać z możliwości eksperymentowania Azure Machine Learning z Key Vault za siecią wirtualną, wykonaj następujące kroki:
+1. Przejdź do Key Vault skojarzonego z obszarem roboczym. ![Obraz Azure Portal pokazujący Key Vault, który jest skojarzony z obszarem roboczym usługi Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-key-vault.png)
+2. Na stronie Key Vault wybierz pozycję __zapory i sieci wirtualne__ . ![Obraz Azure Portal przedstawiający sekcję zapory i sieci wirtualne na stronie Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
+3. Na stronie __zapory i sieci wirtualne__ wybierz następujące wpisy:
     - Wybierz pozycję __Wybrane sieci__.
-    - W obszarze __sieci wirtualne__, wybierz opcję __Dodaj istniejące sieci wirtualne__ można dodać sieci wirtualnej, w którym znajduje się obliczeń eksperymentowanie w usłudze.
-    - Wybierz __dozwolonych zaufanych usług firmy Microsoft na pomijanie zapory__.
-![Obraz Azure portal przedstawiający zapory i wirtualnych sieci stronie w obszarze usługi Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png) 
+    - W obszarze __sieci wirtualne__wybierz pozycję __Dodaj istniejące sieci wirtualne__ , aby dodać sieć wirtualną, w której znajduje się obliczenie eksperymentu.
+    - Wybierz opcję __Zezwalaj zaufanym usługom firmy Microsoft na ominięcie tej zapory__.
+![Obraz Azure Portal przedstawiający zapory i sieci wirtualne w obszarze Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png) 
 
 
-## <a name="use-machine-learning-compute"></a>Użyj usługi Machine Learning obliczeń
+## <a name="use-machine-learning-compute"></a>Użyj środowisko obliczeniowe usługi Machine Learning
 
-Aby użyć obliczeniowego usługi Azure Machine Learning w sieci wirtualnej, użyj poniższych informacji na temat wymagań dotyczących sieci:
+Aby użyć obliczeń Azure Machine Learning w sieci wirtualnej, należy użyć następujących informacji o wymaganiach sieci:
 
-- Sieć wirtualna musi być w tej samej subskrypcji i regionie co obszar roboczy usługi Azure Machine Learning.
+- Sieć wirtualna musi znajdować się w tej samej subskrypcji i regionie co obszar roboczy usługi Azure Machine Learning.
 
-- Podsieć określona dla klastra obliczeniowego usługi Machine Learning musi mieć wystarczającej liczby nieprzypisanych adresów IP, aby uwzględnić liczbę maszyn wirtualnych przeznaczony dla klastra. Jeśli podsieć nie ma wystarczającej liczby nieprzypisanych adresów IP, klaster zostanie przydzielony częściowo.
+- Podsieć określona dla klastra środowisko obliczeniowe usługi Machine Learning musi mieć wystarczającą liczbę nieprzypisanych adresów IP w celu uwzględnienia liczby maszyn wirtualnych przeznaczonych dla klastra. Jeśli podsieć nie ma wystarczającej liczby nieprzypisanych adresów IP, klaster zostanie częściowo przydzielony.
 
-- Jeśli planujesz Zabezpieczanie sieci wirtualnej, ograniczając ruch zamykaj Niektóre porty usługi obliczeniowego usługi Machine Learning. Aby uzyskać więcej informacji, zobacz [wymagane porty](#mlcports).
+- Jeśli planujesz zabezpieczenie sieci wirtualnej przez ograniczenie ruchu, pozostaw kilka otwartych portów dla usługi środowisko obliczeniowe usługi Machine Learning. Aby uzyskać więcej informacji, zobacz [wymagane porty](#mlcports).
 
-- Sprawdź, czy Twoje zasady zabezpieczeń lub blokuje subskrypcji lub grupy zasobów sieci wirtualnej Ogranicz uprawnienia do zarządzania sieci wirtualnej.
+- Sprawdź, czy zasady zabezpieczeń lub blokady w ramach subskrypcji lub grupy zasobów sieci wirtualnej ograniczają uprawnienia do zarządzania siecią wirtualną.
 
-- Jeśli chcesz umieścić wielu klastrów obliczeniowego usługi Machine Learning w jednej sieci wirtualnej, może być konieczne zażądać zwiększenia limitu przydziału dla co najmniej jednej z Twoich zasobów.
+- Jeśli zamierzasz umieścić wiele klastrów środowisko obliczeniowe usługi Machine Learning w jednej sieci wirtualnej, może być konieczne zażądanie zwiększenia limitu przydziału dla co najmniej jednego zasobu.
 
-    Obliczeniowego usługi Machine Learning jest automatycznie alokowana dodatkowych zasobów sieciowych w grupie zasobów, która zawiera sieć wirtualną. Dla każdego klastra obliczeniowego usługi Machine Learning usługi Azure Machine Learning przydziela następujące zasoby:
+    Środowisko obliczeniowe usługi Machine Learning automatycznie przydziela dodatkowe zasoby sieciowe do grupy zasobów zawierającej sieć wirtualną. Dla każdego klastra środowisko obliczeniowe usługi Machine Learning usługa Azure Machine Learning przydziela następujące zasoby:
 
-    - Co sieciowa grupa zabezpieczeń (NSG)
+    - Jedna sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń)
 
     - Jeden publiczny adres IP
 
-    - Jedna usługa równoważenia obciążenia
+    - Jeden moduł równoważenia obciążenia
 
   Te zasoby są ograniczone przez [limity zasobów](https://docs.microsoft.com/azure/azure-subscription-service-limits) subskrypcji.
 
-### <a id="mlcports"></a> Wymagane porty
+### <a id="mlcports"></a>Wymagane porty
 
-Obecnie obliczeniowego usługi Machine Learning korzysta z usługi Azure Batch aprowizację maszyn wirtualnych w określonej sieci wirtualnej. Podsieć musi zezwalać na przychodzący komunikacji z usługą Batch. Ta komunikacja służy do planowania jest uruchamiany w węzłach obliczeniowego usługi Machine Learning i nawiązać połączenia z usługą Azure Storage i innych zasobów. Usługa Batch dodaje sieciowe grupy zabezpieczeń na poziomie interfejsów sieciowych (NIC), które są dołączone do maszyn wirtualnych. Te sieciowe grupy zabezpieczeń automatycznie konfigurują reguły ruchu przychodzącego i wychodzącego, aby zezwolić na następujący ruch:
+Środowisko obliczeniowe usługi Machine Learning obecnie używa usługi Azure Batch do aprowizacji maszyn wirtualnych w określonej sieci wirtualnej. Podsieć musi zezwalać na komunikację przychodzącą z usługi Batch. Ta komunikacja służy do planowania przebiegów w węzłach środowisko obliczeniowe usługi Machine Learning oraz do komunikowania się z usługą Azure Storage i innymi zasobami. Batch dodaje sieciowych grup zabezpieczeń na poziomie interfejsów sieciowych dołączonych do maszyn wirtualnych. Te sieciowe grupy zabezpieczeń automatycznie konfigurują reguły ruchu przychodzącego i wychodzącego, aby zezwolić na następujący ruch:
 
-- Ruch przychodzący protokołu TCP na porty 29876 i 29877 z __Tag usługi__ z __BatchNodeManagement__.
+- Ruch przychodzący TCP na portach 29876 i 29877 z __tagu usługi__ __BatchNodeManagement__.
 
-    ![Obraz portalu Azure przedstawiający regułę ruchu przychodzącego za pomocą BatchNodeManagement tag usługi](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
+    ![Obraz Azure Portal przedstawiający regułę ruchu przychodzącego przy użyciu tagu usługi BatchNodeManagement](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
  
-- (opcjonalnie) Ruch przychodzący protokołu TCP na porcie 22, aby zezwolić na zdalny dostęp. Ten port jest wymagany tylko, jeśli chcesz się połączyć przy użyciu protokołu SSH na publiczny adres IP.
+- obowiązkowe Ruch przychodzący TCP na porcie 22, aby zezwolić na dostęp zdalny. Ten port jest potrzebny tylko wtedy, gdy chcesz nawiązać połączenie przy użyciu protokołu SSH w publicznym adresie IP.
  
 - Ruch wychodzący na dowolny port do sieci wirtualnej.
 
 - Ruch wychodzący na dowolny port do Internetu. 
 
-Jeśli modyfikujesz lub dodać reguły dla ruchu przychodzącego/wychodzącego w skonfigurowane usługi Batch sieciowych grup zabezpieczeń należy zachować ostrożność. Jeśli sieciowa grupa zabezpieczeń blokuje komunikacji węzłów obliczeniowych, następnie obliczeniowego usługi Machine Learning services ustawia stan węzłów obliczeniowych na korzystanie z niej.
+Należy zachować ostrożność, jeśli modyfikujesz lub dodasz reguły ruchu przychodzącego/wychodzącego w sieciowych grup zabezpieczeń skonfigurowanym przez partię. Jeśli sieciowej grupy zabezpieczeń blokuje komunikację z węzłami obliczeniowymi, usługa środowisko obliczeniowe usługi Machine Learning Services ustawia stan węzłów obliczeniowych na niezdatny do użytku.
 
-Nie trzeba określać sieciowe grupy zabezpieczeń na poziomie podsieci, ponieważ usługi Batch konfiguruje swoje własne sieciowych grup zabezpieczeń. Jednak jeśli określona podsieć ma skojarzone sieciowe grupy zabezpieczeń i/lub zaporę, skonfiguruj reguły zabezpieczeń ruchu przychodzącego i wychodzącego, jak wspomniano wcześniej. 
+Nie musisz określać sieciowych grup zabezpieczeń na poziomie podsieci, ponieważ usługa Batch konfiguruje własny sieciowych grup zabezpieczeń. Jeśli jednak określona podsieć ma skojarzone sieciowych grup zabezpieczeń i/lub zaporę, skonfiguruj reguły zabezpieczeń dla ruchu przychodzącego i wychodzącego wymienione wcześniej. 
 
-Poniższy zrzut ekranu pokazuje, jak wygląda konfiguracji reguły sieciowej grupy zabezpieczeń w witrynie Azure portal:
+Poniższy zrzut ekranu przedstawia sposób, w jaki Konfiguracja reguły sieciowej grupy ZABEZPIECZEŃa jest wyszukiwana w Azure Portal:
 
-![Zrzut ekranu przedstawiający dla ruchu przychodzącego sieciowej grupy zabezpieczeń reguły obliczeniowego usługi Machine Learning](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)
+![Zrzut ekranu reguł sieciowej grupy zabezpieczeń dla ruchu przychodzącego dla środowisko obliczeniowe usługi Machine Learning](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)
 
-![Zrzut ekranu przedstawiający wychodzące reguły sieciowej grupy zabezpieczeń, obliczeniowego usługi Machine Learning](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
+![Zrzut ekranu reguł sieciowej grupy zabezpieczeń dla ruchu wychodzącego dla środowisko obliczeniowe usługi Machine Learning](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
 
-### <a id="limiting-outbound-from-vnet"></a> Ograniczanie łączności wychodzącej z sieci wirtualnej
+### <a id="limiting-outbound-from-vnet"></a>Ograniczanie łączności wychodzącej z sieci wirtualnej
 
-Jeśli chcesz użyć domyślnych reguł ruchu wychodzącego i chcesz ograniczyć wychodzącego dostępu do sieci wirtualnej, wykonaj następujące czynności:
+Jeśli nie chcesz używać domyślnych reguł ruchu wychodzącego i chcesz ograniczyć dostęp wychodzący do sieci wirtualnej, wykonaj następujące czynności:
 
-- Odmów wychodzące połączenie internetowe za pomocą reguł sieciowej grupy zabezpieczeń 
+- Odmowa wychodzącego połączenia internetowego przy użyciu reguł sieciowej grupy zabezpieczeń 
 
-- Ogranicz ruch wychodzący do usługi Azure Storage (przy użyciu __Tag usługi__ z __Storage.Region_Name__ np. Storage.EastUS) usługi Azure Container Registry (przy użyciu __Tag usługi__ z __AzureContainerRegistry.Region_Name__ np. AzureContainerRegistry.EastUS) i usługi Azure Machine Learning (przy użyciu __Tag usługi__ z __AzureMachineLearning__)
+- Ogranicz ruch wychodzący do usługi Azure Storage (przy użyciu __znacznika usługi__ __Storage. Region_Name__ na przykład. Storage. wschód), Azure Container Registry (przy użyciu __znacznika usługi__ __AzureContainerRegistry. Region_Name.__ AzureContainerRegistry. Wschodnia) i usługa Azure Machine Learning (przy użyciu __znacznika usługi__ __AzureMachineLearning__)
 
-Poniższy zrzut ekranu pokazuje, jak wygląda konfiguracji reguły sieciowej grupy zabezpieczeń w witrynie Azure portal:
+Poniższy zrzut ekranu przedstawia sposób, w jaki Konfiguracja reguły sieciowej grupy ZABEZPIECZEŃa jest wyszukiwana w Azure Portal:
 
-![Zrzut ekranu przedstawiający wychodzące reguły sieciowej grupy zabezpieczeń, obliczeniowego usługi Machine Learning](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
+![Zrzut ekranu reguł sieciowej grupy zabezpieczeń dla ruchu wychodzącego dla środowisko obliczeniowe usługi Machine Learning](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
 
-### <a name="user-defined-routes-for-forced-tunneling"></a>Trasy zdefiniowane przez użytkownika dla wymuszonego tunelowania
+### <a name="user-defined-routes-for-forced-tunneling"></a>Trasy zdefiniowane przez użytkownika dla tunelowania wymuszonego
 
-Jeśli używane są wymuszone tunelowanie przy użyciu obliczeniowego usługi Azure Machine Learning, należy dodać [trasy zdefiniowane przez użytkownika (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) do podsieci, która zawiera zasób obliczeniowy.
+Jeśli używasz wymuszonego tunelowania przy użyciu Azure Machine Learning COMPUTE, musisz dodać [trasy zdefiniowane przez użytkownika (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) do podsieci zawierającej zasób obliczeniowy.
 
-* Zdefiniowana przez użytkownika trasa dla każdego adresu IP używanego przez usługę Azure Batch w regionie, w której istnieje zasobów. Te trasy Udr włączyć usługi batch do komunikowania się z węzłami obliczeniowymi w przypadku planowania zadań. Aby uzyskać listę adresów IP usługi Batch, skontaktuj się z działem pomocy technicznej systemu Azure.
+* Zdefiniowana przez użytkownika trasa dla każdego adresu IP używanego przez usługę Azure Batch w regionie, w którym znajdują się zasoby. Te UDR umożliwiają usłudze Batch komunikowanie się z węzłami obliczeniowymi w celu planowania zadań. Aby uzyskać listę adresów IP usługi Batch, skontaktuj się z pomocą techniczną platformy Azure.
 
-* Ruch wychodzący do usługi Azure Storage (w szczególności adresy URL formularzy `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`, i `<account>.blob.core.windows.net`) nie muszą być blokowany przez urządzenie w sieci lokalnej.
+* Ruch wychodzący do usługi Azure Storage (w odniesieniu `<account>.queue.core.windows.net`do adresów `<account>.blob.core.windows.net`URL formularza `<account>.table.core.windows.net`, i) nie może być blokowany przez lokalne urządzenie sieciowe.
 
-Po dodaniu trasy zdefiniowane przez użytkownika, należy zdefiniować trasę dla każdego powiązane prefiksu adresu IP usługi Batch oraz __typu następnego przeskoku__ do __Internet__. Na poniższej ilustracji przedstawiono przykład tej trasy zdefiniowanej przez użytkownika w witrynie Azure portal:
+Po dodaniu tras zdefiniowanych przez użytkownika Zdefiniuj trasy dla każdego powiązanego prefiksu adresu IP partii i ustaw __Typ następnego__ przeskoku na __Internet__. Na poniższej ilustracji przedstawiono przykład tego UDR w Azure Portal:
 
-![Przykład zdefiniowanych przez użytkownika trasa dla prefiksu adresu](./media/how-to-enable-virtual-network/user-defined-route.png)
+![Przykładowa trasa zdefiniowana przez użytkownika dla prefiksu adresu](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-Aby uzyskać więcej informacji, zobacz [tworzenie puli usługi Azure Batch w sieci wirtualnej](../../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) artykułu.
+Aby uzyskać więcej informacji, zobacz artykuł [Tworzenie puli Azure Batch w sieci wirtualnej](../../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) .
 
-### <a name="create-machine-learning-compute-in-a-virtual-network"></a>Tworzenie obliczeniowego usługi Machine Learning w sieci wirtualnej
+### <a name="create-machine-learning-compute-in-a-virtual-network"></a>Tworzenie środowisko obliczeniowe usługi Machine Learning w sieci wirtualnej
 
-Aby utworzyć klastra obliczeniowego usługi Machine Learning za pomocą witryny Azure portal, wykonaj następujące kroki:
+Aby utworzyć klaster środowisko obliczeniowe usługi Machine Learning przy użyciu Azure Portal, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com), wybierz swój obszar roboczy usługi Azure Machine Learning.
+1. W [Azure Portal](https://portal.azure.com)wybierz obszar roboczy usługi Azure Machine Learning.
 
-1. W __aplikacji__ zaznacz __obliczenia__. Następnie wybierz pozycję __Dodaj obliczenie__. 
+1. W sekcji __aplikacja__ wybierz pozycję __obliczenia__. Następnie wybierz pozycję __Dodaj obliczenia__. 
 
-    ![Jak dodać zasoby obliczeniowe w usłudze Azure Machine Learning](./media/how-to-enable-virtual-network/add-compute.png)
+    ![Jak dodać obliczenia w usłudze Azure Machine Learning](./media/how-to-enable-virtual-network/add-compute.png)
 
-1. Aby skonfigurować ten zasób obliczeniowy do sieci wirtualnej, należy użyć tych opcji:
+1. Aby skonfigurować ten zasób obliczeniowy do korzystania z sieci wirtualnej, użyj następujących opcji:
 
     - __Konfiguracja sieci__: Wybierz pozycję __Zaawansowane__.
 
-    - __Grupa zasobów__: Wybierz grupę zasobów, która zawiera sieć wirtualną.
+    - __Grupa zasobów__: Wybierz grupę zasobów zawierającą sieć wirtualną.
 
-    - __Sieć wirtualna__: Wybierz sieć wirtualną, która zawiera podsieci.
+    - __Sieć wirtualna__: Wybierz sieć wirtualną, która zawiera podsieć.
 
-    - __Podsieć__: Wybierz podsieć do użycia.
+    - __Podsieć__: Wybierz podsieć, która ma zostać użyta.
 
-   ![Zrzut ekranu przedstawiający ustawienia sieci wirtualnej, machine learning obliczeniowych](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
+   ![Zrzut ekranu przedstawiający ustawienia sieci wirtualnej na potrzeby obliczeniowe usługi Machine Learning](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
-Można również utworzyć klaster obliczeniowego usługi Machine Learning, za pomocą zestawu SDK usługi Azure Machine Learning. Następujący kod umożliwia utworzenie nowego klastra obliczeniowego usługi Machine Learning w `default` podsieci sieci wirtualnej o nazwie `mynetwork`:
+Klaster środowisko obliczeniowe usługi Machine Learning można również utworzyć za pomocą zestawu Azure Machine Learning SDK. Poniższy kod tworzy nowy klaster środowisko obliczeniowe usługi Machine Learning w `default` podsieci sieci wirtualnej o nazwie: `mynetwork`
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -189,108 +189,108 @@ try:
     print("Found existing cpucluster")
 except ComputeTargetException:
     print("Creating new cpucluster")
-    
+
     # Specify the configuration for the new cluster
     compute_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2_V2",
                                                            min_nodes=0,
                                                            max_nodes=4,
-                                                           vnet_resourcegroup_name = vnet_resourcegroup_name,
-                                                           vnet_name = vnet_name,
-                                                           subnet_name = subnet_name)
+                                                           vnet_resourcegroup_name=vnet_resourcegroup_name,
+                                                           vnet_name=vnet_name,
+                                                           subnet_name=subnet_name)
 
     # Create the cluster with the specified name and configuration
     cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
-    
+
     # Wait for the cluster to complete, show the output log
     cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-Po zakończeniu procesu tworzenia, możesz uczenie modelu przy użyciu klastra. Aby uzyskać więcej informacji, zobacz [wybierz, a następnie użyć obliczeniowego elementu docelowego do trenowania](how-to-set-up-training-targets.md).
+Po zakończeniu procesu tworzenia można nauczyć model przy użyciu klastra. Aby uzyskać więcej informacji, zobacz [Wybieranie i używanie elementu docelowego obliczeń do szkoleń](how-to-set-up-training-targets.md).
 
-## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Użyj maszyny wirtualnej lub klaster HDInsight
+## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Korzystanie z maszyny wirtualnej lub klastra usługi HDInsight
 
-Aby użyć maszyny wirtualnej lub w klastrze Azure HDInsight w sieci wirtualnej z obszaru roboczego, wykonaj następujące kroki:
+Aby użyć maszyny wirtualnej lub klastra usługi Azure HDInsight w sieci wirtualnej z obszarem roboczym, wykonaj następujące kroki:
 
 > [!IMPORTANT]
-> Usługa Azure Machine Learning obsługuje tylko maszyny wirtualne uruchomione w systemie Ubuntu.
+> Usługa Azure Machine Learning obsługuje tylko maszyny wirtualne z systemem Ubuntu.
 
-1. Tworzenie klastra HDInsight lub maszyny Wirtualnej przy użyciu witryny Azure portal lub interfejsu wiersza polecenia platformy Azure i umieścić go w sieci wirtualnej platformy Azure. Więcej informacji na ten temat można znaleźć w następujących dokumentach:
-    * [Tworzenie i zarządzanie sieciami wirtualnymi platformy Azure dla maszyn wirtualnych systemu Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+1. Utwórz maszynę wirtualną lub klaster usługi HDInsight przy użyciu Azure Portal lub interfejsu wiersza polecenia platformy Azure i umieść go w sieci wirtualnej platformy Azure. Aby uzyskać więcej informacji, zobacz następujące dokumenty:
+    * [Tworzenie sieci wirtualnych platformy Azure dla maszyn wirtualnych z systemem Linux i zarządzanie nimi](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
-    * [Rozszerzanie HDInsight przy użyciu sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network) 
+    * [Zwiększanie usługi HDInsight przy użyciu sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network) 
 
-1. Aby umożliwić usłudze Azure Machine Learning do komunikowania się z portem SSH na maszynie Wirtualnej lub w klastrze, należy skonfigurować wpis źródła sieciowej grupy zabezpieczeń. SSH port jest zazwyczaj port 22. Aby zezwolić na ruch z tego źródła, skorzystaj z poniższych informacji:
+1. Aby umożliwić usłudze Azure Machine Learning komunikację z portem SSH na maszynie wirtualnej lub w klastrze, należy skonfigurować wpis źródłowy dla sieciowej grupy zabezpieczeń. Port SSH zazwyczaj jest portem 22. Aby zezwolić na ruch z tego źródła, Skorzystaj z następujących informacji:
 
     * __Źródło__: wybierz pozycję __Tag usługi__.
 
-    * __Tag usługi źródłowej__: Wybierz __AzureMachineLearning__.
+    * __Tag usługi źródłowej__: Wybierz pozycję __AzureMachineLearning__.
 
-    * __Źródłowe zakresy portów__: Wybierz __*__ .
+    * __Zakresy portów źródłowych__: Wybierz __*__ opcję.
 
-    * __Miejsce docelowe__: Wybierz __wszelkie__.
+    * __Miejsce docelowe__: Wybierz __dowolny__.
 
-    * __Zakresy portów docelowych__: Wybierz __22__.
+    * __Zakresy portów docelowych__: Wybierz pozycję __22__.
 
-    * __Protokół__: Wybierz __wszelkie__.
+    * __Protokół__: Wybierz __dowolny__.
 
     * __Akcja__: wybierz pozycję __Zezwalaj__.
 
-   ![Zrzut ekranu przedstawiający reguły dla ruchu przychodzącego do wykonywania eksperymentów w klastrze HDInsight lub maszyny Wirtualnej w sieci wirtualnej](./media/how-to-enable-virtual-network/experimentation-virtual-network-inbound.png)
+   ![Zrzut ekranu reguł ruchu przychodzącego służący do przeprowadzania eksperymentów na maszynie wirtualnej lub w klastrze usługi HDInsight w sieci wirtualnej](./media/how-to-enable-virtual-network/experimentation-virtual-network-inbound.png)
 
-    Zachowaj ustawienie domyślne reguły ruchu wychodzącego dla sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz domyślnych reguł zabezpieczeń w [grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
+    Zachowaj domyślne reguły ruchu wychodzącego dla sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz domyślne reguły zabezpieczeń w [grupach zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
 
-    Jeśli nie chcesz użyć domyślnych reguł ruchu wychodzącego i chcesz ograniczyć wychodzącego dostępu do sieci wirtualnej, zobacz [ograniczenie łączności wychodzącej z sieci wirtualnej](#limiting-outbound-from-vnet)
+    Jeśli nie chcesz używać domyślnych reguł ruchu wychodzącego i chcesz ograniczyć dostęp wychodzący do sieci wirtualnej, zobacz Ograniczanie [łączności wychodzącej z sieci wirtualnej](#limiting-outbound-from-vnet)
     
-1. Dołączanie maszyny Wirtualnej lub HDInsight klastra do swojego obszaru roboczego usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Konfigurowanie obliczeniowych elementów docelowych do trenowania modelu](how-to-set-up-training-targets.md).
+1. Dołącz maszynę wirtualną lub klaster HDInsight do obszaru roboczego usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Konfigurowanie celów obliczeniowych na potrzeby szkolenia modeli](how-to-set-up-training-targets.md).
 
-## <a name="use-azure-kubernetes-service"></a>Użyj usługi Azure Kubernetes Service
+## <a name="use-azure-kubernetes-service"></a>Korzystanie z usługi Azure Kubernetes Service
 
 > [!IMPORTANT]
-> Sprawdź wymagania wstępne i planowanie adresowania IP dla klastra przed kontynuowaniem kroków. Aby uzyskać więcej informacji, zobacz [skonfiguruj zaawansowane sieci w usłudze Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
+> Przed wykonaniem kroków Sprawdź wymagania wstępne i zaplanuj adresowanie IP w klastrze. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zaawansowanej sieci w usłudze Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/configure-advanced-networking).
 > 
 >
-> Zachowaj ustawienie domyślne reguły ruchu wychodzącego dla sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz domyślnych reguł zabezpieczeń w [grup zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
+> Zachowaj domyślne reguły ruchu wychodzącego dla sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz domyślne reguły zabezpieczeń w [grupach zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
 >
-> Usługa Azure Kubernetes Service i usługa Azure virtual network powinny być w tym samym regionie.
+> Usługa Azure Kubernetes i Sieć wirtualna platformy Azure powinny znajdować się w tym samym regionie.
 
-Aby dodać usługi Azure Kubernetes Service w sieci wirtualnej, do obszaru roboczego, wykonaj następujące kroki w witrynie Azure portal:
+Aby dodać usługę Azure Kubernetes w sieci wirtualnej do obszaru roboczego, wykonaj następujące kroki w Azure Portal:
 
-1. Upewnij się, że sieciowa grupa zabezpieczeń grupy, która włączone dla usługi Azure Machine Learning za pomocą regułę ruchu przychodzącego, formanty, sieć wirtualna ma __Tag usługi__ z __AzureMachineLearning__
+1. Upewnij się, że grupa sieciowej grupy zabezpieczeń, która kontroluje sieć wirtualną, ma włączoną regułę ruchu przychodzącego dla usługi Azure Machine Learning przy użyciu __tagu usługi__ __AzureMachineLearning__
 
-    ![Jak dodać zasoby obliczeniowe w usłudze Azure Machine Learning](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)     
+    ![Jak dodać obliczenia w usłudze Azure Machine Learning](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)     
  
-1. W [witryny Azure portal](https://portal.azure.com), wybierz swój obszar roboczy usługi Azure Machine Learning.
+1. W [Azure Portal](https://portal.azure.com)wybierz obszar roboczy usługi Azure Machine Learning.
 
-1. W __aplikacji__ zaznacz __obliczenia__. Następnie wybierz pozycję __Dodaj obliczenie__. 
+1. W sekcji __aplikacja__ wybierz pozycję __obliczenia__. Następnie wybierz pozycję __Dodaj obliczenia__. 
 
-    ![Jak dodać zasoby obliczeniowe w usłudze Azure Machine Learning](./media/how-to-enable-virtual-network/add-compute.png)
+    ![Jak dodać obliczenia w usłudze Azure Machine Learning](./media/how-to-enable-virtual-network/add-compute.png)
 
-1. Aby skonfigurować ten zasób obliczeniowy do sieci wirtualnej, należy użyć tych opcji:
+1. Aby skonfigurować ten zasób obliczeniowy do korzystania z sieci wirtualnej, użyj następujących opcji:
 
     - __Konfiguracja sieci__: Wybierz pozycję __Zaawansowane__.
 
-    - __Grupa zasobów__: Wybierz grupę zasobów, która zawiera sieć wirtualną.
+    - __Grupa zasobów__: Wybierz grupę zasobów zawierającą sieć wirtualną.
 
-    - __Sieć wirtualna__: Wybierz sieć wirtualną, która zawiera podsieci.
+    - __Sieć wirtualna__: Wybierz sieć wirtualną, która zawiera podsieć.
 
     - __Podsieć__: Wybierz podsieć.
 
-    - __Zakres adresów usługi Kubernetes__: Wybierz zakres adresów usługi Kubernetes. Ten zakres adresów używa zakresu adresów IP notacji CIDR, do definiowania adresów IP dostępnych dla klastra. Nie nakładać się na żadne zakresy adresów IP podsieci. Przykład: 10.0.0.0/16.
+    - __Zakres adresów usługi Kubernetes__: Wybierz zakres adresów usługi Kubernetes. Ten zakres adresów używa zakresu adresów IP notacji CIDR do zdefiniowania adresów IP dostępnych dla tego klastra. Nie może się nakładać na żadne zakresy adresów IP podsieci. Na przykład: 10.0.0.0/16.
 
-    - __Adres IP usługi DNS platformy Kubernetes__: Wybierz adres IP usługi DNS platformy Kubernetes. Ten adres IP jest przypisywany do usługi DNS platformy Kubernetes. Należy do zakresu adresów usługi Kubernetes. Przykład: 10.0.0.10.
+    - __Kubernetes adres IP usługi DNS__: Wybierz adres IP usługi Kubernetes DNS. Ten adres IP jest przypisywany do usługi DNS Kubernetes. Musi znajdować się w zakresie adresów usługi Kubernetes. Na przykład: 10.0.0.10.
 
-    - __Adres mostka platformy docker__: Wybierz adres mostka platformy Docker. Ten adres IP jest przypisywany do mostka platformy Docker. Nie może być w żadnych zakresów adresów IP podsieci i zakres adresów usługi Kubernetes. Na przykład: 172.17.0.1/16.
+    - __Adres mostka platformy Docker__: Wybierz adres mostka platformy Docker. Ten adres IP jest przypisany do mostka platformy Docker. Nie może być w żadnym z zakresów adresów IP podsieci ani zakresu adresów usługi Kubernetes. Na przykład: 172.17.0.1/16.
 
-   ![Usługa Azure Machine Learning: Usługi Machine Learning obliczenia ustawień sieci wirtualnej](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
+   ![Usługa Azure Machine Learning: środowisko obliczeniowe usługi Machine Learning ustawień sieci wirtualnej](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
-1. Upewnij się, że sieciowa grupa zabezpieczeń grupy, która włączona dla punktu końcowego oceniania, dzięki czemu mogą być wywoływane z spoza sieci wirtualnej regułę ruchu przychodzącego, formanty, które ma sieci wirtualnej
+1. Upewnij się, że grupa sieciowej grupy zabezpieczeń, która kontroluje sieć wirtualną, ma włączoną regułę ruchu przychodzącego dla punktu końcowego oceniania, tak aby można ją było wywołać spoza sieci wirtualnej
 
-    ![Jak dodać zasoby obliczeniowe w usłudze Azure Machine Learning](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
+    ![Jak dodać obliczenia w usłudze Azure Machine Learning](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
 
     > [!TIP]
-    > Jeśli masz już klaster AKS w sieci wirtualnej, można dołączyć ją do obszaru roboczego. Aby uzyskać więcej informacji, zobacz [sposób wdrażania usługi AKS](how-to-deploy-to-aks.md).
+    > Jeśli masz już klaster AKS w sieci wirtualnej, możesz dołączyć go do obszaru roboczego. Aby uzyskać więcej informacji, zobacz [How to Deploy to AKS](how-to-deploy-to-aks.md).
 
-Można również użyć **zestawu SDK usługi Azure Machine Learning** do dodania usługi Azure Kubernetes Service w sieci wirtualnej. Poniższy kod tworzy nowe wystąpienie usługi Azure Kubernetes Service w `default` podsieci sieci wirtualnej o nazwie `mynetwork`:
+Możesz również użyć **zestawu SDK Azure Machine Learning** , aby dodać usługę Azure Kubernetes w sieci wirtualnej. Poniższy kod tworzy nowe wystąpienie usługi Azure Kubernetes w `default` podsieci sieci wirtualnej o nazwie: `mynetwork`
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute
@@ -305,16 +305,16 @@ config.dns_service_ip = "10.0.0.10"
 config.docker_bridge_cidr = "172.17.0.1/16"
 
 # Create the compute target
-aks_target = ComputeTarget.create(workspace = ws,
-                                  name = "myaks",
-                                  provisioning_configuration = config)
+aks_target = ComputeTarget.create(workspace=ws,
+                                  name="myaks",
+                                  provisioning_configuration=config)
 ```
 
-Po zakończeniu procesu tworzenia możesz wnioskowania/wynik w klastrze AKS za sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [sposób wdrażania usługi AKS](how-to-deploy-to-aks.md).
+Po zakończeniu procesu tworzenia można wywnioskować/uzyskać wynik w klastrze AKS za siecią wirtualną. Aby uzyskać więcej informacji, zobacz [How to Deploy to AKS](how-to-deploy-to-aks.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Konfigurowanie środowisk szkolenia](how-to-set-up-training-targets.md)
+* [Konfigurowanie środowisk szkoleniowych](how-to-set-up-training-targets.md)
 * [Gdzie można wdrażać modele](how-to-deploy-and-where.md)
-* [Bezpiecznie Wdrażaj modele przy użyciu protokołu SSL](how-to-secure-web-service.md)
+* [Bezpieczne wdrażanie modeli przy użyciu protokołu SSL](how-to-secure-web-service.md)
 

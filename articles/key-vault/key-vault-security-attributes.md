@@ -1,6 +1,6 @@
 ---
-title: Wspólne atrybuty zabezpieczeń dla usługi Azure Key Vault
-description: Lista kontrolna typowych atrybutów zabezpieczeń do oceny usługi Azure Key Vault
+title: Atrybuty zabezpieczeń dla Azure Key Vault
+description: Lista kontrolna atrybutów zabezpieczeń do oceny Azure Key Vault
 services: key-vault
 author: msmbaldwin
 manager: barbkess
@@ -8,62 +8,62 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1c2265ff5f4c444121bf70c35145703f1b9fe981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 836d025c5bc69da9606c9a6172ac6a43caaaf29b
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66000195"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444020"
 ---
-# <a name="security-attributes-for-azure-key-vault"></a>Atrybuty zabezpieczeń dla usługi Azure Key Vault
+# <a name="security-attributes-for-azure-key-vault"></a>Atrybuty zabezpieczeń dla Azure Key Vault
 
-W tym artykule opisano atrybuty zabezpieczeń wbudowane w usłudze Azure Key Vault. 
+W tym artykule opisano atrybuty zabezpieczeń wbudowane w Azure Key Vault. 
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Zapobiegawczych
+## <a name="preventative"></a>Zapobiegawczej
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Tak | Wszystkie obiekty są szyfrowane. |
-| Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | Cała komunikacja jest za pomocą zaszyfrowanych wywołań interfejsu API |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Tak | Klient kontroluje wszystkie klucze w ich usługi Key Vault. Jeśli określono klucze modułu HSM kopii zabezpieczeń sprzętowych FIPS poziom 2 przez sprzętowy moduł zabezpieczeń chroni klucza, certyfikatu lub klucza tajnego. |
-| Szyfrowanie na poziomie kolumny (Azure Data Services)| ND |  |
-| Wywołania interfejsu API szyfrowane| Tak | Przy użyciu protokołu HTTPS. |
+| Szyfrowanie w spoczynku (takie jak szyfrowanie po stronie serwera, szyfrowanie po stronie serwera z kluczami zarządzanymi przez klienta i inne funkcje szyfrowania)| Tak | Wszystkie obiekty są zaszyfrowane. |
+| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Cała komunikacja odbywa się za pośrednictwem szyfrowanych wywołań interfejsu API |
+| Obsługa kluczy szyfrowania (CMK, BYOK itp.)| Tak | Klient kontroluje wszystkie klucze w Key Vault. Gdy są określone klucze z zabezpieczeniami sprzętowego modułu zabezpieczeń (HSM), moduł HSM poziomu 2 trybu FIPS chroni klucz, certyfikat lub wpis tajny. |
+| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND |  |
+| Wywołania interfejsu API są szyfrowane| Tak | Przy użyciu protokołu HTTPS. |
 
-## <a name="network-segmentation"></a>Segmentacji sieci
+## <a name="network-segmentation"></a>Segmentacja sieci
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Obsługa punktu końcowego usługi| Tak | Za pomocą punktów końcowych usługi sieci wirtualnej (VNet). |
+| Obsługa punktów końcowych usługi| Yes | Korzystanie z punktów końcowych usługi Virtual Network (VNet). |
 | Obsługa iniekcji sieci wirtualnej| Nie |  |
-| Izolacja sieci i zapory pomocy technicznej| Tak | Korzystanie z reguł zapory sieci wirtualnej. |
+| Izolacja sieci i obsługa zapór| Tak | Korzystanie z reguł zapory sieci wirtualnej. |
 | Obsługa tunelowania wymuszonego| Nie |  |
 
 ## <a name="detection"></a>Wykrywanie
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Tak | Za pomocą usługi Log Analytics. |
+| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Przy użyciu Log Analytics. |
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| Tak | Uwierzytelnianie jest za pomocą usługi Azure Active Directory. |
-| Autoryzacja| Yes | Za pomocą zasad dostępu magazynu kluczy. |
+| Authentication| Yes | Uwierzytelnianie odbywa się za Azure Active Directory. |
+| Authorization| Tak | Korzystanie z zasad dostępu Key Vault. |
 
 
 ## <a name="audit-trail"></a>Dziennik inspekcji
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Rejestrowanie i inspekcja na płaszczyźnie kontroli i zarządzania nimi.| Tak | Za pomocą usługi Log Analytics. |
-| Rejestrowanie płaszczyzny danych i inspekcji| Yes | Za pomocą usługi Log Analytics. |
+| Rejestrowanie i inspekcja w płaszczyźnie kontroli/zarządzania| Tak | Przy użyciu Log Analytics. |
+| Rejestrowanie i inspekcja płaszczyzny danych| Tak | Przy użyciu Log Analytics. |
 
-## <a name="access-controls"></a>Kontrola dostępu
+## <a name="access-controls"></a>Kontrole dostępu
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Kontroli dostępu do płaszczyzny zarządzania/kontroli | Tak | Kontrola dostępu oparta na rolach (RBAC) przy użyciu usługi Azure Resource Manager |
-| Kontroli dostępu do płaszczyzny danych (na każdym poziomie usługi) | Yes | Zasady dostępu magazynu kluczy |
+| Kontrole dostępu do płaszczyzny kontroli/zarządzania | Yes | Kontrola dostępu oparta na rolach (RBAC) przy użyciu usługi Azure Resource Manager |
+| Kontrola dostępu do płaszczyzny danych (na każdym poziomie usługi) | Tak | Zasady dostępu Key Vault |

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji systemu iOS, która integruje się z usługą Azure AD na potrzeby logowania i wywołuje chronione interfejsy API przy użyciu protokołu OAuth 2.0 | Microsoft Docs
+title: Tworzenie aplikacji dla systemu iOS zintegrowanej z usługą Azure AD w celu logowania przy użyciu protokołu OAuth 2,0 | Microsoft Docs
 description: Dowiedz się, jak logować użytkowników i wywołać interfejs API programu Microsoft Graph z aplikacji systemu iOS.
 services: active-directory
 documentationcenter: ios
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6274557ede35d7640eba37e5777cb0cb67d459a
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8a82a7cad9b9176589824b6febb5cfdde89fce8a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497098"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380873"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Szybki start: Logowanie użytkowników i wywołanie interfejsu API programu Microsoft Graph z aplikacji systemu iOS
 
@@ -76,13 +76,13 @@ Aby skonfigurować aplikację do uzyskiwania tokenów, należy zarejestrować ap
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Na górnym pasku wybierz swoje konto. Z listy **Katalog** wybierz dzierżawę usługi Active Directory, w której chcesz zarejestrować aplikację.
 3. Wybierz pozycję **Wszystkie usługi** w okienku nawigacji po lewej stronie, a następnie wybierz pozycję **Azure Active Directory**.
-4. Wybierz **rejestracje aplikacji**, a następnie wybierz pozycję **nowej rejestracji**.
-5. Postępuj zgodnie z monitami, aby utworzyć nową aplikację klienta.
+4. Wybierz pozycję **rejestracje aplikacji**, a następnie wybierz pozycję **Nowa rejestracja**.
+5. Postępuj zgodnie z monitami, aby utworzyć nową aplikację kliencką.
     * **Nazwa** to nazwa aplikacji; opisuje aplikację innym użytkownikom.
-    * **Identyfikator URI przekierowania** jest połączeniem schematu i ciągu, przy użyciu którego usługa Azure AD zwraca odpowiedzi tokenów. Wprowadź wartość specyficzną dla aplikacji i opartą na wcześniejszych informacjach dotyczących identyfikatora URI przekierowania. Również wybrać **klientem publicznym (mobilnych i klasycznych)** z listy rozwijanej.
+    * **Identyfikator URI przekierowania** jest połączeniem schematu i ciągu, przy użyciu którego usługa Azure AD zwraca odpowiedzi tokenów. Wprowadź wartość specyficzną dla aplikacji i opartą na wcześniejszych informacjach dotyczących identyfikatora URI przekierowania. Z listy rozwijanej wybierz również pozycję **Klient publiczny (Mobile and Desktop)** .
 6. Gdy zakończysz rejestrację, usługa Azure AD przypisze aplikacji unikatowy identyfikator. Ta wartość będzie potrzebna w kolejnych sekcjach, a więc należy skopiować ją z karty aplikacji.
-7. Z **uprawnienia do interfejsu API** wybierz opcję **Dodaj uprawnienia**. Wewnątrz **wybierz interfejs API** wybierz ***programu Microsoft Graph***.
-8. W obszarze **delegowane uprawnienia**, wybierz uprawnienie **User.Read**, kliknij przycisk **Dodaj** do zapisania. To uprawnienie skonfiguruje aplikację do wykonywania zapytań względem interfejsu API programu Graph usługi Azure AD dotyczących użytkowników.
+7. Na stronie **uprawnienia interfejsu API** wybierz pozycję **Dodaj uprawnienie**. W obszarze **Wybierz interfejs API** wybierz ***Microsoft Graph***.
+8. W obszarze **delegowane uprawnienia**wybierz uprawnienie **użytkownik. odczyt**, a następnie kliknij przycisk **Dodaj** , aby zapisać. To uprawnienie skonfiguruje aplikację do wykonywania zapytań względem interfejsu API programu Graph usługi Azure AD dotyczących użytkowników.
 
 ## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalowanie i konfigurowanie biblioteki ADAL
 
@@ -256,7 +256,7 @@ Biblioteka ADAL ułatwia dodanie wszystkich tych typowych funkcji tożsamości d
 
 Gotowa próbka (bez wartości konfiguracji) jest dostępna w serwisie [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Możesz teraz przejść do dodatkowych scenariuszy. Sugerujemy zapoznanie się z następującymi:
 

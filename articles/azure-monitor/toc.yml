@@ -408,8 +408,9 @@
                   href: app/telemetry-channels.md
                 - name: Procesory telemetrii
                   displayname: 'processors, filtering, telemetry filtering, telemetry processor'
-                - name: Korelacja telemetrii
                   href: app/api-filtering-sampling.md
+                - name: Korelacja telemetrii
+                  href: app/correlation.md
                 - name: Śledzenie operacji niestandardowych w zestawie SDK .NET
                   href: app/custom-operations-tracking.md
                 - name: Niestandardowe raporty przesyłane pocztą e-mail
@@ -603,6 +604,8 @@
                       href: insights/vminsights-enable-at-scale-powershell.md
                     - name: Włączanie obsługi środowiska hybrydowego
                       href: insights/vminsights-enable-hybrid-cloud.md
+                    - name: Integracja z programem Operations Manager
+                      href: insights/service-map-scom.md
                 - name: Monitorowanie kondycji
                   href: insights/vminsights-health.md
                 - name: Mapowanie zależności
@@ -621,14 +624,8 @@
               href: insights/vmware.md
             - name: Rozwiązanie Dane o komunikacji sieciowej
               href: insights/wire-data.md
-            - name: Mapa usługi
-              items:
-                - name: Użycie
-                  href: insights/service-map.md
-                - name: Konfigurowanie
-                  href: insights/service-map-configure.md
-                - name: Integracja z programem Operations Manager
-                  href: insights/service-map-scom.md
+            - name: Rozwiązanie Service Map
+              href: insights/service-map.md
             - name: Grupy komputerów
               href: platform/computer-groups.md
             - name: Configuration Manager

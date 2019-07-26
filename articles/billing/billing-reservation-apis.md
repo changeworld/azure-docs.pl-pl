@@ -1,6 +1,6 @@
 ---
-title: Interfejsy API dla rezerwacji usługi Azure automation | Dokumentacja firmy Microsoft
-description: Informacje o interfejsów API platformy Azure, w której można programowo uzyskać informacje o rezerwacji.
+title: Interfejsy API usługi Azure Reservation Automation | Microsoft Docs
+description: Dowiedz się więcej na temat interfejsów API platformy Azure, których można użyć do programistycznego pobrania informacji o rezerwacji.
 author: yashesvi
 manager: yashesvi
 tags: billing
@@ -11,28 +11,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2019
 ms.author: banders
-ms.openlocfilehash: 6d63f9a393dbb40c3b0952eba9ab9449fd7b558d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20ed2bcf793ab5c3913ccf66d338e71c1a99a003
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702622"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478933"
 ---
-# <a name="apis-for-azure-reservation-automation"></a>Interfejsy API dla rezerwacji usługi Azure automation
+# <a name="apis-for-azure-reservation-automation"></a>Interfejsy API usługi Azure Reservation Automation
 
-Użyj interfejsów API platformy Azure, programowo uzyskać informacji o organizacji dotyczących platformy Azure, usługi lub oprogramowania rezerwacji.
+Użyj interfejsów API platformy Azure, aby programowo uzyskać informacje dla organizacji dotyczące usługi lub rezerwacji oprogramowania platformy Azure.
 
-## <a name="find-reservation-plans-to-buy"></a>Znajdź rezerwacji plany zakupu
+## <a name="find-reservation-plans-to-buy"></a>Znajdź plany rezerwacji do zakupu
 
-Za pomocą rezerwacji zalecenie dotyczące interfejsu API można pobrać zaleceń, na których planujesz zakup rezerwacji na podstawie Twojej organizacji użycia. Aby uzyskać więcej informacji, zobacz [Otrzymuj rekomendacje z rezerwacji](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
+Użyj interfejsu API rekomendacji rezerwacji, aby uzyskać zalecenia dotyczące zakupu rezerwacji na podstawie użycia w organizacji. Aby uzyskać więcej informacji, zobacz [pobieranie zaleceń dotyczących rezerwacji](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 
-Użycie zasobów można analizować za pomocą szczegółów użycia interfejsu API zużycie. Aby uzyskać więcej informacji, zobacz [szczegóły użycia — listy dla rozliczeń okres przez konta rozliczeniowego](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod). Stale wykorzystane zasoby platformy Azure są zazwyczaj najlepszym Release candidate dla rezerwacji.
+Możesz również analizować użycie zasobów przy użyciu szczegółów użycia interfejsu API zużycia. Aby uzyskać więcej informacji, zobacz [szczegóły użycia — lista dla okresu rozliczeniowego według konta](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod)rozliczeń. Zasoby platformy Azure, z których korzystasz, są zwykle najlepszym kandydatem do rezerwacji.
 
 ## <a name="buy-a-reservation"></a>Kupowanie rezerwacji
 
-Możesz kupować rezerwacje platformy Azure i plany oprogramowania programowo przy użyciu interfejsów API REST. Aby dowiedzieć się więcej, zobacz [zamówienia rezerwacji — interfejs API zakupu](/rest/api/reserved-vm-instances/reservationorder/purchase).
+Rezerwacje platformy Azure i plany oprogramowania można kupić programowo przy użyciu interfejsów API REST. Aby dowiedzieć się więcej, zobacz temat [rezerwacja Order-Purchase API](/rest/api/reserved-vm-instances/reservationorder/purchase).
 
-Oto przykładowe żądanie do zakupu za pomocą interfejsu API REST:
+Oto przykładowe żądanie zakupu przy użyciu interfejsu API REST:
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/<GUID>?api-version=2019-04-01
@@ -61,7 +61,7 @@ Treść żądania:
 }
 ```
 
-Można również kupić rezerwację w witrynie Azure portal. Aby uzyskać więcej informacji zobacz następujące artykuły:
+Możesz również kupić rezerwację w Azure Portal. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 Plany usługi:
 - [Maszyna wirtualna](../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
@@ -71,50 +71,50 @@ Plany usługi:
 Plany oprogramowania:
 - [Oprogramowanie SUSE Linux](../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json)
 
-## <a name="get-reservations"></a>Pobierz rezerwacji
+## <a name="get-reservations"></a>Pobieranie rezerwacji
 
-Jeśli jesteś klientem Azure z umową Enterprise Agreement (EA klienta), możesz uzyskać rezerwacje organizacji zakupionych przy użyciu [transakcji pobrać wystąpienia zarezerwowanego opłaty za interfejs API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges). W przypadku innych subskrypcji, Pobierz listę rezerwacje zakupiono i masz uprawnień do wyświetlania, korzystając z interfejsu API [zamówienie rezerwacji — lista](/rest/api/reserved-vm-instances/reservationorder/list). Domyślnie właściciel konta lub osobie, która zakupiona Rezerwacja ma uprawnienia do wyświetlania rezerwacji.
+Jeśli jesteś klientem platformy Azure z Umowa Enterprise (klient z umową EA), możesz uzyskać rezerwacje zakupione w organizacji za pomocą [interfejsu API pobierania opłat za zastrzeżonego wystąpienia transakcji](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges). W przypadku innych subskrypcji Uzyskaj listę zakupionych rezerwacji i masz uprawnienia do wyświetlania, korzystając z [listy Order zastrzeżeń](/rest/api/reserved-vm-instances/reservationorder/list)interfejsu API. Domyślnie właściciel konta lub osoba, która zakupiła rezerwację, ma uprawnienia do wyświetlania rezerwacji.
 
-## <a name="see-reservation-usage"></a>Zobacz użycie rezerwacji
+## <a name="see-reservation-usage"></a>Zobacz Użycie zastrzeżenia
 
-Jeśli jesteś klientem z umową EA, można programowo wyświetlać, jak są używane zastrzeżenia w Twojej organizacji. Aby uzyskać więcej informacji, zobacz [wystąpienia zarezerwowanego Pobierz użycia dla klientów korporacyjnych](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage). W przypadku innych subskrypcji za pomocą interfejsu API [rezerwacje podsumowania — lista przez rezerwacji kolejności i rezerwacji](/rest/api/consumption/reservationssummaries/listbyreservationorderandreservation).
+Jeśli jesteś klientem z umową EA, możesz programowo zobaczyć, w jaki sposób rezerwacje w organizacji są używane. Aby uzyskać więcej informacji, zobacz [pobieranie zarezerwowanych wystąpień użycia dla klientów korporacyjnych](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage). W przypadku innych subskrypcji Użyj [listy podsumowania rezerwacji interfejsu API — lista według kolejności rezerwacji i rezerwacji](/rest/api/consumption/reservationssummaries/listbyreservationorderandreservation).
 
-Jeśli okaże się, jest rezerwacje w organizacji używane w ramach:
+Jeśli okaże się, że rezerwacje w organizacji są używane:
 
-- Upewnij się, że maszyn wirtualnych, które tworzy organizacji dopasowania rozmiaru maszyny Wirtualnej, która znajduje się na rezerwacji.
-- Upewnij się, że elastyczność rozmiar wystąpienia jest włączony. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżeniami — zmiana optymalizacji ustawienie zarezerwowanych wystąpień maszyn wirtualnych](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
-- Zmień zakres rezerwacji współużytkowane, tak aby dotyczyła szerzej. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżeniami — Zmienianie zakresu dla rezerwacji](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
-- Wymiana niewykorzystanej ilości. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżenia - anulowania i wymiany](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
+- Upewnij się, że maszyny wirtualne tworzone przez organizację są zgodne z rozmiarem maszyny wirtualnej, która znajduje się w rezerwacji.
+- Upewnij się, że rozmiar wystąpienia jest elastyczny. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacjami — Zmień ustawienie optymalizacji dla wystąpień zarezerwowanych maszyn wirtualnych](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
+- Zmień zakres rezerwacji na współużytkowany, aby był bardziej szeroki. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacjami — Zmień zakres dla rezerwacji](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+- Wymienia nieużywaną ilość. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacjami — anulowanie i wymiana](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
 
-## <a name="give-access-to-reservations"></a>Udzielić dostępu do rezerwacji
+## <a name="give-access-to-reservations"></a>Udzielanie dostępu do rezerwacji
 
-Pobierz listę wszystkie rezerwacje, czy użytkownik ma dostęp do za pomocą [API listy rezerwacji — operacja -](/rest/api/reserved-vm-instances/reservationorder/list). Pozwala uzyskiwać dostęp do rezerwacji programowo, zobacz jeden z następujących artykułów:
+Pobierz listę wszystkich rezerwacji, do których użytkownik ma dostęp przy użyciu [interfejsu API listy rezerwacji-operacji](/rest/api/reserved-vm-instances/reservationorder/list). Aby umożliwić programowe uzyskiwanie dostępu do rezerwacji, zobacz jeden z następujących artykułów:
 
 - [Zarządzanie dostępem przy użyciu RBAC i interfejsu API REST](../role-based-access-control/role-assignments-rest.md)
-- [Zarządzanie dostępem przy użyciu RBAC i programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
-- [Zarządzanie dostępem przy użyciu RBAC i wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)
+- [Zarządzanie dostępem przy użyciu RBAC i Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
+- [Zarządzanie dostępem przy użyciu RBAC i interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)
 
-## <a name="split-or-merge-reservation"></a>Dzielenie i scalanie rezerwacji
+## <a name="split-or-merge-reservation"></a>Dzielenie lub scalanie rezerwacji
 
-Po możesz kupić więcej niż jedno wystąpienie zasobów w ramach rezerwacji, możesz przypisać wystąpienia w ramach tej rezerwacji do różnych subskrypcji. Można zmienić zakres rezerwacji, tak aby dotyczyła wszystkich subskrypcji w tym samym kontekście rozliczeń. Jednak do celów zarządzania lub budżetowania koszt, możesz chcieć zachowanie zakresu jako "subskrypcja pojedyncza" i przypisz rezerwacji wystąpień do określonej subskrypcji.
+Po zakupieniu więcej niż jednego wystąpienia zasobu w ramach rezerwacji możesz chcieć przypisać wystąpienia w ramach tej rezerwacji do różnych subskrypcji. Zakres rezerwacji można zmienić tak, aby dotyczył wszystkich subskrypcji w ramach tego samego kontekstu rozliczania. Jednak w celu zarządzania kosztami lub budżetowania można zachować zakres jako "pojedyncza subskrypcja" i przypisać wystąpienia rezerwacji do określonej subskrypcji.
 
-Aby podzielić rezerwacji, za pomocą interfejsu API [podziału rezerwacji -](/rest/api/reserved-vm-instances/reservation/split). Możesz również podzielić rezerwacji przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacje - podziału rezerwacji do dwóch rezerwacji](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
+Aby podzielić rezerwację, użyj funkcji [rezerwacji API-Split](/rest/api/reserved-vm-instances/reservation/split). Rezerwacja można także podzielić przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacjami — dzielenie rezerwacji na dwie rezerwacje](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
 
-Aby scalić dwóch rezerwacji do jedną rezerwację, za pomocą interfejsu API [rezerwacji - Merge](/rest/api/reserved-vm-instances/reservation/merge).
+Aby scalić dwie rezerwacje w jedną rezerwację, użyj funkcji [rezerwacji](/rest/api/reserved-vm-instances/reservation/merge)interfejsu API — scalanie.
 
-## <a name="change-scope-for-a-reservation"></a>Zmiana zakresu dla rezerwacji
+## <a name="change-scope-for-a-reservation"></a>Zmień zakres dla rezerwacji
 
-Zakres rezerwacji może być pojedynczej subskrypcji, czy wszystkie subskrypcje w kontekstu rozliczeń. Jeśli zakres jest ustawiona na jedną subskrypcję, rezerwacja jest dopasowany do uruchomionego zasobów w wybranej subskrypcji. Jeśli ustawiono zakres udostępniony, Azure pasuje rezerwacji do zasobów, które są uruchamiane w przypadku wszystkich subskrypcji w ramach kontekstu rozliczeń. Kontekstu rozliczeń zależy od subskrypcji, którego użyto do zakupu rezerwacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie zastrzeżeniami — Zmienianie zakresu](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+Zakresem rezerwacji może być jedna subskrypcja, jedna grupa zasobów lub wszystkie subskrypcje w kontekście rozliczeń. Jeśli ustawisz zakres na pojedynczą subskrypcję lub pojedynczą grupę zasobów, rezerwacja zostanie dopasowana do uruchomionych zasobów w wybranej subskrypcji. Jeśli usuniesz lub przeniesiesz subskrypcję lub grupę zasobów, rezerwacja nie zostanie wykorzystana.  Jeśli ustawisz zakres jako udostępniony, platforma Azure dopasowuje rezerwację do zasobów, które działają we wszystkich subskrypcjach w kontekście rozliczania. Kontekst rozliczania zależy od subskrypcji użytej do zakupu rezerwacji. Możesz wybrać zakres przy zakupie lub zmienić go w dowolnym momencie po zakupie. Aby uzyskać więcej informacji, zobacz [Zarządzanie rezerwacjami — Zmień zakres](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
-Aby programowo zmienić zakres, należy użyć interfejsu API [rezerwacji — aktualizacja](/rest/api/reserved-vm-instances/reservation/update).
+Aby programowo zmienić zakres, Użyj usługi API [Reservation-Update](/rest/api/reserved-vm-instances/reservation/update).
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-- [Co to są rezerwacji dla platformy Azure](billing-save-compute-costs-reservations.md)
-- [Zrozumienie, jak jest stosowany rabat związany z rezerwacją maszyny Wirtualnej](billing-understand-vm-reservation-charges.md)
-- [Zrozumienie, jak jest stosowany rabat plan oprogramowania SUSE Linux Enterprise](billing-understand-suse-reservation-charges.md)
-- [Zrozumienie sposobu stosowania rabatów rezerwacji](billing-understand-reservation-charges.md)
-- [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
-- [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
-- [Koszty oprogramowania Windows nie jest dołączony do rezerwacji](billing-reserved-instance-windows-software-costs.md)
-- [Rezerwacje platformy Azure w programie partnera Centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Co to są rezerwacje dotyczące platformy Azure](billing-save-compute-costs-reservations.md)
+- [Zapoznaj się z zastosowaniem rabatu rezerwacji maszyny wirtualnej](billing-understand-vm-reservation-charges.md)
+- [Zapoznaj się z zastosowaniem rabatu planu oprogramowania w systemie SUSE Linux Enterprise](billing-understand-suse-reservation-charges.md)
+- [Zapoznaj się z zastosowaniami innych rabatów rezerwacji](billing-understand-reservation-charges.md)
+- [Informacje na temat użycia rezerwacji dla subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
+- [Informacje na temat użycia rezerwacji na potrzeby rejestracji w przedsiębiorstwie](billing-understand-reserved-instance-usage-ea.md)
+- [Koszty oprogramowania systemu Windows, które nie są objęte rezerwacjami](billing-reserved-instance-windows-software-costs.md)
+- [Azure Reservations w programie Partner Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

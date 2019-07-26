@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj informacje o zabezpieczeniach (wersja zapoznawcza) do użycia połączeń telefonicznych — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak skonfigurować swoje informacje zabezpieczające, aby zweryfikować swoją tożsamość za pomocą połączeń telefonicznych.
+title: Skonfiguruj informacje zabezpieczające (wersja zapoznawcza), aby korzystać z połączeń telefonicznych — Azure Active Directory | Microsoft Docs
+description: Jak skonfigurować informacje zabezpieczające, aby zweryfikować Twoją tożsamość przy użyciu połączeń telefonicznych.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,101 +12,108 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fbac4f364dedc28f7d5f3e100481a56bde70b4d3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474997"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382911"
 ---
-# <a name="set-up-security-info-preview-to-use-phone-calls"></a>Skonfiguruj informacje o zabezpieczeniach (wersja zapoznawcza) do użycia połączeń telefonicznych
-Możesz wykonać następujące kroki, aby dodać weryfikację two-Factor Authentication i metod resetowania hasła. Po skonfigurowaniu to po raz pierwszy, można powrócić do **zabezpieczające** strony Dodawanie, aktualizowanie lub usuwanie informacji zabezpieczających.
+# <a name="set-up-security-info-preview-to-use-phone-calls"></a>Skonfiguruj informacje zabezpieczające (wersja zapoznawcza), aby korzystać z połączeń telefonicznych
 
-Po wyświetleniu monitu o skonfigurowanie tego numeru, natychmiast, po zalogowaniu się do swojego konta firmowego lub szkolnego, zobacz szczegółowe instrukcje zostały podane w [skonfigurować swoje informacje zabezpieczające z wiersza na stronie rejestracji](security-info-setup-signin.md) artykułu.
+Aby dodać weryfikację dwuskładnikową i metodę resetowania hasła, można wykonać następujące czynności. Po wybraniu tej opcji po raz pierwszy możesz wrócić do strony **informacje zabezpieczające** , aby dodać, zaktualizować lub usunąć informacje o zabezpieczeniach.
+
+Jeśli zostanie wyświetlony monit o ustawienie tej opcji natychmiast po zalogowaniu się do konta służbowego, Zobacz szczegółowe kroki opisane w artykule [Konfigurowanie informacji zabezpieczających na stronie Logowanie](security-info-setup-signin.md) .
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 > [!Note]
-> Informacje o zabezpieczeniach nie obsługuje wewnętrzne numery telefonów. Nawet jeśli dodasz prawidłowego formatu, 4255551234 + 1 X 12345, rozszerzenia zostaną usunięte przed wykonaniem wywołania.
-> 
-> Jeśli nie widzisz opcji dla telefonu, istnieje możliwość, że Twoja organizacja nie zezwala na numer telefonu służy do identyfikacji. W takim przypadku należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
+> Informacje zabezpieczające nie obsługują używania rozszerzeń telefonu. Nawet jeśli dodasz właściwy format, + 1 4255551234X12345, rozszerzenia zostaną usunięte przed umieszczeniem wywołania.
+>
+> Jeśli nie widzisz opcji telefon, być może Twoja organizacja nie zezwala na używanie numeru telefonu do weryfikacji. W takim przypadku należy wybrać inną metodę lub skontaktować się z administratorem w celu uzyskania dodatkowej pomocy.
 
-## <a name="set-up-phone-calls-from-the-security-info-page"></a>Konfigurowanie połączeń telefonicznych z stronę informacji zabezpieczających
-W zależności od ustawień organizacji można użyć połączeń telefonicznych jako jeden z metody zabezpieczeń informacji.
+## <a name="set-up-phone-calls-from-the-security-info-page"></a>Konfigurowanie połączeń telefonicznych ze strony z informacjami o zabezpieczeniach
+
+W zależności od ustawień organizacji może być możliwe użycie połączeń telefonicznych jako jednej z metod informacji zabezpieczających.
 
 >[!Note]
->Jeśli chcesz otrzymywać wiadomość SMS, a nie połączenie telefoniczne, wykonaj kroki opisane w [ustawiane informacje zabezpieczające, aby używać wiadomości SMS](security-info-setup-text-msg.md) artykułu.
+>Jeśli chcesz otrzymać wiadomość tekstową zamiast połączenia telefonicznego, postępuj zgodnie z instrukcjami w artykule [Konfigurowanie informacji zabezpieczających do korzystania z wiadomości tekstowych](security-info-setup-text-msg.md) .
 
-### <a name="to-set-up-phone-calls"></a>Aby skonfigurować połączeń telefonicznych
+### <a name="to-set-up-phone-calls"></a>Aby skonfigurować połączenia telefoniczne
 
-1. Zaloguj się do swojego konta firmowego lub szkolnego, a następnie przejdź do swojej https://myprofile.microsoft.com/ strony.
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź do https://myprofile.microsoft.com/ strony.
 
-    ![Strona Moje profilu, pokazujący wyróżnione łączy informacje zabezpieczeń](media/security-info/securityinfo-myprofile-page.png)
+    ![Strona mój profil zawierająca wyróżnione linki do informacji zabezpieczających](media/security-info/securityinfo-myprofile-page.png)
 
-2. Wybierz **zabezpieczające** z lewego okienka nawigacji lub linku w **zabezpieczające** zablokować, a następnie wybierz **Dodaj metodę** z **informacje zabezpieczające**  strony.
+2. W okienku nawigacji po lewej stronie wybierz pozycję **informacje zabezpieczające** lub link w bloku **informacje zabezpieczające** , a następnie wybierz pozycję **Dodaj metodę** ze strony **informacje zabezpieczające** .
 
-    ![Strona informacji zabezpieczających przy użyciu opcji Dodaj wyróżnione w — metoda](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Strona z informacjami o zabezpieczeniach z wyróżnioną opcją dodawania metody](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Na **Dodaj metodę** wybierz opcję **Phone** z listy rozwijanej, a następnie wybierz **Dodaj**.
+3. Na stronie **Dodawanie metody** wybierz pozycję **telefon** z listy rozwijanej, a następnie wybierz pozycję **Dodaj**.
 
-    ![Dodaj pole Metoda, za pomocą telefonu wybrane](media/security-info/securityinfo-myprofile-addphonetext.png)
+    ![Dodaj pole metody z wybranym numerem telefonu](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. Na **Phone** strony, wpisz numer telefonu dla urządzeń przenośnych, wybierz **Zadzwoń do mnie**, a następnie wybierz pozycję **dalej**.
+4. Na stronie **telefon** wpisz numer telefonu urządzenia przenośnego, wybierz opcję Zadzwoń do **mnie**, a następnie wybierz przycisk **dalej**.
 
-    ![Dodaj numer telefonu, a następnie wybierz połączeń telefonicznych](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
+    ![Dodawanie numeru telefonu i Wybieranie połączeń telefonicznych](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 
-5. Odpowiedzi na połączenie telefoniczne weryfikacji, wysyłanych na numer telefonu, które zostały wprowadzone i postępuj zgodnie z instrukcjami.
+5. Odpowiedz na połączenie telefoniczne weryfikacyjne, wysłane na numer telefonu, a następnie postępuj zgodnie z instrukcjami.
 
-    Zmiany strony do wyświetlenia sukcesu.
+    Strona zmieni się, aby pokazać sukces.
 
-    ![Powiadomienie o powodzeniu, połączenie telefonu numer, odebranie połączenia telefoniczne i konta](media/security-info/securityinfo-myprofile-phonetext-success.png)
+    ![Powiadomienie o powodzeniu, połączenie numeru telefonu, wybór, aby odbierać połączenia telefoniczne i Twoje konto](media/security-info/securityinfo-myprofile-phonetext-success.png)
 
-    Twoje informacje zabezpieczające są aktualizowane i połączeń telefonicznych można użyć, aby zweryfikować swoją tożsamość w przypadku korzystania z resetowania dwuetapowej weryfikacji lub hasło. Jeśli chcesz wykonywać połączeń telefonicznych metodą domyślną, zobacz [domyślną metodę informacje zabezpieczeń](#change-your-default-security-info-method) dalszej części tego artykułu.
+    Informacje zabezpieczające są aktualizowane i można użyć połączeń telefonicznych, aby zweryfikować swoją tożsamość podczas korzystania z weryfikacji dwuetapowej lub resetowania hasła. Jeśli chcesz nawiązać połączenie telefoniczne z domyślną metodą, zobacz sekcję [Zmienianie domyślnej metody informacyjnej zabezpieczeń](#change-your-default-security-info-method) w tym artykule.
 
-## <a name="delete-phone-calls-from-your-security-info-methods"></a>Usuwanie połączeń telefonicznych z metody informacje zabezpieczeń
-Jeśli chcesz już używać połączeń telefonicznych jako metoda informacje zabezpieczeń, możesz usunąć go z **zabezpieczające** strony.
+## <a name="delete-phone-calls-from-your-security-info-methods"></a>Usuwanie połączeń telefonicznych z metod informacji zabezpieczających
+
+Jeśli nie chcesz już używać połączeń telefonicznych jako metody informacji zabezpieczających, możesz usunąć ją ze strony z **informacjami o zabezpieczeniach** .
 
 >[!Important]
->Połączeń telefonicznych zostanie usunięty przez pomyłkę, czy można go cofnąć. Musisz ponownie, Dodaj metodę czynności opisane w [Konfigurowanie połączeń telefonicznych](#set-up-phone-calls-from-the-security-info-page) dalszej części tego artykułu.
+>W przypadku usuwania połączeń telefonicznych przez pomyłkę nie można jej cofnąć. Musisz ponownie dodać metodę, wykonując czynności opisane w sekcji [Konfigurowanie połączeń telefonicznych](#set-up-phone-calls-from-the-security-info-page) w tym artykule.
 
-### <a name="to-delete-phone-calls"></a>Aby usunąć połączeń telefonicznych
+### <a name="to-delete-phone-calls"></a>Aby usunąć połączenia telefoniczne
 
-1. Na **zabezpieczające** wybierz opcję **Usuń** łącze obok **Phone** opcji.
+1. Na stronie **informacje zabezpieczające** wybierz łącze **Usuń** obok opcji **telefon** .
 
-    ![Łącze, aby usunąć metodę telefonu z informacje zabezpieczające](media/security-info/securityinfo-myprofile-phonetext-delete.png)
+    ![Link umożliwiający usunięcie metody telefonu z informacji zabezpieczających](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. Wybierz **tak** z okno dialogowe potwierdzenia, aby usunąć **Phone** numer. Po numer telefonu został usunięty, zostanie on usunięty z informacjom zabezpieczającym i znika ono z **zabezpieczające** strony. Jeśli **Phone** jest metodą domyślną, wartość domyślna zmieni się na innej metody dostępne.
-    
-## <a name="change-your-default-security-info-method"></a>Domyślną metodę informacje zabezpieczeń
-Jeśli chcesz połączenia telefoniczne jako domyślną metodę używaną podczas logowania do konta firmowego lub szkolnego, przy użyciu weryfikacji two-Factor Authentication, lub dla żądań resetowania hasła, można ustawić go z **zabezpieczające** strony.
+2. Wybierz opcję **tak** w polu potwierdzenia, aby usunąć numer **telefonu** . Po usunięciu numeru telefonu zostanie on usunięty z informacji zabezpieczających i zniknie ze strony z **informacjami o zabezpieczeniach** . Jeśli **telefon** jest metodą domyślną, domyślnie zmieni się na inną dostępną metodę.
 
-### <a name="to-change-your-default-security-info-method"></a>Aby zmienić metodę informacje zabezpieczeń domyślne
+## <a name="change-your-default-security-info-method"></a>Zmień domyślną metodę informacji zabezpieczających
 
-1. Na **zabezpieczające** wybierz opcję **zmiany** łącze obok **domyślna metoda logowania** informacji.
+Jeśli chcesz, aby wywołania telefoniczne były metodą domyślną używaną podczas logowania do konta służbowego przy użyciu weryfikacji dwuskładnikowej lub żądania resetowania hasła, możesz ustawić ją na stronie **informacje zabezpieczające** .
 
-    ![Łącze Zmień domyślną metodę logowania](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
+### <a name="to-change-your-default-security-info-method"></a>Aby zmienić domyślną metodę informacji zabezpieczających
 
-2. Wybierz **Phone — wywołania ( *_your_phone_number_* )** z listy rozwijanej dostępnych metod, a następnie wybierz **Potwierdź**.
+1. Na stronie **Informacje o zabezpieczeniach** wybierz łącze **Zmień** obok domyślnych informacji o **metodzie logowania** .
 
-    ![Wybierz metodę logowania domyślne](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
+    ![Zmień link dla domyślnej metody logowania](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-    Domyślną metodą używane do logowania zmiany **Phone — wywołania ( *_your_phone_number_* )** .
+2. Wybierz pozycję **telefon-call ( *_your_phone_number_* )** z listy rozwijanej dostępne metody, a następnie wybierz pozycję **Potwierdź**.
 
-## <a name="additional-security-info-methods"></a>Dodatkowe informacje o metody zabezpieczeń
-Masz dodatkowe opcje jak kontakty organizacji możesz zweryfikować swoją tożsamość, oparte na tym, co możesz próby wykonania. Dostępne są następujące opcje:
+    ![Wybierz metodę logowania domyślnego](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-- **Aplikacja Authenticator.** Pobierz i użyj aplikacji authenticator, aby uzyskać powiadomienie o zatwierdzeniu lub kod generowany losowo zatwierdzenia do resetowania dwuetapowej weryfikacji lub hasło. Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania i używania aplikacji Microsoft Authenticator, zobacz [ustawić informacje zabezpieczające, aby użyć aplikacji authenticator](security-info-setup-auth-app.md).
+    Domyślna metoda używana do wprowadzania zmian na **telefonie ( *_your_phone_number_* )** .
 
-- **Tekst urządzenia przenośnego.** Wprowadź numer urządzenia przenośnego, a następnie otrzymaj wiadomość SMS, kod służący do celów weryfikacji dwuetapowej lub hasło resetowania. Aby uzyskać szczegółowe instrukcje na temat zweryfikować swoją tożsamość za pomocą wiadomości SMS (SMS), zobacz [ustawiane informacje zabezpieczające, aby używać wiadomości tekstowych (SMS)](security-info-setup-text-msg.md).
+## <a name="additional-security-info-methods"></a>Dodatkowe metody informacji zabezpieczających
 
-- **Adres e-mail.** Wprowadź swój firmowy lub szkolny adres e-mail, aby otrzymywać wiadomość e-mail do resetowania hasła. Ta opcja jest dostępna na potrzeby weryfikacji dwuetapowej. Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania swój adres e-mail, zobacz [ustawić informacje zabezpieczające, aby użyć adresu e-mail](security-info-setup-email.md).
+Dostępne są dodatkowe opcje dotyczące sposobu, w jaki Twoja organizacja kontaktuje się z Twoją tożsamością, w oparciu o to, co you're próbę wykonania. Dostępne są następujące opcje:
 
-- **Pytania zabezpieczające.** Odpowiedz na pytania zabezpieczeń, niektóre utworzone przez administratora w Twojej organizacji. Ta opcja jest dostępna tylko do resetowania hasła, a nie na potrzeby weryfikacji dwuetapowej. Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania pytań zabezpieczających, zobacz [ustawić informacje zabezpieczające, aby użycie tych pytań zabezpieczających](security-info-setup-questions.md) artykułu.
-    
+- **Aplikacja uwierzytelniania.** Pobierz aplikację Authenticator i użyj jej do uzyskania powiadomienia o zatwierdzeniu lub losowo wygenerowanego kodu zatwierdzenia na potrzeby weryfikacji dwuetapowej lub resetowania hasła. Instrukcje krok po kroku dotyczące konfigurowania i używania aplikacji Microsoft Authenticator można znaleźć w temacie [set up Security Info to use the Authenticator App](security-info-setup-auth-app.md).
+
+- **Tekst urządzenia przenośnego.** Wprowadź numer urządzenia przenośnego i uzyskaj tekst kodu, który będzie używany do weryfikacji dwuetapowej lub resetowania hasła. Aby uzyskać instrukcje krok po kroku dotyczące weryfikowania tożsamości za pomocą wiadomości tekstowych (SMS), zobacz [Konfigurowanie informacji zabezpieczających do używania wiadomości](security-info-setup-text-msg.md)SMS.
+
+- **Klucz zabezpieczeń.** Zarejestruj klucz zabezpieczeń zgodny z firmą Microsoft i użyj go wraz z numerem PIN w celu weryfikacji dwuetapowej lub resetowania hasła. Instrukcje krok po kroku dotyczące weryfikowania tożsamości przy użyciu klucza zabezpieczeń znajdują się w temacie [set up Security Info to use a Security Key](security-info-setup-security-key.md).
+
+- **Adres e-mail.** Wprowadź służbowy adres e-mail, aby uzyskać wiadomość e-mail na potrzeby resetowania hasła. Ta opcja jest niedostępna w przypadku weryfikacji dwuetapowej. Aby uzyskać instrukcje krok po kroku dotyczące konfigurowania poczty e-mail, zobacz [Konfigurowanie informacji zabezpieczających do używania poczty e-mail](security-info-setup-email.md).
+
+- **Pytania zabezpieczające.** Odpowiedz na niektóre pytania zabezpieczające utworzone przez administratora w organizacji. Ta opcja jest dostępna tylko do resetowania haseł, a nie do weryfikacji dwuetapowej. Aby uzyskać instrukcje krok po kroku dotyczące konfigurowania pytań zabezpieczających, zobacz artykuł [Konfigurowanie informacji zabezpieczających do używania pytań zabezpieczających](security-info-setup-questions.md) .
+
     >[!Note]
-    >Jeśli brakuje niektórych z tych opcji, prawdopodobnie najbardziej Twoja organizacja nie zezwala na jednej z tych metod. Jeśli jest to możliwe, należy wybrać metodę dostępne lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
+    >Jeśli brakuje niektórych z tych opcji, prawdopodobnie organizacja nie zezwala na te metody. W takim przypadku należy wybrać dostępną metodę lub skontaktować się z administratorem w celu uzyskania pomocy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zagubione lub zapomniane hasło możesz zresetować w [portalu resetowania hasła](https://passwordreset.microsoftonline.com/) lub wykonując kroki przedstawione w artykule [Resetowanie hasła służbowego](user-help-reset-password.md).
 

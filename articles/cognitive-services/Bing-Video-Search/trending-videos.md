@@ -1,7 +1,7 @@
 ---
-title: Wyszukiwanie w sieci web dla popularnych klipów wideo przy użyciu interfejsu API wyszukiwania wideo Bing
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać interfejsu API wyszukiwania wideo Bing do wyszukiwania popularnych klipów wideo w sieci web.
+title: Wyszukaj w sieci Web trendy dotyczące trendów wideo przy użyciu interfejs API wyszukiwania wideo Bing
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak za pomocą interfejs API wyszukiwania wideo Bing przeszukać w Internecie trendy dotyczące trendów wideo.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 486cf2e3bcf851f23011bb2fb8d91691d6190698
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea6f79bf6c305ecc07b3e684ede15ad439039e7e
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61431926"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500614"
 ---
-# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Pobierz popularne wideo za pomocą interfejsu API wyszukiwania wideo Bing 
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Zyskaj trendy wideo przy użyciu interfejs API wyszukiwania wideo Bing 
 
-Interfejs API wyszukiwania wideo Bing umożliwia znalezienie współczesnych popularnych klipów wideo z, w sieci Web i w różnych kategoriach. 
+Interfejs API wyszukiwania wideo Bing umożliwia znalezienie dzisiejszych trendów wideo z poziomu sieci Web, a w różnych kategoriach. 
 
-## <a name="get-request"></a>Pobieranie żądania
+## <a name="get-request"></a>Pobierz żądanie
 
-Aby uzyskać bieżącą popularnych klipów wideo z interfejsu API wyszukiwania wideo Bing, wysyłanie następujące żądanie GET:  
+Aby uzyskać aktualne trendy wideo z interfejs API wyszukiwania wideo Bing, wyślij następujące żądanie GET:  
   
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
@@ -35,27 +35,27 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```
 
-## <a name="market-support"></a>Obsługa obrotu
+## <a name="market-support"></a>Wsparcie dla rynku
 
-Następujące rynki obsługuje popularne wideo.  
+Poniższe rynki obsługują trendy dotyczące trendów wideo.  
  
--   EN-AU (angielski, Australia)  
+-   en-AU (angielski, Australia)  
 -   EN-CA (angielski, Kanada)  
--   en-GB (angielski, Wielka Brytania)  
+-   pl-GB (angielski, Wielka Brytania)  
 -   EN-ID (angielski, Indonezja)  
 -   EN-IE (angielski, Irlandia)  
--   EN-IN (angielski, Indie)  
--   NZ en (angielski, Nowa Zelandia)  
--   PH en (angielski, Filipiny)  
--   SG en (angielski, Singapur)  
--   EN US (angielski, Stany Zjednoczone)  
--   EN-WW (angielski, cały świat agregacji kodu)  
--   ZA en (angielski, Republika Południowej Afryki)  
--   nazwy zh-CN (chińskim, Chiny)
+-   pl (angielski, Indie)  
+-   EN-NZ (angielski, Nowa Zelandia)  
+-   EN-PH (angielski, Filipiny)  
+-   EN-SG (angielski, Singapur)  
+-   pl-US (angielski, Stany Zjednoczone)  
+-   EN-WW (angielski, ogólnoświatowy kod agregacji)  
+-   pl-za (angielski, RPA)  
+-   zh-CN (chiński, Chiny)
 
 ## <a name="example-json-response"></a>Przykładowa odpowiedź JSON  
 
-Poniższy przykład przedstawia odpowiedź interfejsu API, który zawiera popularnych klipów wideo, które są wymienione według kategorii i podkategorii. Odpowiedź zawiera również Baner wideo, które są najbardziej popularne popularnych klipów wideo i mogą pochodzić z jednej lub więcej kategorii.  
+Poniższy przykład przedstawia odpowiedź interfejsu API, która zawiera trendy wideo, które są wyświetlane według kategorii i podkategorii. Odpowiedź zawiera również wideo transparentów, które są najpopularniejszymi trendami wideo i mogą pochodzić z jednej lub kilku kategorii.  
 
 ```json
 {  
@@ -121,7 +121,7 @@ Poniższy przykład przedstawia odpowiedź interfejsu API, który zawiera popula
   
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Pobieranie szczegółowych informacji o wideo](video-insights.md)

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów — Rozwiązywanie problemów z konfiguracją usługi Azure Service wejściu | Dokumentacja firmy Microsoft
-description: W tym samouczku dowiesz się, jak rozwiązać niektóre typowe problemy, które mogą się spodziewać dla Twojego drzwiami frontowymi samodzielnie.
+title: Rozwiązywanie problemów — Rozwiązywanie problemów z konfiguracją usługi Azure front-drzwi Microsoft Docs
+description: W ramach tego samouczka nauczysz się, jak rozwiązywać problemy z niektórymi typowymi problemami, które mogą być używane w przypadku zewnętrznych drzwi.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,61 +12,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 7a261d65a7bd3eea150dd764c65b94ddd47466b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736126"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335877"
 ---
-# <a name="troubleshooting-common-routing-issues"></a>Rozwiązywanie typowych problemów routingu
-W tym artykule opisano, jak do rozwiązywania niektórych typowych problemów routingu, które mogą się spodziewać dla danej konfiguracji usługi drzwiami frontowymi platformy Azure. 
+# <a name="troubleshooting-common-routing-issues"></a>Rozwiązywanie typowych problemów z routingiem
+W tym artykule opisano sposób rozwiązywania niektórych typowych problemów z routingiem, które mogą być potrzebne w konfiguracji usługi Azure front-drzwi. 
 
-## <a name="hostname-not-routing-to-backend-and-returns-400-status-code"></a>Nazwa hosta nie routingu do wewnętrznej bazy danych i zwraca kod stanu 400
+## <a name="hostname-not-routing-to-backend-and-returns-400-status-code"></a>Nazwa hosta nie jest Routing do zaplecza i zwraca kod stanu 400
 
 
 ### <a name="symptom"></a>Objaw
-- Utworzono drzwiami frontowymi, ale zwraca kod stanu HTTP 400 żądań do hosta serwera sieci Web.
+- Utworzono tylne drzwi, ale żądanie do hosta frontonu zwraca kod stanu HTTP 400.
 
-  - Utworzono DNS mapowanie z domeny niestandardowej do hosta frontonu zostały skonfigurowane. Jednak wysyła żądania do nazwy hosta domeny niestandardowej zwraca kod stanu HTTP 400 i wydaje się kierować do backend(s) zostały skonfigurowane.
+  - Utworzono mapowanie DNS z domeny niestandardowej na skonfigurowany Host frontonu. Jednak wysyłanie żądania do nazwy hosta domeny niestandardowej zwraca kod stanu HTTP 400 i nie wydaje się kierować do skonfigurowanych zaplecza.
 
 ### <a name="cause"></a>Przyczyna
-- Ten symptom może się zdarzyć, jeśli nie skonfigurowano reguły routingu dla domeny niestandardowej, która zostanie dodany jako hosta serwera sieci Web. Reguły routingu należy jawnie dodać tego hosta serwera sieci Web nawet, jeśli jeden został już skonfigurowany dla hosta serwera sieci Web w obszarze poddomeny drzwiami frontowymi (*. azurefd.net) czy domeny niestandardowej ma mapowanie DNS.
+- Ten objaw może wystąpić, jeśli nie skonfigurowano reguły routingu dla domeny niestandardowej, która została dodana jako host frontonu. Regułę routingu należy jawnie dodać do tego hosta frontonu, nawet jeśli została już skonfigurowana dla hosta frontonu w poddomenie frontonu (*. azurefd.net), do której domena niestandardowa ma mapowanie DNS.
 
 ### <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów
-- Dodaj regułę routingu z domeny niestandardowej do puli zaplecza żądaną.
+- Dodaj regułę routingu z domeny niestandardowej do żądanej puli zaplecza.
 
-## <a name="request-to-frontend-hostname-returns-404-status-code"></a>Limit czasu żądania nazwy hosta frontonu kod stanu 404 zwraca
+## <a name="request-to-frontend-hostname-returns-404-status-code"></a>Żądanie do nazwy hosta frontonu zwraca kod stanu 404
 
 ### <a name="symptom"></a>Objaw
-- Utworzono drzwiami frontowymi i skonfigurować hosta serwera sieci Web, pulę zaplecza przy użyciu co najmniej jednego zaplecza w nim i reguły routingu, który nawiązuje połączenie z hosta frontonu do puli zaplecza. Zawartość nie wydaje się być dostępny podczas wysyłania żądania do hosta skonfigurowanego serwera sieci Web, ponieważ zwracany jest kod stanu HTTP 404.
+- Utworzono drzwiczki z przodu i skonfigurowano hosta frontonu, pulę zaplecza z co najmniej jednym zaplecem oraz regułę routingu łączącą hosta frontonu z pulą zaplecza. Zawartość nie jest dostępna podczas wysyłania żądania do skonfigurowanego hosta frontonu, ponieważ zwracany jest kod stanu HTTP 404.
 
 ### <a name="cause"></a>Przyczyna
-Istnieje kilka możliwych przyczyn to objaw:
- - Wewnętrznej bazy danych nie jest publiczny zaplecza mające połączenie z Internetem i nie jest widoczna w usłudze wejściu.
+Istnieje kilka możliwych przyczyn tego symptomu:
+ - Zaplecze nie jest publicznym zaplecem i nie jest widoczne dla usługi front-drzwi.
 
-- Wewnętrznej bazy danych jest błędnie skonfigurowane, który powoduje usługi drzwiami frontowymi można wysłać nieprawidłowe żądania (oznacza, że zaplecza akceptuje tylko HTTP, ale nie jest zaznaczone, dzięki czemu żądania HTTPS, więc drzwiami frontowymi próbuje do przesyłania dalej protokołu HTTPS).
-- Zaplecze odrzuca nagłówek hosta, który został przekazany z żądania do zaplecza.
-- Konfiguracja dla wewnętrznej bazy danych nie ma jeszcze w pełni wdrażane.
+- Zaplecze jest nieprawidłowo skonfigurowana, co powoduje, że usługa front-drzwi wysyła niewłaściwe żądanie (to oznacza, że zaplecze akceptuje tylko protokół HTTP, ale nie sprawdzono zaznaczenia opcji zezwalania na połączenia HTTPS, dlatego drzwi przed próbami przekazują żądania HTTPS).
+- Zaplecze odrzuca nagłówek hosta, który został przekazany z żądaniem do zaplecza.
+- Konfiguracja zaplecza nie została jeszcze w pełni wdrożona.
 
 ### <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów
 1. Czas wdrożenia
-    - Upewnij się, że minęło ~ 10 minut, można wdrożyć w konfiguracji.
+    - Upewnij się, że w ciągu 10 minut zainstalowano konfigurację do wdrożenia.
 
-2. Sprawdź ustawienia wewnętrznej bazy danych
-   - Przejdź do puli zaplecza, który żądanie powinno być routingu w celu (w zależności od sposobu ma regułę routingu skonfigurowane) i sprawdź, czy _typ hosta zaplecza_ i nazwy hosta wewnętrznej bazy danych są poprawne. Wewnętrznej bazy danych w przypadku niestandardowego hosta, upewnij się, że możesz mieć poprawna go. 
+2. Sprawdź ustawienia zaplecza
+   - Przejdź do puli zaplecza, do której żądanie powinno być routowane (zależnie od tego, jak masz skonfigurowaną regułę routingu) i sprawdź, czy _typ hosta zaplecza_ i nazwa hosta zaplecza są poprawne. Jeśli zaplecze jest hostem niestandardowym, upewnij się, że został wpisany poprawnie. 
 
-   - Sprawdź swoje portach HTTP i HTTPS. W większości przypadków 80 i 443 (odpowiednio), są poprawne, a żadne zmiany nie będą wymagane. Istnieje jednak możliwość, że wewnętrzną bazą danych nie została skonfigurowana w ten sposób i nasłuchuje na innym porcie.
+   - Sprawdź porty HTTP i HTTPS. W większości przypadków 80 i 443 (odpowiednio) są poprawne i nie będą wymagane żadne zmiany. Istnieje jednak możliwość, że zaplecze nie skonfigurowano w ten sposób i nasłuchuje na innym porcie.
 
-     - Sprawdź _nagłówek hosta zaplecza_ skonfigurowany dla zaplecza aplikacji, których routingu hosta serwera sieci Web w celu. W większości przypadków ten nagłówek powinna być taka sama jak _wewnętrznej bazy danych, nazwy hosta_. Może to spowodować jednak niepoprawną wartość różne kody stanu HTTP 4xx, wewnętrznej bazy danych oczekuje, że coś innego. Jeśli należy wprowadzić adres IP zaplecza, konieczne może być ustawiona _nagłówek hosta zaplecza_ zgodnie z nazwą hosta wewnętrznej bazy danych.
+     - Sprawdź _nagłówek hosta zaplecza_ skonfigurowany na potrzeby zaplecza, do którego powinna być kierowanie hosta frontonu. W większości przypadków ten nagłówek powinien być taki sam jak _Nazwa hosta zaplecza_. Jednak nieprawidłowa wartość może spowodować różne kody stanu 4xx HTTP, jeśli zaplecze oczekuje czegoś innego. Jeśli wprowadzasz adres IP zaplecza, może być konieczne ustawienie _nagłówka hosta zaplecza_ na nazwę hosta zaplecza.
 
 
 3. Sprawdź ustawienia reguły routingu
-     - Przejdź do reguły routingu, który powinien trasy z danego nazwy hosta frontonu do puli zaplecza. Upewnij się, protokoły akceptowane są poprawnie skonfigurowane lub jeśli nie, upewnij się, że protokół, który drzwiami frontowymi zostanie użyty podczas przesyłania żądania został poprawnie skonfigurowany. _Zaakceptowane protokołów_ Określa, który żąda drzwiami frontowymi powinna obsługiwać i _przekazywania protokołu_ w obszarze _zaawansowane_ kartę Określa, jakie protokół drzwi należy używać do przesyłania żądania do zaplecza.
-          - Na przykład jeśli wewnętrznej bazy danych będzie akceptować tylko żądania HTTP następujące konfiguracje są prawidłowymi:
-               - _Zaakceptowane protokołów_ to HTTP i HTTPS. _Przekazywanie protokołu_ , jest protokół HTTP. Żądanie dopasowanie nie będzie działać, ponieważ protokół HTTPS jest dozwolony protokół, a jeśli żądanie pochodzi jako protokołu HTTPS, drzwiami frontowymi spróbuj przekazywać je przy użyciu protokołu HTTPS.
+     - Przejdź do reguły routingu, która powinna kierować z danej nazwy hosta frontonu do puli zaplecza. Upewnij się, że akceptowane protokoły są prawidłowo skonfigurowane lub jeśli nie, upewnij się, że protokół z przodu zostanie użyty podczas przesyłania dalej żądania. _Akceptowane protokoły_ decydują o tym, które żądania powinny być akceptowane, a _Protokół przekazywania_ określa, jakiego protokołu należy użyć do przesyłania dalej żądania do zaplecza.
+          - Jeśli na przykład zaplecze akceptuje tylko żądania HTTP, następujące konfiguracje byłyby prawidłowe:
+               - _Akceptowane protokoły_ to http i https. _Protokół przekazywania_ to http. Żądanie dopasowania nie będzie działało, ponieważ HTTPS jest dozwolonym protokołem, a jeśli żądanie zostało odebrane jako HTTPS, przód drzwiczki spróbuje przesłać je dalej przy użyciu protokołu HTTPS.
 
-               - _Zaakceptowane protokołów_ używają protokołu HTTP. _Przekazywanie protokołu_ jest albo są zgodne, żądanie lub HTTPS.
+               - _Akceptowane protokoły_ to http. _Protokół przekazywania_ jest zgodny z żądaniem lub https.
 
-   - Kliknij pozycję _zaawansowane_ kartę w górnej części okienka konfiguracji reguły routingu. _Ponowne zapisywanie adresów URL_ jest domyślnie wyłączona, a w tym polu należy używać tylko, jeśli chcesz zawęzić zakres zasobów z hostowanej wewnętrznej bazy danych, które mają być dostępne. Po wyłączeniu drzwiami frontowymi prześle tej samej ścieżki żądania, który odbierze. Istnieje możliwość, że to pole jest nieprawidłowo skonfigurowana i drzwiami frontowymi żąda zasobu z wewnętrznej bazy danych, która nie jest dostępna, więc zwracając kod stanu HTTP 404.
+   - Ponowne _Zapisywanie adresów URL_ jest domyślnie wyłączone i należy używać tego pola tylko wtedy, gdy chcesz zawęzić zakres zasobów hostowanych przez zaplecza, które mają być dostępne. Po wyłączeniu drzwi do przodu przekażą tę samą ścieżkę żądania, która otrzymuje. Istnieje możliwość, że to pole jest błędnie skonfigurowane i drzwi przede wszystkim żądają zasobu od zaplecza, który nie jest dostępny, co zwraca kod stanu HTTP 404.
 

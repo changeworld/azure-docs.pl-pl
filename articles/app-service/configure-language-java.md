@@ -1,7 +1,7 @@
 ---
-title: Konfigurowanie Windows aplikacje Java — usługa Azure App Service | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować aplikacje w języku Java do uruchamiania na domyślne wystąpienia Windows w usłudze Azure App Service.
-keywords: Usługa Azure app service, aplikacji sieci web, windows, oss, języka java
+title: Konfigurowanie aplikacji Java dla systemu Windows — Azure App Service | Microsoft Docs
+description: Dowiedz się, jak skonfigurować aplikacje Java do uruchamiania w domyślnych wystąpieniach systemu Windows w Azure App Service.
+keywords: Azure App Service, Web App, Windows, OSS, Java
 services: app-service
 author: jasonfreeberg
 manager: jeconnock
@@ -14,64 +14,64 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 25434360bcc0155411451dbac065e0b7fad9c3bf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c1ea306d8a6b5c1876ac6a9288820e1592dbfda6
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617483"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498526"
 ---
-# <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurowanie Windows aplikację w języku Java dla usługi Azure App Service
+# <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java systemu Windows dla Azure App Service
 
-Usługa Azure App Service umożliwia deweloperom szybkie tworzenie, wdrażanie i skalowanie ich Tomcat języka Java lub Java Standard Edition (SE) w pakiecie aplikacji sieci web w pełni zarządzana usługa, systemem Windows. Wdrażanie aplikacji przy użyciu wtyczki usługi Maven w wierszu polecenia lub w edytorach, takich jak IntelliJ, Eclipse lub Visual Studio Code.
+Azure App Service umożliwia deweloperom języka Java szybkie tworzenie, wdrażanie i skalowanie aplikacji sieci Web Tomcat lub Java Standard Edition (SE) spakowanych w pełni zarządzanej usługi opartej na systemie Windows. Wdrażaj aplikacje z wtyczkami Maven z poziomu wiersza polecenia lub w edytorach, takich jak IntelliJ, zaćmienie lub Visual Studio Code.
 
-Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla deweloperów języka Java przy użyciu usługi aplikacji. Jeśli nie znasz usługi Azure App Service, należy przeczytać za pośrednictwem [Szybki Start Java](app-service-web-get-started-java.md) pierwszy. W odpowiedzi są ogólne pytania dotyczące korzystania z usługi App Service, które nie są specyficzne dla rozwoju języka Java [często zadawane pytania dotyczące aplikacji usługi Windows](faq-configuration-and-management.md).
+Ten przewodnik zawiera najważniejsze pojęcia i instrukcje dla deweloperów języka Java korzystających z programu w App Service. Jeśli nie korzystasz z Azure App Service, musisz najpierw przeczytać [Przewodnik Szybki Start dla języka Java](app-service-web-get-started-java.md) . Ogólne pytania dotyczące korzystania z App Service, które nie są specyficzne dla programowania w języku Java, są odpowiedzi na [często zadawane pytania dotyczące App Service systemu Windows](faq-configuration-and-management.md).
 
 > [!NOTE]
-> Nie możesz znaleźć, czego szukasz? Zobacz [— często zadawane pytania dla usługi OSS Windows](faq-configuration-and-management.md) lub [Przewodnik po konfiguracji Java systemu Linux](containers/configure-language-java.md) informacji na temat wdrażania i zabezpieczania aplikacji Java.
+> Nie możesz znaleźć, czego szukasz? Aby uzyskać informacje na temat wdrażania i zabezpieczania aplikacji Java, zapoznaj się z tematem [Windows OSS — często zadawane pytania](faq-configuration-and-management.md) lub [Przewodnik po konfiguracji języka Java Linux](containers/configure-language-java.md) .
 
-## <a name="configuring-tomcat"></a>Konfigurowanie serwera Tomcat
+## <a name="configuring-tomcat"></a>Konfigurowanie Tomcat
 
-Aby edytować jego Tomcat `server.xml` lub inne pliki konfiguracyjne, najpierw zanotuj Twoja wersja główna serwera Tomcat w portalu.
+Aby edytować Tomcat `server.xml` lub inne pliki konfiguracyjne, najpierw Zanotuj wersję główną Tomcat w portalu.
 
-1. Znajdź katalog macierzysty Tomcat dla danej wersji, uruchamiając `env` polecenia. Wyszukaj zmienną środowiskową, która rozpoczyna się od `AZURE_TOMCAT`i odpowiada używanej wersji głównej. Na przykład `AZURE_TOMCAT85_HOME` wskazuje katalog Tomcat dla serwera Tomcat 8.5.
-1. Po zidentyfikowaniu Tomcat katalogu macierzystego dla danej wersji, skopiuj katalog konfiguracji do `D:\home`. Na przykład jeśli `AZURE_TOMCAT85_HOME` miał wartość `D:\Program Files (x86)\apache-tomcat-8.5.37`, będzie pełna ścieżka katalogu konfiguracji skopiowany `D:\home\tomcat\conf`.
+1. Znajdź katalog macierzysty Tomcat dla swojej wersji, uruchamiając `env` polecenie. Wyszukaj zmienną środowiskową rozpoczynającą się od `AZURE_TOMCAT`i dopasowuje wersję główną. Na przykład `AZURE_TOMCAT85_HOME` wskazuje katalog Tomcat dla Tomcat 8,5.
+1. Po zidentyfikowaniu katalogu macierzystego Tomcat dla danej wersji Skopiuj katalog konfiguracji do `D:\home`programu. Na przykład, jeśli `AZURE_TOMCAT85_HOME` ma `D:\Program Files (x86)\apache-tomcat-8.5.37`wartość, Nowa ścieżka `D:\home\apache-tomcat-8.5.37`do skopiowanego katalogu byłaby.
 
-Na koniec uruchom ponownie usługę App Service. Przejdź do wdrożeń `D:\home\site\wwwroot\webapps` tak jak wcześniej.
+Na koniec uruchom ponownie usługę App Service. Twoje wdrożenia powinny przejść do `D:\home\site\wwwroot\webapps` tak jak wcześniej.
 
-## <a name="java-runtime-statement-of-support"></a>Java runtime oświadczenie zespołu pomocy technicznej
+## <a name="java-runtime-statement-of-support"></a>Instrukcja obsługi środowiska uruchomieniowego Java
 
-### <a name="jdk-versions-and-maintenance"></a>Wersje zestawu JDK i konserwacji
+### <a name="jdk-versions-and-maintenance"></a>JDK wersje i konserwacja
 
-Interfejsów platformy Azure obsługiwane Java Development Kit (JDK) jest [Zulu](https://www.azul.com/downloads/azure-only/zulu/) dostępne za pośrednictwem [firmy Azul Systems](https://www.azul.com/).
+Obsługiwany zestaw Java Development Kit (JDK) platformy Azure jest [Zulu](https://www.azul.com/downloads/azure-only/zulu/) udostępniany przez [systemy Azul](https://www.azul.com/).
 
-Aktualizacji wersji głównych będzie świadczona poprzez nowe opcje środowiska uruchomieniowego usługi Azure App Service dla Windows. Klienci aktualizacji tych nowszych wersji języka Java, konfigurując ich wdrożenie usługi App Service i są odpowiedzialne za przeprowadzanie testów i zapewnienie ważna aktualizacja odpowiadają ich potrzebom.
+Aktualizacje wersji głównej zostaną udostępnione za poorednictwem nowych opcji środowiska uruchomieniowego w Azure App Service dla systemu Windows. Klienci mogą aktualizować te nowsze wersje środowiska Java przez skonfigurowanie wdrożenia App Service i są odpowiedzialne za testowanie i upewnienie się, że główna aktualizacja spełnia ich potrzeby.
 
-Obsługiwane JDK są automatycznie poprawić kwartalnie w styczniu, kwietniu, lipcu i październiku każdego roku.
+Obsługiwane zestawy JDK są automatycznie poprawiane co kwartał w styczniu, kwietniu, lipcu i październiku każdego roku.
 
 ### <a name="security-updates"></a>Aktualizacje zabezpieczeń
 
-Jak najszybciej po ich udostępnieniu firmy Azul Systems zostaną wydane poprawki i poprawki dla luki w zabezpieczeniach głównych. "Główne" luk w zabezpieczeniach jest zdefiniowanym przez wynik podstawowy 9.0 lub nowszej na [NIST typowe luki w zabezpieczeniach oceniania systemu, wersja 2](https://nvd.nist.gov/cvss.cfm).
+Poprawki i poprawki dla głównych luk w zabezpieczeniach zostaną wydane, gdy tylko staną się dostępne w systemach Azul. Usterka "główna" jest definiowana przez podstawowy wynik 9,0 lub wyższy w [systemie oceny typowych luk w zabezpieczeniach NIST, wersja 2](https://nvd.nist.gov/cvss.cfm).
 
-### <a name="deprecation-and-retirement"></a>Ogłoszone jako przestarzałe i wycofania
+### <a name="deprecation-and-retirement"></a>Wycofanie i wycofanie
 
-Jeśli zostanie wycofana obsługiwane środowisko wykonawcze języka Java, deweloperów platformy Azure przy użyciu których to dotyczy środowiska uruchomieniowego otrzymają powiadomienie o wycofaniu co najmniej sześć miesięcy przed środowiska uruchomieniowego została wycofana.
+Jeśli obsługiwane środowisko uruchomieniowe języka Java zostanie wycofane, deweloperzy platformy Azure korzystający z środowiska uruchomieniowego, którego to dotyczy, otrzymają powiadomienie o wycofaniu z co najmniej sześciu miesięcy przed wycofaniem środowiska uruchomieniowego.
 
-### <a name="local-development"></a>Lokalne programowanie
+### <a name="local-development"></a>Programowanie lokalne
 
-Deweloperzy mogli przeprowadzić pobieranie produkcji wersji o Azul Zulu Enterprise zestaw JDK potrzeby lokalnego programowania z [witryny pobierania firmy Azul](https://www.azul.com/downloads/azure-only/zulu/).
+Deweloperzy mogą pobrać wersję produkcyjną Azul Zulu Enterprise JDK na potrzeby lokalnego opracowywania z [witryny pobierania programu Azul](https://www.azul.com/downloads/azure-only/zulu/).
 
-### <a name="development-support"></a>Obsługa projektowania
+### <a name="development-support"></a>Obsługa programowania
 
-Pomoc techniczna dla [obsługiwanej przez platformę Azure rozwiązanie Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) jest dostępna za pośrednictwem firmy Microsoft, podczas tworzenia na platformie Azure lub [usługi Azure Stack](https://azure.microsoft.com/overview/azure-stack/) z [kwalifikowana planu pomocy technicznej Azure](https://azure.microsoft.com/support/plans/).
+Pomoc techniczna dla platformy [Azure Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) jest dostępna w firmie Microsoft podczas tworzenia aplikacji dla platformy azure lub [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) z [wykwalifikowanym planem pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
 
 ### <a name="runtime-support"></a>Obsługa środowiska uruchomieniowego
 
-Deweloperzy mogą [Otwórz problem](/azure/azure-supportability/how-to-create-azure-support-request) z JDK oprogramowanie Zulu firmy Azul za pośrednictwem pomocy technicznej platformy Azure, jeśli mają one [plan pomocy technicznej kwalifikowaną](https://azure.microsoft.com/support/plans/).
+Deweloperzy mogą [otworzyć problem](/azure/azure-supportability/how-to-create-azure-support-request) z usługą Azul Zulu zestawy JDK za pomocą pomocy technicznej systemu Azure, jeśli ma on [wykwalifikowany plan pomocy technicznej](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ten temat zawiera instrukcję środowisko wykonawcze języka Java, pomocy technicznej dla usługi Azure App Service na Windows.
+Ten temat zawiera instrukcję obsługi środowiska uruchomieniowego Java dla Azure App Service w systemie Windows.
 
-- Aby dowiedzieć się więcej o hostingu aplikacji sieci web za pomocą usługi Azure App Service, zobacz [Omówienie usługi App Service](overview.md).
-- Aby uzyskać informacje o używaniu języka Java na programowanie na platformie Azure, zobacz [platforma Azure w Centrum deweloperów języka Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable).
+- Aby dowiedzieć się więcej na temat hostowania aplikacji sieci Web za pomocą Azure App Service zobacz [App Service Omówienie](overview.md).
+- Aby uzyskać informacje na temat programowania w języku Java na platformie Azure, zobacz artykuł [Azure for Java Dev Center](https://docs.microsoft.com/java/azure/?view=azure-java-stable).

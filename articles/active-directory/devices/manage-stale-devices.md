@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e9c11613a9bdcaedad1a69662b2d6bd7bfefc3b
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 3661b3f7fd37a329857a74d32d292678d98f5aef
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867253"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499832"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Instrukcje: Zarządzanie nieaktywnymi urządzeniami w usłudze Azure AD
 
@@ -70,7 +70,7 @@ Aby skutecznie oczyścić nieaktywne urządzenia w swoim środowisku, zdefiniuj 
 Aby zaktualizować urządzenie w usłudze Azure AD, potrzebne jest konto, które ma przypisaną jedną z następujących ról:
 
 - Administrator globalny
-- Administrator urządzenia w chmurze (Nowa rola jest już dostępna!)
+- Administrator urządzenia w chmurze
 - Administrator usługi Intune
 
 W zasadach oczyszczania wybierz konta, które mają przypisane wymagane role. 

@@ -1,10 +1,10 @@
 ---
-title: Edytowanie i zarządzanie nią istniejący pakiet dostępu w usłudze Azure AD uprawnienie management (wersja zapoznawcza) — usługi Azure Active Directory
-description: Dowiedz się, jak edytowanie i zarządzanie nią istniejący pakiet dostępu w usłudze Azure Active Directory Zarządzanie uprawnieniami (wersja zapoznawcza).
+title: Edytuj istniejący pakiet dostępu i Zarządzaj nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza) — Azure Active Directory
+description: Dowiedz się, jak edytować istniejący pakiet dostępu i zarządzać nim w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,341 +12,341 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/16/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73c1717249abac30847f96073ee6daf7d98112d7
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190335"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489207"
 ---
-# <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Edytowanie i zarządzanie nią istniejący pakiet dostępu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
+# <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Edytuj istniejący pakiet dostępu i Zarządzaj nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
 
 > [!IMPORTANT]
-> Zarządzanie uprawnieniami w usłudze Azure Active Directory (Azure AD) jest obecnie w publicznej wersji zapoznawczej.
+> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pakiet dostępu umożliwia wykonywanie jednorazowej konfiguracji zasobów i zasad, który automatycznie zarządza dostępu przez cały okres istnienia pakiet dostępu. Jako Menedżer dostępu do pakietu możesz zmienić zasoby w pakiecie dostęp w dowolnym momencie bez martwienia się o aprowizacji dany użytkownik ma dostęp do nowych zasobów lub usunięcie ich dostęp z poprzednie zasoby. Zasady można aktualizować w dowolnym momencie, zmiany zasad dotyczą tylko nowych dostęp.
+Pakiet dostępu umożliwia jednorazowe skonfigurowanie zasobów i zasad, które automatycznie zarządzają dostępem do czasu życia pakietu dostępu. Jako Menedżer pakietów programu Access można w dowolnym momencie zmienić zasoby w pakiecie dostępu bez konieczności aprowizacji dostępu użytkownika do nowych zasobów lub usuwania ich dostępu z poprzednich zasobów. Zasady można także aktualizować w dowolnym momencie, jednak zmiany zasad mają wpływ tylko na nowe dostępy.
 
-W tym artykule opisano jak edytowanie i zarządzanie nią istniejące pakiety dostępu.
+W tym artykule opisano sposób edytowania istniejących pakietów dostępu i zarządzania nimi.
 
 ## <a name="add-resource-roles"></a>Dodawanie ról zasobów
 
-Rola zasobów to kolekcja uprawnień skojarzonych z zasobem. Sposób, w jaki można udostępnić zasoby żądania przez użytkowników jest przez dodanie ról zasobów do dostępu do pakietu. Możesz dodać role zasobów do grup, aplikacji i witryn programu SharePoint.
+Rola zasobu to kolekcja uprawnień skojarzonych z zasobem. Aby udostępnić zasoby użytkownikom do żądania, należy dodać role zasobów do pakietu dostępu. Można dodawać role zasobów dla grup, aplikacji i witryn programu SharePoint.
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. W menu po lewej stronie kliknij **role zasobów**.
+1. W menu po lewej stronie kliknij pozycję **role zasobów**.
 
-1. Kliknij przycisk **Dodaj role zasobów** otworzyć Dodaj role zasobów dostępu do strony pakietu.
+1. Kliknij pozycję **Dodaj role zasobów** , aby otworzyć stronę Dodawanie ról zasobów do pakietu dostępu.
 
     ![Dostęp do pakietu — Dodawanie ról zasobów](./media/entitlement-management-access-package-edit/resource-roles-add.png)
 
-1. W zależności od tego, czy chcesz dodać grupy, aplikacji lub witryny programu SharePoint wykonaj kroki w jednym z następujących sekcji zasobów w roli.
+1. W zależności od tego, czy chcesz dodać grupę, aplikację lub witrynę programu SharePoint, wykonaj czynności opisane w jednej z poniższych sekcji ról zasobów.
 
-### <a name="add-a-group-resource-role"></a>Dodawanie roli grupy zasobów
+### <a name="add-a-group-resource-role"></a>Dodaj rolę zasobu grupy
 
-Może mieć Zarządzanie uprawnieniami automatyczne dodawanie użytkowników do grupy przy ich przypisywaniu pakietu dostępu. 
+Zarządzanie prawami może automatycznie dodawać użytkowników do grupy, gdy przypisze im pakiet dostępu. 
 
-- Gdy grupa jest częścią pakietu dostępu i użytkownik jest przypisany do tego pakietu dostęp, użytkownik zostanie dodany do tej grupy, jeśli nie są jeszcze zainstalowane.
-- Po wygaśnięciu przypisywania pakietów dostępu użytkownika są usuwane z grupy, chyba że mają obecnie przypisania do innego pakietu dostępu, który zawiera tę samą grupę.
+- Gdy grupa jest częścią pakietu dostępu i użytkownik jest przypisany do tego pakietu, użytkownik zostanie dodany do tej grupy, jeśli jeszcze nie istnieje.
+- Po wygaśnięciu przypisania pakietu dostępu użytkownika są one usuwane z grupy, o ile nie mają obecnie przypisania do innego pakietu dostępu, który zawiera tę samą grupę.
 
-Możesz wybrać wszystkie grupy usługi Office 365 lub grupy zabezpieczeń usługi Azure AD.  Administratorzy mogą dodawać dowolną grupę do wykazu; właścicieli katalogu można dodać żadnej grupy do katalogu, jeśli są one właściciela grupy. Po wybraniu grupy, należy pamiętać o następujących ograniczeń usługi Azure AD:
+Możesz wybrać dowolną grupę Office 365 lub grupę zabezpieczeń usługi Azure AD.  Administratorzy mogą dodać dowolną grupę do wykazu; Właściciele wykazu mogą dodać dowolną grupę do wykazu, jeśli są właścicielami grupy. Podczas wybierania grupy należy pamiętać o następujących ograniczeniach usługi Azure AD:
 
-- Po dodaniu użytkownika jako gościa, w tym jako członka do grupy Użytkownicy widzą wszystkich członków tej grupy.
-- Usługa Azure AD nie można zmienić członkostwo grupy, która była synchronizowana z systemu Windows Server Active Directory za pomocą usługi Azure AD Connect.  
-- Nie można zaktualizować członkostwa w grupach dynamicznych, dodając lub usuwając elementu członkowskiego, więc członkostwa w grupach dynamicznych nie są odpowiednie do użycia z usługą Zarządzanie uprawnieniami.
+- Gdy użytkownik, łącznie z gościem, jest dodawany jako członek do grupy, zobaczy wszystkie pozostałe elementy członkowskie tej grupy.
+- Usługa Azure AD nie może zmienić członkostwa w grupie, która została zsynchronizowana z systemem Windows Server Active Directory przy użyciu Azure AD Connect.  
+- Członkostwa w grupach dynamicznych nie można zaktualizować przez dodanie lub usunięcie elementu członkowskiego, więc członkostwa w grupie dynamicznej nie są odpowiednie do użytku z zarządzaniem prawami.
 
-1. Na **Dodawanie ról zasobów w celu dostępu do pakietu** kliknij **grup** aby otworzyć okienko grupy.
+1. Na stronie **Dodaj rolę zasobów do pakietu dostępu** kliknij pozycję **grupy** , aby otworzyć okienko Wybieranie grup.
 
 1. Wybierz grupy, które mają zostać uwzględnione w pakiecie dostępu.
 
-    ![Dostęp do pakietu — Dodaj role zasobów — wybierz grupy](./media/entitlement-management-access-package-edit/group-select.png)
+    ![Dostęp do pakietu — Dodawanie ról zasobów — Wybieranie grup](./media/entitlement-management-access-package-edit/group-select.png)
 
-1. Kliknij pozycję **Wybierz**.
+1. Kliknij przycisk **wybierz**.
 
-1. W **roli** listy wybierz **właściciela** lub **elementu członkowskiego**.
+1. Na liście **rola** wybierz pozycję **właściciel** lub **członek**.
 
-    Przeważnie roli członka. Jeśli zostanie wybrana rola właściciela, które umożliwi użytkownikom dodać lub usunąć inne członkowie lub właściciele.
+    Zwykle wybierasz rolę elementu członkowskiego. W przypadku wybrania roli właściciela, która umożliwi użytkownikom dodawanie lub usuwanie innych członków lub właścicieli.
 
-    ![Dostęp do pakietu — Dodaj rolę zasobu dla grupy](./media/entitlement-management-access-package-edit/group-role.png)
+    ![Dostęp do pakietu — Dodawanie roli zasobów dla grupy](./media/entitlement-management-access-package-edit/group-role.png)
 
-1. Kliknij pozycję **Add** (Dodaj).
+1. Kliknij przycisk **Dodaj**.
 
-    Każdy użytkownik z istniejących przypisań do dostępu do pakietu zostaną automatycznie stają się one Członkowie tej grupy, gdy jest ona dodawana.
+    Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu automatycznie staną się członkami tej grupy po dodaniu.
 
-### <a name="add-an-application-resource-role"></a>Dodaj rolę zasobów aplikacji
+### <a name="add-an-application-resource-role"></a>Dodawanie roli zasobu aplikacji
 
-Program może automatycznie przypisywać użytkownikom dostępu do aplikacji dla przedsiębiorstw usługi Azure AD, w tym aplikacje SaaS i aplikacje w organizacji Sfederowane z usługą Azure AD, gdy użytkownik jest przypisany pakietu dostępu z usługi Azure AD. W przypadku aplikacji, które integrują się z usługą Azure AD za pomocą federacyjnego logowania jednokrotnego usługi Azure AD będzie wystawiać tokeny federacyjnego dla użytkowników przypisanych do aplikacji.
+Usługa Azure AD może automatycznie przypisywać użytkownikom dostęp do aplikacji usługi Azure AD Enterprise, w tym zarówno aplikacji SaaS, jak i aplikacji organizacji federacyjnych do usługi Azure AD, gdy użytkownik ma przypisany pakiet dostępu. W przypadku aplikacji, które integrują się z usługą Azure AD za pomocą federacyjnego logowania jednokrotnego, usługa Azure AD wystawia tokeny federacyjne dla użytkowników przypisanych do aplikacji.
 
-Aplikacje mogą mieć wiele ról. Podczas dodawania aplikacji do pakietu dostępu, jeśli ta aplikacja ma więcej niż jednej roli, należy określić odpowiednią rolę dla tych użytkowników.  Jeśli tworzysz aplikacje, możesz przeczytać więcej o jak te role są dostarczane do aplikacji w artykule na temat sposobu [Konfigurowanie oświadczenia roli wystawionych w tokenie SAML](../develop/active-directory-enterprise-app-role-management.md).
+Aplikacje mogą mieć wiele ról. W przypadku dodawania aplikacji do pakietu dostępu, jeśli aplikacja ma więcej niż jedną rolę, należy określić odpowiednią rolę dla tych użytkowników.  Jeśli tworzysz aplikacje, możesz dowiedzieć się więcej o tym, jak te role są udostępniane aplikacjom w artykule na temat [konfigurowania roszczeń ról wystawionych w tokenie SAML](../develop/active-directory-enterprise-app-role-management.md).
 
-Gdy roli aplikacji jest częścią pakietu dostępu:
+Gdy rola aplikacji jest częścią pakietu dostępu:
 
-- Gdy użytkownik jest przypisany ten pakiet dostęp, użytkownik zostanie dodany do roli aplikacji, jeśli nie jeszcze nie istnieje.
-- Po wygaśnięciu przypisywania pakietów dostępu użytkownika ich dostępu zostaną usunięte z aplikacji, chyba że mają oni przypisanie do innego pakietu dostępu, który zawiera roli tej aplikacji.
+- Gdy użytkownik ma przypisany pakiet dostępu, użytkownik zostanie dodany do tej roli aplikacji, jeśli jeszcze nie istnieje.
+- Po wygaśnięciu przypisania pakietu dostępu użytkownika jego dostęp zostanie usunięty z aplikacji, chyba że ma przypisanie do innego pakietu dostępu zawierającego tę rolę aplikacji.
 
-Poniżej przedstawiono kilka kwestii, podczas wybierania aplikacji:
+Oto kilka kwestii, które należy wziąć pod uwagę podczas wybierania aplikacji:
 
-- Aplikacje mogą również mieć grup przypisanych do ich ról także.  Możesz jednak dodać grupę zamiast roli aplikacji w pakiecie dostępu, a następnie aplikacja nie będzie widoczny dla użytkownika jako część pakietu dostępu w portalu Moje dostępu.
+- Aplikacje mogą także mieć również grupy przypisane do ich ról.  Możesz wybrać opcję dodania grupy zamiast roli aplikacji w pakiecie dostępu, ale aplikacja nie będzie widoczna dla użytkownika jako część pakietu dostępu w portalu My Access.
 
-1. Na **Dodawanie ról zasobów w celu dostępu do pakietu** kliknij **aplikacje** aby otworzyć okienko Wybierz aplikacje.
+1. Na stronie **Dodaj rolę zasobów do pakietu dostępu** kliknij pozycję **aplikacje** , aby otworzyć okienko wybierz aplikacje.
 
-1. Wybierz aplikacje, które chcesz uwzględnić w pakiecie dostępu.
+1. Wybierz aplikacje, które mają zostać uwzględnione w pakiecie dostępu.
 
-    ![Dostęp do pakietu — Dodaj role zasobów — wybierz aplikacje](./media/entitlement-management-access-package-edit/application-select.png)
+    ![Dostęp do pakietu — Dodawanie ról zasobów — Wybieranie aplikacji](./media/entitlement-management-access-package-edit/application-select.png)
 
-1. Kliknij pozycję **Wybierz**.
+1. Kliknij przycisk **wybierz**.
 
-1. W **roli** , wybierz rolę aplikacji na liście.
+1. Z listy **rola** wybierz rolę aplikacji.
 
     ![Dostęp do pakietu — Dodawanie roli zasobów dla aplikacji](./media/entitlement-management-access-package-edit/application-role.png)
 
-1. Kliknij pozycję **Add** (Dodaj).
+1. Kliknij przycisk **Dodaj**.
 
-    Każdy użytkownik z istniejących przypisań do dostępu do pakietu automatycznie otrzymają dostęp do tej aplikacji, gdy jest ona dodawana.
+    Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu będą automatycznie mieli dostęp do tej aplikacji po dodaniu.
 
-### <a name="add-a-sharepoint-site-resource-role"></a>Dodawanie roli zasobów witryny programu SharePoint
+### <a name="add-a-sharepoint-site-resource-role"></a>Dodaj rolę zasobów witryny programu SharePoint
 
-Usługi Azure AD można automatycznie przypisywać użytkownikom dostęp do witryny usługi SharePoint Online lub kolekcji witryn usługi SharePoint Online przy ich przypisywaniu pakietu dostępu.
+Usługa Azure AD może automatycznie przypisywać użytkownikom dostęp do witryny usługi SharePoint Online lub kolekcji witryn usługi SharePoint Online po przypisaniu do nich pakietu dostępu.
 
-1. Na **Dodawanie ról zasobów w celu dostępu do pakietu** kliknij **witryny programu SharePoint** aby otworzyć okienko witryny wybierz opcję usługi SharePoint Online.
+1. Na stronie **Dodaj rolę zasobów do pakietu dostępu** kliknij pozycję **witryny programu SharePoint** , aby otworzyć okienko Wybieranie witryn usługi SharePoint Online.
 
-1. Wybierz witryny usługi SharePoint Online, które chcesz uwzględnić w pakiecie dostępu.
+1. Wybierz witryny usługi SharePoint Online, które mają zostać uwzględnione w pakiecie dostępu.
 
-    ![Dostęp do pakietu — Dodaj role zasobów — wybierz witryn usługi SharePoint Online](./media/entitlement-management-access-package-edit/sharepoint-site-select.png)
+    ![Dostęp do pakietu — Dodawanie ról zasobów — Wybieranie witryn usługi SharePoint Online](./media/entitlement-management-access-package-edit/sharepoint-site-select.png)
 
-1. Kliknij pozycję **Wybierz**.
+1. Kliknij przycisk **wybierz**.
 
-1. W **roli** , wybierz rolę witryny usługi SharePoint Online na liście.
+1. Na liście **rola** wybierz rolę witryny usługi SharePoint Online.
 
-    ![Dostęp do pakietu — Dodaj rolę zasobu w witrynie usługi SharePoint Online](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
+    ![Dostęp do pakietu — Dodawanie roli zasobów dla witryny usługi SharePoint Online](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-1. Kliknij pozycję **Add** (Dodaj).
+1. Kliknij przycisk **Dodaj**.
 
-    Każdy użytkownik z istniejących przypisań do dostępu do pakietu, automatycznie otrzymają dostęp do tej witryny usługi SharePoint Online po dodaniu.
+    Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu będą automatycznie mieli dostęp do tej witryny usługi SharePoint Online, gdy zostanie ona dodana.
 
-## <a name="remove-resource-roles"></a>Usuwanie ról zasobów
+## <a name="remove-resource-roles"></a>Usuń role zasobów
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. W menu po lewej stronie kliknij **role zasobów**.
+1. W menu po lewej stronie kliknij pozycję **role zasobów**.
 
-1. Lista ról zasobów zawiera rolę zasobu, który chcesz usunąć.
+1. Na liście ról zasobów Znajdź rolę zasobu, którą chcesz usunąć.
 
-1. Kliknij przycisk wielokropka ( **...** ) a następnie kliknij przycisk **Usuń zasób roli**.
+1. Kliknij przycisk wielokropka ( **...** ), a następnie kliknij pozycję **Usuń rolę zasobu**.
 
-    Każdy użytkownik z istniejących przypisań do dostępu do pakietu, będą automatycznie dostępne ich odwoływane do tej roli zasobu, gdy zostanie on usunięty.
+    Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu automatycznie otrzymają dostęp do tej roli zasobu po jej usunięciu.
 
 ## <a name="add-a-new-policy"></a>Dodaj nowe zasady
 
-Sposób, możesz określić, kto może żądać dostępu do pakietu jest tworzenie zasad. Jeśli chcesz zezwolić na różnych zestawów użytkowników uzyskają przydziałów do innego zatwierdzenia i ustawienia wygaśnięcia, można utworzyć wiele zasad dostępu jednego pakietu. Jednych zasad nie można przypisać do tego samego pakietu dostępu użytkowników wewnętrznych i zewnętrznych. Jednak można utworzyć dwie zasady w tym samym pakiecie dostępu — jeden dla użytkowników wewnętrznych i jeden dla użytkowników zewnętrznych. W przypadku wielu zasad, które są stosowane do użytkownika zostanie wyświetlony monit w momencie ich żądania wybierz zasady że chcieliby ma być przypisane do.
+Aby określić, kto może zażądać pakietu dostępu, należy utworzyć zasady. Można utworzyć wiele zasad dla jednego pakietu dostępu, jeśli chcesz zezwolić różnym zestawom użytkowników na przyznawanie przypisań przy użyciu różnych ustawień zatwierdzenia i wygaśnięcia. Pojedynczej zasady nie można używać do przypisywania użytkowników wewnętrznych i zewnętrznych do tego samego pakietu dostępu. Można jednak utworzyć dwie zasady w tym samym pakiecie dostępu — jeden dla użytkowników wewnętrznych i jeden dla użytkowników zewnętrznych. Jeśli istnieje wiele zasad, które mają zastosowanie do użytkownika, zostanie wyświetlony monit o określenie zasad, do których mają być przypisane.
 
-Na poniższym diagramie przedstawiono procedurę wysokiego poziomu służącą do utworzenia zasad dla istniejącego pakietu dostępu.
+Na poniższym diagramie przedstawiono proces wysokiego poziomu służący do tworzenia zasad dla istniejącego pakietu dostępu.
 
-![Utworzenie procesu zasad](./media/entitlement-management-access-package-edit/policy-process.png)
+![Tworzenie procesu zasad](./media/entitlement-management-access-package-edit/policy-process.png)
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. Kliknij przycisk **zasady** i następnie **Dodaj zasady**.
+1. Kliknij pozycję **zasady** , a następnie **Dodaj zasady**.
 
 1. Wpisz nazwę i opis zasad.
 
-    ![Tworzenie zasad za pomocą nazwy i opisu](./media/entitlement-management-access-package-edit/policy-name-description.png)
+    ![Tworzenie zasad o nazwie i opisie](./media/entitlement-management-access-package-edit/policy-name-description.png)
 
-1. Na podstawie wybranych dla **użytkowników, którzy mogą zażądać dostępu**, wykonaj kroki w jednym z następujących sekcji zasady.
+1. W zależności od wyboru **użytkowników, którzy mogą zażądać dostępu**, wykonaj czynności opisane w jednej z poniższych sekcji zasad.
 
 [!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
 
-## <a name="edit-an-existing-policy"></a>Edytuj istniejące zasady
+## <a name="edit-an-existing-policy"></a>Edytowanie istniejących zasad
 
-Możesz edytować zasady w dowolnym momencie. Jeśli zmienisz zasadę datę wygaśnięcia, datę wygaśnięcia żądania, które są już oczekuje na zatwierdzenie lub zatwierdzony stan nie zmieni się.
+Zasady można edytować w dowolnym momencie. Jeśli zmienisz datę wygaśnięcia zasad, Data wygaśnięcia żądań, które już oczekują na zatwierdzenie lub zatwierdzonego stanu, nie ulegnie zmianie.
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. Kliknij przycisk **zasady** a następnie kliknij pozycję zasady, którą chcesz edytować.
+1. Kliknij pozycję **zasady** , a następnie kliknij zasady, które chcesz edytować.
 
-    **Szczegóły zasad** zostanie otwarte okienko w dolnej części strony.
+    Zostanie otwarte okienko **Szczegóły zasad** w dolnej części strony.
 
-    ![Pakiet dostępu — okienko szczegółów zasad](./media/entitlement-management-access-package-edit/policy-details.png)
+    ![Dostęp do programu Access — okienko Szczegóły zasad](./media/entitlement-management-access-package-edit/policy-details.png)
 
-1. Kliknij przycisk **Edytuj** Aby edytować zasady.
+1. Kliknij przycisk **Edytuj** , aby edytować zasady.
 
-    ![Pakiet dostępu — edytowanie zasad](./media/entitlement-management-access-package-edit/policy-edit.png)
+    ![Dostęp do pakietu — edycja zasad](./media/entitlement-management-access-package-edit/policy-edit.png)
 
-1. Po zakończeniu kliknij przycisk **aktualizacji**.
+1. Po zakończeniu kliknij przycisk **Aktualizuj**.
 
-## <a name="directly-assign-a-user"></a>Bezpośrednio przypisać użytkownika
+## <a name="directly-assign-a-user"></a>Bezpośrednie przypisanie użytkownika
 
-W niektórych przypadkach można bezpośrednio przypisać określonych użytkowników do pakietów programu access, tak, aby użytkownicy nie musieli przejść przez proces żądania dostępu do pakietu. Aby bezpośrednio przypisać użytkowników, pakiet dostępu musi mieć zasady, które umożliwia administratorowi przypisań bezpośrednich.
+W niektórych przypadkach może być konieczne bezpośrednie przypisanie określonych użytkowników do pakietu dostępu, dzięki czemu użytkownicy nie muszą przechodzić przez proces żądania pakietu dostępu. Aby bezpośrednio przypisywać użytkowników, pakiet dostępu musi mieć zasady umożliwiające bezpośrednie przypisania administratora.
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. W menu po lewej stronie kliknij **przypisania**.
+1. W menu po lewej stronie kliknij pozycję **przypisania**.
 
-1. Kliknij przycisk **nowe przypisanie** otworzyć Dodaj użytkownika do dostępu do pakietu.
+1. Kliknij pozycję **nowe przypisanie** , aby otworzyć aplet Dodaj użytkownika do pakietu.
 
-    ![Przypisania — Dodawanie użytkownika do dostępu do pakietu](./media/entitlement-management-access-package-edit/assignments-add-user.png)
+    ![Przypisania — Dodawanie użytkownika do pakietu dostępu](./media/entitlement-management-access-package-edit/assignments-add-user.png)
 
-1. Kliknij przycisk **dodawania użytkowników** wybranym użytkownikom, którą chcesz przypisać dostęp do pakietu.
+1. Kliknij przycisk **Dodaj użytkowników** , aby wybrać użytkowników, do których chcesz przypisać pakiet dostępu.
 
-1. W **wybierz zasady** , wybierz zasady, które ma na liście [None (administrator przypisań bezpośrednich tylko)](#policy-none-administrator-direct-assignments-only) ustawienie.
+1. Z listy **Wybierz zasady** wybierz zasadę z ustawieniem [Brak (tylko przypisania bezpośrednie administratora)](#policy-none-administrator-direct-assignments-only) .
 
-    Jeśli ten pakiet dostępu nie ma tego typu zasad, możesz kliknąć **Utwórz nowe zasady** dodanie.
+    Jeśli ten pakiet dostępu nie ma tego typu zasad, możesz kliknąć przycisk **Utwórz nowe zasady** , aby dodać jeden.
 
-1. Ustaw datę i godzinę, chcesz, aby przypisania wybranych użytkowników w celu rozpoczęcia i zakończenia. Jeśli data zakończenia nie zostanie podany, ustawienia wygasania zasad będzie używany.
+1. Ustaw datę i godzinę, o której chcesz rozpocząć i zakończyć przypisanie wybranych użytkowników. Jeśli data zakończenia nie zostanie podana, zostaną użyte ustawienia wygasania zasad.
 
-1. Opcjonalnie podaj uzasadnienie dla bezpośredniego przypisania dotyczących przechowywania danych.
+1. Opcjonalnie możesz podać uzasadnienie dla bezpośredniego przypisania do przechowywania rekordów.
 
-1. Kliknij przycisk **Dodaj** bezpośrednie przypisywanie wybranych użytkowników do dostępu do pakietu.
+1. Kliknij przycisk **Dodaj** , aby bezpośrednio przypisać wybranych użytkowników do pakietu dostępu.
 
-    Po kilku chwilach kliknij **Odśwież** Aby wyświetlić użytkowników na liście przypisań.
+    Po kilku chwilach kliknij pozycję **Odśwież** , aby wyświetlić użytkowników na liście przydziałów.
 
-## <a name="view-who-has-an-assignment"></a>Widok, kto ma przypisania
+## <a name="view-who-has-an-assignment"></a>Wyświetl, kto ma przypisanie
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. Kliknij przycisk **przypisania** umożliwia wyświetlenie listy aktywne przypisania.
+1. Kliknij pozycję **przypisania** , aby wyświetlić listę aktywnych przypisań.
 
 1. Kliknij określone przypisanie, aby wyświetlić dodatkowe szczegóły.
 
-1. Umożliwia wyświetlenie listy przypisań, które nie miały wszystkie role zasobów poprawnie aprowizowana, kliknij stan filtr, a następnie wybierz **dostarczanie**.
+1. Aby wyświetlić listę przypisań, dla których nie zainicjowano prawidłowo wszystkich ról zasobów, kliknij stan filtru i wybierz pozycję **dostarczanie**.
 
-    Można wyświetlić dodatkowe szczegóły na błędy dostarczania, znajdując odpowiednie żądanie użytkownika na **żądań** strony.
+    Aby wyświetlić dodatkowe szczegóły dotyczące błędów dostarczania, można zlokalizować odpowiednie żądanie użytkownika na stronie **żądania** .
 
-1. Aby wyświetlić wygasłe przypisania, kliknij stan filtr, a następnie wybierz **wygasłe**.
+1. Aby wyświetlić wygasłe przypisania, kliknij stan filtru i wybierz pozycję wygasłe.
 
-1. Plik CSV z listy filtrowanej kliknij, aby pobrać **Pobierz**.
+1. Aby pobrać plik CSV z filtrowanej listy, kliknij przycisk **Pobierz**.
 
-## <a name="view-requests"></a>Wyświetlanie żądań
+## <a name="view-requests"></a>Wyświetl żądania
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. Kliknij przycisk **żądań**.
+1. Kliknij pozycję **żądania**.
 
-1. Kliknij przycisk konkretnego żądania, aby wyświetlić dodatkowe szczegóły.
+1. Kliknij konkretne żądanie, aby wyświetlić dodatkowe szczegóły.
 
 ## <a name="view-a-requests-delivery-errors"></a>Wyświetl błędy dostarczania żądania
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. Kliknij przycisk **żądań**.
+1. Kliknij pozycję **żądania**.
 
 1. Wybierz żądanie, które chcesz wyświetlić.
 
-    Jeśli żądanie ma błędy dostarczania, będzie w stanie żądania **Undelivered** podstany. zostanie ona **dostarczony częściowo**.
+    Jeśli żądanie zawiera błędy dostarczania, stan żądania zostanie wystawiony,  a podstan zostanie **częściowo dostarczony**.
 
-    Jeśli występują błędy dostarczania w okienku szczegółów żądania, nastąpi liczbę błędów dostarczania.
+    Jeśli występują błędy dostarczania, w okienku szczegółów żądania zostanie wyliczona liczba błędów dostarczania.
 
-1. Kliknij liczbę, aby zobaczyć wszystkie błędy dostarczania żądania.
+1. Kliknij liczbę, aby wyświetlić wszystkie błędy dostarczania żądania.
 
 ## <a name="cancel-a-pending-request"></a>Anulowanie oczekującego żądania
 
-Możesz tylko anulować oczekujące żądanie, które jeszcze nie zostały dostarczone.
+Można anulować tylko oczekujące żądanie, które nie zostało jeszcze dostarczone.
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. Kliknij przycisk **żądań**.
+1. Kliknij pozycję **żądania**.
 
-1. Kliknij żądanie, którą chcesz anulować
+1. Kliknij żądanie, które chcesz anulować
 
-1. W okienku szczegółów żądania kliknij **żądanie anulowania**.
+1. W okienku Szczegóły żądania kliknij przycisk **Anuluj żądanie**.
 
-## <a name="copy-my-access-portal-link"></a>Skopiuj link do portalu Moje dostępu
+## <a name="copy-my-access-portal-link"></a>Link Kopiuj mój Portal dostępu
 
-Większość użytkowników w katalogu można zalogować się do portalu Moje dostępu i automatycznie wyświetlić listę pakietów dostępu, które mogą żądać. Jednak dla zewnętrznych partnerów biznesowych, które nie są jeszcze w katalogu, należy wysłać im link, który może służyć do żądania dostępu do pakietu. Tak długo, jak pakiet dostępu jest włączona dla użytkowników zewnętrznych i mieć zasady dla katalogu użytkownika zewnętrznego, użytkownika zewnętrznego służy link do portalu Moje dostępu do żądania dostępu do pakietu.
+Większość użytkowników w katalogu może zalogować się do portalu My Access i automatycznie wyświetlić listę pakietów dostępu, których mogą żądać. Jednak w przypadku użytkowników zewnętrznego partnera biznesowego, którzy nie znajdują się jeszcze w Twoim katalogu, należy wysłać im link umożliwiający zażądanie pakietu dostępu. O ile pakiet dostępu jest włączony dla użytkowników zewnętrznych i masz zasady dla katalogu użytkownika zewnętrznego, użytkownik zewnętrzny może użyć linku Portal dostępu do aplikacji, aby zażądać pakietu dostępu.
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. Na stronie Przegląd Skopiuj **link do portalu Moje dostępu**.
+1. Na stronie Przegląd Skopiuj **łącze Mój dostęp do portalu**.
 
-    ![Omówienie pakietu dostępu — link do portalu Moje dostępu](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Przegląd pakietu dostępu — mój link portalu dostępu](./media/entitlement-management-shared/my-access-portal-link.png)
 
-1. Wiadomości e-mail lub wysłać łącze do partnera biznesowego zewnętrznych. Mogą oni udostępnić link przy użyciu swoich użytkowników, aby zażądać dostępu do pakietu.
+1. Wiadomość e-mail lub Wyślij link do zewnętrznego partnera biznesowego. Mogą oni udostępnić link swoim użytkownikom, aby zażądać pakietu dostępu.
 
-## <a name="change-the-hidden-setting"></a>Zmień ustawienie ukryty
+## <a name="change-the-hidden-setting"></a>Zmień ustawienie ukrywane
 
-Dostęp do pakietów są wykrywalni domyślnie. Oznacza to, jeśli zasady umożliwia użytkownikowi żądanie dostępu do pakietu, automatycznie uzyskają oni pakiet dostępu, na liście w portalu Moje dostępu.
+Pakiety dostępu są domyślnie odnajdywane. Oznacza to, że jeśli zasady zezwalają użytkownikowi na żądanie pakietu dostępu, automatycznie zobaczą pakiet dostępu wymieniony w portalu mojego dostępu.
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. Na stronie Przegląd kliknij **Edytuj**.
+1. Na stronie Przegląd kliknij przycisk **Edytuj**.
 
-1. Ustaw **ukryty** ustawienie.
+1. Ustaw ustawienie **ukryte** .
 
-    Jeśli ustawiono **nie**, pakiet dostępu zostaną wyświetlone w portalu Moje dostępu użytkownika.
+    Jeśli ustawisz wartość **nie**, pakiet dostępu zostanie wyświetlony w portalu dostępu użytkownika.
 
-    Jeśli ustawiono **tak**, pakiet dostępu, nie będą wyświetlane w portalu Moje dostępu użytkownika. Jedynym sposobem, użytkownik może wyświetlić pakiet dostępu jest, czy mają one bezpośrednio **link do portalu Moje dostępu** do dostępu do pakietu.
+    W przypadku wybrania **opcji tak**pakiet dostępu nie będzie wyświetlany w portalu dostępu użytkownika. Jedynym sposobem wyświetlania pakietu dostępu przez użytkownika jest to, że użytkownik ma **link bezpośredniego dostępu Portal** do pakietu dostępu.
 
 ## <a name="delete"></a>Usuwanie
 
-Pakiet dostępu można usunąć tylko, jeśli go nie ma aktywnego użytkownika przypisań.
+Pakiet dostępu można usunąć tylko wtedy, gdy nie ma aktywnych przypisań użytkownika.
 
-**Rola wymagań wstępnych:** Administrator użytkowników, właściciel katalogu lub dostęp do Menedżera pakietów
+**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. W witrynie Azure portal kliknij pozycję **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **uzyskiwać dostęp do pakietów** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
 
-1. W menu po lewej stronie kliknij **przypisania** i spowodować usunięcie dostępu dla wszystkich użytkowników.
+1. W menu po lewej stronie kliknij pozycję **przypisania** i Usuń dostęp dla wszystkich użytkowników.
 
-1. W menu po lewej stronie kliknij **Przegląd** a następnie kliknij przycisk **Usuń**.
+1. W menu po lewej stronie kliknij pozycję **Przegląd** , a następnie kliknij pozycję **Usuń**.
 
-1. W wyświetlonym komunikat do usunięcia, kliknij przycisk **tak**.
+1. W wyświetlonym komunikacie Usuń kliknij przycisk **tak**.
 
-## <a name="when-are-changes-applied"></a>Po zastosowaniu zmiany
+## <a name="when-are-changes-applied"></a>Kiedy zmiany są stosowane
 
-W przystawce Zarządzanie uprawnieniem usługi Azure AD będzie przetwarzać zmiany zbiorcze dla przypisania i zasobów w pakietach dostęp kilka razy dziennie. Więc jeśli Przypisywanie lub zmienić role zasobów pakietu dostęp, może upłynąć do 24 godzin, ta zmiana ma zostać wykonane w usłudze Azure AD, oraz czas jego propagacji tych zmian do innych Microsoft Online Services lub połączonych aplikacji SaaS s. Jeśli zmiana wpływa na kilka obiektów, zmiana prawdopodobnie zajmie tylko kilka minut, aby zastosować w usłudze Azure AD, po którym inne składniki usługi Azure AD wykryje następnie ulec zmianie, a także zaktualizować aplikacji SaaS. Jeśli zmiana wpływa na tysiące obiektów, zmiana będzie trwać dłużej. Na przykład jeśli masz pakiet dostępu przy użyciu 2 aplikacji i przypisań 100 użytkowników i zdecydować dodać rolę witryny programu SharePoint do dostępu do pakietu, prawdopodobnie opóźnienie aż wszyscy użytkownicy należą do tej roli w lokacji programu SharePoint. Można monitorować postęp za pomocą dziennika inspekcji usługi Azure AD, dziennik inicjowania obsługi usługi Azure AD i dzienniki inspekcji w witrynie programu SharePoint.
+W obszarze Zarządzanie prawami usługa Azure AD będzie przetwarzać zmiany zbiorcze dotyczące przypisywania i zasobów w pakietach dostępu kilka razy dziennie. Dlatego w przypadku przypisania lub zmiany ról zasobów pakietu dostępu może upłynąć nawet 24 godziny, gdy zmiana zostanie wprowadzona w usłudze Azure AD, a także czas, w którym konieczne jest propagowanie tych zmian do innych usług online firmy Microsoft lub połączonej aplikacji SaaS wolumin. Jeśli zmiana ma wpływ tylko na kilka obiektów, zmiana będzie prawdopodobnie trwać tylko kilka minut w usłudze Azure AD, po której inne składniki usługi Azure AD będą wykrywać zmiany i aktualizować aplikacje SaaS. Jeśli zmiana wpłynie na tysiące obiektów, zmiana będzie trwać dłużej. Jeśli na przykład masz pakiet dostępu z 2 aplikacjami i przypisaniami użytkowników 100 i zdecydujesz się dodać rolę witryny programu SharePoint do pakietu dostępu, może się zdarzyć, że wszyscy użytkownicy będą częścią tej roli witryny programu SharePoint. Postęp można monitorować w dzienniku inspekcji usługi Azure AD, dzienniku aprowizacji usługi Azure AD oraz w dziennikach inspekcji witryny programu SharePoint.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Dodawanie właściciela katalogu lub dostęp do Menedżera pakietów](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [Żądanie procesu i powiadomień e-mail](entitlement-management-process.md)
+- [Dodawanie właściciela katalogu lub Menedżera pakietów programu Access](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
+- [Proces żądania i powiadomienia e-mail](entitlement-management-process.md)

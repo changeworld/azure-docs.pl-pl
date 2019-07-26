@@ -5,23 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/07/2019
+ms.date: 07/22/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9cad403e39239ea92aa432ef3234c5388bfa95c7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c46c11ead645b93d7710d1e11636037e4dcaf8e7
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673446"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444573"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaka jest różnica między bramą sieci wirtualnej platformy Azure (VPN Gateway) i Azure bramą VPN Gateway wirtualnej sieci WAN platformy Azure?
 
-Wirtualna sieć WAN zapewnia łączność typu lokacja-lokacja w dużej skali oraz oferuje przepływność, skalowalność i łatwość użycia. Usługa ExpressRoute i funkcje łączności punkt-lokacja są obecnie dostępne w wersji zapoznawczej. CPE gałęzi autoprovision urządzeń i połączenie z sieci platformy Azure z wirtualnych WAN. Te urządzenia są dostępne w rozwijającym się ekosystemie partnerów sieci SD-WAN i VPN. Zobacz [listę preferowanych partnerów](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+Wirtualna sieć WAN zapewnia łączność typu lokacja-lokacja w dużej skali oraz oferuje przepływność, skalowalność i łatwość użycia. ExpressRoute na potrzeby łączności wirtualnej sieci WAN jest obecnie w wersji zapoznawczej. Urządzenia gałęzie CPE inicjują obsługę administracyjną i łączą się z usługą Azure Virtual WAN. Te urządzenia są dostępne w rozwijającym się ekosystemie partnerów sieci SD-WAN i VPN. Zobacz [listę preferowanych partnerów](https://go.microsoft.com/fwlink/p/?linkid=2019615).
 
-### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Co to jest gałąź połączenie WAN wirtualnych platformy Azure?
+### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Co to jest połączenie gałęzi z wirtualną siecią WAN platformy Azure?
 
-Połączenie z urządzeniem gałęzi w usłudze Azure wirtualne sieci WAN, składające się z dwóch tuneli IPsec aktywny/aktywny.
+Połączenie z urządzenia rozgałęzienia z wirtualną siecią WAN platformy Azure, składające się z dwóch aktywnych/aktywnych tuneli IPsec.
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>Którzy dostawcy urządzeń (partnerzy wirtualnej sieci WAN) są obsługiwani w czasie wprowadzenia oferty?
 
@@ -49,7 +49,7 @@ Tak. Wraz z wirtualną siecią WAN wprowadzono nowe zasoby usługi Resource Mana
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>Ile urządzeń sieci VPN można połączyć z jednym koncentratorem?
 
-Maksymalnie 1000 połączeń obsługiwanych na koncentrator wirtualny. Każde połączenie obejmuje dwa tunele w konfiguracji aktywne-aktywne. Tunele kończą się w bramie VPN Gateway koncentratora wirtualnego platformy Azure.
+Do 1 000 połączeń są obsługiwane na koncentratorze wirtualnym. Każde połączenie obejmuje dwa tunele w konfiguracji aktywne-aktywne. Tunele kończą się w bramie VPN Gateway koncentratora wirtualnego platformy Azure.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Czy lokalne urządzenie sieci VPN może łączyć się z wieloma koncentratorami?
 
@@ -73,7 +73,7 @@ Nie. Sieć wirtualna wirtualnego urządzenia sieciowego nie może mieć bramy si
 
 ### <a name="is-there-support-for-bgp"></a>Czy jest obsługiwany protokół BGP?
 
-Tak. Protokół BGP jest obsługiwany. Podczas tworzenia witryny sieci VPN, należy podać parametry protokołu BGP w nim. To oznacza, że wszystkie połączenia utworzone na platformie Azure dla tej lokacji mają zostać włączone dla protokołu BGP. Ponadto jeśli masz sieć wirtualną z wirtualnego urządzenia Sieciowego, a ta sieć wirtualna urządzenia WUS został dołączony do koncentratora, wirtualne sieci WAN, w celu zapewnienia, że trasy z sieci wirtualnej urządzenie WUS są anonsowane odpowiednio szprychy, które są dołączone do urządzenia NVA w sieci wirtualnej, należy wyłączyć protokołu BGP. Ponadto nawiązać te satelity, sieciami wirtualnymi w wirtualnych piastą zapewnienie trasy sieci wirtualnej szprychy są propagowane w systemach lokalnych.
+Tak. Protokół BGP jest obsługiwany. Podczas tworzenia witryny sieci VPN można podać w niej parametry protokołu BGP. Oznacza to, że dla wszystkich połączeń utworzonych na platformie Azure dla tej lokacji zostanie włączone protokół BGP. Ponadto w przypadku sieci wirtualnej z usługą urządzenie WUS i jeśli sieć wirtualna urządzenie WUS była podłączona do koncentratora sieci WAN, w celu zapewnienia, że trasy z sieci wirtualnej urządzenie WUS są anonsowane odpowiednio, szprychy dołączone do sieci wirtualnej urządzenie WUS muszą wyłączyć protokół BGP. Ponadto Połącz te szprychy sieci wirtualnych z siecią wirtualną koncentratora wirtualnego, aby upewnić się, że trasy sieci wirtualnej szprych są propagowane do systemów lokalnych.
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>Czy można kierować ruchem przy użyciu trasy zdefiniowanej przez użytkownika w koncentratorze wirtualnym?
 
@@ -83,25 +83,25 @@ Tak, można kierować ruch do sieci wirtualnej za pomocą tabeli tras koncentrat
  
 Tak. Zobacz stronę z [cennikiem](https://azure.microsoft.com/pricing/details/virtual-wan/).
 
-### <a name="how-do-i-calculate-price-of-a-hub"></a>Sposób obliczania cen koncentrator?
+### <a name="how-do-i-calculate-price-of-a-hub"></a>Jak mogę obliczyć ceny centrum?
  
-Zapłacisz dla usługi w Centrum. Na przykład 10 gałęzi lub urządzeń lokalnych, które wymaga, aby nawiązać połączenie WAN wirtualnych Azure oznaczałoby nawiązywania połączenia z punktów końcowych sieci VPN w piaście. Umożliwia powiedzieć, to jest sieć VPN jednostki skalowania 1 = 500 MB/s kosztuje $0.361/ godz. Każde połączenie jest rozliczana według 0,08 USD/godz. Połączenia o szybkości 10, Łączna opłata za usługę/godz. będzie 0.361 $ + $. 8 / godz. Dane dla ruchu opuszczającego Azure opłaty. 
+Płacisz za usługę w centrum. Na przykład 10 gałęzi lub urządzeń lokalnych, które wymagają połączenia z wirtualną siecią WAN platformy Azure, spowoduje nawiązanie połączenia z punktami końcowymi sieci VPN w centrum. Można to powiedzieć, że jest to sieć VPN z 1 jednostką skalowania = 500 MB/s, przy czym opłata jest naliczana za $0.361/HR. Każde połączenie jest obciążane stawką $0,08/HR. W przypadku 10 połączeń łączna opłata za usługę/HR byłaby $0,361 + $. 8/ wysoki. Opłaty za dane dotyczące ruchu wychodzącego z platformy Azure. 
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>W jaki sposób partnerzy, którzy nie są wymienieni na liście partnerów uruchomienia, mogą dołączyć do programu?
 
 Wyślij wiadomość e-mail na adres azurevirtualwan@microsoft.com. Idealny partner powinien dysponować urządzeniem, które można aprowizować na potrzeby połączeń IKEv1 lub IKEv2 IPSec.
 
-### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Co zrobić, jeśli używam urządzenia i nie znajduje się w wirtualnej sieci WAN lista partnerów? Czy mogę nadal służy do nawiązać połączenie wirtualnej sieci WAN sieci VPN platformy Azure?
+### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Co zrobić, jeśli urządzenie, którego używam, nie znajduje się na liście wirtualnych partnerów sieci WAN? Czy nadal mogę używać go do nawiązywania połączenia z wirtualną siecią WAN platformy Azure?
 
-Tak, jak długo urządzenie obsługuje protokół IPsec IKEv1 lub IKEv2. Wirtualne sieci WAN partnerów zautomatyzować łączności z urządzenia do punktów końcowych sieci VPN platformy Azure. Oznacza to, automatyzację kroków, takich jak "przekazywanie informacji o gałęzi", "IPsec i konfiguracja" i "łączność". Ponieważ urządzenie nie jest z ekosystemu partnera zawierającego wirtualne sieci WAN, konieczne będzie pozostaw trudne zadania ręcznie biorąc konfiguracji platformy Azure i aktualizowania urządzenia do skonfigurowania połączenia IPsec. 
+Tak długo, jak urządzenie obsługuje protokół IPsec IKEv1 lub IKEv2. Wirtualne partnerzy sieci WAN automatyzują łączność z urządzeniem z punktami końcowymi sieci VPN platformy Azure. Oznacza to automatyzację kroków, takich jak "przekazywanie informacji o rozgałęzieniu", "IPsec i konfiguracja" i "łączność". Ponieważ urządzenie nie pochodzi z ekosystemu wirtualnego partnera sieci WAN, należy przeprowadzić duże podnoszenie poziomu ręcznie pobierając konfigurację platformy Azure i zaktualizować urządzenie w celu skonfigurowania połączenia IPsec. 
 
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Czy istnieje możliwość skonstruowania sieci usługi Azure Virtual WAN przy użyciu szablonu usługi Resource Manager?
 
-Prostej konfiguracji jednej wirtualnej sieci WAN, z jednym Centrum i jeden vpnsite mogą być tworzone przy użyciu [szybkiego startu platformy Azure szablonu](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network). Usługa Virtual WAN jest głównie obsługiwana przez technologię REST lub witrynę Portal.
+Prostą konfigurację jednej wirtualnej sieci WAN z jednym koncentratorem i jednym vpnsite można utworzyć przy użyciu [szablonu szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network). Usługa Virtual WAN jest głównie obsługiwana przez technologię REST lub witrynę Portal.
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Czy łączność między oddziałami jest dozwolona w usłudze Virtual WAN?
 
-Tak. Łączność między oddziałami jest dostępna w usłudze Virtual WAN dla sieci VPN i od sieci VPN do usługi ExpressRoute. Połączenie sieci VPN między lokacjami jest ogólnie dostępne, natomiast usługa ExpressRoute i połączenie punkt-lokacja są obecnie dostępne w wersji zapoznawczej.
+Tak. Łączność między oddziałami jest dostępna w usłudze Virtual WAN dla sieci VPN i od sieci VPN do usługi ExpressRoute. W przypadku sieci VPN lokacja-lokacja jest obecnie dostępna w wersji zapoznawczej ExpressRoute.
 
 ### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Czy ruch zachodzący między oddziałami przechodzi przez usługę Azure Virtual WAN?
 
@@ -109,11 +109,11 @@ Tak.
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Czym różni się usługa Virtual WAN od istniejącej bramy sieci wirtualnej platformy Azure?
 
-Sieć VPN bramy sieci wirtualnej jest ograniczona do 30 tuneli. W przypadku połączeń należy używać usługi Virtual WAN dla sieci VPN na dużą skalę. Maksymalnie 1000 połączeń w oddziale firmy można połączyć z 20 GB/s w Centrum dla wszystkich regionów. Połączenie to tunel typu aktywny-aktywny od lokalnego urządzenia sieci VPN do koncentratora wirtualnego. Możesz mieć jedno centrum regionu, co oznacza, że możesz połączyć więcej niż 1000 gałęzi w centrach.
+Sieć VPN bramy sieci wirtualnej jest ograniczona do 30 tuneli. W przypadku połączeń należy używać usługi Virtual WAN dla sieci VPN na dużą skalę. Można połączyć maksymalnie 1 000 połączeń gałęzi z 20 GB/s w centrum dla wszystkich regionów. Połączenie to tunel typu aktywny-aktywny od lokalnego urządzenia sieci VPN do koncentratora wirtualnego. Można mieć jeden koncentrator na region, co oznacza, że można łączyć więcej niż 1 000 gałęzi w centrach.
 
-### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Jak jest wirtualne sieci WAN obsługi SD-WAN urządzeń?
+### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Jak wirtualna sieć WAN obsługuje urządzenia SD-WAN?
 
-Wirtualne sieci WAN partnerów zautomatyzować połączenia protokołu IPsec do punktów końcowych sieci VPN platformy Azure. Jeśli wirtualne sieci WAN partnera jest dostawcą SD-WAN jest implikowane, że kontroler SD-WAN zarządza automatyzacji i połączenia protokołu IPsec do punktów końcowych sieci VPN platformy Azure. Jeśli urządzenie SD-WAN wymaga własnej punktu końcowego, zamiast sieci VPN platformy Azure dla dowolnego własnościowych funkcji SD-WAN, można wdrożyć punkt końcowy SD-WAN w sieci wirtualnej platformy Azure i współistnieć przy użyciu Azure wirtualnego WAN.
+Wirtualne partnerzy sieci WAN automatyzują połączenia IPsec z punktami końcowymi sieci VPN platformy Azure. Jeśli wirtualny partner sieci WAN jest dostawcą SD-WAN, należy zastanowić się, że kontroler SD-WAN zarządza automatyzacją i łącznością IPsec z punktami końcowymi sieci VPN platformy Azure. Jeśli urządzenie SD-WAN wymaga własnego punktu końcowego zamiast sieci VPN platformy Azure dla dowolnej funkcjonalnej funkcjonalności SD-WAN, można wdrożyć punkt końcowy SD-WAN w sieci wirtualnej platformy Azure i współistnieć z wirtualną siecią WAN platformy Azure.
 
 ### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>Czy usługa Virtual WAN wymaga usługi ExpressRoute w każdej lokacji?
 
@@ -121,24 +121,24 @@ Nie. Usługa Virtual WAN nie wymaga usługi ExpressRoute w każdej lokacji. Uży
 
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Czy istnieje limit przepływności sieci podczas korzystania z usługi Azure Virtual WAN?
 
-Liczba oddziałów jest ograniczona do 1000 połączeń na koncentrator/region, a łączna szybkość do 2 Gb/s w koncentratorze. Wyjątek stanowi region Zachodnio-środkowe stany USA, w którym łączna szybkość wynosi 20 Gb/s. W przyszłości będziemy wprowadzać standard 20 Gb/s w innych regionach.
+Liczba oddziałów jest ograniczona do 1000 połączeń na Hub/region, a łączna 20 GB/s w centrum.
 
-### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Jak wiele połączeń sieci VPN obsługuje wirtualne sieci WAN hub?
+### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Ile połączeń sieci VPN jest obsługiwana przez wirtualną koncentrator sieci WAN?
 
-Centrum Azure wirtualnego WAN może obsługiwać maksymalnie 1000 połączeń S2S i 10 000 połączeń P2S jednocześnie.
+Wirtualne Centrum sieci WAN platformy Azure może obsługiwać maksymalnie 1 000 połączeń S2S i 10 000 połączeń P2S jednocześnie.
 
-### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>Co to jest łączna przepływność sieci VPN tunelu sieci VPN i połączenia?
+### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>Jaka jest całkowita przepustowość sieci VPN tunelu VPN i połączenia?
 
-Łączna przepływność sieci VPN koncentrator jest maksymalnie 20 GB/s opartego na jednostce skalowania wybrany. Przepływność jest współużytkowana przez wszystkie istniejące połączenia.
+Całkowita przepustowość sieci VPN koncentratora to 20 GB/s w oparciu o wybraną jednostkę skalowania. Przepływność jest współdzielona przez wszystkie istniejące połączenia.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Czy usługa Virtual WAN umożliwia urządzeniu lokalnemu równoległe korzystanie z wielu usługodawców internetowych, czy jest to zawsze pojedynczy tunel sieci VPN?
 
-Połączenia do wirtualnej sieci VPN w sieci WAN jest zawsze tunel typu aktywne aktywne (w przypadku odporność w obrębie tego samego Centrum/regionu) przy użyciu łącza, które są dostępne w gałęzi. Ten link może być link usługodawcy internetowego w gałęzi w środowisku lokalnym. Wirtualna sieć WAN nie zapewnia jakąkolwiek logikę specjalną, aby skonfigurować wiele usługodawcy internetowego w sposób równoległy; Zarządzanie trybu failover między usługodawcy internetowego w gałęzi jest całkowicie operacji sieciowych skoncentrowane na gałęzi. Za pomocą ulubionego rozwiązania SD-WAN celu wybór ścieżki w gałęzi.
+Połączenie z siecią VPN sieci wirtualnej sieci WAN zawsze jest tunelem aktywnym (w celu odporności w obrębie tego samego centrum/regionu) przy użyciu linku dostępnego w rozgałęzieniu. Ten link może być linkiem usługodawcy internetowego w gałęzi lokalnej. Wirtualna sieć WAN nie zapewnia żadnej specjalnej logiki umożliwiającej równoczesne skonfigurowanie wielu usługodawców internetowych. zarządzanie trybem failover między usługodawcą internetowym w gałęzi jest całkowicie operacją sieci skoncentrowaną na gałęzi. Możesz użyć ulubionego rozwiązania SD-WAN do wybrania ścieżki w rozgałęzieniu.
 
 ### <a name="how-is-traffic-routed-on-the-azure-backbone"></a>W jaki sposób ruch jest kierowany w sieci szkieletowej platformy Azure?
 
-Ruch jest zgodny ze wzorcem: gałąź urządzenia -> usługodawca Internetowy -> Microsoft edge -> Microsoft DC (piastą) -> Microsoft edge -> usługodawca Internetowy -> urządzenia gałęzi
+Ruch jest zgodny ze wzorcem: rozgałęzienie Device-> usługodawca internetowy — > Microsoft Edge-> > > firmy Microsoft
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>Które elementy tego modelu muszą znajdować się w każdej lokacji? Czy wystarczy tylko połączenie internetowe?
 
-Tak. Połączenie z Internetem i urządzenia fizycznego, obsługujący protokół IPsec, najlepiej z naszych zintegrowanych [partnerów](https://go.microsoft.com/fwlink/p/?linkid=2019615). Opcjonalnie można ręcznie zarządzać konfiguracją i łącznością z platformą Azure z poziomu preferowanego urządzenia.
+Tak. Połączenie internetowe i urządzenie fizyczne obsługujące protokół IPsec najlepiej z naszych zintegrowanych [partnerów](https://go.microsoft.com/fwlink/p/?linkid=2019615). Opcjonalnie można ręcznie zarządzać konfiguracją i łącznością z platformą Azure z poziomu preferowanego urządzenia.

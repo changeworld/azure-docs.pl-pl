@@ -1,132 +1,132 @@
 ---
-title: Rozwiązywanie typowych problemów w usłudze Azure Kubernetes Service
-description: Dowiedz się, jak do rozwiązywania oraz usuwania typowych problemów w przypadku korzystania z usługi Azure Kubernetes Service (AKS)
+title: Rozwiązywanie typowych problemów z usługą Azure Kubernetes
+description: Dowiedz się, jak rozwiązywać typowe problemy związane z korzystaniem z usługi Azure Kubernetes Service (AKS)
 services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: f0b0ff3ff4ac742a7e850798c736eb31098f66e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1668e0b3b155804496b190f2ba66d220ba0dd219
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966377"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381950"
 ---
-# <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z usługi AKS
+# <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z AKS
 
-Podczas tworzenia lub zarządzanie klastrami usługi Azure Kubernetes Service (AKS) może czasami wystąpić problemy. Ten artykuł szczegółowo opisuje niektóre typowe problemy i kroki rozwiązywania problemów.
+W przypadku tworzenia klastrów usługi Azure Kubernetes Service (AKS) lub zarządzania nimi czasami mogą wystąpić problemy. W tym artykule opisano niektóre typowe problemy i kroki rozwiązywania problemów.
 
-## <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-problems"></a>Ogólnie rzecz biorąc, gdzie można znaleźć informacje o debugowaniu problemów Kubernetes?
+## <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-problems"></a>Ogólnie rzecz biorąc, gdzie można znaleźć informacje o problemach z debugowaniem Kubernetes?
 
-Spróbuj [oficjalny przewodnik rozwiązywania problemów z klastrów Kubernetes](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
-Istnieje również [przewodnik rozwiązywania problemów z](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)opublikowanymi przez inżynier z firmy Microsoft do rozwiązywania problemów zasobników, węzły, klastrów i innych funkcji.
+Wypróbuj [oficjalny przewodnik dotyczący rozwiązywania problemów z klastrami Kubernetes](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
+Istnieje również [Przewodnik rozwiązywania problemów](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)Opublikowany przez inżyniera firmy Microsoft w celu rozwiązywania problemów z planami, węzłami, klastrami i innymi funkcjami.
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Otrzymuję błąd "Przekroczono limit przydziału" podczas tworzenia lub uaktualniania. Co mam zrobić? 
 
-Musisz [żądania rdzeni](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Musisz zażądać [rdzeni](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Co to jest ustawienie maksymalne zasobników na węzeł dla usługi AKS?
+## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Co to jest ustawienie maksymalnej liczby elementów w poszczególnych węzłach dla AKS?
 
-Ustawienie maksymalne zasobników każdego węzła jest domyślnie 30, jeśli musisz wdrożyć klaster usługi AKS w witrynie Azure portal.
-Ustawienie maksymalne zasobników każdego węzła jest 110 domyślnie, jeśli musisz wdrożyć klaster usługi AKS w interfejsie wiersza polecenia platformy Azure. (Upewnij się, że używasz najnowszej wersji interfejsu wiersza polecenia platformy Azure). To ustawienie domyślne można zmienić za pomocą `–-max-pods` znacznik w `az aks create` polecenia.
+Ustawienie Maksymalna liczba sztuk na węzeł domyślnie jest 30, Jeśli klaster AKS jest wdrażany w Azure Portal.
+Ustawienie maksymalny rozmiar poszczególnych węzłów domyślnie 110 w przypadku wdrażania klastra AKS w interfejsie wiersza polecenia platformy Azure. (Upewnij się, że używasz najnowszej wersji interfejsu wiersza polecenia platformy Azure). To ustawienie domyślne można zmienić przy użyciu `–-max-pods` flagi `az aks create` w poleceniu.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Otrzymuję błąd insufficientSubnetSize podczas wdrażania klastra usługi AKS z zaawansowany siecią. Co mam zrobić?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Otrzymuję błąd insufficientSubnetSize podczas wdrażania klastra AKS przy użyciu zaawansowanej sieci. Co mam zrobić?
 
-Użycie wtyczki Azure CNI (zaawansowany siecią) AKS preallocates adresów IP oparty na "max zasobników" na węzeł skonfigurowane. Liczba węzłów w klastrze AKS może być dowolnym między 1 a 110. Na podstawie skonfigurowanego zasobników max na węzeł, rozmiar podsieci powinien być większy niż "product liczbę węzłów i maksymalna pod każdym węźle". Następujące podstawowe równanie przedstawia to:
+Jeśli używana jest usługa Azure CNI (Advanced Network), AKS przydzieli adres IP na podstawie skonfigurowanego węzła "Max-". Liczba węzłów w klastrze AKS może być w dowolnym miejscu od 1 do 110. W oparciu o skonfigurowaną maksymalną liczbę zasobników na węzeł rozmiar podsieci powinien być większy niż "iloczyn liczby węzłów i maks. pod na węzeł". Poniższe podstawowe równanie zawiera opis:
 
-Rozmiar podsieci > Liczba węzłów w klastrze (biorąc pod uwagę przyszłych wymagań skalowania) * max zasobniki w każdym węźle.
+Rozmiar podsieci > liczbę węzłów w klastrze (biorąc pod uwagę przyszłe wymagania dotyczące skalowania) * Maksymalna liczba zasobników na węzeł.
 
-Aby uzyskać więcej informacji, zobacz [adresowania IP planowanie na potrzeby klastra](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
+Aby uzyskać więcej informacji, zobacz [Planowanie adresów IP w klastrze](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Moje zasobnika została zablokowana w trybie CrashLoopBackOff. Co mam zrobić?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mój pod jest zablokowany w trybie CrashLoopBackOff. Co mam zrobić?
 
-Może to być różne przyczyny zasobnika ustawiany jest zablokowana w trybie. Użytkownik może wyglądać na:
+Może istnieć różne przyczyny zablokowania w tym trybie. Możesz zajrzeć do:
 
-* Zasobnik, za pomocą `kubectl describe pod <pod-name>`.
-* Dzienniki, korzystając z `kubectl log <pod-name>`.
+* Samego siebie, przy użyciu `kubectl describe pod <pod-name>`.
+* Dzienniki przy użyciu programu `kubectl log <pod-name>`.
 
-Aby uzyskać więcej informacji na temat rozwiązywania problemów pod zobacz [debugowania aplikacji](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
+Aby uzyskać więcej informacji na temat rozwiązywania problemów, zobacz [debugowanie aplikacji](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
-## <a name="im-trying-to-enable-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Próbuję włączyć RBAC w istniejącym klastrze. Jak można zrobić?
+## <a name="im-trying-to-enable-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Próbuję włączyć funkcję RBAC w istniejącym klastrze. Jak to zrobić?
 
-Niestety włączania kontroli dostępu opartej na rolach (RBAC) na istniejących klastrów nie jest obsługiwana w tej chwili. Należy jawnie utworzyć nowych klastrów. Jeśli używasz interfejsu wiersza polecenia, RBAC jest domyślnie włączona. Jeśli używasz portalu usługi AKS, przycisk przełączania, aby umożliwić RBAC jest dostępna w przepływ pracy tworzenia.
+Niestety włączenie kontroli dostępu opartej na rolach (RBAC) w istniejących klastrach nie jest obecnie obsługiwane. Należy jawnie utworzyć nowe klastry. W przypadku korzystania z interfejsu wiersza polecenia RBAC jest domyślnie włączone. Jeśli używasz portalu AKS, przycisk przełączania umożliwiający włączenie RBAC jest dostępny w przepływie pracy tworzenia.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Po utworzeniu klastra przy użyciu RBAC włączana przy użyciu dowolnego wiersza polecenia platformy Azure przy użyciu wartości domyślnych lub witryny Azure portal, a teraz zobaczyć wiele ostrzeżenia na pulpicie nawigacyjnym platformy Kubernetes. Pulpit nawigacyjny pozwala działać bez ostrzeżenia. Co mam zrobić?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Po utworzeniu klastra z włączoną funkcją RBAC przy użyciu interfejsu wiersza polecenia platformy Azure z wartościami domyślnymi lub Azure Portal, a teraz widzimy wiele ostrzeżeń na pulpicie nawigacyjnym Kubernetes. Pulpit nawigacyjny służący do pracy bez żadnych ostrzeżeń. Co mam zrobić?
 
-Przyczyna ostrzeżenia na pulpicie nawigacyjnym jest klastra jest teraz włączone wraz z RBAC i do niego dostęp ma domyślnie wyłączone. Ogólnie rzecz biorąc to podejście jest dobrym rozwiązaniem, ponieważ narażenia domyślnego pulpitu nawigacyjnego dla wszystkich użytkowników klastra może prowadzić do zagrożenia bezpieczeństwa. Jeśli nadal chcesz włączyć Pulpit nawigacyjny, wykonaj kroki opisane w [ten wpis w blogu](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
+Przyczyną ostrzeżeń na pulpicie nawigacyjnym jest to, że klaster jest teraz włączony przy użyciu RBAC i dostęp do niego jest domyślnie wyłączony. Ogólnie rzecz biorąc, to podejście jest dobrym rozwiązaniem, ponieważ domyślne narażenie pulpitu nawigacyjnego na wszystkich użytkowników klastra może prowadzić do zagrożeń bezpieczeństwa. Jeśli nadal chcesz włączyć pulpit nawigacyjny, postępuj zgodnie z instrukcjami w [tym wpisie w blogu](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nie można nawiązać pulpitu nawigacyjnego. Co mam zrobić?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nie można nawiązać połączenia z pulpitem nawigacyjnym. Co mam zrobić?
 
-Najprostszym sposobem uzyskania dostępu do usługi spoza klastra jest uruchomienie `kubectl proxy`, które serwery proxy żądania wysyłane do localhost port 8001 do serwera interfejsu API rozwiązania Kubernetes. W efekcie serwera interfejsu API można serwera proxy do usługi: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
+Najprostszym sposobem, aby uzyskać dostęp do usługi poza klastrem, `kubectl proxy`jest uruchomienie, które serwery proxy żądania wysyłane do portu localhost 8001 do serwera interfejsu API Kubernetes. Z tego miejsca serwer interfejsu API może być serwerem proxy usługi: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
-Jeśli nie widzisz pulpit nawigacyjny platformy Kubernetes, sprawdź, czy `kube-proxy` zasobnik jest uruchomiony w `kube-system` przestrzeni nazw. Jeśli nie jest w stanie uruchomienia, usunąć zasobnik i zostanie uruchomiona ponownie.
+Jeśli nie widzisz pulpitu nawigacyjnego Kubernetes, sprawdź, `kube-proxy` czy pod `kube-system` przestrzeni nazw jest uruchomiony program. Jeśli nie jest w stanie uruchomionym, Usuń element pod, a zostanie uruchomiony ponownie.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nie mogę uzyskać dzienniki przy użyciu narzędzia kubectl dzienników lub nie można nawiązać połączenia serwera interfejsu API. Otrzymuję "błąd z serwera: błąd podczas wybierania zaplecza: wybierania tcp...". Co mam zrobić?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nie mogę pobrać dzienników przy użyciu dzienników polecenia kubectl lub nie mogę nawiązać połączenia z serwerem interfejsu API. Otrzymuję komunikat "błąd z serwera: błąd podczas wybierania numeru zaplecza: wybierz TCP...". Co mam zrobić?
 
-Upewnij się, że nie jest modyfikowana domyślną sieciową grupę zabezpieczeń i że port 22 jest otwarty dla połączenia do serwera interfejsu API. Sprawdź, czy `tunnelfront` zasobnik jest uruchomiony w *systemu kubernetes* za pomocą nazw `kubectl get pods --namespace kube-system` polecenia. Jeśli nie, Wymuś usunięcie zasobnik i zostanie uruchomiony ponownie.
+Upewnij się, że domyślna grupa zabezpieczeń sieci nie jest modyfikowana i że dla połączenia z serwerem interfejsu API jest otwarty zarówno port 22, jak i 9000. Sprawdź, czy `tunnelfront` w przestrzeni nazw *polecenia systemu* przy użyciu `kubectl get pods --namespace kube-system` polecenia jest uruchomiona. Jeśli tak nie jest, Wymuś usunięcie elementu pod i zostanie on ponownie uruchomiony.
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>I próbuję uaktualnienia lub skalowania i są zwracane "komunikat: Nie można zmienić właściwości "imageReference" "Wystąpił błąd. Jak rozwiązać ten problem?
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Próbuję uaktualnić lub skalować i uzyskać "komunikat: Nie można zmienić właściwości "elementu imagereference". Jak mogę rozwiązać ten problem?
 
-Użytkownik może się pojawiać ten błąd ponieważ znaczniki węzły agenta w ramach klastra usługi AKS został zmodyfikowany. Modyfikowanie i usuwanie tagów i innych właściwości zasobów w grupie zasobów MC_ * może prowadzić do nieoczekiwanych wyników. Modyfikowanie zasobów w grupie MC_ * w usłudze AKS klastra przerywa cel poziomu usług (SLO).
+Ten błąd może być spowodowany modyfikacją tagów w węzłach agenta wewnątrz klastra AKS. Modyfikowanie i usuwanie tagów oraz innych właściwości zasobów w grupie zasobów MC_ * może prowadzić do nieoczekiwanych wyników. Modyfikacja zasobów w grupie MC_ * w klastrze AKS powoduje przerwanie celu poziomu usługi (SLO).
 
-## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Otrzymuję błędy, które Mój klaster jest w stanie niepowodzenia i uaktualnianie i skalowanie nie będzie działać do czasu jego naprawienia
+## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Otrzymuję błędy, które są w stanie awarii mojego klastra, a uaktualnienie lub skalowanie nie będzie działało, dopóki nie zostanie naprawione
 
-*Tej pomocy dotyczące rozwiązywania problemów jest przekierowywany z https://aka.ms/aks-cluster-failed*
+*Ta pomoc w rozwiązywaniu problemów jest skierowana z https://aka.ms/aks-cluster-failed*
 
-Ten błąd występuje, gdy klastry przejść w stan nie powiodło się kilka przyczyn. Wykonaj poniższe kroki, aby rozwiązać Nazwa stanu klastra nie powiodło się przed ponowieniem próby wykonania operacji wcześniej zakończonej niepowodzeniem:
+Ten błąd występuje, gdy klastry wchodzą w stan niepowodzenia z wielu powodów. Postępuj zgodnie z poniższymi instrukcjami, aby rozwiązać stan awarii klastra przed ponowną próbą wykonania poprzedniej operacji zakończonej niepowodzeniem:
 
-1. Dopóki nie jest klastrem `failed` stanu, `upgrade` i `scale` operacji nie powiodło się. Typowe problemy głównego i rozwiązania obejmują:
-    * Skalowanie za pomocą **przydział usługi compute niewystarczające (CRP)** . Aby rozwiązać problem, należy najpierw skalowania klastra do stanu stabilne cel w ramach limitu przydziału. Następnie postępuj zgodnie z tymi [zwiększyć kroki, aby żądać przydziału obliczeniowych](../azure-supportability/resource-manager-core-quotas-request.md) przed przystąpieniem do skalowania w górę ponownie limitów przydziału początkowej poza nim.
-    * Skalowanie klastra za pomocą zaawansowanych sieci i **zasoby podsieci niewystarczające (sieć)** . Aby rozwiązać problem, należy najpierw skalowania klastra do stanu stabilne cel w ramach limitu przydziału. Następnie postępuj zgodnie z [zwiększyć te kroki, aby żądać przydziału zasobów](../azure-resource-manager/resource-manager-quota-errors.md#solution) przed przystąpieniem do skalowania w górę ponownie limitów przydziału początkowej poza nim.
-2. Po usunięciu podstawowych przyczyn niepowodzenia uaktualniania klastra powinna być w stanie sukces. Po zweryfikowaniu stanie sukces, spróbuj ponownie wykonać operację.
+1. Dopóki klaster nie jest `failed` w stanie, `upgrade` a `scale` operacje nie powiodą się. Typowe problemy główne i rozwiązania obejmują:
+    * Skalowanie z niewystarczającym **limitem przydziału obliczeń (CRP)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj następujące [kroki, aby zażądać zwiększenia przydziału obliczeń](../azure-supportability/resource-manager-core-quotas-request.md) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
+    * Skalowanie klastra przy użyciu zaawansowanej sieci i niewystarczającej liczby **zasobów podsieci (sieci)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj [następujące kroki, aby zażądać zwiększenia przydziału zasobów](../azure-resource-manager/resource-manager-quota-errors.md#solution) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
+2. Po usunięciu podstawowej przyczyny niepowodzenia uaktualnienia klaster powinien działać w stanie sukces. Po zweryfikowaniu stanu, ponów próbę wykonania oryginalnej operacji.
 
-## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Otrzymuję błędy podczas próby uaktualnienia lub skali, do stanu klastra jest aktualnie jest uaktualniony lub uaktualnienie nie powiodło się
+## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Otrzymuję błędy podczas próby uaktualnienia lub skalowania stanu, w którym mój klaster jest aktualnie uaktualniany lub nie przeprowadzono uaktualnienia
 
-*Tej pomocy dotyczące rozwiązywania problemów jest przekierowywany z https://aka.ms/aks-pending-upgrade*
+*Ta pomoc w rozwiązywaniu problemów jest skierowana z https://aka.ms/aks-pending-upgrade*
 
-Operacje klastra są ograniczone, podczas aktywnego uaktualniania operacje są wykonywane lub podjęto próbę uaktualnienia, ale następnie nie powiodło się. Aby zdiagnozować problem, uruchom `az aks show -g myResourceGroup -n myAKSCluster -o table` można pobrać szczegółowe informacje o tym w klastrze. Na podstawie wyniku:
+Operacje klastra są ograniczone, gdy wykonywane są aktywne operacje uaktualniania lub podjęto próbę uaktualnienia, ale nie powiodło się. Aby zdiagnozować przebieg `az aks show -g myResourceGroup -n myAKSCluster -o table` problemu w celu pobrania szczegółowego stanu w klastrze. W oparciu o wynik:
 
-* Jeśli klaster jest aktywnie uaktualnienie, poczekaj, aż do zakończenia operacji. Jeśli zakończyło się pomyślnie, spróbuj ponownie operacji wcześniej zakończonej niepowodzeniem.
-* W przypadku niepowodzenia uaktualniania klastra, wykonaj kroki opisane powyżej
+* Jeśli klaster jest aktywnie uaktualniany, poczekaj na zakończenie operacji. Jeśli zakończyło się pomyślnie, spróbuj ponownie wykonać operację.
+* Jeśli uaktualnienie nie powiodło się, wykonaj czynności opisane powyżej
 
-## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Czy mogę przenieść mój klaster na inną subskrypcję lub subskrypcję z klastra do nowego dzierżawcy
+## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Czy mogę przenieść klaster na inną subskrypcję lub moją subskrypcję z moim klastrem do nowej dzierżawy?
 
-Klaster AKS zostały przeniesione do innej subskrypcji lub klastra będącego właścicielem subskrypcji do nowego dzierżawcy, klastra spowoduje utratę funkcji z powodu utraty przypisań ról i uprawnień podmiotów zabezpieczeń usługi. **AKS nie obsługuje przenoszenia klastrów w subskrypcji i dzierżaw** ze względu na to ograniczenie.
+Jeśli klaster AKS został przeniesiony do innej subskrypcji lub klastra będącego właścicielem subskrypcji do nowej dzierżawy, klaster utraci funkcjonalność ze względu na utratę przypisań ról i uprawnień podmiotów usługi. Usługa **AKS nie obsługuje przesuwania klastrów między subskrypcjami ani dzierżawcami** z powodu tego ograniczenia.
 
 ## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>Otrzymuję błędy podczas próby użycia funkcji, które wymagają zestawów skalowania maszyn wirtualnych
 
-*Tej pomocy dotyczące rozwiązywania problemów jest przekierowywany z aka.ms/aks-vmss aktywacji*
+*Ta pomoc w rozwiązywaniu problemów jest skierowana z aka.ms/aks-vmss-enablement*
 
-Może pojawić się błędy, które wskazują, że klaster AKS nie znajduje się na zestaw skalowania maszyn wirtualnych, takich jak na poniższym przykładzie:
+Mogą pojawić się błędy wskazujące, że klaster AKS nie znajduje się w zestawie skalowania maszyn wirtualnych, na przykład w poniższym przykładzie:
 
-**Obiektu AgentPool "obiektu agentpool" została ustawiona na automatyczne skalowanie, ponieważ włączone, ale nie znajduje się w zestawach skalowania maszyn wirtualnych**
+**Nieznanej obiektu agentpool "nieznanej obiektu agentpool" ustawił automatyczne skalowanie jako włączone, ale nie znajduje się na Virtual Machine Scale Sets**
 
-Korzystanie z funkcji, takich jak skalowanie klastra lub węzła wielu pul, klastry usługi AKS musi zostać utworzona używające zestawów skalowania maszyn wirtualnych. Błędy są zwracane, jeśli użytkownik próbuje użyć funkcji, które są zależne od zestawów skalowania maszyn wirtualnych, a docelowy klaster AKS z zestawem skalowania regularnych, maszyna wirtualna. Obsługa zestawu skalowania maszyn wirtualnych jest obecnie w wersji zapoznawczej w usłudze AKS.
+Aby korzystać z funkcji, takich jak automatyczne skalowanie klastra lub pule wielu węzłów, należy utworzyć klastry AKS korzystające z zestawów skalowania maszyn wirtualnych. Błędy są zwracane, jeśli spróbujesz użyć funkcji, które są zależne od zestawów skalowania maszyn wirtualnych, oraz dla klastra AKS z regularnym zestawem skalowania maszyn wirtualnych. Obsługa zestawu skalowania maszyn wirtualnych jest obecnie dostępna w wersji zapoznawczej w AKS.
 
-Postępuj zgodnie z *przed rozpoczęciem* kroki podane w odpowiedniej dokumentacji poprawnie zarejestrowanie funkcji zestawu skalowania maszyn wirtualnych do wersji zapoznawczej i tworzenie klastra AKS:
+Postępuj zgodnie z instrukcjami *przed rozpoczęciem* w odpowiednim dokumencie, aby prawidłowo zarejestrować się w wersji zapoznawczej zestawu skalowania maszyn wirtualnych i utworzyć klaster AKS:
 
-* [Użyj skalowania automatycznego klastra](cluster-autoscaler.md)
-* [Tworzenie i używanie wielu pul węzłów](use-multiple-node-pools.md)
+* [Korzystanie z automatycznego skalowania klastra](cluster-autoscaler.md)
+* [Tworzenie i używanie pul wielu węzłów](use-multiple-node-pools.md)
  
-## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>Jakie ograniczenia nazewnictwa odnosi się do zasobów usługi AKS i parametrów?
+## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>Jakie ograniczenia nazewnictwa są wymuszane dla zasobów AKS i parametrów?
 
-*Tej pomocy dotyczące rozwiązywania problemów jest przekierowywany z aka.ms/aks — — reguły nazewnictwa*
+*Ta pomoc w rozwiązywaniu problemów jest skierowana z aka.ms/aks-naming-rules*
 
-Ograniczenia nazewnictwa są implementowane przez platformę Azure i usługi AKS. Jeśli nazwa zasobu lub parametr przerywa jeden z tych ograniczeń, zwracany jest błąd, że pyta, czy zapewniają różne dane wejściowe. Typowe nazewnictwa należy przestrzegać następujących:
+Ograniczenia nazewnictwa są implementowane przez platformę Azure i AKS. Jeśli nazwa zasobu lub parametr przerywa jedno z tych ograniczeń, zwracany jest błąd, który prosi o podanie innych danych wejściowych. Stosuje się następujące typowe wskazówki dotyczące nazewnictwa:
 
-* AKS *MC_* łączy nazwy grupy zasobów, nazwę grupy zasobów i nazwę zasobu. Składnia generowanych automatycznie `MC_resourceGroupName_resourceName_AzureRegion` musi być większa niż 80 znaków. Jeśli to konieczne, należy zmniejszyć długość nazwy grupy zasobów lub nazwę klastra AKS.
-* *DnsPrefix* musi się zaczynać i kończyć się znakiem alfanumerycznym wartości. Prawidłowe znaki to wartości alfanumeryczne i łączniki (-). *DnsPrefix* nie może zawierać znaków specjalnych, takich jak znak kropki (.).
+* Nazwa grupy zasobów AKS *MC_* łączy nazwę grupy zasobów i nazwę zasobu. Wygenerowana automatycznie składnia `MC_resourceGroupName_resourceName_AzureRegion` nie może być większa niż 80 znaków. W razie konieczności Zmniejsz długość nazwy grupy zasobów lub nazwę klastra AKS.
+* *DnsPrefix* musi rozpoczynać się i kończyć wartościami alfanumerycznymi. Prawidłowe znaki to wartości alfanumeryczne i łączniki (-). *DnsPrefix* nie może zawierać znaków specjalnych, takich jak kropka (.).
 
-## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Otrzymuję błędy podczas próby utworzenia, aktualizacji, skalowanie, usunąć lub uaktualnić klaster, że operacja jest niedozwolona, ponieważ inna operacja jest w toku.
+## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Otrzymuję błędy podczas próby utworzenia, zaktualizowania, skalowania, usunięcia lub uaktualnienia klastra, ta operacja nie jest dozwolona, ponieważ inna operacja jest w toku.
 
-*Tej pomocy dotyczące rozwiązywania problemów jest przekierowywany z aka.ms/aks oczekujące operacji*
+*Ta pomoc w rozwiązywaniu problemów jest skierowana z aka.ms/aks-pending-operation*
 
-Działanie klastra są ograniczone, gdy poprzednia operacja jest nadal w toku. Aby uzyskać szczegółowy stan klastra, użyj `az aks show -g myResourceGroup -n myAKSCluster -o table` polecenia. Użyj własną grupę zasobów i nazwę klastra AKS, zgodnie z potrzebami.
+Operacje klastra są ograniczone, gdy Poprzednia operacja jest nadal w toku. Aby pobrać szczegółowy stan klastra, użyj `az aks show -g myResourceGroup -n myAKSCluster -o table` polecenia. W razie konieczności Użyj własnej grupy zasobów i nazwy klastra AKS.
 
-Oparte na dane wyjściowe stan klastra:
+Na podstawie danych wyjściowych stanu klastra:
 
-* Jeśli klaster znajduje się w dowolnym stanie inicjowania obsługi innych niż *Powodzenie* lub *niepowodzenie*, poczekaj, aż operacja (*uaktualnianie / aktualizowanie / tworzenie / skalowanie / usuwanie / migracja*) kończy się. Po zakończeniu poprzedniej operacji ponownie spróbuj wykonać operację najnowsze klastra.
+* Jeśli klaster jest w stanie aprowizacji *innym niż* *powodzenie*lub nieudany, poczekaj na zakończenie operacji (uaktualnianie */Aktualizowanie/tworzenie/skalowanie/usuwanie/Migrowanie*). Po zakończeniu poprzedniej operacji ponów próbę wykonania ostatniej operacji klastra.
 
-* Jeśli klaster zawiera nieudanego uaktualnienia, wykonaj czynności opisane [odbieranie błędów, które Mój klaster jest w stanie niepowodzenia i uaktualnianie i skalowanie nie będzie działać, dopóki nie zostanie on rozwiązany](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
+* Jeśli uaktualnienie nie powiodło się, wykonaj kroki opisane w temacie jak pojawiają się [błędy, w których klaster jest w stanie niepowodzenia, a uaktualnienie lub skalowanie nie będzie działało do momentu jego](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)naprawienia.

@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie sieci wirtualnych platformy Azure z inną siecią wirtualną przy użyciu połączenia sieć wirtualna-sieć wirtualna: Program PowerShell | Dokumentacja firmy Microsoft'
+title: 'Połącz sieć wirtualną platformy Azure z inną siecią wirtualną przy użyciu połączenia między sieciami wirtualnymi: Program PowerShell | Microsoft Docs'
 description: Łączenie sieci wirtualnych przy użyciu połączenia sieć wirtualna-sieć wirtualna oraz programu PowerShell.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6ea919a4c9554584e0da79739d3465586ae43227
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dbf59740af64bf8d403b6596a17646304c0f1eb0
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60456380"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385776"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu programu PowerShell
 
@@ -32,7 +32,7 @@ Kroki podane w tym artykule mają zastosowanie do modelu wdrażania przy użyciu
 
 Z sieciami wirtualnymi można łączyć się na wiele sposobów. W poniższych sekcjach opisano różne metody łączenia się z sieciami wirtualnymi.
 
-### <a name="vnet-to-vnet"></a>Połączenia między sieciami wirtualnymi
+### <a name="vnet-to-vnet"></a>Sieć wirtualna-sieć wirtualna
 
 Skonfigurowanie połączenia sieci wirtualnej z siecią wirtualną jest dobrym sposobem łatwego połączenia sieci wirtualnych. Proces łączenia dwóch sieci wirtualnych przy użyciu typu połączenia sieć wirtualna-sieć wirtualna (VNet2VNet) przebiega podobnie do procesu tworzenia połączenia IPsec typu lokacja-lokacja z lokacją lokalną.  Oba typy połączeń używają bramy sieci VPN, aby zapewnić bezpieczny tunel korzystający z protokołu IPsec/IKE, oraz działają tak samo pod względem komunikacji. Różnica między nimi dotyczy konfiguracji bramy sieci lokalnej. Podczas tworzenia połączenia sieć wirtualna-sieć wirtualna przestrzeń adresowa bramy sieci lokalnej nie jest widoczna. Jest ona tworzona i wypełniana automatycznie. Po zaktualizowaniu przestrzeni adresowej dla jednej sieci wirtualnej druga sieć wirtualna automatycznie kieruje ruch do zaktualizowanej przestrzeni adresowej. Utworzenie połączenia sieć wirtualna-sieć wirtualna jest zwykle szybsze i łatwiejsze niż utworzenie połączenia lokacja-lokacja między sieciami wirtualnymi.
 
@@ -65,11 +65,11 @@ Zasadnicza różnica między nimi polega na tym, że podczas konfigurowania poł
 
 W tym ćwiczeniu możesz łączyć konfiguracje lub po prostu wybrać tę, której chcesz używać. Wszystkie konfiguracje używają typu połączenia sieć wirtualna-sieć wirtualna. Ruch sieciowy przepływa między bezpośrednio połączonymi sieciami wirtualnymi. W tym ćwiczeniu ruch z sieci TestVNet4 nie jest kierowany do sieci TestVNet5.
 
-* [Sieci wirtualne znajdujące się w tej samej subskrypcji](#samesub): W krokach dla tej konfiguracji używane są sieci TestVNet1 i TestVNet4.
+* [Sieci wirtualnych, które znajdują się w tej samej subskrypcji](#samesub): W krokach dla tej konfiguracji używane są sieci TestVNet1 i TestVNet4.
 
   ![Diagram połączenia między sieciami wirtualnymi (v2v)](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Sieci wirtualne znajdujące się w różnych subskrypcjach](#difsub): W krokach dla tej konfiguracji są używane sieci TestVNet1 i TestVNet5.
+* [Sieci wirtualnych, które znajdują się w różnych subskrypcjach](#difsub): W krokach dla tej konfiguracji są używane sieci TestVNet1 i TestVNet5.
 
   ![Diagram połączenia między sieciami wirtualnymi (v2v)](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -79,9 +79,9 @@ W tym ćwiczeniu możesz łączyć konfiguracje lub po prostu wybrać tę, któr
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Z powodu do 45 minut, aby utworzyć bramę, usługa Azure Cloud Shell przekroczy limit czasu okresowo w trakcie tego ćwiczenia. Można ponownie uruchomić usługę Cloud Shell, klikając w lewym górnym rogu naciśnij w terminalu. Pamiętaj ponownie zadeklarować wszelkie zmienne, po ponownym uruchomieniu terminalu.
+* Ponieważ utworzenie bramy trwa do 45 minut, Azure Cloud Shell będzie okresowo przekroczyć limit czasu podczas tego ćwiczenia. Cloud Shell można uruchomić ponownie, klikając w lewym górnym rogu terminala. Pamiętaj, aby ponownie zadeklarować wszystkie zmienne po ponownym uruchomieniu terminalu.
 
-* Jeśli czy raczej zainstaluj najnowszą wersję modułu Azure PowerShell lokalnie, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
+* Jeśli zamiast tego chcesz lokalnie zainstalować najnowszą wersję modułu Azure PowerShell, zobacz [jak zainstalować i skonfigurować Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="Step1"></a>Krok 1 — Planowanie zakresów adresów IP
 
@@ -93,7 +93,7 @@ W przykładach stosujemy następujące wartości:
 
 * Nazwa sieci wirtualnej: TestVNet1
 * Grupa zasobów: TestRG1
-* Lokalizacja: Wschodnie stany USA
+* Lokalizacja: East US
 * TestVNet1: 10.11.0.0/16 i 10.12.0.0/16
 * FrontEnd: 10.11.0.0/24
 * BackEnd: 10.12.0.0/24
@@ -125,7 +125,7 @@ W przykładach stosujemy następujące wartości:
 
 1. Sprawdź ustawienia subskrypcji.
 
-   Łączenie się ze swoim kontem, jeśli używasz programu PowerShell lokalnie na komputerze. Jeśli używasz usługi Azure Cloud Shell zostało nawiązane automatycznie.
+   Połącz się ze swoim kontem, jeśli używasz programu PowerShell lokalnie na komputerze. Jeśli używasz Azure Cloud Shell, nastąpi automatyczne połączenie.
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -137,7 +137,7 @@ W przykładach stosujemy następujące wartości:
    Get-AzSubscription
    ```
 
-   Jeśli masz więcej niż jedną subskrypcję, określ subskrypcję, dla której chcesz użyć.
+   Jeśli masz więcej niż jedną subskrypcję, określ subskrypcję, której chcesz użyć.
 
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName nameofsubscription
@@ -150,7 +150,6 @@ W przykładach stosujemy następujące wartości:
    $VNetName1 = "TestVNet1"
    $FESubName1 = "FrontEnd"
    $BESubName1 = "Backend"
-   $GWSubName1 = "GatewaySubnet"
    $VNetPrefix11 = "10.11.0.0/16"
    $VNetPrefix12 = "10.12.0.0/16"
    $FESubPrefix1 = "10.11.0.0/24"
@@ -167,14 +166,14 @@ W przykładach stosujemy następujące wartości:
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. Utwórz konfiguracje podsieci dla sieci TestVNet1. Poniższy przykład pozwala utworzyć sieć wirtualną o nazwie TestVNet1 oraz trzy podsieci noszące kolejno nazwy GatewaySubnet, FrontEnd i Backend. Podczas zastępowania wartości ważne jest, aby podsieć bramy zawsze nosiła nazwę GatewaySubnet. W przypadku nadania jej innej nazwy proces tworzenia bramy zakończy się niepowodzeniem.
+4. Utwórz konfiguracje podsieci dla sieci TestVNet1. Poniższy przykład pozwala utworzyć sieć wirtualną o nazwie TestVNet1 oraz trzy podsieci noszące kolejno nazwy GatewaySubnet, FrontEnd i Backend. Podczas zastępowania wartości ważne jest, aby podsieć bramy zawsze nosiła nazwę GatewaySubnet. W przypadku nadania jej innej nazwy proces tworzenia bramy zakończy się niepowodzeniem. Z tego powodu nie jest on przypisywany przez zmienną poniżej.
 
    W poniższym przykładzie użyto zmiennych, które zostały ustawione wcześniej. W tym przykładzie użyto podsieci bramy /27. Chociaż możliwe jest utworzenie małej podsieci bramy /29, zaleca się utworzenie większej podsieci zawierającej więcej adresów, wybierając podsieć przynajmniej /28 lub /27. Zapewni to wystarczająco dużo adresów, aby możliwe były dodatkowe konfiguracje, które mogą być potrzebne w przyszłości.
 
    ```azurepowershell-interactive
    $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
    $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-   $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+   $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $GWSubPrefix1
    ```
 5. Utwórz sieć TestVNet1.
 
@@ -204,13 +203,13 @@ W przykładach stosujemy następujące wartości:
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-Po zakończeniu polecenia potrwać do 45 minut, aby utworzyć tę bramę. Jeśli używasz usługi Azure Cloud Shell można ponownie uruchomić usługi CloudShell sesję, klikając przycisk w prawym górnym lewym rogu usłudze Cloud Shell terminala, a następnie Konfigurowanie sieci TestVNet4. Nie musisz czekać, aż do zakończenia bramy sieci wirtualnej TestVNet1.
+Po zakończeniu poleceń zajmiemy do 45 minut, aby utworzyć tę bramę. Jeśli używasz Azure Cloud Shell, możesz ponownie uruchomić sesję CloudShell, klikając w lewym górnym rogu terminala Cloud Shell, a następnie skonfiguruj sieci testvnet4. Nie musisz czekać na zakończenie bramy sieci testvnet1.
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>Krok 3 — Tworzenie i konfigurowanie sieci TestVNet4
 
 Po skonfigurowaniu sieci TestVNet1 utwórz sieć TestVNet4. Wykonaj kroki opisane poniżej, w razie potrzeby zastępując podane wartości własnymi.
 
-1. Połącz i Zadeklaruj swoje zmienne. Należy pamiętać o zastąpieniu przykładowych wartości tymi, które mają zostać użyte w danej konfiguracji.
+1. Połącz i Zadeklaruj zmienne. Należy pamiętać o zastąpieniu przykładowych wartości tymi, które mają zostać użyte w danej konfiguracji.
 
    ```azurepowershell-interactive
    $RG4 = "TestRG4"
@@ -218,7 +217,6 @@ Po skonfigurowaniu sieci TestVNet1 utwórz sieć TestVNet4. Wykonaj kroki opisan
    $VnetName4 = "TestVNet4"
    $FESubName4 = "FrontEnd"
    $BESubName4 = "Backend"
-   $GWSubName4 = "GatewaySubnet"
    $VnetPrefix41 = "10.41.0.0/16"
    $VnetPrefix42 = "10.42.0.0/16"
    $FESubPrefix4 = "10.41.0.0/24"
@@ -239,7 +237,7 @@ Po skonfigurowaniu sieci TestVNet1 utwórz sieć TestVNet4. Wykonaj kroki opisan
    ```azurepowershell-interactive
    $fesub4 = New-AzVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
    $besub4 = New-AzVirtualNetworkSubnetConfig -Name $BESubName4 -AddressPrefix $BESubPrefix4
-   $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName4 -AddressPrefix $GWSubPrefix4
+   $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $GWSubPrefix4
    ```
 4. Utwórz sieć TestVNet4.
 
@@ -270,7 +268,7 @@ Po skonfigurowaniu sieci TestVNet1 utwórz sieć TestVNet4. Wykonaj kroki opisan
 
 ### <a name="step-4---create-the-connections"></a>Krok 4 — Tworzenie połączeń
 
-Poczekaj na zakończenie obu bram. Ponownie uruchom sesję programu Azure Cloud Shell i kopiowania i Wklej zmiennych, począwszy od kroku 2 i 3 w konsoli do ponownego zadeklarowania wartości.
+Zaczekaj na ukończenie obu bram. Uruchom ponownie sesję Azure Cloud Shell i skopiuj i wklej zmienne z początku kroku 2 i 3 do konsoli, aby ponownie zadeklarować wartości.
 
 1. Użyj obu bram sieci wirtualnej.
 
@@ -296,11 +294,11 @@ Poczekaj na zakończenie obu bram. Ponownie uruchom sesję programu Azure Cloud 
 
 ## <a name="difsub"></a>Łączenie sieci wirtualnych, które należą do różnych subskrypcji
 
-W tym scenariuszu nawiązywane jest połączenie między sieciami wirtualnymi TestVNet1 i TestVNet5. Sieci TestVNet1 i TestVNet5 znajdują się w różnych subskrypcjach. Subskrypcje nie muszą być skojarzone z tą samą dzierżawą usługi Active Directory.
+W tym scenariuszu nawiązywane jest połączenie między sieciami wirtualnymi TestVNet1 i TestVNet5. Sieci testvnet1 i sieci testvnet5 znajdują się w różnych subskrypcjach. Subskrypcje nie muszą być skojarzone z tą samą dzierżawą usługi Active Directory.
 
 Różnica między tymi krokami a poprzednim zestawem polega na tym, że w kontekście drugiej subskrypcji część czynności konfiguracyjnych należy wykonać w osobnej sesji programu PowerShell. Szczególnie, jeśli obie subskrypcje należą do różnych organizacji.
 
-Ze względu na zmianę kontekstu subskrypcji w tym ćwiczeniu, użytkownik może ułatwić przy użyciu programu PowerShell lokalnie na komputerze, a nie za pomocą usługi Azure Cloud Shell, gdy można uzyskać dostęp do kroku 8.
+Ze względu na zmianę kontekstu subskrypcji w tym ćwiczeniu można ułatwić korzystanie z programu PowerShell lokalnie na komputerze, zamiast korzystać z Azure Cloud Shell, gdy uzyskasz do kroku 8.
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>Krok 5 — Tworzenie i konfigurowanie sieci TestVNet1
 

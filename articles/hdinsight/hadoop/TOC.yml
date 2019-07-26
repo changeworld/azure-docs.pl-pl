@@ -74,7 +74,7 @@
         - name: Technologia Apache Hive z usługą Apache Hadoop
           href: hdinsight-use-hive.md
           items:
-            - name: Korzystanie z narzędzi HDInsight dla programu VS Code
+            - name: Korzystanie z narzędzi platformy Spark i technologii Hive dla programu VSCode
               href: ../hdinsight-for-vscode.md
               maintainContext: true
             - name: Korzystanie z narzędzi HDInsight dla programu Visual Studio

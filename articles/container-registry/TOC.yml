@@ -101,6 +101,8 @@
           href: container-registry-tasks-scheduled.md
         - name: Zadania wieloetapowe
           href: container-registry-tasks-multi-step.md
+        - name: Kompilowanie obrazu za pomocą pakietów kompilacji (wersja zapoznawcza)
+          href: container-registry-tasks-pack-build.md
         - name: Używanie z tożsamością zarządzaną
           href: container-registry-tasks-authentication-managed-identity.md
     - name: Rejestry i inne usługi platformy Azure

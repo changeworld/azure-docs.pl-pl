@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji korporacyjnych w usłudze Azure AD.
+title: Dostosowywanie oświadczeń tokenów SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD | Microsoft Docs
+description: Informacje o dostosowywaniu oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,119 +18,119 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 636086ce0d055ab8de1d1b95dbbf7e5d96c7d7ef
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 3f5930f2d3db94f615321eda480aed0d4d196911
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483063"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380828"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
-Obecnie usługi Azure Active Directory (Azure AD) obsługuje logowanie jednokrotne (SSO) z większością aplikacji przedsiębiorstwa, w tym aplikacje, zarówno wstępnie zintegrowane w galerii aplikacji Azure AD, jak również aplikacji niestandardowych. Jeśli użytkownik uwierzytelnia się do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML 2.0, usługi Azure AD wysyła token do aplikacji (za pośrednictwem metody POST protokołu HTTP). A następnie ją sprawdza poprawność tokenu i używa go do logowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML zawierają informacje o użytkowniku, znane jako *oświadczeń*.
+Obecnie usługa Azure Active Directory (Azure AD) obsługuje logowanie jednokrotne (SSO) z większością aplikacji przedsiębiorstwa, w tym zarówno aplikacje wstępnie zintegrowane w galerii aplikacji usługi Azure AD, jak i aplikacje niestandardowe. Gdy użytkownik uwierzytelnia się w aplikacji za pośrednictwem usługi Azure AD przy użyciu protokołu SAML 2,0, usługa Azure AD wysyła token do aplikacji (za pośrednictwem protokołu HTTP POST). Następnie aplikacja sprawdza poprawność i używa tokenu do zarejestrowania użytkownika w zamiast monitowania o podanie nazwy użytkownika i hasła. Te tokeny SAML zawierają informacje o użytkowniku znanym jako *oświadczenia*.
 
-A *oświadczenia* informacje informacją przez dostawcę tożsamości użytkownika w tokenie są wydania dla tego użytkownika. W [tokenu SAML](https://en.wikipedia.org/wiki/SAML_2.0), tych danych jest zwykle są zawarte w instrukcji atrybutów SAML. Unikatowy identyfikator użytkownika jest zazwyczaj reprezentowany w podmiocie SAML, nazywany również jako identyfikator nazwy.
+Jest *to* informacja, którą dostawca tożsamości informuje o użytkowniku w tokenie, który wystawia dla tego użytkownika. W [tokenie SAML](https://en.wikipedia.org/wiki/SAML_2.0)dane te są zazwyczaj zawarte w instrukcji języka SAML. Unikatowy identyfikator użytkownika jest zazwyczaj reprezentowany przez element SAML subject nazywany również identyfikatorem nazwy.
 
-Domyślnie usługa Azure AD wystawia SAML token do aplikacji, która zawiera `NameIdentifier` oświadczenia o wartości nazwy użytkownika (znany także jako nazwa główna użytkownika) w usłudze Azure AD, która może jednoznacznie zidentyfikować użytkownika. SAML token zawiera również dodatkowe oświadczenia, zawierającego adres e-mail użytkownika, imię i nazwisko.
+Domyślnie usługa Azure AD wystawia token języka SAML dla aplikacji, która zawiera `NameIdentifier` zastrzeżenie o wartości nazwy użytkownika (znanej także jako główna nazwa użytkownika) w usłudze Azure AD, która może jednoznacznie identyfikować użytkownika. Token SAML zawiera również dodatkowe oświadczenia zawierające adres e-mail użytkownika, imię i nazwisko.
 
-Aby wyświetlić lub edytować oświadczeń wystawionych w tokenie SAML do aplikacji, Otwórz aplikację w witrynie Azure portal. Następnie otwórz **atrybutów użytkowników i oświadczeń** sekcji.
+Aby wyświetlić lub edytować oświadczenia wystawione w tokenie SAML dla aplikacji, Otwórz aplikację w Azure Portal. Następnie otwórz sekcję **atrybuty użytkownika & oświadczenia** .
 
-![Otwórz sekcję atrybutów użytkowników i oświadczeń w witrynie Azure portal](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
+![Otwórz sekcję atrybuty użytkownika & oświadczenia w Azure Portal](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
 
-Istnieją dwie możliwe przyczyny, dlaczego może być konieczne edytowanie oświadczeń wystawionych w tokenie SAML:
+Istnieją dwie możliwe przyczyny, dla których może być konieczne edytowanie oświadczeń wystawionych w tokenie SAML:
 
-* Aplikacja wymaga `NameIdentifier` lub NameID uważają się coś innego niż nazwa użytkownika (lub główna nazwa użytkownika), przechowywane w usłudze Azure AD.
-* Aplikacja została zapisana wymaga innego zestawu oświadczeń identyfikatorów URI lub wartości oświadczeń.
+* Aplikacja wymaga, `NameIdentifier` aby element lub NameID miał być innym niż nazwa użytkownika (lub główna nazwa użytkownika) zapisana w usłudze Azure AD.
+* Aplikacja została zapisywana, aby wymagać innego zestawu identyfikatorów URI lub wartości zgłoszeń.
 
 ## <a name="editing-nameid"></a>Edytowanie NameID
 
-Aby edytować NameID (wartość nazwy identyfikatora):
+Aby edytować NameID (wartość identyfikatora nazwy):
 
-1. Otwórz **nazwę wartości identyfikatora** strony.
-1. Wybierz atrybut lub przekształcenie, które chcesz zastosować do atrybutu. Opcjonalnie można określić format ma oświadczenia NameID mieć.
+1. Otwórz stronę **wartości identyfikatora nazwy** .
+1. Wybierz atrybut lub przekształcenie, które chcesz zastosować do atrybutu. Opcjonalnie możesz określić format, który ma mieć NameID.
 
    ![Edytuj wartość NameID (identyfikator nazwy)](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
-### <a name="nameid-format"></a>Format identyfikatora NameID
+### <a name="nameid-format"></a>Format NameID
 
-Jeśli żądanie języka SAML zawiera element NameIDPolicy w określonym formacie, usługa Azure AD będzie honorować formatu w żądaniu.
+Jeśli żądanie SAML zawiera element NameIDPolicy o określonym formacie, usługa Azure AD będzie przestrzegać formatu żądania.
 
-Jeśli żądanie języka SAML nie zawiera elementu dla NameIDPolicy, usługi Azure AD będzie wystawiać NameID w formacie, które określisz. Jeśli format nie jest określony, usługi Azure AD będzie używać domyślnego formatu źródła skojarzone z źródłem oświadczeń wybrane.
+Jeśli żądanie SAML nie zawiera elementu NameIDPolicy, usługa Azure AD wystawia NameID z określonym formatem. Jeśli żaden format nie zostanie określony, usługa Azure AD będzie używać domyślnego formatu źródłowego skojarzonego z wybranym źródłem usługi.
 
-Z **format identyfikatora nazwy wybierz** listy rozwijanej można wybrać jedną z następujących opcji.
+Z listy rozwijanej **Wybierz format identyfikatora nazwy** można wybrać jedną z następujących opcji.
 
-| Format identyfikatora NameID | Opis |
+| Format NameID | Opis |
 |---------------|-------------|
-| **Domyślne** | Usługa Azure AD użyje domyślnego formatu źródła. |
-| **Trwałe** | Usługa Azure AD będzie używać trwały jako format identyfikatora NameID. |
-| **EmailAddress** | Usługa Azure AD będzie używać EmailAddress jako format identyfikatora NameID. |
-| **Nie określono tego parametru** | Usługa Azure AD będzie używać nieokreślony jako format identyfikatora NameID. |
-| **Przejściowe** | Usługa Azure AD będzie używać przejściowy, jako format identyfikatora NameID. |
+| **Domyślne** | Usługa Azure AD będzie używać domyślnego formatu źródła. |
+| **Trwałe** | Usługa Azure AD będzie używać trwałego formatu NameID. |
+| **EmailAddress** | Usługa Azure AD będzie używać EmailAddress jako formatu NameID. |
+| **Nieokreślony** | Usługa Azure AD będzie używać nieokreślone jako formatu NameID. |
+| **Administracyjnej** | Usługa Azure AD będzie używać przejściowej jako formatu NameID. |
 
-Aby dowiedzieć się więcej o atrybucie NameIDPolicy, zobacz [protokołu SAML rejestracji jednokrotnej](single-sign-on-saml-protocol.md).
+Aby dowiedzieć się więcej o atrybucie NameIDPolicy, zobacz Logowanie jednokrotne [protokołu SAML](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Atrybuty
 
-Wybierz żądane źródło `NameIdentifier` (lub NameID) oświadczenia. Możesz wybrać spośród następujących opcji.
+Wybierz żądane źródło dla `NameIdentifier` żądania (lub NameID). Można wybrać jedną z następujących opcji.
 
 | Name (Nazwa) | Opis |
 |------|-------------|
 | Email | Adres e-mail użytkownika |
 | userprincipalName | Główna nazwa użytkownika (UPN) użytkownika |
-| onpremisessamaccount | Nazwa konta SAM, który jest synchronizowany ze środowiska lokalnego usługi Azure AD |
-| Identyfikator obiektu | Identyfikator obiektu użytkownika w usłudze Azure AD |
-| EmployeeID | EmployeeID użytkownika |
-| Rozszerzenia katalogów | Rozszerzenia katalogów [synchronizowanych z lokalnej przy użyciu usługi Azure AD Connect Sync Active Directory.](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
-| Atrybuty rozszerzenia 1 – 15 | W środowisku lokalnym atrybutów rozszerzenia, używanej do rozszerzania schematu usługi Azure AD |
+| onpremisessamaccount | Nazwa konta SAM, które zostało zsynchronizowane z lokalnej usługi Azure AD |
+| obiektu | Identyfikator obiektu użytkownika w usłudze Azure AD |
+| EmployeeID | IDPracownika użytkownika |
+| Rozszerzenia katalogów | Rozszerzenia katalogu [zsynchronizowane z Active Directory lokalnego przy użyciu synchronizacji Azure AD Connect](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
+| Atrybuty rozszerzenia 1-15 | Atrybuty rozszerzenia lokalnego używane do rozszerzania schematu usługi Azure AD |
 
-Aby uzyskać więcej informacji, zobacz [tabela 3: Prawidłowe wartości Identyfikatora dla każdego źródła](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
+Aby uzyskać więcej informacji, [zobacz tabela 3: Prawidłowe wartości identyfikatorów na źródło](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
 
-### <a name="special-claims---transformations"></a>Specjalne oświadczeń — przekształcenia
-
-Można również użyć funkcji przekształcenia oświadczeń.
-
-| Funkcja | Opis |
-|----------|-------------|
-| **ExtractMailPrefix()** | Usuwa sufiks domeny od adresu e-mail lub nazwa główna użytkownika. Spowoduje to wyodrębnienie tylko pierwszą część nazwy użytkownika, są przekazywane (na przykład "joe_smith" zamiast joe_smith@contoso.com). |
-| **Join()** | Dołącza atrybut o zweryfikowanej domeny. Wartość identyfikatora wybranego użytkownika ma domenę, wyodrębnia nazwę użytkownika, aby dołączyć wybranego zweryfikowanej domeny. Na przykład, jeśli wybierzesz adres e-mail (joe_smith@contoso.com) jako wartość identyfikatora użytkownika i wybierz contoso.onmicrosoft.com jako zweryfikowanej domeny, spowoduje to joe_smith@contoso.onmicrosoft.com. |
-| **ToLower()** | Konwertuje znaki wybranego atrybutu na małe litery. |
-| **ToUpper()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |
-
-## <a name="adding-application-specific-claims"></a>Dodawanie oświadczeń specyficzne dla aplikacji
-
-Aby dodać specyficzne dla aplikacji oświadczeń:
-
-1. W **atrybutów użytkowników i oświadczeń**, wybierz opcję **Dodaj nowe oświadczenie** otworzyć **Zarządzanie oświadczenia użytkownika** strony.
-1. Wprowadź **nazwa** oświadczeń. Wartość nie musi ściśle wzorca identyfikatora URI, na specyfikacji protokołu SAML. Jeśli potrzebujesz wzorzec URI używany, można umieścić, **Namespace** pola.
-1. Wybierz **źródła** oświadczenie gdzie pobrać jego wartość. Możesz wybrać atrybut użytkownika z listy rozwijanej atrybutu źródłowego lub zastosować przekształcenie do atrybutu użytkownika przed emitując je jako oświadczenia.
-
-### <a name="application-specific-claims---transformations"></a>Specyficzne dla aplikacji oświadczeń — przekształcenia
+### <a name="special-claims---transformations"></a>Specjalne oświadczenia — przekształcenia
 
 Można również użyć funkcji przekształcenia oświadczeń.
 
 | Funkcja | Opis |
 |----------|-------------|
-| **ExtractMailPrefix()** | Usuwa sufiks domeny od adresu e-mail lub nazwa główna użytkownika. Spowoduje to wyodrębnienie tylko pierwszą część nazwy użytkownika, są przekazywane (na przykład "joe_smith" zamiast joe_smith@contoso.com). |
-| **Join()** | Tworzy nową wartość po dołączeniu do dwa atrybuty. Opcjonalnie można użyć separator między dwa atrybuty. |
-| **ToLower()** | Konwertuje znaki wybranego atrybutu na małe litery. |
-| **ToUpper()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |
-| **Contains()** | Generuje atrybut lub stała, jeśli dane wejściowe odpowiada określonej wartości. W przeciwnym razie można określić innego dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik.<br/>Na przykład, aby emitować oświadczeń, których wartość jest adres e-mail użytkownika, jeśli zawiera on domeny "@contoso.com", w przeciwnym razie ma zostać wyprowadzony główną nazwę użytkownika. Aby to zrobić, czy skonfiguruj następujące wartości:<br/>*Parametr 1(input)* : user.email<br/>*Wartość*: "@contoso.com"<br/>Parametr 2 (dane wyjściowe): user.email<br/>Parametr 3 (dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik): user.userprincipalname |
-| **EndWith()** | Generuje atrybut lub stała, gdy dane wejściowe kończy się określoną wartością. W przeciwnym razie można określić innego dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik.<br/>Na przykład chcąc do wysyłania oświadczeń, których wartość jest employeeid użytkownika, jeśli identyfikatorem employeeid kończy się ciągiem "000", w przeciwnym razie ma służący do wypełniania wyjściowego atrybutu rozszerzenia. Aby to zrobić, czy skonfiguruj następujące wartości:<br/>*Parametr 1(input)* : user.employeeid<br/>*Wartość*: "000"<br/>Parametr 2 (dane wyjściowe): user.employeeid<br/>Parametr 3 (dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik): user.extensionattribute1 |
-| **StartWith()** | Generuje atrybut lub stała, jeśli dane wejściowe rozpoczyna się od określonej wartości. W przeciwnym razie można określić innego dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik.<br/>Na przykład chcąc do wysyłania oświadczeń, których wartość jest employeeid użytkownika, jeśli kraj/region, który rozpoczyna się od "PL", w przeciwnym razie ma służący do wypełniania wyjściowego atrybutu rozszerzenia. Aby to zrobić, czy skonfiguruj następujące wartości:<br/>*Parametr 1(input)* : user.country<br/>*Wartość*: "US"<br/>Parametr 2 (dane wyjściowe): user.employeeid<br/>Parametr 3 (dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik): user.extensionattribute1 |
-| **Extract() — po dopasowania** | Zwraca podciąg po odpowiada określonej wartości.<br/>Na przykład, jeśli wartość wejściowa jest "Finance_BSimon", wartość jest "Finance_", a następnie oświadczeń danych wyjściowych jest "BSimon". |
-| **Extract() — przed dopasowania** | Zwraca podciąg, dopóki nie odpowiada określonej wartości.<br/>Na przykład, jeśli wartość wejściowa jest "BSimon_US", wartość jest "_US", a następnie oświadczeń danych wyjściowych jest "BSimon". |
-| **Extract() - między dopasowania** | Zwraca podciąg, dopóki nie odpowiada określonej wartości.<br/>Na przykład jeśli wartość wejściowa jest "Finance_BSimon_US", pierwsza wartość dopasowania jest "Finance_", druga wartość dopasowania jest "_US", a następnie oświadczeń danych wyjściowych jest "BSimon". |
-| **ExtractAlpha() — prefiks** | Zwraca część alfabetycznej prefiks ciągu.<br/>Na przykład jeśli wartość wejściowa jest "BSimon_123", następnie zwraca "BSimon". |
-| **ExtractAlpha() - sufiks** | Zwraca część alfabetycznej sufiks ciągu.<br/>Na przykład jeśli wartość wejściowa jest "123_Simon", następnie zwraca "Simon". |
-| **ExtractNumeric() — prefiks** | Zwraca wartości liczbowych prefiks część ciągu.<br/>Na przykład jeśli wartość wejściowa jest "123_BSimon", następnie zwraca "123". |
-| **ExtractNumeric() - sufiks** | Zwraca część wartości liczbowych sufiks ciągu.<br/>Na przykład jeśli wartość wejściowa jest "BSimon_123", następnie zwraca "123". |
-| **IfEmpty()** | Generuje atrybut lub stała, jeśli dane wejściowe są wartości null ani być pusta.<br/>Na przykład, aby dane wyjściowe przechowywane w extensionattribute, jeśli employeeid dla danego użytkownika jest pusty atrybut. Aby to zrobić, czy skonfiguruj następujące wartości:<br/>Parametr 1(input): user.employeeid<br/>Parametr 2 (dane wyjściowe): user.extensionattribute1<br/>Parametr 3 (dane wyjściowe, jeśli nie zostanie odnaleziony odpowiednik): user.employeeid |
-| **IfNotEmpty()** | Generuje atrybut lub stała, jeśli dane wejściowe nie jest zerowa lub pusta.<br/>Na przykład, aby dane wyjściowe przechowywane w extensionattribute, jeśli employeeid dla danego użytkownika nie jest pusty atrybut. Aby to zrobić, czy skonfiguruj następujące wartości:<br/>Parametr 1(input): user.employeeid<br/>Parametr 2 (dane wyjściowe): user.extensionattribute1 |
+| **ExtractMailPrefix()** | Usuwa sufiks domeny z adresu e-mail lub głównej nazwy użytkownika. Spowoduje to wyodrębnienie tylko pierwszej części nazwy użytkownika, która jest przenoszona przez (na przykład "joe_smith" zamiast joe_smith@contoso.com). |
+| **Join ()** | Sprzęga atrybut z zweryfikowaną domeną. Jeśli wybrana wartość identyfikatora użytkownika ma domenę, Wyodrębnij nazwę użytkownika w celu dołączenia wybranej zweryfikowanej domeny. Na przykład w przypadku wybrania adresu e-mail (joe_smith@contoso.com) jako wartości identyfikatora użytkownika i wybrania opcji contoso.onmicrosoft.com jako zweryfikowanej domeny spowoduje to nastąpić. joe_smith@contoso.onmicrosoft.com |
+| **ToLower()** | Konwertuje znaki wybranego atrybutu do małych liter. |
+| **ToUpper ()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |
 
-Jeśli potrzebujesz dodatkowych przekształcenia, Prześlij swój pomysł w [forum z opiniami w usłudze Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) w obszarze *aplikacji SaaS* kategorii.
+## <a name="adding-application-specific-claims"></a>Dodawanie oświadczeń specyficznych dla aplikacji
+
+Aby dodać oświadczenia specyficzne dla aplikacji:
+
+1. W polu **atrybuty użytkownika & oświadczenia**wybierz pozycję **Dodaj nowe oświadczenie** , aby otworzyć stronę **Zarządzanie oświadczeniami użytkowników** .
+1. Wprowadź **nazwę** oświadczenia. Wartość nie musi być ściśle zgodna ze wzorcem URI dla specyfikacji SAML. Jeśli potrzebujesz wzorca URI, możesz go umieścić w polu **przestrzeń nazw** .
+1. Wybierz **Źródło** , do którego ma zostać pobrana wartość. Można wybrać atrybut użytkownika z listy rozwijanej atrybutów źródłowych lub zastosować transformację do atrybutu użytkownika przed wyemitowaniem go jako roszczeń.
+
+### <a name="application-specific-claims---transformations"></a>Oświadczenia specyficzne dla aplikacji — przekształcenia
+
+Można również użyć funkcji przekształcenia oświadczeń.
+
+| Funkcja | Opis |
+|----------|-------------|
+| **ExtractMailPrefix()** | Usuwa sufiks domeny z adresu e-mail lub głównej nazwy użytkownika. Spowoduje to wyodrębnienie tylko pierwszej części nazwy użytkownika, która jest przenoszona przez (na przykład "joe_smith" zamiast joe_smith@contoso.com). |
+| **Join ()** | Tworzy nową wartość przez Sprzęganie dwóch atrybutów. Opcjonalnie można użyć separatora między dwoma atrybutami. |
+| **ToLower()** | Konwertuje znaki wybranego atrybutu do małych liter. |
+| **ToUpper ()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |
+| **Zawiera ()** | Wyprowadza atrybut lub stałą, jeśli dane wejściowe pasują do określonej wartości. W przeciwnym razie można określić inne dane wyjściowe, jeśli nie ma żadnego dopasowania.<br/>Na przykład jeśli chcesz emitować, gdzie wartość jest adresem e-mail użytkownika, jeśli zawiera domenę "@contoso.com", w przeciwnym razie chcesz utworzyć dane wyjściowe głównej nazwy użytkownika. W tym celu należy skonfigurować następujące wartości:<br/>*Parametr 1 (dane wejściowe)* : User. email<br/>*Wartość*: "@contoso.com"<br/>Parametr 2 (dane wyjściowe): User. email<br/>Parametr 3 (dane wyjściowe w przypadku braku dopasowania): User. userPrincipalName |
+| **EndWith()** | Wyprowadza atrybut lub stałą, jeśli dane wejściowe kończą się określoną wartością. W przeciwnym razie można określić inne dane wyjściowe, jeśli nie ma żadnego dopasowania.<br/>Na przykład, jeśli chcesz emitować w przypadku, gdy wartość jest wartością IDPracownika użytkownika, jeśli element IDPracownika zostanie zakończony znakiem "000", w przeciwnym razie chcesz wyprowadzić atrybut rozszerzenia. W tym celu należy skonfigurować następujące wartości:<br/>*Parametr 1 (dane wejściowe)* : User. IDPracownika<br/>*Wartość*: "000"<br/>Parametr 2 (Output): User. IDPracownika<br/>Parametr 3 (dane wyjściowe w przypadku braku dopasowania): User. extensionAttribute1 |
+| **StartWith()** | Wyprowadza atrybut lub stałą, jeśli dane wejściowe zaczynają się od określonej wartości. W przeciwnym razie można określić inne dane wyjściowe, jeśli nie ma żadnego dopasowania.<br/>Na przykład, jeśli chcesz emitować w przypadku, gdy wartość jest wartością IDPracownika użytkownika, jeśli kraj/region zaczyna się od "US", w przeciwnym razie chcesz wyprowadzić atrybut rozszerzenia. W tym celu należy skonfigurować następujące wartości:<br/>*Parametr 1 (wejście)* : User. Country<br/>*Wartość*: "US"<br/>Parametr 2 (Output): User. IDPracownika<br/>Parametr 3 (dane wyjściowe w przypadku braku dopasowania): User. extensionAttribute1 |
+| **Wyodrębnij () — po dopasowaniu** | Zwraca podciąg po dopasowaniu określonej wartości.<br/>Na przykład, jeśli wartość wejściowa to "Finance_BSimon", odpowiadająca wartość to "Finance_", wówczas wynikiem żądania jest "BSimon". |
+| **Extract () — przed dopasowaniem** | Zwraca podciąg, dopóki nie pasuje do określonej wartości.<br/>Na przykład, jeśli wartość wejściowa to "BSimon_US", odpowiadająca wartość to "_US", wówczas wynikiem żądania jest "BSimon". |
+| **Extract () — między dopasowaniem** | Zwraca podciąg, dopóki nie pasuje do określonej wartości.<br/>Na przykład, jeśli wartością wejściową jest "Finance_BSimon_US", pierwszą zgodną wartością jest "Finance_", druga zgodna wartość to "_US", a następnie dane wyjściowe żądania to "BSimon". |
+| **ExtractAlpha () — prefiks** | Zwraca wartość alfabetyczną prefiksu ciągu.<br/>Na przykład, jeśli wartość wejściowa to "BSimon_123", zwraca "BSimon". |
+| **ExtractAlpha () — sufiks** | Zwraca alfabetyczną część ciągu.<br/>Na przykład, jeśli wartość wejściowa to "123_Simon", zwraca "Simon". |
+| **ExtractNumeric () — prefiks** | Zwraca część liczbową prefiksu ciągu.<br/>Na przykład, jeśli wartość wejściowa to "123_BSimon", zwraca "123". |
+| **ExtractNumeric () — sufiks** | Zwraca numeryczną część ciągu.<br/>Na przykład, jeśli wartość wejściowa to "BSimon_123", zwraca "123". |
+| **IfEmpty()** | Wyprowadza atrybut lub stałą, jeśli dane wejściowe mają wartość null lub są puste.<br/>Na przykład jeśli chcesz, aby dane wyjściowe były przechowywane w atrybucie ExtensionAttribute, jeśli IDPracownika dla danego użytkownika jest pusty. W tym celu należy skonfigurować następujące wartości:<br/>Parametr 1 (dane wejściowe): User. IDPracownika<br/>Parametr 2 (Output): User. extensionAttribute1<br/>Parametr 3 (dane wyjściowe w przypadku braku dopasowania): User. IDPracownika |
+| **IfNotEmpty()** | Wyprowadza atrybut lub stałą, jeśli dane wejściowe nie mają wartości null ani nie są puste.<br/>Na przykład jeśli chcesz, aby dane wyjściowe były przechowywane w atrybucie ExtensionAttribute, jeśli IDPracownika dla danego użytkownika nie jest pusty. W tym celu należy skonfigurować następujące wartości:<br/>Parametr 1 (dane wejściowe): User. IDPracownika<br/>Parametr 2 (Output): User. extensionAttribute1 |
+
+Jeśli potrzebujesz dodatkowych transformacji, prześlij swój pomysł na [forum opinii w usłudze Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) w kategorii *aplikacji SaaS* .
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Zarządzanie aplikacjami w usłudze Azure AD](../manage-apps/what-is-application-management.md)
 * [Konfigurowanie logowania jednokrotnego w aplikacjach, które nie znajdują się w galerii aplikacji usługi Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](howto-v1-debug-saml-sso-issues.md)
+* [Rozwiązywanie problemów z logowaniem jednokrotnym opartym na protokole SAML](howto-v1-debug-saml-sso-issues.md)

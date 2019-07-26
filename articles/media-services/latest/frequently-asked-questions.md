@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 766208c01f27d2024025b7a202bc3724b4fc9fff
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311834"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501252"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 — często zadawane pytania
 
@@ -110,28 +110,6 @@ Często klienci inwestowanych w farmie serwerów licencji albo we własnych cent
 
 * Usługa STS musi wystawiać tokeny są akceptowane, które można sprawdzić w farmie serwerów licencji. Na przykład serwerów licencji Widevine, które są dostarczane przez Axinom wymagać określonych token JWT z komunikatem o uprawnienia. W związku z tym musisz mieć usługi STS do wystawiania tokenów JWT. 
 * Nie potrzebujesz już do konfigurowania usługi dostarczania licencji w usłudze Media Services. Należy podać adresy URL pozyskiwania licencji (w przypadku technologii PlayReady, Widevine i FairPlay) po skonfigurowaniu ContentKeyPolicies.
-
-### <a name="what-if-i-want-to-use-a-custom-sts"></a>Co zrobić, jeśli chcę użyć niestandardowej usługi STS?
-
-Klient może wybrać do użycia niestandardowej usługi STS w celu zapewnienia tokenów Jwt. Przyczyny:
-
-* Dostawca tożsamości używany przez klienta nie obsługuje usługi STS. W tym przypadku niestandardowej usługi STS może być opcją.
-* Klient może być konieczne bardziej elastyczne większego formantu lub do integracji usługi STS z subskrypcją klienta z systemem rozliczeniowym. Na przykład MVPD operator może być wiele pakietów subskrybenta OTT, takich jak podstawowa, premium i sportu. Operator może być zgodne oświadczenia w tokenie pakietem subskrybenta, aby są udostępniane tylko zawartości określonego pakietu. W tym przypadku niestandardowej usługi STS zapewnia wymagane elastyczność i kontrolę.
-
-Jeśli używasz niestandardowej usługi STS, przeprowadza się dwie zmiany:
-
-* Podczas konfigurowania usługi dostarczania licencji dla zasobu, należy określić klucz zabezpieczeń używane na potrzeby weryfikacji przez niestandardowej usługi STS, zamiast bieżącego klucza z usługi Azure AD. (Więcej szczegółów wykonaj). 
-* Podczas generowania tokenu JTW określono klucza zabezpieczeń, zamiast X509 bieżącego klucza prywatnego certyfikatu w usłudze Azure AD.
-
-Istnieją dwa typy kluczy zabezpieczeń:
-
-* Klucz symetryczny: Ten sam klucz jest używany do generowania i weryfikowania tokenu JWT.
-* Klucz asymetryczny: Para kluczy publiczny-prywatny w certyfikacie x509 jest używana z kluczem prywatnym do szyfrowania/generowania tokenu JWT oraz klucza publicznego do weryfikowania tokenów.
-
-> [!NOTE]
-> Jeśli używasz środowiska .NET Framework / C# jako platformy projektowej, X509 certyfikat używany dla klucza asymetrycznego zabezpieczeń musi mieć klucz o długości co najmniej 2048. Jest to wymagane klasy System.IdentityModel.Tokens.X509AsymmetricSecurityKey w programie .NET Framework. W przeciwnym razie jest zgłaszany następujący wyjątek:
-> 
-> IDX10630: Element "System. IdentityModel. Tokens. X509AsymmetricSecurityKey" dla podpisywania nie może być mniejszy niż "2048" bitów.
 
 ## <a name="media-services-v2-vs-v3"></a>Media Services V2 a v3 
 

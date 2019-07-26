@@ -1,29 +1,29 @@
 ---
-title: Samouczek — Tworzenie bramy aplikacji, który hostuje wiele witryn sieci web przy użyciu witryny Azure portal
-description: W tym samouczku dowiesz się, jak utworzyć bramę aplikacji, który hostuje wiele witryn sieci web przy użyciu witryny Azure portal.
+title: Samouczek — Tworzenie bramy aplikacji, która hostuje wiele witryn sieci Web przy użyciu Azure Portal
+description: W tym samouczku dowiesz się, jak utworzyć bramę aplikacji, która będzie hostować wiele witryn sieci Web przy użyciu Azure Portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 4/18/2019
+ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 3e27a79c7a6e3d39679118f532dd464a32463d69
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 73a313a6244971b65ba89fb7b676610d88acabfa
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122269"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498451"
 ---
-# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Samouczek: Tworzenie i konfigurowanie bramy aplikacji do hostowania wielu witryn sieci web przy użyciu witryny Azure portal
+# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Samouczek: Tworzenie i Konfigurowanie bramy aplikacji na potrzeby hostowania wielu witryn sieci Web przy użyciu Azure Portal
 
-Można użyć portalu Azure w celu [Konfigurowanie hostingu wielu witryn sieci web](multiple-site-overview.md) po utworzeniu [bramy application gateway](overview.md). W tym samouczku zdefiniujesz pule adresów zaplecza przy użyciu maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku przyjęto założenie, że jesteś właścicielem wielu domen, przykładami których są *www.contoso.com* i *www.fabrikam.com*.
+Azure Portal służy do [konfigurowania hostingu wielu witryn sieci Web](multiple-site-overview.md) podczas tworzenia [bramy aplikacji](overview.md). W tym samouczku zdefiniujesz pule adresów zaplecza przy użyciu maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku przyjęto założenie, że jesteś właścicielem wielu domen, przykładami których są *www.contoso.com* i *www.fabrikam.com*.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie bramy aplikacji
-> * Tworzenie maszyn wirtualnych dla serwerów wewnętrznej bazy danych
-> * Utwórz pule zaplecza z serwerami wewnętrznej bazy danych
+> * Tworzenie maszyn wirtualnych dla serwerów zaplecza
+> * Tworzenie pul zaplecza z serwerami zaplecza
 > * Tworzenie odbiorników zaplecza
 > * Tworzenie reguł routingu
 > * Tworzenie rekordu CNAME w domenie
@@ -38,136 +38,184 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W tym przykładzie są tworzone dwie podsieci: jedna dla bramy aplikacji i druga dla serwerów zaplecza. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji.
+1. Wybierz pozycję **Utwórz zasób** w menu po lewej stronie w witrynie Azure Portal. Zostanie wyświetlone okno **Nowe**.
 
-1. Kliknij przycisk **New** w lewym górnym rogu witryny Azure portal.
-2. Wybierz pozycję **Sieć**, a następnie z listy Polecane wybierz pozycję **Application Gateway**.
-3. Wprowadź następujące wartości dla bramy aplikacji:
+2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Application Gateway** z listy **Polecane**.
 
-   - *myAppGateway* — jako nazwę bramy aplikacji.
-   - *myResourceGroupAG* — jako nową grupę zasobów.
+### <a name="basics-tab"></a>Karta podstawy
 
-     ![Tworzenie nowej bramy aplikacji](./media/create-multiple-sites-portal/application-gateway-create.png)
+1. Na karcie **podstawowe** wprowadź następujące wartości następujących ustawień bramy aplikacji:
 
-4. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
-5. Kliknij kolejno pozycje **Wybierz sieć wirtualną**, **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
+   - **Grupa zasobów**: wybierz **myResourceGroupAG** jako grupę zasobów. Jeśli ta grupa nie istnieje, wybierz pozycję **Utwórz nową** w celu jej utworzenia.
+   - **Nazwa bramy aplikacji**: wprowadź *myAppGateway* jako nazwę bramy aplikacji.
 
-   - *myVNet* — jako nazwę sieci wirtualnej.
-   - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
-   - *myAGSubnet* — jako nazwę podsieci.
-   - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
+     ![Utwórz nową bramę aplikacji: Ustawienia podstawowe](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
-     ![Tworzenie sieci wirtualnej](./media/create-multiple-sites-portal/application-gateway-vnet.png)
+2.  Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej. Można utworzyć nową sieć wirtualną lub użyć istniejącej. W tym przykładzie utworzysz nową sieć wirtualną w tym samym czasie, podczas tworzenia bramy aplikacji. Wystąpienia Application Gateway są tworzone w różnych podsieciach. W tym przykładzie tworzysz dwie podsieci: jedną dla bramy aplikacji i drugą dla serwerów zaplecza.
 
-6. Kliknij przycisk **OK**, aby utworzyć sieć wirtualną i podsieć.
-7. Kliknij przycisk **wybierz publiczny adres IP**, kliknij przycisk **Utwórz nową**, a następnie wprowadź nazwę publicznego adresu IP. W tym przykładzie publiczny adres IP nosi nazwę *myAGPublicIPAddress*. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
-8. Zaakceptuj wartości domyślne dla konfiguracji odbiornika, pozostaw zapory aplikacji sieci Web, które są wyłączone, a następnie kliknij przycisk **OK**.
-9. Przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **OK** do tworzenia zasobów sieciowych i bramy aplikacji. Może upłynąć kilka minut w usłudze application gateway można utworzyć, poczekaj na wdrożenie zakończy się pomyślnie przed przejściem do następnej sekcji.
+    W obszarze **Konfigurowanie sieci wirtualnej**wybierz pozycję **Utwórz nową** , aby utworzyć nową sieć wirtualną. W otwartym oknie **Tworzenie sieci wirtualnej** wprowadź następujące wartości, aby utworzyć sieć wirtualną i dwie podsieci:
 
-### <a name="add-a-subnet"></a>Dodawanie podsieci
+    - **Nazwa**: wprowadź *myVNet* jako nazwę sieci wirtualnej.
 
-1. W menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie na liście zasobów kliknij pozycję **myVNet**.
-2. Kliknij przycisk **podsieci**, a następnie kliknij przycisk **podsieci**.
+    - **Nazwa podsieci** (Podsieć Application Gateway): W siatce **podsieci** zostanie wyświetlona podsieć o nazwie *default*. Zmień nazwę tej podsieci na *myAGSubnet*.<br>Podsieć bramy aplikacji może zawierać tylko bramy aplikacji. Inne zasoby nie są dozwolone.
 
-    ![Tworzenie podsieci](./media/create-multiple-sites-portal/application-gateway-subnet.png)
+    - **Nazwa podsieci** (podsieć serwera wewnętrznej bazy danych): W drugim wierszu siatki **podsieci** wprowadź *myBackendSubnet* w kolumnie **Nazwa podsieci** .
 
-3. Wprowadź *myBackendSubnet* jako nazwę podsieci, a następnie kliknij przycisk **OK**.
+    - **Zakres adresów** (podsieć serwera wewnętrznej bazy danych): W drugim wierszu siatki **podsieci** Wprowadź zakres adresów, który nie nakłada się na zakres adresów *myAGSubnet*. Na przykład jeśli zakres adresów *myAGSubnet* jest równy 10.0.0.0/24, wprowadź *10.0.1.0/24* dla zakresu adresów *myBackendSubnet*.
 
-## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
+    Wybierz **przycisk OK** , aby zamknąć okno **Tworzenie sieci wirtualnej** i zapisać ustawienia sieci wirtualnej.
 
-W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako serwery zaplecza dla bramy aplikacji. Możesz także zainstalować usługi IIS na maszynach wirtualnych, aby sprawdzić, poprawnie routingu ruchu.
+     ![Utwórz nową bramę aplikacji: Sieć wirtualna](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+    
+3. Na karcie **podstawy** zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **dalej: Frontony**.
 
-1. Kliknij przycisk **Nowy**.
-2. Kliknij pozycję **Compute** (Wystąpienia obliczeniowe), a następnie z listy Polecane wybierz pozycję **Windows Server 2016 Datacenter**.
-3. Wprowadź poniższe wartości dla maszyny wirtualnej:
+### <a name="frontends-tab"></a>Karta frontonów
 
-    - *contosoVM* — jako nazwę maszyny wirtualnej.
-    - *azureuser* — jako nazwę użytkownika administratora.
-    - *Azure123456!* jako hasło.
-    - Wybierz pozycję **Użyj istniejącej** i wybierz grupę *myResourceGroupAG*.
+1. Na karcie **frontony** Sprawdź, czy **Typ adresu IP frontonu** jest ustawiony na wartość **Public**. <br>Adres IP frontonu można skonfigurować tak, aby był publiczny lub prywatny jak w przypadku użycia. W tym przykładzie wybrano publiczny adres IP frontonu.
+   > [!NOTE]
+   > W przypadku jednostki SKU Application Gateway v2 można wybrać tylko **publiczną** konfigurację adresu IP frontonu. Konfiguracja prywatnego adresu IP frontonu nie jest obecnie włączona dla tej jednostki SKU w wersji 2.
 
-4. Kliknij przycisk **OK**.
-5. Wybierz **DS1_V2** jako rozmiar maszyny wirtualnej, a następnie kliknij pozycję **Wybierz**.
-6. Upewnij się, że wybrano sieć wirtualną **myVNet** i podsieć **myBackendSubnet**. 
-7. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
-8. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
+2. Wybierz opcję **Utwórz nowy** dla **publicznego adresu IP** i wprowadź *MYAGPUBLICIPADDRESS* dla nazwy publicznego adresu IP, a następnie wybierz przycisk **OK**. 
 
-### <a name="install-iis"></a>Instalowanie usług IIS
+     ![Utwórz nową bramę aplikacji: frontony](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+3. Wybierz opcję **Dalej: Zakończenie**.
 
-1. Otwórz powłokę interaktywną i upewnij się, że jest ustawiona na program **PowerShell**.
+### <a name="backends-tab"></a>Karta zakończyła się
 
-    ![Instalowanie rozszerzenia niestandardowego](./media/create-multiple-sites-portal/application-gateway-extension.png)
+Pula zaplecza służy do kierowania żądań do serwerów zaplecza, które obsługują żądanie. Pule zaplecza mogą być kartami sieciowymi, zestawami skalowania maszyn wirtualnych, publicznymi adresami IP, wewnętrznymi adresami IP, w pełni kwalifikowanymi nazwami domen (FQDN) i wielodostępnymi zaplecami, jak Azure App Service W tym przykładzie utworzysz pustą pulę zaplecza z bramą aplikacji, a następnie dodasz cele zaplecza do puli zaplecza.
+
+1. Na karcie **nadkończenie** wybierz pozycję **+ Dodaj pulę zaplecza**.
+
+2. W otwartym oknie **Dodawanie puli zaplecza** wprowadź następujące wartości, aby utworzyć pustą pulę zaplecza:
+
+    - **Nazwa**: Wprowadź *contosoPool* jako nazwę puli zaplecza.
+    - **Dodaj pulę zaplecza bez elementów docelowych**: Wybierz pozycję **tak** , aby utworzyć pulę zaplecza bez elementów docelowych. Po utworzeniu bramy aplikacji należy dodać cele zaplecza.
+
+3. W oknie **Dodawanie puli zaplecza** wybierz pozycję **Dodaj** , aby zapisać konfigurację puli zaplecza i powrócić **do karty zaplecze** .
+4. Teraz Dodaj kolejną pulę zaplecza o nazwie *fabrikamPool*.
+
+     ![Utwórz nową bramę aplikacji: zafrontony](./media/create-multiple-sites-portal/backend-pools.png)
+
+4. Na karcie **nadkończenie** wybierz pozycję **dalej: Konfiguracja**.
+
+### <a name="configuration-tab"></a>Karta Konfiguracja
+
+Na karcie **Konfiguracja** zostanie nawiązane połączenie frontonu i pul zaplecza utworzonych przy użyciu reguły routingu.
+
+1. Wybierz pozycję **Dodaj regułę** w kolumnie **reguły routingu** .
+
+2. W otwartym oknie **Dodawanie reguły routingu** wpisz *ContosoRule* dla **nazwy reguły**.
+
+3. Reguła routingu wymaga odbiornika. Na karcie **odbiornik** w oknie **Dodawanie reguły routingu** wprowadź następujące wartości dla odbiornika:
+
+    - **Nazwa odbiornika**: Wprowadź *contosoListener* dla nazwy odbiornika.
+    - **Adres IP frontonu**: Wybierz pozycję **Public (publiczny** ), aby wybrać publiczny adres IP utworzony dla frontonu.
+
+   W obszarze **Ustawienia dodatkowe**:
+   - **Typ odbiornika**: Wiele lokacji
+   - **Nazwa hosta**: **www.contoso.com**
+
+   Zaakceptuj wartości domyślne pozostałych ustawień na karcie **odbiornik** , a następnie wybierz kartę **cele zaplecza** , aby skonfigurować resztę reguły routingu.
+
+   ![Utwórz nową bramę aplikacji: odbiornik](./media/create-multiple-sites-portal/routing-rule.png)
+
+4. Na karcie **cele zaplecza** wybierz pozycję **contosoPool** dla **elementu docelowego zaplecza**.
+
+5. Dla **Ustawienia http**wybierz pozycję **Utwórz nowy** , aby utworzyć nowe ustawienie http. Ustawienie HTTP określi zachowanie reguły routingu. W oknie **Dodawanie ustawienia protokołu HTTP** , które zostanie otwarte, wprowadź *contosoHTTPSetting* dla **nazwy ustawienia http**. Zaakceptuj wartości domyślne pozostałych ustawień w oknie **Dodawanie ustawienia protokołu HTTP** , a następnie wybierz pozycję **Dodaj** , aby powrócić do okna **Dodawanie reguły routingu** . 
+
+6. W oknie **Dodawanie reguły routingu** wybierz pozycję **Dodaj** , aby zapisać regułę routingu, i wróć do karty **Konfiguracja** .
+7. Wybierz pozycję **Dodaj regułę** i Dodaj podobną regułę, odbiornik, cel zaplecza i ustawienie protokołu HTTP dla firmy Fabrikam.
+
+     ![Tworzenie nowej bramy aplikacji: reguła routingu](./media/create-multiple-sites-portal/fabrikamRule.png)
+
+7. Wybierz opcję **Dalej: Tagi** , a **następnie następne: Przejrzyj i Utwórz**.
+
+### <a name="review--create-tab"></a>Przejrzyj i Utwórz kartę
+
+Przejrzyj ustawienia na karcie **Przegląd + tworzenie** , a następnie wybierz pozycję **Utwórz** , aby utworzyć sieć wirtualną, publiczny adres IP i bramę aplikacji. Tworzenie bramy aplikacji na platformie Azure może potrwać kilka minut.
+
+Zaczekaj na pomyślne zakończenie wdrożenia, zanim przejdziesz do kolejnej sekcji.
+
+## <a name="add-backend-targets"></a>Dodaj cele zaplecza
+
+W tym przykładzie użyjesz maszyn wirtualnych jako zaplecza docelowego. Możesz użyć istniejących maszyn wirtualnych lub utworzyć nowe. Utworzysz dwie maszyny wirtualne używane przez platformę Azure jako serwery zaplecza dla bramy aplikacji.
+
+Aby dodać cele zaplecza, można:
+
+1. Utwórz dwie nowe maszyny wirtualne, *contosoVM* i *fabrikamVM*, które będą używane jako serwery zaplecza.
+2. Zainstaluj usługi IIS na maszynach wirtualnych, aby sprawdzić, czy Brama aplikacji została utworzona pomyślnie.
+3. Dodaj serwery zaplecza do pul zaplecza.
+
+### <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+
+1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób**. Zostanie wyświetlone okno **Nowe**.
+2. Wybierz pozycję **obliczenia** , a następnie wybierz pozycję **Windows Server 2016 Datacenter** na **popularnej** liście. Zostanie wyświetlona strona **Tworzenie maszyny wirtualnej**.<br>Application Gateway może kierować ruch do dowolnego typu maszyny wirtualnej używanej w puli zaplecza. W tym przykładzie używane jest centrum danych systemu Windows Server 2016.
+3. Wprowadź następujące wartości na karcie **Podstawy** dla poniższych ustawień maszyny wirtualnej:
+
+    - **Grupa zasobów**: wybierz **myResourceGroupAG** jako grupę zasobów.
+    - **Nazwa maszyny wirtualnej**: Wprowadź *contosoVM* dla nazwy maszyny wirtualnej.
+    - **Nazwa użytkownika**: wprowadź *azureuser* jako nazwę użytkownika administratora.
+    - **Hasło**: wprowadź *Azure123456!* jako hasło administratora.
+4. Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Dalej: Dyski**.  
+5. Zaakceptuj wartości domyślne na karcie **Dyski**, a następnie wybierz pozycję **Dalej: Sieć**.
+6. Na karcie **Sieć** sprawdź, czy wybrano pozycję **myVNet** w obszarze **Sieć wirtualna** oraz czy pozycja **Podsieć** została ustawiona na wartość **myBackendSubnet**. Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Dalej: Zarządzanie**.<br>Application Gateway może komunikować się z wystąpieniami poza siecią wirtualną, w której znajduje się, ale należy upewnić się, że połączenie IP jest nawiązywane.
+7. Na karcie **Zarządzanie** ustaw pozycję **Diagnostyka rozruchu** na **Wył.** Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Przeglądanie + tworzenie**.
+8. Na karcie **Przeglądanie + tworzenie** przejrzyj ustawienia, usuń wszystkie błędy walidacji, a następnie wybierz pozycję **Utwórz**.
+9. Poczekaj na ukończenie tworzenia maszyny wirtualnej, zanim przejdziesz dalej.
+
+### <a name="install-iis-for-testing"></a>Zainstaluj usługi IIS do testowania
+
+W tym przykładzie należy zainstalować usługi IIS tylko na maszynach wirtualnych, aby sprawdzić, czy platforma Azure utworzyła bramę aplikacji pomyślnie.
+
+1. Otwórz program [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). W tym celu wybierz pozycję **Cloud Shell** na górnym pasku nawigacyjnym w witrynie Azure Portal, a następnie wybierz pozycję **PowerShell** z listy rozwijanej. 
+
+    ![Instalowanie rozszerzenia niestandardowego](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
-      -Location eastus `
       -ExtensionName IIS `
       -VMName contosoVM `
       -Publisher Microsoft.Compute `
       -ExtensionType CustomScriptExtension `
       -TypeHandlerVersion 1.4 `
-      -Settings $publicSettings
+      -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+      -Location EastUS
     ```
 
-3. Tworzenie drugiej maszyny wirtualnej i instalowanie usług IIS przy użyciu czynności, które właśnie zostało zakończone. Wprowadź nazwy *fabrikamVM* dla nazwy i wartości VMName w AzVMExtension zestawu.
+3. Utwórz drugą maszynę wirtualną i zainstaluj usługi IIS, używając wcześniej ukończonych kroków. Użyj *fabrikamVM* dla nazwy maszyny wirtualnej i ustawienia **VMName** polecenia cmdlet **Set-AzVMExtension** .
 
-## <a name="create-backend-pools-with-the-virtual-machines"></a>Tworzenie puli wewnętrznej bazy danych z maszynami wirtualnymi
+### <a name="add-backend-servers-to-backend-pools"></a>Dodawanie serwerów zaplecza do pul zaplecza
 
-1. Kliknij przycisk **wszystkie zasoby** a następnie kliknij przycisk **myAppGateway**.
-2. Kliknij przycisk **pule zaplecza**, a następnie kliknij przycisk **Dodaj**.
-3. Wprowadź nazwę *contosoPool* i Dodaj *contosoVM* przy użyciu **Add target**.
+1. Wybierz pozycję **Wszystkie zasoby**, a następnie wybierz pozycję **myAppGateway**.
 
-    ![Dodawanie serwerów zaplecza](./media/create-multiple-sites-portal/application-gateway-multisite-backendpool.png)
+2. Wybierz pozycję **Pule zaplecza** w menu po lewej stronie.
 
-4. Kliknij przycisk **OK**.
-5. Kliknij przycisk **pule zaplecza** a następnie kliknij przycisk **Dodaj**.
-6. Tworzenie *fabrikamPool* z *fabrikamVM* wykonując kroki, które właśnie zostało zakończone.
+3. Wybierz pozycję **contosoPool**.
 
-## <a name="create-backend-listeners"></a>Tworzenie odbiorników zaplecza
+4. W obszarze **Cele** wybierz pozycję **Maszyna wirtualna** z listy rozwijanej.
 
-1. Kliknij przycisk **odbiorników** a następnie kliknij przycisk **obejmujące wiele lokacji**.
-2. Wprowadź następujące wartości dla odbiornika:
-    
-   - *contosoListener* — jako nazwę odbiornika.
-   - *www.contoso.com* — w tym przykładzie nazwa hosta Zamień na nazwę domeny.
+5. W obszarze interfejsy **maszyn wirtualnych** i **sieciowych**wybierz maszynę wirtualną **contosoVM** , a jej interfejs sieciowy jest skojarzony z list rozwijanych.
 
-3. Kliknij przycisk **OK**.
-4. Utwórz odbiornik drugi przy użyciu nazwy *fabrikamListener* i korzystania z drugiego nazwy domeny. W tym przykładzie *www.fabrikam.com* jest używany.
+    ![Dodawanie serwerów zaplecza](./media/create-multiple-sites-portal/edit-backend-pool.png)
 
-![odbiorniki iloczyn lokacji](media/create-multiple-sites-portal/be-listeners.png)
+6. Wybierz pozycję **Zapisz**.
+7. Powtarzaj, aby dodać *fabrikamVM* i interfejs do *fabrikamPool*.
 
-## <a name="create-routing-rules"></a>Tworzenie reguł routingu
+Przed przejściem do następnego kroku poczekaj na zakończenie wdrożenia.
 
-Reguły są przetwarzane w kolejności, w jakiej są wymienione, a ruch jest przekierowywany przy użyciu pierwszej zgodnej reguły niezależnie od specyficzności. Na przykład jeśli na tym samym porcie utworzono dwie reguły: jedną przy użyciu odbiornika podstawowego, a drugą przy użyciu odbiornika obejmującego wiele witryn, reguła z odbiornikiem obejmującym wiele witryn musi znajdować się przed regułą z odbiornikiem podstawowym, aby funkcja reguły obejmującej wiele witryn działała zgodnie z oczekiwaniami. 
+## <a name="create-a-www-a-record-in-your-domains"></a>Tworzenie rekordu A www w domenach
 
-W tym przykładzie utworzenie dwóch nowych reguł i usunąć domyślnej reguły utworzone podczas tworzenia bramy aplikacji.
+Po utworzeniu bramy aplikacji przy użyciu publicznego adresu IP można uzyskać adres IP i użyć go do utworzenia rekordu A w domenach. 
 
-1. Kliknij przycisk **reguły** a następnie kliknij przycisk **podstawowe**.
-2. Wprowadź *contosoRule* dla nazwy.
-3. Wybierz *contosoListener* dla odbiornika.
-4. Wybierz *contosoPool* dla puli zaplecza.
+1. Kliknij pozycję **wszystkie zasoby**, a następnie kliknij pozycję **myAGPublicIPAddress**.
 
-    ![Utwórz regułę bazującą na ścieżce](./media/create-multiple-sites-portal/application-gateway-multisite-rule.png)
+    ![Rejestruj adres DNS bramy aplikacji](./media/create-multiple-sites-portal/public-ip.png)
 
-5. Kliknij przycisk **OK**.
-6. Należy utworzyć drugą regułę, przy użyciu nazwy *fabrikamRule*, *fabrikamListener*, i *fabrikamPool*.
-7. Usunąć domyślnej reguły o nazwie *rule1* , klikając go, a następnie klikając **Usuń**.
-
-## <a name="create-a-cname-record-in-your-domain"></a>Tworzenie rekordu CNAME w domenie
-
-Po utworzeniu bramy aplikacji z publicznym adresem IP można pobrać adres DNS i użyć go w celu utworzenia rekordu CNAME w domenie. Korzystanie z rekordów A nie jest zalecane, ponieważ adres VIP może ulec zmianie po ponownym uruchomieniu bramy aplikacji.
-
-1. Kliknij przycisk **wszystkie zasoby**, a następnie kliknij przycisk **myAGPublicIPAddress**.
-
-    ![Bramy application gateway adres serwera DNS dla rekordu](./media/create-multiple-sites-portal/application-gateway-multisite-dns.png)
-
-2. Skopiuj adres DNS i używać go jako wartość nowy rekord CNAME w domenie.
+2. Skopiuj adres IP i użyj go jako wartości nowego rekordu *www* a w domenach.
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
@@ -181,7 +229,7 @@ Po utworzeniu bramy aplikacji z publicznym adresem IP można pobrać adres DNS i
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już zasobów utworzonych za pomocą bramy aplikacji, usuń grupę zasobów. Usuwając grupę zasobów, usuwasz również bramę aplikacji i wszystkie powiązane z nią zasoby.
+Jeśli nie potrzebujesz już zasobów utworzonych za pomocą bramy aplikacji, usuń grupę zasobów. Po usunięciu grupy zasobów należy również usunąć bramę aplikacji i wszystkie powiązane z nią zasoby.
 
 Aby usunąć grupę zasobów:
 
@@ -193,4 +241,4 @@ Aby usunąć grupę zasobów:
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o co można zrobić za pomocą usługi Azure Application Gateway](application-gateway-introduction.md)
+> [Dowiedz się więcej na temat tego, co możesz zrobić za pomocą usługi Azure Application Gateway](application-gateway-introduction.md)

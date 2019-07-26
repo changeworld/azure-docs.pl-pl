@@ -255,6 +255,8 @@
               href: devtest-lab-guidance-prescriptive-adoption.md
             - name: Architektura referencyjna
               href: devtest-lab-reference-architecture.md
+            - name: Dostarczanie weryfikacji koncepcji
+              href: deliver-proof-concept.md
             - name: Skalowanie w górę wdrożenia usługi DevTest Labs
               href: devtest-lab-guidance-scale.md
             - name: Orkiestracja implementacji usługi DevTest Labs

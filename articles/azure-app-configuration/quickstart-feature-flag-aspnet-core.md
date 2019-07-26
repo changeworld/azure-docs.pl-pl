@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 38cfabc703b7578d3b5fede9d6a99fe8a33c93a4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326538"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347912"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Szybki start: Dodawanie flag funkcji do aplikacji ASP.NET Core
 
@@ -40,7 +40,7 @@ Biblioteki zarządzania funkcjami platformy .NET Core poszerzają platformę Dzi
 
     | Klucz | Stan |
     |---|---|
-    | Beta | Wyłączone |
+    | Wersja beta | Wyłączone |
 
 ## <a name="create-an-aspnet-core-web-app"></a>Tworzenie aplikacji internetowej ASP.NET Core
 
@@ -132,7 +132,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 1. Otwórz *Startup.cs*i Dodaj odwołania do programu .NET Core Feature Manager:
 
     ```csharp
-    using Microsoft.FeatureManagement.AspNetCore;
+    using Microsoft.FeatureManagement;
     ```
 
 1. Zaktualizuj metodę, aby dodać obsługę flagi funkcji przez `services.AddFeatureManagement()` wywołanie metody. `ConfigureServices` Opcjonalnie możesz dołączyć dowolny filtr, który ma być używany z flagami funkcji przez `services.AddFeatureFilter<FilterType>()`wywołanie:
@@ -264,7 +264,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 
     | Klucz | Stan |
     |---|---|
-    | Beta | Włączone |
+    | Wersja beta | Włączone |
 
 1. Odśwież stronę przeglądarki, aby zobaczyć nowe ustawienia konfiguracji.
 

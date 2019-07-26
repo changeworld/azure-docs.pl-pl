@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a38b91cd17e2107fe85bfc77da8ead86196173
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d33a18aaca923bd49858671546ab053cf3fb21a3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472768"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382129"
 ---
 # <a name="two-step-verification-overview"></a>Omówienie weryfikacji dwuetapowej
 
@@ -30,9 +30,9 @@ Weryfikacja dwuetapowa jest bezpieczniejsza niż użycie tylko hasła, ponieważ
 
 |Artykuł |Opis |
 |------|------------|
-|[Środowisko konfiguracji](multi-factor-authentication-end-user-first-time.md) |W tym artykule opisano sposób konfigurowania weryfikacji dwuetapowej po raz pierwszy.|
-|[Wprowadzenie do weryfikacji dwuetapowej — Azure AD](multi-factor-authentication-end-user.md)|Opisuje wpływ weryfikacji dwuetapowej na Twoją pracę.| 
-|[Jak się zalogować](user-help-sign-in.md)|Opisuje sposób logowania przy użyciu wybranej metody weryfikacji.|
-|[Zmienianie ustawień](multi-factor-authentication-end-user-manage-settings.md) |Opisuje, jak możesz zmienić ustawienia, takie jak numer telefonu lub preferowana metoda rejestracji.|
-|[Pomoc dotycząca weryfikacji dwuetapowej](multi-factor-authentication-end-user-troubleshoot.md) |Opisuje sposób rozwiązywania typowych problemów z weryfikacją dwuetapową.|
-|[Zarządzanie hasłami aplikacji](multi-factor-authentication-end-user-app-passwords.md) |Opisuje sposób tworzenia i używania haseł aplikacji.|
+| [Środowisko konfiguracji](multi-factor-authentication-end-user-first-time.md) |W tym artykule opisano sposób konfigurowania weryfikacji dwuetapowej po raz pierwszy.|
+| [Wprowadzenie do weryfikacji](multi-factor-authentication-end-user.md) dwuetapowej] W tym artykule opisano, co oznacza weryfikacja dwuetapowa.| 
+| [Jak się zalogować](user-help-sign-in.md) ] Opisuje sposób logowania przy użyciu określonej metody weryfikacji.|
+| [Zmienianie ustawień](multi-factor-authentication-end-user-manage-settings.md) |Opisuje, jak możesz zmienić ustawienia, takie jak numer telefonu lub preferowana metoda rejestracji.|
+| [Pomoc dotycząca weryfikacji dwuetapowej](multi-factor-authentication-end-user-troubleshoot.md) |Opisuje sposób rozwiązywania typowych problemów z weryfikacją dwuetapową.|
+| [Zarządzanie hasłami aplikacji](multi-factor-authentication-end-user-app-passwords.md) |Opisuje sposób tworzenia i używania haseł aplikacji.|

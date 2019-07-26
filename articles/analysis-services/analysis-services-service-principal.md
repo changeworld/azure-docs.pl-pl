@@ -1,6 +1,6 @@
 ---
-title: Automatyzowanie zadań usług Azure Analysis Services przy użyciu jednostki usługi | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć jednostki usługi do automatyzacji zadań usług Azure Analysis Services.
+title: Automatyzowanie Azure Analysis Services zadań przy użyciu jednostek usługi | Microsoft Docs
+description: Dowiedz się, jak utworzyć jednostki usługi do automatyzowania zadań Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
@@ -8,52 +8,52 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c034ed7164e67183b9a848d5210dcaf377476c6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bfa969089407a35658160cf05a6407f8c717714
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518160"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347956"
 ---
 # <a name="automation-with-service-principals"></a>Automatyzacja przy użyciu jednostek usługi
 
-Jednostki usług to zasoby aplikacji usługi Azure Active Directory tworzone w ramach dzierżawy w celu przeprowadzania nienadzorowanych operacji na poziomie zasobu lub usługi. Są one unikatowego typu *tożsamość użytkownika* przy użyciu Identyfikatora aplikacji i hasło lub certyfikat. Jednostka usługi ma tylko uprawnienia niezbędne do wykonywania zadań określone przez role i uprawnienia, dla których jest przypisany. 
+Jednostki usług to zasoby aplikacji usługi Azure Active Directory tworzone w ramach dzierżawy w celu przeprowadzania nienadzorowanych operacji na poziomie zasobu lub usługi. Są one unikatowym typem *tożsamości użytkownika* przy użyciu identyfikatora aplikacji i hasła lub certyfikatu. Jednostka usługi ma tylko te uprawnienia, które są niezbędne do wykonywania zadań zdefiniowanych przez role i uprawnienia, do których jest przypisany. 
 
-W usługach Analysis Services jednostki usługi są używane za pomocą usługi Azure Automation, PowerShell w trybie nienadzorowanym, niestandardowych aplikacji klienckich i aplikacji sieci web do automatyzacji typowych zadań. Na przykład serwery aprowizacji, wdrażanie modeli, odświeżanie danych, skalowanie w górę/w dół, a wstrzymywanie i wznawianie wszystkich można zautomatyzować za pomocą jednostki usługi. Uprawnienia są przypisywane do jednostek usług za pośrednictwem członkostwo w roli, podobnie jak regularne konta usługi Azure AD głównej nazwy użytkownika.
+W Analysis Services nazwy główne usług są używane z Azure Automation, nienadzorowanym trybem programu PowerShell, niestandardowymi aplikacjami klienckimi i aplikacjami sieci Web do automatyzowania typowych zadań. Na przykład inicjowanie obsługi serwerów, wdrażanie modeli, odświeżanie danych, skalowanie w górę/w dół, a wstrzymywanie/wznawianie może być zautomatyzowane przy użyciu jednostek usługi. Uprawnienia są przypisywane do jednostek usługi za pomocą przynależności do roli, podobnie jak zwykłe konta UPN usługi Azure AD.
 
-Usługi Analysis Services obsługuje również operacje wykonywane przez zarządzanych tożsamości za pomocą jednostki usługi. Aby dowiedzieć się więcej, zobacz [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) i [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).
+Analysis Services obsługuje również operacje wykonywane przez zarządzane tożsamości przy użyciu jednostek usługi. Aby dowiedzieć się więcej, zobacz temat [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) i [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).
 
 ## <a name="create-service-principals"></a>Tworzenie jednostek usługi
  
-Nazwy główne usług mogą być tworzone w witrynie Azure portal lub przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz:
+Nazwy główne usługi można tworzyć w Azure Portal lub przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz:
 
-[Tworzenie jednostki usługi — witryna Azure portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Tworzenie nazwy głównej usługi — Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Tworzenie jednostki usługi — PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
-## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Store zasoby poświadczeń i certyfikatów w usłudze Azure Automation
+## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Przechowuj poświadczenia i zasoby certyfikatów w Azure Automation
 
-Poświadczenia nazwy głównej usługi i certyfikaty mogą być przechowywane bezpiecznie w usłudze Azure Automation runbook operacji. Aby dowiedzieć się więcej, zobacz:
+Poświadczenia i certyfikaty jednostki usługi mogą być bezpiecznie przechowywane w Azure Automation na potrzeby operacji elementu Runbook. Aby dowiedzieć się więcej, zobacz:
 
-[Zasoby poświadczeń w usłudze Azure Automation](../automation/automation-credentials.md)   
+[Zasoby poświadczeń w Azure Automation](../automation/automation-credentials.md)   
 [Zasoby certyfikatów w usłudze Azure Automation](../automation/automation-certificates.md)
 
-## <a name="add-service-principals-to-server-admin-role"></a>Dodawanie jednostki usługi do roli administratora serwera
+## <a name="add-service-principals-to-server-admin-role"></a>Dodawanie jednostek usługi do roli administratora serwera
 
-Zanim użyjesz nazwy głównej usługi dla operacji zarządzania serwerem usług Analysis Services, należy dodać go do roli Administratorzy serwera. Aby dowiedzieć się więcej, zobacz [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md).
+Aby można było użyć nazwy głównej usługi dla operacji zarządzania serwerem Analysis Services, należy dodać ją do roli Administratorzy serwera. Aby dowiedzieć się więcej, zobacz [Dodawanie nazwy głównej usługi do roli administratora serwera](analysis-services-addservprinc-admins.md).
 
-## <a name="service-principals-in-connection-strings"></a>Nazwy główne usług w parametrach połączenia
+## <a name="service-principals-in-connection-strings"></a>Nazwy główne usług w ciągach połączeń
 
-Identyfikator aplikacji nazwy głównej usługi i hasło lub certyfikat, które mogą być używane w ciągów połączenia, bardzo podobne do nazwy UPN.
+Identyfikator appID i hasło i certyfikat jednostki usługi mogą być używane w parametrach połączenia w taki sam sposób, jak nazwa UPN.
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Za pomocą modułu Az.AnalysisServices
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Korzystanie z modułu AZ. AnalysisServices
 
-W przypadku używania nazwy głównej usługi dla zasobu operacje zarządzania za pomocą [Az.AnalysisServices](/powershell/module/az.analysisservices) moduł, użyj `Connect-AzAccount` polecenia cmdlet. 
+W przypadku używania jednostki usługi do operacji zarządzania zasobami z modułem [AZ. AnalysisServices](/powershell/module/az.analysisservices) należy użyć `Connect-AzAccount` polecenia cmdlet. 
 
-W poniższym przykładzie appID i hasło są używane do wykonywania operacje warstwy kontroli synchronizacji repliki tylko do odczytu i skalowanie w górę/out:
+W poniższym przykładzie identyfikator appID i hasło są używane do wykonywania operacji płaszczyzny kontroli w celu synchronizacji z replikami tylko do odczytu i skalowania w górę/w poziomie:
 
 ```powershell
 Param (
@@ -74,9 +74,9 @@ Sync-AzAnalysisServicesInstance -Instance "asazure://westus.asazure.windows.net/
 Set-AzAnalysisServicesServer -Name "testsvr" -ResourceGroupName "testRG" -Sku "S1" -ReadonlyReplicaCount 2 -DefaultConnectionMode Readonly
 ```
 
-#### <a name="using-sqlserver-module"></a>Za pomocą modułu SQLServer
+#### <a name="using-sqlserver-module"></a>Korzystanie z modułu SQLServer
 
-W poniższym przykładzie appID i hasło są używane do wykonywania operacji odświeżania bazy danych modelu:
+W poniższym przykładzie identyfikator appID i hasło są używane do wykonywania operacji odświeżania bazy danych modelu:
 
 ```powershell
 Param (
@@ -93,11 +93,11 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO i ADOMD 
 
-Podczas nawiązywania połączenia z aplikacji sieci web i aplikacje klienckie [AMO i ADOMD biblioteki klienckie](analysis-services-data-providers.md) wersji 15.0.2 i wyższych pakiety do zainstalowania z pakietu NuGet obsługuje nazwy główne usług w parametrach połączenia przy użyciu następującej składni: `app:AppID` i hasło lub `cert:thumbprint`. 
+Podczas nawiązywania połączenia z aplikacjami klienckimi i aplikacjami sieci Web, [bibliotekami klienckimi biblioteki AMO i ADOMD](analysis-services-data-providers.md) w wersji 15.0.2 i wyższych pakietów instalowalnych z usług NuGet w parametrach `app:AppID` połączenia przy użyciu następującej składni: i hasła lub `cert:thumbprint`. 
 
-W poniższym przykładzie `appID` i `password` są używane do wykonywania operacji odświeżania bazy danych modelu:
+W poniższym przykładzie `appID` `password` i są używane do wykonywania operacji odświeżania bazy danych modelu:
 
-```C#
+```csharp
 string appId = "xxx";
 string authKey = "yyy";
 string connString = $"Provider=MSOLAP;Data Source=asazure://westus.asazure.windows.net/<servername>;User ID=app:{appId};Password={authKey};";
@@ -110,5 +110,5 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Zaloguj się przy użyciu programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Zaloguj się przy użyciu Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
 [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md)   

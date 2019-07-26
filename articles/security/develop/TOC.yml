@@ -1,5 +1,10 @@
 - name: Dokumentacja bezpiecznego tworzenia
   href: index.yml
+- name: Przykładowe aplikacje
+  expanded: true
+  items:
+    - name: Aplikacja internetowa w kontenerze systemu Linux
+      href: secure-web-app.md
 - name: Pojęcia
   expanded: true
   items:

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: danlep
-ms.openlocfilehash: 48682163d1c1a516cff69f2a0e91b27c33ca7c61
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
-ms.translationtype: HT
+ms.openlocfilehash: 5100418651e24d74ad747e8c436ffce53c899a92
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480529"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500899"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Kompilowanie i wypychanie obrazu z aplikacji przy użyciu natywnej Buildpack w chmurze
 
@@ -25,14 +25,14 @@ Możesz użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza pole
 
 ## <a name="use-the-build-command"></a>Korzystanie z polecenia Build
 
-Aby skompilować i wypchnąć obraz kontenera za pomocą natywnej Buildpacks w chmurze, uruchom polecenie [AZ ACR Pack Build][az-acr-pack-build] command. Whereas the [az acr build][az-acr-build] kompiluje i wypchnij obraz ze źródła pliku dockerfile i powiązanego kodu `az acr pack build` , przy czym bezpośrednio określisz drzewo źródła aplikacji.
+Aby skompilować i wypchnąć obraz kontenera za pomocą natywnej Buildpacks w chmurze, uruchom polecenie [AZ ACR Pack Build][az-acr-pack-build] . Podczas gdy polecenie [AZ ACR Build][az-acr-build] kompiluje i wypycha obraz ze źródła pliku dockerfile i powiązanego kodu, `az acr pack build` należy bezpośrednio określić drzewo źródła aplikacji.
 
 Podczas uruchamiania `az acr pack build`należy określić co najmniej następujące elementy:
 
 * Rejestr kontenerów platformy Azure, w którym jest uruchamiane polecenie
 * Nazwa obrazu i tag dla obrazu uzyskanego
 * Jedna z [obsługiwanych lokalizacji kontekstu](container-registry-tasks-overview.md#quick-task) dla zadań ACR, takich jak katalog lokalny, repozytorium GitHub lub zdalne plik tar
-* Nazwa obrazu konstruktora Buildpack, `cloudfoundry/cnb:bionic:18`na przykład.  
+* Nazwa obrazu konstruktora Buildpack, `cloudfoundry/cnb:bionic`na przykład.  
 
 `az acr pack build`obsługuje inne funkcje poleceń ACR Tasks, w tym [uruchamiania zmiennych](container-registry-tasks-reference-yaml.md#run-variables) i [dzienników uruchamiania zadań](container-registry-tasks-overview.md#view-task-logs) , które są przesyłane strumieniowo, a także zapisane do późniejszego pobrania.
 

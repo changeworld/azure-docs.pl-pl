@@ -1,6 +1,6 @@
 ---
-title: I Praca z zakresów w usłudze Azure Cost Management | Dokumentacja firmy Microsoft
-description: Ten artykuł ułatwia zapoznanie Pomoc dotycząca rozliczeń i zasobów zakresy zarządzania dostępne na platformie Azure i jak używać zakresów w Cost Management i interfejsów API.
+title: Zrozumienie i współpraca z zakresami Azure Cost Management | Microsoft Docs
+description: Ten artykuł pomaga zrozumieć zakresy zarządzania rozliczeniami i zasobami dostępne na platformie Azure oraz jak korzystać z zakresów w Cost Management i interfejsy API.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -10,216 +10,228 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 66bad9c9c647fe87fdcf6b99a8d17f319b1ef9fc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490114"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479980"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
-Ten artykuł ułatwia zapoznanie Pomoc dotycząca rozliczeń i zasobów zakresy zarządzania dostępne na platformie Azure i jak używać zakresów w Cost Management i interfejsów API.
+Ten artykuł pomaga zrozumieć zakresy zarządzania rozliczeniami i zasobami dostępne na platformie Azure oraz jak korzystać z zakresów w Cost Management i interfejsy API.
 
 ## <a name="scopes"></a>Zakresy
 
-A _zakres_ jest węzłem w hierarchii zasobów platformy Azure, w których użytkowników usługi Azure AD dostęp do usług i zarządzania nimi. Zasoby najbardziej platformy Azure są tworzone i wdrażane w grupach zasobów, które są dostępne w ramach subskrypcji. Firma Microsoft oferuje także dwoma hierarchiami powyżej subskrypcji platformy Azure, które mają wyspecjalizowane ról na potrzeby zarządzania danych dotyczących rozliczeń:
-- Dane dotyczące rozliczeń, takich jak płatności i faktur
-- Usługi w chmurze, takich jak zarządzanie kosztami i zasady
+_Zakres_ to węzeł w hierarchii zasobów platformy Azure, w którym użytkownicy usługi Azure AD uzyskują dostęp do usług i zarządzają nimi. Większość zasobów platformy Azure jest tworzonych i wdrażanych w grupach zasobów, które są częścią subskrypcji. Firma Microsoft oferuje również dwie hierarchie powyżej subskrypcji platformy Azure, które mają wyspecjalizowane role do zarządzania danymi rozliczeń:
+- Dane dotyczące rozliczeń, takie jak płatności i faktury
+- Usługi w chmurze, takie jak zarządzanie kosztami i zasadami
 
-Zakresy są, gdzie możesz zarządzać danymi rozliczeń, ma specyficzne role płatności, wyświetlanie faktur i przeprowadzanie zarządzania kontami ogólnego. Kontami i rozliczeniami role są zarządzane oddzielnie od używanych do zarządzania zasobami, którego [Azure RBAC](../role-based-access-control/overview.md). Wyraźne rozróżnienie celem zakresy oddzielnych, włącznie z różnicami kontroli dostępu, są one określane jako _rozliczeń zakresy_ i _zakresy RBAC_odpowiednio.
+Zakresy są miejscem, w którym są zarządzane dane dotyczące rozliczeń, mają role specyficzne dla płatności, wyświetlają faktury i przeprowadzają ogólne zarządzanie kontami. Role rozliczeń i kont są zarządzane oddzielnie od tych używanych do zarządzania zasobami, które korzystają z funkcji [RBAC platformy Azure](../role-based-access-control/overview.md). Aby wyraźnie odróżnić intencje oddzielnych zakresów, w tym różnice kontroli dostępu, są one określane odpowiednio jako _zakresy_ rozliczeń i _zakresy RBAC_.
 
 ## <a name="how-cost-management-uses-scopes"></a>Jak Cost Management używa zakresów
 
-Usługa Cost Management działa na wszystkich zakresów powyżej zasobów, aby umożliwić organizacjom zarządzanie kosztami na poziomie, w którym mają dostęp, czy to całe konto rozliczeniowe lub pojedynczą grupę zasobów. Mimo że rozliczeń zakresy zależą od umowie firmy Microsoft (typ subskrypcji), nie są zakresy RBAC.
+Cost Management działa we wszystkich zakresach powyżej zasobów, aby umożliwić organizacjom zarządzanie kosztami na poziomie, na którym mają dostęp, niezależnie od tego, czy jest to całe konto rozliczania czy jedna grupa zasobów. Chociaż zakresy rozliczeniowe różnią się w zależności od umowy firmy Microsoft (typu subskrypcji), zakresy RBAC nie.
 
-## <a name="azure-rbac-scopes"></a>Zakresy Azure RBAC
+## <a name="azure-rbac-scopes"></a>Zakresy RBAC platformy Azure
 
-Platforma Azure obsługuje trzy zakresy do zarządzania zasobami. Każdego zakresu obsługuje zarządzanie dostępu i zarządzania, w tym, ale nie wyłącznie, kosztów zarządzania.
+Platforma Azure obsługuje trzy zakresy zarządzania zasobami. Każdy zakres obsługuje zarządzanie dostępem i nadzorem, w tym między innymi zarządzanie kosztami.
 
-- [**Grupy zarządzania** ](../governance/management-groups/index.md) — kontenery hierarchiczne, maksymalnie ośmiu poziomów, aby zorganizować subskrypcje platformy Azure.
+- [**Grupy zarządzania**](../governance/management-groups/index.md) — kontenery hierarchiczne, do ośmiu poziomów, do organizowania subskrypcji platformy Azure.
 
-    Typ zasobu: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
+    Typ zasobu: [Microsoft. Management/managementGroups](/rest/api/resources/managementgroups)
 
-- **Subskrypcje** -głównej kontenery dla zasobów platformy Azure.
+- **Subskrypcje** — podstawowe kontenery dla zasobów platformy Azure.
 
-    Typ zasobu: [Microsoft.Resources/subscriptions](/rest/api/resources/subscriptions)
+    Typ zasobu: [Microsoft. resources/subscriptions](/rest/api/resources/subscriptions)
 
-- [**Grupy zasobów** ](../azure-resource-manager/resource-group-overview.md#resource-groups) -logiczne grupowanie powiązanych zasobów dla rozwiązania platformy Azure, które współużytkują ten sam cykl życia. Na przykład zasoby, które są wdrożone i usuwane razem.
+- [**Grupy zasobów**](../azure-resource-manager/resource-group-overview.md#resource-groups) — logiczne grupowanie powiązanych zasobów dla rozwiązania platformy Azure, które współużytkują ten sam cykl życia. Na przykład zasoby, które są wdrażane i usuwane razem.
 
     Typ zasobu: [Microsoft.Resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
 
-Grupy zarządzania umożliwiają organizowanie subskrypcji do hierarchii. Na przykład może utworzyć hierarchię organizację logiczną przy użyciu grup zarządzania. Następnie należy przypisać subskrypcje zespołów dla celów produkcyjnych i obciążeń deweloperskich/testowych. A następnie utwórz grupy zasobów w ramach subskrypcji, aby zarządzać każdego podsystemu lub składnika.
+Grupy zarządzania umożliwiają organizowanie subskrypcji w hierarchię. Można na przykład utworzyć logiczną hierarchię organizacyjną przy użyciu grup zarządzania. Następnie nadaj zespołom subskrypcje dla obciążeń produkcyjnych i deweloperskich i testowych. Następnie utwórz grupy zasobów w ramach subskrypcji, aby zarządzać każdym podsystemem lub składnikiem.
 
-Tworzenie hierarchii organizacyjnych umożliwia, koszt i zgodności z zasadami zbiorczy organizacji. Następnie każdy lidera można przeglądać i analizować swoje bieżące koszty. A następnie można utworzyć budżetów ograniczenia nieprawidłowych wzorców wydatków i optymalizować koszty przy użyciu zalecenia usługi Advisor na najniższym poziomie.
+Tworzenie hierarchii organizacyjnej pozwala na zbiorczą zgodność kosztów i zasad. Następnie każdy lider może wyświetlać i analizować bieżące koszty. A następnie mogą tworzyć budżety, aby ograniczyć niewłaściwe wzorce wydatków i zoptymalizować koszty z zaleceniami klasyfikatora na najniższym poziomie.
 
-Udzielanie dostępu do wyświetlania kosztów i opcjonalnie Zarządzanie konfiguracją kosztów, takich jak budżetów i eksportuje, odbywa się na zakresy nadzoru przy użyciu RBAC platformy Azure. Udzielanie użytkownikom usługi Azure AD przy użyciu kontroli RBAC usługi Azure i grup dostępu do wykonania wstępnie zdefiniowany zestaw akcji, które są zdefiniowane w roli w określonym zakresie i poniżej. Na przykład rola przypisana do zakresu grupy zarządzania również daje takie same uprawnienia w zagnieżdżonych subskrypcji i grup zasobów.
+Przyznanie dostępu do wyświetlania kosztów i opcjonalnego zarządzania konfiguracją kosztów, takich jak budżety i eksporty, odbywa się na zakresach ładu przy użyciu funkcji RBAC platformy Azure. Funkcja RBAC systemu Azure umożliwia użytkownikom i grupom usługi Azure AD dostęp do wykonywania wstępnie zdefiniowanego zestawu akcji zdefiniowanych w roli w określonym zakresie i poniżej. Na przykład rola przypisana do zakresu grupy zarządzania również przyznaje te same uprawnienia do zagnieżdżonych subskrypcji i grup zasobów.
 
-Usługa Cost Management obsługuje następujące wbudowane role dla każdego z następujących zakresów:
+Cost Management obsługuje następujące wbudowane role dla każdego z następujących zakresów:
 
-- [**Właściciel** ](../role-based-access-control/built-in-roles.md#owner) — można wyświetlić koszty i zarządzać nimi, wszystko w tym konfiguracją kosztów.
-- [**Współautor** ](../role-based-access-control/built-in-roles.md#contributor) — można wyświetlić koszty i zarządzać nimi, wszystko w tym konfiguracją kosztów, z wyłączeniem kontroli dostępu.
-- [**Czytnik** ](../role-based-access-control/built-in-roles.md#reader) — może przeglądać wszystko, włącznie z danymi kosztów i konfiguracji, ale nie może wprowadzać żadnych zmian.
-- [**Koszt Współautor zarządzania** ](../role-based-access-control/built-in-roles.md#cost-management-contributor) — można wyświetlić koszty, zarządzanie konfiguracją kosztów oraz zalecenia.
-- [**Koszt zarządzania czytnika** ](../role-based-access-control/built-in-roles.md#cost-management-reader) — mogą wyświetlać dane kosztów, konfiguracja kosztów i Wyświetl zalecenia.
+- [**Owner**](../role-based-access-control/built-in-roles.md#owner) — umożliwia wyświetlanie kosztów i zarządzanie wszystkimi elementami, w tym konfiguracją kosztów.
+- [**Współautor**](../role-based-access-control/built-in-roles.md#contributor) — umożliwia wyświetlanie kosztów i zarządzanie wszystkimi, w tym konfiguracjami kosztów, ale z wyłączeniem kontroli dostępu.
+- [**Reader**](../role-based-access-control/built-in-roles.md#reader) — może wyświetlać wszystko, w tym dane dotyczące kosztów i konfigurację, ale nie może wprowadzać żadnych zmian.
+- [**Współautor Cost Management**](../role-based-access-control/built-in-roles.md#cost-management-contributor) — umożliwia wyświetlanie kosztów, zarządzanie konfiguracją kosztów i wyświetlanie zaleceń.
+- [**Cost Management Reader**](../role-based-access-control/built-in-roles.md#cost-management-reader) — może wyświetlać dane dotyczące kosztów, konfigurację kosztów i wyświetlać zalecenia.
 
-Współautor zarządzania kosztami jest zalecaną najniższych rolą. Ona umożliwia użytkownikom dostęp do tworzenia i zarządzania nimi budżetów i eksportuje aby skutecznie, monitorowanie i raportowanie na kosztach. Współautorzy zarządzania kosztami może również wymagać dodatkowych ról do obsługi scenariuszy zarządzania kosztami end-to-end. Należy rozważyć następujące scenariusze:
+Współautor Cost Management jest zalecaną rolą najniższych uprawnień. Dzięki temu użytkownicy mogą tworzyć budżety i eksporty oraz zarządzać nimi w celu skuteczniejszego monitorowania i raportowania kosztów. Współautorzy Cost Management mogą również wymagać dodatkowych ról do obsługi kompleksowych scenariuszy zarządzania kosztami. Należy wziąć pod uwagę następujące scenariusze:
 
-- **Działanie po przekroczeniu budżetu** — koszt zarządzania współautorzy potrzebują również dostępu do tworzenia i/lub Zarządzanie grup akcji w celu automatycznego reagowania na opłaty za dodatkowe transakcje. Należy rozważyć udzielenie [Współautor monitorowania](../role-based-access-control/built-in-roles.md#monitoring-contributor) do grupy zasobów, która zawiera grupy akcji do użycia podczas przekroczeniu progów budżetu. Automatyzowanie określonych akcji wymaga dodatkowych ról dla określonych usług, które są używane, takich jak usługi Automation i Azure Functions.
-- **Harmonogram koszt Eksport danych** — koszt zarządzania współautorzy potrzebują również dostępu do zarządzanie kontami magazynu, aby zaplanować eksportu do skopiowania danych na konto magazynu. Należy rozważyć udzielenie [Współautor konta magazynu](../role-based-access-control/built-in-roles.md#storage-account-contributor) do grupy zasobów, który zawiera magazyn kont, których danych kosztów są eksportowane.
-- **Wyświetlanie zaleceń oszczędne** — czytelnicy Zarządzanie kosztami i kosztów zarządzania współautorzy mają dostęp do *widoku* koszt zalecenia domyślnie. Dostęp do działania w rekomendacji dotyczących kosztu wymaga jednak dostępu do poszczególnych zasobów. Należy rozważyć udzielenie [specyficzne dla usługi roli](../role-based-access-control/built-in-roles.md#built-in-role-descriptions) chcącym zajmującym się zalecenia na podstawie kosztów.
+- **Postępuj w przypadku** przekroczenia budżetów — Cost Management Współautorzy potrzebują także dostępu do tworzenia grup akcji i/lub zarządzania nimi w celu automatycznego reagowania na nadwyżkowe. Rozważ przyznanie współautora [monitorowania](../role-based-access-control/built-in-roles.md#monitoring-contributor) do grupy zasobów zawierającej grupę akcji do użycia w przypadku przekroczenia progów budżetu. Automatyzacja określonych akcji wymaga dodatkowych ról dla określonych usług, takich jak Automatyzacja i Azure Functions.
+- **Planowanie eksportu danych kosztów** — współautorzy Cost Management muszą także mieć dostęp do zarządzania kontami magazynu, aby zaplanować eksport w celu skopiowania danych na konto magazynu. Rozważ przydzielenie [współautor konta magazynu](../role-based-access-control/built-in-roles.md#storage-account-contributor) do grupy zasobów zawierającej konto magazynu, w którym eksportowane są dane kosztów.
+- **Wyświetlanie zaleceń dotyczących oszczędności kosztów** — Cost Management czytelnicy i współautorzy Cost Management mają dostęp do *wyświetlania* zaleceń dotyczących kosztów. Jednak dostęp do działania zgodnie z zaleceniami dotyczącymi kosztów wymaga dostępu do poszczególnych zasobów. Rozważ udzielenie [roli specyficznej dla usługi](../role-based-access-control/built-in-roles.md#built-in-role-descriptions) , jeśli chcesz korzystać z rekomendacji opartej na kosztach.
 
-## <a name="enterprise-agreement-scopes"></a>Zakresy umowy Enterprise Agreement
+## <a name="enterprise-agreement-scopes"></a>Zakresy Umowa Enterprise
 
-Konta rozliczeń Enterprise Agreement (EA), jest określana skrótem rejestracji, są wymienione poniżej zakresy:
+Konta rozliczeń Umowa Enterprise (EA), nazywane również rejestracjami, mają następujące zakresy:
 
-- [**Konto rozliczeniowe** ](../billing/billing-view-all-accounts.md) — reprezentuje rejestracji umowy EA. Faktury są generowane w tym zakresie. Zakupy, które nie są na podstawie użycia, takich jak witryny Marketplace i zastrzeżenia, które są dostępne tylko w tym zakresie. Nie są one reprezentowane w działów lub konta rejestracji.
+- [**Konto rozliczeniowe**](../billing/billing-view-all-accounts.md) — reprezentuje rejestrację w ramach umowy EA. Faktury są generowane w tym zakresie. Zakupy, które nie są oparte na użyciu, takie jak Marketplace i rezerwacje, są dostępne tylko w tym zakresie. Nie są one reprezentowane przez działy ani konta rejestracji.
 
-    Typ zasobu: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
-- **Dział** — jest to opcjonalne, grupowanie kont rejestracji.
+    Typ zasobu:`Microsoft.Billing/billingAccounts (accountType = Enrollment)`
+- **Dział** — opcjonalne grupowanie kont rejestracji.
 
-    Typ zasobu: `Billing/billingAccounts/departments`
+    Typ zasobu:`Billing/billingAccounts/departments`
 
-- **Konta rejestracji** — reprezentuje właściciela jednego konta. Nie obsługuje udzielanie dostępu do wielu osób.
+- **Konto rejestracji** — reprezentuje właściciela pojedynczego konta. Nie obsługuje udzielania dostępu do wielu osobom.
 
-    Typ zasobu: `Microsoft.Billing/billingAccounts/enrollmentAccounts`
+    Typ zasobu:`Microsoft.Billing/billingAccounts/enrollmentAccounts`
 
-Mimo że nadzoru zakresy są powiązane z jednym katalogu, nie są zakresy rozliczeniowym umowy EA. Konto rozliczeniowe EA może mieć subskrypcji w dowolnej liczbie katalogów usługi Azure AD.
+Chociaż zakresy ładu są powiązane z pojedynczym katalogiem, zakresy rozliczeniowe EA nie są. Konto rozliczeniowe EA może mieć subskrypcje w dowolnej liczbie katalogów usługi Azure AD.
 
 Zakresy rozliczeń EA obsługują następujące role:
 
-- **Administrator przedsiębiorstwa** — umożliwia zarządzanie rozliczeń ustawień konta i dostępem, można wyświetlić wszystkie koszty i może zarządzać konfiguracją kosztów. Na przykład, gdy jest dostępny budżet i eksportuje. W funkcji EA rozliczeń zakres jest taka sama jak [rolę RBAC platformy Azure Współautor zarządzania kosztami](../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Użytkownik tylko do odczytu przedsiębiorstwa** — można wyświetlić ustawienia konta rozliczeniowego, dane kosztów i konfiguracji kosztów. Na przykład, gdy jest dostępny budżet i eksportuje. W funkcji EA rozliczeń zakres jest taka sama jak [rolę RBAC platformy Azure czytnika zarządzania kosztami](../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Administrator działu** — można zarządzania ustawieniami działu, takich jak Centrum kosztu i można uzyskać dostęp, wyświetlić wszystkie koszty i zarządzanie konfiguracją kosztów. Na przykład, gdy jest dostępny budżet i eksportuje.  **DA Wyświetl opłaty** rozliczeń ustawienia konta musi być włączona dla działu administratorów i użytkowników tylko do odczytu, aby zobaczyć koszty. Jeśli **DA Wyświetl opłaty** jest wyłączona, dział użytkownicy nie widzą kosztów na dowolnym poziomie, nawet jeśli leżą one właściciela konta lub subskrypcji.
-- **Dział użytkownika tylko do odczytu** — można wyświetlić ustawienia działu, danych kosztów i koszt konfiguracji. Na przykład, gdy jest dostępny budżet i eksportuje. Jeśli **DA Wyświetl opłaty** jest wyłączona, dział użytkownicy nie widzą kosztów na dowolnym poziomie, nawet jeśli leżą one właściciela konta lub subskrypcji.
-- **Właściciel konta** — można zarządzać ustawieniami konta rejestracji (na przykład Centrum kosztów), wyświetlić wszystkie koszty oraz zarządzać konfiguracją koszt (na przykład budżetów i eksportuje) konta rejestracji. **AO Wyświetl opłaty** rozliczeń ustawienia konta musi być włączona dla właścicieli kont z odpowiednimi i ROLACH użytkowników, aby zobaczyć koszty.
+- **Administrator przedsiębiorstwa** — może zarządzać ustawieniami konta rozliczeń i dostępem, może wyświetlać wszystkie koszty i zarządzać konfiguracją kosztów. Na przykład budżety i eksporty. W funkcji zakres rozliczeniowy EA jest taki sam jak [Cost Management współautor roli RBAC platformy Azure](../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Użytkownik tylko do odczytu przedsiębiorstwa** — może wyświetlać ustawienia konta rozliczeniowego, dane kosztów i konfigurację kosztów. Na przykład budżety i eksporty. W funkcji zakres rozliczeń EA jest taki sam jak dla [roli RBAC Cost Management czytnika Azure](../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Administrator działu** — może zarządzać ustawieniami działu, takimi jak centrum kosztów, oraz uzyskiwać dostęp do wszystkich kosztów i zarządzać konfiguracją kosztów. Na przykład budżety i eksporty.  Aby można było wyświetlać koszty, dla administratorów działu i użytkowników tylko do odczytu musi być włączone ustawienie konto rozliczeniowe **opłat w widoku da** . Jeśli **opłaty za widok da** nie są wyłączone, użytkownicy działu nie mogą zobaczyć kosztów na żadnym poziomie, nawet jeśli są właścicielami konta lub subskrypcji.
+- **Użytkownik tylko do odczytu działu** — może wyświetlać ustawienia działu, dane kosztów i konfigurację kosztów. Na przykład budżety i eksporty. Jeśli **opłaty za widok da** nie są wyłączone, użytkownicy działu nie mogą zobaczyć kosztów na żadnym poziomie, nawet jeśli są właścicielami konta lub subskrypcji.
+- **Właściciel konta** — umożliwia zarządzanie ustawieniami konta rejestracji (na przykład centrum kosztów), wyświetlanie wszystkich kosztów i zarządzanie konfiguracją kosztów (takich jak budżety i eksporty) dla konta rejestracji. Aby można było wyświetlać koszty, dla właścicieli kont i użytkowników RBAC należy włączyć ustawienie **Ao Wyświetl opłaty** .
 
-EA — konta rozliczeniowego — użytkownicy nie mają bezpośredniego dostępu do faktury. Faktury są dostępne z zewnętrznego systemu hurtowe.
+Użytkownicy konta rozliczania EA nie mają bezpośredniego dostępu do faktur. Faktury są dostępne w zewnętrznym systemie licencjonowania zbiorowego.
 
-Subskrypcje platformy Azure są zagnieżdżone w ramach kont rejestracji. Karta Użytkownicy mają dostęp do danych rozwiązania cost dla subskrypcji i grup zasobów, które znajdują się w odpowiednich zakresach. Nie mają dostępu, aby wyświetlić lub zarządzać zasobami w witrynie Azure portal. Rozliczenia widoczne dla użytkowników kosztów, przechodząc do **Zarządzanie kosztami i rozliczenia** w portalu Azure listę usług. Następnie mogą filtrować kosztów dla określonej subskrypcji i grup zasobów, które są im potrzebne do raportowania.
+Subskrypcje platformy Azure są zagnieżdżone w obszarze konta rejestracji. Użytkownicy rozliczeń mają dostęp do danych kosztów dla subskrypcji i grup zasobów, które znajdują się w odpowiednich zakresach. Nie mają dostępu do wyświetlania zasobów w Azure Portal ani zarządzania nimi. Użytkownicy rozliczeń mogą wyświetlać koszty, przechodząc do **Cost Management i** rozliczeń na Azure Portal liście usług. Następnie mogą filtrować koszty do określonych subskrypcji i grup zasobów, których potrzebują do raportowania.
 
-Rozliczenia, użytkownicy nie mają dostępu do grup zarządzania, ponieważ nie należą one jawnie przy użyciu określonego konta rozliczeniowego. Dostęp musi otrzymać jawnie do grup zarządzania. Koszty zbiorcze z wszystkich zagnieżdżonych subskrypcji grup zarządzania. Jednak tylko obejmują one zakupy na podstawie użycia. Nie obejmują one zakupów, takich jak zastrzeżenia i innych ofert z portalu Marketplace. Aby wyświetlić te koszty, użyj konta rozliczeniowego umowy EA.
+Użytkownicy rozliczeń nie mają dostępu do grup zarządzania, ponieważ nie są one bezpośrednio objęte określonym kontem rozliczeniowym. Dostęp do grup zarządzania musi być przyznany jawnie. Grupy zarządzania są kosztami zbiorczymi ze wszystkich zagnieżdżonych subskrypcji. Jednak zawierają one tylko zakupy oparte na użyciu. Nie obejmują one zakupów, takich jak rezerwacje i oferty w portalu Marketplace innych firm. Aby wyświetlić te koszty, użyj konta rozliczania EA.
 
-## <a name="individual-agreement-scopes"></a>Umowa poszczególnych zakresów
+## <a name="individual-agreement-scopes"></a>Zakresy umów indywidualnych
 
-Subskrypcje platformy Azure utworzone na podstawie poszczególnych ofert zgodnie z rzeczywistym użyciem i pokrewne typy, np. bezpłatnej wersji próbnej, takie jak i oferty tworzenia i testowania, nie mają jawnych rozliczeń zakres konta. Zamiast tego każda subskrypcja ma właściciel konta lub administrator konta, takie jak właściciel konta EA.
+Subskrypcje platformy Azure utworzone na podstawie indywidualnych ofert, takich jak płatność zgodnie z rzeczywistym użyciem i powiązane typy, takie jak bezpłatna wersja próbna i oferty deweloperskie/testowe, nie mają jawnego zakresu konta rozliczeniowego. Zamiast tego każda subskrypcja ma właściciela konta lub administratora konta, takiego jak właściciel konta EA.
 
-- [**Konto rozliczeniowe** ](../billing/billing-view-all-accounts.md) — reprezentuje właściciela jednego konta, na co najmniej jedną subskrypcję platformy Azure. Obecnie nie obsługuje, udzielanie dostępu do wielu osób lub dostępu do widoków zagregowane kosztów.
+- [**Konto rozliczeniowe**](../billing/billing-view-all-accounts.md) — reprezentuje właściciela pojedynczego konta dla co najmniej jednej subskrypcji platformy Azure. Obecnie nie obsługuje udzielania dostępu do wielu osób ani dostępu do widoków zagregowanych kosztów.
 
     Typ zasobu: Nie dotyczy
 
-Administratorzy kont indywidualnej subskrypcji platformy Azure można przeglądać i zarządzać danych dotyczących rozliczeń, takie jak faktury i płatności, z [Centrum konta platformy Azure](https://account.azure.com/subscriptions). Jednak nie można wyświetlić danych rozwiązania cost lub zarządzać zasobami w witrynie Azure portal. Aby udzielić dostępu do administratora konta, należy użyć ról Cost Management wymienionych wcześniej.
+Indywidualni Administratorzy konta subskrypcji platformy Azure mogą wyświetlać dane dotyczące rozliczeń, takie jak faktury i płatności, a także zarządzać nimi, w [centrum konta platformy Azure](https://account.azure.com/subscriptions). Nie mogą jednak wyświetlać danych kosztów ani zarządzać zasobami w Azure Portal. Aby udzielić dostępu do administratora konta, użyj wcześniej wymienionych ról Cost Management.
 
-W przeciwieństwie do Umowy EA Administratorzy kont indywidualnej subskrypcji platformy Azure można zobaczyć faktur w witrynie Azure portal. Należy pamiętać, że koszty zarządzania Czytelnik i współautor zarządzania kosztami role nie zapewniają dostęp do faktury. Aby uzyskać więcej informacji, zobacz [jak udzielić dostępu do faktury](../billing/billing-manage-access.md##give-read-only-access-to-billing).
+W przeciwieństwie do umowy EA Administratorzy indywidualnych kont subskrypcji platformy Azure mogą zobaczyć swoje faktury w Azure Portal. Należy pamiętać, że role Cost Management Reader i Cost Management współautor nie zapewniają dostępu do faktur. Aby uzyskać więcej informacji, zobacz [jak udzielić dostępu do faktur](../billing/billing-manage-access.md##give-read-only-access-to-billing).
 
-## <a name="microsoft-customer-agreement-scopes"></a>Zakresy umowy klienta firmy Microsoft
+## <a name="microsoft-customer-agreement-scopes"></a>Zakresy umów klienta firmy Microsoft
 
-Konta rozliczeniowego umowy klienta firmy Microsoft mają następujące zakresy:
+Konta rozliczeń umowy klienta firmy Microsoft mają następujące zakresy:
 
-- **Konto rozliczeniowe** — reprezentuje umowy klienta w wielu usług i produktów firmy Microsoft. Konta rozliczeniowego umowy klienta nie są funkcjonalnie taka sama jak rejestracji umowy EA. Rejestracji umowy EA dokładniej są wyrównane do rozliczeń profilów.
+- **Konto rozliczeniowe** — reprezentuje umowę klienta dla wielu produktów i usług firmy Microsoft. Konta rozliczeń umowy klienta nie działają tak samo jak rejestracje EA. Rejestracje EA są bardziej ściśle wyrównane do profilów rozliczeń.
 
-    Typ zasobu: `Microsoft.Billing/billingAccounts (accountType = Organization)`
+    Typ zasobu:`Microsoft.Billing/billingAccounts (accountType = Organization)`
 
-- **Profil rozliczeń** -określa subskrypcje, które są objęte faktury. Profile rozliczeń są funkcjonalności wielokrotność rejestracji umowy EA, ponieważ jest zakres, który faktury są generowane podczas. Podobnie zakupów, które nie są na podstawie użycia (na przykład z witryny Marketplace i zastrzeżenia) są dostępne tylko w tym zakresie. Nie są one uwzględnione w sekcjach faktury.
+- **Profil** rozliczeń — definiuje subskrypcje dołączone do faktury. Profile rozliczeń to funkcjonalny odpowiednik rejestracji w ramach umowy EA, ponieważ jest to zakres, w którym są generowane faktury. Podobnie zakupy, które nie są oparte na użyciu (takie jak witryna Marketplace i rezerwacje), są dostępne tylko w tym zakresie. Nie znajdują się w sekcji faktur.
 
-    Typ zasobu: `Microsoft.Billing/billingAccounts/billingProfiles`
+    Typ zasobu:`Microsoft.Billing/billingAccounts/billingProfiles`
 
-- **Faktury sekcji** — reprezentuje grupę subskrypcji w faktura lub profil rozliczeniowy. Sekcje faktury są podobne do działów — wiele osób może uzyskiwać dostęp do sekcji faktury.
+- **Sekcja faktury** — reprezentuje grupę subskrypcji w profilu faktury lub rozliczeń. Sekcje faktury są podobne do działów — wiele osób może mieć dostęp do sekcji faktury.
 
-    Typ zasobu: `Microsoft.Billing/billingAccounts/invoiceSections`
+    Typ zasobu:`Microsoft.Billing/billingAccounts/invoiceSections`
 
-W przeciwieństwie do Umowy EA rozliczeń zakresów, umowy klienta z rozliczeniami kont _są_ powiązany z jednym katalogu, a nie może mieć subskrypcji między wieloma katalogami usługi Azure AD.
+W przeciwieństwie do zakresów rozliczeniowych EA, konta rozliczeń umowy klienta _są_ powiązane z pojedynczym katalogiem i nie mogą zawierać subskrypcji wielu katalogów usługi Azure AD.
 
-Zakresy rozliczeniowym umowy klienta obsługują następujące role:
+Zakresy rozliczeń umowy klienta obsługują następujące role:
 
-- **Właściciel** — może zarządzać ustawieniami rozliczeń i dostępu, wyświetlić wszystkie koszty oraz zarządzać konfiguracją kosztów. Na przykład, gdy jest dostępny budżet i eksportuje. W funkcji niniejszej umowy klient rozliczeń zakres jest taka sama jak [rolę RBAC platformy Azure Współautor zarządzania kosztami](../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Współautor** — może zarządzać ustawieniami rozliczeń, z wyjątkiem dostępu, wyświetlić wszystkie koszty oraz zarządzać konfiguracją kosztów. Na przykład, gdy jest dostępny budżet i eksportuje. W funkcji niniejszej umowy klient rozliczeń zakres jest taka sama jak [rolę RBAC platformy Azure Współautor zarządzania kosztami](../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Czytnik** — można wyświetlić ustawienia rozliczeń, dane kosztów i konfiguracji kosztów. Na przykład, gdy jest dostępny budżet i eksportuje. W funkcji niniejszej umowy klient rozliczeń zakres jest taka sama jak [rolę RBAC platformy Azure czytnika zarządzania kosztami](../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Menedżer faktur** — można wyświetlać i płaci faktur i może wyświetlanie kosztów danych i konfiguracji. Na przykład, gdy jest dostępny budżet i eksportuje. W funkcji niniejszej umowy klient rozliczeń zakres jest taka sama jak [rolę RBAC platformy Azure czytnika zarządzania kosztami](../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Twórca subskrypcji platformy Azure** — można tworzyć subskrypcje platformy Azure, wyświetlanie kosztów oraz zarządzać konfiguracją kosztów. Na przykład, gdy jest dostępny budżet i eksportuje. W funkcji ten zakres rozliczeniowym umowy klienta jest taka sama jak rola właściciela konta rejestracji umowy EA.
+- **Owner** — umożliwia zarządzanie ustawieniami rozliczeń i dostępem, wyświetlanie wszystkich kosztów i zarządzanie konfiguracją kosztów. Na przykład budżety i eksporty. W funkcji zakres rozliczeniowy umowy klienta jest taki sam jak [Cost Management współautor roli RBAC platformy Azure](../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Współautor** — umożliwia zarządzanie ustawieniami rozliczeń z wyjątkiem dostępu, wyświetlanie wszystkich kosztów i zarządzanie konfiguracją kosztów. Na przykład budżety i eksporty. W funkcji zakres rozliczeniowy umowy klienta jest taki sam jak [Cost Management współautor roli RBAC platformy Azure](../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Reader** — można wyświetlać ustawienia rozliczeń, dane kosztów i konfigurację kosztów. Na przykład budżety i eksporty. W funkcji, ten zakres rozliczeń umowy klienta jest taki sam, jak w przypadku [roli RBAC Cost Management czytnika platformy Azure](../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Menedżer faktur** — może wyświetlać i płacić faktury oraz wyświetlać dane i konfigurację kosztów. Na przykład budżety i eksporty. W funkcji, ten zakres rozliczeń umowy klienta jest taki sam, jak w przypadku [roli RBAC Cost Management czytnika platformy Azure](../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Kreator subskrypcji platformy Azure** — umożliwia tworzenie subskrypcji platformy Azure, wyświetlanie kosztów i zarządzanie konfiguracją kosztów. Na przykład budżety i eksporty. W funkcji zakres rozliczeniowy umowy klienta jest taki sam jak w przypadku roli właściciela konta rejestracji EA.
 
-Subskrypcje platformy Azure są zagnieżdżone w sekcjach faktury, takich jak jak są one w ramach kont rejestracji umowy EA. Karta Użytkownicy mają dostęp do danych rozwiązania cost dla subskrypcji i grup zasobów, które znajdują się w odpowiednich zakresach. Jednak nie mają dostępu, aby wyświetlić lub zarządzać zasobami w witrynie Azure portal. Rozliczenia widoczne dla użytkowników kosztów, przechodząc do **Zarządzanie kosztami i rozliczenia** w portalu Azure listę usług. Następnie można filtrować kosztów dla określonej subskrypcji i grup zasobów, które są im potrzebne do raportowania.
+Subskrypcje platformy Azure są zagnieżdżone w sekcji faktury, podobnie jak w przypadku kont rejestracji EA. Użytkownicy rozliczeń mają dostęp do danych kosztów dla subskrypcji i grup zasobów, które znajdują się w odpowiednich zakresach. Nie mają jednak dostępu do wyświetlania zasobów i zarządzania nimi w Azure Portal. Użytkownicy rozliczeń mogą wyświetlać koszty, przechodząc do **Cost Management i** rozliczeń na Azure Portal liście usług. Następnie odfiltruj koszty do określonych subskrypcji i grup zasobów, których potrzebują do raportowania.
 
-Rozliczenia, użytkownicy nie mają dostępu do grup zarządzania, ponieważ jawnie nie są one objęte konta rozliczeniowego. Jednak włączenie grup zarządzania w organizacji wszelką cenę subskrypcji są rzutowane do konta rozliczeniowego oraz do głównej grupy zarządzania, ponieważ ich są zarówno ograniczone do jednego katalogu. Grupy zarządzania są uwzględnione jedynie zakupów, które są na podstawie użycia. Zakupy, takich jak zastrzeżenia i innych ofert z portalu Marketplace nie są uwzględniane w grupach zarządzania. Tak rozliczania konta i katalog główny grupie zarządzania mogą zgłaszać różne sumy. Aby wyświetlić te koszty, użyj odpowiedniego profilu rozliczeń lub konta rozliczeniowego.
+Użytkownicy rozliczeń nie mają dostępu do grup zarządzania, ponieważ nie są one jawnie objęte kontem rozliczania. Jednak po włączeniu grup zarządzania dla organizacji wszystkie koszty subskrypcji są zestawiane na konto rozliczeniowe i do głównej grupy zarządzania, ponieważ są one ograniczone do jednego katalogu. Grupy zarządzania obejmują tylko zakupy, które są oparte na użyciu. Zakupy, takie jak rezerwacje i oferty w portalu Marketplace innych firm nie są uwzględniane w grupach zarządzania. W związku z tym konto rozliczeń i główna Grupa zarządzania mogą raportować różne sumy. Aby wyświetlić te koszty, użyj konta rozliczeń lub odpowiedniego profilu rozliczania.
 
-## <a name="cloud-solution-provider-csp-scopes"></a>Cloud Solution Provider (CSP) zakresów
+## <a name="aws-scopes"></a>Zakresy AWS
 
-Partnerzy programu cloud Solution Provider (CSP) nie są obecnie obsługiwane w Cost Management. Zamiast tego można użyć [Centrum partnerskiego](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+Po zakończeniu integracji AWS zapoznaj się z tematem Konfigurowanie [i Konfigurowanie integracji AWS](aws-integration-set-up-configure.md). Dostępne są następujące zakresy:
 
-## <a name="switch-between-scopes-in-cost-management"></a>Przełączanie między zakresów Cost Management
+- **Konto rozliczeń zewnętrznych** — reprezentuje umowę klienta z dostawcą innej firmy. Jest to podobne do konta rozliczeń EA.
 
-Wszystkie widoki zarządzania kosztami w witrynie Azure portal obejmują **zakres** skażone zaznaczenia w lewym górnym widoku. Umożliwia szybką zmianę zakresu. Kliknij przycisk **zakres** skażone, aby otworzyć selektor zakresu. Pokazuje konta rozliczeniowego, głównej grupy zarządzania i wszystkich subskrypcji, które nie są zagnieżdżone w głównej grupy zarządzania. Aby wybrać zakres, kliknij tło, aby go zaznaczyć, a następnie kliknij przycisk **wybierz** u dołu. Do testowania odzyskiwania po awarii — w zagnieżdżonych zakresów, takich jak grupy zasobów w ramach subskrypcji, kliknij łącze nazwa zakresu. Aby wybrać zakresu nadrzędnego na dowolnym poziomie zagnieżdżony, kliknij przycisk **wybierz tę opcję, &lt;zakres&gt;**  u góry selektora zakresu.
+    Typ zasobu:`Microsoft.CostManagement/externalBillingAccounts`
+    
+- **Subskrypcja zewnętrzna** — reprezentuje konto operacyjne klienta z niezależnym dostawcą. Jest to podobne do subskrypcji platformy Azure.
 
-## <a name="identify-the-resource-id-for-a-scope"></a>Zidentyfikuj identyfikator zasobu dla zakresu
+    Typ zasobu:`Microsoft.CostManagement/externalSubscriptions`
 
-Podczas pracy z interfejsów API usługi Cost Management, wiedząc, że zasięg jest krytyczny. Skorzystaj z poniższych informacji do tworzenia zakresu prawidłowego identyfikatora URI dla interfejsów API usługi Cost Management.
+## <a name="cloud-solution-provider-csp-scopes"></a>Zakresy dostawcy rozwiązań w chmurze (CSP)
 
-### <a name="billing-accounts"></a>Rozliczanie konta
+Partnerzy dostawcy rozwiązań w chmurze (CSP) nie są obecnie obsługiwani w Cost Management. Zamiast tego można użyć [Centrum partnerskiego](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
-1. Otwórz witrynę Azure portal, a następnie przejdź do **Zarządzanie kosztami i rozliczenia** na liście usług.
-2. Wybierz **właściwości** w menu konta rozliczeniowego.
-3. Skopiuj identyfikator konta rozliczeniowego
-4. Zakres jest: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
+## <a name="switch-between-scopes-in-cost-management"></a>Przełączanie między zakresami w Cost Management
 
-### <a name="billing-profiles"></a>Profile rozliczeń
+Wszystkie widoki Cost Management w Azure Portal obejmują wybór **zakresu** pill w lewym górnym rogu widoku. Użyj go, aby szybko zmienić zakres. Kliknij **zakres** pill, aby otworzyć selektor zakresu. Są w nim wyświetlane konta rozliczeniowe, główna Grupa zarządzania i wszystkie subskrypcje, które nie są zagnieżdżone w głównej grupie zarządzania. Aby wybrać zakres, kliknij tło, aby je zaznaczyć, a następnie kliknij przycisk **Wybierz** w dolnej części. Aby przejść do szczegółów zakresów zagnieżdżonych, takich jak grupy zasobów w subskrypcji, kliknij link Nazwa zakresu. Aby wybrać zakres nadrzędny na dowolnym poziomie zagnieżdżonym, kliknij pozycję **zaznacz &lt;ten&gt; zakres** w górnej części selektora zakresu.
 
-1. Otwórz witrynę Azure portal, a następnie przejdź do **Zarządzanie kosztami i rozliczenia** na liście usług.
-2. Wybierz **profile rozliczeń** w menu konta rozliczeniowego.
-3. Kliknij nazwę żądanego profilu rozliczeń.
-4. Wybierz **właściwości** w menu profilu rozliczeń.
-5. Skopiuj konta rozliczeniowego i rozliczeń identyfikatory profilu.
-6. Zakres jest: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
+## <a name="identify-the-resource-id-for-a-scope"></a>Identyfikowanie identyfikatora zasobu dla zakresu
 
-### <a name="invoice-sections"></a>Sekcje faktury
+Podczas pracy z interfejsami API Cost Management, wiedząc, że zakres jest krytyczny. Poniższe informacje służą do tworzenia prawidłowego identyfikatora URI zakresu dla Cost Management interfejsów API.
 
-1. Otwórz witrynę Azure portal, a następnie przejdź do **Zarządzanie kosztami i rozliczenia** na liście usług.
-2. Wybierz **faktury sekcje** w menu konta rozliczeniowego.
-3. Kliknij nazwę sekcji żądaną faktury.
-4. Wybierz **właściwości** w menu sekcji faktury.
-5. Skopiuj konta rozliczeniowego i faktury sekcji identyfikatorów.
-6. Zakres jest: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
+### <a name="billing-accounts"></a>Konta bilingowe
+
+1. Otwórz Azure Portal a następnie przejdź do **Cost Management** i rozliczeń na liście usług.
+2. Wybierz pozycję **Właściwości** w menu konto rozliczeń.
+3. Skopiuj identyfikator konta rozliczeniowego.
+4. Twój zakres to:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
+
+### <a name="billing-profiles"></a>Profile rozliczeniowe
+
+1. Otwórz Azure Portal a następnie przejdź do **Cost Management** i rozliczeń na liście usług.
+2. Wybierz pozycję **Profile** rozliczeń w menu konto rozliczeń.
+3. Kliknij nazwę żądanego profilu rozliczania.
+4. Wybierz pozycję **Właściwości** w menu Profil rozliczeń.
+5. Skopiuj konto rozliczeniowe i identyfikatory profilów rozliczeń.
+6. Twój zakres to:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
+
+### <a name="invoice-sections"></a>Sekcje faktur
+
+1. Otwórz Azure Portal a następnie przejdź do **Cost Management** i rozliczeń na liście usług.
+2. Wybierz **sekcje faktury** w menu konto rozliczeń.
+3. Kliknij nazwę żądanej sekcji faktury.
+4. Wybierz pozycję **Właściwości** w menu sekcja faktury.
+5. Skopiuj identyfikatory konta rozliczenia i sekcji faktury.
+6. Twój zakres to:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
 
 ### <a name="ea-departments"></a>Działy EA
 
-1. Otwórz witrynę Azure portal, a następnie przejdź do **Zarządzanie kosztami i rozliczenia** na liście usług.
-2. Wybierz **działów** w menu konta rozliczeniowego.
-3. Kliknij nazwę żądanej działu.
-4. Wybierz **właściwości** w menu działu.
-5. Skopiuj rozliczeń identyfikatorów kont i działu.
-6. Zakres jest: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
+1. Otwórz Azure Portal a następnie przejdź do **Cost Management** i rozliczeń na liście usług.
+2. Wybierz  pozycję działy w menu Konto rozliczenia.
+3. Kliknij nazwę żądanego działu.
+4. Wybierz pozycję **Właściwości** w menu dział.
+5. Skopiuj konto rozliczeniowe i identyfikatory działów.
+6. Twój zakres to:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
 
-### <a name="ea-enrollment-account"></a>Konta rejestracji umowy EA
+### <a name="ea-enrollment-account"></a>Konto rejestracji EA
 
-1. Otwórz witrynę Azure portal i przejdź do **Zarządzanie kosztami i rozliczenia** na liście usług.
-2. Wybierz **kont rejestracji** w menu konta rozliczeniowego.
-3. Kliknij nazwę konta żądaną rejestracji.
-4. Wybierz **właściwości** w menu konta rejestracji.
-5. Skopiuj konta rozliczeniowego i identyfikatory kont rejestracji.
-6. Zakres jest: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
+1. Otwórz Azure Portal i przejdź do **Cost Management** i rozliczeń na liście usług.
+2. W menu konto rozliczeniowe wybierz pozycję **konta rejestracji** .
+3. Kliknij nazwę żądanego konta rejestracji.
+4. Wybierz pozycję **Właściwości** w menu konto rejestracji.
+5. Skopiuj konto rozliczeniowe i identyfikator konta rejestracji.
+6. Twój zakres to:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
 
 ### <a name="management-group"></a>Grupa zarządzania
 
-1. Otwórz witrynę Azure portal i przejdź do **grup zarządzania** na liście usług.
-2. Przejdź do żądanej grupie zarządzania.
+1. Otwórz Azure Portal i przejdź do **grup zarządzania** na liście usług.
+2. Przejdź do żądanej grupy zarządzania.
 3. Skopiuj identyfikator grupy zarządzania z tabeli.
-4. Zakres jest: `"/providers/Microsoft.Management/managementGroups/{id}"`
+4. Twój zakres to:`"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Subskrypcja
+### <a name="subscription"></a>Subscription
 
-1. Otwórz witrynę Azure portal i przejdź do **subskrypcje** na liście usług.
+1. Otwórz Azure Portal i przejdź do obszaru **subskrypcje** na liście usług.
 2. Skopiuj identyfikator subskrypcji z tabeli.
-3. Zakres jest: `"/subscriptions/{id}"`
+3. Twój zakres to:`"/subscriptions/{id}"`
 
 ### <a name="resource-groups"></a>Grupy zasobów
 
-1. Otwórz witrynę Azure portal i przejdź do **grup zasobów** na liście usług.
-2. Kliknij nazwę grupy żądanego zasobu.
-3. Wybierz **właściwości** w menu grupy zasobów.
-4. Skopiuj wartość pola Identyfikatora zasobu.
-5. Zakres jest: `"/subscriptions/{id}/resourceGroups/{name}"`
+1. Otwórz Azure Portal i przejdź do **grup zasobów** na liście usług.
+2. Kliknij nazwę żądanej grupy zasobów.
+3. Wybierz pozycję **Właściwości** w menu Grupa zasobów.
+4. Skopiuj wartość pola Identyfikator zasobu.
+5. Twój zakres to:`"/subscriptions/{id}/resourceGroups/{name}"`
 
-Usługa Cost Management jest obecnie obsługiwany w [Azure Global](https://management.azure.com) i [Azure dla instytucji rządowych](https://management.usgovcloudapi.net). Aby uzyskać więcej informacji na temat platformy Azure Government, zobacz [punktów końcowych globalnej platformy Azure i interfejsu API dla instytucji rządowych](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
+Cost Management jest obecnie obsługiwana w globalnych i [Azure Government](https://management.usgovcloudapi.net)na [platformie Azure](https://management.azure.com) . Aby uzyskać więcej informacji na temat Azure Government, zobacz [punkty końcowe interfejsu API globalnego i administracji publicznej platformy Azure](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Jeśli nie została już zakończona pierwszym przewodniku Szybki Start usługi Cost Management, zapoznaj się z adresem [zacząć analizować koszty](quick-acm-cost-analysis.md).

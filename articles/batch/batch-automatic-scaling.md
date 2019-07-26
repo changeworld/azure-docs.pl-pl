@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 489a3935605432b485f7b0866668f6dbfaac686b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323756"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500040"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz formułę skalowania automatycznego do skalowania węzłów obliczeniowych w puli usługi Batch
 
@@ -40,7 +40,7 @@ W tym artykule omówiono różne jednostki, które tworzą formuły automatyczne
 >
 
 ## <a name="automatic-scaling-formulas"></a>Automatyczne skalowanie formuł
-Formuła automatycznego skalowania jest zdefiniowana przez użytkownika wartość ciągu, która zawiera jedną lub więcej instrukcji. Formuła skalowania automatycznego jest przypisana do właściwości [autoScaleFormula][rest_autoscaleformula] element (Batch REST) or [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] puli (Batch .NET). Usługa Batch używa formuły do określenia docelowej liczby węzłów obliczeniowych w puli dla następnego interwału przetwarzania. Ciąg formuły nie może przekroczyć 8 KB, może zawierać do 100 instrukcji, które są rozdzielone średnikami i mogą zawierać podziały wierszy i komentarze.
+Formuła automatycznego skalowania jest zdefiniowana przez użytkownika wartość ciągu, która zawiera jedną lub więcej instrukcji. Formuła skalowania automatycznego jest przypisana do elementu [autoScaleFormula][rest_autoscaleformula] puli (Batch REST) lub [CloudPool. autoScaleFormula][net_cloudpool_autoscaleformula] (Batch .NET). Usługa Batch używa formuły do określenia docelowej liczby węzłów obliczeniowych w puli dla następnego interwału przetwarzania. Ciąg formuły nie może przekroczyć 8 KB, może zawierać do 100 instrukcji, które są rozdzielone średnikami i mogą zawierać podziały wierszy i komentarze.
 
 Można myśleć o automatycznym skalowaniu formuł jako języka wsadowego skalowania automatycznego. Instrukcje formuł są niektórymi sformułowanymi wyrażeniami, które mogą zawierać zarówno zmienne zdefiniowane przez usługę, jak i zmienne zdefiniowane przez użytkownika (zdefiniowane zmienne). Mogą wykonywać różne operacje na tych wartościach przy użyciu wbudowanych typów, operatorów i funkcji. Na przykład instrukcja może mieć następującą postać:
 
@@ -132,7 +132,7 @@ Możesz uzyskać wartości tych zmiennych zdefiniowanych przez usługę, aby wpr
 >
 >
 
-## <a name="types"></a>Typ
+## <a name="types"></a>Typy
 Te typy są obsługiwane w formule:
 
 * double
@@ -229,7 +229,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod() |Zwraca okres próbkowania, które zostały wykonane w historycznym zestawie danych przykładowych. |
 | Count () |Zwraca łączną liczbę próbek w historii metryk. |
 | HistoryBeginTime() |Zwraca sygnaturę czasową najstarszego dostępnego przykładu danych dla metryki. |
-| GetSamplePercent() |Zwraca wartość procentową próbek, które są dostępne dla danego interwału czasu. Na przykład:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Ponieważ metoda kończy się niepowodzeniem `GetSamplePercent` , jeśli wartość procentowa zwracanych próbek jest `samplePercent` mniejsza niż określona, można użyć metody do sprawdzenia w pierwszej kolejności. `GetSample` Następnie można wykonać alternatywną akcję, jeśli istnieją niewystarczające próbki, bez zatrzymania automatycznej oceny skalowania. |
+| GetSamplePercent() |Zwraca wartość procentową próbek, które są dostępne dla danego interwału czasu. Przykład:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Ponieważ metoda kończy się niepowodzeniem `GetSamplePercent` , jeśli wartość procentowa zwracanych próbek jest `samplePercent` mniejsza niż określona, można użyć metody do sprawdzenia w pierwszej kolejności. `GetSample` Następnie można wykonać alternatywną akcję, jeśli istnieją niewystarczające próbki, bez zatrzymania automatycznej oceny skalowania. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Przykłady, przykładowa wartość procentowa i Metoda *getsample ()*
 Podstawową operacją formułę skalowania automatycznego jest uzyskanie danych metryk zadania i zasobu, a następnie dopasowanie rozmiaru puli na podstawie tych danych. W związku z tym ważne jest, aby jasno zrozumieć, jak formuły skalowania automatycznego współdziałają z danymi metryk (przykładami).
@@ -364,15 +364,19 @@ $totalDedicatedNodes =
 $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 ```
 
-## <a name="create-an-autoscale-enabled-pool-with-net"></a>Tworzenie puli z włączoną funkcją automatycznego skalowania przy użyciu platformy .NET
+## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Tworzenie puli z włączoną funkcją automatycznego skalowania przy użyciu zestawów SDK partii
+
+Automatyczne skalowanie puli można skonfigurować przy użyciu dowolnego zestawu [SDK usługi Batch](batch-apis-tools.md#azure-accounts-for-batch-development), [poleceń cmdlet programu PowerShell](batch-powershell-cmdlets-get-started.md)dla usługi [Batch REST](https://docs.microsoft.com/rest/api/batchservice/) i interfejsu [wiersza polecenia usługi Batch](batch-cli-get-started.md). W tej sekcji można zobaczyć przykłady dla platformy .NET i języka Python.
+
+### <a name="net"></a>.NET
 
 Aby utworzyć pulę z włączonym skalowaniem automatycznym w programie .NET, wykonaj następujące kroki:
 
 1. Utwórz pulę przy użyciu [BatchClient. PoolOperations. ispool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
-2. Dla`true`właściwości [CloudPool. AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) ustaw wartość.
-3. Ustaw właściwość [CloudPool. AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) na formułę skalowania automatycznego.
-4. Obowiązkowe Ustaw właściwość [CloudPool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) (wartość domyślna to 15 minut).
-5. Zatwierdź pulę z [CloudPool. Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) lub [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
+1. Dla`true`właściwości [CloudPool. AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) ustaw wartość.
+1. Ustaw właściwość [CloudPool. AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) na formułę skalowania automatycznego.
+1. Obowiązkowe Ustaw właściwość [CloudPool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) (wartość domyślna to 15 minut).
+1. Zatwierdź pulę z [CloudPool. Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) lub [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
 
 Poniższy fragment kodu tworzy pulę z włączoną funkcją automatycznego skalowania w programie .NET. Formuła skalowania automatycznego puli ustawia liczbę docelową dedykowanych węzłów na 5 w poniedziałek i 1 na każdy inny dzień tygodnia. [Interwał skalowania automatycznego](#automatic-scaling-interval) jest ustawiany na 30 minut. W tym i inne C# fragmenty kodu w tym artykule `myBatchClient` są prawidłowo zainicjowane wystąpienie klasy [BatchClient][net_batchclient] .
 
@@ -392,10 +396,8 @@ await pool.CommitAsync();
 >
 >
 
-Oprócz programu Batch .NET można użyć dowolnego z innych [zestawów SDK partii](batch-apis-tools.md#azure-accounts-for-batch-development), programu [Batch REST](https://docs.microsoft.com/rest/api/batchservice/), [poleceń cmdlet programu PowerShell](batch-powershell-cmdlets-get-started.md)w usłudze Batch i [interfejsu wiersza polecenia Batch](batch-cli-get-started.md) , aby skonfigurować Skalowanie automatyczne.
+#### <a name="automatic-scaling-interval"></a>Interwał automatycznego skalowania
 
-
-### <a name="automatic-scaling-interval"></a>Interwał automatycznego skalowania
 Domyślnie usługa Batch dostosowuje rozmiar puli zgodnie z formułą automatycznego skalowania co 15 minut. Ten interwał można skonfigurować przy użyciu następujących właściwości puli:
 
 * [CloudPool. AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .NET)
@@ -408,9 +410,53 @@ Minimalny interwał wynosi pięć minut, a wartość maksymalna to 168 godzin. J
 >
 >
 
+### <a name="python"></a>Python
+
+Podobnie można utworzyć pulę z obsługą skalowania automatycznego za pomocą zestawu SDK języka Python, wykonując następujące polecenie:
+
+1. Utwórz pulę i określ jej konfigurację.
+1. Dodaj pulę do klienta usługi.
+1. Włącz automatyczne skalowanie w puli przy użyciu zapisanej formuły.
+
+```python
+# Create a pool; specify configuration
+new_pool = batch.models.PoolAddParameter(
+    id="autoscale-enabled-pool",
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
+          publisher="Canonical",
+          offer="UbuntuServer",
+          sku="18.04-LTS",
+          version="latest"
+            ),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
+    vm_size="STANDARD_D1_v2",
+    target_dedicated_nodes=0,
+    target_low_priority_nodes=0
+)
+batch_service_client.pool.add(new_pool) # Add the pool to the service client
+
+formula = """$curTime = time();
+             $workHours = $curTime.hour >= 8 && $curTime.hour < 18; 
+             $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5; 
+             $isWorkingWeekdayHour = $workHours && $isWeekday; 
+             $TargetDedicated = $isWorkingWeekdayHour ? 20:10;""";
+
+# Enable autoscale; specify the formula
+response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formula=formula,
+                                            auto_scale_evaluation_interval=datetime.timedelta(minutes=10), 
+                                            pool_enable_auto_scale_options=None, 
+                                            custom_headers=None, raw=False)
+```
+
+> [!TIP]
+> Więcej przykładów użycia zestawu SDK języka Python można znaleźć w [repozytorium przewodnika Szybki Start](https://github.com/Azure-Samples/batch-python-quickstart) dla usługi Batch w witrynie GitHub.
+>
+>
+
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Włącz Skalowanie automatyczne w istniejącej puli
 
-Każdy zestaw SDK w usłudze Batch umożliwia włączenie skalowania automatycznego. Na przykład:
+Każdy zestaw SDK w usłudze Batch umożliwia włączenie skalowania automatycznego. Przykład:
 
 * [BatchClient. PoolOperations. EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
 * [Włącz automatyczne skalowanie w puli][rest_enableautoscale] (INTERFEJS API REST)
@@ -424,7 +470,7 @@ Po włączeniu skalowania automatycznego w istniejącej puli należy pamiętać 
   * W przypadku pominięcia formuły automatycznego skalowania lub interwału oceny usługa Batch będzie używać bieżącej wartości tego ustawienia.
 
 > [!NOTE]
-> Jeśli określono wartości parametrów *targetDedicatedNodes* lub *targetLowPriorityNodes* metody tworzenia puli w programie  .NET lub dla porównywalnych parametrów w innym języku, te wartości są ignorowany, gdy jest szacowana formuła skalowania automatycznego.
+> Jeśli określono wartości parametrów *targetDedicatedNodes* lub *targetLowPriorityNodes* **metody tworzenia** puli w programie .NET lub dla porównywalnych parametrów w innym języku, te wartości są ignorowany, gdy jest szacowana formuła skalowania automatycznego.
 >
 >
 
@@ -668,7 +714,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Maksymalizuj Azure Batch użycie zasobów obliczeniowych za pomocą współbieżnych zadań węzłów](batch-parallel-node-tasks.md) zawiera szczegółowe informacje na temat sposobu wykonywania wielu zadań jednocześnie w węzłach obliczeniowych w puli. Oprócz skalowania automatycznego ta funkcja może pomóc w obniżeniu czasu trwania zadań w przypadku niektórych obciążeń, co pozwala zaoszczędzić pieniądze.
 * W przypadku innego detonatora wydajności upewnij się, że aplikacja usługi Batch wyśle do niej zapytanie w najbardziej optymalny sposób. Zobacz [wydajną pracę usługi Azure Batch,](batch-efficient-list-queries.md) aby dowiedzieć się, jak ograniczyć ilość danych przekreślonych w czasie wykonywania zapytania o stan potencjalnie tysięcy węzłów obliczeniowych lub zadań.
 

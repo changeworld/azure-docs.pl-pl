@@ -1,10 +1,10 @@
 ---
-title: Wyświetlanie raportów i dzienników w usłudze Azure AD uprawnienie management (wersja zapoznawcza) — usługi Azure Active Directory
-description: Dowiedz się, jak wyświetlić raport przypisania użytkownika i dzienniki inspekcji w usłudze Azure Active Directory Zarządzanie uprawnieniami (wersja zapoznawcza).
+title: Wyświetlanie raportów i dzienników w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza) — Azure Active Directory
+description: Dowiedz się, jak wyświetlić raport dotyczący przypisań użytkowników i dzienniki inspekcji w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
 ms.workload: identity
@@ -13,70 +13,70 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/19/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a61a581574c77a57939ea23fdadc7b060b82af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d33b4751b421f5af1536af9a88d15e060ab59bdb
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64541543"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489057"
 ---
-# <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Wyświetlanie raportów i dzienniki w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
+# <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Wyświetlanie raportów i dzienników w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
 
 > [!IMPORTANT]
-> Zarządzanie uprawnieniami w usłudze Azure Active Directory (Azure AD) jest obecnie w publicznej wersji zapoznawczej.
+> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="view-resources-a-user-has-access-to"></a>Wyświetl zasoby, których użytkownik ma dostęp do
+## <a name="view-resources-a-user-has-access-to"></a>Wyświetlanie zasobów, do których użytkownik ma dostęp
 
-1. Kliknij przycisk **usługi Azure Active Directory** a następnie kliknij przycisk **zarządzania tożsamościami oraz**.
+1. Kliknij **Azure Active Directory** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij **raport przypisania użytkownika**.
+1. W menu po lewej stronie kliknij pozycję **raport dotyczący przypisań użytkowników**.
 
-1. Kliknij przycisk **wybranym użytkownikom** aby otworzyć okienko wybrani użytkownicy.
+1. Kliknij pozycję **Wybierz użytkowników** , aby otworzyć okienko Wybieranie użytkowników.
 
-1. Znajdź użytkownika, na liście, który chcesz wyświetlić zasoby, które mają dostęp.
+1. Znajdź użytkownika na liście, dla którego chcesz wyświetlić zasoby, do których mają dostęp.
 
-1. Kliknij nazwę użytkownika, a następnie kliknij przycisk **wybierz**.
+1. Kliknij użytkownika, a następnie kliknij przycisk **Wybierz**.
 
-    Zostanie wyświetlona lista zasobów, których użytkownik ma dostęp. Obejmuje dostęp do pakietu, zasad i daty.
+    Zostanie wyświetlona lista zasobów, do których użytkownik ma dostęp. Obejmuje to pakiet dostępu, zasady i daty.
 
-    ![Raport przypisania użytkownika](./media/entitlement-management-reports/user-assignments-report.png)
+    ![Raport przypisań użytkowników](./media/entitlement-management-reports/user-assignments-report.png)
 
-## <a name="determine-the-status-of-a-users-request"></a>Sprawdź stan żądania użytkownika
+## <a name="determine-the-status-of-a-users-request"></a>Określanie stanu żądania użytkownika
 
-Aby uzyskać więcej szczegółów na temat jak użytkownik zażądał i uzyskania dostępu do pakietu dostępu, można użyć w dzienniku inspekcji usługi Azure AD. W szczególności można użyć rekordy dziennika w `EntitlementManagement` i `UserManagement` kategorie, aby uzyskać więcej informacji na temat kroków przetwarzania dla każdego żądania.  
+Aby uzyskać dodatkowe informacje o tym, jak użytkownik zażądał i otrzymał dostęp do pakietu dostępu, możesz użyć dziennika inspekcji usługi Azure AD. W szczególności można użyć rekordów dziennika w `EntitlementManagement` kategorii i `UserManagement` , aby uzyskać dodatkowe szczegóły dotyczące kroków przetwarzania dla każdego żądania.  
 
-1. Kliknij przycisk **usługi Azure Active Directory** a następnie kliknij przycisk **dzienniki inspekcji**.
+1. Kliknij **Azure Active Directory** a następnie kliknij pozycję **dzienniki inspekcji**.
 
-1. U góry strony, należy zmienić **kategorii** do jednej `EntitlementManagement` lub `UserManagement`, w zależności od rekord inspekcji, czego szukasz.  
+1. W górnej części Zmień **kategorię** na `EntitlementManagement` lub `UserManagement`, w zależności od szukanego rekordu inspekcji.  
 
-1. Kliknij przycisk **Zastosuj**.
+1. Kliknij przycisk **zastosować**.
 
-1. Aby pobrać dzienniki, kliknij **Pobierz**.
+1. Aby pobrać dzienniki, kliknij przycisk **Pobierz**.
 
-Gdy usługi Azure AD, otrzymuje nowe żądanie, zapisuje rekord inspekcji, w którym **kategorii** jest `EntitlementManagement` i **działania** jest zazwyczaj `User requests access package assignment`.  W przypadku przypisania bezpośredniego utworzone w witrynie Azure portal **działania** pole rekordu inspekcji jest `Administrator directly assigns user to access package`, a użytkownik wykonujący przypisanie jest identyfikowane za pomocą **ActorUserPrincipalName**.
+Gdy usługa Azure AD otrzymuje nowe żądanie, zapisuje rekord inspekcji, w którym **Kategoria** `EntitlementManagement` jest, a **działanie** jest zwykle `User requests access package assignment`.  W przypadku przypisania bezpośredniego utworzonego w Azure Portal pole **działania** rekordu inspekcji ma `Administrator directly assigns user to access package`wartość, a użytkownik wykonujący przypisanie jest identyfikowany przez **ActorUserPrincipalName**.
 
-Usługi Azure AD będą zapisywane rekordów inspekcji dodatkowe, gdy żądanie jest w toku, w tym:
+Usługa Azure AD będzie zapisywać dodatkowe rekordy inspekcji, gdy żądanie jest w toku, w tym:
 
-| Category | Działanie | Stan żądania |
+| Kategoria | Działanie | Stan żądania |
 | :---- | :------------ | :------------ |
 | `EntitlementManagement` | `Auto approve access package assignment request` | Żądanie nie wymaga zatwierdzenia |
 | `UserManagement` | `Create request approval` | Żądanie wymaga zatwierdzenia |
 | `UserManagement` | `Add approver to request approval` | Żądanie wymaga zatwierdzenia |
 | `EntitlementManagement` | `Approve access package assignment request` | Żądanie zatwierdzone |
-| `EntitlementManagement` | `Ready to fulfill access package assignment request` |Żądania zatwierdzenia lub nie wymaga zatwierdzenia |
+| `EntitlementManagement` | `Ready to fulfill access package assignment request` |Żądanie zatwierdzone lub nie wymaga zatwierdzenia |
 
-Gdy użytkownik jest przypisany dostęp, usługi Azure AD zapisuje rekord inspekcji dla `EntitlementManagement` kategorii z **działania** `Fulfill access package assignment`.  Użytkownik, który otrzymał dostęp jest identyfikowany przez **ActorUserPrincipalName** pola.
+Gdy użytkownik ma przypisany dostęp, usługa Azure AD zapisuje rekord inspekcji dla `EntitlementManagement` kategorii z **działaniem** `Fulfill access package assignment`.  Użytkownik, który otrzymał dostęp, jest identyfikowany przez pole **ActorUserPrincipalName** .
 
-Jeśli dostęp nie została przypisana, a następnie usługi Azure AD zapisuje rekord inspekcji dla `EntitlementManagement` kategorii z **działania** albo `Deny access package assignment request`, jeśli żądanie zostało odrzucone przez osobę zatwierdzającą lub `Access package assignment request timed out (no approver action taken)`, jeśli upłynął limit czasu żądania przed Osoba zatwierdzająca może zatwierdzić.
+Jeśli dostęp nie został przypisany, usługa Azure AD zapisuje `EntitlementManagement` rekord inspekcji dla kategorii z **działaniem** `Deny access package assignment request`, jeśli żądanie zostało odrzucone przez osobę zatwierdzającą lub `Access package assignment request timed out (no approver action taken)`Jeśli upłynął limit czasu żądania przed zatwierdzeniem przez osobę zatwierdzającą.
 
-Po wygaśnięciu przypisywania pakietów dostęp użytkownika jest anulowane przez użytkownika lub usunięte przez administratora, a następnie usługi Azure AD zapisuje rekord inspekcji dla `EntitlementManagement` kategorii z **działania** z `Remove access package assignment`.
+Po wygaśnięciu przypisania pakietu dostępu użytkownika użytkownik zostanie anulowany przez użytkownika lub usunięty przez administratora, a następnie usługa Azure AD zapisuje rekord inspekcji dla `EntitlementManagement` kategorii z **działaniem** . `Remove access package assignment`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Rozwiązywanie problemów z zarządzaniem uprawnień usługi Azure AD](entitlement-management-troubleshoot.md)
+- [Rozwiązywanie problemów z zarządzaniem prawami usługi Azure AD](entitlement-management-troubleshoot.md)
 - [Typowe scenariusze](entitlement-management-scenarios.md)

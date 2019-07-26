@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aba41d62df49a40d9fc3686684b39b71e1363453
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6282ce426b08c4ad9c44bead0bd4ec3d259f65fe
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296053"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501432"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -209,7 +209,7 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |Region  |Obsługiwana nadmiarowość  |Obsługuje istniejące konta magazynu  |
 |---------|---------|---------|
 |Azja Południowo-Wschodnia     |LRS|Nie         |
-|Europa Zachodnia     |LRS|Nie         |
+|Europa Zachodnia     |LRS, ZRS|Nie         |
 |Zachodnie stany USA 2     |LRS, ZRS|Nie         |
 
 Aby pomóc nam określić priorytety nowych regionów i funkcji, Wypełnij tę [ankietę](https://aka.ms/azurefilesatscalesurvey).
@@ -260,7 +260,7 @@ Istnieje wiele łatwych opcji przesyłania zbiorczego danych z istniejącego udz
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy to dobrze znane narzędzie do kopiowania, które jest dostarczane z systemami Windows i Windows Server. Robocopy może służyć do transferowania danych do Azure Files przez zainstalowanie udziału plików lokalnie, a następnie użycie zainstalowanej lokalizacji jako miejsca docelowego w poleceniu Robocopy.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych do i z Azure Files, a także do usługi Azure Blob Storage przy użyciu prostych poleceń z optymalną wydajnością.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md)
 * [Wdrażanie Azure Files](storage-files-deployment-guide.md)
 * [Wdrażanie Azure File Sync](storage-sync-files-deployment-guide.md)

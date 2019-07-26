@@ -1,6 +1,6 @@
 ---
 title: Plik dyrektywy include
-description: Dołącz plik z warunków wstępnych
+description: Uwzględnij plik z wymaganiami wstępnymi
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 1fba8cc9ae40cf5539016bbd73de65f557a64136
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f7b1b294e9500ef9e0aadd24cfe3cd4e61fddda1
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183813"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68426931"
 ---
 > [!IMPORTANT]
-> **Włączanie synchronizacji skrótów haseł w usługach domenowych Azure AD, przed wykonaniem zadania w tym artykule.**
+> **Przed ukończeniem zadań w tym artykule Włącz synchronizację skrótów haseł, aby Azure AD Domain Services.**
 >
-> Postępuj zgodnie z instrukcjami poniżej, w zależności od typu użytkowników w katalogu usługi Azure AD. Jeśli masz kombinację kont użytkowników tylko w chmurze i synchronizowane w katalogu usługi Azure AD, należy ukończyć oba zestawy instrukcji. Nie można przeprowadzić następujące operacje, w przypadku, gdy próbujesz użyć konta gościa B2B (przykład usługi gmail lub MSA od innego dostawcy tożsamości, które są dozwolone), ponieważ nie ma hasła dla tych użytkowników zsynchronizowanych do domeny zarządzanej, jak te są to konta gościa w katalogu. Pełne informacje na temat tych kont, włącznie z haseł będzie znajdować się poza usługi Azure AD i jak te informacje nie znajduje się w usłudze Azure AD więc go nie nawet uzyskać synchronizowane do domeny zarządzanej. 
+> Postępuj zgodnie z poniższymi instrukcjami, w zależności od typu użytkowników w katalogu usługi Azure AD. Wykonaj oba zestawy instrukcji, jeśli masz połączenie z kontami użytkowników tylko w chmurze i synchronizowanych w katalogu usługi Azure AD. W przypadku próby skorzystania z konta gościa B2B (na przykład usługi Gmail lub MSA od innego dostawcy tożsamości, który zezwolimy) może nie być możliwe przeprowadzenie następujących operacji, ponieważ nie ma hasła dla tych użytkowników zsynchronizowanych z domeną zarządzaną Czy konta gościa znajdują się w katalogu. Pełne informacje na temat tych kont, w tym hasła, mogą znajdować się poza usługą Azure AD, a ponieważ te informacje nie są w usłudze Azure AD, dlatego nie są nawet synchronizowane z domeną zarządzaną. 
 > - [Instrukcje dotyczące kont użytkowników tylko w chmurze](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)
-> - [Instrukcje dotyczące kont użytkowników synchronizowanych z katalogiem lokalnym](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)
+> - [Instrukcje dotyczące kont użytkowników synchronizowanych z katalogu lokalnego](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)

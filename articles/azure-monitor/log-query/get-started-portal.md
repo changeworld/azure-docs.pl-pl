@@ -1,44 +1,44 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Monitor Log Analytics | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek do pisania zapytań, za pomocą usługi Log Analytics w witrynie Azure portal.
+title: Wprowadzenie do Azure Monitor Log Analytics | Microsoft Docs
+description: Ten artykuł zawiera samouczek dotyczący używania Log Analytics w Azure Portal do zapisywania zapytań.
 services: log-analytics
 author: bwren
 manager: carmonm
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: 2e2d13e6923535a8993a6477cbbfb921f6092d66
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565592"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348088"
 ---
-# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Rozpoczynanie pracy z usługą Log Analytics w usłudze Azure Monitor
+# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Wprowadzenie do Log Analytics w Azure Monitor
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym samouczku dowiesz się, jak używać usługi Log Analytics w witrynie Azure portal do pisania zapytań dzienników usługi Azure Monitor. Jego nauczą Cię, jak do:
+W tym samouczku dowiesz się, jak używać Log Analytics w Azure Portal do pisania zapytań dzienników Azure Monitor. Pouczysz się, jak:
 
-- Używanie programu Log Analytics do pisania prostego zapytania
-- Zrozumieć schemat danych
+- Użyj Log Analytics, aby napisać proste zapytanie
+- Zrozumienie schematu danych
 - Filtrowanie, sortowanie i grupowanie wyników
-- Stosowanie zakresu czasu
+- Zastosuj zakres czasu
 - Tworzenie wykresów
-- Zapisywanie i ładowanie zapytań
+- Zapisz i Załaduj zapytania
 - Eksportowanie i udostępnianie zapytań
 
-Samouczek dotyczący Pisanie zapytań log, zobacz [wprowadzenie do zapytań dzienników w usłudze Azure Monitor](get-started-queries.md).<br>
-Aby uzyskać szczegółowe informacje na temat dziennika zapytań, zobacz [Przegląd dziennika zapytań w usłudze Azure Monitor](log-query-overview.md).
+Aby zapoznać się z samouczkiem dotyczącym pisania zapytań dzienników, zobacz [Rozpoczynanie pracy z dziennikami w Azure monitor](get-started-queries.md).<br>
+Aby uzyskać więcej informacji o zapytaniach dziennika, zobacz [Omówienie zapytań dzienników w Azure monitor](log-query-overview.md).
 
-## <a name="meet-log-analytics"></a>Spełnia usługi Log Analytics
-Log Analytics jest w sieci web narzędzie służące do zapisu i wykonywania zapytań dzienników usługi Azure Monitor. Otwórz go, wybierając **dzienniki** w menu usługi Azure Monitor. Rozpoczynają się one od nowego pustego zapytania.
+## <a name="meet-log-analytics"></a>Poznaj Log Analytics
+Log Analytics jest narzędziem sieci Web służącym do zapisywania i wykonywania zapytań dzienników Azure Monitor. Otwórz go, wybierając pozycję **dzienniki** w menu Azure monitor. Rozpoczyna się od nowego pustego zapytania.
 
 ![Strona główna](media/get-started-portal/homepage.png)
 
 ## <a name="firewall-requirements"></a>Wymagania dotyczące zapory
-Aby korzystać z usługi Log Analytics, przeglądarce wymaga dostępu do następujących adresów. Jeśli przeglądarka jest dostęp do witryny Azure portal za pośrednictwem zapory, należy włączyć dostęp do tych adresów.
+Aby można było używać Log Analytics, przeglądarka wymaga dostępu do następujących adresów. Jeśli przeglądarka uzyskuje dostęp do Azure Portal przez zaporę, należy włączyć dostęp do tych adresów.
 
 | Identyfikator URI | IP | Porty |
 |:---|:---|:---|
@@ -46,96 +46,96 @@ Aby korzystać z usługi Log Analytics, przeglądarce wymaga dostępu do następ
 | api.loganalytics.io | Dynamiczne | 80,443 |
 | docs.loganalytics.io | Dynamiczne | 80,443 |
 
-## <a name="basic-queries"></a>Podstawowe zapytania
-Zapytania mogą służyć do terminy wyszukiwania, identyfikację trendów, analizować wzorce i wiele innych informacji na podstawie danych. Uruchom przy użyciu podstawowego zapytania:
+## <a name="basic-queries"></a>Zapytania podstawowe
+Zapytania mogą służyć do wyszukiwania terminów, identyfikowania trendów, analizowania wzorców i udostępniania wielu szczegółowych informacji na podstawie danych. Zacznij od podstawowego zapytania:
 
 ```Kusto
 Event | search "error"
 ```
 
-To zapytanie wyszukuje _zdarzeń_ tabeli rekordy, które zawierają termin _błąd_ w dowolnej właściwości.
+To zapytanie wyszukuje w tabeli _zdarzeń_ rekordy zawierające _błąd_ terminu w dowolnej właściwości.
 
-Zapytania można zacząć od jednej nazwy tabeli lub [wyszukiwania](/azure/kusto/query/searchoperator) polecenia. Powyższy przykład zaczyna się od nazwy tabeli _zdarzeń_, który pobiera wszystkie rekordy z tabeli zdarzeń. Znaku kreski pionowej (|) oddziela polecenia, dzięki czemu dane wyjściowe pierwszy z nich służy jako dane wejściowe następującego polecenia. Możesz dodać dowolną liczbę poleceń do pojedynczego zapytania.
+Zapytania mogą rozpoczynać się od nazwy tabeli lub polecenia [wyszukiwania](/azure/kusto/query/searchoperator) . Powyższy przykład rozpoczyna się od _zdarzenia_nazwa tabeli, które pobiera wszystkie rekordy z tabeli zdarzeń. Znak potoku (|) oddziela polecenia, aby dane wyjściowe pierwszego z nich służyły jako dane wejściowe następującego polecenia. Do pojedynczego zapytania można dodać dowolną liczbę poleceń.
 
-Innym sposobem pisania tego samego zapytania będą:
+Innym sposobem zapisu tego samego zapytania będzie:
 
 ```Kusto
 search in (Event) "error"
 ```
 
-W tym przykładzie **wyszukiwania** obejmuje _zdarzeń_ tabeli, a wszystkie rekordy w tabeli wyszukiwany termin _błąd_.
+W tym przykładzie **Wyszukiwanie** jest objęte zakresem tabeli _zdarzeń_ , a wszystkie rekordy w tej tabeli są przeszukiwane pod kątem _błędu_terminu.
 
 ## <a name="running-a-query"></a>Uruchamianie zapytania
-Uruchom zapytanie, klikając pozycję **Uruchom** przycisku lub naciskając **Shift + Enter**. Należy wziąć pod uwagę następujące informacje, które określają kodu, która będzie uruchamiana i danych, który jest zwracany:
+Uruchom zapytanie, klikając przycisk **Run (Uruchom** ) lub naciskając **klawisze SHIFT + ENTER**. Należy wziąć pod uwagę następujące szczegóły, które określają kod, który zostanie uruchomiony i zwrócone dane:
 
-- Podziały wierszy: Podział pojedynczego sprawia, że zapytanie jest łatwiejsza do odczytania. Podziały wierszy wielu podzielić ją na oddzielne zapytania.
-- Kursor: Umieść kursor gdzieś w zapytaniu do jego wykonania. Bieżące zapytanie jest uważana za kod, aż zostanie znaleziony pusty wiersz.
-- Zakres - przedział czasu czasu _ostatnich 24 godzinach_ jest ustawieniem domyślnym. Do używania innego zakresu, użyj selektora czasu, lub Dodaj godzinę jawne filtru zakresu do zapytania.
+- Podziały wierszy: Pojedynczy podział sprawia, że zapytanie jest łatwiejsze do odczytania. Wiele podziałów wierszy dzieli je na osobne zapytania.
+- Biera Umieść kursor w miejscu wewnątrz zapytania, aby go wykonać. Bieżące zapytanie jest uznawane za kod w górę do momentu znalezienia pustego wiersza.
+- Zakres czasu — domyślnie jest ustawiony zakres czasu z _ostatnich 24 godzin_ . Aby użyć innego zakresu, użyj selektora czasu lub Dodaj jawny filtr zakresu czasu do zapytania.
 
 
 ## <a name="understand-the-schema"></a>Informacje o schemacie
-Schemat jest zbiór tabel wizualnie pogrupowane w logiczne kategorii. Kilka kategorii pochodzą z rozwiązania do monitorowania. _LogManagement_ kategoria zawiera wspólne dane, takie jak Windows i zdarzenia dziennika systemowego, dane dotyczące wydajności i pulsu agenta.
+Schemat jest kolekcją tabel zgrupowanych wizualnie w ramach kategorii logicznej. Niektóre kategorie pochodzą z rozwiązań monitorowania. Kategoria _LogManagement_ zawiera typowe dane, takie jak zdarzenia systemu Windows i dziennika systemowego, dane wydajności i pulsy agentów.
 
 ![Schemat](media/get-started-portal/schema.png)
 
-W każdej tabeli dane są organizowane w kolumnach zawierających różne typy danych wskazane przez ikony obok nazwy kolumny. Na przykład _zdarzeń_ tabeli pokazano na zrzucie ekranu zawiera kolumny, takie jak _komputera_ czyli tekstu, _EventCategory_ która jest liczbą, i _TimeGenerated_ czyli daty/godziny.
+W każdej tabeli dane są zorganizowane w kolumnach z różnymi typami danych, wskazanymi przez ikony obok nazwy kolumny. Na przykład _zdarzeń_ tabeli pokazano na zrzucie ekranu zawiera kolumny, takie jak _komputera_ czyli tekstu, _EventCategory_ która jest liczbą, i _TimeGenerated_ czyli daty/godziny.
 
 ## <a name="filter-the-results"></a>Filtrowanie wyników
-Od zebrania wszystko _zdarzeń_ tabeli.
+Zacznij od pobrania wszystkiego w tabeli _zdarzeń_ .
 
 ```Kusto
 Event
 ```
 
-Usługa log Analytics zakresów automatycznie wyniki według:
+Log Analytics automatycznie zakresy wyników według:
 
-- Zakres czasu:  Domyślnie kwerendy są ograniczone do ostatnich 24 godzin.
+- Zakres czasu:  Domyślnie zapytania są ograniczone do ostatnich 24 godzin.
 - Liczba wyników: Wyniki są ograniczone do maksymalnie 10 000 rekordów.
 
-To zapytanie jest bardzo ogólny i zwraca zbyt wiele wyników były przydatne. Możesz filtrować wyniki za pomocą elementów tabeli lub przez jawne dodanie filtru do zapytania. Filtrowanie wyników za pomocą elementów tabeli stosowana do istniejącego zestawu wyników, gdy filtr, aby samo zapytanie zwróci nowy wynik filtrowanego zestawu i w związku z tym można wygenerować bardziej precyzyjne wyniki.
+To zapytanie jest bardzo ogólne i zwraca zbyt wiele wyników, aby być przydatne. Wyniki można filtrować przez elementy tabeli lub przez jawne dodanie filtru do zapytania. Filtrowanie wyników przez elementy tabeli ma zastosowanie do istniejącego zestawu wyników, podczas gdy filtr do samego zapytania zwróci nowy zestaw wyników filtrowanych i w związku z tym może generować dokładniejsze wyniki.
 
 ### <a name="add-a-filter-to-the-query"></a>Dodawanie filtru do zapytania
-Brak strzałkę na lewo od każdego rekordu. Strzałki można otworzyć szczegóły dla określonego rekordu.
+Obok każdego rekordu znajduje się strzałka z lewej strony. Strzałki można otworzyć szczegóły dla określonego rekordu.
 
-Umieść kursor nad nazwę kolumny "+" i "-", aby wyświetlić ikon. Aby dodać filtr, który zwraca tylko rekordy z taką samą wartość, kliknij znak "+". Kliknij przycisk "-" wykluczania rekordów o tej wartości, a następnie kliknij przycisk **Uruchom** ponownie uruchomić zapytanie.
+Umieść kursor nad nazwą kolumny ikon "+" i "-", aby wyświetlić. Aby dodać filtr, który zwróci tylko rekordy o tej samej wartości, kliknij znak "+". Kliknij przycisk "-", aby wykluczyć rekordy z tą wartością, a następnie kliknij przycisk **Uruchom** , aby ponownie uruchomić zapytanie.
 
-![Dodawanie filtru do zapytania](media/get-started-portal/add-filter.png)
+![Dodaj filtr do zapytania](media/get-started-portal/add-filter.png)
 
-### <a name="filter-through-the-table-elements"></a>Filtrują elementy tabeli
-Teraz możemy skoncentrować się na zdarzeń o ważności _błąd_. To jest określona w kolumnie o nazwie _EventLevelName_. Musisz przewiń w prawo, aby wyświetlić tę kolumnę.
+### <a name="filter-through-the-table-elements"></a>Filtruj elementy tabeli
+Teraz skupmy się na zdarzeniach o ważności _błędu_. Ta wartość jest określona w kolumnie o nazwie _EventLevelName_. Musisz przewinąć w prawo, aby wyświetlić tę kolumnę.
 
-Kliknięcie ikony filtra umieszczonych obok nazw kolumn, a następnie w oknie podręcznym wybierz wartości _rozpoczyna się od_ tekst _błąd_:
+Kliknij ikonę filtru obok tytułu kolumny, a w oknie podręcznym wybierz wartości, które zaczynają się  od _błędu_tekstu:
 
 ![Filtr](media/get-started-portal/filter.png)
 
 
 ## <a name="sort-and-group-results"></a>Sortuj i Grupuj wyniki
-Wyniki są zawężona obejmujący tylko zdarzenia błędu z programu SQL Server utworzone w ciągu ostatnich 24 godzin. Wyniki nie są sortowane w dowolny sposób. Aby posortować wyniki według określonej kolumny, takie jak _sygnatura czasowa_ na przykład kliknąć tytuł kolumny. Jedno kliknięcie sortuje w kolejności rosnącej, a drugie kliknięcie pozwala na sortowanie malejąco.
+Wyniki są teraz zawężane w celu uwzględnienia tylko zdarzeń błędów z SQL Server utworzonych w ciągu ostatnich 24 godzin. Jednak wyniki nie są sortowane w żaden sposób. Aby posortować wyniki według określonej kolumny, takiej jak _sygnatura czasowa_ na przykład, kliknij tytuł kolumny. Jednym kliknięciem sortuje się w kolejności rosnącej, a drugie kliknięcie sortuje malejąco.
 
-![Sortuj kolumny](media/get-started-portal/sort-column.png)
+![Sortuj kolumnę](media/get-started-portal/sort-column.png)
 
-Innym sposobem organizowania wyników jest grup. Aby grupowanie wyników według określonej kolumny, po prostu przeciągnij nagłówek kolumny powyżej innych kolumn. Aby utworzyć podgrupy, przeciągnij innych kolumn w górnym pasku także.
+Inny sposób organizowania wyników odbywa się według grup. Aby pogrupować wyniki według określonej kolumny, wystarczy przeciągnąć Nagłówek kolumny powyżej innych kolumn. Aby utworzyć podgrupy, przeciągnij pozostałe kolumny na górnym pasku.
 
 ![Grupy](media/get-started-portal/groups.png)
 
 ## <a name="select-columns-to-display"></a>Wybierz kolumny do wyświetlenia
-Tabela wyników zawiera często wiele kolumn. Może okazać się, że niektóre kolumny zwracane nie są wyświetlane domyślnie lub może być usunięcie niektórych kolumn, które są wyświetlane. Aby wybrać kolumny do pokazania, kliknij przycisk kolumn:
+Tabela wyników często zawiera wiele kolumn. Może się okazać, że niektóre z zwracanych kolumn nie są wyświetlane domyślnie lub można usunąć niektóre z wyświetlanych kolumn. Aby wybrać kolumny do wyświetlenia, kliknij przycisk kolumny:
 
 ![Wybieranie kolumn](media/get-started-portal/select-columns.png)
 
 
 ## <a name="select-a-time-range"></a>Wybierz zakres czasu
-Domyślnie stosuje usługa Log Analytics _ostatnich 24 godzinach_ zakres czasu. Aby użyć innego zakresu, wybierz inną wartość za pomocą selektora czasu, a następnie kliknij przycisk **Uruchom**. Oprócz wstępnie zdefiniowane wartości, można użyć _niestandardowego przedziału czasu_ możliwość dokonania wyboru bezwzględny zakres zapytania.
+Domyślnie Log Analytics stosuje zakres czasu w _ostatnich 24 godzinach_ . Aby użyć innego zakresu, wybierz inną wartość za pomocą selektora godziny, a następnie kliknij przycisk **Uruchom**. Oprócz wartości wstępnie ustawionych można użyć opcji _niestandardowy zakres czasu_ , aby wybrać zakres bezwzględny dla zapytania.
 
-![Selektor godziny](media/get-started-portal/time-picker.png)
+![Wybór godziny](media/get-started-portal/time-picker.png)
 
-Po wybraniu niestandardowego zakresu czasu, wybranych wartości są w formacie UTC, może być inny niż lokalnej strefy czasowej.
+W przypadku wybrania niestandardowego zakresu czasu wybrane wartości są w formacie UTC, który może różnić się od lokalnej strefy czasowej.
 
-Jeśli zapytanie zawiera jawnie filtr _TimeGenerated_, czas selektora tytuł zostanie wyświetlony _Ustaw w zapytaniu_. Ręczne wybranie zostaną wyłączone w celu uniknięcia konfliktu.
+Jeśli zapytanie jawnie zawiera filtr dla _TimeGenerated_, tytuł selektora czas będzie wyświetlany _w zapytaniu_. Wybór ręczny zostanie wyłączony w celu uniknięcia konfliktu.
 
 
 ## <a name="charts"></a>Wykresy
-Oprócz zwracania wyników w tabeli, wyniki zapytania mogą być przedstawiane na formaty wizualne. Użyj następującego zapytania, na przykład:
+Oprócz zwracania wyników w tabeli wyniki zapytania mogą być prezentowane w formatach wizualnych. Użyj poniższego zapytania jako przykładu:
 
 ```Kusto
 Event 
@@ -144,55 +144,58 @@ Event
 | summarize count() by Source 
 ```
 
-Domyślnie wyniki są wyświetlane w tabeli. Kliknij przycisk _wykresu_ do wyświetlania wyników w graficzny widok:
+Domyślnie wyniki są wyświetlane w tabeli. Kliknij _Wykres_ , aby wyświetlić wyniki w widoku graficznym:
 
 ![Wykres słupkowy](media/get-started-portal/bar-chart.png)
 
-Wyniki są wyświetlane w skumulowany wykres słupkowy. Kliknij przycisk _skumulowany kolumnowy_ i wybierz _kołowy_ do innego widoku wyników do wyświetlenia:
+Wyniki są wyświetlane na skumulowanym wykresie słupkowym. Kliknij pozycję _skumulowany kolumnowy_ i wybierz pozycję _kołowy_ , aby wyświetlić inny widok wyników:
 
 ![Wykres kołowy](media/get-started-portal/pie-chart.png)
 
-Inne właściwości widoku, takich jak x i osi y lub grupowanie i rozdzielanie preferencji, można ją zmienić ręcznie na pasku sterowania.
+Różne właściwości widoku, takie jak osie x i y lub Preferencje grupowania i dzielenia, można zmienić ręcznie z poziomu paska sterowania.
 
-Można również ustawić preferowany widok w zapytaniu, za pomocą operatora renderowania.
+Możesz również ustawić preferowany widok w samej kwerendzie przy użyciu operatora renderowania.
 
-### <a name="smart-diagnostics"></a>Inteligentna Diagnostyka
-Na wykres czasu w przypadku nagłym skokiem lub krok w danych, mogą pojawić się wyróżniony punktu, w wierszu. Oznacza to, że _inteligentna Diagnostyka_ zidentyfikowała kombinacji właściwości, które odfiltrować nagła zmiana. Kliknij punkt, aby uzyskać więcej szczegółów na temat filtr i wyświetlić filtrowanej wersji. To może pomóc w zidentyfikowaniu, co spowodowało zmianę:
+### <a name="smart-diagnostics"></a>Inteligentna diagnostyka
+W timechart, jeśli w danych wystąpi nagły skok lub krok, w wierszu może zostać wyświetlony wyróżniony punkt. Oznacza to, że _Inteligentna diagnostyka_ zidentyfikował kombinację właściwości, które odfiltrują nagłą zmianę. Kliknij punkt, aby uzyskać więcej szczegółów na temat filtru i wyświetlić przefiltrowaną wersję. Może to pomóc w ustaleniu, co spowodowało zmianę:
 
-![Inteligentna Diagnostyka](media/get-started-portal/smart-diagnostics.png)
+![Inteligentna diagnostyka](media/get-started-portal/smart-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>Przypnij do pulpitu nawigacyjnego
-Aby przypiąć na diagramie lub tabeli na jedną z udostępnionych pulpitów nawigacyjnych platformy Azure, kliknij ikonę pinezki.
+Aby przypiąć diagram lub tabelę do jednego z udostępnionych pulpitów nawigacyjnych platformy Azure, kliknij ikonę pinezki.
 
 ![Przypnij do pulpitu nawigacyjnego](media/get-started-portal/pin-dashboard.png)
 
-Niektóre definiowaniu są stosowane do wykresu, gdy możesz przypiąć do pulpitu nawigacyjnego:
+Niektóre uproszczenia są stosowane do wykresu po przypięciu do pulpitu nawigacyjnego:
 
-- Wierszy i kolumn tabeli: Aby przypiąć tabelę do pulpitu nawigacyjnego, musi on mieć cztery lub mniejszą liczbę kolumn. Wyświetlanych jest tylko pierwszych wierszy siedem.
+- Kolumny i wiersze tabeli: Aby można było przypiąć tabelę do pulpitu nawigacyjnego, musi ona mieć co najmniej cztery kolumny. Wyświetlane są tylko pierwsze siedem wierszy.
 - Ograniczenie czasu: Zapytania są automatycznie ograniczone do ostatnich 14 dni.
-- Ograniczenie liczby bin: Jeśli możesz wyświetlić wykres, który ma wiele pojemniki dyskretnych, mniej pojemniki wypełnione automatycznie są grupowane w jednym _innych_ bin.
+- Ograniczenie liczby bin: Jeśli zostanie wyświetlony wykres, który zawiera wiele dyskretnych pojemników, mniej wypełnione pojemniki są automatycznie pogrupowane w _jeden zasobnik._
 
 ## <a name="save-queries"></a>Zapisywanie zapytań
-Po utworzeniu użytecznego zapytania, można go zapisać lub udostępnienia innym osobom. **Zapisz** ikonę znajduje się na górnym pasku.
+Po utworzeniu przydatnego zapytania warto je zapisać lub udostępnić innym osobom. Ikona **Zapisz** znajduje się na górnym pasku.
 
-Na stronie całe zapytanie lub pojedynczego zapytania można zapisać jako funkcja. Funkcje są zapytania, które również mogą być przywoływane przez inne zapytania. Aby zapisać zapytanie jako funkcję, musisz podać alias funkcji, która jest to nazwa używana do wywołania tego zapytania, gdy odwołują się inne zapytania.
+Można zapisać całą stronę zapytania lub pojedyncze zapytanie jako funkcję. Funkcje to kwerendy, do których można odwoływać się inne zapytania. Aby zapisać zapytanie jako funkcję, należy podać alias funkcji, który jest nazwą używaną do wywołania tego zapytania, w odniesieniu do innych zapytań.
 
-![Zapisz — funkcja](media/get-started-portal/save-function.png)
+![Funkcja Save](media/get-started-portal/save-function.png)
 
-Zapytania analityczne dziennika są zawsze zapisywane w wybranym obszarze roboczym i udostępnione dla innych użytkowników tego obszaru roboczego.
+>[!NOTE]
+>Następujące znaki są obsługiwane — `a–z, A–Z, 0-9, -, _, ., <space>, (, ), |` w polu **Nazwa** podczas zapisywania lub edytowania zapisanego zapytania.
 
-## <a name="load-queries"></a>Ładowanie zapytań
-Ikona Eksplorator zapytań, znajduje się w prawym górnym rogu obszaru. Ta lista zawiera wszystkie zapisane zapytania według kategorii. Umożliwia również oznaczanie określonego zapytania jako ulubione, aby szybko znaleźć je w przyszłości. Kliknij dwukrotnie zapisane zapytanie, aby dodać go do bieżącego okna.
+Zapytania Log Analytics są zawsze zapisywane w wybranym obszarze roboczym i udostępniane innym użytkownikom tego obszaru roboczego.
+
+## <a name="load-queries"></a>Załaduj zapytania
+Ikona Eksplorator zapytań znajduje się w prawym górnym rogu. Ta lista zawiera wszystkie zapisane zapytania według kategorii. Umożliwia również oznaczenie określonych zapytań jako ulubionych, aby szybko je znaleźć w przyszłości. Kliknij dwukrotnie zapisane zapytanie, aby dodać je do bieżącego okna.
 
 ![Eksplorator zapytań](media/get-started-portal/query-explorer.png)
 
-## <a name="export-and-share-as-link"></a>Eksportuj i Udostępnij jako łącze
-Usługa log Analytics obsługuje kilka metod eksportowania:
+## <a name="export-and-share-as-link"></a>Eksportuj i Udostępnij jako link
+Log Analytics obsługuje kilka metod eksportowania:
 
 - Excel: Zapisz wyniki jako plik CSV.
-- Power BI: Eksportuj wyniki do usługi Power BI. Zobacz [dane dziennika importu usługi Azure Monitor do usługi Power BI](../../azure-monitor/platform/powerbi.md) Aby uzyskać szczegółowe informacje.
-- Link udostępniania: Samo zapytanie może być udostępniane jako łącze, które następnie mogą być wysyłane i wykonywane przez innych użytkowników, które mają dostęp do tego samego obszaru roboczego.
+- Power BI: Wyeksportuj wyniki do Power BI. Aby uzyskać szczegółowe informacje, zobacz [importowanie Azure monitor danych dziennika do Power BI](../../azure-monitor/platform/powerbi.md) .
+- Udostępnianie linku: Zapytanie może być udostępniane jako link, który można następnie wysłać i wykonać przez innych użytkowników, którzy mają dostęp do tego samego obszaru roboczego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [Pisanie zapytań dzienników w usłudze Azure Monitor](get-started-queries.md).
+- Dowiedz się więcej na temat [pisania zapytań dziennika Azure monitor](get-started-queries.md).

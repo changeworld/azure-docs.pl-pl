@@ -1,6 +1,6 @@
 ---
-title: Jednostki rozpoznawania wyszukiwania kognitywnego umiejętności — usługa Azure Search
-description: Wyodrębnij różnych typów jednostek z pliku tekstowego w potoku usługi Azure Search w usłudze wyszukiwania poznawczego.
+title: Umiejętność wyszukiwania poznawczego rozpoznawania jednostek — Azure Search
+description: Wyodrębnij różne typy jednostek z tekstu w Azure Search potoku wyszukiwania poznawczego.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,67 +11,67 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f05161dbbfd9293cd7b1cbf447bb7ca1c313250c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ca3b953f84677c13908028af968d5a2bf28b57c
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023443"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347751"
 ---
-#    <a name="entity-recognition-cognitive-skill"></a>Umiejętności cognitive rozpoznawania jednostek
+#    <a name="entity-recognition-cognitive-skill"></a>Umiejętność rozpoznawania jednostek
 
-**Rozpoznawanie jednostek** umiejętności wyodrębnia jednostek o różnych typach z pliku tekstowego. Modele dostarczone przez uczenia maszynowego korzysta z tej umiejętności [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) w usługach Cognitive Services.
+Umiejętność **rozpoznawania jednostek** wyodrębnia jednostki różnych typów z tekstu. Ta umiejętność używa modeli uczenia maszynowego zapewnianych przez [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) w Cognitive Services.
 
 > [!NOTE]
-> Możesz rozwiń zakres, zwiększając częstotliwości przetwarzania, dodając więcej dokumentów lub dodanie więcej algorytmów sztucznej Inteligencji, konieczne będzie [dołączyć płatnych zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md). Opłaty są naliczane podczas wywoływania interfejsów API w usługach Cognitive Services i wyodrębniania obrazu jako część etap łamania dokumentów w usłudze Azure Search. Opłaty nie będą naliczane do wyodrębniania tekstu z dokumentów.
+> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
 >
-> Wykonanie wbudowanego umiejętności podlega opłacie za istniejącą [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/). Cennik wyodrębniania obraz został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Limity danych
-Maksymalny rozmiar rekord powinien być 50 000 znaków, gdyż jest mierzone przez `String.Length`. Jeśli zachodzi potrzeba Podziel swoje dane przed wysłaniem ich do wyodrębnianie kluczowych fraz, rozważ użycie [umiejętności dzielenie tekstu](cognitive-search-skill-textsplit.md).
+Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych przez [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli konieczne jest rozbicie danych przed wysłaniem ich do wyodrębniania kluczowych fraz, rozważ użycie [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
 
-## <a name="skill-parameters"></a>Parametry kwalifikacji
+## <a name="skill-parameters"></a>Parametry umiejętności
 
-Parametrów jest rozróżniana wielkość liter i są wszystkie opcjonalne.
+W parametrach jest rozróżniana wielkość liter i są one opcjonalne.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| categories    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
-|defaultLanguageCode |  Kod języka tekstu wejściowego. Są obsługiwane następujące języki: `de, en, es, fr, it`|
-|minimumPrecision | Nieużywane. Zarezerwowane do użytku w przyszłości. |
-|includeTypelessEntities | Gdy ustawiona wartość true, jeśli tekst zawiera jednostkę dobrze znana, ale nie można podzielić na jeden z obsługiwanych kategorii, będzie zwracany jako część `"entities"` złożonych danych wyjściowych. 
-To są jednostki, które są dobrze znane, ale nie zostały sklasyfikowane jako część bieżącego obsługiwanych "kategorie". Na przykład "systemu Windows 10" jest dobrze znanych jednostek (produkt), ale "Produkty" nie znajdują się w kategorii obecnie obsługiwane. Wartość domyślna to `false` |
+| kategorie    | Tablica kategorii, które mają zostać wyodrębnione.  Możliwe typy kategorii: `"Person"`, `"Location"`, `"Organization"`,,, `"Quantity"`, .`"Email"` `"URL"` `"Datetime"` Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
+|defaultLanguageCode |  Kod języka tekstu wejściowego. Obsługiwane są następujące języki:`de, en, es, fr, it`|
+|minimumPrecision | Przestrzeń. Zarezerwowane do użytku w przyszłości. |
+|includeTypelessEntities | Po ustawieniu na wartość true, jeśli tekst zawiera dobrze znaną jednostkę, ale nie można go podzielić na jedną z obsługiwanych kategorii. zostanie on zwrócony jako część `"entities"` złożonego pola danych wyjściowych. 
+Są to jednostki, które są dobrze znane, ale nie są klasyfikowane jako część obecnie obsługiwanych kategorii. Na przykład "system Windows 10" jest dobrze znaną jednostką (produkt), ale "produkty" nie należą do obecnie obsługiwanych kategorii. Wartość domyślna to`false` |
 
 
-## <a name="skill-inputs"></a>Dane wejściowe umiejętności
+## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
 
 | Wprowadź nazwę      | Opis                   |
 |---------------|-------------------------------|
 | languageCode  | Opcjonalny. Wartość domyślna to `"en"`.  |
-| tekst          | Tekst do przeanalizowania.          |
+| text          | Tekst do przeanalizowania.          |
 
-## <a name="skill-outputs"></a>Dane wyjściowe umiejętności
+## <a name="skill-outputs"></a>Wyniki umiejętności
 
 > [!NOTE]
-> Nie wszystkie kategorie jednostki są obsługiwane dla wszystkich języków. Tylko _en_, _es_ obsługuje Ekstrakcja `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"` typów.
+> Nie wszystkie kategorie jednostek są obsługiwane we wszystkich językach. Tylko _pl_i _es_ `"Quantity"`obsługują wyodrębnianie `"Email"` typów `"Datetime"`, `"URL"`,,.
 
-| Nazwa wyjściowego     | Opis                   |
+| Nazwa wyjściowa     | Opis                   |
 |---------------|-------------------------------|
-| osoby      | Tablica ciągów, gdzie każdy ciąg reprezentuje imię osoby. |
-| locations  | Tablica ciągów, w którym każdy ciąg reprezentuje lokalizację. |
-| organizations  | Tablica ciągów, w której każdy ciąg reprezentuje organizacji. |
-| ilości  | Tablica ciągów, w której każdy ciąg reprezentuje ilość. |
-| Data/Godzina  | Tablica ciągów, gdzie każdy ciąg reprezentuje wartość typu DateTime (wyświetlaną w tekście) wartość. |
-| adresy URL | Tablica ciągów, w którym każdy ciąg reprezentuje adres URL |
-| wiadomości e-mail | Tablica ciągów, w której każdy ciąg reprezentuje wiadomość e-mail |
-| namedEntities | Tablica typów złożonych zawiera następujące pola: <ul><li>category</li> <li>wartość (nazwa rzeczywistego jednostki)</li><li>Przesunięcie (lokalizację, w którym zostało znalezione w tekście)</li><li>zaufania (nieużywane teraz. Zostanie ustawiona na wartość -1)</li></ul> |
-| Jednostki | Tablica typów złożonych zawiera rozbudowane informacje dotyczące jednostek wyodrębnione z pliku tekstowego przy użyciu następujących pól <ul><li> Nazwa (nazwa rzeczywistego jednostki. Ta pozycja reprezentuje formularz "znormalizowanych")</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (link do strony Wikipedii dla jednostki)</li><li>bingId</li><li>Typ (kategoria jednostki rozpoznawane)</li><li>Podtyp (dostępne tylko dla niektórych kategorii, daje to bardziej szczegółowego widoku typ jednostki)</li><li> Dopasowuje (złożoną kolekcję zawierającą)<ul><li>tekst (nieprzetworzony tekst dla jednostki)</li><li>Przesunięcie (lokalizację, w którym został znaleziony)</li><li>długość (długość tekstu nieprzetworzona jednostki)</li></ul></li></ul> |
+| podatnicy      | Tablica ciągów, w których każdy ciąg reprezentuje nazwę osoby. |
+| lokalizacje  | Tablica ciągów, w których każdy ciąg reprezentuje lokalizację. |
+| organizations  | Tablica ciągów, w których każdy ciąg reprezentuje organizację. |
+| stawion  | Tablica ciągów, w których każdy ciąg reprezentuje liczbę. |
+| Elementy DateTime  | Tablica ciągów, w których każdy ciąg reprezentuje datę i godzinę (jak pojawia się w tekście). |
+| adresy | Tablica ciągów, w których każdy ciąg reprezentuje adres URL |
+| wiadomości e-mail | Tablica ciągów, w których każdy ciąg reprezentuje wiadomość e-mail |
+| namedEntities | Tablica typów złożonych, które zawierają następujące pola: <ul><li>category</li> <li>wartość (rzeczywista nazwa jednostki)</li><li>Przesunięcie (lokalizacja, w której została znaleziona).</li><li>pewność (nieużywany przez teraz. Zostanie ustawiona na wartość-1)</li></ul> |
+| jednostki | Tablica typów złożonych, która zawiera bogate informacje o jednostkach wyodrębnionych z tekstu, z następującymi polami <ul><li> Nazwa (rzeczywista nazwa jednostki). Reprezentuje to "znormalizowany" formularz</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (łącze do strony Wikipedia dla jednostki)</li><li>bingId</li><li>Typ (kategoria rozpoznanej jednostki)</li><li>Podtyp (dostępny tylko dla niektórych kategorii, zapewnia bardziej szczegółowy widok typu jednostki)</li><li> dopasowania (złożona Kolekcja zawierająca)<ul><li>tekst (nieprzetworzony tekst dla jednostki)</li><li>Przesunięcie (lokalizacja, w której została znaleziona)</li><li>Długość (długość nieprzetworzonego tekstu jednostki)</li></ul></li></ul> |
 
-##  <a name="sample-definition"></a>Przykładowa definicja
+##  <a name="sample-definition"></a>Definicja Przykładowa
 
 ```json
   {
@@ -191,10 +191,10 @@ To są jednostki, które są dobrze znane, ale nie zostały sklasyfikowane jako 
 ```
 
 
-## <a name="error-cases"></a>W przypadku wystąpienia błędów
-Jeśli kod języka dla dokumentu nie jest obsługiwany, zwracany jest błąd, a nie jednostki są wyodrębniane.
+## <a name="error-cases"></a>Przypadki błędów
+Jeśli kod języka dla dokumentu nie jest obsługiwany, zwracany jest błąd i nie są wyodrębniane żadne jednostki.
 
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure File Sync w środowisku lokalnym ustawień zapory i serwera proxy | Dokumentacja firmy Microsoft
-description: Usługa Azure File Sync konfiguracji sieci lokalnej
+title: Azure File Sync lokalne ustawienia zapory i serwera proxy | Microsoft Docs
+description: Azure File Sync konfigurację sieci lokalnej
 services: storage
 author: roygara
 ms.service: storage
@@ -8,23 +8,20 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c828f616d0be1611770c8673f9884e0ee50dba19
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 33d5be20682c8341932a2a0021ccda27583775bd
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625595"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335973"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
-Usługa Azure File Sync łączy swoje lokalne serwery do usługi pliki Azure, włączenie synchronizacji obejmujące wiele lokacji i obsługi warstw w funkcji w chmurze. W efekcie na serwerze lokalnym musi połączony z Internetem. Administrator IT musi określić najlepszą ścieżkę dla serwera uzyskać dostęp do usług Azure cloud services.
+Azure File Sync nawiązuje połączenie z serwerami lokalnymi w celu Azure Files, włączając synchronizację z obsługą wielolokacją i funkcjami obsługi warstw w chmurze. W związku z tym serwer lokalny musi być połączony z Internetem. Administrator IT musi zdecydować najlepszą ścieżkę serwera, aby uzyskać dostęp do usług Azure Cloud Services.
 
-Ten artykuł będzie zapewniają wgląd w określonych wymagań i opcji umożliwiających pomyślnie i bezpiecznie połączyć swój serwer usługi Azure File Sync.
+W tym artykule zawarto szczegółowe informacje o określonych wymaganiach i opcjach dostępnych w celu pomyślnego i bezpiecznego połączenia Twojego serwera z Azure File Sync.
 
-> [!Important]
-> Usługa Azure File Sync nie obsługuje jeszcze zapory i sieci wirtualne dla konta magazynu.
-
-## <a name="overview"></a>Przegląd
-Usługa Azure File Sync działa jako usługa aranżacji między serwera z systemem Windows, udziału plików platformy Azure i kilka innych usług platformy Azure, na synchronizowanie danych, zgodnie z opisem w grupie synchronizacji. Dla usługi Azure File Sync działała prawidłowo należy skonfigurować serwery do komunikowania się z następujących usług platformy Azure:
+## <a name="overview"></a>Omówienie
+Azure File Sync pełni rolę usługi aranżacji między serwerem systemu Windows, udziałem plików platformy Azure i kilkoma innymi usługami platformy Azure, aby synchronizować dane zgodnie z opisem w grupie synchronizacji. Aby program Azure File Sync działał prawidłowo, należy skonfigurować serwery do komunikowania się z następującymi usługami platformy Azure:
 
 - Azure Storage
 - Azure File Sync
@@ -32,38 +29,38 @@ Usługa Azure File Sync działa jako usługa aranżacji między serwera z system
 - Usługi uwierzytelniania
 
 > [!Note]  
-> Agent usługi Azure File Sync w systemie Windows Server inicjuje wszystkie żądania do usługi, co powoduje tylko konieczności należy wziąć pod uwagę ruch wychodzący z punktu widzenia zapory w chmurze. <br /> Nie usługi platformy Azure inicjuje połączenie z agentem usługi Azure File Sync.
+> Agent Azure File Sync w systemie Windows Server inicjuje wszystkie żądania do usług w chmurze, które w wyniku uwzględniają tylko ruch wychodzący z perspektywy zapory. <br /> Żadna usługa platformy Azure nie inicjuje połączenia z agentem Azure File Sync.
 
 ## <a name="ports"></a>Porty
-Usługa Azure File Sync przenosi dane plików i metadanych wyłącznie za pośrednictwem protokołu HTTPS i wymaga portu 443, aby otworzyć w ruchu wychodzącego.
-W rezultacie cały ruch jest szyfrowany.
+Azure File Sync przenosi dane plików i metadane wyłącznie za pośrednictwem protokołu HTTPS i wymaga otwartego portu 443.
+W wyniku tego cały ruch jest szyfrowany.
 
-## <a name="networks-and-special-connections-to-azure"></a>Sieci i specjalnych połączenia z platformą Azure
-Agent usługi Azure File Sync nie ma wymagań dotyczących kanałów specjalnych, takich jak [ExpressRoute](../../expressroute/expressroute-introduction.md), itp. na platformie Azure.
+## <a name="networks-and-special-connections-to-azure"></a>Sieci i specjalne połączenia z platformą Azure
+Agent Azure File Sync nie ma wymagań dotyczących specjalnych kanałów, takich jak [ExpressRoute](../../expressroute/expressroute-introduction.md)itp., na platformę Azure.
 
-Usługa Azure File Sync będą działać przez wszystkie środki, dzięki czemu zasięg na platformę Azure, automatycznie dostosowania do różnych charakterystyk sieci, takich jak przepustowość, opóźnienie, a także oferuje kontrolę administracyjną do precyzyjnego dostosowywania. Nie wszystkie funkcje są dostępne w tej chwili. Jeśli chcesz skonfigurować określone zachowanie, Daj nam znać za pośrednictwem [UserVoice plików Azure](https://feedback.azure.com/forums/217298-storage?category_id=180670).
+Azure File Sync będzie działała za pośrednictwem dowolnych środków, które umożliwiają dostęp do platformy Azure, automatyczne dostosowanie do różnych właściwości sieci, takich jak przepustowość, opóźnienie, a także oferowanie kontroli administracyjnej w celu dostosowania. W tej chwili nie wszystkie funkcje są dostępne. Jeśli chcesz skonfigurować określone zachowanie, daj nam znać za pośrednictwem [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670).
 
 ## <a name="proxy"></a>Serwer proxy
-Usługa Azure File Sync wspiera ustawienia serwera proxy dla aplikacji i komputera.
+Azure File Sync obsługuje ustawienia serwera proxy specyficzne dla aplikacji i komputera.
 
-**Ustawienia specyficzne dla aplikacji serwera proxy** zezwala na konfigurację serwera proxy dla usługi Azure File Sync ruchu. Ustawienia specyficzne dla aplikacji serwera proxy są obsługiwane w wersji agenta 4.0.1.0 lub nowszej, a także można skonfigurować podczas instalacji agenta lub za pomocą polecenia cmdlet programu PowerShell Set-StorageSyncProxyConfiguration.
+**Ustawienia serwera proxy specyficzne dla aplikacji** umożliwiają konfigurowanie serwera proxy przeznaczonego dla Azure File Sync ruchu sieciowego. Ustawienia serwera proxy specyficzne dla aplikacji są obsługiwane przez agenta w wersji 4.0.1.0 lub nowszej i można je skonfigurować podczas instalacji agenta lub przy użyciu polecenia cmdlet Set-StorageSyncProxyConfiguration programu PowerShell.
 
-Polecenia programu PowerShell, aby skonfigurować ustawienia specyficzne dla aplikacji serwera proxy:
+Polecenia programu PowerShell służące do konfigurowania ustawień serwera proxy specyficznych dla aplikacji:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
-**Ustawienia serwera proxy dla komputera** są niewidoczne dla agenta usługi Azure File Sync, ponieważ cały ruch serwera odbywa się za pośrednictwem serwera proxy.
+**Ustawienia serwera proxy dla maszyn** są niewidoczne dla agenta Azure File Sync, ponieważ cały ruch serwera jest kierowany przez serwer proxy.
 
-Aby skonfigurować ustawienia serwera proxy dla komputera, wykonaj następujące czynności: 
+Aby skonfigurować ustawienia serwera proxy dla całej maszyny, wykonaj następujące czynności: 
 
-1. Skonfiguruj ustawienia serwera proxy dla aplikacji .NET 
+1. Konfigurowanie ustawień serwera proxy dla aplikacji platformy .NET 
 
    - Edytuj te dwa pliki:  
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-   - Dodaj sekcję < system.net > Machine.config — pliki (poniżej w sekcji < system.serviceModel >).  Zmień 127.0.01:8888 na adres IP i port serwera proxy. 
+   - Dodaj sekcję < System. net > w plikach Machine. config (poniżej sekcji < System. serviceModel >).  Zmień 127.0.01:8888 na adres IP i port serwera proxy. 
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -72,89 +69,89 @@ Aby skonfigurować ustawienia serwera proxy dla komputera, wykonaj następujące
       </system.net>
      ```
 
-2. Ustaw ustawienia serwera proxy WinHTTP 
+2. Ustawianie ustawień serwera proxy WinHTTP 
 
-   - Uruchom następujące polecenie z wiersza polecenia z podwyższonym poziomem uprawnień lub programu PowerShell, aby wyświetlić istniejące ustawienia serwera proxy:   
+   - Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień lub programie PowerShell, aby wyświetlić istniejące ustawienie serwera proxy:   
 
-     netsh winhttp show proxy
+     netsh WinHTTP show proxy
 
-   - Uruchom następujące polecenie z wiersza polecenia z podwyższonym poziomem uprawnień lub programu PowerShell, aby ustawić ustawienia serwera proxy (Zmień 127.0.01:8888 na adres IP i port serwera proxy):  
+   - Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień lub w programie PowerShell, aby ustawić ustawienie serwera proxy (Zmień 127.0.01:8888 na adres IP i port serwera proxy):  
 
-     netsh winhttp Ustaw 127.0.0.1:8888 serwera proxy
+     netsh WinHTTP Set proxy 127.0.0.1:8888
 
-3. Uruchom ponownie usługę agenta synchronizacji magazynu, uruchamiając następujące polecenie z wiersza polecenia z podwyższonym poziomem uprawnień lub programu PowerShell: 
+3. Uruchom ponownie usługę agenta synchronizacji magazynu, uruchamiając następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień lub programie PowerShell: 
 
       polecenie net stop filesyncsvc
 
-      Uwaga: Automatycznie uruchamiana będzie Usługa agenta synchronizacji magazynu (filesyncsvc) po zatrzymaniu.
+      Uwaga: Po zatrzymaniu usługa Agent synchronizacji magazynu (filesyncsvc) zostanie uruchomiona ponownie.
 
 ## <a name="firewall"></a>Zapora
-Jak wspomniano w poprzedniej sekcji, port 443 wymaga Otwórz ruchu wychodzącego. Na podstawie zasad w swoim centrum danych, gałęzi lub regionie, dalsze ograniczanie ruchu za pośrednictwem tego portu do określonych domen może być konieczne lub wymagane.
+Jak wspomniano w poprzedniej sekcji, port 443 musi być otwarty dla ruchu wychodzącego. W oparciu o zasady w centrum danych, rozgałęzieniu lub regionie, może być konieczne lub wymagane dalsze ograniczenie ruchu przez ten port do określonych domen.
 
-W poniższej tabeli opisano domen wymagana dla komunikacji:
+W poniższej tabeli opisano wymagane domeny do komunikacji:
 
-| Usługa | Punkt końcowy w chmurze publicznej | Punkt końcowy platformy Azure dla instytucji rządowych | Użycie |
+| Usługa | Punkt końcowy chmury publicznej | Azure Government punkt końcowy | Użycie |
 |---------|----------------|---------------|------------------------------|
-| **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Każde wywołanie użytkownika (na przykład programu PowerShell) przechodzi przez ten adres URL, w tym wywołanie rejestracji serwera początkowego. |
-| **Azure Active Directory** | https://login.windows.net | https://login.microsoftonline.us | Wywołania usługi Azure Resource Manager muszą być przekazywane uwierzytelnionego użytkownika. Została wykonana pomyślnie, ten adres URL jest używany do uwierzytelniania użytkowników. |
-| **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | W ramach wdrażania usługi Azure File Sync nazwy głównej usługi dla subskrypcji usługi Azure Active Directory zostanie utworzona. Ten adres URL jest używany w tym. Ta jednostka służy delegowania minimalny zestaw praw do usługi Azure File Sync. Użytkownik wykonujący początkowej konfiguracji usługi Azure File Sync musi być uwierzytelniony użytkownik z uprawnieniami właściciela subskrypcji. |
-| **Azure Storage** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Gdy serwer pobiera plik, następnie serwera wykonuje tego przepływu danych bardziej wydajnie w przypadku bezpośrednio do udziału plików platformy Azure na koncie magazynu. Serwer ma klucz sygnatury dostępu Współdzielonego, który zezwala tylko na dostęp do udziału plików docelowych. |
-| **Azure File Sync** | &ast;.one.microsoft.com | &ast;.afs.azure.us | Po zarejestrowaniu serwera początkowego serwer odebrał regionalnego adresu URL dla wystąpienia usługi Azure File Sync, w tym regionie. Serwer może komunikować się bezpośrednio i efektywnie z wystąpieniem, Obsługa synchronizację za pomocą adresu URL. |
-| **Microsoft PKI** | `https://www.microsoft.com/pki/mscorp`<br /><http://ocsp.msocsp.com> | `https://www.microsoft.com/pki/mscorp`<br /><http://ocsp.msocsp.com> | Po zainstalowaniu agenta usługi Azure File Sync adres URL infrastruktury kluczy publicznych jest używany do pobrania certyfikatów pośrednich wymagany do komunikowania się z usługą Azure File Sync i udziału plików platformy Azure. Adres URL protokołu OCSP służy do sprawdzania stanu certyfikatu. |
+| **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Każde wywołanie użytkownika (na przykład program PowerShell) przechodzi do/za pomocą tego adresu URL, łącznie z początkowym wywołaniem rejestracji serwera. |
+| **Azure Active Directory** | https://login.windows.net | https://login.microsoftonline.us | Wywołania Azure Resource Manager muszą być wykonywane przez uwierzytelnionego użytkownika. Aby pomyślnie, ten adres URL jest używany do uwierzytelniania użytkowników. |
+| **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | W ramach wdrażania Azure File Sync zostanie utworzona jednostka usługi w Azure Active Directory subskrypcji. Ten adres URL jest używany dla tego programu. Ten podmiot zabezpieczeń jest używany do delegowania minimalnego zestawu praw do usługi Azure File Sync. Użytkownik wykonujący początkową konfigurację Azure File Sync musi być uwierzytelnionym użytkownikiem z uprawnieniami właściciela subskrypcji. |
+| **Azure Storage** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Gdy serwer pobiera plik, serwer przeprowadzi bardziej wydajne przenoszenie danych podczas rozmowy bezpośrednio z udziałem plików platformy Azure na koncie magazynu. Serwer ma klucz sygnatury dostępu współdzielonego, który zezwala tylko na dostęp do udziału plików. |
+| **Azure File Sync** | &ast;.one.microsoft.com | &ast;. afs.azure.us | Po początkowej rejestracji serwera serwer otrzymuje regionalny adres URL dla wystąpienia usługi Azure File Sync w tym regionie. Serwer może używać adresu URL do bezpośredniego i wydajnego komunikowania się z wystąpieniem obsługującym jego synchronizację. |
+| **Infrastruktura PKI firmy Microsoft** | `https://www.microsoft.com/pki/mscorp`<br /><http://ocsp.msocsp.com> | `https://www.microsoft.com/pki/mscorp`<br /><http://ocsp.msocsp.com> | Po zainstalowaniu agenta Azure File Sync, adres URL infrastruktury PKI jest używany do pobierania certyfikatów pośrednich wymaganych do komunikowania się z usługą Azure File Sync i udziałem plików platformy Azure. Adres URL protokołu OCSP służy do sprawdzania stanu certyfikatu. |
 
 > [!Important]
-> Gdy zezwala na ruch do &ast;. one.microsoft.com, ruch do więcej niż tylko usługa synchronizacji jest możliwe z serwera. Istnieje wiele więcej usług firmy Microsoft są dostępne w obszarze domen podrzędnych.
+> W przypadku zezwolenia na &ast;ruch do. one.Microsoft.com ruch do więcej niż tylko usługi synchronizacji jest możliwy z serwera. W poddomenach poddomen jest dostępnych wiele usług firmy Microsoft.
 
-Jeśli &ast;. one.microsoft.com jest zbyt szerokie, można ograniczyć komunikacji z serwerem, umożliwiając komunikację tylko jawne regionalnych wystąpień usługi Azure Files Sync. Które wystąpienia, aby wybrać zależy od regionu Usługa synchronizacji magazynu, które mają wdrożone i zarejestrowane serwerowi. Ten region określa się mianem "adres URL podstawowego punktu końcowego" w tabeli poniżej.
+Jeśli &ast;one.Microsoft.com jest zbyt szeroki, można ograniczyć komunikację serwera, zezwalając na komunikację tylko z jawnymi wystąpieniami regionalnymi usługi synchronizacji Azure Files. Jakie wystąpienia są zależne od regionu usługi synchronizacji magazynu wdrożonej i zarejestrowanej na serwerze. Ten region jest nazywany "podstawowym adresem URL punktu końcowego" w poniższej tabeli.
 
-Ciągłość prowadzenia działalności biznesowej po awarii (BCDR) odzyskiwania ze względu na i określono udziałów usługi plików platformy Azure na koncie magazynu globalnie nadmiarowy (GRS). Jeśli tak jest rzeczywiście, następnie udziałów plików platformy Azure zakończy się niepowodzeniem na sparowanym regionie w przypadku długotrwałej awarii regionalnej. Usługa Azure File Sync używa tej samej pary regionalnej jako magazyn. Dlatego jeśli używasz konta magazynu GRS, musisz włączyć dodatkowe adresy URL umożliwić serwerowi komunikować się sparowanym regionie dla usługi Azure File Sync. W poniższej tabeli wywołuje to "region Paired". Ponadto jest ruch adres URL profilu Menedżera, który musi być także włączona. Pozwoli to zagwarantować ruchu sieciowego można bezproblemowo ponownie kierowane do sparowanym regionie w przypadku pracy awaryjnej i nosi nazwę "Adres URL odnajdywania usługi" w tabeli poniżej.
+Ze względu na ciągłość działania i odzyskiwanie po awarii (BCDR), możesz określić udziały plików platformy Azure na koncie magazynu globalnie nadmiarowy (GRS). W takim przypadku udziały plików platformy Azure zostaną przełączone w tryb failover do sparowanego regionu w przypadku długotrwałej awarii regionalnej. Azure File Sync używa tych samych regionalnych par jako magazynu. W przypadku korzystania z kont magazynu GRS należy włączyć dodatkowe adresy URL, aby umożliwić serwerowi komunikowanie się z sparowanym regionem Azure File Sync. Poniższa tabela wywołuje ten "sparowany region". Ponadto istnieje adres URL profilu Menedżera ruchu, który musi zostać włączony. Dzięki temu ruch sieciowy może być bezproblemowo kierowany do sparowanego regionu w przypadku przełączenia w tryb failover i nosi nazwę "adres URL odnajdywania" w poniższej tabeli.
 
-| Chmura  | Region | Adres URL podstawowego punktu końcowego | Region sparowany | Adres URL odnajdywania |
+| Chmura  | Region | Podstawowy adres URL punktu końcowego | Region sparowany | Adres URL odnajdywania |
 |--------|--------|----------------------|---------------|---------------|
-| Public |Australia Wschodnia | https:\//kailani-aue.one.microsoft.com | Australia Południowo-Wschodnia | protokół https:\//tm-kailani-aue.one.microsoft.com |
-| Public |Australia Południowo-Wschodnia | https:\//kailani-aus.one.microsoft.com | Australia Wschodnia | https:\//tm-kailani-aus.one.microsoft.com |
-| Public | Brazylia Południowa | https:\//brazilsouth01.afs.azure.net | Środkowo-południowe stany USA | https:\//tm-brazilsouth01.afs.azure.net |
-| Public | Kanada Środkowa | protokół https:\//kailani-cac.one.microsoft.com | Kanada Wschodnia | protokół https:\//tm-kailani-cac.one.microsoft.com |
-| Public | Kanada Wschodnia | protokół https:\//kailani-cae.one.microsoft.com | Kanada Środkowa | https:\//tm-kailani.cae.one.microsoft.com |
-| Public | Indie Środkowe | https:\//kailani-cin.one.microsoft.com | Indie Południowe | protokół https:\//tm-kailani-cin.one.microsoft.com |
-| Public | Środkowe stany USA | https:\//kailani-cus.one.microsoft.com | Wschodnie stany USA 2 | https:\//tm-kailani-cus.one.microsoft.com |
-| Public | Azja Wschodnia | https:\//kailani11.one.microsoft.com | Azja Południowo-Wschodnia | protokół https:\//tm-kailani11.one.microsoft.com |
-| Public | East US | https:\//kailani1.one.microsoft.com | Zachodnie stany USA | protokół https:\//tm-kailani1.one.microsoft.com |
-| Public | Wschodnie stany USA 2 | https:\//kailani-ess.one.microsoft.com | Środkowe stany USA | https:\//tm-kailani-ess.one.microsoft.com |
-| Public | Japonia Wschodnia | https:\//japaneast01.afs.azure.net | Japonia Zachodnia | https:\//tm-japaneast01.afs.azure.net |
-| Public | Japonia Zachodnia | https:\//japanwest01.afs.azure.net | Japonia Wschodnia | https:\//tm-japanwest01.afs.azure.net |
+| Public |Australia Wschodnia | https:\//Kailani-Aue.one.Microsoft.com | Australia Południowo-Wschodnia | https:\//TM-Kailani-Aue.one.Microsoft.com |
+| Public |Australia Południowo-Wschodnia | https:\//Kailani-aus.one.Microsoft.com | Australia Wschodnia | https:\//TM-Kailani-aus.one.Microsoft.com |
+| Public | Brazylia Południowa | https:\//brazilsouth01.AFS.Azure.NET | Środkowo-południowe stany USA | https:\//TM-brazilsouth01.AFS.Azure.NET |
+| Public | Kanada Środkowa | https:\//Kailani-CAC.one.Microsoft.com | Kanada Wschodnia | https:\//TM-Kailani-CAC.one.Microsoft.com |
+| Public | Kanada Wschodnia | https:\//Kailani-CAE.one.Microsoft.com | Kanada Środkowa | https:\//TM-Kailani.CAE.one.Microsoft.com |
+| Public | Indie Środkowe | https:\//Kailani-CIN.one.Microsoft.com | Indie Południowe | https:\//TM-Kailani-CIN.one.Microsoft.com |
+| Public | Środkowe stany USA | https:\//Kailani-CUS.one.Microsoft.com | Wschodnie stany USA 2 | https:\//TM-Kailani-CUS.one.Microsoft.com |
+| Public | Azja Wschodnia | https:\//kailani11.one.Microsoft.com | Azja Południowo-Wschodnia | https:\//TM-kailani11.one.Microsoft.com |
+| Public | East US | https:\//kailani1.one.Microsoft.com | Zachodnie stany USA | https:\//TM-kailani1.one.Microsoft.com |
+| Public | Wschodnie stany USA 2 | https:\//Kailani-ESS.one.Microsoft.com | Środkowe stany USA | https:\//TM-Kailani-ESS.one.Microsoft.com |
+| Public | Japonia Wschodnia | https:\//japaneast01.afs.azure.net | Japonia Zachodnia | https:\//TM-japaneast01.AFS.Azure.NET |
+| Public | Japonia Zachodnia | https:\//japanwest01.afs.azure.net | Japonia Wschodnia | https:\//TM-japanwest01.AFS.Azure.NET |
 | Public | Korea Środkowa | https:\//koreacentral01.afs.azure.net/ | Korea Południowa | https:\//tm-koreacentral01.afs.azure.net/ |
 | Public | Korea Południowa | https:\//koreasouth01.afs.azure.net/ | Korea Środkowa | https:\//tm-koreasouth01.afs.azure.net/ |
-| Public | Środkowo-północne stany USA | https:\//northcentralus01.afs.azure.net | Środkowo-południowe stany USA | https:\//tm-northcentralus01.afs.azure.net |
-| Public | Europa Północna | https:\//kailani7.one.microsoft.com | Europa Zachodnia | protokół https:\//tm-kailani7.one.microsoft.com |
-| Public | Środkowo-południowe stany USA | https:\//southcentralus01.afs.azure.net | Środkowo-północne stany USA | https:\//tm-southcentralus01.afs.azure.net |
-| Public | Indie Południowe | https:\//kailani-sin.one.microsoft.com | Indie Środkowe | protokół https:\//tm-kailani-sin.one.microsoft.com |
-| Public | Azja Południowo-Wschodnia | https:\//kailani10.one.microsoft.com | Azja Wschodnia | protokół https:\//tm-kailani10.one.microsoft.com |
-| Public | Południowe Zjednoczone Królestwo | protokół https:\//kailani-uks.one.microsoft.com | Zachodnie Zjednoczone Królestwo | protokół https:\//tm-kailani-uks.one.microsoft.com |
-| Public | Zachodnie Zjednoczone Królestwo | protokół https:\//kailani-ukw.one.microsoft.com | Południowe Zjednoczone Królestwo | protokół https:\//tm-kailani-ukw.one.microsoft.com |
+| Public | Środkowo-północne stany USA | https:\//northcentralus01.AFS.Azure.NET | Środkowo-południowe stany USA | https:\//TM-northcentralus01.AFS.Azure.NET |
+| Public | Europa Północna | https:\//kailani7.one.Microsoft.com | Europa Zachodnia | https:\//TM-kailani7.one.Microsoft.com |
+| Public | Środkowo-południowe stany USA | https:\//southcentralus01.AFS.Azure.NET | Środkowo-północne stany USA | https:\//TM-southcentralus01.AFS.Azure.NET |
+| Public | Indie Południowe | https:\//Kailani-Sin.one.Microsoft.com | Indie Środkowe | https:\//TM-Kailani-Sin.one.Microsoft.com |
+| Public | Azja Południowo-Wschodnia | https:\//kailani10.one.Microsoft.com | Azja Wschodnia | https:\//TM-kailani10.one.Microsoft.com |
+| Public | Południowe Zjednoczone Królestwo | https:\//Kailani-UKS.one.Microsoft.com | Zachodnie Zjednoczone Królestwo | https:\//TM-Kailani-UKS.one.Microsoft.com |
+| Public | Zachodnie Zjednoczone Królestwo | https:\//Kailani-UKW.one.Microsoft.com | Południowe Zjednoczone Królestwo | https:\//TM-Kailani-UKW.one.Microsoft.com |
 | Public | Środkowo-zachodnie stany USA | https:\//westcentralus01.afs.azure.net | Zachodnie stany USA 2 | https:\//tm-westcentralus01.afs.azure.net |
-| Public | Europa Zachodnia | https:\//kailani6.one.microsoft.com | Europa Północna | https:\//tm-kailani6.one.microsoft.com |
-| Public | Zachodnie stany USA | https:\//kailani.one.microsoft.com | East US | https:\//tm-kailani.one.microsoft.com |
+| Public | Europa Zachodnia | https:\//kailani6.one.Microsoft.com | Europa Północna | https:\//TM-kailani6.one.Microsoft.com |
+| Public | Zachodnie stany USA | https:\//kailani.one.microsoft.com | East US | https:\//TM-Kailani.one.Microsoft.com |
 | Public | Zachodnie stany USA 2 | https:\//westus201.afs.azure.net | Środkowo-zachodnie stany USA | https:\//tm-westus201.afs.azure.net |
-| Instytucje rządowe | Administracja USA — Arizona | https:\//usgovarizona01.afs.azure.us | Administracja USA — Teksas | https:\//tm-usgovarizona01.afs.azure.us |
-| Instytucje rządowe | Administracja USA — Teksas | https:\//usgovtexas01.afs.azure.us | Administracja USA — Arizona | protokół https:\//tm-usgovtexas01.afs.azure.us |
+| Instytucje rządowe | Administracja USA — Arizona | https:\//usgovarizona01.afs.azure.us | Administracja USA — Teksas | https:\//TM-usgovarizona01.AFS.Azure.us |
+| Instytucje rządowe | Administracja USA — Teksas | https:\//usgovtexas01.AFS.Azure.us | Administracja USA — Arizona | https:\//TM-usgovtexas01.AFS.Azure.us |
 
-- Jeśli używasz lokalnie nadmiarowy (LRS) lub strefy nadmiarowego (ZRS) konta magazynu, wystarczy włączyć adresu URL podanego w polu "adres URL podstawowego punktu końcowego".
+- W przypadku korzystania z kont magazynu lokalnie nadmiarowego (LRS) lub strefy nadmiarowe (ZRS) należy włączyć tylko adres URL wymieniony w obszarze "podstawowy adres URL punktu końcowego".
 
-- Jeśli używasz konta usługi storage globalnie nadmiarowy (GRS), należy włączyć trzy adresy URL.
+- Jeśli używasz kont magazynu GRS (Globally nadmiarowe), Włącz trzy adresy URL.
 
-**Przykład:** Wdrażanie usługi synchronizacji magazynu w `"West US"` i zarejestrowanie serwera. Adresy URL, aby umożliwić serwera komunikowanie się w tym przypadku to:
+**Przykład:** Należy wdrożyć usługę synchronizacji magazynu w `"West US"` systemie i zarejestrować serwer. Adresy URL umożliwiające serwerowi komunikowanie się w tym przypadku są następujące:
 
-> - protokół https:\//kailani.one.microsoft.com (podstawowego punktu końcowego: Zachodnie stany USA)
-> - protokół https:\//kailani1.one.microsoft.com (sparowanym regionie trybu failover: Wschodnie stany USA)
-> - protokół https:\//tm-kailani.one.microsoft.com (adres URL odnajdywania regionu podstawowego)
+> - https:\//Kailani.one.Microsoft.com (podstawowy punkt końcowy: Zachodnie stany USA)
+> - https:\//kailani1.one.Microsoft.com (sparowany region w trybie failover: Wschodnie stany USA)
+> - https:\//TM-Kailani.one.Microsoft.com (adres URL odnajdywania regionu podstawowego)
 
-## <a name="summary-and-risk-limitation"></a>Podsumowanie i ryzyko ograniczenia
-Listy we wcześniejszej części tego dokumentu zawiera adresy URL, usługa Azure File Sync aktualnie komunikuje się z usługą. Zapory muszą mieć możliwość zezwalają na ruch wychodzący do tych domen. Firma Microsoft dokłada starań zachować to lista została zaktualizowana.
+## <a name="summary-and-risk-limitation"></a>Podsumowanie i ograniczenie ryzyka
+Listy znajdujące się wcześniej w tym dokumencie zawierają adresy URL, Azure File Sync obecnie komunikują się z usługą. Zapory muszą mieć możliwość zezwalania na ruch wychodzący do tych domen. Firma Microsoft dokłada starań, aby zachować tę listę.
 
-Konfigurowanie domeny ograniczenie reguł zapory można miarę w celu zwiększenia bezpieczeństwa. Jeśli używane są te konfiguracje zapory, należy pamiętać, że adresy URL zostaną dodane, a nawet może zmienić wraz z upływem czasu. Sprawdzaj okresowo, w tym artykule.
+Skonfigurowanie ograniczania dostępu do domeny reguły zapory może być miarą w celu zwiększenia bezpieczeństwa. Jeśli są używane te konfiguracje zapory, należy pamiętać, że adresy URL zostaną dodane i nawet mogą ulec zmianie w czasie. Sprawdzaj okresowo ten artykuł.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
 - [Wdrażanie usługi Azure File Sync](storage-sync-files-deployment-guide.md)
 - [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)

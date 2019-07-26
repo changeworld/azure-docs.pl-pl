@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 07/09/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 2e6eb449f4e7a8dcd6c4547162a575d21f303f83
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 43d1942b1413569d77c6c17fee9fff14dc83c924
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712413"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362585"
 ---
-### <a name="what-is-expressroute-direct"></a>Co to jest usługa ExpressRoute bezpośrednio?
+### <a name="what-is-expressroute-direct"></a>Co to jest ExpressRoute Direct?
 
-Usługa ExpressRoute Direct daje klientom możliwość łączenia się bezpośrednio z globalną siecią firmy Microsoft w skomunikowanych równorzędnie lokalizacjach strategicznie rozmieszczonych na całym świecie. Bezpośrednio z usługi ExpressRoute zapewnia podwójne 100 lub 10 GB/s łączność, obsługująca łączność aktywny/aktywny na dużą skalę. 
+Usługa ExpressRoute Direct daje klientom możliwość łączenia się bezpośrednio z globalną siecią firmy Microsoft w skomunikowanych równorzędnie lokalizacjach strategicznie rozmieszczonych na całym świecie. Usługa ExpressRoute Direct oferuje łączność z dwoma procesorami (100 lub 10 GB/s), która obsługuje aktywne/aktywne połączenia na dużą skalę. 
 
-### <a name="how-do-customers-connect-to-expressroute-direct"></a>Jak klienci są połączone z bezpośrednio z usługi ExpressRoute? 
+### <a name="how-do-customers-connect-to-expressroute-direct"></a>Jak klienci nawiązują połączenie z usługą ExpressRoute Direct? 
 
-Klienci będą musieli pracować z ich lokalnej operatorów i dostawcy kolokacji nawiązać łączność usługi ExpressRoute routery może korzystać z usługi ExpressRoute bezpośrednio.
+Klienci będą musieli współpracować z lokalnymi przewoźnikami i dostawcami wspólnej lokalizacji w celu uzyskania łączności z routerami ExpressRoute, aby korzystać z funkcji ExpressRoute Direct.
 
-### <a name="what-locations-currently-support-expressroute-direct"></a>Lokalizacje obecnie obsługuje bezpośrednio z usługi ExpressRoute? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Które lokalizacje są obecnie obsługiwane przez ExpressRoute bezpośrednio? 
 
-Dostępne porty będzie dynamiczny i będzie dostępne w programie PowerShell, aby wyświetlić pojemności. Lokalizacje uwzględnienia i *podlegają zmianom w zależności od dostępności*:
+Dostępne porty będą dynamiczne i będą dostępne dla programu PowerShell w celu wyświetlenia pojemności. Lokalizacje obejmują i *podlegają zmianom w zależności od dostępności*:
 
 * Amsterdam
 * Amsterdam2
@@ -35,15 +35,14 @@ Dostępne porty będzie dynamiczny i będzie dostępne w programie PowerShell, a
 * Dublin
 * SRA Hongkong
 * Londyn
-* Los Angeles
 * Melbourne
 * New York City
-* Perth
+* Pert
 * San Antonio
 * Seattle
 * Seul
 * Dolina Krzemowa
-* Singapore2 
+* Singapur2 
 * Sydney
 * Tajpej
 * Tokio
@@ -51,18 +50,18 @@ Dostępne porty będzie dynamiczny i będzie dostępne w programie PowerShell, a
 * Waszyngton
 * Waszyngton2
 
-### <a name="what-is-the-sla-for-expressroute-direct"></a>Co to jest umowa SLA dla usługi ExpressRoute bezpośrednio?
+### <a name="what-is-the-sla-for-expressroute-direct"></a>Co to jest umowa SLA dotycząca usługi ExpressRoute Direct?
 
-Bezpośrednie ExpressRoute używają takie same [przeznaczonych dla przedsiębiorstw usługi expressroute](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/). 
+ExpressRoute Direct będzie korzystać z tej samej [klasy korporacyjnej ExpressRoute](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/). 
 
-### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Scenariusze, jakie należy rozważyć klientów bezpośrednio z usługi ExpressRoute?  
+### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Jakie scenariusze należy wziąć pod uwagę w przypadku ExpressRoute Direct?  
 
-Bezpośrednie ExpressRoute zapewnia klientom bezpośredniego 100 10 GB/s portu parę do globalnej sieci szkieletowej firmy Microsoft. Scenariusze, które zapewnia klientom z największych korzyści obejmują: Duża ilość danych, pozyskiwanie, fizyczne odizolowanie na rynki regulowanych prawnie i dedykowaną pojemność dla scenariusz obsługi dużego ruchu, np. renderowania. 
+ExpressRoute Direct zapewnia klientom bezpośrednie pary portów 100 lub 10 GB/s do szkieletu globalnego firmy Microsoft. Scenariusze, które pozwolą klientom z największą korzyścią, obejmują: Ogromne pozyskiwanie danych, izolacja fizyczna dla rynków regulowanych i dedykowana pojemność dla scenariusza wieloznacznych, takich jak renderowanie. 
 
-### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Co to jest model rozliczeń dla usługi ExpressRoute bezpośrednio? 
+### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Jaki jest model rozliczeń dla usługi ExpressRoute Direct? 
 
-Bezpośrednio z usługi ExpressRoute jest naliczana dla pary portu na stałą kwotę. Standardowa obwodów zostaną uwzględnione na nie dodatkowe godziny i premium będzie miał za nieznaczne dodatku. Ruch wychodzący jest naliczana na podstawie poszczególnych obwodu, oparty na strefie lokalizacji komunikacji równorzędnej.
+Dla pary portów zostanie naliczona wartość ExpressRoute Direct. Standardowe obwody będą dołączane bez dodatkowych godzin, a warstwa Premium będzie miała niewielki dodatkowy koszt. Opłaty za ruch wychodzący są naliczane na podstawie obwodu na podstawie strefy lokalizacji komunikacji równorzędnej.
 
-### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Gdy jest start rozliczeń dla par portu bezpośrednio z usługi ExpressRoute?
+### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Kiedy rozpoczyna się rozliczenia dla par portów ExpressRoute Direct?
 
-Pary portu usługi ExpressRoute bezpośrednio do tworzenia zasobów usługi ExpressRoute bezpośrednio, są rozliczane 45 dni lub po włączeniu 1 i / lub łączy osiągnięta jako pierwsza. Aby umożliwić klientom ukończyć proces obejmującej wiele połączeń za pomocą dostawcy kolokacji udzielany jest 45-dniowy okres prolongaty.
+Pary portów bezpośredniego ExpressRoute są rozliczane 45 dni do utworzenia zasobu bezpośredniego ExpressRoute lub po włączeniu 1 lub obu tych linków, w zależności od tego, co nastąpi wcześniej. 45-dniowy okres prolongaty zostanie udzielony, aby umożliwić klientom ukończenie procesu połączenia krzyżowego z dostawcą wspólnej lokalizacji.

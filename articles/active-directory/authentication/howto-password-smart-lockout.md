@@ -1,86 +1,88 @@
 ---
-title: Zapobieganie ataki siłowe przy użyciu usługi Azure AD inteligentne blokada — usługi Azure Active Directory
-description: Usługa Azure Active Directory, inteligentnej blokady pomaga chronić swoją organizację przed atakami siłowymi próby odgadnięcia hasła
+title: Zapobieganie atakom z wykorzystaniem bezproblemowego korzystania z usługi Azure AD Smart blokad — Azure Active Directory
+description: Azure Active Directory inteligentna blokada pomaga chronić organizację przed atakami z wykorzystaniem wymuszenia próby odgadnięcia haseł
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 07/25/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 150ecbdfcc21ee7ec0bf54fd5b824bc93e0c76ce
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bd03e2b98b1fd1a2a45b5feecc963bcfc7bfe83c
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483318"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499875"
 ---
-# <a name="azure-active-directory-smart-lockout"></a>Usługa Azure Active Directory, inteligentnej blokady
+# <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentnego blokowania
 
-Blokada Smart pomocna, jeśli chcesz blokowanie złośliwych podmiotów, którzy są próby odgadnięcia hasła użytkowników lub używać metod siłowych. Może rozpoznać logowań pochodzących z prawidłowych użytkowników i je traktować inaczej niż te, które osoby atakujące i innych nieznanych źródeł. Blokada Smart blokuje osoby atakujące, pozwalając użytkownikom w dalszym ciągu dostęp do swoich kont i produktywności jednocześnie.
+Inteligentna blokada pomaga w zablokowaniu nieprawidłowych uczestników próbujących odgadnąć hasła użytkowników lub użyć metod w celu uzyskania dostępu do programu. Może ona rozpoznawać logowania pochodzące od prawidłowych użytkowników i traktować je inaczej niż osoby atakujące i inne nieznane źródła. Inteligentna blokada blokuje osoby atakujące, umożliwiając użytkownikom dalsze dostęp do swoich kont i zwiększa produktywność.
 
-Domyślnie inteligentnej blokady blokady z konta prób logowania przez minutę po 10 nieudanych prób. Blokady konta po każdej kolejne nieudane próby logowania, jedną minutę przy pierwszym i dłuższy w przypadku kolejnych prób.
+Domyślnie inteligentna blokada blokuje konto przed próbami logowania przez jedną minutę po 10 nieudanych próbach. Konto jest blokowane ponownie po każdej kolejnej nieudanej próbie logowania w ciągu jednej minuty na pierwszy czas i dłużej w kolejnych próbach.
 
-Blokada Smart śledzi ostatnie trzy skróty nieprawidłowego hasła, aby uniknąć zwiększenie licznika blokady dla tego samego hasła. Jeśli ktoś wprowadzi nieprawidłowe hasło wiele razy, to zachowanie nie spowoduje konta do blokady.
+Inteligentna blokada śledzi ostatnie trzy niewłaściwe skróty haseł, aby uniknąć zwiększenia licznika blokady dla tego samego hasła. Jeśli ktoś wprowadzi to samo złe hasło wielokrotnie, to zachowanie nie spowoduje zablokowania konta.
 
  > [!NOTE]
- > Skrót śledzenia funkcji nie jest dostępna dla klientów przy użyciu uwierzytelniania przekazywanego, włączone, ponieważ uwierzytelnianie odbywa się w środowisku lokalnym nie znajduje się w chmurze.
+ > Funkcja śledzenia skrótów nie jest dostępna dla klientów z włączonym uwierzytelnianiem przekazującym, ponieważ uwierzytelnianie odbywa się lokalnie, a nie w chmurze.
 
-Inteligentnej blokady jest zawsze włączona dla wszystkich klientów usługi Azure AD przy użyciu ustawień domyślnych, które oferują odpowiedniej kombinacji zabezpieczeń i użyteczności. Dostosowanie ustawień inteligentnej blokady, na wartości specyficzne dla Twojej organizacji wymaga usługi Azure AD podstawowa lub wyższej licencji dla użytkowników.
+Wdrożenia federacyjne wykorzystujące AD FS 2016 i AF FS 2019 mogą zapewnić podobne korzyści [AD FS przy użyciu blokady ekstranetu i](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)blokady inteligentnej w ekstranecie.
 
-Za pomocą inteligentnej blokady nie gwarantuje, że oryginalny użytkownik będzie nigdy nie będzie blokowane. Gdy inteligentnej blokady blokady konta użytkownika, spróbujemy najlepsze blokady użytkownika oryginalnego. Usługa blokady próbuje upewnij się, że nieupoważnione osoby nie może uzyskać dostęp do oryginalnego konta.  
+Inteligentna blokada jest zawsze włączona dla wszystkich klientów usługi Azure AD z tymi domyślnymi ustawieniami, które oferują odpowiednie połączenie zabezpieczeń i użyteczności. Dostosowanie ustawień blokady inteligentnej przy użyciu wartości specyficznych dla Twojej organizacji wymaga Azure AD — wersja Podstawowa lub wyższych licencji dla użytkowników.
 
-* Każde centrum danych usługi Azure Active Directory śledzi blokady niezależnie. Użytkownik będzie miał (threshold_limit * datacenter_count) liczba prób, jeśli użytkownik naciśnie każde centrum danych.
-* Inteligentnej blokady używa znanych vs nieznanej lokalizacji w celu rozróżnienia między nieuprawnione i użytkownikiem, oryginalnym. Lokalizacje znane i nieznanych mają oddzielne blokada liczników.
+Korzystanie z funkcji inteligentnej blokady nie gwarantuje, że oryginalny użytkownik nigdy nie będzie zablokowany. Po zablokowaniu konta użytkownika przez inteligentną blokadę firma Microsoft zaleca, aby nie zablokować oryginalnego użytkownika. Usługa blokowania próbuje upewnić się, że niewłaściwe podmioty nie mogą uzyskać dostępu do oryginalnego konta użytkownika.  
 
-Blokada Smart można zintegrować z hybrydowych wdrożeń, przy użyciu synchronizacji skrótów haseł lub uwierzytelniania przekazywanego, aby chronić lokalnych kont usługi Active Directory są zablokowane przez osoby atakujące. Przez odpowiednie ustawienie zasad inteligentnej blokady w usłudze Azure AD, ataków można odfiltrowane zanim osiągną one w lokalnej usłudze Active Directory.
+* Każde Azure Active Directory centrum danych śledzi samodzielną blokadę. Użytkownik będzie miał (threshold_limit * datacenter_count) liczbę prób, jeśli użytkownik trafi każde centrum danych.
+* Inteligentna blokada używa znanej lokalizacji a nieznanej lokalizacji, aby rozróżnić niewłaściwy aktora i oryginalny użytkownik. W przypadku nieznanych i znanych lokalizacji oba te liczniki są zależne od siebie.
 
-Korzystając z [uwierzytelniania przekazywanego](../hybrid/how-to-connect-pta.md), należy upewnić się, że:
+Inteligentna blokada może być zintegrowana z wdrożeniami hybrydowymi, przy użyciu funkcji synchronizacji skrótów haseł lub uwierzytelniania przekazywanego w celu ochrony lokalnych kont Active Directory przed zablokowaniem przez osoby atakujące. Odpowiednio ustawiając zasady inteligentnego blokowania w usłudze Azure AD, ataki można odfiltrować przed osiągnięciem Active Directory lokalnego.
 
-* Wartość progowa blokady usługi Azure AD jest **mniej** niż próg blokady konta usługi Active Directory. Ustaw wartości, tak aby próg blokady konta usługi Active Directory to co najmniej dwa lub trzy razy dłużej niż wartość progowa blokady usługi Azure AD. 
-* Czas trwania blokady usługi Azure AD musi być ustawiony na dłużej, niż Active Directory Zresetuj licznik blokady konta po okresie. Należy pamiętać, że Azure AD, czas trwania jest ustawiona w ciągu kilku sekund, podczas AD czas trwania jest ustawiany w minutach. 
+W przypadku korzystania z [uwierzytelniania przekazywanego](../hybrid/how-to-connect-pta.md)należy upewnić się, że:
 
-Na przykład jeśli chcesz, aby Twoje licznika usługi Azure AD mogą być wyższe niż AD, usługa Azure AD będzie 120 sekund (2 minuty) podczas usługi w warstwie Premium, AD jest ustawiony na 1 minuty (60 sekund).
+* Wartość progowa blokady usługi Azure AD jest **mniejsza** niż wartość progowa blokady konta Active Directory. Ustaw wartości tak, aby wartość progowa blokady konta Active Directory wynosić co najmniej dwa lub trzy razy dłużej niż wartość progowa blokady usługi Azure AD. 
+* Czas trwania blokady usługi Azure AD musi być ustawiony na wartość większą niż Active Directory Resetuj licznik blokady konta po czasie trwania. Należy pamiętać, że czas trwania usługi Azure AD jest ustawiony w sekundach, podczas gdy czas trwania usługi AD jest ustawiany w minutach. 
+
+Na przykład jeśli chcesz, aby licznik usługi Azure AD miał wartość większą niż AD, usługa Azure AD będzie 120 sekund (2 minuty), a w usłudze Premium AD jest ustawiona na 1 minutę (60 s).
 
 > [!IMPORTANT]
-> Aktualnie administrator nie można odblokować kont użytkowników w chmurze, jeśli zostały one zablokowane przez możliwość inteligentnej blokady. Administrator musi czekać na czas trwania blokady wygaśnie.
+> Obecnie administrator nie może odblokować kont w chmurze użytkowników, jeśli zostały one zablokowane przez funkcję inteligentnej blokady. Administrator musi poczekać na wygaśnięcie czasu trwania blokady.
 
-## <a name="verify-on-premises-account-lockout-policy"></a>Sprawdź zasady blokady konta w środowisku lokalnym
+## <a name="verify-on-premises-account-lockout-policy"></a>Weryfikuj Zasady blokady konta lokalnego
 
-Użyj poniższych instrukcji, aby sprawdzić zasady blokady konta usługi lokalnej usługi Active Directory:
+Aby sprawdzić lokalne zasady blokady konta Active Directory, należy wykonać następujące instrukcje:
 
-1. Otwórz narzędzie do zarządzania zasadami grupy.
-2. Edytowanie zasad grupy, która zawiera zasady blokady konta w organizacji, na przykład **domyślne zasady domeny**.
-3. Przejdź do **konfiguracji komputera** > **zasady** > **ustawienia Windows** > **ustawienia zabezpieczeń**   >  **Zasady konta** > **zasady blokady konta**.
-4. Sprawdź swoje **próg blokady konta** i **zerowanie licznika blokady konta po** wartości.
+1. Otwórz narzędzie do zarządzania zasady grupy.
+2. Edytuj zasady grupy zawierające zasady blokady konta w organizacji, na przykład **domyślne zasady domeny**.
+3. Przejdź do ustawień **Konfiguracja** > komputera > zasadyustawienia > **systemu Windows**ustawienia**zabezpieczeń**kontazasady > blokadykonta >  **Zasady**.
+4. Sprawdź **próg blokady konta** i **Zresetuj licznik blokady konta po** wartościach.
 
-![Zmodyfikuj Zasady blokady konta w usłudze Active Directory w środowisku lokalnym](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![Modyfikowanie zasad blokady lokalnych kont Active Directory](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
-## <a name="manage-azure-ad-smart-lockout-values"></a>Zarządzanie wartościami inteligentnej blokady w usłudze Azure AD
+## <a name="manage-azure-ad-smart-lockout-values"></a>Zarządzanie wartościami inteligentnych blokad usługi Azure AD
 
-Zgodnie z wymaganiami organizacji, inteligentnej blokady wartości może być konieczne można dostosować. Dostosowanie ustawień inteligentnej blokady, na wartości specyficzne dla Twojej organizacji wymaga usługi Azure AD podstawowa lub wyższej licencji dla użytkowników.
+W zależności od wymagań organizacyjnych może być konieczne dostosowanie wartości blokady inteligentnej. Dostosowanie ustawień blokady inteligentnej przy użyciu wartości specyficznych dla Twojej organizacji wymaga Azure AD — wersja Podstawowa lub wyższych licencji dla użytkowników.
 
-Aby sprawdzić, lub zmodyfikuj wartości inteligentnej blokady dla Twojej organizacji, użyj następujących czynności:
+Aby sprawdzić lub zmodyfikować wartości blokady inteligentnej dla organizacji, wykonaj następujące czynności:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i kliknij pozycję **usługi Azure Active Directory**, następnie **metod uwierzytelniania**.
-1. Ustaw **próg blokady**, zależnie od liczby nieudanych operacji logowania są dozwolone w konto przed jego pierwszym blokady. Wartość domyślna wynosi 10.
-1. Ustaw **czas trwania blokady w ciągu kilku sekund**, do długości w ciągu kilku sekund w każdej blokady. Wartość domyślna to 60 sekund (co minutę).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i kliknij przycisk **Azure Active Directory**, a następnie pozycję **metody uwierzytelniania**.
+1. Ustaw **próg blokady**w zależności od liczby nieudanych logowań dozwolonych na koncie przed pierwszym zablokowaniem. Wartość domyślna to 10.
+1. Ustaw **czas trwania blokady (w sekundach**) na długość w sekundach każdej blokady. Wartość domyślna to 60 sekund (jedna minuta).
 
 > [!NOTE]
-> Przy pierwszym zalogowaniu po blokady nie powiedzie się także, konto blokuje ponownie. Jeśli konto blokady wielokrotnie, zwiększony czas trwania blokady.
+> Jeśli pierwsze logowanie po zablokowaniu również zakończy się niepowodzeniem, konto zostanie ponownie zablokowane. Jeśli konto zostanie zablokowane wielokrotnie, czas trwania blokady wzrasta.
 
-![Dostosuj zasady blokady inteligentne usługi Azure AD w witrynie Azure portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+![Dostosuj zasady inteligentnego blokowania usługi Azure AD w Azure Portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>Jak ustalić, czy funkcję inteligentnej blokady działa lub nie
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>Jak ustalić, czy funkcja inteligentnego blokowania działa, czy nie
 
-Po wyzwoleniu próg blokady smart zablokowaniu konta zostanie wyświetlony następujący komunikat:
+Po wyzwoleniu progu inteligentnego blokowania zostanie wyświetlony następujący komunikat, gdy konto jest zablokowane:
 
-**Twoje konto zostało tymczasowo zablokowane, aby zapobiec nieautoryzowanemu użyciu. Spróbuj ponownie później, a jeśli nadal występują problemy, skontaktuj się z administratorem.**
+**Twoje konto jest tymczasowo zablokowane, aby zapobiec nieautoryzowanemu użyciu. Spróbuj ponownie później, a jeśli nadal masz problemy, skontaktuj się z administratorem.**
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Dowiedz się, jak zablokować nieprawidłowych haseł w organizacji za pomocą usługi Azure AD.](howto-password-ban-bad.md)
-* [Konfigurowanie samoobsługowego resetowania hasła, aby umożliwić użytkownikom odblokować własne konta.](quickstart-sspr.md)
+* [Dowiedz się, jak zablokować złe hasła w organizacji przy użyciu usługi Azure AD.](howto-password-ban-bad.md)
+* [Skonfiguruj Samoobsługowe resetowanie haseł, aby umożliwić użytkownikom odblokowywanie własnych kont.](quickstart-sspr.md)

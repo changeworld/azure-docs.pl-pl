@@ -1,55 +1,55 @@
 ---
-title: Typy rozwiązywania konfliktów i zasad rozpoznawania z wieloma zapisu regionów w usłudze Azure Cosmos DB
-description: W tym artykule opisano kategorie konfliktu i zasady rozwiązywania konfliktów w usłudze Azure Cosmos DB.
+title: Typy rozwiązywania konfliktów i zasady rozpoznawania z wieloma regionami zapisu w Azure Cosmos DB
+description: W tym artykule opisano kategorie konfliktów i zasady rozwiązywania konfliktów w Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/23/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 98e9f5fff1b74d417ee07ed0056c8046b49baa17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45b7257f67be8ba5c134717d73488916056b7a7d
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236547"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384211"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Typy konfliktów i zasady ich rozwiązywania
 
-Konflikty i rozwiązywania konfliktów, że zasady są stosowane, jeśli skonfigurowano konta usługi Azure Cosmos DB z wieloma zapisu regionów.
+Konflikty i zasady rozwiązywania konfliktów są stosowane, jeśli konto Azure Cosmos DB zostało skonfigurowane z wieloma regionami zapisu.
 
-Dla konta usługi Azure Cosmos skonfigurowany z wieloma regionami zapisu może wystąpić konflikt aktualizacji, gdy moduły zapisujące aktualizacji jednocześnie tego samego elementu w wielu regionach. Konflikty aktualizacji mogą być następujące trzy typy:
+W przypadku kont usługi Azure Cosmos skonfigurowanych z wieloma regionami zapisu mogą wystąpić konflikty aktualizacji, gdy moduły zapisujące jednocześnie aktualizują ten sam element w wielu regionach. Konflikty aktualizacji mogą być następujące trzy typy:
 
-* **Wstaw konflikty**: Te konflikty może wystąpić, gdy aplikacja jednocześnie wstawia dwie lub więcej elementów z tego samego unikatowego indeksu w co najmniej dwóch regionach. Na przykład ten konflikt może wystąpić z właściwością ID.
+* **Wstawianie konfliktów**: Te konflikty mogą wystąpić, gdy aplikacja jednocześnie wstawia dwa lub więcej elementów z tym samym unikatowym indeksem w co najmniej dwóch regionach. Na przykład ten konflikt może wystąpić z właściwością ID.
 
 * **Zastąp konflikty**: Te konflikty mogą wystąpić, gdy aplikacja aktualizuje ten sam element jednocześnie w co najmniej dwóch regionach.
 
-* **Usuń konflikty**: Te konflikty mogą wystąpić, gdy aplikacja jednocześnie usuwa element w jednym regionie i aktualizuje go w innym regionie.
+* **Konflikty usuwania**: Te konflikty mogą wystąpić, gdy aplikacja jednocześnie usuwa element w jednym regionie i aktualizuje go w innym regionie.
 
 ## <a name="conflict-resolution-policies"></a>Zasady rozwiązywania konfliktów
 
-Usługa Azure Cosmos DB oferuje elastyczny mechanizm rozwiązywania konfliktów przy zapisywaniu opartych na zasadach. Możesz wybrać dwie zasady rozwiązywania konfliktów na kontenerze usługi Azure Cosmos:
+Azure Cosmos DB oferuje elastyczny mechanizm oparty na zasadach do rozwiązywania konfliktów zapisu. Można wybrać jedną z dwóch zasad rozwiązywania konfliktów w kontenerze usługi Azure Cosmos:
 
-- **Ostatni zapis Wins (LWW)** : Te zasady rozpoznawania domyślnie używa właściwości zdefiniowane przez system sygnatury czasowej. Jest ona oparta na protokole zegara synchronizacji czasu. Jeśli korzystasz z interfejsu API SQL, można określić wszelkie inne wartości liczbowych właściwości niestandardowej (np. własny pojęcie sygnaturę czasową) służący do rozwiązywania konfliktów. Właściwości niestandardowej wartości liczbowych jest również nazywany *Ścieżka rozpoznawania konfliktu*. 
+- **Ostatni zapis WINS (LWW)** : Ta zasada rozwiązywania domyślnie używa właściwości sygnatury czasowej zdefiniowanej przez system. Jest on oparty na protokole zegara czasu synchronizacji. W przypadku korzystania z interfejsu API SQL można określić dowolną inną niestandardową Właściwość numeryczną (np. własne pojęcie sygnatury czasowej), która ma być używana do rozwiązywania konfliktów. Niestandardowa właściwość numeryczna jest również nazywana *ścieżką rozwiązywania konfliktów*. 
 
-  Jeśli dwa lub więcej elementów konflikt wstawić lub Zastąp operacje, element o najwyższej wartości dla ścieżki rozwiązywania konfliktów staje się zwycięzca. System Określa zwycięzcą, jeśli wiele elementów ma taką samą wartość liczbową dla ścieżki rozwiązywania konfliktów. Wszystkie regiony są gwarantowane zbiegają się do pojedynczego zwycięzca i na końcu się przy użyciu tej samej wersji elementu zatwierdzone. Po usunięciu biorących udział konflikty, zawsze usuniętych wersji wins przez wstawić lub Zastąp konflikty. Ten wynik odbywa się niezależnie od tego, co to jest wartość Ścieżka rozpoznawania konfliktu.
-
-  > [!NOTE]
-  > Ostatni zapis Wins jest domyślne zasady rozwiązywania konfliktów. Jest dostępny dla następujących interfejsów API: SQL, MongoDB, Cassandra, Gremlin and Table.
-
-  Aby dowiedzieć się więcej, zobacz [zasad rozpoznawania w konflikcie przykłady z zastosowaniem LWW](how-to-manage-conflicts.md).
-
-- **Niestandardowy**: Te zasady rozwiązania jest przeznaczona dla semantyki zdefiniowanych przez aplikację do uzgodnienia konflikty. Po ustawieniu tych zasad w kontenerze usługi Azure Cosmos należy również zarejestrować *scalania procedury składowanej*. Ta procedura jest wywoływana automatycznie, gdy wykryto konflikty w ramach transakcji bazy danych na serwerze. System zawiera dokładnie raz gwarantuje do wykonania procedury scalania w ramach protokołu zobowiązania.  
-
-  Jeśli kontenera można skonfigurować przy użyciu opcji niestandardowych rozdzielczości i zakończyć się niepowodzeniem do rejestrowania procedury scalania w kontenerze lub procedury scalania zgłasza wyjątek w czasie wykonywania, są zapisywane konflikty *konflikty kanału informacyjnego*. Następnie aplikacja musi ręcznie rozwiązać konflikty w konflikcie, źródła danych. Aby dowiedzieć się więcej, zobacz [przykłady za pomocą zasad niestandardowych rozwiązania i sposobu używania konflikty kanału informacyjnego](how-to-manage-conflicts.md).
+  Jeśli co najmniej dwa elementy powodują konflikt podczas operacji wstawiania lub zamiany, element o najwyższej wartości ścieżki rozwiązywania konfliktów zostanie zwycięzcą. System określa zwycięzcę, jeśli wiele elementów ma taką samą wartość liczbową dla ścieżki rozwiązywania konfliktów. Wszystkie regiony są gwarantowane, aby przeprowadzić zbieżność z pojedynczym zwycięzcą i zakończyć z tą samą wersją zatwierdzonego elementu. W przypadku konfliktów usuwania w usuniętej wersji zawsze jest używana usługa WINS w przypadku konfliktów INSERT lub Replace. Ten wynik występuje niezależnie od wartości ścieżki rozwiązywania konfliktów.
 
   > [!NOTE]
-  > Zasady rozwiązywania konfliktów niestandardowych jest dostępne tylko dla kont interfejsu API SQL.
+  > Ostatnim zapisem jest usługa WINS, która ma domyślne zasady rozwiązywania konfliktów. Jest on dostępny dla następujących interfejsów API: SQL, MongoDB, Cassandra, Gremlin i Table.
+
+  Aby dowiedzieć się więcej, zobacz [przykłady, które używają zasad rozwiązywania konfliktów LWW](how-to-manage-conflicts.md).
+
+- **Niestandardowy**: Te zasady rozwiązywania są przeznaczone dla semantyki zdefiniowanej przez aplikację w celu uzgodnienia konfliktów. Po ustawieniu tych zasad w kontenerze usługi Azure Cosmos należy również zarejestrować *procedurę składowaną scalania*. Ta procedura jest wywoływana automatycznie w przypadku wykrycia konfliktów w ramach transakcji bazy danych na serwerze. System zawiera dokładnie raz gwarantuje do wykonania procedury scalania w ramach protokołu zobowiązania.  
+
+  W przypadku skonfigurowania kontenera przy użyciu opcji rozwiązywania niestandardowego i zarejestrowanie procedury scalania w kontenerze lub procedury scalania zgłasza wyjątek w czasie wykonywania, konflikty są zapisywane w *źródle konfliktów*. Aplikacja musi ręcznie rozwiązać konflikty w strumieniowym źródle konfliktów. Aby dowiedzieć się więcej, zobacz [przykłady użycia niestandardowych zasad rozpoznawania i sposób używania źródła konfliktów](how-to-manage-conflicts.md).
+
+  > [!NOTE]
+  > Niestandardowe zasady rozwiązywania konfliktów są dostępne tylko dla kont interfejsu API SQL.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak skonfigurować zasady rozwiązywania konfliktów:
 
-* [Jak skonfigurować Multi-Master w swoich aplikacjach](how-to-multi-master.md)
+* [Jak skonfigurować wiele wzorców w aplikacjach](how-to-multi-master.md)
 * [Jak zarządzać zasadami rozwiązywania konfliktów](how-to-manage-conflicts.md)
-* [Jak odczytać z konfliktów kanału informacyjnego](how-to-manage-conflicts.md#read-from-conflict-feed)
+* [Jak czytać ze źródła konfliktów](how-to-manage-conflicts.md#read-from-conflict-feed)

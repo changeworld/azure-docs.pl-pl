@@ -1,6 +1,6 @@
 ---
-title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania infrastruktury
-description: Poznaj najlepsze rozwiązania infrastruktury dotyczące migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
+title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania dotyczące infrastruktury
+description: Poznaj najlepsze rozwiązania dotyczące infrastruktury dotyczące migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonwhowell
 ms.service: hdinsight
@@ -8,101 +8,101 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5bdd5049b7ddeaac4425734aa6f4d633b08cd3b4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0707f08d7c1447ff9aaae919cabfe1a668b25e3d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057476"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404370"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania infrastruktury
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania dotyczące infrastruktury
 
-Ten artykuł zawiera zalecenia dotyczące zarządzania infrastrukturą klastrów Azure HDInsight. Jest częścią serii, która zapewnia najlepsze rozwiązania w celu ułatwienia migrowania lokalnych systemów Apache Hadoop do usługi Azure HDInsight.
+W tym artykule przedstawiono zalecenia dotyczące zarządzania infrastrukturą klastrów usługi Azure HDInsight. Jest ona częścią serii, która oferuje najlepsze rozwiązania ułatwiające Migrowanie lokalnych systemów Apache Hadoop do usługi Azure HDInsight.
 
-## <a name="plan-for-hdinsight-cluster-capacity"></a>Planowanie pojemności klastra HDInsight
+## <a name="plan-for-hdinsight-cluster-capacity"></a>Planowanie pojemności klastra usługi HDInsight
 
-Kluczowe wyborów Planowanie pojemności klastra HDInsight są następujące:
+Kluczowe Opcje planowania pojemności klastra usługi HDInsight są następujące:
 
-- **Wybierz region** — region platformy Azure Określa, gdzie fizycznie zainicjowaniu obsługi klastra. Aby zminimalizować opóźnienie operacji odczytu i zapisu, klaster musi należeć do tego samego regionu danych.
-- **Wybierz lokalizację magazynu i rozmiar** — domyślny magazyn musi być w tym samym regionie co klaster. 48-węzeł klastra zaleca się mieć 4 do 8 kont magazynu. Mimo że może już być wystarczające, całkowita ilość miejsca, każde konto magazynu zapewnia dodatkową przepustowość sieci dla węzłów obliczeniowych. W przypadku wielu kont magazynu, należy użyć nazwy losowe dla każdego konta magazynu bez prefiksu. Celem losowych nazw jest zmniejszenie prawdopodobieństwo wąskich gardeł pamięci masowej (ograniczanie przepustowości) lub tryb typowych błędów dla wszystkich kont. Lepszą wydajność należy użyć tylko jednego kontenera na koncie magazynu.
-- **Wybierz rozmiar maszyny Wirtualnej i typ (obsługuje teraz serii G)** — każdy typ klastra zawiera zbiór typy węzłów, a każdy typ węzła zawiera szczegółowe opcje ich rozmiar maszyny Wirtualnej i typu. Rozmiar maszyny Wirtualnej i typ jest określany przez wykorzystanie Procesora mocy obliczeniowej, pamięci RAM i opóźnienie sieci. Symulowane obciążenie może służyć do określenia optymalnego rozmiaru maszyny Wirtualnej i typ dla każdego typu węzła.
-- **Wybierz liczbę węzłów procesu roboczego** — początkowa liczba węzłów procesu roboczego można ustalić przy użyciu symulowanych obciążeń. Klastra mogą być skalowane później, dodając większą liczbę węzłów procesu roboczego do obsłużenia szczytowego zapotrzebowania obciążenia. Później można skalować klastra, ponownie, gdy nie są wymagane dodatkowe węzły procesów roboczych.
+- **Wybierz region** — region platformy Azure określa miejsce, w którym klaster jest fizycznie zainicjowany. Aby zminimalizować opóźnienie operacji odczytu i zapisu, klaster powinien znajdować się w tym samym regionie co dane.
+- **Wybierz lokalizację i rozmiar magazynu** — magazyn domyślny musi znajdować się w tym samym regionie co klaster. W przypadku klastra z 48 węzłami zaleca się używanie 4 do 8 kont magazynu. Mimo że może już być wystarczająca ilość miejsca w magazynie, każde konto magazynu oferuje dodatkową przepustowość sieci dla węzłów obliczeniowych. Jeśli istnieje wiele kont magazynu, użyj nazwy losowej dla każdego konta magazynu, bez prefiksu. Celem przypadkowego nazewnictwa jest zmniejszenie ryzyka związanego z wąskimi gardłami magazynowania (ograniczanie) lub awariami trybu wspólnego na wszystkich kontach. Aby uzyskać lepszą wydajność, należy użyć tylko jednego kontenera na konto magazynu.
+- **Wybierz rozmiar i typ maszyny wirtualnej (obsługuje teraz serię G)** — każdy typ klastra ma zestaw typów węzłów, a każdy typ węzła ma określone opcje rozmiaru i typu maszyny wirtualnej. Rozmiar i typ maszyny wirtualnej są określane przez procesor CPU, rozmiar pamięci RAM i opóźnienie sieci. Symulowane obciążenie może służyć do określenia optymalnego rozmiaru i typu maszyn wirtualnych dla każdego typu węzła.
+- **Wybierz liczbę węzłów procesu roboczego** — początkową liczbę węzłów procesu roboczego można określić przy użyciu symulowanych obciążeń. Klaster można skalować później, dodając więcej węzłów procesu roboczego, aby spełnić wymagania dotyczące obciążenia szczytowego. Klaster można później skalować do tyłu, gdy dodatkowe węzły procesu roboczego nie są wymagane.
 
-Aby uzyskać więcej informacji, zobacz artykuł [planowania pojemności dla klastrów HDInsight](../hdinsight-capacity-planning.md).
+Aby uzyskać więcej informacji, zapoznaj się z artykułem [Planowanie pojemności dla klastrów usługi HDInsight](../hdinsight-capacity-planning.md).
 
-## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Użyj typu maszyn wirtualnych zalecane dla klastra
+## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Użyj zalecanego typu maszyny wirtualnej dla klastra
 
-Zobacz [domyślne rozmiary maszyn wirtualnych i konfiguracja węzła klastrów](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) zaleca się typów maszyn wirtualnych dla każdego typu klastra HDInsight.
+Sprawdź [domyślną konfigurację węzła i rozmiary maszyn wirtualnych dla klastrów](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) dla zalecanych typów maszyn wirtualnych dla każdego typu klastra usługi HDInsight.
 
-## <a name="check-hadoop-components-availability-in-hdinsight"></a>Sprawdzanie dostępności składników usługi Hadoop w HDInsight
+## <a name="check-hadoop-components-availability-in-hdinsight"></a>Sprawdzanie dostępności składników usługi Hadoop w usłudze HDInsight
 
-Każda wersja HDInsight jest dystrybucją zestaw składników ekosystemu Hadoop w chmurze. Zobacz [HDInsight Component Versioning](../hdinsight-component-versioning.md) szczegółowe informacje dotyczące wszystkich składników HDInsight i ich bieżącej wersji.
+Każda wersja usługi HDInsight to dystrybucja w chmurze zestawu składników systemu Hadoop. Zobacz [przechowywanie wersji składników usługi HDInsight](../hdinsight-component-versioning.md) , aby uzyskać szczegółowe informacje na temat wszystkich składników usługi HDInsight i ich bieżących wersji.
 
-Aby sprawdzić składniki i wersje w HDInsight, można użyć interfejsu użytkownika programu Apache Ambari lub interfejs API REST Ambari.
+Aby sprawdzić składniki i wersje usługi Hadoop w usłudze HDInsight, można także użyć interfejsu użytkownika Apache Ambari lub interfejsu API REST Ambari.
 
-Aplikacje lub składniki, które były dostępne w klastrach w środowisku lokalnym, ale nie są częścią klastrów HDInsight można dodać na węźle krawędzi lub na maszynie Wirtualnej w tej samej podsieci co klaster HDInsight. Można zainstalować aplikacji platformy Hadoop innych firm, które nie są dostępne w usłudze Azure HDInsight przy użyciu opcji "Aplikacje" w klastrze HDInsight. Niestandardowych aplikacji platformy Hadoop można zainstalować w klastrze HDInsight przy użyciu "skrypt akcje". W poniższej tabeli wymieniono niektóre typowe aplikacje i ich opcji integracji HDInsight:
+Aplikacje lub składniki, które były dostępne w klastrach lokalnych, ale nie są częścią klastrów usługi HDInsight, można dodawać w węźle brzegowym lub na maszynie wirtualnej w tej samej sieci wirtualnej co klaster usługi HDInsight. Aplikację Hadoop innej firmy, która nie jest dostępna w usłudze Azure HDInsight, można zainstalować przy użyciu opcji "aplikacje" w klastrze usługi HDInsight. Niestandardowe aplikacje usługi Hadoop można zainstalować w klastrze usługi HDInsight przy użyciu funkcji "akcje skryptu". W poniższej tabeli wymieniono niektóre typowe aplikacje i ich opcje integracji usługi HDInsight:
 
-|**Aplikacja**|**Integracja**
+|**Aplikacja**|**Integration**
 |---|---|
-|Powietrza|Węzeł krawędzi IaaS lub HDInsight
+|Przepływ powietrza|IaaS lub węzeł brzegowy usługi HDInsight
 |Alluxio|IaaS  
 |Arcadia|IaaS 
 |Atlas|Brak (tylko HDP)
-|Datameer|Węzeł brzegowy HDInsight
-|Usługa Datastax (Cassandra)|IaaS (bazy danych cosmos DB zamiast na platformie Azure)
+|Datameer|Węzeł krawędzi usługi HDInsight
+|DataStax (Cassandra)|IaaS (CosmosDB alternatywę na platformie Azure)
 |DataTorrent|IaaS 
 |Przechodzenie do szczegółów|IaaS 
 |Ignite|IaaS
 |Jethro|IaaS 
 |Mapador|IaaS 
-|Mongo|IaaS (bazy danych cosmos DB zamiast na platformie Azure)
+|Mongo|IaaS (CosmosDB alternatywę na platformie Azure)
 |NiFi|IaaS 
-|Presto|Węzeł krawędzi IaaS lub HDInsight
+|Presto|IaaS lub węzeł brzegowy usługi HDInsight
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
 |SAS|IaaS 
-|Vertica|IaaS (SQLDW zamiast na platformie Azure)
+|Vertica|IaaS (SQLDW alternatywę na platformie Azure)
 |TABLEAU|IaaS 
-|Wodnej|Węzeł brzegowy HDInsight
-|StreamSets|HDInsight krawędzi 
+|Wodną|Węzeł krawędzi usługi HDInsight
+|StreamSets|Krawędź usługi HDInsight 
 |Palantir|IaaS 
-|SailPoint|Iaas 
+|SailPoint|IaaS 
 
-Aby uzyskać więcej informacji, zobacz artykuł [składniki platformy Apache Hadoop dostępne z różnymi wersjami HDInsight](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)
+Aby uzyskać więcej informacji, zobacz artykuł [Apache Hadoop składniki dostępne w różnych wersjach usługi HDInsight](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)
 
-## <a name="customize-hdinsight-clusters-using-script-actions"></a>Dostosowywanie klastrów HDInsight za pomocą akcji skryptu
+## <a name="customize-hdinsight-clusters-using-script-actions"></a>Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu
 
-HDInsight zapewnia metodę konfiguracji klastra o nazwie **skryptu akcji**. Akcja skryptu jest skrypt powłoki Bash, jest uruchamiany w węzłach klastra usługi HDInsight, która może służyć do instalowania dodatkowych składników i zmianę ustawień konfiguracji.
+Usługa HDInsight udostępnia metodę konfiguracji klastra nazywaną **akcją skryptu**. Akcja skryptu to skrypt bash, który działa w węzłach klastra usługi HDInsight i może służyć do instalowania dodatkowych składników i zmieniania ustawień konfiguracji.
 
-Akcje skryptu muszą być przechowywane w identyfikatorze URI, który jest dostępny z klastra HDInsight. One może być używany podczas lub po utworzeniu klastra i mogą być ograniczone do uruchomienia tylko na niektóre typy węzłów.
+Akcje skryptu muszą być przechowywane w identyfikatorze URI dostępnym z klastra usługi HDInsight. Mogą one być używane podczas tworzenia klastra lub po nim, a także mogą być ograniczone do uruchamiania tylko dla określonych typów węzłów.
 
-Skrypt może być utrwalona lub wykonać jeden raz. Utrwalonych skryptów są używane do dostosowywania nowych węzłach procesów roboczych dodane do klastra za pośrednictwem operacji skalowania. Utrwalonego skryptu może mieć zastosowanie także zmiany na inny typ węzła, takich jak węzła głównego, po wystąpieniu operacji skalowania.
+Skrypt może być utrwalony lub wykonywany jeden raz. Utrwalone skrypty są używane do dostosowywania nowych węzłów procesu roboczego dodanych do klastra za pomocą operacji skalowania. Utrwalony skrypt może również zastosować zmiany do innego typu węzła, takiego jak węzeł główny, gdy wystąpią operacje skalowania.
 
-HDInsight udostępnia wstępnie napisane skrypty do zainstalowania następujących składników w klastrach HDInsight:
+Usługa HDInsight udostępnia wstępnie zapisane skrypty umożliwiające zainstalowanie następujących składników w klastrach usługi HDInsight:
 
 - Dodaj konto usługi Azure Storage
-- Instalowanie rozwiązania Hue
+- Zainstaluj program Hue
 - Zainstaluj skrypt Presto
-- Zainstalować platformę Solr
-- Zainstalować system Giraph
-- Wstępne ładowanie bibliotek technologii Hive
-- Instalowanie lub aktualizowanie środowiska Mono
+- Zainstaluj program Solr
+- Zainstaluj program Giraph
+- Ładuj wstępnie biblioteki technologii Hive
+- Zainstaluj lub zaktualizuj narzędzie Mono
 
 > [!Note]  
-> HDInsight nie zapewnia bezpośredniej pomocy technicznej dla składników hadoop niestandardowych lub składniki zainstalowane za pomocą akcji skryptu.
+> Usługa HDInsight nie zapewnia bezpośredniej obsługi niestandardowych składników lub składników usługi Hadoop zainstalowanych przy użyciu akcji skryptu.
 
-Akcje skryptu można także publikować w portalu Azure Marketplace jako aplikacji HDInsight.
+Akcje skryptu można również publikować w portalu Azure Marketplace jako aplikację usługi HDInsight.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Instalowanie aplikacji platformy Hadoop Apache innych firm na HDInsight](../hdinsight-apps-install-applications.md)
-- [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md)
-- [Publikowanie aplikacji HDInsight w witrynie Azure Marketplace](../hdinsight-apps-publish-applications.md)
+- [Instalowanie aplikacji Apache Hadoop innych firm w usłudze HDInsight](../hdinsight-apps-install-applications.md)
+- [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md)
+- [Publikowanie aplikacji usługi HDInsight w portalu Azure Marketplace](../hdinsight-apps-publish-applications.md)
 
-## <a name="customize-hdinsight-configs-using-bootstrap"></a>Dostosowywanie configs HDInsight za pomocą narzędzia Bootstrap
+## <a name="customize-hdinsight-configs-using-bootstrap"></a>Dostosowywanie konfiguracji usługi HDInsight przy użyciu narzędzia Bootstrap
 
-Zmiany konfiguracji w plikach konfiguracji takich jak `core-site.xml`, `hive-site.xml` i `oozie-env.xml` jest możliwe za pomocą narzędzia Bootstrap. Poniższy skrypt to przykład przy użyciu programu Powershell [modułu AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) polecenia cmdlet [New AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
+Zmiany w konfiguracjach w plikach konfiguracyjnych, takich `core-site.xml`jak `hive-site.xml` , `oozie-env.xml` i można wykonać przy użyciu Bootstrap. Poniższy skrypt jest przykładem przy użyciu polecenia [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)programu PowerShell:
 
 ```powershell
 # hive-site.xml configuration
@@ -127,70 +127,70 @@ New—AzHDInsightCluster `
     —Config $config
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł [HDInsight Dostosowywanie klastrów za pomocą narzędzia Bootstrap](../hdinsight-hadoop-customize-cluster-bootstrap.md).  Zobacz też [HDInsight Zarządzanie klastrami za pomocą interfejsu API Apache Ambari REST](../hdinsight-hadoop-manage-ambari-rest-api.md).
+Aby uzyskać więcej informacji, zobacz artykuł [Dostosowywanie klastrów usługi HDInsight przy użyciu narzędzia Bootstrap](../hdinsight-hadoop-customize-cluster-bootstrap.md).  Zobacz również [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu API REST usługi Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md).
 
-## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>Węzły krawędzi klastra narzędzia klienta dostępu z usługi HDInsight Hadoop
+## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>Dostęp do narzędzi klienckich z węzłów brzegowych klastra usługi HDInsight Hadoop
 
-Pustego węzła krawędzi jest maszyną wirtualną systemu Linux przy użyciu tych samych narzędzi klienta, które są zainstalowane i skonfigurowane jako o węzłach głównych, ale z nie usług Hadoop działających. W węźle brzegowym może służyć do następujących celów:
+Pusty węzeł brzegowy to maszyna wirtualna z systemem Linux z tymi samymi narzędziami klienta zainstalowanymi i skonfigurowanymi jako na węzłach głównych, ale bez usług Hadoop uruchomionych. Węzeł brzegowy może być używany w następujących celach:
 
 - Uzyskiwanie dostępu do klastra
-- Testowanie aplikacji klienta
-- hostowanie aplikacji klienta
+- Testowanie aplikacji klienckich
+- Hostowanie aplikacji klienckich
 
-Węzły brzegowe mogą być tworzone i usunąć za pomocą witryny Azure portal i może być używany podczas lub po tworzenie klastra. Po utworzeniu węzła krawędzi możesz nawiązać połączenie z węzłem krawędzi za pomocą protokołu SSH i uruchom narzędzia klienta, aby uzyskać dostęp do klastra usługi Hadoop w HDInsight. W węźle brzegowym ssh punkt końcowy jest `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
-
-
-Aby uzyskać więcej informacji, zobacz artykuł [używanie pustych węzłów brzegowych w klastrach usługi Apache Hadoop w HDInsight](../hdinsight-apps-use-edge-node.md).
+Węzły brzegowe można tworzyć i usuwać za pomocą Azure Portal i mogą być używane podczas tworzenia klastra lub po nim. Po utworzeniu węzła brzegowego można połączyć się z węzłem brzegowym przy użyciu protokołu SSH, a następnie uruchomić narzędzia klienckie w celu uzyskania dostępu do klastra Hadoop w usłudze HDInsight. Punkt końcowy SSH węzła brzegowego `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`to.
 
 
-## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Funkcja skalowania w górę i w dół klastrów
+Aby uzyskać więcej informacji, zobacz [używanie pustych węzłów brzegowych w klastrach Apache Hadoop w usłudze HDInsight](../hdinsight-apps-use-edge-node.md).
 
-HDInsight zapewnia elastyczność, oferując możliwość skalowania w górę i skalowania w dół liczbę węzłów procesu roboczego w klastrach. Ta funkcja umożliwia zmniejszania klastra po godzinach lub w weekendy i rozwiń go podczas szczytowego zapotrzebowania biznesowych. Aby uzyskać więcej informacji, zobacz:
 
-* [Skaluj klastry HDInsight](../hdinsight-scaling-best-practices.md).
-* [Skaluj klastry](../hdinsight-administer-use-portal-linux.md#scale-clusters).
+## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Korzystanie z funkcji skalowania w górę i w dół klastrów
 
-## <a name="use-hdinsight-with-azure-virtual-network"></a>HDInsight za pomocą sieci wirtualnej platformy Azure
+Usługa HDInsight zapewnia elastyczność, zapewniając możliwość skalowania w górę i w dół liczby węzłów procesu roboczego w klastrach. Ta funkcja umożliwia zmniejszanie klastra po godzinach lub weekendy oraz rozszerzanie go w czasie szczytowego zapotrzebowania na działalność biznesową. Aby uzyskać więcej informacji, zobacz:
 
-Sieci wirtualne platformy Azure Włącz zasobów platformy Azure, takich jak Azure Virtual Machines do bezpiecznego komunikowania się ze sobą internetowego i sieciami lokalnymi przez filtrowaniem i routingiem ruchu sieciowego.
+* [Skalowanie klastrów usługi HDInsight](../hdinsight-scaling-best-practices.md).
+* [Skalowanie klastrów](../hdinsight-administer-use-portal-linux.md#scale-clusters).
 
-Za pomocą HDInsight przy użyciu usługi Azure Virtual Network umożliwia następujące scenariusze:
+## <a name="use-hdinsight-with-azure-virtual-network"></a>Korzystanie z usługi HDInsight w usłudze Azure Virtual Network
 
-- Łączenie z HDInsight bezpośrednio z siecią lokalną.
-- O łączeniu z danymi HDInsight są przechowywane w usłudze Azure Virtual network.
-- Bezpośredni dostęp do usług Hadoop, które nie są dostępne publicznie w Internecie. Na przykład interfejsów API platformy Kafka lub interfejsu API języka Java bazy danych HBase.
+Usługa Azure Virtual Networks umożliwia korzystanie z zasobów platformy Azure, takich jak Azure Virtual Machines, w celu bezpiecznego komunikowania się ze sobą, Internetu i sieci lokalnych, przez filtrowanie i kierowanie ruchu sieciowego.
 
-HDInsight albo można dodać do nowej lub istniejącej Azure sieci wirtualnej. Jeśli HDInsight jest dodawany do istniejącej sieci wirtualnej, istniejące grupy zabezpieczeń sieci, a trasy zdefiniowane przez użytkownika muszą zostać zaktualizowane, aby zezwolić na nieograniczony dostęp do [kilka adresów IP](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) w centrum danych platformy Azure. Ponadto upewnij się, że nie blokuje ruchu skierowanego do [porty](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports), które są używane przez usługi HDInsight.
+Korzystanie z usługi Azure Virtual Network w usłudze HDInsight umożliwia wykonywanie następujących scenariuszy:
+
+- Łączenie z usługą HDInsight bezpośrednio z sieci lokalnej.
+- Łączenie usługi HDInsight z magazynami danych w sieci wirtualnej platformy Azure.
+- Bezpośredni dostęp do usług Hadoop, które nie są dostępne publicznie za pośrednictwem Internetu. Na przykład interfejsy API Kafka lub interfejs API Java HBase.
+
+Usługę HDInsight można dodać do nowego lub istniejącego Virtual Network platformy Azure. Jeśli Usługa HDInsight jest dodawana do istniejącej Virtual Network, istniejące sieciowe grupy zabezpieczeń i trasy zdefiniowane przez użytkownika muszą zostać zaktualizowane, aby zezwolić na nieograniczony dostęp do [kilku adresów IP](../hdinsight-management-ip-addresses.md) w centrum danych platformy Azure. Upewnij się również, że nie Zablokuj ruchu do [portów](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports), które są używane przez usługi HDInsight.
 
 > [!Note]  
-> HDInsight aktualnie nie obsługuje wymuszonym tunelowaniem. Wymuszone tunelowanie ma ustawienia podsieci, która wymusza ruch wychodzący z Internetu na urządzeniu w celu przeprowadzenia inspekcji i rejestrowania. Usuń, wymuszonego tunelowania przed zainstalowaniem HDInsight w podsieci lub Utwórz nową podsieć dla HDInsight. HDInsight nie obsługuje również ograniczanie połączenia sieciowego ruchu wychodzącego.
+> Usługa HDInsight nie obsługuje obecnie wymuszonego tunelowania. Wymuszone tunelowanie to ustawienie podsieci, które wymusza wychodzący ruch internetowy do urządzenia w celu przeprowadzenia inspekcji i rejestrowania. Usuń wymuszone tunelowanie przed zainstalowaniem usługi HDInsight w podsieci lub Utwórz nową podsieć dla usługi HDInsight. Usługa HDInsight nie obsługuje również ograniczania łączności sieciowej wychodzącej.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Azure — sieci — Omówienie wirtualnych](../../virtual-network/virtual-networks-overview.md)
-- [Rozszerzenie Azure HDInsight przy użyciu sieci wirtualnej platformy Azure](../hdinsight-extend-hadoop-virtual-network.md)
+- [Azure Virtual-Networks — Omówienie](../../virtual-network/virtual-networks-overview.md)
+- [Rozszerzenie Azure HDInsight przy użyciu sieci wirtualnej platformy Azure](../hdinsight-plan-virtual-network-deployment.md)
 
-## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Bezpieczne łączenie z usługami platformy Azure z punktami końcowymi usługi Azure Virtual Network
+## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Bezpieczne łączenie z usługami platformy Azure za pomocą punktów końcowych usługi Azure Virtual Network
 
-HDInsight obsługuje [punkty końcowe usługi sieci wirtualnej](../../virtual-network/virtual-network-service-endpoints-overview.md), co pozwala użytkownikowi nawiązania bezpiecznego połączenia z bazami danych usługi Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB i SQL. Po włączeniu punktu końcowego usługi dla usługi Azure HDInsight ruch odbywa się za pośrednictwem zabezpieczonej trasy z w obrębie centrum danych platformy Azure. Podwyższony poziom zabezpieczeń na poziomie warstwy sieci możesz zablokować kont magazynu danych big data do ich określonej sieci wirtualne (Vnet) i nadal używać klastrów HDInsight bezproblemowo uzyskać dostęp do przetwarzania tych danych.
+Usługa HDInsight obsługuje [punkty końcowe usługi sieci wirtualnej](../../virtual-network/virtual-network-service-endpoints-overview.md), które umożliwiają bezpieczne łączenie się z bazami danych platformy Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB i SQL. Po włączeniu punktu końcowego usługi Azure HDInsight ruch przepływów odbywa się za pośrednictwem zabezpieczonej trasy z centrum danych platformy Azure. Dzięki temu zwiększonemu poziomowi zabezpieczeń w warstwie sieciowej można zablokować konta magazynu danych Big Data do określonych sieci wirtualnych (sieci wirtualnych) i nadal używać klastrów usługi HDInsight bezproblemowo, aby uzyskać dostęp do tych danych i ich przetworzyć.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 - [Punkty końcowe usługi dla sieci wirtualnej](../../virtual-network/virtual-network-service-endpoints-overview.md)
-- [Podnieś poziom zabezpieczeń HDInsight z punktami końcowymi usługi](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
+- [Rozszerzanie zabezpieczeń usługi HDInsight za pomocą punktów końcowych usług](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
 
-## <a name="connect-hdinsight-to-the-on-premises-network"></a>HDInsight nawiązać połączenie z siecią lokalną
+## <a name="connect-hdinsight-to-the-on-premises-network"></a>Łączenie usługi HDInsight z siecią lokalną
 
-HDInsight można połączyć w sieci lokalnej za pomocą usługi Azure Virtual Networks i bramy sieci VPN. Poniższe kroki, może służyć do ustanowienia połączenia:
+Usługa HDInsight może być połączona z siecią lokalną przy użyciu sieci wirtualnych platformy Azure i bramy sieci VPN. Następujące kroki mogą służyć do ustanowienia łączności:
 
-- Użyj HDInsight w sieci wirtualnej platformy Azure, który jest połączony z siecią lokalną.
-- Konfigurowanie rozpoznawania nazw DNS między siecią wirtualną i siecią lokalną.
-- Skonfiguruj sieciowe grupy zabezpieczeń lub tras zdefiniowanych przez użytkownika (UDR) do kontrolowania ruchu sieciowego.
+- Użyj usługi HDInsight w usłudze Azure Virtual Network, która ma łączność z siecią lokalną.
+- Skonfiguruj rozpoznawanie nazw DNS między siecią wirtualną a siecią lokalną.
+- Skonfiguruj sieciowe grupy zabezpieczeń lub trasy zdefiniowane przez użytkownika (UDR), aby kontrolować ruch sieciowy.
 
-Aby uzyskać więcej informacji, zobacz artykuł [Connect HDInsight z siecią lokalną](../connect-on-premises-network.md)
+Aby uzyskać więcej informacji, zobacz artykuł [łączenie usługi HDInsight z siecią lokalną](../connect-on-premises-network.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przeczytaj następny artykuł w tej serii:
+Przeczytaj następny artykuł z tej serii:
 
-- [Magazyn najlepsze rozwiązania dotyczące lokalnych do migracji usługi Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-storage.md)
+- [Najlepsze rozwiązania dotyczące magazynu dla migracji lokalnej na Azure HDInsight Hadoop migrację](apache-hadoop-on-premises-migration-best-practices-storage.md)

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: 41a15a29798953cb32029b7c4d1167020074e49f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/22/2019
+ms.openlocfilehash: cfab883f9b9b063bd51b9fdb7306d45371449180
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60760078"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406096"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Szybki start: Tworzenie klastra i bazy danych usługi Azure Data Explorer
 
@@ -41,20 +41,21 @@ W grupie zasobów platformy Azure utwórz klaster usługi Azure Data Explorer, k
 
 1. Wyszukaj pozycję *Azure Data Explorer*.
 
-   ![Wyszukiwania zasobów](media/create-cluster-database-portal/search-resources.png)
+   ![Wyszukaj zasoby](media/create-cluster-database-portal/search-resources.png)
 
 1. W obszarze **Azure Data Explorer** w dolnej części ekranu wybierz pozycję **Utwórz**.
 
 1. Wypełnij podstawowe szczegóły klastra, korzystając z poniższych informacji.
 
-   ![Formularz tworzenia klastra](media/create-cluster-database-portal/create-cluster-form.png)
+   ![Formularz tworzenia klastra](media/create-cluster-database-portal/create-cluster-form2.png)
 
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | Subskrypcja | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla klastra.|
-    | Grupa zasobów | *test-resource-group* | Użyj istniejącej grupy zasobów lub utwórz nową. |
-    | Nazwa klastra | Unikatowa nazwa klastra | Wybierz unikatową nazwę, która identyfikuje Twój klaster. Na przykład *mydataexplorercluster*. Do podanej nazwy klastra jest dołączana nazwa domeny *[region].kusto.windows.net*. Nazwa może zawierać tylko małe litery i cyfry. Musi zawierać od 3 do 22 znaków.
-    | Lokalizacja | *Zachodnie stany USA* | Na potrzeby tego przewodnika Szybki start wybierz wartość *Zachodnie stany USA*. W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom.
+    | Subscription | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla klastra.|
+    | Resource group | Twoja grupa zasobów | Użyj istniejącej grupy zasobów lub utwórz nową. |
+    | Nazwa klastra | Unikatowa nazwa klastra | Wybierz unikatową nazwę, która identyfikuje Twój klaster. Do podanej nazwy klastra jest dołączana nazwa domeny *[region].kusto.windows.net*. Nazwa może zawierać tylko małe litery i cyfry. Musi zawierać od 4 do 22 znaków.
+    | Region | *Zachodnie stany USA* lub *zachodnie stany USA 2* | Wybierz pozycję *zachodnie stany USA* lub *zachodnie stany USA 2* (Jeśli używane są strefy dostępności) dla tego przewodnika Szybki Start. W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom.
+    | Strefy dostępności | *1*, *2*i/lub *3* | W obszarze obszary obsługi nadmiarowości stref wybierz, w których strefach będą znajdować się wystąpienia (opcjonalnie). Węzły klastra są tworzone domyślnie w tym samym centrum danych. Użyj [strefy dostępności platformy Azure](/azure/availability-zones/az-overview) , aby umieścić wystąpienia klastra w różnych strefach dostępności w tym samym regionie. Wybierając kilka stref dostępności, można wyeliminować single point of failure i zapewnić wysoką dostępność. 
     | Specyfikacja środowiska obliczeniowego | *D13_v2* | Na potrzeby tego przewodnika Szybki start wybierz najtańszą specyfikację. W przypadku systemu produkcyjnego wybierz specyfikację, która najlepiej odpowiada Twoim potrzebom.
     | | |
 
@@ -62,7 +63,7 @@ W grupie zasobów platformy Azure utwórz klaster usługi Azure Data Explorer, k
 
 1. Po zakończeniu wdrażania wybierz pozycję **Przejdź do zasobu**.
 
-    ![Przechodzenie do zasobu](media/create-cluster-database-portal/notification-resource.png)
+    ![Przejdź do zasobu](media/create-cluster-database-portal/notification-resource.png)
 
 ## <a name="create-a-database"></a>Tworzenie bazy danych
 

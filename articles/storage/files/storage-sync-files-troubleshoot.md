@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 07/16/2019
+ms.date: 07/24/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2cf0093d08c37c0941e86f9fc82b864aea14ebfe
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b4df5f58fc91d30c734800e531e4bd7c129d58b2
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327090"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489588"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -22,7 +22,7 @@ Ten artykuł ma na celu pomoc w rozwiązywaniu problemów i rozwiązywaniu probl
 
 1. [Forum usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
-3. Pomoc techniczna firmy Microsoft. Aby utworzyć nowe żądanie obsługi, w Azure Portal na karcie **Pomoc** wybierz przycisk **Pomoc i obsługa techniczna** , a następnie wybierz pozycję **nowe żądanie obsługi**.
+3. pomocą techniczną firmy Microsoft. Aby utworzyć nowe żądanie obsługi, w Azure Portal na karcie **Pomoc** wybierz przycisk **Pomoc i obsługa techniczna** , a następnie wybierz pozycję **nowe żądanie obsługi**.
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Mam problem z Azure File Sync na serwerze (synchronizacja, Obsługa warstw w chmurze itp.). Czy należy usunąć i ponownie utworzyć mój punkt końcowy serwera?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -42,13 +42,22 @@ W przypadku próby zainstalowania agenta synchronizacji na kontrolerze domeny Ac
 
 Aby rozwiązać ten problem, Przenieś rolę PDC na inny kontroler domeny z systemem Windows Server 2012 R2 lub nowszy, a następnie Zainstaluj synchronizację.
 
-<a id="server-registration-missing"></a>**Serwer nie znajduje się na liście zarejestrowanych serwerów w Azure Portal**  
-Jeśli serwer nie znajduje się na liście **zarejestrowanych serwerów** dla usługi synchronizacji magazynu:
-1. Zaloguj się na serwerze, który chcesz zarejestrować.
-2. Otwórz Eksploratora plików, a następnie przejdź do katalogu instalacyjnego agenta synchronizacji magazynu (domyślna lokalizacja to C:\Program Files\Azure\StorageSyncAgent). 
+<a id="server-registration-prerequisites"></a>**Rejestracja serwera wyświetla następujący komunikat: Brak "wymagań wstępnych"**
+
+Ten komunikat jest wyświetlany, gdy nie zainstalowano modułu PowerShell AZ lub AzureRM w programie PowerShell 5,1. 
+
+> [!Note]  
+> ServerRegistration. exe nie obsługuje programu PowerShell 6. x. Aby zarejestrować serwer, można użyć polecenia cmdlet Register-AzStorageSyncServer w programie PowerShell 6. x.
+
+Aby zainstalować moduł AZ lub AzureRM w programie PowerShell 5,1, wykonaj następujące czynności:
+
+1. Wpisz **PowerShell** w wierszu polecenia z podwyższonym poziomem uprawnień i naciśnij klawisz ENTER.
+2. Zainstaluj najnowszy moduł AZ lub AzureRM, postępując zgodnie z dokumentacją:
+    - [AZ module (wymaga programu .NET 4.7.2)](https://go.microsoft.com/fwlink/?linkid=2062890)
+    - [Moduł AzureRM]( https://go.microsoft.com/fwlink/?linkid=856959)
 3. Uruchom program ServerRegistration. exe i Ukończ pracę kreatora, aby zarejestrować serwer w usłudze synchronizacji magazynu.
 
-<a id="server-already-registered"></a>**Azure File Sync podczas instalacji agenta na serwerze jest wyświetlany następujący komunikat: "Ten serwer jest już zarejestrowany"** 
+<a id="server-already-registered"></a>**Rejestracja serwera wyświetla następujący komunikat: "Ten serwer jest już zarejestrowany"** 
 
 ![Zrzut ekranu okna dialogowego rejestracji serwera z komunikatem o błędzie "serwer jest już zarejestrowany"](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
@@ -67,6 +76,12 @@ Reset-StorageSyncServer
 <a id="web-site-not-trusted"></a>**Po zarejestrowaniu serwera widzę wiele odpowiedzi "niezaufane witryny sieci Web". Dlaczego?**  
 Ten problem występuje, gdy zasady **zabezpieczeń programu Internet Explorer** są włączone podczas rejestracji serwera. Aby uzyskać więcej informacji o tym, jak prawidłowo wyłączyć **ulepszone zasady zabezpieczeń programu Internet Explorer** , zobacz [Przygotowywanie systemu Windows Server do użycia z programem Azure File Sync](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) i [wdrażanie Azure File Sync](storage-sync-files-deployment-guide.md).
 
+<a id="server-registration-missing"></a>**Serwer nie znajduje się na liście zarejestrowanych serwerów w Azure Portal**  
+Jeśli serwer nie znajduje się na liście **zarejestrowanych serwerów** dla usługi synchronizacji magazynu:
+1. Zaloguj się na serwerze, który chcesz zarejestrować.
+2. Otwórz Eksploratora plików, a następnie przejdź do katalogu instalacyjnego agenta synchronizacji magazynu (domyślna lokalizacja to C:\Program Files\Azure\StorageSyncAgent). 
+3. Uruchom program ServerRegistration. exe i Ukończ pracę kreatora, aby zarejestrować serwer w usłudze synchronizacji magazynu.
+
 ## <a name="sync-group-management"></a>Zarządzanie grupami synchronizacji
 <a id="cloud-endpoint-using-share"></a>**Tworzenie punktu końcowego w chmurze kończy się niepowodzeniem z powodu tego błędu: „Określony udział plików platformy Azure jest już używany przez inny punkt końcowy w chmurze”**  
 Ten problem występuje, gdy udział plików platformy Azure jest już używany przez inny punkt końcowy w chmurze. 
@@ -84,9 +99,9 @@ Jeśli zobaczysz ten komunikat i udział plików platformy Azure aktualnie nie j
 Ten problem występuje, jeśli konto użytkownika nie ma wystarczających uprawnień do utworzenia punktu końcowego w chmurze. 
 
 Aby utworzyć punkt końcowy w chmurze, konto użytkownika musi mieć następujące uprawnienia do autoryzacji firmy Microsoft:  
-* Przeczytaj Pobranie definicji roli
-* Prawem Utwórz lub zaktualizuj definicję roli niestandardowej
-* Przeczytaj Pobranie przypisania roli
+* Przeczytaj Pobierz definicję roli
+* Prawem Utwórz lub zaktualizuj niestandardową definicję roli
+* Przeczytaj Pobierz przypisanie roli
 * Prawem Utwórz przypisanie roli
 
 Następujące wbudowane role mają wymagane uprawnienia do autoryzacji firmy Microsoft:  
@@ -153,7 +168,7 @@ Punkt końcowy serwera może nie rejestrować aktywności synchronizacji z nast�
 > [!Note]  
 > Jeśli stan serwera w bloku zarejestrowane serwery jest "pojawia się w trybie offline", wykonaj kroki opisane w [punkcie końcowym serwera ma stan kondycji "brak działania" lub "oczekiwanie", a stan serwera w bloku zarejestrowane serwery to "pojawia się w trybie offline"](#server-endpoint-noactivity) .
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Synchronizuj
 <a id="afs-change-detection"></a>**Jeśli plik został utworzony bezpośrednio w udziale plików platformy Azure za pośrednictwem protokołu SMB lub za pośrednictwem portalu, jak długo trwa synchronizacja pliku z serwerami w grupie synchronizacji?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -245,15 +260,16 @@ Aby wyświetlić te błędy, uruchom skrypt programu PowerShell **FileSyncErrors
 | WYNIK | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowanie |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Plik warstwowy na serwerze nie jest dostępny. Ten problem występuje, gdy plik warstwowy nie został odwywoływany przed usunięciem punktu końcowego serwera. | Aby rozwiązać ten problem, zobacz [pliki warstwowe nie są dostępne na serwerze po usunięciu punktu końcowego serwera](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ folder zależny nie jest jeszcze zsynchronizowany. Ten element zostanie zsynchronizowany po zsynchronizowaniu zależnych zmian. | Nie jest wymagana żadna akcja. |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ folder zależny nie jest jeszcze zsynchronizowany. Ten element zostanie zsynchronizowany po zsynchronizowaniu zależnych zmian. | Żadna akcja nie jest wymagana. |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę podanego pliku lub katalogu. Aby uzyskać więcej informacji, zobacz [Obsługa nieobsługiwanych znaków](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używany. | Nie jest wymagana żadna akcja. Azure File Sync tworzy tymczasową migawkę usługi VSS raz dziennie na serwerze w celu synchronizowania plików, które mają otwarte dojścia. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Plik został zmieniony, ale zmiana nie została jeszcze wykryta przez synchronizację. Po wykryciu tej zmiany synchronizacja zostanie odzyskana. | Nie jest wymagana żadna akcja. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używany. | Żadna akcja nie jest wymagana. Azure File Sync tworzy tymczasową migawkę usługi VSS raz dziennie na serwerze w celu synchronizowania plików, które mają otwarte dojścia. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Plik został zmieniony, ale zmiana nie została jeszcze wykryta przez synchronizację. Po wykryciu tej zmiany synchronizacja zostanie odzyskana. | Żadna akcja nie jest wymagana. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Nie można zsynchronizować pliku, ponieważ osiągnięto limit udziałów plików platformy Azure. | Aby rozwiązać ten problem, zobacz sekcję [Limit magazynu udziału plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) w przewodniku rozwiązywania problemów. |
 | 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Plik jest szyfrowany za pomocą nieobsługiwanego rozwiązania (na przykład NTFS EFS). | Odszyfruj plik i użyj obsługiwanego rozwiązania szyfrowania. Aby uzyskać listę rozwiązań pomocy technicznej, zobacz sekcję [rozwiązania szyfrowania](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) w podręczniku planowania. |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | Ten błąd może wystąpić z następujących powodów: Plik ma stan oczekiwania na usunięcie lub plik znajduje się w folderze replikacji tylko do odczytu systemu plików DFS. | Jeśli plik jest w stanie oczekiwania na usunięcie, plik zostanie usunięty po zamknięciu wszystkich dojść do otwartego pliku. Jeśli plik znajduje się w folderze replikacji tylko do odczytu systemu plików DFS, synchronizacja Azure Files nie obsługuje punktów końcowych serwera w folderach replikacji tylko do odczytu systemu plików DFS-R. Aby uzyskać więcej informacji, zobacz [Przewodnik planowania](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) . |
-| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używany. | Nie jest wymagana żadna akcja. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi zostać ponownie zsynchronizowany. | Nie jest wymagana żadna akcja. |
+| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Plik znajduje się w folderze replikacji tylko do odczytu systemu plików DFS. | Plik znajduje się w folderze replikacji tylko do odczytu systemu plików DFS. Synchronizacja Azure Files nie obsługuje punktów końcowych serwera w folderach replikacji tylko do odczytu systemu plików DFS-R. Aby uzyskać więcej informacji, zobacz [Przewodnik planowania](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) . |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | Plik ma stan oczekiwania na usunięcie | Plik zostanie usunięty po zamknięciu wszystkich dojść do otwartego pliku. |
+| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używany. | Żadna akcja nie jest wymagana. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi on zostać ponownie zsynchronizowany. | Żadna akcja nie jest wymagana. |
 
 
 #### <a name="handling-unsupported-characters"></a>Obsługa nieobsługiwanych znaków
@@ -321,12 +337,12 @@ Nie jest wymagana żadna akcja. Po przywróceniu pliku lub udziału plików (pun
 | **HRESULT** | 0x80c8305f |
 | **HRESULT (dziesiętny)** | -2134364065 |
 | **Ciąg błędu** | ECS_E_CANNOT_ACCESS_EXTERNAL_STORAGE_ACCOUNT |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
 Ten błąd występuje, ponieważ agent Azure File Sync nie może uzyskać dostępu do udziału plików platformy Azure, który może być spowodowany tym, że udział plików platformy Azure lub konto magazynu, na którym się znajduje, już nie istnieje. Ten błąd można rozwiązać, wykonując następujące czynności:
 
 1. [Sprawdź, czy konto magazynu istnieje.](#troubleshoot-storage-account)
-2. [Upewnij się, że konto magazynu nie zawiera żadnych reguł sieci.](#troubleshoot-network-rules)
+2. [Sprawdź, czy ustawienia zapory i sieci wirtualnej na koncie magazynu są skonfigurowane prawidłowo (jeśli są włączone)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 3. [Upewnij się, że udział plików platformy Azure już istnieje.](#troubleshoot-azure-file-share)
 4. [Upewnij się, że Azure File Sync ma dostęp do konta magazynu.](#troubleshoot-rbac)
 
@@ -337,7 +353,7 @@ Ten błąd występuje, ponieważ agent Azure File Sync nie może uzyskać dostę
 | **HRESULT** | 0x80C83060 |
 | **HRESULT (dziesiętny)** | -2134364064 |
 | **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
 1. Sprawdź, czy można rozpoznać nazwę DNS magazynu z serwera.
 
@@ -345,7 +361,7 @@ Ten błąd występuje, ponieważ agent Azure File Sync nie może uzyskać dostę
     Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 443
     ```
 2. [Sprawdź, czy konto magazynu istnieje.](#troubleshoot-storage-account)
-3. [Upewnij się, że konto magazynu nie zawiera żadnych reguł sieci.](#troubleshoot-network-rules)
+3. [Sprawdź, czy ustawienia zapory i sieci wirtualnej na koncie magazynu są skonfigurowane prawidłowo (jeśli są włączone)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
 <a id="-1906441138"></a>**Synchronizacja nie powiodła się z powodu problemu z bazą danych synchronizacji.**  
 
@@ -402,7 +418,7 @@ Jeśli udział jest pełny, a limit przydziału nie jest ustawiony, jednym z mo�
 | **HRESULT** | 0x80c86030 |
 | **HRESULT (dziesiętny)** | -2134351824 |
 | **Ciąg błędu** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
 Ten błąd występuje, gdy udział plików platformy Azure jest niedostępny. Aby rozwiązać problem:
 
@@ -418,7 +434,7 @@ Jeśli udział plików platformy Azure został usunięty, należy utworzyć nowy
 | **HRESULT** | 0x80C83076 |
 | **HRESULT (dziesiętny)** | -2134364042 |
 | **Ciąg błędu** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, gdy subskrypcja platformy Azure jest zawieszona. Synchronizacja zostanie ponownie włączona po przywróceniu subskrypcji platformy Azure. Zobacz [Dlaczego moja subskrypcja platformy Azure jest wyłączona i jak ją uaktywnić?](../../billing/billing-subscription-become-disable.md) Aby uzyskać więcej informacji.
 
@@ -429,14 +445,9 @@ Ten błąd występuje, gdy subskrypcja platformy Azure jest zawieszona. Synchron
 | **HRESULT** | 0x80c8306c |
 | **HRESULT (dziesiętny)** | -2134364052 |
 | **Ciąg błędu** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
-Ten błąd występuje, gdy udział plików platformy Azure jest niedostępny z powodu zapory konta magazynu lub konta magazynu należy do sieci wirtualnej. Azure File Sync nie ma jeszcze obsługi dla tej funkcji. Aby rozwiązać problem:
-
-1. [Sprawdź, czy konto magazynu istnieje.](#troubleshoot-storage-account)
-2. [Upewnij się, że konto magazynu nie zawiera żadnych reguł sieci.](#troubleshoot-network-rules)
-
-Usuń te reguły, aby rozwiązać ten problem. 
+Ten błąd występuje, gdy udział plików platformy Azure jest niedostępny z powodu zapory konta magazynu lub konta magazynu należy do sieci wirtualnej. Sprawdź, czy ustawienia zapory i sieci wirtualnej na koncie magazynu są skonfigurowane prawidłowo. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień zapory i sieci wirtualnej](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings). 
 
 <a id="-2134375911"></a>**Synchronizacja nie powiodła się z powodu problemu z bazą danych synchronizacji.**  
 
@@ -477,7 +488,7 @@ Ten błąd może wystąpić, jeśli organizacja korzysta z serwera proxy protoko
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Ustawienie tej wartości rejestru powoduje, że Agent Azure File Sync akceptuje każdy Lokalny zaufany certyfikat SSL podczas transferu danych między serwerem a usługą w chmurze.
+Ustawiając tę wartość rejestru, agent usługi Azure File Sync zaakceptuje każdy lokalnie zaufany certyfikat SSL podczas transferu danych między serwerem a usługą w chmurze.
 
 <a id="-2147012894"></a>**Nie można nawiązać połączenia z usługą.**  
 
@@ -486,7 +497,7 @@ Ustawienie tej wartości rejestru powoduje, że Agent Azure File Sync akceptuje 
 | **HRESULT** | 0x80072EE2 |
 | **HRESULT (dziesiętny)** | -2147012894 |
 | **Ciąg błędu** | WININET_E_TIMEOUT |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -553,7 +564,7 @@ Ten błąd występuje, ponieważ zmiany udziału plików platformy Azure są wpr
 | **HRESULT** | 0x80c8023b |
 | **HRESULT (dziesiętny)** | -2134364145 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 | | |
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (dziesiętny)** | -2134375908 |
@@ -577,9 +588,9 @@ W przypadkach, gdy występuje wiele na błędy synchronizacji plików, sesja syn
 | **HRESULT** | 0x80c80019 |
 | **HRESULT (dziesiętny)** | -2134376423 |
 | **Ciąg błędu** | ECS_E_SYNC_INVALID_PATH |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
-Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i nie jest punktem ponownej analizy lub istniejącym punktem końcowym serwera.
+Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i nie jest punktem ponownej analizy ani istniejącym punktem końcowym serwera.
 
 <a id="-2134375817"></a>**Synchronizacja nie powiodła się, ponieważ wersja sterownika filtru nie jest zgodna z wersją agenta**  
 
@@ -588,7 +599,7 @@ Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i
 | **HRESULT** | 0x80C80277 |
 | **HRESULT (dziesiętny)** | -2134375817 |
 | **Ciąg błędu** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
 Ten błąd występuje, ponieważ załadowana wersja sterownika filtru warstwy chmury (StorageSync. sys) nie jest zgodna z usługą agenta synchronizacji magazynu (FileSyncSvc). Jeśli Agent Azure File Sync został uaktualniony, należy ponownie uruchomić serwer, aby zakończyć instalację. Jeśli błąd będzie nadal występował, Odinstaluj agenta, uruchom ponownie serwer i ponownie zainstaluj agenta Azure File Sync.
 
@@ -613,6 +624,33 @@ Ten błąd występuje, ponieważ usługa Azure File Sync jest niedostępna. Ten 
 | **Wymagana korekta** | Nie |
 
 Ten błąd występuje z powodu wewnętrznego problemu z bazą danych synchronizacji. Ten błąd zostanie automatycznie rozwiązany, gdy Azure File Sync przy ponownych próbach synchronizacji. Jeśli ten błąd będzie nadal trwać przez dłuższy czas, Utwórz żądanie pomocy technicznej, a my skontaktujemy się z Tobą, aby pomóc w rozwiązaniu tego problemu.
+
+<a id="-2134364024"></a>**Synchronizacja nie powiodła się z powodu zmiany w dzierżawie Azure Active Directory**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83088 |
+| **HRESULT (dziesiętny)** | -2134364024 | 
+| **Ciąg błędu** | ECS_E_INVALID_AAD_TENANT |
+| **Wymagana korekta** | Yes |
+
+Ten błąd występuje, ponieważ Azure File Sync nie obsługuje obecnie przeniesienia subskrypcji do innej dzierżawy Azure Active Directoryowej.
+ 
+Aby rozwiązać ten problem, wykonaj jedną z następujących czynności:
+
+- Opcja 1 (zalecana): Przenoszenie subskrypcji z powrotem do oryginalnej dzierżawy Azure Active Directory
+- Opcja 2: Usuń i ponownie utwórz bieżącą grupę synchronizacji. Jeśli włączono obsługę warstw w chmurze w punkcie końcowym serwera, Usuń grupę synchronizacji, a następnie wykonaj kroki opisane w [sekcji Obsługa warstw w chmurze]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) , aby usunąć oddzielone pliki warstwowe przed ponownym utworzeniem grup synchronizacji. 
+
+<a id="-2134364010"></a>**Synchronizacja nie powiodła się z powodu nieskonfigurowania wyjątku zapory i sieci wirtualnej**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83096 |
+| **HRESULT (dziesiętny)** | -2134364010 | 
+| **Ciąg błędu** | ECS_E_MGMT_STORAGEACLSBYPASSNOTSET |
+| **Wymagana korekta** | Yes |
+
+Ten błąd występuje, gdy ustawienia zapory i sieci wirtualnej są włączone na koncie magazynu, a wyjątek "Zezwalaj na dostęp zaufanych usług firmy Microsoft do tego konta magazynu" nie jest zaznaczony. Aby rozwiązać ten problem, wykonaj kroki opisane w sekcji [Konfigurowanie ustawień zapory i sieci wirtualnej](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) w Podręczniku wdrażania.
 
 ### <a name="common-troubleshooting-steps"></a>Typowe kroki rozwiązywania problemów
 <a id="troubleshoot-storage-account"></a>**Sprawdź, czy konto magazynu istnieje.**  
@@ -694,22 +732,6 @@ $storageAccount = Get-AzStorageAccount | Where-Object {
 
 if ($storageAccount -eq $null) {
     throw [System.Exception]::new("The storage account referenced in the cloud endpoint does not exist.")
-}
-```
----
-
-<a id="troubleshoot-network-rules"></a>**Upewnij się, że konto magazynu nie zawiera żadnych reguł sieci.**  
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-1. Na koncie magazynu wybierz pozycję **zapory i sieci wirtualne** po lewej stronie konta magazynu.
-2. Na koncie magazynu należy wybrać przycisk radiowy **Zezwalaj na dostęp ze wszystkich sieci** .
-    ![Zrzut ekranu przedstawiający wyłączoną zaporę konta magazynu i reguły sieciowe.](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
-
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
-```powershell
-if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
-    [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
-    throw [System.Exception]::new("The storage account referenced contains network " + `
-        "rules which are not currently supported by Azure File Sync.")
 }
 ```
 ---

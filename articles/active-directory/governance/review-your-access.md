@@ -1,9 +1,9 @@
 ---
-title: Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub aplikacjami w programie - przeglądów dostępu w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przeglądać dostępu do grup lub aplikacji w przeglądów dostępu w usłudze Azure Active Directory.
+title: Przejrzyj dostęp do swoich grup lub aplikacji w przeglądach dostępu — Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak przejrzeć własny dostęp do grup lub aplikacji w Azure Active Directory przeglądy dostępu.
 services: active-directory
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,79 +12,79 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 05/21/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f12255bf14ca424a8a79107e7ca8e403552b62
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d4b48e035476e5381104b442f87dcac03ac11778
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471744"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499676"
 ---
-# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub przeglądów dostępu dla aplikacji w usłudze Azure AD
+# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Przejrzyj dostęp do swoich grup lub aplikacji w przeglądach dostępu usługi Azure AD
 
-Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostępem do grup ani aplikacji w usłudze Azure AD i przeglądy innych Microsoft Online Services, przy użyciu funkcji o nazwie dostępu usługi Azure AD.
+Azure Active Directory (Azure AD) upraszczają, w jaki sposób przedsiębiorstwa zarządzają dostępem do grup lub aplikacji w usłudze Azure AD i innych usługach online firmy Microsoft przy użyciu funkcji o nazwie przeglądy dostępu usługi Azure AD.
 
-W tym artykule opisano, jak przejrzeć swój własny dostęp do grupy lub aplikacji.
+W tym artykule opisano sposób przeglądania własnego dostępu do grupy lub aplikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Usługa Azure AD — warstwa Premium P2
 
-Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
+Aby uzyskać więcej informacji, zobacz, [którzy użytkownicy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="open-the-access-review"></a>Otwórz przegląd dostępu
 
-Pierwszym krokiem do wykonania przeglądu dostępu jest znaleźć i otworzyć Przegląd dostępu.
+Pierwszym krokiem do przeprowadzenia przeglądu dostępu jest znalezienie i otwarcie przeglądu dostępu.
 
-1. Poszukaj wiadomości e-mail od firmy Microsoft, która prosi o przegląd dostępu wszystkich użytkowników. Poniżej przedstawiono przykładową wiadomość e-mail przejrzeć swój dostęp do grupy.
+1. Poszukaj wiadomości e-mail od firmy Microsoft, która prosi o sprawdzenie dostępu. Oto przykładowa wiadomość e-mail, aby przejrzeć dostęp do grupy.
 
-    ![Przykładową wiadomością e-mail od firmy Microsoft, aby przejrzeć swój dostęp do grupy](./media/review-your-access/access-review-email.png)
+    ![Przykładowa wiadomość e-mail od firmy Microsoft w celu przejrzenia dostępu do grupy](./media/review-your-access/access-review-email.png)
 
-1. Kliknij przycisk **Przegląd dostępu wszystkich użytkowników** link umożliwiający otworzenie Przegląd dostępu.
+1. Kliknij link **Przejrzyj dostęp** , aby otworzyć przegląd dostępu.
 
-Jeśli nie masz wiadomości e-mail można znaleźć, przeglądy dostępu w usłudze usługi oczekujące, wykonując następujące kroki.
+Jeśli nie masz wiadomości e-mail, możesz znaleźć oczekujące przeglądy dostępu, wykonując następujące kroki.
 
-1. Zaloguj się do portalu MyApps pod adresem [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+1. Zaloguj się do portalu aplikacji w witrynie [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
-    ![Portalu MyApps, wyświetlanie listy aplikacji, do których masz uprawnienia do](./media/review-your-access/myapps-access-panel.png)
+    ![Portal aplikacji z listą aplikacji, do których masz uprawnienia](./media/review-your-access/myapps-access-panel.png)
 
 1. W prawym górnym rogu strony kliknij symbol użytkownika, który wyświetla Twoją nazwę i domyślną organizację. Jeśli na liście jest więcej niż jedna organizacja, wybierz tę, która zażądała przeglądu dostępu.
 
-1. W prawej części strony kliknij **przeglądów dostępu** Kafelek, aby wyświetlić listę przeglądów dostępu oczekujące.
+1. Po prawej stronie kliknij kafelek **przeglądy dostępu** , aby wyświetlić listę oczekujących przeglądów dostępu.
 
     Jeśli kafelek nie jest widoczny, nie ma żadnych przeglądów dostępu do wykonania dla tej organizacji i w tej chwili jest wymagana żadna akcja.
 
-    ![Lista przeglądów dostępu oczekujące dla aplikacji i grup](./media/review-your-access/access-reviews-list.png)
+    ![Lista oczekujących przeglądów dostępu dla aplikacji i grup](./media/review-your-access/access-reviews-list.png)
 
-1. Kliknij przycisk **Rozpocznij Przegląd** link dla przeglądu dostępu, którą chcesz wykonać.
+1. Kliknij link **Rozpocznij przegląd** , aby zapoznać się z przeglądem dostępu, który chcesz wykonać.
 
-## <a name="perform-the-access-review"></a>Przeprowadzenie przeglądu dostępu
+## <a name="perform-the-access-review"></a>Wykonaj przegląd dostępu
 
-Po otwarciu przeglądu dostępu, możesz zobaczyć dostępu.
+Po otwarciu przeglądu dostępu zobaczysz Twój dostęp.
 
-1. Przejrzeć swój dostęp i zdecyduj, czy nadal potrzebują dostępu.
+1. Przejrzyj dostęp i zdecyduj, czy nadal potrzebujesz dostępu.
 
-    Jeśli żądanie ma przeprowadzić przegląd dostępu dla innych osób, strona będzie wyglądała różne. Aby uzyskać więcej informacji, zobacz [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md).
+    Jeśli żądanie dotyczy przeglądania dostępu dla innych osób, strona będzie wyglądać inaczej. Aby uzyskać więcej informacji, zobacz [Przegląd dostępu do grup lub aplikacji](perform-access-review.md).
 
-    ![Przegląd otwartego dostępu z pytaniem, czy nadal potrzebujesz dostępu do grupy](./media/review-your-access/perform-access-review.png)
+    ![Otwórz przegląd dostępu z pytaniem, czy nadal potrzebujesz dostępu do grupy](./media/review-your-access/perform-access-review.png)
 
-1. Kliknij przycisk **tak** Aby zachować dostęp do usługi, lub kliknij przycisk **nie** o usunięcie Twojego dostępu.
+1. Kliknij przycisk **tak** , aby zachować dostęp, lub kliknij przycisk **nie** , aby usunąć dostęp.
 
-1. Jeśli klikniesz **tak**, może być konieczne określenie uzasadnienie w **Przyczyna** pole.
+1. Jeśli klikniesz przycisk **tak**, w polu **Przyczyna** może być konieczne określenie uzasadnienia.
 
-    ![Ukończono przeglądu dostępu z pytaniem, czy nadal potrzebujesz dostępu do grupy](./media/review-your-access/perform-access-review-submit.png)
+    ![Zakończono przegląd dostępu z pytaniem, czy nadal potrzebujesz dostępu do grupy](./media/review-your-access/perform-access-review-submit.png)
 
 1. Kliknij przycisk **Submit** (Prześlij).
 
-    Wybór zostanie przesłany i powrót do portalu MyApps.
+    Twój wybór zostanie przesłany i wrócisz do portalu aplikacji.
 
-    Jeśli chcesz zmienić odpowiedzi, ponownym otwarciu strony przeglądów dostępu i zaktualizować odpowiedzi. Twoja odpowiedź można zmienić w dowolnym momencie do czasu przeglądu dostępu została zakończona.
+    Jeśli chcesz zmienić odpowiedź, ponownie otwórz stronę przeglądy dostępu i zaktualizuj odpowiedź. Odpowiedź można zmienić w dowolnym momencie do momentu zakończenia przeglądu dostępu.
 
     > [!NOTE]
-    > Wskazano, już nie potrzebujesz dostępu, możesz nie zostaną usunięte natychmiast. Zostaną usunięte po zakończeniu przeglądu lub administrator zatrzymania przeglądu.
+    > Jeśli użytkownik wykazał, że nie potrzebujesz już dostępu, nie zostanie natychmiast usunięty. Użytkownik jest usuwany po zakończeniu przeglądu lub gdy administrator zatrzyma przegląd.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md)
+- [Ukończ przegląd dostępu do grup lub aplikacji](complete-access-review.md)

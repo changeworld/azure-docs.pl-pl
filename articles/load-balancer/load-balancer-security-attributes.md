@@ -1,6 +1,6 @@
 ---
-title: Atrybuty zabezpieczeń dla usługi Azure Load Balancer
-description: Lista kontrolna atrybutów zabezpieczeń do oceny usługi równoważenia obciążenia
+title: Atrybuty zabezpieczeń dla Azure Load Balancer
+description: Lista kontrolna atrybutów zabezpieczeń do oceny Load Balancer
 services: load-balancer
 author: msmbaldwin
 manager: barbkess
@@ -8,43 +8,43 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1892b918ed35221bc73d5070d5a73ecc359aa4c2
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 7d40618d5f4fde4a2b3fdfbde8a6de0a049ce3b6
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800083"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68440876"
 ---
-# <a name="security-attributes-for-azure-load-balancer"></a>Atrybuty zabezpieczeń dla usługi Azure Load Balancer
+# <a name="security-attributes-for-azure-load-balancer"></a>Atrybuty zabezpieczeń dla Azure Load Balancer
 
-W tym artykule opisano typowe atrybuty zabezpieczeń wbudowane w usłudze Azure Load Balancer.
+W tym artykule opisano atrybuty zabezpieczeń wbudowane w Azure Load Balancer.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Zapobiegawczych
+## <a name="preventative"></a>Zapobiegawczej
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie w spoczynku (na przykład szyfrowanie po stronie serwera, szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta i inne funkcje szyfrowania) | ND | |
-| Szyfrowanie podczas transferu (np. szyfrowanie usługi ExpressRoute w sieci wirtualnej, szyfrowania i szyfrowania sieć wirtualna-sieć wirtualna)| ND | |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| ND | |
-| Szyfrowanie na poziomie kolumny (Azure Data Services)| ND | |
-| Wywołania interfejsu API szyfrowane| Tak | Za pomocą [usługi Azure Resource Manager](../azure-resource-manager/index.yml). |
+| Szyfrowanie w spoczynku (takie jak szyfrowanie po stronie serwera, szyfrowanie po stronie serwera z kluczami zarządzanymi przez klienta i inne funkcje szyfrowania) | ND | |
+| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| ND | |
+| Obsługa kluczy szyfrowania (CMK, BYOK itp.)| ND | |
+| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |
+| Wywołania interfejsu API są szyfrowane| Yes | Za pośrednictwem [Azure Resource Manager](../azure-resource-manager/index.yml). |
 
-## <a name="network-segmentation"></a>Segmentacji sieci
+## <a name="network-segmentation"></a>Segmentacja sieci
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Obsługa punktu końcowego usługi| ND | |
+| Obsługa punktów końcowych usługi| ND | |
 | Obsługa iniekcji sieci wirtualnej| ND | . |
-| Izolacja sieci i Firewalling pomocy technicznej| ND |  |
+| Izolacja sieci i obsługa zapór| ND |  |
 | Obsługa tunelowania wymuszonego| ND | |
 
 ## <a name="detection"></a>Wykrywanie
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Yes | Zobacz [usługi Azure Monitor w dziennikach publiczny podstawowy moduł równoważenia obciążenia](load-balancer-monitor-log.md). |
+| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Zapoznaj się z [dziennikami Azure monitor dla publicznych Load Balancer podstawowych](load-balancer-monitor-log.md). |
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
@@ -58,11 +58,11 @@ W tym artykule opisano typowe atrybuty zabezpieczeń wbudowane w usłudze Azure 
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji| Tak | Zobacz [usługi Azure Monitor w dziennikach publiczny podstawowy moduł równoważenia obciążenia](load-balancer-monitor-log.md). |
-| Rejestrowanie płaszczyzny danych i inspekcji | ND |  |
+| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak | Zapoznaj się z [dziennikami Azure monitor dla publicznych Load Balancer podstawowych](load-balancer-monitor-log.md). |
+| Rejestrowanie i inspekcja płaszczyzny danych | ND |  |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| ND |  | 
+| Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| ND |  | 

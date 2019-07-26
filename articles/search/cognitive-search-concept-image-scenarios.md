@@ -1,6 +1,6 @@
 ---
-title: Przetwarzanie i wyodrębnianie tekstu z obrazów w usłudze wyszukiwania poznawczego — usługa Azure Search
-description: Przetwarzanie i wyodrębnianie tekstu oraz inne informacje z obrazów w cognitive Wyszukaj potoki w usłudze Azure Search.
+title: Przetwarzanie i Wyodrębnianie tekstu z obrazów w usłudze wyszukiwania poznawczego — Azure Search
+description: Przetwarzaj i Wyodrębniaj tekst oraz inne informacje z obrazów w potokach wyszukiwania poznawczego w Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,42 +11,42 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448447"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423010"
 ---
-#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzanie i wyodrębnianie informacji z obrazów w scenariuszach wyszukiwania kognitywnego
+#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzać i wyodrębniać informacje z obrazów w scenariuszach wyszukiwania poznawczego
 
-Usługa cognitive search ma kilka możliwości do pracy z obrazami i pliki obrazów. Podczas łamania dokumentów można używać *imageAction* parametru do wyodrębniania tekstu z zdjęć lub obrazów zawierających alfanumeryczne tekstu, na przykład wyraz "STOP" Logowanie zatrzymania. Inne scenariusze obejmują generowania tekstowa reprezentacja obrazu, takie jak "dandelion" zdjęcia dandelion lub kolor "żółty". Można również wyodrębnić metadane dotyczące obrazu, na przykład jego rozmiar.
+Wyszukiwanie poznawcze ma kilka możliwości pracy z obrazami i plikami obrazów. Podczas łamania dokumentu można użyć parametru *imageAction* , aby wyodrębnić tekst ze zdjęć lub zdjęć zawierających tekst alfanumeryczny, na przykład słowo "Stop" w znaku stopu. Inne scenariusze obejmują generowanie tekstowej reprezentacji obrazu, na przykład "Dandelion" dla Zdjęcia Dandelion lub koloru "żółty". Możesz również wyodrębnić metadane dotyczące obrazu, takie jak jego rozmiar.
 
-Ten artykuł obejmuje przetwarzania bardziej szczegółowo obrazów i znajdują się wskazówki dotyczące pracy z obrazów w usłudze wyszukiwania poznawczego potoku.
+W tym artykule omówiono przetwarzanie obrazów bardziej szczegółowo i przedstawiono wskazówki dotyczące pracy z obrazami w potoku wyszukiwania poznawczego.
 
 <a name="get-normalized-images"></a>
 
-## <a name="get-normalized-images"></a>Pobieranie znormalizowane obrazów
+## <a name="get-normalized-images"></a>Pobierz znormalizowane obrazy
 
-W ramach łamania dokumentów istnieje nowy zestaw parametrów konfiguracji indeksatora do obsługi plików obrazów lub obrazów osadzonych w plikach. Te parametry są używane do normalizacji obrazy do dalszego przetwarzania transmisji dla klientów. Normalizowanie obrazów sprawia, że jest ich bardziej jednolite. Duże obrazy zmieniany jest rozmiar do maksymalnej wysokości i szerokości, aby były w użyciu. W przypadku obrazów udostępniające metadane dotyczące orientacji obracanie obrazów jest uwzględniany pionowy ładowania. Korekty metadane są przechwytywane w typie złożonym utworzone dla każdego obrazu. 
+W ramach łamania dokumentów istnieje nowy zestaw parametrów konfiguracji indeksatora do obsługi plików obrazów lub obrazów osadzonych w plikach. Te parametry służą do normalizacji obrazów do dalszej obróbki podrzędnej. Normalizacja obrazów sprawia, że są one bardziej jednorodne. Rozmiar dużych obrazów jest zmieniany na maksymalną wysokość i szerokość, aby można było ich używać. W przypadku obrazów zapewniających zadawanie metadanych w orientacji obrót obrazu jest dostosowywany do ładowania pionowego. Korekty metadanych są przechwytywane w typie złożonym utworzonym dla każdego obrazu. 
 
-Nie można wyłączyć normalizacji obrazu. Umiejętności, które przechodzą przez obrazów oczekiwać, że obrazy znormalizowana. Włączenie normalizacji obrazu w indeksatorze, wymaga, że zestawu umiejętności jest dołączony do ten indeksator.
+Nie można wyłączyć normalizacji obrazu. Umiejętności, które iterą nad obrazami, oczekują znormalizowane obrazy. Włączenie normalizacji obrazu na indeksatorze wymaga dołączenia zestawu umiejętności do tego indeksatora.
 
 | Parametr konfiguracji | Opis |
 |--------------------|-------------|
-| imageAction   | Jeśli nie działania powinny zostać podjęte, gdy wystąpią obrazy osadzone lub pliki obrazów, należy ustawić na "none". <br/>Ustawienie "generateNormalizedImages" powoduje generowanie tablicę znormalizowane obrazów jako część łamania dokumentów.<br/>Ustawienie "generateNormalizedImagePerPage" Generowanie tablicę znormalizowane obrazów gdzie dla plików PDF w źródle danych, każda strona jest renderowany do jednego obrazu danych wyjściowych.  Funkcjonalność jest taka sama jak "generateNormalizedImages" dla typów plików innych niż PDF.<br/>Dla każdej opcji, która nie jest "none", obrazy będą widoczne w *normalized_images* pola. <br/>Wartość domyślna to "none". Ta konfiguracja jest tylko odpowiednie do obiektu blob źródła danych, gdy "dataToExtract" ma wartość "contentAndMetadata." <br/>Maksymalnie 1000 obrazów zostaną wyodrębnione z danego dokumentu. Jeśli istnieje więcej niż 1000 obrazów w dokumencie, zostaną wyodrębnione pierwsze 1000 i zostaną wygenerowane ostrzeżenie. |
-|  normalizedImageMaxWidth | Maksymalna szerokość (w pikselach) dla obrazów znormalizowane wygenerowanych. Wartość domyślna to 2000.|
-|  normalizedImageMaxHeight | Maksymalna wysokość (w pikselach) dla obrazów znormalizowane wygenerowanych. Wartość domyślna to 2000.|
+| imageAction   | Ustaw wartość "Brak", jeśli nie ma żadnej akcji, gdy zostaną napotkane obrazy osadzone lub pliki obrazów. <br/>Ustaw wartość "generateNormalizedImages", aby generować tablicę znormalizowanych obrazów w ramach łamania dokumentów.<br/>Ustaw wartość "generateNormalizedImagePerPage", aby wygenerować tablicę znormalizowanych obrazów, gdzie w przypadku plików PDF w źródle danych każda strona jest renderowana do jednego obrazu wyjściowego.  Funkcja jest taka sama jak "generateNormalizedImages" dla typów plików innych niż PDF.<br/>Dla każdej opcji, która nie jest "none", obrazy zostaną uwidocznione w polu *normalized_images* . <br/>Wartość domyślna to "Brak". Ta konfiguracja jest odnosi się tylko do źródeł danych obiektów blob, gdy wartość "dataToExtract" jest ustawiona na "contentAndMetadata". <br/>Co najwyżej 1000 obrazów zostanie wyodrębnionych z danego dokumentu. Jeśli w dokumencie znajduje się więcej niż 1000 obrazów, pierwsze 1000 zostanie wyodrębnione i zostanie wygenerowane ostrzeżenie. |
+|  normalizedImageMaxWidth | Maksymalna szerokość (w pikselach) dla wygenerowanych znormalizowanych obrazów. Wartość domyślna to 2000.|
+|  normalizedImageMaxHeight | Maksymalna wysokość (w pikselach) dla wygenerowanych znormalizowanych obrazów. Wartość domyślna to 2000.|
 
 > [!NOTE]
-> Jeśli ustawisz *imageAction* właściwość coś innego niż "none", nie będzie możliwe ustawienie *parsingMode* właściwość coś innego niż "default".  Możesz mogą ustawić tylko jedną z tych dwóch właściwości do wartości innych niż domyślne konfiguracji indeksatora.
+> Jeśli ustawisz właściwość *imageAction* na inną niż "none", nie będzie można ustawić właściwości przeanalizmode na wartość  inną niż "default".  W konfiguracji indeksatora można ustawić tylko jedną z tych dwóch właściwości na wartość inną niż domyślna.
 
-Ustaw **parsingMode** parametr `json` (do indeksowania każdy obiekt blob jako pojedynczy dokument) lub `jsonArray` (jeżeli obiektów blob zawierają tablice notacji JSON i potrzebny każdego elementu tablicy, powinien być traktowany jako oddzielny dokument).
+Ustaw parametr **analizymode** na `json` (Aby indeksować każdy obiekt BLOB jako pojedynczy dokument) lub `jsonArray` (jeśli obiekty blob zawierają tablice JSON, a każdy element tablicy ma być traktowany jako oddzielny dokument).
 
-Wartość domyślna pikseli 2000 znormalizowane obrazów maksymalną szerokość i wysokość opiera się na maksymalne rozmiary obsługiwane przez [umiejętności optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md) i [obrazu umiejętności analizy](cognitive-search-skill-image-analysis.md). Zwiększenie maksymalnych limitów przetwarzania może nie działać w przypadku większych obrazów.
+Domyślnie 2000 pikseli dla znormalizowanych obrazów Maksymalna szerokość i wysokość opiera się na maksymalnym rozmiarze obsługiwanym przez [umiejętność OCR](cognitive-search-skill-ocr.md) i [umiejętności analizy obrazu](cognitive-search-skill-image-analysis.md). W przypadku zwiększenia maksymalnych limitów przetwarzanie może zakończyć się niepowodzeniem na większych obrazach.
 
 
-Określ imageAction w swojej [definicja indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer) w następujący sposób:
+ImageAction można określić w [definicji indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer) w następujący sposób:
 
 ```json
 {
@@ -62,17 +62,17 @@ Określ imageAction w swojej [definicja indeksatora](https://docs.microsoft.com/
 }
 ```
 
-Gdy *imageAction* jest ustawiona na wartość innych następnie "none", nowy *normalized_images* pole będzie zawierać tablicę obrazów. Każdy obraz jest typ złożony, który ma następujące składowe:
+Gdy *imageAction* jest ustawiona na wartość inną niż "none", nowe pole *normalized_images* będzie zawierać tablicę obrazów. Każdy obraz jest typu złożonego, który ma następujące elementy członkowskie:
 
 | Element członkowski obrazu       | Opis                             |
 |--------------------|-----------------------------------------|
-| data               | Ciąg znormalizowane obrazu w formacie JPEG, zakodowany w formacie BASE64.   |
-| Szerokość              | Szerokość znormalizowane obrazu w pikselach. |
-| Wysokość             | Wysokość znormalizowane obrazu w pikselach. |
-| originalWidth      | Oryginalna szerokość obrazu przed normalizacji. |
-| originalHeight      | Oryginalna wysokość obrazu przed normalizacji. |
-| rotationFromOriginal |  Przeciwnie do ruchu wskazówek zegara obrotu w stopniach, który wystąpił, aby utworzyć obraz znormalizowana. Wartość z zakresu od 0 stopni do 360 stopni. W tym kroku czyta metadane z obrazu, który jest generowany przez aparat fotograficzny lub skaner. Zazwyczaj wielu 90 stopni. |
-| contentOffset |Przesunięcie znaku w polu zawartości, których obraz został wyodrębniony z. To pole dotyczy tylko plików przy użyciu obrazów osadzonych. |
+| data               | Zakodowany ciąg BASE64 standardowego obrazu w formacie JPEG.   |
+| Szerokość              | Szerokość znormalizowanego obrazu w pikselach. |
+| proporcj             | Wysokość znormalizowanego obrazu (w pikselach). |
+| originalWidth      | Oryginalna Szerokość obrazu przed normalizacją. |
+| originalHeight      | Oryginalna wysokość obrazu przed normalizacją. |
+| rotationFromOriginal |  Obrót w prawo w stopniach, które wystąpiły w celu utworzenia znormalizowanego obrazu. Wartość z przedziału od 0 stopni do 360 stopni. Ten krok odczytuje metadane z obrazu wygenerowanego przez aparat lub skaner. Zwykle jest to wielokrotność 90 stopni. |
+| contentOffset |Przesunięcie znaku w polu zawartości, z którego został wyodrębniony obraz. To pole jest stosowane tylko w przypadku plików z osadzonymi obrazami. |
 
  Przykładowa wartość *normalized_images*:
 ```json
@@ -89,33 +89,31 @@ Gdy *imageAction* jest ustawiona na wartość innych następnie "none", nowy *no
 ]
 ```
 
-## <a name="image-related-skills"></a>Umiejętności związane z obrazu
+## <a name="image-related-skills"></a>Umiejętność związana z obrazami
 
-Istnieją dwie wbudowane umiejętności poznawcze, które przyjmują obrazów jako dane wejściowe: [Optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md) i [obrazu analizy](cognitive-search-skill-image-analysis.md). 
+Istnieją dwie wbudowane umiejętności poznawcze, które pobierają obrazy jako dane wejściowe: Analiza [OCR](cognitive-search-skill-ocr.md) i [obraz](cognitive-search-skill-image-analysis.md). 
 
-Obecnie tych umiejętności działają tylko z obrazów wygenerowanych z kroku łamania dokumentów. W efekcie tylko obsługiwane dane wejściowe są `"/document/normalized_images"`.
+Obecnie te umiejętności działają tylko z obrazami wygenerowanymi przez krok krakinging dokumentu. W związku z tym jedynymi obsługiwanymi `"/document/normalized_images"`danymi wejściowymi są.
 
-### <a name="image-analysis-skill"></a>Umiejętności analizy obrazów
+### <a name="image-analysis-skill"></a>Umiejętność analizy obrazów
 
-[Umiejętności analizy obrazów](cognitive-search-skill-image-analysis.md) wyodrębnia bogaty zestaw funkcji visual na podstawie zawartości obrazu. Na przykład można generować podpis z obrazu, generowanie tagi lub zidentyfikować osobistości i charakterystycznych elementów krajobrazu.
+[Umiejętność analizy obrazów](cognitive-search-skill-image-analysis.md) wyodrębnia bogaty zestaw funkcji wizualnych opartych na zawartości obrazu. Na przykład można wygenerować podpis na podstawie obrazu, generować Tagi lub identyfikować osobistości i punkty orientacyjne.
 
-### <a name="ocr-skill"></a>Optyczne rozpoznawanie znaków umiejętności
+### <a name="ocr-skill"></a>Umiejętność OCR
 
-[Umiejętności optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md) umożliwia wyodrębnianie tekstu z plików obrazów, takie jak mapy bitowe, jpg i PNG. Można wyodrębnić, tekst oraz informacji o układzie. Informacje o układzie zapewnia obwiedni ciągi zidentyfikowane.
+[Umiejętność OCR](cognitive-search-skill-ocr.md) wyodrębnia tekst z plików obrazów, takich jak JPGs, PNGs i mapy bitowe. Można wyodrębnić tekst oraz informacje o układzie. Informacje o układzie zawierają granice pól dla każdego identyfikowanego ciągu.
 
-Umiejętności optyczne rozpoznawanie znaków, można wybrać algorytm używany do wykrywania tekstu do obrazów. Obecnie obsługuje dwa algorytmy, jeden dla drukowanego tekstu i inny dla tekstu odręcznego.
+## <a name="embedded-image-scenario"></a>Scenariusz obrazu osadzonego
 
-## <a name="embedded-image-scenario"></a>Scenariusz osadzony obraz
-
-Typowy scenariusz obejmuje, tworząc jeden ciąg zawierający całą zawartość pliku, tekst i tekstu początek obrazu, wykonując następujące czynności:  
+Typowy scenariusz polega na utworzeniu pojedynczego ciągu zawierającego całą zawartość pliku, zarówno tekstowej, jak i tekstu pierwotnego, wykonując następujące czynności:  
 
 1. [Wyodrębnij normalized_images](#get-normalized-images)
-1. Uruchamianie przy użyciu umiejętności optyczne rozpoznawanie znaków `"/document/normalized_images"` jako dane wejściowe
-1. Scal tekstowa reprezentacja tych obrazów z nieprzetworzony tekst wyodrębnione z pliku. Możesz użyć [scalania tekstu](cognitive-search-skill-textmerger.md) konsolidować zarówno fragmentów tekstu w jeden ciąg duże i umiejętności.
+1. Uruchamiaj umiejętność OCR `"/document/normalized_images"` przy użyciu jako danych wejściowych
+1. Scal tekstową reprezentację tych obrazów z nieprzetworzonym tekstem wyodrębnionym z pliku. Możesz użyć umiejętności [scalania tekstu](cognitive-search-skill-textmerger.md) , aby skonsolidować oba fragmenty tekstu w jeden duży ciąg.
 
-Tworzy następujące zestawu umiejętności przykład *merged_text* pole zawierające zawartości tekstowej dokumentu. Zawiera on również tekst OCRed ze wszystkich obrazów osadzonych. 
+Poniższy przykład zestawu umiejętności tworzy pole *merged_text* zawierające tekstową zawartość dokumentu. Zawiera również tekst OCRed z każdego osadzonego obrazu. 
 
-#### <a name="request-body-syntax"></a>Składnia treść żądania
+#### <a name="request-body-syntax"></a>Składnia treści żądania
 ```json
 {
   "description": "Extract text from images and merge with content text to produce merged_text",
@@ -166,15 +164,15 @@ Tworzy następujące zestawu umiejętności przykład *merged_text* pole zawiera
 }
 ```
 
-Teraz, gdy pole merged_text, możesz zamapować jako polu możliwym do przeszukania w definicji indeksatora. Całą zawartość plików, w tym tekstu, obrazów, można wyszukać.
+Teraz, gdy masz pole merged_text, możesz je zmapować jako pole z możliwością wyszukiwania w definicji indeksatora. Cała zawartość plików, w tym tekst obrazów, będzie można przeszukiwać.
 
-## <a name="visualize-bounding-boxes-of-extracted-text"></a>Wizualizuj blokujących pola wyodrębniony tekst
+## <a name="visualize-bounding-boxes-of-extracted-text"></a>Wizualizowanie pól powiązanych tekstu
 
-Innym typowym scenariuszem jest wizualizowanie informacji o układzie wyników wyszukiwania. Na przykład można wyróżnić, gdzie fragment tekstu można odnaleźć obrazu jako część wyników wyszukiwania.
+Inny typowy scenariusz przedstawia wizualizację informacji o układzie wyników wyszukiwania. Na przykład możesz chcieć zaznaczyć, gdzie fragment tekstu został znaleziony w obrazie jako część wyników wyszukiwania.
 
-Ponieważ krok optyczne rozpoznawanie znaków jest wykonywana na znormalizowaną obrazów, układ współrzędne są podawane w miejsce znormalizowane obrazu. Podczas wyświetlania obrazu znormalizowany, obecności współrzędne zwykle nie jest problemem, ale w niektórych sytuacjach możesz chcieć wyświetlić oryginalny obraz. W tym przypadku przekonwertować każdego współrzędnych punktu w układzie w oryginalnym układzie współrzędnych obrazu. 
+Ponieważ krok OCR jest wykonywany na znormalizowanych obrazach, współrzędne układu znajdują się w znormalizowanym miejscu obrazu. Podczas wyświetlania znormalizowanego obrazu, obecność współrzędnych nie jest ogólnie problemem, ale w niektórych sytuacjach może być konieczne wyświetlenie oryginalnego obrazu. W takim przypadku należy przekonwertować każdy punkt współrzędnej w układzie na oryginalny system współrzędnych obrazu. 
 
-Jako pomocnika Jeśli potrzebujesz do przekształcania znormalizowanych współrzędnych do oryginalnego przestrzeni współrzędnych, można użyć następującego algorytmu:
+Jako pomocnik, jeśli konieczne jest przekształcenie znormalizowanych współrzędnych do oryginalnej przestrzeni współrzędnych, można użyć następującego algorytmu:
 
 ```csharp
         /// <summary>
@@ -218,9 +216,9 @@ Jako pomocnika Jeśli potrzebujesz do przekształcania znormalizowanych współr
 ```
 
 ## <a name="see-also"></a>Zobacz także
-+ [Tworzenie indeksatora (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ [Analizowanie obrazu umiejętności](cognitive-search-skill-image-analysis.md)
-+ [Optyczne rozpoznawanie znaków umiejętności](cognitive-search-skill-ocr.md)
-+ [Umiejętności scalania tekstu](cognitive-search-skill-textmerger.md)
-+ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
-+ [Sposób mapowania pól wzbogacony](cognitive-search-output-field-mapping.md)
++ [Utwórz indeksator (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Analizowanie umiejętności obrazu](cognitive-search-skill-image-analysis.md)
++ [Umiejętność OCR](cognitive-search-skill-ocr.md)
++ [Umiejętność scalania tekstu](cognitive-search-skill-textmerger.md)
++ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Jak zmapować wzbogacone pola](cognitive-search-output-field-mapping.md)

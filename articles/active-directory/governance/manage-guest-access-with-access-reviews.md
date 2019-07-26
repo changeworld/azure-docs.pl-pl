@@ -1,10 +1,10 @@
 ---
-title: Zarządzanie dostępem gości za pomocą przeglądów dostępu — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Zarządzaj użytkowników-gości jako członkowie danej grupy lub przypisanych do aplikacji za pomocą przeglądów dostępu w usłudze Azure Active Directory
+title: Zarządzanie dostępem gościa za pomocą przeglądów dostępu — Azure Active Directory | Microsoft Docs
+description: Zarządzanie użytkownikami-gość jako członkami grupy lub przypisanymi do aplikacji przy użyciu Azure Active Directory przeglądy dostępu
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -13,113 +13,113 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 12/13/2018
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c896356b67de185c55396e98aa6bb2e61dd004d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a982b97bcef6a24f026bf6ad2943661db18d6af0
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472899"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499472"
 ---
-# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem gości za pomocą usługi Azure AD przeglądów dostępu
+# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem gościa za pomocą przeglądów dostępu w usłudze Azure AD
 
 
-Za pomocą usługi Azure Active Directory (Azure AD), możesz łatwo włączyć współpracy między granicami organizacji za pomocą [funkcji usługi Azure AD B2B](../b2b/what-is-b2b.md). Użytkowników-gości z innych dzierżaw może być [zaproszonych przez administratorów](../b2b/add-users-administrator.md) lub [innym użytkownikom](../b2b/what-is-b2b.md). Ta funkcja dotyczy także tożsamości społecznościowych, takich jak konta Microsoft.
+Dzięki usłudze Azure Active Directory (Azure AD) można łatwo włączyć współpracę w granicach organizacyjnych za pomocą [funkcji B2B usługi Azure AD](../b2b/what-is-b2b.md). Użytkownicy-Goście z innych dzierżawców mogą być [zapraszani przez administratorów](../b2b/add-users-administrator.md) lub [innych użytkowników](../b2b/what-is-b2b.md). Ta możliwość dotyczy również tożsamości społecznościowych, takich jak konta Microsoft.
 
-Możesz również można łatwo upewnij się, że użytkownicy-goście mają odpowiedni dostęp. Możesz poprosić gości, samodzielnie lub osobę podejmującą do wzięcia udziału w przeglądzie dostępu i ponowne certyfikowanie (lub potwierdzające) do dostępu gości. Na podstawie sugestii pochodzących z usługi Azure AD recenzenci mogą wyrazić opinię dotyczącą przedłużenia dostępu poszczególnych użytkowników. Po zakończeniu przeglądu dostępu można wprowadzić zmiany i usunięcie dostępu dla gości, którzy już go nie potrzebują.
+Można również łatwo upewnić się, że użytkownicy-Goście mają odpowiedni dostęp. Możesz polecić Gościom lub producentowi decyzji wziąć udział w przeglądzie dostępu i ponownie zatwierdzić (lub zaświadczyć) dostęp gościa. Na podstawie sugestii pochodzących z usługi Azure AD recenzenci mogą wyrazić opinię dotyczącą przedłużenia dostępu poszczególnych użytkowników. Po zakończeniu przeglądu dostępu można wprowadzić zmiany i usunąć dostęp dla Gości, którzy już nie potrzebują.
 
 > [!NOTE]
-> Ten dokument koncentruje się na przeglądu dostępu użytkowników-gości. Jeśli chcesz przeprowadzić przegląd dostępu wszystkich użytkowników, nie tylko gości, zobacz [zarządzanie dostępem użytkowników za pomocą przeglądów dostępu](manage-user-access-with-access-reviews.md). Jeśli chcesz przejrzeć członkostwo użytkowników w rolach administracyjnych, takich jak administrator globalny, zobacz [Rozpoczynanie przeglądu dostępu w usłudze Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md).
+> Ten dokument koncentruje się na sprawdzaniu dostępu użytkowników-Gości. Jeśli chcesz przejrzeć dostęp wszystkich użytkowników, a nie tylko do Gości, zobacz [Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu](manage-user-access-with-access-reviews.md). Jeśli chcesz przejrzeć członkostwo użytkowników w rolach administracyjnych, takich jak Administrator globalny, zobacz [Rozpocznij przegląd dostępu w Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Usługa Azure AD — warstwa Premium P2
 
-Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
+Aby uzyskać więcej informacji, zobacz, [którzy użytkownicy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
 
-## <a name="create-and-perform-an-access-review-for-guests"></a>Tworzenie i wykonywanie przeglądu dostępu dla gości
+## <a name="create-and-perform-an-access-review-for-guests"></a>Tworzenie i przeprowadzanie przeglądu dostępu dla Gości
 
-Po pierwsze, stanowiąc administrator globalny lub administrator użytkowników, przejdź do [strony zarządzania tożsamościami oraz](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) aby upewnić się, że przeglądy dostępu jest gotowy do Twojej organizacji.
+Najpierw jako Administrator globalny lub administrator użytkowników przejdź do [strony ładu zarządzania tożsamościami](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) , aby upewnić się, że przeglądy dostępu są gotowe dla Twojej organizacji.
 
-Usługa Azure AD umożliwia kilka scenariuszy dotyczących przeglądania użytkowników-gości.
+Usługa Azure AD umożliwia przeglądanie wielu scenariuszy użytkowników-Gości.
 
-Możesz przejrzeć albo:
+Możesz przejrzeć:
 
- - Grupa w usłudze Azure AD, który ma co najmniej jeden gości, jako elementy członkowskie.
- - Aplikację połączoną z usługą Azure AD, który ma co najmniej jednego użytkownika gościa do niej przypisany. 
+ - Grupa w usłudze Azure AD, która ma co najmniej jednego gościa jako członków.
+ - Aplikacja połączona z usługą Azure AD, do której jest przypisany co najmniej jeden użytkownik-Gość. 
 
-Następnie można zdecydować, czy poprosić każdego gościa, aby dokonać przeglądu własnego dostępu lub zadać co najmniej jednego użytkownika, aby zapoznać się z każdym gości.
+Następnie można zdecydować, czy poproszony każdy Gość ma sprawdzić własny dostęp, czy też polecić jednemu lub większej liczbie użytkowników przeglądanie dostępu do poszczególnych Gości.
 
- Scenariusze te zostały uwzględnione w poniższych sekcjach.
+ Te scenariusze zostały omówione w poniższych sekcjach.
 
-### <a name="ask-guests-to-review-their-own-membership-in-a-group"></a>Poproś gości, aby zapoznać się z ich członkostwa w grupie
+### <a name="ask-guests-to-review-their-own-membership-in-a-group"></a>Poproszenie gościów o przeglądanie własnych członkostw w grupie
 
-Przeglądy dostępu można użyć, aby upewnić się, że użytkownicy, którzy zostały zaproszone i dodane do grupy w dalszym ciągu muszą mieć dostęp. Możesz łatwo poprosić gości, aby zapoznać się z ich członkostwa w tej grupie.
+Za pomocą przeglądów dostępu można upewnić się, że użytkownicy, którzy zostali zaproszeni i dodawani do grupy, nadal potrzebują dostępu. Można łatwo zadawać Gościom możliwość przejrzenia ich własnego członkostwa w tej grupie.
 
-1. Aby utworzyć przeglądu dostępu dla grupy, wybierz pozycję Przegląd obejmujący tylko członków użytkowników-gości i elementy członkowskie zapoznaj się. Aby uzyskać więcej informacji, zobacz [tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md).
+1. Aby utworzyć przegląd dostępu dla grupy, wybierz pozycję przegląd, aby uwzględnić tylko członków-Gości Aby uzyskać więcej informacji, zobacz [Tworzenie przeglądu dostępu do grup lub aplikacji](create-access-review.md).
 
-2. Poproś każdego gościa, aby zapoznać się z ich członkostwa. Domyślnie każdy gościa, który zaakceptował zaproszenia otrzymuje wiadomość e-mail z usługi Azure AD z linkiem do przeglądu dostępu. Usługa Azure AD ma instrukcje dla gości na temat sposobu [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md).
+2. Poproszenie każdego gościa o przeglądanie własnych członkostw. Domyślnie każdy gość, który zaakceptował zaproszenie, otrzymuje wiadomość e-mail z usługi Azure AD z linkiem do przeglądu dostępu. Usługa Azure AD zawiera instrukcje dla Gości, jak [przeglądać dostęp do grup lub aplikacji](perform-access-review.md).
 
-3. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md).
+3. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu do grup lub aplikacji](complete-access-review.md).
 
-4. Oprócz tych użytkowników, którzy odmowa własne potrzebować opinię dotyczącą przedłużenia dostępu, można również usunąć użytkowników, którzy nie odpowiedział. Odpowiada innym użytkownikom potencjalnie już odbierać poczty e-mail.
+4. Oprócz tych użytkowników, którzy odmówili konieczności ciągłego dostępu, można również usunąć użytkowników, którzy nie odpowiadają. Nieodpowiadający użytkownicy nie mogą już otrzymywać wiadomości e-mail.
 
-5. Jeśli grupa nie jest używana do zarządzania dostępem, możesz również usunąć użytkowników, którzy nie zostały wybrane do wzięcia udziału w przeglądzie, ponieważ ich nie zaakceptował zaproszenia. Nie akceptuje może wskazywać, że adres e-mail zaproszony użytkownik miał błąd pisowni. Jeśli grupa jest używana jako listy dystrybucyjnej, być może niektórych użytkowników-gości nie zostały wybrane do udziału, ponieważ są one skontaktuj się z pomocą obiektów.
+5. Jeśli grupa nie jest używana do zarządzania dostępem, można również usunąć użytkowników, którzy nie zostali wybrani do wzięcia udziału w przeglądzie, ponieważ nie zaakceptowali zaproszenia. Nieakceptowanie może wskazywać, że adres e-mail zaproszonego użytkownika ma literówki. Jeśli grupa jest używana jako lista dystrybucyjna, prawdopodobnie niektórzy użytkownicy-Goście nie zostali wybrani do uczestnictwa, ponieważ są obiektami kontaktowymi.
 
-### <a name="ask-a-sponsor-to-review-a-guests-membership-in-a-group"></a>Poproś sponsora, aby zapoznać się z gościa członkostwa w grupie
+### <a name="ask-a-sponsor-to-review-a-guests-membership-in-a-group"></a>Poproszenie sponsora o przejrzenie członkostwa gościa w grupie
 
-Możesz poprosić sponsora, takich jak właścicielem grupy, aby zapoznać się z gościa potrzebę ciągłego członkostwa w grupie.
+Możesz polecić sponsora, na przykład właściciela grupy, aby przejrzeć potrzeby dalszego członkostwa w grupie.
 
-1. Aby utworzyć przeglądu dostępu dla grupy, wybierz pozycję Przegląd, aby uwzględnić tylko członków użytkowników-gości. Następnie należy określić co najmniej jednego recenzenta. Aby uzyskać więcej informacji, zobacz [tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md).
+1. Aby utworzyć przegląd dostępu dla grupy, wybierz pozycję przegląd, aby uwzględnić tylko członków-Gości. Następnie określ co najmniej jednego recenzenta. Aby uzyskać więcej informacji, zobacz [Tworzenie przeglądu dostępu do grup lub aplikacji](create-access-review.md).
 
-2. Poproś recenzentów o wyrażenie opinii. Domyślnie otrzymają oni wiadomość e-mail z usługi Azure AD z linkiem do panelu dostępu do których one [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md).
+2. Poproś recenzentów o wyrażenie opinii. Domyślnie każdy z nich otrzymuje wiadomość e-mail z usługi Azure AD z linkiem do panelu dostępu, który umożliwia [przejrzenie dostępu do grup lub aplikacji](perform-access-review.md).
 
-3. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md).
+3. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu do grup lub aplikacji](complete-access-review.md).
 
-### <a name="ask-guests-to-review-their-own-access-to-an-application"></a>Poproś gości, aby dokonać przeglądu własnego dostępu do aplikacji
+### <a name="ask-guests-to-review-their-own-access-to-an-application"></a>Poproszenie gościa o sprawdzenie własnego dostępu do aplikacji
 
-Przeglądy dostępu można użyć, aby upewnić się, że użytkownicy, którzy otrzymali zaproszenie dla określonej aplikacji w dalszym ciągu muszą mieć dostęp. Możesz łatwo poprosić czy goście samodzielnie przejrzeć swoje własne muszą uzyskać dostęp do.
+Za pomocą przeglądów dostępu można upewnić się, że użytkownicy, którzy zostali zaproszeni do określonej aplikacji, nadal potrzebują dostępu. Można z łatwością podawać Gościom możliwość przejrzenia ich potrzeb w celu uzyskania dostępu.
 
-1. Aby utworzyć przeglądu dostępu dla aplikacji, wybierz przeglądu, aby uwzględnić tylko gości i użytkownicy dokonują przeglądu własnego dostępu. Aby uzyskać więcej informacji, zobacz [tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md).
+1. Aby utworzyć przegląd dostępu dla aplikacji, wybierz pozycję przegląd, aby uwzględnić tylko gościa, a użytkownicy przeglądali własny dostęp. Aby uzyskać więcej informacji, zobacz [Tworzenie przeglądu dostępu do grup lub aplikacji](create-access-review.md).
 
-2. Poproś każdego gościa, aby dokonać przeglądu własnego dostępu do aplikacji. Domyślnie każdy gościa, który zaakceptował zaproszenia otrzymuje wiadomość e-mail z usługi Azure AD. Tę wiadomość e-mail zawiera link do przeglądu dostępu w panelu dostępu do Twojej organizacji. Usługa Azure AD ma instrukcje dla gości na temat sposobu [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md).
+2. Zwróć się do każdego gościa, aby przeanalizować własny dostęp do aplikacji. Domyślnie każdy gość, który zaakceptował zaproszenie, otrzymuje wiadomość e-mail z usługi Azure AD. Ta wiadomość e-mail zawiera link do przeglądu dostępu w panelu dostępu w organizacji. Usługa Azure AD zawiera instrukcje dla Gości, jak [przeglądać dostęp do grup lub aplikacji](perform-access-review.md).
 
-3. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md).
+3. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu do grup lub aplikacji](complete-access-review.md).
 
-4. Oprócz użytkowników, którzy odmowa własne potrzebować opinię dotyczącą przedłużenia dostępu, możesz również usunąć użytkowników-gości, którzy nie odpowiedział. Odpowiada innym użytkownikom potencjalnie już odbierać poczty e-mail. Możesz również usunąć użytkowników-gości, którzy nie zostały wybrane do udziału, zwłaszcza, jeśli ich nie zostały ostatnio zaproszenie. Ci użytkownicy nie zaakceptował zaproszenia, a tym samym nie mieć dostępu do aplikacji. 
+4. Oprócz użytkowników, którzy odmówili konieczności ciągłego dostępu, można również usunąć użytkowników-Gości, którzy nie odpowiadają. Nieodpowiadający użytkownicy nie mogą już otrzymywać wiadomości e-mail. Można również usunąć użytkowników-Gości, którzy nie zostali wybrani do uczestnictwa, szczególnie jeśli nie zostały ostatnio zaproszeni. Ci użytkownicy nie zaakceptowali zaproszenia i nie mają dostępu do aplikacji. 
 
-### <a name="ask-a-sponsor-to-review-a-guests-access-to-an-application"></a>Poproś sponsora, aby przeprowadzić przegląd dostępu gości do aplikacji
+### <a name="ask-a-sponsor-to-review-a-guests-access-to-an-application"></a>Poproszenie sponsora o przejrzenie dostępu gościa do aplikacji
 
-Możesz poprosić sponsora, na przykład właściciela aplikacji, aby zapoznać się z konieczności gościa opinię dotyczącą przedłużenia dostępu do aplikacji.
+Możesz polecić sponsora, na przykład właściciela aplikacji, aby zapoznać się z potrzebami gościa w celu uzyskania ciągłego dostępu do aplikacji.
 
-1. Aby utworzyć przeglądu dostępu dla aplikacji, wybierz przeglądu, aby uwzględnić tylko gości. Następnie należy określić co najmniej jeden użytkownik recenzentów. Aby uzyskać więcej informacji, zobacz [tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md).
+1. Aby utworzyć przegląd dostępu dla aplikacji, wybierz pozycję przegląd, aby uwzględnić tylko Gości. Następnie określ co najmniej jednego użytkownika jako recenzentów. Aby uzyskać więcej informacji, zobacz [Tworzenie przeglądu dostępu do grup lub aplikacji](create-access-review.md).
 
-2. Poproś recenzentów o wyrażenie opinii. Domyślnie otrzymają oni wiadomość e-mail z usługi Azure AD z linkiem do panelu dostępu do których one [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md).
+2. Poproś recenzentów o wyrażenie opinii. Domyślnie każdy z nich otrzymuje wiadomość e-mail z usługi Azure AD z linkiem do panelu dostępu, który umożliwia [przejrzenie dostępu do grup lub aplikacji](perform-access-review.md).
 
-3. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md).
+3. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu do grup lub aplikacji](complete-access-review.md).
 
-### <a name="ask-guests-to-review-their-need-for-access-in-general"></a>Poproś gości, aby przejrzeć ich wymagań, aby uzyskać dostęp, ogólnie rzecz biorąc
+### <a name="ask-guests-to-review-their-need-for-access-in-general"></a>Poproszenie gościa o przejrzenie potrzeb dostępu, ogólnie rzecz biorąc
 
-W niektórych organizacjach gości może nie być świadome ich członkostwa w grupach.
+W niektórych organizacjach Goście mogą nie wiedzieć o członkostwie w grupach.
 
 > [!NOTE]
-> Wcześniejszą wersję witryny Azure portal nie zezwalać na dostęp administracyjny przez użytkowników z UserType gościa. W niektórych przypadkach administrator w katalogu mogą wartość została zmieniona gościa UserType do członka za pomocą programu PowerShell. Jeśli ta zmiana wystąpił wcześniej w katalogu, poprzednie zapytanie może nie zawierać wszyscy użytkownicy-goście, którzy w przeszłości ma administracyjne prawa dostępu. W takim przypadku należy zmienić UserType gościa lub ręcznie dołączyć gościa członkostwa w grupie.
+> Wcześniejsze wersje Azure Portal nie umożliwiały dostępu administracyjnego użytkownikom typu gość. W niektórych przypadkach administrator w katalogu mógł zmienić wartość UserType gościa przy użyciu programu PowerShell. Jeśli ta zmiana nastąpiła wcześniej w katalogu, poprzednia kwerenda może nie obejmować wszystkich użytkowników-Gości, którzy w przeszłości mieli prawa dostępu administracyjnego. W takim przypadku należy zmienić użytkownika-gościa lub ręcznie dołączyć gościa do członkostwa w grupie.
 
-1. Utwórz grupę zabezpieczeń w usłudze Azure AD z gości jako elementy członkowskie, jeśli odpowiednia grupa nie istnieje. Można na przykład utworzyć grupę, członkostwo ręczne obsługiwanych gości. Alternatywnie można utworzyć grupę dynamiczną o nazwie takich jak "Gości Contoso" użytkowników w dzierżawie Contoso, którzy mają wartość atrybutu UserType gościa.  W celu zwiększenia wydajności upewnij się, grupa jest głównie gości — nie wybieraj grupy zawierającej użytkowników, jako element członkowski, użytkownicy nie muszą być analizowane.  Ponadto należy pamiętać, że użytkownikiem-gościem, który jest członkiem grupy może widzieć inni członkowie grupy.
+1. Utwórz grupę zabezpieczeń w usłudze Azure AD z Gośćmi jako członkami, Jeśli odpowiednia grupa jeszcze nie istnieje. Można na przykład utworzyć grupę z ręcznie utrzymywanym członkostwem Gości. Można też utworzyć grupę dynamiczną o nazwie "Goście of contoso" dla użytkowników w dzierżawie contoso, którzy mają wartość atrybutu UserType dla gościa.  W celu zapewnienia wydajności upewnij się, że grupa ma głównie Gości — nie wybieraj grupy, która ma użytkowników będących członkami, ponieważ nie trzeba recenzować użytkowników należących do członków.  Należy również pamiętać, że użytkownik-Gość, który jest członkiem grupy, może zobaczyć innych członków tej grupy.
 
-2. Aby utworzyć przeglądu dostępu dla tej grupy, wybierz recenzentów samych należeć. Aby uzyskać więcej informacji, zobacz [tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md).
+2. Aby utworzyć przegląd dostępu dla tej grupy, wybierz recenzentów jako samych członków. Aby uzyskać więcej informacji, zobacz [Tworzenie przeglądu dostępu do grup lub aplikacji](create-access-review.md).
 
-3. Poproś każdego gościa, aby zapoznać się z ich członkostwa. Domyślnie każdy gościa, który zaakceptował zaproszenia otrzymuje wiadomość e-mail z usługi Azure AD z linkiem do przeglądu dostępu w panelu dostępu do Twojej organizacji. Usługa Azure AD ma instrukcje dla gości na temat sposobu [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md).  Te goście, którzy nie zaakceptował zaproszenia ich pojawi się w wyników przeglądu jako "Nie jest powiadamiany".
+3. Poproszenie każdego gościa o przeglądanie własnych członkostw. Domyślnie każdy gość, który zaakceptował zaproszenie, otrzymuje wiadomość e-mail z usługi Azure AD z linkiem do przeglądu dostępu w panelu dostępu w organizacji. Usługa Azure AD zawiera instrukcje dla Gości, jak [przeglądać dostęp do grup lub aplikacji](perform-access-review.md).  Osoby te, które nie zaakceptowali zaproszenia, będą wyświetlane w wynikach przeglądu jako "nie powiadomiono".
 
-4. Po recenzentów opinii, Zatrzymaj Przegląd dostępu. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md).
+4. Po udzieleniu przez recenzentów danych wejściowych Zatrzymaj przegląd dostępu. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu do grup lub aplikacji](complete-access-review.md).
 
-5. Usuń dostęp gościa dla gości, którzy zostały odrzucone, nie została ukończona przeglądu lub poprzednio nie zaakceptował zaproszenia. Jeśli niektóre z gości są kontakty, które zostały wybrane do wzięcia udziału w przeglądzie, lub ich wcześniej nie zaakceptował zaproszenia, można wyłączyć kont za pomocą witryny Azure portal lub programu PowerShell. Jeśli gościa nie jest już wymagany jest dostęp, nie jest kontakt można usunąć swoich obiektów z katalogiem, za pomocą witryny Azure portal lub programu PowerShell, można usunąć obiektu użytkownika gościa.
+5. Usuń dostęp gościa dla Gości, którzy mieli odmowę, nie dokończył przeglądu lub nie zaakceptował wcześniej zaproszenia. Jeśli niektórzy Goście są kontaktami, którzy zostali wybrani do wzięcia udziału w recenzji lub nie zaakceptowali wcześniej zaproszenia, możesz wyłączyć swoje konta za pomocą Azure Portal lub programu PowerShell. Jeśli gość nie potrzebuje już dostępu i nie jest osobą kontaktową, możesz usunąć swój obiekt użytkownika z katalogu za pomocą Azure Portal lub PowerShell, aby usunąć obiekt użytkownika-gościa.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md)
+[Tworzenie przeglądu dostępu do grup lub aplikacji](create-access-review.md)
 
 
 

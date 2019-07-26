@@ -1,56 +1,56 @@
 ---
-title: 'Partnerzy sieci: Sieci platformy Azure | Dokumentacja firmy Microsoft'
-description: Ten artykuł zawiera listę MSP sieć partnerów
+title: 'Partnerzy sieci: Sieć platformy Azure | Microsoft Docs'
+description: Ten artykuł zawiera listę partnerów sieciowych MSP
 services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 922749591bdc9222e5f97b2bb6828c5660c0dbac
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ffcfd48d9a93ee7c73e2597ff9bea704e0378440
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840322"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385215"
 ---
-# <a name="about-azure-networking-msp-partners"></a>O partnerach MSP sieć platformy Azure
+# <a name="about-azure-networking-msp-partners"></a>Informacje o partnerach MSP sieci platformy Azure
 
-Włącza Program partnerski Azure Networking zarządzane usługi dostawcy (MSP) w usług sieciowych skoncentrowany MSP, telekomunikacyjne i integratorom systemów (SIs) do zaoferowania i hybrydowej sieci usługi, a ich tematyka wokół portfel produktów sieciowych platformy Azure i usługi.
+Program partnerski dostawcy usług zarządzanych przez sieć Azure (MSP) umożliwia aplikacjom opartym na msp, telcos i systemowym integratorom systemów (SIs) oferowanie usług sieciowych w chmurze i hybrydowych, które są wyśrodkowane w portfelu produktów sieciowych platformy Azure i Services.
 
-MSP sieć platformy Azure są specjalne zbiór dostawcom usług zarządzanych, pokonywania wymagań sieci chmury przedsiębiorstwa i wyzwania we wszystkich aspektach chmury i sieci hybrydowych. Usługi sieci zarządzanej obejmują co najmniej jedną z następujących usług: sieci architektury, planowania, wdrażania, operacje, konserwacja i optymalizacji.
+Usługa Azure Network msp to wyspecjalizowany zbiór dostawców usług zarządzanych, które zaspokajają potrzeby i wyzwania sieci w chmurze przedsiębiorstwa we wszystkich aspektach sieci chmurowej i hybrydowej. Zarządzane usługi sieciowe obejmują co najmniej jedną z następujących usług: Architektura sieci, planowanie, wdrażanie, operacje, konserwacja i optymalizacja.
 
 ![MSP][0]
 
-Klienci mogą zakupić oferty usług zarządzanych MSP w witrynie Azure Marketplace lub bezpośrednio z pliku MSP. MSP można wdrażanie i zarządzanie zasobami sieciowymi platformy Azure w subskrypcji i grup zasobów klientów przy użyciu morskiej platformy Azure.
+Klienci mogą kupić oferty usług zarządzanych przez MSP w portalu Azure Marketplace lub bezpośrednio z MSP. Usługa msp umożliwia wdrażanie zasobów sieciowych platformy Azure i zarządzanie nimi w ramach subskrypcji i grup zasobów klientów przy użyciu usługi Azure Lighthouse.
 
-## <a name="msp"></a>MSP partnerów
+## <a name="msp"></a>Partnerzy MSP
 
-Użyj łączy w tej sekcji, aby uzyskać więcej informacji na temat zarządzana usługa w chmurze oferowane przez partnerów Azure Networking MSP usług sieci. Jeśli partner usługi sieciowej chmury nie znajduje się w dalszej części tego artykułu, należy mieć dostawcę, skontaktuj się z nami. Kontaktowania się z nami, wysyłając wiadomość e-mail na adres ManagedVirtualWAN@microsoft.com. 
+Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarządzanych usług sieciowych w chmurze oferowanych przez partnerów MSP dla sieci platformy Azure. Jeśli partner usług sieci w chmurze nie jest wymieniony w poniższej sekcji, skontaktuj się z nami. Mogą skontaktować się z nami, wysyłając wiadomość ManagedVirtualWAN@microsoft.come-mail na adres. 
 
-[Aryaka Networks](https://www.aryaka.com/)
+[Sieci aryaka Networks](https://www.aryaka.com/)
 
 [BT](https://www.bt.com/)
 
-[Wymiar danych](https://www.dimensiondata.com/)
+[Dane wymiaru](https://www.dimensiondata.com/)
 
 [Equinix](https://www.equinix.com/)
 
 [InterCloud](https://www.intercloud.com/)
 
-[IIJ](https://www.riverbed.com/go/steelconnect-azurewan.html)
+[IIJ](https://www.iij.ad.jp/en/)
 
 [Megaport](https://www.megaport.com/)
 
 [Tata Communications](https://www.tatacommunications.com/)
 
-## <a name="expressroute"></a>Partnerzy usługi ExpressRoute
+## <a name="expressroute"></a>Partnerzy ExpressRoute
 
-Aby uzyskać informacje o partnerach, zobacz [ExpressRoute partnerzy i lokalizacje](../expressroute/expressroute-locations-providers.md).
+Aby uzyskać informacje o partnerach, zobacz [ExpressRoute Partners and Locations](../expressroute/expressroute-locations-providers.md).
 
-## <a name="vwan"></a>Wirtualne sieci WAN partnerów
+## <a name="vwan"></a>Partnerzy wirtualnej sieci WAN
 
-Aby uzyskać informacje o partnerach, zobacz [wirtualne sieci WAN partnerami i dostawcami](../virtual-wan/virtual-wan-locations-partners.md).
+Aby uzyskać informacje o partnerach, zobacz [partnerzy i dostawcy wirtualnej sieci WAN](../virtual-wan/virtual-wan-locations-partners.md).
 
 <!--Image References-->
 [0]: ./media/networking-partners-msp/msp.png "Opis programu MSP"

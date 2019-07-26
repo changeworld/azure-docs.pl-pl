@@ -1,82 +1,75 @@
 ---
-title: Skalowanie usługi w chmurze platformy Azure w programie Windows PowerShell | Dokumentacja firmy Microsoft
-description: (wersja klasyczna) Dowiedz się, jak skalować roli Internet lub roli procesu roboczego lub na platformie Azure przy użyciu programu PowerShell.
+title: Skalowanie usługi w chmurze platformy Azure w programie Windows PowerShell | Microsoft Docs
+description: motyw Dowiedz się, jak skalować rolę sieci Web lub rolę procesu roboczego na platformie Azure przy użyciu programu PowerShell.
 services: cloud-services
-documentationcenter: ''
 author: mmccrory
-manager: timlt
-editor: ''
-ms.assetid: ee37dd8c-6714-4c61-adb8-03d6bbf76c9a
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: memccror
-ms.openlocfilehash: 6c013687faaca33938d0b27303e9b1252482fcb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1945aad12eb34bad1b593878779e1ceb0dae686
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963320"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359042"
 ---
-# <a name="how-to-scale-a-cloud-service-in-powershell"></a>Jak skalować usługi w chmurze w programie PowerShell
+# <a name="how-to-scale-a-cloud-service-in-powershell"></a>Jak skalować usługę w chmurze w programie PowerShell
 
-Można użyć programu Windows PowerShell, skalować, dodając lub usuwając wystąpienia roli Internet lub roli procesu roboczego wewnątrz lub na zewnątrz.  
+Za pomocą programu Windows PowerShell można skalować rolę sieci Web lub proces roboczy w lub na zewnątrz przez dodawanie lub usuwanie wystąpień.  
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zanim będzie można wykonywać dowolne operacje w ramach subskrypcji za pomocą programu PowerShell, musisz zalogować się:
+Aby można było wykonać dowolne operacje w ramach subskrypcji za poorednictwem programu PowerShell, należy zalogować się:
 
 ```powershell
 Add-AzureAccount
 ```
 
-Jeśli masz wiele subskrypcji skojarzonych z Twoim kontem, może być konieczne zmiany bieżącej subskrypcji, w zależności od tego, w którym znajduje się usługa w chmurze. Aby sprawdzić bieżącą subskrypcję, uruchom polecenie:
+Jeśli masz wiele subskrypcji skojarzonych z Twoim kontem, być może musisz zmienić bieżącą subskrypcję w zależności od tego, gdzie znajduje się usługa w chmurze. Aby sprawdzić bieżącą subskrypcję, uruchom polecenie:
 
 ```powershell
 Get-AzureSubscription -Current
 ```
 
-Jeśli zachodzi potrzeba zmiany bieżącej subskrypcji, uruchom:
+Jeśli musisz zmienić bieżącą subskrypcję, uruchom polecenie:
 
 ```powershell
 Set-AzureSubscription -SubscriptionId <subscription_id>
 ```
 
-## <a name="check-the-current-instance-count-for-your-role"></a>Sprawdź bieżąca liczba wystąpień dla roli użytkownika
+## <a name="check-the-current-instance-count-for-your-role"></a>Sprawdź bieżącą liczbę wystąpień roli
 
-Aby sprawdzić bieżący stan roli użytkownika, uruchom polecenie:
+Aby sprawdzić bieżący stan roli, uruchom polecenie:
 
 ```powershell
 Get-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>'
 ```
 
-Ponownie należy uzyskać informacji na temat tej roli, w tym jego bieżący system operacyjny w wersji i liczbę wystąpień. W tym przypadku Rola zawiera pojedyncze wystąpienie.
+Należy uzyskać informacje o roli, w tym jej bieżącą wersję systemu operacyjnego i liczbę wystąpień. W takim przypadku rola ma pojedyncze wystąpienie.
 
 ![Informacje o roli](./media/cloud-services-how-to-scale-powershell/get-azure-role.png)
 
-## <a name="scale-out-the-role-by-adding-more-instances"></a>Skalowanie w poziomie rolę poprzez dodanie większej liczby wystąpień
+## <a name="scale-out-the-role-by-adding-more-instances"></a>Skalowanie roli przez dodanie większej liczby wystąpień
 
-Aby skalować w poziomie roli, należy przekazać żądaną liczbę wystąpień jako **liczba** parametr **AzureRole zestaw** polecenia cmdlet:
+Aby skalować rolę, Przekaż żądaną liczbę wystąpień jako parametr **Count** do polecenia cmdlet **Set-AzureRole** :
 
 ```powershell
 Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -Slot <target_slot> -Count <desired_instances>
 ```
 
-Bloki polecenia cmdlet chwilowo podczas nowe wystąpienia są aprowizowane i uruchomić. W tym czasie możesz otworzyć nowe okno programu PowerShell i wywołania **Get AzureRole** jak pokazano wcześniej, zostanie wyświetlony nowy docelowa liczba wystąpień. A jeśli możesz sprawdzić stan roli w portalu, powinien zostać wyświetlony nowe wystąpienie uruchamiania:
+Polecenie cmdlet jest blokowane na chwilę, gdy nowe wystąpienia są inicjowane i uruchamiane. W tym czasie, jeśli otworzysz nowe okno programu PowerShell i Wywołaj polecenie **Get-AzureRole** , jak pokazano wcześniej, zobaczysz nową liczbę wystąpień docelowych. Jeśli sprawdzisz stan roli w portalu, zobaczysz nowe wystąpienie:
 
-![Wystąpienie maszyny Wirtualnej w witrynie portal](./media/cloud-services-how-to-scale-powershell/role-instance-starting.png)
+![Wystąpienie maszyny wirtualnej rozpoczynające się w portalu](./media/cloud-services-how-to-scale-powershell/role-instance-starting.png)
 
-Gdy nowe wystąpienia zostały uruchomione, polecenie cmdlet zwróci się pomyślnie:
+Po rozpoczęciu nowych wystąpień polecenie cmdlet zwróci pomyślne:
 
-![Powodzenie wzrost wystąpienia roli](./media/cloud-services-how-to-scale-powershell/set-azure-role-success.png)
+![Pomyślne zwiększenie wystąpienia roli](./media/cloud-services-how-to-scale-powershell/set-azure-role-success.png)
 
-## <a name="scale-in-the-role-by-removing-instances"></a>Skalowanie w roli, usuwając wystąpień
+## <a name="scale-in-the-role-by-removing-instances"></a>Skalowanie w roli przez usuwanie wystąpień
 
-Możesz skalować w roli przez usunięcie wystąpień w taki sam sposób. Ustaw **liczba** parametru **AzureRole zestaw** do liczby wystąpień, o których chcesz mieć po zakończeniu skalowanie w operacji.
+Możesz skalować w roli, usuwając wystąpienia w ten sam sposób. Na stronie **Set-AzureRole** ustaw wartość parametru **Count** na liczbę wystąpień, które mają być dostępne po zakończeniu operacji skalowania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Nie jest możliwe skonfigurować automatyczne skalowanie usług w chmurze za pomocą programu PowerShell. Aby to zrobić, zobacz [jak automatyczne skalowanie usługi w chmurze](cloud-services-how-to-scale-portal.md).
+Nie można skonfigurować automatycznego skalowania dla usług w chmurze w programie PowerShell. Aby to zrobić, zobacz [jak automatycznie skalować usługę w chmurze](cloud-services-how-to-scale-portal.md).

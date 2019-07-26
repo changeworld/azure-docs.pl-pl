@@ -12,12 +12,12 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 07/02/2019
-ms.openlocfilehash: 951481a7dd7d7a9cfd8c88f2cd8bbcaaec4df685
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9dfc22be45b68ba4ff59d88810435db35bafc8b6
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320623"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494966"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -72,12 +72,12 @@ W tym celu dodamy więcej bram w każdym regionie i wycofasz bramy w kolumnie zl
 | Kanada Środkowa       | 40.85.224.249      |                 | |
 | Kanada Wschodnia          | 40.86.226.166      |                 | |
 | Środkowe stany USA           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | Brak połączeń po 1 września 2019 |
-| Chiny Wschodnie 1         | 139.219.130.35     |                 | |
+| Chiny Wschodnie           | 139.219.130.35     |                 | |
 | Chiny Wschodnie 2         | 40.73.82.1         |                 | |
-| Chiny Północne 1        | 139.219.15.17      |                 | |
+| Chiny Północne          | 139.219.15.17      |                 | |
 | Chiny Północne 2        | 40.73.50.0         |                 | |
 | Azja Wschodnia            | 191.234.2.139, 52.175.33.150 |       | |
-| Wschodnie stany USA 1            | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | Brak połączeń po 1 września 2019 |
+| East US              | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | Brak połączeń po 1 września 2019 |
 | Wschodnie stany USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0 | 191.239.224.107    | Brak połączeń po 1 września 2019 |
 | Francja Środkowa       | 40.79.137.0, 40.79.129.1 |           | |
 | Niemcy Środkowe      | 51.4.144.100       |                 | |
@@ -91,8 +91,8 @@ W tym celu dodamy więcej bram w każdym regionie i wycofasz bramy w kolumnie zl
 | Korea Południowa          | 52.231.200.86      |                 | |
 | Środkowo-północne stany USA     | 23.96.178.199      | 23.98.55.75     | Brak połączeń po 1 września 2019 |
 | Europa Północna         | 40.113.93.91       | 191.235.193.75  | Brak połączeń po 1 września 2019 |
-| Republika Południowej Afryki (północ)   | 102.133.152.0      |                 | |
-| Republika Południowej Afryki (zachód)    | 102.133.24.0       |                 | |
+| Północna Republika Południowej Afryki   | 102.133.152.0      |                 | |
+| Zachodnia Republika Południowej Afryki    | 102.133.24.0       |                 | |
 | Środkowo-południowe stany USA     | 13.66.62.124       | 23.98.162.75    | Brak połączeń po 1 września 2019 |
 | Azja Południowo-Wschodnia      | 104.43.15.0        | 23.100.117.95   | Brak połączeń po 1 września 2019 |
 | Środkowe Zjednoczone Emiraty Arabskie          | 20.37.72.64        |                 | |
@@ -100,8 +100,8 @@ W tym celu dodamy więcej bram w każdym regionie i wycofasz bramy w kolumnie zl
 | Południowe Zjednoczone Królestwo             | 51.140.184.11      |                 | |
 | Zachodnie Zjednoczone Królestwo              | 51.141.8.11        |                 | |
 | Środkowo-zachodnie stany USA      | 13.78.145.25       |                 | |
-| Europa Zachodnia          | 191.237.232.75, 40.68.37.158 |       | |
-| Zachodnie stany USA 1            | 23.99.34.75, 104.42.238.205 |        | |
+| Europa Zachodnia          | 40.68.37.158       | 191.237.232.75  | Brak połączeń po 1 września 2019 |
+| Zachodnie stany USA              | 104.42.238.205     | 23.99.34.75     | Brak połączeń po 1 września 2019 |
 | Zachodnie stany USA 2            | 13.66.226.202      |                 | |
 |                      |                    |                 | |
 

@@ -1,6 +1,6 @@
 ---
-title: Za pomocą odzyskiwania po awarii implementacji i przywracania kopii zapasowych w usłudze Azure API Management | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać kopii zapasowej i przywracania do odzyskiwania po awarii w usłudze Azure API Management.
+title: Implementowanie odzyskiwania po awarii przy użyciu funkcji tworzenia kopii zapasowych i przywracania na platformie Azure API Management | Microsoft Docs
+description: Dowiedz się, jak za pomocą funkcji Backup i Restore wykonać odzyskiwanie po awarii na platformie Azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,81 +13,81 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6507c39faecfa0e56fc19597e414e9d25d368567
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 619a4de993f052f143e4117f0100ed1e0aa77b03
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460877"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498590"
 ---
-# <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować funkcje odzyskiwania po awarii przy użyciu usługi kopii zapasowej i przywracania w usłudze Azure API Management
+# <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować odzyskiwanie po awarii przy użyciu kopii zapasowej i przywracania usługi na platformie Azure API Management
 
-Publikowanie i zarządzanie interfejsami API za pomocą usługi Azure API Management, teraz korzystając z zalet odporności na uszkodzenia i możliwości infrastruktury, które ma inny sposób projektowania, implementować oraz zarządzać nimi ręcznie. Platforma Azure zmniejsza dużą część potencjalnych awarii, za ułamek kosztów.
+Publikując interfejsy API i zarządzając nimi za pośrednictwem usługi Azure API Management, korzystasz z zalet odporności na uszkodzenia i infrastruktury, które w inny sposób projektujesz, implementują i zarządzają ręcznie. Platforma Azure ogranicza znaczną część potencjalnych awarii w ułamku kosztu.
 
-Aby odzyskać z problemów z dostępnością, które wpływają na region, który jest hostem usługi API Management, gotowość do odtworzenia w innym regionie świadczenia usługi w dowolnym momencie. W zależności od cel czasu odzyskiwania możesz chcieć przechowywać wstrzymania usługi w jednym lub kilku regionach. Może również próbować zachować swojej konfiguracji i zawartości w synchronizacji z usługą active według celu punktu odzyskiwania. Usługa tworzenia kopii zapasowej i przywracania funkcji ma wymagane bloki konstrukcyjne implementowania strategii odzyskiwania po awarii.
+Aby odzyskać problemy z dostępnością, które mają wpływ na region, w którym znajduje się usługa API Management, możesz przystąpić do odtworzenia usługi w innym regionie w dowolnym momencie. W zależności od celu czasu odzyskiwania warto zachować usługę w stanie wstrzymania w co najmniej jednym regionie. Możesz również spróbować zachować swoją konfigurację i zawartość w synchronizacji z aktywną usługą zgodnie z celem punktu odzyskiwania. Funkcje tworzenia kopii zapasowych i przywracania usługi zapewniają niezbędne bloki konstrukcyjne do implementowania strategii odzyskiwania po awarii.
 
-Można także operacje tworzenia kopii zapasowych i przywracania do replikowania konfiguracji usługi API Management między środowisk operacyjnych, np. programowania i przemieszczania. Uwaga na podatne na tych danych środowiska uruchomieniowego, takich jak użytkownicy i subskrypcje zostaną skopiowane, które nie zawsze jest pożądane.
+Operacje tworzenia kopii zapasowych i przywracania mogą również służyć do replikowania konfiguracji usługi API Management między środowiskami operacyjnymi, np. programowaniem i przemieszczaniem. Uważaj, że dane środowiska uruchomieniowego, takie jak użytkownicy i subskrypcje, również zostaną skopiowane, co może być niewskazane.
 
-Ten przewodnik pokazuje, jak zautomatyzowane tworzenie kopii zapasowej i przywracanie operacji i sposób zapewnienia pomyślnego uwierzytelniania w kopii zapasowej i przywracania żądania przez usługę Azure Resource Manager.
+W tym przewodniku pokazano, jak zautomatyzować operacje tworzenia kopii zapasowych i przywracania oraz jak zapewnić pomyślne uwierzytelnianie żądań tworzenia kopii zapasowych i przywracania przez Azure Resource Manager.
 
 > [!IMPORTANT]
-> Przywracanie operacji nie zmienia konfiguracji niestandardowa nazwa hosta usługi docelowej. Zaleca się korzystać z tego samego niestandardową nazwę hosta i certyfikatu TLS usługi zarówno aktywnego i w gotowości, tak aby po zakończeniu operacji przywracania, ruch może być skierowana do wystąpienia w konfiguracji gotowości przez prostą zmianę rekordu CNAME systemu DNS.
+> Operacja przywracania nie zmienia niestandardowej konfiguracji nazwy hosta usługi docelowej. Zalecamy użycie tej samej niestandardowej nazwy hosta i certyfikatu TLS dla usług Active i standby, tak aby po zakończeniu operacji przywracania ruch można ponownie skierować do wystąpienia gotowości przez prostą zmianę CNAME w systemie DNS.
 >
-> Operacja tworzenia kopii zapasowej nie przechwytuje wstępnie zagregowane dane dziennika używanych w raportach wyświetlane w bloku Analytics w witrynie Azure portal.
+> Operacja tworzenia kopii zapasowej nie przechwytuje wstępnie zagregowanych danych dziennika używanych w raportach wyświetlanych w bloku analiza w Azure Portal.
 
 > [!WARNING]
-> Każda kopia zapasowa wygasa po upływie 30 dni. Jeśli użytkownik podejmie próbę przywrócenia kopii zapasowej, po upływie 30-dniowy okres, przywracania zakończy się niepowodzeniem z `Cannot restore: backup expired` wiadomości.
+> Każda kopia zapasowa wygasa po 30 dniach. Jeśli podjęto próbę przywrócenia kopii zapasowej po upływie 30-dniowego okresu wygaśnięcia, przywracanie zakończy się `Cannot restore: backup expired` niepowodzeniem z komunikatem.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="authenticating-azure-resource-manager-requests"></a>Żądania uwierzytelniania usługi Azure Resource Manager
+## <a name="authenticating-azure-resource-manager-requests"></a>Uwierzytelnianie Azure Resource Manager żądania
 
 > [!IMPORTANT]
-> Interfejs API REST i przywracania kopii zapasowych korzysta z usługi Azure Resource Manager i ma inny mechanizm uwierzytelniania niż interfejsów API REST zarządzania jednostek usługi API Management. W tej sekcji opisano sposób uwierzytelniania żądań usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [żądań uwierzytelniania usługi Azure Resource Manager](/rest/api/index).
+> Interfejs API REST do tworzenia kopii zapasowych i przywracania używa Azure Resource Manager i ma inny mechanizm uwierzytelniania niż interfejsy API REST do zarządzania jednostkami API Management. W procedurach przedstawionych w tej sekcji opisano sposób uwierzytelniania żądań Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie żądań Azure Resource Manager](/rest/api/index).
 
-Wszystkie zadania, które wykonują zasobów przy użyciu usługi Azure Resource Manager musi zostać uwierzytelniony w usłudze Azure Active Directory wykonując następujące czynności:
+Wszystkie zadania dotyczące zasobów przy użyciu Azure Resource Manager muszą zostać uwierzytelnione przy użyciu Azure Active Directory, wykonując następujące czynności:
 
--   Dodawanie aplikacji do dzierżawy usługi Azure Active Directory.
--   Ustawianie uprawnień dla aplikacji, który został dodany.
--   Pobierz token do uwierzytelniania żądań do usługi Azure Resource Manager.
+-   Dodaj aplikację do dzierżawy Azure Active Directory.
+-   Ustaw uprawnienia dla dodanej aplikacji.
+-   Pobierz token do uwierzytelniania żądań do Azure Resource Manager.
 
-### <a name="create-an-azure-active-directory-application"></a>Tworzenie aplikacji usługi Azure Active Directory
+### <a name="create-an-azure-active-directory-application"></a>Tworzenie aplikacji Azure Active Directory
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Przy użyciu subskrypcji, która zawiera wystąpienia usługi API Management, przejdź do **rejestracje aplikacji** karcie **usługi Azure Active Directory** (Azure Active Directory > Rejestracje Zarządzaj/aplikacji).
+2. Korzystając z subskrypcji zawierającej wystąpienie usługi API Management, przejdź do karty **rejestracje aplikacji** w **Azure Active Directory** (Azure Active Directory > Zarządzaj/rejestracje aplikacji).
 
     > [!NOTE]
-    > Jeśli domyślny katalog usługi Azure Active Directory nie jest widoczny dla Twojego konta, skontaktuj się z administratorem subskrypcji platformy Azure do udzielenia wymaganych uprawnień do Twojego konta.
+    > Jeśli domyślny katalog Azure Active Directory nie jest widoczny dla Twojego konta, skontaktuj się z administratorem subskrypcji platformy Azure, aby przyznać uprawnienia wymagane do Twojego konta.
 
 3. Kliknij pozycję **Rejestrowanie nowej aplikacji**.
 
-    **Utwórz** po prawej stronie zostanie wyświetlone okno. To, gdzie możesz wprowadzić informacje dotyczące odpowiednich aplikacji usługi AAD.
+    Okno **tworzenia** pojawia się po prawej stronie. Jest to miejsce, w którym wprowadzasz informacje dotyczące aplikacji usługi AAD.
 
 4. Wprowadź nazwę aplikacji.
-5. Typ aplikacji wybierz **natywnych**.
-6. Wprowadź adres URL, symbol zastępczy, takich jak `http://resources` dla **identyfikator URI przekierowania**, ponieważ jest to wymagane pole, ale wartość nie jest używany później. Kliknij pole wyboru, aby zapisać aplikację.
-7. Kliknij pozycję **Utwórz**.
+5. W polu Typ aplikacji wybierz opcję **natywny**.
+6. Wprowadź zastępczy adres URL, `http://resources` taki jak dla **identyfikatora URI przekierowania**, ponieważ jest to pole wymagane, ale wartość nie jest używana później. Kliknij pole wyboru, aby zapisać aplikację.
+7. Kliknij przycisk **Utwórz**.
 
 ### <a name="add-an-application"></a>Dodawanie aplikacji
 
-1. Po utworzeniu aplikacji kliknij **ustawienia**.
-2. Kliknij przycisk **wymagane uprawnienia**.
-3. Kliknij przycisk **+ Dodaj**.
-4. Naciśnij klawisz **wybierz interfejs API**.
-5. Wybierz **Windows** **interfejsu API zarządzania usługami Azure**.
-6. Naciśnij klawisz **wybierz**.
+1. Po utworzeniu aplikacji kliknij pozycję **Ustawienia**.
+2. Kliknij pozycję **wymagane uprawnienia**.
+3. Kliknij pozycję **+ Dodaj**.
+4. Naciśnij **pozycję Wybierz interfejs API**.
+5. Wybierz pozycję **Windows** **Azure interfejs API zarządzania usługami**.
+6. Naciśnij **pozycję Wybierz**.
 
-    ![Dodawanie uprawnień](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
+    ![Dodaj uprawnienia](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
-7. Kliknij przycisk **delegowane uprawnienia** obok nowo dodanych aplikacji, zaznacz pole wyboru, aby uzyskać **dostęp do usługi Azure Service Management (wersja zapoznawcza)** .
-8. Naciśnij klawisz **wybierz**.
-9. Kliknij przycisk **udzielić uprawnień**.
+7. Kliknij pozycję **uprawnienia delegowane** obok nowo dodanej aplikacji, zaznacz pole wyboru **dostęp do usługi Azure Service Management (wersja zapoznawcza)** .
+8. Naciśnij **pozycję Wybierz**.
+9. Kliknij pozycję **Udziel uprawnień**.
 
 ### <a name="configuring-your-app"></a>Konfigurowanie aplikacji
 
-Przed wywołaniem metody interfejsów API, które generowania kopii zapasowych i przywrócić ją, należy uzyskać token. W poniższym przykładzie użyto [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) pakietu NuGet w celu pobrania tokenu.
+Przed wywołaniem interfejsów API, które generują kopię zapasową i przywracają ją, należy uzyskać token. W poniższym przykładzie zastosowano pakiet NuGet [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) w celu pobrania tokenu.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -114,27 +114,27 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-Zastąp `{tenant id}`, `{application id}`, i `{redirect uri}` przy użyciu następujących instrukcji:
+`{tenant id}`Zastąp `{application id}`, i`{redirect uri}` , używając następujących instrukcji:
 
-1. Zastąp `{tenant id}` o identyfikatorze dzierżawy utworzoną aplikację usługi Azure Active Directory. Identyfikator można skorzystać, klikając **rejestracje aplikacji** -> **punktów końcowych**.
+1. Zamień `{tenant id}` na identyfikator dzierżawy utworzonej aplikacji Azure Active Directory. Możesz uzyskać dostęp do tego identyfikatora, klikając **rejestracje aplikacji** -> **punkty końcowe**.
 
     ![Punkty końcowe][api-management-endpoint]
 
-2. Zastąp `{application id}` z wartością uzyskasz, przechodząc do **ustawienia** strony.
-3. Zastąp `{redirect uri}` wartością z **identyfikatory URI przekierowań** kartę aplikacji usługi Azure Active Directory.
+2. Zamień `{application id}` na wartość, którą otrzymujesz, przechodząc do strony **ustawień** .
+3. Zastąp wartość wartością z karty URI przekierowania w aplikacji Azure Active Directory.  `{redirect uri}`
 
-    Gdy wartości są określone, przykładowy kod powinien zwrócić token podobny do poniższego przykładu:
+    Po określeniu wartości, przykład kodu powinien zwrócić token podobny do następującego:
 
     ![Token][api-management-arm-token]
 
     > [!NOTE]
-    > Token może być wygasają po upływie określonego czasu. Wykonaj przykładowy kod ponownie, aby wygenerować nowy token.
+    > Token może wygasnąć po upływie określonego czasu. Ponownie wykonaj próbkę kodu, aby wygenerować nowy token.
 
-## <a name="calling-the-backup-and-restore-operations"></a>Podczas wywoływania operacji tworzenia kopii zapasowych i przywracania
+## <a name="calling-the-backup-and-restore-operations"></a>Wywoływanie operacji tworzenia kopii zapasowej i przywracania
 
-Interfejsy API REST są [usługi Api Management — kopia zapasowa](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) i [usługi Api Management — Przywracanie](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore).
+Interfejsy API REST to [Usługa API Management —](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) usługa zarządzania kopiami zapasowymi i [interfejsem API — przywracanie](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore).
 
-Przed wywołaniem "Kopia zapasowa i przywracanie" czynności opisane w poniższych sekcjach, ustawić nagłówek autoryzacji żądania dla wywołania REST.
+Przed wywołaniem operacji "Backup and Restore" opisanych w poniższych sekcjach Ustaw nagłówek żądania autoryzacji dla wywołania REST.
 
 ```csharp
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
@@ -142,7 +142,7 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 
 ### <a name="step1"> </a>Tworzenie kopii zapasowej usługi API Management
 
-Aby utworzyć kopię zapasową problem z usługą API Management następujące żądanie HTTP:
+Aby utworzyć kopię zapasową usługi API Management, należy wydać następujące żądanie HTTP:
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
@@ -150,12 +150,12 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 gdzie:
 
--   `subscriptionId` — Identyfikator subskrypcji, który zawiera usługi API Management, którą próbujesz utworzyć kopię zapasową
--   `resourceGroupName` — Nazwa grupy zasobów usługi Azure API Management
--   `serviceName` — Nazwa usługi API Management wprowadzasz kopii zapasowej określony w momencie jego tworzenia.
--   `api-version` -Zamień `2018-06-01-preview`
+-   `subscriptionId`-Identyfikator subskrypcji zawierającej usługę API Management której próbujesz utworzyć kopię zapasową
+-   `resourceGroupName`-Nazwa grupy zasobów usługi Azure API Management
+-   `serviceName`— Nazwa usługi API Management wykonywania kopii zapasowej określonej w momencie jej tworzenia
+-   `api-version`-Zamień na`2018-06-01-preview`
 
-W treści żądania Określ Nazwa docelowego konta magazynu platformy Azure, klucz dostępu, nazwa kontenera obiektów blob i nazwa kopii zapasowej:
+W treści żądania należy określić docelową nazwę konta usługi Azure Storage, klucz dostępu, nazwę kontenera obiektów blob i nazwę kopii zapasowej:
 
 ```json
 {
@@ -166,22 +166,23 @@ W treści żądania Określ Nazwa docelowego konta magazynu platformy Azure, klu
 }
 ```
 
-Ustaw wartość `Content-Type` nagłówek żądania do `application/json`.
+Ustaw wartość `Content-Type` nagłówka żądania na `application/json`.
 
-Kopia zapasowa jest operacją wymagającą dużo czasu, który może zająć więcej niż minutę. Jeśli żądanie zakończyło się pomyślnie rozpoczął się proces tworzenia kopii zapasowej, pojawi się `202 Accepted` kod stanu odpowiedzi z `Location` nagłówka. Upewnij się, "GET" żądania na adres URL w `Location` nagłówka, aby sprawdzić stan operacji. Podczas tworzenia kopii zapasowej jest w toku, nadal jest wyświetlany kod stanu "202 zaakceptowano". Kod odpowiedzi `200 OK` wskazuje pomyślne ukończenie operacji tworzenia kopii zapasowej.
+Kopia zapasowa to długotrwała operacja, która może trwać dłużej niż minutę. Jeśli żądanie zakończyło się pomyślnie, a proces tworzenia kopii zapasowej `202 Accepted` został rozpoczęty, otrzymasz kod stanu odpowiedzi `Location` z nagłówkiem. Utwórz żądania "Get" na adres URL w `Location` nagłówku, aby sprawdzić stan operacji. Gdy trwa wykonywanie kopii zapasowej, nadal otrzymujesz kod stanu "202 zaakceptowany". Kod `200 OK` odpowiedzi wskazuje pomyślne zakończenie operacji tworzenia kopii zapasowej.
 
-Podczas wykonywania żądania utworzenia kopii zapasowej, należy zwrócić uwagę następujące ograniczenia:
+Podczas wykonywania żądania kopii zapasowej należy pamiętać o następujących ograniczeniach:
 
--   **Kontener** określona w treści żądania **musi istnieć**.
--   Gdy trwa wykonywanie kopii zapasowej, **uniknąć zmian w zarządzaniu usługami** np. jednostkę SKU uaktualnienia lub starszą wersję, zmiana nazwy domeny i nie tylko.
--   Przywracanie **kopii zapasowej jest gwarantowane tylko przez 30 dni** od chwili jego utworzenia.
--   **Dane dotyczące użycia** używany do tworzenia raportów analitycznych **nie jest uwzględniona** w kopii zapasowej. Użyj [API REST usługi Azure API Management][azure api management rest api] okresowo pobieranie tymczasem do użycia raportów analitycznych.
--   Częstotliwość, z którym wykonywanie kopii zapasowych usługi wpływa na celu punktu odzyskiwania. Aby je zminimalizować, firma Microsoft zaleca wdrażanie regularnie Twórz kopie zapasowe i wykonywanie kopii zapasowych na żądanie, po wprowadzeniu zmian do usługi API Management.
--   **Zmiany** wprowadzone w konfiguracji usługi (na przykład interfejsów API, zasady i wyglądu portalu dla deweloperów) podczas kopii zapasowej operacja jest w toku **może być wykluczone z kopii zapasowej i zostaną utracone**.
-
+-   **Kontener** określony w treści żądania **musi istnieć**.
+-   Gdy trwa wykonywanie kopii zapasowej, należy **unikać zmian w zarządzaniu usługami** , takich jak uaktualnianie lub obniżanie poziomu jednostki SKU, zmiana nazwy domeny i nie tylko.
+-   Przywracanie **kopii zapasowej jest gwarantowane tylko przez 30 dni** od momentu jego utworzenia.
+-   **Dane użycia** używane do tworzenia raportów analitycznych **nie są uwzględnione** w kopii zapasowej. Użyj [interfejsu API REST usługi Azure API Management][azure api management rest api] , aby okresowo pobierać raporty analityczne w celu zabezpieczenia.
+-   Częstotliwość wykonywania kopii zapasowych usługi ma wpływ na cel punktu odzyskiwania. Aby zminimalizować, zalecamy wdrożenie zwykłych kopii zapasowych i wykonywanie kopii zapasowych na żądanie po wprowadzeniu zmian w usłudze API Management.
+-   **Zmiany** wprowadzone w konfiguracji usługi (na przykład dotyczące interfejsów API, zasad i wyglądu portalu deweloperów), gdy operacja tworzenia kopii zapasowej jest w toku, **mogą zostać wykluczone z kopii zapasowej i zostaną utracone**.
+-   **Zezwalaj na** dostęp z płaszczyzny kontroli do konta usługi Azure Storage. Aby utworzyć kopię zapasową, klient powinien otworzyć następujący zestaw przychodzących adresów IP na koncie magazynu. 
+    > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
 ### <a name="step2"> </a>Przywracanie usługi API Management
 
-Aby usługi API Management należy przywrócić z kopii zapasowej utworzonej wcześniej, należy wprowadzić następujące żądanie HTTP:
+Aby przywrócić usługę API Management z utworzonej wcześniej kopii zapasowej, należy wykonać następujące żądanie HTTP:
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
@@ -189,12 +190,12 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 gdzie:
 
--   `subscriptionId` — Identyfikator subskrypcji, która przechowuje usługi API Management, który jest przywrócenie kopii zapasowej do
--   `resourceGroupName` — Nazwa grupy zasobów, która zawiera usługa Azure API Management jest przywrócenie kopii zapasowej do
--   `serviceName` — Nazwa usługi API Management, usługa przywracany do określonej w czasie jego tworzenia
--   `api-version` -Zamień `2018-06-01-preview`
+-   `subscriptionId`-Identyfikator subskrypcji zawierającej usługę API Management, do której jest przywracana kopia zapasowa
+-   `resourceGroupName`-Nazwa grupy zasobów zawierającej usługę Azure API Management, do której jest przywracana kopia zapasowa
+-   `serviceName`-Nazwa usługi API Management przywracanej do określonej w czasie tworzenia
+-   `api-version`-Zamień na`2018-06-01-preview`
 
-W treści żądania Określ lokalizację pliku kopii zapasowej. Oznacza to Dodaj nazwę konta usługi Azure storage, klucz dostępu, nazwa kontenera obiektów blob i nazwa kopii zapasowej:
+W treści żądania Określ lokalizację pliku kopii zapasowej. Oznacza to, że należy dodać nazwę konta usługi Azure Storage, klucz dostępu, nazwę kontenera obiektów blob i nazwę kopii zapasowej:
 
 ```json
 {
@@ -205,28 +206,28 @@ W treści żądania Określ lokalizację pliku kopii zapasowej. Oznacza to Dodaj
 }
 ```
 
-Ustaw wartość `Content-Type` nagłówek żądania do `application/json`.
+Ustaw wartość `Content-Type` nagłówka żądania na `application/json`.
 
-Przywracanie jest operacją wymagającą dużo czasu, który może potrwać co najmniej 30 minut, aby zakończyć. Jeśli żądanie zakończyło się pomyślnie rozpoczął się proces przywracania, pojawi się `202 Accepted` kod stanu odpowiedzi z `Location` nagłówka. Upewnij się, "GET" żądania na adres URL w `Location` nagłówka, aby sprawdzić stan operacji. Podczas przywracania jest w toku, nadal jest wyświetlany "202 zaakceptowano" Kod stanu. Kod odpowiedzi `200 OK` wskazuje pomyślne ukończenie operacji przywracania.
+Przywracanie to długotrwała operacja, której ukończenie może potrwać do 30 minut. Jeśli żądanie zakończyło się pomyślnie, a proces przywracania został rozpoczęty `202 Accepted` , otrzymasz kod stanu `Location` odpowiedzi z nagłówkiem. Utwórz żądania "Get" na adres URL w `Location` nagłówku, aby sprawdzić stan operacji. Gdy przywracanie jest w toku, nadal otrzymujesz kod stanu "202 zaakceptował". Kod `200 OK` odpowiedzi wskazuje pomyślne zakończenie operacji przywracania.
 
 > [!IMPORTANT]
-> **Jednostka SKU** usługi przywracany do **musi odpowiadać** jednostki SKU usługi kopii zapasowej przywracanej.
+> **Jednostka SKU** przywracanej usługi **musi być zgodna** z jednostką SKU przywracanej usługi kopii zapasowej.
 >
-> **Zmiany** wprowadzone w konfiguracji usługi (na przykład interfejsów API, zasady, wyglądu portalu dla deweloperów) podczas przywracania Trwa operacja **mogą zostać zastąpione**.
+> **Zmiany** wprowadzone w konfiguracji usługi (na przykład interfejsy API, zasady, wygląd portalu deweloperów) podczas operacji przywracania w toku **mogą zostać nadpisywane**.
 
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> Operacje tworzenia kopii zapasowych i przywracania można również wykonać przy użyciu programu PowerShell _AzApiManagement kopii zapasowej_ i _AzApiManagement przywracania_ odpowiednio poleceń.
+> Operacje tworzenia kopii zapasowych i przywracania można także wykonać przy użyciu poleceń programu PowerShell _Backup-AzApiManagement_ i _Restore-AzApiManagement_ .
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zapoznaj się z poniższymi zasobami, aby różne wskazówki dotyczące procesu/przywracania kopii zapasowej.
+Zapoznaj się z poniższymi zasobami, aby zapoznać się z różnymi przewodnikami procesu tworzenia kopii zapasowej/przywracania.
 
--   [Replikacja usługi Azure API Management kont](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
+-   [Replikowanie kont usługi Azure API Management](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Automatyzowanie tworzenia kopii zapasowej i przywracania w usłudze API Management za pomocą usługi Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: Wykonywanie kopii zapasowych i przywracanie konfiguracji](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-    _podejście szczegółowych przy Stuart jest niezgodna z oficjalnego wskazówki dotyczące, ale co ciekawe._
+-   [API Management platformy Azure: Tworzenie kopii zapasowej i](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)Przywracanie konfiguracji
+    _Metoda Szczegółowa przez Stuarta nie jest zgodna z oficjalnymi wskazówkami, ale jest interesująca._
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 0ae47a7898e380a25618a8d6ae6a1e0251fe466c
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 5fe011d740b1c08ae3b9cf4e3ea67d2cdd4fee66
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514590"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360099"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Python
 
-W tym przewodniku Szybki Start zobaczysz, jak przekazywanie, pobieranie i listę blokowych obiektów blob w kontenerze usługi Azure Blob storage za pomocą języka Python. Obiekty BLOB są po prostu te obiekty, które mogą przechowywać dowolnej ilości danych tekstowych lub binarnych (takich jak obrazy, dokumenty, strumieniowego przesyłania multimediów, archiwizowanie danych itp.) i są unikatowe w usłudze Azure Storage z udziałów plików, ze schematów tabel i kolejek komunikatów. (Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](/azure/storage/common/storage-introduction).)
+W tym przewodniku szybki start dowiesz się, jak za pomocą języka Python przekazywać, pobierać i wyświetlać listę blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage. Obiekty blob są po prostu obiektami, które mogą przechowywać dowolną ilość danych tekstowych lub binarnych (takich jak obrazy, dokumenty, multimedia strumieniowe, dane archiwalne itp.), a także różnią się w usłudze Azure Storage z udziałów plików, tabel bez schematu i kolejek komunikatów. (Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](/azure/storage/common/storage-introduction)).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,8 +45,9 @@ To polecenie klonuje repozytorium *Azure-Samples/storage-blobs-python-quickstart
 ## <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
 W aplikacji podaj nazwę konta magazynu i klucz konta, aby utworzyć obiekt `BlockBlobService`. Otwórz plik *example.py* w Eksploratorze rozwiązań w środowisku IDE. Zastąp wartości `accountname` i `accountkey` nazwą konta i kluczem. 
 
-```python 
-block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
+```python
+block_blob_service = BlockBlobService(
+    account_name='accountname', account_key='accountkey')
 ```
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
@@ -94,16 +95,18 @@ Gdy istnieje już kontener CloudBlobContainer, utwórz wystąpienie obiektu **Cl
 
 Ta sekcja poświęcona jest tworzeniu wystąpień obiektów, tworzeniu nowego kontenera, a następnie konfigurowaniu uprawnień w kontenerze, tak aby obiekty blob były publiczne. Kontener nazywa się **quickstartblobs**. 
 
-```python 
+```python
 # Create the BlockBlockService that is used to call the Blob service for the storage account.
-block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
- 
+block_blob_service = BlockBlobService(
+    account_name='accountname', account_key='accountkey')
+
 # Create a container called 'quickstartblobs'.
 container_name = 'quickstartblobs'
-block_blob_service.create_container(container_name) 
+block_blob_service.create_container(container_name)
 
 # Set the permission so the blobs are public.
-block_blob_service.set_container_acl(container_name, public_access=PublicAccess.Container)
+block_blob_service.set_container_acl(
+    container_name, public_access=PublicAccess.Container)
 ```
 ### <a name="upload-blobs-to-the-container"></a>Przekazywanie obiektów blob do kontenera
 
@@ -111,7 +114,7 @@ Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob
 
 Aby przekazać plik do obiektu blob, uzyskaj pełną ścieżkę pliku, łącząc nazwę katalogu i nazwę pliku na dysku lokalnym. Następnie możesz przekazać plik do określonej ścieżki przy użyciu metody `create_blob_from_path`. 
 
-Przykładowy kod tworzy plik lokalny do zastosowania w przypadku przekazywania i pobierania, przechowujący plik do przekazania jako *full_path_to_file* i nazwy obiektu blob jako *local_file_name*. Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartblobs**.
+Przykładowy kod tworzy plik lokalny do użycia podczas przekazywania i pobierania, przechowujący plik do przekazania jako *full_path_to_file* i nazwę obiektu BLOB jako *local_file_name*. Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartblobs**.
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -128,7 +131,8 @@ print("Temp file = " + full_path_to_file)
 print("\nUploading to Blob storage as blob" + local_file_name)
 
 # Upload the created file, use local_file_name for the blob name.
-block_blob_service.create_blob_from_path(container_name, local_file_name, full_path_to_file)
+block_blob_service.create_blob_from_path(
+    container_name, local_file_name, full_path_to_file)
 ```
 
 Istnieje kilka metod przekazywania, których można użyć z usługą Blob Storage. Na przykład w przypadku strumienia pamięci możesz użyć metody `create_blob_from_stream` zamiast metody `create_blob_from_path`. 
@@ -149,14 +153,16 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>Pobieranie obiektów blob
 
-Pobierz obiekty BLOB na dysk lokalny, używając `get_blob_to_path` metody. Poniższy kod pozwala pobrać obiekt blob przekazany w poprzedniej sekcji. Ciąg *_DOWNLOADED* jest dodawany jako sufiks do nazwy obiektu blob, co pozwala zobaczyć oba pliki na dysku lokalnym. 
+Pobierz obiekty blob na dysk lokalny przy użyciu `get_blob_to_path` metody. Poniższy kod pozwala pobrać obiekt blob przekazany w poprzedniej sekcji. Ciąg *_DOWNLOADED* jest dodawany jako sufiks do nazwy obiektu blob, co pozwala zobaczyć oba pliki na dysku lokalnym. 
 
 ```python
 # Download the blob(s).
 # Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name, '.txt', '_DOWNLOADED.txt'))
+full_path_to_file2 = os.path.join(local_path, string.replace(
+    local_file_name, '.txt', '_DOWNLOADED.txt'))
 print("\nDownloading blob to " + full_path_to_file2)
-block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
+block_blob_service.get_blob_to_path(
+    container_name, local_file_name, full_path_to_file2)
 ```
 
 ### <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -181,7 +187,7 @@ Aby uzyskać dodatkowe informacje dotyczące tworzenia aplikacji w języku Pytho
 - Aby uzyskać więcej informacji na temat biblioteki klienta Python, zapoznaj się z [dokumentacją interfejsu API języka Python](https://docs.microsoft.com/python/api/overview/azure/storage).
 - Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob) napisanymi przy użyciu biblioteki klienta Python.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
  
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Python. Aby dowiedzieć się więcej na temat pracy z usługą Blob Storage, przejdź do instrukcji dotyczących magazynu obiektów blob.
 

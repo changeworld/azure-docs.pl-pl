@@ -1,6 +1,6 @@
 ---
-title: Zaawansowane opcje w tokenie SAML wstępnie zintegrowanych aplikacji w usłudze Azure Active Directory podpisywanie certyfikatów | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać zaawansowanych certyfikatów podpisywania opcje w tokenie SAML wstępnie zintegrowanych aplikacji w usłudze Azure Active Directory
+title: Zaawansowane opcje podpisywania certyfikatu tokenu SAML dla wstępnie zintegrowanych aplikacji usługi Azure AD | Microsoft Docs
+description: Dowiedz się, jak korzystać z zaawansowanych opcji podpisywania certyfikatów w tokenie SAML dla wstępnie zintegrowanych aplikacji w Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,64 +16,64 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a084ceb841ea35bc62d9851f2b6c4821f4acb6fd
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ea99344399dbbbc17f0d7381e54ab68ae4bcc78f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807715"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381268"
 ---
-# <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Zaawansowane opcje w tokenie SAML dla aplikacji z galerii usługi Azure Active Directory podpisywania certyfikatu
+# <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Zaawansowane opcje podpisywania certyfikatu w tokenie SAML dla aplikacji galerii w Azure Active Directory
 
-Już dzisiaj usługi Azure Active Directory (Azure AD) obsługuje tysiące wstępnie zintegrowanych aplikacji w galerii aplikacji usługi Azure Active Directory. Ponad 500 aplikacje obsługują logowanie jednokrotne przy użyciu [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2.0 protokół, taki jak [NetSuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) aplikacji. Gdy klient uwierzytelnia się do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML, usługi Azure AD wysyła token do aplikacji (za pośrednictwem metody POST protokołu HTTP). Aplikacja następnie sprawdza poprawność tokenu i używa go do logowania klienta zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML są podpisane za pomocą unikatowy certyfikat, który jest generowany w usłudze Azure AD i określonych standardowych algorytmów.
+Dzisiaj Azure Active Directory (Azure AD) obsługuje tysiące wstępnie zintegrowanych aplikacji w galerii aplikacji Azure Active Directory. Ponad 500 aplikacji obsługuje logowanie jednokrotne za pomocą protokołu [SAML](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2,0, takiego jak aplikacja dla [pakietu](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) . Gdy klient uwierzytelnia się w aplikacji za pośrednictwem usługi Azure AD przy użyciu protokołu SAML, usługa Azure AD wysyła token do aplikacji (za pośrednictwem wpisu HTTP). Następnie aplikacja sprawdza poprawność i używa tokenu do logowania klienta zamiast monitowania o podanie nazwy użytkownika i hasła. Te tokeny SAML są podpisane przy użyciu unikatowego certyfikatu, który jest generowany w usłudze Azure AD i według określonych algorytmów standardowych.
 
-Usługa Azure AD używa niektóre z domyślnych ustawień dla aplikacji w galerii. Wartości domyślne są konfigurowane w zależności od wymagań aplikacji.
+Usługa Azure AD używa niektórych ustawień domyślnych dla aplikacji galerii. Wartości domyślne są konfigurowane na podstawie wymagań aplikacji.
 
-W usłudze Azure AD możesz skonfigurować opcje podpisywania certyfikatu i certyfikatu algorytm podpisywania.
+W usłudze Azure AD można skonfigurować opcje podpisywania certyfikatu i algorytm podpisywania certyfikatu.
 
 ## <a name="certificate-signing-options"></a>Opcje podpisywania certyfikatów
 
-Usługa Azure AD obsługuje trzy opcje certyfikatów do podpisywania:
+Usługa Azure AD obsługuje trzy opcje podpisywania certyfikatu:
 
-* **Zaloguj się potwierdzenie SAML**. Ta opcja domyślna jest ustawiona dla większości aplikacji galerii. Jeśli wybierzesz tę opcję, usługa Azure AD jako dostawcy tożsamości (IdP) podpisuje potwierdzenie SAML i certyfikatu z [X.509](https://wikipedia.org/wiki/X.509) certyfikatu aplikacji.
+* **Podpisz potwierdzenie SAML**. Ta opcja domyślna jest ustawiana dla większości aplikacji galerii. W przypadku wybrania tej opcji usługa Azure AD jako dostawca tożsamości (dostawcy tożsamości) podpisuje potwierdzenie SAML i certyfikat z certyfikatem [X. 509](https://wikipedia.org/wiki/X.509) aplikacji.
 
-* **Zaloguj się odpowiedzi SAML**. Jeśli wybierzesz tę opcję, usługi Azure AD jako dostawcy tożsamości podpisuje odpowiedzi SAML przy użyciu certyfikatu X.509 aplikacji.
+* **Podpisz odpowiedź SAML**. W przypadku wybrania tej opcji usługa Azure AD dostawcy tożsamości podpisanie odpowiedzi SAML z certyfikatem X. 509 aplikacji.
 
-* **Zaloguj się odpowiedź i potwierdzenie SAML**. Jeśli wybierzesz tę opcję, usługi Azure AD jako dostawcy tożsamości podpisuje całego tokenu SAML przy użyciu certyfikatu X.509 aplikacji.
+* **Podpisz odpowiedź i potwierdzenie protokołu SAML**. W przypadku wybrania tej opcji usługa Azure AD jako dostawcy tożsamości podpisuje cały token SAML certyfikatem X. 509 aplikacji.
 
-## <a name="certificate-signing-algorithms"></a>Algorytmy podpisywania certyfikatu
+## <a name="certificate-signing-algorithms"></a>Algorytmy podpisywania certyfikatów
 
-Usługa Azure AD obsługuje dwa algorytmy podpisywania lub bezpiecznego skrótu (SHA) do podpisywania SAML odpowiedzi:
+Usługa Azure AD obsługuje dwa algorytmy podpisywania lub bezpieczne algorytmy wyznaczania wartości skrótu (SHA) w celu podpisania odpowiedzi SAML:
 
-* **SHA-256**. Usługa Azure AD używa to domyślny algorytm używany do podpisywania odpowiedzi protokołu SAML. Jest algorytm najnowsze i bezpieczniejsze niż SHA-1. Większość aplikacji obsługuje algorytm SHA-256. Jeśli aplikacja obsługuje tylko algorytm SHA-1 jako algorytm podpisywania, możesz go zmienić. W przeciwnym razie firma Microsoft zaleca używanie algorytmu SHA-256 do podpisywania odpowiedzi protokołu SAML.
+* **SHA-256**. Usługa Azure AD używa tego domyślnego algorytmu do podpisywania odpowiedzi SAML. Jest to najnowszy algorytm i jest bezpieczniejszy niż algorytm SHA-1. Większość aplikacji obsługuje Algorytm SHA-256. Jeśli aplikacja obsługuje tylko algorytm SHA-1, można ją zmienić. W przeciwnym razie zalecamy użycie algorytmu SHA-256 do podpisywania odpowiedzi SAML.
 
-* **SHA-1**. Ten algorytm jest starszy i jest ona traktowana jak mniej bezpieczne niż algorytm SHA-256. Jeśli aplikacja obsługuje tylko ten algorytm podpisywania, możesz wybrać tę opcję w **algorytmu podpisywania** listy rozwijanej. Następnie usługa Azure AD podpisuje odpowiedzi SAML przy użyciu algorytmu SHA-1.
+* **SHA-1**. Ten algorytm jest starszy i jest traktowany jako mniej bezpieczny niż algorytm SHA-256. Jeśli aplikacja obsługuje tylko ten algorytm podpisywania, można wybrać tę opcję z listy rozwijanej **algorytm podpisywania** . Usługa Azure AD następnie podpisuje odpowiedź SAML przy użyciu algorytmu SHA-1.
 
-## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Zmienianie certyfikatu opcje podpisywania i algorytm podpisywania
+## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Zmień opcje podpisywania certyfikatu i algorytm podpisywania
 
-Aby zmienić opcje podpisywania certyfikatu SAML aplikacji i certyfikatu algorytm podpisywania, wybierz aplikację, która jest zagrożona:
+Aby zmienić opcje podpisywania certyfikatu SAML aplikacji i algorytm podpisywania certyfikatu, wybierz daną aplikację:
 
-1. W [portalu Azure Active Directory](https://aad.portal.azure.com/), zaloguj się do swojego konta. **Centrum administracyjne usługi Azure Active Directory** zostanie wyświetlona strona.
-1. W lewym okienku wybierz pozycję **Aplikacje dla przedsiębiorstw**. Zostanie wyświetlona lista aplikacji przeznaczonych dla przedsiębiorstw na Twoim koncie.
-1. Wybierz aplikację. Zostanie wyświetlona strona Omówienie aplikacji.
+1. W [portalu Azure Active Directory](https://aad.portal.azure.com/)Zaloguj się do swojego konta. Zostanie wyświetlona strona **Centrum administracyjne Azure Active Directory** .
+1. W lewym okienku wybierz pozycję **Aplikacje dla przedsiębiorstw**. Zostanie wyświetlona lista aplikacji przedsiębiorstwa znajdujących się na Twoim koncie.
+1. Wybierz aplikację. Zostanie wyświetlona strona przeglądu aplikacji.
 
    ![Przykład: Strona przeglądu aplikacji](./media/certificate-signing-options/application-overview-page.png)
 
-Następnie można zmienić certyfikatu podpisywania opcje w tokenie SAML dla tej aplikacji:
+Następnie zmień opcje podpisywania certyfikatu w tokenie SAML dla tej aplikacji:
 
-1. W okienku po lewej stronie strony przeglądu aplikacji wybierz **logowanie jednokrotne**.
-1. Jeśli **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML - Preview** zostanie wyświetlona strona, przejdź do kroku 5.
-1. Jeśli **wybierz jedną metodę logowania jednokrotnego** strona nie jest wyświetlane, zaznacz **zmianę trybów rejestracji jednokrotnej** do wyświetlania tej strony.
-1. W **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML** Jeśli jest dostępny. (Jeśli **SAML** nie jest dostępna, aplikacja nie obsługuje SAML i można zignorować pozostałą część tej procedury i artykułu.)
-1. W **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML - Preview** strony, Znajdź **certyfikat podpisywania SAML** nagłówek i wybierz **Edytuj** ikonę (ołówka). **Certyfikat podpisywania SAML** zostanie wyświetlona strona.
+1. W lewym okienku strony przegląd aplikacji wybierz pozycję **Logowanie**jednokrotne.
+1. Jeśli zostanie wyświetlona strona **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** , przejdź do kroku 5.
+1. Jeśli strona **Wybierz metodę logowania** jednokrotnego nie zostanie wyświetlona, wybierz pozycję **Zmień tryby rejestracji** jednokrotnej, aby wyświetlić tę stronę.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML** , jeśli jest dostępna. (Jeśli protokół **SAML** nie jest dostępny, aplikacja nie obsługuje protokołu SAML i można zignorować resztę tej procedury i artykułu).
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML-Preview** Znajdź nagłówek **certyfikatu podpisywania SAML** i wybierz ikonę **edycji** (ołówek). Zostanie wyświetlona strona **certyfikat podpisywania SAML** .
 
-   ![Przykład: Strony certyfikat podpisywania SAML](./media/certificate-signing-options/saml-signing-page.png)
+   ![Przykład: Strona certyfikatu podpisywania SAML](./media/certificate-signing-options/saml-signing-page.png)
 
-1. W **opcja podpisywania** listy rozwijanej wybierz **odpowiedzi SAML logowania**, **potwierdzenie SAML logowania**, lub **odpowiedź i potwierdzenie SAML logowania**. Opisy te opcje są wyświetlane we wcześniejszej części tego artykułu w [opcje podpisywania certyfikatu](#certificate-signing-options).
-1. W **algorytmu podpisywania** listy rozwijanej wybierz **SHA-1** lub **algorytmu SHA-256**. Opisy te opcje są wyświetlane we wcześniejszej części tego artykułu w [certyfikatu podpisywania algorytmy](#certificate-signing-algorithms) sekcji.
-1. Jeśli jesteś zadowolony z wybranych opcji, wybierz **Zapisz** Aby zastosować nowe ustawienia certyfikatu podpisywania protokołu SAML. W przeciwnym razie wybierz **X** aby odrzucić zmiany.
+1. Z listy rozwijanej **Opcja podpisywania** wybierz pozycję Podpisz **odpowiedź SAML**, podpisz **potwierdzenie SAML**lub podpisz **odpowiedź i potwierdzenie protokołu SAML**. Opisy tych opcji pojawiają się wcześniej w tym artykule w [opcjach podpisywania certyfikatu](#certificate-signing-options).
+1. Z listy rozwijanej **algorytm podpisywania** wybierz pozycję **SHA-1** lub **SHA-256**. Opisy tych opcji pojawiają się wcześniej w tym artykule w sekcji [algorytmy podpisywania certyfikatu](#certificate-signing-algorithms) .
+1. Jeśli jesteś zadowolony z wybranych opcji, wybierz pozycję **Zapisz** , aby zastosować nowe ustawienia certyfikatu podpisywania SAML. W przeciwnym razie wybierz **znak X** , aby odrzucić zmiany.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](configure-federated-single-sign-on-non-gallery-applications.md)
-* [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](../develop/howto-v1-debug-saml-sso-issues.md)
+* [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](configure-federated-single-sign-on-non-gallery-applications.md)
+* [Rozwiązywanie problemów z logowaniem jednokrotnym opartym na protokole SAML](../develop/howto-v1-debug-saml-sso-issues.md)

@@ -1,6 +1,6 @@
 ---
-title: Jak używać zasad alokacji niestandardowych za pomocą usługi Azure IoT Hub Device Provisioning | Dokumentacja firmy Microsoft
-description: Jak używać zasad alokacji niestandardowych za pomocą usługi Azure IoT Hub Device Provisioning Service
+title: Jak używać niestandardowych zasad alokacji przy użyciu usługi Azure IoT Hub Device Provisioning Service | Microsoft Docs
+description: Jak używać niestandardowych zasad alokacji przy użyciu usługi Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,155 +8,155 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 03d39ed01907a2ad61e089946673b96b8a2cc83e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e672e7bd43dcd05d048d22205939749c1d96579
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65916992"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348060"
 ---
-# <a name="how-to-use-custom-allocation-policies"></a>Jak używać zasad niestandardowych alokacji
+# <a name="how-to-use-custom-allocation-policies"></a>Jak używać niestandardowych zasad alokacji
 
 
-Zasady alokacji niestandardowy zapewnia większą kontrolę nad sposób przypisywania urządzeń do usługi IoT hub. Jest to realizowane za pomocą kodu niestandardowego w [funkcji platformy Azure](../azure-functions/functions-overview.md) przypisywanie urządzeń do Centrum IoT hub. Usługi device provisioning wywołuje kod funkcji platformy Azure zawierającą wszystkie istotne informacje o urządzeniu i rejestracji. Kod funkcji jest wykonywane i zwraca informacje Centrum IoT, które są używane do aprowizacji urządzenia.
+Niestandardowe zasady alokacji dają większą kontrolę nad sposobem przypisywania urządzeń do centrum IoT Hub. Jest to realizowane za pomocą niestandardowego kodu w [funkcji platformy Azure](../azure-functions/functions-overview.md) w celu przypisywania urządzeń do centrum IoT. Usługa Device Provisioning wywołuje kod funkcji platformy Azure, dostarczając wszystkie istotne informacje o urządzeniu i rejestracji. Kod funkcji jest wykonywany i zwraca informacje o usłudze IoT Hub używane do aprowizacji urządzenia.
 
-Za pomocą zasad niestandardowych alokacji należy zdefiniować własne zasady alokacji gdy zasady udostępniane przez usługi Device Provisioning Service nie spełniają wymagania danego scenariusza.
+Korzystając z niestandardowych zasad alokacji, należy zdefiniować własne zasady alokacji, gdy zasady udostępniane przez usługę Device Provisioning nie spełniają wymagań danego scenariusza.
 
-Na przykład może być możesz zbadać certyfikat którego używa podczas aprowizowania urządzenia i przypisać urządzenia do usługi IoT hub na podstawie właściwości certyfikatu. Może być może informacje są przechowywane w bazie danych dla urządzeń i muszą wykonywać zapytania bazy danych, aby określić, których urządzenia powinny być przypisane do usługi IoT hub.
+Na przykład może być konieczne przeanalizowanie certyfikatu używanego przez urządzenie podczas aprowizacji i przypisanie urządzenia do usługi IoT Hub na podstawie właściwości certyfikatu. Być może informacje są przechowywane w bazie danych dla urządzeń i muszą wysyłać zapytania do bazy danych w celu określenia, które Centrum IoT ma być przypisane do urządzenia.
 
 
-W tym artykule przedstawiono zasady alokacji niestandardowych przy użyciu funkcji platformy Azure napisane w języku C#. Dwa nowe centra IoT Hub są utworzone reprezentujących *dzielenia tostery Contoso* i *dzielenia pompy cieplne Contoso*. Urządzenia wymagające inicjowania obsługi musi mieć identyfikator rejestracji przy użyciu jednego z następujących sufiksy byli akceptowani inicjowania obsługi administracyjnej:
+W C#tym artykule przedstawiono niestandardowe zasady alokacji przy użyciu funkcji platformy Azure, która została zapisywana. Tworzone są dwa nowe centra IoT przedstawiające *Wydział wyskakujących powiadomień firmy Contoso* oraz *dział pomp cieplnych firmy Contoso*. Urządzenia żądające aprowizacji muszą mieć identyfikator rejestracji z jednym z następujących sufiksów, które mają zostać zaakceptowane do aprowizacji:
 
-- **-contoso-tstrsd-007**: Dzielenie tostery firmy Contoso
-- **-contoso-hpsd-088**: Dzielenie pompy cieplne firmy Contoso
+- **-contoso-tstrsd-007**: Dzielenie wyskakujących powiadomień contoso
+- **-contoso-hpsd-088**: Dzielenie pomp cieplnych contoso
 
-Urządzenia będą udostępniane na podstawie jednej z tych sufiksów wymagane na identyfikator rejestracji. Te urządzenia będą symulowane, przy użyciu przykładu aprowizacji objęte [zestawu SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c). 
+Urządzenia będą obsługiwane na podstawie jednego z tych wymaganych sufiksów w IDENTYFIKATORze rejestracji. Te urządzenia będą symulowane przy użyciu przykładu aprowizacji dołączonego do [zestawu SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c). 
 
-W tym artykule należy wykonać następujące czynności:
+W tym artykule zostaną wykonane następujące kroki:
 
-* Użyj wiersza polecenia platformy Azure, aby utworzyć dwa centra IoT oddziału firmy Contoso (**dzielenia tostery Contoso** i **dzielenia pompy cieplne Contoso**)
-* Tworzenie nowej rejestracji grupowej, za pomocą funkcji platformy Azure dla zasad alokacji niestandardowe
-* Utwórz klucze urządzeń dla dwóch symulacji urządzenia.
-* Konfigurowanie środowiska deweloperskiego dla zestawu SDK C usługi IoT platformy Azure
-* Symulowanie urządzenia, które chcesz zobaczyć, że są one aprowizacji zgodnie z przykładowego kodu zasady niestandardowe alokacji
+* Korzystanie z interfejsu wiersza polecenia platformy Azure do tworzenia dwóch centrów IoT działu firmy Contoso
+* Tworzenie nowej rejestracji grupowej przy użyciu funkcji platformy Azure dla niestandardowych zasad alokacji
+* Utwórz klucze urządzeń dla dwóch symulacji urządzeń.
+* Konfigurowanie środowiska deweloperskiego dla zestawu SDK usługi Azure IoT C
+* Symulacja urządzeń w celu sprawdzenia, czy są one inicjowane zgodnie z przykładowym kodem zasad niestandardowej alokacji
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończenie [skonfigurować IoT Hub Device Provisioning Service przy użyciu witryny Azure portal](./quick-setup-auto-provision.md) Szybki Start.
-* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 lub nowszym z ["programowanie aplikacji klasycznych przy użyciu C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) włączony pakiet roboczy.
+* Zakończenie [konfigurowania IoT Hub Device Provisioning Service przy użyciu Azure Portal](./quick-setup-auto-provision.md) przewodnika Szybki Start.
+* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 lub nowszy z włączonym obciążeniem ["Programowanie aplikacji klasycznych C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
 * Zainstalowana najnowsza wersja usługi[Git](https://git-scm.com/download/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-two-divisional-iot-hubs"></a>Utwórz dwa wydzielonych centra IoT Hub
+## <a name="create-two-divisional-iot-hubs"></a>Utwórz dwa rozdziałowe centra IoT
 
-W tej sekcji użyjesz usługi Azure Cloud Shell, aby utworzyć dwa nowe centra IoT Hub reprezentujący **dzielenia tostery Contoso** i **dzielenia pompy cieplne Contoso**.
+W tej sekcji użyjesz Azure Cloud Shell, aby utworzyć dwa nowe centra IoT przedstawiające **Wydział wyskakujących powiadomień firmy Contoso** oraz **dział pomp cieplnych firmy Contoso**.
 
-1. Użyj usługi Azure Cloud Shell, aby utworzyć grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az-group-create) polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
+1. Użyj Azure Cloud Shell, aby utworzyć grupę zasobów za pomocą polecenia [AZ Group Create](/cli/azure/group#az-group-create) . Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
-    Poniższy przykład tworzy grupę zasobów o nazwie *contoso-us-resource-group* w *eastus* regionu. Zaleca się użycie tej grupy dla wszystkich zasobów utworzonych w tym artykule. Takie podejście ułatwi oczyszczania po zakończeniu.
+    Poniższy przykład tworzy grupę zasobów o nazwie *contoso-US-Resource-Group* w regionie *wschodnim* . Zaleca się użycie tej grupy dla wszystkich zasobów utworzonych w tym artykule. Takie podejście ułatwi oczyszczenie po zakończeniu.
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Użyj usługi Azure Cloud Shell, aby utworzyć **dzielenia tostery Contoso** usługi IoT hub przy użyciu [az iot hub, utworzyć](/cli/azure/iot/hub#az-iot-hub-create) polecenia. Usługa IoT hub zostanie dodany do *contoso-us-resource-group*.
+2. Użyj Azure Cloud Shell, aby utworzyć wyskakujące **powiadomienia firmy Contoso działu** IoT Hub za pomocą polecenia [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Centrum IoT zostanie dodane do *grupy contoso-US-Resource-Group*.
 
-    Poniższy przykład obejmuje tworzenie Centrum IoT o nazwie *contoso tostery hub-1098* w *eastus* lokalizacji. Możesz korzystać z własnej nazwy Centrum unikatowy. Tworzą własne sufiks nazwę centrum **1098**. Przykład kodu dla zasad alokacji niestandardowe wymaga `-toasters-` nazwę koncentratora.
+    W poniższym przykładzie utworzono Centrum IoT o nazwie *contoso-* wyskakujące-hub-1098 w lokalizacji *Wschodnie* . Musisz użyć własnej unikatowej nazwy centrum. Utwórz własny sufiks w nazwie centrum zamiast **1098**. Przykładowy kod dla niestandardowych zasad alokacji wymaga `-toasters-` nazwy centrum.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
     
-    To polecenie może potrwać kilka minut.
+    Wykonanie tego polecenia może potrwać kilka minut.
 
-3. Użyj usługi Azure Cloud Shell, aby utworzyć **dzielenia pompy cieplne Contoso** usługi IoT hub przy użyciu [az iot hub, utworzyć](/cli/azure/iot/hub#az-iot-hub-create) polecenia. To IoT hub zostanie także dodana do *contoso-us-resource-group*.
+3. Użyj Azure Cloud Shell, aby utworzyć **pompy firmy Contoso, działu** IoT Hub za pomocą polecenia [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) . To centrum IoT zostanie również dodane do *grupy contoso-US-Resource-Group*.
 
-    Poniższy przykład obejmuje tworzenie Centrum IoT o nazwie *contoso-heatpumps-hub-1098* w *eastus* lokalizacji. Możesz korzystać z własnej nazwy Centrum unikatowy. Tworzą własne sufiks nazwę centrum **1098**. Przykład kodu dla zasad alokacji niestandardowe wymaga `-heatpumps-` nazwę koncentratora.
+    W poniższym przykładzie utworzono Centrum IoT o nazwie *contoso-heatpumps-Hub-1098* w lokalizacji *Wschodnie* . Musisz użyć własnej unikatowej nazwy centrum. Utwórz własny sufiks w nazwie centrum zamiast **1098**. Przykładowy kod dla niestandardowych zasad alokacji wymaga `-heatpumps-` nazwy centrum.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
     
-    To polecenie również może potrwać kilka minut.
+    Wykonanie tego polecenia może potrwać kilka minut.
 
 
 
 
-## <a name="create-the-enrollment"></a>Tworzenie rejestracji
+## <a name="create-the-enrollment"></a>Utwórz rejestrację
 
-W tej sekcji utworzysz nową grupę rejestracji, która używa zasady niestandardowe alokacji. Dla uproszczenia w tym artykule użyto [zaświadczenie klucza symetrycznego](concepts-symmetric-key-attestation.md) w przypadku rejestracji. Bardziej bezpieczne rozwiązanie, należy wziąć pod uwagę przy użyciu [zaświadczenia certyfikat X.509](concepts-security.md#x509-certificates) przy użyciu łańcucha zaufania.
+W tej sekcji utworzysz nową grupę rejestracji, która używa niestandardowych zasad alokacji. Dla uproszczenia w tym artykule jest stosowane [zaświadczenie klucza symetrycznego](concepts-symmetric-key-attestation.md) z rejestracją. Aby lepiej zabezpieczyć rozwiązanie, należy rozważyć użycie [zaświadczania certyfikatu X. 509](concepts-security.md#x509-certificates) z łańcuchem zaufania.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz swoje wystąpienie usługi Device Provisioning.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz wystąpienie usługi Device Provisioning Service.
 
-2. Wybierz **Zarządzanie rejestracjami** kartę, a następnie kliknij przycisk **Dodaj grupę rejestracji** znajdujący się u góry strony. 
+2. Wybierz kartę **Zarządzanie rejestracjami** , a następnie kliknij przycisk **Dodaj grupę rejestracji** w górnej części strony. 
 
-3. Na **Dodaj grupę rejestracji**, wprowadź następujące informacje i kliknij przycisk **Zapisz** przycisku.
+3. W obszarze **Dodaj grupę rejestracji**Wprowadź poniższe informacje, a następnie kliknij przycisk **Zapisz** .
 
-    **Nazwa grupy**: Wprowadź **contoso niestandardowe — przydzielone urządzeń**.
+    **Nazwa grupy**: Wprowadź **contoso-Custom-przydzieloną-Devices**.
 
-    **Typ zaświadczeń**: Wybierz **klucz symetryczny**.
+    **Typ**zaświadczania: Wybierz **klucz symetryczny**.
 
-    **Automatycznie generuj klucze**: Już to pole wyboru powinno być zaznaczone.
+    **Automatycznie generuj klucze**: To pole wyboru powinno być już zaznaczone.
 
-    **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **niestandardowe (Użyj funkcji platformy Azure)** .
+    **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz pozycję niestandardowa **(Użyj funkcji platformy Azure)** .
 
-    ![Dodaj niestandardowe alokacji grupę rejestracji dla zaświadczenia klucza symetrycznego](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
+    ![Dodaj grupę rejestracji niestandardowej alokacji na potrzeby zaświadczania klucza symetrycznego](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
 
-4. Na **Dodaj grupę rejestracji**, kliknij przycisk **Link nowego centrum IoT hub** połączyć oba nowych oddziałów centrów iot Hub. 
+4. W obszarze **Dodaj grupę rejestracji**kliknij pozycję **Połącz nowe centrum IoT Hub** , aby połączyć oba nowe centra usługi IoT. 
 
-    Ten krok należy wykonać zarówno z działów centra IoT Hub.
+    Ten krok należy wykonać w przypadku obu centrów obsługi IoT.
 
-    **Subskrypcja**: Jeśli masz wiele subskrypcji, wybierz subskrypcję, w której utworzono wydzielonych centra IoT Hub.
+    **Subskrypcja**: Jeśli masz wiele subskrypcji, wybierz subskrypcję, w której zostały utworzone centra usługi IoT.
 
-    **Usługa IoT hub**: Wybierz jeden z działów koncentratorów, utworzone.
+    **Centrum IoT**: Wybierz jeden z utworzonych centrów rozdziałowych.
 
     **Zasady dostępu**: Wybierz **iothubowner**.
 
-    ![Link wydzielonych centra IoT Hub z usługą aprowizacji](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
+    ![Łączenie centrów IoT z usługą aprowizacji](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
 
 
-5. Na **Dodaj grupę rejestracji**, gdy obie wydzielonych centra IoT Hub zostały połączone, należy wybrać je jako grupy usługi IoT Hub dla grupy rejestracji jak pokazano poniżej:
+5. Na stronie **Dodawanie grupy rejestracji**, gdy oba centra usługi IoT zostały połączone, należy je wybrać jako grupę IoT Hub grupy rejestracji, jak pokazano poniżej:
 
-    ![Utwórz grupę oddziałów Centrum dla rejestracji](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
+    ![Tworzenie grupy centrów rozdziałowych na potrzeby rejestracji](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
 
 
-6. Na **Dodaj grupę rejestracji**, przewiń w dół do **wybierz funkcję platformy Azure** sekcji, a następnie kliknij przycisk **Tworzenie nowej aplikacji funkcji**.
+6. Na stronie **Dodaj grupę rejestracji**przewiń w dół do sekcji **Wybierz funkcję platformy Azure** , a następnie kliknij pozycję **Utwórz nową aplikację funkcji**.
 
-7. Na **aplikacji funkcji** utworzyć stronę, zostanie otwarta, wprowadź następujące ustawienia dla nowej funkcji i kliknij przycisk **Utwórz**:
+7. Na **aplikacja funkcji** utworzyć strony, która zostanie otwarta, wprowadź następujące ustawienia nowej funkcji, a następnie kliknij pozycję **Utwórz**:
 
-    **Nazwa aplikacji**: Wprowadź unikatową nazwę aplikacji funkcji. **Contoso — funkcja aplikacji-1098** jest wyświetlana jako przykład.
+    **Nazwa aplikacji**: Wprowadź unikatową nazwę aplikacji funkcji. element **contoso-Function-App-1098** jest pokazywany jako przykład.
 
-    **Grupa zasobów**: Wybierz **Użyj istniejącej** i **contoso-us-resource-group** zachować wszystkie zasoby utworzone w tym artykule ze sobą.
+    **Grupa zasobów**: Wybierz opcję **Użyj istniejącej** i **contoso-US-Resource-Group** , aby zachować razem wszystkie zasoby utworzone w tym artykule.
 
-    **Usługa Application Insights**: W tym ćwiczeniu mogą wyłączyć tę funkcję.
+    **Application Insights**: W tym ćwiczeniu można ją wyłączyć.
 
     ![Tworzenie aplikacji funkcji](./media/how-to-use-custom-allocation-policies/function-app-create.png)
 
 
-8. Po powrocie z **Dodaj grupę rejestracji** upewnij się, ponieważ wybrano nową aplikację funkcji. Może być konieczne ponowne Wybierz subskrypcję, aby odświeżyć listę aplikacji funkcji.
+8. Na stronie **Dodawanie grupy rejestracji** upewnij się, że została wybrana Nowa aplikacja funkcji. Może być konieczne ponowne wybranie subskrypcji w celu odświeżenia listy aplikacji funkcji.
 
-    Po wybraniu nowej aplikacji funkcji kliknij **Tworzenie nowej funkcji**.
+    Po wybraniu nowej aplikacji funkcji kliknij pozycję **Utwórz nową funkcję**.
 
     ![Tworzenie aplikacji funkcji](./media/how-to-use-custom-allocation-policies/click-create-new-function.png)
 
-    zostanie otwarty w nowej aplikacji funkcji.
+    zostanie otwarta nowa aplikacja funkcji.
 
-9. W aplikacji funkcji Kliknij, aby utworzyć nową funkcję
+9. W aplikacji funkcji kliknij, aby utworzyć nową funkcję
 
     ![Tworzenie aplikacji funkcji](./media/how-to-use-custom-allocation-policies/new-function.png)
 
-    Dla nowych funkcji, należy użyć ustawień domyślnych, Utwórz nową **element Webhook i interfejs API** przy użyciu **CSharp** języka. Kliknij przycisk **Utwórz tę funkcję**.
+    Dla nowej funkcji Użyj ustawień domyślnych, aby utworzyć nowy **element webhook i interfejs API** przy użyciu języka **CSharp** . Kliknij pozycję **Utwórz tę funkcję**.
 
-    Spowoduje to utworzenie nowej funkcji języka C# o nazwie **HttpTriggerCSharp1**.
+    Spowoduje to utworzenie nowej C# funkcji o nazwie **HttpTriggerCSharp1**.
 
-10. Zastąp kod w nowej funkcji języka C# następującym kodem i kliknij przycisk **Zapisz**:    
+10. Zastąp kod nowej C# funkcji następującym kodem i kliknij przycisk **Zapisz**:    
 
-    ```C#
+    ```csharp
     #r "Newtonsoft.Json"
     using System.Net;
     using System.Text;
@@ -266,32 +266,32 @@ W tej sekcji utworzysz nową grupę rejestracji, która używa zasady niestandar
     ```
 
 
-11. Wróć do usługi **Dodaj grupę rejestracji** strony i upewnij się, nowa funkcja jest zaznaczone. Może być konieczne ponowne wybierz aplikację funkcji, aby odświeżyć listę funkcji.
+11. Wróć do strony **Dodawanie grupy rejestracji** i upewnij się, że została wybrana Nowa funkcja. Może być konieczne ponowne wybranie aplikacji funkcji w celu odświeżenia listy funkcji.
 
-    Po wybraniu nowej funkcji kliknij **Zapisz** można zapisać grupy rejestracji.
+    Po wybraniu nowej funkcji kliknij pozycję **Zapisz** , aby zapisać grupę rejestracji.
 
-    ![Na koniec zapisz grupy rejestracji](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
-
-
-12. Po zapisaniu rejestrację, otwórz go ponownie i zanotuj **klucz podstawowy**. Musisz zapisać rejestracji, aby najpierw mają klucze generowane. Ten klucz będzie używany do generowania kluczy unikatowych urządzeń symulowanych urządzeń później.
+    ![Na koniec Zapisz grupę rejestracji](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
 
 
-## <a name="derive-unique-device-keys"></a>Tworzenia kluczy unikatowych urządzeń
+12. Po zapisaniu rejestracji Otwórz ją ponownie i zanotuj **klucz podstawowy**. Musisz najpierw zapisać rejestrację, aby generować klucze. Ten klucz zostanie użyty do wygenerowania unikatowych kluczy urządzeń dla symulowanych urządzeń.
 
-W tej sekcji utworzysz dwa klucze unikatowe urządzenia. Jeden klucz będzie używany przez urządzenie symulowane tostera. Drugi klucz będzie używany przez urządzenie symulowane pompy ciepła.
 
-Aby wygenerować klucz urządzenia, którego użyjesz **klucza podstawowego** zanotowanej wcześniej do obliczenia [HMAC SHA256](https://wikipedia.org/wiki/HMAC) identyfikatora rejestracji urządzeń dla każdego urządzenia i przekonwertować wynik w formacie Base64. Aby uzyskać więcej informacji na temat tworzenia kluczy pochodnych urządzenia przy użyciu grup rejestracji, zobacz sekcję rejestracji grupy [zaświadczenie klucza symetrycznego](concepts-symmetric-key-attestation.md).
+## <a name="derive-unique-device-keys"></a>Utwórz unikatowe klucze urządzeń
 
-Na przykład w tym artykule Użyj następujących identyfikatorów rejestracji urządzenia dwóch obliczeniowych i klucz urządzenia, dla obu urządzeń. Oba identyfikatory rejestracji ma prawidłowy sufiks do pracy z przykładowym kodem zasady alokacji niestandardowe:
+W tej sekcji utworzysz dwa unikatowe klucze urządzeń. Jeden klucz zostanie użyty dla symulowanego urządzenia wyskakującego. Drugi klucz zostanie użyty dla symulowanego urządzenia pompy termicznej.
+
+Aby wygenerować klucz urządzenia, należy zanotować **klucz podstawowy** wcześniej, aby obliczyć [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) identyfikatora rejestracji urządzeń dla każdego urządzenia i przekonwertować wynik na format Base64. Aby uzyskać więcej informacji na temat tworzenia pochodnych kluczy urządzeń przy użyciu grup rejestracji, zobacz sekcję rejestracje grupowe zaświadczania [klucza symetrycznego](concepts-symmetric-key-attestation.md).
+
+W przykładzie w tym artykule należy użyć następujących dwóch identyfikatorów rejestracji urządzeń i obliczyć klucz urządzenia dla obu urządzeń. Oba identyfikatory rejestracji mają prawidłowy sufiks do pracy z przykładowym kodem dla niestandardowych zasad alokacji:
 
 - **breakroom499-contoso-tstrsd-007**
 - **mainbuilding167-contoso-hpsd-088**
 
 #### <a name="linux-workstations"></a>Stacje robocze systemu Linux
 
-Jeśli używasz stacja robocza z systemem Linux umożliwia openssl Generowanie kluczy pochodnych urządzeń jak pokazano w poniższym przykładzie.
+Jeśli używasz stacji roboczej z systemem Linux, możesz użyć OpenSSL, aby wygenerować pochodne klucze urządzenia, jak pokazano w poniższym przykładzie.
 
-1. Zastąp wartość **klucz** z **klucz podstawowy** zanotowany wcześniej.
+1. Zastąp wartość **klucza kluczem** **podstawowym** zanotowanym wcześniej.
 
     ```bash
     KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
@@ -314,9 +314,9 @@ Jeśli używasz stacja robocza z systemem Linux umożliwia openssl Generowanie k
 
 #### <a name="windows-based-workstations"></a>Stacje robocze z systemem Windows
 
-Jeśli używasz stację roboczą z systemem Windows można użyć programu PowerShell do wygenerowanie własnego klucza pochodnego urządzenia, jak pokazano w poniższym przykładzie.
+Jeśli używasz stacji roboczej z systemem Windows, możesz użyć programu PowerShell, aby wygenerować pochodny klucz urządzenia, jak pokazano w poniższym przykładzie.
 
-1. Zastąp wartość **klucz** z **klucz podstawowy** zanotowany wcześniej.
+1. Zastąp wartość **klucza kluczem** **podstawowym** zanotowanym wcześniej.
 
     ```powershell
     $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
@@ -340,7 +340,7 @@ Jeśli używasz stację roboczą z systemem Windows można użyć programu Power
     ```
 
 
-Symulowane urządzenia będzie używać kluczy pochodnych urządzenia przy użyciu każdego Identyfikatora rejestracji zaświadczenie klucza symetrycznego.
+Symulowane urządzenia będą używały pochodnych kluczy urządzeń z każdym IDENTYFIKATORem rejestracji w celu przeprowadzenia zaświadczania klucza symetrycznego.
 
 
 
@@ -349,9 +349,9 @@ Symulowane urządzenia będzie używać kluczy pochodnych urządzenia przy użyc
 
 W tej sekcji przygotujesz środowisko deweloperskie używane do opracowania [zestawu SDK języka C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c). Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. To urządzenie symulowane podejmie próbę aprowizacji podczas sekwencji rozruchu urządzenia.
 
-Ta sekcja dotyczy opracowane głównie pod kątem stację roboczą z systemem Windows. Na przykład Linux, zobacz Konfigurowanie maszyn wirtualnych w [instrukcjami aprowizacji dla wielodostępności](how-to-provision-multitenant.md).
+Ta sekcja jest ukierunkowana na stację roboczą opartą na systemie Windows. Aby zapoznać się z przykładem systemu Linux, zobacz Konfigurowanie maszyn wirtualnych w temacie [jak zapewnić](how-to-provision-multitenant.md)obsługę wielodostępności.
 
-1. Pobierz [system kompilacji CMake](https://cmake.org/download/).
+1. Pobierz [system kompilacji CMAKE](https://cmake.org/download/).
 
     Ważne jest, aby wstępnie wymagane składniki (program Visual Studio oraz pakiet roboczy „Programowanie aplikacji klasycznych w języku C++”) były zainstalowane na tym komputerze **przed** uruchomieniem `CMake` instalacji. Gdy wymagania wstępne zostaną spełnione, a pobrane pliki zweryfikowane, zainstaluj system kompilacji CMake.
 
@@ -398,17 +398,17 @@ Ta sekcja dotyczy opracowane głównie pod kątem stację roboczą z systemem Wi
 
 
 
-## <a name="simulate-the-devices"></a>Symulowanie urządzenia
+## <a name="simulate-the-devices"></a>Symulowanie urządzeń
 
-W tej sekcji spowoduje zaktualizowanie przykładu aprowizacji o nazwie **prov\_dev\_klienta\_przykładowe** znajduje się w zestawie SDK C usługi Azure IoT konfigurowania wcześniej. 
+W tej sekcji zostanie zaktualizowany przykład aprowizacji o nazwie **Prov\_dev\_Client\_Sample** znajdujący się w wcześniej skonfigurowanym zestawie SDK języka C usługi Azure IoT. 
 
-Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje wysłanie żądania aprowizacji wystąpienia usługi Device Provisioning Service. Sekwencji rozruchu spowoduje, że urządzenie tostera do rozpoznawania i przypisane do usługi IoT hub za pomocą zasad niestandardowych alokacji.
+Ten przykładowy kod symuluje sekwencję rozruchu urządzenia, która wysyła żądanie aprowizacji do wystąpienia usługi Device Provisioning. Sekwencja rozruchu spowoduje, że urządzenie wyskakujące zostanie rozpoznane i przypisane do usługi IoT Hub przy użyciu niestandardowych zasad alokacji.
 
 1. W witrynie Azure Portal wybierz kartę **Przegląd** dla swojej usługi Device Provisioning Service, a następnie zapisz wartość **_Zakres identyfikatorów_** .
 
     ![Wyodrębnianie informacji o punkcie końcowym usługi Device Provisioning Service z bloku portalu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. W programie Visual Studio, otwórz **azure_iot_sdks.sln** plik rozwiązania, który został wygenerowany po uruchomieniu narzędzia CMake wcześniej. Plik rozwiązania powinien znajdować się w następującej lokalizacji:
+2. W programie Visual Studio Otwórz plik rozwiązania **azure_iot_sdks. sln** , który został wygenerowany przez uruchomienie CMAKE wcześniej. Plik rozwiązania powinien znajdować się w następującej lokalizacji:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -434,16 +434,16 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
 6. Kliknij prawym przyciskiem myszy projekt **prov\_dev\_client\_sample**, a następnie wybierz pozycję **Ustaw jako projekt startowy**. 
 
 
-#### <a name="simulate-the-contoso-toaster-device"></a>Symulowanie urządzenia tostera firmy Contoso
+#### <a name="simulate-the-contoso-toaster-device"></a>Symulowanie urządzenia wyskakującego firmy Contoso
 
-1. Aby zasymulować urządzenie tostera, Znajdź wywołanie `prov_dev_set_symmetric_key_info()` w **prov\_dev\_klienta\_sample.c** który jest ujęty w komentarz.
+1. Aby zasymulować urządzenie wyskakujące, Znajdź `prov_dev_set_symmetric_key_info()` wywołanie w **Prov\_dev\_Client\_Sample. c** , które jest oznaczone jako komentarz.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Usuń znaczniki komentarza wywołania funkcji i Zastąp wartości symboli zastępczych (włącznie z nawiasami) z Identyfikatorem rejestracji tostera i klucz urządzenia pochodnej, wcześniej wygenerowania. Wartość klucza **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** pokazane poniżej tylko jest podawana jako przykład.
+    Usuń komentarz wywołania funkcji i Zastąp wartości symboli zastępczych (włącznie z nawiasami ostrymi) IDENTYFIKATORem rejestracji wyskakującego powiadomienia i wygenerowanym wcześniej kluczem urządzenia. Wartość klucza **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** pokazano poniżej jest pokazana jako przykład.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -454,7 +454,7 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
 
 2. Z menu programu Visual Studio wybierz pozycję **Debuguj** > **Uruchom bez debugowania**, aby uruchomić rozwiązanie. W monicie o ponowne skompilowanie projektu kliknij przycisk **Tak**, aby ponownie skompilować projekt przed uruchomieniem.
 
-    Następujące dane wyjściowe jest przykładem urządzenia symulowanego tostera pomyślnie uruchamiania systemu oraz podłączania do aprowizacji wystąpienia usługi ma być przypisane do Centrum IoT tostery przez zasadę alokacji niestandardowe:
+    Następujące dane wyjściowe to przykład symulowanego urządzenia wyskakującego rozruchu i nawiązanie połączenia z wystąpieniem usługi aprowizacji do przypisania do centrum IoT Hub przez niestandardowe zasady alokacji:
 
     ```cmd
     Provisioning API Version: 1.2.9
@@ -471,9 +471,9 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
     ```
 
 
-#### <a name="simulate-the-contoso-heat-pump-device"></a>Symulowanie urządzenia pompy ciepła firmy Contoso
+#### <a name="simulate-the-contoso-heat-pump-device"></a>Symulowanie urządzenia pompy termicznej firmy Contoso
 
-1. Zasymulować urządzenie pompy ciepła, należy zaktualizować wywołanie `prov_dev_set_symmetric_key_info()` w **prov\_dev\_klienta\_sample.c** ponownie z Identyfikatorem rejestracji pompy częstości dostępu i klucz urządzenia pochodnej wygenerowanego wcześniej . Wartość klucza **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** pokazane poniżej tylko jest podawana jako przykład.
+1. Aby zasymulować urządzenie pompy cieplnej, zaktualizuj wywołanie `prov_dev_set_symmetric_key_info()` do programu w **Prov\_dev\_Client\_Sample. c** ponownie z identyfikatorem rejestracji pompy cieplnej i wygenerowanym wcześniej kluczem urządzenia. Wartość klucza **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** pokazana poniżej jest również podana jako przykład.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -484,7 +484,7 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
 
 2. Z menu programu Visual Studio wybierz pozycję **Debuguj** > **Uruchom bez debugowania**, aby uruchomić rozwiązanie. W monicie o ponowne skompilowanie projektu kliknij przycisk **Tak**, aby ponownie skompilować projekt przed uruchomieniem.
 
-    Następujące dane wyjściowe jest przykładem urządzenia symulowanego pompy ciepła pomyślnie uruchamiania systemu oraz podłączania do aprowizacji wystąpienia usługi ma być przypisane do Centrum IoT pompy cieplne Contoso przez zasadę alokacji niestandardowe:
+    Poniższe dane wyjściowe to przykład urządzenia symulowanej pompy cieplnej, którego rozruch zakończył się pomyślnie, i połączenie z wystąpieniem usługi aprowizacji, które ma zostać przypisane do centrum IoT firmy Contoso, za pomocą niestandardowych zasad alokacji:
 
     ```cmd
     Provisioning API Version: 1.2.9
@@ -501,45 +501,45 @@ Ten przykładowy kod symuluje sekwencji rozruchu urządzenia, która spowoduje w
     ```
 
 
-## <a name="troubleshooting-custom-allocation-policies"></a>Rozwiązywanie problemów z zasad alokacji niestandardowe
+## <a name="troubleshooting-custom-allocation-policies"></a>Rozwiązywanie problemów z niestandardowymi zasadami alokacji
 
-W poniższej tabeli przedstawiono oczekiwane scenariusze i kody błędów wyniki, które mogą wystąpić. Ta tabela służy do rozwiązywania problemów z błędami zasad alokacji niestandardowych za pomocą usługi Azure Functions.
+W poniższej tabeli przedstawiono oczekiwane scenariusze i kody błędów wyników, które mogą wystąpić. Ta tabela ułatwia rozwiązywanie problemów z niestandardowymi błędami zasad alokacji przy użyciu Azure Functions.
 
 
-| Scenariusz | Wynik rejestracji z usługi Provisioning Service | Inicjowanie obsługi administracyjnej wyniki zestawu SDK |
+| Scenariusz | Wynik rejestracji z usługi aprowizacji | Wyniki zestawu SDK aprowizacji |
 | -------- | --------------------------------------------- | ------------------------ |
-| Element webhook zwraca 200 OK "iotHubHostName" Ustaw prawidłową nazwę hosta Centrum IoT | Stan wyniku: Przypisany  | Zestaw SDK zwraca PROV_DEVICE_RESULT_OK wraz z informacjami Centrum |
-| Zwraca element webhook, 200 OK "iotHubHostName" obecne w odpowiedzi, ale ustawiony na pusty ciąg lub wartość null | Stan wyniku: Niepowodzenie<br><br> Kod błędu: CustomAllocationIotHubNotSpecified (400208) | Zestaw SDK zwraca PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| Element webhook zwraca 401 Brak autoryzacji | Stan wyniku: Niepowodzenie<br><br>Kod błędu: CustomAllocationUnauthorizedAccess (400209) | Zestaw SDK zwraca PROV_DEVICE_RESULT_UNAUTHORIZED |
-| Rejestracja indywidualna została utworzona w celu Wyłącz urządzenie | Stan wyniku: Wyłączone | Zestaw SDK zwraca PROV_DEVICE_RESULT_DISABLED |
-| Element webhook zwraca kod błędu: > = 429 | Organizowanie DPS ponowi próbę wiele razy. Zasady ponawiania jest obecnie:<br><br>&nbsp;&nbsp;-Liczba ponownych prób: 10<br>&nbsp;&nbsp;— Interwał początkowa: 1s<br>&nbsp;&nbsp;-Przyrostu: 9S | Zestaw SDK będzie zignorować błąd i przesłać inny komunikat o stanie get w określonym czasie |
+| Element webhook zwraca 200 OK z ustawieniem "iotHubHostName" prawidłową nazwą hosta Centrum IoT Hub | Stan wyniku: Przypisany  | Zestaw SDK zwraca PROV_DEVICE_RESULT_OK wraz z informacjami o centrum |
+| Element webhook zwraca 200 OK z elementem "iotHubHostName" znajdującym się w odpowiedzi, ale ustawia pusty ciąg lub wartość null | Stan wyniku: Niepowodzenie<br><br> Kod błędu: CustomAllocationIotHubNotSpecified (400208) | Zestaw SDK zwraca PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| Element webhook zwraca 401 bez autoryzacji | Stan wyniku: Niepowodzenie<br><br>Kod błędu: CustomAllocationUnauthorizedAccess (400209) | Zestaw SDK zwraca PROV_DEVICE_RESULT_UNAUTHORIZED |
+| Utworzono indywidualną rejestrację w celu wyłączenia urządzenia | Stan wyniku: Wyłączone | Zestaw SDK zwraca PROV_DEVICE_RESULT_DISABLED |
+| Element webhook zwraca kod błędu > = 429 | Trwa ponawianie przez aranżację DPS. Zasady ponawiania są obecnie następujące:<br><br>&nbsp;&nbsp;-Liczba ponownych prób: 10<br>&nbsp;&nbsp;-Początkowy interwał: samych<br>&nbsp;&nbsp;Pełny 9 | Zestaw SDK zignoruje błąd i wyśle inny komunikat o stanie w określonym czasie |
 | Element webhook zwraca każdy inny kod stanu | Stan wyniku: Niepowodzenie<br><br>Kod błędu: CustomAllocationFailed (400207) | Zestaw SDK zwraca PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz kontynuować pracę z zasobów utworzonych w tym artykule, możesz pozostawić je. Jeśli nie planujesz kontynuować korzystanie z zasobów, użyj następujące kroki, aby usunąć wszystkie zasoby utworzone w tym artykule, aby uniknąć niepotrzebnych opłat.
+Jeśli planujesz kontynuować pracę z zasobami utworzonymi w tym artykule, możesz je pozostawić. Jeśli nie planujesz kontynuowania korzystania z zasobu, wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone w tym artykule, aby uniknąć niepotrzebnych opłat.
 
-W tym miejscu założono w nim utworzyć wszystkie zasoby w tym artykule, zgodnie z instrukcjami w tej samej grupie zasobów o nazwie **contoso-us-resource-group**.
+W tym artykule przyjęto założenie, że utworzono wszystkie zasoby z tego artykułu zgodnie z instrukcjami w tej samej grupie zasobów o nazwie **contoso-US-Resource-Group**.
 
 > [!IMPORTANT]
 > Usunięcie grupy zasobów jest nieodwracalne. Grupa zasobów oraz wszystkie zawarte w niej zasoby zostaną trwale usunięte. Uważaj, aby nie usunąć przypadkowo niewłaściwych zasobów lub grupy zasobów. Jeśli usługa IoT Hub została utworzona wewnątrz istniejącej grupy zasobów zawierającej zasoby, które chcesz zachować, zamiast usuwać całą grupę zasobów, usuń tylko zasób usługi IoT Hub.
 >
 
-Aby usunąć grupę zasobów o nazwie:
+Aby usunąć grupę zasobów według nazwy:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-2. W **Filtruj według nazwy...**  polu tekstowym wpisz nazwę zasobu, grupy, zawierający zasoby, **contoso-us-resource-group**. 
+2. W polu tekstowym **Filtruj według nazwy..** . Wpisz nazwę grupy zasobów zawierającej Twoje zasoby, **contoso-US-Resource-Group**. 
 
 3. Z prawej strony grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Ponownie wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**. Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej Reprovisioning, zobacz [reprovisioning pojęcia dotyczące urządzeń usługi IoT Hub](concepts-device-reprovision.md) 
-- Aby dowiedzieć się więcej anulowania zastrzeżenia, zobacz [jak anulować aprowizację urządzeń, które wcześniej zostały udostępnione do automatycznego](how-to-unprovision-devices.md) 
+- Aby dowiedzieć się więcej, zobacz temat [IoT Hub ponowne Inicjowanie obsługi administracyjnej urządzeń](concepts-device-reprovision.md) 
+- Aby dowiedzieć się więcej, zobacz [Jak anulować obsługę administracyjną urządzeń, które wcześniej były obsługiwane](how-to-unprovision-devices.md) . 
 
 
 

@@ -3,17 +3,17 @@ title: Omówienie usługi Azure IoT Hub Device Provisioning Service | Microsoft 
 description: W tym artykule opisano aprowizację urządzeń na platformie Azure za pomocą usług Device Provisioning Service i IoT Hub
 author: nberdy
 ms.author: nberdy
-ms.date: 12/05/2017
+ms.date: 04/04/2019
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 89e0b6b5bedf36c89bf3a54f4baf42f7019625c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8331161cde9e7717834dabd2228848de40f7be23
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746107"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360303"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Aprowizowanie urządzeń za pomocą usługi Azure IoT Hub Device Provisioning Service
 Platforma Microsoft Azure zapewnia bogaty zestaw zintegrowanych usług w chmurze publicznej spełniający wszelkie potrzeby rozwiązania IoT. Usługa IoT Hub Device Provisioning Service to usługa pomocnika usługi IoT Hub, która umożliwia bezobsługową aprowizację w miarę potrzeb w odpowiednim centrum IoT, nie wymagając przy tym interwencji człowieka, co umożliwia klientom aprowizację milionów urządzeń w sposób bezpieczny i skalowalny.
@@ -96,7 +96,7 @@ Usługa Device Provisioning Service, tak jak wszystkie usługi IoT platformy Azu
 
 Usługa Device Provisioning Service obsługuje połączenia HTTPS tylko na potrzeby operacji usługi.
 
-## <a name="regions"></a>Regiony
+## <a name="regions"></a>Regions
 Usługa Device Provisioning Service jest dostępna w wielu regionach. Aktualna lista obecnych i nowo ogłoszonych regionów dla wszystkich usług jest dostępna na stronie [Regiony świadczenia usługi Azure](https://azure.microsoft.com/regions/). Dostępność usługi Device Provisioning Service można sprawdzić na stronie [Stan platformy Azure](https://azure.microsoft.com/status/).
 
 > [!NOTE]
@@ -108,14 +108,15 @@ Obowiązuje umowa dotycząca poziomu usług (SLA, Service Level Agreement) gwara
 ## <a name="quotas"></a>Przydziały
 W każdej subskrypcji platformy Azure obowiązują domyślne limity przydziału, które mogą mieć wpływ na zakres rozwiązania IoT. Aktualny limit dla każdej subskrypcji wynosi 10 usług Device Provisioning Service na subskrypcję.
 
-Więcej informacji na temat limitów przydziałów znajduje się w artykułach:
+[!INCLUDE [azure-iotdps-limits](../../includes/iot-dps-limits.md)]
 
+Więcej informacji na temat limitów przydziałów znajduje się w artykułach:
 * [Azure Subscription Service Limits](../azure-subscription-service-limits.md) (Limity usług subskrypcji platformy Azure)
 
 ## <a name="related-azure-components"></a>Powiązane składniki platformy Azure
 Usługa Device Provisioning Service automatyzuje aprowizowanie urządzeń w usłudze Azure IoT Hub. Dowiedz się więcej na temat usługi [IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz ogólnie wiesz, na czym polega aprowizowanie urządzeń IoT na platformie Azure. Następnym krokiem jest wypróbowanie kompletnego scenariusza IoT.
 > [!div class="nextstepaction"]
 > [Konfigurowanie usługi IoT Hub Device Provisioning Service przy użyciu witryny Azure Portal](quick-setup-auto-provision.md)
