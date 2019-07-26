@@ -1,109 +1,108 @@
 ---
 title: Tabela obsługi usługi Azure Backup
 description: Zawiera podsumowanie ustawień obsługi i ograniczeń dotyczących usługi Azure Backup.
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 99dd3c0b07307f2d0bf97dbff697e32e648705ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6b7dfe8fb8ade7f84f41fb5602aff68b4f52cf2
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66400173"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464833"
 ---
 # <a name="azure-backup-support-matrix"></a>Tabela obsługi usługi Azure Backup
 
-Możesz użyć [kopia zapasowa Azure](backup-overview.md) do tworzenia kopii zapasowych danych z platformy Microsoft Azure w chmurze. Ten artykuł zawiera podsumowanie ustawień ogólną pomoc techniczną i ograniczenia dotyczące usługi Azure Backup scenariuszy i wdrożenia.
+Za pomocą [Azure Backup](backup-overview.md) można tworzyć kopie zapasowe danych na platformie Microsoft Azure w chmurze. Ten artykuł zawiera podsumowanie ogólnych ustawień pomocy technicznej i ograniczeń dotyczących Azure Backup scenariuszy i wdrożeń.
 
 Dostępne są inne macierze pomocy technicznej:
 
-- Macierz obsługi dla [kopii zapasowych maszyn wirtualnych (VM)](backup-support-matrix-iaas.md)
-- Macierz obsługi kopii zapasowej za pomocą [System Center Data Protection Manager (DPM) / Microsoft Azure Backup serwera (MABS)](backup-support-matrix-mabs-dpm.md)
-- Macierz obsługi kopii zapasowej za pomocą [agenta usługi Microsoft Azure Recovery Services (MARS)](backup-support-matrix-mars-agent.md)
+- Macierz obsługi dla [kopii zapasowej maszyny wirtualnej platformy Azure](backup-support-matrix-iaas.md)
+- Macierz obsługi dla kopii zapasowej przy użyciu programu [System Center Data Protection Manager (DPM)/Microsoft Azure Backup Server (serwera usługi MAB)](backup-support-matrix-mabs-dpm.md)
+- Macierz obsługi kopii zapasowej przy użyciu [agenta Microsoft Azure Recovery Services (MARS)](backup-support-matrix-mars-agent.md)
 
 ## <a name="vault-support"></a>Obsługa magazynu
 
-Usługa Azure Backup używa magazynów usługi Recovery Services umożliwia organizowanie i zarządzanie kopiami zapasowymi. Używa również magazynów do przechowywania danych kopii zapasowej.
+Azure Backup używa magazynów Recovery Services, aby organizować kopie zapasowe i zarządzać nimi. Używa również magazynów do przechowywania danych kopii zapasowej.
 
-W poniższej tabeli opisano funkcje magazynów usługi Recovery Services:
+W poniższej tabeli opisano funkcje magazynów Recovery Services:
 
 **Funkcja** | **Szczegóły**
 --- | ---
-**Magazynów w subskrypcji** | Do 500 magazynów usługi Recovery Services w ramach jednej subskrypcji.
-**Maszyny w magazynie** | Maksymalnie 1000 maszyn wirtualnych platformy Azure w jednym magazynie.<br/><br/> Maksymalnie 50 MABS można zarejestrować serwery w jednym magazynie.
-**Źródła danych w magazynie magazynu** | Maksymalna 54,400 GB. Nie ma limitu kopii zapasowych maszyn wirtualnych platformy Azure.
-**Tworzenie kopii zapasowych w magazynie** | **Maszyny wirtualne platformy Azure:** Raz dziennie.<br/><br/>**Komputery chronione przez program DPM/serwera usługi Mab:** Dwa razy dziennie.<br/><br/> **Kopię zapasową bezpośrednio za pomocą agenta usług MARS maszyny:** Trzy razy dziennie.
-**Tworzenie kopii zapasowych między magazynów** | Kopia zapasowa jest w obrębie regionu.<br/><br/> Potrzebujesz magazynu w każdym regionie platformy Azure zawierającej maszyny wirtualne, aby utworzyć kopię zapasową. Nie można utworzyć kopii w innym regionie.
-**Przeniesienie magazynów** | Możesz [Przenieś magazynów](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) między subskrypcjami lub między grupami zasobów w tej samej subskrypcji.
-**Przenoszenie danych między magazynami** | Przenoszenie danych kopii zapasowej między magazynów nie jest obsługiwane.
-**Modyfikowanie typu magazynu magazynu** | Typ replikacji magazynu (magazyn geograficznie nadmiarowy lub magazyn lokalnie nadmiarowy) dla magazynu można zmodyfikować przed kopie zapasowe są przechowywane. Po rozpoczęciu wykonywania kopii zapasowych w magazynie nie można zmienić typu replikacji.
+**Magazyny w subskrypcji** | Do 500 magazynów usługi Recovery Services w ramach jednej subskrypcji.
+**Maszyny w magazynie** | Do 1 000 maszyn wirtualnych platformy Azure w jednym magazynie.<br/><br/> Do 50 serwerów serwera usługi MAB można zarejestrować w pojedynczym magazynie.
+**Źródła danych w magazynie magazynu** | Maksymalna 54 400 GB. Nie ma limitu kopii zapasowych maszyn wirtualnych platformy Azure.
+**Kopie zapasowe w magazynie** | **Maszyny wirtualne platformy Azure:** Raz dziennie.<br/><br/>**Maszyny chronione przez program DPM/serwera usługi MAB:** Dwa razy dziennie.<br/><br/> **Maszyny z kopią zapasową bezpośrednio przy użyciu agenta MARS:** Trzy razy dziennie.
+**Kopie zapasowe między magazynami** | Kopia zapasowa znajduje się w regionie.<br/><br/> Potrzebujesz magazynu w każdym regionie świadczenia usługi Azure, który zawiera maszyny wirtualne, dla których chcesz utworzyć kopię zapasową. Nie można utworzyć kopii zapasowej w innym regionie.
+**Przenoszenie magazynów** | Magazyny można [przenosić](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) między subskrypcjami lub między grupami zasobów w ramach tej samej subskrypcji.
+**Przenoszenie danych między magazynami** | Przeniesienie danych kopii zapasowej między magazynami nie jest obsługiwane.
+**Modyfikuj typ magazynu magazynów** | Możesz zmodyfikować typ replikacji magazynu (magazyn Geograficznie nadmiarowy lub Magazyn lokalnie nadmiarowy) dla magazynu przed zapisaniem kopii zapasowych. Po rozpoczęciu wykonywania kopii zapasowych w magazynie nie można zmienić typu replikacji.
 
 ## <a name="on-premises-backup-support"></a>Obsługa lokalnych kopii zapasowych
 
-Oto, co jest obsługiwane, jeśli chcesz utworzyć kopię zapasową maszyn lokalnych:
+Oto nowości obsługiwane, jeśli chcesz utworzyć kopię zapasową maszyn lokalnych:
 
-**Maszyna** | **Co to jest wykonywana kopia zapasowa** | **Lokalizacja** | **Funkcje**
+**Maszyna** | **Co to jest kopia zapasowa** | **Location** | **Funkcje**
 --- | --- | --- | ---
-**Bezpośrednie tworzenie kopii zapasowych maszyny Windows za pomocą agenta usług MARS** | Pliki, foldery, stan systemu | Utwórz kopię zapasową w magazynie usługi Recovery Services. | Tworzenie kopii zapasowej trzy razy dziennie<br/><br/> Kopia zapasowa nie obsługujących aplikacji<br/><br/> Przywracanie plików, folderów, woluminów
-**Bezpośrednie tworzenie kopii zapasowych z maszyny z systemem Linux za pomocą agenta usług MARS** | Kopia zapasowa nie jest obsługiwane
-**Tworzenie kopii zapasowej programu DPM** | Plików, folderów, woluminów, stanu systemu, dane aplikacji | Utwórz kopię zapasową do lokalnego magazynu programu DPM. Program DPM wykonuje kopie zapasowe w magazynie. | Migawki z uwzględnieniem aplikacji<br/><br/> Poziom szczegółowości pełnej kopii zapasowych i odzyskiwania<br/><br/> Linux obsługiwane w przypadku maszyn wirtualnych (Hyper-V/VMware)<br/><br/> Oracle nie jest obsługiwane
-**Tworzenie kopii zapasowej serwera usługi Mab** | Plików, folderów, woluminów, stanu systemu, dane aplikacji | Tworzenie kopii zapasowej do magazynu lokalnego serwera usługi MAB. Usługa MABS wykonuje kopie zapasowe w magazynie. | Migawki z uwzględnieniem aplikacji<br/><br/> Poziom szczegółowości pełnej kopii zapasowych i odzyskiwania<br/><br/> Linux obsługiwane w przypadku maszyn wirtualnych (Hyper-V/VMware)<br/><br/> Oracle nie jest obsługiwane
+**Bezpośrednia kopia zapasowa maszyny z systemem Windows z agentem MARS** | Pliki, foldery, stan systemu | Utwórz kopię zapasową w magazynie Recovery Services. | Tworzenie kopii zapasowej trzy razy dziennie<br/><br/> Brak kopii zapasowej obsługującej aplikacje<br/><br/> Przywróć plik, folder, wolumin
+**Bezpośrednie tworzenie kopii zapasowej maszyny z systemem Linux przy użyciu agenta MARS** | Kopia zapasowa nie jest obsługiwana
+**Tworzenie kopii zapasowej w programie DPM** | Pliki, foldery, woluminy, stan systemu, dane aplikacji | Utwórz kopię zapasową do lokalnego magazynu programu DPM. Program DPM wykonuje kopie zapasowe w magazynie. | Migawki z uwzględnieniem aplikacji<br/><br/> Pełny stopień szczegółowości tworzenia kopii zapasowych i odzyskiwania<br/><br/> System Linux jest obsługiwany w przypadku maszyn wirtualnych (Hyper-V/VMware)<br/><br/> Oracle nie jest obsługiwany
+**Utwórz kopię zapasową do serwera usługi MAB** | Pliki, foldery, woluminy, stan systemu, dane aplikacji | Utwórz kopię zapasową do magazynu lokalnego serwera usługi MAB. Usługa MABS wykonuje kopie zapasowe w magazynie. | Migawki z uwzględnieniem aplikacji<br/><br/> Pełny stopień szczegółowości tworzenia kopii zapasowych i odzyskiwania<br/><br/> System Linux jest obsługiwany w przypadku maszyn wirtualnych (Hyper-V/VMware)<br/><br/> Oracle nie jest obsługiwany
 
-## <a name="azure-vm-backup-support"></a>Maszyna wirtualna kopii zapasowej pomocy technicznej platformy Azure
+## <a name="azure-vm-backup-support"></a>Obsługa kopii zapasowych maszyny wirtualnej platformy Azure
 
 ### <a name="azure-vm-limits"></a>Limity maszyn wirtualnych platformy Azure
 
 **Limit** | **Szczegóły**
 --- | ---
-**Dyski z danymi maszyny Wirtualnej platformy Azure** | Limit wynoszący 16
-**Rozmiar dysku danych w usłudze Azure VM** | Poszczególnych dysków może być maksymalnie 4095 GB.
+**Dyski danych maszyny wirtualnej platformy Azure** | Limit wynoszący 16
+**Rozmiar dysku danych maszyny wirtualnej platformy Azure** | Poszczególne dyski mogą należeć do 4 095 GB
 
 ### <a name="azure-vm-backup-options"></a>Opcje kopii zapasowych maszyn wirtualnych platformy Azure
 
-Oto, co jest obsługiwane, jeśli chcesz utworzyć kopię zapasową maszyn wirtualnych platformy Azure:
+Oto nowości obsługiwane, jeśli chcesz utworzyć kopię zapasową maszyn wirtualnych platformy Azure:
 
-**Maszyna** | **Co to jest wykonywana kopia zapasowa** | **Lokalizacja** | **Funkcje**
+**Maszyna** | **Co to jest kopia zapasowa** | **Location** | **Funkcje**
 --- | --- | --- | ---
-**Kopia zapasowa maszyny Wirtualnej platformy Azure przy użyciu rozszerzenia maszyny Wirtualnej** | Całą maszynę Wirtualną | Utwórz kopię zapasową w magazynie. | Rozszerzenie zainstalować po włączeniu kopii zapasowej dla maszyny Wirtualnej.<br/><br/> Tworzenie kopii zapasowych raz dziennie.<br/><br/> Obsługujących aplikacji kopii zapasowej dla maszyn wirtualnych Windows; spójna na poziomie plików kopia zapasowa maszyn wirtualnych systemu Linux. Spójności dla maszyn z systemem Linux na poziomie aplikacji można skonfigurować za pomocą skryptów niestandardowych.<br/><br/> Przywracanie maszyny Wirtualnej lub dysków.<br/><br/> Nie można utworzyć kopii maszyn wirtualnych platformy Azure do lokalizacji lokalnej.
-**Kopia zapasowa maszyny Wirtualnej platformy Azure za pomocą agenta usług MARS** | Pliki, foldery, stan systemu | Utwórz kopię zapasową w magazynie. | Utwórz kopię zapasową trzy razy dziennie.<br/><br/> Jeśli chcesz utworzyć kopię zapasową określonych plików lub folderów, a nie całą maszynę Wirtualną, uruchomić agenta usług MARS wraz z rozszerzenia maszyny Wirtualnej.
-**Maszyna wirtualna platformy Azure z programem DPM** | Plików, folderów, woluminów, stanu systemu, dane aplikacji | Utwórz kopię zapasową do lokalnego magazynu maszyny Wirtualnej platformy Azure, w którym działa program DPM. Program DPM wykonuje kopie zapasowe w magazynie. | Migawki z uwzględnieniem aplikacji.<br/><br/> Pełny stopień szczegółowości na potrzeby kopii zapasowych i odzyskiwania.<br/><br/> System Linux obsługujący maszyny wirtualne (Hyper-V/VMware).<br/><br/> Oprogramowanie Oracle nie jest obsługiwane.
-**Maszyna wirtualna platformy Azure z usługą MABS** | Plików, folderów, woluminów, stanu systemu, dane aplikacji | Utwórz kopię zapasową do lokalnego magazynu maszyny Wirtualnej platformy Azure, w którym działa serwera usługi MAB. Usługa MABS wykonuje kopie zapasowe w magazynie. | Migawki z uwzględnieniem aplikacji.<br/><br/> Pełny stopień szczegółowości na potrzeby kopii zapasowych i odzyskiwania.<br/><br/> System Linux obsługujący maszyny wirtualne (Hyper-V/VMware).<br/><br/> Oprogramowanie Oracle nie jest obsługiwane.
+**Kopia zapasowa maszyny wirtualnej platformy Azure przy użyciu rozszerzenia maszyny wirtualnej** | Cała maszyna wirtualna | Utwórz kopię zapasową w magazynie. | Rozszerzenie zainstalowane po włączeniu kopii zapasowej dla maszyny wirtualnej.<br/><br/> Utwórz kopię zapasową raz dziennie.<br/><br/> Kopia zapasowa obsługująca aplikacje dla maszyn wirtualnych z systemem Windows; kopia zapasowa spójna na plikach dla maszyn wirtualnych z systemem Linux. Można skonfigurować spójność aplikacji dla maszyn z systemem Linux za pomocą skryptów niestandardowych.<br/><br/> Przywróć maszynę wirtualną lub dysk.<br/><br/> Nie można utworzyć kopii zapasowej maszyny wirtualnej platformy Azure w lokalizacji lokalnej.
+**Kopia zapasowa maszyny wirtualnej platformy Azure przy użyciu agenta MARS** | Pliki, foldery, stan systemu | Utwórz kopię zapasową w magazynie. | Utwórz kopię zapasową trzy razy dziennie.<br/><br/> Jeśli chcesz utworzyć kopię zapasową określonych plików lub folderów zamiast całej maszyny wirtualnej, Agent MARS może działać obok rozszerzenia maszyny wirtualnej.
+**Maszyna wirtualna platformy Azure z programem DPM** | Pliki, foldery, woluminy, stan systemu, dane aplikacji | Wykonaj kopię zapasową do lokalnego magazynu maszyny wirtualnej platformy Azure, na którym działa program DPM. Program DPM wykonuje kopie zapasowe w magazynie. | Migawki z obsługą aplikacji.<br/><br/> Pełny stopień szczegółowości na potrzeby kopii zapasowych i odzyskiwania.<br/><br/> System Linux obsługujący maszyny wirtualne (Hyper-V/VMware).<br/><br/> Oprogramowanie Oracle nie jest obsługiwane.
+**Maszyna wirtualna platformy Azure z usługą MABS** | Pliki, foldery, woluminy, stan systemu, dane aplikacji | Utwórz kopię zapasową do lokalnego magazynu maszyny wirtualnej platformy Azure z systemem serwera usługi MAB. Usługa MABS wykonuje kopie zapasowe w magazynie. | Migawki z obsługą aplikacji.<br/><br/> Pełny stopień szczegółowości na potrzeby kopii zapasowych i odzyskiwania.<br/><br/> System Linux obsługujący maszyny wirtualne (Hyper-V/VMware).<br/><br/> Oprogramowanie Oracle nie jest obsługiwane.
 
 ## <a name="linux-backup-support"></a>Obsługa kopii zapasowych systemu Linux
 
-Oto, co jest obsługiwane, jeśli chcesz utworzyć kopię zapasową maszyn z systemem Linux:
+W tym miejscu nowości są obsługiwane, jeśli chcesz utworzyć kopię zapasową maszyn z systemem Linux:
 
 **Typ kopii zapasowej** | **Linux (zatwierdzony przez Azure)**
 --- | ---
-**Bezpośrednie tworzenie kopii zapasowych maszyny w środowisku lokalnym, który jest uruchomiony system Linux** | Nieobsługiwane. Agenta usług MARS można zainstalować tylko na maszynach Windows.
-**Aby utworzyć kopię zapasową maszyny Wirtualnej platformy Azure z systemem Linux przy użyciu rozszerzenia agenta** | Kopia zapasowa spójna z aplikacji przy użyciu [niestandardowe skrypty](backup-azure-linux-app-consistent.md).<br/><br/> Odzyskiwanie na poziomie plików.<br/><br/> Przywracanie przez utworzenie maszyny wirtualnej z punktu odzyskiwania lub dysku.
-**Aby utworzyć kopię zapasową w środowisku lokalnym lub maszynie Wirtualnej platformy Azure z systemem Linux przy użyciu programu DPM** | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa systemu Linux na funkcji Hyper-V i VMWare.<br/><br/> Przywracanie maszyn wirtualnych funkcji Hyper-V i maszyn wirtualnych gości Linux VMWare.<br/><br/> Spójna na poziomie plików kopia zapasowa nie jest dostępna dla maszyny Wirtualnej platformy Azure.
-**Za pomocą serwera usługi Mab do tworzenia kopii zapasowych na komputerze lokalnym lub maszynie Wirtualnej platformy Azure z systemem Linux** | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa systemu Linux na funkcji Hyper-V i VMWare.<br/><br/> Przywrócenie maszyny Wirtualnej funkcji Hyper-V i maszyn wirtualnych programu VMWare z systemem Linux gościa.<br/><br/> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure.
+**Bezpośrednie tworzenie kopii zapasowej maszyny lokalnej z systemem Linux** | Nieobsługiwane. Agenta MARS można zainstalować tylko na komputerach z systemem Windows.
+**Używanie rozszerzenia agenta do tworzenia kopii zapasowej maszyny wirtualnej platformy Azure z systemem Linux** | Tworzenie kopii zapasowej spójnej na poziomie aplikacji przy użyciu [skryptów niestandardowych](backup-azure-linux-app-consistent.md).<br/><br/> Odzyskiwanie na poziomie plików.<br/><br/> Przywracanie przez utworzenie maszyny wirtualnej z punktu odzyskiwania lub dysku.
+**Używanie programu DPM do tworzenia kopii zapasowej lokalnej lub maszyny wirtualnej platformy Azure z systemem Linux** | Spójna z plikami kopia zapasowa maszyn wirtualnych gościa systemu Linux w funkcji Hyper-V i oprogramowaniu VMWare.<br/><br/> Przywracanie maszyny wirtualnej z maszynami wirtualnymi funkcji Hyper-V i VMWare Linux.<br/><br/> Kopia zapasowa spójna na poziomie plików nie jest dostępna dla maszyny wirtualnej platformy Azure.
+**Tworzenie kopii zapasowej maszyny lokalnej lub maszyny wirtualnej platformy Azure z systemem Linux przy użyciu programu serwera usługi MAB** | Spójna z plikami kopia zapasowa maszyn wirtualnych gościa systemu Linux w funkcji Hyper-V i oprogramowaniu VMWare.<br/><br/> Przywracanie maszyny wirtualnej z maszynami wirtualnymi funkcji Hyper-V i VMWare Linux.<br/><br/> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure.
 
 ## <a name="daylight-saving-time-support"></a>Obsługa czasu letniego
 
-Usługa Azure Backup nie obsługuje zegara automatyczne dostosowanie czasu tworzenia kopii zapasowych maszyn wirtualnych platformy Azure. Modyfikowanie zasad tworzenia kopii zapasowej ręcznego zgodnie z potrzebami.
+Azure Backup nie obsługuje automatycznego dostosowania zegara w przypadku czasu letniego dla kopii zapasowych maszyny wirtualnej platformy Azure. Zmodyfikuj ręcznie zasady tworzenia kopii zapasowych zgodnie z potrzebami.
 
-## <a name="disk-deduplication-support"></a>Obsługa deduplikacji dysku
+## <a name="disk-deduplication-support"></a>Obsługa deduplikacji dysków
 
 Obsługa deduplikacji dysku jest następująca:
 
-- Deduplikacja dysku jest obsługiwane w środowisku lokalnym, korzystając z programu DPM lub serwera usługi Mab do tworzenia kopii zapasowych maszyn wirtualnych funkcji Hyper-V z uruchomionym systemem Windows. System Windows Server wykonuje deduplikację danych (na poziomie hosta) na wirtualnych dyskach twardych (VHD), które są dołączone do maszyny Wirtualnej jako magazyn kopii zapasowych.
-- Funkcja deduplikacji nie jest obsługiwana na platformie Azure dla żadnego składnika usługi Backup. Gdy program DPM i serwera usługi Mab są wdrażane na platformie Azure, dyski magazynowania dołączone do maszyny Wirtualnej nie może być deduplikowane.
+- Funkcja deduplikacji dysku jest obsługiwana lokalnie, gdy program DPM lub serwera usługi MAB wykonuje kopie zapasowe maszyn wirtualnych funkcji Hyper-V z systemem Windows. System Windows Server wykonuje deduplikację danych (na poziomie hosta) na wirtualnych dyskach twardych (VHD) dołączonych do maszyny wirtualnej jako magazyn kopii zapasowych.
+- Funkcja deduplikacji nie jest obsługiwana na platformie Azure dla żadnego składnika usługi Backup. Po wdrożeniu programu DPM i serwera usługi MAB na platformie Azure dyski magazynu dołączone do maszyny wirtualnej nie mogą być deduplikowane.
 
 ## <a name="security-and-encryption-support"></a>Obsługa zabezpieczeń i szyfrowania
 
-Usługa Azure Backup obsługuje szyfrowanie danych podczas przesyłania i danych w spoczynku.
+Azure Backup obsługuje szyfrowanie danych w trakcie przesyłania i w czasie spoczynku.
 
-### <a name="network-traffic-to-azure"></a>Ruch sieciowy na platformie Azure
+### <a name="network-traffic-to-azure"></a>Ruch sieciowy do platformy Azure
 
-- Kopii zapasowej ruch z serwerów w magazynie usługi Recovery Services jest szyfrowany przy użyciu algorytmu Advanced Encryption Standard 256.
+- Ruch kopii zapasowych z serwerów do magazynu Recovery Services jest szyfrowany przy użyciu Advanced Encryption Standard 256.
 - Dane kopii zapasowej są przesyłane za pośrednictwem bezpiecznego połączenia HTTPS.
-- Dane kopii zapasowych są przechowywane w magazynie usługi Recovery Services w taki sposób, w postaci zaszyfrowanej.
+- Dane kopii zapasowej są przechowywane w magazynie Recovery Services w postaci zaszyfrowanej.
 - Tylko Ty dysponujesz hasłem do odblokowania tych danych. Firma Microsoft nie może odszyfrować danych kopii zapasowej w żadnym punkcie.
 
     > [!WARNING]
@@ -111,45 +110,45 @@ Usługa Azure Backup obsługuje szyfrowanie danych podczas przesyłania i danych
 
 ### <a name="data-security"></a>Bezpieczeństwo danych
 
-- Jeśli wykonujesz kopie zapasowe maszyn wirtualnych platformy Azure, musisz skonfigurować szyfrowanie *w ramach* maszyny wirtualnej.
+- Podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure należy skonfigurować szyfrowanie *w ramach* maszyny wirtualnej.
 - Usługa Azure Backup obsługuje usługę Azure Disk Encryption, która używa funkcji BitLocker na maszynach wirtualnych z systemem Windows, a programu **dm-crypt** na maszynach wirtualnych z systemem Linux.
-- Na zapleczu, usługa Azure Backup używa [szyfrowanie usługi Azure Storage](../storage/common/storage-service-encryption.md), która chroni dane magazynowane.
+- Na zapleczu Azure Backup używa [platformy Azure szyfrowanie usługi Storage](../storage/common/storage-service-encryption.md), która chroni dane przechowywane w spoczynku.
 
 **Maszyna** | **Przesyłanie** | **Magazynowanie**
 --- | --- | ---
-**Lokalne maszyny Windows bez programu DPM/serwera usługi Mab** | ![Tak][green] | ![Tak][green]
-**Maszyny wirtualne platformy Azure** | ![Yes][green] | ![Tak][green]
-**Lokalnych maszyn Windows lub maszyny wirtualne platformy Azure przy użyciu programu DPM** | ![Tak][green] | ![Tak][green]
-**Lokalnych maszyn Windows lub maszyny wirtualne platformy Azure przy użyciu serwera usługi Mab** | ![Tak][green] | ![Tak][green]
+**Lokalne maszyny z systemem Windows bez programu DPM/serwera usługi MAB** | ![Yes][green] | ![Yes][green]
+**Maszyny wirtualne platformy Azure** | ![Tak][green] | ![Tak][green]
+**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z programem DPM** | ![Tak][green] | ![Tak][green]
+**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z usługą serwera usługi MAB** | ![Yes][green] | ![Tak][green]
 
 ## <a name="compression-support"></a>Obsługa kompresji
 
-Backup obsługuje kompresję kopii zapasowej ruchu, zgodnie z opisem w poniższej tabeli.
+Funkcja Backup obsługuje kompresję ruchu kopii zapasowej, jak przedstawiono w poniższej tabeli.
 
-- Maszyn wirtualnych platformy Azure rozszerzenia maszyny Wirtualnej odczytuje dane bezpośrednio z konta usługi Azure storage za pośrednictwem sieci magazynowania, dzięki czemu nie trzeba Kompresja tego ruchu.
-- Jeśli używasz programu DPM lub MABS, możesz oszczędzić przepustowość, poprzez kompresowanie danych przed kopii zapasowej.
+- W przypadku maszyn wirtualnych platformy Azure rozszerzenie maszyny wirtualnej odczytuje dane bezpośrednio z konta usługi Azure Storage za pośrednictwem sieci magazynu, co nie wymaga kompresowania tego ruchu.
+- Jeśli używasz programu DPM lub serwera usługi MAB, możesz zaoszczędzić przepustowość, kompresując dane przed utworzeniem ich kopii zapasowej.
 
 **Maszyna** | **Kompresja do usługi MABS/programu DPM (TCP)** | **Kompresuj do magazynu (HTTPS)**
 --- | --- | ---
-**Bezpośrednie tworzenie kopii zapasowych maszyn Windows w środowisku lokalnym** | Nie dotyczy | ![Yes][green]
-**Kopia zapasowa maszyn wirtualnych platformy Azure przy użyciu rozszerzenia maszyny Wirtualnej** | Nie dotyczy | Nie dotyczy
-**Tworzenie kopii zapasowych na maszynach środowiska lokalne/platformę Azure za pomocą serwera usługi Mab/DPM** | ![Tak][green] | ![Tak][green]
+**Bezpośrednia kopia zapasowa lokalnych maszyn z systemem Windows** | Nie dotyczy | ![Tak][green]
+**Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu rozszerzenia maszyny wirtualnej** | Nie dotyczy | Nie dotyczy
+**Tworzenie kopii zapasowych na maszynach lokalnych/na platformie Azure przy użyciu serwera usługi MAB/DPM** | ![Yes][green] | ![Tak][green]
 
 ## <a name="retention-limits"></a>Limity przechowywania
 
 **Ustawienie** | **Limity**
 --- | ---
-**Maksymalna liczba punktów odzyskiwania dla chronionego wystąpienia (maszyny lub obciążenia)** | 9,999
-**Maksymalny czas wygaśnięcia punktu odzyskiwania** | Bez ograniczeń
-**Maksymalna częstotliwość wykonywania kopii zapasowych do DPM/serwera usługi Mab** | Co 15 minut dla programu SQL Server<br/><br/> Co godzinę dla innych obciążeń
-**Maksymalna częstotliwość wykonywania kopii zapasowych w magazynie** | **Lokalne maszyny Windows lub systemem MARS maszyn wirtualnych platformy Azure:** Trzy na dzień<br/><br/> **PROGRAM DPM/MABS:** dwie dziennie<br/><br/> **Kopia zapasowa maszyny Wirtualnej platformy Azure:** Jeden raz dziennie
-**Czas przechowywania punktu odzyskiwania** | Codziennie, co tydzień, co miesiąc, co rok
+**Maksymalna liczba punktów odzyskiwania na chronione wystąpienie (maszyna lub obciążenie)** | 9 999
+**Maksymalny czas wygaśnięcia dla punktu odzyskiwania** | Bez limitu
+**Maksymalna częstotliwość tworzenia kopii zapasowych w programie DPM/serwera usługi MAB** | Co 15 minut dla programu SQL Server<br/><br/> Raz na godzinę dla innych obciążeń
+**Maksymalna częstotliwość tworzenia kopii zapasowych w magazynie** | **Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z systemem MARS:** Trzy dziennie<br/><br/> **PROGRAM DPM/SERWERA USŁUGI MAB:** dwie dziennie<br/><br/> **Kopia zapasowa maszyny wirtualnej platformy Azure:** Jeden dziennie
+**Przechowywanie punktów odzyskiwania** | Codziennie, co tydzień, co miesiąc, co rok
 **Maksymalny okres przechowywania** | Zależnie od częstotliwości wykonywania kopii zapasowych
-**Punkty odzyskiwania na dysku programu DPM/serwera usługi Mab** | 64 dla serwerów plików; 448 dla serwerów aplikacji <br/><br/>Nieograniczona liczba taśm punktów odzyskiwania programu DPM w środowisku lokalnym
+**Punkty odzyskiwania na dysku programu DPM/serwera usługi MAB** | 64 dla serwerów plików; 448 dla serwerów aplikacji <br/><br/>Nieograniczona liczba punktów odzyskiwania na taśmie dla lokalnego programu DPM
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Macierz obsługi przeglądu](backup-support-matrix-iaas.md) do utworzenia kopii zapasowej maszyny Wirtualnej platformy Azure.
+- [Przejrzyj macierz pomocy technicznej](backup-support-matrix-iaas.md) dla kopii zapasowej maszyny wirtualnej platformy Azure.
 
 [green]: ./media/backup-support-matrix/green.png
 [yellow]: ./media/backup-support-matrix/yellow.png

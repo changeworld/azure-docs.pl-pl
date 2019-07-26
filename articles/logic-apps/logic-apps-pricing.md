@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 40a783f702db580618d49fa34a1dae67e3e067da
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: e1285f6bc3bd081eae03cf1e5a124a86cac7a2ae
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327057"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335993"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen dla Azure Logic Apps
 
@@ -55,11 +55,11 @@ Dowiedz się więcej o tym, jak rozliczenia działają dla [wyzwalaczy](#trigger
 
   * **Jednostka SKU dla deweloperów**: Konto integracji pojedynczej [warstwy bezpłatnej](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
 
-  Każda jednostka SKU ISE jest ograniczona do 5 łącznych kont integracji. Aby uzyskać dodatkowe koszty, masz więcej kont integracji opartych na ISE SKU:
+  Każda jednostka SKU ISE jest ograniczona do 5 łącznych kont integracji. Aby uzyskać dodatkowe koszty, możesz mieć więcej kont integracji opartych na ISE SKU:
 
-  * **Jednostka SKU Premium**: Do czterech bardziej standardowych kont, bez kont bezpłatnych lub podstawowych
+  * **Jednostka SKU Premium**: Do czterech bardziej standardowych kont. Brak kont bezpłatnych lub podstawowych.
 
-  * **Jednostka SKU dla deweloperów**: Do 4 większej liczby kont standardowych lub maksymalnie 5 kont standardowych, bez kont podstawowych
+  * **Jednostka SKU dla deweloperów**: Maksymalnie 4 więcej kont standardowych lub maksymalnie 5 standardowych kont Standard. Brak kont podstawowych.
 
 Aby uzyskać więcej informacji na temat limitów kont integracji, zobacz [Logic Apps limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Więcej informacji na temat [warstw kont integracji i ich modelu cen](#integration-accounts) można znaleźć w dalszej części tego tematu. 
 

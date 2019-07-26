@@ -1,0 +1,98 @@
+---
+title: Dodaj aplikację bez galerii — platforma tożsamości firmy Microsoft | Microsoft Docs
+description: Dodaj aplikację spoza galerii do dzierżawy usługi Azure AD.
+services: active-directory
+author: msmimart
+manager: CelesteDG
+ms.service: active-directory
+ms.subservice: app-mgmt
+ms.topic: article
+ms.workload: identity
+ms.date: 06/18/2019
+ms.author: mimart
+ms.reviewer: arvinh,luleon
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: db8d8d6df16c5df7e29d8bb870c5d5eda6d8a2d3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477257"
+---
+# <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Dodawanie aplikacji nieznajdującej się na liście (bez galerii) do organizacji usługi Azure AD
+
+Oprócz opcji dostępnych w [galerii aplikacji usługi Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)można dodać **aplikację bez galerii**. Możesz dodać dowolną aplikację, która już istnieje w organizacji, lub dowolną aplikację innej firmy od dostawcy, który nie jest jeszcze częścią galerii usługi Azure AD. W zależności od [umowy licencyjnej](https://azure.microsoft.com/pricing/details/active-directory/)dostępne są następujące funkcje:
+
+- Samoobsługowa integracja dowolnej aplikacji, która obsługuje [SAML (SAML) 2,0](https://wikipedia.org/wiki/SAML_2.0) dostawców tożsamości (zainicjowanych przez program SP lub dostawcy tożsamości)
+- Samoobsługowa integracja dowolnej aplikacji sieci Web, która ma stronę logowania opartą na języku HTML przy użyciu [logowania jednokrotnego opartego na hasłach](what-is-single-sign-on.md#password-based-sso)
+- Samoobsługowe połączenie aplikacji korzystających z [systemu do obsługi międzydomenowego protokołu zarządzania tożsamościami (standard scim) na potrzeby aprowizacji użytkowników](use-scim-to-provision-users-and-groups.md)
+- Możliwość dodawania linków do dowolnej aplikacji w programie [uruchamiania aplikacji pakietu Office 365](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) lub w [panelu dostępu usługi Azure AD](what-is-single-sign-on.md#linked-sign-on)
+
+W tym artykule opisano sposób dodawania aplikacji spoza galerii do aplikacji dla **przedsiębiorstw** w Azure Portal bez pisania kodu. Jeśli zamiast tego szukasz wskazówek dla deweloperów, jak zintegrować aplikacje niestandardowe z usługą Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md). Podczas tworzenia aplikacji, która korzysta z nowoczesnego protokołu, takiego jak [OpenID Connect Connect/OAuth](../develop/active-directory-v2-protocols.md) do uwierzytelniania użytkowników, możesz zarejestrować ją na platformie tożsamości firmy Microsoft, korzystając z [Rejestracje aplikacji](../develop/quickstart-register-app.md) środowiska w Azure Portal.
+
+## <a name="add-a-non-gallery-application"></a>Dodawanie aplikacji spoza galerii
+
+1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/) przy użyciu konta administratora platformy tożsamości firmy Microsoft.
+1. Wybierz pozycję **aplikacje** > dla przedsiębiorstw**Nowa aplikacja**.
+2. (Opcjonalne, ale zalecane) W polu wyszukiwania **Dodaj z galerii** wprowadź nazwę wyświetlaną aplikacji. Jeśli aplikacja pojawia się w wynikach wyszukiwania, wybierz ją i pomiń pozostałą część tej procedury.
+3. Wybierz pozycję **aplikacja**niebędąca galerią. Zostanie wyświetlona strona **Dodawanie własnej aplikacji** .
+
+   ![Dodawanie aplikacji](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
+5. Wprowadź nazwę wyświetlaną dla nowej aplikacji.
+6. Wybierz pozycję **Dodaj**. Zostanie otwarta strona **Przegląd** aplikacji.
+
+## <a name="configure-user-sign-in-properties"></a>Konfigurowanie właściwości logowania użytkownika
+
+1. Wybierz pozycję **Właściwości** , aby otworzyć okienko właściwości do edycji.
+
+    ![Edytuj okienko właściwości](media/add-application-portal/edit-properties.png)
+
+1. Ustaw następujące opcje, aby określić, jak użytkownicy przypisani lub nieprzypisane do aplikacji mogą zalogować się do aplikacji, a użytkownik może zobaczyć aplikację w panelu dostępu.
+
+    - Opcja **Włączono dla użytkowników w celu logowania się** określa, czy użytkownicy przypisani do aplikacji mogą się logować.
+    - **Wymagane przypisanie użytkownika** określa, czy użytkownicy, którzy nie są przypisani do aplikacji, mogą się zalogować.
+    - Opcja **Widoczne dla użytkownika** określa, czy użytkownicy przypisani do aplikacji mogą ją widzieć w panelu dostępu i narzędziu do uruchamiania aplikacji usługi O365.
+
+      Zachowanie w przypadku użytkowników **przypisanych**:
+
+       | Ustawienia właściwości aplikacji | | | Środowisko użytkowników przypisanych | |
+       |---|---|---|---|---|
+       | Włączono dla użytkowników w celu logowania się? | Wymagane przypisanie użytkownika? | Widoczne dla użytkowników? | Czy przypisani użytkownicy mogą się logować? | Czy przypisani użytkownicy widzą aplikację?* |
+       | tak | tak | tak | tak | tak  |
+       | tak | tak | nie  | tak | nie   |
+       | tak | nie  | tak | tak | tak  |
+       | tak | nie  | nie  | tak | nie   |
+       | nie  | tak | tak | nie  | nie   |
+       | nie  | tak | nie  | nie  | nie   |
+       | nie  | nie  | tak | nie  | nie   |
+       | nie  | nie  | nie  | nie  | nie   |
+
+      Zachowanie w przypadku użytkowników **nieprzypisanych**:
+
+       | Ustawienia właściwości aplikacji | | | Środowisko użytkowników nieprzypisanych | |
+       |---|---|---|---|---|
+       | Włączono, aby użytkownicy mogli się zalogować? | Trzeba przypisać użytkownika? | Widoczne dla użytkowników? | Czy nieprzypisani użytkownicy mogą się logować? | Czy nieprzypisani użytkownicy widzą aplikację?* |
+       | tak | tak | tak | nie  | nie   |
+       | tak | tak | nie  | nie  | nie   |
+       | tak | nie  | tak | tak | nie   |
+       | tak | nie  | nie  | tak | nie   |
+       | nie  | tak | tak | nie  | nie   |
+       | nie  | tak | nie  | nie  | nie   |
+       | nie  | nie  | tak | nie  | nie   |
+       | nie  | nie  | nie  | nie  | nie   |
+
+     *Czy użytkownik widzi aplikację w panelu dostępu i narzędziu do uruchamiania aplikacji usługi Office 365?
+
+1. Aby użyć niestandardowego logo, Utwórz logo o 215 przez 215 pikseli i Zapisz je w formacie PNG. Następnie przejdź do swojego logo i przekaż go.
+
+    ![Zmienianie logo](media/add-application-portal/change-logo.png)
+
+1. Gdy skończysz, wybierz pozycję **Zapisz**.
+
+## <a name="next-steps"></a>Następne kroki
+
+Po dodaniu aplikacji do organizacji usługi Azure AD [Wybierz metodę logowania](what-is-single-sign-on.md#choosing-a-single-sign-on-method) jednokrotnego, której chcesz użyć, i zapoznaj się z odpowiednim artykułem poniżej:
+
+- [Konfigurowanie logowania jednokrotnego opartego na protokole SAML](configure-single-sign-on-non-gallery-applications.md)
+- [Konfigurowanie logowania jednokrotnego przy użyciu hasła](configure-password-single-sign-on-non-gallery-applications.md)
+- [Konfiguruj logowanie połączone](configure-linked-sign-on.md)

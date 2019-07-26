@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 38359858d16a20f73cf845fa547899bdc5ee7fd3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326247"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333688"
 ---
 # <a name="status-monitor-v2"></a>Monitor stanu w wersji 2
 
@@ -62,13 +62,13 @@ Każda z tych opcji została opisana w [szczegółowym instrukcji](status-monito
   
 - Jak mogę sprawdzić, czy Włączanie zakończyło się pomyślnie?
 
-   Nie istnieje polecenie cmdlet do sprawdzenia, czy Włączanie zakończyło się pomyślnie.
-Zalecamy używanie metryk na [żywo](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) , aby szybko określić, czy aplikacja wysyła dane telemetryczne.
+  - Polecenia cmdlet [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) można użyć do sprawdzenia, czy Włączanie powiodło się.
+  - Zalecamy używanie metryk na [żywo](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) , aby szybko określić, czy aplikacja wysyła dane telemetryczne.
 
-   Możesz również użyć [log Analytics](../log-query/get-started-portal.md) , aby wyświetlić listę wszystkich ról w chmurze aktualnie wysyłających dane telemetryczne:
-   ```Kusto
-   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
-   ```
+  - Możesz również użyć [log Analytics](../log-query/get-started-portal.md) , aby wyświetlić listę wszystkich ról w chmurze aktualnie wysyłających dane telemetryczne:
+      ```Kusto
+      union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+      ```
 
 ## <a name="next-steps"></a>Następne kroki
 

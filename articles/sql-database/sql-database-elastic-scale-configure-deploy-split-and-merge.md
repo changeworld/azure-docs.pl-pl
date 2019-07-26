@@ -143,7 +143,7 @@ Jeśli swojej roli procesu roboczego nie przechodzi do trybu online, ale roli si
    ```
 
 * Upewnij się, że nazwa serwera nie zaczyna się od **https://** .
-* Upewnij się, że serwer bazy danych SQL Azure pozwala nawiązać z nim usług systemu Azure. Aby to zrobić, Otwórz swoją bazę danych w portalu i upewnij się, że **zezwolić na dostęp do usług platformy Azure** jest ustawiana **na****.
+* Upewnij się, że serwer bazy danych SQL Azure pozwala nawiązać z nim usług systemu Azure. Aby to zrobić, Otwórz swoją bazę danych w portalu i upewnij się, że **zezwolić na dostęp do usług platformy Azure** jest ustawiana **na** **.
 
 ## <a name="test-the-service-deployment"></a>Testowanie wdrażania usługi
 ### <a name="connect-with-a-web-browser"></a>Łączenie z przeglądarką sieci web

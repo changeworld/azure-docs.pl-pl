@@ -1,6 +1,6 @@
 ---
-title: Sposób usuwania i wyeksportować dane osobowe z usługi Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak usunąć i eksportowanie danych osobowych z usługą Azure DevLast Labs, aby obsługiwać Twoje obowiązki w ramach ogólnego rozporządzenia o ochronie danych (RODO).
+title: Jak usunąć i wyeksportować dane osobowe z Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się, jak usuwać i eksportować dane osobowe z usługi Azure DevLast Labs, aby wspierać zobowiązania w ramach Ogólne rozporządzenie o ochronie danych (Rodo).
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,72 +10,210 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 07/19/2019
 ms.author: spelluru
-ms.openlocfilehash: e681652c13e521bd33524e247db65088f47a794c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82ab8ef2e444b71f41fbbd87e4e9f8669e83e508
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394988"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371171"
 ---
-# <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Eksportowanie lub usunąć dane osobowe z usługi Azure DevTest Labs
-Ten artykuł zawiera instrukcje usuwania i eksportowania danych osobowych z usługi Azure DevTest Labs. 
+# <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Eksportowanie lub usuwanie danych osobowych z Azure DevTest Labs
+Ten artykuł zawiera instrukcje dotyczące usuwania i eksportowania danych osobowych z usługi Azure DevTest Labs. 
 
-## <a name="what-personal-data-does-devtest-labs-collect"></a>Jakie dane osobiste są zbierane w usłudze DevTest Labs?
-DevTest Labs umożliwia zbieranie informacji o dwie główne części danych osobowych użytkownika. Są one: adres e-mail użytkownika i identyfikator obiektu użytkownika. Te informacje są krytyczne dla usługi w celu zapewnienia funkcji usługi laboratorium administratorów i użytkowników laboratorium.
+## <a name="what-personal-data-does-devtest-labs-collect"></a>Jakie dane osobowe są zbierane przez DevTest Labs?
+DevTest Labs zbiera dwa główne dane osobowe z użytkownika. Są to: adres e-mail użytkownika i identyfikator obiektu użytkownika. Te informacje mają kluczowe znaczenie dla usługi, aby zapewnić funkcje w usłudze dla administratorów laboratorium i użytkowników laboratorium.
 
 ### <a name="user-email-address"></a>Adres e-mail użytkownika
-DevTest Labs używa adresu e-mail użytkownika do wysyłania powiadomień e-mail zamykania automatycznie użytkownikom laboratorium. Wiadomości e-mail umożliwia powiadomienie użytkowników ich maszyny zamykany. Użytkowników można odroczyć lub pominąć zamknięcia systemu, jeśli chcesz to zrobić. Możesz skonfigurować adres e-mail, na poziomie laboratorium lub na poziomie maszyny Wirtualnej.
+DevTest Labs używa adresu e-mail użytkownika do wysyłania powiadomień e-mail o automatycznym zamknięciu do użytkowników laboratorium. Wiadomość e-mail powiadamia użytkowników o zamknięciu maszyny. Jeśli chcesz to zrobić, użytkownicy mogą odroczyć lub pominąć wyłączenie. Adres e-mail można skonfigurować na poziomie laboratorium lub na poziomie maszyny wirtualnej.
 
-**Ustawienia poczty e-mail w laboratorium:**
+**Ustawianie wiadomości e-mail w laboratorium:**
 
-![Ustawienia poczty e-mail na poziomie laboratorium](./media/personal-data-delete-export/lab-user-email.png)
+![Ustawianie poczty e-mail na poziomie laboratorium](./media/personal-data-delete-export/lab-user-email.png)
 
-**Ustawienia poczty e-mail na maszynie Wirtualnej:**
+**Ustawianie poczty e-mail na maszynie wirtualnej:**
 
-![Ustawienia poczty e-mail na poziomie maszyny Wirtualnej](./media/personal-data-delete-export/vm-user-email.png)
+![Ustawianie adresu e-mail na poziomie maszyny wirtualnej](./media/personal-data-delete-export/vm-user-email.png)
 
 ### <a name="user-object-id"></a>Identyfikator obiektu użytkownika
-DevTest Labs używa identyfikator obiektu użytkownika będzie wyświetlana trendy związane z kosztami miesiąc do miesiąca i kosztów, informacje o zasobie laboratorium administratorów. Umożliwia śledzenie kosztów i zarządzanie nimi progi w ich środowisku laboratoryjnym. 
+DevTest Labs używa identyfikatora obiektu użytkownika do wyświetlania trendów kosztów miesięcznych i kosztów według informacji o zasobach do administratorów laboratorium. Umożliwia im śledzenie kosztów i zarządzanie progami dla laboratorium. 
 
-**Szacowany koszt trend dla bieżącego miesiąca kalendarzowego:** 
-![szacowany koszt trend w bieżącym miesiącu](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
+**Szacowany trend kosztów dla bieżącego miesiąca kalendarzowego:** 
+![szacowany trend kosztów dla bieżącego miesiąca kalendarzowego](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**Szacowany koszt od początku miesiąca przez zasób:** 
-![szacowany koszt od początku miesiąca według zasobu](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
+**Szacowany koszt od początku do dnia według zasobu:** 
+![szacowany koszt dla danego miesiąca według zasobu](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
-## <a name="why-do-we-need-this-personal-data"></a>Dlaczego Potrzebujemy tych danych osobowych?
-Usługa DevTest Labs używa danych osobowych do celów operacyjnych. Dane te są niezbędne do dostarczenia kluczowych funkcji usługi. Jeśli zasady przechowywania jest ustawiony na adres e-mail użytkownika, użytkownicy laboratorium nie otrzymywać powiadomienia e-mail zamykania automatycznie w odpowiednim czasie, po ich adres e-mail został usunięty z naszego systemu. Podobnie administrator laboratorium nie można wyświetlić miesiąc do miesiąca trendy związane z kosztami i koszt według zasobów dla maszyn w laboratorium ich, jeśli obiekt użytkownika, identyfikatory są usuwane na podstawie zasad przechowywania. Dlatego te dane muszą być przechowywane dla, tak długo, jak zasób użytkownika jest aktywny w środowisku laboratoryjnym.
+## <a name="why-do-we-need-this-personal-data"></a>Dlaczego dane osobowe są potrzebne?
+Usługa DevTest Labs używa danych osobowych do celów operacyjnych. Te dane mają kluczowe znaczenie dla usługi do dostarczania najważniejszych funkcji. Jeśli ustawisz zasady przechowywania na adres e-mail użytkownika, użytkownicy laboratorium nie otrzymają do czasu powiadomienia e-mail o godzinie automatycznego zamknięcia po usunięciu adresu e-mail z systemu. Analogicznie, administrator laboratorium nie może wyświetlić trendów kosztów miesięcznych i kosztów według zasobów dla maszyn w ich laboratoriach, jeśli identyfikatory obiektów użytkownika są usuwane na podstawie zasad przechowywania. W związku z tym te dane muszą być przechowywane przez cały czas, gdy zasób użytkownika jest aktywny w laboratorium.
 
-## <a name="how-can-i-have-the-system-to-forget-my-personal-data"></a>Jak można mieć system zapomnieć Moje dane osobowe?
-Jako użytkownik laboratorium Jeśli chcesz mieć tych danych osobowych, które zostały usunięte, możesz to zrobić, usuwając odpowiadający jej zasób w środowisku laboratoryjnym. Usługa DevTest Labs anonimowość usuniętych danych osobowych w ciągu 30 dni po jego usunięciu przez użytkownika.
+## <a name="how-can-i-have-the-system-to-forget-my-personal-data"></a>Jak mogę zapomnieć moje dane osobiste przez system?
+Jeśli chcesz, aby dane osobowe zostały usunięte przez użytkownika laboratoryjnego, możesz to zrobić przez usunięcie odpowiedniego zasobu z laboratorium. Usługa DevTest Labs filtruje usunięte dane osobowe przez 30 dni po ich usunięciu przez użytkownika.
 
-Na przykład usunięcie maszyny Wirtualnej, lub usunąć swój adres e-mail, usługi DevTest Labs anonimowość tych danych w ciągu 30 dni po usunięciu zasobu. Zasady przechowywania 30 dni, po usunięciu, upewnij się, że firma Microsoft zapewnia Projekcja dokładny miesiąc do miesiąca koszt na administratorem laboratorium.
+Na przykład po usunięciu maszyny wirtualnej lub usunięciu adresu e-mail usługa DevTest Labs filtruje te dane 30 dni po usunięciu zasobu. Zasady przechowywania 30 dni po usunięciu należy upewnić się, że firma Microsoft udostępnia dokładne, miesięczne koszty dla administratora laboratorium.
 
-## <a name="how-can-i-request-an-export-on-my-personal-data"></a>Jak żądanie eksportu na moje dane osobowe?
-Jako użytkownik laboratorium możesz poprosić Eksport danych osobowych, która przechowuje usługi DevTest Labs. Żądanie eksportu usługi, przejdź do **danych osobowych** opcja **Przegląd** strony środowiska laboratoryjnego. Wybierz **żądanie eksportu** przycisk dotyczącego utworzenie pliku do pobrania programu excel na koncie magazynu z administratorem laboratorium. Można następnie skontaktuj się z administratorem laboratorium, aby wyświetlić te dane.
+## <a name="how-can-i-request-an-export-on-my-personal-data"></a>Jak mogę zażądać eksportu danych osobowych?
+Dane dotyczące użycia osobistego i laboratorium można eksportować za pomocą Azure Portal lub programu PowerShell. Dane są eksportowane jako dwa różne pliki CSV:
 
-1. Wybierz **danych osobowych** w menu po lewej stronie. 
+- **Disks. csv** — zawiera informacje o dyskach używanych przez różne maszyny wirtualne
+- **virtualmachines. csv** — zawiera informacje o maszynach wirtualnych w laboratorium.
+
+### <a name="azure-portal"></a>Azure Portal
+Jako użytkownik laboratorium możesz zażądać eksportu danych osobowych, które są przechowywane w usłudze DevTest Labs. Aby zażądać eksportu, przejdź do opcji **dane osobowe** na stronie **Przegląd** w laboratorium. Wybierz przycisk **Zażądaj eksportu** umożliwia rozpoczęcie tworzenia pliku programu Excel do pobrania na koncie magazynu administratora laboratorium. Następnie można skontaktować się z administratorem laboratorium, aby wyświetlić te dane.
+
+1. W menu po lewej stronie wybierz pozycję **dane osobowe** . 
 
     ![Strona danych osobowych](./media/personal-data-delete-export/personal-data-page.png)
-2. Wybierz **grupy zasobów** zawierający laboratorium.
+2. Wybierz **grupę zasobów** , która zawiera laboratorium.
 
-    ![Wybieranie grupy zasobów](./media/personal-data-delete-export/select-resource-group.png)
-3. Wybierz **konta magazynu** w grupie zasobów.
-4. Na **konta magazynu** wybierz opcję **obiektów blob**.
+    ![Wybierz grupę zasobów](./media/personal-data-delete-export/select-resource-group.png)
+3. Wybierz **konto magazynu** w grupie zasobów.
+4. Na stronie **konto magazynu** wybierz pozycję **obiekty blob**.
 
-    ![Wybierz Kafelek obiektów blob](./media/personal-data-delete-export/select-blobs-tile.png)
+    ![Wybierz kafelek obiektów BLOB](./media/personal-data-delete-export/select-blobs-tile.png)
 5. Wybierz kontener o nazwie **labresourceusage** na liście kontenerów.
 
     ![Wybierz kontener obiektów blob](./media/personal-data-delete-export/select-blob-container.png)
-6. Wybierz **folderu** nazwana środowiska laboratoryjnego. Możesz znaleźć **csv** pliki **dysków** i **maszyn wirtualnych** w środowisku laboratoryjnym, w tym folderze. Można pobierać te pliki csv, filtrować zawartość żądania dostępu użytkownika laboratorium i ją udostępnić.
+6. Wybierz **folder** o nazwie po Twoim laboratorium. W tym folderze znajdują się pliki **CSV** dla **dysków** i **maszyn wirtualnych** w laboratorium. Możesz pobrać te pliki CSV, odfiltrować zawartość dla użytkownika laboratorium żądającego dostępu i udostępnić je z nimi.
 
     ![Pobierz plik CSV](./media/personal-data-delete-export/download-csv-file.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="azure-powershell"></a>Azure PowerShell
+
+```powershell
+Param (
+    [Parameter (Mandatory=$true, HelpMessage="The storage account name where to store usage data")]
+    [string] $storageAccountName,
+
+    [Parameter (Mandatory=$true, HelpMessage="The storage account key")]
+    [string] $storageKey,
+
+    [Parameter (Mandatory=$true, HelpMessage="The DevTest Lab name to get usage data from")]
+    [string] $labName,
+
+    [Parameter (Mandatory=$true, HelpMessage="The DevTest Lab subscription")]
+    [string] $labSubscription
+    )
+
+#Login
+Login-AzureRmAccount
+
+# Set the subscription for the lab
+Get-AzureRmSubscription -SubscriptionId $labSubscription  | Select-AzureRmSubscription
+
+# DTL will create this container in the storage when invoking the action, cannot be changed currently
+$containerName = "labresourceusage"
+
+# Get the storage context
+$Ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey 
+$SasToken = New-AzureStorageAccountSASToken -Service Blob, File -ResourceType Container, Service, Object -Permission rwdlacup -Protocol HttpsOnly -Context $Ctx
+
+# Generate the storage blob uri
+$blobUri = $Ctx.BlobEndPoint + $SasToken
+
+# blobStorageAbsoluteSasUri and usageStartDate are required
+$actionParameters = @{
+    'blobStorageAbsoluteSasUri' = $blobUri    
+}
+
+$startdate = (Get-Date).AddDays(-7)
+
+$actionParameters.Add('usageStartDate', $startdate.Date.ToString())
+
+# Get the lab resource group
+$resourceGroupName = (Find-AzureRmResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $labName}).ResourceGroupName
+    
+# Create the lab resource id
+$resourceId = "/subscriptions/" + $labSubscription + "/resourceGroups/" + $resourceGroupName + "/providers/Microsoft.DevTestLab/labs/" + $labName + "/"
+
+# !!!!!!! this is the new resource action to get the usage data.
+$result = Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
+ 
+# Finish up cleanly
+if ($result.Status -eq "Succeeded") {
+    Write-Output "Telemetry successfully downloaded for " $labName
+    return 0
+}
+else
+{
+    Write-Output "Failed to download lab: " + $labName
+    Write-Error $result.toString()
+    return -1
+}
+```
+
+Najważniejsze składniki w powyższym przykładzie są następujące:
+
+- Polecenie Invoke-AzureRmResourceAction.
+   
+    ```
+    Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
+    ```
+- Dwa parametry akcji
+    - **blobStorageAbsoluteSasUri** — identyfikator URI konta magazynu z tokenem sygnatury dostępu współdzielonego (SAS). W skrypcie programu PowerShell ta wartość może zostać przeniesiona zamiast klucza magazynu.
+    - **usageStartDate** — Data rozpoczęcia ściągania danych wraz z datą końcową bieżącej daty wykonania akcji. Stopień szczegółowości jest na poziomie dnia, więc nawet w przypadku dodania informacji o czasie zostanie on zignorowany.
+
+### <a name="exported-data---a-closer-look"></a>Wyeksportowane dane — bliższe spojrzenie
+Teraz przyjrzyjmy się bliżej wyeksportowanych danych. Jak wspomniano wcześniej, po pomyślnym wyeksportowaniu danych będą dostępne dwa pliki CSV. 
+
+**Virtualmachines. csv** zawiera następujące kolumny danych:
+
+| Nazwa kolumny | Opis |
+| ----------- | ----------- | 
+| SubscriptionId | Identyfikator subskrypcji, w której istnieje laboratorium. |
+| LabUId | Unikatowy identyfikator identyfikatora GUID dla laboratorium. |
+| LabName | Nazwa laboratorium. |
+| LabResourceId | W pełni kwalifikowany identyfikator zasobu laboratorium. |
+| ResourceGroupName | Nazwa grupy zasobów zawierającej maszynę wirtualną | 
+| ResourceId | W pełni kwalifikowany identyfikator zasobu dla maszyny wirtualnej. |
+| ResourceUId | Identyfikator GUID dla maszyny wirtualnej |
+| Name (Nazwa) | Nazwa maszyny wirtualnej. |
+| CreatedTime | Data i godzina utworzenia maszyny wirtualnej. |
+| DeletedDate | Data i godzina usunięcia maszyny wirtualnej. Jeśli jest pusty, usuwanie nie nastąpiło jeszcze. |
+| ResourceOwner | Właściciel maszyny wirtualnej. Jeśli wartość jest pusta, jest to albo maszyna wirtualna z obsługą lub utworzona przez jednostkę usługi. |
+| PricingTier | Warstwa cenowa maszyny wirtualnej |
+| ResourceStatus | Stan dostępności maszyny wirtualnej. Aktywny, jeśli nadal istnieje lub nieaktywny, jeśli maszyna wirtualna została usunięta. |
+| ComputeResourceId | W pełni kwalifikowany identyfikator zasobu obliczeniowego maszyny wirtualnej. |
+| Losową | Ustaw wartość true, jeśli maszyna wirtualna jest maszyną wirtualną | 
+| EnvironmentId | Identyfikator zasobu środowiska, w którym utworzono maszynę wirtualną. Jest ona pusta, jeśli maszyna wirtualna nie została utworzona jako część zasobu środowiska. |
+| ExpirationDate | Data wygaśnięcia dla maszyny wirtualnej. Ta wartość jest pusta, jeśli nie została ustawiona data wygaśnięcia.
+| GalleryImageReferenceVersion |  Wersja obrazu podstawowego maszyny wirtualnej. |
+| GalleryImageReferenceOffer | Oferta obrazu podstawowego maszyny wirtualnej. |
+| GalleryImageReferencePublisher | Wydawca obrazu podstawowego maszyny wirtualnej. |
+| GalleryImageReferenceSku | Jednostka SKU obrazu podstawowego maszyny wirtualnej |
+| GalleryImageReferenceOsType | Typ systemu operacyjnego obrazu podstawowego maszyny wirtualnej |
+| CustomImageId | W pełni kwalifikowany Identyfikator niestandardowego obrazu podstawowego maszyny wirtualnej. |
+
+Poniżej znajdują się kolumny danych zawarte w **dyskach. csv** :
+
+| Nazwa kolumny | Opis | 
+| ----------- | ----------- | 
+| SubscriptionId | Identyfikator subskrypcji zawierającej laboratorium |
+| LabUId | Identyfikator GUID laboratorium |
+| LabName | Nazwa laboratorium | 
+| LabResourceId | W pełni kwalifikowany identyfikator zasobu dla laboratorium | 
+| ResourceGroupName | Nazwa grupy zasobów zawierającej laboratorium | 
+| ResourceId | W pełni kwalifikowany identyfikator zasobu dla maszyny wirtualnej. |
+| ResourceUId | Identyfikator GUID dla maszyny wirtualnej |
+ |Name (Nazwa) | Nazwa dołączonego dysku |
+| CreatedTime |Data i godzina utworzenia dysku z danymi. |
+| DeletedDate | Data i godzina usunięcia dysku z danymi. |
+| ResourceStatus | Stan zasobu. Aktywny, jeśli istnieje zasób. Nieaktywny, po usunięciu. |
+| DiskBlobName | Nazwa obiektu BLOB dla dysku danych. |
+| DiskSizeGB | Rozmiar dysku z danymi. |
+| Nr dysku | Typ dysku z danymi. 0 w przypadku wersji Standard, 1 dla warstwy Premium. |
+| LeasedByVmId | Identyfikator zasobu maszyny wirtualnej, do której został dołączony dysk z danymi. |
+
+
+> [!NOTE]
+> Jeśli zamierzasz korzystać z wielu laboratoriów i chcesz uzyskać ogólne informacje, dwie kolumny klucza to **LabUID** i **ResourceUId**, które są unikatowymi identyfikatorami w ramach subskrypcji.
+
+Eksportowane dane można manipulować i wizualizować przy użyciu narzędzi, takich jak SQL Server, Power BI itd. Ta funkcja jest szczególnie przydatna, gdy chcesz zgłosić użycie laboratorium do zespołu zarządzania, który może nie używać tej samej subskrypcji platformy Azure.
+
+## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły: 
 
-- [Ustawianie zasad laboratorium](devtest-lab-get-started-with-lab-policies.md)
+- [Ustawianie zasad dla laboratorium](devtest-lab-get-started-with-lab-policies.md)
 - [Często zadawane pytania](devtest-lab-faq.md)
