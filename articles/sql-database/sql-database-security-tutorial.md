@@ -1,6 +1,6 @@
 ---
 title: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli w usłudze Azure SQL Database | Microsoft Docs
-description: Samouczek, który jest przedstawienie o technikach i funkcjach umożliwiających zabezpieczenie pojedyncze lub zbiorcze bazy danych w usłudze Azure SQL Database.
+description: Samouczek, który uczy się o technikach i funkcjach w celu zabezpieczania pojedynczej lub puli baz danych w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -8,15 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 02/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce9ba7c197bb604b9d71e2bf501ca67d32865f38
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582706"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566877"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Samouczek: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli
 
@@ -87,11 +86,11 @@ Aby skonfigurować regułę zapory na poziomie serwera:
 Teraz możesz nawiązać połączenie z dowolną bazą danych na serwerze przy użyciu określonego adresu IP lub zakresu adresów IP.
 
 > [!IMPORTANT]
-> Domyślnie dostęp za pośrednictwem zapory usługi SQL Database jest włączony dla wszystkich usług platformy Azure w obszarze **Zezwalaj na dostęp do usług platformy Azure**. Wybierz przycisk **WYŁ.**, aby wyłączyć dostęp dla wszystkich usług platformy Azure.
+> Domyślnie dostęp za pośrednictwem zapory usługi SQL Database jest włączony dla wszystkich usług platformy Azure w obszarze **Zezwalaj na dostęp do usług platformy Azure**. Wybierz przycisk **WYŁ.** , aby wyłączyć dostęp dla wszystkich usług platformy Azure.
 
 ### <a name="setup-database-firewall-rules"></a>Konfigurowanie reguł zapory bazy danych
 
-Reguły zapory na poziomie bazy danych dotyczą tylko pojedynczych baz danych. Baza danych zachowuje te reguły podczas trybu failover serwera. Reguły zapory na poziomie bazy danych można skonfigurować wyłącznie za pomocą instrukcji języka Transact-SQL (T-SQL) oraz wyłącznie po skonfigurowaniu reguły zapory na poziomie serwera.
+Reguły zapory na poziomie bazy danych dotyczą tylko pojedynczych baz danych. Te reguły będą przechowywane w bazie danych w trybie failover serwera. Reguły zapory na poziomie bazy danych można skonfigurować wyłącznie za pomocą instrukcji języka Transact-SQL (T-SQL) oraz wyłącznie po skonfigurowaniu reguły zapory na poziomie serwera.
 
 Aby skonfigurować regułę zapory na poziomie bazy danych:
 
@@ -265,7 +264,7 @@ W przypadku wykrycia nietypowych działań otrzymasz wiadomość e-mail z inform
 
 ### <a name="auditing"></a>Inspekcja
 
-Funkcja inspekcji śledzi zdarzenia bazy danych i zapisuje zdarzenia w dzienniku inspekcji w jednej usłudze Azure storage, dzienniki usługi Azure Monitor, lub do Centrum zdarzeń. Inspekcja pomaga zachować zgodność z przepisami, analizować aktywność bazy danych oraz uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać potencjalne naruszenia zabezpieczeń.
+Funkcja inspekcji śledzi zdarzenia bazy danych i zapisuje zdarzenia w dzienniku inspekcji w usłudze Azure Storage, w dzienniku Azure Monitor lub w centrum zdarzeń. Inspekcja pomaga zachować zgodność z przepisami, analizować aktywność bazy danych oraz uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać potencjalne naruszenia zabezpieczeń.
 
 Aby włączyć inspekcję:
 
@@ -287,7 +286,7 @@ Aby włączyć inspekcję:
        - **Log Analytics** — automatyczne zapisywanie zdarzeń do celów zapytań lub dalszej analizy.
 
            > [!NOTE]
-           > A **obszaru roboczego usługi Log Analytics** jest wymagany do obsługi zaawansowanych funkcji, takich jak analiza, niestandardowe reguły alertów i eksportuje programu Excel lub Power BI. Bez obszaru roboczego dostępny jest tylko edytor zapytań.
+           > **Log Analytics obszar roboczy** jest wymagany do obsługi zaawansowanych funkcji, takich jak analiza, niestandardowe reguły alertów oraz eksporty programu Excel lub Power BI. Bez obszaru roboczego dostępny jest tylko edytor zapytań.
 
        - **Centrum zdarzeń** — umożliwia kierowanie zdarzeń do użytku w innych aplikacjach
 
@@ -337,7 +336,7 @@ Aby włączyć lub sprawdzić szyfrowanie:
 > [!NOTE]
 > Aby wyświetlić stan szyfrowania, połącz się z bazą danych za pomocą programu [SQL Server Management Studio](./sql-database-connect-query-ssms.md) i wykonaj zapytanie dotyczące kolumny `encryption_state` w widoku [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql). Stan `3` oznacza, że baza danych jest szyfrowana.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wyjaśniono, jak zwiększyć poziom bezpieczeństwa bazy danych w kilku prostych krokach. W tym samouczku omówiono:
 

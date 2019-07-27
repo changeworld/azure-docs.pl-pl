@@ -1,6 +1,6 @@
 ---
-title: Tworzenie, publikowanie i odpowiadanie
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: Tworzenie, publikowanie, Odpowiedz QnA Maker
+titleSuffix: Azure Cognitive Services
 description: Ten oparty na protokole REST samouczek przedstawia sposób programowego tworzenia i publikowania bazy wiedzy, a następnie odpowiadania na pytanie z bazy wiedzy.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: a14bc14e6115c1bc25582c3de71382ae17d7debd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dfd0a04da9f4f728bd43d8d3fcd4c671e9b95a47
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792282"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562899"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Samouczek: używanie języka C# do tworzenia bazy wiedzy, a następnie odpowiadania na pytanie z bazy wiedzy
 
@@ -158,7 +158,7 @@ _Podstawowy punkt końcowy_ jest przekazywany jako nagłówek do uwierzytelniani
 
 |Nazwa nagłówka|Wartość nagłówka|
 |--|--|
-|Autoryzacja|`Endpoint` + **podstawowy punkt końcowy**<br>Przykład: `Endpoint xxxxxxx`<br>Zwróć uwagę na odstęp między tekstem `Endpoint` a wartością podstawowego punktu końcowego. 
+|Authorization|`Endpoint` + **podstawowy punkt końcowy**<br>Przykład: `Endpoint xxxxxxx`<br>Zwróć uwagę na odstęp między tekstem `Endpoint` a wartością podstawowego punktu końcowego. 
 
 Treść żądania musi przekazać prawidłowe dane w formacie JSON:
 
@@ -245,7 +245,7 @@ Skompiluj i uruchom program.
 
 Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices). Kiedy już wiesz, jak używać interfejsu API generowania odpowiedzi, możesz użyć tego interfejsu API z dowolnym językiem lub strukturą żądania HTTP. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://go.microsoft.com/fwlink/?linkid=2092179)

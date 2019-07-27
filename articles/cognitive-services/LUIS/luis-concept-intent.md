@@ -1,7 +1,7 @@
 ---
-title: Intencje
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Pojedynczy intencji reprezentuje zadanie lub akcję użytkownik chce wykonać. Jest to cel lub celem wyrażone w wypowiedź użytkownika. Definiują zestaw intencji, które odnosi się do akcji, które użytkownicy chcą w aplikacji.
+title: Intencje — LUIS
+titleSuffix: Azure Cognitive Services
+description: Pojedynczy cel reprezentuje zadanie lub akcję, które użytkownik chce wykonać. Jest to cel lub celem wyrażone w wypowiedź użytkownika. Definiują zestaw intencji, które odnosi się do akcji, które użytkownicy chcą w aplikacji.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b574e0a545091263fce7949f997a3ba2dc8e5a8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813455"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563978"
 ---
-# <a name="concepts-about-intents-in-your-luis-app"></a>Pojęcia dotyczące intencje w aplikacją usługi LUIS
+# <a name="concepts-about-intents-in-your-luis-app"></a>Pojęcia dotyczące intencji w aplikacji LUIS
 
 Intencji reprezentuje zadanie lub akcję użytkownik chce wykonać. Jest to cel lub celem wyrażone w użytkownika [wypowiedź](luis-concept-utterance.md).
 
@@ -31,7 +31,7 @@ Przeznaczeniu podróży   |   Przykładowe wypowiedzi   |
  CheckWeather | "Co to jest dane takie jak pogody w Bostonie?" <br/> "Pokaż prognozy dla tego weekend" |
  Brak         | "Dostać się ze mną przepisu plik cookie"<br>"Czy Lakers wygrać?" |
 
-Wszystkie aplikacje dołączone wstępnie zdefiniowane opcje "[Brak](#none-intent-is-fallback-for-app)", który jest celem rezerwowego. 
+Wszystkie aplikacje są dostarczane ze wstępnie zdefiniowanym zamiarem "[none](#none-intent-is-fallback-for-app)", który jest zamiarem alternatywnym. 
 
 ## <a name="prebuilt-domains-provide-intents"></a>Ze wstępnie utworzonych domen zapewniają intencji
 Oprócz intencji, które definiujesz można użyć wbudowanych intencji z jednego ze wstępnie utworzonych domen. Aby uzyskać więcej informacji, zobacz [korzystać ze wstępnie utworzonych domen w aplikacjach usługi LUIS](luis-how-to-use-prebuilt-domains.md) Aby dowiedzieć się więcej o dostosowywaniu intencji z wbudowanych domeny do użycia w aplikacji.
@@ -59,10 +59,10 @@ Podobnie tych [wypowiedzi](luis-concept-utterance.md) odpowiadają jednej intenc
 
 ## <a name="none-intent"></a>Intencja None
 
-**Brak** ważne jest, aby każda aplikacja i nie powinny mieć zerowej wypowiedzi.
+Zamiara brak jest ważna dla każdej aplikacji i **nie** powinna mieć wartości zero wyrażenia długości.
 
 ### <a name="none-intent-is-fallback-for-app"></a>Żadna funkcja nie jest rezerwowe dla aplikacji
-**Brak** celem jest celem wychwytywania lub rezerwowej. Służy do nauki LUIS wypowiedzi, które nie są istotne w domenie aplikacji (obszar podmiotu). **Brak** intencji powinny mieć od 10 do 20 procent całkowitej wypowiedzi w aplikacji. Nie pozostawiaj brak puste. 
+**Brak** celem jest celem wychwytywania lub rezerwowej. Służy do nauki LUIS wypowiedzi, które nie są istotne w domenie aplikacji (obszar podmiotu). **Brak** intencji powinny mieć od 10 do 20 procent całkowitej wypowiedzi w aplikacji. Nie pozostawiaj pustej wartości. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Brak elementu intent pomaga kierunek konwersacji
 Gdy wypowiedź przewiduje się, jak brak intencji i zwrócone do chatbot za pomocą tego prognozowania bot można zadawać pytań lub Zapewnij menu do kierowania użytkownikowi prawidłowe opcje w chatbot. 
@@ -83,9 +83,9 @@ Jeśli chcesz określić zamiarach ujemny i dodatni, takie jak "I **ma** samoch�
 
 ## <a name="intents-and-patterns"></a>Intencje i wzorce
 
-Jeśli masz wypowiedzi przykładu, które mogą być zdefiniowane w części lub całości jako wyrażenie regularne, należy wziąć pod uwagę przy użyciu [jednostki wyrażenia regularnego](luis-concept-entity-types.md#regular-expression-entity) parowania z [wzorzec](luis-concept-patterns.md). 
+Jeśli masz przykład wyrażenia długości, który można zdefiniować w części lub całości jako wyrażenie regularne, rozważ użycie [jednostki wyrażenia regularnego](luis-concept-entity-types.md#regular-expression-entity) sparowanego ze [wzorcem](luis-concept-patterns.md). 
 
-Jednostki wyrażenia regularnego gwarantuje wyodrębnianie danych, tak, aby odbywa się dopasowanie. Dopasowanie wzorca gwarancję, że zwracany jest dokładna intencji. 
+Użycie jednostki wyrażenia regularnego gwarantuje ekstrakcję danych, tak aby wzorzec był dopasowany. Dopasowywanie do wzorca gwarantuje dokładne przeznaczenie. 
 
 ## <a name="intent-balance"></a>Saldo intencji
 Przeznaczeniu domeny powinien mieć saldo wypowiedzi w każdej intencji. Nie masz zamiar jednego z 10 wypowiedzi i inną intencji z wypowiedzi 500. Nie jest równoważone. Jeśli masz tę sytuację, zapoznaj się z celem z wypowiedzi 500, aby zobaczyć, jeśli wiele intencji można zreorganizować do [wzorzec](luis-concept-patterns.md). 

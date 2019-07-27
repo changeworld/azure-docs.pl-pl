@@ -1,7 +1,7 @@
 ---
-title: Wzorce Dodaj dokładności
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Dodawanie szablonów wzorca w celu zwiększenia dokładności prognozy w aplikacjach Language Understanding (LUIS).
+title: Wzorzec Dodawanie dokładności — LUIS
+titleSuffix: Azure Cognitive Services
+description: Dodawanie szablonów wzorców w celu poprawy dokładności przewidywania w aplikacjach Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 202b9632b7a7faaf955874a0300edbe5134b7fa1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0e801afde240d8b2d6e0798e6894b2e83f9c5cb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60196705"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560438"
 ---
-# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak dodać wzorców w celu zwiększenia dokładności prognozy
-Gdy aplikacją usługi LUIS otrzyma wypowiedzi punktu końcowego, należy użyć [wzorzec](luis-concept-patterns.md) w celu zwiększenia dokładności prognozy dla wypowiedzi zawiera wzorca w porządku program word i wybór programu word. Wzorce użycia określonego [składni](luis-concept-patterns.md#pattern-syntax) aby wskazać lokalizację: [jednostek](luis-concept-entity-types.md), jednostki [role](luis-concept-roles.md)i opcjonalny tekst.
+# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak dodać wzorce, aby poprawić dokładność przewidywania
+Gdy aplikacja LUIS otrzymuje punkt końcowy wyrażenia długości, użyj [wzorca](luis-concept-patterns.md) , aby poprawić dokładność przewidywania dla wyrażenia długości, które ujawnia wzorzec w kolejności słów i wyborze wyrazu. Wzorce używają określonej [składni](luis-concept-patterns.md#pattern-syntax) , aby wskazać lokalizację: [jednostki](luis-concept-entity-types.md), [role](luis-concept-roles.md)jednostek i tekst opcjonalny.
 
 ## <a name="add-template-utterance-to-create-pattern"></a>Dodaj wypowiedź szablonu, aby utworzyć wzorzec
 1. Otwórz aplikację, wybierając jego nazwę na **Moje aplikacje** strony, a następnie wybierz pozycję **wzorców** w lewym panelu w obszarze **lepsza wydajność aplikacji**.
@@ -34,7 +34,7 @@ Gdy aplikacją usługi LUIS otrzyma wypowiedzi punktu końcowego, należy użyć
 
     ![Zrzut ekranu przedstawiający jednostkę do wzorca](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Jeśli jednostka zawiera [roli](luis-concept-roles.md), określać rolę z dwukropkiem pojedynczego `:`po nazwę jednostki, takie jak `{Location:Origin}`. Wyświetla listę ról dla obiektów w postaci listy. Wybierz rolę, a następnie naciśnij klawisz Enter. 
+    Jeśli jednostka zawiera [rolę](luis-concept-roles.md), wskaż rolę z pojedynczym dwukropkiem, `:`po nazwie jednostki, takiej jak. `{Location:Origin}` Wyświetla listę ról dla obiektów w postaci listy. Wybierz rolę, a następnie naciśnij klawisz Enter. 
 
     ![Zrzut ekranu przedstawiający jednostki z rolą](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 
@@ -56,22 +56,22 @@ Po dodaniu, edytować, usunąć lub ponownie przypisać wzorzec [szkolenie](luis
 <a name="remove-entity-or-intent-filter"></a>
 <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>
 
-## <a name="use-contextual-toolbar"></a>Za pomocą narzędzi kontekstowych
+## <a name="use-contextual-toolbar"></a>Użyj kontekstowego paska narzędzi
 
-Kontekstowe narzędzi powyżej listy wzorców pozwala na:
+Kontekstowy pasek narzędzi powyżej listy wzorców pozwala:
 
-* Wyszukiwanie wzorców
+* Wyszukaj wzorce
 * Edytuj wzorzec
 * Ponowne przypisywanie poszczególnych wzorzec do innego zamiaru
 * Ponowne przypisywanie kilka wzorców do innego zamiaru
-* Delete a pojedynczy wzorzec
+* Delete-a-Single-wzorzec
 * Usuwanie wielu wzorców
 * Filtrowanie listy wzorzec przez jednostkę
-* Filtr — wzorzec — listy przez intencji
+* Filtr-wzorzec-lista według intencji
 * Usuwanie jednostki lub filtr elementu intent
 * Dodawanie wzorca z istniejących wypowiedź przeznaczenie lub jednostki strony
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [kompilacji wzorzec](luis-tutorial-pattern.md) pattern.any i ról z samouczka.
+* Dowiedz się, jak [utworzyć wzorzec](luis-tutorial-pattern.md) ze wzorcem. dowolne role i z samouczkiem.
 * Dowiedz się, jak [szkolenie](luis-how-to-train.md) aplikacji.

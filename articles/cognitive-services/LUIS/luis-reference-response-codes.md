@@ -1,6 +1,6 @@
 ---
-title: Kody odpowiedzi HTTP interfejsu API
-titleSuffix: Azure
+title: Kody odpowiedzi HTTP interfejsu API — LUIS
+titleSuffix: Azure Cognitive Services
 description: Zrozumienie, jakie kody odpowiedzi HTTP są zwracane z tworzenia usługi LUIS i interfejsów API punktu końcowego
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: f6742bf64ce26e6cce93dfcdfd06756f3c340d9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c92bcf55b571c37efa308d9121ee4aee714e684a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522971"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560071"
 ---
-# <a name="common-api-response-codes-and-their-meaning"></a>Typowe kody odpowiedzi interfejsu API oraz ich znaczenie
+# <a name="common-api-response-codes-and-their-meaning"></a>Typowe kody odpowiedzi interfejsu API i ich znaczenie
 
 [Tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087) i [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356) interfejsy API zwracają kody odpowiedzi HTTP. Chociaż komunikatach odpowiedzi zawiera informacje specyficzne dla żądania, kod stanu odpowiedzi HTTP jest ogólny. 
 
@@ -40,6 +40,6 @@ W poniższej tabeli wymieniono niektóre najbardziej typowe kody stanu odpowiedz
 |414|Endpoint|kwerendy przekracza maksymalną dozwoloną długość|
 |429|Tworzenie punktu końcowego|Przekroczono limit szybkości (żądań na sekundę)|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Interfejs API REST [tworzenia](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) i [punktu końcowego](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) dokumentacji
+* [Tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) interfejsu API REST i dokumentacja [punktu końcowego](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)

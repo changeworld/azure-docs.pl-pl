@@ -1,6 +1,6 @@
 ---
 title: Użycie punktu końcowego przewidywania do programowego testowania obrazów przy użyciu klasyfikatora — Custom Vision
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak programowo testować obrazy za pomocą interfejsu API przy użyciu klasyfikatora usługi Custom Vision Service.
 services: cognitive-services
 author: anrothMSFT
@@ -10,48 +10,48 @@ ms.subservice: custom-vision
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8564095cc84a3f124ca41efd2e19787cd16902ab
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816719"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564126"
 ---
-# <a name="use-your-model-with-the-prediction-api"></a>Model za pomocą interfejsu API prognoz.
+# <a name="use-your-model-with-the-prediction-api"></a>Korzystanie z modelu za pomocą interfejsu API przewidywania
 
-Po już uczenie modelu, możesz przetestować obrazy programowo, przesyłając je do punktu końcowego interfejsu API prognoz.
+Po nauczeniu modelu możesz programowo przetestować obrazy przez przesłanie ich do punktu końcowego interfejsu API przewidywania.
 
 > [!NOTE]
-> W tym dokumencie przedstawiono przesyłanie obrazu do interfejsu API przewidywania przy użyciu języka C#. Aby uzyskać więcej informacji i przykładów, zobacz [dokumentacja interfejsu API prognoz](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
+> W tym dokumencie przedstawiono przesyłanie obrazu do interfejsu API przewidywania przy użyciu języka C#. Aby uzyskać więcej informacji i przykładów, zobacz [Dokumentacja interfejsu API przewidywania](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
 
-## <a name="publish-your-trained-iteration"></a>Publikowanie swojej uczonego iteracji
+## <a name="publish-your-trained-iteration"></a>Publikowanie przeszkolonej iteracji
 
 Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a następnie kartę __Wydajność__.
 
-Do przesyłania obrazów do interfejsu API prognoz, najpierw należy do publikowania swojej iteracji w celu prognozowania, co można zrobić, wybierając __Publikuj__ i określając nazwę opublikowanych iteracji. Dzięki temu model dostępne dla interfejsu API prognozowania usługi Custom Vision w usłudze Azure resource.
+Aby przesłać obrazy do interfejsu API przewidywania, najpierw musisz opublikować iterację do prognozowania, którą można wykonać, wybierając pozycję __Publikuj__ i podając nazwę opublikowanej iteracji. Dzięki temu Twój model będzie dostępny dla interfejsu API przewidywania zasobów Custom Vision platformy Azure.
 
-![Na karcie Wydajność jest wyświetlana z czerwonym prostokątem otaczającego przycisk Publikuj.](./media/use-prediction-api/unpublished-iteration.png)
+![Zostanie wyświetlona karta wydajność z czerwonym prostokątem otaczającym przycisk Publikuj.](./media/use-prediction-api/unpublished-iteration.png)
 
-Po pomyślnym opublikowaniu modelu zostaną wyświetlone etykiety "Opublikowano", pojawiają się obok swojej iteracji na lewym pasku bocznym, a jej nazwa będzie wyświetlana w opisie iteracji.
+Po pomyślnym opublikowaniu modelu zobaczysz etykietę "Opublikowano" obok iteracji na pasku bocznym po lewej stronie, a jej nazwa zostanie wyświetlona w opisie iteracji.
 
-![Na karcie Wydajność jest wyświetlany za pomocą czerwonego prostokąta otaczającego etykiety opublikowano i nazwy opublikowanej iteracji.](./media/use-prediction-api/published-iteration.png)
+![Zostanie wyświetlona karta wydajność z czerwonym prostokątem otaczającym opublikowaną etykietę i nazwę opublikowanej iteracji.](./media/use-prediction-api/published-iteration.png)
 
 ## <a name="get-the-url-and-prediction-key"></a>Pobieranie adresu URL i klucza predykcyjnego
 
-Po opublikowaniu modelu można pobrać wymaganych informacji, wybierając __URL prognozowania__. Zostanie otwarte okno dialogowe informacje dotyczące korzystania z interfejsu API prognoz, w tym __URL prognozowania__ i __prognozowania klucz__.
+Po opublikowaniu modelu możesz pobrać wymagane informacje, wybierając pozycję __adres URL przewidywania__. Spowoduje to otwarcie okna dialogowego z informacjami dotyczącymi korzystania z interfejsu API przewidywania, w tym __adres URL przewidywania__ i __klucz predykcyjny__.
 
-![Na karcie Wydajność jest wyświetlany za pomocą czerwonego prostokąta otaczającego przycisk prognozowania adresu URL.](./media/use-prediction-api/published-iteration-prediction-url.png)
+![Karta wydajność jest pokazywana z czerwonym prostokątem otaczającym przycisk prognozowanego adresu URL.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![Na karcie Wydajność jest wyświetlany za pomocą czerwonego prostokąta otaczającego wartość adresu URL prognozy przy użyciu pliku obrazu i wartości klucza prognozowania.](./media/use-prediction-api/prediction-api-info.png)
+![Karta wydajność jest pokazywana z czerwonym prostokątem otaczającym wartość adresu URL prognozowania przy użyciu pliku obrazu oraz wartości predykcyjnego klucza.](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> Twoje __klucz prognozowania__ można także znaleźć w [witryny Azure portal](https://portal.azure.com) strony dla zasobów platformy Azure Custom Vision związanych z projektem, w obszarze __klucze__ bloku.
+> __Klucz predykcyjny__ można również znaleźć na stronie [Azure Portal](https://portal.azure.com) dla Custom Vision zasobu platformy Azure skojarzonego z projektem w bloku __klucze__ .
 
-W tym przewodniku będzie używać lokalnego obrazu, dlatego skopiuj adres URL, pod **Jeśli masz plik obrazu** do tymczasowej lokalizacji. Skopiuj odpowiedni __klucz prognozowania__ również wartość.
+W tym przewodniku użyjesz lokalnego obrazu, więc Skopiuj adres URL w obszarze **Jeśli masz plik obrazu** do lokalizacji tymczasowej. Skopiuj również odpowiednią wartość __klucza przewidywania__ .
 
 ## <a name="create-the-application"></a>Tworzenie aplikacji
 
-1. W programie Visual Studio Utwórz nowy C# aplikacji konsoli.
+1. W programie Visual Studio Utwórz nową C# aplikację konsolową.
 
 1. Użyj poniższego kodu jako treści pliku __Program.cs__.
 
@@ -111,13 +111,13 @@ W tym przewodniku będzie używać lokalnego obrazu, dlatego skopiuj adres URL, 
     ```
 
 1. Zmień następujące informacje:
-   * Ustaw `namespace` pola Nazwa projektu.
-   * Zastąp symbol zastępczy `<Your prediction key>` z wartością klucza pobranym wcześniej.
-   * Zastąp symbol zastępczy `<Your prediction URL>` za pomocą adresu URL pobranym wcześniej.
+   * `namespace` Ustaw pole na nazwę projektu.
+   * Zastąp symbol `<Your prediction key>` zastępczy wcześniej pobraną wartością klucza.
+   * Zamień symbol zastępczy `<Your prediction URL>` na pobrany wcześniej adres URL.
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Po uruchomieniu aplikacji, monit wprowadź ścieżkę do pliku obrazu, w konsoli. Obraz, który następnie jest przesyłany do interfejsu API prognoz i przewidywane wyniki są zwracane jako ciąg w formacie JSON. Poniżej zamieszczono przykładową odpowiedź.
+Po uruchomieniu aplikacji zostanie wyświetlony monit o wprowadzenie ścieżki do pliku obrazu w konsoli programu. Obraz jest następnie przesyłany do usługi przewidywania API, a wyniki przewidywania są zwracane jako ciąg w formacie JSON. Poniżej przedstawiono przykładową odpowiedź.
 
 ```json
 {
@@ -132,12 +132,12 @@ Po uruchomieniu aplikacji, monit wprowadź ścieżkę do pliku obrazu, w konsoli
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku przedstawiono sposób przesyłania obrazów niestandardowych obrazów klasyfikatora/wykrywanie i otrzymać odpowiedź programowo przy użyciu C# zestawu SDK. Dowiedz się, jak realizować scenariusze end-to-end z C#, lub zacznij pracę, przy użyciu innego języka zestawu SDK.
+W tym przewodniku przedstawiono sposób przesyłania obrazów do niestandardowego klasyfikatora i detektora obrazu oraz do programistycznego otrzymywania odpowiedzi z C# zestawu SDK. Następnie dowiesz się, jak ukończyć kompleksowe scenariusze z programem, lub C#Zacznij korzystać z innego zestawu SDK języka.
 
-* [Szybki Start: .NET SDK](csharp-tutorial.md)
-* [Szybki start: Python SDK](python-tutorial.md)
-* [Szybki start: Java SDK](java-tutorial.md)
-* [Szybki start: Węzeł zestawu SDK](node-tutorial.md)
-* [Szybki start: Przejdź do zestawu SDK](go-tutorial.md)
+* [Szybki Start: zestaw SDK platformy .NET](csharp-tutorial.md)
+* [Szybki start: Zestaw SDK języka Python](python-tutorial.md)
+* [Szybki start: Zestaw Java SDK](java-tutorial.md)
+* [Szybki start: Zestaw SDK węzła](node-tutorial.md)
+* [Szybki start: Zestaw SDK języka go](go-tutorial.md)

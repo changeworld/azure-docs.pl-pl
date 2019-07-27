@@ -1,6 +1,6 @@
 ---
 title: Jak instalować i uruchamiać kontenery — przetwarzanie obrazów
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Jak pobrać, zainstalować i uruchamiaj kontenery dla przetwarzania obrazów w tym samouczku wskazówki.
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: efde223061a873a57595bc4a577b7de55b1d8a46
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321463"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564583"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalowanie i uruchamianie kontenerów Rozpoznawanie tekstu
 
@@ -87,7 +87,7 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Polecenie używa następujących parametrów:
 
-| Symbol zastępczy | Wartość |
+| Symbol zastępczy | Value |
 |-------------|-------|
 |{API_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie kluczy platformy Azure `Cognitive Services` .  |
 |{ENDPOINT_URI} | Wartość identyfikatora URI punktu końcowego rozliczenia. Przykład:`https://westus.api.cognitive.microsoft.com/vision/v2.0`|
@@ -172,7 +172,7 @@ W tym artykule przedstawiono koncepcje i przepływ pracy służące do pobierani
 > [!IMPORTANT]
 > Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery Cognitive Services nie wysyłają danych klienta (na przykład obrazu lub tekstu, który jest analizowany) do firmy Microsoft.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Przegląd [skonfigurować kontenery](computer-vision-resource-container-config.md) ustawień konfiguracji
 * Przegląd [omówienie wizualizacji komputerowej](Home.md) dowiedzieć się więcej o rozpoznawaniu tekstu drukowanego i pisma odręcznego  

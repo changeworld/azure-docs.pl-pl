@@ -1,6 +1,6 @@
 ---
-title: Wzorzec. dowolny typ jednostki
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Wzorzec. dowolny typ jednostki — LUIS
+titleSuffix: Azure Cognitive Services
 description: Wzorzec. any jest symbolem zastępczym o zmiennej długości używanym tylko w szablonie wzorca wypowiedź, aby oznaczyć, gdzie rozpoczyna się i kończą.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: f3e5bd068b5df99bdfabff0bfe18ccebff980fc6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: cda6c724a36a73dc34c2bf8e7158e3e3ec92d46b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480166"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563227"
 ---
 # <a name="patternany-entity"></a>Jednostka Pattern.any 
 
@@ -84,6 +84,6 @@ W poniższej tabeli każdy wiersz ma dwie wersje wypowiedź. Górna wypowiedź t
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym [samouczku](luis-tutorial-pattern-any.md)Użyj **wzorca. Każda** jednostka do wyodrębnienia danych z wyrażenia długości, gdzie wyrażenia długości są dobrze sformatowane, a koniec danych można łatwo pomylić z innymi słowami wypowiedź.

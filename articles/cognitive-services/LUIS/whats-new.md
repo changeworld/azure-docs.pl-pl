@@ -1,7 +1,7 @@
 ---
-title: What's New - Language Understanding
+title: Co nowego — Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera informacje o interpretacji języka.
+description: Ten artykuł zawiera informacje o Language Understanding.
 author: diberry
 manager: nitinme
 ms.custom: experiment-luis-0519
@@ -11,43 +11,43 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 2efc48df906117a8d01ea8c309f001d2f623444f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 63a898bd807b168ae17ec90e442c6ee6c001c715
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485074"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559890"
 ---
-# <a name="whats-new-in-language-understanding"></a>What's new in Language Understanding
+# <a name="whats-new-in-language-understanding"></a>Co nowego w Language Understanding
 
-Dowiedz się, co nowego w usłudze. Te elementy mogą informacje o wersji, filmy wideo, wpisów w blogu i inne informacje. Oznacz zakładką tę stronę w celu zapewnienia aktualności usługi.  
+Dowiedz się, co nowego w usłudze. Te elementy mogą wydawania informacji, wideo, wpisów w blogu i innych typów. Oznacz Tę stronę zakładką, aby zapewnić aktualność usługi.  
 
 ## <a name="release-notes"></a>Informacje o wersji 
 
-### <a name="june-24-2019"></a>24 czerwca 2019 r.
+### <a name="june-24-2019"></a>24 czerwca 2019
 
-* [OrdinalV2 wstępnie utworzone jednostki](luis-reference-prebuilt-ordinal-v2.md) do obsługi, porządkowanie, np. następnie poprzedni i ostatnie. Tylko kultura angielski.
+* [OrdinalV2 prekompilowana jednostka](luis-reference-prebuilt-ordinal-v2.md) do obsługi kolejności takich jak Next, Previous i Last. Tylko kultura w języku angielskim.
 
-### <a name="may-6-2019---build-conference"></a>6 maja 2019 - //Build konferencji
+### <a name="may-6-2019---build-conference"></a>6 maja 2019 — Konferencja Build
 
-Następujące funkcje zostały wydane na konferencji 2019 kompilacji:
+Następujące funkcje zostały wydane na konferencji Build 2019:
 
-* [Przewodnik migracji w wersji 3 interfejsu API w wersji zapoznawczej](luis-migration-api-v3.md)
-* [Ulepszone analitycznego pulpitu nawigacyjnego](luis-how-to-use-dashboard.md)
-* [Ulepszone ze wstępnie utworzonych domen](luis-reference-prebuilt-domains.md) 
-* [Dynamiczna lista jednostek](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
-* [Podmiotów zewnętrznych](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+* [Przewodnik migracji interfejsu API v3](luis-migration-api-v3.md)
+* [Udoskonalony pulpit nawigacyjny analizy](luis-how-to-use-dashboard.md)
+* [Ulepszone prebudowane domeny](luis-reference-prebuilt-domains.md) 
+* [Jednostki listy dynamicznej](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
+* [Jednostki zewnętrzne](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 ## <a name="blogs"></a>Blogi
 
 [Bot Framework](https://blog.botframework.com/)
 
-## <a name="videos"></a>Filmy wideo
+## <a name="videos"></a>Wideo
 
-### <a name="2019-build-videos"></a>2019 kompilacji wideo
+### <a name="2019-build-videos"></a>wideo kompilacji 2019
 
-[Jak Skaluj swoją działalność biznesową na następnej generacji za pomocą usługi Azure Conversational AI](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+[Jak skalować swoją firmę do nowej generacji przy użyciu funkcji Azure Conversation AI](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="service-updates"></a>Aktualizacje usług
 
-[Ogłoszeniach o aktualizacji platformy Azure dla usług Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Anonse aktualizacji platformy Azure dla Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

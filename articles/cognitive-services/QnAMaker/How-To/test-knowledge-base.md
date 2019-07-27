@@ -1,6 +1,6 @@
 ---
 title: Jak przetestować wiedzy — QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Testowanie bazy wiedzy usługi QnA Maker jest ważną częścią proces iteracyjny, aby poprawić dokładność odpowiedzi zostały zwrócone. Możesz przetestować wiedzy za pośrednictwem czatu rozszerzonego interfejsu, który umożliwia także, że możesz wprowadzać zmiany.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4d9c00c4ea7fd0494d00551dc37b186e1a357037
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6a512098d5dfda47b7755e24b286aabf83aa7e69
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439719"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563063"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Testowanie bazy wiedzy interaktywnie w usługi QnA Maker
 
@@ -24,28 +24,28 @@ Testowanie bazy wiedzy usługi QnA Maker jest ważną częścią proces iteracyj
 
 ## <a name="test-answer-matching"></a>Dopasowanie odpowiedzi testu
 
-1. Dostęp do bazy wiedzy, wybierając jego nazwę na **moich baz wiedzy** strony.
-1. Aby uzyskać dostęp do panelu slajdów w poziomie testu, wybierz pozycję **testu** w Twojej aplikacji na górnym panelu.
+1. Uzyskaj dostęp do bazy wiedzy, wybierając jej nazwę na stronie **Moje bazy wiedzy** .
+1. Aby uzyskać dostęp do panelu slajdu testu, wybierz opcję **test** w górnym panelu aplikacji.
 1. Wprowadź zapytanie w polu tekstowym i naciśnij klawisz Enter.
 1. Najlepiej dopasowany odpowiedź z bazy wiedzy są zwracane jako odpowiedzi.
 
 ## <a name="clear-test-panel"></a>Testu zwykłego panelu
 
-Aby wyczyścić wszystkie zapytania wprowadzony testu i ich wyniki z konsoli testów, wybierz **zacząć od początku** w lewym górnym rogu panelu testu.
+Aby wyczyścić wszystkie wprowadzone zapytania testowe i ich wyniki z konsoli testowej, wybierz pozycję **Rozpocznij** w lewym górnym rogu panelu test.
 
 ## <a name="close-test-panel"></a>Test Zamknij panel
 
-Aby zamknąć panel testu, wybierz **testu** ponownie przycisk. Gdy Test jest otwarty panel, nie można edytować zawartość bazy wiedzy Knowledge Base.
+Aby zamknąć Panel test, ponownie wybierz przycisk **Testuj** . Gdy Test jest otwarty panel, nie można edytować zawartość bazy wiedzy Knowledge Base.
 
 ## <a name="inspect-score"></a>Sprawdź wynik
 
-Możesz sprawdzić szczegóły wyniku testu w panelu Sprawdź.
+Sprawdzasz szczegóły wyniku testu w panelu Inspekcja.
 
-1.  Otwórz panel slajdów w poziomie testu wybierz **Sprawdź** więcej informacji na temat tej odpowiedzi.
+1.  Po otwarciu panelu slajdu testowego wybierz pozycję **Sprawdź** , aby uzyskać więcej informacji na temat tej odpowiedzi.
 
     ![Sprawdź odpowiedzi](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  Zostanie wyświetlony panel inspekcji. Na panelu są dostępne u góry oceniania przeznaczenie, a także żadnych określonych jednostek. Zespół przedstawia wynik wybranego wypowiedź.
+2.  Zostanie wyświetlony panel Inspekcja. Na panelu są dostępne u góry oceniania przeznaczenie, a także żadnych określonych jednostek. Zespół przedstawia wynik wybranego wypowiedź.
 
 ## <a name="correct-the-top-scoring-answer"></a>Popraw górnej oceniania odpowiedzi
 
@@ -63,7 +63,7 @@ Możesz dodać inne formy pytanie do danej odpowiedzi. Typ odpowiedzi alternatyw
 
 Jeśli któreś z istniejących odpowiedzi, które zostały dopasowane są niepoprawne lub odpowiedź nie istnieje w bazie wiedzy knowledge base (nie dobre znaleziono odpowiedników w KB), możesz dodać nową odpowiedź. 
 
-U dołu listy w odpowiedzi Użyj pola tekstowego, aby wprowadzić nową odpowiedź, a następnie naciśnij klawisz enter, aby dodać go. 
+W dolnej części listy odpowiedzi Użyj pola tekstowego, aby wprowadzić nową odpowiedź, i naciśnij klawisz ENTER, aby go dodać. 
 
 Wybierz **Zapisz i szkolenie** można utrwalić tej odpowiedzi. Nową parę odpowiedź na pytanie został dodany do bazy wiedzy. 
 
@@ -72,9 +72,9 @@ Wybierz **Zapisz i szkolenie** można utrwalić tej odpowiedzi. Nową parę odpo
 
 ## <a name="test-the-published-knowledge-base"></a>Testowanie opublikowanej bazy wiedzy
 
-W okienku testu, możesz przetestować opublikowanej wersji w bazie wiedzy knowledge base. Po opublikowaniu KB, wybierz **opublikowane KB** pole, a następnie Wyślij zapytanie w celu uzyskania wyników z opublikowanych KB.
+Opublikowaną wersję bazy wiedzy można testować w okienku testów. Po opublikowaniu bazy wiedzy wybierz pole opublikowana **Baza wiedzy** i Wyślij zapytanie w celu uzyskania wyników z opublikowanej bazy wiedzy.
 
-![Testujemy współpracę z opublikowanych KB](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Testuj względem opublikowanej bazy wiedzy](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

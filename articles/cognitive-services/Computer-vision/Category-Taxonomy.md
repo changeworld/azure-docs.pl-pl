@@ -1,7 +1,7 @@
 ---
 title: Taksonomia kategorii obrazów — przetwarzanie obrazów
-titlesuffix: Azure Cognitive Services
-description: Pobierz 86 kategorie taksonomii dla interfejsu API przetwarzania obrazów w usługach Azure Cognitive Services.
+titleSuffix: Azure Cognitive Services
+description: Pobierz kategorie 86 taksonomii dla interfejs API przetwarzania obrazów na platformie Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: reference
 ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 92adcf40d008a94a2fd81846cf9aa712474beacc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 42562f3e19844621cb3893cb4ce185e85cf7e0ab
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498852"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565753"
 ---
-# <a name="computer-vision-86-category-taxonomy"></a>Taksonomia kategorii 86 przetwarzania komputera
+# <a name="computer-vision-86-category-taxonomy"></a>Przetwarzanie obrazów 86 — Taksonomia kategorii
 
-abstract_
+streszczeń
 
 abstract_net
 
@@ -32,7 +32,7 @@ abstract_shape
 
 abstract_texture
 
-animal_
+wtargnięcia zwierząt
 
 animal_bird
 
@@ -44,7 +44,7 @@ animal_horse
 
 animal_panda
 
-building_
+budowaniu
 
 building_arch
 
@@ -62,9 +62,9 @@ building_stair
 
 building_street
 
-dark_
+dopływ
 
-drink_
+napojów
 
 drink_can
 
@@ -74,7 +74,7 @@ dark_fireworks
 
 sky_object
 
-food_
+żywności
 
 food_bread
 
@@ -84,7 +84,7 @@ food_grilled
 
 food_pizza
 
-indoor_
+mieszczeń
 
 indoor_churchwindow
 
@@ -100,9 +100,9 @@ indoor_venue
 
 dark_light
 
-others_
+Notes
 
-outdoor_
+zewnętrzne
 
 outdoor_city
 
@@ -132,7 +132,7 @@ outdoor_water
 
 outdoor_waterside
 
-people_
+osób
 
 people_baby
 
@@ -152,7 +152,7 @@ people_tattoo
 
 people_young
 
-plant_
+zakłady
 
 plant_branch
 

@@ -1,6 +1,6 @@
 ---
-title: Uruchom usługę Kubernetes
-titleSuffix: Text Analytics - Azure Cognitive Services
+title: Uruchom usługę Kubernetes — analiza tekstu
+titleSuffix: Azure Cognitive Services
 description: Wdróż kontener wykrywania języka z uruchomionym przykładem w usłudze Azure Kubernetes i przetestuj go w przeglądarce sieci Web.
 services: cognitive-services
 author: IEvangelist
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: ba6fde66b6173bdbff8e9acc08b16f47c5bf7ea4
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 7b6621273b04d019791f604ca0db26a73c289f2b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377098"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562606"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Wdróż kontener wykrywania języka w usłudze Azure Kubernetes Service
 
@@ -405,7 +405,7 @@ az group delete --name cogserv-container-rg
 
 * [polecenia kubectl dla użytkowników platformy Docker](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
 
 * Użyj więcej [kontenerów Cognitive Services](../../cognitive-services-container-support.md).
 * Użyj [Analiza tekstu połączonych usług](../vs-text-connected-service.md).

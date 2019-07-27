@@ -1,6 +1,6 @@
 ---
-title: Usługa LUIS ze wstępnie utworzonych jednostek e-mail odwołanie — Azure | Dokumentacja firmy Microsoft
-titleSuffix: Azure
+title: LUIS wstępnie utworzonych jednostek — dokumentacja poczty e-mail
+titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera adres e-mail informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2b11446c84ede0e8ecfce23eda1026919777fc66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c9c7b373f820dd23c70a67a1de8545935a1d93c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072075"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560251"
 ---
-# <a name="email-prebuilt-entity-for-a-luis-app"></a>Wyślij wiadomość e-mail ze wstępnie utworzonych jednostek dla aplikacji usługi LUIS
+# <a name="email-prebuilt-entity-for-a-luis-app"></a>Wstępnie utworzona jednostka poczty e-mail dla aplikacji LUIS
 Wyodrębniania wiadomości e-mail zawiera adres e-mail całego z wypowiedź. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający do intencji aplikacji poczty e-mail. Adres e-mail jednostki jest obsługiwana w `en-us` tylko kultury. 
 
 ## <a name="resolution-for-prebuilt-email"></a>Rozwiązania do obsługi poczty e-mail wstępnie
 
-### <a name="api-version-2x"></a>Wersja interfejsu API 2.x
+### <a name="api-version-2x"></a>Interfejs API w wersji 2. x
 
 W poniższym przykładzie pokazano rozdzielczość **builtin.email** jednostki.
 
@@ -54,9 +54,9 @@ W poniższym przykładzie pokazano rozdzielczość **builtin.email** jednostki.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API 3.x
+### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API w wersji 3. x
 
-Następujący kod JSON jest `verbose` parametr `false`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `false`
 
 ```json
 {
@@ -79,7 +79,7 @@ Następujący kod JSON jest `verbose` parametr `false`:
 ```
 
 
-Następujący kod JSON jest `verbose` parametr `true`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `true`
 
 ```json
 {

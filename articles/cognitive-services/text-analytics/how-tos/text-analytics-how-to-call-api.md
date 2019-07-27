@@ -1,7 +1,7 @@
 ---
 title: Wywoływanie interfejsu API usługi Text Analytics
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak wywołać interfejs API REST analizy tekstu.
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak wywołać interfejs API REST analiza tekstu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,55 +10,55 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: e98979ac43945ebc9af82d5f89db01855429ca70
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 2aa43318eab9a8d1beb2b133ab9802d390de8a7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304204"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552444"
 ---
-# <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analizy tekstu
+# <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analiza tekstu
 
-Wywołania **interfejsu API analizy tekstu** wywołań HTTP POST/GET, które można sformułować w dowolnym języku. W tym artykule używamy REST i [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) celu zademonstrowania kluczowych pojęć.
+Wywołania **interfejs API analizy tekstu** to wywołania http post/Get, które można sformułować w dowolnym języku. W tym artykule używamy REST i programu [Poster](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) , aby zademonstrować kluczowe pojęcia.
 
-Każde żądanie musi zawierać klucz dostępu i punktu końcowego HTTP. Punkt końcowy określa region wybrany podczas logowania się, adres URL usługi i zasobów na żądanie: `sentiment`, `keyphrases`, `languages`, i `entities`. 
+Każde żądanie musi zawierać klucz dostępu i punkt końcowy HTTP. Punkt końcowy określa region wybrany podczas rejestracji, adres URL usługi i zasób używany w żądaniu `sentiment`:, `keyphrases`, `languages`, i `entities`. 
 
-Odwołaj, analizy tekstu jest bezstanowy, więc żadne zasoby danych do zarządzania. Tekst zostanie przekazany, analizowane po otrzymaniu, a wyniki są natychmiast zwracane do aplikacji wywołującej.
+Odzyskanie tego analiza tekstu jest bezstanowe, aby nie było żadnych zasobów danych do zarządzania. Tekst zostanie przekazany, przeanalizowany po odebraniu, a wyniki są zwracane natychmiast do aplikacji wywołującej.
 
 > [!Tip]
-> W przypadku jednorazowe wywołań zobaczyć, jak działa interfejs API, można wysłać żądania POST z poziomu wbudowanego **konsoli testowania interfejsu API**, dostępne na każdym [strony dokumentacji interfejsu API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Nie skonfigurowano, i jedynymi wymogami są Aby wkleić klucz dostępu i dokumentów JSON w żądaniu. 
+> W przypadku połączeń jednokrotnych aby zobaczyć, jak działa interfejs API, możesz wysyłać żądania POST z wbudowanej **konsoli testowania interfejsu API**dostępnego na dowolnej [stronie dokumentacji interfejsu API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Nie ma żadnej konfiguracji, a jedyne wymagania polegają na wklejeniu klucza dostępu i dokumentów JSON do żądania. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) przy użyciu interfejsu API analizy tekstu i [punktu końcowego i klucza dostępu](text-analytics-how-to-access-key.md) , zostanie wygenerowany po utworzeniu konta usług Cognitive Services. 
+Musisz mieć [konto interfejsu API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z interfejs API analizy tekstu, a [punkt końcowy i klucz dostępu](text-analytics-how-to-access-key.md) generowany dla Ciebie podczas rejestrowania się w usłudze Cognitive Services. 
 
 <a name="json-schema"></a>
 
 ## <a name="json-schema-definition"></a>Definicja schematu JSON
 
-Dane wejściowe muszą być JSON w nieprzetworzony tekst bez struktury. XML nie jest obsługiwane. Schemat jest proste, składający się z elementy opisane w poniższej liście. 
+Dane wejściowe muszą być w formacie JSON w nieprzetworzonym tekście bez struktury. KOD XML nie jest obsługiwany. Schemat jest prosty, składający się z elementów opisanych na poniższej liście. 
 
-Obecnie można przesyłać tych samych dokumentów dla wszystkich operacji analizy tekstu: tonacji, kluczowych fraz, wykrywanie języka i identyfikator jednostki. (Schemat jest mogą się różnić dla każdej analizy w przyszłości).
+Obecnie można przesłać te same dokumenty do wszystkich operacji analiza tekstu: tonacji, frazy kluczowej, wykrywania języka i identyfikacji jednostek. (Schemat jest prawdopodobnie różny dla każdej analizy w przyszłości).
 
-| Element | Prawidłowe wartości | Wymagana? | Sposób użycia |
+| Element | Prawidłowe wartości | Wymagane? | Użycie |
 |---------|--------------|-----------|-------|
-|`id` |Typ danych jest ciągiem, ale w praktyce identyfikatory dokumentów mają tendencję do być liczbami całkowitymi. | Wymagane | System używa identyfikatorów zapewnienie struktury danych wyjściowych. Wyniki tonacji kodów języków i wyrażenia kluczowe są generowane dla każdego Identyfikatora w żądaniu.|
-|`text` | Bez określonej struktury nieprzetworzony tekst, maksymalnie 5,120 znaków. | Wymagane | Do wykrywania języka tekst może być wyrażona w dowolnym języku. Analiza tonacji, wyodrębnianie kluczowych fraz i identyfikacji jednostki, tekst musi znajdować na [obsługiwanym językiem](../text-analytics-supported-languages.md). |
-|`language` | 2-znakowy [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kod [obsługiwanym językiem](../text-analytics-supported-languages.md) | Różna | Wymagane do analizy tonacji, wyodrębnianie kluczowych fraz i łączenie podmiotów; Opcjonalnie na potrzeby wykrywania języka. Nie ma żadnych błędów, jeśli go wykluczyć, ale analiza jest obniżony bez niego. Kod języka powinna odpowiadać `text` należy podać. |
+|`id` |Typ danych to ciąg, ale w temacie identyfikatory dokumentów w programie mają być liczbami całkowitymi. | Wymagane | System używa identyfikatorów dostarczanych do struktury danych wyjściowych. Kody języka, kluczowe frazy i oceny tonacji są generowane dla każdego identyfikatora w żądaniu.|
+|`text` | Nieprzetworzony tekst nieprzebudowany, do 5 120 znaków. | Wymagane | W przypadku wykrywania języka tekst może być wyrażony w dowolnym języku. W przypadku analizy tonacji, wyodrębniania kluczowych fraz i identyfikacji jednostek tekst musi być w [obsługiwanym języku](../text-analytics-supported-languages.md). |
+|`language` | 2-znakowy kod [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) dla [obsługiwanego języka](../text-analytics-supported-languages.md) | Różna | Wymagane do analizy tonacji, wyodrębniania kluczowych fraz i konsolidacji jednostek; opcjonalne do wykrywania języka. Jeśli wyłączysz go, nie ma żadnego błędu, ale analiza zostanie nieprzerwana. Kod języka powinien odpowiadać podanemu `text` podaniu. |
 
-Aby uzyskać więcej informacji na temat limitów, zobacz [Text Analytics — Przegląd > limity danych](../overview.md#data-limits). 
+Aby uzyskać więcej informacji na temat limitów, zobacz [Analiza tekstu omówienie > limitów danych](../overview.md#data-limits). 
 
-## <a name="set-up-a-request-in-postman"></a>Konfiguruj zapytanie w narzędziu Postman
+## <a name="set-up-a-request-in-postman"></a>Skonfiguruj żądanie w programie Poster
 
-Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Postman (lub innego narzędzia test internetowy interfejs API), konfigurowania punktu końcowego, aby uwzględnić zasób, którego chcesz użyć, a następnie podaj klucz dostępu w nagłówku żądania. Każda operacja wymaga dołączenia odpowiedniego zasobu do punktu końcowego. 
+Usługa akceptuje żądania o rozmiarze do 1 MB. Jeśli używasz programu Poster (lub innego narzędzia testowego interfejsu API sieci Web), Skonfiguruj punkt końcowy do uwzględnienia zasobu, którego chcesz użyć, a następnie podaj klucz dostępu w nagłówku żądania. Każda operacja wymaga dołączenia odpowiedniego zasobu do punktu końcowego. 
 
-1. W narzędziu Postman:
+1. W programie Poster:
 
-   + Wybierz **wpis** jako typ żądania.
-   + Wklej w punkcie końcowym, skopiowane ze strony portalu.
+   + Wybierz pozycję **post** jako typ żądania.
+   + Wklej w punkcie końcowym skopiowanym ze strony portalu.
    + Dołącz zasób.
 
-   Punktów końcowych zasobów są w następujący sposób (regionu mogą się różnić):
+   Punkty końcowe zasobów są następujące (region może się różnić):
 
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
@@ -67,19 +67,19 @@ Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Post
 
 2. Ustaw trzy nagłówki żądania:
 
-   + `Ocp-Apim-Subscription-Key`: klucz dostępu uzyskany z witryny Azure portal.
-   + `Content-Type`: application/json.
-   + `Accept`: application/json.
+   + `Ocp-Apim-Subscription-Key`: Twój klucz dostępu uzyskany z Azure Portal.
+   + `Content-Type`: Application/JSON.
+   + `Accept`: Application/JSON.
 
-   Twoje żądanie powinno wyglądać podobnie jak poniższy zrzut ekranu, zakładając, że **/keyPhrases** zasobów.
+   Twoje żądanie powinno wyglądać podobnie do poniższego zrzutu ekranu, przy założeniu zasobu **/keyPhrases** .
 
-   ![Zrzut ekranu z punktu końcowego i nagłówków żądania](../media/postman-request-keyphrase-1.png)
+   ![Zażądaj zrzutu ekranu z punktem końcowym i nagłówkami](../media/postman-request-keyphrase-1.png)
 
-4. Kliknij przycisk **treści** i wybierz polecenie **pierwotne** dla formatu.
+4. Kliknij pozycję **treść** , a następnie wybierz pozycję **RAW** dla formatu.
 
-   ![Żądanie zrzut ekranu z ustawieniami treści](../media/postman-request-body-raw.png)
+   ![Żądaj zrzutu ekranu z ustawieniami treści](../media/postman-request-body-raw.png)
 
-5. Wklej wybrane dokumenty JSON w formacie, który nadaje się do zamierzonego analizy. Aby uzyskać więcej informacji na temat konkretnej analizy zobacz poniższe tematy:
+5. Wklej w niektórych dokumentach JSON w formacie, który jest prawidłowy dla zamierzonej analizy. Aby uzyskać więcej informacji na temat konkretnej analizy, zobacz poniższe tematy:
 
   + [Wykrywanie języka](text-analytics-how-to-language-detection.md)  
   + [Wyodrębnianie kluczowych fraz](text-analytics-how-to-keyword-extraction.md)  
@@ -87,16 +87,16 @@ Usługa akceptuje żądania w rozmiarze do 1 MB. Jeśli używasz narzędzia Post
   + [Rozpoznawanie jednostek](text-analytics-how-to-entity-linking.md)  
 
 
-6. Kliknij przycisk **wysyłania** można przesłać żądania. Zobacz [limity danych](../overview.md#data-limits) sekcja w przeglądzie informacji na temat liczby żądań można wysyłać na minutę i sekundę.
+6. Kliknij przycisk **Wyślij** , aby przesłać żądanie. Zobacz sekcję [limity danych](../overview.md#data-limits) w temacie Omówienie, aby uzyskać informacje dotyczące liczby żądań wysyłanych na minutę i sekundę.
 
-   W narzędziu Postman odpowiedź zostanie wyświetlona w oknie dalej w dół, jako pojedynczy dokument JSON, za pomocą elementu dla każdego Identyfikatora dokumentu, podany w żądaniu.
+   W programie Poster odpowiedź jest wyświetlana w następnym oknie w dół, jako pojedynczy dokument JSON, z elementem dla każdego identyfikatora dokumentu podanego w żądaniu.
 
 ## <a name="see-also"></a>Zobacz także 
 
  [Przegląd analizy tekstu](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wykryj język](text-analytics-how-to-language-detection.md)

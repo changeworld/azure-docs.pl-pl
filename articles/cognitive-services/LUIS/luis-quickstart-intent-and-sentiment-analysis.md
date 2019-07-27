@@ -1,5 +1,5 @@
 ---
-title: Analiza tonacji
+title: Analiza tonacji — LUIS
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację, która pokazuje, jak uzyskać pozytywne, negatywne i neutralne tonacje z wypowiedzi. Tonację określa się na podstawie całej wypowiedzi.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 1408e29793fdac77b89e3f0cc0a7be525f7fa1d2
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ad1dba3c35c0f1fa5640e484319b584731843dd8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479776"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563581"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Samouczek:  Uzyskiwanie tonacji wypowiedzi
 
@@ -54,7 +54,7 @@ Ponieważ jest to ustawienie publikowania, nie widać go na stronach intencji i 
 
 ## <a name="add-personname-prebuilt-entity"></a>Dodawanie wstępnie utworzonej jednostki PersonName 
 
-1. Wybierz **kompilacji** z menu nawigacji.
+1. Wybierz opcję **Kompiluj** z menu nawigacji.
 
 1. Wybierz pozycję **Entities** (Jednostki) w menu nawigacji po lewej stronie.
 
@@ -91,7 +91,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
     |Mark Mathews rocked the sales pitch at Harvard|
     |Walter Williams did a great job on the presentation at Stanford|
 
-    Wybierz **wyświetlić opcje**, wybierz opcję **Pokaż wartości jednostki** wyświetlić nazwy.
+    Wybierz **Opcje widoku**, wybierz pozycję **Pokaż wartości jednostki** , aby wyświetlić nazwy.
 
     [![Zrzut ekranu aplikacji LUIS z przykładami wypowiedzi w intencji EmployeeFeedback](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
@@ -107,7 +107,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
 1. Wybierz pozycję **Manage** (Zarządzaj) w prawym górnym okienku nawigacji, a następnie wybierz pozycję **Publish settings** (Ustawienia publikowania) z menu po lewej stronie.
 
-1. Wybierz **Użyj analiza tonacji, aby określić, czy wypowiedź użytkownika jest dodatnia, ujemna lub neutralne.** Aby włączyć to ustawienie. 
+1. Wybierz pozycję **Użyj analizy tonacji, aby określić, czy wypowiedź użytkownika ma wartość dodatnią, ujemną lub neutralną.** Aby włączyć to ustawienie. 
 
     ![Włączanie analizy tonacji jako ustawienia publikowania](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
@@ -119,7 +119,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Przejdź na końcu adresu URL w adres, a następnie wprowadź następujące wypowiedź:
+1. Przejdź na koniec adresu URL w adresie i wprowadź następujący wypowiedź:
 
     `Jill Jones work with the media team on the public portal was amazing` 
 
@@ -159,7 +159,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
     Wynik analizy sentimentAnalysis jest pozytywny i ma wartość 86%. 
 
-    Wypróbuj inną wypowiedź, usuwając wartość `q` na pasku adresu przeglądarki: `William Jones did a terrible job presenting his ideas.` Wynik tonacji wskazuje negatywną tonację, zwracając niskim wynikiem `0.18597582`.
+    Wypróbuj inny wypowiedź, usuwając wartość dla `q` na pasku adresu przeglądarki: `William Jones did a terrible job presenting his ideas.`Wynik tonacji wskazuje negatywną tonacji, zwracając dolny wynik `0.18597582`.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -173,7 +173,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku dodaliśmy analizę tonacji jako ustawienie publikowania, aby wyodrębnić wartości tonacji z wypowiedzi jako całości.
 
 > [!div class="nextstepaction"] 

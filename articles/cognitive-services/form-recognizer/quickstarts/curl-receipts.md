@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Wyodrębnianie danych otrzymania przy użyciu programu cURL - rozpoznawania formularza'
+title: 'Szybki start: Wyodrębnij dane przyjęcia przy użyciu narzędzia do rozpoznawania formularzy'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki Start użyjesz interfejsu API REST rozpoznawania formularza za pomocą programu cURL do wyodrębniania danych z obrazów paragonów.
+description: W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem, aby wyodrębnić dane z obrazów paragonów sprzedaży.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,52 +9,52 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 0178e53e6a7fde54b988e710a1cabbb7ded69b22
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f8edb27e52d843d9a765aed8da9b75417cf357d1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592572"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552557"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Szybki start: Wyodrębnianie danych potwierdzenia, przy użyciu interfejsu API REST rozpoznawania formularza za pomocą programu cURL
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Szybki start: Wyodrębnij dane przyjęcia przy użyciu interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem
 
-W tym przewodniku Szybki Start użyjesz interfejsu API REST usługi Azure formularza rozpoznawania za pomocą programu cURL do wyodrębniania i Zidentyfikuj odpowiednie informacje w paragonów.
+W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy platformy Azure z zwinięciem, aby wyodrębnić i zidentyfikować odpowiednie informacje w paragonach sprzedaży.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby ukończyć ten przewodnik Szybki Start, musisz mieć:
-- Dostęp ograniczony dostęp do aparatu rozpoznawania formularza w wersji zapoznawczej. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) formularza.
-- [cURL](https://curl.haxx.se/windows/) zainstalowane.
-- Adres URL obrazu odbioru. Możesz użyć [przykładowy obraz](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) dla tego przewodnika Szybki Start.
+Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
+- Dostęp do programu rozpoznawania formularzy z ograniczonym dostępem. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) .
+- zainstalowano [zwinięcie](https://curl.haxx.se/windows/) .
+- Adres URL obrazu potwierdzenia. Możesz użyć przykładowego [obrazu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) dla tego przewodnika Szybki Start.
 
-## <a name="create-a-form-recognizer-resource"></a>Utwórz zasób rozpoznawania formularza
+## <a name="create-a-form-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania formularza
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="analyze-a-receipt"></a>Analizowanie potwierdzenia
+## <a name="analyze-a-receipt"></a>Analizowanie paragonu
 
-Aby zacząć analizować potwierdzenie, należy wywołać **analizowanie otrzymania** interfejsu API przy użyciu poniższego polecenia cURL. Przed uruchomieniem polecenia dokonaj następujących zmian:
+Aby rozpocząć analizowanie paragonu, należy wywołać interfejs API **analizy paragonów** przy użyciu poniższego polecenia. Przed uruchomieniem polecenia wprowadź następujące zmiany:
 
-1. Zastąp `<Endpoint>` z punktem końcowym, uzyskany klucz subskrypcji rozpoznawania formularza. Można je znaleźć zasobu rozpoznawania formularza **Przegląd** kartę.
-1. Zastąp `<your receipt URL>` przy użyciu adresu URL obrazu potwierdzenia.
-1. Zastąp `<subscription key>` z kluczem subskrypcji został skopiowany w poprzednim kroku.
+1. Zamień `<Endpoint>` na punkt końcowy uzyskany z klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
+1. Zamień `<your receipt URL>` na adres URL obrazu paragonu.
+1. Zamień `<subscription key>` na klucz subskrypcji skopiowany z poprzedniego kroku.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/asyncBatchAnalyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-Otrzymasz `202 (Success)` odpowiedź, która zawiera **lokalizacji operacji** nagłówka. Wartość tego nagłówka stanowi zawiera identyfikator operacji, który można użyć, aby wykonać zapytanie o stan operacji i uzyskać wyniki. W poniższym przykładzie ciąg po znaku `operations/` jest identyfikatorem operacji.
+Otrzymasz `202 (Success)` odpowiedź obejmującą nagłówek operacji w **lokalizacji** . Wartość tego nagłówka zawiera identyfikator operacji, którego można użyć w celu zbadania stanu operacji i uzyskania wyników. W poniższym przykładzie ciąg po `operations/` to identyfikator operacji.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-## <a name="get-the-receipt-results"></a>Pobierz wyniki potwierdzenia
+## <a name="get-the-receipt-results"></a>Pobierz wyniki odbioru
 
-Po po wywołaniu **analizowanie otrzymania** wywołanie interfejsu API, **uzyskać wynik otrzymania** interfejsu API można uzyskać stanu operacji i wyodrębnione dane.
+Po wywołaniu interfejsu API **Analizowanie paragonów** należy wywołać interfejs API **wyników Get paragonu** w celu uzyskania stanu operacji i wyodrębnionych danych.
 
-1. Zastąp `<operationId>` identyfikatorem operacji z poprzedniego kroku.
+1. Zamień `<operationId>` na identyfikator operacji z poprzedniego kroku.
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
 
 ```bash
@@ -63,11 +63,11 @@ curl -X GET "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/ope
 
 ### <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Otrzymasz `200 (Success)` odpowiedzi z danych wyjściowych JSON. Pierwsze pole `"status"`, wskazuje stan operacji. Jeśli operacja została zakończona, `"recognitionResults"` pole zawiera wartość każdego wiersza tekstu, który został wyodrębniony po otrzymaniu i `"understandingResults"` pole zawiera informacje o klucz/wartość dla najbardziej istotnych części odbieranie. Jeśli operacja nie została zakończona, wartość `"status"` będzie `"Running"` lub `"NotStarted"`, i powinna wywołać interfejs API ponownie ręcznie lub za pomocą skryptu. Firma Microsoft zaleca interwał między wywołaniami najmniej jedna sekunda.
+Otrzymasz `200 (Success)` odpowiedź z danymi wyjściowymi JSON. Pierwsze pole `"status"`,, wskazuje stan operacji. Jeśli operacja zostanie ukończona, `"recognitionResults"` pole zawiera wszystkie wiersze tekstu wyodrębnione z paragonu, `"understandingResults"` a pole zawiera informacje o kluczu/wartości dla najbardziej odpowiednich części paragonu. Jeśli operacja nie zostanie ukończona, wartość `"status"` `"Running"` będzie lub `"NotStarted"`i należy ponownie wywołać interfejs API, ręcznie lub za pomocą skryptu. Zalecamy przedziału co najmniej jednej sekundy między wywołaniami.
 
-Zobacz poniższy obraz potwierdzenia i jego odpowiedniego JSON danych wyjściowych. Dane wyjściowe został skrócony tak, aby zwiększyć czytelność.
+Zapoznaj się z poniższym obrazem paragonu i odpowiednimi danymi wyjściowymi JSON. Dane wyjściowe zostały skrócone w celu zapewnienia czytelności.
 
-![Potwierdzenie odbioru ze sklepu firmy Contoso](../media/contoso-receipt.png)
+![Potwierdzenie ze sklepu contoso](../media/contoso-receipt.png)
 
 ```json
 {
@@ -180,9 +180,9 @@ Zobacz poniższy obraz potwierdzenia i jego odpowiedniego JSON danych wyjściowy
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start użyto interfejsu API REST rozpoznawania formularza za pomocą programu cURL do wyodrębniania zawartości przyjęcie sprzedaży. Następnie zobacz dokumentację referencyjną, aby zapoznać się z interfejsu API rozpoznawania fragmentów omówiona bardziej szczegółowo.
+W tym przewodniku szybki start użyto interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem, aby wyodrębnić zawartość paragonu sprzedaży. Następnie zapoznaj się z dokumentacją referencyjną w celu eksplorowania interfejsu API rozpoznawania formularzy.
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeReceipt)

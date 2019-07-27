@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia podczas współpracy
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Bezpieczeństwo podczas współpracy — LUIS
+titleSuffix: Azure Cognitive Services
 description: Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników.
 services: cognitive-services
 author: diberry
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: b52b0fffe9c32ab14600a3e296852faa626d794d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25f6b675846f028b4ba9d49cce9e075bc79eece9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058533"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560680"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Dostęp użytkownika do tworzenia i punktu końcowego
-Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. Publiczny aplikacji, punkt końcowy jest dostępny dla wszystkich użytkowników, który ma swoje własne Azure [usługi cognitive Services](../cognitive-services-apis-create-account.md) lub [LUIS](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) zasobu, i zawiera identyfikator aplikacji publicznych. 
+Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku aplikacji publicznej dostęp do punktu końcowego jest dostępny dla wszystkich użytkowników, którzy mają swoją własną [usługę poznawczej](../cognitive-services-apis-create-account.md) platformy Azure lub zasób [Luis](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) i ma identyfikator aplikacji publicznej. 
 
 ## <a name="access-to-authoring"></a>Dostęp do tworzenia
 Dostęp do aplikacji z [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web lub [Tworzenie interfejsów API](https://go.microsoft.com/fwlink/?linkid=2092087) jest kontrolowana przez właściciela aplikacji. 

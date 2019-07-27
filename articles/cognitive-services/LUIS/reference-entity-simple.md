@@ -1,6 +1,6 @@
 ---
-title: Typ jednostki prostej
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Simple — typ jednostki — LUIS
+titleSuffix: Azure Cognitive Services
 description: Prosta jednostka to ogólna jednostka, która opisuje pojedyncze koncepcje i jest poznania z kontekstu wykorzystanego przez maszynę. Ponieważ proste jednostki są zazwyczaj nazwami, takimi jak nazwy firmowe, nazwy produktów lub inne kategorie nazw, Dodaj listę fraz przy użyciu prostej jednostki, aby zwiększyć sygnał użytych nazw.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 3f03b33f685bb5c7c9ba8f2267b8556c5dadade4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: c1514b6cd512924a162a524d11e888055fa06514
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480221"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563207"
 ---
 # <a name="simple-entity"></a>Prosta jednostka 
 
@@ -51,6 +51,6 @@ Dane zwrócone z punktu końcowego obejmuje nazwa jednostki, odnalezione tekst z
 |--|--|--|
 |Proste jednostki|`Customer`|`bob jones`|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym [samouczku](luis-quickstart-primary-and-secondary-data.md)Wyodrębnij dane o nazwie zadania zatrudnienia z wypowiedź przy użyciu **jednostki prostej**. Aby zwiększyć dokładność wyodrębniania, Dodaj [listę fraz](luis-concept-feature.md) dla warunków specyficznych dla jednostki prostej.

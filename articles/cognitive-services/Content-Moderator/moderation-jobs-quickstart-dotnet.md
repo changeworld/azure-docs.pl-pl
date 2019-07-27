@@ -1,7 +1,7 @@
 ---
-title: Używanie zadań Moderowanie przy użyciu platformy .NET — Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Użyj zestawu SDK .NET Moderator zawartości do inicjowania zadań end-to-end moderowanie zawartości dla zawartości image lub text w usłudze Azure Content Moderator.
+title: Korzystanie z zadań moderowania przy użyciu platformy .NET Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Użyj zestawu SDK platformy .NET Content Moderator, aby inicjować zadania kompleksowego moderowania zawartości dla zawartości obrazu lub tekstu w usłudze Azure Content Moderator.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 24d5483cf3b418cada3c5b7f03eedbff13cc36d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d98c88a6e1d6dfa23f53c32c85c013b4cf2c468d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62113872"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565601"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>Definiowanie i korzystanie z zadań moderation (.NET)
+# <a name="define-and-use-moderation-jobs-net"></a>Definiowanie i używanie zadań moderowania (.NET)
 
-Zadania Moderowanie służy jako typ otoki dla funkcji moderowania zawartości, przepływy pracy i recenzje. Ten przewodnik zawiera informacje i przykłady kodu, które ułatwią Ci rozpoczęcie korzystania z [Content Moderator zestawu SDK dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do:
+Zadanie moderowania służy jako rodzaj otoki dla funkcji moderowania zawartości, przepływów pracy i przeglądów. Ten przewodnik zawiera informacje i przykłady kodu ułatwiające rozpoczęcie pracy z zestawem [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
 
 - Uruchamianie zadania moderowania w celu skanowania i tworzenia przeglądów dla użytkowników pełniących rolę moderatorów
 - Pobieranie stanu przeglądu oczekującego
 - Śledzenie i pobieranie stanu końcowego przeglądu
-- Przesyłanie wyników przeglądu, aby adres URL wywołania zwrotnego
+- Prześlij wyniki przeglądu do adresu URL wywołania zwrotnego
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zaloguj się lub Utwórz konto w pakiecie Content Moderator [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) lokacji.
+- Zaloguj się lub Utwórz konto w witrynie Content Moderator [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com/) .
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Upewnij się, że Twój klucz interfejsu API umożliwia wywołanie interfejsu API przeglądu w celu utworzenia przeglądu.
 
@@ -322,6 +322,6 @@ Zobaczysz odpowiedź podobną do następującej:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Pobierz zestaw [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych przewodników Szybki start usługi Content Moderator dla platformy .NET i rozpocznij pracę nad integracją.

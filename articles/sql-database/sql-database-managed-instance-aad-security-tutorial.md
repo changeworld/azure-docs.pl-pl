@@ -8,14 +8,13 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 5d168264cbc392e1ba426707429f47dea70d1ea8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60702228"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567680"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Samouczek: Zabezpieczanie wystąpienia zarządzanego usługi Azure SQL Database przy użyciu jednostek usługi (identyfikatorów logowania) serwera Azure AD
 
@@ -56,7 +55,7 @@ Aby ukończyć ten samouczek, upewnij się, że dysponujesz następującymi elem
 
 ## <a name="limiting-access-to-your-managed-instance"></a>Ograniczanie dostępu do wystąpienia zarządzanego
 
-Dostęp do wystąpień zarządzanych jest możliwy tylko za pośrednictwem prywatnego adresu IP. Z wystąpieniem zarządzanym nie można łączyć się z poziomu żadnych punktów końcowych usługi poza siecią wystąpienia zarządzanego. Tak jak izolowanego programu SQL Server w środowisku lokalnym środowisku, aplikacji lub użytkownicy muszą dostęp do sieci wystąpienia zarządzanego (VNet), zanim połączenie może zostać nawiązana. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Connect your application to a managed instance](sql-database-managed-instance-connect-app.md) (Łączenie aplikacji z wystąpieniem zarządzanym).
+Dostęp do wystąpień zarządzanych jest możliwy tylko za pośrednictwem prywatnego adresu IP. Z wystąpieniem zarządzanym nie można łączyć się z poziomu żadnych punktów końcowych usługi poza siecią wystąpienia zarządzanego. Podobnie jak izolowane SQL Server środowiska lokalnego, aplikacje lub użytkownicy potrzebują dostępu do sieci wystąpienia zarządzanego (VNet), zanim będzie można nawiązać połączenie. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Connect your application to a managed instance](sql-database-managed-instance-connect-app.md) (Łączenie aplikacji z wystąpieniem zarządzanym).
 
 > [!NOTE] 
 > Ponieważ do wystąpień zarządzanych dostęp można uzyskać tylko w ich sieci wirtualnej, [reguły zapory usługi SQL Database](sql-database-firewall-configure.md) nie mają zastosowania. Wystąpienie zarządzane ma swoją własną [wbudowaną zaporę](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
@@ -172,7 +171,7 @@ Po utworzeniu jednostki usługi (identyfikatora logowania) serwera Azure AD oraz
 
     W tym przykładzie utworzono identyfikator logowania dla użytkownika usługi Azure AD bob@aadsqlmi.net, którego domena aadsqlmi.net jest sfederowana z domeną usługi Azure AD aadsqlmi.onmicrosoft.com.
 
-    Wykonaj następujące polecenie w języku T-SQL. Federacyjnych Azure AD konta są zamiany wystąpienia zarządzanego do środowiska lokalnego Windows logowania użytkowników.
+    Wykonaj następujące polecenie w języku T-SQL. Federacyjne konta usługi Azure AD to zamienniki wystąpień zarządzanych dla lokalnych nazw logowania i użytkowników systemu Windows.
 
     ```sql
     USE master
@@ -360,7 +359,7 @@ Wystąpienie zarządzane obsługuje personifikację podmiotów zabezpieczeń na 
     GO
     ```
 
-1. Użyj następującego polecenia, aby zobaczyć, czy użytkownik jest personifikacji podczas wykonywania procedury składowanej jest **bob\@aadsqlmi.net**.
+1. Użyj poniższego polecenia, aby zobaczyć, że użytkownik jest personifikowany podczas wykonywania procedury składowanej, **Robert\@aadsqlmi.NET**.
 
     ```sql
     Exec dbo.usp_Demo

@@ -1,5 +1,5 @@
 ---
-title: Wstępnie utworzone intencje i jednostki
+title: Prebudowane intencje i jednostki — LUIS
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku dodasz wstępnie utworzone intencje i jednostki do aplikacji, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. Nie musisz oznaczać żadnych wypowiedzi za pomocą wstępnie utworzonych jednostek. Jednostka jest wykrywana automatycznie.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2018
 ms.author: diberry
-ms.openlocfilehash: 189514c51451dedfaab7b07f28d79f674b32f83a
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8c3fa2a68018e0eb45f37b54b16b6e7797cfa7c4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277543"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560036"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Samouczek: identyfikowanie typowych intencji i jednostek
 
@@ -61,7 +61,7 @@ Usługa LUIS zapewnia kilka wstępnie utworzonych intencji, których celem jest 
    * Utilities.StartOver
    * Utilities.Stop
 
-     Te intencje są przydatne do określenia miejsca w konwersacji, w jakim znajduje się użytkownik, oraz jakie jest ich przeznaczenie. Te opcje obejmują użycie jednostek. Te jednostki są automatycznie dodawane do aplikacji usługi LUIS: numer, numer i Utilities.DirectionalReference. 
+     Te intencje są przydatne do określenia miejsca w konwersacji, w jakim znajduje się użytkownik, oraz jakie jest ich przeznaczenie. Te intencje obejmują użycie jednostek. Te jednostki są automatycznie dodawane do aplikacji LUIS: Number, porządkowej i Utilities. DirectionalReference. 
 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Dodawanie wstępnie utworzonych jednostek ułatwiających wyodrębnianie wspólnych typów danych
@@ -170,7 +170,7 @@ Dowiedz się więcej o pracy z aplikacją usługi LUIS:
 * [Jak opublikować](luis-how-to-publish-app.md)
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dodając wstępnie utworzone intencje i jednostki, aplikacja kliencka może określić typowe intencje użytkowników i wyodrębnić wspólne typy danych.  
 

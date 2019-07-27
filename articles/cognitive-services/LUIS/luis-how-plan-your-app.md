@@ -1,6 +1,6 @@
 ---
-title: Planowanie aplikacji
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Planowanie aplikacji — LUIS
+titleSuffix: Azure Cognitive Services
 description: Konspekt odpowiednią aplikację intencje i podmioty, a następnie utwórz swoje plany aplikacji w Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 9d54cff81f39f41b60800e9b33f3b4da1a735d85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 121423682bbd9bbb32f2ab1d02e48d3237ee830d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60196239"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563774"
 ---
-# <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>Planowanie aplikacji usługi LUIS z domeny podmiotu, intencje i podmioty
+# <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>Planowanie aplikacji LUIS przy użyciu domeny podmiotu, intencji i jednostek
 
 Należy zaplanować Twojej aplikacji. Określ domenę, w tym możliwe intencje i podmioty, które mają zastosowanie do aplikacji.  
 
@@ -47,7 +47,7 @@ Na przykład wypowiedzi identyfikuje jednostek, które mają zostać wyodrębnio
 
 Po ustaleniu, które obiekty do użycia w aplikacji, należy pamiętać o tym, że istnieją różne rodzaje jednostek do przechwytywania relacje między typami obiektów. [Jednostki w LUIS](luis-concept-entity-types.md) zapewnia więcej szczegółów na temat różnych typów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po Twojej aplikacji jest uczony opublikowane i pobiera wypowiedzi punktu końcowego, planu wdrożenia przewidywanie ulepszenia [aktywne uczenie](luis-how-to-review-endpoint-utterances.md), [frazę list](luis-concept-feature.md), i [wzorców](luis-concept-patterns.md). 
 

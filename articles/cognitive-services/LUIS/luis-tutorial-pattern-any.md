@@ -1,5 +1,5 @@
 ---
-title: Jednostka Pattern.any
+title: Wzorzec. dowolna jednostka — LUIS
 titleSuffix: Azure Cognitive Services
 description: Jednostka Pattern.any służy do wyodrębniania danych z wypowiedzi, gdzie wypowiedź jest prawidłowo sformatowana i gdzie koniec danych można łatwo pomylić z pozostałymi wyrazami wypowiedzi.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6007f88af4d1049a87851b3808c66693173a648a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 165163d0a889e0bd5f1faef8d7f6a17d28c2b4f7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069248"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563268"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Samouczek: wyodrębnianie danych o formacie swobodnym za pomocą jednostki Pattern.any
 
@@ -68,7 +68,7 @@ Różna długość zawiera wyrazy, które mogą wprowadzać usługę LUIS w bł�
 
 1. Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json).
 
-1. W [portal usługi LUIS](https://www.luis.ai)na **Moje aplikacje** strony, zaimportuj plik JSON do nowej aplikacji.
+1. Na stronie **Moje aplikacje** w [portalu Luis](https://www.luis.ai)zaimportuj kod JSON do nowej aplikacji.
 
 1. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `patt-any`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
 
@@ -96,7 +96,7 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 
 1. Wybierz polecenie **Create new entity** (Utwórz nową jednostkę), wprowadź nazwę `FormName` i wybierz jednostkę **Pattern.any** jako typ. Wybierz pozycję **Done** (Gotowe). 
 
-    Jednostki w wypowiedzi przykład celem nie etykiety, ponieważ Pattern.any obowiązuje tylko we wzorcu. 
+    Nie można oznaczyć jednostki w przykładowej wyrażenia długości, ponieważ wzorzec. any jest prawidłowy tylko we wzorcu. 
 
     Jeśli chcesz, aby wyodrębnione dane uwzględniały inne jednostki, takie jak liczba lub jednostka datetimeV2, musisz utworzyć złożoną jednostkę, która obejmuje jednostkę Pattern.any, a także liczbę i jednostkę datetimeV2.
 
@@ -134,7 +134,7 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 
 1. Zamknij panel testu, wybierając przycisk **Test** (Testuj) na górnym pasku nawigacyjnym.
 
-## <a name="using-an-explicit-list"></a>Używanie jawnych list
+## <a name="using-an-explicit-list"></a>Korzystanie z listy jawnej
 
 Jeśli zauważysz, że Twój wzorzec, gdy zawiera jednostkę Pattern.any, niepoprawnie wyodrębnia jednostki, użyj elementu [explicit list](luis-concept-patterns.md#explicit-lists) (listy jawnej), aby rozwiązać ten problem.
 
@@ -143,7 +143,7 @@ Jeśli zauważysz, że Twój wzorzec, gdy zawiera jednostkę Pattern.any, niepop
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku dodano przykładowe wypowiedzi do istniejącej intencji, a następnie utworzono nową jednostkę Pattern.any dla nazwy formularza. Następnie w samouczku utworzono wzorzec dla istniejącej intencji z nowymi przykładowymi wypowiedziami i jednostką. Testowanie interaktywne wykazało, że wzorzec i jego intencja zostały przewidziane, ponieważ znaleziono jednostkę. 
 

@@ -2,23 +2,23 @@
 title: Rejestrowanie w usłudze Azure Active Directory w wersji Premium | Microsoft Docs
 description: Instrukcje dotyczące sposobu rejestrowania w usłudze Azure Active Directory w wersji Premium.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/07/2017
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed01b2b122724ba1428fb685bb3f1f52b7099a7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 016fbc8808c11f861dd4388ea5fb062c840187ea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249645"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561981"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Rejestrowanie w usłudze Azure Active Directory w wersji Premium
 Istnieje możliwość zakupienia usługi Azure Active Directory (Azure AD) w wersji Premium i skojarzenia jej z Twoją subskrypcją platformy Azure. Jeśli chcesz utworzyć nową subskrypcję platformy Azure, musisz również uaktywnić plan licencjonowania i dostęp do usługi Azure AD.
@@ -65,17 +65,17 @@ Jeśli rejestrujesz się, używając nowego planu licencjonowania usługi Azure 
 ### <a name="to-activate-your-license-plan"></a>Aby aktywować plan licencjonowania
 - Otwórz wiadomość e-mail z potwierdzeniem otrzymaną od firmy Microsoft po zarejestrowaniu się, a następnie kliknij pozycję **Zaloguj** lub **Utwórz konto**.
    
-    ![Wiadomość e-mail z potwierdzeniem z logowaniem i zaloguj się łącza](media/active-directory-get-started-premium/MOLSEmail.png)
+    ![Wiadomość e-mail z potwierdzeniem z linkami logowania i rejestrowania](media/active-directory-get-started-premium/MOLSEmail.png)
 
     - **Zaloguj.** Wybierz ten link, jeśli masz istniejącą dzierżawę, a następnie zaloguj się przy użyciu istniejącego konta administratora. Musisz być administratorem globalnym w dzierżawie, w której są aktywowane licencje.
 
     - **Utwórz konto.** Wybierz ten link, jeśli chcesz otworzyć stronę **Tworzenie profilu konta** i utworzyć nową dzierżawę usługi Azure AD na potrzeby Twojego planu licencjonowania.
 
-        ![Tworzenie strony profilu konta, za pomocą przykładowych informacji](media/active-directory-get-started-premium/MOLSAccountProfile.png)
+        ![Utwórz stronę profilu konta z przykładowymi informacjami](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
 Gdy wszystko będzie gotowe, zostanie wyświetlone okno dialogowe potwierdzenia z podziękowaniem za aktywowanie planu licencjonowania dla Twojej dzierżawy.
 
-![Okno dialogowe z potwierdzeniem z podziękowaniem](media/active-directory-get-started-premium/MOLSThankYou.png)
+![Pole potwierdzenia z podziękowaniami](media/active-directory-get-started-premium/MOLSThankYou.png)
 
 ## <a name="activate-your-azure-ad-access"></a>Aktywowanie dostępu do usługi Azure AD
 Jeśli dodajesz nowe licencje usługi Azure AD — wersja Premium do istniejącej subskrypcji, Twój dostęp do usługi Azure AD powinien już być aktywowany. W przeciwnym razie musisz aktywować dostęp do usługi Azure AD po otrzymaniu **powitalnej wiadomości e-mail**.  
@@ -89,13 +89,13 @@ Po aprowizowaniu zakupionych licencji w Twoim katalogu otrzymasz **powitalną wi
 
 1. Otwórz **powitalną wiadomość e-mail**, a następnie kliknij link **Zaloguj**.
    
-    ![Powitalna wiadomość e-mail przy użyciu konta wyróżniony link](media/active-directory-get-started-premium/AADEmail.png)
+    ![Powitalna wiadomość e-mail z wyróżnionym linkiem logowania](media/active-directory-get-started-premium/AADEmail.png)
 
 2. Po pomyślnym zalogowaniu się przejdziesz dwuetapową weryfikację za pomocą urządzenia przenośnego.
    
-    ![Strony weryfikacji dwuetapowej weryfikacji mobilnej](media/active-directory-get-started-premium/SignUppage.png)
+    ![Strona weryfikacji dwuetapowej z weryfikacją dla urządzeń przenośnych](media/active-directory-get-started-premium/SignUppage.png)
 
 Proces aktywacji zazwyczaj zajmuje tylko kilka minut, a po jego zakończeniu możesz używać dzierżawy usługi Azure AD. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Gdy już masz usługę Azure AD — wersja Premium, możesz [dostosować domenę](add-custom-domain.md), dodać swoje [znakowanie firmowe](customize-branding.md), [utworzyć dzierżawę](active-directory-access-create-new-tenant.md) oraz [dodać grupy](active-directory-groups-create-azure-portal.md) i [użytkowników](add-users-azure-active-directory.md).

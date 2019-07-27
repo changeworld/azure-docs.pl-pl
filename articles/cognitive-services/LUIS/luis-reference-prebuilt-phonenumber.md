@@ -1,6 +1,6 @@
 ---
-title: Wstępnie utworzonych jednostek numeru telefonu
-titleSuffix: Azure
+title: Wstępnie utworzone jednostki numeru telefonu — LUIS
+titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera wstępnie utworzone jednostki informacja o numerze telefonu w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 43d0b855c25ed10b074d99b247ee56dc2ba7769b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a640412fb98fb1d4215bd34c205d4fba253cd7e0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146177"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560154"
 ---
-# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Telefon numer wstępnie utworzone jednostki dla aplikacji usługi LUIS
+# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Wstępnie utworzona jednostka numeru telefonu dla aplikacji LUIS
 `phonenumber` Jednostki wyodrębnia różne numery telefonów, łącznie z kodem kraju. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład do aplikacji. `phonenumber` Jednostki jest obsługiwana w `en-us` tylko kultury. 
 
-## <a name="types-of-a-phone-number"></a>Typy numeru telefonu
-`Phonenumber` jest zarządzany z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) repozytorium GitHub
+## <a name="types-of-a-phone-number"></a>Typy numerów telefonów
+`Phonenumber`jest zarządzany przez [Aparaty rozpoznawania tekstu —](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) repozytorium GitHub
 
-## <a name="resolution-for-this-prebuilt-entity"></a>Rozwiązania dla tego wstępnie utworzone jednostki
+## <a name="resolution-for-this-prebuilt-entity"></a>Rozwiązanie dla tej prekompilowanej jednostki
 
-### <a name="api-version-2x"></a>Wersja interfejsu API 2.x
+### <a name="api-version-2x"></a>Interfejs API w wersji 2. x
 
 W poniższym przykładzie pokazano rozdzielczość **builtin.phonenumber** jednostki.
 
@@ -58,9 +58,9 @@ W poniższym przykładzie pokazano rozdzielczość **builtin.phonenumber** jedno
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API 3.x
+### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API w wersji 3. x
 
-Następujący kod JSON jest `verbose` parametr `false`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `false`
 
 ```json
 {
@@ -82,7 +82,7 @@ Następujący kod JSON jest `verbose` parametr `false`:
 }
 ```
 
-Następujący kod JSON jest `verbose` parametr `true`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `true`
 
 ```json
 {
@@ -117,6 +117,6 @@ Następujący kod JSON jest `verbose` parametr `true`:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [procent](luis-reference-prebuilt-percentage.md), [numer](luis-reference-prebuilt-number.md), i [temperatury](luis-reference-prebuilt-temperature.md) jednostek. 

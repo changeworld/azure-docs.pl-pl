@@ -10,10 +10,10 @@ author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
 ms.openlocfilehash: 0f0acc721fd8888953d80976234b431943985ebf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68356268"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Rozpoczynanie pracy z usługą Azure Table Storage oraz interfejsem API tabel usługi Azure Cosmos DB przy użyciu języka Python
@@ -56,7 +56,7 @@ Po utworzeniu konta usługi Azure Storage następnym krokiem jest zainstalowanie
 
 ## <a name="import-the-tableservice-and-entity-classes"></a>Importowanie klas TableService i Entity
 
-Aby współpracować z jednostkami w Table Service platformy Azure w języku Python, należy użyć klas [TableService][py_TableService] and [Entity][py_Entity] . Dodaj następujący kod na początku pliku Python, aby zaimportować obie te klasy:
+Aby współpracować z jednostkami w Table service platformy Azure w języku Python, należy użyć klas [TableService][py_TableService] i [Entity][py_Entity] . Dodaj następujący kod na początku pliku Python, aby zaimportować obie te klasy:
 
 ```python
 from azure.cosmosdb.table.tableservice import TableService
@@ -89,7 +89,7 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>Dodawanie jednostki do tabeli
 
-Aby dodać jednostkę, należy najpierw utworzyć obiekt, który reprezentuje jednostkę, przekazać obiekt do. The entity object can be a dictionary or an object of type [Entity][py_Entity] [metody TableService. insert_entity][py_TableService]i zdefiniować nazwy i wartości właściwości jednostki. Każda jednostka musi zawierać wymagane właściwości [PartitionKey i RowKey](#partitionkey-and-rowkey), oprócz innych właściwości zdefiniowanych dla jednostki.
+Aby dodać jednostkę, należy najpierw utworzyć obiekt, który reprezentuje jednostkę, a następnie przekazać obiekt do [metody TableService. insert_entity][py_TableService]. Obiekt Entity może być słownikiem lub obiektem typu [jednostki][py_Entity]i definiuje nazwy i wartości właściwości jednostki. Każda jednostka musi zawierać wymagane właściwości [PartitionKey i RowKey](#partitionkey-and-rowkey), oprócz innych właściwości zdefiniowanych dla jednostki.
 
 Ten przykład tworzy obiekt słownika reprezentujący jednostkę, przekazuje go do metody [insert_entity][py_insert_entity] w celu dodania go do tabeli:
 
@@ -99,7 +99,7 @@ task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
 table_service.insert_entity('tasktable', task)
 ```
 
-Ten przykład tworzy metodę [jednostki][py_Entity] object, then passes it to the [insert_entity][py_insert_entity] w celu dodania jej do tabeli:
+Ten przykład tworzy obiekt [Entity][py_Entity] , przekazuje go do metody [insert_entity][py_insert_entity] w celu dodania go do tabeli:
 
 ```python
 task = Entity()
@@ -228,7 +228,7 @@ Jeśli nie potrzebujesz już tabeli ani żadnej z jednostek w niej, wywołaj met
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [FAQ — Develop with the Table API (Opracowywanie zawartości przy użyciu interfejsu API tabel — często zadawane pytania)](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [Azure Cosmos DB SDK for Python API reference (Dokumentacja zestawu SDK usługi Azure Cosmos DB dla języka Python)](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)

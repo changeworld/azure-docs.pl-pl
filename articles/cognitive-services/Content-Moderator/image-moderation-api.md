@@ -1,7 +1,7 @@
 ---
-title: Obraz Moderowanie — pakietu Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Na użytek obraz wspomagane maszynowo Moderowanie i narzędzie do przeglądu człowieka w pętli do obrazów umiarkowane Content Moderator zawartości dla dorosłych.
+title: Moderowanie obrazów — Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Content Moderator korzystaj z narzędzia do oceny obrazów z erotyczneją maszynową i w pętli, aby uzyskać umiarkowane obrazy dotyczące zawartości dla dorosłych i.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b3449edb539ab56fcf206a367f9b81e43290733
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699277"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564911"
 ---
-# <a name="learn-image-moderation-concepts"></a>Pojęcia dotyczące moderowania obrazów
+# <a name="learn-image-moderation-concepts"></a>Poznaj pojęcia związane z moderowaniem obrazu
 
-Użyj Content Moderator obraz wspomagane maszynowo Moderowanie i [narzędzie do przeglądu człowieka w pętli](Review-Tool-User-Guide/human-in-the-loop.md) do umiarkowanego obrazów dla dorosłych i zawartości erotycznej. Skanowanie obrazów w przypadku zawartości tekstowej i Wyodrębnij ten tekst, a wykrywanie twarzy. Można dopasować obrazów niestandardowych list i wykonywanie dodatkowych działań.
+Content Moderator korzystaj z [Narzędzia do oceny obrazów z](Review-Tool-User-Guide/human-in-the-loop.md) erotyczneją maszynową i w pętli, aby uzyskać umiarkowane obrazy dotyczące zawartości dla dorosłych i. Skanuj obrazy pod kątem zawartości tekstowej i Wyodrębnij ten tekst oraz wykrywaj twarze. Obrazy można dopasować do list niestandardowych i podejmować dalsze działania.
 
-## <a name="evaluating-for-adult-and-racy-content"></a>Ocenianie zawartości dla dorosłych
+## <a name="evaluating-for-adult-and-racy-content"></a>Ocenianie zawartości dla osób dorosłych i erotycznej
 
-**Evaluate** operacji zwraca współczynnik ufności z zakresu od 0 i 1. Również zwraca danych logicznych równa true lub false. Wartości te przewidywania, czy obraz, który zawiera potencjalne zawartości dla dorosłych lub erotycznej. Jeśli chcesz wywołać interfejs API przy użyciu obrazu (plik lub adres URL), zwrócona odpowiedź zawiera następujące informacje:
+Operacja **szacowania** zwraca wynik zaufania z przedziału od 0 do 1. Zwraca również dane logiczne o wartości true lub false. Te wartości przewidują, czy obraz zawiera potencjalną zawartość dla dorosłych lub erotycznej. Po wywołaniu interfejsu API za pomocą obrazu (pliku lub adresu URL) zwrócona odpowiedź zawiera następujące informacje:
 
     "ImageModeration": {
       .............
@@ -38,18 +38,18 @@ Użyj Content Moderator obraz wspomagane maszynowo Moderowanie i [narzędzie do 
 > 
 > - Obiekt `isImageAdultClassified` reprezentuje potencjalną obecność obrazów, które mogą być uznane za seksualne lub zawierające treści dla dorosłych w niektórych sytuacjach.
 > - Obiekt `isImageRacyClassified` reprezentuje potencjalną obecność obrazów, które mogą być uznane za potencjalnie seksualne lub zawierające treści dla dorosłych w niektórych sytuacjach.
-> - Wyniki należą do zakresu od 0 do 1. Wyższą ocenę, tym większe modelu jest prognozowanie mogą dotyczyć kategorii. Ta wersja zapoznawcza opiera się na modelu statystycznych, a nie ręcznie zakodowane wyników. Zaleca się testowanie za pomocą własnej zawartości, aby określić, jak wyrównuje każdej kategorii wymagań.
-> - Wartości logiczne to wartość PRAWDA lub FAŁSZ, w zależności od wewnętrznego wynik progów. Klientów należy ocenić, czy Użyj tej wartości lub wybrać progami niestandardowymi na podstawie ich zawartości zasad.
+> - Wyniki są z przedziału od 0 do 1. Im wyższy wynik, tym większy jest przewidywanie, że Kategoria może być stosowana. Ta wersja zapoznawcza polega na modelu statystycznym zamiast ręcznie zakodowanych wyników. Zalecamy testowanie przy użyciu własnej zawartości, aby określić, jak każda kategoria jest wyrównana do wymagań.
+> - Wartości logiczne to true lub false, w zależności od wewnętrznych progów wyniku. Klienci powinni ocenić, czy należy używać tej wartości, czy też decydować o niestandardowych progach na podstawie ich zasad dotyczących zawartości.
 
-## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Wykrywanie tekstu za pomocą funkcji optycznego rozpoznawania znaków (OCR)
+## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Wykrywanie tekstu za pomocą optycznego rozpoznawania znaków (OCR)
 
-**Optyczne rozpoznawanie znaków (OCR)** operacji przewiduje obecności zawartości tekstowej w obrazie i wyodrębnia Moderowanie tekstu, oprócz innych zastosowań. Można określić język. Jeśli język nie jest określona, domyślnie wykrywania jest język angielski.
+Operacja **optycznego rozpoznawania znaków (OCR)** przewiduje obecność zawartości tekstowej w obrazie i wyodrębnia ją na potrzeby moderowania tekstu, między innymi. Możesz określić język. Jeśli nie określisz języka, wykrycie zostanie domyślnie użyte w języku angielskim.
 
 Odpowiedź zawiera następujące informacje:
 - Oryginalny tekst.
-- Elementy tekstowe z wykrytym ich oceny zaufania.
+- Wykryte elementy tekstowe z ich wynikami zaufania.
 
-Przykład wyodrębniania:
+Przykładowe wyodrębnienie:
 
     "TextDetection": {
       "status": {
@@ -66,14 +66,14 @@ Przykład wyodrębniania:
 
 ## <a name="detecting-faces"></a>Wykrywanie twarzy
 
-Wykrywanie twarzy pomaga wykryć danych osobowych, takich jak twarzy w obrazach. Wykrywanie potencjalnych twarzy i liczbę potencjalnych twarzy każdego obrazu.
+Wykrywanie twarzy pomaga wykrywać dane osobowe, takie jak twarze na obrazach. Wykrywasz potencjalną twarze i liczbę potencjalnych twarzy w każdym obrazie.
 
-Odpowiedź zawiera te informacje:
+Odpowiedź obejmuje następujące informacje:
 
 - Liczba twarzy
-- Lista lokalizacji wykryte twarze:
+- Lista lokalizacji wykrytych twarzy
 
-Przykład wyodrębniania:
+Przykładowe wyodrębnienie:
 
 
     "FaceDetection": {
@@ -99,30 +99,30 @@ Przykład wyodrębniania:
       ]
     }
 
-## <a name="creating-and-managing-custom-lists"></a>Tworzenie i zarządzanie nimi niestandardowych list
+## <a name="creating-and-managing-custom-lists"></a>Tworzenie list niestandardowych i zarządzanie nimi
 
-W wielu społeczności w trybie online po użytkownikom przekazywanie obrazów lub innego typu zawartości, obraźliwe elementy mogą uzyskać udostępnić wiele razy w następujące dni, tygodnie i miesiące. Koszty wielokrotnie skanowania i filtrowanie ten sam obraz lub nawet nieco zmodyfikowaną wersji obrazu z kilku miejscach może być kosztowne i obarczone ryzykiem błędów.
+W wielu społecznościach online, gdy Użytkownicy przekazują obrazy lub zawartość innego typu, obraźliwe elementy mogą być udostępniane wiele razy w ciągu następujących dni:, tygodnie i miesiące. Koszty wielokrotnego skanowania i filtrowania tego samego obrazu lub nawet nieco zmodyfikowane wersje obrazu z wielu miejsc mogą być kosztowne i podatne na błędy.
 
-Zamiast Moderowanie ten sam obraz wiele razy, dodasz obraźliwe obrazy niestandardowe listy zablokowanych zawartości. W ten sposób system moderowanie zawartości porównuje przychodzące obrazów z list niestandardowych i zatrzymuje dalszego przetwarzania.
+Zamiast moderowania tego samego obrazu wiele razy Dodaj obraźliwe obrazy do niestandardowej listy zablokowanych zawartości. Dzięki temu system moderowania zawartości porównuje obrazy przychodzące z listami niestandardowymi i zakończy dalsze przetwarzanie.
 
 > [!NOTE]
 > Istnieje maksymalny limit wynoszący **5 list obrazów**, a poszczególne listy **nie mogą przekraczać 10 000 obrazów**.
 >
 
-Content Moderator oferuje kompletne [interfejsu API zarządzania listy obrazów](try-image-list-api.md) z operacjami zarządzania listami obrazów niestandardowych. Rozpoczynać [Konsola interfejsu API listy obrazów](try-image-list-api.md) i przykłady kodu interfejsu API REST. Również szybko sprawdzić wydajność [Szybki Start .NET listy obrazów](image-lists-quickstart-dotnet.md) osoby znające program Visual Studio w języku C#.
+Content Moderator zawiera kompletny [interfejs API zarządzania listami obrazów](try-image-list-api.md) z operacjami do zarządzania listami obrazów niestandardowych. Zacznij od [obrazu konsola interfejsu](try-image-list-api.md) API i użyj przykładów kodu interfejsu API REST. Zapoznaj się również z [listą obrazów programu .NET — szybki start](image-lists-quickstart-dotnet.md) , jeśli znasz C#program Visual Studio i.
 
-## <a name="matching-against-your-custom-lists"></a>Dopasowywanie względem niestandardowych list
+## <a name="matching-against-your-custom-lists"></a>Dopasowanie do list niestandardowych
 
-Operacja umożliwia dopasowywania rozmytego obrazy dla dowolnego z list niestandardowych, tworzone i zarządzane przy użyciu operacji listy.
+Operacja dopasowania umożliwia rozmyte Dopasowywanie obrazów przychodzących do dowolnych list niestandardowych utworzonych i zarządzanych przy użyciu operacji na liście.
 
-Jeśli zostanie znalezione dopasowanie, operacja zwraca identyfikator i tagi Moderowanie dopasowane obrazu. Odpowiedź zawiera te informacje:
+W przypadku znalezienia dopasowania operacja zwraca identyfikator i Tagi moderowania dopasowanego obrazu. Odpowiedź obejmuje następujące informacje:
 
-- Ocena dopasowania (od 0 do 1)
-- Dopasowane obrazu
-- Znaczniki obrazów (przypisana podczas poprzedniego Moderowanie)
-- Obraz etykiety
+- Wynik dopasowania (od 0 do 1)
+- Dopasowany obraz
+- Tagi obrazu (przypisane podczas poprzedniej moderowania)
+- Etykiety obrazów
 
-Przykład wyodrębniania:
+Przykładowe wyodrębnienie:
 
     {
     ..............,
@@ -141,10 +141,10 @@ Przykład wyodrębniania:
 
 ## <a name="human-review-tool"></a>Narzędzie do przeglądu przez ludzi
 
-Aby uzyskać więcej złożonych przypadkach użyciu usługi Content Moderator [narzędzie do przeglądu](Review-Tool-User-Guide/human-in-the-loop.md) i jego interfejsu API, aby przedstawić wyniki moderacji i zawartość w przeglądzie dla Twojego ludzi moderatorów. One Przejrzyj tagi przypisane do maszyny i potwierdzić swoje decyzje końcowej.
+Aby uzyskać więcej złożonychych przypadków, użyj [Narzędzia do przeglądu](Review-Tool-User-Guide/human-in-the-loop.md) Content moderator i jego interfejsu API, aby przedstawić wyniki moderowania i zawartość w przeglądzie dla moderatorów ludzkich. Sprawdzają one znaczniki przypisane do maszyn i potwierdzają ich ostateczne decyzje.
 
 ![Przeglądanie obrazu przez moderatorów-ludzi](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Wersja testowa [konsoli interfejsu API moderowania obrazów](try-image-api.md) i przykłady kodu interfejsu API REST. Również szybko sprawdzić wydajność [Szybki Start .NET moderowania obrazów](image-moderation-quickstart-dotnet.md) osoby znające program Visual Studio w języku C#.
+Przetestuj [konsolę interfejsu API moderowania obrazów](try-image-api.md) i użyj przykładów kodu interfejsu API REST. Zapoznaj się również z [przewodnikiem Szybki Start](image-moderation-quickstart-dotnet.md) dotyczącym moderowania obrazów w przypadku znajomości C#programów Visual Studio i.

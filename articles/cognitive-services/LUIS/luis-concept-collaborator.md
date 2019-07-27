@@ -1,6 +1,6 @@
 ---
-title: Współpraca
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Współpraca — LUIS
+titleSuffix: Azure Cognitive Services
 description: Usługa LUIS aplikacje wymagają jednego właściciela i współpracowników opcjonalne zezwalanie wielu użytkownikom tworzenie pojedynczej aplikacji.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 294905ccfd0ce8db6da8737277b0ce978ba837ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e53ba9f24e40837a823e6012340358113d490f46
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473515"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560784"
 ---
 # <a name="collaborating-with-other-authors"></a>Współpraca z innymi autorami
 
@@ -31,7 +31,7 @@ Zobacz [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-colla
 
 ## <a name="luis-app-owner"></a>Właściciel aplikacji usługi LUIS
 
-Konta, które służy do tworzenia aplikacji jest właścicielem i każda aplikacja ma jednego właściciela. Właściciel znajduje się w aplikacji **[ustawienia](luis-how-to-collaborate.md)** strony. Właściciel otrzyma wiadomość e-mail po osiągnięciu limitu przydziału z punktu końcowego 75% limit miesięczny. 
+Konto, które tworzy aplikację, jest właścicielem, a każda aplikacja ma jednego właściciela. Właściciel znajduje się na liście na stronie **[Ustawienia](luis-how-to-collaborate.md)** aplikacji. Właściciel otrzymuje wiadomość e-mail, gdy limit przydziału punktu końcowego osiągnie 75% limitu miesięcznie. 
 
 ## <a name="authorization-roles"></a>Role autoryzacji
 Usługa LUIS nie obsługuje różne role dla właścicieli i współpracowników z jednym wyjątkiem. Właściciel jest to jedyne konto, które można usunąć aplikacji.
@@ -52,7 +52,7 @@ Jeśli chcesz udostępnić wiele aplikacji wraz ze współpracownikami, każda a
 ## <a name="manage-multiple-versions-inside-the-same-app"></a>Zarządzanie wieloma wersjami wewnątrz tej samej aplikacji
 Rozpocznij od [klonowania](luis-how-to-manage-versions.md#clone-a-version), z wersji podstawowy, dla każdego autora. 
 
-Każdego autora zmienia swoją własną wersję aplikacji. Po każdego autora jest zadowolony z modelu, należy wyeksportować nowe wersje plików JSON.  
+Każdy autor wprowadza zmiany w swojej wersji aplikacji. Po każdego autora jest zadowolony z modelu, należy wyeksportować nowe wersje plików JSON.  
 
 Wyeksportowane aplikacje są w formacie JSON — pliki, które można porównać zmiany. Połącz pliki, aby utworzyć pojedynczy plik JSON w nowej wersji. Zmiana **versionId** właściwości w formacie JSON oznaczającego nowej wersji scalone. Zaimportować tej wersji oryginalnej aplikacji. 
 
@@ -63,11 +63,11 @@ Ta metoda umożliwia jednej wersji aktywnej, jednej wersji etapu i jeden opublik
 
 Wyeksportowane aplikacje są sformatowanego JSON pliki, które można porównać z podstawowej eksportu dla zmian. Połącz pliki, aby utworzyć pojedynczy plik JSON w nowej wersji. Zmiana **versionId** właściwości w formacie JSON oznaczającego nowej wersji scalone. Zaimportować tej wersji oryginalnej aplikacji.
 
-## <a name="collaborator-roles-vs-entity-roles"></a>Współautor ról programu vs jednostki ról
+## <a name="collaborator-roles-vs-entity-roles"></a>Role współpracownika — role
 
-[Role jednostki](luis-concept-roles.md) mają zastosowanie do modelu danych aplikacji usługi LUIS. Współautor role mają zastosowanie do poziomów dostępu do tworzenia. 
+[Role jednostek](luis-concept-roles.md) są stosowane do modelu danych aplikacji Luis. Role współpracowników dotyczą poziomów dostępu do autorstwa. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zrozumienie [versioning](luis-concept-version.md) pojęcia. 
 

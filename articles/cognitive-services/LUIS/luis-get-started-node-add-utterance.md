@@ -1,5 +1,5 @@
 ---
-title: Zmienianie i trenowanie aplikacji, Node.js
+title: Zmienianie, uczenie aplikacji, Node. js — LUIS
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start Node.js dodasz przykładowe wypowiedzi do aplikacji Home Automation i przeprowadzisz uczenie aplikacji.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: 13ce1706a2184075155b2bbc4dca5753be391ceb
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 6f0b19c1ba8d4a72ced19e74a3807c3962989e5d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357121"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560571"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>Szybki start: zmiana modelu przy użyciu środowiska Node.js
 
@@ -92,6 +92,6 @@ W tym wierszu polecenia wyświetlane są wyniki wywołania interfejsu API dodawa
 
 Po ukończeniu przewodnika Szybki start usuń wszystkie pliki utworzone w tym przewodniku Szybki start. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
 > [Programowe tworzenie aplikacji LUIS](luis-tutorial-node-import-utterances-csv.md)

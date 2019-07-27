@@ -1,6 +1,6 @@
 ---
-title: Projekt aplikacji iteracji
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Projekt aplikacji iteracyjnej — LUIS
+titleSuffix: Azure Cognitive Services
 description: Usługa LUIS uczy się najlepiej w iteracyjny cykl zmiany modelu, przykłady wypowiedź, publikowanie oraz zbieranie danych z punktu końcowego zapytań.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 67bcb33727bc808f5e5bea701daffc77dde736ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ecc595a398ce7d18fbc708a1de175fe4aa22177
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813762"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564058"
 ---
-# <a name="authoring-cycle-for-your-luis-app"></a>Cykl tworzenia aplikacji usługi LUIS
+# <a name="authoring-cycle-for-your-luis-app"></a>Cykl tworzenia aplikacji LUIS
 Usługa LUIS uczy się najlepiej w iteracyjny cykl zmiany modelu, przykłady wypowiedź, publikowanie oraz zbieranie danych z punktu końcowego zapytań. 
 
 ![Cykl tworzenia](./media/luis-concept-app-iteration/iteration.png)

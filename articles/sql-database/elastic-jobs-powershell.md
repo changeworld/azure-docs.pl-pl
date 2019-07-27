@@ -10,40 +10,39 @@ ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 53e10636535c553ac5fa17b5f4aac1000cd138bc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 064d55b96c8817f4b7ccc5f0925eeecfaf310424
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445384"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68550517"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Tworzenie agenta zadań elastycznych za pomocą programu PowerShell
 
 [Zadania elastyczne](sql-database-job-automation-overview.md#elastic-database-jobs) umożliwiają uruchamianie jednego lub większej liczby skryptów języka Transact-SQL (T-SQL) równolegle w wielu bazach danych.
 
-W tym samouczku dowiesz się kroki wymagane do uruchomienia zapytania w wielu bazach danych:
+W tym samouczku przedstawiono kroki wymagane do uruchomienia zapytania w wielu bazach danych:
 
 > [!div class="checklist"]
 > * Tworzenie agenta zadań elastycznych
 > * Tworzenie poświadczeń zadań, aby umożliwić wykonywanie przez zadania skryptów na ich elementach docelowych
 > * Definiowanie elementów docelowych (serwerów, puli elastycznych, baz danych, map fragmentów), względem których ma być uruchamiane zadanie
 > * Tworzenie poświadczeń o zakresie bazy danych w docelowych bazach danych, aby umożliwić agentowi łączenie i wykonywanie zadań
-> * Tworzenie zadania
+> * Utwórz zadanie
 > * Dodawanie kroków zadania do zadania
 > * Rozpoczynanie wykonywania zadania
 > * Monitorowanie zadania
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Uaktualnioną wersją zadania elastycznych baz danych ma nowy zestaw poleceń cmdlet programu PowerShell do użycia podczas migracji. Te nowe polecenia cmdlet przenieść wszystkie poświadczenia istniejącego zadania jest przeznaczony dla (w tym baz danych, serwery, kolekcje niestandardowe), wyzwalaczy zadań, harmonogramów zadań, zawartość zadania i zadań za pośrednictwem nowego agenta elastycznych zadań.
+Uaktualniona wersja zadania Elastic Database ma nowy zestaw poleceń cmdlet programu PowerShell do użycia podczas migracji. Te nowe polecenia cmdlet przenoszą wszystkie istniejące poświadczenia zadania, cele (w tym bazy danych, serwery, kolekcje niestandardowe), Wyzwalacze zadań, harmonogramy zadań, zawartość zadania i zadania do nowego agenta zadań elastycznych.
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Zainstaluj najnowsze polecenia cmdlet zadań elastycznych
 
 Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-Zainstaluj **Az.Sql** 1.1.1-preview modułu, aby uzyskać najnowsze polecenia cmdlet zadania elastycznego. Uruchom następujące polecenia w programie PowerShell z dostępem administracyjnym.
+Zainstaluj moduł **AZ. SQL** 1.1.1-Preview, aby uzyskać najnowsze polecenia cmdlet Elastic Job. Uruchom następujące polecenia w programie PowerShell z dostępem administracyjnym.
 
 ```powershell
 # Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
@@ -64,14 +63,14 @@ Import-Module Az.Sql -RequiredVersion 1.1.1
 Get-Module Az.Sql
 ```
 
-- Oprócz **Az.Sql** 1.1.1-preview modułu, ten samouczek wymaga również *sqlserver* modułu programu PowerShell. Aby uzyskać szczegółowe informacje, zobacz [Install SQL Server PowerShell module (Instalowanie modułu usługi SQL Server dla programu PowerShell)](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module).
+- Oprócz modułu **AZ. SQL** 1.1.1-Preview, ten samouczek wymaga również modułu *SqlServer* programu PowerShell. Aby uzyskać szczegółowe informacje, zobacz [Install SQL Server PowerShell module (Instalowanie modułu usługi SQL Server dla programu PowerShell)](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module).
 
 
 ## <a name="create-required-resources"></a>Tworzenie wymaganych zasobów
 
 Do utworzenia agenta zadań elastycznych wymagana jest baza danych (S0 lub wyższego poziomu) używana jako [baza danych zadań](sql-database-job-automation-overview.md#job-database). 
 
-*Poniższy skrypt tworzy nową grupę zasobów, serwer i bazę danych, która będzie używana jako baza danych zadań. Poniższy skrypt tworzy również drugiego serwera z dwóch puste baz danych do wykonywania zadań przed.*
+*Poniższy skrypt tworzy nową grupę zasobów, serwer i bazę danych, która będzie używana jako baza danych zadań. Poniższy skrypt tworzy również drugi serwer z dwiema pustymi bazami danych do wykonywania zadań.*
 
 Dla zadań elastycznych nie ma określonych wymagań dotyczących nazewnictwa, można więc zastosować dowolne, o ile są one zgodne z [wymaganiami platformy Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
@@ -129,7 +128,7 @@ $Db2
 
 ## <a name="enable-the-elastic-jobs-preview-for-your-subscription"></a>Włączanie wersji zapoznawczej zadań elastycznych w subskrypcji
 
-Użycie elastycznych zadań, należy zarejestrować funkcji w subskrypcji platformy Azure, uruchamiając następujące polecenie. Uruchom to polecenie raz dla subskrypcji, w którym zamierzasz aprowizacji agenta elastycznych zadań. Subskrypcje, które zawierają tylko baz danych, które są cele zadania nie muszą być zarejestrowane.
+Aby korzystać z zadań elastycznych, zarejestruj funkcję w subskrypcji platformy Azure, uruchamiając następujące polecenie. Uruchom to polecenie raz dla subskrypcji, w ramach której zamierzasz udostępnić Agent zadań elastycznych. Subskrypcje, które zawierają tylko bazy danych, które są obiektami docelowymi, nie muszą być rejestrowane.
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
@@ -139,7 +138,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 Agent zadań elastycznych jest zasobem platformy Azure służącym do tworzenia i uruchamiania zadań oraz do zarządzania nimi. Agent wykonuje zadania na podstawie harmonogramu lub jako zadania jednorazowe.
 
-**New AzSqlElasticJobAgent** polecenie cmdlet wymaga usługi Azure SQL database, aby już istnieje, więc *ResourceGroupName*, *ServerName*, i  *DatabaseName* parametry muszą wskazujących do istniejących zasobów.
+Polecenie cmdlet **New-AzSqlElasticJobAgent** wymaga, aby baza danych Azure SQL Database już istnieje, dlatego parametry *ResourceGroupName*, *servername*i *DatabaseName* muszą wskazywać istniejące zasoby.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -230,7 +229,7 @@ $ServerGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $TargetServerNa
 $ServerGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $TargetServerName -Database $Db2.DatabaseName -Exclude
 ```
 
-## <a name="create-a-job"></a>Tworzenie zadania
+## <a name="create-a-job"></a>Utwórz zadanie
 
 ```powershell
 Write-Output "Creating a new job"
@@ -288,20 +287,20 @@ $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 
 ### <a name="job-execution-states"></a>Stany wykonywania zadań
 
-Poniższa tabela zawiera listę stanów wykonywania zadania możliwe:
+W poniższej tabeli wymieniono możliwe Stany wykonania zadania:
 
 |Stan|Opis|
 |:---|:---|
-|**Utworzone** | Wykonanie zadania właśnie została utworzona i nie jest jeszcze w toku.|
-|**InProgress** | Wykonanie zadania jest obecnie w toku.|
-|**WaitingForRetry** | Wykonanie zadania nie był w stanie ukończyć swojej akcji i oczekuje, aby ponowić próbę.|
-|**Powodzenie** | Pomyślnie ukończono wykonywanie zadania.|
-|**SucceededWithSkipped** | Wykonanie zadania zakończyło się pomyślnie, ale niektóre jego elementy podrzędne zostały pominięte.|
-|**Niepowodzenie** | Wykonanie zadania ma nie powiodło się i wyczerpania jego ponownych prób.|
-|**Przekroczono limit czasu** | Upłynął limit czasu wykonywania zadania.|
-|**Anulowano** | Wykonanie zadania zostało anulowane.|
-|**Pominięto** | Wykonanie zadania zostało pominięte, ponieważ inne uruchomienie tego samego kroku zadanie zostało już uruchomione na tej samej wartości docelowej.|
-|**WaitingForChildJobExecutions** | Wykonanie zadania czeka na jego wykonania podrzędnych zakończyć.|
+|**Utworzony** | Wykonywanie zadania zostało właśnie utworzone i nie jest jeszcze w toku.|
+|**InProgress** | Wykonywanie zadania jest obecnie w toku.|
+|**WaitingForRetry** | Wykonanie zadania nie mogło wykonać akcji i oczekuje na ponowienie próby.|
+|**Powodzenie** | Wykonywanie zadania zakończyło się pomyślnie.|
+|**SucceededWithSkipped** | Wykonywanie zadania zakończyło się pomyślnie, ale niektóre z jego elementów podrzędnych zostały pominięte.|
+|**Niepowodzenie** | Wykonanie zadania nie powiodło się i wystąpiła ponowna próba.|
+|**TimedOut** | Przekroczono limit czasu wykonywania zadania.|
+|**Anulowano** | Wykonywanie zadania zostało anulowane.|
+|**Pominięto** | Wykonywanie zadania zostało pominięte, ponieważ inne wykonanie tego samego kroku zadania zostało już uruchomione na tym samym elemencie docelowym.|
+|**WaitingForChildJobExecutions** | Wykonywanie zadania oczekuje na ukończenie wykonania elementu podrzędnego.|
 
 ## <a name="schedule-the-job-to-run-later"></a>Planowanie późniejszego uruchomienia zadania
 
@@ -325,7 +324,7 @@ Remove-AzResourceGroup -ResourceGroupName $ResourceGroupName
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku został uruchomiony skrypt języka Transact-SQL na zestawie baz danych.  Przedstawiono sposób wykonywania następujących zadań:
 
@@ -334,7 +333,7 @@ W tym samouczku został uruchomiony skrypt języka Transact-SQL na zestawie baz 
 > * Tworzenie poświadczeń zadań, aby umożliwić wykonywanie przez zadania skryptów na ich elementach docelowych
 > * Definiowanie elementów docelowych (serwerów, puli elastycznych, baz danych, map fragmentów), względem których ma być uruchamiane zadanie
 > * Tworzenie poświadczeń o zakresie bazy danych w docelowych bazach danych, aby umożliwić agentowi łączenie i wykonywanie zadań
-> * Tworzenie zadania
+> * Utwórz zadanie
 > * Dodawanie kroku zadania do zadania
 > * Rozpoczynanie wykonywania zadania
 > * Monitorowanie zadania

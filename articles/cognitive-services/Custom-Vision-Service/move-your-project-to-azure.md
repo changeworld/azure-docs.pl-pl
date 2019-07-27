@@ -1,7 +1,7 @@
 ---
-title: Przenieś ograniczonej wersji próbnej projektu na platformie Azure
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak przenieść projektu ograniczonej wersji próbnej na platformę Azure.
+title: Przenoszenie projektu z ograniczoną wersją próbną na platformę Azure
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak przenieść projekt ograniczonej wersji próbnej na platformę Azure.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,52 +10,52 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 6fac6531ea0a39796de13f95aee33b30dc91f131
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22c3767dfac1e377890f1e01517d18263e694854
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816523"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560931"
 ---
-# <a name="how-to-move-your-limited-trial-project-to-azure"></a>Jak przenieść projektu ograniczonej wersji próbnej na platformie Azure
+# <a name="how-to-move-your-limited-trial-project-to-azure"></a>Jak przenieść projekt ograniczonej wersji próbnej na platformę Azure
 
-Jak usługi Custom Vision Service ukończy przeniesieniu działalności na platformę Azure, zakończy się obsługa projektów w ograniczonej wersji próbnej spoza platformy Azure. W tym dokumencie opisano, jak skopiować projektu ograniczonej wersji próbnej do zasobu platformy Azure przy użyciu niestandardowych interfejsów API przetwarzania.
+Ponieważ Custom Vision Service przejdziemy na platformę Azure, zostanie zakończona obsługa ograniczonych projektów w wersji próbnej poza platformą Azure. W tym dokumencie przedstawiono sposób używania interfejsów API Custom Vision do kopiowania ograniczonego projektu wersji próbnej do zasobu platformy Azure.
 
-Obsługa wyświetlania projektów ograniczonej wersji próbnej na [wizji niestandardowe witryny sieci Web](https://customvision.ai) zakończyło się w dniu 25 marca 2019 r. W tym dokumencie teraz dowiesz się, jak używać interfejsów API przetwarzania niestandardowego za pomocą [skrypt w języku python migracji](https://github.com/Azure-Samples/custom-vision-move-project) w serwisie GitHub) zduplikowanie projektu do zasobu platformy Azure.
+Obsługa wyświetlania ograniczonych projektów próbnych w [witrynie internetowej Custom Vision](https://customvision.ai) zakończyła się 25 marca 2019. W tym dokumencie opisano, jak używać interfejsów API Custom Vision ze skryptem w języku [Python](https://github.com/Azure-Samples/custom-vision-move-project) w usłudze GitHub w celu duplikowania projektu do zasobów platformy Azure.
 
-Aby uzyskać więcej informacji, w tym kluczowe terminy w procesie wycofywania wersji próbnej ograniczonej, przejdź do [informacje o wersji](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/release-notes#february-25-2019) lub wiadomości e-mail wysyłane do właścicieli ograniczonej wersji próbnej projektów.
+Aby uzyskać więcej informacji, w tym kluczowe terminy w procesie wycofania z ograniczeniami wersji próbnej, zapoznaj się z [informacjami o wersji](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/release-notes#february-25-2019) lub pocztą e-mail wysłaną do właścicieli ograniczonej wersji próbnej.
 
-[Skryptu migracji](https://github.com/Azure-Samples/custom-vision-move-project) umożliwia ponownie utworzyć projekt, pobieranie, a następnie przekazaniu wszystkie tagi, regionów, a obrazy w swojej bieżącej iteracji. Go spowoduje, że użytkownik z nowym projektem w swojej nowej subskrypcji, które można następnie szkolenie.
+[Skrypt migracji](https://github.com/Azure-Samples/custom-vision-move-project) umożliwia ponowne utworzenie projektu przez pobranie i przekazanie wszystkich tagów, regionów i obrazów w bieżącej iteracji. Spowoduje to pozostawienie nowego projektu w nowej subskrypcji, który można następnie wyszkolić.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konieczne będzie ważnej subskrypcji platformy Azure skojarzone z konta Microsoft lub konta usługi Azure Active Directory (AAD), które mają zostać użyte do zalogowania się do [wizji niestandardowe witryny sieci Web](https://customvision.ai). 
-    - Jeśli nie masz konta platformy Azure, [Tworzenie konta usługi](https://azure.microsoft.com/free/) za darmo.
-    - Wprowadzenie do platformy Azure pojęcia związane z subskrypcji i zasobów, można znaleźć [przewodnik dla deweloperów platformy Azure.](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#manage-your-subscriptions).
+- Wymagana jest poprawna subskrypcja platformy Azure skojarzona z kontem konto Microsoft lub Azure Active Directory (AAD), którego chcesz użyć do logowania się do [witryny sieci web Custom Vision](https://customvision.ai). 
+    - Jeśli nie masz konta platformy Azure, [Utwórz konto](https://azure.microsoft.com/free/) bezpłatnie.
+    - Wprowadzenie do pojęć związanych z subskrypcjami i zasobami platformy Azure można znaleźć w [przewodniku dewelopera platformy Azure.](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#manage-your-subscriptions)
 -  [Python](https://www.python.org/downloads/)
-- [Narzędzie PIP](https://pip.pypa.io/en/stable/installing/)
+- [Graczy](https://pip.pypa.io/en/stable/installing/)
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Tworzenie niestandardowego przetwarzania zasobów w witrynie Azure portal
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Utwórz zasoby Custom Vision w Azure Portal
 
-Usługi Custom Vision Service za pomocą platformy Azure, konieczne będzie utworzenie Custom Vision uczenia i przewidywania zasobów w [witryny Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). 
+Aby używać Custom Vision Service z platformą Azure, należy utworzyć Custom Vision szkolenia i zasoby przewidywania w [Azure Portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). 
 
-Wiele projektów może być skojarzona z pojedynczego zasobu. Więcej szczegółów na temat [ceny i limity](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/limits-and-quotas) jest dostępna. Aby kontynuować bezpłatne korzystanie z usługi Custom Vision Service, można wybrać warstwę F0 w witrynie Azure portal. 
+Z pojedynczym zasobem można skojarzyć wiele projektów. Dostępne są bardziej szczegółowe informacje na temat [cen i limitów](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/limits-and-quotas) . Aby nadal używać Custom Vision Service bezpłatnie, możesz wybrać warstwę F0 w Azure Portal. 
 
 > [!NOTE]
-> Po przeniesieniu projektu Custom Vision do zasobu platformy Azure, dziedziczy on bazowego [uprawnienia]( https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) tego zasobu platformy Azure. Jeśli inni użytkownicy w Twojej organizacji właściciele zasobów platformy Azure znajduje się w projekcie, będą one uzyskasz dostęp do projektu w [wizji niestandardowe witryny sieci Web](https://customvision.ai). Podobnie usunięcie zasobów spowoduje usunięcie Twoich projektów.  
+> Po przeniesieniu projektu Custom Vision do zasobu platformy Azure dziedziczy on podstawowe [uprawnienia]( https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) tego zasobu platformy Azure. Jeśli inni użytkownicy w organizacji są właścicielami zasobów platformy Azure, w których znajduje się projekt, będą mogli uzyskać dostęp do projektu w [witrynie sieci web Custom Vision](https://customvision.ai). Podobnie usunięcie zasobów spowoduje usunięcie Twoich projektów.  
 
-## <a name="find-your-limited-trial-project-information"></a>Znajdowanie informacji o ograniczonej wersji próbnej projekcie
+## <a name="find-your-limited-trial-project-information"></a>Znajdź ograniczone informacje o projekcie wersji próbnej
 
-Aby przenieść projektu, trzeba będzie _identyfikator projektu_ i _klucz szkolenia_ dla projektu, chcesz przeprowadzić migrację. Jeśli nie masz tych informacji, odwiedź stronę [ https://limitedtrial.customvision.ai/projects ](https://limitedtrial.customvision.ai/projects) uzyskać identyfikator i klucz dla każdego z projektów. 
+Aby przenieść projekt, musisz mieć _Identyfikator projektu_ i _klucz szkoleniowy_ dla projektu, który próbujesz zmigrować. Jeśli nie masz tych informacji, odwiedź stronę [https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) , aby uzyskać identyfikator i klucz dla każdego projektu. 
 
-## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>Użyj przykładowego kodu Python, aby skopiować projektu na platformie Azure
+## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>Używanie przykładowego kodu w języku Python do kopiowania projektu na platformę Azure
 
-Postępuj zgodnie z [przykładowy kod instrukcje](https://github.com/Azure-Samples/custom-vision-move-project), korzystając z ograniczonej wersji próbnej klucza SSH i identyfikator projektu jako materiałów "źródło" i klucza z nowego zasobu platformy Azure utworzone jako "miejsce docelowe".
+Postępuj zgodnie z [przykładowymi instrukcjami dotyczącymi kodu](https://github.com/Azure-Samples/custom-vision-move-project), używając ograniczonego klucza próbnego i identyfikatora projektu jako materiałów "source" i klucza z nowego zasobu platformy Azure utworzonego jako "miejsce docelowe".
 
-Domyślnie wszystkie projekty w ograniczonej wersji próbnej znajdują się w Południowej centralnej nam region świadczenia usługi Azure.
+Domyślnie wszystkie ograniczone projekty w wersji próbnej są hostowane w regionie Południowo-środkowe stany USA platformy Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz projekt został przeniesiony do zasobu platformy Azure. Należy zaktualizować kluczy wszystkie aplikacje, które zostały napisane przy użyciu uczenia i przewidywania.
+Projekt został przeniesiony do zasobu platformy Azure. Musisz zaktualizować swoje szkolenia i klucze przewidywania w aplikacjach, które zostały przez Ciebie zapisaniu.
 
-Aby wyświetlić projekt na [wizji niestandardowe witryny sieci Web](https://customvision.ai), zaloguj się przy użyciu tego samego konta, które są używane do logowania się do witryny Azure portal. Jeśli projekt nie jest wyświetlane, potwierdź, że znajdują się w tym samym katalogu w [wizji niestandardowe witryny sieci Web](https://customvision.ai) jako katalog, gdzie Twoje zasoby znajdują się w witrynie Azure portal. W witrynie Azure portal i CustomVision.ai można wybrać katalog z menu rozwijanego użytkownika w prawym górnym rogu ekranu.
+Aby wyświetlić projekt w [witrynie sieci web Custom Vision](https://customvision.ai), zaloguj się przy użyciu tego samego konta, które zostało użyte do zalogowania się do Azure Portal. Jeśli Twój projekt nie jest wyświetlany, potwierdź, że znajduje się w tym samym katalogu w [witrynie sieci web Custom Vision](https://customvision.ai) , co katalog, w którym zasoby znajdują się w Azure Portal. Zarówno Azure Portal, jak i CustomVision.ai, możesz wybrać swój katalog z menu rozwijanego użytkownika w prawym górnym rogu ekranu.

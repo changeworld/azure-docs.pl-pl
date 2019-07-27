@@ -1,6 +1,6 @@
 ---
-title: Wstępnie utworzone jednostki temperatury
-titleSuffix: Azure
+title: Wstępnie skonstruowana Jednostka temperatury — LUIS
+titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera temperatury informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 8d5e10a7a4fe7fb12bc4140690fcabffa16b32be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ecf977e1a477eb4b9178a6259fbe26ef18a9ec2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072111"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560148"
 ---
-# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Temperatura wstępnie utworzone jednostki dla aplikacji usługi LUIS
+# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Wstępnie utworzona jednostka temperatury dla aplikacji LUIS
 Temperatura wyodrębnia różnych typów temperatury. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający temperatury do aplikacji. Jednostki temperatury jest obsługiwana w [wiele kultur](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-temperature"></a>Typy temperatury
-Temperatura jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) repozytorium GitHub
+Temperatura jest zarządzana przez [Aparaty rozpoznawania tekstu —](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) repozytorium GitHub
 
 ## <a name="resolution-for-prebuilt-temperature-entity"></a>Rozpoznawanie temperatury wstępnie utworzone jednostki
 
-### <a name="api-version-2x"></a>Wersja interfejsu API 2.x
+### <a name="api-version-2x"></a>Interfejs API w wersji 2. x
 
 W poniższym przykładzie pokazano rozdzielczość **builtin.temperature** jednostki.
 
@@ -58,9 +58,9 @@ W poniższym przykładzie pokazano rozdzielczość **builtin.temperature** jedno
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API 3.x
+### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API w wersji 3. x
 
-Następujący kod JSON jest `verbose` parametr `false`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `false`
 
 ```json
 {
@@ -85,7 +85,7 @@ Następujący kod JSON jest `verbose` parametr `false`:
 }
 ```
 
-Następujący kod JSON jest `verbose` parametr `true`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `true`
 
 ```json
 {
@@ -122,6 +122,6 @@ Następujący kod JSON jest `verbose` parametr `true`:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [procent](luis-reference-prebuilt-percentage.md), [numer](luis-reference-prebuilt-number.md), i [wiek](luis-reference-prebuilt-age.md) jednostek. 

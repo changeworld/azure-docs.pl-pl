@@ -3,17 +3,16 @@ title: Uruchamianie pierwszego zapytania przy użyciu interfejsu wiersza polecen
 description: W tym artykule przedstawiono kroki umożliwiające włączenie rozszerzenia usługi Resource Graph dla interfejsu wiersza polecenia platformy Azure i uruchomienie pierwszego zapytania.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 07/26/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 592b2c611888623c2753d7c4abc9fe57c28af30e
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: afe32c197b5eab24ba298395bb2c9e83f847d6c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823163"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562571"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Szybki start: Uruchamianie pierwszego zapytania usługi Resource Graph przy użyciu wiersza polecenia platformy Azure
 
@@ -36,7 +35,7 @@ Aby włączyć wykonywanie zapytań usługi Azure Resource Graph przy użyciu in
    az extension add --name resource-graph
    ```
 
-1. Sprawdź, czy rozszerzenie zostało zainstalowane i ma oczekiwaną wersję (co najmniej **0.1.7**):
+1. Sprawdź, czy rozszerzenie zostało zainstalowane i czy jest to oczekiwana wersja (co najmniej **0.1.11**):
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -90,10 +89,7 @@ Jeśli chcesz usunąć rozszerzenie usługi Resource Graph ze środowiska interf
 az extension remove -n resource-graph
 ```
 
-> [!NOTE]
-> Nie powoduje to usunięcia pobranego wcześniej pliku rozszerzenia. Powoduje tylko usunięcie go z uruchomionego środowiska interfejsu wiersza polecenia platformy Azure.
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md)
 - Dowiedz się, jak [eksplorować zasoby](./concepts/explore-resources.md)

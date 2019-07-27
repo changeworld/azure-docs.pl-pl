@@ -4,25 +4,20 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: f66a3653bc85925349dde84551310fd24f4c9336
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cfd5cf77b9df8cdd5b856a0b36b9010077a7078a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182916"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562501"
 ---
 Otwórz obszar **Build Settings (Ustawienia kompilacji)** , wybierając pozycje **File (Plik)**  > **Build Settings (Ustawienia kompilacji)** .
 
 W sekcji **Platform (Platforma)** wybierz pozycję **iOS**.
 
-Wybierz pozycję **Switch Platform (Przełącz platformę)** , aby zmienić platformę na **iOS**. Unity może spowodować wyświetlenie monitu do zainstalowania składników obsługi systemu iOS, jeśli są one Brak.
+Wybierz pozycję **Switch Platform (Przełącz platformę)** , aby zmienić platformę na **iOS**. Aparat Unity może monitować o zainstalowanie składników obsługi systemu iOS, jeśli ich nie ma.
 
-![Okno ustawień kompilacji platformy Unity](./media/spatial-anchors-unity/unity-ios-build-settings.png)
+![Okno ustawień kompilacji aparatu Unity](./media/spatial-anchors-unity/unity-ios-build-settings.png)
 
 Zamknij okno **Build Settings (Ustawienia kompilacji)** .
 
-### <a name="download-and-import-the-unity-arkit-plugin"></a>Pobieranie i importowanie wtyczki ARKit aparatu Unity
-
-Pobierz [wtyczki ARKit Unity w wersji 2.0.0](https://bitbucket.org/Unity-Technologies/unity-arkit-plugin/get/v2.0.0.zip) i Wyodrębnij archiwum.
-
-Skopiuj zawartość folderu `Assets` z wyodrębnionego folderu wtyczki ARKit aparatu Unity do folderu `Assets` przykładu.

@@ -1,5 +1,5 @@
 ---
-title: Utwórz niestandardowe słowo aktywujące — usługi mowy
+title: Tworzenie niestandardowej usługi Wake Word-mowę
 titleSuffix: Azure Cognitive Services
 description: Urządzenie jest zawsze nasłuchiwanie słowo aktywujące (lub frazy). Po użytkownik odpowie słowo aktywujące, urządzenie wysyła wszystkie kolejne audio w chmurze, dopóki użytkownik zatrzymuje mówić. Dostosowywanie usługi słowo aktywujące jest efektywnym sposobem rozróżnienia urządzenia i zwiększanie znakowanie.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f43cbedc633b26a3a7fcbfb5f6a75da514bf0c45
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 2bc1a6cbbf1e0d790326849a41b0788e332daa31
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604865"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553107"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Utwórz niestandardowe słowo aktywujące przy użyciu usługi mowy
 
@@ -46,26 +46,26 @@ W przypadku wybrania słowa wznawiania, należy wziąć pod uwagę następujące
 
 ## <a name="create-your-wake-word"></a>Utwórz swoje słowo aktywujące
 
-Zanim użyjesz niestandardowe słowo aktywujące urządzeń z systemem należy utworzyć słowo aktywujące przy użyciu usługi Microsoft niestandardowe Wake generowania programu Word. Po podaniu słowo wznawiania, tworzy usługi, plik, który można wdrożyć na usługi deweloperski, aby umożliwić aktywujące na urządzeniu z systemem.
+Aby można było użyć niestandardowego programu do wznawiania pracy z urządzeniem, musisz utworzyć słowo wznawiania za pomocą usługi Microsoft Custom Wake Word Generation. Po udostępnieniu wyrazu wznawiania Usługa tworzy plik, który jest wdrażany w twoim zestawie deweloperskim, aby umożliwić programowi Word wznowienie na urządzeniu.
 
-1. Przejdź do [Custom Speech portalu](https://aka.ms/sdsdk-speechportal) i **Zaloguj** lub jeśli nie masz subskrypcji mowy, wybierz [ **Utwórz subskrypcję**](https://go.microsoft.com/fwlink/?linkid=2086754)
+1. Przejdź do [portalu Custom Speech Service](https://aka.ms/sdsdk-speechportal) i **Zaloguj się** lub jeśli nie masz subskrypcji mowy, wybierz pozycję [**Utwórz subskrypcję**](https://go.microsoft.com/fwlink/?linkid=2086754)
 
-    ![Portal usługi Custom Speech Service](media/speech-devices-sdk/wake-word-4.png)
+    ![Portal Custom Speech Service](media/speech-devices-sdk/wake-word-4.png)
 
-1. W [niestandardowe wznawiania w programie Word](https://aka.ms/sdsdk-wakewordportal) stronie wpisz wyraz wznawiania i kliknij przycisk **Dodaj słowo aktywujące**. Mamy coś [wytycznych](#choose-an-effective-wake-word) aby ułatwić sobie wybór skuteczne — słowo kluczowe. Aktualnie obsługiwany jest tylko język en US.
+1. Na [niestandardowej stronie wybudzenia programu Word](https://aka.ms/sdsdk-wakewordportal) w wybranym przez siebie edytorze wznawiania kliknij przycisk **Dodaj program Wake Word**. Mamy pewne [wskazówki](#choose-an-effective-wake-word) ułatwiające wybór efektywnego słowa kluczowego. Obecnie obsługujemy tylko język en-US.
 
     ![Wprowadź swoje słowo aktywujące](media/speech-devices-sdk/wake-word-5.png)
 
-1. Trzy wymowy alternatywne z Twojej słowo aktywujące zostanie utworzony. Możesz wybrać wszystkie wymowy, które chcesz. Następnie wybierz pozycję **przesyłania** do generowania słowo aktywujące. Jeśli chcesz zmienić słowo aktywujące Usuń istniejącą grupę najpierw, po umieszczeniu kursora w wierszu Wymowa pojawi się ikona usuwania.
+1. Zostaną utworzone trzy alternatywne wymowy dla programu Wake Word. Możesz wybrać wszystkie wymowy. Następnie wybierz pozycję **Prześlij** , aby wygenerować program Wake Word. Jeśli chcesz zmienić słowo wznawiania, Usuń istniejące pierwsze, po umieszczeniu wskaźnika myszy w wierszu wymowy zostanie wyświetlona ikona usuwania.
 
-    ![Przejrzyj swoje słowo aktywujące](media/speech-devices-sdk/wake-word-6.png)
+    ![Przejrzyj słowo Wake](media/speech-devices-sdk/wake-word-6.png)
 
-1. Może zająć jedną minutę na model, który ma zostać wygenerowane. Zostanie wyświetlony monit pobierania pliku.
+1. Generowanie modelu może potrwać do jednej minuty. Zostanie wyświetlony monit o pobranie pliku.
 
-    ![Pobierz swoje słowo aktywujące](media/speech-devices-sdk/wake-word-7.png)
+    ![Pobierz program Wake Word](media/speech-devices-sdk/wake-word-7.png)
 
-1. Zapisz plik zip na komputer. Konieczne będzie ten plik, aby wdrożyć swoje niestandardowe słowo aktywujące development Kit.
+1. Zapisz plik zip na komputer. Ten plik będzie potrzebny do wdrożenia niestandardowego programu wznawiania w programie Development Kit.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Testowanie swoje niestandardowe słowo aktywujące z [szybkiego startu zestawu SDK urządzenia mowy](https://aka.ms/sdsdk-quickstart).
+Przetestuj niestandardowe słowo wznawiania za pomocą [zestawu Speech Devices SDK szybkiego startu](https://aka.ms/sdsdk-quickstart).

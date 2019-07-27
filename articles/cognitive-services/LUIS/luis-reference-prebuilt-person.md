@@ -1,5 +1,5 @@
 ---
-title: PersonName wstępnie utworzone jednostki
+title: Osoba — wstępnie utworzona jednostka — LUIS
 titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera personName informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 3b12c69b7c6710e774d50e631d2423fd72ce828a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63e32fe79d1f3f6d2573d9a8f94f937cb9eb31ef
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072173"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560180"
 ---
-# <a name="personname-prebuilt-entity-for-a-luis-app"></a>PersonName wstępnie utworzone jednostki dla aplikacji usługi LUIS
+# <a name="personname-prebuilt-entity-for-a-luis-app"></a>Osoba z wbudowaną jednostką dla aplikacji LUIS
 Jednostki wstępnie personName wykrywa nazwiska osób. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający personName do intencji aplikacji. Jednostka personName jest obsługiwana w językach angielskim i chiński [kultur](luis-reference-prebuilt-entities.md).
 
 ## <a name="resolution-for-personname-entity"></a>Rozpoznawanie personName jednostki
 
-### <a name="api-version-2x"></a>Wersja interfejsu API 2.x
+### <a name="api-version-2x"></a>Interfejs API w wersji 2. x
 
 W poniższym przykładzie pokazano rozdzielczość **builtin.personName** jednostki.
 
@@ -45,9 +45,9 @@ W poniższym przykładzie pokazano rozdzielczość **builtin.personName** jednos
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API 3.x
+### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API w wersji 3. x
 
-Następujący kod JSON jest `verbose` parametr `false`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `false`
 
 ```json
 {
@@ -69,7 +69,7 @@ Następujący kod JSON jest `verbose` parametr `false`:
 }
 ```
 
-Następujący kod JSON jest `verbose` parametr `true`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `true`
 
 ```json
 {
@@ -103,6 +103,6 @@ Następujący kod JSON jest `verbose` parametr `true`:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [e-mail](luis-reference-prebuilt-email.md), [numer](luis-reference-prebuilt-number.md), i [porządkowe](luis-reference-prebuilt-ordinal.md) jednostek. 

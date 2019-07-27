@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Uruchamianie modelu TensorFlow w języku Python — Custom Vision Service'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Uruchom model TensorFlow w języku Python.
 services: cognitive-services
 author: areddish
@@ -10,19 +10,19 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: ba8cf3392ac2bd3d371e5e1910c6671feba9dedf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c6e7cf770e5f1639e676d232564809121a8c4e4b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606878"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561093"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Samouczek: Uruchamianie modelu TensorFlow w języku Python
 
 W tym przewodniku Szybki start opisano, jak po [wyeksportowaniu modelu TensorFlow](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) z usługi Custom Vision Service użyć tego modelu lokalnie w celu klasyfikowania obrazów.
 
 > [!NOTE]
-> Ten samouczek dotyczy tylko modeli wyeksportowane z projektów klasyfikacji obrazów.
+> Ten samouczek dotyczy tylko modeli wyeksportowanych z projektów klasyfikacji obrazów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="handle-images-with-a-dimension-1600"></a>Obsługa obrazów za pomocą wymiaru > 1600
+### <a name="handle-images-with-a-dimension-1600"></a>Obsługa obrazów z wymiarem > 1600
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -172,7 +172,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Przewidywanie obrazu
 
-Po przygotowaniu obrazu jako tensor, firma Microsoft może wysyłać, za pomocą modelu do prognozowania:
+Po przygotowaniu obrazu jako dwuelementowego można wysłać go za pomocą modelu w celu przewidywania:
 
 ```Python
 
@@ -208,9 +208,9 @@ Wyniki uruchomienia tensora obrazu za pośrednictwem modelu trzeb będzie wtedy 
         label_index += 1
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak opakowywać modelu w aplikacji mobilnej:
+Następnie Dowiedz się, jak otoczyć model w aplikacji mobilnej:
 * [Używanie wyeksportowanego modelu TensorFlow w aplikacji systemu Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Używanie wyeksportowanego modelu CoreML w aplikacji języka Swift systemu iOS](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Używanie wyeksportowanego modelu CoreML w aplikacji systemu iOS na platformie Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

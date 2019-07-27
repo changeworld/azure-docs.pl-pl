@@ -1,6 +1,6 @@
 ---
-title: Listy fraz
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Listy fraz — LUIS
+titleSuffix: Azure Cognitive Services
 description: Użyj Language Understanding (LUIS), aby dodać funkcje aplikacji, które może poprawić Prognozowanie intencje i podmioty lub wykrywania tej kategorii i wzorce
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75764fd0a3f862157d9377d7dc886334ef1231db
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195939"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563707"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Użyj frazy Wyświetla sygnału boost listy programu word
 
@@ -28,7 +28,7 @@ Lista fraz dodaje do słownictwa używanego w domenie aplikacji jako drugi sygna
 
 ## <a name="add-phrase-list"></a>Dodawanie listy fraz
 
-Usługa LUIS zezwala na maksymalnie 10 Wyświetla frazy na aplikację. 
+LUIS umożliwia maksymalnie 10 list fraz na aplikację. 
 
 1. Otwórz aplikację, klikając jego nazwę **Moje aplikacje** strony, a następnie kliknij przycisk **kompilacji**, następnie kliknij przycisk **frazę list** w panelu po lewej stronie Twojej aplikacji. 
 
@@ -40,13 +40,13 @@ Usługa LUIS zezwala na maksymalnie 10 Wyświetla frazy na aplikację.
 
 4. Usługa LUIS może zaproponować powiązanych wartości do dodania do listy fraz. Kliknij przycisk **zaleca się** można pobrać grupy proponowane wartości, które są semantycznie związane added value(s). Kliknij dowolną z wartości proponowane, lub kliknij przycisk **Dodaj wszystkie** Aby dodać je wszystkie.
 
-    ![Frazę wartości proponowane listy — Dodaj wszystko](./media/luis-add-features/related-values.png)
+    ![Proponowane wartości listy fraz — Dodaj wszystko](./media/luis-add-features/related-values.png)
 
 5. Kliknij przycisk **te wartości są wymienne** Jeśli frazy dodano wartości listy są dostępne opcje alternatywne, które mogą być używane zamiennie.
 
-    ![Lista wartości proponowane frazę — zaznacz pole wymienne](./media/luis-add-features/interchangeable.png)
+    ![Proponowane wartości na liście fraz — wybierz pole, które jest zamienne](./media/luis-add-features/interchangeable.png)
 
-6. Kliknij pozycję **Zapisz**. Na liście frazę "Miast" zostanie dodany do **frazę list** strony.
+6. Kliknij polecenie **Zapisz**. Na liście frazę "Miast" zostanie dodany do **frazę list** strony.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>

@@ -1,5 +1,5 @@
 ---
-title: Jednostka wyrażenia regularnego
+title: Wyrażenie regularne-LUIS
 titleSuffix: Azure Cognitive Services
 description: Wyodrębnij spójnie sformatowane dane z wypowiedzi przy użyciu jednostki Regular Expression (Wyrażenie regularne).
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 5e79de8dc8b4e81f427925b6e3d662bd4931804d
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 958d880829e9524389a25f029415786231644c04
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497026"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563602"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Samouczek: uzyskiwanie prawidłowo sformatowanych danych z wypowiedzi
 W tym samouczku utworzysz aplikację, która wyodrębnia spójnie sformatowane dane z wypowiedzi przy użyciu jednostki **Regular Expression** (Wyrażenie regularne).
@@ -125,7 +125,7 @@ W poniższych krokach utwórz jednostkę wyrażenia regularnego, aby określić 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Przejdź na końcu adresu URL w adres, a następnie wprowadź następujące wypowiedź:
+2. Przejdź na koniec adresu URL w adresie i wprowadź następujący wypowiedź:
 
     `When were HRF-123456 and hrf-234567 published in the last year?`
 
@@ -179,7 +179,7 @@ W poniższych krokach utwórz jednostkę wyrażenia regularnego, aby określić 
 * [Jak opublikować](luis-how-to-publish-app.md)
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku utworzono nową intencję, dodano przykładowe wypowiedzi, a następnie utworzono jednostkę wyrażenia regularnego, aby wyodrębnić z wypowiedzi poprawnie sformatowane dane. Po wyszkoleniu i opublikowaniu aplikacji zapytanie do punktu końcowego zidentyfikowało intencję i zwróciło wyodrębnione dane.
 
 > [!div class="nextstepaction"]

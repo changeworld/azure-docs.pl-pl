@@ -1,6 +1,6 @@
 ---
-title: Dostępność scenariuszy — usługi mowy
-titlesuffix: Azure Cognitive Services
+title: Dostępność scenariusza — usługa mowy
+titleSuffix: Azure Cognitive Services
 description: Odwołanie dla regionów usługi mowy.
 services: cognitive-services
 author: chrisbasoglu
@@ -10,40 +10,40 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 7aa2c72a01f1887ea9680f8d5706b825a49039a1
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 94fd415909e86a43916ee2f510732a6a6d9c5ed3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561283"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552947"
 ---
 # <a name="scenario-availability"></a>Dostępność scenariusza
 
-Zestaw SDK usługi mowy funkcji wiele scenariuszy w szerokiej gamy języków i środowisk programowania.  Nie wszystkie scenariusze są jeszcze dostępne dla wszystkich języków programowania lub wszystkich środowisk.  Poniżej zamieszczono Dostępność poszczególnych scenariuszy.
+Zestaw SDK usługi mowy zawiera wiele scenariuszy obejmujących różne języki programowania i środowiska.  Nie wszystkie scenariusze są obecnie dostępne we wszystkich językach programowania lub w wszystkich środowiskach.  Poniżej przedstawiono dostępność każdego scenariusza.
 
-- **Rozpoznawanie mowy (SR), Lista fraz, przeznaczenie, tłumaczenia i w środowisku lokalnym kontenerów**
-  - Wszystkie języki programowania/środowiska w przypadku, gdy istnieje łącze strzałki <img src="media/index/link.jpg" height="15" width="15"></img> w tabeli szybkiego startu [tutaj](https://aka.ms/csspeech).
+- **Rozpoznawanie mowy (SR), lista fraz, intencje, tłumaczenia i kontenery lokalne**
+  - Wszystkie języki programowania/środowiska, w których znajduje się łącze do strzałki <img src="media/index/link.jpg" height="15" width="15"></img> w [tabeli szybkiego](https://aka.ms/csspeech)startu.
 - **Zamiana tekstu na mowę (TTS)**
-  - C++/ Windows i Linux
-  - C#/ Windows, platformy uniwersalnej systemu Windows & aparatu Unity
-  - Interfejs API REST TTS może służyć w każdej innej sytuacji.
-- **Wake Word (Keyword Spotter/KWS)**
-  - C++/ Windows i Linux
-  - C#/ Windows i Linux
-  - Python/Windows i Linux
-  - Java/Windows, Linux & systemu Android (Speech Devices SDK)
-  - Funkcjonalności programu Word (słowo kluczowe Spotter/KWS) wznawiania mogą działać z żadnym typem mikrofon official będzie przydatna KWS obsługuje obecnie ograniczone do tablic mikrofon znajduje się w sprzęt DK Kinect platformy Azure lub zestawu Speech Devices SDK
-- **Pierwszy głosu wirtualnego Asystenta ustawień**
-  - C++/ Windows i Linux i macOS
+  - C++/Windows & Linux
+  - C#/Windows & platformy UWP & Unity
+  - Interfejs API REST usługi TTS może być używany w każdej innej sytuacji.
+- **Wake Word (słowo kluczowe Spotter/KWS)**
+  - C++/Windows & Linux
+  - C#/Windows & Linux
+  - Python/Windows & Linux
+  - Java/Windows & Linux & Android (Speech Devices SDK)
+  - Funkcja Wake Word (Spottere Keywords/KWS) może działać z dowolnym typem mikrofonu, oficjalną obsługą KWS, ale jest obecnie ograniczona do tablic mikrofonu znajdujących się na sprzęcie platformy Azure urządzenia Kinect DK lub w zestawie SDK urządzeń mowy
+- **Głos — pierwszy asystent wirtualny**
+  - C++/Windows & Linux & macOS
   - C#/Windows
-  - Java/Windows i Linux z systemem macOS & systemu Android (Speech Devices SDK)
+  - Java/Windows & Linux & macOS & Android (Speech Devices SDK)
 - **Transkrypcja konwersacji**
-  - C++/ Windows i Linux
-  - C#(Framework i .NET Core) / Windows i platformy uniwersalnej systemu Windows i Linux
-  - Java/Windows, Linux & systemu Android (Speech Devices SDK)
-- **Biurem obsługi transkrypcji**
-  - Interfejsu API REST i mogą być używane w każdej sytuacji
-- **Koder-dekoder kompresji wejścia Audio**
+  - C++/Windows & Linux
+  - C#(Framework & .NET Core)/Windows & platformy UWP & Linux
+  - Java/Windows & Linux & Android (Speech Devices SDK)
+- **Transkrypcja centrum wywołania**
+  - Interfejs API REST i może być używany w dowolnej sytuacji
+- **Koder-dekoder skompresowanego sygnału audio**
   - C++/Linux
   - C#/Linux
-  - Java/Linux i Android
+  - Java/Linux & Android

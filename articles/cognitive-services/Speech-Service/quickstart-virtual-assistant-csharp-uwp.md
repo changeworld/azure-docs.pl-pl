@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Niestandardowe głosu pierwszego wirtualnego Asystenta (wersja zapoznawcza), C# systemu Windows (UWP) — usługi mowy'
+title: 'Szybki start: Niestandardowy głos — pierwszy asystent wirtualny (wersja zapoznawcza), C# (platformy UWP) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: W tym artykule opisano tworzenie C# Windows platformy Uniwersalnej aplikacji za pomocą Cognitive Services mowy Software Development Kit (SDK). Połączysz aplikację kliencką do utworzonej wcześniej bot platformy Bot Framework skonfigurowane przy użyciu kanału Direct mowy wiersza. Aplikacja będzie kompilowana przy użyciu pakietu NuGet zestawu Speech SDK i programu Microsoft Visual Studio 2017.
+description: W tym artykule opisano tworzenie aplikacji C# platforma uniwersalna systemu Windows (platformy UWP) za pomocą zestawu Cognitive Services Speech Software Development Kit (SDK). Możesz połączyć aplikację kliencką z wcześniej utworzonym bot Framework bot skonfigurowanym do korzystania z kanału bezpośredniej linii mowy. Aplikacja będzie kompilowana przy użyciu pakietu NuGet zestawu Speech SDK i programu Microsoft Visual Studio 2017.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 22c18b573e7107163f858c79956ca6f5380f6834
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d61040e740c06fc336e3764a0d972640443a6de5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604973"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553385"
 ---
-# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Szybki start: Utwórz Asystenta ustawień wirtualnego pierwszy głosu przy użyciu zestawu SDK mowy platformy uniwersalnej systemu Windows
+# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Szybki start: Tworzenie wirtualnego asystenta głosowego przy użyciu zestawu Speech SDK, platformy UWP
 
-Przewodniki Szybki Start są również dostępne dla [mowy na tekst](quickstart-csharp-uwp.md), [zamiany tekstu na mowę](quickstart-text-to-speech-csharp-uwp.md) i [tłumaczenia mowy](quickstart-translate-speech-uwp.md).
+Przewodniki Szybki Start są również dostępne w przypadku [zamiany mowy na tekst](quickstart-csharp-uwp.md), zamiany [tekstu na mowę](quickstart-text-to-speech-csharp-uwp.md) i zamiany [mowy](quickstart-translate-speech-uwp.md)na mowę.
 
-W tym artykule polega na opracowywaniu C# Windows platformy Uniwersalnej aplikacji za pomocą [zestaw SDK rozpoznawania mowy](speech-sdk.md). Program połączy się z wcześniej utworzone i skonfigurowane robota, aby włączyć środowisko głosu pierwszego wirtualnego Asystenta ustawień, od aplikacji klienckiej. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
+W tym artykule opisano tworzenie aplikacji C# platforma uniwersalna systemu Windows (platformy UWP) przy użyciu [zestawu Speech SDK](speech-sdk.md). Program nawiąże połączenie z wcześniej utworzonym i skonfigurowanym bot, aby umożliwić wirtualne środowisko asystenta wirtualnego z aplikacji klienckiej. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
 
 > [!NOTE]
 > Platforma uniwersalna systemu Windows pozwala tworzyć aplikacje, które działają na dowolnym urządzeniu z systemem Windows 10, m.in. na komputerach PC, konsolach Xbox, urządzeniach Surface Hub itp.
@@ -31,23 +31,23 @@ W tym artykule polega na opracowywaniu C# Windows platformy Uniwersalnej aplikac
 Ten przewodnik Szybki start wymaga następujących elementów:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Klucz subskrypcji platformy Azure dla usług przetwarzania mowy. [Bezpłatnie Uzyskaj](get-started.md) lub utwórz go na [witryny Azure portal](https://portal.azure.com).
-* Robota utworzonej wcześniej skonfigurowano [kanału Direct mowy wiersza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+* Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go na [Azure Portal](https://portal.azure.com).
+* Wcześniej utworzono bot skonfigurowany za pomocą [kanału Direct line](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
     > [!NOTE]
-    > Bezpośrednie wiersza Speech (wersja zapoznawcza) jest obecnie dostępna w regionach usług przetwarzania mowy przez. Zapoznaj się [listę obsługiwanych regionów dla wirtualnych asystentów głosowych pierwszy](regions.md#voice-first-virtual-assistants) i upewnij się, Twoje zasoby są wdrażane w jednym z tych regionów.
+    > Bezpośredni wiersz mowy (wersja zapoznawcza) jest obecnie dostępny w podzestawie regionów usługi Speech Services. Zapoznaj się z [listą obsługiwanych regionów dla wirtualnych asystentów głosowych](regions.md#voice-first-virtual-assistants) i upewnij się, że zasoby są wdrożone w jednym z tych regionów.
 
-## <a name="optional-get-started-fast"></a>Opcjonalnie: Szybkie rozpoczęcie pracy
+## <a name="optional-get-started-fast"></a>Opcjonalnie: Szybkie rozpoczynanie pracy
 
-Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste połączyć się z botem obsługujące rozpoznawanie mowy. Jeśli chcesz od razu po prawej, jest dostępna w kodzie źródłowym kompletny, gotowy do kompilacji, używanych w tym przewodniku Szybki Start [przykładowych zestawach SDK mowy](https://aka.ms/csspeech/samples) w obszarze `quickstart` folderu.
+Ten przewodnik Szybki Start opisuje krok po kroku, jak utworzyć prostą aplikację kliencką do łączenia się z botem z obsługą mowy. Jeśli wolisz szczegółowe z prawej strony, kompletny, gotowy do skompilowania kod źródłowy używany w tym przewodniku Szybki Start jest dostępny `quickstart` w [przykładach zestawu Speech SDK](https://aka.ms/csspeech/samples) w folderze.
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
-1. Interfejs użytkownika aplikacji jest definiowany przy użyciu języka XAML. Otwórz `MainPage.xaml` w Eksploratorze rozwiązań. W widoku XAML w projektancie, Zastąp całą zawartość przy użyciu poniżej.
+1. Interfejs użytkownika aplikacji jest definiowany przy użyciu języka XAML. Otwórz `MainPage.xaml` w Eksploratorze rozwiązań. W widoku XAML projektanta Zastąp całą zawartość poniższymi.
 
     ```xml
     <Page
@@ -80,14 +80,14 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
     </Page>
     ```
 
-1. Otwórz plik źródłowy związanym z kodem `MainPage.xaml.cs`. Znajdziesz go zgrupowane w obszarze `MainPage.xaml`. Zastąp zawartość z poniższym kodem. Oto, co opisano w tym przykładzie:
+1. Otwórz plik `MainPage.xaml.cs`źródłowy związany z kodem. Znajdziesz go w sekcji `MainPage.xaml`. Zastąp zawartość następującym kodem. Oto, co obejmuje ten przykład:
 
-    * Za pomocą instrukcji mowy i Speech.Dialog przestrzeni nazw
-    * Proste wdrażanie, aby zapewnić dostęp do mikrofonu, podłączone do obsługi przycisku
-    * Podstawowe wątków interfejsu użytkownika do przedstawienia wiadomości i błędy w aplikacji
-    * Punkt docelowa dla inicjowania ścieżka kodu, który zostanie wypełniony później
-    * Obiekt pomocnika, aby odtworzyć ponownie zamiany tekstu na mowę (bez przesyłania strumieniowego pomocy technicznej)
-    * Program obsługi pusty przycisk rozpocząć nasłuchiwania, który zostanie wypełniony później
+    * Używanie instrukcji dla przestrzeni nazw mowy i mowy. okna dialogowego
+    * Prosta implementacja zapewniająca dostęp do mikrofonu przy użyciu sieci przewodowej do procedury obsługi przycisku
+    * Podstawowe pomocnicy interfejsu użytkownika do prezentowania komunikatów i błędów w aplikacji
+    * Punkt wyładunkowy dla ścieżki kodu inicjującego, który zostanie zapełniony później
+    * Pomocnik odtwarzania zamiany tekstu na mowę (bez obsługi przesyłania strumieniowego)
+    * Pusta procedura obsługi przycisku do rozpoczęcia nasłuchiwania, która zostanie wypełniona później
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -239,13 +239,13 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
     }
     ```
 
-1. Następnie utworzysz `DialogServiceConnector` informacje o subskrypcji. Dodaj następujący kod do treści metody `InitializeDialogServiceConnector`, zastępując ciągi `YourChannelSecret`, `YourSpeechSubscriptionKey`, i `YourServiceRegion` własnymi wartościami dla bota subskrypcji mowy i [region](regions.md).
+1. Następnie utworzysz `DialogServiceConnector` wraz z informacjami o subskrypcji. Dodaj następujące `InitializeDialogServiceConnector`elementy do treści metody, zastępując ciągi `YourChannelSecret`, `YourSpeechSubscriptionKey`i `YourServiceRegion` własnymi wartościami dla bot, subskrypcji mowy i [regionu](regions.md).
 
     > [!NOTE]
-    > Bezpośrednie wiersza Speech (wersja zapoznawcza) jest obecnie dostępna w regionach usług przetwarzania mowy przez. Zapoznaj się [listę obsługiwanych regionów dla wirtualnych asystentów głosowych pierwszy](regions.md#voice-first-virtual-assistants) i upewnij się, Twoje zasoby są wdrażane w jednym z tych regionów.
+    > Bezpośredni wiersz mowy (wersja zapoznawcza) jest obecnie dostępny w podzestawie regionów usługi Speech Services. Zapoznaj się z [listą obsługiwanych regionów dla wirtualnych asystentów głosowych](regions.md#voice-first-virtual-assistants) i upewnij się, że zasoby są wdrożone w jednym z tych regionów.
 
     > [!NOTE]
-    > Informacje na temat konfigurowania bota i pobierania klucza tajnego kanału, zobacz dokumentację platformy Bot Framework [kanału Direct mowy wiersza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+    > Aby uzyskać informacje na temat konfigurowania bot i pobierania wpisu tajnego kanału, zobacz dokumentację struktury bot dla [kanału Direct Speech line](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
     ```csharp
     // create a DialogServiceConfig by providing a bot secret key and Cognitive Services subscription key
@@ -259,7 +259,7 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
     connector = new DialogServiceConnector(botConfig);
     ```
 
-1. `DialogServiceConnector` opiera się na kilka zdarzeń do komunikowania się jego działania robota, wyniki rozpoznawania mowy i inne informacje. Dodawanie obsługi dla tych zdarzeń, należy dodać następujący ciąg na końcu treści metody `InitializeDialogServiceConnector`.
+1. `DialogServiceConnector`opiera się na kilku zdarzeniach, aby komunikować swoje działania bot, wyniki rozpoznawania mowy i inne informacje. Dodaj programy obsługi dla tych zdarzeń, dołączając następujące polecenie na końcu treści `InitializeDialogServiceConnector`metody.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities
@@ -303,7 +303,7 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
     };
     ```
 
-1. Za pomocą konfiguracji ustanowione i procedury obsługi zdarzeń zarejestrowane `DialogServiceConnector` teraz musi jedynie do nasłuchiwania. Dodaj następujący kod do treści `ListenButton_ButtonClicked` method in Class metoda `MainPage` klasy.
+1. Po nawiązaniu konfiguracji i zarejestrowaniu obsługi zdarzeń, `DialogServiceConnector` teraz wystarczy nasłuchiwać. Dodaj następujący tekst do treści `ListenButton_ButtonClicked` metody `MainPage` w klasie.
 
     ```csharp
     private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
@@ -336,31 +336,31 @@ Ten przewodnik Szybki Start opisano krok po kroku, jak aplikacja kliencka proste
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
-1. Skompiluj aplikację. Wybierz z menu pasek programu Visual Studio, **kompilacji** > **Kompiluj rozwiązanie**. Kod powinien teraz zostać skompilowany bez błędów.
+1. Skompiluj aplikację. Na pasku menu programu Visual Studio wybierz opcję **Kompiluj** > **kompilację rozwiązania**. Kod powinien teraz zostać skompilowany bez błędów.
 
     ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Kompiluj rozwiązanie](media/sdk/qs-csharp-uwp-08-build.png "Kompilacja ukończona pomyślnie")
 
-1. Uruchom aplikację. Wybierz z menu pasek programu Visual Studio, **debugowania** > **Rozpocznij debugowanie**, lub naciśnij **F5**.
+1. Uruchom aplikację. Na pasku menu programu Visual Studio wybierz kolejno opcje **Debuguj** > **Rozpocznij debugowanie**lub naciśnij klawisz **F5**.
 
     ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-csharp-uwp-09-start-debugging.png "Uruchamianie aplikacji do debugowania")
 
-1. Zostanie wyświetlone okno podręczne. W aplikacji, wybierz **Włącz mikrofon**oraz potwierdzenia żądania uprawnień, które się pojawi.
+1. Zostanie wyświetlone okno podręczne. W aplikacji wybierz pozycję **Włącz mikrofon**i potwierdź żądanie uprawnienia, które wyskakujące.
 
     ![Zrzut ekranu żądania uprawnień](media/sdk/qs-csharp-uwp-10-access-prompt.png "Uruchom aplikację do debugowania")
 
-1. Wybierz **komunikować się z botem**i Mów frazę w języku angielskim lub zdanie do mikrofonu na urządzeniu. Mowa jest przekazywane do kanału Direct mowy wiersza i przetłumaczone na tekst, który jest wyświetlany w oknie.
+1. Wybierz opcję **Rozmawiaj z Twoim botem**i zacznij mówić do angielskiej frazy lub zdania do mikrofonu Twojego urządzenia. Twoja Zamiana jest przesyłana do kanału mowy Direct line i uzyskanego do tekstu, który pojawia się w oknie.
 
-    ![Zrzut ekranu przedstawiający pomyślne bot Włącz](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "Włącz bot pomyślne")
+    ![Zrzut ekranu przedstawiający pomyślne włączenie bot](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "Pomyślne włączenie bot")
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie i wdrażanie podstawowy bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+> [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Temat wirtualnych asystentów głosowych pierwszy](voice-first-virtual-assistants.md)
-- [Bezpłatnie Uzyskaj klucz subskrypcji usług przetwarzania mowy](get-started.md)
-- [Wyrazy niestandardowego](speech-devices-sdk-create-kws.md)
-- [Nawiązywanie bezpośredniego mowy wiersza bota](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Informacje o Asystencie wirtualnym w pierwszej kolejności głosowej](voice-first-virtual-assistants.md)
+- [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
+- [Niestandardowe słowa wznawiania](speech-devices-sdk-create-kws.md)
+- [Połącz bezpośrednią mowę wiersza z bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)

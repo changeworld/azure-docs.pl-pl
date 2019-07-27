@@ -1,7 +1,7 @@
 ---
-title: Oceny dokładności rozpoznawania mowy niestandardowe — usługi mowy
-titlesuffix: Azure Cognitive Services
-description: W tym dokumencie dowiesz się, jak ilościowo mierzą jakość modelu mowy na tekst firmy Microsoft lub Twojego niestandardowego modelu. Wymaga aby przetestować dokładność danych transkrypcji audio i oznaczone przez człowieka i powinien zostać podany 30 minut do 5 godzin reprezentatywny audio.
+title: Oceń dokładność dla usługi Custom Speech-Speech
+titleSuffix: Azure Cognitive Services
+description: W tym dokumencie dowiesz się, jak ilościowo mierzyć jakość modelu zamiany mowy na tekst lub modelu niestandardowego. Wymagane jest przetestowanie dokładności przez audio i dane transkrypcji z etykietami ludzkimi, które powinny być podane przez 30 minut.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,58 +10,58 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 2e9818fad9a0b5d04cc50a293b16d838c319dd86
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606566"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562871"
 ---
-# <a name="evaluate-custom-speech-accuracy"></a>Dokładność mowy niestandardowe obliczyć
+# <a name="evaluate-custom-speech-accuracy"></a>Oceń Custom Speech dokładność
 
-W tym dokumencie dowiesz się, jak ilościowo mierzą jakość modelu mowy na tekst firmy Microsoft lub Twojego niestandardowego modelu. Wymaga aby przetestować dokładność danych transkrypcji audio i oznaczone przez człowieka i powinien zostać podany 30 minut do 5 godzin reprezentatywny audio.
+W tym dokumencie dowiesz się, jak ilościowo mierzyć jakość modelu zamiany mowy na tekst firmy Microsoft lub modelu niestandardowego. Wymagane jest przetestowanie dokładności przez audio i dane transkrypcji z etykietami ludzkimi, które powinny być podane przez 30 minut.
 
-## <a name="what-is-word-error-rate-wer"></a>Co to jest współczynnik błędów programu Word (WER, Windows Management Instrumentation)?
+## <a name="what-is-word-error-rate-wer"></a>Co to jest współczynnik błędów programu Word?
 
-To branżowy standard do mierzenia dokładności modelu *współczynnik błędów Word* (WER). Raportowanie błędów systemu Windows zlicza niepoprawne słowa, które zostały zidentyfikowane podczas rozpoznawania, a następnie dzieli przez całkowitą liczbę słów w transkrypcji oznaczone przez człowieka. Na koniec ta liczba jest mnożony przez 100%, aby obliczyć raportowanie błędów systemu Windows.
+Standardem branżowym do mierzenia dokładności modelu jest *Współczynnik błędów programu Word* . Funkcja Raportowanie błędów systemu Windows zlicza błędne słowa identyfikowane podczas rozpoznawania, a następnie dzieli przez łączną liczbę wyrazów w transkrypcji z etykietami ludzkimi. Na koniec ten numer jest mnożony przez 100%, aby obliczyć raportowanie błędów.
 
-![Formuła raportowanie błędów systemu Windows](./media/custom-speech/custom-speech-wer-formula.png)
+![Formuła raportowanie błędów](./media/custom-speech/custom-speech-wer-formula.png)
 
-Niepoprawnie identyfikuje fall słów na trzy kategorie:
+Niepoprawnie zidentyfikowane słowa dzielą się na trzy kategorie:
 
-* Wstawianie (I): Wyrazy, które niepoprawnie zostały dodane w tej transkrypcji hipotezę
-* Usunięcie (D): Wyrazy, które są wykryte w transkrypcji hipotezę
-* Podstawienie (S): Wyrazy, które zostały zastąpione między odwołania i hipotezę
+* Wstawianie (I): Wyrazy, które są nieprawidłowo dodawane w transkrypcji hipotezy
+* Usunięcie (D): Wyrazy, które nie są wykrywane w transkrypcji hipotezy
+* Podstawienia: Wyrazy, które zostały zastąpione przez odwołanie i hipotezę
 
 Oto przykład:
 
-![Przykład niepoprawnie określonych słów](./media/custom-speech/custom-speech-dis-words.png)
+![Przykład niepoprawnie zidentyfikowanych wyrazów](./media/custom-speech/custom-speech-dis-words.png)
 
-## <a name="resolve-errors-and-improve-wer"></a>Usuń błędy i zwiększyć raportowanie błędów systemu Windows
+## <a name="resolve-errors-and-improve-wer"></a>Rozwiązywanie problemów i ulepszanie funkcji Raportowanie błędów systemu Windows
 
-Raportowanie błędów systemu Windows z wyników rozpoznawanie maszyny można użyć do oszacowania jakości modelu, używane z aplikacjami, narzędzia lub produktu. Raportowanie błędów systemu Windows z 5-10% jest uważany za dobrej jakości i jest gotowa do użycia. Raportowanie błędów systemu Windows o 20% jest dopuszczalne, jednak warto wziąć pod uwagę dodatkowe szkolenie. Raportowanie błędów systemu Windows z co najmniej 30% sygnalizuje słabą jakością i wymaga dostosowania i szkolenia.
+Można użyć funkcji Raportowanie błędów z wyników rozpoznawania maszyny do oceny jakości modelu używanego w aplikacji, narzędziu lub produkcie. Raportowanie błędów systemu Windows o wartości 5%-10% jest uznawane za dobrą jakość i jest gotowe do użycia. Wartość raportowanie błędów systemu Windows jest akceptowalna, ale warto rozważyć dodatkowe szkolenie. Raportowanie błędów systemu Windows o 30% lub więcej sygnalizuje niską jakość i wymaga dostosowania i szkolenia.
 
-Ważne jest rozkład błędów. Gdy wystąpi wiele błędów usuwania jest zazwyczaj ze względu na słabe sygnał audio. Aby rozwiązać ten problem, należy zebrać dane audio bliżej do źródła. Błędy wstawiania oznaczać, że audio została zarejestrowana w środowisku generujące dużo alertów, a rozmowy w tle mogą być obecne, powodujące problemy z rozpoznawania. Niewystarczające przykładowe terminów specyficznych dla domeny został podany jako transkrypcje oznaczone przez człowieka lub powiązane często zostaną napotkane błędy podstawianie tekstu.
+Sposób dystrybucji błędów jest ważny. W przypadku napotkania wielu błędów usunięcia zazwyczaj wynika to z słabej siły sygnału audio. Aby rozwiązać ten problem, należy zebrać dane audio bliżej źródła. Błędy wstawiania oznaczają, że dźwięk został zarejestrowany w środowisku z zakłóceniami, a Crosstalk może być obecny, powodując problemy z rozpoznawaniem. Błędy podstawiania są często spotykane, gdy niewystarczająca próba dotycząca warunków specyficznych dla domeny została podana jako transkrypcja lub tekst pokrewny.
 
-Analizując poszczególne pliki, można określić, jakiego rodzaju błędy istnieje, a błędy, które są unikatowe dla określonego pliku. Pomoże Ci zrozumieć problemy na poziomie plików docelowych ulepszenia.
+Analizując poszczególne pliki, można określić, jakiego typu błędy istnieją i które błędy są unikatowe dla określonego pliku. Zrozumienie problemów na poziomie pliku pomoże Ci usprawnić ulepszenia.
 
 ## <a name="create-a-test"></a>Tworzenie testu
 
-Jeśli chcesz przetestować jakość modelu odniesienia mowy na tekst firmy Microsoft lub który przeprowadzono już uczenie modelu niestandardowego, można porównać dwa modele obok siebie do oceny dokładności. Porównanie obejmuje raportowanie błędów systemu Windows i rozpoznawania wyników. Zazwyczaj modelu niestandardowego jest porównywany z modelem linii bazowej firmy Microsoft.
+Jeśli chcesz przetestować jakość modelu linii bazowej zamiany mowy na tekst firmy Microsoft lub modelu niestandardowego, który został przeszkolony, możesz porównać dwa modele obok siebie, aby oszacować dokładność. Porównanie zawiera wyniki raportowania błędów i oceny. Zwykle model niestandardowy jest porównywany z modelem bazowym firmy Microsoft.
 
-Można oceniać modele obok siebie:
+Aby oszacować modele obok siebie:
 
-1. Przejdź do **mowy na tekst > Custom Speech > testowania**.
-2. Kliknij przycisk **Dodaj Test**.
-3. Wybierz **oceny dokładności**. Nadaj nazwę, opis, test i wybierz zestaw danych transkrypcji audio i oznaczone przez człowieka.
+1. Przejdź do **> funkcji zamiany mowy na tekst Custom Speech > testowanie**.
+2. Kliknij przycisk **Dodaj test**.
+3. Wybierz pozycję **Oceń dokładność**. Nadaj testowi nazwę, opis, a następnie wybierz swój audio + ludzki zestaw danych transkrypcji.
 4. Wybierz maksymalnie dwa modele, które chcesz przetestować.
-5. Kliknij pozycję **Utwórz**.
+5. Kliknij przycisk **Utwórz**.
 
 Po pomyślnym utworzeniu testu można porównać wyniki obok siebie.
 
-## <a name="side-by-side-comparison"></a>Porównania Side-by-side
+## <a name="side-by-side-comparison"></a>Porównanie równoczesne
 
-Po zakończeniu testu wskazywanym przez zmianę stanu, aby *Powodzenie*, numer raportowanie błędów systemu Windows znajdują się oba modele zawarte w teście. Kliknij nazwę testu, aby wyświetlić stronę szczegółów testowania. Ta strona szczegółów zawiera listę wszystkich wypowiedzi w zestawie danych, informujący o wyniki rozpoznawania dwa modele obok transkrypcji z przesłano zestawu danych. Aby sprawdzić porównania side-by-side, można przełączać się różne typy błędów, tym wstawiania, usuwania i podstawienia. Nasłuchiwanie audio i porównywania wyników rozpoznawania w każdej kolumnie, który pokazuje transkrypcji oznaczone przez człowieka i wyników dwa modele mowy na tekst, możesz zdecydować, model, który spełnia Twoje wymagania, i gdzie są dodatkowe szkolenie i ulepszenia Wymagane.
+Po zakończeniu testu, wskazywanym przez zmianę stanu na *powodzenie*, można znaleźć numer funkcji Raportowanie błędów dla obu modeli uwzględnionych w teście. Kliknij nazwę testu, aby wyświetlić stronę szczegółów testowania. Ta strona szczegółów zawiera listę wszystkich wyrażenia długości w zestawie danych, wskazując wyniki rozpoznawania dwóch modeli obok transkrypcji z przesłanego zestawu danych. Aby pomóc w sprawdzeniu porównania obok siebie, można przełączać różne typy błędów, w tym Wstawianie, usuwanie i podstawianie. Nasłuchiwanie dźwięku i porównanie wyników rozpoznawania w każdej kolumnie, który pokazuje transkrypcję z etykietami ludzkimi i wyniki dla dwóch modeli zamiany mowy na tekst, można zdecydować, który model spełnia Twoje potrzeby i gdzie są dodatkowe szkolenia i ulepszenia. Wymagane.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -70,5 +70,5 @@ Po zakończeniu testu wskazywanym przez zmianę stanu, aby *Powodzenie*, numer r
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Przygotuj i przetestować danych](how-to-custom-speech-test-data.md)
-* [Sprawdzanie danych](how-to-custom-speech-inspect-data.md)
+* [Przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md)
+* [Inspekcja danych](how-to-custom-speech-inspect-data.md)

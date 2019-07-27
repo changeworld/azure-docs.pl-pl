@@ -1,6 +1,6 @@
 ---
-title: Test usługi Batch
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Test wsadowy — LUIS
+titleSuffix: Azure Cognitive Services
 description: Użyj partii Language Understanding (LUIS), zestawy testów, aby znaleźć wypowiedzi z niepoprawne intencje i podmioty.
 services: cognitive-services
 author: diberry
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: d615eb2a23b953bad5e41859357d9ae9e9be2ba6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd0910fedc9fd27af198f6a2b94b34daf57c050f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60197702"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563677"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Testowanie za pomocą zestawu wypowiedzi przykład usługi Batch
 
- Testowanie usługi Batch jest kompleksowe testu, bieżące uczonego modelu do pomiaru jego wydajności w usługi LUIS. Zestawy danych używane do testowania usługi batch nie powinien zawierać wypowiedzi przykład intencji lub wypowiedzi otrzymany z punktem końcowym runtime prognozy. 
+ Testowanie usługi Batch jest kompleksowe testu, bieżące uczonego modelu do pomiaru jego wydajności w usługi LUIS. Zestawy danych używane do testowania wsadowego nie powinny zawierać przykładu wyrażenia długości w intencjach lub wyrażenia długości odebranych z punktu końcowego środowiska uruchomieniowego przewidywania. 
 
 <a name="batch-testing"></a>
 

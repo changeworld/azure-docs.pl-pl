@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Utwórz nową aplikację w portalu usługi LUIS'
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: W tym przewodniku Szybki Start utworzysz nową aplikację w portalu usługi LUIS. Utwórz podstawowe części aplikacji, intencje i podmioty. Testowanie aplikacji, zapewniając przykład wypowiedź użytkownika, w panelu interaktywne testu do poznania intencji przewidywane. Tworzenie aplikacji jest bezpłatna; nie wymaga subskrypcji platformy Azure.
+title: 'Szybki start: Tworzenie nowej aplikacji w portalu LUIS'
+titleSuffix: Azure Cognitive Services
+description: W tym przewodniku szybki start utworzysz nową aplikację w portalu LUIS. Utwórz podstawowe elementy aplikacji, intencje i jednostki. Przetestuj aplikację, dostarczając przykładowej wypowiedź użytkownika w panelu test interaktywny, aby uzyskać przewidywany cel. Tworzenie aplikacji jest bezpłatne; nie wymaga subskrypcji platformy Azure.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,33 +10,33 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2e4ff7dc97e3ee72336bd4c081caf1aa1a62bc56
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146557"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560878"
 ---
-# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Szybki start: Utwórz nową aplikację w portalu usługi LUIS
+# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Szybki start: Tworzenie nowej aplikacji w portalu LUIS
 
-W tym przewodniku Szybki Start tworzysz nową aplikację [portal usługi LUIS](https://www.luis.ai). Najpierw należy utworzyć podstawowe części aplikacji, **intencji**, i **jednostek**. Następnie przetestuj aplikację, zapewniając przykład wypowiedź użytkownika, w panelu interaktywne testu do poznania intencji przewidywane.
+W tym przewodniku szybki start utworzysz nową aplikację w [portalu Luis](https://www.luis.ai). Najpierw utworzysz podstawowe elementy aplikacji, **intencje**i **jednostki**. Następnie przetestuj aplikację, dostarczając przykładowej wypowiedź użytkownika w panelu testów interakcyjnych, aby uzyskać przewidywany cel.
 
-Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gdy wszystko będzie gotowe do wdrożenia aplikacji, zobacz [szybkiego startu, aby wdrożyć aplikację](get-started-portal-deploy-app.md). Prezentuje sposób tworzenia zasobów platformy Azure Cognitive Service i przypisać je do aplikacji.
+Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gdy wszystko będzie gotowe do wdrożenia aplikacji, zapoznaj się z [przewodnikiem Szybki Start, aby wdrożyć aplikację](get-started-portal-deploy-app.md). Przedstawiono w nim sposób tworzenia zasobu usługi poznawczej platformy Azure i przypisywania go do aplikacji.
 
 ## <a name="create-an-app"></a>Tworzenie aplikacji
 
-1. Otwórz [portal usługi LUIS](https://www.luis.ai) w przeglądarce i zaloguj się. Jeśli logowanie po raz pierwszy, musisz utworzyć bezpłatne konto użytkownika portalu usługi LUIS.
+1. Otwórz [Portal Luis](https://www.luis.ai) w przeglądarce i zaloguj się. Jeśli logujesz się po raz pierwszy, musisz utworzyć bezpłatne konto użytkownika portalu LUIS.
 
-1. Wybierz **Utwórz nową aplikację** z paska narzędzi kontekstu.
+1. Wybierz pozycję **Utwórz nową aplikację** na podstawie paska narzędzi kontekstu.
 
-   [![Utwórz nową aplikację w portalu usługi LUIS](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![Utwórz nową aplikację w portalu LUIS](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
 
-1. W oknie podręcznym, należy skonfigurować aplikację z następującymi ustawieniami, a następnie wybierz pozycję **gotowe**.
+1. W oknie podręcznym Skonfiguruj aplikację przy użyciu następujących ustawień, a następnie wybierz pozycję **gotowe**.
 
-   |Nazwa ustawienia| Wartość | Przeznaczenie|
+   |Nazwa ustawienia| Wartość | Cel|
    |--|--|--|
-   |Name (Nazwa)|`myEnglishApp`|Unikatowa nazwa aplikacji usługi LUIS<br>wymagane|
-   |Kultura|**Angielski**|Język wypowiedzi użytkowników, **en-us**<br>wymagane|
+   |Name (Nazwa)|`myEnglishApp`|Unikatowa nazwa aplikacji LUIS<br>wymagane|
+   |Kultura|**Angielski**|Język wyrażenia długości od użytkowników, **en-us**<br>wymagane|
    |Opis|`App made with LUIS Portal`|Opis aplikacji<br>opcjonalne|
    | | | |
 
@@ -44,131 +44,131 @@ Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gd
 
 ## <a name="create-intents"></a>Tworzenie intencji
 
-Po utworzeniu aplikacji usługi LUIS, musisz utworzyć intencji. Intencji służą do kategoryzowania tekst od użytkowników. Na przykład aplikacja zarządzania zasobami ludzkimi może mieć dwie funkcje. Aby pomóc użytkownikom:
+Po utworzeniu aplikacji LUIS należy utworzyć intencje. Intencje są sposobem na klasyfikowanie tekstu od użytkowników. Na przykład aplikacja kadrs może mieć dwie funkcje. Aby ułatwić użytkownikom:
 
- 1. Znajdź i Zastosuj dla zadań
- 1. Znajdź formularzy do zastosowania w przypadku zadań
+ 1. Znajdź i Zastosuj do zadań
+ 1. Znajdowanie formularzy do zastosowania w przypadku zadań
 
-Aplikacja w dwóch różnych _zamiarach_ wyrównane do następujących opcji:
+Dwie różne intencje dotyczące  aplikacji są wyrównane do następujących intencji:
 
 |Intencja|Przykładowy tekst od użytkownika<br>znane jako _wypowiedź_|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
 
-Aby utworzyć intencji, wykonaj następujące czynności:
+Aby utworzyć intencje, wykonaj następujące czynności:
 
-1. Po utworzeniu aplikacji znajdują się na **intencji** strony **kompilacji** sekcji. Wybierz pozycję **Create new intent** (Utwórz nową intencję).
+1. Po utworzeniu aplikacji znajduje się na stronie intencje w  sekcji **kompilacja** . Wybierz pozycję **Create new intent** (Utwórz nową intencję).
 
-   [![Wybierz przycisk Tworzenie nowego elementu intent](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![Przycisk Utwórz nowy cel](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Wprowadź nazwę elementu intent `FindForm`, a następnie wybierz pozycję **gotowe**.
+1. Wprowadź nazwę `FindForm`celu, a następnie wybierz pozycję **gotowe**.
 
-   ![Wprowadź nazwę elementu intent FindForm](./media/get-started-portal-build-app/create-new-intent-dialog.png)
+   ![Wprowadź nazwę zamiaru FindForm](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
 ## <a name="add-an-example-utterance"></a>Dodaj wypowiedź przykład
 
-Możesz dodać wypowiedzi przykład po utworzeniu intencji. Przykład wypowiedzi to tekst, który użytkownik wprowadza w czatbot lub innych aplikacji. Mapowania ich zamiar użytkownika tekstu na intencje usługi LUIS.
+Po utworzeniu zamiarów należy dodać przykład wyrażenia długości. Przykład wyrażenia długości jest tekstem, który użytkownik wprowadza w programie Chat bot lub innej aplikacji klienckiej. Umożliwiają one mapowanie zamiaru tekstu użytkownika na LUIS zamiar.
 
-Dla tej przykładowej aplikacji `FindForm` intencji, przykład wypowiedzi będzie zawierać numer formularza. Aplikacja kliencka musi numer formularza do spełnienia żądania użytkownika, więc jest ważne, które mają zostać objęte wypowiedź.
+Na potrzeby tego przykładowej `FindForm` aplikacji Przykładowa wyrażenia długości będzie zawierać numer formularza. Aplikacja kliencka wymaga, aby numer formularza spełniał żądanie użytkownika, więc należy go uwzględnić w wypowiedź.
 
-[![Podaj przykład wypowiedzi dla intencji FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+[![Wprowadź przykład wyrażenia długości dla zamiaru FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
-Dodaj następujące wypowiedzi przykład 15 do `FindForm` intencji.
+Dodaj do `FindForm` zamiaru 15-przykładową wyrażenia długości.
 
 |#|Przykładowe wypowiedzi|
 |--|--|
-|1|Szukasz hrf 123456|
-|2|Gdzie jest formularz zasobów ludzkich w 234591 hrf?|
-|3|hrf 345623, gdzie jest ona|
-|4|Czy jest możliwe, Wyślij do mnie hrf 345794|
-|5|Czy muszę mieć hrf-234695 do zastosowania do wewnętrznego zadania?|
-|6|Czy Mój menedżer musi wiedzieć, że jestem I stosowania dla zadania o hrf 234091|
-|7|Gdzie wysłać hrf 234918? Uzyskać odpowiedź pocztą e-mail, który został odebrany?|
-|8|hrf-234555|
-|9|Gdy zaktualizowano hrf 234987?|
-|10|Używać formularza hrf-876345 do zastosowania dla inżynierów pozycji|
-|11|Została nowa wersja 765234 hrf, przesłane do mojej Otwórz wymagane?|
-|12|Używać hrf 234234 międzynarodowych zadań?|
-|13|błąd pisowni hrf 234598|
-|14|będą edytowane hrf 234567 dla nowych wymagań|
-|15|hrf 123456, hrf 123123 hrf 234567|
+|1|Szukasz elementu HRF-123456|
+|2|Gdzie jest HRF-234591?|
+|3|HRF-345623, gdzie to|
+|4|Czy jest możliwe wysłanie mi HRF-345794|
+|5|Czy potrzebuję HRF-234695 do zastosowania w ramach zadania wewnętrznego?|
+|6|Czy mój Menedżer musi wiedzieć, że stosujem się do zadania z HRF-234091|
+|7|Gdzie mogę wysłać HRF-234918? Czy otrzymuję odpowiedź na wiadomość e-mail, która została odebrana?|
+|8|HRF-234555|
+|9|Kiedy został HRF-234987 zaktualizowany?|
+|10|Do zastosowania w przypadku stanowisk inżynieryjnych należy użyć formy HRF-876345|
+|11|Czy została przesłana Nowa wersja HRF-765234 dla mojego otwartego żądania?|
+|12|Czy do zadań międzynarodowych jest używany HRF-234234?|
+|13|HRF-234598 błąd pisowni|
+|14|HRF-234567 można edytować w celu uzyskania nowych wymagań|
+|15|HRF-123456, HRF-123123, HRF-234567|
 
-Zgodnie z projektem te wypowiedzi przykładu różnią się w następujący sposób:
+Zgodnie z projektem, te przykładowe wyrażenia długości różnią się w następujący sposób:
 
 * Długość wypowiedź
-* Znaki interpunkcyjne
-* Wybór programu Word
-* czasu teraźniejszego zlecenie (jest, został, będzie)
-* kolejność słów
+* interpunkcyjny
+* wybór wyrazów
+* intensywność czasownika (is, jest, będzie)
+* kolejność wyrazów
 
 
 
-## <a name="create-a-regular-expression-entity"></a>Tworzenie jednostki wyrażeń regularnych
+## <a name="create-a-regular-expression-entity"></a>Tworzenie jednostki wyrażenia regularnego
 
-Aby przywrócić numer formularza w odpowiedzi prognozowania środowiska uruchomieniowego, formularz musi być oznaczona jako jednostka. Ponieważ mają zaawansowaną strukturę tekst w postaci liczb, możesz oznaczyć go za pomocą jednostek wyrażenia regularnego. Tworzenie jednostki wykonując następujące kroki:
+Aby zwrócić numer formularza w odpowiedzi przewidywania środowiska uruchomieniowego, formularz musi być oznaczony jako jednostka. Ponieważ tekst z numerem formularza jest wysoce strukturalny, można oznaczyć go przy użyciu jednostki wyrażenia regularnego. Utwórz jednostkę, wykonując następujące czynności:
 
-1. Wybierz **jednostek** z menu po lewej stronie.
+1. Wybierz pozycję **jednostki** z menu po lewej stronie.
 
-1. Wybierz **Utwórz nową jednostkę** na **jednostek** strony.
+1. Na stronie **jednostki** wybierz pozycję **Utwórz nową jednostkę** .
 
-1. Wprowadź nazwę `Human Resources Form Number`, wybierz opcję **wyrażenia regularnego** jednostki wpisz, a następnie wprowadź wyrażenie regularne `hrf-[0-9]{6}`. Ten wpis dopasowuje znaki literału `hrf-`i umożliwia dokładnie 6 cyfr.
+1. Wprowadź nazwę `Human Resources Form Number`, wybierz typ podmiotu **wyrażenia regularnego** , a następnie wprowadź wyrażenie `hrf-[0-9]{6}`regularne. Ten wpis jest zgodny ze znakami `hrf-`literału, i zezwala na dokładnie 6 cyfr.
 
-   ![Wprowadź informacje jednostki dla obiektu wyrażenia regularnego](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+   ![Wprowadź informacje o jednostce dla jednostki wyrażenia regularnego](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
 1. Wybierz pozycję **Done** (Gotowe).
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None
 
-**Brak** jest rezerwowego intencji i nie powinny być puste. Celem tego może zawierać jeden wypowiedź dla każdego wypowiedzi przykład 10 zostały dodane do intencji aplikacji.
+Opcja **Brak** jest zamiarem rezerwowym i nie powinna być pusta. Ta metoda powinna zawierać jeden wypowiedź na każdy 10 przykład wyrażenia długości, który został dodany do innych intencji aplikacji.
 
-**Brak** wypowiedzi przykład jego przeznaczenie powinna znajdować się poza domenę aplikacji klienta.
+Przykładowa metoda wyrażenia długości **nie** powinna być poza domeną aplikacji klienckiej.
 
-1. Wybierz **intencji** z menu po lewej stronie, a następnie wybierz **Brak** z listy opcji.
+1. Wybierz  pozycję intencje w menu po lewej stronie, a następnie wybierz pozycję **Brak** z listy intencje.
 
-1. Dodaj następujące wypowiedzi przykład zamiar:
+1. Dodaj następujący przykład wyrażenia długości do celu:
 
-   |Brak elementu intent przykład wypowiedzi|
+   |Brak przykładu zamiaru wyrażenia długości|
    |--|
    |Barking dogs are annoying (Szczekające psy są irytujące)|
    |Order a pizza for me (Zamów dla mnie pizzę)|
    |Penguins in the ocean (Pingwiny w oceanie)|
 
-   Ta aplikacja zarządzania zasobami ludzkimi są wypowiedzi te przykładowe spoza domeny. Jeśli domeny zarządzania zasobami ludzkimi obejmują zwierząt, żywności lub oceanu, a następnie należy użyć wypowiedzi w innym przykładzie dla **Brak** intencji.
+   W przypadku tej aplikacji kadrowej te przykładowe wyrażenia długości znajdują się poza domeną. Jeśli domena zasobów ludzkich obejmuje zwierzęta, żywność lub ocean, należy użyć innego przykładu wyrażenia długości dla opcji **Brak** .
 
 ## <a name="train-the-app"></a>Uczenie aplikacji
 
-W menu w prawym górnym rogu wybierz **Train** stosowanie intencji i jednostki modelu zmienia się na bieżącą wersję aplikacji.
+W menu w prawym górnym rogu wybierz pozycję **uczenie** , aby zastosować zmiany wprowadzone w modelu zamierzenia do bieżącej wersji aplikacji.
 
-## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Przyjrzyj się jednostki wyrażeń regularnych w przykładzie wypowiedzi
+## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Przyjrzyj się jednostce wyrażenia regularnego w przykładzie wyrażenia długości
 
-1. Sprawdź jednostki znajduje się w **FindForm** intencji, wybierając **intencji** menu po lewej stronie. Następnie wybierz pozycję **FindForm** intencji.
+1. Sprawdź, czy jednostka została znaleziona w **FindForm** zamiaru, wybierając pozycję **intencje** w menu po lewej stronie. Następnie wybierz pozycję **FindForm** zamierzenia.
 
-   Jednostka jest oznaczony jako położenia wypowiedzi przykładu. Jeśli chcesz wyświetlić oryginalny tekst, a nie nazwa jednostki, Przełącz **widoku jednostek** na pasku narzędzi.
+   Jednostka jest oznaczona, gdzie pojawia się w przykładzie wyrażenia długości. Jeśli chcesz zobaczyć oryginalny tekst zamiast nazwy jednostki, przełącz **Widok jednostek** z paska narzędzi.
 
-   [![Wszystkie wypowiedzi przykład oznaczona za pomocą jednostek](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   [![Wszystkie przykładowe wyrażenia długości oznaczone obiektami](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
-## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Testowanie nowej aplikacji z okienka interaktywne testu
+## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Testowanie nowej aplikacji za pomocą interaktywnego okienka testów
 
-Użyj interakcyjnego **testu** okienku w portalu usługi LUIS, aby sprawdzić, czy jednostki są wyodrębniane z wypowiedzi nowych aplikacji nie zostało jeszcze widoczne.
+Użyj interaktywnego  okienka testowego w portalu Luis, aby sprawdzić, czy jednostka została wyodrębniona z nowej wyrażenia długości, która nie była jeszcze widoczna dla aplikacji.
 
-1. Wybierz **testu** z menu w prawym górnym rogu.
+1. Wybierz pozycję **Testuj** w prawym górnym menu.
 
-1. Dodaj nowe wypowiedź, a następnie naciśnij klawisz Enter:
+1. Dodaj nowy wypowiedź, a następnie naciśnij klawisz ENTER:
 
    ```Is there a form named hrf-234098```
 
-   ![Testowanie nowych wypowiedź w okienko testowania](./media/get-started-portal-build-app/test-new-utterance.png)
+   ![Test New wypowiedź w okienku testów](./media/get-started-portal-build-app/test-new-utterance.png)
 
-   U góry przewidzieć celem jest poprawnie **FindForm** z ponad 90% zaufania (0.977). **Numer formularza zarządzania zasobami ludzkimi** jednostki jest wyodrębniany z wartością hrf 234098.
+   Najbardziej przewidywany cel jest prawidłowo **FindForm** z ponad 90% pewnością (0,977). Jednostka **numeru formularza zasobów ludzkich** jest wyodrębniana z wartością hrf-234098.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy ukończysz pracę z tego przewodnika Szybki Start, a nie ma przejść do kolejnego przewodnika Szybki Start, wybierz **Moje aplikacje** w górnym menu nawigacji. Następnie zaznacz pole wyboru po lewej stronie, aplikacji z listy i wybierz **Usuń** z kontekstu paska narzędzi powyżej listy.
+Po zakończeniu korzystania z tego przewodnika Szybki Start i przechodzenia do następnego przewodnika Szybki Start wybierz pozycję **Moje aplikacje** w górnym menu nawigacji. Następnie zaznacz pole wyboru po lewej stronie z listy i wybierz pozycję **Usuń** z paska narzędzi kontekstu powyżej listy.
 
-[![Usunąć aplikację z listy aplikacji](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[![Usuń aplikację z listy Moje aplikacje](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [2. Wdrażanie aplikacji](get-started-portal-deploy-app.md)

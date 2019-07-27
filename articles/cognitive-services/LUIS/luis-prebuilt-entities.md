@@ -1,5 +1,5 @@
 ---
-title: Wstępnie utworzonych jednostek
+title: Wstępnie skompilowane jednostki dla Language Understanding
 titleSuffix: Azure Cognitive Services
 description: Usługa LUIS zawiera zestaw wstępnie utworzonych jednostek rozpoznawania typowe rodzaje informacji, takich jak daty, godziny, liczby, pomiarów i waluty. Obsługa wstępnie utworzone jednostki jest zależna od kultury aplikacją usługi LUIS.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: 0cfc4ff58cfeb65f80f9ac5ce2dd532defde5ef8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db0fb8962030b536b6ea73f4141da551434cd528
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596109"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560344"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Wstępnie utworzonych jednostek, rozpoznawał standardowe typy danych
 
@@ -60,7 +60,7 @@ Test nowe opcje w punkcie końcowym dodany przez wartość **q** parametru. Skor
 
  Aby oznaczyć ten typ tokenu, gdy jej część jest oznaczona jako przy użyciu wstępnie utworzone jednostki, należy usunąć wstępnie utworzone jednostki z aplikacji usługi LUIS. Nie potrzebujesz, to w opracowywaniu aplikacji. Następnie oznaczyć tokenu przy użyciu jednostki niestandardowej. Wstępnie utworzone jednostki można następnie dodać do aplikacji usługi LUIS.
 
- Inny przykład należy wziąć pod uwagę wypowiedź jako listę preferencji klasy: `I want first year spanish, second year calculus, and fourth year english lit.` Jeśli aplikacja usługi LUIS ma numer Prebuild dodane, `first`, `second`, i `fourth` już będą oznaczone znakiem liczb porządkowych. Jeśli chcesz przechwytywać numeru porządkowego a klasy, można tworzyć złożone jednostki i otacza go wstępnie porządkowe i jednostką niestandardową dla nazwy klasy.
+ W innym przykładzie należy rozważyć wypowiedź jako listę preferencji klasy: `I want first year spanish, second year calculus, and fourth year english lit.`Jeśli aplikacja Luis ma dodaną `first` `second`numer porządkowy prekompilacji,, i `fourth` zostanie już oznaczona przy użyciu liczb porządkowych. Jeśli chcesz przechwytywać numeru porządkowego a klasy, można tworzyć złożone jednostki i otacza go wstępnie porządkowe i jednostką niestandardową dla nazwy klasy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]

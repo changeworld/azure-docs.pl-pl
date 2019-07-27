@@ -1,7 +1,7 @@
 ---
-title: Rejestrowanie zestawu SDK mowy — usługi mowy
+title: Rejestrowanie zestawu mowy SDK — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Włącz rejestrowanie w zestawie SDK rozpoznawania mowy.
+description: Włącz rejestrowanie w zestawie mowy SDK.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 6179634bb949dbb9da8475e87494eef0f145f13b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 31ff21e33860f75d91d01e80e3ee77bd7192f780
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605066"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559480"
 ---
-# <a name="enable-logging-in-the-speech-sdk"></a>Włącz rejestrowanie w zestawie SDK rozpoznawania mowy
+# <a name="enable-logging-in-the-speech-sdk"></a>Włączanie rejestrowania w zestawie mowy SDK
 
-Rejestrowanie do pliku jest opcjonalna funkcja zestawu SDK rozpoznawania mowy. Podczas tworzenia rejestrowanie udostępnia dodatkowe informacje i informacji diagnostycznych z zestawu SDK mowy podstawowe składniki. Można ją włączyć, ustawiając właściwość `Speech_LogFilename` na obiekt konfiguracji rozpoznawania mowy, lokalizację i nazwę pliku dziennika. Rejestrowanie zostanie aktywowany globalnie po utworzeniu aparat rozpoznawania od tej konfiguracji i nie można wyłączyć później. Nie można zmienić nazwę pliku dziennika podczas uruchamiania rejestrowania sesji.
+Logowanie do pliku to opcjonalna funkcja dla zestawu Speech SDK. Podczas rejestrowania programistycznego są dostępne dodatkowe informacje i Diagnostyka z podstawowych składników zestawu Speech SDK. Można ją włączyć, ustawiając właściwość `Speech_LogFilename` obiektu konfiguracji mowy na lokalizację i nazwę pliku dziennika. Rejestrowanie zostanie uaktywnione globalnie, gdy aparat rozpoznawania zostanie utworzony na podstawie tej konfiguracji i nie będzie można go wyłączyć później. Nie można zmienić nazwy pliku dziennika podczas uruchamiania sesji rejestrowania.
 
 > [!NOTE]
-> Rejestrowanie jest dostępne, ponieważ mowy zestawu SDK w wersji 1.4.0 we wszystkich obsługiwanych zestaw SDK rozpoznawania mowy, języków programowania, z wyjątkiem języka JavaScript.
+> Funkcja rejestrowania jest dostępna, ponieważ zestaw SDK mowy w wersji 1.4.0 we wszystkich obsługiwanych językach programowania zestawu SDK mowy, z wyjątkiem języka JavaScript.
 
-## <a name="sample"></a>Sample
+## <a name="sample"></a>Próbka
 
-Nazwa pliku dziennika jest określony dla obiektu konfiguracji. Biorąc `SpeechConfig` jako przykład i przy założeniu, że masz utworzonego wystąpienia o nazwie `config`:
+Nazwa pliku dziennika jest określona w obiekcie konfiguracji. Przy użyciu przykładu i przy założeniu, że utworzono wystąpienie o nazwie `config`: `SpeechConfig`
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -48,18 +48,18 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 [config setPropertyTo:@"LogfilePathAndName" byId:SPXSpeechLogFilename];
 ```
 
-Aparat rozpoznawania można utworzyć obiektu konfiguracji. Spowoduje to włączenie rejestrowania dla wszystkich aparatów rozpoznawania gestów.
+Aparat rozpoznawania można utworzyć przy użyciu obiektu konfiguracji. Spowoduje to włączenie rejestrowania dla wszystkich aparatów rozpoznawania.
 
 > [!NOTE]
-> Jeśli tworzysz `SpeechSynthesizer` z obiektu konfiguracji będzie nie włączać rejestrowania. Jeśli jednak włączono rejestrowania, otrzymasz także Diagnostyka z `SpeechSynthesizer`.
+> Jeśli utworzysz `SpeechSynthesizer` obiekt z obiektu konfiguracji, nie będzie on włączał rejestrowania. Jeśli rejestrowanie jest włączone, otrzymasz również diagnostykę z `SpeechSynthesizer`.
 
-## <a name="create-a-log-file-on-different-platforms"></a>Tworzy plik dziennika na różnych platformach
+## <a name="create-a-log-file-on-different-platforms"></a>Utwórz plik dziennika na różnych platformach
 
-Windows lub Linux plik dziennika może być w dowolnej ścieżce, do których użytkownik ma uprawnienia do zapisu dla. Uprawnienia do zapisu do lokalizacji systemu plików w innych systemach operacyjnych może być ograniczony lub domyślnie ograniczony.
+W przypadku systemu Windows lub Linux plik dziennika może znajdować się w dowolnej ścieżce, do której użytkownik ma uprawnienia do zapisu. Uprawnienia do zapisu w lokalizacjach systemu plików w innych systemach operacyjnych mogą być domyślnie ograniczone lub ograniczone.
 
 ### <a name="universal-windows-platform-uwp"></a>Platforma uniwersalna systemu Windows (UWP)
 
-Aplikacje platformy uniwersalnej systemu Windows muszą być umieszcza pliki dziennika w lokalizacji danych aplikacji (lokalnego, mobilnych lub tymczasowe). Plik dziennika można utworzyć w taki sposób, w folderze lokalnym aplikacji:
+Aplikacje platformy UWP muszą być umieszczane w plikach dziennika w jednej z lokalizacji danych aplikacji (lokalnego, mobilnego lub tymczasowego). Plik dziennika można utworzyć w folderze aplikacji lokalnej:
 
 ```csharp
 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
@@ -67,11 +67,11 @@ StorageFile logFile = await storageFolder.CreateFileAsync("logfile.txt", Creatio
 config.SetProperty(PropertyId.Speech_LogFilename, logFile.Path);
 ```
 
-Więcej o dostępie do pliku uprawnień dla aplikacji platformy uniwersalnej systemu Windows jest dostępna [tutaj](https://docs.microsoft.com/windows/uwp/files/file-access-permissions).
+Więcej informacji o uprawnieniach dostępu do plików dla aplikacji platformy UWP jest dostępnych [tutaj](https://docs.microsoft.com/windows/uwp/files/file-access-permissions).
 
 ### <a name="android"></a>Android
 
-Plik dziennika można zapisać w pamięci wewnętrznej, magazynu zewnętrznego lub katalog pamięci podręcznej. Pliki utworzone w pamięci wewnętrznej lub katalog pamięci podręcznej są prywatne do aplikacji. Zaleca się, aby utworzyć plik dziennika na magazynie zewnętrznym.
+Plik dziennika można zapisać w magazynie wewnętrznym, zewnętrznym lub katalogu pamięci podręcznej. Pliki utworzone w magazynie wewnętrznym lub katalogu pamięci podręcznej są prywatne dla aplikacji. Zaleca się utworzenie pliku dziennika w zewnętrznym magazynie.
 
 ```java
 File dir = context.getExternalFilesDir(null);
@@ -79,9 +79,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-Powyższy kod zostanie zapisane w pliku dziennika magazynu zewnętrznego w katalogu głównym katalogiem specyficzne dla aplikacji. Użytkownik może uzyskać dostępu do pliku za pomocą Menedżera plików (zwykle w `Android/data/ApplicationName/logfile.txt`). Plik jest usuwany po odinstalowaniu aplikacji.
+Powyższy kod zapisze plik dziennika do magazynu zewnętrznego w katalogu głównym katalogu specyficznego dla aplikacji. Użytkownik może uzyskać dostęp do pliku za pomocą Menedżera plików (zazwyczaj w `Android/data/ApplicationName/logfile.txt`programie). Plik zostanie usunięty, gdy aplikacja zostanie odinstalowana.
 
-Należy również żądać `WRITE_EXTERNAL_STORAGE` uprawnień w pliku manifestu:
+Musisz również zażądać `WRITE_EXTERNAL_STORAGE` uprawnień w pliku manifestu:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -91,11 +91,11 @@ Należy również żądać `WRITE_EXTERNAL_STORAGE` uprawnień w pliku manifestu
 </manifest>
 ```
 
-Więcej o danych i pliku magazynu dla aplikacji systemu Android dostępnej [tutaj](https://developer.android.com/guide/topics/data/data-storage.html).
+Więcej informacji na temat magazynu danych i plików dla aplikacji systemu Android jest dostępnych [tutaj](https://developer.android.com/guide/topics/data/data-storage.html).
 
 #### <a name="ios"></a>iOS
 
-Dostępne są tylko katalogi w piaskownicy aplikacji. Pliki mogą być tworzone w dokumentach, biblioteki i katalogów plików tymczasowych. Pliki w katalogu dokumenty można udostępnione przez użytkownika. Poniższy fragment kodu przedstawia utworzenie pliku dziennika w katalogu dokumentów aplikacji:
+Dostępne są tylko katalogi wewnątrz piaskownicy aplikacji. Pliki można tworzyć w katalogach Documents, Library i temp. Pliki w katalogu dokumenty mogą być udostępniane użytkownikowi. Poniższy fragment kodu przedstawia tworzenie pliku dziennika w katalogu dokumentu aplikacji:
 
 ```objc
 NSString *filePath = [
@@ -104,7 +104,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Aby uzyskać dostęp do utworzonego pliku, Dodaj poniższe właściwości do `Info.plist` listy właściwości aplikacji:
+Aby uzyskać dostęp do utworzonego pliku, Dodaj następujące właściwości do `Info.plist` listy właściwości aplikacji:
 
 ```xml
 <key>UIFileSharingEnabled</key>
@@ -113,9 +113,9 @@ Aby uzyskać dostęp do utworzonego pliku, Dodaj poniższe właściwości do `In
 <true/>
 ```
 
-Więcej o iOS systemu plików jest dostępna [tutaj](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html).
+Więcej informacji o systemie plików iOS można znaleźć [tutaj](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami w usłudze GitHub](https://aka.ms/csspeech/samples)

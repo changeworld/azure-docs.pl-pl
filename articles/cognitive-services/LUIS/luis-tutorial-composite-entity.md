@@ -1,5 +1,5 @@
 ---
-title: Samouczek złożonego jednostki
+title: Samouczek jednostki złożonej — LUIS
 titleSuffix: Azure Cognitive Services
 description: Dodaj złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: a5cedec4937da276a4848498ad29a723f6e41ba3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d54b46ff8b0c8a987653b4fc0344377c0115b58
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073700"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560096"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Samouczek: Grupowanie i wyodrębnianie powiązanych danych
 W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
@@ -44,7 +44,7 @@ Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
 
 ## <a name="import-example-app"></a>Importowanie aplikacji przykładowej
 
-1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) z samouczka jednostki listy.
+1.  Pobierz i Zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) z samouczka listy.
 
 2. Zaimportuj plik JSON do nowej aplikacji.
 
@@ -52,56 +52,56 @@ Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
 
 ## <a name="composite-entity"></a>Złożone jednostki
 
-W tej aplikacji, nazwa działu jest zdefiniowana w **działu** listy jednostek i obejmuje synonimy. 
+W tej aplikacji Nazwa działu jest definiowana w jednostce listy **działów** i zawiera synonimy. 
 
-**TransferEmployeeToDepartment** celem ma wypowiedzi przykładowe żądanie, pracownik można przenieść do nowego działu. 
+Celem **TransferEmployeeToDepartment** jest przykład wyrażenia długości, aby zażądać przeniesienia pracownika do nowego działu. 
 
-Przykład wypowiedzi konwersji między innymi:
+Przykład wyrażenia długości dla tego celu to:
 
 |Przykładowe wypowiedzi|
 |--|
 |Move John W. Smith to the accounting department (Przenieś Johna W. Smitha do działu księgowości)|
 |Transfer Jill Jones from to R&D (Przenieś Jill Jones z do zespołu badawczo-rozwojowego)|
  
-Żądanie przeniesienia powinien zawierać nazwę działu i nazwiska pracownika. 
+Żądanie Move powinno zawierać nazwę działu i nazwę pracownika. 
 
-## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Dodaj PersonName wstępnie utworzone jednostki ułatwiające wykonywanie typowych wyodrębniania typu danych
+## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Dodaj wbudowaną jednostkę PersonName, aby pomóc w utworzeniu typowej wyodrębniania typów danych
 
 Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych działań związanych z wyodrębnianiem danych. 
 
-1. Wybierz **kompilacji** w górnym menu nawigacyjnym i w wybierz **jednostek** menu nawigacji po lewej stronie.
+1. Wybierz opcję **Kompiluj** z górnego okienka nawigacji, a następnie wybierz pozycję **jednostki** w menu nawigacji po lewej stronie.
 
 1. Naciśnij przycisk **Manage prebuilt entity** (Zarządzaj wstępnie utworzoną jednostką).
 
-1. Wybierz **[PersonName](luis-reference-prebuilt-person.md)** wybierz z listy wstępnie utworzonych jednostek następnie **gotowe**.
+1. Wybierz **[osobę](luis-reference-prebuilt-person.md)** z listy wstępnie utworzonych jednostek, a następnie wybierz pozycję **gotowe**.
 
     ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
-    Ta jednostka ułatwia dodawanie rozpoznawania nazwy do aplikacji klienta.
+    Ta jednostka ułatwia dodawanie rozpoznawania nazw do aplikacji klienckiej.
 
-## <a name="create-composite-entity-from-example-utterances"></a>Tworzenie złożonego jednostki na podstawie przykład wypowiedzi
+## <a name="create-composite-entity-from-example-utterances"></a>Utwórz jednostkę złożoną na podstawie przykładu wyrażenia długości
 
 1. Wybierz pozycję **Intents** (Intencje) w obszarze nawigacji po lewej stronie.
 
-1. Wybierz **TransferEmployeeToDepartment** z listy opcji.
+1. Wybierz pozycję **TransferEmployeeToDepartment** z listy intencje.
 
-1. W polu wypowiedź `place John Jackson in engineering`, wybierz jednostkę personName `John Jackson`, a następnie wybierz **opakować w jednostce złożone** na liście menu podręczne dla następujących wypowiedź. 
+1. W wypowiedź `place John Jackson in engineering`wybierz jednostkę PersonName, `John Jackson`a następnie wybierz pozycję **Otocz w jednostce złożonej** na liście rozwijanej menu dla poniższego wypowiedź. 
 
-    ![Zrzut ekranu przedstawiający wybierając zawijania złożonego w listy rozwijanej w oknie dialogowym](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
+    ![Zrzut ekranu przedstawiający Wybieranie zawijania złożonego w oknie dialogowym rozwijanym](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
 1. Następnie od razu wybierz ostatni obiekt `engineering` w wypowiedź. Zielony pasek jest rysowana w ramach wybranego słowa wskazujący złożonego jednostki. W menu podręcznym wprowadź nazwę złożonego `TransferEmployeeInfo` a następnie wybierz enter. 
 
-    ![Zrzut ekranu przedstawiający wprowadzanie nazwy w liście rozwijanej okna dialogowego](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
+    ![Zrzut ekranu przedstawiający wprowadzanie nazwy złożonej w oknie dialogowym listy rozwijanej](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. W **jakiego typu jednostki, czy chcesz utworzyć?** , wszystkie pola wymagane znajdują się na liście: `personName` i `Department`. Wybierz pozycję **Done** (Gotowe). Zwróć uwagę, czy wstępnie utworzone jednostki, personName, został dodany do obiektu złożonego. Jeśli może mieć wstępnie utworzone jednostki, pojawiają się między początkowe i końcowe tokenów złożonych jednostki, jednostki złożonego musi zawierać tych wstępnie utworzonych jednostek. Nie dołączono ze wstępnie utworzonych jednostek, złożonego jednostki nie jest poprawnie przewidzieć, ale jest każdego pojedynczego elementu.
+1. W **jakim typie obiektu chcesz utworzyć?** wszystkie wymagane pola znajdują się na liście: `personName` i. `Department` Wybierz pozycję **Done** (Gotowe). Zwróć uwagę, że wstępnie utworzona jednostka, osobaname, została dodana do jednostki złożonej. Jeśli może mieć wstępnie utworzone jednostki, pojawiają się między początkowe i końcowe tokenów złożonych jednostki, jednostki złożonego musi zawierać tych wstępnie utworzonych jednostek. Nie dołączono ze wstępnie utworzonych jednostek, złożonego jednostki nie jest poprawnie przewidzieć, ale jest każdego pojedynczego elementu.
 
-    ![Zrzut ekranu przedstawiający wprowadzanie nazwy w liście rozwijanej okna dialogowego](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
+    ![Zrzut ekranu przedstawiający wprowadzanie nazwy złożonej w oknie dialogowym listy rozwijanej](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
 ## <a name="label-example-utterances-with-composite-entity"></a>Wypowiedzi przykład etykiety ze złożonego jednostki
 
 1. W każdym wypowiedź przykład wybierz jednostki najdalej po lewej stronie, która powinna znajdować się w złożonego. Następnie wybierz pozycję **opakować w jednostce złożone**.
 
-1. Wybierz ostatni wyraz w jednostce złożone, a następnie wybierz **TransferEmployeeInfo** z menu podręcznego. 
+1. Zaznacz ostatni wyraz w jednostce złożonej, a następnie wybierz pozycję **TransferEmployeeInfo** z menu podręcznego. 
 
 1. Sprawdź, czy wszystkie wypowiedzi w celem są oznaczone etykietami z jednostką złożonego. 
 
@@ -191,16 +191,16 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 ## <a name="related-information"></a>Informacje pokrewne
 
-* [Samouczek jednostki](luis-quickstart-intents-only.md)
-* [Złożone jednostki](luis-concept-entity-types.md) informacje koncepcyjne
+* [Samouczek jednostki listy](luis-quickstart-intents-only.md)
+* Informacje koncepcyjne [jednostki złożonej](luis-concept-entity-types.md)
 * [Jak trenować](luis-how-to-train.md)
 * [Jak opublikować](luis-how-to-publish-app.md)
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku tworzony złożonego jednostki do hermetyzacji istniejących jednostek. Dzięki temu aplikacja kliencka można znaleźć grupy powiązanych danych w różnych typach danych, aby kontynuować rozmowę. Aplikacja kliencka dla tej aplikacji do zarządzania zasobami ludzkimi zapytać, jakie datę i godzinę przeniesienie musi rozpoczynać się i kończyć. Można również zadać pytanie dotyczące innych Logistyka przenoszenia, takim jak telefon fizycznych. 
+W tym samouczku tworzony złożonego jednostki do hermetyzacji istniejących jednostek. Dzięki temu aplikacja kliencka można znaleźć grupy powiązanych danych w różnych typach danych, aby kontynuować rozmowę. Aplikacja kliencka dla tej aplikacji do zarządzania zasobami ludzkimi zapytać, jakie datę i godzinę przeniesienie musi rozpoczynać się i kończyć. Może również poprosił o inne logistyke przenoszenia, takie jak telefon fizyczny. 
 
 > [!div class="nextstepaction"] 
 > [Dowiedz się, jak dodać jednostki prostej listy fraz](luis-quickstart-primary-and-secondary-data.md)  

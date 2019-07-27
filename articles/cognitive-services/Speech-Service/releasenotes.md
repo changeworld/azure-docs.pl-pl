@@ -1,7 +1,7 @@
 ---
-title: Informacje o wersji — usługi mowy
-titlesuffix: Azure Cognitive Services
-description: Zobacz uruchomionej dziennik wydania funkcji, ulepszeń, poprawek błędów i znane problemy dla usług mowy platformy Azure.
+title: Informacje o wersji — usługa mowy
+titleSuffix: Azure Cognitive Services
+description: Zapoznaj się z uruchomionym dziennikiem wersji funkcji, ulepszeń, poprawek błędów i znanych problemów dotyczących usługi Speech.
 services: cognitive-services
 author: BrianMouncer
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: e641051b75620ef5308bc81bca21b3ceda105d09
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 12eecc4998153cbeedeb907ecad33c56141a50e6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404838"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559123"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 

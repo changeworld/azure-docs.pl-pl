@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Rozpoznawanie mowy, języka C++ (macOS) — usługi mowy'
+title: 'Szybki start: Rozpoznawanie mowy, C++ (macOS) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpoznawanie mowy, języka C++ w systemie macOS przy użyciu zestawu SDK rozpoznawania mowy
+description: Dowiedz się, jak rozpoznać C++ mowę w systemie macOS przy użyciu zestawu Speech SDK
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: de170955ced45040541565800fc9853edea322f5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d7d35c251848af5cfd5852080d01831085401227
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603060"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554132"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy, języka C++ w systemie macOS przy użyciu zestawu SDK rozpoznawania mowy
+# <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w C++ systemie macOS przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule utworzysz aplikację konsoli C++ dla systemu macOS 10.13 lub nowszym. Użyj usług Cognitive Services [zestaw SDK rozpoznawania mowy](speech-sdk.md) do transkrypcja mowy na tekst w czasie rzeczywistym z Twoim komputerem Mac mikrofonu. Aplikacja jest skompilowana przy użyciu [mowy SDK dla systemu macOS](https://aka.ms/csspeech/macosbinary) i kompilator języka C++ domyślne komputera Mac (na przykład `g++`).
+W tym artykule opisano tworzenie aplikacji C++ konsolowej dla macOS 10,13 i nowszych. Używasz [zestawu speech Cognitive Services SDK](speech-sdk.md) , aby transkrypcja mowę do tekstu w czasie rzeczywistym z mikrofonu na komputerze Mac. Aplikacja została skompilowana przy użyciu [zestawu Speech SDK dla macOS](https://aka.ms/csspeech/macosbinary) oraz domyślnego C++ kompilatora `g++`dla komputerów Mac (na przykład).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodnik Szybki Start. Możesz go uzyskać bezpłatnie. Zobacz [bezpłatnego wypróbowania usługi mowy](get-started.md) Aby uzyskać szczegółowe informacje.
+Aby ukończyć ten przewodnik Szybki Start, potrzebujesz klucza subskrypcji usługi Speech Services. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje [, zobacz Wypróbuj bezpłatne usługi mowy](get-started.md) .
 
 ## <a name="install-speech-sdk"></a>Instalowanie zestawu Speech SDK
 
@@ -33,7 +33,7 @@ Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodn
 
 Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.6.0`.
 
-Zestaw SDK rozpoznawania mowy dla systemu macOS można pobrać jako pakiet skompresowany framework z https://aka.ms/csspeech/macosbinary.
+Zestaw Speech SDK for macOS można pobrać jako pakiet spakowanej struktury z programu https://aka.ms/csspeech/macosbinary.
 
 Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
@@ -49,7 +49,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Pobierz i Wyodrębnij `.zip` archiwum zawierające framework SDK mowy:
+1. Pobierz i Wyodrębnij `.zip` Archiwum zawierające strukturę zestawu Speech SDK:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -62,15 +62,15 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   Listing katalogu powinien zawierać uwagi dotyczące innych firm — oraz plików licencji, a także `MicrosoftCognitiveServicesSpeech.framework` katalogu.
+   Lista katalogów powinna zawierać pliki powiadomień i licencji innych firm, a także `MicrosoftCognitiveServicesSpeech.framework` katalog.
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Utwórz plik źródłowy języka C++ o nazwie `helloworld.cpp` i wklej w nim poniższy kod.
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-macos/helloworld.cpp#code)]
 
-1. W tym nowym pliku, Zastąp ciąg `YourSubscriptionKey` z kluczem subskrypcji usług przetwarzania mowy.
+1. W tym nowym pliku Zamień ciąg `YourSubscriptionKey` na klucz subskrypcji usługi Speech Services.
 
 1. Zastąp ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
@@ -99,14 +99,14 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
    ./helloworld
    ```
 
-1. W oknie konsoli zostanie wyświetlony monit o wypowiedzenie tekstu. Wypowiedz zwrot lub zdanie w języku angielskim. Mowa jest przesyłane do usług przetwarzania mowy i przetłumaczone na tekst, który pojawia się w tym samym oknie.
+1. W oknie konsoli zostanie wyświetlony monit o wypowiedzenie tekstu. Wypowiedz zwrot lub zdanie w języku angielskim. Twoja Zamiana jest przekazywana do usługi mowy i uzyskanego do tekstu, który pojawia się w tym samym oknie.
 
    ```text
    Say something...
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C++ w usłudze GitHub](https://aka.ms/csspeech/samples)

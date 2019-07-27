@@ -1,7 +1,7 @@
 ---
-title: Uruchom w usłudze Azure Container Instances
+title: Uruchom Azure Container Instances-analiza tekstu
 titleSuffix: Azure Cognitive Services
-description: Wdrażanie kontenerów Analiza tekstu przy użyciu obrazu analizy tonacji, wystąpienia kontenera platformy Azure i przetestuj ją w przeglądarce sieci web.
+description: Wdróż kontenery analizy tekstu przy użyciu obrazu tonacji Analysis, do wystąpienia kontenera platformy Azure i przetestuj je w przeglądarce internetowej.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 9f174d54fcc74eed613eb69412bc0e515f15897b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9ef529c9d505e5b305602c80a8dbef906f52269c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711726"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552528"
 ---
-# <a name="deploy-a-sentiment-analysis-container-to-azure-container-instances"></a>Wdrażanie kontenera analiza tonacji w usłudze Azure Container Instances
+# <a name="deploy-a-sentiment-analysis-container-to-azure-container-instances"></a>Wdróż kontener analiza tonacji do Azure Container Instances
 
-Informacje o wdrażaniu usług Cognitive Services [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) kontenera przy użyciu obrazu analizę tonacji na platformie Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Ta procedura exemplifies tworzenia zasobu analizy tekstu, tworzenie powiązanego obrazu analizę tonacji i możliwość wykonywania tego aranżacji dwa z poziomu przeglądarki. Używanie kontenerów może przechodzić przez deweloperów uwagi od zarządzania infrastrukturą, aby zamiast koncentrowania się na tworzeniu aplikacji.
+Dowiedz się, jak wdrożyć kontener [analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) Cognitive Services przy użyciu obrazu analiza tonacji do [Container Instances](https://docs.microsoft.com/azure/container-instances/)platformy Azure. Ta procedura exemplifies tworzenie zasobu analiza tekstu, tworzenie skojarzonego obrazu analiza tonacji i możliwość wykonywania tej aranżacji tych dwóch z przeglądarki. Korzystanie z kontenerów umożliwia przechodzenie przez deweloperów do zarządzania infrastrukturą, aby zamiast tego koncentrować się na tworzeniu aplikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Korzystanie z subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+* Użyj subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
@@ -31,7 +31,7 @@ Informacje o wdrażaniu usług Cognitive Services [analizy tekstu](https://docs.
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 
-* Użycie [kontenerów usługi Cognitive Services](../../cognitive-services-container-support.md)
-* Użyj [usługę połączoną z analizy tekstu](../vs-text-connected-service.md)
+* Użyj więcej [kontenerów Cognitive Services](../../cognitive-services-container-support.md)
+* Korzystanie z [Analiza tekstu połączonej usługi](../vs-text-connected-service.md)

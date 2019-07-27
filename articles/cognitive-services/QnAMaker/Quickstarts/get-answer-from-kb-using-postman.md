@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy przy użyciu narzędzia Postman — QnA Maker'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: W tym samouczku Szybki start opisano sposób uzyskiwania odpowiedzi z bazy wiedzy przy użyciu narzędzia Postman.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 7083285ac81aa8eafee8de49175e40934e5d05b4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7c419ea7cb5c9ae1d1cc419798961ec67f250160
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253808"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563003"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy przy użyciu narzędzia Postman
 
@@ -71,7 +71,7 @@ Aby wygenerować odpowiedź za pomocą narzędzia Postman, wykonaj następujące
 
 ## <a name="use-staging-endpoint"></a>Korzystanie z przejściowego punktu końcowego
 
-Jeśli chcesz uzyskać odpowiedzi z przemieszczania punktu końcowego, Dołącz do adresu URL `isTest` treści właściwości.
+Jeśli chcesz uzyskać odpowiedź z punktu końcowego przemieszczania, Dołącz adres URL z `isTest` właściwością Body.
 
 ## <a name="next-steps"></a>Następne kroki
 

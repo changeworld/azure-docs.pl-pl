@@ -1,7 +1,7 @@
 ---
 title: Dokumentacja interfejsu API — Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się więcej o różnych moderowania zawartości i przejrzyj interfejsów API Content Moderator.
+titleSuffix: Azure Cognitive Services
+description: Poznaj różne interfejsy API moderowania zawartości i przeglądów dla Content Moderator.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,37 +10,37 @@ ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 05/29/2019
 ms.author: sajagtap
-ms.openlocfilehash: f802c64e141e8757f633d82ad577fa50f7d076fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ad911a95dbe6209fcf55adcac3cf2937b06d1ff
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688890"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565611"
 ---
-# <a name="content-moderator-api-reference"></a>Odwołanie do interfejsu API Moderator zawartości
+# <a name="content-moderator-api-reference"></a>Dokumentacja interfejsu API usługi Content Moderator
 
-Możesz rozpocząć pracę z interfejsami API usługi Azure Content Moderator w następujący sposób:
+Możesz zacząć korzystać z interfejsów API usługi Azure Content Moderator w następujący sposób:
 
-- W witrynie Azure portal [subskrybować zawartości API Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
-- Zobacz [spróbuj pakietu Content Moderator w sieci web](quick-start.md) zarejestrować się za pomocą [narzędzie do przeglądu usługi Content Moderator](https://contentmoderator.cognitive.microsoft.com/).
+- W Azure Portal Zasubskrybuj [interfejs API Content moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
+- Zobacz [Try Content moderator w sieci Web](quick-start.md) , aby zarejestrować się przy użyciu [narzędzia do przeglądu Content moderator](https://contentmoderator.cognitive.microsoft.com/).
 
 ## <a name="moderation-apis"></a>Interfejsy API moderowania
 
-Następujące interfejsy API Content Moderator umożliwia konfigurowanie przepływów pracy po moderowania.
+Aby skonfigurować przepływy pracy po moderowaniu, można użyć następujących Content Moderator interfejsów API.
 
 | Opis | Tematy pomocy |
 | -------------------- |-------------|
-| **Interfejs API moderowania obrazów**<br /><br />Skanowanie obrazów i wykrywania potencjalnych wyszukania zawartości erotycznej i przeznaczonej dla osób dorosłych za pomocą tagów, oceny zaufania i inne informacje wyodrębnione. <br /><br />Te informacje służą do publikowania, odrzuć lub przejrzyj zawartość w przepływie pracy po moderowania. <br /><br />| [Dokumentacja interfejsu API moderowania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "dokumentacja interfejsu API moderowania obrazów")   |
-| **Interfejs API moderowania tekstu**<br /><br />Skanowanie zawartości tekstowej. Warunki wulgaryzmów i dane osobiste są zwracane. <br /><br />Te informacje służą do publikowania, odrzuć lub przejrzyj zawartość w przepływie pracy po moderowania.<br /><br /> | [Dokumentacja interfejsu API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "dokumentacja interfejsu API moderowania tekstu")   |
-| **Moderowanie filmów wideo interfejsu API**<br /><br />Skanuj pliki wideo i wykrywanie potencjalnych zawartości dla dorosłych. <br /><br />Te informacje służą do publikowania, odrzuć lub przejrzyj zawartość w przepływie pracy po moderowania.<br /><br /> | [Interfejs API moderowania klip wideo z omówieniem](video-moderation-api.md "omówienie interfejsu API moderowania wideo")   |
-| **Interfejs API zarządzania listy**<br /><br />Tworzenie i zarządzanie nimi niestandardowej listy wykluczeń lub dołączeń obrazów i tekstu. Jeśli włączona, **obrazu — dopasowania** i **tekst — ekranu** operacje czy dopasowywania rozmytego przesłanych treści z list niestandardowych. <br /><br />W celu zwiększenia wydajności możesz pominąć krok Moderowanie tekstu w uczeniu maszynowym komputera.<br /><br /> | [Dokumentacja interfejsu API zarządzania listy](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f675 "dokumentacja interfejsu API zarządzania listy")   |
+| **Interfejs API moderowania obrazów**<br /><br />Skanuj obrazy i wykrywaj potencjalną zawartość dla dorosłych i erotycznej przy użyciu tagów, wyników pewności i innych wyodrębnionych informacji. <br /><br />Te informacje służą do publikowania, odrzucania i przeglądania zawartości w przepływie pracy po moderowaniu. <br /><br />| [Dokumentacja interfejsu API moderowania obrazów] (https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "Dokumentacja interfejsu API moderowania obrazów")   |
+| **Interfejs API moderowania tekstu**<br /><br />Skanuj zawartość tekstową. Zwracane są postanowienia dotyczące niewulgarności i dane osobowe. <br /><br />Te informacje służą do publikowania, odrzucania i przeglądania zawartości w przepływie pracy po moderowaniu.<br /><br /> | [Dokumentacja interfejsu API moderowania tekstu] (https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "Dokumentacja interfejsu API moderowania tekstu")   |
+| **Interfejs API moderowania wideo**<br /><br />Skanuj wideo i wykrywaj potencjalną zawartość dla dorosłych i erotycznej. <br /><br />Te informacje służą do publikowania, odrzucania i przeglądania zawartości w przepływie pracy po moderowaniu.<br /><br /> | [Interfejs API moderowania wideo — Omówienie] (video-moderation-api.md "Interfejs API moderowania wideo — Omówienie")   |
+| **Interfejs API zarządzania listami**<br /><br />Twórz i Zarządzaj niestandardowymi listami wykluczeń i obrazów oraz tekstu. Jeśli ta funkcja jest włączona, operacje **dopasowania obrazu** i **ekranu tekstowego** wykonują rozmyte Dopasowywanie przesłanej zawartości do list niestandardowych. <br /><br />Aby uzyskać sprawność, możesz pominąć etap moderowania oparty na uczeniu maszynowym.<br /><br /> | [Dokumentacja interfejsu API zarządzania listami] (https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f675 "Dokumentacja interfejsu API zarządzania listami")   |
 
 ## <a name="review-apis"></a>Przegląd interfejsów API
 
-Przegląd interfejsów API mają następujące składniki:
+Interfejsy API przeglądu mają następujące składniki:
 
 | Opis | Tematy pomocy |
 | -------------------- |-------------|
-| **Zadania**<br /><br /> Zainicjuj Moderowanie skanowania i Przejrzyj przepływy pracy na potrzeby zawartości tekstowych i obrazów. Zadanie Moderowanie skanowanie zawartości przy użyciu interfejsu API moderowania obrazów i interfejs API moderowania tekstu. Moderowanie zadań użyj zdefiniowane i domyślnych przepływów pracy w celu wygenerowania przeglądów. <br /><br />Po ludzi moderator przejrzał automatycznie przypisane tagi i dane prognozowania i przesłane decyzji moderowanie zawartości, interfejs API przeglądu przesyła wszystkie informacje do punktu końcowego interfejsu API.<br /><br /> | [Zadania, odwołanie](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "zadania, odwołanie")   |
-| **Przeglądy**<br /><br />Narzędzie do przeglądu umożliwiają bezpośrednio utworzyć przeglądy image lub text dla moderatorów ludzi.<br /><br /> Po ludzi moderator przejrzał automatycznie przypisane tagi i dane prognozowania i przesłane decyzji moderowanie zawartości, interfejs API przeglądu przesyła wszystkie informacje do punktu końcowego interfejsu API.<br /><br /> | [Przejrzyj odwołanie](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "Przejrzyj odwołania")   |
-| **Przepływy pracy**<br /><br />Tworzenie, aktualizowanie i uzyskać szczegółowe informacje o niestandardowych przepływów pracy tworzonych przez zespół. Przepływy pracy są definiowane za pomocą narzędzia do przeglądu. <br /> <br />Przepływy pracy zwykle używać pakietu Content Moderator, ale można również użyć niektórych innych interfejsów API, które są dostępne jako łączniki w narzędzie do przeglądu.<br /><br /> | [Odwołanie do przepływu pracy](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59 "odwołanie do przepływu pracy")   |
+| **Zadania**<br /><br /> Inicjuj przepływy pracy do skanowania i weryfikacji dla zawartości obrazów i tekstu. Zadanie moderowania skanuje zawartość przy użyciu interfejsu API moderowania obrazów i interfejsu API moderowania tekstu. Zadania moderowania używają zdefiniowanych i domyślnych przepływów pracy do generowania przeglądów. <br /><br />Gdy moderator ludzki przejrzał znaczniki i dane prognozowania, a następnie przesłał decyzję o moderowaniu zawartości, interfejs API przeglądu przesyła wszystkie informacje do punktu końcowego interfejsu API.<br /><br /> | [Odwołanie do zadania] (https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "Odwołanie do zadania")   |
+| **Kontrole**<br /><br />Użyj narzędzia Recenzja, aby bezpośrednio utworzyć przeglądy obrazu lub tekstu dla moderatorów ludzkich.<br /><br /> Gdy moderator ludzki przejrzał znaczniki i dane prognozowania, a następnie przesłał decyzję o moderowaniu zawartości, interfejs API przeglądu przesyła wszystkie informacje do punktu końcowego interfejsu API.<br /><br /> | [Przegląd odwołania] (https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "Przegląd odwołania")   |
+| **Przepływy pracy**<br /><br />Twórz, Aktualizuj i pobieraj szczegóły dotyczące niestandardowych przepływów pracy tworzonych przez zespół. Przepływy pracy można definiować za pomocą narzędzia do przeglądu. <br /> <br />Przepływy pracy zwykle używają Content Moderator, ale mogą również używać niektórych innych interfejsów API, które są dostępne jako łączniki w narzędziu do przeglądu.<br /><br /> | [Informacje o przepływie pracy] (https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59 "Informacje o przepływie pracy")   |

@@ -1,6 +1,6 @@
 ---
-title: Uzyskiwanie intencji, C#
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Pobierz intencje C# ,-Luis
+titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dotyczącym języka C# użyjesz dostępnej publicznie aplikacji LUIS, aby określić intencję użytkownika w tekście konwersacji.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 73dba63c464ee31dd24fe0fdf97e948a5b6004fc
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 92f74174d35a58e54ae0078f146f86dbfc7aa709
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276266"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563847"
 ---
 # <a name="quickstart-get-intent-using-c"></a>Szybki start: pobieranie intencji za pomocą języka C#
 
@@ -71,7 +71,7 @@ Użyj języka C#, aby wysłać zapytanie do interfejsu [API](https://westus.dev.
 
 Po ukończeniu przewodnika Szybki start zamknij projekt programu Visual Studio i usuń katalog projektu z systemu plików. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dodawanie wypowiedzi i uczenie przy użyciu języka C#](luis-get-started-cs-add-utterance.md)

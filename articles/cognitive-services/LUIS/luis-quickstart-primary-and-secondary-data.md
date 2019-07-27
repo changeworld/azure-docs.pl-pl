@@ -1,5 +1,5 @@
 ---
-title: Prosta jednostka i lista fraz
+title: Prosta jednostka, lista fraz — LUIS
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku wyodrębnisz z wypowiedzi dane nauczone maszynowo dotyczące nazwy stanowiska pracownika, używając prostej jednostki. Aby zwiększyć dokładność wyodrębniania, dodaj listę fraz zawierającą terminy specyficzne dla danej prostej jednostki.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a03a1224451411617f38c8cecafbef008aa08916
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 786c5725046885a0321696e95703c53081e96979
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276208"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560336"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Samouczek: wyodrębnianie nazw przy użyciu prostej jednostki i listy fraz
 
@@ -48,7 +48,7 @@ Prosta jednostka jest odpowiednia dla tego typu danych, gdy:
 * Dane nie mają określonego formatu, tak jak w przypadku wyrażenia regularnego.
 * Dane nie są typowe, tak jak w przypadku wstępnie skompilowanej jednostki dotyczącej numeru telefonu lub danych.
 * Dane nie są dokładnie dopasowane do listy znanych wyrazów, takiej jak jednostka listy.
-* Dane nie zawierają innych elementów danych, takich jak złożone jednostki lub ról kontekstowych.
+* Dane nie zawierają innych elementów danych, takich jak jednostki złożone lub role kontekstowe.
 
 Przeanalizujmy następujące wypowiedzi z czatbota:
 
@@ -237,7 +237,7 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-s
 
     Upewnij się, że pole **These values are interchangeable (Te wartości są wymienne)** jest zaznaczone, ponieważ wszystkie te wartości powinny być traktowane jako synonimy dla zadań. Dowiedz się więcej o [koncepcjach z zakresu listy pojęć](luis-concept-feature.md#how-to-use-phrase-lists) związanych wymiennością i niewymiennością.
 
-1. Wybierz **gotowe** aktywować listy fraz.
+1. Wybierz pozycję **gotowe** , aby aktywować listę fraz.
 
     [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz ze słowami w polu wartości listy fraz](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz ze słowami w polu wartości listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
@@ -294,7 +294,7 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-s
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku aplikacja do obsługi kadr używa nauczonej maszynowo prostej jednostki, aby znajdować nazwy stanowisk w wypowiedziach. Nazwami stanowisk mogą być bardzo różne wyrazy i frazy, więc aplikacja potrzebuje listy fraz do wzmocnienia wyrazów z nazwami stanowisk. 
 

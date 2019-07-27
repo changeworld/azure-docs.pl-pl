@@ -1,75 +1,86 @@
 ---
 title: Co to jest rozpoznawanie formularzy?
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak użyć aparatu rozpoznawania formularza do analizowania danych formularza i tabeli.
+description: Dowiedz się, jak analizować dane formularzy i tabel przy użyciu aparatu rozpoznawania formularzy.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: e064faf3017b95cb3a5f3d9b89f178fb7f846766
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: e910f2733a5485d50ad387a1e82ce27e0ba8fdea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592629"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562687"
 ---
 # <a name="what-is-form-recognizer"></a>Co to jest rozpoznawanie formularzy?
 
-Azure rozpoznawania formularza jest usługi cognitive service używa technologii uczenia maszynowego do identyfikacji i prowadzenie dokumentów w postaci pary klucz/wartość i dane w tabeli. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Aby wywołać niestandardowy model rozpoznawania formularza, mniejsza złożoność i łatwo zintegrować go z przepływu pracy lub aplikacji przy użyciu prostego interfejsu API REST. Aby rozpocząć, wystarczy pięć dokumentów wypełniony formularz lub dwie formy wypełniane oraz pusty formularz z tego samego typu co Twoje materiały danych wejściowych. Możesz szybko uzyskać dokładne wyniki, które są dostosowane do określonej zawartości bez dużych ręcznej interwencji lub wiele różnych danych do analizy doświadczenia.
+Aparat rozpoznawania formularzy platformy Azure to usługa poznawczej, która korzysta z technologii uczenia maszynowego do identyfikowania i wyodrębniania par klucz/wartość oraz danych tabeli z dokumentów formularzy. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Możesz wywołać własny model aparatu rozpoznawania formularzy przy użyciu prostego interfejsu API REST, aby zmniejszyć złożoność i łatwo zintegrować go z przepływem pracy lub aplikacją. Aby rozpocząć, wystarczy pięć wypełnionych dokumentów formularzy lub dwóch wypełnionych formularzy i pusty formularz tego samego typu co materiał wejściowy. Szybko uzyskuj dokładne wyniki, które są dostosowane do konkretnej zawartości, bez znacznej interwencji ręcznej lub szczegółowej wiedzy o nauce danych.
 
 ## <a name="custom-models"></a>Modele niestandardowe
 
-Niestandardowy model rozpoznawania formularza szkolenie modeli do swoich danych, a dzięki temu wystarczy pięć przykładowych danych wejściowych formularzy można uruchomić. Po przesłaniu danych wejściowych algorytm klastrów formularze według typu, odnajduje, jakie klucze i tabele są obecne i kojarzy wartości, aby klucze i wpisy w tabelach. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Po użytkownik nauczenia modelu, można przetestować i trenuj je ponownie, a ostatecznie umożliwia niezawodne wyodrębnianie danych z więcej formularzy zgodnie z potrzebami.
+Niestandardowy model aparatu rozpoznawania formularzy pociąga za siebie własne dane i wystarczy pięć przykładowych formularzy wejściowych do uruchomienia. Gdy przesyłasz dane wejściowe, algorytm tworzy klastry według typu, odnajduje, jakie klucze i tabele są obecne i kojarzy wartości z kluczami i wpisami w tabelach. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Po przeprowadzeniu szkolenia modelu można testować i przeszkolić go i ostatecznie użyć do niezawodnego wyodrębnienia danych z większej liczby formularzy zgodnie z potrzebami.
 
-Uczenie nienadzorowane umożliwia modelowi poznać układ i relacje między polami oraz wpisy bez ręcznego dodawania etykiet danych lub intensywnego kodowania i konserwacji. Z drugiej strony modele uczenia maszynowego wstępnie przeszkolonych wymagają standardowych danych. Są one mniej dokładne z materiałem danych wejściowych, która odbiega od tradycyjnych formatów, takich jak formularze branżowych.
+Uczenie nienadzorowane umożliwia modelowi poznać układ i relacje między polami oraz wpisy bez ręcznego dodawania etykiet danych lub intensywnego kodowania i konserwacji. Z kolei wstępnie przeszkolone modele uczenia maszynowego wymagają standardowych danych. Są one mniej dokładne z materiałami wejściowymi, które różnią się od tradycyjnych formatów, takich jak formularze specyficzne dla branż.
 
-## <a name="pre-built-receipt-model"></a>Potwierdzenie wstępnie utworzonych modeli
+## <a name="prebuilt-receipt-model"></a>Wstępnie utworzony model przyjęcia
 
-Aparat rozpoznawania formularz zawiera także modelu na potrzeby odczytywania paragonów. Ten model wyodrębnia informacje o kluczu, takie jak Data i godzina transakcji, handlowca informacji, ilości podatki i sum i innych. Ponadto model wstępnie skompilowanych potwierdzenia jest uczony do rozpoznawania i zwraca cały tekst na potwierdzenie.
+Aparat rozpoznawania formularzy zawiera również model do odczytywania przyjęć sprzedaży. Ten model wyodrębnia najważniejsze informacje, takie jak godzina i Data transakcji, informacje o sprzedawcy, kwoty podatków i sumy itd. Ponadto wstępnie skompilowany model przyjęć jest szkolony do rozpoznawania i zwracania całego tekstu na paragonie.
 
 ## <a name="what-it-includes"></a>Co zawiera
 
-Aparat rozpoznawania formularza jest dostępna jako interfejs API REST. Można utworzyć, szkolenie i oceniania modelu niestandardowego lub dostęp do modelu wstępnie utworzonych za pomocą tych interfejsów API. Jeśli chcesz, możesz uczyć i uruchamianie niestandardowych modeli w lokalnym kontenerze Docker.
+Aparat rozpoznawania formularzy jest dostępny jako interfejs API REST. Korzystając z tych interfejsów API, można utworzyć, wyszkolić i wyprowadzić niestandardowy model lub uzyskać dostęp do prebudowanego modelu. Jeśli chcesz, możesz nauczyć i uruchamiać modele niestandardowe w lokalnym kontenerze platformy Docker.
 
-## <a name="input-requirements-custom-model"></a>Wymagania wprowadzania (niestandardowy model)
+## <a name="input-requirements"></a>Wymagania wejściowe
+### <a name="custom-model"></a>Model niestandardowy
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
+### <a name="prebuilt-receipt-model"></a>Wstępnie utworzony model przyjęcia
+
+Wymagania dotyczące danych wejściowych dla modelu paragonu są nieco inne.
+
+* Format musi być JPEG, PNG, BMP, PDF (tekst lub skanowany) lub TIFF.
+* Rozmiar pliku musi być mniejszy niż 20 MB.
+* Wymiary obrazu muszą zawierać się w przedziale od 50 x 50 pikseli i 10000 x 10000 pikseli. 
+* Wymiary PDF muszą mieć co najwyżej 17 x 17 cali, odpowiadające rozmiarowi papieru legalnego lub A3 i mniejszemu.
+* W przypadku plików PDF i TIFF tylko pierwsze 200 stron jest przetwarzanych (z subskrypcją warstwy Bezpłatna, są przetwarzane tylko dwie pierwsze strony).
+
 ## <a name="request-access"></a>Żądaj dostępu
 
-Aparat rozpoznawania formularza jest dostępna w wersji zapoznawczej dostęp ograniczony. Aby uzyskać dostęp do wersji zapoznawczej, wypełnij i Prześlij [żądanie dostępu do rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) formularza. Formularz żądania informacji o Tobie, firmy i Scenariusz użytkownika, dla której użyjesz rozpoznawania formularza. Jeśli Twoje żądanie zostanie zatwierdzone przez zespół usługi Azure Cognitive Services, otrzymasz wiadomość e-mail z instrukcjami dotyczącymi uzyskiwania dostępu do usługi.
+Aparat rozpoznawania formularzy jest dostępny w wersji zapoznawczej o ograniczonym dostępie. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) . Formularz żąda informacji o użytkowniku, firmie i scenariuszu użytkownika, dla którego będziesz używać aparatu rozpoznawania formularza. Jeśli żądanie zostało zatwierdzone przez zespół usługi Azure Cognitive Services, otrzymasz wiadomość e-mail z instrukcjami dotyczącymi uzyskiwania dostępu do usługi.
 
 ## <a name="where-do-i-start"></a>Od czego zacząć?
 
-**Krok 1:** Utwórz zasób rozpoznawania formularza w witrynie Azure portal.
+**Krok 1:** Utwórz zasób aparatu rozpoznawania formularzy w Azure Portal.
 
-**Krok 2:** Wykonaj Przewodnik Szybki Start za pomocą interfejsu API REST:
-* [Szybki start: Uczenie modelu rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST za pomocą programu cURL](quickstarts/curl-train-extract.md)
-* [Szybki start: Wytrenuj model rozpoznawania formularza i wyodrębnić dane formularza za pomocą interfejsu API REST przy użyciu języka Python](quickstarts/python-train-extract.md)
-* [Szybki start: Wyodrębnianie danych otrzymania przy użyciu programu cURL](quickstarts/curl-receipts.md)
-* [Szybki start: Wyodrębnianie danych otrzymania przy użyciu języka Python](quickstarts/python-receipts.md)
+**Krok 2:** Postępuj zgodnie z przewodnikiem Szybki Start, aby użyć interfejsu API REST:
+* [Szybki start: Uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST z zwinięciem](quickstarts/curl-train-extract.md)
+* [Szybki start: Uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST w języku Python](quickstarts/python-train-extract.md)
+* [Szybki start: Wyodrębnij dane przyjęcia przy użyciu zwinięcia](quickstarts/curl-receipts.md)
+* [Szybki start: Wyodrębnij dane przyjęcia przy użyciu języka Python](quickstarts/python-receipts.md)
 
-Zalecamy użycie bezpłatnej usługi, gdy jest zapoznanie się z technologią. Należy pamiętać, że liczba stron bezpłatna jest ograniczona do 500 miesięcznie.
+Zalecamy korzystanie z bezpłatnej usługi podczas nauki technologii. Należy pamiętać, że liczba bezpłatnych stron jest ograniczona do 500 miesięcznie.
 
-**Krok 3:** Przegląd interfejsów API REST
+**Krok 3.** Przeglądanie interfejsów API REST
 
-Nauczanie i wyodrębniania danych ze strukturą z formularzy przy użyciu następujących interfejsów API.
+Poniższe interfejsy API służą do uczenia i wyodrębnienia danych strukturalnych z formularzy.
 
 |||
 |---|---|
-| Trenowanie modelu| Szkolenie nowy model do analizowania formularzy za pomocą formularzy pięć tego samego typu. Lub jego trenowanie za pomocą pusty formularz i dwie formy wypełnione.  |
-| Analizowanie formularza |Analizuj pojedynczy dokument przekazywany jako strumień do wyodrębnienia pary klucz/wartość i tabele w formularzu za pomocą niestandardowego modelu.  |
-| Analizowanie potwierdzenia |Analizowanie dokumentu jednego potwierdzenia, wyodrębnić kluczowe informacje i inne teksty potwierdzenia.|
+| Trenowanie modelu| Uczenie nowego modelu do analizowania formularzy przy użyciu pięciu postaci tego samego typu. Lub pouczenie się z pustym formularzem i dwoma wypełnionymi formularzami.  |
+| Analiza formularza |Analizuj pojedynczy dokument przesłany jako strumień, aby wyodrębnić pary klucz/wartość i tabele z formularza z modelem niestandardowym.  |
+| Analizuj potwierdzenie |Analizuj pojedynczy dokument paragonu w celu wyodrębnienia informacji o kluczu i innego tekstu paragonu.|
 
-Zapoznaj się z [dokumentacji interfejsu API REST](https://aka.ms/form-recognizer/api) Aby dowiedzieć się więcej. 
+Zapoznaj się z [dokumentacją interfejsu API REST](https://aka.ms/form-recognizer/api) , aby dowiedzieć się więcej. 
 
 ## <a name="data-privacy-and-security"></a>Prywatność i zabezpieczenia danych
 
-Ta usługa jest oferowana jako [Podgląd](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) usługi platformy Azure w ramach [postanowieniami dotyczącymi świadczenia usług Online](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Podobnie jak w przypadku wszystkich usług cognitive services, deweloperzy korzystający z usługi rozpoznawania formularza powinien wiedzieć o zasady firmy Microsoft w sprawie danych klienta. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
+Ta usługa jest oferowana jako [wersja](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawcza usługi platformy Azure w ramach [warunków świadczenia usługi online](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Podobnie jak w przypadku wszystkich usług poznawczych, deweloperzy korzystający z usługi rozpoznawania formularzy powinni mieć świadomość zasad firmy Microsoft dotyczących danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Wykonaj [Szybki Start](quickstarts/curl-train-extract.md) wprowadzenie [interfejsy API rozpoznawania fragmentów](https://aka.ms/form-recognizer/api).
+Ukończ [Przewodnik Szybki Start](quickstarts/curl-train-extract.md) , aby rozpocząć pracę z [interfejsami API aparatu rozpoznawania formularzy](https://aka.ms/form-recognizer/api).

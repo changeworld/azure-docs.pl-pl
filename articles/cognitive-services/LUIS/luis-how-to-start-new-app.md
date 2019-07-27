@@ -1,6 +1,6 @@
 ---
-title: Tworzenie nowej aplikacji
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Utwórz nową aplikację — LUIS
+titleSuffix: Azure Cognitive Services
 description: Utwórz aplikacje i zarządzaj nimi na stronie sieci Web Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: b8b0cebf4ba47f875caacfcfbf89b84551b41333
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 7f9809fde088a03d4b20b5c739253f446c7a84b6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341857"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563610"
 ---
-# <a name="create-a-new-luis-app-in-the-luis-portal"></a>Utwórz nową aplikację usługi LUIS w portalu usługi LUIS
+# <a name="create-a-new-luis-app-in-the-luis-portal"></a>Tworzenie nowej aplikacji LUIS w portalu LUIS
 Istnieje kilka sposobów, aby utworzyć aplikację usługi LUIS. Można utworzyć aplikację usługi LUIS w [LUIS](https://www.luis.ai) portalu lub za pomocą usługi LUIS tworzenia [interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
 ## <a name="using-the-luis-portal"></a>Za pomocą portalu usługi LUIS
@@ -56,37 +56,37 @@ Można utworzyć nową aplikację za pomocą tworzenia interfejsów API na kilka
     > [!NOTE]
     > Kultury nie można zmienić po utworzeniu aplikacji. 
 
-## <a name="import-an-app-from-file"></a>Importowanie aplikacji z pliku
+## <a name="import-an-app-from-file"></a>Importuj aplikację z pliku
 
-1. Na **Moje aplikacje** wybierz opcję **importowania Nowa aplikacja**.
-1. W podręcznym oknie dialogowym Wybierz plik prawidłową aplikację w formacie JSON, a następnie wybierz **gotowe**.
+1. Na stronie **Moje aplikacje** wybierz pozycję **Importuj nową aplikację**.
+1. W podręcznym oknie dialogowym Wybierz prawidłowy plik JSON aplikacji, a następnie wybierz pozycję **gotowe**.
 
 ### <a name="import-errors"></a>Błędy importowania
 
-Błędy możliwe są następujące: 
+Możliwe błędy to: 
 
-* Aplikacja o tej nazwie już istnieje. Aby rozwiązać ten problem, ponownie zaimportować aplikację i ustaw **opcjonalna nazwa** pod nową nazwą. 
+* Aplikacja o tej nazwie już istnieje. Aby rozwiązać ten problem, zaimportuj ponownie aplikację i ustaw nową nazwę jako **nazwę opcjonalną** . 
 
-## <a name="export-app-for-backup"></a>Eksportowanie aplikacji do tworzenia kopii zapasowych
+## <a name="export-app-for-backup"></a>Eksportuj aplikację do kopii zapasowej
 
-1. Na **Moje aplikacje** wybierz opcję **wyeksportować**.
-1. Wybierz **wyeksportować jako plik JSON**. Przeglądarka pobiera active wersję aplikacji.
-1. Dodaj ten plik w systemie tworzenia kopii zapasowej do archiwizacji modelu.
+1. Na stronie **Moje aplikacje** wybierz pozycję **Eksportuj**.
+1. Wybierz pozycję **Eksportuj jako plik JSON**. Przeglądarka pobiera aktywną wersję aplikacji.
+1. Dodaj ten plik do systemu kopii zapasowej, aby zarchiwizować model.
 
 ## <a name="export-app-for-containers"></a>Eksportowanie aplikacji dla kontenerów
 
-1. Na **Moje aplikacje** wybierz opcję **wyeksportować**.
-1. Wybierz **wyeksportować jako kontener** następnie wybierz, jakie gniazda opublikowane (w środowisku produkcyjnym lub etapu), którą chcesz wyeksportować.
-1. Korzystanie z tego pliku przy użyciu usługi [kontenera usługi LUIS](luis-container-howto.md). 
+1. Na stronie **Moje aplikacje** wybierz pozycję **Eksportuj**.
+1. Wybierz pozycję **Eksportuj jako kontener,** a następnie wybierz opublikowane gniazdo (produkcyjne lub etap), które chcesz wyeksportować.
+1. Użyj tego pliku z [kontenerem Luis](luis-container-howto.md). 
 
-    Jeśli interesuje Cię eksportowanie przeszkolonych, ale nie jeszcze opublikowany model w celu użycia z kontenerem usługi LUIS, przejdź do strony **wersji** strony, a następnie wyeksportować z tego miejsca. 
+    Jeśli interesuje Cię eksportowanie przeszkolonego, ale jeszcze nie opublikowanego modelu do użycia z kontenerem LUIS, przejdź do strony **wersje** i wyeksportuj z tego miejsca. 
 
 ## <a name="delete-app"></a>Usuwanie aplikacji
 
-1. Na **Moje aplikacje** wybierz wielokropek (...) na końcu wiersza aplikacji,.
-1. Wybierz **Usuń** z menu.
-1. Wybierz **Ok** w oknie potwierdzenia.
+1. Na stronie **Moje aplikacje** wybierz trzy kropki (...) na końcu wiersza aplikacji.
+1. Z menu wybierz pozycję **Usuń** .
+1. W oknie potwierdzenia wybierz pozycję **OK** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Pierwsze zadanie w aplikacji jest [Dodawanie intencji](luis-how-to-add-intents.md).

@@ -1,7 +1,7 @@
 ---
-title: Dokumentacja interfejsu API zamiany mowy na tekst (REST) — usługi mowy
+title: Dokumentacja interfejsu API zamiany mowy na tekst (REST) — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać interfejsu API REST mowy na tekst. W tym artykule dowiesz się o opcjach autoryzacji, opcje zapytania, jak struktury żądania i odpowiedzi.
+description: Dowiedz się, jak używać interfejsu API REST zamiany mowy na tekst. W tym artykule dowiesz się o opcjach autoryzacji, opcje zapytania, jak struktury żądania i odpowiedzi.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d967fa4d5ba54e4470dadc5e797067454e1769a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6324c00d9b85a13ef6e69185e3b380b20f761f3b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606357"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552969"
 ---
-# <a name="speech-to-text-rest-api"></a>Interfejs API REST mowy na tekst
+# <a name="speech-to-text-rest-api"></a>Interfejs API REST zamiany mowy na tekst
 
-Jako alternatywę dla [zestaw SDK rozpoznawania mowy](speech-sdk.md), usług przetwarzania mowy umożliwiają konwertowanie za pomocą interfejsu API REST mowy na tekst. Każdy punkt końcowy, dostępny jest skojarzone z regionem. Aplikacja wymaga klucza subskrypcji dla punktu końcowego, który ma być używany.
+Jako alternatywę dla [zestawu Speech SDK](speech-sdk.md)usługi mowy umożliwiają konwertowanie mowy na tekst za pomocą interfejsu API REST. Każdy punkt końcowy, dostępny jest skojarzone z regionem. Aplikacja wymaga klucza subskrypcji dla punktu końcowego, który ma być używany.
 
-Przed rozpoczęciem korzystania z interfejsu API REST mowy na tekst, należy zrozumieć:
-* Żądania, które używają interfejsu API REST może zawierać tylko 10 sekund nagrania audio.
+Przed użyciem interfejsu API REST zamiany mowy na tekst należy zrozumieć następujące informacje:
+* Żądania korzystające z interfejsu API REST mogą zawierać tylko 10 sekund nagrania audio.
 * Interfejs API REST mowy na tekst zwraca tylko wyniki końcowe. Wyniki częściowe nie są dostarczane.
 
 Jeśli wysyłanie dłużej audio jest wymagana dla aplikacji, należy rozważyć użycie [zestaw SDK rozpoznawania mowy](speech-sdk.md) lub [batch transkrypcji](batch-transcription.md).
@@ -51,12 +51,12 @@ Ta tabela zawiera wymagane i opcjonalne nagłówki dla żądania zamiany mowy na
 
 |Nagłówek| Opis | Wymagane / opcjonalne |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Klucz subskrypcji usług przetwarzania mowy. | Albo tego pliku nagłówkowego lub `Authorization` jest wymagana. |
+| `Ocp-Apim-Subscription-Key` | Klucz subskrypcji usługi Speech Services. | Albo tego pliku nagłówkowego lub `Authorization` jest wymagana. |
 | `Authorization` | Token autoryzacji poprzedzone wyrazem `Bearer`. Aby uzyskać więcej informacji, zobacz [Authentication](#authentication) (Uwierzytelnianie). | Albo tego pliku nagłówkowego lub `Ocp-Apim-Subscription-Key` jest wymagana. |
 | `Content-type` | W tym artykule opisano format i kodera-dekodera audio podanych danych. Akceptowane wartości to `audio/wav; codecs=audio/pcm; samplerate=16000` i `audio/ogg; codecs=opus`. | Wymagane |
 | `Transfer-Encoding` | Określa, czy fragmentaryczne dane audio są wysyłane, zamiast pojedynczego pliku. Ten nagłówek należy używać tylko, jeśli dane audio. | Optional (Opcjonalność) |
-| `Expect` | Jeśli używasz fragmentaryczne transferu, Wyślij `Expect: 100-continue`. Usług przetwarzania mowy, użytkownik potwierdza żądanie początkowe i czeka na dodatkowe dane.| Wymagany, jeśli wysyłanie danych audio podzielonego. |
-| `Accept` | Jeśli podano, musi on być `application/json`. Usługi mowy oferują wyniki w formacie JSON. Niektóre środowiska żądania sieci Web Podaj wartość domyślną niezgodne, jeśli nie zostanie określony, dzięki czemu jest dobrym rozwiązaniem jest zawsze zawierać `Accept`. | Opcjonalne, ale zalecane. |
+| `Expect` | Jeśli używasz fragmentaryczne transferu, Wyślij `Expect: 100-continue`. Usługi mowy potwierdzają wstępne żądanie i czekają na dodatkowe dane.| Wymagany, jeśli wysyłanie danych audio podzielonego. |
+| `Accept` | Jeśli podano, musi on być `application/json`. Usługi mowy zapewniają wyniki w formacie JSON. Niektóre środowiska żądania sieci Web Podaj wartość domyślną niezgodne, jeśli nie zostanie określony, dzięki czemu jest dobrym rozwiązaniem jest zawsze zawierać `Accept`. | Opcjonalne, ale zalecane. |
 
 ## <a name="audio-formats"></a>Formaty audio
 
@@ -68,7 +68,7 @@ Dźwięku w treści HTTP `POST` żądania. Musi być w jednym z formatów w tej 
 | OGG | DZIELE | 16-bitowych | 16 kHz, narzędzie mono |
 
 >[!NOTE]
->Powyższe formaty są obsługiwane za pośrednictwem interfejsu API REST i WebSocket w usług przetwarzania mowy. [Zestaw SDK rozpoznawania mowy](speech-sdk.md) aktualnie obsługuje tylko WAV Formatuj przy użyciu kodera-dekodera PCM.
+>Powyższe formaty są obsługiwane za pomocą interfejsu API REST i protokołu WebSocket w usłudze Speech Services. [Zestaw SDK rozpoznawania mowy](speech-sdk.md) aktualnie obsługuje tylko WAV Formatuj przy użyciu kodera-dekodera PCM.
 
 ## <a name="sample-request"></a>Przykładowe żądanie
 
@@ -98,7 +98,7 @@ Kod stanu HTTP dla każdej odpowiedzi wskazuje sukces lub typowych błędów.
 
 ## <a name="chunked-transfer"></a>Fragmentaryczne transferu
 
-Transferu pakietowego (`Transfer-Encoding: chunked`) może pomóc zmniejszyć opóźnienie rozpoznawania, ponieważ zezwala ona na usług przetwarzania mowy rozpocząć przetwarzanie plik dźwiękowy, gdy są przesyłane. Interfejs API REST nie zapewnia tymczasowe lub częściowe wyniki. Ta opcja jest przeznaczona wyłącznie do zwiększyć szybkość reakcji.
+Funkcja transferu fragmentarycznego`Transfer-Encoding: chunked`() może pomóc w zmniejszeniu opóźnienia rozpoznawania, ponieważ umożliwia usługom mowy rozpoczęcie przetwarzania pliku audio podczas jego przesyłania. Interfejs API REST nie zapewnia tymczasowe lub częściowe wyniki. Ta opcja jest przeznaczona wyłącznie do zwiększyć szybkość reakcji.
 
 Ten przykładowy kod przedstawia sposób wysłania audio we fragmentach. Tylko pierwszy fragment może zawierać nagłówek pliku audio. `request` Obiekt HTTPWebRequest podłączonego do odpowiedniego punktu końcowego REST. `audioFile` jest to ścieżka do pliku audio na dysku.
 
@@ -163,7 +163,7 @@ Wyniki są dostarczane w formacie JSON. `simple` Formatu zawiera następujące p
 > [!NOTE]
 > Jeśli audio składa się tylko z wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwróciła wynik mowy.
 
-`detailed` Format obejmuje te same dane co `simple` formacie wraz z `NBest`, listę alternatywnych interpretacji ten sam wynik rozpoznawania. Te wyniki są oceniane od najbardziej prawdopodobne do najmniej prawdopodobne. Pierwszy wpis jest taki sam jak wynik rozpoznawania głównego.  Korzystając z `detailed` formacie `DisplayText` jest dostarczana jako `Display` dla każdego wyniku `NBest` listy.
+Format zawiera te same dane `simple` co format, wraz z `NBest`listą alternatywną interpretacji tego samego wyniku rozpoznawania. `detailed` Te wyniki są uszeregowane od najbardziej najprawdopodobniej do najmniej najprawdopodobniej. Pierwszy wpis jest taki sam jak główny wynik rozpoznawania.  Korzystając z `detailed` formacie `DisplayText` jest dostarczana jako `Display` dla każdego wyniku `NBest` listy.
 
 Każdy obiekt w `NBest` lista zawiera:
 
@@ -214,7 +214,7 @@ Jest to typowa odpowiedź dla `detailed` rozpoznawania.
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)

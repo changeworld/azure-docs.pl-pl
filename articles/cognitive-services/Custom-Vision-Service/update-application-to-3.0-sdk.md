@@ -1,7 +1,7 @@
 ---
-title: Jak przeprowadzić migrację projektu do wersji 3.0 interfejsu API
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak przeprowadzić migrację projektów Custom Vision z poprzedniej wersji interfejsu API 3.0 interfejsu API.
+title: Jak migrować projekt do interfejsu API 3,0
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak migrować Custom Vision projekty z poprzedniej wersji interfejsu API do interfejsu API 3,0.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -10,57 +10,57 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
-ms.openlocfilehash: 9dd473aadd7123cafc27209f5c34322fdbcffb71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 353fc0a2d8396def17b8e23d9a1c685c755349c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816459"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560895"
 ---
-# <a name="migrate-to-the-30-api"></a>Migracja do wersji 3.0 interfejsu API
+# <a name="migrate-to-the-30-api"></a>Migrowanie do interfejsu API 3,0
 
-Custom Vision osiągnęła teraz ogólnie dostępne i zostały poddane aktualizacji interfejsu API.
-Ta aktualizacja obejmuje kilka nowych funkcji i, co ważniejsze, kilka zmian niepowodujących:
+Custom Vision ma teraz ogólnie dostępna dostępność i została poddana aktualizacji interfejsu API.
+Ta aktualizacja obejmuje kilka nowych funkcji i, co ważne, pewne zmiany:
 
-* Prediction API teraz zostanie podzielona na dwie zależności od typu projektu.
-* Opcja eksportowania wizji sztucznej Inteligencji Developer Kit (VAIDK) wymaga utworzenia projektu w określony sposób.
-* Domyślna liczba iteracji zostały usunięte na rzecz publikowania / Cofnij publikowanie nazwane iteracji.
+* Interfejs API przewidywania jest teraz podzielony na dwa w oparciu o typ projektu.
+* Opcja eksportu programu Vision AI Developer Kit (VAIDK) wymaga utworzenia projektu w określony sposób.
+* Domyślne iteracje zostały usunięte na korzyść publikacji/anulowania publikacji nazwanej iteracji.
 
-Ten przewodnik będzie pokazują, jak zaktualizować swoje projekty do pracy z nową wersją interfejsu API. Zobacz [informacje o wersji](release-notes.md) pełną listę zmian.
+W tym przewodniku pokazano, jak zaktualizować projekty do pracy z nową wersją interfejsu API. Pełną listę zmian można znaleźć w informacjach o [wersji](release-notes.md) .
 
-## <a name="use-the-updated-prediction-api"></a>Za pomocą zaktualizowanego interfejsu API prognozowania
+## <a name="use-the-updated-prediction-api"></a>Korzystanie z zaktualizowanego interfejsu API przewidywania
 
-2\.x interfejsy API używane to samo wywołanie prognozowania zarówno klasyfikatorów obrazów, jak i obiekt wykrywanie projektów. Oba typy projektu były do przyjęcia **PredictImage** i **PredictImageUrl** wywołania. Począwszy od 3.0, firma Microsoft ma podzielić ten interfejs API, aby konieczne jest zgodny z typem projektu do wywołania:
+Interfejsy API 2. x używały tego samego wywołania prognozowania dla obu klasyfikatorów obrazów i projektów czujnika obiektów. Oba typy projektów zostały akceptowalne dla wywołań **PredictImage** i **PredictImageUrl** . Począwszy od 3,0, został podzielony ten interfejs API, dzięki czemu należy dopasować typ projektu do wywołania:
 
-* Użyj **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** i **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** można pobrać prognoz dotyczących projektów klasyfikacji obrazów.
-* Użyj **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** i **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** można uzyskiwać prognozy dla obiektu wykrywanie projektów.
+* Użyj **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** i **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** , aby uzyskać prognozy dla projektów klasyfikacji obrazów.
+* Użyj **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** i **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** , aby uzyskać prognozy dla projektów wykrywania obiektów.
 
-## <a name="use-the-new-iteration-publishing-workflow"></a>Użyj nowy przepływ publikowania iteracji
+## <a name="use-the-new-iteration-publishing-workflow"></a>Użyj nowego przepływu pracy publikowania iteracji
 
-Interfejsy API 2.x umożliwia domyślnej iteracji lub identyfikator iteracji wybierz iterację do użycia na potrzeby prognozowania. Począwszy od 3.0 wdrożyliśmy przepływ publikowania, według której najpierw opublikować iteracji w określonej nazwie z interfejsu API szkolenia. Nazwa jest następnie przekazać do metody prognozowania, aby określić, które iteracji do użycia.
+Interfejsy API 2. x używały domyślnej iteracji lub określonego identyfikatora iteracji, aby wybrać iterację do użycia na potrzeby przewidywania. Począwszy od 3,0, przyjęto przepływ publikowania, który najpierw publikuje iterację pod określoną nazwą z poziomu interfejsu API szkolenia. Następnie przekaż nazwę do metod przewidywania, aby określić, która iteracja ma być używana.
 
 > [!IMPORTANT]
-> 3\.0 interfejsów API należy używać domyślnej funkcji iteracji. Do czasu firma Microsoft wycofana starszych interfejsów API, można nadal używać 2.x interfejsy API umożliwiające przełączanie iteracji jako domyślny. Te interfejsy API będzie przechowywany w okresie czasu, a może wywołać **[UpdateIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b818)** metodę, aby oznaczyć iteracji jako domyślny.
+> Interfejsy API 3,0 nie używają domyślnej funkcji iteracji. Dopóki nie zostaną zaniechane starsze interfejsy API, można nadal używać interfejsów API 2. x, aby przełączać iterację jako domyślną. Te interfejsy API będą przechowywane przez pewien czas i można wywołać metodę **[UpdateIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b818)** , aby oznaczyć iterację jako domyślną.
 
 ### <a name="publish-an-iteration"></a>Publikowanie iteracji
 
-Po przygotowaniu iteracji można udostępnić go do prognozowania przy użyciu **[PublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c82db28bf6a2b11a8247bbc)** metody. Aby opublikować iteracji, należy identyfikator zasobu prognozowania, który jest dostępny na stronie Ustawienia CustomVision witryny internetowej.
+Po przeszkoleniu iteracji można udostępnić ją do przewidywania przy użyciu metody **[PublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c82db28bf6a2b11a8247bbc)** . Aby opublikować iterację, będzie potrzebny identyfikator zasobu przewidywania, który jest dostępny na stronie ustawień witryny sieci Web CustomVision.
 
-![Custom Vision strona Ustawienia witryny sieci Web o identyfikatorze zasobu prognoz, które są opisane.](./media/update-application-to-3.0-sdk/prediction-id.png)
+![Strona Ustawienia witryny sieci Web Custom Vision z zakreślonym IDENTYFIKATORem zasobu predykcyjnego.](./media/update-application-to-3.0-sdk/prediction-id.png)
 
 > [!TIP]
-> Można także uzyskać tę informację z [witryny Azure Portal](https://portal.azure.com) , przechodząc do zasobu Custom Vision prognoz i wybierając **właściwości**.
+> Te informacje można również uzyskać w [witrynie Azure Portal](https://portal.azure.com) , przechodząc do zasobu przewidywania Custom Vision i wybierając pozycję **Właściwości**.
 
-Po opublikowaniu swojej iteracji aplikacje mogą używać jej do prognozowania, określając nazwę w ich wywołania interfejsu API prognoz. Aby iteracji był niedostępny dla wywołań prognoz, użyj **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** interfejsu API.
+Po opublikowaniu iteracji aplikacje mogą używać jej do przewidywania przez określenie nazwy w wywołaniu interfejsu API prognozowania. Aby iteracja była niedostępna dla wywołań prognozowania, użyj interfejsu API **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** .
 
-## <a name="additional-export-options"></a>Opcje dodatkowe eksportu
+## <a name="additional-export-options"></a>Dodatkowe opcje eksportu
 
-Za pomocą 3.0 interfejsy API są firma Microsoft udostępnia dwa dodatkowe eksportowanie elementów docelowych: Architektura ARM i wizji sztucznej Inteligencji Developer Kit.
+Dzięki interfejsom API 3,0 ujawniamy dwa dodatkowe cele eksportu: Architektura ARM i dokumentacja Vision Kit dla deweloperów.
 
-* Aby użyć ARM, wystarczy wybrać Compact domeny i następnie wybierz plik DockerFile i następnie ARM jako opcje eksportu.
-* Dla przetwarzania sztucznej Inteligencji zestaw deweloperski, projekt musi zostać utworzona z __ogólne (CD)__ domeny, a także określić VAIDK w celu eksportowania argument platform.
+* Aby korzystać z ARM, wystarczy wybrać kompaktową domenę, a następnie wybrać pliku dockerfile, a następnie pozycję ARM jako opcje eksportowania.
+* W przypadku zestawu SDK programu Vision AI należy utworzyć projekt z __ogólną (kompaktową)__ domeną, a także określić VAIDK w docelowym argumencie platformy eksportu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Szkolenia, dokumentacji interfejsu API (REST)](https://go.microsoft.com/fwlink/?linkid=865446)
-* [Dokumentacja referencyjna interfejsu API produkcji (REST)](https://go.microsoft.com/fwlink/?linkid=865445)
+* [Dokumentacja referencyjna interfejsu API szkoleń (REST)](https://go.microsoft.com/fwlink/?linkid=865446)
+* [Dokumentacja referencyjna interfejsu API przewidywania (REST)](https://go.microsoft.com/fwlink/?linkid=865445)

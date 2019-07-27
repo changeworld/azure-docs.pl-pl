@@ -1,7 +1,7 @@
 ---
 title: Pobieranie zestawu Speech Devices SDK
 titleSuffix: Azure Cognitive Services
-description: Usługi mowy współpracować z szerokiej gamy urządzeń i źródła audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. W tym artykule dowiesz się, jak uzyskać dostęp do zestawu Speech Devices SDK i zacznij programować.
+description: Usługa rozpoznawania mowy współpracuje z szerokiej gamy urządzeń i źródła audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. W tym artykule dowiesz się, jak uzyskać dostęp do zestawu SDK urządzeń mowy i rozpocząć tworzenie aplikacji.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,31 +10,31 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cff35398509c021a3d2ccf708e2705ab7e259d34
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: b60c8735833c3012523c5cc0d7eea6a50e9d10b6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719796"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559689"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Pobieranie usług Cognitive Services Speech Devices SDK
 
-Zestawu Speech Devices SDK to biblioteka pretuned przeznaczona do pracy z systemom development Kit i zmienne konfiguracje tablicy mikrofonu.
+Zestaw SDK urządzeń mowy jest wstępnie dostroją biblioteką opracowaną w celu pracy z utworzonymi zestawami deweloperskimi i różnymi konfiguracjami macierzy mikrofonów.
 
-## <a name="choose-a-development-kit"></a>Wybierz zestaw Development kit
+## <a name="choose-a-development-kit"></a>Wybierz zestaw deweloperski
 
-|Urządzenia|Specyfikacja|Opis|Scenariusze|
+|Urządzenia|Określając|Opis|Scenariusze|
 |--|--|--|--|
-|[Zestaw deweloperski inteligentnych Roobo Audio](https://ddk.roobo.com)</br>[Instalator](speech-devices-sdk-roobo-v1.md) / [Szybki Start](speech-devices-sdk-android-quickstart.md)![zestaw deweloperski inteligentnych Roobo Audio](media/speech-devices-sdk/device-roobo-v1.jpg)|7 mic tablicy, ARM SOC, sieci Wi-Fi, wyjście Audio, we/wy. </br>[Android](speech-devices-sdk-android-quickstart.md)|Pierwszy zestawu Speech Devices SDK do dostosowania Array Mic firmy Microsoft i przodu przetwarzania zestawu SDK do tworzenia wysokiej jakości scenariuszy transkrypcji i mowy|Transkrypcja konwersacji, inteligentne głośnika głosu agenta, do noszenia|
-|[Usługa Azure DK Kinect](https://azure.microsoft.com/services/kinect-dk/)</br>[Instalator](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / [Szybki Start](speech-devices-sdk-windows-quickstart.md)![Azure Kinect DK](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 kamer RGB tablica kontroli integralności uprawnień i głębi. </br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|Programisty czujników zaawansowane sztucznej inteligencji (AI) przeznaczone do budowania modeli obrazów i mowy zaawansowanych komputera. Łączy ona aparatu mikrofon przestrzenne najlepszych w klasie tablicy i głębi przy użyciu kamery i czujnik orientacji — wszystko w jednym urządzeniu małych przy użyciu wielu trybów, opcji i zestawy SDK aby pomieścić zakres typy obliczeniowe.|Budynków z inteligentnym transkrypcji, związane z Robotyką, konwersacji|
-|Inteligentne Roobo Audio zestaw deweloperski 2![Inteligentne Roobo Audio zestaw deweloperski 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7 mic tablicy, ARM SOC, sieci Wi-Fi, Bluetooth, we/wy. </br>Linux|Generacja 2 zestawu Speech Devices SDK oferuje alternatywnego systemu operacyjnego i więcej funkcji projektu odwołania niskie koszty.|Transkrypcja konwersacji, inteligentne głośnika głosu agenta, do noszenia|
-|URbetter T11 na potrzeby robotyki![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 mic tablicy, ARM SOC, sieci Wi-Fi, sieci Ethernet, HDMI, kamery USB. </br>Linux|Na poziomie branży zestawu Speech Devices SDK, które dostosowuje się tablica Mic firmy Microsoft i obsługuje rozszerzonych operacji We/Wy, takich jak HDMI/Ethernet i więcej urządzenia peryferyjne USB|Głosu agenta, dysk od transkrypcji konwersacji, Education, szpitali, roboty, pole OTT|
+|[Roobo Smart audio dev Kit](https://ddk.roobo.com)</br>[Konfiguracja](speech-devices-sdk-roobo-v1.md)![[przewodnika Szybki Start](speech-devices-sdk-android-quickstart.md)roobo Smart audio dev Kit / ](media/speech-devices-sdk/device-roobo-v1.jpg)|7, tablica MIC, w usłudze ARM, Sieć Wi-Fi, wyjście z operacji we/wy. </br>[Android](speech-devices-sdk-android-quickstart.md)|Pierwszy zestaw SDK usługi Speech Devices do adaptacji zestawu SDK oprogramowania Microsoft MIC Array i Front Processing|Transkrypcja konwersacji, inteligentny głośnik, Agent głosowy, wearable|
+|[Azure urządzenia Kinect DK](https://azure.microsoft.com/services/kinect-dk/)</br>[Konfiguracja](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk)![[przewodnika Szybki Start](speech-devices-sdk-windows-quickstart.md)Azure urządzenia Kinect DK / ](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 aparaty RGB i głębokości macierzy mikrofonów. </br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|Zestaw deweloperów z zaawansowanymi czujnikami sztucznej analizy (AI) do tworzenia zaawansowanych modeli przetwarzania i przetwarzania mowy. Łączy on najlepszą w swojej klasie macierzową tablicę i głębokości, z kamerą wideo i czujnikiem orientacji — wszystko to w jednym niewielkim urządzeniu z wieloma trybami, opcjami i zestawami SDK do obsługi różnych typów obliczeniowych.|Transkrypcja konwersacji, robotica, inteligentne Kompilowanie|
+|Roobo Smart audio dev Kit 2![Roobo Smart audio dev Kit 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7 z tablicą MIC, ARM SOC, Wi-Fi, Bluetooth, we/wy. </br>Linux|Zestaw SDK urządzeń z informacjami o drugiej generacji, który oferuje alternatywny system operacyjny i więcej funkcji w ramach ekonomicznych projektów referencyjnych.|Transkrypcja konwersacji, inteligentny głośnik, Agent głosowy, wearable|
+|URbetter T11![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7\. tablica mikrofonu, ARM SOC, Wi-Fi, Ethernet, HDMI, Kamera USB. </br>Linux|Zestaw SDK urządzeń typu "Speech", który dostosowuje macierz Microsoft MIC i obsługuje rozszerzone we/wy, takie jak HDMI/Ethernet i więcej urządzeń peryferyjnych USB|Transkrypcja konwersacji, edukacja, szpital, roboty, OTT, Agent głosowy, dysk przez|
 
 ## <a name="download-the-speech-devices-sdk"></a>Pobierz zestaw Speech Devices SDK
 
-Pobierz [Speech Devices SDK](https://aka.ms/sdsdk-download).
+Pobierz [zestaw SDK urządzeń mowy](https://aka.ms/sdsdk-download).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Wprowadzenie do zestawu Speech Devices SDK](https://aka.ms/sdsdk-quickstart)

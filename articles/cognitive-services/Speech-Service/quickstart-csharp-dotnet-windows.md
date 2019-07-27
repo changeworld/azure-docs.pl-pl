@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy, .NET Framework (Windows) — usługi mowy'
+title: 'Szybki start: Rozpoznawanie mowy, .NET Framework (Windows) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu programu .NET Framework dla systemu Windows oraz zestawu SDK usługi Mowa. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
 services: cognitive-services
@@ -10,25 +10,25 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: d8738357a3bad6626ef6d79248aef1c4d2cb1ead
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 47f955734070be4adfe7f58da98265b976e643d5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603085"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554158"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Szybki start: Rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla platformy .NET Framework (Windows)
 
-Przewodniki Szybki Start są również dostępne dla [zamiany tekstu na mowę](quickstart-text-to-speech-dotnet-windows.md) i [tłumaczenia mowy](quickstart-translate-speech-dotnetframework-windows.md).
+Przewodniki Szybki Start są również dostępne w przypadku zamiany [tekstu na mowę](quickstart-text-to-speech-dotnet-windows.md) i [zamiany mowy](quickstart-translate-speech-dotnetframework-windows.md)na mowę.
 
-Jeśli to konieczne, należy wybrać inny język programowania i/lub środowiska:<br/>
+W razie potrzeby wybierz inny język programowania i/lub środowisko:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu programu .NET Framework dla systemu Windows oraz zestawu SDK usługi Mowa. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
 
-Szybkie demonstracyjne (bez kompilowania projektu programu Visual Studio, samodzielnie, jak pokazano poniżej):
+Aby uzyskać szybką demonstrację (bez kompilowania projektu programu Visual Studio, jak pokazano poniżej):
 
-Dostęp do najnowszych [mowy Cognitive Services — przykłady zestawu SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) z usługi GitHub.
+Pobierz najnowsze [przykłady Cognitive Services mowy SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) z usługi GitHub.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,13 +42,13 @@ Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 
 [!INCLUDE [Create project](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Otwórz plik `Program.cs` i zastąp automatycznie wygenerowany kod następującym przykładem:
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Znajdź i Zastąp ciąg `YourSubscriptionKey` z kluczem subskrypcji usług przetwarzania mowy.
+1. Znajdź i Zamień ciąg `YourSubscriptionKey` na klucz subskrypcji usługi Speech Services.
 
 1. Znajdź i zastąp ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z Twoją subskrypcją. Jeśli na przykład używasz bezpłatnej wersji próbnej, region to `westus`.
 
@@ -64,11 +64,11 @@ Aby ukończyć ten projekt, będą potrzebne następujące elementy:
 
     ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Uruchamianie aplikacji do debugowania")
 
-1. Zostanie wyświetlone okno konsoli z prośbą o wypowiedź. Powiedz coś w języku angielskim. Mowa jest przesyłane do usług przetwarzania mowy i przetłumaczone na tekst w czasie rzeczywistym. Wynik zostanie wyświetlony w konsoli.
+1. Zostanie wyświetlone okno konsoli z prośbą o wypowiedź. Powiedz coś w języku angielskim. Twoja Zamiana jest przekazywana do usługi mowy i uzyskanego do tekstu w czasie rzeczywistym. Wynik zostanie wyświetlony w konsoli.
 
     ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania")
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)

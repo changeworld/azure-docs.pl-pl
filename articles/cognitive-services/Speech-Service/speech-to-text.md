@@ -1,7 +1,7 @@
 ---
-title: Zamiana mowy na tekst za pomocą usług Azure Speech Services
+title: Zamiana mowy na tekst — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Zamiana mowy na tekst z usług Azure Speech Services, znana także jako Zamiana mowy na tekst, umożliwia zapisanie strumieni audio w czasie rzeczywistym w postaci tekstu, w którym aplikacje, narzędzia lub urządzenia mogą zużywać, wyświetlać i podejmować działania przy użyciu poleceń wejściowych. Ta usługa jest oparta na tej samej technologii rozpoznawania, która jest stosowana przez firmę Microsoft dla Cortany i produktów pakietu Office i bezproblemowo współpracuje z translacją i zamianą tekstu na mowę.
+description: Funkcja zamiany mowy na tekst w usłudze mowy, nazywana również zamianą mowy na tekst, umożliwia transkrypcję strumieni audio w czasie rzeczywistym w postaci tekstu, w którym aplikacje, narzędzia lub urządzenia mogą zużywać, wyświetlać i podejmować działania w miarę wprowadzania poleceń. Ta usługa jest oparta na tej samej technologii rozpoznawania, która jest stosowana przez firmę Microsoft dla Cortany i produktów pakietu Office i bezproblemowo współpracuje z translacją i zamianą tekstu na mowę.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cb9362c4d58deb5472c8d5adab39cdd1cc4e2600
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333576"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558856"
 ---
 # <a name="what-is-speech-to-text"></a>Co to jest zamiana mowy na tekst?
 
@@ -31,9 +31,9 @@ Poniżej przedstawiono funkcje dostępne za pośrednictwem zestawu Speech SDK i 
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Transkrypcja Short wyrażenia długości (< 15 sekund). Obsługuje tylko końcowy wynik transkrypcji. | Tak | Tak |
-| Ciągła transkrypcja długich wyrażenia długości i przesyłania strumieniowego audio (> 15 sekund). Obsługuje tymczasowe i końcowe wyniki transkrypcji. | Tak | Nie |
-| Wyprowadzanie intencji z wyników rozpoznawania z [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Tak | Brak\* |
+| Transkrypcja Short wyrażenia długości (< 15 sekund). Obsługuje tylko końcowy wynik transkrypcji. | Yes | Tak |
+| Ciągła transkrypcja długich wyrażenia długości i przesyłania strumieniowego audio (> 15 sekund). Obsługuje tymczasowe i końcowe wyniki transkrypcji. | Yes | Nie |
+| Wyprowadzanie intencji z wyników rozpoznawania z [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Yes | Brak\* |
 | Asynchroniczne transkrypcja plików audio. | Nie | Opcję\** |
 | Twórz modele mowy i zarządzaj nimi. | Nie | Opcję\** |
 | Twórz wdrożenia modelu niestandardowego i zarządzaj nimi. | Nie | Opcję\** |
@@ -92,7 +92,7 @@ Jeśli Twoje aplikacje, narzędzia lub produkty używają rozpoznawanie mowy Bin
 * [INTERFEJS API REST: Zamiana tekstu na mowę](rest-text-to-speech.md)
 * [INTERFEJS API REST: Transkrypcja i dostosowywanie partii](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
 * [Pobieranie zestawu Speech SDK](speech-sdk.md)

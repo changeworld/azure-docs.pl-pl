@@ -1,6 +1,6 @@
 ---
-title: Dodawanie przykładowych wypowiedzi
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Dodaj przykład wyrażenia długości-LUIS
+titleSuffix: Azure Cognitive Services
 description: Przykład wypowiedzi są przykładami tekst pytania użytkownika lub poleceń. Aby nauczyć Language Understanding (LUIS), należy dodać wypowiedzi przykład do intencji.
 services: cognitive-services
 author: diberry
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: af43697dc864019c6fd86b041e231a54d8aa8b40
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: f02f50eef971e774236f534c0d664dfcf090dcae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827489"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563732"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Dodawanie jednostki do przykładu wypowiedzi 
 
 Przykład wypowiedzi są przykładami tekst pytania użytkownika lub poleceń. Do nauki Language Understanding (LUIS), musisz dodać [wypowiedzi przykład](luis-concept-utterance.md) do [intencji](luis-concept-intent.md).
 
-Zazwyczaj wypowiedź przykład możesz dodać do pierwszego elementu intent, a następnie tworzyć jednostki i etykiety wypowiedzi na **intencji** strony. Jeśli czy raczej najpierw utworzyć jednostki, zobacz [Dodaj jednostki](luis-how-to-add-entities.md).
+Zwykle najpierw należy dodać przykład wypowiedź do celu, a następnie utworzyć jednostki i etykietę wyrażenia długości na stronie **intencje** . Jeśli czy raczej najpierw utworzyć jednostki, zobacz [Dodaj jednostki](luis-how-to-add-entities.md).
 
 ## <a name="marking-entities-in-example-utterances"></a>Oznaczanie jednostek w przykładzie wypowiedzi
 
@@ -32,20 +32,20 @@ Niektórych typów jednostek, takich jak wstępnie utworzonych jednostek i obiek
 
 ## <a name="add-a-simple-entity"></a>Dodaj jednostkę prosty
 
-W poniższej procedurze utworzysz i tagiem jednostki niestandardowej w ramach następujących wypowiedź na **intencji** strony:
+Poniższa procedura polega na utworzeniu i oznaczeniu jednostki niestandardowej w ramach następujących wypowiedź na stronie **intencje** :
 
 ```text
 Are there any SQL server jobs?
 ```
 
-1. Wybierz `SQL server` w wypowiedź, aby oznaczyć go jako prosty jednostki. W polu listy rozwijanej jednostki, które pojawia się możesz wybrać istniejącej jednostki lub Dodaj nową jednostkę. Aby dodać nową jednostkę, wpisz jego nazwę `Job` w polu tekstowym, a następnie wybierz pozycję **Utwórz nową jednostkę**.
+1. Wybierz `SQL server` w wypowiedź, aby oznaczyć go jako prosty jednostki. W polu listy rozwijanej jednostki, które pojawia się możesz wybrać istniejącej jednostki lub Dodaj nową jednostkę. Aby dodać nową jednostkę, wpisz jej nazwę `Job` w polu tekstowym, a następnie wybierz pozycję **Utwórz nową jednostkę**.
 
     ![Zrzut ekranu przedstawiający wprowadzanie nazwy jednostki](./media/luis-how-to-add-example-utterances/create-simple-entity.png)
 
     > [!NOTE]
     > Podczas wybierania słów w tagu jako jednostki:
     > * Dla pojedynczego słowa po prostu wybierz ją. 
-    > * Aby uzyskać zestaw dwóch lub więcej wyrazów wybierz pierwszy wyraz, a następnie słowo.
+    > * W przypadku zestawu dwóch lub więcej wyrazów wybierz pierwszy wyraz, a następnie końcowy wyraz.
 
 1. W **jakiego typu jednostki, czy chcesz utworzyć?** okno podręczne, sprawdź nazwę jednostki i wybierz **proste** typu jednostki, a następnie wybierz **gotowe**.
 
@@ -53,11 +53,11 @@ Are there any SQL server jobs?
 
 ## <a name="add-a-list-entity"></a>Dodaj jednostkę listy
 
-Lista jednostek reprezentują zestaw dopasowania tekstu do dokładnego dopasowania słów powiązane w Twoim systemie. 
+Jednostki listy reprezentują zestaw dokładnie pasujących do wyrazów słów w Twoim systemie. 
 
 Wykaz działu firmy mogą mieć znormalizowane wartości: `Accounting` i `Human Resources`. Nazwa każdego znormalizowane ma synonimów. Dla działu dodawanie tych synonimów może zawierać żadnych akronimów działu, liczby lub żargonu. Nie trzeba znać wszystkie wartości, po utworzeniu jednostki. Możesz dodać więcej po zapoznaniu się z wypowiedzi rzeczywistego użytkownika przy użyciu synonimów.
 
-1. W polu wypowiedź przykład na **intencji** wybierz wyraz lub frazę, która ma nowej listy. Gdy pojawi się lista rozwijana jednostki, wprowadź nazwę dla nowej jednostki listy w górnym polu tekstowym, a następnie wybierz **Utwórz nową jednostkę**.   
+1. Na przykład wypowiedź na stronie **intencje** Wybierz słowo lub frazę, która ma się pojawić na nowej liście. Gdy pojawi się lista rozwijana jednostka, wprowadź nazwę nowej jednostki listy w górnym polu tekstowym, a następnie wybierz pozycję **Utwórz nową jednostkę**.   
 
 1. W **jakiego typu jednostki, czy chcesz utworzyć?** okno podręczne, nazwa podmiotu i wybierz **listy** jako typu. Dodawanie synonimów ten element listy, a następnie wybierz **gotowe**. 
 
@@ -65,17 +65,17 @@ Wykaz działu firmy mogą mieć znormalizowane wartości: `Accounting` i `Human 
 
     Można dodawać więcej elementów listy lub więcej elementów synonimy etykietowania innych wypowiedzi lub edytowania jednostek z **jednostek** w nawigacji po lewej stronie. [Edytowanie](luis-how-to-add-entities.md#add-list-entities) jednostek oferuje opcje wprowadzania dodatkowych elementów z odpowiadającego synonimy lub importowania listy. 
 
-## <a name="add-a-composite-entity"></a>Dodaj jednostkę złożone
+## <a name="add-a-composite-entity"></a>Dodawanie jednostki złożonej
 
-Złożone jednostki są tworzone na podstawie istniejących **jednostek** w celu utworzenia obiektu nadrzędnego. 
+Jednostki złożone są tworzone na podstawie istniejących **jednostek** w celu utworzenia jednostki nadrzędnej. 
 
-Zakładając, że wypowiedź `Does John Smith work in Seattle?`, złożonego wypowiedź może zwrócić informacje o jednostce o nazwie pracowników `John Smith`i lokalizację `Seattle` w jednostce złożone. Jednostki podrzędne musi już istnieć w aplikacji i oznaczane w wypowiedź przykład przed utworzeniem jednostki złożonego.
+Przy założeniu wypowiedź `Does John Smith work in Seattle?`, złożone wypowiedź może zwrócić informacje o jednostce dla nazwy `John Smith`pracownika i lokalizacji `Seattle` w jednostce złożonej. Jednostki podrzędne muszą już istnieć w aplikacji i być oznaczone w przykładzie wypowiedź przed utworzeniem jednostki złożonej.
 
-1. Aby zawijać obiektów podrzędnych do złożonych jednostki, wybierz pozycję **pierwszy** etykietą jednostki (skrajnie po lewej) w polu wypowiedź dla obiektu złożonego. Listy rozwijanej pojawi się opcji do wyboru.
+1. Aby otoczyć jednostki podrzędne do jednostki złożonej, wybierz **pierwszą** etykietę jednostki (z lewej strony) w wypowiedź jednostki złożonej. Zostanie wyświetlona lista rozwijana, aby wyświetlić opcje wyboru dla tego zaznaczenia.
 
-1. Wybierz **opakować w jednostce złożone** z listy rozwijanej. 
+1. Wybierz opcję **Zawijaj w jednostce złożonej** z listy rozwijanej. 
 
-1. Wybierz ostatni wyraz złożony jednostki (najdalej z prawej strony). Należy zauważyć, że zieloną linię zgodna złożonego jednostki. To jest wizualny wskaźnik informujący złożonego jednostki i powinny znajdować się w wszystkie wyrazy w jednostce złożone z jednostki podrzędne skrajnie po lewej na jednostce podrzędnej najdalej z prawej strony.
+1. Wybierz ostatni wyraz złożony jednostki (najdalej z prawej strony). Należy zauważyć, że zieloną linię zgodna złożonego jednostki. Jest to wskaźnik wizualizacji jednostki złożonej i powinien znajdować się we wszystkich słowach w jednostce złożonej od lewej do najbardziej podrzędnej jednostki podrzędnej.
 
 1. Wprowadź nazwę jednostki złożonego na liście rozwijanej.
 
@@ -89,11 +89,11 @@ Zakładając, że wypowiedź `Does John Smith work in Seattle?`, złożonego wyp
 
     ![Strona Szczegóły zrzut ekranu z opcjami, z jednostką złożone](./media/luis-how-to-add-example-utterances/hr-create-composite-4.png)
 
-## <a name="add-entitys-role-to-utterance"></a>Dodaj rolę jednostki wypowiedź
+## <a name="add-entitys-role-to-utterance"></a>Dodaj rolę jednostki do wypowiedź
 
-Rola jest podtypem o nazwie podmiotu, który jest ustalany na podstawie kontekstu wypowiedź. Zaznacz jednostkę w ramach wypowiedź jako jednostki lub wybierz rolę w ramach tej jednostki. Każda jednostka może mieć ról w tym jednostek niestandardowych, które są przedstawiono maszyny (jednostek proste i złożone jednostek), nie omówiono maszyny (wstępnie utworzonych jednostek, jednostek wyrażenia regularnego listy jednostek). 
+Rola to nazwany podtyp jednostki, określony przez kontekst wypowiedź. Można oznaczyć jednostkę w ramach wypowiedź jako jednostkę lub wybrać rolę w tej jednostce. Każda jednostka może mieć role, w tym jednostki niestandardowe, które są obsługiwane przez maszynę (jednostki proste i jednostki złożone), nie są obsługiwane przez maszynę (wstępnie zbudowane jednostki, jednostki wyrażeń regularnych, jednostki listy). 
 
-Dowiedz się, [sposobu oznaczania wypowiedź z rolami jednostki](tutorial-entity-roles.md) z praktycznego samouczka. 
+Dowiedz się [, jak oznaczyć wypowiedź z rolami jednostek](tutorial-entity-roles.md) z samouczka praktycznego. 
 
 ## <a name="entity-status-predictions"></a>Prognozy stanu jednostki
 
@@ -107,7 +107,7 @@ Wybierz wyrazy, które zostaną podkreślone na czerwono na wypowiedź.
 
 Wyświetla pole jednostki **stan jednostki** z czerwony wykrzyknik różnic prognozy. Aby wyświetlić stan jednostki przy użyciu informacji na temat różnic między jednostkami etykietami oraz dostęp do przewidywanych, wybierz **stan jednostki** wybierz element z prawej strony.
 
-![Zrzut ekranu jednostki stan zaznaczenia](./media/luis-how-to-add-example-utterances/entity-prediction-error-correction.png)
+![Zrzut ekranu przedstawiający wybór stanu jednostki](./media/luis-how-to-add-example-utterances/entity-prediction-error-correction.png)
 
 Czerwona linia może znajdować się w miejscach występowania dowolnego z następujących godzinach:
 
@@ -131,15 +131,15 @@ Na przykład wypowiedzi można wykonać akcje, jako wybraną grupę lub jako poj
 
 ### <a name="remove-entity-labels-from-utterances"></a>Usuń jednostki etykiety wypowiedzi
 
-Usuń z etykiety maszyny do opanowania jednostki, z wypowiedź na stronie intencji. Jeśli jednostka nie jest maszyny do opanowania, nie można usunąć z wypowiedź. Jeśli musisz usunąć jednostka przedstawiono maszyny z wypowiedź musisz usunąć jednostkę z całej aplikacji. 
+Na stronie intencje można usunąć etykiety jednostek z wypowiedźą. Jeśli jednostka nie jest maszyny do opanowania, nie można usunąć z wypowiedź. Jeśli musisz usunąć jednostka przedstawiono maszyny z wypowiedź musisz usunąć jednostkę z całej aplikacji. 
 
 Aby usunąć etykietę maszyny do opanowania jednostki wypowiedź, wybrać jednostkę wypowiedź. Następnie wybierz pozycję **Usuń etykietę** w wyświetlonym polu listy rozwijanej jednostki.
 
-### <a name="add-a-prebuilt-entity-label"></a>Dodaj etykietę wstępnie utworzone jednostki
+### <a name="add-a-prebuilt-entity-label"></a>Dodaj wstępnie utworzoną etykietę jednostki
 
 Po dodaniu ze wstępnie utworzonych jednostek z aplikacją usługi LUIS, nie trzeba wypowiedzi tagu z tymi jednostkami. Aby dowiedzieć się więcej na temat wstępnie utworzonych jednostek i jak je dodać, zobacz [Dodaj jednostki](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
-### <a name="add-a-regular-expression-entity-label"></a>Dodaj etykietę jednostki wyrażeń regularnych
+### <a name="add-a-regular-expression-entity-label"></a>Dodaj etykietę jednostki wyrażenia regularnego
 
 Jeśli dodasz jednostek wyrażenia regularnego z aplikacją usługi LUIS, nie trzeba wypowiedzi tagu z tymi jednostkami. Aby dowiedzieć się więcej na temat jednostek wyrażenia regularnego i jak je dodać, zobacz [Dodaj jednostki](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
 
@@ -149,7 +149,7 @@ Jeśli dodasz jednostek wyrażenia regularnego z aplikacją usługi LUIS, nie tr
 Zobacz [Dodaj wzorca od istniejących wypowiedź przeznaczenie lub jednostki strony](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 
 
-### <a name="add-a-patternany-entity"></a>Dodaj jednostkę pattern.any
+### <a name="add-a-patternany-entity"></a>Dodaj wzorzec. dowolna jednostka
 
 Jeśli dodasz jednostek pattern.any z aplikacją usługi LUIS nie etykiety wypowiedzi z tymi jednostkami. Tylko są prawidłowe we wzorcach. Aby dowiedzieć się więcej na temat jednostek pattern.any i jak je dodać, zobacz [Dodaj jednostki](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities).
 
@@ -159,4 +159,4 @@ Po Dodawanie, edytowanie lub usuwanie wypowiedzi, [szkolenie](luis-how-to-train.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po etykietowania wypowiedzi w swojej **intencji**, można teraz tworzyć [złożonego jednostki](luis-how-to-add-entities.md).
+Po etykietowaniu wyrażenia długości w Twoich **intencjach**możesz teraz utworzyć [jednostkę złożoną](luis-how-to-add-entities.md).

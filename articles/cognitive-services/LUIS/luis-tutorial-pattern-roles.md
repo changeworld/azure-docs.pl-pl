@@ -1,7 +1,7 @@
 ---
-title: Role wzorca
+title: Role wzorców — LUIS
 titleSuffix: Azure Cognitive Services
-description: Wzorce wyodrębnianie danych z wypowiedzi prawidłowo sformatowaną szablonu. Wypowiedź szablonowa wykorzystuje prostą jednostkę i rolę, aby wyodrębnić powiązane dane, na przykład lokalizację początkową i docelową.
+description: Wzorce wyodrębniają dane z dobrze sformatowanego szablonu wyrażenia długości. Wypowiedź szablonowa wykorzystuje prostą jednostkę i rolę, aby wyodrębnić powiązane dane, na przykład lokalizację początkową i docelową.
 ms.custom: seodec18
 services: cognitive-services
 author: diberry
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: c0e3ac1d53cda2afb2184b92b0fd0afd662101bb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 7586a81eac95a2e4a08b045b3a2826132d9919f7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277502"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560031"
 ---
-# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Samouczek: Wyodrębnij kontekstowe powiązane wzorów przy użyciu ról
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Samouczek: Wyodrębnij wzorce powiązane z kontekstem przy użyciu ról
 
-W tym samouczku należy użyć wzorca, aby wyodrębnić dane z dobrze sformatowanej wypowiedzi szablonowej. Używa wypowiedź szablonu [jednostki prostej](luis-concept-entity-types.md#simple-entity) i [role](luis-concept-roles.md) można wyodrębnić powiązanych danych, takie jak lokalizacja pochodzenia i lokalizację docelową.  Gdy korzystasz z wzorców, do celów intencji potrzebnych jest mniej wypowiedzi.
+W tym samouczku należy użyć wzorca, aby wyodrębnić dane z dobrze sformatowanej wypowiedzi szablonowej. Wypowiedź szablonu używa prostej [jednostki](luis-concept-entity-types.md#simple-entity) i [ról](luis-concept-roles.md) do wyodrębniania powiązanych danych, takich jak lokalizacja pochodzenia i lokalizacja docelowa.  Gdy korzystasz z wzorców, do celów intencji potrzebnych jest mniej wypowiedzi.
 
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
@@ -40,7 +40,7 @@ W tym samouczku należy użyć wzorca, aby wyodrębnić dane z dobrze sformatowa
 
 ## <a name="using-roles-in-patterns"></a>Używanie ról we wzorcach
 
-Role ma na celu wyodrębnienia kontekstowe powiązanych jednostek w wypowiedź. W wypowiedzi `Move new employee Robert Williams from Sacramento and San Francisco` wartości miasta początkowego i docelowego są ze sobą powiązane, a każda z tych lokalizacji jest określona za pomocą wspólnego języka. 
+Celem ról jest wyodrębnienie jednostek powiązanych z kontekstem w wypowiedź. W wypowiedzi `Move new employee Robert Williams from Sacramento and San Francisco` wartości miasta początkowego i docelowego są ze sobą powiązane, a każda z tych lokalizacji jest określona za pomocą wspólnego języka. 
 
 
 Nazwisko nowego pracownika, Billy Patterson, nie jest jeszcze częścią jednostki listy **Employee** (Pracownik). Nazwisko nowego pracownika jest wyodrębniane w pierwszej kolejności w celu wysłania nazwiska do systemu zewnętrznego i utworzenia poświadczeń firmowych. Po utworzeniu poświadczeń firmowych poświadczenia pracowników są dodawane do listy jednostki **Employee**.

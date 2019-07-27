@@ -1,6 +1,6 @@
 ---
-title: Instalowanie i uruchamianie kontenerów
-titlesuffix: Face - Azure Cognitive Services
+title: Instalowanie i uruchamianie kontenerów — interfejs API rozpoznawania
+titleSuffix: Azure Cognitive Services
 description: Samouczki pobierają, instalują i uruchamiają kontenery do zaplanowania.
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: f4abf17c774fb75a0314c8890f5f4383058e37fd
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 93a6d0a42d6d7f07dd8947ce9f8ae99a39d44475
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321379"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564133"
 ---
 # <a name="install-and-run-face-containers"></a>Instalowanie i uruchamianie kontenerów frontu
 
@@ -82,7 +82,7 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić jeden z trzech kontenerów. Polecenie używa następujących parametrów.
 
-| Symbol zastępczy | Value |
+| Symbol zastępczy | Wartość |
 |-------------|-------|
 |{API_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie **kluczy** platformy `Cognitive Services` Azure. |
 |{ENDPOINT_URI} | Wartość identyfikatora URI punktu końcowego rozliczenia jest dostępna na `Cognitive Services` stronie **Przegląd** platformy Azure. Może to być na przykład `https://westus.api.cognitive.microsoft.com/face/v1.0`.|

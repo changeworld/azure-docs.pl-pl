@@ -1,6 +1,6 @@
 ---
-title: Pomoc techniczna i opcje pomocy
-titlesuffix: Azure Cognitive Services
+title: Pomoc techniczna i opcje pomocy — usługa mowy
+titleSuffix: Azure Cognitive Services
 description: Jak uzyskać pomoc i pomoc techniczną dotyczącą pytań i problemów podczas tworzenia aplikacji, które integrują się z usługą mowy
 services: cognitive-services
 author: jhakulin
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
-ms.openlocfilehash: 981851ab9c4bbc39a2bd5df9f97a080b4f6ea388
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 26d66868ab4c003dbd962e0c94009bc38bb36345
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404802"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558841"
 ---
 # <a name="support-and-help-options"></a>Pomoc techniczna i opcje pomocy
 
@@ -37,7 +37,7 @@ Wiadomości dotyczące Cognitive Services są zbierane w [blogu Cognitive Servic
 
 [Informacje o wersji](https://aka.ms/csspeech/whatsnew) są aktualizowane zaraz po udostępnieniu nowej wersji. Notatki zawierają informacje dotyczące nowych funkcji, ulepszeń i poprawek błędów.
 
-## <a name="search"></a>Wyszukiwanie
+## <a name="search"></a>Wyszukaj
 
 Możesz znaleźć wymaganą odpowiedź w dokumentacji, przykłady lub odpowiedzi na pytania [Stack Overflow](https://www.stackoverflow.com) lub przykłady.
 

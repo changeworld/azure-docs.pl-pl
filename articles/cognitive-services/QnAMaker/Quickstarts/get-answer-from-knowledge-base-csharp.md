@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, C# — QnA Maker'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: W tym samouczku Szybki start opartym na protokole REST i języku C# opisano sposób programowego uzyskiwania odpowiedzi z bazy wiedzy.
 services: cognitive-services
 author: diberry
@@ -10,16 +10,16 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 020403268665633bf3d71cf43258ced87b4f837d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: ba128f5ad87083f8d57c33011969756f3b3a8c93
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249710"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559829"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka C#
 
-Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) są wysyłane do usługi QnA Maker. [Odpowiedzi](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) zawiera przewidywany górnej odpowiedzi. 
+Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) , takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) jest wysyłane do usługi QNA Maker. [Odpowiedź](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obejmuje odpowiedzi przewidziane w górnej części. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -36,8 +36,8 @@ Kod używany w tym przewodniku Szybki start znajduje się w repozytorium [https:
 
 ## <a name="create-a-knowledge-base-project"></a>Tworzenie projektu bazy wiedzy
 
-1. Otwórz program Visual Studio 2019 Community edition.
-1. Utwórz nowy projekt aplikacji konsoli (.NET Core), a nazwa projektu QnaMakerQuickstart. Zaakceptuj wartości domyślne pozostałych ustawień.
+1. Otwórz program Visual Studio 2019 Community Edition.
+1. Utwórz nowy projekt aplikacja konsoli (.NET Core) i Nadaj projektowi nazwę QnaMakerQuickstart. Zaakceptuj wartości domyślne pozostałych ustawień.
 
 ## <a name="add-the-required-dependencies"></a>Dodawanie wymaganych zależności
 
@@ -59,7 +59,7 @@ Poniższy kod umożliwia wysłanie żądania HTTPS do interfejsu API usługi QnA
 
 Wartość nagłówka `Authorization` zawiera ciąg `EndpointKey`. 
 
-Dowiedz się więcej o [żądania](../how-to/metadata-generateanswer-usage.md#generateanswer-request) i [odpowiedzi](../how-to/metadata-generateanswer-usage.md#generateanswer-response). 
+Dowiedz się więcej na temat [żądania](../how-to/metadata-generateanswer-usage.md#generateanswer-request) i [odpowiedzi](../how-to/metadata-generateanswer-usage.md#generateanswer-response). 
 
 ## <a name="build-and-run-the-program"></a>Kompilowanie i uruchamianie programu
 

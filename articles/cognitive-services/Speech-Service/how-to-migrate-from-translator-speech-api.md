@@ -1,7 +1,7 @@
 ---
-title: Migrowanie z API mowy usługi Translator z usługą mowy
+title: Migrowanie z interfejs API tłumaczenia mowy w usłudze Translator do usługi mowy
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przeprowadzić migrację aplikacji z interfejsu API tłumaczenia mowy do usług przetwarzania mowy.
+description: Dowiedz się, jak migrować aplikacje z interfejs API tłumaczenia mowy w usłudze Translator do usługi mowy.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,61 +10,61 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 1ed494cea1ccf8845a25a3ab49d3194cc6a55509
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b61aef13b113d9b2502c24e3001da25fa186c76
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785679"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559575"
 ---
-# <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrowanie z API mowy usługi Translator z usługą mowy
+# <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrowanie z interfejs API tłumaczenia mowy w usłudze Translator do usługi mowy
 
-Skorzystaj z tego artykułu do migracji aplikacji z interfejsu API mowy usługi Translator firmy Microsoft do [usługa rozpoznawania mowy](index.yml). Ten przewodnik przedstawia różnice między interfejsu API tłumaczenia mowy i usługa rozpoznawania mowy i sugeruje Strategie migracji aplikacji.
+Ten artykuł służy do migrowania aplikacji z interfejs API tłumaczenia mowy w usłudze Translator firmy Microsoft do [usługi Speech](index.yml). Ten przewodnik przedstawia różnice między usługami interfejs API tłumaczenia mowy w usłudze Translator i Speech, a także sugeruje strategie migracji aplikacji.
 
 > [!NOTE]
-> Klucz interfejsu API tłumaczenia mowy subskrypcji nie zostanie zaakceptowane przez usługę rozpoznawania mowy. Należy utworzyć nową subskrypcję usług przetwarzania mowy.
+> Klucz subskrypcji interfejs API tłumaczenia mowy w usłudze Translator nie zostanie zaakceptowany przez usługę mowy. Musisz utworzyć nową subskrypcję usługi Speech Services.
 
 ## <a name="comparison-of-features"></a>Porównanie funkcji
 
 | Cecha                                           | Interfejs API tłumaczenia mowy w usłudze Translator                                  | Usługi mowy | Szczegóły                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Tłumaczenie tekstu                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Tłumaczenie na tekst                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Tłumaczenie na mowę                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Globalny punkt końcowy                                   | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Globalny punkt końcowy nie ma możliwości usług przetwarzania mowy. Globalny punkt końcowy może automatycznie kierować ruch do najbliższego regionalnych punktu końcowego, zmniejsza opóźnienie w aplikacji.                                                    |
-| Regionalne punktów końcowych                                | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Limit czasu połączenia                             | 90 minut                                               | Bez ograniczeń za pomocą zestawu SDK. 10 minut z połączeniem Websocket.                                                                                                                                                                                                                                                                                   |
+| Globalny punkt końcowy                                   | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Usługi mowy nie oferują globalnego punktu końcowego. Globalny punkt końcowy może automatycznie kierować ruch do najbliższego regionalnego punktu końcowego, zmniejszając opóźnienia w aplikacji.                                                    |
+| Regionalne punkty końcowe                                | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Limit czasu połączenia                             | 90 minut                                               | Bez ograniczeń z zestawem SDK. 10 minut z połączeniem z usługą WebSockets.                                                                                                                                                                                                                                                                                   |
 | Klucz uwierzytelniania w nagłówku                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Wiele języków przetłumaczyć w pojedyncze żądanie | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Dostępne są zestawy SDK                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Zobacz [dokumentacji usług przetwarzania mowy](index.yml) dla dostępnych zestawów SDK.                                                                                                                                                    |
-| Gniazda Websocket połączeń                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Języki interfejsu API                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Usługi mowy obsługują tego samego zakresu opisanego w językach [Dokumentacja języków interfejsu API usługi Translator](../translator-speech/languages-reference.md) artykułu. |
-| Filtr wulgaryzmów i znacznika                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Wiele języków przetłumaczonych w pojedynczym żądaniu | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Dostępne zestawy SDK                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Zapoznaj się z [dokumentacją usługi Speech Services](index.yml) dla dostępnych zestawów SDK.                                                                                                                                                    |
+| Połączenia obiektów WebSockets                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Interfejs API języków                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Usługi mowy obsługują ten sam zakres języków opisanych w artykule [Skorowidz języka interfejsu API usługi Translator](../translator-speech/languages-reference.md) . |
+| Filtr i znacznik niewulgarności                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | . WAV/PCM jako dane wejściowe                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Inne typy plików jako dane wejściowe                         | : heavy_minus_sign:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
 | Wyniki częściowe                                   | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Informacje o chronometrażu                                       | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                 |
 | Identyfikator korelacji                                    | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
-| Niestandardowe modele mowy                              | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Usługi mowy oferują niestandardowe modele mowy dopasowane umożliwiają dostosowywanie rozpoznawania mowy do słownictwa unikatowy w Twojej organizacji.                                                                                                                                           |
-| Modele tłumaczenia niestandardowych                         | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Subskrybowanie interfejsu API tłumaczenia tekstu firmy Microsoft pozwala na użycie [niestandardowe w usłudze Translator](https://www.microsoft.com/translator/business/customization/) do swoich danych na użytek bardziej precyzyjne tłumaczenia.                                                 |
+| Niestandardowe modele mowy                              | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Usługi mowy oferują niestandardowe modele mowy, które umożliwiają dostosowanie rozpoznawania mowy do unikatowego słownika w organizacji.                                                                                                                                           |
+| Niestandardowe modele tłumaczenia                         | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Subskrybowanie interfejsu API tłumaczenia tekstu firmy Microsoft umożliwia korzystanie z [translatora niestandardowego](https://www.microsoft.com/translator/business/customization/) do korzystania z własnych danych w celu uzyskania dokładniejszych tłumaczeń.                                                 |
 
 ## <a name="migration-strategies"></a>Strategie migracji
 
-Jeśli Ty lub Twoja organizacja ma aplikacje w rozwoju i produkcji, które używają interfejsu API tłumaczenia mowy, należy zaktualizować je do korzystania z usługi rozpoznawania mowy. Zobacz [usługa rozpoznawania mowy](index.yml) dokumentacji dostępne zestawy SDK, przykłady kodu i samouczkom. Podczas migracji, należy wziąć pod uwagę następujące czynności:
+Jeśli ty lub Twoja organizacja ma aplikacje w programowaniu lub środowisku produkcyjnym, które używają interfejs API tłumaczenia mowy w usłudze Translator, należy je zaktualizować do korzystania z usługi Speech. Zobacz dokumentację [usługi Speech](index.yml) dla dostępnych zestawów SDK, przykłady kodu i samouczki. Podczas migrowania należy wziąć pod uwagę następujące kwestie:
 
-* Globalny punkt końcowy nie ma możliwości usług przetwarzania mowy. Określ, jeśli aplikacja działa wydajnie po używa pojedynczego punktu końcowego regionalne dla wszystkich jego ruchu. W przeciwnym razie użyj geolokacji, aby określić najbardziej efektywny sposób punktu końcowego.
+* Usługi mowy nie oferują globalnego punktu końcowego. Ustal, czy aplikacja działa wydajniej, gdy używa jednego regionu punktu końcowego dla całego ruchu. W przeciwnym razie użyj geolokalizacji, aby określić najbardziej wydajny punkt końcowy.
 
-* Jeśli aplikacja używa długotrwałe połączeń i nie można używać dostępnych zestawów SDK, można użyć połączenia gniazda Websocket. Aby zarządzać limit czasu 10 minut, ponowne łączenie w odpowiednim czasie.
+* Jeśli aplikacja korzysta z długotrwałych połączeń i nie może korzystać z dostępnych zestawów SDK, można użyć połączenia z usługą WebSockets. Aby zarządzać limitem 10-minutowego limitu czasu, należy ponownie połączyć się w odpowiednim czasie.
 
-* Jeśli aplikacja korzysta z interfejsu API tłumaczenia tekstu i interfejsu API tłumaczenia mowy, aby umożliwić modele tłumaczenia niestandardowych, można dodać identyfikatorów kategorii bezpośrednio przy użyciu usługi mowy.
+* Jeśli aplikacja używa interfejs API tłumaczenia tekstu w usłudze Translator i interfejs API tłumaczenia mowy w usłudze Translator do włączenia niestandardowych modeli tłumaczenia, można dodać identyfikatory kategorii bezpośrednio przy użyciu usługi Speech.
 
-* W przeciwieństwie do interfejsu API tłumaczenia mowy usług przetwarzania mowy, można wykonać tłumaczenia na języki pojedyncze żądanie.
+* W przeciwieństwie do interfejs API tłumaczenia mowy w usłudze Translator usługi mowy mogą kończyć tłumaczenia w wielu językach w jednym żądaniu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Wypróbuj bezpłatnie usługi mowy](get-started.md)
-* [Szybki start: Rozpoznawanie mowy w aplikacji platformy uniwersalnej systemu Windows przy użyciu zestawu SDK rozpoznawania mowy](quickstart-csharp-uwp.md)
+* [Szybki start: Rozpoznawanie mowy w aplikacji platformy UWP przy użyciu zestawu Speech SDK](quickstart-csharp-uwp.md)
 
 ## <a name="see-also"></a>Zobacz także
 
 * [Co to jest usługa mowy](overview.md)
-* [Dokumentacja usług przetwarzania mowy i zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)
+* [Usługi mowy i dokumentacja zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

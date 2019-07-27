@@ -1,6 +1,6 @@
 ---
-title: Typ jednostki złożonej
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Typ jednostki złożonej — LUIS
+titleSuffix: Azure Cognitive Services
 description: Jednostka złożona składa się z innych jednostek, takich jak wstępnie zbudowane jednostki, proste, wyrażenie regularne i jednostki listy. Osobne jednostki tworzą całej jednostki.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 55dcc5666e63b8a87ddcb13696991fe02843fbbd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: ea258275cf954bc6e06da03324c2ae93de0e7fde
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480155"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563234"
 ---
 # <a name="composite-entity"></a>Złożone jednostki 
 

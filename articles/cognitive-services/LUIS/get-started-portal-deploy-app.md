@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Wdrażanie aplikacji za pomocą portalu usługi LUIS'
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Dowiedz się, jak wdrożyć aplikacją usługi LUIS do endpoint prognoz, gdy aplikacja będzie gotowa do zwrócenia wypowiedź prognoz do aplikacji klienta, takich jak czatbot. Ten przewodnik Szybki Start przedstawiono sposób wdrażania aplikacji przez tworzenie zasobu endpoint prognoz, przypisywania zasobów do aplikacji, szkolenie aplikacji i publikowania aplikacji.
+title: 'Szybki start: Wdrażanie aplikacji za pomocą portalu LUIS'
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak wdrożyć aplikację LUIS w punkcie końcowym przewidywania, gdy aplikacja jest gotowa do zwrócenia prognoz wypowiedź do aplikacji klienckiej, takich jak rozmowa bot. Ten przewodnik Szybki Start przeprowadzi Cię przez proces wdrażania aplikacji, tworząc zasób punktu końcowego przewidywania, przypisując zasób do aplikacji, szkoleń aplikacji i publikowania aplikacji.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,88 +10,88 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: db2b543fa8e5429cc8d50d7789b03239173f563d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154531"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564068"
 ---
-# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki start: Wdrażanie aplikacji w portalu usługi LUIS
+# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki start: Wdrażanie aplikacji w portalu LUIS
 
-Gdy aplikacją usługi LUIS jest gotowy do zwrócenia wypowiedź prognoz do aplikacji klienta (na przykład czatbot), należy wdrożyć aplikację do endpoint prognoz.
+Gdy aplikacja LUIS jest gotowa do zwrócenia prognoz wypowiedź do aplikacji klienckiej (na przykład bot rozmowy), należy wdrożyć aplikację w punkcie końcowym przewidywania.
 
-W tym przewodniku Szybki Start dowiesz się wdrożyć aplikację. Utwórz zasób endpoint prognoz, przypisywania zasobów do aplikacji, uczenie aplikacji i Opublikuj aplikację.
+W tym przewodniku szybki start dowiesz się, jak wdrożyć aplikację. Tworzysz zasób punktu końcowego przewidywania, przypiszesz zasób do aplikacji, nauczysz aplikację i opublikujesz aplikację.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Pobierz [subskrypcji platformy Azure](https://azure.microsoft.com/free).
-* Wykonaj [poprzedniej opcji szybkiego startu portalu](get-started-portal-build-app.md) lub [pobieranie i importowanie jej](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Uzyskaj [subskrypcję platformy Azure](https://azure.microsoft.com/free).
+* Wykonaj [poprzedni Przewodnik Szybki Start](get-started-portal-build-app.md) lub [Pobierz i zaimportuj aplikację](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
 
 ## <a name="create-the-endpoint-resource"></a>Tworzenie zasobu punktu końcowego
 
-Utworzysz zasób endpoint prognoz w witrynie Azure portal. Ten zasób powinien być użyty tylko dla zapytania prediction punktu końcowego. Nie należy używać tego zasobu dla tworzenia zmian do aplikacji.
+Tworzysz zasób punktu końcowego przewidywania w Azure Portal. Tego zasobu należy używać tylko w przypadku zapytań prognozowania punktów końcowych. Nie używaj tego zasobu do tworzenia zmian w aplikacji.
 
 1. Zaloguj się w witrynie [Azure Portal](https://ms.portal.azure.com/).
 
-1. Zaznacz zielony **+** Zaloguj się w lewym górnym panelu. Wyszukaj `Cognitive Services` w portalu marketplace i wybierz ją.
+1. Wybierz zielony **+** znak w lewym górnym rogu. `Cognitive Services` Wyszukaj w witrynie Marketplace i wybierz ją.
 
-1. Konfigurowanie subskrypcji przy użyciu następujących ustawień:
+1. Skonfiguruj subskrypcję przy użyciu następujących ustawień:
 
-   |Ustawienie|Wartość|Przeznaczenie|
+   |Ustawienie|Value|Cel|
    |--|--|--|
-   |Name (Nazwa)|`my-cognitive-service-resource`|Nazwa zasobu platformy Azure. Ta nazwa jest konieczne po przypisaniu zasobu do aplikacji w portalu usługi LUIS.|
-   |Subskrypcja|Twoja subskrypcja|Wybierz jedną z subskrypcji skojarzonych z Twoim kontem.|
-   |Lokalizacja|**Zachodnie stany USA**|Region platformy Azure dla tego zasobu.|
-   |Warstwa cenowa|**S0**|Wartość domyślna ceny warstwy dla tego zasobu.|
-   |Grupa zasobów|`my-cognitive-service-resource-group`|Utwórz nową grupę zasobów dla wszystkich zasobów usługi cognitive Services. Po zakończeniu korzystania z zasobami, możesz usunąć grupę zasobów, aby wyczyścić swoją subskrypcję. |
+   |Name (Nazwa)|`my-cognitive-service-resource`|Nazwa zasobu platformy Azure. Ta nazwa jest potrzebna podczas przypisywania zasobu do aplikacji w portalu LUIS.|
+   |Subscription|Twoja subskrypcja|Wybierz jedną z subskrypcji skojarzonych z Twoim kontem.|
+   |Location|**Zachodnie stany USA**|Region świadczenia usługi Azure dla tego zasobu.|
+   |Warstwa cenowa|**S0**|Domyślna warstwa cenowa dla tego zasobu.|
+   |Resource group|`my-cognitive-service-resource-group`|Utwórz nową grupę zasobów dla wszystkich zasobów usługi poznawczej. Po zakończeniu pracy z zasobami możesz usunąć grupę zasobów, aby oczyścić subskrypcję. |
    | | | |
 
-   ![Usługa Azure wybranego interfejsu API](./media/get-started-portal-deploy-app/create-cognitive-services-resource.png)
+   ![Wybór interfejsu API platformy Azure](./media/get-started-portal-deploy-app/create-cognitive-services-resource.png)
 
-1. Wybierz **Utwórz** do tworzenia zasobów platformy Azure.
+1. Wybierz pozycję **Utwórz** , aby utworzyć zasób platformy Azure.
 
-   W następnej sekcji dowiesz się, jak połączyć tego nowego zasobu z aplikacją usługi LUIS w portalu usługi LUIS.
+   W następnej sekcji dowiesz się, jak połączyć ten nowy zasób z aplikacją LUIS w portalu LUIS.
 
-## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Przypisz klucz zasobu do aplikacji usługi LUIS w portalu usługi LUIS
+## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Przypisywanie klucza zasobu do aplikacji LUIS w portalu LUIS
 
-Za każdym razem, gdy tworzysz nowy zasób dla usługi LUIS, musisz przypisać zasób aplikacji usługi LUIS. Po przypisaniu, nie będzie trzeba ponownie wykonaj ten krok, jeśli nie możesz utworzyć nowy zasób. Można utworzyć nowy zasób, aby rozwinąć regionów aplikacji lub do obsługi większej liczby zapytań prognozowania.
+Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do aplikacji LUIS. Po jego przypisaniu nie trzeba wykonać tego kroku ponownie, chyba że zostanie utworzony nowy zasób. Możesz utworzyć nowy zasób, aby rozszerzyć regiony aplikacji lub obsłużyć większą liczbę zapowiadanych zapytań.
 
-1. Zaloguj się do [portal usługi LUIS](https://www.luis.ai) i wybierz polecenie **myEnglishApp** aplikacji z listy aplikacji.
+1. Zaloguj się do [portalu Luis](https://www.luis.ai) i wybierz aplikację **myEnglishApp** z listy aplikacji.
 
-1. Wybierz **Zarządzaj** w menu w prawym górnym rogu, a następnie wybierz **kluczy i punktów końcowych**.
+1. Wybierz pozycję **Zarządzaj** w prawym górnym menu, a następnie wybierz pozycję **klucze i punkty końcowe**.
 
-1. Aby dodać usługi LUIS, wybierz **przydzielania zasobów +**.
+1. Aby dodać LUIS, wybierz pozycję **Przypisz zasób +** .
 
-   [![Przydziel zasób do aplikacji](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
+   [![Przypisywanie zasobu do aplikacji](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
 
-1. Wybierz nazwę dzierżawy, subskrypcji i zasobów. Wybierz **przypisany zasób**.
+1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz **przypisany zasób**.
 
    ![Przydziel zasób do aplikacji](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. Znajdź nowy wiersz w tabeli i skopiuj adres URL punktu końcowego. Jest poprawnie skonstruowany się `HTTP GET` żądanie do punktu końcowego interfejsu API usługi LUIS w celu prognozowania.
+1. Znajdź nowy wiersz w tabeli i skopiuj adres URL punktu końcowego. Jest on poprawnie skonstruowany w celu `HTTP GET` zgłoszenia do punktu końcowego interfejsu API Luis w celu przewidywania.
 
 ## <a name="train-and-publish-the-app"></a>Uczenie i publikowanie aplikacji
 
-Uczenie aplikacji, gdy wszystko będzie gotowe ją przetestować. Publikowanie aplikacji można obecnie uczonego wersji była dostępna dla aplikacji klienckich ze środowiska wykonawczego endpoint prognoz zapytania.
+Przeszkol aplikację, gdy wszystko będzie gotowe do jej przetestowania. Opublikuj aplikację, jeśli chcesz, aby aktualnie przeszkolony wersja była dostępna dla aplikacji klienckich z poziomu środowiska uruchomieniowego punktu końcowego przewidywania zapytań.
 
-1. W przypadku aplikacji nieprzeszkolonych wybierz **Train** z menu w prawym górnym rogu.
+1. Jeśli aplikacja jest wyszkola, wybierz pozycję  pouczenie z menu w prawym górnym rogu.
 
-1. Wybierz **Publikuj** z górnego menu. Zaakceptuj domyślne ustawienia środowiska, a następnie wybierz pozycję **Publikuj**.
+1. Wybierz pozycję **Publikuj** z górnego menu. Zaakceptuj domyślne ustawienia środowiska, a następnie wybierz pozycję **Publikuj**.
 
-1. W przypadku powodzenia zielony pasek powiadomień zostanie wyświetlone w górnej części okna przeglądarki, zaznacz **można znaleźć na liście punktów końcowych**.
+1. Gdy w górnej części okna przeglądarki pojawi się zielony pasek powiadomień o powodzeniu, wybierz pozycję **odwołaj się do listy punktów końcowych**.
 
-   ![Pasek powiadomień pomyślnie opublikowano aplikację w przeglądarce](./media/get-started-portal-deploy-app/successfully-published-notification.png)
+   ![Pomyślnie opublikowano pasek powiadomień aplikacji w przeglądarce](./media/get-started-portal-deploy-app/successfully-published-notification.png)
 
-1. Na **kluczy i punktu końcowego ustawienia** strony, znajdź listę przypisanych zasobów i odpowiednie adresy URL punktów końcowych w dolnej części.
+1. Na stronie **Ustawienia kluczy i punktu końcowego** Znajdź na dole listę przypisanych zasobów i odpowiednich adresów URL punktów końcowych.
 
-1. Wybierz adres URL punktu końcowego skojarzone z nazwą nowego zasobu. Ta akcja powoduje otwarcie przeglądarki sieci web za pomocą poprawnie skonstruowany adresu URL, aby `GET` żądania do środowiska uruchomieniowego endpoint prognoz.
+1. Wybierz adres URL punktu końcowego skojarzony z nową nazwą zasobu. Ta akcja spowoduje otwarcie przeglądarki sieci Web z poprawnie skonstruowanym adresem URL w `GET` celu zgłoszenia żądania do środowiska uruchomieniowego punktu końcowego przewidywania.
 
-1. `q=` Na końcu adresu URL jest krótka dla **zapytania** i gdzie wypowiedź użytkownika jest dołączana do żądania GET. Po `q=`, wprowadź ten sam wypowiedź użytkownika używany na końcu tego przewodnika Szybki Start w poprzednim:
+1. Na końcu adresu URL jest krótkie dla kwerendy i jest dołączany do żądania GET wypowiedź użytkownika.  `q=` `q=`Po wprowadzeniu tych samych użytkowników wypowiedź użytych na końcu poprzedniego przewodnika Szybki Start:
 
     ```Is there a form named hrf-234098```
 
-    Przeglądarka pokazuje odpowiedzi, czyli te same dane JSON, Twoja aplikacja kliencka otrzyma:
+    W przeglądarce zostanie wyświetlona odpowiedź, która jest tym samym formatem JSON, który zostanie odebrany przez aplikację kliencką:
 
     ```JSON
     {
@@ -121,17 +121,17 @@ Uczenie aplikacji, gdy wszystko będzie gotowe ją przetestować. Publikowanie a
     }
     ```
 
-    Ta odpowiedź zawiera więcej informacji, niż domyślna okienko testowania w poprzednim samouczku. Aby wyświetlić ten sam poziom informacji w okienku testu, możesz opublikować aplikację. Po opublikowaniu aplikacji, wybierz **Porównaj z opublikowanych** w okienko testowania. Użyj **JSON Pokaż widok** w okienku badań opublikowanych, aby zobaczyć te same dane JSON, co w poprzednim kroku. W ten sposób możesz porównać bieżącą aplikację, którą pracujesz z aplikacją, która została opublikowana do punktu końcowego.
+    Ta odpowiedź zawiera więcej informacji niż domyślne okienko testów w poprzednim samouczku. Aby wyświetlić ten sam poziom informacji w okienku testów, należy opublikować aplikację. Po opublikowaniu aplikacji wybierz pozycję **Porównaj z opublikowanymi** w okienku testów. Aby wyświetlić ten sam kod JSON w poprzednim kroku, użyj **widoku Pokaż kod JSON** w okienku opublikowany test. W ten sposób można porównać bieżącą aplikację, nad którą pracujesz z aplikacją opublikowaną w punkcie końcowym.
 
-    [![Porównanie obecnie edycji w porównaniu z opublikowanej wersji aplikacji](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+    [![Porównanie obecnie edytowanej i opublikowanej wersji aplikacji](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu korzystania z tego przewodnika Szybki Start, wybierz **Moje aplikacje** w górnym menu nawigacji. Zaznacz pole wyboru aplikacji z listy, a następnie wybierz **Usuń** z kontekstu paska narzędzi powyżej listy.
+Po zakończeniu pracy z tym przewodnikiem Szybki Start wybierz pozycję **Moje aplikacje** w górnym menu nawigacji. Zaznacz pole wyboru aplikacji z listy, a następnie wybierz pozycję **Usuń** z paska narzędzi kontekstowego nad listą.
 
-[![Usunąć aplikację z listy aplikacji](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[![Usuń aplikację z listy Moje aplikacje](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Identyfikowanie wspólnych intencje i podmioty](luis-tutorial-prebuilt-intents-entities.md)
+> [Identyfikowanie typowych intencji i jednostek](luis-tutorial-prebuilt-intents-entities.md)

@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów — QnAMaker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Qna Maker przechowuje wszelką obejmuje składniki hostowane w konta platformy Azure. Debugowanie może wymagać od użytkowników do manipulowania zasobami QnAMaker Azure lub zapewniają QnAMaker zespołem pomocy technicznej z dodatkowymi informacjami dotyczącymi ich konfiguracji.
 services: cognitive-services
 author: diberry
@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5b65a121e895b4855c7c69d2b67e7055c88ddd08
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 94a3dfd9a3560321d7e2753ccd385fb1a5323107
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466055"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559920"
 ---
 # <a name="troubleshooting-tips-to-support-the-qna-maker-service-and-runtime"></a>Wskazówki dotyczące rozwiązywania problemów do obsługi usługi QnA Maker i środowiska uruchomieniowego
 Qna Maker przechowuje wszelką obejmuje składniki hostowane w konta platformy Azure. Debugowanie może wymagać od użytkowników do manipulowania zasobami QnAMaker Azure lub zapewniają QnAMaker zespołem pomocy technicznej z dodatkowymi informacjami dotyczącymi ich konfiguracji.
 
 ## <a name="how-to-get-latest-qnamaker-runtime-updates"></a>Jak uzyskać najnowsze aktualizacje środowiska uruchomieniowego QnAMaker
-Qna Maker przechowuje wszelką środowiska uruchomieniowego jest częścią usługi Azure App Service wdrożone, kiedy należy [Tworzenie usługi qna Maker przechowuje wszelką](./set-up-qnamaker-service-azure.md) w witrynie Azure portal. Aktualizacje są okresowo wprowadzane do środowiska uruchomieniowego. Usługa QnA Maker App Service jest na auto wpis w trybie aktualizacji wersji rozszerzenia witryny 2019 kwi (wersja 5 +). To już zaprojektowano w celu zajmie się przestojów podczas uaktualniania. Możesz sprawdzić bieżącą wersję na https://www.qnamaker.ai/UserSettings. Jeśli używana wersja jest starsza niż wersja 5.x, należy ponownie uruchomić usługi App Service do zastosowania najnowszych aktualizacji do zastosowania do instalacji usługi qna Maker przechowuje wszelką.
+Qna Maker przechowuje wszelką środowiska uruchomieniowego jest częścią usługi Azure App Service wdrożone, kiedy należy [Tworzenie usługi qna Maker przechowuje wszelką](./set-up-qnamaker-service-azure.md) w witrynie Azure portal. Aktualizacje są okresowo wprowadzane do środowiska uruchomieniowego. App Service QnA Maker jest w trybie aktualizacji, Opublikuj nasze wydanie rozszerzenia witryny APR 2019 (wersja 5 +). Ta opcja została już zaprojektowana, aby zadbać o ZERO przestoju podczas uaktualniania. Bieżącą wersję można sprawdzić pod adresem https://www.qnamaker.ai/UserSettings. Jeśli wersja jest starsza niż wersja 5. x, należy ponownie uruchomić App Service, aby zastosować najnowsze aktualizacje do zastosowania do konfiguracji QnAMaker.
 
 1. Przejdź do usługi qna Maker przechowuje wszelką (Grupa zasobów) [witryny Azure portal](https://portal.azure.com)
 
@@ -52,7 +52,7 @@ Nazwa hosta usługi qna Maker przechowuje wszelką jest przydatny do celów debu
     ![Nazwa hosta w interfejsie QnAMaker](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
     
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Poprawa wiedzy pytań za pomocą aktywne uczenie](./improve-knowledge-base.md)
+> [Ulepsz pytania dotyczące usługi Knowledge Base z aktywną nauką](./improve-knowledge-base.md)

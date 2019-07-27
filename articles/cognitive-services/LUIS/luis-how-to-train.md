@@ -1,6 +1,6 @@
 ---
-title: Szkolenie aplikacji
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Uczenie aplikacji — LUIS
+titleSuffix: Azure Cognitive Services
 description: Szkolenie to proces uczenia usługi Language Understanding (LUIS) wersji aplikacji, aby zwiększyć jego interpretacja języka naturalnego. Szkolenie aplikacją usługi LUIS po aktualizacji do modelu, takich jak dodawanie, edytowanie, etykietowania lub usunięcie jednostki, intencji lub wypowiedzi.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/07/2019
 ms.author: diberry
-ms.openlocfilehash: ba0db22437961a33b0b415ec7cb60ad3df12821c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 70c29769da2ec092b2b27b83f2f83200d4e727af
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195859"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560368"
 ---
-# <a name="train-your-active-version-of-the-luis-app"></a>Szkolenie active wersję aplikacji usługi LUIS 
+# <a name="train-your-active-version-of-the-luis-app"></a>Uczenie aktywnej wersji aplikacji LUIS 
 
 Szkolenie to proces uczenia aplikacji Language Understanding (LUIS), aby zwiększyć jego interpretacja języka naturalnego. Szkolenie aplikacją usługi LUIS po aktualizacji do modelu, takich jak dodawanie, edytowanie, etykietowania lub usunięcie jednostki, intencji lub wypowiedzi. 
 
@@ -44,9 +44,9 @@ Aby rozpocząć proces iteracyjny w [portal usługi LUIS](https://www.luis.ai), 
 >[!NOTE]
 >W przypadku co najmniej jeden intencje w swojej aplikacji, które nie zawierają na przykład wypowiedzi nie uczenie aplikacji. Dodawanie wypowiedzi dla wszystkich profilów konwersji. Aby uzyskać więcej informacji, zobacz [Dodawanie wypowiedzi przykład](luis-how-to-add-example-utterances.md).
 
-## <a name="training-date-and-time"></a>Szkolenie daty i godziny
+## <a name="training-date-and-time"></a>Data i godzina szkolenia
 
-Szkolenie daty i godziny jest GMT + 2. 
+Data i godzina szkolenia to GMT + 2. 
 
 ## <a name="train-with-all-data"></a>Szkolenie przy użyciu wszystkich danych
 

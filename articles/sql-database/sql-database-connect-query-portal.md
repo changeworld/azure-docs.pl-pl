@@ -11,14 +11,13 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/28/2019
-ms.openlocfilehash: 52041ba3c057e871b60f283f293dd79a18f3b21e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3702c88d0a5cdc7aa1f854f71e3aee8a42d9c22c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508759"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569171"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Szybki start: używanie edytora zapytań SQL do nawiązywania połączenia i wykonywania zapytań o dane
 
@@ -32,14 +31,14 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
   || Pojedyncza baza danych |
   |:--- |:--- |
-  | Przycisk Utwórz| [Portal](sql-database-single-database-get-started.md) |
+  | Create| [Portal](sql-database-single-database-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | Konfigurowanie | [Reguła zapory IP na poziomie serwera](sql-database-server-level-firewall-rule.md)|
+  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)|
   |||
 
 > [!NOTE]
-> Edytor zapytań używa porty 443 i 1443 do komunikacji.  Upewnij się, że włączono wychodzący ruch protokołu HTTPS w tych portach. Należy również dodać adres IP ruchu wychodzącego do reguł zapory dozwolonych serwera dostępu do baz danych i magazyny danych.
+> Edytor zapytań używa portów 443 i 1443 do komunikacji.  Upewnij się, że włączono ruch wychodzący HTTPS na tych portach. Należy również dodać wychodzący adres IP do reguł zapory dozwolonych na serwerze, aby uzyskać dostęp do baz danych i magazynów.
 
 ## <a name="sign-in-the-azure-portal"></a>Logowanie w witrynie Azure Portal
 
@@ -55,7 +54,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 3. Z menu rozwijanego **Typ uwierzytelniania** wybierz pozycję **Uwierzytelnianie programu SQL Server** i wprowadź identyfikator użytkownika oraz hasło do konta administratora serwera, którego użyto do utworzenia bazy danych.
 
-    ![logowanie](./media/sql-database-connect-query-portal/login-menu.png)
+    ![zaloguj się](./media/sql-database-connect-query-portal/login-menu.png)
 
 4. Kliknij przycisk **OK**.
 
@@ -142,7 +141,7 @@ Uruchom następującą instrukcję [UPDATE](https://msdn.microsoft.com/library/m
 
 2. Wybierz polecenie **Uruchom**, aby zaktualizować określony wiersz w tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **Zapytanie zostało wykonane pomyślnie: Wiersze, których to dotyczy: 1**.
 
-## <a name="delete-data"></a>Usuwanie danych
+## <a name="delete-data"></a>Usuń dane
 
 Uruchom następującą instrukcję [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) języka Transact-SQL, aby usunąć nowy produkt.
 
@@ -160,7 +159,7 @@ Uruchom następującą instrukcję [DELETE](https://msdn.microsoft.com/library/m
 
 Jest kilka rzeczy, o których trzeba wiedzieć podczas pracy z edytorem zapytań.
 
-* Edytor zapytań używa porty 443 i 1443 do komunikacji.  Upewnij się, że włączono wychodzący ruch protokołu HTTPS w tych portach. Należy również dodać adres IP ruchu wychodzącego do reguł zapory dozwolonych serwera dostępu do baz danych i magazyny danych.
+* Edytor zapytań używa portów 443 i 1443 do komunikacji.  Upewnij się, że włączono ruch wychodzący HTTPS na tych portach. Należy również dodać wychodzący adres IP do reguł zapory dozwolonych na serwerze, aby uzyskać dostęp do baz danych i magazynów.
 
 * Naciśnięcie klawisza F5 powoduje odświeżenie strony edytora i utratę tworzonego zapytania.
 

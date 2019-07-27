@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Punkt końcowy przewidywania zapytania zestawu SDK języka C#'
+title: 'Szybki start: C#Punkt końcowy przewidywania zapytań zestawu SDK — LUIS'
 titleSuffix: Azure Cognitive Services
 description: Użyj zestawu SDK języka C# w celu wysłania wypowiedzi użytkownika do usługi LUIS i odebrania przewidywania.
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: af20d555a83e8d229ed5d83d3b1d3f242de1e4a8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c0b534848232d60929722e2036f69f4b6e670a4a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275802"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563161"
 ---
 # <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Szybki start: Wysyłanie zapytań do punktu końcowego przewidywania za pomocą zestawu SDK języka C# .NET
 

@@ -1,7 +1,7 @@
 ---
-title: Co to jest Custom Voice? -Usługi mowy
-titlesuffix: Azure Cognitive Services
-description: Custom Voice to zestaw narzędzi online, które pozwalają tworzyć mówiącą, jeden z rodzajem głosu dla Twojej marki. Wszystko, czego potrzebny na rozpoczęcie pracy jest kilka przydatnych plików audio i skojarzone transkrypcji. Skorzystaj z linków poniżej, aby rozpocząć tworzenie niestandardowego środowiska mowy na tekst.
+title: Co to jest głos niestandardowy? — Usługa mowy
+titleSuffix: Azure Cognitive Services
+description: Niestandardowy głos to zestaw narzędzi online, które umożliwiają tworzenie rozpoznawalnego, jednoczęściowego głosu dla marki. Wszystkie potrzebne do rozpoczęcia pracy to kilku plików audio i skojarzonych transkrypcji. Skorzystaj z poniższych linków, aby rozpocząć tworzenie niestandardowego środowiska zamiany mowy na tekst.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,55 +10,55 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: ed5428da28ebea8b1c7f925696f88e3f3f898942
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 10d76bc1dd52f04cceb9f0952a755c55d90c6896
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606711"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562805"
 ---
 # <a name="get-started-with-custom-voice"></a>Wprowadzenie do usługi Custom Voice
 
-Custom Voice to zestaw narzędzi online, które pozwalają tworzyć mówiącą, jeden z rodzajem głosu dla Twojej marki. Wszystko, czego potrzebny na rozpoczęcie pracy jest kilka przydatnych plików audio i skojarzone transkrypcji. Skorzystaj z linków poniżej, aby rozpocząć tworzenie niestandardowego środowiska zamiany tekstu na mowę.
+Niestandardowy głos to zestaw narzędzi online, które umożliwiają tworzenie rozpoznawalnego, jednoczęściowego głosu dla marki. Wszystkie potrzebne do rozpoczęcia pracy to kilku plików audio i skojarzonych transkrypcji. Skorzystaj z poniższych linków, aby rozpocząć tworzenie niestandardowego środowiska zamiany tekstu na mowę.
 
-## <a name="whats-in-custom-voice"></a>Jaka jest Custom Voice?
+## <a name="whats-in-custom-voice"></a>Co znajduje się w niestandardowym głosowaniu?
 
-Przed rozpoczęciem z głosem niestandardowe, konieczne będzie konto platformy Azure i Subskrypcja usług przetwarzania mowy. Po utworzeniu konta możesz można przygotowywanie danych, uczenie i testowanie modeli, ocenić jakość dźwięku i ostatecznie wdrażanie modelu niestandardowego głosu.
+Przed rozpoczęciem pracy z niestandardowym głosem musisz mieć konto platformy Azure i subskrypcję usługi Speech Services. Po utworzeniu konta możesz przygotować swoje dane, wyszkolić i przetestować modele, oszacować jakość głosu i ostatecznie wdrożyć niestandardowy model głosowy.
 
-Na poniższym diagramie prezentuje kroki, aby utworzyć model niestandardowych voice przy użyciu portalu usługi Custom Voice. Użyj linków, aby dowiedzieć się więcej.
+Na poniższym diagramie przedstawiono kroki umożliwiające utworzenie niestandardowego modelu głosu przy użyciu niestandardowego portalu głosu. Skorzystaj z linków, aby dowiedzieć się więcej.
 
-![Diagram architektury usługi niestandardowych Voice](media/custom-voice/custom-voice-diagram.png)
+![Niestandardowy diagram architektury głosu](media/custom-voice/custom-voice-diagram.png)
 
-1.  [Subskrypcja i Utwórz projekt](#set-up-your-azure-account) — Tworzenie konta platformy Azure i utworzyć subskrypcję usług przetwarzania mowy. Ta subskrypcja ujednoliconego zapewnia dostęp do zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenie mowy i portalu usługi Custom Voice. Następnie przy użyciu posiadanej subskrypcji usług przetwarzania mowy, Utwórz swój pierwszy projekt Custom Voice.
+1.  [Subskrybuj i Utwórz projekt](#set-up-your-azure-account) — Utwórz konto platformy Azure i Utwórz subskrypcję usługi Speech Services. Ta ujednolicona subskrypcja zapewnia dostęp do funkcji zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenia mowy i niestandardowego portalu głosu. Następnie za pomocą subskrypcji usługi Speech Services Utwórz swój pierwszy niestandardowy projekt głosowy.
 
-2.  [Przekazywanie danych](how-to-custom-voice-create-voice.md#upload-your-datasets) — przekazywanie danych (audio i tekst) przy użyciu niestandardowych Voice portal lub interfejsu API usługi Custom Voice. Z poziomu portalu można zbadać i ocenić wyniki Wymowa i współczynniki sygnał do szumu. Aby uzyskać więcej informacji, zobacz [sposób przygotowania danych dla niestandardowych Voice](how-to-custom-voice-prepare-data.md).
+2.  [Przekazuj](how-to-custom-voice-create-voice.md#upload-your-datasets) dane — przekazywanie danych (audio i tekstowych) przy użyciu niestandardowego portalu głosu lub niestandardowego interfejsu API mowy. Z poziomu portalu można zbadać i oszacować wyniki wymowy oraz współczynnik sygnałów do szumów. Aby uzyskać więcej informacji, zobacz [jak przygotować dane dla niestandardowego głosu](how-to-custom-voice-prepare-data.md).
 
-3.  [Uczenie modelu](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) — korzystanie z Twoich danych w celu utworzenia modelu niestandardowych voice zamiany tekstu na mowę. Możesz uczyć modelu w różnych językach. Po szkoleniu Testowanie modelu, a jeśli jesteś zadowolony z wyników, należy wdrożyć model.
+3.  [Uczenie modelu](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) — używanie danych do tworzenia niestandardowego modelu głosu zamiany tekstu na mowę. Możesz nauczyć model w różnych językach. Po przeprowadzeniu szkolenia Przetestuj model i, jeśli wynik jest zadowalający, możesz wdrożyć model.
 
-4.  [Model jest wdrażany](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) — Tworzenie niestandardowego punktu końcowego dla modelu głosowego zamiany tekstu na mowę i użyć jej do synteza mowy produktów, narzędzi i aplikacji.
+4.  [Wdrażanie modelu](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) — Tworzenie niestandardowego punktu końcowego dla modelu głosu zamiany tekstu na mowę i używanie go na potrzeby syntezy mowy w produktach, narzędziach i aplikacjach.
 
-## <a name="set-up-your-azure-account"></a>Konfigurowanie konta platformy Azure
+## <a name="set-up-your-azure-account"></a>Skonfiguruj swoje konto platformy Azure
 
-Wymagana jest subskrypcja usług przetwarzania mowy, korzystać z portalu usługi Custom Speech, aby utworzyć niestandardowy model. Wykonaj te instrukcje, aby utworzyć subskrypcję usługi mowy na platformie Azure. Jeśli nie masz konta platformy Azure, możesz zarejestrować się na nową.  
+Przed rozpoczęciem korzystania z portalu Custom Speech w celu utworzenia modelu niestandardowego należy skorzystać z subskrypcji usługi Speech Services. Postępuj zgodnie z tymi instrukcjami, aby utworzyć subskrypcję usługi Speech Services na platformie Azure. Jeśli nie masz konta platformy Azure, możesz utworzyć nowe konto.  
 
-Po utworzeniu konta platformy Azure i Subskrypcja usług przetwarzania mowy, musisz zalogować się do portalu usługi Custom Voice i Połącz z subskrypcją.
+Po utworzeniu konta platformy Azure i subskrypcji usługi Speech Services należy zalogować się do portalu niestandardowego i połączyć się z subskrypcją.
 
-1. Pobierz klucz subskrypcji usług przetwarzania mowy z witryny Azure portal.
-2. Zaloguj się do [portal Custom Voice](https://aka.ms/custom-voice).
+1. Pobierz klucz subskrypcji usługi Speech Services z Azure Portal.
+2. Zaloguj się do [niestandardowego portalu głosowego](https://aka.ms/custom-voice).
 3. Wybierz swoją subskrypcję i Utwórz projekt mowy.
-4. Jeśli chcesz przełączyć się do innej subskrypcji mowy, użyj ikony koła zębatego, znajduje się w górnym menu nawigacyjnym.
+4. Jeśli chcesz przełączyć się na inną subskrypcję mowy, użyj ikony koło zębate znajdującej się w górnym obszarze nawigacji.
 
 > [!NOTE]
-> Usługa Custom Voice nie obsługuje klucz 30-dniowej wersji próbnej bezpłatne. Konieczne jest posiadanie F0 lub klucza S0 utworzone na platformie Azure, zanim użyjesz usługi.
+> Niestandardowa usługa głosowa nie obsługuje 30-dniowego bezpłatnego klucza wersji próbnej. Aby można było korzystać z usługi, na platformie Azure musi być utworzony klucz F0 lub S0.
 
 ## <a name="how-to-create-a-project"></a>Jak utworzyć projekt
 
-Zawartości, takie jak danych, modele, testy i punktów końcowych są podzielone na **projektów** w portalu usługi Custom Voice. Każdy projekt jest specyficzne dla kraju/języka i płeć głosu, który chcesz utworzyć. Na przykład mogą utworzyć projekt w przypadku głosu żeńskiego dla botów rozmowy z Centrum telefonicznej, korzystających z języka angielskiego na terenie Stanów Zjednoczonych (en US).
+Zawartość, taka jak dane, modele, testy i punkty końcowe, są zorganizowane w **projekty** w portalu niestandardowym. Każdy projekt jest specyficzny dla kraju/języka i płci głosu, który chcesz utworzyć. Na przykład możesz utworzyć projekt dla żeńskiego głosu dla rozmowy telefonicznej botów, która używa języka angielskiego w Stany Zjednoczone (EN-US).
 
-Aby utworzyć swój pierwszy projekt, wybierz **Text-to-Speech/Custom Voice** , a następnie kliknij **nowy projekt**. Postępuj zgodnie z instrukcjami kreatora do tworzenia projektu. Po utworzeniu projektu są wyświetlane cztery karty: **Dane**, **szkolenia**, **testowania**, i **wdrożenia**. Użyć linków dostępnych w [następne kroki](#next-steps) dowiesz się, jak używać każdej karty.
+Aby utworzyć swój pierwszy projekt, wybierz kartę **Zamiana tekstu na mowę/** niestandardową, a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu zobaczysz cztery karty: **Dane**, **szkolenia**, **testowanie**i **wdrażanie**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Przygotowywanie danych Custom Voice](how-to-custom-voice.md)
-- [Tworzenie niestandardowych Voice](how-to-custom-voice-create-voice.md)
-- [Przewodnik: Zarejestruj swoje próbki głosu](record-custom-voice-samples.md)
+- [Przygotowywanie niestandardowych danych głosowych](how-to-custom-voice.md)
+- [Tworzenie niestandardowego głosu](how-to-custom-voice-create-voice.md)
+- [Prowadzą Rejestruj przykłady głosu](record-custom-voice-samples.md)

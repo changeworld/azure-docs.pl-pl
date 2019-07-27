@@ -1,7 +1,7 @@
 ---
-title: Moderowanie tekstu przy użyciu niestandardowych termin list - Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Tworzenie niestandardowych list terminów do wykorzystania przy użyciu interfejsu API moderowania tekstu za pomocą interfejsu API zarządzania listy.
+title: Umiarkowany tekst z niestandardowymi listami terminów — Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Użyj interfejsu API zarządzania listami, aby utworzyć niestandardowe listy terminów do użycia z interfejsem API moderowania tekstu.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 28029fe92a207dba85e2ab5a22c08879b7172925
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a4e9b7925c2309a9682156934e9d94fa83c0d4b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097950"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564398"
 ---
-# <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Moderowanie przy użyciu list niestandardowych termin w konsoli interfejsu API
+# <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Umiarkowane z niestandardowymi listami terminów w konsoli interfejsu API
 
 Domyślna globalna lista terminów w usługach Azure Content Moderator wystarcza w przypadku większości potrzeb moderowania zawartości. Jednak może być konieczne sprawdzanie terminów, które są specyficzne dla organizacji. Na przykład warto oznaczyć tagiem nazwy konkurencji w celu dalszego przeglądu. 
 
-Użyj [interfejsu API zarządzania listy](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) do tworzenia niestandardowych list terminów do wykorzystania przy użyciu interfejsu API moderowania tekstu. **Tekst — ekranu** operacji skanuje tekstu pod kątem wulgarności, a także porównanie tekst udostępnionych i niestandardowych list elementów zabronionych.
+Użyj [interfejsu API zarządzania listami](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) , aby utworzyć niestandardowe listy terminów do użycia z interfejsem API moderowania tekstu. Operacja **ekranu tekstowego** skanuje tekst pod kątem niewulgarności, a także porównuje tekst z niestandardowym i udostępnionymi listami zabronionymi.
 
 > [!NOTE]
 > Istnieje maksymalny limit wynoszący **5 list terminów**, a poszczególne listy **nie mogą przekraczać 10 000 terminów**.
 >
 
-Interfejs API zarządzania lista umożliwia wykonywanie następujących zadań:
+Aby wykonać następujące zadania, można użyć interfejsu API zarządzania listami:
 - Tworzenie listy.
 - Dodawanie terminów do listy.
 - Sprawdzanie terminów względem terminów na liście.
@@ -36,46 +36,46 @@ Interfejs API zarządzania lista umożliwia wykonywanie następujących zadań:
 - Edycja informacji na liście.
 - Odświeżanie indeksu, aby zmiany na liście były uwzględnione w nowym skanowaniu.
 
-## <a name="use-the-api-console"></a>Użyj konsoli interfejsu API
+## <a name="use-the-api-console"></a>Korzystanie z konsoli interfejsu API
 
-Zanim można Testuj interfejs API w konsoli usługi online, należy się klucz subskrypcji. Ten klucz znajduje się na **ustawienia** na karcie **Ocp-Apim-Subscription-Key** pole. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
+Aby można było przetestować interfejs API w konsoli online, musisz mieć swój klucz subskrypcji. Ten klucz znajduje się na karcie **Ustawienia** w polu **OCP-APIM-Subscription-Key** . Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
-## <a name="refresh-search-index"></a>Odśwież indeksu wyszukiwania
+## <a name="refresh-search-index"></a>Odśwież indeks wyszukiwania
 
-Po wprowadzeniu zmian do listy terminów należy odświeżyć jej indeks zmian, które mają zostać uwzględnione w czasie przyszłych skanowań. Ten krok jest podobny do sposobu wyszukiwarki na pulpicie systemu Windows (jeśli jest włączone) lub aparatu wyszukiwania w sieci web stale odświeża jej indeks w celu uwzględnienia nowych plików lub stron.
+Po wprowadzeniu zmian w liście terminów należy odświeżyć jej indeks, aby zmiany zostały uwzględnione w przyszłych skanowaniach. Ten krok przypomina, jak aparat wyszukiwania na pulpicie (jeśli jest włączony) lub aparat wyszukiwania w sieci Web ciągle odświeża swój indeks, aby uwzględnić nowe pliki lub strony.
 
-1. W [dokumentacja interfejsu API zarządzania listy terminów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f), w menu po lewej stronie wybierz **Wyświetla termin**, a następnie wybierz pozycję **Odśwież indeksu wyszukiwania**. 
+1. W temacie [Informacje o interfejsie API zarządzania listami terminów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)w menu po lewej stronie wybierz pozycję **listy terminów**, a następnie wybierz pozycję **Odśwież indeks wyszukiwania**. 
 
-   **Termin — odświeżanie wyszukiwania indeks listy** zostanie otwarta strona.
+   **Lista terminów — zostanie otwarta strona indeks wyszukiwania odświeżania** .
 
-2. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji. 
+2. W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację. 
 
-   ![Listy terminów — pole region strony indeksu wyszukiwania odświeżania](images/test-drive-region.png)
+   ![Listy terminów — odświeżanie zaznaczenia obszaru strony indeksu wyszukiwania](images/test-drive-region.png)
 
-   **Termin — odświeżanie wyszukiwania indeks listy** zostanie otwarta konsola interfejsu API.
+   **Lista terminów —** otwiera konsolę interfejsu API indeksu wyszukiwania.
 
-3. W **listId** wprowadź identyfikator listy. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **wysyłania**.
+3. W polu **listId** wprowadź identyfikator listy. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **Wyślij**.
 
-   ![Listy terminów interfejs API — pola zawartości indeksu wyszukiwania odświeżania konsoli odpowiedzi](images/try-terms-list-refresh-1.png)
+   ![Interfejs API — Lista terminów — pole zawartości odpowiedzi konsoli indeksu wyszukiwania](images/try-terms-list-refresh-1.png)
 
 ## <a name="create-a-term-list"></a>Tworzenie listy terminów
-1. Przejdź do [dokumentacja interfejsu API zarządzania listy termin](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). 
+1. Przejdź do [dokumentacji interfejsu API zarządzania listami terminów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). 
 
-   **Termin Wyświetla — tworzenie** zostanie otwarta strona.
+   **Lista terminów —** zostanie otwarta strona Tworzenie strony.
 
-2. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji. 
+2. W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację. 
 
-   ![Termin list — Tworzenie strony pole region](images/test-drive-region.png)
+   ![Listy terminów — wybór regionu strony](images/test-drive-region.png)
 
-   **Termin Wyświetla — tworzenie** zostanie otwarta konsola interfejsu API.
+   **Lista terminów —** otwiera konsolę interfejsu API.
  
-3. W **Ocp-Apim-Subscription-Key** wprowadź swój klucz subskrypcji.
+3. W polu **OCP-APIM-Subscription-Key** wprowadź swój klucz subskrypcji.
 
-4. W **treść żądania** wprowadź wartości dla **nazwa** (na przykład MyList) i **opis**.
+4. W polu **treść żądania** wprowadź wartości w polach **Nazwa** (na przykład moja lista) i **Opis**.
 
-   ![Termin list — tworzenie nazwa treści żądania w konsoli i opis](images/try-terms-list-create-1.png)
+   ![Listy terminów — Utwórz nazwę i opis treści żądania konsoli](images/try-terms-list-create-1.png)
 
-5. Użyj symboli zastępczych pary klucz wartość, aby przypisać bardziej opisowe metadanych do listy.
+5. Użyj symboli zastępczych par klucz-wartość, aby przypisać do listy więcej metadanych opisowych.
 
        {
           "Name": "MyExclusionList",
@@ -87,89 +87,89 @@ Po wprowadzeniu zmian do listy terminów należy odświeżyć jej indeks zmian, 
           }
        }
 
-   Dodaj metadane listy jako pary klucz wartość, a nie rzeczywistych warunków.
+   Dodaj metadane listy jako pary klucz-wartość, a nie rzeczywiste warunki.
  
-6. Wybierz pozycję **Wyślij**. Na liście jest tworzony. Uwaga **identyfikator** wartość, która jest skojarzona z nową listę. Ten identyfikator będzie potrzebny do innych funkcji zarządzania listy terminów.
+6. Wybierz pozycję **Wyślij**. Twoja lista zostanie utworzona. Zwróć uwagę na wartość **identyfikatora** skojarzoną z nową listą. Ten identyfikator jest potrzebny dla innych funkcji zarządzania listą okresów.
 
-   ![Termin list — Tworzenie konsoli odpowiedzi na zawartości pola zawiera identyfikator listy](images/try-terms-list-create-2.png)
+   ![Listy terminów — pole wyboru Utwórz zawartość odpowiedzi konsoli pokazuje Identyfikator listy](images/try-terms-list-create-2.png)
  
-7. Dodawanie warunków do MyList. W menu po lewej stronie w obszarze **termin**, wybierz opcję **Dodaj termin**. 
+7. Dodaj warunki do listy Moje. W menu po lewej stronie w obszarze **termin**wybierz pozycję **Dodaj termin**. 
 
-   **Termin — Dodaj termin** zostanie otwarta strona. 
+   Zostanie otwarta strona **termin — Dodawanie terminu** . 
 
-8. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji. 
+8. W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację. 
 
-   ![Termin — Dodaj pole region strony termin](images/test-drive-region.png)
+   ![Termin — Dodaj region strony terminu](images/test-drive-region.png)
 
-   **Termin — Dodaj termin** zostanie otwarta konsola interfejsu API.
+   Zostanie otwarta konsola interfejsu API **warunku Dodawanie terminu** .
  
-9. W **listId** pole, wprowadź identyfikator listy, który został wygenerowany, a następnie wybierz wartość dla **języka**. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **wysyłania**.
+9. W polu **listId** wprowadź wygenerowany identyfikator listy i wybierz wartość dla **języka**. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **Wyślij**.
 
-   ![Termin — Dodaj parametry zapytania konsoli termin](images/try-terms-list-create-3.png)
+   ![Termin — Dodawanie parametrów zapytania konsoli warunkowej](images/try-terms-list-create-3.png)
  
-10. Aby sprawdzić, czy termin został dodany do listy, w menu po lewej stronie wybierz **termin**, a następnie wybierz pozycję **Pobierz wszystkie terminy**. 
+10. Aby sprawdzić, czy termin został dodany do listy, w menu po lewej stronie wybierz pozycję **termin**, a następnie wybierz pozycję **Pobierz wszystkie warunki**. 
 
-    **Termin — Pobierz wszystkie terminy** zostanie otwarta konsola interfejsu API.
+    Termin — zostanie otwarta konsola interfejsu API **pobierania wszystkich warunków** .
 
-11. W **listId** wprowadź identyfikator listy, a następnie wprowadź klucz subskrypcji. Wybierz pozycję **Wyślij**.
+11. W polu **listId** wprowadź identyfikator listy, a następnie wprowadź swój klucz subskrypcji. Wybierz pozycję **Wyślij**.
 
-12. W **zawartość odpowiedzi** upewnij się, warunkami, wprowadzony.
+12. W polu **zawartość odpowiedzi** Sprawdź wprowadzone warunki.
 
-    ![Termin - Get-wszystkie terminy konsoli odpowiedzi pola zawartości listy warunków, które zostały wprowadzone](images/try-terms-list-create-4.png)
+    ![Termin — Pobierz wszystkie warunki pole zawartości odpowiedzi konsoli zawiera listę wprowadzonych terminów](images/try-terms-list-create-4.png)
  
-13. Dodaj kilka więcej postanowień. Teraz, po utworzeniu niestandardowej listy warunków, spróbuj [skanowanie jakiś tekst](try-text-api.md) przy użyciu listy terminów niestandardowych. 
+13. Dodaj kilka dodatkowych warunków. Teraz, gdy utworzono niestandardową listę warunków, spróbuj [zeskanować jakiś tekst](try-text-api.md) przy użyciu listy warunków niestandardowych. 
 
 ## <a name="delete-terms-and-lists"></a>Usuwanie terminów i list
 
-Usuwanie terminu lub listy jest bardzo proste. Interfejs API umożliwia wykonywanie następujących zadań:
+Usuwanie terminu lub listy jest bardzo proste. Użyj interfejsu API, aby wykonać następujące zadania:
 
-- Usuwanie terminu. (**Termin — Usuń**)
-- Usuwanie wszystkich terminów z listy, bez usuwania listy. (**Termin — Usuń wszystkie warunki**)
-- Usuwanie listy i całej jej zawartości. (**Listy terminów — Usuń**)
+- Usuwanie terminu. (**Termin — usuwanie**)
+- Usuwanie wszystkich terminów z listy, bez usuwania listy. (**Term. Usuń wszystkie warunki**)
+- Usuwanie listy i całej jej zawartości. (**Listy terminów — usuwanie**)
 
-W tym przykładzie Usuwa pojedynczy termin.
+Ten przykład usuwa pojedynczy termin.
 
-1. W [dokumentacja interfejsu API zarządzania listy termin](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f), w menu po lewej stronie wybierz **termin**, a następnie wybierz pozycję **Usuń**. 
+1. W temacie [Informacje o interfejsie API zarządzania listami terminów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)w menu po lewej stronie wybierz pozycję **termin**, a następnie wybierz pozycję **Usuń**. 
 
-   **Termin — Usuń** zostanie otwarty.
+   Zostanie otwarty **termin usuwania** .
 
-2. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji. 
+2. W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację. 
 
-   ![Termin — pole region strony Delete](images/test-drive-region.png)
+   ![Termin — Usuwanie obszaru strony](images/test-drive-region.png)
 
-   **Termin — Usuń** zostanie otwarta konsola interfejsu API.
+   Zostanie otwarta konsola interfejsu API **usuwania** .
   
-3. W **listId** wprowadź identyfikator listy, który chcesz usunąć termin z. Ten identyfikator jest liczbą (w naszym przykładzie **122**), jest zwracany w **zawiera termin — Uzyskaj szczegółowe informacje** konsoli MyList. Wprowadź termin, a następnie wybierz język.
+3. W polu **listId** wprowadź identyfikator listy, z której chcesz usunąć termin. Ten identyfikator jest liczbą (w naszym przykładzie **122**), która jest zwracana z **listy terminów-Get** Details Console. Wprowadź termin i wybierz język.
  
-   ![Termin — parametry zapytania konsoli Delete](images/try-terms-list-delete-1.png)
+   ![Termin — Usuwanie parametrów zapytania konsoli](images/try-terms-list-delete-1.png)
 
-4. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **wysyłania**.
+4. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **Wyślij**.
 
-5. Aby sprawdzić, czy termin został usunięty, użyj **termin Wyświetla — Pobierz wszystkie** konsoli.
+5. Aby sprawdzić, czy termin został usunięty, użyj **list terminów — Pobierz wszystkie** konsole.
 
-   ![Termin list — pobieranie zawartości, że pole pokazuje, że termin zostanie usunięta konsoli wszystkie odpowiedzi](images/try-terms-list-delete-2.png)
+   ![Listy terminów — pole wyboru Pobierz wszystkie informacje dotyczące odpowiedzi konsoli pokazuje, że termin jest usuwany](images/try-terms-list-delete-2.png)
  
-## <a name="change-list-information"></a>Zmień informacje dotyczące listy
+## <a name="change-list-information"></a>Zmień informacje o liście
 
-Możesz edytować nazwę i opis listy i dodawania elementów metadanych.
+Można edytować nazwę i opis listy oraz dodawać elementy metadanych.
 
-1. W [dokumentacja interfejsu API zarządzania listy termin](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f), w menu po lewej stronie wybierz **Wyświetla termin**, a następnie wybierz pozycję **szczegóły aktualizacji**. 
+1. W temacie [Informacje o interfejsie API zarządzania listami terminów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)w menu po lewej stronie wybierz pozycję **listy terminów**, a następnie wybierz pozycję **Aktualizuj szczegóły**. 
 
-   **Termin listy — informacje na temat aktualizacji** zostanie otwarta strona.
+   **Lista terminów —** zostanie otwarta strona Szczegóły aktualizacji.
 
-2. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji. 
+2. W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację. 
 
-   ![Listy terminów — pole region strony Szczegóły aktualizacji](images/test-drive-region.png)
+   ![Listy terminów — wybór obszaru strony szczegółów aktualizacji](images/test-drive-region.png)
 
-   **Termin listy — informacje na temat aktualizacji** zostanie otwarta konsola interfejsu API.
+   **Lista terminów —** zostanie otwarta konsola interfejsu API Szczegóły aktualizacji.
 
-3. W **listId** wprowadź identyfikator listy, a następnie wprowadź klucz subskrypcji.
+3. W polu **listId** wprowadź identyfikator listy, a następnie wprowadź swój klucz subskrypcji.
 
-4. W **treść żądania** , edytować, a następnie wybierz **wysyłania**.
+4. Wprowadź zmiany w polu **treść żądania** , a następnie wybierz pozycję **Wyślij**.
 
-   ![Listy terminów — szczegóły aktualizacji konsoli edycji treść żądania](images/try-terms-list-change-1.png)
+   ![Listy terminów — zmiany treści żądania konsoli szczegółów aktualizacji](images/try-terms-list-change-1.png)
  
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W kodzie za pomocą interfejsu API REST lub rozpoczynać się [termin zawiera przewodnik Szybki Start .NET](term-lists-quickstart-dotnet.md) do integracji z aplikacją.
+Użyj interfejsu API REST w kodzie lub Rozpocznij od terminu na [platformie .NET — szybki](term-lists-quickstart-dotnet.md) Start, aby zintegrować z aplikacją.

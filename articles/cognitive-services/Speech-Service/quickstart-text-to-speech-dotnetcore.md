@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Syntetyzowania mowy, C# (.NET Core) — usługi mowy'
+title: 'Szybki start: Funkcja syntezy mowy C# (.NET Core) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak syntetyzowania mowy w C# w ramach platformy .NET Core w Windows przy użyciu zestawu SDK rozpoznawania mowy
+description: Dowiedz się, jak przeprowadzić funkcję C# syntezy mowy w środowisku .NET Core w systemie Windows przy użyciu zestawu Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 7b4a018e38ca625e38dc1658a95d3ce0e677f711
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: b298e66674753e33a28fb3404e36e63b5baa8dff
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467425"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559252"
 ---
-# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: Syntetyzowania mowy z zestawem SDK mowy dla platformy .NET Core
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: Wykluczanie mowy przy użyciu zestawu Speech SDK dla platformy .NET Core
 
-Przewodniki Szybki Start są również dostępne dla [rozpoznawania mowy](quickstart-csharp-dotnetcore-windows.md) i [tłumaczenia mowy](quickstart-translate-speech-dotnetcore-windows.md).
+Przewodniki Szybki Start są również dostępne do [rozpoznawania mowy](quickstart-csharp-dotnetcore-windows.md) i [translacji mowy](quickstart-translate-speech-dotnetcore-windows.md).
 
-W tym artykule utworzysz aplikację konsolową w języku C# dla platformy .NET Core w systemie Windows za pomocą zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services. Możesz syntetyzowania mowę na podstawie tekstu w czasie rzeczywistym do osoby mówiącej Twojego komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
+W tym artykule utworzysz aplikację konsolową w języku C# dla platformy .NET Core w systemie Windows za pomocą zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services. Wykorzystasz mowę z tekstu w czasie rzeczywistym do głośnika komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
 
 > [!NOTE]
 > .NET Core jest międzyplatformową platformą .NET typu open source, która wdraża specyfikację [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard).
 
-Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodnik Szybki Start. Możesz go uzyskać bezpłatnie. Zobacz [bezpłatnego wypróbowania usługi mowy](get-started.md) Aby uzyskać szczegółowe informacje.
+Aby ukończyć ten przewodnik Szybki Start, potrzebujesz klucza subskrypcji usługi Speech Services. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje [, zobacz Wypróbuj bezpłatne usługi mowy](get-started.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,7 +40,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-dotnetcore-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Otwórz plik `Program.cs` i zastąp cały jego kod poniższym kodem.
 
@@ -62,18 +62,18 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
     ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Uruchamianie aplikacji do debugowania")
 
-1. Zostanie wyświetlone okno konsoli monit wpisz jakiś tekst. Wpisz kilka słów lub zdanie. Wpisany tekst jest przesyłane do usług przetwarzania mowy i przekształcony na mowę, na którym odtwarzany na głośników.
+1. Zostanie wyświetlone okno konsoli z monitem o wpisanie tekstu. Wpisz kilka wyrazów lub zdania. Tekst, który wpisano, jest przesyłany do usługi mowy i można go wyrównać do mowy, który jest odtwarzany na głośniku.
 
-    ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym syntezy](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "dane wyjściowe konsoli po pomyślnym syntezy")
+    ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po] pomyślnej syntezie (media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Dane wyjściowe konsoli po") pomyślnej syntezie
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Więcej przykładów, takie jak sposób syntetyzowania zamiana mowy na plik audio są dostępne w witrynie GitHub.
+Dodatkowe przykłady, takie jak Metoda syntezy mowy do pliku dźwiękowego, są dostępne w serwisie GitHub.
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Dostosowywanie czcionek głosowych](how-to-customize-voice-font.md)
-- [Próbki głosu rekord](record-custom-voice-samples.md)
+- [Dostosuj czcionki głosowe](how-to-customize-voice-font.md)
+- [Rejestruj przykłady głosu](record-custom-voice-samples.md)

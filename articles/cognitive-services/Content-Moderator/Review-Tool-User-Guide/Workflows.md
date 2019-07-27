@@ -1,7 +1,7 @@
 ---
-title: Definiowanie i korzystanie z zawartości przepływów pracy za pomocą narzędzie do przeglądu - Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Azure Content Moderator projektanta przepływów pracy można użyć do definiowania niestandardowych przepływów pracy i wartości progowe, oparte na zawartości zasad.
+title: Definiowanie i używanie przepływów pracy zawartości za pomocą narzędzia do przeglądu — Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Za pomocą projektanta przepływów pracy usługi Azure Content Moderator można definiować niestandardowe przepływy pracy i progi na podstawie zasad dotyczących zawartości.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -10,77 +10,77 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: sajagtap
-ms.openlocfilehash: 006f7d6691b8872aaa7ff8ccacff484585761d00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b87529014a0eeb5561cd166a29f2309198733b5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61271185"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565626"
 ---
-# <a name="define-and-use-moderation-workflows"></a>Definiowanie i korzystanie z przepływów pracy moderowania
+# <a name="define-and-use-moderation-workflows"></a>Definiowanie przepływów pracy moderowania i korzystanie z nich
 
-W tym przewodniku dowiesz się, jak skonfigurować i używać [przepływy pracy](../review-api.md#workflows) na [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com) witryny sieci Web. Przepływy pracy są oparte na chmurze niestandardowe filtry, które można użyć, aby bardziej efektywnie obsługiwać zawartość. Przepływy pracy mogą łączyć się z różnych usług do filtrowania zawartości na różne sposoby, a następnie podjąć odpowiednie działania. Ten przewodnik pokazuje, jak używać łącznika pakiet Content Moderator, (która jest domyślnie włączone) do filtrowania zawartości i skonfiguruj ludziom dokonywanie w scenariuszu typowe moderowania.
+W tym przewodniku dowiesz się, jak skonfigurować [przepływy pracy](../review-api.md#workflows) i korzystać z nich w witrynie internetowej [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com) . Przepływy pracy to dostosowane filtry oparte na chmurze, które umożliwiają efektywniejsze obsługiwanie zawartości. Przepływy pracy mogą łączyć się z różnymi usługami, aby filtrować zawartość na różne sposoby, a następnie podejmować odpowiednie działania. W tym przewodniku pokazano, jak używać łącznika Content Moderator (który jest włączony domyślnie) do filtrowania zawartości i konfigurowania weryfikacji ludzkich w typowym scenariuszu moderowania.
 
 ## <a name="create-a-new-workflow"></a>Utwórz nowy przepływ pracy
 
-Przejdź do [narzędzie do przeglądu usługi Content Moderator](https://contentmoderator.cognitive.microsoft.com/) i zaloguj się. Na **ustawienia** zaznacz **przepływy pracy**.
+Przejdź do [Narzędzia do przeglądu Content moderator](https://contentmoderator.cognitive.microsoft.com/) i zaloguj się. Na karcie **Ustawienia** wybierz pozycję **przepływy pracy**.
 
 ![Ustawienie przepływów pracy](images/2-workflows-0.png)
 
-Na następnym ekranie Wybierz **Dodaj przepływ pracy**.
+Na następnym ekranie wybierz pozycję **Dodaj przepływ pracy**.
 
 ![Dodawanie przepływu pracy](images/2-workflows-1.png)
 
 ### <a name="assign-a-name-and-description"></a>Przypisz nazwę i opis
 
-Nazwa przepływu pracy, a następnie wprowadź opis i wybierz, czy przepływ pracy będzie obsługiwać obrazy lub tekst.
+Nadaj nazwę przepływowi pracy, wprowadź opis, a następnie wybierz, czy przepływ pracy będzie obsługiwał obrazy czy tekst.
 
-![Nazwa przepływu pracy i opis](images/image-workflow-create.PNG)
+![Nazwa i opis przepływu pracy](images/image-workflow-create.PNG)
 
 ### <a name="define-evaluation-criteria"></a>Zdefiniuj kryteria oceny
 
-Na następnym ekranie, przejdź do **Jeśli** sekcji. W menu górnej listy rozwijanej wybierz **warunek**. Pozwoli to na konfigurowanie warunku, na którym przepływ pracy podejmiemy akcje. Jeśli chcesz użyć wielu warunków, wybierz opcję **kombinacji** zamiast tego. 
+Na następnym ekranie przejdź do sekcji **Jeśli** . W górnym menu rozwijanym wybierz pozycję **warunek**. Umożliwi to skonfigurowanie warunku działania przepływu pracy. Jeśli chcesz użyć wielu warunków, wybierz kombinację  . 
 
-Następnie wybierz łącznik. W tym przykładzie użyto **pakietu Content Moderator**. W zależności od wybranych łącznika uzyskasz różne opcje danych wyjściowych. Zobacz [łączników](./configure.md#connectors) części przewodnika ustawienia narzędzia przeglądu, aby dowiedzieć się, jak skonfigurować inne łączniki.
+Następnie wybierz łącznik. Ten przykład używa **Content moderator**. W zależności od wybranego łącznika uzyskasz różne opcje danych wyjściowych. Zobacz sekcję [Łączniki](./configure.md#connectors) przewodnika po ustawieniach narzędzia do przeglądu, aby dowiedzieć się, jak skonfigurować inne łączniki.
 
-![Wybierz łącznik przepływu pracy](images/image-workflow-connect-to.PNG)
+![Wybieranie łącznika przepływu pracy](images/image-workflow-connect-to.PNG)
 
-Wybierz żądaną produktu wyjściowego i określenie warunków, aby sprawdzić, czy przed.
+Wybierz żądane dane wyjściowe do użycia i ustaw warunki, aby je sprawdzić.
 
 ![Zdefiniuj warunek przepływu pracy](images/image-workflow-condition.PNG)
 
-### <a name="define-the-action"></a>Definiowanie akcji
+### <a name="define-the-action"></a>Zdefiniuj akcję
 
-Przejdź do **następnie** sekcji, w którym możesz wybrać akcję. Poniższy przykład tworzy przeglądu obrazu i przypisuje tag. Opcjonalnie możesz dodać alternatywna ścieżka (w przeciwnym razie) i Ustaw akcję w tym także.
+Przejdź do sekcji **then** , w której zostanie wybrana akcja. Poniższy przykład tworzy przegląd obrazu i przypisuje tag. Opcjonalnie można dodać alternatywną ścieżkę (inaczej) i ustawić dla niej akcję.
 
-![Definiowanie akcji przepływu pracy](images/image-workflow-action.PNG)
+![Zdefiniuj akcję przepływu pracy](images/image-workflow-action.PNG)
 
 ### <a name="save-the-workflow"></a>Zapisz przepływ pracy
 
-Zanotuj nazwę przepływu pracy; potrzebna jest nazwa, aby uruchomić zadanie Moderowanie przy użyciu interfejsu API przepływu pracy (patrz poniżej). Na koniec Zapisz w przepływie pracy używającym **Zapisz** znajdujący się u góry strony.
+Zanotuj nazwę przepływu pracy; potrzebna jest nazwa, aby uruchomić zadanie moderowania z interfejsem API przepływu pracy (patrz poniżej). Na koniec Zapisz przepływ pracy, korzystając z przycisku **Zapisz** w górnej części strony.
 
 ## <a name="test-the-workflow"></a>Testowanie przepływu pracy
 
-Skoro zdefiniowano niestandardowego przepływu pracy, można ją przetestować przy użyciu przykładowej zawartości. Przejdź do **przepływy pracy** i następnie wybierz odpowiedni **wykonania przepływu pracy** przycisku.
+Po zdefiniowaniu niestandardowego przepływu pracy przetestuj go przy użyciu przykładowej zawartości. Przejdź do obszaru **przepływy pracy** i wybierz odpowiedni przycisk **Wykonaj przepływ pracy** .
 
 ![Test przepływu pracy](images/image-workflow-execute.PNG)
 
-Zapisz ten adres [przykładowy obraz](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg) na dysk lokalny. Następnie wybierz pozycję **wybierz pliki** i przekazania obrazu do przepływu pracy.
+Zapisz ten [Przykładowy obraz](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg) na dysku lokalnym. Następnie wybierz pozycję **Wybierz pliki** i Przekaż obraz do przepływu pracy.
 
-![Moduł uruchamiający testy z ofertą na obraz](images/sample-text.jpg)
+![Moduł uruchamiający z nakładaniem się cytatem na obrazie](images/sample-text.jpg)
 
 ### <a name="track-progress"></a>Śledzenie postępu
 
-Możesz wyświetlić postęp przepływu pracy w następnym oknie podręcznym.
+Postęp przepływu pracy można wyświetlić w następnym oknie podręcznym.
 
-![Śledzenia wykonywania przepływu pracy](images/image-workflow-job.PNG)
+![Śledź wykonywanie przepływu pracy](images/image-workflow-job.PNG)
 
-### <a name="verify-workflow-action"></a>Sprawdź akcji przepływu pracy
+### <a name="verify-workflow-action"></a>Weryfikuj akcję przepływu pracy
 
-Przejdź do **obraz** karcie **Przejrzyj** i sprawdź, czy jest przegląd nowo utworzonego obrazu.
+Przejdź do karty **obraz** w obszarze **Przegląd** i sprawdź, czy jest tworzony nowo utworzony przegląd obrazu.
 
 ![Przegląd obrazów](images/image-workflow-review.PNG)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku przedstawiono sposób konfigurowania i używania Moderowanie przepływów pracy, z usługi Content Moderator [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com). Następnie możesz zapoznać się [Podręcznik interfejsu API REST](../try-review-api-workflow.md) dowiesz się, jak programowo tworzyć przepływy pracy.
+W tym przewodniku zawarto informacje na temat konfigurowania przepływów pracy moderowania i korzystania z nich za pomocą [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com)Content Moderator. Następnie zapoznaj się z [przewodnikiem interfejsu API REST](../try-review-api-workflow.md) , aby dowiedzieć się, jak tworzyć przepływy pracy programowo.

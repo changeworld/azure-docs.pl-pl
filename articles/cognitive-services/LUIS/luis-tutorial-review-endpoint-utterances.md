@@ -1,5 +1,5 @@
 ---
-title: Przeglądanie wypowiedzi punktu końcowego
+title: Przeglądanie punktu końcowego wyrażenia długości — LUIS
 titleSuffix: Azure Cognitive Services
 description: Ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS i uznane za niepewne przez tę usługę. Niektóre wypowiedzi mogą wymagać weryfikacji pod kątem intencji, a inne — pod kątem jednostki.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 2994f7b19d5a104b129dc4d7aff29dabbc89f0f4
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: dd5c0012bad567623fdfc0a70760f692aafe0e3e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276014"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563318"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Samouczek: Rozwiązywanie problemów z niepewnymi przewidywaniami przez przeglądanie wypowiedzi punktu końcowego
 W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS i uznane za niepewne przez tę usługę. Niektóre wypowiedzi mogą wymagać weryfikacji pod kątem intencji, a inne — pod kątem jednostki. Należy regularnie przeglądać wypowiedzi punktu końcowego w ramach zaplanowanej konserwacji usługi LUIS. 
@@ -75,19 +75,19 @@ Wykonaj następujące czynności:
     [![Zrzut ekranu obszaru Review endpoint utterances (Przeglądanie wypowiedzi punktu końcowego) z wyróżnionym przełącznikiem Entities view (Widok jednostek)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
 
-    Ta wypowiedź `I'm looking for a job with Natural Language Processing`, nie jest poprawną intencji. 
+    Ta wypowiedź, `I'm looking for a job with Natural Language Processing`, nie jest w poprawnym zamiarem. 
 
-    Przyczyna wypowiedź został mispredicted jest fakt, że **ApplyForJob** celem ma 21 wypowiedzi w porównaniu do 7 wypowiedzi w **GetJobInformation**. Celem z wypowiedzi więcej będą mieć wyższe prognozy. Jest ważne, jest równoważone ilość i jakość wypowiedzi między opcjami.
+    Przyczyną nieoczekiwanej przewidywania wypowiedź jest to, że intencja **ApplyForJob** ma 21 wyrażenia długości w porównaniu do 7 wyrażenia długości w **GetJobInformation**. Cel o większej wyrażenia długości będzie miał wyższą prognozę. Należy pamiętać, że ilość i jakość wyrażenia długości w ramach intencji są zrównoważone.
 
-1.  Aby wyrównać to wypowiedź, wybierz poprawny intencji i oznacz jednostki zadania znajdujące się w nim. Zmieniono wypowiedź można dodać do aplikacji, wybierając zielone pole wyboru. 
+1.  Aby wyrównać tę wypowiedź, wybierz odpowiednie przeznaczenie i Oznacz w niej jednostkę zadania. Dodaj zmienione wypowiedź do aplikacji, zaznaczając zieloną wartość pola wyboru. 
 
     |Wypowiedź|Poprawna intencja|Brakujące jednostki|
     |:--|:--|:--|
     |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Zadania — "Języka naturalnego procesu"|
 
-    Dodawanie wypowiedź przenosi wypowiedź z **Przejrzyj wypowiedzi punktu końcowego** do **GetJobInformation** intencji. Wypowiedź punktu końcowego jest teraz przykładową wypowiedzią dla tej intencji. 
+    Dodanie wypowiedź przenosi wypowiedź z **punktu końcowego przeglądu wyrażenia długości** do zamiaru **GetJobInformation** . Wypowiedź punktu końcowego jest teraz przykładową wypowiedzią dla tej intencji. 
 
-    Wraz z wyrównywanie tej wypowiedź poprawnie, więcej wypowiedzi powinny zostać dodane do **GetJobInformation** intencji. Ta czynność zostanie zostawiona jako ćwiczenie do samodzielnego wykonania. Wszystkie intencje z wyjątkiem intencji **None** powinny mieć mniej więcej taką samą liczbę przykładowych wypowiedzi. Intencja **None** powinna mieć 10% wszystkich wypowiedzi w aplikacji. 
+    Wraz z prawidłowym dostosowaniem tego wypowiedź do zamiaru **GetJobInformation** należy dodać więcej wyrażenia długości. Ta czynność zostanie zostawiona jako ćwiczenie do samodzielnego wykonania. Wszystkie intencje z wyjątkiem intencji **None** powinny mieć mniej więcej taką samą liczbę przykładowych wypowiedzi. Intencja **None** powinna mieć 10% wszystkich wypowiedzi w aplikacji. 
 
 1. Przejrzyj pozostałe wypowiedzi w tej intencji, oznaczając je etykietami i poprawiając intencję **Aligned intent** (Dopasowana intencja), jeśli jest ona nieprawidłowa.
 
@@ -235,7 +235,7 @@ Niektóre wypowiedzi punktu końcowego będą miały wysoki współczynnik przew
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku przejrzano wypowiedzi przesłane w punkcie końcowym, które usługa LUIS uznała za niepewne. Zweryfikowanie i przeniesienie tych wypowiedzi do poprawnych intencji jako przykładowych wypowiedzi spowoduje, że dokładność przewidywania usługi LUIS zwiększy się.
 
 > [!div class="nextstepaction"]

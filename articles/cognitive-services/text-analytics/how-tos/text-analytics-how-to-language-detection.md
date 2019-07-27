@@ -1,6 +1,7 @@
 ---
-title: Wykryj język za pomocą interfejsu API REST analizy tekstu | Dokumentacja firmy Microsoft
-description: Wykryj język za pomocą interfejsu API REST analizy tekstu z usług Azure Cognitive Services.
+title: Wykrywanie języka za pomocą interfejsu API REST analiza tekstu
+titleSuffix: Azure Cognitive Services
+description: Wykryj język przy użyciu interfejsu API REST analiza tekstu z usługi Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,31 +10,31 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: e1adeb34cf999f471bb183e4d7de9c65427252bb
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 98f7ef3e6ce6ce8569e6cf1fba1c939e470d4be7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986506"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552473"
 ---
-# <a name="example-detect-language-with-text-analytics"></a>Przykład: Wykryj język z analizy tekstu
+# <a name="example-detect-language-with-text-analytics"></a>Przykład: Wykrywanie języka za pomocą analiza tekstu
 
-[Wykrywanie języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) funkcji Azure REST interfejs API analizy tekstu ocenia wprowadzanie tekstu dla każdego dokumentu i zwraca identyfikatorów języka z oceną, która wskazuje siłę analizy.
+Funkcja [wykrywanie języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) interfejsu API REST platformy Azure analiza tekstu szacuje dane wejściowe tekstu dla każdego dokumentu i zwraca identyfikatory języka z wynikiem, który wskazuje na siłę analizy.
 
-Ta możliwość jest przydatna w przypadku magazynów zawartości przechowujących dowolne teksty, których język nie jest znany. Wyniki analizy możesz przeanalizować w celu ustalenia, który język jest używany w wejściowym dokumencie. Odpowiedzi zwraca również wartość jest wynik, który odzwierciedla ufności modelu. Wartość wyniku jest od 0 do 1.
+Ta możliwość jest przydatna w przypadku magazynów zawartości przechowujących dowolne teksty, których język nie jest znany. Wyniki analizy możesz przeanalizować w celu ustalenia, który język jest używany w wejściowym dokumencie. Odpowiedź zwraca również wynik, który odzwierciedla zaufanie modelu. Wartość wyniku jest z przedziału od 0 do 1.
 
-Funkcja wykrywania języka może wykryć szerokiej gamy języków, warianty, dialekty i niektóre języki regionalne lub kultury. Dokładna lista języków dla tej funkcji nie jest opublikowana.
+Funkcja wykrywanie języka może wykryć szeroką gamę języków, wariantów, dialektów i niektórych języków regionalnych lub kulturowych. Dokładna lista języków dla tej funkcji nie jest opublikowana.
 
-Jeśli masz zawartość wyrażona w języku rzadziej używane, można spróbować funkcji wykrywania języka, aby zobaczyć, jeśli zwracany jest kod. Odpowiedź dla języków, których nie można wykryć jest `unknown`.
+Jeśli masz zawartość wyrażoną w rzadziej używanym języku, możesz wypróbować funkcję wykrywanie języka, aby zobaczyć, czy zwraca kod. Odpowiedzi dla języków, których nie można wykryć, `unknown`to.
 
 > [!TIP]
 > Analiza tekstu udostępnia również obraz kontenera platformy Docker oparty na systemie Linux na potrzeby wykrywania języka, można więc [zainstalować i uruchomić kontener analizy tekstu](text-analytics-how-to-install-containers.md) blisko danych.
 
 ## <a name="preparation"></a>Przygotowanie
 
-Konieczne jest posiadanie dokumenty JSON w następującym formacie: Identyfikator i tekst.
+Musisz mieć dokumenty JSON w tym formacie: Identyfikator i tekst.
 
-Rozmiar dokumentu musi być w obszarze 5,120 znaków w dokumencie. Może mieć maksymalnie 1000 elementów (ID) na kolekcję. Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest przykładem zawartości, które mogą przesyłać do wykrywania języka:
+Rozmiar dokumentu musi zawierać 5 120 znaków na dokument. Możesz mieć do 1 000 elementów (identyfikatorów) na kolekcję. Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest przykładem zawartości, którą można przesłać do wykrywania języka:
 
    ```
     {
@@ -64,33 +65,33 @@ Rozmiar dokumentu musi być w obszarze 5,120 znaków w dokumencie. Może mieć m
 
 ## <a name="step-1-structure-the-request"></a>Krok 1: Określenie struktury żądania
 
-Aby uzyskać więcej informacji na temat definicji żądania, zobacz [wywołania interfejsu API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
+Aby uzyskać więcej informacji na temat definicji żądania, zobacz [wywoływanie interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
 
-+ Utwórz żądanie POST. Aby zapoznać się z dokumentacją interfejsu API dla tego żądania, zobacz [interfejsu API wykrywania języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
++ Utwórz żądanie POST. Aby zapoznać się z dokumentacją interfejsu API dla tego żądania, zobacz [interfejs api wykrywanie języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-+ Ustaw punkt końcowy HTTP dla wykrywania języka. Użyj zasobów analizy tekstu na platformie Azure lub wystąpieniami [kontenera analizy tekstu](text-analytics-how-to-install-containers.md). Musi on zawierać `/languages` zasobów: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
++ Ustaw punkt końcowy HTTP dla wykrywania języka. Użyj zasobu analiza tekstu na platformie Azure lub w [kontenerze analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musi zawierać `/languages` zasób: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
 
-+ Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [Znajdź punkty końcowe i klucze dostępu](text-analytics-how-to-access-key.md).
++ Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [Znajdowanie punktów końcowych i kluczy dostępu](text-analytics-how-to-access-key.md).
 
 + W treści żądania podaj kolekcję dokumentów JSON przygotowaną na potrzeby tej analizy.
 
 > [!Tip]
 > Użyj programu [Postman](text-analytics-how-to-call-api.md) lub otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7), aby określić strukturę żądania i przesłać je do usługi za pomocą operacji POST.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Żądanie POST
+## <a name="step-2-post-the-request"></a>Krok 2: Opublikuj żądanie
 
-Analiza jest wykonywana po odebraniu żądania. Aby uzyskać informacje na temat rozmiaru i liczby żądań można wysyłać na minutę i sekundę, zobacz [limity danych](../overview.md#data-limits) sekcja w przeglądzie.
+Analiza jest wykonywana po odebraniu żądania. Aby uzyskać informacje na temat rozmiaru i liczby żądań wysyłanych na minutę i sekundę, zobacz sekcję [limity danych](../overview.md#data-limits) w przeglądzie.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
 
 ## <a name="step-3-view-the-results"></a>Krok 3: Wyświetlanie wyników
 
-Wszystkie żądania POST Zwróć odpowiedź w formacie JSON — przy użyciu identyfikatorów i wykryto właściwości.
+Wszystkie żądania POST zwracają odpowiedź sformatowaną w formacie JSON z identyfikatorami i wykrytymi właściwościami.
 
-Dane wyjściowe są zwracane natychmiast. Można strumienia wyniki do aplikacji, która akceptuje JSON lub zapisywać dane wyjściowe do pliku w systemie lokalnym. Następnie można zaimportować dane wyjściowe do aplikacji, która umożliwia sortowanie, wyszukiwanie i manipulowania danymi.
+Dane wyjściowe są zwracane natychmiast. Można przesyłać strumieniowo wyniki do aplikacji, która akceptuje kod JSON lub zapisuje dane wyjściowe do pliku w systemie lokalnym. Następnie zaimportuj dane wyjściowe do aplikacji, która może być używana do sortowania, wyszukiwania i manipulowania danymi.
 
-Wyniki dla przykładowego żądania powinny wyglądać podobnie do następującego kodu JSON. Zwróć uwagę, jest jeden dokument z wieloma elementami. Dane wyjściowe są w języku angielskim. Identyfikatory języka obejmują przyjazną nazwę i kod języka zgodne ze standardem [ISO 639-1](https://www.iso.org/standard/22109.html).
+Wyniki dla przykładowego żądania powinny wyglądać podobnie do następującego kodu JSON. Zwróć uwagę, że jest to jeden dokument z wieloma elementami. Dane wyjściowe są w języku angielskim. Identyfikatory języka obejmują przyjazną nazwę i kod języka zgodne ze standardem [ISO 639-1](https://www.iso.org/standard/22109.html).
 
 Wynik dodatni 1,0 wyraża najwyższy możliwy poziom ufności analizy.
 
@@ -154,7 +155,7 @@ Wynik dodatni 1,0 wyraża najwyższy możliwy poziom ufności analizy.
 
 ### <a name="ambiguous-content"></a>Zawartość niejednoznaczna
 
-Jeżeli Analizator nie można przeanalizować danych wejściowych, zwraca `(Unknown)`. Przykładem jest, Jeśli przesyłasz blok tekstu, który składa się wyłącznie z arabskie.
+Jeśli analizator nie może przeanalizować danych wejściowych, `(Unknown)`zwraca. Przykładem jest przesłanie bloku tekstu, który składa się wyłącznie z cyfr arabskich.
 
 ```
     {
@@ -167,9 +168,9 @@ Jeżeli Analizator nie można przeanalizować danych wejściowych, zwraca `(Unkn
         }
       ]
 ```
-### <a name="mixed-language-content"></a>Zawartość w językach mieszanych
+### <a name="mixed-language-content"></a>Zawartość języka mieszanego
 
-W językach mieszanych zawartości w tym samym dokumencie zwraca język z największych reprezentacji w zawartości, ale z niższym ocenę dodatnią. Klasyfikacja odzwierciedla brzegowych siły oceny. W następującym przykładzie dane wejściowe stanowią mieszankę języków angielskiego, hiszpańskiego i francuskiego. Analizator zlicza znaki w każdym segmencie w celu ustalenia dominującego języka.
+Zawartość w języku mieszanym w tym samym dokumencie zwraca język z największą reprezentacją zawartości, ale z niższą dodatnią klasyfikacją. Klasyfikacja odzwierciedla krańcową moc oceny. W następującym przykładzie dane wejściowe stanowią mieszankę języków angielskiego, hiszpańskiego i francuskiego. Analizator zlicza znaki w każdym segmencie w celu ustalenia dominującego języka.
 
 **Dane wejściowe**
 
@@ -186,7 +187,7 @@ W językach mieszanych zawartości w tym samym dokumencie zwraca język z najwi�
 
 **Dane wyjściowe**
 
-Dane wyjściowe składa się z dominujący języka, z wynikiem mniej niż 1.0, co oznacza słabszy poziom zaufania.
+Wynikowe dane wyjściowe składają się z języka dominującego, z wynikiem niższym niż 1,0, który wskazuje słaby poziom zaufania.
 
 ```
 {
@@ -208,12 +209,12 @@ Dane wyjściowe składa się z dominujący języka, z wynikiem mniej niż 1.0, c
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby wykrywania języka przy użyciu analizy tekstu w usługach Azure Cognitive Services. Następujące punkty zostały wyjaśnione i przedstawione w artykule:
+W tym artykule przedstawiono koncepcje i przepływ pracy wykrywania języka przy użyciu analiza tekstu w usłudze Azure Cognitive Services. Wyjaśniono i przedstawiono następujące punkty:
 
-+ [Wykrywanie języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) jest dostępna dla szerokiej gamy języków, warianty, dialekty i niektóre języki regionalne lub kultury.
-+ Dokumenty JSON w treści żądania obejmują identyfikator i tekst.
-+ Żądanie POST jest `/languages` punktu końcowego przy użyciu spersonalizowanego [dostępu key i punktu końcowego](text-analytics-how-to-access-key.md) , który jest poprawny dla Twojej subskrypcji.
-+ Dane wyjściowe odpowiedzi składa się z identyfikatorów języka dla każdego identyfikatora dokumentu. Dane wyjściowe, może być przesyłany strumieniowo do wszystkich aplikacji, która akceptuje JSON. Przykładowe aplikacje obejmują kilka program Excel i Power BI.
++ [Wykrywanie języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) jest dostępne dla szerokiego zakresu języków, wariantów, dialektów i niektórych języków regionalnych lub kulturowych.
++ Dokumenty JSON w treści żądania zawierają identyfikator i tekst.
++ Żądanie post jest `/languages` punktem końcowym przy użyciu spersonalizowanego [klucza dostępu i punktu końcowego](text-analytics-how-to-access-key.md) , który jest prawidłowy dla Twojej subskrypcji.
++ Dane wyjściowe odpowiedzi składają się z identyfikatorów języka dla każdego identyfikatora dokumentu. Dane wyjściowe mogą być przesyłane strumieniowo do dowolnej aplikacji, która akceptuje kod JSON. Przykładowe aplikacje to programy Excel i Power BI, aby podać kilka nazw.
 
 ## <a name="see-also"></a>Zobacz także 
 

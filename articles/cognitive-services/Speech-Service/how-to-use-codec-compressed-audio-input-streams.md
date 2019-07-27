@@ -1,7 +1,7 @@
 ---
-title: Stream skompresować kodera-dekodera audio z zestawem SDK mowy — usługi mowy
+title: Koder-dekoder audio skompresowany dźwięk przy użyciu zestawu mowy SDK-Speech Service
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przesyłanie strumieniowe audio skompresowany do usług przetwarzania mowy platformy Azure przy użyciu zestawu SDK rozpoznawania mowy. Dostępne dla języka C++, C#i Java dla systemu Linux.
+description: Dowiedz się, jak przesyłać strumieniowo skompresowane audio do usługi Azure Speech Services przy użyciu zestawu Speech SDK. Dostępne dla C++systemów C#, i Java dla systemu Linux.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,39 +10,39 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: d23190dc8f7980cb8a94ba295f45ae67fc7d4678
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b29b42dea9522526d49c1bda017a522855946def
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605092"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559557"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Przy użyciu kodera-dekodera kompresji wejścia audio z zestawem SDK rozpoznawania mowy
+# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Używanie kodera-dekoder skompresowanego audio z zestawem Speech SDK
 
-Zestaw SDK rozpoznawania mowy **Stream dane wejściowe dźwięk Compressed** interfejs API umożliwia przesyłanie strumieniowe audio skompresowany do usługi rozpoznawania mowy za pomocą PullStream lub PushStream.
+Interfejs API **strumienia danych wejściowych audio** zestawu Speech SDK umożliwia przesyłanie strumieniowo skompresowanego dźwięku do usługi mowy przy użyciu PullStream lub PushStream.
 
 > [!IMPORTANT]
-> Strumieniowe przesyłanie audio skompresowanym jest obsługiwana tylko w przypadku C++, C#i Java w systemie Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9).
-> Mowy zestawu SDK w wersji 1.4.0 lub nowszy jest wymagany.
+> Przesyłane strumieniowo skompresowane audio jest obsługiwane C++tylko C#dla systemów, i Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9).
+> Wymagany jest pakiet Speech SDK w wersji 1.4.0 lub nowszej.
 
-Liniowy format wav/PCM znajduje się w dokumentacji mowy linii głównej.  Poza wav PCM obsługiwane są następujące formaty danych wejściowych kodera-dekodera kompresji:
+W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej.  Na zewnątrz WAV/PCM obsługiwane są następujące skompresowane formaty danych wejściowych kodera-dekoder:
 
 - MP3
-- DZIELE/OGG
+- OPUS/OGG
 
-## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>Wymagania wstępne dotyczące przy użyciu kodera-dekodera kompresji wejścia audio
+## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>Wymagania wstępne dotyczące korzystania ze skompresowanego wejścia audio kodera-dekoder
 
-Zainstaluj te dodatkowe zależności, aby używać skompresowany wejścia audio z zestawem SDK rozpoznawania mowy w systemie Linux:
+Zainstaluj te dodatkowe zależności, aby użyć skompresowanego wejścia audio przy użyciu zestawu Speech SDK dla systemu Linux:
 
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 ```
 
-## <a name="example-code-using-codec-compressed-audio-input"></a>Przykładowy kod przy użyciu kodera-dekodera kompresji wejścia audio
+## <a name="example-code-using-codec-compressed-audio-input"></a>Przykładowy kod przy użyciu kodera skompresowanego sygnału audio
 
-Aby przesyłać strumieniowo w formacie skompresowanym audio do usług przetwarzania mowy, tworzenie `PullAudioInputStream` lub `PushAudioInputStream`. Następnie utwórz `AudioConfig` z wystąpienia klasy strumienia, określając format kompresji strumienia.
+Aby przesłać strumieniowo w skompresowanym formacie audio do usługi mowy, `PullAudioInputStream` Utwórz `PushAudioInputStream`lub. Następnie Utwórz obiekt `AudioConfig` z wystąpienia klasy strumienia, określając format kompresji strumienia.
 
-Załóżmy, że masz klasę strumienia wejściowego o nazwie `myPushStream` i korzystania z DZIELE/OGG. Twój kod może wyglądać następująco:
+Załóżmy, że masz klasę strumienia wejściowego o nazwie `myPushStream` i używają Opus/OGG. Twój kod może wyglądać następująco:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -61,7 +61,7 @@ var result = await recognizer.RecognizeOnceAsync();
 var text = result.GetText();
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
 - [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

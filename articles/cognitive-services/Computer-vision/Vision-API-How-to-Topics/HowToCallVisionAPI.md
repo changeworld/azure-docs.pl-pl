@@ -1,6 +1,6 @@
 ---
 title: 'Przykład: wywoływanie interfejsu API analizy obrazu — przetwarzanie obrazów'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak wywołać interfejs API przetwarzania obrazów przy użyciu wzorca REST w usługach Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 35e6ad922ab54748165fcf8e273d93ee44bc42cc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202874"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564527"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Przykład: jak wywoływać interfejs API przetwarzania obrazów
 
@@ -47,7 +47,7 @@ Funkcje zostały podzielone na:
 
 Każde wywołanie do interfejsu API przetwarzania obrazów wymaga klucza subskrypcji. Ten klucz musi zostać albo przekazany przez parametr ciągu zapytania, albo określony w nagłówku żądania.
 
-Aby uzyskać klucz bezpłatnej wersji próbnej, zobacz [spróbuj usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub, postępuj zgodnie z instrukcjami w [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) subskrybować przetwarzania obrazów, i Uzyskaj klucz.
+Aby uzyskać bezpłatny klucz wersji próbnej, zobacz [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz.
 
 1. Przekazywanie klucza subskrypcji za pomocą ciągu zapytania, poniżej przedstawiono przykład dotyczący interfejsu API przetwarzania obrazów:
 
@@ -61,7 +61,7 @@ Aby uzyskać klucz bezpłatnej wersji próbnej, zobacz [spróbuj usług Cognitiv
 
 ```var visionClient = new VisionServiceClient("Your subscriptionKey");```
 
-## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>Przekazywanie obrazu do usługi interfejsu API przetwarzania obrazów i uzyskanie tagów, opisów i osobistości
+## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>Przekazywanie obrazu do usługi interfejs API przetwarzania obrazów i pobieranie tagów, opisów i osobistości
 
 Najprostszym sposobem wykonania wywołania interfejsu API przetwarzania obrazów jest bezpośrednie przekazanie obrazu. Odbywa się to przez wysłanie żądania „POST” z typem zawartości application/octet-stream wraz z danymi odczytanymi z obrazu. W przypadku obiektów „Tags” i „Description” ta metoda przekazywania będzie taka sama dla wszystkich wywołań interfejsu API przetwarzania obrazów. Jedyną różnicę będą stanowić parametry zapytania określone przez użytkownika. 
 
@@ -89,14 +89,14 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 
 **Opcja druga** Pobierz listę zawierającą tylko obiekty „Tags” lub listę zawierającą tylko obiekt „Description”:
 
-###### <a name="tags-only"></a>Tylko znaczniki:
+###### <a name="tags-only"></a>Tylko Tagi:
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag&subscription-key=<Your subscription key>
 var analysisResult = await visionClient.GetTagsAsync("http://contoso.com/example.jpg");
 ```
 
-###### <a name="description-only"></a>Opis tylko:
+###### <a name="description-only"></a>Tylko opis:
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe&subscription-key=<Your subscription key>
@@ -106,7 +106,7 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 }
 ```
 
-### <a name="get-domain-specific-analysis-celebrities"></a>Rozpoczynanie analizy specyficznego dla domeny (osobistości)
+### <a name="get-domain-specific-analysis-celebrities"></a>Pobierz analizę specyficzną dla domeny (osobistości)
 
 **Opcja pierwsza:** Analiza z zakresami — analizowanie tylko danego modelu
 ```
@@ -133,7 +133,7 @@ W przypadku wywoływania tej metody najpierw wywołamy klasyfikator obejmujący 
 
 Wszystkie parametry zapytania w wersji 1 będą w tym przypadku działać tak samo.  Jeśli parametr visualFeatures=categories nie zostanie podany, zostanie niejawnie włączony.
 
-## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Pobieranie i zrozumieć dane wyjściowe JSON do analizy
+## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Pobierz i poznanie danych wyjściowych JSON na potrzeby analizy
 
 Oto przykład:
 
@@ -166,7 +166,7 @@ Oto przykład:
 
 Pole | Type | Zawartość
 ------|------|------|
-Tagi  | `object` | Obiekt najwyższego poziomu dla tablicy tagów
+`Tags`  | `object` | Obiekt najwyższego poziomu dla tablicy tagów
 tags[].Name | `string`  | Słowo kluczowe z klasyfikatora tagów
 tags[].Score    | `number`  | Współczynnik ufności od 0 do 1.
 description  | `object` | Obiekt najwyższego poziomu dla opisu.
@@ -174,7 +174,7 @@ description.tags[] |    `string`    | Lista tagów.  Jeśli występuje niewystar
 description.captions[].text | `string`  | Fraza opisująca obraz.
 description.captions[].confidence   | `number`  | Poziom ufności dla frazy.
 
-## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Pobieranie i zrozumieć dane wyjściowe JSON modeli specyficznych dla domeny
+## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Pobieranie i poznawanie danych wyjściowych w formacie JSON dla modeli specyficznych dla domeny
 
 **Opcja pierwsza:** Analiza z zakresami — analizowanie tylko danego modelu
 
@@ -228,17 +228,17 @@ Pole kategorii jest listą co najmniej jednej z [86 kategorii](../Category-Taxon
 
 Pole   | Type  | Zawartość
 ------|------|------|
-categories | `object`   | Obiekt najwyższego poziomu
+kategorie | `object`   | Obiekt najwyższego poziomu
 categories[].name    | `string` | Nazwa z taksonomii obejmującej 86 kategorii
 categories[].score  | `number`  | Współczynnik ufności od 0 do 1
 categories[].detail  | `object?`      | Opcjonalny obiekt szczegółów
 
 Należy pamiętać, że jeśli pasuje wiele kategorii (na przykład klasyfikator obejmujący 86 kategorii zwraca wynik dla kategorii people_ i people_young w przypadku modelu model=celebrities), szczegóły zostają dołączone do najbardziej ogólnego poziomu dopasowania (w tym przykładzie kategorii people_).
 
-## <a name="errors-responses"></a>Odpowiedzi na błędy
+## <a name="errors-responses"></a>Błędy odpowiedzi
 
 Są identyczne jak dla vision.analyze, ale zawierają dodatkowy błąd NotSupportedModel (HTTP 400), który może być zwracany zarówno w scenariuszu opcji pierwszej, jak i drugiej. W przypadku opcji drugiej (analiza rozszerzona), jeśli żaden z modeli podanych w szczegółach nie zostanie rozpoznany, interfejs API zwróci błąd NotSupportedModel, nawet jeśli niektóre z modeli są prawidłowe.  Użytkownicy mogą wywołać metodę listModels, aby dowiedzieć się, które modele są obsługiwane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby korzystać z interfejsu API REST, przejdź do [dokumentacji dotyczącej interfejsu API przetwarzania obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44).

@@ -1,6 +1,6 @@
 ---
 title: tworzenie przeglądów przy użyciu platformy .NET — Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Jak tworzyć przeglądy za pomocą zestawu Azure Content Moderator SDK for .NET.
 services: cognitive-services
 author: sanjeev3
@@ -10,23 +10,23 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 153d42bf4ce4322536d6837be3058d1f9bfb49a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9938c79c2ba1b2f80c8f147fafe6ce79e247df43
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607199"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564470"
 ---
-# <a name="create-human-reviews-net"></a>Utwórz ludziom dokonywanie (.NET)
+# <a name="create-human-reviews-net"></a>Tworzenie przeglądów ludzkich (.NET)
 
-Przeglądy przechowywania i wyświetlania zawartości dla moderatorów ludzi do oceny. Po ukończeniu weryfikacji użytkownika wyniki są wysyłane do punktu końcowego określonego wywołania zwrotnego. Ten przewodnik zawiera informacje i przykłady kodu, które ułatwią Ci rozpoczęcie korzystania z [Content Moderator zestawu SDK dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do:
+Przegląda i wyświetla zawartość dla moderatorów ludzkich do oceny. Gdy użytkownik ukończy przegląd, wyniki są wysyłane do określonego punktu końcowego wywołania zwrotnego. Ten przewodnik zawiera informacje i przykłady kodu ułatwiające rozpoczęcie pracy z zestawem [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
 
 - Tworzenie zestawu przeglądów dla moderatorów-ludzi
 - Uzyskiwanie stanu istniejących przeglądów dla moderatorów-ludzi
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zaloguj się lub Utwórz konto w pakiecie Content Moderator [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) lokacji.
+- Zaloguj się lub Utwórz konto w witrynie Content Moderator [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com/) .
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Upewnij się, że Twój klucz interfejsu API umożliwia wywołanie interfejsu API przeglądu w celu utworzenia przeglądu.
 
@@ -159,7 +159,7 @@ Dodaj następującą klasę do klasy **Program**. Użyj tej klasy do skojarzenia
 >
 > Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
-#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Dodaj następujące stałe do **Program** klasy w pliku Program.cs
+#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Dodaj następujące stałe do klasy **program** w program.cs
 
 ```csharp
 /// <summary>
@@ -181,7 +181,7 @@ Dodaj następującą klasę do klasy **Program**. Użyj tej klasy do skojarzenia
     private const string OutputFile = "OutputLog.txt";
 ```
 
-#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Dodaj następujące stałe i pola statyczne do **Program** klasy w pliku Program.cs
+#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Dodaj następujące stałe i pola statyczne do klasy **program** w program.cs
 
 Zaktualizuj te wartości, tak aby zawierały informacje specyficzne dla subskrypcji i zespołu.
 
@@ -238,7 +238,7 @@ private const string MetadataKey = "sc";
 private const string MetadataValue = "true";
 ```
 
-#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Dodaj następujące pola statyczne do **Program** klasy w pliku Program.cs
+#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Dodaj następujące pola statyczne do klasy **program** w program.cs
 
 Użyj tych pól do śledzenia stanu aplikacji.
 
@@ -382,7 +382,7 @@ Dodaj następującą metodę do klasy **Program**.
 
 Dodaj następujący kod do metody **Main**.
 
-Ten kod symuluje wiele operacji wykonywanych w ramach definiowania listy i zarządzania nią, a także przeglądanie obrazów za pomocą listy. Funkcje rejestrowania umożliwiają wyświetlanie obiektów odpowiedzi generowane przez wywołania SDK w usłudze mModerator zawartości.
+Ten kod symuluje wiele operacji wykonywanych w ramach definiowania listy i zarządzania nią, a także przeglądanie obrazów za pomocą listy. Funkcje rejestrowania umożliwiają wyświetlanie obiektów odpowiedzi generowanych przez wywołania zestawu SDK dla usługi Content mModerator.
 
 ```csharp
 using (TextWriter outputWriter = new StreamWriter(OutputFile, false))
@@ -427,7 +427,7 @@ Creating reviews for the following images:
     Review 201712i46950138c61a4740b118a43cac33f434 for item ID 0 is Pending.
 ```
 
-Zaloguj się do narzędzia do przeprowadzania przeglądów usługi Content Moderator, aby zobaczyć oczekujący przegląd obrazu z etykietą **sc** ustawioną na wartość **true**. Zobacz też domyślnie **i** **r** tagów i niestandardowych znaczników, które zostały zdefiniowane w narzędziu przeglądu.
+Zaloguj się do narzędzia do przeprowadzania przeglądów usługi Content Moderator, aby zobaczyć oczekujący przegląd obrazu z etykietą **sc** ustawioną na wartość **true**. Są także widoczne domyślne tagi **a** i **r** oraz wszelkie tagi niestandardowe zdefiniowane w narzędziu do przeprowadzania przeglądów.
 
 Użyj przycisku **Dalej**, aby przesłać dane.
 
@@ -536,4 +536,4 @@ Zobaczysz odpowiedź podobną do następującej:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pobierz [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i Pobierz [rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego programu oraz inne Przewodniki Szybki Start pakietu Content Moderator dla platformy .NET i Rozpocznij pracę nad integracją.
+Pobierz [zestaw Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i Pobierz [rozwiązanie Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych Content moderator przewodników szybki start dla platformy .NET i Rozpocznij pracę z integracją.

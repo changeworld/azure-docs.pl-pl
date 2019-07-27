@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: tworzenie aplikacji'
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Szybki Start: Tworzenie aplikacji — LUIS'
+titleSuffix: Azure Cognitive Services
 description: Utworzysz aplikację LUIS używającą wstępnie utworzonej domeny `HomeAutomation` na potrzeby włączania i wyłączania świateł i urządzeń. Ta wstępnie utworzona domena zapewnia intencje, jednostki i przykładowe wypowiedzi. Po zakończeniu samouczka punkt końcowy usługi LUIS będzie działał w chmurze.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6d3b4d23ae1ad04142b0dec01a1abccbd2f81942
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e53f8d6e08b345d417ce54deacd658275cb1cd00
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150250"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563917"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Szybki start: używanie wstępnie utworzonej aplikacji do automatyzacji domu
 
@@ -58,7 +58,7 @@ Po pomyślnym dodaniu domeny pole wstępnie utworzonej domeny wyświetla przycis
 
 Wybierz opcję **Intents** (Intencje) w okienku nawigacji po lewej stronie, aby sprawdzić intencje domeny HomeAutomation. Każda intencja zawiera przykładowe wypowiedzi.
 
-![Zrzut ekranu HomeAutomation intencji listy](media/luis-quickstart-new-app/home-automation-intents.png "listy intencji zrzut ekranu HomeAutomation")]
+![Zrzut ekranu listy intencji HomeAutomation](media/luis-quickstart-new-app/home-automation-intents.png "Zrzut ekranu przedstawiający listę intencji HomeAutomation")]
 
 > [!NOTE]
 > **None** (Brak) to intencja zapewniana przez wszystkie aplikacje usługi LUIS. Używa się jej do obsługi wypowiedzi, które nie odnoszą się do funkcji zapewnianej przez aplikację. 
@@ -105,7 +105,7 @@ Ponownie wybierz opcję **Test** (Testuj), aby zwinąć okienko testowania.
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Punkt końcowy możesz wywołać z kodu:
 

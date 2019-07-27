@@ -1,6 +1,6 @@
 ---
-title: Testowanie wsadowe
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Testy wsadowe — LUIS
+titleSuffix: Azure Cognitive Services
 description: Umożliwia testowanie partii stale Praca nad aplikacją, aby dostosować go i zwiększyć jej interpretacji języka.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9a6e7ae48a51ab10e6ba2e5d3996e61938c6f3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813300"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560847"
 ---
-# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testowanie za pomocą 1000 wypowiedzi w portalu usługi LUIS usługi Batch
+# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testowanie wsadowe przy użyciu 1000 wyrażenia długości w portalu LUIS
 
 Batch testowania weryfikuje Twoje [active](luis-concept-version.md#active-version) uczonego modelu do pomiaru jego dokładności prognozy. Test usługi batch ułatwia przeglądanie dokładność każdego intencji i jednostek w bieżącym modelu uczonego na wykresie. Przejrzyj wyniki testów usługi batch, aby podjąć odpowiednie działania w celu zwiększenia dokładności, takie jak dodanie więcej wypowiedzi przykład intencji, jeśli aplikacja często nie można zidentyfikować poprawne intencji.
 
@@ -48,7 +48,7 @@ Wszystkie jednostki niestandardowe znajdą się w modelu są wyświetlane w filt
 
 Plik wsadowy składa się z wypowiedzi. Każdy wypowiedź musi mieć oczekiwanego prognozowania intencji, wraz z wszelkimi [maszyny do opanowania jednostek](luis-concept-entity-types.md#types-of-entities) oczekujesz, że zostało wykryte. 
 
-## <a name="batch-syntax-template-for-intents-with-entities"></a>Batch składni szablonu dla intencji z jednostkami
+## <a name="batch-syntax-template-for-intents-with-entities"></a>Szablon składni usługi Batch dla intencji z jednostkami
 
 Uruchom plik wsadowy za pomocą następującego szablonu:
 
@@ -78,9 +78,9 @@ Plik wsadowy używa **startPos** i **endPos** właściwości należy zwrócić u
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="batch-syntax-template-for-intents-without-entities"></a>Batch składni szablonu dla intencji bez jednostek
+## <a name="batch-syntax-template-for-intents-without-entities"></a>Szablon składni usługi Batch dla intencji bez jednostek
 
-Uruchom plik wsadowy bez jednostek za pomocą następującego szablonu:
+Użyj następującego szablonu, aby uruchomić plik wsadowy bez jednostek:
 
 ```JSON
 [
@@ -92,7 +92,7 @@ Uruchom plik wsadowy bez jednostek za pomocą następującego szablonu:
 ]
 ```
 
-Jeśli nie chcesz przetestować jednostek, obejmują `entities` właściwości i ustaw wartość jako pusta tablica `[]`.
+Jeśli nie chcesz testować jednostek, Dołącz `entities` Właściwość i ustaw wartość jako pustą `[]`tablicę.
 
 
 ## <a name="common-errors-importing-a-batch"></a>Typowe błędy importowania partii

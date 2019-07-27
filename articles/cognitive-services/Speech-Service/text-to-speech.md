@@ -1,7 +1,7 @@
 ---
-title: Zamiana tekstu na mowę przy użyciu usług przetwarzania mowy platformy Azure
+title: Zamiana tekstu na mowę — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Zamiana tekstu na mowę, z usług przetwarzania mowy platformy Azure to usługa, która umożliwia aplikacji, narzędzia lub urządzenia do konwertowania tekstu do naturalnym przypominającej ludzką syntezatora mowy. Wybierać standardowych i neuronowych głosów lub utworzyć niestandardowe głosu unikatowe dla produktu lub marki. ponad 75 standardowa głosy są dostępne w ponad 45 języków i ustawień regionalnych i 5 neuronowych głosy są dostępne w 4 języków i ustawień regionalnych.
+description: Funkcja zamiany tekstu na mowę w usłudze mowy to funkcja, która umożliwia aplikacjom, narzędziom i urządzeniom Konwertowanie tekstu na rozpoznawanie mowy w postaci zwykłej. Wybieraj spośród standardowych i neuronowychych głosów lub twórz własny niestandardowy głos unikatowy dla danego produktu lub marki. 75 standardowych głosów jest dostępnych w więcej niż 45 językach i ustawieniach regionalnych oraz 5 neuronowych głosów jest dostępnych w 4 językach i ustawieniach regionalnych.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,101 +10,101 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: da7259585ad66ac9b58131ce834d82e7b3d4bcf2
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 3d2c3e2bf693f763db13d90961a31e871aa25235
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466959"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558863"
 ---
-# <a name="what-is-text-to-speech"></a>Co to jest zamiany tekstu na mowę?
+# <a name="what-is-text-to-speech"></a>Co to jest zamiana tekstu na mowę?
 
-Zamiana tekstu na mowę, z usług przetwarzania mowy platformy Azure to usługa, która umożliwia aplikacji, narzędzia lub urządzenia do konwertowania tekstu do naturalnym przypominającej ludzką syntezatora mowy. Wybierać standardowych i neuronowych głosów lub utworzyć niestandardowe głosu unikatowe dla produktu lub marki. ponad 75 standardowa głosy są dostępne w ponad 45 języków i ustawień regionalnych i 5 neuronowych głosy są dostępne w 4 języków i ustawień regionalnych. Aby uzyskać pełną listę, zobacz [obsługiwane języki](language-support.md#text-to-speech).
+Zamiana tekstu na mowę z usługi Azure Speech Services to usługa, która umożliwia aplikacjom, narzędziom i urządzeniom Konwertowanie tekstu na rozpoznawanie mowy w postaci zwykłej, podobnej do ludzkiej. Wybieraj spośród standardowych i neuronowychych głosów lub twórz własny niestandardowy głos unikatowy dla danego produktu lub marki. 75 standardowych głosów jest dostępnych w więcej niż 45 językach i ustawieniach regionalnych oraz 5 neuronowych głosów jest dostępnych w 4 językach i ustawieniach regionalnych. Aby zapoznać się z pełną listą, zobacz [obsługiwane języki](language-support.md#text-to-speech).
 
-Technologia zamiany tekstu na mowę umożliwia twórcom zawartości korzystaj z użytkowników na różne sposoby. Zamiana tekstu na mowę można poprawić dostępność, udostępniając użytkownikom możliwość interakcji z zawartością komputerowi. Czy użytkownik ma wzroku niepełnosprawności uczenia, wymaga informacji o nawigacji podczas kierowania, zamiany tekstu na mowę można ulepszyć istniejące. Zamiana tekstu na mowę jest także cenne dodatek dla programu Boty głosu i asystentów wirtualnego.
+Technologia zamiany tekstu na mowę umożliwia twórcom zawartości współpracującie z użytkownikami na różne sposoby. Zamiana tekstu na mowę może zwiększyć dostępność, dostarczając użytkownikom możliwość korzystania z audibly zawartości. Bez względu na to, czy użytkownik ma niedowidzącość wizualną, nie ma możliwości uczenia się, czy wymaga informacji nawigacyjnych podczas prowadzenia pracy, funkcja zamiany tekstu na mowę może poprawić istniejące środowisko. Funkcja zamiany tekstu na mowę jest również cennym dodatkiem dla botów głosu i wirtualnych asystentów.
 
 
-Dzięki wykorzystaniu mowy syntezy Markup Language (SSML), język znaczników oparty na formacie XML, deweloperzy korzystający z tekstu na mowę usługi można określić sposób wprowadzania tekstu jest konwertowana na syntezatora mowy. Za pomocą SSML można dostosować pomysłu, wymowa, wypowiedzi szybkości, woluminów i nie tylko. Aby uzyskać więcej informacji, zobacz [SSML](#speech-synthesis-markup-language-ssml).
+Korzystając z języka SSML (Speech Syntezing Language), języka znaczników opartych na języku XML, deweloperzy korzystający z usługi zamiany tekstu na mowę mogą określić, jak tekst wejściowy jest konwertowany na mowę. Dzięki SSML można dostosować wysokość, wymowę, częstotliwość mówienia, głośność i wiele więcej. Aby uzyskać więcej informacji, zobacz [SSML](#speech-synthesis-markup-language-ssml).
 
-### <a name="standard-voices"></a>Standardowa głosów
+### <a name="standard-voices"></a>Głosy standardowe
 
-Standardowa głosy są tworzone przy użyciu technik statystycznych syntezy parametryczne i/lub syntezy łączenia. Te głosy są wysoce zrozumiałej i dźwięku naturalnego. Łatwo można włączyć aplikacji, aby porozmawiać w ponad 45 językach z szeroką gamę opcji głosu. Głosy te zapewniają wysoką Wymowa dokładności, łącznie z obsługą skróty, rozszerzenia akronim, interpretacji daty/godziny i polyphones. Użyj standardowego głosu, aby poprawić dostępność aplikacji i usług, pozwalając użytkownikom na interakcję z zawartością komputerowi.
+Standardowe głosy są tworzone przy użyciu statystycznych parametrów syntezy i/lub łączenia technik syntezy. Głosy te są bardzo zrozumiałe i naturalne. Aplikacje można łatwo włączyć w więcej niż 45 językach z szeroką gamą opcji głosowych. Głosy te zapewniają wysoką dokładność odmowy, w tym obsługę skrótów, rozwinięcia akronimów, interpretacje daty/godziny, telefony i inne. Używaj standardowego głosu, aby ulepszyć ułatwienia dostępu dla aplikacji i usług, dzięki czemu użytkownicy mogą korzystać z audibly zawartości.
 
 ### <a name="neural-voices"></a>Głosy neuronowych
 
-Głosy neuronowych Użyj głębokich sieciach neuronowych przezwyciężenie limitów tradycyjnych systemów zamiany tekstu na mowę w pasujących do wzorców obciążenia i maksimów w mowy i Syntetyzujące jednostek mowy do głosowego komputera. Standardowa zamiany tekstu na mowę dzieli prosody w oddzielnych analizy językowej i kroki akustyczny prognoz, które podlegają niezależnie od modeli, które mogą skutkować syntezy muffled głosu. Nasze możliwości neuronowych wykonuje prosody prognoz i głosu syntezy równocześnie, które powoduje płynne i bardziej brzmiącą naturalnego głosu.
+Głosy neuronowych używają głębokiej sieci neuronowych, aby przezwyciężyć limity tradycyjnych systemów zamiany tekstu na mowę w celu dopasowania wzorców obciążeniowych i intonation w języku mówionym oraz w syntezie jednostek mowy w głos komputerowy. Funkcja zamiany tekstu na mowę (Text-to-Speech) dzieli Prosody na oddzielne analizy językowe i rozłożenia akustyczne, które podlegają niezależnym modelom, co może spowodować przebicie głosu. Nasza funkcja neuronowych umożliwia jednocześnie Prosody prognozowanie i głosowanie, co pozwala na bardziej płynny i naturalny dźwięk.
 
-Neuronowych głosów można wprowadzić bardziej naturalne interakcje z czatbotów i asystentów wirtualnego i angażujące konwertować teksty cyfrowych, takich jak książki elektroniczne audiobooks i poprawić funkcjonalność z systemów nawigacji w samochodzie. Przypominającej ludzką prosody naturalnych i wyczyść ustaleniu słów głosy neuronowych znaczące zmęczenie nasłuchiwania podczas interakcji z systemami sztucznej Inteligencji.
+Głosy neuronowych mogą służyć do współdziałania z rozszerzenie czatbotów i wirtualnymi asystentami bardziej naturalnymi i atrakcyjnymi, konwertowanie cyfrowych tekstów, takich jak książki elektroniczne, na Audiobooks i ulepszanie systemów nawigacyjnych. Podobnie jak naturalna prosodya i wyraźny zbiór wyrazów, głosy neuronowych znacząco zmniejszają zmęczenie nasłuchiwania podczas pracy z systemami AI.
 
-Głosy neuronowych obsługuje różne style, takie jak neutralne i uśmiecha. Na przykład głosu Jessa (en US) można było mówić cheerfully, który jest zoptymalizowany pod kątem dostępu do ciepłych, wszystkiego konwersacji. Można dopasować dane wyjściowe głosowych, takich jak tonu, wysokość i szybkości za pomocą [język znaczników synteza mowy](speech-synthesis-markup.md). Aby uzyskać pełną listę dostępnych głosów, zobacz [obsługiwane języki](language-support.md#text-to-speech).
+Głosy neuronowych obsługują różne style, takie jak neutralne i Cheerful. Na przykład głos Jessa (EN-US) może mówić cheerfully, który jest zoptymalizowany pod kątem ciepłej i szczęśliwej konwersacji. Możesz dostosować dane wyjściowe głosu, takie jak tonowe, gęstość i szybkość, przy użyciu [języka znaczników do syntezy mowy](speech-synthesis-markup.md). Aby uzyskać pełną listę dostępnych głosów, zobacz [obsługiwane języki](language-support.md#text-to-speech).
 
-Aby dowiedzieć się więcej o zaletach głosów neuronowej, zobacz [usługa nowe zamiany tekstu na mowę neuronowa firmy Microsoft pomaga maszyn, mowy, takich jak osoby](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/).
+Aby dowiedzieć się więcej na temat korzyści z używania głosów neuronowych, zobacz [Nowość usługa zamiany tekstu na mowę w firmie Microsoft neuronowych, która pomaga maszynom](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/).
 
-### <a name="custom-voices"></a>Głosów niestandardowych
+### <a name="custom-voices"></a>Głosy niestandardowe
 
-Dostosowywanie głosu umożliwia tworzenie mówiącą, jeden z rodzajem głosu dla Twojej marki. Aby utworzyć swoje niestandardowej czcionki głosowej, tworzenie nagrania studio i przekaż skojarzone skrypty jako dane szkoleniowe. Usługa tworzy następnie model unikatowy głosu dostosowana do Twojego nagrania. Można użyć tej niestandardowej czcionki głosowej syntetyzować mowy. Aby uzyskać więcej informacji, zobacz [głosów niestandardowych](how-to-customize-voice-font.md).
+Dostosowanie głosu umożliwia utworzenie rozpoznawalnego, jednoczęściowego głosu dla marki. Aby utworzyć niestandardową czcionkę głosową, nagranie i przekazanie skojarzonych skryptów jako danych szkoleniowych. Następnie usługa tworzy unikatowy model głosowy dostosowany do nagrania. Możesz użyć tej niestandardowej czcionki głosowej, aby wypróbować mowę. Aby uzyskać więcej informacji, zobacz [niestandardowe głosy](how-to-customize-voice-font.md).
 
 ## <a name="speech-synthesis-markup-language-ssml"></a>Język znaczników syntezy mowy (SSML)
 
-Mowy syntezy Markup Language (SSML) to język znaczników oparty na formacie XML, które umożliwiają deweloperom określenie sposobu wprowadzania tekstu jest konwertowana na syntezatora mowy przy użyciu usługi zamiany tekstu na mowę. W porównaniu do zwykłego tekstu, SSML umożliwia deweloperom dostosować wysokość wymowa, wypowiedzi szybkości, woluminów i nie tylko zamiany tekstu na mowę danych wyjściowych. Normalne znaki interpunkcyjne, takie jak przytrzymanie po upływie lub za pomocą poprawne maksimów, gdy dowolne zdanie kończy się znakiem zapytania są realizowane automatycznie.
+Język SSML (Speech Syntezing Language) to język znaczników oparty na języku XML, który umożliwia deweloperom określenie sposobu konwersji tekstu wejściowego na funkcję syntezy mowy przy użyciu usługi zamiany tekstu na mowę. W porównaniu do zwykłego tekstu, SSML umożliwia deweloperom precyzyjne dostosowanie wartości, wymowy, natężenia głosu, ilości i większej liczby danych wyjściowych zamiany tekstu na mowę. Normalne znaki interpunkcyjne, takie jak Wstrzymywanie po upływie okresu lub używanie poprawnych intonation po zakończeniu zdania z znakiem zapytania, są automatycznie obsługiwane.
 
-Wszystkie tekstowe dane wejściowe wysyłane do zamiany tekstu na mowę usługi musi postacią SSML. Aby uzyskać więcej informacji, zobacz [język znaczników synteza mowy](speech-synthesis-markup.md).
+Wszystkie dane wejściowe wysyłane do usługi zamiany tekstu na mowę muszą być uporządkowane jako SSML. Aby uzyskać więcej informacji, zobacz [Język oznaczeń syntezy mowy](speech-synthesis-markup.md).
 
-### <a name="pricing-note"></a>Cennik Uwaga
+### <a name="pricing-note"></a>Uwaga dotycząca cen
 
-Podczas korzystania z usługi zamiany tekstu na mowę, są rozliczane dla każdego znaku, który jest konwertowany na mowę, w tym znaki interpunkcyjne. Podczas samego dokumentu SSML nie jest płatne, elementy opcjonalne, które są używane do dostosowywania, jak tekst jest konwertowany na mowę, takich jak fonemów i wysokością, są liczone jako płatne znaków. Poniżej przedstawiono listę co to jest płatny:
+W przypadku korzystania z usługi zamiany tekstu na mowę naliczane są opłaty za każdy znak konwertowany na mowę, w tym znaki interpunkcyjne. Chociaż sam dokument SSML nie jest rozliczany, opcjonalne elementy, które są używane do dostosowywania sposobu konwersji tekstu na mowę, takie jak fonemów i gęstość, są zliczane jako znaki rozliczeniowe. Poniżej znajduje się lista rzeczy, które są rozliczane:
 
-* Tekst jest przekazywany w usłudze zamiany tekstu na mowę w treści żądania SSML
-* Wszystkich znaczników w polu tekstowym w treści żądania w formacie SSML, z wyjątkiem `<speak>` i `<voice>` tagów
-* Litery, znaki interpunkcyjne, miejsca do magazynowania, karty, znaczników i wszystkie znaki odstępu
-* Każdy punkt kodowy zdefiniowane w formacie Unicode
+* Tekst przesłany do usługi zamiany tekstu na mowę w treści SSML żądania
+* Wszystkie znaczniki w polu tekstowym treści żądania w formacie SSML, z wyjątkiem tagów for `<speak>` i `<voice>`
+* Litery, interpunkcja, spacje, tabulatory, znaczniki i wszystkie znaki odstępu
+* Każdy punkt kodowy zdefiniowany w kodzie Unicode
 
-Aby uzyskać szczegółowe informacje, zobacz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+Aby uzyskać szczegółowe informacje, zobacz [Cennik](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 > [!IMPORTANT]
-> Każdy znak języka chińskiego, japońskiego i koreańskiego jest liczony jako dwa znaki na potrzeby rozliczeń.
+> Każdy znak w języku chińskim, japońskim i koreańskim jest traktowany jako dwa znaki do rozliczania.
 
 ## <a name="core-features"></a>Podstawowe funkcje
 
-Poniższa tabela zawiera listę podstawowych funkcji zamiany tekstu na mowę:
+W tej tabeli przedstawiono podstawowe funkcje zamiany tekstu na mowę:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
 | Konwertuj tekst na mowę. | Yes | Yes |
-| Przekaż zestawów danych dostosowywania głosu. | Nie | Tak\* |
-| Tworzenie i zarządzanie modelami czcionek głosowych. | Nie | Tak\* |
-| Tworzenie i zarządzanie wdrożeniami czcionek głosowych. | Nie | Tak\* |
-| Tworzenie i zarządzanie nimi testy czcionek głosowych. | Nie | Tak\* |
-| Zarządzaj subskrypcjami. | Nie | Tak\* |
+| Przekazywanie zestawów danych do adaptacji głosowej. | Nie | Opcję\* |
+| Twórz modele czcionek głosowych i zarządzaj nimi. | Nie | Opcję\* |
+| Twórz wdrożenia czcionek głosowych i zarządzaj nimi. | Nie | Opcję\* |
+| Twórz i Zarządzaj testami czcionek głosowych. | Nie | Opcję\* |
+| Zarządzanie subskrypcjami. | Nie | Opcję\* |
 
-\* *Te usługi są dostępne przy użyciu punktu końcowego cris.ai. Zobacz [Swagger odwołania](https://westus.cris.ai/swagger/ui/index). Te szkolenia niestandardowe głosu i interfejsów API zarządzania można zaimplementować ograniczanie przepustowości, limity żądań do 25 na 5 sekund, natomiast synteza mowy sam interfejs API implementuje, ograniczanie przepustowości, która umożliwia 200 żądań na sekundę jako najwyższy. Gdy wystąpi ograniczanie przepustowości, zostanie wyświetlone powiadomienie za pośrednictwem nagłówków wiadomości.*
+\**Te usługi są dostępne za pomocą punktu końcowego CRIS.AI. Zobacz [Dokumentacja struktury Swagger](https://westus.cris.ai/swagger/ui/index). Te niestandardowe interfejsy API szkolenia i zarządzania umożliwiają wdrożenie ograniczenia ograniczające liczbę żądań do 25 na 5 sekund, natomiast interfejs API syntezy mowy implementuje ograniczenie, które umożliwia 200 żądań na sekundę. W przypadku ograniczenia przepustowości użytkownik zostanie powiadomiony o nagłówkach wiadomości.*
 
-## <a name="get-started-with-text-to-speech"></a>Rozpoczynanie pracy z usługą zamiany tekstu na mowę
+## <a name="get-started-with-text-to-speech"></a>Wprowadzenie do zamiany tekstu na mowę
 
-Firma Microsoft oferuje przewodników Szybki Start, zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Poniższa tabela zawiera listę zamiany tekstu na mowę przewodników Szybki Start, które są zorganizowane według języka.
+Oferujemy Przewodniki Szybki Start zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Ta tabela zawiera listę przewodników szybki start dotyczących zamiany tekstu na mowę uporządkowanych według języka.
 
-### <a name="sdk-quickstarts"></a>Przewodniki szybkiego startu zestawu SDK
+### <a name="sdk-quickstarts"></a>Przewodniki Szybki Start dotyczące zestawu SDK
 
-| Przewodnik Szybki Start (SDK) | Platforma | Dokumentacja interfejsów API |
+| Szybki Start (SDK) | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
 | [C#, .NET Core](quickstart-text-to-speech-dotnetcore.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](quickstart-text-to-speech-csharp-uwp.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
-| [C#, Aparatu unity](quickstart-text-to-speech-csharp-unity.md) | Windows i Android | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C#, PLATFORMY UWP](quickstart-text-to-speech-csharp-uwp.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C#, Unity](quickstart-text-to-speech-csharp-unity.md) | Windows, Android | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/cppref) |
 | [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Przeglądaj](https://aka.ms/csspeech/cppref) |
 
-### <a name="rest-quickstarts"></a>Przewodniki Szybki Start REST
+### <a name="rest-quickstarts"></a>Przewodniki Szybki Start
 
-| Przewodnik Szybki Start (REST) | Platforma | Dokumentacja interfejsów API |
+| Szybki Start (REST) | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS i Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Przykładowy kod zamiany tekstu na mowę jest dostępny w witrynie GitHub. Te przykłady obejmują Konwersja tekstu na mowę w najbardziej popularnych języków programowania.
+Przykładowy kod dla zamiany tekstu na mowę jest dostępny w witrynie GitHub. Te przykłady obejmują konwersję zamiany tekstu na mowę w najpopularniejszych językach programowania.
 
 * [Przykłady zamiany tekstu na mowę (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [Przykłady zamiany tekstu na mowę (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
@@ -112,12 +112,12 @@ Przykładowy kod zamiany tekstu na mowę jest dostępny w witrynie GitHub. Te pr
 ## <a name="reference-docs"></a>Dokumentacja
 
 * [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
-* [Zestaw Speech Devices SDK](speech-devices-sdk.md)
-* [INTERFEJS API REST: Zamiany mowy na tekst](rest-speech-to-text.md)
+* [Zestaw SDK urządzeń mowy](speech-devices-sdk.md)
+* [INTERFEJS API REST: Zamiana mowy na tekst](rest-speech-to-text.md)
 * [INTERFEJS API REST: Zamiana tekstu na mowę](rest-text-to-speech.md)
-* [INTERFEJS API REST: Dostosowywanie i transkrypcji usługi Batch](https://westus.cris.ai/swagger/ui/index)
+* [INTERFEJS API REST: Transkrypcja i dostosowywanie partii](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Uzyskaj subskrypcję usługi mowy bezpłatna](get-started.md)
+* [Uzyskaj bezpłatną subskrypcję usługi Speech Services](get-started.md)
 * [Tworzenie niestandardowych voice czcionek](how-to-customize-voice-font.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy, Python — usługi mowy'
+title: 'Szybki start: Rozpoznawanie mowy, Python-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu zestawu SDK usługi Mowa dla języka Python. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
 services: cognitive-services
@@ -10,28 +10,28 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: d6b7cc275fc50fefbe0057620d315d1484c47745
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6cbe583ca59cb98ba233e58dc665c7e18c2a1f7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603010"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559289"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla języka Python
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule przedstawiono sposób korzystania z usług rozpoznawania mowy, mowy zestawu SDK dla języka Python. Przedstawia on, jak rozpoznawać mowę w danych wejściowych z mikrofonu.
+W tym artykule przedstawiono sposób korzystania z usług mowy za pomocą zestawu Speech SDK dla języka Python. Przedstawia on, jak rozpoznawać mowę w danych wejściowych z mikrofonu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz subskrypcji platformy Azure dla usług przetwarzania mowy. [Uzyskaj bezpłatnie](get-started.md).
+* Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj bezpłatnie](get-started.md).
 * [Środowisko Python 3.5 lub nowsze](https://www.python.org/downloads/).
 * Pakiet zestawu Speech SDK dla języka Python jest dostępny dla tych systemów operacyjnych:
     * Windows: x64 i x86.
     * Mac: macOS X w wersji 10.12 lub nowszej.
-    * W systemie Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9 on x64.
-* W systemie Linux uruchom następujące polecenia, aby zainstalować wymagane pakiety:
+    * W systemie Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 w x64.
+* W systemie Linux Uruchom następujące polecenia, aby zainstalować wymagane pakiety:
 
   * W systemie Ubuntu:
 
@@ -40,14 +40,14 @@ W tym artykule przedstawiono sposób korzystania z usług rozpoznawania mowy, mo
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  * On Debian 9:
+  * W programie Debian 9:
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
 
-* Na Windows, należy [programu Microsoft Visual C++ Redistributable dla programu Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) dla danej platformy.
+* W systemie Windows potrzebna jest wersja [Microsoft Visual C++ redystrybucyjna dla programu Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) .
 
 ## <a name="install-the-speech-sdk"></a>Instalowanie zestawu SDK usługi Mowa
 
@@ -101,7 +101,7 @@ Ewentualnie możesz pobrać ten samouczek Szybki start jako notes programu [Jupy
    ![Tworzenie pliku](media/sdk/qs-python-vscode-python-newfile.png)
 
 1. Skopiuj, wklej i zapisz [kod języka Python](#sample-code) w nowo utworzonym pliku.
-1. Wstaw informacje o subskrypcji usług przetwarzania mowy.
+1. Wstaw informacje o subskrypcji usługi Speech Services.
 1. Jeśli został wybrany interpreter języka Python, zostanie wyświetlony po lewej stronie paska stanu u dołu okna.
    W przeciwnym razie możesz wyświetlić listę dostępnych interpreterów języka Python. Otwórz paletę poleceń (Ctrl+Shift+P) i wprowadź tekst **Python: Select Interpreter** (Python: wybierz interpreter). Wybierz odpowiedni.
 1. Możesz zainstalować pakiet języka Python zestawu Speech SDK z poziomu programu Visual Studio Code. Zrób to, jeśli nie został on jeszcze zainstalowany dla wybranego interpretera języka Python.
@@ -114,7 +114,7 @@ Ewentualnie możesz pobrać ten samouczek Szybki start jako notes programu [Jupy
 
 Jeśli masz problemy z wykonaniem tych instrukcji, zapoznaj się z obszerniejszym [samouczkiem języka Python dla programu Visual Studio Code](https://code.visualstudio.com/docs/python/python-tutorial).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla języka Python w serwisie GitHub](https://aka.ms/csspeech/samples)

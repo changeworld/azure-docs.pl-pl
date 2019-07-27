@@ -1,5 +1,5 @@
 ---
-title: Jak wybrać urządzenie wejściowe audio za pomocą zestawu SDK usługi Mowa — usługi mowy
+title: Jak wybrać urządzenie wejściowe audio przy użyciu zestawu Speech SDK-Speech Service
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się więcej o wybieraniu urządzenia wejściowego audio w zestawie SDK usługi Mowa.
 services: cognitive-services
@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 16b8f81a09efc60f1214a2dc6ac60da9155e7794
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8324f9fccbe46cf6fc0ce297aac29b0d8025b078
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605113"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562730"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Wybieranie urządzenia wejściowego audio za pomocą zestawu SDK usługi Mowa
 
-1\.3.0 wersję zestawu SDK mowy wprowadzono interfejs API, aby wybrać wejścia audio.
-W tym artykule opisano, jak uzyskać identyfikatory urządzenia audio podłączone do systemu.
+Wersja 1.3.0 zestawu Speech SDK wprowadza interfejs API do wybierania wejścia audio.
+W tym artykule opisano sposób uzyskiwania identyfikatorów urządzeń audio podłączonych do systemu.
 Następnie można ich użyć w zestawie SDK usługi Mowa do skonfigurowania urządzenia audio za pomocą obiektu `AudioConfig`:
 
 ```C++
@@ -47,7 +47,7 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 >[!Note]
-> Sposób użycia mikrofonu nie jest dostępna dla kod JavaScript w środowisku Node.js
+> Użycie mikrofonu nie jest dostępne w przypadku języka JavaScript działającego w języku Node. js
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Identyfikatory urządzeń audio w aplikacjach klasycznych systemu Windows
 
@@ -372,11 +372,11 @@ Na przykład instrukcja
 
 umożliwia użycie zestawu słuchawkowego Bluetooth przez aplikację z obsługą mowy.
 
-## <a name="audio-device-ids-in-javascript"></a>Urządzenia audio identyfikatory w języku JavaScript
+## <a name="audio-device-ids-in-javascript"></a>Identyfikatory urządzeń audio w języku JavaScript
 
-W języku JavaScript [MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) metoda może służyć do wyliczania urządzeń multimediów i Znajdź identyfikator urządzenia w celu przekazania do `fromMicrophone(...)`.
+W języku JavaScript można użyć metody [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) w celu wyliczenia urządzeń multimedialnych i znalezienia identyfikatora urządzenia do przekazania `fromMicrophone(...)`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami w usłudze GitHub](https://aka.ms/csspeech/samples)

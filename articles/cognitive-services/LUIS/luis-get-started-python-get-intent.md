@@ -1,6 +1,6 @@
 ---
-title: Pobieranie intencji, Python
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Opcje pobierania, Python — LUIS
+titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przekażesz wypowiedzi do punktu końcowego aplikacji LUIS i uzyskasz intencje oraz jednostki.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 559b934194fa9aa160f4e7c5fe65610063181223
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: defcb6713516952e56e6cca2d63a99ee61f5b868
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276108"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563789"
 ---
 # <a name="quickstart-get-intent-using-python"></a>Szybki start: pobieranie intencji przy użyciu języka Python
 W tym przewodniku Szybki start przekażesz wypowiedzi do punktu końcowego aplikacji LUIS i uzyskasz intencje oraz jednostki.

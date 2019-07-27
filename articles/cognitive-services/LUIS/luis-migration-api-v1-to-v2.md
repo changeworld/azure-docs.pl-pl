@@ -1,7 +1,7 @@
 ---
 title: Aby migracja interfejsu API w wersji 2 w wersji 1
 titleSuffix: Azure Cognitive Services
-description: Punkt końcowy w wersji 1 i tworzenia interfejsy API interpretacji języka są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do endpoint w wersji 2 i Tworzenie interfejsów API.
+description: Program Endpoints i interfejsy API tworzenia Language Understanding w wersji 1 są przestarzałe. Skorzystaj z tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do punktu końcowego w wersji 2 i interfejsów API tworzenia.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: a4e176552fcbab9d54da696439c7e46750be3944
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab42ee29e508bfa62e2dba7a6e6a06baa0da2489
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522361"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560309"
 ---
-# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Interfejsu API v1 na v2 Przewodnik migracji dla aplikacji usługi LUIS
-Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) interfejsy API są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356) i [tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087) interfejsów API. 
+# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Przewodnik migracji interfejsu API V1 do wersji 2 dla aplikacji LUIS
+[Punkt końcowy](https://aka.ms/v1-endpoint-api-docs) w wersji 1 i interfejsy API [tworzenia](https://aka.ms/v1-authoring-api-docs) są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356) i [tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087) interfejsów API. 
 
 ## <a name="new-azure-regions"></a>Nowe regiony platformy Azure
-Usługa LUIS ma nowy [regionów](https://aka.ms/LUIS-regions) podany dla interfejsów API usługi LUIS. Usługa LUIS zapewnia innego portalu dla regionu grup. Aplikacja musi zostać utworzona w tym samym regionie, które chcesz zbadać. Aplikacje nie są automatycznie migrowane regionów. Możesz wyeksportować aplikację z jednego regionu, a następnie importowania do innej, aby była dostępna w nowym regionie.
+Usługa LUIS ma nowy [regionów](https://aka.ms/LUIS-regions) podany dla interfejsów API usługi LUIS. LUIS udostępnia inny Portal dla grup regionów. Aplikacja musi zostać utworzona w tym samym regionie, które chcesz zbadać. Aplikacje nie są automatycznie migrowane regionów. Możesz wyeksportować aplikację z jednego regionu, a następnie importowania do innej, aby była dostępna w nowym regionie.
 
 ## <a name="authoring-route-changes"></a>Tworzenie zmiany trasy
 Trasy interfejsu API tworzenia zmieniła się z pomocą **programu** tras za pomocą **interfejsu api** trasy.
@@ -35,7 +35,7 @@ Trasy interfejsu API tworzenia zmieniła się z pomocą **programu** tras za pom
 
 
 ## <a name="endpoint-route-changes"></a>Zmiany trasy punktu końcowego
-Punkt końcowy interfejsu API ma nowe parametry ciągu zapytania, a także różnych odpowiedzi. Jeśli flaga pełne ma wartość true, wszystkie opcje, niezależnie od tego, wynik, są zwracane w tablicy o nazwie intencji oprócz topScoringIntent.
+Interfejs API punktu końcowego ma nowe parametry ciągu zapytania, a także inną odpowiedź. Jeśli flaga pełne ma wartość true, wszystkie opcje, niezależnie od tego, wynik, są zwracane w tablicy o nazwie intencji oprócz topScoringIntent.
 
 | version | Pobierz trasę |
 |--|--|
@@ -153,7 +153,7 @@ Usługa LUIS sugeruje wypowiedzi z istniejących [wypowiedzi punktu końcowego](
 |/ luis/api/v2.0/apps/customprebuiltdomains/{culture}  |Pobierz|
 
 ## <a name="importing-1x-app-into-2x"></a>Importowanie aplikacji 1.x do 2.x
-1\.x wyeksportowany plik JSON aplikacji ma kilka obszarów, które należy zmienić przed zaimportowaniem do [LUIS] [ LUIS] w wersji 2.0. 
+Plik JSON wyeksportowanej aplikacji 1. x ma pewne obszary, które należy zmienić przed zaimportowaniem do [LUIS][LUIS] 2,0. 
 
 ### <a name="prebuilt-entities"></a>Wstępnie utworzonych jednostek 
 [Ze wstępnie utworzonych jednostek](luis-prebuilt-entities.md) uległy zmianie. Upewnij się, że używasz wersji 2 ze wstępnie utworzonych jednostek. W tym za pomocą [datetimeV2](luis-reference-prebuilt-datetimev2.md), zamiast daty/godziny. 

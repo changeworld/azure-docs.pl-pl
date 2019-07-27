@@ -1,7 +1,7 @@
 ---
-title: Wyświetla frazy — usługi mowy
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak Podaj usług przetwarzania mowy z listy frazy za pomocą `PhraseListGrammar` obiekt, aby poprawić wyniki rozpoznawania mowy na tekst.
+title: Listy fraz — usługa mowy
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak dostarczać usługi mowy z listą fraz `PhraseListGrammar` przy użyciu obiektu, aby poprawić wyniki rozpoznawania zamiany mowy na tekst.
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 0e552d502184d1b537263c2c1f6b2a8562cdf791
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226343"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562772"
 ---
-# <a name="phrase-lists-for-speech-to-text"></a>Fraza list mowy na tekst
+# <a name="phrase-lists-for-speech-to-text"></a>Listy fraz dla zamiany mowy na tekst
 
-Dostarczając usług przetwarzania mowy z listą frazy, może zwiększyć dokładność rozpoznawania mowy. Fraza list są używane do identyfikowania znanych frazy w danych audio, takie jak nazwisko osoby lub konkretnej lokalizacji.
+Dostarczając usługi mowy z listą fraz, można poprawić dokładność rozpoznawania mowy. Listy fraz są używane do identyfikowania znanych fraz w danych audio, takich jak nazwa osoby lub określonej lokalizacji.
 
-Na przykład w przypadku polecenia "Przenieś" i możliwe miejsca docelowego "Dalej", który może być wymawiane, można dodać wpis "Przesuń do tyłu". Dodawanie frazy zwiększy prawdopodobieństwo, że, kiedy audio jest rozpoznawana rozpoznawania "Przesuń do tyłu" zamiast "Przenoszenia kierunku".
+Jeśli na przykład masz polecenie "Przenieś do" i możliwe miejsce docelowe "do wewnątrz", które może być wymawiane, możesz dodać wpis "przejdź do samego". Dodanie frazy spowoduje zwiększenie prawdopodobieństwa, że gdy dźwięk zostanie rozpoznany, że "Przenieś do wewnątrz" zostanie rozpoznany zamiast "Przenieś w stronę".
 
-Pojedynczy słów i fraz pełną można dodać do listy fraz. Podczas rozpoznawania wpis na liście frazy jest używany, jeśli dokładne dopasowanie jest uwzględniona w audio. Opieranie się na poprzedni przykład, jeśli lista fraz zawiera "Przesuń do tyłu", a także frazy przechwycone jest "Przenieś powoli kierunku", a następnie wynik rozpoznawania będzie "Przesuń do tyłu powoli".
+Pojedyncze słowa lub kompletne wyrażenia można dodać do listy fraz. Podczas rozpoznawania, gdy w dźwięku znajduje się dokładne dopasowanie, jest używana pozycja na liście fraz. Kompilowanie w poprzednim przykładzie, jeśli lista fraz zawiera ciąg "Przenieś do niego" i przechwycona fraza ma wartość "Przenieś w kierunku spowolnienia", a następnie wynik rozpoznawania zostanie "przesunięty do wolniej".
 
 >[!Note]
-> Zamiany mowy na tekst obecnie wyświetla frazy obsługuje tylko język angielski.
+> Obecnie listy fraz obsługują tylko język angielski dla zamiany mowy na tekst.
 
-## <a name="how-to-use-phrase-lists"></a>Jak używać Wyświetla frazy
+## <a name="how-to-use-phrase-lists"></a>Jak używać list fraz
 
-Poniższe przykłady pokazują, jak tworzyć zawartość przy użyciu listy fraz `PhraseListGrammar` obiektu.
+Poniższe przykłady ilustrują sposób tworzenia listy fraz przy użyciu `PhraseListGrammar` obiektu.
 
 ```C++
 auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
@@ -68,9 +68,9 @@ phraseListGrammar.addPhrase("Move to Ted");
 ```
 
 >[!Note]
-> Maksymalna liczba listy frazy, które będzie używane przez usługę rozpoznawania mowy, aby dopasować mowy to 1024 fraz.
+> Maksymalna liczba list fraz, które będą używane przez usługę mowy do dopasowania mowy, to 1024 fraz.
 
-Można także wyczyścić fraz skojarzony `PhraseListGrammar` przez wywołującego metody clear().
+Możesz również wyczyścić frazy skojarzone z `PhraseListGrammar` przez wywołanie metody Clear ().
 
 ```C++
 phraselist->Clear();
@@ -93,8 +93,8 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> Zmienia się na `PhraseListGrammar` obiektu take wpływ na rozpoznawanie dalej lub ponowne nawiązanie połączenia z usługami mowy.
+> Zmiany w `PhraseListGrammar` obiekcie mają wpływ na następne rozpoznanie lub po ponownym nawiązaniu połączenia z usługą mowy.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dokumentacja referencyjna zestawu SDK rozpoznawania mowy](speech-sdk.md)
+* [Dokumentacja referencyjna zestawu Speech SDK](speech-sdk.md)

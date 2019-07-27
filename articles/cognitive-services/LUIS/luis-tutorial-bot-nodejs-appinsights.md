@@ -1,7 +1,7 @@
 ---
-title: Usługa Application Insights, środowiska Node.js
+title: Application Insights, Node. js — LUIS
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku dodaje bot i Language Understanding informacji do przechowywania danych telemetrycznych usługi Application Insights.
+description: Ten samouczek dodaje bot i Language Understanding informacje do Application Insights magazynu danych telemetrycznych.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,49 +11,49 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: cfed5477df75350f24e77786117e85b9c728c49a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 72ce681b6b0e4109151b987a5f8cc4bc050aafa0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657751"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563292"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights z Bota w środowisku Node.js
-W tym samouczku dodaje bot i Language Understanding informacje [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub Power BI, aby analizować, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
+# <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>Dodaj wyniki LUIS do Application Insights z bot w języku Node. js
+Ten samouczek dodaje bot i Language Understanding informacje do [Application Insights](https://azure.microsoft.com/services/application-insights/) magazynu danych telemetrycznych. Po uzyskaniu tych danych możesz wysyłać do nich zapytania przy użyciu języka Kusto lub Power BI analizowania, agregowania i raportowania na temat intencji oraz jednostek wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Przechwytywanie bot i Language understanding danych w usłudze Application Insights
-> * Zapytanie usługi Application Insights dla danych Language Understanding
+> * Przechwyć dane dotyczące bot i języka w Application Insights
+> * Application Insights kwerendy dla Language Understanding danych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Usługa Azure bot service bot, utworzony za pomocą usługi Application Insights włączoną.
-* Pobrano bot kod z poprzednich bot  **[samouczek](luis-nodejs-tutorial-bf-v4.md)** . 
+* Usługa Azure bot Service bot utworzona z włączonym Application Insights.
+* Pobrano kod bot z poprzedniego **[samouczka](luis-nodejs-tutorial-bf-v4.md)** bot. 
 * [Emulator bota](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
-Cały kod w tym samouczku jest dostępny na [repozytorium przykładów dla platformy Azure Language Understanding GitHub](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/v4/luis-nodejs-bot-johnsmith-src-telemetry). 
+Cały kod w tym samouczku jest dostępny na [platformie Azure-samples Language Understanding repozytorium GitHub](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/v4/luis-nodejs-bot-johnsmith-src-telemetry). 
 
-## <a name="add-application-insights-to-web-app-bot-project"></a>Dodaj usługę Application Insights do projektu bot aplikacji sieci web
-Obecnie usługi Application Insights, używane w tym web Apps umożliwia zbieranie informacji o ogólnym stanem telemetria dla bota. Nie są zbierane informacje usługi LUIS. 
+## <a name="add-application-insights-to-web-app-bot-project"></a>Dodaj Application Insights do projektu bot aplikacji sieci Web
+Obecnie usługi Application Insights, używane w tym web Apps umożliwia zbieranie informacji o ogólnym stanem telemetria dla bota. Nie zbiera informacji LUIS. 
 
-Przechwytywanie informacji usługi LUIS, bot aplikacji sieci web musi **[usługi Application Insights](https://www.npmjs.com/package/applicationinsights)** pakietu NPM zainstalowane i skonfigurowane.  
+Aby można było przechwycić informacje LUIS, aplikacja internetowa bot musi mieć zainstalowany i skonfigurowany pakiet **[Application Insights](https://www.npmjs.com/package/applicationinsights)** npm.  
 
-1. W zintegrowanym terminalu programu VSCode w katalogu głównym projektu bot, Dodaj następujące pakiety NPM przy użyciu polecenia wyświetlane: 
+1. W zintegrowanym terminalu programu vscode w katalogu głównym projektu bot Dodaj następujące pakiety NPM przy użyciu podanego polecenia: 
 
     ```console
     npm install applicationinsights && npm install underscore
     ```
     
-    **Podkreślenia** spłaszczanie strukturze JSON usługi LUIS, dzięki czemu do przeglądania i używania w usłudze Application Insights jest używany pakiet.
+    Pakiet **podkreślenia** służy do spłaszczania struktury JSON Luis, dzięki czemu łatwiej jest zobaczyć i używać w Application Insights.
     
 
 
 ## <a name="capture-and-send-luis-query-results-to-application-insights"></a>Przechwytywane i wysyłane do usługi LUIS wyników zapytania do usługi Application Insights
 
-1. W programu VSCode, Utwórz nowy plik **appInsightsLog.js** i Dodaj następujący kod:
+1. W programu vscode Utwórz nowy plik **appInsightsLog. js** i Dodaj następujący kod:
 
     ```javascript
     const appInsights = require('applicationinsights');
@@ -94,9 +94,9 @@ Przechwytywanie informacji usługi LUIS, bot aplikacji sieci web musi **[usługi
     module.exports.appInsightsLog = appInsightsLog;
     ```
 
-    Ten plik ma bot kontekstu i odpowiedzi usługi luis spłaszcza oba obiekty i wstawia je do **śledzenia** zdarzeń w usłudze application insights. Nazwa zdarzenia jest **LUIS**. 
+    Ten plik przyjmuje kontekst bot i odpowiedź Luis, spłaszcza oba obiekty i wstawia je do zdarzenia **śledzenia** w usłudze Application Insights. Nazwa zdarzenia to **Luis**. 
 
-1. Otwórz **okien dialogowych** folder, a następnie **luisHelper.js** pliku. Nowe **appInsightsLog.js** jako wymaganego pliku i przechwytywania kontekstu bot i LUIS odpowiedzi. Kompletny kod dla tego pliku jest: 
+1. Otwórz folder **Dialogs** , a następnie plik **luisHelper. js** . Dołącz nowy **appInsightsLog. js** jako plik wymagany i Przechwyć kontekst bot i odpowiedź Luis. Pełny kod dla tego pliku: 
 
     ```javascript
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -173,42 +173,42 @@ Przechwytywanie informacji usługi LUIS, bot aplikacji sieci web musi **[usługi
     module.exports.LuisHelper = LuisHelper;
     ```
 
-## <a name="add-application-insights-instrumentation-key"></a>Dodaj klucz Instrumentacji usługi Application Insights 
+## <a name="add-application-insights-instrumentation-key"></a>Dodaj klucz Instrumentacji Application Insights 
 
-Aby dodać dane do usługi application insights, możesz potrzebować klucza instrumentacji.
+Aby można było dodać dane do usługi Application Insights, potrzebny jest klucz Instrumentacji.
 
-1. W przeglądarce w [witryny Azure portal](https://portal.azure.com), Znajdź Twój bot **usługi Application Insights** zasobów. Jego nazwa będzie najczęściej nazwa robota, a następnie losowych znaków na końcu nazwy, takie jak `luis-nodejs-bot-johnsmithxqowom`. 
-1. W zasobie usługi Application Insights na **Przegląd** stronie, skopiuj **klucz Instrumentacji**.
-1. Otwórz w VSCode, **ENV** pliku w folderze głównym projektu botów. Ten plik przechowuje wszystkie zmienne środowiskowe.  
-1. Dodaj nową zmienną `MicrosoftApplicationInsightsInstrumentationKey` z wartością klucza instrumentacji. Czy nie Umieść wartość w cudzysłowie. 
+1. W przeglądarce w [Azure Portal](https://portal.azure.com)znajdź zasób **Application Insights** bot. Jego nazwa będzie zawierać większość nazwy bot, a następnie losowe znaki na końcu nazwy, `luis-nodejs-bot-johnsmithxqowom`na przykład. 
+1. Na zasobie Application Insights, na stronie **Przegląd** Skopiuj **klucz Instrumentacji**.
+1. W programu vscode Otwórz plik **ENV** w folderze głównym projektu bot. Ten plik zawiera wszystkie zmienne środowiskowe.  
+1. Dodaj nową zmienną `MicrosoftApplicationInsightsInstrumentationKey` z wartością klucza Instrumentacji. Nie należy umieszczać wartości w cudzysłowach. 
 
 ## <a name="start-the-bot"></a>Uruchamianie bota
 
-1. W zintegrowanym terminalu programu VSCode start bot:
+1. W zintegrowanym terminalu programu vscode Uruchom bot:
     
     ```console
     npm start
     ```
 
-1. Uruchom bot emulator i otwórz robota. To [kroku](luis-nodejs-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot) znajduje się w poprzednim samouczku.
+1. Uruchom emulator bot i Otwórz bot. Ten [krok](luis-nodejs-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot) jest dostępny w poprzednim samouczku.
 
-1. Zapytać bota pytań. To [kroku](luis-nodejs-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent) znajduje się w poprzednim samouczku.
+1. Zadawaj pytanie bot. Ten [krok](luis-nodejs-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent) jest dostępny w poprzednim samouczku.
 
 ## <a name="view-luis-entries-in-application-insights"></a>Wyświetlanie usługi LUIS wpisów w usłudze Application Insights
 
-Otwórz usługę Application Insights, aby wyświetlić wpisy usługi LUIS. Może upłynąć kilka minut, zanim dane pojawią się w usłudze Application Insights.
+Otwórz usługę Application Insights, aby wyświetlić wpisy usługi LUIS. Wyświetlenie danych w Application Insights może potrwać kilka minut.
 
-1. W [witryny Azure portal](https://portal.azure.com), otwórz zasób usługi Application Insights botów. 
-1. Po otwarciu zasobu wybierz **wyszukiwania** i wyszukiwać wszystkie dane w ciągu ostatnich **30 minut** z typem zdarzenia **śledzenia**. Wybierz opcję śledzenia o nazwie **LUIS**. 
-1. Bot i LUIS informacje są dostępne w obszarze **właściwościami niestandardowymi**. 
+1. W [Azure Portal](https://portal.azure.com)otwórz zasób Application Insights bot. 
+1. Gdy zasób zostanie otwarty, wybierz pozycję **Wyszukaj** i Wyszukaj wszystkie dane w ciągu ostatnich **30 minut** z typem zdarzenia **śledzenia**. Wybierz ślad o nazwie **Luis**. 
+1. Informacje o bot i LUIS są dostępne w obszarze **właściwości niestandardowe**. 
 
-    ![Przejrzyj usługi LUIS właściwości niestandardowe przechowywane w usłudze Application Insights](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-nodejs.png)
+    ![Przegląd właściwości niestandardowych LUIS przechowywanych w Application Insights](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-nodejs.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Zapytanie usługi Application Insights dla przeznaczenie, ocena i wypowiedź
-Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za pomocą [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) języka, jak eksportu do [usługi Power BI](https://powerbi.microsoft.com). 
+Application Insights umożliwia wykonywanie zapytań dotyczących danych przy użyciu języka [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) oraz eksportowanie go do [Power BI](https://powerbi.microsoft.com). 
 
-1. Wybierz **dziennika (analiza)** . Nowe okno zostanie otwarte okno zapytania u góry i oknem danych tabeli poniżej. Jeśli używano wcześniej bazy danych to rozwiązanie jest znana. Zapytanie reprezentuje poprzedniego filtrowane dane. **Tabeli CustomDimensions** kolumna ma bot i LUIS informacji.
-1. Aby wyciągnąć najważniejsze przeznaczenie, ocenę i wypowiedź, Dodaj następujące powyżej ostatni wiersz ( `|top...` wiersz) w oknie zapytania:
+1. Wybierz pozycję **Dziennik (analiza)** . Nowe okno zostanie otwarte okno zapytania u góry i oknem danych tabeli poniżej. Jeśli używano wcześniej bazy danych to rozwiązanie jest znana. Zapytanie reprezentuje poprzednie odfiltrowane dane. Kolumna **CustomDimensions** zawiera informacje o bot i Luis.
+1. Aby wyciągnąć górny cel, wynik i wypowiedź, Dodaj następujące tuż powyżej ostatniego wiersza ( `|top...` wiersz) w oknie zapytania:
 
     ```kusto
     | extend topIntent = tostring(customDimensions.LUIS_luisResponse_luisResult_topScoringIntent_intent)
@@ -216,13 +216,13 @@ Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za 
     | extend utterance = tostring(customDimensions.LUIS_luisResponse_text)
     ```
 
-1. Uruchom zapytanie. Dostępne są nowe kolumny topIntent, ocena i wypowiedź. Wybierz kolumnę topIntent do sortowania.
+1. Uruchom zapytanie. Dostępne są nowe kolumny topIntent, ocena i wypowiedź. Wybierz kolumnę topIntent, aby posortować.
 
-Dowiedz się więcej o [język zapytania Kusto](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) lub [dane są eksportowane do usługi Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+Dowiedz się więcej na temat [języka zapytań Kusto](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) lub wyeksportuj [dane do Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Inne informacje, które chcesz dodać do aplikacji danych szczegółowych informacji zawiera identyfikator aplikacji, identyfikator wersji, Data ostatniej zmiany modelu, Data ostatniego szkolenie, Data ostatniej publikacji. Te wartości albo można pobrać z adresu URL punktu końcowego (aplikacji Identyfikatora oraz identyfikator wersji) lub wywołanie interfejsu API tworzenia pakietów administracyjnych, a następnie w ustawieniach bot aplikacji sieci web i pobierane z tego miejsca.  
+Inne informacje, które chcesz dodać do aplikacji danych szczegółowych informacji zawiera identyfikator aplikacji, identyfikator wersji, Data ostatniej zmiany modelu, Data ostatniego szkolenie, Data ostatniej publikacji. Te wartości można pobrać z adresu URL punktu końcowego (identyfikatora aplikacji i identyfikatora wersji) lub z wywołania interfejsu API tworzenia, a następnie ustawić je w ustawieniach bot aplikacji sieci Web i pobrać z tego miejsca.  
 
 Jeśli używasz tej samej subskrypcji punktu końcowego dla więcej niż jedną aplikacją usługi LUIS, powinny również obejmować identyfikator subskrypcji i właściwości z informacją, że jest on klucza wstępnego. 
 

@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Syntetyzowania mowy, języka C++ (Linux) — usługi mowy'
+title: 'Szybki start: Synteza mowy, C++ (Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak syntetyzowania mowy, języka C++ w systemie Linux przy użyciu zestawu SDK rozpoznawania mowy
+description: Dowiedz się, jak przeprowadzić funkcję C++ syntezy mowy w systemie Linux przy użyciu zestawu Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: fbc5f21bb97eabb234e2b3905796ae01877ed89f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: dbc9c2adc2663d3ba0ec3f9ea17b758ca2723441
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604938"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553702"
 ---
-# <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Szybki start: Syntetyzowania mowy, języka C++ w systemie Linux przy użyciu zestawu SDK rozpoznawania mowy
+# <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Szybki start: Wykorzystaj mowę C++ w systemie Linux przy użyciu zestawu Speech SDK
 
-Przewodniki Szybki Start są również dostępne dla [rozpoznawania mowy](quickstart-cpp-linux.md).
+Przewodniki Szybki Start są również dostępne do [rozpoznawania mowy](quickstart-cpp-linux.md).
 
-W tym artykule opisano tworzenie C++ konsoli aplikacji dla systemu Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9). Użyj usług Cognitive Services [zestaw SDK rozpoznawania mowy](speech-sdk.md) syntetyzowania mowę na podstawie tekstu w czasie rzeczywistym i odtwarzanie mowy głośnik Twojego komputera. Aplikacja jest kompilowana przy użyciu [zestawu Speech SDK dla systemu Linux](https://aka.ms/csspeech/linuxbinary) i kompilatora języka C++ dystrybucji systemu Linux (na przykład `g++`).
+W tym artykule opisano tworzenie aplikacji C++ konsolowej dla systemu Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). Używasz [zestawu speech Cognitive Services SDK](speech-sdk.md) , aby wypróbować mowę z tekstu w czasie rzeczywistym i odtwarzać mowę na głośniku komputera. Aplikacja jest kompilowana przy użyciu [zestawu Speech SDK dla systemu Linux](https://aka.ms/csspeech/linuxbinary) i kompilatora języka C++ dystrybucji systemu Linux (na przykład `g++`).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodnik Szybki Start. Możesz go uzyskać bezpłatnie. Zobacz [bezpłatnego wypróbowania usługi mowy](get-started.md) Aby uzyskać szczegółowe informacje.
+Aby ukończyć ten przewodnik Szybki Start, potrzebujesz klucza subskrypcji usługi Speech Services. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje [, zobacz Wypróbuj bezpłatne usługi mowy](get-started.md) .
 
 ## <a name="install-speech-sdk"></a>Instalowanie zestawu Speech SDK
 
@@ -46,7 +46,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * On Debian 9:
+   * W programie Debian 9:
 
      ```sh
      sudo apt-get update
@@ -88,7 +88,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/cpp-linux/helloworld.cpp#code)]
 
-1. W tym nowym pliku, Zastąp ciąg `YourSubscriptionKey` z kluczem subskrypcji usług przetwarzania mowy.
+1. W tym nowym pliku Zamień ciąg `YourSubscriptionKey` na klucz subskrypcji usługi Speech Services.
 
 1. Zastąp ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
@@ -131,7 +131,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
    ./helloworld
    ```
 
-1. W oknie konsoli zostanie wyświetlony monit, monit wpisz jakiś tekst. Wpisz kilka słów lub zdanie. Wpisany tekst jest przesyłane do usług przetwarzania mowy i przekształcony na mowę, na którym odtwarzany na głośników.
+1. W oknie konsoli zostanie wyświetlony monit z monitem o wpisanie tekstu. Wpisz kilka wyrazów lub zdania. Tekst, który wpisano, jest przesyłany do usługi mowy i można go wyrównać do mowy, który jest odtwarzany na głośniku.
 
    ```text
    Type some text that you want to speak...
@@ -140,12 +140,12 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
    Press enter to exit...
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C++ w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Dostosowywanie czcionek głosowych](how-to-customize-voice-font.md)
-- [Próbki głosu rekord](record-custom-voice-samples.md)
+- [Dostosuj czcionki głosowe](how-to-customize-voice-font.md)
+- [Rejestruj przykłady głosu](record-custom-voice-samples.md)

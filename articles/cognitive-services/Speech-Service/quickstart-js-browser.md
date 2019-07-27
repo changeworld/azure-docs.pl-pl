@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy, JavaScript (przeglądarka) — usługi mowy'
+title: 'Szybki start: Rozpoznawanie mowy, JavaScript (przeglądarka) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak rozpoznawać mowę w języku JavaScript w przeglądarce przy użyciu zestawu SDK usługi Mowa
 services: cognitive-services
@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: a2884b43268b4c067e6e739f67d2253f8c45a408
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 69ec6062d0dba1f1044f9a7dcfbe75924887d2b4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603051"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559411"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w języku JavaScript w przeglądarce przy użyciu zestawu SDK usługi Mowa
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Z tego artykułu dowiesz się, jak utworzyć witrynę internetową przy użyciu powiązania języka JavaScript zestawu SDK usługi Mowa z usługi Cognitive Services, aby wykonać transkrypcję mowy na tekst.
-Ta aplikacja jest oparta na zestaw SDK rozpoznawania mowy dla języka JavaScript ([pobierania wersji 1.5.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Aplikacja jest oparta na zestawie mowy SDK dla języka JavaScript ([Pobierz wersję 1.5.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz subskrypcji dla usługi Mowa. Zobacz [bezpłatnego wypróbowania usługi mowy](get-started.md).
+* Klucz subskrypcji dla usługi Mowa. Zobacz [bezpłatnie usługę Speech](get-started.md).
 * Komputer PC lub Mac z działającym mikrofonem.
 * Edytor tekstów.
-* Bieżąca wersja przeglądarki Chrome, Microsoft Edge lub przeglądarki Safari.
+* Bieżąca wersja przeglądarki Chrome, przeglądarki Microsoft Edge lub przeglądarki Safari.
 * Opcjonalnie serwer internetowy, który obsługuje skrypty hostingu w języku PHP.
 
 ## <a name="create-a-new-website-folder"></a>Tworzenie nowego folderu witryny internetowej
@@ -101,13 +101,13 @@ Aby uruchomić aplikację, kliknij dwukrotnie plik index.html lub otwórz plik i
 
 > [!NOTE]
 > Ta metoda nie działa w przeglądarce Safari.
-> W przeglądarce Safari przykładowej strony internetowej musi być hostowana na serwerze sieci web. Safari nie zezwala na witryn sieci Web załadowanego z pliku lokalnego do użycia mikrofonu.
+> W przeglądarce Safari Przykładowa strona sieci Web musi być hostowana na serwerze sieci Web. Przeglądarka Safari nie zezwala na korzystanie z mikrofonu w witrynach sieci Web ładowanych z pliku lokalnego.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Kompilowanie i uruchamianie przykładu za pomocą serwera internetowego
 
 Aby uruchomić aplikację, otwórz przeglądarkę internetową i wskaż w niej publiczny adres URL, pod którym hostowany jest folder, wprowadź swój [region](regions.md) i wyzwól rozpoznawanie za pomocą mikrofonu. Jeśli skonfigurowano tę funkcję, pobierze ona token ze źródła tokenu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka JavaScript w usłudze GitHub](https://aka.ms/csspeech/samples)

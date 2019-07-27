@@ -1,7 +1,7 @@
 ---
-title: Wdrażanie modelu dla niestandardowego głosu — usługi mowy
-titlesuffix: Azure Cognitive Services
-description: W tym dokumencie dowiesz się, jak utworzyć i wdrożyć punkt końcowy korzystający z portalu usługi Custom Speech.
+title: Wdrażanie modelu na potrzeby usługi Custom Speech-Speech
+titleSuffix: Azure Cognitive Services
+description: W tym dokumencie dowiesz się, jak utworzyć i wdrożyć punkt końcowy przy użyciu portalu Custom Speech.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,44 +10,44 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f2b69bf3e5d536e7e813ef4a7c36b2937141fd43
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 15e2ce437a746d15622dc4e093a63c87448f100d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606623"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559674"
 ---
 # <a name="deploy-a-custom-model"></a>Wdrażanie modelu niestandardowego
 
-Po został przekazany i kontroli danych, oceniane dokładności i przeszkolonego modelu niestandardowego, można wdrożyć niestandardowy punkt końcowy do korzystania z aplikacji, narzędzi i produktów. W tym dokumencie dowiesz się, jak utworzyć i wdrożyć punkt końcowy korzystający z portalu usługi Custom Speech.
+Po przekazaniu i sprawdzeniu danych, ocenie dokładności i przeszkoleniu modelu niestandardowego można wdrożyć niestandardowy punkt końcowy do użycia z aplikacjami, narzędziami i produktami. W tym dokumencie dowiesz się, jak utworzyć i wdrożyć punkt końcowy przy użyciu portalu Custom Speech.
 
 ## <a name="create-a-custom-endpoint"></a>Tworzenie niestandardowego punktu końcowego
 
-Aby utworzyć nowy niestandardowy punkt końcowy, wybierz **wdrożenia** menu Custom Speech, w górnej części strony. Po pierwszym uruchomieniu, można zauważyć, że nie istnieją żadne punkty końcowe, wymienione w tabeli. Po utworzeniu punktu końcowego, ta strona będzie służy do śledzenia każdego wdrożonego punktu końcowego.
+Aby utworzyć nowy niestandardowy punkt końcowy, wybierz pozycję **wdrożenie** z menu Custom Speech w górnej części strony. Jeśli jest to pierwsze uruchomienie, Zauważ, że w tabeli nie ma punktów końcowych. Po utworzeniu punktu końcowego użyjesz tej strony do śledzenia wszystkich wdrożonych punktów końcowych.
 
-Następnie wybierz pozycję **Dodaj punkt końcowy** i wprowadź **nazwa** i **opis** do niestandardowego punktu końcowego. Następnie wybrać niestandardowy model, który chcesz skojarzyć z tym punktem końcowym. Na tej stronie można również włączyć rejestrowanie. Rejestrowanie umożliwia monitorowanie punktu końcowego ruchu. Wyłączenie tej opcji, ruch nie zostanie on zapisany.
+Następnie wybierz pozycję **Dodaj punkt końcowy** i wprowadź **nazwę** i **Opis** niestandardowego punktu końcowego. Następnie wybierz model niestandardowy, który chcesz skojarzyć z tym punktem końcowym. Na tej stronie można również włączyć rejestrowanie. Rejestrowanie pozwala monitorować ruch punktu końcowego. W przypadku wyłączenia ruch nie będzie przechowywany.
 
-![Wdrażanie modelu](./media/custom-speech/custom-speech-deploy-model.png)
+![Jak wdrożyć model](./media/custom-speech/custom-speech-deploy-model.png)
 
 > [!NOTE]
-> Należy pamiętać zaakceptować warunki użytkowania i szczegóły cennika.
+> Nie zapomnij zaakceptować warunków użytkowania i szczegółów cennika.
 
-Następnie wybierz pozycję **Utwórz**. Spowoduje powrót do **wdrożenia** strony. Tabela zawiera teraz wpis, który odnosi się do niestandardowego punktu końcowego. Stan punktu końcowego to swojego bieżącego stanu. Może potrwać do 30 minut utworzyć nowy punkt końcowy przy użyciu niestandardowych modeli. Zmiany stanu wdrożenia na **Complete**, punkt końcowy jest gotowy do użycia.
+Następnie wybierz pozycję **Utwórz**. Ta akcja powoduje powrót do strony **wdrożenia** . Tabela zawiera teraz wpis odpowiadający niestandardowemu punktowi końcowemu. Stan punktu końcowego pokazuje jego bieżący stan. Utworzenie wystąpienia nowego punktu końcowego przy użyciu modeli niestandardowych może potrwać do 30 minut. Gdy stan wdrożenia zmieni się na **ukończone**, punkt końcowy jest gotowy do użycia.
 
-Po wdrożeniu punkt końcowy, nazwę punktu końcowego, który pojawia się jako link. Kliknij link, aby wyświetlić informacje dotyczące punktu końcowego usługi, takich jak klucza punktu końcowego adresu URL punktu końcowego i przykładowy kod.
+Po wdrożeniu punktu końcowego nazwa punktu końcowego jest wyświetlana jako link. Kliknij link, aby wyświetlić informacje specyficzne dla danego punktu końcowego, takie jak klucz punktu końcowego, adres URL punktu końcowego i przykładowy kod.
 
 ## <a name="view-logging-data"></a>Wyświetlanie danych rejestrowania
 
-Dane rejestrowania są dostępne do pobrania w sekcji **punktu końcowego > Szczegóły**.
+Dane rejestrowania są dostępne do pobrania w obszarze **punkt końcowy > szczegóły**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Użyj niestandardowego punktu końcowego za pomocą [zestaw SDK rozpoznawania mowy](speech-sdk.md)
+* Używanie niestandardowego punktu końcowego z [zestawem SDK mowy](speech-sdk.md)
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Przygotuj i przetestować danych](how-to-custom-speech-test-data.md)
-* [Sprawdzanie danych](how-to-custom-speech-inspect-data.md)
-* [Oceń swoje dane](how-to-custom-speech-evaluate-data.md)
+* [Przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md)
+* [Inspekcja danych](how-to-custom-speech-inspect-data.md)
+* [Oceń dane](how-to-custom-speech-evaluate-data.md)
 * [Uczenie modelu](how-to-custom-speech-train-model.md)
 * [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)

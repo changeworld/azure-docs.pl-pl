@@ -1,7 +1,7 @@
 ---
-title: Transkrypcja wielu uczestników rozmowy z zestawem SDK mowy — usługi mowy
+title: Transkrypcja konwersacji wielouczestnikowych przy użyciu zestawu Speech SDK — Speech Service
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać transkrypcji konwersacji z zestawem SDK rozpoznawania mowy. Dostępne dla C++, C#i Java.
+description: Dowiedz się, jak używać transkrypcji konwersacji przy użyciu zestawu Speech SDK. Dostępne dla C++języków C#, i Java.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -10,40 +10,40 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 215209a5b8e3ed46b25fbfa492c305785a9a0070
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606463"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559461"
 ---
-# <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Transkrypcja wielu uczestników rozmowy z zestawem SDK rozpoznawania mowy
+# <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Transkrypcja konwersacji wielouczestnikowych przy użyciu zestawu Speech SDK
 
-Zestaw SDK rozpoznawania mowy **ConversationTranscriber** interfejs API umożliwia także spotkań/konwersacje możliwość dodawania, usuwania i identyfikowanie uczestników przez przesyłanie strumieniowe audio do korzystania z usług przetwarzania mowy `PullStream` lub `PushStream`.
+Interfejs API **ConversationTranscriber** zestawu mowy SDK umożliwia transkrypcja spotkań/konwersacji z możliwością dodawania, usuwania i identyfikowania uczestników za pomocą przesyłania strumieniowego audio do usług mowy przy użyciu `PullStream` lub `PushStream`.
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Konwersacja programu transcriber jest obsługiwana w przypadku C++, C#i języka Java na Windows, Linux i Android.
-* Mxchip ROOBO to środowisko obsługiwanego sprzętu, do tworzenia transkrypcje konwersacji, ponieważ zapewniający cykliczne tablica wielu mikrofonu, która może być wykorzystywany efektywnie Identyfikacja osoby mówiącej. [Aby uzyskać więcej informacji, zobacz zestawu Speech Devices SDK](speech-devices-sdk.md).
-* Obsługa transkrypcji konwersacji w zestawie SDK rozpoznawania mowy jest ograniczona do używania audio ściągania i wypychania strumienie trybu z ośmiu kanały audio PCM 16 kHz 16-bitowych.
-* Transkrypcja konwersacji jest obecnie dostępna w językach "en US" i "zh-CN" w następujących regionach: centralus i Azja Wschodnia.
+* Transcriber konwersacji jest obsługiwana dla C++systemów C#, i Java w systemach Windows, Linux i Android.
+* ROOBO DevKit to obsługiwane środowisko sprzętowe do tworzenia transkrypcji konwersacji, co zapewnia cykliczną tablicę z wielomikrofonem, którą można wydajnie wykorzystać do identyfikacji osoby mówiącej. [Aby uzyskać więcej informacji, zobacz zestaw SDK urządzeń usługi Speech](speech-devices-sdk.md).
+* Obsługa zestawu Speech SDK na potrzeby transkrypcji konwersacji jest ograniczona do użycia strumieni ściągania i wypychania audio przy użyciu ośmiu kanałów dla 16-bitowego 16 kHz audio PCM.
+* Transkrypcja konwersacji jest obecnie dostępna w językach "en-US" i "zh-CN" w następujących regionach: środkowe i eastasia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Dowiedz się, jak używać mowy na tekst z zestawem SDK rozpoznawania mowy.](quickstart-csharp-dotnet-windows.md)
-* [Pobierz wersję próbną subskrypcji mowy.](https://azure.microsoft.com/try/cognitive-services/)
-* Zestaw SDK w wersji 1.5.1 mowy lub nowszy jest wymagany.
+* [Dowiedz się, jak używać zamiany mowy na tekst za pomocą zestawu Speech SDK.](quickstart-csharp-dotnet-windows.md)
+* [Pobierz subskrypcję wersji próbnej usługi Speech.](https://azure.microsoft.com/try/cognitive-services/)
+* Wymagany jest pakiet Speech SDK w wersji 1.5.1 lub nowszej.
 
-## <a name="create-voice-signatures-for-participants"></a>Tworzenie podpisów głosu dla uczestników
+## <a name="create-voice-signatures-for-participants"></a>Tworzenie podpisów głosowych dla uczestników
 
-Pierwszym krokiem jest tworzenie podpisów głosu dla uczestników konwersacji. Tworzenie podpisów głos jest wymagane do identyfikacji osoby mówiącej wydajne.
+Pierwszym krokiem jest utworzenie podpisów głosowych dla uczestników konwersacji. Tworzenie podpisów głosowych jest wymagane do wydajnej identyfikacji głośników.
 
-### <a name="requirements-for-input-wave-file"></a>Wymagania dotyczące pliku wejściowego wave
+### <a name="requirements-for-input-wave-file"></a>Wymagania dotyczące wejściowego pliku Wave
 
-* Plik wave audio w wejściowych do tworzenia podpisów głos jest w przykłady 16-bitowych, częstotliwość próbkowania 16 kHz i format pojedynczy kanał (Mono).
-* Zalecana długość dla każdej próbki audio jest od 30 sekund do dwóch minut.
+* Wejściowy plik Wave audio służący do tworzenia podpisów głosowych powinien znajdować się w 16-bitowych próbkach, szybkości próbkowania 16 kHz i formacie pojedynczego kanału (mono).
+* Zalecana długość poszczególnych próbek audio to 30 sekund i dwie minuty.
 
-Poniższy przykład przedstawia dwa różne sposoby tworzenia podpisu głosowych przez [przy użyciu interfejsu API REST](https://aka.ms/cts/signaturegenservice) z C#:
+W poniższym przykładzie przedstawiono dwa różne sposoby tworzenia sygnatury głosowej przy [użyciu interfejsu API REST](https://aka.ms/cts/signaturegenservice) z C#:
 
 ```csharp
 class Program
@@ -85,11 +85,11 @@ class Program
 }
 ```
 
-## <a name="transcribing-conversations"></a>Przepisywania konwersacje
+## <a name="transcribing-conversations"></a>Jego przepisywania konwersacje
 
-Transkrypcja rozmów z wielu uczestników, należy utworzyć `ConversationTranscriber` obiekt, który jest skojarzony z `AudioConfig` obiekt utworzony dla sesji konwersacji i strumień audio przy użyciu `PullAudioInputStream` lub `PushAudioInputStream`.
+Aby transkrypcja konwersacje z wieloma uczestnikami, `ConversationTranscriber` Utwórz obiekt, który jest skojarzony `AudioConfig` z obiektem utworzonym dla sesji konwersacji i strumieniowego `PushAudioInputStream`audio przy użyciu `PullAudioInputStream` lub.
 
-Załóżmy, że masz ConversationTranscriber klasę o nazwie `MyConversationTranscriber`. Twój kod może wyglądać następująco:
+Załóżmy, że masz klasę ConversationTranscriber o nazwie `MyConversationTranscriber`. Twój kod może wyglądać następująco:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -188,7 +188,7 @@ public class MyConversationTranscriber
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami w usłudze GitHub](https://aka.ms/csspeech/samples)

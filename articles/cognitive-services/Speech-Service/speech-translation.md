@@ -1,7 +1,7 @@
 ---
-title: Tłumaczenie mowy z usług przetwarzania mowy platformy Azure
-titlesuffix: Azure Cognitive Services
-description: Usługi mowy umożliwiają dodawanie end-to-end, w czasie rzeczywistym, wielu języków tłumaczenia mowy do aplikacji, narzędzi i urządzeń. Tego samego interfejsu API może służyć do tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst.
+title: Tłumaczenie mowy za pomocą usługi mowy
+titleSuffix: Azure Cognitive Services
+description: Usługa Speech Service umożliwia dodawanie do aplikacji, narzędzi i urządzeń kompleksowego tłumaczenia mowy w czasie rzeczywistym. Tego samego interfejsu API może służyć do tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,64 +10,64 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 428dba9e8ff5ec072d5172fee357fd5319d04ad8
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: cfcefd0b18831163324519b61dbea305f90f44bc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657724"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552650"
 ---
-# <a name="what-is-speech-translation"></a>Co to jest tłumaczenia mowy?
+# <a name="what-is-speech-translation"></a>Co to jest tłumaczenie mowy?
 
-Tłumaczenie mowy z usług przetwarzania mowy platformy Azure, umożliwia w czasie rzeczywistym, wielu języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst, strumieni audio. Przy użyciu zestawu SDK rozpoznawania mowy aplikacji, narzędzi i urządzeń korzystać ze źródła transkrypcji i tłumaczenia w danych wyjściowych dla podanego audio. Tymczasowe transkrypcja i tłumaczenie są zwracane jako mowy są wykrywane i finały wyniki mogą być konwertowane na syntezatora mowy.
+Tłumaczenie mowy z usług Azure Speech Services umożliwia korzystanie z funkcji zamiany mowy na mowę i zamiany tekstu na wiele języków w czasie rzeczywistym. Za pomocą zestawu Speech SDK aplikacje, narzędzia i urządzenia mają dostęp do transkrypcji źródłowych i danych wyjściowych tłumaczenia dla podanego dźwięku. Tymczasowe transkrypcja i wyniki tłumaczenia są zwracane w miarę wykrycia mowy, a końcowe wyniki można przekonwertować na mowę.
 
-Aparat tłumaczenia firmy Microsoft jest obsługiwana przez dwa różne podejścia: statystycznego tłumaczenia maszynowego (SMT) i neuronowego tłumaczenia maszynowego (NMT). SMT używa zaawansowanych analiz statystycznych, aby oszacować najlepsze możliwe tłumaczenia podany kontekst kilka słów. Za pomocą NMT sieci neuronowych są używane do podać tłumaczenia dokładniejszych, brzmiącą naturalnego przy użyciu pełnego kontekstu zdania do translacji słów.
+Aparat tłumaczenia firmy Microsoft jest obsługiwany przez dwa różne podejścia: tłumaczenia maszyn statystycznych (SMT) i neuronowych Machine Translation (NMT). SMT stosuje zaawansowaną analizę statystyczną do oszacowania najlepszych możliwych tłumaczeń z uwzględnieniem kontekstu kilku wyrazów. Dzięki NMT sieci neuronowych są używane do zapewniania dokładniejszych, naturalnych tłumaczeń przy użyciu pełnego kontekstu zdań do tłumaczenia wyrazów.
 
-Obecnie firma Microsoft używa NMT celu translacji na najbardziej popularnych języków. Wszystkie [języki dostępne do tłumaczenia mowy do mowy](language-support.md#speech-translation) są obsługiwane przez NMT. Tłumaczenie mowy na tekst mogą używać SMT lub NMT, w zależności od pary języka. Język docelowy jest obsługiwany przez NMT, pełne tłumaczenie jest zasilane z NMT. Język docelowy nie jest obsługiwany przez NMT, tłumaczenie jest hybrydowa NMT i SMT, przy użyciu języka angielskiego jako "pivot" między dwa języki.
+Obecnie firma Microsoft używa usługi NMT do tłumaczenia na najpopularniejsze języki. Wszystkie [języki dostępne do tłumaczenia mowy do mowy](language-support.md#speech-translation) są obsługiwane przez NMT. Tłumaczenie mowy na tekst mogą używać SMT lub NMT, w zależności od pary języka. Gdy język docelowy jest obsługiwany przez NMT, pełne tłumaczenie jest NMTe. Gdy język docelowy nie jest obsługiwany przez NMT, tłumaczenie jest hybrydą NMT i SMT przy użyciu języka angielskiego jako "Pivot" między tymi dwoma językami.
 
 ## <a name="core-features"></a>Podstawowe funkcje
 
-Oto funkcje dostępne za pośrednictwem mowy zestawu SDK i interfejsy API REST:
+Poniżej przedstawiono funkcje dostępne za pośrednictwem zestawu Speech SDK i interfejsów API REST:
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Tłumaczenie mowy na tekst za pomocą wyniki rozpoznawania. | Tak | Nie |
-| Tłumaczenie mowy do rozpoznawania mowy. | Tak | Nie |
-| Wyników pośrednich rozpoznawanie i tłumaczenia. | Yes | Nie |
+| Tłumaczenie zamiany mowy na tekst z wynikami rozpoznawania. | Tak | Nie |
+| Tłumaczenie mowy na mowę. | Tak | Nie |
+| Tymczasowe rozpoznawanie i wyniki tłumaczenia. | Tak | Nie |
 
-## <a name="get-started-with-speech-translation"></a>Rozpoczynanie pracy z usługą tłumaczenia mowy
+## <a name="get-started-with-speech-translation"></a>Wprowadzenie do tłumaczenia mowy
 
-Firma Microsoft oferuje przewodników Szybki Start, zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Poniższa tabela zawiera listę uporządkowane według języka mowy tłumaczenia przewodników Szybki Start.
+Oferujemy Przewodniki Szybki Start zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Ta tabela zawiera listę przewodników szybki start dotyczących tłumaczenia mowy uporządkowanych według języka.
 
 | Szybki start | Platforma | Dokumentacja interfejsów API |
 |------------|----------|---------------|
 | [C#, .NET Core](quickstart-translate-speech-dotnetcore-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET Framework](quickstart-translate-speech-dotnetframework-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](quickstart-translate-speech-uwp.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C#, PLATFORMY UWP](quickstart-translate-speech-uwp.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
 | [C++](quickstart-translate-speech-cpp-windows.md) | Windows | [Przeglądaj](https://aka.ms/csspeech/cppref)|
 | [Java](quickstart-translate-speech-java-jre.md) | Windows, Linux, macOS | [Przeglądaj](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Przykładowy kod dla zestawu SDK rozpoznawania mowy jest dostępny w witrynie GitHub. Te przykłady obejmują typowe scenariusze, takie jak odczytywanie dźwięku z pliku lub strumienia, ciągłe i pojedynczego zrzutu rozpoznawania/tłumaczenia i Praca z modelami niestandardowych.
+Przykładowy kod dla zestawu Speech SDK jest dostępny w witrynie GitHub. Te przykłady obejmują typowe scenariusze, takie jak odczytywanie audio z pliku lub strumienia, rozpoznawanie ciągłe i jednokrotne oraz tłumaczenie i praca z modelami niestandardowymi.
 
-* [Przykłady mowy na tekst i tłumaczenie (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [Przykłady zamiany mowy na tekst i translacji (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 
 ## <a name="migration-guides"></a>Przewodniki dotyczące migracji
 
-Jeśli używasz swojej aplikacji, narzędzia lub produktów [interfejsu API tłumaczenia mowy](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview), utworzyliśmy przewodniki ułatwiające migrację do usług przetwarzania mowy.
+Jeśli Twoje aplikacje, narzędzia lub produkty używają [interfejs API tłumaczenia mowy w usłudze translator](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview), zostały utworzone przewodniki ułatwiające Migrowanie do usług mowy.
 
-* [Migracja z API mowy usługi Translator do usług przetwarzania mowy](how-to-migrate-from-translator-speech-api.md)
+* [Migrowanie z interfejs API tłumaczenia mowy w usłudze Translator do usługi mowy](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>Dokumentacja
 
 * [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
-* [Zestaw Speech Devices SDK](speech-devices-sdk.md)
-* [INTERFEJS API REST: Zamiany mowy na tekst](rest-speech-to-text.md)
+* [Zestaw SDK urządzeń mowy](speech-devices-sdk.md)
+* [INTERFEJS API REST: Zamiana mowy na tekst](rest-speech-to-text.md)
 * [INTERFEJS API REST: Zamiana tekstu na mowę](rest-text-to-speech.md)
-* [INTERFEJS API REST: Dostosowywanie i transkrypcji usługi Batch](https://westus.cris.ai/swagger/ui/index)
+* [INTERFEJS API REST: Transkrypcja i dostosowywanie partii](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Bezpłatnie Uzyskaj klucz subskrypcji usług przetwarzania mowy](get-started.md)
-* [Pobierz zestaw SDK funkcji rozpoznawania mowy](speech-sdk.md)
+* [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)
+* [Pobieranie zestawu Speech SDK](speech-sdk.md)

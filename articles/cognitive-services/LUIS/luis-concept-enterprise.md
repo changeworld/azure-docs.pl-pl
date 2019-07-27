@@ -1,6 +1,6 @@
 ---
-title: Pojęcia dotyczące organizacji
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Koncepcje przedsiębiorstwa — LUIS
+titleSuffix: Azure Cognitive Services
 description: Omówienie pojęć dotyczących projektowania dla dużych aplikacji LUIS lub wiele aplikacji, w tym usługi LUIS i usługi QnA Maker ze sobą.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: e5d7e2bfe1ee4e3ca248f40701aa65e757fc4d74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d51778473dc033bce3c58b1572f1e514a8b6327
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812862"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560777"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Strategie Enterprise aplikacją usługi LUIS
 Przejrzyj te Strategie projektowania dla aplikacji przedsiębiorstwa.
@@ -42,13 +42,13 @@ Jeśli aplikacja jest przeznaczona do przewidywania szerokiej gamy wypowiedzi u�
 Zaplanować okresowe [przeglądu wypowiedzi punktu końcowego](luis-how-to-review-endpoint-utterances.md) dla aktywne uczenie się, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikuj. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Jeśli musisz mieć więcej niż 500 intencji
-Załóżmy na przykład, że opracowujemy Asystent pakietu office, który ma ponad 500 intencji. Jeśli 200 intencji odnoszą się do planowania spotkań, 200 nastąpi przypomnienia 200 nastąpi uzyskiwanie informacji dotyczących współpracowników i 200 służą do wysyłania wiadomości e-mail, intencji grupy tak, aby każda grupa znajduje się w jednej aplikacji, następnie utwórz aplikację najwyższego poziomu zawierającą każdy intencji. Użyj [wysyłania narzędzia i architektury](#dispatch-tool-and-model) do tworzenia aplikacji najwyższego poziomu. Następnie zmień botowi użyć kaskadowych wywołania jako Pokaż w [samouczek dotyczący wysyłania][dispatcher-application-tutorial]. 
+Załóżmy na przykład, że opracowujemy Asystent pakietu office, który ma ponad 500 intencji. Jeśli 200 intencji odnoszą się do planowania spotkań, 200 nastąpi przypomnienia 200 nastąpi uzyskiwanie informacji dotyczących współpracowników i 200 służą do wysyłania wiadomości e-mail, intencji grupy tak, aby każda grupa znajduje się w jednej aplikacji, następnie utwórz aplikację najwyższego poziomu zawierającą każdy intencji. Użyj [wysyłania narzędzia i architektury](#dispatch-tool-and-model) do tworzenia aplikacji najwyższego poziomu. Następnie zmień bot tak, aby korzystał z wywołania kaskadowego, jak pokazano w [samouczku wysyłania][dispatcher-application-tutorial]. 
 
 ## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Kiedy trzeba połączyć aplikacje maker kilka LUIS i pytań i odpowiedzi
-Jeśli masz kilka LUIS i pytań i odpowiedzi aplikacji producenta, które musisz odpowiedzieć na bot, użyj [narzędzia wysyłki](#dispatch-tool-and-model) do tworzenia aplikacji najwyższego poziomu. Następnie zmień botowi użyć kaskadowych wywołania jako Pokaż w [samouczek dotyczący wysyłania][dispatcher-application-tutorial]. 
+Jeśli masz kilka LUIS i pytań i odpowiedzi aplikacji producenta, które musisz odpowiedzieć na bot, użyj [narzędzia wysyłki](#dispatch-tool-and-model) do tworzenia aplikacji najwyższego poziomu. Następnie zmień bot tak, aby korzystał z wywołania kaskadowego, jak pokazano w [samouczku wysyłania][dispatcher-application-tutorial]. 
 
 ## <a name="dispatch-tool-and-model"></a>Narzędzia wysyłki i model
-Użyj [wysyłania] [ dispatch-tool] narzędzie wiersza polecenia w [BotBuilder narzędzia](https://github.com/Microsoft/botbuilder-tools) połączyć wiele LUIS i/lub usługi QnA Maker aplikacje do nadrzędnego aplikacją usługi LUIS. Takie podejście umożliwia domeny nadrzędnej, w tym wszystkich tematów i różnych domen podmiotu w osobnych aplikacji. 
+Za pomocą narzędzia wiersza polecenia [wysyłania][dispatch-tool] dostępnego w [BotBuilder-Tools](https://github.com/Microsoft/botbuilder-tools) można łączyć wiele aplikacji LUIS i/lub QNA Maker w aplikacji nadrzędnej Luis. Takie podejście umożliwia domeny nadrzędnej, w tym wszystkich tematów i różnych domen podmiotu w osobnych aplikacji. 
 
 ![Obrazu koncepcyjnego architektury wysyłania](./media/luis-concept-enterprise/dispatch-architecture.png)
 
@@ -56,7 +56,7 @@ Domena nadrzędna została przedstawiona w LUIS w wersji o nazwie `Dispatch` na 
 
 Czatbot zwiększający odbiera wypowiedź, a następnie wysyła do nadrzędnego aplikacją usługi LUIS w celu prognozowania. Najważniejsze intencji przewidywane z aplikacji nadrzędnej określa podrzędne, które aplikacją usługi LUIS nazywa się obok. Czatbot zwiększający wysyła wypowiedź do aplikacji podrzędnej, aby dokładniejszych prognoz.
 
-Zrozumienie, jak ta hierarchia wywołań składa się z 4 Bot Builder [dyspozytora samouczek dotyczący aplikacji][dispatcher-application-tutorial].  
+Dowiedz się, w jaki sposób ta hierarchia wywołań jest wykonywana z poziomu programu Dyspozytor Bot Builder v4 [— samouczek aplikacji][dispatcher-application-tutorial].  
 
 ### <a name="intent-limits-in-dispatch-model"></a>Limity intencji w modelu wysyłania
 Aplikacja wysyłania ma 500 źródeł wysyłania równoważne do 500 intencji jako wartość maksymalna. 

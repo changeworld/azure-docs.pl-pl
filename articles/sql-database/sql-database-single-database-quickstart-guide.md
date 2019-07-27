@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 7b52453bab661531461a2bec2f15f7659ec15a1c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b4341cb7d1734cb25aae890cc282c67ef38d67bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441719"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566478"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Wprowadzenie do pojedynczych baz danych w usłudze Azure SQL Database
 
@@ -44,11 +43,11 @@ Możesz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Az
 
 Informacje w tych przewodnikach Szybki start umożliwiają szybkie utworzenie lub zaimportowanie bazy danych na platformę Azure za pomocą pliku `.bacpac`. Pliki `.bacpac` i `.dacpac` są zaprojektowane pod kątem szybkiego przenoszenia baz danych między różnymi wersjami programu SQL Server i opcjami wdrażania w ramach usługi Azure SQL Database lub implementowania ciągłej integracji w potoku infrastruktury DevOps. Jednak ta metoda nie jest przeznaczona do migracji produkcyjnych baz danych z minimalnym przestojem, ponieważ należy zaprzestać dodawać nowe dane, poczekać na wyeksportowanie źródłowej bazy danych do pliku `.bacpac`, a następnie poczekać na zakończenie importu do bazy danych Azure SQL Database. Wszystkie te czynniki powodują przestój aplikacji, szczególnie w przypadku dużych baz danych. Aby przenieść produkcyjną bazę danych, potrzebujesz lepszego sposobu migracji, który gwarantuje minimalny przestój. Aby przeprowadzić migrację bazy danych z minimalnym przestojem, użyj usługi [Data Migration Service (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json). Usługa DMS realizuje to przez przyrostowe wypychanie zmian wprowadzanych w źródłowej bazie danych do przywracanej pojedynczej baza danych. Dzięki niej można szybko przełączyć aplikację ze źródłowej do docelowej bazy danych z możliwie najkrótszym przestojem.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj [ogólną listę funkcji obsługiwanych w usłudze Azure SQL Database](sql-database-features.md).
 - Dowiedz się, jak [lepiej zabezpieczyć bazę danych](sql-database-security-tutorial.md).
 - Więcej instrukcji zaawansowanych można znaleźć w temacie dotyczącym [sposobu używania pojedynczej bazy danych w usłudze Azure SQL Database](sql-database-howto-single-database.md).
 - Jest dostępnych więcej przykładowych skryptów dla programu [PowerShell](sql-database-powershell-samples.md) i [interfejsu wiersza polecenia platformy Azure](sql-database-cli-samples.md).
 - Dowiedz się więcej o [interfejsie API zarządzania](sql-database-single-databases-manage.md) służącym do konfigurowania baz danych.
-- [Zidentyfikuj odpowiednie usługi Azure SQL bazy danych/zarządzane wystąpienia jednostki SKU dla lokalnej bazy danych](/sql/dma/dma-sku-recommend-sql-db/).
+- [Zidentyfikuj odpowiednią Azure SQL Database/jednostkę SKU wystąpienia zarządzanego dla lokalnej bazy danych](/sql/dma/dma-sku-recommend-sql-db/).

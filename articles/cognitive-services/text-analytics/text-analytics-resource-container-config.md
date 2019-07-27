@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie kontenerów
-titlesuffix: Text Analytics - Azure Cognitive Services
+title: Konfigurowanie kontenerów — analiza tekstu
+titleSuffix: Azure Cognitive Services
 description: Analiza tekstu dostarcza każdego kontenera za pomocą wspólną platformę konfiguracji, można łatwo skonfigurować i zarządzać ustawieniami magazynu, rejestrowania i danych telemetrycznych i zabezpieczeń dla kontenerów.
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: dapine
-ms.openlocfilehash: 2a9b9ce5109315d940d6dcadf395489612faddec
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 65d88e6c201f633a260e31544444341e636e9941
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356940"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552263"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurowanie analiza tekstu kontenerów platformy Docker
 
@@ -51,7 +51,7 @@ To ustawienie można znaleźć w następujących miejscach:
 
 |Wymagane| Name (Nazwa) | Typ danych | Opis |
 |--|------|-----------|-------------|
-|Yes| `Billing` | Ciąg | Wymagany identyfikator URI punktu końcowego rozliczenia |
+|Yes| `Billing` | String | Wymagany identyfikator URI punktu końcowego rozliczenia |
 
 ## <a name="eula-setting"></a>Umowa licencyjna EULA ustawienie
 
@@ -80,7 +80,7 @@ Dokładna składnia lokalizację instalacji hosta różni się zależnie od syst
 |Optional| Name (Nazwa) | Typ danych | Opis |
 |-------|------|-----------|-------------|
 |Niedozwolone| `Input` | String | Kontenery analiza tekstu nie używają tego.|
-|Optional| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. Dotyczy to również dzienników kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Optional| `Output` | Ciąg | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. Dotyczy to również dzienników kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia 
 

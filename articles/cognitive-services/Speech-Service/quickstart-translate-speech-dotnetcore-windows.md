@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tłumaczenie mowy, C# (.NET Core Windows)'
+title: 'Szybki start: Tłumaczenie mowy, C# (.NET Core Windows) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start utworzysz prostą aplikację .NET Core do przechwytywania mowy użytkownika, tłumaczenia jej na inny język i przekazywania tekstu do wiersza polecenia. Ten przewodnik jest przeznaczony dla użytkowników systemu Windows.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8ab76a786f11677f5d8f0715b257bd2fb04e50bf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: fa2601ea80a0d875724126f8e6cb2bd65cf5ec3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602810"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559232"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla platformy .NET Core
 
-Przewodniki Szybki Start są również dostępne dla [mowy na tekst](quickstart-csharp-dotnet-windows.md) i [zamiany tekstu na mowę](quickstart-text-to-speech-dotnetcore.md).
+Przewodniki Szybki Start są również dostępne dla [zamiany mowy na tekst](quickstart-csharp-dotnet-windows.md) i [zamiany tekstu na mowę](quickstart-text-to-speech-dotnetcore.md).
 
 W tym przewodniku Szybki start utworzysz prostą aplikację .NET Core, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczona do uruchamiania w 64-bitowych systemach Windows i jest kompilowana przy użyciu [pakietu NuGet zestawu SDK usługi Mowa](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017.
 
@@ -37,7 +37,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-dotnetcore-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Otwórz plik `Program.cs` i zastąp cały jego kod poniższym kodem.
 
@@ -64,7 +64,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
     ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu tłumaczenia](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "Dane wyjściowe konsoli po pomyślnym ukończeniu tłumaczenia")
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dodatkowe przykłady, dotyczące między innymi odczytywania mowy z pliku audio i zwracania przetłumaczonego tekstu jako syntetyzowanej mowy, są dostępne w usłudze GitHub.
 

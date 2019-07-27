@@ -4,40 +4,40 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: e8daaaf5b6b15eb3095f11e94c707a33b4b18e28
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d8b6b1bfcbceb1168d0f74c73e72bd42b41bb2ec
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182918"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562500"
 ---
-Wybierz **kompilacji**. W wyświetlonym oknie dialogowym Wybierz folder projekt Xcode do eksportowania.
+Wybierz pozycję **kompilacja**. W otwartym oknie dialogowym Wybierz folder, do którego chcesz wyeksportować projekt Xcode.
 
-Po zakończeniu eksportu, pojawi się folder, który zawiera wyeksportowane projektu Xcode.
+Po zakończeniu eksportowania zostanie wyświetlony folder zawierający wyeksportowany projekt Xcode.
 
 > [!NOTE]
-> Jeśli zostanie wyświetlone okno z pytaniem, czy chcesz zastąpić obiektów blob lub uzupełnialnych, firma Microsoft zaleca wybranie **Append** ponieważ jest szybszy. Należy tylko należy wybrać **Zastąp** Jeśli zmieniasz zasoby w sceny. (Na przykład, jeśli w przypadku dodawania, usuwania, zmieniania relacje nadrzędne/podrzędne lub w przypadku dodawania, usuwania lub zmiany właściwości.) Jeśli wprowadzasz tylko zmiany kodu źródłowego, **Append** powinny wystarczyć.
+> Jeśli zostanie wyświetlone okno z pytaniem, czy chcesz zamienić lub dołączyć, zalecamy wybranie opcji **Dołącz** , ponieważ jest ona szybsza. Należy wybrać opcję **Zamień** tylko w przypadku zmiany elementów zawartości w scenie. (Na przykład w przypadku dodawania, usuwania lub zmieniania relacji nadrzędny/podrzędny lub dodawania, usuwania lub zmieniania właściwości). Jeśli wprowadzasz tylko zmiany w kodzie źródłowym,  dołączenie powinno być wystarczające.
 
-### <a name="open-the-xcode-project"></a>Otwieranie projektu Xcode
+### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>Konwertuj projekt Xcode na xcworkspace zawierający odwołania do zakotwiczeń przestrzennych platformy Azure
 
-W folderze projektu Xcode wyeksportowanego Uruchom to polecenie w terminalu, aby zainstalować zasobniki CocoaPods niezbędne dla projektu:
+W wyeksportowanym folderze projektu Xcode Uruchom to polecenie w terminalu, aby zainstalować wymagane CocoaPods dla projektu:
 
 ```bash
 pod install --repo-update
 ```
 
-Teraz możesz otworzyć `Unity-iPhone.xcworkspace` otworzyć projektu w środowisku Xcode:
+Teraz możesz otworzyć `Unity-iPhone.xcworkspace` projekt w programie Xcode:
 
 ```bash
 open ./Unity-iPhone.xcworkspace
 ```
 
 > [!NOTE]
-> Jeśli widzisz `library not found for -lPods-Unity-iPhone` błąd, prawdopodobnie otwarciu `.xcodeproj` pliku zamiast `.xcworkspace` pliku. 
+> Jeśli zobaczysz `library not found for -lPods-Unity-iPhone` błąd, prawdopodobnie `.xcodeproj` plik zostanie otwarty zamiast `.xcworkspace` pliku. 
 
-Wybierz katalog główny **Unity iPhone** węzeł, aby wyświetlić ustawienia projektu, a następnie wybierz **ogólne** kartę.
+Wybierz węzeł główny **Unity-iPhone** , aby wyświetlić ustawienia projektu, a następnie wybierz kartę **Ogólne** .
 
-W obszarze **podpisywanie**, upewnij się, że **automatycznie zarządzała podpisywania** jest włączona. Jeśli nie jest, należy ją włączyć, a następnie wybierz **włączyć automatyczne** w oknie dialogowym, który wygląda jak zresetować ustawienia kompilacji.
+W obszarze podpisywanie upewnij się, że opcja **automatycznie Zarządzaj** podpisywaniem jest włączona. Jeśli tak nie jest, włącz ją, a następnie wybierz opcję **Włącz automatyczne** w oknie dialogowym, które pojawia się, aby zresetować ustawienia kompilacji.
 
 W obszarze **Deployment Info (Informacje o wdrożeniu)** upewnij się, że w polu **Deployment Target (Cel wdrożenia)** ustawiono wartość `11.0`.
 

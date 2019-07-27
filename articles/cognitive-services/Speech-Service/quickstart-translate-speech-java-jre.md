@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tłumaczenie mowy, Java (Windows, Linux) — usługi mowy'
+title: 'Szybki start: Tłumaczenie mowy, Java (Windows, Linux) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start utworzysz prostą aplikację Java do przechwytywania mowy użytkownika, tłumaczenia jej na inny język i przekazywania tekstu do wiersza polecenia. Ten przewodnik jest przeznaczony dla użytkowników systemów Windows i Linux.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 68567e673cf6fb53b8d9b6f7b9ef96aee691ac3a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604949"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553389"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Szybki start: Tłumaczenie mowy z zestawem SDK rozpoznawania mowy, języka Java
 
-Przewodniki Szybki Start są również dostępne dla [mowy na tekst](quickstart-java-jre.md) i [głosu pierwszego wirtualnego Asystenta](quickstart-virtual-assistant-java-jre.md).
+Przewodniki Szybki Start są również dostępne dla [asystenta wirtualnego](quickstart-virtual-assistant-java-jre.md)mowy i głosu [z](quickstart-java-jre.md) dźwiękiem.
 
-W tym przewodniku Szybki start utworzysz prostą aplikację Java, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczony do działania na Windows 64-bitowy lub 64-bitowych Linux (Ubuntu 16.04, 18.04 Ubuntu, Debian 9) lub w systemie macOS 10.13 lub nowszej. Jest on oparty za pomocą pakietu Maven zestaw SDK rozpoznawania mowy i środowiska Eclipse IDE Java.
+W tym przewodniku Szybki start utworzysz prostą aplikację Java, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja została zaprojektowana tak, aby działała w 64-bitowej wersji systemu Windows lub 64-bitowym systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) lub macOS 10,13 lub nowszym. Jest on zbudowany przy użyciu pakietu Maven SDK mowy i środowiska IDE języka Java.
 
 Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy, zapoznaj się z [listą obsługiwanych języków](language-support.md).
 
@@ -29,12 +29,12 @@ Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy,
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* System operacyjny: 64-bitowych Windows 64-bitowych systemu Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) i macOS 10.13 lub nowszej
+* System operacyjny: 64-bitowy system Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) lub macOS 10,13 lub nowszy
 * [Zintegrowane środowisko projektowe Eclipse Java](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [zestaw JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
-Jeśli korzystasz z systemu Linux, upewnij się, że te zależności są zainstalowane przed uruchomieniem programu Eclipse.
+Jeśli używasz systemu Linux, upewnij się, że te zależności są zainstalowane przed rozpoczęciem przeszukania.
 
  * W systemie Ubuntu:
 
@@ -43,7 +43,7 @@ Jeśli korzystasz z systemu Linux, upewnij się, że te zależności są zainsta
    sudo apt-get install libssl1.0.0 libasound2
    ```
 
- * On Debian 9:
+ * W programie Debian 9:
 
    ```sh
    sudo apt-get update
@@ -57,7 +57,7 @@ Jeśli korzystasz z systemu Linux, upewnij się, że te zależności są zainsta
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Aby dodać nową pustą klasę do projektu języka Java, wybierz kolejno pozycje **Plik** > **Nowy** > **Klasa**.
 
@@ -83,7 +83,7 @@ Dane wejściowe mowy z mikrofonu zostaną przetranskrybowane na język niemiecki
 
 ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-translate-java-jre-output.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dodatkowe przykłady, dotyczące między innymi odczytywania mowy z pliku audio i zwracania przetłumaczonego tekstu jako syntetyzowanej mowy, są dostępne w usłudze GitHub.
 

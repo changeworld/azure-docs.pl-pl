@@ -1,7 +1,7 @@
 ---
-title: Umiarkowany obrazów z list niestandardowych i konsola interfejsu API — Content Moderator
-titlesuffix: Azure Content Moderator
-description: Użyjesz interfejsu API zarządzania listy w usłudze Azure Content Moderator do tworzenia niestandardowych list obrazów.
+title: Umiarkowane obrazy z listami niestandardowymi i konsolą interfejsu API Content Moderator
+titleSuffix: Azure Content Moderator
+description: Do tworzenia niestandardowych list obrazów służy interfejs API zarządzania listami w usłudze Azure Content Moderator.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,72 +10,72 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 7efa5114a903ba88010ec44f2f1038331df62948
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b2ab138945d32ca874dc20576d412c862965dc9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097984"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564359"
 ---
-# <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Moderowanie przy użyciu niestandardowych list obrazów w konsoli interfejsu API
+# <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Umiarkowane z listami obrazów niestandardowych w konsoli interfejsu API
 
-Możesz użyć [interfejsu API zarządzania listy](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) w usłudze Azure Content Moderator do tworzenia niestandardowych list obrazów. Za pomocą interfejsu API moderowania obrazów niestandardowych list obrazów. Operacja moderowania obrazów ocenia obrazu. Jeśli tworzysz niestandardowych list, operacja również porównuje go obrazy z list niestandardowych. Niestandardowe listy umożliwia blokowanie lub zezwalanie na obrazie.
+Do tworzenia niestandardowych list obrazów służy [interfejs API zarządzania listami](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) w usłudze Azure Content Moderator. Użyj niestandardowych list obrazów z interfejsem API moderowania obrazu. Operacja moderowania obrazu szacuje obraz. W przypadku tworzenia list niestandardowych, operacja również porównuje ją z obrazami na listach niestandardowych. Możesz użyć list niestandardowych do blokowania lub zezwalania na obraz.
 
 > [!NOTE]
 > Istnieje maksymalny limit wynoszący **5 list obrazów**, a poszczególne listy **nie mogą przekraczać 10 000 obrazów**.
 >
 
-Interfejs API zarządzania lista umożliwia wykonywanie następujących zadań:
+Za pomocą interfejsu API zarządzania listami wykonaj następujące zadania:
 
 - Tworzenie listy.
-- Dodawanie obrazów do listy.
-- Obrazy ekranu względem obrazów na liście.
-- Usuwanie obrazów z listy.
+- Dodaj obrazy do listy.
+- Obrazy ekranu dla obrazów znajdujących się na liście.
+- Usuń obrazy z listy.
 - Usuwanie listy.
 - Edycja informacji na liście.
 - Odświeżanie indeksu, aby zmiany na liście były uwzględnione w nowym skanowaniu.
 
-## <a name="use-the-api-console"></a>Użyj konsoli interfejsu API
-Zanim można Testuj interfejs API w konsoli usługi online, należy się klucz subskrypcji. Ten element znajduje się na **ustawienia** na karcie **Ocp-Apim-Subscription-Key** pole. Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
+## <a name="use-the-api-console"></a>Korzystanie z konsoli interfejsu API
+Aby można było przetestować interfejs API w konsoli online, musisz mieć swój klucz subskrypcji. Ta lokalizacja znajduje się na karcie **Ustawienia** w polu **OCP-APIM-Subscription-Key** . Aby uzyskać więcej informacji, zobacz [Omówienie](overview.md).
 
-## <a name="refresh-search-index"></a>Odśwież indeksu wyszukiwania
+## <a name="refresh-search-index"></a>Odśwież indeks wyszukiwania
 
-Po wprowadzeniu zmian do listy obrazów należy odświeżyć jej indeks zmian, które mają zostać uwzględnione w czasie przyszłych skanowań. Ten krok jest podobny do sposobu wyszukiwarki na pulpicie systemu Windows (jeśli jest włączone) lub aparatu wyszukiwania w sieci web stale odświeża jej indeks w celu uwzględnienia nowych plików lub stron.
+Po wprowadzeniu zmian na liście obrazów należy odświeżyć jej indeks, aby zmiany zostały uwzględnione w przyszłych skanowaniach. Ten krok przypomina, jak aparat wyszukiwania na pulpicie (jeśli jest włączony) lub aparat wyszukiwania w sieci Web ciągle odświeża swój indeks, aby uwzględnić nowe pliki lub strony.
 
-1. W [dokumentacja interfejsu API zarządzania listy obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), w menu po lewej stronie wybierz **listy obrazów**, a następnie wybierz pozycję **Odśwież indeksu wyszukiwania**.
+1. Na stronie [Dokumentacja interfejsu API zarządzania listami obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)wybierz pozycję **listy obrazów**, a następnie wybierz pozycję **Odśwież indeks wyszukiwania**.
 
-   **Listy obrazów — odświeżanie indeksu wyszukiwania** zostanie otwarta strona.
+   **Lista obrazów — zostanie otwarta strona indeks wyszukiwania odświeżania** .
 
-2. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji. 
+2. W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację. 
  
-    ![Listy obrazów — pole region strony indeksu wyszukiwania odświeżania](images/test-drive-region.png)
+    ![Listy obrazów — odświeżanie zaznaczenia obszaru strony indeksu wyszukiwania](images/test-drive-region.png)
 
-    **Listy obrazów — odświeżanie indeksu wyszukiwania** zostanie otwarta konsola interfejsu API.
+    **Lista obrazów —** otwiera konsolę interfejsu API indeksu wyszukiwania.
 
-3. W **listId** wprowadź identyfikator listy. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **wysyłania**.
+3. W polu **listId** wprowadź identyfikator listy. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **Wyślij**.
 
-   ![Listy obrazów — pola zawartości indeksu wyszukiwania odświeżania konsoli odpowiedzi](images/try-image-list-refresh-1.png)
+   ![Listy obrazów — pole zawartości odpowiedzi konsoli indeksu wyszukiwania](images/try-image-list-refresh-1.png)
 
 
 ## <a name="create-an-image-list"></a>Tworzenie listy obrazów
 
-1. Przejdź do [dokumentacja interfejsu API zarządzania listy obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672).
+1. Przejdź do [dokumentacji interfejsu API zarządzania listami obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672).
 
-   **Listy obrazów — tworzenie** zostanie otwarta strona. 
+   **Lista obrazów —** zostanie otwarta strona tworzenie. 
 
-3. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji.
+3. W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację.
 
-   ![Obraz listy — Tworzenie strony pole region](images/test-drive-region.png)
+   ![Listy obrazów — wybór regionu strony](images/test-drive-region.png)
 
-   **Listy obrazów — tworzenie** zostanie otwarta konsola interfejsu API.
+   **Lista obrazów —** otwiera konsolę interfejsu API.
  
-4. W **Ocp-Apim-Subscription-Key** wprowadź swój klucz subskrypcji.
+4. W polu **OCP-APIM-Subscription-Key** wprowadź swój klucz subskrypcji.
 
-5. W **treść żądania** wprowadź wartości dla **nazwa** (na przykład MyList) i **opis**.
+5. W polu **treść żądania** wprowadź wartości w polach **Nazwa** (na przykład moja lista) i **Opis**.
 
-   ![Obraz listy — tworzenie nazwa treści żądania w konsoli i opis](images/try-terms-list-create-1.png)
+   ![Listy obrazów — Utwórz nazwę i opis treści żądania konsoli](images/try-terms-list-create-1.png)
 
-6. Użyj symboli zastępczych pary klucz wartość, aby przypisać bardziej opisowe metadanych do listy.
+6. Użyj symboli zastępczych par klucz-wartość, aby przypisać do listy więcej metadanych opisowych.
 
        {
           "Name": "MyExclusionList",
@@ -87,83 +87,83 @@ Po wprowadzeniu zmian do listy obrazów należy odświeżyć jej indeks zmian, k
           }
        }
 
-   Dodaj metadane listy jako pary klucz wartość, a nie rzeczywiste obrazów.
+   Dodaj metadane listy jako pary klucz-wartość, a nie obrazy rzeczywiste.
  
-7. Wybierz pozycję **Wyślij**. Na liście jest tworzony. Uwaga **identyfikator** wartość, która jest skojarzona z nową listę. Ten identyfikator będzie potrzebny do innych funkcji zarządzania listy obrazów.
+7. Wybierz pozycję **Wyślij**. Twoja lista zostanie utworzona. Zwróć uwagę na wartość **identyfikatora** skojarzoną z nową listą. Ten identyfikator jest potrzebny dla innych funkcji zarządzania listami obrazów.
 
-   ![Obraz listy — Tworzenie konsoli odpowiedzi na zawartości pola zawiera identyfikator listy](images/try-terms-list-create-2.png)
+   ![Listy obrazów — pole wyboru Utwórz zawartość odpowiedzi konsoli pokazuje Identyfikator listy](images/try-terms-list-create-2.png)
  
-8. Następnie dodaj obrazów do MyList. W menu po lewej stronie wybierz **obraz**, a następnie wybierz pozycję **Dodaj obraz**.
+8. Następnie Dodaj obrazy do listy. W menu po lewej stronie wybierz pozycję **obraz**, a następnie wybierz pozycję **Dodaj obraz**.
 
-   **Obrazu — Dodaj obraz** zostanie otwarta strona. 
+   Zostanie otwarta strona **Dodawanie obrazu** . 
 
-9. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji.
+9. W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację.
 
-   ![Obraz — Dodawanie wybór regionu strony obrazu](images/test-drive-region.png)
+   ![Obraz — Dodawanie obszaru strony obrazu](images/test-drive-region.png)
 
-   **Obrazu — Dodaj obraz** zostanie otwarta konsola interfejsu API.
+   Zostanie otwarta konsola interfejsu API **dodawania** obrazu.
  
-10. W **listId** wprowadź identyfikator listy, który został wygenerowany, a następnie wprowadź adres URL obrazu, który chcesz dodać. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **wysyłania**.
+10. W polu **listId** wprowadź wygenerowany identyfikator listy, a następnie wprowadź adres URL obrazu, który chcesz dodać. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **Wyślij**.
 
-11. Aby sprawdzić, czy obraz został dodany do listy, w menu po lewej stronie wybierz pozycję **obraz**, a następnie wybierz pozycję **Pobierz wszystkie identyfikatory obraz**.
+11. Aby sprawdzić, czy obraz został dodany do listy, w menu po lewej stronie wybierz pozycję **obraz**, a następnie wybierz pozycję **Pobierz wszystkie identyfikatory obrazu**.
 
-    **Obraz — Pobierz wszystkie identyfikatory obraz** zostanie otwarta konsola interfejsu API.
+    **Obraz — pobiera wszystkie identyfikatory obrazów** konsola interfejsu API zostanie otwarta.
   
-12. W **listId** wprowadź identyfikator listy, a następnie wprowadź klucz subskrypcji. Wybierz pozycję **Wyślij**.
+12. W polu **listId** wprowadź identyfikator listy, a następnie wprowadź swój klucz subskrypcji. Wybierz pozycję **Wyślij**.
 
-    ![Obraz — wszystkie identyfikatory obraz Get konsoli pola zawartości zawiera listę obrazów, które zostały wprowadzone odpowiedzi](images/try-image-list-create-11.png)
+    ![Obraz — Pobierz wszystkie identyfikatory obrazów pole zawartości odpowiedzi konsoli zawiera listę wprowadzonych obrazów](images/try-image-list-create-11.png)
  
-10. Dodaj kilka więcej obrazów. Teraz, po utworzeniu niestandardowej listy obrazów, spróbuj [oceny obrazów](try-image-api.md) przy użyciu listy obrazu niestandardowego. 
+10. Dodaj kilka obrazów. Teraz, gdy utworzono niestandardową listę obrazów, wypróbuj jej [ocenę](try-image-api.md) przy użyciu listy obrazów niestandardowych. 
 
-## <a name="delete-images-and-lists"></a>Usuwanie obrazów i listy
+## <a name="delete-images-and-lists"></a>Usuń obrazy i listy
 
-Usuwanie obrazu lub listy jest bardzo proste. Interfejs API umożliwia wykonywanie następujących zadań:
+Usuwanie obrazu lub listy jest proste. Za pomocą interfejsu API można wykonać następujące zadania:
 
-- Usuwanie obrazu. (**Obrazu — Usuń**)
-- Usuń wszystkie obrazy znajdujące się na liście, bez usuwania listy. (**Obrazu — Usuń wszystkie obrazy**)
-- Usuwanie listy i całej jej zawartości. (**List obrazów — Usuń**)
+- Usuwanie obrazu. (**Usuwanie obrazu**)
+- Usuń wszystkie obrazy z listy bez usuwania listy. (**Obraz-Usuń wszystkie obrazy**)
+- Usuwanie listy i całej jej zawartości. (**Listy obrazów — usuwanie**)
 
-W tym przykładzie Usuwa pojedynczy obraz:
+Ten przykład usuwa pojedynczy obraz:
 
-1. W [dokumentacja interfejsu API zarządzania listy obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), w menu po lewej stronie wybierz **obraz**, a następnie wybierz pozycję **Usuń**. 
+1. Na stronie [Dokumentacja interfejsu API zarządzania listami obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)wybierz pozycję **obraz**, a następnie wybierz pozycję **Usuń**. 
 
-   **Obrazu — Usuń** zostanie otwarta strona.
+   Zostanie otwarta strona **Usuwanie obrazu** .
 
-2. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji. 
+2. W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację. 
 
-   ![Obraz — pole region strony Delete](images/test-drive-region.png)
+   ![Obraz — usuwanie zaznaczenia obszaru strony](images/test-drive-region.png)
  
-   **Obrazu — Usuń** zostanie otwarta konsola interfejsu API.
+   Zostanie otwarta konsola interfejsu API **usuwania obrazu** .
  
-3. W **listId** wprowadź identyfikator listy do usunięcia z obrazu.  Jest to liczba zwracanych w **obraz — Pobierz wszystkie identyfikatory obraz** konsoli MyList. Następnie wprowadź **ImageId** obrazu do usunięcia. 
+3. W polu **listId** wprowadź identyfikator listy, z której ma zostać usunięty obraz.  Jest to liczba zwracana w obrazie **— Uzyskaj wszystkie identyfikatory obrazów** konsoli dla elementu moje listy. Następnie wprowadź **ImageId** obrazu do usunięcia. 
 
-W naszym przykładzie jest identyfikator listy **58953**, wartość **ContentSource**. Obraz, który jest Identyfikatorem **59021**, wartość **ContentIds**.
+W naszym przykładzie IDENTYFIKATORem listy jest **58953**, wartość dla **ContentSource**. Identyfikator obrazu to **59021**, wartość dla **ContentIds**.
 
-1. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **wysyłania**.
+1. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **Wyślij**.
 
-1. Aby sprawdzić, że obraz został usunięty, użyj **obraz — Pobierz wszystkie identyfikatory obraz** konsoli.
+1. Aby sprawdzić, czy obraz został usunięty, użyj **obrazu — Pobierz wszystkie identyfikatory obrazów** konsoli.
  
-## <a name="change-list-information"></a>Zmień informacje dotyczące listy
+## <a name="change-list-information"></a>Zmień informacje o liście
 
-Możesz edytować nazwę i opis listy i dodawania elementów metadanych.
+Można edytować nazwę i opis listy oraz dodawać elementy metadanych.
 
-1. W [dokumentacja interfejsu API zarządzania listy obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), w menu po lewej stronie wybierz **listy obrazów**, a następnie wybierz pozycję **szczegóły aktualizacji**. 
+1. W temacie [Informacje o interfejsie API zarządzania listami obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)w menu po lewej stronie wybierz pozycję **listy obrazów**, a następnie wybierz pozycję **Aktualizuj szczegóły**. 
 
-   **Listy obrazów — informacje na temat aktualizacji** zostanie otwarta strona.
+   **Lista obrazów —** zostanie otwarta strona Szczegóły aktualizacji.
 
-2. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji.  
+2. W obszarze **Otwórz konsolę testowania interfejsu API**wybierz region, który najlepiej opisuje lokalizację.  
 
-    ![Listy obrazów — pole region strony Szczegóły aktualizacji](images/test-drive-region.png)
+    ![Listy obrazów — Aktualizuj wybór obszaru strony szczegółów](images/test-drive-region.png)
 
-    **Listy obrazów — informacje na temat aktualizacji** zostanie otwarta konsola interfejsu API.
+    **Lista obrazów —** konsola interfejsu API Szczegóły aktualizacji zostanie otwarta.
  
-3. W **listId** wprowadź identyfikator listy, a następnie wprowadź klucz subskrypcji.
+3. W polu **listId** wprowadź identyfikator listy, a następnie wprowadź swój klucz subskrypcji.
 
-4. W **treść żądania** , edytować, a następnie wybierz **wysyłania** przycisk na stronie.
+4. Wprowadź zmiany w polu **treść żądania** , a następnie wybierz przycisk **Wyślij** na stronie.
 
-   ![Listy obrazów — informacje na temat aktualizacji konsoli edycji treść żądania](images/try-terms-list-change-1.png)
+   ![Listy obrazów — zmiany treści żądania konsoli szczegółów aktualizacji](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W kodzie za pomocą interfejsu API REST lub rozpoczynać się [obraz zawiera przewodnik Szybki Start .NET](image-lists-quickstart-dotnet.md) do integracji z aplikacją.
+Użyj interfejsu API REST w kodzie lub Zacznij od obrazu, który [zawiera program .NET szybkiego](image-lists-quickstart-dotnet.md) startu, aby zintegrować z aplikacją.

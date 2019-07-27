@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: f99b4ee6dd11a109d1c563c84debc2157cb03337
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309491"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Szybki start: tworzenie prywatnego rejestru kontenerów za pomocą programu Azure PowerShell
@@ -26,7 +26,7 @@ Usługa Azure Container Registry to zarządzana, prywatna usługa rejestru konte
 
 Dla tego przewodnika Szybki start jest wymagany moduł Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby sprawdzić zainstalowaną wersję. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
 
-Musisz mieć również zainstalowane lokalnie środowisko Docker. Platforma Docker udostępnia pakiety dla systemów [macOS][docker-mac], [Windows][docker-windows]i [Linux][Docker-Linux] .
+Musisz mieć również zainstalowane lokalnie środowisko Docker. Platforma Docker udostępnia pakiety dla systemów [macOS][docker-mac], [Windows][docker-windows]i [Linux][docker-linux] .
 
 Ze względu na to, że usługa Azure Cloud Shell nie zawiera wszystkich wymaganych składników platformy Docker (demon `dockerd`), nie można używać usługi Cloud Shell na potrzeby tego przewodnika Szybki start.
 
@@ -46,7 +46,7 @@ Po uwierzytelnieniu na platformie Azure Utwórz grupę zasobów przy użyciu pol
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-container-registry"></a>Tworzenie rejestru kontenerów
+## <a name="create-container-registry"></a>Utwórz rejestr kontenerów
 
 Następnie utwórz rejestr kontenerów w nowej grupie zasobów za pomocą polecenia [New-AzContainerRegistry][New-AzContainerRegistry] .
 

@@ -1,6 +1,6 @@
 ---
-title: Magazyn danych
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Magazyn danych — LUIS
+titleSuffix: Azure Cognitive Services
 description: Usługa LUIS przechowuje dane są szyfrowane w magazynie danych platformy Azure odpowiadające regionowi, określony przez klucz.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: diberry
-ms.openlocfilehash: a1093c2a6303b453a17a52058303913de5ecfa8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af0223db944f01346ddcbc1f198ac0c15a426be4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812942"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564023"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Magazyn danych i usuwania w usługach Cognitive Services Language Understanding (LUIS)
 Usługa LUIS przechowuje dane są szyfrowane w magazynie danych platformy Azure odpowiadające regionowi, określony przez klucz. Te dane są przechowywane przez 30 dni. 
@@ -26,26 +26,26 @@ Użytkownicy mają pełną kontrolę nad [eksportowanie](luis-how-to-start-new-a
 
 ## <a name="utterances"></a>Wypowiedzi
 
-Wypowiedzi mogą być przechowywane w dwóch różnych miejscach. 
+Wyrażenia długości mogą być przechowywane w dwóch różnych miejscach. 
 
-* Podczas **procesu tworzenia**, wypowiedzi są tworzone i przechowywane w profilu konwersji. Wypowiedzi w opcji są wymagane do pomyślnego aplikacją usługi LUIS. Gdy aplikacja została opublikowana i otrzymuje kwerendy w punkcie końcowym, ciąg zapytania żądania punktu końcowego, `log=false`, określa, czy jest przechowywana wypowiedź punktu końcowego. Punkt końcowy jest przechowywany, staje się częścią wypowiedzi aktywne uczenie w **kompilacji** sekcji w portalu w **Przejrzyj wypowiedzi punktu końcowego** sekcji. 
-* Gdy możesz **Przejrzyj wypowiedzi punktu końcowego**i Dodaj wypowiedź na intencje, wypowiedź już nie są przechowywane jako część wypowiedzi punkt końcowy do przeglądu. Jest ono dodane do intencji aplikacji. 
+* Podczas **procesu tworzenia**wyrażenia długości są tworzone i przechowywane w zamierzeniu. Wyrażenia długości w intencjach są wymagane do pomyślnej aplikacji LUIS. Gdy aplikacja zostanie opublikowana i otrzyma zapytania w punkcie końcowym, ciąg QueryString `log=false`żądania punktu końcowego określa, czy punkt końcowy wypowiedź jest przechowywany. Jeśli punkt końcowy jest przechowywany, stał się częścią aktywnego uczenia wyrażenia długości, którą można znaleźć w sekcji **kompilacja** portalu, w sekcji **Przegląd wyrażenia długości punktu końcowego** . 
+* Gdy **przeglądasz punkt końcowy wyrażenia długości**i dodasz wypowiedź do celu, wypowiedź nie jest już przechowywana jako część punktu końcowego wyrażenia długości do zweryfikowania. Jest on dodawany do intencji aplikacji. 
 
 <a name="utterances-in-an-intent"></a>
 
-### <a name="delete-example-utterances-from-an-intent"></a>Usuwanie wypowiedzi przykład intencji
+### <a name="delete-example-utterances-from-an-intent"></a>Usuń przykład wyrażenia długości z zamiaru
 Usuń wypowiedzi przykład używane na potrzeby szkolenia [LUIS](luis-reference-regions.md). Jeśli usuniesz wypowiedź przykład z aplikacją usługi LUIS, zostanie usunięty z usługi sieci web usługi LUIS i jest niedostępna w przypadku eksportu.
 
 <a name="utterances-in-review"></a>
 
-### <a name="delete-utterances-in-review-from-active-learning"></a>Usuwanie wypowiedzi w przeglądzie aktywne uczenie
+### <a name="delete-utterances-in-review-from-active-learning"></a>Usuń wyrażenia długości z aktywnego uczenia
 
 Wypowiedzi można usunąć z listy wypowiedzi użytkowników usługi LUIS sugeruje w  **[stronie wypowiedzi punkt końcowy Przegląd](luis-how-to-review-endpoint-utterances.md)** . Usuwanie wypowiedzi z tej listy zapobiega sugerowane, ale nie powoduje usunięcia ich z dzienników.
 
-Jeśli nie chcesz wypowiedzi aktywne uczenie, możesz to zrobić [Wyłącz aktywne uczenie](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Również wyłączenie aktywna nauka powoduje wyłączenie rejestrowania.
+Jeśli nie chcesz, aby usługa Active Learning wyrażenia długości, możesz [wyłączyć aktywną naukę](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Wyłączenie usługi Active Learning powoduje także wyłączenie rejestrowania.
 
-### <a name="disable-logging-utterances"></a>Wyłącz rejestrowanie wypowiedzi
-[Wyłączanie aktywne uczenie](luis-how-to-review-endpoint-utterances.md#disable-active-learning) wyłącza rejestrowanie zdarzeń.
+### <a name="disable-logging-utterances"></a>Wyłącz rejestrowanie wyrażenia długości
+[Wyłączenie aktywnego uczenia](luis-how-to-review-endpoint-utterances.md#disable-active-learning) powoduje wyłączenie rejestrowania.
 
 
 <a name="accounts"></a>

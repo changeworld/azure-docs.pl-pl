@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie wersjami
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Zarządzanie wersjami — LUIS
+titleSuffix: Azure Cognitive Services
 description: Wersje umożliwiają tworzenie i publikowanie różnych modeli. Dobrą praktyką jest, aby sklonować bieżącego aktywnego modelu do innej wersji aplikacji przed wprowadzeniem zmian w modelu.
 services: cognitive-services
 author: diberry
@@ -11,20 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: f919651cf39d1f2c48fca87da935e49e3affa79f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1169af85c35f04a302816f564caeb49eaf455d0e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198907"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563664"
 ---
-# <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Użyj wersji do edycji i przetestować bez wywierania wpływu na aplikacje przejściowych lub produkcyjnych
+# <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Używanie wersji do edytowania i testowania bez wpływu na aplikacje tymczasowe i produkcyjne
 
 Wersje umożliwiają tworzenie i publikowanie różnych modeli. Dobrym rozwiązaniem jest klonowanie bieżącego aktywnego modelu z innym [wersji](luis-concept-version.md) aplikacji przed wprowadzeniem zmian w modelu. 
 
 Aby pracować z wersjami, Otwórz aplikację, wybierając jego nazwę na **Moje aplikacje** strony, a następnie wybierz pozycję **Zarządzaj** w górnym pasku, a następnie zaznacz **wersji** w nawigacji po lewej stronie. 
 
-Listę wersji pokazuje, które wersje są publikowane, gdzie są publikowane i która wersja jest obecnie aktywny. 
+Lista wersji pokazuje, które wersje są publikowane, gdzie są publikowane i która wersja jest obecnie aktywna. 
 
 [![Sekcji Zarządzanie, strona wersji](./media/luis-how-to-manage-versions/versions-import.png "sekcji Zarządzanie, strona wersji")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
@@ -45,7 +45,7 @@ Listę wersji pokazuje, które wersje są publikowane, gdzie są publikowane i k
 
 Wybierz wersję z listy, a następnie wybierz **wprowadzić Active** na pasku narzędzi. 
 
-[![Sekcji Zarządzanie, strona wersji upewnij akcji wersji](./media/luis-how-to-manage-versions/versions-other.png "sekcji Zarządzanie, strona wersji upewnij akcji wersji")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![Sekcja zarządzanie sekcją, wersja, wykonywanie akcji] dotyczącej wersji (./media/luis-how-to-manage-versions/versions-other.png "Sekcja zarządzanie sekcją, wersja, wykonywanie akcji") dotyczącej wersji](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Wersja importu
 
@@ -53,13 +53,13 @@ Wybierz wersję z listy, a następnie wybierz **wprowadzić Active** na pasku na
 
 2. W **importowania nowej wersji** oknie podręcznym, wprowadź nową nazwę w wersji 10 znaków. Należy ustawić identyfikator wersji, jeśli w pliku JSON w wersji już istnieje w aplikacji.
 
-    ![Zarządzanie sekcji stronę wersje, zaimportowaniu nowej wersji](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
+    ![Sekcja zarządzania, Strona wersji, importowanie nowej wersji](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
     Po zaimportowaniu wersji nowej wersji staje się aktywny wersji.
 
 ### <a name="import-errors"></a>Błędy importowania
 
-* Tokenizator błędy: Jeśli otrzymasz **błąd tokenizatora** podczas importowania, próbujesz zaimportować wersję, który używa innego [tokenizatora](luis-language-support.md#custom-tokenizer-versions) niż aktualnie używa aplikacja. Aby rozwiązać ten problem, zobacz [migracji między wersjami tokenizatora](luis-language-support.md#migrating-between-tokenizer-versions).
+* Błędy tokenizatora: Jeśli **wystąpi błąd tokenizatora** podczas importowania, próbujesz zaimportować wersję, która używa innego [tokenizatora](luis-language-support.md#custom-tokenizer-versions) niż aktualnie używane przez aplikację. Aby rozwiązać ten problem, zobacz [Migrowanie między wersjami tokenizatora](luis-language-support.md#migrating-between-tokenizer-versions).
 
 <a name = "export-version"></a>
 
@@ -67,5 +67,5 @@ Wybierz wersję z listy, a następnie wybierz **wprowadzić Active** na pasku na
 
 * Aby **Usuń** wersji, wybierz wersję z listy, a następnie wybierz **Usuń** na pasku narzędzi. Wybierz przycisk **OK**. 
 * Aby **Zmień nazwę** wersji, wybierz wersję z listy, a następnie wybierz **Zmień nazwę** na pasku narzędzi. Wprowadź nową nazwę, a następnie wybierz pozycję **gotowe**. 
-* Aby **wyeksportować** wersji, wybierz wersję z listy, a następnie wybierz **eksportowania aplikacji** na pasku narzędzi. Wybierz opcję ciąg JSON do eksportu do tworzenia kopii zapasowych, wybierz **eksportu dla kontenera** do [za pomocą tej aplikacji w kontenerze usługi LUIS](luis-container-howto.md).  
+* Aby **wyeksportować** wersji, wybierz wersję z listy, a następnie wybierz **eksportowania aplikacji** na pasku narzędzi. Wybierz pozycję JSON do wyeksportowania dla kopii zapasowej, a następnie wybierz pozycję **Eksportuj dla kontenera** , aby [użyć tej aplikacji w kontenerze Luis](luis-container-howto.md).  
 

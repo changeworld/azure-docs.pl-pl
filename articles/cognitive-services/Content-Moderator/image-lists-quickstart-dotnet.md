@@ -1,6 +1,6 @@
 ---
 title: Sprawdzanie obrazów pod kątem niestandardowych list w języku C# — usługa Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Sposób moderowania obrazów przy użyciu niestandardowych list obrazów za pomocą zestawu Content Moderator SDK dla języka C#.
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 49f87b7cf3d7f46a66c0992edf25968b1dbae073
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 915b308b0129d714e51ac50b4230d8447b5c933a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603413"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564488"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>Moderowanie przy użyciu niestandardowych list obrazów w języku C#
 
@@ -32,7 +32,7 @@ Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć
 > [!NOTE]
 > Istnieje maksymalny limit wynoszący **5 list obrazów**, a poszczególne listy **nie mogą przekraczać 10 000 obrazów**.
 
-Aplikacja konsoli, w tym przewodniku symuluje niektóre zadania, które można wykonywać na interfejs API listy obrazów.
+Aplikacja konsolowa dla tego przewodnika symuluje niektóre zadania, które można wykonać za pomocą interfejsu API listy obrazów.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
@@ -303,7 +303,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Tworzenie metody w celu dodania kolekcji obrazów do listy
 
-Dodaj następującą metodę do klasy **Program**. Ten przewodnik nie pokazują, jak zastosować znaczniki do obrazów na liście. 
+Dodaj następującą metodę do klasy **Program**. Ten przewodnik nie pokazuje, jak zastosować Tagi do obrazów na liście. 
 
 ```csharp
 /// <summary>

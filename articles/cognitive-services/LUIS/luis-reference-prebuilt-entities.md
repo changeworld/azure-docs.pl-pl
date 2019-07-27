@@ -1,5 +1,5 @@
 ---
-title: Wszystkie wstępnie utworzonych jednostek
+title: Wszystkie wstępnie skompilowane jednostki — LUIS
 titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera listę wstępnie utworzonych jednostek, które są zawarte w Language Understanding (LUIS).
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 082ebaef9a2497899cf91c24435dea6e626f0041
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9ce6d33f6f8be844877067163630e5a7909183f6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485155"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563447"
 ---
-# <a name="entities-per-culture-in-your-luis-model"></a>Jednostki na kulturę w modelu usługi LUIS
+# <a name="entities-per-culture-in-your-luis-model"></a>Jednostki na kulturę w modelu LUIS
 
 Language Understanding (LUIS) oferuje wstępnie utworzonych jednostek. W przypadku wstępnie utworzone jednostki znajduje się w aplikacji, usługi LUIS zawiera odpowiednie prognozowania jednostki w odpowiedzi punktu końcowego. Wszystkie wypowiedzi przykład również są oznaczone etykietami z jednostką. Zachowanie ze wstępnie utworzonych jednostek **nie** można modyfikować. Jeśli nie określono inaczej, ze wstępnie utworzonych jednostek są dostępne we wszystkich regionach aplikacji LUIS (kultury). W poniższej tabeli przedstawiono wstępnie utworzone jednostki, które są obsługiwane w przypadku poszczególnych kultur.
 
@@ -34,7 +34,7 @@ Language Understanding (LUIS) oferuje wstępnie utworzonych jednostek. W przypad
 |Koreański|[ko-KR](#korean-entity-support)||
 |Portugalski|[pt-BR (Brazylia)](#portuguese-brazil-entity-support)||
 |Hiszpański|[es-ES (Hiszpania)](#spanish-spain-entity-support), [es-MX (Meksyk)](#spanish-mexico-entity-support)||
-|Turecki|[Turecki](#turkish-entity-support)|Nie wstępnie utworzonych jednostek obsługiwane w języku tureckim|
+|Turecki|[Turecki](#turkish-entity-support)|Brak wstępnie skompilowanych jednostek obsługiwanych w języku tureckim|
 
 ## <a name="chinese-entity-support"></a>Obsługa chińskich jednostki
 
@@ -66,7 +66,7 @@ Są obsługiwane w następujących elementach:
 ------|:------:|
 [Wiek](luis-reference-prebuilt-age.md):<br>rok<br>miesiąc<br>tydzień<br>dzień   |    ✔   |
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
-[Data i godzina](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Datę](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -176,7 +176,7 @@ Są obsługiwane w następujących elementach:
 ------|:------:|
 [Wiek](luis-reference-prebuilt-age.md):<br>rok<br>miesiąc<br>tydzień<br>dzień   |    ✔   |
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
-[Data i godzina](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Datę](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -198,7 +198,7 @@ Są obsługiwane w następujących elementach:
 ------|:------:|
 [Wiek](luis-reference-prebuilt-age.md):<br>rok<br>miesiąc<br>tydzień<br>dzień   |    ✔   |
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
-[Data i godzina](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Datę](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -220,7 +220,7 @@ Są obsługiwane w następujących elementach:
 ------|:------:|
 [Wiek](luis-reference-prebuilt-age.md):<br>rok<br>miesiąc<br>tydzień<br>dzień   |    -   |
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    -   |
-[Data i godzina](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Datę](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    -   | 
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -304,9 +304,9 @@ Zobacz uwagi na [przestarzałe ze wstępnie utworzonych jednostek](luis-referenc
 
 KeyPhrase nie jest dostępny w wszystkich podhodowli z portugalski (Brazylia) — ```pt-BR```.
 
-## <a name="turkish-entity-support"></a>Obsługa jednostki turecki
+## <a name="turkish-entity-support"></a>Wsparcie tureckiej jednostki
 
-**Brak wstępnie utworzonych jednostek obsługiwane w języku tureckim.** 
+**Brak wstępnie skompilowanych jednostek obsługiwanych w języku tureckim.** 
 
 <!--
 

@@ -1,7 +1,7 @@
 ---
-title: Elementy Webhook — usługi mowy
-titlesuffix: Azure Cognitive Services
-description: Elementy Webhook są HTTP oddzwanianie idealne rozwiązanie w przypadku optymalizacji rozwiązania podczas pracy z długich uruchomionych procesów, takich jak importów, adaptacja, testy dokładności lub transkrypcje długotrwałe plików.
+title: Elementy webhook — usługa mowy
+titleSuffix: Azure Cognitive Services
+description: Elementy webhook to wywołania HTTP idealne dla optymalizacji rozwiązania podczas pracy z długotrwałymi procesami, takimi jak Importy, adaptacja, testy dokładności lub transkrypcje długotrwałych plików.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: a100049ddfc9d4859e303546c1b10e814cf96ebb
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 3d07e540bf88c956f61b5d3b2a98702cad616985
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606220"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558802"
 ---
-# <a name="webhooks-for-speech-services"></a>Elementy Webhook dla usług przetwarzania mowy
+# <a name="webhooks-for-speech-services"></a>Elementy webhook dla usługi Speech Services
 
-Elementy Webhook są podobne wywołania zwrotne HTTP, które umożliwiają aplikacji na akceptowanie danych z usług przetwarzania mowy, gdy stanie się dostępna. Przy użyciu elementów webhook, można zoptymalizować korzystanie z interfejsów API REST, eliminując konieczność ciągłego sondowania dla odpowiedzi. W kolejnych sekcjach dowiesz się, jak używać elementów webhook z usług przetwarzania mowy.
+Elementy webhook przypominają wywołania zwrotne HTTP, które umożliwiają aplikacji akceptowanie danych z usług mowy, gdy staną się dostępne. Za pomocą elementów webhook można zoptymalizować korzystanie z interfejsów API REST, eliminując konieczność ciągłego sondowania odpowiedzi. W następnych kilku sekcjach dowiesz się, jak używać elementów webhook z usługami mowy.
 
 ## <a name="supported-operations"></a>Obsługiwane operacje
 
-Usługi mowy obsługują elementy webhook dla wszystkich operacji długotrwałej. Każdej z czynności wymienionych poniżej możesz wyzwolić wywołanie zwrotne HTTP, po jego ukończeniu.
+Usługi mowy obsługują elementy webhook dla wszystkich długotrwałych operacji. Każda z wymienionych poniżej operacji może wyzwolić wywołanie zwrotne HTTP po zakończeniu.
 
 * DataImportCompletion
 * ModelAdaptationCompletion
@@ -32,15 +32,15 @@ Usługi mowy obsługują elementy webhook dla wszystkich operacji długotrwałej
 * EndpointDeploymentCompletion
 * EndpointDataCollectionCompletion
 
-Następnie utwórz element webhook.
+Następnie Utwórzmy element webhook.
 
 ## <a name="create-a-webhook"></a>Tworzenie elementu webhook
 
-Utwórz element webhook dla transkrypcji w trybie offline. Scenariusz: użytkownik ma plik długo działa audio, który chciałby transkrypcja asynchronicznie z interfejsem API usługi Batch transkrypcji.
+Utwórzmy element webhook dla transkrypcji w trybie offline. Scenariusz: użytkownik ma długi plik audio, który chce transkrypcja asynchronicznie z interfejsem API transkrypcji usługi Batch.
 
-Elementy Webhook można utworzyć, wprowadzając żądania POST do https://\<region\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks.
+Elementy webhook można utworzyć, wysyłając żądanie post do https://\<region\>. CRIS.AI/API/speechtotext/v2.1/Transcriptions/Hooks.
 
-Parametry konfiguracji dla żądania są dostarczane jako dane JSON:
+Parametry konfiguracji żądania są podane jako dane JSON:
 
 ```json
 {
@@ -60,17 +60,17 @@ Parametry konfiguracji dla żądania są dostarczane jako dane JSON:
 
 }
 ```
-Wszystkie żądania POST do interfejsu API usługi Batch transkrypcji wymagają `name`. `description` i `properties` parametry są opcjonalne.
+Wszystkie żądania POST do interfejsu API transkrypcji usługi Batch wymagają `name`elementu. Parametry `description` i`properties` są opcjonalne.
 
-`Active` Właściwość jest używana do przełączania wywołań zwrotnych do adresu URL włączać i wyłączać bez konieczności usunięcie i ponowne utworzenie rejestracji elementu webhook. Jeśli potrzebujesz tylko wywołania zwrotnego raz po proces składa się z pełną, następnie usuń element webhook i przełącznik `Active` wartość false dla właściwości.
+`Active` Właściwość służy do przełączania wywołania z powrotem do adresu URL i wyłączania bez konieczności usuwania i ponownego tworzenia rejestracji elementu webhook. Jeśli konieczne jest tylko wywołanie zwrotne po zakończeniu procesu, Usuń element webhook i Przełącz `Active` właściwość na wartość false.
 
-Typ zdarzenia `TranscriptionCompletion` znajduje się w tablicy zdarzenia. Jej będzie wywołania zwrotnego do punktu końcowego podczas transkrypcji pobiera na stan końcowy (`Succeeded` lub `Failed`). W przypadku wywołań zwrotnych do zarejestrowanego adresu URL, żądanie będzie zawierać `X-MicrosoftSpeechServices-Event` nagłówka zawierające jeden z typów zarejestrowanych zdarzeń. Istnieje jedno żądanie wg typu zdarzenia zarejestrowane.
+Typ `TranscriptionCompletion` zdarzenia jest podany w tablicy Events. Nastąpi wywołanie zwrotne do punktu końcowego, gdy transkrypcja zostanie zaimportowana`Succeeded` do `Failed`stanu terminalu (lub). W przypadku wywołania zwrotnego do zarejestrowanego adresu URL żądanie będzie `X-MicrosoftSpeechServices-Event` zawierać nagłówek zawierający jeden z zarejestrowanych typów zdarzeń. Istnieje jedno żądanie dla zarejestrowanego typu zdarzenia.
 
-Istnieje jeden typ zdarzenia, który nie może subskrybować. Jest `Ping` typu zdarzenia. Żądania z tego typu są wysyłane do adresu URL po zakończeniu tworzenia elementu webhook, korzystając z polecenia ping adresu URL (patrz poniżej).  
+Istnieje jeden typ zdarzenia, którego nie można subskrybować. Jest to typ `Ping` zdarzenia. Żądanie z tym typem jest wysyłane do adresu URL po zakończeniu tworzenia elementu webhook przy użyciu adresu URL polecenia ping (patrz poniżej).  
 
-W konfiguracji `url` właściwość jest wymagana. Żądania POST są wysyłane do tego adresu URL. `secret` Służy do tworzenia skrótu SHA256 ładunek, z kluczem tajnym jako klucz HMAC. Wartość skrótu jest ustawiony jako `X-MicrosoftSpeechServices-Signature` nagłówka podczas wywołań zwrotnych do zarejestrowanego adresu URL. Tego pliku nagłówkowego jest zakodowany w formacie Base64.
+W konfiguracji `url` właściwość jest wymagana. Żądania POST są wysyłane do tego adresu URL. `secret` Służy do tworzenia skrótu SHA256 ładunku przy użyciu wpisu tajnego jako klucza HMAC. Skrót jest ustawiany jako `X-MicrosoftSpeechServices-Signature` nagłówek podczas wywoływania z powrotem do zarejestrowanego adresu URL. Ten nagłówek jest kodowany algorytmem Base64.
 
-W tym przykładzie przedstawiono sposób sprawdzania poprawności ładunku przy użyciu C#:
+W tym przykładzie pokazano, jak sprawdzić poprawność ładunku przy użyciu C#:
 
 ```csharp
 
@@ -110,32 +110,32 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
 }
 
 ```
-W poniższym przykładzie `secret` jest dekodowana i zweryfikowane. Zauważysz również, czy typ zdarzenia elementu webhook została przełączona. Obecnie ma jedno zdarzenie na ukończone transkrypcji. Kod ponowi pięć razy dla każdego zdarzenia (z jednym półsekundowym opóźnieniu) przed rezygnacją.
+W tym fragmencie `secret` kodu kod jest zdekodowany i sprawdzony. Zauważ również, że typ zdarzenia elementu webhook został przełączony. Obecnie istnieje jedno zdarzenie na zakończono transkrypcję. Kod ponawia próbę pięć razy dla każdego zdarzenia (z jednym drugim opóźnieniem) przed pokazaniem.
 
-### <a name="other-webhook-operations"></a>Inne operacje elementów webhook
+### <a name="other-webhook-operations"></a>Inne operacje elementu webhook
 
-Aby wyświetlić wszystkie zarejestrowane elementy webhook: POBIERZ https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
+Aby uzyskać wszystkie zarejestrowane elementy webhook: POBIERZ https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
 
-Aby wyświetlić jeden określonego elementu webhook: POBIERZ https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
+Aby uzyskać jeden konkretny element webhook: POBIERZ https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
-Aby usunąć jednego określonego elementu webhook: USUŃ https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
+Aby usunąć jeden z określonych elementów webhook: USUNIĘTY https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
 > [!Note]
-> W powyższym przykładzie region jest 'westus'. Powinny zostać zastąpione region, w której utworzono zasób usługi mowy w witrynie Azure portal.
+> W powyższym przykładzie region ma wartość "zachodnie". Powinno to zostać zastąpione przez region, w którym został utworzony zasób usługi Speech Services w Azure Portal.
 
-WPIS https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping treść: pusty
+Wpis https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping treści: pusty
 
-Wysyła żądanie POST na adres URL zarejestrowane. Żądanie zawiera `X-MicrosoftSpeechServices-Event` nagłówka przy użyciu polecenia ping wartość. Jeśli element webhook został zarejestrowany za pomocą klucza tajnego, będzie ona zawierać `X-MicrosoftSpeechServices-Signature` nagłówek o skrót SHA256 ładunku z kluczem tajnym jako klucz HMAC. Wartość skrótu jest zakodowany w formacie Base64.
+Wysyła żądanie POST do zarejestrowanego adresu URL. Żądanie zawiera `X-MicrosoftSpeechServices-Event` nagłówek z wartością ping. Jeśli element webhook został zarejestrowany przy użyciu klucza tajnego, będzie zawierał `X-MicrosoftSpeechServices-Signature` nagłówek z SHA256 skrótem do ładunku z kluczem tajnym jako klucz HMAC. Skrót jest kodowany algorytmem Base64.
 
-WPIS https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test treść: pusty
+Wpis https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test treści: pusty
 
-Wysyła żądanie POST na adres URL zarejestrowanego, jeśli jednostki typu subskrybowanego zdarzenia (tekst) znajduje się w systemie i jest w odpowiednim stanie. Obciążenie zostanie wygenerowane z ostatni obiekt, który będzie wywoływany punktu zaczepienia sieci web. Jeśli jednostka nie jest obecny, WPIS będzie odpowiadać za pomocą 204. Jeśli żądanie testowe można zapewnić, odpowiada za 200. Treść żądania jest ten sam kształt, tak jak żądanie GET dla określonej jednostki punktu zaczepienia sieci web ma subskrybuje (na przykład transkrypcja). Żądanie będzie miał `X-MicrosoftSpeechServices-Event` i `X-MicrosoftSpeechServices-Signature` nagłówki zgodnie z opisem przed.
+Wysyła żądanie POST do zarejestrowanego adresu URL, jeśli jednostka dla subskrybowanego typu zdarzenia (transkrypcja) jest obecna w systemie i jest w odpowiednim stanie. Ładunek zostanie wygenerowany z ostatniej jednostki, która spowodowałaby wywołanie elementu webhook. Jeśli żadna jednostka nie istnieje, wpis będzie odpowiadał z 204. Jeśli można wykonać żądanie testowe, będzie ono odpowiadać 200. Treść żądania ma ten sam kształt jak w przypadku żądania GET dla określonej jednostki element webhook jest subskrybowany (na potrzeby transkrypcji wystąpienia). Żądanie będzie zawierało `X-MicrosoftSpeechServices-Event` nagłówki i `X-MicrosoftSpeechServices-Signature` zgodnie z wcześniejszym opisem.
 
-### <a name="run-a-test"></a>Uruchamianie testu
+### <a name="run-a-test"></a>Uruchom test
 
-Może odbywać się przeprowadzić szybki test przy użyciu witryny sieci Web https://bin.webhookrelay.com. Z tego miejsca można uzyskać wywołanie kopii adresy URL do przekazania jako parametr do metody POST protokołu HTTP do tworzenia elementu webhook z opisem we wcześniejszej części dokumentu.
+Szybki test można wykonać przy użyciu witryny sieci Web https://bin.webhookrelay.com. Z tego miejsca możesz uzyskać zwrotne adresy URL do przekazania jako parametr do wpisu HTTP w celu utworzenia elementu webhook opisanego wcześniej w dokumencie.
 
-Kliknij pozycję "Utwórz zasobnika" i postępuj zgodnie z wyświetlanymi instrukcjami, aby uzyskać zaczepienia. Następnie użyć informacje podane na tej stronie, aby zarejestrować punkt zaczepienia z usługa mowy. Ładunek komunikatu przekazywania — w odpowiedzi na ukończenie transkrypcji — wygląda następująco:
+Kliknij pozycję "Utwórz zasobnik" i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby uzyskać punkt zaczepienia. Następnie użyj informacji znajdujących się na tej stronie, aby zarejestrować punkt zaczepienia za pomocą usługi mowy. Ładunek komunikatu przekaźnika — w odpowiedzi na zakończenie transkrypcji — wygląda następująco:
 
 ```json
 {
@@ -177,8 +177,8 @@ Kliknij pozycję "Utwórz zasobnika" i postępuj zgodnie z wyświetlanymi instru
     }
 }
 ```
-Komunikat zawiera adres URL rejestrowania i modeli, które umożliwia także tego nagrania.
+Komunikat zawiera adres URL rejestrowania i modele używane do transkrypcja tego nagrania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)

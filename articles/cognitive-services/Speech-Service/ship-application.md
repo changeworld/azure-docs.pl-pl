@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji za pomocą mowy SDK — usługi mowy
+title: Tworzenie aplikacji za pomocą zestawu Speech SDK — Speech Service
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak tworzyć aplikacje przy użyciu zestawu SDK rozpoznawania mowy.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 8fc27002af4ebef0825b23c806cfedbe7adf9642
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 8192a2d731104fe898ca128a1d989783698567da
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404809"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559164"
 ---
 # <a name="ship-an-application"></a>Dostarczanie aplikacji
 
@@ -74,7 +74,7 @@ sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
 * [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

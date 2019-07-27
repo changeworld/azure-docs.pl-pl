@@ -1,5 +1,5 @@
 ---
-title: Ze wstępnie utworzonych domen dla Understa języka
+title: Prebudowane domeny dla Language Understanding
 titleSuffix: Azure Cognitive Services
 description: Usługa LUIS obejmuje zestaw wstępnie utworzonych domen do szybkiego dodawania scenariuszy użytkowników typowe i konwersacyjny.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: e1b99396c4739dc6f1b7a4da0164553d4c25ef3c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 05769bb284a89f16af79a03cdc471b339c7af855
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198945"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563550"
 ---
 # <a name="add-prebuilt-domains-for-common-usage-scenarios"></a>Dodaj ze wstępnie utworzonych domen dla typowych scenariuszy użycia 
 

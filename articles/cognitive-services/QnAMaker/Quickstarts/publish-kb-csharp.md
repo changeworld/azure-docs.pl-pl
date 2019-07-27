@@ -1,6 +1,6 @@
 ---
-title: Publikowanie bazy wiedzy, REST, C#
-titleSuffix: QnA Maker- Azure Cognitive Services
+title: 'Szybki start: Publikowanie bazy wiedzy, REST i C# QNA Maker'
+titleSuffix: Azure Cognitive Services
 description: Ten przewodnik Szybki start oparty na protokole REST języka C# przeprowadzi Cię przez proces publikowania bazy wiedzy, który polega na wypchnięciu najnowszej wersji przetestowanej bazy wiedzy do dedykowanego indeksu usługi Azure Search reprezentującego opublikowaną bazę wiedzy. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 3460424a8d80baef92eb8b29a3be4de5686027c6
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0ce0f3673a297964932f3b97dfd1d49d7c1e55e5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827587"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559780"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Szybki start: Publikowanie bazy wiedzy w usłudze QnA Maker przy użyciu języka C#
 
@@ -40,8 +40,8 @@ Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 
 ## <a name="create-knowledge-base-project"></a>Tworzenie projektu bazy wiedzy
 
-1. Open Visual Studio 2019 Community edition.
-1. Utwórz nową **Aplikacja konsoli (.NET Core)** projektu, a następnie nadaj projektowi nazwę `QnaMakerQuickstart`. Zaakceptuj wartości domyślne pozostałych ustawień.
+1. Otwórz program Visual Studio 2019 Community Edition.
+1. Utwórz nowy projekt **Aplikacja konsolowa (.NET Core)** i nadaj mu nazwę `QnaMakerQuickstart`. Zaakceptuj wartości domyślne pozostałych ustawień.
 
 ## <a name="add-required-dependencies"></a>Dodawanie wymaganych zależności
 
@@ -71,7 +71,7 @@ Po opublikowaniu bazy wiedzy można tworzyć do niej zapytania z punktu końcowe
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po opublikowaniu bazy wiedzy potrzebny jest [adres URL punktu końcowego do wygenerowania odpowiedzi](../Tutorials/create-publish-answer.md#generating-an-answer). 
 

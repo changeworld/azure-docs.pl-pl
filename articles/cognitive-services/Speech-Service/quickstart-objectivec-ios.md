@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy, język Objective-C — usługi mowy'
+title: 'Szybki start: Rozpoznawanie mowy, obiektyw-C-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak rozpoznawać mowę w języku Objective-C w systemie iOS przy użyciu zestawu Speech SDK
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 55b442b74847ccbc0dcc944eada7b33ccd368bed
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 01a2b9d5bad7d490f5ee9f6a21af5bc1308bdab1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605057"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553657"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Objective-C w systemie iOS przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-W tym artykule dowiesz się, jak utworzyć aplikację dla systemu iOS w języku Objective-C za pomocą Cognitive Services SDK mowy transkrypcja mowy na tekst z mikrofonu lub plik z nagrania audio.
+W tym artykule dowiesz się, jak utworzyć aplikację dla systemu iOS w celu użycia narzędzia Cognitive Services Speech SDK, aby transkrypcja mowę na tekst z mikrofonu lub z pliku z zarejestrowanym dźwiękiem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,7 @@ Przed rozpoczęciem pracy zapoznaj się z poniższą listą wymagań wstępnych:
 
 * [Klucz subskrypcji](get-started.md) dla usługi Mowa
 * Maszyna z systemem macOS z oprogramowaniem [Xcode w wersji 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) lub nowszej
-* Element docelowy równa system iOS w wersji 9.3 lub nowszym
+* Element docelowy jest ustawiony na system iOS w wersji 9,3 lub nowszej
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Pobierz zestaw SDK usługi Mowa dla systemu iOS
 
@@ -37,8 +37,8 @@ Przed rozpoczęciem pracy zapoznaj się z poniższą listą wymagań wstępnych:
 
 Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.6.0`.
 
-Cognitive Services mowy zestawu SDK dla systemu iOS jest obecnie dystrybuowane jako struktura cocoa dla.
-Można go pobrać ze [tutaj](https://aka.ms/csspeech/iosbinary). Pobierz plik do katalogu macierzystego.
+Zestaw Cognitive Services Speech SDK dla systemu iOS jest obecnie dystrybuowany jako platforma kakao.
+Można go pobrać z tego [miejsca](https://aka.ms/csspeech/iosbinary). Pobierz plik do katalogu macierzystego.
 
 ## <a name="create-an-xcode-project"></a>Tworzenie projektu programu Xcode
 
@@ -90,7 +90,7 @@ Zastąp wygenerowany automatycznie kod XML następującym kodem:
 ## <a name="building-and-running-the-sample"></a>Kompilowanie i uruchamianie przykładu
 
 1. Uwidocznij dane wyjściowe debugowania (**View** > **Debug Area** > **Activate Console** — Widok > Obszar debugowania > Aktywuj konsolę).
-1. Wybierz symulatora systemu iOS lub urządzenie z systemem iOS połączone na maszynie deweloperskiej jako lokalizacja docelowa dla aplikacji z listy w **produktu** > **docelowy** menu.
+1. Wybierz symulator systemu iOS lub urządzenie z systemem iOS podłączone do komputera deweloperskiego jako miejsce docelowe aplikacji z listy w menu**miejsce docelowe** **produktu** > .
 1. Skompiluj i uruchom przykładowy kod w symulatorze systemu iOS, wybierając pozycję **Product** > **Run** (Produkt > Uruchom) z menu lub klikając przycisk **Play** (Odtwórz).
 1. Po kliknięciu przycisku „Recognize (File)” (Rozpoznaj — plik) w aplikacji zawartość pliku dźwiękowego „What's the weather like?” (Jaka jest pogoda?) powinna zostać wyświetlona w dolnej części ekranu.
 
@@ -98,7 +98,7 @@ Zastąp wygenerowany automatycznie kod XML następującym kodem:
 
 1. Po kliknięciu przycisku „Recognize (Microphone)” (Rozpoznaj — mikrofon) w aplikacji i wypowiedzeniu kilku słów wypowiedziany tekst powinien zostać wyświetlony w dolnej części ekranu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka Objective-C w serwisie GitHub](https://aka.ms/csspeech/samples)

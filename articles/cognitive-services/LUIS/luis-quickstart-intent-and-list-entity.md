@@ -1,5 +1,5 @@
 ---
-title: Wyodrębnianie dopasowań tekstu
+title: Dokładne dopasowanie tekstu — LUIS
 titleSuffix: Azure Cognitive Services
 description: Pobieraj dane, które są zgodne ze wstępnie zdefiniowaną listą elementów. Każdy element na liście może mieć synonimy, które są również dokładnie zgodne
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: df37e7aad2420d0bc280121634d49675ae29ee5a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a5aeeb74d26ce633beb0e9feef20a2315bc0ff1d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236428"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560408"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Samouczek: Uzyskiwanie dokładnych danych dopasowanych na podstawie tekstu z wypowiedzi
 
@@ -29,7 +29,7 @@ W tym samouczku dowiesz się, jak uzyskać dane jednostki zgodne ze wstępnie zd
 > * Tworzenie aplikacji
 > * Dodawanie intencji
 > * Dodawanie jednostki listy 
-> * Szkol 
+> * Szkolenie 
 > * Publikowanie
 > * Pobieranie intencji i jednostek z punktu końcowego
 
@@ -175,11 +175,11 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to nazwa działu. Przykłady syn
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku utworzono nową intencję, dodano przykładowe wypowiedzi, a następnie utworzono jednostkę listy, aby wyodrębnić z wypowiedzi dokładne dopasowania tekstu. Po wyszkoleniu i opublikowaniu aplikacji zapytanie do punktu końcowego zidentyfikowało intencję i zwróciło wyodrębnione dane.
 
 Kontynuuj pracę z tą aplikacją, [dodając jednostkę złożoną](luis-tutorial-composite-entity.md).
 
 > [!div class="nextstepaction"]
-> [Dodaj wstępnie utworzone jednostki z rolą do aplikacji](tutorial-entity-roles.md)
+> [Dodawanie wstępnie skompilowanej jednostki z rolą do aplikacji](tutorial-entity-roles.md)
 

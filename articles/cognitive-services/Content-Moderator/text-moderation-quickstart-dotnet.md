@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: analizowanie zawartości tekstowej w języku C# — Content Moderator'
-titlesuffix: Azure Cognitive Services
-description: Jak analizować zawartość tekstu dla różnych materiałów Kodeksem przy użyciu zestawu SDK Moderator zawartości dla platformy .NET
+titleSuffix: Azure Cognitive Services
+description: Jak analizować zawartość tekstową dla różnych niezwiązanych materiałów przy użyciu zestawu Content Moderator SDK dla platformy .NET
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: f848ea0d1c86b9c12d26c59b8f0e92d1e5d70094
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 45ac641948531aa27334762704eba3333aebba4d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604060"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564323"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Szybki start: analizowanie zawartości tekstowej pod kątem niepożądanego materiału w języku C#
 
-Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak wykonać termin filtrowania i klasyfikacji zawartości w celu potencjalnie groźnego materiału Moderowanie tekstu.
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak wykonywać filtrowanie na podstawie warunkowe i klasyfikację zawartości tekstowej w celu moderowania potencjalnie niepożądanego materiału.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
@@ -57,11 +57,11 @@ Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta u
 
 ### <a name="set-up-input-and-output-targets"></a>Konfigurowanie wejściowych i wyjściowych elementów docelowych
 
-Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola określ pliki zawartości tekstu wejściowego, a dane wyjściowe JSON zawartości.
+Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola określają pliki dla wejściowej zawartości tekstowej i wyjściowej zawartości JSON.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-Musisz utworzyć *TextFile.txt* plik wejściowy i zaktualizuj jego ścieżki (ścieżki są względne wobec katalogu wykonywania). Otwórz plik _TextFile.txt_ i dodaj tekst moderowania. Ten przewodnik Szybki start używa następującego przykładowego tekstu:
+Należy utworzyć plik wejściowy *textfile. txt* i zaktualizować jego ścieżkę (ścieżki odnoszą się do katalogu wykonywania). Otwórz plik _TextFile.txt_ i dodaj tekst moderowania. Ten przewodnik Szybki start używa następującego przykładowego tekstu:
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 Dodaj następujący kod do metody **Main**. Metoda **ScreenText** to niezbędna operacja. Jej parametry określają, które operacje moderowania zawartości zostaną wykonane. W tym przykładzie metoda została skonfigurowana do wykonywania następujących czynności:
 - Wykrywanie potencjalnych przekleństw w tekście.
 - Normalizowanie tekstu i automatyczne poprawianie błędów pisowni.
-- Wykrywanie danych osobowych, takich jak Stany Zjednoczone i Zjednoczonego Królestwa numerów telefonów, adresy e-mail i adresy pocztowe w Stanach Zjednoczonych.
+- Wykrywaj dane osobowe, takie jak numery telefonów US i BRYTYJSKIch, adresy e-mail i adresy pocztowe w Stanach Zjednoczonych.
 - Używanie modeli opartych na uczeniu maszynowym do klasyfikowania tekstu w ramach trzech kategorii.
 
 Jeśli chcesz dowiedzieć się więcej o sposobie działania operacji, kliknij link w sekcji [Następne kroki](#next-steps).

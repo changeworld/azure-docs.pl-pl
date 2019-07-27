@@ -1,6 +1,6 @@
 ---
 title: wykonywanie operacji na obrazach — JavaScript
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Zapoznaj się z podstawową wersją aplikacji JavaScript, która korzysta z interfejsu API przetwarzania obrazów w usługach Azure Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
 services: cognitive-services
 author: KellyDF
@@ -11,50 +11,50 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 91af70406590ab8e65a5d4a4b53835e9e4d4ed2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24ef94b702d11977df4e1ca2dab181f5c14a00df
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231660"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564561"
 ---
-# <a name="use-computer-vision-features-with-the-rest-api-and-javascript"></a>Funkcje przetwarzania obrazów za pomocą interfejsu API REST i JavaScript
+# <a name="use-computer-vision-features-with-the-rest-api-and-javascript"></a>Korzystanie z funkcji przetwarzanie obrazów przy użyciu interfejsu API REST i języka JavaScript
 
-W tym przewodniku przedstawiono funkcje usługi Azure Cognitive Services REST interfejs API przetwarzania obrazów.
+W tym przewodniku przedstawiono funkcje interfejsu API REST usługi Azure Cognitive Services przetwarzanie obrazów.
 
 Zapoznaj się z aplikacją JavaScript, w której zastosowano interfejs API REST przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych na obrazie, w tym twarzy. Ten przykład umożliwia przesłanie adresu URL obrazu w celu przeprowadzenia jego analizy lub przetwarzania. Możesz zastosować ten przykład „open source” jako szablon do tworzenia własnej aplikacji w języku JavaScript, używającej interfejsu API REST przetwarzania obrazów.
 
-Aplikacja formularza JavaScript została już napisana. Nie ma ona jednak wbudowanych żadnych funkcji przetwarzania obrazów. W tym przewodniku dodajesz określonego kodu do interfejsu API REST przetwarzania obrazów w celu ukończenia działania aplikacji.
+Aplikacja formularza JavaScript została już napisana. Nie ma ona jednak wbudowanych żadnych funkcji przetwarzania obrazów. W tym przewodniku dodano kod specyficzny dla interfejsu API REST przetwarzanie obrazów, aby zakończyć działanie aplikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="platform-requirements"></a>Wymagania dotyczące platformy
 
-Możesz wykonać kroki opisane w tym przewodniku za pomocą edytora zwykłego tekstu.
+Kroki opisane w tym przewodniku można wykonać przy użyciu prostego edytora tekstu.
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Subskrybowanie interfejsu API przetwarzania obrazów i uzyskanie klucza subskrypcji
 
-Przed utworzeniem przykładu musisz zasubskrybować interfejs API przetwarzania obrazów, który jest częścią usług Azure Cognitive Services. Aby uzyskać szczegółowe informacje na temat subskrypcji i zarządzania kluczami, zobacz temat [Subskrypcje](https://azure.microsoft.com/try/cognitive-services/). Klucze podstawowe i pomocnicze są prawidłowe w tym przewodniku.
+Przed utworzeniem przykładu musisz zasubskrybować interfejs API przetwarzania obrazów, który jest częścią usług Azure Cognitive Services. Aby uzyskać szczegółowe informacje na temat subskrypcji i zarządzania kluczami, zobacz temat [Subskrypcje](https://azure.microsoft.com/try/cognitive-services/). Zarówno klucz podstawowy, jak i pomocniczy są prawidłowe do użycia w tym przewodniku.
 
-## <a name="acquire-incomplete-tutorial-project"></a>Uzyskiwanie niekompletne projekcie samouczka
+## <a name="acquire-incomplete-tutorial-project"></a>Pozyskiwanie niekompletnego projektu samouczka
 
 ### <a name="download-the-project"></a>Pobieranie projektu
 
 Sklonuj [Samouczek przetwarzania obrazów JavaScript usługi Cognitive Services](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial) lub pobierz plik ZIP i wyodrębnij go do pustego katalogu.
 
-Jeśli wolisz zakończony projekt za pomocą wszystkich kodu z samouczka dotyczącego dodane, można użyć plików w **Ukończono** folderu.
+Jeśli wolisz używać gotowego projektu ze wszystkimi dodanym kodem samouczka, możesz użyć plików w folderze **ukończone** .
 
-## <a name="add-tutorial-code-to-the-project"></a>Dodawanie kodu z samouczka dotyczącego do projektu
+## <a name="add-tutorial-code-to-the-project"></a>Dodawanie kodu samouczka do projektu
 
-Aplikacja języka JavaScript jest skonfigurowana w postaci sześciu plików HTML — po jednym dla każdej funkcji. Każdy plik pokazuje innej funkcji przetwarzania obrazów (analizować, optyczne rozpoznawanie znaków, itp.). Sześć sekcji nie mają współzależności, dzięki czemu można dodać kodu z samouczka dotyczącego do jednego pliku, wszystkie sześć plików lub tylko kilka plików. Na dodatek kod samouczka można dodawać do plików w dowolnej kolejności.
+Aplikacja języka JavaScript jest skonfigurowana w postaci sześciu plików HTML — po jednym dla każdej funkcji. Każdy plik prezentuje inną funkcję przetwarzanie obrazów (analiza, OCR itp.). Sześć sekcji nie ma współzależności wzajemnych, więc można dodać kod samouczka do jednego pliku, wszystkie sześć plików lub tylko kilka plików. Na dodatek kod samouczka można dodawać do plików w dowolnej kolejności.
 
 ### <a name="analyze-an-image"></a>Analizowanie obrazu
 
-Funkcja analizy wizualizacji komputerowej skanuje obrazu dla tysięcy rozpoznawalnych obiektów, rzeczy żywych, scenerii i akcji. Po zakończeniu funkcja Analiza zwraca obiekt JSON, który opisuje obraz między innymi za pomocą opisowych znaczników, analizy koloru i podpisów.
+Funkcja Analizuj przetwarzanie obrazów skanuje obraz w poszukiwaniu tysięcy obiektów rozpoznawalnych, rzeczy, scenerii i akcji. Po zakończeniu funkcja Analiza zwraca obiekt JSON, który opisuje obraz między innymi za pomocą opisowych znaczników, analizy koloru i podpisów.
 
-Aby ukończyć funkcji analizy aplikacji, wykonaj następujące czynności:
+Aby ukończyć funkcję Analizuj w aplikacji, wykonaj następujące czynności:
 
-#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Dodaj kod procedury obsługi zdarzeń dla przycisku analiza
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Dodawanie kodu programu obsługi zdarzeń dla przycisku Analizuj
 
 Otwórz plik **analyze.html** w edytorze tekstów i w dolnej części pliku znajdź funkcję **analyzeButtonClick**.
 
@@ -150,7 +150,7 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-analyze-function"></a>Uruchamianie funkcji analizy
+#### <a name="run-the-analyze-function"></a>Uruchom funkcję Analizuj
 
 Zapisz plik **analyze.html** i otwórz go w przeglądarce sieci Web. W polu **Klucz subskrypcji** umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Region subskrypcji** korzystasz z poprawnego regionu. Wprowadź adres URL obrazu do analizy, a następnie kliknij przycisk **Analyze Image** (Analizuj obraz), aby przeprowadzić analizę obrazu i wyświetlić jej wynik.
 
@@ -158,9 +158,9 @@ Zapisz plik **analyze.html** i otwórz go w przeglądarce sieci Web. W polu **Kl
 
 Funkcja Punkt terenowy przetwarzania obrazów analizuje obraz pod kątem wykrywania naturalnych i sztucznych charakterystycznych elementów krajobrazu, takich jak góry lub znane budowle. Po zakończeniu analizy funkcja Punkt terenowy zwraca obiekt JSON, który identyfikuje znalezione na obrazie charakterystyczne elementy krajobrazu.
 
-Aby wykonać funkcję charakterystycznych elementów krajobrazu aplikacji, wykonaj następujące czynności:
+Aby ukończyć funkcję punktu orientacyjnego aplikacji, wykonaj następujące czynności:
 
-#### <a name="add-the-event-handler-code-for-the-landmark-button"></a>Dodaj kod procedury obsługi zdarzeń dla przycisku charakterystycznych elementów krajobrazu
+#### <a name="add-the-event-handler-code-for-the-landmark-button"></a>Dodaj kod procedury obsługi zdarzeń dla przycisku punktu orientacyjnego
 
 Otwórz plik **landmark.html** w edytorze tekstów i w dolnej części pliku znajdź funkcję **landmarkButtonClick**.
 
@@ -255,7 +255,7 @@ function IdentifyLandmarks(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-landmark-function"></a>Uruchamianie funkcji charakterystycznych elementów krajobrazu
+#### <a name="run-the-landmark-function"></a>Uruchamianie funkcji orientacyjnej
 
 Zapisz plik **landmark.html** i otwórz go w przeglądarce sieci Web. W polu **Klucz subskrypcji** umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Region subskrypcji** korzystasz z poprawnego regionu. Wprowadź adres URL obrazu do analizy, a następnie kliknij przycisk **Analizowanie obrazu**, aby przeprowadzić proces analizy obrazu i wyświetlić jego wynik.
 
@@ -263,7 +263,7 @@ Zapisz plik **landmark.html** i otwórz go w przeglądarce sieci Web. W polu **K
 
 Funkcja Osobistości w ramach przetwarzania obrazów analizuje obraz pod kątem występowania na nim sławnych osób. Po zakończeniu analizy funkcja Osobistości zwraca obiekt JSON, który identyfikuje znalezione na obrazie znane osoby.
 
-Aby wykonać funkcję osobistości aplikacji, wykonaj następujące czynności:
+Aby ukończyć funkcję osobistości aplikacji, wykonaj następujące czynności:
 
 #### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>Dodaj kod procedury obsługi zdarzeń dla przycisku osobistości
 
@@ -356,7 +356,7 @@ function IdentifyCelebrities(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-celebrities-function"></a>Uruchom funkcję osobistości
+#### <a name="run-the-celebrities-function"></a>Uruchamianie funkcji osobistości
 
 Zapisz plik **celebrities.html** i otwórz go w przeglądarce sieci Web. W polu **Klucz subskrypcji** umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Region subskrypcji** korzystasz z poprawnego regionu. Wprowadź adres URL obrazu do analizy, a następnie kliknij przycisk **Analyze Image** (Analizuj obraz), aby przeprowadzić analizę obrazu i wyświetlić jej wynik.
 
@@ -364,9 +364,9 @@ Zapisz plik **celebrities.html** i otwórz go w przeglądarce sieci Web. W polu 
 
 Funkcja Miniatura przetwarzania obrazów generuje miniaturę na podstawie obrazu. Korzystając z funkcji **Inteligentne przycinanie**, funkcja Miniatura zidentyfikuje obszar zainteresowania w obszarze i wycentruje miniaturę na ten obszar, aby wygenerować bardziej zadowalające wizualnie obrazy miniatur.
 
-Aby wykonać funkcję miniatury aplikacji, wykonaj następujące czynności:
+Aby ukończyć funkcję miniatury aplikacji, wykonaj następujące czynności:
 
-#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Dodaj kod procedury obsługi zdarzeń dla przycisku miniatury
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Dodawanie kodu programu obsługi zdarzeń dla przycisku miniatury
 
 Otwórz plik **thumbnail.html** w edytorze tekstów i w dolnej części pliku znajdź funkcję **thumbnailButtonClick**.
 
@@ -475,7 +475,7 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 }
 ```
 
-#### <a name="run-the-thumbnail-function"></a>Uruchom funkcję miniatury
+#### <a name="run-the-thumbnail-function"></a>Uruchamianie funkcji miniatury
 
 Zapisz plik **thumbnail.html** i otwórz go w przeglądarce sieci Web. W polu **Klucz subskrypcji** umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Region subskrypcji** korzystasz z poprawnego regionu. Wprowadź adres URL obrazu do analizy, a następnie kliknij przycisk **Generowanie miniatur**, aby przeprowadzić proces analizy obrazu i wyświetlić jego wynik.
 
@@ -483,9 +483,9 @@ Zapisz plik **thumbnail.html** i otwórz go w przeglądarce sieci Web. W polu **
 
 Funkcja optycznego rozpoznawania znaków (OCR) w ramach przetwarzania obrazów analizuje obraz tekstu drukowanego. Po zakończeniu analizy funkcja OCR zwraca obiekt JSON, który zawiera tekst i jego lokalizację na obrazie.
 
-Aby wykonać funkcję optyczne rozpoznawanie znaków w aplikacji, wykonaj następujące czynności:
+Aby ukończyć funkcję OCR aplikacji, wykonaj następujące czynności:
 
-### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Dodaj kod procedury obsługi zdarzeń dla przycisku optyczne rozpoznawanie znaków
+### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Dodaj kod programu obsługi zdarzeń dla przycisku OCR
 
 Otwórz plik **ocr.html** w edytorze tekstów i w dolnej części pliku znajdź funkcję **ocrButtonClick**.
 
@@ -568,7 +568,7 @@ function ReadOcrImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-#### <a name="run-the-ocr-function"></a>Uruchamianie funkcji optycznego rozpoznawania znaków
+#### <a name="run-the-ocr-function"></a>Uruchamianie funkcji OCR
 
 Zapisz plik **ocr.html** i otwórz go w przeglądarce sieci Web. W polu **Klucz subskrypcji** umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Region subskrypcji** korzystasz z poprawnego regionu. Wprowadź adres URL obrazu tekstu do analizy, a następnie kliknij przycisk **Czytanie obrazu**, aby przeprowadzić proces analizy obrazu i wyświetlić jego wynik.
 
@@ -576,7 +576,7 @@ Zapisz plik **ocr.html** i otwórz go w przeglądarce sieci Web. W polu **Klucz 
 
 Funkcja Rozpoznawanie pisma ręcznego w ramach przetwarzania obrazów analizuje obraz tekstu odręcznego. Po zakończeniu analizy funkcja Rozpoznawanie pisma ręcznego zwraca obiekt JSON, który zawiera tekst i jego lokalizację na obrazie.
 
-Aby wykonać funkcję rozpoznawania pisma ręcznego w aplikacji, wykonaj następujące czynności:
+Aby ukończyć funkcję rozpoznawania pisma ręcznego w aplikacji, wykonaj następujące czynności:
 
 #### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>Dodaj kod procedury obsługi zdarzeń dla przycisku pisma odręcznego
 
@@ -727,12 +727,12 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-#### <a name="run-the-handwriting-function"></a>Uruchom funkcję pisma odręcznego
+#### <a name="run-the-handwriting-function"></a>Uruchom funkcję pisma ręcznego
 
 Zapisz plik **handwriting.html** i otwórz go w przeglądarce sieci Web. W polu **Klucz subskrypcji** umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Region subskrypcji** korzystasz z poprawnego regionu. Wprowadź adres URL obrazu tekstu do analizy, a następnie kliknij przycisk **Czytanie obrazu**, aby przeprowadzić proces analizy obrazu i wyświetlić jego wynik.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku użyto interfejsu API REST dla przetwarzania obrazów za pomocą języka JavaScript do testowania z wielu funkcji analizy dostępnych obrazów. Następnie zobacz dokumentację referencyjną, aby dowiedzieć się więcej na temat interfejsów API zaangażowane.
+W tym przewodniku użyto interfejsu API REST przetwarzanie obrazów w języku JavaScript w celu przetestowania wielu dostępnych funkcji analizy obrazów. Następnie zapoznaj się z dokumentacją referencyjną, aby dowiedzieć się więcej na temat używanych interfejsów API.
 
-- [Interfejs REST API wizualizacji komputerowej](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)
+- [Interfejs API REST przetwarzanie obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

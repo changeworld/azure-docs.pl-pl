@@ -1,6 +1,6 @@
 ---
-title: DatetimeV2 ze wstępnie utworzonych jednostek
-titleSuffix: Azure
+title: Wstępnie skompilowane jednostki DatetimeV2 — LUIS
+titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera datetimeV2 informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a19ab6e02249bad689f1a05c5761150b7a817df
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148636"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560275"
 ---
-# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 wstępnie utworzone jednostki dla aplikacji usługi LUIS
+# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 prekompilowaną jednostkę dla aplikacji LUIS
 
 **DatetimeV2** wstępnie utworzone jednostki wyodrębnia wartości daty i godziny. Rozwiąż te wartości w standardowym formacie dotyczących programów klienckich do korzystania. Gdy wypowiedź znajdują się daty lub godziny, która nie została ukończona, LUIS obejmuje _zarówno w przeszłości, jak i w przyszłości wartości_ w odpowiedzi punktu końcowego. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający datetimeV2 do intencji aplikacji. 
 
 ## <a name="types-of-datetimev2"></a>Typy datetimeV2
-DatetimeV2 jest zarządzana z [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) repozytorium GitHub
+DatetimeV2 jest zarządzany przez [Aparaty rozpoznawania tekstu —](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) repozytorium GitHub
 
 ## <a name="example-json"></a>Przykładowy plik JSON 
 Poniższy przykład odpowiedź w formacie JSON zawiera `datetimeV2` jednostki o podtypem `datetime`. Przykłady innych typów jednostek datetimeV2, zobacz [podtypy datetimeV2](#subtypes-of-datetimev2)</a>.
@@ -82,7 +82,7 @@ Każdy element obiektu `values` macierzy może zawierać następujące pola:
 |Nazwa właściwości|Opis właściwości|
 |--|--|
 |Timex|Godzina, data lub zakresu dat wyrażonych w formacie TIMEX, który następuje po [standardem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i atrybuty TIMEX3 przy użyciu języka TimeML adnotacji. Ta adnotacja jest opisana w [wytycznych TIMEX](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
-|type|Podtyp, który może być jednym z następujących elementów: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
+|— typ|Podtyp, który może być jednym z następujących elementów: `datetime`, `date` `datetimerange` `daterange` `timerange` `time`,,,,, `set` ,.`duration`|
 |value|**Opcjonalnie.** Obiekt daty/godziny w formacie yyyy:MM:dd (Data): mm: ss (czas) yyyy:MM:dd: mm: ss (Data/godzina). Jeśli `type` jest `duration`, wartość jest to liczba sekund (czas trwania) <br/> Używany tylko, jeśli `type` jest `datetime` lub `date`, `time`, lub "czas trwania.|
 
 ## <a name="valid-date-values"></a>Wartości prawidłowej daty
@@ -206,15 +206,15 @@ W poniższym przykładzie pokazano, jak korzysta z usługi LUIS **datetimeV2** r
   ]
 ```
 
-## <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API 3.x
+## <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API w wersji 3. x
 
-Odpowiedź DatetimeV2 JSON została zmieniona w wersji 3 interfejsu API. 
+Odpowiedź JSON DatetimeV2 została zmieniona w interfejsie API v3. 
 
-Zmiany z interfejsu API w wersji 2:
-* `datetimeV2.timex.type` Właściwość nie jest już jest zwracany, ponieważ jest on zwracany na poziomie nadrzędnym `datetimev2.type`. 
-* `datetimeV2.timex` Właściwości została zmieniona na `datetimeV2.value`.
+Zmiany z interfejsu API v2:
+* `datetimeV2.timex.type`Właściwość nie jest już zwracana, `datetimev2.type`ponieważ jest zwracana na poziomie nadrzędnym. 
+* Nazwa właściwości została zmieniona na `datetimeV2.value`. `datetimeV2.timex`
 
-Aby uzyskać wypowiedź `8am on may 2nd 2017`, wersja V3 DatetimeV2 to:
+W przypadku wypowiedź `8am on may 2nd 2017`wersja v3 programu DatetimeV2 to:
 
 ```JSON
 {
@@ -244,7 +244,7 @@ Aby uzyskać wypowiedź `8am on may 2nd 2017`, wersja V3 DatetimeV2 to:
 }
 ```
 
-Następujący kod JSON jest `verbose` parametr `false`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `false`
 
 ```json
 {

@@ -1,7 +1,7 @@
 ---
-title: Testowanie i ponowne szkolenie modelu — Custom Vision Service
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak przetestować obraz, a następnie użyć go do Ponowne szkolenie modelu.
+title: Testowanie i ponowne uczenie modelu — Custom Vision Service
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak przetestować obraz, a następnie użyć go do ponownego nauczenia modelu.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,53 +10,53 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: d516cee81aef66ec58399cb5ff23c89db16bf2ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f78f0b992581a44b030387f1bd0e37664df4cfd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816655"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560910"
 ---
-# <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testowanie i ponowne szkolenie modelu z usługi Custom Vision Service
+# <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testowanie i ponowne uczenie modelu z Custom Vision Service
 
-Po użytkownik nauczenia modelu, możesz szybko przetestować go przy użyciu obraz przechowywany lokalnie lub obrazu w trybie online. Test używa najbardziej niedawno uczonego iteracji.
+Po przeprowadzeniu szkolenia modelu można szybko przetestować go przy użyciu lokalnie przechowywanego obrazu lub obrazu w trybie online. Test korzysta z ostatnio przeszkolonej iteracji.
 
 ## <a name="test-your-model"></a>Testowanie modelu
 
-1. Z [strony sieci web Custom Vision](https://customvision.ai), wybierz swój projekt. Wybierz **przeprowadzić szybki Test** po prawej stronie na pasku menu u góry. Ta akcja powoduje otwarcie okna z etykietą **przeprowadzić szybki Test**.
+1. Na [stronie sieci web Custom Vision](https://customvision.ai)wybierz projekt. Wybierz pozycję **szybka próba** po prawej stronie górnego paska menu. Ta akcja powoduje otwarcie okna z etykietą **szybki test**.
 
-    ![Przycisk przeprowadzić szybki Test jest wyświetlany w prawym górnym rogu okna.](./media/test-your-model/quick-test-button.png)
+    ![Przycisk Szybki test jest wyświetlany w prawym górnym rogu okna.](./media/test-your-model/quick-test-button.png)
 
-2. W **szybkie testowanie** kliknij w oknie **przesłać obraz** pola, a następnie wprowadź adres URL obrazu, którego chcesz użyć dla testu. Jeśli chcesz zamiast tego użyj obraz przechowywany lokalnie, kliknij przycisk **Przeglądaj pliki lokalne** przycisku i wybierz plik lokalny obraz.
+2. W oknie **szybkie testy** kliknij pole **Prześlij obraz** , a następnie wprowadź adres URL obrazu, który ma być używany dla testu. Jeśli zamiast tego chcesz użyć lokalnie przechowywanego obrazu, kliknij przycisk **Przeglądaj pliki lokalne** i wybierz plik obrazu lokalnego.
 
-    ![Obraz strony przesyłania obrazów](./media/test-your-model/submit-image.png)
+    ![Obraz strony przesyłania obrazu](./media/test-your-model/submit-image.png)
 
-Obraz, który wybierzesz pojawia się w środku strony. Następnie wyniki są wyświetlane poniżej obrazu w postaci tabeli z dwiema kolumnami, etykietą **tagi** i **ufności**. Po wyświetleniu wyników, możesz zamknąć **przeprowadzić szybki Test** okna.
+Wybrany obraz pojawia się w środku strony. Następnie wyniki są wyświetlane poniżej obrazu w postaci tabeli zawierającej dwie kolumny z etykietami i **pewnością**. Po wyświetleniu wyników możesz zamknąć okno **szybkie testy** .
 
-Możesz teraz dodać ten obraz testowy do modelu, a następnie ponowne szkolenie modelu.
+Teraz możesz dodać ten obraz testowy do modelu, a następnie ponownie przeprowadzić uczenie modelu.
 
-## <a name="use-the-predicted-image-for-training"></a>Korzystanie z obrazu przewidywane potrzeby szkolenia
+## <a name="use-the-predicted-image-for-training"></a>Używanie przewidywanego obrazu do szkolenia
 
-Aby użyć obrazu przesłane wcześniej, szkolenia, użyj następujących czynności:
+Aby użyć obrazu przesłanego wcześniej do szkolenia, wykonaj następujące czynności:
 
-1. Aby wyświetlić obrazy przesyłany do usługi klasyfikatora, otwórz [strony sieci web Custom Vision](https://customvision.ai) i wybierz __prognozy__ kartę.
+1. Aby wyświetlić obrazy przesłane do klasyfikatora, Otwórz [stronę sieci web Custom Vision](https://customvision.ai) i wybierz kartę __przewidywania__ .
 
-    ![Obraz karty prognozy](./media/test-your-model/predictions-tab.png)
-
-    > [!TIP]
-    > Widok domyślny pokazuje obrazów z bieżącą iterację. Możesz użyć __iteracji__ rozwijane pole, aby wyświetlić obrazy przesłane podczas poprzednich iteracji.
-
-2. Umieść kursor nad obrazu, aby wyświetlić tagi, które zostały przewidywane według klasyfikatora.
+    ![Obraz karty przewidywania](./media/test-your-model/predictions-tab.png)
 
     > [!TIP]
-    > Obrazy są oceniane tak, aby obrazy, które może przynieść większość zysków klasyfikatora znajdowały się u góry. Aby wybrać inny sortowanie, użyj __sortowania__ sekcji.
+    > Widok domyślny pokazuje obrazy z bieżącej iteracji. Pole listy rozwijanej __iteracji__ służy do wyświetlania obrazów przesłanych podczas poprzednich iteracji.
 
-    Aby dodać obraz do danych szkoleniowych, wybierz obraz, wybierz znacznik, a następnie wybierz __Zapisz i Zamknij__. Obraz jest usuwany z __prognozy__ i dodane do uczone obrazy. Można je wyświetlić, wybierając __Uczone obrazy__ kartę.
+2. Umieść kursor na obrazie, aby zobaczyć znaczniki, które zostały przewidziane przez klasyfikator.
 
-    ![Obraz strony znakowania](./media/test-your-model/tag-image.png)
+    > [!TIP]
+    > Obrazy są klasyfikowane, dzięki czemu obrazy, które mogą przynieść największe zyski do klasyfikatora, znajdują się u góry. Aby wybrać inne sortowanie, użyj sekcji __Sortuj__ .
 
-3. Użyj __Train__ przycisk doskonalenie klasyfikatora.
+    Aby dodać obraz do danych szkoleniowych, wybierz obraz, wybierz tag, a następnie wybierz pozycję __Zapisz i Zamknij__. Obraz jest usuwany z __prognoz__ i dodawany do obrazów szkoleniowych. Możesz ją wyświetlić, wybierając kartę __obrazy szkoleniowe__ .
+
+    ![Obraz strony tagowania](./media/test-your-model/tag-image.png)
+
+3. Użyj przycisku __uczenie__ , aby ponownie przeprowadzić szkolenie klasyfikatora.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Poprawianie klasyfikatora](getting-started-improving-your-classifier.md)
+[Ulepszanie klasyfikatora](getting-started-improving-your-classifier.md)

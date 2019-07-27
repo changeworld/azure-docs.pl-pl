@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: rozpoznawanie mowy, Java (Android) — usługi mowy'
+title: 'Szybki start: Rozpoznawanie mowy, Java (Android) — usługa mowy'
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak rozpoznawać mowę w języku Java w systemie Android przy użyciu zestawu Speech SDK
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 22970eb58dc244405e522d46fcaa380151076062
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9b63685ae73fb4e056c72a640d6c4049e98b8b8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603097"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559507"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Z tego artykułu dowiesz się, jak utworzyć aplikację języka Java dla systemu Android przy użyciu zestawu Speech SDK usługi Cognitive Services, aby wykonać transkrypcję mowy na tekst.
-Aplikacja zależy od pakietu Maven zestaw SDK rozpoznawania mowy, wersji 1.6.0 i Android Studio 3.3.
+Aplikacja jest oparta na pakiecie Maven zestawu mowy SDK, w wersji 1.6.0 i Android Studio 3,3.
 Zestaw Speech SDK jest obecnie zgodny z urządzeniami z systemem Android oraz 32 lub 64-bitowymi procesorami ARM i procesorami x86 lub x64 firmy Intel.
 
 > [!NOTE]
@@ -30,7 +30,7 @@ Zestaw Speech SDK jest obecnie zgodny z urządzeniami z systemem Android oraz 32
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodnik Szybki Start. Możesz go uzyskać bezpłatnie. Zobacz [bezpłatnego wypróbowania usługi mowy](get-started.md) Aby uzyskać szczegółowe informacje.
+Aby ukończyć ten przewodnik Szybki Start, potrzebujesz klucza subskrypcji usługi Speech Services. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje [, zobacz Wypróbuj bezpłatne usługi mowy](get-started.md) .
 
 ## <a name="create-and-configure-a-project"></a>Tworzenie i konfigurowanie projektu
 
@@ -56,7 +56,7 @@ Tekst i graficzna reprezentacja interfejsu użytkownika powinny teraz wyglądać
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/res/layout/activity_main.xml)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Otwórz plik źródłowy `MainActivity.java`. Zastąp cały zawarty w tym pliku kod poniższym kodem.
 
@@ -82,11 +82,11 @@ Tekst i graficzna reprezentacja interfejsu użytkownika powinny teraz wyglądać
 
    ![Zrzut ekranu okna Deployment Target (Cel wdrożenia)](media/sdk/qs-java-android-12-deploy.png)
 
-Naciśnij przycisk w aplikacji, aby przejść do sekcji rozpoznawania mowy. Dalej 15 sekund mowy w języku angielskim, zostaną wysłane do usług przetwarzania mowy i transkrybowanego. Wynik zostanie wyświetlony w aplikacji Android i w oknie programu logcat w programie Android Studio.
+Naciśnij przycisk w aplikacji, aby przejść do sekcji rozpoznawania mowy. Kolejne 15-sekundowe głosowanie mowy zostanie wysłane do usługi mowy i uzyskanego. Wynik zostanie wyświetlony w aplikacji Android i w oknie programu logcat w programie Android Studio.
 
 ![Zrzut ekranu aplikacji Android](media/sdk/qs-java-android-13-gui-on-device.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka Java w usłudze GitHub](https://aka.ms/csspeech/samples)

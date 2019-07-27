@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Syntetyzowania mowy, języka C++ (Windows) — usługi mowy'
+title: 'Szybki start: Funkcja syntezy mowy C++ (Windows) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak syntetyzowania mowy, języka C++ na pulpicie Windows przy użyciu zestawu SDK rozpoznawania mowy
+description: Dowiedz się, jak przeprowadzić C++ funkcję syntezy mowy na pulpicie systemu Windows przy użyciu zestawu Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: dfad425d6da2e3dabec138ef4f108957ebea7ee9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6936d8f93221402fca9b250d09a842ce753e0e12
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602910"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559316"
 ---
-# <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Szybki start: Syntetyzowania mowy, języka C++ na Windows przy użyciu zestawu SDK rozpoznawania mowy
+# <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Szybki start: Wykorzystaj mowę C++ w systemie Windows przy użyciu zestawu Speech SDK
 
-Przewodniki Szybki Start są również dostępne dla [rozpoznawania mowy](quickstart-cpp-windows.md) i [tłumaczenia mowy](quickstart-translate-speech-cpp-windows.md).
+Przewodniki Szybki Start są również dostępne do [rozpoznawania mowy](quickstart-cpp-windows.md) i [translacji mowy](quickstart-translate-speech-cpp-windows.md).
 
-W tym artykule opisano tworzenie aplikacji konsolowej w języku C++ dla systemu Windows. Użyj usług Cognitive Services [zestaw SDK rozpoznawania mowy](speech-sdk.md) syntetyzowania mowę na podstawie tekstu w czasie rzeczywistym i odtwarzanie mowy głośnik Twojego komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
+W tym artykule opisano tworzenie aplikacji konsolowej w języku C++ dla systemu Windows. Używasz [zestawu speech Cognitive Services SDK](speech-sdk.md) , aby wypróbować mowę z tekstu w czasie rzeczywistym i odtwarzać mowę na głośniku komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
 
-Funkcja opisana w tym artykule jest dostępny z [zestaw SDK rozpoznawania mowy 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0).
+Funkcja opisana w tym artykule jest dostępna z [zestawu Speech SDK 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0).
 
-Aby uzyskać pełną listę języków/głosy dostępne dla synteza mowy, zobacz [języki](language-support.md#text-to-speech).
+Aby uzyskać pełną listę języków/głosów dostępnych dla syntezy mowy, zobacz temat [Obsługa języków](language-support.md#text-to-speech).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodnik Szybki Start. Możesz go uzyskać bezpłatnie. Zobacz [bezpłatnego wypróbowania usługi mowy](get-started.md) Aby uzyskać szczegółowe informacje.
+Aby ukończyć ten przewodnik Szybki Start, potrzebujesz klucza subskrypcji usługi Speech Services. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje [, zobacz Wypróbuj bezpłatne usługi mowy](get-started.md) .
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
 [!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Otwórz plik źródłowy *helloworld.cpp*. Zastąp cały kod poniżej początkowej instrukcji include (`#include "stdafx.h"` lub `#include "pch.h"`) następującymi instrukcjami:
 
@@ -57,18 +57,18 @@ Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodn
 
    ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
-1. Zostanie wyświetlone okno konsoli monit wpisz jakiś tekst. Wpisz kilka słów lub zdanie. Wpisany tekst jest przesyłane do usług przetwarzania mowy i przekształcony na mowę, na którym odtwarzany na głośników.
+1. Zostanie wyświetlone okno konsoli z monitem o wpisanie tekstu. Wpisz kilka wyrazów lub zdania. Tekst, który wpisano, jest przesyłany do usługi mowy i można go wyrównać do mowy, który jest odtwarzany na głośniku.
 
-   ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym syntezy](media/sdk/qs-tts-cpp-windows-console-output.png)
+   ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnej syntezie](media/sdk/qs-tts-cpp-windows-console-output.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Więcej przykładów, takie jak zapisać mowy do pliku audio są dostępne w witrynie GitHub.
+Dodatkowe przykłady, takie jak zapisywanie mowy w pliku audio, są dostępne w serwisie GitHub.
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C++ w usłudze GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Dostosowywanie czcionek głosowych](how-to-customize-voice-font.md)
-- [Próbki głosu rekord](record-custom-voice-samples.md)
+- [Dostosuj czcionki głosowe](how-to-customize-voice-font.md)
+- [Rejestruj przykłady głosu](record-custom-voice-samples.md)

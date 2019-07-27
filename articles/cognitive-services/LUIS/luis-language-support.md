@@ -1,5 +1,5 @@
 ---
-title: Obsługa języków
+title: Obsługa języków — LUIS
 titleSuffix: Azure Cognitive Services
 description: Usługa LUIS ma wiele funkcji w ramach usługi. Nie wszystkie funkcje są w tej samej parzystości języka. Upewnij się, że funkcje, których jesteś zainteresowany są obsługiwane w kulturze języka, które są przeznaczone dla. Aplikacją usługi LUIS jest specyficzne dla kultury i nie można zmienić po jej ustawieniu.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 8f067bc005c4de9ddc87ed598b1717f8fbb29a6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26127f9f6ed718e33a77b986f2edb0d2dc81b2c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072373"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563555"
 ---
 # <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu dla usługi LUIS
 
@@ -53,7 +53,7 @@ Obsługa języka jest różny dla [ze wstępnie utworzonych jednostek](luis-refe
 
  - W `zh-cn` kultury, LUIS oczekuje zestawu zamiast zestawu znaków tradycyjnych uproszczone znaków chińskich.
  - Nazwy intencji, jednostki, funkcje i wyrażenia regularne mogą być znakami języka chińskiego lub litery rzymskie.
- - Zobacz [odwołania ze wstępnie utworzonych domen](luis-reference-prebuilt-domains.md) informacje obsługiwanych ze wstępnie utworzonych domen w `zh-cn` kultury.
+ - Zapoznaj się z dokumentacją prekompilowanych [domen](luis-reference-prebuilt-domains.md) , aby uzyskać informacje o tym, które `zh-cn` prekompilowane domeny są obsługiwane w kulturze.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>\* Informacje o pomocy technicznej japoński
@@ -95,14 +95,14 @@ Do przeprowadzenia uczenia maszynowego, usługa LUIS dzieli wypowiedź na [token
 |Hiszpański (es-ES)|✔||||
 |Hiszpański (es-MX)|✔||||
 
-### <a name="custom-tokenizer-versions"></a>Wersje tokenizatora niestandardowe
+### <a name="custom-tokenizer-versions"></a>Niestandardowe wersje tokenizatora
 
-Następujących kultur są wersje tokenizatora niestandardowe:
+Następujące kultury mają niestandardowe wersje tokenizatora:
 
-|Kultura|Version|Przeznaczenie|
+|Kultura|Version|Cel|
 |--|--|--|
-|Niemiecki<br>`de-de`|1.0.0|Tokenizes wyrazy, dzieląc je przy użyciu maszyny oparte na nauce maszynowej tokenizator który podejmie próbę podziału wyrazy złożone do ich pojedynczego składników.<br>Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź jest przekształcane w `Ich fahre einen kranken wagen`. Zezwolenie oznakowania `kranken` i `wagen` niezależnie jako różnymi jednostkami.|
-|Niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy, dzieląc je na miejsca do magazynowania.<br> Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź pozostaje pojedynczy token. Ten sposób `krankenwagen` jest oznaczony jako pojedynczy element. |
+|niemiecki<br>`de-de`|1.0.0|Tokenizes wyrazy, dzieląc je za pomocą tokenizatora opartych na uczeniu maszynowym, które próbują podzielić wyrazy złożone na ich pojedyncze składniki.<br>Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, jest on `Ich fahre einen kranken wagen`włączony. Zezwalanie na `kranken` oznaczanie `wagen` i niezależnie jako różne jednostki.|
+|niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy, dzieląc je na spacje.<br> Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, pozostaje pojedynczym tokenem. Oznacza `krankenwagen` to, że jest oznaczona jako pojedyncza jednostka. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrowanie między wersjami tokenizatora
 <!--
@@ -207,6 +207,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-Tokenizacji odbywa się na poziomie aplikacji. Nie jest obsługiwane dla tokenizacji poziomie wersji. 
+Tokenizacji odbywa się na poziomie aplikacji. Nie ma obsługi tokenizacji poziomu wersji. 
 
-[Importowanie pliku jako nową aplikację](luis-how-to-start-new-app.md#import-an-app-from-file), zamiast wersji. Ta akcja oznacza, że nowa aplikacja ma identyfikator innej aplikacji, ale korzysta z wersji tokenizatora określone w pliku. 
+[Zaimportuj plik jako nową aplikację](luis-how-to-start-new-app.md#import-an-app-from-file)zamiast wersji. Ta akcja oznacza, że nowa aplikacja ma inny identyfikator aplikacji, ale używa wersji tokenizatora określonej w pliku. 

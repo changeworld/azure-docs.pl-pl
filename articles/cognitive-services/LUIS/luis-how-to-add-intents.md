@@ -1,6 +1,6 @@
 ---
-title: Dodawanie intencji
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Dodawanie intencji — LUIS
+titleSuffix: Azure Cognitive Services
 description: Dodawanie intencji z aplikacją usługi LUIS do identyfikowania grup pytania lub polecenia, które mają ten sam intencji.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 639079a43e75741d78496939f90324b076b164d5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148165"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563694"
 ---
-# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Dodawanie intencji, aby określić użytkownika zamiar wypowiedzi
+# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Dodawanie intencji w celu określenia zamiaru użytkownika wyrażenia długości
 
 Dodaj [intencji](luis-concept-intent.md) z aplikacją usługi LUIS do identyfikowania grup pytania lub polecenia, które mają ten sam zamiar. 
 
@@ -44,29 +44,29 @@ Przykład wypowiedzi są przykładami tekst pytania użytkownika lub poleceń. A
 
 <a name="#intent-prediction-discrepancy-errors"></a>
 
-## <a name="intent-prediction-errors"></a>Błędy konwersji prognoz 
+## <a name="intent-prediction-errors"></a>Błędy przewidywania intencji 
 
-Wypowiedź przykładu w intencji może być błąd prognozowania konwersji między intencji, które wypowiedź przykład jest obecnie dostępna w i przeznaczenie prognozowania, określane podczas szkolenia. 
+Przykład wypowiedź w zamiarach może mieć błąd prognozowania intencji między zamiarem, a przykładem wypowiedź jest obecnie w, a intencją przewidywania określoną podczas szkolenia. 
 
-Aby znaleźć wypowiedź błędy prognoz i je rozwiązać, użyj **filtru** opcji **oceny** opcje niepoprawne i Unclear w połączeniu z **widoku** opcji **Widok szczegółowy**. 
+Aby znaleźć błędy przewidywania wypowiedź i rozwiązać te problemy, użyj opcji **filtru** opcje **oceny** nieprawidłowe i niejasne połączone z opcjami **Widok** **widoku szczegółowego**. 
 
-![Znaleziono wypowiedź błędów prognoz i je rozwiązać, użyj opcji filtrowania.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+![Aby znaleźć błędy przewidywania wypowiedź i rozwiązać te problemy, użyj opcji filtrowania.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-Filtry i widoku są stosowane, gdy istnieją wypowiedzi przykład z błędami, lista wypowiedź pokazuje wypowiedzi i problemów.
+Gdy filtry i widok są stosowane i występuje przykład wyrażenia długości z błędami, przykładowa lista wypowiedź zawiera wyrażenia długości i problemy.
 
-![! [Filtry i widoku są stosowane, gdy istnieją wypowiedzi przykład z błędami, przykład wypowiedź lista zawiera wypowiedzi i problemów.] (. / media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+![! [Kiedy filtry i widok są stosowane i występuje przykład wyrażenia długości z błędami, przykładowa lista wypowiedź zawiera wyrażenia długości i problemy.] (./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
 
-Każdy wiersz zawiera wynik prognozowania bieżącego szkolenia wypowiedź przykładzie, wynik najbliższej rywal, który różni się w tych dwóch wyniki. 
+Każdy wiersz przedstawia ocenę bieżącego szkolenia dla przykładu wypowiedź, najbliższej oceny Rival, która jest różnicą w tych dwóch wskaźnikach. 
 
-### <a name="fixing-intents"></a>Naprawianie intencji
+### <a name="fixing-intents"></a>Ustalanie intencji
 
-Aby dowiedzieć się, jak naprawić błędy konwersji prognozowania, należy użyć [pulpit nawigacyjny podsumowania](luis-how-to-use-dashboard.md). Pulpit nawigacyjny podsumowania zawiera analizę dla aktywnej wersji ostatniego szkolenia i oferuje najbardziej oczekiwanych ustalenie modelu.  
+Aby dowiedzieć się, jak naprawić błędy prognozowania intencji, użyj [pulpitu nawigacyjnego podsumowanie](luis-how-to-use-dashboard.md). Pulpit nawigacyjny podsumowania zawiera analizę dla ostatniego szkolenia wersji aktywnej i oferuje najważniejsze sugestie dotyczące naprawienia modelu.  
 
 ## <a name="add-a-custom-entity"></a>Dodaj jednostki niestandardowej
 
 Po dodaniu wypowiedź intencji możesz zaznaczyć tekst z w ramach wypowiedź, aby utworzyć jednostkę niestandardową. Jednostki niestandardowej jest sposobem tekst tag do wyodrębnienia, wraz z poprawną intencji. 
 
-Zobacz [Dodawanie jednostki do wypowiedź](luis-how-to-add-example-utterances.md) Aby dowiedzieć się więcej.
+Aby dowiedzieć się więcej, zobacz [Dodawanie jednostki do wypowiedź](luis-how-to-add-example-utterances.md) .
 
 ## <a name="entity-prediction-discrepancy-errors"></a>Błędy niezgodności prognozowania jednostki 
 
@@ -82,7 +82,7 @@ Aby uzyskać informacje, zobacz [wstępnie utworzone jednostki](luis-how-to-add-
 
 ## <a name="using-the-contextual-toolbar"></a>Korzystanie z kontekstowych paska narzędzi
 
-Po wybraniu na liście co najmniej jeden wypowiedzi przykład przez zaznaczenie pola wyboru po lewej stronie wypowiedź narzędzi powyżej listy wypowiedź można wykonywać następujące czynności:
+Po wybraniu na liście jednego lub więcej przykładowych wyrażenia długości, zaznaczając pole z lewej strony wypowiedź, pasek narzędzi powyżej listy wypowiedź umożliwia wykonywanie następujących czynności:
 
 * Ponowne przypisywanie intencji: przenoszenie utterance(s) do innego zamiaru
 * Usuń utterance(s)
@@ -97,7 +97,7 @@ Następujące akcje można wykonać na poszczególnych wypowiedź z menu wielokr
 
 * Edytuj: Zmień tekst wypowiedź
 * Usuń: Usuń wypowiedź z zamiarem. Jeśli chcesz nadal wypowiedź, lepszą metodą jest przenieść ją do **Brak** intencji. 
-* Dodawanie wzorca: Wzorzec umożliwia możesz swobodnie wspólnej wypowiedź oznaczyć wymienne tekst i tekstu można zignorować, zmniejszając potrzebę więcej wypowiedzi w intencji. 
+* Dodaj wzorzec: Wzorzec umożliwia wykonywanie typowych wypowiedź i oznaczanie tekstu, który można przemieścić i ignorowanie tekstu, co zmniejsza potrzebę więcej wyrażenia długości w zamiarach. 
 
 **Etykietą intencji** kolumny pozwala zmienić opcje wypowiedź.
 

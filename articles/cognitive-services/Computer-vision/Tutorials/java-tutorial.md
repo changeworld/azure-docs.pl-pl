@@ -1,6 +1,6 @@
 ---
 title: wykonywanie operacji na obrazach — Java
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Zapoznaj się z podstawową aplikacją biblioteki Swing języka Java, która korzysta z interfejsu API przetwarzania obrazów w usłudze Azure Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
 services: cognitive-services
 author: KellyDF
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
-ms.openlocfilehash: a22308e0c7ff924205f715692d011a4572b2bdb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f75095c7e4461c84a1fea28cc620c49b6c5bca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232634"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565676"
 ---
-# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Użyj funkcji przetwarzania obrazów z interfejsu API REST i językiem Java
+# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Korzystanie z funkcji przetwarzanie obrazów przy użyciu interfejsu API REST i środowiska Java
 
 W tym samouczku przedstawiono funkcje interfejsu API REST przetwarzania obrazów usług Azure Cognitive Services.
 
@@ -34,7 +34,7 @@ W tym samouczku omówiono, jak używać przetwarzania obrazów do następującyc
 > * Odczytywanie tekstu drukowanego z obrazu
 > * Odczytywanie tekstu odręcznego z obrazu
 
-Aplikacja języka Java typu Swing formularza został już zapisany, ale ma żadnych funkcji. W tym samouczku dodasz odpowiedni kod do obsługi interfejsu API REST przetwarzania obrazów w celu uzupełnienia funkcjonalności aplikacji.
+Aplikacja w postaci zasięgu Java została już zapisywana, ale nie ma żadnych funkcji. W tym samouczku dodasz odpowiedni kod do obsługi interfejsu API REST przetwarzania obrazów w celu uzupełnienia funkcjonalności aplikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,9 +44,9 @@ Ten samouczek opracowano przy użyciu środowiska NetBeans IDE. W szczególnośc
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Subskrybowanie interfejsu API przetwarzania obrazów i uzyskanie klucza subskrypcji
 
-Przed utworzeniem w przykładzie, możesz zasubskrybować interfejs API przetwarzania obrazów, który jest częścią usług Azure Cognitive Services. Aby uzyskać szczegółowe informacje na temat subskrypcji i zarządzania kluczami, zobacz temat [Subskrypcje](https://azure.microsoft.com/try/cognitive-services/). Na potrzeby tego samouczka dopuszczalne są klucze podstawowe i pomocnicze.
+Przed utworzeniem przykładu musisz subskrybować interfejs API przetwarzania obrazów, który jest częścią usługi Azure Cognitive Services. Aby uzyskać szczegółowe informacje na temat subskrypcji i zarządzania kluczami, zobacz temat [Subskrypcje](https://azure.microsoft.com/try/cognitive-services/). Na potrzeby tego samouczka dopuszczalne są klucze podstawowe i pomocnicze.
 
-## <a name="acquire-incomplete-tutorial-project"></a>Uzyskiwanie niekompletne projekcie samouczka
+## <a name="acquire-incomplete-tutorial-project"></a>Pozyskiwanie niekompletnego projektu samouczka
 
 ### <a name="download-the-project"></a>Pobieranie projektu
 
@@ -78,7 +78,7 @@ Zaimportuj plik **cognitive-services-java-computer-vision-tutorial-master.zip** 
 
 1. Zakończ aplikację samouczka.
 
-## <a name="add-tutorial-code-to-the-project"></a>Dodawanie kodu z samouczka dotyczącego do projektu
+## <a name="add-tutorial-code-to-the-project"></a>Dodawanie kodu samouczka do projektu
 
 Aplikacja biblioteki Swing języka Java została skonfigurowana z sześcioma kartami. Każda karta reprezentuje inną funkcję przetwarzania obrazów (analiza, OCR itp.). Sześć sekcji samouczka jest od siebie niezależnych, więc można dodać jedną sekcję, wszystkie sześć sekcji lub dowolny podzestaw. Sekcje można dodawać w dowolnej kolejności.
 
@@ -88,7 +88,7 @@ Funkcja Analiza w ramach przetwarzania obrazów skanuje obraz pod kątem ponad 2
 
 Aby posłużyć się funkcją Analiza w aplikacji z samouczka, wykonaj następujące czynności:
 
-#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Dodaj kod procedury obsługi zdarzeń dla przycisku analiza
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Dodawanie kodu programu obsługi zdarzeń dla przycisku Analizuj
 
 Metoda obsługi zdarzeń **analyzeImageButtonActionPerformed** czyści formularz, wyświetla obraz podany w adresie URL, a następnie wywołuje metodę **AnalyzeImage**, aby przeprowadzić analizę obrazu. Po zwróceniu wyniku metody **AnalyzeImage** wyświetla odpowiedź w postaci sformatowanego ciągu JSON w obszarze tekstowym **Odpowiedź**, wyodrębnia pierwszy podpis z obiektu **JSONObject** oraz wyświetla podpis i poziom ufności określający, czy podpis jest poprawny.
 
@@ -202,7 +202,7 @@ Skopiuj i wklej metodę **AnalyzeImage** poniżej metody **analyzeImageButtonAct
     }
  ```
 
-#### <a name="run-the-analyze-function"></a>Uruchamianie funkcji analizy
+#### <a name="run-the-analyze-function"></a>Uruchom funkcję Analizuj
 
 Naciśnij klawisz **F6**, aby uruchomić aplikację. W polu **Subscription Key** (Klucz subskrypcji) umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Subscription Region** (Region subskrypcji) korzystasz z poprawnego regionu. Wprowadź adres URL obrazu do analizy, a następnie kliknij przycisk **Analyze Image** (Analizuj obraz), aby przeprowadzić analizę obrazu i wyświetlić jej wynik.
 
@@ -326,7 +326,7 @@ Skopiuj i wklej metodę **LandmarkImage** poniżej metody **landmarkImageButtonA
     }
 ```
 
-#### <a name="run-the-landmark-function"></a>Uruchamianie funkcji charakterystycznych elementów krajobrazu
+#### <a name="run-the-landmark-function"></a>Uruchamianie funkcji orientacyjnej
 
 Naciśnij klawisz **F6**, aby uruchomić aplikację. W polu **Subscription Key** (Klucz subskrypcji) umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Subscription Region** (Region subskrypcji) korzystasz z poprawnego regionu. Kliknij kartę **Landmark** (Punkt terenowy), wprowadź adres URL obrazu zawierającego element krajobrazu, a następnie kliknij przycisk **Analyze Image** (Analizuj obraz), aby przeprowadzić analizę obrazu i wyświetlić jej wynik.
 
@@ -450,7 +450,7 @@ Skopiuj i wklej metodę **CelebritiesImage** poniżej metody **celebritiesImageB
     }
 ```
 
-#### <a name="run-the-celebrities-function"></a>Uruchom funkcję osobistości
+#### <a name="run-the-celebrities-function"></a>Uruchamianie funkcji osobistości
 
 Naciśnij klawisz **F6**, aby uruchomić aplikację. W polu **Subscription Key** (Klucz subskrypcji) umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Subscription Region** (Region subskrypcji) korzystasz z poprawnego regionu. Kliknij kartę **Celebrities** (Osobistości), wprowadź adres URL obrazu zawierającego osobistość, a następnie kliknij przycisk **Analyze Image** (Analizuj obraz), aby przeprowadzić analizę obrazu i wyświetlić jej wynik.
 
@@ -460,7 +460,7 @@ Funkcja Miniatura przetwarzania obrazów generuje miniaturę na podstawie obrazu
 
 Aby skorzystać z funkcji Miniatura w aplikacji z samouczka, wykonaj następujące czynności:
 
-#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Dodaj kod procedury obsługi zdarzeń dla przycisku miniatury
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Dodawanie kodu programu obsługi zdarzeń dla przycisku miniatury
 
 Metoda obsługi zdarzeń **thumbnailImageButtonActionPerformed** czyści formularz, wyświetla obraz podany w adresie URL, a następnie wywołuje metodę **getThumbnailImage**, aby utworzyć miniaturę. Po zwróceniu wyniku metody **getThumbnailImage** metoda wyświetla wygenerowaną miniaturę.
 
@@ -573,7 +573,7 @@ Skopiuj i wklej następującą metodę **getThumbnailImage** poniżej metody **t
     }
 ```
 
-#### <a name="run-the-thumbnail-function"></a>Uruchom funkcję miniatury
+#### <a name="run-the-thumbnail-function"></a>Uruchamianie funkcji miniatury
 
 Naciśnij klawisz **F6**, aby uruchomić aplikację. W polu **Subscription Key** (Klucz subskrypcji) umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Subscription Region** (Region subskrypcji) korzystasz z poprawnego regionu. Kliknij kartę **Thumbnail** (Miniatura), wprowadź adres URL obrazu, a następnie kliknij przycisk **Generate Thumbnail** (Generuj miniaturę), aby przeanalizować obraz i zobaczyć wynik.
 
@@ -583,7 +583,7 @@ Funkcja optycznego rozpoznawania znaków (OCR) w ramach przetwarzania obrazów a
 
 Aby skorzystać z funkcji OCR w aplikacji z samouczka, wykonaj następujące czynności:
 
-#### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Dodaj kod procedury obsługi zdarzeń dla przycisku optyczne rozpoznawanie znaków
+#### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Dodaj kod programu obsługi zdarzeń dla przycisku OCR
 
 Metoda obsługi zdarzeń **ocrImageButtonActionPerformed** czyści formularz, wyświetla obraz podany w adresie URL, a następnie wywołuje metodę **OcrImage**, aby przeprowadzić analizę obrazu. Po zwróceniu wyniku metody **OcrImage** wyświetla wykryty tekst w formie sformatowanego ciągu JSON w obszarze tekstowym **Odpowiedź**.
 
@@ -684,7 +684,7 @@ Skopiuj i wklej następującą metodę **OcrImage** poniżej metody **ocrImageBu
     }
 ```
 
-#### <a name="run-the-ocr-function"></a>Uruchamianie funkcji optycznego rozpoznawania znaków
+#### <a name="run-the-ocr-function"></a>Uruchamianie funkcji OCR
 
 Naciśnij klawisz **F6**, aby uruchomić aplikację. W polu **Subscription Key** (Klucz subskrypcji) umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Subscription Region** (Region subskrypcji) korzystasz z poprawnego regionu. Kliknij kartę **OCR**, wprowadź adres URL obrazu tekstu drukowanego, a następnie kliknij przycisk **Read Image** (Odczytaj obraz), aby przeprowadzić analizę obrazu i wyświetlić jej wynik.
 
@@ -842,12 +842,12 @@ Skopiuj i wklej następującą metodę **HandwritingImage** poniżej metody **ha
     }
 ```
 
-#### <a name="run-the-handwriting-function"></a>Uruchom funkcję pisma odręcznego
+#### <a name="run-the-handwriting-function"></a>Uruchom funkcję pisma ręcznego
 
 Aby uruchomić aplikację, naciśnij klawisz **F6**. W polu **Subscription Key** (Klucz subskrypcji) umieść swój klucz subskrypcji, a następnie sprawdź, czy w polu **Subscription Region** (Region subskrypcji) korzystasz z poprawnego regionu. Kliknij kartę **Read Handwritten Text** (Odczytywanie tekstu odręcznego), wprowadź adres URL do obrazu tekstu odręcznego, a następnie kliknij przycisk **Read Image** (Odczytaj obraz), aby przeprowadzić analizę obrazu i wyświetlić jej wynik.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku użyto interfejsu API REST dla przetwarzania obrazów za pomocą języka Java do testowania z wielu funkcji analizy dostępnych obrazów. Następnie zobacz dokumentację referencyjną, aby dowiedzieć się więcej na temat interfejsów API zaangażowane.
+W tym przewodniku użyto interfejsu API REST przetwarzanie obrazów w języku Java do testowania wielu dostępnych funkcji analizy obrazów. Następnie zapoznaj się z dokumentacją referencyjną, aby dowiedzieć się więcej na temat używanych interfejsów API.
 
-- [Interfejs REST API wizualizacji komputerowej](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)
+- [Interfejs API REST przetwarzanie obrazów](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

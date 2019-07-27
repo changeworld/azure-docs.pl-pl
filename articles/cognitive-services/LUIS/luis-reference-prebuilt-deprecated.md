@@ -1,6 +1,6 @@
 ---
-title: Przestarzałe ze wstępnie utworzonych jednostek
-titleSuffix: Azure
+title: Przestarzałe wstępnie skompilowane jednostki — LUIS
+titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera informacje przestarzałe wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 653fbd65e5ccfbc65781f2332b35d10237f718d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17693b7dff1df1d538f2f4a180be025e0de67c82
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712784"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563481"
 ---
-# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Przestarzałe ze wstępnie utworzonych jednostek w aplikacji usługi LUIS
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Przestarzałe wstępnie skompilowane jednostki w aplikacji LUIS
 Następujące wstępnie utworzone jednostki są przestarzałe i nie można dodawać do nowych aplikacji usługi LUIS.
 
-* **Data i godzina**: Istniejące aplikacje usługi LUIS, które używają **daty/godziny** powinny być migrowane do **datetimeV2**, chociaż jednostki daty/godziny w dalszym ciągu działać w istniejących aplikacjach, które go używają.
-* **Lokalizacja geograficzna**: Istniejące aplikacje usługi LUIS, które używają **Geografia** jest obsługiwane do grudnia 2018 r.
-* **Encyklopedii**: Istniejące aplikacje usługi LUIS, które używają **encyklopedii** jest obsługiwane do grudnia 2018 r.
+* **Data i godzina**: Istniejące aplikacje LUIS, które używają **typu DateTime** , powinny zostać zmigrowane do **datetimeV2**, mimo że jednostka DateTime nadal działa we wstępnie istniejących aplikacjach, które go używają.
+* **Lokalizacja geograficzna**: Istniejące aplikacje LUIS korzystające  z lokalizacji geograficznej są obsługiwane do grudnia 2018.
+* **Encyklopedia**: Istniejące aplikacje LUIS korzystające z **encyklopedii** są obsługiwane do 2018 grudnia.
 
 ## <a name="geography-culture"></a>Lokalizacja geograficzna kultury
 **Lokalizacja geograficzna** jest dostępna tylko w `en-us` ustawień regionalnych.
@@ -43,7 +43,7 @@ Wstępnie utworzone jednostki   |   Przykładowa wypowiedź   |   JSON
 **Encyklopedii** jest dostępna tylko w `en-US` ustawień regionalnych.
 
 #### <a name="encyclopedia-subtypes"></a>Podtypy encyklopedii
-Wbudowane jednostki encyklopedii zawiera ponad 100 typy podrzędne w poniższej tabeli: Ponadto encyklopedii jednostki często są mapowane na wiele typów. Na przykład zapytanie Ronald Reagan daje: 
+Wbudowana jednostka encyklopedii zawiera ponad 100 podtypów w poniższej tabeli: Ponadto jednostki encyklopedii często są mapowane na wiele typów. Na przykład zapytanie Ronald Reagan daje: 
 
 ```json
 {
@@ -161,7 +161,7 @@ Wstępnie utworzone jednostki   |   Wstępnie utworzone jednostki (typy podrzęd
 `builtin.encyclopedia.finance.stock_exchange`| `builtin.encyclopedia.finance.stock_exchange`| `tokyo stock exchange`|
 `builtin.encyclopedia.film.festival`| `builtin.encyclopedia.film.festival`| `berlin international film festival`|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [wymiaru](luis-reference-prebuilt-dimension.md), [e-mail](luis-reference-prebuilt-email.md) jednostek i [numer](luis-reference-prebuilt-number.md). 
 

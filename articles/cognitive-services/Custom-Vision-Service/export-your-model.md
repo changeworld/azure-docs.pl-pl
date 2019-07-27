@@ -1,7 +1,7 @@
 ---
-title: Eksportowanie modelu na urządzenia przenośne — Custom Vision Service
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak wyeksportować modelu do użycia podczas tworzenia aplikacji dla urządzeń przenośnych.
+title: Eksportuj model do urządzeń przenośnych Custom Vision Service
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak wyeksportować model do użycia podczas tworzenia aplikacji mobilnych.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,69 +10,69 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 7bf8217f5076c0a95d4db6c1c7cbea7bc93b91f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 554a392a7f815a6e646927f137b1e6c2856099bd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550538"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561088"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>Eksportowanie modelu do użytku z urządzeniami przenośnymi
 
-Usługa Custom Vision Service umożliwia klasyfikatorów, które mają zostać wyeksportowane do uruchamiania w trybie offline. Można osadzać klasyfikatora wyeksportowany w aplikacji i uruchom lokalnie na urządzeniu w czasie rzeczywistym klasyfikacji.
+Custom Vision Service zezwala na eksportowanie klasyfikatorów do trybu offline. Możesz osadzić wyeksportowany klasyfikator w aplikacji i uruchomić ją lokalnie na urządzeniu na potrzeby klasyfikacji w czasie rzeczywistym.
 
-Usługa Custom Vision Service obsługuje polecenie eksportuje następujące:
+Custom Vision Service obsługuje następujące eksporty:
 
-* __Tensorflow__ dla __Android__.
-* __CoreML__ dla __system IOS 11__.
-* __ONNX__ dla __Windows ML__.
-* Windows lub Linux __kontenera__. Kontener zawiera Tensorflow modelu i obsługiwania kodu w celu użycia interfejs API Custom Vision Service. 
+* __Tensorflow__ dla __systemu Android__.
+* __CoreML__ dla __iOS11__.
+* __ONNX__ dla __systemu Windows ml__.
+* __Kontener__systemu Windows lub Linux. Kontener zawiera model Tensorflow i kod usługi do korzystania z interfejsu API Custom Vision Service. 
 
 > [!IMPORTANT]
-> Usługa Custom Vision Service eksportuje jedynie __compact__ domen. Modele generowane przez compact domeny są zoptymalizowane pod kątem ograniczenia klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Klasyfikatorów utworzonych za pomocą compact domeny może być nieco mniej dokładnie niż standardowej w domenę przy użyciu tej samej ilości danych szkoleniowych.
+> Custom Vision Service eksportuje  tylko domeny kompaktowe. Modele generowane przez domeny kompaktowe są zoptymalizowane pod kątem ograniczeń klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Klasyfikatory skompilowane z kompaktową domeną mogą być nieco mniej dokładne niż domena standardowa z taką samą ilością danych szkoleniowych.
 >
-> Aby uzyskać informacji dotyczących zwiększania swoje klasyfikatorów, zobacz [ulepszania klasyfikatora](getting-started-improving-your-classifier.md) dokumentu.
+> Aby uzyskać informacje na temat ulepszania klasyfikatorów, zobacz ulepszanie dokumentu [klasyfikatora](getting-started-improving-your-classifier.md) .
 
-## <a name="convert-to-a-compact-domain"></a>Konwertuj na compact domeny
+## <a name="convert-to-a-compact-domain"></a>Konwertuj na kompaktową domenę
 
 > [!NOTE]
-> Kroki opisane w tej sekcji jest stosowane tylko wtedy, jeśli masz istniejące klasyfikatora, który nie jest ustawiony na compact domeny.
+> Kroki opisane w tej sekcji mają zastosowanie tylko wtedy, gdy masz istniejący klasyfikator, który nie jest ustawiony na kompaktową domenę.
 
-Aby przekonwertować domeny istniejącego klasyfikatora, użyj następujących kroków:
+Aby skonwertować domenę istniejącego klasyfikatora, wykonaj następujące czynności:
 
-1. Z [Custom vision strony](https://customvision.ai), wybierz opcję __Home__ ikonę, aby wyświetlić listę projektów. Można również użyć [ https://customvision.ai/projects ](https://customvision.ai/projects) Aby wyświetlić swoje projekty.
+1. Na [stronie](https://customvision.ai)niestandardowa wizja wybierz ikonę __główną__ , aby wyświetlić listę projektów. Możesz również użyć, [https://customvision.ai/projects](https://customvision.ai/projects) aby zobaczyć swoje projekty.
 
-    ![Obraz macierzysty listy ikon i projektów](./media/export-your-model/projects-list.png)
+    ![Obraz przedstawiający ikonę główną i listę projektów](./media/export-your-model/projects-list.png)
 
-2. Wybierz projekt, a następnie wybierz __koła zębatego__ ikonę w prawym górnym rogu strony.
+2. Wybierz projekt, a następnie wybierz ikonę __koła zębatego__ w prawym górnym rogu strony.
 
     ![Obraz ikony koła zębatego](./media/export-your-model/gear-icon.png)
 
-3. W __domen__ zaznacz __compact__ domeny. Wybierz __Zapisz zmiany__ Aby zapisać zmiany.
+3. W sekcji __domeny__ wybierz kompaktową domenę  . Wybierz pozycję __Zapisz zmiany__ , aby zapisać zmiany.
 
-    ![Obraz przedstawiający Wybór domeny](./media/export-your-model/domains.png)
+    ![Obraz wyboru domen](./media/export-your-model/domains.png)
 
-4. W górnej części strony, wybierz __Train__ doskonalenie używają nowej domeny.
+4. W górnej części strony wybierz pozycję uczenie  , aby ponownie przeprowadzić szkolenie przy użyciu nowej domeny.
 
 ## <a name="export-your-model"></a>Eksportowanie modelu
 
-Aby wyeksportować modelu po ponownego trenowania, należy użyć następujących czynności:
+Aby wyeksportować model po przekształceniu, wykonaj następujące czynności:
 
-1. Przejdź do **wydajności** kartę, a następnie wybierz pozycję __wyeksportować__. 
+1. Przejdź do karty **wydajność** i wybierz pozycję __Eksportuj__. 
 
     ![Obraz ikony eksportu](./media/export-your-model/export.png)
 
     > [!TIP]
-    > Jeśli __wyeksportować__ wpis nie jest dostępny, a następnie wybraną iterację nie używa compact domeny. Użyj __iteracji__ części tej strony, aby wybrać iterację, która używa compact domeny, a następnie wybierz __wyeksportować__.
+    > Jeśli wpis __eksportu__ nie jest dostępny, wybrana iteracja nie korzysta z domeny kompaktowej. Użyj sekcji __iteracje__ na tej stronie, aby wybrać iterację korzystającą z domeny kompaktowej, a następnie wybierz pozycję __Eksportuj__.
 
-2. Wybierz format eksportu, a następnie wybierz __wyeksportować__ można pobrać modelu.
+2. Wybierz format eksportu, a następnie wybierz pozycję __Eksportuj__ , aby pobrać model.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Integrowanie wyeksportowanego modelu aplikacji za pośrednictwem jednego z następujących artykułów lub próbek:
+Aby zintegrować wyeksportowany model z aplikacją, należy zapoznać się z jednym z następujących artykułów lub przykładów:
 
-* [Tensorflow model za pomocą języka Python](export-model-python.md)
-* [Użyj modelu ONNX z usługą Windows Machine Learning](custom-vision-onnx-windows-ml.md)
-* Zobacz przykład dla [CoreML modelu w aplikacji systemu iOS](https://go.microsoft.com/fwlink/?linkid=857726) klasyfikacji obrazów w czasie rzeczywistym za pomocą języka Swift.
-* Zobacz przykład dla [Tensorflow modelu w aplikacji systemu Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample) klasyfikacji obrazów w czasie rzeczywistym w systemie Android.
-* Zobacz przykład dla [modeli CoreML za pomocą platformy Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) klasyfikacji obrazów w czasie rzeczywistym w aplikacji platformy Xamarin.IOS.
+* [Korzystanie z modelu Tensorflow w języku Python](export-model-python.md)
+* [Korzystanie z modelu ONNX z systemem Windows Machine Learning](custom-vision-onnx-windows-ml.md)
+* Zobacz przykład for [CoreML model w aplikacji dla systemu iOS](https://go.microsoft.com/fwlink/?linkid=857726) dla klasyfikacji obrazów w czasie rzeczywistym przy użyciu Swift.
+* Zobacz przykład for [Tensorflow model w aplikacji systemu Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample) dla klasyfikacji obrazów w czasie rzeczywistym w systemie Android.
+* Zobacz przykład for [CoreML model z](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) platformą Xamarin dla klasyfikacji obrazów w czasie rzeczywistym w aplikacji platformy Xamarin dla systemu iOS.

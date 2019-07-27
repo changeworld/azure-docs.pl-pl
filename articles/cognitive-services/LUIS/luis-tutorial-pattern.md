@@ -1,5 +1,5 @@
 ---
-title: Wzorce
+title: Wzorce — LUIS
 titleSuffix: Azure Cognitive Services
 description: Aby zwiększyć przewidywanie intencji i jednostek przy jednoczesnym zapewnieniu mniejszej liczby przykładowych wypowiedzi, należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładowej wypowiedzi szablonu, która zawiera składnię służącą do identyfikowania jednostki i tekstu możliwego do zignorowania.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: e559d4a3366c45bd054cbf3a235805e048de3493
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 96c58e18abce85354db0d3bdf579600506cf2d86
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276044"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563313"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Samouczek: dodawanie wspólnego szablonu wzorca formatów wypowiedzi
 
@@ -197,7 +197,7 @@ Aby poprawny wynik intencji był znacznie wyższy procentowo i bardziej oddalony
 Pozostaw drugie okno przeglądarki otwarte. Będzie potrzebne w dalszej części samouczka. 
 
 ## <a name="template-utterances"></a>Wypowiedzi szablonu
-Ze względu na charakter domeny zarządzania zasobami ludzkimi istnieje kilka typowych sposobów pytania o relacje pracowników w organizacji. Na przykład:
+Ze względu na charakter domeny zarządzania zasobami ludzkimi istnieje kilka typowych sposobów pytania o relacje pracowników w organizacji. Przykład:
 
 |Wypowiedzi|
 |--|
@@ -221,7 +221,7 @@ Aby wzorzec mógł zostać dopasowany do wypowiedzi, jednostki w ramach wypowied
 
 **Wzorce umożliwiają dostarczenie mniejszej liczby wypowiedzi przykładowych, jednak jeśli jednostki nie zostaną wykryte, nie zostanie znalezione dopasowanie dla wzorca.**
 
-## <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Dodaj wzorce intencji Menedżera schematu organizacyjnego
+## <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Dodaj wzorce dla zamiaru schematu organizacyjnego — Menedżer
 
 1. Wybierz pozycję **Build** (Kompiluj) w górnym menu.
 
@@ -244,7 +244,7 @@ Aby wzorzec mógł zostać dopasowany do wypowiedzi, jednostki w ramach wypowied
 
     [![Zrzut ekranu przedstawiający wprowadzanie wypowiedzi szablonu dla intencji](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. Mając nadal na stronie wzorców, wybierz **schemat organizacyjny — raporty** przeznaczenie, wprowadź następujące wypowiedzi szablonu:
+4. Na stronie wzorce wybierz opcję **schemat organizacyjny — raporty** , a następnie wprowadź następujący wyrażenia długości szablonu:
 
     |Wypowiedzi szablonu|
     |:--|
@@ -257,7 +257,7 @@ Aby wzorzec mógł zostać dopasowany do wypowiedzi, jednostki w ramach wypowied
 
 ## <a name="query-endpoint-when-patterns-are-used"></a>Punkt końcowy zapytania, gdy są używane wzorce
 
-Teraz, wzorce są dodawane do aplikacji, szkolenie, publikowanie i zapytania aplikacji w punkcie końcowym środowiska uruchomieniowego prognozowania.
+Teraz, gdy wzorce są dodawane do aplikacji, uczenie, publikowanie i wysyłanie zapytań do aplikacji w punkcie końcowym przewidywania środowiska uruchomieniowego.
 
 1. Przeszkol i ponownie opublikuj aplikację.
 
@@ -349,11 +349,11 @@ Teraz, wzorce są dodawane do aplikacji, szkolenie, publikowanie i zapytania apl
     }
     ```
 
-Funkcja prognozowania jest teraz znacznie większą pewność.
+Przewidywanie intencji jest teraz znacznie bardziej świadome.
 
 ## <a name="working-with-optional-text-and-prebuilt-entities"></a>Praca z tekstem opcjonalnym i wstępnie skompilowanymi jednostkami
 
-Poprzednie wypowiedzi szablonu wzorca w tym samouczku miały kilka przykładów opcjonalnego tekstu, np. użycie formy dzierżawczej pod postacią litery s `'s` (dotyczy języka angielskiego) i stosowanie znaku zapytania `?`. Załóżmy, że należy zezwolić na bieżące i przyszłe daty w tekście wypowiedź.
+Poprzednie wypowiedzi szablonu wzorca w tym samouczku miały kilka przykładów opcjonalnego tekstu, np. użycie formy dzierżawczej pod postacią litery s `'s` (dotyczy języka angielskiego) i stosowanie znaku zapytania `?`. Załóżmy, że musisz zezwolić na bieżące i przyszłe daty w tekście wypowiedź.
 
 Przykładowe wypowiedzi:
 
@@ -366,7 +366,7 @@ Przykładowe wypowiedzi:
 
 Każdy z tych przykładów używa czasowników w różnych czasach: `was`, `is`, `will be`, a także daty: `March 3`, `now` i `in a month`, których usługa LUIS potrzebuje do poprawnego przewidywania. Należy zauważyć, że w ostatnich dwóch przykładach użyto prawie tego samego tekstu oprócz `in` i `on`.
 
-Przykład wypowiedzi szablonu, które pozwalają na tych informacji opcjonalnych: 
+Przykładowy wyrażenia długości szablonu, który zezwala na te informacje opcjonalne: 
 
 |Intencja|Przykładowe wypowiedzi z opcjonalnym tekstem i wstępnie skompilowanymi jednostkami|
 |:--|:--|
@@ -381,7 +381,7 @@ Korzystanie z opcjonalnych składni z nawiasami kwadratowymi, `[]`, sprawia, że
 
 **Pytanie: dlaczego wstępnie skompilowany numer nie jest częścią wypowiedzi szablonu, jeśli March 3 (3 marca) jest przewidziany zarówno jako liczba `3`, jak i data `March 3`?** Wypowiedź szablonu kontekstowo używa daty — albo dosłownie jak w wypowiedzi `March 3`, albo abstrakcyjnie jak w wypowiedzi `in a month`. Data może zawierać liczbę, ale liczba nie musi być zawsze postrzegana jako data. Należy zawsze używać jednostki najlepiej reprezentującej typ, który ma być zwracany w wynikach przewidywania JSON.  
 
-**Pytanie: co z niepoprawnie zapisanymi wypowiedziami, takimi jak `Who will {Employee}['s] manager be on March 3?`.** Gramatycznie różne czasy czasowników, takie jak tu, gdzie `will` i `be` są rozdzielone, muszą być nową wypowiedzią szablonu. Istniejąca wypowiedź szablonu nie będzie z tym zgodna. Mimo że intencja wypowiedzi nie została zmieniona, zmieniło się umieszczenie słowa w wypowiedzi. Ta zmiana ma wpływ na przewidywanie w usłudze LUIS. Możesz [grupy i](#use-the-or-operator-and-groups) czasowników połączyć te wypowiedzi. 
+**Pytanie: co z niepoprawnie zapisanymi wypowiedziami, takimi jak `Who will {Employee}['s] manager be on March 3?`.** Gramatycznie różne czasy czasowników, takie jak tu, gdzie `will` i `be` są rozdzielone, muszą być nową wypowiedzią szablonu. Istniejąca wypowiedź szablonu nie będzie z tym zgodna. Mimo że intencja wypowiedzi nie została zmieniona, zmieniło się umieszczenie słowa w wypowiedzi. Ta zmiana ma wpływ na przewidywanie w usłudze LUIS. Aby połączyć te wyrażenia długości [, można grupować i lub](#use-the-or-operator-and-groups) wystawić zlecenia. 
 
 **Pamiętaj: najpierw znajdowane są jednostki, a następnie dopasowywany jest wzorzec.**
 
@@ -389,7 +389,7 @@ Korzystanie z opcjonalnych składni z nawiasami kwadratowymi, `[]`, sprawia, że
 
 1. W witrynie usługi LUIS wybierz pozycję **Build** (Kompiluj) w górnym menu, a następnie wybierz pozycję **Patterns** (Wzorce) w menu po lewej stronie. 
 
-1. Wyszukiwanie istniejących wypowiedź szablonu, `Who is {Employee}['s] manager[?]`i wybierz przycisk wielokropka (***...*** ) po prawej stronie, następnie wybierz pozycję **Edytuj** z menu podręcznego. 
+1. Wyszukaj istniejący szablon wypowiedź, `Who is {Employee}['s] manager[?]`a następnie wybierz wielokropek (***...***) po prawej stronie, a następnie wybierz pozycję **Edytuj** z menu podręcznego. 
 
 1. Zmień wypowiedź szablonu na: `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
@@ -409,7 +409,7 @@ Korzystanie z opcjonalnych składni z nawiasami kwadratowymi, `[]`, sprawia, że
 
 4. Wprowadź kilka testowych wypowiedzi, aby sprawdzić, czy wzorzec jest dopasowany i czy wynik intencji jest znacząco wysoki. 
 
-    Po wprowadzeniu pierwszej wypowiedzi wybierz polecenie **Inspect** (Sprawdź) w obszarze wyniku, dzięki czemu można zobaczyć wszystkie wyniki przewidywania. Każdy wypowiedź powinny mieć **schemat organizacyjny — Manager** intencji i należy wyodrębnić wartości dla jednostek pracowników i datetimeV2.
+    Po wprowadzeniu pierwszej wypowiedzi wybierz polecenie **Inspect** (Sprawdź) w obszarze wyniku, dzięki czemu można zobaczyć wszystkie wyniki przewidywania. Każdy wypowiedź powinien mieć zamiarowy **schemat organizacyjny** i powinien wyodrębnić wartości dla jednostek pracownika i datetimeV2.
 
     |Wypowiedź|
     |--|
@@ -422,38 +422,38 @@ Korzystanie z opcjonalnych składni z nawiasami kwadratowymi, `[]`, sprawia, że
 
 Wszystkie te wypowiedzi znalazły jednostki wewnątrz, dlatego pasują do tego samego wzorca i mają wysoki wynik przewidywania.
 
-## <a name="use-the-or-operator-and-groups"></a>Użyj operatora OR i grup
+## <a name="use-the-or-operator-and-groups"></a>Używanie operatora OR i grup
 
-Niektóre z poprzednim wypowiedzi szablonu są bardzo Zamknij. Użyj **grupy** `()` i **lub** `|` składni, aby zmniejszyć wypowiedzi szablonu. 
+Kilka z poprzedniego wyrażenia długości szablonu jest bardzo blisko. Użyj **grupy** `()` i **lub** `|` składni, aby zmniejszyć wyrażenia długości szablonu. 
 
-Następujące wzorce 2 można łączyć w jednym wzorca za pomocą tej grupy `()` i `|` składni.
+Poniższe 2 wzorce mogą łączyć się w jeden wzorzec przy użyciu grupy `()` i lub `|` składni.
 
 |Intencja|Przykładowe wypowiedzi z opcjonalnym tekstem i wstępnie skompilowanymi jednostkami|
 |--|--|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-Nowe wypowiedź szablon będzie: 
+Nowy szablon wypowiedź będzie: 
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
 
-Ta metoda korzysta z **grupy** wokół czasu teraźniejszego zlecenie wymagane i opcjonalne `in` i `on` z **lub** potoku między nimi. 
+Powoduje to użycie **grupy** wokół wymaganego przedziału i opcjonalne `in` i `on` z **lub** z potokiem między nimi. 
 
-1. Na **wzorców** wybierz opcję **schemat organizacyjny — Manager** filtru. Ograniczanie listy, wyszukując `manager`. 
+1. Na stronie **wzorce** wybierz filtr **schemat organizacyjny — Menedżer** . Zawęź listę, wyszukując frazę `manager`. 
 
-    ![Wyszukaj termin "manager" we wzorcach intencji Menedżera schematu organizacyjnego](./media/luis-tutorial-pattern/search-patterns.png)
+    ![Wyszukaj w obszarze schemat organizacyjny — wzorce założeń dla programu Term Manager](./media/luis-tutorial-pattern/search-patterns.png)
 
-1. Zachowaj jedną wersję wypowiedź szablonu (w celu edycji w następnym kroku) i usuwania innych zmian. 
+1. Zachowaj jedną wersję szablonu wypowiedź (do edycji w następnym kroku) i Usuń inne różnice. 
 
-1. Zmień wypowiedź szablonu, aby: 
+1. Zmień wypowiedź szablonu na: 
 
     `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
 
 1. Przeszkol aplikację.
 
-1. Okienko testowania należy użyć do testowania wersji wypowiedź:
+1. Użyj okienka test do testowania wersji wypowiedź:
 
-    |Wypowiedzi wprowadzić w okienko testowania|
+    |Wyrażenia długości do wprowadzenia w okienku testu|
     |--|
     |`Who is Jill Jones manager this month`|
     |`Who is Jill Jones manager on July 5th`|
@@ -463,9 +463,9 @@ Ta metoda korzysta z **grupy** wokół czasu teraźniejszego zlecenie wymagane i
     |`Who will be Jill Jones manager on July 5th`|
 
 
-## <a name="use-the-utterance-beginning-and-ending-anchors"></a>Użyj wypowiedź rozpoczęcia i zakończenia zakotwiczenia
+## <a name="use-the-utterance-beginning-and-ending-anchors"></a>Używanie kotwic początkowych i końcowych wypowiedź
 
-Składnia wzorca zapewnia rozpoczęcia i zakończenia zakotwiczenia składnia wypowiedź daszek, `^`. Początkowe i końcowe kotwic wypowiedź można ze sobą wypowiedź bardzo szczegółowych i prawdopodobnie literał docelowego lub oddzielnie umożliwia intencji docelowego. 
+Składnia wzorca zapewnia początkową i końcową składnię zakotwiczenia wypowiedź karetki `^`. Kotwice początkową i końcową wypowiedź mogą być używane razem w celu określania wartości docelowej i możliwego do oddzielenia literału wypowiedź lub użycia oddzielnie do celów docelowych. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

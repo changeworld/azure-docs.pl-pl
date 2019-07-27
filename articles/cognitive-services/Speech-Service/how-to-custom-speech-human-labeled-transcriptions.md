@@ -1,7 +1,7 @@
 ---
-title: Wytyczne oznaczone przez człowieka transkrypcje — usługi mowy
-titlesuffix: Azure Cognitive Services
-description: Jeśli szukasz w celu zwiększenia dokładności rozpoznawania, szczególnie w przypadku problemów, które powstają, gdy są niepoprawnie zastąpiona, lub usunąć słów należy użyć oznaczone przez człowieka transkrypcji oraz dane audio. Co to są oznaczone przez człowieka transkrypcje? Można w prosty sposób, są one programu word, wyraz, verbatim transkrypcje pliku audio.
+title: Wytyczne dotyczące transkrypcji oznaczonych przez człowieka — usługa mowy
+titleSuffix: Azure Cognitive Services
+description: Jeśli chcesz poprawić dokładność rozpoznawania, szczególnie problemy, które są spowodowane usunięciem lub nieprawidłowym zastępowaniem wyrazów, musisz użyć transkrypcji z etykietą z danymi audio. Co to są transkrypcje z oznaczeniem personalnym? To bardzo proste. są one słowami "Verbatim" w pliku audio.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,162 +10,162 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1fca2a21758a060dbfdc4acb2123a59fcae585fd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1645e97e5648032a1281e7cb410c42f0a28b6767
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606551"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559649"
 ---
-# <a name="how-to-create-human-labeled-transcriptions"></a>Jak utworzyć transkrypcje oznaczone przez człowieka
+# <a name="how-to-create-human-labeled-transcriptions"></a>Jak utworzyć transkrypcje z etykietami ludzkimi
 
-Jeśli szukasz w celu zwiększenia dokładności rozpoznawania, szczególnie w przypadku problemów, które powstają, gdy są niepoprawnie zastąpiona, lub usunąć słów należy użyć oznaczone przez człowieka transkrypcji oraz dane audio. Co to są oznaczone przez człowieka transkrypcje? Można w prosty sposób, są one programu word, wyraz, verbatim transkrypcje pliku audio.
+Jeśli chcesz poprawić dokładność rozpoznawania, szczególnie problemy, które są spowodowane usunięciem lub nieprawidłowym zastępowaniem wyrazów, musisz użyć transkrypcji z etykietą z danymi audio. Co to są transkrypcje z oznaczeniem personalnym? To bardzo proste. są one słowami "Verbatim" w pliku audio.
 
-Duże przykładowych danych transkrypcji jest wymagany w celu rozpoznawania, Sugerujemy, zapewniając od 10 do 1000 godzin danych transkrypcji. Na tej stronie omówimy wskazówki ułatwiają tworzenie wysokiej jakości transkrypcji. Ten przewodnik został podzielony przez ustawienia regionalne z sekcjami US English, mandaryński chiński i niemieckim.
+Do usprawnienia rozpoznawania jest wymagane duże przykładowe dane transkrypcji, dlatego zalecamy udostępnienie od 10 do 1 000 godzin danych transkrypcji. Na tej stronie zawarto Przegląd wytycznych dotyczących tworzenia transkrypcji o wysokiej jakości. Ten przewodnik jest podzielony na ustawienia regionalne, z sekcjami dla angielskiej wersji językowej USA, chińskiej (mandarynek) i niemieckiej.
 
-## <a name="us-english-en-us"></a>Angielski (US) (en US)
+## <a name="us-english-en-us"></a>Angielski (EN-US)
 
-Oznaczone przez człowieka transkrypcji dla angielskiego audio, musi być podana jako zwykły tekst, tylko przy użyciu znaków ASCII. Unikaj stosowania Latin-1 lub Unicode znaki interpunkcyjne. Następujące znaki są często nieumyślnie dodawane, gdy kopiowanie tekstu z edytora lub oskrobaniu danych ze stron sieci web. Jeśli te znaki są obecne, pamiętaj je zaktualizować za pomocą odpowiednich podstawienia ASCII.
+Transkrypcje o numerach oznaczonych przez człowieka dla dźwięku w języku angielskim muszą być dostarczane jako zwykły tekst, tylko przy użyciu znaków ASCII. Unikaj używania znaków interpunkcyjnych alfabetu łacińskiego-1 lub Unicode. Te znaki są często przypadkowo dodawane podczas kopiowania tekstu z aplikacji do przetwarzania wyrazów lub odpadków danych ze stron sieci Web. Jeśli te znaki są obecne, upewnij się, że zostały zaktualizowane przy użyciu odpowiedniego podstawiania kodu ASCII.
 
 Oto kilka przykładów:
 
-| Znaki, aby uniknąć | Podstawienia | Uwagi |
+| Znaki do uniknięcia | Podstawienia | Uwagi |
 |---------------------|--------------|-------|
-| "Hello world" | "Hello world" | Znaki cudzysłowu otwierający i zamykający zostać podstawione odpowiednie znaki ASCII. |
-| John's dnia | John's dnia | Apostrof został zastąpiony z odpowiedni znak ASCII. |
-| było to dobrym — nie było wspaniałe! | dobre — został nie, ale jest to doskonały! | Znak pauzy zostało zastąpione dwa łączniki. |
+| "Hello World" | "Hello World" | Znaczniki otwierania i zamykania cudzysłowu zostały zastąpione odpowiednimi znakami ASCII. |
+| Dzień Jan | Dzień Jan | Apostrof został zastąpiony odpowiednim znakiem ASCII. |
+| to dobry — nie, był doskonały! | to dobry — nie, był doskonały! | Pauza została zastąpiona dwoma łącznikami. |
 
-### <a name="text-normalization-for-us-english"></a>Normalizacja tekstu dla US English
+### <a name="text-normalization-for-us-english"></a>Normalizacja tekstu dla języka angielskiego (Stany Zjednoczone)
 
-Tekst normalizacji jest przekształcenie słów w jednolitym formacie używane podczas uczenia modelu. Niektóre reguły normalizacji są automatycznie stosowane do tekstu, jednak zaleca się używanie tych wytycznych podczas przygotowywania danych oznaczone przez człowieka transkrypcji:
+Normalizacja tekstu to transformacja wyrazów w spójnym formacie używanym podczas uczenia modelu. Niektóre reguły normalizacji są stosowane do tekstu automatycznie, ale zalecamy korzystanie z tych wytycznych podczas przygotowywania danych transkrypcji z etykietami ludzkimi:
 
-* Zapisać skróty w słowach.
-* Zapisać niestandardowych ciągów liczbowych w słowach (na przykład księgowości).
-* Jak wymowa powinien transkrybowanego znaki spoza alfabetu lub mieszane znaki alfanumeryczne.
-* Skróty, które są wymawiane jako słowa nie należy edytować (na przykład "radarowy", "laserowej", "RAM" lub "NATO").
-* Zapis się skróty, które są wymawiane jako osobne litery od każdej litery rozdzielonych spacją.
+* Napisz skróty w słowach.
+* Napisz niestandardowe ciągi liczbowe w słowach (na przykład warunki księgowe).
+* Znaki inne niż alfabetyczne lub mieszane znaki alfanumeryczne powinny być uzyskanego jako wymawiane.
+* Skróty, które są wymawiane jako słowa, nie powinny być edytowane (takie jak "radary", "Laser", "RAM" lub "NATO").
+* Napisz skróty, które są wymawiane jako oddzielne litery z każdą literą rozdzieloną spacją.
 
-Poniżej przedstawiono kilka przykładów normalizacji, które należy wykonać na transkrypcji:
+Poniżej przedstawiono kilka przykładów normalizacji, które należy wykonać w transkrypcji:
 
 | Oryginalny tekst | Tekst po normalizacji |
 |---------------|--------------------------|
-| Dr. Bruce transparentu | Transparent Bruce lekarzem |
-| James Bond, 007 | Niestety dwukrotnie James Bond siedem |
+| Dr. Transparent Bruce | Transparent Bruce |
+| Tomasz, 007 | Tomasz, podwójny i siódmy |
 | Ke$ha | Kesha |
-| Jak długo trwa 2 x 4 | Jak długo trwa dwa, cztery |
-| Spotkania przechodzi z 1-15: 00 | Spotkania przechodzi od jednej do trzech pm |
-| Mój typ krwi jest O + | Mój typ krwi jest dodatnia O |
-| to H20 | to O 2 godz. |
-| Odtwórz OU812 przez Van Halen | Odtwórz U O 2 1 8 przez Van Halen |
+| Jak długo 2x4 | Jak długo dwa cztery |
+| Spotkanie przechodzi z 1-3pm | Spotkanie przechodzi od jednej do trzech PM |
+| Mój typ krwi to O + | Mój typ krwi to O wartości pozytywnej |
+| H20 wody | Wodna jest 2 O |
+| Odtwórz OU812 przez Van Halen | Odtwórz O U 8 1 2 przez Van Halen |
 | UTF-8 z BOM | U T F 8 z BOM |
 
-Następujące reguły normalizacji są automatycznie stosowane do transkrypcje:
+Następujące reguły normalizacji są automatycznie stosowane do transkrypcji:
 
-* Używać małych liter.
-* Usuń wszystkie znaki interpunkcyjne, z wyjątkiem apostrofy w wyrazach.
-* Rozwiń liczb w formie wymawiane/słów, takich jak wartości pieniężne.
+* Używaj małych liter.
+* Usuń wszystkie znaki interpunkcyjne z wyjątkiem apostrofów w słowach.
+* Rozwijaj liczbę do wyrazów/postaci głosowej, takich jak kwoty dolara.
 
-Poniżej przedstawiono kilka przykładów normalizacji automatycznie są wykonywane na transkrypcji:
+Poniżej przedstawiono kilka przykładów normalizacji, które są wykonywane automatycznie podczas transkrypcji:
 
 | Oryginalny tekst | Tekst po normalizacji |
 |---------------|--------------------------|
-| "Joseph krowy!" wspomniane Batman. | krowy Joseph powiedział batman |
-| "Jak?" wspomniane Batman sidekick, działanie okrężne. | jakie wspomniane batman sidekick okrężnego |
-| Przejdź pobieranie - em! | Wybierz pozycję Pobierz em |
-| Jestem double-jointed | Jestem double jointed |
-| 104 Elm Street | co o czterech wiąz ulicy |
-| Dostosowywanie do 102.7 | Dostosowywanie do jednego o dwóch siedem |
-| Pi jest około 3,14 | pi jest około trzy punktu 1 4 |
-To kosztuje $3,14| to kosztuje trzech czternastu |
+| "Wielka krowa" Batman. | Wielka krowa Batmana |
+| "Co?" Batman. | Co to jest Batman Robin |
+| Przejdź do Get-em! | Uzyskaj em |
+| Mam dwustronną wspólną | Jestem wspólnie rozłączony |
+| 104 Elm ulica | 1 0 4 Elm ulica |
+| Dostosuj do 102,7 | Dostosuj do 1 0 2 7 |
+| Pi jest około 3,14 | Pi ma około trzy punkty 1 4 |
+Koszty IT $3,14| koszty IT 3 14 |
 
-## <a name="mandarin-chinese-zh-cn"></a>Mandaryński chiński (zh-CN)
+## <a name="mandarin-chinese-zh-cn"></a>Chińskie mandarynki (zh-CN)
 
-Oznaczone przez człowieka transkrypcji dla audio chińskich mandaryński muszą być zakodowane za pomocą znacznika kolejności bajtów UTF-8. Unikaj stosowania znaków interpunkcyjnych połowę szerokości. Te znaki mogą być uwzględniane przypadkowo podczas przygotowywania danych w edytorze tekstu lub scrape danych ze stron sieci web. Jeśli te znaki są obecne, pamiętaj je zaktualizować za pomocą odpowiednich podstawienia pełnej szerokości.
+Transkrypcje oznaczone przez człowieka dla mandarynek w języku chińskim, muszą być kodowane przy użyciu znacznika kolejności bajtów. Unikaj używania znaków interpunkcyjnych połówkowej szerokości. Te znaki mogą być przypadkowo uwzględniane podczas przygotowywania danych w programie przetwarzania tekstu lub danych odpadków ze stron sieci Web. Jeśli te znaki są obecne, upewnij się, że zostały zaktualizowane przy użyciu odpowiedniego podstawiania pełnej szerokości.
 
 Oto kilka przykładów:
 
-| Znaki, aby uniknąć | Podstawienia | Uwagi |
+| Znaki do uniknięcia | Podstawienia | Uwagi |
 |---------------------|--------------|-------|
-| "你好" | "你好" | Znakami odpowiednie zostać podstawione znaki cudzysłowu otwierający i zamykający. |
-| 需要什么帮助? | 需要什么帮助？ | Znak zapytania został zastąpiony odpowiedniego znaku. |
+| "你好" | "你好" | Znaki otwierające i zamykające cudzysłowy zostały zastąpione odpowiednimi znakami. |
+| 需要什么帮助? | 需要什么帮助？ | Znak zapytania został zastąpiony odpowiednim znakiem. |
 
-### <a name="text-normalization-for-mandarin-chinese"></a>Normalizacja tekstu dla języka chińskiego mandaryński
+### <a name="text-normalization-for-mandarin-chinese"></a>Normalizacja tekstu dla elementu chińskiego mandarynki
 
-Tekst normalizacji jest przekształcenie słów w jednolitym formacie używane podczas uczenia modelu. Niektóre reguły normalizacji są automatycznie stosowane do tekstu, jednak zaleca się używanie tych wytycznych podczas przygotowywania danych oznaczone przez człowieka transkrypcji:
+Normalizacja tekstu to transformacja wyrazów w spójnym formacie używanym podczas uczenia modelu. Niektóre reguły normalizacji są stosowane do tekstu automatycznie, ale zalecamy korzystanie z tych wytycznych podczas przygotowywania danych transkrypcji z etykietami ludzkimi:
 
-* Zapisać skróty w słowach.
-* Zapisać ciągów liczbowych w programie mówionej formy.
+* Napisz skróty w słowach.
+* Napisz ciągi liczbowe w postaci wymawianej.
 
-Poniżej przedstawiono kilka przykładów normalizacji, które należy wykonać na transkrypcji:
+Poniżej przedstawiono kilka przykładów normalizacji, które należy wykonać w transkrypcji:
 
 | Oryginalny tekst | Tekst po normalizacji |
 |---------------|--------------------------|
 | 我今年21 | 我今年二十一 |
-| 3号楼504 | 三号 楼 五 零 四 |
+| 3 号楼 504 | 三号 楼 五 零 四 |
 
-Następujące reguły normalizacji są automatycznie stosowane do transkrypcje:
+Następujące reguły normalizacji są automatycznie stosowane do transkrypcji:
 
 * Usuń wszystkie znaki interpunkcyjne
-* Rozszerz numery mówionej formy
-* Konwertuj znaków o pełnej szerokości na połowę szerokości litery
-* Przy użyciu wielkich liter dla wszystkie wyrazy w języku angielskim
+* Rozwiń liczbę liczb do formularza mówionego
+* Konwertuj litery o pełnej szerokości na litery o połówkowej szerokości
+* Używanie wielkich liter w przypadku wszystkich wyrazów angielskich
 
-Poniżej przedstawiono kilka przykładów normalizacji automatycznie są wykonywane na transkrypcji:
+Poniżej przedstawiono kilka przykładów normalizacji, które są wykonywane automatycznie podczas transkrypcji:
 
 | Oryginalny tekst | Tekst po normalizacji |
 |---------------|--------------------------|
-| 3.1415 | 三 点 一 四 一 五 |
-| ￥3.5 | 三 元 五 角 |
+| 3,1415 | 三 点 一 四 一 五 |
+| ¥3,5 | 三 元 五 角 |
 | w f y z |W F Y Z |
 | 1992年8月8日 | 一 九 九 二 年 八 月 八 日 |
 | 你吃饭了吗? | 你 吃饭 了 吗 |
-| 下午5:00的航班 | 下午 五点 的 航班 |
+| 下午 5:00 的航班 | 下午 五点 的 航班 |
 | 我今年21岁 | 我 今年 二十 一 岁 |
 
-## <a name="german-de-de-and-other-languages"></a>Niemiecki (de-DE) i innych języków
+## <a name="german-de-de-and-other-languages"></a>Niemiecki (de-DE) i inne języki
 
-Oznaczone przez człowieka transkrypcji audio niemiecki (i inne innej niż angielska lub językami chińskimi mandaryński) muszą być zakodowane za pomocą znacznika kolejności bajtów UTF-8. Należy podać jedną etykietą człowieka transkrypcji dla każdego pliku audio.
+Zapisy dla ludzi z etykietami dla języka niemieckiego (i innych języków w językach innych niż angielski lub mandarynki) muszą być kodowane w formacie UTF-8 przy użyciu znacznika kolejności bajtów. Dla każdego pliku audio należy podać jeden z etykiet oznaczonych przez człowieka.
 
 ### <a name="text-normalization-for-german"></a>Normalizacja tekstu dla języka niemieckiego
 
-Tekst normalizacji jest przekształcenie słów w jednolitym formacie używane podczas uczenia modelu. Niektóre reguły normalizacji są automatycznie stosowane do tekstu, jednak zaleca się używanie tych wytycznych podczas przygotowywania danych oznaczone przez człowieka transkrypcji:
+Normalizacja tekstu to transformacja wyrazów w spójnym formacie używanym podczas uczenia modelu. Niektóre reguły normalizacji są stosowane do tekstu automatycznie, ale zalecamy korzystanie z tych wytycznych podczas przygotowywania danych transkrypcji z etykietami ludzkimi:
 
-*   Zapis separatorów dziesiętnych jako ","i nie".".
-*   Zapis separatory czas jako ":"i nie"." (na przykład: 12:00 Uhr).
-*   Skróty, takie jak "ca". nie są zastępowane. Zaleca się, że używasz pełnej mówionej formy.
-*   Cztery główne operatory matematyczne (+, -, \*, i /) są usuwane. Firma Microsoft zaleca, zastępując je w formie pisemnej: "znak plus," "ujemny," "nieprawidłowo" i "geteilt."
-*   Operatory porównania są usuwane (=, <, a >). Firma Microsoft zaleca, zastępując "gleich", "kleiner als," i "grösser als."
-*   Zapis ułamki, takie jak 3/4 w formie pisemnej (na przykład: "drei viertel", a nie 3/4).
-*   Zamień symbol "—" swoją formę tekstową "Euro."
+*   Zapisz punkty dziesiętne jako ",", a nie ".".
+*   Napisz separatory czasu jako ":", a nie "." (na przykład: 12:00 Uhr).
+*   Skróty, takie jak "CA". nie są zastępowane. Zalecamy używanie pełnego formularza mówionego.
+*   Cztery główne operatory matematyczne (+,-, \*i/) są usuwane. Zalecamy zastępowanie ich w formie zapisanej: "+", "" minus, "" źle, "i" geteilt ".
+*   Operatory porównania są usuwane (=, < i >). Zalecamy zastępowanie ich przy użyciu "Gleich", "Kleiner ALS" i "grösser ALS".
+*   Zapisz ułamki, takie jak 3/4, w formie pisanej (na przykład: "Drei Viertel" zamiast 3/4).
+*   Zamień symbol "€" na jego zapisaną formę "euro".
 
-Poniżej przedstawiono kilka przykładów normalizacji, które należy wykonać na transkrypcji:
+Poniżej przedstawiono kilka przykładów normalizacji, które należy wykonać w transkrypcji:
 
-| Oryginalny tekst | Tekst po użytkownik normalizacji | Tekst po normalizacji systemu |
+| Oryginalny tekst | Tekst po normalizacji użytkownika | Tekst po normalizacji systemu |
 |---------------|-------------------------------|---------------------------------|
-| ES ISTA 12.23 Uhr | ES ISTA 12:23 Uhr | ES ISTA zwölf uhr drei i zwanzig uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf |
-| 2 + 3 - 4 | 2 i 3 minus 4 | zwei plus drei minus vier |
+| ES, ist 12,23 Uhr | ES, ist 12:23 Uhr | Es ist Zwölf Uhr Drei und zwanzig Uhr |
+| {12,45} | {12,45} | zwölf komma vier fünf |
+| 2 + 3-4 | 2 plus 3 minus 4 | Zwei Plus Drei minus Vier |
 
-Następujące reguły normalizacji są automatycznie stosowane do transkrypcje:
+Następujące reguły normalizacji są automatycznie stosowane do transkrypcji:
 
-* Używać małych liter dla całego tekstu.
-* Usuń wszystkie znaki interpunkcyjne, w tym różne rodzaje cudzysłowów ("test", "test", "test" i "test" są dozwolone).
-* Odrzuć wierszy przy użyciu znaków specjalnych, z tego zestawu: są ¤ §... ą © ¬­ ª® ° granicach ² m x ÿ Ø¬¬.
-* Rozwiń numery mówionej formy, tym Dolar lub ilości Euro.
-* Zaakceptuj umlaut tylko w przypadku, o, a. Inne osoby zostanie zastąpione przez "th" lub odrzucone.
+* Używaj małych liter dla całego tekstu.
+* Usuń wszystkie znaki interpunkcyjne, w tym różne typy cudzysłowów ("test", "test", "test" i «test»).
+* Odrzuć wiersze ze wszystkimi znakami specjalnymi z tego zestawu: ¢ ¤ ¥ ¦ § © ª ¬® ° 2H μ × ÿ o ¬ ¬.
+* Rozwiń liczbę liczb do formy mówionej, w tym kwoty dolara lub euro.
+* Akceptuj tylko w przypadku, o i. Inne zostaną zastąpione przez "TH" lub odrzucane.
 
-Poniżej przedstawiono kilka przykładów normalizacji automatycznie są wykonywane na transkrypcji:
+Poniżej przedstawiono kilka przykładów normalizacji, które są wykonywane automatycznie podczas transkrypcji:
 
 | Oryginalny tekst | Tekst po normalizacji |
 |---------------|--------------------------|
 | Pierścień Frankfurter | pierścień Frankfurter |
 | ¡Eine Frage! | eine frage |
-| szwajcarski WIR, haben | haben szwajcarski WIR |
+| wir, haben | wir haben |
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Przygotuj i przetestować danych](how-to-custom-speech-test-data.md)
-* [Sprawdzanie danych](how-to-custom-speech-inspect-data.md)
-* [Oceń swoje dane](how-to-custom-speech-evaluate-data.md)
+* [Przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md)
+* [Inspekcja danych](how-to-custom-speech-inspect-data.md)
+* [Oceń dane](how-to-custom-speech-evaluate-data.md)
 * [Uczenie modelu](how-to-custom-speech-train-model.md)
 * [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)

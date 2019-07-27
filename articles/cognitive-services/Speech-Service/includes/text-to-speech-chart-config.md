@@ -1,7 +1,7 @@
 ---
-title: Zainstaluj kontenery mowy
+title: Instalowanie kontenerów mowy
 titleSuffix: Azure Cognitive Services
-description: Szczegóły opcje konfiguracji wykresu helm zamiany tekstu na mowę.
+description: Szczegóły dotyczące opcji konfiguracji wykresu Helm zamiany tekstu na mowę.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,31 +11,31 @@ ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
 ms.openlocfilehash: e6c7dcd3015b0b8ab5b3c719ebd2397bc814b81a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67717213"
 ---
-### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Zamiana tekstu na mowę (podrzędnych wykresu: wykresy/textToSpeech)
+### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Zamiana tekstu na mowę (wykres podrzędny: wykresy/textToSpeech)
 
-Aby zastąpić wykresu "ogólny", Dodaj prefiks `textToSpeech.` na dowolnym parametr, aby utworzyć bardziej szczegółowe. Na przykład zostanie zastąpione odpowiadającego mu parametru np. `textToSpeech.numberOfConcurrentRequest` zastępuje `numberOfConcurrentRequest`.
+Aby zastąpić wykres "parasol", Dodaj prefiks `textToSpeech.` na dowolnym parametrze, aby uczynić go bardziej szczegółowym. Na przykład zastąpi odpowiedni parametr, np `textToSpeech.numberOfConcurrentRequest` . Overrides. `numberOfConcurrentRequest`
 
 |Parametr|Opis|Domyślny|
 | -- | -- | -- |
-| `enabled` | Czy **zamiany tekstu na mowę** usługa jest włączona. | `false` |
-| `numberOfConcurrentRequest` | Liczba równoczesnych żądań dotyczących **zamiany tekstu na mowę** usługi. Ten wykres automatycznie oblicza zasobów Procesora i pamięci, w oparciu o tę wartość. | `2` |
-| `optimizeForTurboMode`| Czy usługa potrzebuje Optymalizuj pod kątem tekstowego za pomocą plików tekstowych. Jeśli `true`, ten wykres spowoduje przydzielenie więcej zasobów procesora CPU do usługi. | `false` |
-| `image.registry`| **Zamiany tekstu na mowę** rejestrem obrazów docker. | `containerpreview.azurecr.io` |
-| `image.repository` | **Zamiany tekstu na mowę** repozytorium obrazów platformy docker. | `microsoft/cognitive-services-text-to-speech` |
-| `image.tag` | **Zamiany tekstu na mowę** tag obrazu platformy docker. | `latest` |
-| `image.pullSecrets` | Wpisy tajne obrazu dla ściąganie **zamiany tekstu na mowę** obrazu platformy docker. | |
-| `image.pullByHash`| Czy obrazu platformy docker zostanie ściągnięty przez wyznaczania wartości skrótu. Jeśli `true`, `image.hash` jest wymagana. | `false` |
-| `image.hash`| **Zamiany tekstu na mowę** skrót obrazu platformy docker. Używana tylko w przypadku `image.pullByHash: true`.  | |
-| `image.args.eula` (wymagane) | Wskazuje, że zostały przez Ciebie zaakceptowane licencji. Jedyna prawidłowa wartość to `accept` | |
-| `image.args.billing` (wymagane) | Punkt końcowy rozliczeń wartość identyfikatora URI jest dostępna na stronie Przegląd rozpoznawania mowy w witrynie Azure portal. | |
-| `image.args.apikey` (wymagane) | Używane do śledzenia informacji dotyczących rozliczeń. ||
-| `service.type` | Usługi platformy Kubernetes typu **zamiany tekstu na mowę** usługi. Zobacz [instrukcje typy usługi Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/) Aby uzyskać więcej informacji i sprawdź informacje o obsłudze dostawców chmury. | `LoadBalancer` |
-| `service.port`|  Port **zamiany tekstu na mowę** usługi. | `80` |
-| `service.autoScaler.enabled` | Czy [poziomy skalowania automatycznego zasobników](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) jest włączona. Jeśli `true`, `text-to-speech-autoscaler` zostanie wdrożona w klastrze Kubernetes. | `true` |
-| `service.podDisruption.enabled` | Czy [budżetu przerw w działaniu zasobnika](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) jest włączona. Jeśli `true`, `text-to-speech-poddisruptionbudget` zostanie wdrożona w klastrze Kubernetes. | `true` |
+| `enabled` | Czy usługa **zamiany tekstu na mowę** jest włączona. | `false` |
+| `numberOfConcurrentRequest` | Liczba równoczesnych żądań dla usługi **zamiany tekstu na mowę** . Ten wykres automatycznie oblicza zasoby procesora i pamięci na podstawie tej wartości. | `2` |
+| `optimizeForTurboMode`| Czy usługa musi zoptymalizować do wprowadzania tekstu za pośrednictwem plików tekstowych. Jeśli `true`ten wykres przydzieli więcej zasobów procesora CPU do usługi. | `false` |
+| `image.registry`| Rejestr obrazu platformy Docker **zamiany tekstu na mowę** . | `containerpreview.azurecr.io` |
+| `image.repository` | Repozytorium obrazów platformy Docker **zamiany tekstu na mowę** . | `microsoft/cognitive-services-text-to-speech` |
+| `image.tag` | Tag obrazu aparatu Docker **zamiany tekstu na mowę** . | `latest` |
+| `image.pullSecrets` | Wpisy tajne obrazu służące do ściągania obrazu platformy Docker **zamiany tekstu na mowę** . | |
+| `image.pullByHash`| Czy obraz platformy Docker jest ściągany przez skrót. Jeśli `true`jesttowymagane `image.hash` . | `false` |
+| `image.hash`| Skrót obrazu platformy Docker **zamiany tekstu na mowę** . Używane tylko wtedy `image.pullByHash: true`, gdy.  | |
+| `image.args.eula`potrzeb | Oznacza, że licencja została zaakceptowana. Jedyna prawidłowa wartość to`accept` | |
+| `image.args.billing`potrzeb | Wartość identyfikatora URI punktu końcowego rozliczenia jest dostępna na stronie Przegląd mowy Azure Portal. | |
+| `image.args.apikey`potrzeb | Używane do śledzenia informacji dotyczących rozliczeń. ||
+| `service.type` | Typ usługi Kubernetes dla usługi **zamiany tekstu na mowę** . Zapoznaj się z instrukcjami dotyczącymi [typów usługi Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/) , aby uzyskać więcej informacji i zweryfikować obsługę dostawcy chmury. | `LoadBalancer` |
+| `service.port`|  Port usługi zamiany **tekstu na mowę** . | `80` |
+| `service.autoScaler.enabled` | Określa, czy jest włączona funkcja [automatycznego skalowania w poziomie](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) . `true` Jeśli`text-to-speech-autoscaler` program zostanie wdrożony w klastrze Kubernetes. | `true` |
+| `service.podDisruption.enabled` | Czy jest włączony [budżet](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) w przypadku przerwania działania. `true` Jeśli`text-to-speech-poddisruptionbudget` program zostanie wdrożony w klastrze Kubernetes. | `true` |

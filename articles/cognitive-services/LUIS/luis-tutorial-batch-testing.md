@@ -1,5 +1,5 @@
 ---
-title: Test usługi Batch
+title: Test wsadowy — LUIS
 titleSuffix: Azure Cognitive Services
 description: Ten samouczek pokazuje, jak za pomocą testowania partii znaleźć wypowiedź prognozowania problemy w aplikacji i je rozwiązać.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: af04ca19961abcfc7ee218824a4a1a804f7ad79c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6b3f864ded8b6f5ac0a1d839768801788d7d765
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146154"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560131"
 ---
-# <a name="tutorial-batch-test-data-sets"></a>Samouczek: Zestawy danych testowych usługi Batch
+# <a name="tutorial-batch-test-data-sets"></a>Samouczek: Zestawy danych testów wsadowych
 
 Ten samouczek pokazuje, jak za pomocą testowania partii znaleźć wypowiedź prognozowania problemy w aplikacji i je rozwiązać.  
 
@@ -28,7 +28,7 @@ Wymagania dotyczące testowania usługi batch:
 
 * Maksymalnie 1000 wypowiedzi na test. 
 * Bez duplikatów. 
-* Dozwolone typy jednostek: tylko jednostki obrabiane przedstawiono proste i złożone. Testowanie usługi Batch przydaje się tylko do obrabiane do opanowania intencje i podmioty.
+* Dozwolone typy jednostek: tylko jednostki połączone maszynowo proste i złożone. Testowanie usługi Batch przydaje się tylko do obrabiane do opanowania intencje i podmioty.
 
 Podczas korzystania z aplikacji innych niż w tym samouczku, czy *nie* Użyj wypowiedzi przykład już dodany do intencji. 
 
@@ -95,7 +95,7 @@ Wykonaj następujące czynności:
 
 ## <a name="review-batch-results"></a>Przejrzyj wyniki usługi batch
 
-Wykres batch przedstawia cztery quadrants firmy Gartner wyników. Z prawej strony wykresu jest filtrem. Domyślnie filtr jest równa pierwszej intencji na liście. Filtr zawiera wszystkie intencje i podmioty tylko proste i złożone. Po wybraniu [sekcji wykresu](luis-concept-batch-test.md#batch-test-results) lub punkt w obrębie wykresu skojarzone utterance(s) wyświetlane pod wykresem. 
+Wykres batch przedstawia cztery quadrants firmy Gartner wyników. Z prawej strony wykresu jest filtrem. Domyślnie filtr jest równa pierwszej intencji na liście. Filtr zawiera wszystkie intencje i tylko jednostki proste i złożone. Po wybraniu [sekcji wykresu](luis-concept-batch-test.md#batch-test-results) lub punkt w obrębie wykresu skojarzone utterance(s) wyświetlane pod wykresem. 
 
 Podczas przesuwania wskaźnika w obrębie wykresu, kółka myszy można zwiększyć lub zmniejszyć wyświetlane na wykresie. Jest to przydatne, gdy istnieje wiele punktów na wykresie klastrowane ściśle ze sobą. 
 
@@ -169,7 +169,7 @@ Aby sprawdzić, czy oczekuje wypowiedzi w teście usługi batch, należy ponowni
 
 ## <a name="create-batch-file-with-entities"></a>Utwórz plik wsadowy z jednostkami 
 
-Aby sprawdzić, czy jednostki w teście usługi batch, jednostki muszą oznaczone etykietą w pliku JSON usługi batch. Używane są tylko maszyny do opanowania jednostki: proste i złożone jednostek. Nie należy dodawać jednostki przedstawiono maszyny, ponieważ one zawsze znajdują się za pomocą wyrażeń regularnych lub jawnego tekstu.
+Aby sprawdzić, czy jednostki w teście usługi batch, jednostki muszą oznaczone etykietą w pliku JSON usługi batch. Używane są tylko jednostki poznanie maszyn: proste i złożone jednostki. Nie należy dodawać jednostki przedstawiono maszyny, ponieważ one zawsze znajdują się za pomocą wyrażeń regularnych lub jawnego tekstu.
 
 Zmiany jednostki dla programu word całkowita ([tokenu](luis-glossary.md#token)) liczby mogą mieć wpływ na jakość prognozy. Upewnij się, że dane szkoleniowe dostarczane na intencje z etykietami wypowiedzi zawiera różne długości jednostki. 
 
@@ -205,11 +205,11 @@ Wartość **zadania** jednostki, podany w wypowiedzi testu jest zazwyczaj jedneg
 
 ## <a name="review-entity-batch-results"></a>Przejrzyj wyniki partii jednostek
 
-Wykres zostanie otwarty przy użyciu wszystkich intencji poprawnie przewidzieć. Przewiń w dół w filtrze po prawej stronie można znaleźć prognozy jednostki z błędami. 
+Wykres zostanie otwarty przy użyciu wszystkich intencji poprawnie przewidzieć. Przewiń w dół do filtru po prawej stronie, aby znaleźć przewidywania jednostek z błędami. 
 
 1. Wybierz **zadania** jednostki w filtrze.
 
-    ![Błąd jednostki prognozy w filtrze](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
+    ![Przewidywania jednostek błędów w filtrze](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
 
     Aby wyświetlić prognozy jednostki zmiany wykresu. 
 

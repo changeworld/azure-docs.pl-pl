@@ -1,7 +1,7 @@
 ---
-title: Rozpoczynanie pracy z usługą mowy niestandardowe — usługi mowy
-titlesuffix: Azure Cognitive Services
-description: Custom Speech to zestaw narzędzi online, które pozwalają ocenić i zwiększyć dokładność mowy na tekst firmy Microsoft dla aplikacji, narzędzi i produktów. Wszystko, co może potrwać, aby rozpocząć kilka plików audio testowych. Skorzystaj z linków poniżej, aby rozpocząć tworzenie niestandardowego środowiska mowy na tekst.
+title: Wprowadzenie do usługi Custom Speech-Speech
+titleSuffix: Azure Cognitive Services
+description: Custom Speech to zestaw narzędzi online, dzięki którym można oszacować i poprawić dokładność zamiany mowy na tekst dla aplikacji, narzędzi i produktów. Wszystkie te rzeczy są potrzebne do rozpoczęcia pracy z kilkuem plików audio. Skorzystaj z poniższych linków, aby rozpocząć tworzenie niestandardowego środowiska zamiany mowy na tekst.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,61 +10,61 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 668ce2206f54fb7bb84d641a1e46f8d5ea9f833d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a5ced51eabe708dc7883fc91e5b6fa67f9211381
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603169"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559631"
 ---
-# <a name="what-is-custom-speech"></a>Co to jest niestandardowa mowy?
+# <a name="what-is-custom-speech"></a>Co to jest Custom Speech?
 
-[Custom Speech](https://aka.ms/custom-speech) to zestaw narzędzi online, które pozwalają ocenić i zwiększyć dokładność mowy na tekst firmy Microsoft dla aplikacji, narzędzi i produktów. Wszystko, co może potrwać, aby rozpocząć kilka plików audio testowych. Skorzystaj z linków poniżej, aby rozpocząć tworzenie niestandardowego środowiska mowy na tekst.
+[Custom Speech](https://aka.ms/custom-speech) to zestaw narzędzi online, dzięki którym można oszacować i poprawić dokładność zamiany mowy na mowę firmy Microsoft dla aplikacji, narzędzi i produktów. Wszystkie te rzeczy są potrzebne do rozpoczęcia pracy z kilkuem plików audio. Skorzystaj z poniższych linków, aby rozpocząć tworzenie niestandardowego środowiska zamiany mowy na tekst.
 
-## <a name="whats-in-custom-speech"></a>Jaka jest Custom Speech?
+## <a name="whats-in-custom-speech"></a>Co znajduje się w Custom Speech?
 
-Przed wykonaniem z Custom Speech, konieczne będzie konto platformy Azure i Subskrypcja usług przetwarzania mowy. Po skonfigurowaniu konta można przygotowywanie danych, uczenie i testowanie modeli, sprawdzić jakość rozpoznawania, oceny dokładności i ostatecznie wdrożenia i użyć niestandardowego modelu mowy na tekst.
+Przed rozpoczęciem wykonywania jakichkolwiek czynności mających Custom Speech musisz mieć konto platformy Azure i subskrypcję usługi Speech Services. Po otrzymaniu konta możesz przygotować swoje dane, wyszkolić i przetestować modele, sprawdzić jakość rozpoznawania, oszacować dokładność i ostatecznie wdrożyć i korzystać z niestandardowego modelu zamiany mowy na tekst.
 
-Ten diagram zawiera wyróżnione fragmenty, które tworzą portalu usługi Custom Speech. Aby dowiedzieć się więcej na temat każdego kroku, skorzystaj z poniższych łączy.
+Ten diagram przedstawia elementy wchodzące w skład portalu Custom Speech. Skorzystaj z poniższych linków, aby dowiedzieć się więcej o każdym z kroków.
 
-![Prezentuje różne składniki, które tworzą portalu usługi Custom Speech.](./media/custom-speech/custom-speech-overview.png)
+![Wyróżnia różne składniki wchodzące w skład portalu Custom Speech.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Subskrypcja i Utwórz projekt](#set-up-your-azure-account) — Tworzenie konta platformy Azure i Subskrypcja usług przetwarzania mowy. Ta subskrypcja ujednoliconego zapewnia dostęp do zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenie mowy i portalu usługi Custom Speech. Następnie przy użyciu posiadanej subskrypcji usług przetwarzania mowy, Utwórz swój pierwszy projekt Custom Speech.
+1. [Subskrybuj i Utwórz projekt](#set-up-your-azure-account) — Utwórz konto platformy Azure i Zasubskrybuj usługi mowy. Ta ujednolicona subskrypcja zapewnia dostęp do funkcji zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenia mowy i portalu Custom Speech. Następnie za pomocą subskrypcji usługi Speech Services Utwórz pierwszy projekt Custom Speech.
 
-2. [Przekazywanie danych testowych](how-to-custom-speech-test-data.md) — przekazywanie danych testowych (pliki audio) do oceny firmy Microsoft zamiany mowy na tekst przeznaczone dla aplikacji, narzędzi i produktów.
+2. [Przekazywanie danych testowych](how-to-custom-speech-test-data.md) — przekazywanie danych testowych (plików audio) w celu oszacowania oferty zamiany mowy na tekst firmy Microsoft dla aplikacji, narzędzi i produktów.
 
-3. [Sprawdź rozpoznawanie jakości](how-to-custom-speech-inspect-data.md) — za pomocą portalu Custom Speech odtwarzać dźwięk przekazane i sprawdzić jakość rozpoznawania mowy, danych testowych. Do pomiarów ilościowych, zobacz [sprawdzanie danych](how-to-custom-speech-inspect-data.md).
+3. [Inspekcja jakości rozpoznawania](how-to-custom-speech-inspect-data.md) — użyj portalu Custom Speech, aby odtworzyć załadowane audio i sprawdzić jakość rozpoznawania mowy danych testowych. Aby uzyskać miary ilościowe, zobacz [Sprawdzanie danych](how-to-custom-speech-inspect-data.md).
 
-4. [Oceny dokładności](how-to-custom-speech-evaluate-data.md) -oceny dokładności modelu mowy na tekst. Custom Speech portal będzie wyświetlał *współczynnik błędów Word*, który może służyć do określenia, czy wymagane dodatkowe szkolenie. Jeżeli jesteś zadowolony z dokładności, może bezpośrednio korzystać z interfejsów API usługi mowy. Jeśli chcesz poprawić dokładność przez względną średnią z 5-20%, należy użyć **szkolenia** karta w portalu, aby przekazać dane dodatkowe szkolenie, takie jak oznaczone przez człowieka zapisów i dowolny tekst związany z.
+4. [Oceń dokładność](how-to-custom-speech-evaluate-data.md) — Oceń dokładność modelu zamiany mowy na tekst. Portal Custom Speech będzie zawierać *Współczynnik błędów wyrazów*, który może służyć do określenia, czy wymagane jest dodatkowe szkolenie. Jeśli dokładność jest zadowalająca, można używać interfejsów API usługi mowy bezpośrednio. Jeśli chcesz poprawić dokładność przez średnią wartość wynoszącą 5%-20%, Użyj karty **szkolenia** w portalu, aby przekazać dodatkowe dane szkoleniowe, takie jak transkrypcje z etykietami ludzkimi i powiązane teksty.
 
-5. [Uczenie modelu](how-to-custom-speech-train-model.md) — zwiększyć dokładność modelu mowy na tekst, zapewniając napisane zapisów (10-1000 godzin) i związane z tekstu (< 200 MB) wraz z audio dane testowe. Te dane ułatwiają do nauczenia modelu mowy na tekst. Po szkoleniu ponów test, a jeśli jesteś zadowolony z wyników, można wdrożyć modelu.
+5. [Uczenie modelu](how-to-custom-speech-train-model.md) — Poprawa dokładności modelu zamiany mowy na tekst dzięki udostępnieniu zapisów pisanych (10 – 1000 godzin) i powiązanego tekstu (< 200 MB) wraz z danymi testu dźwiękowego. Te dane ułatwiają uczenie modelu zamiany mowy na tekst. Po przekształceniu, ponownym przetestowaniu i, jeśli wynik jest zadowalający, można wdrożyć model.
 
-6. [Wdrażanie modelu](how-to-custom-speech-deploy-model.md) — Tworzenie niestandardowego punktu końcowego dla modelu mowy na tekst i używać go w swojej aplikacji, narzędzia lub produktów.
+6. [Wdróż model](how-to-custom-speech-deploy-model.md) — Utwórz niestandardowy punkt końcowy dla modelu zamiany mowy na tekst i użyj go w aplikacjach, narzędziach lub produktach.
 
-## <a name="set-up-your-azure-account"></a>Konfigurowanie konta platformy Azure
+## <a name="set-up-your-azure-account"></a>Skonfiguruj swoje konto platformy Azure
 
-Wymagana jest subskrypcja usług przetwarzania mowy, korzystać z portalu usługi Custom Speech, aby utworzyć niestandardowy model. Wykonaj te instrukcje, aby utworzyć w ramach subskrypcji standardowej usług przetwarzania mowy: [Utwórz subskrypcję mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account).
+Przed rozpoczęciem korzystania z portalu Custom Speech w celu utworzenia modelu niestandardowego należy skorzystać z subskrypcji usługi Speech Services. Postępuj zgodnie z tymi instrukcjami, aby utworzyć standardową subskrypcję usługi Speech Services: [Utwórz subskrypcję mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account).
 
 > [!NOTE]
-> Należy koniecznie Utwórz subskrypcje standardowe (S0), subskrypcje bezpłatnej wersji próbnej (F0) nie są obsługiwane.
+> Pamiętaj, aby utworzyć standardowe subskrypcje (S0) i subskrypcje bezpłatnej wersji próbnej (F0) nie są obsługiwane.
 
-Po utworzeniu konta platformy Azure i Subskrypcja usług przetwarzania mowy, musisz zalogować się do portalu Custom Speech i Połącz z subskrypcją.
+Po utworzeniu konta platformy Azure i subskrypcji usługi Speech Services należy zalogować się do portalu Custom Speech i połączyć swoją subskrypcję.
 
-1. Pobierz klucz subskrypcji usług przetwarzania mowy z witryny Azure portal.
-2. Zaloguj się do [portal Custom Speech](https://aka.ms/custom-speech).
-3. Wybierz subskrypcję, którą trzeba pracować nad, a następnie utwórz projekt mowy.
-4. Jeśli chcesz zmodyfikować subskrypcję, użyj **koło zębate** ikonę znajduje się w górnym menu nawigacyjnym.
+1. Pobierz klucz subskrypcji usługi Speech Services z Azure Portal.
+2. Zaloguj się do [portalu Custom Speech](https://aka.ms/custom-speech).
+3. Wybierz subskrypcję, na której chcesz korzystać, i Utwórz projekt mowy.
+4. Jeśli chcesz zmodyfikować swoją subskrypcję, użyj ikony **koło zębate** znajdującej się w górnym obszarze nawigacji.
 
 ## <a name="how-to-create-a-project"></a>Jak utworzyć projekt
 
-Zawartości, takie jak danych, modele, testy i punktów końcowych są podzielone na **projektów** w portalu usługi Custom Speech. Każdy projekt jest specyficzne dla domeny i kraju/języka. Może na przykład, Utwórz projekt dla centrów wywołania, korzystających z języka angielskiego na terenie Stanów Zjednoczonych.
+Zawartość, taka jak dane, modele, testy i punkty końcowe, są zorganizowane w **projekty** w portalu Custom Speech. Każdy projekt jest specyficzny dla domeny i kraju/języka. Na przykład możesz utworzyć projekt dla centrów wywołań, które używają języka angielskiego w Stany Zjednoczone.
 
-Aby utworzyć swój pierwszy projekt, wybierz **mowy do tekst/Custom speech**, następnie kliknij przycisk **nowy projekt**. Postępuj zgodnie z instrukcjami kreatora do tworzenia projektu. Po utworzeniu projektu powinny zostać wyświetlone cztery karty: **Dane**, **testowania**, **szkolenia**, i **wdrożenia**. Użyć linków dostępnych w [następne kroki](#next-steps) dowiesz się, jak używać każdej karty.
+Aby utworzyć swój pierwszy projekt, wybierz **mowę zamiany mowy na tekst/** niestandardową, a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu powinny zostać wyświetlone cztery karty: **Dane**, **testowanie**, **uczenie**i **wdrażanie**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Przygotuj i przetestować danych](how-to-custom-speech-test-data.md)
-* [Sprawdzanie danych](how-to-custom-speech-inspect-data.md)
-* [Oceń swoje dane](how-to-custom-speech-evaluate-data.md)
+* [Przygotowywanie i testowanie danych](how-to-custom-speech-test-data.md)
+* [Inspekcja danych](how-to-custom-speech-inspect-data.md)
+* [Oceń dane](how-to-custom-speech-evaluate-data.md)
 * [Uczenie modelu](how-to-custom-speech-train-model.md)
 * [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)
