@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: Skonfiguruj i Utwórz maszynę wirtualną do nauki o danych systemu Linux na platformie Azure w celu analizy i uczenia maszynowego.
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
@@ -13,21 +13,21 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: e7b67905c96495382536555b87772e4eefada250
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 50dd51cc204a6a22d14873114ba6d98e2a174251
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502355"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592015"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej do nauki o danych CentOS Linux na platformie Azure
 
 Maszyna wirtualna do nauki o danych systemu Linux jest opartych na systemie CentOS maszyny wirtualnej platformy Azure z kolekcji wstępnie zainstalowane narzędzia. Te narzędzia są często używane do analiz danych oraz uczenia maszynowego. Dostępne są następujące składniki oprogramowania:
 
-* System operacyjny: Dystrybucja systemu Linux CentOS.
+* System operacyjny: Dystrybucja CentOS systemu Linux.
 * Microsoft R Server Developer Edition
 * Anaconda Python dystrybucji (wersja 2.7 i 3.5), łącznie z bibliotekami analiz danych popularnych
 * JuliaPro - wyselekcjonowanych dystrybucja języka Julia z popularnymi bibliotekami analizy danych i naukowe
@@ -37,10 +37,10 @@ Maszyna wirtualna do nauki o danych systemu Linux jest opartych na systemie Cent
 * Usługa Azure interfejs wiersza polecenia (CLI) do zarządzania zasobami platformy Azure
 * PostgresSQL bazy danych
 * Machine learning narzędzia
-  * [Zestaw narzędzi cognitive Toolkit](https://github.com/Microsoft/CNTK): Zestaw narzędzi do oprogramowania przez firmę Microsoft Research do uczenia głębokiego.
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): System uczenia maszynowego szybkie, obsługa technik, takich jak online, wyznaczanie wartości skrótu, allreduce, redukcji, learning2search, są aktywne i interaktywne uczenia.
-  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Narzędzie, zapewniając szybkie i dokładne wzmocnionego drzewa wykonania.
-  * [Rattle](https://togaware.com/rattle/) (R narzędzia analitycznego się łatwo): Narzędzie, które ułatwia rozpoczęcie korzystania z analizy danych i uczenia maszynowego w języku R, udostępniając eksplorację danych z Graficznym interfejsem użytkownika i modelowanie za pomocą automatycznego generowania kodu języka R.
+  * [Cognitive Toolkit](https://github.com/Microsoft/CNTK): Zestaw narzędzi do uczenia głębokiego firmy Microsoft Research.
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): Szybki system uczenia maszynowego obsługujący techniki, takie jak online, Hashing, allreduce, redukcyjny, learning2search, Active i Interactive Learning.
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Narzędzie zapewniające szybką i dokładną implementację podwyższania poziomu drzewa.
+  * [Rattle](https://togaware.com/rattle/) (Narzędzie analityczne języka R do łatwego uczenia): Narzędzie, które ułatwia rozpoczęcie pracy z analizami danych i uczeniem maszynowym w języku R łatwe, z eksploracją danych opartym na graficznym interfejsie użytkownika i modelowanie przy użyciu automatycznego generowania kodu języka R.
 * Zestaw Azure SDK w języku Java, Python, node.js, Ruby, PHP
 * Bibliotek języka R i Python do użycia w usłudze Azure Machine Learning i innymi usługami platformy Azure
 * Narzędzia programistyczne i Redaktorzy (RStudio, platformy PyCharm, IntelliJ, Emacs, gedit, vi)
@@ -65,7 +65,7 @@ Opłaty nie będą oprogramowania dla tego obrazu maszyny Wirtualnej do nauki o 
 Przed utworzeniem maszyny wirtualnej do nauki o danych systemu Linux, musisz mieć następujące czynności:
 
 * **Subskrypcja platformy Azure**: Aby uzyskać subskrypcję, zobacz [uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/free/).
-* **Konto usługi Azure storage**: Aby go utworzyć, zobacz [Tworzenie konta usługi Azure storage](../../storage/common/storage-quickstart-create-account.md). Alternatywnie Jeśli nie chcesz użyć istniejącego konta, konta magazynu można utworzyć w ramach procesu tworzenia maszyny Wirtualnej.
+* **Konto usługi Azure Storage**: Aby go utworzyć, zobacz [Tworzenie konta usługi Azure Storage](../../storage/common/storage-quickstart-create-account.md). Alternatywnie Jeśli nie chcesz użyć istniejącego konta, konta magazynu można utworzyć w ramach procesu tworzenia maszyny Wirtualnej.
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>Tworzenie maszyny wirtualnej do nauki o danych z systemem Linux
 Poniżej przedstawiono kroki, aby utworzyć wystąpienie systemu Linux maszyny wirtualnej analizy danych:
@@ -76,9 +76,9 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie systemu Linux maszyny w
    
    a. **Podstawy**:
    
-   * **Nazwa**: Nazwa tworzonej serwera do nauki o danych.
-   * **Nazwa użytkownika**: Pierwsze konto logowania identyfikatora.
-   * **Hasło**: Pierwsze hasło do konta (zamiast hasła można użyć klucza publicznego SSH).
+   * **Nazwa**: Nazwa tworzonego serwera analizy danych.
+   * **Nazwa użytkownika**: Identyfikator logowania pierwszego konta.
+   * **Hasło**: Hasło pierwszego konta (można użyć klucza publicznego SSH zamiast hasła).
    * **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane. Musisz mieć uprawnienia do tworzenia zasobów dla tej subskrypcji.
    * **Grupa zasobów**: Możesz utworzyć nową lub użyj istniejącej grupy.
    * **Lokalizacja**: Wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci.
@@ -89,9 +89,9 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie systemu Linux maszyny w
    
    c. **Ustawienia**:
    
-   * **Typ dysku**: Wybierz **Premium** Jeśli wolisz dysków półprzewodnikowych (SSD). W przeciwnym razie wybierz **standardowa**.
-   * **Konto magazynu**: Można utworzyć nowe konto magazynu platformy Azure w ramach subskrypcji lub użyć istniejącego w tej samej lokalizacji, która została wybrana na **podstawy** kroku kreatora.
-   * **Inne parametry**: W większości przypadków wystarczy użyć wartości domyślnych. Aby uwzględnić wartości innych niż domyślne, umieść kursor informacyjny łącze, aby uzyskać pomoc dotyczącą określonych pól.
+   * **Typ dysku**: Wybierz opcję **Premium** , jeśli wolisz dysk SSD (SSD). W przeciwnym razie wybierz **standardowa**.
+   * **Konto magazynu**: Możesz utworzyć nowe konto usługi Azure Storage w ramach subskrypcji lub użyć istniejącego konta w tej samej lokalizacji, która została wybrana w kroku **podstawowe** w kreatorze.
+   * **Inne parametry**: W większości przypadków należy użyć wartości domyślnych. Aby uwzględnić wartości innych niż domyślne, umieść kursor informacyjny łącze, aby uzyskać pomoc dotyczącą określonych pól.
    
    d. **Podsumowanie**:
    
@@ -117,12 +117,12 @@ Maszyny Wirtualnej systemu Linux jest już zainicjowana przy użyciu serwera X2G
 1. Pobieranie i instalowanie klienta X2Go dla danej platformy klienta [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 1. Uruchom klienta X2Go, a następnie wybierz pozycję **nowej sesji**. Otwiera okno konfiguracji z wieloma kartami. Wprowadź następujące parametry konfiguracji:
    * **Karta sesji**:
-     * **Host**: Nazwa hosta lub adres IP maszyny wirtualnej do nauki o danych systemu Linux.
-     * **Zaloguj się**: Nazwa użytkownika na maszynie Wirtualnej systemu Linux.
-     * **SSH portu**: Pozostaw to pole o 22, wartością domyślną.
-     * **Typ sesji**: Zmień wartość na XFCE. Obecnie maszyny Wirtualnej systemu Linux obsługuje tylko pulpit xfce.
-   * **Karta Media**: Jeśli nie potrzebujesz użyć dźwięku pomocy technicznej i klienta drukowania, można je wyłączyć.
-   * **Foldery udostępnione**: Katalogi z maszyn klienta zainstalowanego na maszynie Wirtualnej systemu Linux, dodać katalogi maszyny klienta, które chcesz się podzielić z maszyną Wirtualną na tej karcie.
+     * **Host**: Nazwa hosta lub adres IP Data Science VM systemu Linux.
+     * **Logowanie**: Nazwa użytkownika na maszynie wirtualnej z systemem Linux.
+     * **Port SSH**: Pozostaw wartość domyślną równą 22.
+     * **Typ sesji**: Zmień wartość na pulpit Xfce. Obecnie maszyny Wirtualnej systemu Linux obsługuje tylko pulpit xfce.
+   * **Karta multimedia**: Jeśli nie musisz używać obsługi dźwięku i drukowania klienta, możesz je wyłączyć.
+   * **Foldery udostępnione**: Jeśli chcesz, aby katalogi z komputerów klienckich były zainstalowane na maszynie wirtualnej z systemem Linux, Dodaj do tej karty katalogi komputerów klienckich, które mają być współużytkowane z maszyną wirtualną.
 
 Po zalogowaniu do maszyny Wirtualnej przy użyciu klienta SSH lub graficznego pulpit xfce za pomocą klienta X2Go, jesteś gotowy rozpocząć korzystanie z narzędzia, które są zainstalowane i skonfigurowane na maszynie Wirtualnej. Na XFCE widać ikony pulpitu i skróty w menu aplikacji dla wielu narzędzi.
 
@@ -198,7 +198,7 @@ Przed uruchomieniem w kontekście platformy Spark w programie Microsoft R Server
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Hadoop można zatrzymać związane z usługami, gdy nie są potrzebne, uruchamiając ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` próbkę ukazujące sposób tworzenia i testowania PANI w zdalnym kontekstu aparatu Spark (czyli wystąpieniu platformy Spark autonomiczne maszyny DSVM) są dostępne w `/dsvm/samples/MRS` katalog. 
+Usługi związane z usługą Hadoop można zatrzymać, gdy nie są potrzebne, wykonując ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` przykład pokazujący, jak opracowywać i testować Pani w zdalnym kontekście Spark (czyli autonomicznym wystąpieniu platformy Spark na DSVM), które jest dostępne w `/dsvm/samples/MRS` katalogi. 
 
 ### <a name="ides-and-editors"></a>Środowiska IDE i edytorów
 Masz do wyboru kilka edytorów kodu. W tym vi/VIM, Emacs, gEdit, platformy PyCharm, RStudio, Eclipse i IntelliJ. gEdit, Eclipse, IntelliJ, RStudio i platformy PyCharm są edytory graficzne i musisz być zarejestrowany w programie desktop graficznego z nich korzystać. Te edytorów, aplikacji i pulpitu menu skrótów do ich uruchamiania.
@@ -227,11 +227,11 @@ Aby uzyskać więcej informacji, zobacz [SQuirrel SQL](http://squirrel-sql.sourc
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Narzędzia wiersza polecenia do uzyskiwania dostępu do programu Microsoft SQL Server
 Pakiet sterownika ODBC dla programu SQL Server dołączono również dwa narzędzia wiersza polecenia:
 
-**Narzędzie BCP**: Zbiorcze narzędzie bcp kopiuje dane między wystąpienia programu Microsoft SQL Server i plik danych w formacie określonych przez użytkownika. Narzędzie bcp służy do importowania dużej liczby nowych wierszy do tabel programu SQL Server lub do wyeksportowania danych z tabel do plików danych. Aby zaimportować dane do tabeli, musisz użyć pliku formatu utworzonego dla tej tabeli lub poznać strukturę tabeli i typy danych, które są prawidłowe dla kolumn.
+Narzędzie **BCP**: Narzędzie bcp zbiorczo kopiuje dane między wystąpieniem Microsoft SQL Server i plikiem danych w formacie określonym przez użytkownika. Narzędzie bcp służy do importowania dużej liczby nowych wierszy do tabel programu SQL Server lub do wyeksportowania danych z tabel do plików danych. Aby zaimportować dane do tabeli, musisz użyć pliku formatu utworzonego dla tej tabeli lub poznać strukturę tabeli i typy danych, które są prawidłowe dla kolumn.
 
 Aby uzyskać więcej informacji, zobacz [połączenie za pomocą narzędzia bcp](https://msdn.microsoft.com/library/hh568446.aspx).
 
-**sqlcmd**: Można użyć instrukcji języka Transact-SQL przy użyciu narzędzia sqlcmd, a także procedury systemu i pliki skryptów, w tym celu w wierszu polecenia. To narzędzie używa ODBC w celu wykonania partii języka Transact-SQL.
+**sqlcmd**: Instrukcje języka Transact-SQL można wprowadzać przy użyciu narzędzia sqlcmd, a także procedur systemowych i plików skryptów w wierszu polecenia. To narzędzie używa ODBC w celu wykonania partii języka Transact-SQL.
 
 Aby uzyskać więcej informacji, zobacz [połączenie przy użyciu narzędzia sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
 
@@ -248,19 +248,19 @@ Brak dostępnych bibliotek języka R i Python do baz danych programu access.
 
 Aby uzyskać dostęp do **Postgres**:
 
-* Z R: Za pomocą pakietu **RPostgreSQL**.
-* Za pomocą języka Python: Użyj **psycopg2** biblioteki.
+* Z języka R: Użyj **RPostgreSQL**pakietu.
+* Z języka Python: Użyj biblioteki **psycopg2** .
 
 ### <a name="azure-tools"></a>Narzędzia platformy Azure
 Następujące narzędzia platformy Azure są zainstalowane na maszynie Wirtualnej:
 
-* **Interfejs wiersza polecenia platformy Azure**: Interfejs wiersza polecenia platformy Azure umożliwia tworzenie i zarządzanie zasobami platformy Azure przy użyciu powłoki poleceń. Aby wywołać narzędzia platformy Azure, po prostu wpisz **pomoc platformy azure**. Aby uzyskać więcej informacji, zobacz [stronę z dokumentacją dotyczącą interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Eksplorator usługi Microsoft Azure Storage**: Microsoft Azure Storage Explorer to graficzny narzędzie, które umożliwia przeglądanie obiektów, które są przechowywane na koncie magazynu platformy Azure i przekazywanie i pobieranie danych do i z obiektów blob platformy Azure. Można uzyskać dostęp do Eksploratora usługi Storage z ikony skrótu na pulpicie. Wywołania z poziomu wiersza powłoki, wpisując **StorageExplorer**. Musisz zalogować się z klienta X2Go lub masz X11 przekazywania zestawu w górę.
-* **Biblioteki Azure**: Poniżej przedstawiono niektóre z wstępnie zainstalowanymi bibliotekami.
+* **Interfejs wiersza polecenia platformy Azure**: Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą poleceń powłoki. Aby wywołać narzędzia platformy Azure, po prostu wpisz **pomoc platformy azure**. Aby uzyskać więcej informacji, zobacz [stronę z dokumentacją dotyczącą interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+* **Eksplorator usługi Microsoft Azure Storage**: Eksplorator usługi Microsoft Azure Storage jest graficznym narzędziem służącym do przeglądania obiektów przechowywanych na koncie usługi Azure Storage oraz przekazywania i pobierania danych do i z obiektów blob platformy Azure. Można uzyskać dostęp do Eksploratora usługi Storage z ikony skrótu na pulpicie. Wywołania z poziomu wiersza powłoki, wpisując **StorageExplorer**. Musisz zalogować się z klienta X2Go lub masz X11 przekazywania zestawu w górę.
+* **Biblioteki platformy Azure**: Poniżej przedstawiono niektóre z wstępnie zainstalowanych bibliotek.
   
-  * **Python**: Biblioteki dotyczących platformy Azure w języku Python, które są zainstalowane są **azure**, **usługi Azure ml**, **pydocumentdb**, i **moduł pyodbc**. Pierwsze trzy bibliotek umożliwia dostęp do usług Azure storage, Azure Machine Learning i Azure Cosmos DB (bazę danych NoSQL na platformie Azure). Czwarty biblioteka, moduł pyodbc (wraz z sterownik Microsoft ODBC dla programu SQL Server), umożliwia dostęp do programu SQL Server, usługi Azure SQL Database i Azure SQL Data Warehouse za pomocą języka Python przy użyciu interfejsu ODBC. Wprowadź **listy pip** aby zobaczyć wszystkie wymienione biblioteki. Pamiętaj uruchomić to polecenie zarówno język Python 2.7 i 3.5 środowiska.
-  * **R**: Dotyczących platformy Azure biblioteki w języku R, które są zainstalowane są **usługi Azure ml** i **RODBC**.
-  * **Java**: Na liście bibliotek Java usługi Azure można znaleźć w katalogu **/dsvm/sdk/AzureSDKJava** na maszynie Wirtualnej. Biblioteki klucza to Azure sterowniki magazynów i zarządzania interfejsami API usługi Azure Cosmos DB i JDBC dla programu SQL Server.  
+  * **Python**: Biblioteki związane z platformą Azure w języku Python, które są zainstalowane, to **Azure**, **Azure**, **pydocumentdb**i **moduł pyodbc**. Pierwsze trzy bibliotek umożliwia dostęp do usług Azure storage, Azure Machine Learning i Azure Cosmos DB (bazę danych NoSQL na platformie Azure). Czwarty biblioteka, moduł pyodbc (wraz z sterownik Microsoft ODBC dla programu SQL Server), umożliwia dostęp do programu SQL Server, usługi Azure SQL Database i Azure SQL Data Warehouse za pomocą języka Python przy użyciu interfejsu ODBC. Wprowadź **listy pip** aby zobaczyć wszystkie wymienione biblioteki. Pamiętaj uruchomić to polecenie zarówno język Python 2.7 i 3.5 środowiska.
+  * **R**: Biblioteki związane z platformą Azure w języku R, które są zainstalowane, to **Azure** i **RODBC**.
+  * **Język Java**: Listę bibliotek Java platformy Azure można znaleźć w katalogu **/dsvm/SDK/AzureSDKJava** na maszynie wirtualnej. Biblioteki klucza to Azure sterowniki magazynów i zarządzania interfejsami API usługi Azure Cosmos DB i JDBC dla programu SQL Server.  
 
 Możesz uzyskać dostęp [witryny Azure portal](https://portal.azure.com) z wstępnie zainstalowanymi przeglądarki Firefox. W witrynie Azure portal można utworzyć, zarządzanie i monitorowanie zasobów platformy Azure.
 
@@ -282,10 +282,10 @@ Aby uzyskać informacje na temat sposobu wdrażania modeli języków R i Python 
 Maszyna wirtualna ma kilka narzędzi i algorytmów, które zostały wstępnie skompilowany wstępnie zainstalowane lokalnie uczenia maszynowego. Należą do nich:
 
 * **Microsoft Cognitive Toolkit** : Zestaw narzędzi do uczenia głębokiego.
-* **Vowpal Wabbit**: Algorytm uczenia szybko online.
-* **xgboost**: Narzędzia, która zapewnia zoptymalizowane algorytmy wzmocnionego drzewa.
-* **Python**: Anaconda Python jest dostarczany w połączeniu z usługą algorytmów uczenia maszynowego przy użyciu bibliotek, takich jak Scikit-learn. Inne biblioteki można zainstalować za pomocą `pip install` polecenia.
-* **R**: Bogata biblioteka machine learning funkcji jest dostępna dla języka R. Niektóre z bibliotek, które są wstępnie zainstalowane są lm glm, randomForest, rpart. Inne biblioteki można zainstalować przez uruchomienie:
+* **Vowpal Wabbit**: Krótki algorytm uczenia w trybie online.
+* **xgboost**: Narzędzie, które zapewnia zoptymalizowane, podwyższające algorytmy drzewa.
+* **Python**: Środowisko Python Anaconda jest powiązane z algorytmami uczenia maszynowego z bibliotekami, takimi jak Scikit — uczenie się. Inne biblioteki można zainstalować za pomocą `pip install` polecenia.
+* **R**: Zaawansowana biblioteka funkcji uczenia maszynowego jest dostępna dla języka R. Niektóre z wstępnie zainstalowanych bibliotek to LM, GLM, randomForest, rpart. Inne biblioteki można zainstalować przez uruchomienie:
   
         install.packages(<lib name>)
 

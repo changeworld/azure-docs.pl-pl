@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: b298e66674753e33a28fb3404e36e63b5baa8dff
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ccb6ec5b6f29c57a6136c571558d4126d0607710
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559252"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607676"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: Wykluczanie mowy przy użyciu zestawu Speech SDK dla platformy .NET Core
 
 Przewodniki Szybki Start są również dostępne do [rozpoznawania mowy](quickstart-csharp-dotnetcore-windows.md) i [translacji mowy](quickstart-translate-speech-dotnetcore-windows.md).
 
-W tym artykule utworzysz aplikację konsolową w języku C# dla platformy .NET Core w systemie Windows za pomocą zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services. Wykorzystasz mowę z tekstu w czasie rzeczywistym do głośnika komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
+W tym artykule utworzysz aplikację konsolową w języku C# dla platformy .NET Core w systemie Windows za pomocą zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services. Wykorzystasz mowę z tekstu w czasie rzeczywistym do głośnika komputera. Aplikacja została skompilowana z pakietem [NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2017 lub nowszą (dowolna wersja).
 
 > [!NOTE]
 > .NET Core jest międzyplatformową platformą .NET typu open source, która wdraża specyfikację [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard).
@@ -33,7 +33,7 @@ Aby ukończyć ten przewodnik Szybki Start, potrzebujesz klucza subskrypcji usł
 Ten przewodnik Szybki start wymaga następujących elementów:
 
 * [Zestaw SDK dla platformy .NET Core](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Program Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) lub nowszy
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
@@ -66,7 +66,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
     ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po] pomyślnej syntezie (media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Dane wyjściowe konsoli po") pomyślnej syntezie
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dodatkowe przykłady, takie jak Metoda syntezy mowy do pliku dźwiękowego, są dostępne w serwisie GitHub.
 

@@ -1,54 +1,54 @@
 ---
-title: Często zadawane pytania — niestandardowe w usłudze Translator
+title: Często zadawane pytania — translator niestandardowy
 titleSuffix: Azure Cognitive Services
-description: Zawiera odpowiedzi na często zadawane pytania dotyczące niestandardowych w usłudze Translator.
+description: Zawiera odpowiedzi na często zadawane pytania dotyczące translatora niestandardowego.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 00921eeb9f966ed62d1a2d7605419432a9fa50f5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 25b7e7015b32609356eb138c86fbe537a87a7a22
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443398"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595818"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące [niestandardowe w usłudze Translator](https://portal.customtranslator.azure.ai).
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące [translatora niestandardowego](https://portal.customtranslator.azure.ai).
 
-## <a name="what-are-the-current-restrictions-in-custom-translator"></a>Jakie są bieżące ograniczenia w niestandardowych w usłudze Translator?
+## <a name="what-are-the-current-restrictions-in-custom-translator"></a>Jakie są bieżące ograniczenia w Translatoru niestandardowym?
 
-Istnieją ograniczenia i limity pod kątem rozmiaru pliku, szkolenie modelu i wdrażania modelu. Podczas konfigurowania szkolenia w celu zbudowania modelu w niestandardowych w usłudze Translator należy pamiętać o tych ograniczeń.
+Istnieją ograniczenia i ograniczenia dotyczące rozmiaru plików, szkoleń modeli i wdrażania modelu. Należy pamiętać o tych ograniczeniach podczas konfigurowania szkolenia, aby utworzyć model w usłudze translator niestandardowym.
 
-- Przesłanych plikach musi być mniejszy niż 100 MB.
-- Jednojęzyczne dane nie są obsługiwane.
+- Przesłane pliki muszą mieć rozmiar mniejszy niż 100 MB.
+- Dane w postaci dejęzykowej nie są obsługiwane.
 
-## <a name="when-should-i-request-deployment-for-a-translation-system-that-has-been-trained"></a>Gdy żądanie wdrożenia systemu tłumaczenia, po zapoznaniu?
+## <a name="when-should-i-request-deployment-for-a-translation-system-that-has-been-trained"></a>Kiedy należy zażądać wdrożenia dla systemu tłumaczenia, który został przeszkolony?
 
-Może upłynąć kilka szkoleniach tworzenia systemu tłumaczenia optymalne dla Twojego projektu. Można spróbować użyć więcej danych szkoleniowych lub bardziej dokładnie odfiltrowane dane, jeśli wynik BELEU i / lub wyniki testu nie są zadowalające. Powinny być ściśle i ostrożność podczas projektowania dostosowywania zestawu i test ustawiona, to w pełni językiem terminologii i stylu materiały, które chcesz przetłumaczyć. Może być bardziej liberalne w tworzenie danych szkoleniowych i eksperymentować z różnymi opcjami. Żądanie wdrożenia systemu, gdy jesteś zadowolony z tłumaczenia, w wynikach testów systemu, nie zawierają więcej danych do dodania do szkoleń, aby poprawić uczonego systemu i chcesz uzyskać dostęp do uczonego modelu za pomocą interfejsów API.
+Utworzenie optymalnego systemu tłumaczenia dla projektu może zająć kilka szkoleń. Możesz chcieć spróbować użyć większej ilości danych szkoleniowych lub dokładniej przefiltrowanych danych, jeśli wynik BLEU i/lub wyniki testu nie są zadowalające. Należy mieć rygorystyczne i staranne projektowanie zestawu strojenia oraz zestawu testów, aby być w pełni reprezentatywne dla terminologii i stylu materiału, który ma zostać przekształcony. Możesz być bardziej zliberalizowany w tworzeniu danych szkoleniowych i eksperymentować z innymi opcjami. Zażądaj wdrożenia systemu w przypadku zadowalającego tłumaczenia wyników testów systemu, nie dodawaj więcej danych do szkolenia, aby usprawnić przeszkolony system i uzyskać dostęp do przeszkolonego modelu za pośrednictwem interfejsów API.
 
-## <a name="how-many-trained-systems-can-be-deployed-in-a-project"></a>Jak wiele systemów uczonego można wdrożyć w projekcie?
+## <a name="how-many-trained-systems-can-be-deployed-in-a-project"></a>Ile przeszkolonych systemów można wdrożyć w projekcie?
 
-Tylko jeden system uczonego można wdrożyć na projekt. Może upłynąć kilka szkoleniach utworzenie systemu tłumaczenia odpowiednie dla Twojego projektu, a firma Microsoft zachęca do żądania wdrożenia szkolenia, zapewniająca najlepszych wyników. Można określić jakość szkolenia według wyników BELEU (większa jest lepsza) oraz przez konsultacji z recenzentów, przed podjęciem decyzji, czy jakość tłumaczenia jest odpowiednia dla wdrożenia.
+Dla każdego projektu można wdrożyć tylko jeden przeszkolony system. Utworzenie odpowiedniego systemu tłumaczeń dla projektu może zająć kilka szkoleń i zachęcamy do zażądania wdrożenia szkolenia, które daje najlepszy wynik. Możesz określić jakość szkolenia według wyniku BLEU (lepszym rozwiązaniem jest lepsza) i konsultacji z recenzentami przed podjęciem decyzji, że jakość tłumaczeń jest odpowiednia do wdrożenia.
 
-## <a name="when-can-i-expect-my-trainings-to-be-deployed"></a>Kiedy można spodziewać się Moje szkoleniach do wdrożenia?
+## <a name="when-can-i-expect-my-trainings-to-be-deployed"></a>Kiedy mogę oczekiwać, że moje szkolenia zostaną wdrożone?
 
-Wdrożenie zwykle trwa krócej niż godzinę.
+Wdrożenie zazwyczaj trwa krócej niż godzinę.
 
-## <a name="how-do-you-access-a-deployed-system"></a>Jak można uzyskać dostępu do wdrożonym systemie?
+## <a name="how-do-you-access-a-deployed-system"></a>Jak uzyskać dostęp do wdrożonego systemu?
 
-Wdrożonych systemów jest możliwy za pośrednictwem V3 interfejs API tekstu usługi Translator firmy Microsoft, określając CategoryID. Więcej informacji na temat interfejsu API tekstu usługi Translator można znaleźć w [dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) strony sieci Web.
+Do wdrożonych systemów można uzyskać dostęp za pośrednictwem programu Microsoft interfejs API tłumaczenia tekstu w usłudze Translator v3, określając IDKategorii. Więcej informacji na temat interfejs API tłumaczenia tekstu w usłudze Translator można znaleźć na stronie sieci Web [dokumentacji interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
 
-## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Jak pominąć wyrównanie i zdania, jeśli moje dane są już zdania wyrównane?
+## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Jak mogę pominąć wyrównywanie i przerywanie zdania, jeśli moje dane są już wyrównane do zdania?
 
-Niestandardowe w usłudze Translator pomija wyrównanie zdania i zdanie istotne dla plików TMX i szukać plików tekstowych za pomocą `.align` rozszerzenia. `.align` pliki użytkownikom opcję pomijania zdania niestandardowe Translator istotne i proces wyrównywania dla plików, które są dokładnie wyrównana, a potrzebują, nie dalszego przetwarzania. Firma Microsoft zaleca używanie `.align` rozszerzenia tylko dla plików, które są dokładnie wyrównana.
+Niestandardowa translator pomija wyrównanie zdania i przerywanie zdania dla plików TMX oraz dla plików tekstowych z `.align` rozszerzeniem. `.align`Pliki zapewniają użytkownikom opcję pomijania procesu rozdzielania i wyrównania w przypadku plików, które są idealnie wyrównane i nie wymagają dalszej obróbki. Zalecamy używanie `.align` rozszerzenia tylko w przypadku plików, które są idealnie wyrównane.
 
-Liczba wyodrębnionych zdania niezgodna dwa pliki o tej samej nazwie podstawowej niestandardowe w usłudze Translator będą nadal działać aligner zdania `.align` plików.
+Jeśli liczba wyodrębnionych zdań nie pasuje do obu plików o tej samej nazwie podstawowej, usługa translatora niestandardowego będzie nadal uruchamiać ten `.align` sam plik.
 
-## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Podjęto przekazanie mojego TMX, ale jest wyświetlany komunikat, "przetwarzania dokumentów nie powiodło się.".
+## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Próbowaliśmy przekazać moją TMX, ale jest to komunikat "Przetwarzanie dokumentu nie powiodło się".
 
-Upewnij się, że TMX odpowiada TMX 1.4b specyfikacji na <https://www.gala-global.org/tmx-14b>.
+Upewnij się, że TMX jest zgodna ze specyfikacją TMX 1.4 b pod <https://www.gala-global.org/tmx-14b>adresem.

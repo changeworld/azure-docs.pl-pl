@@ -1,56 +1,56 @@
 ---
-title: Co to jest, szkolenia i modelu? — Niestandardowy w usłudze Translator
+title: Co to jest szkolenia i model? — Niestandardowy w usłudze Translator
 titleSuffix: Azure Cognitive Services
-description: Model jest systemu, która zapewnia translacji dla pary określonego języka. Wynikiem pomyślnym szkolenia jest model. Podczas uczenia modelu, trzy wzajemnie wykluczających się zestawy danych są wymagane, zestaw danych szkoleniowych, dostosowywania zestawu danych i testowanie zestawu danych.
+description: Modelem jest system, który zapewnia tłumaczenie dla określonej pary językowej. Wynikiem pomyślnego szkolenia jest model. Podczas uczenia modelu są wymagane trzy wzajemnie wykluczające się zestawy danych szkoleniowych, zestaw kontrolek danych i testowanie zestawu danych.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
-ms.openlocfilehash: 5d82baf3e7458a42429df9dafc9c8d5e16744716
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: af3f795dc5036b23b82562e7af4582bd90b44f47
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436114"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595434"
 ---
-# <a name="what-are-trainings-and-models"></a>Jakie są modele i środkom?
+# <a name="what-are-trainings-and-models"></a>Co to są szkolenia i modele?
 
-Model jest systemu, która zapewnia translacji dla pary określonego języka.
-Wynikiem pomyślnym szkolenia jest model. Podczas uczenia modelu, wymagane są trzy wzajemnie wykluczających się zestawów danych: szkolenia zestawu danych dostosowywania zestawu danych i testowanie zestawu danych. Można również podać dane słownika.
+Modelem jest system, który zapewnia tłumaczenie dla określonej pary językowej.
+Wynikiem pomyślnego szkolenia jest model. Podczas uczenia modelu wymagane są trzy wzajemnie wykluczające się zestawy danych: zestaw danych szkoleniowych, zestaw danych dostrajania i testowanie zestawu danych. Można również dostarczyć dane słownika.
 
-Jeśli tylko dane szkoleniowe podano podczas kolejkowania szkoleniowe, niestandardowe w usłudze Translator automatycznie zostanie złóż, dostosowywania i testowania zestawów danych. Wówczas wykluczyć 5000 zdania z danych szkoleniowych i 2500 każdego można złożyć dostrajanie i zestawów testów.
+Jeśli podczas kolejkowania szkolenia są udostępniane tylko dane szkoleniowe, usługa Custom translator automatycznie DOSTROJ i przetestuje zestawy danych. Spowoduje to wykluczenie 5 000 zdań z danych szkoleniowych i użycie tych 2 500 do złożenia zestawów dostrajania i testowania.
 
-## <a name="training-dataset-for-custom-translator"></a>Zestaw danych szkoleniowych niestandardowe w usłudze Translator
+## <a name="training-dataset-for-custom-translator"></a>Zestaw danych szkoleniowych dla translatora niestandardowego
 
-Dokumenty objęte zestaw szkoleniowy są używane przez niestandardowe w usłudze Translator jako podstawy do tworzenia modelu. Podczas wykonywania szkolenia zdań, które znajdują się w tych dokumentach są wyrównane do (lub sparowanych). Możesz korzystać z ochroną praw w tworzenie zestawu dokumentów szkolenia. Możesz dołączyć dokumenty, które Twoim zdaniem są istotne stycznej w jednym modelu. Wyklucz je ponownie w innej, aby zobaczyć wpływ na [BELEU (Understudy dwujęzyczny oceny) wynik](what-is-bleu-score.md). Tak długo, jak możesz zachować dostosowywania zestawu i stały zestaw testów, możesz eksperymentować w skład zestawu szkoleniowego. To podejście jest efektywny sposób modyfikowania jakość tłumaczenia systemu.
+Dokumenty zawarte w zestawie szkoleniowym są używane przez translatora niestandardowego jako podstawę tworzenia modelu. W trakcie wykonywania szkoleniowego, zdania, które znajdują się w tych dokumentach są wyrównane (lub sparowane). Możesz wykonać Liberties w redagowaniu zestawu dokumentów szkoleniowych. Można dołączać dokumenty, które są uważane za odnoszące się do styczności w jednym modelu. Należy ponownie wykluczyć je w innej, aby zobaczyć wpływ w [Bleu (analiza dwujęzyczna podkreślenie)](what-is-bleu-score.md). Tak długo, jak zachowujesz zestaw strojenia i stały zestaw testów, możesz poeksperymentować z kompozycją zestawu szkoleniowego. To podejście jest skutecznym sposobem modyfikacji jakości systemu tłumaczenia.
 
-Można uruchomić wiele szkoleniach w obrębie projektu i porównaj [wyniki BELEU](what-is-bleu-score.md) we wszystkich przebiegów szkoleniowych. Po uruchomieniu wielu szkoleniach dla porównania, upewnij się, w tej samej dostrajania / dane testowe określono każdorazowo. Ponadto upewnij się, że również sprawdzić ręcznie w wynikach ["Testowanie"](how-to-view-system-test-results.md) kartę.
+Można uruchomić wiele szkoleń w ramach projektu i porównać [wyniki Bleu](what-is-bleu-score.md) na wszystkich przebiegach szkoleniowych. W przypadku korzystania z wielu szkoleń w celu porównania upewnij się, że dane dotyczące dostrajania/testowania są określane za każdym razem. Upewnij się również, że wyniki są również sprawdzane ręcznie na karcie ["testowanie"](how-to-view-system-test-results.md) .
 
-## <a name="tuning-dataset-for-custom-translator"></a>Dostrajanie zestawu danych dla niestandardowych w usłudze Translator
+## <a name="tuning-dataset-for-custom-translator"></a>Dostrajanie zestawu danych dla translatora niestandardowego
 
-Równoległe dokumenty zawarte w tym zestawie są używane przez niestandardowe w usłudze Translator należy dostosować system tłumaczeń, aby uzyskać optymalne wyniki.
+W przypadku dokumentów równoległych zawartych w tym zestawie są używane przez translator niestandardowy w celu dostosowania systemu tłumaczenia w celu uzyskania optymalnych wyników.
 
-Dostrajania zestaw jest używany podczas szkolenia dostosowanie wszystkich parametrów i wagi systemu tłumaczenia optymalnej wartości. Wybierz usługi dostrajania zestaw dokładnie: dostosowywania zestawu powinna być reprezentatywna dla zawartości dokumentów, których zamierzasz w przyszłości tłumaczenie. Zestaw dostrajania ma poważny wpływ na jakość tłumaczenia utworzone. Dostrajanie umożliwia systemowi tłumaczenia Podaj tłumaczenia, które znajdują się najbliżej przykłady podane w zestawie danych dostosowywania. Ponad 2500 zdania jako dostosowywania zestawu nie jest konieczne. Jakości tłumaczenia optymalne zalecane jest ręcznie wybrać zestaw dostrajania przez wybranie najbardziej reprezentatywnego wyboru zdań.
+Zestaw strojenia jest używany podczas uczenia w celu dostosowania wszystkich parametrów i wag systemu tłumaczenia do optymalnych wartości. Starannie wybieraj zestaw strojenia: zestaw strojenia powinien być reprezentatywny dla zawartości dokumentów, które mają być tłumaczone w przyszłości. Zestaw strojenia ma istotny wpływ na jakość tworzonych tłumaczeń. Dostrajanie umożliwia systemowi translacji dostarczanie tłumaczeń, które znajdują się najbliżej próbek dostarczanych w zestawie danych dostrajania. Nie potrzebujesz więcej niż 2500 zdań jako zestawu strojenia. Aby zapewnić optymalną jakość tłumaczenia, zaleca się ręczne wybranie zestawu dostrajania, wybierając najbardziej reprezentatywny wybór zdań.
 
-Podczas tworzenia zestawu dostrajania, wybierz zdań, które są zrozumiałe i reprezentatywnej długość przyszłych zdań, które oczekują na tłumaczenie. Należy również wybrać zdań, które mają słów i fraz, które chcesz przetłumaczyć w przybliżony dystrybucji, który powinien być w przyszłości tłumaczenia. W praktyce długość zdania, 8-18 słów dadzą najlepsze wyniki, ponieważ te zdania zawiera wystarczający kontekst, aby pokazać zmienną modulacją i podaj długości frazę, która jest znaczący, nie będąc zbyt skomplikowana.
+Podczas tworzenia zestawu strojenia wybierz zdania, które są zrozumiałą i reprezentatywną długością przyszłych zdań, które zamierzasz przetłumaczyć. Należy również wybrać zdania, które mają słowa i frazy, które mają być przetłumaczone w przybliżonej dystrybucji oczekiwanej w przyszłych tłumaczeniach. W przypadku zdania o długości od 8 do 18 słów będą dawać najlepsze wyniki, ponieważ te zdania zawierają wystarczająco dużo kontekstu, aby pokazać przegięcia i zapewnić znaczącą długość frazy, bez nadmiernej złożoności.
 
-Dobry opis typu zdania służące do dostosowywania zestawu jest prose: rzeczywiste fluent zdań. Nie komórki tabeli, nie poems, nie listę elementów, nie tylko znak interpunkcyjny lub liczb w zdaniu - regularne języka.
+Dobrym opisem typu zdań do użycia w zestawie strojenia jest Prose: rzeczywiste zdania Fluent. Nie są to komórki tabeli, nie Poems, niezawierające list rzeczy, nie tylko znaki interpunkcyjne ani cyfry w języku regularnym.
 
-Jeśli ręcznie wybierzesz dostosowywania zestawu danych, go nie powinna mieć żadnego z tych samych zdania jako dane szkolenia i testowania. Dostrajania zestaw ma znaczący wpływ na jakość tłumaczenia - rozważnych zdania.
+Jeśli ręcznie wybierzesz zestaw danych dostrajania, nie powinien on zawierać żadnych z tych samych zdań co dane szkoleniowe i testowe. Zestaw strojenia ma znaczny wpływ na jakość tłumaczeń — należy uważnie wybierać zdania.
 
-Jeśli nie masz pewności, co do wyboru dla zestawu dostrajania, po prostu zaznacz zestaw szkoleniowy i pozwól wybierz zestaw dostrajania dla Ciebie niestandardowego w usłudze Translator. Jeśli umożliwisz Translator niestandardowe, wybierz zestaw dostrajania automatycznego, spowoduje to losowy podzbiór zdania ze swoich dokumentów dwujęzyczny szkolenia i Wyklucz te zdania z samych materiałów szkoleniowych.
+Jeśli nie masz pewności co do wyboru dla zestawu strojenia, po prostu wybierz zestaw szkoleniowy i pozwól na wybór zestawu strojenia przez użytkownika. Gdy zezwolisz na automatyczne wybieranie zestawu strojenia przez translatora niestandardowego, będzie on używał losowego podzestawu zdań z dokumentów szkoleniowych dwujęzycznych i wyklucza te zdania z samego materiału szkoleniowego.
 
-## <a name="testing-dataset-for-custom-translator"></a>Testowanie zestawu danych dla niestandardowych w usłudze Translator
+## <a name="testing-dataset-for-custom-translator"></a>Testowanie zestawu danych dla translatora niestandardowego
 
-Równoległe dokumenty zawarte w zestawie testów są używane do obliczenia wyniku BELEU (Understudy dwujęzyczny oceny). Ten wynik wskazuje jakość tłumaczenia systemu. Ten wynik faktycznie informuje, jak blisko tłumaczenia wykonywane przez system tłumaczeń wynikające z to szkolenie dopasowania zdań odwołanie do zestawu danych testowych.
+Równoległe dokumenty zawarte w zestawie testów są używane do obliczania wyniku BLEU (analiza dwujęzyczna). Ten wynik wskazuje jakość systemu tłumaczenia. Ten wynik polega na tym, jak ściśle tłumaczenia wykonywane przez system tłumaczenia wynikający z tego szkolenia pasują do zdań odniesienia w zestawie danych testowych.
 
-Wynik BELEU jest pomiar różnica między automatycznego tłumaczenia i tłumaczenie odwołania. Jego wartość z zakresu od 0 do 100. Wynik 0 wskazuje, czy nie jednowyrazowego odwołanie jest wyświetlana w tłumaczenia. Wynikiem 100 oznacza, że automatycznego tłumaczenia dokładnie odpowiada odwołanie: samego wyrazu jest dokładnie tym samym położeniu. Otrzymany wynik jest średnią ocenę BELEU dla wszystkich zdań zestawu testów.
+Wynik BLEU jest pomiarem różnicy między automatycznym translacją i translacją odwołań. Wartość z zakresu od 0 do 100. Wynik 0 wskazuje, że w tłumaczeniu nie występuje pojedynczy wyraz odwołania. Wynik 100 wskazuje, że automatyczne tłumaczenie dokładnie pasuje do odwołania: ten sam wyraz znajduje się w dokładnie tym samym położeniu. Otrzymany wynik to średnia ocena BLEU dla wszystkich zdań zestawu testowego.
 
-Zestaw testów powinny obejmować równoległe dokumentów, których najbardziej pożądane tłumaczenia odpowiedniego zdań języka źródłowego w parze zdania język docelowy. Można użyć takich samych kryteriów, używane do tworzenia zestawu dostrajania. Zestaw testów ma jednak żadnego wpływu na jakość system tłumaczeń. Służy wyłącznie do generowania oceny BELEU dla Ciebie i nic innego.
+Zestaw testowy powinien zawierać dokumenty równoległe, w których zdania języka docelowego są najbardziej pożądanymi tłumaczeniami zdań języka źródłowego w parze. Możesz chcieć użyć tych samych kryteriów, które zostały użyte do utworzenia zestawu strojenia. Jednak zestaw testów nie ma wpływu na jakość systemu tłumaczenia. Jest ona używana wyłącznie do generowania wyniku BLEU dla Ciebie, a nie dla żadnej innej.
 
-Nie musisz ponad 2500 zdania jako zestawu testowego. Jeśli umożliwisz system automatycznie wybierz zestaw testów, wówczas losowy podzbiór zdania ze swoich dokumentów dwujęzyczny szkolenia i Wyklucz te zdania z samych materiałów szkoleniowych.
+Nie potrzebujesz więcej niż 2 500 zdań jako zestawu testowego. Gdy zezwolisz systemowi na automatyczne wybieranie zestawu testów, będzie on używał losowego podzestawu zdań z dokumentów szkoleniowych dwujęzycznych i wyklucza te zdania z samego materiału szkoleniowego.
 
-Wyświetl tłumaczenia niestandardowych zestawu testowego i porównaj je z tłumaczenia podane w zestawie testów, przechodząc do karty testu w obrębie modelu.
+Można wyświetlić niestandardowe tłumaczenia zestawu testów i porównać je z tłumaczeniami dostarczonymi w zestawie testów, przechodząc do karty test w modelu.

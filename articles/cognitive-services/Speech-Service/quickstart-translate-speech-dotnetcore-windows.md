@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: fa2601ea80a0d875724126f8e6cb2bd65cf5ec3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 81e652e6456b049c2f4fca938d02d1b0724f2ffd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559232"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609670"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla platformy .NET Core
 
 Przewodniki Szybki Start są również dostępne dla [zamiany mowy na tekst](quickstart-csharp-dotnet-windows.md) i [zamiany tekstu na mowę](quickstart-text-to-speech-dotnetcore.md).
 
-W tym przewodniku Szybki start utworzysz prostą aplikację .NET Core, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczona do uruchamiania w 64-bitowych systemach Windows i jest kompilowana przy użyciu [pakietu NuGet zestawu SDK usługi Mowa](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017.
+W tym przewodniku Szybki start utworzysz prostą aplikację .NET Core, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja została zaprojektowana tak, aby działała w 64-bitowym systemie Windows i została skompilowana przy użyciu [pakietu NuGet zestawu mowy SDK](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2017 lub nowszego.
 
 Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy, zapoznaj się z [listą obsługiwanych języków](language-support.md).
 
@@ -30,7 +30,7 @@ Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy,
 Ten przewodnik Szybki start wymaga następujących elementów:
 
 * [Zestaw SDK dla platformy .NET Core](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Program Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) lub nowszy
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio

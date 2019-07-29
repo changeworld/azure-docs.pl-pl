@@ -1,50 +1,50 @@
 ---
-title: Co to jest obszar roboczy i projektu? — Niestandardowy w usłudze Translator
+title: Co to jest obszar roboczy i projekt? — Niestandardowy w usłudze Translator
 titleSuffix: Azure Cognitive Services
-description: Obszar roboczy jest obszar roboczy, do redagowania i tworzenia systemu tłumaczenia niestandardowych. Obszar roboczy może zawierać wiele projektów, modeli i dokumentów. Projekt jest otoką elementu modelu, dokumentów i testów. Każdy projekt automatycznie zawiera wszystkich dokumentów, które zostały załadowane do obszaru roboczego, które mają pary odpowiedni język.
+description: Obszar roboczy to obszar roboczy służący do redagowania i kompilowania niestandardowego systemu tłumaczenia. Obszar roboczy może zawierać wiele projektów, modeli i dokumentów. Projekt jest otoką dla modelu, dokumentów i testów. Każdy projekt automatycznie zawiera wszystkie dokumenty, które są przekazywane do tego obszaru roboczego, który ma poprawną parę językową.
 services: cognitive-services
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: c35f3911b591a0d9adccdc48dbdc17f8afb5ea00
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 23db27ba7b51b0f5a312498dbcb1d0f2741245bb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447341"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595345"
 ---
-# <a name="what-is-a-custom-translator-workspace"></a>Co to jest obszar roboczy niestandardowe w usłudze Translator?
+# <a name="what-is-a-custom-translator-workspace"></a>Co to jest obszar roboczy usługi tłumaczenia niestandardowego?
 
-Obszar roboczy jest obszar roboczy, do redagowania i tworzenia systemu tłumaczenia niestandardowych. Obszar roboczy może zawierać wiele projektów, modeli i dokumentów. Cała praca wykonywana w niestandardowych w usłudze Translator znajduje się wewnątrz określonego obszaru roboczego.
+Obszar roboczy to obszar roboczy służący do redagowania i kompilowania niestandardowego systemu tłumaczenia. Obszar roboczy może zawierać wiele projektów, modeli i dokumentów. Cała służbowa zawartość w usłudze translator niestandardowy znajduje się w określonym obszarze roboczym.
 
-Obszar roboczy jest prywatny dla Ciebie i osoby, którym można zaprosić do obszaru roboczego. Uninvited osoby nie mają dostępu do zawartości obszaru roboczego. Możesz zaprosić jak najwięcej osób, ponieważ do obszaru roboczego, takich jak i zmodyfikowaniu lub usunięciu ich dostęp w dowolnym momencie. Można również utworzyć nowy obszar roboczy. Domyślnie obszar roboczy nie będzie zawierać żadnych projektów lub dokumentów, które znajdują się w swoich obszarów roboczych.
+Obszar roboczy jest prywatny dla Ciebie i zapraszanych osób do obszaru roboczego. Nieproszone osoby nie mają dostępu do zawartości obszaru roboczego. Możesz zapraszać dowolną liczbę osób w Twoim obszarze roboczym i modyfikować lub usuwać swoje prawa dostępu w dowolnym momencie. Możesz również utworzyć nowy obszar roboczy. Domyślnie obszar roboczy nie będzie zawierał żadnych projektów ani dokumentów znajdujących się w innych obszarach roboczych.
 
-## <a name="what-is-a-custom-translator-project"></a>Co to jest projektem niestandardowe w usłudze Translator?
+## <a name="what-is-a-custom-translator-project"></a>Co to jest projekt translatora niestandardowego?
 
-Projekt jest otoką elementu modelu, dokumentów i testów. Każdy projekt automatycznie zawiera wszystkich dokumentów, które zostały załadowane do obszaru roboczego, które mają pary odpowiedni język. Na przykład jeśli masz zarówno angielski, hiszpański projektu i hiszpański do projektu w języku angielskim, ten sam dokumentów będą uwzględniane w obu projektach. Każdy projekt ma CategoryID skojarzonych z nim jest używany podczas wykonywania zapytań dotyczących [interfejsu API w wersji 3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) poszukiwaniu tłumaczeń. CategoryID to parametr służący do uzyskiwanie tłumaczenia dostosowany system utworzonych za pomocą niestandardowych w usłudze Translator.
+Projekt jest otoką dla modelu, dokumentów i testów. Każdy projekt automatycznie zawiera wszystkie dokumenty, które są przekazywane do tego obszaru roboczego, który ma poprawną parę językową. Na przykład, jeśli istnieje zarówno język angielski dla projektu hiszpańskiego, jak i projekt hiszpański dla języka angielskiego, te same dokumenty zostaną uwzględnione w obu projektach. Każdy projekt ma skojarzony z nim IDKategorii, który jest używany podczas wykonywania zapytań do [interfejsu API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) w celu tłumaczenia. IDKategorii jest parametrem używanym do uzyskiwania tłumaczeń z dostosowanego systemu utworzonego za pomocą translatora niestandardowego.
 
 ## <a name="project-categories"></a>Kategorie projektu
 
-Kategoria identyfikuje domeny — obszar terminologii i stylu, którego chcesz użyć — dla Twojego projektu. Wybierz kategorię, która jest najbardziej odpowiednie do dokumentów. W niektórych przypadkach wybraną kategorię bezpośrednio wpływa na zachowanie niestandardowe w usłudze Translator.
+Kategoria identyfikuje domenę — obszar terminologii i stylu, który ma być używany dla projektu. Wybierz kategorię, która jest najbardziej odpowiednia dla dokumentów. W niektórych przypadkach wybór kategorii bezpośrednio wpływa na zachowanie translatora niestandardowego.
 
-Firma Microsoft ma dwa zestawy modeli podstawowych. Są one ogólne i technologii. Jeśli kategoria **technologii** jest zaznaczone, modeli podstawowych technologii będą używane. Do innych wybór kategorii modele ogólne odniesienia są używane. Modelu odniesienia technologii, jak również w domeny z technologii, ale pokazuje niższa jakość, jeśli zdania używane na potrzeby tłumaczenia nie należy do domeny z technologii. Zalecamy, aby klienci mogą wybrać kategorię technologii, tylko wtedy, gdy zdania ściśle mieszczą się w domenie technologii.
+Mamy dwa zestawy modeli bazowych. Są one ogólne i technologie. W przypadku wybrania **technologii** kategorii będą używane modele linii bazowej technologii. W przypadku każdej innej kategorii są używane ogólne modele bazowe. Model linii bazowej technologii jest dobrze w domenie technologicznej, ale pokazuje niższą jakość, jeśli zdania używane do tłumaczenia nie wchodzą w skład domeny technologii. Zalecamy klientom wybór technologii kategorii tylko wtedy, gdy zdania są ściśle w domenie technologii.
 
-W tym samym obszarze roboczym można tworzyć projekty dla tej samej pary języka w różnych kategoriach. Niestandardowe w usłudze Translator uniemożliwia tworzenie duplikatu projektu za pomocą tej samej pary języka i kategorii. Zastosowanie etykiety do projektu umożliwia uniknięcie tego ograniczenia. Nie należy używać etykiety, chyba że w przypadku tworzenia systemów translation dla wielu klientów, jak dodawanie, że unikatową etykietę do projektu, które zostaną odzwierciedlone w swoich projektach CategoryID.
+W tym samym obszarze roboczym możesz tworzyć projekty dla tej samej pary językowej w różnych kategoriach. Niestandardowa translator uniemożliwia Tworzenie zduplikowanego projektu z tą samą parą językową i kategorią. Zastosowanie etykiety do projektu pozwala uniknąć tego ograniczenia. Nie używaj etykiet, chyba że tworzysz systemy tłumaczeń dla wielu klientów, ponieważ dodawanie unikatowej etykiety do projektu zostanie odzwierciedlone w swoich projektach IDKategorii.
 
 ## <a name="project-labels"></a>Etykiety projektu
 
-Niestandardowe w usłudze Translator umożliwia przypisanie etykiety projektu do projektu. Etykieta projektu rozróżnia między wieloma projektami za pomocą tej samej pary języka i kategorii. Najlepszym rozwiązaniem należy unikać projektu etykiety o ile to konieczne.
+Translator niestandardowy umożliwia przypisanie etykiety projektu do projektu. Etykieta projektu odróżnia wiele projektów z tą samą parą językową i kategorią. Najlepszym rozwiązaniem jest unikanie używania etykiet projektu, chyba że jest to konieczne.
 
-Etykieta projektu jest używana jako część CategoryID. Jeśli etykieta projektu pozostanie usunięta lub jest ustawiony tak samo w projektach, następnie projekty przy użyciu tej samej kategorii oraz *różnych* kierunki współużytkują ten sam CategoryID. To podejście jest korzystne, ponieważ zezwala ona na zostanie lub klient przełączać się między językami, korzystając z interfejsu API tekstu usługi Translator bez martwienia się o CategoryID, który jest unikatowy dla każdego projektu.
+Etykieta projektu jest używana jako część IDKategorii. Jeśli etykieta projektu jest pozostawiona nieustawiona lub jest ustawiana identycznie między projektami, projekty o tej samej kategorii i *różne* pary języka będą współużytkować ten sam IDkategorii. Takie podejście jest korzystne, ponieważ umożliwia użytkownikowi lub klientowi przechodzenie między językami w przypadku korzystania z interfejsu API usługi Text translator bez obaw o IDKategorii, który jest unikatowy dla każdego projektu.
 
-Na przykład, jeśli chciałem umożliwiające tłumaczenia w technologii domenie z angielskiego na francuski, a w języku francuskim do języka angielskiego, czy mogę utworzyć dwa projekty: jeden dla angielskiego -\> francuski i jeden dla francuski —\> języka angielskiego. I będzie określenie tej samej kategorii (technologia) dla obu i puste etykiety projektu. Umożliwi dopasowanie CategoryID dla obu projektów, więc I może wysłać zapytania do interfejsu API dla angielskiego i francuskiego tłumaczenia bez konieczności modyfikowania Moje CategoryID.
+Na przykład jeśli chciałem włączyć tłumaczenia w domenie technologii z języka angielskiego na francuski i z francuskiego na angielski, chcę utworzyć dwa projekty: jeden dla języka angielskiego —\> francuski i drugi dla języka\> francuskiego. Należy określić tę samą kategorię (technologię) dla obu i pozostawić pustą etykietę projektu. IDKategorii dla obu projektów jest zgodny, dlatego można wysyłać zapytania do interfejsu API w przypadku tłumaczeń w języku angielskim i francuskim bez konieczności modyfikowania mojego IDKategorii.
 
-Jeśli usługodawcy języka, a chcesz obsługiwać wielu klientów z różnych modeli, które zachowują parę języka i tej samej kategorii, następnie za pomocą etykiety projektu do rozróżnienia między klientami będzie poddanie decyzji.
+Jeśli jesteś dostawcą usług językowych i chcesz obsłużyć wielu klientów z różnymi modelami, które zachowują ten sam atrybut kategorii i języka, użyj etykiety projektu w celu rozróżnienia klientów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj o [szkolenia i model](training-and-model.md) Aby dowiedzieć się, jak i wydajnego tworzenia modelu tłumaczenia.
+- Przeczytaj o [szkoleniach i modelu](training-and-model.md) , aby poznać, jak efektywnie kompilować model tłumaczenia.

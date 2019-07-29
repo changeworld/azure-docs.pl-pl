@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: 6936d8f93221402fca9b250d09a842ce753e0e12
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fdc5e540dd7e84d47aa139768fbfc2614f38b376
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559316"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607714"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Szybki start: Wykorzystaj mowę C++ w systemie Windows przy użyciu zestawu Speech SDK
 
 Przewodniki Szybki Start są również dostępne do [rozpoznawania mowy](quickstart-cpp-windows.md) i [translacji mowy](quickstart-translate-speech-cpp-windows.md).
 
-W tym artykule opisano tworzenie aplikacji konsolowej w języku C++ dla systemu Windows. Używasz [zestawu speech Cognitive Services SDK](speech-sdk.md) , aby wypróbować mowę z tekstu w czasie rzeczywistym i odtwarzać mowę na głośniku komputera. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
+W tym artykule opisano tworzenie aplikacji konsolowej w języku C++ dla systemu Windows. Używasz [zestawu speech Cognitive Services SDK](speech-sdk.md) , aby wypróbować mowę z tekstu w czasie rzeczywistym i odtwarzać mowę na głośniku komputera. Aplikacja została skompilowana z pakietem [NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2017 lub nowszą (dowolna wersja).
 
 Funkcja opisana w tym artykule jest dostępna z [zestawu Speech SDK 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0).
 
@@ -61,7 +61,7 @@ Aby ukończyć ten przewodnik Szybki Start, potrzebujesz klucza subskrypcji usł
 
    ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnej syntezie](media/sdk/qs-tts-cpp-windows-console-output.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dodatkowe przykłady, takie jak zapisywanie mowy w pliku audio, są dostępne w serwisie GitHub.
 

@@ -1,106 +1,106 @@
 ---
 title: Jak zarządzać ustawieniami? — Niestandardowy w usłudze Translator
 titleSuffix: Azure Cognitive Services
-description: Jak zarządzać ustawieniami, Utwórz obszar roboczy, Udostępnij obszar roboczy i samodzielnie zarządzać kluczem subskrypcji w niestandardowych w usłudze Translator.
+description: Zarządzanie ustawieniami, tworzenie obszaru roboczego, udostępnianie obszaru roboczego i zarządzanie kluczami subskrypcji w usłudze translator niestandardowym.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d141b5dea8b0b12889559e6c80770379a6afac63
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448353"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595768"
 ---
 # <a name="how-to-manage-settings"></a>Jak zarządzać ustawieniami
 
-Na stronie Ustawienia niestandardowe w usłudze Translator mogą Utwórz nowy obszar roboczy, Udostępnij obszar roboczy i dodaje lub modyfikuje klucz subskrypcji Translation firmy Microsoft.
+Na stronie niestandardowe ustawienia usługi translator można utworzyć nowy obszar roboczy, udostępnić obszar roboczy oraz dodać lub zmodyfikować klucz subskrypcji tłumaczenia firmy Microsoft.
 
-Aby przejść do strony ustawień:
+Aby uzyskać dostęp do strony ustawień:
 
-1. Zaloguj się do [niestandardowe w usłudze Translator](https://portal.customtranslator.azure.ai/) portalu.
-2. W portalu niestandardowe w usłudze Translator kliknij ikonę koła zębatego na pasku bocznym.
+1. Zaloguj się do portalu usługi [Custom translator](https://portal.customtranslator.azure.ai/) .
+2. W portalu usługi tłumaczenia niestandardowego kliknij ikonę koła zębatego na pasku bocznym.
 
-    ![Ustawienie Linku](media/how-to/how-to-settings.png)
+    ![Link Ustawienia](media/how-to/how-to-settings.png)
 
 ## <a name="associating-microsoft-translator-subscription"></a>Kojarzenie subskrypcji usługi Microsoft Translator
 
-Musisz mieć interfejs API tekstu usługi Translator firmy Microsoft klucz subskrypcji skojarzonych z obszaru roboczego do uczenia lub wdrażania modeli.
+Aby uczenie lub wdrożenie modeli było możliwe, musisz mieć klucz subskrypcji Microsoft interfejs API tłumaczenia tekstu w usłudze Translator skojarzony z obszarem roboczym.
 
 Jeśli nie masz subskrypcji, wykonaj następujące czynności:
 
-1. Subskrybuj interfejs API tekstu usługi Microsoft Translator. W tym artykule przedstawiono sposób subskrybowania dla interfejsu API tekstu usługi Translator firmy Microsoft.
-2. Zanotuj klucz dla Twojej subskrypcji w usłudze translator. Klucz1 lub klucz2 są akceptowane.
-3. Przejdź z powrotem do portalu niestandardowe w usłudze Translator.
+1. Zasubskrybuj interfejs API tłumaczenia tekstu w usłudze Translator firmy Microsoft. W tym artykule pokazano, jak subskrybować interfejs API tłumaczenia tekstu w usłudze Translator firmy Microsoft.
+2. Zanotuj klucz subskrypcji usługi Translator. Klucz1 lub klucz2 są akceptowalne.
+3. Wróć do portalu usługi Custom translator.
 
-### <a name="add-existing-key"></a>Dodawanie istniejącego klucza
+### <a name="add-existing-key"></a>Dodaj istniejący klucz
 
-1.  Przejdź do strony "Ustawienia" dla obszaru roboczego.
-2.  Kliknij przycisk Dodaj klucz
+1.  Przejdź do strony "Ustawienia" w obszarze roboczym.
+2.  Kliknij pozycję Dodaj klucz
 
     ![Jak dodać klucz subskrypcji](media/how-to/how-to-add-subscription-key.png)
 
-3. W oknie dialogowym Wprowadź klucz dla Twojej subskrypcji w usłudze translator, a następnie kliknij przycisk "Dodaj".
+3. W oknie dialogowym wprowadź klucz subskrypcji usługi translator, a następnie kliknij przycisk "Dodaj".
 
     ![Jak dodać klucz subskrypcji](media/how-to/how-to-add-subscription-key-dialog.png)
-4.  Po dodaniu klucza można zmodyfikować lub usunąć klucz w dowolnym momencie.
+4.  Po dodaniu klucza można w dowolnym momencie zmodyfikować lub usunąć klucz.
 
-    ![Dodaj klucz subskrypcji](media/how-to/subscription-key-after-add.png)
+    ![Klucz subskrypcji po dodaniu](media/how-to/subscription-key-after-add.png)
 
 ## <a name="manage-your-workspace"></a>Zarządzanie obszarem roboczym
 
-Obszar roboczy jest obszar roboczy, do redagowania i tworzenia systemu tłumaczenia niestandardowych. Obszar roboczy może zawierać wiele projektów, modeli i dokumentów.
+Obszar roboczy to obszar roboczy służący do redagowania i kompilowania niestandardowego systemu tłumaczenia. Obszar roboczy może zawierać wiele projektów, modeli i dokumentów.
 
-Jeśli różne część swojej pracy musi być udostępniane osobom w innej, może być przydatne utworzenie wielu obszarów roboczych.
+Jeśli inna część pracy musi być udostępniana innym osobom, może być przydatne utworzenie wielu obszarów roboczych.
 
 ## <a name="create-a-new-workspace"></a>Utwórz nowy obszar roboczy
 
-1.  Przejdź do strony "Ustawienia" obszaru roboczego.
-2.  Kliknij pozycję "nowy obszar roboczy" przycisk w sekcji "Utwórz nowy obszar roboczy".
+1.  Przejdź do strony obszar roboczy "Ustawienia".
+2.  Kliknij przycisk "nowy obszar roboczy" w sekcji "Tworzenie nowego obszaru roboczego".
 
     ![Utwórz nowy obszar roboczy](media/how-to/create-new-workspace.png)
 
-4.  W oknie dialogowym Wprowadź nazwę nowego obszaru roboczego.
+4.  W oknie dialogowym wprowadź nazwę nowego obszaru roboczego.
 5.  Kliknij przycisk "Utwórz".
 
-    ![Utwórz nowy obszar roboczy okna dialogowego](media/how-to/create-new-workspace-dialog.png)
+    ![Okno dialogowe Tworzenie nowego obszaru roboczego](media/how-to/create-new-workspace-dialog.png)
 
-## <a name="share-your-workspace"></a>Udostępnij obszar roboczy
+## <a name="share-your-workspace"></a>Udostępnianie obszaru roboczego
 
-W niestandardowych w usłudze Translator można udostępniać obszaru roboczego z innymi osobami, jeśli różne część swojej pracy musi być udostępniane osobom w innej.
+W przypadku translatora niestandardowego możesz udostępnić obszar roboczy innym osobom, jeśli inna część pracy musi być udostępniana innym osobom.
 
-1.  Przejdź do strony "Ustawienia" obszaru roboczego.
+1.  Przejdź do strony obszar roboczy "Ustawienia".
 2.  Kliknij przycisk "Udostępnij" w sekcji "Ustawienia udostępniania".
 
-    ![Udostępnij obszar roboczy](media/how-to/share-workspace.png)
+    ![Udostępnianie obszaru roboczego](media/how-to/share-workspace.png)
 
-3.  W oknie dialogowym wprowadź rozdzielaną przecinkami listę adresów e-mail, które chcesz, aby ten obszar roboczy udostępnione. Upewnij się, udostępnić za pomocą adresu e-mail tej osoby używa się do niestandardowego w usłudze Translator z. Następnie wybierz odpowiedni poziom uprawnień do udostępniania.
+3.  W oknie dialogowym wprowadź rozdzieloną przecinkami listę adresów e-mail, które mają być udostępniane przez ten obszar roboczy. Upewnij się, że udostępniasz adres e-mail, za pomocą którego osoba loguje się do usługi Custom translator przy użyciu programu. Następnie wybierz odpowiedni poziom uprawnień do udostępniania.
 
-4.  Jeśli obszar roboczy nadal ma domyślną nazwę "Mój obszar roboczy", trzeba będzie je zmienić przed udostępnieniem obszaru roboczego.
+4.  Jeśli obszar roboczy ma nadal domyślną nazwę "Mój obszar roboczy", musisz go zmienić przed udostępnieniem obszaru roboczego.
 5.  Kliknij przycisk "Zapisz".
 
 ## <a name="sharing-permissions"></a>Uprawnienia do udostępniania
 
-1.  **Czytnik:** Czytnik w obszarze roboczym będą mogli wyświetlać wszystkie informacje w obszarze roboczym.
+1.  **Czytnika** Czytnik w obszarze roboczym będzie mógł wyświetlić wszystkie informacje w obszarze roboczym.
 
-2.  **Edytor:** Edytor w obszarze roboczym będą mogli dodać dokumenty, uczyć modele i usuwać dokumenty i projektów. One można dodać klucz subskrypcji, ale nie można modyfikować, który jest udostępniany przez obszar roboczy, usunąć obszar roboczy lub zmienić nazwę obszaru roboczego.
+2.  **Edytora** Edytor w obszarze roboczym będzie mógł dodawać dokumenty, przeszkolić modele i usuwać dokumenty i projekty. Mogą oni dodać klucz subskrypcji, ale nie może modyfikować osoby, którym udostępniono obszar roboczy, usunąć obszar roboczy lub zmienić nazwę obszaru roboczego.
 
-3.  **Właściciel:** Właściciel ma pełne uprawnienia do obszaru roboczego.
+3.  **Właociciela** Właściciel ma pełne uprawnienia do obszaru roboczego.
 
-## <a name="change-sharing-permission"></a>Zmiana uprawnień do udostępniania
+## <a name="change-sharing-permission"></a>Uprawnienie do zmiany udostępniania
 
-Jeśli obszar roboczy jest udostępniony, w sekcji "Ustawienia udostępniania" pokazuje wszystkich adresów e-mail, które są udostępniane przez ten obszar roboczy. Możesz zmienić istniejące udostępniania uprawnień dla każdego z adresów e-mail, jeśli masz dostęp właściciela do obszaru roboczego.
+Po udostępnieniu obszaru roboczego w sekcji "Ustawienia udostępniania" są wyświetlane wszystkie adresy e-mail, które są udostępniane przez ten obszar roboczy. Jeśli masz dostęp właściciela do obszaru roboczego, możesz zmienić istniejące uprawnienia do udostępniania dla każdego adresu e-mail.
 
-1.  W sekcji "Ustawienia udostępniania" dla każdej wiadomości e-mail menu rozwijane zawiera bieżący poziom uprawnień.
+1.  W sekcji "Ustawienia udostępniania" poszczególnych wiadomości e-mail menu rozwijane zawiera bieżący poziom uprawnień.
 
-2.  Kliknij menu rozwijane i wybierz nowy poziom uprawnień, które chcesz przypisać do tego adresu e-mail.
+2.  Kliknij menu rozwijane i wybierz nowy poziom uprawnień, który chcesz przypisać do tego adresu e-mail.
 
     ![Udostępnianie ustawień uprawnień](media/how-to/sharing-permission-settings.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, [jak przeprowadzić migrację do swojego obszaru roboczego i projektu](how-to-migrate.md) z [Centrum w usłudze Translator firmy Microsoft](https://hub.microsofttranslator.com)
+- Dowiedz się [, jak przeprowadzić migrację obszaru roboczego i projektu](how-to-migrate.md) z usługi [Microsoft Translator Hub](https://hub.microsofttranslator.com)

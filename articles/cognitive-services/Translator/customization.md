@@ -1,7 +1,7 @@
 ---
-title: Dostosowanie tłumaczenia — interfejs API tekstu usługi Translator
-titlesuffix: Azure Cognitive Services
-description: Użyj Centrum w usłudze Translator firmy Microsoft, aby utworzyć własny system tłumaczenia maszynowego, korzystając z preferowanych terminologii i stylu.
+title: Dostosowanie tłumaczenia — interfejs API tłumaczenia tekstu w usłudze Translator
+titleSuffix: Azure Cognitive Services
+description: Użyj centrum usługi Microsoft translator, aby skompilować własny system tłumaczenia maszynowego przy użyciu preferowanej terminologii i stylu.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,58 +10,58 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 87c47fc970ccb96419818e3b3e39c939201708f0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e6771a0d72592f1952853642ceea196b02774ada
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447334"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595314"
 ---
-# <a name="customize-your-text-translations"></a>Dostosuj tłumaczenia tekstu
+# <a name="customize-your-text-translations"></a>Dostosowywanie tłumaczenia tekstu
 
-Usługa Microsoft Translator niestandardowe to funkcja usługi Microsoft Translator, która umożliwia użytkownikom dostosowywanie zaawansowane neuronowego tłumaczenia maszynowego Microsoft Translator podczas tłumaczenia tekstu przy użyciu interfejsu API tłumaczenia tekstu (tylko wersja 3).
+Usługa Microsoft Translator firmy Microsoft jest funkcją usługi tłumaczenia, która umożliwia użytkownikom dostosowanie zaawansowanego tłumaczenia maszynowego neuronowych w usłudze Microsoft Translator podczas tłumaczenia tekstu przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator (tylko wersja 3).
 
-Tej funkcji można również dostosować tłumaczenia mowy, gdy jest używane z [mowy w usłudze Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
+Funkcja ta może również służyć do dostosowywania tłumaczenia mowy, gdy jest używany z [Cognitive Services mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
 ## <a name="custom-translator"></a>Custom Translator
 
-Translator niestandardowe umożliwiają tworzenie tłumaczenie neuronowe systemami, zapoznaj się z terminologią używane we własnych firm i branży. System tłumaczeń dostosowany zostanie następnie integrowanie istniejących aplikacji, przepływów pracy i witryn sieci Web.
+Dzięki usłudze translator niestandardowy można budować systemy tłumaczenia neuronowych, które znają terminologię używaną we własnej firmie i branży. Dostosowany system tłumaczenia zostanie następnie zintegrowany z istniejącymi aplikacjami, przepływami pracy i witrynami sieci Web.
 
 ### <a name="how-does-it-work"></a>Jak to działa?
 
-Użyj wcześniej przetłumaczone dokumentów (ulotki, stron sieci Web, dokumentacji, itp.), system tłumaczeń, odzwierciedlający Twoje specyficzne dla domeny terminologii i stylu, lepiej niż system ogólnego tłumaczenia kompilacji. Użytkownicy mogą przesłać dokumenty TMX XLIFF, TXT, DOCX i XLSX.  
+Skorzystaj z wcześniej przetłumaczonych dokumentów (ulotek, stron sieci Web, dokumentacji itp.), aby skompilować system tłumaczenia, który odzwierciedla terminologię i styl specyficzny dla domeny, lepszy niż ogólny system tłumaczenia. Użytkownicy mogą przekazywać dokumenty TMX, XLIFF, TXT, DOCX i XLSX.  
 
-System akceptuje także danych, który jest równolegle na poziomie dokumentu, ale jeszcze nie jest wyrównany na poziomie pojedynczych zdań. Jeśli użytkownicy mają dostęp do wersji tej samej zawartości, w wielu językach, ale w oddzielnych dokumentów niestandardowe w usłudze Translator będzie można automatycznie dopasowywać zdań między dokumentów.  System umożliwia również jednojęzyczne danych w językach jednego lub obu tych uzupełniają dane równoległe szkolenie i ulepszać tłumaczenia.
+System akceptuje również dane, które są równoległe na poziomie dokumentu, ale nie są jeszcze wyrównane na poziomie zdania. Jeśli użytkownicy mają dostęp do wersji tej samej zawartości w wielu językach, ale w oddzielnych dokumentach translator niestandardowy będzie mógł automatycznie dopasować zdania w dokumentach.  System może również używać danych w języku lub w obu językach, aby uzupełnić równoległe dane szkoleniowe w celu usprawnienia tłumaczenia.
 
-Dostosowany system jest dostępna za pośrednictwem regularnych wywołania Microsoft interfejsu API tłumaczenia tekstu przy użyciu parametru kategorii.
+Dostosowany system jest następnie dostępny za pośrednictwem zwykłego wywołania do interfejs API tłumaczenia tekstu w usłudze Translator firmy Microsoft przy użyciu parametru kategorii.
 
-Biorąc pod uwagę odpowiedniego typu i ilość danych szkoleniowych nie jest niczym niezwykłym, można oczekiwać zyski od 5 do 10 lub BELEU jeszcze więcej punktów jakości tłumaczenia przy użyciu niestandardowych w usłudze Translator.
+Uwzględniając odpowiedni typ i ilość danych szkoleniowych, nie zdarza się, że występuje różnica między 5 a 10, lub jeszcze więcej punktów BLEU dotyczących jakości tłumaczenia przy użyciu translatora niestandardowego.
 
-Więcej informacji na temat różnych poziomów dostosowywania oparte na dostępnych danych można znaleźć w [podręcznika użytkownika w usłudze Translator niestandardowe](https://aka.ms/CustomTranslatorDocs).
+Więcej szczegółowych informacji na temat różnych poziomów dostosowywania opartych na dostępnych danych można znaleźć w [podręczniku użytkownika usługi tłumaczenia niestandardowego](https://aka.ms/CustomTranslatorDocs).
 
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
 > [!NOTE]
-> Starsze Centrum w usłudze Translator firmy Microsoft zostaną wycofane z dniem 17 maja 2019 r. [Wyświetl informacje na temat migracji ważne i dat](https://www.microsoft.com/translator/business/hub/).  
+> Starsza wersja centrum usługi Microsoft Translator zostanie wycofana w dniu 17 maja 2019. [Wyświetlanie ważnych informacji i dat migracji](https://www.microsoft.com/translator/business/hub/).  
 
 ## <a name="custom-translator-versus-hub"></a>Niestandardowe w usłudze Translator w stosunku do Centrum
 
-|   | **Centrum** | **Niestandardowe w usłudze Translator**|
+|   | **Centrum** | **Translator niestandardowy**|
 |:-----|:----:|:----:|
 |Stan funkcji dostosowywania   | Ogólna dostępność  | Ogólna dostępność |
-| Interfejs API tłumaczenia tekstu w wersji  | Tylko w wersji 2   | Tylko w wersji 3 |
+| Interfejs API tłumaczenia tekstu w wersji  | Tylko wersja 2   | Tylko wersja 3 |
 | Dostosowywanie SMT | Yes   | Nie |
 | Dostosowywanie NMT | Nie    | Yes |
-| Nowe ujednolicone dostosowywanie usług mowy | Nie    | Tak |
-| [Bez śledzenia](https://www.aka.ms/notrace) | Yes  | Tak |
+| Nowe ujednolicone dostosowywanie usług mowy | Nie    | Yes |
+| [Brak śladu](https://www.aka.ms/notrace) | Yes  | Tak |
 
-## <a name="collaborative-translations-framework"></a>Framework współpracy tłumaczenia
+## <a name="collaborative-translations-framework"></a>Struktura tłumaczeń współpracy
 
 > [!NOTE]
-> Od 1 lutego 2018 r. AddTranslation() i AddTranslationArray() nie są już dostępne do użytku z programem V2.0 interfejs API tekstu usługi Translator. Te metody zakończy się niepowodzeniem i nic nie zostanie zapisany. V3.0 interfejs API tekstu usługi Translator nie obsługuje tych metod.
+> Od 1 lutego 2018, addtranslation () i AddTranslationArray () nie można już używać z interfejs API tłumaczenia tekstu w usłudze Translator V 2.0. Te metody zakończą się niepowodzeniem i nic nie zostanie zapisaniu. Interfejs API tłumaczenia tekstu w usłudze Translator V 3.0 nie obsługuje tych metod.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Skonfiguruj system dostosowane języka, przy użyciu niestandardowych w usłudze Translator](https://aka.ms/CustomTranslatorDocs)
+> [Skonfiguruj dostosowany system językowy przy użyciu translatora niestandardowego](https://aka.ms/CustomTranslatorDocs)

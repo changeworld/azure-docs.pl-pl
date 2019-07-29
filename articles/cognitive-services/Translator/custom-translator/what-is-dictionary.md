@@ -1,47 +1,47 @@
 ---
-title: Co to jest słownikiem? — Niestandardowy w usłudze Translator
+title: Co to jest słownik? — Niestandardowy w usłudze Translator
 titleSuffix: Azure Cognitive Services
-description: Słownik jest wyrównany dokumentu, który określa listę frazy lub zdania (i tłumaczenia), który ma być zawsze Microsoft Translator do tłumaczenia w taki sam sposób. Słowniki są czasami skrót glosariuszu lub określenie zasad.
+description: Słownik jest dokumentem wyrównanym, który określa listę fraz lub zdań (i ich tłumaczenia), które są zawsze potrzebne do tłumaczenia usługi Microsoft Translator w taki sam sposób. Słowniki są czasami nazywane również bazami Glossaries lub terminami.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: c837399778723b0b084c26422b7bea762f0e7709
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5103526956b5041771a1d8e4abb5e8800b971059
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447359"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595370"
 ---
-# <a name="what-is-a-dictionary"></a>Co to jest słownikiem?
+# <a name="what-is-a-dictionary"></a>Co to jest słownik?
 
-Słownik jest wyrównany pary dokumentów określa listę frazy lub zdania i ich odpowiednich tłumaczenia. Słownik w szkolenia, należy użyć Microsoft Translator do tłumaczenia zawsze wszystkie wystąpienia źródła frazy lub zdania, za pomocą tłumaczenia, podane w słowniku. Słowniki są czasami nazywane glosariuszu lub określenie zasad. Słownika można potraktować jako siłowe "Kopiuj i Zamień" do listy wszystkich warunków umowy.
+Słownik jest wyrównanym parę dokumentów, które określają listę fraz lub zdań i odpowiadające im tłumaczenia. Użyj słownika w ramach szkolenia, jeśli chcesz, aby program Microsoft Translator zawsze przetłumaczy wszystkie wystąpienia frazy źródłowej lub zdania przy użyciu tłumaczenia podanego w słowniku. Słowniki są czasami nazywane glossariesami lub terminami. Słownik można traktować jako "Kopiuj i Zamień" dla wszystkich wystawianych terminów.
 
-Słowniki działają tylko dla projektów w parach języka, które mają w pełni obsługiwany system neuronowego tłumaczenia maszynowego (NMT) firmy Microsoft za ich. [Wyświetl pełną listę języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+Słowniki działają tylko w przypadku projektów w parach języka, które mają w pełni obsługiwany system Microsoft neuronowych Machine Translation (NMT). [Zapoznaj się z pełną listą języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
-## <a name="phrase-dictionary"></a>Słownik frazy
-Po dołączeniu słownika frazy szkolenie modelu, dowolny wyraz lub frazę, wyświetlane jest tłumaczony w taki sposób, który określiłeś. Pozostała część zdanie jest tłumaczony w zwykły sposób. Słownik frazy służy do określania fraz, które nie powinien być tłumaczony, podając tę samą frazę nieprzetłumaczonych w pliku źródłowym i docelowym w słowniku.
+## <a name="phrase-dictionary"></a>Słownik fraz
+Po dołączeniu słownika wyrazów w ramach szkolenia modelu wszystkie wymienione wyrazy lub frazy są tłumaczone w określony sposób. Pozostałe zdanie jest tłumaczone w zwykły sposób. Możesz użyć słownika frazy, aby określić frazy, które nie powinny być tłumaczone przez podanie tej samej nieprzetłumaczonej frazy w pliku źródłowym i docelowym w słowniku.
 
-## <a name="sentence-dictionary"></a>Słownik zdania
-Słownik zdania pozwala określić dokładną docelowego Translacja zdania źródła. Aby wystąpiło dopasowanie słownika zdania całe zdanie przesłane musi odpowiadać wpis w słowniku źródła.  Jeśli tylko część zdanie jest zgodny, nie będzie zgodne z wpisu.  Po wykryciu dopasowania zostanie zwrócona docelowego wpisu słownika zdania.
+## <a name="sentence-dictionary"></a>Słownik zdań
+Słownik zdań umożliwia określenie dokładnego tłumaczenia docelowego dla zdania źródłowego. Aby można było dopasować słownik zdań, całe przesłane zdanie musi być zgodne z wpisem słownika źródłowego.  Jeśli tylko część zdania jest zgodna, wpis nie będzie zgodny.  Po wykryciu dopasowania zostanie zwrócony wpis docelowy słownika zdań.
 
-## <a name="dictionary-only-trainings"></a>Szkolenia w trybie tylko do słownika
-Możesz uczyć model przy użyciu tylko dane słownika. Aby to zrobić, wybierz słowniki dokumentu (lub wiele dokumentów słownika) czy chcesz dołączyć, a następnie naciśnij pozycję Utwórz model. Ponieważ jest to szkolenie tylko do słownika, istnieje nie minimalną liczbę zdań szkolenia wymagane. Model są zazwyczaj wykonywane szkolenia znacznie szybsze niż standardowe szkolenia.  Modele wynikowy będzie używać modeli podstawowych w Microsoft tłumaczenia dodając słowników, które wcześniej dodałeś.  Nie otrzymasz raport z testu.
+## <a name="dictionary-only-trainings"></a>Szkolenia dotyczące tylko słownika
+Możesz nauczyć model przy użyciu tylko danych słownika. W tym celu zaznacz tylko dokument słownika (lub wiele dokumentów słownika), które chcesz dołączyć, i naciśnij pozycję Utwórz model. Ponieważ jest to szkolenie tylko do słownika, nie jest wymagana minimalna liczba zdań szkoleniowych. Model zwykle kończy szkolenia znacznie szybciej niż w przypadku standardowego szkolenia.  Modele powstające będą używać modeli bazowych firmy Microsoft do tłumaczenia z dodaniem dodanych słowników.  Nie otrzymasz raportu testowego.
 
 >[!Note]
->Niestandardowe w usłudze Translator nie jak w zdaniu wyrównać pliki słownika tak ważne jest, aby były równej liczby wyrażeń źródłowych i docelowych / zdania w słowniku dokumentów i że dokładnie wyrównana.
+>W przypadku translatora niestandardowego nie są wyrównania plików słowników, dlatego ważne jest, aby w dokumentach słownika była równa Liczba zwrotów źródłowych i docelowych, a także dokładnie wyrównane.
 
 ## <a name="recommendations"></a>Zalecenia
 
-- Słowniki są nie stanowi zastępstwa dla uczonego modelu przy użyciu danych szkoleniowych.  Słowniki zasadniczo Znajdź i Zamień słowa lub zdania.  Co system, ucz się od Twojego materiał szkoleniowy w pełnych zdań ogólnie jest lepszym rozwiązaniem niż przy użyciu słownika.
-- Słownik frazy powinny być używane rzadko. Po frazy w obrębie zdania, kontekst, w tym zdaniu utraty lub ograniczone do tłumaczenia pozostałą część zdania. Wynik jest to, że podczas frazy lub programu word w zdaniu przekształci zgodnie ze słownika frazy, ogólną jakość tłumaczenia zdania często będzie słabsza.
-- Słownik frazy dobrze się sprawdza rzeczowniki złożone, takich jak nazwy produktów ("Microsoft SQL Server"), prawidłowe nazwy ("miasto Hamburg") lub funkcji tego produktu ("Tabela przestawna"). Nie działa równie dobrze dla zleceń lub określeniem, ponieważ te są zwykle modulowany w źródle lub w języku docelowym. Należy unikać frazy wpisy słownika tylko rzeczowniki złożone.
-- Podczas korzystania ze słownika, wielkość liter i znaków interpunkcyjnych w tłumaczenia odzwierciedlają wielkość liter i znaków interpunkcyjnych, podany w pliku docelowego. Wielkość liter i znaków interpunkcyjnych, są ignorowane podczas próby zidentyfikować są takie same Twoje zdanie danych wejściowych i zdania źródło w pliku słownika. Załóżmy na przykład, że szkoliliśmy anglojęzyczną systemowi hiszpański używane słownik tego określonego "miasto Hamburg" w pliku źródłowym, a "Ciudad de hamburg" w pliku docelowym. Jeśli jest to wymagane I tłumaczenie zdanie, które uwzględnione frazę "miasto Hamburg", następnie "miasto Hamburg" będzie pasował do pliku słownika dla wpisu "Miasto Hamburg", a mapującej do "Ciudad de hamburg" w mojej końcowego tłumaczenia.
-- Słowa występuje więcej niż raz w pliku słownika, system zawsze będzie korzystać ostatni wpis podane. Słownika nie może zawierać wiele tłumaczenia tego samego wyrazu.
+- Słowniki nie są zamiennikiem przeszkolonego modelu zawierającego dane szkoleniowe.  Słowniki zasadniczo znajdują i zamieniają wyrazy lub zdania.  Umożliwienie systemowi uczenia się z materiału szkoleniowego w pełnych zdaniach jest lepszym rozwiązaniem niż używanie słownika.
+- Słownik wyrazów powinien być oszczędnie używany. Gdy fraza w zdaniu jest zastępowana, kontekst w tym zdaniu zostanie utracony lub ograniczony do przetłumaczenia reszty zdania. Wynikiem tego jest to, że podczas gdy fraza lub wyraz w zdaniu zostanie przetłumaczona zgodnie ze słownikiem fraz, ogólna jakość tłumaczenia zdania często się pogorszy.
+- Słownik fraz dobrze sprawdza się w przypadku niezłożonej rzeczowników, takich jak nazwy produktów ("Microsoft SQL Server"), odpowiednie nazwy ("miasto Hamburg") lub funkcje produktu ("tabela przestawna"). Nie działa równie dobrze w przypadku czasowników lub przymiotników, ponieważ są zwykle wysoce oddzielone w źródle lub w języku docelowym. Unikaj wpisów słownika frazy dla niczego, ale rzeczowników złożonych.
+- W przypadku używania słownika, litery i interpunkcja w tłumaczeniach będą odzwierciedlać wielkie litery i znaki interpunkcyjne podane w pliku docelowym. Podczas próby zidentyfikowania dopasowań między zdanie wejściowe i zdaniami źródłowymi w pliku słownika są ignorowane wielkie litery i znaki interpunkcyjne. Załóżmy na przykład, że przeszkolony jest język angielski do hiszpańskiego systemu, który używa słownika, który określił "miasto Hamburg" w pliku źródłowym i "Ciudad de Hamburg" w pliku docelowym. Jeśli zażądano tłumaczenia zdania zawierającego frazę "miasto Hamburg", to "miasto Hamburg" będzie pasować do mojego pliku słownika dla wpisu "miasto Hamburg" i zostanie zamapowana na "Ciudad de Hamburg" w końcowym tłumaczeniu.
+- Jeśli słowo pojawia się więcej niż raz w pliku słownika, system zawsze będzie używać ostatniego dostarczonego wpisu. Słownik nie powinien zawierać wielu tłumaczeń tego samego wyrazu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj o [wskazówki dotyczące formatowania dokumentu](document-formats-naming-convention.md).
+- Przeczytaj o [wytycznych dotyczących formatów dokumentów](document-formats-naming-convention.md).

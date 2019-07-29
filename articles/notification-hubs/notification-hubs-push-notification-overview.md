@@ -15,12 +15,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 04/30/2019
 ms.author: jowargo
-ms.openlocfilehash: 03d4c269f76a89c43dec253367d07f3bf71a06d8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1ee50603886f76b0a54cee940e7644c401804078
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141209"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610006"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Co to jest usługa Azure Notification Hubs?
 
@@ -35,9 +35,9 @@ Usługa Azure Notification Hubs oferuje łatwy w użyciu, skalowany w poziomie m
 
 ## <a name="what-are-push-notifications"></a>Co to są powiadomienia push?
 
-Powiadomienia wypychane jest formą komunikacja użytkownika aplikacji, gdzie użytkownicy aplikacji mobilnych są powiadamiani, niektórych informacji żądanego, zazwyczaj w oknie podręcznym lub w oknach dialogowych na urządzeniu przenośnym. Użytkownicy zazwyczaj wybrać do wyświetlania lub Odrzuć komunikat; Po wybraniu opcji poprzedniej wersji portalu zostanie otwarty aplikacjami mobilnymi, które przekazują powiadomienia. Niektóre powiadomienia są silent - dostarczane w tle dla aplikacji do przetwarzania w tle i podejmowania decyzji.
+Powiadomienia wypychane to forma komunikacji między użytkownikami, w której użytkownicy aplikacji mobilnych są powiadamiani o określonych wymaganych informacjach, zazwyczaj w podręcznym lub oknie dialogowym na urządzeniu przenośnym. Użytkownicy zazwyczaj decydują się wyświetlać lub odrzucać komunikat; Wybranie tej opcji spowoduje otwarcie aplikacji mobilnej, która komunikuje się z powiadomieniem. Niektóre powiadomienia są dostarczane w trybie cichym w tle, aby aplikacja mogła przetwarzać się w tle i decydować o tym, co należy zrobić.
 
-Powiadomienia push są istotne w przypadku aplikacji użytkowników, ponieważ powodują zwiększenie zaangażowania i użycia aplikacji, a w przypadku aplikacji dla przedsiębiorstw, ponieważ są używane podczas codziennej komunikacji obejmującej informacje biznesowe. Jest najlepiej komunikacja użytkownika aplikacji, ponieważ jest energii dla urządzeń przenośnych, elastyczność i nadawcy powiadomień i dostępne, gdy odpowiednie aplikacje nie są aktywne.
+Powiadomienia push są istotne w przypadku aplikacji użytkowników, ponieważ powodują zwiększenie zaangażowania i użycia aplikacji, a w przypadku aplikacji dla przedsiębiorstw, ponieważ są używane podczas codziennej komunikacji obejmującej informacje biznesowe. Jest to Najlepsza komunikacja między użytkownikami, ponieważ jest energooszczędna dla urządzeń przenośnych, jest elastyczna dla nadawców powiadomień i dostępna, gdy odpowiednie aplikacje nie są aktywne.
 
 Aby uzyskać więcej informacji o powiadomieniach push dla kilku popularnych platform, zobacz następujące tematy:
 
@@ -47,13 +47,13 @@ Aby uzyskać więcej informacji o powiadomieniach push dla kilku popularnych pla
 
 ## <a name="how-push-notifications-work"></a>Jak działają powiadomienia push?
 
-Powiadomienia push są dostarczane przy użyciu infrastruktur poszczególnych platform nazywanych *systemami powiadomień platformy* (PNS, Platform Notification System). Oferują one podstawowe funkcje wypychania, które służą do dostarczania komunikatu do urządzenia przy użyciu podanego dojścia i nie mają wspólnego interfejsu. Aby wysłać powiadomienie do wszystkich klientów dla systemów Android, iOS i Windows wersje aplikacji, deweloper muszą współpracować z Apple Push Notification Service(APNS), Firebase Cloud Messaging(FCM) i Service(WNS) powiadomień Windows osobno.
+Powiadomienia push są dostarczane przy użyciu infrastruktur poszczególnych platform nazywanych *systemami powiadomień platformy* (PNS, Platform Notification System). Oferują one podstawowe funkcje wypychania, które służą do dostarczania komunikatu do urządzenia przy użyciu podanego dojścia i nie mają wspólnego interfejsu. Aby wysłać powiadomienie do wszystkich klientów w wersji aplikacji dla systemów Android, iOS i Windows, Deweloper musi korzystać z Apple Push Notification Service (APNS), Firebase Cloud Messaging (FCM) i usługi powiadomień systemu Windows (WNS).
 
 Poniżej przedstawiono sposób działania na wysokim poziomie:
 
-1. Aplikacja zdecyduje się, że chce otrzymać powiadomienie, dzięki czemu kontaktowania się z systemu powiadomień platformy dla platformy docelowej, gdzie aplikacja jest uruchomiona i żąda uchwyt wypychania unikatowy i tymczasowe. Typ dojścia zależy od systemu (na przykład usługi WNS używa identyfikatorów URI podczas APNS używa tokenów).
-2. Aplikacja kliencka przechowuje to dojście w zapleczu aplikacji lub dostawcą.
-3. Aby wysłać powiadomienie wypychane, zaplecza aplikacji kontaktuje się z systemu powiadomień platformy przy użyciu dojścia do obiektu docelowego aplikacji określonego klienta.
+1. Aplikacja zdecydowała się otrzymywać powiadomienie, dlatego kontaktuje się z PNS dla platformy docelowej, w której uruchomiona jest aplikacja i żąda unikatowego i tymczasowego dojścia do wypchnięcia. Typ uchwytu zależy od systemu (na przykład WNS używa identyfikatorów URI, podczas gdy usługa APNS używa tokenów).
+2. Aplikacja kliencka przechowuje to dojście w zaplecze lub dostawcy aplikacji.
+3. Aby wysłać powiadomienie wypychane, zaplecze aplikacji kontaktuje się z PNS przy użyciu dojścia do konkretnej aplikacji klienckiej.
 4. System powiadomień platformy przekazuje następnie powiadomienie do urządzenia określonego przez dojście.
 
 ![Przepływ pracy powiadomienia push](./media/notification-hubs-overview/registration-diagram.png)
@@ -65,16 +65,16 @@ Systemy powiadomień platformy to zaawansowane rozwiązania. Deweloper aplikacji
 Wypychanie powiadomień wymaga złożonej infrastruktury niezwiązanej z główną logiką biznesową aplikacji. Niektóre wyzwania dotyczące infrastruktury to:
 
 - **Zależności dotyczące platformy**
-  - Zaplecze wymaga złożone i twardych Obsługa logikę zależny od platformy do wysyłania powiadomień do urządzeń na różnych platformach, ponieważ PNSes nie są jednolite.
+  - Zaplecze wymaga złożonej i trudnej w obsłudze logiki zależnej od platformy do wysyłania powiadomień do urządzeń na różnych platformach, ponieważ PNSes nie są ujednolicone.
 - **Skalowanie**
-  - Zgodnie z zaleceniami dotyczącymi systemu powiadomień platformy tokeny urządzeń muszą być odświeżane przy każdym uruchomieniu aplikacji. Wewnętrznej bazy danych zajmuje się dużą ilość ruchu sieciowego i bazy danych programu access tylko w celu zapewnienia aktualności tokenów. Gdy wzrośnie liczba urządzeń do setek, tysięcy lub milionów, koszt tworzenia i obsługi tej infrastruktury jest ogromnych.
+  - Zgodnie z zaleceniami dotyczącymi systemu powiadomień platformy tokeny urządzeń muszą być odświeżane przy każdym uruchomieniu aplikacji. Zaplecze zajmuje dużą ilość ruchu i dostęp do bazy danych, aby zapewnić aktualność tokenów. Gdy liczba urządzeń rośnie do setek, tysięcy lub milionów, koszt tworzenia i utrzymywania tej infrastruktury jest ogromny.
   - Większość systemów powiadomień platformy nie obsługuje emisji do wielu urządzeń. Prosta emisja do milionów urządzeń powoduje miliony wywołań systemów powiadomień platformy. Skalowanie tej ilości ruchu sieciowego z minimalnym opóźnieniem to poważne zadanie.
 - **Routing**
   - Mimo że systemy powiadomień platformy umożliwiają wysyłanie komunikatów do urządzeń, większości powiadomień aplikacji jest przeznaczona dla użytkowników lub grup zainteresowań. Zaplecze musi obsługiwać rejestr, aby kojarzyć urządzenia z grupami zainteresowań, użytkownikami, właściwościami itd. Ten narzut zwiększa czas wprowadzania aplikacji na rynek oraz koszty jej obsługi.
 
 ## <a name="why-use-azure-notification-hubs"></a>Dlaczego warto korzystać z usługi Azure Notification Hubs?
 
-Usługa Notification Hubs eliminuje złożoność wszystkie skojarzone z wypychanie powiadomień na własne przepływy od aplikacji zaplecza. Jej międzyplatformowa, skalowana w poziomie infrastruktura powiadomień push zmniejsza ilość kodowania i upraszcza zaplecze. Dzięki usłudze Notification Hubs urządzenia są odpowiedzialne jedynie za rejestrację swoich dojść systemu powiadomień platformy w centrum, a zaplecze wysyła komunikaty do użytkowników lub grup zainteresowań, jak przedstawiono na poniższym rysunku:
+Notification Hubs eliminuje wszystkie złożone skojarzenia związane z wypychaniem powiadomień samodzielnie z zaplecza aplikacji. Jej międzyplatformowa, skalowana w poziomie infrastruktura powiadomień push zmniejsza ilość kodowania i upraszcza zaplecze. Dzięki usłudze Notification Hubs urządzenia są odpowiedzialne jedynie za rejestrację swoich dojść systemu powiadomień platformy w centrum, a zaplecze wysyła komunikaty do użytkowników lub grup zainteresowań, jak przedstawiono na poniższym rysunku:
 
 ![Diagram centrum powiadomień](./media/notification-hubs-overview/notification-hub-diagram.png)
 
@@ -86,7 +86,7 @@ Centra powiadomień to gotowy do użycia aparat wypychania, który oferuje nast�
   - Zarządzanie dojściami urządzeń w jednym miejscu.
 - **Obsługa wielu zapleczy**
   - Chmura lub środowisko lokalne
-  - .NET, Node.js, Java itd.
+  - .NET, Node. js, Java, Python itp.
 - **Rozbudowany zestaw wzorców dostarczania**
   - Emisja do jednej lub wielu platform: możliwość natychmiastowej emisji do milionów urządzeń na wielu platformach przy użyciu pojedynczego wywołania interfejsu API.
   - Wypychanie do urządzenia: można kierować powiadomienia do poszczególnych urządzeń.
@@ -106,7 +106,7 @@ Centra powiadomień to gotowy do użycia aparat wypychania, który oferuje nast�
 - **Bezpieczeństwo**
   - Uwierzytelnianie przy użyciu wpisu tajnego dostępu współdzielonego (SAS, Shared Access Secret) lub uwierzytelnianie federacyjne.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Rozpocznij tworzenie centrum powiadomień i korzystanie z niego, wykonując kroki opisane w temacie [Samouczek: wysyłanie powiadomień push do aplikacji mobilnych](notification-hubs-android-push-notification-google-fcm-get-started.md).
 

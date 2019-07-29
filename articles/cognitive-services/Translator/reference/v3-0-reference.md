@@ -1,7 +1,7 @@
 ---
-title: Odwołanie V3.0 interfejs API tłumaczenia tekstu w usłudze Translator
-titlesuffix: Azure Cognitive Services
-description: Dokumentacja dotycząca V3.0 interfejs API tekstu usługi Translator.
+title: Dokumentacja interfejs API tłumaczenia tekstu w usłudze Translator V 3.0
+titleSuffix: Azure Cognitive Services
+description: Dokumentacja referencyjna interfejs API tłumaczenia tekstu w usłudze Translator V 3.0.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,40 +10,40 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 8956aff86777e2a2570c6a555a9bd0882f328a77
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ad619ad965cf4b7d94b781818c658152f71250a7
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868410"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595005"
 ---
-# <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
+# <a name="translator-text-api-v30"></a>Interfejs API tłumaczenia tekstu w usłudze Translator v 3.0
 
 ## <a name="whats-new"></a>Co nowego?
 
-Interfejs API tekstu usługi Translator w wersji 3 zapewnia nowoczesnych opartych na formacie JSON internetowego interfejsu API. Zwiększa użyteczność i wydajność dzięki konsolidacji istniejących funkcji w mniejszą liczbę operacji i udostępnia nowe funkcje.
+Wersja 3 interfejs API tłumaczenia tekstu w usłudze Translator zapewnia nowoczesny internetowy interfejs API oparty na notacji JSON. Zwiększa użyteczność i wydajność dzięki konsolidacji istniejących funkcji do mniejszej liczby operacji i udostępnia nowe funkcje.
 
- * Transliterację konwersji tekstu w jednym języku jeden skrypt inny skrypt.
- * Tłumaczenie na wiele języków, w jednym żądaniu.
- * Wykrywanie języka, tłumaczenia i transliterację w jednym żądaniu.
- * Słownik, który wyszukiwanie alternatywnych tłumaczeń okresu, można znaleźć kopii tłumaczenia i przykłady pokazujące terminy używane w kontekście.
- * Bardziej szczegółowy wyniki wykrywanie języka.
+ * Przekształć w celu przekonwertowania tekstu w jednym języku z jednego skryptu na inny.
+ * Tłumaczenie na wiele języków w jednym żądaniu.
+ * Wykrywanie, tłumaczenia i translitrowanie języka w jednym żądaniu.
+ * Słownik do wyszukiwania alternatywnych tłumaczeń terminu, aby znaleźć zwroty i przykłady pokazujące terminy używane w kontekście.
+ * Dokładniejsze wyniki wykrywania języka.
 
-## <a name="base-urls"></a>Podstawowych adresach URL
+## <a name="base-urls"></a>Podstawowe adresy URL
 
-Usługa Microsoft Translator jest obsługiwany z wielu lokalizacji centrów danych. Obecnie znajdują się one w 10 [lokalizacjach geograficznych platformy Azure](https://azure.microsoft.com/global-infrastructure/regions):
+Usługi Microsoft Translator są obsługiwane z wielu lokalizacji centrów danych. Obecnie znajdują się one w 10 [lokalizacje geograficzne Azure](https://azure.microsoft.com/global-infrastructure/regions):
 
-* **Rozwiązanie to przyniosło im:** Wschodnie stany USA, południowo-środkowe stany USA, zachodnie środkowe stany USA i zachodnie stany USA 2 
-* **Azja i Pacyfik:** Korea Południowa, Japonia Wschodnia, Azja południowo-wschodnia i Australia Wschodnia
-* **Europa:** Europa Północna i Europa Zachodnia
+* **Południowej** Wschodnie stany USA, Południowo-środkowe stany USA, zachodnio-środkowe stany USA i zachodnie stany USA 2 
+* **Azja i Pacyfik:** Korea Południowa, Japonia Wschodnia, Azja Południowo-Wschodnia i Australia Wschodnia
+* **Terenie** Europa Północna i Europa Zachodnia
 
-Żądania interfejs API tekstu usługi Microsoft Translator są w większości przypadków obsługiwane przez centrum danych, które znajduje się najbliżej skąd pochodzi żądanie. W razie awarii centrum danych żądanie może być kierowany poza lokalizacja geograficzna platformy Azure.
+Żądania kierowane do interfejs API tłumaczenia tekstu w usłudze Translator firmy Microsoft są w większości przypadków obsługiwane przez centrum danych, które znajdują się najbliżej lokalizacji, z której pochodzi żądanie. W przypadku awarii centrum danych żądanie może być kierowane poza lokalizację geograficzną platformy Azure.
 
-Aby wymusić żądania obsługi od określonego regionu platformy Azure, należy zmienić globalny punkt końcowy w żądaniu interfejsu API do żądanego punktu końcowego regionalne:
+Aby wymusić obsługę żądania przez określoną lokalizację geograficzną platformy Azure, Zmień globalny punkt końcowy w żądaniu interfejsu API na żądany regionalny punkt końcowy:
 
 |Opis|Lokalizacja geograficzna platformy Azure|Podstawowy adres URL|
 |:--|:--|:--|
-|Azure|Globalne (inne niż regionalne)|   api.cognitive.microsofttranslator.com|
+|Azure|Globalne (nieregionalne)|   api.cognitive.microsofttranslator.com|
 |Azure|Stany Zjednoczone|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Azja i Pacyfik|    api-apc.cognitive.microsofttranslator.com|
@@ -51,27 +51,27 @@ Aby wymusić żądania obsługi od określonego regionu platformy Azure, należy
 
 ## <a name="authentication"></a>Authentication
 
-Subskrybowanie do interfejsu API tłumaczenia tekstu lub [wielu usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) usług Microsoft Cognitive Services i użycie subskrypcji kluczy (dostępny w witrynie Azure portal) do uwierzytelniania. 
+Zasubskrybuj usługę interfejs API tłumaczenia tekstu w usłudze Translator lub [Cognitive Services obsługę usługi](https://azure.microsoft.com/pricing/details/cognitive-services/) w Microsoft Cognitive Services i Użyj klucza subskrypcji (dostępnego w Azure Portal) do uwierzytelniania. 
 
-Istnieją trzy nagłówków, których można użyć do uwierzytelnienia Twojej subskrypcji. Ta tabela zawiera, w tym artykule opisano, jak każdy obiekt jest używany:
+Istnieją trzy nagłówki, za pomocą których można uwierzytelniać swoją subskrypcję. Ta tabela zawiera opis sposobu użycia każdego z nich:
 
 |Nagłówki|Opis|
 |:----|:----|
-|OCP-Apim-Subscription-Key|*Używane z subskrypcją usług Cognitive Services, jeśli przekazujesz klucz tajny*.<br/>Wartość jest platformy Azure klucz tajny dla Twojej subskrypcji do interfejsu API tłumaczenia tekstu.|
-|Authorization|*Jeśli przekazujesz tokenu uwierzytelniania za pomocą subskrypcji usług Cognitive Services.*<br/>Wartość tokenu elementu nośnego: `Bearer <token>`.|
-|Ocp-Apim-Subscription-Region|*Jeśli przekazujesz klucz tajny wielu usług za pomocą subskrypcji wielu usług Cognitive Services.*<br/>Wartość jest region subskrypcji wielu usług. Ta wartość jest opcjonalna, bez korzystania z wieloma usługami subskrypcji.|
+|OCP-Apim-Subscription-Key|*Jeśli przekazujesz klucz tajny, Użyj usługi z subskrypcją Cognitive Services*.<br/>Wartość jest kluczem tajnym platformy Azure dla Twojej subskrypcji do interfejs API tłumaczenia tekstu w usłudze Translator.|
+|Authorization|*Użyj usługi z subskrypcją Cognitive Services, jeśli przekazujesz token uwierzytelniania.*<br/>Wartość jest tokenem okaziciela: `Bearer <token>`.|
+|Ocp-Apim-Subscription-Region|*Użyj usługi with Cognitive Services subskrypcję usługi, jeśli przekazujesz klucz tajny usługi wiele usług.*<br/>Wartość jest regionem subskrypcji wielousługowej. Ta wartość jest opcjonalna, gdy nie jest używana subskrypcja Wielousługowa.|
 
 ###  <a name="secret-key"></a>Klucz tajny
-Pierwszym z nich jest uwierzytelnianie przy użyciu `Ocp-Apim-Subscription-Key` nagłówka. Po prostu Dodaj `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` nagłówek na żądanie.
+Pierwsza opcja polega na uwierzytelnianiu przy użyciu `Ocp-Apim-Subscription-Key` nagłówka. Wystarczy dodać `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` nagłówek do żądania.
 
 ### <a name="authorization-token"></a>Token autoryzacji
-Alternatywnie można wymienić klucz tajny tokenu dostępu. Token ten jest dołączony do każdego żądania jako `Authorization` nagłówka. Aby uzyskać token autoryzacji, należy `POST` żądania do następującego adresu URL:
+Alternatywnie możesz wymienić klucz tajny dla tokenu dostępu. Token ten jest dołączany do każdego żądania `Authorization` jako nagłówek. Aby uzyskać Token autoryzacji, należy `POST` wysłać żądanie do następującego adresu URL:
 
 | Środowisko     | Adres URL usługi uwierzytelniania                                |
 |-----------------|-----------------------------------------------------------|
 | Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
-Oto przykład żądania do uzyskania tokenu danego klucza tajnego:
+Oto przykładowe żądania uzyskania tokenu danego klucza tajnego:
 
 ```
 // Pass secret key using header
@@ -81,40 +81,40 @@ curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cog
 curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscription-Key=<your-key>'
 ```
 
-Żądania zakończonego powodzeniem zwraca token dostępu zakodowany jako zwykły tekst w treści odpowiedzi. Prawidłowy token jest przekazywany do usługi Translator jako token elementu nośnego w autoryzacji.
+Pomyślne żądanie zwraca zakodowany token dostępu jako zwykły tekst w treści odpowiedzi. Prawidłowy token jest przesyłany do usługi Translator jako token okaziciela w autoryzacji.
 
 ```
 Authorization: Bearer <Base64-access_token>
 ```
 
-Token uwierzytelniania jest ważny przez 10 minut. Token powinien być ponownie używane, gdy wielu wywołań interfejsów API usługi Translator. Jednak jeśli program sprawia, że żądania do interfejsu API usługi Translator przez dłuższy czas, następnie program musi żądać nowy token dostępu w regularnych odstępach czasu (np. co 8 minut).
+Token uwierzytelniania jest ważny przez 10 minut. Tokenu należy ponownie użyć podczas wykonywania wielu wywołań interfejsów API usługi Translator. Jeśli jednak program wysyła żądania do interfejsu API usługi Translator przez dłuższy czas, wówczas program musi zażądać nowego tokenu dostępu w regularnych odstępach czasu (np. co 8 minut).
 
-### <a name="multi-service-subscription"></a>Wielu usług subskrypcji
+### <a name="multi-service-subscription"></a>Subskrypcja Wielousługowa
 
-Ostatnia opcja uwierzytelniania jest korzystać z subskrypcji wielu usług Cognitive Service. Dzięki temu można korzystać z jednego klucza tajnego do uwierzytelniania żądań dla wielu usług. 
+Ostatnia opcja uwierzytelniania polega na użyciu wielousługowej subskrypcji usługi poznawczej. Dzięki temu można używać jednego klucza tajnego do uwierzytelniania żądań dla wielu usług. 
 
-Korzystając z wieloma usługami klucz tajny musi zawierać dwa nagłówki uwierzytelniania z żądaniem. Pierwszy przekazuje klucz tajny, drugi określa regionu skojarzonego z Twoją subskrypcją. 
+W przypadku korzystania z wielousługowego klucza tajnego należy dołączyć dwa nagłówki uwierzytelniania do żądania. Pierwszy przekazuje klucz tajny, drugi określa region skojarzony z subskrypcją. 
 * `Ocp-Apim-Subscription-Key`
 * `Ocp-Apim-Subscription-Region`
 
-Region jest wymagane dla wielu usług subskrypcji interfejsu API tłumaczenia tekstu. Regionu, możesz wybrać to jedyny region, który umożliwia tłumaczenie tekstu po przy użyciu klucza subskrypcji z wieloma usługami, a musi być tym samym regionie, które są wybrane podczas tworzenia konta dla subskrypcji wielu usług za pośrednictwem witryny Azure portal.
+Region jest wymagany w przypadku subskrypcji wielousługowego interfejsu API tekstu. Wybrany region jest jedynym regionem, którego można użyć do tłumaczenia tekstu przy użyciu klucza subskrypcji wielousługowej i musi być tym samym regionem wybranym podczas rejestrowania się w ramach subskrypcji wielousługowej za pośrednictwem Azure Portal.
 
-Dostępne regiony to `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, i `westus2`.
+Dostępne regiony to `australiaeast`, `brazilsouth` `canadacentral` ,`centraluseuap` ,,`eastus2`,, ,`japaneast`,,,, ,`southeastasia` `eastus` `centralindia` `eastasia` `northeurope` `southcentralus` `uksouth`, ,`westcentralus` ,i`westus2`. `westeurope` `westus`
 
-Jeśli przesuwasz klucz tajny w ciągu zapytania za pomocą parametru `Subscription-Key`, a następnie za pomocą parametru zapytania należy określić region `Subscription-Region`.
+Jeśli przekażesz klucz tajny w ciągu zapytania za pomocą parametru `Subscription-Key`, należy określić region z parametrem `Subscription-Region`zapytania.
 
-Jeśli używasz tokenu elementu nośnego, należy uzyskać token z punktu końcowego regionu: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
+Jeśli używasz tokenu okaziciela, musisz uzyskać token z punktu końcowego regionu: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 
 ## <a name="errors"></a>Błędy
 
-Odpowiedzi błędu standardowego jest obiekt JSON z pary nazwa/wartość o nazwie `error`. Wartość jest także obiekt JSON z właściwościami:
+Standardowa odpowiedź na błąd to obiekt JSON z parą nazwa/wartość o nazwie `error`. Wartość jest również obiektem JSON z właściwościami:
 
   * `code`: Kod błędu zdefiniowany przez serwer.
 
-  * `message`: Ciąg, zapewniając czytelny dla człowieka reprezentację błędu.
+  * `message`: Ciąg dający czytelny dla człowieka reprezentację błędu.
 
-Na przykład klient z bezpłatnej subskrypcji próbnej będzie komunikat o błędzie po wyczerpaniu bezpłatny limit przydziału:
+Na przykład klient z subskrypcją bezpłatnej wersji próbnej otrzyma następujący błąd po wyczerpaniu limitu przydziału:
 
 ```
 {
@@ -124,46 +124,46 @@ Na przykład klient z bezpłatnej subskrypcji próbnej będzie komunikat o błę
     }
 }
 ```
-Kod błędu to łączenie liczb 6-cyfrowym, 3-cyfrowy kod stanu HTTP następuje 3-cyfrowy numer do dalszego kategoryzowanie błędu. Typowe kody błędów są:
+Kod błędu to 6-cyfrowy numer łączący 3-cyfrowy kod stanu HTTP, a następnie 3-cyfrowy numer do dalszej kategoryzacji błędu. Typowe kody błędów to:
 
 | Kod | Opis |
 |:----|:-----|
-| 400000| Dane wejściowe żądania jest nieprawidłowa.|
-| 400001| Parametr "scope" jest nieprawidłowy.|
-| 400002| Parametr "category" jest nieprawidłowy.|
-| 400003| Specyfikator języka jest brakujący lub nieprawidłowy.|
-| 400004| Specyfikatora skryptu docelowego ("do"skrypt") jest nieprawidłowy lub.|
-| 400005| Wprowadzany tekst jest brakujący lub nieprawidłowy.|
-| 400006| Kombinacja języka i skrypt nie jest prawidłowy.|
-| 400018| Specyfikatora źródła skryptu ("od"skrypt") jest nieprawidłowy lub.|
-| 400019| Jeden określony język nie jest obsługiwane.|
-| 400020| Jeden z elementów w tablicy, której tekst wejściowy jest nieprawidłowy.|
-| 400021| Parametr wersji interfejsu API jest brakujący lub nieprawidłowy.|
-| 400023| Jeden z pary określony język jest nieprawidłowy.|
-| 400035| Język źródłowy ("od" pole) jest nieprawidłowy.|
-| 400036| Języka docelowego ("do" pole) jest nieprawidłowy lub niedostępny.|
-| 400042| Jedną z opcji określone ("Opcje" pole) jest nieprawidłowy.|
-| 400043| Identyfikator śledzenia klienta (ClientTraceId pola lub Nagłówek X-ClientTranceId) Brak lub jest nieprawidłowy.|
-| 400050| Wprowadzany tekst jest zbyt długa. Widok [limity żądań](../request-limits.md).|
-| 400064| Parametr "translacji" Brak lub jest nieprawidłowa.|
-| 400070| Liczba docelowych skryptów (parametr ToScript) jest niezgodny z liczba docelowych języki (parametr).|
-| 400071| Wartość nie jest prawidłowa dla TextType.|
-| 400072| Tablica wprowadzania tekstu ma za dużo elementów.|
+| 400000| Jeden z danych wejściowych żądania jest nieprawidłowy.|
+| 400001| Parametr "Scope" jest nieprawidłowy.|
+| 400002| Parametr "Category" jest nieprawidłowy.|
+| 400003| Brak specyfikatora języka lub jest on nieprawidłowy.|
+| 400004| Brak specyfikatora skryptu docelowego ("do skryptu") lub jest on nieprawidłowy.|
+| 400005| Brak tekstu wejściowego lub jest on nieprawidłowy.|
+| 400006| Kombinacja języka i skryptu jest nieprawidłowa.|
+| 400018| Brak specyfikatora skryptu źródłowego ("ze skryptu") lub jest on nieprawidłowy.|
+| 400019| Jeden z określonych języków nie jest obsługiwany.|
+| 400020| Jeden z elementów w tablicy tekstu wejściowego jest nieprawidłowy.|
+| 400021| Brak parametru wersji interfejsu API lub jest on nieprawidłowy.|
+| 400023| Jedna z określonych par języków jest nieprawidłowa.|
+| 400035| Nieprawidłowy język źródłowy ("from").|
+| 400036| Brak języka docelowego (pole "do") lub jest on nieprawidłowy.|
+| 400042| Jedna z opcji określonych w polu "Opcje" jest nieprawidłowa.|
+| 400043| Brak identyfikatora śledzenia klienta (pole ClientTraceId lub nagłówek X-ClientTranceId) lub jest on nieprawidłowy.|
+| 400050| Tekst wejściowy jest zbyt długi. Wyświetlanie [limitów żądań](../request-limits.md).|
+| 400064| Brak parametru "translation" lub jest on nieprawidłowy.|
+| 400070| Liczba skryptów docelowych (parametr ToScript) nie jest zgodna z liczbą języków docelowych (do parametru).|
+| 400071| Wartość jest nieprawidłowa dla typu texttype.|
+| 400072| Tablica tekstu wejściowego ma zbyt wiele elementów.|
 | 400073| Parametr skryptu jest nieprawidłowy.|
-| 400074| Treść żądania nie jest prawidłowym plikiem JSON.|
-| 400075| Kombinacja pary i kategorii języka jest nieprawidłowa.|
-| 400077| Rozmiar maksymalny żądania został przekroczony. Widok [limity żądań](../request-limits.md).|
-| 400079| Nie ma żądanego translacji od i do języka systemu niestandardowych.|
-| 400080| Transliterację nie jest obsługiwana dla języka lub skryptu.|
-| 401000| Żądanie nie ma uprawnień, ponieważ poświadczenia są brakujący lub nieprawidłowy.|
-| 401015| "Są podane poświadczenia dla interfejsu API rozpoznawania mowy. To żądanie wymaga poświadczeń dla interfejsu API tłumaczenia tekstu. Użyj subskrypcji interfejsu API tłumaczenia tekstu."|
-| 403000| Operacja nie jest dozwolona.|
-| 403001| Operacja jest niedozwolona, ponieważ subskrypcja przekroczyła limit przydziału bezpłatnych.|
-| 405000| Metoda żądania nie jest obsługiwana dla żądanego zasobu.|
-| 408001| Przygotowywany żądanego systemu tłumaczenia. Spróbuj ponownie za kilka minut.|
-| 408002| Przekroczono limit czasu oczekiwania na przychodzącego strumienia żądania. Klient nie generowały żądania w czasie, który został przygotowany serwer, aby czekać. Klient może Powtórz żądania bez modyfikacji w dowolnym momencie nowsze.|
-| 415000| Nagłówek Content-Type jest brakujący lub nieprawidłowy.|
-| 429000, 429001, 429002| Serwer odrzucił żądanie, ponieważ klienta przekroczyła limity żądań.|
-| 500000| Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś to za pomocą daty/godziny wystąpienia błędu, poproś identyfikator odpowiedzi nagłówek X-RequestId i identyfikator klienta z nagłówek żądania X-ClientTraceId.|
-| 503000| Usługa jest tymczasowo niedostępna. Spróbuj ponownie. Jeśli błąd będzie się powtarzać, zgłoś to za pomocą daty/godziny wystąpienia błędu, poproś identyfikator odpowiedzi nagłówek X-RequestId i identyfikator klienta z nagłówek żądania X-ClientTraceId.|
+| 400074| Treść żądania nie jest prawidłowym kodem JSON.|
+| 400075| Para językowa i kombinacja kategorii są nieprawidłowe.|
+| 400077| Przekroczono maksymalny rozmiar żądania. Wyświetlanie [limitów żądań](../request-limits.md).|
+| 400079| System niestandardowy żądany do tłumaczenia między językiem i a nie istnieje.|
+| 400080| Narzędzie transliteracji nie jest obsługiwane dla języka lub skryptu.|
+| 401000| Żądanie nie jest autoryzowane, ponieważ brakuje poświadczeń lub są one nieprawidłowe.|
+| 401015| "Podane poświadczenia dotyczą Speech API. To żądanie wymaga poświadczeń dla interfejsu API tekstu. Użyj subskrypcji, aby interfejs API tłumaczenia tekstu w usłudze Translator ".|
+| 403000| Operacja jest niedozwolona.|
+| 403001| Operacja jest niedozwolona, ponieważ subskrypcja przekroczyła bezpłatny limit przydziału.|
+| 405000| Metoda Request nie jest obsługiwana dla żądanego zasobu.|
+| 408001| Żądany system tłumaczenia jest przygotowywany. Spróbuj ponownie za kilka minut.|
+| 408002| Upłynął limit czasu żądania podczas oczekiwania na strumień przychodzący. Klient nie wygenerował żądania w czasie, gdy serwer został przygotowany do oczekiwania. Klient może powtórzyć żądanie bez modyfikacji w późniejszym czasie.|
+| 415000| Brak nagłówka Content-Type lub jest on nieprawidłowy.|
+| 429000, 429001, 429002| Serwer odrzucił żądanie z powodu przekroczenia limitów żądań przez klienta.|
+| 500000| Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś ten błąd w polu Data/godzina błędu, identyfikator żądania z nagłówka odpowiedzi X-IdentyfikatorŻądania i identyfikator klienta z nagłówka żądania X-ClientTraceId.|
+| 503000| Usługa jest tymczasowo niedostępna. Spróbuj ponownie. Jeśli błąd będzie się powtarzać, zgłoś ten błąd w polu Data/godzina błędu, identyfikator żądania z nagłówka odpowiedzi X-IdentyfikatorŻądania i identyfikator klienta z nagłówka żądania X-ClientTraceId.|
 

@@ -1,10 +1,10 @@
 ---
-title: Wprowadzenie do maszyny wirtualnej — platformy Azure do uczenia głębokiego | Dokumentacja firmy Microsoft
-description: Składniki głębokiego uczenia maszyny wirtualne z systemem i scenariusze analizy klucza.
-keywords: głębokim uczeniem sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, narzędzia do analizy danych, do nauki o danych w systemie linux
+title: Wprowadzenie do maszyny wirtualnej uczenie głębokie — Azure | Microsoft Docs
+description: Najważniejsze scenariusze analizy i składniki do uczenia głębokiego Virtual Machines.
+keywords: głębokie uczenie się, AI, narzędzia do nauki o danych, maszyna wirtualna do nauki o danych, narzędzia do nauki o danych, nauka danych systemu Linux
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
@@ -12,30 +12,30 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 879f5939f110fb841ad160bf09f597edcdd86d31
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: ddf1169d94c3e71b92e8b1835040ab5738bf94b8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502201"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591892"
 ---
 # <a name="introduction-to-the-deep-learning-virtual-machine"></a>Wprowadzenie do maszyny wirtualnej do uczenia głębokiego
 
-## <a name="why-deep-learning-virtual-machine"></a>Dlaczego głębokiego uczenia maszyny wirtualnej? 
+## <a name="why-deep-learning-virtual-machine"></a>Dlaczego warto uczenie maszyn wirtualnych? 
 
-Algorytmów uczenia głębokiego, w coraz większym stopniu / głębokich sieciach neuronowych stają się jednego z popularnych metod wykorzystywanych w wielu machine learning problemów. Są one szczególnie dobrze wykonywać zadania percepcji maszyny, takie jak obrazu, tekstu, audio i wideo, informacje o często zbliża się ludzi cognitive poziomy w niektórych określonych domen dzięki zaawansowanym architektury sieci neuronowej i dostęp do dużych zestawów danych do uczenia modeli. Uczenie głębokie wymaga dużej ilości mocy obliczeniowej do uczenia modeli za pomocą tych dużych zestawów danych. Korzystając z chmury i dostępności graficzny przetwarzania procesorów graficznych (GPU) staje się za umożliwia tworzenie zaawansowanych neuronowej architektury i ucz je na dużych zestawów danych na zaawansowanym infrastruktury obliczeniowej w chmurze.  [Maszyny wirtualnej do nauki o danych](overview.md) oferuje bogaty zestaw narzędzi i przykłady dotyczące przygotowywania danych, uczenia maszynowego i uczenia głębokiego. Ale jest jednym z wyzwań sterowaną przez użytkowników do odnajdywania narzędzia i przykłady dla konkretnych scenariuszy, takich jak uczenia głębokiego łatwe, a także łatwiej inicjować obsługę wystąpień maszyny Wirtualnej opartej na procesorze GPU. Ten głębokiego Virtual Machine Learning (DLVM) uwzględniają te problemy. 
+Coraz bardziej zaawansowane algorytmy uczenia/głębokie sieci neuronowych stają się jedną z popularnych metod używanych w wielu problemach z uczeniem maszynowym. Są one szczególnie przydatne w przypadku zadań Cognition na komputerze, takich jak obraz, tekst, informacje audio/wideo, często zbliżają się do poziomów percepcji ludzkiej w niektórych określonych domenach z zaawansowanymi architekturami sieci głębokiej neuronowych i dostępem do dużych zestawów danych w celu uczenia modeli. Uczenie głębokie wymaga dużej ilości mocy obliczeniowej do uczenia modeli z tymi dużymi zestawami danych. Dzięki chmurze i dostępności jednostek przetwarzania graficznego (GPU) można stworzyć zaawansowane architektury głębokiego neuronowych i uczenie ich na dużym zestawie danych w ramach zaawansowanej infrastruktury obliczeniowej w chmurze.  [Data Science Virtual Machine](overview.md) udostępnia bogaty zestaw narzędzi i przykładów do przygotowywania danych, uczenia maszynowego i uczenia głębokiego. Jednak jednym z wyzwań spowodowanych przez użytkowników jest odkrywanie narzędzi i przykładów dla konkretnych scenariuszy, takich jak głębokie uczenie, a także łatwiejsze udostępnianie wystąpień maszyn wirtualnych opartych na procesorze GPU. Ta maszyna wirtualna uczenia głębokiego (DLVM) eliminuje te wyzwania. 
 
 ## <a name="what-is-deep-learning-virtual-machine"></a>Co to jest maszyna wirtualna do uczenia głębokiego? 
-Maszyna wirtualna uczenia głębokiego jest specjalnie skonfigurowanego wariant [maszyny wirtualnej do nauki o danych](overview.md) (DSVM), aby stał się prostsze używać opartą na procesorze GPU maszyna wirtualna wystąpień dla szkolenie modeli uczenia głębokiego. Jest on obsługiwany w Windows 2016 i maszyny wirtualnej do nauki o danych systemu Ubuntu.  Współdzieli ten sam core obrazów maszyn wirtualnych (a tym samym wszystkie rozbudowany zestaw narzędzi) jako maszyny DSVM, ale jest skonfigurowany w celu ułatwienia uczenia głębokiego. Oferujemy również przykłady end-to-end dla obrazu i zrozumienia tekstu, które są ogólnie dotyczy wielu scenariuszy sztucznej Inteligencji w realnym. Maszyna wirtualna uczenia głębokiego również stara się bogaty zestaw narzędzi i przykładów na maszyny DSVM łatwiej odnaleźć, dzięki czemu są ujawniane katalogu narzędzi i przykładów na maszynie wirtualnej. Pod względem narzędzi, maszyna wirtualna uczenia głębokiego udostępnia kilka popularnych platform uczenia głębokiego, narzędzia do uzyskania i przetwarzania wstępnego image, dane tekstowe. Aby uzyskać pełną listę narzędzi, mogą odwoływać się do [strona omówienie maszyny wirtualnej do nauki o danych](overview.md#whats-included-in-the-data-science-vm). 
+Maszyna wirtualna do uczenia głębokiego jest specjalnie skonfigurowanym wariantem [Data Science Virtual Machine](overview.md) (DSVM), aby łatwiej było korzystać z wystąpień maszyn wirtualnych opartych na procesorze GPU na potrzeby szkoleń modeli uczenia głębokiego. Jest on obsługiwany w systemach Windows 2016 i Ubuntu Data Science Virtual Machine.  Udostępnia ona te same podstawowe obrazy maszyn wirtualnych (i dlatego cały bogaty zestaw narzędzi) jako DSVM, ale jest skonfigurowany do ułatwienia uczenia głębokiego. Zapewniamy również kompleksowe przykłady dotyczące interpretacji obrazów i tekstu, które są szeroko stosowane do wielu rzeczywistych scenariuszy. Maszyna wirtualna głębokiego uczenia próbuje również znacznie ułatwić odnajdywanie bogatych narzędzi i przykładów na DSVM przez objęcie wykazu narzędzi i przykładów na maszynie wirtualnej. Pod względem narzędzi, maszyna wirtualna głębokiej uczenia zapewnia kilka popularnych platform uczenia głębokiego, narzędzi do uzyskiwania i wstępnego przetwarzania obrazu, danych tekstowych. Obszerną listę narzędzi można znaleźć na [stronie przegląd Data Science Virtual Machine](overview.md#whats-included-in-the-data-science-vm). 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Rozpocznij pracę z głębokiego uczenia maszyny wirtualnej wykonując następujące kroki:
+Rozpocznij pracę z maszyną wirtualną uczenie głębokie, wykonując następujące czynności:
 
-* [Aprowizowanie maszyny wirtualnej do uczenia głębokiego](provision-deep-learning-dsvm.md)
-* [Użyj maszyny wirtualnej do uczenia głębokiego](use-deep-learning-dsvm.md)
-* [Odwołanie do narzędzia](dsvm-deep-learning-ai-frameworks.md)
+* [Inicjowanie obsługi administracyjnej maszyny wirtualnej uczenia głębokiego](provision-deep-learning-dsvm.md)
+* [Korzystanie z maszyny wirtualnej do uczenia głębokiego](use-deep-learning-dsvm.md)
+* [Dokumentacja narzędzia](dsvm-deep-learning-ai-frameworks.md)
 * [Przykłady](dsvm-samples-and-walkthroughs.md)

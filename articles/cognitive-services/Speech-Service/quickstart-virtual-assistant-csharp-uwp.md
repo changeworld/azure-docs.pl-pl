@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: d61040e740c06fc336e3764a0d972640443a6de5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6d88bcc6d9d2c2e46ef3a3cb841c9268a544e37c
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553385"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609693"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Szybki start: Tworzenie wirtualnego asystenta głosowego przy użyciu zestawu Speech SDK, platformy UWP
 
 Przewodniki Szybki Start są również dostępne w przypadku [zamiany mowy na tekst](quickstart-csharp-uwp.md), zamiany [tekstu na mowę](quickstart-text-to-speech-csharp-uwp.md) i zamiany [mowy](quickstart-translate-speech-uwp.md)na mowę.
 
-W tym artykule opisano tworzenie aplikacji C# platforma uniwersalna systemu Windows (platformy UWP) przy użyciu [zestawu Speech SDK](speech-sdk.md). Program nawiąże połączenie z wcześniej utworzonym i skonfigurowanym bot, aby umożliwić wirtualne środowisko asystenta wirtualnego z aplikacji klienckiej. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
+W tym artykule opisano tworzenie aplikacji C# platforma uniwersalna systemu Windows (platformy UWP) przy użyciu [zestawu Speech SDK](speech-sdk.md). Program nawiąże połączenie z wcześniej utworzonym i skonfigurowanym bot, aby umożliwić wirtualne środowisko asystenta wirtualnego z aplikacji klienckiej. Aplikacja została skompilowana z pakietem [NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2017 lub nowszą (dowolna wersja).
 
 > [!NOTE]
 > Platforma uniwersalna systemu Windows pozwala tworzyć aplikacje, które działają na dowolnym urządzeniu z systemem Windows 10, m.in. na komputerach PC, konsolach Xbox, urządzeniach Surface Hub itp.
@@ -30,7 +30,7 @@ W tym artykule opisano tworzenie aplikacji C# platforma uniwersalna systemu Wind
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Program Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) lub nowszy
 * Klucz subskrypcji platformy Azure dla usługi Speech Services. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go na [Azure Portal](https://portal.azure.com).
 * Wcześniej utworzono bot skonfigurowany za pomocą [kanału Direct line](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
@@ -352,7 +352,7 @@ Ten przewodnik Szybki Start opisuje krok po kroku, jak utworzyć prostą aplikac
 
     ![Zrzut ekranu przedstawiający pomyślne włączenie bot](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "Pomyślne włączenie bot")
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)

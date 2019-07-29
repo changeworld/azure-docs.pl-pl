@@ -4,39 +4,35 @@ description: Utwórz i opublikuj funkcję Azure wyzwalaną przez protokół HTTP
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: azure functions, funkcje, przetwarzanie zdarzeń, obliczenia, architektura bez serwera
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
-ms.date: 10/17/2018
+ms.date: 07/19/2019
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 1c07da0121b8e350c55b139901d56cfe2133386d
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 23caffd14ba37427869e8e5d0ab8d78c42d39f7d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864496"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68593862"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio
 
 Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.microsoft.com/solutions/serverless/) bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej.
 
-W tym artykule dowiesz się, jak używać narzędzi Visual Studio 2019 r dla usługi Azure Functions w celu lokalnego utworzenia i przetestowania funkcji "hello world". Kod funkcji zostanie następnie opublikowany na platformie Azure. Te narzędzia są dostępne jako część obciążenia projektowania na platformie Azure w programie Visual Studio 2019 r.
+W tym artykule dowiesz się, jak używać programu Visual Studio 2019 do lokalnego tworzenia i testowania funkcji "Hello World", a następnie publikować ją na platformie Azure. Ten przewodnik Szybki Start został zaprojektowany z założenia dla programu Visual Studio 2019. Podczas tworzenia projektu funkcji przy użyciu programu Visual Studio 2017 należy najpierw zainstalować [najnowsze narzędzia Azure Functions](functions-develop-vs.md#check-your-tools-version).
 
 ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
-Ten temat zawiera [wideo](#watch-the-video) demonstrujące te same podstawowe kroki.
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W celu ukończenia tego samouczka:
+Aby ukończyć ten samouczek, należy najpierw zainstalować [program Visual Studio 2019](https://azure.microsoft.com/downloads/). Upewnij się, że obciążenie **programowanie na platformie Azure** jest również instalowane.
 
-* Zainstaluj [Visual Studio 2019](https://azure.microsoft.com/downloads/) i upewnij się, że **programowanie na platformie Azure** obciążenia jest również instalowany.
-
-* Upewnij się, że masz [najnowsze narzędzia usługi Azure Functions](functions-develop-vs.md#check-your-tools-version).
+![Instalowanie programu Visual Studio przy użyciu obciążeń programistycznych platformy Azure](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,31 +40,23 @@ W celu ukończenia tego samouczka:
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Program Visual Studio tworzy projekt, a w nim klasę zawierającą standardowy kod dla wybranego typu funkcji. Atrybut **FunctionName** metody ustawia nazwę funkcji. Atrybut **HttpTrigger** określa, że funkcja jest wyzwalana przez żądanie HTTP. Standardowy kod wysyła odpowiedź HTTP zawierającą wartość z treści żądania lub ciągu zapytania. Do funkcji można dodać powiązania danych wejściowych i wyjściowych przez zastosowanie odpowiednich atrybutów do metody. Aby uzyskać więcej informacji, zobacz sekcję [Triggers and bindings](functions-dotnet-class-library.md#triggers-and-bindings) (Wyzwalacze i powiązania) [dokumentacji usługi Azure Functions dla deweloperów w C#](functions-dotnet-class-library.md).
+Program Visual Studio tworzy projekt i klasę, która zawiera kod standardowy dla typu funkcji wyzwalacza HTTP. Atrybut metody ustawia nazwę funkcji, która domyślnie jest `HttpTrigger`. `FunctionName` Ten `HttpTrigger` atrybut określa, że funkcja jest wyzwalana przez żądanie HTTP. Standardowy kod wysyła odpowiedź HTTP zawierającą wartość z treści żądania lub ciągu zapytania.
+
+Możesz rozszerzyć możliwości funkcji za pomocą powiązań wejściowych i wyjściowych przez zastosowanie odpowiednich atrybutów do metody. Aby uzyskać więcej informacji, zobacz sekcję [Triggers and bindings](functions-dotnet-class-library.md#triggers-and-bindings) (Wyzwalacze i powiązania) [dokumentacji usługi Azure Functions dla deweloperów w C#](functions-dotnet-class-library.md).
 
 Po utworzeniu projektu funkcji i funkcji wyzwalanej przez protokół HTTP można je przetestować na komputerze lokalnym.
 
-## <a name="test-the-function-locally"></a>Lokalne testowanie funkcji
+## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
 
-Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projektu usługi Azure Functions na lokalnym komputerze deweloperskim. Monit o zainstalowanie tych narzędzi pojawia się przy pierwszym uruchomieniu funkcji w programie Visual Studio.
+Program Visual Studio integruje się z Azure Functions Core Tools, dzięki czemu można testować funkcje lokalnie przy użyciu środowiska uruchomieniowego Full Functions.  
 
-1. Aby przetestować funkcję, naciśnij klawisz F5. Po wyświetleniu monitu zaakceptuj żądanie programu Visual Studio dotyczące pobrania i zainstalowania podstawowych narzędzi usługi Azure Functions (CLI). Może także być konieczne włączenie wyjątku zapory, aby umożliwić narzędziom obsługę żądań HTTP.
-
-2. Skopiuj adres URL funkcji z danych wyjściowych środowiska uruchomieniowego usługi Azure Functions.
-
-    ![Lokalne środowisko uruchomieniowe platformy Azure](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-debugging.png)
-
-3. Wklej adres URL żądania HTTP w pasku adresu przeglądarki. Dołącz ciąg zapytania `?name=<YOUR_NAME>` do tego adresu URL i wykonaj żądanie. Na poniższym obrazie przedstawiono wyświetloną w przeglądarce odpowiedź na lokalne żądanie GET zwróconą przez funkcję: 
-
-    ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local.png)
-
-4. Aby zatrzymać debugowanie, naciśnij klawisze **Shift+F5**.
+[!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
 Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokalnym, możesz opublikować projekt na platformie Azure.
 
 ## <a name="publish-the-project-to-azure"></a>Publikowanie projektu na platformie Azure
 
-Aby opublikować projekt, musisz mieć aplikację funkcji w swojej subskrypcji platformy Azure. Aplikację funkcji możesz utworzyć bezpośrednio w programie Visual Studio.
+Aby opublikować projekt, musisz mieć aplikację funkcji w swojej subskrypcji platformy Azure. Publikacja programu Visual Studio tworzy aplikację funkcji przy pierwszym publikowaniu projektu.
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
@@ -84,13 +72,9 @@ Aby opublikować projekt, musisz mieć aplikację funkcji w swojej subskrypcji p
 
     ![Odpowiedź funkcji wyświetlona w przeglądarce](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
 
-## <a name="watch-the-video"></a>Obejrzyj film
+## <a name="next-steps"></a>Następne kroki
 
-> [!VIDEO https://www.youtube-nocookie.com/embed/DrhG-Rdm80k]
+Używasz programu Visual Studio do tworzenia i publikowania aplikacji C# funkcji na platformie Azure z prostą funkcją wyzwalaną przez protokół http. Aby dowiedzieć się więcej na temat opracowywania funkcji jako bibliotek klas .NET, zobacz [Azure Functions C# ](functions-dotnet-class-library.md)Dokumentacja dla deweloperów.
 
-## <a name="next-steps"></a>Kolejne kroki
-
-W programie Visual Studio utworzono i opublikowano aplikację funkcji C# z prostą funkcją wyzwalaną przez protokół HTTP.
-
-* [Dowiedz się, jak dodać powiązania danych wejściowych i wyjściowych, które integrują się z innymi usługami.](functions-develop-vs.md#add-bindings)
-* [Dowiedz się więcej o programowaniu funkcji jako bibliotek klas .NET](functions-dotnet-class-library.md).
+> [!div class="nextstepaction"]
+> [Dodawanie do funkcji powiązania kolejki usługi Azure Storage](functions-add-output-binding-storage-queue-vs.md)

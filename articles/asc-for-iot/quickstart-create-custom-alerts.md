@@ -1,6 +1,6 @@
 ---
-title: Utwórz niestandardowe alerty dla Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Utwórz i przypisz niestandardowe alerty Centrum zabezpieczeń Azure dla IoT.
+title: Tworzenie alertów niestandardowych dla Azure Security Center usługi IoT | Microsoft Docs
+description: Utwórz i przypisz niestandardowe alerty urządzeń dla Azure Security Center IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,81 +13,102 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 12559af013d49e557ba0132bef24867867745c16
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ed10cbf89f878f8d27b43476d26ac93dd373ed66
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618023"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597007"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Szybki start: Utwórz niestandardowe alerty
+# <a name="quickstart-create-custom-alerts"></a>Szybki start: Tworzenie alertów niestandardowych
 
-> [!IMPORTANT]
-> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Korzystanie z grup zabezpieczeń niestandardowe i alerty, umożliwiają pełne wykorzystywanie zalet informacji o zabezpieczeniach end-to-end i wiedzy podzielonych na kategorie urządzeń, aby zapewnić większe bezpieczeństwo w rozwiązania IoT. 
+Korzystanie z niestandardowych grup zabezpieczeń i alertów pozwala w pełni wykorzystać kompleksowe informacje o zabezpieczeniach i kategoriie urządzenia, aby zapewnić lepsze zabezpieczenia rozwiązań IoT. 
 
-## <a name="why-use-custom-alerts"></a>Dlaczego warto używać niestandardowe alerty? 
+## <a name="why-use-custom-alerts"></a>Dlaczego warto używać alertów niestandardowych? 
 
-Dostęp do najlepszych urządzeń IoT.
+Wiesz, że Twoje urządzenia IoT są najlepsze.
 
-Dla klientów, którzy w pełni zrozumieć ich zachowanie oczekiwanego urządzenia Azure Security Center (ASC) dla IoT umożliwia tłumaczenie tę wiedzę do zasad zachowania urządzenia i alertu na wszelkie odchylenia od oczekiwano normalne zachowanie.
+W przypadku klientów, którzy w pełni rozumieją oczekiwane zachowanie urządzenia, Azure Security Center dla usługi IoT umożliwia przetłumaczenie tego zrozumienia na zasady zachowania urządzeń i alert dotyczący odchylenia od oczekiwanego, normalnego zachowania.
 
 ## <a name="security-groups"></a>Grupy zabezpieczeń
 
-Grupy zabezpieczeń umożliwiają definiowanie grup logicznych urządzeń i zarządzanie ich stanu zabezpieczeń w sposób scentralizowany.
+Grupy zabezpieczeń umożliwiają definiowanie logicznych grup urządzeń oraz zarządzanie ich stanem zabezpieczeń w scentralizowany sposób.
 
-Te grupy mogą reprezentować urządzenia przy użyciu określonego sprzętu wdrażane w określonej lokalizacji lub jakakolwiek inna grupa odpowiedni do konkretnych potrzeb.
+Te grupy mogą reprezentować urządzenia z określonym sprzętem, urządzeniami wdrożonymi w określonej lokalizacji lub dowolną inną grupą odpowiednią do konkretnych potrzeb.
 
-Grupy zabezpieczeń są definiowane przez właściwości tagu bliźniaczej reprezentacji modułu zabezpieczeń o nazwie **SecurityGroup**. Zmień wartość tej właściwości można zmienić grupy zabezpieczeń urządzenia.  
+Grupy zabezpieczeń są definiowane przez właściwość tag urządzenia o nazwie " **zabezpieczenia**". Domyślnie każde rozwiązanie IoT w IoT Hub ma jedną grupę zabezpieczeń o nazwie **default**. Zmień wartość właściwości Grupa **zabezpieczeń** , aby zmienić grupę zabezpieczeń urządzenia.
+ 
+Na przykład:
 
-Domyślnie każde rozwiązanie IoT w usłudze IoT Hub ma jedną grupę zabezpieczeń o nazwie **domyślne**.
+```
+{
+  "deviceId": "VM-Contoso12",
+  "etag": "AAAAAAAAAAM=",
+  "deviceEtag": "ODA1BzA5QjM2",
+  "status": "enabled",
+  "statusUpdateTime": "0001-01-01T00:00:00",
+  "connectionState": "Disconnected",
+  "lastActivityTime": "0001-01-01T00:00:00",
+  "cloudToDeviceMessageCount": 0,
+  "authenticationType": "sas",
+  "x509Thumbprint": {
+    "primaryThumbprint": null,
+    "secondaryThumbprint": null
+  },
+  "version": 4,
+  "tags": {
+    "SecurityGroup": "default"
+  }, 
+```
 
-Użyj grup zabezpieczeń do grupowania urządzeń w kategorie logiczne. Po utworzeniu grupy, należy je przypisać do niestandardowe alerty, co pozwala na najbardziej efektywne rozwiązanie end-to-end. 
+Używanie grup zabezpieczeń do grupowania urządzeń w kategorie logiczne. Po utworzeniu grup Przypisz je do wybranych niestandardowych alertów, aby uzyskać najbardziej efektywne kompleksowe rozwiązanie zabezpieczeń IoT. 
 
 ## <a name="customize-an-alert"></a>Dostosowywanie alertu
 
-1. Otwórz Centrum IoT Hub. 
-2. Kliknij przycisk **niestandardowe alerty** w **zabezpieczeń** sekcji. 
-3. Wybierz grupę zabezpieczeń, którą chcesz zastosować dostosowania do. 
-4. Kliknij przycisk **Dodaj alert niestandardowy** 
-5. Wybierz niestandardowe zachowanie alertów z listy rozwijanej. 
-6. Kliknij pozycję Edytuj wymaganych właściwości **OK**.
-7. Upewnij się, że kliknij **ZAPISZ**. Bez zapisywania nowego alertu, alert zostanie usunięty po zamknięciu Centrum IoT Hub.
+1. Otwórz IoT Hub. 
+2. Kliknij pozycję **alerty niestandardowe** w sekcji **zabezpieczenia** . 
+3. Wybierz grupę zabezpieczeń, do której chcesz zastosować dostosowanie. 
+4. Kliknij przycisk **Dodaj alert niestandardowy**.
+5. Wybierz niestandardowy alert z listy rozwijanej. 
+6. Edytuj wymagane właściwości, a następnie kliknij przycisk **OK**.
+7. Pamiętaj, aby kliknąć przycisk **Zapisz**. Bez zapisywania nowego alertu alert zostanie usunięty przy następnym zamknięciu IoT Hub.
 
  
-## <a name="alerts-available-for-customization"></a>Alerty, możliwe do dostosowania
+## <a name="alerts-available-for-customization"></a>Alerty dostępne do dostosowania
 
-Poniższa tabela zawiera podsumowanie alertów, które są możliwe do dostosowania.
+Poniższa tabela zawiera podsumowanie alertów dostępnych do dostosowania.
 
-| severity | Name (Nazwa)                                                                                                    | Źródło danych | Opis                                                                                                                                     |
-|----------|---------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| Małe      | Alert niestandardowy — liczba komunikatów w protokołu AMQP z urządzeń w chmurze nie jest dozwolony zakres          | Usługa IoT Hub     | Ilość w chmurze i komunikaty z urządzenia (protokół AMQP) w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                  |
-| Małe      | Alert niestandardowy — liczba odrzuconych w chmurze i komunikaty z urządzenia w protokołu AMQP, nie jest dozwolony zakres | Usługa IoT Hub     | Ilość w chmurze i komunikatów z urządzeń (protokół AMQP), które zostały odrzucone przez urządzenie w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres |
-| Małe      | Alert niestandardowy — liczba urządzeń do chmury wiadomości protokołu AMQP, nie jest dozwolony zakres          | Usługa IoT Hub     | Ilość urządzenia komunikatów z chmury (protokół AMQP) w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                  |
-| Małe      | Wywołuje niestandardowy Alert — liczba metody bezpośredniej nie jest dozwolony zakres                              | Usługa IoT Hub     | Ilość metody bezpośredniej wywołuje w oknie nie znajduje się w skonfigurowanym dozwolony zakres czasu                                                     |
-| Małe      | Alert niestandardowy — liczba operacji przekazywania plików nie jest dozwolony zakres                                       | Usługa IoT Hub     | Ilość przekazywanych plików w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                                              |
-| Małe      | Alert niestandardowy — liczba komunikatów w protokole HTTP z urządzeń w chmurze nie jest dozwolony zakres          | Usługa IoT Hub     | Ilość w chmurze i komunikaty z urządzenia (protokół HTTP) w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                  |
-| Małe      | Alert niestandardowy — liczba odrzuconych chmury do urządzenia komunikaty w protokole HTTP nie jest dozwolony zakres | Usługa IoT Hub     | Ilość w chmurze i komunikatów z urządzeń (protokół HTTP), które zostały odrzucone przez urządzenie w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres |
-| Małe      | Alert niestandardowy — liczba urządzeń do chmury komunikaty w protokole HTTP nie jest dozwolony zakres          | Usługa IoT Hub     | Ilość urządzenia komunikatów z chmury (protokół HTTP) w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                  |
-| Małe      | Alert niestandardowy — liczba komunikatów z urządzeń w protokołu MQTT w chmurze nie jest dozwolony zakres          | Usługa IoT Hub     | Ilość w chmurze i komunikaty z urządzenia (protokołu MQTT) w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                  |
-| Małe      | Alert niestandardowy — liczba odrzuconych w chmurze i komunikaty z urządzenia w protokołu MQTT, nie jest dozwolony zakres | Usługa IoT Hub     | Ilość w chmurze i komunikatów z urządzeń (protokołu MQTT), które zostały odrzucone przez urządzenie w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres |
-| Małe      | Alert niestandardowy — liczba urządzeń do chmury wiadomości protokołu MQTT, nie jest dozwolony zakres          | Usługa IoT Hub     | Ilość urządzenia komunikatów z chmury (protokołu MQTT) w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                  |
-| Małe      | Alert niestandardowy — liczba powoduje usunięcie kolejki poleceń nie jest dozwolony zakres                               | Usługa IoT Hub     | Wielkość kolejki poleceń Przeczyszcza w oknie nie znajduje się w skonfigurowanym dozwolony zakres czasu                                                      |
-| Małe      | Alert niestandardowy — liczba aktualizacji bliźniaczej reprezentacji nie jest dozwolony zakres                                       | Usługa IoT Hub     | Liczba aktualizacji bliźniaczej reprezentacji w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                                              |
-| Małe      | Alert niestandardowy — liczba operacji nieautoryzowanych nie jest dozwolony zakres                            | Usługa IoT Hub     | Ilość nieautoryzowanych operacji w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                                   |
-| Małe      | Alert niestandardowy — liczba aktywnych połączeń nie jest dozwolony zakres                                        | Agent       | Liczba aktywnych połączeń w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                                        |
-| Małe      | Utworzono Alert niestandardowy — połączenie wychodzące do adresu ip, który nie jest dozwolona                              | Agent       | Utworzono połączenie wychodzące do adresu ip, który nie jest dozwolona                                                                                  |
-| Małe      | Alert niestandardowy — liczba nieudanych prób logowania lokalnego nie jest dozwolony zakres                                | Agent       | Liczba nieudanych prób logowania lokalnego, w przedziale czasu nie znajduje się w skonfigurowanym dozwolony zakres                                                       |
-| Małe      | Alert niestandardowy — logowania użytkownika, który jest niedozwolony                                                      | Agent       | Użytkownika lokalnego, która nie jest dozwolona zalogowany do urządzenia                                                                                        |
-| Małe      | Alert niestandardowy — wykonanie procesu, który nie jest dozwolona                                               | Agent       | Wykonano procesu, który nie jest dozwolone na urządzeniu |          |
 
-## <a name="next-steps"></a>Następne kroki
+| severity | Name (Nazwa) | Źródło danych | Opis | Sugerowane korygowanie|
+|---|---|---|---|---|
+| Małe      | Alert niestandardowy — liczba komunikatów z chmury do urządzeń w protokole AMQP jest poza dozwolonym zakresem          | IoT Hub     | Liczba komunikatów z chmury do urządzeń (protokół AMQP) w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.||
+| Małe      | Alert niestandardowy — Liczba odrzuconych chmur do komunikatów urządzenia w protokole AMQP jest poza dozwolonym zakresem | IoT Hub     | Liczba komunikatów z chmury do urządzeń (protokół AMQP) odrzuconych przez urządzenie w określonym przedziale czasu poza aktualnie skonfigurowanym i dozwolonym zakresem.||
+| Małe      | Alert niestandardowy — liczba urządzeń z komunikatami w chmurze w protokole AMQP jest poza dozwolonym zakresem      | IoT Hub     | Ilość urządzenia do komunikatów w chmurze (protokół AMQP) w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.|   |
+| Małe      | Alert niestandardowy — liczba wywoływanych metod bezpośrednich jest poza dozwolonym zakresem | IoT Hub     | Liczba metod bezpośrednich wywoływanych w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.||
+| Małe      | Alert niestandardowy — liczba operacji przekazywania plików jest poza dozwolonym zakresem | IoT Hub     | Ilość przekazywania plików w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.| |
+| Małe      | Alert niestandardowy — liczba komunikatów z chmury do urządzeń w protokole HTTP jest poza dozwolonym zakresem | IoT Hub     | Ilość komunikatów z chmury do urządzeń (protokół HTTP) w przedziale czasu nie jest w skonfigurowanym dozwolonym zakresie                                  |
+| Małe      | Alert niestandardowy — Liczba odrzuconych chmur do komunikatów urządzenia w protokole HTTP nie jest w dozwolonym zakresie | IoT Hub     | Ilość komunikatów z chmury do urządzeń (protokół HTTP) w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem. |
+| Małe      | Alert niestandardowy — liczba urządzeń z komunikatami w chmurze w protokole HTTP jest poza dozwolonym zakresem | IoT Hub| Ilość urządzenia do komunikatów w chmurze (protokół HTTP) w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.|    |
+| Małe      | Alert niestandardowy — liczba komunikatów z chmury do urządzeń w protokole MQTT jest poza dozwolonym zakresem | IoT Hub     | Ilość komunikatów z chmury do urządzeń (protokół MQTT) w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.|   |
+| Małe      | Alert niestandardowy — Liczba odrzuconych chmur do komunikatów urządzenia w protokole MQTT jest poza dozwolonym zakresem | IoT Hub     | Ilość komunikatów z chmury do urządzeń (protokół MQTT) odrzuconych przez urządzenie w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem. |
+| Małe      | Alert niestandardowy — liczba urządzeń z komunikatami w chmurze w protokole MQTT jest poza dozwolonym zakresem          | IoT Hub     | Ilość urządzenia do komunikatów w chmurze (protokół MQTT) w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.|
+| Małe      | Alert niestandardowy — liczba przeczyszczania kolejki poleceń jest poza dozwolonym zakresem                               | IoT Hub     | Ilość przeczyszczania kolejki poleceń w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.||
+| Małe      | Alert niestandardowy — liczba aktualizacji bliźniaczych modułu jest poza dozwolonym zakresem                                       | IoT Hub     | Liczba aktualizacji sieci dwuosiowych modułu w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.|
+| Małe      | Alert niestandardowy — liczba niedozwolonych operacji jest poza dozwolonym zakresem  | IoT Hub     | Ilość niedozwolonych operacji w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.|
+| Małe      | Alert niestandardowy — liczba aktywnych połączeń jest poza dozwolonym zakresem  | Agent       | Liczba aktywnych połączeń w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem.|  Sprawdź dzienniki urządzeń. Dowiedz się, skąd pochodzi połączenie i ustal, czy jest ono niegroźne lub złośliwe. Jeśli jest to złośliwe, Usuń możliwe złośliwe oprogramowanie i poznanie źródła. Jeśli niegroźne, Dodaj źródło do listy dozwolonych połączeń.  |
+| Małe      | Alert niestandardowy — połączenie wychodzące utworzone w niedozwolonym adresie IP                             | Agent       | Połączenie wychodzące zostało utworzone w adresie IP spoza listy dozwolonych adresów IP. |Sprawdź dzienniki urządzeń. Dowiedz się, skąd pochodzi połączenie i ustal, czy jest ono niegroźne lub złośliwe. Jeśli jest to złośliwe, Usuń możliwe złośliwe oprogramowanie i poznanie źródła. Jeśli niegroźne, Dodaj źródło do listy dozwolonych adresów IP.                        |
+| Małe      | Alert niestandardowy — liczba nieudanych logowań lokalnych jest poza dozwolonym zakresem                               | Agent       | Liczba nieudanych logowań lokalnych w określonym przedziale czasu jest poza aktualnie skonfigurowanym i dozwolonym zakresem. |   |
+| Małe      | Niestandardowy alert — Logowanie użytkownika, który nie znajduje się na liście dozwolonych użytkowników | Agent       | Użytkownik lokalny spoza listy dozwolonych użytkowników zalogował się na urządzeniu.|  Jeśli zapisujesz dane pierwotne, przejdź do swojego konta usługi log Analytics i Użyj danych do zbadania urządzenia, Zidentyfikuj źródło, a następnie napraw listę dozwolonych/zablokowanych dla tych ustawień. Jeśli obecnie nie zapisujesz danych pierwotnych, przejdź do urządzenia i popraw listę dozwolonych/zablokowanych dla tych ustawień.|
+| Małe      | Alert niestandardowy — proces został wykonany, który jest niedozwolony | Agent       | Proces, który jest niedozwolony, został wykonany na urządzeniu. |Jeśli zapisujesz dane pierwotne, przejdź do swojego konta usługi log Analytics i Użyj danych do zbadania urządzenia, Zidentyfikuj źródło, a następnie napraw listę dozwolonych/zablokowanych dla tych ustawień. Jeśli obecnie nie zapisujesz danych pierwotnych, przejdź do urządzenia i popraw listę dozwolonych/zablokowanych dla tych ustawień.  |
+|
+
+
+## <a name="next-steps"></a>Kolejne kroki
 
 Przejdź do następnego artykułu, aby dowiedzieć się, jak wdrożyć agenta zabezpieczeń...
 
 > [!div class="nextstepaction"]
-> [Wdróż agenta zabezpieczeń](how-to-deploy-agent.md)
+> [Wdrażanie agenta zabezpieczeń](how-to-deploy-agent.md)

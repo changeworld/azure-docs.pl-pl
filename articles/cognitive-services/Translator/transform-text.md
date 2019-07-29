@@ -1,7 +1,7 @@
 ---
-title: Przekształć tekst — interfejs API tekstu usługi Translator
-titlesuffix: Azure Cognitive Services
-description: Przekształcenia tekstu przy użyciu interfejsu API tłumaczenia tekstu.
+title: Przekształcanie tekstu — interfejs API tłumaczenia tekstu w usłudze Translator
+titleSuffix: Azure Cognitive Services
+description: Przekształcanie tekstu przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,34 +10,34 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 5caefad7b681970e79e727367619ca494335c390
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435019"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594896"
 ---
-# <a name="how-to-use-the-transformtext-method"></a>Jak użyć metody TransformText
+# <a name="how-to-use-the-transformtext-method"></a>Jak używać metody metody TransformText
 
 > [!NOTE]
-> Ta metoda jest przestarzała. Nie jest dostępna w wersji 3.0 z interfejsu API tłumaczenia tekstu.
+> Ta metoda jest przestarzała. Nie jest dostępna w wersji 3.0 interfejs API tłumaczenia tekstu w usłudze Translator.
 
-Metoda TransformText jest funkcja normalizacji text związanych z mediami społecznościowymi, która zwraca wartość znormalizowana postać danych wejściowych. Metoda może służyć jako krok przetwarzania wstępnego w tłumaczenia maszynowego lub inne aplikacje, które oczekują czystego tekstu wejściowego, który nie jest zwykle znajdują się w mediach społecznościowych lub o zawartość wygenerowaną przez użytkowników. Funkcja, która jest obecnie działa tylko w przypadku danych wejściowych w języku angielskim.
+Metoda metody TransformText jest funkcją normalizacji tekstu dla mediów społecznościowych, która zwraca znormalizowaną postać danych wejściowych. Metoda ta może służyć jako krok przetwarzania wstępnego w tłumaczeniu maszynowym lub w innych aplikacjach, które oczekują czystego tekstu wejściowego, który nie jest zazwyczaj znajdowany w multimediach społecznościowych lub w treści wygenerowanej przez użytkownika. Funkcja obecnie działa tylko z danymi wejściowymi w języku angielskim.
 
-Metoda jest usługą RESTful przy użyciu GET za pośrednictwem protokołu HTTP. Obsługuje ona prosty serializacja XML i JSON.
+Metoda jest usługą RESTful przy użyciu funkcji GET over HTTP. Obsługuje ona proste serializacji XML i JSON.
 
 ## <a name="parameters"></a>Parametry
 
 | Parametr | Opis |
 |:---|:---|
-| Nagłówek autoryzacji | **Wymagane** nagłówka HTTP używany do identyfikowania aplikacji. Użyj klucza: "Autoryzacja" i wartość: "Bearer" + "" + tokenu dostępu. Szczegółowe informacje można znaleźć tutaj.|
-| language | **Wymagane** ciąg reprezentujący kod języka. Ten parametr obsługuje tylko język angielski przy użyciu **en** jako nazwę języka.|
-| category | **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko opcja domyślna **ogólne**.|
-| zdania | **Wymagane** zdania, który chcesz naprawić. |
+| Nagłówek uwierzytelnienia | **Wymagane** Nagłówek HTTP służący do identyfikowania aplikacji. Użyj klucza: "Autoryzacja" i wartość: "Bearer" + "" + token dostępu. Aby uzyskać szczegółowe informacje, przejdź tutaj.|
+| język | **Wymagane** Ciąg reprezentujący kod języka. Ten parametr obsługuje tylko język angielski i wartość **EN** jako nazwę języka.|
+| category | **Opcjonalne** Ciąg zawierający kategorię lub domenę tłumaczenia. Ten parametr obsługuje tylko domyślną opcję **Ogólne**.|
+| zdania | **Wymagane** Zdanie, które chcesz poprawić. |
 
 ## <a name="return-value"></a>Wartość zwracana
 
-Wartość zwracana zawiera przekształcone zdania.
+Wartość zwracana zawiera przekształcone zdanie.
 
 > [!div class="tabbedCodeSnippets"]
 > ```json

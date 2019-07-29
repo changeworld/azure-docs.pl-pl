@@ -1,6 +1,6 @@
 ---
-title: Tworzenie bliźniaczą reprezentację modułu zabezpieczeń Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć wiedzy usługi Azure Security Center bliźniacza reprezentacja modułu IoT do użycia z usługą ASC dla IoT.
+title: Tworzenie sznurka modułu zabezpieczeń dla Azure Security Center usługi IoT | Microsoft Docs
+description: Dowiedz się, jak utworzyć Azure Security Center dla sznurów modułu IoT do użycia z Azure Security Center dla IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,70 +15,68 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0e042942be63fdcd97c7cda6003e6d55376ca1a1
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 92bf79aa5ae55bad16d68a26dc13d292285a4d46
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616656"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597079"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Szybki start: Utwórz bliźniaczą reprezentację modułu azureiotsecurity
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Szybki start: Tworzenie sznurka modułu azureiotsecurity
 
-> [!IMPORTANT]
-> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+W tym przewodniku szybki start wyjaśniono, jak utworzyć pojedynczy moduł _azureiotsecurity_ bliźniaczych reprezentacji dla nowych urządzeń, lub Batch Create module bliźniaczych reprezentacji dla wszystkich urządzeń w IoT Hub.  
 
-Ten przewodnik Szybki Start objaśnienia dotyczące sposobu tworzenia poszczególnych _azureiotsecurity_ bliźniaczych reprezentacjach modułów na nowych urządzeniach lub partii tworzenie bliźniaczych reprezentacjach modułów dla wszystkich urządzeń w usłudze IoT Hub.  
+## <a name="understanding-azureiotsecurity-module-twins"></a>Zrozumienie modułu azureiotsecurity bliźniaczych reprezentacji 
 
-## <a name="understanding-azureiotsecurity-module-twins"></a>Informacje o bliźniaczych reprezentacjach modułów azureiotsecurity 
+W przypadku rozwiązań IoT utworzonych na platformie Azure bliźniaczych reprezentacji urządzeń odgrywa kluczową rolę w zarządzaniu urządzeniami i automatyzacją procesów. 
 
-Dla rozwiązań IoT, zbudowany na platformie Azure bliźniacze reprezentacje urządzeń odgrywają kluczową rolę zarówno w przypadku zarządzania urządzeniami, jak i automatyzację procesów. 
+Azure Security Center dla IoT oferuje pełną integrację z istniejącą platformą zarządzania urządzeniami IoT, umożliwiając zarządzanie stanem zabezpieczeń urządzeń oraz korzystanie z istniejących możliwości sterowania urządzeniami.
+Azure Security Center do integracji IoT jest realizowany poprzez korzystanie z mechanizmu IoT Huba przędzy.  
 
-Usługa Azure Security Center (ASC) dla IoT oferuje pełną integrację ze swojej istniejącej IoT platforma do zarządzania urządzeniami, dzięki któremu można zarządzać stanu zabezpieczeń urządzenia oraz upewnij korzystać z istniejących możliwości kontroli urządzenia.
-ASC integracji IoT jest osiągane dzięki wykorzystaniu usługi IoT Hub bliźniaczej reprezentacji mechanizm.  
-
-Zobacz [bliźniaczych reprezentacjach modułów usługi IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) dowiedzieć się więcej o ogólnym założeniem bliźniaczych reprezentacjach modułów w usłudze Azure IoT Hub. 
+Aby dowiedzieć się więcej na temat ogólnej koncepcji modułu bliźniaczych reprezentacji w usłudze Azure IoT Hub, zobacz [IoT Hub module bliźniaczych reprezentacji](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) . 
  
-ASC dla IoT ułatwia korzystanie z mechanizmu bliźniaczej reprezentacji modułu i utrzymuje bliźniaczą reprezentację modułu na zabezpieczeń o nazwie _azureiotsecurity_ dla każdego urządzenia.
-Bliźniacza reprezentacja modułu zabezpieczeń przechowuje wszystkie informacje dotyczą zasady zabezpieczeń urządzeń dla każdego urządzenia. 
+Azure Security Center dla IoT korzysta z mechanizmu dwuosiowego modułu i utrzymuje dwuosiowy moduł zabezpieczeń o nazwie _azureiotsecurity_ dla każdego urządzenia.
+
+Sznury modułowe zabezpieczeń zawiera wszystkie informacje dotyczące zabezpieczeń urządzeń dla każdego z urządzeń. 
  
-Aby wykorzystać ASC funkcji IoT, musisz tworzenia, konfigurowania i używania tych bliźniaczych reprezentacjach modułów zabezpieczeń dla każdego urządzenia w usłudze.  
+Aby w pełni korzystać z Azure Security Center dla funkcji IoT, należy utworzyć, skonfigurować i używać tych bliźniaczych reprezentacji modułów zabezpieczeń dla każdego urządzenia w usłudze.  
 
-## <a name="create-azureiotsecurity-module-twin"></a>Utwórz bliźniaczą reprezentację modułu azureiotsecurity 
+## <a name="create-azureiotsecurity-module-twin"></a>Tworzenie sznurka modułu azureiotsecurity 
 
-_azureiotsecurity_ bliźniaczych reprezentacjach modułów można utworzyć na dwa sposoby:
-1. [Skrypt wsadowy modułu](https://aka.ms/iot-security-github-create-module) — automatycznie tworzy bliźniaczą reprezentację modułu dla nowych urządzeń lub urządzeń bez bliźniaczą reprezentację modułu korzysta z konfiguracji domyślnej.
-2. Ręczna Edycja każdego bliźniaczą reprezentację modułu za pomocą konfiguracji specyficznych dla każdego urządzenia.
+moduł _azureiotsecurity_ module bliźniaczych reprezentacji można utworzyć na dwa sposoby:
+1. [Skrypt wsadowy modułu](https://aka.ms/iot-security-github-create-module) — automatycznie tworzy sznurki modułowe dla nowych urządzeń lub urządzeń bez użycia sznurka modułu przy użyciu konfiguracji domyślnej.
+2. Ręcznie Edytuj poszczególne sznury modułów z określonymi konfiguracjami dla każdego urządzenia.
 
 >[!NOTE] 
-> Za pomocą metody partii nie spowoduje zastąpienie istniejących azureiotsecurity bliźniaczych reprezentacjach modułów. TYLKO przy użyciu metody batch tworzy nowy bliźniaczych reprezentacjach modułów dla urządzeń, które nie zostały jeszcze bliźniaczą reprezentację modułu zabezpieczeń. 
+> Użycie metody Batch nie spowoduje zastąpienia istniejącego modułu azureiotsecurity bliźniaczych reprezentacji. Za pomocą metody Batch tworzony jest tylko nowy moduł bliźniaczych reprezentacji dla urządzeń, które nie mają jeszcze sznurka modułu zabezpieczeń. 
 
-Zobacz [konfiguracji agenta](how-to-agent-configuration.md) dowiesz się, jak zmodyfikować lub zmiany konfiguracji istniejących bliźniaczą reprezentację modułu. 
+Zapoznaj się z tematem [Konfiguracja agenta](how-to-agent-configuration.md) , aby dowiedzieć się, jak zmodyfikować lub zmienić konfigurację wieloosiowego modułu. 
 
-Aby ręcznie utworzyć nowy _azureiotsecurity_ modułu bliźniacza reprezentacja urządzenia, skorzystaj z poniższych instrukcji: 
+Aby ręcznie utworzyć nową sznurek modułu _azureiotsecurity_ dla urządzenia, użyj następujących instrukcji: 
 
-1. W usłudze IoT Hub Znajdź i wybierz urządzenie, którego chcesz utworzyć zabezpieczeń bliźniaczą reprezentację modułu w usłudze IoT Hub.
-1. Kliknij przycisk na urządzeniu, a następnie na **Dodaj tożsamość modułu**.
-1. W **nazwy tożsamości modułu** wprowadź **azureiotsecurity**.
+1. W IoT Hub Znajdź i wybierz urządzenie, dla którego chcesz utworzyć dwuosiowy moduł zabezpieczeń.
+1. Kliknij urządzenie, a następnie **Dodaj tożsamość modułu**.
+1. W polu **Nazwa tożsamości modułu** wprowadź **azureiotsecurity**.
 
 1. Kliknij polecenie **Zapisz**. 
 
-## <a name="verify-creation-of-a-module-twin"></a>Sprawdź tworzenia bliźniaczej reprezentacji modułu
+## <a name="verify-creation-of-a-module-twin"></a>Weryfikowanie tworzenia sznurka modułu
 
-Aby sprawdzić, czy bliźniaczą reprezentację modułu zabezpieczeń istnieje dla określonego urządzenia:
+Aby sprawdzić, czy dla określonego urządzenia istnieje sznurek modułu zabezpieczeń:
 
-1. W usłudze Azure IoT Hub, wybierz **urządzeń IoT** z **Eksploratory** menu.    
-1. Wprowadź identyfikator urządzenia, lub wybierz opcję **pola urządzenia zapytania** i kliknij przycisk **zapytania urządzeń**. 
-    ![Zapytania urządzeń](./media/quickstart/verify-security-module-twin.png)
-1. Wybierz urządzenie lub dwukrotnie kliknij go, aby otworzyć stronę szczegółów urządzenia. 
-1. Wybierz **tożsamości modułu** menu i Sprawdź istnienie **azureiotsecurity** modułu na liście tożsamości modułu skojarzone z urządzeniem. 
-    ![Moduły skojarzone z urządzenia](./media/quickstart/verify-security-module-twin-3.png)
+1. W IoT Hub platformy Azure wybierz pozycję **urządzenia IoT** z menu **eksplorators** .    
+1. Wprowadź identyfikator urządzenia lub wybierz opcję w **polu zapytanie dotyczące urządzenia** , a następnie kliknij pozycję **zapytanie o urządzenia**. 
+    ![Zapytanie dotyczące urządzeń](./media/quickstart/verify-security-module-twin.png)
+1. Wybierz urządzenie lub kliknij je dwukrotnie, aby otworzyć stronę szczegóły urządzenia. 
+1. Wybierz menu **tożsamości modułów** i potwierdzenie istnienia modułu **azureiotsecurity** na liście tożsamości modułów skojarzonych z urządzeniem. 
+    ![Moduły skojarzone z urządzeniem](./media/quickstart/verify-security-module-twin-3.png)
 
 
-Aby dowiedzieć się więcej o dostosowywaniu właściwości ASC dla bliźniaczych reprezentacjach modułów IoT, zobacz [konfiguracji agenta](how-to-agent-configuration.md).
+Aby dowiedzieć się więcej o dostosowywaniu właściwości Azure Security Center dla modułu IoT bliźniaczych reprezentacji, zobacz [Konfiguracja agenta](how-to-agent-configuration.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przejdź do następnego artykułu, aby dowiedzieć się, jak skonfigurować niestandardowe alerty...
+Przejdź do następnego artykułu, aby dowiedzieć się, jak skonfigurować alerty niestandardowe...
 
 > [!div class="nextstepaction"]
-> [Skonfiguruj alerty niestandardowe](quickstart-create-custom-alerts.md)
+> [Konfigurowanie alertów niestandardowych](quickstart-create-custom-alerts.md)

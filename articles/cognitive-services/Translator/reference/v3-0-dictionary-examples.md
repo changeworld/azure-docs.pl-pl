@@ -1,7 +1,7 @@
 ---
-title: Metoda przykłady słownika interfejs API tekstu usługi Translator
-titlesuffix: Azure Cognitive Services
-description: Metoda przykłady słowników interfejs API tekstu usługi Translator.
+title: Przykłady interfejs API tłumaczenia tekstu w usłudze Translator słownika
+titleSuffix: Azure Cognitive Services
+description: Użyj metody przykładów słownika interfejs API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: e4665157803409b884c3333d9a3514403e5630bd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 15d23016df9b0c85b9d252b4c4a9ea48d3608f75
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435120"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595056"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Przykłady słowników
+# <a name="translator-text-api-30-dictionary-examples"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: Przykłady słowników
 
-Przykłady pokazujące, jak terminy w słowniku są używane w kontekście. Ta operacja jest używana w połączeniu z sekcją [wyszukiwania słownika](./v3-0-dictionary-lookup.md).
+Zawiera przykłady pokazujące, jak terminy w słowniku są używane w kontekście. Ta operacja jest używana wspólnie z funkcją [Lookup dictionary](./v3-0-dictionary-lookup.md).
 
 ## <a name="request-url"></a>Adres URL żądania
 
-Wyślij `POST` limit czasu żądania:
+`POST` Wyślij żądanie do:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0
@@ -31,57 +31,57 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 ## <a name="request-parameters"></a>Parametry żądania
 
-Żądania, parametry przekazane w ciągu zapytania są:
+Parametry żądania przesłane na ciągu zapytania są następujące:
 
 <table width="100%">
   <th width="20%">Parametr zapytania</th>
   <th>Opis</th>
   <tr>
     <td>api-version</td>
-    <td>*Wymagany parametr*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
+    <td>*Wymagany parametr*.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
     <td>from</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwane języki](./v3-0-languages.md) objęte `dictionary` zakresu.</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) zawartych w `dictionary` zakresie.</td>
   </tr>
   <tr>
-    <td>na</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](./v3-0-languages.md) objęte `dictionary` zakresu.</td>
+    <td>to</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) zawartych w `dictionary` zakresie.</td>
   </tr>
 </table>
 
-Nagłówki żądania obejmują:
+Nagłówki żądań obejmują:
 
 <table width="100%">
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
     <td>Nagłówki uwierzytelniania</td>
-    <td><em>Nagłówek żądania wymagane</em>.<br/>Zobacz <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostępne opcje uwierzytelniania</a>.</td>
+    <td><em>Wymagany nagłówek żądania</em>.<br/>Zobacz <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostępne opcje uwierzytelniania</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*Nagłówek żądania wymagane*.<br/>Określa typ zawartości ładunku. Możliwe wartości to: `application/json`.</td>
+    <td>*Wymagany nagłówek żądania*.<br/>Określa typ zawartości ładunku. Możliwe wartości to: `application/json`.</td>
   </tr>
   <tr>
     <td>Długość zawartości</td>
-    <td>*Nagłówek żądania wymagane*.<br/>Długość treści żądania.</td>
+    <td>*Wymagany nagłówek żądania*.<br/>Długość treści żądania.</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Opcjonalnie*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Możesz pominąć ten nagłówek, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie `ClientTraceId`.</td>
+    <td>*Opcjonalnie*.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Możesz pominąć ten nagłówek, jeśli dołączysz identyfikator śledzenia w ciągu zapytania przy użyciu parametru zapytania o nazwie `ClientTraceId`.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Treść żądania
 
-Treść żądania jest tablicą JSON. Każdy element tablicy jest obiekt JSON z następującymi właściwościami:
+Treść żądania jest tablicą JSON. Każdy element tablicy jest obiektem JSON o następujących właściwościach:
 
-  * `Text`: Ciąg określający termin do wyszukiwania. Powinna to być wartość `normalizedText` pola z powrotem tłumaczeń do poprzedniej [wyszukiwania słownika](./v3-0-dictionary-lookup.md) żądania. Może to być także wartością `normalizedSource` pola.
+  * `Text`: Ciąg określający termin do wyszukania. Powinna to być wartość `normalizedText` pola z retłumaczenia poprzedniego żądania [wyszukiwania słownika](./v3-0-dictionary-lookup.md) . Może być również wartością `normalizedSource` pola.
 
-  * `Translation`: Ciąg określający przetłumaczonego tekstu wcześniej zwracany przez [wyszukiwania słownika](./v3-0-dictionary-lookup.md) operacji. Powinna to być wartość z `normalizedTarget` pole `translations` listę [wyszukiwania słownika](./v3-0-dictionary-lookup.md) odpowiedzi. Usługa zwróci przykłady pary słów określone źródło cel.
+  * `Translation`: Ciąg określający przetłumaczony tekst, który został wcześniej zwrócony przez operację [wyszukiwania słownika](./v3-0-dictionary-lookup.md) . Powinna to być wartość z `normalizedTarget` pola `translations` na liście odpowiedzi na [Wyszukiwanie słownika](./v3-0-dictionary-lookup.md) . Usługa zwróci przykłady dla określonej pary wyrazów dla docelowej lokalizacji źródłowej.
 
-Przykładem jest:
+Przykład:
 
 ```json
 [
@@ -91,39 +91,39 @@ Przykładem jest:
 
 Obowiązują następujące ograniczenia:
 
-* Tablica może mieć co najwyżej 10 elementów.
-* Wartość tekstowa elementu tablicy nie może przekraczać 100 znaków, łącznie ze spacjami.
+* Tablica może zawierać co najwyżej 10 elementów.
+* Wartość tekstowa elementu tablicy nie może być dłuższa niż 100 znaków, w tym spacje.
 
 ## <a name="response-body"></a>Treść odpowiedzi
 
-Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ciągu w tabeli wejściowej. Obiekt wyniku zawiera następujące właściwości:
+Pomyślna odpowiedź to tablica JSON z jednym wynikiem dla każdego ciągu w tablicy wejściowej. Obiekt wynikowy zawiera następujące właściwości:
 
-  * `normalizedSource`: Ciąg, zapewniając znormalizowana postać okresu źródła. Ogólnie rzecz biorąc, powinna to być taka sama jak wartość `Text` pole pod indeksem listy dopasowywania w treści żądania.
+  * `normalizedSource`: Ciąg przedstawiający znormalizowaną formę okresu źródłowego. Ogólnie rzecz biorąc powinna być taka sama jak wartość `Text` pola w indeksie zgodnej listy w treści żądania.
     
-  * `normalizedTarget`: Ciąg, zapewniając znormalizowana postać warunku docelowego. Ogólnie rzecz biorąc, powinna to być taka sama jak wartość `Translation` pole pod indeksem listy dopasowywania w treści żądania.
+  * `normalizedTarget`: Ciąg przedstawiający znormalizowaną formę okresu docelowego. Ogólnie rzecz biorąc powinna być taka sama jak wartość `Translation` pola w indeksie zgodnej listy w treści żądania.
   
-  * `examples`: Lista przykłady (warunek źródła, terminu docelowego) pary. Każdy element listy jest obiektem z następującymi właściwościami:
+  * `examples`: Lista przykładów dla pary (termin źródłowy, termin docelowy). Każdy element listy jest obiektem o następujących właściwościach:
 
-    * `sourcePrefix`: Ciąg do łączenia _przed_ wartość `sourceTerm` w celu utworzenia kompletny przykład. Nie należy dodawać znak spacji, ponieważ jest już istnieje w przypadku powinien być. Ta wartość może być ciągiem pustym.
+    * `sourcePrefix`: Ciąg, który ma zostać połączony _przed_ wartością `sourceTerm` w celu utworzenia kompletnego przykładu. Nie należy dodawać znaku spacji, ponieważ jest już tam, gdy powinien być. Ta wartość może być pustym ciągiem.
 
-    * `sourceTerm`: Wyszukiwane ciągu równa rzeczywisty okres. Ten ciąg jest dodawana z `sourcePrefix` i `sourceSuffix` w celu utworzenia kompletny przykład. Jego wartość jest oddzielona, dzięki czemu może być oznaczony w interfejsie użytkownika, np. przez pogrubienie go.
+    * `sourceTerm`: Ciąg równy rzeczywistemu wyszukiwanemu okresowi. Ciąg zostanie dodany z `sourcePrefix` i `sourceSuffix` w celu utworzenia kompletnego przykładu. Jego wartość jest oddzielona, aby można było ją oznaczyć w interfejsie użytkownika, np. przez pogrubienie.
 
-    * `sourceSuffix`: Ciąg do łączenia _po_ wartość `sourceTerm` w celu utworzenia kompletny przykład. Nie należy dodawać znak spacji, ponieważ jest już istnieje w przypadku powinien być. Ta wartość może być ciągiem pustym.
+    * `sourceSuffix`: Ciąg, który ma zostać połączony _po_ wartości `sourceTerm` w celu utworzenia kompletnego przykładu. Nie należy dodawać znaku spacji, ponieważ jest już tam, gdy powinien być. Ta wartość może być pustym ciągiem.
 
-    * `targetPrefix`: Ciąg podobny do następującego `sourcePrefix` , ale dla obiektu docelowego.
+    * `targetPrefix`: Ciąg podobny do `sourcePrefix` dla elementu docelowego.
 
-    * `targetTerm`: Ciąg podobny do następującego `sourceTerm` , ale dla obiektu docelowego.
+    * `targetTerm`: Ciąg podobny do `sourceTerm` dla elementu docelowego.
 
-    * `targetSuffix`: Ciąg podobny do następującego `sourceSuffix` , ale dla obiektu docelowego.
+    * `targetSuffix`: Ciąg podobny do `sourceSuffix` dla elementu docelowego.
 
     > [!NOTE]
-    > W przypadku żadnych przykładów w słowniku, odpowiedzi to 200 (OK), ale `examples` lista jest pusta lista.
+    > Jeśli w słowniku nie ma przykładów, odpowiedź jest 200 (ok), ale `examples` lista jest pusta.
 
 ## <a name="examples"></a>Przykłady
 
-W tym przykładzie przedstawiono przykłady dla pary składające się z angielskiego termin wyszukiwania `fly` hiszpański tłumaczenie `volar`.
+Ten przykład pokazuje, jak wyszukiwać przykłady dla pary składające się z okresu `fly` angielskiego i jego tłumaczenia `volar`hiszpańskiego.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[odsłon](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
@@ -131,7 +131,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?
 
 ---
 
-Treść odpowiedzi (skrót dla jasności) to:
+Treść odpowiedzi (skróci do przejrzystości) to:
 
 ```
 [

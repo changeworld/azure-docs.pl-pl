@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Security Center dla usługi IoT w wersji zapoznawczej Centrum IoT | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć usługę Azure Security Center dla usługi IoT w usłudze IoT Hub.
+title: Włącz Azure Security Center dla usługi IoT w IoT Hub | Microsoft Docs
+description: Dowiedz się, jak włączyć usługę Azure Security Center dla usługi IoT w IoT Hub.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,54 +15,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: f81fb7aeed1b704ebdd82c1f5b83c33a4b05e9ca
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a794ccea13323f38b20906458e216f85652bfc3e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618003"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596967"
 ---
-# <a name="quickstart-enable-service-in-iot-hub"></a>Szybki start: Włącz usługę w usłudze IoT Hub
+# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Szybki start: Dołączanie Azure Security Center usługi IoT w programie IoT Hub
 
-> [!IMPORTANT]
-> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ten artykuł zawiera wyjaśnienie, jak włączyć usługi Azure Security Center (ASC) usługi IoT (wersja zapoznawcza) w usłudze IoT Hub.  
+Ten artykuł zawiera informacje na temat sposobu włączania usługi IoT Azure Security Center dla istniejących IoT Hub. Jeśli obecnie nie masz IoT Hub, zobacz [tworzenie IoT Hub przy użyciu Azure Portal](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) , aby rozpocząć pracę. 
 
 > [!NOTE]
-> Centrum zabezpieczeń Azure dla IoT aktualnie obsługuje tylko centrów iot Hub w warstwie standardowa.
-> Centrum zabezpieczeń Azure dla IoT jest rozwiązaniem jednym Centrum. Jeśli potrzebujesz wielu centrach, wiele rozwiązań są wymagane. 
+> Azure Security Center IoT obecnie obsługuje tylko centra IoT w warstwie Standardowa.
+> Azure Security Center IoT to pojedyncze rozwiązanie centrum. Jeśli potrzebujesz wielu centrów, wymagane jest wiele Azure Security Center dla rozwiązań IoT. 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Wymagania wstępne dotyczące włączania usługi
 
-- Obszar roboczy usługi log Analytics
-  - Dwa typy informacji są domyślnie przechowywane w obszarze roboczym usługi Log Analytics przez usługę ASC dla IoT; **alerty zabezpieczeń** i **zalecenia**. 
-  - Można wybrać dodać magazyn typu dodatkowe informacje, **nieprzetworzonych zdarzeń**. Należy pamiętać, że przechowywanie **nieprzetworzonych zdarzeń** w usłudze Log Analytics niesie ze sobą dodatkowe koszty. 
-- Usługa IoT Hub (warstwa standardowa)
-- Spełnisz [usługi wymagań wstępnych](service-prerequisites.md) 
-- Usługi obsługiwane regiony
-  - Środkowe stany USA
-  - Europa Północna
-  - Azja Południowo-Wschodnia
+- Obszar roboczy usługi Log Analytics
+  - Dwa typy informacji są domyślnie przechowywane w obszarze roboczym Log Analytics przez Azure Security Center dla IoT; **alerty** i **zalecenia dotyczące**zabezpieczeń. 
+  - Możesz dodać magazyn o dodatkowym typie informacji, **zdarzenia pierwotne**. Należy pamiętać, że przechowywanie nieprzetworzonych **zdarzeń** w log Analytics obejmuje dodatkowe koszty magazynowania. 
+- IoT Hub (warstwa standardowa)
+- Spełnia wszystkie [wymagania wstępne dotyczące usługi](service-prerequisites.md) 
 
-## <a name="enable-asc-for-iot-on-your-iot-hub"></a>Włączanie usługi ASC dla Internetu rzeczy na Twoim Centrum IoT Hub 
+|Obsługiwane regiony usługi platformy Azure | ||
+|---|---|---|
+| Środkowe stany USA |East US |Wschodnie stany USA 2 |
+| Środkowo-zachodnie stany USA |Zachodnie stany USA |Zachodnie stany USA 2 |
+| Południowo-środkowe stany USA|Środkowo-północne stany USA | Kanada Środkowa|
+| Kanada Wschodnia| Europa Północna|Brazylia Południowa|
+| Francja Środkowa| Zachodnie Zjednoczone Królestwo|Południowe Zjednoczone Królestwo|
+|Europa Zachodnia|Europa Północna| Japonia Zachodnia|
+|Japonia Wschodnia | Australia Południowo-Wschodnia|Australia Wschodnia|
+|Azja Wschodnia| Azja Południowo-Wschodnia| Korea Środkowa|
+|Korea Południowa| Indie Środkowe| Indie Południowe|
+|
 
-Aby włączyć zabezpieczenia w usłudze IoT Hub, wykonaj następujące czynności: 
+## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Włącz Azure Security Center IoT na IoT Hub 
 
-1. Otwórz swoje **usługi IoT Hub** w witrynie Azure portal. 
-2. W obszarze **zabezpieczeń** menu, kliknij przycisk **Przegląd**, następnie kliknij przycisk **Start (wersja zapoznawcza)** . 
-3. Wybierz **Włącz zabezpieczenia IoT**. 
-4. Podaj szczegóły obszaru roboczego usługi Log Analytics. 
-   - Zdecydować się na przechowywanie **nieprzetworzonych zdarzeń** oprócz domyślne typy informacji magazynu, pozostawiając **nieprzetworzone zdarzenia** Przełącz **na**. 
-   - Wybiera umożliwiające **bliźniaczej reprezentacji kolekcji** , pozostawiając **bliźniaczej reprezentacji kolekcji** Przełącz **na**. 
-5. Kliknij polecenie **Zapisz**. 
+Aby włączyć zabezpieczenia na IoT Hub, wykonaj następujące czynności: 
 
-Gratulacje! Ukończono włączanie ASC IoT w usłudze IoT Hub. 
+1. Otwórz **IoT Hub** w Azure Portal. 
+1. W menu **zabezpieczenia** kliknij pozycję **Zabezpiecz swoje rozwiązanie IoT**
+1. Pozostaw **wybrane** ustawienie domyślne. 
+1. Wybierz obszar roboczy usługi log Analytics.
+1. Podaj szczegóły obszaru roboczego Log Analytics. 
+   - Wybierz, aby włączyć **zbieranie sznurów** , **pozostawiając przełącznik** **kolekcji** z przędzą.
+   - Wybierz opcję przechowywania **nieprzetworzonych zdarzeń** Oprócz domyślnych typów informacji magazynu, wybierając pozycję **przechowuj nieprzetworzone zdarzenia zabezpieczeń** w log Analytics. Pozostaw nieprzetworzony **przełącznik** **zdarzeń** . 
+    
+1. Kliknij polecenie **Zapisz**. 
 
-## <a name="next-steps"></a>Następne kroki
+Gratulacje! Ukończono Włączanie Azure Security Center IoT na IoT Hub. 
 
-Przejdź do następnego artykułu, aby dowiedzieć się, jak skonfigurować rozwiązanie...
+## <a name="next-steps"></a>Kolejne kroki
+
+Przejdź do następnego artykułu, aby skonfigurować Twoje rozwiązanie...
 
 > [!div class="nextstepaction"]
-> [Konfiguruj rozwiązanie](quickstart-configure-your-solution.md)
+> [Skonfiguruj rozwiązanie](quickstart-configure-your-solution.md)
+
+

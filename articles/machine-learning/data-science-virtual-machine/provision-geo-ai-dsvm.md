@@ -4,7 +4,7 @@ description: Dowiedz się, jak utworzyć i skonfigurować maszynę wirtualną do
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, Geoprzestrzenna analiza
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/05/2018
-ms.author: gokuma
-ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 4772bf8341196485a91b3df30801b9714a4a64a8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578545"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591870"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej z geograficznie sztucznej inteligencji na platformie Azure 
 
@@ -49,24 +49,24 @@ Poniżej przedstawiono procedurę, aby utworzyć wystąpienie maszyna wirtualna 
 
    - **Podstawy**
 
-      1. **Nazwa**: Nazwa serwera do nauki o danych, który tworzysz.
+      1. **Nazwa**: Nazwa tworzonego serwera analizy danych.
 
       2. **Nazwa użytkownika**: Identyfikator logowania konta administratora.
 
-      3. **Hasło**: Hasło do konta administratora.
+      3. **Hasło**: Hasło konta administratora.
 
       4. **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane.
 
-      5. **Grupa zasobów**: Możesz utworzyć nową lub użyj **pusty** istniejącą grupę zasobów platformy Azure w ramach subskrypcji.
+      5. **Grupa zasobów**: Możesz utworzyć nową lub użyć pustej istniejącej grupy  zasobów platformy Azure w ramach subskrypcji.
 
-      6. **Lokalizacja**: Wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci. Jeśli konieczne uczenia głębokiego na procesorze GPU, trzeba wybrać jedną z lokalizacji platformy Azure, która ma wystąpień maszyn wirtualnych GPU seria NC. Obecnie są lokalizacji, które mają maszynach wirtualnych procesorów GPU: **Wschodnie stany USA, północno środkowe stany USA, południowo-środkowe stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia**. Aby wyświetlić najnowszą listę, sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) i poszukaj **seria NC** w obszarze **obliczenia**. 
+      6. **Lokalizacja**: Wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci. Jeśli konieczne uczenia głębokiego na procesorze GPU, trzeba wybrać jedną z lokalizacji platformy Azure, która ma wystąpień maszyn wirtualnych GPU seria NC. Obecnie lokalizacje z maszynami wirtualnymi GPU są następujące: **Wschodnie stany USA, Północno-środkowe stany USA, Południowo-środkowe stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia**. Aby wyświetlić najnowszą listę, sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) i poszukaj **seria NC** w obszarze **obliczenia**. 
 
 
-   - **Ustawienia**: Wybierz jeden z rozmiar maszyny wirtualnej serii NC procesora GPU, jeśli planuje się uruchamianie głębokiego uczenia GPU na maszyny wirtualnej DSVM geograficznie. W przeciwnym razie można wybrać jedną z procesora CPU na podstawie wystąpienia.  Tworzenie konta magazynu dla maszyny Wirtualnej. 
+   - **Ustawienia**: Wybierz jeden z rozmiarów maszyny wirtualnej procesora GPU z serii NC, jeśli planujesz wykonać głębokie uczenie procesora GPU na DSVM geograficznym. W przeciwnym razie można wybrać jedną z procesora CPU na podstawie wystąpienia.  Tworzenie konta magazynu dla maszyny Wirtualnej. 
    
    - **Podsumowanie**: Sprawdź, czy wszystkie wprowadzone informacje jest poprawna.
 
-   - **Kup**: Kliknij przycisk **Kup** do uruchomienia, jego obsługi. Link znajduje się na warunki użytkowania usługi. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
+   - **Kup**: Kliknij przycisk **Kup** , aby rozpocząć Inicjowanie obsługi administracyjnej. Link znajduje się na warunki użytkowania usługi. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
  
 >[!NOTE]
 > Aprowizacja powinno zająć około 20 – 30 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
@@ -87,7 +87,7 @@ W przeciwnym razie Załóż nowe konto ArcGIS i licencji lub uzyskać [bezpłatn
 
 ![Komponent ArcGIS bezpłatną wersję próbną](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Po zarejestrowaniu się na płatną lub bezpłatnej wersji próbnej ArcGIS konto ArcGIS Pro można autoryzować dla swojego konta, postępując zgodnie z instrukcjami w [wprowadzenie ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Po zarejestrowaniu się w celu uzyskania płatnego lub bezpłatnego konta wersji próbnej można autoryzować ArcGIS Pro dla konta, postępując zgodnie z instrukcjami w [wprowadzenie z ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 
 Po zalogowaniu do programu desktop ArcGIS Pro z Twoim kontem ArcGIS, jesteś gotowy rozpocząć korzystanie z narzędzi do nauki o danych, które są zainstalowane i skonfigurowane na maszynie Wirtualnej Geoprzestrzenna analiza i projektów uczenia maszynowego.
 

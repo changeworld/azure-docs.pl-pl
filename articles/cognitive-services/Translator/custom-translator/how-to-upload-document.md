@@ -1,90 +1,90 @@
 ---
-title: Jak przekazywać dokumentu — niestandardowe w usłudze Translator
+title: Jak przekazać dokument — translator niestandardowy
 titleSuffix: Azure Cognitive Services
-description: Przy użyciu funkcji przekazywania dokumentów możesz przekazać równoległe dokumentów dla Twojej szkoleniach. Równoległe dokumenty są pary dokumenty, gdy jest ona tłumaczenia, z drugiej strony. Jeden dokument w parze zawiera zdań w języku źródła i innego dokumentu zawiera te zdania przetłumaczony na język docelowy.
+description: Za pomocą funkcji przekazywania dokumentów można przekazać równoległy dokument do szkoleń. Dokumenty równoległe to pary dokumentów, które są tłumaczeniami innych. Jeden dokument w parze zawiera zdania w języku źródłowym, a drugi dokumentu zawiera te zdania tłumaczone na język docelowy.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 948c9628147ae8cf869046b283601b939d35b290
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f2bd6103c27d455265ee967554fb27513f78a472
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447924"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595650"
 ---
 # <a name="upload-a-document"></a>Przekazywanie dokumentu
 
-W [niestandardowe w usłudze Translator](https://portal.customtranslator.azure.ai), możesz przekazać równoległe dokumentów do uczenia modeli tłumaczenia. [Równoległe dokumenty](what-are-parallel-documents.md) są parami dokumentów, w których jeden jest tłumaczenia, z drugiej strony. Jeden dokument w parze zawiera zdań w języku źródła i innego dokumentu zawiera te zdania przetłumaczony na język docelowy.
+W usłudze [translator niestandardowy](https://portal.customtranslator.azure.ai)można przekazać równoległe dokumenty umożliwiające uczenie modeli tłumaczenia. [Dokumenty równoległe](what-are-parallel-documents.md) to pary dokumentów, w których jeden jest tłumaczy innych. Jeden dokument w parze zawiera zdania w języku źródłowym, a drugi dokumentu zawiera te zdania tłumaczone na język docelowy.
 
-Przed przekazaniem dokumentów, przejrzyj [formatów i nazewnictwa wskazówki Konwencji dokumentów](document-formats-naming-convention.md) się upewnić się, że plik format jest obsługiwany w niestandardowych w usłudze Translator.
+Przed przekazaniem dokumentów zapoznaj się ze [wskazówkami dotyczącymi formatów dokumentów i konwencji nazewnictwa](document-formats-naming-convention.md) , aby upewnić się, że format pliku jest obsługiwany przez translatora niestandardowego.
 
 ## <a name="how-to-upload-document"></a>Jak przekazać dokument?
 
-Z [niestandardowe w usłudze Translator](https://portal.customtranslator.azure.ai) portalu, kliknij kartę "Dokumenty", aby przejść na stronę dokumenty.
+W portalu usługi [tłumaczenia niestandardowego](https://portal.customtranslator.azure.ai) kliknij kartę "dokumenty", aby przejść do strony dokumenty.
 
-![Link do przekazywania dokumentu](media/how-to/how-to-upload-1.png)
+![Link przekazywania dokumentów](media/how-to/how-to-upload-1.png)
 
 
 1.  Kliknij przycisk Przekaż pliki na stronie dokumenty.
 
-    ![Załaduj stronę dokumentu](media/how-to/how-to-upload-2.png)
+    ![Strona przekazywania dokumentu](media/how-to/how-to-upload-2.png)
 
-2.  W oknie dialogowym wypełnij następujące informacje:
+2.  W oknie dialogowym wprowadź następujące informacje:
 
     a.  Typ dokumentu:
 
-    -  Trenowanie: Te dokumenty będą używane na zestaw szkoleniowy.
-    -  Dostosowywanie: Te dokumenty będą używane do dostosowywania zestawu.
-    -  Testing: Te dokumenty będą używane do testowania zestawu.
-    -  Słownik frazy: Te dokumenty będą używane dla słownika frazę.
-    -  Słownik zdanie: Te dokumenty będą używane dla słownika zdania
+    -  Trenowanie: Te dokumenty będą używane na potrzeby zestawu szkoleniowego.
+    -  BIÓR Te dokumenty będą używane na potrzeby zestawu strojenia.
+    -  Testowy Te dokumenty będą używane do zestawu testów.
+    -  Słownik fraz: Te dokumenty będą używane na potrzeby słownika fraz.
+    -  Słownik zdań: Te dokumenty będą używane dla słownika zdania
 
-    b.  Pary języków.
+    b.  Para językowa
 
-    c.  Zastąp dokument, jeśli istnieje: Zaznacz to pole wyboru, jeśli chcesz zastąpić wszelkie istniejące dokumenty o takiej samej nazwie.
+    c.  Zastąp dokument, jeśli istnieje: Zaznacz to pole wyboru, jeśli chcesz zastąpić wszystkie istniejące dokumenty o tej samej nazwie.
 
-    d.  Wypełnij w odpowiedniej sekcji dla równoległego lub kombi danych.
+    d.  Wypełnij odpowiednie sekcje dla danych równoległych lub danych kombi.
 
-    -  Równoległe dane:
-        -  Plik źródłowy: Wybierz język źródłowy plik z komputera lokalnego.
-        -  Plik docelowy: Wybierz docelowy język pliku z komputera lokalnego.
-        -  Nazwa dokumentu: Używana tylko wtedy, gdy masz przekazywania plików równoległych.
+    -  Dane równoległe:
+        -  Plik źródłowy: Wybierz plik języka źródłowego z komputera lokalnego.
+        -  Plik docelowy: Wybierz docelowy plik języka z komputera lokalnego.
+        -  Nazwa dokumentu: Używane tylko w przypadku przekazywania plików równoległych.
 
-    - Pole kombi dane:
-        -  Pole kombi plik: Wybierz plik kombi z komputera lokalnego. Plik kombi zawiera zarówno źródłowe i język docelowy zdań. [Konwencje nazewnictwa](document-formats-naming-convention.md) jest ważne w przypadku plików kombi.
+    - Dane kombi:
+        -  Plik kombi: Wybierz plik kombi z komputera lokalnego. Plik kombi zawiera oba zdania języka źródłowego i docelowego. [Konwencja nazewnictwa](document-formats-naming-convention.md) jest ważna dla plików kombi.
 
     e.  Kliknij przycisk Przekaż
 
-    ![Okno dialogowe dokumentu przekazywanie](media/how-to/how-to-upload-dialog.png)
+    ![Okno dialogowe przekazywania dokumentu](media/how-to/how-to-upload-dialog.png)
 
-3.  W tym momencie możemy przetwarzania dokumentów i próby wyodrębnienia zdań. Kliknij pozycję "Wyświetl postęp przekazywania" Aby sprawdzić stan dokumentów, zgodnie z ich przetwarzania.
+3.  W tym momencie przetwarzamy dokumenty i próbujemy wyodrębnić zdania. Możesz kliknąć pozycję "Wyświetl postęp przekazywania", aby sprawdzić stan dokumentów w miarę ich przetwarzania.
 
-    ![Przekazywanie w oknie dialogowym przetwarzanie dokumentu](media/how-to/how-to-upload-processing-dialog.png)
+    ![Okno dialogowe przekazywania dokumentu](media/how-to/how-to-upload-processing-dialog.png)
 
-4.  Tej strony wyświetli stan oraz wszelkie błędy, dla każdego pliku w ramach przekazywania. Możesz wyświetlić ostatnie stan przekazywania w dowolnym momencie, klikając kartę "Przekaż historię".
+4.  Na tej stronie zostanie wyświetlony stan oraz wszystkie błędy poszczególnych plików w ramach przekazywania. W dowolnym momencie możesz wyświetlić poprzedni stan przekazywania, klikając kartę "Historia przekazywania".
 
-    ![Przekaż dokument historię w oknie dialogowym](media/how-to/how-to-upload-document-history.png)
+    ![Okno dialogowe przekazywania historii dokumentu](media/how-to/how-to-upload-document-history.png)
 
 
 ## <a name="view-upload-history"></a>Wyświetl historię przekazywania
 
-Na stronie Historia przekazywania możesz wyświetlić historię wszystkich przekazywania dokumentów, których szczegóły, takie jak typ dokumentu, pary języka przekazać stanu itd.
+Na stronie Historia przekazywania można wyświetlić historię wszystkich szczegółów przekazywania dokumentów, takich jak typ dokumentu, para językowa, stan przekazywania itd.
 
-1. Z [niestandardowe w usłudze Translator](https://portal.customtranslator.azure.ai) portalu, kliknij kartę przekazywanie historii, aby wyświetlić historię.
+1. W portalu [translatora niestandardowego](https://portal.customtranslator.azure.ai) kliknij kartę Historia przekazywania, aby wyświetlić historię.
 
-    ![Przekaż karcie Historia](media/how-to/how-to-upload-history-1.png)
+    ![Karta historia przekazywania](media/how-to/how-to-upload-history-1.png)
 
-2. Ta strona pokazuje stan wszystkich poprzednich przekazywanie. Wyświetla przekazywania od najnowszych do najstarsza. Każde przekazanie prezentuje nazwy dokumentu, stan przekazywania, Data przekazywania, liczba przekazanych plików, typ przekazany plik i pary języka w pliku.
+2. Na tej stronie jest wyświetlany stan wszystkich przeszłych operacji przekazywania. Przedstawia operacje przekazywania od najnowszych do najmniejszych najnowszych. Dla każdego przekazania wyświetlana jest nazwa dokumentu, stan przekazywania, Data przekazania, Liczba przekazanych plików, typ przekazanego pliku oraz para językowa pliku.
 
-    ![Historia strona przekazywania](media/how-to/how-to-document-history-2.png)
+    ![Strona przekazywania historii](media/how-to/how-to-document-history-2.png)
 
-3. Kliknij dowolny rekord historii przekazywania. Na stronie Szczegóły przekazania historii można wyświetlić przekazane jako część przekazywania, stan przekazanego pliku język pliku i komunikatu o błędzie (jeśli istnieje jakikolwiek błąd w przekazywania).
+3. Kliknij dowolny rekord historii przekazywania. Na stronie szczegóły historii przekazywania można wyświetlić pliki przekazane w ramach przekazywania, przekazanego stanu pliku, języka pliku i komunikatu o błędzie (Jeśli wystąpi błąd podczas przekazywania).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Użyj [strony szczegółów dokumentu](how-to-view-document-details.md) Aby przejrzeć listę wyodrębnione zdań.
-- [Sposób trenowania modelu](how-to-train-model.md).
+- Na [stronie szczegóły dokumentu](how-to-view-document-details.md) można przejrzeć listę wyodrębnionych zdań.
+- [Jak szkolić model](how-to-train-model.md).

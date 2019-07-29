@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6023e4bd4028cf1679051b6665297afd00b1eba7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f1ebfce2b96da51b9c33646c1626495d280d7b8a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482656"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592252"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -30,7 +30,7 @@ ms.locfileid: "67482656"
 
 Jeśli tworzysz aplikację dla systemu Android, firma Microsoft umożliwia łatwe logowanie użytkowników w usłudze Azure Active Directory (Azure AD). Usługa Azure AD umożliwia aplikacji uzyskanie dostępu do danych użytkowników za pośrednictwem programu Microsoft Graph lub Twojego własnego chronionego internetowego interfejsu API.
 
-Biblioteka ADAL dla systemu Android umożliwia aplikacji rozpoczęcie korzystania z usługi [Microsoft Azure Cloud](https://cloud.microsoft.com) i [interfejsu API programu Microsoft Graph](https://developer.microsoft.com/graph) dzięki obsłudze [kont usługi Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/) korzystających z protokołu OAuth 2.0 i OpenID Connect, będących standardem w branży.
+Biblioteka ADAL dla systemu Android umożliwia aplikacji rozpoczęcie korzystania z usługi [Microsoft Azure Cloud](https://azure.microsoft.com/free/cloud-services/) i [interfejsu API programu Microsoft Graph](https://developer.microsoft.com/graph) dzięki obsłudze [kont usługi Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/) korzystających z protokołu OAuth 2.0 i OpenID Connect, będących standardem w branży.
 
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 
@@ -45,7 +45,7 @@ Aby rozpocząć pracę, konieczna jest dzierżawa usługi Azure AD, w której mo
 
 ## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Scenariusz: logowanie użytkowników i wywoływanie programu Microsoft Graph
 
-![Pokazuje usługi Azure AD i topologii dla systemu Android](./media/quickstart-v1-android/active-directory-android-topology.png)
+![Pokazuje topologię usługi Azure AD i systemu Android](./media/quickstart-v1-android/active-directory-android-topology.png)
 
 Możesz używać tej aplikacji w przypadku wszystkich kont usługi Azure AD. Obsługiwane są zarówno scenariusze z jedną dzierżawą, jak i wieloma dzierżawami (odpowiednie informacje znajdują się w poszczególnych krokach). Pokazano tu, w jaki sposób można tworzyć aplikacje, które będą nawiązywały połączenie z użytkownikami firmowymi i uzyskiwały dostęp do danych platformy Azure oraz usługi O365 za pośrednictwem programu Microsoft Graph. Podczas przepływu autoryzacji użytkownicy końcowi będą musieli zalogować się i wyrazić zgodę na udzielenie uprawnień aplikacji, a w niektórych przypadkach to administrator będzie musiał wyrazić zgodę na aplikację. Większość logiki w tym przykładzie pokazuje, w jaki sposób autoryzować użytkownika końcowego i wykonać proste wywołanie do programu Microsoft Graph.
 
@@ -85,16 +85,16 @@ Potrzebna jest natywna aplikacja kliencka zarejestrowana w firmie Microsoft w wi
     - Wybierz pozycję ***Azure Active Directory*** > ***Rejestracje aplikacji***.
 
 2. Tworzymy aplikację.
-    - Wybierz **nowej rejestracji**.
+    - Wybierz pozycję **Nowa rejestracja**.
     - Wprowadź nazwę aplikacji w polu **Nazwa**.
     - W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
-    - W **identyfikator URI przekierowania**, wybierz opcję **klientem publicznym (mobilnych i klasycznych)** z listy rozwijanej i wpisz `http://localhost`.
-    - Kliknij przycisk **zarejestrować**.
+    - W polu **Identyfikator URI przekierowania**wybierz pozycję **Klient publiczny (Mobile and Desktop)** z listy `http://localhost`rozwijanej i wprowadź.
+    - Kliknij pozycję **zarejestruj**.
 
 3. Konfigurowanie programu Microsoft Graph
     - Wybierz **uprawnienia do interfejsu API**.
-    - Wybierz **Dodaj uprawnienia**w programie **wybierz interfejs API** wybierz ***programu Microsoft Graph***.
-    - W obszarze **delegowane uprawnienia**, wybierz uprawnienie **User.Read**, kliknij przycisk **Dodaj** do zapisania.        
+    - Wybierz pozycję **Dodaj uprawnienie**, w obszarze **Wybierz interfejs API** wybierz ***Microsoft Graph***.
+    - W obszarze **delegowane uprawnienia**wybierz uprawnienie **użytkownik. odczyt**, a następnie kliknij przycisk **Dodaj** , aby zapisać.        
     
 4. Gratulacje! Aplikacja została pomyślnie skonfigurowana. W następnej sekcji konieczne będą następujące elementy:
     - `Application ID`
@@ -122,7 +122,7 @@ Cała konfiguracja dla tego przykładowego kodu znajduje się w pliku ***src/mai
 2. Wybierz kolejno pozycje **Run > Run app** (Uruchom > Uruchom aplikację).
 3. Aplikacja powinna zostać skompilowana, a następnie powinno zostać wyświetlone podstawowe środowisko użytkownika. Po kliknięciu przycisku `Call Graph API` pojawi się monit o zalogowanie, a następnie interfejs API programu Microsoft Graph zostanie dyskretnie wywołany przy użyciu nowego tokenu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 1. Sprawdź [witrynę Wiki dotyczącą biblioteki ADAL dla systemu Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki), aby uzyskać więcej informacji na temat działania biblioteki i tego, w jaki sposób konfigurować nowe scenariusze i funkcje.
 2. W scenariuszach natywnych aplikacja będzie używać osadzonej aplikacji Webview i nie opuści aplikacji. Identyfikator `Redirect URI` może być dowolny.

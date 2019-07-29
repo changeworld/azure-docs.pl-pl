@@ -1,68 +1,68 @@
 ---
-title: Jak wyszukiwanie, edytowanie i usuwanie projektu — niestandardowe w usłudze Translator
+title: Jak wyszukiwać, edytować i usuwać program Project — translator niestandardowy
 titleSuffix: Azure Cognitive Services
-description: Niestandardowe w usłudze Translator udostępnia różne sposoby zarządzania projektami w wydajny sposób. Możesz tworzyć wiele projektów, wyszukiwanie na podstawie kryteriów, Edytuj swoje projekty. Usunięcie projektu jest również możliwe w niestandardowych w usłudze Translator.
+description: Translator niestandardowy zapewnia różne sposoby zarządzania projektami w wydajny sposób. Możesz utworzyć wiele projektów, przeszukiwać je na podstawie kryteriów, edytując swoje projekty. Usuwanie projektu jest również możliwe w przypadku translatora niestandardowego.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3a19feb76b5f5e65f891dc9f4e9dbfbd642d15b6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9432ac390b7677b3dea5aebc84cf23ef6e45db92
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447938"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595716"
 ---
 # <a name="search-edit-and-delete-projects"></a>Wyszukiwanie, edytowanie i usuwanie projektów
 
-Niestandardowe w usłudze Translator zapewnia wiele sposobów, aby zarządzać projektami w wydajny sposób. Możesz utworzyć wiele projektów, na podstawie kryteriów wyszukiwania i edytować swoje projekty. Usunięcie projektu jest również możliwe w niestandardowych w usłudze Translator.  
+Translator niestandardowy zapewnia wiele sposobów zarządzania projektami w wydajny sposób. Możesz tworzyć wiele projektów, przeszukiwać je na podstawie kryteriów i edytować swoje projekty. Usuwanie projektu jest również możliwe w przypadku translatora niestandardowego.  
 
-## <a name="search-and-filter-projects"></a>Wyszukiwanie i filtrowanie projektów
+## <a name="search-and-filter-projects"></a>Wyszukaj i Filtruj projekty
 
-Narzędzie Filtr umożliwia wyszukiwanie projektów przez inny filtr warunki. Filtruje, takie jak nazwa projektu, stanu, język docelowy i źródłowy i Kategoria projektu.
+Narzędzie filtru umożliwia wyszukiwanie projektów według różnych warunków filtrowania. Filtruje takie jak nazwa projektu, stan, język źródłowy i Kategoria projektu.
 
-1.  Kliknij przycisk filtru.
+1.  Kliknij przycisk Filtr.
 
-    ![Projekt wyszukiwania](media/how-to/how-to-search-project.png)
+    ![Wyszukaj w projekcie](media/how-to/how-to-search-project.png)
 
-1.  Można filtrować według jedną (lub wszystkie) z następujących pól: nazwa, stan, język źródłowy, język docelowy i Kategoria projektu.
+1.  Można filtrować według dowolnego (lub wszystkich) następujących pól: Nazwa projektu, stan, język źródłowy, język docelowy i Kategoria.
 
 2.  Kliknij przycisk Zastosuj.
 
-    ![Opcje filtru projektu wyszukiwania](media/how-to/how-to-search-project-filters.png)
+    ![Wyszukaj opcje filtru projektu](media/how-to/how-to-search-project-filters.png)
 
-3.  Wyczyść filtr, aby wyświetlić wszystkie projekty, wybierając opcję "Wyczyść".
+3.  Wyczyść filtr, aby wyświetlić wszystkie projekty, naciskając pozycję "Wyczyść".
 
 
 ## <a name="edit-a-project"></a>Edytuj projekt
 
-Niestandardowe w usłudze Translator daje możliwość edytowania nazwy i opisu projektu. Inne metadane projektu, takie jak nie są dostępne dla kategorii, język źródłowy i docelowy język edycji. Poniżej opisano sposób edycji projektu.
+Translator niestandardowy umożliwia edytowanie nazwy i opisu projektu. Inne metadane projektu, takie jak kategoria, język źródłowy i język docelowy, nie są dostępne do edycji. W poniższych krokach opisano sposób edytowania projektu.
 
-1.  Kliknij ikonę ołówka, który jest wyświetlany po umieszczeniu wskaźnika myszy nad projektem.
+1.  Kliknij ikonę ołówka, która pojawia się po umieszczeniu wskaźnika myszy na projekcie.
 
     ![Edytuj projekt](media/how-to/how-to-edit-project.png)
 
-2.  W oknie dialogowym można zmodyfikować nazwę projektu lub opis projektu, ale nie można zmodyfikować pary etykiety, kategorii lub języka projektu.
+2.  W oknie dialogowym można zmodyfikować nazwę projektu lub opis projektu, ale nie można zmodyfikować etykiety projektu, kategorii ani pary językowej.
 
-    ![Edytuj okno dialogowe projektu](media/how-to/how-to-edit-project-dialog.png)
+    ![Edytuj projekt — okno dialogowe](media/how-to/how-to-edit-project-dialog.png)
 
-3.  Kliknij przycisk filtru.
+3.  Kliknij przycisk Filtr.
 
 ## <a name="delete-a-project"></a>Usuwanie projektu
 
-Gdy nie są już potrzebne, można usunąć projekt. Poniższe kroki pokazują jak usunąć projekt.
+Możesz usunąć projekt, gdy nie jest już potrzebny. Poniżej opisano, jak usunąć projekt.
 
-1. Umieść kursor na dowolny rekord projektu, a następnie kliknij ikonę Kosza na śmieci.
+1. Umieść kursor na dowolnym rekordzie projektu i kliknij ikonę kosza.
 
    ![Usuń projekt](media/how-to/how-to-delete-project.png)
 
-2. Potwierdzenie usunięcia. Usunięcie projektu spowoduje usunięcie wszystkich modeli, które zostały utworzone w ramach tego projektu. Usuwanie projektu nie wpłynie na swoje dokumenty.
+2. Potwierdź usunięcie. Usunięcie projektu spowoduje usunięcie wszystkich modeli, które zostały utworzone w ramach tego projektu. Usunięcie projektu nie będzie miało wpływu na dokumenty.
 
-   ![Okno dialogowe potwierdzające usuwanie](media/how-to/how-to-delete-project-confirm.png)
+   ![Okno dialogowe potwierdzania usuwania](media/how-to/how-to-delete-project-confirm.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Przekazywanie dokumentów](how-to-upload-document.md) rozpocząć Kompilowanie modelu tłumaczenia niestandardowych.
+- [Przekaż dokumenty](how-to-upload-document.md) , aby rozpocząć tworzenie niestandardowego modelu tłumaczenia.

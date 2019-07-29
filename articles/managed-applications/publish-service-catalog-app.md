@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc86943924cd0c47c465e9d3bac4ca91b73a3ff5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf6ae32a61504dc344e140a0e27c5a17b5422073
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171549"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609877"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Tworzenie i publikowanie definicji aplikacji zarządzanej
 
@@ -85,20 +85,20 @@ Dodaj do tego pliku następujący kod JSON. Definiuje on parametry wymagane podc
 
 Zapisz plik mainTemplate.json.
 
-## <a name="create-the-user-interface-definition"></a>Tworzenie definicji interfejsu użytkownika
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Definiowanie środowiska tworzenia przy użyciu pliku CreateUiDefinition. JSON
 
-W witrynie Azure Portal interfejs użytkownika dla użytkowników, którzy tworzą aplikację zarządzaną, jest generowany przy użyciu pliku **createUiDefinition.json**. Możesz zdefiniować sposób wprowadzania danych wejściowych dla poszczególnych parametrów przez użytkowników. Dostępne opcje to między innymi lista rozwijana, pole tekstowe, pole hasła i inne narzędzia wprowadzania. Aby dowiedzieć się, jak utworzyć plik definicji interfejsu użytkownika dla aplikacji zarządzanej, zobacz [Rozpoczynanie pracy z plikiem CreateUiDefinition](create-uidefinition-overview.md).
+Jako wydawca zdefiniujesz środowisko tworzenia przy użyciu pliku **createUiDefinition. JSON** , który generuje interfejs dla użytkowników tworzących aplikacje zarządzane. Definiujesz sposób, w jaki użytkownicy dostarczają dane wejściowe dla każdego parametru za pomocą [elementy sterowania] (create-uidefinition-elements.md), w tym listy rozwijane, pola tekstowe i hasła.
 
-Utwórz plik o nazwie **createUiDefinition.json**. W nazwie jest rozróżniana wielkość liter.
+Utwórz plik o nazwie **createUiDefinition. JSON** (w tej nazwie jest rozróżniana wielkość liter)
 
-Dodaj do pliku następujący kod JSON.
+Dodaj następujący początkowy kod JSON do pliku i Zapisz go.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-    "handler": "Microsoft.Compute.MultiVm",
-    "version": "0.1.2-preview",
-    "parameters": {
+   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+   "handler": "Microsoft.Azure.CreateUIDef",
+   "version": "0.1.2-preview",
+   "parameters": {
         "basics": [
             {}
         ],
@@ -139,10 +139,9 @@ Dodaj do pliku następujący kod JSON.
             "location": "[location()]"
         }
     }
-}
 ```
 
-Zapisz plik createUiDefinition.json.
+Aby dowiedzieć się więcej, zobacz Rozpoczynanie [pracy z usługą CreateUiDefinition](create-uidefinition-overview.md).
 
 ## <a name="package-the-files"></a>Pakowanie plików
 
@@ -216,7 +215,7 @@ New-AzManagedApplicationDefinition `
 
 Masz dostęp do definicji aplikacji zarządzanej, ale chcesz mieć pewność, że inni użytkownicy w Twojej organizacji również mają do niej dostęp. Z definicji przyznaj im co najmniej rolę czytelnika. Użytkownicy mogą odziedziczyć ten poziom dostępu z subskrypcji lub grupy zasobów. Aby sprawdzić, kto ma dostęp do definicji, i dodać użytkowników lub grupy, zobacz [Używanie kontroli dostępu opartej na rolach do zarządzania dostępem do zasobów subskrypcji platformy Azure](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby opublikować aplikację zarządzaną w witrynie Azure Marketplace, zobacz [Aplikacje zarządzane platformy Azure w witrynie Marketplace](publish-marketplace-app.md).
 * Aby wdrożyć wystąpienie aplikacji zarządzanej, zobacz [Deploy service catalog app through Azure portal (Wdrażanie aplikacji wykazu usług przy użyciu witryny Azure Portal)](deploy-service-catalog-quickstart.md).

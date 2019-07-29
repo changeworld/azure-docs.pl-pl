@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 099d167e14d58f2239b4e86cb01bf0ab3621daa7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 379087ca94eee6ce3d45bfd97b4771c5f08d6333
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553560"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607704"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla języka C++
 
 Przewodniki Szybki Start są również dostępne w przypadku [rozpoznawania mowy](quickstart-cpp-windows.md) i [zamiany tekstu na mowę](quickstart-text-to-speech-cpp-windows.md).
 
-W tym przewodniku Szybki start utworzysz prostą aplikację w języku C++, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczona do uruchamiania w 64-bitowych systemach Windows i jest kompilowana przy użyciu [pakietu NuGet zestawu SDK usługi Mowa](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017.
+W tym przewodniku Szybki start utworzysz prostą aplikację w języku C++, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja została zaprojektowana tak, aby działała w 64-bitowym systemie Windows i została skompilowana przy użyciu [pakietu NuGet zestawu mowy SDK](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2017 lub nowszego.
 
 Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy, zapoznaj się z [listą obsługiwanych języków](language-support.md).
 
@@ -29,7 +29,7 @@ Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy,
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Program Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) lub nowszy
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio

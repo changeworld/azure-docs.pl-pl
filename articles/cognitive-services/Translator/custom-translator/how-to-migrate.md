@@ -3,31 +3,31 @@ title: Migracja obszaru roboczego Microsoft Translator Hub i projektów? — Nie
 titleSuffix: Azure Cognitive Services
 description: Migrowanie Centrum obszar roboczy i projekty do niestandardowych w usłudze Translator.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ce81c23a42895f72545a8241d2e002d9798fec05
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cd821ad8fce813d269ace8fb4945cb796c2ae758
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447983"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595737"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrowanie centrum obszaru roboczego i projekty do niestandardowych w usłudze Translator
 
 Możesz z łatwością migrować swoje [Microsoft Translator Hub](https://hub.microsofttranslator.com/) obszar roboczy i projekty do niestandardowych w usłudze Translator. Migracja jest inicjowane z Microsoft Hub przez wybranie obszaru roboczego lub projektu, a następnie wybierając obszar roboczy w niestandardowych w usłudze Translator, a następnie wybierając szkoleniach, którą chcesz przenieść. Po rozpoczęciu migracji ustawień wybranych szkoleń zostanie przeniesiona z wszystkich odpowiednich dokumentach. Wdrożone modele są uczone i może być autodeployed po zakończeniu.
 
 Te akcje są wykonywane podczas migracji:
-* Wszystkie dokumenty i definicje projekt będzie mieć ich nazwy, przeniesiona dodając "hub_" poprzedza nazwę. Automatycznie wygenerowany test i dostrajanie danych będą miały nazwę nadaną hub_systemtune_\<modelid > lub hub_systemtest_\<modelid >.
+* Wszystkie dokumenty i definicje projekt będzie mieć ich nazwy, przeniesiona dodając "hub_" poprzedza nazwę. Automatycznie generowane dane testów i dostrajania będą mieć nazwę hub_systemtune_\<ModelId > lub hub_systemtest_\<ModelId >.
 * Wszelkie szkoleniach, które zostały wdrożone, gdy odbywa się migracja będzie automatycznie uczony przy użyciu dokumentów szkolenia koncentratora. To szkolenie nie zostanie obciążona do Twojej subskrypcji. Jeśli zostanie automatycznie wdrożona została wybrana do migracji uczonego modelu zostanie wdrożony po zakończeniu. Regularne hostingu opłaty zostaną zastosowane.
 * Zmigrowane szkoleniach, które nie zostały wdrożone, będą umieszczone w stanie zmigrowanych wersji roboczej. W ten stan będzie mieć możliwość uczenia modelu przy użyciu definicji zmigrowane, ale zostaną naliczone opłaty regularne szkolenie.
 * W dowolnym momencie wynik BELEU migrowane z Centrum szkolenia można znaleźć na stronie TrainingDetails modelu w "Beleu wynik w Centrum MT" nagłówek.
 
 > [!Note]
-> Szkolenia zakończyło się sukcesem, niestandardowe w usłudze Translator wymaga co najmniej 10 000 unikatowy wyodrębnione zdań. Niestandardowe w usłudze Translator nie mogą przeprowadzić szkolenia z mniej niż [sugerowane minimum](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
+> Aby szkolenie zakończyło się pomyślnie, translator niestandardowy wymaga co najmniej 10 000 unikatowych rozpakowanych zdań. Translator niestandardowy nie może przeprowadzić szkolenia z mniejszą ilością niż Sugerowana wartość [minimalna](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
 
 ## <a name="find-custom-translator-workspace-id"></a>Znajdź identyfikator obszaru roboczego niestandardowych w usłudze Translator
 
@@ -80,9 +80,9 @@ Aby przeprowadzić migrację obszaru roboczego:
 
 4. Na następnej stronie wybierz jedną z tych dwóch opcji:
 
-    a. Tylko wdrożone szkoleniach: Wybranie tej opcji, zostaną zmigrowane tylko wdrożone systemy i powiązanych dokumentów.
+    a. Wdrożone tylko szkolenia: Wybranie tej opcji spowoduje migrację tylko wdrożonych systemów i powiązanych dokumentów.
 
-    b. Wszystkie szkolenia pomyślnie: Wybranie tej opcji spowoduje migrację pomyślne szkoleniach i powiązanych dokumentów.
+    b. Wszystkie pomyślne szkolenia: Wybranie tej opcji spowoduje migrację wszystkich pomyślnych szkoleń i powiązanych dokumentów.
 
     c. Wprowadź identyfikator obszaru roboczego lokalizacji docelowej w niestandardowych w usłudze Translator.
 
@@ -104,27 +104,27 @@ Aby wyświetlić historię migracji, wykonaj następujące kroki:
 
 Migracji historii stronie są wyświetlane następujące informacje, jak podsumowanie dla każdej migracji, której szukasz.
 
-1. Migrowane przez: Nazwa i adres e-mail użytkownika przesłane żądanie migracji
+1. Zmigrowane przez: Nazwa i adres e-mail użytkownika przesłała to żądanie migracji
 
-2. Data migracji: Sygnatura daty i godziny migracji
+2. Zmigrowane: Sygnatura daty i godziny migracji
 
-3. Projekty: Liczba projektów zażądano pomyślnie przeprowadzono migrację v/s migracji liczby projektów.
+3. Projekty: Liczba projektów zażądana do migracji liczba projektów zakończonych pomyślnie.
 
-4. Szkolenia: Liczba szkoleniach zażądano v/s migracji na liczbę szkoleniach pomyślnie przeprowadzono migrację.
+4. Szkoleń związanych Liczba zadawanych szkoleń dotyczących liczby przemigrowanych szkoleń w przypadku migracji/s.
 
-5. Dokumenty: Liczba dokumentów, wymaganego do migracji v/s Liczba dokumentów pomyślnie przeprowadzono migrację.
+5. Secret Liczba dokumentów zażądanych do migracji w przypadku przeprowadzono pomyślnie migracji liczby dokumentów.
 
     ![Szczegóły historii migracji](media/how-to/how-to-migration-history-details.png)
 
 Jeśli chcesz bardziej szczegółowych raport z migracji o szkoleniach, projekty i dokumenty, masz opcję Szczegóły eksportu jako plik CSV.
 
 ## <a name="implementation-notes"></a>Uwagi dotyczące implementacji
-* Systemy za pomocą języka nie pary jeszcze dostępne w niestandardowych w usłudze Translator jest on dostępny tylko na dostęp do danych lub wdrożyć przy użyciu niestandardowych w usłudze Translator. Te projekty zostaną oznaczone jako "Niedostępny" na stronie Projekty. Kiedy włączymy nowej pary język za pomocą niestandardowych w usłudze Translator, stanie się aktywny do uczenia i wdrażania projektów. 
+* Systemy z parami języka, które nie są jeszcze dostępne w usłudze translatora niestandardowego, będą dostępne tylko w celu uzyskania dostępu do danych lub ich rozmieszczenia za pomocą translatora niestandardowego. Te projekty zostaną oznaczone jako "niedostępne" na stronie projekty. Po włączeniu nowych par językowych przy użyciu translatora niestandardowego projekty staną się aktywne do uczenia i wdrożenia. 
 * Migracja projektu z koncentratora do niestandardowych w usłudze Translator nie ma żadnego wpływu na Centrum szkolenia lub projektów. Firma Microsoft nie należy usuwać projektów lub dokumentów z Centrum podczas migracji, a firma Microsoft nie cofnięcie wdrożenia modeli.
 * Tekst są dozwolone tylko po migracji na projekt. Należy powtórzyć migracji w projekcie, skontaktuj się z nami.
-* Niestandardowe w usłudze Translator obsługuje kierunki NMT do i z języka angielskiego. [Wyświetl pełną listę obsługiwanych langauges](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Centrum nie wymaga modeli podstawowych i w związku z tym obsługuje kilka tysięcy języków. Jednak firma Microsoft będzie tylko dokonać migracji dokumentów, a projekt definicji, można migrować parę nieobsługiwany język. Firma Microsoft nie będzie to w opracowywaniu nowego modelu. Ponadto te dokumenty i projekty pojawi się jako nieaktywny w celu wskazania, że nie można użyć w tej chwili. Jeśli zostanie dodana jego obsługa dla projektów i/lub dokumentów, staną się aktywne i trainable.
+* Translator niestandardowy obsługuje pary językowe NMT do i z języka angielskiego. [Zapoznaj się z pełną listą obsługiwanych langauges](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Centrum nie wymaga modeli podstawowych i w związku z tym obsługuje kilka tysięcy języków. Jednak firma Microsoft będzie tylko dokonać migracji dokumentów, a projekt definicji, można migrować parę nieobsługiwany język. Firma Microsoft nie będzie to w opracowywaniu nowego modelu. Ponadto te dokumenty i projekty pojawi się jako nieaktywny w celu wskazania, że nie można użyć w tej chwili. Jeśli zostanie dodana jego obsługa dla projektów i/lub dokumentów, staną się aktywne i trainable.
 * Niestandardowe w usłudze Translator nie obsługuje obecnie danych szkoleniowych jednojęzyczne. Jak pary nieobsługiwany język można migrować jednojęzyczne dokumentów, ale wykazują jako nieaktywne do momentu jednojęzyczne danych jest obsługiwana.
-* Niestandardowe w usłudze Translator wymaga 10 KB, równoległe zdań w celu nauczenia. Microsoft Hub można uczenie na mniejszy zestaw danych. Jeśli szkoleniowe jest migracja, który nie spełnia tego wymagania, nie być uczony.
+* Niestandardowe w usłudze Translator wymaga 10 KB, równoległe zdań w celu nauczenia. Microsoft Hub można uczenie na mniejszy zestaw danych. Jeśli przeprowadzono migrację szkoleń, która nie spełnia tego wymagania, nie zostanie ona przeszkolony.
 
 ## <a name="custom-translator-versus-hub"></a>Niestandardowe w usłudze Translator w stosunku do Centrum
 
@@ -137,13 +137,13 @@ Ta tabela zawiera zestawienie funkcji między centrum w usłudze Translator firm
 | Dostosowywanie SMT | Yes   | Nie |
 | Dostosowywanie NMT | Nie    | Yes |
 | Nowe ujednolicone dostosowywanie usług mowy | Nie    | Yes |
-| Bez śledzenia | Yes | Tak |
+| Bez śledzenia | Yes | Yes |
 
 ## <a name="new-languages"></a>Nowe języki
 
-Jeśli jesteś społeczności lub organizacja działa na temat tworzenia nowego systemu języka dla Microsoft Translator skontaktowanie się z [ custommt@microsoft.com ](mailto:custommt@microsoft.com) Aby uzyskać więcej informacji.
+Jeśli jesteś społecznością lub organizacją, która pracuje nad tworzeniem nowego systemu językowego dla usługi Microsoft translator, skontaktuj [custommt@microsoft.com](mailto:custommt@microsoft.com) się z, aby uzyskać więcej informacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Uczenie modelu](how-to-train-model.md).
 - Rozpoczynanie korzystania z modelu tłumaczenia niestandardowych wdrożone za pośrednictwem [V3 interfejs API tekstu usługi Translator firmy Microsoft](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).

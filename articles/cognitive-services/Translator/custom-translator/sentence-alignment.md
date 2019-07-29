@@ -1,46 +1,46 @@
 ---
-title: Jak w zdaniu dotyczących parowania i wyrównania — niestandardowe w usłudze Translator
+title: Parowanie i wyrównywanie zdań — translator niestandardowy
 titleSuffix: Azure Cognitive Services
-description: Podczas wykonywania szkolenia zdania obecne w dokumentach równoległe są sparowane lub wyrównane. Niestandardowe w usłudze Translator uzyskuje informacje o jednym zdaniu tłumaczenia w czasie, czytając zdania, tłumaczenie to pole następujące zdanie. Następnie wyrównuje słowa i zdania w te dwa zdania ze sobą.
+description: W trakcie wykonywania szkolenia zdania obecne w dokumentach równoległych są sparowane lub wyrównane. Translator niestandardowy uzyskuje tłumaczenie jednego zdania jednocześnie, odczytując zdanie, tłumaczenie tego zdania. Następnie wyrównuje słowa i frazy w tych dwóch zdaniach.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f73c40704e10a8e2368ee1eb369ee3dccdf269ee
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9bc5c876da6bd2be1b22b389b819e51330b2e50
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448316"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595457"
 ---
-# <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Jak w zdaniu dotyczących parowania i wyrównania w dokumentach równoległe
+# <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Parowanie i wyrównanie zdań w dokumentach równoległych
 
-Podczas szkolenia, zdania obecne w dokumentach równoległe są sparowane lub wyrównane. Niestandardowe w usłudze Translator zgłasza liczbę zdań, które było możliwe pair jako zdania wyrównane we wszystkich zestawów danych.
+W trakcie szkolenia zdania obecne w dokumentach równoległych są sparowane lub wyrównane. Translator niestandardowy zgłasza liczbę zdań, które było w stanie sparować jako wyrównane zdania w każdym z zestawów danych.
 
-## <a name="pairing-and-alignment-process"></a>Proces dotyczących parowania i wyrównania
+## <a name="pairing-and-alignment-process"></a>Proces parowania i wyrównywania
 
-Niestandardowe w usłudze Translator uczy się tłumaczenia zdań w jednym zdaniu w danym momencie. Jego odczytów w zdaniu ze źródła i tłumaczenie to pole następujące zdanie z docelowego. Następnie wyrównuje słowa i zdania w te dwa zdania ze sobą. Ten proces umożliwia tworzenie mapy słów i fraz w jednym zdaniu na równoważne słowa i frazy tłumaczeniami to pole następujące zdanie. Wyrównanie próbuje upewnij się, że system szkolenie modeli na zdań, które są tłumaczenia od siebie.
+Translator niestandardowy uzyskuje translację zdań z jednego zdania w danym momencie. Odczytuje zdanie z lokalizacji źródłowej, a następnie tłumaczenie tego zdania z celu. Następnie wyrównuje słowa i frazy w tych dwóch zdaniach. Ten proces umożliwia działowi IT utworzenie mapy wyrazów i fraz w jednym zdaniu do równoważnych słów i fraz w tłumaczeniu tego zdania. Wyrównania próbuje upewnić się, że system pociąga za sobą tłumaczenie.
 
-## <a name="pre-aligned-documents"></a>Wstępnie wyrównany dokumentów
+## <a name="pre-aligned-documents"></a>Wstępnie wyrównane dokumenty
 
-Jeśli wiesz, że masz równoległe dokumentów, mogą zastąpić wyrównanie zdania, podając plików wstępnie wyrównane tekstowych. Można wyodrębnić wszystkie zdania z oba dokumenty do pliku tekstowego, zorganizowanym jednym zdaniu na wiersz i przekazywania za pomocą `.align` rozszerzenia. `.align` Rozszerzenia sygnalizuje niestandardowe w usłudze Translator, należy go pominąć wyrównanie zdania.
+Jeśli wiesz, że masz dokumenty równoległe, możesz zastąpić wyrównanie zdania, dostarczając wstępnie wyrównane pliki tekstowe. Można wyodrębnić wszystkie zdania z dokumentów do pliku tekstowego, zorganizować jedno zdanie na wiersz i przekazać je z `.align` rozszerzeniem. `.align` Rozszerzenie sygnalizuje translatorowi niestandardowemu, że powinien pominąć wyrównanie zdania.
 
-Aby uzyskać najlepsze wyniki spróbuj upewnij się, że jedno zdanie w każdym wierszu w plikach. Nie ma znaków nowego wiersza w obrębie zdania, jako spowoduje niską wyrównania.
+Aby uzyskać najlepsze wyniki, należy się upewnić, że w plikach znajduje się jedno zdanie na wiersz. Nie mają znaków nowego wiersza w obrębie zdania, ponieważ spowoduje to słabą wyrównania.
 
-## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>Sugerowane minimalna liczba wyodrębnionych i wyrównane zdań
+## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>Sugerowana minimalna liczba wyodrębnionych i wyrównanych zdań
 
-Szkolenia została wykonana pomyślnie, w poniższej tabeli przedstawiono minimalna liczba wyodrębnionych zdania i wyrównane zdania wymagane w każdym zestawie danych. Sugerowane minimalna liczba wyodrębnionych zdania jest znacznie wyższa niż sugerowane minimalną liczbę wyrównany zdania wziąć pod uwagę fakt, że wyrównanie zdania może nie być mógł pomyślnie Dopasuj wszystkie wyodrębnione zdania.
+Aby szkolenie powiodło się, w poniższej tabeli przedstawiono minimalną liczbę wyodrębnionych zdań i rozmieszczonych zdań wymaganych w każdym zestawie danych. Sugerowana minimalna liczba wyodrębnionych zdań jest znacznie wyższa niż Sugerowana minimalna liczba rozciągniętych zdań do uwzględnienia faktu, że wyrównanie zdania może nie być w stanie wyrównać, że wszystkie wyodrębnione zdania zostały zakończone pomyślnie.
 
-| Zestaw danych   | Zalecane minimalne zdania wyodrębnione liczba | Zalecane minimalne zdania wyrównany liczba | Liczba maksymalna wyrównany zdania |
+| Zestaw danych   | Sugerowana minimalna liczba wyodrębnionych zdań | Sugerowana minimalna wartość liczby zdań wyrównanych | Maksymalna liczba wyrównanych zdań |
 |------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Szkolenia   | 10 000                                     | 2000                                    | Żadnego górnego limitu                 |
-| Dostrajanie     | 2000                                      | 500                                      | 2,500                          |
+| Szkolenia   | 10 000                                     | 2000                                    | Brak górnego limitu                 |
+| BIÓR     | 2000                                      | 500                                      | 2,500                          |
 | Testowanie    | 2000                                      | 500                                      | 2,500                          |
-| Słownik | 0                                          | 0                                        | Żadnego górnego limitu                 |
+| Słownik | 0                                          | 0                                        | Brak górnego limitu                 |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak używać [słownika](what-is-dictionary.md) w niestandardowych w usłudze Translator.
+- Dowiedz się, jak używać [słownika](what-is-dictionary.md) w translatoru niestandardowym.

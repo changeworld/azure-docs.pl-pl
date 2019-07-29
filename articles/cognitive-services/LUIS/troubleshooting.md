@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: bccdcce52b9e62048d7eb307a4783abda0f9d17c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5122a5a88f5a0d67799930999236f2993bc43f8f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563174"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609762"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding często zadawane pytania
 
@@ -123,7 +123,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Moja aplikacja usługi LUIS była praca wczoraj, ale już dziś otrzymuję błędy 403. Nie można zmodyfikować aplikację tak. Jak go naprawić?
-Następujące [instrukcje](#how-do-i-create-and-assign-a-luis-endpoint-key) w następnym — często zadawane pytania do tworzenia klucza punktu końcowego usługi LUIS i przypisać je do aplikacji. Następnie należy zmienić żądania HTTP do punktu końcowego do [użycia nowego klucza punktu końcowego](luis-concept-keys.md#use-endpoint-key-in-query).
+Postępuj zgodnie z tymi [instrukcjami](#how-do-i-create-and-assign-a-luis-endpoint-key) , aby utworzyć klucz punktu końcowego Luis i przypisać go do aplikacji. Następnie należy zmienić żądanie HTTP aplikacji klienta do punktu końcowego, aby [użyć nowego klucza punktu końcowego](luis-concept-keys.md#use-endpoint-key-in-query). Jeśli nowy zasób został utworzony w innym regionie, Zmień również region żądania klienta HTTP.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>Jak zabezpieczyć Mój punkt końcowy usługi LUIS?
 Zobacz [zabezpieczenia punktu końcowego](luis-concept-security.md#securing-the-endpoint).

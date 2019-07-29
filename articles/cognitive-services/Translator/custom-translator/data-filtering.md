@@ -1,61 +1,61 @@
 ---
-title: Filtrowanie danych — niestandardowe w usłudze Translator
+title: Filtrowanie danych — translator niestandardowy
 titleSuffix: Azure Cognitive Services
-description: Po przesłaniu dokumentów służący do szkolenia niestandardowego systemu dokumenty przejść serię przetwarzania i filtrowanie kroków, aby przygotować się do szkolenia.
+description: Gdy przesyłane są dokumenty, które mają być używane do szkolenia w systemie niestandardowym, dokumenty te są częścią serii kroków przetwarzania i filtrowania, aby przygotować się do szkoleń.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a224a30114d03468c5764528e6c7472572a93f1c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1028443eaaf6c483cd7cd57289b0dcf2a9f11902
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443437"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595908"
 ---
 # <a name="data-filtering"></a>Filtrowanie danych
 
-Po przesłaniu dokumentów służący do szkolenia niestandardowego systemu dokumenty przejść serię przetwarzania i filtrowanie kroków, aby przygotować się do szkolenia. Te kroki zostały omówione w tym miejscu. Znajomość filtrowania mogą pomóc Ci zrozumieć liczba zdania wyświetlane w niestandardowych w usłudze translator, a także kroków, może potrwać do przygotowywania dokumentów do szkolenie przy użyciu niestandardowych w usłudze Translator.
+Gdy przesyłane są dokumenty, które mają być używane do szkolenia w systemie niestandardowym, dokumenty te są częścią serii kroków przetwarzania i filtrowania, aby przygotować się do szkoleń. Te kroki są wyjaśnione w tym miejscu. Znajomość filtrowania może pomóc zrozumieć liczbę zdań wyświetlaną w usłudze translator niestandardowy, a także kroki, które można wykonać, aby przygotować dokumenty do szkolenia przy użyciu translatora niestandardowego.
 
 ## <a name="sentence-alignment"></a>Wyrównanie zdań
-Jeśli dokument nie jest w formacie XLIFF, TMX lub WYRÓWNANIA, niestandardowe w usłudze Translator wyrównuje zdania źródłowe i docelowe dokumentów ze sobą, zdanie po zdaniu. W usłudze Translator nie wykonuje wyrównanie dokumentu — jest zgodna z usługi nazw dokumentów można znaleźć pasującego dokumentu innego języka. W tym dokumencie niestandardowe w usłudze Translator próbuje znaleźć odpowiedniego zdanie w innym języku. Używa ona dokumentu znaczników, takich jak HTML osadzonego tagi ułatwiające wykonywanie wyrównania.  
+Jeśli dokument nie jest w formacie XLIFF, TMX lub ALIGN, translator niestandardowy wyrównuje zdania źródłowe i docelowe dokumentów ze sobą, zdania według zdania. Translator nie wykonuje wyrównania dokumentu — następuje jego nazewnictwo w celu znalezienia pasującego dokumentu w innym języku. W ramach dokumentu translator niestandardowy próbuje znaleźć odpowiednie zdanie w innym języku. Używa znacznika dokumentu, takiego jak osadzone Tagi HTML, aby pomóc w wyrównaniu.  
 
-Zobacz w przypadku dużych różnic między liczbę zdań w źródle i docelowej po stronie dokumentów, dokument nie mogły być równoległe w pierwszej kolejności, czy innego powodu nie można wyrównać. Dokument współdziała z duża różnica (> 10%) zdań na każdej stronie oświadcza drugi wygląd, aby upewnić się, że są one w rzeczywistości równoległych. Niestandardowe w usłudze Translator wyświetla ostrzeżenie obok dokumentu, jeśli liczba zdania podejrzanie różni się.  
+Jeśli zobaczysz dużą rozbieżność między liczbą zdań w dokumentach źródłowych i docelowych, dokument może nie być równoległy w pierwszym miejscu lub z innych powodów, dla których nie można było wyrównać. Pary dokumentu z dużą różnicą (> 10%) zdania po każdej stronie uzasadniają drugie spojrzenie, aby upewnić się, że są one rzeczywiście równoległe. W przypadku, gdy liczba zdań różni się podejrzanie, w przypadku usługi Custom translator zostanie wyświetlone ostrzeżenie obok dokumentu.  
 
 
 ## <a name="deduplication"></a>Deduplikacja
-Niestandardowe w usłudze Translator usuwa zdań, które znajdują się w testów i dostrajanie dokumentów z danych szkoleniowych. Usunięcie odbywa się dynamicznie w szkolenia, uruchomić, nie w kroku przetwarzania danych. Niestandardowe w usłudze Translator liczności zdanie do Ciebie w ramach przeglądu projektu przed takie usunięcie.  
+Translator niestandardowy usuwa zdania, które są obecne w testowaniu i dostrajania dokumentów z danych szkoleniowych. Usuwanie odbywa się dynamicznie w przebiegu szkoleniowym, a nie w kroku przetwarzania danych. Translator niestandardowy zgłasza liczbę zdań do użytkownika w przeglądzie projektu przed takim usunięciem.  
 
-## <a name="length-filter"></a>Długość filtru
-* Usuń zdania z tylko jednego słowa po obu stronach.
-* Usuń zdania z więcej niż 100 słowa po obu stronach.  Chiński, japoński, koreański, są wykluczone.
-* Usuń zdania z mniej niż 3 znaki. Chiński, japoński, koreański, są wykluczone.
-* Usunąć zdania z więcej niż 2000 znaków chińskich, japoński, koreański.
+## <a name="length-filter"></a>Filtr długości
+* Usuń zdania z tylko jednego wyrazu po obu stronach.
+* Usuń zdania zawierające więcej niż 100 słów po obu stronach.  Chiński, japoński, koreański jest wyłączony.
+* Usuń zdania zawierające mniej niż 3 znaki. Chiński, japoński, koreański jest wyłączony.
+* Usuń zdania z więcej niż 2000 znaków w języku chińskim, japońskim i koreańskim.
 * Usuń zdania z mniej niż 1% znaków alfanumerycznych.
-* Usuń wpisy słownika zawierającego więcej niż 50 wyrazów.
+* Usuń wpisy słownika zawierające więcej niż 50 słów.
 
 ## <a name="white-space"></a>Biały znak
-* Zastąp dowolnej sekwencji znaków odstępu, w tym karty i sekwencje CR/LF pojedynczy znak.
-* Usuń wiodących ani końcowych spacji w zdaniu
+* Zastąp dowolną sekwencję znaków odstępu, w tym tabulatory i sekwencje CR/LF z pojedynczym znakiem odstępu.
+* Usuń początkowe lub końcowe miejsce w zdaniu
 
-## <a name="sentence-end-punctuation"></a>Interpunkcja zdania
-Zastąp wielu znaków interpunkcyjnych koniec zdania przy użyciu jednego wystąpienia.  
+## <a name="sentence-end-punctuation"></a>Interpunkcja końcowa zdania
+Zastąp wiele znaków interpunkcyjnych kończących zdanie pojedynczym wystąpieniem.  
 
-## <a name="japanese-character-normalization"></a>Normalizacja japońskich znaków
-Znaki o połowę szerokości, należy przekonwertować całą szerokość liter i cyfr.
+## <a name="japanese-character-normalization"></a>Normalizacja znaków japońskich
+Konwertuj litery i cyfry o pełnej szerokości na znaki połówkowej szerokości.
 
-## <a name="unescaped-xml-tags"></a>O niezmienionym znaczeniu tagi XML
-Filtrowanie tagów o niezmienionym znaczeniu przekształceń na o zmienionym znaczeniu znaczniki:
-* `&lt;` staje się `&amp;lt;`
-* `&gt;` staje się `&amp;gt;`
-* `&amp;` staje się `&amp;amp;`
+## <a name="unescaped-xml-tags"></a>Niezmienione tagi XML
+Filtrowanie przekształca znaczniki niezmienione na znaczniki unikowe:
+* `&lt;`stanowi`&amp;lt;`
+* `&gt;`stanowi`&amp;gt;`
+* `&amp;`stanowi`&amp;amp;`
 
 ## <a name="invalid-characters"></a>Nieprawidłowe znaki
-Niestandardowe w usłudze Translator usuwa zdania zawierające znak Unicode U + FFFD. Znaku U + FFFD wskazuje niepowodzenie Konwersja kodowania.
+Niestandardowa translator usuwa zdania zawierające znak Unicode U + FFFD. Znak U + FFFD wskazuje, że konwersja kodowania nie powiodła się.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Uczenie modelu](how-to-train-model.md) w niestandardowych w usłudze Translator.
+- [Uczenie modelu](how-to-train-model.md) w usłudze translator niestandardowym.
