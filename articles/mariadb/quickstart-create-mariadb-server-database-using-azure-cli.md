@@ -51,9 +51,9 @@ name | **mydemoserver** | Wprowadź unikatową nazwę, która identyfikuje Twój
 resource-group | **myresourcegroup** | Wprowadź nazwę grupy zasobów platformy Azure.
 sku-name | **GP_Gen5_2** | Nazwa jednostki SKU. Zgodnie z konwencją *warstwa cenowa*\_*generacja obliczeniowa*\_*rdzenie wirtualne* w skrócie. Aby uzyskać więcej informacji na temat parametru **sku-name**, zobacz sekcję poniżej tabeli.
 backup-retention | **7** | Jak długo należy przechowywać kopię zapasową. Jednostka to dni. Zakres: od 7 do 35. 
-geo-redundant-backup | **Disabled (Wyłączone)** | Określa, czy dla tego serwera powinny być włączone geograficznie nadmiarowe kopie zapasowe. Dozwolone wartości: **Enabled (Włączone)**, **Disabled (Wyłączone)**.
+geo-redundant-backup | **Disabled (Wyłączone)** | Określa, czy dla tego serwera powinny być włączone geograficznie nadmiarowe kopie zapasowe. Dozwolone wartości: **Enabled (Włączone)** , **Disabled (Wyłączone)** .
 lokalizacja | **westus** | Lokalizacja platformy Azure dla serwera.
-ssl-enforcement | **Enabled (Włączone)** | Określa, czy dla tego serwera powinien być włączony protokół SSL. Dozwolone wartości: **Enabled (Włączone)**, **Disabled (Wyłączone)**.
+ssl-enforcement | **Enabled (Włączone)** | Określa, czy dla tego serwera powinien być włączony protokół SSL. Dozwolone wartości: **Enabled (Włączone)** , **Disabled (Wyłączone)** .
 storage-size | **51200** | Pojemność magazynu serwera (w megabajtach). Prawidłowy rozmiar magazynu to 5120 MB (minimum) rosnący z przyrostem 1024 MB. Aby uzyskać więcej informacji na temat limitów rozmiaru magazynu, zobacz [Warstwy cenowe](./concepts-pricing-tiers.md). 
 version | **10.2** | Wersja główna aparatu MariaDB.
 admin-user | **myadmin** | Nazwa użytkownika w przypadku logowania administratora. Parametr **admin-user** nie może mieć wartości **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.

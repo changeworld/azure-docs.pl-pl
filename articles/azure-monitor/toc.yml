@@ -308,7 +308,13 @@
               displayname: 'live, quickpulse, quick pulse, live metrics'
               href: app/live-stream.md
             - name: Metryki
-              href: app/metrics-explorer.md
+              items:
+                - name: Metryki dziennika i wstępnie zagregowane
+                  href: app/pre-aggregated-metrics-log-metrics.md
+                - name: Definicje metryk dziennika
+                  href: platform/app-insights-metrics.md
+                - name: Klasyczny Eksplorator metryk
+                  href: app/metrics-explorer.md
             - name: Wyszukiwanie
               href: app/diagnostic-search.md
             - name: Profiler
@@ -425,8 +431,6 @@
                   href: app/asp-net-dependencies.md
                 - name: Plik ApplicationInsights.config
                   href: app/configuration-with-applicationinsights-config.md
-                - name: Metryki dziennika i wstępnie zagregowane
-                  href: app/pre-aggregated-metrics-log-metrics.md
                 - name: Diagnostyka transakcji
                   href: app/transaction-diagnostics.md
                 - name: Korelowanie niestandardowych źródeł danych
@@ -659,15 +663,13 @@
                 - name: Zbieranie dzienników
                   href: platform/diagnostic-logs-stream-log-store.md
                 - name: Zbieranie z usługi Azure Storage
-                  href: platform/collect-azure-metrics-logs.md
+                  href: platform/azure-storage-iis-table.md
                 - name: Archiwizowanie w magazynie
                   href: platform/archive-diagnostic-logs.md
                 - name: Przesyłanie strumieniowe danych do usługi Event Hubs
                   href: platform/diagnostic-logs-stream-event-hubs.md
                 - name: Włączanie przy użyciu szablonów usługi Resource Manager
                   href: platform/diagnostic-logs-stream-template.md
-                - name: Dzienniki i metryki usług
-                  href: platform/azure-storage-iis-table.md
             - name: Przesyłanie strumieniowe danych do usługi Event Hubs
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -736,8 +738,8 @@
               href: platform/metrics-getting-started.md
             - name: Zaawansowane funkcje Eksploratora metryk
               href: platform/metrics-charts.md
-            - name: Metryki na podstawie dzienników
-              href: platform/app-insights-metrics.md
+            - name: Przykładowe wykresy metryk
+              href: platform/metric-chart-samples.md
             - name: Rozwiązywanie problemów z wykresami metryk
               href: platform/metrics-troubleshoot.md
         - name: Dzienniki

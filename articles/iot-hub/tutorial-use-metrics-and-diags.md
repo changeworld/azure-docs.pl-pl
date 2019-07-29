@@ -163,7 +163,7 @@ Teraz skonfiguruj kilka metryk, aby obserwować, kiedy komunikaty są wysyłane 
 
 1. W okienku ustawień centrum IoT kliknij opcję **Metryki** w sekcji **Monitorowanie**.
 
-2. W górnej części ekranu kliknij pozycję **Ostatnie 24 godziny (automatycznie)**. W wyświetlonym menu rozwijanym wybierz pozycję **Ostatnie 4 godziny** dla ustawienia **Zakres czasu** i ustaw **Stopień szczegółowości czasu** na **1 minuta**, czas lokalny. Kliknij pozycję **Zastosuj**, aby zapisać te ustawienia. 
+2. W górnej części ekranu kliknij pozycję **Ostatnie 24 godziny (automatycznie)** . W wyświetlonym menu rozwijanym wybierz pozycję **Ostatnie 4 godziny** dla ustawienia **Zakres czasu** i ustaw **Stopień szczegółowości czasu** na **1 minuta**, czas lokalny. Kliknij pozycję **Zastosuj**, aby zapisać te ustawienia. 
 
    ![Zrzut ekranu przedstawiający ustawienia czasu metryk.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
 
@@ -206,7 +206,7 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
     **Zasób**: wybierz swoje centrum IoT *ContosoTestHub*.
 
-3. Kliknij pozycję **Dodaj alert metryki (klasyczny)**, aby skonfigurować nowy alert.
+3. Kliknij pozycję **Dodaj alert metryki (klasyczny)** , aby skonfigurować nowy alert.
 
     Wypełnij następujące pola:
 
@@ -238,7 +238,7 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
 5. Teraz skonfiguruj kolejny alert dla metryki *Łączna liczba użytych komunikatów*. Ta metryka jest przydatna, jeśli chcesz otrzymywać alert, gdy liczba użytych komunikatów będzie zbliżała się do limitu przydziału dla centrum IoT, aby wiedzieć, że centrum wkrótce rozpocznie odrzucanie komunikatów.
 
-   Na ekranie **Wyświetl alerty klasyczne** kliknij pozycję **Dodaj alert metryki (klasyczny)**, a następnie wypełnij poniższe pola w okienku **Dodaj regułę**.
+   Na ekranie **Wyświetl alerty klasyczne** kliknij pozycję **Dodaj alert metryki (klasyczny)** , a następnie wypełnij poniższe pola w okienku **Dodaj regułę**.
 
    **Nazwa**: podaj nazwę reguły alertu, na przykład *number-of-messages-used*.
 

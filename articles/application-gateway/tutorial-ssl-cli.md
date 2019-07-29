@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. W tym przykładzie adres URL to: **https://52.170.203.149**.
+Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. W tym przykładzie adres URL to: **https://52.170.203.149** .
 
 ![Ostrzeżenie o zabezpieczeniach](./media/tutorial-ssl-cli/application-gateway-secure.png)
 

@@ -148,6 +148,8 @@
               href: stream-analytics-scale-jobs.md
         - name: Skalowanie za pomocą usługi ML
           href: stream-analytics-scale-with-machine-learning-functions.md
+        - name: Skalowanie za pomocą ponownego partycjonowania
+          href: repartition.md
     - name: Automatyzacja
       items:
         - name: Korzystanie z zestawu SDK dla platformy .NET

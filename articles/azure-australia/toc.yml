@@ -1,0 +1,54 @@
+- name: Dokumentacja platformy Azure (Australia)
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Co to jest platforma Azure (Australia)?
+      href: australia-overview.md
+- name: Pojęcia
+  items:
+    - name: Bezpieczeństwo na platformie Azure (Australia)
+      items:
+        - name: Bezpieczeństwo danych
+          href: secure-your-data.md
+        - name: Konfiguracja usługi Azure VPN Gateway
+          href: vpn-gateway.md
+        - name: W usłudze Azure Key Vault
+          href: azure-key-vault.md
+        - name: Federacja tożsamości
+          href: identity-federation.md
+        - name: Kontrola dostępu oparta na rolach i PIM
+          href: role-privileged.md
+        - name: Usługi Site Recovery i Backup dla rozwiązania Essential 8
+          href: recovery-backup.md
+        - name: Monitorowanie systemu platformy Azure
+          href: system-monitor.md
+        - name: Usługi Azure Policy i Azure Blueprints
+          href: azure-policy.md
+    - name: Bramy na platformie Azure (Australia)
+      items:
+        - name: 'Rejestrowanie, inspekcja i widoczność bramy'
+          href: gateway-log-audit-visibility.md
+        - name: Bezpieczna administracja zdalna bramy
+          href: gateway-secure-remote-administration.md
+        - name: Kontrola ruchu przychodzącego danych bramy
+          href: gateway-ingress-traffic.md
+        - name: Kontrola ruchu wychodzącego danych bramy
+          href: gateway-egress-traffic.md
+- name: Zasoby
+  items:
+    - name: Opis zabezpieczeń platformy Azure (Australia)
+      href: security-explained.md
+    - name: Dodatkowe zasoby dotyczące platformy Azure (Australia)
+      href: reference-library.md
+    - name: Witryna Australian Cyber Security Centre (ACSC)
+      href: 'https://cyber.gov.au/'
+    - name: Australijski standard CCSL (Certified Cloud Services List)
+      href: 'https://acsc.gov.au/infosec/irap/certified_clouds.htm'
+    - name: Strona dotycząca Australii w portalu Microsoft Service Trust Portal
+      href: 'https://aka.ms/au-irap'
+    - name: CHRONIONE strategie dotyczące aplikacji internetowych IaaS i PaaS w Australii
+      href: 'https://aka.ms/au-protected'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'

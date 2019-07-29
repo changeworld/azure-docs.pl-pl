@@ -555,6 +555,20 @@
       items:
         - name: Analizowanie danych przy użyciu usługi Databricks
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Zarządzanie obiektami blob bez kodu
+          items:
+            - name: PowerShell
+              href: storage-quickstart-blobs-powershell.md
+            - name: Interfejs wiersza polecenia
+              href: storage-quickstart-blobs-cli.md
+        - name: Programowanie z zastosowaniem obiektów blob
+          items:
+            - name: .NET
+              href: storage-quickstart-blobs-dotnet.md
+            - name: Java
+              href: storage-quickstart-blobs-java-v10.md
+            - name: Python
+              href: storage-quickstart-blobs-python.md
     - name: Samouczki
       items:
         - name: 'Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks'
@@ -667,6 +681,12 @@
               href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Optymalizacja usługi Storm w usłudze HDInsight
               href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Zarządzanie plikami (obiekty blob)
+          items:
+            - name: PowerShell
+              href: /powershell/module/azure.storage
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Migrowanie danych
           items:
             - name: Uaktualnianie z usługi Data Lake Storage Gen1
@@ -675,8 +695,37 @@
               href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Dokumentacja
       items:
+        - name: PowerShell
+          href: /powershell/module/azure.storage
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: /cli/azure/storage
+        - name: .NET
+          items:
+            - name: 'Obiekty blob, kolejki, tabele i pliki'
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
+            - name: Przenoszenie danych
+              href: /dotnet/api/microsoft.azure.storage.datamovement
+            - name: Resource Manager
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
+        - name: Java
+          items:
+            - name: 'Obiekty blob, kolejki, tabele i pliki (v7)'
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-stable'
+            - name: Zestaw Blob SDK (v10)
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-preview'
         - name: REST
-          href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
+          items:
+            - name: 'Obiekty blob, kolejki, tabele i pliki'
+              href: /rest/api/storageservices
+            - name: Usługa Data Lake Storage 2. generacji
+              href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
+            - name: Dostawca zasobów
+              href: /rest/api/storagerp
+            - name: Import/Export
+              href: /rest/api/storageimportexport
+        - name: Szablon usługi Resource Manager
+          displayName: ARM
+          href: /azure/templates/microsoft.storage/allversions
     - name: Zasoby
       items:
         - name: Znane problemy

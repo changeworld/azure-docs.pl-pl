@@ -54,7 +54,7 @@ W poniższych sekcjach opisano sposób wykonywania tych wymaganych czynności. P
 3. Utwórz centrum zdarzeń.
 
 > [!NOTE]
-> Każdy skrypt zawiera zestaw zmiennych, które są potrzebne w dalszej części tego samouczka. Są to nazwa grupy zasobów ($resourceGroup), przestrzeń nazw centrum zdarzeń (**$eventHubNamespace**) oraz nazwa centrum zdarzeń (**$eventHubName**). W dalszej części tego artykułu są one poprzedzone znakiem dolara ($), aby było wiadomo, że zostały ustawione w skrypcie.
+> Każdy skrypt zawiera zestaw zmiennych, które są potrzebne w dalszej części tego samouczka. Są to nazwa grupy zasobów ($resourceGroup), przestrzeń nazw centrum zdarzeń ( **$eventHubNamespace**) oraz nazwa centrum zdarzeń ( **$eventHubName**). W dalszej części tego artykułu są one poprzedzone znakiem dolara ($), aby było wiadomo, że zostały ustawione w skrypcie.
 
 <!-- some day they will approve the tab control; 
   When that happens, put CLI and PSH in tabs. -->
