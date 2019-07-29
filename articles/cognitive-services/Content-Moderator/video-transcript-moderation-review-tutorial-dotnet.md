@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: moderowanie wideo i transkrypcji na platformie .NET — Content Moderator'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: W tym samouczku wyjaśniono, jak utworzyć pełne rozwiązanie z zakresu moderowania wideo i transkrypcji przez moderowanie wspomagane maszynowo oraz utworzenie przeglądu wymagającego udziału człowieka (human-in-the-loop).
 services: cognitive-services
 author: PatrickFarley
@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b210af2a70a3ce858d8f53102a181c75373b4176
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e1c3d3d95261b959a7540aab73faf12f92801d4c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606943"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564276"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Samouczek: moderowanie wideo i transkrypcji
 
-W tym samouczku dowiesz się, jak tworzyć kompletne rozwiązanie Moderowanie wideo i transkrypcji wspomagane maszynowo Moderowanie i tworzenie przeglądu człowieka w pętli.
+W tym samouczku dowiesz się, jak utworzyć kompletne rozwiązanie do moderowania filmów wideo i transkrypcji z moderowaniem z pomocąą maszynową oraz tworzeniem przeglądu w pętli.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -34,15 +34,15 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zaloguj się w celu [narzędzie do przeglądu usługi Content Moderator](https://contentmoderator.cognitive.microsoft.com/) witrynę sieci web i utworzyć niestandardowe tagi. Zobacz [za pomocą tagów](Review-Tool-User-Guide/tags.md) Jeśli potrzebujesz pomocy dotyczącej tego kroku.
+- Utwórz konto w witrynie internetowej [Narzędzia do przeglądu Content moderator](https://contentmoderator.cognitive.microsoft.com/) i tworzenie tagów niestandardowych. Zobacz [Używanie tagów](Review-Tool-User-Guide/tags.md) , jeśli potrzebujesz pomocy w tym kroku.
 
-    ![Zrzut ekranu przedstawiający znaczniki niestandardowe Moderowanie filmów wideo](images/video-tutorial-custom-tags.png)
-- Uruchamianie przykładowej aplikacji, potrzebne jest konto platformy Azure, zasób usługi Azure Media Services, zasób usługi Azure Content Moderator i poświadczeń usługi Azure Active Directory. Aby uzyskać instrukcje dotyczące sposobu uzyskania tych zasobów, zobacz [interfejsu API moderowania wideo](video-moderation-api.md) przewodnik.
-- Pobierz [aplikację konsolową Przegląd wideo](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) z usługi GitHub.
+    ![zrzut ekranu tagów niestandardowych moderowania wideo](images/video-tutorial-custom-tags.png)
+- Do uruchomienia przykładowej aplikacji jest potrzebne konto platformy Azure, zasób Azure Media Services, zasób usługi Azure Content Moderator i poświadczenia Azure Active Directory. Aby uzyskać instrukcje dotyczące sposobu uzyskania tych zasobów, zobacz Przewodnik po [interfejsie API moderowania wideo](video-moderation-api.md) .
+- Pobierz [aplikację konsolową Przejrzyj wideo](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) z usługi GitHub.
 
 ## <a name="enter-credentials"></a>Wprowadź poświadczenia
 
-Edytuj `App.config` pliku, a następnie dodaj nazwę dzierżawy usługi Active Directory, punkty końcowe usługi i klucze subskrypcji wskazywanym przez `#####`. Potrzebne są następujące informacje:
+Edytuj plik i Dodaj Active Directory nazwę dzierżawy, punkty końcowe usługi i klucze subskrypcji wskazane przez `#####`. `App.config` Potrzebne są następujące informacje:
 
 |Klucz|Opis|
 |-|-|
@@ -54,7 +54,7 @@ Edytuj `App.config` pliku, a następnie dodaj nazwę dzierżawy usługi Active D
 |`ContentModeratorApiEndpoint`|Punkt końcowy dla interfejsu API usługi Content Moderator|
 |`ContentModeratorTeamId`|Identyfikator zespołu dla usługi Content Moderator|
 
-## <a name="examine-the-main-code"></a>Badanie głównej kodu
+## <a name="examine-the-main-code"></a>Badanie kodu głównego
 
 Klasa `Program` w pliku `Program.cs` jest głównym punktem wejścia do aplikacji służącej do moderowania wideo.
 
@@ -110,7 +110,7 @@ Metoda `ProcessVideo()` jest dość prosta w obsłudze. Wykonuje kolejno następ
 
 W poniższych sekcjach omówiono bardziej szczegółowo niektóre procesy wywoływane przez metodę `ProcessVideo()`. 
 
-## <a name="compress-the-video"></a>Kompresuj plik wideo
+## <a name="compress-the-video"></a>Kompresuj wideo
 
 Aby zminimalizować ruch sieciowy, aplikacja konwertuje pliki wideo do formatu H.264 (MPEG-4 AVC) i skaluje je do maksymalnej szerokości 640 pikseli. Koder-dekoder H.264 jest zalecany ze względu na wysoką wydajność (współczynnik kompresji). Kompresja jest wykonywana przy użyciu bezpłatnego narzędzia wiersza polecenia `ffmpeg`, które zostało dołączone do folderu `Lib` usługi Visual Studio. Pliki wejściowe mogą być w dowolnym formacie obsługiwanym przez wiersz polecenia `ffmpeg`, który obsługuje najpopularniejsze formaty plików wideo oraz koderów-dekoderów.
 
@@ -135,7 +135,7 @@ Ten kod wykonuje następujące kroki:
 
 Metoda zwraca nazwę skompresowanego pliku wyjściowego.
 
-## <a name="upload-and-moderate-the-video"></a>Przekaż podpisywanie i Moderowanie wideo
+## <a name="upload-and-moderate-the-video"></a>Przekazywanie i umiarkowane wideo
 
 Wideo należy przechowywać na platformie Azure Media Services, zanim będzie je można przetworzyć przy użyciu usługi moderowania zawartości. Klasa `Program` w pliku `Program.cs` ma krótką metodę `CreateVideoStreamingRequest()`, która zwraca obiekt reprezentujący żądanie przesyłania strumieniowego użyte do przekazania wideo.
 
@@ -151,7 +151,7 @@ Te linie wykonują następujące zadania:
 - Ustawiają flagę `GenerateVTT` żądania, jeśli użytkownik zażądał transkrypcji tekstu.
 - Wywołują metodę `CreateAzureMediaServicesJobToModerateVideo()`, aby wykonać przekazywanie i otrzymać wynik.
 
-## <a name="examine-video-moderation-code"></a>Badanie kodu Moderowanie filmów wideo
+## <a name="examine-video-moderation-code"></a>Sprawdzanie kodu moderowania wideo
 
 Metoda `CreateAzureMediaServicesJobToModerateVideo()` znajduje się w pliku `VideoModerator.cs`, który zawiera większą część kodu współpracującego z platformą Azure Media Services. Kod źródłowy metody został przedstawiony w następującym fragmencie.
 
@@ -164,7 +164,7 @@ Ten kod wykonuje następujące zadania:
 - Przesyła zadanie przekazując plik i rozpoczynając przetwarzanie.
 - Pobiera wyniki moderacji, transkrypcję tekstu (jeśli jest to wymagane) oraz inne informacje.
 
-## <a name="sample-video-moderation-output"></a>Przykładowe dane wyjściowe z Moderowanie filmów wideo
+## <a name="sample-video-moderation-output"></a>Przykładowe dane wyjściowe moderowania wideo
 
 Wynikiem zadania moderowania wideo (zobacz [przewodnik Szybki start dotyczący moderowania wideo](video-moderation-api.md)) jest struktura danych JSON zawierająca wyniki moderowania. Te wyniki zawierają podział fragmentów (zrzuty) w ramach wideo, z których każdy zawiera zdarzenia (klipy) wraz z ramkami kluczy oflagowanymi na potrzeby przeglądu. Każda ramka klucza jest oceniana w zależności od tego, jakie jest prawdopodobieństwo, że zawiera treści dla dorosłych lub treści o charakterze erotycznym. W poniższym przykładzie przedstawiono odpowiedź w formacie JSON:
 
@@ -234,7 +234,7 @@ Proces moderowania zwraca listę ramek kluczy z wideo oraz transkrypcję ścież
 Metoda `CreateVideoReviewInContentModerator()` wywołuje kilka innych metod wykonujących następujące zadania:
 
 > [!NOTE]
-> Aplikacja konsolowa używa biblioteki [FFmpeg](https://ffmpeg.org/) do generowania miniatur. Te miniatury (obrazy) odpowiadają sygnatury czasowe ramki w danych wyjściowych Moderowanie filmów wideo.
+> Aplikacja konsolowa używa biblioteki [FFmpeg](https://ffmpeg.org/) do generowania miniatur. Te miniatury (obrazy) odnoszą się do sygnatur czasowych ramki w danych wyjściowych moderowania wideo.
 
 |Zadanie|Metody|Plik|
 |-|-|-|
@@ -246,7 +246,7 @@ Na poniższym ekranie przedstawiono wyniki poprzednich kroków.
 
 ![Widok domyślny przeglądu wideo](images/video-tutorial-default-view.PNG)
 
-## <a name="process-the-transcript"></a>Proces transkrypcję
+## <a name="process-the-transcript"></a>Przetwarzanie transkrypcji
 
 Do tej pory kod przedstawiony w tym samouczku dotyczył głównie zawartości wizualnej. Przegląd zawartości mowy to oddzielny i opcjonalny proces, w którym, jak wspomniano wcześniej, jest używana transkrypcja wygenerowana z dźwięku. Teraz warto przyjrzeć się, jak transkrypcje tekstu są tworzone i używane w procesie przeglądu. Zadanie generowania transkrypcji jest wykonywane w ramach usługi [Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content).
 
@@ -279,7 +279,7 @@ Transkrypcja jest publikowana jako element zawartości platformy AMS. Aby przepr
 
 Po niezbędnej konfiguracji platformy AMS pobieranie odbywa się przez wywołanie metody `DownloadAssetToLocal()`, funkcji rodzajowej, która kopiuje element zawartości platformy AMS do pliku lokalnego.
 
-## <a name="moderate-the-transcript"></a>Moderowanie transkrypcję
+## <a name="moderate-the-transcript"></a>Umiarkowane transkrypcję
 
 Ponieważ jest łatwy dostęp do transkrypcji, można ją przeskanować i użyć w przeglądzie. Tworzenie przeglądu wchodzi w zakres metody `CreateVideoReviewInContentModerator()`, która wywołuje metodę `GenerateTextScreenProfanity()` w celu wykonania zadania. Z kolei ta metoda wywołuje metodę `TextScreen()`, która obejmuje większość funkcjonalności.
 
@@ -314,7 +314,7 @@ Następnie należy zeskanować przeanalizowane napisy tekstowe za pomocą teksto
 
 [!code-csharp[TextScreen3](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=568-653)]
 
-### <a name="text-moderation-breakdown"></a>Podział Moderowanie tekstu
+### <a name="text-moderation-breakdown"></a>Podział tekstu na moderowanie
 
 `TextScreen()` jest metodą mającą istotne znaczenie, więc opiszmy ją dokładniej.
 
@@ -357,9 +357,9 @@ Video review successfully completed...
 Total Elapsed Time: 00:05:56.8420355
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Ten samouczek umożliwia skonfigurowanie aplikacji, która łagodzi warunki zawartości wideo&mdash;w tym zawartości transkrypcji&mdash;i tworzy przeglądy w narzędzie do przeglądu. Następnie Dowiedz się więcej o szczegółach Moderowanie filmów wideo.
+W tym samouczku opisano konfigurowanie aplikacji, która pozwala na umiarkowaną zawartość&mdash;wideo, w&mdash;tym transkrypcję zawartości i tworzenie przeglądów w narzędziu do przeglądu. Następnie Dowiedz się więcej na temat szczegółów moderowania wideo.
 
 > [!div class="nextstepaction"]
 > [Moderowanie filmów wideo](./video-moderation-human-review.md)

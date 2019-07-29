@@ -1,7 +1,7 @@
 ---
-title: Jak przygotować dane dla niestandardowego głosu — usługi mowy
-titlesuffix: Azure Cognitive Services
-description: Utwórz niestandardowe głosu dla Twojej marki za pomocą usług przetwarzania mowy platformy Azure. Podaj studio nagrania i skojarzone skrypty, Usługa generuje modelu głosowego unikatowy dostosowana do nagrania głosowe. Użyj tego głosu syntetyzować mowy produktów, narzędzi i aplikacji.
+title: Jak przygotować dane dla niestandardowej usługi rozpoznawania mowy
+titleSuffix: Azure Cognitive Services
+description: Utwórz niestandardowy głos dla marki za pomocą usługi Speech. Podajesz nagrania programu Studio i skojarzone skrypty, Usługa generuje unikatowy model głosowy dostosowany do zapisanego głosu. Użyj tego głosu, aby wypróbować mowę w produktach, narzędziach i aplikacjach.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,146 +10,146 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4b49e7453079b848a273aa8c1c706b2d00fff921
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6a29117ff6e5173063bc2aced87f08f1a6aea425
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606535"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559589"
 ---
-# <a name="prepare-data-to-create-a-custom-voice"></a>Przygotowywanie danych do tworzenia niestandardowych voice
+# <a name="prepare-data-to-create-a-custom-voice"></a>Przygotowywanie danych do tworzenia niestandardowego głosu
 
-Gdy wszystko będzie gotowe do tworzenia niestandardowych voice zamiany tekstu na mowę, aplikacji, pierwszym krokiem jest zbieranie nagrania audio i skojarzone skrypty, aby rozpocząć szkolenie modeli głosowych. Usługa używa tych danych, aby utworzyć unikatowy dostosowane do głosu w nagrań głosu. Po już skonfigurowanych pod kątem mowy, możesz rozpocząć Syntetyzujące mowy w aplikacjach.
+Gdy wszystko jest gotowe do utworzenia niestandardowego głosu zamiany tekstu na mowę dla aplikacji, pierwszym krokiem jest zebranie nagrań audio i skojarzonych skryptów, aby rozpocząć uczenie modelu głosowego. Usługa używa tych danych do utworzenia unikatowego głosu dopasowanego do głosu w nagraniach. Po przeszkoleniu głosu możesz rozpocząć uczenie mowy w aplikacjach.
 
-Można uruchomić z małą ilością danych do tworzenia, weryfikacji koncepcji. Jednak im więcej danych, który należy podać, więcej fizyczna dźwiękowe swój głos niestandardowych. Aby możesz uczyć własnego modelu głosowego zamiany tekstu na mowę, trzeba mieć nagrania i transkrypcje skojarzony tekst. Na tej stronie omówimy, typy danych, sposobu ich używania i sposób zarządzania każdym.
+Możesz zacząć od małej ilości danych, aby utworzyć weryfikację koncepcji. Jednak im więcej danych jest zapewnianych przez użytkownika, tym bardziej naturalnie jest dźwięk. Aby można było nauczyć własny model głosu zamiany tekstu na mowę, potrzebne są nagrania audio i powiązane transkrypcje tekstu. Na tej stronie zostanie przejrzane typy danych, sposób ich użycia oraz sposób zarządzania każdym z nich.
 
 ## <a name="data-types"></a>Typy danych
 
-Zestaw danych szkoleniowych głosu obejmuje nagrania audio i plik tekstowy z skojarzone transkrypcji. Każdy plik dźwiękowy powinien zawierać pojedynczy wypowiedź (jednym zdaniu lub pojedynczych Włączanie systemu okna dialogowego), a mniej niż 15 sekund.
+Zestaw danych szkolenia głosowego zawiera nagrania audio i plik tekstowy z skojarzonymi transkrypcjami. Każdy plik audio powinien zawierać pojedynczy wypowiedź (jedno zdanie lub pojedynczy tryb dla systemu dialogu) i może być krótszy niż 15 sekund.
 
-W niektórych przypadkach może nie mieć prawo gotowy zestaw danych i będzie ma zostać przetestowana szkolenia głosu niestandardowe z dostępnych plików audio, krótkim lub długim z lub bez transkrypcji. Firma Microsoft zapewnia narzędzia (beta) ułatwiające segmentu audio do wypowiedzi i przygotuj transkrypcje przy użyciu [interfejsu API usługi Batch transkrypcji](batch-transcription.md).
+W niektórych przypadkach możesz nie mieć odpowiedniego zestawu danych, który będzie gotowy do testowania niestandardowego szkolenia głosowego z dostępnymi plikami audio, krótkimi lub długimi, z lub bez transkrypcji. Firma Microsoft udostępnia narzędzia (beta), które ułatwiają segmentację dźwięku w wyrażenia długości i przygotowanie transkrypcji przy użyciu [interfejsu API transkrypcji usługi Batch](batch-transcription.md).
 
-Poniższa tabela zawiera listę typów danych i jak każdy obiekt jest używany do tworzenia modelu niestandardowego tekstu na mowę głosu.
+Ta tabela zawiera listę typów danych i sposób ich użycia w celu utworzenia niestandardowego modelu głosu zamiany tekstu na mowę.
 
-| Typ danych | Opis | Kiedy stosować | Usługi dodatkowe wymagane | Ilość do uczenia modelu | Locale(s) |
+| Typ danych | Opis | Kiedy stosować | Wymagana jest dodatkowa usługa | Ilość szkoleniowa modelu | Ustawienia regionalne |
 | --------- | ----------- | ----------- | --------------------------- | ----------------------------- | --------- |
-| **Poszczególne wypowiedzi + pasującego transkrypcji** | Kolekcja (.zip) pliki audio (wav) jako pojedynczych wypowiedzi. Każdy plik dźwiękowy powinien być 15 sekund lub mniej znaków, z sformatowane transkrypcji (.txt). | Profesjonalne nagrań z pasującymi transkrypcji | Gotowe do szkolenia. | Nie bezwględnie wymagane dla en US i zh-CN. Więcej niż 2000 + distinct wypowiedzi dla innych ustawień regionalnych. | Wszystkie ustawienia regionalne Custom Voice |
-| **Długie nagrania i transkrypcji (beta)** | Kolekcja (.zip) długie, bez segmentów pliki audio (więcej niż 20 sekund), jest powiązany z transkrypcji (.txt), który zawiera wszystkie wypowiadanych słów. | Masz pliki audio i zapisy dopasowania, ale nie są one podzielono ją na wypowiedzi. | Segmentacja (przy użyciu transkrypcji usługi batch).<br>Audio format przekształcania gdy jest to wymagane. | Nie bezwględnie wymagane dla en US i zh-CN. | `en-US` i `zh-CN` |
-| **Tylko audio (beta)** | Kolekcja (.zip) plików audio, bez transkrypcji. | Wystarczy tylko pliki audio, które są dostępne, bez transkrypcji. | Segmentacja + Generowanie transkrypcji (przy użyciu transkrypcji usługi batch).<br>Audio format przekształcania gdy jest to wymagane.| Nie bezwględnie wymagane dla `en-US` i `zh-CN`. | `en-US` i `zh-CN` |
+| **Poszczególne wyrażenia długości + pasujące transkrypcje** | Kolekcja (zip) plików audio (. wav) jako pojedyncze wyrażenia długości. Każdy plik audio powinien mieć długość co najmniej 15 sekund, sparowany z sformatowaną transkrypcją (. txt). | Profesjonalne nagrania z pasującymi transkrypcjami | Gotowe do uczenia się. | Brak twardych wymagań dla en-US i zh-CN. Więcej niż 2000 wyrażenia długości różne ustawienia regionalne. | Wszystkie niestandardowe ustawienia regionalne głosu |
+| **Długi dźwięk + transkrypcja (beta)** | Kolekcja (zip) długich, niesegmentowych plików audio (dłużej niż 20 sekund) sparowana z transkrypcją (. txt), która zawiera wszystkie wymawiane słowa. | Masz pliki audio i pasujące transkrypcje, ale nie są one podzielone na wyrażenia długości. | Segmentacja (przy użyciu transkrypcji partii).<br>Przekształcanie formatu audio, gdy jest to wymagane. | Brak twardych wymagań dla en-US i zh-CN. | `en-US` i `zh-CN` |
+| **Tylko audio (beta)** | Kolekcja (zip) plików audio bez transkrypcji. | Dostępne są tylko pliki audio, bez transkrypcji. | Segmentacja + generacja transkrypcji (przy użyciu transkrypcji partii).<br>Przekształcanie formatu audio, gdy jest to wymagane.| Brak twardych wymagań dla `en-US` i `zh-CN`. | `en-US` i `zh-CN` |
 
-Pliki powinny pogrupowane według typu do zestawu danych i przekazać w formie pliku zip. Każdy zestaw danych może zawierać tylko jednego typu danych.
+Pliki powinny być pogrupowane według typu w zestawie danych i przekazywane jako plik zip. Każdy zestaw danych może zawierać tylko jeden typ danych.
 
 > [!NOTE]
-> Maksymalna liczba zestawów danych, można zaimportować na subskrypcję jest 10 zip za darmo plików użytkownicy subskrypcji (F0) oraz 500 użytkowników subskrypcja standardowa (S0).
+> Maksymalna liczba zestawów danych, które mogą zostać zaimportowane na subskrypcję, to 10. zip plików dla użytkowników bezpłatnej subskrypcji (F0) i użytkowników 500 for Standard Subscription (S0).
 
-## <a name="individual-utterances--matching-transcript"></a>Poszczególne wypowiedzi + pasującego transkrypcji
+## <a name="individual-utterances--matching-transcript"></a>Poszczególne wyrażenia długości + pasujące transkrypcje
 
-Można przygotować nagrania poszczególnych wypowiedzi i dopasowania transkrypcji na dwa sposoby. Albo napisać skrypt i odczytywane przez talent głosu lub użyć publicznie dostępnych audio i transkrypcja ją na tekst. Jeśli jednak ten ostatni edytować disfluencies z plików audio, takie jak "um" i inne wypełniacza dźwięki, stutters, mumbled słowa lub mispronunciations.
+Możesz przygotować nagrania poszczególnych wyrażenia długości i zgodne transkrypcji na dwa sposoby. Napisz skrypt i odczytaj go za pomocą głosu talent lub użyj publicznie dostępnego dźwięku i transkrypcja go do tekstu. Jeśli wykonasz te czynności, Edytuj disfluencies z plików audio, takich jak "UM" i innych dźwięków Filler, stutters, mumbled słów lub wymowy.
 
-Aby wygenerować czcionka głosowa dobre, należy utworzyć nagrania w pokoju cichy z mikrofonu wysokiej jakości. Spójne woluminu wypowiedzi szybkości, wypowiedzi gęstość i ekspresyjny mannerisms mowy mają kluczowe znaczenie.
+Aby utworzyć dobrą czcionkę głosową, Utwórz nagrania w cichym pokoju przy użyciu mikrofonu o wysokiej jakości. Istotna jest stała ilość głosu, częstotliwość mówienia, gęstość głosu i mannerisms.
 
 > [!TIP]
-> Aby utworzyć głosu w środowisku produkcyjnym, zalecamy możesz talent studio i głosu profesjonalnych rejestrowania. Aby uzyskać więcej informacji, zobacz [jak głos przykłady dla niestandardowych voice](record-custom-voice-samples.md).
+> Aby utworzyć głos do użycia w środowisku produkcyjnym, zalecamy korzystanie z profesjonalnego nagrywania programu Studio i głosu talent. Aby uzyskać więcej informacji, zobacz [jak zarejestrować przykłady głosu dla niestandardowego głosu](record-custom-voice-samples.md).
 
-### <a name="audio-files"></a>Pliki dźwiękowe
+### <a name="audio-files"></a>Pliki audio
 
-Każdy plik dźwiękowy powinien zawierać pojedynczy wypowiedź (jednym zdaniu lub pojedynczych Włączanie systemu okna dialogowego), mniej niż 15 sekund. Wszystkie pliki muszą znajdować się w ten sam język mówiony. Wiele języków niestandardowych głosów zamiany tekstu na mowę nie są obsługiwane z wyjątkiem chiński angielska bi języków. Każdy plik dźwiękowy musi mieć unikatową nazwę liczbowych pliku z rozszerzeniem nazwy pliku .wav.
+Każdy plik audio powinien zawierać pojedynczy wypowiedź (pojedyncze zdanie lub pojedynczy tryb okna dialogowego), krótszy niż 15 sekund. Wszystkie pliki muszą znajdować się w tym samym języku mówionym. Niestandardowe głosy tekstu na mowę dla wielu języków nie są obsługiwane, z wyjątkiem języka chińskiego w języku angielskim. Każdy plik audio musi mieć unikatową nazwę pliku numerycznego z rozszerzeniem nazwy pliku WAV.
 
-Należy przestrzegać następujących wytycznych podczas przygotowywania audio.
+Postępuj zgodnie z poniższymi wskazówkami podczas przygotowywania dźwięku.
 
-| Właściwość | Wartość |
+| Właściwość | Value |
 | -------- | ----- |
-| Format pliku | RIFF (wav) pogrupowane w pliku zip |
-| Częstotliwość próbkowania | co najmniej 16 000 Hz |
-| Przykładowy format | PCM, 16-bitowych |
-| Nazwa pliku | Liczbowe z rozszerzeniem wav. Nie nazwy zduplikowanych plików są dozwolone. |
-| Długość audio | Mniej niż 15 sekund |
+| Format pliku | RIFF (. wav), pogrupowane w pliku. zip |
+| Częstotliwość próbkowania | Co najmniej 16 000 Hz |
+| Przykładowy format | PCM, 16-bitowe |
+| Nazwa pliku | Numeryczne, z rozszerzeniem. wav. Nie jest dozwolone Duplikowanie nazw plików. |
+| Długość audio | Krótsze niż 15 sekund |
 | Format archiwum | .zip |
-| Rozmiar maksymalny archiwum | 200 MB |
+| Maksymalny rozmiar archiwum | 200 MB |
 
 > [!NOTE]
-> .wav — pliki przy użyciu mniejszej niż 16 000 Hz częstotliwości próbkowania zostanie odrzucone. Jeśli plik zip zawiera pliki przy użyciu stawki za różne przykładowe, zostaną zaimportowane tylko tych równą lub większą niż 16 000 Hz. Portal aktualnie zip Importy archiwa do 200 MB. Jednak można przekazać wiele archiwów.
+> pliki. wav o współczynniku próbkowania mniejszym niż 16 000 Hz zostaną odrzucone. Jeśli plik. zip zawiera pliki WAV z różnymi współczynnikami próbkowania, zostaną zaimportowane tylko te, które są równe lub większe niż 16 000 Hz. Portal zaimportuje teraz archiwum zip do 200 MB. Można jednak przekazać wiele archiwów.
 
-### <a name="transcripts"></a>Zapisy
+### <a name="transcripts"></a>Transkrypcji
 
-Plik transkrypcji jest zwykły plik tekstowy. Za pomocą następujących wytycznych przygotować swoje transkrypcji.
+Plik transkrypcji jest plikiem w postaci zwykłego tekstu. Te wskazówki służą do przygotowania transkrypcji.
 
 | Właściwość | Wartość |
 | -------- | ----- |
-| Format pliku | Zwykły tekst (txt) |
-| Format kodowania | ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE lub być UTF-16. Aby uzyskać nazwy zh-CN kodowania ANSI/ASCII i UTF-8 nie są obsługiwane. |
-| Liczba wypowiedzi w wierszu | **Jeden** -każdego wiersza w pliku transkrypcji powinno zawierać nazwę jednego z plików audio, następuje odpowiedni tekst. Nazwę pliku i transkrypcję należy rozdzielać przy użyciu tabulatora (\t). |
+| Format pliku | Zwykły tekst (. txt) |
+| Format kodowania | ANSI/ASCII, UTF-8, UTF-8 — BOM, UTF-16-LE lub UTF-16. W przypadku metody zh-CN, ANSI/ASCII i UTF-8 nie są obsługiwane. |
+| Liczba wypowiedzi w wierszu | **Jeden** — każdy wiersz pliku transkrypcji powinien zawierać nazwę jednego z plików audio, po którym następuje odpowiednie transkrypcje. Nazwę pliku i transkrypcję należy rozdzielać przy użyciu tabulatora (\t). |
 | Maksymalna wielkość pliku | 50 MB |
 
-Poniżej przedstawiono przykład sposobu zapisy organizacji wypowiedź przez wypowiedź w jednym pliku txt:
+Poniżej znajduje się przykład sposobu, w jaki transkrypcje są zorganizowane wypowiedź przez wypowiedź w jednym pliku txt:
 
 ```
 0000000001[tab] This is the waistline, and it's falling.
 0000000002[tab] We have trouble scoring.
 0000000003[tab] It was Janet Maslin.
 ```
-Należy pamiętać, że zapisy są 100% dokładne transkrypcji audio odpowiednie. Błędy w transkrypcji zostaną wprowadzone obniżenie jakości podczas szkolenia.
+Należy pamiętać, że transkrypcje są 100% dokładne transkrypcje odpowiedniego dźwięku. Błędy w transkrypcjach spowodują utratę jakości podczas uczenia się.
 
 > [!TIP]
-> Podczas tworzenia produkcyjnych głosów zamiany tekstu na mowę, wybierz opcję wypowiedzi (lub skryptów) uwzględniające konta fonetycznych pokrycia i wydajność. Wystąpił problem podczas pobierania wyników chcesz? [Skontaktuj się z pomocą głosu niestandardowe](mailto:speechsupport@microsoft.com) zespołu, aby znaleźć poza więcej informacji na temat o nas zapoznaj się z.
+> Podczas tworzenia głosów produkcji zamiany tekstu na mowę wybierz pozycję wyrażenia długości (lub napisz skrypty), która uwzględnia zarówno pokrycie, jak i wydajność. Masz problemy z uzyskaniem żądanych wyników? [Skontaktuj się](mailto:speechsupport@microsoft.com) z niestandardowym zespołem mowy, aby dowiedzieć się więcej o tym, jak się skontaktować.
 
-## <a name="long-audio--transcript-beta"></a>Długie nagrania i transkrypcji (beta)
+## <a name="long-audio--transcript-beta"></a>Długi dźwięk + transkrypcja (beta)
 
-W niektórych przypadkach możesz może nie mieć segmentowanych audio dostępne. Firma Microsoft oferuje usługi (wersja beta) za pośrednictwem portalu niestandardowych voice ułatwiające podzielić pliki długo audio i utworzyć transkrypcji. Należy pamiętać, ta usługa jest naliczana kierunku wykorzystanie subskrypcji mowy na tekst.
+W niektórych przypadkach może nie być dostępne żadne segmenty audio. Udostępniamy usługę (beta) za pomocą niestandardowego portalu głosowego, która pomaga w segmentacji długich plików audio i tworzeniu transkrypcji. Należy pamiętać, że ta usługa zostanie obciążona opłatą za użycie subskrypcji zamiany mowy na tekst.
 
 > [!NOTE]
-> Usługa segmentacji long-audio będzie korzystać partii funkcję transkrypcja mowy na tekst, który obsługuje tylko użytkowników subskrypcja standardowa (S0). Podczas przetwarzania segmentacji plików audio i zapisy również otrzymasz w usłudze Custom Speech uściślić model rozpoznawania, dzięki czemu można zwiększyć dokładność danych. Żadne dane nie zostaną zachowane w trakcie tego procesu. Po wykonaniu czynności segmentacji wypowiedzi segmentowanych i ich zapisy mapowania będą przechowywane dla pobierania i szkolenia.
+> Usługa segmentacji Long-audio będzie korzystać z funkcji transkrypcji przetwarzania wsadowego zamiany mowy na tekst, która obsługuje tylko użytkowników Standard Subscription (S0). Podczas przetwarzania segmentacji pliki audio i transkrypcje zostaną również wysłane do usługi Custom Speech, aby uściślić model rozpoznawania, dzięki czemu można poprawić dokładność danych. W trakcie tego procesu nie będą przechowywane żadne dane. Po zakończeniu segmentacji tylko segmenty wyrażenia długości i ich transkrypcje mapowania będą przechowywane na potrzeby pobierania i uczenia.
 
-### <a name="audio-files"></a>Pliki dźwiękowe
+### <a name="audio-files"></a>Pliki audio
 
-Należy przestrzegać następujących wytycznych podczas przygotowywania audio segmentacji.
+Postępuj zgodnie z poniższymi wskazówkami podczas przygotowywania audio dla segmentacji.
 
 | Właściwość | Wartość |
 | -------- | ----- |
-| Format pliku | RIFF (wav) za pomocą próbkowania co najmniej 16 khz-16-bitowych w module PCM lub MP3 za pomocą szybkość transmisji bitów, co najmniej 256 KB/s, pogrupowane według plik .zip |
-| Nazwa pliku | Tylko znaki ASCII. Znaki Unicode w nazwie zakończy się niepowodzeniem (na przykład znakami języka chińskiego lub symbole, takie jak "—"). Nie zduplikowane nazwy są dozwolone. |
-| Długość audio | Dłuższy niż 20 sekund |
+| Format pliku | Plik RIFF (. wav) z częstotliwością próbkowania wynoszącą co najmniej 16 kHz-16 bitów w module PCM lub MP3 z szybkością bitową wynoszącą co najmniej 256 KB/s, pogrupowane w pliku. zip |
+| Nazwa pliku | Tylko znaki ASCII. Znaki Unicode w nazwie będą kończyć się niepowodzeniem (na przykład znaki chińskie lub symbole takie jak "—"). Nie są dozwolone zduplikowane nazwy. |
+| Długość audio | Dłużej niż 20 sekund |
 | Format archiwum | .zip |
-| Rozmiar maksymalny archiwum | 200 MB |
+| Maksymalny rozmiar archiwum | 200 MB |
 
-Wszystkie pliki dźwiękowe, powinny zostać utworzone w pliku zip. Zgadzam się umieścić .wav — pliki i pliki MP3 w jednym zip audio, ale podfolder nie jest dozwolone w pliku zip. Na przykład możesz przekazać plik zip zawierający plik dźwiękowy o nazwie "kingstory.wav", 45 sekundę długich i innym jeden o nazwie "queenstory.mp3", 200-second-long, bez żadnych podfolderów. Wszystkie pliki MP3 będą przekształcane w formacie .wav po zakończeniu przetwarzania.
+Wszystkie pliki audio powinny być pogrupowane w pliku zip. Pliki. wav i. mp3 można umieścić w jednym pliku zip audio, ale nie jest on dozwolony w folderze ZIP. Na przykład można przekazać plik zip zawierający plik audio o nazwie "kingstory. wav", 45-Second-Long i inny o nazwie "queenstory. mp3", 200-Second-Long, bez podfolderów. Wszystkie pliki. mp3 zostaną przekształcone w formacie wav po przetworzeniu.
 
-### <a name="transcripts"></a>Zapisy
+### <a name="transcripts"></a>Transkrypcji
 
-Zapisy musi być przygotowana do specyfikacji wymienione w poniższej tabeli. Każdy plik dźwiękowy muszą się zgadzać z transkrypcji.
+Transkrypcje muszą zostać przygotowane do specyfikacji wymienionych w tej tabeli. Każdy plik audio musi być zgodny z transkrypcją.
 
-| Właściwość | Wartość |
+| Właściwość | Value |
 | -------- | ----- |
-| Format pliku | Zwykły tekst (txt), pogrupowane według plik zip |
-| Nazwa pliku | Użyj takiej samej nazwy jak pasującego pliku audio |
-| Format kodowania | UTF-8-BOM tylko |
-| Liczba wypowiedzi w wierszu | Bez ograniczeń |
+| Format pliku | Zwykły tekst (. txt), pogrupowany w pliku. zip |
+| Nazwa pliku | Użyj tej samej nazwy co pasujący plik audio |
+| Format kodowania | UTF-8 — tylko BOM |
+| Liczba wypowiedzi w wierszu | Bez limitu |
 | Maksymalna wielkość pliku | 50 MLN |
 
-Wszystkie pliki transkrypcji, w tym typie danych powinny zostać utworzone w pliku zip. Nie podfolderów jest dozwolone w pliku zip. Na przykład został przekazany plik zip zawierający plik dźwiękowy o nazwie "kingstory.wav" 45 sekund, a inny jeden o nazwie "queenstory.mp3", 200 sekund długo. Należy przekazać inny plik zip zawierający dwóch zapisów, jeden o nazwie "kingstory.txt", inne jeden "queenstory.txt". W ramach każdego pliku w postaci zwykłego tekstu należy podać pełną poprawne transkrypcji dla zgodnego audio.
+Wszystkie pliki transkrypcji w tym typie danych powinny być pogrupowane w pliku zip. W pliku zip nie jest dozwolony podfolder. Na przykład przekazano plik zip zawierający plik audio o nazwie "kingstory. wav", 45 s Long, a drugi o nazwie "queenstory. mp3", 200 s Long. Należy przekazać inny plik zip zawierający dwa transkrypcje, jeden o nazwie "kingstory. txt", drugi jeden "queenstory. txt". W każdym zwykłym pliku tekstowym należy zapewnić pełną transkrypcję dla pasującego dźwięku.
 
-Po pomyślnym przekazaniu zestawu danych, pomożemy Ci segmentu plik dźwiękowy do wypowiedzi oparte na transkrypcjach, pod warunkiem. Możesz sprawdzić segmentowanych wypowiedzi i zapisy dopasowania, pobierając zestaw danych. Unikatowe identyfikatory zostanie automatycznie przypisany do segmentowanych wypowiedzi. Jest ważne przez należy upewnić się, że zapisy, których udzielasz są dokładne w 100%. Błędy w transkrypcji można zmniejszyć dokładność podczas audio segmentacji i wprowadzić obniżenie jakości w fazie szkolenia, która powstaje później.
+Po pomyślnym przekazaniu zestawu danych pomożemy Ci podzielić plik audio na wyrażenia długości w oparciu o podaną transkrypcję. Możesz sprawdzić segment wyrażenia długości i pasujące transkrypcje, pobierając zestaw danych. Unikatowe identyfikatory będą przypisywane do wyrażenia długości z segmentami automatycznie. Ważne jest, aby upewnić się, że transkrypcje są zgodne z dokładnością do 100%. Błędy w transkrypcjach mogą zmniejszyć dokładność podczas segmentacji audio i dodatkowo wprowadzić utratę jakości w fazie szkoleniowej, która jest dostępna później.
 
 ## <a name="audio-only-beta"></a>Tylko audio (beta)
 
-Jeśli nie masz transkrypcji dla Twojego nagrania audio, użyj **tylko Audio** opcję, aby przekazać dane. Nasz system może pomóc w segmentu, a także plików audio. Należy pamiętać, ta usługa będą przekładać wykorzystanie subskrypcji mowy na tekst.
+Jeśli nie masz transkrypcji dla nagrań dźwiękowych, użyj opcji **tylko audio** , aby przekazać dane. Nasz system może pomóc Ci segmentować i transkrypcja pliki audio. Należy pamiętać, że ta usługa będzie uwzględniać użycie subskrypcji zamiany mowy na tekst.
 
-Należy przestrzegać następujących wytycznych podczas przygotowywania audio.
+Postępuj zgodnie z poniższymi wskazówkami podczas przygotowywania dźwięku.
 
 > [!NOTE]
-> Usługa segmentacji long-audio będzie korzystać partii funkcję transkrypcja mowy na tekst, który obsługuje tylko użytkowników subskrypcja standardowa (S0).
+> Usługa segmentacji Long-audio będzie korzystać z funkcji transkrypcji przetwarzania wsadowego zamiany mowy na tekst, która obsługuje tylko użytkowników Standard Subscription (S0).
 
 | Właściwość | Wartość |
 | -------- | ----- |
-| Format pliku | RIFF (wav) za pomocą próbkowania co najmniej 16 khz-16-bitowych w module PCM lub MP3 za pomocą szybkość transmisji bitów, co najmniej 256 KB/s, pogrupowane według plik .zip |
-| Nazwa pliku | Tylko znaki ASCII. Znaki Unicode w nazwie zakończy się niepowodzeniem (na przykład znakami języka chińskiego lub symbole, takie jak "—"). Nie zduplikowane nazwy dozwolone. |
-| Długość audio | Dłuższy niż 20 sekund |
+| Format pliku | Plik RIFF (. wav) z częstotliwością próbkowania wynoszącą co najmniej 16 kHz-16 bitów w module PCM lub MP3 z szybkością bitową wynoszącą co najmniej 256 KB/s, pogrupowane w pliku. zip |
+| Nazwa pliku | Tylko znaki ASCII. Znaki Unicode w nazwie będą kończyć się niepowodzeniem (na przykład znaki chińskie lub symbole takie jak "—"). Nie można duplikować nazwy. |
+| Długość audio | Dłużej niż 20 sekund |
 | Format archiwum | .zip |
-| Rozmiar maksymalny archiwum | 200 MB |
+| Maksymalny rozmiar archiwum | 200 MB |
 
-Wszystkie pliki dźwiękowe, powinny zostać utworzone w pliku zip. Nie podfolderów jest dozwolone w pliku zip. Po pomyślnym przekazaniu zestawu danych, pomożemy Ci segmentu plik dźwiękowy do wypowiedzi w oparciu o usługa transkrypcja mowy usługi batch. Unikatowe identyfikatory zostanie automatycznie przypisany do segmentowanych wypowiedzi. Dopasowywanie transkrypcji zostanie wygenerowany za pomocą funkcji rozpoznawania mowy. Wszystkie pliki MP3 będą przekształcane w formacie .wav po zakończeniu przetwarzania. Możesz sprawdzić segmentowanych wypowiedzi i zapisy dopasowania, pobierając zestaw danych.
+Wszystkie pliki audio powinny być pogrupowane w pliku zip. W pliku zip nie jest dozwolony podfolder. Po pomyślnym przekazaniu zestawu danych pomożemy Ci podzielić plik audio na wyrażenia długości w oparciu o usługę transkrypcji przetwarzania wsadowego mowy. Unikatowe identyfikatory będą przypisywane do wyrażenia długości z segmentami automatycznie. Zgodne transkrypcje zostaną wygenerowane przy użyciu funkcji rozpoznawania mowy. Wszystkie pliki. mp3 zostaną przekształcone w formacie wav po przetworzeniu. Możesz sprawdzić segment wyrażenia długości i pasujące transkrypcje, pobierając zestaw danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Tworzenie niestandardowych Voice](how-to-custom-voice-create-voice.md)
-- [Przewodnik: Zarejestruj swoje próbki głosu](record-custom-voice-samples.md)
+- [Tworzenie niestandardowego głosu](how-to-custom-voice-create-voice.md)
+- [Prowadzą Rejestruj przykłady głosu](record-custom-voice-samples.md)

@@ -1,5 +1,5 @@
 ---
-title: Instalowanie kontenerów mowy
+title: Instalowanie kontenerów mowy — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Instalowanie i uruchamianie kontenerów mowy. Funkcja zamiany mowy na tekst przekształca strumienie audio do tekstu w czasie rzeczywistym, które mogą być używane przez aplikacje, narzędzia lub urządzenia. Zamiana tekstu na mowę polega na konwertowaniu tekstu wejściowego na mowę, przypominającą człowieka.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 089b9030debc7489e123d49b5c78052f597ca469
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 0778814d4a228afe3a986426684c7d1f2080b517
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348417"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553231"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
@@ -23,7 +23,7 @@ Kontenery mowy umożliwiają klientom tworzenie jednej architektury aplikacji mo
 
 Dwa kontenery mowy to **Zamiana mowy na tekst** i **Zamiana tekstu na mowę**. 
 
-|Funkcja|Funkcje|Ostatnia|
+|Funkcja|Funkcje|Najnowsze|
 |-|-|--|
 |Zamiany mowy na tekst| <li>Przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub nagrania audio w trybie wsadowym do tekstu z wynikami pośrednimi.|1.1.3|
 |Zamiana tekstu na mowę| <li>Konwertuje tekst na naturalnie brzmiącą mowę. za pomocą danych wejściowych tekstu lub języka Markup syntezy mowy (SSML). |1.1.0|
