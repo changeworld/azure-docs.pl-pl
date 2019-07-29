@@ -1,9 +1,9 @@
 ---
-title: Skrypt programu Azure PowerShell przykładowy — Dodawanie reguły sieciowej grupy zabezpieczeń | Dokumentacja firmy Microsoft
-description: Przykładowy skrypt Azure PowerShell — dodaje sieciową grupę zabezpieczeń, aby zezwolić na ruch przychodzący na określonym porcie.
+title: Przykładowy skrypt Azure PowerShell — Dodawanie reguły sieciowej grupy zabezpieczeń | Microsoft Docs
+description: Przykładowy skrypt Azure PowerShell — dodaje sieciową grupę zabezpieczeń w celu zezwolenia na ruch przychodzący na określonym porcie.
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
@@ -13,18 +13,18 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 11/28/2017
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 92efd6c4e63959b6098829892c5cbbaeeabe9f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1418b85bfa2579ed2dee5211a79a75adf14f1547
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159980"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592279"
 ---
-# <a name="add-an-inbound-network-security-group-rule"></a>Dodawanie reguły dla ruchu przychodzącego sieciowej grupy zabezpieczeń
+# <a name="add-an-inbound-network-security-group-rule"></a>Dodawanie reguły sieciowej grupy zabezpieczeń dla ruchu przychodzącego
 
-Ten przykładowy skrypt tworzy regułę sieciowej grupy zabezpieczeń w celu zezwolenia na ruch przychodzący na porcie 8081.  Skrypt pobiera `Microsoft.Network/networkSecurityGroups` zasobu klastra znajduje się w, tworzy nową regułę konfiguracji zabezpieczeń sieci i aktualizuje sieciowej grupy zabezpieczeń. Dostosuj parametry zgodnie z potrzebami.
+Ten przykładowy skrypt tworzy regułę sieciowej grupy zabezpieczeń, która zezwala na ruch przychodzący na porcie 8081.  Skrypt pobiera `Microsoft.Network/networkSecurityGroups` zasób, w którym znajduje się klaster, tworzy nową regułę konfiguracji zabezpieczeń sieci i aktualizuje sieciową grupę zabezpieczeń. Dostosuj parametry zgodnie z potrzebami.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -41,9 +41,9 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Pobiera zasób `Microsoft.Network/networkSecurityGroups`. |
-|[Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)| Pobiera sieciową grupę zabezpieczeń o nazwie.|
+|[Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)| Pobiera sieciową grupę zabezpieczeń według nazwy.|
 |[Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Dodaje konfigurację reguły zabezpieczeń sieci do sieciowej grupy zabezpieczeń. |
-|[Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup)| Ustawia stan docelowy dla sieciowej grupy zabezpieczeń.|
+|[Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup)| Ustawia stan celu dla sieciowej grupy zabezpieczeń.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

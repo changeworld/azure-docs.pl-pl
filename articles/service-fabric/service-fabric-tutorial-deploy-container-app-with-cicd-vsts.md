@@ -3,7 +3,7 @@ title: Wdrażanie aplikacji kontenera przy użyciu ciągłej integracji/ciągłe
 description: W ramach tego samouczka nauczysz się konfigurować ciągłą integrację i ciągłe wdrażanie aplikacji kontenera usługi Azure Service Fabric za pomocą programu Visual Studio i usługi Azure DevOps.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/29/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 37305f27203986ce2e3d06276b5169ffd9b41287
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b686ceace3679d1541e8f1a74bca7e99b81ba932
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60720722"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598898"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Samouczek: Wdrażanie aplikacji kontenera przy użyciu ciągłej integracji/ciągłego wdrażania w klastrze usługi Service Fabric
 
@@ -43,7 +43,7 @@ Przed rozpoczęciem tego samouczka:
 
 ## <a name="prepare-a-publish-profile"></a>Przygotowywanie profilu publikowania
 
-Teraz po [wdrożeniu aplikacji kontenera](service-fabric-host-app-in-a-container.md) wszystko jest gotowe do skonfigurowania ciągłej integracji.  Najpierw przygotuj profil publikowania w aplikacji na potrzeby procesu wdrażania wykonywanego w ramach usługi Azure DevOps.  Profil publikowania należy skonfigurować pod kątem klastra, który został wcześniej utworzony.  Uruchom program Visual Studio i otwórz istniejący projekt aplikacji usługi Service Fabric.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy aplikację i wybierz polecenie **Opublikuj...**.
+Teraz po [wdrożeniu aplikacji kontenera](service-fabric-host-app-in-a-container.md) wszystko jest gotowe do skonfigurowania ciągłej integracji.  Najpierw przygotuj profil publikowania w aplikacji na potrzeby procesu wdrażania wykonywanego w ramach usługi Azure DevOps.  Profil publikowania należy skonfigurować pod kątem klastra, który został wcześniej utworzony.  Uruchom program Visual Studio i otwórz istniejący projekt aplikacji usługi Service Fabric.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy aplikację i wybierz polecenie **Opublikuj...** .
 
 Wybierz profil docelowy w ramach projektu aplikacji na potrzeby przepływu pracy ciągłej integracji, na przykład chmurę.  Określ punkt końcowy połączenia klastra.  Zaznacz pole wyboru **Uaktualnij aplikację**, aby uaktualnić aplikację dla każdego wdrożenia w usłudze Azure DevOps.  Kliknij hiperlink **Zapisz**, aby zapisać ustawienia w profilu publikowania, a następnie kliknij przycisk **Anuluj** w celu zamknięcia okna dialogowego.
 
@@ -137,7 +137,7 @@ Kliknij przycisk **Ustawienia platformy Docker**, a następnie opcję **Konfigur
 
 ![Agent potoku wydawania][release-pipeline-agent]
 
-Następnie dodaj artefakt kompilacji do potoku, aby umożliwić definicji wydania odnalezienie danych wyjściowych kompilacji. Wybierz pozycję **Potok**, a następnie **Artefakty**->**+ Dodaj**.  W obszarze **Źródło (definicja kompilacji)** wybierz wcześniej utworzoną definicję kompilacji.  Kliknij przycisk **Dodaj**, aby zapisać artefakt kompilacji.
+Następnie dodaj artefakt kompilacji do potoku, aby umożliwić definicji wydania odnalezienie danych wyjściowych kompilacji. Wybierz pozycję **Potok**, a następnie **Artefakty**-> **+ Dodaj**.  W obszarze **Źródło (definicja kompilacji)** wybierz wcześniej utworzoną definicję kompilacji.  Kliknij przycisk **Dodaj**, aby zapisać artefakt kompilacji.
 
 ![Dodawanie artefaktu][add-artifact]
 

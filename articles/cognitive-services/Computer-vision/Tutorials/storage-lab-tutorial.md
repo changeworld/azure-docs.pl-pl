@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Generuj metadane obrazów platformy Azure'
+title: 'Samouczek: Generuj metadane dla obrazów platformy Azure'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku dowiesz się, jak zintegrować usługę przetwarzania obrazów platformy Azure z aplikacją internetową, aby generować metadane dla obrazów.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 75e52398386e7ef1b338d13a8cfe8f20c06abcc6
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 00cca0cbf500ea4e884a9f9334896a18fe7b0978
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541526"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597855"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Samouczek: generowanie metadanych obrazów w usłudze Azure Storage przy użyciu przetwarzania obrazów
 
@@ -42,15 +42,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Musisz utworzyć zasób przetwarzania obrazów dla swojego konta platformy Azure. Ten zasób zarządza Twoim dostępem do usługi przetwarzania obrazów platformy Azure. 
 
-1. Postępuj zgodnie z instrukcjami w [Utwórz zasób usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) do utworzenia zasobu przetwarzania obrazów.
+1. Postępuj zgodnie z instrukcjami w temacie [Tworzenie zasobu usługi Azure Cognitive Services](../../cognitive-services-apis-create-account.md#single-service-resource) , aby utworzyć zasób przetwarzanie obrazów.
 
-1. Następnie przejdź do menu grupy zasobów i kliknij subskrypcję interfejsu API przetwarzania obrazów, który został utworzony. Skopiuj adres URL z obszaru **Punkt końcowy** do miejsca, z którego będzie go można za chwilę łatwo uzyskać. Następnie kliknij pozycję **Pokaż klucze dostępu**.
+1. Następnie przejdź do menu dla swojej grupy zasobów i kliknij właśnie utworzoną subskrypcję interfejs API przetwarzania obrazów. Skopiuj adres URL z obszaru **Punkt końcowy** do miejsca, z którego będzie go można za chwilę łatwo uzyskać. Następnie kliknij pozycję **Pokaż klucze dostępu**.
 
-    ![Stronę witryny Azure portal przy użyciu punktu końcowego adresu URL i dostępu do kluczy łącze opisane](../Images/copy-vision-endpoint.png)
+    ![Strona Azure Portal z połączonym adresem URL punktu końcowego i kluczami dostępu](../Images/copy-vision-endpoint.png)
 
 1. W następnym oknie skopiuj wartość **KLUCZ 1** do schowka.
 
-    ![Zarządzanie kluczami okno dialogowe, przy użyciu przycisku kopiowania, opisane](../Images/copy-vision-key.png)
+    ![Okno dialogowe Zarządzanie kluczami z wyróżnionym przyciskiem kopiowania](../Images/copy-vision-key.png)
 
 ## <a name="add-computer-vision-credentials"></a>Dodawanie poświadczeń przetwarzania obrazów
 
@@ -130,7 +130,7 @@ Zapisz wprowadzone zmiany w programie Visual Studio i naciśnij klawisze **Ctrl+
 
 Aby wyświetlić wszystkie dołączone metadane, użyj Eksploratora usługi Azure Storage w celu wyświetlenia kontenera magazynu, którego używasz na potrzeby obrazów. Kliknij prawym przyciskiem myszy dowolny obiekt blob w kontenerze i wybierz pozycję **Właściwości**. W oknie dialogowym zobaczysz listę par klucz-wartość. Wygenerowany komputerowo opis obrazu jest przechowywany w elemencie „Caption”, a słowa kluczowe wyszukiwania są przechowywane w elementach „Tag0”, „Tag1” i tak dalej. Gdy skończysz, kliknij przycisk **Anuluj**, aby zamknąć okno dialogowe.
 
-![Oknie dialogowym właściwości obrazu, przy użyciu tagów metadanych na liście](../Images/blob-metadata.png)
+![Okno dialogowe właściwości obrazu z wymienionymi tagami metadanych](../Images/blob-metadata.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -138,7 +138,7 @@ Jeśli chcesz kontynuować pracę nad swoją aplikacją internetową, zobacz sek
 
 Aby usunąć grupę zasobów, otwórz blok **Grupy zasobów** w portalu, przejdź do grupy zasobów używanej na potrzeby tego projektu, a następnie kliknij pozycję **Usuń grupę zasobów** u góry widoku. Zostanie wyświetlony monit o podanie nazwy grupy zasobów w celu potwierdzenia, że chcesz ją usunąć, ponieważ po usunięciu grupy zasobów nie można jej odzyskać.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku usługa przetwarzania obrazów platformy Azure została zintegrowana z istniejącą aplikacją internetową w celu automatycznego generowania podpisów i słów kluczowych dla obrazów obiektów blob podczas ich przekazywania. Następnie zapoznaj się z ćwiczeniem 6 w laboratorium usługi Azure Storage, aby dowiedzieć się, jak dodać funkcję wyszukiwania do aplikacji internetowej. Ta funkcja wykorzystuje słowa kluczowe, które generuje usługa przetwarzania obrazów.
 

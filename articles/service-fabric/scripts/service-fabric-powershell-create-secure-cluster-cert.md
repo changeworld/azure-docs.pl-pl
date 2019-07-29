@@ -3,7 +3,7 @@ title: Przykład skryptu programu Azure PowerShell — tworzenie klastra usługi
 description: Przykład skryptu programu Azure PowerShell — tworzenie klastra usługi Service Fabric.
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/19/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 4693117e28f23e4dc94e4edbe96e949080ad2cce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e1ce5d276699b35da95405f3260f922554f99c6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161976"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597871"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Tworzenie klastra usługi Service Fabric
 
@@ -51,7 +51,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 |---|---|
 | [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Tworzy nowy klaster usługi Service Fabric. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

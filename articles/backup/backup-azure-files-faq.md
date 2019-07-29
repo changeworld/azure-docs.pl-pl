@@ -3,16 +3,16 @@ title: Tworzenie kopii zapasowej plików w usłudze Azure Files — często zada
 description: Ten artykuł zawiera szczegółowe informacje dotyczące ochrony plików w udziałach plików platformy Azure.
 author: dcurwin
 ms.author: dacurwin
-ms.date: 01/31/2019
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e3f94badb3af2e3f26a857f27f0b68a78338db92
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 35a41abb156326612c2d60829980f73457cde881
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466307"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601771"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -33,7 +33,7 @@ Tak. Ochrona udziałów plików platformy Azure połączonych z grupami synchron
 ### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Podczas próby utworzenia kopii zapasowej udziałów plików konto usługi Storage zostało kliknięte w celu odnalezienia w nim udziałów plików. Ale nie zostały one jednak objęte ochroną. Jak mogę chronić te udziały plików w innym magazynie?
 Wybranie konta usługi Storage w celu odnalezienia udziałów plików podczas próby utworzenia kopii zapasowej powoduje zarejestrowanie konta usługi Storage w obrębie magazynu, z poziomu którego wykonano tę czynność. Jeśli chcesz chronić udziały plików przy użyciu innego magazynu, [wyrejestruj](troubleshoot-azure-files.md#configuring-backup) wybrane konto usługi Storage z tego magazynu.
 
-### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>Czy mogę zmienić magazyn, w którym tworzę kopię zapasową moich udziałów plików?
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Czy mogę zmienić magazyn, do którego należy utworzyć kopię zapasową moich udziałów plików?
 Tak. Musisz jednak [zatrzymać ochronę](backup-azure-files.md#stop-protecting-an-azure-file-share) na poziomie połączonego magazynu, [wyrejestrować](troubleshoot-azure-files.md#configuring-backup) to konto usługi Storage, a następnie włączyć ochronę z poziomu innego magazynu.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>W których obszarach geograficznych można tworzyć kopie zapasowe udziałów plików usługi Azure Files? <br/>
@@ -75,7 +75,10 @@ W wersji zapoznawczej można chronić w jednym magazynie udziały plików platfo
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Czy można chronić dwa różne udziały plików z poziomu tego samego konta usługi Storage w różnych magazynach?
 Nie. Wszystkie udziały plików na koncie usługi Storage mogą być chronione tylko przez ten sam magazyn.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowej
+
+### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Ile zaplanowanych kopii zapasowych można skonfigurować dla każdego udziału plików?
+Azure Backup obecnie obsługuje Konfigurowanie zaplanowanych raz dziennie kopii zapasowych udziałów plików platformy Azure. 
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Ile kopii zapasowych na żądanie można utworzyć na jeden udział plików? <br/>
 W dowolnym momencie możesz mieć maksymalnie 200 migawek na jeden udział plików. Limit obejmuje migawki wykonane przez usługę Azure Backup na podstawie zasad. Jeśli tworzenie kopii zapasowych będzie kończyć się niepowodzeniem z powodu osiągnięcia tego limitu, usuń punkty przywracania utworzone na żądanie, aby zapewnić pomyślne tworzenie kopii zapasowych w przyszłości.

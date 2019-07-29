@@ -3,7 +3,7 @@ title: Wdrażanie aplikacji usługi Service Fabric w klastrze na platformie Azur
 description: Dowiedz się, jak wdrożyć aplikację w klastrze z poziomu programu Visual Studio.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: msfussell
 editor: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 40fbb29b527ab08dfe3025d25409db428c66c8c4
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: d637b01eb9e4d1664def9eb537b810603eea18ea
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385077"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598816"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Samouczek: wdrażanie aplikacji usługi Service Fabric w klastrze na platformie Azure
 

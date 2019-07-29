@@ -3,7 +3,7 @@ title: Wdrażanie aplikacji .NET w kontenerze w usłudze Azure Service Fabric | 
 description: Dowiedz się, jak konteneryzować istniejącą aplikację platformy .NET przy użyciu programu Visual Studio i jak debugować kontenery lokalnie w usłudze Service Fabric. Konteneryzowana aplikacja jest wypychana do usługi Azure Container Registry i wdrażana w klastrze usługi Service Fabric. Po wdrożeniu na platformie Azure aplikacja utrwala dane za pomocą usługi Azure SQL DB.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/08/2019
-ms.author: aljo
-ms.openlocfilehash: 6c479553dcb6debe47a2b37ef85b6f3930e135c8
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.author: atsenthi
+ms.openlocfilehash: 66d668821c47854d006f2efa425d38f9bf1df7d0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228121"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599501"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Samouczek: Wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric
 
@@ -41,14 +41,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 1. Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 2. Zainstaluj program [Docker CE dla systemu Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description), który umożliwia uruchamianie kontenerów w systemie Windows 10.
 3. Zainstaluj [środowisko uruchomieniowe usługi Service Fabric w wersji 6.2 lub nowszej](service-fabric-get-started.md) i [zestaw SDK usługi Service Fabric w wersji 3.1](service-fabric-get-started.md) lub nowszej.
-4. Zainstaluj [16.1 wersji 2019 r w usłudze Visual Studio](https://www.visualstudio.com/) lub nowszy z **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
-5. Zainstaluj [programu Azure PowerShell][link-azure-powershell-install]
+4. Zainstaluj [program Visual Studio 2019 w wersji 16,1](https://www.visualstudio.com/) lub nowszej przy użyciu obciążeń deweloperskich i **ASP.NET** na **platformie Azure** .
+5. Zainstaluj [Azure PowerShell][link-azure-powershell-install]
  
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Pobieranie i uruchamianie aplikacji Fabrikam Fiber CallCenter
-Pobierz [Fabrikam Fiber CallCenter][link-fabrikam-github] przykładowej aplikacji.  Kliknij link **pobierania archiwum**.  Z katalogu *sourceCode* w pliku *fabrikam.zip* wyodrębnij plik *sourceCode.zip*, a następnie katalog *VS2015* na komputerze.
+Pobierz przykładową aplikację [Fabrikam Fiber CallCenter][link-fabrikam-github] .  Kliknij link **pobierania archiwum**.  Z katalogu *sourceCode* w pliku *fabrikam.zip* wyodrębnij plik *sourceCode.zip*, a następnie katalog *VS2015* na komputerze.
 
-Sprawdź, czy aplikację Fabrikam Fiber CallCenter można skompilować i uruchomić bez błędów.  Uruchom program Visual Studio jako **administratora** , a następnie otwórz [FabrikamFiber.CallCenter.sln][link-fabrikam-github] pliku.  Naciśnij klawisz F5, aby debugować i uruchomić aplikację.
+Sprawdź, czy aplikację Fabrikam Fiber CallCenter można skompilować i uruchomić bez błędów.  Uruchom program Visual Studio jako **administrator** i Otwórz plik [FabrikamFiber. CallCenter. sln][link-fabrikam-github] .  Naciśnij klawisz F5, aby debugować i uruchomić aplikację.
 
 ![Przykład internetowy dla firmy Fabrikam][fabrikam-web-page]
 
@@ -235,7 +235,7 @@ Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze platformy Azure bez
 
 ![Publikowanie aplikacji][publish-app]
 
-Śledzenie postępu wdrażania w oknie danych wyjściowych.  Gdy aplikacja jest wdrażana, otwórz przeglądarkę, a następnie wpisz adres klastra i port aplikacji. Na przykład http:\//fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
+Śledzenie postępu wdrażania w oknie danych wyjściowych.  Gdy aplikacja jest wdrażana, otwórz przeglądarkę, a następnie wpisz adres klastra i port aplikacji. Na przykład http:\//fabrikamfibercallcenter.southcentralus.cloudapp.Azure.com:8659/.
 
 ![Przykład internetowy dla firmy Fabrikam][fabrikam-web-page-deployed]
 
@@ -260,7 +260,7 @@ Remove-AzResourceGroup -Name $acrresourcegroupname
 Remove-AzResourceGroup -Name $clusterresourcegroupname
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]

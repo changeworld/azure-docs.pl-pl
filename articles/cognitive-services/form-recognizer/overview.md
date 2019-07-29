@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: e910f2733a5485d50ad387a1e82ce27e0ba8fdea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562687"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594546"
 ---
 # <a name="what-is-form-recognizer"></a>Co to jest rozpoznawanie formularzy?
 
@@ -28,7 +28,7 @@ Uczenie nienadzorowane umożliwia modelowi poznać układ i relacje między pola
 
 ## <a name="prebuilt-receipt-model"></a>Wstępnie utworzony model przyjęcia
 
-Aparat rozpoznawania formularzy zawiera również model do odczytywania przyjęć sprzedaży. Ten model wyodrębnia najważniejsze informacje, takie jak godzina i Data transakcji, informacje o sprzedawcy, kwoty podatków i sumy itd. Ponadto wstępnie skompilowany model przyjęć jest szkolony do rozpoznawania i zwracania całego tekstu na paragonie.
+Aparat rozpoznawania formularzy zawiera również model do odczytywania przyjęć sprzedaży. Ten model wyodrębnia najważniejsze informacje, takie jak godzina i Data transakcji, informacje o sprzedawcy, kwoty podatków i sumy itd. Ponadto wstępnie utworzony model paragonów jest szkolony do rozpoznawania i zwracania całego tekstu w paragonie.
 
 ## <a name="what-it-includes"></a>Co zawiera
 

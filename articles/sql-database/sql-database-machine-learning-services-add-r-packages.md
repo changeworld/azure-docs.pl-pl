@@ -1,7 +1,7 @@
 ---
-title: Dodaj pakiet języka R do SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)
+title: Dodaj pakiet języka R do Azure SQL Database Machine Learning Services (wersja zapoznawcza)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: W tym artykule wyjaśniono, jak zainstalować pakiet języka R, który nie jest już zainstalowany w SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza).
+description: W tym artykule wyjaśniono, jak zainstalować pakiet języka R, który nie jest jeszcze zainstalowany w programie Azure SQL Database Machine Learning Services (wersja zapoznawcza).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,34 +13,34 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
-ms.openlocfilehash: 4e7145570cbc906ea540c9d8f95f6c3cbde1c610
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: f82408a6aaa7cf3a492f3036a6db5d8666b6f160
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927100"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598054"
 ---
-# <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Dodaj pakiet języka R do SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)
+# <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Dodaj pakiet języka R do Azure SQL Database Machine Learning Services (wersja zapoznawcza)
 
-W tym artykule wyjaśniono, jak dodać pakiet języka R do SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza).
+W tym artykule wyjaśniono, jak dodać pakiet języka R do Azure SQL Database Machine Learning Services (wersja zapoznawcza).
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zainstaluj [R](https://www.r-project.org) i [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/) na komputerze lokalnym. Język R jest dostępny dla systemów Windows, macOS i Linux. W tym artykule przyjęto założenie, że używasz Windows.
+- Zainstaluj pulpit [R](https://www.r-project.org) i [RStudio](https://www.rstudio.com/products/rstudio/download/) na komputerze lokalnym. Język R jest dostępny dla systemów Windows, macOS i Linux. W tym artykule przyjęto założenie, że używasz systemu Windows.
 
-- W tym artykule przedstawiono przykład użycia [usługi Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) lub [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) do języka R do uruchomienia skryptu w usłudze Azure SQL Database. Można uruchomić skrypty języka R przy użyciu innych Zarządzanie bazą danych lub narzędzi do obsługi zapytań, ale w tym przykładzie przyjęto założenie, Studio danych platformy Azure lub programu SSMS.
+- Ten artykuł zawiera przykład użycia [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) lub [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) do uruchamiania skryptu języka R w Azure SQL Database. Skrypty języka R można uruchamiać przy użyciu innych narzędzi do zarządzania bazami danych lub zapytań, ale w tym przykładzie założono Azure Data Studio lub SSMS.
    
 > [!NOTE]
-> Nie można zainstalować pakietu, uruchamiając skrypt języka R za pomocą **sp_execute_external_script** w Studio danych platformy Azure lub programu SSMS. Tylko można zainstalować i usuwanie pakietów przy użyciu wiersza polecenia języka R i programu RStudio zgodnie z opisem w tym artykule. Po zainstalowaniu pakietu można uzyskać dostęp do funkcji pakietu skryptu języka R za pomocą **sp_execute_external_script**.
+> Nie można zainstalować pakietu przez uruchomienie skryptu języka R przy użyciu **sp_execute_external_script** w Azure Data Studio lub SSMS. Pakiety można instalować i usuwać tylko przy użyciu wiersza polecenia R i RStudio zgodnie z opisem w tym artykule. Po zainstalowaniu pakietu można uzyskać dostęp do funkcji pakietu w skrypcie języka R przy użyciu **sp_execute_external_script**.
 
 ## <a name="list-r-packages"></a>Pakiety języka R
 
-Firma Microsoft udostępnia kilka pakietów języka R, wstępnie zainstalowane przy użyciu usług Machine Learning w usłudze Azure SQL database.
-Można wyświetlić listę zainstalowanych pakietów języka R, uruchamiając następujące polecenie w Studio danych platformy Azure lub programu SSMS.
+Firma Microsoft udostępnia wiele pakietów języka R wstępnie zainstalowanych z Machine Learning Services w bazie danych SQL Azure.
+Listę zainstalowanych pakietów języka R można wyświetlić, uruchamiając następujące polecenie w Azure Data Studio lub SSMS.
 
-1. Otwórz Studio danych platformy Azure lub programu SSMS i Połącz z usługi Azure SQL Database.
+1. Otwórz Azure Data Studio lub SSMS i Połącz się z Azure SQL Database.
 
 1. Uruchom następujące polecenie:
 
@@ -64,15 +64,15 @@ Dane wyjściowe powinny wyglądać podobnie do poniższego.
 
 ## <a name="add-a-package-with-sqlmlutils"></a>Dodaj pakiet z sqlmlutils
 
-Jeśli zachodzi potrzeba użycia pakietu, który nie jest już zainstalowany w usłudze Azure SQL Database, możesz zainstalować go za pomocą [sqlmlutils](https://github.com/Microsoft/sqlmlutils). **sqlmlutils** pakiet opracowanym w celu ułatwienia użytkownikom interakcję z bazami danych SQL (SQL Server i usługi Azure SQL Database) i wykonać kodem R lub Python w usłudze SQL z klienta R lub Python. Obecnie tylko R wersję **sqlmlutils** jest obsługiwana w usłudze Azure SQL Database.
+Jeśli konieczne jest użycie pakietu, który nie jest jeszcze zainstalowany w Azure SQL Database, można go zainstalować za pomocą [sqlmlutils](https://github.com/Microsoft/sqlmlutils). **sqlmlutils** to pakiet przeznaczony do ułatwienia użytkownikom współdziałania z bazami danych SQL (SQL Server i Azure SQL Database) i wykonywanie kodu języka r lub Python w języku SQL z poziomu klienta języka r lub Python. Obecnie tylko wersja języka R **sqlmlutils** jest obsługiwana w Azure SQL Database.
 
-W poniższym przykładzie nastąpi instalacja **[pośredniczącego](https://cran.r-project.org/web/packages/glue/)** pakiet, który można formatować i interpolacji ciągów. Te kroki instalowania **sqlmlutils** i **RODBCext** (wymagane w przypadku **sqlmlutils**) i Dodaj **pośredniczącego** pakietu.
+W poniższym przykładzie zostanie zainstalowany pakiet **[glue](https://cran.r-project.org/web/packages/glue/)** , który umożliwia formatowanie i interpolację ciągów. Te kroki instalują **sqlmlutils** i **RODBCext** (wymaganie wstępne dla **sqlmlutils**), a następnie dodają pakiet **przyklejania** .
 
 ### <a name="install-sqlmlutils"></a>Zainstaluj **sqlmlutils**
 
-1. Pobierz najnowszy **sqlmlutils** pliku zip z https://github.com/Microsoft/sqlmlutils/tree/master/R/dist na komputerze lokalnym. Nie ma potrzeby Rozpakuj plik.
+1. Pobierz najnowszy plik zip **sqlmlutils** z https://github.com/Microsoft/sqlmlutils/tree/master/R/dist na komputer lokalny. Nie musisz rozpakować pliku.
 
-1. Otwórz **polecenia** i uruchom następujące polecenia, aby zainstalować **RODBCext** i **sqlmlutils** na komputerze lokalnym. Zastąp pełną ścieżkę do **sqlmlutils** pliku zip pobranego (w przykładzie założono, plik znajduje się w folderze Moje dokumenty).
+1. Otwórz **wiersz polecenia** i uruchom następujące polecenia, aby zainstalować **RODBCext** i **sqlmlutils** na komputerze lokalnym. Zastąp pełną ścieżkę do pobranego pliku zip **sqlmlutils** (przykład założono, że plik znajduje się w folderze dokumentów).
     
     ```console
     R -e "install.packages('RODBCext', repos='https://cran.microsoft.com')"
@@ -88,13 +88,13 @@ W poniższym przykładzie nastąpi instalacja **[pośredniczącego](https://cran
     ```
 
     > [!TIP]
-    > Jeśli zostanie wyświetlony błąd "" R"nie jest rozpoznawana jako polecenie wewnętrzne lub zewnętrzne, program wykonywalny lub plik wsadowy", prawdopodobnie oznacza to, że ścieżka do R.exe nie jest uwzględniony w swojej **ścieżki** zmiennej środowiskowej na Windows. Możesz dodać ścieżkę do zmiennej środowiskowej lub przejdź do folderu, w wierszu polecenia (na przykład `cd C:\Program Files\R\R-3.5.3\bin`), a następnie spróbuj ponownie wykonać polecenie.
+    > Jeśli wystąpi błąd, "R" nie jest rozpoznawany jako polecenie wewnętrzne lub zewnętrzne, program wykonywalny lub plik wsadowy, prawdopodobnie oznacza to, że ścieżka do języka R. exe nie jest uwzględniona w zmiennej środowiskowej **Path** w systemie Windows. Możesz dodać ścieżkę do zmiennej środowiskowej lub przejdź do folderu w wierszu polecenia (na przykład `cd C:\Program Files\R\R-3.5.3\bin`), a następnie ponów próbę wykonania tego polecenia.
 
 ### <a name="add-the-package"></a>Dodaj pakiet
 
-1. Otwórz program RStudio i Utwórz nowy **skrypt języka R** pliku. 
+1. Otwórz RStudio i Utwórz nowy plik **skryptu języka R** . 
 
-1. Użyj poniższego kodu języka R do zainstalowania **pośredniczącego** pakietu przy użyciu **sqlmlutils**. Zastąp swoje własne informacje o połączeniu usługi Azure SQL Database.
+1. Użyj następującego kodu R, aby zainstalować pakiet **glue** przy użyciu **sqlmlutils**. Zastąp własne informacje o połączeniu Azure SQL Database.
 
     ```R
     library(sqlmlutils)
@@ -108,11 +108,11 @@ W poniższym przykładzie nastąpi instalacja **[pośredniczącego](https://cran
     ```
 
     > [!TIP]
-    > **Zakres** może być **publicznych** lub **PRYWATNEJ**. Zakres publiczny jest przydatny dla administratora bazy danych w celu zainstalowania pakietów, których mogą używać wszyscy użytkownicy. Zakres prywatnych sprawia, że pakiet jest dostępne tylko dla użytkownika, który instaluje go. Jeśli nie określisz zakresu, domyślnym zakresem będzie zakres **PRYWATNY**.
+    > **Zakresem** może być **Public** lub **Private**. Zakres publiczny jest przydatny dla administratora bazy danych w celu zainstalowania pakietów, których mogą używać wszyscy użytkownicy. Zakres prywatny sprawia, że pakiet jest dostępny tylko dla użytkownika, który go zainstaluje. Jeśli nie określisz zakresu, domyślnym zakresem będzie zakres **PRYWATNY**.
 
-### <a name="verify-the-package"></a>Sprawdź pakiet
+### <a name="verify-the-package"></a>Weryfikowanie pakietu
 
-Upewnij się, że **pośredniczącego** pakiet został zainstalowany, uruchamiając poniższy skrypt języka R w programu RStudio. Użyto tych samych **połączenia** zdefiniowane w poprzednim kroku.
+Sprawdź, czy pakiet **glue** został zainstalowany, uruchamiając następujący skrypt języka R w RStudio. Użyj tego samego **połączenia** , które zostało zdefiniowane w poprzednim kroku.
 
 ```R
 r<-sql_installed.packages(connectionString = connection, fields=c("Package", "Version", "Depends", "License"))
@@ -123,11 +123,11 @@ View(r)
 
 ![Zawartość tabeli RTestData](./media/sql-database-machine-learning-services-add-r-packages/r-verify-package-install.png)
 
-### <a name="use-the-package"></a>Za pomocą pakietu
+### <a name="use-the-package"></a>Korzystanie z pakietu
 
-Po zainstalowaniu pakietu może używać go w skrypcie języka R za pośrednictwem **sp_execute_external_script**.
+Po zainstalowaniu pakietu można go użyć w skrypcie języka R za pomocą **sp_execute_external_script**.
 
-1. Otwórz Studio danych platformy Azure lub programu SSMS i Połącz z usługi Azure SQL Database.
+1. Otwórz Azure Data Studio lub SSMS i Połącz się z Azure SQL Database.
 
 1. Uruchom następujące polecenie:
 
@@ -147,7 +147,7 @@ Po zainstalowaniu pakietu może używać go w skrypcie języka R za pośrednictw
     ';
     ```
 
-    Zostaną wyświetlone następujące wyniki w **wiadomości** kartę.
+    Na karcie **komunikaty** zostanie wyświetlony następujący wynik.
 
     **Results**
 
@@ -157,19 +157,19 @@ Po zainstalowaniu pakietu może używać go w skrypcie języka R za pośrednictw
 
 ### <a name="remove-the-package"></a>Usuń pakiet
 
-Jeśli chcesz usunąć pakiet, należy uruchomić poniższy skrypt języka R w programu RStudio. Użyto tych samych **połączenia** wcześniej zdefiniowaną.
+Jeśli chcesz usunąć pakiet, uruchom następujący skrypt języka R w RStudio. Użyj tego samego **połączenia** , które zostało zdefiniowane wcześniej.
 
 ```R
 sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLIC")
 ```
 
 > [!TIP]
-> Innym sposobem, aby zainstalować pakiet języka R do usługi Azure SQL database jest do przekazania pakietu języka R z strumień bajtów przy użyciu **CREATE EXTERNAL LIBRARY** instrukcję języka T-SQL. Zobacz [utworzyć bibliotekę ze strumienia bajtów](/sql/t-sql/statements/create-external-library-transact-sql#c-create-a-library-from-a-byte-stream) w [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) dokumentację referencyjną.
+> Innym sposobem na zainstalowanie pakietu języka R w usłudze Azure SQL Database jest przekazanie pakietu języka R z strumienia bajtów przy użyciu instrukcji **Create External Library** T-SQL. Zobacz [Tworzenie biblioteki z strumienia bajtów](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) w dokumentacji [tworzenia biblioteki zewnętrznej](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat usług Azure SQL Database Machine Learning przy użyciu języka R (wersja zapoznawcza) zobacz następujące artykuły.
+Aby uzyskać więcej informacji na temat Machine Learning Services Azure SQL Database przy użyciu języka R (wersja zapoznawcza), zobacz następujące artykuły.
 
-- [SQL Database usługi Azure Machine Learning przy użyciu języka R (wersja zapoznawcza)](sql-database-machine-learning-services-overview.md)
-- [Zapisywanie zaawansowane funkcje języka R w usłudze Azure SQL Database przy użyciu usług Machine Learning (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)
-- [Praca z danymi SQL i języka R w SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)](sql-database-machine-learning-services-data-issues.md)
+- [Azure SQL Database Machine Learning Services z językiem R (wersja zapoznawcza)](sql-database-machine-learning-services-overview.md)
+- [Zapisuj zaawansowane funkcje języka R w Azure SQL Database przy użyciu Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)
+- [Pracuj z danymi języka R i SQL w Azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-data-issues.md)

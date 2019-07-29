@@ -5,24 +5,24 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: a37087c90b6c9b3629402c7a8c2fa5861e46ae9a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: dce9b4ffa05b48fc1789859328b221ac1a0f3a27
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592523"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594444"
 ---
-Po nadaniu prawa dostępu do używania rozpoznawania formularza otrzymasz Witaj poczty e-mail przy użyciu kilka linków i zasobów. Użyj linku "Portal platformy Azure" w tej wiadomości, aby Otwórz witrynę Azure portal i Utwórz zasób rozpoznawania formularza. W **Utwórz** okienku, podaj następujące informacje:
+Po otrzymaniu dostępu do aparatu rozpoznawania formularzy otrzymasz powitalną wiadomość e-mail z kilkoma łączami i zasobami. Użyj linku "Azure Portal" w tym komunikacie, aby otworzyć Azure Portal i utworzyć zasób aparatu rozpoznawania formularza. W okienku **Tworzenie** podaj następujące informacje:
 
 |    |    |
 |--|--|
-| **Nazwa** | Opisowa nazwa zasobu bazy danych. Firma Microsoft zaleca używanie nazwę opisową, na przykład *MyNameFormRecognizer*. |
-| **Subskrypcja** | Wybierz subskrypcję platformy Azure, którym udzielono dostępu. |
-| **Location** | Lokalizacja wystąpienia usługi cognitive Services. Różne lokalizacje może wprowadzić opóźnienie, ale nie mają wpływu na dostępność Twojego zasobu w czasie wykonywania. |
-| **Warstwa cenowa** | Koszt zasobu zależy od warstwy cenowej, który wybierzesz i użycie. Aby uzyskać więcej informacji, zobacz omówienie interfejsu API [cennik](https://azure.microsoft.com/pricing/details/cognitive-services/).
-| **Grupa zasobów** | [Grupy zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) który będzie zawierał zasobu. Można utworzyć nową grupę lub dodaj je do wcześniej istniejącej grupy. |
+| **Nazwa** | Opisowa nazwa zasobu. Zalecamy użycie nazwy opisowej, na przykład *MyNameFormRecognizer*. |
+| **Subskrypcja** | Wybierz subskrypcję platformy Azure, której udzielono dostępu. |
+| **Location** | Lokalizacja wystąpienia usługi poznawczej. Różne lokalizacje mogą wprowadzać opóźnienia, ale nie mają wpływu na dostępność zasobu przez środowisko uruchomieniowe. |
+| **Warstwa cenowa** | Koszt zasobu zależy od wybranej warstwy cenowej i użycia. Aby uzyskać więcej informacji, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/cognitive-services/)interfejsu API.
+| **Grupa zasobów** | [Grupa zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) , która będzie zawierać zasób. Można utworzyć nową grupę lub dodać ją do istniejącej grupy. |
 
 > [!IMPORTANT]
-> Zwykle podczas tworzenia zasobu usługi cognitive Services w witrynie Azure portal, masz możliwość utworzenia klucz subskrypcji z wieloma usługami (używane w wielu usługach cognitive) lub klucz subskrypcji jednousługowa (używane tylko z określonej usługi cognitive service). Jednak ponieważ rozpoznawania formularza jest wersja zapoznawcza, nie znajduje się w ramach wielu usług subskrypcji i nie można utworzyć subskrypcji jednousługowa, chyba że za pomocą linku podanego w powitalnej wiadomości e-mail.
+> Zwykle podczas tworzenia zasobu usługi poznawczej w Azure Portal można utworzyć klucz subskrypcji dla wielu usług (używany przez wiele usług poznawczych) lub klucz subskrypcji jednej usługi (używany tylko w przypadku konkretnej usługi poznawczej). Jednak ponieważ aparat rozpoznawania formularzy jest wersją zapoznawczą, nie jest uwzględniony w subskrypcji usługi MFA i nie można utworzyć subskrypcji pojedynczej usługi, chyba że zostanie użyty link podany w powitalnej wiadomości e-mail.
 
-Po zakończeniu wdrażania zasobu rozpoznawania formularza Znajdź i wybierz go z **wszystkie zasoby** listy w portalu. Następnie wybierz pozycję **klucze** kartę, aby wyświetlić klucze subskrypcji. Żadnego z nich umożliwia uzyskanie dostępu do zasobu. Skopiuj wartość **klucz 1**. Zostanie użyty w następnej sekcji.
+Po zakończeniu wdrażania zasobu aparatu rozpoznawania formularzy Znajdź i wybierz go z listy **wszystkie zasoby** w portalu. Następnie wybierz kartę **klucze** , aby wyświetlić klucze subskrypcji. Oba te klucze umożliwiają aplikacji dostęp do zasobu. Skopiuj wartość **klucza 1**.

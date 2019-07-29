@@ -3,7 +3,7 @@ title: Tworzenie klastra Service Fabric z systemem Windows na platformie Azure |
 description: W tym samouczku dowiesz się, jak wdrożyć klaster Service Fabric systemu Windows w sieci wirtualnej platformy Azure i sieciowej grupie zabezpieczeń za pomocą programu PowerShell.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 3e98b159443cec868040298d76e87a8de6b507ae
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385098"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598872"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Samouczek: Wdrażanie klastra Service Fabric z systemem Windows w sieci wirtualnej platformy Azure
 
@@ -183,7 +183,7 @@ Aby uprościć czynności związane z konfigurowaniem usługi Azure AD przy uży
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Tworzenie aplikacji usługi Azure AD i przypisywanie ról do użytkowników
 Utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jedną aplikację internetową i jedną aplikację natywną. Po utworzeniu aplikacji do reprezentowania klastra Przypisz użytkowników do [ról obsługiwanych przez Service Fabric](service-fabric-cluster-security-roles.md): tylko do odczytu i administrator.
 
-Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej. Określ nazwy użytkownika i hasła dla użytkowników. Przykład:
+Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej. Określ nazwy użytkownika i hasła dla użytkowników. Na przykład:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -716,7 +716,7 @@ Get-ServiceFabricClusterHealth
 
 Inne artykuły w tej serii samouczków używają utworzonego klastra. Jeśli nie przechodzisz od razu do następnego artykułu, rozważ [usunięcie klastra](service-fabric-cluster-delete.md), aby uniknąć naliczania opłat.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Przejdź do następującego samouczka, aby dowiedzieć się, jak skalować klaster.
 

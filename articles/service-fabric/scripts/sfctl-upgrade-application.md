@@ -3,8 +3,8 @@ title: Przykładowy skrypt interfejsu wiersza polecenia usługi Service Fabric �
 description: Przykładowy skrypt interfejsu wiersza polecenia usługi Service Fabric — aktualizowanie aplikacji za pomocą nowej wersji. W tym przykładzie wdrożona aplikacja zostanie również uaktualniona o nowe elementy.
 services: service-fabric
 documentationcenter: ''
-author: rockboyfor
-manager: digimobile
+author: athinanthny
+manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -12,16 +12,15 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-origin.date: 12/06/2017
-ms.date: 03/04/2019
-ms.author: v-yeche
+ms.date: 12/06/2017
+ms.author: atsenthi
 ms.custom: ''
-ms.openlocfilehash: ffc60279ae414055c893c024d0ffd98267e6655f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72195a3a127e33ffa6118f77c4fa58ba5f60ee17
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621710"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600090"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Dodawanie certyfikatu aplikacji do klastra usługi Service Fabric
 
@@ -31,27 +30,10 @@ Ten przykładowy skrypt przekazuje nową wersję istniejącej aplikacji, a nast�
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-```sh
-#!/bin/bash
-
-# Select cluster
-sfctl cluster select \
-    --endpoint http://svcfab1.chinanorth.cloudapp.chinacloudapi.cn:19080
-
-# Upload the latest bits of an application
-sfctl application upload --path ~/app_package_dir_2
-
-# Provision the new application
-sfctl application provision --application-type-build-path app_package_dir_2
-
-# Upgrade an existing up with the new version
-sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
-```
+[!code-sh[main](../../../cli_scripts/service-fabric/upgrade-application/upgrade-application.sh "Upload and update an application on a Service Fabric cluster")]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją interfejsu wiersza polecenia usługi Service Fabric](../service-fabric-cli.md).
 
 Więcej przykładów dla interfejsu wiersza polecenia usługi Azure Service Fabric można znaleźć na stronie z [przykładami interfejsu wiersza polecenia usługi Service Fabric](../samples-cli.md).
-
-<!--Update_Description: update meta properties -->

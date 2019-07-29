@@ -1,18 +1,18 @@
 ---
 title: Tworzenie kopii zapasowej udziałów plików platformy Azure
 description: W tym artykule szczegółowo przedstawiono sposób tworzenia kopii zapasowej udziałów plików platformy Azure i ich przywracania. Opisano w nim także zadania związane z zarządzaniem.
-author: rayne-wiselman
-ms.author: raynew
-ms.date: 01/31/2019
+author: dcurwin
+ms.author: dacurwin
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 7233db1e685c3edcdbd6a97bc2ae23706ad6f767
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 9cb0150efcb4860af98b47aa5da4cfd24d2e9de9
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466543"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602012"
 ---
 # <a name="back-up-azure-file-shares"></a>Tworzenie kopii zapasowej udziałów plików platformy Azure
 W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) przy użyciu witryny Azure Portal.
@@ -34,6 +34,7 @@ Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dost�
 - Obsługa kopii zapasowych udziałów plików platformy Azure w ramach kont magazynu z replikacją [magazynu strefowo](../storage/common/storage-redundancy-zrs.md) nadmiarowego (ZRS) jest obecnie ograniczona do [tych regionów](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-).
 - Nie można chronić udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne lub zaporę.
 - Nie ma dostępnego interfejsu wiersza polecenia do ochrony usługi Azure Files z poziomu usługi Azure Backup.
+- Azure Backup obecnie obsługuje Konfigurowanie zaplanowanych raz dziennie kopii zapasowych udziałów plików platformy Azure.
 - Maksymalna liczba zaplanowanych kopii zapasowych to jedna dziennie.
 - Maksymalna liczba kopii zapasowych na żądanie to cztery dziennie.
 - Aby zapobiec przypadkowemu usunięciu kopii zapasowych z magazynu usługi Recovery Services, użyj [blokad zasobów](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) na koncie magazynu.
@@ -49,7 +50,7 @@ W tym samouczku przyjęto założenie, że ustanowiono już udział plików plat
 
     ![Wybieranie udział plików platformy Azure jako celu kopii zapasowej](./media/backup-file-shares/overview-backup-page.png)
 
-2. W menu **Cel kopii zapasowej** w obszarze **Dla jakich elementów chcesz utworzyć kopię zapasową?** wybierz pozycję Udział plików platformy Azure.
+2. W menu **cel kopii zapasowej** , z **czego chcesz utworzyć kopię zapasową?** wybierz pozycję udział plików platformy Azure.
 
     ![Wybieranie udział plików platformy Azure jako celu kopii zapasowej](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
@@ -65,7 +66,7 @@ W tym samouczku przyjęto założenie, że ustanowiono już udział plików plat
 
    ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/discover-file-shares.png)
 
-5. Z listy **Udziały plików** wybierz co najmniej jeden udział plików, którego kopię zapasową chcesz utworzyć, a następnie kliknij przycisk **OK**.
+5. Z listy **udziały plików** wybierz co najmniej jeden udział plików, dla którego chcesz utworzyć kopię zapasową, a następnie kliknij przycisk **OK**.
 
 6. Po wybraniu udziałów plików menu Kopia zapasowa zostanie przełączone na menu **Zasady tworzenie kopii zapasowych**. Z poziomu tego menu wybierz istniejące zasady tworzenia kopii zapasowych lub utwórz nowe, a następnie kliknij pozycję **Włącz kopię zapasową**.
 
@@ -192,6 +193,6 @@ Możliwe jest usunięcie kopii zapasowej lub udziału plików podczas zadania za
 Na potrzeby poniższej procedury przyjęto założenie, że zadanie tworzenia kopii zapasowej dla maszyny wirtualnej zostało zatrzymane. Po zatrzymaniu zadania tworzenia kopii zapasowej opcje Wznów tworzenie kopii zapasowej i Usuń dane kopii zapasowej są dostępne na pulpicie nawigacyjnym elementu kopii zapasowej. Kliknij pozycję Usuń dane kopii zapasowej, a następnie wpisz nazwę udziału plików, aby potwierdzić usunięcie. Opcjonalnie podaj przyczynę usunięcia lub dodaj komentarz.
 
 ## <a name="see-also"></a>Zobacz też
-Aby uzyskać dodatkowe informacje na temat udziałów plików platformy Azure, zobacz
+Aby uzyskać więcej informacji na temat udziałów plików platformy Azure, zobacz
 - [Tworzenie kopii zapasowej udziału plików platformy Azure — często zadawane pytania](backup-azure-files-faq.md)
 - [Rozwiązywanie problemów dotyczących tworzenia kopii zapasowej udziału plików platformy Azure](troubleshoot-azure-files.md)

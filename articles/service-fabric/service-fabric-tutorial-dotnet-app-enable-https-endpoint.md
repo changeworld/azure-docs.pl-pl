@@ -3,7 +3,7 @@ title: Dodawanie punktu końcowego HTTPS do aplikacji usługi Service Fabric za 
 description: W ramach tego samouczka dowiesz się, jak dodać punkt końcowy HTTPS do usługi internetowej frontonu platformy ASP.NET Core za pomocą usługi Kestrel i wdrożyć aplikację w klastrze.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 72fddc542155c8aab891f746bff99ce7bd2fc7fa
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 6ce702a9d27523b97a92ac8b4210e8e3151ae518
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385264"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598801"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Samouczek: Dodawanie punktu końcowego HTTPS do usługi frontonu internetowego interfejsu API platformy ASP.NET Core za pomocą usługi Kestrel
 

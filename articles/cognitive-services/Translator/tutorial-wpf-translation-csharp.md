@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF i języka C# — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Samouczek: tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF i języka C# — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz aplikację platformy Windows Presentation Foundation (WPF), która korzysta z interfejsu API usług Cognitive Services na potrzeby tłumaczenia tekstu, wykrywania języka i sprawdzania pisowni, przy użyciu klucza pojedynczej subskrypcji. W tym ćwiczeniu dowiesz się, jak korzystać z funkcji interfejsu API tłumaczenia tekstu w usłudze Translator i interfejsu API sprawdzania pisowni Bing.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 36d85e11133e7197212ae1b37609628689b68a13
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b929d0c0da2a812a1c8595536f09931e4edd0fd9
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657941"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594922"
 ---
-# <a name="tutorial-create-a-translation-app-with-wpf"></a>Samouczek: Tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF
+# <a name="tutorial-create-a-translation-app-with-wpf"></a>Samouczek: tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF
 
 W tym samouczku utworzysz aplikację platformy [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2017), która korzysta z usług Azure Cognitive Services na potrzeby tłumaczenia tekstu, wykrywania języka i sprawdzania pisowni, przy użyciu klucza pojedynczej subskrypcji. W szczególności aplikacja będzie wywoływać interfejsy API tłumaczenia tekstu w usłudze Translator i [sprawdzania pisowni Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
@@ -39,16 +39,16 @@ Ta lista zawiera usługi Cognitive Services używane w tym samouczku. Użyj link
 
 | Usługa | Cecha | Opis |
 |---------|---------|-------------|
-| Tekst usługi Translator | [Pobieranie języków](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Pobierz pełną listę obsługiwanych języków na potrzeby tłumaczenia tekstu. |
-| Tekst usługi Translator | [Tłumaczenie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Przetłumacz tekst na ponad 60 języków. |
-| Tekst usługi Translator | [Wykrywanie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Wykryj język tekstu wejściowego. Obejmuje współczynnik ufności dla wykrywania. |
+| Tłumaczenie tekstu w usłudze Translator | [Pobieranie języków](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Pobierz pełną listę obsługiwanych języków na potrzeby tłumaczenia tekstu. |
+| Tłumaczenie tekstu w usłudze Translator | [Tłumaczenie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Przetłumacz tekst na ponad 60 języków. |
+| Tłumaczenie tekstu w usłudze Translator | [Wykrywanie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Wykryj język tekstu wejściowego. Obejmuje współczynnik ufności dla wykrywania. |
 | Sprawdzanie pisowni Bing | [Sprawdzanie pisowni](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Popraw błędy pisowni w celu zwiększenia dokładności tłumaczenia. |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed kontynuowaniem potrzebne będą następujące elementy:
 
-* Subskrypcja usług Azure Cognitive Services. [Uzyskaj klucz usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#multi-service-subscription).
+* Subskrypcja usług Azure Cognitive Services. [Uzyskaj klucz usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#multi-service-resource).
 * Maszyna z systemem Windows
 * [Program Visual Studio 2017](https://www.visualstudio.com/downloads/) — Community lub Enterprise
 
@@ -62,7 +62,7 @@ Pierwszą rzeczą, jaką należy wykonać, jest skonfigurowanie projektu w progr
 1. Otwórz program Visual Studio. Następnie wybierz pozycję **Plik > Nowy > Projekt**.
 2. W panelu po lewej stronie znajdź i wybierz pozycję **Visual C#** . Następnie wybierz pozycję **Aplikacja WPF (.NET Framework)** w środkowym panelu.
    ![Tworzenie aplikacji WPF w programie Visual Studio](media/create-wpf-project-visual-studio.png)
-3. Nazwij swój projekt `MSTranslatorTextDemo`, ustaw framework w wersji **.NET Framework 4.5.2 lub nowszej**, następnie kliknij przycisk **OK**.
+3. Nazwij projekt `MSTranslatorTextDemo`, ustaw wersję platformy na **.NET Framework 4.5.2 lub nowszą**, a następnie kliknij przycisk **OK**.
 4. Projekt został utworzony. Zauważysz, że otwarte są dwie karty: `MainWindow.xaml` i `MainWindow.xaml.cs`. W tym samouczku będziemy dodawać kod do tych dwóch plików. Pierwszy dotyczy interfejsu użytkownika aplikacji; drugi dotyczy wywołań tłumaczenia tekstu w usłudze Translator i sprawdzania pisowni Bing.
    ![Przeglądanie środowiska](media/blank-wpf-project.png)
 
@@ -76,7 +76,7 @@ Nasz projekt wymaga kilku zestawów .NET Framework i pakietu NewtonSoft.Json, kt
 
 Dodajmy do naszego projektu zestawy na potrzeby serializacji i deserializacji obiektów oraz zarządzania żądaniami i odpowiedziami HTTP.
 
-1. Znajdź swój projekt w Eksploratorze rozwiązań programu Visual Studio (panel po prawej stronie). Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Dodaj > Odwołanie**, co spowoduje otwarcie **Menedżera odwołań**.
+1. Znajdź swój projekt w Eksploratorze rozwiązań programu Visual Studio (panel po prawej stronie). Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Dodaj > Odwołanie...** , co spowoduje otwarcie **Menedżera odwołań**.
    ![Dodawanie odwołań do zestawów](media/add-assemblies-sample.png)
 2. Karta zestawów zawiera listę wszystkich zestawów .NET Framework, do których można się odwoływać. Użyj paska wyszukiwania w prawym górnym rogu ekranu, aby wyszukać te odwołania i dodać je do projektu:
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
@@ -572,7 +572,7 @@ Kod źródłowy tego projektu jest dostępny w serwisie GitHub.
 
 * [Zapoznaj się z kodem źródłowym](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp-Tutorial)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API tłumaczenia tekstu w usłudze Microsoft Translator](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
