@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: acbcaa7e5588c0fecf2c20751e69442e1373cbb5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bad3bdc2b4508c082ca50647d5de5e7265c763a1
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563984"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639196"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
 Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej. 
@@ -95,7 +95,7 @@ Jeśli jednostki Entity1 jest lokalizacją z rolami, takimi jak Origin (Seattle)
 
 ## <a name="nesting-limits-for-groups-with-optional-syntax"></a>Limity zagnieżdżania dla grup z opcjonalną składnią
 
-Kombinacja **grupowania** z opcjonalną  składnią ma limit 3 poziomów zagnieżdżenia.
+Kombinacja **grupowania** z opcjonalną składnią ma limit 3 poziomów zagnieżdżenia.
 
 |Dopuszczeni|Przykład|
 |--|--|
@@ -108,7 +108,7 @@ Kombinacja **grupowania** z składnią **lub-** w ma limit 2 pionowych słupków
 
 |Dopuszczeni|Przykład|
 |--|--|
-|Yes|(TEST1 &#x7c; TEST2 &#x7c; (test3 &#x7c; test4))|
+|Tak|(TEST1 &#x7c; TEST2 &#x7c; (test3 &#x7c; test4))|
 |Nie|(TEST1 &#x7c; TEST2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Składni, aby dodać obiekt do szablonu wzorca

@@ -5,14 +5,14 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
-ms.openlocfilehash: ae2dd7d88f07d75115eabd6a0069a981936f1b47
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: dd511375c6b007222185f25610aecbd9931a742b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444498"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640058"
 ---
-W tym kroku utworzysz grupę zasobów i Azure SQL Database pojedynczą bazę danych. 
+W tym kroku utworzysz grupę zasobów i Azure SQL Database pojedynczą bazę danych.
 
 > [!IMPORTANT]
 > Należy pamiętać o skonfigurowaniu reguł zapory do korzystania z publicznego adresu IP komputera, na którym wykonywane są kroki opisane w tym artykule. 
@@ -20,7 +20,8 @@ W tym kroku utworzysz grupę zasobów i Azure SQL Database pojedynczą bazę dan
 > Aby uzyskać więcej informacji, zobacz [Tworzenie reguły zapory na poziomie bazy danych](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) lub Określanie adresu IP używanego dla reguły zapory na poziomie serwera dla komputera, zobacz [Tworzenie zapory na poziomie serwera](../sql-database-server-level-firewall-rule.md).  
 
 # <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
-Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal. 
+
+Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.
 2. Wybierz pozycję **bazy danych** , a następnie wybierz pozycję **SQL Database** , aby otworzyć stronę **Tworzenie SQL Database** .
@@ -47,7 +48,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
       > [!IMPORTANT]
       > Pamiętaj, aby zapisać identyfikator logowania administratora serwera i hasło, aby logować się do serwera i baz danych dla tego przewodnika Szybki start oraz pozostałych. Jeśli zapomnisz swój identyfikator logowania lub hasło, możesz uzyskać identyfikator logowania lub zresetować hasło na stronie **serwera SQL**. Aby otworzyć stronę **serwera SQL**, wybierz nazwę serwera na stronie **Przegląd** po utworzeniu bazy danych.
-        
+
    - **Chcesz użyć elastycznej puli SQL**: Wybierz opcję **nie** .
    - **Obliczenia + magazyn**: Wybierz pozycję **Konfiguruj bazę danych**. 
 
@@ -62,7 +63,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
    - Wybierz przycisk **Zastosuj**.
 
 5. Wybierz kartę **Ustawienia dodatkowe** . 
-6. W sekcji **Źródło danych** w obszarze **Użyj istniejących danych**wybierz opcję `Sample`. 
+6. W sekcji **Źródło danych** w obszarze **Użyj istniejących danych**wybierz opcję `Sample`.
 
    ![Dodatkowe ustawienia bazy danych SQL](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
@@ -78,7 +79,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu programu PowerShell. 
+Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu programu PowerShell.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -89,8 +90,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu programu PowerSh
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"
    $databaseName = "mySampleDatabase"
-   
-   
+
    # The ip address range that you want to allow to access your server 
    # (leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB)
    $startIp = "0.0.0.0"
@@ -100,18 +100,18 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu programu PowerSh
    Write-host "Resource group name is" $resourceGroupName 
    Write-host "Password is" $password  
    Write-host "Server name is" $serverName 
-   
+
    # Connect to Azure
    Connect-AzAccount
 
    # Set subscription ID
    Set-AzContext -SubscriptionId $subscriptionId 
-   
+
    # Create a resource group
    Write-host "Creating resource group..."
    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location -Tag @{Owner="SQLDB-Samples"}
    $resourceGroup
-   
+
    # Create a server with a system wide unique server name
    Write-host "Creating primary logical server..."
    $server = New-AzSqlServer -ResourceGroupName $resourceGroupName `
@@ -120,14 +120,14 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu programu PowerSh
       -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
       -ArgumentList $adminLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
    $server
-   
+
    # Create a server firewall rule that allows access from the specified IP range
    Write-host "Configuring firewall for primary logical server..."
    $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
    $serverFirewallRule
-   
+
    # Create General Purpose Gen4 database with 1 vCore
    Write-host "Creating a gen5 2 vCore database..."
    $database = New-AzSqlDatabase  -ResourceGroupName $resourceGroupName `
@@ -142,8 +142,8 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu programu PowerSh
    ```
 
 # <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
-Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu polecenia AZ CLI. 
 
+Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu polecenia AZ CLI.
 
    ```azurecli-interactive
    #!/bin/bash
@@ -158,7 +158,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu polecenia AZ CLI
    drLocation=NorthEurope
    drServerName=mysqlsecondary-$RANDOM
    failoverGroupName=failovergrouptutorial-$RANDOM
-   
+
    # The ip address range that you want to allow to access your DB. 
    # Leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB
    startip=0.0.0.0
@@ -169,14 +169,14 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu polecenia AZ CLI
 
    # Set the subscription context for the Azure account
    az account set -s $subscriptionID
-   
+
    # Create a resource group
    echo "Creating resource group..."
    az group create \
       --name $resourceGroupName \
       --location $location \
       --tags Owner[=SQLDB-Samples]
-   
+
    # Create a logical server in the resource group
    echo "Creating primary logical server..."
    az sql server create \
@@ -185,7 +185,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu polecenia AZ CLI
       --location $location  \
       --admin-user $adminLogin \
       --admin-password $password
-   
+
    # Configure a firewall rule for the server
    echo "Configuring firewall..."
    az sql server firewall-rule create \
@@ -194,7 +194,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu polecenia AZ CLI
       -n AllowYourIp \
       --start-ip-address $startip \
       --end-ip-address $endip
-   
+
    # Create a gen5 1vCore database in the server 
    echo "Creating a gen5 2 vCore database..."
    az sql db create \

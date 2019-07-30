@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/27/2019
 ms.author: glenga
-ms.openlocfilehash: 8110d0a9d574c6691322df2162ca877b031cbc59
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d697334fe56fb9133a06cee79067c60bc3a37281
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442268"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639151"
 ---
-Najprostszym sposobem zainstalowania rozszerzeń powiązania jest umożliwienie [pakiety rozszerzeń](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Za pomocą pakietów włączone, zestaw wstępnie zdefiniowanych rozszerzeń pakiety są instalowane automatycznie.
+Najprostszym sposobem instalacji rozszerzeń powiązań jest włączenie [pakietów rozszerzeń](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Po włączeniu pakietów zostanie automatycznie zainstalowana wstępnie zdefiniowany zestaw pakietów rozszerzeń.
 
-Aby włączyć rozszerzenie pakiety, otwórz *host.json* plików i zaktualizuj jego zawartość, aby dopasować następujący kod:
+Aby włączyć zbiory rozszerzeń, Otwórz plik host. JSON i zaktualizuj jego zawartość w celu dopasowania do następującego kodu:
 
 ```json
 {

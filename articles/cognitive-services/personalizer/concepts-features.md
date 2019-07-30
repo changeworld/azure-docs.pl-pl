@@ -3,19 +3,19 @@ title: 'Funkcje: Akcja i kontekst — Personalizacja'
 titleSuffix: Azure Cognitive Services
 description: Personalizacja używa funkcji, informacji o akcjach i kontekście, aby uzyskiwać lepsze sugestie dotyczące klasyfikacji. Funkcje mogą być bardzo ogólne lub specyficzne dla elementu.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: edjez
-ms.openlocfilehash: 2dab7447e6051d4559f7f3985579cac9376ac7be
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.author: diberry
+ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423293"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663838"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkcje to informacje o akcjach i kontekście
 
@@ -106,7 +106,7 @@ Rozważ wysłanie funkcji do interfejsu API rangi narzędzia personalizacji, kt�
 
 * Dostępna jest wystarczająca liczba funkcji do personalizacji dysków. Im bardziej precyzyjnie skierowana jest zawartość, tym więcej funkcji są potrzebne.
 
-* Dostępna jest wystarczająca liczba funkcji o różnych gęstościach. Funkcja jest *gęsta* , jeśli wiele elementów jest zgrupowanych w kilku zasobnikach. Na przykład tysiące wideo może być sklasyfikowane jako "Long" (ponad 5 min Long) i "krótkie" (poniżej 5 min Long). Jest to *bardzo gęsta* funkcja. Z drugiej strony, te same tysiące elementów mogą mieć atrybut o nazwie "title", który niemal nigdy nie będzie miał takiej samej wartości z jednego elementu. Jest to bardzo gęsta lub rozrzedzona funkcja  .  
+* Dostępna jest wystarczająca liczba funkcji oróżnych gęstościach. Funkcja jest *gęsta* , jeśli wiele elementów jest zgrupowanych w kilku zasobnikach. Na przykład tysiące wideo może być sklasyfikowane jako "Long" (ponad 5 min Long) i "krótkie" (poniżej 5 min Long). Jest to *bardzo gęsta* funkcja. Z drugiej strony, te same tysiące elementów mogą mieć atrybut o nazwie "title", który niemal nigdy nie będzie miał takiej samej wartości z jednego elementu. Jest to bardzo gęsta lub rozrzedzona funkcja .  
 
 Funkcja wysokiej gęstości ułatwia personalizację ekstrapolację z jednego elementu na inny. Ale jeśli istnieje tylko kilka funkcji i są one zbyt gęste, Personalizowanie próbuje precyzyjnie określić zawartość docelową, korzystając z tylko kilku zasobników.
 
@@ -133,7 +133,7 @@ Sztuczna inteligencja i gotowe do uruchomienia Cognitive Services mogą być bar
 
 Wstępnie przetwarzając elementy przy użyciu sztucznych usług analizy, można automatycznie wyodrębniać informacje, które mogą być odpowiednie do personalizacji.
 
-Przykład:
+Na przykład:
 
 * Plik filmowy można uruchomić za pomocą [Video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) , aby wyodrębnić elementy sceny, tekst, tonacji i wiele innych atrybutów. Te atrybuty mogą następnie stać się bardziej gęste w celu odzwierciedlenia cech, które nie miały metadanych oryginalnego elementu. 
 * Obrazy można uruchamiać za poorednictwem wykrywania obiektów, twarzy przez tonacji itp.
@@ -153,7 +153,7 @@ Każda akcja:
 * Ma identyfikator.
 * Zawiera listę funkcji.
 * Lista funkcji może być duża (setki), ale zalecamy ocenę skuteczności funkcji w celu usunięcia funkcji, które nie przyczyniają się do uzyskania korzyści. 
-* Funkcje w akcjach  mogą lub nie mają żadnej korelacji z funkcjami w **kontekście** używanym przez program personalizujer.
+* Funkcje w akcjach mogą lub nie mają żadnej korelacji z funkcjami w **kontekście** używanym przez program personalizujer.
 * Funkcje dla akcji mogą być obecne w niektórych akcjach, a nie w innych. 
 * Funkcje dla określonego identyfikatora akcji mogą być dostępne jeden dzień, ale później staną się niedostępne. 
 
@@ -309,6 +309,6 @@ Obiekty JSON mogą zawierać zagnieżdżone obiekty JSON oraz proste właściwo�
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Uczenie wzmacniające](concepts-reinforcement-learning.md) 

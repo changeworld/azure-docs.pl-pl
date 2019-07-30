@@ -1,37 +1,37 @@
 ---
-title: Skalowalność i wydajność - Personalizer
+title: Skalowalność i wydajność — Personalizowanie
 titleSuffix: Azure Cognitive Services
-description: 'Witryny sieci Web o wysokiej wydajności i o dużym natężeniu ruchu i aplikacje mają dwa główne czynniki do rozważenia przy użyciu Personalizer skalowalności i wydajności: opóźnienia i przepływności szkolenia.'
+description: 'W przypadku witryn sieci Web o wysokiej wydajności i dużych ruchu istnieją dwa główne czynniki, które należy wziąć pod uwagę przy użyciu programu Personalizacja w celu zapewnienia skalowalności i wydajności: opóźnienia i uczenie.'
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 06c2e65c723e18acc515dd7effc61aae0564f411
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: d116f6bd389b1404ea723c965111cd05880e6c30
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722422"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662817"
 ---
 # <a name="scalability-and-performance"></a>Skalowalność i wydajność
 
-Witryny sieci Web o wysokiej wydajności i o dużym natężeniu ruchu i aplikacje mają dwa główne czynniki do rozważenia przy użyciu Personalizer skalowalności i wydajności:
+W przypadku witryn sieci Web o wysokiej wydajności i dużych ruchu istnieją dwa główne czynniki, które należy wziąć pod uwagę w celu zapewnienia skalowalności i wydajności:
 
-* Utrzymywanie małego opóźnienia w wywołaniach interfejsu API ranga
-* Upewnienie się, że przepływność szkolenia nadąża z danymi wejściowymi zdarzeń
+* Zachowywanie małych opóźnień podczas wykonywania wywołań interfejsu API rangi
+* Zapewnianie, że przepływność szkoleń jest zachowywana przy użyciu danych wejściowych zdarzeń
 
-Personalizacja może zwrócić rangę bardzo szybko z większością czas trwania wywołania do komunikacji za pośrednictwem interfejsu API REST w wersji dedykowanej. Azure będzie automatycznie skalowana możliwość szybko reagować na żądania.
+Personalizacja może bardzo szybko zwracać rangę z większością czasu trwania wywołań, która jest przeznaczona do komunikacji za pomocą interfejsu API REST. Platforma Azure automatycznie skaluje możliwość szybkiego reagowania na żądania.
 
-##  <a name="low-latency-scenarios"></a>Scenariuszy o małych opóźnieniach
+##  <a name="low-latency-scenarios"></a>Scenariusze o małym opóźnieniu
 
-Niektóre aplikacje wymagają małych opóźnień, gdy zwracany jest rangę. Jest to konieczne:
+Niektóre aplikacje wymagają małych opóźnień podczas zwracania rangi. Jest to konieczne:
 
-* Aby uniemożliwić użytkownikowi oczekiwania zauważalne ilość czasu, przed wyświetleniem pozycjonowane zawartości.
-* Ułatwiające na serwerze, na którym występuje ruch extreme uniknąć zajmowania deficytowe obliczeń czasu i połączenia sieciowe.
+* Aby uniemożliwić użytkownikowi oczekiwanie na zauważalny czas przed wyświetleniem sklasyfikowanej zawartości.
+* Aby ułatwić serwerowi, który ma wyższy ruch, unikaj nawiązywania nieprawidłowych czasu obliczeń i połączeń sieciowych.
 
 <!--
 
@@ -47,21 +47,21 @@ If you require latencies under a millisecond, and have already tested using Pers
 
 -->
 
-## <a name="scalability-and-training-throughput"></a>Skalowalność i przepływność szkolenia
+## <a name="scalability-and-training-throughput"></a>Skalowalność i przepływność szkoleń
 
-Działa personalizer, aktualizując model, który jest retrained na podstawie komunikaty wysyłane asynchronicznie przez Personalizer po rangi i interfejsów API osób trzecich. Te komunikaty są wysyłane przy użyciu Centrum zdarzeń platformy Azure dla aplikacji.
+Personalizacja działa, aktualizując model, który jest ponownie przemieszczony na podstawie komunikatów wysyłanych asynchronicznie przez personalizację po rangi i nagrodach interfejsów API. Te komunikaty są wysyłane przy użyciu centrum zdarzeń platformy Azure dla aplikacji.
 
- Jest mało prawdopodobne, większość aplikacji będzie korzystał z maksymalną dołączania i szkolenia przepływność Personalizer. Gdy osiągnięcia ta wartość maksymalna nie spowolni działanie aplikacji, oznaczałoby że kolejek Centrum zdarzeń, które są wprowadzenie wypełnione wewnętrznie szybciej, niż ich mogą zostać wyczyszczone.
+ Jest mało prawdopodobne, że większość aplikacji osiągnie maksymalną przepustowość i uczenie się dla personalizacji. Osiągnięcie tej wartości maksymalnej nie spowoduje spowolnienia działania aplikacji. spowoduje to, że kolejki centrum zdarzeń są wprowadzane wewnętrznie w trybie szybszym niż można je wyczyścić.
 
-## <a name="how-to-estimate-your-throughput-requirements"></a>Sposób szacowania wymagań dotyczących przepływności
+## <a name="how-to-estimate-your-throughput-requirements"></a>Jak oszacować wymagania dotyczące przepływności
 
 * Oszacuj średnią liczbę bajtów na zdarzenie klasyfikacji, dodając długości dokumentów JSON kontekstu i akcji.
-* Podziel o rozmiarze 20MB na sekundę przez ta szacowana średnia liczba bajtów.
+* Podziel baza na sekundę przez ten szacowany średnią liczbę bajtów.
 
-Na przykład jeśli Twoje średni ładunek ma funkcje 500, a każda z nich jest szacowany 20 znaków, każde zdarzenie jest około 10kb. Za pomocą tych oszacowań 20.000.000 / 10 000 = 2000 zdarzeń na sekundę, czyli około 173 milionów zdarzeń na dzień. 
+Na przykład jeśli średni ładunek ma 500 funkcji, a każdy z nich jest szacowany 20 znaków, każde zdarzenie jest około 10 KB. W przypadku tych szacunków 20 000 000/10 000 = 2 000 Events/s, które dotyczą zdarzeń 173 000 000 Events/dzień. 
 
-Jeśli chcesz się połączyć te limity, skontaktuj się z naszym zespołem pomocy technicznej, uzyskać porady architektury.
+Jeśli zbliżasz się do tych limitów, skontaktuj się z naszym zespołem pomocy technicznej, aby uzyskać poradę dotyczącą architektury.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Tworzenie i konfigurowanie Personalizer](how-to-settings.md).
+[Utwórz i skonfiguruj personalizację](how-to-settings.md).

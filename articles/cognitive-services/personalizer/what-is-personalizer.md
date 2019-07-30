@@ -1,68 +1,68 @@
 ---
 title: Co to jest usługa Personalizacja?
 titleSuffix: Azure Cognitive Services
-description: Personalizer to oparta na chmurze Usługa interfejsu API, która pozwala wybrać najlepsze wyniki, aby wyświetlić użytkowników, uczysz się na podstawie ich zachowania w czasie rzeczywistym.
+description: Personalizacja to oparta na chmurze usługa interfejsu API, która pozwala na wybranie najlepszego środowiska, które ma być widoczne dla użytkowników, a także uczenie się przed zachowaniem ich w czasie rzeczywistym.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 286a19207236392367b924bea7e26e90fd0db8d5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.author: diberry
+ms.openlocfilehash: 99750971e11171c0b315cac38089c216d42c7ba6
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253463"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663663"
 ---
 # <a name="what-is-personalizer"></a>Co to jest usługa Personalizacja?
 
 Usługa Personalizacja platformy Azure to chmurowa usługa interfejsu API, która pozwala wybrać najlepsze środowiska dla użytkowników na podstawie ich zachowania w czasie rzeczywistym.
 
-* Zawierają informacje dotyczące użytkowników i zawartości i otrzymywać najważniejsze akcję, aby wyświetlić użytkowników. 
-* Nie ma potrzeby, aby wyczyścić i oznaczanie danych przed użyciem Personalizer.
-* Przesyłanie opinii do Personalizer, gdy jest to wygodne dla Ciebie. 
-* Wyświetlanie analiz w czasie rzeczywistym. 
-* Umożliwia Personalizer większych nakładu pracy do analizy danych w ramach sprawdzania poprawności istniejących eksperymentów.
+* Podaj informacje o użytkownikach i zawartości oraz Odbierz najważniejsze akcje, aby pokazać użytkowników. 
+* Nie ma potrzeby czyszczenia i etykietowania danych przed użyciem narzędzia Personalizacja.
+* Prześlij opinię na temat personalizowania, gdy jest to wygodne. 
+* Wyświetlanie analizy w czasie rzeczywistym. 
+* Użyj personalizacji jako części większego nakładu na naukę danych, aby zweryfikować istniejące eksperymenty.
 
-## <a name="how-does-personalizer-work"></a>Jak działa Personalizer?
+## <a name="how-does-personalizer-work"></a>Jak działa program Personalizuj?
 
-Personalizer używa modeli uczenia maszynowego, aby dowiedzieć się, jakie działanie ma być ranking najwyższą pozycję w kontekście. Aplikacja kliencka zawiera listę możliwych działań z informacjami o nich. i informacje o kontekście, który może zawierać informacje dotyczące użytkowników, urządzeń itp. Personalizer Określa akcję do wykonania. Gdy Twoja aplikacja kliencka używa wybranej akcji, zapewnia informacje zwrotne do Personalizer w formie wynik osób trzecich. Po otrzymaniu opinii Personalizer automatycznie aktualizuje własny model używany dla przyszłych rangę.
+Personalizacja korzysta z modeli uczenia maszynowego w celu ustalenia, jakie działania mają najwyższy rangę w kontekście. Aplikacja kliencka zawiera listę możliwych akcji z informacjami o nich; i informacje o kontekście, które mogą zawierać informacje o użytkowniku, urządzeniu itp. Personalizacja określa akcję do wykonania. Gdy aplikacja kliencka użyje wybranej akcji, zapewnia ona informacje zwrotne do personalizacji w formie nagrody. Po otrzymaniu opinii Personalizowanie automatycznie aktualizuje własny model używany do przyszłych rangi.
 
-## <a name="how-do-i-use-the-personalizer"></a>Jak używać Personalizer?
+## <a name="how-do-i-use-the-personalizer"></a>Jak mogę użyć personalizacji?
 
-![Wybierz, które wideo, aby wyświetlić użytkownikowi za pomocą Personalizer](media/what-is-personalizer/personalizer-example-highlevel.png)
+![Używanie narzędzia personalizacji do wybierania wideo, które ma być wyświetlane użytkownikowi](media/what-is-personalizer/personalizer-example-highlevel.png)
 
-1. Wybierz aplikację, aby spersonalizować środowisko.
-1. Utwórz i skonfiguruj wystąpienie usługi personalizacji w witrynie Azure portal. Każde wystąpienie jest Personalizer pętli.
-1. Wywołaj Personalizer za pomocą informacji przy użyciu zestawu SDK (_funkcji_) dotyczące użytkowników i zawartości (_akcje_). Nie należy podać czyszczenia, etykietę danych przed użyciem Personalizer. 
-1. W aplikacji klienckiej przedstawiać użytkownikowi wybranej przez Personalizer akcji.
-1. Przesyłanie opinii do Personalizer wskazujący, jeśli użytkownik wybrał akcji Personalizer firmy przy użyciu zestawu SDK. Jest to _nagradzaj wynik_, zazwyczaj zakresu od -1 do 1.
-1. Wyświetl analytics w witrynie Azure portal, aby ocenić, jak działa system oraz jak pomaga danych personalizacji.
+1. Wybierz środowisko w aplikacji, aby spersonalizować.
+1. Utwórz i skonfiguruj wystąpienie usługi personalizacji w Azure Portal. Każde wystąpienie jest pętlą personalizacji.
+1. Użyj zestawu SDK do wywołania narzędzia personalizacji z informacjami (_funkcjami_) dotyczącymi użytkowników i zawartością (_Akcje_). Nie musisz podawać czystych danych z etykietami przed użyciem narzędzia Personalizacja. 
+1. W aplikacji klienckiej Pokaż użytkownika akcję wybraną przez program Personalizujer.
+1. Użyj zestawu SDK, aby przekazać informacje zwrotne do personalizacji wskazujące, czy użytkownik wybrał akcję Personalizuj. Jest to _wynik nagrody_, zazwyczaj z zakresu od-1 do 1.
+1. Wyświetl analizę w Azure Portal, aby oszacować, jak działa system oraz jak dane pomagają w personalizacji.
 
-## <a name="where-can-i-use-personalizer"></a>Gdzie można używać Personalizer?
+## <a name="where-can-i-use-personalizer"></a>Gdzie mogę używać personalizacji?
 
-Na przykład aplikacja kliencka można dodać Personalizer do:
+Na przykład aplikacja kliencka może dodać personalizację do:
 
-* Personalizowanie, jakie artykułu jest wyróżniona na witryny sieci Web grup dyskusyjnych.    
-* Optymalizuj umieszczania ad w witrynie internetowej.
-* Wyświetlić spersonalizowane "zalecane element" w witrynie zakupów.
-* Zaproponuj elementy interfejsu użytkownika, takie jak filtrów do zastosowania do określonego zdjęcia.
-* Wybierz odpowiedź czatbot wyjaśnienia intencji użytkownika lub zasugerować akcji.
-* Ustaw priorytet sugestie dotyczące co użytkownik powinien zrobić następny krok w procesie biznesowym.
+* Personalizowanie artykułu wyróżnionego w witrynie sieci Web wiadomości.    
+* Optymalizacja umieszczania w usłudze AD w witrynie sieci Web.
+* Wyświetl spersonalizowany "zalecany element" w witrynie internetowej dotyczącej zakupów.
+* Sugeruj elementy interfejsu użytkownika, takie jak filtry, aby zastosować je do określonego zdjęcia.
+* Wybierz odpowiedź bot rozmowy, aby wyjaśnić intencję użytkownika lub zasugerować akcję.
+* Ustalanie priorytetów sugestii, jakie użytkownik powinien wykonać w następnym kroku w procesie biznesowym.
 
 ## <a name="personalization-for-developers"></a>Personalizacja dla deweloperów
 
-Usługa personalizer ma dwa interfejsy API:
+Usługa personalizacji ma dwa interfejsy API:
 
-* Wyślij informacje (_funkcji_) dotyczące użytkowników i zawartości (_akcje_) spersonalizować. Personalizer odpowiada za pomocą górnej akcji.
-* Przesyłanie opinii do Personalizer o jak dobrze klasyfikację Prócz tego pracowałam jako numer zazwyczaj zakresu od 0 do 1 (poprzedniej sekcji powiedział -1 do 1). 
+* Wysyłaj informacje (_funkcje_) dotyczące użytkowników i zawartość (_Akcje_) do personalizacji. Personalizacja reaguje na górną akcję.
+* Wyślij opinię do programu Personalizowanie o tym, jak dobrze Klasyfikacja działała jako liczba zazwyczaj z zakresu od 0 do 1 (poprzednia sekcja-1 i 1). 
 
-![Podstawowe sekwencję zdarzeń na potrzeby personalizacji](media/what-is-personalizer/personalization-intro.png)
+![Podstawowa sekwencja zdarzeń dla personalizacji](media/what-is-personalizer/personalization-intro.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Szybki start: Tworzenie pętli opinii wC#](csharp-quickstart-commandline-feedback-loop.md)
-* [Użyj interaktywna demonstracja](https://personalizationdemo.azurewebsites.net/)
+* [Szybki start: Utwórz pętlę opinii wC#](csharp-quickstart-commandline-feedback-loop.md)
+* [Korzystanie z demonstracji interaktywnej](https://personalizationdemo.azurewebsites.net/)

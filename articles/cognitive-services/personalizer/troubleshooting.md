@@ -1,34 +1,34 @@
 ---
-title: Rozwiązywanie problemów — Personalizer
+title: Rozwiązywanie problemów — Personalizacja
 titleSuffix: Azure Cognitive Services
-description: Rozwiązywanie problemów z pytania dotyczące Personalizer znajdują się w tym artykule.
-author: edjez
+description: Informacje dotyczące rozwiązywania problemów dotyczących narzędzia Personalizacja można znaleźć w tym artykule.
+author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: article
 ms.date: 06/15/2019
-ms.author: edjez
-ms.openlocfilehash: be6119d96b89622f45db1099a47e858a5893c2cb
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 7f7a6a08b86d21287c644f6a851d465d97f32e74
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722252"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663680"
 ---
-# <a name="personalizer-troubleshooting"></a>Rozwiązywanie problemów z personalizer
+# <a name="personalizer-troubleshooting"></a>Rozwiązywanie problemów z narzędziem Personalizacja
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące rozwiązywania problemów dotyczące Personalizer.
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące narzędzia do rozwiązywania problemów dotyczących narzędzia Personalizacja.
 
-## <a name="learning-loop"></a>Learning pętli
+## <a name="learning-loop"></a>Pętla szkoleniowa
 
-### <a name="the-learning-loop-doesnt-seem-to-learn-how-do-i-fix-this"></a>Aby dowiedzieć się, prawdopodobnie nie pętli uczenia. Jak rozwiązać ten problem?
+### <a name="the-learning-loop-doesnt-seem-to-learn-how-do-i-fix-this"></a>Pętla szkoleniowa nie wydaje się uczyć. Jak to naprawić?
 
-Pętli learning wymaga kilku tysięcy wywołań za wynagrodzeniem przed rangi wywołania priorytety skutecznie. 
+Pętla szkoleniowa wymaga kilku tysięcy wywołań, zanim funkcja Range wywoła priorytet. 
 
-Jeśli wiesz, jak obecnie zachowuje się pętlę metodyki uczenia, uruchom [oceny w trybie offline](concepts-offline-evaluation.md)i Zastosuj zasady poprawiony uczenia. 
+Jeśli nie wiesz, jak działa pętla szkoleniowa, uruchom [ocenę w trybie offline](concepts-offline-evaluation.md)i Zastosuj poprawione zasady uczenia. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-[Skonfiguruj częstotliwość aktualizacji modelu](how-to-settings.md#model-update-frequency)
+[Konfigurowanie częstotliwości aktualizacji modelu](how-to-settings.md#model-update-frequency)

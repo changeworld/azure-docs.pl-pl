@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 1aed6f9a0ceec18ca800e5030ec09bbb8d98cb76
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560729"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639210"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Funkcje list fraz w aplikacji LUIS
 
@@ -35,7 +35,7 @@ Listy fraz nie są połączone z konkretnym zamiarem lub jednostką, ale są dod
 
 ## <a name="how-to-use-phrase-lists"></a>Jak używać listy fraz
 
-Utwórz listę fraz, gdy aplikacja zawiera wyrazy lub frazy, które są ważne dla aplikacji, takie jak:
+[Utwórz listę fraz](luis-how-to-add-features.md) , gdy aplikacja zawiera wyrazy lub frazy, które są ważne dla aplikacji, takie jak:
 
 * warunki branżowe
 * żargonu
@@ -53,7 +53,7 @@ Po wprowadzeniu kilku wyrazów lub fraz Użyj opcji **zalecane** , aby znaleźć
 
 ### <a name="interchangeable-lists"></a>Listy, które są zamienne
 
-Lista  fraz wymiennych jest dla wartości, które są synonimami. Na przykład jeśli chcesz, aby znaleziono wszystkie treści wody i przykład wyrażenia długości: 
+Lista fraz wymiennych jest dla wartości, które są synonimami. Na przykład jeśli chcesz, aby znaleziono wszystkie treści wody i przykład wyrażenia długości: 
 
 * Jakie miasta zbliżają się do wspaniałych jezior? 
 * Jakie są działania dotyczące dróg i Lake Havasu?
@@ -65,7 +65,7 @@ Każdy wypowiedź należy określić dla celów i jednostek, niezależnie od tre
 * Jakie przebiegi drogowe zawiera [bodyOfWater]?
 * Gdzie jest początek i koniec [bodyOfWater]? 
 
-Ponieważ słowa lub frazy dla treści wody są synonimami i mogą być używane zamiennie w wyrażenia długości, użyj ustawienia zamiennego na  liście fraz. 
+Ponieważ słowa lub frazy dla treści wody są synonimami i mogą być używane zamiennie w wyrażenia długości, użyj ustawienia zamiennego na liście fraz. 
 
 ### <a name="non-interchangeable-lists"></a>Listy, które nie są zamienne
 
@@ -79,7 +79,7 @@ Ponieważ lista fraz rośnie wraz z upływem czasu, niektóre terminy mogą zawi
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Wyrażenie zawiera pomoc zidentyfikować proste jednostki wymienne
+## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Listy fraz pomagają identyfikować proste, wymienne jednostki
 Wymienne frazy listy są dobrym sposobem dostrajaniu aplikacją usługi LUIS. Jeśli aplikacja ma problemy z wypowiedzi na intencje prawidłowe przewidywanie lub rozpoznawania jednostek, zastanów się, czy wypowiedzi zawierać słów nietypowe lub słowa, które mogą być niejednoznaczne w znaczenie. Te wyrazy są dobrymi kandydatami do uwzględnienia na liście frazę.
 
 ## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Wyrażenie zawiera pomoc rozpoznać intencje lepsze zrozumienie kontekstu
@@ -88,7 +88,7 @@ Lista frazy jest instrukcję do usługi LUIS, aby wykonać dopasowywanie strict 
 Dodawanie listy fraz jest zamiast dodawać więcej wypowiedzi przykład do intencji. 
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Kiedy należy używać list frazy i listę jednostek
-Gdy Lista fraz i listy jednostek może mieć wpływ na wypowiedzi we wszystkich intencji, każdy robi to w inny sposób. Użyj listy fraz wpływa na wynik konwersji prognozy. Użyj jednostki listy wpływa na działania funkcji wydobywania podmiotów dopasowania tekstu do dokładnego dopasowania. 
+Mimo że zarówno Lista wyrazów, jak i [jednostki listy](reference-entity-list.md) mogą mieć wpływ wyrażenia długości na wszystkie intencje, każda robi się to w inny sposób. Użyj listy fraz wpływa na wynik konwersji prognozy. Użyj jednostki listy wpływa na działania funkcji wydobywania podmiotów dopasowania tekstu do dokładnego dopasowania. 
 
 ### <a name="use-a-phrase-list"></a>Użyj listy fraz
 Z listą frazy LUIS nadal mogą uwzględniać kontekstu i generalize, aby zidentyfikować elementy, które są podobne do, ale nie dokładne dopasowanie, jako elementów na liście. Jeśli potrzebujesz aplikacją usługi LUIS, aby można było do uogólnienia i identyfikowania nowych elementów w kategorii, użyj listy fraz. 

@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Wdróż model klastrowania w języku R'
+title: 'Samouczek: Wdrażanie modelu klastrowania w języku R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: W trzeciej części tej serii samouczków trzyczęściowej serii wdrożysz model klastrowania w języku R z SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza).
+description: W trzeciej części tej serii samouczków można wdrożyć model klastrowania w języku R z Azure SQL Database Machine Learning Services (wersja zapoznawcza).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -12,45 +12,45 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/17/2019
-ms.openlocfilehash: 1fe9df6378884ba55cb1017da87522ae66edaff0
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.date: 07/29/2019
+ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66419755"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640909"
 ---
-# <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Samouczek: Wdróż model klastrowania w języku R z SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)
+# <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Samouczek: Wdrażanie modelu klastrowania w języku R z Azure SQL Database Machine Learning Services (wersja zapoznawcza)
 
-W trzeciej części tej serii samouczków trzyczęściowej serii wdrożysz model klastrowania w języku R z SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza).
+W trzeciej części tej serii samouczków można wdrożyć model klastra, opracowany w języku R, do bazy danych SQL przy użyciu Azure SQL Database Machine Learning Services (wersja zapoznawcza).
 
-Utworzysz procedury składowanej z osadzonych skrypt języka R, który wykonuje klastrowania. Ponieważ model jest wykonywana w bazie danych Azure SQL, łatwo może być uczony danych przechowywanych w bazie danych.
+Utworzysz procedurę składowaną z osadzonym skryptem języka R, który wykonuje klastrowanie. Ponieważ model jest wykonywany w usłudze Azure SQL Database, można łatwo go przeszkolić do danych przechowywanych w bazie danych.
 
 W tym artykule dowiesz się, jak:
 
 > [!div class="checklist"]
-> * Utwórz procedurę składowaną, która generuje modelu
-> * Wykonaj klastrowania w bazie danych SQL
-> * Skorzystaj z informacji klastrowania
+> * Utwórz procedurę przechowywaną, która generuje model
+> * Wykonaj klastrowanie w SQL Database
+> * Korzystanie z informacji dotyczących klastrowania
 
-W [pierwszej części](sql-database-tutorial-clustering-model-prepare-data.md), wiesz, jak przygotować dane z usługi Azure SQL database do wykonania, klastrowania w języku R.
+W [części pierwszej](sql-database-tutorial-clustering-model-prepare-data.md)przedstawiono sposób przygotowania danych z bazy danych Azure SQL Database w celu przeprowadzenia klastrowania.
 
-W [część druga](sql-database-tutorial-clustering-model-build.md), wiesz, jak w celu zbudowania modelu K-średnich do wykonania, klastrowania.
+W [drugiej części](sql-database-tutorial-clustering-model-build.md)pokazano, jak utworzyć i szkolić model z klastrami w języku R.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Trzeciej części tej serii samouczków przyjęto założenie, zostały wykonane [ **pierwszej części** ](sql-database-tutorial-clustering-model-prepare-data.md) i [ **część druga**](sql-database-tutorial-clustering-model-build.md).
+* W trzeciej części tej serii samouczków przyjęto założenie, że wykonano [**część jeden**](sql-database-tutorial-clustering-model-prepare-data.md) i [**drugą część**](sql-database-tutorial-clustering-model-build.md).
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>Utwórz procedurę składowaną, która generuje modelu
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>Utwórz procedurę przechowywaną, która generuje model
 
-Uruchom następujący skrypt języka T-SQL, aby utworzyć procedurę składowaną. Procedura odtwarza kroki opisane w części 1 i 2 w tej serii samouczków:
+Uruchom następujący skrypt T-SQL, aby utworzyć procedurę składowaną. Procedura ponownie tworzy kroki, które zostały opracowane w części jednej i dwóch z tej serii samouczków:
 
-* klasyfikowanie klientów w oparciu o ich zakupu i zwracają historii
-* Generowanie cztery klastry klientów przy użyciu algorytmu K-średnich
+* klasyfikowanie klientów na podstawie ich zakupów i historii powrotu
+* Generuj cztery klastry klientów przy użyciu algorytmu K-oznacza
 
-Procedury przechowywane wynikowy mapowania klastra klienta w tabeli bazy danych **customer_return_clusters**.
+Procedura przechowuje wyniki mapowań klastra klienta w tabeli bazy danych **customer_return_clusters**.
 
 ```sql
 USE [tpcxbb_1gb]
@@ -175,9 +175,9 @@ END;
 GO
 ```
 
-## <a name="perform-clustering-in-sql-database"></a>Wykonaj klastrowania w bazie danych SQL
+## <a name="perform-clustering-in-sql-database"></a>Wykonaj klastrowanie w SQL Database
 
-Teraz, po utworzeniu procedury składowanej, uruchom następujący skrypt do wykonania, klastrowania.
+Po utworzeniu procedury składowanej wykonaj następujący skrypt w celu przeprowadzenia klastrowania.
 
 ```sql
 --Empty table of the results before running the stored procedure
@@ -188,7 +188,7 @@ TRUNCATE TABLE customer_return_clusters;
 EXECUTE [dbo].[generate_customer_return_clusters];
 ```
 
-Sprawdź, czy to działa, a w rzeczywistości mamy listę klientów i ich mapowań klastra.
+Sprawdź, czy działa i czy mamy listę klientów i ich mapowania.
 
 ```sql
 --Select data from table customer_return_clusters
@@ -206,11 +206,11 @@ cluster  customer  orderRatio  itemsRatio  monetaryRatio  frequency
 2        32549     0           0           0.031281       4
 ```
 
-## <a name="use-the-clustering-information"></a>Skorzystaj z informacji klastrowania
+## <a name="use-the-clustering-information"></a>Korzystanie z informacji dotyczących klastrowania
 
-Ponieważ klastrowania procedury są przechowywane w bazie danych, można to wykonać, efektywnie klastrowanie danych klienta przechowywanych w tej samej bazy danych. Procedurę można wykonać zawsze wtedy, gdy Twoje dane klienta są aktualizowane i zaktualizowane informacje klastrowania.
+Ponieważ procedura klastrowania została zapisana w bazie danych programu, można wydajnie wykonywać klastry w odniesieniu do danych klientów przechowywanych w tej samej bazie danych. Procedurę można wykonać przy każdej aktualizacji danych klienta i użyciu zaktualizowanych informacji o klastrze.
 
-Załóżmy, że użytkownik chce wysyłać promocyjne wiadomości e-mail do klientów w klastrze 3, grupy, która ma bardziej aktywne zachowanie zwracany (możesz zobaczyć, jak opisano cztery klastry w [część druga](sql-database-tutorial-clustering-model-build.md#analyze-the-results)). Poniższy kod wybiera adresy e-mail odbiorców w klastrze 3.
+Załóżmy, że chcesz wysłać promocyjną wiadomość e-mail do klientów w klastrze 3, grupy, która ma bardziej aktywne zachowanie zwrotne (można zobaczyć, jak cztery klastry zostały opisane w [drugiej części](sql-database-tutorial-clustering-model-build.md#analyze-the-results)). Poniższy kod wybiera adresy e-mail klientów w klastrze 3.
 
 ```sql
 USE [tpcxbb_1gb]
@@ -222,30 +222,30 @@ JOIN [dbo].[customer_return_clusters] AS r ON r.customer = customer.c_customer_s
 WHERE r.cluster = 3
 ```
 
-Możesz zmienić **r.cluster** wartość do zwrócenia adresy e-mail dla klientów w innych klastrach.
+Wartość **r. Cluster** można zmienić tak, aby zwracała adresy e-mail dla klientów w innych klastrach.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu tego samouczka możesz usunąć tpcxbb_1gb bazy danych z serwera usługi Azure SQL Database.
+Po zakończeniu pracy z tym samouczkiem można usunąć bazę danych tpcxbb_1gb z serwera Azure SQL Database.
 
-W witrynie Azure portal wykonaj następujące kroki:
+W Azure Portal wykonaj następujące kroki:
 
-1. Wybierz z menu po lewej stronie w witrynie Azure portal, **wszystkie zasoby** lub **baz danych SQL**.
-1. W **Filtruj według nazwy...**  wprowadź **tpcxbb_1gb**i wybierz swoją subskrypcję.
-1. Wybierz swoje **tpcxbb_1gb** bazy danych.
+1. Z menu po lewej stronie w Azure Portal wybierz pozycję **wszystkie zasoby** lub **bazy danych SQL**.
+1. W polu **Filtruj według nazwy...** wpisz **tpcxbb_1gb**i wybierz swoją subskrypcję.
+1. Wybierz bazę danych **tpcxbb_1gb** .
 1. Na stronie **Przegląd** wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W trzeciej części tej serii samouczków możesz wykonać następujące czynności:
+W trzeciej części tej serii samouczków zostały wykonane następujące czynności:
 
-* Utwórz procedurę składowaną, która generuje modelu
-* Wykonaj klastrowania w bazie danych SQL
-* Skorzystaj z informacji klastrowania
+* Utwórz procedurę przechowywaną, która generuje model
+* Wykonaj klastrowanie w SQL Database
+* Korzystanie z informacji dotyczących klastrowania
 
-Aby dowiedzieć się więcej na temat użycia języka R w usłudze Azure SQL Database usług Machine Learning (wersja zapoznawcza), zobacz:
+Aby dowiedzieć się więcej o korzystaniu z języka R w Azure SQL Database Machine Learning Services (wersja zapoznawcza), zobacz:
 
-* [Samouczek: Przygotowywanie danych do nauczenia modelu predykcyjnego w języku R z SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)](sql-database-tutorial-predictive-model-prepare-data.md)
-* [Zapisywanie zaawansowane funkcje języka R w usłudze Azure SQL Database przy użyciu usług Machine Learning (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)
-* [Praca z danymi SQL i języka R w SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)](sql-database-machine-learning-services-data-issues.md)
-* [Dodaj pakiet języka R do SQL bazy danych usług Azure Machine Learning (wersja zapoznawcza)](sql-database-machine-learning-services-add-r-packages.md)
+* [Samouczek: Przygotowywanie danych do uczenia modelu predykcyjnego w języku R z Azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-tutorial-predictive-model-prepare-data.md)
+* [Zapisuj zaawansowane funkcje języka R w Azure SQL Database przy użyciu Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)
+* [Pracuj z danymi języka R i SQL w Azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-data-issues.md)
+* [Dodaj pakiet języka R do Azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-add-r-packages.md)

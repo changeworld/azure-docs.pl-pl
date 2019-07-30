@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 75764fd0a3f862157d9377d7dc886334ef1231db
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0ce1fb182320b04aebb45b0f848d8c8f6c965fd9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563707"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638176"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Użyj frazy Wyświetla sygnału boost listy programu word
 
 Można dodać funkcje do aplikacji usługi LUIS, aby zwiększyć jego dokładność. Funkcje pomocy usługi LUIS, zapewniając wskazówek dotyczących tego określonych słów i fraz są częścią słownictwa domeny aplikacji. 
 
-A [listy fraz](luis-concept-feature.md) znajduje się grupa wartości (słów i fraz), które należą do tej samej klasy i muszą być traktowane w podobny sposób (na przykład nazwy miasta lub produktów). Usługa LUIS się o jeden z nich jest automatycznie stosowany do pozostałych. Ta lista nie jest jednostką listy zamknięte (pasuje do tekstu do dokładnego dopasowania) dopasowane słów.
+A [listy fraz](luis-concept-feature.md) znajduje się grupa wartości (słów i fraz), które należą do tej samej klasy i muszą być traktowane w podobny sposób (na przykład nazwy miasta lub produktów). Usługa LUIS się o jeden z nich jest automatycznie stosowany do pozostałych. Ta lista nie jest taka sama jak [Jednostka listy](reference-entity-list.md) (dokładne dopasowanie tekstu) pasujących wyrazów.
 
 Lista fraz dodaje do słownictwa używanego w domenie aplikacji jako drugi sygnał do usługi LUIS o tych słów.
 
@@ -32,21 +32,21 @@ LUIS umożliwia maksymalnie 10 list fraz na aplikację.
 
 1. Otwórz aplikację, klikając jego nazwę **Moje aplikacje** strony, a następnie kliknij przycisk **kompilacji**, następnie kliknij przycisk **frazę list** w panelu po lewej stronie Twojej aplikacji. 
 
-2. Na **frazę list** kliknij **Utwórz nową listę frazy**. 
+1. Na **frazę list** kliknij **Utwórz nową listę frazy**. 
  
-3. W **Dodaj frazy listy** okna dialogowego wpisz "Miast" jako nazwy listy fraz. W **wartość** wpisz wartości listy fraz. Wpisz jedną wartość lub zbiór wartości oddzielonych przecinkami, a następnie naciśnij klawisz **Enter**.
+1. W oknie dialogowym **Dodawanie listy fraz** wpisz `Cities` jako nazwę listy fraz. W **wartość** wpisz wartości listy fraz. Wpisz jedną wartość lub zbiór wartości oddzielonych przecinkami, a następnie naciśnij klawisz **Enter**.
 
     ![Dodaj frazy listę miast](./media/luis-add-features/add-phrase-list-cities.png)
 
-4. Usługa LUIS może zaproponować powiązanych wartości do dodania do listy fraz. Kliknij przycisk **zaleca się** można pobrać grupy proponowane wartości, które są semantycznie związane added value(s). Kliknij dowolną z wartości proponowane, lub kliknij przycisk **Dodaj wszystkie** Aby dodać je wszystkie.
+1. Usługa LUIS może zaproponować powiązanych wartości do dodania do listy fraz. Kliknij przycisk **zaleca się** można pobrać grupy proponowane wartości, które są semantycznie związane added value(s). Kliknij dowolną z wartości proponowane, lub kliknij przycisk **Dodaj wszystkie** Aby dodać je wszystkie.
 
     ![Proponowane wartości listy fraz — Dodaj wszystko](./media/luis-add-features/related-values.png)
 
-5. Kliknij przycisk **te wartości są wymienne** Jeśli frazy dodano wartości listy są dostępne opcje alternatywne, które mogą być używane zamiennie.
+1. Kliknij przycisk **te wartości są wymienne** Jeśli frazy dodano wartości listy są dostępne opcje alternatywne, które mogą być używane zamiennie.
 
     ![Proponowane wartości na liście fraz — wybierz pole, które jest zamienne](./media/luis-add-features/interchangeable.png)
 
-6. Kliknij polecenie **Zapisz**. Na liście frazę "Miast" zostanie dodany do **frazę list** strony.
+1. Kliknij przycisk **Gotowe**. Na liście frazę "Miast" zostanie dodany do **frazę list** strony.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>

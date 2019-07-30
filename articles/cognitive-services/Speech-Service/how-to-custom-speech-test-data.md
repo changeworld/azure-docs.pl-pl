@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8821ce46c65ac8bca36f006ef77bcaf475b0573d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559621"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663603"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Przygotuj dane dla Custom Speech
 
@@ -27,9 +27,9 @@ Ta tabela zawiera listę akceptowanych typów danych, gdy należy użyć poszcze
 
 | Typ danych | Używane do testowania | Ilość | Używany do szkolenia | Ilość |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Tak<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | Nie dotyczy |
-| [Zapisy audio + oznakowane przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Służy do obliczania dokładności | 0,5 – 5 godzin audio | Yes | 1 – 1 000 godzin audio |
-| [Powiązany tekst](##related-text-data-for-training) | Nie | Nie dotyczy | Yes | 1-200 MB powiązanego tekstu |
+| [Audio](#audio-data-for-testing) | Yes<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | Nie dotyczy |
+| [Zapisy audio + oznakowane przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Tak<br>Służy do obliczania dokładności | 0,5 – 5 godzin audio | Tak | 1 – 1 000 godzin audio |
+| [Powiązany tekst](#related-text-data-for-training) | Nie | Nie dotyczy | Tak | 1-200 MB powiązanego tekstu |
 
 Pliki powinny być pogrupowane według typu w zestawie danych i przekazywane jako plik zip. Każdy zestaw danych może zawierać tylko jeden typ danych.
 
@@ -52,7 +52,7 @@ Dane audio są optymalne do testowania dokładności linii bazowej "zamiany mowy
 
 Użyj tej tabeli, aby upewnić się, że pliki audio są poprawnie sformatowane do użytku z Custom Speech:
 
-| Właściwość | Value |
+| Właściwość | Wartość |
 |----------|-------|
 | Format pliku | RIFF (WAV) |
 | Częstotliwość próbkowania | 8 000 Hz lub 16 000 Hz |
@@ -155,13 +155,13 @@ Dostosowana wymowa jest dostępna w języku angielskim (EN-US) i niemiecki (de-D
 
 Użyj tej tabeli, aby upewnić się, że plik powiązanych danych dla wymowy jest sformatowany prawidłowo. Pliki wymowy są małe i nie powinny przekraczać kilku artykułów bazy wiedzy.
 
-| Właściwość | Wartość |
+| Właściwość | Value |
 |----------|-------|
 | Kodowanie tekstu | BOM UTF-8 (ANSI jest również obsługiwany w języku angielskim) |
 | Liczba wymowy na wiersz | 1 |
 | Maksymalna wielkość pliku | 1 MB (1 KB dla warstwy Bezpłatna) |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Inspekcja danych](how-to-custom-speech-inspect-data.md)
 * [Oceń dane](how-to-custom-speech-evaluate-data.md)

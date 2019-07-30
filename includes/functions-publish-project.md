@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 04/24/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 48bb91b3b2e9a31de63e515edb857bc2a170ea79
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fbb537c9584c948af37694b3bfc77a7c345e084d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183016"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639118"
 ---
 ## <a name="deploy-the-function-app-project-to-azure"></a>Wdrażanie projektu aplikacji funkcji na platformie Azure
 
-Po utworzeniu aplikacji funkcji na platformie Azure, możesz użyć [ `func azure functionapp publish` ](../articles/azure-functions/functions-run-local.md#project-file-deployment) polecenie podstawowych narzędzi, aby wdrożyć kod projektu na platformie Azure. W poniższym poleceniu zastąp `<APP_NAME>` nazwą aplikacji w poprzednim kroku.
+Po utworzeniu aplikacji funkcji na platformie Azure Możesz użyć [`func azure functionapp publish`](../articles/azure-functions/functions-run-local.md#project-file-deployment) podstawowego narzędzia do wdrożenia kodu projektu na platformie Azure. W poniższym poleceniu Zastąp `<APP_NAME>` wartość nazwą aplikacji z poprzedniego kroku.
 
 ```bash
 func azure functionapp publish <APP_NAME>
 ```
 
-Widoczne będą dane wyjściowe podobne do poniższych składników, które zostały obcięte dla czytelności.
+Zobaczysz dane wyjściowe podobne do następujących, które zostały obcięte pod kątem czytelności:
 
 ```output
 Getting site publishing info...
@@ -39,4 +39,4 @@ Functions in myfunctionapp:
         Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
 ```
 
-Skopiuj wartość wywołania adresu URL na potrzeby usługi HttpTrigger, które teraz umożliwia testowanie funkcji na platformie Azure. Adres URL zawiera `code` wartość ciągu zapytania jest klucz funkcji. Ten klucz utrudnia innym osobom do wywołania wyzwalacza HTTP punktu końcowego na platformie Azure.
+`Invoke url` Skopiuj wartość `HttpTrigger`dla elementu, którego możesz teraz użyć do testowania funkcji na platformie Azure. Adres URL zawiera `code` wartość ciągu zapytania, który jest kluczem funkcji. Ten klucz utrudnia innym osobom wywoływanie punktu końcowego wyzwalacza HTTP na platformie Azure.

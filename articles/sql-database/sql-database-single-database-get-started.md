@@ -1,6 +1,6 @@
 ---
-title: 'Witryna Azure Portal: Tworzenie pojedynczej bazy danych — usługa Azure SQL Database | Microsoft Docs'
-description: Utwórz pojedynczą bazę danych w usłudze Azure SQL Database i wykonuj względem jej zapytania w witrynie Azure Portal.
+title: Tworzenie pojedynczej bazy danych — usługa Azure SQL Database | Microsoft Docs
+description: Utwórz i zbadaj pojedynczą bazę danych w Azure SQL Database przy użyciu Azure Portal, programu PowerShell i interfejsu wiersza polecenia platformy Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,90 +10,37 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-manager: craigg
-ms.date: 04/23/2019
-ms.openlocfilehash: 1c24c8a10e35c0cf8979538c67fa8fb71b712741
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/29/2019
+ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070165"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640048"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Szybki start: Tworzenie pojedynczej bazy danych w usłudze Azure SQL Database za pomocą witryny Azure Portal
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Szybki start: Tworzenie pojedynczej bazy danych w Azure SQL Database przy użyciu Azure Portal, programu PowerShell i interfejsu wiersza polecenia platformy Azure
 
 Tworzenie [pojedynczej bazy danych](sql-database-single-database.md) to najszybsza i najprostsza opcja wdrażania w przypadku tworzenia bazy danych w usłudze Azure SQL Database. W tym przewodniku Szybki start przedstawiono, jak utworzyć pojedynczą bazę danych i wykonywać względem jej zapytania za pomocą witryny Azure Portal.
 
-Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/). 
 
 W przypadku wszystkich kroków z tego przewodnika Szybki start musisz zalogować się do witryny [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-single-database"></a>Tworzenie pojedynczej bazy danych
 
-Pojedynczą bazę danych można utworzyć albo aprowizowane lub bez użycia serwera warstwa wystąpień obliczeniowych (wersja zapoznawcza).
+Pojedynczą bazę danych można utworzyć w warstwie obliczeniowej zainicjowana lub bezserwerowa (wersja zapoznawcza).
 
-- Pojedynczą bazę danych w warstwie zainicjowanych zasobów obliczeniowych ma określoną ilość zasobów obliczeniowych wstępnie przydzielić oraz zestaw zasobów pamięci i magazynu przy użyciu jednej z dwóch [zakupu modeli](sql-database-purchase-models.md).
-- Pojedynczą bazę danych w warstwie bezserwerowe środowisko obliczeniowe zawiera szeroką gamę zasobów obliczeniowych, które są automatycznie skalowanych oraz określoną ilość pamięci na rdzeń i określoną ilość zasobów magazynu i jest dostępna tylko w [oparty na rdzeniach wirtualnych zakupu modeli ](sql-database-service-tiers-vcore.md).
+- Pojedyncza baza danych w warstwie obliczeniowej zainicjowanej ma określoną ilość wstępnie przyznanych zasobów obliczeniowych oraz zestaw pamięci i zasobów magazynu przy użyciu jednego z dwóch [modeli zakupu](sql-database-purchase-models.md).
+- Pojedyncza baza danych w warstwie obliczeń bezserwerowej ma zakres zasobów obliczeniowych, które są automatycznie skalowane i określoną ilość pamięci na rdzeń, oraz określoną ilość zasobów magazynu i jest dostępna tylko w [modelach zakupów opartych na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 
 Podczas tworzenia pojedynczej bazy danych definiowany jest również [serwer usługi SQL Database](sql-database-servers.md) służący do zarządzania tą bazą danych i umieszczania jej w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w określonym regionie.
 
 > [!NOTE]
-> Ten przewodnik Szybki Start używa [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) i [bez użycia serwera](sql-database-serverless.md) obliczeniowych warstwy, ale [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-DTU.md) jest również dostępna.
+> Ten przewodnik Szybki Start korzysta z [modelu zakupu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md), ale jest również dostępny [model zakupu oparty](sql-database-service-tiers-DTU.md) na jednostkach DTU.
 
 Aby utworzyć bazę danych zawierającą przykładowe dane firmy Adventure Works LT:
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.
-2. Wybierz **baz danych** , a następnie wybierz **bazy danych SQL** otworzyć **tworzenie bazy danych SQL** strony.
-
-   ![Tworzenie pojedynczej bazy danych](./media/sql-database-get-started-portal/create-database-1.png)
-
-3. Na **podstawy** na karcie **Project Details** sekcji, wpisz lub wybierz następujące wartości:
-
-   - **Subskrypcja**: otwórz listę rozwijaną i wybierz poprawną subskrypcję, jeśli nie została wyświetlona.
-   - **Grupa zasobów**: Wybierz **Utwórz nową**, typ `myResourceGroup`i wybierz **OK**.
-
-     ![Nowa baza danych SQL — karta podstawowe](media/sql-database-get-started-portal/new-sql-database-basics.png)
-
-4. W **Szczegóły bazy danych** sekcji, wpisz lub wybierz następujące wartości:
-
-   - **Nazwa bazy danych**: Wprowadź polecenie `mySampleDatabase`.
-   - **Serwer**: Wybierz **Utwórz nową** i wprowadź następujące wartości, a następnie wybierz pozycję **wybierz**.
-       - **Nazwa serwera**: Typ `mysqlserver`; wraz z niektórych numerów, aby zapewnić unikatowość.
-       - **Identyfikator logowania administratora serwera**: Wpisz polecenie `azureuser`.
-       - **Hasło**: Wpisz hasło złożone, który spełnia wymagania dotyczące hasła.
-       - **Lokalizacja**: Wybierz lokalizację z listy rozwijanej, takich jak `West US 2`.
-
-         ![Nowy serwer](media/sql-database-get-started-portal/new-server.png)
-
-      > [!IMPORTANT]
-      > Pamiętaj, aby zapisać identyfikator logowania administratora serwera i hasło, aby logować się do serwera i baz danych dla tego przewodnika Szybki start oraz pozostałych. Jeśli zapomnisz swój identyfikator logowania lub hasło, możesz uzyskać identyfikator logowania lub zresetować hasło na stronie **serwera SQL**. Aby otworzyć stronę **serwera SQL**, wybierz nazwę serwera na stronie **Przegląd** po utworzeniu bazy danych.
-
-        ![Szczegóły bazy danych SQL](media/sql-database-get-started-portal/sql-db-basic-db-details.png)
-
-   - **Aby użyć elastycznej puli SQL**: Wybierz **nie** opcji.
-   - **Obliczeniowe i magazyn**: Wybierz **bazy danych skonfiguruj** i w tym przewodniku Szybki Start wybierz **oparty na rdzeniach wirtualnych opcje zakupu**
-
-     ![Opcje zakupu oparte na rdzeniach wirtualnych](media/sql-database-get-started-portal/create-database-vcore.png)
-
-   - Wybierz **bezserwerowe**.
-
-     ![Warstwa wystąpień obliczeniowych bez użycia serwera](media/sql-database-get-started-portal/create-database-serverless.png)
-
-   - Sprawdź ustawienia **maksymalnej liczby rdzeni wirtualnych**, **rdzeni wirtualnych Min**, **opóźnienia automatycznego wstrzymywania**, i **danych maksymalny rozmiar**. Zmień je zgodnie z potrzebami.
-   - Zaakceptuj warunki wersji zapoznawczej, a następnie kliknij przycisk **OK**.
-   - Wybierz przycisk **Zastosuj**.
-
-5. Wybierz **dodatkowe ustawienia** kartę. 
-6. W **źródła danych** sekcji w obszarze **korzystać z istniejących danych**, wybierz opcję `Sample`. 
-
-   ![Dodatkowe ustawienia bazy danych SQL](media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
-
-   > [!IMPORTANT]
-   > Pamiętaj, aby wybrać dane **Przykład (AdventureWorksLT)** , co umożliwi łatwe wykonanie tego i innych przewodników Szybki start usługi Azure SQL Database korzystających z tych danych.
-
-7. Pozostałe wartości Pozostaw domyślne, a następnie wybierz pozycję **przeglądu + Utwórz** w dolnej części formularza.
-8. Przejrzyj ustawienia końcowe i wybierz **Utwórz**.
-
-9. W formularzu **SQL Database** wybierz opcję **Utwórz**, aby wdrożyć i aprowizować grupę zasobów, serwer i bazę danych.
+[!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
 ## <a name="query-the-database"></a>Wykonywanie zapytań względem bazy danych
 
@@ -135,6 +82,6 @@ Po zakończeniu korzystania z tych zasobów możesz je usunąć w następujący 
 - Po utworzeniu reguły zapory na poziomie serwera [nawiąż połączenie z bazą danych i wykonaj zapytania](sql-database-connect-query.md) przy użyciu różnych narzędzi i języków.
   - [Nawiązywanie połączeń i wykonywanie zapytań przy użyciu programu SQL Server Management Studio](sql-database-connect-query-ssms.md)
   - [Nawiązywanie połączeń i wykonywanie zapytań za pomocą usługi Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- Aby utworzyć pojedynczą bazę danych w warstwie zainicjowanych zasobów obliczeniowych, przy użyciu wiersza polecenia platformy Azure, zobacz [przykłady interfejsu wiersza polecenia platformy Azure](sql-database-cli-samples.md).
-- Aby utworzyć pojedynczą bazę danych w warstwie zainicjowanych zasobów obliczeniowych, przy użyciu programu Azure PowerShell, zobacz [przykładów programu Azure PowerShell](sql-database-powershell-samples.md).
-- Aby utworzyć pojedynczą bazę danych w warstwie bezserwerowe środowisko obliczeniowe przy użyciu programu Azure Powershell, zobacz [Utwórz bazę danych bez użycia serwera](sql-database-serverless.md#create-new-database-in-serverless-compute-tier).
+- Aby utworzyć pojedynczą bazę danych w warstwie obliczeniowej zainicjowanej przy użyciu interfejsu wiersza polecenia platformy Azure, zobacz [przykłady interfejsu wiersza polecenia platformy Azure](sql-database-cli-samples.md).
+- Aby utworzyć pojedynczą bazę danych w warstwie obliczeniowej zainicjowanej przy użyciu Azure PowerShell, zobacz [Azure PowerShell Samples](sql-database-powershell-samples.md).
+- Aby utworzyć pojedynczą bazę danych w warstwie obliczeń bezserwerowej przy użyciu programu Azure PowerShell, zobacz [Tworzenie bezserwerowej bazy danych](sql-database-serverless.md#create-new-database-in-serverless-compute-tier).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: cephalin
-ms.openlocfilehash: 557b917f53064f0e6e9ecd61e2d230a6a4fd2ad6
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 28e10389f65e0b64ed15c00eb2a8632229397383
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853680"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639177"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji w języku Python w Azure App Service w systemie Linux
 
@@ -105,7 +105,7 @@ Checking connectivity... done.
 
 Przejdź do katalogu, który zawiera przykładowy kod, i uruchom polecenie `az webapp up`.
 
-W poniższym przykładzie zastąp ciąg `<app-name>` globalnie unikatową nazwą aplikacji (prawidłowe znaki to `a-z`, `0-9` i `-`).
+W poniższym `<app-name>` przykładzie Zastąp wartość globalnie unikatową nazwą aplikacji (*prawidłowe znaki to `a-z`, `0-9`i `-`* ).
 
 ```bash
 cd python-docs-hello-world

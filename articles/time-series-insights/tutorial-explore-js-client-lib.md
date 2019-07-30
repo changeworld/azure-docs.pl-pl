@@ -6,149 +6,153 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 05/06/2019
+ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: c6cfd2069851138d738b1533eaab74d9d7aedda6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1ae37636a2caf108221be2240a9517a547945096
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243987"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638834"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Samouczek: Poznawanie biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights
 
-Biblioteki klienta JavaScript D3 na podstawie usługi Azure Time Series Insights został opracowany, by pomocy zapytania deweloperom sieci web i wizualizuj dane przechowywane w usłudze Time Series Insights. Ten samouczek przeprowadzi Cię przez bibliotekę klienta usługi Time Series Insights oraz model programowania przy użyciu hostowanego przykładową aplikację.
+Biblioteka klienta Azure Time Series Insights oparta na języku JavaScript D3 została opracowana w celu ułatwienia deweloperom sieci Web zapytań i wizualizacji danych przechowywanych w Time Series Insights. Ten samouczek przeprowadzi Cię przez Time Series Insights bibliotekę klienta i model programowania przy użyciu hostowanej przykładowej aplikacji.
 
-Samouczka przedstawiono sposób pracy z biblioteką, jak uzyskać dostęp do danych usługi Time Series Insights i jak za pomocą kontrolek wykresów renderowania i wizualizuj dane. Będzie również sposób do eksperymentowania z różnymi rodzajami wykresów do wizualizacji danych. Na końcu tego samouczka będziesz mieć możliwość włączenie funkcji usługi Time Series Insights do aplikacji sieci web za pomocą biblioteki klienta.
+Samouczek zawiera szczegółowe informacje na temat sposobu pracy z biblioteką, uzyskiwania dostępu do danych Time Series Insights i używania formantów wykresu do renderowania i wizualizacji danych. Dowiesz się również, jak eksperymentować z różnymi rodzajami wykresów, aby wizualizować dane. Na końcu samouczka będziesz mieć możliwość używania biblioteki klienckiej do dołączania funkcji Time Series Insights do własnej aplikacji sieci Web.
 
-W szczególności poznasz:
+Zapoznaj się z tematem:
 
 > [!div class="checklist"]
-> * Przykładowa aplikacja usługi Time Series Insights
-> * Biblioteki klienta JavaScript Insights serii czasu
-> * Jak przykładowa aplikacja korzysta z biblioteki do wizualizacji danych usługi Time Series Insights
+> * Przykładowa aplikacja Time Series Insights
+> * Biblioteka klienta Time Series Insights JavaScript
+> * Jak aplikacja Przykładowa używa biblioteki do wizualizacji danych Time Series Insights
 
 > [!NOTE]
-> * W tym samouczku użyto bezpłatne hostowanych [pokaz sieci web usługi Time Series Insights](https://insights.timeseries.azure.com/clientsample).
-> * Pliki źródłowe aplikacji przykładowej usługi Time Series Insights znajdują się w [repozytorium przykładów GitHub](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
-> * Odczyt [Dokumentacja referencyjna klienta usługi Time Series Insights](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
+> * Samouczek używa bezpłatnego, hostowanego [demonstracji Time Series Insights sieci Web](https://insights.timeseries.azure.com/clientsample).
+> * Przykładowe pliki źródłowe aplikacji Time Series Insights są udostępniane w [przykładowym repozytorium GitHub](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
+> * Przeczytaj [dokumentację dotyczącą programu Time Series Insights Client Reference](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
 
-## <a name="video"></a>Wideo
+## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym filmie wprowadzeniu zestawu SDK typu open-source czas serii Insights JavaScript:
+* Utwórz konto bezpłatnej [subskrypcji platformy Azure](https://azure.microsoft.com/free/) , jeśli jeszcze jej nie masz.
+
+* Ten samouczek używa funkcji **Narzędzia deweloperskie** przeglądarki. Nowoczesne przeglądarki sieci Web ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)i inne) zwykle zapewniają dostęp do **widoku inspektora sieci Web** za pomocą klawisza F12 na klawiaturze. Innym sposobem uzyskania dostępu do widoku jest kliknięcie prawym przyciskiem myszy na stronie sieci Web, a następnie wybranie polecenia **Zbadaj element**.
+
+## <a name="video"></a>Połączenia wideo
+
+W tym filmie wideo wprowadzamy zestaw SDK języka JavaScript Time Series Insights Open Source:
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
 
-## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku jest używana w przeglądarce **narzędzi deweloperskich** funkcji. Współczesne przeglądarki internetowe obsługują ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)i inne) zwykle zapewniają dostęp do **Widoku inspektora sieci web** za pomocą klawisza F12 na klawiaturze. Innym sposobem na dostęp do widoku jest kliknij prawym przyciskiem myszy na stronie sieci Web, a następnie wybierz pozycję **sprawdzić Element**.
 
 ## <a name="time-series-insights-sample-application"></a>Przykładowa aplikacja usługi Time Series Insights
 
-W tym samouczku korzystamy z bezpłatnej, hostowanej usługi Time Series Insights przykładowej aplikacji Eksploruj kod źródłowy aplikacji i zapoznać się z biblioteki klienta JavaScript Insights serii czasu. Za pomocą aplikacji przykładowej, dowiesz się, jak korzystać z usługi Time Series Insights w języku JavaScript i wizualizowanie danych za pomocą wykresów i schematów.
+W tym samouczku korzystamy z bezpłatnej, hostowanej Time Series Insights przykładowej aplikacji do eksplorowania kodu źródłowego w ramach aplikacji oraz do eksplorowania Time Series Insights biblioteki klienckiej JavaScript. Korzystając z przykładowej aplikacji, dowiesz się, jak korzystać z Time Series Insights w języku JavaScript i wizualizować dane za pomocą wykresów i grafów.
 
-1. Przejdź do [usługi Time Series Insights Przykładowa aplikacja](https://insights.timeseries.azure.com/clientsample). Wyświetlany jest następujący monit logowania:
+1. Przejdź do [Time Series Insights przykładowej aplikacji](https://insights.timeseries.azure.com/clientsample). Zostanie wyświetlony następujący monit logowania:
 
-   [![Czas Series Insights klienta przykładowe monit logowania](media/tutorial-explore-js-client-lib/tcs-sign-in.png)](media/tutorial-explore-js-client-lib/tcs-sign-in.png#lightbox)
+   [![Przykładowy monit logowania klienta Time Series Insights](media/tutorial-explore-js-client-lib/tcs-sign-in.png)](media/tutorial-explore-js-client-lib/tcs-sign-in.png#lightbox)
 
-1. Wybierz **Zaloguj** wprowadź lub wybierz swoje poświadczenia. Użyj konta organizacji przedsiębiorstwa (Azure Active Directory) lub osobiste konto (konto Microsoft).
+1. Wybierz pozycję **Zaloguj** się, aby wprowadzić lub wybrać swoje poświadczenia. Użyj konta organizacji przedsiębiorstwa (Azure Active Directory) lub konta osobistego (konto Microsoft).
 
-   [![Monit o poświadczenia przykładowe klienta Series Insights czasu](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png)](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png#lightbox)
+   [![Monit o poświadczenia przykładowego klienta Time Series Insights](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png)](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png#lightbox)
 
-1. Po zalogowaniu, jest wyświetlana strona, wyświetlająca wykresy, które zawierają dane usługi Time Series Insights. Twoje konto użytkownika i opcja **Wyloguj się** są widoczne w prawym górnym rogu:
+1. Po zalogowaniu zostanie wyświetlona strona zawierająca wykresy wypełnione danymi Time Series Insights. Twoje konto użytkownika i opcja **Wyloguj się** są widoczne w prawym górnym rogu:
 
-   [![Czas Series Insights klienta przykładowej strony głównej po zalogowaniu](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png#lightbox)
+   [![Przykładowa Strona główna Time Series Insights klienta po zalogowaniu](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png#lightbox)
 
 ### <a name="page-source-and-structure"></a>Źródło i struktura strony
 
-Po pierwsze, teraz wyświetlić [kod źródłowy w kodzie HTML i JavaScript](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) renderowanej strony sieci Web:
+Najpierw wyświetlmy [kod źródłowy HTML i JavaScript](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) renderowanej strony sieci Web:
 
 1. Otwórz w przeglądarce funkcję **Narzędzia deweloperskie**. Zbadaj elementy HTML wchodzące w skład bieżącej strony (określane również jako drzewo HTML lub drzewo DOM).
 
-1. Rozwiń `<head>` i `<body>` elementy i sprawdź, czy następujące sekcje:
+1. Rozwiń elementy `<body>` i i obserwuj następujące sekcje: `<head>`
 
-   * W obszarze `<head>` elementu, można znaleźć metadanych strony i zależności, które umożliwiają uruchomienie aplikacji:
-     * A `<script>` element, który jest używany do odwołania się do interfejsów Azure Active Directory Authentication Library (ADAL) pliku *adal.min.js*. ADAL to biblioteka języka JavaScript, która udostępnia funkcje uwierzytelniania w standardzie OAuth 2.0 (logowanie) oraz uzyskanie tokenu pozwalającego na dostęp do interfejsów API.
-     * Wiele `<link>` elementy dla arkuszy stylów (znany także jako *CSS*) takich jak *sampleStyles.css* i *tsiclient.css*. Arkusze stylów kontrolować szczegóły style visual strony, takich jak kolory, czcionki i odstępy.
-     * A `<script>` element, który jest używany do odwoływać się do biblioteki klienckiej JavaScript Insights serii czasu *tsiclient.js*. Strona korzysta z biblioteki do wywołania usługi Time Series Insights interfejsów API oraz do renderowania kontrolek wykresów na stronie.
+   * W obszarze `<head>` elementu znajdziesz metadane strony i zależności, które umożliwiają uruchomienie aplikacji:
+     * Element, który jest używany do odwoływania się do pliku biblioteki uwierzytelniania Azure Active Directory (ADAL) plik *ADAL. min. js.* `<script>` ADAL to biblioteka języka JavaScript, która udostępnia funkcje uwierzytelniania w standardzie OAuth 2.0 (logowanie) oraz uzyskanie tokenu pozwalającego na dostęp do interfejsów API.
+     * Wiele `<link>` elementów arkuszy stylów (nazywanych również *CSS*), takich jak *sampleStyles. css* i *tsiclient. css*. Arkusze stylów kontrolują szczegóły stylu strony wizualnej, takie jak kolory, czcionki i odstępy.
+     * Element, który jest używany do odwoływania się do Time Series Insights biblioteki klienckiej JavaScript *tsiclient. js.* `<script>` Strona używa biblioteki do wywoływania interfejsów API usługi Time Series Insights i renderowania formantów wykresu na stronie.
 
      >[!NOTE]
-     > * Kod źródłowy dla biblioteki ADAL JavaScript jest dostępna w [repozytorium azure-activedirectory biblioteki do js](https://github.com/AzureAD/azure-activedirectory-library-for-js).
-     > * Kod źródłowy biblioteki klienta JavaScript Insights serii czasu jest dostępna w [repozytorium tsiclient](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
+     > * Kod źródłowy biblioteki ADAL JavaScript jest dostępny w [repozytorium Azure-ActiveDirectory-Library-for-js](https://github.com/AzureAD/azure-activedirectory-library-for-js).
+     > * Kod źródłowy biblioteki klienta Time Series Insights JavaScript jest dostępny w [repozytorium tsiclient](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
 
-   * W obszarze `<body>` elementu, można znaleźć `<div>` elementów, które pomagają zdefiniować układ elementów na stronie, a druga `<script>` elementu:
-     * Pierwszy `<div>` element Określa **Zaloguj** okno dialogowe (`id="loginModal"`).
+   * W obszarze `<div>` `<script>` elementu znajdziesz elementy, które ułatwiają Definiowanie układu elementów na stronie i inny element: `<body>`
+     * Pierwszy `<div>` element określa okno dialogowe **logowania** (`id="loginModal"`).
      * Drugi element `<div>` pełni rolę elementu nadrzędnego dla następujących elementów:
        * Elementu nagłówkowego `<div>`, zawierającego komunikaty o stanie i informacje dotyczące logowania, wyświetlane w górnej części strony (`class="header"`).
-       * A `<div>` elementu w pozostałej części strony elementów treści, w tym wykresy (`class="chartsWrapper"`).
-       * A `<script>` sekcję zawierającą języka JavaScript, który służy do sterowania strony.
+       * Element dla pozostałej części elementów treści strony, w tym wykresów (`class="chartsWrapper"`). `<div>`
+       * `<script>` Sekcja zawierająca kod JavaScript używany do kontrolowania strony.
 
-   [![Próbki klienta Insights serii czasu za pomocą narzędzi dla deweloperów](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png#lightbox)
+   [![Przykład Time Series Insights klienta z Narzędzia deweloperskie](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png#lightbox)
 
-1. Rozwiń `<div class="chartsWrapper">` elementu w którym znajdziesz więcej podrzędnych `<div>` elementów. Te elementy są używane do określenia położenia każdej przykładowej kontrolki wykresu. Istnieje kilka pary `<div>` elementy, po jednym dla każdego przykład wykresu:
+1. Rozwiń element, aby znaleźć więcej elementów podrzędnych `<div>`. `<div class="chartsWrapper">` Te elementy są używane do określenia położenia każdej przykładowej kontrolki wykresu. Istnieje kilka par `<div>` elementów, jeden dla każdego przykładu wykresu:
 
    * Pierwszy element (`class="rowOfCardsTitle"`) zawiera opisowy tytuł podsumowujący, co przedstawia wykres. Na przykład: `Static Line Charts With Full-Size Legends.`
-   * Drugi (`class="rowOfCards"`) element jest elementem nadrzędnym, który zawiera dodatkowe podrzędne `<div>` elementy, które położenie formantów całego pakietu w wierszu.
+   * Drugi element (`class="rowOfCards"`) jest elementem nadrzędnym, który zawiera dodatkowe `<div>` elementy podrzędne, które umieszczają rzeczywiste kontrolki wykresu w wierszu.
 
-   [![Elementy div treści](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png#lightbox)
+   [![Elementy DIV Body](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png#lightbox)
 
-1. Rozwiń `<script type="text/javascript">` element, który jest bezpośrednio poniżej `<div class="chartsWrapper">` elementu. Początkowi sekcji kodu JavaScript na poziomie strony jest używana do obsługi całą logikę strony (uwierzytelnianie podczas wywoływania usługi Time Series Insights interfejsów API, renderowania kontrolek wykresów i inne):
+1. Rozwiń element, który znajduje się bezpośrednio `<div class="chartsWrapper">` poniżej elementu. `<script type="text/javascript">` Początek sekcji JavaScript na poziomie strony służy do obsługi wszystkich logiki strony (uwierzytelnianie, wywoływanie Time Series Insights interfejsów API usługi, renderowanie formantów wykresu i inne):
 
-   [![Treść skryptu](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
+   [![Skrypt treści](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
 
-## <a name="time-series-insights-javascript-client-library-concepts"></a>Pojęcia biblioteki klienta JavaScript Insights serii czasu
+## <a name="time-series-insights-javascript-client-library-concepts"></a>Time Series Insights pojęć dotyczących biblioteki klienta JavaScript
 
-Biblioteka klienta usługi Time Series Insights (*tsclient.js*) zawiera elementy abstrakcji do dwie ważne funkcje języka JavaScript:
+Biblioteka klienta Time Series Insights (*tsclient. js*) oferuje abstrakcje dla dwóch ważnych funkcji języka JavaScript:
 
-* **Otoka metod wywoływania interfejsów API zapytań czas serii Insights**: Interfejsy API REST, służących do zapytania usługi Time Series Insights danych przy użyciu wyrażeń agregujących. Te metody są zorganizowane w przestrzeni nazw TsiClient.Server biblioteki.
+* **Metody otoki do wywoływania interfejsów API zapytań Time Series Insights**: Interfejsy API REST, których można użyć do wykonywania zapytań dotyczących danych Time Series Insights przy użyciu wyrażeń agregujących. Metody są zorganizowane w przestrzeni nazw TsiClient. Server biblioteki.
 
-* **Metody tworzenia i wypełniania kilku typów kontrolek wykresów**: Metody można użyć do renderowania usługi Time Series Insights agregować dane na stronie sieci Web. Te metody są zorganizowane w przestrzeni nazw TsiClient.UX biblioteki.
+* **Metody tworzenia i wypełniania kilku typów kontrolek wykresów**: Metody, których można użyć do renderowania Time Series Insights zagregowanych danych na stronie sieci Web. Metody są zorganizowane w przestrzeni nazw TsiClient. UX biblioteki.
 
-Za pomocą tych definiowaniu deweloperzy mogą łatwiej tworzyć składniki programu graph i wykres interfejsu użytkownika, które są obsługiwane z danymi usługi Time Series Insights.
+Dzięki tym uproszczeniu deweloperzy mogą łatwiej tworzyć grafy interfejsu użytkownika i składniki wykresu, które są zasilane Time Series Insights danych.
 
 ### <a name="authentication"></a>Authentication
 
-[Usługi Time Series Insights Przykładowa aplikacja](https://insights.timeseries.azure.com/clientsample) jest aplikacja jednostronicowa, który obsługuje uwierzytelnianie użytkownika ADAL OAuth 2.0:
+[Przykładowa aplikacja Time Series Insights](https://insights.timeseries.azure.com/clientsample) jest aplikacją jednostronicową z obsługą uwierzytelniania użytkownika ADAL OAuth 2,0:
 
-1. Korzystając z biblioteki ADAL do uwierzytelniania, aplikacja kliencka musi być zarejestrowany w usłudze Azure Active Directory (Azure AD). W rzeczywistości zarejestrowana aplikacja jednostronicowa w celu używania [OAuth 2.0 niejawne udzielić przepływ](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-implicit-grant-flow).
-1. Aplikacja musi określić niektóre właściwości rejestrowania w czasie wykonywania. Właściwości obejmują identyfikator GUID klienta (`clientId`) oraz identyfikatora URI przekierowania (`postLogoutRedirectUri`).
-1. Później, aplikacja prosi *token dostępu* z usługi Azure AD. Token dostępu został wystawiony dla skończony zestaw uprawnień dla określonej usługi lub identyfikator interfejsu API (https:\//api.timeseries.azure.com). Uprawnienia tokenu są wystawiane w imieniu zalogowanego użytkownika. Identyfikator usługi lub interfejsu API jest inną właściwość, która jest zawarta w rejestracji usługi Azure AD aplikacji.
-1. Po ADAL zwraca token dostępu do aplikacji, jest przekazywany jako *tokenu elementu nośnego* kiedy uzyskuje dostęp do interfejsów API usługi Time Series Insights.
+1. W przypadku używania biblioteki ADAL do uwierzytelniania aplikacja kliencka musi być zarejestrowana w Azure Active Directory (Azure AD). W rzeczywistości aplikacja jednostronicowa jest zarejestrowana w celu użycia niejawnego [przepływu OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-implicit-grant-flow).
+1. Aplikacja musi określić niektóre właściwości rejestracji w czasie wykonywania. Właściwości obejmują identyfikator GUID klienta (`clientId`) i identyfikator URI przekierowania (`postLogoutRedirectUri`).
+1. Później aplikacja żąda *tokenu dostępu* z usługi Azure AD. Token dostępu jest wystawiony dla skończonego zestawu uprawnień dla określonej usługi lub identyfikatora interfejsu API (https:\//API.TIMESERIES.Azure.com). Uprawnienia tokenu są wystawiane w imieniu zalogowanego użytkownika. Identyfikator usługi lub interfejsu API to inna właściwość, która jest zawarta w rejestracji aplikacji usługi Azure AD.
+1. Gdy biblioteka ADAL zwróci token dostępu do aplikacji, zostanie ona przeniesiona jako *token okaziciela* , gdy uzyskuje dostęp do interfejsów api usługi Time Series Insights.
 
    [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=3-7,34-37)]
 
 > [!TIP]
-> Aby dowiedzieć się więcej na temat biblioteki uwierzytelniania usługi Azure AD obsługiwane przez firmę Microsoft, zobacz [dokumentacja usługi Azure Active Directory Authentication Library](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries#microsoft-supported-client-libraries).
+> Aby dowiedzieć się więcej na temat bibliotek uwierzytelniania usługi Azure AD obsługiwanych przez firmę Microsoft, zobacz [dokumentację dotyczącą biblioteki uwierzytelniania Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries#microsoft-supported-client-libraries).
 
 ### <a name="control-identification"></a>Identyfikacja kontrolki
 
-W podanym przykładzie `<div>` elementy są uporządkowane w obiekcie nadrzędnym `<body>` element zapewniają rozsądne układ wykresu steruje tym renderowania na stronie.
+W podanym przykładzie elementy `<div>` są rozmieszczone w elemencie nadrzędnym `<body>` , aby zapewnić rozsądny układ formantów wykresu, które są renderowane na stronie.
 
-Każdy `<div>` element określa właściwości umieszczania i atrybuty visual kontrolek wykresu. HTML element `id` właściwości będzie służyć jako unikatowych identyfikatorów, które można powiązać do określonych formantów do renderowania i zaktualizuj wizualizowania danych.
+Każdy `<div>` element określa właściwości położenia i wizualizacji atrybutów formantów wykresu. Właściwości elementu `id` HTML służy jako unikatowe identyfikatory powiązane z konkretnymi kontrolkami w celu renderowania i aktualizowania wizualizacji danych.
 
 ### <a name="aggregate-expressions"></a>Wyrażenia agregujące
 
-Interfejsów API biblioteki klienckiej usługi Time Series Insights za pomocą wyrażeń agregacji:
+Interfejsy API biblioteki klienta Time Series Insights używają wyrażeń agregujących:
 
-* Wyrażenie agregujące oferuje możliwość skonstruowania co najmniej jeden *terminy wyszukiwania*.
+* Wyrażenie agregujące zapewnia możliwość konstruowania co najmniej jednego *terminu wyszukiwania*.
 
-* Klient interfejsów API mają na celu zapewniają podobne funkcje do innej wersji demonstracyjnej aplikacji ( [Eksploratora usługi Time Series Insights](https://insights.timeseries.azure.com/demo)), który używa wyszukiwania zasięg, `where` predykatów, miary, i `splitBy` wartości.
+* Interfejsy API klienta zostały zaprojektowane w taki sposób, aby zapewniały podobną funkcjonalność do innej aplikacji demonstracyjnej ( [Eksplorator Time Series Insights](https://insights.timeseries.azure.com/demo)) `where` , która używa zakresu wyszukiwania, `splitBy` predykatów, miar i wartości.
 
-* Większość biblioteki klienckiej interfejsów API zająć tablicę wyrażeniami dotyczącymi agregacji, używanych przez usługę w celu skonstruowania zapytania danych usługi Time Series Insights.
+* Większość interfejsów API biblioteki klienta pobiera tablicę wyrażeń agregujących, których usługa używa do tworzenia zapytania o dane Time Series Insights.
 
 ### <a name="call-pattern"></a>Wzorzec wywołania
 
-Podczas wypełniania i renderowanie kontrolek wykresu jest zgodna ze wzorcem ogólne. Można obserwować ogólny wzorzec w całym przykładową aplikację i mogą pomóc w uzyskaniu przy użyciu biblioteki klienta:
+Wypełnianie i renderowanie formantów wykresu następuje po ogólnym wzorcu. Możesz obsłużyć ogólny wzorzec w całej przykładowej aplikacji i może pomóc podczas korzystania z biblioteki klienta:
 
-1. Zadeklaruj `array` zawierającą co najmniej jednego wyrażenia agregujące usługi Time Series Insights:
+1. Zadeklaruj `array` element do przechowywania co najmniej jednego Time Series Insights wyrażeń agregujących:
 
    ```javascript
    var aes =  [];
    ```
 
-1. Tworzenie *1* do *n* agregacji obiektów wyrażeń. Następnie należy dodać je do tablicy wyrażeniu agregującym:
+1. Kompiluj *1* do *n* obiektów wyrażeń agregujących. Następnie dodaj je do tablicy wyrażeń agregujących:
 
    ```javascript
    var ae = new tsiClient.ux.aggregateExpression(predicateObject, measureObject, measureTypes, searchSpan, splitByObject, color, alias, contextMenuActions);
@@ -161,14 +165,14 @@ Podczas wypełniania i renderowanie kontrolek wykresu jest zgodna ze wzorcem og�
    | --------- | ----------- | ------- |
    | `predicateObject` | Wyrażenie filtrowania danych |`{predicateString: "Factory = 'Factory3'"}` |
    | `measureObject`   | Nazwa właściwości miary, która jest używana | `{property: 'Temperature', type: "Double"}` |
-   | `measureTypes`    | Agregacje właściwość miary, która ma | `['avg', 'min']` |
-   | `searchSpan`      | Czas trwania i interwał rozmiaru wyrażeniu agregującym | `{from: startDate, to: endDate, bucketSize: '2m'}` |
-   | `splitByObject`   | Właściwość ciągu, którą chcesz podzielić przez (opcjonalny: może mieć wartości null) | `{property: 'Station', type: 'String'}` |
-   | `color`         | Kolor obiektów, które ma być renderowany | `'pink'` |
-   | `alias`           | Przyjazna nazwa dla wyrażenia agregującego | `'Factory3Temperature'` |
-   | `contextMenuActions` | Tablica działania, aby powiązać obiekty serii czasu w wizualizacji (opcjonalnie) | Aby uzyskać więcej informacji, zobacz [menu kontekstowe wyskakującego](#pop-up-context-menus). |
+   | `measureTypes`    | Agregacje właściwości miary, która ma zostać wybrana | `['avg', 'min']` |
+   | `searchSpan`      | Czas trwania i rozmiar interwału wyrażenia agregacji | `{from: startDate, to: endDate, bucketSize: '2m'}` |
+   | `splitByObject`   | Właściwość ciągu, która ma zostać podzielona przez (opcjonalnie: może mieć wartość null). | `{property: 'Station', type: 'String'}` |
+   | `color`         | Kolor obiektów, które mają być renderowane. | `'pink'` |
+   | `alias`           | Przyjazna nazwa wyrażenia agregującego | `'Factory3Temperature'` |
+   | `contextMenuActions` | Tablica akcji, które mają być powiązane z obiektami szeregów czasowych w wizualizacji (opcjonalnie) | Aby uzyskać więcej informacji, zobacz [menu kontekstowe](#pop-up-context-menus)podręcznych. |
 
-1. Wywołania zapytania usługi Time Series Insights przy użyciu interfejsów API TsiClient.Server żądania zagregowane dane:
+1. Wywołaj zapytanie Time Series Insights przy użyciu interfejsów API TsiClient. Server, aby zażądać danych agregacji:
 
    ```javascript
    tsiClient.server.getAggregates(token, envFQDN, aeTsxArray);
@@ -178,50 +182,50 @@ Podczas wypełniania i renderowanie kontrolek wykresu jest zgodna ze wzorcem og�
 
    | Parametr | Opis | Przykład |
    | --------- | ----------- | ------- |
-   | `token`     | Token dostępu dla interfejsu API usługi Insights serii czasu |  `authContext.getTsiToken()`<br />Aby uzyskać więcej informacji, zobacz [Authentication](#authentication) (Uwierzytelnianie). |
-   | `envFQDN`   | W pełni kwalifikowana nazwa domeny (FQDN) dla środowiska usługi Time Series Insights | W witrynie Azure portal. Na przykład: `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com`. |
-   | `aeTsxArray` | Tablica wyrażenia zapytania usługi Time Series Insights | Użyj `aes` zmiennej zgodnie z wcześniejszym opisem: `aes.map(function(ae){return ae.toTsx()}`. |
+   | `token`     | Token dostępu dla interfejsu API Time Series Insights |  `authContext.getTsiToken()`<br />Aby uzyskać więcej informacji, zobacz [Authentication](#authentication) (Uwierzytelnianie). |
+   | `envFQDN`   | W pełni kwalifikowana nazwa domeny (FQDN) dla środowiska Time Series Insights | Z Azure Portal. Na przykład: `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com`. |
+   | `aeTsxArray` | Tablica wyrażeń zapytania Time Series Insights | Użyj zmiennej `aes` zgodnie z wcześniejszym opisem `aes.map(function(ae){return ae.toTsx()}`:. |
 
-1. Przekształcanie skompresowany wynik, który jest zwracany z kwerendy usługi Time Series Insights do postaci JSON wizualizacji:
+1. Przekształć skompresowany wynik zwrócony z kwerendy Time Series Insights na kod JSON dla wizualizacji:
 
    ```javascript
    var transformedResult = tsiClient.ux.transformAggregatesForVisualization(result, aes);
    ```
 
-1. Tworzenie formantu wykresu za pomocą interfejsów API TsiClient.UX. Powiąż go do jednej z `<div>` elementów na stronie:
+1. Utwórz formant wykresu przy użyciu interfejsów API TsiClient. UX. Powiąż go z jednym z `<div>` elementów na stronie:
 
    ```javascript
    var barChart = new tsiClient.ux.BarChart(document.getElementById('chart3'));
    ```
 
-1. Wypełnij formant wykresu przy użyciu przekształconych obiektów danych JSON i renderowania kontrolki na stronie:
+1. Wypełnij formant wykresu przy użyciu przekształconych obiektów danych JSON i Renderuj formant na stronie:
 
    ```javascript
    barChart.render(transformedResult, {grid: true, legend: 'compact', theme: 'light'}, aes);
    ```
 
-## <a name="render-controls"></a>Renderowanie kontrolek
+## <a name="render-controls"></a>Renderowanie formantów
 
-Biblioteka klienta usługi Time Series Insights zapewnia osiem formantów unikatowy, out-of--box analytics:
+Biblioteka klienta Time Series Insights zapewnia osiem unikatowych, wbudowanych kontrolek analitycznych:
 
 * **Wykres liniowy**
 * **Wykres kołowy**
 * **Wykres słupkowy**
-* **heatmap**
-* **Formanty hierarchii**
-* **dostępne siatki**
-* **Zdarzenie dyskretnych osi czasu**
-* **Osie czasu przejścia stanu**
+* **mapę cieplną**
+* **kontrolki hierarchii**
+* **dostępna siatka**
+* **osie czasu zdarzeń dyskretnych**
+* **osie czasu przejścia stanu**
 
-### <a name="line-chart-bar-chart-and-pie-chart-examples"></a>Wykres liniowy, wykres słupkowy i przykłady wykres kołowy
+### <a name="line-chart-bar-chart-and-pie-chart-examples"></a>Przykłady wykresu liniowego, wykresu słupkowego i wykresu kołowego
 
-Spójrz na kod wersji demonstracyjnej, który jest używany do renderowania niektóre formanty standardowe wykresu. Należy pamiętać, model programowania i wzorce do tworzenia tych kontrolek. W szczególności sprawdź HTML w obszarze `// Example 3/4/5` komentarz, który renderuje formantów HTML `id` wartości `chart3`, `chart4`, i `chart5`.
+Przyjrzyj się kodowi demonstracyjnemu, który służy do renderowania niektórych standardowych kontrolek wykresu. Zanotuj model programowania i wzorce do tworzenia tych kontrolek. W celu zapoznania się z kodem `// Example 3/4/5` HTML w komentarzu, który renderuje `id` kontrolki `chart4`z wartościami `chart5` `chart3`HTML, i.
 
-Odwołaj z kroku 3 [stronie sekcji źródło i struktury](#page-source-and-structure) czy kontrolek wykresów są rozmieszczone w wierszach, na stronie. Każdy formant wykresu zawiera wiersz opisowy tytuł. W tym przykładzie trzy wykresy są wypełnione w obszarze `Multiple Chart Types From the Same Data` tytuł `<div>` elementu i są powiązane z trzech `<div>` elementy, które znajdują się poniżej tytułu:
+Odwołaj się od kroku 3 [sekcji źródła strony i struktury](#page-source-and-structure) , które są rozmieszczone w wierszach na stronie. Każdy formant wykresu ma opisowy wiersz tytułu. W tym przykładzie trzy wykresy są wypełniane pod `Multiple Chart Types From the Same Data` elementem title `<div>` i są powiązane z trzema `<div>` elementami, które znajdują się poniżej tytułu:
 
 [!code-html[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
 
-Poniższa sekcja kodu JavaScript wykorzystuje wzorce, które zostały opisane wcześniej: Tworzenie usługi Time Series Insights wyrażeniami dotyczącymi agregacji, ich używać do wykonywania zapytań dla danych usługi Time Series Insights i renderowania trzy wykresy. Trzy typy wykresów są używane z przestrzeni nazw tsiClient.ux: `LineChart`, `BarChart`, i `PieChart`. Typy wykresów są używane do tworzenia i renderowanie odpowiednich wykresów. Wszystkie trzy wykresy można użyć tych samych danych w wyrażeniu agregującym `transformedResult`:
+W poniższej sekcji kodu JavaScript użyto wzorców, które zostały opisane wcześniej: build Time Series Insights wyrażeń agregujących, użyj ich do wykonywania zapytań dotyczących Time Series Insights danych, a następnie renderowania trzech wykresów. Z przestrzeni nazw tsiClient. UX są używane trzy typy wykresów: `LineChart`, `BarChart`, i `PieChart`. Typy wykresów są używane do tworzenia i renderowania odpowiednich wykresów. Wszystkie trzy wykresy mogą używać tych samych danych `transformedResult`wyrażeń agregujących:
 
 [!code-javascript[code-sample2-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=241-262&highlight=13-14,16-17,19-20)]
 
@@ -231,44 +235,44 @@ Po renderowaniu trzy wykresy wyglądają następująco:
 
 ## <a name="advanced-features"></a>Funkcje zaawansowane
 
-Biblioteka klienta usługi Time Series Insights ma kilka dodatkowych funkcji, które można użyć do zaimplementowania kreatywnie wizualizacji danych.
+Biblioteka klienta Time Series Insights zawiera kilka dodatkowych funkcji, których można użyć do zaimplementowania wizualizacji danych.
 
 ### <a name="states-and-events"></a>Stany i zdarzenia
 
-Zaawansowane funkcje jest możliwość dodawania stanami i dyskretnych zdarzenia do wykresów. Ta funkcja jest przydatna do wyróżnienia zdarzeń, alertów i tworzenie przełączników stanu (włączenia/wyłączenia przełączników, na przykład).
+Zaawansowana funkcja to możliwość dodawania przejść między Stanami i zdarzeń dyskretnych do wykresów. Ta funkcja jest przydatna w przypadku wyróżniania zdarzeń, alertów i tworzenia przełączników stanu (na przykład przełączników włączania/wyłączania).
 
-Przyjrzyj się wokół kodu `// Example 10` komentarz. Ten kod renderuje kontrolkę wiersza pod tytułem `Line Charts with Multiple Series Types` i wiąże go do `<div>` element z kodem HTML `id` wartość `chart10`.
+Przyjrzyj się kodowi otaczającemu `// Example 10` komentarz. Kod renderuje kontrolkę wiersza pod tytułem `Line Charts with Multiple Series Types` i wiąże ją `<div>` z elementem z wartością `chart10`HTML `id` .
 
-W poniższych krokach opisano proces:
+Poniższe kroki opisują proces:
 
-1. Struktury o nazwie `events4` jest definiowana, aby pomieścić elementy zmiany stanu do śledzenia. Struktura zawiera:
+1. Struktura o nazwie `events4` jest zdefiniowana do przechowywania elementów zmiany stanu do śledzenia. Struktura zawiera:
 
    * Klucz będący ciągiem znaków o nazwie `Component States`.
    * Tablicę obiektów wartości reprezentujących stany. Każdy obiekt obejmuje:
      * Klucz będący ciągiem znaków, zawierający znacznik czasu języka JavaScript w standardzie ISO.
      * Tablicę zawierającą właściwości stanu: kolor i opis.
 
-1. `events5` Struktura jest zdefiniowana dla `Incidents`, który zawiera tablicę elementów zdarzenia do śledzenia. Struktura tablicy ma taki sam kształt, jak struktura opisana dla elementu `events4`.
+1. Struktura jest zdefiniowana dla `Incidents`, która przechowuje tablicę elementów zdarzenia do śledzenia. `events5` Struktura tablicy ma taki sam kształt, jak struktura opisana dla elementu `events4`.
 
-1. Wykres liniowy jest renderowana i przekazuje parametry dwie struktury za pomocą opcji wykresu: `events:` i `states:`. Należy pamiętać, inne parametry opcji do określania `tooltip:`, `theme:`, lub `grid:`.
+1. Wykres liniowy jest renderowany i przekazywany do dwóch struktur z parametrami opcji wykresu: `events:` i. `states:` Zwróć uwagę na inne parametry opcji `tooltip:`, które określają, `theme:`, `grid:`lub.
 
 [!code-javascript[code-sample-states-events](~/samples-javascript/pages/tutorial/index.html?range=337-389&highlight=5,26,51)]
 
-Romb znaczniki/podręcznego-dokonywania systemu windows, które są używane do wskazania zdarzenia i kolorowe paski/podręcznego-dokonywania windows wzdłuż osi czasu wskazują zmiany stanu:
+Znaczniki rombów/okna podręczne, które są używane do wskazywania zdarzeń i kolorowe paski/okna podręczne, wzdłuż skali czasu wskazują zmiany stanu:
 
 [![Wykresy liniowe z wieloma typami serii](media/tutorial-explore-js-client-lib/tcs-line-charts-with-multiple-series-types.png)](media/tutorial-explore-js-client-lib/tcs-line-charts-with-multiple-series-types.png#lightbox)
 
 ### <a name="pop-up-context-menus"></a>Wyskakujące menu kontekstowe
 
-Inny zaawansowanych funkcji jest możliwość tworzenia niestandardowego menu kontekstowego (menu podręcznym kliknij prawym przyciskiem myszy). Niestandardowe menu kontekstowe są przydatne w przypadku włączania akcji i kolejnych logicznych kroków, znajdujących się w zakresie aplikacji.
+Kolejną zaawansowaną funkcjonalnością jest możliwość tworzenia niestandardowych menu kontekstowych (menu podręczne kliknij prawym przyciskiem myszy). Niestandardowe menu kontekstowe są przydatne w przypadku włączania akcji i kolejnych logicznych kroków, znajdujących się w zakresie aplikacji.
 
-Przyjrzyj się kodowi wokół `// Example 13/14/15` komentarz. Ten kod renderuje początkowo wykres liniowy pod tytułem `Line Chart with Context Menu to Create Pie/Bar Chart`. Wykres jest powiązany z `<div>` element z kodem HTML `id` wartość `chart13`.
+Przyjrzyj się kodowi do `// Example 13/14/15` komentarza. Ten kod początkowo renderuje wykres liniowy pod tytułem `Line Chart with Context Menu to Create Pie/Bar Chart`. Wykres jest powiązany `<div>` z elementem z wartością `chart13`HTML `id` .
 
-Dzięki wykorzystaniu menu kontekstowych wykres liniowy umożliwia dynamiczne tworzenie wykresów kołowych i słupkowych powiązanych z elementami `<div>` za pomocą identyfikatorów `chart14` i `chart15`. Wykres kołowy i wykres słupkowy również umożliwiają menu kontekstowe własne funkcje: możliwość kopiowanie danych z wykres kołowy, wykres słupkowy i odpowiednio Drukuj dane wykresu słupkowego w oknie konsoli przeglądarki.
+Dzięki wykorzystaniu menu kontekstowych wykres liniowy umożliwia dynamiczne tworzenie wykresów kołowych i słupkowych powiązanych z elementami `<div>` za pomocą identyfikatorów `chart14` i `chart15`. Zarówno wykres kołowy, jak i wykres słupkowy korzystają również z menu kontekstowego, aby włączyć własne funkcje: możliwość kopiowania danych z wykresu kołowego do wykresu słupkowego i drukowania danych wykresu słupkowego odpowiednio do okna konsoli przeglądarki.
 
-W poniższych krokach opisano proces:
+Poniższe kroki opisują proces:
 
-1. Zdefiniowano szereg działań niestandardowych. Każda akcja zawiera tablicę z co najmniej jednym elementem. Każdy element definiuje pojedynczy element menu kontekstowego:
+1. Zdefiniowano szereg akcji niestandardowych. Każda akcja zawiera tablicę z co najmniej jednym elementem. Każdy element definiuje pojedynczy element menu kontekstowego:
 
    * `barChartActions`: ta akcja definiuje menu kontekstowe wykresu kołowego, zawierające jeden element określający pojedynczy element menu:
      * `name`: tekst, który jest używany dla elementu menu: „Print parameters to console” (Parametry drukowania do konsoli).
@@ -277,57 +281,64 @@ W poniższych krokach opisano proces:
        * `splitBy`: `splitBy` Wartość.
        * `timestamp`: znacznik czasu.
 
-   * `pieChartActions`: ta akcja definiuje menu kontekstowe wykresu słupkowego, zawierające jeden element określający pojedynczy element menu. Kształt, a schemat jest taka sama jak `barChartActions` elementu opisanego wcześniej, ale `action` funkcja różni się znacznie: tworzy wystąpienia i renderuje wykres słupkowy. `ae` Argument jest używany do określenia wyrażeniu agregującym tablicy, który jest przekazywany w czasie wykonywania, po otwarciu elementu menu. Funkcja ustawia również właściwość `ae.contextMenu` za pomocą menu kontekstowego `barChartActions`.
-   * `contextMenuActions`: ta akcja definiuje menu kontekstowe wykresu liniowego, zawierające trzy elementy określające trzy elementy menu. Kształt i schematu dla każdego elementu jest taka sama, jak elementy, które zostały opisane wcześniej. Podobnie jak dla elementu `barChartActions`, pierwszy element zapisuje trzy argumenty funkcji w oknie konsoli przeglądarki. Podobnie jak `pieChartActions` elementu, Utwórz wystąpienie dwa kolejne elementy i odpowiednio renderowania wykresu kołowego i wykres słupkowy. Następne dwa elementy ustawiają również swoje właściwości `ae.contextMenu` poprzez menu kontekstowe odpowiednio `pieChartActions` i `barChartActions`.
+   * `pieChartActions`: ta akcja definiuje menu kontekstowe wykresu słupkowego, zawierające jeden element określający pojedynczy element menu. Kształt i schemat są takie same jak `barChartActions` opisane wcześniej elementy, `action` ale funkcja jest bardzo różna: tworzy wystąpienie i renderuje wykres słupkowy. `ae` Argument jest używany do określenia tablicy wyrażeń agregujących, która jest przesyłana w czasie wykonywania, gdy zostanie otwarty element menu. Funkcja ustawia również właściwość `ae.contextMenu` za pomocą menu kontekstowego `barChartActions`.
+   * `contextMenuActions`: ta akcja definiuje menu kontekstowe wykresu liniowego, zawierające trzy elementy określające trzy elementy menu. Kształt i schemat dla każdego elementu są takie same jak elementy, które zostały opisane wcześniej. Podobnie jak dla elementu `barChartActions`, pierwszy element zapisuje trzy argumenty funkcji w oknie konsoli przeglądarki. Podobnie jak w przypadku elementu,drugidwaelementytworzyirenderujeodpowiedniowykreskołowyiwykressłupkowy.`pieChartActions` Następne dwa elementy ustawiają również swoje właściwości `ae.contextMenu` poprzez menu kontekstowe odpowiednio `pieChartActions` i `barChartActions`.
 
-1. Dwoma wyrażeniami dotyczącymi agregacji są wypychane na `aes` wyrażeniu agregującym tablicy. Określają one `contextMenuActions` tablicy dla każdego elementu. Wyrażenia są używane przez kontrolkę wykresu liniowego.
+1. Dwa wyrażenia agregujące są wypychane do `aes` tablicy wyrażeń agregujących. Określają `contextMenuActions` one tablicę dla każdego elementu. Wyrażenia są używane przez kontrolkę wykresu liniowego.
 
-1. Ten wykres liniowy jest początkowo renderowany, z którego wykresu kołowego i wykres słupkowy, może być renderowany w czasie wykonywania.
+1. Tylko wykres liniowy jest renderowany jako pierwszy, z którego wykres kołowy i wykres słupkowy mogą być renderowane w czasie wykonywania.
 
 [!code-javascript[code-sample-context-menus](~/samples-javascript/pages/tutorial/index.html?range=461-540&highlight=7,16,29,61-64,78)]
 
-Poniższy zrzut ekranu przedstawia wykresy z ich odpowiedniego kontekstu wyskakujących menu. Wykres kołowy z wykresem słupkowym, zostały utworzone dynamicznie przy użyciu opcji menu kontekstowe wykresu wiersza.
+Poniższy zrzut ekranu przedstawia wykresy z odpowiednimi menu kontekstowymi podskakujących okienek. Wykres kołowy i wykres słupkowy zostały utworzone dynamicznie przy użyciu opcji menu kontekstowego wykresu liniowego.
 
-[![Wykres liniowy z menu kontekstowego, aby utworzyć wykres kołowy i wykres słupkowy](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png#lightbox)
+[![Wykres liniowy z menu kontekstowym do utworzenia wykresu kołowego i wykresu słupkowego](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png#lightbox)
 
 ### <a name="brushes"></a>Pędzle
 
-Pędzle służy do określania zakresu zakres czasu do zdefiniowania akcji, takich jak powiększenia i zapoznaj się z.
+Możesz użyć pędzli, aby określić zakres czasu do definiowania akcji, takich jak powiększenie i eksplorowanie.
 
-Kod, który jest używany w celu zilustrowania pędzle jest wyświetlany w `Line Chart with Context Menu to Create Pie/Bar Chart` przykładu, który opisuje kontekst wyskakujących menu.
+Kod, który jest używany do ilustrowania pędzli pokazano w `Line Chart with Context Menu to Create Pie/Bar Chart` przykładzie, który opisuje menu kontekstowe podręcznych.
 
-* Akcje związane z pędzlem są bardzo podobne do menu kontekstowego w tym, że definiują dla pędzla szereg akcji niestandardowych. Każda akcja zawiera tablicę, która ma co najmniej jeden element. Każdy element definiuje pojedynczy element menu kontekstowego:
+* Akcje związane z pędzlem są bardzo podobne do menu kontekstowego w tym, że definiują dla pędzla szereg akcji niestandardowych. Każda akcja zawiera tablicę, która zawiera co najmniej jeden element. Każdy element definiuje pojedynczy element menu kontekstowego:
    * `name`: tekst, który jest używany dla elementu menu: „Print parameters to console” (Parametry drukowania do konsoli).
    * `action`: skojarzona z elementem menu akcja, która jest zawsze funkcją anonimową, przyjmującą dwa argumenty. W tym przypadku argumenty są zapisywane w oknie konsoli przeglądarki:
-     * `fromTime`: `from` Sygnaturę czasową wybór pędzla.
-     * `toTime`: `to` Sygnaturę czasową wybór pędzla.
+     * `fromTime`: `from` Sygnatura czasowa zaznaczenia pędzla.
+     * `toTime`: `to` Sygnatura czasowa zaznaczenia pędzla.
 
-* Akcje pędzla są dodawane jako jeszcze jedna właściwość opcji wykresu. `brushContextMenuActions: brushActions` Właściwość jest przekazywana do `linechart.Render` wywołania.
+* Akcje pędzla są dodawane jako jeszcze jedna właściwość opcji wykresu. Właściwość jest przenoszona `linechart.Render` do wywołania. `brushContextMenuActions: brushActions`
 
 [!code-javascript[code-sample-brushes](~/samples-javascript/pages/tutorial/index.html?range=526-540&highlight=1,13)]
 
-[![Wykres liniowy z menu kontekstowego, aby utworzyć wykres kołowy i wykres słupkowy przy użyciu pędzli](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png#lightbox)
+[![Wykres liniowy z menu kontekstowym, aby utworzyć wykres kołowy i wykres słupkowy przy użyciu pędzli](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png#lightbox)
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Po ukończeniu samouczka Wyczyść utworzone zasoby:
+
+1. W menu po lewej stronie w [Azure Portal](https://portal.azure.com)wybierz pozycję **wszystkie zasoby**, Znajdź Azure Time Series Insights grupę zasobów.
+1. Usuń całą grupę zasobów (i wszystkie znajdujące się w niej zasoby), wybierając pozycję **Usuń** lub Usuń osobno każdy zasób.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Zaloguj się i eksplorowanie przykładowej aplikacji usługi Time Series Insights i jego źródło
-> * Użyj interfejsów API w bibliotece klienckiej JavaScript Insights serii czasu
-> * Tworzenie i wypełnianie kontrolek wykresów z danymi usługi Time Series Insights za pomocą języka JavaScript
+> * Zaloguj się i Eksploruj Time Series Insights przykładową aplikację i jej Źródło
+> * Używanie interfejsów API w Time Series Insights bibliotece klienckiej JavaScript
+> * Używanie języka JavaScript do tworzenia i wypełniania formantów wykresu za pomocą danych Time Series Insights
 
-Usługa Time Series Insights Przykładowa aplikacja korzysta z zestawu danych demonstracyjnych. Aby dowiedzieć się, jak można tworzyć własne środowiska usługi Time Series Insights oraz zestawu danych, przeczytaj następujący artykuł:
+Time Series Insights Przykładowa aplikacja używa demonstracyjnego zestawu danych. Aby dowiedzieć się, jak utworzyć własne środowisko Time Series Insights i zestaw danych, przeczytaj następujący artykuł:
 
 > [!div class="nextstepaction"]
 > [Samouczek: Tworzenie środowiska usługi Azure Time Series Insights](tutorial-create-populate-tsi-environment.md)
 
-Można także wyświetlić pliki źródłowe aplikacji przykładowej usługi Time Series Insights:
+Można też wyświetlić przykładowe pliki źródłowe aplikacji Time Series Insights:
 
 > [!div class="nextstepaction"]
-> [Czas Series Insights przykładowe repozytorium aplikacji](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)
+> [Time Series Insights przykładowe repozytorium aplikacji](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)
 
-Przeczytaj dokumentację referencyjną interfejsu API klienta usługi Time Series Insights:
+Przeczytaj dokumentację dotyczącą interfejsu API klienta Time Series Insights:
 
 > [!div class="nextstepaction"]
-> [Dokumentacja referencyjna interfejsu API usługi Insights serii czasu](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)
+> [Dokumentacja interfejsu API Time Series Insights](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)

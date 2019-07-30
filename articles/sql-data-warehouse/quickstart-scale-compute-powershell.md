@@ -8,14 +8,14 @@ ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: implement
 ms.date: 04/17/2018
-ms.author: Anthony.vanGemert
+ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: ddf33c927054512d1807d1c9e3429edaa5de25b9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3c3be507fd544ec86790f820830c2275e7703564
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479253"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641086"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Szybki start: skalowanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse za pomocą programu PowerShell
 
@@ -119,7 +119,7 @@ Aby wyświetlić stan samodzielnie, użyj następującego polecenia:
 $database | Select-Object DatabaseName,Status
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz już wiesz, jak skalować zasoby obliczeniowe na potrzeby magazynu danych. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
 
 > [!div class="nextstepaction"]

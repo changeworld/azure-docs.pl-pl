@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: fdf60a454aeb19b83ce455a771b8399c90af3bce
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b42ab9155f5b9719ef6477934722021e3fbac99
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563743"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638241"
 ---
 # <a name="create-entities-without-utterances"></a>Tworzenie jednostek bez wypowiedzi
 
@@ -114,13 +114,13 @@ W polu wypowiedź `Where is Request relocation from employee new to the company 
 
 Rola jest nazwanym podtypem na podstawie kontekstu. Jest ona dostępna we wszystkich jednostkach, w tym wstępnie utworzonych i nieopartych na maszynach jednostkach. 
 
-Składnia dla roli polega **`{Entityname:Rolename}`** na tym, że nazwa jednostki występuje dwukropek, a następnie nazwa roli. Na przykład `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+Składnia dla roli polega **`{Entityname:Rolename}`** na tym, że nazwa jednostki występuje dwukropek, a następnie nazwa roli. Na przykład `Move {personName} from {Location:Origin} to {Location:Destination}`.
 
 1. Z **kompilacji** zaznacz **jednostek** w panelu po lewej stronie.
 
-1. Wybierz pozycję **Create new entity** (Utwórz nową jednostkę). Wprowadź nazwę `LocationUsingRoles`. Wybierz typ **proste** i wybierz **gotowe**. 
+1. Wybierz pozycję **Create new entity** (Utwórz nową jednostkę). Wprowadź nazwę `Location`. Wybierz typ **proste** i wybierz **gotowe**. 
 
-1. Wybierz **jednostek** z panelu po lewej stronie, a następnie wybierz nową jednostkę **LocationUsingRoles** utworzony w poprzednim kroku.
+1. Wybierz pozycję **jednostki** w lewym panelu, a następnie wybierz nową **lokalizację** jednostki utworzoną w poprzednim kroku.
 
 1. W **nazwy roli** polu tekstowym wprowadź nazwę roli `Origin` i wprowadzić. Dodaj drugi nazwę roli programu `Destination`. 
 

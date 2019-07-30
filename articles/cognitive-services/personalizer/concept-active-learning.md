@@ -1,71 +1,71 @@
 ---
-title: Aktywna nauka - Personalizer
+title: Active Learning — Personalizacja
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: edjez
-ms.openlocfilehash: c44afc81a7ec9d05cdc04cc8bc46c77cd51ceaf8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722529"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663709"
 ---
-# <a name="active-learning-and-learning-policies"></a>Aktywne uczenie i nauki zasad 
+# <a name="active-learning-and-learning-policies"></a>Aktywne zasady uczenia i uczenia 
 
-Twoja aplikacja wywołuje interfejs API rangę, pojawi się pozycja zawartości. Logika biznesowa służy ta pozycja można określić, czy zawartość powinna być wyświetlany obraz do potrzeb użytkownika. Podczas wyświetlania zawartości w rankingu, to znaczy _active_ rangi zdarzeń. Gdy aplikacji nie są wyświetlane, randze spośród wszystkich dokumentów zawartości, czyli _nieaktywne_ rangi zdarzeń. 
+Gdy aplikacja wywołuje interfejs API rangi, otrzymujesz rangę zawartości. Logika biznesowa może korzystać z tej rangi, aby określić, czy zawartość ma być wyświetlana użytkownikowi. Gdy zostanie wyświetlona sklasyfikowana zawartość, która jest _aktywnym_ zdarzeniem rangi. Gdy aplikacja nie wyświetla tej sklasyfikowanej zawartości, to jest zdarzenie nieaktywnej rangi. 
 
-Informacje dotyczące aktywnego rangi zdarzenia są zwracane do Personalizer. Te informacje są używane, aby kontynuować, uczenia modelu przez bieżące zasady uczenia.
+Aktywne informacje o zdarzeniu rangi są zwracane do personalizacji. Te informacje służą do dalszego szkolenia modelu za pomocą bieżących zasad nauki.
 
-## <a name="active-events"></a>Aktywne wydarzenia
+## <a name="active-events"></a>Aktywne zdarzenia
 
-Aktywne wydarzenia powinien zawsze pokazywane użytkownikowi i wywołań za wynagrodzeniem powinien nastąpić powrót do fazą uczenia. 
+Aktywne zdarzenia powinny zawsze być widoczne dla użytkownika, a połączenie płatne powinno zostać zwrócone, aby zamknąć pętlę uczenia. 
 
-### <a name="inactive-events"></a>Nieaktywne zdarzenia 
+### <a name="inactive-events"></a>Zdarzenia nieaktywne 
 
-Nieaktywne zdarzenia nie należy zmienić odpowiedni model, ponieważ użytkownik nie miał możliwość wyboru rangi zawartości.
+Nieaktywne zdarzenia nie powinny zmieniać modelu bazowego, ponieważ użytkownik nie miał możliwości wyboru z sklasyfikowanej zawartości.
 
-## <a name="dont-train-with-inactive-rank-events"></a>Nie szkolenie przy użyciu nieaktywne rangi zdarzenia 
+## <a name="dont-train-with-inactive-rank-events"></a>Nie pouczenie z nieaktywnymi zdarzeniami rangi 
 
-W przypadku niektórych aplikacji może być konieczne wywołania interfejsu API rangę, nie wiedząc o tym jeszcze, jeśli aplikacja wyświetli wyniki dla użytkownika. 
+W przypadku niektórych aplikacji może być konieczne wywołanie interfejsu API rangi bez znajomości tego, czy aplikacja będzie wyświetlać wyniki dla użytkownika. 
 
-Dzieje się tak po:
+Dzieje się tak w przypadku:
 
-* Możesz może być wstępnie renderowanie niektóre interfejsu użytkownika, który użytkownik może lub nie może pobrać się. 
-* Aplikacja może wykonywania predykcyjne personalizacji, w którym rangi wywołań z kontekstem mniej w czasie rzeczywistym i swoje dane wyjściowe mogą lub nie mogą być używane przez aplikację. 
+* Może być wstępnie wyrenderowany niektóre elementy interfejsu użytkownika, które użytkownik może lub może nie zobaczyć. 
+* Aplikacja może przeprowadzać personalizację predykcyjną, w której są wykonywane wywołania rangi z mniejszym kontekstem w czasie rzeczywistym, a ich dane wyjściowe mogą być używane przez aplikację. 
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Wyłącz aktywne uczenie nieaktywne rangi zdarzenia podczas wywołania rangi
+### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Wyłącz aktywną naukę dla nieaktywnych zdarzeń rangi podczas wywołania rangi
 
-Aby wyłączenie automatycznej nauki, należy wywołać ranga z `learningEnabled = False`.
+Aby wyłączyć automatyczną naukę, zadzwoń do rangi z `learningEnabled = False`.
 
-Learning nieaktywne zdarzenia niejawnie została aktywowana, jeśli wyślesz nagradzania do rangi.
+Uczenie się dla nieaktywnego zdarzenia jest niejawnie aktywowane w przypadku wysłania nagrody dla rangi.
 
-## <a name="learning-policies"></a>Nauka zasad
+## <a name="learning-policies"></a>Zasady uczenia
 
-Nauka zasad określa, szczególnymi *hiperparametrów* szkolenia modelu. Dwa modele te same dane, skonfigurowanych pod kątem uczenia różne zasady, będą zachowywać się inaczej.
+Zasady uczenia określają konkretne *Parametry* szkolenia modeli. Dwa modele tych samych danych, przeszkolonych dla różnych zasad uczenia się, zachowywać się inaczej.
 
-### <a name="importing-and-exporting-learning-policies"></a>Importowanie i eksportowanie zasad nauki
+### <a name="importing-and-exporting-learning-policies"></a>Importowanie i eksportowanie zasad uczenia
 
-Można importować i eksportować learning pliki zasad w witrynie Azure portal. Dzięki temu można zapisać istniejące zasady, przetestuj je, zastąpić je i archiwum je z kontroli kodu źródłowego jako artefakty do użytku w przyszłości i inspekcji.
+Możesz importować i eksportować pliki zasad nauki z Azure Portal. Pozwala to na zapisanie istniejących zasad, ich testowanie i zastępowanie oraz archiwizowanie ich w kontroli kodu źródłowego jako artefaktów do przyszłego odwołania i inspekcji.
 
-### <a name="learning-policy-settings"></a>Ustawienia zasad nauki
+### <a name="learning-policy-settings"></a>Ustawienia zasad uczenia
 
-Ustawienia w **zasad Learning** nie są przeznaczone do można zmienić. Tylko zmienić ustawienia, gdy już poznasz ich wpływ na Personalizer. Zmiana ustawień bez tej wiedzy spowoduje, że efekty uboczne, w tym, co unieważniło Personalizer modeli.
+Ustawienia **zasad uczenia** nie są przeznaczone do zmiany. Zmień ustawienia tylko wtedy, gdy zrozumiesz, jak ma to wpływ na personalizowanie. Zmiana ustawień bez tej wiedzy spowoduje skutki uboczne, w tym unieważnienie modeli personalizacji.
 
-### <a name="comparing-effectiveness-of-learning-policies"></a>Porównywanie skuteczności nauka zasad
+### <a name="comparing-effectiveness-of-learning-policies"></a>Porównanie skuteczności zasad uczenia
 
-Możesz porównać jak różne zasady Learning czy wykonano względem historycznych danych w dziennikach Personalizer wykonując [ocen w trybie offline](concepts-offline-evaluation.md).
+Można porównać różne zasady uczenia w odniesieniu do przeszłych danych w dziennikach personalizacji, przeprowadzając [oceny w trybie offline](concepts-offline-evaluation.md).
 
-[Przekaż własne zasady uczenia](how-to-offline-evaluation.md) do porównania z obecnych zasad uczenia.
+[Przekaż własne zasady uczenia](how-to-offline-evaluation.md) , aby porównać je z bieżącymi zasadami nauki.
 
-### <a name="discovery-of-optimized-learning-policies"></a>Odnajdywanie zasad zoptymalizowanych nauki
+### <a name="discovery-of-optimized-learning-policies"></a>Odnajdywanie zoptymalizowanych zasad uczenia
 
-Personalizer można utworzyć bardziej zoptymalizowanego zasady nauki, w trakcie [oceny w trybie offline](how-to-offline-evaluation.md). Bardziej zoptymalizowanego zasada learning, która jest wyświetlana w ma być lepsze możliwości oceny w trybie offline, umożliwia uzyskanie lepsze wyniki, gdy są używane w trybie online w Personalizer.
+Personalizowanie może utworzyć bardziej zoptymalizowane zasady uczenia podczas przeprowadzania [oceny w trybie offline](how-to-offline-evaluation.md). Bardziej zoptymalizowane zasady uczenia, które są widoczne na potrzeby oceny w trybie offline, dają lepsze wyniki w przypadku korzystania z Internetu w programie personalizacji.
 
-Po utworzeniu zasad zoptymalizowanych learning można zastosować go bezpośrednio do Personalizer, więc Zamienia bieżące zasady natychmiast lub zapisać go do dalszej oceny i w przyszłości zdecyduj, czy chcesz odrzucić, Zapisz lub zastosować je później.
+Po utworzeniu zoptymalizowanych zasad uczenia można zastosować je bezpośrednio do personalizacji, aby zastąpić bieżące zasady natychmiast. można też zapisać je do dalszej oceny i zdecydować, czy należy je odrzucić, zapisać lub zastosować później.

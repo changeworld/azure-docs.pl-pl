@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5dd49035414c7e717c3d60ab9bc185f42dcac408
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6d4991a0a05bbdd7143987bfa227cc40732cda35
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560862"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639251"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Granice modelu i kluczy LUIS
 Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), która kontroluje intencji, jednostek i funkcji usługi LUIS. Drugi ma [limitów przydziału](#key-limits) na podstawie typu klucza. Trzecie pole granice wynosi [klawiatury kombinacji](#keyboard-controls) do kontrolowania witryny sieci Web usługi LUIS. Czwarty obszar jest [mapowanie regionów świata](luis-reference-regions.md) między LUIS tworzenia witryny sieci Web i LUIS [punktu końcowego](luis-glossary.md#endpoint) interfejsów API. 
@@ -76,7 +76,7 @@ Tworzenia klucza ma różne limity dotyczące tworzenia i punktu końcowego. Klu
 |Language Understanding [Subscription][pricing] — S0 — warstwa podstawowa|nieprawidłowy|50/sekundę|Wykonywanie zapytań punktu końcowego usługi LUIS|
 |[Usługa poznawcze][pricing] — S0 — warstwa standardowa|nieprawidłowy|50/sekundę|Wykonywanie zapytań punktu końcowego usługi LUIS|
 |[Integracja analizy tonacji](luis-how-to-publish-app.md#enable-sentiment-analysis)|nieprawidłowy|Brak opłat|Dodawanie informacji opinii, w tym kluczowe frazy |
-|Integracja funkcji rozpoznawania mowy|nieprawidłowy|Żądania punktu końcowego 5.50 USD/1 tysięcy|Konwertowanie mowy wypowiedź tekstowe wypowiedź i LUIS zwracają.|
+|[Integracja mowy](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|nieprawidłowy|Żądania punktu końcowego 5.50 USD/1 tysięcy|Konwertowanie mowy wypowiedź tekstowe wypowiedź i LUIS zwracają.|
 
 ## <a name="keyboard-controls"></a>Klawiatury
 
@@ -84,7 +84,7 @@ Tworzenia klucza ma różne limity dotyczące tworzenia i punktu końcowego. Klu
 |--|--|
 |Kontrolka + E|Przełącza między tokenów i jednostki na liście wypowiedzi|
 
-## <a name="website-sign-in-time-period"></a>Witryny sieci Web zaloguj się w przedziale czasu
+## <a name="website-sign-in-time-period"></a>Okres logowania do witryny sieci Web
 
 Dotyczy dostępu logowania **60 minut**. Po tym okresie wystąpi błąd. Musisz zalogować się ponownie.
 

@@ -1,20 +1,20 @@
 ---
 title: Przewodnik Szybki Start platformy Azure — tworzenie kopii zapasowej maszyny wirtualnej przy użyciu szablonu Menedżer zasobów
 description: Dowiedz się, jak utworzyć kopię zapasową maszyn wirtualnych przy użyciu szablonu Azure Resource Manager
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.author: raynew
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 643ae23ef566cb433bd3890e6ab2f38050cb1f47
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 7075e127192635c08aa2da2b4798dea6d6abb13b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467148"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639414"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Tworzenie kopii zapasowej maszyny wirtualnej na platformie Azure przy użyciu szablonu Menedżer zasobów
 
@@ -70,7 +70,7 @@ Remove-AzRecoveryServicesVault -Vault $vault
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start utworzono magazyn usługi Recovery Services, włączono ochronę maszyny wirtualnej i utworzono początkowy punkt odzyskiwania.
 

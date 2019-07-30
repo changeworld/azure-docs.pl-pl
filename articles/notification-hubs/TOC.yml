@@ -7,6 +7,7 @@
     - name: Integracja z usługą App Service Mobile Apps
       href: notification-hubs-app-service.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Tworzenie centrum powiadomień — Azure Portal
       href: create-notification-hub-portal.md

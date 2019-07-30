@@ -9,20 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 17693b7dff1df1d538f2f4a180be025e0de67c82
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bbd86ab2ffa55903715da05b0120442f300a1702
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563481"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637851"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Przestarzałe wstępnie skompilowane jednostki w aplikacji LUIS
 Następujące wstępnie utworzone jednostki są przestarzałe i nie można dodawać do nowych aplikacji usługi LUIS.
 
 * **Data i godzina**: Istniejące aplikacje LUIS, które używają **typu DateTime** , powinny zostać zmigrowane do **datetimeV2**, mimo że jednostka DateTime nadal działa we wstępnie istniejących aplikacjach, które go używają.
-* **Lokalizacja geograficzna**: Istniejące aplikacje LUIS korzystające  z lokalizacji geograficznej są obsługiwane do grudnia 2018.
+* **Lokalizacja geograficzna**: Istniejące aplikacje LUIS korzystające z lokalizacji geograficznej są obsługiwane do grudnia 2018.
 * **Encyklopedia**: Istniejące aplikacje LUIS korzystające z **encyklopedii** są obsługiwane do 2018 grudnia.
 
 ## <a name="geography-culture"></a>Lokalizacja geograficzna kultury

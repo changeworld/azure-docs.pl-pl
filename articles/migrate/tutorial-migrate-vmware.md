@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 885c877f219f59ab5049cf7b8e01243077d6d3eb
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 7fba9cbbaa15359e7e4dd95e66645dd5f4022431
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348387"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640766"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrowanie maszyn wirtualnych VMware na platformę Azure (bez wykorzystania agentów)
 
@@ -41,7 +41,7 @@ Maszyny wirtualne programu VMware można migrować do platformy Azure za pomocą
 
 Aby zdecydować, czy chcesz korzystać z migracji opartej na agencie, czy na agencie, zapoznaj się z następującymi artykułami:
 
-- [Dowiedz się, w jaki sposób](server-migrate-overview.md) działa migracja bez agentów, i zapoznaj [się z ograniczeniami](server-migrate-overview.md#agentless-migration-limitations).
+- [Dowiedz się, jak](server-migrate-overview.md) działa migracja bez agentów i [PORÓWNAJ metody migracji](server-migrate-overview.md#compare-migration-methods).
 - [Przeczytaj ten artykuł](tutorial-migrate-vmware-agent.md) , jeśli chcesz użyć metody opartej na agencie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -93,7 +93,7 @@ Postępuj zgodnie z instrukcjami w [tym artykule](how-to-set-up-appliance-vmware
 
 Azure Migrate wymaga wprowadzenia zmian w maszynie wirtualnej w celu zapewnienia, że maszyny wirtualne można migrować do platformy Azure.
 
-- W niektórych [systemach operacyjnych](server-migrate-overview.md#agentless-migration-limitations)Azure Migrate automatycznie wprowadza te zmiany.
+- W niektórych systemach operacyjnych Azure Migrate automatycznie wprowadza te zmiany. [Dowiedz się więcej](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
 - W przypadku migrowania maszyny wirtualnej, która nie ma jednego z tych systemów operacyjnych, postępuj zgodnie z instrukcjami, aby przygotować maszynę wirtualną.
 - Ważne jest, aby wprowadzić te zmiany przed rozpoczęciem migracji. W przypadku migrowania maszyny wirtualnej przed wprowadzeniem zmiany, maszyna wirtualna może nie zostać uruchomiona na platformie Azure.
 - Zmiany konfiguracji wprowadzone w lokalnych maszynach wirtualnych są replikowane na platformę Azure po włączeniu replikacji dla maszyny wirtualnej. Aby upewnić się, że zmiany są replikowane, należy się upewnić, że migrowany punkt odzyskiwania jest późniejszy niż czas, w którym zmiany konfiguracji zostały wprowadzone lokalnie.
@@ -145,7 +145,7 @@ Po ukończeniu odnajdywania można rozpocząć replikację maszyn wirtualnych VM
     - Jeśli nie uruchomiono oceny lub nie chcesz używać ustawień oceny, wybierz opcję **Brak** opcji.
     - W przypadku wybrania opcji korzystania z oceny wybierz grupę maszyn wirtualnych i nazwę oceny.
 
-    ![Wybór oceny](./media/tutorial-migrate-vmware/select-assessment.png)
+    ![Wybierz ocenę](./media/tutorial-migrate-vmware/select-assessment.png)
 
 5. W obszarze **maszyny wirtualne**Wyszukaj maszyny wirtualne w razie potrzeby i sprawdź każdą maszynę wirtualną, którą chcesz zmigrować. Następnie kliknij **przycisk Dalej: Ustawienia**docelowe.
 
@@ -157,7 +157,7 @@ Po ukończeniu odnajdywania można rozpocząć replikację maszyn wirtualnych VM
     - Wybierz pozycję **nie** , jeśli nie chcesz stosować korzyść użycia hybrydowego platformy Azure. Następnie kliknij przycisk **Next** (Dalej).
     - Wybierz opcję **tak** , jeśli masz maszyny z systemem Windows Server, które są objęte aktywnym programem Software Assurance lub subskrypcjami systemu Windows Server, i chcesz zastosować korzyść do migrowanych maszyn. Następnie kliknij przycisk **Next** (Dalej).
 
-    ![Ustawienia docelowe](./media/tutorial-migrate-vmware/target-settings.png)
+    ![Ustawienia elementu docelowego](./media/tutorial-migrate-vmware/target-settings.png)
 
 8. W obszarze **obliczenia**Sprawdź nazwę, rozmiar, typ dysku systemu operacyjnego i zestaw dostępności maszyny wirtualnej. Maszyny wirtualne muszą być zgodne z [wymaganiami platformy Azure](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements).
 
@@ -216,13 +216,13 @@ Po rozpoczęciu replikacji różnicowej można przeprowadzić migrację testową
 Wykonaj migrację testową w następujący sposób:
 
 
-1. W obszarze**serwery** > celówmigracji > Azure Migrate:  **Migracja**serwera, kliknij przycisk **Testuj zmigrowane serwery**.
+1. W obszarze**serwery** > celówmigracji > Azure Migrate: **Migracja**serwera, kliknij przycisk **Testuj zmigrowane serwery**.
 
-     ![Testowanie migrowanych serwerów](./media/tutorial-migrate-vmware/test-migrated-servers.png)
+     ![Przeprowadzono migrację testową serwerów](./media/tutorial-migrate-vmware/test-migrated-servers.png)
 
 2. Kliknij prawym przyciskiem myszy maszynę wirtualną do przetestowania, a następnie kliknij pozycję **Testuj migrację**.
 
-    ![Testowanie migracji](./media/tutorial-migrate-vmware/test-migrate.png)
+    ![Testuj migrację](./media/tutorial-migrate-vmware/test-migrate.png)
 
 3. W obszarze **migracja testowa**wybierz sieć wirtualną platformy Azure, w której zostanie umieszczona maszyna wirtualna platformy Azure po migracji. Zalecamy użycie nieprodukcyjnej sieci wirtualnej.
 4. Rozpocznie się zadanie **migracji testowej** . Monitoruj zadanie w powiadomieniach portalu.
@@ -241,7 +241,7 @@ Po zweryfikowaniu, że migracja testowa działa zgodnie z oczekiwaniami, można 
     ![Replikowanie serwerów](./media/tutorial-migrate-vmware/replicate-servers.png)
 
 2. W obszarze **replikowanie maszyn**kliknij prawym przyciskiem myszy maszynę wirtualną > **migracji**.
-3. W  > obszarze Migrowanie**Zamknij maszyny wirtualne i przeprowadź planowaną migrację bez utraty danych**wybierz pozycję **tak** > **OK**.
+3. W > obszarze Migrowanie**Zamknij maszyny wirtualne i przeprowadź planowaną migrację bez utraty danych**wybierz pozycję **tak** > **OK**.
     - Domyślnie Azure Migrate zamyka lokalną maszynę wirtualną i uruchamia replikację na żądanie, aby synchronizować wszystkie zmiany maszyny wirtualnej, które wystąpiły od momentu ostatniej replikacji. Zapewnia to brak utraty danych.
     - Jeśli nie chcesz zamykać maszyny wirtualnej, wybierz pozycję **nie**
 4. Rozpocznie się zadanie migracji dla maszyny wirtualnej. Śledź zadanie w powiadomieniach platformy Azure.

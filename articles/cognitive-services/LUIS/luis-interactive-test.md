@@ -9,17 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: c1a0afc909aa7ef16fa54b931e1601c2ce7304cc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 31d979b92bdf050f28ac5d7549218016dc5e473c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560423"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638057"
 ---
-# <a name="test-your-luis-app-in-the-luis-portal"></a>Testowanie aplikacji LUIS w portalu LUIS
 <a name="train-your-app"></a>
+
+# <a name="test-your-luis-app-in-the-luis-portal"></a>Testowanie aplikacji LUIS w portalu LUIS
+
 [Testowanie](luis-concept-test.md) aplikacji jest procesem iteracyjnym. Po szkolenia aplikacją usługi LUIS, należy ją przetestować przy użyciu wypowiedzi próbki, aby sprawdzić, czy intencje i podmioty są rozpoznawane prawidłowo. Jeśli nie jesteś, aktualizowanie aplikacją usługi LUIS, szkolenie i test ponownie. 
 
 <!-- anchors for H2 name changes -->
@@ -31,13 +33,13 @@ ms.locfileid: "68560423"
 
 1. Dostęp do aplikacji, wybierając jego nazwę na **Moje aplikacje** strony. 
 
-2. Aby uzyskać dostęp do **testu** panelu slajdów w poziomie, wybierz opcję **testu** w Twojej aplikacji na górnym panelu.
+1. Aby uzyskać dostęp do **testu** panelu slajdów w poziomie, wybierz opcję **testu** w Twojej aplikacji na górnym panelu.
 
     ![Strona szkolenie i testowanie aplikacji](./media/luis-how-to-interactive-test/test.png)
 
-3. Wprowadź wypowiedź w polu tekstowym i naciśnij klawisz Enter. Można wpisać jako wiele wypowiedzi testowania, jak chcesz **Test**, ale tylko jeden wypowiedź w danym momencie.
+1. Wprowadź wypowiedź w polu tekstowym i naciśnij klawisz Enter. Można wpisać jako wiele wypowiedzi testowania, jak chcesz **Test**, ale tylko jeden wypowiedź w danym momencie.
 
-4. Wypowiedź, jego przeznaczenie najważniejsze i oceny są dodawane do listy wypowiedzi poniżej pola tekstowego.
+1. Wypowiedź, jego przeznaczenie najważniejsze i oceny są dodawane do listy wypowiedzi poniżej pola tekstowego.
 
     ![Testowanie interaktywne identyfikuje niewłaściwego intencji](./media/luis-how-to-interactive-test/test-weather-1.png)
 
@@ -49,7 +51,7 @@ Sprawdź szczegóły wyniku testu w **Sprawdź** panelu.
 
     ![Wybierz przycisk Sprawdź, aby zobaczyć więcej szczegółów na temat wyników testu](./media/luis-how-to-interactive-test/inspect.png)
 
-2. **Kontroli** zostanie wyświetlony panel. Na panelu są dostępne u góry oceniania przeznaczenie, a także żadnych określonych jednostek. Zespół przedstawia wynik wybranego wypowiedź.
+1. **Kontroli** zostanie wyświetlony panel. Na panelu są dostępne u góry oceniania przeznaczenie, a także żadnych określonych jednostek. Zespół przedstawia wynik wybranego wypowiedź.
 
     ![Na panelu są dostępne u góry oceniania przeznaczenie, a także żadnych określonych jednostek. Zespół przedstawia wynik wybranego wypowiedź.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
@@ -57,7 +59,7 @@ Sprawdź szczegóły wyniku testu w **Sprawdź** panelu.
 
 1. Jeśli u góry oceniania celem jest niepoprawny, wybierz **Edytuj** przycisku.
 
-2.  Na liście rozwijanej wybierz poprawny przeznaczenie wypowiedź.
+1.  Na liście rozwijanej wybierz poprawny przeznaczenie wypowiedź.
 
     ![Wybierz prawidłowe intencji](./media/luis-how-to-interactive-test/intent-select.png)
 
@@ -103,16 +105,14 @@ Użyj poniższej procedury, aby uwzględnić [sprawdzania pisowni Bing w wersji 
 
 1. W **testu** okienku, wprowadź wypowiedź. Gdy przewiduje wypowiedź wybierz **[Sprawdź](#inspect-score)** poniżej wypowiedź wprowadzony. 
 
-2. Gdy **Sprawdź** zostanie otwarty panel, wybierz opcję  **[porównania z opublikowaną](#compare-with-published-version)** . 
+1. Gdy **Sprawdź** zostanie otwarty panel, wybierz opcję  **[porównania z opublikowaną](#compare-with-published-version)** . 
 
-3. Gdy **opublikowano** zostanie otwarty panel, wybierz opcję  **[dodatkowe ustawienia](#additional-settings-in-test-panel)** .
+1. Gdy **opublikowano** zostanie otwarty panel, wybierz opcję  **[dodatkowe ustawienia](#additional-settings-in-test-panel)** .
 
-4. W wyskakującym oknie dialogowym Wprowadź swoje **sprawdzania pisowni Bing** klucza usługi. 
-    ![Wprowadź klucz usługi sprawdzania pisowni Bing](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+1. W podręcznym oknie dialogowym zaznacz pole wyboru **włącz sprawdzanie pisowni Bing** i wprowadź klucz, a następnie wybierz pozycję **gotowe**. 
+    ![Wprowadź klucz usługi sprawdzania pisowni Bing](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-5. Wprowadź kwerendę niepoprawne sprawdzania pisowni takich jak `book flite to seattle` i wprowadź select. Niepoprawne pisownię wyrazu `flite` jest zastępowany zapytania wysyłane do usługi LUIS i wynikowy JSON zarówno oryginalnego zapytania, jest wyświetlany jako `query`i pisownię poprawiony w zapytaniu, jako `alteredQuery`.
-
-    ![Poprawione Pisownia JSON](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
+1. Wprowadź kwerendę niepoprawne sprawdzania pisowni takich jak `book flite to seattle` i wprowadź select. Niepoprawne pisownię wyrazu `flite` jest zastępowany zapytania wysyłane do usługi LUIS i wynikowy JSON zarówno oryginalnego zapytania, jest wyświetlany jako `query`i pisownię poprawiony w zapytaniu, jako `alteredQuery`.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>

@@ -53,6 +53,8 @@
       href: use-editor-create-project.md
     - name: Osadzanie widżetów w aplikacji
       href: video-indexer-embed-widgets.md
+    - name: Odzyskiwanie po awarii
+      href: video-indexer-disaster-recovery.md
     - name: Dostosowywanie modeli zawartości
       items:
         - name: Person (Osoba)

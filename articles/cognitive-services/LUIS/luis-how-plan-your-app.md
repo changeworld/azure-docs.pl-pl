@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 121423682bbd9bbb32f2ab1d02e48d3237ee830d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dc648b30dc1236080be06044f510557ae0ce9476
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563774"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638315"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>Planowanie aplikacji LUIS przy użyciu domeny podmiotu, intencji i jednostek
 
-Należy zaplanować Twojej aplikacji. Określ domenę, w tym możliwe intencje i podmioty, które mają zastosowanie do aplikacji.  
+Aby zaplanować aplikację, zidentyfikuj domenę obszaru tematu. Obejmuje to możliwe intencje i jednostki, które są istotne dla Twojej aplikacji.  
 
 ## <a name="identify-your-domain"></a>Zidentyfikuj domeny
 
@@ -39,11 +39,13 @@ Pomyśl o [intencji](luis-concept-intent.md) , które są istotne dla zadań apl
 
 ## <a name="create-example-utterances-for-each-intent"></a>Utwórz przykład wypowiedzi dla każdego intencji
 
-Po określeniu intencji Utwórz 10 lub 15 wypowiedzi przykład dla każdego intencji. Najpierw nie będą mieć mniej niż ta liczba lub utworzyć wiele wypowiedzi dla każdego intencji. Każdy wypowiedź powinna być inna niż poprzednie wypowiedź. Dobre różnych w wypowiedzi zawiera ogólną wyrazów, wybór programu word, zlecenie czasu teraźniejszego i znaki interpunkcyjne. 
+Po ustaleniu intencji należy utworzyć dla każdego zamiaru 15 do 30 przykład wyrażenia długości. Aby rozpocząć od, nie ma mniej niż tej liczby lub Utwórz zbyt wiele wyrażenia długości dla każdego zamiaru. Każdy wypowiedź powinna być inna niż poprzednie wypowiedź. Dobre różnych w wypowiedzi zawiera ogólną wyrazów, wybór programu word, zlecenie czasu teraźniejszego i znaki interpunkcyjne. 
+
+Przejrzyj [wyrażenia długości](luis-concept-utterance.md) , aby uzyskać więcej informacji.
 
 ## <a name="identify-your-entities"></a>Identyfikowanie jednostek
 
-Na przykład wypowiedzi identyfikuje jednostek, które mają zostać wyodrębnione. Aby zarezerwować lotu, muszą pewne informacje, takie jak docelowy, Data, linii lotniczych, kategoria bilet, a podróży klasy. Utwórz jednostki dla tych typów danych, a następnie Oznacz [jednostek](luis-concept-entity-types.md) w wypowiedzi przykładzie ponieważ są one ważne przy wykonywaniu intencji. 
+Na przykład wypowiedzi identyfikuje jednostek, które mają zostać wyodrębnione. Aby zaksięgować lot, potrzebne są informacje, takie jak lokalizacja docelowa, Data, linia lotnicza, Kategoria biletu i Klasa podróży. Utwórz jednostki dla tych typów danych, a następnie Oznacz [jednostki](luis-concept-entity-types.md) w przykładzie wyrażenia długości, ponieważ są one ważne dla realizacji zamierzeń. 
 
 Po ustaleniu, które obiekty do użycia w aplikacji, należy pamiętać o tym, że istnieją różne rodzaje jednostek do przechwytywania relacje między typami obiektów. [Jednostki w LUIS](luis-concept-entity-types.md) zapewnia więcej szczegółów na temat różnych typów.
 

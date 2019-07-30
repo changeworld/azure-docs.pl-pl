@@ -1,73 +1,73 @@
 ---
-title: Scenariusz oceny - Personalizer
+title: Ocena scenariusza — Personalizacja
 titleSuffix: Azure Cognitive Services
-description: Personalizer można stosować w dowolnej sytuacji, w której aplikacji można wybrać odpowiednie element, akcji lub produktu do wyświetlenia — Aby ulepszyć środowisko pracy, osiągać lepsze wyniki biznesowe lub zwiększyć wydajność.
+description: Personalizacja może być stosowana w każdej sytuacji, w której aplikacja może wybrać odpowiedni element, akcję lub produkt do wyświetlenia — w celu lepszego działania, osiągnięcia lepszych wyników firmy lub zwiększenia produktywności.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: a5bf0d7d0478ad836ed1921b302ab01b004ec73c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 465fba3a466aceaf9ef7b71e4b1957bfdbcad766
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722214"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663642"
 ---
 # <a name="where-can-you-use-personalizer"></a>Gdzie można używać usługi Personalizacja?
 
-Użyj Personalizer w sytuacji, gdy Twoja aplikacja potrzebuje do wybierz element w prawo, akcji lub produktu do wyświetlenia — Aby ulepszyć środowisko pracy, osiągać lepsze wyniki biznesowe lub zwiększyć wydajność. 
+Użyj personalizacji w każdej sytuacji, w której aplikacja musi wybrać odpowiedni element, akcję lub produkt do wyświetlenia, aby zapewnić lepszy komfort, osiągać lepsze wyniki biznesowe lub zwiększyć produktywność. 
 
-Personalizer korzysta z uczenia maszynowego, aby wybrać akcję dla użytkownika. Wybór zależy znaczne zwiększenie ilości, jakości i dystrybucji danych wysyłanych do usługi.
+Personalizacja używa uczenia maszynowego, aby wybrać akcję, która ma być wyświetlana użytkownikowi. Wybór może się różnić w zależności od ilości, jakości i dystrybucji danych wysyłanych do usługi.
 
-### <a name="checklist-for-applying-personalizer"></a>Lista kontrolna dotycząca stosowanie Personalizer
+### <a name="checklist-for-applying-personalizer"></a>Lista kontrolna zastosowania personalizacji
 
 
-Personalizer można stosować w sytuacjach, gdzie:
+Można zastosować personalizację w sytuacjach, w których:
 
-* Masz firmy lub cel jego użyteczność aplikacji.
-* Odbywa się się w Twojej aplikacji, gdzie udostępniających kontekstowych decyzji co do wyświetlenia użytkownikom poprawi tego celu.
-* Najlepszy wybór można i powinny zostać uzyskane od wynik za wynagrodzeniem zachowanie i łączna liczba zbiorowe użytkownika.
-* Korzystanie z uczenia maszynowego na potrzeby personalizacji następuje [wytycznych Użyj odpowiada](ethics-responsible-use.md) i wybranej opcji.
-* Kontekstowe decyzja może być wyrażona jako klasyfikacji do najlepszej opcji (Akcja) z ograniczony zestaw opcji.
-* Jak dobrze wybór w rankingu, pracował dla twojej aplikacji można określić mierząc niektóre aspekty zachowania użytkowników i przedstawienie jej w _nagradzaj wynik_. To jest liczbą z zakresu od -1 do 1.
-* Wynik za wynagrodzeniem nie Przenieś zbyt wiele czynników mylących lub zewnętrznych czynników. Czas trwania eksperymentu jest tyle niskie, że wynik za wynagrodzeniem może zostać obliczony, gdy są one nadal obowiązują.
-* Kontekst dla ranga można wyrazić jako lista co najmniej 5 [funkcji](concepts-features.md) , jeśli uważasz może pomóc wybrać odpowiednie opcje, a które nie zawierają danych osobowych. (PII).
-* Informacje dotyczące zawartości każdej z opcji, _akcji_, jako lista co najmniej 5 [funkcji](concepts-features.md) traktować pomocy Personalizer wprowadzi właściwym wyborem.
-* Aplikacja może przechowywać dane dla długotrwałych wystarczających do historii interakcji co najmniej 100 000.
+* Użytkownik ma cel biznesowy lub użyteczny dla Twojej aplikacji.
+* Masz miejsce w aplikacji, w którym należy wprowadzić kontekstową decyzję, którą należy pokazać użytkownikom w celu usprawnienia tego celu.
+* Najlepszym wyborem może być i powinna być uczenie się od rozłącznych zachowań użytkowników i łącznego wyniku.
+* Korzystanie z uczenia maszynowego na potrzeby personalizacji odbywa się zgodnie z [właściwymi wskazówkami dotyczącymi użycia](ethics-responsible-use.md) .
+* Decyzja kontekstowa może być wyrażona jako Klasyfikacja najlepszej opcji (Akcja) z ograniczonego zestawu opcji.
+* Sposób, w jaki zamierzone wybór działa dla aplikacji, można określić przez zmierzenie pewnego aspektu zachowania użytkownika i wyrażanie go w _wyniku nagrody_. Jest to liczba z przedziału od-1 do 1.
+* Wynik nagrody nie powoduje zbyt wielu lub zewnętrznych czynników. Czas trwania eksperymentu jest niski, ponieważ wynik nagrody może być obliczany, gdy nadal ma zastosowanie.
+* Kontekst dla rangi można wyrazić jako listę co najmniej 5 [funkcji](concepts-features.md) , które można uznać za właściwy wybór i który nie zawiera informacji umożliwiających identyfikację użytkownika. (PII).
+* Istnieją informacje o każdej wybranej zawartości, _akcji_, jako lista co najmniej 5 [funkcji](concepts-features.md) , które należy wziąć pod uwagę, aby ułatwić sobie wybranie.
+* Aplikacja może przechowywać dane przez wystarczająco dużo, aby gromadzić historię co najmniej 100 000 interakcji.
 
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>Uwagi dotyczące stosowania Personalizer uczenia maszynowego
+## <a name="machine-learning-considerations-for-applying-personalizer"></a>Zagadnienia dotyczące uczenia maszynowego dotyczące zastosowania personalizacji
 
-Personalizer opiera się na wzmocnienie uczenia i podejście, machine Learning, czyli prowadzone przez opinii, że nadajesz mu. 
+Personalizacja jest oparta na nauce wzmacniania, która jest podejściem do uczenia maszynowego, które wyraża opinię. 
 
-Personalizer dowiesz się najlepiej w sytuacjach, gdzie:
+Personalizowanie nauczy się najlepiej w sytuacjach, gdy:
 
-* Ma wystarczającej liczby zdarzeń na bieżąco optymalne personalizacji, jeśli problem drifts wraz z upływem czasu (takie jak preferencje w wiadomości lub sposób). Personalizer dostosuje się do ciągłych zmian w rzeczywistych warunkach, ale wyniki nie będą optymalne, jeśli nie ma wystarczającej liczby zdarzeń i danych, aby dowiedzieć się więcej z próbę odnalezienia i rozliczenia w nowych wzorców. Należy wybrać wystarczająco często wykonywanymi przypadek użycia. Należy wziąć pod uwagę, wyszukiwanie przypadków użycia, które zdarzają się co najmniej 500 razy dziennie.
-* Kontekstu i działania jest dosyć [funkcji](concepts-features.md) aby ułatwić szkolenia.
-* Ma mniej niż 50 akcji do rangi na wywołanie.
-* Ustawienia przechowywania danych umożliwiają Personalizer zbierania wystarczającej ilości danych do wykonywania oceny w trybie offline i zasady optymalizacji. Jest to zazwyczaj punktów danych co najmniej 50 000.
+* Istnieje wystarczająco dużo zdarzeń, aby zachować dostęp do optymalnej personalizacji, jeśli problem zostanie odczytany z upływem czasu (na przykład preferencje w wiadomościach lub w sposób). Personalizowanie dostosuje się do ciągłej zmiany w świecie rzeczywistym, ale wyniki nie będą optymalne, jeśli nie ma wystarczającej liczby zdarzeń i danych, które należy poznać, aby odkryć i rozliczyć nowe wzorce. Należy wybrać przypadek użycia, który ma być często wystarczający. Rozważ wyszukiwanie przypadków użycia, które wystąpią co najmniej 500 razy dziennie.
+* Kontekst i akcje mają wystarczającą liczbę [funkcji](concepts-features.md) , aby ułatwić uczenie się.
+* Istnieje mniej niż 50 akcji do rangi na wywołanie.
+* Ustawienia przechowywania danych umożliwiają personalizację gromadzenie wystarczającej ilości danych w celu przeprowadzenia oceny w trybie offline i optymalizacji zasad. Zwykle jest to co najmniej 50 000 punktów danych.
 
-## <a name="monitor-effectiveness-of-personalizer"></a>Monitor skuteczności Personalizer
+## <a name="monitor-effectiveness-of-personalizer"></a>Monitorowanie skuteczności personalizowania
 
-Można monitorować skuteczność Personalizer okresowo wykonując [ocen w trybie offline](concepts-offline-evaluation.md).
+Skuteczność personalizowania można monitorować okresowo przez wykonywanie [ocen w trybie offline](concepts-offline-evaluation.md).
 
-## <a name="use-personalizer-with-recommendation-engines"></a>Za pomocą usług Personalizer aparaty rekomendacji
+## <a name="use-personalizer-with-recommendation-engines"></a>Używanie personalizacji z aparatami rekomendacji
 
-Wiele firm używa aparaty rekomendacji, Narzędzia marketingowe i działających na, segmentacji odbiorców i klastrowania, filtrowania z wykorzystaniem współpracy i innych środków do polecaj produkty z katalogu dużych klientów.
+Wiele firm używa aparatów rekomendacji, narzędzi marketingowych i kampanii, segmentacji odbiorców i klastrowania, filtrowania do współpracy i innych metod, aby zalecać produkty z dużego wykazu klientom.
 
-[Repozytorium usługi GitHub firmy Microsoft Recommenders](https://github.com/Microsoft/Recommenders) zawiera przykłady i najlepsze rozwiązania dotyczące tworzenia systemy rekomendacji, podana jako notesów programu Jupyter. Prezentuje przykłady pracy przygotowywania danych, budowanie modeli, oceny, dostosowywania i operacjonalizacji aparaty rekomendacji, w przypadku wielu typowych metod xDeepFM, w tym SAR, ALS, KMS, DKN.
+[Repozytorium GitHub firmy Microsoft](https://github.com/Microsoft/Recommenders) zawiera przykłady i najlepsze rozwiązania dotyczące kompilowania systemów zaleceń, które są udostępniane jako notesy Jupyter. Zawiera ona przykładowe działania dotyczące przygotowywania danych, tworzenia modeli, oceniania, dostrajania i operacjonalizowaniai aparatów rekomendacji dla wielu wspólnych metod, takich jak xDeepFM, SAR, ALS, KMS, DKN.
 
-Personalizer może współpracować z aparat rekomendacji, gdy nie jest obecny.
+Personalizowanie może współdziałać z aparatem rekomendacji, gdy jest obecny.
 
-* Aparaty rekomendacji zająć dużo elementów (na przykład, 500 000) i zaleca się to podzbiór (np. 20 najpopularniejszych) z setek lub tysięcy opcji.
-* Personalizer przyjmuje niewielką liczbę akcji z dużą ilością informacji o nich i szereguje je w czasie rzeczywistym dla danego kontekstu rozbudowane, podczas gdy większość aparaty rekomendacji tylko kilka atrybutów dotyczących użytkowników, produktów i ich interakcje.
-* Personalizer zaprojektowano w celu autonomicznie zapoznaj się z preferencjami użytkownika cały czas, który umożliwia uzyskanie lepsze wyniki, gdzie zawartość zmienia się szybko, takich jak wiadomości, wydarzeń na żywo na żywo zawartości społeczności, zawartości przy użyciu codzienne aktualizacje lub sezonowych zawartości.
+* Aparaty rekomendacji pobierają duże ilości elementów (na przykład 500 000) i zalecają podzbiór (np. 20 najważniejszych) z setek lub tysięcy opcji.
+* Personalizacja wykonuje niewielką liczbę akcji z wieloma informacjami o nich i ustala ich rangę w czasie rzeczywistym dla danego rozbudowanego kontekstu, a większość aparatów rekomendacji używa tylko kilku atrybutów dotyczących użytkowników, produktów i ich interakcji.
+* Personalizacja została zaprojektowana, aby samodzielnie eksplorować preferencje użytkownika przez cały czas, co zapewni lepsze wyniki, dzięki czemu zawartość będzie szybko zmieniana, taka jak Aktualności, wydarzenia na żywo, zawartość społeczności na żywo, zawartość z codziennymi aktualizacjami lub zawartość sezonowa.
 
-Zazwyczaj jest używane do dane wyjściowe to aparat rekomendacji (na przykład o 20 najpopularniejszych produktów dla niektórych klientów) i używać go jako danych wejściowych akcji dla Personalizer.
+Typowym zastosowaniem jest przejęcie danych wyjściowych aparatu rekomendacji (na przykład 20 najważniejszych produktów dla określonego klienta) i użycie go jako akcji wejściowych dla personalizacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Etyki & aj odpowiada](ethics-responsible-use.md).
+[Etyka & odpowiedzialna za użycie](ethics-responsible-use.md).

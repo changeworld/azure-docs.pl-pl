@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: a9a6e7ae48a51ab10e6ba2e5d3996e61938c6f3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b962fc32cdcde0509cfa60d105022bb208633ae3
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560847"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639290"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testowanie wsadowe przy użyciu 1000 wyrażenia długości w portalu LUIS
 
-Batch testowania weryfikuje Twoje [active](luis-concept-version.md#active-version) uczonego modelu do pomiaru jego dokładności prognozy. Test usługi batch ułatwia przeglądanie dokładność każdego intencji i jednostek w bieżącym modelu uczonego na wykresie. Przejrzyj wyniki testów usługi batch, aby podjąć odpowiednie działania w celu zwiększenia dokładności, takie jak dodanie więcej wypowiedzi przykład intencji, jeśli aplikacja często nie można zidentyfikować poprawne intencji.
+Batch testowania weryfikuje Twoje [active](luis-concept-version.md#active-version) uczonego modelu do pomiaru jego dokładności prognozy. Test wsadowy ułatwia przeglądanie dokładności poszczególnych założeń i jednostek w bieżącym przeszkolonym modelu, wyświetlając wyniki z wykresem. Przejrzyj wyniki testów usługi batch, aby podjąć odpowiednie działania w celu zwiększenia dokładności, takie jak dodanie więcej wypowiedzi przykład intencji, jeśli aplikacja często nie można zidentyfikować poprawne intencji.
 
 ## <a name="group-data-for-batch-test"></a>Dane grupy dla usługi batch testu
 
-Jest ważne, czy jesteś nowym użytkownikiem usługi LUIS wypowiedzi używane do testowania usługi batch. Jeśli masz zestaw wypowiedzi, Podziel wypowiedzi w trzech zestawów: wypowiedzi dodane do intencji, wypowiedzi otrzymane od opublikowanych punktu końcowego i wypowiedzi używany do testów partii usługi LUIS, po jego przygotowaniu. 
+Jest ważne, czy jesteś nowym użytkownikiem usługi LUIS wypowiedzi używane do testowania usługi batch. Jeśli masz zestaw danych wyrażenia długości, Podziel wyrażenia długości na trzy zestawy: przykład wyrażenia długości dodany do intencji, wyrażenia długości otrzymany z opublikowanego punktu końcowego i wyrażenia długości używany do wsadowego testowania LUIS po jego przeszkoleniu. 
 
-## <a name="a-dataset-of-utterances"></a>Zestaw wypowiedzi
+## <a name="a-data-set-of-utterances"></a>Zestaw danych wyrażenia długości
 
-Prześlij plik wsadowy w wypowiedzi, znane jako *dataset*, do testowania usługi batch. Zestaw danych jest pliku w formacie JSON zawierającego maksymalnie 1000 etykietą **niepowieloną** wypowiedzi. Można testować maksymalnie 10 zestawów danych w aplikacji. Jeśli potrzebujesz więcej testów, należy usunąć zestaw danych, a następnie dodaj nową.
+Prześlij plik wsadowy wyrażenia długości, nazywany *zestawem danych*, na potrzeby testowania wsadowego. Zestaw danych jest plikiem w formacie JSON zawierającym maksymalnie 1 000 oznaczony niezduplikowaną wyrażenia długości . W aplikacji można testować do 10 zestawów danych. Jeśli chcesz przetestować więcej, Usuń zestaw danych, a następnie Dodaj nowy.
 
 |**reguły**|
 |--|
@@ -106,7 +106,7 @@ Typowe błędy:
 
 ## <a name="batch-test-state"></a>Stan testu usługi Batch
 
-Usługa LUIS śledzi stan ostatniego testu każdego zestawu danych. Obejmuje to data ostatniego uruchomienia rozmiar (liczba wypowiedzi w zadaniu wsadowym) i wynik ostatniego (Liczba pomyślnie przewidywane wypowiedzi).
+LUIS śledzi stan ostatniego testu zestawu danych. Obejmuje to data ostatniego uruchomienia rozmiar (liczba wypowiedzi w zadaniu wsadowym) i wynik ostatniego (Liczba pomyślnie przewidywane wypowiedzi).
 
 <a name="sections-of-the-results-chart"></a>
 
@@ -114,7 +114,7 @@ Usługa LUIS śledzi stan ostatniego testu każdego zestawu danych. Obejmuje to 
 
 Wynik testu usługi batch jest wykres punktowy, znane jako macierz błędu. Ten wykres jest porównanie sposób 4 wypowiedzi w pliku wsadowego i celem przewidywane bieżącego modelu oraz jednostki. 
 
-Punkty danych na **fałszywie dodatnie** i **fałszywie ujemny** sekcje sygnalizowania błędów, które należy zbadać. W przypadku wszystkich punktów danych na **prawdziwie dodatni** i **True ujemna** sekcjach, a następnie dokładność Twojej aplikacji jest doskonałym rozwiązaniem, w tym zestawie danych.
+Punkty danych na **fałszywie dodatnie** i **fałszywie ujemny** sekcje sygnalizowania błędów, które należy zbadać. Jeśli wszystkie punkty danych znajdują się w sekcjach **prawdziwe pozytywne** i **prawdziwe** , dokładność Twojej aplikacji jest idealna dla tego zestawu danych.
 
 ![Cztery sekcje wykresu](./media/luis-concept-batch-test/chart-sections.png)
 

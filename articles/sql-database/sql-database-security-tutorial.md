@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 02/08/2019
+ms.date: 07/29/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ce9ba7c197bb604b9d71e2bf501ca67d32865f38
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566877"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640131"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Samouczek: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli
 
@@ -38,6 +38,9 @@ Usługa Azure SQL Database zabezpiecza dane w pojedynczej bazie danych lub w baz
 > Baza danych Azure SQL Database w wystąpieniu zarządzanym jest zabezpieczona przez zasady zabezpieczeń sieci i prywatne punkty końcowe, zgodnie z opisem w tematach [Wystąpienie zarządzane usługi Azure SQL Database](sql-database-managed-instance-index.yml) i [Connectivity architecture (Architektura łączności)](sql-database-managed-instance-connectivity-architecture.md).
 
 Aby dowiedzieć się więcej, zobacz artykuły [Azure SQL Database security overview (Omówienie zabezpieczeń usługi Azure SQL Database)](/azure/sql-database/sql-database-security-index) i [Capabilities (Funkcje)](sql-database-security-overview.md).
+
+> [!TIP]
+> Poniższy moduł Microsoft Learn umożliwia bezpłatne zapoznanie się ze sposobem [zabezpieczania Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
