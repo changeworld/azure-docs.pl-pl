@@ -245,7 +245,7 @@ Subskrypcja zdarzeń wskazuje, które zdarzenia generowane przez dostawcę mają
     | **Punkt końcowy subskrybenta** | generowany automatycznie | Użyj automatycznie wygenerowanego adresu URL punktu końcowego. | 
 4. Przejdź do karty **Filters** (Filtry), a następnie wykonaj następujące czynności:     
     1. Zaznacz pole wyboru **Enable subject filtering** (Włącz filtrowanie tematów).
-    2. W polu **Subject begins with** (Temat rozpoczyna się od) wprowadź następującą wartość: **/blobServices/default/containers/images/blobs/**.
+    2. W polu **Subject begins with** (Temat rozpoczyna się od) wprowadź następującą wartość: **/blobServices/default/containers/images/blobs/** .
 
         ![Określ filtr dla subskrypcji zdarzeń](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
 2. Wybierz pozycję **Create** (Utwórz), aby dodać subskrypcję zdarzeń. Spowoduje to utworzenie subskrypcji zdarzeń, która wyzwala funkcję `Thumbnail` po dodaniu obiektu blob do kontenera `images`. Funkcja zmieni rozmiar obrazów i doda je do kontenera `thumbnails`.

@@ -1,210 +1,219 @@
 ---
-title: Zapobieganie powstawaniu nieoczekiwanych kosztów, zarządzania rozliczeniami na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uniknąć nieoczekiwanych opłat na rachunku dotyczącym platformy Azure. Użyj funkcji Śledzenie kosztów i zarządzania dla subskrypcji Microsoft Azure.
-services: ''
-documentationcenter: ''
+title: Unikaj nieoczekiwanych kosztów i Zarządzaj rozliczeniami na platformie Azure
+description: Dowiedz się, jak uniknąć nieoczekiwanych opłat na rachunku na korzystanie z platformy Azure. Korzystaj z funkcji śledzenia kosztów i zarządzania dla subskrypcji platformy Azure.
 author: bandersmsft
-manager: alherz
-editor: ''
+manager: amberb
 tags: billing
-ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2018
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 146c74fe751e75fb85563378be6f812802928fe2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b64e84c3fff27675029ff35f27972a4aca014ec3
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918933"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68612127"
 ---
-# <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Uniknąć nieoczekiwanych opłat za pomocą rozliczeń platformy Azure i zarządzania kosztami
+# <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zapobieganie nieoczekiwanym opłatom za korzystanie z usługi Azure rozliczeń i kosztów
 
-Po zarejestrowaniu się na platformie Azure, istnieje kilka rzeczy, które można zrobić, aby lepiej zrozumieć, wydatki. [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) może zapewnić oszacowanie kosztów, przed przystąpieniem do tworzenia zasobów platformy Azure. [Witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) zapewnia bieżącego podział kosztów i prognozy dla Twojej subskrypcji. Jeśli chcesz grupować i poznanie kosztów dla różnych projektów lub zespołów, przyjrzyj [tagowania zasobów](../azure-resource-manager/resource-group-using-tags.md). Jeśli Twoja organizacja ma system raportowania, którego chcesz użyć, zapoznaj się z [interfejsy API rozliczeń](billing-usage-rate-card-overview.md).
+Po zarejestrowaniu się na platformie Azure istnieje kilka rzeczy, które można zrobić, aby lepiej zrozumieć swoje wydatki:
 
-- Jeśli Twoja subskrypcja jest umowy Enterprise Agreement (EA), dostępna jest publiczną wersję zapoznawczą do zobaczenia koszty w witrynie Azure portal. Jeśli Twoja subskrypcja znajduje się za pośrednictwem dostawcy rozwiązań w chmurze (CSP) lub dostęp sponsorowany Azure, następnie niektóre następujące funkcje mogą nie mieć zastosowania do użytkownika. Zobacz [dodatkowe zasoby dotyczące umowy EA, dostawca usług Kryptograficznych i dostępu Sponsorowanego](#other-offers) Aby uzyskać więcej informacji.
+- [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) może zapewnić oszacowanie kosztów przed utworzeniem zasobu platformy Azure. 
 
-- Jeśli Twoja subskrypcja jest bezpłatna wersja próbna [programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)platformy Azure w otwartych (AIO) lub BizSpark, Twoja subskrypcja jest automatycznie wyłączana, gdy używane są wszystkie środki. Dowiedz się więcej o [limitów wydatków](#spending-limit) pozwala uniknąć nieoczekiwanie wyłączony subskrypcji.
+- [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) zapewnia bieżący podział kosztów i prognozę dla subskrypcji. 
 
-- Jeśli logujesz się w celu [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), [można korzystać z niektórych z najbardziej popularnych usług platformy Azure bezpłatnie przez 12 miesięcy](billing-create-free-services-included-free-account.md). Wraz z zaleceniami wymienione poniżej, zobacz [uniknąć opłat za darmo konta](billing-avoid-charges-free-account.md).
+- Jeśli chcesz grupować i zrozumieć koszty dla różnych projektów lub zespołów, zapoznaj się z [tagowaniem zasobów](../azure-resource-manager/resource-group-using-tags.md). Jeśli Twoja organizacja ma system raportowania, którego wolisz użyć, zapoznaj się z [interfejsami API](billing-usage-rate-card-overview.md)rozliczeń.
+
+- Jeśli Twoja subskrypcja została utworzona na podstawie Umowa Enterprise (EA), możesz wyświetlić swoje koszty w Azure Portal. Jeśli Twoja subskrypcja odbywa się za pomocą dostawcy rozwiązań w chmurze (CSP) lub Dostęp sponsorowany Azure, niektóre z następujących funkcji mogą nie mieć zastosowania. Aby uzyskać więcej informacji, zobacz [dodatkowe zasoby dla EA, CSP i sponsorowania](#other-offers).
+
+- Jeśli Twoja subskrypcja jest ofertą bezpłatnej wersji próbnej, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure in Open (AIO) lub BizSpark, subskrypcja zostanie automatycznie wyłączona, gdy zostaną użyte wszystkie kredyty. Dowiedz się więcej na temat [limitów wydatków](#spending-limit) , aby uniknąć nieoczekiwanego wyłączenia subskrypcji.
+
+- Jeśli zarejestrowano się w celu korzystania z [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz [bezpłatnie korzystać z najpopularniejszych usług platformy Azure przez 12 miesięcy](billing-create-free-services-included-free-account.md). Wraz z zaleceniami wymienionymi poniżej Zobacz unikanie korzystania z [bezpłatnego konta](billing-avoid-charges-free-account.md).
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Uzyskaj szacowane koszty przed dodaniem usług platformy Azure
 
-### <a name="estimate-cost-online-using-the-pricing-calculator"></a>Oszacuj koszt w trybie online za pomocą kalkulatora cen.
+Poniżej znajdują się dodatkowe informacje na temat szacowania kosztów przy użyciu następujących narzędzi:
+- Kalkulator cen platformy Azure
+- Azure Portal
+- Limit wydatków
 
-Zapoznaj się z [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) można pobrać szacowany koszt miesięczny interesuje Cię usługi. Możesz dodać pierwszej strony zasobów platformy Azure, aby zidentyfikować szacowany koszt.
+W poniższych sekcjach znajdują się przykładowe ceny w dolarach amerykańskich.
+
+### <a name="estimate-cost-online-using-the-pricing-calculator"></a>Oszacuj koszt online za pomocą kalkulatora cen
+
+Zapoznaj się z [kalkulatorem cen](https://azure.microsoft.com/pricing/calculator/) , aby uzyskać szacowany miesięczny koszt usługi, która Cię interesuje. Do uzyskania szacowanego kosztu możesz dodać dowolny zasób platformy Azure dla pierwszej firmy. W kalkulatorze cen można zmienić typ waluty.
 
 ![Zrzut ekranu przedstawiający menu Kalkulator cen](./media/billing-getting-started/pricing-calc.png)
 
-Na przykład Windows Virtual Machine (maszyna wirtualna A1) szacuje się koszt 66.96 USD/miesiąc w godzin obliczeniowych, jeśli to pole pozostanie uruchomione przez cały czas:
+Na przykład w kalkulatorze cen szacuje się, że maszyna wirtualna z systemem Windows (VM) ma kosztować określoną kwotę/miesiąc w godzinach obliczeniowych, jeśli zostanie ona uruchomiona cały czas:
 
-![Zrzut ekranu przedstawiający maszyny Wirtualnej z systemem Windows A1 jest szacowane koszty 66.96 USD miesięcznie kalkulatora cen.](./media/billing-getting-started/pricing-calcVM.png)
+![Zrzut ekranu kalkulatora cen pokazujący szacowany koszt maszyny wirtualnej w systemie Windows na miesiąc](./media/billing-getting-started/pricing-calcvm.png)
 
-Aby uzyskać więcej informacji na temat cen, zobacz ten [— często zadawane pytania](https://azure.microsoft.com/pricing/faq/). Lub jeśli chcesz komunikować się z platformy Azure sprzedawcy, skontaktuj się z pomocą techniczną firmy 1-800-867-1389.
+Aby uzyskać więcej informacji na temat cen, zobacz [często zadawane pytania dotyczące cen](https://azure.microsoft.com/pricing/faq/). Jeśli chcesz skontaktować się z sprzedawcą platformy Azure, wywołaj numer telefonu widoczny w górnej części strony często zadawane pytania.
 
-### <a name="review-the-estimated-cost-in-the-azure-portal"></a>Przegląd szacowanego kosztu w witrynie Azure portal
+### <a name="review-estimated-costs-in-the-azure-portal"></a>Przejrzyj szacowane koszty w Azure Portal
 
-Zwykle po dodaniu usługi w witrynie Azure portal, istnieje widok przedstawiający podobne szacowany koszt na miesiąc. Na przykład w przypadku wybrania rozmiaru maszyny Wirtualnej Windows, zostanie wyświetlony szacowany miesięczny koszt godzin obliczeniowych:
+Zwykle po dodaniu usługi w Azure Portal istnieje widok pokazujący szacowany koszt miesięcznie w walucie rozliczeniowej. Na przykład po wybraniu rozmiaru maszyny wirtualnej z systemem Windows zobaczysz szacowany miesięczny koszt dla godzin obliczeniowych:
 
-![Przykład: maszyna wirtualna A1 Windows jest szacowany koszt 66.96 USD na miesiąc](./media/billing-getting-started/vm-size-cost.PNG)
+![Przykład: w przypadku maszyny wirtualnej z systemem Windows w a1 zostanie wyświetlony szacowany koszt miesięcznie](./media/billing-getting-started/vm-size-cost.png)
 
-### <a name="spending-limit"></a> Sprawdź, czy limit wydatków
+### <a name="spending-limit"></a>Sprawdź, czy masz limit wydatków
 
-Jeśli masz subskrypcję, która korzysta z kredytów, następnie limit wydatków jest dla Ciebie domyślnie włączona. W ten sposób gdy wydatki wszystkich środków, karta kredytowa nie jest naliczana opłata. Zobacz [pełną listę ofert platformy Azure i dostępność limitu wydatków](https://azure.microsoft.com/support/legal/offer-details/).
+Jeśli masz subskrypcję, która korzysta z kredytów, limit wydatków jest domyślnie włączony. W ten sposób, gdy spędzasz wszystkie kredyty, karta kredytowa nie zostanie obciążona. Zapoznaj się z [pełną listą ofert platformy Azure i dostępnością limitu wydatków](https://azure.microsoft.com/support/legal/offer-details/).
 
-Jednak jeśli zostanie osiągnięty limit wydatków, usługi wyłączone. Oznacza to, że maszyny wirtualne są dealokowane. Aby uniknąć przestoju usługi, musisz wyłączyć limit wydatków. Nadwyżkowe pobiera opłata na karty kredytowej w pliku. 
+Jednak po osiągnięciu limitu wydatków usługi zostaną wyłączone. Oznacza to, że maszyny wirtualne są cofane. Aby uniknąć przestoju usługi, należy wyłączyć limit wydatków. Wszelkie nadwyżki są naliczone na kartę kredytową w pliku.
 
-Aby zobaczyć, jeśli możesz już stało się limit wydatków o wartości, przejdź do [subskrypcje wyświetlone w Centrum konta](https://account.windowsazure.com/Subscriptions). Zostanie wyświetlony transparent, jeśli limit wydatków, znajduje się na:
+Aby sprawdzić, czy masz limit wydatków, przejdź do [widoku subskrypcje w centrum konta](https://account.windowsazure.com/Subscriptions). Transparent pojawia się, jeśli limit wydatków jest włączony, podobny do następującego:
 
-![Zrzut ekranu przedstawiający ostrzeżenie o wydatków limit zablokowany z przyczyn w Centrum konta](./media/billing-getting-started/spending-limit-banner.PNG)
+![Zrzut ekranu pokazujący ostrzeżenie o limicie wydatków w centrum konta](./media/billing-getting-started/spending-limit-banner.png)
 
-Kliknij transparent i postępuj zgodnie z monitami, aby usunąć limit wydatków. Jeśli informacje o karcie kredytowej nie została wprowadzona podczas tworzenia konta, należy wprowadzić, aby usunąć limit wydatków. Aby uzyskać więcej informacji, zobacz [limit wydatków platformy Azure — jak działa i jak włączyć lub usunąć go](https://azure.microsoft.com/pricing/spending-limits/).
+Kliknij transparent i postępuj zgodnie z monitami, aby usunąć limit wydatków. Jeśli podczas rejestracji nie wprowadzono informacji o karcie kredytowej, musisz wprowadzić ją, aby usunąć limit wydatków. Aby uzyskać więcej informacji, zobacz [limit wydatków platformy Azure — jak to działa i jak go włączyć lub usunąć](https://azure.microsoft.com/pricing/spending-limits/).
 
-Możesz użyć [Cloudyn](https://www.cloudyn.com/) usługi w celu tworzenia alertów, które automatycznie powiadamiają uczestników projektu o anomaliach wydatków i przekraczania ryzyka. Alerty można tworzyć za pomocą raportów obsługujących alerty oparte na budżecie i progach kosztów. Aby uzyskać więcej informacji na temat korzystania z platformy Cloudyn, zobacz [samouczka: Przeglądanie użycia i kosztów](../cost-management/tutorial-review-usage.md).
+## <a name="use-budgets-and-cost-alerts"></a>Korzystanie z budżetów i alertów o kosztach
 
-W tym przykładzie skorzystasz z raportu **Actual Cost Over Time** (Koszt rzeczywisty na przestrzeni czasu), aby wysłać powiadomienie, gdy wydatki na maszyny wirtualne platformy Azure zbliżą się do poziomu łącznego budżetu. W tym scenariuszu łączny budżet wynosi 20 000 USD. Chcesz otrzymywać powiadomienie, gdy koszty osiągną poziom 9000 USD, a potem kolejne powiadomienie po osiągnięciu wartości 10 000 USD.
+Można utworzyć [budżety](../cost-management/tutorial-acm-create-budgets.md) służące do zarządzania kosztami i tworzenia [alertów](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) , które automatycznie powiadamiają uczestników wydatków o wykorzystaniu anomalii i poświęcają ryzyko. Alerty są oparte na wydatkach w porównaniu z budżetem i progami kosztów.
 
-1. W menu w górnej części portalu Cloudyn wybierz pozycję **Costs** > **Cost Analysis** > **Actual Cost Over Time** (Koszty > Analiza kosztów > Koszt rzeczywisty na przestrzeni czasu). 
-2. Ustaw pozycję **Groups** (Grupy) na **Service** (Usługa), a pozycję **Filter on the service** (Filtruj usługę) na **Azure/VM**. 
-3. W prawym górnym rogu raportu wybierz pozycję **Actions** (Akcje), a następnie wybierz pozycję **Schedule report** (Zaplanuj raport).
-4. Aby wysyłać do siebie wiadomość e-mail dotyczącą raportu w zaplanowanych odstępach czasu, wybierz kartę **Scheduling** (Planowanie) w oknie dialogowym **Save or Schedule this report** (Zapisz lub zaplanuj ten raport). Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie użyte tagi, grupowania i filtry zostaną uwzględnione w raporcie wysłanym w wiadomości e-mail. 
-5. Wybierz kartę **Threshold** (Próg) i wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). 
-   1. W polu progu **Red alert** (Czerwony alert) wprowadź wartość 10 000. 
-   2. W polu progu **Yellow alert** (Żółty alert) wprowadź wartość 9000. 
-   3. W polu **Number of consecutive alerts** (Liczba kolejnych alertów) wprowadź liczbę alertów, które mają być wysyłane. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane. 
-6. Wybierz pozycję **Zapisz**.
+## <a name="monitor-costs-when-using-azure-services"></a>Monitoruj koszty w przypadku korzystania z usług platformy Azure
+Koszty można monitorować przy użyciu następujących narzędzi:
 
-    ![Przykład pokazujący czerwone i żółte alerty na podstawie progów wydatków](./media/billing-getting-started/schedule-alert01.png)
+- `Tags`
+- Podział kosztów i szybkość spalania
+- Analiza kosztów
 
-Możesz również wybrać metrykę **Cost Percentage vs. Budget threshold** (Procent kosztów a próg budżetu), aby utworzyć alerty. Pozwala to określić progi jako wartości procentowe budżetu, a nie jako wartości pieniężne.
+### <a name="tags"></a>Dodawanie tagów do zasobów w celu grupowania danych dotyczących rozliczeń
 
-## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Sposoby monitorowania koszty, korzystając z usług platformy Azure
+Za pomocą tagów można grupować dane rozliczeń dla obsługiwanych usług. Jeśli na przykład uruchomisz kilka maszyn wirtualnych dla różnych zespołów, możesz użyć tagów do kategoryzacji kosztów według centrum kosztów (na przykład: HR, Marketing, finanse itp.) lub środowisko (na przykład: produkcja, przedprodukcyjne, testowe).
 
-### <a name="tags"></a> Dodawanie tagów do zasobów do grupowania danych dotyczących rozliczeń
+![Zrzut ekranu pokazujący Konfigurowanie tagów w portalu](./media/billing-getting-started/tags.png)
 
-W przypadku obsługiwanych usług, można użyć tagów do grupy danych dotyczących rozliczeń. Na przykład jeśli uruchomisz kilka maszyn wirtualnych przez różne zespoły, następnie umożliwia tagi kategoryzowanie kosztów według Centrum kosztu (HR, marketingu, not) lub środowiska (test przedprodukcyjnego, produkcji,). 
+Tagi są wyświetlane w różnych widokach raportów o kosztach. Na przykład są one widoczne w [widoku analizy kosztów](#costs) od razu i w szczegółowym pliku CSV użycia po pierwszym okresie rozliczeniowym.
 
-![Zrzut ekranu przedstawiający Konfigurowanie znaczników w portalu](./media/billing-getting-started/tags.PNG)
+Aby uzyskać więcej informacji, zobacz [Używanie tagów do organizowania zasobów platformy Azure](../azure-resource-manager/resource-group-using-tags.md).
 
-Znaczniki są wyświetlane w całym raportowania widoki kosztów. Na przykład, są one widoczne w Twojej [widok analiza kosztów](#costs) razu i szczegółów użycie.csv od pierwszego okresu rozliczeniowego.
+### <a name="costs"></a>Monitoruj podział kosztów i szybkość spalania
 
-Aby uzyskać więcej informacji, zobacz [porządkowanie zasobów na platformie Azure za pomocą tagów](../azure-resource-manager/resource-group-using-tags.md).
+Po uruchomieniu usług platformy Azure regularnie sprawdzaj opłaty. Bieżące wydatki i szybkość spalania można zobaczyć w Azure Portal.
 
-### <a name="costs"></a> Regularnie Sprawdź portal dla podział kosztów i współczynnik spalania
+1. Odwiedź [subskrypcje w Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) i wybierz subskrypcję.
 
-Po uzyskaniu swoich usług, regularnie sprawdzać, ile są one wyceny użytkownik. Można wyświetlić bieżące wydatków i współczynnik spalania w witrynie Azure portal.
+2. Jeśli jest ona obsługiwana dla Twojej subskrypcji, zobaczysz podział kosztów i szybkość spalania.
 
-1. Odwiedź stronę [subskrypcje w witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) i wybierz subskrypcję.
+    ![Zrzut ekranu przedstawiający stopień spalania i podział w Azure Portal](./media/billing-getting-started/burn-rate.PNG)
 
-2. Jeśli jest obsługiwany dla Twojej subskrypcji, zobacz podział kosztów i współczynnik spalania.
+3. Kliknij pozycję [Analiza kosztów](../cost-management/quick-acm-cost-analysis.md) na liście po lewej stronie, aby wyświetlić podział kosztów według zasobu. Po dodaniu usługi odczekaj 24 godziny, aż dane mają być wyświetlane.
 
-    ![Zrzut ekranu przedstawiający spalania i podział w witrynie Azure portal](./media/billing-getting-started/burn-rate.PNG)
+    ![Zrzut ekranu przedstawiający widok koszt analizy w Azure Portal](./media/billing-getting-started/cost-analysis.png)
 
-3. Kliknij przycisk **analiza kosztów** na liście z lewej strony, aby zobaczyć podział kosztów przez zasób. Poczekaj 24 godziny po dodaniu usługi danych wypełnić.
+4. Można filtrować według różnych właściwości, takich jak [Tagi](#tags), typ zasobu, Grupa zasobów i TimeSpan. Kliknij przycisk **Zastosuj** , aby potwierdzić filtry i **pobrać** , jeśli chcesz wyeksportować widok do pliku z wartościami rozdzielanymi przecinkami (CSV).
 
-    ![Zrzut ekranu przedstawiający widok analizy kosztów w witrynie Azure portal](./media/billing-getting-started/cost-analysis.PNG)
+5. Ponadto możesz kliknąć zasób, aby zobaczyć dzienną historię wydatków oraz ilość zasobów każdego dnia.
 
-4. Można filtrować według różnych właściwości, takie jak [tagi](#tags), typ zasobu, grupy zasobów i przedziału czasu. Kliknij przycisk **Zastosuj** aby upewnić się, filtry i **Pobierz** Jeśli chcesz wyeksportować w widoku do pliku wartości Comma-Separated (CSV).
+    ![Zrzut ekranu przedstawiający widok historia wydatków w Azure Portal](./media/billing-getting-started/costhistory.png)
 
-5. Ponadto można kliknąć zasób, aby zobaczyć swój dzienny poświęcić historii i ile zasobów kosztuje każdego dnia.
+Porównaj koszty, które zobaczysz wraz z oszacowaniami, które były widoczne po wybraniu usług. Jeśli koszty znacznie różnią się od oszacowania, Sprawdź plan cenowy, który został wybrany dla Twoich zasobów.
 
-    ![Zrzut ekranu przedstawiający widok Historia ma wydatków w witrynie Azure portal](./media/billing-getting-started/costhistory.PNG)
+## <a name="optimize-and-reduce-costs"></a>Optymalizowanie i obniżanie kosztów
+Jeśli nie znasz zasad zarządzania kosztami, przeczytaj artykuł [jak zoptymalizować inwestycje w chmurze za pomocą Azure Cost Management](../cost-management/cost-mgt-best-practices.md).
 
-Firma Microsoft zaleca, Sprawdź koszty, które widzisz szacunkowe, które zostały użyte w przypadku wybrania usługi. Jeśli koszty są bardzo popularny różni się od szacunki, sprawdź plan taryfowy wybranego dla zasobów.
+W Azure Portal można także zoptymalizować i zmniejszyć koszty związane z platformą Azure dzięki automatycznemu wyłączaniu maszyn wirtualnych i zaleceń usługi Advisor.
 
-### <a name="consider-enabling-cost-cutting-features-like-auto-shutdown-for-vms"></a>Rozważ włączenie funkcji jednoczesnym obniżeniu kosztów, takich jak automatyczne zamknięcie dla maszyn wirtualnych
+### <a name="consider-cost-cutting-features-like-auto-shutdown-for-vms"></a>Weź pod uwagę funkcje wycinania kosztów, takie jak automatyczne zamykanie maszyn wirtualnych
 
-Zależnie od scenariusza można skonfigurować automatyczne zamykanie dla maszyn wirtualnych w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [automatyczne zamykanie dla maszyn wirtualnych przy użyciu usługi Azure Resource Manager](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
+W zależności od scenariusza można skonfigurować automatyczne zamykanie maszyn wirtualnych w Azure Portal. Aby uzyskać więcej informacji, zobacz [automatyczne zamykanie maszyn wirtualnych przy użyciu Azure Resource Manager](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
 
-![Zrzut ekranu przedstawiający automatycznego zamykania opcji w portalu](./media/billing-getting-started/auto-shutdown.PNG)
+![Zrzut ekranu opcji automatycznego zamykania w portalu](./media/billing-getting-started/auto-shutdown.png)
 
-Automatyczne zamknięcie nie jest taka sama jak podczas zamykania na maszynie wirtualnej za pomocą apletu Opcje zasilania. Automatyczne zamknięcie zatrzymanie i cofnięcie przydziału maszyn wirtualnych, aby zatrzymać opłaty za dodatkowe użycie. Aby uzyskać więcej informacji, zobacz często zadawane pytania dotyczące cennika [maszyn wirtualnych systemu Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) i [maszyn wirtualnych Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) o stanach maszyn wirtualnych.
+Automatyczne zamykanie nie jest takie samo, jak w przypadku zamykania maszyny wirtualnej przy użyciu opcji zasilania. Automatyczne zamykanie powoduje zatrzymanie i cofnięcie przydziału maszyn wirtualnych w celu zatrzymania dodatkowych opłat za użycie. Aby uzyskać więcej informacji, zobacz często zadawane pytania dotyczące cen [maszyn wirtualnych systemu Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) i [maszyn wirtualnych z systemem Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) dotyczących Stanów maszyn wirtualnych.
 
-Aby uzyskać więcej funkcji jednoczesnym obniżeniu kosztów dla środowisk programowania i testowania, zapoznaj się [usługi Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/).
+Aby uzyskać więcej funkcji zwiększania kosztów dla środowisk deweloperskich i testowych, zapoznaj się z [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/).
 
-### <a name="turn-on-and-check-out-azure-advisor-recommendations"></a>Włącz i zapoznaj się z zaleceń usługi Azure Advisor
+### <a name="turn-on-and-review-azure-advisor-recommendations"></a>Włącz i przejrzyj rekomendacje Azure Advisor
 
-[Usługa Azure Advisor](../advisor/advisor-overview.md) jest funkcją, która pomoże Ci zmniejszenie kosztów związanych z identyfikowanie zasobów z niskim użyciem. Odwiedź usługę Advisor w witrynie Azure portal:
+[Azure Advisor](../advisor/advisor-overview.md) pomaga obniżyć koszty przez zidentyfikowanie zasobów o niskim zużyciu. Odwiedź witrynę Advisor w Azure Portal:
 
-![Zrzut ekranu usługi Azure Advisor przycisku w witrynie Azure portal](./media/billing-getting-started/advisor-button.PNG)
+![Zrzut ekranu przedstawiający przycisk Azure Advisor w Azure Portal](./media/billing-getting-started/advisor-button.png)
 
-Następnie możesz uzyskać praktyczne zalecenia w **koszt** karcie pulpit nawigacyjny usługi Advisor:
+Możesz uzyskać zalecenia z możliwością wykonywania akcji na karcie **koszt** na pulpicie nawigacyjnym usługi Advisor:
 
-![Przykład zalecenie dotyczące kosztów zrzut ekranu usługi Advisor](./media/billing-getting-started/advisor-action.PNG)
+![Zrzut ekranu przedstawiający przykład rekomendacji dotyczącej kosztów usługi Advisor](./media/billing-getting-started/advisor-action.png)
 
-Aby uzyskać więcej informacji, zobacz [rekomendacji dotyczących kosztu Advisor](../advisor/advisor-cost-recommendations.md).
+Zapoznaj się z samouczkiem [Optymalizacja kosztów z zaleceń](../cost-management/tutorial-acm-opt-recommendations.md) , aby zapoznać się z samouczkiem dotyczącym oszczędzania kosztów.
 
-## <a name="reviewing-costs-at-the-end-of-your-billing-cycle"></a>Przeglądanie koszty pod koniec cyklu rozliczeniowym
+## <a name="review-costs-against-your-latest-invoice"></a>Przejrzyj koszty dotyczące najnowszej faktury
 
-Po zakończeniu cyklu rozliczeniowego Twoja faktura stanie się dostępna. Możesz również [pobrać przeszłe faktury i pliki użycia szczegółów](billing-download-azure-invoice-daily-usage-date.md) się upewnić, że naliczono poprawnie. Aby uzyskać więcej informacji na temat porównanie z dziennym użyciem za pomocą faktury, zobacz [opis zawartości rachunku dla systemu Microsoft Azure](billing-understand-your-bill.md).
+Na koniec cyklu rozliczeniowego dostępna jest najnowsza faktura. Możesz również [pobrać faktury i szczegółowe pliki użycia](billing-download-azure-invoice-daily-usage-date.md) , aby upewnić się, że nastąpiło poprawne naliczanie opłat. Aby uzyskać więcej informacji na temat porównywania dziennego użycia z fakturą, zobacz [Opis rachunku na Microsoft Azure](billing-understand-your-bill.md).
 
 ### <a name="billing-api"></a>Interfejs API rozliczeń
 
-Nasze interfejsy API, rozliczeń umożliwia programowe pobieranie danych użycia. Użyj interfejsu API RateCard i interfejs API użycia ze sobą można pobrać rozliczane użycie. Aby uzyskać więcej informacji, zobacz [wgląd w użycie zasobów usługi Microsoft Azure](billing-usage-rate-card-overview.md).
+Użyj interfejsu API rozliczeń platformy Azure, aby programowo pobrać dane dotyczące użycia. Użyj interfejsu API RateCard i interfejsu API użycia razem, aby uzyskać rozliczane użycie. Aby uzyskać więcej informacji, zobacz [uzyskiwanie wglądu w dane dotyczące użycia zasobów Microsoft Azure](billing-usage-rate-card-overview.md).
 
-## <a name="other-offers"></a> Dodatkowe zasoby oraz specjalne przypadki
+## <a name="other-offers"></a>Dodatkowe zasoby i specjalne przypadki
 
-### <a name="ea-csp-and-sponsorship-customers"></a>Klienci EA, dostawca usług Kryptograficznych i dostępu Sponsorowanego
-Porozmawiaj z opiekunem albo partnerów platformy Azure, aby rozpocząć pracę.
+### <a name="ea-csp-and-sponsorship-customers"></a>Klienci z umowami EA, CSP i sponsorowania
+Skontaktuj się z menedżerem kont lub partnerem platformy Azure, aby rozpocząć pracę.
 
 | Oferta | Zasoby |
 |-------------------------------|-----------------------------------------------------------------------------------|
-| Enterprise Agreement (EA) | [Portalu EA](https://ea.azure.com/), [pomocy docs](https://ea.azure.com/helpdocs), i [raportu usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
-| Cloud Solution Provider (CSP) | Skontaktuj się z dostawcą |
-| Sponsorowanie systemu Azure | [Portalu dostęp sponsorowany](https://www.microsoftazuresponsorships.com/) |
+| Enterprise Agreement (EA) | [Portal EA](https://ea.azure.com/), [Dokumentacja pomocy](https://ea.azure.com/helpdocs)i [raport Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
+| Cloud Solution Provider (CSP) | Porozmawiaj z dostawcą |
+| Dostęp sponsorowany Microsoft Azure | [Portal sponsorowania](https://www.microsoftazuresponsorships.com/) |
 
-W przypadku zarządzania IT dla dużych organizacji, zalecamy przeczytanie [Azure enterprise scaffold](/azure/architecture/cloud-adoption-guide/subscription-governance) i [organizacji IT oficjalny dokument dotyczący](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (PDF, pobieranie, tylko w języku angielskim).
+Jeśli zarządzasz nim na potrzeby dużej organizacji, zalecamy odczytywanie [szkieletu platformy Azure Enterprise](/azure/architecture/cloud-adoption-guide/subscription-governance) i [oficjalnego dokumentu IT dla przedsiębiorstw](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (pobieranie plików PDF, tylko w języku angielskim).
 
-#### <a name="EA"></a> Koszt widokach w ramach witryny Azure portal umowy Enterprise Agreement (wersja zapoznawcza) 
+#### <a name="EA"></a>Umowa Enterprise widoki kosztów w Azure Portal
 
-Widoki kosztów przedsiębiorstwa są obecnie dostępne w publicznej wersji zapoznawczej. Kwestie, które należy zwrócić uwagę:
+Widoki kosztów przedsiębiorstwa są obecnie dostępne w publicznej wersji zapoznawczej. Elementy do uwagi:
 
-- Koszty subskrypcji są na podstawie użycia i nie uwzględniają przedpłaconych kwot, opłaty za dodatkowe transakcje, wliczonych zasobów, korekt i podatków. Rzeczywiste opłaty są obliczane na poziomie rejestracji.
-- Kwoty podane w witrynie Azure portal może być inny niż co znajduje się w witrynie Enterprise portal. Aktualizacje w witrynie Enterprise portal może potrwać kilka minut, zanim zmiany są wyświetlane w witrynie Azure portal.
-- Jeśli nie widzisz kosztów, może być jednego z następujących powodów:
-    - Nie masz uprawnień na poziomie subskrypcji. Aby wyświetlić widoki kosztów przedsiębiorstwa, musi być Czytelnik rozliczenia, Czytelnik, współautora lub właściciela na poziomie subskrypcji.
-    - Jesteś właścicielem konta i Administrator rejestracji została wyłączona "opłaty widoku AO" ustawienie.  Skontaktuj się z administratorem rejestracji w celu uzyskania dostępu do kosztów. 
-    - Jesteś administratorem działu i administratorem rejestracji została wyłączona "opłaty widoku DA" ustawienie.  Skontaktuj się z administratorem rejestracji, aby uzyskać dostęp.
-    - Zakupiono platformy Azure za pośrednictwem partnera kanału i partnera nie wersji informacji o cenach.  
-- Możesz zaktualizować ustawienia związane z koszty dostępu w witrynie Enterprise portal, czy istnieje opóźnienie kilka minut, zanim zmiany są wyświetlane w witrynie Azure portal.
-- Limit wydatków i wskazówki dotyczące faktury nie mają zastosowania do subskrypcji umowy EA.
+- Opłaty za subskrypcję bazują na użyciu i nie obejmują kwot przedpłat, nadwyżki, uwzględnionych wartości, korekt i podatków. Rzeczywiste opłaty są obliczane na poziomie rejestracji.
+- Kwoty podane w Azure Portal mogą różnić się od zawartości witryny Enterprise Portal. Aktualizacje w witrynie Enterprise Portal mogą potrwać kilka minut, zanim zmiany zostaną wyświetlone w Azure Portal.
+- Jeśli nie widzisz kosztów, może to być spowodowane jedną z następujących przyczyn:
+    - Nie masz uprawnień na poziomie subskrypcji. Aby wyświetlić widoki kosztów przedsiębiorstwa, musisz być Czytelnikem, Czytelnikem, współautorem lub właścicielem rozliczeń na poziomie subskrypcji.
+    - Jesteś właścicielem konta, a administrator rejestracji wyłączył ustawienie "AO View charges".  Skontaktuj się z administratorem rejestracji, aby uzyskać dostęp do kosztów.
+    - Jesteś administratorem działu, a administrator rejestracji wyłączył ustawienie funkcji **da Podgląd** .  Skontaktuj się z administratorem rejestracji, aby uzyskać dostęp.
+    - Zakupiono platformę Azure za pośrednictwem partnera kanału, a partner nie zwolnił informacji o cenach.  
+- W przypadku aktualizowania ustawień związanych z dostępem do kosztów w witrynie Enterprise Portal istnieje opóźnienie kilku minut, po upływie których zmiany zostaną wyświetlone w Azure Portal.
+- Limit wydatków i wskazówki dotyczące faktur nie mają zastosowania do subskrypcji umowy EA.
 
-### <a name="check-your-subscription-and-access"></a>Sprawdź subskrypcję i dostępu
+### <a name="check-your-subscription-and-access"></a>Sprawdź swoją subskrypcję i dostęp
 
-Aby wyświetlić koszty, konieczne jest posiadanie [dostępu do informacji dotyczących rozliczeń na poziomie subskrypcji](billing-manage-access.md). Tylko administrator konta może uzyskać dostęp [Centrum kont](https://account.azure.com/Subscriptions), zmieniać informacji dotyczących rozliczeń i zarządzania subskrypcjami. Administrator konta to osoba, która kolejno przerobione procesu rejestracji. Aby uzyskać więcej informacji, zobacz [apletu Dodaj lub zmień role administratora platformy Azure, które zarządzają subskrypcją lub usługami](billing-add-change-azure-subscription-administrator.md).
+Aby wyświetlić koszty, musisz mieć [dostęp do informacji rozliczeniowych na poziomie subskrypcji](billing-manage-access.md). Tylko administrator konta może uzyskać dostęp do [centrum konta](https://account.azure.com/Subscriptions), zmienić informacje dotyczące rozliczeń i zarządzać subskrypcjami. Administrator konta to osoba, która przeszedł przez proces rejestracji. Aby uzyskać więcej informacji, zobacz [Dodawanie lub zmienianie ról administratora platformy Azure, które zarządzają subskrypcją lub usługami](billing-add-change-azure-subscription-administrator.md).
 
-Aby zobaczyć, jeśli jesteś administratorem konta, przejdź do [subskrypcje w witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Przyjrzyj się liście subskrypcji, do których masz dostęp do. Sprawdź w obszarze **Moja rola**. Jeśli wyświetlany jest tekst *administrator konta*, jesteś ok. Jeśli wyświetlany jest tekst coś innego, takich jak *właściciela*, wówczas masz pełne uprawnienia.
+Aby sprawdzić, czy jesteś administratorem konta, przejdź do pozycji [subskrypcje w Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Wyświetl listę subskrypcji i Znajdź **moją rolę**. Jeśli rolę *administratora konta* jest rola, masz pełne uprawnienia. Jeśli mówi coś innego, takiego jak *właściciel*, nie masz pełnych uprawnień.
 
-![Zrzut ekranu przedstawiający swojej roli w widoku subskrypcje w witrynie Azure portal](./media/billing-getting-started/sub-blade-view.PNG)
+![Zrzut ekranu roli w widoku subskrypcje w Azure Portal](./media/billing-getting-started/sub-blade-view.PNG)
 
-Jeśli nie jesteś administratorem konta, a następnie ktoś prawdopodobnie udostępniła Ci częściowy dostęp za pomocą [kontroli dostępu opartej na roli Azure Active Directory](../role-based-access-control/role-assignments-portal.md) (RBAC). Do zarządzania subskrypcjami i zmiany rozliczeń info, [znaleźć administrator konta](billing-subscription-transfer.md#whoisaa). Poproś administratora konta, aby wykonać zadania lub [przenieść subskrypcję do Ciebie](billing-subscription-transfer.md).
+Aby zarządzać subskrypcjami i zmienić informacje dotyczące rozliczeń, [Znajdź administratora konta](billing-subscription-transfer.md#whoisaa). Poprosimy administratora konta o ukończenie zadań lub [przeniesienie subskrypcji do Ciebie](billing-subscription-transfer.md).
 
-Jeśli administrator konta nie jest już w organizacji, należy do zarządzania rozliczeniami, [skontaktuj się z nami](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli administrator konta nie jest już w Twojej organizacji i musisz zarządzać rozliczeniami, [skontaktuj się z nami](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 
-### <a name="how-to-request-a-service-level-agreement-credit-for-a-service-incident"></a>Jak utworzyć żądanie umowy dotyczącej poziomu usług środki na korzystanie z zdarzenie w usłudze
+### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>Żądaj Umowa dotycząca poziomu usług środków dla zdarzenia usługi
 
-W umowie dotyczącej poziomu usług (SLA) opisano zobowiązania firmy Microsoft dotyczące czasu dostępności i połączeń. Zdarzenie w usłudze jest zgłaszany w przypadku usług platformy Azure napotkania problemu tego czasu wpływa na działania lub łączności, często nazywane "awarii." Jeśli nie możemy osiągnąć i Obsługa poziomów usług dla każdej usługi, zgodnie z opisem w umowie SLA, może być kwalifikuje się środki w wysokości część miesięcznych opłat za usługę.
+W umowie dotyczącej poziomu usług (SLA) opisano zobowiązania firmy Microsoft dotyczące czasu dostępności i połączeń. Zdarzenie usługi jest zgłaszane, gdy usługi platformy Azure napotykają problem, który ma wpływ na czas przestoju lub łączności , często określany jako awaria. Jeśli nie osiągniemy ani nie utrzymujemy poziomów usług dla każdej usługi zgodnie z opisem w umowie SLA, możesz kwalifikować się do otrzymania kredytu na część miesięcznych opłat za korzystanie z usług.
 
-Aby zażądać środki:
+Aby zażądać kredytu:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). Jeśli masz wiele kont, upewnij się, użyj jednego, który miała wpływ przestojów platformy Azure. Ułatwia to obsługę automatycznego zbierania niezbędne informacje i szybciej rozwiązać sprawę.
-2. Utwórz nowe żądanie pomocy technicznej.
-3. W obszarze **typ problemu**, wybierz opcję **rozliczeń**.
-4. W obszarze **typ problemu**, wybierz opcję **żądanie zwrotu pieniędzy**.
-5. Dodaj szczegóły, aby określić, że jest wysyłane żądanie kredytu SLA, wspominanie daty/godziny/strefy czasowej, a także objęte usługi, (maszyny wirtualne, witryny sieci Web itp.)
-6. Sprawdź swoje szczegóły dotyczące kontaktu i wybrać **Utwórz** przycisk, aby przesłać żądanie.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/). Jeśli masz wiele kont, upewnij się, że korzystasz z nich, na które miało wpływ przestój platformy Azure. 
+2. Utwórz nowe żądanie obsługi.
+3. W obszarze **typ problemu**wybierz pozycję rozliczenia.
+4. W obszarze **typ problemu**wybierz pozycję **żądanie zwrotu**.
+5. Dodaj szczegóły, aby określić, że prosisz o środki na korzystanie z umowy SLA, podaj datę/godzinę/strefę czasową, a także usługi, których dotyczy problem (maszyny wirtualne, witryny sieci Web itp.).
+6. Sprawdź szczegóły kontaktu i wybierz pozycję **Utwórz** , aby przesłać żądanie.
 
-Umowa SLA progi różnią się usługi. Na przykład warstwa sieci Web SQL zgodnie z umową SLA na poziomie 99,9%, maszyny wirtualne mają umową SLA gwarantującą dostępność przez 99,95%, a SQL w warstwie standardowa ma umową SLA gwarantującą dostępność przez 99,99%.
+Progi umowy SLA różnią się w zależności od usługi. Na przykład warstwa sieci Web SQL jest objęta umową SLA 99,9%, maszyny wirtualne mają umowę SLA o 99,95%, a w przypadku warstwy SQL Standard jest dostępna umowa SLA do 99,99%.
 
-W przypadku niektórych usług istnieją wymagania wstępne dotyczące umowy SLA do zastosowania. Na przykład maszyny wirtualne, musi mieć co najmniej dwóch wystąpieniach wdrożonych w tym samym zestawie dostępności.
+W przypadku niektórych usług obowiązują wymagania wstępne dotyczące umowy SLA. Na przykład maszyny wirtualne muszą mieć wdrożone co najmniej dwa wystąpienia w tym samym zestawie dostępności.
 
-Aby uzyskać więcej informacji, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/) dokumentacji i [podsumowanie umów SLA dla usług platformy Azure](https://azure.microsoft.com/support/legal/sla/summary/) dokumentacji.
+Aby uzyskać więcej informacji, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/) oraz [Podsumowanie umów SLA dla usług platformy Azure](https://azure.microsoft.com/support/legal/sla/summary/) .
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie pomocy technicznej](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o korzystaniu z [limitów wydatków](billing-spending-limit.md) , aby zapobiec przenoszeniu.
+- Rozpocznij [Analizowanie kosztów platformy Azure](../cost-management/quick-acm-cost-analysis.md).
