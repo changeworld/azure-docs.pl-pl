@@ -5,14 +5,12 @@ metadata:
   title: Dokumentacja usługi Azure Container Registry — samouczki | Microsoft Docs
   description: 'Usługa Azure Container Registry umożliwia kompilowanie i przechowywanie obrazów wdrożeń kontenerów dowolnego typu oraz zarządzanie nimi. Dowiedz się, jak używać usługi Azure Container Registry, korzystając z tych przewodników Szybki start, samouczków i przykładów.'
   services: container-registry
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-registry
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Usługa Azure Container Registry umożliwia kompilowanie i przechowywanie obrazów wdrożeń kontenerów dowolnego typu oraz zarządzanie nimi. Dowiedz się, jak używać usługi Azure Container Registry, korzystając z tych przewodników Szybki start, samouczków i przykładów.'
 sections:

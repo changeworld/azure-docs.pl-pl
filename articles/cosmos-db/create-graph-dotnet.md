@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: lbosq
-ms.openlocfilehash: 24d5c11eb32350b2c11584ca5fc75ed4b619b6cf
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7f42f693f485a6d3e49c8b29529fb72062b2157b
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978746"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619871"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Szybki start: tworzenie aplikacji .NET Framework lub Core za pomocą konta interfejsu API języka Gremlin w usłudze Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Ten przewodnik Szybki start przedstawia sposób tworzenia konta [interfejsu API 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz jeszcze programu Visual Studio 2019 r zainstalowany, możesz pobrać i używać **bezpłatne** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
+Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2019, możesz pobrać i korzystać **bezpłatnie** z programu [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -132,7 +132,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku Program.cs.
 * Utwórz nowy obiekt `GremlinClient` (wiersz 56):
 
     ```csharp
-    var gremlinClient = new GremlinClient(gremlinServer);
+    var gremlinClient = new GremlinClient(gremlinServer, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType);
     ```
 
 * Wykonaj wszystkie zapytania języka Gremlin za pomocą obiektu `GremlinClient` przy użyciu zadania asynchronicznego (wiersz 63). Spowoduje to odczytanie zapytań języka Gremlin ze słownika zdefiniowanego powyżej (wiersz 26):
@@ -158,7 +158,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) przejdź do swojego konta bazy danych programu Graph. Na karcie **Przegląd** są wyświetlane dwa punkty końcowe: 
  
-   **Identyfikator URI zestawu SDK platformy .NET** — ta wartość jest używana podczas łączenia z kontem programu graph przy użyciu biblioteki Microsoft.Azure.Graphs. 
+   **Identyfikator URI zestawu .NET SDK** — ta wartość jest używana podczas łączenia się z kontem grafu przy użyciu biblioteki Microsoft. Azure. graphs. 
 
    **Punkt końcowy języka Gremlin** — ta wartość jest używana podczas nawiązywania połączenia z kontem programu Graph przy użyciu biblioteki Gremlin.Net.
 

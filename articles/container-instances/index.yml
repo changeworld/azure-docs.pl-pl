@@ -5,14 +5,12 @@ metadata:
   title: Dokumentacja usługi Azure Container Instances — samouczki | Microsoft Docs
   description: 'Usługa Azure Container Instances to najszybszy i najprostszy sposób uruchomienia kontenera na platformie Azure, bez konieczności aprowizowania żadnych maszyn wirtualnych ani korzystania z usługi wyższego poziomu.'
   services: container-instances
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-instances
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Usługa Azure Container Instances to najszybszy i najprostszy sposób uruchomienia kontenera na platformie Azure, bez konieczności aprowizowania żadnych maszyn wirtualnych ani korzystania z usługi wyższego poziomu. Dowiedz się, jak tworzyć wystąpienia kontenera i zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.<p>Jeśli potrzebujesz pełnego rozwiązania do organizowania kontenerów, zobacz <a href="/azure/aks/">dokumentację dotyczącą usługi Azure Kubernetes Service (AKS)</a>.</p>'
 sections:

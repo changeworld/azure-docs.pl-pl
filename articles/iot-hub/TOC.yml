@@ -5,6 +5,7 @@
     - name: Czym jest usługa Azure IoT Hub?
       href: about-iot-hub.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Wysyłanie danych telemetrycznych
       items:

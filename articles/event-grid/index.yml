@@ -5,14 +5,12 @@ metadata:
   title: Dokumentacja usługi Azure Event Grid — samouczki i dokumentacja interfejsu API
   description: Usługa Azure Event Grid pozwala reagować na istotne zdarzenia w usługach platformy Azure oraz spoza tej platformy w czasie niemal rzeczywistym.
   services: event-grid
-  author: czeumault
-  manager: carolz
+  author: dougeby
+  manager: dougeby
   ms.service: event-grid
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/10/2017
-  ms.author: carolz
+  ms.author: dougeby
 abstract:
   description: 'Usługa Azure Event Grid to w pełni zarządzana usługa inteligentnego routingu zdarzeń, która umożliwia ujednolicone używanie zdarzeń za pomocą modelu opartego na publikowaniu i subskrybowaniu. Usługa Azure Event Grid pozwala reagować na istotne zdarzenia w usługach platformy Azure oraz spoza tej platformy w czasie niemal rzeczywistym. Dowiedz się, jak używać usługi Azure Event Grid, korzystając z przewodników Szybki start, samouczków i przykładów.'
 sections:

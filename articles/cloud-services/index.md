@@ -2,22 +2,19 @@
 title: Dokumentacja usług Azure Cloud Services — samouczki i dokumentacja interfejsu API | Microsoft Docs
 description: W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak przy użyciu usług Cloud Services hostować i uruchamiać wysoce dostępne i skalowalne aplikacje w chmurze oraz interfejsy API.
 services: cloud-services
-author: czeumault
-manager: carolz
+author: georgewallace
+manager: gwallace
 layout: LandingPage
-ms.assetid: ''
 ms.service: cloud-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 80f28d5f42dfacd2fa5d553b545bff5708eb09ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: gwallace
+ms.openlocfilehash: f30032ff2d7189e45075c74152bb6903128217ad
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60629144"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609720"
 ---
 # <a name="cloud-services-documentation"></a>Dokumentacja usług Cloud Services
 

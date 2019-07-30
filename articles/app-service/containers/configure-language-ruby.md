@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie aplikacji języka Ruby — usługa Azure App Service
-description: W tym samouczku opisano opcje tworzenia i konfigurowania aplikacji języka Ruby dla usługi Azure App Service w systemie Linux.
+title: Konfigurowanie aplikacji Ruby-Azure App Service
+description: Ten samouczek zawiera opis opcji tworzenia i konfigurowania aplikacji Ruby dla Azure App Service w systemie Linux.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -16,45 +16,45 @@ ms.date: 03/28/2019
 ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 95a848ff7d74d35203c7e8377405c709f7fc7bd7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 222ded620610957e752e2081bda638d78eba4867
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617392"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619442"
 ---
-# <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku Ruby systemu Linux dla usługi Azure App Service
+# <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurowanie aplikacji Ruby systemu Linux dla Azure App Service
 
-W tym artykule opisano sposób [usługi Azure App Service](app-service-linux-intro.md) uruchamia aplikacje języka Ruby i w jaki sposób dostosować zachowanie usługi App Service w razie potrzeby. Aplikacje Ruby musi zostać wdrożony w przypadku wszystkich wymaganych [pip](https://pypi.org/project/pip/) modułów.
+W tym artykule opisano, jak [Azure App Service](app-service-linux-intro.md) są uruchamiane aplikacje Ruby oraz jak można dostosować zachowanie App Service w razie konieczności. Aplikacje Ruby muszą zostać wdrożone ze wszystkimi wymaganymi modułami [PIP](https://pypi.org/project/pip/) .
 
-Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla deweloperów języka Ruby, którzy korzystają z wbudowanych kontenera systemu Linux w usłudze App Service. Jeśli nie znasz usługi Azure App Service, należy wykonać [Szybki Start języka Ruby](quickstart-ruby.md) i [języka Ruby z samouczkiem PostgreSQL](tutorial-ruby-postgres-app.md) pierwszy.
+Ten przewodnik zawiera najważniejsze pojęcia i instrukcje dla deweloperów języka Ruby, którzy używają wbudowanego kontenera systemu Linux w App Service. Jeśli nie korzystasz z Azure App Service, najpierw należy wykonać samouczka [Ruby](quickstart-ruby.md) i [Ruby with PostgreSQL](tutorial-ruby-postgres-app.md) .
 
-## <a name="show-ruby-version"></a>Pokaż wersja środowiska Ruby
+## <a name="show-ruby-version"></a>Pokaż wersję języka Ruby
 
-Aby wyświetlić bieżącą wersję języka Ruby, uruchom następujące polecenie [Cloud Shell](https://shell.azure.com):
+Aby wyświetlić bieżącą wersję języka Ruby, uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Aby wyświetlić wszystkie obsługiwane wersje języka Ruby, uruchom następujące polecenie [Cloud Shell](https://shell.azure.com):
+Aby wyświetlić wszystkie obsługiwane wersje języka Ruby, uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep RUBY
 ```
 
-Nieobsługiwana wersja środowiska Ruby można uruchomić, tworząc własny obraz kontenera, zamiast tego. Aby uzyskać więcej informacji, zobacz [Używanie niestandardowego obrazu platformy Docker](tutorial-custom-docker-image.md).
+Możesz uruchomić nieobsługiwaną wersję języka Ruby, tworząc własny obraz kontenera. Aby uzyskać więcej informacji, zobacz [Używanie niestandardowego obrazu platformy Docker](tutorial-custom-docker-image.md).
 
-## <a name="set-ruby-version"></a>Ustawianie wersji języka Ruby
+## <a name="set-ruby-version"></a>Ustaw wersję języka Ruby
 
-Uruchom następujące polecenie [Cloud Shell](https://shell.azure.com) ustawić wersja środowiska Ruby 2.3:
+Uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com) , aby ustawić wersję języka Ruby na 2,3:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "RUBY|2.3"
 ```
 
 > [!NOTE]
-> Jeśli widzisz błędy podobne do następujących w czasie wdrażania:
+> Jeśli podczas wdrażania widoczne są błędy podobne do następujących:
 > ```
 > Your Ruby version is 2.3.3, but your Gemfile specified 2.3.1
 > ```
@@ -62,11 +62,11 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > rbenv: version `2.3.1' is not installed
 > ```
-> Oznacza to, czy wersja środowiska Ruby skonfigurowane w projekcie różni się od wersji zainstalowanej w kontenerze korzystasz z (`2.3.3` w powyższym przykładzie). W powyższym przykładzie Sprawdź zarówno *Gemfile* i *wersji .ruby* i sprawdź, czy wersja środowiska Ruby nie jest ustawiona lub jest ustawiony do wersji, który jest zainstalowany w kontenerze używasz (`2.3.3` w przykład powyżej).
+> Oznacza to, że wersja języka Ruby skonfigurowana w projekcie różni się od wersji zainstalowanej w używanym kontenerze (`2.3.3` w powyższym przykładzie). W powyższym przykładzie Sprawdź wersję *Gemfile* i *. Ruby* i sprawdź, czy wersja języka Ruby nie została ustawiona lub jest ustawiona na wersję zainstalowaną w używanym kontenerze (`2.3.3` w powyższym przykładzie).
 
 ## <a name="access-environment-variables"></a>Uzyskiwanie dostępu do zmiennych środowiskowych
 
-W usłudze App Service możesz [określić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodu aplikacji. A następnie uzyskiwaniu dostępu do nich przy użyciu standardu [ENV ["\<ścieżka name >"]](https://ruby-doc.org/core-2.3.3/ENV.html) wzorca. Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `WEBSITE_SITE_NAME`, użyj następującego kodu:
+W App Service można [ustawić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodem aplikacji. Następnie możesz uzyskać do nich dostęp przy użyciu standardowego wzorca [ENV\<["Path-Name >"]](https://ruby-doc.org/core-2.3.3/ENV.html) . Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `WEBSITE_SITE_NAME`, użyj następującego kodu:
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']
@@ -74,77 +74,77 @@ ENV['WEBSITE_SITE_NAME']
 
 ## <a name="customize-deployment"></a>Dostosowywanie wdrożenia
 
-Podczas wdrażania [repozytorium Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), lub [spakowany pakiet](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) za pomocą procesów kompilacji jest włączona, aparat wdrażania (Kudu) automatycznie wykonywane są następujące czynności po wdrożeniu na domyślnie:
+Podczas wdrażania [repozytorium git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)lub [pakietu zip](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) z procesami kompilacji przełączane, aparat wdrażania (kudu) automatycznie domyślnie uruchamia następujące kroki po wdrożeniu:
 
 1. Sprawdź, czy *Gemfile* istnieje.
 1. Uruchom polecenie `bundle clean`. 
 1. Uruchom polecenie `bundle install --path "vendor/bundle"`.
-1. Uruchom `bundle package` do Klejnoty pakiet do folderu dostawcy/pamięci podręcznej.
+1. Uruchom `bundle package` do Gems pakietu w folderze dostawcy/pamięci podręcznej.
 
-### <a name="use---without-flag"></a>Użyj parametru--bez flagi
+### <a name="use---without-flag"></a>Użyj flagi--bez
 
-Aby uruchomić `bundle install` z [— bez](https://bundler.io/man/bundle-install.1.html) Flaga, ustaw `BUNDLE_WITHOUT` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) rozdzielaną przecinkami listę grup. Na przykład następujące polecenie ustawia ją na `development,test`.
+Aby uruchomić `bundle install` z`BUNDLE_WITHOUT` flagą [--bez](https://bundler.io/man/bundle-install.1.html) , należy ustawić [ustawienie aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na listę grup. Na przykład następujące polecenie ustawia je na `development,test`.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings BUNDLE_WITHOUT="development,test"
 ```
 
-Jeśli to ustawienie jest zdefiniowana, a następnie uruchamia aparatu wdrażania `bundle install` z `--without $BUNDLE_WITHOUT`.
+Jeśli to ustawienie jest zdefiniowane, aparat wdrażania zostanie uruchomiony `bundle install` z. `--without $BUNDLE_WITHOUT`
 
-### <a name="precompile-assets"></a>Wstępnie skompilował zasoby
+### <a name="precompile-assets"></a>Wstępne Kompilowanie zasobów
 
-Czynności po wdrożeniu nie wstępnie skompilował zasoby domyślnie. Aby włączyć wstępnej kompilacji zasobów, należy ustawić `ASSETS_PRECOMPILE` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) do `true`. Następnie polecenia `bundle exec rake --trace assets:precompile` jest uruchamiany na końcu po wdrożeniu kroki. Na przykład:
+Kroki po wdrożeniu nie domyślnie kompilują zasoby. Aby włączyć prekompilowanie zasobów, ustaw dla `ASSETS_PRECOMPILE` `true` [Ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) wartość. Następnie polecenie `bundle exec rake --trace assets:precompile` jest uruchamiane po zakończeniu kroków po wdrożeniu. Przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
 ```
 
-Aby uzyskać więcej informacji, zobacz [obsługiwać zasoby statyczne](#serve-static-assets).
+Aby uzyskać więcej informacji, zobacz temat [Obsługuj statyczne zasoby](#serve-static-assets).
 
 ## <a name="customize-start-up"></a>Dostosowywanie uruchamiania
 
-Domyślny kontener języka Ruby uruchamia serwer platformy Rails w następującej kolejności (Aby uzyskać więcej informacji, zobacz [skrypt uruchamiania](https://github.com/Azure-App-Service/ruby/blob/master/2.3.8/startup.sh)):
+Domyślnie kontener Ruby uruchamia serwer szyn w następującej sekwencji (Aby uzyskać więcej informacji, zobacz [skrypt uruchamiania](https://github.com/Azure-App-Service/ruby/blob/master/2.3.8/startup.sh)):
 
-1. Generowanie [secret_key_base](https://edgeguides.rubyonrails.org/security.html#environmental-security) wartość, jeśli nie już istnieje. Ta wartość jest wymagana dla aplikacji do uruchamiania w trybie produkcyjnym.
-1. Ustaw `RAILS_ENV` zmiennej środowiskowej, aby `production`.
-1. Usuń wszystkie *.pid* w pliku *tmp/PID* katalogu, co zostało wcześniej uruchomione serwer platformy Rails.
-1. Sprawdź, czy wszystkie zależności są zainstalowane. Jeśli nie, spróbuj zainstalować Klejnoty z lokalnego *dostawcy/pamięci podręcznej* katalogu.
+1. Generuj wartość [secret_key_base](https://edgeguides.rubyonrails.org/security.html#environmental-security) , jeśli jeszcze nie istnieje. Ta wartość jest wymagana, aby aplikacja była uruchamiana w trybie produkcyjnym.
+1. `production`Ustaw zmienną `RAILS_ENV` środowiskową na.
+1. Usuń dowolny plik *. PID* w katalogu *tmp/PID* , który został pozostawiony przez serwer wcześniej uruchomionych kolejek.
+1. Sprawdź, czy wszystkie zależności są zainstalowane. W przeciwnym razie spróbuj zainstalować Gems z katalogu *dostawcy lokalnego/pamięci* podręcznej.
 1. Uruchom polecenie `rails server -e $RAILS_ENV`.
 
 Proces uruchamiania można dostosować w następujący sposób:
 
-- [Obsługiwać zasoby statyczne](#serve-static-assets)
-- [Uruchom w trybie innym niż produkcyjne](#run-in-non-production-mode)
-- [Ręcznie ustawić secret_key_base](#set-secret_key_base-manually)
+- [Obsługuj statyczne zasoby](#serve-static-assets)
+- [Uruchom w trybie nieprodukcyjnym](#run-in-non-production-mode)
+- [Ustaw secret_key_base ręcznie](#set-secret_key_base-manually)
 
-### <a name="serve-static-assets"></a>Obsługiwać zasoby statyczne
+### <a name="serve-static-assets"></a>Obsługuj statyczne zasoby
 
-Serwer platformy Rails w kontenerze dopisków fonetycznych jest uruchamiany w trybie produkcyjnym domyślnie i [przyjęto założenie, że zasoby są wstępnie skompilowane i są one obsługiwane przez serwer sieci web](https://guides.rubyonrails.org/asset_pipeline.html#in-production). Aby obsługiwać zasoby statyczne z serwer platformy Rails, należy wykonać dwie czynności:
+Serwer szyn w kontenerze Ruby jest domyślnie uruchamiany w trybie produkcyjnym i zakłada, [że zasoby są wstępnie skompilowane i są obsługiwane przez serwer sieci Web](https://guides.rubyonrails.org/asset_pipeline.html#in-production). Aby zapewnić statyczne zasoby z serwera szyn, należy wykonać dwie czynności:
 
-- **Wstępnie skompilował zasoby** - [Prekompilowanie statycznych zasobów lokalnie](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) i wdrażać je ręcznie. Lub pozwól, aby aparat wdrażania, zamiast go obsłużyć (zobacz [wstępnie skompilował zasoby](#precompile-assets).
-- **Włącz dostarczanie plików statycznych** — w celu obsługi statycznych zasobów z kontenera dopisków fonetycznych, ustaw `RAILS_SERVE_STATIC_FILES` [ustaw `RAILS_SERVE_STATIC_FILES` ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) do `true`. Na przykład:
+- **Wstępne Kompilowanie zasobów** - umożliwia wstępne[skompilowanie statycznych zasobów lokalnie](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) i wdrożenie ich ręcznie. Lub pozwól, aby aparat wdrażania go obsłużył go (zobacz prekompilowanie [zasobów](#precompile-assets).
+- **Włącz obsługę plików statycznych** — aby obsłużyć statyczne zasoby z kontenera Ruby, [ `RAILS_SERVE_STATIC_FILES` Ustaw](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) dla `true`ustawienia aplikację wartość. Na przykład:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
     ```
 
-### <a name="run-in-non-production-mode"></a>Uruchom w trybie innym niż produkcyjne
+### <a name="run-in-non-production-mode"></a>Uruchom w trybie nieprodukcyjnym
 
-Domyślnie serwer platformy Rails jest uruchamiana w trybie produkcyjnym. Aby uruchomić w trybie projektowania, na przykład ustawić `RAILS_ENV` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) do `development`.
+Domyślnie serwer szyn działa w trybie produkcyjnym. Aby uruchomić program w trybie programistycznym, na przykład dla `RAILS_ENV` `development` [Ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) ustaw wartość.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-Jednak to samo ustawienie powoduje, że serwer platformy Rails, aby uruchomić w trybie projektowania, który akceptuje żądania tylko localhost i jest niedostępny poza kontenerem. Aby akceptować żądania klienta zdalnego, należy ustawić `APP_COMMAND_LINE` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) do `rails server -b 0.0.0.0`. To ustawienie aplikacji umożliwia uruchamianie poleceń niestandardowych w kontenerze dopisków fonetycznych. Przykład:
+Jednak to ustawienie powoduje, że serwer szyn będzie uruchamiany w trybie programistycznym, który akceptuje tylko żądania localhost i nie jest dostępny poza kontenerem. Aby zaakceptować żądania klientów zdalnych, należy ustawić `APP_COMMAND_LINE` [ustawienie aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `rails server -b 0.0.0.0`. To ustawienie aplikacji umożliwia uruchomienie polecenia niestandardowego w kontenerze Ruby. Na przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
 ```
 
-### <a name="set-secret_key_base-manually"></a> Ręcznie ustawić secret_key_base
+### <a name="set-secret_key_base-manually"></a>Ustaw secret_key_base ręcznie
 
-Aby użyć własnego `secret_key_base` wartość samodzielny usługi App Service wygeneruje, ustaw `SECRET_KEY_BASE` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) wartością ma. Przykład:
+Aby użyć własnej `secret_key_base` wartości zamiast zezwalać App Service wygenerować ją dla Ciebie, należy `SECRET_KEY_BASE` ustawić dla [Ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) wartość, którą chcesz. Na przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"
@@ -161,7 +161,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Aplikacja platformy Rails z bazą danych PostgreSQL](tutorial-ruby-postgres-app.md)
+> [Samouczek: Wyszynuje aplikację za pomocą PostgreSQL](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
-> [App Service dla systemu Linux — często zadawane pytania](app-service-linux-faq.md)
+> [App Service Linux — często zadawane pytania](app-service-linux-faq.md)

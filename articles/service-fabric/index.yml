@@ -5,16 +5,13 @@ metadata:
   title: Dokumentacja usługi Azure Service Fabric — samouczki i dokumentacja interfejsu API | Microsoft Docs
   meta.description: 'Learn how to use Service Fabric middleware platform to package and deploy microservices for cloud-scale applications. Tutorials, API references, and code samples.'
   services: service-fabric
-  author: null
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   layout: LandingPage
-  ms.assetid: null
   ms.service: service-fabric
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/03/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług i kontenerów oraz zarządzanie nimi. Deweloperzy i administratorzy mogą uniknąć złożonych problemów związanych z infrastrukturą i skoncentrować się na implementowaniu wymagających obciążeń o znaczeniu strategicznym, które są skalowalne, niezawodne i łatwe w zarządzaniu. Dowiedz się, jak używać usługi Azure Service Fabric, korzystając z przewodników Szybki start, samouczków i przykładów.'
 sections:

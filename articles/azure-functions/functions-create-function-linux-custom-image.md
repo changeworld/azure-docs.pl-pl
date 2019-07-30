@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: a8a216a7d2ce048ed5131997df762942998aaa88
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 66effb095edf7927a38fca53b2ff317e9bad468e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444116"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619615"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Tworzenie funkcji w systemie Linux przy użyciu obrazu niestandardowego
 
@@ -190,7 +190,7 @@ Teraz możesz użyć tego obrazu jako źródła wdrażania nowej aplikacji funkc
 
 ## <a name="create-a-premium-plan"></a>Tworzenie planu Premium
 
-Hosting systemu Linux dla kontenerów funkcji niestandardowych obsługiwanych w ramach [dedykowanych planów (App Service)](functions-scale.md#app-service-plan) i [planów Premium](functions-scale.md#premium-plan). W tym samouczku jest używany plan Premium, który można skalować zgodnie z wymaganiami. Aby dowiedzieć się więcej o hostingu, zobacz [Porównanie planów hostingu usługi Azure Functions](functions-scale.md).
+Hosting systemu Linux dla kontenerów funkcji niestandardowych obsługiwanych w ramach [dedykowanych planów (App Service)](functions-scale.md#app-service-plan) i [planów Premium](functions-premium-plan.md#features). W tym samouczku jest używany plan Premium, który można skalować zgodnie z wymaganiami. Aby dowiedzieć się więcej o hostingu, zobacz [Porównanie planów hostingu usługi Azure Functions](functions-scale.md).
 
 Poniższy przykład tworzy plan Premium o `myPremiumPlan` nazwie w warstwie cenowej elastyczna **1** (`--sku EP1`), w regionie zachodnie stany USA (`-location WestUS`) i w kontenerze systemu Linux (`--is-linux`).
 

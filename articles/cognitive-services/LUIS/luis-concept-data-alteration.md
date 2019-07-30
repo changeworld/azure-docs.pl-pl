@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 67b56f09663aca35ed0843f50e2420b531c82833
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 198ce98808c8a62a839d154c365518c9e8263056
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560831"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619897"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Instrukcja ALTER wypowiedź danych przed lub w trakcie prognoz
-Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas prognozowania. Należą do ustalania Pisownia i rozwiązywanie problemów w strefie czasowej dla datetimeV2 wydarzenia. 
+Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas prognozowania. Obejmują one [naprawianie błędów](luis-tutorial-bing-spellcheck.md)i rozwiązywanie problemów ze strefą czasową dla prekompilowanego [datetimeV2](luis-reference-prebuilt-datetimev2.md). 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>W poprawianiu błędów pisowni w polu wypowiedź
-Używa usługi LUIS [Bing pisowni Sprawdź interfejsu API w wersji 7](https://azure.microsoft.com/services/cognitive-services/spell-check/) poprawiać błędy pisowni w wypowiedź. Usługa LUIS musi mieć klucz skojarzony z tą usługą. Utwórz klucz, a następnie dodaj klucz jako parametr querystring na [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356). 
+Używa usługi LUIS [Bing pisowni Sprawdź interfejsu API w wersji 7](../Bing-Spell-Check/overview.md) poprawiać błędy pisowni w wypowiedź. Usługa LUIS musi mieć klucz skojarzony z tą usługą. Utwórz klucz, a następnie dodaj klucz jako parametr querystring na [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356). 
 
 Możesz również poprawić błędy pisowni w **testu** panelu przez [wprowadzenie klucza](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klucz jest przechowywana jako zmienną sesji przeglądarki panelu testu. Dodaj klucz do panelu testu w każdej sesji przeglądarki, chcesz, aby pisownia rozwiązany. 
 
@@ -49,11 +49,11 @@ Gdy [Bing pisowni Sprawdź interfejsu API w wersji 7](https://azure.microsoft.co
 }
 ```
  
-### <a name="whitelist-words"></a>Lista dozwolonych słów
-Sprawdzanie pisowni Bing, które są używane w LUIS interfejsu API nie obsługuje białą listę wyrazów zostać zignorowane podczas pisowni Sprawdź zmiany. Jeśli zachodzi potrzeba białą listę wyrazów lub akronimów, przetwarzać wypowiedź w aplikacji klienckiej z białą listę przed wysłaniem wypowiedź do usługi LUIS w celu prognozowania intencji.
+### <a name="list-of-allowed-words"></a>Lista dozwolonych wyrazów
+Interfejs API sprawdzania pisowni Bing używany w programie LUIS nie obsługuje listy wyrazów (nazywanych również dozwolonych) słów do ignorowania podczas zmian sprawdzania pisowni. Jeśli musisz zezwolić na listę wyrazów lub akronimów, przetwórz wypowiedź w aplikacji klienckiej przed wysłaniem wypowiedź do LUIS w celu przewidywania założeń.
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Zmień strefę czasową datetimeV2 wstępnie utworzone jednostki
-Gdy aplikacją usługi LUIS używa datetimeV2 wstępnie utworzone jednostki, wartość daty i godziny mogą być zwracane w odpowiedzi prognozy. Strefa czasowa żądania jest używany do określenia poprawną datę i godzinę do zwrócenia. Jeśli żądanie pochodzi z robota lub innej aplikacji scentralizowane przed przejściem do usługi LUIS, popraw strefy czasowej, których używa usługi LUIS. 
+Gdy aplikacja LUIS używa wstępnie skompilowanej jednostki [datetimeV2](luis-reference-prebuilt-datetimev2.md) , w odpowiedzi predykcyjnej można zwrócić wartość typu DateTime. Strefa czasowa żądania jest używany do określenia poprawną datę i godzinę do zwrócenia. Jeśli żądanie pochodzi z robota lub innej aplikacji scentralizowane przed przejściem do usługi LUIS, popraw strefy czasowej, których używa usługi LUIS. 
 
 ### <a name="endpoint-querystring-parameter"></a>Parametr querystring punktu końcowego
 Strefa czasowa jest usuwana przez dodanie użytkownika strefa czasowa stanowiąca kryterium [punktu końcowego](https://go.microsoft.com/fwlink/?linkid=2092356) przy użyciu `timezoneOffset` param. Wartość `timezoneOffset` powinna być liczbą dodatnią lub ujemną, w ciągu kilku minut, aby zmienić czas.  

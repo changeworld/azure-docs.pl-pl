@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58ec78f0c20d6a2d5d86a60c69cc934c8f3076c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 55251a553921e947e7c6522677e51e4eb1d3fa5b
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560631"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619956"
 ---
 # <a name="quickstart-change-model-using-c"></a>Szybki start: zmiana modelu przy użyciu języka C#
 
@@ -115,7 +115,7 @@ Aby zarządzać argumentami wiersza polecenia, dodaj kod główny. Dodaj metodę
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>Kopiowanie pliku utterances.json do katalogu wyjściowego
 
-W Eksplorator rozwiązań Dodaj `utterances.json` przez kliknięcie prawym przyciskiem myszy nazwę projektu Eksplorator rozwiązań, a następnie wybierz pozycję **Dodaj**, a następnie wybierz pozycję **istniejący element**. `utterances.json` Wybierz plik. Spowoduje to dodanie pliku do projektu. Następnie należy dodać go do kierunku danych wyjściowych. Kliknij prawym przyciskiem `utterances.json` myszy pozycję i wybierz pozycję **Właściwości**. W oknach właściwości dla pozycji **Akcja kompilacji** wybierz wartość `Content`, a dla pozycji **Kopiuj do katalogu wyjściowego** wartość `Copy Always`.  
+W Eksplorator rozwiązań Dodaj `utterances.json` przez kliknięcie prawym przyciskiem myszy nazwę projektu Eksplorator rozwiązań, a następnie wybierz pozycję **Dodaj**, a następnie wybierz pozycję **istniejący element**. `utterances.json` Wybierz plik. Spowoduje to dodanie pliku do projektu. Następnie należy dodać go do katalogu wyjściowego. Kliknij prawym przyciskiem `utterances.json` myszy pozycję i wybierz pozycję **Właściwości**. W oknach właściwości dla pozycji **Akcja kompilacji** wybierz wartość `Content`, a dla pozycji **Kopiuj do katalogu wyjściowego** wartość `Copy Always`.  
 
 ![Oznaczanie pliku JSON jako zawartości](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 
@@ -138,6 +138,6 @@ W tym wierszu polecenia wyświetlane są wyniki wywołania interfejsu API dodawa
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Po ukończeniu przewodnika Szybki start usuń wszystkie pliki utworzone w tym przewodniku Szybki start. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Programowe tworzenie aplikacji LUIS](luis-tutorial-node-import-utterances-csv.md) 

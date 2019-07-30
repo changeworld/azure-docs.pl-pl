@@ -86,7 +86,7 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
 1. Skompiluj i uruchom przykładowy kod w symulatorze systemu iOS, wybierając pozycję **Product** > **Run** (Produkt > Uruchom) z menu lub klikając przycisk **Play** (Odtwórz).
 1. Po kliknięciu przycisku "Rozpoznaj" w aplikacji i wpisaniu kilku wyrazów powinien zostać wyświetlony tekst mówiony w dolnej części ekranu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami w usłudze GitHub](https://aka.ms/csspeech/samples)

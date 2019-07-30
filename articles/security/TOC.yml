@@ -1,52 +1,52 @@
 - name: Dokumentacja zabezpieczeń platformy Azure
   href: index.md
 - name: Architektura i projekt
-  href: azure-security.md
+  href: ./fundamentals/overview.md
   expanded: false
   items:
     - name: Zaawansowane wykrywanie zagrożeń
       displayName: 'vulnerability, virus, IDs, incident'
-      href: azure-threat-detection.md
+      href: ./fundamentals/threat-detection.md
     - name: Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
       displayName: incident
-      href: azure-log-audit.md
+      href: ./fundamentals/log-audit.md
     - name: Zabezpieczenia sieci na platformie Azure
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
-      href: abstract-azure-network-security.md
+      href: ./fundamentals/abstract-network-security.md
     - name: Bezpieczeństwo bezserwerowej platformy Azure
-      href: abstract-serverless-platform-security.md
+      href: ./fundamentals/abstract-serverless-platform-security.md
     - name: Zabezpieczenia kontenerów na platformie Azure
-      href: abstract-container-security-microsoft-azure.md
+      href: ./fundamentals/abstract-container-security.md
     - name: Włączanie bezpieczeństwa działania
       displayName: 'policy, policies, azure monitor, soc'
-      href: abstract-azure-operational-security.md
+      href: ./fundamentals/abstract-operational-security.md
     - name: Izolacja w chmurze platformy Azure
       displayName: trust boundary
-      href: azure-isolation.md
+      href: ./fundamentals/isolation-choices.md
     - name: Bezpieczna hybrydowa architektura sieci
       displayName: trust boundary
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Możliwości techniczne zabezpieczeń
-      href: azure-security-technical-capabilities.md
+      href: ./fundamentals/technical-capabilities.md
     - name: Programowanie bezpiecznych aplikacji na platformie Azure
-      href: abstract-develop-secure-apps.md
+      href: ./fundamentals/abstract-develop-secure-apps.md
 - name: Bezpieczeństwo i szyfrowanie danych
-  href: security-azure-encryption-overview.md
+  href: ./fundamentals/encryption-overview.md
   items:
     - name: Zabezpieczenia bazy danych
-      href: azure-database-security-overview.md
+      href: ./fundamentals/database-security-overview.md
       items:
         - name: Najlepsze praktyki
-          href: azure-database-security-best-practices.md
+          href: ./fundamentals/database-best-practices.md
         - name: Lista kontrolna zabezpieczeń
-          href: azure-database-security-checklist.md
+          href: ./fundamentals/database-security-checklist.md
     - name: Szyfrowanie dysków
       items:
         - name: Najlepsze praktyki
           displayName: transit
-          href: azure-security-data-encryption-best-practices.md
+          href: ./fundamentals/data-encryption-best-practices.md
         - name: Szyfrowanie danych w spoczynku
-          href: azure-security-encryption-atrest.md
+          href: ./fundamentals/encryption-atrest.md
         - name: Szyfrowanie dysków dla maszyn wirtualnych IaaS
           items:
             - name: Informacje o usłudze Azure Disk Encryption
@@ -91,89 +91,89 @@
                       displayName: active directory
                       href: azure-security-disk-encryption-linux-aad.md
     - name: Zabezpieczenia usługi Azure Storage
-      href: security-storage-overview.md
+      href: ./fundamentals/storage-overview.md
     - name: Przewodnik po zabezpieczeniach magazynu
       href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Skrytka klienta
-      href: azure-customer-lockbox-overview.md
+      href: ./fundamentals/customer-lockbox-overview.md
 - name: Platforma i infrastruktura
   items:
     - name: Zabezpieczenia infrastruktury
-      href: azure-security-infrastructure.md
+      href: ./fundamentals/infrastructure.md
       items:
         - name: Zabezpieczenia fizyczne
-          href: azure-physical-security.md
+          href: ./fundamentals/physical-security.md
         - name: Dostępność
-          href: azure-infrastructure-availability.md
+          href: ./fundamentals/infrastructure-availability.md
         - name: Składniki i granice
-          href: azure-infrastructure-components.md
+          href: ./fundamentals/infrastructure-components.md
         - name: Architektura sieci
           displayName: 'ssl, https'
-          href: azure-infrastructure-network.md
+          href: ./fundamentals/infrastructure-network.md
         - name: Sieć produkcyjna
-          href: azure-production-network.md
+          href: ./fundamentals/production-network.md
         - name: SQL Database
-          href: azure-infrastructure-sql.md
+          href: ./fundamentals/infrastructure-sql.md
         - name: Operacje
-          href: azure-infrastructure-operations.md
+          href: ./fundamentals/infrastructure-operations.md
         - name: Monitorowanie
-          href: azure-infrastructure-monitoring.md
+          href: ./fundamentals/infrastructure-monitoring.md
         - name: Integralność
-          href: azure-infrastructure-integrity.md
+          href: ./fundamentals/infrastructure-integrity.md
         - name: Ochrona danych
-          href: azure-protection-of-customer-data.md
+          href: ./fundamentals/protection-customer-data.md
     - name: Usługa firmy Microsoft chroniąca przed złośliwym kodem
       displayName: virus
-      href: azure-security-antimalware.md
+      href: ./fundamentals/antimalware.md
     - name: Zabezpieczenia IaaS
-      href: security-virtual-machines-overview.md
+      href: ./fundamentals/virtual-machines-overview.md
       items:
         - name: Najlepsze rozwiązania — obciążenia IaaS
           displayName: patch
-          href: azure-security-iaas.md
+          href: ./fundamentals/iaas.md
         - name: Obrazy z witryny Azure Marketplace
-          href: security-recommendations-azure-marketplace-images.md
+          href: ./fundamentals/azure-marketplace-images.md
     - name: Zarządzanie tożsamościami
-      href: security-identity-management-overview.md
+      href: ./fundamentals/identity-management-overview.md
       items:
         - name: Wybieranie uwierzytelniania w usłudze Azure AD
           displayName: 'identity, active directory, seamless sso'
-          href: azure-ad-choose-authn.md
+          href: ./fundamentals/choose-ad-authn.md
         - name: Lista kontrolna zabezpieczeń
           displayName: 'identity, active directory, password'
-          href: azure-ad-secure-steps.md
+          href: ./fundamentals/steps-secure-identity.md
         - name: Wybieranie logowania bez hasła
           displayName: 'identity, active directory, passwordless'
-          href: azure-ad-passwordless.md
+          href: ./fundamentals/ad-passwordless.md
         - name: Najlepsze praktyki
           displayName: 'password, identity, active directory'
-          href: azure-security-identity-management-best-practices.md
+          href: ./fundamentals/identity-management-best-practices.md
         - name: Wymuszanie uwierzytelniania wieloskładnikowego dla administratorów subskrypcji
           displayName: identity
-          href: azure-security-global-admin.md
+          href: ./fundamentals/global-admin.md
     - name: Bezpieczeństwo sieci
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, azure application gateway, application gateway, ips, waf'
-      href: security-network-overview.md
+      href: ./fundamentals/network-overview.md
       items:
         - name: Najlepsze praktyki
-          href: azure-security-network-security-best-practices.md
+          href: ./fundamentals/network-best-practices.md
         - name: DDoS Protection
-          href: azure-ddos-best-practices.md
+          href: ./fundamentals/ddos-best-practices.md
         - name: Zabezpieczenia graniczne
           href: ../best-practices-network-security.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: Aplikacja
   items:
     - name: PaaS
-      href: security-paas-deployments.md
+      href: ./fundamentals/paas-deployments.md
       items:
         - name: Usługa Azure App Service dla usług PaaS
-          href: security-paas-applications-using-app-services.md
+          href: ./fundamentals/paas-applications-using-app-services.md
         - name: Usługa Azure Storage dla usług PaaS
-          href: security-paas-applications-using-storage.md
+          href: ./fundamentals/paas-applications-using-storage.md
         - name: Najlepsze rozwiązania dotyczące bazy danych dla usług PaaS
-          href: security-paas-applications-using-sql.md
+          href: ./fundamentals/paas-applications-using-sql.md
     - name: IoT
-      href: security-internet-of-things-overview.md
+      href: ./fundamentals/iot-overview.md
       items:
         - name: Najlepsze rozwiązania z zakresu zabezpieczeń IoT
           href: ../iot-accelerators/iot-security-best-practices.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
@@ -182,14 +182,14 @@
         - name: Zabezpieczanie wdrożenia IoT
           href: ../iot-accelerators/iot-accelerators-security-deployment.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Zabezpieczenia usługi Azure Service Fabric
-      href: azure-service-fabric-security-overview.md
+      href: ./fundamentals/service-fabric-overview.md
       items:
         - name: Najlepsze praktyki
-          href: azure-service-fabric-security-best-practices.md
+          href: ./fundamentals/service-fabric-best-practices.md
         - name: Lista kontrolna zabezpieczeń
-          href: azure-service-fabric-security-checklist.md
+          href: ./fundamentals/service-fabric-checklist.md
 - name: 'Monitorowanie, inspekcja oraz operacje'
-  href: security-management-and-monitoring-overview.md
+  href: ./fundamentals/management-monitoring-overview.md
   items:
     - name: Inspekcja i rejestrowanie
       items:
@@ -197,31 +197,31 @@
           displayName: 'vulnerability, incident, virus,'
           href: ../security-center/security-center-intro.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
         - name: Zabezpieczenia zarządzania zdalnego
-          href: azure-security-management.md
+          href: ./fundamentals/management.md
         - name: Integracja dzienników platformy Azure
           items:
             - name: Wprowadzenie
-              href: security-azure-log-integration-overview.md
+              href: ./fundamentals/azure-log-integration-overview.md
             - name: Rozpoczęcie pracy
-              href: security-azure-log-integration-get-started.md
+              href: ./fundamentals/azure-log-integration-get-started.md
             - name: Integrowanie dzienników inspekcji usługi Azure AD
               displayName: active directory
-              href: security-azure-log-integration-ad.md
+              href: ./fundamentals/azure-log-integration-ad.md
             - name: Integrowanie alertów usługi Security Center
               displayName: splunk
               href: ../security-center/security-center-export-data-to-siem.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
             - name: Integrowanie dzienników z usługi Key Vault
               displayName: keyvault
-              href: security-azure-log-integration-keyvault-eventhub.md
+              href: ./fundamentals/azure-log-integration-keyvault-eventhub.md
             - name: Często zadawane pytania
-              href: security-azure-log-integration-faq.md
+              href: ./fundamentals/azure-log-integration-faq.md
     - name: Bezpieczeństwo działania
-      href: azure-operational-security-overview.md
+      href: ./fundamentals/operational-overview.md
       items:
         - name: Najlepsze praktyki
-          href: azure-operational-security-best-practices.md
+          href: ./fundamentals/operational-best-practices.md
         - name: Lista kontrolna zabezpieczeń
-          href: azure-operational-security-checklist.md
+          href: ./fundamentals/operational-checklist.md
 - name: Zarządzanie i zgodność
   displayName: 'blueprint, privacy, certifications'
   items:
@@ -312,26 +312,26 @@
         - name: Aplikacja internetowa PaaS
           href: ./blueprints/ukofficial-paaswa-overview.md
 - name: Oficjalne dokumenty
-  href: security-white-papers.md
+  href: ./fundamentals/white-papers.md
 - name: Usługi zabezpieczeń platformy Azure
-  href: azure-security-services-technologies.md
+  href: ./fundamentals/services-technologies.md
 - name: Omówienia techniczne
-  href: security-overviews.md
+  href: ./fundamentals/overviews.md
 - name: Najlepsze praktyki
-  href: security-best-practices-and-patterns.md
+  href: ./fundamentals/best-practices-and-patterns.md
 - name: Zasoby
   items:
     - name: Wspólne atrybuty zabezpieczeń
-      href: common-security-attributes.md
+      href: ./fundamentals/common-security-attributes.md
     - name: Program MVP dotyczący zabezpieczeń platformy Azure
-      href: azure-security-mvp.md
+      href: ./fundamentals/mvp.md
     - name: Doradztwo z zakresu cyberbezpieczeństwa
-      href: azure-security-cyber-services.md
+      href: ./fundamentals/cyber-services.md
     - name: Rejestrowanie biletu pomocy technicznej zdarzenia zabezpieczeń
-      href: azure-security-event-support-ticket.md
+      href: ./fundamentals/event-support-ticket.md
     - name: Testowanie penetracyjne
       displayName: penetration
-      href: azure-security-pen-testing.md
+      href: ./fundamentals/pen-testing.md
     - name: Narzędzie do modelowania zagrożeń firmy Microsoft
       displayName: stride
       href: azure-security-threat-modeling-tool.md

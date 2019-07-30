@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2b574e0a545091263fce7949f997a3ba2dc8e5a8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bb7fa9d930f4c1ab3c241048804060e17fe5a8e4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563978"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619917"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>Pojęcia dotyczące intencji w aplikacji LUIS
 
@@ -42,12 +42,15 @@ Wypowiedź należy przypisać do pojedynczego celem. Gdy usługa LUIS otrzymuje 
 ## <a name="intent-compared-to-entity"></a>Celem w porównaniu do jednostki
 Celem reprezentuje akcję chatbot powinno zająć dla użytkownika i opiera się na cały wypowiedź. Jednostka reprezentuje słów i fraz zawartych w wypowiedź. Wypowiedź może mieć tylko jeden górnej oceniania intencji, ale może mieć wiele jednostek. 
 
-<a name="how-do-intents-relate-to-entities"></a> Utwórz opcję podczas użytkownika _zamiar_ będą wyzwalać akcję w aplikacji klienckiej, takich jak wywołania funkcji checkweather(). Następnie należy utworzyć jednostkę reprezentują parametrów wymaganych do wykonania akcji. 
+<a name="how-do-intents-relate-to-entities"></a>
+
+Utwórz cel, gdy zamiaru  użytkownika wywoła akcję w aplikacji klienckiej, taką jak wywołanie funkcji checkweather (). Następnie należy utworzyć jednostkę reprezentują parametrów wymaganych do wykonania akcji. 
 
 |Przykład intencji   | Jednostka | Jednostki w przykładzie wypowiedzi   | 
 |------------------|------------------------------|------------------------------|
 | CheckWeather | {"type": "Lokalizacja", "entity": "seattle"}<br>{"type": "builtin.datetimeV2.date","entity": "jutro", "Rozwiązanie": "2018-05-23"} | Co pogody, takich jak w `Seattle` `tomorrow`? |
 | CheckWeather | {"type": "date_range", "entity": "ten weekend"} | Pokaż mi prognozy dla `this weekend` | 
+||||
 
 ## <a name="custom-intents"></a>Niestandardowe intencji
 

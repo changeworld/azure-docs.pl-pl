@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 0d52445d82965973c2d1e0f4fca2ef463312ad5f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 69b4a92470b33ab6615eead16be044a88436d64e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560733"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619763"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Tworzenie i prognozowanie kluczy końca punktu końcowego w LUIS
 Usługa LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcowego](#endpoint-key). Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, musisz [tworzenia klucza punktu końcowego](luis-how-to-azure-subscription.md), [ją przypisać](luis-how-to-azure-subscription.md) z aplikacją usługi LUIS i [pomocą kwerendy punktu końcowego](#use-endpoint-key-in-query). 
@@ -29,6 +29,7 @@ Usługa LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu k
 Ważne jest, aby tworzyć aplikacje usługi LUIS w [regionów](luis-reference-regions.md#publishing-regions) które również chcesz publikować i wykonywać zapytania.
 
 <a name="programmatic-key" ></a>
+
 ## <a name="authoring-key"></a>Tworzenie klucza
 
 Tworzenia klucza, znany także jako klucz starter, jest tworzona automatycznie podczas tworzenia konta usługi LUIS i jest ona bezpłatna. Masz jeden klucz tworzenia pakietów administracyjnych dla wszystkich aplikacji usługi LUIS do każdego tworzenia [region](luis-reference-regions.md). Tworzenia klucz jest dostarczany do tworzenia aplikacji usługi LUIS lub do testowania zapytania punktu końcowego. 
@@ -83,6 +84,6 @@ W przypadku przekroczenia usługi na drugim limit przydziału, wystąpi błąd H
 Klucz punktu końcowego można [przypisać](luis-how-to-azure-subscription.md) w [portalu Luis](https://www.luis.ai) lub za pośrednictwem odpowiednich interfejsów API. 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się, [pojęcia](luis-how-to-azure-subscription.md) o kluczach do tworzenia i punktu końcowego.

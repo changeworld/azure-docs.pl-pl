@@ -5,14 +5,12 @@ metadata:
   title: Dokumentacja usługi Batch — samouczki i dokumentacja interfejsu API | Microsoft Docs
   description: 'Usługa Azure Batch umożliwia wydajne uruchamianie aplikacji równoległych oraz aplikacji do obliczeń o wysokiej wydajności w wielkiej skali. Zdefiniuj zasoby obliczeniowe platformy Azure, aby wykonywać aplikacje równolegle lub w odpowiedniej skali bez ręcznego konfigurowania infrastruktury i zarządzania nią. Planuj zadania intensywnie korzystające z mocy obliczeniowej i dynamicznie dodawaj lub usuwaj zasoby obliczeniowe zgodnie z Twoimi wymaganiami. Dowiedz się, jak używać usługi Azure Batch, korzystając z przewodników Szybki start, samouczków i przykładów.'
   services: batch
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: batch
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/30/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Usługa Azure Batch umożliwia wydajne uruchamianie aplikacji równoległych oraz aplikacji do obliczeń o wysokiej wydajności w wielkiej skali. Zdefiniuj zasoby obliczeniowe platformy Azure, aby wykonywać aplikacje równolegle lub w odpowiedniej skali bez ręcznego konfigurowania infrastruktury i zarządzania nią. Planuj zadania intensywnie korzystające z mocy obliczeniowej i dynamicznie dodawaj lub usuwaj zasoby obliczeniowe zgodnie z Twoimi wymaganiami. Dowiedz się, jak używać usługi Azure Batch, korzystając z przewodników Szybki start, samouczków i przykładów.'
 sections:

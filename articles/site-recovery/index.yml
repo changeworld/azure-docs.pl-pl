@@ -5,13 +5,12 @@ metadata:
   title: Dokumentacja usługi Azure Site Recovery — samouczki i dokumentacja interfejsu API | Microsoft Docs
   meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
   services: site-recovery
-  author: czeumault
-  manager: carolz
+  author: carmonmills
+  manager: carmonm
   ms.service: site-recovery
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 11/27/2018
-  ms.author: carolz
+  ms.author: carmonm
 abstract:
   description: 'Usługa Azure Site Recovery organizuje odzyskiwanie po awarii i zarządza nim w przypadku maszyn wirtualnych platformy Azure, lokalnych maszyn wirtualnych i serwerów fizycznych. Dowiedz się, jak przeprowadzać replikację, przejście do trybu failover i powrót po awarii, zapoznając się z naszymi przewodnikami Szybki start i samouczkami.'
 sections:
@@ -24,7 +23,7 @@ sections:
         items:
           - image:
               src: /azure/site-recovery/media/index/portal.svg
-            text: Azure Portal
+            text: Portal Azure
             href: /azure/site-recovery/azure-to-azure-quickstart
   - title: Samouczki krok po kroku
     items:

@@ -6,14 +6,12 @@ metadata:
   title: Dokumentacja maszyny wirtualnej z systemem Linux na platformie Azure — samouczki i dokumentacja interfejsu API
   meta.description: Learn how to create a virtual machine using the Linux distribution of your choice. Documentation shows different ways to create VM templates.
   services: virtual-machines\linux
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: virtual-machines-linux
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Maszyny wirtualne z systemem Linux na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Red Hat lub Ubuntu albo wybranej dystrybucji systemu Linux. Dowiedz się, jak tworzyć, konfigurować, aktualizować i skalować maszyny wirtualne z systemem Linux oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.'
   aside:

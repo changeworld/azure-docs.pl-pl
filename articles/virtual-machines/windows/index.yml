@@ -6,14 +6,12 @@ metadata:
   title: Dokumentacja maszyny wirtualnej z systemem Windows na platformie Azure — samouczki i dokumentacja interfejsu API
   meta.description: 'Learn how to create Windows virtual machines. Documentation helps you plan, deploy, and manage a virtual machine computing environment in the cloud.'
   services: virtual-machines\windows
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: virtual-machines-windows
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Maszyny wirtualne z systemem Windows na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Windows Server. Dowiedz się, jak tworzyć, konfigurować i skalować maszyny wirtualne z systemem Windows oraz zarządzać nimi, korzystając z przewodników Szybki Start, samouczków i przykładów.'
   aside:

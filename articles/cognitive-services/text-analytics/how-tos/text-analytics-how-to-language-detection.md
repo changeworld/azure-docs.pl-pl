@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 98f7ef3e6ce6ce8569e6cf1fba1c939e470d4be7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1ecb4897811e63ea33936f080791f3abce3e0b32
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552473"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618714"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Przykład: Wykrywanie języka za pomocą analiza tekstu
 
@@ -36,7 +36,7 @@ Musisz mieć dokumenty JSON w tym formacie: Identyfikator i tekst.
 
 Rozmiar dokumentu musi zawierać 5 120 znaków na dokument. Możesz mieć do 1 000 elementów (identyfikatorów) na kolekcję. Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest przykładem zawartości, którą można przesłać do wykrywania języka:
 
-   ```
+```json
     {
         "documents": [
             {
@@ -54,7 +54,7 @@ Rozmiar dokumentu musi zawierać 5 120 znaków na dokument. Możesz mieć do 1 0
             {
                 "id": "4",
                 "text": "本文件为英文"
-            },                
+            },
             {
                 "id": "5",
                 "text": "Этот документ на английском языке."
@@ -95,116 +95,172 @@ Wyniki dla przykładowego żądania powinny wyglądać podobnie do następujące
 
 Wynik dodatni 1,0 wyraża najwyższy możliwy poziom ufności analizy.
 
-
-
-```
-{
-    "documents": [
-        {
-            "id": "1",
-            "detectedLanguages": [
-                {
-                    "name": "English",
-                    "iso6391Name": "en",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "detectedLanguages": [
-                {
-                    "name": "Spanish",
-                    "iso6391Name": "es",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "3",
-            "detectedLanguages": [
-                {
-                    "name": "French",
-                    "iso6391Name": "fr",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "4",
-            "detectedLanguages": [
-                {
-                    "name": "Chinese_Simplified",
-                    "iso6391Name": "zh_chs",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "5",
-            "detectedLanguages": [
-                {
-                    "name": "Russian",
-                    "iso6391Name": "ru",
-                    "score": 1
-                }
-            ]
-        }
-    ],
+```json
+    {
+        "documents": [
+            {
+                "id": "1",
+                "detectedLanguages": [
+                    {
+                        "name": "English",
+                        "iso6391Name": "en",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "detectedLanguages": [
+                    {
+                        "name": "Spanish",
+                        "iso6391Name": "es",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "3",
+                "detectedLanguages": [
+                    {
+                        "name": "French",
+                        "iso6391Name": "fr",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "4",
+                "detectedLanguages": [
+                    {
+                        "name": "Chinese_Simplified",
+                        "iso6391Name": "zh_chs",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "5",
+                "detectedLanguages": [
+                    {
+                        "name": "Russian",
+                        "iso6391Name": "ru",
+                        "score": 1
+                    }
+                ]
+            }
+        ],
+        "errors": []
+    }
 ```
 
 ### <a name="ambiguous-content"></a>Zawartość niejednoznaczna
 
+W niektórych przypadkach może być trudno odróżnić Języki w oparciu o dane wejściowe. Możesz użyć parametru, `countryHint` aby określić 2-literowy kod kraju. Domyślnie interfejs API używa "US" jako domyślnego countryHint, aby usunąć to zachowanie, można zresetować ten parametr, ustawiając tę wartość na pusty ciąg `countryHint = ""` .
+
+Na przykład "niemożliwe" jest wspólne dla języka angielskiego i francuskiego, a jeśli jest określony z ograniczonym kontekstem, odpowiedź będzie oparta na wskazówek dotyczących kraju "US". Jeśli pochodzenie tekstu jest znane z Francji, które mogą być dostarczone jako Wskazówka.
+
+**Dane wejściowe**
+
+```json
+    {
+        "documents": [
+            {
+                "id": "1",
+                "text": "impossible"
+            },
+            {
+                "id": "2",
+                "text": "impossible",
+                "countryHint": "fr"
+            }
+        ]
+    }
+```
+
+Usługa ma teraz dodatkowy kontekst, aby zapewnić lepszą opinię: 
+
+**Dane wyjściowe**
+
+```json
+    {
+        "documents": [
+            {
+                "id": "1",
+                "detectedLanguages": [
+                    {
+                        "name": "English",
+                        "iso6391Name": "en",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "detectedLanguages": [
+                    {
+                        "name": "French",
+                        "iso6391Name": "fr",
+                        "score": 1
+                    }
+                ]
+            }
+        ],
+        "errors": []
+    }
+```
+
 Jeśli analizator nie może przeanalizować danych wejściowych, `(Unknown)`zwraca. Przykładem jest przesłanie bloku tekstu, który składa się wyłącznie z cyfr arabskich.
 
-```
+```json
     {
-      "id": "5",
-      "detectedLanguages": [
-        {
-          "name": "(Unknown)",
-          "iso6391Name": "(Unknown)",
-          "score": "NaN"
-        }
-      ]
+        "id": "5",
+        "detectedLanguages": [
+            {
+                "name": "(Unknown)",
+                "iso6391Name": "(Unknown)",
+                "score": "NaN"
+            }
+        ]
+    }
 ```
+
 ### <a name="mixed-language-content"></a>Zawartość języka mieszanego
 
 Zawartość w języku mieszanym w tym samym dokumencie zwraca język z największą reprezentacją zawartości, ale z niższą dodatnią klasyfikacją. Klasyfikacja odzwierciedla krańcową moc oceny. W następującym przykładzie dane wejściowe stanowią mieszankę języków angielskiego, hiszpańskiego i francuskiego. Analizator zlicza znaki w każdym segmencie w celu ustalenia dominującego języka.
 
 **Dane wejściowe**
 
-```
-{
-  "documents": [
+```json
     {
-      "id": "1",
-      "text": "Hello, I would like to take a class at your University. ¿Se ofrecen clases en español? Es mi primera lengua y más fácil para escribir. Que diriez-vous des cours en français?"
+      "documents": [
+        {
+          "id": "1",
+          "text": "Hello, I would like to take a class at your University. ¿Se ofrecen clases en español? Es mi primera lengua y más fácil para escribir. Que diriez-vous des cours en français?"
+        }
+      ]
     }
-  ]
-}
 ```
 
 **Dane wyjściowe**
 
 Wynikowe dane wyjściowe składają się z języka dominującego, z wynikiem niższym niż 1,0, który wskazuje słaby poziom zaufania.
 
-```
-{
-  "documents": [
+```json
     {
-      "id": "1",
-      "detectedLanguages": [
+      "documents": [
         {
-          "name": "Spanish",
-          "iso6391Name": "es",
-          "score": 0.9375
+          "id": "1",
+          "detectedLanguages": [
+            {
+              "name": "Spanish",
+              "iso6391Name": "es",
+              "score": 0.9375
+            }
+          ]
         }
-      ]
+      ],
+      "errors": []
     }
-  ],
-  "errors": []
-}
 ```
 
 ## <a name="summary"></a>Podsumowanie
@@ -216,13 +272,12 @@ W tym artykule przedstawiono koncepcje i przepływ pracy wykrywania języka przy
 + Żądanie post jest `/languages` punktem końcowym przy użyciu spersonalizowanego [klucza dostępu i punktu końcowego](text-analytics-how-to-access-key.md) , który jest prawidłowy dla Twojej subskrypcji.
 + Dane wyjściowe odpowiedzi składają się z identyfikatorów języka dla każdego identyfikatora dokumentu. Dane wyjściowe mogą być przesyłane strumieniowo do dowolnej aplikacji, która akceptuje kod JSON. Przykładowe aplikacje to programy Excel i Power BI, aby podać kilka nazw.
 
-## <a name="see-also"></a>Zobacz także 
+## <a name="see-also"></a>Zobacz także
 
- [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)  
- [Często zadawane pytania](../text-analytics-resource-faq.md)</br>
- [Strona produktu analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Omówienie analizy tekstu](../overview.md) [Frequently asked questions (FAQ) (Często zadawane pytania (FAQ))](../text-analytics-resource-faq.md)</br>
+ [Strona produktu analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759712)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Analiza opinii](text-analytics-how-to-sentiment-analysis.md)

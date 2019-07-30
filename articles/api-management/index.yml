@@ -5,14 +5,12 @@ metadata:
   title: Dokumentacja usługi Azure API Management — samouczki i dokumentacja interfejsu API | Microsoft Docs
   description: 'Dowiedz się, jak usługa API Management umożliwia bezpieczne publikowanie interfejsów API w skali do deweloperów zewnętrznych, deweloperów będących partnerami i deweloperów będących pracownikami. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak tworzyć nowoczesne bramy interfejsu API dla istniejących usług zaplecza hostowanych w dowolnym miejscu oraz jak nimi zarządzać.'
   services: api-management
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: api-management
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/15/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Dowiedz się, jak usługa API Management umożliwia bezpieczne publikowanie interfejsów API w skali do deweloperów zewnętrznych, deweloperów będących partnerami i deweloperów będących pracownikami. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak tworzyć nowoczesne bramy interfejsu API dla istniejących usług zaplecza hostowanych w dowolnym miejscu oraz jak nimi zarządzać.'
 sections:

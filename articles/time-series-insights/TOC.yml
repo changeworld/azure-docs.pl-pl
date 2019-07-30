@@ -5,6 +5,7 @@
     - name: Time Series Insights — informacje
       href: time-series-insights-update-overview.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Ogólnie dostępna usługa Azure Time Series Insights
       items:
