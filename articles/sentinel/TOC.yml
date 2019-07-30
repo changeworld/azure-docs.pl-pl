@@ -72,6 +72,8 @@
               href: connect-cisco.md
         - name: Łączenie z funkcjami analizy zagrożeń
           href: connect-threat-intelligence.md
+        - name: Łączenie maszyn wirtualnych usługi Azure Stack
+          href: connect-azure-stack.md
     - name: Wyszukiwanie zagrożeń
       href: hunting.md
       items:

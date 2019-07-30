@@ -7,22 +7,22 @@
 - name: Przewodniki Szybki start
   expaned: true
   items:
-    - name: Trenowanie modelu niestandardowego i wyodrębnianie danych
+    - name: Korzystanie z interfejsu API REST
       items:
-        - name: Korzystanie z interfejsu API REST
+        - name: Trenowanie modelu niestandardowego i wyodrębnianie danych
           items:
             - name: cURL
               href: quickstarts/curl-train-extract.md
             - name: Python
               href: quickstarts/python-train-extract.md
-    - name: Używanie wstępnie utworzonego modelu potwierdzeń
-      items:
-        - name: Korzystanie z interfejsu API REST
+        - name: Używanie wstępnie utworzonego modelu potwierdzenia
           items:
             - name: cURL
               href: quickstarts/curl-receipts.md
             - name: Python
               href: quickstarts/python-receipts.md
+    - name: Korzystanie z zestawu .NET SDK
+      href: quickstarts/dotnet-sdk.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie zestawu danych szkoleniowych

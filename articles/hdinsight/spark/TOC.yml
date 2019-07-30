@@ -50,6 +50,18 @@
       href: ../hdinsight-version-release.md
     - name: Monitorowanie dostępności klastrów za pomocą dzienników usług Ambari i Azure Monitor
       href: ../hdinsight-cluster-availability.md
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Wyjątek OutOfMemoryError
+          items:
+            - name: Niewystarczająca ilość pamięci sterty
+              href: ./apache-spark-troubleshoot-outofmemory-heap.md
+        - name: Wyjątek IllegalArgumentException
+          href: ./apache-spark-troubleshoot-illegalargumentexception.md
+        - name: Zatrzymywanie aplikacji przesyłania strumieniowego na platformie Apache Spark
+          href: ./apache-spark-troubleshoot-application-stops.md
+        - name: Wyjątek RpcTimeoutException
+          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
 - name: Instrukcje
   items:
     - name: Korzystanie z magazynu klastra

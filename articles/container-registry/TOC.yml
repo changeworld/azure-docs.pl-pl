@@ -77,6 +77,8 @@
       items:
         - name: Ograniczanie dostępu przy użyciu sieci wirtualnej (wersja zapoznawcza)
           href: container-registry-vnet.md
+        - name: Uzyskiwanie dostępu za zaporą
+          href: container-registry-firewall-access-rules.md
         - name: Authentication
           items:
             - name: Omówienie uwierzytelniania

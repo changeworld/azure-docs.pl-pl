@@ -1,4 +1,4 @@
-- name: Dokumentacja usługi Azure Security Center (ASC) for IoT (wersja zapoznawcza)
+- name: Dokumentacja usługi Azure Security Center dla IoT
   href: index.yml
 - name: Omówienie
   href: overview.md
@@ -11,16 +11,21 @@
       href: security-edge-architecture.md
     - name: Wymagania wstępne usługi
       href: service-prerequisites.md
-    - name: Wprowadzenie do usługi ASC for IoT
+    - name: Wprowadzenie do usługi Azure Security Center dla IoT
       href: getting-started.md
+      items:
+        - name: Usługa IoT Hub
+          href: iot-hub-integration.md
+        - name: Agenci zabezpieczeń
+          href: security-agents.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Włączanie usługi ASC for IoT w usłudze IoT Hub
+    - name: Włączanie usługi Azure Security Center dla IoT w usłudze IoT Hub
       href: quickstart-onboard-iot-hub.md
     - name: Konfigurowanie rozwiązania
       href: quickstart-configure-your-solution.md
-    - name: Tworzenie bliźniaczej reprezentacji modułu usługi ASC for IoT
+    - name: Tworzenie bliźniaczej reprezentacji modułu usługi Azure Security Center dla IoT
       href: quickstart-create-security-twin.md
     - name: Tworzenie niestandardowych alertów zabezpieczeń
       href: quickstart-create-custom-alerts.md
@@ -34,6 +39,8 @@
       href: concept-security-alerts.md
     - name: Zalecenia dotyczące zabezpieczeń
       href: concept-recommendations.md
+    - name: Agregacja zdarzeń
+      href: event-aggregation.md
     - name: Cennik i powiązane koszty
       href: concept-pricing.md
 - name: Przewodniki z instrukcjami
@@ -48,6 +55,14 @@
           href: how-to-deploy-linux-cs.md
         - name: Wdrażanie agenta zabezpieczeń bazującego na języku C na urządzeniu z systemem Linux
           href: how-to-deploy-linux-c.md
+    - name: Rozwiązywanie problemów z agentem zabezpieczeń
+      items:
+        - name: Rozwiązywanie problemów z agentem zabezpieczeń systemu Linux w usłudze Azure Security Center dla IoT
+          href: troubleshoot-agent.md
+        - name: Konfiguracja lokalna — C
+          href: azure-iot-security-local-configuration-c.md
+        - name: 'Konfiguracja lokalna — C#'
+          href: azure-iot-security-local-configuration-csharp.md
     - name: Wdrażanie modułu zabezpieczeń usługi Edge
       href: how-to-deploy-edge.md
     - name: Konfigurowanie alertów zabezpieczeń

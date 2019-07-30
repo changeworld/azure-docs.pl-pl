@@ -738,6 +738,12 @@
           maintainContext: true
         - name: Sterownik ODBC
           href: odbc-driver.md
+    - name: Migracja danych do usługi Cosmos DB
+      items:
+        - name: Migrowanie do interfejsu API SQL przy użyciu rozwiązania Striim
+          href: cosmosdb-sql-api-migrate-data-striim.md
+        - name: Migrowanie do interfejsu API Cassandra przy użyciu rozwiązania Striim
+          href: cosmosdb-cassandra-api-migrate-data-striim.md
     - name: Biblioteka funkcji wykonawczej operacji zbiorczych
       items:
         - name: Informacje o funkcji wykonywania zbiorczego

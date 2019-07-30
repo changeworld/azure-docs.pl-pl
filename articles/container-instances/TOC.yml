@@ -61,7 +61,7 @@
           href: container-instances-restart-policy.md
         - name: Ustawianie zmiennych środowiskowych (env)
           href: container-instances-environment-variables.md
-        - name: Przesłanianie punktu wejścia kontenera
+        - name: Ustawianie polecenia uruchamiania kontenera (punkt wejścia)
           href: container-instances-start-command.md
         - name: Wykonywanie polecenia (exec)
           href: container-instances-exec.md
