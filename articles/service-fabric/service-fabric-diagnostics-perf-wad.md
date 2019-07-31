@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Service Fabric — monitorowanie wydajności za pomocą rozszerzenia diagnostyki Azure Windows | Dokumentacja firmy Microsoft
-description: Korzystanie z diagnostyki Azure Windows, można zebrać liczników wydajności w przypadku klastrów usługi Azure Service Fabric.
+title: Azure Service Fabric — monitorowanie wydajności za pomocą rozszerzenia Windows Diagnostyka Azure | Microsoft Docs
+description: Użyj Diagnostyka Azure systemu Windows do zbierania liczników wydajności dla klastrów Service Fabric platformy Azure.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -15,29 +15,29 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66110301"
 ---
-# <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorowanie wydajności za pomocą rozszerzenia diagnostyki Azure Windows
+# <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorowanie wydajności za pomocą rozszerzenia Diagnostyka Azure systemu Windows
 
-W tym dokumencie opisano kroki wymagane do skonfigurowania zbierania liczników wydajności za pośrednictwem rozszerzenia diagnostyki Azure Windows (WAD) w przypadku klastrów Windows. W przypadku klastrów systemu Linux skonfiguruj [agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md) można zebrać liczników wydajności dla węzłów. 
+W tym dokumencie opisano kroki wymagane do skonfigurowania kolekcji liczników wydajności za pomocą rozszerzenia Diagnostyka Azure systemu Windows (funkcji wad) dla klastrów systemu Windows. W przypadku klastrów systemu Linux Skonfiguruj [agenta log Analytics](service-fabric-diagnostics-oms-agent.md) , aby zbierać liczniki wydajności dla węzłów. 
 
  > [!NOTE]
-> Rozszerzenie WAD powinny być wdrażane w klastrze dla tych kroków pracować za Ciebie. Jeśli go nie ustawiono, przejdź do [agregowania zdarzeń i kolekcji przy użyciu Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).  
+> Rozszerzenie funkcji wad należy wdrożyć w klastrze, aby wykonać te kroki. Jeśli nie jest on skonfigurowany, przejdź do agregacji [zdarzeń i kolekcji przy użyciu Diagnostyka Azure systemu Windows](service-fabric-diagnostics-event-aggregation-wad.md).  
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="collect-performance-counters-via-the-wadcfg"></a>Liczniki wydajności są zbierane za pomocą WadCfg
+## <a name="collect-performance-counters-via-the-wadcfg"></a>Zbieranie liczników wydajności za pośrednictwem WadCfg
 
-Można zebrać liczników wydajności za pomocą funkcji WAD, należy zmodyfikować konfigurację odpowiednio w szablonie usługi Resource Manager klastra. Wykonaj następujące kroki, aby dodać licznika wydajności, które chcesz zebrać do szablonu, a następnie uruchom Uaktualnianie zasobu usługi Resource Manager.
+Aby zbierać liczniki wydajności za pośrednictwem funkcji wad, należy odpowiednio zmodyfikować konfigurację w szablonie Menedżer zasobów klastra. Wykonaj następujące kroki, aby dodać licznik wydajności, który ma zostać zebrany do szablonu, i uruchom Menedżer zasobów uaktualnienie zasobów.
 
-1. Znajdź konfiguracji WAD w szablonie usługi klastra — Znajdź `WadCfg`. Spowoduje dodanie liczników wydajności zbierających dane w ramach `DiagnosticMonitorConfiguration`.
+1. Znajdź konfigurację funkcji wad w szablonie klastra — Znajdź `WadCfg`. Dodajesz liczniki wydajności, które będą zbierane w ramach `DiagnosticMonitorConfiguration`programu.
 
-2. Konfigurowanie konfiguracji można zebrać liczników wydajności, dodając następującą sekcję, aby Twoje `DiagnosticMonitorConfiguration`. 
+2. Skonfiguruj konfigurację w celu zbierania liczników wydajności, dodając do niej `DiagnosticMonitorConfiguration`następującą sekcję. 
 
     ```json
     "PerformanceCounters": {
@@ -46,11 +46,11 @@ Można zebrać liczników wydajności za pomocą funkcji WAD, należy zmodyfikow
     }
     ```
 
-    `scheduledTransferPeriod` Definiuje, jak często wartości liczników, które są zbierane są przekazywane do tabeli usługi Azure storage i do dowolnego ujścia skonfigurowany. 
+    Definiuje `scheduledTransferPeriod` , jak często wartości zbieranych liczników są przesyłane do tabeli usługi Azure Storage oraz do dowolnego skonfigurowanego ujścia. 
 
-3. Dodaj liczniki wydajności chcesz zbierać do `PerformanceCounterConfiguration` , została zadeklarowana w poprzednim kroku. Wszystkich liczników, które chcesz zbierać jest zdefiniowana za pomocą `counterSpecifier`, `sampleRate`, `unit`, `annotation`, wszelkie odpowiednie `sinks`.
+3. Dodaj liczniki wydajności, które chcesz zebrać do `PerformanceCounterConfiguration` obiektu, który został zadeklarowany w poprzednim kroku. Każdy licznik, `counterSpecifier`który ma być zbierany, jest definiowany przy użyciu, `annotation` `sampleRate`, `unit`,, i `sinks`wszelkie odpowiednie.
 
-Poniżej przedstawiono przykład konfiguracji za pomocą licznika dla *łączny czas procesora* (ilość czasu Procesor był używany w operacjach przetwarzania) i *wywołań metod usługi Service Fabric aktora na sekundę*, jeden z usługi Service Fabric niestandardowych liczników wydajności. Zapoznaj się [liczników wydajności usługi Reliable Actor](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) i [liczniki wydajności usługi Reliable Service](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) pełną listę liczników wydajności niestandardowe usługi Service Fabric.
+Poniżej znajduje się przykład konfiguracji z licznikiem dla *łącznego czasu procesora* (czas używany przez procesor CPU do przetwarzania operacji) oraz *Service Fabric wywołań metod aktora na sekundę*, jednego z Service Fabric niestandardowych Liczniki wydajności. Zapoznaj się z niezawodnymi licznikami [wydajności aktora](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) i niezawodnymi [licznikami wydajności usługi](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) , aby uzyskać pełną listę niestandardowych liczników wydajności Service Fabric.
 
  ```json
  "WadCfg": {
@@ -107,9 +107,9 @@ Poniżej przedstawiono przykład konfiguracji za pomocą licznika dla *łączny 
        },
   ```
 
- Częstotliwość próbkowania licznika można zmodyfikować zgodnie z potrzebami. Jego format jest `PT<time><unit>`, więc jeśli chcesz, aby zbiera dane licznika co sekundę, następnie należy ustawić `"sampleRate": "PT15S"`.
+ Częstotliwość próbkowania dla licznika można zmodyfikować zgodnie z potrzebami. Jest `PT<time><unit>`to format, więc jeśli chcesz, aby licznik był zbierany co sekundę, należy `"sampleRate": "PT15S"`ustawić.
 
- Można również używać zmiennych do szablonu ARM do zbierania szereg liczników wydajności, które mogą okazać się przydatna podczas zbierania liczników wydajności na proces. W poniższym przykładzie są zbierane czas modułu zbierającego elementy bezużyteczne procesu i czasu procesora, a następnie 2 liczników wydajności na poszczególnych węzłach za pomocą zmiennych. 
+ Możesz również użyć zmiennych w szablonie ARM, aby zebrać tablicę liczników wydajności, które mogą być przydatne podczas zbierania liczników wydajności dla poszczególnych procesów. W poniższym przykładzie zbieramy czas procesora i czas modułu wypełniania elementów bezużytecznych dla poszczególnych procesów, a następnie dwa liczniki wydajności na wszystkich węzłach, używając zmiennych. 
 
  ```json
 "variables": {
@@ -193,17 +193,17 @@ Poniżej przedstawiono przykład konfiguracji za pomocą licznika dla *łączny 
 ```
 
  >[!NOTE]
- >Chociaż można użyć `*` do określania grup liczników wydajności, które są nazwane w podobny sposób, wysyłania żadnych liczników za pośrednictwem obiektu sink (do usługi Application Insights) wymaga indywidualnie one zadeklarowane. 
+ >Mimo że można użyć `*` , aby określić grupy liczników wydajności, które są nazywane analogicznie, wysyłanie wszelkich liczników za pośrednictwem ujścia (do Application Insights) wymaga, aby zostały indywidualnie zadeklarowane. 
 
-1. Po dodaniu odpowiednich liczników, których muszą być zbierane, musisz uaktualnić zasobu klastra, aby te zmiany zostaną odzwierciedlone w uruchomionej klastra. Zapisz zmodyfikowany `template.json` i Otwórz program PowerShell. Można uaktualnić za pomocą klastra `New-AzResourceGroupDeployment`. Połączenie wymaga nazwy grupy zasobów, plik zaktualizowanego szablonu i pliku parametrów i wyświetla monit o wprowadzenie odpowiednich zmian do zasobów, które można zaktualizować Menedżera zasobów. Gdy zalogowano się do swojego konta i znajdują się w odpowiednią subskrypcję, użyj następującego polecenia w celu przeprowadzenia uaktualnienia:
+1. Po dodaniu odpowiednich liczników wydajności, które mają być zbierane, należy uaktualnić zasób klastra, aby te zmiany zostały odzwierciedlone w uruchomionym klastrze. Zapisz zmodyfikowany `template.json` i Otwórz program PowerShell. Klaster można uaktualnić przy użyciu programu `New-AzResourceGroupDeployment`. Wywołanie wymaga nazwy grupy zasobów, zaktualizowanego pliku szablonu i pliku parametrów i zostanie wyświetlony komunikat z prośbą o wprowadzenie odpowiednich zmian w zaktualizowanych zasobach Menedżer zasobów. Po zalogowaniu się na konto i w odpowiedniej subskrypcji Użyj następującego polecenia, aby uruchomić uaktualnienie:
 
     ```sh
     New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-1. Po zakończeniu uaktualniania wprowadza (trwa od 15 do 45 minut w zależności od tego, czy jest pierwszym wdrożeniu i rozmiar grupy zasobów), WAD powinien być zbierania liczników wydajności i wysyła je do tabeli o nazwie WADPerformanceCountersTable w ramach konta magazynu skojarzone z klastrem. Zobacz liczniki wydajności w usłudze Application Insights przez [Dodawanie ujścia sztucznej Inteligencji do szablonu usługi Resource Manager](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
+1. Po zakończeniu procesu uaktualniania (trwa od 15-45 minut w zależności od tego, czy jest to pierwsze wdrożenie i rozmiar grupy zasobów), funkcji wad powinna zbierać liczniki wydajności i wysyłać je do tabeli o nazwie WADPerformanceCountersTable na koncie magazynu skojarzonym z klastrem. Zobacz liczniki wydajności w Application Insights przez [dodanie UJŚCIA AI do szablonu Menedżer zasobów](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
-## <a name="next-steps"></a>Kolejne kroki
-* Zbieranie większej liczby liczników wydajności dla klastra. Zobacz [metryki wydajności](service-fabric-diagnostics-event-generation-perf.md) listę liczników, które należy zebrać.
-* [Użyj monitorowania i diagnostyki za pomocą szablonów maszyn wirtualnych Windows i usługi Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md) może wprowadzać dalszych modyfikacji swoje `WadCfg`, np. Konfigurowanie dodatkowych kont magazynu do wysyłania danych diagnostycznych.
-* Odwiedź stronę [konstruktora WadCfg](https://azure.github.io/azure-diagnostics-tools/config-builder/) Utwórz szablon od podstaw i upewnij się, Twoje składnia jest poprawna. () https://azure.github.io/azure-diagnostics-tools/config-builder/) Utwórz szablon od podstaw i upewnij się, Twoje składnia jest poprawna.
+## <a name="next-steps"></a>Następne kroki
+* Zbieraj więcej liczników wydajności dla klastra. Zobacz [metryki wydajności](service-fabric-diagnostics-event-generation-perf.md) , aby zapoznać się z listą liczników, które należy zebrać.
+* [Używaj monitorowania i diagnostyki z maszyną wirtualną z systemem Windows i szablonami Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md) `WadCfg`, aby wprowadzić dalsze modyfikacje, w tym Konfigurowanie dodatkowych kont magazynu do wysyłania danych diagnostycznych do programu.
+* Odwiedź [WadCfg Builder](https://azure.github.io/azure-diagnostics-tools/config-builder/) , aby utworzyć szablon od podstaw i upewnić się, że składnia jest poprawna. (https://azure.github.io/azure-diagnostics-tools/config-builder/) aby utworzyć szablon od podstaw i upewnić się, że składnia jest poprawna.

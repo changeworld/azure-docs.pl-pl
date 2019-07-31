@@ -1,6 +1,6 @@
 ---
-title: Schemat konfiguracji usługi Diagnostyka Azure 1.0
-description: Jest to istotne tylko jeśli używasz usługi Azure SDK 2.4 i poniżej za pomocą usługi Azure Virtual Machines, Virtual Machine Scale Sets, usługi Service Fabric lub usług w chmurze.
+title: Schemat konfiguracji Diagnostyka Azure 1,0
+description: Dotyczy tylko sytuacji, gdy korzystasz z zestawu Azure SDK 2,4 i poniżej z platformą Azure Virtual Machines, Virtual Machine Scale Sets, Service Fabric lub Cloud Services.
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -10,28 +10,28 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60237855"
 ---
-# <a name="azure-diagnostics-10-configuration-schema"></a>Schemat konfiguracji usługi Diagnostyka Azure 1.0
+# <a name="azure-diagnostics-10-configuration-schema"></a>Schemat konfiguracji Diagnostyka Azure 1,0
 > [!NOTE]
-> Narzędzie diagnostyczne systemu Azure to składnik używany do zbierania liczników wydajności i innych danych statystycznych z usługi Azure Virtual Machines, Virtual Machine Scale Sets, usługi Service Fabric i Cloud Services.  Ta strona ma zastosowanie tylko jeśli używasz jednej z tych usług.
+> Diagnostyka Azure jest składnikiem używanym do zbierania liczników wydajności i innych statystyk z platformy Azure Virtual Machines, Virtual Machine Scale Sets, Service Fabric i Cloud Services.  Ta strona ma zastosowanie tylko w przypadku korzystania z jednej z tych usług.
 >
 
-Narzędzie diagnostyczne systemu Azure jest używany z innymi produktami firmy Microsoft diagnostyki, takich jak Azure Monitor, który zawiera usługi Application Insights i Log Analytics.
+Diagnostyka Azure jest używany z innymi produktami diagnostyki firmy Microsoft, takimi jak Azure Monitor, które obejmują Application Insights i Log Analytics.
 
-Plik konfiguracji usługi Azure Diagnostics definiuje wartości, które są stosowane do inicjalizacji Monitor diagnostyki. Ten plik jest używany do zainicjowania ustawień diagnostycznych konfiguracji podczas uruchamiania Monitora diagnostyki.  
+Plik konfiguracji Diagnostyka Azure definiuje wartości, które są używane do inicjowania monitora diagnostyki. Ten plik jest używany do inicjowania ustawień konfiguracji diagnostyki podczas uruchamiania monitora diagnostyki.  
 
- Domyślnie plik schematu konfiguracji diagnostyki platformy Azure jest zainstalowany na `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` katalogu. Zastąp `<version>` z zainstalowaną wersją programu [zestawu Azure SDK](https://www.windowsazure.com/develop/downloads/).  
+ Domyślnie plik schematu konfiguracji Diagnostyka Azure jest instalowany w `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` katalogu. Zamień `<version>` na zainstalowaną wersję [zestawu Azure SDK](https://www.windowsazure.com/develop/downloads/).  
 
 > [!NOTE]
->  Plik konfiguracji diagnostyki jest zwykle używany z zadania uruchamiania, które wymagają danych diagnostycznych, które mają być zbierane we wcześniejszej części procesu uruchamiania. Aby uzyskać więcej informacji o korzystaniu z usługi Azure Diagnostics, zobacz [zbierania danych rejestrowania przez diagnostykę platformy Azure przy użyciu](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  
+>  Plik konfiguracji diagnostyki jest zazwyczaj używany z zadaniami uruchamiania, które wymagają zebrania danych diagnostycznych wcześniej w procesie uruchamiania. Aby uzyskać więcej informacji o korzystaniu z Diagnostyka Azure, zobacz [zbieranie danych rejestrowania przy użyciu Diagnostyka Azure](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>Przykładowy plik konfiguracji diagnostyki  
- Poniższy przykład przedstawia plik konfiguracji typowych diagnostyki:  
+ W poniższym przykładzie przedstawiono typowy plik konfiguracji diagnostyki:  
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -85,189 +85,189 @@ Plik konfiguracji usługi Azure Diagnostics definiuje wartości, które są stos
 </DiagnosticMonitorConfiguration>  
 ```  
 
-## <a name="diagnosticsconfiguration-namespace"></a>Namespace DiagnosticsConfiguration  
- Przestrzeń nazw XML w pliku konfiguracji diagnostyki jest:  
+## <a name="diagnosticsconfiguration-namespace"></a>DiagnosticsConfiguration przestrzeń nazw  
+ Przestrzeń nazw XML dla pliku konfiguracji diagnostyki:  
 
 ```  
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
 ```  
 
 ## <a name="schema-elements"></a>Elementy schematu  
- Plik konfiguracji diagnostyki obejmuje następujące elementy.
+ Plik konfiguracji diagnostyki zawiera następujące elementy.
 
 
-## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration Element  
-Element najwyższego poziomu w pliku konfiguracji diagnostyki.  
+## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration, element  
+Element najwyższego poziomu pliku konfiguracji diagnostyki.  
 
 Atrybuty:
 
-|Atrybut  |Typ   |Wymagane| Domyślne | Opis|  
+|Atrybut  |Type   |Wymagane| Domyślny | Opis|  
 |-----------|-------|--------|---------|------------|  
-|**configurationChangePollInterval**|Czas trwania|Optional (Opcjonalność) | PT1M| Określa interwał, jaką monitor diagnostyczny sonduje zmiany konfiguracji diagnostycznych.|  
-|**overallQuotaInMB**|unsignedInt|Optional (Opcjonalność)| 4000 MB. Jeśli podano wartość nie może przekraczać tę kwotę |Łączna kwota magazyn systemu plików przydzielony dla wszystkich buforów rejestrowania.|  
+|**configurationChangePollInterval**|duration|Optional | PT1M| Określa interwał, w którym Monitor diagnostyczny sonduje zmiany konfiguracji diagnostyki.|  
+|**overallQuotaInMB**|unsignedInt|Optional| 4000 MB. Jeśli podano wartość, nie może ona przekraczać tej kwoty |Całkowita ilość miejsca do magazynowania systemu plików przydzieloną dla wszystkich buforów rejestrowania.|  
 
-## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs Element  
-Definiuje konfigurację buforu dla dzienników, które są generowane przez podstawowej infrastruktury diagnostyki.
+## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs, element  
+Definiuje konfigurację bufora dla dzienników generowanych przez podstawową infrastrukturę diagnostyki.
 
-Element nadrzędny: DiagnosticMonitorConfiguration Element.  
+Element nadrzędny: DiagnosticMonitorConfiguration element.  
 
 Atrybuty:
 
 |Atrybut|Type|Opis|  
 |---------|----|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
-|**scheduledTransferPeriod**|Czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|Opcjonalna. Określa maksymalną ilość magazynu systemu plików, który jest dostępny dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
+|**scheduledTransferLogLevelFilter**|ciąg|Opcjonalna. Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to undefined. Inne możliwe wartości to **pełne**, **informacje**, **Ostrzeżenie**, **błąd**i **krytyczne**.|  
+|**scheduledTransferPeriod**|duration|Opcjonalna. Określa interwał między planowanymi transferami danych zaokrągloną w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
-## <a name="logs-element"></a>Dzienniki elementu  
- Definiuje konfigurację buforu dla podstawowych dzienniki platformy Azure.
+## <a name="logs-element"></a>Logs — element  
+ Definiuje konfigurację bufora dla podstawowych dzienników platformy Azure.
 
- Element nadrzędny: DiagnosticMonitorConfiguration Element.  
-
-Atrybuty:  
-
-|Atrybut|Type|Opis|  
-|---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
-|**scheduledTransferPeriod**|Czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
-
-## <a name="directories-element"></a>Element katalogów  
-Definiuje konfigurację buforu dla dzienników opartych na plikach, które można zdefiniować.
-
-Element nadrzędny: DiagnosticMonitorConfiguration Element.  
-
+ Element nadrzędny: DiagnosticMonitorConfiguration element.  
 
 Atrybuty:  
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferPeriod**|Czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|Opcjonalna. Określa maksymalną ilość magazynu systemu plików, który jest dostępny dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
+|**scheduledTransferLogLevelFilter**|ciąg|Opcjonalny. Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to undefined. Inne możliwe wartości to **pełne**, **informacje**, **Ostrzeżenie**, **błąd**i **krytyczne**.|  
+|**scheduledTransferPeriod**|duration|Opcjonalny. Określa interwał między planowanymi transferami danych zaokrągloną w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
-## <a name="crashdumps-element"></a>Element zrzutów awaryjnych  
- Określa katalog zrzuty awarii.
+## <a name="directories-element"></a>Elementy katalogów  
+Definiuje konfigurację bufora dla dzienników opartych na plikach, które można zdefiniować.
 
- Element nadrzędny: Element katalogów.  
+Element nadrzędny: DiagnosticMonitorConfiguration element.  
 
-Atrybuty:  
-
-|Atrybut|Type|Opis|  
-|---------------|----------|-----------------|  
-|**Kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
-|**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
-
-## <a name="failedrequestlogs-element"></a>FailedRequestLogs Element  
- Określa katalog dziennika nie powiodło się żądanie.
-
- Element katalogi Element nadrzędny.  
 
 Atrybuty:  
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**Kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
-|**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
+|**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazynu systemu plików, który jest dostępny dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
+|**scheduledTransferPeriod**|duration|Opcjonalny. Określa interwał między planowanymi transferami danych zaokrągloną w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
-##  <a name="iislogs-element"></a>IISLogs Element  
- Określa katalog dziennika usług IIS.
+## <a name="crashdumps-element"></a>Zrzutów awaryjnych formacie, element  
+ Definiuje katalog zrzutów awaryjnych.
 
- Element katalogi Element nadrzędny.  
+ Element nadrzędny: Elementy katalogów.  
 
 Atrybuty:  
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**Kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
-|**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
+|**wbudowane**|ciąg|Nazwa kontenera, w którym ma zostać przetransferowana zawartość katalogu.|  
+|**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu (w megabajtach).<br /><br /> Wartość domyślna to 0.|  
 
-## <a name="datasources-element"></a>Element źródła danych  
- Określa zero lub więcej katalogów dzienniku dodatkowe.
+## <a name="failedrequestlogs-element"></a>FailedRequestLogs, element  
+ Definiuje katalog dziennika żądań zakończonych niepowodzeniem.
 
- Element nadrzędny: Element katalogów.
+ Element katalogów elementów nadrzędnych.  
 
-## <a name="directoryconfiguration-element"></a>DirectoryConfiguration Element  
- Określa katalog plików dziennika do monitorowania.
+Atrybuty:  
 
- Element nadrzędny: Element źródła danych.
+|Atrybut|Type|Opis|  
+|---------------|----------|-----------------|  
+|**wbudowane**|ciąg|Nazwa kontenera, w którym ma zostać przetransferowana zawartość katalogu.|  
+|**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu (w megabajtach).<br /><br /> Wartość domyślna to 0.|  
+
+##  <a name="iislogs-element"></a>IISLogs, element  
+ Definiuje katalog dzienników usług IIS.
+
+ Element katalogów elementów nadrzędnych.  
+
+Atrybuty:  
+
+|Atrybut|Type|Opis|  
+|---------------|----------|-----------------|  
+|**wbudowane**|ciąg|Nazwa kontenera, w którym ma zostać przetransferowana zawartość katalogu.|  
+|**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu (w megabajtach).<br /><br /> Wartość domyślna to 0.|  
+
+## <a name="datasources-element"></a>Element DataSources  
+ Definiuje zero lub więcej dodatkowych katalogów dzienników.
+
+ Element nadrzędny: Elementy katalogów.
+
+## <a name="directoryconfiguration-element"></a>DirectoryConfiguration, element  
+ Definiuje katalog plików dziennika do monitorowania.
+
+ Element nadrzędny: Element DataSources.
 
 Atrybuty:
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**Kontener**|string|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
-|**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
+|**wbudowane**|ciąg|Nazwa kontenera, w którym ma zostać przetransferowana zawartość katalogu.|  
+|**directoryQuotaInMB**|unsignedInt|Opcjonalna. Określa maksymalny rozmiar katalogu (w megabajtach).<br /><br /> Wartość domyślna to 0.|  
 
-## <a name="absolute-element"></a>Element bezwzględne  
- Definiuje ścieżkę bezwzględną katalogu do monitorowania za pomocą środowiska opcjonalne rozszerzenia.
+## <a name="absolute-element"></a>Element bezwzględny  
+ Definiuje ścieżkę bezwzględną katalogu do monitorowania z opcjonalnym rozszerzeniem środowiska.
 
- Element nadrzędny: DirectoryConfiguration Element.  
-
-Atrybuty:  
-
-|Atrybut|Type|Opis|  
-|---------------|----------|-----------------|  
-|**Ścieżka**|string|Wymagany. Ścieżka bezwzględna do katalogu, do monitorowania.|  
-|**expandEnvironment**|wartość logiczna|Wymagany. Jeśli ustawiono **true**, zostaną rozwinięte zmiennych środowiskowych w ścieżce.|  
-
-## <a name="localresource-element"></a>LocalResource Element  
- Określa ścieżkę względną zasób lokalny, określone w definicji usługi.
-
- Element nadrzędny: DirectoryConfiguration Element.  
+ Element nadrzędny: DirectoryConfiguration element.  
 
 Atrybuty:  
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**name**|string|Wymagany. Nazwa zasobu lokalnego, która zawiera katalog do monitorowania.|  
-|**relativePath**|string|Wymagany. Ścieżka względna zasobu lokalnego do monitorowania.|  
+|**Ścieżka**|ciąg|Wymagane. Ścieżka bezwzględna do katalogu do monitorowania.|  
+|**expandEnvironment**|boolean|Wymagana. W przypadku ustawienia **wartości true**zmienne środowiskowe w ścieżce są rozszerzane.|  
 
-## <a name="performancecounters-element"></a>Performancecounters — Element  
- Określa ścieżkę licznika wydajności do zbierania.
+## <a name="localresource-element"></a>LocalResource, element  
+ Definiuje ścieżkę względną do zasobu lokalnego zdefiniowanego w definicji usługi.
 
- Element nadrzędny: DiagnosticMonitorConfiguration Element.
+ Element nadrzędny: DirectoryConfiguration element.  
+
+Atrybuty:  
+
+|Atrybut|Type|Opis|  
+|---------------|----------|-----------------|  
+|**name**|ciąg|Wymagana. Nazwa zasobu lokalnego, który zawiera katalog do monitorowania.|  
+|**relativePath**|ciąg|Wymagane. Ścieżka względna do zasobu lokalnego do monitorowania.|  
+
+## <a name="performancecounters-element"></a>Liczniki wydajności, element  
+ Definiuje ścieżkę do licznika wydajności do zebrania.
+
+ Element nadrzędny: DiagnosticMonitorConfiguration element.
 
 
  Atrybuty:  
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferPeriod**|Czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazynu systemu plików, który jest dostępny dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
+|**scheduledTransferPeriod**|duration|Opcjonalna. Określa interwał między planowanymi transferami danych zaokrągloną w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
-## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
- Określa licznik wydajności do zbierania.
+## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration, element  
+ Definiuje licznik wydajności do zebrania.
 
- Element nadrzędny: Element liczniki wydajności.  
+ Element nadrzędny: Liczniki wydajności element.  
 
  Atrybuty:  
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**counterSpecifier**|string|Wymagany. Ścieżka do liczników wydajności do zbierania.|  
-|**sampleRate**|Czas trwania|Wymagany. Szybkość, licznik wydajności powinny być zbierane.|  
+|**counterSpecifier**|ciąg|Wymagane. Ścieżka do licznika wydajności do zebrania.|  
+|**sampleRate**|duration|Wymagana. Szybkość, z jaką ma być zbierany licznik wydajności.|  
 
-## <a name="windowseventlog-element"></a>WindowsEventLog Element  
- Definiuje dzienniki zdarzeń, aby monitorować.
+## <a name="windowseventlog-element"></a>WindowsEventLog, element  
+ Definiuje dzienniki zdarzeń do monitorowania.
 
- Element nadrzędny: DiagnosticMonitorConfiguration Element.
+ Element nadrzędny: DiagnosticMonitorConfiguration element.
 
   Atrybuty:
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilter**|string|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
-|**scheduledTransferPeriod**|Czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazynu systemu plików, który jest dostępny dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
+|**scheduledTransferLogLevelFilter**|ciąg|Opcjonalny. Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to undefined. Inne możliwe wartości to **pełne**, **informacje**, **Ostrzeżenie**, **błąd**i **krytyczne**.|  
+|**scheduledTransferPeriod**|duration|Opcjonalna. Określa interwał między planowanymi transferami danych zaokrągloną w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 
-## <a name="datasource-element"></a>Element źródła danych  
- Definiuje dziennika zdarzeń do monitorowania.
+## <a name="datasource-element"></a>DataSource — element  
+ Definiuje dziennik zdarzeń do monitorowania.
 
- Element nadrzędny: WindowsEventLog Element.  
+ Element nadrzędny: WindowsEventLog element.  
 
  Atrybuty:
 
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**name**|string|Wymagany. Wyrażenie XPath, określając dziennika do zbierania.|  
+|**name**|ciąg|Wymagany. Wyrażenie XPath określające dziennik do zebrania.|  
 

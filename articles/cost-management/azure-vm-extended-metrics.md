@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
 ms.openlocfilehash: 6a4f7f5671562679a245d97ad8491764657cbb34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66242463"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Dodawanie rozszerzonych metryk dla maszyn wirtualnych platformy Azure
@@ -28,10 +28,10 @@ Po włączeniu zbierania metryk, możesz wykonywać następujące czynności:
 - Kontrolować ponoszone koszty według rozmiaru, od użycia.
 - Uzyskaj koszt skuteczne, ustalanie rozmiaru zaleceń optymalizacji Cloudyn.
 
-Na przykład możesz chcieć Monitoruj procent użycia procesora CPU i procent pamięci w maszynach wirtualnych platformy Azure. Metryki maszyny Wirtualnej platformy Azure odpowiadają _procentowe użycie procesora CPU_ i _\Memory\% Zadeklarowane bajty w użyciu_.
+Na przykład możesz chcieć Monitoruj procent użycia procesora CPU i procent pamięci w maszynach wirtualnych platformy Azure. Metryki maszyny wirtualnej platformy Azure odpowiadają za użycie _wartości procentowej procesora CPU_ i _\% \Memory zadeklarowanych bajtów_.
 
 > [!NOTE]
-> Zbieranie rozszerzonych danych metryk jest obsługiwany tylko przy użyciu funkcji platformy Azure monitorowania na poziomie gościa. Cloudyn nie jest zgodny z rozszerzenia maszyny Wirtualnej dzienniki usługi Azure Monitor.
+> Zbieranie rozszerzonych danych metryk jest obsługiwany tylko przy użyciu funkcji platformy Azure monitorowania na poziomie gościa. Cloudyn jest niezgodna z rozszerzeniem maszyny wirtualnej dzienników Azure Monitor.
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Czy są włączone rozszerzonych metryk
 
@@ -44,7 +44,7 @@ W powyższym przykładzie ograniczony zestaw standardowych metryk są dostępne 
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Włącz rozszerzone metryki w witrynie Azure portal
 
-Metryki standardowe są metryki komputera hosta. _Procentowe użycie procesora CPU_ metryka jest jednym z przykładów. Dostępne są również podstawowe metryki dla maszyn wirtualnych gościa i są również nazywane rozszerzonych metryk. Przykłady rozszerzonych metryk _\Memory\% Zadeklarowane bajty w użyciu_ i _\Memory\Available bajtów_.
+Metryki standardowe są metryki komputera hosta. Procentową metryką _procesora CPU_ jest jeden przykład. Dostępne są również podstawowe metryki dla maszyn wirtualnych gościa i są również nazywane rozszerzonych metryk. Przykłady rozszerzonych metryk obejmują _\Memory\% zadeklarowane bajty w użyciu_ i _\Memory\Available bajtów_.
 
 Włączanie rozszerzonych metryk jest bardzo proste. Dla każdej maszyny Wirtualnej Włącz monitorowanie na poziomie gościa. Po włączeniu monitorowania na poziomie gościa agent diagnostyki platformy Azure jest zainstalowany na maszynie Wirtualnej. Domyślnie są dodawane podstawowego zestawu rozszerzonych metryk. Następujący proces jest taki sam dla maszyn wirtualnych klasycznych i regularnego i taki sam dla Windows i maszyn wirtualnych systemu Linux.
 

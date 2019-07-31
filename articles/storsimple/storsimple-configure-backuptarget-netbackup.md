@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876206"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako miejsce docelowe kopii zapasowej za pomocą NetBackup
@@ -302,9 +302,9 @@ Oto przykład harmonogramu rotacji GFS przez cztery tygodnie, co miesiąc i rok:
 
 | Częstotliwość/typ kopii zapasowej | Pełne | Przyrostowe (dni 1-5)  |   
 |---|---|---|
-| Co tydzień (tygodnie 1-4) | Sobotę | Poniedziałek — piątek |
-| Miesięczne  | Sobotę  |   |
-| Co rok | Sobotę  |   |
+| Co tydzień (tygodnie 1-4) | Sobota | Poniedziałek — piątek |
+| Miesięczne  | Sobota  |   |
+| Rocznie | Sobota  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Przypisywanie woluminów StorSimple do zadania tworzenia kopii zapasowej NetBackup
 
@@ -415,7 +415,7 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 | Tydzień 3 | StorSimple tygodni 2-4 |   |   |   |   |   |
 | Tydzień 4 | StorSimple tygodni 2-4 |   |   |   |   |   |
 | Miesięczne | StorSimple miesięcznie |   |   |   |   |   |
-| Co rok | StorSimple rocznie  |   |   |   |   |   |
+| Rocznie | StorSimple rocznie  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Przypisywanie woluminów StorSimple do archiwum NetBackup i zadania duplikowania
@@ -456,7 +456,7 @@ Po zdefiniowaniu początkowych pul dysków należy zdefiniować trzy dodatkowe z
 
 7. Po zakończeniu definiowania zasad przechowywania SLP w obszarze **zasady**Zdefiniuj zasady tworzenia kopii zapasowych, wykonując kroki opisane w temacie [przypisywanie woluminów StorSimple do zadania tworzenia kopii zapasowej NetBackup](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
 
-8. W obszarze harmonogramy, w oknie dialogowym **zmiana harmonogramu** kliknij prawym przyciskiem myszy pozycję **pełna**, a następnie wybierz pozycję **Zmień**.
+8. Wobszarze harmonogramy, w oknie dialogowym **zmiana harmonogramu** kliknij prawym przyciskiem myszy pozycję **pełna**, a następnie wybierz pozycję **Zmień**.
 
    ![Konsola administracyjna NetBackup, okno dialogowe Zmień harmonogram](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
@@ -544,7 +544,7 @@ Następujące dokumenty odwołują się do tego artykułu:
 - [Korzystanie z dysków GPT](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Skonfiguruj kopie w tle dla folderów udostępnionych](https://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o sposobach [przywracania z zestawu kopii zapasowych](storsimple-restore-from-backup-set-u2.md).
 - Dowiedz się więcej na temat wykonywania [trybu failover urządzeń i odzyskiwania po awarii](storsimple-device-failover-disaster-recovery.md).

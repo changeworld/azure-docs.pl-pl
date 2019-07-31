@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
 ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "68489768"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Korzystanie z rozwiązania Service Map na platformie Azure
@@ -555,7 +555,7 @@ Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez
 Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o przeszukiwaniu [dzienników](../../azure-monitor/log-query/log-query-overview.md) w log Analytics, aby pobrać dane zbierane przez Service map.
 

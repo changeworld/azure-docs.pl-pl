@@ -1,6 +1,6 @@
 ---
-title: Wysyłanie metryk przez system operacyjny gościa do usługi Azure Monitor metryki magazynu przy użyciu szablonu usługi Azure Resource Manager dla zestawu skalowania maszyn wirtualnych Windows
-description: Wysyłanie metryk przez system operacyjny gościa do usługi Azure Monitor metryki magazynu przy użyciu szablonu usługi Resource Manager dla zestawu skalowania maszyn wirtualnych Windows
+title: Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Azure Resource Manager dla zestawu skalowania maszyn wirtualnych z systemem Windows
+description: Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Menedżer zasobów dla zestawu skalowania maszyn wirtualnych z systemem Windows
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,55 +9,55 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66129627"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Wysyłanie metryk przez system operacyjny gościa do usługi Azure Monitor metryki magazynu przy użyciu szablonu usługi Azure Resource Manager dla zestawu skalowania maszyn wirtualnych Windows
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Azure Resource Manager dla zestawu skalowania maszyn wirtualnych z systemem Windows
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Za pomocą usługi Azure Monitor [rozszerzenia diagnostyki Azure Windows (WAD)](diagnostics-extension-overview.md), można zbierać metryki i dzienniki z systemu operacyjnego gościa (systemu operacyjnego gościa), które zostaną uruchomione w ramach maszyny wirtualnej, usługa w chmurze lub klastra usługi Azure Service Fabric. Rozszerzenie może wysyłać telemetrię do wielu różnych lokalizacjach, wymienione w artykule wcześniej połączona.  
+Korzystając z rozszerzenia Azure Monitor [Windows Diagnostyka Azure (funkcji wad)](diagnostics-extension-overview.md), można zbierać metryki i dzienniki z systemu operacyjnego gościa (systemu operacyjnego gościa) uruchamianego w ramach maszyny wirtualnej, usługi w chmurze lub klastra Service Fabric platformy Azure. Rozszerzenie może wysyłać dane telemetryczne do wielu różnych lokalizacji wymienionych w wcześniej połączonym artykule.  
 
-W tym artykule opisano proces metryki wydajności systemu operacyjnego gościa wysyłania zestawu w magazynie danych usługi Azure Monitor skalowania maszyn wirtualnych Windows. Począwszy od programu Windows Azure Diagnostics wersji 1.11, można napisać przechowywać metryki bezpośrednio do metryk usługi Azure Monitor, gdy już zbieranymi metrykami standardowa platforma. Dzięki przechowywaniu ich w tej lokalizacji, możesz uzyskać dostęp, te same akcje, które są dostępne dla platform metryk. Akcje obejmują prawie alerty w czasie rzeczywistym, wykresy, routingu, dostęp z interfejsu API REST i nie tylko. W przeszłości przez rozszerzenie Diagnostyka Azure Windows powstała z jednego do usługi Azure Storage, ale nie do magazynu danych usługi Azure Monitor.  
+W tym artykule opisano proces wysyłania metryk wydajności systemu operacyjnego gościa dla zestawu skalowania maszyn wirtualnych z systemem Windows do magazynu danych Azure Monitor. Począwszy od systemu Windows Diagnostyka Azure w wersji 1,11, można pisać metryki bezpośrednio do magazynu metryk Azure Monitor, gdzie standardowe metryki platformy są już zbierane. Przechowywanie ich w tej lokalizacji pozwala uzyskać dostęp do tych samych akcji, które są dostępne dla metryk platformy. Akcje obejmują generowanie alertów niemal w czasie rzeczywistym, tworzenie wykresów, routing, dostęp z interfejsu API REST i nie tylko. W przeszłości rozszerzenie systemu Windows Diagnostyka Azure zostało napisane do usługi Azure Storage, ale nie do Azure Monitor magazynu danych.  
 
-Jeśli dopiero zaczynasz pracę z szablonami usługi Resource Manager, Dowiedz się więcej o [wdrożeń szablonu](../../azure-resource-manager/resource-group-overview.md) oraz struktury i składni.  
+Jeśli jesteś nowym szablonem Menedżer zasobów, Dowiedz się więcej na temat [wdrożeń szablonów](../../azure-resource-manager/resource-group-overview.md) oraz ich struktury i składni.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Twoja subskrypcja musi być zarejestrowana w [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
+- Twoja subskrypcja musi być zarejestrowana w usłudze [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- Musisz mieć [programu Azure PowerShell](/powershell/azure) zainstalowany, możesz też [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
+- Musisz mieć zainstalowaną [Azure PowerShell](/powershell/azure) lub można użyć [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
 
 
-## <a name="set-up-azure-monitor-as-a-data-sink"></a>Konfigurowanie usługi Azure Monitor jako ujście danych 
-Rozszerzenie diagnostyki platformy Azure używa funkcji o nazwie **ujść danych** trasy metryk i dzienników do innej lokalizacji. Poniższe kroki pokazują, jak wdrożyć Maszynę wirtualną przy użyciu nowej usługi Azure Monitor ujście danych za pomocą szablonu usługi Resource Manager i programu PowerShell. 
+## <a name="set-up-azure-monitor-as-a-data-sink"></a>Konfigurowanie Azure Monitor jako ujścia danych 
+Rozszerzenie Diagnostyka Azure używa funkcji o nazwie **ujścia danych** do kierowania metryk i dzienników do różnych lokalizacji. Poniższe kroki pokazują, jak za pomocą szablonu Menedżer zasobów i programu PowerShell wdrożyć maszynę wirtualną przy użyciu nowego ujścia danych Azure Monitor. 
 
-## <a name="author-a-resource-manager-template"></a>Tworzenie szablonu usługi Resource Manager 
-Na przykład można użyć publicznie dostępnych [przykładowy szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale):  
+## <a name="author-a-resource-manager-template"></a>Tworzenie szablonu Menedżer zasobów 
+Na potrzeby tego przykładu można użyć dostępnego publicznie [przykładowego szablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale):  
 
-- **Azuredeploy.JSON** jest wstępnie skonfigurowany szablon usługi Resource Manager do wdrożenia zestawu skalowania maszyn wirtualnych.
+- **Azuredeploy. JSON** jest wstępnie skonfigurowanym szablonem Menedżer zasobów na potrzeby wdrożenia zestawu skalowania maszyn wirtualnych.
 
-- **Azuredeploy.parameters.JSON** jest plik parametrów, która przechowuje informacje, takie jak jakie nazwę użytkownika i hasło, którego chcesz ustawić dla maszyny Wirtualnej. Podczas wdrażania szablonu usługi Resource Manager używa parametrów ustawione w tym pliku. 
+- **Azuredeploy. Parameters. JSON** to plik parametrów, który przechowuje informacje takie jak nazwa użytkownika i hasło, które mają być ustawione dla maszyny wirtualnej. Podczas wdrażania szablon Menedżer zasobów używa parametrów ustawionych w tym pliku. 
 
 Pobierz i Zapisz oba pliki lokalnie. 
 
-###  <a name="modify-azuredeployparametersjson"></a>Modify azuredeploy.parameters.json
-Otwórz **azuredeploy.parameters.json** pliku:  
+###  <a name="modify-azuredeployparametersjson"></a>Modyfikuj azuredeploy. Parameters. JSON
+Otwórz plik **azuredeploy. Parameters. JSON** :  
  
-- Podaj **vmSKU** mają zostać wdrożone. Zalecamy, aby maszyna wirtualna Standard_D2_v3. 
-- Określ **windowsOSVersion** ma dla zestawu skalowania maszyn wirtualnych. Firma Microsoft zaleca 2016 Datacenter. 
-- Nazwa zasobu, aby można wdrożyć za pomocą zestawu skalowania maszyn wirtualnych **vmssName** właściwości. Na przykład **VMSS WAD TEST**.    
-- Określ liczbę maszyn wirtualnych, które chcesz uruchomić w zestawie przy użyciu skalowania maszyn wirtualnych **instanceCount** właściwości.
-- Wprowadź wartości w polach **adminUsername** i **adminPassword** skalowania maszyn wirtualnych można ustawić. Te parametry są używane dla dostępu zdalnego do maszyn wirtualnych w zestawie skalowania. Aby uniknąć przejęty, maszyna wirtualna **nie** użyć w tym szablonie. Boty skanowania z Internetem, aby nazwy użytkowników i hasła w publicznych repozytoriach GitHub. Prawdopodobnie będą do testowania maszyny wirtualne przy użyciu tych ustawień domyślnych. 
+- Podaj **vmSKU** do wdrożenia. Zalecamy Standard_D2_v3. 
+- Określ **windowsOSVersion** dla zestawu skalowania maszyn wirtualnych. Zalecamy 2016 — centrum danych. 
+- Nazwij zasób zestawu skalowania maszyn wirtualnych, który ma zostać wdrożony za pomocą właściwości **vmssName** . Przykładem jest **VMSS-funkcji wad-test**.    
+- Określ liczbę maszyn wirtualnych, które mają być uruchamiane w zestawie skalowania maszyn wirtualnych za pomocą właściwości **instanceCount** .
+- Wprowadź wartości dla **adminUsername** i **adminPassword** dla zestawu skalowania maszyn wirtualnych. Te parametry są używane na potrzeby dostępu zdalnego do maszyn wirtualnych w zestawie skalowania. Aby uniknąć przejęcia maszyny **wirtualnej, nie** należy używać tych elementów w tym szablonie. Botów Skanuj Internet pod kątem nazw użytkowników i haseł w publicznych repozytoriach usługi GitHub. Te wartości domyślne mogą testować maszyny wirtualne. 
 
 
-###  <a name="modify-azuredeployjson"></a>Modify azuredeploy.json
-Otwórz **azuredeploy.json** pliku. 
+###  <a name="modify-azuredeployjson"></a>Modyfikuj plik azuredeploy. JSON
+Otwórz plik **azuredeploy. JSON** . 
 
-Dodaj zmienną do przechowywania informacji o koncie magazynu w szablonie usługi Resource Manager. Wszystkie dzienniki lub liczniki wydajności w pliku konfiguracyjnym diagnostyki są zapisywane do magazynu metryk usługi Azure Monitor oraz konto magazynu określone w tym miejscu: 
+Dodaj zmienną do przechowywania informacji o koncie magazynu w szablonie Menedżer zasobów. Wszystkie dzienniki i liczniki wydajności określone w pliku konfiguracyjnym diagnostyki są zapisywane w magazynie metryk Azure Monitor i na koncie magazynu określonym w tym miejscu: 
 
 ```json
 "variables": { 
@@ -65,7 +65,7 @@ Dodaj zmienną do przechowywania informacji o koncie magazynu w szablonie usług
 "storageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]", 
 ```
  
-Znajdź definicję zestawu skalowania maszyny wirtualnej w sekcji zasobów i Dodaj **tożsamości** sekcji konfiguracji. To dodawanie gwarantuje, że platforma Azure przypisze on tożsamość systemu. Ten krok zapewnia również, że maszyny wirtualne w zestawie skalowania może emitować metryki gościa o sobie do usługi Azure Monitor:  
+Znajdź definicję zestawu skalowania maszyn wirtualnych w sekcji zasoby i Dodaj sekcję **tożsamość** do konfiguracji. To dodanie zapewnia, że platforma Azure przypisze mu tożsamość systemową. Ten krok gwarantuje również, że maszyny wirtualne w zestawie skalowania mogą emitować metryki gościa dotyczące Azure Monitor:  
 
 ```json
     { 
@@ -80,12 +80,12 @@ Znajdź definicję zestawu skalowania maszyny wirtualnej w sekcji zasobów i Dod
        //end of lines to add
 ```
 
-Na maszynie wirtualnej zasobów zestawu skalowania, Znajdź **virtualMachineProfile** sekcji. Dodaj nowy profil o nazwie **extensionsProfile** do zarządzania rozszerzeniami.  
+W ramach zasobu zestawu skalowania maszyn wirtualnych Znajdź sekcję **virtualMachineProfile** . Dodaj nowy profil o nazwie **extensionsProfile** , aby zarządzać rozszerzeniami.  
 
 
-W **extensionProfile**, Dodaj nowe rozszerzenie do szablonu, jak pokazano na **VMSS WAD rozszerzeń** sekcji.  Ta sekcja dotyczy zarządzanych tożsamości dla rozszerzenia zasobów platformy Azure, która gwarantuje, że metryki jest emitowane są akceptowane przez usługi Azure Monitor. **Nazwa** pole może zawierać dowolną nazwę. 
+W **extensionProfile**Dodaj nowe rozszerzenie do szablonu, jak pokazano w sekcji **VMSS-funkcji wad-Extension** .  Ta sekcja to zarządzane tożsamości dla rozszerzenia zasobów platformy Azure, które zapewniają, że metryki są akceptowane przez Azure Monitor. Pole **nazwy** może zawierać dowolną nazwę. 
 
-Poniższy kod z rozszerzeniem MSI dodaje także rozszerzenie diagnostyki i konfiguracji jako rozszerzenie zasobu do zasobu zestawu skalowania maszyny wirtualnej. Możesz dodać lub usunąć liczniki wydajności, zgodnie z potrzebami: 
+Poniższy kod z rozszerzenia MSI dodaje również rozszerzenie i konfigurację diagnostyki jako zasób rozszerzenia do zasobu zestawu skalowania maszyn wirtualnych. Możesz dodać lub usunąć liczniki wydajności w miarę potrzeby: 
 
 ```json
           "extensionProfile": { 
@@ -197,7 +197,7 @@ Poniższy kod z rozszerzeniem MSI dodaje także rozszerzenie diagnostyki i konfi
 ```
 
 
-Dodaj **dependsOn** dla konta magazynu upewnić się, jest tworzony w odpowiedniej kolejności: 
+Dodaj element **dependsOn** dla konta magazynu, aby upewnić się, że został on utworzony w odpowiedniej kolejności: 
 
 ```json
 "dependsOn": [ 
@@ -207,7 +207,7 @@ Dodaj **dependsOn** dla konta magazynu upewnić się, jest tworzony w odpowiedni
 "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]" 
 ```
 
-Tworzenie konta magazynu, jeśli jedna z nich nie jest już utworzona w szablonie: 
+Utwórz konto magazynu, jeśli nie zostało ono jeszcze utworzone w szablonie: 
 
 ```json
 "resources": [
@@ -229,69 +229,69 @@ Tworzenie konta magazynu, jeśli jedna z nich nie jest już utworzona w szabloni
 
 Zapisz i zamknij oba pliki. 
 
-## <a name="deploy-the-resource-manager-template"></a>Wdrażanie szablonu usługi Resource Manager 
+## <a name="deploy-the-resource-manager-template"></a>Wdrażanie szablonu Menedżer zasobów 
 
 > [!NOTE]  
-> Użytkownik musi działać wersja rozszerzenia diagnostyki Azure wersji 1.5 lub nowszej **i** mają **autoUpgradeMinorVersion:** właściwością **true** w Menedżerze zasobów szablon. Po uruchomieniu maszyny Wirtualnej platformy Azure następnie ładuje właściwe rozszerzenie. Jeśli nie masz tych ustawień w szablonie, należy je zmienić i ponownego wdrażania szablonu. 
+> Musisz mieć uruchomione rozszerzenie Diagnostyka Azure w wersji 1,5 lub nowszej **i** mieć właściwość **włączoną flagą autoupgrademinorversion:** o **wartości true** w szablonie Menedżer zasobów. Platforma Azure następnie ładuje odpowiednie rozszerzenie podczas uruchamiania maszyny wirtualnej. Jeśli nie masz tych ustawień w szablonie, zmień je i ponownie Wdróż szablon. 
 
 
-Aby wdrożyć szablon usługi Resource Manager, należy użyć programu Azure PowerShell:  
+Aby wdrożyć szablon Menedżer zasobów, użyj Azure PowerShell:  
 
 1. Uruchom program PowerShell. 
-1. Zaloguj się do platformy Azure za pomocą `Login-AzAccount`.
-1. Pobierz listę subskrypcji przy użyciu `Get-AzSubscription`.
-1. Ustaw subskrypcję będzie utworzyć lub zaktualizować maszyny wirtualnej: 
+1. Zaloguj się do platformy Azure `Login-AzAccount`przy użyciu.
+1. Zapoznaj się z listą subskrypcji `Get-AzSubscription`, korzystając z programu.
+1. Ustaw subskrypcję, którą utworzysz, lub zaktualizuj maszynę wirtualną: 
 
    ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
-1. Utwórz nową grupę zasobów dla wdrożenia maszyny Wirtualnej. Uruchom następujące polecenie: 
+1. Utwórz nową grupę zasobów dla wdrażanej maszyny wirtualnej. Uruchom następujące polecenie: 
 
    ```powershell
     New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
    ```
 
    > [!NOTE]  
-   > Pamiętaj, aby korzystać z regionu platformy Azure, który jest włączony dla metryki niestandardowe. Pamiętaj, aby używać [region platformy Azure, w którym włączono obsługę metryki niestandardowe](https://github.com/MicrosoftDocs/azure-docs-pr/pull/metrics-custom-overview.md#supported-regions).
+   > Pamiętaj, aby użyć regionu platformy Azure, który jest włączony dla metryk niestandardowych. Pamiętaj, aby użyć [regionu platformy Azure, który jest włączony dla metryk niestandardowych](https://github.com/MicrosoftDocs/azure-docs-pr/pull/metrics-custom-overview.md#supported-regions).
  
-1. Uruchom następujące polecenia, aby wdrożyć maszynę Wirtualną:  
+1. Uruchom następujące polecenia, aby wdrożyć maszynę wirtualną:  
 
    > [!NOTE]  
-   > Jeśli chcesz zaktualizować istniejącego zestawu skalowania, należy dodać **— tryb Przyrostowy** na końcu polecenia. 
+   > Jeśli chcesz zaktualizować istniejący zestaw skalowania, Dodaj **tryb przyrostowy** do końca polecenia. 
  
    ```powershell
    New-AzResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
    ```
 
-1. Po pomyślnym wdrożeniu, należy odnaleźć maszyny wirtualnej zestawu skalowania w witrynie Azure portal. Powinien on emituje metryk do usługi Azure Monitor. 
+1. Po pomyślnym wdrożeniu należy znaleźć zestaw skalowania maszyn wirtualnych w Azure Portal. Powinna emitować metryki do Azure Monitor. 
 
    > [!NOTE]  
-   > Możesz napotkać błędy wokół wybranego **vmSkuSize**. W takim przypadku należy wrócić do swojej **azuredeploy.json** plików i zaktualizuj wartość domyślną **vmSkuSize** parametru. Zaleca się, że próbujesz **standardowa_ds1_v2**. 
+   > Można napotkać błędy dotyczące wybranych **vmSkuSize**. W takim przypadku Wróć do pliku **azuredeploy. JSON** i zaktualizuj wartość domyślną parametru **vmSkuSize** . Zalecamy wypróbowanie **Standard_DS1_v2**. 
 
 
-## <a name="chart-your-metrics"></a>Wykres metryk 
+## <a name="chart-your-metrics"></a>Tworzenie wykresów metryk 
 
 1. Zaloguj się do Portalu Azure. 
 
-1. W menu po lewej stronie wybierz **Monitor**. 
+1. W menu po lewej stronie wybierz pozycję **monitorowanie**. 
 
-1. Na **Monitor** wybierz opcję **metryki**. 
+1. Na stronie **monitorowanie** wybierz pozycję **metryki**. 
 
-   ![Monitorowanie — metryki strony](media/collect-custom-metrics-guestos-resource-manager-vmss/metrics.png) 
+   ![Monitor — Strona metryk](media/collect-custom-metrics-guestos-resource-manager-vmss/metrics.png) 
 
-1. Okres agregacji można zmienić **ciągu ostatnich 30 minut**.  
+1. Zmień okres agregacji na **ostatni 30 minut**.  
 
-1. W menu rozwijanym zasobów wybierz zestaw skalowania maszyn wirtualnych, który został utworzony.  
+1. Z menu rozwijanego zasób wybierz utworzony zestaw skalowania maszyn wirtualnych.  
 
-1. Wybierz z menu rozwijanego przestrzenie nazw **azure.vm.windows.guest**. 
+1. W menu rozwijanym obszary nazw wybierz pozycję **Azure. VM. Windows. gość**. 
 
-1. Wybierz z menu rozwijanego metryki **pamięci\%przydzielone bajty w użyciu**.  
+1. Z menu rozwijanego metryk wybierz pozycję **pamięć\%zadeklarowane bajty w użyciu**.  
 
-Następnie możesz również użycie wymiarów na tę metrykę do wykresu go dla konkretnej maszyny Wirtualnej lub wykresu poszczególnych maszyn wirtualnych w zestawie skalowania. 
+Następnie można również użyć wymiarów tej metryki do wykresu dla określonej maszyny wirtualnej lub wykreślić każdą maszynę wirtualną w zestawie skalowania. 
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [metryki niestandardowe](metrics-custom-overview.md).
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [metrykach niestandardowych](metrics-custom-overview.md).
 
 

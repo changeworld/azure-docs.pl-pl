@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: gwallace
 ms.openlocfilehash: 981b1cc4a7adb98ba68ebf3a7673b7116479e704
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "68359574"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Role Sieć Web i Proces roboczy języka Python z programem Python Tools for Visual Studio
@@ -23,15 +23,15 @@ Ten artykuł zawiera omówienie sposobu użycia ról Sieć Web i Proces roboczy 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * [Program Visual Studio w wersji 2013, 2015 lub 2017](https://www.visualstudio.com/)
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
-* [SDK Tools platformy Azure dla programu VS 2013][Azure SDK Tools for VS 2013] or  
-[Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015] lub  
-[SDK Tools platformy Azure dla programu VS 2017] [SDK Tools platformy Azure dla programu VS 2017]
+* [SDK Tools platformy Azure dla programu VS 2013][Azure SDK Tools for VS 2013] lub  
+[SDK Tools platformy Azure dla programu VS 2015][Azure SDK Tools for VS 2015] lub  
+[SDK Tools platformy Azure dla programu VS 2017][Azure SDK Tools for VS 2017]
 * [32-bitowe środowisko Python w wersji 2.7][Python 2.7 32-bit] lub [32-bitowe środowisko Python w wersji 3.5][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Co to są role Sieć Web i Proces roboczy języka Python?
-Platforma Azure udostępnia trzy modele obliczeniowe na potrzeby uruchamiania aplikacji: [Funkcja Web Apps w Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms]i model wykonywania [Cloud Services platformy Azure][— Cloud Services]. Wszystkie trzy modele obsługują język Python. Usługi Cloud Services, które obejmują role Sieć Web i Proces roboczy, udostępniają rozwiązanie typu *Platforma jako usługa (Platform as a Service, PaaS)* . W ramach usługi w chmurze rola internetowa zapewnia dedykowany serwer internetowy usług Internet Information Services (IIS), natomiast rola procesu roboczego może uruchamiać asynchroniczne, długotrwałe lub ciągłe zadania niezależne od działań użytkownika lub danych wejściowych.
+Platforma Azure udostępnia trzy modele obliczeniowe na potrzeby uruchamiania aplikacji: [Funkcja Web Apps w Azure App Service][execution model-web sites], [Virtual Machines platformy Azure][execution model-vms]i [Cloud Services platformy Azure][execution model-cloud services]. Wszystkie trzy modele obsługują język Python. Usługi Cloud Services, które obejmują role Sieć Web i Proces roboczy, udostępniają rozwiązanie typu *Platforma jako usługa (Platform as a Service, PaaS)* . W ramach usługi w chmurze rola internetowa zapewnia dedykowany serwer internetowy usług Internet Information Services (IIS), natomiast rola procesu roboczego może uruchamiać asynchroniczne, długotrwałe lub ciągłe zadania niezależne od działań użytkownika lub danych wejściowych.
 
 Aby uzyskać więcej informacji, zobacz [Co to jest usługa w chmurze?]
 

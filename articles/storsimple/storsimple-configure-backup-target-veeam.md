@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67875299"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple jako miejsce docelowe kopii zapasowej za pomocą Veeam
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Azure StorSimple to hybrydowe rozwiązanie do magazynowania w chmurze firmy Microsoft. StorSimpleą w zakresie złożoności wykładniczego wzrostu danych przy użyciu konta usługi Azure Storage jako rozszerzenia rozwiązania lokalnego i automatycznego tworzenia warstw danych w magazynie lokalnym i w magazynie w chmurze.
 
@@ -318,9 +318,9 @@ Oto przykład harmonogramu rotacji GFS przez cztery tygodnie, co miesiąc i rok:
 
 | Częstotliwość/typ kopii zapasowej | Pełne | Przyrostowe (dni 1-5)  |   
 |---|---|---|
-| Co tydzień (tygodnie 1-4) | Sobotę | Poniedziałek — piątek |
-| Miesięczne  | Sobotę  |   |
-| Co rok | Sobotę  |   |
+| Co tydzień (tygodnie 1-4) | Sobota | Poniedziałek — piątek |
+| Miesięczne  | Sobota  |   |
+| Rocznie | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Przypisywanie woluminów StorSimple do zadania tworzenia kopii zapasowej Veeam
@@ -400,7 +400,7 @@ GFS rotacja co tydzień, co miesiąc i co rok
 | Tydzień 3 | StorSimple tygodni 2-4 |   |   |   |   |   |
 | Tydzień 4 | StorSimple tygodni 2-4 |   |   |   |   |   |
 | Miesięczne | StorSimple miesięcznie |   |   |   |   |   |
-| Co rok | StorSimple rocznie  |   |   |   |   |   |
+| Rocznie | StorSimple rocznie  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Przypisywanie woluminów StorSimple do zadania kopiowania Veeam
 
