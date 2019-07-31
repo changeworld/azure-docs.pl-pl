@@ -70,7 +70,8 @@
 - name: Zasoby
   items:
     - name: Dane analityczne na potrzeby interfejsu API sprawdzania pisowni Bing
-      href: bing-spell-check-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: Obsługa języków i regionów
       href: language-support.md
     - name: Cennik

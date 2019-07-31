@@ -7,6 +7,8 @@
       href: overview.md
     - name: Przykładowe scenariusze dotyczące użytkowników
       href: text-analytics-user-scenarios.md
+    - name: Co nowego
+      href: whats-new.md
 - name: Przewodniki Szybki start
   expanded: true
   items:

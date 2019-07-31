@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: edaa36cf22e63d42eb347aea3da1816e2c93b45e
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: a61f196a509c3e84b518fffb4eb78f5f7430cb28
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479214"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667584"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Wersja zapoznawcza: Migrowanie do interfejsu API w wersji 3. x dla aplikacji LUIS
 
@@ -114,7 +114,7 @@ Interfejs API v3 ma inne parametry ciągu zapytania.
 |`externalEntities`|array|Tylko wersja 3|Nie jest wymagane.|[Jednostki zewnętrzne](#external-entities-passed-in-at-prediction-time) zapewniają aplikacji Luis możliwość identyfikowania i etykietowania jednostek podczas środowiska uruchomieniowego, które mogą być używane jako funkcje istniejących jednostek. |
 |`options.datetimeReference`|ciąg|Tylko wersja 3|Brak domyślnego|Służy do określania [przesunięcia datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity). Format datetimeReference to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.overridePredictions`|boolean|Tylko wersja 3|false|Określa, czy jest używana [Jednostka zewnętrzna użytkownika (o takiej samej nazwie jak istniejąca jednostka)](#override-existing-model-predictions) lub istniejąca jednostka w modelu jest używana do przewidywania. |
-|`query`|ciąg|Tylko wersja 3|Wymagany.|**W wersji 2**wypowiedź do przewidywania jest `q` parametrem. <br><br>**W wersji 3**funkcja jest przenoszona do `query` parametru.|
+|`query`|ciąg|Tylko wersja 3|Wymagana.|**W wersji 2**wypowiedź do przewidywania jest `q` parametrem. <br><br>**W wersji 3**funkcja jest przenoszona do `query` parametru.|
 
 
 
@@ -150,7 +150,9 @@ Najważniejsze właściwości JSON dla wersji v3 to:
 }
 ```
 
-`normalizedQuery` Zawiera poprawki pisowni. Odpowiada to właściwości `alteredQuery`interfejsu API v2.  
+<!--
+The `alteredQuery` contains spelling corrections. This corresponds to the V2 API property `alteredQuery`.  
+-->
 
 `intents` Obiekt jest listą nieuporządkowaną. Nie należy zakładać pierwszego elementu podrzędnego `intents` w odnosi `topIntent`się do. Zamiast tego należy użyć `topIntent` wartości, aby znaleźć wynik:
 
@@ -451,6 +453,6 @@ Odpowiedź przewidywania obejmuje tę jednostkę listy wraz ze wszystkimi innymi
 
 Interfejs API v2 nie będzie przestarzały przez co najmniej 9 miesięcy od wersji zapoznawczej v3. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Użyj dokumentacji interfejsu API v3, aby zaktualizować istniejące wywołania REST do interfejsów API LUIS [punktów końcowych](https://aka.ms/luis-api-v3) . 

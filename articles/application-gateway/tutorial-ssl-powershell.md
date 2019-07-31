@@ -3,25 +3,23 @@ title: Tworzenie bramy aplikacji z terminacją SSL — Azure PowerShell
 description: Dowiedz się, jak utworzyć bramę aplikacji i dodać certyfikat terminacji SSL przy użyciu programu Azure PowerShell.
 services: application-gateway
 author: vhorne
-tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.date: 7/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a5f9797572e0f78ce8cc83c5c1a1aadd46a234a1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 9989f133bcb7a23727aafb4b370f6289c9c98219
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198360"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667350"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Tworzenie bramy aplikacji z terminacją SSL przy użyciu programu Azure PowerShell
 
 Program Azure PowerShell umożliwia tworzenie [bramy aplikacji](overview.md) z certyfikatem [terminacji SSL](ssl-overview.md), która korzysta z [zestawu skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) na potrzeby serwerów zaplecza. W tym przykładzie zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, które są dodawane do domyślnej puli zaplecza bramy aplikacji. 
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie certyfikatu z podpisem własnym
@@ -33,11 +31,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ten samouczek wymaga programu Azure PowerShell w wersji modułu 1.0.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzAccount`, aby utworzyć połączenie z platformą Azure.
+Ten artykuł wymaga modułu Azure PowerShell w wersji 1.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
 
-Do użycia w środowisku produkcyjnym należy zaimportować prawidłowy certyfikat podpisany przez zaufanego dostawcę. W tym samouczku utworzysz certyfikat z podpisem własnym przy użyciu polecenia [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). Korzystając z polecenia [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) i zwróconego odcisku palca, możesz wyeksportować plik pfx z certyfikatu.
+Do użycia w środowisku produkcyjnym należy zaimportować prawidłowy certyfikat podpisany przez zaufanego dostawcę. W tym artykule utworzysz certyfikat z podpisem własnym za pomocą polecenia [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). Korzystając z polecenia [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) i zwróconego odcisku palca, możesz wyeksportować plik pfx z certyfikatu.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -68,7 +66,7 @@ Export-PfxCertificate `
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów platformy Azure o nazwie *myResourceGroupAG* z [New AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). 
+Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów platformy Azure o nazwie *myResourceGroupAG* z opcją [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). 
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -76,7 +74,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 
-Konfigurowanie podsieci o nazwie *myBackendSubnet* i *myAGSubnet* przy użyciu [New AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Utwórz sieć wirtualną o nazwie *myVNet* przy użyciu [New AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) za pomocą konfiguracji podsieci. A na koniec Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu [New AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Te zasoby służą do zapewniania łączności sieciowej z bramą aplikacji i skojarzonymi z nią zasobami.
+Skonfiguruj podsieci o nazwie *myBackendSubnet* i *myAGSubnet* przy użyciu polecenia [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Utwórz sieć wirtualną o nazwie *myVNet* przy użyciu polecenia [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) z konfiguracjami podsieci. Na koniec Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Te zasoby służą do zapewniania łączności sieciowej z bramą aplikacji i skojarzonymi z nią zasobami.
 
 ```powershell
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -98,14 +96,15 @@ $pip = New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
-  -AllocationMethod Dynamic
+  -AllocationMethod Static `
+  -Sku Standard
 ```
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Tworzenie konfiguracji adresów IP i portu frontonu
 
-Skojarz *myAGSubnet* wcześniej utworzony do bramy aplikacji przy użyciu [New AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Przypisz *myAGPublicIPAddress* do bramy aplikacji przy użyciu [New AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig).
+Skojarz *myAGSubnet* , który został wcześniej utworzony do bramy aplikacji przy użyciu polecenia [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Przypisz *myAGPublicIPAddress* do bramy aplikacji przy użyciu polecenia [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig).
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -129,7 +128,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>Tworzenie puli zaplecza i ustawień
 
-Utwórz pulę zaplecza o nazwie *appGatewayBackendPool* dla bramy aplikacji przy użyciu [New AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Skonfiguruj ustawienia dla puli zaplecza za pomocą [New AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
+Utwórz pulę zaplecza o nazwie *appGatewayBackendPool* dla bramy aplikacji za pomocą polecenia [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Skonfiguruj ustawienia puli zaplecza przy użyciu polecenia [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
 
 ```powershell
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -147,7 +146,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym przykładzie utworzysz podstawowy odbiornik, który nasłuchuje ruchu HTTPS pod głównym adresem URL. 
 
-Tworzenie obiektu certyfikatu za pomocą [New AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) , a następnie utwórz odbiornik o nazwie *mydefaultListener* przy użyciu [New AzApplicationGatewayHttpListener ](/powershell/module/az.network/new-azapplicationgatewayhttplistener) z konfiguracji frontonu, portu frontonu i certyfikatów, która została wcześniej utworzona. Reguła jest wymagana, aby odbiornik wiedział, której puli zaplecza używać dla ruchu przychodzącego. Utwórz podstawową regułę o nazwie *rule1* przy użyciu [New AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Utwórz obiekt certyfikatu za pomocą polecenia [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) , a następnie utwórz odbiornik o nazwie *mydefaultListener* przy użyciu polecenia [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) z konfiguracją frontonu, portem frontonu i certyfikat, który został wcześniej utworzony. Reguła jest wymagana, aby odbiornik wiedział, której puli zaplecza używać dla ruchu przychodzącego. Utwórz podstawową regułę o nazwie *RULE1* przy użyciu polecenia [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```powershell
 $pwd = ConvertTo-SecureString `
@@ -177,14 +176,14 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway-with-the-certificate"></a>Tworzenie bramy aplikacji z certyfikatem
 
-Teraz, gdy utworzono niezbędne zasoby pomocnicze, należy określić parametry dla bramy aplikacji o nazwie *myAppGateway* przy użyciu [New AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku), a następnie utwórz ją za pomocą [New AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) przy użyciu certyfikatu.
+Teraz, gdy zostały utworzone niezbędne zasoby pomocnicze, określ parametry bramy aplikacji o nazwie *myAppGateway* przy użyciu polecenia [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku), a następnie utwórz je za pomocą polecenia [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) z użyciem certyfikatu.
 
 ### <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
-  -Name Standard_Medium `
-  -Tier Standard `
+  -Name Standard_v2 `
+  -Tier Standard_v2 `
   -Capacity 2
 
 $appgw = New-AzApplicationGateway `
@@ -277,7 +276,7 @@ Update-AzVmss `
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Możesz użyć [Get AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) na publiczny adres IP bramy aplikacji. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
+Aby uzyskać publiczny adres IP bramy aplikacji, można użyć [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -291,21 +290,12 @@ Aby zaakceptować ostrzeżenie o zabezpieczeniach, jeśli używasz certyfikatu z
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebny, Usuń grupę zasobów, usługa application gateway i wszystkie pokrewne zasoby za pomocą [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup).
+Gdy grupa zasobów, Brama aplikacji i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je za pomocą polecenia [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Tworzenie certyfikatu z podpisem własnym
-> * Konfigurowanie sieci
-> * Tworzenie bramy aplikacji z certyfikatem
-> * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
-
-> [!div class="nextstepaction"]
-> [Tworzenie bramy aplikacji hostującej wiele witryn internetowych](./tutorial-multiple-sites-powershell.md)
+[Tworzenie bramy aplikacji hostującej wiele witryn internetowych](./tutorial-multiple-sites-powershell.md)

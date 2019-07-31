@@ -8,12 +8,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: dd1e42b590127362441c99a19e612ddf42bdfa63
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 04b04e8080590aa6e9fe1c17369e83fa5bb6b894
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641174"
+ms.locfileid: "68668231"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Tworzenie Azure Search magazynu wiedzy i nawiązywanie połączenia przy użyciu Power BI
 
@@ -171,13 +171,13 @@ Utwórz nowe kontenery w usłudze Azure Blob Storage i przekaż każdy plik CSV 
 | Warstwa Bezpłatna   | [HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) |
 | Małe (500 rekordów) | [HotelReviews_Small. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Small.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) |
 | Średni (6000 rekordów)| [HotelReviews_Medium. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
-| Duży (pełny zestaw danych 35000 rekordów) | [HotelReviews_Large. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)|
+| Duży (pełny zestaw danych 35000 rekordów) | [HotelReviews_Large. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Należy pamiętać, że bardzo duże zestawy danych są kosztowne do przetworzenia. Koszty te są w przybliżeniu $1000 USD.|
 
 W kroku wzbogacania kreatora Dołącz [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rozliczanego zasobu, który został utworzony w warstwie *S0* w tym samym regionie co Azure Search, aby użyć większych zestawów danych. 
 
   ![Tworzenie zasobu Cognitive Services](media/knowledge-store-howto-powerbi/create-cognitive-service.png "Tworzenie zasobu Cognitive Services")
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli chcesz powtórzyć to ćwiczenie lub wykonać inne czynności związane z wzbogacaniem AI, Usuń właśnie utworzony indeks *hotelu-przeglądający-IDX* . Usunięcie indeksatora resetuje bezpłatny dzienny licznik transakcji z powrotem do zera. 
 

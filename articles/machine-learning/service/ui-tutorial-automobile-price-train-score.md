@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/21/2019
-ms.openlocfilehash: 09d81e281b92b662572cefc220f2227651b69838
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: b0d227b71677db1d6b4ce8386b02cf957ca259f7
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371721"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668410"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Samouczek: Przewidywanie ceny samochodów za pomocą interfejsu wizualnego
 
@@ -95,8 +95,6 @@ Uczenie maszynowe jest zależne od danych. Na szczęście, istnieje kilka przyk�
 
 W dowolnym momencie kliknij port wyjściowy zestawu danych lub modułu, aby zobaczyć, jak wyglądają dane w tym momencie w przepływie danych. Jeśli opcja **Wizualizacja** jest wyłączona, należy najpierw uruchomić eksperyment.
 
-Eksperyment działa w obiekcie docelowym obliczeń, który jest zasobem obliczeniowym dołączonym do obszaru roboczego. Po utworzeniu obiektu docelowego obliczeń można użyć go ponownie do przyszłych przebiegów.
-
 [!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
 
 Gdy element docelowy obliczeń będzie dostępny, eksperyment zostanie uruchomiony. Po zakończeniu przebiegu jest wyświetlany zielony znacznik wyboru dla każdego modułu.
@@ -112,7 +110,7 @@ Po uruchomieniu początkowego eksperymentu możesz wizualizować dane, aby dowie
 
     W tym zestawie danych poszczególne wiersze reprezentują samochody, a zmienne skojarzone z samochodami są wyświetlane jako kolumny. Ten zestaw danych zawiera 205 wierszy i 26 kolumn.
 
-     Za każdym razem, gdy klikniesz kolumnę danych,  informacje statystyczne i obraz **wizualizacji** tej kolumny pojawiają się po lewej stronie. Na przykład po kliknięciu przycisku **"Liczba drzwi"** zobaczysz dwa unikatowe wartości i dwa brakujące wartości. Przewiń w dół, aby wyświetlić wartości: dwa i cztery drzwi.
+     Za każdym razem, gdy klikniesz kolumnę danych, informacje statystyczne i obraz **wizualizacji** tej kolumny pojawiają się po lewej stronie. Na przykład po kliknięciu przycisku **"Liczba drzwi"** zobaczysz dwa unikatowe wartości i dwa brakujące wartości. Przewiń w dół, aby wyświetlić wartości: dwa i cztery drzwi.
 
      ![Podgląd danych](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
 
@@ -201,7 +199,7 @@ Użyj swoich danych w celu przeprowadzenia szkolenia modelu i przetestowania go,
 
 1. Rozwiń **Machine Learning** a następnie rozwiń węzeł **zainicjuj model**. Zostaną wyświetlone różne kategorie modułów, których można użyć do zainicjowania algorytmów uczenia maszynowego.
 
-1. Na potrzeby tego eksperymentu  > wybierz**regresja liniowa** regresji i przeciągnij ją do kanwy eksperymentu.
+1. Na potrzeby tego eksperymentu > wybierz**regresja liniowa** regresji i przeciągnij ją do kanwy eksperymentu.
 
     ![Zrzut ekranu przedstawiający poprawną konfigurację okienka właściwości. Wartość "Split Data" powinna być równa "Split Rows", 0,7, Random Split, 0, false.](./media/ui-tutorial-automobile-price-train-score/linear-regression-module.png)
 
@@ -253,7 +251,7 @@ Eksperymenty utworzone w interfejsie wizualizacji mogą być zarządzane za pomo
 
 1. Otwórz obszar roboczy w [Azure Portal](https://portal.azure.com/).  
 
-1. W obszarze roboczym wybierz pozycję eksperymenty. Następnie wybierz utworzony eksperyment.
+1. W obszarze roboczym wybierzpozycję eksperymenty. Następnie wybierz utworzony eksperyment.
 
     ![Zrzut ekranu przedstawiający sposób nawigowania do eksperymentów w Azure Portal](./media/ui-tutorial-automobile-price-train-score/portal-experiments.png)
 
@@ -271,7 +269,7 @@ Eksperymenty utworzone w interfejsie wizualizacji mogą być zarządzane za pomo
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W pierwszej części tego samouczka zostały wykonane następujące czynności:
 

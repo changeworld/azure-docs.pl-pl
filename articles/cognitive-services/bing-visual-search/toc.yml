@@ -52,7 +52,8 @@
     - name: Korzystanie ze szczegółowych informacji w usłudze Bing
       href: bing-insights-usage.md
     - name: Dane analityczne na potrzeby interfejsu API wyszukiwania wizualnego
-      href: bing-visual-search-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Pobieranie szczegółowych informacji za pomocą tokenu
