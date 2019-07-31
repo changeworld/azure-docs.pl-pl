@@ -75,8 +75,6 @@
       href: security-center-provide-security-contact-details.md
     - name: Warstwa cenowa
       href: security-center-pricing.md
-    - name: Konfiguracje zabezpieczeń
-      href: security-center-customize-os-security-config.md
     - name: Widoczność w całej dzierżawie
       href: security-center-management-groups.md
     - name: Zalecenia dotyczące implementowania zabezpieczeń
@@ -183,6 +181,8 @@
           href: security-center-alerts-type.md
         - name: Analiza behawioralna użytkowników i jednostek (UEBA) dla zasobów i użytkowników platformy Azure
           href: security-center-ueba-mcas.md
+        - name: Dostosowywanie konfiguracji zabezpieczeń
+          href: security-center-customize-os-security-config.md
 - name: Dokumentacja
   items:
     - name: Interfejsy API REST

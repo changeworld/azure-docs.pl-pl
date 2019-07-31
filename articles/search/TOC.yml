@@ -231,7 +231,9 @@
           href: cognitive-search-resources-documentation.md
     - name: Magazyn wiedzy (wersja zapoznawcza)
       items:
-        - name: Jak zacząć
+        - name: Łączenie za pomocą usługi Power BI
+          href: knowledge-store-connect-powerbi.md
+        - name: Tworzenie przy użyciu rozwiązań REST i Postman
           href: knowledge-store-howto.md
     - name: Zapytania o dane
       items:

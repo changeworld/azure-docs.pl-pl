@@ -22,6 +22,12 @@
     - name: Planowanie pojemności
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Wyjątek OutOfMemoryError
+          items:
+            - name: Przekroczono limit narzutu odzyskiwania pamięci
+              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
 - name: Instrukcje
   items:
     - name: Migrowanie obciążeń technologii Hive do usługi HDInsight 4.0

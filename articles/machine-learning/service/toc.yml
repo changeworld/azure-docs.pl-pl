@@ -33,6 +33,12 @@
   items:
     - name: Zestaw SDK dla języka Python
       items:
+        - name: Tworzenie pierwszego eksperymentu uczenia maszynowego
+          items:
+            - name: 1. Konfigurowanie obszaru roboczego i środowiska deweloperskiego
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. Trenowanie pierwszego modelu
+              href: tutorial-1st-experiment-sdk-train.md
         - name: Klasyfikacja obrazów (dane MNIST)
           items:
             - name: 1. Szkolenie modelu

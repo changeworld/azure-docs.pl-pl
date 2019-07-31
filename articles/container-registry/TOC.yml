@@ -105,8 +105,14 @@
           href: container-registry-tasks-multi-step.md
         - name: Kompilowanie obrazu za pomocą pakietów kompilacji (wersja zapoznawcza)
           href: container-registry-tasks-pack-build.md
-        - name: Używanie z tożsamością zarządzaną
-          href: container-registry-tasks-authentication-managed-identity.md
+        - name: Uzyskiwanie dostępu do zabezpieczonych zasobów za pomocą tożsamości zarządzanych
+          items:
+            - name: Włączanie tożsamości zarządzanej dla zadania
+              href: container-registry-tasks-authentication-managed-identity.md
+            - name: Uwierzytelnianie między rejestrami z zadania
+              href: container-registry-tasks-cross-registry-authentication.md
+            - name: Uwierzytelnianie zewnętrzne przy użyciu magazynu kluczy
+              href: container-registry-tasks-authentication-key-vault.md
     - name: Rejestry i inne usługi platformy Azure
       items:
         - name: Azure Container Instances

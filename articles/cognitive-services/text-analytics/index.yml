@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 07/29/2019
   ms.author: nitinme
 abstract:
   description: 'Interfejs API analizy tekstu to oparta na chmurze usługa udostępniająca zaawansowane przetwarzanie języka naturalnego z zastosowaniem tekstu nieprzetworzonego. Obejmuje ona cztery główne funkcje: analizę tonacji, wyodrębnianie kluczowych fraz, rozpoznawanie jednostek znaku oraz wykrywanie języka. Dowiedz się, jak na różne sposoby analizować zawartość, korzystając z przewodników Szybki start, samouczków i przykładów.'
@@ -34,11 +34,11 @@ sections:
             image:
               src: ../media/index/i_get-started.svg
             title: Rejestrowanie w celu używania interfejsu API analizy tekstu
-          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-access-key
-            html: '<p>Dowiedz się, jak uzyskać klucze dostępu i punkty końcowe dla interfejsu API analizy tekstu.</p>'
+          - href: /azure/cognitive-services/text-analytics/whats-new
+            html: <p>Bądź na bieżąco z najnowszymi zmianami w interfejsie API analizy tekstu.</p>
             image:
               src: ../media/index/i_tasks.svg
-            title: Klucze dostępu do interfejsu API analizy tekstu
+            title: Co nowego w interfejsie API analizy tekstu?
   - title: 5-minutowe przewodniki Szybki start
     items:
       - type: paragraph

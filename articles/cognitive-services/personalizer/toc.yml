@@ -43,6 +43,8 @@
         - name: Ocena w trybie offline
           href: concepts-offline-evaluation.md
           displayName: 'learning policy, Counterfactual, features'
+        - name: Ocena funkcji
+          href: concept-feature-evaluation.md
     - name: Skalowalność i wydajność
       href: concepts-scalability-performance.md
 - name: Przewodniki z instrukcjami
