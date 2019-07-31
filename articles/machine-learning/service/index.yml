@@ -36,7 +36,6 @@ sections:
         items:
           - html: <a href="quickstart-run-cloud-notebook">Przeprowadzanie eksperymentu w chmurze</a> (nie jest wymagana instalacja)
           - html: <a href="quickstart-run-local-notebook">Przeprowadzanie eksperymentu przy użyciu lokalnego serwera notesów</a> (instalacja lokalna zestawu SDK)
-          - html: <a href="ui-quickstart-run-experiment">Przygotowywanie i wizualizowanie danych bez pisania kodu</a> w interfejsie wizualnym.
   - title: Samouczki krok po kroku
     items:
       - type: paragraph

@@ -8,19 +8,17 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 07/21/2019
-ms.openlocfilehash: 51bd3dfb33b1f445db8672e1b987ee6c6242e09c
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.date: 07/31/2019
+ms.openlocfilehash: 7be5b0dbe4bbfba30ea469eec662877c1ef56c7c
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370837"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689607"
 ---
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń dla używanej subskrypcji platformy Azure. 
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób**.
-
-   ![Tworzenie zasobu w witrynie Azure Portal](./media/aml-create-in-portal/portal-create-a-resource-07-2019.png)
+1. W lewym górnym rogu Azure Portal wybierz pozycję **Utwórz zasób**.
 
 1. Użyj paska wyszukiwania, aby znaleźć **obszar roboczy usługi Machine Learning**.
 

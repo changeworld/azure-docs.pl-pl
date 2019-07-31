@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Tworzenie środowiska usługi Azure Time Series Insights | Microsoft Docs'
-description: Dowiedz się, jak utworzyć środowisko Time Series Insights wypełniane danymi z symulowanych urządzeń.
+description: Samouczek, aby dowiedzieć się, jak utworzyć środowisko Time Series Insights wypełniane danymi z symulowanych urządzeń.
 services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
@@ -9,12 +9,12 @@ ms.date: 07/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 39226498316de9359394ca7953ab34012b595116
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 921528c50bae03b67800bf3ccab8b5cd9bb704f6
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638904"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677750"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Samouczek: Tworzenie środowiska usługi Azure Time Series Insights
 
@@ -27,16 +27,18 @@ Ten samouczek przeprowadzi Cię przez proces tworzenia środowiska Azure Time Se
 > * Uruchom symulację urządzenia, aby przesłać strumieniowo dane do środowiska Time Series Insightsowego.
 > * Sprawdź symulowane dane telemetryczne.
 
+> [!IMPORTANT]
+> Utwórz konto bezpłatnej [subskrypcji platformy Azure](https://azure.microsoft.com/free/) , jeśli jeszcze jej nie masz.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Konto logowania platformy Azure musi być również członkiem roli **właściciela** subskrypcji. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i Azure Portal](../role-based-access-control/role-assignments-portal.md).
+
 ## <a name="video"></a>Połączenia wideo
 
 ### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>Dowiedz się, jak generować dane i rozpoczynać pracę z Time Series Insights przy użyciu akceleratora rozwiązań usługi Azure IoT. </br>
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
-
-## <a name="prerequisites"></a>Wymagania wstępne
-
-* Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* Konto logowania platformy Azure musi być również członkiem roli **właściciela** subskrypcji. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="overview"></a>Przegląd
 
@@ -180,7 +182,7 @@ Z menu po lewej stronie w Azure Portal:
 
 1. Wybierz ikonę **grupy zasobów** . Następnie wybierz grupę zasobów, która została utworzona przez Akcelerator rozwiązania do symulacji urządzeń. W górnej części strony wybierz pozycję **Usuń grupę zasobów**, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

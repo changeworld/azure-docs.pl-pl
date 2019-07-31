@@ -3,17 +3,18 @@ title: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure na dużą s
 description: Równoczesne tworzenie kopii zapasowych wielu maszyn wirtualnych platformy Azure
 keywords: kopia zapasowa maszyny wirtualnej; tworzenie kopii maszyny wirtualnej; tworzenie kopii vm, kopia zapasowa vm; kopia zapasowa maszyny wirtualnej platformy Azure; kopia zapasowa i odzyskiwanie po awarii
 author: dcurwin
+manager: carmonm
 ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 1d57ca7e5a182877565c1add295cb504381dd3e5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: fa9f13bf4f4e06973f7b9125897366ad53d06857
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639520"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688432"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Tworzenie kopii zapasowych wielu maszyn wirtualnych za pomocą witryny Azure Portal
 

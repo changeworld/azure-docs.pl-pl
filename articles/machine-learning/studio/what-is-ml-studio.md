@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/20/2019
-ms.openlocfilehash: ce1e5f349f55074b53cf447126c411a7a1cd3394
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 4ec9cff652bf1badf526d490547ad78de31ac5da
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516910"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677996"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co to jest usługa Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio to narzędzie do współpracy, obsługiwane metodą „przeciągnij i upuść”, które służy do budowania, testowania i wdrażania rozwiązań z zakresu analizy predykcyjnej na podstawie posiadanych danych. Usługa Machine Learning Studio publikuje modele jako usługi sieci Web, które mogą być łatwo używane w niestandardowych aplikacjach albo narzędziach do analiz biznesowych, takich jak program Excel.
@@ -44,7 +44,7 @@ Pobierz diagram **Przegląd możliwości usługi Microsoft Azure Machine Learnin
 ![Przegląd możliwości usługi Microsoft Azure Machine Learning Studio](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>Wprowadzenie do usługi Machine Learning Studio
-Po pierwszym wprowadzeniu Machine Learning Studio,]https://studio.azureml.net) zostanie wyświetlona strona **główna** . Z tego miejsca można wyświetlać dokumenty, materiały wideo i seminaria internetowe, a także znajdować wartościowe zasoby.
+Po pierwszym wprowadzeniu [Machine Learning Studio](https://studio.azureml.net)zostanie wyświetlona strona **główna** . W tym miejscu możesz wyświetlić dokumentację, klipy wideo i seminaria internetowe oraz znaleźć inne cenne zasoby.
 
 Kliknij lewe górne menu, ![Menu](./media/what-is-ml-studio/menu.png) a zostanie wyświetlonych kilka opcji.
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
@@ -123,7 +123,7 @@ Oto krótkie porównanie.
 |Cele obliczeń wdrożenia| Własny format usługi sieci Web, niedostosowywalny | Opcje zabezpieczeń przedsiębiorstwa & usługi Azure Kubernetes. <br/>([Inne obliczenia](../service/how-to-deploy-and-where.md) obsługiwane w zestawie SDK) |
 |Automatyczne szkolenie modelu i dostrajanie parametrów | Nie | Jeszcze nie w interfejsie wizualizacji. <br/> (Obsługiwane w zestawach SDK i Azure Portal). | 
 
-Wypróbuj interfejs wizualny (wersja zapoznawcza [), korzystając z przewodnika Szybki Start: Przygotuj i Wizualizuj dane bez pisania kodu](../service/ui-quickstart-run-experiment.md)
+Wypróbuj interfejs wizualny (wersja zapoznawcza [) z samouczkiem: Przewidywanie ceny samochodów za pomocą interfejsu wizualnego](../service/ui-tutorial-automobile-price-train-score.md)
 
 > [!NOTE]
 > Nie można wdrożyć modeli utworzonych w programie Studio ani nimi zarządzać za pomocą usługi Azure Machine Learning. Jednak modele utworzone i wdrożone w interfejsie wizualnym usługi mogą być zarządzane za pomocą obszaru roboczego usługi Azure Machine Learning.

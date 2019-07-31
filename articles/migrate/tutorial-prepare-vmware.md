@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 286223e091ab0fe8521c29de12e37f5a112240dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 993b0249bdcc8e0e54dbe0c222aa2335c3bf8d4a
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640752"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679140"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Przygotowywanie maszyn wirtualnych VMware na potrzeby oceny i migracji na platformę Azure
 
@@ -102,7 +102,7 @@ Przypisz uprawnienia do przypisywania ról do grupy zasobów, w której znajduje
 
 ## <a name="prepare-for-vmware-vm-assessment"></a>Przygotowanie do oceny maszyny wirtualnej VMware
 
-Aby przygotować się do oceny maszyny wirtualnej VMware, należy zweryfikować ustawienia hosta i maszyny wirtualnej funkcji Hyper-V oraz sprawdzić ustawienia wdrażania urządzeń.
+Aby przygotować się do oceny maszyny wirtualnej VMware, należy zweryfikować ustawienia hosta i maszyny wirtualnej VMware oraz sprawdzić ustawienia wdrażania urządzeń.
 
 ### <a name="verify-vmware-settings"></a>Sprawdź ustawienia programu VMware
 

@@ -34,7 +34,6 @@ sections:
       - items:
           - html: <a href="service/quickstart-run-cloud-notebook">Przeprowadzanie eksperymentu w chmurze</a> (nie jest wymagana instalacja)
           - html: <a href="service/quickstart-run-local-notebook">Przeprowadzanie eksperymentu przy użyciu lokalnego serwera notesów</a> (instalacja lokalna zestawu SDK)
-          - html: <a href="service/ui-quickstart-run-experiment">Uruchamianie eksperymentu w interfejsie wizualnym</a> (bez użycia kodu)
         style: unordered
         type: list
       - text: '<b>Samouczek: Klasyfikacja obrazów (dane MNIST) za pomocą zestawu SDK:</b>'

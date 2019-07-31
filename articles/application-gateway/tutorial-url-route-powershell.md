@@ -4,16 +4,16 @@ description: Dowiedz się, jak kierować ruch internetowy do określonych skalow
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: tutorial
+ms.topic: article
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e9747a6bc9a579d5188b5590af1a3627a3d085a4
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: a6a8c68edd658e5c207b88b48ee09c6472441e78
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667393"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688165"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Kierowanie ruchu internetowego na podstawie adresu URL za pomocą programu Azure PowerShell
 

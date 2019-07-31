@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Poznawanie środowiska pokazowego usługi Azure Time Series Insights w wersji zapoznawczej | Microsoft Docs'
-description: Omówienie środowiska pokazowego usługi Azure Time Series Insights w wersji zapoznawczej
+description: Przewodnik Szybki Start dotyczący środowiska demonstracyjnego w wersji zapoznawczej Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 07/29/2019
-ms.openlocfilehash: 3e93fdc903b8e0d4ee4233e007014bb82ea22b6b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3d098b1806e4fdf5b45030dfebf3dfe5959b7d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638882"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677716"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Szybki start: Poznawanie środowiska pokazowego usługi Azure Time Series Insights w wersji zapoznawczej
 
@@ -26,11 +26,12 @@ Ten przewodnik Szybki Start umożliwia rozpoczęcie pracy z programem Azure Time
 
 W tym przewodniku szybki start dowiesz się, jak używać Time Series Insights, aby znaleźć szczegółowe informacje umożliwiające podejmowanie działań w danych firmy Contoso. Przeprowadzamy również krótką analizę głównych przyczyn w celu lepszego przewidywania błędów krytycznych i przeprowadzenia konserwacji.
 
+> [!IMPORTANT]
+> Utwórz  [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), jeśli go nie masz.
+
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Poznawanie eksploratora usługi Time Series Insights w środowisku pokazowym
 
 W Eksploratorze Time Series Insights w wersji zapoznawczej przedstawiono dane historyczne i główne przyczyny analizy. Aby rozpocząć pracę:
-
-1. Utwórz  [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), jeśli go nie masz.
 
 1. Przejdź do środowiska [demonstracyjnego farmy wiatrów firmy Contoso](https://insights.timeseries.azure.com/preview/samples) .  
 
@@ -122,7 +123,7 @@ Po ukończeniu samouczka Wyczyść utworzone zasoby:
 1. W menu po lewej stronie w [Azure Portal](https://portal.azure.com)wybierz pozycję **wszystkie zasoby**, Znajdź Azure Time Series Insights grupę zasobów.
 1. Usuń całą grupę zasobów (i wszystkie znajdujące się w niej zasoby), wybierając pozycję **Usuń** lub Usuń osobno każdy zasób.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wszystko jest gotowe do utworzenia własnego środowiska Time Series Insights w wersji zapoznawczej. Aby rozpocząć:
 

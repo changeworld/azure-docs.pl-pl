@@ -10,12 +10,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9ebacd8caf992874969106df58531538ea399ed
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: c1ec9db2b026dd1853eceb1f110878d6b2beb4d4
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510431"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678024"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
@@ -29,69 +29,69 @@ Dzięki prognozom uzyskanym za pomocą uczenia maszynowego aplikacje mogą być 
 
 ## <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
-Usługa Azure Machine Learning zapewnia środowisko oparte na chmurze, które służy do przygotowywania danych, trenowania, testowania, wdrażania i śledzenia modeli uczenia maszynowego oraz zarządzania nimi. Rozpocznij szkolenie na komputerze lokalnym, a następnie skalować w poziomie w chmurze. Usługi w pełni obsługuje technologie typu open source, takie jak PyTorch, TensorFlow i scikit-Dowiedz się i może służyć do dowolnego rodzaju usługi machine learning od klasycznego ml do uczenia głębokiego, w trybie nadzorowanym i uczenie nienadzorowane. 
+Usługa Azure Machine Learning zapewnia środowisko oparte na chmurze, które służy do przygotowywania danych, trenowania, testowania, wdrażania i śledzenia modeli uczenia maszynowego oraz zarządzania nimi. Rozpocznij szkolenie na komputerze lokalnym, a następnie Skaluj w poziomie do chmury. Usługa w pełni obsługuje technologie typu "open source", takie jak PyTorch, TensorFlow i scikit — uczenie się i może być używane do uczenia maszynowego, od klasycznej maszyny do uczenia głębokiego, nadzorowanych i nienadzorowanych szkoleń. 
 
-Zapoznaj się z i przygotowywania danych, uczenie i testowanie modeli i wdrażać je przy użyciu zaawansowanych narzędzi, takich jak:
-+ A [interfejs graficzny](ui-quickstart-run-experiment.md) , w której można następnie przeciągnij i upuść modułów, aby tworzyć eksperymenty, a następnie wdrożyć modele
-+ [Notesy Jupyter](https://jupyter.org) w którym używasz [zestawów SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) do pisania własnego kodu, takich jak [te przykładowe notesy](https://aka.ms/aml-notebooks)
-+ [Rozszerzenie programu Visual Studio Code](how-to-vscode-tools.md)
+Eksplorowanie i przygotowywanie danych, uczenie i testowanie modeli oraz wdrażanie ich przy użyciu bogatych narzędzi, takich jak:
++ [Interfejs wizualizacji](ui-tutorial-automobile-price-train-score.md) , w którym można przeciągać i upuszczać moduły, aby kompilować eksperymenty, a następnie wdrażać modele
++ [Jupyter notesy](https://jupyter.org) , w których używasz [zestawów SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) do pisania własnego kodu, takich jak [przykładowe notesy](https://aka.ms/aml-notebooks)
++ [Visual Studio Code rozszerzenie](how-to-vscode-tools.md)
 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Jakie czynności można wykonać za pomocą usługi Azure Machine Learning?
 
-Użyj <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK usługi Azure Machine Learning Python</a> z typu open-source pakiety języka Python lub użyj [interfejs graficzny (wersja zapoznawcza)](ui-quickstart-run-experiment.md) tworzenie i szkolenie modeli uczenia głębokiego uczenia maszynowego wysokiej dokładne i samodzielnie w usłudze Azure Machine Learning Workspace.
+Korzystanie z <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK języka python Azure Machine Learning</a> z pakietami Python Open Source lub korzystanie z [interfejsu wizualizacji (wersja zapoznawcza)](ui-tutorial-automobile-price-train-score.md) w celu tworzenia i uczenia wysoce precyzyjne modele uczenia maszynowego i uczenia się w usłudze Azure Machine Learning Obszary.
 
-Możesz korzystać z wielu składników learning maszyny dostępne w pakiety języka Python typu open source, takich jak <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>, <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, <a href="https://pytorch.org" target="_blank">PyTorch</a>i <a href="https://mxnet.io" target="_blank">MXNet</a>.
+Możesz wybrać spośród wielu składników uczenia maszynowego dostępnych w pakietach języka Python typu open source, takich jak <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-</a>Learning, <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, <a href="https://pytorch.org" target="_blank">PyTorch</a>i <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
-Czy możesz napisać kod, lub użyć interfejs graficzny, można śledzić wiele przebiegów, tak, jak eksperymentów do najlepszych rozwiązań, a także zarządzanie modelami wdrożone.
+Niezależnie od tego, czy piszesz kod, czy korzystasz z interfejsu wizualizacji, możesz śledzić wiele przebiegów w trakcie eksperymentu, aby znaleźć najlepsze rozwiązanie, a także zarządzać wdrożonymi modelami.
 
-### <a name="code-first-experience"></a>Najpierw kod środowiska
+### <a name="code-first-experience"></a>Kod — pierwsze środowisko
 
-Rozpocznij szkolenie na Twoim komputerze lokalnym za pomocą <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK usługi Azure Machine Learning Python</a> i skalowanie do chmury. Dzięki wielu dostępnym [docelowym obiektom obliczeniowym](how-to-set-up-training-targets.md), takim jak środowisko obliczeniowe usługi Azure Machine Learning i [usługa Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), oraz [zaawansowanym usługom dostrajania hiperparametrów](how-to-tune-hyperparameters.md), można tworzyć lepsze modele szybciej, wykorzystując możliwości chmury.
+Rozpocznij szkolenie na maszynie lokalnej przy użyciu <a href="https://aka.ms/aml-sdk" target="_blank">zestawu Azure Machine Learning Python SDK</a> , a następnie Skaluj w poziomie do chmury. Dzięki wielu dostępnym [docelowym obiektom obliczeniowym](how-to-set-up-training-targets.md), takim jak środowisko obliczeniowe usługi Azure Machine Learning i [usługa Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), oraz [zaawansowanym usługom dostrajania hiperparametrów](how-to-tune-hyperparameters.md), można tworzyć lepsze modele szybciej, wykorzystując możliwości chmury.
 
-Możesz również [zautomatyzować szkoleń modelowych i dostrajanie](tutorial-auto-train-models.md) przy użyciu zestawu SDK.
+Możesz również [zautomatyzować szkolenia i dostrajanie modeli](tutorial-auto-train-models.md) za pomocą zestawu SDK.
 
-### <a name="code-free--low-code-experience"></a>Środowisko pracy z kodem niekorzystające z kodu i niska
+### <a name="code-free--low-code-experience"></a>Niezależne od kodu/mała obsługa kodu
 
-Szkolenia bez kodu, spróbuj wykonać:
+W przypadku szkoleń bez kodu wypróbuj następujące rozwiązania:
 
-+ Interfejs graficzny, przeciągnij i upuść eksperymentowania i wdrażania
++ Interfejs wizualny do eksperymentowania i wdrażania przy użyciu przeciągania i upuszczania
     
-    ![Interfejs graficzny dla usługi Azure Machine Learning](media/overview-what-is-azure-ml/visual-interface.png)
+    ![Interfejs wizualny usługi Azure Machine Learning](media/overview-what-is-azure-ml/visual-interface.png)
 
-+ Opcja portalu Azure dla zautomatyzowanych eksperymentów uczenia Maszynowego
++ Opcja Azure Portal dla zautomatyzowanych eksperymentów ML
 
-### <a name="operationalization-mlops"></a>Operacjonalizacja (MLOps)
+### <a name="operationalization-mlops"></a>Operacjonalizacji (MLOps)
 
-Jeśli masz prawo modelu, łatwo służy w usłudze sieci web, na urządzeniu IoT lub z usługi Power BI. Aby uzyskać więcej informacji, zobacz artykuł opisujący, [jak i gdzie wdrażać](how-to-deploy-and-where.md). 
+Jeśli dysponujesz odpowiednim modelem, możesz go łatwo używać w usłudze sieci Web, na urządzeniu IoT lub z Power BI. Aby uzyskać więcej informacji, zobacz artykuł opisujący, [jak i gdzie wdrażać](how-to-deploy-and-where.md). 
 
 Następnie możesz zarządzać wdrożonymi modelami przy użyciu [zestawu SDK usługi Azure Machine Learning dla języka Python](https://aka.ms/aml-sdk) lub [witryny Azure Portal](https://portal.azure.com/). 
 
-Te modele mogą być wykorzystywane i zwracają prognozy w [czasu rzeczywistego](how-to-consume-web-service.md) lub [asynchronicznie](how-to-run-batch-predictions.md) na dużych ilości danych.
+Te modele mogą być używane i zwracać przewidywania w [czasie rzeczywistym](how-to-consume-web-service.md) lub [asynchronicznie](how-to-run-batch-predictions.md) w przypadku dużych ilości danych.
 
-I za pomocą zaawansowanych [potokach uczenia maszynowego](concept-ml-pipelines.md), mogą współpracować dotyczące każdego kroku, od przygotowania danych, uczenie i ocenę modelu, do wdrażania.
+Dzięki zaawansowanym [potokom uczenia maszynowego](concept-ml-pipelines.md)można współpracować nad każdym krokiem w procesie przygotowywania danych, uczenia modelu i oceny, dzięki wdrożeniu.
 
 Aby rozpocząć pracę przy użyciu usługi Azure Machine Learning, zobacz [Następne kroki](#next-steps).
 
-## <a name="how-does-azure-machine-learning-service-differ-from-studio"></a>Czym różni się usługa Azure Machine Learning z programu Studio?
+## <a name="how-does-azure-machine-learning-service-differ-from-studio"></a>Jak usługa Azure Machine Learning różni się od Studio?
 
-[Usługi Machine Learning Studio](../studio/what-is-ml-studio.md) to współpracy, obsługiwane metodą przeciągania i upuszczania visual obszar roboczy gdzie można tworzenia, testowania i wdrażania rozwiązania uczenia maszynowego bez konieczności pisania kodu. Używa algorytmów uczenia maszynowego wbudowanych i wstępnie skonfigurowanych i moduły obsługi danych, a także własnościowa obliczeń platformy.
+[Machine Learning Studio](../studio/what-is-ml-studio.md) to współpraca, przeciągnij i upuść obszar roboczy wizualizacji, w którym możesz tworzyć, testować i wdrażać rozwiązania do uczenia maszynowego bez konieczności pisania kodu. Używa wstępnie skompilowanych i wstępnie skonfigurowanych algorytmów uczenia maszynowego oraz modułów obsługi danych, a także własnościowej platformy obliczeniowej.
 
-Usługa Azure Machine Learning udostępnia oba zestawy SDK **- i -** visual interface(preview), aby szybko przeznaczonego do przygotowania danych, uczenia i wdrażania modeli uczenia maszynowego. Ten interfejs graficzny (wersja zapoznawcza) zapewnia podobne możliwości przeciągania i upuszczania w programie Studio. W odróżnieniu od platformie obliczeniowej własności w Studio interfejs graficzny wykorzystuje zasoby obliczeniowe i jest w pełni zintegrowana usługa Azure Machine Learning.
+Usługa Azure Machine Learning udostępnia zestawy SDK **i** interfejs wizualny (wersja zapoznawcza), aby szybko przygotowywać dane, uczeniować i wdrażać modele uczenia maszynowego. Ten interfejs wizualny (wersja zapoznawcza) zapewnia podobne środowisko przeciągania i upuszczania do programu Studio. Jednak, w przeciwieństwie do własnościowej platformy obliczeniowej programu Studio, interfejs wizualny używa własnych zasobów obliczeniowych i jest w pełni zintegrowany z usługą Azure Machine Learning.
 
-Poniżej znajduje się porównanie szybkie.
+Oto krótkie porównanie.
 
 || Machine Learning Studio | Usługa Azure Machine Learning:<br/>Interfejs wizualny|
 |---| --- | --- |
 || Ogólnie dostępna (GA) | W wersji zapoznawczej|
-|Moduły interfejsu| wiele | Początkowy zestaw popularnych modułów|
-|Szkolenie obliczeniowych elementów docelowych| Zastrzeżone obliczeniowych elementów docelowych, tylko obsługę procesora CPU| Obsługuje mocy obliczeniowej usługi Azure Machine Learning, procesorem GPU lub CPU.<br/>(Inne jednostki obliczeniowe obsługiwane w zestawie SDK)|
-|Wdrożenie obliczeniowych elementów docelowych| Format usługi sieci web własności, modyfikowalnych | Opcje zabezpieczeń organizacji i usłudze Azure Kubernetes Service. <br/>([Innych oblicza](how-to-deploy-and-where.md) obsługiwana w zestawie SDK) |
-|Automatyczne szkolenia i modelu strojenia hiperparametrycznego | Nie | Jeszcze niedostępne w interfejs graficzny. <br/> (Obsługiwane w portalu usługi SDK i platformy Azure). | 
+|Moduły dla interfejsu| Ilość | Początkowy zestaw popularnych modułów|
+|Szkoleniowe cele obliczeniowe| Własnościowy obiekt docelowy obliczeń, tylko obsługa procesora CPU| Obsługuje Azure Machine Learning obliczeń, procesora GPU i procesora CPU.<br/>(Inne obliczenia obsługiwane w zestawie SDK)|
+|Cele obliczeń wdrożenia| Własny format usługi sieci Web, niedostosowywalny | Opcje zabezpieczeń przedsiębiorstwa & usługi Azure Kubernetes. <br/>([Inne obliczenia](how-to-deploy-and-where.md) obsługiwane w zestawie SDK) |
+|Automatyczne szkolenie modelu i dostrajanie parametrów | Nie | Jeszcze nie w interfejsie wizualizacji. <br/> (Obsługiwane w zestawach SDK i Azure Portal). | 
 
-Wypróbuj interfejs graficzny (wersja zapoznawcza) przy użyciu [Szybki Start: Przygotowanie i wizualizowanie danych bez konieczności pisania kodu](ui-quickstart-run-experiment.md)
+Wypróbuj interfejs wizualny (wersja zapoznawcza [) z samouczkiem: Przewidywanie ceny samochodów za pomocą interfejsu](ui-tutorial-automobile-price-train-score.md)wizualnego.
 
 > [!NOTE]
-> Modele utworzone w programie Studio nie może być wdrożony ani zarządzane przez usługę Azure Machine Learning. Jednak modeli utworzonych i wdrożonych w interfejsie visual usługi mogą być zarządzane za pomocą obszaru roboczego usługi Azure Machine Learning.
+> Nie można wdrożyć modeli utworzonych w programie Studio ani nimi zarządzać za pomocą usługi Azure Machine Learning. Jednak modele utworzone i wdrożone w interfejsie wizualnym usługi mogą być zarządzane za pomocą obszaru roboczego usługi Azure Machine Learning.
 
 ## <a name="free-trial"></a>Bezpłatna wersja próbna
 
@@ -101,7 +101,7 @@ Możesz uzyskać środki do wydania na usługi platformy Azure. Nawet po ich wyc
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Tworzenie obszaru roboczego usługi Machine Learning](setup-create-workspace.md) na rozpoczęcie pracy.
+- [Utwórz obszar roboczy usługi Machine Learning](setup-create-workspace.md) , aby rozpocząć pracę.
 
 - Wykonaj kompleksowe samouczki: 
   + [Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md) 

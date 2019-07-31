@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Poznawanie biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights | Microsoft Docs'
-description: Informacje na temat biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights i powiązanego z nią modelu programowania.
+description: Samouczek, aby dowiedzieć się więcej na temat biblioteki klienta Azure Time Series Insights JavaScript i powiązanego modelu programowania.
 author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 1ae37636a2caf108221be2240a9517a547945096
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2c1013829a7e6e94712e22ae235a47490c8c5eaa
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638834"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677657"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Samouczek: Poznawanie biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights
 
@@ -34,9 +34,9 @@ Zapoznaj się z tematem:
 > * Przykładowe pliki źródłowe aplikacji Time Series Insights są udostępniane w [przykładowym repozytorium GitHub](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
 > * Przeczytaj [dokumentację dotyczącą programu Time Series Insights Client Reference](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
 
-## <a name="prerequisites"></a>Wymagania wstępne
+Utwórz konto bezpłatnej [subskrypcji platformy Azure](https://azure.microsoft.com/free/) , jeśli jeszcze jej nie masz.
 
-* Utwórz konto bezpłatnej [subskrypcji platformy Azure](https://azure.microsoft.com/free/) , jeśli jeszcze jej nie masz.
+## <a name="prerequisites"></a>Wymagania wstępne
 
 * Ten samouczek używa funkcji **Narzędzia deweloperskie** przeglądarki. Nowoczesne przeglądarki sieci Web ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)i inne) zwykle zapewniają dostęp do **widoku inspektora sieci Web** za pomocą klawisza F12 na klawiaturze. Innym sposobem uzyskania dostępu do widoku jest kliknięcie prawym przyciskiem myszy na stronie sieci Web, a następnie wybranie polecenia **Zbadaj element**.
 
@@ -46,8 +46,6 @@ W tym filmie wideo wprowadzamy zestaw SDK języka JavaScript Time Series Insight
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
-
-
 
 ## <a name="time-series-insights-sample-application"></a>Przykładowa aplikacja usługi Time Series Insights
 
@@ -104,7 +102,7 @@ Najpierw wyświetlmy [kod źródłowy HTML i JavaScript](https://github.com/Micr
 
 ## <a name="time-series-insights-javascript-client-library-concepts"></a>Time Series Insights pojęć dotyczących biblioteki klienta JavaScript
 
-Biblioteka klienta Time Series Insights (*tsclient. js*) oferuje abstrakcje dla dwóch ważnych funkcji języka JavaScript:
+Biblioteka klienta Time Series Insights (*tsiclient. js*) oferuje abstrakcje dla dwóch ważnych funkcji języka JavaScript:
 
 * **Metody otoki do wywoływania interfejsów API zapytań Time Series Insights**: Interfejsy API REST, których można użyć do wykonywania zapytań dotyczących danych Time Series Insights przy użyciu wyrażeń agregujących. Metody są zorganizowane w przestrzeni nazw TsiClient. Server biblioteki.
 
@@ -319,7 +317,7 @@ Po ukończeniu samouczka Wyczyść utworzone zasoby:
 1. W menu po lewej stronie w [Azure Portal](https://portal.azure.com)wybierz pozycję **wszystkie zasoby**, Znajdź Azure Time Series Insights grupę zasobów.
 1. Usuń całą grupę zasobów (i wszystkie znajdujące się w niej zasoby), wybierając pozycję **Usuń** lub Usuń osobno każdy zasób.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

@@ -5,13 +5,13 @@ metadata:
   title: Dokumentacja usługi Azure Backup — samouczki i dokumentacja interfejsu API | Microsoft Docs
   description: 'Usługa Azure Backup umożliwia tworzenie kopii zapasowych danych dla serwerów lokalnych, maszyn wirtualnych, zwirtualizowanych obciążeń, serwera SQL, serwera SharePoint i nie tylko. Dowiedz się, jak tworzyć kopie zapasowe danych i przywracać je, zapoznając się z naszymi przewodnikami Szybki start, samouczkami i przykładami.'
   services: backup
-  author: rayne-wiselman
+  author: dcurwin
   manager: carmonm
   ms.service: backup
   ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 05/22/2018
-  ms.author: raynew
+  ms.author: dacurwin
 abstract:
   description: 'Za pomocą usługi Azure Backup możesz chronić dane serwerów lokalnych, maszyn wirtualnych, zwirtualizowanych obciążeń, serwera SQL, serwera SharePoint i nie tylko. Dowiedz się, jak tworzyć kopie zapasowe danych i przywracać je, zapoznając się z naszymi przewodnikami Szybki start, samouczkami i przykładami.'
 sections:
