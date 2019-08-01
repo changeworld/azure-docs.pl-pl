@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/26/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 1ecb4897811e63ea33936f080791f3abce3e0b32
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 361dc10aad6f65230e1e0f4c563534d44b45f902
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618714"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697809"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Przykład: Wykrywanie języka za pomocą analiza tekstu
 
@@ -71,7 +71,7 @@ Aby uzyskać więcej informacji na temat definicji żądania, zobacz [wywoływan
 
 + Ustaw punkt końcowy HTTP dla wykrywania języka. Użyj zasobu analiza tekstu na platformie Azure lub w [kontenerze analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musi zawierać `/languages` zasób: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
 
-+ Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [Znajdowanie punktów końcowych i kluczy dostępu](text-analytics-how-to-access-key.md).
++ Ustaw nagłówek żądania w taki sposób, aby zawierał [klucz dostępu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dla operacji analiza tekstu.
 
 + W treści żądania podaj kolekcję dokumentów JSON przygotowaną na potrzeby tej analizy.
 
@@ -269,7 +269,7 @@ W tym artykule przedstawiono koncepcje i przepływ pracy wykrywania języka przy
 
 + [Wykrywanie języka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) jest dostępne dla szerokiego zakresu języków, wariantów, dialektów i niektórych języków regionalnych lub kulturowych.
 + Dokumenty JSON w treści żądania zawierają identyfikator i tekst.
-+ Żądanie post jest `/languages` punktem końcowym przy użyciu spersonalizowanego [klucza dostępu i punktu końcowego](text-analytics-how-to-access-key.md) , który jest prawidłowy dla Twojej subskrypcji.
++ Żądanie post jest `/languages` punktem końcowym przy użyciu spersonalizowanego [klucza dostępu i punktu końcowego](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , który jest prawidłowy dla Twojej subskrypcji.
 + Dane wyjściowe odpowiedzi składają się z identyfikatorów języka dla każdego identyfikatora dokumentu. Dane wyjściowe mogą być przesyłane strumieniowo do dowolnej aplikacji, która akceptuje kod JSON. Przykładowe aplikacje to programy Excel i Power BI, aby podać kilka nazw.
 
 ## <a name="see-also"></a>Zobacz także

@@ -1,19 +1,18 @@
 ---
 title: 'Samouczek: rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync | Microsoft Docs'
 description: Dowiedz się, jak rozszerzyć serwery plików systemu Windows przy użyciu usługi Azure File Sync — od początku do końca.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: df3850a839ac789957a9adffb7122a0b58987781
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f71a27ea4da6bce5832287e948e0731672280196
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705067"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699488"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Samouczek: Rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync
 
@@ -70,7 +69,7 @@ Po wdrożeniu konta usługi Azure Storage należy utworzyć udział plików.
 
 1. Wybierz nowy udział plików. W lokalizacji udziału plików wybierz polecenie **Przekaż**.
 
-    ![Przekazywanie pliku](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
+    ![Przekaż plik](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
 
 1. Przejdź do folderu _FilesToSync_, w którym został utworzony plik TXT, wybierz plik _mytestdoc.txt_ i wybierz pozycję **Przekaż**.
 
@@ -100,7 +99,7 @@ Na tym etapie utworzono konto magazynu i udział plików zawierający jeden plik
    1. Na karcie **Dyski** w obszarze **Opcje dysku** pozostaw wartości domyślne.
    1. W obszarze **DYSKI Z DANYMI** wybierz pozycję **Utwórz i dołącz nowy dysk**.
 
-   1. Użyj ustawień domyślnych wszędzie oprócz pola **Rozmiar (GiB)**, które możesz zmienić na wartość **1 GB** na potrzeby tego samouczka.
+   1. Użyj ustawień domyślnych wszędzie oprócz pola **Rozmiar (GiB)** , które możesz zmienić na wartość **1 GB** na potrzeby tego samouczka.
 
       ![Szczegóły dysku z danymi](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
@@ -112,7 +111,7 @@ Na tym etapie utworzono konto magazynu i udział plików zawierający jeden plik
 
 1. Po zakończeniu wdrażania maszyny wirtualnej wybierz pozycję **Przejdź do zasobu**.
 
-   ![Przechodzenie do zasobu](./media/storage-sync-files-extend-servers/vm-gotoresource.png)
+   ![Przejdź do zasobu](./media/storage-sync-files-extend-servers/vm-gotoresource.png)
 
 Na tym etapie utworzono nową maszynę wirtualną i dołączono dysk z danymi. Następnie możesz nawiązać połączenie z maszyną wirtualną.
 
@@ -218,12 +217,12 @@ Aby wdrożyć usługę Azure File Sync, zacznij od umieszczenia zasobu **Usługi
 
    W otwartym okienku wprowadź następujące informacje:
 
-   | Wartość | Opis |
+   | Value | Opis |
    | ----- | ----- |
    | **Nazwa** | Unikatowa nazwa (na subskrypcję) dla usługi synchronizacji magazynu.<br><br>W tym samouczku użyj nazwy _afssyncservice02_. |
    | **Subskrypcja** | Subskrypcja platformy Azure używana na potrzeby tego samouczka. |
    | **Grupa zasobów** | Grupa zasobów, która zawiera usługę synchronizacji magazynu.<br><br>W tym samouczku użyj grupy zasobów _afsresgroup101918_. |
-   | **Lokalizacja** | Wschodnie stany USA |
+   | **Location** | East US |
 
 1. Po zakończeniu wybierz pozycję **Utwórz** w celu wdrożenia **usługi synchronizacji magazynu**.
 1. Wybierz kartę **Powiadomienia**, a następnie pozycję **Przejdź do zasobu**.
@@ -264,7 +263,7 @@ Interfejs użytkownika rejestracji serwera powinien zostać otwarty automatyczni
 
    | | |
    | ----- | ----- |
-   | Wartość | Opis |
+   | Value | Opis |
    | **Subskrypcja platformy Azure** | Subskrypcja, która zawiera usługę synchronizacji magazynu na potrzeby tego samouczka. |
    | **Grupa zasobów** | Grupa zasobów, która zawiera usługę synchronizacji magazynu. W tym samouczku użyj grupy zasobów _afsresgroup101918_. |
    | **Usługa synchronizacji magazynu** | Nazwa usługi synchronizacji magazynu. W tym samouczku użyj nazwy _afssyncservice02_. |
@@ -283,7 +282,7 @@ Grupa synchronizacji definiuje topologię synchronizacji dla zestawu plików. Gr
 
 1. Wprowadź następujące informacje, aby utworzyć grupę synchronizacji z punktem końcowym chmury:
 
-   | Wartość | Opis |
+   | Value | Opis |
    | ----- | ----- |
    | **Nazwa grupy synchronizacji** | Ta nazwa musi być unikatowa w obrębie usługi synchronizacji magazynu, ale może być to dowolna nazwa logiczna z Twojego punktu widzenia. W tym samouczku użyj nazwy *afssyncgroup*.|
    | **Subskrypcja** | Subskrypcja, w której wdrożono usługę synchronizacji magazynu na potrzeby tego samouczka. |
@@ -306,9 +305,9 @@ Punkt końcowy serwera reprezentuje określoną lokalizację na zarejestrowanym 
 
    | | |
    | ----- | ----- |
-   | Wartość | Opis |
+   | Value | Opis |
    | **Zarejestrowany serwer** | Nazwa utworzonego serwera. Na potrzeby tego samouczka użyj nazwy *afsvm101918*. |
-   | **Ścieżka** | Ścieżka systemu Windows Server do utworzonego dysku. Na potrzeby tego samouczka użyj nazwy *f:\filestosync*. |
+   | **Path** | Ścieżka systemu Windows Server do utworzonego dysku. Na potrzeby tego samouczka użyj nazwy *f:\filestosync*. |
    | **Obsługa warstw w chmurze** | Pozostaw tę funkcję wyłączoną na potrzeby tego samouczka. |
    | **Wolne miejsce w woluminie** | Pozostaw to pole puste na potrzeby tego samouczka. |
 

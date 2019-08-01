@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: 4a74133a4a34f07db3813d3b9f9a47794c05ec49
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: af01c0c2586ce7df1902a0bcc502c6fd06a5215d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594649"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697906"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Tworzenie zasobu Cognitive Services przy użyciu Azure Portal
 
@@ -65,6 +65,13 @@ Przed utworzeniem zasobu Cognitive Services należy mieć grupę zasobów platfo
 Po utworzeniu zasobu możesz uzyskać do niego dostęp z poziomu pulpitu nawigacyjnego platformy Azure, jeśli został on przypięty. W przeciwnym razie można je znaleźć w **grupach zasobów**. Po wybraniu zasobu można pobrać klucze, wybierając pozycję **klucze** w obszarze **Zarządzanie zasobami**.
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
+
+## <a name="pricing-tiers-and-billing"></a>Warstwy cenowe i rozliczenia
+
+Warstwy cenowe (oraz opłata naliczana) są zależne od liczby wysyłanych transakcji przy użyciu informacji o uwierzytelnianiu. Każda warstwa cenowa określa:
+* Maksymalna liczba dozwolonych transakcji na sekundę (TPS).
+* funkcje usługi są włączone w ramach warstwy cenowej.
+* Koszt wstępnie zdefiniowanej liczby transakcji. Przekroczenie tej kwoty spowoduje dodatkową opłatą określoną w [szczegółach cennika](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) usługi.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

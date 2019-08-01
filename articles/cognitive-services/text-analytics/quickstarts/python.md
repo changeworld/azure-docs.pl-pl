@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/28/2019
+ms.date: 07/28/2019
 ms.author: aahi
-ms.openlocfilehash: 69f22d92cc586942d3e368a164d6e95f52aa3eea
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 3987441ea7c28136750149d3fa66afe061b7d783
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356900"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697250"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Korzystanie z interfejsu API REST języka Python w celu wywołania usługi analiza tekstu poznawczej 
 <a name="HOLTop"></a>
@@ -27,8 +27,6 @@ Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.micros
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Python 3.x](https://python.org)
-
-* [Punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) , który został wygenerowany dla Ciebie podczas rejestracji.
 
 * Biblioteka żądań języka Python
     
@@ -378,7 +376,7 @@ pprint(entities)
  'errors': []}
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Analiza tekstu przy użyciu usługi Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

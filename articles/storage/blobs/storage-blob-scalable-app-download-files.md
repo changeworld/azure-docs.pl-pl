@@ -1,21 +1,18 @@
 ---
 title: Pobieranie dużych ilości danych losowych z usługi Azure Storage | Microsoft Docs
 description: Dowiedz się, jak przy użyciu zestawu Azure SDK pobierać duże ilości danych losowych z konta usługi Azure Storage
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 541d406d7416ff5f50fdcca7e85b8f87f6f377df
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794581"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699011"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Pobieranie dużych ilości danych losowych z usługi Azure Storage
 
@@ -30,7 +27,7 @@ Część trzecia serii zawiera informacje na temat wykonywania następujących c
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten samouczek, konieczne jest ukończenie poprzedniego samouczka na temat usługi Storage: [Równoległe przekazywanie dużych ilości danych losowych do usługi Azure Storage][previous-tutorial].
+Aby ukończyć ten samouczek, konieczne jest ukończenie poprzedniego samouczka na temat usługi Storage: [Równolegle przekazuj duże ilości danych losowych do usługi Azure Storage][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>Tworzenie zdalnej sesji na maszynie wirtualnej
 
@@ -201,7 +198,7 @@ C:\>netstat -a | find /c "blob:https"
 C:\>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W trzeciej części serii omówiono pobieranie dużej ilości danych losowych z konta magazynu, w tym następujące czynności:
 

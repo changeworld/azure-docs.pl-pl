@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 8af56d0d7c0f320e607421f12effdb9b37d5f78d
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444616"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688793"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Używanie uwierzytelniania Azure Active Directory (Azure AD) z usługą czytnika immersyjny
 
@@ -29,7 +29,7 @@ W poniższych sekcjach użyjesz środowiska Azure Cloud Shell lub interfejsu wie
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
-2. Następnie [Utwórz zasób czytnika immersyjny](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) z niestandardową poddomeną. 
+2. Następnie [Utwórz zasób czytnika immersyjny](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) z niestandardową poddomeną.
 
    >[!NOTE]
    > Nazwa domeny podrzędnej jest używana w zestawie SDK immersyjny podczas uruchamiania czytnika przy użyciu funkcji launchAsync.
@@ -37,7 +37,7 @@ W poniższych sekcjach użyjesz środowiska Azure Cloud Shell lub interfejsu wie
    -SkuName może być F0 (warstwa Bezpłatna) lub S0 (warstwa standardowa, również bezpłatna w publicznej wersji zapoznawczej). Warstwa S0 ma wyższy limit szybkości wywołań i nie ma miesięcznego limitu liczby wywołań.
 
    -Location może być dowolną z następujących: `eastus`, `westus`, `australiaeast` `centralindia` `japaneast`,,,, `northeurope``westeurope`
-   
+
    -CustomSubdomainName musi być globalnie unikatowa i nie może zawierać znaków specjalnych, takich jak: ".", "!", ",".
 
 
@@ -63,7 +63,7 @@ W poniższych sekcjach użyjesz środowiska Azure Cloud Shell lub interfejsu wie
 
    // Display the Resource info
    $resource
-   ```   
+   ```
 
 ## <a name="assign-a-role-to-a-service-principal"></a>Przypisywanie roli do nazwy głównej usługi
 
@@ -83,7 +83,7 @@ Teraz, gdy masz niestandardową poddomenę skojarzoną z zasobem, musisz przypis
    $aadApp
    ```
 
-   Tutaj przechwytywamy nowo utworzony obiekt aplikacji usługi Azure AD do zmiennej **$aadApp** do użycia w następnym kroku.   
+   Tutaj przechwytywamy nowo utworzony obiekt aplikacji usługi Azure AD do zmiennej **$aadApp** do użycia w następnym kroku.
 
 2. Następnie musisz [utworzyć nazwę główną usługi](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) dla aplikacji usługi Azure AD.
 
@@ -128,11 +128,11 @@ W tym przykładzie Twoje hasło służy do uwierzytelniania jednostki usługi w 
    ```
 
    >[!NOTE]
-   > Zestaw SDK czytnika immersyjny używa właściwości AccessToken tokenu, np. $token. AccessToken. Szczegóły można znaleźć w [dokumentacji](reference.md) dotyczącej zestawu SDK i [przykłady](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples) kodu.
+   > Zestaw SDK czytnika immersyjny używa właściwości AccessToken tokenu, np. $token. AccessToken. Szczegóły można znaleźć w [dokumentacji](reference.md) dotyczącej zestawu SDK i [przykłady](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples) kodu.
 
 Alternatywnie można uwierzytelnić jednostkę usługi przy użyciu certyfikatu. Oprócz nazwy głównej usługi, podmioty zabezpieczeń są również obsługiwane przez posiadanie uprawnień delegowanych przez inną aplikację usługi Azure AD. W takim przypadku zamiast haseł lub certyfikatów użytkownicy otrzymają monit o uwierzytelnienie dwuskładnikowe podczas uzyskiwania tokenów.
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Wyświetl [samouczek](./tutorial.md) , aby zobaczyć, co jeszcze można zrobić za pomocą zestawu SDK czytnika immersyjny
-* Poznaj [zestaw SDK czytnika immersyjny](https://github.com/Microsoft/immersive-reader-sdk) i [Kompendium zestawu SDK czytnika immersyjny](./reference.md)
+* Poznaj [zestaw SDK czytnika immersyjny](https://github.com/microsoft/immersive-reader-sdk) i [Kompendium zestawu SDK czytnika immersyjny](./reference.md)

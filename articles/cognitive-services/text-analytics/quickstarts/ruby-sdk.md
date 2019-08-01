@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Wywoływanie usługi Cognitive Analiza tekstu przy użyciu zestawu SDK języka Ruby'
+title: 'Szybki start: Wywoływanie usługi analiza tekstu poznawczej przy użyciu zestawu Ruby SDK'
 titleSuffix: Azure Cognitive Services
-description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API analizy tekstu w usługach Azure Cognitive Services.
+description: Uzyskaj informacje i przykłady kodu, aby szybko rozpocząć korzystanie z interfejs API analizy tekstu na platformie Azure Cognitive Services.
 services: cognitive-services
 author: raymondl
 manager: nitinme
@@ -10,37 +10,35 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: tasharm
-ms.openlocfilehash: 688887826fa803b616ca737bc8558aa17ed80e37
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 3f18b77fe436328e79df351b9c5edcf6dc289ad7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297773"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697267"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Szybki start: Wywoływanie usługi Analiza tekstu przy użyciu zestawu SDK języka Ruby
+# <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Szybki start: Wywoływanie usługi analiza tekstu przy użyciu zestawu Ruby SDK
 
 <a name="HOLTop"></a>
 
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć analizowanie języka przy użyciu zestawu SDK analizy tekstu dla języka Ruby. Gdy [analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) interfejsu API REST jest zgodny z większość języków programowania, zestaw SDK udostępnia łatwy sposób zintegrować usługę ze swoimi aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-ruby-sdk-samples/blob/master/samples/text_analytics.rb).
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć analizowanie języka z zestawem SDK analiza tekstu for Ruby. Chociaż interfejs API REST [Analiza tekstu](//go.microsoft.com/fwlink/?LinkID=759711) jest zgodny z większością języków programowania, zestaw SDK zapewnia łatwy sposób integracji usługi z aplikacjami. Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-ruby-sdk-samples/blob/master/samples/text_analytics.rb).
 
 Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.microsoft.com/fwlink/?LinkID=759346), zawierającym dokumentację techniczną interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Ruby 2.5.5 lub nowszy](https://www.ruby-lang.org/)
-* Analiza tekstu [zestawu SDK dla języka Ruby](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
+* [2.5.5 Ruby lub nowszy](https://www.ruby-lang.org/)
+* [Zestaw SDK](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) analizy tekstu dla języka Ruby
  
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany podczas tworzenia konta. 
-
 <a name="RubyProject"></a>
 
-## <a name="create-a-ruby-project-and-install-the-sdk"></a>Utwórz projekt języka Ruby i zainstaluj zestaw SDK
+## <a name="create-a-ruby-project-and-install-the-sdk"></a>Utwórz projekt Ruby i Zainstaluj zestaw SDK
 
-1. Utwórz nowy projekt języka ruby i Dodaj nowy plik o nazwie `Gemfile`.
-2. Dodaj zestaw SDK analizy tekstu w projekcie przez dodanie poniższego kodu, aby `Gemfile`.
+1. Utwórz nowy projekt Ruby i Dodaj nowy plik o nazwie `Gemfile`.
+2. Dodaj analiza tekstu SDK do projektu, dodając Poniższy kod do `Gemfile`.
 
     ```ruby
     source 'https://rubygems.org'
@@ -49,11 +47,11 @@ Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analyti
 
 ## <a name="create-a-text-analytics-client"></a>Tworzenie klienta analizy tekstu
 
-1. Utwórz nowy plik o nazwie `TextAnalyticsExamples.rb` w ulubionym edytorze lub w środowisku IDE. Importowanie usługi Text Analytics SDK.
+1. Utwórz nowy plik o nazwie `TextAnalyticsExamples.rb` w ulubionym edytorze lub w środowisku IDE. Zaimportuj zestaw SDK analiza tekstu.
 
-2. Obiekt poświadczeń będzie używany przez klienta analizy tekstu. Utwórz ją za pomocą `CognitiveServicesCredentials.new()` i przekazując klucz subskrypcji.
+2. Obiekt poświadczeń zostanie użyty przez klienta analiza tekstu. Utwórz go przy `CognitiveServicesCredentials.new()` użyciu i przekazanie klucza subskrypcji.
 
-3. Tworzenie klienta z punktem końcowym usługi poprawna Analiza tekstu.
+3. Utwórz klienta z prawidłowym punktem końcowym analiza tekstu.
 
     ```ruby
     require 'azure_cognitiveservices_textanalytics'
@@ -76,11 +74,11 @@ Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analyti
 
 ## <a name="sentiment-analysis"></a>Analiza tonacji
 
-Za pomocą Text Analytics SDK lub interfejsu API, można wykonywać analizę tonacji na zestawie rekordów tekstowych. Poniższy przykład wyświetla wyniki tonacji dla kilku dokumentów.
+Za pomocą zestawu SDK analiza tekstu lub interfejsu API można wykonać analizę tonacji na zestawie rekordów tekstowych. Poniższy przykład wyświetla wyniki tonacji dla kilku dokumentów.
 
-1. Utwórz nową funkcję o nazwie `SentimentAnalysisExample()` używającą klienta analizy tekstu, które są utworzone powyżej jako parametr.
+1. Utwórz nową funkcję o nazwie `SentimentAnalysisExample()` , która powoduje, że klient analizy tekstu utworzony powyżej jako parametr.
 
-2. Definiowanie zestawu `MultiLanguageInput` obiekty do analizy. Dodaj język i tekst dla każdego obiektu. Identyfikator może być dowolna wartość.
+2. Zdefiniuj zestaw `MultiLanguageInput` obiektów do przeanalizowania. Dodaj język i tekst dla każdego obiektu. Identyfikator może być dowolną wartością.
 
     ```ruby
     def SentimentAnalysisExample(client)
@@ -106,9 +104,9 @@ Za pomocą Text Analytics SDK lub interfejsu API, można wykonywać analizę ton
       input_4.text = "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
     ```
 
-3. W ramach tej samej funkcji należy połączyć dokumenty w postaci listy. Dodaj go do `documents` pole `MultiLanguageBatchInput` obiektu. 
+3. W tej samej funkcji Połącz dokumenty z listą. Dodaj go do `documents` pola `MultiLanguageBatchInput` obiektu. 
 
-4. Wywołanie klienta `sentiment()` funkcją `MultiLanguageBatchInput` obiektu jako parametr do wysłania do dokumentów. Jeśli nie zostały zwrócone wszystkie wyniki, wydrukuj te instrukcje.
+4. Wywołaj `sentiment()` funkcję klienta `MultiLanguageBatchInput` z obiektem jako parametrem do wysłania dokumentów. Jeśli zostaną zwrócone jakieś wyniki, wydrukuj je.
     ```ruby
       input_documents =  MultiLanguageBatchInput.new
       input_documents.documents = [input_1, input_2, input_3, input_4]
@@ -132,7 +130,7 @@ Za pomocą Text Analytics SDK lub interfejsu API, można wykonywać analizę ton
     SentimentAnalysisExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Dane wyjściowe
+### <a name="output"></a>Output
 
 ```console
 ===== SENTIMENT ANALYSIS =====
@@ -146,11 +144,11 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Wykrywanie języka
 
-Usługi analizy tekstu można wykryć język dokument tekstowy w wielu języków i ustawień regionalnych. Poniższy przykład wyświetla kilka dokumentów zostały napisane w języku.
+Usługa analiza tekstu może wykryć język dokumentu tekstowego w wielu językach i ustawieniach regionalnych. Poniższy przykład wyświetla język, w którym zapisano kilka dokumentów.
 
-1. Utwórz nową funkcję o nazwie `DetectLanguageExample()` przyjmującej klienta analizy tekstu, które są utworzone powyżej jako parametr. 
+1. Utwórz nową funkcję o nazwie `DetectLanguageExample()` , która pobiera klienta analizy tekstu powyżej jako parametr. 
 
-2. Definiowanie zestawu `LanguageInput` obiekty do analizy. Dodaj język i tekst dla każdego obiektu. Identyfikator może być dowolna wartość.
+2. Zdefiniuj zestaw `LanguageInput` obiektów do przeanalizowania. Dodaj język i tekst dla każdego obiektu. Identyfikator może być dowolną wartością.
 
     ```ruby
     def DetectLanguageExample(client)
@@ -168,9 +166,9 @@ Usługi analizy tekstu można wykryć język dokument tekstowy w wielu języków
        language_input_3.text = '这是一个用中文写的文件'
     ```
 
-3. W ramach tej samej funkcji należy połączyć dokumenty w postaci listy. Dodaj go do `documents` pole `LanguageBatchInput` obiektu. 
+3. W tej samej funkcji Połącz dokumenty z listą. Dodaj go do `documents` pola `LanguageBatchInput` obiektu. 
 
-4. Wywołanie klienta `detect_language()` funkcją `LanguageBatchInput` obiektu jako parametr do wysłania do dokumentów. Jeśli nie zostały zwrócone wszystkie wyniki, wydrukuj te instrukcje.
+4. Wywołaj `detect_language()` funkcję klienta `LanguageBatchInput` z obiektem jako parametrem do wysłania dokumentów. Jeśli zostaną zwrócone jakieś wyniki, wydrukuj je.
     ```ruby
        input_documents = LanguageBatchInput.new
        input_documents.documents = [language_input_1, language_input_2, language_input_3]
@@ -191,13 +189,13 @@ Usługi analizy tekstu można wykryć język dokument tekstowy w wielu języków
      end
     ```
 
-5. Wywołanie funkcji `DetectLanguageExample`
+5. Wywoływanie funkcji`DetectLanguageExample`
 
     ```ruby
     DetectLanguageExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Dane wyjściowe
+### <a name="output"></a>Output
 
 ```console
 ===== LANGUAGE EXTRACTION ======
@@ -210,11 +208,11 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Rozpoznawanie jednostek
 
-Usługi analizy tekstu można odróżnić i Wyodrębnij różnymi jednostkami dokumenty tekstowe (osoby, miejsca i rzeczy). Poniższy przykład wyświetla jednostki w kilku dokumentów w przykładzie.
+Usługa analiza tekstu umożliwia odróżnienie i wyodrębnienie różnych jednostek (osób, miejsc i rzeczy) w dokumentach tekstowych. Poniższy przykład wyświetla jednostki Znalezione w kilku przykładowych dokumentach.
 
-1. Utwórz nową funkcję o nazwie `Recognize_Entities()` używającą klienta analizy tekstu, które są utworzone powyżej jako parametr.
+1. Utwórz nową funkcję o nazwie `Recognize_Entities()` , która powoduje, że klient analizy tekstu utworzony powyżej jako parametr.
 
-2. Definiowanie zestawu `MultiLanguageInput` obiekty do analizy. Dodaj język i tekst dla każdego obiektu. Identyfikator może być dowolna wartość.
+2. Zdefiniuj zestaw `MultiLanguageInput` obiektów do przeanalizowania. Dodaj język i tekst dla każdego obiektu. Identyfikator może być dowolną wartością.
 
     ```ruby
       def RecognizeEntitiesExample(client)
@@ -230,9 +228,9 @@ Usługi analizy tekstu można odróżnić i Wyodrębnij różnymi jednostkami do
         input_2.text = 'La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle.'
     ```
 
-3. W ramach tej samej funkcji należy połączyć dokumenty w postaci listy. Dodaj go do `documents` pole `MultiLanguageBatchInput` obiektu. 
+3. W tej samej funkcji Połącz dokumenty z listą. Dodaj go do `documents` pola `MultiLanguageBatchInput` obiektu. 
 
-4. Wywołanie klienta `entities()` funkcją `MultiLanguageBatchInput` obiektu jako parametr do wysłania do dokumentów. Jeśli nie zostały zwrócone wszystkie wyniki, wydrukuj te instrukcje.
+4. Wywołaj `entities()` funkcję klienta `MultiLanguageBatchInput` z obiektem jako parametrem do wysłania dokumentów. Jeśli zostaną zwrócone jakieś wyniki, wydrukuj je.
 
     ```ruby
         input_documents =  MultiLanguageBatchInput.new
@@ -260,12 +258,12 @@ Usługi analizy tekstu można odróżnić i Wyodrębnij różnymi jednostkami do
       end
     ```
 
-5. Wywołanie funkcji `RecognizeEntitiesExample`
+5. Wywoływanie funkcji`RecognizeEntitiesExample`
     ```ruby
     RecognizeEntitiesExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Dane wyjściowe
+### <a name="output"></a>Output
 
 ```console
 ===== ENTITY RECOGNITION =====
@@ -309,11 +307,11 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Wyodrębnianie kluczowych fraz
 
-Usługi analizy tekstu można wyodrębnić klucza wyrażenia w zdaniach. Poniższy przykład wyświetla obiekty w kilku dokumentów na przykład w wielu językach.
+Usługa analiza tekstu może wyodrębnić frazy kluczowe w zdaniach. Poniższy przykład wyświetla jednostki Znalezione w kilku przykładowych dokumentach w wielu językach.
 
-1. Utwórz nową funkcję o nazwie `KeyPhraseExtractionExample()` używającą klienta analizy tekstu, które są utworzone powyżej jako parametr.
+1. Utwórz nową funkcję o nazwie `KeyPhraseExtractionExample()` , która powoduje, że klient analizy tekstu utworzony powyżej jako parametr.
 
-2. Definiowanie zestawu `MultiLanguageInput` obiekty do analizy. Dodaj język i tekst dla każdego obiektu. Identyfikator może być dowolna wartość.
+2. Zdefiniuj zestaw `MultiLanguageInput` obiektów do przeanalizowania. Dodaj język i tekst dla każdego obiektu. Identyfikator może być dowolną wartością.
 
     ```ruby
     def KeyPhraseExtractionExample(client)
@@ -339,9 +337,9 @@ Usługi analizy tekstu można wyodrębnić klucza wyrażenia w zdaniach. Poniżs
       input_4.text = 'A mi me encanta el fútbol!'
       ```
 
-3. W ramach tej samej funkcji należy połączyć dokumenty w postaci listy. Dodaj go do `documents` pole `MultiLanguageBatchInput` obiektu. 
+3. W tej samej funkcji Połącz dokumenty z listą. Dodaj go do `documents` pola `MultiLanguageBatchInput` obiektu. 
 
-4. Wywołanie klienta `key_phrases()` funkcją `MultiLanguageBatchInput` obiektu jako parametr do wysłania do dokumentów. Jeśli nie zostały zwrócone wszystkie wyniki, wydrukuj te instrukcje.
+4. Wywołaj `key_phrases()` funkcję klienta `MultiLanguageBatchInput` z obiektem jako parametrem do wysłania dokumentów. Jeśli zostaną zwrócone jakieś wyniki, wydrukuj je.
 
     ```ruby
       input_documents =  MultiLanguageBatchInput.new
@@ -365,13 +363,13 @@ Usługi analizy tekstu można wyodrębnić klucza wyrażenia w zdaniach. Poniżs
     end
     ```
 
-5. Wywołanie funkcji `KeyPhraseExtractionExample`
+5. Wywoływanie funkcji`KeyPhraseExtractionExample`
 
     ```ruby
     KeyPhraseExtractionExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Dane wyjściowe
+### <a name="output"></a>Output
 
 ```console
 Document ID: 1

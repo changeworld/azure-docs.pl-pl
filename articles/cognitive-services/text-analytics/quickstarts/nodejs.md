@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: Wywoływanie interfejsu API analizy tekstu przy użyciu środowiska Node.js'
 titleSuffix: Azure Cognitive Services
-description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API analizy tekstu w usługach Azure Cognitive Services.
+description: Uzyskaj informacje i przykłady kodu, aby szybko rozpocząć korzystanie z interfejs API analizy tekstu na platformie Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 4c77477e31e7513cb806dda968a68fc1ac5030ed
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: eadac393a7224876e3cb494dd39116bd3b5b0eb7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694979"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697379"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Wywoływanie analizy tekstu usługi Cognitive Service przy użyciu środowiska Node.js  
 <a name="HOLTop"></a>
@@ -28,19 +28,17 @@ Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.micros
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas tworzenia konta.
-
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Wykrywanie języka
+## <a name="detect-language"></a>Wykryj język
 
 Interfejs API wykrywania języka wykrywa język dokumentu tekstowego przy użyciu [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Utwórz nowy projekt środowiska Node.JS w Twoim ulubionym środowisku IDE lub folder na pulpicie.
-2. Dodaj kod przedstawionych poniżej do nowego `.js` pliku.
-3. Zastąp `accessKey` wartością klucz subskrypcji z analizy tekstu zasobu na platformie Azure.
+1. Utwórz nowy projekt node. JS w ulubionym środowisku IDE lub folderze na pulpicie.
+2. Dodaj kod podany poniżej do nowego `.js` pliku.
+3. Zastąp `accessKey` wartość kluczem subskrypcji z zasobu analiza tekstu na platformie Azure.
 4. Zmień lokalizację w ustawieniu `uri` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
-5. Uruchom program z Twoim środowiskiem IDE lub wiersza polecenia, na przykład `npm start` lub `node detect.js`.
+5. Uruchom program z poziomu środowiska IDE lub wiersza polecenia, na przykład `npm start` lub `node detect.js`.
 
 ```javascript
 'use strict';
@@ -156,13 +154,13 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="analyze-sentiment"></a>Analiza tonacji
 
-Interfejs API analizy tonacji wykrywa tonację zestawu rekordów tekstowych przy użyciu [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Analiza tonacji, można dowiedzieć się, co klienci myślą o Twojej marki lub wybranego tematu, analizując nieprzetworzony tekst dla wskazówek dotyczących opinii dodatnia lub ujemna. W poniższym przykładzie przedstawiono wyniki dla dwa dokumenty, jeden w języku angielskim i drugi w języku hiszpańskim.
+Interfejs API analizy tonacji wykrywa tonację zestawu rekordów tekstowych przy użyciu [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Za pomocą analizy tonacji można dowiedzieć się, co klienci uważają za swoją markę lub temat, analizując nieprzetworzony tekst w celu uzyskania wskazówek dotyczących pozytywnych lub negatywnych tonacji. Poniższy przykład przedstawia wyniki dla dwóch dokumentów, jeden w języku angielskim i drugi w hiszpańskim.
 
-1. Utwórz nowy projekt środowiska Node.JS w Twoim ulubionym środowisku IDE lub folder na pulpicie.
-2. Dodaj kod przedstawionych poniżej do nowego `.js` pliku.
-3. Zastąp `accessKey` wartością klucz subskrypcji z analizy tekstu zasobu na platformie Azure.
+1. Utwórz nowy projekt node. JS w ulubionym środowisku IDE lub folderze na pulpicie.
+2. Dodaj kod podany poniżej do nowego `.js` pliku.
+3. Zastąp `accessKey` wartość kluczem subskrypcji z zasobu analiza tekstu na platformie Azure.
 4. Zmień lokalizację w ustawieniu `uri` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
-5. Uruchom program z Twoim środowiskiem IDE lub wiersza polecenia, na przykład `npm start` lub `node sentiment.js`.
+5. Uruchom program z poziomu środowiska IDE lub wiersza polecenia, na przykład `npm start` lub `node sentiment.js`.
 
 ```javascript
 'use strict';
@@ -229,7 +227,7 @@ get_sentiments (documents);
 
 **Odpowiedź analizy tonacji**
 
-Wynik jest mierzony jako dodatnie, jeśli jego są oceniane bliżej 1.0 i ujemne, jeśli są oceniane bliżej 0,0.
+Wynik jest mierzony jako dodatni, jeśli ocenia się bliżej 1,0 i wartość ujemna, jeśli jest to wynik zbliżony do 0,0.
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```json
@@ -250,15 +248,15 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
+## <a name="extract-key-phrases"></a>Wyodrębnij frazy kluczowe
 
-Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokumencie tekstowym przy użyciu [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Wyodrębnianie kluczowych fraz umożliwia szybko identyfikować jego główne punkty, dokumentu lub tekstu. W poniższym przykładzie wyodrębniono frazy kluczowe dla dokumentów w języku angielskim i hiszpańskim.
+Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokumencie tekstowym przy użyciu [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Wyodrębnianie kluczowych fraz służy do szybkiego identyfikowania głównych punktów dokumentu lub tekstu. W poniższym przykładzie wyodrębniono frazy kluczowe dla dokumentów w języku angielskim i hiszpańskim.
 
-1. Utwórz nowy projekt środowiska Node.JS w Twoim ulubionym środowisku IDE lub folder na pulpicie.
-2. Dodaj kod przedstawionych poniżej do nowego `.js` pliku.
-3. Zastąp `accessKey` wartością klucz subskrypcji z analizy tekstu zasobu na platformie Azure.
+1. Utwórz nowy projekt node. JS w ulubionym środowisku IDE lub folderze na pulpicie.
+2. Dodaj kod podany poniżej do nowego `.js` pliku.
+3. Zastąp `accessKey` wartość kluczem subskrypcji z zasobu analiza tekstu na platformie Azure.
 4. Zmień lokalizację w ustawieniu `uri` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
-5. Uruchom program z Twoim środowiskiem IDE lub wiersza polecenia, na przykład `npm start` lub `node key-phrases.js`.
+5. Uruchom program z poziomu środowiska IDE lub wiersza polecenia, na przykład `npm start` lub `node key-phrases.js`.
 
 ```javascript
 'use strict';
@@ -368,13 +366,13 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="identify-linked-entities"></a>Identyfikowanie połączonych jednostek
 
-Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Jednostki](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) wyodrębnić wyrazów w tekście, takie jak "United States", a następnie zapewniają typ i/lub Wikipedia link to wyrazów. Typ dla "United States" jest `location`, a łącze do Wikipedia `https://en.wikipedia.org/wiki/United_States`.  W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
+Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Jednostki](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) wyodrębniają wyrazy z tekstu, takie jak "Stany Zjednoczone", a następnie zawierają link do typu i/lub Wikipedia dla tych wyrazów. Typ dla "Stany Zjednoczone" to `location`, podczas gdy link do witryny Wikipedia ma `https://en.wikipedia.org/wiki/United_States`wartość.  W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
 
-1. Utwórz nowy projekt środowiska Node.JS w Twoim ulubionym środowisku IDE lub folder na pulpicie.
-2. Dodaj kod przedstawionych poniżej do nowego `.js` pliku.
-3. Zastąp `accessKey` wartością klucz subskrypcji z analizy tekstu zasobu na platformie Azure.
+1. Utwórz nowy projekt node. JS w ulubionym środowisku IDE lub folderze na pulpicie.
+2. Dodaj kod podany poniżej do nowego `.js` pliku.
+3. Zastąp `accessKey` wartość kluczem subskrypcji z zasobu analiza tekstu na platformie Azure.
 4. Zmień lokalizację w ustawieniu `uri` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
-5. Uruchom program z Twoim środowiskiem IDE lub wiersza polecenia, na przykład `npm start` lub `node entities.js`.
+5. Uruchom program z poziomu środowiska IDE lub wiersza polecenia, na przykład `npm start` lub `node entities.js`.
 
 ```javascript
 'use strict';
@@ -489,7 +487,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Analiza tekstu przy użyciu usługi Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

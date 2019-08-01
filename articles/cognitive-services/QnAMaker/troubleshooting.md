@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 07/31/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b0b9a5e0797a105d7fe61c95b28a6c5f462e7255
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 85c6ff59b5f73e88c82ee8b788bd9f35d18bc0ed
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414751"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697967"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Rozwiązywanie problemów dotyczących QnA Maker
 
@@ -24,7 +24,7 @@ Zanadzorowana lista najbardziej często zadawanych pytań dotyczących usługi Q
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>Korzystanie z pomocy bot w portalu QnA Maker
 
-QnA Maker udostępnia **Pomoc techniczną** bot w portalu QNA Maker. Pomoc bot jest dostępna na każdej stronie sieci Web. Bot używa QNA Maker, aby zapewnić odpowiedzi i dostarcza [ C# projekt kodu struktury bot](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot) do bot, dzięki czemu można szybko rozpocząć pracę z własnym bot odpowiedzi. 
+QnA Maker udostępnia **Pomoc techniczną** bot w portalu QNA Maker. Pomoc bot jest dostępna na każdej stronie sieci Web. Bot używa QNA Maker, aby zapewnić odpowiedzi i dostarcza [ C# projekt kodu struktury bot](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) do bot, dzięki czemu można szybko rozpocząć pracę z własnym bot odpowiedzi. 
 
 ![! [QnA Maker udostępnia * * help * * bot w portalu QnA Maker, aby Ci pomóc.] (./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
