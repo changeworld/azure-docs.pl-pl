@@ -1,7 +1,7 @@
 ---
-title: Samouczek Unreal projektowania Akustyka projektu
+title: Samouczek dotyczący projektowania Unreali projektu
 titlesuffix: Azure Cognitive Services
-description: W tym samouczku opisano przepływ pracy projektowania dla projektu Akustyka Unreal i Wwise.
+description: W tym samouczku opisano przepływ pracy projektowania pod kątem hałasu związanych z projektem w Unreal i Wwise.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,136 +10,137 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1692032b093cd6189cac3ea3f63c563d9accd8ed
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5061370f43947341bb05bc30fa596604bc27ce74
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477831"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706570"
 ---
-# <a name="project-acoustics-unrealwwise-design-tutorial"></a>Samouczek projektowania Unreal/Wwise Akustyka projektu
-W tym samouczku opisano konfigurację projektu i przepływu pracy dla projektu Akustyka Unreal i Wwise.
+# <a name="project-acoustics-unrealwwise-design-tutorial"></a>Samouczek projektowy Unreal/Wwise
+W tym samouczku opisano konfigurację projektu i przepływ pracy dla hałasu związanych z projektem w Unreal i Wwise.
 
-Wstępnie wymagane oprogramowanie:
-* Unreal projektu z wtyczek Wwise Akustyka projektu i Unreal
+Wymagania wstępne dotyczące oprogramowania:
+* Projekt Unreal z Wwiseami i Unreal wtyczki projektu
 
-Aby uzyskać Unreal projektu z projektu Akustyka, możesz wykonywać następujące czynności:
-* Postępuj zgodnie z [integracji Project Akustyka Unreal](unreal-integration.md) instrukcjami, aby dodać Akustyka projektu do projektu Unreal
-* Możesz też korzystać z [Akustyka projektu przykładowego projektu](unreal-quickstart.md).
+Aby uzyskać projekt Unreal z Akustycznością projektu, możesz:
+* Postępuj zgodnie z instrukcjami dotyczącymi [integracji Unreali projektu](unreal-integration.md) , aby dodać akustyczne projektu do projektu Unreal
+* Lub użyj przykładowego [projektu akustycznego projektu](unreal-quickstart.md).
 
-## <a name="setup-project-wide-wwise-properties"></a>Konfigurowanie właściwości Wwise całego projektu
-Wwise ma globalne przeszkody i krzywych zamknięcia, które wpływają na jak wtyczki projektu Akustyka dyski procesor DSP Wwise audio.
+## <a name="setup-project-wide-wwise-properties"></a>Konfigurowanie właściwości Wwise na poziomie projektu
+Wwise ma globalne zakłócić i zamknięcia krzywe, które wpływają na to, jak wtyczka akustyczna projektu napędy DSP audio Wwise.
 
-### <a name="design-wwise-occlusion-curves"></a>Projektowanie Wwise zamknięcia krzywych
-Gdy aktywny jest projekt Akustyka odpowie na woluminie zamknięcia filtr niskim (LPF) i krzywe wysokiej filtrem (HPF), możesz ustawić w Wwise. Firma Microsoft zaleca ustawienie liniowej z wartością dB-100 wartości zamknięcia 100 typu krzywej woluminu.
+### <a name="design-wwise-occlusion-curves"></a>Projektowanie krzywych Wwise zamknięcia
+Gdy akustyczny jest aktywny, reaguje na wolumin zamknięcia, filtr z niską passem (LPF) i krzywe High-Pass Filter (HPF) ustawione w Wwise. Zalecamy ustawienie typu krzywej głośności na liniowy z wartością-100 dB dla wartości zamknięcia 100.
 
-To ustawienie, jeśli Symulacja Akustyka projektu oblicza zamknięcia DB-18 go zostanie użyty jako wejście do poniżej krzywej X = 18 i odpowiednie Y wartość tłumienie stosowane. W celu zamknięcia połowa należy ustawić punkt końcowy-50 dB zamiast bazy danych-100 lub dB-200 exaggerate zamknięcia. Można dostosować i dostosowywać wszystkie krzywą, która działa najlepiej w grze.
+Jeśli to ustawienie ma wartość, jeśli symulacja akustyczna projektu obliczy zamknięcia z-18 dB, przejdziemy do poniższej krzywej w X = 18 i odpowiadającą jej wartością Y jest zastosowane tłumienie. Aby wykonać połowę zamknięcia, należy ustawić punkt końcowy na-50 dB, a nie 100 dB lub do-200 dB do exaggerate zamknięcia. Możesz dostosować i dostosować dowolną krzywą, która najlepiej sprawdza się w przypadku gry.
  
-![Zrzut ekranu Wwise zamknięcia krzywa edytora](media/wwise-occlusion-curve.png)
+![Zrzut ekranu przedstawiający Edytor krzywej Wwise zamknięcia](media/wwise-occlusion-curve.png)
 
-### <a name="disable-wwise-obstruction-curves"></a>Wyłącz Wwise przeszkoda krzywych
-Krzywe przeszkoda Wwise wpływa na poziom susz w izolacji, lecz Akustyka projektu używa projektu, formantów i symulacji do wymuszania współczynniki suchego /. Zaleca się wyłączenie przeszkoda krzywej woluminu. Aby zaprojektować wetness, formant dostosować Wetness opisanym w dalszej części.
+### <a name="disable-wwise-obstruction-curves"></a>Wyłącz krzywe przeszkód Wwise
+Krzywe przeszkód Wwise wpływają na suchy poziom izolacji, ale akustyczne w projekcie używa formantów i symulacji projektu, aby wymusić przełożenie mokre/suche. Zalecamy wyłączenie krzywej głośności przeszkód. Aby zaprojektować wetness, użyj kontrolki dopasowywania wetness opisanej w dalszej części.
  
-Jeśli używasz krzywych LPF/HPF przeszkoda do innych celów, upewnij się, że ustawiono je Y = 0 X = 0 (czyli jest brak LPF lub HPF po nie przeszkód).
+Jeśli używasz krzywych LPF/HPF do innych celów, upewnij się, że zostały ustawione na wartość Y = 0 w X = 0 (oznacza to, że nie ma żadnych LPF ani HPF, gdy nie ma przeszkód).
 
-![Zrzut ekranu Wwise przeszkoda krzywej edytora](media/wwise-obstruction-curve.png)
+![Zrzut ekranu przedstawiający Edytor krzywej Wwise przeszkody](media/wwise-obstruction-curve.png)
 
-### <a name="design-project-acoustics-mixer-parameters"></a>Projektowanie projektu Akustyka mixer parametrów
-Właściwości globalne pogłosu można kontrolować, przechodząc do karty wtyczka mixer magistrali Akustyka projektu. Kliknij dwukrotnie "Projektu Akustyka Mixer (niestandardowy)" Aby otworzyć panel ustawień wtyczki mixer.
+### <a name="design-project-acoustics-mixer-parameters"></a>Parametry miksera hałasu projektu projektu
+Właściwości globalne Reverb można kontrolować, odwiedzając kartę wtyczka miksera magistrali dźwiękowej. Kliknij dwukrotnie "mikser" w projekcie (niestandardowy) ", aby otworzyć panel Ustawienia wtyczki miksera.
 
-Można również zobaczyć, że wtyczka mixer ma jedną z opcji "Wykonaj Spatialization". Jeśli zostanie wykorzystany raczej projektu akustyczny spatialization wbudowanych, zaznacz pole wyboru "Spatialization wykonania" i wybrać HRTF lub sekcja Panoramowanie. Upewnij się wyłączyć wszelkie magistrale susz Aux, które zostały skonfigurowane, w przeciwnym razie otrzymasz bezpośrednią ścieżkę dwa razy. Użyj "Dostosuj Wetness" i "Współczynnik skali czasu pogłosu" sprawowanie kontroli globalnej na różnych pogłosu. Należy pamiętać, należy ponownie uruchomić Unreal, a następnie ponownie wygenerować soundbanks przed osiągnięcia play, aby wczytać mixer wtyczki config zmiany, takie jak pola wyboru "Spatialization wykonania".
+Możesz również sprawdzić, czy wtyczka miksera ma opcję "wykonaj Spatialization". Jeśli wolisz korzystać z wbudowanej spatialization akustycznej, zaznacz pole wyboru "wykonaj Spatialization" i wybierz jedną z HRTF lub panoramowania. Upewnij się, że wyłączono wszystkie skonfigurowane suche pomocnicze Busses, w przeciwnym razie Podwójna ścieżka zostanie posłuchana. Użyj wskaźnika "wetness Dopasuj" i "Reverb skali czasu", aby wykorzystać globalną kontrolę na potrzeby mieszania Reverb. Należy pamiętać, że należy ponownie uruchomić Unreal, a następnie wygenerować soundbanks przed naciśnięciem przycisku odtwarzania, aby pobrać zmiany konfiguracji wtyczki miksera, takie jak pole wyboru "wykonaj Spatialization".
 
-![Zrzut ekranu projektu Akustyka Wwise mixer wtyczki opcje](media/mixer-plugin-global-settings.png)
+![Zrzut ekranu opcji wtyczki Wwise miksera projektu](media/mixer-plugin-global-settings.png)
 
-## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>Ustaw Akustyka projektu projektu kontrolki w hierarchii Wwise mixer aktora
-Aby parametry sterujące poszczególnych mixer aktora kliknij dwukrotnie Mixer aktora, a następnie kliknij na karcie wtyczki Mixer. W tym miejscu będzie można zmienić żadnych parametrów na poziomie poszczególnych dźwięku. Te wartości, połącz się z tymi ustawiona po stronie unreal Engine (opisanych poniżej). Na przykład jeśli projektu Akustyka Unreal wtyczka ustawia Outdoorness dopasowania obiektu do 0,5 i ustawia Wwise jego -0.25, Wynikowe dopasowanie Outdoorness dotyczą, które dźwięku jest 0,25.
+## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>Ustaw kontrolki projektowe akustyczne projektu w hierarchii Wwise aktora
+Aby kontrolować parametry pojedynczego miksera aktora, kliknij dwukrotnie na mikser aktora, a następnie kliknij kartę wtyczka miksera. W tym miejscu będziesz mieć możliwość zmiany parametrów na poziomie dźwięku. Te wartości łączą się z zestawami z Unreal (opisane poniżej). Na przykład, jeśli wtyczka Unreale w projekcie ustawia korektę na zewnątrz dla obiektu na 0,5, a Wwise ustawia go na-0,25, wynikiem dostosowania na zewnątrz zastosowanego do tego dźwięku jest 0,25.
 
-![Zrzut ekranu przedstawiający ustawienia mixer dźwięku w hierarchii mixer aktora Wwise dla](media/per-sound-mixer-settings.png)
+![Zrzut ekranu przedstawiający ustawienia miksera dźwięku w Wwiseej hierarchii miksera](media/per-sound-mixer-settings.png)
 
-### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Upewnij się, Service bus aux ma susz wysyłania i magistrali danych wyjściowych ma mokre wysyłania
-Należy pamiętać, że instalacji wymagane mixer aktora wymiany zwykle susz i mokrą routingu w Wwise. Generuje sygnału pogłosu na magistrali danych wyjściowych mixer aktora (zestaw projektu Akustyka magistrali) i susz sygnału wzdłuż magistrali aux zdefiniowanych przez użytkownika. Marszruty jest wymagana ze względu na funkcje wtyczki mixer Wwise interfejsu API, które wtyczka Wwise Akustyka projektu.
+### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Upewnij się, że magistrala AUX ma suchy wysyłanie, a magistrala wyjściowa ma do nich wysyłanie.
+Należy pamiętać, że wymagana konfiguracja miksera aktora polega na rozmieszczeniu zwykłych i mokrych routingu w Wwise. Generuje sygnał Reverb na magistrali wyjściowej miksera aktora (ustawiany na magistrali akustycznej projektu) i wysuszy sygnał wzdłuż magistrali AUX zdefiniowanej przez użytkownika. Ten Routing jest wymagany ze względu na funkcje interfejsu API wtyczki Wwise, które jest używane przez wtyczkę projektu.
 
-![Zrzut ekranu Wwise edytora przedstawiający wytyczne dotyczące projektowania głosu Akustyka projektu](media/voice-design-guidelines.png)
+![Zrzut ekranu edytora Wwise pokazujący wskazówki dotyczące projektowania głosu dla hałasu związanych z projektem](media/voice-design-guidelines.png)
  
-### <a name="set-up-distance-attenuation-curves"></a>Konfigurowanie odległość tłumienie krzywych
-Upewnij się, wszystkie krzywej tłumienie posługują się mieszarki aktora, za pomocą projektu Akustyka mają zdefiniowane przez użytkownika aux, Wyślij ustawiona na "danych wyjściowych magistrali woluminu". Wwise robi to domyślnie dla nowo utworzonej tłumienia krzywych. Jeśli przenosisz istniejący projekt, należy sprawdzić ustawienia krzywej.
+### <a name="set-up-distance-attenuation-curves"></a>Skonfiguruj krzywe tłumienia odległości
+Upewnij się, że wszystkie krzywe tłumienia używane przez miksery aktora przy użyciu funkcji akustycznych projektu mają zdefiniowany przez użytkownika atrybut AUX "wyjściowy magistrala". Wwise domyślnie dla nowo utworzonych krzywych tłumienia. W przypadku migrowania istniejącego projektu Sprawdź ustawienia krzywej.
 
-Domyślnie symulacji Akustyka projekt ma promień 45 liczniki wokół lokalizacji odtwarzacza. Ogólnie zaleca się ustawienie z krzywej tłumienie dB-200 wokół tej odległości. Odległość ta nie jest ograniczenie twardych. Dla niektórych brzmi, jak broni, możesz zechcieć większych usługi radius. W takich przypadkach zastrzeżenie: to, czy tylko geometrii w ciągu 45 m lokalizacji odtwarzacza będzie uczestniczył. Jeśli źródła dźwięku znajduje się poza pokój i natychmiast 100 mln odtwarzacz jest w pomieszczeniu, zostaną prawidłowo zamknięte. Jeśli źródłem jest w pomieszczeniu, a gracz jest poza i natychmiast 100 mln, nie będą prawidłowo zamknięte.
+Domyślnie symulacja akustyczna projektu ma promień 45 metrów wokół lokalizacji odtwarzacza. Zwykle zalecamy ustawienie krzywej tłumienia na 200 dB wokół tej odległości. Ta odległość nie jest twardym ograniczeniem. W przypadku niektórych dźwięków, takich jak broń, może być potrzebny większy promień. W takich przypadkach należy zapamiętać, że tylko geometria w obrębie 45 m lokalizacji odtwarzacza będzie uczestniczyć. Jeśli gracz znajduje się w pokoju, a źródło dźwięku znajduje się poza miejscem i 100 mln, zostanie prawidłowo zamkniętee. Jeśli źródło znajduje się w pokoju, a gracz jest poza i 100 m, nie zostanie prawidłowo zamknięte.
 
-![Zrzut ekranu Wwise tłumienie krzywych](media/atten-curve.png)
+![Zrzut ekranu przedstawiający krzywe tłumienia Wwise](media/atten-curve.png)
 
-### <a name="post-mixer-equalization"></a>Opublikuj wyrównywania Mixer ###
- Jeden element, który chcesz zrobić, to dodanie korektor mixer post. Można traktować magistrali Akustyka projektu jako magistrala typowe pogłosu (w domyślnym trybie pogłosu) i umieść filtru na nim celu wyrównywania. Możesz zobaczyć próbka w projekcie Akustyka Wwise przykładowym projekcie.
+### <a name="post-mixer-equalization"></a>Wyrównywanie po mikserze ###
+ Jednym z nich może być potrzeba dodania korektora po mikserze. Magistralę akustyczną projektu można traktować jako typową magistralę Reverb (w domyślnym trybie reverb) i umieścić w niej filtr w celu przeprowadzenia korektora. Możesz zobaczyć próbkę tego przykładu w projekcie Wwise przykładowy projekt.
 
-![Zrzut ekranu Wwise po mixer EQ](media/wwise-post-mixer-eq.png)
+![Zrzut ekranu przedstawiający Wwise po zakończeniu miksera](media/wwise-post-mixer-eq.png)
 
-Na przykład filtr wysoki — dostęp próbny może pomóc obsługi niskich z nagrań NFC, które pogłosu boomy, określenie. Możesz również uzyskać większą kontrolę po tworzenie, dostosowując EQ za pośrednictwem RTPCs, dzięki czemu możesz zmienić kolor pogłosu podczas gry.
+Na przykład filtr o wysokiej przebiegu może pomóc w obsłudze niskich pól, które zwracają wysięgnik, nierealistyczny Reverb. Możesz również uzyskać więcej kontroli po tworzenie przez dostosowanie instrukcji EQ do RTPCs, co pozwala na zmianę koloru Reverb w czasie gry.
 
-## <a name="set-up-scene-wide-project-acoustics-properties"></a>Ustawianie właściwości projektu Akustyka całej sceny
+## <a name="set-up-scene-wide-project-acoustics-properties"></a>Konfigurowanie właściwości akustycznych dla całej sceny
 
-Aktor miejsca Akustyka udostępnia wiele formantów, które modyfikują zachowanie systemu i są przydatne podczas debugowania.
+Aktor obszaru akustycznego uwidacznia wiele kontrolek, które modyfikują zachowanie systemu i są przydatne w debugowaniu.
 
-![Zrzut ekranu przedstawiający Unreal Akustyka formanty](media/acoustics-space-controls.png)
+![Zrzut ekranu kontrolek obszaru Unreal akustycznych](media/acoustics-space-controls.png)
 
-* **Dane Akustyka:** To pole musi być przypisany do zasobu w ramach Akustyka z katalogu zawartości/Akustyka. Wtyczka Akustyka projektu spowoduje automatyczne dodanie katalogu zawartości/Akustyka spakowanych katalogi projektu.
-* **Rozmiar fragmentu:** Zakresy obszaru wokół odbiornik, który chcesz Akustyka dane załadowane do pamięci RAM. Tak długo, jak długo odbiornik natychmiast sondy wokół odtwarzacz są ładowane w, wyniki są takie same jak ładowanie dane akustyczne dla wszystkich sondy. Większe Kafelki Użyj więcej pamięci RAM, ale Zmniejsz We/Wy dysku
-* **Stream automatycznie:** Po włączeniu automatycznie ładuje w nowych kafelków odbiornik osiągnie krawędzi obszaru załadowane. Po wyłączeniu musisz załadować nowych kafelków ręcznie za pomocą kodu lub plany
-* **Skalowanie pamięci podręcznej:** steruje rozmiarem pamięci podręcznej, używany do przesyłania zapytań akustyczna. Mniejsze cache używa mniejszą ilość pamięci RAM, ale może zwiększyć użycie procesora CPU dla każdego zapytania.
-* **Poziom hałasu podczas włączone** Debugowanie kontrolki umożliwiające szybkie A / B, przełączając symulacji Akustyka. Ten formant jest ignorowany w wysyłce konfiguracje. Kontrolka jest przydatny do znajdowania, jeśli konkretnego błędu audio pochodzi z obliczenia Akustyka lub innym problemem w w projekcie Wwise.
-* **Zaktualizuj odległości:** Użyj tej opcji, jeśli chcesz użycie informacji o wstępnie ramach Akustyka odległość zapytań. Te zapytania są podobne do rzutowania ray, ale są one wstępnie obliczonych więc warto poświęcić dużo mniej procesora CPU. Przykład użycia jest odrębny odbić powierzchni najbliższy do odbiornika. W pełni wykorzystać to, należy za pomocą kodu lub plany odległości zapytania.
-* **Rysowanie statystyki:** Podczas gdy w UE `stat Acoustics` może zapewnić Ci informacje o Procesorze, na tym ekranie stanu będzie widoczna aktualnie załadowanych plików ACE, użycie pamięci RAM oraz inne informacje o stanie w górnym lewym rogu ekranu.
-* **Rysowanie Voxels:** Zamknij, aby nakładki voxels odbiornika przedstawiający siatki voxel używane podczas interpolacji czasu wykonywania. Nadajnik znajduje się wewnątrz voxel środowiska uruchomieniowego, zakończy się niepowodzeniem zapytań akustyczna.
-* **Rysowanie sondy:** Pokaż sondy to sceny. Będą one różne kolory w zależności od stanu obciążenia.
-* **Rysowanie odległości:** Jeśli odległości aktualizacji jest włączona, spowoduje to wyświetlenie polem powierzchni najbliższego połączenia z odbiornikiem w wykonywanie kwantyzowanych kierunkach odbiornika.
+* **Dane akustyczne:** Do tego pola należy przypisać element rozszerzania akustyczny z katalogu content/akustyczny. Wtyczka akustyczna projektu automatycznie dodaje katalog Content/akustyczny do spakowanych katalogów projektu.
+* **Rozmiar kafelka:** Zakres regionu wokół odbiornika, który chce, aby dane akustyczne zostały załadowane do pamięci RAM. Tak długo, jak sondy odbiornika natychmiast wokół odtwarzacza są ładowane, wyniki są takie same jak ładowanie danych akustycznych dla wszystkich sond. Większe kafelki używają większej ilości pamięci RAM, ale zmniejsz liczbę operacji we/wy dysku
+* **Strumień autostream:** Gdy ta funkcja jest włączona, program automatycznie ładuje nowe kafelki, gdy odbiornik osiągnie krawędź załadowanego regionu. Po wyłączeniu należy ręcznie załadować nowe kafelki za pośrednictwem kodu lub planów
+* **Skala pamięci podręcznej:** określa rozmiar pamięci podręcznej używanej na potrzeby zapytań akustycznych. Mniejsza pamięć podręczna zużywa mniej pamięci RAM, ale może zwiększyć użycie procesora dla każdego zapytania.
+* **Włączone akustyczne:** Kontrolka debugowania umożliwiająca szybkie włączenie/B przełączania symulacji akustycznej. Ten formant jest ignorowany w konfiguracjach wysyłki. Formant jest przydatny do znajdowania, czy konkretna usterka audio pochodzi z obliczeń akustycznych lub innego problemu w projekcie Wwise.
+* **Odległość aktualizacji:** Użyj tej opcji, jeśli chcesz użyć informacji o wykorzystaniu rozszerzania na potrzeby zapytań dotyczących odległości. Te zapytania są podobne do rzutowania ray, ale zostały wstępnie obliczone, aby zająć dużo mniej CPU. Przykładowe użycie dotyczy odniesień dyskretnych od najbliższej powierzchni do odbiornika. Aby w pełni wykorzystać to rozwiązanie, należy użyć kodu lub planów do wykonywania zapytań na odległość.
+* **Rysuj statystyki:** Mimo że program `stat Acoustics` UE może udostępnić informacje o procesorze CPU, ten stan wyświetlania będzie zawierać aktualnie załadowany plik ACE, użycie pamięci RAM oraz inne informacje o stanie w lewym górnym rogu ekranu.
+* **Voxels remisu:** Nałóż voxels blisko odbiornika, który pokazuje siatkę Voxel używaną podczas interpolacji środowiska uruchomieniowego. Jeśli emitowanie znajduje się wewnątrz Voxel środowiska uruchomieniowego, spowoduje to niepowodzenie zapytań akustycznych.
+* **Sondy rysowania:** Pokaż wszystkie sondy dla tej sceny. Będą one różne kolory w zależności od ich stanu ładowania.
+* **Odległość rysowania:** Jeśli jest włączona funkcja odległość aktualizacji, spowoduje to wyświetlenie pola na najbliższej powierzchni odbiornika w Quantized.
 
-## <a name="actor-specific-acoustics-design-controls"></a>Formanty projektowania Akustyka specyficzne dla aktora
-Te kontrolki projektu są ograniczone do poszczególnych składników audio w Unreal.
+## <a name="actor-specific-acoustics-design-controls"></a>Kontrolki projektowania charakterystyczne dla aktora
+Te kontrolki projektowe należą do zakresu pojedynczego składnika audio w Unreal.
 
-![Zrzut ekranu przedstawiający formantów Unreal składnika Audio](media/audio-component-controls.png)
+![Zrzut ekranu kontrolek składnika audio Unreal](media/audio-component-controls.png)
 
-* **Mnożnik zamknięcia.:** Określa, czy efekt zamknięcia. Wartości > 1 zwiększysz zamknięcia. Wartości < 1 zminimalizuje go.
-* **Dostosowanie wetness:** Dodatkowe pogłosu bazy danych
-* **Decay mnożnik czasu:** Formanty RT60 multiplicatively, oparte na danych wyjściowych symulacji Akustyka
-* **Dostosowanie outdoorness:** Określa, jak na zewnątrz jest reverberation. Wartości bliższa 0 są bardziej pomieszczeniu, bliżej 1 są bardziej na zewnątrz. To dopasowanie jest dodatku, więc ustawieniem dla niego wartość -1 będzie wymuszać pomieszczeniu, ustawieniem dla niego + 1 będzie wymuszać na zewnątrz.
-* **Przekazywanie bazy danych:** Renderowanie dodatkowe dźwięku za pomocą tablicy z tym głośności w połączeniu z tłumienie linii wzroku na podstawie odległości.
-* **Współczynnik mokrą Warp odległość:** Dostosowuje właściwości reverberation na "source", tak jakby bliżej/dalsze natychmiast, bez wywierania wpływu na bezpośrednią ścieżkę.
-* **Odtwarzać, w menu Start:** Przełącz, aby określić, czy dźwięk powinna być automatycznie odtwarzana w menu start sceny. Domyślnie włączone.
-* **Pokaż akustyczny parametry:** Wyświetla informacje debugowania bezpośrednio na składnik w grze. (tylko w przypadku konfiguracji bez wysyłania)
+* **Mnożnik zamknięcia:** Kontroluje efekt zamknięcia. Wartości > 1 będą wzmocnić zamknięcia. Wartości < 1 zminimalizują ją.
+* **Wetness:** Dodatkowa baza danych Reverb
+* **Mnożnik czasu zanikania:** Kontroluje RT60 multiplicatively na podstawie danych wyjściowych symulacji akustycznej
+* **Korekta na zewnątrz:** Kontroluje, jak działa reverberation. Wartości bliżej 0 to więcej niedrzwi, bliżej 1 jest więcej na zewnątrz. Ta korekta to dodatek, więc ustawienie go na wartość-1 spowoduje wymuszenie niedrzwi, ustawienie dla niego opcji + 1 spowoduje wymuszanie na zewnątrz.
+* **Baza danych transmisji:** Renderowanie dodatkowego dźwięku za pośrednictwem ściany z tą głośnością w połączeniu z tłumieniem odległości opartego na przewodniku.
+* **Wypaczenie odległości w stanie mokrym:** Dostosowuje charakterystyki reverberation w źródle tak, jakby były bliżej/dalej, bez wpływu na ścieżkę bezpośrednią.
+* **Odtwórz przy uruchomieniu:** Przełącz, aby określić, czy dźwięk ma być odtwarzany automatycznie na początku sceny. Domyślnie włączone.
+* **Pokaż parametry akustyczne:** Wyświetlaj informacje debugowania bezpośrednio na początku składnika w grze. (tylko w przypadku konfiguracji niezwiązanych z wysyłką)
 
 ## <a name="blueprint-functionality"></a>Funkcje planu
-Aktora Akustyka miejsca jest dostępna za pośrednictwem planu, dostarczanie funkcji, takich jak ładowanie mapy lub modyfikowanie ustawień za pośrednictwem poziomu skryptów. Firma Microsoft oferuje dwa przykłady w tym miejscu.
+Aktor obszaru akustycznego jest dostępny za pośrednictwem strategii, zapewniającej funkcje, takie jak ładowanie mapy lub modyfikowanie ustawień za pośrednictwem obsługi skryptów na poziomie. W tym miejscu oferujemy dwa przykłady.
 
-### <a name="add-finer-grained-control-over-streaming-load"></a>Dodaj bardziej szczegółowej kontroli nad przesyłania strumieniowego obciążenia
-Do zarządzania dane akustyczne streaming sobie zamiast przesyłania strumieniowego automatycznie na podstawie player położenia, można użyć funkcji planu życie obciążenia kafelka:
+### <a name="add-finer-grained-control-over-streaming-load"></a>Dodawanie precyzyjnej kontroli nad obciążeniem przesyłania strumieniowego
+Aby samodzielnie zarządzać transmisjami danych akustycznych zamiast przesyłania strumieniowego automatycznie na podstawie pozycji odtwarzacza, można użyć funkcji Wymuś obciążenie kafelka:
 
-![Zrzut ekranu z planu przesyłania strumieniowego opcje Unreal](media/blueprint-streaming.png)
+![Zrzut ekranu przedstawiający opcje przesyłania strumieniowego planów w Unreal](media/blueprint-streaming.png)
 
-* **Element docelowy:** Aktor AcousticsSpace
-* **Pozycja Center:** Załadowano Centrum regionu, który potrzebuje danych
-* **Zwolnij sondy poza kafelka:** Jeśli zaznaczone, wszystkie sondy w nowym regionie nie zostanie zwolniona z pamięci RAM. Jeśli nie jest zaznaczone, nowy region jest ładowany do pamięci podczas opuszczania istniejących sond również załadowanych do pamięci
-* **Blok w momencie zakończenia:** Sprawia, że Kafelek obciążenia Operacja synchroniczna
+* **Obiektów** Aktor AcousticsSpace
+* **Pozycja środka:** Środek regionu, który wymaga załadowania danych
+* **Rozładowywania sondy poza kafelkiem:** W przypadku zaznaczenia tej opcji wszystkie sondy, które nie są w nowym regionie, zostaną zwolnione z pamięci RAM. W przypadku usunięcia zaznaczenia nowy region jest ładowany do pamięci, pozostawiając istniejące sondy ładowane również do pamięci
+* **Blokuj po zakończeniu:** Sprawia, że kafelek ładuje operację synchroniczną
 
-Rozmiar fragmentu musi już ustawiony, przed wywołaniem życie obciążenia kafelka. Na przykład można wykonywać, podobny do poniższego, aby załadować plik ACE, ustawić rozmiar kafelka i przesyłanie strumieniowe w regionie:
+Rozmiar kafelka musi być już ustawiony przed wywołaniem wymuszenia obciążenia kafelka. Można na przykład wykonać czynności podobne do tego w celu załadowania pliku ACE, ustawienia rozmiaru kafelka i strumienia w regionie:
 
-![Opcje zrzutu ekranu przesyłania strumieniowego instalacji w Unreal](media/streaming-setup.png)
+![Zrzut ekranu przedstawiający opcje konfiguracji przesyłania strumieniowego w Unreal](media/streaming-setup.png)
 
-Funkcja planu danych Akustyka ładowania, które są używane w tym przykładzie ma następujące parametry:
+Funkcja planu danych obciążenia akustycznego użyta w tym przykładzie ma następujące parametry:
 
-* **Element docelowy:** AcousticsSpace aktora.
-* **Tworzenie nowego:** Zasób danych Akustyka do załadowania. Pozostawienie pustego/ustawienie go na wartość null spowoduje zwolnienie bieżącego tworzenie bez ładowania nowej.
+* **Obiektów** Aktor AcousticsSpace.
+* **Nowy tworzenie:** Zasób danych akustycznych do załadowania. Pozostawienie tego pola pustego/ustawienie wartości null spowoduje zwolnienie bieżącego tworzenieu bez ładowania nowego.
 
-### <a name="optionally-query-for-surface-proximity"></a>Opcjonalnie zapytanie dla powierzchni odległości między elementami
-Jeśli chcesz zobaczyć, jak blisko powierzchnie znajdują się w określonym kierunku wokół odbiornik, możesz użyć funkcji zapytania odległości. Ta funkcja może być przydatne, zachęcanie kierunkowe odbić opóźnione lub inną logikę gier prowadzone przez powierzchni odległości między elementami. Zapytanie jest mniej kosztowne niż rzutowania ray, ponieważ wyniki są pobierane z tabeli odnośników Akustyka.
+### <a name="optionally-query-for-surface-proximity"></a>Opcjonalnie można wykonać zapytanie o bliskość powierzchni
+Jeśli chcesz zobaczyć, jak zamknięte powierzchnie znajdują się w określonym kierunku wokół odbiornika, możesz użyć funkcji odległość zapytania. Ta funkcja może być przydatna w przypadku kierowania kierunku opóźnionych lub dla innych logiki gier, które są sterowane bliskością powierzchni. Zapytanie jest tańsze niż rzutowanie promieniowe, ponieważ wyniki są pobierane z tabeli odnośników.
 
-![Zrzut ekranu przedstawiający przykładowe zapytanie odległość planu](media/distance-query.png)
+![Zrzut ekranu przykładowego zapytania o odległość planu](media/distance-query.png)
 
-* **Element docelowy:** Aktor AcousticsSpace
-* **Kierunek wygląd:** Kierunek do wykonywania zapytań, a ich tematyka na odbiornik
-* **Odległość:** Jeśli zapytanie odległość do najbliższej powierzchni zakończy się powodzeniem.
-* **Wartość zwracana:** Wartość logiczna — wartość true, jeśli kwerenda zakończyła się pomyślnie, w przeciwnym razie wartość false
+* **Obiektów** Aktor AcousticsSpace
+* **Kierunek wyglądu:** Kierunek zapytania w wyśrodkowany przez odbiornik
+* **Miast** Jeśli zapytanie powiedzie się, odległość do najbliższej powierzchni
+* **Wartość zwracana:** Wartość logiczna — prawda, jeśli kwerenda zakończyła się pomyślnie; w przeciwnym razie wartość false
 
-## <a name="next-steps"></a>Kolejne kroki
-* Poznaj pojęcia dotyczące [Projektowanie procesu](design-process.md)
-* [Utwórz konto platformy Azure](create-azure-account.md) wprowadzić własne sceny
+## <a name="next-steps"></a>Następne kroki
+* Zapoznaj się z pojęciami związanymi z [procesem projektowania](design-process.md)
+* [Utwórz konto platformy Azure](create-azure-account.md) , aby tworzenie własną scenę
 
 

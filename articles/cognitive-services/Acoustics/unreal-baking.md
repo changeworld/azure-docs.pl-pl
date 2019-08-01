@@ -1,7 +1,7 @@
 ---
-title: Samouczek Unreal tworzenie Akustyka projektu
+title: Samouczek dotyczący akustycznych projektów Unreal tworzenie
 titlesuffix: Azure Cognitive Services
-description: W tym dokumencie opisano proces przesyłania tworzenie Akustyka przy użyciu rozszerzenia edytora unreal Engine.
+description: W tym dokumencie opisano proces przesyłania tworzenie akustycznych przy użyciu rozszerzenia edytora Unreal.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,211 +10,212 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: 6b49a6b9e235414cd63eacdbad523bbda8646963
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 47946570db305ff3d54dfed9ea6f698e5deb7b72
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304313"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704785"
 ---
-# <a name="project-acoustics-unreal-bake-tutorial"></a>Samouczek Unreal tworzenie Akustyka projektu
-W tym dokumencie opisano proces przesyłania tworzenie Akustyka przy użyciu rozszerzenia edytora unreal Engine.
+# <a name="project-acoustics-unreal-bake-tutorial"></a>Samouczek dotyczący akustycznych projektów Unreal tworzenie
+W tym dokumencie opisano proces przesyłania tworzenie akustycznych przy użyciu rozszerzenia edytora Unreal.
 
-Istnieje pięć kroków do tworzenie czynności:
+Istnieje pięć kroków do wykonania tworzenie:
 
-1. Tworzenie lub tag usługi siatki nawigacji player
-2. Tag Akustyka geometrii
-3. Przypisywanie właściwości akustyczny materiałów do geometrii
-4. Umieszczanie sondy (wersja zapoznawcza)
+1. Utwórz lub Oznacz siatkę nawigacji odtwarzacza
+2. Geometria znaczników akustycznych
+3. Przypisywanie właściwości materiałów akustycznych do geometrii
+4. Podgląd rozmieszczenia sondy
 5. Tworzenie
 
-## <a name="open-the-project-acoustics-editor-mode"></a>Otwórz tryb edytora Akustyka projektu
+## <a name="open-the-project-acoustics-editor-mode"></a>Otwórz tryb edytora akustycznego projektu
 
-Zaimportować pakiet wtyczki Akustyka projektu do projektu. Aby uzyskać pomoc dotyczącą tego, zobacz [Unreal integracji](unreal-integration.md) tematu. Po zintegrowaniu wtyczki Otwórz Akustyka interfejsu użytkownika, klikając ikonę Nowy tryb Akustyka.
+Zaimportuj pakiet wtyczki dla hałasu projektu do projektu. Aby uzyskać pomoc dotyczącą tego, zobacz temat integracja z usługą [Unreal](unreal-integration.md) . Po zintegrowaniu wtyczki Otwórz interfejs użytkownika, klikając ikonę Nowy tryb akustyczny.
 
-![Zrzut ekranu edytora Unreal Akustyka tryb](media/acoustics-mode.png)
+![Zrzut ekranu opcji Tryb akustyczny edytora Unreal](media/acoustics-mode.png)
 
-## <a name="tag-actors-for-acoustics"></a>Aktorzy tagu dla Akustyka
+## <a name="tag-actors-for-acoustics"></a>Otaguj aktorów pod kątem hałasu
 
-Karta obiektów jest pierwsza karta, która pobiera wyświetlana po otwarciu trybu Akustyka. Ta karta służy do podmiotów tagu w poziomie dodaje **AcousticsGeometry** lub **AcousticsNavigation** tagi do uczestników.
+Karta obiekty to pierwsza karta, która jest wyświetlana po otwarciu trybu akustycznego. Ta karta służy do oznaczania aktorów na poziomie, który dodaje do aktorów Tagi **AcousticsGeometry** lub **AcousticsNavigation** .
 
-Wybierz jeden lub więcej obiektów w tworzenie konspektu świata, lub użyj **zbiorczo wybrane** sekcji mogą ułatwić wybór wszystkie obiekty w określonej kategorii. Gdy obiekty są wybrane, użyć **znakowanie** sekcji, aby zastosować żądanego tagu do wybranych obiektów.
+Wybierz co najmniej jeden obiekt w świecie światowym lub Skorzystaj z sekcji **wybór zbiorczy** , aby wybrać wszystkie obiekty określonej kategorii. Po wybraniu obiektów Użyj sekcji **tagowania** , aby zastosować żądany tag do wybranych obiektów.
 
-Jeśli coś nie ma **AcousticsGeometry** ani **AcousticsNavigation** tagu, zostaną zignorowane w symulacji. Tylko statyczne oczek, nav siatki i krajobrazów są obsługiwane. Jeśli oznaczysz czymkolwiek zostaną zignorowane.
+Jeśli coś nie ma znacznika **AcousticsGeometry** ani **AcousticsNavigation** , zostanie zignorowane w symulacji. Obsługiwane są tylko statyczne siatki, siatki nawigacji i Landscapes. Jeśli oznaczesz coś innego, zostanie on zignorowany.
 
-### <a name="for-reference-the-objects-tab-parts"></a>Aby uzyskać informacje dotyczące: Części karty obiektów
+### <a name="for-reference-the-objects-tab-parts"></a>Aby uzyskać odwołanie: Części karty obiekty
 
-![Zrzut ekranu Akustyka obiektów karcie Unreal](media/unreal-objects-tab-details.png)
+![Zrzut ekranu karty akustycznych obiektów w Unreal](media/unreal-objects-tab-details.png)
 
-1. Przyciski wyboru karty (**obiektów** wybraną kartą). Użyj tych przycisków, aby poznać procedurę różne działania tworzenie Akustyka od góry do dołu.
-2. Krótki opis co należy zrobić, korzystając z tej strony.
-3. Dostępne selektory aktorów w poziomie.
-4. Klikając **wybierz** wybierze wszystkich obiektów na poziomie spełniające co najmniej jeden z typów zaznaczone aktora.
-5. Klikając **Usuń zaznaczenie wszystkich** wyczyści bieżące zaznaczenie. To jest taka sama jak naciskając klawisz ESC.
-6. Użyj tych przycisków radiowych, aby wybrać czy zastosować tag Geometry ani nawigacji do wybranych uczestników.
-7. Klikając **Tag** doda wybrany tag do wszystkich podmiotów aktualnie wybrany.
-8. Klikając **Usuń oznakowanie** spowoduje usunięcie wybrany tag z wszystkich podmiotów aktualnie wybrany.
-9. Klikając **wybierz oznakowane** Usuń bieżące zaznaczenie, a wybierz wszystkich uczestników z aktualnie wybrany tag.
-10. Te statystyki pokazują, ile aktorów są oznaczane za pomocą poszczególnych typów znaczników.
+1. Przyciski wyboru karty (wybrana karta**obiekty** ). Użyj tych przycisków, aby zapoznać się z różnymi krokami wykonywania operacji akustycznych tworzenie, od góry do dołu.
+2. Krótki opis tego, co należy zrobić, korzystając z tej strony.
+3. Dostępne selektory dla aktorów na poziomie.
+4. Kliknięcie pozycji **Wybierz** spowoduje zaznaczenie wszystkich obiektów na poziomie, które pasują do co najmniej jednego z wybranych typów aktorów.
+5. Kliknięcie przycisku Usuń **Zaznacz wszystko** spowoduje wyczyszczenie bieżącego zaznaczenia. Jest to takie samo, jak naciśnięcie klawisza Escape.
+6. Użyj tych przycisków radiowych, aby określić, czy do wybranych aktorów ma być stosowany tag geometryczny, czy też nawigacyjny.
+7. Kliknięcie **tagu** spowoduje dodanie wybranego tagu do wszystkich aktualnie wybranych aktorów.
+8. Kliknięcie **UNTAG** spowoduje usunięcie wybranego tagu z wszystkich aktualnie wybranych aktorów.
+9. Kliknięcie pozycji **Wybierz oznaczone** spowoduje wyczyszczenie bieżącego zaznaczenia i zaznaczenie wszystkich aktorów z aktualnie wybranym tagiem.
+10. Te statystyki pokazują, ile aktorów jest oznakowanych przez każdy typ znacznika.
 
-### <a name="tag-acoustics-occlusion-and-reflection-geometry"></a>Tag Akustyka geometrii zamknięcia i odbicie
+### <a name="tag-acoustics-occlusion-and-reflection-geometry"></a>Oznacz akustyczne zamknięcia i geometrii odbicia
 
-Otwórz kartę obiektów okna Akustyka. Oznacz wszystkie obiekty jako Akustyka geometrii, jakby powinien occlude, odzwierciedlają lub ochrony przed rozproszonymi dźwięk. Geometria Akustyka może zawierać np podstaw, ściany, dachy, systemu windows i szkła okna, kilimy i meble dużych. Dla tych obiektów, można użyć dowolnego dowolnego poziomu złożoności. Ponieważ sceny voxelized przed symulacji, bardzo szczegółowe siatki, takie jak drzewa z wielu małych liści, nie jest droższy wprowadzić niż uproszczone obiekty.
+Otwórz kartę obiekty w oknie akustyczny. Oznacz wszystkie obiekty jako geometryczne, jeśli powinny occlude, odzwierciedlić lub wchłonąć dźwięk. Geometria akustyczna może obejmować takie rzeczy, jak Ziemia, ściany, dachy, szyby okna & Windows, Rugs i duże meble. Można użyć dowolnego poziomu złożoności dla tych obiektów. Ponieważ scena jest voxelized przed symulacją, wysoce szczegółowe siatki, takie jak drzewa z wieloma małymi liśćmi, nie są droższe do tworzenie niż uproszczone obiekty.
 
-Nie dołączaj rzeczy, które nie powinien wpływać na Akustyka, takich jak siatek kolizji niewidoczne.
+Nie należy uwzględniać elementów, które nie powinny mieć wpływu na akustyczne, takich jak siatki kolizji niewidocznych.
 
-Przekształcanie obiektu w czasie obliczania sondy (za pośrednictwem karty sondy poniżej) zostanie rozwiązany w wynikach tworzenie. Przenoszenie wszystkich zaznaczonych obiektów w scenie będzie wymagać ponownego wykonywania obliczeń sondowania i rebaking sceny.
+Przekształcanie obiektu w czasie obliczania sondy (za pomocą karty sondy poniżej) jest ustalone w wynikach tworzenie. Przeniesienie dowolnego oznaczonego obiektu w scenie wymaga ponownego wykonania obliczeń sondy i odprowadzenia sceny.
 
-### <a name="create-or-tag-a-navigation-mesh"></a>Tworzenie lub tagu siatki nawigacji
+### <a name="create-or-tag-a-navigation-mesh"></a>Utwórz lub Oznacz siatkę nawigacji
 
-Siatka nawigacji służy umieścić punkty sondy symulacji. Można użyć w Unreal [Nav siatki granice woluminu](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html), lub można określić własne nawigacyjne siatki. Musisz otagować co najmniej jeden obiekt jako **nawigacji Akustyka**. Jeśli używasz firmy Unreal nawigacyjne siatki, upewnij się, że masz skompilowane na początku.
+Siatka nawigacji służy do umieszczania punktów sondy na potrzeby symulacji. Możesz użyć [woluminu związanego z siatką](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html)nawigacyjną Unreal lub określić własną siatkę nawigacji. Należy oznaczyć co najmniej jeden obiekt jako **nawigację akustyczną**. Jeśli używasz siatki nawigacji w programie Unreal, upewnij się, że został on skompilowany jako pierwszy.
 
-### <a name="acoustics-volumes"></a>Woluminy Akustyka ###
+### <a name="acoustics-volumes"></a>Woluminy akustyczne ###
 
-Brak dalszych, zaawansowane dostosowania można wprowadzić na obszary, nawigacji za pomocą **woluminy Akustyka**. **Woluminy Akustyka** są aktorami można dodać do sceny, które pozwalają na wybór obszary, które obejmują i Ignoruj z siatki nawigacji. Aktor udostępnia właściwości, które mogą być przełączane między "Include" i "Wyklucz". Woluminy "Include" Upewnij się, tylko obszary siatki nawigacji w nich znajdują, są traktowane jako i woluminy "Wyklucz" Oznacz tych obszarów, które mają być ignorowane. Woluminy "Wyklucz" są one zawsze stosowane po woluminy "Include". Upewnij się, że tag **woluminy Akustyka** jako **nawigacji Akustyka** zwykle proces na karcie obiektów. Aktorzy są ***nie*** automatycznie oznakowane.
+Dodatkowo zaawansowane dostosowywanie można wykonać w obszarach nawigacyjnych, używając **woluminów akustycznych**. **Woluminy akustyczne** są aktorami, które można dodać do swojej sceny, dzięki czemu można wybrać obszary do dołączenia i zignorowania z siatki nawigacji. Aktor ujawnia właściwość, którą można przełączać między "include" i "exclude". Woluminy "include" zapewniają, że tylko obszary siatki nawigacyjnej wewnątrz nich są brane pod uwagę, a woluminy "exclude" oznaczają te obszary, które mają zostać pominięte. Woluminy "exclude" są zawsze stosowane po woluminach "include". Upewnij się, że znaczniki **głośności** są oznaczane jako **akustyczne** przez zwykły proces na karcie obiekty. Te uczestników ***nie*** są otagowane automatycznie.
 
-![Zrzut ekranu Akustyka woluminu właściwości Unreal](media/unreal-acoustics-volume-properties.png)
+![Zrzut ekranu przedstawiający właściwości woluminu akustycznego w Unreal](media/unreal-acoustics-volume-properties.png)
 
-Woluminy "Wyklucz" są głównie przeznaczone do szczegółową kontrolę na lokalizację nie sondy obostrzenie użycia zasobów.
+Woluminy "exclude" są głównie przeznaczone do zapewnienia precyzyjnej kontroli nad tym, gdzie nie należy umieszczać sond do zwiększania użycia zasobów.
 
-![Zrzut ekranu przedstawiający wykluczania Akustyka woluminu w Unreal](media/unreal-acoustics-volume-exclude.png)
+![Zrzut ekranu przedstawiający wykluczenie woluminu akustycznego w Unreal](media/unreal-acoustics-volume-exclude.png)
 
-"Include" woluminy są przydatne w przypadku tworzenia ręczne części scenę, takich jak chcesz podzielić sceny w wielu strefach akustyczny. Na przykład w przypadku dużych sceny kwadrat wielu kilometrów i mieć dwóch obszarach zainteresowań, aby wprowadzić Akustyka na. Można narysować dwa woluminy "Include" big Data w scenie i tworzenia plików ACE dla każdego z nich pojedynczo. Następnie w grze, można użyć wyzwalacza woluminy łączyć z wywołaniami planu można załadować odpowiedniego pliku wpisu kontroli dostępu, gdy gracz zbliża się do każdego kafelka.
+Woluminy "include" są przydatne do tworzenia ręcznych sekcji sceny, takich jak Jeśli chcesz podzielić swoją scenę na wiele stref akustycznych. Na przykład jeśli masz dużą scenę, w kwadracie wiele kilometrów i masz dwa obszary zainteresowań, na których chcesz tworzenieć wartości akustyczne. Można rysować dwa duże woluminy "include" w scenie i generować pliki ACE dla każdej z nich naraz. Następnie w grze można użyć woluminów wyzwalanych połączonych z wywołaniami strategii w celu załadowania odpowiedniego pliku ACE, gdy gracz zbliża się do każdego kafelka.
 
-**Woluminy Akustyka** tylko ograniczenia nawigacji i ***nie*** geometrii. Każdy sondy wewnątrz "Include" **woluminu Akustyka** nadal będzie pobierać wszystkie niezbędne geometrii poza woluminu podczas przeprowadzania symulacji wave. W związku z tym nie powinien być żadnych przerw w zamknięcia lub innych Akustyka wynikające z odtwarzacza wykraczania poza granice z jednej sekcji do innego.
+**Woluminy akustyczne** ograniczają jedynie nawigację, a ***nie*** geometrię. Każda sonda w woluminie " dołączania" ma nadal pociągnąć za sobą wszystkie niezbędne geometrie poza woluminem podczas wykonywania symulacji Wave. W związku z tym nie powinno być żadnych ciągłości w zamknięcia ani inne akustyczne, które wynikają z przekroczenia przez odtwarzacz z jednej sekcji do innej.
 
-## <a name="select-acoustic-materials"></a>Wybierz materiały akustycznych
+## <a name="select-acoustic-materials"></a>Wybierz materiały akustyczne
 
-Gdy obiekty są oznaczone, kliknij przycisk **materiałów** przycisk, aby przejść do karty materiałów. Ta karta będzie służyć do określania właściwości materiału każdego materiału na poziomie. Zanim wszystkie podmioty są oznaczone, będzie ona pusta.
+Po oznakowaniu obiektów kliknij przycisk **materiały** , aby przejść do karty materiały. Ta karta zostanie użyta do określenia właściwości materiału dla każdego materiału na poziomie. Zanim wszystkie aktory zostaną otagowane, będą puste.
 
-Akustyczny materiałów kontroli ilości energii dźwięku odzwierciedlone powrót po awarii z każdej powierzchni. Domyślny materiał akustyczny ma absorpcji, podobnie jak konkretny. Projekt Akustyka sugeruje materiałów, na podstawie nazwy materiału w scenie.
+Materiały akustyczne kontrolują ilość energii dźwiękowej odzwierciedloną z tyłu z każdej powierzchni. Domyślny materiał akustyczny ma absorpcję podobną do konkretnych. Akustyczne projektu sugeruje materiały na podstawie nazwy materiału sceny.
 
-Czas reverberation danego materiału w pomieszczeniu odwrotnie jest powiązana z jego współczynnik, materiałami większość posiada absorpcji wartości z zakresu od 0,01 do 0,20. Materiały z współczynniki absorpcji powyżej tego zakresu są bardzo pochłaniający. Na przykład dźwięki pokoju zbyt reverberant, zmiana akustyczny materiał ściany, piętro lub limitu na coś absorptivity wyższy. Akustyczny przydziału materiału ma zastosowanie do wszystkich podmiotów, korzystających z tego materiału sceny.
+Czas reverberation danego materiału w pokoju jest odwrotnie związany ze współczynnikiem absorpcji, z większością materiałów mających wartości absorpcji z zakresu od 0,01 do 0,20. Materiały z współczynnikiem absorpcji powyżej tego zakresu są bardzo pochłaniane. Na przykład, Jeśli pozostało zbyt reverberant, Zmień materiał akustyczny ścian, podłogi lub sufitu na coś o wyższej absorptivity. Przypisanie materiału akustycznego ma zastosowanie do wszystkich aktorów korzystających z tego materiału sceny.
 
-![Wykres przedstawiający korelacja ujemna reverberation czasu współczynnik](media/reverb-time-graph.png)
+![Wykres przedstawiający ujemną korelację czasu reverberation z współczynnikiem absorpcji](media/reverb-time-graph.png)
 
-### <a name="for-reference-parts-of-the-materials-tab"></a>Aby uzyskać informacje dotyczące: Elementy na karcie materiały
+### <a name="for-reference-parts-of-the-materials-tab"></a>Aby uzyskać odwołanie: Części karty materiały
 
-![Zrzut ekranu Akustyka obiektów karcie Unreal](media/unreal-materials-tab-details.png)
+![Zrzut ekranu karty akustycznych obiektów w Unreal](media/unreal-materials-tab-details.png)
 
-1. **Materiałów** kartę przycisku używane do tej strony.
-2. Krótki opis co należy zrobić, korzystając z tej strony.
-3. Listę materiałów w poziomie z uczestnikami oznaczone jako **AcousticsGeometry**. Klikając tutaj materiał zaznaczyć wszystkie obiekty w scenie, używanego przez tego materiału.
-4. Zawiera materiały akustyczny powierzonych materiału w scenie. Kliknij listę rozwijaną, aby ponownie przypisać materiał sceny do innego materiału akustyczny.
-5. Pokazuje akustyczny współczynnik materiał wybraną w poprzednim kolumnę. Wartość zero oznacza, że dokładnie odzwierciedlają (nie absorpcji) podczas wartość 1 oznacza, że doskonale pochłaniającym (bez odbicia). Zmiana tej wartości spowoduje zaktualizowanie Akustyka materiał (krok #4) **niestandardowe**.
+1. Przycisk karta **materiały** służący do wypełniania tej strony.
+2. Krótki opis tego, co należy zrobić, korzystając z tej strony.
+3. Lista materiałów użytych na poziomie, pobranych z aktorów oznaczonych jako **AcousticsGeometry**. Kliknięcie materiału spowoduje wybranie wszystkich obiektów w scenie, które używają tego materiału.
+4. Pokazuje materiał akustyczny, do którego przypisano materiał sceny. Kliknij listę rozwijaną, aby ponownie przypisać materiał sceny do innego materiału akustycznego.
+5. Pokazuje współczynnik absorpcji akustycznej materiału zaznaczonego w poprzedniej kolumnie. Wartość zerowa oznacza idealnie odbijającą (bez absorpcji), natomiast wartość 1 oznacza doskonale absorptive (bez odbicia). Zmiana tej wartości spowoduje zaktualizowanie materiału akustycznego (krok #4) do **niestandardowego**.
 
-Po wprowadzeniu zmian do materiałów w do sceny, musisz przełączyć kart we wtyczce Akustyka projektu, aby wyświetlić te zmiany wpłynęły na **materiałów** kartę.
+Jeśli wprowadzisz zmiany w materiałach w scenie, musisz przełączyć karty w wtyczki akustycznej projektu, aby zobaczyć te zmiany odzwierciedlone na karcie **materiały** .
 
-## <a name="calculate-and-review-listener-probe-locations"></a>Obliczanie i przejrzyj lokalizacji funkcji badania odbiornika
+## <a name="calculate-and-review-listener-probe-locations"></a>Obliczanie i przeglądanie lokalizacji sondy odbiornika
 
-Po przypisaniu materiałów, przełącz się do **sondy** kartę.
+Po przypisaniu materiałów przejdź do karty **sondy** .
 
-### <a name="for-reference-parts-of-the-probes-tab"></a>Aby uzyskać informacje dotyczące: Elementy na karcie sondy
+### <a name="for-reference-parts-of-the-probes-tab"></a>Aby uzyskać odwołanie: Części karty sondy
 
-![Zrzut ekranu sondy Akustyka karcie Unreal](media/unreal-probes-tab-details.png)
+![Zrzut ekranu karty sondy akustyczne w Unreal](media/unreal-probes-tab-details.png)
 
-1. **Sondy** przycisk karta umożliwia wyświetlenie na tej stronie
-2. Krótki opis co należy zrobić, korzystając z tej strony
-3. Umożliwia wybieranie rozpoznawania symulacji zgrubnym lub dobrym rozwiązaniem. Duże jest szybsze, ale ma pewne wady i zalety. Zobacz [tworzenie rozwiązania](bake-resolution.md) poniżej szczegółowe informacje.
-4. Wybierz lokalizację, w których można umieścić pliki danych Akustyka za pomocą tego pola. Kliknij przycisk "...", aby użyć selektora folderów. Aby uzyskać więcej informacji na temat plików danych, zobacz [pliki danych](#Data-Files) poniżej.
-5. Pliki danych dla tego sceny będzie miała przy użyciu prefiksu podane w tym miejscu. Wartość domyślna to "_AcousticsData [nazwa poziomu]".
-6. Kliknij przycisk **Calculate** znajdujący się voxelize sceny i obliczyć lokalizacji punktu sondowania. Odbywa się lokalnie na urządzeniu i należy wykonać przed sposób tworzenie. Po sondy zostały obliczone, kontrolki powyżej zostanie wyłączona i kliknięcie tego przycisku spowoduje zmianę powiedzieć **wyczyść**. Kliknij przycisk **wyczyść** przycisk, aby wymazać obliczeń i włączyć formanty, tak, aby ponownie obliczyć przy użyciu nowych ustawień.
+1. Przycisk karta sondy służący do wypełniania tej strony
+2. Krótki opis czynności, które należy wykonać przy użyciu tej strony
+3. Użyj tej opcji, aby wybrać duże lub cienkie rozwiązanie symulacji. Duże jest szybsze, ale ma pewne kompromisy. Aby uzyskać szczegółowe informacje, zobacz [rozwiązanie tworzenie](bake-resolution.md) .
+4. Wybierz lokalizację, w której mają być umieszczone pliki danych akustycznych przy użyciu tego pola. Kliknij przycisk z "..." Aby użyć selektora folderów. Aby uzyskać więcej informacji na temat plików danych, zobacz [pliki danych](#Data-Files) poniżej.
+5. Pliki danych dla tej sceny będą nazwane przy użyciu prefiksu podanego w tym miejscu. Wartość domyślna to "[nazwa poziomu] _AcousticsData".
+6. Kliknij przycisk **Oblicz** , aby voxelize scenę i obliczyć lokalizacje punktów sondowania. Ta czynność jest wykonywana lokalnie na maszynie i musi zostać wykonana przed wykonaniem tworzenie. Po obliczeniu sond, powyższe kontrolki zostaną wyłączone i ten przycisk zmieni się na " **Wyczyść**". Kliknij przycisk **Wyczyść** , aby wymazać obliczenia i włączyć kontrolki, aby można było ponownie obliczyć przy użyciu nowych ustawień.
 
-Sondy muszą znajdować się za pomocą zautomatyzowanego procesu w **sondy** kartę.
-
-
-### <a name="what-the-calculate-button-calculates"></a>Oblicza przycisku "Oblicz"
-
-**Calculate** przycisk ma wszystkie dane zostały podane w do tej pory (geometrii, nawigacja, materiałów i ustawienie zgrubnym/szczegółowe) i przechodzi przez kilka kroków:
-
-1. On przyjmuje geometrii z siatek sceny i oblicza voxel woluminu. Voxel wolumin jest 3-wymiarowej, która obejmuje całą sceny, składa się z małych trzeciego stopnia "voxels". Rozmiar voxels jest określana przez częstotliwość symulacji, która została ustawiona przez **rozpoznawania symulacji** ustawienie. Każdy voxel jest oznaczony jako opcję "Otwórz udziału użytkownika" lub zawierających geometrii sceny. Jeśli voxel zawiera geometrii voxel zostanie oznaczony za pomocą współczynnik przypisanych do tej geometrii materiałów.
-2. Następnie używa danych nawigacji do obliczania pod względem akustycznym interesujące lokalizacji, gdzie gracz. Próbuje znaleźć zestaw rozsądnie małe rozmiary z tych lokalizacji, który zawiera mniejszych obszarów, takich jak drzwi i korytarzach, a następnie do pomieszczenia, aby otworzyć miejsca do magazynowania. Dla małych scen zazwyczaj jest to mniej niż 100 lokalizacji podczas dużych sceny może mieć maksymalnie tysiąc.
-3. Dla każdej lokalizacji końcowej odbiornik, który oblicza określa liczbę parametrów, takich jak jak "otwarte" to miejsce, rozmiar miejsca, w którym się itp.
-4. Wyniki te obliczenia są przechowywane w plikach w miejscu określonym przez użytkownika (zobacz [pliki danych](#Data-Files) poniżej)
-
-W zależności od rozmiaru sceny i szybkość maszyny tych obliczeń może potrwać kilka minut.
-
-Po zakończeniu tych obliczeń możesz wyświetlić podgląd danych voxel i lokalizacji punktu sondowania, aby mieć pewność, że tworzenie prześle Ci dobre wyniki. Elementy, takie jak siatki zły nawigacji lub geometrii Brak dodatkowych zazwyczaj będzie szybko widoczne w wersji zapoznawczej, więc można ją poprawić.
+Sondy muszą być umieszczone w zautomatyzowanym procesie podanym na karcie sondy.
 
 
-## <a name="debug-display"></a>Debugowanie wyświetlania
+### <a name="what-the-calculate-button-calculates"></a>Co oblicza przycisk "Oblicz"
 
-Po zakończeniu obliczania sondowania nowych aktora pojawi się w świecie Tworzenie konspektu, o nazwie **AcousticsDebugRenderer**. Sprawdzanie **renderowania sondy** i **renderowania Voxels** pola wyboru spowoduje wyświetlanie debugowania w edytorze okienka ekranu.
+Przycisk **Oblicz** pobiera wszystkie przekazane do tej pory dane (Geometria, nawigacja, materiały i ustawienie bardzo duże/precyzyjne) i przechodzi przez kilka kroków:
 
-![Zrzut ekranu przedstawiający renderowania debugowania Akustyka aktora w edytorze Unreal](media/acoustics-debug-renderer.png)
+1. Staje się geometrią z siatki sceny i oblicza wolumin Voxel. Wolumin Voxel to trójwymiarowy wolumin, który obejmuje całą scenę i składa się z małych sześciennych "voxels". Rozmiar voxels jest określany przez częstotliwość symulacji ustawioną przez ustawienie **rozdzielczości symulacji** . Każdy Voxel jest oznaczony jako "Open Air" lub zawierający geometrię sceny. Jeśli Voxel zawiera geometrię, Voxel jest oznakowany współczynnik absorpcji materiału przypisanego do tej geometrii.
+2. Następnie używa danych nawigacyjnych do obliczenia interesujących się lokalizacji, w których gracz może przejść. Próbuje znaleźć dostatecznie mały zbiór tych lokalizacji, który obejmuje mniejsze obszary, takie jak Doorways i korytarzach, a następnie do pokojów, do otwartych miejsc. W przypadku małych scen zwykle jest to mniej niż 100 lokalizacji, podczas gdy duże sceny mogą mieć do 1000.
+3. Dla każdej końcowej lokalizacji odbiornika, która jest obliczana, określa kilka parametrów, takich jak "Otwórz" jest miejscem, rozmiarem miejsca, w którym znajduje się, itp.
+4. Wyniki tych obliczeń są przechowywane w plikach w określonej lokalizacji (zobacz [pliki danych](#Data-Files) poniżej)
 
-Jeśli nie widzisz żadnych voxels lub sond nałożony na Twoim poziomie, upewnij się, że renderowania w czasie rzeczywistym jest włączona w okienku ekranu.
+W zależności od rozmiaru sceny i szybkości działania tych obliczeń może potrwać kilka minut.
 
-![Zrzut ekranu przedstawiający opcję renderowania w czasie rzeczywistym w Unreal](media/unreal-real-time-rendering.png)
+Po ukończeniu tych obliczeń można wyświetlić podgląd danych Voxel i lokalizacji punktów sondowania, aby zapewnić, że tworzenie da dobre wyniki. Elementy, takie jak zła siatka nawigacji lub brakująca lub dodatkowa geometria, są zwykle szybko widoczne w wersji zapoznawczej, aby można było ją poprawić.
+
+
+## <a name="debug-display"></a>Debugowanie ekranu
+
+Po zakończeniu obliczania sondy zostanie wyświetlony nowy aktor w świecie światowym o nazwie **AcousticsDebugRenderer**. Zaznaczenie pól wyboru **sondy renderowania** i **Renderuj Voxels** spowoduje włączenie wyświetlania debugowania wewnątrz okienka ekranu edytora.
+
+![Zrzut ekranu przedstawiający aktora Debuguj debugowanie debugowania w edytorze Unreal](media/acoustics-debug-renderer.png)
+
+Jeśli nie widzisz żadnych voxels lub sond na poziomie, upewnij się, że w okienku ekranu jest włączona funkcja renderowania w czasie rzeczywistym.
+
+![Zrzut ekranu opcji renderowania w czasie rzeczywistym w Unreal](media/unreal-real-time-rendering.png)
 
 ### <a name="voxels"></a>Voxels
 
-Voxels są wyświetlane w oknie sceny jako zielony modułów wokół geometrii uczestniczących w programie. Voxels, które zawierają tylko air nie są wyświetlane. Występuje duże zielone pole wokół sceny całego, który oznacza wolumin voxel pełną, który będzie używany w symulacji.
-Poruszanie się sceny i sprawdzić, czy geometrii pod względem akustycznym occluding voxels. Należy także sprawdzić, czy inne niż Akustyka obiekty, takie jak kolizja siatek opublikowano voxelized. Aparat sceny musi można w ciągu około 5 liczniki obiektu dla voxels do wyświetlenia.
+Voxels są wyświetlane w oknie sceny jako zielone moduły wokół uczestniczącej geometrii. Voxels, które zawierają tylko powietrze, nie są wyświetlane. Istnieje duże zielony prostokąt wokół całej sceny, który oznacza kompletny wolumin Voxel, który będzie używany w symulacji.
+Poruszaj się wokół sceny i sprawdzaj, czy geometria akustyczna occluding ma voxels. Sprawdź również, czy obiekty nieakustyczne, takie jak siatki kolizji, nie zostały voxelized. Aparat sceny musi znajdować się w przedziale około 5 metrów obiektu dla voxels do wyświetlenia.
 
-Możesz porównać voxels utworzone przy użyciu rozpoznawania poprawnie vs zgrubnym rozwiązania, pojawi się zgrubnym voxels dwukrotnie są tak duże.
+W przypadku porównania voxels utworzonego za pomocą grubej rozdzielczości i rozdzielczości, zobaczysz, że Gruby voxels są dwa razy większe.
 
-![Zrzut ekranu Akustyka voxels w wersji zapoznawczej w edytorze Unreal](media/unreal-voxel-preview.png)
+![Zrzut ekranu przedstawiający voxelsy w wersji zapoznawczej w edytorze Unreal](media/unreal-voxel-preview.png)
 
-### <a name="probe-points"></a>Punkty sondy
+### <a name="probe-points"></a>Punkty sond
 
-Sonda punkty oznaczają to samo z lokalizacjami możliwe player (odbiornika). Gdy pieczenie, symulacja oblicza Akustyka wszystkie lokalizacje źródłowe możliwe nawiązywanie połączenia z każdego punktu sondowania. W czasie wykonywania lokalizacja odbiornika są interpolowane między pobliskimi punktami sondowania.
+Punkty sondy są równoznaczne z możliwymi lokalizacjami odtwarzacza (odbiornika). W przypadku pieczenia symulacja oblicza wartość akustyczną łączącą wszystkie możliwe lokalizacje źródłowe z każdym punktem sondowania. W czasie wykonywania lokalizacja odbiornika jest interpolowana między pobliżu punktów sondy.
 
-Należy sprawdzić punkty sondy istnieje wszędzie tam, gdzie gracz oczekuje się przechodzić w scenie. Sondy punkty są umieszczane w siatce nawigacji przez aparat Akustyka projektu i nie można przenieść lub edytowane, więc upewnij się, obejmuje siatki nawigacji wszystkie lokalizacje możliwe odtwarzacza, sprawdzając punktów sondowania.
+Ważne jest, aby sprawdzić, czy punkty sond istnieją wszędzie tam, gdzie gracz oczekuje na podróż w scenie. Punkty sondy są umieszczane w siatce nawigacji przez aparat akustyczny projektu i nie mogą być przenoszone ani edytowane, dlatego należy upewnić się, że siatka nawigacji obejmuje wszystkie możliwe lokalizacje odtwarzacza przez sprawdzenie punktów sondowania.
 
-![Zrzut ekranu Akustyka sondy w Unreal w wersji zapoznawczej](media/unreal-probes-preview.png)
+![Zrzut ekranu przedstawiający sondy akustyczne w wersji zapoznawczej w Unreal](media/unreal-probes-preview.png)
 
-Zobacz [tworzenie rozwiązania](bake-resolution.md) więcej informacji na temat zdalnego vs poprawnie rozdzielczości.
+Zobacz [rozwiązanie tworzenie](bake-resolution.md) , aby uzyskać więcej informacji na temat nieograniczonej rozdzielczości programu vs.
 
-## <a name="bake-your-level-using-azure-batch"></a>Tworzenie poziomu przy użyciu usługi Azure Batch
+## <a name="bake-your-level-using-azure-batch"></a>Tworzenie swój poziom przy użyciu Azure Batch
 
-Można wprowadzić sceny z klastra obliczeniowego w chmurze przy użyciu usługi Azure Batch. Wtyczki projektu Akustyka Unreal łączy się bezpośrednio z usługi Azure Batch do utworzenia wystąpienia, zarządzanie i zatrzymywania klastra usługi Azure Batch dla każdego tworzenie. Na karcie Tworzenie wprowadź swoje poświadczenia platformy Azure, wybierz typ komputera klastra i rozmiar, a następnie kliknij przycisk Tworzenie.
+Swoją scenę można tworzenie z klastrem obliczeniowym w chmurze przy użyciu usługi Azure Batch. Wtyczka Unreal akustyczna projektu łączy się bezpośrednio z Azure Batch, aby utworzyć wystąpienie klastra Azure Batch, zarządzać nim i wyłączać go dla każdego tworzenieu. Na karcie Tworzenie wprowadź swoje poświadczenia platformy Azure, wybierz typ i rozmiar maszyny klastra, a następnie kliknij przycisk Tworzenie.
 
-### <a name="for-reference-parts-of-the-bake-tab"></a>Aby uzyskać informacje dotyczące: Elementy na karcie Tworzenie
+### <a name="for-reference-parts-of-the-bake-tab"></a>Aby uzyskać odwołanie: Części karty Tworzenie
 
-![Zrzut ekranu tworzenie Akustyka karcie Unreal](media/unreal-bake-tab-details.png)
+![Zrzut ekranu karty Tworzenie akustyczne w Unreal](media/unreal-bake-tab-details.png)
 
-1. Tworzenie karty przycisku używane do tej strony.
-2. Krótki opis, co można zrobić na tej stronie.
-3. Pola, aby wprowadzić swoje poświadczenia platformy Azure, po utworzeniu konta platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Azure Batch](create-azure-account.md).
-4. Uruchamianie portalu Azure, aby zarządzać subskrypcjami, monitorowania użycia i wyświetlania informacji dotyczących rozliczeń itd. 
-5. Usługa Azure batch compute typ węzła na potrzeby obliczeń. Typ węzła musi być obsługiwany według lokalizacji centrum danych platformy Azure. Jeśli nie masz pewności, pozostaw **Standard_F8s_v2**.
-6. Liczba węzłów na potrzeby tego obliczenia. Liczba, wprowadź w tym miejscu ma wpływ na czas wymagany do ukończenia tworzenie i jest ograniczone przez przydziału rdzeni usługi Azure Batch. Alokacja domyślna tylko umożliwia węzłów dwóch 8 rdzeni lub jednego 16 rdzeni węzła, ale można rozszerzyć. Aby uzyskać więcej informacji na temat ograniczeń alokacji core, zobacz [Tworzenie konta usługi Azure Batch](create-azure-account.md).
-7. Zaznacz to pole wyboru, aby skonfigurować pulę obliczeniowych do użycia [węzły o niskim priorytecie](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Węzły obliczeniowe o niskim priorytecie mają znacznie niższe koszty, ale mogą być niedostępne lub mogą być przerywane, w dowolnym momencie.
-8. Ilość czasu oczekiwano podejmowane dla zadania do uruchamiania w chmurze. Nie dotyczy to czas uruchamiania węzła. Gdy zadanie zacznie działać, to o tym, ile powinna być, aby wrócić wyniki. Należy pamiętać, że jest to tylko oszacowanie.
-9. Całkowita ilość czasu obliczeniowego potrzebnych do uruchomienia symulacje. Jest to suma czasu obliczeń węzeł, który będzie używany na platformie Azure. Zobacz [koszt tworzenie Szacowanie](#Estimating-bake-cost) poniżej Aby uzyskać więcej informacji na temat korzystania z tej wartości.
-10. Kliknij przycisk Tworzenie, aby przesłać tworzenie do chmury. Gdy zadanie jest uruchomione, spowoduje to pokazanie **anulować zadanie** zamiast tego. Czy istnieją błędy na tej karcie, czy przepływ pracy na **sondy** karta nie zostanie zakończone, ten przycisk będzie wyłączony.
-11. Liczba sondy sceny obliczone na **sondy** kartę. Liczbę sond określa liczbę symulacje, które należy uruchomić w chmurze. Nie można określić więcej węzłów niż jest sondy.
-12. Ten komunikat informujący o bieżący stan zadania, lub jeśli występują błędy na tej karcie, co te błędy.
+1. Przycisk karty Tworzenie używany do wyłączenia tej strony.
+2. Krótki opis czynności, które należy wykonać na tej stronie.
+3. Pola umożliwiające wprowadzanie poświadczeń platformy Azure po utworzeniu konta platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie konta Azure Batch](create-azure-account.md).
+4. Uruchom Azure Portal, aby zarządzać subskrypcjami, monitorować użycie i wyświetlać informacje dotyczące rozliczeń itp. 
+5. Typ węzła obliczeniowego usługi Azure Batch, który ma być używany do obliczania. Typ węzła musi być obsługiwany przez lokalizację centrum danych platformy Azure. Jeśli nie masz pewności, pozostaw o godzinie **Standard_F8s_v2**.
+6. Liczba węzłów do użycia w tym wyliczeniu. Wprowadzony tutaj numer ma wpływ na czas wykonywania tworzenie i jest ograniczony przez podstawową alokację Azure Batch. Alokacja domyślna zezwala tylko na dwa węzły z 8 rdzeniami lub węzeł podstawowy 1 16, ale można ją rozszerzyć. Aby uzyskać więcej informacji na temat ograniczeń dotyczących podstawowych alokacji, zobacz [Tworzenie konta Azure Batch](create-azure-account.md).
+7. Zaznacz to pole wyboru, aby skonfigurować pulę obliczeń do używania [węzłów o niskim priorytecie](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Węzły obliczeniowe o niskim priorytecie mają znacznie niższy koszt, ale mogą być niezawsze dostępne lub mogą być przenoszone w dowolnym momencie.
+8. Ilość czasu, który upłynął, aby zadanie zostało uruchomione w chmurze. Nie obejmuje to czasu uruchamiania węzła. Gdy zadanie zostanie uruchomione, jest to informacje o tym, jak długo powinna zostać pobrana z powrotem. Należy zauważyć, że jest to tylko oszacowanie.
+9. Łączna ilość czasu obliczeniowego wymaganego do uruchomienia symulacji. Jest to łączny czas obliczeniowy węzła, który będzie używany na platformie Azure. Aby uzyskać więcej informacji na temat używania tej wartości, zobacz [szacunkowy koszt tworzenie](#Estimating-bake-cost) poniżej.
+10. Kliknij przycisk Tworzenie, aby przesłać tworzenie do chmury. Gdy zadanie jest uruchomione, spowoduje to wyświetlenie **zadania anulowania** . Jeśli na tej karcie występują błędy lub przepływ pracy na karcie sondy nie został ukończony, ten przycisk zostanie wyłączony.
+11. Liczba sond dla sceny, obliczona na karcie **sondy** . Liczba sond określa liczbę symulacji, które muszą być uruchamiane w chmurze. Nie można określić większej liczby węzłów niż sondy.
+12. Ten komunikat informuje o bieżącym stanie zadania lub o wystąpieniu błędów na tej karcie, czego dotyczą te błędy.
 
-Można zawsze uzyskać pełne informacje na temat aktywnych zadań, pule obliczeniowe i Magazyn w [witryny Azure portal](https://portal.azure.com).
+W [Azure Portal](https://portal.azure.com)można zawsze uzyskać pełne informacje dotyczące aktywnych zadań, pul obliczeniowych i magazynu.
 
-Gdy zadanie jest uruchomione **tworzenie** przycisku zmienia się na **anulować zadanie**. Użyj tego przycisku można anulować zadania w toku. Trwa anulowanie zadania nie można cofnąć, żadne wyniki nie będą dostępne, i możesz nadal jest naliczana raz obliczeniowych platformy Azure, używane przed anulowaniem.
+Gdy zadanie jest uruchomione, przycisk **Tworzenie** zmienia się na **Anuluj zadanie**. Ten przycisk służy do anulowania zadania w toku. Anulowanie zadania nie może zostać cofnięte, żadne wyniki nie będą dostępne i nadal będą naliczane opłaty za dowolny czas obliczeń platformy Azure używany przed anulowaniem.
 
-Po rozpoczęciu tworzenie, możesz zamknąć Unreal. W zależności od projektu, typ węzła i liczby węzłów tworzenie chmury może potrwać kilka godzin. Tworzenie stanu zadania zostaną zaktualizowane, gdy ponowne załadowanie projektu i Otwórz okno Akustyka. Jeśli zadanie zostało ukończone, plik wyjściowy zostanie pobrany.
+Po rozpoczęciu tworzenie można zamknąć Unreal. W zależności od projektu, typu węzła i liczby węzłów tworzenie w chmurze może potrwać kilka godzin. Stan zadania tworzenie zostanie zaktualizowany po ponownym załadowaniu projektu i otwarciu okna "akustyczne". Jeśli zadanie zostało ukończone, plik wyjściowy zostanie pobrany.
 
-Poświadczenia platformy Azure są bezpiecznie przechowywane na komputerze lokalnym i skojarzone z projektem unreal Engine. Służą one wyłącznie w celu nawiązania bezpiecznego połączenia z platformą Azure.
+Poświadczenia platformy Azure są bezpiecznie przechowywane na komputerze lokalnym i skojarzone z projektem Unreal. Są one używane wyłącznie w celu nawiązania bezpiecznego połączenia z platformą Azure.
 
-### <a name="Estimating-bake-cost"></a> Trwa szacowanie kosztu tworzenie platformy Azure
+### <a name="Estimating-bake-cost"></a>Szacowanie kosztu usługi Azure tworzenie
 
-Aby oszacować, jaki będzie koszt danego tworzenie, wykonaj wartości wyświetlane dla **szacowany koszt obliczeń**, który jest czasem trwania i wielokrotnie kosztów, przez co godzinę w lokalnej walucie z **typ węzła maszyny Wirtualnej** wybrane. Wynik nie będzie również obejmował czas węzła potrzebne do uruchomienia w węzłach i uruchamiania. Na przykład w przypadku wybrania **Standard_F8s_v2** typu węzła, który ma koszt 0,40 USD/godz., a szacowany koszt obliczeń jest 3 godzin i 57 minut, szacowany koszt będzie $0,40 * ~ 4 godziny = ~ 1,60 USD. Rzeczywisty koszt będzie prawdopodobnie nieco wyższy ze względu na dodatkowy czas, aby uzyskać dostęp do węzłów pracę. Można znaleźć węzła co godzinę, koszt na [cennik usługi Azure Batch](https://azure.microsoft.com/pricing/details/virtual-machines/linux) strony (wybierz opcję "zoptymalizowane pod kątem obliczeń" lub "obliczenia o wysokiej wydajności" dla kategorii).
+Aby oszacować, jakie dane tworzenie będzie kosztować, należy uzyskać wartość pokazaną dla **szacowanego kosztu obliczeniowego**, czyli czas trwania, i pomnożyć ją przez koszt godzinowy w lokalnej walucie wybranego **typu węzła maszyny wirtualnej** . Wynik nie będzie zawierać czasu węzła wymaganego do uruchomienia węzłów. Jeśli na przykład wybierzesz pozycję **Standard_F8s_v2** dla typu węzła, który ma koszt $0.40/hr, a szacowany koszt obliczeń wynosi 3 godziny i 57 minut, szacowany koszt uruchomienia zadania będzie $0,40 * ~ 4 godziny = ~ $1,60. Rzeczywisty koszt będzie prawdopodobnie nieco większy z powodu dodatkowego czasu na rozpoczęcie uruchamiania węzłów. Koszt węzła "co godzinę" można znaleźć na stronie [cennika Azure Batch](https://azure.microsoft.com/pricing/details/virtual-machines/linux) (wybierz pozycję "obliczenia zoptymalizowane" lub "obliczenia o wysokiej wydajności" dla kategorii).
 
-### <a name="reviewing-the-bake-results"></a>Sprawdzanie wyników tworzenie
+### <a name="reviewing-the-bake-results"></a>Przeglądanie wyników tworzenie
 
-Po zakończeniu tworzenie, sprawdź, czy punkty voxels i badania znajdują się w ich oczekiwanych lokalizacjach za pomocą wtyczki środowiska uruchomieniowego.
+Po zakończeniu tworzenie Sprawdź, czy voxels i punkty sondy znajdują się w oczekiwanych lokalizacjach, uruchamiając wtyczkę środowiska uruchomieniowego.
 
 ## <a name="Data-Files"></a>Pliki danych
 
-Istnieją cztery pliki danych utworzonych przez ten dodatek w różnych punktach. Tylko jeden z nich jest potrzebna w czasie wykonywania i znajduje się w folderze zawartości/Akustyka projektu, który jest automatycznie dodawany do ścieżki pakowania projektu. Pozostałe trzy znajdują się w folderze Akustyka dane i nie są w pakiecie.
+Ta wtyczka zawiera cztery pliki danych utworzone w różnych punktach. Tylko jeden z nich jest wymagany w czasie wykonywania i znajduje się w folderze Content/akustycznym projektu, który jest automatycznie dodawany do ścieżki pakowania projektu. Pozostałe trzy znajdują się w folderze Dane akustyczne i nie są spakowane.
 
-* **[Project]/Config/ProjectAcoustics.cfg**: Ten plik przechowuje dane, które możesz wprowadzić w polach w Interfejsie użytkownika Akustyka trybu. Nie można zmienić lokalizację i nazwę tego pliku. Istnieją inne wartości przechowywane w tym pliku, które wpływają na tworzenie, ale są dla użytkowników zaawansowanych i nie powinna być zmieniana.
-* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Ten plik jest jest tworzony podczas symulacji tworzenie i zawiera dane wyszukiwania używany przez środowisko uruchomieniowe do renderowania Akustyka swoje sceny. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę. Aby zmienić nazwę tego pliku, po jego utworzeniu usuwanie UAsset projekt Unreal, Zmień nazwę pliku poza Unreal w Eksploratorze plików i następnie ponownie zaimportować ten plik do Unreal, aby wygenerować nowy UAsset. Zmiana nazwy UAsset przez siebie nie będzie działać.
-* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData.vox**: Ten plik przechowuje geometrii Akustyka voxelized i właściwości materiału. Obliczane przy użyciu **Calculate** znajdujący się na **sondy** kartę. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
-* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData\_config.xml**: Ten plik przechowuje obliczane przy użyciu parametrów **Calculate** znajdujący się na **sondy** kartę. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
+* **[Projekt]/config/ProjectAcoustics.cfg**: Ten plik przechowuje dane wprowadzane w polach w interfejsie użytkownika trybu akustycznego. Nie można zmienić lokalizacji i nazwy tego pliku. W tym pliku znajdują się inne wartości, które mają wpływ na tworzenie, ale są one przeznaczone dla zaawansowanych użytkowników i nie powinny być zmieniane.
+* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Ten plik jest tworzony podczas symulacji tworzenie i zawiera dane wyszukiwania używane przez środowisko uruchomieniowe do renderowania wartości akustycznych sceny. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na karcie sondy. Jeśli chcesz zmienić nazwę tego pliku po jego utworzeniu, Usuń UAsset z projektu Unreal, Zmień nazwę pliku poza Unreal w Eksploratorze plików, a następnie ponownie zaimportuj ten plik do Unreal, aby utworzyć nowy UAsset. Zmiana nazwy UAsset przez siebie nie będzie zadziałała.
+* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData.vox**: Ten plik przechowuje geometrię voxelized akustycznych i właściwości materiału. Obliczane przy użyciu przycisku **Oblicz** na karcie **sondy** . Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na karcie sondy.
+* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData\_config.xml**: Ten plik przechowuje parametry obliczane przy użyciu przycisku **Oblicz** na karcie **sondy** . Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na karcie sondy.
 
-Należy zadbać, aby nie usuwać plików *.ace pobrany z platformy Azure. Ten plik nie jest możliwe do odzyskania, z wyjątkiem przez rebaking sceny.
+Pamiętaj, aby nie usuwać pliku *. asa pobranego z platformy Azure. Ten plik nie jest możliwy do odzyskania, z wyjątkiem tego, że jest to możliwe.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Zapoznaj się z [projektowania formanty Unreal](unreal-workflow.md)
-* Zapoznaj się z [koncepcji projektów Akustyka projektu](design-process.md)
+## <a name="next-steps"></a>Następne kroki
+* Eksplorowanie [formantów projektu dla Unreal](unreal-workflow.md)
+* Eksploruj koncepcje projektu [dotyczące hałasu](design-process.md)
 

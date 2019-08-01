@@ -10,12 +10,13 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 92124a53c871be7a83d7b276e31f000d7c674358
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a1045be62f3bdbf75f399c894f825fa99f8e671
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698009"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706895"
 ---
 # <a name="quickstart-url-preview-with-nodejs"></a>Szybki start: Projekt Podgląd adresu URL w środowisku Node.js 
 

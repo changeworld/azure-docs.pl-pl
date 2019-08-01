@@ -10,12 +10,13 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh
-ms.openlocfilehash: 29418ec8ce12033dc576c61a73301dec13d457cc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ROBOTS: NOINDEX
+ms.openlocfilehash: ec9d9757a776601bdf79b796cf6b7b2987411257
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698029"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705184"
 ---
 # <a name="quickstart-url-preview-with-java"></a>Szybki start: Podgląd adresu URL w języku Java
 
@@ -167,7 +168,7 @@ class SearchResults{
 
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Przewodnik Szybki start dla języka C#](csharp.md)
 - [Przewodnik Szybki start dla języka JavaScript](javascript.md)
 - [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)

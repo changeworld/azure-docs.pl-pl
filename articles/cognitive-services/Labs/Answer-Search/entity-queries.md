@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: c9f2a476353b1807bbb1c8c13dc8b8e2cdbb4ae4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1dbfcfe85a7847b593553bd06cbc22cc62d2e2e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688626"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705464"
 ---
 # <a name="quickstart-query-for-entities"></a>Szybki start: Wykonywanie zapytań o jednostki
 
@@ -220,7 +221,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Przewodnik Szybki start dla języka C#](c-sharp-quickstart.md)
 - [Przewodnik Szybki start dla języka Java](java-quickstart.md)
 - [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)

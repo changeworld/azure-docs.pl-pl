@@ -8,12 +8,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 04b04e8080590aa6e9fe1c17369e83fa5bb6b894
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 66a051c430be9f59569a5843c0138c7ddc15b87c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668231"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707148"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Tworzenie Azure Search magazynu wiedzy i nawiązywanie połączenia przy użyciu Power BI
 
@@ -156,7 +156,7 @@ Użyj Kreatora importu danych, aby utworzyć magazyn wiedzy. Spowoduje to zaimpo
 
 1. Kliknij przycisk **Zamknij i Zastosuj** po lewej stronie paska poleceń Power Query.
 
-1. Sprawdź, czy Power BI rozpoznaje relacje utworzone przez magazyn wiedzy w ramach danych. Kliknij kafelek relacje w okienku nawigacji po lewej stronie. Wszystkie trzy tabele powinny być powiązane.
+1. Sprawdź, czy Power BI rozpoznaje relacje utworzone przez magazyn wiedzy w ramach danych. Kliknij kafelek relacje w okienku nawigacji po lewej stronie. Wszystkie trzy tabele powinny być powiązane. Edytuj relacje i upewnij się, że "kierunek filtrowania krzyżowego" jest ustawiony na oba, co zapewni, że wszystkie wizualizacje zostaną odświeżone w przypadku zastosowania filtru.
 
    ![Weryfikuj relacje](media/knowledge-store-howto-powerbi/powerbi-relationships.png "Weryfikuj relacje")
 
@@ -177,7 +177,7 @@ W kroku wzbogacania kreatora Dołącz [Cognitive Services](https://docs.microsof
 
   ![Tworzenie zasobu Cognitive Services](media/knowledge-store-howto-powerbi/create-cognitive-service.png "Tworzenie zasobu Cognitive Services")
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli chcesz powtórzyć to ćwiczenie lub wykonać inne czynności związane z wzbogacaniem AI, Usuń właśnie utworzony indeks *hotelu-przeglądający-IDX* . Usunięcie indeksatora resetuje bezpłatny dzienny licznik transakcji z powrotem do zera. 
 

@@ -1,372 +1,136 @@
 ---
-title: Wysyłanie transakcji przy użyciu usługi Azure łańcucha bloków Service
-description: Samouczek dotyczący sposobu użycia usługi Azure łańcucha bloków do wdrożenia inteligentnego kontraktu i wysłania prywatnej transakcji.
+title: Korzystanie z inteligentnych kontraktów w usłudze Azure łańcucha bloków Service
+description: Samouczek dotyczący sposobu użycia usługi Azure łańcucha bloków do wdrożenia inteligentnego kontraktu i wykonania funkcji za pośrednictwem transakcji.
 services: azure-blockchain
-keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/29/2019
+ms.date: 07/31/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: 3cfbbdc5b95d1607738b132980320d2ff7c99788
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.reviewer: chrisseg
+ms.openlocfilehash: 1843bd66e11a6686c9ae81fb8e30c7b030e889b7
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698385"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705134"
 ---
-# <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Samouczek: Wysyłanie transakcji przy użyciu usługi Azure łańcucha bloków Service
+# <a name="tutorial-use-smart-contracts-on-azure-blockchain-service"></a>Samouczek: Korzystanie z inteligentnych kontraktów w usłudze Azure łańcucha bloków Service
 
-W ramach tego samouczka utworzysz węzły transakcji do testowania prywatności kontraktu i transakcji.  Użyjesz Truffle, aby utworzyć lokalne środowisko programistyczne i wdrożyć kontrakt inteligentny i wysłać transakcję prywatną.
+W tym samouczku użyjesz usługi Azure łańcucha bloków Development Kit do tworzenia i wdrażania kontraktu inteligentnego, a następnie wykonasz funkcję kontraktu inteligentnego za pośrednictwem transakcji w sieci łańcucha bloków Consortium.
 
-Omawiane tematy:
+Używasz zestawu Azure łańcucha bloków Development Kit dla Ethereum:
 
 > [!div class="checklist"]
-> * Dodawanie węzłów transakcji
-> * Wdrażanie kontraktu inteligentnego za pomocą Truffle
-> * Wyślij transakcję
-> * Weryfikuj prywatność transakcji
+> * Łączenie z członkiem usługi Azure łańcucha bloków Service Consortium łańcucha bloków
+> * Tworzenie kontraktu inteligentnego
+> * Wdrażanie kontraktu inteligentnego
+> * Wykonywanie funkcji kontraktu inteligentnego za pośrednictwem transakcji
+> * Kwerenda stanu kontraktu
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończ [Tworzenie elementu członkowskiego łańcucha bloków przy użyciu Azure Portal](create-member.md)
-* Pełny [Przewodnik Szybki Start: Łączenie się z siecią konsorcjum przy użyciu programu Truffle](connect-truffle.md)
-* Zainstaluj [Truffle](https://github.com/trufflesuite/truffle). Truffle wymaga zainstalowania kilku narzędzi, w tym [Node. js](https://nodejs.org), [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Zainstaluj środowisko [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Środowisko Python jest niezbędne dla Web3.
-* Zainstaluj [Visual Studio Code](https://code.visualstudio.com/Download)
-* Zainstaluj [rozszerzenie Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
+* Pełny [Przewodnik Szybki Start: Utwórz składową łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Tworzenie członka usługi Azure łańcucha bloków Service łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure](create-member-cli.md)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Rozszerzenie Azure łańcucha bloków Development Kit dla rozszerzenia Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node.js](https://nodejs.org)
+* [Usługa Git](https://git-scm.com)
+* [Python](https://www.python.org/downloads/release/python-2715/). Dodaj język Python. exe do ścieżki. Język Python w ścieżce jest wymagany w przypadku usługi Azure łańcucha bloków Development Kit.
+* [Truffle](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Interfejs wiersza polecenia ganache](https://github.com/trufflesuite/ganache-cli)
 
-## <a name="create-transaction-nodes"></a>Tworzenie węzłów transakcji
+### <a name="verify-azure-blockchain-development-kit-environment"></a>Weryfikowanie środowiska zestawu Azure łańcucha bloków Development Kit
 
-Domyślnie istnieje jeden węzeł transakcji. Będziemy dodawać dwa inne. Jeden z węzłów uczestniczy w transakcji prywatnej. Druga nie jest uwzględniona w transakcji prywatnej.
+Zestaw Azure łańcucha bloków Development Kit sprawdza wymagania wstępne dotyczące środowiska deweloperskiego. Aby zweryfikować środowisko programistyczne:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków i wybierz pozycję **węzły transakcji > Dodaj**.
-1. Ukończ ustawienia dla nowego węzła transakcji o nazwie `alpha`.
+Z palety poleceń vs Code wybierz **pozycję Azure łańcucha bloków: Pokaż stronę**powitalną.
 
-    ![Utwórz węzeł transakcji](./media/send-transaction/create-node.png)
+Pakiet Azure łańcucha bloków Development Kit uruchamia skrypt walidacji, który trwa około minuty. Możesz wyświetlić dane wyjściowe, wybierając pozycję **terminal > nowym terminalu**. Na pasku menu terminalu wybierz kartę Output ( **dane wyjściowe** ) i pozycję **Azure łańcucha bloków** na liście rozwijanej. Pomyślne sprawdzenie poprawności wygląda tak, jak na poniższym obrazie:
 
-    | Ustawienie | Wartość | Opis |
-    |---------|-------|-------------|
-    | Name (Nazwa) | `alpha` | Nazwa węzła transakcji. Nazwa służy do tworzenia adresu DNS dla punktu końcowego węzła transakcji. Na przykład `alpha-mymanagedledger.blockchain.azure.com`. |
-    | Hasło | Silne hasło | Hasło służy do uzyskiwania dostępu do punktu końcowego węzła transakcji z uwierzytelnianiem podstawowym.
+![Prawidłowe środowisko deweloperskie](./media/send-transaction/valid-environment.png)
 
-1. Wybierz pozycję **Utwórz**.
+ Jeśli brakuje wymaganego narzędzia, Nowa karta o nazwie **Azure łańcucha bloków Development Kit — wersja** zapoznawcza zawiera listę wymaganych aplikacji do zainstalowania i linków do pobrania narzędzi.
 
-    Inicjowanie obsługi nowego węzła transakcji trwa około 10 minut.
+![Aplikacje wymagane przez zestaw dev Kit](./media/send-transaction/required-apps.png)
 
-1. Powtórz kroki od 2 do 4, aby dodać węzeł transakcji `beta`o nazwie.
+## <a name="connect-to-consortium-member"></a>Łączenie z członkiem konsorcjum
 
-W trakcie aprowizacji węzłów można kontynuować pracę z samouczkiem. Po zakończeniu aprowizacji będziesz mieć trzy węzły transakcji.
+Można nawiązać połączenie z członkami konsorcjum przy użyciu rozszerzenia Azure łańcucha bloków Development VS Code Kit. Po nawiązaniu połączenia z konsorcjum można skompilować, skompilować i wdrożyć inteligentne kontrakty w składowej konsorcjum usługi Azure łańcucha bloków.
 
-## <a name="open-truffle-console"></a>Otwórz konsolę Truffle
+Jeśli nie masz dostępu do elementu członkowskiego konsorcjum usługi Azure łańcucha bloków, Wypełnij wymagania wstępne [: Utwórz składową łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Utwórz członka usługi Azure łańcucha bloków Service łańcucha bloków przy użyciu interfejsu](create-member-cli.md)wiersza polecenia platformy Azure.
 
-1. Otwórz wiersz polecenia środowiska Node. js lub powłokę.
-1. Zmień ścieżkę do katalogu projektu Truffle z poziomu wstępnie wymaganego [przewodnika Szybki Start: Użyj Truffle, aby nawiązać połączenie z](connect-truffle.md)siecią konsorcjum. Na przykład
+1. W okienku Eksploratora Visual Studio Code (VS Code) rozwiń rozszerzenie **Azure łańcucha bloków** .
+1. Wybierz pozycję **Połącz z konsorcjum**.
 
-    ```bash
-    cd truffledemo
-    ```
+   ![Nawiązywanie połączenia z konsorcjum](./media/send-transaction/connect-consortium.png)
 
-1. Użyj konsoli Truffle, aby nawiązać połączenie z domyślnym węzłem transakcji.
+    Jeśli zostanie wyświetlony monit o uwierzytelnienie platformy Azure, postępuj zgodnie z monitami, aby przeprowadzić uwierzytelnianie przy użyciu przeglądarki.
+1. Wybierz pozycję **Połącz z usługą Azure łańcucha bloków Service Consortium** na liście rozwijanej paleta poleceń.
+1. Wybierz subskrypcję i grupę zasobów skojarzoną z elementem członkowskim konsorcjum usługi Azure łańcucha bloków.
+1. Wybierz z listy swoją konsorcjum.
 
-    ``` bash
-    truffle console --network defaultnode
-    ```
+Członkowie konsorcjum i łańcucha bloków są wyświetlani na pasku bocznym Eksploratora programu Visual Studio.
 
-    Truffle nawiązuje połączenie z domyślnym węzłem transakcji i udostępnia konsolę interaktywną.
+![Konsorcjum wyświetlane w Eksploratorze](./media/send-transaction/consortium-node.png)
 
-## <a name="create-ethereum-account"></a>Utwórz konto Ethereum
+## <a name="create-a-smart-contract"></a>Tworzenie kontraktu inteligentnego
 
-Użyj Web3, aby nawiązać połączenie z domyślnym węzłem transakcji i utworzyć konto Ethereum. Można wywołać metody obiektu Web3, aby móc korzystać z węzła transakcji.
+Zestaw Azure łańcucha bloków Development Kit dla Ethereum używa szablonów projektów i narzędzi Truffle, aby pomóc w tworzeniu i wdrażaniu umów.
 
-1. Utwórz nowe konto w domyślnym węźle transakcji. Zastąp parametr password własnym silnym hasłem.
+1. Z palety poleceń vs Code wybierz **pozycję Azure łańcucha bloków: Nowy projekt**o stałej wypełniania.
+1. Wybierz pozycję **Utwórz projekt podstawowy**.
+1. Utwórz nowy folder o nazwie `HelloBlockchain` i **Wybierz pozycję Nowy projekt ścieżka**.
 
-    ```bash
-    web3.eth.personal.newAccount("1@myStrongPassword");
-    ```
-
-    Zanotuj wartość zwróconego adresu konta i hasło. Potrzebujesz adresu i hasła konta Ethereum w następnej sekcji.
-
-1. Zamknij środowisko deweloperskie Truffle.
-
-    ```bash
-    .exit
-    ```
-
-## <a name="configure-truffle-project"></a>Konfigurowanie projektu Truffle
-
-Aby skonfigurować projekt Truffle, potrzebne są pewne informacje o węźle transakcji z Azure Portal.
-
-### <a name="transaction-node-public-key"></a>Klucz publiczny węzła transakcji
-
-Każdy węzeł transakcji ma klucz publiczny. Klucz publiczny umożliwia wysyłanie transakcji prywatnych do węzła. Aby wysłać transakcję z domyślnego węzła transakcji do węzła transakcji *alfa* , należy dysponować kluczem publicznym węzła transakcji *alfa* .
-
-Klucz publiczny można uzyskać z listy węzłów transakcji. Skopiuj klucz publiczny dla węzła alfa i Zapisz wartość w dalszej części tego samouczka.
-
-![Lista węzłów transakcji](./media/send-transaction/node-list.png)
-
-### <a name="transaction-node-endpoint-addresses"></a>Adresy punktów końcowych węzła transakcji
-
-1. W Azure Portal przejdź do każdego węzła transakcji i wybierz pozycję **węzły transakcji > parametry połączenia**.
-1. Skopiuj i Zapisz adres URL punktu końcowego z **protokołu HTTPS (dostęp do klucza 1)** dla każdego węzła transakcji. W dalszej części tego samouczka potrzebujesz adresów punktu końcowego dla pliku konfiguracji kontraktu inteligentnego.
-
-    ![Adres punktu końcowego transakcji](./media/send-transaction/endpoint.png)
-
-### <a name="edit-configuration-file"></a>Edytuj plik konfiguracji
-
-1. Uruchom Visual Studio Code i Otwórz folder katalog projektu Truffle, korzystając z menu **plik > Otwórz folder** .
-1. Otwórz plik `truffle-config.js`konfiguracji Truffle.
-1. Zastąp zawartość pliku następującymi informacjami o konfiguracji. Dodaj zmienne zawierające adresy punktów końcowych i informacje o koncie. Zamień sekcje z nawiasami ostrymi na wartości zebrane z poprzednich sekcji.
-
-    ``` javascript
-    var defaultnode = "<default transaction node connection string>";
-    var alpha = "<alpha transaction node connection string>";
-    var beta = "<beta transaction node connection string>";
-    
-    var myAccount = "<Ethereum account address>";
-    var myPassword = "<Ethereum account password>";
-    
-    var Web3 = require("web3");
-    
-    module.exports = {
-      networks: {
-        defaultnode: {
-          provider:(() =>  {
-          const AzureBlockchainProvider = new Web3.providers.HttpProvider(defaultnode);
-    
-          const web3 = new Web3(AzureBlockchainProvider);
-          web3.eth.personal.unlockAccount(myAccount, myPassword);
-    
-          return AzureBlockchainProvider;
-          })(),
-    
-          network_id: "*",
-          gasPrice: 0,
-          from: myAccount
-        },
-        alpha: {
-          provider: new Web3.providers.HttpProvider(alpha),
-          network_id: "*",
-        },
-        beta: {
-          provider: new Web3.providers.HttpProvider(beta),
-          network_id: "*",
-        }
-      },
-      compilers: {
-        solc: {
-          evmVersion: "byzantium"
-        }
-      }
-    }
-    ```
-
-1. Zapisz zmiany w `truffle-config.js`.
-
-## <a name="create-smart-contract"></a>Tworzenie kontraktu inteligentnego
-
-1. W folderze **kontrakty** Utwórz nowy plik o nazwie `SimpleStorage.sol`. Dodaj następujący kod.
-
-    ```solidity
-    pragma solidity >=0.4.21 <0.6.0;
-    
-    contract SimpleStorage {
-        string public storedData;
-    
-        constructor(string memory initVal) public {
-            storedData = initVal;
-        }
-    
-        function set(string memory x) public {
-            storedData = x;
-        }
-    
-        function get() view public returns (string memory retVal) {
-            return storedData;
-        }
-    }
-    ```
-    
-1. W folderze **migracje** Utwórz nowy plik o nazwie `2_deploy_simplestorage.js`. Dodaj następujący kod.
-
-    ```solidity
-    var SimpleStorage = artifacts.require("SimpleStorage.sol");
-    
-    module.exports = function(deployer) {
-    
-      // Pass 42 to the contract as the first constructor parameter
-      deployer.deploy(SimpleStorage, "42", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"})  
-    };
-    ```
-
-1. Zastąp wartości w nawiasach kątowych.
-
-    | Value | Opis
-    |-------|-------------
-    | \<alpha node public key\> | Klucz publiczny węzła Alpha
-    | \<Ethereum account address\> | Adres konta Ethereum utworzony w domyślnym węźle transakcji
-
-    W tym przykładzie wartość początkowa wartości **storeData** jest ustawiona na 42.
-
-    **privateFor** definiuje węzły, do których kontrakt jest dostępny. W tym przykładzie konto domyślnego węzła transakcji może rzutować transakcje prywatne na węzeł **Alpha** . Dodaj klucze publiczne dla wszystkich uczestników transakcji prywatnych. Jeśli nie dołączysz **privateFor:** i **z:** , transakcje kontraktu inteligentnego są publiczne i mogą być widoczne dla wszystkich członków konsorcjum.
-
-1. Zapisz wszystkie pliki, wybierając pozycję **plik > Zapisz wszystko**.
-
-## <a name="deploy-smart-contract"></a>Wdrażanie kontraktu inteligentnego
-
-Użyj Truffle do wdrożenia `SimpleStorage.sol` w domyślnej sieci węzła transakcji.
-
-```bash
-truffle migrate --network defaultnode
-```
-
-Truffle najpierw kompiluje, a następnie wdraża kontrakt inteligentny **SimpleStorage** .
-
-Przykładowe dane wyjściowe:
-
-```
-admin@desktop:/mnt/c/truffledemo$ truffle migrate --network defaultnode
-
-2_deploy_simplestorage.js
-=========================
-
-   Deploying 'SimpleStorage'
-   -------------------------
-   > transaction hash:    0x3f695ff225e7d11a0239ffcaaab0d5f72adb545912693a77fbfc11c0dbe7ba72
-   > Blocks: 2            Seconds: 12
-   > contract address:    0x0b15c15C739c1F3C1e041ef70E0011e641C9D763
-   > account:             0x1a0B9683B449A8FcAd294A01E881c90c734735C3
-   > balance:             0
-   > gas used:            0
-   > gas price:           0 gwei
-   > value sent:          0 ETH
-   > total cost:          0 ETH
-
-
-   > Saving migration to chain.
-   > Saving artifacts
-   -------------------------------------
-   > Total cost:                   0 ETH
-
-
-Summary
-=======
-> Total deployments:   2
-> Final cost:          0 ETH
-```
-
-## <a name="validate-contract-privacy"></a>Weryfikuj prywatność kontraktu
-
-Ze względu na prywatność umowy wartości kontraktu mogą być wysyłane tylko z węzłów zadeklarowanych w **privateFor**. W tym przykładzie możemy zbadać domyślny węzeł transakcji, ponieważ konto istnieje w tym węźle. 
-
-1. Korzystając z konsoli Truffle, Połącz się z domyślnym węzłem transakcji.
-
-    ```bash
-    truffle console --network defaultnode
-    ```
-
-1. W konsoli Truffle wykonaj kod, który zwraca wartość wystąpienia kontraktu.
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-
-    W przypadku pomyślnego przeprowadzenia zapytania dotyczącego domyślnego węzła transakcji zwracana jest wartość 42. Przykład:
-
-    ```
-    admin@desktop:/mnt/c/truffledemo$ truffle console --network defaultnode
-    truffle(defaultnode)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-    '42'
-    ```
-
-1. Zamknij konsolę Truffle.
-
-    ```bash
-    .exit
-    ```
-
-Ponieważ zadeklarowano klucz publiczny węzła **alfa** w **privateFor**, możemy zbadać węzeł **Alpha** .
-
-1. Korzystając z konsoli Truffle, Połącz się z węzłem **Alpha** .
-
-    ```bash
-    truffle console --network alpha
-    ```
-
-1. W konsoli Truffle wykonaj kod, który zwraca wartość wystąpienia kontraktu.
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-
-    W przypadku pomyślnego przeprowadzenia zapytania względem węzła **alfa** zostanie zwrócona wartość 42. Na przykład:
-
-    ```
-    admin@desktop:/mnt/c/truffledemo$ truffle console --network alpha
-    truffle(alpha)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-    '42'
-    ```
-
-1. Zamknij konsolę Truffle.
-
-    ```bash
-    .exit
-    ```
-
-Ponieważ nie deklarujemy klucza publicznego węzła **beta** w programie **privateFor**, nie będziemy mogli wysyłać zapytań do węzła **beta** z powodu prywatności umowy.
-
-1. Korzystając z konsoli Truffle, Połącz się z węzłem **beta** .
-
-    ```bash
-    truffle console --network beta
-    ```
-
-1. Wykonaj kod, który zwraca wartość wystąpienia kontraktu.
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-
-1. Wykonywanie zapytania dotyczącego węzła **beta** kończy się niepowodzeniem, ponieważ kontrakt jest prywatny. Na przykład:
-
-    ```
-    admin@desktop:/mnt/c/truffledemo$ truffle console --network beta
-    truffle(beta)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-    Thrown:
-    Error: Returned values aren't valid, did it run Out of Gas?
-        at XMLHttpRequest._onHttpResponseEnd (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:345:8)
-        at XMLHttpRequest._setReadyState (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:219:8)
-        at XMLHttpRequestEventTarget.dispatchEvent (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request-event-target.ts:44:13)
-        at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
-    ```
-
-1. Zamknij konsolę Truffle.
-
-    ```bash
-    .exit
-    ```
-    
-## <a name="send-a-transaction"></a>Wyślij transakcję
-
-1. Utwórz plik o nazwie `sampletx.js`. Zapisz ją w folderze głównym projektu.
-1. Poniższy skrypt ustawia wartość zmiennej **storedData** kontraktu na 65. Dodaj kod do nowego pliku.
+Zestaw Azure łańcucha bloków Development Kit tworzy i inicjuje nowy projekt o stałej wypełniania. Projekt podstawowy zawiera przykładową **HelloBlockchainą** umowę i wszystkie pliki niezbędne do kompilowania i wdrażania w składowej konsorcjum usługi Azure łańcucha bloków. Utworzenie projektu może potrwać kilka minut. Postęp można monitorować w panelu terminalu VS Code, wybierając dane wyjściowe dla usługi Azure łańcucha bloków.
+
+Struktura projektu wygląda podobnie do poniższego przykładu:
+
+   ![Projekt o stałej mocy](./media/send-transaction/solidity-project.png)
+
+## <a name="build-a-smart-contract"></a>Tworzenie kontraktu inteligentnego
+
+Inteligentne kontrakty znajdują się w katalogu **kontraktów** projektu. Możesz kompilować inteligentne kontrakty przed wdrożeniem ich w usłudze łańcucha bloków. Użyj polecenia **Kompiluj kontrakty** , aby skompilować wszystkie inteligentne kontrakty w projekcie.
+
+1. Na pasku bocznym Eksploratora VS Code rozwiń folder **kontrakty** w projekcie.
+1. Kliknij prawym przyciskiem myszy **HelloBlockchain. peruwiański** i wybierz polecenie **Kompiluj kontrakty** z menu.
+
+    ![Kontrakty kompilacji](./media/send-transaction/build-contracts.png)
+
+Usługa Azure łańcucha bloków Development Kit używa Truffle do kompilowania inteligentnych kontraktów.
+
+![Kompiluj dane wyjściowe](./media/send-transaction/compile-output.png)
+
+## <a name="deploy-a-smart-contract"></a>Wdrażanie kontraktu inteligentnego
+
+Truffle używa skryptów migracji do wdrażania kontraktów w sieci Ethereum. Migracje to pliki JavaScript znajdujące się w katalogu **migracji** projektu.
+
+1. Aby wdrożyć kontrakt inteligentny, kliknij prawym przyciskiem myszy **HelloBlockchain. peruwiański** i wybierz polecenie **Wdróż kontrakty** z menu.
+1. Wybierz sieć Azure łańcucha bloków Consortium w obszarze **from Truffle-config. js**. Sieć konsorcjum łańcucha bloków została dodana do pliku konfiguracji Truffle projektu podczas tworzenia projektu.
+1. Wybierz **Generuj**polecenie. Wybierz nazwę pliku i Zapisz plik w folderze projektu. Na przykład `myblockchainmember.env`. Ten plik jest używany do generowania klucza prywatnego Ethereum dla członka łańcucha bloków.
+
+Usługa Azure łańcucha bloków Development Kit używa Truffle do wykonania skryptu migracji w celu wdrożenia umów w usłudze łańcucha bloków.
+
+![Pomyślnie wdrożono kontrakt](./media/send-transaction/deploy-contract.png)
+
+## <a name="call-a-contract-function"></a>Wywoływanie funkcji kontraktu
+
+Funkcja **SendRequest** kontraktu **HelloBlockchain** zmienia zmienną stanu **RequestMessage** . Zmiana stanu sieci łańcucha bloków odbywa się za pośrednictwem transakcji. Możesz utworzyć skrypt, aby wykonać funkcję **SendRequest** za pośrednictwem transakcji.
+
+1. Utwórz nowy plik w katalogu głównym projektu Truffle i nadaj mu `sendrequest.js`nazwę. Dodaj następujący kod JavaScript Web3 do pliku.
 
     ```javascript
-    var SimpleStorage = artifacts.require("SimpleStorage");
-    
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
+        
     module.exports = function(done) {
-      console.log("Getting deployed version of SimpleStorage...")
-      SimpleStorage.deployed().then(function(instance) {
-        console.log("Setting value to 65...");
-        return instance.set("65", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"});
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling SendRequest function for contract ", instance.address);
+        return instance.SendRequest("Hello, blockchain!");
       }).then(function(result) {
-        console.log("Transaction:", result.tx);
-        console.log("Finished!");
+        console.log("Transaction hash: ", result.tx);
+        console.log("Request complete");
         done();
       }).catch(function(e) {
         console.log(e);
@@ -375,76 +139,85 @@ Ponieważ nie deklarujemy klucza publicznego węzła **beta** w programie **priv
     };
     ```
 
-    Zastąp wartości w nawiasach kątowych, a następnie Zapisz plik.
+1. Po utworzeniu projektu w usłudze Azure łańcucha bloków Development Kit zostanie wygenerowany plik konfiguracji Truffle z informacjami o szczegółach punktu końcowego sieci konsorcjum łańcucha bloków. Otwórz **Truffle-config. js** w projekcie. Plik konfiguracji zawiera listę dwóch sieci: jeden o nazwie programowanie i jeden o takiej samej nazwie jak konsorcjum.
+1. W okienku terminalu VS Code Użyj Truffle, aby wykonać skrypt w sieci łańcucha bloków konsorcjum. Na pasku menu okienka terminalu wybierz kartę **Terminal** i program **PowerShell** na liście rozwijanej.
 
-    | Value | Opis
-    |-------|-------------
-    | \<alpha node public key\> | Klucz publiczny węzła Alpha
-    | \<Ethereum account address\> | Adres konta Ethereum utworzony w domyślnym węźle transakcji.
-
-    **privateFor** definiuje węzły, do których transakcja jest dostępna. W tym przykładzie konto domyślnego węzła transakcji może rzutować transakcje prywatne na węzeł **Alpha** . Należy dodać klucze publiczne dla wszystkich uczestników transakcji prywatnych.
-
-1. Użyj Truffle, aby wykonać skrypt dla domyślnego węzła transakcji.
-
-    ```bash
-    truffle exec sampletx.js --network defaultnode
+    ```PowerShell
+    truffle exec sendrequest.js --network <blockchain network>
     ```
 
-1. W konsoli Truffle wykonaj kod, który zwraca wartość wystąpienia kontraktu.
+    Zastąp \<Sieć\> łańcucha bloków nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
 
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
+Truffle wykonuje skrypt w sieci łańcucha bloków.
+
+![Dane wyjściowe skryptu](./media/send-transaction/execute-transaction.png)
+
+Gdy wykonujesz funkcję kontraktu za pośrednictwem transakcji, transakcja nie zostanie przetworzona do momentu utworzenia bloku. Funkcje przeznaczone do wykonania za pośrednictwem transakcji zwracają identyfikator transakcji zamiast wartości zwracanej.
+
+## <a name="query-contract-state"></a>Kwerenda stanu kontraktu
+
+Funkcje kontraktu inteligentnego mogą zwracać bieżącą wartość zmiennych stanu. Dodajmy funkcję, aby zwrócić wartość zmiennej stanu.
+
+1. W **HelloBlockchain. peruwiański**Dodaj funkcję **GetMessage** do kontraktu inteligentnego **HelloBlockchain** .
+
+    ``` solidity
+    function getMessage() public view returns (string memory)
+    {
+        if (State == StateType.Request)
+            return RequestMessage;
+        else
+            return ResponseMessage;
+    }
     ```
 
-    Jeśli transakcja zakończyła się pomyślnie, zwracana jest wartość 65. Na przykład:
+    Funkcja zwraca komunikat przechowywany w zmiennej stanu na podstawie bieżącego stanu kontraktu.
+
+1. Kliknij prawym przyciskiem myszy **HelloBlockchain. peruwiański** i wybierz polecenie **Kompiluj kontrakty** z menu, aby skompilować zmiany do kontraktu inteligentnego.
+1. Aby wdrożyć, kliknij prawym przyciskiem myszy **HelloBlockchain. peruwiański** i wybierz polecenie **Wdróż kontrakty** z menu.
+1. Następnie utwórz skrypt, używając programu w celu wywołania funkcji GetMessage. Utwórz nowy plik w katalogu głównym projektu Truffle i nadaj mu `getmessage.js`nazwę. Dodaj następujący kod JavaScript Web3 do pliku.
+
+    ```javascript
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
     
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling getMessage function for contract ", instance.address);
+        return instance.getMessage();
+      }).then(function(result) {
+        console.log("Request message value: ", result);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
     ```
-    Getting deployed version of SimpleStorage...
-    Setting value to 65...
-    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-    Finished!
-    ```
 
-1. Zamknij konsolę Truffle.
-
-    ```bash
-    .exit
-    ```
-    
-## <a name="validate-transaction-privacy"></a>Weryfikuj prywatność transakcji
-
-Ze względu na prywatność transakcji można wykonywać transakcje tylko na węzłach, które zostały zadeklarowane w **privateFor**. W tym przykładzie możemy wykonywać transakcje od czasu zadeklarowania klucza publicznego węzła **alfa** w **privateFor**. 
-
-1. Użyj Truffle, aby wykonać transakcję w węźle **Alpha** .
-
-    ```bash
-    truffle exec sampletx.js --network alpha
-    ```
-    
-1. Wykonanie kodu, który zwraca wartość wystąpienia kontraktu.
+1. W okienku terminalu VS Code Użyj Truffle, aby wykonać skrypt w sieci łańcucha bloków. Na pasku menu okienka terminalu wybierz kartę **Terminal** i program **PowerShell** na liście rozwijanej.
 
     ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    truffle exec getmessage.js --network <blockchain network>
     ```
-    
-    Jeśli transakcja zakończyła się pomyślnie, zwracana jest wartość 65. Przykład:
 
-    ```
-    Getting deployed version of SimpleStorage...
-    Setting value to 65...
-    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-    Finished!
-    ```
-    
-1. Zamknij konsolę Truffle.
+    Zastąp \<Sieć\> łańcucha bloków nazwą sieci łańcucha bloków zdefiniowanej w **Truffle-config. js**.
 
-    ```bash
-    .exit
-    ```
+Skrypt wysyła zapytanie do inteligentnego kontraktu przez wywołanie funkcji GetMessage. Zwracana jest bieżąca wartość zmiennej stanu **RequestMessage** .
+
+![Dane wyjściowe skryptu](./media/send-transaction/execute-get.png)
+
+Zwróć uwagę na to, że wartość nie jest **Hello, łańcucha bloków!** . Zamiast tego zwracana wartość jest symbolem zastępczym. Po zmianie i wdrożeniu kontraktu jest pobierany nowy adres kontraktu, a zmienne stanu są przypisywane wartości w konstruktorze kontraktu inteligentnego. Skrypt migracji Truffle Sample **2_deploy_contracts. js** wdraża inteligentny kontrakt i przekazuje wartość symbolu zastępczego jako argument. Konstruktor ustawia zmienną stanu **RequestMessage** na wartość symbolu zastępczego, co oznacza, że jest zwracana.
+
+1. Aby ustawić zmienną stanu **RequestMessage** i wykonać zapytanie dotyczące wartości, ponownie uruchom skrypty **SendRequest. js** i GetMessage **. js** .
+
+    ![Dane wyjściowe skryptu](./media/send-transaction/execute-set-get.png)
+
+    **SendRequest. js** ustawia zmienną stanu **RequestMessage** na **Hello, łańcucha bloków!** a **GetMessage. js** wysyła zapytanie do kontraktu o wartość zmiennej stanu **RequestMessage** i zwraca **Hello, łańcucha bloków!** .
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy zasoby nie będą już potrzebne, można je usunąć przez usunięcie `myResourceGroup` grupy zasobów utworzonej przez usługę Azure łańcucha bloków.
+Gdy zasoby nie będą już potrzebne, można je usunąć przez usunięcie `myResourceGroup` grupy zasobów utworzonej w ramach przewodnika Szybki Start dotyczącego *tworzenia elementu członkowskiego łańcucha bloków* .
 
 Aby usunąć grupę zasobów:
 
@@ -453,7 +226,7 @@ Aby usunąć grupę zasobów:
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku dodano dwa węzły transakcji, aby przedstawić prywatność kontraktu i transakcji. Węzeł domyślny został użyty do wdrożenia prywatnego kontraktu inteligentnego. Przetestowano prywatność, badając wartości kontraktu i wykonując transakcje w łańcucha bloków.
+W tym samouczku przedstawiono Tworzenie przykładowego projektu z jednolitością przy użyciu zestawu Azure łańcucha bloków Development Kit. Skompilowano i wdrożono inteligentny kontrakt o nazwie funkcja za pośrednictwem transakcji w sieci łańcucha bloków Consortium hostowanej w usłudze Azure łańcucha bloków Service.
 
 > [!div class="nextstepaction"]
 > [Opracowywanie aplikacji łańcucha bloków przy użyciu usługi Azure łańcucha bloków Service](develop.md)

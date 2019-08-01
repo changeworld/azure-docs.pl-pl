@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: ac1717a8e8a08fcfedc3bc21bb0f03b3e3ca2511
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ROBOTS: NOINDEX
+ms.openlocfilehash: 676b7f63b82a0e7c06264cb6dcbead8c1344a076
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60721853"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707111"
 ---
 # <a name="what-is-project-answer-search"></a>Czym jest projekt wyszukiwania odpowiedzi?
 Interfejs API laboratorium Project Answer Search korzysta z punktu końcowego Bing w wersji 7, aby uzyskać odpowiedzi na zapytania w formie pytań. Pytanie „What is the circumference of the earth?”(Jaki jest obwód ziemi?) zwraca odpowiedź, która zawiera fakty.  Zapytanie dotyczące osoby, miejsca lub przedmiotu zwraca informacje dotyczące jednostki określonej przez zapytanie. Te scenariusze mogą być przydatne w aplikacjach, takich jak na przykład boty konwersacyjne, aplikacje do obsługi wiadomości lub czytniki.  
@@ -333,7 +334,7 @@ Poniżej przedstawiono przykład, który zawiera pole `provider` obrazu i reguł
   
 ![Określanie autorstwa multimediów](./media/mediaattribution.png)  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Przewodnik Szybki start dla języka C#](c-sharp-quickstart.md)
 - [Przewodnik Szybki start dla języka Java](java-quickstart.md)
 - [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)

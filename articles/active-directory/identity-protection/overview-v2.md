@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d82f665cc837e5dbd2d7efbf16c7ae94e1b2b7
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 2987f8fb116bfcbb1698335c3aca6f1fd8eb633e
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333916"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717285"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co to jest Azure Active Directory Identity Protection (odświeżone)?
 
 Środowisko ochrony tożsamości zostało odświeżone, aby lepiej chronić tożsamości organizacji. Ten odświeżony interfejs zawiera następujące informacje:
 
-- Przeprojektowana obsługa administracyjna, która koncentruje się na ryzyku związanym z ¬ ryzykiem i ryzykiem związanym z logowaniem
+- Przeprojektowana obsługa administracyjna, która koncentruje się na podwyższonym ryzyku związanym z ryzykiem użytkownika i ryzykiem związanym z logowaniem
 - Zaawansowane środowisko dochodzeniowe z obsługą filtrowania, sortowania i plików do pobrania
 - Ulepszone Obliczanie ryzyka dla użytkowników, które ułatwiają określenie priorytetów działań dla użytkowników, których najprawdopodobniej zostanie naruszone bezpieczeństwo
 - Obsługa nowego interfejsu API w celu umożliwienia programistycznego dostępu do danych o podwyższonym ryzyku
@@ -147,11 +147,11 @@ Aby uzyskać więcej informacji, zobacz [Przypisywanie ról administratorów w A
 
 | Możliwość | Usługa Azure AD — warstwa Premium P2 | Usługa Azure AD — warstwa Premium P1 | Azure AD — wersja Podstawowa/bezpłatnie |
 | --- | --- | --- | --- |
-| Zasady dotyczące ryzyka związanego z użytkownikiem | Tak | Nie | Nie |
-| Zasady dotyczące ryzyka związanego z logowaniem | Yes | Nie | Nie |
+| Zasady dotyczące ryzyka związanego z użytkownikiem | Yes | Nie | Nie |
+| Zasady dotyczące ryzyka związanego z logowaniem | Tak | Nie | Nie |
 | Raport ryzykownych użytkowników | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
 | Raport dotyczący ryzykownych logowań | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
-| Zasady rejestracji w usłudze MFA | Yes | Nie | Nie |
+| Zasady rejestracji w usłudze MFA | Tak | Nie | Nie |
 
 ## <a name="next-steps"></a>Następne kroki 
 
