@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Skytap | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Skytap.
+title: 'Samouczek: Azure Active Directory integrację z usługą Skytap | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Skytap.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,20 +16,20 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb4ce8cbbfec58d9c7980954691fd6c71266d23
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7eae1c9a42547c73cc42868bac1f1f484b6354fa
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588033"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717410"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skytap"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Skytap
+# <a name="tutorial-azure-active-directory-integration-with-skytap"></a>Samouczek: Integracja Azure Active Directory z usługą Skytap
 
-W tym samouczku dowiesz się, jak zintegrować Skytap w usłudze Azure Active Directory (Azure AD).
-Integrowanie Skytap z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę Skytap z usługą Azure Active Directory (Azure AD).
+Integracja Skytap z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Skytap.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do Skytap (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi Skytap.
+* Możesz pozwolić użytkownikom na automatyczne logowanie do Skytap (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -37,20 +37,20 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Skytap, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą Skytap, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Skytap logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja z włączonym logowaniem jednokrotnym w Skytap
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Skytap **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez
+* Skytap obsługuje usługę **SP i dostawcy tożsamości** zainicjowano Logowanie jednokrotne
 
 ## <a name="adding-skytap-from-the-gallery"></a>Dodawanie Skytap z galerii
 
-Aby skonfigurować integrację Skytap w usłudze Azure AD, należy dodać Skytap z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu Skytap z usługą Azure AD, musisz dodać Skytap z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać Skytap z galerii, wykonaj następujące czynności:**
 
@@ -62,35 +62,35 @@ Aby skonfigurować integrację Skytap w usłudze Azure AD, należy dodać Skytap
 
     ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** znajdujący się u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Skytap**, wybierz opcję **Skytap** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Skytap**, wybierz pozycję **Skytap** w panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
     ![Skytap na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Skytap w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Skytap musi zostać ustanowione.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą Skytap na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Skytap.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Skytap, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi Skytap, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Skytap logowania jednokrotnego](#configure-skytap-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj logowanie](#configure-skytap-single-sign-on)** jednokrotne w usłudze Skytap, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Skytap](#create-skytap-test-user)**  — aby odpowiednikiem Britta Simon w Skytap połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Utwórz użytkownika testowego Skytap](#create-skytap-test-user)** , aby uzyskać odpowiednik Britta Simon w Skytap, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Skytap, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Skytap, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Skytap** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Skytap** wybierz pozycję **Logowanie**jednokrotne.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -104,7 +104,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Skytap, wykonaj nas
 
 4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
-    ![Skytap domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![Skytap domenę i adresy URL Logowanie jednokrotne](common/idp-intiated.png)
 
     a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `http://pingone.com/<custom EntityID>`
 
@@ -112,20 +112,20 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Skytap, wykonaj nas
 
 5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Skytap domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/both-advanced-urls.png)
+    ![Skytap domenę i adresy URL Logowanie jednokrotne](common/both-advanced-urls.png)
 
     d. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 
     e. W polu tekstowym **Stan przekaźnika** wpisz adres URL, korzystając z następującego wzorca: `https://pingone.com/1.0/<custom ID>`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi, adres URL logowania i stan przekazywania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Skytap](mailto:support@skytap.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adresu URL odpowiedzi, adresu URL logowania i stanu przekazywania. Skontaktuj się z [zespołem obsługi klienta Skytap](mailto:support@skytap.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link pobierania certyfikatu](common/metadataxml.png)
 
-7. Na **Konfigurowanie Skytap** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W sekcji **Konfigurowanie Skytap** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -135,9 +135,9 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Skytap, wykonaj nas
 
     c. Adres URL wylogowywania
 
-### <a name="configure-skytap-single-sign-on"></a>Konfigurowanie Skytap logowanie jednokrotne
+### <a name="configure-skytap-single-sign-on"></a>Konfigurowanie logowania jednokrotnego Skytap
 
-Aby skonfigurować logowanie jednokrotne na **Skytap** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej Skytap](mailto:support@skytap.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne na stronie **Skytap** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej Skytap](mailto:support@skytap.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -157,7 +157,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa użytkownika** wpisz `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
@@ -165,13 +165,13 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Skytap.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Skytap.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Skytap**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Skytap**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Skytap**.
+2. Na liście Aplikacje wybierz pozycję **Skytap**.
 
     ![Link Skytap na liście aplikacji](common/all-applications.png)
 
@@ -189,15 +189,15 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-skytap-test-user"></a>Tworzenie użytkownika testowego Skytap
+### <a name="create-skytap-test-user"></a>Utwórz użytkownika testowego Skytap
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Skytap. Praca z [zespołem pomocy technicznej Skytap](mailto:support@skytap.com) Aby dodać użytkowników na platformie Skytap. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Skytap. Każdy admininstrator lub Menedżer użytkowników w ramach konta Skytap może utworzyć użytkowników. Aby uzyskać więcej informacji na temat tego, jak to zrobić, w plikach pomocy Skytap, zobacz: https://help.skytap.com/users-create.html
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Skytap w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Skytap, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Skytap w panelu dostępu należy automatycznie zalogować się do Skytap, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -205,5 +205,5 @@ Po kliknięciu kafelka Skytap w panelu dostępu, powinien zostać automatycznie 
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,7 +1,7 @@
 ---
-title: Przewodnik Szybki Start projektu Akustyka przy użyciu aparatu Unity
+title: Dźwięk — Przewodnik Szybki Start z programem Unity
 titlesuffix: Azure Cognitive Services
-description: Za pomocą przykładowej zawartości, eksperymentować Akustyka projektu kontrolki projekt na platformie Unity i wdrażanie pulpitu Windows.
+description: Korzystając z przykładowej zawartości, należy eksperymentować z kontrolkami projektu w środowisku Unity i wdrażać je na pulpicie systemu Windows.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,72 +10,73 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1c790e0fa726c719d5b888d42b5f59739777566b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ROBOTS: NOINDEX
+ms.openlocfilehash: 93eb44bf91bc2c8346660a4d770ee6d83501c3ae
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917119"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706601"
 ---
-# <a name="project-acoustics-unity-quickstart"></a>Szybki Start Unity Akustyka projektu
-Użyj projektu Akustyka przykładowe zawartości dla aparatu Unity do eksperymentowania z kontrolkami projektowania opartych na symulacji.
+# <a name="project-acoustics-unity-quickstart"></a>Środowisko projektowe — Przewodnik Szybki Start
+Użyj zawartości przykładowej akustycznej projektu dla aparatu Unity, aby eksperymentować z kontrolkami projektu z symulacją.
 
 Wymagania dotyczące oprogramowania:
-* [Unity 2018.2 +](https://unity3d.com) dla Windows
-* [Akustyka projektu przykładowego pakietu zawartości](https://www.microsoft.com/download/details.aspx?id=57346)
+* [Unity 2018.2 +](https://unity3d.com) dla systemu Windows
+* [Przykładowy pakiet zawartości w projekcie](https://www.microsoft.com/download/details.aspx?id=57346)
 
-Co obejmuje przykładowego pakietu?
-* Unity sceny przy użyciu geometrii, źródeł dźwięku i formanty rozgrywkę
-* Wtyczka Akustyka projektu 
-* Zasoby ramach Akustyka dla sceny
+Co obejmuje pakiet przykładowy?
+* Sceny środowiska Unity z geometrią, źródłami dźwięku i kontrolkami rozgrywkę
+* Wtyczka do akustycznych projektów 
+* Rozszerzania elementy akustyczne dla sceny
 
-## <a name="import-the-sample-package"></a>Zaimportować przykładowy pakiet
-Zaimportować przykładowy pakiet do nowego projektu środowiska Unity. 
-* Na platformie Unity, przejdź do **zasoby > Importuj pakiet > Pakiet niestandardowy...**
+## <a name="import-the-sample-package"></a>Importowanie przykładowego pakietu
+Zaimportuj przykładowy pakiet do nowego projektu środowiska Unity. 
+* W środowisku Unity przejdź do pozycji **zasoby > Importuj pakiet > pakietu niestandardowego...**
 
-    ![Opcje zrzut ekranu z importowanie pakietu Unity](media/import-package.png)  
+    ![Zrzut ekranu opcji pakietu importowania środowiska Unity](media/import-package.png)  
 
-* Wybierz **ProjectAcoustics.unitypackage**
+* Wybierz **ProjectAcoustics. UNITYPACKAGE**
 
-Jeśli importujesz pakiet w istniejącym projekcie, zobacz [integracja aparatu Unity](unity-integration.md) dla dodatkowych kroków i notatki.
+W przypadku importowania pakietu do istniejącego projektu zapoznaj się z tematem [integracja aparatu Unity](unity-integration.md) w celu uzyskania dodatkowych kroków i notatek.
 
-## <a name="restart-unity"></a>Ponowne uruchomienie aparatu Unity
-Tworzenie części toolkit Akustyka wymaga wersji programu .NET 4.x skryptów środowiska uruchomieniowego. Importowanie pakietu zaktualizuje ustawienia odtwarzacza aparatu Unity. Ponowne uruchomienie aparatu Unity dla tego ustawienia zaczęły obowiązywać.
+## <a name="restart-unity"></a>Uruchom ponownie środowisko Unity
+Część Tworzenie zestawu narzędzi akustycznych wymaga wersji środowiska uruchomieniowego obsługi skryptów .NET 4. x. Importowanie pakietu zaktualizuje ustawienia odtwarzacza Unity. Uruchom ponownie środowisko Unity, aby to ustawienie zaczęło obowiązywać.
 
-Możesz sprawdzić to ustawienie weszło w życie, otwierając **ustawienia odtwarzacza**:
+Aby sprawdzić, czy to ustawienie zostało wykonane, można otworzyć **Ustawienia odtwarzacza**:
 
-![Zrzut ekranu Unity Player ustawienia panelu](media/player-settings.png)
+![Zrzut ekranu przedstawiający panel ustawień odtwarzacza Unity](media/player-settings.png)
 
-![Zrzut ekranu Unity ustawienia odtwarzacza panel .NET 4.5 wybrane](media/net45.png)
+![Zrzut ekranu przedstawiający panel ustawień odtwarzacza Unity z wybranym programem .NET 4,5](media/net45.png)
 
 ## <a name="experiment-with-design-controls"></a>Eksperymentowanie z kontrolkami projektu
-Otwórz przykładowy sceny w **ProjectAcousticsSample** folder i kliknij przycisk play programu Unity editor. Użyj W, A, S, D i myszy, aby poruszać się. Aby porównać, jak brzmi scena z akustyką i bez niej, naciskaj przycisk **R** do momentu, w którym tekst nakładki zmieni się na czerwony i będzie wyświetlany komunikat „Akustyka: wyłączona”. Aby wyświetlić skróty klawiaturowe zapewniające większą liczbę kontrolek, naciśnij klawisz **F1**. Formanty są również użyteczny przez kliknięcie prawym przyciskiem myszy, aby wybrać akcję do wykonania, pozostanie kliknięcie do wykonania akcji.
+Otwórz przykładową scenę w folderze **ProjectAcousticsSample** , a następnie kliknij przycisk Odtwórz w edytorze aparatu Unity. Użyj W, a, S, D i myszy, aby poruszać się. Aby porównać, jak brzmi scena z akustyką i bez niej, naciskaj przycisk **R** do momentu, w którym tekst nakładki zmieni się na czerwony i będzie wyświetlany komunikat „Akustyka: wyłączona”. Aby wyświetlić skróty klawiaturowe zapewniające większą liczbę kontrolek, naciśnij klawisz **F1**. Kontrolki są również użyteczne przez kliknięcie prawym przyciskiem myszy w celu wybrania akcji do wykonania, a następnie kliknięcie lewym przyciskiem w celu wykonania akcji.
 
-Skrypt **AcousticsAdjust** jest dołączony do źródeł dźwięku w scenie próbki, co umożliwia parametry projektu-source. 
+Skrypt **AcousticsAdjust** jest dołączany do źródeł dźwięku w przykładowej scenie, co umożliwia parametry projektu dla poszczególnych źródeł. 
 
-![Zrzut ekranu AcousticsAdjust Unity skryptu](media/acoustics-adjust.png)
+![Zrzut ekranu przedstawiający skrypt AcousticsAdjust środowiska Unity](media/acoustics-adjust.png)
 
-Następujące analizuje niektóre efekty, których można tworzyć za pomocą podanego kontrolek. Aby uzyskać szczegółowe informacje dotyczące każdego formantu, zobacz [samouczek projektu środowiska Unity Akustyka projektu](unreal-workflow.md).
+Poniżej przedstawiono niektóre efekty, które mogą zostać utworzone przy użyciu podanych kontrolek. Aby uzyskać szczegółowe informacje na temat poszczególnych kontrolek, zobacz Samouczek dotyczący środowiska projektowego dla [aparatu Unity](unreal-workflow.md).
 
-### <a name="modify-distance-based-attenuation"></a>Modyfikowanie tłumienie na podstawie odległości
-Audio DSP dostarczone przez **Akustyka projektu** wtyczki spatializer Unity szanuje tłumienie opartego na źródło wbudowana do aparatu Unity Editor. Formanty na podstawie odległości tłumienie znajdują się w **źródła Audio** składnik znaleziony w **Inspektor** panelu dźwięk źródeł, w obszarze **3D ustawienia dźwięku**:
+### <a name="modify-distance-based-attenuation"></a>Modyfikuj tłumienie na podstawie odległości
+Procesor DSP audio, który jest dostarczany przez wtyczkę spatializera w **środowisku Unity,** uwzględnia tłumienie oparte na odległości dla poszczególnych źródeł wbudowane w Edytor aparatu Unity. Kontrolki przeciwstawnej na podstawie odległości znajdują się w składniku **Źródło Audio** znalezionym w panelu **inspektorów** źródeł dźwięku, w obszarze **Ustawienia dźwięku 3W**:
 
-![Zrzut ekranu Unity odległość tłumienie opcji — panel](media/distance-attenuation.png)
+![Zrzut ekranu przedstawiający panel Opcje tłumienia odległości aparatu Unity](media/distance-attenuation.png)
 
-Projekt Akustyka wykonuje obliczenia w polu "symulacji region" skupia się wokół lokalizacji odtwarzacza. Ponieważ zasoby Akustyka w pakiecie przykładowych zostały wbudowanymi o rozmiarze region symulacji 45m otaczającego odtwarzacza, powinny być zaprojektowane dźwięku Tłumienie można podzielić na 0 w około 45 m.
+Akustyczne projektu wykonuje obliczenia w polu "region symulacji" na wyśrodkować wokół lokalizacji odtwarzacza. Ponieważ elementy akustyczne w przykładowym pakiecie były rozszerzania z rozmiarem regionu symulacji o rozmiarze 45m otaczającym gracz, tłumienie dźwięku powinno być zaprojektowane tak, aby mieściły się w około 45 m.
 
-### <a name="modify-occlusion-and-transmission"></a>Modyfikowanie zamknięcia i transmisji
-* Jeśli **zamknięcia** mnożnik jest większa niż 1 (wartość domyślna to 1), zamknięcia będzie exaggerated. Ustawienie sprawia, że mniej niż 1 zamknięcia efektu bardziej subtelny.
+### <a name="modify-occlusion-and-transmission"></a>Modyfikuj zamknięcia i transmisja
+* Jeśli mnożnik **zamknięcia** jest większy niż 1 (wartość domyślna to 1), zamknięcia będzie exaggerated. Ustawienie go mniejszej niż 1 sprawia, że efekt zamknięcia jest bardziej subtelny.
 
-* Aby włączyć przekazywanie za pośrednictwem tablicy, Przenieś **transmisji (baza danych)** suwaka off najniższy poziom. 
+* Aby włączyć przekazywanie przez ściany, przesuń suwak **transmisja (DB)** na najniższy poziom. 
 
-### <a name="modify-wetness-for-a-source"></a>Modyfikowanie wetness źródła
-* Aby zmienić, jak szybko wetness zmieniają się w odległości, użyj **Percepcyjna Warp odległość**. **Projekt Akustyka** oblicza mokre poziomów w całej przestrzeni z symulacji, które różnią się płynnie z odległości i podaj odległość Percepcyjna podpowiedzi. Zwiększenie warp odległość exaggerates ten efekt, zwiększając powiązane odległość mokrą poziomów. Zniekształcania wartości poniżej 1 należy na podstawie odległości reverberation, zmień bardziej subtelny. Ten efekt można również dostosować szczegółowo bardziej szczegółowej, dostosowując **Wetness (baza danych)**.
+### <a name="modify-wetness-for-a-source"></a>Modyfikuj wetness dla źródła
+* Aby zmienić, jak szybko wetness zmiany z odległości, użyj **wypaczenia odległości Percepcyjna**. Ruch **akustyczny projektu** oblicza poziomy w całym miejscu od symulacji, które różnią się bezproblemowo i zapewniają podpowiedzi Percepcyjna. Zwiększenie zakrzywienia odległości exaggerates ten efekt przez zwiększenie poziomów mokrych związanych z odległością. Zniekształcanie wartości mniejszej niż 1 sprawia, że reverberation na odległość zmienia się bardziej subtelne. Ten efekt można również dostosować w szczegółowym szczegółach przez dostosowanie **wetness (DB)** .
 
-* Wydłużenie czasu zanikający w całej przestrzeni przez dostosowanie **Skala czasu zanikania**. Jeśli wynik symulacji dla pary lokalizacji określonego odbiornika źródła jest zanikania ich 1.5s i **Skala czasu zanikania** ma wartość 2, czas zanikania stosowane do źródła jest 3s.
+* Zwiększ czas zaniku w całym miejscu, dostosowując **skalę czasu zanikania**. Jeśli wynik symulacji dla określonej pary lokalizacji odbiornika źródła jest czasem o wartości 1,5 s, a **Skala czasu zaniku** jest ustawiona na 2, czas zaniku zastosowany do źródła to – 3 s.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Przeczytaj pełne szczegóły na [opartych na platformie Unity Akustyka projektu projektowania formanty](unity-workflow.md)
-* Dalsze Eksplorowanie pojęć dotyczących [Projektowanie procesu](design-process.md)
-* [Utwórz konto platformy Azure](create-azure-account.md) wstępne tworzenie i tworzenie procesów
+* Przeczytaj wszystkie szczegóły dotyczące kontrolek projektowych opartych na technologii [Unity](unity-workflow.md)
+* Więcej szczegółowych koncepcji związanych z [procesem projektowania](design-process.md)
+* [Utwórz konto platformy Azure](create-azure-account.md) , aby poznać procesy poprzedzające tworzenie i tworzenie
 

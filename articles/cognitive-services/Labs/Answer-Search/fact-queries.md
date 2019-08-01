@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: fca459291fbf25c5404427fdcfc96947c52a1e74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: 05b870fb0d836a89be2a7212436c5c6f91982837
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60408091"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705458"
 ---
 # <a name="quickstart-query-for-facts"></a>Szybki start: Wykonywanie zapytań dotyczących faktów
 
@@ -199,7 +200,7 @@ Wyniki dla odpowiedzi typu `facts` obejmują następujące wiersze i komórki:
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Przewodnik Szybki start dla języka C#](c-sharp-quickstart.md)
 - [Przewodnik Szybki start dla języka Java](java-quickstart.md)
 - [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)

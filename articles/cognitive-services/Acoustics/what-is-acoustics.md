@@ -1,7 +1,7 @@
 ---
-title: Omówienie Akustyka projektu
+title: Omówienie funkcji akustycznych projektu
 titlesuffix: Azure Cognitive Services
-description: Akustyka projektu jest Akustyka aparat 3D interaktywnych środowisk, integrowania wbudowanymi wave fizyki symulacji za pomocą kontrolek interaktywności.
+description: Akustyczny projekt to aparat akustyczny dla interaktywnych środowisk 3W, integrowanie symulacji fizyki rozszerzania Wave z interaktywnymi kontrolkami projektu.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,51 +10,52 @@ ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 73b8980b0ea2d1adbd814026f026358e25dcbb55
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ROBOTS: NOINDEX
+ms.openlocfilehash: a654dd966c40b5b079f92b910ade52f4eda10344
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502959"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704753"
 ---
 # <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
-Akustyka projektu jest aparatem Akustyka wave 3D środowiska interaktywnego. Modeluje ona efektów wave, jak diffraction, portaling i pogłosu efekty w złożonych scen, bez konieczności ręcznego strefy znaczników. Zawiera także aparatu do tworzenia gier i integracji audio oprogramowania pośredniczącego. Filozofia Akustyka projektu jest podobna do statycznego oświetlenia: wprowadzić w trybie offline szczegółowe fizyki zapewnienie fizycznych linii bazowej, a za pomocą uproszczonego środowiska uruchomieniowego ekspresyjny projektowania formanty do zrealizowania określonych celów sztuki.
+Akustyczny projekt jest aparatem akustycznym Wave dla interaktywnych środowisk 3W. Modele it to efekty Wave, takie jak diffraction, portale i Reverb, w złożonych scenach, bez konieczności ręcznego znaczników strefy. Obejmuje to także integrację aparatu gier i oprogramowania pośredniczącego. Funkcja "akustyczne projektu" jest podobna do statycznego oświetlenia: Tworzenie szczegółowej fizyki w trybie offline, aby zapewnić fizyczną linię bazową, i korzystać z uproszczonego środowiska uruchomieniowego z kontrolkami projektowymi, aby zaspokoić cele artystyczne.
 
-![Zrzut ekranu z Gears of War 4 przedstawiający voxels Akustyka](media/gears-with-voxels.jpg)
+![Zrzut ekranu przedstawiający narzędzia War 4 z voxels akustycznymi](media/gears-with-voxels.jpg)
 
-## <a name="using-wave-physics-for-interactive-acoustics"></a>Przy użyciu fizyki wave Akustyka interaktywne
-Metody oparte na ray Akustyka można sprawdzić za pomocą rzutowania pojedynczej ray źródła do odbiornika zamknięcia lub dysku pogłosu poprzez oszacowanie woluminu lokalnego sceny przy użyciu kilku promieniach. Ale techniki te mogą być zawodne, ponieważ pebble occludes boulder w miarę. Promieniach nie uwzględniać sposób dźwięku zakrętów wokół obiektów, zjawiskiem, znane jako diffraction. Symulacja Akustyka projektu przechwytuje te skutki, przy użyciu symulacji na podstawie wave. Wynikiem jest bardziej przewidywalne i niezawodne.
+## <a name="using-wave-physics-for-interactive-acoustics"></a>Korzystanie z fizyki Wave dla interaktywnych hałasu
+Metody akustyczne oparte na protokole ray mogą sprawdzać zamknięcia za pomocą jednego rzutu Source-Listener lub Reverb przez oszacowanie lokalnego woluminu sceny przy użyciu kilku promieni. Jednak te techniki mogą być niezawodne, ponieważ Pebble occludes tak samo jak w przypadku Boulder. Promienie nie uwzględniają sposobu, w jaki dźwięk zgina się wokół obiektów, zjawisko znanego jako diffraction. Symulacja akustyczna projektu przechwytuje te efekty przy użyciu symulacji opartej na Wave. Wynik jest bardziej przewidywalny i niezawodny.
 
-Innowacje klucza Akustyka projektu jest kilka symulacji akustyczny tradycyjnych zaprojektowaniu pojęcia związane z. Tłumaczy je wyniki symulacji na tradycyjnych audio DSP parametrów zamknięcia., portaling i pogłosu. Projektant są używane kontrolki za pośrednictwem tego procesu tłumaczenia. Aby uzyskać szczegółowe informacje na temat podstawowych technologii za Akustyka projektu, odwiedź stronę [strony projektu badawczego](https://www.microsoft.com/en-us/research/project/project-triton/).
+Kluczowe innowacje w projekcie polegają na połączeniu symulacji akustycznej z tradycyjnymi pojęciami dotyczącymi projektowania dźwięku. Tłumaczy wyniki symulacji na tradycyjne parametry Audio DSP dla zamknięcia, portale i Reverb. Projektant używa formantów dla tego procesu tłumaczenia. Aby uzyskać więcej informacji na temat podstawowych technologii związanych z dźwiękiem, odwiedź [stronę projektu badania](https://www.microsoft.com/en-us/research/project/project-triton/).
 
-![Animacje wyświetlane poziome wycinek 2D propagacji fali za pośrednictwem sceny](media/wave-simulation.gif)
+![Animacja pokazująca poziomy rozpropagowania fali Wave przez scenę](media/wave-simulation.gif)
 
 ## <a name="setup"></a>Konfiguracja
-[Integracja aparatu Unity Akustyka projektu](unity-integration.md) jest przeciągnij i upuść i uwzględnia wtyczki audio aparatu Unity. Rozszerzaj kontroli źródła audio Unity, dołączając Akustyka projektu C# formantów składników do każdego obiektu audio.
+[Integracja](unity-integration.md) z mechanizmem akustycznym w projekcie polega na przeciąganiu i upuszczaniu i włączaniu wtyczki aparatu audio aparatu Unity. Rozszerzanie kontroli źródła audio Unity przez dołączenie składnika C# kontroli akustycznych projektu do każdego obiektu audio.
 
-[Projekt integracji Akustyka Unreal](unreal-integration.md) zawiera wtyczki edytora i gier, Unreal i wtyczki mixer Wwise. Niestandardowe składnika audio rozszerza dobrze znanych funkcjonalności Wwise w ramach Unreal za pomocą na żywo Akustyka projektu kontrolki. Projektowanie kontrolki również są widoczne w Wwise na wtyczkę mixer.
+[Integracja](unreal-integration.md) z obsługą Unreali projektu obejmuje wtyczki edytora i gier dla Unreal oraz wtyczkę Wwise. Niestandardowy składnik audio rozszerza znane funkcje Wwise w programie Unreal z kontrolkami projektu na żywo. Kontrolki projektowania są również uwidocznione w Wwise na wtyczki miksera.
 
 ## <a name="workflow"></a>Przepływ pracy
-* **Wstępne tworzenie:** Rozpoczyna się od konfigurowania tworzenie, wybierając geometrię, która reaguje na Akustyka, na przykład ignorując szyby światła. Następnie edytuj automatycznego przypisania materiału i zaznaczanie obszarów nawigacji do odbiornika przewodnik próbkowania. Nie ma żadnych znaczników ręczne dla stref pogłosu/portalu/miejsca.
-* **Tworzenie:** Etap analizy jest uruchamiany lokalnie, który wykonuje voxelization i pozostałych funkcji analizy geometrycznych na scenie, w zależności od wyborów powyżej. Wyniki są wizualizowane w edytorze, aby sprawdzić ustawienia sceny. Po przesłaniu tworzenie voxel przesyłane na platformie Azure, a następnie wrócić Akustyka zasobu gier.
-* **Środowisko uruchomieniowe:** Załaduj zasób do poziomu, a wszystko jest gotowe do nasłuchiwania Akustyka w Twoim poziomie. Projekt Akustyka na żywo w edytorze za pomocą kontrolki źródła szczegółowych. Formanty również mogą być napędzane z poziomu skryptów.
+* **Przed tworzenie:** Zacznij od konfigurowania tworzenie, wybierając geometrię reaguje na akustyczne, na przykład ignorując wałki świetlne. Następnie Edytuj automatyczne przypisania materiału i wybierz obszary nawigacji, aby Przewodnik po próbkach odbiornika. Nie ma znaczników ręcznych dla Reverb/Portal/strefy pokojowej.
+* **Tworzenie** Krok analizy jest uruchamiany lokalnie, co oznacza, że voxelization i inne analizy geometryczne sceny na podstawie powyższych opcji. Wyniki są wizualizowane w edytorze, aby sprawdzić konfigurację sceny. W przypadku przesyłania tworzenie dane Voxel są wysyłane na platformę Azure i są odbierane przez użytkownika.
+* **Środowiska uruchomieniowego** Załaduj zasób do swojego poziomu i wszystko jest gotowe do nasłuchiwania obciążeń akustycznych na poziomie. Zaprojektuj na żywo akustyczne w edytorze, używając szczegółowych kontroli dla poszczególnych źródeł. Formanty mogą być również sterowane na poziomie skryptów.
 
 ## <a name="platforms"></a>Platformy
-Obecnie można wdrożyć projektu Akustyka wtyczki środowiska uruchomieniowego na następujących platformach:
+Wtyczki środowiska uruchomieniowego akustyczne projektu można obecnie wdrożyć na następujących platformach:
 * Windows
 * Android
 * Xbox One
 
 ## <a name="download"></a>Do pobrania
-* [Dodatek typu plug-in projektu środowiska Unity Akustyka i przykłady](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
-* [Projekt Akustyka Unreal & Wwise dodatków plug-in i przykłady](https://www.microsoft.com/download/details.aspx?id=58090)
-  * Pliki binarne konsoli Xbox i pomocy technicznej skontaktuj się z nami za pośrednictwem rejestracji poniższy formularz
+* [Wtyczka i przykłady w środowisku Unity](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
+* [Unreal akustyczny projektu i przykłady & Wwise](https://www.microsoft.com/download/details.aspx?id=58090)
+  * W przypadku plików binarnych i pomocy technicznej usługi Xbox skontaktuj się z nami za pośrednictwem formularza rejestracji poniżej
 
 ## <a name="contact-us"></a>Skontaktuj się z nami
-* [Projekt Akustyka dyskusji i wystawiać raportowania](https://github.com/microsoft/ProjectAcoustics/issues)
-* [Utwórz konto, aby otrzymywać aktualizacje na Akustyka projektu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
+* [Dyskusje i raporty o problemach dotyczących projektów](https://github.com/microsoft/ProjectAcoustics/issues)
+* [Zarejestruj się, aby otrzymywać aktualizacje dotyczące hałasu projektu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
-## <a name="next-steps"></a>Kolejne kroki
-* Spróbuj [Akustyka projektu Przewodnik Szybki start dotyczący Unity](unity-quickstart.md) lub [Unreal](unreal-quickstart.md)
-* Zapoznaj się z [dźwiękowych zasady projektowania klas z Akustyka projektu](design-process.md)
+## <a name="next-steps"></a>Następne kroki
+* Wypróbuj [Przewodnik Szybki Start dla środowiska Unity](unity-quickstart.md) lub [Unreal](unreal-quickstart.md)
+* Poznaj informacje [o projekcji projektu dźwiękowego dotyczącego hałasu](design-process.md)
 

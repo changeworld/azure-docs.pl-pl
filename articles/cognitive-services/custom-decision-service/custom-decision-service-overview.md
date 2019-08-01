@@ -10,12 +10,13 @@ ms.subservice: custom-decision-service
 ms.topic: overview
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: f4a0f519fe83162e7e161c3fda2b78a94b1d4bd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: 073b2bf6df21e05481cde043d8ddcfd49822e94f
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507831"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704244"
 ---
 # <a name="what-is-custom-decision-service"></a>Czym jest usługa Custom Decision Service?
 
@@ -49,7 +50,7 @@ W niniejszej dokumentacji często występują następujące terminy:
 * **Funkcja wywołania zwrotnego**: ta funkcja, tworzona przez programistę aplikacji, renderuje zawartość w interfejsie użytkownika aplikacji. Zawartość jest ułożona w kolejności odpowiadającej rankingowi ustalonemu przez usługę Custom Decision Service.
 * **Nagroda**: miara reakcji użytkownika na wyświetloną zawartość. Usługa Custom Decision Service mierzy reakcję użytkownika na podstawie kliknięć. Kliknięcia są zgłaszane do systemu za pomocą kodu umieszczonego w aplikacji przez programistę.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zarejestruj swoją aplikację](custom-decision-service-get-started-register.md) w usłudze Custom Decision Service
 * Zoptymalizuj [stronę internetową](custom-decision-service-get-started-browser.md) lub [aplikację na smartfona](custom-decision-service-get-started-app.md).

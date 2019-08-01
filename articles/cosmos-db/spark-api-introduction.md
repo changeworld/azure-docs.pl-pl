@@ -3,15 +3,15 @@ title: Wprowadzenie do wbudowanej analizy operacyjnej w Azure Cosmos DB z Apache
 description: Dowiedz się, jak korzystać z wbudowanej obsługi Apache Spark w Azure Cosmos DB do uruchamiania analiz operacyjnych i AI
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 05/23/2019
+ms.date: 08/01/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 245df0632765c4000bdf5da3e428187d2b068866
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 3fd7990043543b92eb3daf8ec699ec58db3387ec
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402114"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717573"
 ---
 # <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Wbudowana analiza operacyjna w Azure Cosmos DB z Apache Spark (wersja zapoznawcza) 
 

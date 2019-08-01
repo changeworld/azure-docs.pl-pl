@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fe19ea2d8946d645704139bbf2faa80f21e84039
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4c55d3d92faf854952b609287bb16a30ed1e30ec
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708060"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717466"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Samouczek: tworzenie niestandardowego obrazu maszyny wirtualnej na platformie Azure za pomocą programu Azure PowerShell
 
@@ -33,6 +33,8 @@ Obrazy niestandardowe są podobne do obrazów z platformy handlowej, ale tworzy 
 > * Tworzenie maszyny wirtualnej na podstawie obrazu niestandardowego
 > * Wyświetlanie listy wszystkich obrazów w subskrypcji
 > * Usuwanie obrazu
+
+W publicznej wersji zapoznawczej mamy usługę [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) . Wystarczy opisać dostosowania w szablonie i obsłużyć kroki tworzenia obrazu w tym artykule. [Wypróbuj usługę Azure Image Builder (wersja zapoznawcza)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -65,7 +67,7 @@ Narzędzie Sysprep między innymi usuwa wszystkie informacje osobiste związane 
 
 Aby utworzyć obraz, należy cofnąć przydział maszyny wirtualnej i oznaczyć ją jako uogólnioną na platformie Azure.
 
-Cofnij Przydział maszyny Wirtualnej przy użyciu [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
+Cofnij przydział maszyny wirtualnej za pomocą polecenia [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -162,7 +164,7 @@ W tym samouczku został utworzony obraz niestandardowy maszyny wirtualnej. W tym
 > * Wyświetlanie listy wszystkich obrazów w subskrypcji
 > * Usuwanie obrazu
 
-Przejdź do następnego samouczka, aby dowiedzieć się więcej o sposobie tworzenia maszyn wirtualnych o wysokiej dostępności.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak utworzyć maszyny wirtualne o wysokiej dostępności.
 
 > [!div class="nextstepaction"]
 > [Tworzenie maszyn wirtualnych o wysokiej dostępności](tutorial-availability-sets.md)
