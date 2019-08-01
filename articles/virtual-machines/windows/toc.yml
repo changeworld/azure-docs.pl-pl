@@ -108,6 +108,8 @@
           href: compute-benchmark-scores.md
         - name: Limity przydziału procesorów wirtualnych
           href: quotas.md
+    - name: Dedykowane hosty
+      href: dedicated-hosts.md
     - name: Konserwacja i aktualizacje
       href: maintenance-and-updates.md
     - name: Przechowywanie na dysku
@@ -146,6 +148,12 @@
   items:
     - name: Tworzenie maszyn wirtualnych
       items:
+        - name: Korzystanie z dedykowanych hostów
+          items:
+            - name: PowerShell
+              href: dedicated-hosts-powershell.md
+            - name: Portal
+              href: dedicated-hosts-portal.md
         - name: 'Korzystanie z języka C#'
           href: csharp.md
         - name: Korzystanie z wyspecjalizowanego dysku

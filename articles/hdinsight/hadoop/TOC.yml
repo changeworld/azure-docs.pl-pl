@@ -54,6 +54,14 @@
     - name: Omówienie tożsamości zarządzanych
       href: ../hdinsight-managed-identities.md
       maintainContext: true
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Nie można dodać węzłów do klastra usługi HDInsight
+          href: ./hdinsight-troubleshoot-unable-add-nodes.md
+        - name: InvalidNetworkSecurityGroupSecurityRules — tworzenie klastra kończy się niepowodzeniem
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+        - name: Konwertowanie certyfikatu jednostki usługi
+          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
 - name: Instrukcje
   items:
     - name: Korzystanie z piaskownicy usługi Apache Hadoop

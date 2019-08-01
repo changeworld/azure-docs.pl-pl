@@ -56,12 +56,22 @@
           items:
             - name: Niewystarczająca ilość pamięci sterty
               href: ./apache-spark-troubleshoot-outofmemory-heap.md
+            - name: Miejsce na stercie Java
+              href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
+            - name: Nie można uruchomić serwera Livy
+              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+        - name: Powolne zadania platformy Apache Spark — kontener magazynu
+          href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: Wyjątek IllegalArgumentException
           href: ./apache-spark-troubleshoot-illegalargumentexception.md
         - name: Zatrzymywanie aplikacji przesyłania strumieniowego na platformie Apache Spark
           href: ./apache-spark-troubleshoot-application-stops.md
         - name: Wyjątek RpcTimeoutException
           href: ./apache-spark-troubleshoot-rpctimeoutexception.md
+        - name: Blokowanie interfejsu API między źródłami
+          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
+        - name: Serializacja Kryo nie powiodła się
+          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
 - name: Instrukcje
   items:
     - name: Korzystanie z magazynu klastra

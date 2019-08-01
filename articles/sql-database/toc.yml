@@ -175,7 +175,7 @@
           href: sql-database-service-tier-hyperscale-faq.md
     - name: Pojedyncze bazy danych
       items:
-        - name: Omówienie pojedynczych baz danych
+        - name: Dokumentacja pojedynczej bazy danych
           href: sql-database-single-index.yml
         - name: Funkcje pojedynczej bazy danych
           href: sql-database-single-database.md
@@ -215,7 +215,7 @@
           href: sql-database-elastic-pool-manage.md
     - name: Wystąpienia zarządzane
       items:
-        - name: Omówienie wystąpień zarządzanych
+        - name: Dokumentacja wystąpienia zarządzanego
           href: sql-database-managed-instance-index.yml
         - name: Funkcje wystąpienia zarządzanego
           href: sql-database-managed-instance.md
@@ -235,7 +235,7 @@
           href: sql-database-managed-instance-public-endpoint-securely.md
     - name: Platforma jako usługa
       items:
-        - name: Omówienie platformy jako usługi
+        - name: Dokumentacja platformy jako usługi
           href: sql-database-paas.yml
         - name: Ciągłość działalności biznesowej
           href: sql-database-business-continuity.md
@@ -324,7 +324,7 @@
           href: sql-database-feature-restrictions.md
     - name: Skalowalność
       items:
-        - name: Omówienie skalowalności
+        - name: Dokumentacja skalowalności
           href: sql-database-scalability-index.yml
         - name: Skalowanie w górę/w dół
           href: sql-database-scale-resources.md
@@ -354,7 +354,7 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Monitorowanie i dostrajanie
       items:
-        - name: Omówienie monitorowania i dostrajania
+        - name: Dokumentacja monitorowania i dostrajania
           href: sql-database-monitoring-tuning-index.yml
         - name: Monitorowanie i dostrajanie wydajności
           href: sql-database-monitor-tune-overview.md
@@ -378,7 +378,7 @@
               href: sql-database-advisor.md
     - name: Funkcje bazy danych
       items:
-        - name: Omówienie
+        - name: Dokumentacja funkcji usługi SQL Database
           href: sql-database-features-index.yml
         - name: Porównanie funkcji SQL
           href: sql-database-features.md

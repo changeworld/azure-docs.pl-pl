@@ -28,6 +28,8 @@
           items:
             - name: Przekroczono limit narzutu odzyskiwania pamięci
               href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Wydajność zapytań LLAP usługi Apache Hive
+          href: ./interactive-query-troubleshoot-query-performance.md
 - name: Instrukcje
   items:
     - name: Migrowanie obciążeń technologii Hive do usługi HDInsight 4.0
