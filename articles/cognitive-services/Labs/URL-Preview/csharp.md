@@ -10,12 +10,13 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: ec0c8ad06480cd596365f43f13ca57fb242d364c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7f900b95b30f6ab5298e98661e6922e4e4d360c7
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698048"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706966"
 ---
 # <a name="quickstart-url-preview-query-in-c"></a>Szybki start: Podgląd adresu URL — zapytanie w języku C#
 
@@ -162,7 +163,7 @@ Aby uruchomić aplikację:
 3. Zastąp wartość `YOUR-ACCESS-KEY` prawidłowym kluczem dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Przewodnik Szybki start dla języka Java](java-quickstart.md)
 - [Przewodnik Szybki start dla języka JavaScript](javascript.md)
 - [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)

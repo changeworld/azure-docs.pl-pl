@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 26a9fc60c90f536e4ef9f03e96545e493a60f206
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ROBOTS: NOINDEX
+ms.openlocfilehash: e28b86981eafdf353f4a0e1937e5731aa4e7d68e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698094"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707128"
 ---
 # <a name="quickstart-project-answer-search-query-in-java"></a>Szybki start: Laboratorium Project Answer Search — zapytanie w języku Java
 W tym artykule użyto języka Java w celu zademonstrowania możliwości interfejsu API wyszukiwania odpowiedzi Bing, który jest częścią usług Microsoft Cognitive Services na platformie Azure. Ten interfejs API jest usługą internetową w architekturze REST zgodną z dowolnym językiem programowania, który może wykonywać żądania HTTP i analizować format JSON.
@@ -150,7 +151,7 @@ public class KnowledgeSrch {
 
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Przewodnik Szybki start dla języka C#](c-sharp-quickstart.md)
 - [Przewodnik Szybki start dla języka Java](java-quickstart.md)
 - [Przewodnik Szybki start dla środowiska Node](node-quickstart.md)
