@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: afb64b799e826abc3e6aad661a97211b43304dc6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19a226fb580f3d4215b7c3f04f17c3f92505987e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60462728"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697979"
 ---
 # <a name="quickstart-url-preview-with-python"></a>Szybki start: Podgląd adresu URL za pomocą języka Python
 
@@ -23,7 +23,7 @@ Poniższy przykład w języku Python tworzy podgląd adresu URL witryny internet
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://aka.ms/answersearchsubscription).
+Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search).
 
 W tym przykładzie użyto języka Python 3.6.
 
@@ -65,7 +65,7 @@ def get_preview ():
 result = get_preview ()
 print (json.dumps(json.loads(result), indent=4))
 ```
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Przewodnik Szybki start dla języka C#](csharp.md)
 - [Przewodnik Szybki start dla języka Java](java-quickstart.md)
 - [Przewodnik Szybki start dla języka JavaScript](javascript.md)

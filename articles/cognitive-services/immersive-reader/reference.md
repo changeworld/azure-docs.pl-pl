@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 22860e0798ec852b6d25da27e108befe8a3089a2
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488829"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688314"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Dokumentacja zestawu SDK czytnika immersyjny
 
@@ -40,7 +40,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | `token` | ciąg | Token uwierzytelniania usługi Azure AD. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
 | `subdomain` | ciąg | Niestandardowa poddomena zasobu czytnika immersyjny na platformie Azure. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
 | `content` | [Zawartość](#content) | Obiekt zawierający zawartość, która ma zostać pokazana w czytniku immersyjny. |
-| `options` | [Opcje](#options) | Opcje konfigurowania niektórych zachowań czytnika immersyjny. Opcjonalna. |
+| `options` | [Opcje](#options) | Opcje konfigurowania niektórych zachowań czytnika immersyjny. Opcjonalny. |
 
 #### <a name="returns"></a>Zwraca
 
@@ -134,7 +134,7 @@ Najnowsze wersje następujących przeglądarek są używane w celu uzyskania naj
 * Mozilla Firefox
 * Apple Safari
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Eksplorowanie [zestawu SDK czytnika immersyjny w witrynie GitHub](https://github.com/Microsoft/immersive-reader-sdk)
+* Eksplorowanie [zestawu SDK czytnika immersyjny w witrynie GitHub](https://github.com/microsoft/immersive-reader-sdk)
 * [Szybki start: Tworzenie aplikacji sieci Web, która uruchamia czytnik immersyjny (C#)](./quickstart.md)

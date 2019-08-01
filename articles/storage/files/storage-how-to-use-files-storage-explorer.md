@@ -1,19 +1,18 @@
 ---
 title: Przewodnik Szybki start dotyczący zarządzania udziałami plików platformy Azure za pomocą Eksploratora usługi Azure Storage
 description: W tym przewodniku Szybki start dowiesz się, jak zarządzać usługą Azure Files za pomocą Eksploratora usługi Azure Storage.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bf87704a8055b5725178c846df71ed4d873417e3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b034b3e7aa5fcb61cf83565f3e4c3b1c83f3610c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713878"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699461"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Szybki start: Tworzenie udziałów plików platformy Azure i zarządzanie nimi za pomocą Eksploratora usługi Azure Storage
 W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z [udziałami plików platformy Azure](storage-files-introduction.md) przy użyciu Eksploratora usługi Azure Storage. Udziały plików platformy Azure są podobne do innych udziałów plików, ale są przechowywane w chmurze i obsługiwane przez platformę Azure. Udziały plików platformy Azure obsługują standardowy w branży protokół SMB i umożliwiają udostępnianie plików między wieloma maszynami, aplikacjami i wystąpieniami. 
@@ -67,7 +66,7 @@ Dodanie katalogu zapewnia strukturę hierarchiczną na potrzeby zarządzania udz
 
 Katalog *myDirectory* zostanie wyświetlony na karcie udziału plików *myshare*.
 
-### <a name="upload-a-file"></a>Przekazywanie pliku 
+### <a name="upload-a-file"></a>Przekaż plik 
 Istnieje możliwość przekazania pliku z maszyny lokalnej do nowego katalogu w udziale plików. Przekazywanie może obejmować cały folder lub pojedynczy plik.
 
 1. Wybierz z górnego menu polecenie **Przekaż**. Ta operacja udostępnia opcję przekazania folderu lub pliku.
@@ -76,7 +75,7 @@ Istnieje możliwość przekazania pliku z maszyny lokalnej do nowego katalogu w 
 
 Gdy skończysz, plik zostanie wyświetlony na liście w okienku *myDirectory*.
 
-### <a name="download-a-file"></a>Pobieranie pliku
+### <a name="download-a-file"></a>Pobierz plik
 Aby pobrać kopię pliku z udziału plików, kliknij prawym przyciskiem myszy plik, a następnie wybierz polecenie **Pobierz**. Wybierz, gdzie chcesz umieścić plik na maszynie lokalnej, a następnie wybierz polecenie **Zapisz**.
 
 Postęp pobierania będzie wyświetlany w okienku **Działania** na dole okna.
@@ -86,7 +85,7 @@ Nie możesz użyć Eksploratora usługi Storage do usunięcia zasobów. Aby wycz
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Co to jest usługa Azure Files?](storage-files-introduction.md)

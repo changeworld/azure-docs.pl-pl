@@ -1,19 +1,18 @@
 ---
 title: Przewodnik Szybki start dotyczący zarządzania udziałami plików platformy Azure przy użyciu programu Azure PowerShell
 description: W tym przewodniku Szybki start dowiesz się, jak zarządzać udziałami plików platformy Azure przy użyciu programu Azure PowerShell.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e32aead791fb84415da1b00f1e979a6ac0f28155
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 802ad497f95a43665665d7e7dbd06c9081eba74a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729033"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699504"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Szybki start: tworzenie udziałów plików platformy Azure i zarządzanie nimi za pomocą programu Azure PowerShell 
 W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z [udziałami plików platformy Azure](storage-files-introduction.md) przy użyciu programu PowerShell. Udziały plików platformy Azure są podobne do innych udziałów plików, ale są przechowywane w chmurze i obsługiwane przez platformę Azure. Udziały plików platformy Azure obsługują standardowy w branży protokół SMB i umożliwiają udostępnianie plików między wieloma maszynami, aplikacjami i wystąpieniami. 
@@ -40,7 +39,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 Konto magazynu to udostępniona pula magazynu, której można używać do wdrażania udziałów plików platformy Azure lub innych zasobów magazynu, takich jak obiekty Blob i kolejki. Konto magazynu może zawierać nieograniczoną liczbę udziałów, a udział może obejmować nieograniczoną liczbę plików, nieprzekraczającą limitów pojemności konta magazynu.
 
-W tym przykładzie tworzone jest konto magazynu przy użyciu polecenia cmdlet [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Konto magazynu ma nazwę *mystorageaccount\<losową liczbę >* i odwołania do tego konta magazynu są przechowywane w zmiennej **$storageAcct**. Nazwy kont magazynów muszą być unikatowe, użyj zatem polecenia `Get-Random` w celu dołączenia liczby do nazwy, aby była unikatowa. 
+W tym przykładzie tworzone jest konto magazynu przy użyciu polecenia cmdlet [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Konto magazynu ma nazwę *mojekontomagazynu\<liczba losowa >* a odwołanie do tego konta magazynu jest przechowywane w zmiennej **$storageAcct**. Nazwy kont magazynów muszą być unikatowe, użyj zatem polecenia `Get-Random` w celu dołączenia liczby do nazwy, aby była unikatowa. 
 
 ```azurepowershell-interactive 
 $storageAcct = New-AzStorageAccount `
@@ -80,7 +79,7 @@ W większości przypadków użyjesz udziału plików platformy Azure za pośredn
 
 W poniższych przykładach przedstawiono, jak używać modułu Azure PowerShell do obsługi udziałów plików platformy Azure przy użyciu protokołu REST usługi Files. 
 
-#### <a name="create-directory"></a>Tworzenie katalogu
+#### <a name="create-directory"></a>Utwórz katalog
 Aby utworzyć nowy katalog o nazwie *myDirectory* w katalogu głównym udziału plików platformy Azure, użyj polecenia cmdlet [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory).
 
 ```azurepowershell-interactive
@@ -90,7 +89,7 @@ New-AzStorageDirectory `
    -Path "myDirectory"
 ```
 
-#### <a name="upload-a-file"></a>Przekazywanie pliku
+#### <a name="upload-a-file"></a>Przekaż plik
 Aby zademonstrować przekazywanie pliku przy użyciu polecenia cmdlet [Set-AzStorageFileContent](/powershell/module/az.storage/Set-AzStorageFileContent), najpierw należy utworzyć plik do przekazania w obrębie dysku tymczasowego usługi Cloud Shell w programie PowerShell. 
 
 Ten przykład obejmuje umieszczenie bieżącej daty i godziny w nowym pliku na dysku tymczasowym, a następnie przekazanie tego pliku do udziału plików.
@@ -115,7 +114,7 @@ Po przekazaniu pliku możesz skorzystać z polecenia cmdlet [Get-AzStorageFile](
 Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare" -Path "myDirectory" 
 ```
 
-#### <a name="download-a-file"></a>Pobieranie pliku
+#### <a name="download-a-file"></a>Pobierz plik
 Za pomocą polecenia cmdlet [Get-AzStorageFileContent](/powershell/module/az.storage/Get-AzStorageFilecontent) możesz pobrać kopię pliku, który właśnie został przekazany na dysk tymczasowy usługi Cloud Shell.
 
 ```azurepowershell-interactive
@@ -166,7 +165,7 @@ Teraz, po wyświetleniu listy plików w nowym udziale, skopiowany plik powinien 
 Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare2" -Path "myDirectory2" 
 ```
 
-Gdy `Start-AzStorageFileCopy` polecenia cmdlet jest wygodne w przypadku przenoszenia plików ad-hoc między udziałami plików platformy Azure i kontenerami usługi Azure Blob storage, jednak zalecamy używanie narzędzia AzCopy dla większych przenosi (pod względem liczby lub Trwa przenoszenie plików). Dowiedz się więcej o [narzędziu AzCopy dla systemu Windows](../common/storage-use-azcopy.md) i [narzędziu AzCopy dla systemu Linux](../common/storage-use-azcopy-linux.md). Narzędzie AzCopy musi być zainstalowane lokalnie — nie jest dostępne w usłudze Cloud Shell. 
+`Start-AzStorageFileCopy` Chociaż polecenie cmdlet jest wygodne w przypadku przenoszenia plików między udziałami plików platformy Azure i kontenerami usługi Azure Blob Storage, zalecamy AzCopy do większych ruchów (w przypadku liczby lub rozmiaru przenoszonych plików). Dowiedz się więcej o [narzędziu AzCopy dla systemu Windows](../common/storage-use-azcopy.md) i [narzędziu AzCopy dla systemu Linux](../common/storage-use-azcopy-linux.md). Narzędzie AzCopy musi być zainstalowane lokalnie — nie jest dostępne w usłudze Cloud Shell. 
 
 ## <a name="create-and-manage-share-snapshots"></a>Tworzenie migawek udziałów i zarządzanie nimi
 Jedną z dodatkowych przydatnych czynności, które można wykonywać na udziałach plików platformy Azure, jest tworzenie migawek udziałów. Migawka zachowuje określony moment w czasie dla udziału plików platformy Azure. Migawki udziałów są podobne do technologii systemów operacyjnych, które być może już znasz, takich jak:

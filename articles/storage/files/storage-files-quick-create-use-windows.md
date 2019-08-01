@@ -1,19 +1,18 @@
 ---
 title: Przewodnik Szybki start platformy Azure — tworzenie i używanie udziału usługi Azure Files na maszynach wirtualnych z systemem Windows | Microsoft Docs
 description: W ramach tego przewodnika Szybki start skonfigurujesz udział usługi Azure Files w witrynie Azure Portal i połączysz go z maszyną wirtualną z systemem Windows. Nawiążesz połączenie z udziałem usługi Files i przekażesz plik do udziału usługi Files. Następnie utworzysz migawkę udziału usługi Files, zmodyfikujesz plik w udziale usługi Files oraz przywrócisz poprzednią migawkę udziału usługi Files.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5109f4e801c1e34b2026cff8f8dd83558618e153
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 626a6a5e0449d267b67653c2f63303226dd0c99d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61482607"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699753"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Szybki start: tworzenie udziału usługi Azure Files przy użyciu maszyn wirtualnych z systemem Windows i zarządzanie tym udziałem
 
@@ -55,7 +54,7 @@ Następnie utwórz udział plików.
 1. Utwórz nowy plik tekstowy o nazwie *qsTestFile* na komputerze lokalnym.
 1. Wybierz nowy udział plików, a następnie w lokalizacji udziału plików wybierz pozycję **Przekaż**.
 
-    ![Przekazywanie pliku](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
+    ![Przekaż plik](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
 
 1. Przejdź do lokalizacji, w której utworzono plik txt, wybierz plik *qsTestFile.txt* i wybierz pozycję **Przekaż**.
 
@@ -180,7 +179,7 @@ Podobnie jak w przypadku migawek usługi VSS w środowisku lokalnym, możesz wy�
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Korzystanie z udziału plików platformy Azure w systemie Windows](storage-how-to-use-files-windows.md)

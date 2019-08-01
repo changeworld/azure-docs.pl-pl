@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c090d7c5de4261891fdb3833c7ffec920f8de5b0
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: b5b7d43fc5a53bcf46874a48914bcda565a41c3e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668703"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697069"
 ---
-# <a name="whats-new-in-the-text-analytics-api"></a>Co nowego w interfejs API analizy tekstu?
+# <a name="whats-new-in-the-text-analytics-api"></a>Co nowego w interfejsie API analizy tekstu?
 
 Interfejs API analizy tekstu jest regularnie aktualizowana. Aby zachować aktualność dzięki najnowszym zmianom, ten artykuł zawiera informacje o nowych wersjach i funkcjach.
 
@@ -40,5 +40,5 @@ Obsługuje ona język angielski i jest dostępna w trzech regionach: Kanada śro
 * [Przykładowe scenariusze użytkownika](text-analytics-user-scenarios.md)
 * [Analiza tonacji](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Wykrywanie języka](how-tos/text-analytics-how-to-language-detection.md)
-* [Łączenie jednostek](how-tos/text-analytics-how-to-entity-linking.md)
+* [Rozpoznawanie jednostek](how-tos/text-analytics-how-to-entity-linking.md)
 * [Wyodrębnianie kluczowych fraz](how-tos/text-analytics-how-to-keyword-extraction.md)

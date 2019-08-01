@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: dce13636cce299098c988ccea3a059f0f0e12acd
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: fe6758cb6b8d120862cbbe593574360c1bc7b17b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823257"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698121"
 ---
 # <a name="quickstart-project-answer-search-query-in-c"></a>Szybki start: Laboratorium Project Answer Search — zapytanie w języku C#
 
@@ -23,9 +23,9 @@ Poniższy przykład w języku C# tworzy i wysyła zapytanie w celu uzyskania inf
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [programu Visual Studio 2017 r. lub nowszej](https://www.visualstudio.com/downloads/) do uruchamiania tego kodu na Windows. (Można korzystać z bezpłatnej wersji Community Edition).
+Do uruchomienia tego kodu w systemie Windows jest wymagany [program Visual Studio 2017 lub nowszy](https://www.visualstudio.com/downloads/) . (Można korzystać z bezpłatnej wersji Community Edition).
 
-Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://aka.ms/answersearchsubscription).
+Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search).
 
 ## <a name="code-scenario"></a>Scenariusz kodu
 

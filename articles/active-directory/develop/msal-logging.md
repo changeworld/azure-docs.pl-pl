@@ -1,6 +1,6 @@
 ---
-title: Rejestrowanie w aplikacjach MSAL | Azure
-description: Więcej informacji na temat rejestrowania się w aplikacjach firmy Microsoft Authentication Library (MSAL).
+title: Logowanie w aplikacjach MSAL | Azure
+description: Dowiedz się więcej o rejestrowaniu w aplikacjach Microsoft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,35 +17,35 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f18995d46ca61ae68a7b226bbfc9a286e73a0b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4288ff4aba216a214d10c56ba448fc03e13b81f2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544092"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693926"
 ---
 # <a name="logging"></a>Rejestrowanie
-Aplikacje Microsoft Authentication Library (MSAL), aby wygenerować komunikaty dziennika, które mogą pomóc zdiagnozować problemy i podaj szczegóły. Aplikację można skonfigurować rejestrowanie przy użyciu kilku wierszy kodu i niestandardowe kontrolować poziom szczegółowości oraz czy dane osobiste i organizacyjne są rejestrowane. Zalecane jest, ustaw wywołanie zwrotne rejestrowania biblioteki MSAL i umożliwiają użytkownikom na przesłanie dzienników, gdy występują problemy z uwierzytelnianiem.
+Aplikacje Microsoft Authentication Library (MSAL) do generowania komunikatów dziennika, które mogą pomóc zdiagnozować problemy i podać szczegóły. Aplikacja może skonfigurować rejestrowanie z kilkoma wierszami kodu i mieć kontrolę niestandardową na poziomie szczegółowości oraz o tym, czy dane osobiste i organizacyjne są rejestrowane. Zaleca się ustawienie wywołania zwrotnego rejestrowania MSAL i umożliwia użytkownikom przesyłanie dzienników w przypadku problemów z uwierzytelnianiem.
 
 ## <a name="logging-levels"></a>Poziomy rejestrowania
 
-Rejestrator MSAL firmy umożliwia kilka poziomów szczegółowości można przechwytywania:
+Rejestrator MSAL umożliwia przechwytywanie kilku poziomów szczegółowości:
 
-- Błąd: Wskazuje Niestety, wystąpił problem i wystąpił błąd. Służy do debugowania i identyfikowania problemów.
-- Ostrzeżenie: Zdarzenia, które są pytanie i aplikacja potrzebuje więcej informacji na. Istnieje nie zawsze zostały komunikat o błędzie lub awaria, ale przeznaczone do diagnostyki i precyzyjne określenie problemów.
-- Informacje: Biblioteka MSAL będzie rejestrować zdarzenia przeznaczone do celów informacyjnych, niekoniecznie przeznaczonych do debugowania.
-- verbose: Domyślne. Biblioteka MSAL będzie Zaloguj się dużymi ilościami informacji i podaje pełnych szczegółów, w jakie zachowanie biblioteki.
+- Błąd: Wskazuje, że wystąpił problem i został wygenerowany błąd. Służy do debugowania i identyfikowania problemów.
+- Ostrzeżenie: Zdarzenia, które są pytaniami i aplikacja wymaga więcej informacji na temat. Niekoniecznie Wystąpił błąd lub błąd, ale jest on przeznaczony do diagnozowania i lokalizowania problemów.
+- Informacje MSAL będzie rejestrować zdarzenia przeznaczone do celów informacyjnych niekoniecznie do debugowania.
+- Pełne Domyślne. MSAL będzie rejestrował dużą ilość informacji i przekaże pełne informacje o zachowaniu biblioteki.
 
-## <a name="personal-and-organizational-data"></a>Danych osobistych i organizacyjnych
-Domyślnie rejestratora MSAL nie przechwytuje wysoce poufnych danych osobistych lub organizacyjnych. Biblioteka udostępnia opcję Włącz rejestrowanie danych osobistych i organizacyjnych, jeśli zdecydujesz się to zrobić.
+## <a name="personal-and-organizational-data"></a>Dane osobowe i organizacyjne
+Domyślnie Rejestrator MSAL nie przechwytuje żadnych wysoce poufnych danych osobistych lub organizacji. Biblioteka udostępnia opcję włączenia rejestrowania danych osobowych i organizacji w przypadku podjęcia decyzji.
 
-## <a name="logging-in-msalnet"></a>Logowanie do platformy MSAL.NET
-W MSAL 3.x, rejestrowanie jest ustawiana dla poszczególnych aplikacji na tworzenie aplikacji za pomocą `.WithLogging` modyfikator konstruktora. Ta metoda przyjmuje następujące parametry opcjonalne:
+## <a name="logging-in-msalnet"></a>Logowanie w MSAL.NET
+W MSAL 3. x rejestrowanie jest ustawione na aplikację przy tworzeniu aplikacji przy użyciu `.WithLogging` modyfikatora konstruktora. Ta metoda pobiera parametry opcjonalne:
 
-- *Poziom* umożliwia zdecydować, której poziom rejestrowania. Ustawienie błędy tylko występują błędy
-- *PiiLoggingEnabled* pozwala na rejestrowanie osobistych i organizacyjnych danych, jeśli ustawiono wartość true. Domyślnie to jest wartość false, dzięki czemu aplikacja nie rejestruje danych osobowych.
-- *LogCallback* jest ustawiona na obiekt delegowany, który wykonuje rejestrowanie. Jeśli *PiiLoggingEnabled* ma wartość true, ta metoda będzie odbierać komunikaty dwa razy: jeden raz z *containsPii* parametr ma wartość FAŁSZ i wiadomość bez danych osobowych i drugi raz z *containsPii* parametr ma wartość true, a komunikat może zawierać dane osobowe. W niektórych przypadkach (kiedy komunikat nie zawiera danych osobowych) wiadomości będą takie same.
-- *DefaultLoggingEnabled* umożliwia domyślne rejestrowanie dla platformy. Domyślnie ma wartość false. Jeśli ustawisz wartość "true", jej używa śledzenia zdarzeń w aplikacjach pulpitu/platformy uniwersalnej systemu Windows, NSLog w systemie iOS i logcat w systemie Android.
+- *Poziom* pozwala określić żądany poziom rejestrowania. Ustawienie na błędy spowoduje tylko błędy
+- *PiiLoggingEnabled* umożliwia rejestrowanie danych osobistych i organizacji, jeśli ustawiono wartość true. Domyślnie to ustawienie ma wartość FAŁSZ, aby aplikacja nie rejestrował danych osobowych.
+- *LogCallback* jest ustawiona na delegata, który wykonuje rejestrowanie. Jeśli *PiiLoggingEnabled* ma wartość true, ta metoda otrzyma komunikaty dwa razy: jeden raz z parametrem *containsPii* jest równa false, a komunikat bez danych osobowych, a drugi — parametr *containsPii* ma wartość true, a komunikat może zawierać dane osobowe. W niektórych przypadkach (gdy wiadomość nie zawiera danych osobowych), komunikat będzie taki sam.
+- *DefaultLoggingEnabled* włącza domyślne rejestrowanie dla platformy. Domyślnie jest to wartość false. Jeśli ustawisz ją na wartość true, używa ona śledzenia zdarzeń w aplikacjach Desktop/platformy UWP, NSLog w systemach iOS i Logcat w systemie Android.
 
 ```csharp
 class Program
@@ -69,22 +69,22 @@ class Program
                       .Build();
 
     AuthenticationResult result = application.AcquireTokenInteractive(scopes)
-                                             .ExecuteAsnc();
+                                             .ExecuteAsync().Result;
   }
  }
  ```
 
- ## <a name="logging-in-msaljs"></a>Rejestrowanie w MSAL.js
+ ## <a name="logging-in-msaljs"></a>Rejestrowanie w MSAL. js
 
- Można włączyć rejestrowanie w MSAL.js przez przekazanie obiektu rejestratora podczas konfiguracji do tworzenia `UserAgentApplication` wystąpienia. Ten obiekt Rejestrator ma następujące właściwości:
+ Możesz włączyć rejestrowanie w MSAL. js, przekazując obiekt rejestratora podczas konfiguracji w celu utworzenia `UserAgentApplication` wystąpienia. Ten obiekt rejestratora ma następujące właściwości:
 
-- *localCallback*: wystąpienie wywołania zwrotnego, podanym przez dewelopera w celu umożliwienia użycia i publikowanie dzienników w sposób niestandardowy. Implementuje metody localCallback w zależności od tego, jaki sposób przekierowywania dzienników.
+- *localCallback*: wystąpienie wywołania zwrotnego, które może zostać dostarczone przez dewelopera do korzystania z dzienników i publikowania ich w niestandardowy sposób. Zaimplementuj metodę localCallback w zależności od tego, jak chcesz przekierować dzienniki.
 
-- *poziom* (opcjonalnie): poziom dziennika można konfigurować. Dostępne są następujące poziomy dziennika obsługiwane: Błąd, ostrzeżenie, informacje o pełne. Wartość domyślna to informacje.
+- *poziom* (opcjonalnie): konfigurowalny poziom rejestrowania. Obsługiwane poziomy dzienników są następujące: Błąd, ostrzeżenie, informacje, pełne. Wartość domyślna to info.
 
-- *piiLoggingEnabled* (opcjonalnie): umożliwia rejestrowanie osobistych i organizacyjnych danych, jeśli ustawiono wartość true. Domyślnie ta ma wartość false, aby aplikacja nie rejestruje danych osobowych. Domyślne dane wyjściowe, takie jak konsola, Logcat lub NSLog nigdy nie są zapisywane dzienniki danych osobowych. Domyślnym ustawieniem jest wartość false.
+- *piiLoggingEnabled* (opcjonalnie): umożliwia rejestrowanie danych osobistych i organizacji, jeśli ustawiono wartość true. Domyślnie to ustawienie ma wartość FAŁSZ, aby aplikacja nie rejestrował danych osobowych. Osobiste dzienniki danych nigdy nie są zapisywane w domyślnych danych wyjściowych, takich jak Console, Logcat lub NSLog. Wartość domyślna to false.
 
-- *Identyfikator korelacji* (opcjonalnie): Unikatowy identyfikator używany do mapowania żądania z odpowiedzią na potrzeby debugowania. Wartość domyślna to identyfikator guid wersji 4 RFC4122 (128-bitowy).
+- *Identyfikator korelacji* (opcjonalnie): unikatowy identyfikator używany do mapowania żądania z odpowiedzią na potrzeby debugowania. Wartość domyślna to RFC4122 w wersji 4 GUID (128 bitów).
 
 ```javascript
 

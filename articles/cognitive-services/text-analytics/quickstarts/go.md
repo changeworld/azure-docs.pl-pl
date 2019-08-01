@@ -1,21 +1,21 @@
 ---
 title: 'Szybki start: Wywoływanie interfejsu API analizy tekstu przy użyciu języka Go'
 titleSuffix: Azure Cognitive Services
-description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API analizy tekstu w usługach Azure Cognitive Services.
+description: Uzyskaj informacje i przykłady kodu, aby szybko rozpocząć korzystanie z interfejs API analizy tekstu na platformie Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e6d641109bafdc3dba05a30fd627a3246c7edef5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85eae936cf86d144f0baf91623b7be9f69eb4dbb
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828634"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697545"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Go 
 <a name="HOLTop"></a>
@@ -28,11 +28,11 @@ Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.micros
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas tworzenia konta.
+Musisz również mieć [punkt końcowy i klucz dostępu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) wygenerowany dla Ciebie podczas tworzenia konta.
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Wykrywanie języka
+## <a name="detect-language"></a>Wykryj język
 
 Interfejs API wykrywania języka wykrywa język dokumentu tekstowego przy użyciu [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
@@ -41,7 +41,7 @@ Interfejs API wykrywania języka wykrywa język dokumentu tekstowego przy użyci
 1. Zastąp wartość `subscriptionKey` kluczem dostępu właściwym dla Twojej subskrypcji.
 1. Zmień lokalizację w ustawieniu `uriBase` (obecnie: `westcentralus`) na region, w którym zostało zarejestrowane konto.
 1. Zapisz plik z rozszerzeniem „go”.
-1. Otwórz wiersz polecenia na komputerze z Przejdź zainstalowanych z folderu głównego.
+1. Otwórz wiersz polecenia na komputerze z zainstalowanym programem go w folderze głównym.
 1. Skompiluj plik, na przykład za pomocą polecenia: `go build detect.go`.
 1. Uruchom plik, na przykład: `go run detect.go`.
 
@@ -184,7 +184,7 @@ Interfejs API analizy tonacji wykrywa tonację zestawu rekordów tekstowych przy
 1. Zastąp wartość `subscriptionKey` kluczem dostępu właściwym dla Twojej subskrypcji.
 1. Zmień lokalizację w ustawieniu `uriBase` (obecnie: `westcentralus`) na region, w którym zostało zarejestrowane konto.
 1. Zapisz plik z rozszerzeniem „go”.
-1. Otwórz wiersz polecenia na komputerze z Przejdź zainstalowanych z folderu głównego.
+1. Otwórz wiersz polecenia na komputerze z zainstalowanym programem go w folderze głównym.
 1. Skompiluj plik, na przykład za pomocą polecenia: `go build sentiment.go`.
 1. Uruchom plik, na przykład: `go run sentiment.go`.
 
@@ -272,7 +272,7 @@ func main() {
 
 ## <a name="analyze-sentiment-response"></a>Odpowiedź na żądanie Analyze sentiment
 
-Wynik jest mierzony jako dodatnie, jeśli jego są oceniane bliżej 1.0 i ujemne, jeśli są oceniane bliżej 0,0.
+Wynik jest mierzony jako dodatni, jeśli ocenia się bliżej 1,0 i wartość ujemna, jeśli jest to wynik zbliżony do 0,0.
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```json
@@ -293,7 +293,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
+## <a name="extract-key-phrases"></a>Wyodrębnij frazy kluczowe
 
 Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokumencie tekstowym przy użyciu [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). W poniższym przykładzie wyodrębniono frazy kluczowe dla dokumentów w języku angielskim i hiszpańskim.
 
@@ -433,7 +433,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="identify-entities"></a>Identyfikowanie jednostek
 
-Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Jednostki](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) wyodrębnić wyrazów w tekście, takie jak "United States", a następnie zapewniają typ i/lub Wikipedia link to wyrazów. Typ dla "United States" jest `location`, a łącze do Wikipedia `https://en.wikipedia.org/wiki/United_States`.  W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
+Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Jednostki](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) wyodrębniają wyrazy z tekstu, takie jak "Stany Zjednoczone", a następnie zawierają link do typu i/lub Wikipedia dla tych wyrazów. Typ dla "Stany Zjednoczone" to `location`, podczas gdy link do witryny Wikipedia ma `https://en.wikipedia.org/wiki/United_States`wartość.  W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
 
 1. Utwórz nowy projekt w języku Go w ulubionym edytorze kodu.
 1. Dodaj kod przedstawiony poniżej.
@@ -574,7 +574,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Analiza tekstu przy użyciu usługi Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

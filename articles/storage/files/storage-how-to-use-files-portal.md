@@ -1,19 +1,18 @@
 ---
 title: Przewodnik Szybki start dotyczący zarządzania udziałami plików platformy Azure za pomocą witryny Azure Portal
 description: W tym przewodniku Szybki start dowiesz się, jak zarządzać usługą Azure Files za pomocą witryny Azure Portal.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 69e7dba06fce14c2411a82dfade344ba1b14a6d3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7d7618d2542b1c1d83ed7328c8a32d80f2d0e66a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698745"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699526"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Szybki start: tworzenie udziałów plików platformy Azure i zarządzanie nimi za pomocą witryny Azure Portal 
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w systemach Windows, Linux i macOS. W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z udziałami plików platformy Azure przy użyciu witryny [Azure Portal](https://portal.azure.com/).
@@ -64,7 +63,7 @@ Aby utworzyć nowy katalog o nazwie *myDirectory* w katalogu głównym udziału 
 2. W menu w górnej części strony wybierz pozycję **+ Dodaj katalog**. Zostanie rozwinięta strona **Nowy katalog**.
 3. Wpisz nazwę *myDirectory*, a następnie kliknij przycisk **OK**.
 
-#### <a name="upload-a-file"></a>Przekazywanie pliku 
+#### <a name="upload-a-file"></a>Przekaż plik 
 Aby można było zademonstrować przekazywanie pliku, najpierw musisz utworzyć lub wybrać plik do przekazania. Możesz to zrobić w dowolny sposób. Po wybraniu pliku do przekazania:
 
 1. Kliknij katalog **myDirectory**. Zostanie otwarty panel **myDirectory**.
@@ -76,13 +75,13 @@ Aby można było zademonstrować przekazywanie pliku, najpierw musisz utworzyć 
 5. Na stronie **Przekazywanie plików** sprawdź nazwę pliku, a następnie kliknij pozycję **Przekaż**.
 6. Po zakończeniu plik powinien być widoczny na liście na stronie **myDirectory**.
 
-#### <a name="download-a-file"></a>Pobieranie pliku
+#### <a name="download-a-file"></a>Pobierz plik
 Aby pobrać kopię przekazanego pliku, kliknij prawym przyciskiem myszy ten plik. Szczegóły środowiska wyświetlanego po kliknięciu przycisku pobierania będą zależeć od używanego systemu operacyjnego i używanej przeglądarki.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Co to jest usługa Azure Files?](storage-files-introduction.md)

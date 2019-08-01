@@ -11,16 +11,16 @@
       href: quick-start.md
     - name: Korzystanie z zestawu SDK klienta
       items:
-        - name: 'C#'
+        - name: Korzystanie z zestawu .NET SDK
           items:
             - name: Analizowanie zawartości obrazów
               href: image-moderation-quickstart-dotnet.md
             - name: Analizowanie zawartości tekstowej
               href: text-moderation-quickstart-dotnet.md
-        - name: Python
-          items:
-            - name: Analizowanie zawartości tekstowej
-              href: text-moderation-quickstart-python.md
+        - name: Używanie zestawu Python SDK
+          href: python-sdk-quickstart.md
+        - name: Używanie zestawu Java SDK
+          href: java-sdk-quickstart.md
 - name: Samouczki
   items:
     - name: Moderowanie obrazów na potrzeby handlu elektronicznego

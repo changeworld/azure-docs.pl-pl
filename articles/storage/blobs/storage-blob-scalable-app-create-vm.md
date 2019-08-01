@@ -1,21 +1,18 @@
 ---
 title: Tworzenie maszyny wirtualnej i konta magazynu dla skalowalnej aplikacji na platformie Azure | Microsoft Docs
 description: Dowiedz się, w jaki sposób wdrożyć maszynę wirtualną, na której zostanie uruchomiona skalowalna aplikacja korzystająca z usługi Azure Blob Storage
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 38fd62eff663c7714acf00afe3ffa559c1eeb7e0
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 49689585b3f52bbee300ff68d2c2653f5e7ff8d0
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729099"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699062"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Tworzenie maszyny wirtualnej i konta magazynu dla skalowalnej aplikacji
 
@@ -25,7 +22,7 @@ Część pierwsza serii zawiera informacje na temat wykonywania następujących 
 
 > [!div class="checklist"]
 > * Tworzenie konta magazynu
-> * Tworzenie maszyny wirtualnej
+> * Utwórz maszynę wirtualną
 > * Konfigurowanie rozszerzenia skryptu niestandardowego
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -58,7 +55,7 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName myResourceGroup `
   -Kind Storage `
 ```
 
-## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
 
 Utwórz konfigurację maszyny wirtualnej. Ta konfiguracja zawiera ustawienia, które są używane podczas wdrażania maszyny wirtualnej, takie jak obraz maszyny wirtualnej, rozmiar i konfiguracja uwierzytelniania. Podczas wykonywania tego kroku jest wyświetlany monit o poświadczenia. Wprowadzane wartości są konfigurowane jako nazwa użytkownika i hasło dla maszyny wirtualnej.
 
@@ -124,13 +121,13 @@ Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
     -Name DemoScriptExtension
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W części pierwszej serii opisano tworzenie konta magazynu, wdrażanie maszyny wirtualnej oraz konfigurowanie maszyny wirtualnej przy użyciu odpowiednich wstępnie wymaganych elementów, w tym następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie konta magazynu
-> * Tworzenie maszyny wirtualnej
+> * Utwórz maszynę wirtualną
 > * Konfigurowanie rozszerzenia skryptu niestandardowego
 
 Przejdź do drugiej części serii, która opisuje przekazywanie dużych ilości danych na konto magazynu przy użyciu ponawiania wykładniczego i funkcji równoległości.

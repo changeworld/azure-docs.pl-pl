@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e56926b9a23e0dd649fb85347e521a6dda7863a3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: dba65e68e7c2204a4d4d7f80a603de607bba7609
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479873"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697346"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Samouczek: Integracja usługi Power BI z usługą analizy tekstu w usłudze Cognitive Service
 
@@ -36,7 +36,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 - Program Microsoft Power BI Desktop. [Pobierz bezpłatnie](https://powerbi.microsoft.com/get-started/).
 - Konto platformy Microsoft Azure. [Zacznij korzystać z bezpłatnej wersji próbnej](https://azure.microsoft.com/free/) lub [zaloguj się](https://portal.azure.com/).
 - Konto interfejsu API usług Cognitive Services z interfejsem API analizy tekstu. Jeśli go nie masz, możesz [utworzyć konto](../../cognitive-services-apis-create-account.md) i skorzystać z bezpłatnej warstwy 5000 transakcji miesięcznie (zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)), aby ukończyć ten samouczek.
-- [Klucz dostępu do analizy tekstu](../how-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas tworzenia konta.
+- [Klucz dostępu do analizy tekstu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) wygenerowany dla Ciebie podczas tworzenia konta.
 - Komentarze klientów. Możesz użyć [naszych danych przykładowych](https://aka.ms/cogsvc/ta) lub własnych danych. W tym samouczku przyjęto założenie, że używasz naszych danych przykładowych.
 
 ## <a name="load-customer-data"></a>Ładowanie danych klientów

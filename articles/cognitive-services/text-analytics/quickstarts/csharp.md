@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 07/30/2019
 ms.author: assafi
-ms.openlocfilehash: 5e5246ab46d00e0b62b3dee321c6cea893e6a5d3
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 6bd3907392dad626c1eeb1823c929f1a35d544dd
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619632"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697668"
 ---
 # <a name="quickstart-use-the-net-sdk-and-c-to-call-the-text-analytics-service"></a>Szybki start: Używanie zestawu SDK platformy .NET C# i wywoływanie usługi Analiza tekstu
 <a name="HOLTop"></a>
@@ -35,8 +35,6 @@ Szczegółowe informacje techniczne można znaleźć w dokumentacji dotyczącej 
 * Zestaw analiza tekstu [SDK dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-Wymagany jest również [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) , który został wygenerowany podczas rejestracji.
 
 ## <a name="create-the-visual-studio-solution-and-install-the-sdk"></a>Utwórz rozwiązanie programu Visual Studio i Zainstaluj zestaw SDK
 
@@ -225,7 +223,7 @@ Key phrases:
     veterinarian
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Analiza tekstu przy użyciu usługi Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

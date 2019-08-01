@@ -1,19 +1,18 @@
 ---
 title: Przewodnik Szybki start dotyczący zarządzania udziałami plików platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 description: W tym przewodniku Szybki start dowiesz się, jak zarządzać usługą Azure Files za pomocą interfejsu wiersza polecenia platformy Azure.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 43a5a72ac32d8ed3510cecb505f5e62cf91d7106
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 93baf275e93c28283836a92c71eb9b24151392fc
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710824"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699599"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Szybki start: tworzenie udziałów plików platformy Azure i zarządzanie nimi przy użyciu interfejsu wiersza polecenia platformy Azure
 W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z [udziałami plików platformy Azure](storage-files-introduction.md) przy użyciu interfejsu wiersza polecenia platformy Azure. Udziały plików platformy Azure są podobne do innych udziałów plików, ale są przechowywane w chmurze i obsługiwane przez platformę Azure. Udziały plików platformy Azure obsługują standardowy w branży protokół SMB i umożliwiają udostępnianie plików między wieloma maszynami, aplikacjami i wystąpieniami. 
@@ -45,7 +44,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 Konto magazynu to udostępniona pula magazynu, w której można wdrażać udziały plików platformy Azure lub inne zasoby magazynu, takie jak obiekty blob i kolejki. Konto magazynu może zawierać nieograniczoną liczbę udziałów plików. W udziale można przechowywać nieograniczoną liczbę plików, aż do osiągnięcia limitów pojemności konta magazynu.
 
-Następujący przykład umożliwia utworzenie konta magazynu o nazwie *mystorageaccount\<losowa liczba\>* przy użyciu polecenia [az storage account create](/cli/azure/storage/account), a następnie umieszczenie nazwy tego konta magazynu w zmiennej `$STORAGEACCT`. Nazwy kont magazynu musi być unikatowa, więc upewnij się, że Zamień "mystorageacct" unikatową nazwę.
+Następujący przykład umożliwia utworzenie konta magazynu o nazwie *mystorageaccount\<losowa liczba\>* przy użyciu polecenia [az storage account create](/cli/azure/storage/account), a następnie umieszczenie nazwy tego konta magazynu w zmiennej `$STORAGEACCT`. Nazwy kont magazynu muszą być unikatowe, więc pamiętaj, aby zastąpić ciąg "ciąg mystorageacct" unikatową nazwą.
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \
@@ -87,12 +86,12 @@ Aby zainstalować udział plików za pomocą protokołu SMB, zobacz następując
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Korzystanie z udziału plików platformy Azure za pomocą protokołu REST usługi Files 
-Jest możliwe pracy bezpośrednio z pliku REST protokół bezpośrednio (handcrafting wywołania REST protokołu HTTP, samodzielnie), ale Najczęstszym sposobem używają protokołu REST pliku jest użycie wiersza polecenia platformy Azure [modułu Azure PowerShell](storage-how-to-use-files-powershell.md), lub zestawu SDK usługi Azure Storage , które zapewniają nieuprzywilejowany otokę protokołu REST plik w wybranym w języku skryptów programowania.  
+Możliwe jest bezpośrednie współdziałanie z protokołem REST usługi File (handcrafting HTTP), ale najbardziej typowym sposobem korzystania z protokołu REST jest użycie interfejsu wiersza polecenia platformy Azure, [modułu Azure PowerShell](storage-how-to-use-files-powershell.md)lub zestawu SDK usługi Azure Storage, z którego wszystkie zapewniają całkiem otoka otaczająca protokół File REST w wybranym języku skryptów/programowania.  
 
 Zdajemy sobie sprawę, że większość użytkowników usługi Azure Files będzie chciało pracować z udziałami plików platformy Azure za pośrednictwem protokołu SMB, ponieważ umożliwi im to skorzystanie z istniejących aplikacji i narzędzi, ale istnieje kilka powodów, dla których użycie interfejsu API REST usługi Files wydaje się korzystniejsze niż użycie protokołu SMB:
 
 - Udziały plików przeglądasz za pomocą powłoki Azure Bash w usłudze Cloud Shell (w której nie można instalować udziałów plików za pośrednictwem protokołu SMB).
-- Trzeba wykonać skryptu lub aplikacji z klienta, który nie może zainstalować udziału SMB, takich jak klienci lokalni bez portu 445.
+- Należy wykonać skrypt lub aplikację z poziomu klienta, który nie może zainstalować udziału SMB, na przykład na klientach lokalnych, które nie mają odblokowanego portu 445.
 - Korzystasz z zasobów bezserwerowych, takich jak [usługa Azure Functions](../../azure-functions/functions-overview.md). 
 
 W poniższych przykładach przedstawiono, jak używać interfejsu wiersza polecenia platformy Azure do obsługi udziałów plików platformy Azure przy użyciu protokołu REST usługi Files. 
@@ -108,7 +107,7 @@ az storage directory create \
    --name "myDirectory" 
 ```
 
-### <a name="upload-a-file"></a>Przekazywanie pliku
+### <a name="upload-a-file"></a>Przekaż plik
 Aby zademonstrować sposób przekazywania pliku przy użyciu polecenia [`az storage file upload`](/cli/azure/storage/file), najpierw utwórz plik do przekazania na dysku zapasowym usługi Cloud Shell. Poniższy przykład umożliwia utworzenie, a następnie przekazanie pliku:
 
 ```azurecli-interactive
@@ -135,7 +134,7 @@ az storage file list \
     --output table
 ```
 
-### <a name="download-a-file"></a>Pobieranie pliku
+### <a name="download-a-file"></a>Pobierz plik
 Za pomocą polecenia [`az storage file download`](/cli/azure/storage/file) możesz pobrać kopię pliku, który został przekazany na dysk zapasowy usługi Cloud Shell:
 
 ```azurecli-interactive
