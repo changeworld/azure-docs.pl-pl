@@ -7,26 +7,26 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/23/2019
+ms.topic: reference
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 595a835018475ed3aa915971f5ff2b78981e7bdf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0bf7fe649a5a604c610307b9be0717dce01cb238
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560494"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638294"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Słownik dotyczący typowego słownictwa i koncepcji
 Language Understanding (LUIS) słownik wyjaśnia, warunki, które można napotkać podczas pracy z usługą interfejsu API usługi LUIS.
 
 ## <a name="active-version"></a>Wersja aktywna
 
-Wersja usługi LUIS aktywna jest wersji, który odbiera wszystkie zmiany w modelu. W [LUIS](luis-reference-regions.md) witryny sieci Web, jeśli chcesz wprowadzić zmiany do wersji, która nie jest aktywny wersji, musisz najpierw ustawić tej wersji jako aktywny.
+Wersja usługi LUIS aktywna jest wersji, który odbiera wszystkie zmiany w modelu. Jeśli chcesz wprowadzić zmiany w wersji, która nie jest wersją aktywną, w portalu [Luis](luis-reference-regions.md) należy najpierw ustawić tę wersję jako aktywną.
 
 ## <a name="authoring"></a>Tworzenie
 
-Tworzenie jest możliwość tworzenia, zarządzania i wdrażania [aplikacją usługi LUIS](#luis-app), albo za pomocą [LUIS](luis-reference-regions.md) witryny sieci Web lub [Tworzenie interfejsów API](https://go.microsoft.com/fwlink/?linkid=2092087).
+Tworzenie umożliwia tworzenie i wdrażanie [aplikacji Luis](#luis-app)oraz zarządzanie nią przy użyciu portalu [Luis](luis-reference-regions.md) lub [interfejsów API tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087).
 
 ## <a name="authoring-key"></a>Tworzenie klucza
 
@@ -34,30 +34,12 @@ Poprzednia nazwa klucza "Programistyczne". Używany do tworzenia aplikacji. Nie 
 
 ## <a name="batch-test-json-file"></a>Plik JSON tekst w partii
 
-Plik wsadowy jest tablicą JSON. Każdy element w tablicy ma trzy właściwości: `text`, `intent`, i `entities`. `entities` Właściwość jest tablicą. Tablica może być pusta. Jeśli `entities` tablicy nie jest pusta, należy dokładnie sprawdzić jednostek.
+Testowanie wsadowe to możliwość weryfikacji bieżącego modelu aplikacji LUIS przy użyciu spójnego i znanego zestawu testów wyrażenia długości użytkownika. Test wsadowy jest zdefiniowany w [pliku sformatowanym w formacie JSON](luis-concept-batch-test.md#batch-file-format).
 
-```JSON
-[
-    {
-        "text": "drive me home",
-        "intent": "None",
-        "entities": []
-    },
-    {
-        "text": "book a flight to orlando on the 25th",
-        "intent": "BookFlight",
-        "entities": [
-            {
-                "entity": "orlando",
-                "type": "Location",
-                "startIndex": 18,
-                "endIndex": 25
-            }
-        ]
-    }
-]
-
-```
+Zobacz też: 
+* [Pojęcia](luis-concept-batch-test.md)
+* [Instrukcje](luis-how-to-batch-test.md)
+* [Samouczek] Luis-samouczek-Batch-testing.md)
 
 
 ## <a name="collaborator"></a>Współautor
@@ -114,7 +96,7 @@ W usłudze machine learning [funkcji](luis-concept-feature.md) wyróżniający c
 
 ## <a name="labeling"></a>Etykietowania
 
-Etykietowanie jest proces kojarzenia wyraz lub frazę w intencji [wypowiedź](#utterance) z [jednostki](#entity) (typ danych).
+Oznacza to, że jest to proces kojarzenia wyrazu lub frazy w [wypowiedź](#utterance) zamiaru z jednostką ( [](#entity) DataType).
 
 ## <a name="luis-app"></a>Aplikacją usługi LUIS
 

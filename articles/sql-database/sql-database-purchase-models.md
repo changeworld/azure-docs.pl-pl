@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure SQL Database zakupu modeli | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej na temat zakupu modeli, które są dostępne dla usługi Azure SQL Database.
+title: Azure SQL Database modeli zakupu | Microsoft Docs
+description: Poznaj modele zakupów dostępne dla Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,139 +10,138 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: 98c19732c372fbcda3ca8e746d002f94c2687b22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98d257c28ab5ff2cf902c0b8205ac8918ccf4d45
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431371"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567016"
 ---
-# <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wybieranie między rdzeni wirtualnych i jednostek DTU zakupu modeli
+# <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wybierz między rdzeń wirtualny i modelami zakupów jednostek DTU
 
-Usługa Azure SQL Database pozwala łatwo kupić w pełni zarządzana platforma jako usługa (PaaS) Aparat bazy danych, który spełnia Twoje potrzeby wydajności i kosztów. W zależności od modelu wdrażania, wybrany dla usługi Azure SQL Database można wybrać model zakupu, która pracuje dla Ciebie:
+Azure SQL Database pozwala łatwo zakupić aparat bazy danych w pełni zarządzanej platformy jako usługi (PaaS), który spełnia Twoje wymagania dotyczące wydajności i kosztów. W zależności od modelu wdrażania, który został wybrany dla Azure SQL Database, można wybrać model zakupu, który działa dla Ciebie:
 
-- [Rdzeń wirtualny (rdzeń wirtualny) — na podstawie modelu zakupu](sql-database-service-tiers-vcore.md) (zalecane). Ten model zakupu zapewnia wybór między warstwami zainicjowanych zasobów obliczeniowych i warstwa wystąpień obliczeniowych bez użycia serwera (wersja zapoznawcza). Z warstwą zainicjowanych zasobów obliczeniowych możesz wybrać dokładne zalecenia dotyczące ilości zasobów obliczeniowych, które zawsze są udostępniane dla obciążenia. Z warstwą bezserwerowe środowisko obliczeniowe należy określić w zakresie obliczeń można skonfigurować automatyczne skalowanie zasobów obliczeniowych. W tej warstwie obliczeniowej można również automatycznie wstrzymywanie i wznawianie bazy danych, w oparciu o obciążenie działanie. Cena jednostkowa (rdzeń wirtualny) na jednostkę czasu jest niżej w warstwie zainicjowanych zasobów obliczeniowych, niż w warstwie bezserwerowe środowisko obliczeniowe.
-- [Jednostki transakcji bazy danych (DTU) — na podstawie modelu zakupu](sql-database-service-tiers-dtu.md). Ten model zakupu zawiera powiązane zasoby obliczeniowe i Magazyn pakiety ze zrównoważonym dla typowych obciążeń.
+- [Model zakupu oparty na wirtualnym rdzeniu (rdzeń wirtualny)](sql-database-service-tiers-vcore.md) (zalecane). Ten model zakupów umożliwia wybór między zainicjowaną warstwą obliczeniową a warstwą obliczeniową bezserwerową (wersja zapoznawcza). W przypadku alokowanej warstwy obliczeniowej należy wybrać dokładną ilość zasobów obliczeniowych, które są zawsze obsługiwane dla obciążenia. W przypadku warstwy obliczeń bezserwerowych należy określić skalowanie zasobów obliczeniowych w ramach konfigurowalnego zakresu obliczeń. Za pomocą tej warstwy obliczeniowej można również automatycznie wstrzymywać i wznawiać bazę danych w oparciu o aktywność obciążeń. Cena jednostkowa rdzeń wirtualny na jednostkę czasu jest niższa w przypadku alokowanej warstwy obliczeniowej niż w warstwie obliczeniowej bezserwerowej.
+- [Model zakupu oparty na jednostkach transakcji bazy danych (DTU)](sql-database-service-tiers-dtu.md). Ten model zakupów zawiera powiązane pakiety obliczeniowe i magazynowe, które są zrównoważone dla typowych obciążeń.
 
-Dla różnych modeli wdrażania usługi Azure SQL Database dostępne są różne modele zakupu:
+Różne modele zakupów są dostępne dla różnych Azure SQL Database modeli wdrażania:
 
-- [Pojedynczej bazy danych](sql-database-single-databases-manage.md) i [puli elastycznej](sql-database-elastic-pool.md) opcje wdrażania w [usługi Azure SQL Database](sql-database-technical-overview.md) oferują zarówno [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
-- [Wystąpienia zarządzanego](sql-database-managed-instance.md) opcja wdrożenia w usłudze Azure SQL Database oferuje tylko [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
-- [Warstwy usługi w hiperskali](sql-database-service-tier-hyperscale.md) jest dostępna dla pojedynczych baz danych, które korzystają z [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
+- Opcje wdrażania [pojedynczej bazy danych](sql-database-single-databases-manage.md) i [elastycznej puli](sql-database-elastic-pool.md) w [Azure SQL Database](sql-database-technical-overview.md) oferują zarówno [model zakupu oparty](sql-database-service-tiers-dtu.md) na jednostkach DTU, jak i [model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
+- Opcja wdrażania [wystąpienia zarządzanego](sql-database-managed-instance.md) w Azure SQL Database oferuje tylko [model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
+- [Warstwa usługi](sql-database-service-tier-hyperscale.md) do skalowania jest dostępna dla pojedynczych baz danych korzystających z [modelu zakupu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 
-Następujących tabel i wykresów Porównaj i zestaw oparty na rdzeniach wirtualnych i w modelu zakupu opartego na jednostkach DTU:
+Poniższa tabela i wykres porównują i różnią się w zależności od modelu zakupu opartego na rdzeń wirtualny i DTU:
 
 |**Model zakupu**|**Opis**|**Najlepsze dla**|
 |---|---|---|
-|Model oparty na jednostkach DTU|Ten model opiera się na pakiecie miary obliczeniowe, Magazyn i zasoby we/wy. Rozmiarów wystąpień obliczeniowych są wyrażane w jednostkach Dtu dla pojedynczej bazy danych i jednostek transakcji elastic database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [co to są jednostki Dtu i Edtu?](sql-database-purchase-models.md#dtu-based-purchasing-model).|Najlepsze dla klientów, którzy mają opcje zasobu proste, wstępnie skonfigurowane.|
-|Model oparty na rdzeniach wirtualnych|Ten model umożliwia niezależne Wybierz zasoby obliczeniowe i magazynowe. Model zakupu opartego na rdzeniach wirtualnych pozwala również na używanie [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) uzyskanie oszczędności kosztów.|Najlepsze dla klientów, którzy wartości elastyczności, kontroli i przejrzystości.|
+|Model oparty na jednostkach DTU|Ten model jest oparty na podstawie miary zasobów obliczeniowych, magazynu i operacji we/wy. Rozmiary obliczeń są wyrażone w DTU dla pojedynczych baz danych i w jednostkach Elastic Database Transaction units (jednostek eDTU) dla pul elastycznych. Aby uzyskać więcej informacji na temat DTU i jednostek eDTU, zobacz [co to są DTU i jednostek eDTU?](sql-database-purchase-models.md#dtu-based-purchasing-model).|Najlepsza dla klientów, którzy chcą mieć proste, wstępnie skonfigurowane opcje zasobów.|
+|Model oparty na rdzeniach wirtualnych|Ten model umożliwia niezależne wybieranie zasobów obliczeniowych i magazynu. Model zakupu oparty na rdzeń wirtualny umożliwia również korzystanie z [Korzyść użycia hybrydowego platformy Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) w celu uzyskania oszczędności kosztów.|Najlepsza dla klientów, którzy mają elastyczność, kontrolę i przezroczystość.|
 ||||  
 
-![Porównanie modeli cenowych](./media/sql-database-service-tiers/pricing-model.png)
+![Porównanie modelu cen](./media/sql-database-service-tiers/pricing-model.png)
 
-## <a name="compute-costs"></a>Koszty operacji obliczeniowych
+## <a name="compute-costs"></a>Koszty obliczeń
 
-### <a name="provisioned-compute-costs"></a>Koszty zainicjowanych zasobów obliczeniowych
+### <a name="provisioned-compute-costs"></a>Koszty związane z obliczaniem zasobów
 
-W warstwie zainicjowanych zasobów obliczeniowych koszt obliczeń odzwierciedla moc obliczeniową całkowita, które jest obsługiwane dla aplikacji.
+W przypadku alokowanej warstwy obliczeniowej koszt obliczeń odzwierciedla łączną pojemność obliczeniową, która jest obsługiwana dla aplikacji.
 
-W warstwie krytyczne usługi biznesowej firma Microsoft automatycznie Przydziel co najmniej 3 replik. Aby uwzględnić ten dodatkowy przydział zasobów obliczeniowych, cena w modelu zakupu opartego na rdzeniach wirtualnych jest około 2.7 x w warstwie krytyczne biznesowych wyższe niż w warstwie ogólnego przeznaczenia. Podobnie wyższe cena magazynu za GB w warstwie krytyczne biznesowych odzwierciedla wysokiej We/Wy i małe opóźnienia magazyn SSD.
+W warstwie usługi krytycznej dla firm automatycznie przydzielę co najmniej 3 repliki. Aby odzwierciedlić tę dodatkową alokację zasobów obliczeniowych, Cena w modelu zakupu opartego na rdzeń wirtualny wynosi około 2.7 x więcej w warstwie usługi krytycznej dla działania firmy niż w warstwie usług ogólnego przeznaczenia. Podobnie wyższa cena magazynu na GB w warstwie usługi krytycznej dla firm odzwierciedla wysokie i/O małe opóźnienia magazynu SSD.
 
-Koszt magazynu kopii zapasowej jest taka sama dla warstwy usług krytycznych biznesowej i warstwy usług ogólnego przeznaczenia, ponieważ korzystają z obu warstwach standard storage.
+Koszt magazynu kopii zapasowych jest taki sam dla warstwy usługi krytycznej dla działania firmy i warstwy usług ogólnego przeznaczenia, ponieważ obie warstwy korzystają z magazynu w warstwie Standardowa.
 
-### <a name="serverless-compute-costs"></a>Koszty operacji obliczeniowych bez użycia serwera
+### <a name="serverless-compute-costs"></a>Koszty obliczeń bezserwerowych
 
-Aby uzyskać opis sposobu zdefiniowania moc obliczeniową i koszty są obliczane dla warstwy bezserwerowe środowisko obliczeniowe, zobacz [bez użycia serwera bazy danych SQL Database (wersja zapoznawcza)](sql-database-serverless.md).
+Aby uzyskać opis sposobu definiowania pojemności obliczeniowej i obliczania kosztów dla warstwy obliczeń bezserwerowych, zobacz [SQL Database bezserwerowe (wersja zapoznawcza)](sql-database-serverless.md).
 
 ## <a name="storage-costs"></a>Koszty magazynowania
 
-Różnych typów pamięci masowej są rozliczane w różny sposób. Do przechowywania danych opłaty są naliczane dla aprowizowanego magazynu na podstawie maksymalny rozmiar bazy danych lub puli, którą wybierzesz. Koszt nie ulegnie zmianie, chyba że zmniejszyć lub zwiększyć maksymalną tego. Magazyn kopii zapasowych jest skojarzony z automatycznie tworzonymi kopiami zapasowymi Twojego wystąpienia i jest przydzielany dynamicznie. Wydłużenie okresu przechowywania kopii zapasowych zwiększa magazynu kopii zapasowych, które jest używane przez wystąpienie usługi.
+Różne typy magazynów są rozliczane inaczej. W przypadku magazynu danych jest naliczana opłata za magazyn z zainicjowaną obsługą opartą na wybranej maksymalnej wielkości bazy danych lub puli. Koszt nie zmienia się, o ile nie zostanie zredukowany ani zwiększony maksymalny limit. Magazyn kopii zapasowych jest skojarzony z automatycznymi kopiami zapasowymi wystąpienia i jest przydzielany dynamicznie. Zwiększenie okresu przechowywania kopii zapasowych zwiększa magazyn kopii zapasowych zużywany przez wystąpienie.
 
-Domyślnie przez 7 dni, automatyczne kopie zapasowe baz danych są kopiowane do magazynu geograficznie nadmiarowego dostęp do odczytu (RA-GRS) standardowego konta usługi Blob storage. Ten magazyn jest używany przez tygodniowe pełne kopie zapasowe, codzienne różnicowe kopie zapasowe i kopie zapasowe dziennika transakcji, które są kopiowane co 5 minut. Rozmiar dzienników transakcji, zależy od szybkości zmian bazy danych. Minimalna wielkość magazynu wynosi 100 procent rozmiaru bazy danych znajduje się bez dodatkowych opłat. Dodatkowe użycie magazynu kopii zapasowych jest rozliczane w GB na miesiąc.
+Domyślnie 7 dni automatycznego tworzenia kopii zapasowych baz danych są kopiowane do konta magazynu geograficznie nadmiarowego do odczytu (RA-GRS) w warstwie Standardowa. Ten magazyn jest używany przez cotygodniowe pełne kopie zapasowe, codzienne różnicowe kopie zapasowe i kopie zapasowe dziennika transakcji, które są kopiowane co 5 minut. Rozmiar dzienników transakcji zależy od szybkości zmiany bazy danych. Minimalna wielkość magazynu równa 100% rozmiaru bazy danych jest zapewniana bez dodatkowych opłat. Opłata za dodatkowe użycie magazynu kopii zapasowych jest naliczana w GB miesięcznie.
 
-Aby uzyskać więcej informacji na temat cen magazynu, zobacz [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) strony.
+Aby uzyskać więcej informacji o cenach magazynu, zobacz [](https://azure.microsoft.com/pricing/details/sql-database/single/) stronę z cennikiem.
 
 ## <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
-Rdzeń () reprezentuje logiczny procesor CPU i oferuje możliwość wyboru generacji sprzętu i cechy fizyczne sprzętu (na przykład liczba rdzeni, pamięć i rozmiar magazynu). Model zakupu opartego na rdzeniach wirtualnych zapewnia elastyczność możesz, kontrola, przejrzystości użycia poszczególnych zasobów i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Ten model można wybrać zasobów obliczeniowych, pamięci i magazynu na podstawie Twoich potrzeb obciążenia.
+Rdzeń wirtualny (rdzeń wirtualny) reprezentuje logiczny procesor CPU i oferuje możliwość wyboru między generacjami sprzętu i fizycznymi cechami sprzętu (na przykład liczby rdzeni, pamięci i rozmiaru magazynu). Model zakupu oparty na rdzeń wirtualny zapewnia elastyczność, kontrolę, przejrzystość poszczególnych zasobów oraz prostą metodę tłumaczenia lokalnych wymagań obciążeń do chmury. Ten model umożliwia wybranie zasobów obliczeniowych, pamięci i magazynu w oparciu o potrzeby związane z obciążeniem.
 
-W opartych na rdzeniach wirtualnych model zakupu, można wybrać między [ogólnego przeznaczenia](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytyczne dla działania](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) warstwy dla usługi [pojedyncze bazy danych](sql-database-single-database-scale.md), [ pule elastyczne](sql-database-elastic-pool.md), i [wystąpienia zarządzane](sql-database-managed-instance.md). Dla pojedynczych baz danych, można także [warstwy usługi w hiperskali](sql-database-service-tier-hyperscale.md).
+W modelu zakupu opartego na rdzeń wirtualny można wybrać między warstwami usług [ogólnych](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytycznych](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) dla [pojedynczej bazy danych](sql-database-single-database-scale.md), [elastycznymi pulami](sql-database-elastic-pool.md)i [wystąpieniami zarządzanymi](sql-database-managed-instance.md). W przypadku pojedynczych baz danych można również wybrać [warstwę usługi](sql-database-service-tier-hyperscale.md)na potrzeby skalowania.
 
-Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie wybrać zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny. W opartych na rdzeniach wirtualnych model zakupu płacisz za:
+Model zakupu oparty na rdzeń wirtualny umożliwia niezależne wybieranie zasobów obliczeniowych i magazynowych, dopasowanie wydajności lokalnej i optymalizację cen. W modelu zakupu opartego na rdzeń wirtualny płacisz za:
 
-- Obliczenia zasobów (warstwy usług + liczba rdzeni wirtualnych i ilość pamięci i generowanie sprzętu).
-- Typ i ilość miejsca w magazynie danych i dziennika.
+- Zasoby obliczeniowe (warstwa usług + liczba rdzeni wirtualnych i ilość pamięci + generacja sprzętu).
+- Typ i ilość danych i magazynu dzienników.
 - Magazyn kopii zapasowych (RA-GRS).
 
 > [!IMPORTANT]
-> Zasoby obliczeniowe, operacji We/Wy i magazynu danych i dzienników są naliczane zgodnie bazy danych lub elastycznej puli. Magazyn kopii zapasowych jest rozliczane na każdej bazy danych. Aby uzyskać więcej informacji na temat opłat za wystąpienie zarządzane zobacz [wystąpienia zarządzane](sql-database-managed-instance.md).
-> **Ograniczenia regionu:** Aby uzyskać bieżącą listę obsługiwanych regionów, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Aby utworzyć wystąpienie zarządzane w regionie, który obecnie nie jest obsługiwany [Wyślij żądanie pomocy technicznej za pośrednictwem witryny Azure portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
+> Opłaty za zasoby obliczeniowe, we/wy i magazyn danych i dzienników są naliczone za bazę danych lub pulę elastyczną. Dla każdej bazy danych jest naliczana opłata za magazyn kopii zapasowych. Aby uzyskać więcej informacji na temat opłat za wystąpienia zarządzane, zobacz [wystąpienia zarządzane](sql-database-managed-instance.md).
+> **Ograniczenia regionu:** Bieżącą listę obsługiwanych regionów można znaleźć w temacie [produkty dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Aby utworzyć wystąpienie zarządzane w regionie, który obecnie nie jest obsługiwany, [Wyślij żądanie pomocy technicznej za pośrednictwem Azure Portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
 
-Jeśli Twoje pojedynczą bazę danych lub elastycznej puli zużywa ponad 300 jednostek Dtu, konwertowanie do modelu zakupu opartego na rdzeniach wirtualnych może zmniejszyć koszty. Możesz również przekonwertować przy użyciu wybranego interfejsu API lub przy użyciu witryny Azure portal, bez przestojów. Jednak konwersja nie jest wymagana i nie jest wykonywane automatycznie. Jeśli model zakupu opartego na jednostkach DTU spełnia swoje wymagania biznesowe i wydajności, można nadal go używać.
+Jeśli jedna baza danych lub Pula elastyczna zużywa ponad 300 DTU, przekonwertowanie na model zakupu oparty na rdzeń wirtualny może obniżyć koszty. Możesz dokonać konwersji przy użyciu dowolnie wybranego interfejsu API lub korzystając z Azure Portal bez przestojów. Jednak konwersja nie jest wymagana i nie jest wykonywana automatycznie. Jeśli model zakupu oparty na jednostkach DTU spełnia Twoje wymagania dotyczące wydajności i działalności biznesowej, należy go nadal używać.
 
-Aby przekonwertować z modelu zakupu opartego na jednostkach DTU modelu zakupu opartego na rdzeniach wirtualnych, wybierz rozmiar obliczeń przy użyciu następujące reguły akceptacji:
+Aby przekonwertować model zakupu oparty na jednostkach DTU na model zakupu oparty na rdzeń wirtualny, wybierz rozmiar obliczeń przy użyciu następujących reguł przycisku przewijania:
 
-- Co 100 jednostek Dtu w warstwie standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie ogólnego przeznaczenia.
-- Każdy 125 jednostek Dtu w warstwie premium wymagają co najmniej 1 rdzeń wirtualny w warstwie krytyczne biznesowych.
+- Co 100 DTU w warstwie Standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie usług ogólnego przeznaczenia.
+- Co 125 DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny w warstwie usługi krytycznej dla działania firmy.
 
-## <a name="dtu-based-purchasing-model"></a>Model zakupu w oparciu o jednostki DTU
+## <a name="dtu-based-purchasing-model"></a>Model zakupu oparty na jednostkach DTU
 
-Jednostki transakcji bazy danych (DTU) reprezentuje mieszany pomiar procesora CPU, pamięci, odczytów i zapisów. Model zakupu opartego na jednostkach DTU oferuje zestaw wstępnie skonfigurowane pakiety zasobów obliczeniowych i magazynu dostosowane do różnych poziomów wydajności aplikacji w pakiecie. Jeśli preferujesz prostotę wstępnie skonfigurowanego pakietu i płatności w stałej kwocie co miesiąc, model oparty na jednostkach DTU może być bardziej odpowiednie do potrzeb.
+Jednostka transakcji bazy danych (DTU) reprezentuje przymieszaną miarę procesora CPU, pamięci, odczytów i zapisów. Model zakupów opartych na jednostkach DTU oferuje zestaw wstępnie skonfigurowanych pakietów zasobów obliczeniowych i magazynu z uwzględnieniem różnych poziomów wydajności aplikacji. Jeśli wolisz prostoty wstępnie skonfigurowanego pakietu i Naprawiono płatności w każdym miesiącu, model oparty na jednostkach DTU może być bardziej odpowiedni dla Twoich potrzeb.
 
-W oparty na jednostkach DTU model zakupu, można wybrać między podstawowa, standardowa i premium warstwy usług dla obu [pojedyncze bazy danych](sql-database-single-database-scale.md) i [pul elastycznych](sql-database-elastic-pool.md). Model zakupu opartego na jednostkach DTU jest niedostępna dla [wystąpienia zarządzane](sql-database-managed-instance.md).
+W modelu zakupu opartego na jednostkach DTU można wybrać warstwy usług podstawowa, standardowa i Premium dla [pojedynczych baz danych](sql-database-single-database-scale.md) i [pul elastycznych](sql-database-elastic-pool.md). Model zakupu oparty na jednostkach DTU nie jest dostępny dla [wystąpień zarządzanych](sql-database-managed-instance.md).
 
-### <a name="database-transaction-units-dtus"></a>Jednostki transakcji bazy danych (Dtu)
+### <a name="database-transaction-units-dtus"></a>Jednostki transakcji bazy danych (DTU)
 
-Dla pojedynczej bazy danych na określonym obliczenia rozmiaru na [warstwy usług](sql-database-single-database-scale.md), firma Microsoft gwarantuje, więc pewnego poziomu zasobów dla tej bazy danych jest (niezależnie od innej bazy danych w chmurze platformy Azure). Gwarancja zapewnia przewidywalną poziom wydajności. Ilość zasobów przydzielonych dla bazy danych jest obliczany jako liczba jednostek dtu i jest miarą powiązane obliczeń, magazynu i zasoby we/wy.
+W przypadku pojedynczej bazy danych o określonym rozmiarze obliczeń w ramach [warstwy usług](sql-database-single-database-scale.md)firma Microsoft gwarantuje określony poziom zasobów dla tej bazy danych (niezależnie od innej bazy danych w chmurze platformy Azure). Ta gwarancja zapewnia przewidywalny poziom wydajności. Ilość zasobów przydzielonych do bazy danych jest obliczana jako liczba DTU i jest pakietem miary zasobów obliczeniowych, magazynu i operacji we/wy.
 
-Stosunek między te zasoby pierwotnie jest określana przez [obciążenia porównawczego przetwarzanie transakcji online (OLTP)](sql-database-benchmark-overview.md) zaprojektowanego jako typowe rzeczywiste obciążeń OLTP. Gdy obciążenie przekracza ilość dowolnego z następujących zasobów, przepływność jest dławiona, co spowoduje wolniejsze wydajność i przekroczenia limitu czasu.
+Stosunek do tych zasobów jest pierwotnie określony przez [obciążenie porównawcze przetwarzania transakcji online (OLTP)](sql-database-benchmark-overview.md) , zaprojektowane jako typowe dla rzeczywistych obciążeń OLTP. Gdy obciążenie przekracza ilość jednego z tych zasobów, przepustowość jest ograniczana, co powoduje wolniejsze działanie i przekroczenia limitu czasu.
 
-Zasoby używane przez obciążenie nie miały wpływu na zasoby dostępne dla innych baz danych SQL w chmurze platformy Azure. Podobnie zasoby używane przez inne obciążenia nie miały wpływu na zasoby dostępne dla usługi SQL database.
+Zasoby używane przez obciążenie nie wpływają na zasoby dostępne dla innych baz danych SQL w chmurze platformy Azure. Podobnie zasoby używane przez inne obciążenia nie wpływają na zasoby dostępne dla bazy danych SQL.
 
-![obwiedni](./media/sql-database-what-is-a-dtu/bounding-box.png)
+![pole ograniczenia](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Liczba jednostek Dtu są najbardziej przydatne do zrozumienia względne zasoby, które są przydzielane dla baz danych Azure SQL na różnych rozmiarów wystąpień obliczeniowych i warstwy usług. Na przykład:
+DTU są najbardziej przydatne do poznania zasobów względnych, które są przyłączone do baz danych Azure SQL w różnych rozmiarach obliczeniowych i warstwach usług. Przykład:
 
-- Podwojenie liczby jednostek Dtu przez zwiększenie rozmiaru obliczeń bazy danych odpowiada dwukrotnemu zwiększeniu zestawu zasobów dostępnych dla tej bazy danych.
-- Danych premium usługi warstwy P11 z 1750 jednostkami Dtu zapewnia 350 razy więcej jednostek DTU mocy obliczeniowej niż warstwa bazy danych usług w warstwie podstawowa z 5 jednostkami Dtu.  
+- Podwajanie DTU przez zwiększenie rozmiaru obliczeń bazy danych jest równe Podwajanie zestawu zasobów dostępnych dla tej bazy danych.
+- Baza danych P11 usługi w warstwie Premium z 1750 DTU zapewnia większą moc obliczeniową jednostek DTU niż podstawowa baza danych warstwy usług z 5 DTU.  
 
-Aby uzyskać lepszy wgląd w użycie zasobów (DTU), obciążenia, należy użyć [szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) do:
+Aby uzyskać dokładniejsze informacje o zużyciu zasobów (DTU), użyj szczegółowych informacji o [wydajności zapytań](sql-database-query-performance.md) , aby:
 
-- Zidentyfikuj najpopularniejsze zapytania według liczby Procesor/czas trwania/wykonywania, które potencjalnie mogą być dostosowane w celu zwiększenia wydajności. Na przykład, zapytania I wyjścia z wieloma operacjami/mogą skorzystać z [techniki optymalizacji w pamięci](sql-database-in-memory.md) skuteczniej wykorzystać dostępnej pamięci w pewnym warstwę usługi i obliczenia rozmiaru.
-- Przejść do szczegółów szczegółowe zapytania, aby wyświetlić jego tekstu i jego historię użycia zasobów.
-- Dostęp do zalecenia dostrajania wydajności, pokazujące działania podejmowane przez [SQL Database Advisor](sql-database-advisor.md).
+- Zidentyfikuj najważniejsze zapytania według liczby procesorów/czasu trwania/wykonywania, które mogą być dostrojone w celu zwiększenia wydajności. Na przykład zapytanie intensywnie korzystające z operacji we/wy może skorzystać z [technik optymalizacji w pamięci](sql-database-in-memory.md) , aby lepiej wykorzystać dostępną pamięć w określonej warstwie usług i rozmiarze obliczeniowym.
+- Przejdź do szczegółów zapytania, aby wyświetlić jego tekst i historię użycia zasobów.
+- Uzyskaj dostęp do zaleceń dotyczących dostrajania wydajności, które pokazują akcje podejmowane przez [SQL Database Advisor](sql-database-advisor.md).
 
-### <a name="elastic-database-transaction-units-edtus"></a>Jednostki transakcji elastic database (Edtu)
+### <a name="elastic-database-transaction-units-edtus"></a>Jednostki transakcji Elastic Database (jednostek eDTU)
 
-Dla baz danych SQL, które są zawsze dostępne, zamiast niż to dedykowany zestaw zasobów (Dtu), które nie zawsze konieczne może być można umieścić te bazy danych do [puli elastycznej](sql-database-elastic-pool.md). Bazy danych w puli elastycznej znajdują się na jednym serwerze usługi Azure SQL Database i korzystają ze wspólnej puli zasobów.
+W przypadku baz danych SQL, które są zawsze dostępne, zamiast zapewniać dedykowany zestaw zasobów (DTU), które mogą nie zawsze być potrzebne, można umieścić te bazy danych w [puli elastycznej](sql-database-elastic-pool.md). Bazy danych w puli elastycznej znajdują się na jednym serwerze Azure SQL Database i udostępniają pulę zasobów.
 
-Współdzielone zasoby w puli elastycznej są mierzone w jednostkach transakcji elastycznych baz danych (Edtu). Pule elastyczne zapewniają proste i niedrogie rozwiązanie umożliwiające zarządzanie celami wydajności dla wielu baz danych o znacznie zróżnicowanych i nieprzewidywalnych wzorcach użycia. Puli elastycznej gwarantuje, że wszystkie zasoby nie mogą być używane przez jedną bazę danych w puli, przy jednoczesnym zapewnieniu, że każda baza danych w puli ma zawsze minimalną ilość wymaganych zasobów dostępnych.
+Zasoby udostępnione w puli elastycznej są mierzone przez jednostki transakcji Elastic Database (jednostek eDTU). Pule elastyczne zapewniają proste i ekonomiczne rozwiązanie służące do zarządzania celami wydajności dla wielu baz danych, które mają znacznie różne i nieprzewidywalne wzorce użycia. Elastyczna Pula gwarantuje, że wszystkie zasoby nie mogą być używane przez jedną bazę danych w puli, przy jednoczesnym zapewnieniu, że każda baza danych w puli zawsze ma minimalną ilość dostępnych zasobów.
 
-Puli jest przydzielana określona liczba jednostek Edtu za określoną cenę. W elastycznej puli pojedyncze bazy danych można skalowania automatycznego w skonfigurowanych granicach. Bazy danych przy większych obciążeniach zajmie więcej jednostek Edtu w celu spełnienia określonych wymagań. Bazy danych pod obciążeniem jaśniejszy zajmie mniej jednostek Edtu. Bazy danych bez obciążenia będą nie zużywają jednostek Edtu. Ponieważ aprowizacji zasobów dla całej puli zamiast na bazę danych, pul elastycznych uprościć zadania związane z zarządzaniem i zapewnić przewidywalny budżet dla puli.
+Pula ma określoną liczbę jednostek eDTU dla ustawionej ceny. W puli elastycznej poszczególne bazy danych mogą być automatycznie skalowane w skonfigurowanych granicach. Baza danych w ramach większego obciążenia będzie wykorzystywać więcej jednostek edtuów do zaspokajania popytu. Bazy danych pod jaśniejszymi obciążeniami będą zużywać mniejszą liczbę jednostek eDTU. Bazy danych bez obciążenia nie będą korzystać z jednostek eDTU. Ponieważ zasoby są obsługiwane dla całej puli, a nie dla poszczególnych baz danych, pule elastyczne upraszczają zadania zarządzania i zapewniają przewidywalny budżet dla puli.
 
-Dodatkowe jednostki Edtu można dodać do istniejącej puli bez przestoju bazy danych i bez wpływu na bazy danych w puli. Podobnie jeśli dodatkowe jednostki Edtu nie są już potrzebne, usuń je z istniejącej puli w dowolnej chwili. Można również dodać baz danych lub zmniejszyć liczbę baz danych z puli, w dowolnym momencie. Aby zarezerwować je dla innych baz danych, należy ograniczyć liczbę jednostek Edtu, których baza danych może używać pod dużym obciążeniem. Jeśli bazy danych jest stale underuses zasobów, przenieść ją z puli i skonfigurować go jako pojedynczą bazę danych z wymaganą ilością wymaganych zasobów.
+Można dodać dodatkowe jednostek eDTU do istniejącej puli bez przestoju bazy danych i bez wpływu na bazy danych w puli. Podobnie, jeśli nie potrzebujesz już dodatkowych jednostek eDTU, usuń je z istniejącej puli w dowolnej chwili. W dowolnym momencie możesz również dodawać bazy danych do baz danych lub odejmować je z puli. Aby zarezerwować jednostek eDTU dla innych baz danych, należy ograniczyć liczbę jednostek eDTU, z których może korzystać baza danych przy dużym obciążeniu. Jeśli baza danych ciągle nie korzysta z zasobów, przenieś ją z puli i skonfiguruj ją jako pojedynczą bazę danych z przewidywalną ilością wymaganych zasobów.
 
-### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Określenie liczby jednostek Dtu wymaganych przez obciążenie
+### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Określanie liczby DTU wymaganych przez obciążenie
 
-Jeśli użytkownik chce migrować istniejące lokalne lub obciążenie maszyny wirtualnej programu SQL Server do usługi Azure SQL Database, użyj [kalkulatora DTU](https://dtucalculator.azurewebsites.net/) obliczyć przybliżoną liczbę potrzebnych jednostek Dtu. W przypadku istniejących obciążeń usługi Azure SQL Database, należy użyć [szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) zrozumieć swoje użycie zasobów bazy danych (Dtu) i uzyskać bardziej szczegółowe informacje dotyczące optymalizacji obciążenia. [Sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) dynamicznego widoku zarządzania (DMV) umożliwia wyświetlanie zużycia zasobów w ciągu ostatniej godziny. [Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) widoku wykazu przedstawia użycie zasobów w ciągu ostatnich 14 dni, ale o mniejszej dokładności pięciu minut.
+Jeśli chcesz przeprowadzić migrację istniejącego lokalnego lub SQL Server obciążenia maszyny wirtualnej do Azure SQL Database, użyj [kalkulatora jednostek DTU](https://dtucalculator.azurewebsites.net/) , aby przybliżyć wymaganą liczbę DTU. W przypadku istniejącego obciążenia Azure SQL Database należy użyć [szczegółowych informacji o wydajności zapytań](sql-database-query-performance.md) , aby zrozumieć użycie zasobów bazy danych (DTU) i uzyskać dokładniejszy wgląd w optymalizację obciążeń. Dynamiczny widok zarządzania [sys. DM _db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) (DMV) umożliwia wyświetlenie zużycia zasobów w ciągu ostatniej godziny. Widok wykazu [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) przedstawia użycie zasobów w ciągu ostatnich 14 dni, ale przy niższej wierności średniej z pięciu minut.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Obciążenia, które korzystają z elastycznej puli zasobów
 
-Pule są odpowiednie dla baz danych za pomocą Średnio niski wykorzystanie zasobów i stosunkowo rzadkimi okresami zwiększonego użycia. Bazy danych SQL Database automatycznie ocenia historyczne użycie zasobów baz danych na istniejącym serwerze bazy danych SQL Database i zaleca odpowiednią konfigurację puli w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [kiedy należy rozważyć pulę elastyczną SQL Database?](sql-database-elastic-pool.md).
+Pule są dostosowane do baz danych z niską ilością wykorzystania zasobów i stosunkowo nieczęstego wzrostu użycia. SQL Database automatycznie oblicza historyczne użycie zasobów baz danych na istniejącym serwerze SQL Database i zaleca konfigurację odpowiedniej puli w Azure Portal. Aby uzyskać więcej informacji, zobacz [kiedy należy wziąć pod uwagę SQL Database puli elastycznej?](sql-database-elastic-pool.md).
 
-## <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania (FAQ)
+## <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 
-### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Czy muszę przenieść aplikację do trybu offline można przekonwertować z warstwy usług oparte na jednostkach DTU do warstwy usług oparte na rdzeniach wirtualnych?
+### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Czy muszę przełączyć swoją aplikację w tryb offline, aby skonwertować ją z warstwy usług opartych na protokole DTU do warstwy usług opartych na rdzeń wirtualny?
 
-Nie. Nie ma potrzeby przejdź do trybu offline. Nowe warstwy usługi oferują proste metodę konwersji online, która jest podobna do istniejącego procesu uaktualniania baz danych od standardowej warstwy premium i odwrotnie. Ta konwersja można uruchomić przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, T-SQL lub interfejsu API REST. Zobacz [zarządzanie pojedynczymi bazami danych](sql-database-single-database-scale.md) i [Zarządzanie elastycznymi pulami](sql-database-elastic-pool.md).
+Nie. Nie musisz przełączyć aplikacji do trybu offline. Nowe warstwy usług oferują prostą metodę konwersji w trybie online, która jest podobna do istniejącego procesu uaktualniania baz danych ze standardu do warstwy usługi Premium i odwrotnie. Konwersję można rozpocząć przy użyciu Azure Portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, języka T-SQL lub interfejsu API REST. Zobacz [Zarządzanie pojedynczymi bazami danych](sql-database-single-database-scale.md) i [zarządzanie pulami elastycznymi](sql-database-elastic-pool.md).
 
-### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Czy mogę przekonwertować bazę danych z warstwy usług w modelu zakupu opartego na rdzeniach wirtualnych do warstwy usług w modelu zakupu opartego na jednostkach DTU?
+### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Czy mogę przekonwertować bazę danych z warstwy usługi w modelu zakupu opartego na rdzeń wirtualny na warstwę usługi w modelu zakupu opartym na jednostkach DTU?
 
-Tak, można z łatwością przekształcić bazę danych do dowolnego celu obsługiwanych wydajności przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, T-SQL lub interfejsu API REST. Zobacz [zarządzanie pojedynczymi bazami danych](sql-database-single-database-scale.md) i [Zarządzanie elastycznymi pulami](sql-database-elastic-pool.md).
+Tak. bazę danych można łatwo skonwertować do dowolnego obsługiwanego celu wydajności przy użyciu Azure Portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, języka T-SQL lub interfejsu API REST. Zobacz [Zarządzanie pojedynczymi bazami danych](sql-database-single-database-scale.md) i [zarządzanie pulami elastycznymi](sql-database-elastic-pool.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji na temat modelu zakupu opartego na rdzeniach wirtualnych, zobacz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
-- Aby uzyskać więcej informacji na temat modelu zakupu opartego na jednostkach DTU, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md).
+- Aby uzyskać więcej informacji na temat modelu zakupu opartego na rdzeń wirtualny, zobacz [model zakupów oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
+- Aby uzyskać więcej informacji na temat modelu zakupu opartego na jednostkach DTU, zobacz [model zakupu oparty na](sql-database-service-tiers-dtu.md)jednostkach DTU.

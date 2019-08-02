@@ -1,0 +1,141 @@
+---
+title: Cognitive Services i Machine Learning
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak usługi Azure Cognitive Services wygląda w porównaniu z innymi ofertami platformy Azure w zakresie uczenia maszynowego.
+services: cognitive-services
+author: diberry
+manager: nitinme
+ms.service: cognitive-services
+ms.topic: conceptual
+ms.date: 07/23/2019
+ms.author: diberry
+ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697919"
+---
+# <a name="cognitive-services-and-machine-learning"></a>Usługi Cognitive Services i uczenie maszynowe
+
+Cognitive Services zapewnia możliwości uczenia maszynowego w celu rozwiązywania ogólnych problemów, takich jak analizowanie tekstu emocjonalnej tonacji lub analizowanie obrazów w celu rozpoznawania obiektów lub twarzy. Korzystanie z tych usług nie wymaga specjalnej uczenia maszynowego ani wiedzy naukowej dotyczącej danych. 
+
+[Cognitive Services](welcome.md) jest grupą usług, z których każda obsługuje różne, uogólnione funkcje prognozowania. Usługi są podzielone na różne kategorie, aby pomóc w znalezieniu odpowiedniej usługi. 
+
+|Kategoria usługi|Cel|
+|--|--|
+|[Ustępu](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Tworzenie aplikacji wyświetlających rekomendacje pozwalające skuteczniej podejmować lepsze decyzje.|
+|[Język](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Zezwól aplikacjom na przetwarzanie języka naturalnego za pomocą wstępnie skompilowanych skryptów, Oceń tonacji i Dowiedz się, jak rozpoznać, czego chcą użytkownicy.|
+|[Wyszukiwanie](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Dodaj interfejsy API wyszukiwania Bing do aplikacji i Wykorzystaj możliwość rozdzielania miliardów stron sieci Web, obrazów, filmów wideo i wiadomości za pomocą jednego wywołania interfejsu API.|
+|[Narzędzia](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Konwertuj mowę na tekst i tekst na naturalnie brzmiącą mowę. Tłumacz jeden język na inny oraz włącz weryfikację i rozpoznawanie osoby mówiącej.|
+|[Wizja](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Rozpoznawaj, identyfikuj, podpisuj, indeksuj i moderuj swoje zdjęcia, klipy wideo i zawartość elektronicznego pisma odręcznego.|
+||||
+
+Użyj Cognitive Services, gdy:
+
+* Można użyć uogólnionego rozwiązania.
+* Uzyskaj dostęp do rozwiązania z interfejsu API REST programowania lub zestawu SDK. 
+
+Użyj innego rozwiązania do uczenia maszynowego, gdy:
+
+* Konieczne jest wybranie algorytmu i konieczność uczenia się na bardzo konkretnych danych.
+
+## <a name="what-is-machine-learning"></a>Co to jest uczenie maszynowe?
+
+Uczenie maszynowe to koncepcja, w której można połączyć dane i algorytm, aby rozwiązać konkretną potrzebę. Gdy dane i algorytm są przeszkolone, dane wyjściowe są modelem, którego można użyć ponownie z różnymi danymi. Przeszkolony model udostępnia szczegółowe informacje na podstawie nowych danych. 
+
+Proces tworzenia systemu uczenia maszynowego wymaga pewnej znajomości uczenia maszynowego lub nauki dotyczącej danych.
+
+Uczenie maszynowe jest dostępne przy użyciu [produktów i usług Azure Machine Learning (AML)](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context).
+
+## <a name="what-is-a-cognitive-service"></a>Co to jest usługa poznawcze?
+
+Usługa poznawcze udostępnia część lub wszystkie składniki w rozwiązaniu do uczenia maszynowego: dane, algorytmy i model szkolony. Te usługi są przeznaczone do wymagania ogólnej wiedzy na temat danych bez potrzeby korzystania z uczenia maszynowego i analizy danych. Te usługi zapewniają zarówno interfejs API REST, jak i zestaw SDK oparty na języku. W związku z tym musisz mieć wiedzę dotyczącą języka programowania, aby korzystać z usług.
+
+## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>Jak są podobne Cognitive Services i Azure Machine Learning (AML)?
+
+Oba mają cel do zastosowania sztucznej analizy (AI) w celu zwiększenia działania biznesowego, Chociaż każda z nich zapewnia, że poszczególne oferty są inne. 
+
+Zwykle odbiorcy są różne:
+
+* Cognitive Services są przeznaczone dla deweloperów bez środowiska uczenia maszynowego.
+* Azure Machine Learning jest dostosowany do celów analityków danych. 
+
+## <a name="how-is-a-cognitive-service-different-from-machine-learning"></a>Czym różni się usługa poznawcze od uczenia maszynowego?
+
+Usługa poznawcze zapewnia dla Ciebie model szkolony. Dzięki temu dane i algorytm są razem dostępne z interfejsów API REST lub zestawu SDK. Tę usługę można zaimplementować w kilka minut, w zależności od scenariusza.  Usługa poznawcze zapewnia odpowiedzi na ogólne problemy, takie jak kluczowe frazy w identyfikacji tekstu lub elementu w obrazach. 
+
+Uczenie maszynowe to proces, który zwykle wymaga dłuższego czasu na pomyślne zaimplementowanie. Ten czas jest poświęcany na zbieranie danych, czyszczenie, przekształcanie, wybieranie algorytmów, uczenie modelu i wdrażanie w celu uzyskania tego samego poziomu funkcjonalności zapewnianego przez usługę poznawczej. Za pomocą uczenia maszynowego możliwe jest zapewnienie odpowiedzi na dowolny rodzaj problemu, w tym wysoce wyspecjalizowane lub konkretne problemy. Te problemy z uczeniem maszynowym wymagają zapoznania się z co najmniej jedną z następujących czynności: zagadnienie, uczenie maszynowe, nauka danych.
+
+## <a name="what-kind-of-data-do-you-have"></a>Jakiego rodzaju dane masz?
+
+Cognitive Services, jako Grupa usług, może wymagać braku, niektórych lub wszystkich danych niestandardowych dla nauczonego modelu. 
+
+### <a name="no-additional-training-data-required"></a>Nie są wymagane żadne dodatkowe dane szkoleniowe
+
+Usługi zapewniające w pełni szkolony model mogą być traktowane jako _czarne pole_. Nie musisz wiedzieć, jak działają lub jakie dane zostały użyte do ich uczenia. Dane można przenieść do w pełni przeszkolonego modelu, aby uzyskać prognozę. 
+
+### <a name="some-or-all-training-data-required"></a>Wymagane są niektóre lub wszystkie dane szkoleniowe
+
+Niektóre usługi umożliwiają przenoszenie własnych danych, a następnie uczenie modelu. Dzięki temu można zwiększyć model przy użyciu danych i algorytmu usługi z własnymi danymi. Dane wyjściowe odpowiadają Twoim potrzebom. Podczas przenoszenia własnych danych może być konieczne oznakowanie danych w sposób specyficzny dla usługi. Na przykład jeśli przekazujesz model do identyfikacji kwiatów, możesz udostępnić katalog kwiatów i lokalizację kwitnienia w każdym obrazie, aby szkolić model. 
+
+Usługa może _umożliwiać_ dostarczenie danych w celu zwiększenia własnych danych. Usługa może _wymagać_ podania danych. 
+
+### <a name="real-time-or-near-real-time-data-required"></a>Wymagane dane w czasie rzeczywistym lub niemal w czasie rzeczywistym
+
+Aby można było utworzyć skuteczny model, usługa może potrzebować danych w czasie rzeczywistym lub niemal w czasie rzeczywistym. Te usługi przetwarzają duże ilości danych modelu. 
+
+## <a name="service-requirements-for-the-data-model"></a>Wymagania dotyczące usługi dla modelu danych
+
+Następujące dane klasyfikują poszczególne usługi według rodzaju danych, które umożliwia lub wymaga.
+
+|Usługa Cognitive Service|Nie są wymagane żadne dane szkoleniowe|Podajesz niektóre lub wszystkie dane szkoleniowe|Zbieranie danych w czasie rzeczywistym lub niemal w czasie rzeczywistym|
+|--|--|--|--|
+|[Wykrywacz anomalii](./Anomaly-Detector/overview.md)|x|x|x|
+|Szukaj za pomocą wyszukiwarki Bing |x|||
+|[Przetwarzanie obrazów](./Computer-vision/Home.md)|x|||
+|[Content Moderator](./Content-Moderator/overview.md)|x||x|
+|[Custom Vision](./Custom-Vision-Service/home.md)||x||
+|[Twarzy](./Face/Overview.md)|x|x||
+|[Aparat rozpoznawania formularzy](./form-recognizer/overview.md)||x||
+|[Czytnik immersyjny](./immersive-reader/overview.md)|x|||
+|[Aparat rozpoznawania atramentu](./Ink-recognizer/overview.md)|x|x||
+|[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
+|[Personalizacja](./personalizer/what-is-personalizer.md)|x*|x*|x|
+|[QnA Maker](./QnAMaker/Overview/overview.md)||x||
+|[Aparat rozpoznawania osoby mówiącej](./speaker-recognition/home.md)||x||
+|[Zamiana tekstu na mowę (TTS)](speech-service/text-to-speech.md)|x|x||
+|[Zamiana mowy na mowę na tekst (monitora STT)](speech-service/speech-to-text.md)|x|x||
+|[Tłumaczenie mowy](speech-service/speech-translation.md)|x|||
+|[Analiza tekstu](./text-analytics/overview.md)|x|||
+|[Tłumaczenie tekstu w usłudze Translator](./translator/translator-info-overview.md)|x|||
+|[Tłumaczenie tekstu w usłudze Translator — translator niestandardowy](./translator/custom-translator/overview.md)||x||
+
+\* Personalizacja wymaga tylko danych szkoleniowych zbieranych przez usługę (w czasie rzeczywistym) do oszacowania zasad i danych. Program personalizujer nie potrzebuje dużych historycznych zestawów danych dla szkolenia z góry lub partii. 
+
+## <a name="where-can-you-use-cognitive-services"></a>Gdzie można korzystać z Cognitive Services?
+ 
+Usługi są używane w dowolnej aplikacji, która może tworzyć interfejsy API REST lub wywołania zestawu SDK. Przykładami aplikacji są: Web Sites, botów, Virtual lub Mixed Reality, Desktop i Mobile. 
+
+## <a name="how-is-cognitive-search-related-to-cognitive-services"></a>Jak działa wyszukiwanie poznawcze dotyczące Cognitive Services?
+
+[Azure Search](../search/search-what-is-azure-search.md) używa Cognitive Services do udostępnienia tej funkcji. Cognitive Services są udostępniane w Azure Search za poorednictwem [wbudowanych umiejętności](../search/cognitive-search-predefined-skills.md) , które zawijają poszczególne interfejsy API. Możesz użyć bezpłatnego zasobu do przewodników, ale zaplanować tworzenie i dołączanie [zasobów](../search/cognitive-search-attach-cognitive-services.md) płatnych dla większych woluminów.
+
+## <a name="how-can-you-use-cognitive-services"></a>Jak można używać Cognitive Services?
+
+Każda usługa zawiera informacje o danych. Można łączyć usługi ze sobą w rozwiązania łańcucha, takie jak konwertowanie mowy (audio) na tekst, tłumaczenie tekstu na wiele języków, a następnie użycie przetłumaczonych języków w celu uzyskania odpowiedzi z bazy wiedzy. Chociaż Cognitive Services można używać do samodzielnego tworzenia inteligentnych rozwiązań, można je również łączyć z tradycyjnymi projektami uczenia maszynowego, aby uzupełniać modele lub przyspieszyć proces opracowywania. 
+
+Cognitive Services, które udostępniają eksportowane modele dla innych narzędzi uczenia maszynowego:
+
+|Usługa Cognitive Service|Informacje o modelu|
+|--|--|
+|[Custom Vision](./custom-vision-service/home.md)|[Export](./Custom-Vision-Service/export-model-python.md) for Tensorflow for Android, CoreML for IOS11, ONNX for Windows ml|
+
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Utwórz konto usługi poznawczej w [Azure Portal](cognitive-services-apis-create-account.md) lub przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli).
+* Dowiedz się [](authentication.md) , jak uwierzytelniać się w usłudze poznawczej.
+* [Rejestrowanie diagnostyczne](diagnostic-logging.md) służy do identyfikowania problemów i debugowania. 
+* Wdróż usługę poznawczej w kontenerze platformy [](cognitive-services-container-support.md)Docker.
+* Bądź na bieżąco z [aktualizacjami usług](https://azure.microsoft.com/updates/?product=cognitive-services).

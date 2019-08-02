@@ -1,9 +1,9 @@
 ---
-title: Usługa Azure Service Fabric nadzór nad zasobami dla kontenerów i usług | Dokumentacja firmy Microsoft
-description: Usługa Azure Service Fabric pozwala określić limity zasobów dla usług uruchomionych wewnątrz lub poza kontenerów.
+title: Zarządzanie zasobami Service Fabric platformy Azure dla kontenerów i usług | Microsoft Docs
+description: Usługa Azure Service Fabric pozwala określić limity zasobów dla usług uruchomionych wewnątrz lub na zewnątrz kontenerów.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: a2091ea1f8bf24468e41a88ba247a252c9445f2e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ed9ea8f9c340331fd9b8fcc014ab1af88e7b3bae
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612794"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599234"
 ---
 # <a name="resource-governance"></a>Nadzór nad zasobami
 
-Jeśli korzystasz z wielu usług, na tym samym węźle lub klastra, jest to możliwe, że jedna usługa może zużywać więcej zasobów, w blokują inne usługi w ramach procesu. Ten problem, jest nazywana "hałaśliwym sąsiadem". Usługa Azure Service Fabric umożliwia dla deweloperów określić zastrzeżenia i limity dla usługi w celu zagwarantowania zasobów i ograniczenie użycia zasobów.
+W przypadku uruchamiania wielu usług w tym samym węźle lub klastrze istnieje możliwość, że jedna usługa może zużywać więcej zasobów, blokują inne usługi w procesie. Ten problem jest określany jako problem "sąsiada z zakłóceniami". Usługa Azure Service Fabric umożliwia deweloperom określenie rezerwacji i limitów dla usługi w celu zagwarantowania zasobów i ograniczenia użycia zasobów.
 
-> Przed kontynuowaniem pracy z tym artykułem, firma Microsoft zaleca, możesz zapoznać się z [modelu aplikacji usługi Service Fabric](service-fabric-application-model.md) i [modelu hostingu usługi Service Fabric](service-fabric-hosting-model.md).
+> Przed przejściem do tego artykułu zalecamy zapoznanie się z [modelem aplikacji Service Fabric](service-fabric-application-model.md) i [Service Fabric modelem hostingu](service-fabric-hosting-model.md).
 >
 
-## <a name="resource-governance-metrics"></a>Metryki nadzoru zasobów
+## <a name="resource-governance-metrics"></a>Metryki ładu zasobów
 
-Nadzór nad zasobami jest obsługiwana w usłudze Service Fabric przy użyciu [pakiet usługi](service-fabric-application-model.md). Zasoby, które są przypisane do pakietu z można podzielić między pakietami kodu. Limity zasobów, które są określone to także oznaczać rezerwacji zasobów. Usługa Service Fabric obsługuje określanie Procesora i pamięci na pakiet usługi przy użyciu dwóch wbudowanych [metryki](service-fabric-cluster-resource-manager-metrics.md):
+Zarządzanie zasobami jest obsługiwane w Service Fabric zgodnie z pakietem [usługi](service-fabric-application-model.md). Zasoby przypisane do pakietu usługi mogą być dalej dzielone między pakietami kodu. Określone limity zasobów oznaczają również rezerwację zasobów. Service Fabric obsługuje określanie procesora CPU i pamięci na pakiet usługi przy użyciu dwóch wbudowanych [metryk](service-fabric-cluster-resource-manager-metrics.md):
 
-* *Procesor CPU* (Nazwa metryki `servicefabric:/_CpuCores`): Rdzeń logiczny, który jest dostępny na komputerze hosta. Wszystkich rdzeni we wszystkich węzłach są ważona takie same.
+* *Procesor CPU* (nazwa `servicefabric:/_CpuCores`metryki): Rdzeń logiczny, który jest dostępny na komputerze-hoście. Wszystkie rdzenie we wszystkich węzłach są ważone jako takie same.
 
-* *Pamięć* (Nazwa metryki `servicefabric:/_MemoryInMB`): Pamięć jest wyrażona w megabajtach i jest on mapowany do pamięci fizycznej, który jest dostępny na komputerze.
+* *Pamięć* (nazwa `servicefabric:/_MemoryInMB`metryki): Pamięć jest wyrażona w megabajtach i jest mapowana na pamięć fizyczną, która jest dostępna na komputerze.
 
-Aby uzyskać te dwie metryki [Menedżer zasobów klastra](service-fabric-cluster-resource-manager-cluster-description.md) śledzi całkowita pojemność klastra, obciążenia na każdym węźle w klastrze, a pozostałe zasoby w klastrze. Te dwie metryki są równoważne dowolnemu użytkownikowi lub metryk niestandardowych. Wszystkie istniejące funkcje można używanych wraz z nimi:
+W przypadku tych dwóch metryk [klaster Menedżer zasobów](service-fabric-cluster-resource-manager-cluster-description.md) śledzi łączną pojemność klastra, obciążenie każdego węzła w klastrze oraz pozostałe zasoby w klastrze. Te dwie metryki są równoważne z jakimkolwiek innym użytkownikiem lub metryką niestandardową. Z nimi można korzystać ze wszystkich istniejących funkcji:
 
-* Klaster może być [równoważenia](service-fabric-cluster-resource-manager-balancing.md) zgodnie z te dwie metryki (zachowanie domyślne).
-* Klaster może być [defragmentacji](service-fabric-cluster-resource-manager-defragmentation-metrics.md) zgodnie z te dwie metryki.
-* Gdy [opisujące klaster](service-fabric-cluster-resource-manager-cluster-description.md), buforowane pojemności można ustawić te dwie metryki.
+* Klaster można zrównoważyć [](service-fabric-cluster-resource-manager-balancing.md) zgodnie z tymi dwiema metrykami (zachowanie domyślne).
+* Klaster może być [pofragmentowany](service-fabric-cluster-resource-manager-defragmentation-metrics.md) zgodnie z tymi dwiema metrykami.
+* Podczas [opisywania klastra](service-fabric-cluster-resource-manager-cluster-description.md)można ustawić buforowaną pojemność dla tych dwóch metryk.
 
-[Dynamiczne raportowanie obciążenia](service-fabric-cluster-resource-manager-metrics.md) nie jest obsługiwana dla tych metryk i ładuje, aby te metryki są definiowane w czasie jego tworzenia.
+[Dynamiczne raportowanie obciążenia](service-fabric-cluster-resource-manager-metrics.md) nie jest obsługiwane w przypadku tych metryk i są one definiowane podczas tworzenia.
 
-## <a name="resource-governance-mechanism"></a>Mechanizm zarządzania zasobów
+## <a name="resource-governance-mechanism"></a>Mechanizm ładu zasobów
 
-Środowisko uruchomieniowe usługi Service Fabric aktualnie nie zapewnia rezerwacji dla zasobów. Po otwarciu procesu lub kontenera, środowisko uruchomieniowe Ustawia limity zasobów obciążeń, które zostały zdefiniowane w czasie jego tworzenia. Ponadto środowisko wykonawcze odrzuca otwarcia nowe pakiety usługi, które są dostępne po przekroczeniu zasobów. Aby lepiej zrozumieć, jak działa proces, Spójrzmy na przykład węzła przy użyciu dwóch rdzeni procesora CPU (mechanizm zarządzania pamięci jest równoważne):
+Obecnie środowisko uruchomieniowe Service Fabric nie zapewnia rezerwacji dla zasobów. Gdy zostanie otwarty proces lub kontener, środowisko uruchomieniowe ustawia limity zasobów dla obciążeń, które zostały zdefiniowane podczas tworzenia. Ponadto środowisko uruchomieniowe odrzuca otwieranie nowych pakietów usługi, które są dostępne po przekroczeniu zasobów. Aby lepiej zrozumieć, jak działa proces, przyjrzyjmy się przykładowi do węzła z dwoma rdzeniami procesora (mechanizm zarządzania pamięcią jest równoważny):
 
-1. Po pierwsze kontener jest umieszczany w węźle żądania jednego rdzenia procesora CPU. Środowisko uruchomieniowe otwiera kontener i ustawia limitu procesora CPU do jednego rdzenia. Kontener nie będzie mogła użyć więcej niż jednego rdzenia.
+1. Najpierw kontener jest umieszczany w węźle, żądając jednego rdzenia procesora. Środowisko uruchomieniowe otwiera kontener i ustawia limit CPU na jeden rdzeń. Kontener nie będzie mógł używać więcej niż jednego rdzenia.
 
-2. Następnie repliki usługi znajduje się w węźle, a odpowiedni pakiet usługi określa limit jednego rdzenia procesora CPU. Środowisko uruchomieniowe otwiera pakiet kodu i ustawia jego limitu procesora CPU do jednego rdzenia.
+2. Następnie replika usługi jest umieszczana w węźle, a odpowiedni pakiet usługi określa limit jednego rdzenia procesora. Środowisko uruchomieniowe otwiera pakiet kodu i ustawia jego limit CPU na jeden rdzeń.
 
-W tym momencie sumy limitów jest równy pojemność węzła. Proces kontenera z jednym rdzeniu i nie zakłóca ze sobą. Usługa Service Fabric nie umieszcza dalszych repliki lub kontenerów podczas określania limitu procesora CPU.
+W tym momencie suma limitów jest równa pojemności węzła. Proces i kontener są uruchamiane z jednym rdzeniem i nie zakłócają siebie nawzajem. Service Fabric nie umieszcza więcej kontenerów ani replik podczas określania limitu procesora CPU.
 
-Istnieją dwie sytuacje, w których inne procesy mogą będą konkurować o procesora CPU. W takich sytuacjach proces i kontener, w tym przykładzie może wystąpić problem zasobożernymi:
+Istnieją jednak dwie sytuacje, w których inne procesy mogą będą konkurować o dla procesora CPU. W takich sytuacjach proces i kontener z naszego przykładu mogą napotkać problem z sąsiadem:
 
-* *Łączenie usług zarządzanych i niezarządzanych i kontenery*: Użytkownik tworzy usługi bez żadnych nadzór nad zasobami określone, środowisko uruchomieniowe uznaje korzysta z nie zasobów i można umieścić w węźle, w tym przykładzie. W takim przypadku ten nowy proces zużywa skutecznie niektóre Procesora kosztem usług, które zostały już uruchomione w węźle. Istnieją dwa rozwiązania tego problemu. Nie Mieszaj usług zarządzanych i niezarządzanych, w tym samym klastrze, albo użyj [ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) tak, że te dwa typy usług nie znajdą się na tym samym zestawie węzłów.
+* *Mieszanie usług i kontenerów z zarządzaną i*niezarządzaną obsługą: Jeśli użytkownik tworzy usługę bez określonego ładu zarządzania zasobami, środowisko uruchomieniowe widzi je jako zużywające brak zasobów i może umieścić je w węźle w naszym przykładzie. W takim przypadku ten nowy proces efektywnie zużywa jakiś procesor CPU kosztem usług, które są już uruchomione w węźle. Istnieją dwa rozwiązania tego problemu. Nie należy mieszać usług objętych usługami ani w tym samym klastrze ani używać [ograniczeń umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) , aby te dwa typy usług nie kończyły się w tym samym zestawie węzłów.
 
-* *Po uruchomieniu inny proces na węźle, poza usługi Service Fabric (na przykład usługa systemu operacyjnego)* : W takiej sytuacji proces poza usługi Service Fabric również twierdzi dla Procesora z istniejącymi usługami. Rozwiązanie tego problemu jest skonfigurować węzła zdolności produkcyjnych poprawnie kontu obciążenie systemu operacyjnego, jak pokazano w następnej sekcji.
+* *Gdy inny proces zostanie uruchomiony w węźle, na zewnątrz Service Fabric (na przykład usługa systemu operacyjnego)* : W takiej sytuacji proces poza Service Fabric jest również przeznaczony dla procesorów z istniejącymi usługami. Rozwiązaniem tego problemu jest poprawne skonfigurowanie pojemności węzłów w celu uwzględnienia obciążenia systemu operacyjnego, jak pokazano w następnej sekcji.
 
-## <a name="cluster-setup-for-enabling-resource-governance"></a>Konfiguracja klastra umożliwiające zarządzanie zasobami
+## <a name="cluster-setup-for-enabling-resource-governance"></a>Konfiguracja klastra do włączenia zarządzania zasobami
 
-Gdy węzeł zostanie uruchomione i dołączy do klastra, Usługa Service Fabric wykrywa dostępna ilość pamięci i liczba dostępnych rdzeni, a następnie ustawia wydajność węzła dla tych dwóch zasobów.
+Gdy węzeł zostanie uruchomiony i przyłączy się do klastra, Service Fabric wykrywa dostępną ilość pamięci i liczbę rdzeni, a następnie ustawia możliwości węzła dla tych dwóch zasobów.
 
-Pozostawienie miejsca w buforze system operacyjny i inne procesy, może być uruchomione w węźle, Usługa Service Fabric używa tylko 80% dostępnych zasobów w węźle. Ta wartość procentowa jest konfigurowane i można zmienić w manifeście klastra.
+Aby pozostawić miejsce w buforze dla systemu operacyjnego, a dla innych procesów może być uruchomiony w węźle, Service Fabric używa tylko 80% zasobów dostępnych w węźle. Ta wartość procentowa jest konfigurowalna i można ją zmienić w manifeście klastra.
 
-Poniżej przedstawiono przykładowy sposób wydać polecenie usługi Service Fabric do 50% dostępne możliwości procesora CPU i 70% dostępnej pamięci:
+Oto przykład sposobu poinstruować Service Fabric, aby użyć 50% dostępnego procesora i 70% dostępnej pamięci:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -76,7 +76,7 @@ Poniżej przedstawiono przykładowy sposób wydać polecenie usługi Service Fab
 </Section>
 ```
 
-Jeśli potrzebujesz pełnej ręczne ustawienie wydajność węzłów, można użyć regularnych mechanizm do opisywania węzłów w klastrze. Poniżej przedstawiono przykład sposobu konfigurowania węzła za pomocą cztery rdzenie i 2 GB pamięci:
+Jeśli potrzebna jest pełna ręczna konfiguracja pojemności węzłów, można użyć zwykłego mechanizmu opisywania węzłów w klastrze. Oto przykład sposobu konfigurowania węzła z czterema rdzeniami i 2 GB pamięci:
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -87,13 +87,13 @@ Jeśli potrzebujesz pełnej ręczne ustawienie wydajność węzłów, można uż
     </NodeType>
 ```
 
-Gdy automatyczne wykrywanie dostępnych zasobów jest włączona, a wydajność węzłów ręcznie są zdefiniowane w manifeście klastra, usługi Service Fabric sprawdza, czy węzeł ma za mało zasobów do obsługi pojemności, zdefiniowanego przez użytkownika:
+Po włączeniu automatycznego wykrywania dostępnych zasobów i pojemności węzłów są ręcznie definiowane w manifeście klastra, Service Fabric sprawdza, czy węzeł ma wystarczającą ilość zasobów do obsługi pojemności zdefiniowanej przez użytkownika:
 
-* Jeśli wydajność węzłów, które są zdefiniowane w manifeście są mniejsze niż lub równe dostępnych zasobów w węźle, Usługa Service Fabric używa pojemności, które są określone w manifeście.
+* Jeśli pojemności węzłów, które są zdefiniowane w manifeście, są mniejsze lub równe dostępnym zasobom w węźle, a następnie Service Fabric korzysta z pojemności określonych w manifeście.
 
-* Jeśli wydajność węzłów, które są zdefiniowane w manifeście są większe od dostępnych zasobów, Usługa Service Fabric używa dostępnych zasobów jako węzeł pojemności.
+* Jeśli pojemności węzłów, które są zdefiniowane w manifeście, są większe niż dostępne zasoby, Service Fabric używa dostępnych zasobów jako pojemności węzłów.
 
-Automatyczne wykrywanie dostępnych zasobów można wyłączyć, jeśli nie jest wymagana. Aby je wyłączyć, zmienić następujące ustawienia:
+Funkcję automatycznego wykrywania dostępnych zasobów można wyłączyć, jeśli nie jest to wymagane. Aby ją wyłączyć, Zmień następujące ustawienie:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -101,7 +101,7 @@ Automatyczne wykrywanie dostępnych zasobów można wyłączyć, jeśli nie jest
 </Section>
 ```
 
-Aby uzyskać optymalną wydajność należy również włączone następujące ustawienie w manifeście klastra:
+W celu uzyskania optymalnej wydajności należy również włączyć następujące ustawienie w manifeście klastra:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -110,9 +110,9 @@ Aby uzyskać optymalną wydajność należy również włączone następujące u
 </Section>
 ```
 
-## <a name="specify-resource-governance"></a>Określ nadzór nad zasobami
+## <a name="specify-resource-governance"></a>Określanie ładu zasobów
 
-Limity nadzoru zasobów są określone w manifeście aplikacji (sekcja ServiceManifestImport), jak pokazano w poniższym przykładzie:
+Limity zarządzania zasobami są określone w manifeście aplikacji (sekcja ServiceManifestImport), jak pokazano w następującym przykładzie:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -133,15 +133,15 @@ Limity nadzoru zasobów są określone w manifeście aplikacji (sekcja ServiceMa
   </ServiceManifestImport>
 ```
 
-W tym przykładzie pakiet usługi o nazwie **ServicePackageA** pobiera jednego rdzenia w węzłach, gdzie się znajduje. Ten pakiet usługi zawiera dwa pakiety kodu (**CodeA1** i **CodeA2**), a następnie określ zarówno `CpuShares` parametru. Część CpuShares 512:256 dzieli podstawowe w pakietach dwóch kodu.
+W tym przykładzie pakiet usługi o nazwie **Servicepackage** . otrzymuje jeden rdzeń w węzłach, w których został umieszczony. Ten pakiet usługi zawiera dwa pakiety kodu (**CodeA1** i **CodeA2**), a `CpuShares` oba określają parametr. Proporcja CpuShares 512:256 dzieli rdzeń na dwa pakiety kodu.
 
-W związku z tym w tym przykładzie CodeA1 pobiera dwie trzecie rdzenia, a następnie CodeA2 pobiera jedna trzecia podstawowa (i gwarancję nietrwałego rezerwację tej samej). Jeśli nie określono CpuShares pakietów kodu, Usługa Service Fabric dzieli rdzeni równomiernie między nimi.
+W ten przykład, w tym przykładzie, CodeA1 pobiera dwie trzecie rdzenia, a CodeA2 pobiera jedną trzecią z rdzenia (i rezerwacji nietrwałej w taki sam sposób). Jeśli CpuShares nie są określone dla pakietów kodu, Service Fabric dzieli rdzenie równomiernie między nimi.
 
-Limity pamięci są bezwzględne, dzięki czemu oba pakiety kodu mogą zawierać maksymalnie 1024 MB pamięci (i gwarancję nietrwałego rezerwację tej samej). Pakiety kodu (kontenery lub procesy) nie może przydzielać pamięci ponad ten limit. podjęcie próby takiego przydzielenia spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usług powinny mieć określone limity pamięci.
+Limity pamięci są bezwzględne, więc oba pakiety kodu są ograniczone do 1024 MB pamięci (i rezerwacja nietrwałej gwarancji tego samego). Pakiety kodu (kontenerów lub procesów) nie mogą alokować większej ilości pamięci niż ten limit i próba wykonania tej czynności spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usług powinny mieć określone limity pamięci.
 
-### <a name="using-application-parameters"></a>Przy użyciu parametrów aplikacji
+### <a name="using-application-parameters"></a>Używanie parametrów aplikacji
 
-Podczas określania nadzór nad zasobami jest możliwość użycia [parametry aplikacji](service-fabric-manage-multiple-environment-app-configuration.md) na zarządzanie wieloma konfiguracjami aplikacji. Poniższy przykład przedstawia użycie parametrów aplikacji:
+Podczas określania ładu zasobów można używać [parametrów aplikacji](service-fabric-manage-multiple-environment-app-configuration.md) do zarządzania wieloma konfiguracjami aplikacji. W poniższym przykładzie pokazano użycie parametrów aplikacji:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -165,7 +165,7 @@ Podczas określania nadzór nad zasobami jest możliwość użycia [parametry ap
   </ServiceManifestImport>
 ```
 
-W tym przykładzie domyślne wartości parametrów są ustawiane w środowisku produkcyjnym, gdzie każdy pakiet usługi otrzymamy 4 rdzenie, jak i 2 GB pamięci. Jest to możliwe, można zmienić wartości domyślnych za pomocą pliki parametrów aplikacji. W tym przykładzie jeden plik parametrów może służyć do testowania aplikacji w środowisku lokalnym, gdzie ją otrzymamy mniej zasobów niż w środowisku produkcyjnym:
+W tym przykładzie domyślne wartości parametrów są ustawiane dla środowiska produkcyjnego, w którym każdy pakiet usługi będzie miał 4 rdzenie i 2 GB pamięci. Istnieje możliwość zmiany wartości domyślnych przy użyciu plików parametrów aplikacji. W tym przykładzie jeden plik parametrów może służyć do lokalnego testowania aplikacji, w której byłyby mniej zasobów niż w środowisku produkcyjnym:
 
 ```xml
 <!-- ApplicationParameters\Local.xml -->
@@ -182,22 +182,22 @@ W tym przykładzie domyślne wartości parametrów są ustawiane w środowisku p
 ```
 
 > [!IMPORTANT]
-> Określanie nadzór nad zasobami z parametrami aplikacji jest dostępna, począwszy od usługi Service Fabric wersji 6.1.<br>
+> Określanie nadzoru zasobów przy użyciu parametrów aplikacji jest dostępne począwszy od Service Fabric w wersji 6,1.<br>
 >
-> Parametry aplikacji używanego do określania nadzór nad zasobami usługi Service Fabric nie można zmienić na starszą wersję wersji wcześniejszej niż w wersji 6.1.
+> Gdy parametry aplikacji są używane do określania ładu zasobów, Service Fabric nie może zostać obniżone do wersji starszej niż 6,1.
 
 ## <a name="other-resources-for-containers"></a>Inne zasoby dla kontenerów
 
-Oprócz Procesora i pamięci jest to możliwe określić inne ograniczenia dotyczące zasobów dla kontenerów. Te limity są określone na poziomie pakietu kodu i są stosowane po uruchomieniu kontenera. W przeciwieństwie do procesora CPU i pamięci, Menedżer zasobów klastra nie jest świadomy tych zasobów i nie będzie wykonać żadnych testów wydajności lub równoważenia obciążenia dla nich.
+Oprócz procesora CPU i pamięci można określić inne limity zasobów dla kontenerów. Limity te są określane na poziomie pakietu kodu i są stosowane po rozpoczęciu kontenera. W przeciwieństwie do procesora i pamięci, klaster Menedżer zasobów nie wie o tych zasobach i nie wykonuje żadnych testów wydajności ani równoważenia obciążenia dla nich.
 
-* *MemorySwapInMB*: Ilość pamięci wymiany, używanego w kontenerze.
-* *MemoryReservationInMB*: Zmienny limit nadzoru pamięci, który jest wymuszany, tylko wtedy, gdy wykryto rywalizacji o zasoby pamięci w węźle.
-* *CpuPercent*: Procent procesora CPU, kontener może korzystać. Jeśli podano limity procesora CPU dla pakietu z tego parametru skutecznie jest ignorowana.
-* *MaximumIOps*: Maksymalna liczba IOPS, można użyć kontenera (Odczyt i zapis).
-* *MaximumIOBytesps*: Maksymalna we/wy (w bajtach na sekundę), można użyć kontenera (Odczyt i zapis).
-* *BlockIOWeight*: Blok waga we/wy dla względem innych kontenerów.
+* *MemorySwapInMB*: Ilość pamięci wymiany, która może być używana przez kontener.
+* *MemoryReservationInMB*: Limit nietrwałego zarządzania pamięcią wymuszany tylko w przypadku wykrycia rywalizacji o pamięć w węźle.
+* *CpuPercent*: Procent użycia procesora CPU, który może być używany przez kontener. Jeśli dla pakietu usługi są określone limity procesora CPU, ten parametr jest skutecznie ignorowany.
+* *MaximumIOps*: Maksymalna liczba operacji we/wy, które mogą być używane przez kontener (odczyt i zapis).
+* *MaximumIOBytesps*: Maksymalna liczba operacji we/wy (w bajtach na sekundę), które mogą być używane przez kontener (odczyt i zapis).
+* *BlockIOWeight*: Waga operacji we/wy bloku względem innych kontenerów.
 
-Te zasoby można łączyć z procesora CPU i pamięci. Poniżej przedstawiono przykładowy sposób określić dodatkowe zasoby dla kontenerów:
+Te zasoby mogą być połączone z PROCESORAmi i pamięcią. Oto przykład sposobu określania dodatkowych zasobów dla kontenerów:
 
 ```xml
     <ServiceManifestImport>
@@ -211,5 +211,5 @@ Te zasoby można łączyć z procesora CPU i pamięci. Poniżej przedstawiono pr
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej o Menedżer zasobów klastra, przeczytaj [Przedstawiamy Menedżer zasobów klastra usługi Service Fabric](service-fabric-cluster-resource-manager-introduction.md).
-* Aby dowiedzieć się więcej o modelu aplikacji, pakietów usługi i pakiety kodu — i jak repliki mapy do nich — odczytać [modelu aplikacji w usłudze Service Fabric](service-fabric-application-model.md).
+* Aby dowiedzieć się więcej o Menedżer zasobów klastra, przeczytaj artykuł [wprowadzenie do Service Fabric Menedżer zasobów klastra](service-fabric-cluster-resource-manager-introduction.md).
+* Aby dowiedzieć się więcej na temat modelu aplikacji, pakietów usług i pakietów kodu — oraz sposobu mapowania replik na nie — odczytywanie [modelu aplikacji w Service Fabric](service-fabric-application-model.md).

@@ -1,7 +1,7 @@
 ---
-title: Włączanie wielu konwersacje
+title: Konwersacje wieloetapowe — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Umożliwia zarządzanie wielu włącza, znane jako wiele pozycji dla bota z jedno pytanie do innego w monity i kontekstu. Włączanie wielu jest możliwość dysponowania konwersacji Wstecz i w przód, gdzie poprzedniego pytania kontekstu ma wpływ na następny pytań i odpowiedzi.
+description: Użyj wskazówek i kontekstu, aby zarządzać wielokrotnymi przepisaniami, nazywanymi wieloma przełączanymi, dla bot z jednego pytania do innego. Funkcja wielodostępna umożliwia konwersację z poprzednią i przechodzącą, w której kontekście poprzedniego pytania ma wpływ na następne pytanie i odpowiedź.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,120 +11,120 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 10249375922b47a40f71a60938cdd12ffe0f9b54
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 264d9e89d22b30b83821f691e134d032eb4220f5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508141"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563142"
 ---
-# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Użyj kontynuacji monit o utworzenie wielu włącza konwersacji
+# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Użyj monitów monitujących, aby utworzyć wiele zamian w konwersacji
 
-Umożliwia zarządzanie wielu włącza, znane jako kolejnych monitów i kontekst _wielu Włącz_, dla bota z jedno pytanie do innego.
+Użyj monitów uzupełniających i kontekstu, aby zarządzać wielokrotnymi przełączami, nazywanymi wieloma ruchami dla bot z jednego pytania do innego.
 
-Aby zobaczyć, jak działa wiele Włącz, Wyświetl poniższy klip wideo demonstracyjne:
+Aby zobaczyć, jak działa wiele przełączania, Wyświetl następujące wideo demonstracyjne:
 
-[![Włączanie wielu konwersacji usługi QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
+[![Obsługa wieloskładnikowej rozmowy w QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
-## <a name="what-is-a-multi-turn-conversation"></a>Co to jest konwersacji wielu Włącz?
+## <a name="what-is-a-multi-turn-conversation"></a>Co to jest konwersacja wieloletnia?
 
-Nie można odpowiedzi na niektóre pytania, jednej pozycji. Podczas projektowania konwersacji (czatbot) aplikacji klienta, użytkownik może poprosić pytanie, na które ma być filtrowana lub, aby określić poprawną odpowiedź. Umożliwia to flow za pośrednictwem pytań poprzez przedstawienie użytkownika za pomocą *monituje monitowania*.
+Niektórych pytań nie można udzielić na jednym z nich. Gdy projektujesz konwersacje aplikacji klienckiej (Chat bot), użytkownik może zadawać pytanie, które musi zostać przefiltrowane lub ulepszone, aby określić poprawną odpowiedź. Ten przepływ można wykonać za pomocą pytań możliwych do przesłania użytkownikowi z monitami.
 
-Gdy użytkownik zadaje pytanie, usługa QnA Maker zwraca odpowiedź _i_ żadnych kolejnych monitów. Ta odpowiedź umożliwia prezentowanie dalszych pytań jako opcje. 
+Gdy użytkownik prosi o pytanie, QnA Maker zwróci odpowiedź _i_ wszelkie monity monitujące. Ta odpowiedź umożliwia zaprezentowanie pytań uzupełniających jako wyborów. 
 
-## <a name="example-multi-turn-conversation-with-chat-bot"></a>Przykład wielu Włącz komunikację z czatbot
+## <a name="example-multi-turn-conversation-with-chat-bot"></a>Przykład wieloletniej rozmowy z bot rozmowy
 
-Włączanie wielu czatbot zarządza konwersacji z użytkownikiem w celu ustalenia końcowego odpowiedzi, jak pokazano na poniższej ilustracji:
+Dzięki wielokrotnemu przeniesieniu rozmowa bot zarządza konwersacją z użytkownikiem w celu określenia odpowiedzi końcowej, jak pokazano na poniższej ilustracji:
 
-![Okno dialogowe Włączanie wielu monitowania, które prowadzą użytkownika przez konwersacji](../media/conversational-context/conversation-in-bot.png)
+![Wieloosiowe okno dialogowe z instrukcjami, które prowadzą użytkownika przez konwersację](../media/conversational-context/conversation-in-bot.png)
 
-Na wcześniejszej ilustracji, użytkownik rozpoczął konwersację, wprowadzając **Moje konto**. Baza wiedzy ma trzy połączone pary pytań i odpowiedzi. Aby zawęzić odpowiedź, gdy użytkownik wybierze jeden z trzech opcji w bazie wiedzy knowledge base. Pytanie (1) ma trzy monity monitowania, które są widoczne w czatbot jako trzy opcje (2). 
+Na poprzedniej ilustracji użytkownik rozpoczął konwersację, wprowadzając **Moje konto**. Baza wiedzy ma trzy połączone pary pytań i odpowiedzi. Aby uściślić odpowiedź, użytkownik wybiera jedną z trzech opcji w bazie wiedzy. Pytanie (#1) ma trzy monity monitujące, które są prezentowane w rozmowie bot jako trzy opcje (#2). 
 
-Gdy użytkownik wybierze opcję (3), będzie wyświetlana lista dalej rafinacja opcje (nr 4). Ta sekwencja będzie kontynuowane (5), dopóki użytkownik określa poprawny, ostateczne odpowiedzi (6).
+Gdy użytkownik wybierze opcję (#3), zostanie wyświetlona Następna lista opcji rafinacji (#4). Ta sekwencja będzie kontynuowana (#5), dopóki użytkownik nie ustali poprawnej, końcowej odpowiedzi (#6).
 
 > [!NOTE]
-> Na wcześniejszej ilustracji **włączyć wielu Włącz** zostało zaznaczone pole wyboru, aby upewnić się, że nie są wyświetlane monity. 
+> Na poprzedniej ilustracji zaznaczone jest pole wyboru **Włącz wiele** połączeń, aby upewnić się, że monity są wyświetlane. 
 
-### <a name="use-multi-turn-in-a-bot"></a>Włącz wielokrotnego użycia w robota
+### <a name="use-multi-turn-in-a-bot"></a>Używanie wieloskładnikowego bot
 
-Aby zarządzać kontekstowych konwersacji, należy zmienić aplikacji klienckiej przez [dodając kod do bota](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting). Dodając kod umożliwia użytkownikom wyświetlanie monitami.  
+Aby zarządzać kontekstową konwersacją, Zmień aplikację kliencką, [dodając kod do bot](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting). Dodanie kodu umożliwia użytkownikom wyświetlanie wyświetleń.  
 
-## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Tworzenie konwersacji wielu Włącz na podstawie struktury dokumentu
+## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Tworzenie wieloskładnikowej konwersacji z struktury dokumentu
 
-Po utworzeniu bazy wiedzy **wypełnić wiedzy** sekcja wyświetla **włączyć wielu Włącz wyodrębniania z adresów URL, pliki PDF lub .docx** pole wyboru. 
+Po utworzeniu bazy wiedzy w sekcji Wypełnij w **bazie** wiedzy zostanie wyświetlona pole wyboru **Włącz funkcję wyodrębniania z adresów URL, plików PDF lub DOCX** . 
 
-![Pole wyboru włączenia wielu Włącz wyodrębniania](../media/conversational-context/enable-multi-turn.png)
+![Pole wyboru umożliwiające włączenie wyodrębniania wieloskładnikowego](../media/conversational-context/enable-multi-turn.png)
 
-Po wybraniu tej opcji w przypadku zaimportowanych dokumentów, konwersacji wielu Włącz może wynikać z ze struktury dokumentu. Jeśli istnieje tej struktury, usługi QnA Maker tworzy monitowania wiersza tej pary pytań i odpowiedzi w ramach procesu importowania. 
+Po wybraniu tej opcji dla zaimportowanego dokumentu konwersacja z obsługą wielodostępności może być implikowana na podstawie struktury dokumentu. Jeśli ta struktura istnieje, QnA Maker powoduje utworzenie monitu monitujące, który umożliwia parowanie pytań i odpowiedzi w ramach procesu importowania. 
 
-Włącz wielu struktury można wywnioskować tylko z adresów URL, pliki PDF i pliki DOCX. Na przykład struktura wyświetlić obraz [plik PDF ręczne użytkownika Microsoft Surface](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). Ze względu na rozmiar tego pliku PDF, wymaga zasobów usługi QnA Maker **warstwa cenowa wyszukiwania** z **B** (indeksy 15) lub nowszej. 
+Strukturę wielostopniową można wywnioskować tylko na podstawie adresów URL, plików PDF lub plików DOCX. Aby zapoznać się z przykładem struktury, Wyświetl obraz [ręcznego pliku PDF użytkownika powierzchniowego](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). Ze względu na rozmiar tego pliku PDF zasób QnA Maker wymaga **warstwy cenowej wyszukiwania** **B** (15 indeksów) lub nowszej. 
 
-![! [Przykład struktury w podręczniku użytkownika] (.. / media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+![! [Przykład struktury w podręczniku użytkownika] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-Podczas importowania pliku PDF, narzędzie QnA Maker określa monitowania ze struktury wyświetli monit o utworzenie przepływu konwersacji. 
+Podczas importowania dokumentu PDF QnA Maker określa monity o instrukcje ze struktury, aby utworzyć przepływ konwersacji. 
 
-1. Usługa QnA Maker wybierz **tworzenie bazy wiedzy**.
-1. Utwórz lub użyj istniejącej usługi QnA Maker. W powyższym przykładzie Microsoft Surface, ponieważ plik PDF jest zbyt duży dla warstwy mniejszych, użyj usługi QnA Maker za pomocą **usługi wyszukiwania** z **B** (indeksy 15) lub nowszej.
-1. Wprowadź nazwę bazy wiedzy, takie jak **powierzchni podręcznika**.
-1. Wybierz **włączyć wielu Włącz wyodrębniania z adresów URL, pliki PDF lub .docx** pole wyboru. 
-1. Wybierz urządzenia Surface ręczne adres URL **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** .
+1. W QnA Maker wybierz pozycję **Utwórz bazę wiedzy**.
+1. Utwórz lub Użyj istniejącej usługi QnA Maker. W poprzednim przykładzie powierzchni firmy Microsoft, ponieważ plik PDF jest zbyt duży dla mniejszej warstwy, Użyj usługi QnA Maker z **usługą wyszukiwania** **B** (15 indeksów) lub większą.
+1. Wprowadź nazwę bazy wiedzy, np. **Ręczne**.
+1. Zaznacz pole wyboru **Włącz wyodrębnianie z adresów URL, plików PDF lub DOCX** . 
+1. Wybierz ręczny adres URL powierzchni, **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** .
 
-1. Wybierz **tworzenie wiedzy** przycisku. 
+1. Wybierz przycisk **Utwórz swoją KB** . 
 
-    Po utworzeniu bazy wiedzy knowledge base, wyświetlany jest widok pary pytań i odpowiedzi.
+    Po utworzeniu bazy wiedzy zostanie wyświetlony widok par pytań i odpowiedzi.
 
-## <a name="show-questions-and-answers-with-context"></a>Pokaż pytań i odpowiedzi z kontekstem
+## <a name="show-questions-and-answers-with-context"></a>Pokaż pytania i odpowiedzi z kontekstem
 
-Zmniejsz wyświetlanych pary pytań i odpowiedzi tylko do tych kontekstowych konwersacji. 
+Zmniejsz liczbę wyświetlanych par pytań i odpowiedzi tylko do tych, które są kontekstowe konwersacje. 
 
-Wybierz **wyświetlić opcje**, a następnie wybierz pozycję **kontekstu Show (wersja ZAPOZNAWCZA)** . Zostanie wyświetlona lista pary pytań i odpowiedzi, które zawierają kolejnych monitów. 
+Wybierz pozycję **Wyświetl opcje**, a następnie wybierz pozycję **Pokaż kontekst (wersja zapoznawcza)** . Na liście są wyświetlane pary pytania i odpowiedzi, które zawierają monity monitujące. 
 
-![Filtruj pary pytań i odpowiedzi według kontekstowych konwersacje](../media/conversational-context/filter-question-and-answers-by-context.png)
+![Filtrowanie par pytań i odpowiedzi według kontekstowych konwersacji](../media/conversational-context/filter-question-and-answers-by-context.png)
 
-Kontekst wielu Włącz jest wyświetlany w pierwszej kolumnie.
+Kontekst wielowłączany jest wyświetlany w pierwszej kolumnie.
 
-![! [Kolumna "kontekst (wersja ZAPOZNAWCZA)"] (.. / media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![! [Kolumna "kontekstowa (wersja zapoznawcza)"] (.. /media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
-Na wcześniejszej ilustracji **#1** wskazuje pogrubioną czcionką w kolumnie, który oznacza bieżącego zapytania. Pytanie nadrzędne jest pierwszy element na wiersz. Pytania poniżej są połączone pary pytań i odpowiedzi. Te elementy są można wybierać, tak aby od razu przejść do innych elementów w kontekście. 
+Na powyższym obrazie **#1** oznacza pogrubiony tekst w kolumnie, co oznacza bieżące pytanie. Pytanie nadrzędne to pierwszy element w wierszu. Wszystkie pytania poniżej są połączonymi parami pytań i odpowiedzi. Elementy te są wybierane, dzięki czemu można od razu przejść do innych elementów kontekstu. 
 
-## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>Dodawanie istniejącej pary pytań i odpowiedzi jako wiersz monitowania
+## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>Dodaj istniejącą parę pytanie-odpowiedź jako monit
 
-Oryginalne pytanie zadane **Moje konto**, ma kolejnych monitów, takie jak **konta i zalogowaniu**. 
+Oryginalne pytanie, **Moje konto**zawiera monity monitujące, takie jak **konta i logowanie**. 
 
-!["Kont i logowania" odpowiedzi i kolejnych monitów](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
+![Odpowiedzi "konta i logowania" oraz monity monitujące](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
 
-Dodaj wiersz monitowania do istniejącej pary pytań i odpowiedzi, która nie jest aktualnie połączony. Ponieważ pytanie nie jest połączony z każdej pary pytań i odpowiedzi, bieżące ustawienie widoku musi zostać zmienione.
+Dodawanie monitu monitujące do istniejącej pary pytań i odpowiedzi, która nie jest aktualnie połączona. Ponieważ pytanie nie jest połączone z żadną parą pytań i odpowiedzi, należy zmienić ustawienie bieżącego widoku.
 
-1. Aby połączyć istniejącej pary pytań i odpowiedzi jako wiersz monitowania, wybierz wiersz dotyczący pary pytań i odpowiedzi. Dla powierzchni podręcznika, wyszukaj **Wyloguj** zmniejszyć na liście.
-1. W wierszu **Signout**w **odpowiedzi** wybierz opcję **Dodaj wiersz monitowania**.
-1. W polach **kontynuacji wiersza (wersja ZAPOZNAWCZA)** oknie podręcznym wprowadź następujące wartości:
+1. Aby połączyć istniejącą parę pytanie-odpowiedź jako monit, wybierz wiersz dla pary pytania i odpowiedzi. Aby uzyskać ręczną powierzchnię, Wyszukaj pozycję **Wyloguj** się, aby zmniejszyć listę.
+1. W wierszu dla **wylogowaniu**, w kolumnie **odpowiedź** wybierz pozycję **Dodaj monit**uzupełniający.
+1. W polach okna podręcznego **monitu (wersja ZApoznawcza)** wprowadź następujące wartości:
 
-    |Pole|Wartość|
+    |Pole|Value|
     |--|--|
-    |Wyświetlanie tekstu|Wprowadź **Wyłącz urządzenie**. Jest to niestandardowy tekst do wyświetlenia w wierszu monitowania.|
-    |Tylko do kontekstu| Zaznacz to pole wyboru. Odpowiedź jest zwracana tylko wtedy, gdy jest to pytanie Określa kontekst.|
-    |Link do odpowiedzi|Wprowadź **ekran logowania** można znaleźć istniejącej pary pytań i odpowiedzi.|
+    |Wyświetl tekst|Wprowadź Wyłącz **urządzenie**. Jest to niestandardowy tekst do wyświetlenia w wierszu monitu.|
+    |Tylko kontekstowe| Zaznacz to pole wyboru. Odpowiedź jest zwracana tylko wtedy, gdy pytanie określa kontekst.|
+    |Połącz z odpowiedzią|Wprowadź **Użyj ekranu logowania,** aby znaleźć istniejącą parę pytania i odpowiedzi.|
 
 
-1.  Zwracany jest jedno dopasowanie. Wybierz odpowiedź jako kontynuacji, a następnie wybierz **Zapisz**. 
+1.  Zwracane jest jedno dopasowanie. Zaznacz tę odpowiedź jako monit, a następnie wybierz pozycję **Zapisz**. 
 
-    ![Na stronie "Monitowania wiersz (wersja ZAPOZNAWCZA)"](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
+    ![Strona "monit o zaobserwuj" (wersja zapoznawcza)](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
 
-1. Po dodaniu kolejnych wierszu wybierz **Zapisz i szkolenie** w górnym menu nawigacyjnym.
+1. Po dodaniu monitu kliknij pozycję **Zapisz i** pouczenie w górnym obszarze nawigacji.
   
-### <a name="edit-the-display-text"></a>Edytowanie tekstu 
+### <a name="edit-the-display-text"></a>Edytuj tekst wyświetlany 
 
-Podczas kolejnych wiersza jest tworzony i istniejącej pary pytań i odpowiedzi jest wprowadzana jako **łącze do odpowiedzi**, można wprowadzić nowy **wyświetlania tekstu**. Ten tekst nie zastępuje istniejące zapytania, a nie jest dodawany nowe pytanie alternatywne. Jest oddzielony od tych wartości. 
+Po utworzeniu monitu o podanie i istniejącej pary pytań i odpowiedzi jako **linku do odpowiedzi**możesz wprowadzić nowy **tekst wyświetlany**. Ten tekst nie zastępuje istniejącego pytania i nie dodaje nowego pytania alternatywnego. Jest ona oddzielona od tych wartości. 
 
-1. Aby edytować tekst wyświetlany, wyszukaj i wybierz pytanie w **kontekstu** pola.
-1. W wierszu to pytanie wybierz opcję monitowania wierszu w kolumnie odpowiedzi. 
-1. Zaznacz tekst wyświetlaną chcesz edytować, a następnie wybierz **Edytuj**.
+1. Aby edytować tekst wyświetlany, Wyszukaj i wybierz pytanie w polu **kontekst** .
+1. W wierszu dla tego pytania wybierz wiersz monitu w kolumnie odpowiedź. 
+1. Wybierz tekst wyświetlany, który chcesz edytować, a następnie wybierz pozycję **Edytuj**.
 
-    ![Polecenie edytowania wyświetlanego tekstu](../media/conversational-context/edit-existing-display-text.png)
+    ![Polecenie edycji dla tekstu wyświetlanego](../media/conversational-context/edit-existing-display-text.png)
 
-1. W **kontynuacji wiersza** oknie podręcznym, zmiana istniejących tekstu. 
-1. Po zakończeniu edycji tekstu wyświetlanego, wybierz **Zapisz**. 
-1. W górnym pasku nawigacyjnym **Zapisz i szkolenie**.
+1. W oknie podręcznym **monitu o zapowiedź** Zmień istniejący tekst wyświetlany. 
+1. Po zakończeniu edycji wyświetlanego tekstu wybierz pozycję **Zapisz**. 
+1. Na górnym pasku nawigacyjnym **Zapisz i poszkol**.
 
 
 <!--
@@ -150,52 +150,52 @@ In the knowledge base, when a question-and-answer pair is linked to follow-up pr
 
 -->
 
-## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Dodaj nową parę pytań i odpowiedzi jako wiersz monitowania
+## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Dodaj nową parę pytanie-odpowiedź jako monit
 
-Po dodaniu nowej pary pytań i odpowiedzi w bazie wiedzy, każda para powinna być połączona istniejącego zapytania jako monitowania wiersza.
+Po dodaniu nowej pary pytań i odpowiedzi do bazy wiedzy każda para powinna być połączona z istniejącym pytaniem jako monitem.
 
-1. Na pasku narzędzi w bazie wiedzy knowledge base, wyszukiwanie i Wybieranie istniejącej pary pytań i odpowiedzi dla **konta i zalogowaniu**. 
+1. Na pasku narzędzi bazy wiedzy, Wyszukaj i wybierz istniejącą parę pytanie-odpowiedź dla **kont i zaloguj się**. 
 
-1. W **odpowiedzi** kolumny na to pytanie, wybierz opcję **Dodaj wiersz monitowania**. 
-1. W obszarze **kontynuacji wiersza (wersja ZAPOZNAWCZA)** , Utwórz nowy wiersz monitowania, wprowadzając następujące wartości: 
+1. W kolumnie **odpowiedź** dla tego pytania wybierz pozycję **Dodaj monit**uzupełniający. 
+1. W obszarze **monitu krok po prawej stronie (wersja ZApoznawcza)** Utwórz nowy monit uzupełniający, wprowadzając następujące wartości: 
 
-    |Pole|Wartość|
+    |Pole|Value|
     |--|--|
-    |Wyświetlanie tekstu|*Tworzenie konta Windows*. Niestandardowy tekst do wyświetlenia w wierszu monitowania.|
-    |Tylko do kontekstu|Zaznacz to pole wyboru. Ta odpowiedź jest zwracana tylko wtedy, gdy jest to pytanie Określa kontekst.|
-    |Link do odpowiedzi|Wprowadź następujący tekst, jako odpowiedź na pytanie:<br>*[Tworzenie](https://account.microsoft.com/) konta Windows, za pomocą konta e-mail nowego lub istniejącego*.<br>Po zapisaniu i uczenie bazy danych zostaną przekonwertowane ten tekst. |
+    |Wyświetl tekst|*Utwórz konto systemu Windows*. Niestandardowy tekst do wyświetlenia w wierszu monitu.|
+    |Tylko kontekstowe|Zaznacz to pole wyboru. Ta odpowiedź jest zwracana tylko wtedy, gdy pytanie określa kontekst.|
+    |Połącz z odpowiedzią|Wprowadź następujący tekst jako odpowiedź:<br>*[Utwórz](https://account.microsoft.com/) konto systemu Windows przy użyciu nowego lub istniejącego konta e-mail*.<br>Podczas zapisywania i uczenia bazy danych ten tekst zostanie przekonwertowany. |
     |||
 
-    ![Utwórz nowy monitu pytań i odpowiedzi](../media/conversational-context/create-child-prompt-from-parent.png)
+    ![Utwórz nowe pytanie i odpowiedź monitu](../media/conversational-context/create-child-prompt-from-parent.png)
 
 
-1. Wybierz **Utwórz nową**, a następnie wybierz pozycję **Zapisz**. 
+1. Wybierz pozycję **Utwórz nowy**, a następnie wybierz pozycję **Zapisz**. 
 
-    Ta akcja powoduje utworzenie nowej pary pytań i odpowiedzi oraz łączy wybranego pytania jako monitowania wiersza. **Kontekstu** kolumny na oba pytania wskazuje monitowania relacji monitu. 
+    Ta akcja powoduje utworzenie nowej pary pytanie-odpowiedź i połączenie wybranego pytania jako monitu. Kolumna **kontekst** dla obu pytań wskazuje na relację monitu o kolejne instrukcje. 
 
-1. Wybierz **wyświetlić opcje**, a następnie wybierz pozycję [ **kontekstu Show (wersja ZAPOZNAWCZA)** ](#show-questions-and-answers-with-context).
+1. Wybierz pozycję **Wyświetl opcje**, a następnie wybierz pozycję [**Pokaż kontekst (wersja zapoznawcza)** ](#show-questions-and-answers-with-context).
 
-    Nowe pytanie pokazuje, jak jest połączony.
+    Nowe pytanie pokazuje, jak to jest połączone.
 
-    ![Utwórz nowy wiersz monitowania](../media/conversational-context/new-qna-follow-up-prompt.png)
+    ![Utwórz nowy monit uzupełniający](../media/conversational-context/new-qna-follow-up-prompt.png)
 
-    Pytanie nadrzędne wyświetla nowe pytanie jako jeden z jego możliwości.
+    Pytanie nadrzędne wyświetla nowe pytanie jako jedną z opcji.
 
-    ![! [Kolumnie kontekstu na oba pytania wskazuje relację monitu monitowania] (.. / media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    ![! [Kolumna kontekstowa, dla obu pytań, wskazuje, że relacja monitu zostanie zaobserwuj] (.. /media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. Po dodaniu kolejnych wierszu wybierz **Zapisz i szkolenie** w górnym pasku nawigacyjnym.
+1. Po dodaniu monitu kliknij pozycję **Zapisz i** pouczenie na górnym pasku nawigacyjnym.
 
-## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>Włączanie wielu Włącz podczas testowania kolejnych monitów
+## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>Włącz obsługę wielostopniową podczas testowania monitów o kolejne instrukcje
 
-Podczas testowania pytania za pomocą funkcji monitowania monity w **Test** okienku wybierz **włączyć wielu Włącz**, a następnie wprowadź swoje pytanie. Odpowiedź zawiera kolejnych monitów.
+Po przetestowaniu pytania z monitami kolejnych w okienku **test** wybierz pozycję **Włącz wiele**przełączania, a następnie wprowadź pytanie. Odpowiedź zawiera monity monitujące.
 
-![Odpowiedź zawiera kolejnych monitów](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
+![Odpowiedź zawiera monity monitujące](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
 
-Jeśli nie włączysz Włącz wielu, odpowiedź jest zwracana, ale kolejnych monitów nie są zwracane.
+Jeśli nie włączysz wielostopniowego, odpowiedź zostanie zwrócona, ale monity uzupełniające nie są zwracane.
 
-## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Żądanie JSON, aby zwrócić odpowiedź początkowej i kolejnych monitów
+## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Żądanie JSON zwracające początkową odpowiedź i monity monitujące
 
-Użyj pustych `context` obiekt, aby żądania odpowiedzi na pytania użytkownika i obejmują kolejnych monitów. 
+Użyj pustego `context` obiektu, aby zażądać odpowiedzi na pytanie użytkownika i dołączyć monity monitujące. 
 
 ```JSON
 {
@@ -207,9 +207,9 @@ Użyj pustych `context` obiekt, aby żądania odpowiedzi na pytania użytkownika
 }
 ```
 
-## <a name="a-json-response-to-return-an-initial-answer-and-follow-up-prompts"></a>Odpowiedź w formacie JSON do zwrócenia wiążącej początkowej i kolejnych monitów
+## <a name="a-json-response-to-return-an-initial-answer-and-follow-up-prompts"></a>Odpowiedź w formacie JSON zwracająca wstępną odpowiedź i monity monitujące
 
-Zażądano poprzedniej sekcji, odpowiedzi i wszystkie monity monitowania o **konta i zalogowaniu**. Odpowiedź zawiera szybkie informacje, które znajduje się w folderze *.context odpowiedzi [0]* , a tekst do wyświetlenia dla użytkownika. 
+Poprzednia sekcja zażądała odpowiedzi i wszelkie monity monitujące dotyczące **kont i logowania**. Odpowiedź zawiera informacje o monitach, które znajdują się w *odpowiedzi [0]. Context*i tekst, który ma być wyświetlany użytkownikowi. 
 
 ```JSON
 {
@@ -274,7 +274,7 @@ Zażądano poprzedniej sekcji, odpowiedzi i wszystkie monity monitowania o **kon
 }
 ```
 
-`prompts` Tablicy zawiera tekst w `displayText` właściwości i `qnaId` wartość. Odpowiedzi na te pytania można wyświetlić, jak dalej opcji wyświetlanych w konwersacji przepływu, a następnie wyślij wybranego `qnaId` powrót do usługi QnA Maker w poniższych dokumentach. 
+Tablica zawiera tekst `displayText` we właściwości i `qnaId` wartość. `prompts` Możesz wyświetlić te odpowiedzi jako kolejne wyświetlane wybory w przepływie konwersacji, a następnie wysłać wybrane `qnaId` z powrotem do QNA Maker w poniższym żądaniu. 
 
 <!--
 
@@ -282,11 +282,11 @@ The `promptsToDelete` array provides the ...
 
 -->
 
-## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Żądania JSON do zwrócenia odpowiedzi bez początkowej i kolejnych monitów
+## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Żądanie JSON zwracające niepoczątkową odpowiedź i monity monitujące
 
-Wypełnij `context` obiektu do uwzględnienia poprzedniego kontekstu.
+`context` Wypełnij obiekt, aby uwzględnić poprzedni kontekst.
 
-W poniższych dokumentach JSON bieżące pytanie jest *Użyj Windows Hello do logowania* , ale z poprzedniego pytania *konta i zalogowaniu*. 
+W poniższym żądaniu JSON bieżące pytanie *służy do logowania* się, a poprzednie pytanie dotyczyło *kont i zalogowanie*się. 
 
 ```JSON
 {
@@ -302,9 +302,9 @@ W poniższych dokumentach JSON bieżące pytanie jest *Użyj Windows Hello do lo
 }
 ``` 
 
-##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Odpowiedź w formacie JSON do zwrócenia odpowiedzi bez początkowej i kolejnych monitów
+##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Odpowiedź JSON zwracająca odpowiedź niepoczątkową i monity monitujące
 
-Usługa QnA Maker _GenerateAnswer_ odpowiedź JSON zawiera kolejnych monitów w `context` właściwość pierwszy element `answers` obiektu:
+Odpowiedź QNA Maker _GenerateAnswer_ JSON zawiera monity monitujące we `context` właściwości `answers` pierwszego elementu w obiekcie:
 
 ```JSON
 {
@@ -362,17 +362,17 @@ Usługa QnA Maker _GenerateAnswer_ odpowiedź JSON zawiera kolejnych monitów w 
 }
 ```
 
-## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Zapytania w bazie wiedzy knowledge base identyfikatorem usługi QnA Maker
+## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Zbadaj bazę wiedzy przy użyciu identyfikatora QnA Maker
 
-Odpowiedź na pytanie początkowej, wszystkie monity monitowania i związanych z nią `qnaId` jest zwracana. Teraz, gdy masz identyfikator, możesz przekazać ten wiersz monitowania treści żądania. Jeśli treść żądania zawiera `qnaId`i obiektu kontekstu (który zawiera poprzednie właściwości usługi QnA Maker), a następnie GenerateAnswer zwróci dokładnie zapytania według identyfikatorów, zamiast przy użyciu algorytmu klasyfikacji, aby znaleźć odpowiedzi przez tekst pytania. 
+W odpowiedzi na pytanie początkowe zostanie zwrócona prośba o wyświetlenie wszystkich monitów i skojarzonych `qnaId` z nią danych. Teraz, gdy masz identyfikator, możesz przekazać ten komunikat w treści żądania monitowania. Jeśli treść żądania zawiera `qnaId`, a obiekt kontekstu (zawierający poprzednie właściwości QNA Maker), GenerateAnswer zwróci dokładne pytanie według identyfikatora, zamiast używać algorytmu klasyfikacji do znajdowania odpowiedzi według tekstu pytania. 
 
-## <a name="display-prompts-and-send-context-in-the-client-application"></a>Wyświetlane monity i wysłać kontekstu w aplikacji klienckiej 
+## <a name="display-prompts-and-send-context-in-the-client-application"></a>Wyświetlaj wyświetlenie wierszy i wysyłanie kontekstu w aplikacji klienckiej 
 
-Dodano monity w Twojej bazie wiedzy knowledge base i badać przepływ w okienko testowania. Teraz należy użyć tych monitów w aplikacji klienckiej. Dla platformy Bot Framework monity nie są automatycznie wyświetlane w aplikacjach klienckich. Można wyświetlić monity jako sugerowane akcje lub przyciski jako część odpowiedzi na zapytania użytkownika w aplikacjach klienckich umieszczając to [przykładowe platformy Bot Framework](https://aka.ms/qnamakermultiturnsample) w kodzie. Aplikacja kliencka przechowywania bieżący identyfikator usługi QnA Maker i kwerenda użytkownika i przekazywać je w [obiektu kontekstu interfejsu API GenerateAnswer](#a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts) dalej zapytania użytkownika. 
+Dodano prośby w bazie wiedzy i przetestowano przepływ w okienku testów. Teraz musisz użyć tych wskazówek w aplikacji klienckiej. W przypadku programu bot Framework monity nie są automatycznie wyświetlane w aplikacjach klienckich. Możesz wyświetlić pytania jako sugerowane akcje lub przyciski jako część odpowiedzi na zapytanie użytkownika w aplikacjach klienckich, dołączając ten [przykład bot Framework](https://aka.ms/qnamakermultiturnsample) w kodzie. Aplikacja kliencka przechowuje bieżący identyfikator QnA Maker i kwerendę użytkownika i przekazuje je w [obiekcie kontekstu interfejsu API GenerateAnswer](#a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts) dla następnej kwerendy użytkownika. 
 
-## <a name="display-order-is-supported-in-the-update-api"></a>Kolejność wyświetlania jest obsługiwana w interfejs API aktualizacji
+## <a name="display-order-is-supported-in-the-update-api"></a>Kolejność wyświetlania jest obsługiwana w interfejsie API aktualizacji
 
-[Wyświetlania tekstu i kolejność wyświetlania](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto), zwracany w odpowiedzi JSON, jest obsługiwana w przypadku edycji przez [Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). 
+[Wyświetlany tekst i porządek wyświetlania](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)zwrócone w odpowiedzi JSON są obsługiwane do edycji przez [interfejs API aktualizacji](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). 
 
 <!--
 
@@ -380,19 +380,19 @@ FIX - Need to go to parent, then answer column, then edit answer.
 
 -->
 
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tworzenie bazy wiedzy knowledge base wielu Włącz monitowania za pomocą interfejsu API tworzenia
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tworzenie bazy wiedzy z instrukcjami wielodostępnymi za pomocą interfejsu API tworzenia
 
-Włącz wielu monitowania za pomocą może utworzyć przypadek wiedzy [interfejsu API usługi QnA Maker tworzenia](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Dodajesz monity w `context` właściwości `prompts` tablicy. 
-
-
-## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Dodawanie lub usuwanie wielu Włącz monity z interfejsem API aktualizacji
-
-Można dodawać lub usuwać monity Włącz wielu przy użyciu [interfejs API usługi QnA Maker Update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  Dodajesz monity w `context` właściwości `promptsToAdd` tablicy i `promptsToDelete` tablicy. 
+Można utworzyć przypadek wiedzy z instrukcjami wieloletnimi przy użyciu [QNA Maker tworzenia interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Monity są dodawane w `context` `prompts` tablicy właściwości. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Dodawanie lub usuwanie wieloskładnikowych wierszy przy użyciu interfejsu API aktualizacji
 
-Dowiedz się więcej o kontekstowych rozmowy z tego [przykładowe okno dialogowe](https://aka.ms/qnamakermultiturnsample) lub Dowiedz się więcej o [koncepcyjny bot projektowanie dla wielu Włącz konwersacji](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
+Możesz dodawać lub usuwać wieloosiowe polecenia przy użyciu [interfejsu API aktualizacji QNA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  Monity są dodawane w `context` `promptsToAdd` tablicy właściwości i `promptsToDelete` tablicy. 
+
+
+## <a name="next-steps"></a>Następne kroki
+
+Dowiedz się więcej o konwersacjach kontekstowych z tego [okna dialogowego](https://aka.ms/qnamakermultiturnsample) lub Dowiedz się więcej [na temat koncepcyjnych projektów bot w przypadku konwersacji z wieloma](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)zmianami.
 
 > [!div class="nextstepaction"]
 > [Migrowanie bazy wiedzy](../Tutorials/migrate-knowledge-base.md)

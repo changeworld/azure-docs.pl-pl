@@ -1,6 +1,6 @@
 ---
-title: Wyślij wiadomości zabezpieczeń Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wysyłać wiadomości zabezpieczeń za pomocą Centrum zabezpieczeń Azure dla IoT.
+title: Wysyłanie komunikatów zabezpieczeń do Azure Security Center usługi IoT | Microsoft Docs
+description: Dowiedz się, jak wysyłać komunikaty zabezpieczeń przy użyciu Azure Security Center dla IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,51 +13,49 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 73335773695059b3c2afd121a0dd39ada8d28bb0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c780eea15b9f064d3279c75ac2f967e8b6099ecb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618088"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596206"
 ---
-# <a name="send-security-messages-sdk"></a>Wysyłanie komunikatów zabezpieczeń zestawu SDK
+# <a name="send-security-messages-sdk"></a>Wyślij zestaw SDK komunikatów zabezpieczeń
 
-> [!IMPORTANT]
-> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-W tym przewodniku wyjaśniono Azure Security Center (ASC) dla możliwości usługi IoT, po wybraniu do zbierania i wysyłania komunikatów zabezpieczeń urządzenia bez użycia usługi ASC agenta IoT i wyjaśniono, jak to zrobić.  
+W tym przewodniku opisano Azure Security Center funkcji usługi IoT, gdy użytkownik zdecyduje się zbierać i wysyłać komunikaty zabezpieczeń urządzenia bez użycia Azure Security Center dla agenta IoT, a także wyjaśnia, jak to zrobić.  
 
 Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności: 
 > [!div class="checklist"]
-> * Wyślij wiadomość zabezpieczeń interfejsu API do użyciaC#
-> * Korzystanie security wysyłanie wiadomości interfejsu API dla języka C
+> * Użyj interfejsu API wysyłania komunikatów zabezpieczeń dla programuC#
+> * Korzystanie z interfejsu API wysyłania komunikatów zabezpieczeń dla języka C
 
-## <a name="asc-for-iot-capabilities"></a>ASC możliwości technologii IoT
+## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center funkcji IoT
 
-ASC IoT jest przetwarzanie i analizowanie dowolnych danych związanych z zabezpieczeniami wiadomości, tak długo, jak długo dane wysyłane jest zgodny z [ASC schematu IoT](https://aka.ms/iot-security-schemas) a komunikat jest ustawiana jako komunikat zabezpieczeń.
+Azure Security Center dla IoT mogą przetwarzać i analizować dowolny rodzaj danych komunikatów zabezpieczeń, o ile wysyłane dane są zgodne ze schematem [Azure Security Center dla schematu IoT](https://aka.ms/iot-security-schemas) , a komunikat jest ustawiany jako komunikat zabezpieczeń.
 
 ## <a name="security-message"></a>Komunikat zabezpieczeń
 
-ASC IoT definiuje komunikat zabezpieczeń przy użyciu następujących kryteriów:
-- Jeśli komunikat został wysłany za pomocą usługi Azure IoT C /C# zestawu SDK
-- Jeśli komunikat jest zgodny z [schematu komunikat zabezpieczeń](https://aka.ms/iot-security-schemas)
-- Jeśli wiadomość została ustawiona jako przed wysłaniem komunikat zabezpieczeń
+Azure Security Center dla IoT definiuje komunikat zabezpieczeń przy użyciu następujących kryteriów:
+- Jeśli komunikat został wysłany przy użyciu usługi Azure IoT CC# /SDK
+- Jeśli komunikat jest zgodny ze [schematem komunikatu zabezpieczeń](https://aka.ms/iot-security-schemas)
+- Jeśli wiadomość została ustawiona jako komunikat zabezpieczeń przed wysłaniem
 
-Każdy komunikat zabezpieczeń obejmują metadane nadawcy, takie jak `AgentId`, `AgentVersion`, `MessageSchemaVersion` oraz listę zdarzeń związanych z zabezpieczeniami.
-Schemat definiuje ważne i wymagane właściwości wiadomości zabezpieczeń, w tym typy zdarzeń.
+Każdy komunikat zabezpieczeń zawiera metadane nadawcy `AgentId` `MessageSchemaVersion` , takie jak, `AgentVersion`i listę zdarzeń zabezpieczeń.
+Schemat definiuje prawidłowe i wymagane właściwości komunikatu zabezpieczeń, w tym typy zdarzeń.
 
-[!NOTE]
-> Komunikaty wysyłane, które nie są zgodne ze schematem zostaną zignorowane. Upewnij się, że schemat przed zainicjowaniem wysyłająca dane ponieważ ignorowanych komunikaty nie są obecnie przechowywane. 
-> Komunikaty wysyłane, które nie zostały ustawione jako komunikat zabezpieczeń przy użyciu usługi Azure IoT C /C# zestaw SDK nie będą kierowane do usługi ASC dla potoku IoT
+>[!Note]
+> Wysłane komunikaty, które nie są zgodne ze schematem, są ignorowane. Przed zainicjowaniem wysyłania danych upewnij się, że został on zweryfikowany, ponieważ ignorowane komunikaty nie są obecnie przechowywane. 
 
-## <a name="valid-message-example"></a>Przykład prawidłowy komunikat
+>[!Note]
+> Wiadomości wysłane, które nie zostały ustawione jako komunikat zabezpieczeń przy użyciu usługi Azure IoT CC# /SDK, nie będą kierowane do Azure Security Center dla potoku IoT
 
-W poniższym przykładzie obiekt komunikatu podmioty zabezpieczeń. Przykład zawiera metadane komunikatów i jeden `ProcessCreate` zdarzeń zabezpieczeń.
+## <a name="valid-message-example"></a>Prawidłowy przykład wiadomości
 
-Po ustawieniu jako komunikat zabezpieczeń i wysłane, ten komunikat zostanie przetworzony przez usługę ASC dla IoT.
+W poniższym przykładzie pokazano prawidłowy obiekt komunikatu zabezpieczeń. Przykład zawiera metadane komunikatów i jedno `ProcessCreate` zdarzenie zabezpieczeń.
+
+Po ustawieniu jako komunikat zabezpieczeń i wysłaniu ten komunikat zostanie przetworzony przez Azure Security Center dla IoT.
 
 ```json
 "AgentVersion": "0.0.1",
@@ -76,11 +74,11 @@ Po ustawieniu jako komunikat zabezpieczeń i wysłane, ten komunikat zostanie pr
         "Payload":
             [
                 {
-                    "Executable": "/usr/bin/echo",
+                    "Executable": "/usr/bin/myApp",
                     "ProcessId": 11750,
                     "ParentProcessId": 1593,
-                    "UserName": "nginx",
-                    "CommandLine": "./backup .htaccess"
+                    "UserName": "aUser",
+                    "CommandLine": "myApp -a -b"
                 }
             ]
     }
@@ -89,15 +87,15 @@ Po ustawieniu jako komunikat zabezpieczeń i wysłane, ten komunikat zostanie pr
 
 ## <a name="send-security-messages"></a>Wysyłanie komunikatów zabezpieczeń 
 
-Wysyłanie komunikatów zabezpieczeń bez użycia usługi ASC agenta IoT za pomocą [usługi Azure IoT C# zestawu SDK urządzenia](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) lub [zestaw SDK urządzeń Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview).
+Wysyłanie komunikatów zabezpieczeń bez korzystania z Azure Security Center dla agenta IoT przy użyciu zestawu SDK [urządzeń Azure C# IoT](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) lub zestawu [SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview).
 
-Aby wysłać dane urządzenia z urządzeń do przetwarzania przez usługę ASC dla IoT, użyj jednej z poniższych interfejsów API, aby oznaczyć wiadomości dla prawidłowy routing z usługą ASC potoku przetwarzania IoT. Komunikaty wysyłane w ten sposób zostanie przetworzone i wyświetlane jako wgląd w zabezpieczenia w ramach usługi ASC dla IoT, w ramach zarówno usługi IoT Hub lub Azure Security Center. 
+Aby wysłać dane urządzenia z urządzeń do przetwarzania przez Azure Security Center IoT, użyj jednego z następujących interfejsów API, aby oznaczyć komunikaty do poprawnego routingu do Azure Security Center potoku przetwarzania IoT. 
 
-Wszystkie dane, które są wysyłane, nawet wtedy, gdy oznaczone poprawny nagłówek muszą być zgodne z [ASC schematu komunikatów IoT](https://aka.ms/iot-security-schemas). 
+Wszystkie dane, które są wysyłane, nawet jeśli są oznaczone prawidłowym nagłówkiem, muszą również być zgodne z [Azure Security Center dla schematu wiadomości IoT](https://aka.ms/iot-security-schemas). 
 
-### <a name="send-security-message-api"></a>Zabezpieczenia komunikatów z interfejsu API wysyłania
+### <a name="send-security-message-api"></a>Wyślij interfejs API komunikatów zabezpieczeń
 
-**Wysyłanie komunikatów zabezpieczeń** interfejs API jest obecnie dostępna w języku C i C#.  
+Interfejs API **wysyłania komunikatów zabezpieczeń** jest obecnie dostępny w języku C C#i.  
 
 #### <a name="c-api"></a>Interfejs API języka C#
 
@@ -112,7 +110,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
 }
 ```
 
-#### <a name="c-api"></a>C API
+#### <a name="c-api"></a>INTERFEJS API JĘZYKA C
 
 ```c
 bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
@@ -157,11 +155,11 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
-- Przeczytaj ASC dla usługi IoT [— omówienie](overview.md)
-- Dowiedz się więcej o ASC IoT [architektury](architecture.md)
-- Włącz [usługi](quickstart-onboard-iot-hub.md)
-- Odczyt [— często zadawane pytania](resources-frequently-asked-questions.md)
+## <a name="next-steps"></a>Kolejne kroki
+- Przeczytaj Azure Security Center dla usługi IoT [— Omówienie](overview.md)
+- Dowiedz się więcej o [architekturze](architecture.md) Azure Security Center dla usługi IoT
+- Włącz [usługę](quickstart-onboard-iot-hub.md)
+- Przeczytaj [często zadawane pytania](resources-frequently-asked-questions.md)
 - Dowiedz się, jak uzyskać dostęp do [danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
-- Zrozumienie [zalecenia](concept-recommendations.md)
-- Zrozumienie [alertów](concept-security-alerts.md)
+- Omówienie [zaleceń](concept-recommendations.md)
+- Informacje [](concept-security-alerts.md) o alertach

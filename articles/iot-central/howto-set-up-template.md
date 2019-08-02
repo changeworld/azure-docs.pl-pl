@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie szablonu urządzenia w aplikacji usługi Azure IoT Central | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować szablon urządzenia z pomiarów, ustawienia, właściwości, reguł i pulpitu nawigacyjnego.
+title: Konfigurowanie szablonu urządzenia w aplikacji IoT Central platformy Azure | Microsoft Docs
+description: Dowiedz się, jak skonfigurować szablon urządzenia z pomiarami, ustawieniami, właściwościami, regułami i pulpitem nawigacyjnym.
 author: viv-liu
 ms.author: viviali
 ms.date: 06/19/2019
@@ -8,137 +8,138 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d27fd9460685c08a2b13936415935f5aaf893797
-ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
+ms.openlocfilehash: ede7167d570c7bd2ba7e04c3a9a703555efb35cd
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622408"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698522"
 ---
 # <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
 
-Szablon urządzenia jest planu, który definiuje jakie cechy i zachowania typu urządzenia, który nawiązuje połączenie z aplikacją usługi Azure IoT Central.
+Szablon urządzenia jest planem, który definiuje cechy i zachowania typu urządzenia, które nawiązuje połączenie z aplikacją IoT Central platformy Azure.
 
-Na przykład konstruktora, można utworzyć szablon urządzenia połączone wentylator, która ma następujące cechy:
+Na przykład Konstruktor może utworzyć szablon urządzenia dla połączonego wentylatora o następujących cechach:
 
 - Pomiar telemetrii temperatury
 - Pomiar lokalizacji
-- Wentylator motor błąd zdarzenie pomiarów
-- Wentylator pomiaru stan operacyjny
-- Wentylator szybkość
-- Reguły, które wysyłania alertów
-- Pulpit nawigacyjny, który daje ogólny widok urządzenia
+- Pomiar zdarzeń błędów silnika wentylatorów
+- Pomiar stanu działania wentylatora
+- Ustawienie szybkości wentylatora
+- Reguły, które wysyłają alerty
+- Pulpit nawigacyjny, który zapewnia ogólny widok urządzenia
 
-Za pomocą tego szablonu urządzenia można tworzyć i łączenie urządzeń rzeczywistych wentylator z nazwy, takie jak operator **1 wentylator** i **2 wentylator**. Wszystkie te wentylatory mają pomiarów, ustawienia, właściwości, reguł i pulpit nawigacyjny, który użytkownicy twojej aplikacji można monitorować i zarządzać nimi.
+Z tego szablonu urządzenia operator może tworzyć i łączyć urządzenia wentylatorów w rzeczywistości z nazwami, takimi jak **wentylator-1** i **wentylator-2**. Wszystkie te wentylatory mają miary, ustawienia, właściwości, reguły i pulpit nawigacyjny, które użytkownicy aplikacji mogą monitorować i zarządzać nimi.
 
 > [!NOTE]
-> Tylko twórcy i Administratorzy mogą tworzyć, edytować i usuwanie szablonów urządzenia. Każdy użytkownik może utworzyć urządzenia na **Device Explorer** strony z istniejących szablonów urządzenia.
+> Tylko konstruktory i Administratorzy mogą tworzyć, edytować i usuwać szablony urządzeń. Każdy użytkownik może tworzyć urządzenia na **Device Explorer** stronie z istniejących szablonów urządzeń.
 
 ## <a name="create-a-device-template"></a>Tworzenie szablonu urządzenia
 
-1. Przejdź do **szablonów urządzeń** strony.
+1. Przejdź do strony **Szablony urządzeń** .
 
-2. Aby utworzyć szablon, uruchom, wybierając **+ nowy**.
+2. Aby utworzyć szablon, Zacznij od wybrania opcji **+ Nowy**.
 
-3. Aby szybko rozpocząć pracę, wybierz z istniejących, wstępnie skompilowane szablony. W przeciwnym razie wybierz **niestandardowe**, wprowadź nazwę i kliknij przycisk **Utwórz** tworzyć szablon od podstaw.
+3. Aby szybko rozpocząć pracę, wybierz spośród istniejących wstępnie skompilowanych szablonów. W przeciwnym razie wybierz opcję **niestandardowy**, wprowadź nazwę, a następnie kliknij przycisk **Utwórz** , aby skompilować własny szablon od podstaw.
 
-   ![Biblioteka szablonów urządzenia](./media/howto-set-up-template/newtemplate.png)
+   ![Biblioteka szablonów urządzeń](./media/howto-set-up-template/newtemplate.png)
 
-4. Podczas tworzenia szablonu niestandardowego, zobacz **szczegóły urządzenia** strona tworzenia nowego szablonu urządzenia. Podczas tworzenia szablonu urządzenia IoT Central automatycznie tworzy symulowane urządzenie. Symulowane urządzenie umożliwia testowanie zachowanie aplikacji, aby połączyć prawdziwe urządzenie.
+4. Podczas tworzenia szablonu niestandardowego zostanie wyświetlona strona **szczegóły urządzenia** dla nowego szablonu urządzenia. IoT Central automatycznie tworzy symulowane urządzenie podczas tworzenia szablonu urządzenia. Symulowane urządzenie umożliwia testowanie zachowania aplikacji przed połączeniem rzeczywistego urządzenia.
 
-W poniższych sekcjach opisano każdej z kart na **szablon urządzenia** strony.
+W poniższych sekcjach opisano poszczególne karty na stronie **szablonu urządzenia** .
 
 ## <a name="measurements"></a>Miary
 
-Pomiary są dane, które pochodzą z urządzenia. Możesz dodać wiele miar do szablonu urządzenia, aby dopasować możliwości urządzenia.
+Pomiary to dane pochodzące z urządzenia. Do szablonu urządzenia można dodać wiele pomiarów w celu dopasowania ich do możliwości urządzenia.
 
-- **Dane telemetryczne** pomiary są punkty danych numerycznych, które urządzenie zbiera wraz z upływem czasu. Są one reprezentowane w formie ciągłego strumienia. Przykładem jest temperatura.
-- **Zdarzenie** pomiary są dane w momencie, które przedstawiają coś o znaczeniu na urządzeniu. Poziom ważności reprezentuje wagę zdarzenie. Przykładem jest to błąd motor wentylator.
-- **Stan** pomiarów reprezentuje stan urządzenia lub jej składniki w okresie czasu. Na przykład można zdefiniować jako posiadające tryb wentylator **operacyjnego** i **zatrzymane** jako dwa możliwe stany.
-- **Lokalizacja** pomiary są współrzędne długości i szerokości geograficznej urządzenia w danym momencie w. Na przykład z jednego miejsca można przenieść kibicem.
+- Pomiary telemetrii to liczbowe punkty danych zbierane przez urządzenie z upływem czasu. Są one reprezentowane jako ciągły strumień. Przykładem jest temperatura.
+- Pomiary **zdarzeń** to dane punktu w czasie, które reprezentują coś istotności na urządzeniu. Poziom ważności reprezentuje ważność zdarzenia. Przykładem jest błąd silnika wentylatoru.
+- Pomiary **stanu** przedstawiają stan urządzenia lub jego składników w danym okresie czasu. Na przykład tryb wentylatoru można zdefiniować jako działający i zatrzymany jako dwa możliwe stany.
+- Pomiary **lokalizacji** są współrzędne długości i szerokości geograficznej urządzenia w danym okresie czasu. Na przykład wentylator można przenieść z jednej lokalizacji do innej.
 
-### <a name="create-a-telemetry-measurement"></a>Tworzenie miary telemetrii
+### <a name="create-a-telemetry-measurement"></a>Tworzenie pomiaru telemetrii
 
-Aby dodać nowe miary telemetrii, wybierz **+ nowej miary**, wybierz **Telemetrii** jako wartość typu, a następnie wprowadź szczegóły na formularzu.
+Aby dodać nową miarę telemetrię, wybierz pozycję **+ Nowa miara**, wybierz opcję **Telemetria** jako typ pomiaru, a następnie wprowadź szczegóły w formularzu.
 
 > [!NOTE]
-> Nazwy pól w szablonie urządzenia muszą być zgodne nazwy właściwości w odpowiednim kodzie urządzenia w kolejności do pomiaru dane telemetryczne, mają być wyświetlane w aplikacji, jeśli rzeczywiste urządzenie jest połączone. Tak samo, podczas konfigurowania ustawień i właściwości urządzenia, poleceń, w miarę postępu definiowania szablonu urządzenia w poniższych sekcjach.
-.PNG na przykład można dodać nowej miary telemetrii temperatury:
+> Nazwy pól w szablonie urządzenia muszą być zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, aby pomiar telemetrii był wyświetlany w aplikacji w przypadku połączenia rzeczywistego urządzenia. Wykonaj te same czynności podczas konfigurowania ustawień, właściwości urządzenia i poleceń w miarę dalszego definiowania szablonu urządzenia w poniższych sekcjach.
+
+Na przykład można dodać nową miarę telemetrii dla temperatury:
 
 | Nazwa wyświetlana        | Nazwa pola    |  Jednostki    | Min.   |Maks.|
 | --------------------| ------------- |-----------|-------|---|
-| Temperatura         | Temp          |  degC     |  0    |100|
+| Temperatura         | temp          |  degC     |  0    |100|
 
-!["Utwórz dane telemetryczne" formularza przy użyciu szczegółów do pomiarów temperatury](./media/howto-set-up-template/measurementsform.png)
+![Formularz "Utwórz telemetrię" ze szczegółami pomiaru temperatury](./media/howto-set-up-template/measurementsform.png)
 
-Po wybraniu **Zapisz**, **temperatury** miary, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji dane dotyczące temperatury z symulowanego urządzenia.
+Po wybraniu opcji **Zapisz**pomiar **temperatury** pojawia się na liście pomiarów. W krótkim czasie widzisz wizualizację danych temperatury z symulowanego urządzenia.
 
-Podczas wyświetlania danych telemetrycznych, można wybrać spośród następujących opcji agregacji: Średnia, minimalna, maksymalna, Sum i liczba. **Średnia** jest wybrany jako domyślna agregacja na wykresie.
+Podczas wyświetlania telemetrii można wybrać jedną z następujących opcji agregacji: Average, minimum, maksimum, sum i Count. **Średnia** jest wybierana jako agregacja domyślna na wykresie.
 
 > [!NOTE]
-> Typ danych miary telemetrii jest zmiennoprzecinkowy numer punktu.
+> Typ danych pomiaru telemetrii jest liczbą zmiennoprzecinkową.
 
-### <a name="create-an-event-measurement"></a>Tworzenie miary zdarzeń
+### <a name="create-an-event-measurement"></a>Tworzenie pomiaru zdarzenia
 
-Aby dodać nowe miary zdarzenia, wybierz **+ nowej miary** i wybierz **zdarzeń** jako typ miary. Wprowadź szczegóły **Utwórz zdarzenie** formularza.
+Aby dodać nowe pomiary zdarzeń, wybierz pozycję **+ Nowa miara** i wybierz pozycję **zdarzenie** jako typ pomiaru. Wprowadź szczegóły w formularzu **tworzenia zdarzenia** .
 
-Podaj **nazwę wyświetlaną**, **nazwę pola**, i **ważność** szczegóły zdarzenia. Możesz wybrać z trzech dostępnych poziomów ważności: **Błąd**, **ostrzeżenie**, i **informacji**.
+Podaj **nazwę wyświetlaną**, **nazwę pola**i szczegóły **ważności** zdarzenia. Można wybrać jeden z trzech dostępnych poziomów ważności: **Błąd**, **Ostrzeżenie**i **informacje**.
 
-Na przykład można dodać nowego **błąd Motor wentylator** zdarzeń.
+Na przykład można dodać nowe zdarzenie błędu dla usługi **wentylator** .
 
 | Nazwa wyświetlana        | Nazwa pola    |  Domyślna ważność |
 | --------------------| ------------- |-----------|
 | Błąd silnika wentylatora     | fanmotorerror |  Błąd    |
 
-!["Utwórz zdarzenie" formularza ze szczegółowymi informacjami dla zdarzenia motor wentylatora](./media/howto-set-up-template/eventmeasurementsform.png)
+![Formularz "Tworzenie zdarzenia" zawierający szczegóły dotyczące zdarzenia wentylatoru](./media/howto-set-up-template/eventmeasurementsform.png)
 
-Po wybraniu **Zapisz**, **błąd Motor wentylator** miary, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji dane zdarzenia z symulowanego urządzenia.
+Po wybraniu opcji **Zapisz**na liście pomiarów zostanie wyświetlona pozycja **błędu silnika wentylatorów** . W krótkim czasie zobaczysz wizualizację danych zdarzenia z symulowanego urządzenia.
 
-Aby wyświetlić więcej szczegółów na temat zdarzenia, wybierz ikonę zdarzeń na wykresie:
+Aby wyświetlić więcej szczegółów dotyczących zdarzenia, wybierz ikonę zdarzenia na wykresie:
 
-![Szczegóły dotyczące zdarzeń "Wentylator Motor Error"](./media/howto-set-up-template/eventmeasurementsdetail.png)
+![Szczegóły dotyczące zdarzenia "wentylator Motor" (błąd)](./media/howto-set-up-template/eventmeasurementsdetail.png)
 
 > [!NOTE]
-> Typ danych miary zdarzeń jest ciągiem.
+> Typ danych pomiaru zdarzenia to ciąg.
 
-### <a name="create-a-state-measurement"></a>Tworzenie miary stanu
+### <a name="create-a-state-measurement"></a>Utwórz pomiar stanu
 
-Aby dodać nowe miary stanu, wybierz **+ nowej miary** i wybrać **stanu** jako typ miary. Wprowadź szczegóły **stanu Utwórz** formularza.
+Aby dodać nową miarę stanu, wybierz przycisk **+ nowy pomiar** i wybierz pozycję **stan** jako typ pomiaru. Wprowadź szczegóły w formularzu **tworzenia stanu** .
 
-Podaj szczegóły **nazwę wyświetlaną**, **nazwę pola**, i **wartości** stanu. Każda wartość może mieć również nazwę wyświetlaną, który będzie używany, gdy wartość jest wyświetlana w wykresów i tabel.
+Podaj szczegółowe informacje o **nazwie wyświetlanej**, **nazwie pola**i **wartościach** stanu. Każda wartość może mieć również nazwę wyświetlaną, która będzie używana, gdy wartość pojawia się na wykresach i tabelach.
 
-Na przykład można dodać nowego **tryb wentylator** stanu, który ma dwa możliwe wartości, które urządzenia mogą wysyłać, **operacyjnego** i **zatrzymane**.
+Na przykład można dodać nowy stan **trybu wentylator** , który ma dwie możliwe wartości, które urządzenie może wysyłać, **działać** i **zatrzymać**.
 
-| Nazwa wyświetlana | Nazwa pola    |  Wartość 1   | Nazwa wyświetlana | Wartość 2    |Nazwa wyświetlana  | 
+| Nazwa wyświetlana | Nazwa pola    |  Wartość 1   | Nazwa wyświetlana | Wartość 2    |Nazwa wyświetlana  |
 | -------------| ------------- |----------- | -------------| -----------| -------------|
 | Tryb wentylatora     | fanmode       |  1         | Działa    |     0      | Zatrzymano      |
 
-![Formularz "Edytuj stan" ze szczegółowymi informacjami w trybie wentylatora](./media/howto-set-up-template/statemeasurementsform.png)
+![Formularz "Edytuj stan" z szczegółowymi informacjami na temat trybu wentylatorów](./media/howto-set-up-template/statemeasurementsform.png)
 
-Po wybraniu **Zapisz**, **tryb wentylator** pomiaru stanu, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji danych o stanie z symulowanego urządzenia.
+Po wybraniu opcji **Zapisz**pomiar stanu **trybu wentylatoru** pojawia się na liście pomiarów. W krótkim czasie widzisz wizualizację danych stanu z symulowanego urządzenia.
 
-Jeśli urządzenie wysyła nadmiar punktów danych w małych czas pomiaru stanu jest za pomocą innej wizualizacji. Wybierz wykres, aby wyświetlić wszystkie punkty danych w tym przedziale czasu, w kolejności chronologicznej. Można również zawęzić zakres czasu, aby zobaczyć pomiaru wykreślić na wykresie.
+Jeśli urządzenie wysyła zbyt wiele punktów danych w niewielkim czasie, pomiar stanu jest wyświetlany z inną wizualizacją. Wybierz wykres, aby wyświetlić wszystkie punkty danych w tym okresie w kolejności chronologicznej. Możesz również zawęzić zakres czasu, aby zobaczyć pomiar wykreślony na wykresie.
 
 > [!NOTE]
-> Typ danych miary stanu jest ciągiem.
+> Typ danych pomiaru stanu to ciąg.
 
-### <a name="create-a-location-measurement"></a>Tworzenie miary lokalizacji
+### <a name="create-a-location-measurement"></a>Utwórz miarę lokalizacji
 
-Aby dodać nowe miary lokalizacji, wybierz **+ nowej miary**, wybierz **lokalizacji** jako wartość typu, a następnie wprowadź szczegóły **tworzenie miary** formularza.
+Aby dodać nowe pomiary lokalizacji, wybierz pozycję **+ nowy pomiar**, wybierz pozycję **Lokalizacja** jako typ pomiaru, a następnie wprowadź szczegóły w formularzu **Utwórz pomiar** .
 
-Na przykład można dodać nowej miary telemetrii lokalizacji:
+Na przykład możesz dodać nową miarę dane telemetrii lokalizacji:
 
 | Nazwa wyświetlana        | Nazwa pola    |
 | --------------------| ------------- |
 | Lokalizacja zasobu      |  assetloc     |
 
-!["Utwórz w lokalizacji" formularza przy użyciu szczegółów lokalizacji miary](./media/howto-set-up-template/locationmeasurementsform.png)
+![Formularz "Tworzenie lokalizacji" zawierający szczegóły pomiaru lokalizacji](./media/howto-set-up-template/locationmeasurementsform.png)
 
-Po wybraniu **Zapisz**, **lokalizacji** miary, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji danych lokalizacji z symulowanego urządzenia.
+Po wybraniu opcji **Zapisz**pomiar **lokalizacji** pojawia się na liście pomiarów. W krótkim czasie zobaczysz wizualizację danych lokalizacji z symulowanego urządzenia.
 
-Podczas wyświetlania lokalizacji, możesz korzystać z następujących opcji: najnowsze lokalizacją i historią lokalizacji. **Historia lokalizacji** stosuje się tylko za pośrednictwem wybranego zakresu czasu.
+Podczas wyświetlania lokalizacji można wybrać jedną z następujących opcji: Najnowsza historia lokalizacji i lokalizacji. **Historia lokalizacji** jest stosowana tylko w wybranym zakresie czasu.
 
-Typ danych miary lokalizacji jest obiekt, który zawiera długości, szerokości i wysokości opcjonalne. Poniższy fragment kodu przedstawia strukturę JavaScript:
+Typ danych pomiaru lokalizacji jest obiektem, który zawiera wartości długości geograficznej, szerokości geograficznej i opcjonalnej wysokości. Poniższy fragment kodu przedstawia strukturę JavaScript:
 
 ```javascript
 assetloc: {
@@ -148,163 +149,182 @@ assetloc: {
 }
 ```
 
+Po nawiązaniu połączenia rzeczywistej lokalizacji dodanej w polu pomiar zostanie zaktualizowany przy użyciu wartości wysyłanej przez urządzenie. Po skonfigurowaniu miary lokalizacji można [dodać mapę do wizualizacji lokalizacji na pulpicie nawigacyjnym urządzenia](#add-a-location-measurement-in-the-dashboard).
+
 ## <a name="settings"></a>Ustawienia
 
-Ustawienia określają urządzenia. Umożliwiają one operatorom Podaj dane wejściowe do urządzenia. Wiele ustawień można dodać do szablonu urządzenia, które są wyświetlane jako kafelki na **ustawienia** kartę dla operatorów do użycia. Można dodawać wiele różnych ustawień: liczba, tekst, Data, przełącz i Etykieta sekcji.
+Ustawienia kontrolują urządzenie. Umożliwiają operatorom udostępnianie danych wejściowych na urządzeniu. Do szablonu urządzenia można dodać wiele ustawień, które są wyświetlane jako kafelki na karcie **Ustawienia** dla operatorów do użycia. Można dodać wiele typów ustawień: liczbę, tekst, datę, przełącznik i etykietę sekcji.
 
-Ustawienia mogą być w jednym z trzech stanów. Urządzenie raportuje tych stanów.
+Ustawienia mogą być w jednym z trzech stanów. Urządzenie zgłasza te Stany.
 
-- **Zsynchronizowano**: Urządzenie ma zmienione w celu uwzględnienia wartości ustawienia.
+- **Zsynchronizowano**: Urządzenie zostało zmienione w celu odzwierciedlenia wartości ustawienia.
 
-- **Oczekujące**: Urządzenie jest obecnie zmiana wartości ustawień.
+- **Oczekiwanie**: Urządzenie jest obecnie zmieniane na wartość ustawienia.
 
 - **Błąd**: Urządzenie zwróciło błąd.
 
-Na przykład można dodać nowe ustawienie szybkość wentylator wybierając **ustawienia** i wprowadzając w nowym **numer** ustawienia:
+Na przykład możesz dodać nowe ustawienie szybkości wentylatorów, wybierając pozycję **Ustawienia** i wprowadzając nowe ustawienie **numeru** :
 
 | Nazwa wyświetlana  | Nazwa pola    |  Jednostki  | Miejsca dziesiętne |Początkowa|
 | --------------| ------------- |---------| ---------|---- |
-| Wentylator szybkości     | fanSpeed      | OBR. / MIN     | 2        | 0   |
+| Szybkość wentylatorów     | fanSpeed      | RPM     | 2        | 0   |
 
-!["Konfigurowanie numer" formularz zawierający szczegółowe informacje o ustawieniach szybkość](./media/howto-set-up-template/settingsform.png)
+![Formularz "Konfiguruj numer" z informacjami o ustawieniach szybkości](./media/howto-set-up-template/settingsform.png)
 
-Po wybraniu **Zapisz**, **szybkość wentylator** ustawienie jest wyświetlane jako Kafelek. Operator może użyć ustawienia w **Device Explorer** strony, aby zmienić szybkość wentylator urządzenia.
+Po wybraniu opcji **Zapisz**ustawienie **szybkość wentylatoru** pojawia się jako kafelek. Operator może użyć ustawienia na stronie **Device Explorer** , aby zmienić szybkość wentylatorów urządzenia.
 
 ## <a name="properties"></a>Właściwości
 
-Właściwości są metadane, która jest skojarzona z urządzenia, takie jak lokalizacji stały urządzenia i numer seryjny. Dodać wiele właściwości do szablonu urządzenia, które są wyświetlane jako kafelki na **właściwości** kartę. Właściwość ma typ, takie jak liczba, tekst, Data, przełącznika, właściwości urządzenia, etykiety lub położenie ustalone. Operator określa wartości dla właściwości tworzą urządzenia, gdy ich te wartości można edytować w dowolnym momencie. Właściwości urządzenia są przeznaczone tylko do odczytu i są wysyłane z urządzenia do aplikacji. Operator nie można zmienić właściwości urządzenia. Gdy rzeczywiste urządzenie nawiąże połączenie, aktualizacji kafelka właściwości urządzenia w aplikacji.
+Właściwości to metadane skojarzone z urządzeniem, takie jak stała lokalizacja urządzenia i numer seryjny. Dodaj do szablonu urządzenia wiele właściwości, które są wyświetlane jako kafelki na karcie **Właściwości** . Właściwość ma typ, taki jak liczba, tekst, Data, przełącznik, Właściwość urządzenia, etykieta lub stała lokalizacja. Operator określa wartości właściwości podczas tworzenia urządzenia i można je edytować w dowolnym momencie. Właściwości urządzenia są tylko do odczytu i są wysyłane z urządzenia do aplikacji. Operator nie może zmienić właściwości urządzenia. Po nawiązaniu połączenia z rzeczywistym urządzeniem kafelek właściwości urządzenia jest aktualizowany w aplikacji.
 
 Są dostępne dwie kategorie właściwości:
 
-- _Właściwości urządzenia_ zgłaszaną przez urządzenie do aplikacji IoT Central. Właściwości tylko do odczytu wartości zgłaszanych przez urządzenie i urządzenia są aktualizowane w aplikacji, jeśli rzeczywiste urządzenie jest połączone.
-- _Właściwości aplikacji_ , są przechowywane w aplikacji i mogą być edytowane przez operatora. Właściwości aplikacji są przechowywane tylko w aplikacji i nigdy nie są widoczne dla urządzenia.
+- _Właściwości urządzenia_ , które urządzenie raportuje do aplikacji IoT Central. Właściwości urządzenia są wartościami tylko do odczytu raportowanymi przez urządzenie i są aktualizowane w aplikacji, gdy jest połączone rzeczywiste urządzenie.
+- _Właściwości aplikacji_ , które są przechowywane w aplikacji i mogą być edytowane przez operatora. Właściwości aplikacji są przechowywane tylko w aplikacji i nigdy nie są wyświetlane przez urządzenie.
 
-Na przykład można dodać datę ostatniej obsługiwanym urządzeniu jako nowy **data** właściwości (właściwość aplikacji) **właściwości** karty:
+Na przykład można dodać datę ostatniego serwisu dla urządzenia jako nową właściwość **Date** (Właściwość aplikacji) na karcie **Właściwości** :
 
 | Nazwa wyświetlana  | Nazwa pola | Wartość początkowa   |
 | --------------| -----------|-----------------|
 | Ostatnio serwisowane      | lastServiced        | 01/29/2019     |
 
-!["Configure ostatniego Serviced" formularza na karcie "Właściwości"](./media/howto-set-up-template/propertiesform.png)
+![Formularz "Konfigurowanie ostatniego serwisu" na karcie "właściwości"](./media/howto-set-up-template/propertiesform.png)
 
-Po wybraniu **Zapisz**, ostatni obsłużonych daty dla urządzenia jest wyświetlany jako Kafelek.
+Po wybraniu opcji **Zapisz**jako kafelek zostanie wyświetlona data ostatniej obsługi urządzenia.
 
-Po utworzeniu kafelka, można zmienić wartość właściwości aplikacji **Device Explorer**.
+Po utworzeniu kafelka można zmienić wartość właściwości aplikacji w **Device Explorer**.
 
-### <a name="create-a-location-property"></a>Utwórz właściwość lokalizacji
+### <a name="create-a-location-property"></a>Utwórz Właściwość Location
 
-Można zapewnić kontekst geograficzny do danych o Twojej lokalizacji w usłudze Azure IoT Central i mapowanie dowolnego szerokości i współrzędne geograficzne lub adres. Usługi Azure Maps umożliwia tę możliwość usługi IoT Central.
+Kontekst geograficzny można nadać dane lokalizacji na platformie Azure IoT Central i zamapować wszystkie współrzędne szerokości geograficznej i długości geograficznej lub ulicę. Azure Maps włącza tę możliwość w IoT Central.
 
-Możesz dodać dwa typy właściwości lokalizacji:
+Można dodać dwa typy właściwości lokalizacji:
 
-- **Lokalizacja jako właściwość aplikacji**, który jest przechowywany w aplikacji. Właściwości aplikacji są przechowywane tylko w aplikacji i nigdy nie są widoczne dla urządzenia.
-- **Lokalizacja jako właściwości urządzenia**, którego urządzenie raportuje do aplikacji. Tego rodzaju właściwości najlepiej nadaje się do lokalizacji statyczne.
+- **Lokalizacja jako właściwość aplikacji**, która jest przechowywana w aplikacji. Właściwości aplikacji są przechowywane tylko w aplikacji i nigdy nie są wyświetlane przez urządzenie.
+- **Lokalizacja jako właściwość urządzenia**, która jest raportowana przez urządzenie do aplikacji. Tego typu właściwości najlepiej używać w przypadku lokalizacji statycznej.
 
 > [!NOTE]
-> Lokalizacja jako właściwość nie rejestruje historię. W razie potrzeby historii użycia pomiaru lokalizacji.
+> Lokalizacja jako właściwość nie rejestruje historii. Jeśli wymagana jest historia, użyj miary lokalizacji.
 
 #### <a name="add-location-as-an-application-property"></a>Dodaj lokalizację jako właściwość aplikacji
 
-Właściwość location jako właściwość aplikacji można utworzyć za pomocą usługi Azure Maps w aplikacji IoT Central. Na przykład można dodać adres instalacji urządzenia:
+Właściwość Location można utworzyć jako właściwość aplikacji przy użyciu Azure Maps w aplikacji IoT Central. Można na przykład dodać adres instalacji urządzenia:
 
-1. Przejdź do **właściwości** kartę.
+1. Przejdź do karty **Właściwości** .
 
-2. W bibliotece, wybierz **lokalizacji**.
+2. W bibliotece wybierz pozycję **Lokalizacja**.
 
-3. Konfigurowanie **nazwę wyświetlaną**, **nazwę pola**oraz (opcjonalnie) **wartość początkową** dla lokalizacji.
+3. Skonfiguruj **nazwę wyświetlaną**, **nazwę pola**i (opcjonalnie) **początkową wartość** lokalizacji.
 
     | Nazwa wyświetlana  | Nazwa pola | Wartość początkowa |
     | --------------| -----------|---------|
-    | Adres instalacji | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
+    | Adres instalacyjny | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
 
-   !["Konfigurowanie lokalizacji" formularza przy użyciu szczegółów lokalizacji](./media/howto-set-up-template/locationcloudproperty2.png)
+   ![Formularz "Konfigurowanie lokalizacji" z informacjami o lokalizacji](./media/howto-set-up-template/locationcloudproperty2.png)
 
-   Istnieją dwa obsługiwanych formatów, aby dodać lokalizację:
-   - **Lokalizacja adresu**
+   Istnieją dwa formaty obsługiwane do dodawania lokalizacji:
+   - **Lokalizacja jako adres**
    - **Lokalizacja jako współrzędne**
 
-4. Wybierz pozycję **Zapisz**. Operator może zaktualizować wartość lokalizacji **Device Explorer**.
+4. Wybierz pozycję **Zapisz**. Operator może zaktualizować wartość lokalizacji w **Device Explorer**.
 
-#### <a name="add-location-as-a-device-property"></a>Dodaj lokalizację jako właściwości urządzenia
+#### <a name="add-location-as-a-device-property"></a>Dodaj lokalizację jako właściwość urządzenia
 
-Właściwość lokalizacji można utworzyć jako właściwość urządzenia zgłaszanego przez urządzenie. Na przykład, jeśli chcesz śledzić lokalizacji urządzenia:
+Właściwość Location można utworzyć jako właściwość urządzenia zgłaszanego przez urządzenie. Na przykład jeśli chcesz śledzić lokalizację urządzenia:
 
-1. Przejdź do **właściwości** kartę.
+1. Przejdź do karty **Właściwości** .
 
-2. Wybierz **właściwości urządzenia** z biblioteki.
+2. Wybierz pozycję **Właściwość urządzenia** z biblioteki.
 
-3. Skonfiguruj nazwę wyświetlaną i nazwę pola, a następnie wybierz pozycję **lokalizacji** jako typ danych:
+3. Skonfiguruj nazwę wyświetlaną i nazwę pola, a następnie wybierz pozycję **Lokalizacja** jako typ danych:
 
     | Nazwa wyświetlana  | Nazwa pola | Typ danych |
     | --------------| -----------|-----------|
     | Lokalizacja urządzenia | deviceLocation | location  |
 
    > [!NOTE]
-   > Nazwy pól muszą być zgodne nazwy właściwości w odpowiednim kodzie urządzenia
+   > Nazwy pól muszą być zgodne z nazwami właściwości w odpowiednim kodzie urządzenia
 
-   !["Konfigurowanie właściwości urządzenia" formularza przy użyciu szczegółów lokalizacji](./media/howto-set-up-template/locationdeviceproperty2.png)
+   ![Formularz "Konfigurowanie właściwości urządzenia" z informacjami o lokalizacji](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-Po nawiązaniu połączenia rzeczywistego urządzenia lokalizacji dodane jako właściwości urządzenia zostanie zaktualizowany o wartości wysyłane przez urządzenie. Po skonfigurowaniu właściwości swojej lokalizacji możesz [dodać mapę, aby wizualizować lokalizacji na pulpicie nawigacyjnym urządzenia](#add-a-location-in-the-dashboard).
+Po nawiązaniu połączenia z rzeczywistym urządzeniem lokalizacja dodana jako właściwość urządzenia jest aktualizowana przy użyciu wartości wysyłanej przez urządzenie. Po skonfigurowaniu właściwości Location można [dodać mapę do wizualizacji lokalizacji na pulpicie nawigacyjnym urządzenia](#add-a-location-property-in-the-dashboard).
 
 ## <a name="commands"></a>Polecenia
 
-Polecenia są używane do zdalnego zarządzania urządzeniem. Umożliwiają one operatory do uruchamiania poleceń na urządzeniu. Wiele poleceń można dodać do szablonu urządzenia, które są wyświetlane jako kafelki na **polecenia** kartę dla operatorów do użycia. Jako producenta urządzenia masz możliwość definiowania polecenia zgodnie z wymaganiami.
+Polecenia służą do zdalnego zarządzania urządzeniem. Umożliwiają operatorom uruchamianie poleceń na urządzeniu. Do szablonu urządzenia można dodać wiele poleceń, które są wyświetlane jako kafelki na karcie **polecenia** dla operatorów do użycia. Jako Konstruktor urządzenia masz elastyczność definiowania poleceń zgodnie z wymaganiami.
 
-Czym różni się polecenie z ustawienia?
+Czym różni się polecenie od ustawienia?
 
-* **Ustawienie**: To ustawienie jest konfiguracja, który chcesz zastosować do urządzenia. Chcesz, aby urządzenia, aby zachować tę konfigurację, dopóki nie zostanie zmieniony. Na przykład chcesz ustawić temperatura swoje zamrażalni i ma ustawienie nawet wtedy, gdy zamrażarce powoduje ponowne uruchomienie.
+- **Ustawienie**: Ustawienie jest konfiguracją, która ma zostać zastosowana do urządzenia. Urządzenie ma zachować tę konfigurację do momentu jego zmiany. Na przykład, chcesz ustawić temperaturę dla blokady i chcesz to ustawienie nawet po ponownym uruchomieniu blokady.
 
-* **Polecenie**: Polecenia aby natychmiast uruchomić polecenie na urządzeniu zdalnie z IoT Central. Jeśli urządzenie nie jest połączony, polecenie upłynie limit czasu i kończy się niepowodzeniem. Na przykład chcesz ponownie uruchomić urządzenie.
+- **Polecenie**: Za pomocą poleceń można natychmiastowo uruchomić polecenie na urządzeniu zdalnie z IoT Central. Jeśli urządzenie nie jest połączone, polecenie przejdzie w dół i zakończy się niepowodzeniem. Na przykład chcesz ponownie uruchomić urządzenie.
 
-Na przykład można dodać nowego **Echo** polecenia, wybierając **polecenia** kartę, a następnie wybierając pozycję **+ nowe polecenie**i wprowadzić nowe szczegóły polecenia:
+Na przykład można dodać nowe polecenie **echo** , wybierając kartę **polecenia** , a następnie wybierając pozycję **+ nowe polecenie**i wprowadzając nowe szczegóły polecenia:
 
 | Nazwa wyświetlana  | Nazwa pola | Domyślny limit czasu | Typ danych |
 | --------------| -----------|---------------- | --------- |
 | Polecenie echo  | echo       |  30             | text      |
 
-!["Configure polecenia" formularza przy użyciu szczegółów echo](./media/howto-set-up-template/commandsecho1.png)
+![Formularz "Konfigurowanie polecenia" ze szczegółami dotyczącymi ECHA](./media/howto-set-up-template/commandsecho1.png)
 
-Po wybraniu **Zapisz**, **Echo** polecenia pojawi się jako Kafelek i jest gotowa do użycia w **Device Explorer** gdy z rzeczywistego urządzenia. Nazwy pól polecenia muszą być zgodne nazwy właściwości w odpowiednim kodzie urządzenia, aby polecenia, aby pomyślnie uruchomić.
+Po wybraniu opcji **Zapisz**polecenie **echo** pojawia się jako kafelek i jest gotowe do użycia z **Device Explorer** po nawiązaniu połączenia z rzeczywistym urządzeniem. Nazwy pól polecenia muszą być zgodne z nazwami właściwości w odpowiednim kodzie urządzenia w celu pomyślnego uruchomienia poleceń.
+
+[Poniżej znajduje się łącze do przykładowego kodu urządzenia C.](https://github.com/Azure/iot-central-firmware/blob/ad40358906aeb8f2040a822ba5292df866692c16/MXCHIP/mxchip_advanced/src/AzureIOTClient.cpp#L34)
 
 ## <a name="rules"></a>Reguły
 
-Reguły umożliwiają operatorów do monitorowania urządzeń w czasie zbliżonym do rzeczywistego. Reguły automatycznie wywołują akcje, takie jak wysyłanie wiadomości e-mail po wyzwoleniu reguły. Obecnie jest dostępna jeden typ reguły:
+Reguły umożliwiają operatorom monitorowanie urządzeń w czasie niemal rzeczywistym. Reguły automatycznie wywołują akcje, takie jak wysłanie wiadomości e-mail po wyzwoleniu reguły. Jeden typ reguły jest dostępny Dzisiaj:
 
-- **Reguła telemetrii**, który program jest wyzwalany w przypadku, gdy dane telemetryczne wybranego urządzenia przekracza określoną wartość progową. [Dowiedz się więcej o regułach telemetrii](howto-create-telemetry-rules.md).
+- **Reguła**telemetrii, która jest wyzwalana, gdy wybrana wartość telemetrii urządzenia przekroczy określony próg. [Dowiedz się więcej o regułach](howto-create-telemetry-rules.md)telemetrii.
 
 ## <a name="dashboard"></a>Pulpit nawigacyjny
 
-Pulpit nawigacyjny jest, gdy operator prowadzi do informacji o urządzeniu. Jako Konstruktor możesz dodać Kafelki do tej strony, aby zrozumieć, jak zachowuje się urządzenia operatorom pomocy. Można dodawać wiele różnych kafelków pulpitu nawigacyjnego, takich jak obraz, wykres liniowy, wykres słupkowy, kluczowy wskaźnik wydajności (KPI), ustawień i właściwości i etykiety.
+Pulpit nawigacyjny jest miejscem, w którym można wyświetlić informacje o urządzeniu. Jako Konstruktor Dodaj kafelki do tej strony, aby pomóc operatorom zrozumieć, jak działa urządzenie. Możesz dodać wiele typów kafelków pulpitu nawigacyjnego, takich jak obraz, wykres liniowy, wykres słupkowy, kluczowy wskaźnik wydajności (KPI), ustawienia i właściwości oraz etykieta.
 
-Na przykład można dodać **ustawień i właściwości** Kafelek, aby wyświetlić wybór bieżące wartości ustawień i właściwości, wybierając **pulpit nawigacyjny** kartę i Kafelek z biblioteki:
+Na przykład możesz dodać kafelek **Ustawienia i właściwości** , aby wyświetlić wybrane wartości bieżących ustawień i właściwości, wybierając kartę **pulpit nawigacyjny** i kafelek z biblioteki:
 
-!["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
+![Formularz "Konfigurowanie szczegółów urządzenia" z informacjami szczegółowymi dotyczącymi ustawień i właściwości](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
 
-Teraz, gdy operator widoków pulpitu nawigacyjnego w **Device Explorer**, zobaczą Kafelek.
+Teraz, gdy operator przegląda pulpit nawigacyjny w **Device Explorer**, może zobaczyć kafelek.
 
-### <a name="add-a-location-in-the-dashboard"></a>Dodaj lokalizację na pulpicie nawigacyjnym
+### <a name="add-a-location-measurement-in-the-dashboard"></a>Dodawanie pomiaru lokalizacji na pulpicie nawigacyjnym
 
-Jeśli skonfigurowano pomiaru lokalizacji można wizualizować lokalizacji z mapą na pulpicie nawigacyjnym urządzenia.
+Jeśli skonfigurowano pomiar lokalizacji, można wizualizować lokalizację za pomocą mapy na pulpicie nawigacyjnym urządzenia. W przypadku pomiarów lokalizacji można wykreślić historię lokalizacji.
 
-1. Przejdź do **pulpit nawigacyjny** kartę.
+1. Przejdź do karty **pulpit nawigacyjny** .
 
-1. Na pulpicie nawigacyjnym urządzenia wybierz **mapy** z biblioteki.
+1. Na pulpicie nawigacyjnym urządzenia wybierz pozycję **Mapuj** z biblioteki.
 
-1. Nadaj mapy tytuł. W poniższym przykładzie przedstawiono tytuł **bieżącej lokalizacji urządzenia**. Następnie wybierz lokalizację miary, który został wcześniej skonfigurowany w **pomiarów** kartę. W poniższym przykładzie **lokalizacji zasobów** jest wybierana:
+1. Nadaj tytuł mapie. W poniższym przykładzie ustawiono **bieżącą lokalizację urządzenia**tytułowego. Następnie wybierz pomiar lokalizacji, który został wcześniej skonfigurowany na karcie **pomiary** . W poniższym przykładzie wybrano opcję pomiar **lokalizacji zasobu** :
 
-   !["Configure mapy" formularza przy użyciu szczegółów tytułu i właściwości](./media/howto-set-up-template/locationcloudproperty5map.png)
+   ![Formularz "Konfigurowanie mapy" zawierający szczegóły dotyczące tytułu i właściwości](./media/howto-set-up-template/locationcloudproperty5map.png)
 
-1. Wybierz pozycję **Zapisz**. Kafelek mapa zawiera teraz wybranej lokalizacji.
+1. Wybierz pozycję **Zapisz**. Kafelek Mapa teraz wyświetla wybraną lokalizację.
 
-Można zmienić rozmiar kafelka mapy. Gdy operator widoków pulpitu nawigacyjnego w **Device Explorer**, pulpicie nawigacyjnym Kafelki, że zostały skonfigurowane, w tym mapę lokalizacji są widoczne.
+Można zmienić rozmiar kafelka mapy. Gdy operator przegląda pulpit nawigacyjny w **Device Explorer**, wszystkie skonfigurowane kafelki pulpitu nawigacyjnego, w tym mapy lokalizacji, są widoczne.
 
-Aby dowiedzieć się więcej o sposobie używania fragmentacji w usłudze Azure IoT Central, zobacz [Użyj Kafelki pulpitu nawigacyjnego](howto-use-tiles.md).
+### <a name="add-a-location-property-in-the-dashboard"></a>Dodawanie właściwości Location na pulpicie nawigacyjnym
 
-## <a name="next-steps"></a>Kolejne kroki
+Jeśli skonfigurowano Właściwość Location, można wizualizować lokalizację za pomocą mapy na pulpicie nawigacyjnym urządzenia.
 
-Teraz, kiedy znasz sposób konfigurowania szablonu urządzenia w aplikacji usługi Azure IoT Central, możesz wykonywać następujące czynności:
+1. Przejdź do karty **pulpit nawigacyjny** .
 
-> [!div class="nextstepaction"]
-> [Utwórz nową wersję szablonu urządzenia](howto-version-device-template.md)
-> [podłączenie urządzenia z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central](howto-connect-devkit.md)
-> [łączenie aplikacji klienckiej ogólnego do subskrypcji platformy Azure IoT Central aplikacji (Node.js)](howto-connect-nodejs.md)
+1. Na pulpicie nawigacyjnym urządzenia wybierz pozycję **Mapuj** z biblioteki.
+
+1. Nadaj tytuł mapie. W poniższym przykładzie ustawiono **bieżącą lokalizację urządzenia**tytułowego. Następnie wybierz właściwość Location, która została wcześniej skonfigurowana na karcie **Właściwości** . W poniższym przykładzie wybrano pomiar **lokalizacji urządzenia** :
+
+   ![Skonfiguruj formularz mapy z informacjami o tytule i właściwościach](./media/howto-set-up-template/locationcloudproperty6map.png)
+
+1. Wybierz pozycję **Zapisz**. Kafelek Mapa teraz wyświetla wybraną lokalizację.
+
+Można zmienić rozmiar kafelka mapy. Gdy operator przegląda pulpit nawigacyjny w **Device Explorer**, wszystkie skonfigurowane kafelki pulpitu nawigacyjnego, w tym mapy lokalizacji, są widoczne.
+
+Aby dowiedzieć się więcej na temat używania kafelków w usłudze Azure IoT Central, zobacz [Używanie kafelków pulpitu nawigacyjnego](howto-use-tiles.md).
+
+## <a name="next-steps"></a>Następne kroki
+
+Teraz, gdy już wiesz, jak skonfigurować szablon urządzenia w aplikacji IoT Central platformy Azure, możesz:
+
+- [Utwórz nową wersję szablonu urządzenia](howto-version-device-template.md)
+- [Łączenie urządzenia zestawu deweloperskiego IoT DevKit z aplikacją usługi Azure IoT Central](howto-connect-devkit.md)
+- [Łączenie ogólnej aplikacji klienckiej z aplikacją usługi Azure IoT Central (Node. js)](howto-connect-nodejs.md)

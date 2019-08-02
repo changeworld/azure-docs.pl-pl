@@ -1,72 +1,73 @@
 ---
-title: Usługa Azure Container Instances i aranżacji kontenerów
-description: Dowiedz się, jak usługa Azure container wystąpień wchodzić w interakcje z koordynatorów kontenerów.
+title: Azure Container Instances i aranżacja kontenera
+description: Dowiedz się, jak usługa Azure Container Instances współdziała z koordynatorami kontenerów.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: df9c3ecbec6dccd9ba8db2b375cfab3276005098
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c83648124f616670423b2ef459530c191d7e17e4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072989"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68325758"
 ---
-# <a name="azure-container-instances-and-container-orchestrators"></a>Usługa Azure Container Instances i koordynatorów kontenerów
+# <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances i koordynatorów kontenerów
 
-Ze względu na niewielki rozmiar i orientację aplikacji kontenery są dobrze nadaje się dla środowisk agile dostarczania i architektury oparte na mikrousługach. Zadania automatyzacji i zarządzania dużą liczbą kontenerów i ich interakcji jest znany jako *aranżacji*. Popularnych koordynatorów kontenerów uwzględnić Kubernetes, DC/OS i Docker Swarm.
+Ze względu na ich mały rozmiar i orientację aplikacji, kontenery są dobrze dopasowane do środowisk dostarczania Agile i architektury opartych na mikrousługach. Zadanie automatyzacji i zarządzania dużą liczbą kontenerów oraz ich współdziałaniem jest znane jako aranżacja. Popularne Koordynatory kontenerów obejmują Kubernetes, DC/OS i Docker Swarm.
 
-Usługa Azure Container Instances zapewnia niektóre podstawowe możliwości planowania platform aranżacji. I gdy nie obejmują usługi wyższa wartość, które dostarczają te platformy, usługi Azure Container Instances można uzupełniające się do nich. W tym artykule opisano zakresu usługi Azure Container Instances obsługuje i jak koordynatorów kontenerów może wchodzić w interakcję z nią.
+Azure Container Instances oferuje podstawowe możliwości planowania platform aranżacji. Chociaż nie obejmują one usług wyższego poziomu, które udostępniają te platformy, Azure Container Instances mogą być uzupełniane do nich. W tym artykule opisano zakres dojścia Azure Container Instances i sposób, w jaki pełne Koordynatory kontenerów mogą z nimi korzystać.
 
-## <a name="traditional-orchestration"></a>Tradycyjne aranżacji
+## <a name="traditional-orchestration"></a>Tradycyjna aranżacja
 
-Standardowa definicji aranżacji obejmuje następujące zadania:
+Standardowa definicja aranżacji obejmuje następujące zadania:
 
-- **Planowanie**: Biorąc pod uwagę w postaci obrazu kontenera i żądania zasobu, Znajdź odpowiedni komputerze, na którym do uruchamiania kontenera.
-- **Koligacja/przed-affinity**: Określ, że zestaw kontenerów powinny być uruchamiane w pobliżu innych (na wydajność) lub wystarczająco między liniami (dostępność).
-- **Monitorowanie kondycji**: Poszukaj błędów kontenerów i automatycznie ponownie zaplanować zadania.
-- **Tryb failover**: Śledź co działa na każdym komputerze i ponownie zaplanować kontenerów z maszyn nie powiodło się do węzłów w dobrej kondycji.
-- **Skalowanie**: Dodawanie lub usuwanie wystąpienia kontenera, aby dopasować żądanie, ręcznie lub automatycznie.
-- **Sieć**: Podaj sieci nakładki koordynującego kontenerów do komunikowania się między wieloma maszynami hostów.
-- **Odnajdowanie usługi**: Włączanie kontenerów, aby zlokalizować sobie nawzajem automatycznie, nawet przy wzroście przenoszeniu ich do komputerów-hostów, a zmiana adresów IP.
-- **Skoordynowanych uaktualnień aplikacji**: Zarządzania uaktualnieniami kontenera, aby uniknąć przerwy w działaniu aplikacji, a następnie włącz wycofywania, jeśli coś pójdzie nie tak.
+- **Planowanie**: Mając obraz kontenera i żądanie zasobu, Znajdź odpowiednią maszynę, na której ma zostać uruchomiony kontener.
+- **Koligacja/** koligacja: Określ, że zestaw kontenerów powinien działać w pobliżu siebie (dla wydajności) lub wystarczająco daleko (na potrzeby dostępności).
+- **Monitorowanie kondycji**: Obejrzyj błędy kontenera i automatycznie Zaplanuj je ponownie.
+- **Tryb failover**: Śledź działania wykonywane na poszczególnych maszynach i ponownie Zaplanuj kontenery z uszkodzonych maszyn do węzłów w dobrej kondycji.
+- **Skalowanie**: Dodaj lub usuń wystąpienia kontenerów w celu dopasowania do żądania ręcznie lub automatycznie.
+- **Sieć**: Zapewnianie sieci nakładki do koordynowania kontenerów w celu komunikacji między wieloma maszynami hosta.
+- **Odnajdowanie usługi**: Włącz automatyczne lokalizowanie kontenerów, nawet w przypadku przechodzenia między maszynami hosta i zmiany adresów IP.
+- **Skoordynowane uaktualnienia aplikacji**: Zarządzaj uaktualnieniami kontenerów, aby uniknąć przestojów aplikacji, i Włącz wycofywanie, jeśli coś się nie stało.
 
-## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Organizowanie dzięki usłudze Azure Container Instances: To podejście warstwowe
+## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Aranżacja z Azure Container Instances: Podejście warstwowe
 
-Usługa Azure Container Instances umożliwia warstwowego podejścia do aranżacji, zapewniając wszystkie funkcje zarządzania i planowania wymagane do uruchomienia jednym kontenerze, zapewniając platformy programu orchestrator, aby zarządzać zadaniami wielokontenerowych na jego podstawie.
+Azure Container Instances włącza podejście warstwowe do aranżacji, dostarczając wszystkie możliwości planowania i zarządzania wymagane do uruchomienia jednego kontenera, jednocześnie umożliwiając platformom Orchestrator zarządzanie zadaniami wielokontenerowymi na tym komputerze.
 
-Ponieważ podstawowej infrastruktury dla container instances jest zarządzana przez platformę Azure, platformą orchestrator nie musi dotyczyć samej znalezienie maszyny do odpowiedniego hosta, na którym należy uruchomić jeden kontener. Elastyczność chmury gwarantuje, że ten właśnie jest zawsze dostępna. Zamiast tego koordynatora skupić się na zadania, które upraszczają proces tworzenia architektury obsługującej wiele kontenerów, na przykład, skalowania i skoordynowanych uaktualnień.
+Ze względu na to, że podstawowa infrastruktura dla wystąpień kontenerów jest zarządzana przez platformę Azure, platforma Orchestrator nie musi się zachodzić z znalezieniem odpowiedniej maszyny hosta, na której ma zostać uruchomiony pojedynczy kontener. Elastyczność chmury gwarantuje, że jest ona zawsze dostępna. Zamiast tego Koordynator może skupić się na zadaniach, które upraszczają opracowywanie architektur obejmujących wiele kontenerów, w tym skalowanie i skoordynowane uaktualnienia.
 
 ## <a name="scenarios"></a>Scenariusze
 
-Podczas integracji programu orchestrator za pomocą usługi Azure Container Instances jest nadal narodzin, przewidujemy, że pojawią się w kilku różnych środowiskach:
+Chociaż integracja programu Orchestrator z Azure Container Instances jest nadal Nascent, przewidujemy, że zostaną naliczone kilka różnych środowisk:
 
-### <a name="orchestration-of-container-instances-exclusively"></a>Organizowanie kontenerów wystąpień wyłącznie
+### <a name="orchestration-of-container-instances-exclusively"></a>Organizowanie wystąpień kontenera wyłącznie
 
-Ponieważ szybkie rozpoczynanie pracy i są naliczane za sekundę, środowisko wyłącznie w oparciu o usługi Azure Container Instances oferuje najszybszy sposób na rozpoczęcie pracy i radzenia sobie z bardzo zmienną obciążeń.
+Ponieważ rozpoczynają one szybkie i rozliczanie według drugiego, środowisko oparte wyłącznie na Azure Container Instances oferuje najszybszy sposób na rozpoczęcie pracy i zaradzenie sobie z wysoce zmiennymi obciążeniami.
 
-### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Kombinacja wystąpienia kontenerów i kontenery na maszynach wirtualnych
+### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Kombinacja wystąpień kontenerów i kontenerów w Virtual Machines
 
-Dla obciążeń długotrwałych i stabilne i organizowanie kontenerów w klastrze składającym się z dedykowanych maszynach wirtualnych jest zazwyczaj tańszy niż uruchamianie tych samych kontenerów za pomocą usługi Azure Container Instances. Jednak container instances oferuje doskonałe rozwiązanie dla szybkiego rozwijania i instytucje łączna pojemność radzenia sobie z nieoczekiwanymi lub krótkotrwałych skoków użycia.
+W przypadku długotrwałych, stabilnych obciążeń, organizowanie kontenerów w klastrze dedykowanych maszyn wirtualnych jest zwykle tańsze niż uruchamianie tych samych kontenerów z Azure Container Instances. Jednak wystąpienia kontenerów oferują doskonałe rozwiązanie umożliwiające szybkie rozwinięcie i zagwarantowanie ogólnej pojemności do pracy z nieoczekiwanymi lub krótkotrwałymi wzrostami użycia.
 
-Zamiast skalowania w poziomie liczby maszyn wirtualnych w klastrze, a następnie wdrażać dodatkowe kontenery na tych komputerach, koordynatora można po prostu zaplanować dodatkowe kontenery w usłudze Azure Container Instances i usuwać je, gdy są one już wymagane.
+Zamiast skalować liczbę maszyn wirtualnych w klastrze, a następnie wdrożyć dodatkowe kontenery na tych maszynach, program Orchestrator może po prostu zaplanować dodatkowe kontenery w Azure Container Instances i usunąć je, gdy nie są już wymagana.
 
-## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Przykładowe zastosowanie: wirtualnych węzłów usługi Azure Kubernetes Service (AKS)
+## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Przykładowa implementacja: węzły wirtualne usługi Azure Kubernetes Service (AKS)
 
-Szybkie skalowanie obciążeń aplikacji w [usługi Azure Kubernetes Service](../aks/intro-kubernetes.md) klastra (AKS), można użyć *wirtualnych węzłów* tworzone dynamicznie w usłudze Azure Container Instances. Wirtualne węzły Włącz komunikację sieciową między zasobników, które są uruchamiane w usłudze ACI i klastrem AKS. 
+Aby szybko skalować obciążenia aplikacji w klastrze [usługi Azure Kubernetes Service](../aks/intro-kubernetes.md) (AKS), można użyć *węzłów wirtualnych* tworzonych dynamicznie w Azure Container Instances. Węzły wirtualne umożliwiają komunikację sieciową między jednostkami, które działają w ACI i klastrze AKS. 
 
-Węzły wirtualne obsługuje obecnie wystąpień kontenera systemu Linux. Rozpoczynanie pracy z usługą wirtualnych węzłów przy użyciu [wiersza polecenia platformy Azure](https://go.microsoft.com/fwlink/?linkid=2047538) lub [witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2047545).
+Węzły wirtualne obecnie obsługują wystąpienia kontenera systemu Linux. Rozpocznij pracę z węzłami wirtualnymi za pomocą [interfejsu wiersza polecenia platformy Azure](https://go.microsoft.com/fwlink/?linkid=2047538) lub [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2047545).
 
-Węzły wirtualne używały "open source" [rozwiązania Virtual Kubelet] [ aci-connector-k8s] do naśladowania rozwiązania Kubernetes [agenta kubelet] [ kubelet-doc] , rejestrując jako węzeł z bez ograniczeń pojemność. Rozwiązania Virtual Kubelet wywołuje tworzenie [zasobników] [ pod-doc] jako grupy kontenerów w usłudze Azure Container Instances.
+Węzły wirtualne używają [Kubelet wirtualnej][aci-connector-k8s] typu open source do naśladowania Kubernetes [Kubelet][kubelet-doc] przez zarejestrowanie jako węzeł z nieograniczoną pojemnością. Wirtualna Kubelet wysyła do grupy kontenerów tworzenie w [][pod-doc] Azure Container Instances.
 
-Zobacz [rozwiązania Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) projektu dodatkowe przykłady rozszerzenia interfejsu API rozwiązania Kubernetes do platform kontenerów bez użycia serwera.
+Zobacz [wirtualny projekt Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) , aby uzyskać dodatkowe przykłady rozszerzania interfejsu API Kubernetes na platformy kontenerów bezserwerowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Utwórz swój pierwszy kontener przy użyciu usługi Azure Container Instances [przewodnika Szybki Start](container-instances-quickstart.md).
+Utwórz swój pierwszy kontener za pomocą Azure Container Instances przy użyciu [przewodnika Szybki Start](container-instances-quickstart.md).
 
 <!-- IMAGES -->
 

@@ -1,7 +1,7 @@
 ---
-title: Ustawienia aplikacji
+title: Ustawienia aplikacji — LUIS
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, ustawienia aplikacji dotyczące języka opis aplikacji.
+description: Informacje na temat ustawień aplikacji dotyczących aplikacji językowych.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,25 +11,25 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 3682b9e0c38344be1522440290b46f8c10bd5607
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 7dec738fca6991cbcbd822c192b96bf6b1cc6d87
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275904"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563513"
 ---
 # <a name="application-settings"></a>Ustawienia aplikacji
 
-Te ustawienia aplikacji są przechowywane w [wyeksportowane](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) aplikacji i [zaktualizowane](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) za pomocą interfejsów API REST. Zmiana ustawień wersji aplikacji resetuje stan szkolenia Twojej aplikacji nieprzeszkolonych.
+Te ustawienia aplikacji są przechowywane w wyeksportowanej aplikacji i [aktualizowane](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) przy użyciu interfejsów API REST. [](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) Zmiana ustawień wersji aplikacji resetuje stan szkolenia aplikacji na nieszkolenie.
 
 |Ustawienie|Wartość domyślna|Uwagi|
 |--|--|--|
 |NormalizePunctuation|Prawda|Usuwa znaki interpunkcyjne.|
 |NormalizeDiacritics|Prawda|Usuwa znaki diakrytyczne.|
 
-## <a name="diacritics-normalization"></a>Normalizacja znaki diakrytyczne 
+## <a name="diacritics-normalization"></a>Normalizacja znaków diakrytycznych 
 
-Włącz normalizacji wypowiedź dla znaków diakrytycznych do pliku JSON usługi LUIS aplikacji w `settings` parametru.
+Włącz normalizowanie wypowiedź dla znaków diakrytycznych do pliku aplikacji Luis JSON w `settings` parametrze.
 
 ```JSON
 "settings": [
@@ -37,18 +37,18 @@ Włącz normalizacji wypowiedź dla znaków diakrytycznych do pliku JSON usługi
 ] 
 ```
 
-Następujące wypowiedzi pokazują, jak znaki diakrytyczne normalizacji ma wpływ na wypowiedzi:
+Poniższy wyrażenia długości pokazuje, jak normalizacja znaków diakrytycznych ma wpływ na wyrażenia długości:
 
-|Przy użyciu znaków diakrytycznych ustawiony na wartość false|Przy użyciu znaków diakrytycznych ma wartość true|
+|Z atrybutami diakrytycznymi ustawionymi na wartość false|Z atrybutami diakrytycznymi ustawionymi na wartość true|
 |--|--|
 |`quiero tomar una piña colada`|`quiero tomar una pina colada`|
 |||
 
-### <a name="language-support-for-diacritics"></a>Obsługa języków w programie znaki diakrytyczne
+### <a name="language-support-for-diacritics"></a>Obsługa języka dla znaków diakrytycznych
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Portugalski (Brazylia) `pt-br` znaki diakrytyczne
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Brazylijski portugalski `pt-br` (znaki diakrytyczne)
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
+|Znaki diakrytyczne ustawione na wartość false|Znaki diakrytyczne ustawione na wartość true|
 |-|-|
 |`á`|`a`|
 |`â`|`a`|
@@ -64,9 +64,9 @@ Następujące wypowiedzi pokazują, jak znaki diakrytyczne normalizacji ma wpły
 |`ú`|`u`| 
 |||
 
-#### <a name="dutch-nl-nl-diacritics"></a>Holenderski `nl-nl` znaki diakrytyczne
+#### <a name="dutch-nl-nl-diacritics"></a>Znaki `nl-nl` diakrytyczne holenderskich
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
+|Znaki diakrytyczne ustawione na wartość false|Znaki diakrytyczne ustawione na wartość true|
 |-|-|
 |`á`|`a`|
 |`à`|`a`|
@@ -81,11 +81,11 @@ Następujące wypowiedzi pokazują, jak znaki diakrytyczne normalizacji ma wpły
 |`ü`|`u`|
 |||
 
-#### <a name="french-fr--diacritics"></a>Francuski `fr-` znaki diakrytyczne
+#### <a name="french-fr--diacritics"></a>Francuskie `fr-` znaki diakrytyczne
 
-Obejmuje to podhodowli francuskim i Kanady.
+Obejmuje to zarówno kulturę francuską, jak i kanadyjską.
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
+|Znaki diakrytyczne ustawione na wartość false|Znaki diakrytyczne ustawione na wartość true|
 |--|--|
 |`é`|`e`|
 |`à`|`a`|
@@ -102,17 +102,17 @@ Obejmuje to podhodowli francuskim i Kanady.
 |`ü`|`u`| 
 |`ÿ`|`y`| 
 
-#### <a name="german-de-de-diacritics"></a>Niemiecki `de-de` znaki diakrytyczne
+#### <a name="german-de-de-diacritics"></a>Znaki `de-de` diakrytyczne niemieckich
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
+|Znaki diakrytyczne ustawione na wartość false|Znaki diakrytyczne ustawione na wartość true|
 |--|--|
 |`ä`|`a`|
 |`ö`|`o`| 
 |`ü`|`u`| 
 
-#### <a name="italian-it-it-diacritics"></a>Włoski `it-it` znaki diakrytyczne
+#### <a name="italian-it-it-diacritics"></a>Włoskie `it-it` znaki diakrytyczne
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
+|Znaki diakrytyczne ustawione na wartość false|Znaki diakrytyczne ustawione na wartość true|
 |--|--|
 |`à`|`a`|
 |`è`|`e`|
@@ -125,11 +125,11 @@ Obejmuje to podhodowli francuskim i Kanady.
 |`ù`|`u`|
 |`ú`|`u`|
 
-#### <a name="spanish-es--diacritics"></a>Hiszpański `es-` znaki diakrytyczne
+#### <a name="spanish-es--diacritics"></a>Hiszpańskie `es-` znaki diakrytyczne
 
-Dotyczy to również Meksykańskich kanadyjski i hiszpańskim.
+Dotyczy to zarówno hiszpańskiej, jak i kanadyjskiej meksykańskiej.
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
+|Znaki diakrytyczne ustawione na wartość false|Znaki diakrytyczne ustawione na wartość true|
 |-|-|
 |`á`|`a`|
 |`é`|`e`|
@@ -140,9 +140,9 @@ Dotyczy to również Meksykańskich kanadyjski i hiszpańskim.
 |`ñ`|`u`|
 
 
-## <a name="punctuation-normalization"></a>Znak interpunkcyjny normalizacji
+## <a name="punctuation-normalization"></a>Normalizacja interpunkcji
 
-Włącz normalizacji wypowiedź znaki interpunkcyjne do pliku JSON usługi LUIS aplikacji w `settings` parametru.
+Włącz normalizację wypowiedź dla interpunkcji do pliku aplikacji Luis JSON w `settings` parametrze.
 
 ```JSON
 "settings": [
@@ -150,16 +150,16 @@ Włącz normalizacji wypowiedź znaki interpunkcyjne do pliku JSON usługi LUIS 
 ] 
 ```
 
-Następujące wypowiedzi pokazują, jak znaki diakrytyczne ma wpływ na wypowiedzi:
+Następujące wyrażenia długości pokazują, jak znaki diakrytyczne mają wpływ na wyrażenia długości:
 
-|Przy użyciu znaków diakrytycznych ustawiony na wartość False|Przy użyciu znaków diakrytycznych ustawiona na wartość True|
+|Z atrybutami diakrytycznymi ustawionymi na wartość false|Z atrybutami diakrytycznymi ustawionymi na wartość true|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||
 
-### <a name="punctuation-removed"></a>Bez znaków interpunkcyjnych
+### <a name="punctuation-removed"></a>Usunięto interpunkcję
 
-Następujące znaki interpunkcyjne zostaje usunięta wraz z `NormalizePunctuation` jest ustawiona na wartość true.
+Następujące znaki interpunkcyjne są usuwane z `NormalizePunctuation` wartością ustawioną na true.
 
 |Znaki interpunkcyjne|
 |--|

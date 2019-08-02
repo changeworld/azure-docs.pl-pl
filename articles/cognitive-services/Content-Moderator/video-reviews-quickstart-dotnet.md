@@ -1,7 +1,7 @@
 ---
-title: Utwórz przeglądy wideo przy użyciu platformy .NET — Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Ten artykuł zawiera informacje i przykłady kodu, które ułatwią Ci szybkie rozpoczęcie korzystania z zawartości SDK Moderator C# do tworzenia przeglądów wideo.
+title: Tworzenie przeglądów wideo przy użyciu platformy .NET Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Ten artykuł zawiera informacje i przykłady kodu ułatwiające szybkie rozpoczęcie pracy przy użyciu zestawu SDK Content Moderator w C# programie w celu utworzenia recenzji wideo.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: c8572e6bc7fdedb68527cad4e7ea4109838089b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74b0ad4b5d8a16c8d46fcf6de67c46dab29ba51d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726835"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564291"
 ---
-# <a name="create-video-reviews-using-net"></a>Utwórz przeglądy wideo przy użyciu platformy .NET
+# <a name="create-video-reviews-using-net"></a>Tworzenie recenzji wideo przy użyciu platformy .NET
 
-Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, przy użyciu [Content Moderator zestawu SDK przy użyciu języka C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do:
+Ten artykuł zawiera informacje i przykłady kodu, które ułatwiają szybkie rozpoczęcie korzystania z [zestawu SDK Content moderator C# w programie](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
 
-- Utwórz Przegląd wideo dla moderatorów ludzi
-- Dodaj ramek do przeglądu
-- Pobierz ramki dla przeglądu
+- Tworzenie przeglądu wideo dla moderatorów ludzkich
+- Dodawanie ramek do przeglądu
+- Pobierz ramki do przeglądu
 - Pobierz stan i szczegóły przeglądu
-- Publikowanie przeglądu
+- Publikuj przegląd
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zaloguj się lub Utwórz konto w pakiecie Content Moderator [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) lokacji.
-- W tym artykule założono, że masz [moderowane wideo (zobacz Przewodnik Szybki Start)](video-moderation-api.md) i mieć dane odpowiedzi. Będą potrzebne do tworzenia opartych na klatkach przeglądy dla moderatorów ludzi.
+- Zaloguj się lub Utwórz konto w witrynie Content Moderator [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com/) .
+- W tym artykule przyjęto założenie, że masz [umiarkowane wideo (zobacz Szybki Start)](video-moderation-api.md) i masz dane odpowiedzi. Jest ona potrzebna do tworzenia przeglądów opartych na ramkach dla moderatorów ludzkich.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Upewnij się, że Twój klucz interfejsu API umożliwia wywołanie interfejsu API przeglądu w celu utworzenia przeglądu.
 
@@ -40,22 +40,22 @@ Jeśli planujesz użyć klucza interfejsu API platformy Azure w przykładzie zes
 
 Jeśli używasz bezpłatnej wersji próbnej klucza wygenerowanej przez narzędzie do przeprowadzania przeglądów, narzędzie to będzie już znało klucz i dlatego dodatkowe kroki nie są wymagane.
 
-### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Przygotowanie wideo i klatki wideo do przeglądu
+### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Przygotuj wideo i ramki wideo do przeglądu
 
-Wideo i przykładowe klatki wideo do przeglądania muszą być publikowane online, ponieważ trzeba ich adresy URL.
+Filmy wideo i przykładowe ramki wideo do przejrzenia muszą zostać opublikowane w trybie online, ponieważ są potrzebne adresy URL.
 
 > [!NOTE]
-> Używana jest ręcznie zapisane zrzuty ekranu z wideo losowe zawartości dla dorosłych/pikantnej wyniki do pokazują korzystanie z interfejsu API przeglądu. W sytuacji rzeczywistej, użyjesz [Moderowanie filmów wideo w danych wyjściowych](video-moderation-api.md#run-the-program-and-review-the-output) do tworzenia obrazów i przypisać wyniki. 
+> Program używa ręcznie zapisanych zrzutów ekranu z filmu wideo z losowymi wynikami dla dorosłych/erotycznej, aby zilustrować korzystanie z interfejsu API przeglądu. W świecie rzeczywistym można używać [danych wyjściowych moderowania wideo](video-moderation-api.md#run-the-program-and-review-the-output) do tworzenia obrazów i przypisywania wyników. 
 
-Wideo wymaga punktu końcowego przesyłania strumieniowego, aby narzędzie do przeglądu jest odtwarzany film wideo w widoku odtwarzacza.
+Do wideo potrzebny jest punkt końcowy przesyłania strumieniowego, dzięki czemu narzędzie do przeglądu będzie odtwarzać wideo w widoku odtwarzacza.
 
-![Pokaz wideo, miniatury](images/ams-video-demo-view.PNG)
+![Miniatura pokazu wideo](images/ams-video-demo-view.PNG)
 
-- Kopiuj **adresu URL** na tym [pokaz usługi Azure Media Services](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) stronę o adresie URL manifestu.
+- Skopiuj **adres URL** na tej [Azure Media Services](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) stronie demonstracyjnej dla adresu URL manifestu.
 
-Klatki wideo (obrazy) można użyć poniższych ilustracjach:
+Dla ramek wideo (obrazów) Użyj następujących obrazów:
 
-![Miniatura wideo ramka 1](images/ams-video-frame-thumbnails-1.PNG) | ![Miniatura wideo ramka 2](images/ams-video-frame-thumbnails-2.PNG) | ![Miniatura wideo ramka 3](images/ams-video-frame-thumbnails-3.PNG) |
+![Miniatura ramki wideo 1](images/ams-video-frame-thumbnails-1.PNG) | ![Miniatura ramki wideo 2](images/ams-video-frame-thumbnails-2.PNG) | ![Miniatura ramki wideo 3](images/ams-video-frame-thumbnails-3.PNG) |
 | :---: | :---: | :---: |
 [Ramka 1](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG) | [Ramka 2](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG) | [Ramka 3](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG) |
 
@@ -63,13 +63,13 @@ Klatki wideo (obrazy) można użyć poniższych ilustracjach:
 
 1. Dodaj nowy projekt **Aplikacja konsoli (.NET Framework)** do rozwiązania.
 
-1. Nadaj projektowi nazwę **VideoReviews**.
+1. Nazwij projekt **VideoReviews**.
 
 1. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
 
 ### <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
 
-Zainstaluj następujące pakiety NuGet projektu TermLists.
+Zainstaluj następujące pakiety NuGet dla projektu TermLists.
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
@@ -78,7 +78,7 @@ Zainstaluj następujące pakiety NuGet projektu TermLists.
 
 ### <a name="update-the-programs-using-statements"></a>Aktualizowanie programu za pomocą instrukcji
 
-Modyfikowanie programu za pomocą instrukcji w następujący sposób.
+Zmodyfikuj instrukcje using programu w następujący sposób.
 
 ```csharp
 using System;
@@ -93,9 +93,9 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Dodawanie właściwości prywatnych
 
-Dodaj następujące właściwości prywatnej do przestrzeni nazw VideoReviews, klasy programu.
+Dodaj następujące właściwości prywatne do przestrzeni nazw VideoReviews, programu klasy.
 
-W przypadku, gdy wskazane, Zastąp przykładowe wartości tych właściwości.
+Gdzie to wskazane, Zastąp przykładowe wartości tych właściwości.
 
 ```csharp
 namespace VideoReviews
@@ -138,9 +138,9 @@ namespace VideoReviews
         private const int throttleRate = 2000;
 ```
 
-### <a name="create-content-moderator-client-object"></a>Utworzenie obiektu klienta usługi Content Moderator
+### <a name="create-content-moderator-client-object"></a>Utwórz obiekt klienta Content Moderator
 
-Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy programu.
+Dodaj następującą definicję metody do VideoReviews przestrzeni nazw, programu klasy.
 
 ```csharp
 /// <summary>
@@ -159,24 +159,24 @@ public static ContentModeratorClient NewClient()
 }
 ```
 
-## <a name="create-a-video-review"></a>Utwórz Przegląd wideo
+## <a name="create-a-video-review"></a>Tworzenie przeglądu wideo
 
-Tworzenie przeglądu wideo za pomocą **ContentModeratorClient.Reviews.CreateVideoReviews**. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+Utwórz recenzję wideo za pomocą **ContentModeratorClient. Reviews. CreateVideoReviews**. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
 **CreateVideoReviews** ma następujące wymagane parametry:
-1. Ciąg zawierający typ MIME, który powinien być "application/json". 
-1. Nazwa zespołu usługi Content Moderator.
-1. **IList\<CreateVideoReviewsBodyItem >** obiektu. Każdy **CreateVideoReviewsBodyItem** obiekt reprezentuje wideo przeglądu. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
+1. Ciąg zawierający typ MIME, który powinien mieć wartość "Application/JSON". 
+1. Nazwa zespołu Content Moderator.
+1. Obiekt **>\<IList CreateVideoReviewsBodyItem** . Każdy obiekt **CreateVideoReviewsBodyItem** reprezentuje przegląd wideo. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
 
-**CreateVideoReviewsBodyItem** ma kilka właściwości. Jako minimum można ustawić następujące właściwości:
-- **Zawartość**. Adres URL filmu wideo do przeglądu.
-- **ContentId**. Identyfikator, aby przypisać do przeglądu wideo.
-- **Stan**. Ustaw wartość na "Nieopublikowane." Jeśli nie zostanie zdefiniowany, wartość domyślna, jako "Oczekujące", co oznacza, że przegląd wideo został opublikowany i oczekujące przeglądu przez ludzi. Po opublikowaniu wideo przeglądu klatki wideo, transkrypcji lub wynik Moderowanie transkrypcji można już dodać do niego.
+**CreateVideoReviewsBodyItem** ma kilka właściwości. Należy ustawić co najmniej następujące właściwości:
+- **Zawartość**. Adres URL filmu wideo, który ma zostać sprawdzony.
+- **Identyfikatorze**. Identyfikator, który ma zostać przypisany do przeglądu wideo.
+- **Stan**. Ustaw wartość na "unopublikowałd". Jeśli go nie ustawisz, zostanie on ustawiony jako "Oczekujący", co oznacza, że przegląd wideo jest publikowany i oczekuje na weryfikację przez człowieka. Po opublikowaniu recenzji wideo nie można już dodawać do niej ramek wideo, transkrypcji ani moderowania transkrypcji.
 
 > [!NOTE]
-> **CreateVideoReviews** zwraca interfejs IList\<ciągu >. Każdy z tych ciągów zawiera identyfikator wideo przeglądu. Te identyfikatory są identyfikatory GUID i nie są takie same jak wartość **ContentId** właściwości. 
+> **CreateVideoReviews** zwraca ciąg IList\<>. Każdy z tych ciągów zawiera identyfikator dla recenzji wideo. Identyfikatory te są identyfikatorami GUID i nie są takie same jak wartość właściwości **identyfikatorze** . 
 
-Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy programu.
+Dodaj następującą definicję metody do VideoReviews przestrzeni nazw, programu klasy.
 
 ```csharp
 /// <summary>
@@ -216,31 +216,31 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 >
 > Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
-## <a name="add-video-frames-to-the-video-review"></a>Dodaj klatki wideo na przegląd wideo
+## <a name="add-video-frames-to-the-video-review"></a>Dodawanie klatek wideo do recenzji wideo
 
-Dodaj klatki wideo na przegląd wideo za pomocą **ContentModeratorClient.Reviews.AddVideoFrameUrl** (jeśli jest to Twoja klatki wideo są hostowanego w trybie online) lub **ContentModeratorClient.Reviews.AddVideoFrameStream** () Jeśli Twoje klatki wideo są hostowane lokalnie). Ten przewodnik Szybki Start założono ramek wideo hostowanego w trybie online, a więc używa **AddVideoFrameUrl**. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
+Dodawaj klatki wideo do recenzji wideo przy użyciu **ContentModeratorClient. Reviews. AddVideoFrameUrl** (Jeśli ramki wideo są hostowane online) lub **ContentModeratorClient. Reviews. AddVideoFrameStream** (Jeśli ramki wideo są hostowane lokalnie). W tym przewodniku szybki start założono, że ramki wideo są hostowane w trybie online, a więc używają **AddVideoFrameUrl**. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
 
 **AddVideoFrameUrl** ma następujące wymagane parametry:
-1. Ciąg zawierający typ MIME, który powinien być "application/json".
-1. Nazwa zespołu usługi Content Moderator.
+1. Ciąg zawierający typ MIME, który powinien mieć wartość "Application/JSON".
+1. Nazwa zespołu Content Moderator.
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
-1. **IList\<VideoFrameBodyItem >** obiektu. Każdy **VideoFrameBodyItem** obiekt reprezentuje klatki wideo.
+1. Obiekt **>\<IList VideoFrameBodyItem** . Każdy obiekt **VideoFrameBodyItem** reprezentuje ramkę wideo.
 
 **VideoFrameBodyItem** ma następujące właściwości:
-- **Sygnatura czasowa**. Ciąg, który zawiera, w sekundach czas w trakcie filmu wideo, z którego wykonano klatki wideo.
-- **FrameImage**. Adres URL wideo ramki.
-- **Metadane**. An IList\<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** jest po prostu pary klucz/wartość. Klucze obejmują:
-- **reviewRecommended**. Wartość true, jeśli przeglądu przez ludzi klatki wideo jest zalecane.
-- **adultScore**. Wartość z zakresu od 0 do 1, która ocenia ważności zawartości dla dorosłych w ramce wideo.
-- **A** Wartość true, jeśli film wideo zawiera treści dla dorosłych.
-- **racyScore**. Wartość z zakresu od 0 do 1, która ocenia ważności zawartości erotycznej w ramce wideo.
-- **r**. Wartość true, jeśli ramka wideo zawiera zawartości erotycznej.
-- **ReviewerResultTags**. An IList\<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** jest po prostu pary klucz/wartość. Aplikacja może użyć tych tagów do organizowania klatki wideo.
+- **Sygnatura czasowa**. Ciąg zawierający w sekundach czas w filmie wideo, z którego zrobiono klatkę wideo.
+- **FrameImage**. Adres URL ramki wideo.
+- **Metadanych**. > IList\<VideoFrameBodyItemMetadataItem. **VideoFrameBodyItemMetadataItem** to po prostu para klucz/wartość. Prawidłowe klucze obejmują:
+- **reviewRecommended**. Ma wartość true, jeśli zalecamy przeglądanie ramki wideo przez człowieka.
+- **adultScore**. Wartość z przedziału od 0 do 1, która ocenia ważność zawartości dla dorosłych w ramce wideo.
+- **A** Prawda, jeśli film wideo zawiera zawartość dla dorosłych.
+- **racyScore**. Wartość z przedziału od 0 do 1, która ocenia ważność zawartości erotycznej w ramce wideo.
+- **r**. Ma wartość true, jeśli ramka wideo zawiera zawartość erotycznej.
+- **ReviewerResultTags**. > IList\<VideoFrameBodyItemReviewerResultTagsItem. **VideoFrameBodyItemReviewerResultTagsItem** to po prostu para klucz/wartość. Aplikacja może używać tych tagów do organizowania ramek wideo.
 
 > [!NOTE]
-> Ten przewodnik Szybki Start generuje losowe wartości dla **adultScore** i **racyScore** właściwości. W przypadku aplikacji produkcyjnej można uzyskać te wartości z [usługa moderowania klipów wideo](video-moderation-api.md)wdrożone jako usługa multimediów Azure.
+> Ten przewodnik Szybki Start generuje losowo wartości właściwości **adultScore** i **racyScore** . W aplikacji produkcyjnej można uzyskać te wartości z [usługi moderowania wideo](video-moderation-api.md)wdrożonej jako usługa Azure Media.
 
-Dodaj następujące definicje metody do przestrzeni nazw VideoReviews, klasy programu.
+Dodaj następujące definicje metod do VideoReviews przestrzeni nazw, programu klasy.
 
 ```csharp
 <summary>
@@ -300,15 +300,15 @@ static void AddFrame(ContentModeratorClient client, string review_id, string url
     Thread.Sleep(throttleRate);
 ```
 
-## <a name="get-video-frames-for-video-review"></a>Pobierz klatki wideo do przeglądu wideo
+## <a name="get-video-frames-for-video-review"></a>Pobierz ramki wideo na potrzeby recenzji wideo
 
-Możesz też uzyskać klatki wideo recenzję wideo za pomocą **ContentModeratorClient.Reviews.GetVideoFrames**. **GetVideoFrames** ma następujące wymagane parametry:
-1. Nazwa zespołu usługi Content Moderator.
+Możesz pobrać klatki wideo dla recenzji wideo za pomocą **ContentModeratorClient. Reviews. GetVideoFrames**. **GetVideoFrames** ma następujące wymagane parametry:
+1. Nazwa zespołu Content Moderator.
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
-1. Liczony od zera indeks pierwszego klatki wideo, aby uzyskać.
-1. Liczba ramek wideo do pobrania.
+1. Indeks (liczony od zera) pierwszej ramki wideo do pobrania.
+1. Liczba klatek wideo do pobrania.
 
-Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy programu.
+Dodaj następującą definicję metody do VideoReviews przestrzeni nazw, programu klasy.
 
 ```csharp
 /// <summary>
@@ -328,13 +328,13 @@ static void GetFrames(ContentModeratorClient client, string review_id)
 }
 ```
 
-## <a name="get-video-review-information"></a>Uzyskaj informacje Przegląd wideo
+## <a name="get-video-review-information"></a>Pobierz informacje o przeglądzie wideo
 
-Możesz uzyskać informacje o przegląd wideo za pomocą **ContentModeratorClient.Reviews.GetReview**. **GetReview** ma następujące wymagane parametry:
-1. Nazwa zespołu usługi Content Moderator.
+Uzyskasz informacje na temat przeglądu wideo za pomocą **ContentModeratorClient. Reviews.** GetView. **Getrecenzja** ma następujące wymagane parametry:
+1. Nazwa zespołu Content Moderator.
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
 
-Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy programu.
+Dodaj następującą definicję metody do VideoReviews przestrzeni nazw, programu klasy.
 
 ```csharp
 /// <summary>
@@ -354,13 +354,13 @@ private static void GetReview(ContentModeratorClient client, string review_id)
 }
 ```
 
-## <a name="publish-video-review"></a>Publikowanie wideo przeglądu
+## <a name="publish-video-review"></a>Publikuj przegląd wideo
 
-Publikowanie wideo weryfikacji z **ContentModeratorClient.Reviews.PublishVideoReview**. **PublishVideoReview** ma następujące wymagane parametry:
-1. Nazwa zespołu usługi Content Moderator.
+Przegląd wideo jest publikowany za pomocą **ContentModeratorClient. Reviews. PublishVideoReview**. **PublishVideoReview** ma następujące wymagane parametry:
+1. Nazwa zespołu Content Moderator.
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
 
-Dodaj następującą definicję metody do przestrzeni nazw VideoReviews, klasy programu.
+Dodaj następującą definicję metody do VideoReviews przestrzeni nazw, programu klasy.
 
 ```csharp
 /// <summary>
@@ -379,7 +379,7 @@ private static void PublishReview(ContentModeratorClient client, string review_i
 
 ## <a name="putting-it-all-together"></a>Zebranie wszystkich elementów
 
-Dodaj **Main** definicję metody do przestrzeni nazw VideoReviews, klasy programu. Na koniec można zamknąć, klasę Program i VideoReviews przestrzeni nazw.
+Dodaj definicję metody **Main** do VideoReviews przestrzeni nazw, programu klasy. Na koniec Zamknij klasę program i przestrzeń nazw VideoReviews.
 
 ```csharp
 static void Main(string[] args)
@@ -414,7 +414,7 @@ static void Main(string[] args)
 ```
 
 ## <a name="run-the-program-and-review-the-output"></a>Uruchamianie programu i przeglądanie danych wyjściowych
-Po uruchomieniu aplikacji, zobaczysz dane wyjściowe w następujących wierszach:
+Po uruchomieniu aplikacji zobaczysz dane wyjściowe w następujących wierszach:
 
 ```json
 Creating a video review.
@@ -548,16 +548,16 @@ Open your Content Moderator Dashboard and select Review > Video to see the revie
 Press any key to close the application.
 ```
 
-## <a name="check-out-your-video-review"></a>Zapoznaj się z wideo zapoznania się z nimi
+## <a name="check-out-your-video-review"></a>Zapoznaj się z przeglądem wideo
 
-Na koniec zostanie wyświetlony przegląd wideo w usługi Content Moderator, zapoznaj się uwagę narzędzia na **Przejrzyj**>**wideo** ekranu.
+Na koniec zobaczysz recenzję wideo na koncie narzędzia Content moderator recenzja na ekranie **Przejrzyj**>**wideo** .
 
-![Przegląd wideo dla moderatorów ludzi](images/ams-video-review.PNG)
+![Przegląd wideo dla moderatorów ludzkich](images/ams-video-review.PNG)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Pobierz [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego programu oraz inne Przewodniki Szybki Start pakietu Content Moderator dla platformy .NET.
+Pobierz [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) i [rozwiązanie Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego i innych Content moderator przewodników szybki start dla platformy .NET.
 
-Dowiedz się, jak dodać [Moderowanie transkrypcji](video-transcript-moderation-review-tutorial-dotnet.md) do przeglądu wideo. 
+Dowiedz się, [](video-transcript-moderation-review-tutorial-dotnet.md) jak dodać moderowanie transkrypcji do przeglądu wideo. 
 
-Zapoznaj się z szczegółowy samouczek dotyczący sposobu tworzenia [kompletne rozwiązanie Moderowanie filmów wideo](video-transcript-moderation-review-tutorial-dotnet.md).
+Zapoznaj się z szczegółowym samouczkiem dotyczącym tworzenia [kompletnego rozwiązania do moderowania wideo](video-transcript-moderation-review-tutorial-dotnet.md).

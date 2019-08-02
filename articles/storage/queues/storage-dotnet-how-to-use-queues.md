@@ -1,21 +1,19 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Queue storage przy użyciu platformy .NET — Azure Storage
+title: Rozpoczynanie pracy z usługą Azure queue storage przy użyciu platformy .NET — Azure Storage
 description: Usługa Azure Queues zapewnia niezawodne, asynchroniczne przesyłanie komunikatów między składnikami aplikacji. Przesyłanie komunikatów za pomocą chmury umożliwia składnikom aplikacji niezależne skalowanie.
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 05/21/2019
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 05/21/2019
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 59995715ab42b4682befa7d1512b14427740dea2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: aa92b72b09ed28b41d85ac7c7605077761657d40
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446857"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721557"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Rozpoczynanie pracy z usługą Azure Queue Storage przy użyciu platformy .NET
 
@@ -23,7 +21,7 @@ ms.locfileid: "67446857"
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Usługa Azure Queue Storage umożliwia przesyłanie komunikatów za pomocą chmury między składnikami aplikacji. W przypadku projektowania aplikacji pod kątem skalowania składniki aplikacji są często rozłączane, dzięki czemu mogą być skalowane niezależnie. Usługa Queue Storage zapewnia asynchroniczne przesyłanie komunikatów na potrzeby komunikacji między składnikami aplikacji niezależnie od tego, czy działają w chmurze, na komputerze, serwerze lokalnym czy urządzeniu przenośnym. Usługa Queue Storage obsługuje również zarządzanie asynchronicznymi zadaniami oraz przepływy pracy procesu kompilacji.
 
@@ -31,13 +29,13 @@ Usługa Azure Queue Storage umożliwia przesyłanie komunikatów za pomocą chmu
 
 W tym samouczku pokazano, jak napisać kod .NET dla niektórych typowych scenariuszy przy użyciu usługi Azure Queue Storage. Omówione scenariusze obejmują tworzenie i usuwanie kolejek oraz dodawanie, odczytywanie i usuwanie komunikatów kolejek.
 
-**Szacowany czas trwania:** 45 minut
+**Szacowany czas trwania:** 45 min
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 * [Program Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Usługa Azure wspólne biblioteki klienta usługi Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-* [Biblioteka klienta usługi Azure kolejki magazynu dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
+* [Wspólna Biblioteka klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+* [Biblioteka kliencka kolejki usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [Menedżer konfiguracji Azure dla programu .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 * [konto usługi Azure Storage](../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
@@ -51,38 +49,38 @@ Następnie skonfiguruj środowisko projektowe w programie Visual Studio, aby prz
 
 ### <a name="create-a-windows-console-application-project"></a>Utwórz projekt aplikacji konsoli dla systemu Windows
 
-W programie Visual Studio utwórz nową aplikację konsoli dla systemu Windows. Poniższe kroki pokazują sposób tworzenia aplikacji konsoli w programie Visual Studio 2019 r. Procedura jest podobna w innych wersjach programu Visual Studio.
+W programie Visual Studio utwórz nową aplikację konsoli dla systemu Windows. Poniższe kroki pokazują, jak utworzyć aplikację konsolową w programie Visual Studio 2019. Procedura jest podobna w innych wersjach programu Visual Studio.
 
 1. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**
-2. Wybierz **platformy** > **Windows**
+2. Wybierz**okna** **platformy** > 
 3. Wybierz pozycję **Aplikacja konsoli (.NET Framework)**
 4. Wybierz pozycję **Dalej**
-5. W **Nazwa projektu** wprowadź nazwę swojej aplikacji
+5. W polu **Nazwa projektu** wprowadź nazwę aplikacji
 6. Wybierz pozycję **Utwórz**
 
-Wszystkie przykłady kodu, w tym samouczku można dodać do **Main()** metoda całej aplikacji konsolowej **Program.cs** pliku.
+Wszystkie przykłady kodu w tym samouczku można dodać do metody **Main ()** pliku **program.cs** aplikacji konsolowej.
 
-Można użyć bibliotek klienckich usługi Azure Storage w aplikacji .NET, w tym platformy Azure w chmurze usługi lub aplikacji sieci web, a aplikacje klasyczne i mobilne dowolnego typu. W tym przewodniku dla uproszczenia przedstawiono aplikację konsolową.
+Możesz użyć bibliotek klienckich usługi Azure Storage w dowolnym typie aplikacji platformy .NET, w tym usługi w chmurze platformy Azure lub aplikacji sieci Web oraz aplikacji klasycznych i mobilnych. W tym przewodniku dla uproszczenia przedstawiono aplikację konsolową.
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>Użycie pakietu NuGet w celu zainstalowania wymaganych pakietów
 
-Należy odwoływać się do następujących trzech pakietów w projekcie do ukończenia tego samouczka:
+Aby ukończyć ten samouczek, należy odwołać się do następujących trzech pakietów w projekcie:
 
-* [Microsoft Azure wspólne biblioteki klienta usługi Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): ten pakiet zapewnia dostęp programowy do zasobów danych na koncie magazynu.
-* [Biblioteka usług Microsoft Azure Storage Queue dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Ta biblioteka kliencka pozwala na pracę z usługą Microsoft Azure Storage Queue do przechowywania komunikatów, które mogą być dostępne przez klienta.
+* [Microsoft Azure Storage wspólną bibliotekę kliencką dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): ten pakiet zapewnia dostęp programowy do zasobów danych na koncie magazynu.
+* [Microsoft Azure Storage biblioteki kolejki dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Ta Biblioteka kliencka umożliwia pracę z Microsoft Azure Storage usługa kolejki do przechowywania komunikatów, do których może uzyskać dostęp klient.
 * [Biblioteka programu Microsoft Azure Configuration Manager dla środowiska .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): ten pakiet zawiera klasę do analizowania parametrów połączenia w pliku konfiguracji, niezależnie od tego, gdzie została uruchomiona aplikacja.
 
-Aby uzyskać te pakiety, można użyć NuGet. Wykonaj następujące kroki:
+Aby uzyskać te pakiety, można użyć narzędzia NuGet. Wykonaj następujące kroki:
 
 1. Kliknij projekt prawym przyciskiem myszy w **Eksploratorze rozwiązań** i wybierz polecenie **Zarządzaj pakietami NuGet**.
-2. Wybierz **Przeglądaj**
-3. Wyszukaj w trybie online "Microsoft.Azure.Storage.Queue", a następnie wybierz pozycję **zainstalować** Aby zainstalować bibliotekę klienta usługi Storage oraz jego zależności. Spowoduje to zainstalowanie również biblioteki Microsoft.Azure.Storage.Common, która jest zależność biblioteki kolejki.
-4. Wyszukaj w trybie online "Microsoft.Azure.ConfigurationManager", a następnie wybierz pozycję **zainstalować** do zainstalowania programu Azure Configuration Manager.
+2. Wybierz pozycję **Przeglądaj**
+3. Wyszukaj w trybie online pozycję "Microsoft. Azure. Storage. queue" i wybierz pozycję **Zainstaluj** , aby zainstalować bibliotekę klienta magazynu i jej zależności. Spowoduje to również zainstalowanie biblioteki Microsoft. Azure. Storage. Common, która jest zależna od biblioteki kolejki.
+4. Wyszukaj w trybie online pozycję "Microsoft. Azure. ConfigurationManager" i wybierz pozycję **Zainstaluj** , aby zainstalować Configuration Manager platformy Azure.
 
 > [!NOTE]
-> Pakiety biblioteki klienta magazynu znajdują się również w [zestawu Azure SDK dla platformy .NET](https://azure.microsoft.com/downloads/). Jednak firma Microsoft zaleca również zainstalowanie biblioteki klienta magazynu z pakietów NuGet, aby upewnić się, że zawsze używały najnowszej wersji.
+> Pakiety bibliotek klienta magazynu są również dołączone do [zestawu Azure SDK dla platformy .NET](https://azure.microsoft.com/downloads/). Zaleca się jednak również zainstalowanie bibliotek klienta usługi Storage z programu NuGet, aby upewnić się, że zawsze masz najnowsze wersje.
 >
-> Zależności ODataLib w bibliotek klienckich magazynu dla platformy .NET są rozwiązywane za pomocą pakietów ODataLib dostępnych w usłudze NuGet, nie z usługi danych WCF. Biblioteki ODataLib można pobrać bezpośrednio lub użyć odwołań w projekcie kodu za pośrednictwem pakietu NuGet. Określone pakiety ODataLib używane przez biblioteki klienta magazynu są [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/), i [przestrzenne](https://nuget.org/packages/System.Spatial/). Biblioteki te są używane przez klasy magazynu tabel Azure, są one wymaganymi zależnościami do programowania za pomocą biblioteki klienta magazynu.
+> Zależności ODataLib w bibliotekach klienta usługi Storage dla platformy .NET są rozwiązywane przez pakiety ODataLib dostępne w pakiecie NuGet, a nie z Usługi danych programu WCF. Biblioteki ODataLib można pobrać bezpośrednio lub użyć odwołań w projekcie kodu za pośrednictwem pakietu NuGet. Określone pakiety ODataLib używane przez biblioteki klienta magazynu to [OData](https://nuget.org/packages/Microsoft.Data.OData/), [EDM](https://nuget.org/packages/Microsoft.Data.Edm/)i przestrzenne. [](https://nuget.org/packages/System.Spatial/) Chociaż te biblioteki są używane przez klasy magazynu tabel platformy Azure, są one wymagane do programowania w bibliotekach klienta magazynu.
 
 ### <a name="determine-your-target-environment"></a>Określanie środowiska docelowego
 
@@ -98,14 +96,14 @@ Jeśli obiektem docelowym jest konto magazynu w chmurze, skopiuj podstawowy kluc
 
 ### <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
 
-Biblioteki klienta usługi Azure Storage obsługi platformy .NET przy użyciu parametrów połączenia magazynu do skonfigurowania punktów końcowych i poświadczeń do uzyskania dostępu do usług magazynu. Najlepiej przechowywać parametry połączenia magazynu w pliku konfiguracji.
+Biblioteki klienta usługi Azure Storage dla platformy .NET obsługują używanie parametrów połączenia magazynu w celu skonfigurowania punktów końcowych i poświadczeń w celu uzyskania dostępu do usług magazynu. Najlepiej przechowywać parametry połączenia magazynu w pliku konfiguracji.
 
 Aby uzyskać więcej informacji dotyczących parametrów połączenia, zobacz [Konfigurowanie parametrów połączenia z usługą Azure Storage](../common/storage-configure-connection-string.md).
 
 > [!NOTE]
 > Klucz konta magazynu jest podobny do hasła głównego konta magazynu. Zawsze chroń klucz konta magazynu. Nie udostępniaj go innym użytkownikom, nie koduj go trwale ani nie zapisuj w zwykłym pliku tekstowym, do którego mają dostęp inne osoby. Wygeneruj ponownie klucz za pośrednictwem witryny Azure Portal, jeśli uważasz, że jego zabezpieczenia mogły zostać naruszone.
 
-Aby skonfigurować parametry połączenia, otwórz **app.config** pliku w Eksploratorze rozwiązań programu Visual Studio. Dodaj zawartość **\<appSettings\>** widocznego poniżej. Zastąp *nazwa konta* nazwą konta magazynu i *klucz konta* swoim kluczem dostępu konta:
+Aby skonfigurować parametry połączenia, Otwórz plik **App. config** z Eksplorator rozwiązań w programie Visual Studio. Dodaj zawartość **\<elementu AppSettings\>** pokazanego poniżej. Zastąp wartość *nazwa konta* nazwą konta magazynu i *klucz konta* kluczem dostępu do konta:
 
 ```xml
 <configuration>
@@ -371,7 +369,7 @@ CloudQueue queue = queueClient.GetQueueReference("myqueue");
 queue.Delete();
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, kiedy znasz już podstawy usługi Queue Storage, skorzystaj z poniższych linków, aby dowiedzieć się więcej o bardziej skomplikowanych zadaniach magazynu.
 

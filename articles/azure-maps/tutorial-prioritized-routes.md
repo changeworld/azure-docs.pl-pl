@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e0d201baec253abee9ad8a998dd36968927a25a6
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: ad67b17d76e811d5977955c40f444c4b7c0a01e3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357591"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478848"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Znajdowanie tras dla różnych sposobów podróży za pomocą usługi Azure Maps
 
@@ -50,7 +50,7 @@ Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy 
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
 
         <script>
             var map, datasource, client;
@@ -82,7 +82,7 @@ Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy 
 
     Zwróć uwagę, że nagłówek HTML zawiera pliki zasobów CSS i JavaScript obsługiwane przez bibliotekę kontrolek mapy platformy Azure. Zwróć uwagę na zdarzenie `onload` w treści strony, które spowoduje wywołanie funkcji `GetMap` po załadowaniu treści strony. Ta funkcja będzie zawierać śródwierszowy kod JavaScript umożliwiający dostęp do interfejsów API usługi Azure Maps.
 
-3. Dodaj następujący kod JavaScript do funkcji `GetMap`. Zastąp ciąg `<Your Azure Maps Key>` za pomocą klucza podstawowego, który został skopiowany z Twojego konta usługi Maps.
+3. Dodaj następujący kod JavaScript do funkcji `GetMap`. Zastąp ciąg `<Your Azure Maps Key>` kluczem podstawowym, który został skopiowany z konta Maps.
 
     ```JavaScript
     //Instantiate a map object
@@ -95,7 +95,7 @@ Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy 
     });
     ```
 
-    `atlas.Map` Klasa udostępnia kontrolkę wizualnej i interaktywnej sieci web mapy i jest składnikiem interfejsu API kontrolki mapy platformy Azure.
+    `atlas.Map` Klasa zapewnia formant dla wizualizacji i interaktywnej mapy sieci Web oraz jest składnikiem interfejsu API kontrolka mapy platformy Azure.
 
 4. Zapisz plik i otwórz go w przeglądarce. Masz teraz podstawową mapę, którą możesz rozbudowywać.
 
@@ -103,7 +103,7 @@ Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy 
 
 ## <a name="visualize-traffic-flow"></a>Wizualizowanie przepływu ruchu
 
-1. Dodaj widok przepływu ruchu do mapy. Mapy `ready` zdarzeń oczekuje na zasoby mapy są ładowane i zechcesz bezpiecznie korzystać z niego.
+1. Dodaj widok przepływu ruchu do mapy. Zdarzenie Maps `ready` czeka do momentu załadowania zasobów mapy i gotowości do jej bezpiecznego współdziałania.
 
     ```javascript
     map.events.add("ready", function() {
@@ -114,9 +114,9 @@ Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy 
     });
     ```
 
-    Na mapie `ready` procedura obsługi zdarzeń, ustawienie przepływu ruchu na mapie ma wartość `relative`, czyli szybkość ruchu na drodze względem swobodnego przepływu. Tę wartość możesz również ustawić na `absolute` (względna szybkość ruchu na drodze) lub `relative-delay` (umożliwia wyświetlanie względnej szybkości, gdy różni się ona od swobodnego przepływu ruchu).
+    W obsłudze `ready` zdarzeń mapy ustawienie przepływu ruchu na mapie jest ustawione na `relative`, czyli szybkość drogi względem swobodnego przepływu. Tę wartość możesz również ustawić na `absolute` (względna szybkość ruchu na drodze) lub `relative-delay` (umożliwia wyświetlanie względnej szybkości, gdy różni się ona od swobodnego przepływu ruchu).
 
-2. Zapisz plik **MapTruckRoute.html** i odśwież stronę w przeglądarce. Jeśli wchodzić w interakcje z mapą i powiększenie w Los Angeles, powinien zostać wyświetlony streets z bieżącymi danymi ruchu.
+2. Zapisz plik **MapTruckRoute.html** i odśwież stronę w przeglądarce. W przypadku korzystania z mapy i powiększania do Los Angeles należy zobaczyć ulice z bieżącymi danymi o ruchu.
 
    ![Wyświetlanie mapy ruchu ulicznego](./media/tutorial-prioritized-routes/traffic-map.png)
 
@@ -126,7 +126,7 @@ Poniższe kroki pokazują, jak utworzyć statyczną stronę HTML osadzoną przy 
 
 W tym samouczku na mapie zostaną obliczone i wyrenderowane dwie trasy. Jedna trasa będzie prowadziła po drogach dostępnych dla samochodów osobowych, a druga dla samochodów ciężarowych. Po wyrenderowaniu zostanie wyświetlona ikona symbolu początku i końca trasy. Każda trasa zostanie oznaczona liniami w innych kolorach.
 
-1. Po inicjowanie na mapie, Dodaj następujący kod JavaScript w mapach `ready` programu obsługi zdarzeń.
+1. Po zainicjowaniu mapy Dodaj następujący kod JavaScript w obsłudze zdarzeń `ready` Maps.
 
     ```JavaScript
     //Wait until the map resources have fully loaded.
@@ -159,9 +159,9 @@ W tym samouczku na mapie zostaną obliczone i wyrenderowane dwie trasy. Jedna tr
     });
     ```
     
-    W mapach `ready` procedura obsługi zdarzeń, tworzone jest źródło danych do przechowywania wierszy trasy, a także punkty początkowy i końcowy. Tworzona jest warstwa linii, która jest następnie dołączana do źródła danych w celu zdefiniowania sposobu renderowana linii trasy. Za pomocą wyrażeń są pobierane szerokość i kolor linii z właściwości funkcji linii trasy. Podczas dodawania warstwy do mapy przekazywany jest drugi parametr o wartości `'labels'`. Określa on, że ta warstwa ma być renderowana poniżej etykiet mapy. Dzięki temu linia trasy nie zakryje etykiet dróg. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa sposób renderowania punktów początkowych i końcowych. W tym przypadku dodano wyrażenia w celu pobrania informacji o obrazie ikony i etykiecie tekstowej z właściwości każdego obiektu punktu. 
+    W programie obsługi `ready` zdarzeń mapy jest tworzone źródło danych do przechowywania linii tras oraz punktów początkowych i końcowych. Tworzona jest warstwa linii, która jest następnie dołączana do źródła danych w celu zdefiniowania sposobu renderowana linii trasy. Za pomocą wyrażeń są pobierane szerokość i kolor linii z właściwości funkcji linii trasy. Podczas dodawania warstwy do mapy przekazywany jest drugi parametr o wartości `'labels'`. Określa on, że ta warstwa ma być renderowana poniżej etykiet mapy. Dzięki temu linia trasy nie zakryje etykiet dróg. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa sposób renderowania punktów początkowych i końcowych. W tym przypadku dodano wyrażenia w celu pobrania informacji o obrazie ikony i etykiecie tekstowej z właściwości każdego obiektu punktu. 
     
-2. W tym samouczku ustawimy punkt początkowy w lokalizacji fikcyjnej firmy Fabrikam (w Seattle), a punkt docelowy w lokalizacji biura firmy Microsoft. W mapach `ready` procedura obsługi zdarzeń, Dodaj następujący kod.
+2. W tym samouczku ustawimy punkt początkowy w lokalizacji fikcyjnej firmy Fabrikam (w Seattle), a punkt docelowy w lokalizacji biura firmy Microsoft. W programie obsługi `ready` zdarzeń programu Maps Dodaj następujący kod.
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -191,7 +191,7 @@ W tym samouczku na mapie zostaną obliczone i wyrenderowane dwie trasy. Jedna tr
     });
     ```
 
-    Punkt początkowy i końcowy zostały dodane do źródła danych. Pole ograniczenia dla punktu początkowego i końcowego jest obliczane przy użyciu funkcji `atlas.data.BoundingBox.fromData`. Ta obwiedni jest używana do ustawiania aparatów widoku mapy za pośrednictwem za pomocą marszruty całej `map.setCamera` funkcji. W celu skompensowania wymiarów pikseli ikon symboli dodawane jest wypełnienie.
+    Punkt początkowy i końcowy zostały dodane do źródła danych. Pole ograniczenia dla punktu początkowego i końcowego jest obliczane przy użyciu funkcji `atlas.data.BoundingBox.fromData`. To ograniczenie służy do ustawiania widoku kamery mapy na całej trasie przy użyciu `map.setCamera` funkcji. W celu skompensowania wymiarów pikseli ikon symboli dodawane jest wypełnienie.
 
 4. Zapisz plik i odśwież przeglądarkę, aby wyświetlić znaczniki na mapie. Mapa jest teraz wyśrodkowana na Seattle. Punkt początkowy jest oznaczony niebieskim kółkiem, a punkt końcowy — niebieskim znacznikiem.
 
@@ -201,9 +201,9 @@ W tym samouczku na mapie zostaną obliczone i wyrenderowane dwie trasy. Jedna tr
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>Renderowanie tras z uwzględnieniem priorytetów na podstawie sposobu podróży
 
-W tej sekcji pokazano, jak używać interfejsu API usługi service map trasy do znajdowania wielu tras z punktu rozpoczęcia danego do punktu końcowego, w oparciu o podróży. Usługa Route Service udostępnia interfejsy API do planowania *najszybszej*, *najkrótszej*, *najciekawszej* lub *najbardziej ekologicznej* trasy między dwiema lokalizacjami z uwzględnieniem bieżących warunków drogowych. Umożliwia ona też użytkownikom planowanie tras w przyszłości, korzystając z obszernej historycznej bazy danych ruchu drogowego na platformie Azure i przewidując długość podróży trasami w dowolnym dniu i czasie. Aby uzyskać więcej informacji, zobacz [GetRoute Directions (Uzyskiwanie wskazówek dojazdu)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Wszystkie poniższe bloki kodu powinny zostać dodane **w elemencie eventListener ładowania mapy** w celu zagwarantowania ich załadowania po pełnym załadowaniu mapy.
+W tej sekcji pokazano, jak za pomocą interfejsu API usługi Maps trasy znaleźć wiele tras z danego punktu początkowego do punktu końcowego w zależności od używanego trybu transportu. Usługa Route Service udostępnia interfejsy API do planowania *najszybszej*, *najkrótszej*, *najciekawszej* lub *najbardziej ekologicznej* trasy między dwiema lokalizacjami z uwzględnieniem bieżących warunków drogowych. Umożliwia ona też użytkownikom planowanie tras w przyszłości, korzystając z obszernej historycznej bazy danych ruchu drogowego na platformie Azure i przewidując długość podróży trasami w dowolnym dniu i czasie. Aby uzyskać więcej informacji, zobacz [GetRoute Directions (Uzyskiwanie wskazówek dojazdu)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Wszystkie poniższe bloki kodu powinny zostać dodane **w elemencie eventListener ładowania mapy** w celu zagwarantowania ich załadowania po pełnym załadowaniu mapy.
 
-1. W funkcji GetMap Dodaj następujący element do kodu w języku Javascript.
+1. W funkcji GetMap Dodaj następujący kod do kodu JavaScript.
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key
@@ -216,9 +216,9 @@ W tej sekcji pokazano, jak używać interfejsu API usługi service map trasy do 
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential` Tworzy `SubscriptionKeyCredentialPolicy` do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. `atlas.service.MapsURL.newPipeline()` Przyjmuje `SubscriptionKeyCredential` zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) wystąpienia. `routeURL` Reprezentuje adres URL do usługi Azure Maps [trasy](https://docs.microsoft.com/rest/api/maps/route) operacji.
+   `SubscriptionKeyCredential` TworzydouwierzytelnianiażądaniaHTTPdoAzureMaps`SubscriptionKeyCredentialPolicy` przy użyciu klucza subskrypcji. Przyjmuje zasady i tworzy wystąpienie potoku. [](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) `atlas.service.MapsURL.newPipeline()` `SubscriptionKeyCredential` Reprezentuje adres URL służący do Azure Maps operacji [routingu.](https://docs.microsoft.com/rest/api/maps/route) `routeURL`
 
-2. Po skonfigurowaniu poświadczeń i adres URL, Dodaj następujący kod JavaScript kod, aby utworzyć trasę od początku do punktu końcowego dla ciężarówki wykonywania USHazmatClass2 gniazdami ładunku i wyświetlić wyniki.
+2. Po skonfigurowaniu poświadczeń i adresu URL Dodaj następujący kod JavaScript, aby utworzyć trasę od początku do punktu końcowego dla wózka przewożącego USHazmatClass2d i wyświetlić wyniki.
 
     ```JavaScript
     //Start and end point input to the routeURL
@@ -245,7 +245,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi service map trasy do 
     });
     ```
 
-    Ten fragment kodu powyżej zapytania usługi routingu usługi Azure Maps za pośrednictwem [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) metody. Wiersz trasy następnie są wyodrębniane z kolekcji funkcji GeoJSON z odpowiedzi, które zostały wyodrębnione przy użyciu `geojson.getFeatures()` metody. Wiersz trasy jest dodawane do źródła danych. Dodaje także indeks 0, aby upewnić się, że jest on renderowany przed innymi wierszami w źródle danych. Ta czynność jest wymagana, ponieważ obliczanie trasy dla samochodów ciężarowych zachodzi często wolniej niż dla samochodów osobowych. Jeśli linia trasy dla samochodów ciężarowych zostanie dodana do źródła danych po trasie dla samochodów osobowych, zostanie wyrenderowana powyżej niej. Dwie właściwości są dodawane do wiersza trasa ciężarówki, kolor pociągnięcia, ładny odcień niebieski i grubość dziewięć pikseli.
+    Ten fragment kodu przeprowadzi zapytania do usługi routingu Azure Maps za pomocą metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Linia trasy jest następnie wyodrębniana z kolekcji funkcji GEOJSON z odpowiedzi wyodrębnionej przy użyciu `geojson.getFeatures()` metody. Linia trasy jest następnie dodawana do źródła danych. Dodaje również indeks 0, aby upewnić się, że jest renderowany przed innymi liniami w źródle danych. Ta czynność jest wymagana, ponieważ obliczanie trasy dla samochodów ciężarowych zachodzi często wolniej niż dla samochodów osobowych. Jeśli linia trasy dla samochodów ciężarowych zostanie dodana do źródła danych po trasie dla samochodów osobowych, zostanie wyrenderowana powyżej niej. Do linii trasy ciężarówki dodawane są dwie właściwości, kolor pociągnięcia, który jest całkiem odcień Niebieskia, a szerokość obrysu dziewięciu pikseli.
 
 3. Dodaj następujący kod JavaScript, aby utworzyć trasę dla samochodu i wyświetlić wyniki.
 
@@ -265,7 +265,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi service map trasy do 
     });
     ```
 
-    Ten fragment kodu powyżej zapytania usługi routingu usługi Azure Maps za pośrednictwem [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) metody. Wiersz trasy następnie są wyodrębniane z kolekcji funkcji GeoJSON z odpowiedzi, które zostały wyodrębnione przy użyciu `geojson.getFeatures()` metody. Wiersz trasy jest dodawane do źródła danych. Dwie właściwości są dodawane do wiersza trasa samochodu, kolor pociągnięcia, który jest odcień purpurowy i grubość 5 pikseli.  
+    Ten fragment kodu przeprowadzi zapytania do usługi routingu Azure Maps za pomocą metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Linia trasy jest następnie wyodrębniana z kolekcji funkcji GEOJSON z odpowiedzi wyodrębnionej przy użyciu `geojson.getFeatures()` metody. Linia trasy jest następnie dodawana do źródła danych. Do linii trasy samochodu dodawane są dwie właściwości, kolor pociągnięcia, który jest odcieniem purpurowy, a szerokość obrysu pięć pikseli.  
 
 4. Zapisz plik **MapTruckRoute.html** i odśwież stronę w przeglądarce, aby wyświetlić wynik. W przypadku pomyślnego połączenia z interfejsami API usługi Maps powinna pojawić się mapa podobna do poniższej.
 
@@ -273,7 +273,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi service map trasy do 
 
     Trasa ciężarówki jest oznaczona grubą, niebieską linią, a trasa samochodu osobowego — cienką, purpurową linią. Trasa samochodu osobowego biegnie drogą I-90, przez Jezioro Waszyngtona, tunelami znajdującymi się pod dzielnicami mieszkaniowymi. Na tej trasie obowiązuje zakaz przewozu niebezpiecznych odpadów. Trasa ciężarówki uwzględnia ładunek należący do klasy 2 materiałów niebezpiecznych i została poprawnie poprowadzona inną autostradą.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
@@ -295,4 +295,4 @@ W następnym samouczku przedstawiony jest proces tworzenia prostego lokalizatora
 > [Create a store locator using Azure Maps (Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps)](./tutorial-create-store-locator.md)
 
 > [!div class="nextstepaction"]
-> [Za pomocą wyrażeń opartych na danych stylu](data-driven-style-expressions-web-sdk.md)
+> [Używanie wyrażeń stylów opartych na danych](data-driven-style-expressions-web-sdk.md)

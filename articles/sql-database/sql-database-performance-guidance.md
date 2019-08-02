@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure wskazówki dotyczące dostrajania wydajności usługi SQL Database | Dokumentacja firmy Microsoft
-description: Informacje o używaniu zalecenia należy ręcznie dostosować wydajność zapytań usługi Azure SQL Database.
+title: Wskazówki dotyczące dostrajania wydajności Azure SQL Database | Microsoft Docs
+description: Dowiedz się więcej o korzystaniu z zaleceń w celu ręcznego dostrajania wydajności zapytań Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,57 +10,56 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a49d30d3058a6cf3ce82d56076f348861ad631ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60585138"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567109"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ręczne dostosowywanie wydajności zapytań w usłudze Azure SQL Database
+# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ręczne dostrajanie wydajności zapytań w Azure SQL Database
 
-Po zidentyfikowaniu problemu z wydajnością, występujący w usłudze SQL Database, w tym artykule jest przeznaczona ułatwią Ci:
+Po zidentyfikowaniu problemu z wydajnością, do którego nastąpi SQL Database, ten artykuł ma na celu ułatwienie:
 
-- Dostrajanie aplikacji i zastosować niektóre najlepsze rozwiązania, które mogą zwiększyć wydajność.
-- Dostosowywanie bazy danych, zmieniając indeksów i zapytań, aby bardziej efektywnie pracować z danymi.
+- Dostosuj aplikację i Zastosuj niektóre najlepsze rozwiązania, które mogą zwiększyć wydajność.
+- Dostrajaj bazę danych, zmieniając indeksy i zapytania, aby skuteczniej pracować z danymi.
 
-W tym artykule założono, że już pracujesz za pomocą usługi Azure SQL Database [bazy danych zalecenia usługi advisor](sql-database-advisor.md) i Azure SQL Database [zaleceń dotyczących dostrajania automatycznego](sql-database-automatic-tuning.md). Przyjęto również założenie, że użytkownik przejrzał [omówienie monitorowania i dostrajania](sql-database-monitor-tune-overview.md) i jej powiązane artykuły dotyczące rozwiązywania problemów z wydajnością. Ponadto w tym artykule założono, że nie masz zasobów procesora CPU, problem z wydajnością związanych z uruchamiania, który może zostać rozpoznana przez zwiększenie rozmiaru obliczeń lub warstwę, aby zapewnić więcej zasobów do bazy danych usługi.
+W tym artykule przyjęto założenie, że użytkownik pracował już nad zaleceniami usługi Azure SQL Database [Database](sql-database-advisor.md) i zaleceniami autodostrajania Azure SQL Database. [](sql-database-automatic-tuning.md) Przyjęto również założenie, że przegląd dotyczący [monitorowania i dostrajania](sql-database-monitor-tune-overview.md) oraz powiązanych artykułów związanych z rozwiązywaniem problemów z wydajnością. Ponadto w tym artykule założono, że nie masz zasobów procesora, problem z wydajnością związany z działaniem, który można rozwiązać przez zwiększenie rozmiaru lub warstwy usług w celu zapewnienia większej ilości zasobów dla bazy danych.
 
-## <a name="tune-your-application"></a>Dostosowywanie aplikacji
+## <a name="tune-your-application"></a>Dostrajanie aplikacji
 
-W tradycyjnych lokalnych programu SQL Server proces planowania pojemności początkowej są często oddzielone od procesu uruchamiania aplikacji w środowisku produkcyjnym. Najpierw zakupić licencje sprzętu i produktu i dostrajanie wydajności odbywa się później. Gdy używasz usługi Azure SQL Database, jest dobrym rozwiązaniem interweave procesu uruchamiania aplikacji i dostosowywania. Z modelem, płacąc za pojemność na żądanie możesz określić aplikacji na korzystanie z zasobów minimalne wymagane teraz, zamiast konieczności nadmiernej aprowizacji na sprzęcie, w oparciu o liczbę prób planów przyszłego rozwoju aplikacji, które często są nieprawidłowe. Niektórzy klienci mogą nie dostrojenia aplikacji, a zamiast tego wybrać opcję nadmiernej aprowizacji zasobów sprzętowych. Takie podejście może być dobrym rozwiązaniem, jeśli nie chcesz zmienić klucza aplikacji w trakcie okresu zajęty. Ale można Dostrajanie aplikacji można zminimalizować wymagania dotyczące zasobów i niższych miesięczne rachunki przy użyciu warstwy usług w usłudze Azure SQL Database.
+W tradycyjnych SQL Server lokalnych, proces wstępnego planowania pojemności jest często oddzielony od procesu uruchamiania aplikacji w środowisku produkcyjnym. Najpierw zakupione są licencje sprzętowe i produktowe, a następnie dostrojenie wydajności odbywa się później. Gdy używasz Azure SQL Database, dobrym pomysłem jest przekazanie procesu uruchamiania aplikacji i dostosowanie go. Dzięki modelowi płacenia za pojemność na żądanie możesz dostosować swoją aplikację do korzystania z minimalnych zasobów wymaganych teraz, zamiast nadmiernej aprowizacji sprzętu na podstawie odgadnięcia przyszłych planów wzrostu dla aplikacji, które często są nieprawidłowe. Niektórzy klienci mogą zrezygnować z dostrajania aplikacji, a zamiast tego wybrać opcję nadmierne udostępnianie zasobów sprzętowych. Takie podejście może być dobrym pomysłem, jeśli nie chcesz zmieniać kluczowych aplikacji w okresie zajętości. Jednak dostrajanie aplikacji może zminimalizować wymagania dotyczące zasobów i obniżyć miesięczne rachunki w przypadku używania warstw usług w Azure SQL Database.
 
-### <a name="application-characteristics"></a>Właściwości aplikacji
+### <a name="application-characteristics"></a>Charakterystyka aplikacji
 
-Mimo że warstwy usługi Azure SQL Database zaprojektowano w celu zwiększenia stabilności wydajności i stabilności aplikacji, najważniejsze wskazówki mogą pomóc w dostrojenia aplikacji w taki sposób, aby lepiej wykorzystać zasoby w rozmiarze obliczeń. Chociaż wiele aplikacji ma znaczący wzrost wydajności, po prostu przełączając do wyższych obliczenia rozmiaru lub warstwę usługi, niektóre aplikacje potrzebują dodatkowego dostrojenia, aby korzystać z wyższego poziomu usługi. Aby zwiększyć wydajność należy wziąć pod uwagę dostrajania dodatkowych aplikacji dla aplikacji, które mają następującą charakterystykę:
+Mimo że Azure SQL Database warstwy usług zostały zaprojektowane w celu poprawy stabilności wydajności i przewidywalności aplikacji, niektóre najlepsze rozwiązania mogą pomóc w dostosowaniu aplikacji w celu lepszego wykorzystania zasobów w rozmiarze obliczeniowym. Mimo że wiele aplikacji ma znaczący wpływ na wydajność, wystarczy przełączać się do wyższego rozmiaru lub warstwy usług, a niektóre aplikacje wymagają dodatkowego dostrajania do skorzystania z wyższego poziomu usługi. Aby zwiększyć wydajność, należy rozważyć dodatkowe dostrajanie aplikacji dla aplikacji o następujących cechach:
 
-- **Aplikacje, które mają niską wydajność ze względu na zachowanie "duża liczba"**
+- **Aplikacje z niską wydajnością z powodu zachowania "rozmawiania"**
 
-  Duża liczba aplikacji należy operacji dostępu nadmiernej ilości danych, które są wrażliwe na opóźnienie sieci. Może być konieczne zmodyfikowanie tych rodzajów aplikacji, aby zmniejszyć liczbę operacji dostępu do danych w bazie danych SQL. Na przykład może zwiększyć wydajność aplikacji przy użyciu technik, takich jak przetwarzanie wsadowe, zapytania ad hoc lub przenoszenie zapytania do procedur składowanych. Aby uzyskać więcej informacji, zobacz [partii zapytań](#batch-queries).
+  Aplikacje rozmawiające umożliwiają nadmierne wykonywanie operacji dostępu do danych, które są wrażliwe na opóźnienia sieci. Może być konieczne zmodyfikowanie tych rodzajów aplikacji w celu zmniejszenia liczby operacji dostępu do danych w bazie danych SQL. Na przykład można poprawić wydajność aplikacji przy użyciu technik takich jak przetwarzanie wsadowe zapytań ad hoc lub przechodzenie zapytań do procedur składowanych. Aby uzyskać więcej informacji, zobacz [zapytania wsadowe](#batch-queries).
 
-- **Bazy danych z intensywnie korzystających z obciążeniem, który nie może być obsługiwana przez cały jednej maszynie**
+- **Bazy danych z intensywnym obciążeniem, które nie mogą być obsługiwane przez całą pojedynczą maszynę**
 
-   Bazy danych, które przekraczają zasoby najwyższego Premium obliczeń rozmiaru organizowanych przez skalowanie obciążenia. Aby uzyskać więcej informacji, zobacz [fragmentowania między bazami danych](#cross-database-sharding) i [partycjonowania funkcjonalnego](#functional-partitioning).
+   Bazy danych, które przekraczają zasoby o najwyższej wielkości obliczeń w warstwie Premium, mogą przynieść skalowanie obciążenia. Aby uzyskać więcej informacji, zobacz [fragmentowania między bazami danych](#cross-database-sharding) i [partycjonowanie funkcjonalne](#functional-partitioning).
 
-- **Aplikacje, które mają optymalne zapytań**
+- **Aplikacje z nieoptymalnymi zapytaniami**
 
-  Aplikacje, zwłaszcza w warstwie dostępu do danych, które zostały nieprawidłowo dostrojone zapytania nie organizowanych przez większy rozmiar obliczeń. Dotyczy to również zapytania brakuje klauzuli WHERE, brakujące indeksy albo mieć przestarzałe statystyk. Te aplikacje korzystają z technik dostrajanie wydajności standardowej kwerendy. Aby uzyskać więcej informacji, zobacz [brakujące indeksy](#identifying-and-adding-missing-indexes) i [zapytania dostrajanie i uzupełnianiem](#query-tuning-and-hinting).
+  Aplikacje, szczególnie te w warstwie dostępu do danych, które mają źle dopasowane zapytania, mogą nie być korzystne z większym rozmiarem obliczeniowym. Obejmuje to zapytania, które nie mają klauzuli WHERE, mają brakujące indeksy lub mają nieaktualne dane statystyczne. Te aplikacje korzystają z standardowych technik dostrajania wydajności zapytań. Aby uzyskać więcej informacji, zobacz [brakujące indeksy](#identifying-and-adding-missing-indexes) i [dostrajanie zapytań oraz podpowiedzi](#query-tuning-and-hinting).
 
-- **Aplikacje, które zawierają dane optymalne dostęp do projektu**
+- **Aplikacje mające optymalny projekt dostępu do danych**
 
-   Aplikacje, które mają nieprzerwaną pracę dostępu współbieżności problemy związane z danych, na przykład zakleszczenia, nie mogą korzystać z większy rozmiar obliczeń. Rozważ zmniejszenie rund w bazie danych SQL Azure buforowania danych po stronie klienta za pomocą usługi pamięć podręczna systemu Azure lub innej technologii buforowania. Zobacz [buforowanie warstwy aplikacji](#application-tier-caching).
+   Aplikacje, które mają nieodłączne problemy z współbieżnością dostępu do danych, na przykład zakleszczenie mogą nie korzystać z większego rozmiaru obliczeniowego. Należy rozważyć zmniejszenie liczby rund do Azure SQL Database przez buforowanie danych po stronie klienta za pomocą usługi buforowania platformy Azure lub innej technologii buforowania. Zobacz [buforowanie warstwy aplikacji](#application-tier-caching).
 
-## <a name="tune-your-database"></a>Dostosowywanie bazy danych
+## <a name="tune-your-database"></a>Dostrajanie bazy danych
 
-W tej sekcji przyjrzymy się kilka technik, które można dostrajanie usługi Azure SQL Database, aby uzyskać najlepszą wydajność aplikacji i uruchom go na najmniejszy rozmiar możliwości obliczeniowych. Niektóre z tych metod dopasowania tradycyjnych dostrajania serwera SQL Server najlepsze rozwiązania, ale inne są specyficzne dla usługi Azure SQL Database. W niektórych przypadkach można sprawdzić wykorzystanych zasobów dla bazy danych można znaleźć obszarów, aby dodatkowo dostosować i rozszerzyć tradycyjnych technik programu SQL Server do pracy w usłudze Azure SQL Database.
+W tej sekcji zawarto kilka technik, których można użyć do dostrajania Azure SQL Database w celu uzyskania najlepszej wydajności aplikacji i uruchamiania jej przy najniższym możliwym rozmiarze. Niektóre z tych technik są zgodne z tradycyjnymi rozwiązaniami SQL Server dostrajania, ale inne są specyficzne dla Azure SQL Database. W niektórych przypadkach można sprawdzić zużyte zasoby dla bazy danych, aby znaleźć obszary umożliwiające dalsze dostosowywanie i rozszerzanie tradycyjnych technik SQL Server w Azure SQL Database.
 
-### <a name="identifying-and-adding-missing-indexes"></a>Identyfikowanie i dodawanie brakujące indeksy
+### <a name="identifying-and-adding-missing-indexes"></a>Identyfikowanie i Dodawanie brakujących indeksów
 
-Typowym problemem w wydajność bazy danych OLTP odnosi się do projektu fizycznej bazy danych. Schematy bazy danych są często zaprojektowane i wysłane bez testowania w dużej skali (lub obciążenia ilości danych). Niestety wydajność planu zapytania może być do zaakceptowania na małą skalę, ale znacznie zmniejsza się w obszarze ilości danych na poziomie produkcyjnym. Najbardziej typowe źródła tego problemu jest brak odpowiednich indeksów do zaspokojenia filtry lub innych ograniczeń w zapytaniu. Często brak manifesty indeksów jako tabelę skanowania może wystarczyć wyszukiwanie indeksu.
+Typowy problem związany z wydajnością bazy danych OLTP odnosi się do fizycznego projektu bazy danych. Często schematy bazy danych są zaprojektowane i dostarczane bez testów w dużej skali (w przypadku ładowania lub w woluminie danych). Niestety, wydajność planu zapytania może być akceptowalna na małą skalę, ale istotnie zmniejsza się w zależności od ilości danych na poziomie produkcyjnym. Najbardziej typowym źródłem tego problemu jest brak odpowiednich indeksów w celu spełnienia filtrów lub innych ograniczeń w zapytaniu. Często brakujące indeksy manifestuje się jako skanowanie tabeli, gdy wyszukiwanie może być wystarczające.
 
-W tym przykładzie plan wybrane zapytanie używa skanowania, czy wyszukiwanie może wystarczyć:
+W tym przykładzie wybrany plan zapytania używa skanowania, gdy wystarczająca jest wartość wyszukiwania:
 
 ```sql
 DROP TABLE dbo.missingindex;
@@ -80,11 +79,11 @@ SELECT m1.col1
     WHERE m1.col2 = 4;
 ```
 
-![Planu zapytania z brakujące indeksy](./media/sql-database-performance-guidance/query_plan_missing_indexes.png)
+![Plan zapytania z brakującymi indeksami](./media/sql-database-performance-guidance/query_plan_missing_indexes.png)
 
-Usługa Azure SQL Database może pomóc Znajdź i napraw wspólnej brakuje indeksu warunków. Dynamiczne widoki zarządzania, które są wbudowane w usłudze Azure SQL Database przyjrzeć się kompilacji kwerend, w których indeks może znacznie zmniejszyć szacowany koszt, można uruchomić kwerendy. Podczas wykonywania zapytania bazy danych SQL Database śledzi, jak często jest wykonywana każdego planu zapytania, a śledzi szacowany przerwy między wykonywania planu zapytania, a imagined, gdzie istnieje indeksu. Można użyć tych widokach DMV szybko odgadnąć które zmiany w swoim projekcie fizyczna baza danych może zwiększyć całkowity koszt obciążenie bazy danych i jego rzeczywistego obciążenia.
+Azure SQL Database może pomóc w znalezieniu i naprawieniu typowych warunków braku indeksu. Widoków DMV, które są wbudowane w Azure SQL Database zapoznaj się z kompilacjami zapytań, w których indeks znacznie zmniejsza szacowany koszt do uruchomienia zapytania. Podczas wykonywania zapytania SQL Database śledzi, jak często jest wykonywany każdy plan zapytania, i śledzi przybliżoną lukę między wykonywanym planem zapytania i Wyobraź sobie, gdzie istniał ten indeks. Za pomocą tych widoków DMV można szybko odgadnąć, które zmiany w projekcie fizycznej bazy danych mogą poprawić ogólny koszt obciążeń dla bazy danych i jej rzeczywistego obciążenia.
 
-To zapytanie służy do oceny potencjalnych brakujące indeksy:
+Za pomocą tego zapytania można oszacować potencjalne brakujące indeksy:
 
 ```sql
 SELECT
@@ -111,25 +110,25 @@ FROM sys.dm_db_missing_index_groups AS mig
  ORDER BY migs.avg_total_user_cost * migs.avg_user_impact * (migs.user_seeks + migs.user_scans) DESC
 ```
 
-W tym przykładzie zapytanie spowodowało tę sugestię:
+W tym przykładzie zapytanie spowodowało następującą sugestię:
 
 ```sql
 CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])  
 ```
 
-Po jego utworzeniu tej samej instrukcji SELECT wybiera innego planu, który używa seek zamiast skanowania, a następnie wykonuje wydajniej plan:
+Po jego utworzeniu ta sama instrukcja SELECT wybiera inny plan, który używa wyszukiwania zamiast skanowania, a następnie wykonuje plan wydajniejszie:
 
-![Planu zapytania z indeksami poprawiony](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
+![Plan zapytania ze poprawionymi indeksami](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-Insight klucza jest bardziej ograniczone niż maszyny dedykowany serwer wydajność We/Wy systemu udostępnionego, asortymentu. Jest premium minimalizując niepotrzebnych operacji We/Wy z zalet maksymalna system w DTU rozmiar obliczeń każdej warstwy usługi Azure SQL Database. Odpowiedni fizycznego bazy danych projektu opcji może znacznie zwiększyć czas oczekiwania dla poszczególnych zapytań zwiększyć przepływność jednoczesnych żądań obsługi za jednostkę skalowania i zminimalizowania kosztów, niezbędna do zaspokojenia zapytania. Aby uzyskać więcej informacji na temat brakujący indeks dynamicznych widoków zarządzania zobacz [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Kluczowym wglądem jest to, że pojemność we/wy udostępnionego systemu asortymentu jest bardziej ograniczona niż w przypadku dedykowanego komputera serwera. Istnieje potrzeba zminimalizowania niepotrzebnych operacji we/wy, aby maksymalnie wykorzystać możliwości systemu w jednostkach DTU każdego rozmiaru obliczeniowego Azure SQL Database warstw usług. Opcje projektowania odpowiednich fizycznych baz danych mogą znacząco poprawić opóźnienia poszczególnych zapytań, zwiększyć przepływność współbieżnych żądań obsłużonych na jednostkę skalowania i zminimalizować koszty wymagane do zaspokojenia zapytania. Aby uzyskać więcej informacji na temat brakującego indeksu widoków DMV, zobacz [sys. DM _db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
-### <a name="query-tuning-and-hinting"></a>Dostosowywanie zapytania i wskazówki
+### <a name="query-tuning-and-hinting"></a>Dostrajanie zapytania i podpowiedzi
 
-Optymalizator zapytań w usłudze Azure SQL Database jest podobny do tradycyjnego Optymalizator zapytań programu SQL Server. Większość najlepsze rozwiązania dotyczące dostosowywania zapytań i zrozumienie przyczyny, dla których model ograniczenia dotyczące Optymalizator zapytań stosuje się także do usługi Azure SQL Database. Jeśli można dostrajanie zapytań w usłudze Azure SQL Database, możesz otrzymać dodatkowe korzyści, zmniejszenie zapotrzebowania agregacji. Aplikacja może być w stanie do uruchomienia przy niskich kosztach niż odpowiednik niezaznaczone aktualności, ponieważ deduplikacja danych może działać na niższym rozmiaru obliczeń.
+Optymalizator zapytań w Azure SQL Database jest podobny do tradycyjnego optymalizatora zapytań SQL Server. Większość najlepszych rozwiązań dotyczących dostrajania zapytań i zrozumienie ograniczeń modelu przyczyny dla optymalizatora zapytań ma zastosowanie również do Azure SQL Database. W przypadku dostrajania zapytań w Azure SQL Database może być możliwe uzyskanie dodatkowej korzyści wynikającej z obniżenia zagregowanych wymagań dotyczących zasobów. Aplikacja może być uruchomiona z niższym kosztem niż niedostrojony odpowiednik, ponieważ może działać z mniejszym rozmiarem obliczeniowym.
 
-Przykładem jest często używany w programie SQL Server i który ma zastosowanie również do usługi Azure SQL Database jest jak optymalizator zapytań "sniffs" parametrów. Podczas kompilacji Optymalizator zapytań ocenia bieżącą wartość parametru do określenia, czy może generować bardziej optymalny plan zapytania. Chociaż ta strategia często może prowadzić do planu zapytania, który jest znacznie szybsze niż planu, który został skompilowany bez wartości parametrów znane, obecnie działa imperfectly zarówno w programie SQL Server i usługi Azure SQL Database. Czasami nie jest ten parametr i czasami jest ten parametr, ale wygenerowanego planu jest optymalne pełny zestaw wartości parametrów w obciążenia. Firmy Microsoft zawiera wskazówki zapytania (dyrektywy), możesz określić przeznaczenie bardziej świadomie i zastąpić domyślne zachowanie wykrywanie parametrów. Często można użyć wskazówki, można naprawić przypadkach domyślne zachowanie programu SQL Server lub usługi Azure SQL Database jest niepełnymi obciążenia określonego klienta.
+Przykład, który jest typowy w SQL Server i który ma zastosowanie również do Azure SQL Database to sposób, w jaki są parametry "wykrywanie" optymalizatora zapytań. Podczas kompilacji optymalizator zapytań szacuje bieżącą wartość parametru, aby określić, czy może generować bardziej optymalny plan zapytania. Mimo że ta strategia często może prowadzić do planu zapytania, który jest znacznie szybszy niż plan skompilowany bez znanych wartości parametrów, obecnie działa w sposób nieidealny zarówno w SQL Server, jak i w Azure SQL Database. Czasami parametr nie jest wygenerowany i czasami jest wykrywanie parametru, ale wygenerowany plan jest optymalny dla pełnego zestawu wartości parametrów w obciążeniu. Firma Microsoft zawiera wskazówki zapytania (dyrektywy), dzięki czemu można bardziej umyślnie określić cel i zastąpić domyślne zachowanie funkcji wykrywania parametrów. Często Jeśli używasz wskazówek, możesz naprawić przypadki, w których domyślne zachowanie SQL Server lub Azure SQL Database jest nieidealne dla określonego obciążenia klienta.
 
-W następnym przykładzie pokazano, jak procesor zapytań może wygenerować planu, który jest optymalne, wydajności i wymagania dotyczące zasobów. Ten przykład pokazuje również, że jeśli używasz wskazówki zapytania, można zmniejszyć wymagania dotyczące czasu i zasobów uruchomienie zapytania bazy danych SQL:
+W następnym przykładzie pokazano, jak procesor zapytań może wygenerować plan, który jest optymalny zarówno w przypadku wymagań dotyczących wydajności, jak i zasobów. Ten przykład pokazuje również, że jeśli używasz wskazówki zapytania, możesz zmniejszyć czas wykonywania zapytania i wymagania dotyczące zasobów dla bazy danych SQL:
 
 ```sql
 DROP TABLE psptest1;
@@ -169,7 +168,7 @@ CREATE TABLE t1 (col1 int primary key, col2 int, col3 binary(200));
 GO
 ```
 
-Kod instalacji tworzy tabelę, która ma nierówne dystrybucję danych. Optymalny plan kwerend różni się zależnie od których parametr jest wybrany. Niestety plan zachowanie buforowania nie zawsze należy ponownie skompilować zapytania, w oparciu o najbardziej typowych wartości parametru. Dlatego możliwe jest optymalne planu do pamięci podręcznej i używania dla wielu wartości, nawet wtedy, gdy inny plan może być lepszym rozwiązaniem plan średnio. Następnie w planie zapytania tworzy dwie procedury składowane, które są identyczne, z tą różnicą, że jeden ma wskazówki zapytania specjalne.
+Kod instalacji tworzy tabelę, która ma skośną dystrybucję danych. Optymalny plan zapytania różni się w zależności od tego, który parametr został wybrany. Niestety zachowanie pamięci podręcznej planu nie zawsze powoduje ponowne skompilowanie zapytania na podstawie najbardziej typowej wartości parametru. W związku z tym, istnieje możliwość, że plan podrzędny jest buforowany i używany dla wielu wartości, nawet jeśli inny plan może być lepszym wyborem planu. Następnie plan zapytania tworzy dwie procedury składowane, które są identyczne, z tą różnicą, że jeden ma specjalną wskazówkę zapytania.
 
 ```sql
 -- Prime Procedure Cache with scan plan
@@ -186,7 +185,7 @@ WHILE @i < 1000
     END
 ```
 
-Zaleca się poczekanie co najmniej 10 minut przed rozpoczęciem część 2 przykładu, tak, aby wyniki różnią się w danych wynikowych danych telemetrycznych.
+Zalecamy odczekanie co najmniej 10 minut przed rozpoczęciem części 2 tego przykładu, aby wyniki były odrębne w wynikowych danych telemetrycznych.
 
 ```sql
 EXEC psp2 @param2=1;
@@ -201,21 +200,21 @@ DECLARE @i int = 0;
     END
 ```
 
-Każdej części w tym przykładzie próbuje uruchomić sparametryzowane instrukcję 1000 razy (do generowania obciążenia wystarczające do użycia jako testowego zestawu danych). Podczas wykonywania procedur składowanych, procesor zapytań sprawdza, czy wartość parametru, który jest przekazywany do procedury podczas jej pierwszego kompilacji ("wykrywanie parametrów"). Procesor buforuje Wynikowy plan i używa go na potrzeby wywołań nowsze nawet, jeśli wartość tego parametru jest inna. Optymalny plan nie mogą być używane we wszystkich przypadkach. Czasami konieczne jest przeprowadzenie Optymalizator wybierz plan, który jest lepszym rozwiązaniem dla średniej przypadek, a nie konkretnego przypadku od kiedy zapytanie najpierw został skompilowany. W tym przykładzie wstępny plan generuje planu "Skanuj", która odczytuje wszystkie wiersze, aby znaleźć każdej wartości, która odpowiada parametrowi:
+Każda część tego przykładu podejmuje próbę uruchomienia sparametryzowanej instrukcji INSERT 1 000 razy (w celu wygenerowania wystarczającego obciążenia do użycia jako zestawu danych testowych). Gdy wykonuje procedury składowane, procesor zapytań analizuje wartość parametru, która jest przenoszona do procedury podczas pierwszej kompilacji (parametru "wykrywanie"). Procesor buforuje plan i używa go do późniejszego wywołania, nawet jeśli wartość parametru jest różna. Optymalny plan nie może być używany we wszystkich przypadkach. Czasami musisz poprowadzić Optymalizator w celu wybrania planu, który jest lepszy dla średniej wielkości liter zamiast określonego przypadku, od momentu pierwszego skompilowania zapytania. W tym przykładzie początkowy plan generuje plan "Scan", który odczytuje wszystkie wiersze, aby znaleźć każdą wartość zgodną z parametrem:
 
-![Zapytanie, dostrajanie przy użyciu planu skanowania](./media/sql-database-performance-guidance/query_tuning_1.png)
+![Dostrajanie zapytania przy użyciu planu skanowania](./media/sql-database-performance-guidance/query_tuning_1.png)
 
-Ponieważ procedury możemy wykonać przy użyciu wartości 1, Wynikowy plan został optymalne dla wartości 1, ale została optymalne dla wszystkich wartości w tabeli. Prawdopodobnie wynik nie jest, co powinno, gdyby można wybrać poszczególnych plan losowo, ponieważ plan wykonuje wolniej i wykorzystuje więcej zasobów.
+Ponieważ procedura została wykonana przy użyciu wartości 1, otrzymany plan był optymalny dla wartości 1, ale był optymalny dla wszystkich innych wartości w tabeli. Wynik prawdopodobnie nie jest tym, co należy zrobić, jeśli chcesz losowo wybrać każdy plan, ponieważ plan działa wolniej i zużywa więcej zasobów.
 
-Po uruchomieniu testów przy użyciu `SET STATISTICS IO` równa `ON`, zadania logiczne skanowania, w tym przykładzie są wykonywane w tle. Aby zobaczyć, że nie istnieją 1,148 odczyty wykonywane przez plan (jest to mało wydajne, jeśli średnia wielkość liter jest zwracać tylko jeden wiersz):
+W przypadku uruchomienia testu z `SET STATISTICS IO` ustawioną na `ON`wartość w tym przykładzie działanie skanowania logicznego jest wykonywane w tle. Zobaczysz, że istnieją 1 148 odczyty wykonywane przez plan (co jest niewydajne, jeśli średni przypadek ma zwrócić tylko jeden wiersz):
 
-![Zapytanie, dostrajanie przy użyciu logicznych skanowania](./media/sql-database-performance-guidance/query_tuning_2.png)
+![Dostrajanie zapytania przy użyciu skanowania logicznego](./media/sql-database-performance-guidance/query_tuning_2.png)
 
-Druga część przykładu używa wskazówki zapytania mówić Optymalizator użyć określonej wartości podczas procesu kompilacji. W tym przypadku wymusza procesor zapytań, aby zignorować wartość, która jest przekazywana jako parametr, a zamiast tego z nich przejmować `UNKNOWN`. Dotyczy to wartość, która ma średnia częstotliwość w tabeli (bez uwzględnienia niedokładność). Wynikowy planowane jest na podstawie wyszukiwania planu, szybciej i zużywa mniej zasobów, średnio niż plan w części 1 tego przykładu:
+W drugiej części przykładu użyto wskazówki zapytania, aby nakazać Optymalizatorowi użycie określonej wartości podczas procesu kompilacji. W takim przypadku zmusza procesor zapytań do ignorowania wartości, która jest przesyłana jako parametr, a zamiast tego `UNKNOWN`. Odnosi się do wartości, która ma średnią częstotliwość w tabeli (ignorowanie pochylenia). Powstały plan jest planem opartym na wyszukiwaniach, który jest szybszy i używa mniejszej ilości zasobów, średnio od planu w części 1 tego przykładu:
 
-![Zapytanie dostrajania za pomocą wskazówki zapytania](./media/sql-database-performance-guidance/query_tuning_3.png)
+![Dostrajanie zapytania przy użyciu podpowiedzi zapytania](./media/sql-database-performance-guidance/query_tuning_3.png)
 
-Możesz zobaczyć efekt **sys.resource_stats** tabeli (występuje opóźnienie od czasu wykonywania testu i kiedy dane wypełnienie tabeli). Dla tego przykładu, część 1, wykonywane przedziale czasu 22:25:00, a część 2 wykonywane 22:35:00. Wcześniej przedział czasu jest używany więcej zasobów w danym przedziale czasu, niż (ze względu na ulepszenia wydajności planu) nowszym.
+Efekt można zobaczyć w tabeli **sys. resource_stats** (istnieje opóźnienie od momentu wykonania testu oraz momentu, gdy dane wypełniają tabelę). W tym przykładzie część 1 została wykonana w przedziale czasu 22:25:00, a część 2 została uruchomiona o 22:35:00. Wcześniej przedział czasu użył więcej zasobów w tym przedziale czasu niż później (z powodu ulepszeń planu).
 
 ```sql
 SELECT TOP 1000 *
@@ -224,45 +223,45 @@ WHERE database_name = 'resource1'
 ORDER BY start_time DESC
 ```
 
-![Przykładowe wyniki dostosowywania zapytań](./media/sql-database-performance-guidance/query_tuning_4.png)
+![Przykładowe wyniki strojenia zapytania](./media/sql-database-performance-guidance/query_tuning_4.png)
 
 > [!NOTE]
-> Chociaż wolumin w tym przykładzie jest celowo mały, efekt optymalne parametry mogą być znaczącego, szczególnie w przypadku większych baz danych. W skrajnych przypadkach różnicę może mieć wartość od sekund w przypadku szybkiego przypadków i godziny wolne przypadków.
+> Chociaż wolumin w tym przykładzie jest celowo mały, wpływ parametrów optymalnych może być istotny, szczególnie w przypadku większych baz danych. Różnica w skrajnych przypadkach może wynosić od sekund dla szybkich przypadków i godzin w przypadku wolnych przypadków.
 
-Można sprawdzić **sys.resource_stats** ustalenie, czy zasób w celu przetestowania używa więcej lub mniej zasobów niż innego testu. Podczas porównywania danych oddzielić chronometraż testy, aby nie były w tym samym oknie 5-minutowych w **sys.resource_stats** widoku. Celem wykonywania to zminimalizować łączną ilość używanych zasobów, a nie zminimalizować zasobów szczytowego. Ogólnie rzecz biorąc Optymalizowanie fragment kodu opóźnienia zmniejsza zużycie zasobów. Upewnij się, że niezbędne są zmiany wprowadzone do aplikacji i że zmiany nie mieć negatywny wpływ na wrażenia dla kogoś, kto może używać wskazówki zapytania w aplikacji.
+Możesz sprawdzić, czy **sys. resource_stats** , aby określić, czy zasób do testu używa więcej lub mniej zasobów niż inny test. Podczas porównywania danych należy oddzielić chronometraż testów, tak aby nie były w tym samym oknie 5-minutowym w widoku **sys. resource_stats** . Celem ćwiczenia jest zminimalizowanie łącznej ilości używanych zasobów, a nie zminimalizowanie zasobów szczytowych. Ogólnie Optymalizacja fragmentu kodu do opóźnienia zmniejsza również zużycie zasobów. Upewnij się, że zmiany wprowadzane do aplikacji są niezbędne i że zmiany nie wpłyną negatywnie na wrażenia klienta dla kogoś, kto może korzystać z podpowiedzi zapytania w aplikacji.
 
-Jeśli obciążenie ma zbiór powtarzania zapytań, często dobrym pomysłem do przechwytywania i zweryfikować optymalizacji z wybranych planu, ponieważ jej dyski jednostki rozmiar minimalny zasobów wymaganych do hostowania bazy danych. Po sprawdzeniu go od czasu do czasu reexamine plany daje pewność, że nie ma ograniczone. Możesz dowiedzieć się więcej [zapytania wskazówki (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
+Jeśli obciążenie zawiera zestaw powtarzających się zapytań, często warto przechwycić i sprawdzić Optymalność opcji planu, ponieważ obejmuje ona minimalną jednostkę rozmiaru zasobu wymaganą do hostowania bazy danych programu. Po sprawdzeniu poprawności należy ponownie sprawdzić plany, aby upewnić się, że nie zostały one obniżone. Więcej informacji na temat [wskazówek dotyczących zapytań (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 
-### <a name="cross-database-sharding"></a>Dzielenie na fragmenty między bazami danych
+### <a name="cross-database-sharding"></a>Fragmentowania między bazami danych
 
-Ponieważ usługi Azure SQL Database działa na sprzęcie masowym, limity pojemności poszczególnych baz danych są niższe niż w przypadku tradycyjnych lokalnych instalacji programu SQL Server. Niektórzy klienci Użyj dzielenia na fragmenty techniki, aby rozłożyć operacji bazy danych między wieloma bazami danych podczas operacji nie mieści się w granicach poszczególne bazy danych w usłudze Azure SQL Database. Większość klienci, którzy używają techniki dzielenia na fragmenty w usłudze Azure SQL Database Podziel swoje dane w jednym wymiarze, w wielu bazach danych. W tym podejściu, musisz zrozumieć, że aplikacje OLTP często wykonywać transakcje, które dotyczą tylko jeden wiersz lub niewielkiej liczby wierszy w schemacie.
+Ponieważ Azure SQL Database działa na sprzęcie z asortymentem, limity pojemności dla pojedynczej bazy danych są mniejsze niż w przypadku tradycyjnej instalacji SQL Server lokalnej. Niektórzy klienci używają technik fragmentowania, aby rozłożyć operacje bazy danych na wiele baz danych, gdy operacje nie mieszczą się w granicach pojedynczej bazy danych w Azure SQL Database. Większość klientów, którzy używają technik fragmentowania w Azure SQL Database dzielą swoje dane w jednym wymiarze w wielu bazach danych. Dla tego podejścia należy zrozumieć, że aplikacje OLTP często wykonują transakcje, które są stosowane tylko do jednego wiersza lub do niewielkiej grupy wierszy w schemacie.
 
 > [!NOTE]
-> SQL Database oferuje teraz biblioteki uzyskanymi dzielenia na fragmenty. Aby uzyskać więcej informacji, zobacz [Przegląd biblioteki klienckiej Elastic Database](sql-database-elastic-database-client-library.md).
+> SQL Database teraz udostępnia bibliotekę ułatwiającą fragmentowania. Aby uzyskać więcej informacji, zobacz [Elastic Database Omówienie biblioteki klienta](sql-database-elastic-database-client-library.md).
 
-Na przykład jeśli baza danych ma nazwę klienta, kolejność i szczegóły zamówienia (np. przykład tradycyjne bazy danych Northwind dostarczany z programem SQL Server), można rozdzielić te dane do wielu baz danych za pomocą grupowania klientów dotyczące odpowiednich zamówień i szczegóły zamówienia informacje. Aby zagwarantować, że odbiorcy danych pozostaje w poszczególnych baz danych. Aplikacja będzie podzielić różnych klientów w bazach danych, efektywnie rozłożenie obciążenia na wiele baz danych. Dzielenie na fragmenty klienci nie tylko można uniknąć limitu rozmiaru maksymalnego bazy danych, ale również usługi Azure SQL Database może przetwarzać obciążenia, które są znacznie większe niż limity różnych rozmiarów wystąpień obliczeniowych, tak długo, jak każdej pojedynczej bazy danych jest dopasowywana do jego jednostek DTU.
+Na przykład, jeśli baza danych ma nazwę klienta, zamówienie i szczegóły zamówienia (takie jak tradycyjna Przykładowa baza danych Northwind, która jest dostarczana z SQL Server), można podzielić te dane na wiele baz danych, grupując klienta z pokrewną kolejnością i szczegółami zamówienia zawartych. Możesz zagwarantować, że dane klienta pozostają w pojedynczej bazie danych. Aplikacja będzie dzielić różne klientów między bazami danych, efektywnie rozłożyć obciążenie między wiele baz danych. W przypadku fragmentowania klienci nie tylko mogą uniknąć maksymalnego limitu rozmiaru bazy danych, ale Azure SQL Database również mogą przetwarzać obciążenia, które są znacznie większe niż limity różnych rozmiarów obliczeniowych, o ile każda z nich mieści się w jednostkach DTU.
 
-Fragmentowanie bazy danych nie zmniejsza pojemność zagregowanych danych zasobu dla rozwiązania, ale jest bardzo skuteczne w obsłudze bardzo dużych rozwiązań, które są dystrybuowane między wieloma bazami danych. Każda baza danych można uruchomić w rozmiarze obliczeniowej do obsługi bardzo dużych "od" bazy danych o wysokich wymagań dotyczących zasobów.
+Mimo że usługa Database fragmentowania nie zmniejsza zagregowanej pojemności zasobów dla rozwiązania, jest wysoce wydajna, aby obsługiwać bardzo duże rozwiązania, które są rozłożone na wiele baz danych. Każda baza danych może działać z innym rozmiarem obliczeniowym w celu obsługi bardzo dużych, "efektywnych" baz danych o wysokich wymaganiach dotyczących zasobów.
 
 ### <a name="functional-partitioning"></a>Partycjonowanie funkcjonalne
 
-Użytkownikom programu SQL Server jest często łączyć wiele funkcji w poszczególnych baz danych. Na przykład jeśli aplikacja logiki można zarządzać zapasami magazynu, bazy danych może być logiki skojarzonej z spisu i śledzenie zamówień zakupu, procedury składowane i indeksowane lub zmaterializowanych widoków, które Zarządzanie raportowaniem koniec miesiąca. Ta technika sprawia, że łatwiej zarządzać bazą danych dla operacji takich jak backup, ale również wymaga rozmiaru sprzętu do obsługi szczytowego obciążenia na wszystkie funkcje aplikacji.
+SQL Server Użytkownicy często łączą wiele funkcji w pojedynczej bazie danych. Na przykład jeśli aplikacja ma logikę do zarządzania zapasami dla magazynu, ta baza danych może być skojarzona z spisem, śledzeniem zamówień zakupu, procedurami składowanymi oraz widokami indeksowanymi lub z materiałami, które zarządzają raportami końcowymi. Ta technika ułatwia administrowanie bazą danych dla operacji, takich jak tworzenie kopii zapasowej, ale wymaga również zmiany rozmiaru sprzętu w celu obsługi szczytowego obciążenia we wszystkich funkcjach aplikacji.
 
-Jeśli używasz skalowalność architektury usługi Azure SQL Database, jest dobry pomysł, aby podzielić różne funkcje aplikacji w różnych bazach danych. Korzystając z tej techniki, każda aplikacja jest skalowana niezależnie. Jak aplikacja staje się zajęty i zwiększa obciążenie bazy danych, administrator może wybrać rozmiarów obliczeniowych niezależnie od dla poszczególnych funkcji w aplikacji. Osiągnęło limit, za pomocą tej architektury aplikacji może być większy niż może obsłużyć maszyny pojedynczego towaru, ponieważ obciążenie jest rozłożona się między wieloma maszynami.
+W przypadku używania architektury skalowalnego w poziomie w Azure SQL Database warto podzielić różne funkcje aplikacji do różnych baz danych. Korzystając z tej techniki, każda aplikacja skaluje się niezależnie. Gdy aplikacja stanie się busier (a obciążenie bazy danych wzrasta), administrator może wybrać niezależne rozmiary obliczeń dla każdej funkcji w aplikacji. W ramach tej architektury, aplikacja może być większa niż pojedynczy komputer z asortymentem, może obsłużyć, ponieważ obciążenie jest rozłożone na wiele maszyn.
 
-### <a name="batch-queries"></a>Wsadowe
+### <a name="batch-queries"></a>Zapytania wsadowe
 
-W przypadku aplikacji uzyskujących dostęp do danych za pomocą dużej liczby częste wykonywanie zapytań ad hoc, znaczną ilość czasu odpowiedzi odbywa się na komunikację sieciową między warstwami aplikacji i usługi Azure SQL Database. Nawet wtedy, gdy aplikacji i bazy danych SQL Azure znajdują się w tym samym centrum danych, opóźnienie sieci między tymi dwoma może być powiększany przez dużą ilością danych, operacji dostępu. Aby zmniejszyć sieci podczas podróży dla operacji dostępu do danych, należy wziąć pod uwagę przy użyciu opcji albo partii zapytań ad hoc lub do kompilowania ich jako procedury składowane. Jeśli partii jest zapytań ad hoc, możesz wysłać wiele zapytań jako jedna partia duże w jednym podróży do usługi Azure SQL Database. W przypadku kompilacji zapytań ad hoc w procedurze składowanej można osiągnąć ten sam wynik, tak, jakby ich partii. Za pomocą procedury składowanej zapewnia również korzyści zwiększa prawdopodobieństwo buforowania planom zapytań w usłudze Azure SQL Database, aby ponownie użyć procedury składowanej.
+W przypadku aplikacji, które uzyskują dostęp do danych przy użyciu dużych, częstych zapytań ad hoc, dużo czasu odpowiedzi poświęca się na komunikację sieciową między warstwą aplikacji a warstwą Azure SQL Database. Nawet wtedy, gdy zarówno aplikacja, jak i Azure SQL Database znajdują się w tym samym centrum danych, opóźnienie sieci między tymi dwoma może być powiększone przez dużą liczbę operacji dostępu do danych. Aby zmniejszyć liczbę podróży sieci dla operacji dostępu do danych, należy rozważyć użycie opcji do wsadowych zapytań ad hoc lub skompilować je jako procedury składowane. W przypadku wsadowych zapytań ad hoc można wysłać wiele zapytań jako jedną dużą partię w jednej podróży do Azure SQL Database. W przypadku kompilowania zapytań ad hoc w procedurze składowanej można osiągnąć ten sam wynik, jak w przypadku przetwarzania wsadowego. Użycie procedury składowanej pozwala także zwiększyć szanse buforowania planów zapytań w Azure SQL Database, aby można było ponownie użyć procedury składowanej.
 
-Niektóre aplikacje są intensywnie korzystających z zapisu. Czasami może zmniejszyć całkowitego obciążenia We/Wy na bazę danych, biorąc pod uwagę sposób przetwarzania wsadowego zapisów. Często jest to tak proste, jak za pomocą jawnego transakcji zamiast automatycznego zatwierdzania transakcji w procedurach przechowywanych i partie ad-hoc. Aby uzyskać ocenę różnych technik, można użyć, zobacz [dzielenia na partie technik dla aplikacji bazy danych SQL na platformie Azure](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Poeksperymentuj z obciążenia można znaleźć odpowiednie modelu dla przetwarzania wsadowego. Pamiętaj dowiedzieć się, że model może mieć gwarancje spójności transakcyjnej nieco inne. Znajdowanie odpowiednie obciążenie, które minimalizuje wykorzystanie zasobów wymaga znajdowania odpowiedniej kombinacji wad i zalet wydajnością a spójnością.
+Niektóre aplikacje są czasochłonne. Czasami można zmniejszyć łączne obciążenie we/wy w bazie danych, biorąc pod uwagę sposób tworzenia wsadowych zapisów. Często jest to proste użycie jawnych transakcji zamiast transakcji automatycznego zatwierdzania w procedurach składowanych i partiach ad hoc. Aby uzyskać ocenę różnych technik, których można użyć, zobacz [Przetwarzanie wsadowe dla aplikacji SQL Database na platformie Azure](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Eksperymentuj z własnym obciążeniem, aby znaleźć odpowiedni model na potrzeby tworzenia pakietów wsadowych. Należy pamiętać, że model może mieć nieco inne gwarancje spójności transakcyjnej. Znalezienie odpowiedniego obciążenia, które minimalizuje użycie zasobów, wymaga znalezienia odpowiedniej kombinacji niespójności i wydajności.
 
-### <a name="application-tier-caching"></a>Pamięć podręczna warstwy aplikacji
+### <a name="application-tier-caching"></a>Buforowanie w warstwie aplikacji
 
-Niektóre aplikacje bazy danych mają odczycie obciążeń. Buforowanie warstw może zmniejszyć obciążenie bazy danych i potencjalnie może zmniejszyć rozmiar obliczeń wymagana do obsługi bazy danych przy użyciu usługi Azure SQL Database. Za pomocą [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/), w przypadku obciążenia odczycie możesz odczytywać dane raz (lub raz na maszynę z warstwą aplikacji, w zależności od sposobu skonfigurowania), a następnie zapisywania tych danych poza bazy danych SQL. Jest to sposób, aby zmniejszyć obciążenie bazy danych (procesor CPU i odczytu We/Wy), ale ma wpływ na poziom spójności transakcyjnej, ponieważ danych odczytywanych z pamięci podręcznej może być zsynchronizowane z danymi w bazie danych. Chociaż w wielu aplikacjach dopuszczalne jest pewien stopień niespójności, to nie dotyczy wszystkich obciążeń. Wszelkie wymagania aplikacji należy zapoznać się przed wdrożeniem strategii buforowania warstwy aplikacji.
+Niektóre aplikacje bazy danych mają obciążenia z dużą ilością odczytu. Buforowanie warstw może zmniejszyć obciążenie bazy danych i może zmniejszyć rozmiar obliczeń wymagany do obsługi bazy danych za pomocą Azure SQL Database. W przypadku korzystania z [usługi Azure cache for Redis](https://azure.microsoft.com/services/cache/), jeśli masz obciążenie z dużą ilością danych, możesz odczytywać dane raz (lub na komputerach w warstwie aplikacji, w zależności od konfiguracji), a następnie przechowywać te dane poza bazą danych SQL. Jest to sposób na zmniejszenie obciążenia bazy danych (we/wy), ale istnieje efekt spójności transakcyjnej, ponieważ dane odczytywane z pamięci podręcznej mogą nie być zsynchronizowane z danymi w bazie danych. Chociaż w wielu aplikacjach jest akceptowalny pewien poziom niespójności, to nie jest prawdą dla wszystkich obciążeń. Przed zaimplementowaniem strategii buforowania w warstwie aplikacji należy dokładnie zrozumieć wszystkie wymagania aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji na temat warstwy usług oparte na jednostkach DTU, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md).
-- Aby uzyskać więcej informacji na temat warstw usług opartych na rdzeniach wirtualnych, zobacz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
-- Aby uzyskać więcej informacji na temat pul elastycznych, zobacz [co to jest pula elastyczna Azure?](sql-database-elastic-pool.md)
-- Aby uzyskać informacji o wydajności i elastycznych pulach, zobacz [kiedy należy rozważyć korzystanie z puli elastycznej](sql-database-elastic-pool-guidance.md)
+- Aby uzyskać więcej informacji na temat warstw usług opartych na jednostkach DTU, zobacz [model zakupu oparty na](sql-database-service-tiers-dtu.md)jednostkach DTU.
+- Aby uzyskać więcej informacji na temat warstw usług opartych na rdzeń wirtualny, zobacz [model zakupów oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
+- Aby uzyskać więcej informacji na temat pul elastycznych, zobacz [co to jest pula elastyczna platformy Azure?](sql-database-elastic-pool.md)
+- Aby uzyskać informacje na temat wydajności i pul elastycznych, zobacz [kiedy należy wziąć pod uwagę pulę elastyczną](sql-database-elastic-pool-guidance.md) .

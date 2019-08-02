@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie użycia i kosztów dla usługi Azure Monitor dzienników | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zmienić plan taryfowy i zarządzanie zasadami ilości i przechowywania danych obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.
+title: Zarządzanie użyciem i kosztami Azure Monitor dzienników | Microsoft Docs
+description: Dowiedz się, jak zmienić plan cenowy i zarządzać ilością danych i zasadami przechowywania dla obszaru roboczego Log Analytics w Azure Monitor.
 services: azure-monitor
 documentationcenter: azure-monitor
 author: mgoedtel
@@ -11,37 +11,37 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/29/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: bcfefc9698f7f251e99531750e19e7c06395e064
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 5e325f7766e7b0d9764949eb3fbf9753d65db8b3
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655704"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619397"
 ---
-# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użycia i kosztów za pomocą usługi Azure Monitor dzienników
+# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użyciem i kosztami za pomocą dzienników Azure Monitor
 
 > [!NOTE]
-> W tym artykule opisano sposób kontrolowania kosztów w usłudze Azure Monitor, ustawiając okres przechowywania danych dla obszaru roboczego usługi Log Analytics.  Zapoznaj się z następującym artykułem, aby uzyskać powiązane informacje.
+> W tym artykule opisano sposób kontrolowania kosztów w Azure Monitor przez ustawienie okresu przechowywania danych dla Log Analytics obszaru roboczego.  Zapoznaj się z poniższym artykułem, aby uzyskać informacje pokrewne.
 > - [Monitorowanie użycia i szacowanych kosztów](usage-estimated-costs.md) zawiera opis sposobu wyświetlania użycie i szacowane koszty w wielu monitorowania funkcji różne modele cen platformy Azure. Opisuje ona również, jak można zmienić modelu cen.
 
-Dzienniki platformy Azure Monitor jest przeznaczone do skalowania i zbieranie pomocy technicznej, indeksowanie i przechowywanie dużych ilości danych na dzień z dowolnego źródła w przedsiębiorstwie lub wdrożonych na platformie Azure.  Chociaż może to być sterownik podstawowy dla Twojej organizacji, niskich kosztów ostatecznie to klient jest podstawowy sterownik. W tym celu ważne jest zrozumienie, że koszt obszaru roboczego usługi Log Analytics nie jest oparte tylko na ilość danych zgromadzonych, również jest zależny od wybranym planem i jak długo został wybrany do przechowywania danych generowanych przez połączone źródła.  
+Dzienniki Azure Monitor są przeznaczone do skalowania i obsługi zbierania, indeksowania i przechowywania dużych ilości danych dziennie z dowolnego źródła w przedsiębiorstwie lub wdrożonego na platformie Azure.  Chociaż może to być sterownik podstawowy dla Twojej organizacji, niskich kosztów ostatecznie to klient jest podstawowy sterownik. W tym celu należy zrozumieć, że koszt obszaru roboczego Log Analytics nie jest oparty tylko na ilości zbieranych danych, zależy również od wybranego planu i od czasu wybrania do przechowywania danych generowanych przez połączone źródła.  
 
 W tym artykule omówimy, jak można proaktywnie monitorować wzrostu wielkości i magazynu danych i definiowania ograniczeń do kontrolowania tych powiązanych z nimi kosztów. 
 
 Koszt dane mogą być znaczące w zależności od następujących czynników: 
 
-- Ilość danych, wygenerowane i pozyskane do obszaru roboczego 
-    - Liczba rozwiązań do zarządzania włączone
-    - Liczba systemów monitorowania
-    - Typ danych zebranych z każdego monitorowanego zasobu 
-- Czas zdecydujesz się zachować dane 
+- Ilość danych wygenerowanych i pozyskanych w obszarze roboczym 
+    - Liczba włączonych rozwiązań do zarządzania
+    - Liczba monitorowanych systemów
+    - Typ danych zbieranych z każdego monitorowanego zasobu 
+- Długość czasu, przez który użytkownik chce zachować dane 
 
-## <a name="understand-your-workspaces-usage-and-estimated-cost"></a>Zrozumieć użycie i szacowany koszt Twojego obszaru roboczego
+## <a name="understand-your-workspaces-usage-and-estimated-cost"></a>Zrozumienie użycia obszaru roboczego i szacowanego kosztu
 
-Azure ułatwia monitorowanie dzienników ułatwiają zrozumienie, co prawdopodobnie koszty oparte na najnowszych wzorców użycia. Aby to zrobić, należy użyć **użycie usługi Log Analytics i szacowane koszty** do przeglądania i analizowania użycia danych. Pokazuje, jak dużo danych zbieranych przez każde rozwiązanie, jak dużo danych jest zachowywane i oszacowanie kosztów na podstawie ilości danych wprowadzanych i wszelkie dodatkowe przechowywanie danych ponad uwzględnioną kwotę.
+Dzienniki Azure Monitor ułatwiają zrozumienie, jakie koszty są prawdopodobnie oparte na najnowszych wzorcach użycia. W tym celu należy użyć **log Analytics użycia i szacowanych kosztów** , aby przejrzeć i analizować użycie danych. Pokazuje, jak dużo danych zbieranych przez każde rozwiązanie, jak dużo danych jest zachowywane i oszacowanie kosztów na podstawie ilości danych wprowadzanych i wszelkie dodatkowe przechowywanie danych ponad uwzględnioną kwotę.
 
 ![Użycie i szacunkowe koszty](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
@@ -49,18 +49,18 @@ Eksplorowanie danych bardziej szczegółowo, kliknij ikonę w prawym górnym rog
 
 ![Wyświetl dzienniki](media/manage-cost-storage/logs.png)
 
-Z **użycie i szacowane koszty** strony możesz przejrzeć ilość danych na miesiąc. Obejmuje to wszystkie dane odebrane i przechowywane w obszarze roboczym usługi Log Analytics.  Kliknij przycisk **szczegóły użycia** w górnej części strony, aby wyświetlić pulpit nawigacyjny użycia z informacjami na trendów woluminu danych źródłowych, komputerów i oferty. Aby wyświetlić i określić dzienny limit lub zmodyfikować okres przechowywania, kliknij przycisk **zarządzanie ilością danych**.
+Na stronie **użycie i szacowane koszty** możesz sprawdzić ilość danych w danym miesiącu. Obejmuje to wszystkie dane odebrane i przechowywane w obszarze roboczym usługi Log Analytics.  Kliknij pozycję **szczegóły użycia** w górnej części strony, aby wyświetlić pulpit nawigacyjny użycie z informacjami o trendach ilości danych według źródła, komputerów i oferty. Aby wyświetlić i określić dzienny limit lub zmodyfikować okres przechowywania, kliknij przycisk **zarządzanie ilością danych**.
  
 Log Analytics opłaty są dodawane na rachunku dotyczącym platformy Azure. Aby wyświetlić szczegóły subskrypcji platformy Azure, w sekcji rozliczeń w witrynie Azure Portal lub w przypadku płatności [portalu rozliczeń systemu Azure](https://account.windowsazure.com/Subscriptions).  
 
 ## <a name="daily-cap"></a>Dzienny limit
 
-Możesz skonfigurować dzienny limit i ograniczyć dziennie pozyskiwanie informacji do obszaru roboczego, ale zachować ostrożność, ponieważ cel nie powinno być osiągnięty dzienny limit.  W przeciwnym razie możesz utracić dane na pozostałą część dnia, w którym mogą mieć wpływ na inne usługi platformy Azure i rozwiązania, którego funkcja może zależeć od aktualnych danych dostępnych w obszarze roboczym.  W rezultacie możliwość obserwowania i otrzymywać powiadamia, gdy warunki zdrowia w zasobach obsługujących usługi IT ma wpływ.  Dzienny limit jest przeznaczona do użycia jako sposób na zarządzanie nieoczekiwany wzrost ilości danych z zarządzanych zasobów i pozostają w zakupionym limicie lub gdy chcesz ograniczaniu nieplanowanych opłat za obszar roboczy.  
+Możesz skonfigurować dzienny limit i ograniczyć dziennie pozyskiwanie informacji do obszaru roboczego, ale zachować ostrożność, ponieważ cel nie powinno być osiągnięty dzienny limit.  W przeciwnym razie możesz utracić dane na pozostałą część dnia, w którym mogą mieć wpływ na inne usługi platformy Azure i rozwiązania, którego funkcja może zależeć od aktualnych danych dostępnych w obszarze roboczym.  W rezultacie możliwość obserwowania i otrzymywać powiadamia, gdy warunki zdrowia w zasobach obsługujących usługi IT ma wpływ.  Dzienny limit jest przeznaczony do użycia jako sposób zarządzania nieoczekiwanym wzrostem ilości danych z zarządzanych zasobów i pozostania w limicie lub w przypadku ograniczenia nieplanowanych opłat dla obszaru roboczego.  
 
 Po osiągnięciu dziennego limitu kolekcję typów danych płatnych zatrzymuje się do końca dnia. Transparent ostrzeżenie pojawia się w górnej części strony dla wybranego obszaru roboczego usługi Log Analytics i zdarzenie operacji są wysyłane do *operacji* tabeli w ramach **LogManagement** kategorii. Zbieranie danych wznawia działanie po podczas resetowania zdefiniowane w obszarze *dzienny limit jest ustawiony na*. Firma Microsoft zaleca, definiując reguły alertu na podstawie zdarzeń tej operacji, skonfigurowana do wysyłania powiadomień, gdy został osiągnięty dzienny limit danych. 
 
 > [!NOTE]
-> Dzienny limit nie zatrzymuje zbieranie danych z usługi Azure Security Center.
+> Dzienny limit nie zatrzymuje zbierania danych z Azure Security Center.
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Zidentyfikować jakie dzienny limit danych, aby zdefiniować
 
@@ -68,31 +68,31 @@ Przegląd [użycie usługi Log Analytics i szacowane koszty](usage-estimated-cos
 
 ### <a name="manage-the-maximum-daily-data-volume"></a>Zarządzanie Maksymalna dzienna ilość danych
 
-Poniżej opisano sposób konfigurowania limitu zarządzanie ilością danych, który obszar roboczy usługi Log Analytics będzie pozyskiwania na dzień.  
+W poniższych krokach opisano sposób konfigurowania limitu zarządzania ilością danych w obszarze roboczym Log Analytics na dzień.  
 
 1. W obszarze roboczym wybierz pozycję **Użycie i szacunkowe koszty** w lewym okienku.
 2. Na **użycie i szacunkowe koszty** dla wybranego obszaru roboczego strony, kliknij przycisk **zarządzanie ilością danych** w górnej części strony. 
 3. Dzienny limit jest **OFF** domyślnie — kliknij przycisk **ON** można ją włączyć, a następnie ustaw limit objętość danych w GB/dzień.
 
-    ![Usługa log Analytics skonfigurować limit danych](media/manage-cost-storage/set-daily-volume-cap-01.png)
+    ![Log Analytics skonfigurować limit danych](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
-### <a name="alert-when-daily-cap-reached"></a>Alert, jeśli osiągnięty dzienny limit
+### <a name="alert-when-daily-cap-reached"></a>Zgłoś alert po osiągnięciu dziennego limitu
 
-Gdy możemy przedstawić wizualnie w witrynie Azure portal po spełnieniu próg limitu danych tego zachowania nie musi być wyrównane do, w jaki sposób zarządzasz problemów operacyjnych, które wymaga natychmiastowej uwagi.  Aby otrzymywać powiadomień o alertach, można utworzyć nową regułę alertu w usłudze Azure Monitor.  Aby dowiedzieć się więcej, zobacz [jak tworzenie, wyświetlanie i Zarządzanie alertami](alerts-metric.md).
+Gdy możemy przedstawić wizualnie w witrynie Azure portal po spełnieniu próg limitu danych tego zachowania nie musi być wyrównane do, w jaki sposób zarządzasz problemów operacyjnych, które wymaga natychmiastowej uwagi.  Aby otrzymywać powiadomień o alertach, można utworzyć nową regułę alertu w usłudze Azure Monitor.  Aby dowiedzieć się więcej, zobacz [jak tworzyć, wyświetlać i zarządzać alertami](alerts-metric.md).
 
 Aby ułatwić rozpoczęcie pracy, Oto zalecane ustawienia dla alertu:
 
-- Cel: Wybierz zasób usługi Log Analytics
+- Obiekt docelowy: Wybierz zasób Log Analytics
 - Kryteria: 
-   - Nazwa sygnału: Przeszukiwanie dzienników niestandardowych
-   - Zapytanie wyszukiwania: Operacja | których szczegóły zawiera "Przekroczenie"
+   - Nazwa sygnału: Niestandardowe przeszukiwanie dzienników
+   - Zapytanie wyszukiwania: Operacja | gdzie szczegóły ma "limit przydziału"
    - Na podstawie: Liczba wyników
    - Warunek: Większe niż
-   - Wartość progowa: 0
-   - Okres: 5 (w minutach)
-   - Częstotliwość: 5 (w minutach)
+   - Próg: 0
+   - Czasu 5 (minuty)
+   - Jaką 5 (minuty)
 - Nazwa reguły alertu: Osiągnięto dzienny limit danych
-- Ważność: Ostrzegawczy (ważność 1)
+- Ważność: Ostrzeżenie (ważność 1)
 
 Gdy alert jest zdefiniowana i limit zostanie osiągnięty, alert zostanie wyzwolony i wykonuje odpowiedzi zdefiniowany w grupy akcji. Powiadamiaj zespół za pośrednictwem wiadomości e-mail i SMS lub Automatyzuj akcje przy użyciu elementów webhook i runbook usługi Automation lub [integrację z zewnętrznego rozwiązaniem ITSM](itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
 
@@ -104,22 +104,25 @@ Poniżej opisano sposób konfigurowania dziennika jak długo dane są przechowyw
 2. Na stronie **Użycie i szacunkowe koszty** kliknij pozycję **Zarządzanie ilością danych** w górnej części strony.
 3. W okienku, przesuń suwak, aby zwiększyć lub zmniejszyć liczbę dni, a następnie kliknij przycisk **OK**.  Jeśli użytkownik pracuje na *bezpłatne* warstwy, nie można zmodyfikować okres przechowywania danych i należy uaktualnić do warstwy płatnej w celu kontrolowania tego ustawienia.
 
-    ![Zmiana ustawienia przechowywania danych w obszarze roboczym](media/manage-cost-storage/manage-cost-change-retention-01.png)
+    ![Zmień ustawienie przechowywania danych obszaru roboczego](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-Okres przechowywania może być również [ustawione za pośrednictwem ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy użyciu `dataRetention` parametru. Ponadto, jeśli okres przechowywania danych jest ustawiona na 30 dni, możesz wyzwolić natychmiastowe usuwanie starszych danych przy użyciu `immediatePurgeDataOn30Days` parametr, który może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja jest dostępne tylko za pośrednictwem ARM. 
+Przechowywanie można również [ustawić za pomocą ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy użyciu `dataRetention` parametru. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu `immediatePurgeDataOn30Days` parametru, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja jest udostępniana tylko przez ARM. 
 
-## <a name="legacy-pricing-tiers"></a>Starsza wersja warstw cenowych
+## <a name="legacy-pricing-tiers"></a>Starsze warstwy cenowe
 
-Subskrypcje, które zawiera obszar roboczy usługi Log Analytics lub zasób usługi Application Insights przed 2 kwietnia 2018 r., w lub są połączone z umową Enterprise Agreement, który uruchamiany przed 1 lutego 2019 roku będą w dalszym ciągu ma dostęp do starszych warstw cenowych: **Bezpłatne**, **autonomiczna (za GB)** i **na węzeł (OMS)** .  Obszary robocze w warstwie cenowej bezpłatna będą mieć dziennie pozyskiwanie informacji dane ograniczona do 500 MB (z wyjątkiem bezpieczeństwa typów danych zbieranych przez usługę Azure Security Center) i przechowywanie danych jest ograniczony do 7 dni. Warstwy cenowej bezpłatna jest przeznaczona tylko do celów oceny. Obszary robocze w autonomicznych lub warstwami cenowymi węzłów na mają przechowywania maksymalnie 2 lat w konfigurowanych przez użytkownika. Obszary robocze utworzone przed kwietnia 2016 r. również mieć dostęp oryginalny **standardowa** i **Premium** warstw cenowych. Dostępne są szczegółowe informacje o cenach ograniczenia warstwy [tutaj](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
+Subskrypcje, w których wystąpiły obszary robocze Log Analytics lub Application Insights zasobów, przed 2 kwietnia 2018 lub połączone z Umowa Enterprise, które zostały uruchomione przed 1 lutego 2019, będą nadal miały dostęp do korzystania ze starszych warstw cenowych: **Bezpłatna**, **autonomiczna (za GB)** i **na węzeł (OMS)** .  Obszary robocze w warstwie cenowej bezpłatna będą mieć dzienne pozyskiwanie danych ograniczone do 500 MB (z wyjątkiem typów danych zabezpieczeń zbieranych przez Azure Security Center), a przechowywanie danych jest ograniczone do 7 dni. Warstwa cenowa bezpłatna jest przeznaczona tylko do celów ewaluacyjnych. Obszary robocze w warstwach autonomicznych lub na węzeł mają możliwość skonfigurowania przez użytkownika maksymalnie 2 lata. 
+
+Obszary robocze utworzone przed 2016 kwietnia mają również dostęp do oryginalnych warstw cenowych **Standard** i **Premium** , które mają odpowiednio stałe dane dotyczące 30 i 365. Nie można tworzyć nowych obszarów roboczych w warstwach cenowych **standardowa** lub **Premium** , a jeśli obszar roboczy jest przenoszony z tych warstw, nie można go przenieść z powrotem. 
+
+Więcej szczegółów dotyczących ograniczeń warstwy cenowej można znaleźć [tutaj](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
 
 > [!NOTE]
-> Aby używać uprawnień wynikających z zakupu pakietu OMS E1 zestawu, pakiet E2 OMS lub dodatku pakietu OMS dla programu System Center, wybierz usługi Log Analytics *na węzeł* warstwy cenowej.
+> Aby użyć uprawnień, które pochodzą z zakupu pakietu OMS E1, pakietu OMS E2 lub dodatku OMS dla programu System Center, wybierz warstwę cenową Log Analytics *na węzeł* .
 
-Najwcześniejsza wdrażający platformę usługi Log Analytics również mieć dostęp do oryginalnego warstw cenowych **standardowa** i **Premium**, który został rozwiązany przechowywanie danych od 30 do 365 dni odpowiednio. 
 
-## <a name="changing-pricing-tier"></a>Zmiana warstwy cenowej
+## <a name="changing-pricing-tier"></a>Zmienianie warstwy cenowej
 
-Jeśli obszar roboczy usługi Log Analytics ma dostęp do starszych warstw cenowych między starszych warstw cenowych:
+Jeśli obszar roboczy Log Analytics ma dostęp do starszych warstw cenowych, aby zmienić starsze warstwy cenowe:
 
 1. W witrynie Azure portal w okienku subskrypcji usługi Log Analytics wybierz obszar roboczy.
 
@@ -128,35 +131,35 @@ Jeśli obszar roboczy usługi Log Analytics ma dostęp do starszych warstw cenow
 3. W obszarze **warstwa cenowa**, wybierz warstwę cenową, a następnie kliknij przycisk **wybierz**.  
     ![Wybrany plan taryfowy](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-Możesz również [ustawienie warstwy cenowej za pośrednictwem ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy użyciu `ServiceTier` parametru. 
+Możesz również [ustawić warstwę cenową za pośrednictwem ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) przy `ServiceTier` użyciu parametru. 
 
-## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Rozwiązywanie problemów związanych z usługi Log Analytics nie jest już jest zbieranie danych
+## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Rozwiązywanie problemów dlaczego Log Analytics nie zbiera już danych
 
-Jeśli znajdują się na warstwie cenowej bezpłatna starszej wersji i wysłane w ciągu dnia więcej niż 500 MB danych, zbierania danych nie będzie możliwy do końca dnia. Osiągnięcia dziennego limitu jest typową przyczyną, usługi Log Analytics zatrzymuje proces zbierania danych lub danych prawdopodobnie brakuje.  Usługa log Analytics tworzy zdarzenie typu operacji podczas zbierania danych uruchamia i zatrzymuje. W polu wyszukiwania, aby sprawdzić, jeśli osiągnięcia dziennego limitu i brakujące dane, uruchom następujące zapytanie: 
+Jeśli korzystasz z starszej warstwy cenowej bezpłatnej i w ciągu dnia wyślesz więcej niż 500 MB danych, zbieranie danych zostanie zatrzymane w pozostałej części dnia. Osiągnięcia dziennego limitu jest typową przyczyną, usługi Log Analytics zatrzymuje proces zbierania danych lub danych prawdopodobnie brakuje.  Usługa log Analytics tworzy zdarzenie typu operacji podczas zbierania danych uruchamia i zatrzymuje. Uruchom następujące zapytanie w obszarze wyszukiwania, aby sprawdzić, czy osiągnięto limit dzienny i brakujące dane: 
 
 ```kusto
 Operation | where OperationCategory == 'Data Collection Status'
 ```
 
-Po zatrzymaniu zbierania danych jest OperationStatus **ostrzeżenie**. Podczas uruchamiania zbierania danych jest OperationStatus **Powodzenie**. W poniższej tabeli opisano powody, dla których zatrzymuje zbieranie danych i zalecaną akcję, aby wznowić zbieranie danych:  
+Gdy zbieranie danych zostanie zatrzymane, OperationStatusjest ostrzeżeniem. Po rozpoczęciu zbierania danych OperationStatus **powiodło**się. W poniższej tabeli opisano powody, dla których zatrzymuje zbieranie danych i zalecaną akcję, aby wznowić zbieranie danych:  
 
 |Zatrzymuje kolekcję Przyczyna| Rozwiązanie| 
 |-----------------------|---------|
-|Osiągnięto dzienny limit starsze warstwy cenowej bezpłatna |Poczekaj, aż do następnego dnia, aby Kolekcjonowanie mogło być automatycznie uruchomiony ponownie lub Zmień na płatną warstwę cenową.|
-|Osiągnięto dzienny limit obszaru roboczego|Poczekaj, aż kolekcji do automatycznego ponownego uruchamiania lub zwiększenia dziennego limitu woluminu danych opisanych w zarządzać Maksymalna dzienna ilość danych. Godzina codziennego resetowania zakończenia są wyświetlane na **zarządzanie ilością danych** strony. |
+|Osiągnięto dzienny limit starszych bezpłatnych warstw cenowych |Poczekaj, aż do następnego dnia, aby Kolekcjonowanie mogło być automatycznie uruchomiony ponownie lub Zmień na płatną warstwę cenową.|
+|Osiągnięto dzienny limit Twojego obszaru roboczego|Poczekaj na automatyczne ponowne uruchomienie kolekcji lub Zwiększ dzienny limit ilości danych opisany w temacie Zarządzanie maksymalnym dziennym woluminem danych. Dzienny czas resetowania zostanie wyświetlony na stronie **Zarządzanie ilością danych** . |
 |Subskrypcja platformy Azure jest w stanie wstrzymania ze względu na:<br> Bezpłatny okres próbny zakończył się<br> Azure — dostęp próbny wygasł<br> Co miesiąc limit wydatków osiągnięto (na przykład w ramach subskrypcji MSDN lub Visual Studio)|Konwertuj na płatną subskrypcję<br> Usuń limit lub poczekaj na zresetowanie limitu|
 
-Aby otrzymać powiadomienie po zatrzymaniu zbierania danych, należy użyć procedury opisanej w *dziennego limitu danych utwórz* alert, aby otrzymywać powiadomienia, po zatrzymaniu zbierania danych. Wykonaj czynności opisane w [Utwórz grupę akcji](action-groups.md) na konfigurowanie poczty e-mail, elementu webhook lub akcję runbook dla reguły alertu. 
+Aby otrzymywać powiadomienia, gdy zbieranie danych zostanie zatrzymane, wykonaj kroki opisane w temacie Tworzenie alertu *dziennego zakończenia danych* , aby otrzymywać powiadomienia o zatrzymaniu zbierania danych. Wykonaj kroki opisane w sekcji [Tworzenie grupy akcji](action-groups.md) , aby skonfigurować akcję poczty e-mail, elementu webhook lub elementu Runbook dla reguły alertu. 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Rozwiązywanie problemów związanych z użyciem przekraczającym oczekiwania
 
 Większe użycie jest spowodowane przez jedną lub obie z następujących przyczyn:
-- Więcej węzłów niż oczekiwano, wysyłanie danych do obszaru roboczego usługi Log Analytics
-- Więcej danych niż oczekiwano, są wysyłane do obszaru roboczego usługi Log Analytics
+- Więcej węzłów niż oczekiwano wysłania danych do obszaru roboczego Log Analytics
+- Więcej danych niż oczekiwano do wysłania do obszaru roboczego Log Analytics
 
-## <a name="understanding-nodes-sending-data"></a>Opis węzły wysyłające dane
+## <a name="understanding-nodes-sending-data"></a>Informacje o węzłach wysyłających dane
 
-Aby poznać liczbę komputerów wysyłających Puls z każdego dnia w ciągu ostatniego miesiąca, użyj
+Aby zrozumieć liczbę komputerów, które zgłaszają pulsy każdego dnia w ostatnim miesiącu, użyj
 
 ```kusto
 Heartbeat | where TimeGenerated > startofday(ago(31d))
@@ -164,7 +167,7 @@ Heartbeat | where TimeGenerated > startofday(ago(31d))
 | render timechart
 ```
 
-Aby uzyskać listę komputerów, które będą rozliczane jako węzły, jeśli obszar roboczy jest w starszej wersji na warstwie cenowej węzła, odszukaj węzły wysyłające **rozliczane typy danych** (niektóre typy danych są bezpłatne). Aby to zrobić, należy użyć `_IsBillable` [właściwość](log-standard-properties.md#_isbillable) i używać skrajnie po lewej stronie pola w pełni kwalifikowaną nazwę domeny. Spowoduje to zwrócenie listy komputerów z danymi rozliczane:
+Aby uzyskać listę komputerów, które będą rozliczane jako węzły w przypadku, gdy obszar roboczy znajduje się w starszej warstwie cenowej węzła, poszukaj węzłów, które wysyłają **opłaty za typy danych** (niektóre typy danych są bezpłatne). W tym celu należy użyć `_IsBillable` [Właściwości](log-standard-properties.md#_isbillable) i użyć pola z lewej strony w w pełni kwalifikowanej nazwy domeny. Spowoduje to zwrócenie listy komputerów z danymi rozliczanymi:
 
 ```kusto
 union withsource = tt * 
@@ -174,7 +177,7 @@ union withsource = tt *
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
-Można oszacować liczbę płatnych węzłów widoczne jako: 
+Liczba obserwowanych węzłów może być Szacowana jako: 
 
 ```kusto
 union withsource = tt * 
@@ -185,9 +188,9 @@ union withsource = tt *
 ```
 
 > [!NOTE]
-> Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typów danych są kosztowne do wykonania. To zapytanie zastąpi stary sposób wykonywania zapytań na komputerze informacji o typie danych użycia.  
+> Te zapytania `union withsource = tt *` są oszczędnie zależą od tego, jak skanowanie między typami danych jest kosztowne. To zapytanie zastępuje stary sposób wykonywania zapytań dotyczących informacji dla poszczególnych komputerów za pomocą typu danych użycia.  
 
-Bardziej precyzyjne obliczenie co faktycznie jest naliczana jest uzyskać liczbę komputerów, na godzinę, które wysyłają typy danych rozliczane. (W przypadku obszarów roboczych w starszej wersji warstwę cenową na węzeł, usługi Log Analytics oblicza liczbę węzłów, które będą musiały być rozliczane godzinowo). 
+Dokładniejsze obliczenie wartości rzeczywistej jest rozliczane, aby uzyskać liczbę komputerów na godzinę, które wysyłają rozliczane typy danych. (W przypadku obszarów roboczych w warstwie cenowej starszej dla węzła Log Analytics oblicza liczbę węzłów, które muszą być rozliczane godzinowo.) 
 
 ```kusto
 union withsource = tt * 
@@ -197,7 +200,7 @@ union withsource = tt *
 | summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
 ```
 
-## <a name="understanding-ingested-data-volume"></a>Ilość danych pozyskanych opis
+## <a name="understanding-ingested-data-volume"></a>Zrozumienie ilości pozyskiwanych danych
 
 Na **użycie i szacowane koszty** stronie *pozyskiwanie danych na rozwiązanie* wykres przedstawia łączny wolumin danych wysyłanych i ile wysyłanych przez każde rozwiązanie. Dzięki temu można określić trendy, takie jak czy rośnie całkowite użycie danych (lub użycie przez konkretnego rozwiązania), pozostały stały, czy też maleje. Zapytanie używane do generowania, to jest
 
@@ -218,7 +221,7 @@ Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 
 ### <a name="data-volume-by-computer"></a>Objętość danych według komputera
 
-Aby wyświetlić **rozmiar** płatnych zdarzeń wprowadzanych na komputerze, użyj `_BilledSize` [właściwość](log-standard-properties.md#_billedsize), zapewniającą rozmiar w bajtach:
+Aby wyświetlić **wielkość** rozliczania zdarzeń pobieranych na komputer, użyj `_BilledSize` [Właściwości](log-standard-properties.md#_billedsize), która zapewnia rozmiar w bajtach:
 
 ```kusto
 union withsource = tt * 
@@ -227,9 +230,9 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
-`_IsBillable` [Właściwość](log-standard-properties.md#_isbillable) Określa, czy pozyskiwanych danych spowoduje naliczenie opłat.
+Właściwość określa, czy pozyskane dane będą naliczane opłaty. [](log-standard-properties.md#_isbillable) `_IsBillable`
 
-Aby wyświetlić liczbę **płatnych** zdarzenia wprowadzanych na komputerze, użyj 
+Aby zobaczyć liczbę zdarzeń **rozliczanych** pobieranych na komputer, użyj 
 
 ```kusto
 union withsource = tt * 
@@ -247,9 +250,9 @@ union withsource = tt *
 | summarize count() by tt | sort by count_ nulls last
 ```
 
-### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Objętość danych według zasobów platformy Azure, grupę zasobów lub subskrypcji
+### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Ilość danych według zasobu platformy Azure, grupy zasobów lub subskrypcji
 
-W przypadku danych z węzłów hostowanych na platformie Azure możesz uzyskać **rozmiar** płatnych zdarzeń pozyskanych __na komputer__, użyj _ResourceId [właściwość](log-standard-properties.md#_resourceid), zapewniającą pełną ścieżkę do Zasób:
+W przypadku danych z węzłów hostowanych na platformie Azure można uzyskać **wielkość** rozliczania zdarzeń pobieranych __na komputer__przy użyciu [Właściwości](log-standard-properties.md#_resourceid)_ResourceId, która zapewnia pełną ścieżkę do zasobu:
 
 ```kusto
 union withsource = tt * 
@@ -257,7 +260,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-W przypadku danych z węzłów hostowanych na platformie Azure możesz uzyskać **rozmiar** płatnych zdarzeń pozyskanych __subskrypcję platformy Azure__, przeanalizować `_ResourceId` właściwość jako:
+W przypadku danych z węzłów hostowanych na platformie Azure można uzyskać **wielkość** rozliczania zdarzeń pozyskanych w __ramach subskrypcji platformy Azure__ `_ResourceId` , przeanalizować właściwość jako:
 
 ```kusto
 union withsource = tt * 
@@ -267,13 +270,13 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
-Zmiana `subscriptionId` do `resourceGroup` pokaże woluminu płatnych pozyskiwanych danych według grupy zasobów platformy Azure. 
+Zmiana `subscriptionId` na`resourceGroup` wartość spowoduje wyświetlenie ilości danych pozyskanych do rozliczenia przez grupę zasobów platformy Azure. 
 
 
 > [!NOTE]
-> Niektóre pola typu danych użycia, chociaż nadal w schemacie, są przestarzałe i spowoduje, że ich wartości są już wypełnione. Są to **komputera** oraz pola powiązane z pozyskiwania (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** i **AverageProcessingTimeMs**.
+> Niektóre pola typu danych użycia, ale nadal w schemacie, są przestarzałe i ich wartości nie będą już wypełnione. Są to **komputera** oraz pola powiązane z pozyskiwania (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** i **AverageProcessingTimeMs**.
 
-### <a name="querying-for-common-data-types"></a>Wykonanie zapytania dotyczącego standardowe typy danych
+### <a name="querying-for-common-data-types"></a>Wykonywanie zapytań dotyczących typowych typów danych
 
 Aby wyświetlić elementy podrzędne źródło danych dla określonego typu danych, poniżej przedstawiono pewne przydatne przykładowe zapytania:
 
@@ -306,7 +309,7 @@ Sugestie dotyczące zmniejszyć wolumin zebranych danych dzienników obejmują:
 | AzureDiagnostics           | Zmień kolekcję dziennika zasobów, aby: <br> — zmniejszyć liczbę dzienników zasobów wysyłanych do usługi Log Analytics, <br> — zbierać tylko wymagane dzienniki. |
 | Dane rozwiązań z komputerów, które nie wymagają rozwiązania | Użyj funkcji [określania celu rozwiązania](../insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów. |
 
-### <a name="getting-security-and-automation-node-counts"></a>Pobieranie liczby węzłów zabezpieczeń i automatyzacji
+### <a name="getting-security-and-automation-node-counts"></a>Pobieranie zabezpieczeń i liczby węzłów automatyzacji
 
 Jeśli użytkownik pracuje na "Na węzeł (OMS)" warstwy cenowej, a następnie opłaty są naliczane na podstawie liczby węzłów i rozwiązań można używać, numer wglądu w szczegółowe dane oraz węzły Analytics, dla których są naliczane będą wyświetlane w tabeli **użycie i szacowane koszty**strony.  
 
@@ -350,7 +353,7 @@ Aby wyświetlić liczbę liczymy węzły usługi Automation, użyj zapytania:
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
 ```
 
-## <a name="create-an-alert-when-data-collection-is-high"></a>Tworzenie alertu, gdy zbieranie danych jest wysoka
+## <a name="create-an-alert-when-data-collection-is-high"></a>Utwórz alert, gdy zbieranie danych jest wysokie
 
 W tej sekcji opisano sposób tworzenia alertu w sytuacji, gdy:
 - Ilość danych przekracza określoną wartość.
@@ -411,17 +414,17 @@ Określ istniejącą [grupę akcji](action-groups.md) lub utwórz nową, tak aby
 
 Po otrzymaniu alertu wykonaj kroki przedstawione w poniższej sekcji, aby rozwiązać problemy związane z większym niż oczekiwano użyciem.
 
-## <a name="limits-summary"></a>Podsumowanie ograniczeń
+## <a name="limits-summary"></a>Podsumowanie limitów
 
-Istnieją pewne dodatkowe ograniczenia usługi Log Analytics, niektóre z nich zależy od warstwy cenowej w usłudze Log Analytics. Zostały one opisane [tutaj](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
+Istnieją pewne dodatkowe limity Log Analytics, które są zależne od warstwy cenowej Log Analytics. Opisano je [tutaj](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [przeszukiwanie dzienników w usłudze Azure Monitor dziennikach](../log-query/log-query-overview.md) dowiesz się, jak używać języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
+- Zobacz [Wyszukiwanie w dzienniku w](../log-query/log-query-overview.md) dziennikach Azure monitor, aby dowiedzieć się, jak używać języka wyszukiwania. Możesz użyć zapytań wyszukiwania w celu przeprowadzenia dodatkowej analizy danych użycia.
 - Wykonaj kroki opisane w sekcji dotyczącej [tworzenia nowego alertu dziennika](alerts-metric.md), aby otrzymywać powiadomienie, gdy kryteria wyszukiwania zostaną spełnione.
 - Użyj funkcji [określania celu rozwiązania](../insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów.
-- Aby skonfigurować zasady zbierania zdarzeń skuteczne, zapoznaj się z [usługi Azure Security Center zasady filtrowania](../../security-center/security-center-enable-data-collection.md).
+- Aby skonfigurować efektywne zasady zbierania zdarzeń, przejrzyj [zasady filtrowania Azure Security Center](../../security-center/security-center-enable-data-collection.md).
 - Zmień [konfigurację licznika wydajności](data-sources-performance-counters.md).
 - Aby zmodyfikować ustawienia zbierania zdarzeń, przejrzyj [konfigurację dziennika zdarzeń](data-sources-windows-events.md).
 - Aby zmodyfikować ustawienia zbierania dla dziennika systemowego, przejrzyj [konfigurację dziennika systemowego](data-sources-syslog.md).

@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Uruchom zestaw Speech Devices SDK w systemie Android — usługi mowy'
+title: 'Szybki start: Uruchamianie zestawu Speech Devices SDK w usłudze Android-Speech'
 titleSuffix: Azure Cognitive Services
-description: Wymagania wstępne i instrukcje dla klientów zaczynających pracę z systemem Android zestawu Speech Devices SDK.
+description: Wymagania wstępne i instrukcje dotyczące rozpoczynania pracy z zestawem SDK urządzeń z funkcją rozpoznawania mowy dla systemu Android.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,36 +10,36 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 7eea978456ed565f8fc58647dc548d1a7bc76b27
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f7039b525cf0d52670b8d76a24d8ec3ea5115772
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606362"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559113"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Szybki start: Uruchamianie przykładowej aplikacji zestawu Speech Devices SDK w systemie Android
 
-W tym przewodniku Szybki Start dowiesz się, jak używać zestawu Speech Devices SDK dla systemu Android do tworzenia produktu z funkcją mowy, lub użyj go jako [transkrypcji konwersacji](conversation-transcription-service.md) urządzenia.
+W tym przewodniku szybki start dowiesz się, jak utworzyć produkt z obsługą mowy przy użyciu zestawu Speech Devices SDK dla systemu Android lub użyć go jako urządzenia [transkrypcji konwersacji](conversation-transcription-service.md) .
 
-Ten przewodnik wymaga [usług Azure Cognitive Services](get-started.md) konta z zasobem usługi mowy. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
+Ten przewodnik wymaga konta usługi [Azure Cognitive Services](get-started.md) z zasobem usługi Speech Services. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 
 Kod źródłowy przykładowej aplikacji jest dołączone do zestawu Speech Devices SDK. Warto również [dostępne w serwisie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem przy użyciu zestawu Speech Devices SDK, musisz:
+Przed rozpoczęciem korzystania z zestawu SDK usługi Speech Devices należy:
 
-* Postępuj zgodnie z instrukcjami dostarczonymi z Twojej [deweloperski](get-speech-devices-sdk.md) do potęgi na urządzeniu.
+* Aby włączyć urządzenie, postępuj [](get-speech-devices-sdk.md) zgodnie z instrukcjami dostarczonymi z Twoim zestawem deweloperskim.
 
-* Pobierz najnowszą wersję [zestawu Speech Devices SDK](https://aka.ms/sdsdk-download)i Wyodrębnij plik zip do katalogu roboczego.
+* Pobierz najnowszą wersję [zestawu Speech Devices SDK](https://aka.ms/sdsdk-download)i wyodrębnij plik zip do katalogu roboczego.
    > [!NOTE]
-   > Plik przykładowy-Android-Release.zip zawiera Android przykładową aplikację i ten przewodnik Szybki Start założono, że aplikacja jest wyodrębniany do C:\SDSDK\Android-Sample-Release
+   > Plik Android-Sample-Release. zip zawiera przykładową aplikację dla systemu Android, a w tym przewodniku szybki start założono, że aplikacja została wyodrębniona do C:\SDSDK\Android-Sample-Release
 
-* Aby uzyskać [klucz subskrypcji platformy Azure dla usług przetwarzania mowy](get-started.md)
+* Aby uzyskać [klucz subskrypcji platformy Azure dla usługi Speech Services](get-started.md)
 
-* Jeśli planujesz używać transkrypcji konwersacji należy użyć [cykliczne mikrofonu urządzenia](get-speech-devices-sdk.md) i ta funkcja jest obecnie dostępna tylko dla "en US" i "zh-CN" w regionach, "centralus" i "Azja Wschodnia". Musi mieć klucz mowy w jednym z tych regionów, aby użyć transkrypcji konwersacji.
+* Jeśli planujesz korzystanie z transkrypcji konwersacji, musisz użyć okrągłego [urządzenia mikrofonu](get-speech-devices-sdk.md) , a ta funkcja jest obecnie dostępna tylko dla "en-us" i "zh-CN" w regionach "środkowe" i "eastasia". Aby można było używać transkrypcji konwersacji, w jednym z tych regionów musi znajdować się klucz mowy.
 
-* Jeśli planujesz używać usług przetwarzania mowy do identyfikowania intencji (lub akcji) z wypowiedzi użytkowników, musisz [usługa interpretacji języka (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) subskrypcji. Aby dowiedzieć się więcej na temat usługi LUIS i rozpoznawanie intencji, zobacz [rozpoznać intencje mowy z użyciem usługi LUIS, C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
+* Jeśli planujesz używać usług mowy do identyfikowania intencji (lub działań) z wyrażenia długości użytkownika, będziesz potrzebować subskrypcji [usługi Language Understanding Service (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) . Aby dowiedzieć się więcej na temat LUIS i rozpoznawania intencji, zobacz Rozpoznawanie założeń [mowy C#przy użyciu Luis, ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
     Możesz [Tworzenie prostego modelu usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/) lub użyj przykładu model usługi LUIS, example.json usługi LUIS. Przykładowy model usługi LUIS jest dostępny z [witryny pobierania zestawu Speech Devices SDK](https://aka.ms/sdsdk-luis). Można przekazać swój model pliku JSON do [portal usługi LUIS](https://www.luis.ai/home), wybierz opcję **importowania Nowa aplikacja**, a następnie wybierz plik JSON.
 
@@ -72,7 +72,7 @@ Przed rozpoczęciem przy użyciu zestawu Speech Devices SDK, musisz:
 
 ## <a name="run-the-sample-application"></a>Uruchamianie przykładowej aplikacji
 
-Aby zweryfikować konfigurację development kit, tworzenie i instalowanie przykładowej aplikacji:
+Aby sprawdzić poprawność instalacji zestawu deweloperskiego, skompiluj i zainstaluj aplikację przykładową:
 
 1. Uruchom program Android Studio.
 
@@ -82,9 +82,9 @@ Aby zweryfikować konfigurację development kit, tworzenie i instalowanie przyk�
 
 1. Przejdź do C:\SDSDK\Android-Sample-Release\example. Wybierz **OK** otworzyć projektu w przykładzie.
 
-1. Dodaj klucz subskrypcji mowy do kodu źródłowego. Do wypróbowania rozpoznawanie intencji, również należy dodać swoje [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klucz subskrypcji i aplikacji identyfikatora.
+1. Dodaj swój klucz subskrypcji mowy do kodu źródłowego. Do wypróbowania rozpoznawanie intencji, również należy dodać swoje [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klucz subskrypcji i aplikacji identyfikatora.
 
-   Dla funkcji rozpoznawania mowy i LUIS informacji przechodzi do MainActivity.java:
+   W przypadku mowy i LUIS informacje trafiają do MAINS. Java:
 
    ```java
     // Subscription
@@ -95,7 +95,7 @@ Aby zweryfikować konfigurację development kit, tworzenie i instalowanie przyk�
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Jeśli używasz konwersacji transkrypcja mowy informacji klucza i region są również potrzebne w conversation.java:
+    Jeśli używasz transkrypcji konwersacji, informacje o kluczu mowy i regionie są również potrzebne w konwersacji. Java:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
@@ -107,10 +107,10 @@ Aby zweryfikować konfigurację development kit, tworzenie i instalowanie przyk�
    > [!TIP]
    > Możesz również [utworzyć niestandardowe słowo aktywujące](speech-devices-sdk-create-kws.md).
 
-    Aby korzystać z nowego słowa wznawiania, należy zaktualizować następujące dwa wiersze w `MainActivity.java`, a następnie skopiuj pakiet wznawiania programu word do swojej aplikacji. Na przykład, aby użyć aktywujące "Machine" z kws pakietu programu word wake-machine.zip:
+    Aby użyć nowego wyrazu wznawiania, zaktualizuj następujące dwa wiersze w `MainActivity.java`programie i skopiuj pakiet wybudzenia programu Word do aplikacji. Na przykład, aby użyć programu Wake Word "Machine" z pliku Wake Word KWS-Machine. zip:
 
-   * Skopiuj pakiet wznawiania programu word do folderu "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\".
-   * Aktualizacja `MainActivity.java` za pomocą słowa kluczowego i nazwa pakietu:
+   * Skopiuj pakiet wznawiania tekstu do folderu "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\".
+   * `MainActivity.java` Zaktualizuj za pomocą słowa kluczowego i nazwy pakietu:
 
      ```java
      private static final String Keyword = "Machine";
@@ -124,7 +124,7 @@ Aby zweryfikować konfigurację development kit, tworzenie i instalowanie przyk�
    private static final String SelectedGeometry = "Circular6+1";
    ```
 
-   Poniższa tabela zawiera listę obsługiwanych wartości:
+   Ta tabela zawiera listę obsługiwanych wartości:
 
    |Zmienna|Znaczenie|Dostępne wartości|
    |--------|-------|----------------|
@@ -145,27 +145,27 @@ Aby zweryfikować konfigurację development kit, tworzenie i instalowanie przyk�
 
    ![Opcje i przykładowa aplikacja przykład zestawu Speech Devices SDK](media/speech-devices-sdk/qsg-8.png)
 
-1. Wypróbuj nowy pokaz transkrypcji konwersacji. Rozpocznij przepisywania z Rozpoczynanie sesji. Domyślnie wszyscy jest gościa. Jednak w przypadku podpisów głosu uczestnika one można umieścić w pliku `/video/participants.properties` na urządzeniu. Do generowania podpisu głosowej, Przyjrzyj się [transkrypcja rozmów (SDK)](how-to-use-conversation-transcription-service.md).
+1. Wypróbuj nową wersję demonstracyjną transkrypcji konwersacji. Rozpocznij jego przepisywania z opcją "Rozpocznij sesję". Domyślnie wszyscy są gośćmi. Jeśli jednak masz podpisy głosu uczestników, można je umieścić w pliku `/video/participants.properties` na urządzeniu. Aby wygenerować podpis głosowy, spójrz na [transkrypcja konwersacje (SDK)](how-to-use-conversation-transcription-service.md).
 
-   ![Pokaz transkrypcji konwersacji aplikacji](media/speech-devices-sdk/qsg-15.png)
+   ![Aplikacja do transkrypcji konwersacji demonstracyjnej](media/speech-devices-sdk/qsg-15.png)
 
 1. Eksperyment!
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-   Jeśli nie można połączyć się z urządzeniem mowy. Wpisz następujące polecenie w oknie wiersza polecenia. Zwróci listę urządzeń:
+   Jeśli nie możesz nawiązać połączenia z urządzeniem mowy. Wpisz następujące polecenie w oknie wiersza polecenia. Zwróci listę urządzeń:
 
    ```powershell
     adb devices
    ```
 
    > [!NOTE]
-   > To polecenie używa mostka debugowania systemu Android, `adb.exe`, który jest częścią instalacji programu Android Studio. To narzędzie znajduje się w C:\Users\[nazwa_użytkownika] \AppData\Local\Android\Sdk\platform narzędzia. Ten katalog można dodać do swojej ścieżki, aby był bardziej wygodne do wywołania `adb`. W przeciwnym razie należy określić pełną ścieżkę do instalacji adb.exe w każdego polecenia, który wywołuje `adb`.
+   > To polecenie używa Android Debug Bridge, `adb.exe`, który jest częścią instalacji Android Studio. To narzędzie znajduje się w C:\Users\[nazwa_użytkownika] \AppData\Local\Android\Sdk\platform narzędzia. Ten katalog można dodać do swojej ścieżki, aby był bardziej wygodne do wywołania `adb`. W przeciwnym razie należy określić pełną ścieżkę do instalacji adb.exe w każdego polecenia, który wywołuje `adb`.
    >
-   > Jeśli zostanie wyświetlony błąd `no devices/emulators found` , a następnie sprawdź kabel USB jest podłączony i upewnij się, służy kabla wysokiej jakości.
+   > Jeśli zobaczysz błąd `no devices/emulators found` , sprawdź, czy kabel USB jest podłączony, i upewnij się, że jest używany kabel wysokiej jakości.
    >
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z informacjami o wersji](devices-sdk-release-notes.md)

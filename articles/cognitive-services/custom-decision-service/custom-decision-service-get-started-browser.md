@@ -1,7 +1,7 @@
 ---
-title: Wywoływanie interfejsu API z poziomu przeglądarki — Custom Decision Service
+title: Wywoływanie interfejsu API z przeglądarki — Custom Decision Service
 titlesuffix: Azure Cognitive Services
-description: Jak zoptymalizować strony sieci Web, wywołań interfejsu API z przeglądarki do usługi Custom Decision Service.
+description: Jak zoptymalizować stronę sieci Web przez wykonywanie wywołań interfejsu API bezpośrednio z przeglądarki do Custom Decision Service.
 services: cognitive-services
 author: slivkins
 manager: nitinme
@@ -10,20 +10,21 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
-ms.openlocfilehash: 2b356e2f0fe9235d49dffa7417cd3894059f9caf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 28ad4681242765bf2da9b1f13dc828e23cce1794
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829161"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707268"
 ---
 # <a name="call-api-from-a-browser"></a>Wywoływanie interfejsu API z przeglądarki
 
-Ten artykuł pomaga wykonywać wywołania interfejsów API usługi Azure Custom Decision usługi bezpośrednio w przeglądarce.
+Ten artykuł pomaga w podejmowaniu połączeń do interfejsów API Custom Decision Service platformy Azure bezpośrednio z przeglądarki.
 
-Pamiętaj, aby [Zarejestruj swoją aplikację](custom-decision-service-get-started-register.md)najpierw.
+Pamiętaj, aby najpierw [zarejestrować aplikację](custom-decision-service-get-started-register.md).
 
-Zacznijmy. Aplikacja jest modelowane jako mające stronę początkową, który stanowi łącze do strony kilka artykułów. Pierwsza strona używa usługi Custom Decision Service do określania kolejności jej strony artykułu. Wstaw następujący kod do głowy HTML strony frontonu:
+Zacznijmy. Aplikacja jest modelowana jako pierwsza strona, która zawiera linki do kilku stron artykułów. Strona frontonu używa Custom Decision Service, aby określić kolejność stron artykułu. Wstaw następujący kod do nagłówka HTML strony frontonu:
 
 ```html
 // Define the "callback function" to render UI
@@ -33,9 +34,9 @@ Zacznijmy. Aplikacja jest modelowane jako mające stronę początkową, który s
 <script src="https://ds.microsoft.com/api/v2/<appId>/rank/<actionSetId>" async></script>
 ```
 
-`data` Argument zawiera klasyfikacji adresy URL służące do renderowania. Aby uzyskać więcej informacji, zobacz odwołania [API](custom-decision-service-api-reference.md).
+`data` Argument zawiera klasyfikację adresów URL, które mają być renderowane. Aby uzyskać więcej informacji, zobacz [interfejs API](custom-decision-service-api-reference.md)Reference.
 
-Aby obsłużyć użytkownika kliknięcie istotny artykuł, należy wywołać następujący kod na pierwszej stronie:
+Aby obsłużyć użytkownikowi, kliknij w górnym artykule, wywołaj następujący kod na stronie frontonu:
 
 ```javascript
 // call Reward API to report a click
@@ -45,9 +46,9 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-W tym miejscu `data` jest argumentem `callback()` funkcji. Przykład wdrożenia można znaleźć w tym [samouczek](custom-decision-service-tutorial-news.md#use-the-apis).
+W tym miejscu `callback()` jest argumentem funkcji. `data` Przykład implementacji można znaleźć w tym samouczku [](custom-decision-service-tutorial-news.md#use-the-apis).
 
-Na koniec należy podać akcji Ustaw interfejsu API, które zwraca listę artykułów (Akcje), aby zostały uznane za przez usługi Custom Decision Service. Implementuje ten interfejs API jako źródło danych RSS, jak pokazano poniżej:
+Na koniec należy podać interfejs API zestawu akcji, który zwraca listę artykułów (akcji), które mają być uwzględniane przez Custom Decision Service. Zaimplementuj ten interfejs API jako źródło danych RSS, jak pokazano poniżej:
 
 ```xml
 <rss version="2.0">
@@ -64,9 +65,9 @@ Na koniec należy podać akcji Ustaw interfejsu API, które zwraca listę artyku
 </rss>
 ```
 
-Tutaj każdy najwyższego poziomu `<item>` element zawiera opis artykułu. `<link>` Jest obowiązkowy i jest używany jako identyfikator akcji przez usługi Custom Decision Service. Określ `<date>` (w standardowym formacie RSS) Jeśli masz więcej niż 15 artykułów. 15 najnowsze artykuły są używane. `<title>` Jest opcjonalna i jest używany do tworzenia powiązanych z tekstem funkcji dla tego artykułu.
+W tym miejscu każdy element najwyższego poziomu `<item>` opisuje artykuł. Parametr `<link>` jest obowiązkowy i służy jako identyfikator akcji przez Custom Decision Service. Określ `<date>` (w standardowym formacie RSS), jeśli masz więcej niż 15 artykułów. Używane są 15 najnowszych artykułów. `<title>` Jest to opcjonalne i służy do tworzenia funkcji związanych z tekstem dla artykułu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Trzymać się kolejności [samouczek](custom-decision-service-tutorial-news.md) bardziej szczegółowy przykład.
-* Zapoznaj się z odwołania [API](custom-decision-service-api-reference.md) Aby dowiedzieć się więcej o podanej funkcji.
+* Przechodzenie przez [samouczek](custom-decision-service-tutorial-news.md) , aby zapoznać się z bardziej szczegółowym przykładem.
+* Zapoznaj się z [interfejsem API](custom-decision-service-api-reference.md) referencyjnym, aby dowiedzieć się więcej o podanej funkcji.

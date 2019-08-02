@@ -1,6 +1,6 @@
 ---
-title: Planowanie konserwacji platformy Azure - zdarzenia usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przygotować się do zdarzenia planowanej konserwacji usługi Azure SQL Database.
+title: Planowanie zdarzeń konserwacji platformy Azure — Azure SQL Database | Microsoft Docs
+description: Dowiedz się, jak przygotować się do zaplanowanych zdarzeń konserwacji do Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -10,41 +10,40 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 928338a911efae051df7164239dbd19f9317338a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1bb88d6f74ab4b93e226fe8630f07f0a96f4ba47
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584611"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567051"
 ---
-# <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Planowanie zdarzenia konserwacji platformy Azure w usłudze Azure SQL Database
+# <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Planowanie zdarzeń konserwacji platformy Azure w Azure SQL Database
 
-Dowiedz się, jak przygotować w planowanych pracach konserwacyjnych na bazie danych Azure SQL.
+Dowiedz się, jak przygotować się do zaplanowanych zdarzeń konserwacji w usłudze Azure SQL Database.
 
-## <a name="what-is-a-planned-maintenance-event"></a>Co to jest zdarzenie planowanej konserwacji
+## <a name="what-is-a-planned-maintenance-event"></a>Co to jest planowane zdarzenie konserwacji
 
-Dla każdej bazy danych bazy danych SQL Azure przechowuje kworum replik bazy danych, w której jedna replika jest serwerem podstawowym. W sytuacjach repliki podstawowej musi być Obsługa w trybie online, a co najmniej jedna replika pomocnicza musi być w dobrej kondycji. Podczas zaplanowanej konserwacji elementy członkowskie kworum bazy danych przechodzi w trybie offline pojedynczo, z zamiarem, że istnieje jeden odpowiada replikę podstawową i co najmniej jedna replika pomocnicza online zapewnienie przestojów klienta. Gdy replika podstawowa musi zostać przełączone do trybu offline, proces ponownej konfiguracji/trybu failover nastąpi, w której jedna replika pomocnicza staną się nową podstawową.  
+Dla każdej bazy danych usługa Azure SQL DB utrzymuje kworum replik baz danych, w których jedna replika jest podstawowym. Zawsze, gdy replika podstawowa musi być obsługą online, a co najmniej jedna replika pomocnicza musi być w dobrej kondycji. Podczas planowanej konserwacji członkowie kworum bazy danych przechodzą do trybu offline po jednej naraz, z zamiarem, że istnieje jedna replika podstawowa, a co najmniej jedna replika pomocnicza jest w trybie online, aby zapewnić brak przestojów klientów. Jeśli replika podstawowa musi zostać przełączona w tryb offline, proces ponownej konfiguracji/przełączenia w tryb failover nastąpi, gdy jedna replika pomocnicza stanie się nowym serwerem podstawowym.  
 
-## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Czego można oczekiwać podczas zdarzeń planowanej konserwacji
+## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Czego można oczekiwać podczas planowanego zdarzenia konserwacji
 
-Reconfigurations/przejścia w tryb failover zakończyła się zazwyczaj w ciągu 30 sekund — średnia jest 8 sekund. Jeśli już połączony, aplikację należy nawiązać ponownie połączenie do nowej repliki podstawowej kopii dobrej kondycji bazy danych. Nowe połączenie zostanie podjęta, gdy baza danych jest w trakcie zmiana konfiguracji przed nową replikę podstawową jest w trybie online, spowoduje wyświetlenie błędu 40613 (niedostępna baza danych): "Baza danych"{databasename}"na serwerze"{servername}"nie jest obecnie dostępna. Ponów próbę połączenia później. ". Jeśli baza danych zawiera wolno działające zapytanie, to zapytanie zostaną przerwane w trakcie zmiana konfiguracji i będzie wymagać ponownego uruchomienia.
+Ponowne konfiguracje/przełączenia w tryb failover są zwykle ukończone w ciągu 30 sekund — średnia wynosi 8 sekund. Jeśli jest już połączony, aplikacja musi ponownie nawiązać połączenie z nową repliką podstawową bazy danych w dobrej kondycji. Jeśli nastąpi próba ponownego skonfigurowania nowego połączenia, aby Nowa replika podstawowa była w trybie online, zostanie wyświetlony komunikat o błędzie 40613 (baza danych jest niedostępna): "Baza danych" {DatabaseName} "na serwerze" {ServerName} "jest obecnie niedostępna. Spróbuj ponownie nawiązać połączenie później. ". Jeśli baza danych ma długotrwałe zapytanie, to zapytanie zostanie przerwane podczas ponownej konfiguracji i musi zostać ponownie uruchomione.
 
-## <a name="retry-logic"></a>Logika ponawiania próby
+## <a name="retry-logic"></a>Logika ponawiania
 
-Każda aplikacja kliencka produkcji, który nawiązuje połączenie z usługą bazy danych w chmurze powinny implementować niezawodne połączenia [Logika ponawiania próby](sql-database-connectivity-issues.md#retry-logic-for-transient-errors). To pomoże rozwiązać tych sytuacji i ogólnie upewnić błędy przezroczysty dla użytkownika końcowego.
+Każda aplikacja produkcyjna klienta, która nawiązuje połączenie z usługą bazy danych w chmurze [](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), powinna implementować niezawodną logikę ponawiania połączenia. Pomoże to ograniczyć te sytuacje i ogólnie rzecz biorąc, te błędy powinny być widoczne dla użytkownika końcowego.
 
 ## <a name="frequency"></a>Częstotliwość
 
-Średnio 1.7 zdarzenia planowanej konserwacji występują każdego miesiąca.
+Średnio 1,7 zdarzeń konserwacji planowanej odbywa się co miesiąc.
 
-## <a name="resource-health"></a>Kondycja zasobów
+## <a name="resource-health"></a>Kondycja zasobu
 
-Jeśli występują niepowodzenia logowania do usługi SQL database, sprawdź [Resource Health](../service-health/resource-health-overview.md#getting-started) okna [witryny Azure portal](https://portal.azure.com) dla bieżącego stanu. Sekcja Historia kondycji zawiera Przyczyna przestojów dla każdego zdarzenia (jeśli jest dostępna).
+Jeśli baza danych SQL napotkała błędy logowania, Sprawdź okno [Resource Health](../service-health/resource-health-overview.md#get-started) w [Azure Portal](https://portal.azure.com) dla bieżącego stanu. Sekcja historia kondycji zawiera przyczynę przestoju dla każdego zdarzenia (jeśli jest dostępna).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [Resource Health](sql-database-resource-health.md) dla bazy danych SQL
-- Aby uzyskać więcej informacji na temat logikę ponawiania próby zobacz [Logika ponawiania próby dla błędów przejściowych](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
+- Dowiedz się więcej na temat [Resource Health](sql-database-resource-health.md) SQL Database
+- Aby uzyskać więcej informacji na temat logiki ponawiania, zobacz [logika ponawiania dla błędów przejściowych](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)

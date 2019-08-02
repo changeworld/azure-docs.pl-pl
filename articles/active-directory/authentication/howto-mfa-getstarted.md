@@ -1,6 +1,6 @@
 ---
-title: Planowanie i wykonywanie wdrożenia usługi Azure Multi-Factor Authentication — usługi Azure Active Directory
-description: Planowanie wdrożenia systemu Microsoft Azure Multi-Factor Authentication
+title: Planowanie i wykonywanie wdrożenia usługi Azure webfactor Authentication — Azure Active Directory
+description: Microsoft Azure Planowanie wdrożenia usługi uwierzytelnianie wieloskładnikowe
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,63 +11,63 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296486755f0935e4eb8dcdb663da46ef60ef38bc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 182b9da402e633033411f85eb59b31f76749f3cd
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441009"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666255"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planowanie wdrożenia usługi Azure Multi-Factor Authentication oparte na chmurze
+# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planowanie wdrożenia usługi Azure wieloskładnikowego opartego na chmurze
 
-Osoby łączysz się do zasobów organizacji w coraz bardziej skomplikowane sytuacje. Osoby, nawiąż połączenie z urządzeń należących do organizacji, osobistych i publicznych włączać i wyłączać firmową siecią przy użyciu smartfonach, tabletach, komputery i laptopy, często na wielu platformach. W tym świecie zawsze podłączonej do wielu urządzeń i dla wielu platform bezpieczeństwa kont użytkowników jest ważniejsze niż kiedykolwiek wcześniej. Hasła, niezależnie od ich złożoności, stosować w przypadku urządzeń, sieci i platform nie są wystarczające, aby zapewnić bezpieczeństwo konta użytkownika, a zwłaszcza w przypadku, gdy użytkownicy często wykonują ponowne używanie haseł na kontach. Zaawansowane techniki wyłudzania informacji oraz innych inżynierii społecznej, który ataków skutkujących nazwy użytkowników i hasła są opublikowane i sprzedawany przez Internet.
+Osoby nawiązują połączenie z zasobami organizacji w coraz bardziej skomplikowanych scenariuszach. Osoby łączące się z firmowymi urządzeniami należącymi do organizacji, osobistymi i publicznymi w sieci firmowej przy użyciu inteligentnych telefonów, tabletów, komputerów i laptopów, często na wielu platformach. W tym zawsze połączonym świecie z wieloma urządzeniami i wieloma platformami zabezpieczenia kont użytkowników są ważniejsze niż kiedykolwiek wcześniej. Hasła, niezależnie od ich złożoności, użycia między urządzeniami, sieciami i platformami, nie są już wystarczające, aby zapewnić bezpieczeństwo konta użytkownika, zwłaszcza wtedy, gdy użytkownicy będą mogli ponownie używać haseł na kontach. Zaawansowana phishing i inne ataki inżynieryjne mogą spowodować, że nazwy użytkowników i hasła są ogłaszane i sprzedawane w ramach ciemnej sieci Web.
 
-[Usługa Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) pomaga w zabezpieczeniu dostępu do danych i aplikacji. Zapewnia dodatkową warstwę zabezpieczeń przy użyciu drugiej formy uwierzytelniania. Organizacje mogą używać [dostępu warunkowego](../conditional-access/overview.md) że rozwiązanie nie będzie mieści się w ich własnych potrzeb.
+[Usługa Azure MFA Authentication](concept-mfa-howitworks.md) umożliwia Zabezpieczanie dostępu do danych i aplikacji. Zapewnia dodatkową warstwę zabezpieczeń przy użyciu drugiej formy uwierzytelniania. Organizacje mogą korzystać z [dostępu warunkowego](../conditional-access/overview.md) , aby rozwiązanie spełniało ich konkretne potrzeby.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem wdrażania usługi Azure Multi-Factor Authentication, istnieją elementy wymagane wstępnie, które należy rozważyć.
+Przed rozpoczęciem wdrażania usługi Azure MFA należy wziąć pod uwagę elementy wymagane wstępnie.
 
 | Scenariusz | Wymagania wstępne |
 | --- | --- |
-| **Tylko w chmurze** środowiska tożsamości za pomocą nowoczesnego uwierzytelniania | **Brak dodatkowych wymagań wstępnych zadań** |
-| **Hybrydowe** scenariuszy tożsamości | [Program Azure AD Connect](../hybrid/whatis-hybrid-identity.md) jest wdrażana i tożsamości użytkowników są synchronizowanych lub Sfederowanych z lokalnej usługi Active Directory domeny za pomocą usługi Azure Active Directory. |
-| W środowisku lokalnym starsze aplikacje opublikowane, aby uzyskać dostęp do chmury | Usługa Azure AD [serwera Proxy aplikacji](../manage-apps/application-proxy.md) jest wdrażana. |
-| Korzystanie z usługi Azure MFA przy użyciu uwierzytelniania usługi RADIUS | A [serwera zasad sieciowych (NPS)](howto-mfa-nps-extension.md) jest wdrażana. |
-| Użytkownicy mają pakiet Microsoft Office 2010 lub starszy lub Apple Mail dla systemu iOS 11 lub starszy | Uaktualnianie do [pakietu Microsoft Office 2013 lub nowszy](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) i Apple mail dla systemu iOS 12 lub nowszy. Dostęp warunkowy nie jest obsługiwana przez protokoły uwierzytelniania w starszej wersji. |
+| Środowisko tożsamości **tylko w chmurze** z nowoczesnego uwierzytelniania | **Brak dodatkowych zadań wymaganych wstępnie** |
+| Scenariusze tożsamości hybrydowej | Wdrożono [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) i tożsamości użytkowników są synchronizowane lub federacyjne z Active Directory Domain Services lokalnymi z Azure Active Directory. |
+| Lokalne starsze aplikacje opublikowane na potrzeby dostępu do chmury | [Serwer proxy aplikacji](../manage-apps/application-proxy.md) usługi Azure AD został wdrożony. |
+| Korzystanie z usługi Azure MFA z uwierzytelnianiem usługi RADIUS | [Serwer zasad sieciowych](howto-mfa-nps-extension.md) został wdrożony. |
+| Użytkownicy mają Microsoft Office 2010 lub starszy lub Apple mail dla systemu iOS 11 lub starszego | Uaktualnij do [wersji Microsoft Office 2013 lub nowszej](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) oraz Apple mail dla systemu iOS 12 lub nowszego. Dostęp warunkowy nie jest obsługiwany przez starsze protokoły uwierzytelniania. |
 
 ## <a name="plan-user-rollout"></a>Planowanie wdrożenia użytkownika
 
-Plan wdrożenia usługi MFA powinno obejmować wdrożenia pilotażowego następuje etapach wdrażania, które znajdują się w pojemności usługi pomocy technicznej. Rozpocznij wdrożenia, stosując zasady dostępu warunkowego dla małej grupy użytkowników pilotażowych. Po dokonaniu oceny wpływu na użytkowników pilotażowych, proces używany i zachowania rejestracji, możesz dodać więcej grup do zasad lub dodać większą liczbę użytkowników do istniejącej grupy.
+Plan wdrożenia usługi MFA powinien obejmować wdrożenie pilotażowe, a następnie etapy wdrażania, które znajdują się w ramach zdolności produkcyjnych. Rozpocznij wdrażanie, stosując zasady dostępu warunkowego do małej grupy użytkowników pilotażowych. Po dokonaniu oceny wpływu na użytkowników pilotażowych, używany proces i zachowania rejestracji można dodać więcej grup do zasad lub dodać więcej użytkowników do istniejących grup.
 
-### <a name="user-communications"></a>Komunikacja użytkownika
+### <a name="user-communications"></a>Komunikacja użytkowników
 
-Koniecznie informować użytkowników, w przypadku komunikacji planowane o nadchodzących zmianach, wymagań dotyczących rejestracji usługi Azure MFA i wszelkie akcje niezbędne użytkownika. Zaleca się, że wiadomości są opracowywane w połączeniu z przedstawicieli w Twojej organizacji, takich jak działów komunikacji, zarządzanie zmianami i zarządzania zasobami ludzkimi.
+Ważne jest, aby informować użytkowników, w planowaną komunikację, o nadchodzących zmianach, wymaganiach dotyczących rejestracji w usłudze Azure MFA oraz o wszelkich niezbędnych akcjach użytkownika. Zalecamy komunikację z przedstawicielami firmy w organizacji, takimi jak komunikacja, zarządzanie zmianami lub działy kadr.
 
-Firma Microsoft udostępnia [szablony do komunikacji](https://aka.ms/mfatemplates) i [dokumentację użytkownika końcowego](../user-help/security-info-setup-signin.md) ułatwiające wersję roboczą komunikacji. Możesz wysłać użytkownikom [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com) można zarejestrować bezpośrednio wybierając **zabezpieczające** linki na tej stronie.
+Firma Microsoft udostępnia [Szablony komunikacji](https://aka.ms/mfatemplates) i [dokumentację użytkowników końcowych](../user-help/security-info-setup-signin.md) , co ułatwia przygotowanie komunikacji. Możesz wysyłać użytkowników [https://myprofile.microsoft.com](https://myprofile.microsoft.com) do rejestracji bezpośrednio, wybierając linki do **informacji zabezpieczających** na tej stronie.
 
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
-Usługa Azure Multi-Factor Authentication jest wdrażana przez wymuszenie zasad przy użyciu dostępu warunkowego. A [zasad dostępu warunkowego](../conditional-access/overview.md) mogą wymagać od użytkowników przeprowadzać uwierzytelnianie wieloskładnikowe w przypadku spełnienia określonych kryteriów takich jak:
+Uwierzytelnianie wieloskładnikowe systemu Azure jest wdrażane przez wymuszanie zasad z dostępem warunkowym. [Zasady dostępu warunkowego](../conditional-access/overview.md) mogą wymagać od użytkowników przeprowadzenia uwierzytelniania wieloskładnikowego w przypadku spełnienia określonych kryteriów, takich jak:
 
-* Wszyscy użytkownicy, określonego użytkownika, członek grupy lub przypisanej roli
-* Dostęp do aplikacji w chmurze
+* Wszyscy użytkownicy, określony użytkownik, członek grupy lub przypisana rola
+* Dostęp do określonej aplikacji w chmurze
 * Platforma urządzeń
 * Stan urządzenia
-* Lokalizacja sieciowa lub adres IP zlokalizowane geograficznie
+* Lokalizacja sieciowa lub adres IP zlokalizowany geograficznie
 * Aplikacje klienckie
-* Ryzyko logowania (wymaga Identity Protection)
+* Ryzyko związane z logowaniem (wymaga ochrony tożsamości)
 * Zgodne urządzenie
-* Urządzenia przyłączone do hybrydowej usługi Azure AD
-* Aplikacja kliencka zatwierdzone
+* Urządzenie dołączone do hybrydowej usługi Azure AD
+* Zatwierdzona aplikacja kliencka
 
-Użyj plakaty można dostosowywać i szablonów w wiadomości e-mail [materiałów wdrożenie uwierzytelniania wieloskładnikowego](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all) wdrażać usługę uwierzytelnianie wieloskładnikowe dla Twojej organizacji.
+Korzystaj z dostosowywalnych plakatów i szablonów [](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all) wiadomości e-mail w pakietach wdrożeniowych usługi MFA, aby wdrożyć uwierzytelnianie wieloskładnikowe w organizacji.
 
-## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Włącz uwierzytelnianie wieloskładnikowe przy użyciu dostępu warunkowego
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Włączanie uwierzytelniania wieloskładnikowego przy użyciu dostępu warunkowego
 
-Zasady dostępu warunkowego wymuszać rejestrację, wymagając od użytkowników niezarejestrowanych ukończyć rejestrację, podczas pierwszego logowania, kwestią istotną.
+Zasady dostępu warunkowego wymuszają rejestrację, co wymaga od użytkowników niezarejestrowanej rejestracji przy pierwszym logowaniu, ważnym zagadnieniem dotyczącym zabezpieczeń.
 
-[Usługa Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) przyczynia się zasady rejestracji i ryzyko automatycznego wykrywania i korygowania zasad do użycia usługi Azure Multi-Factor Authentication. Zasady mogą być tworzone, aby wymusić zmiany hasła, gdy istnieje zagrożenie, których bezpieczeństwo zostało naruszone tożsamości lub wymagać uwierzytelniania Wieloskładnikowego podczas logowania jest uznawany za ryzykowne przez następujące [zdarzenia](../reports-monitoring/concept-risk-events.md):
+[Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) współtworzy zarówno zasady rejestracji, jak i zautomatyzowane zasady wykrywania i korygowania zagrożeń w przypadku scenariusza usługi Azure wieloskładnikowe Authentication. Zasady mogą być tworzone w celu wymuszenia zmiany hasła w przypadku naruszenia złamanej tożsamości lub wymagania usługi MFA, gdy logowanie jest uznawane za ryzykowne przez następujące [zdarzenia](../reports-monitoring/concept-risk-events.md):
 
 * Ujawnione poświadczenia
 * Logowania z anonimowych adresów IP
@@ -76,102 +76,102 @@ Zasady dostępu warunkowego wymuszać rejestrację, wymagając od użytkowników
 * Logowania z zainfekowanych urządzeń
 * Logowania z adresów IP z podejrzanymi działaniami
 
-Niektóre zdarzenia o podwyższonym ryzyku wykrywane przez usługi Azure Active Directory Identity Protection występują w czasie rzeczywistym, a niektóre wymagane przetwarzanie w trybie offline. Administratorzy mogą wybrać zablokować użytkowników, którzy wykazują ryzykownego zachowania i korygowanie ręcznie, Wymagaj zmiany hasła lub wymagać usługi Multi-Factor authentication jako część swoich zasad dostępu warunkowego.
+Niektóre zdarzenia ryzyka wykryte przez Azure Active Directory Identity Protection są wykonywane w czasie rzeczywistym, a niektóre wymagają przetwarzania w trybie offline. Administratorzy mogą Zablokowani użytkownicy, którzy wykazują ryzykowne zachowania i korygują się ręcznie, wymagają zmiany hasła lub wymagają uwierzytelniania wieloskładnikowego w ramach zasad dostępu warunkowego.
 
-## <a name="define-network-locations"></a>Definiują lokalizacje sieciowe
+## <a name="define-network-locations"></a>Definiowanie lokalizacji sieciowych
 
-Zaleca się, że do definiowania ich przy użyciu sieci organizacji korzystanie z dostępu warunkowego [lokalizacje z nazwą](../conditional-access/location-condition.md#named-locations). Jeśli Twoja organizacja używa Identity Protection, należy wziąć pod uwagę przy użyciu zasad opartych na ryzykach zamiast nazwane lokalizacje.
+Zalecamy, aby organizacje używały dostępu warunkowego do definiowania sieci przy użyciu [nazwanych lokalizacji](../conditional-access/location-condition.md#named-locations). Jeśli Twoja organizacja korzysta z usługi Identity Protection, rozważ użycie zasad opartych na ryzyku zamiast nazwanych lokalizacji.
 
-### <a name="configuring-a-named-location"></a>Konfigurowanie nazwanych lokalizacji
+### <a name="configuring-a-named-location"></a>Konfigurowanie lokalizacji nazwanej
 
-1. Otwórz **usługi Azure Active Directory** w witrynie Azure portal
-2. Kliknij przycisk **dostępu warunkowego**
-3. Kliknij przycisk **lokalizacje z nazwą**
-4. Kliknij przycisk **nowej lokalizacji**
-5. W **nazwa** , podaj opisową nazwę
-6. Wybierz, czy definiujesz lokalizacji za pomocą zakresów adresów IP lub kraje/regiony
-   1. Jeśli za pomocą zakresów adresów IP
-      1. Zdecyduj, czy do oznaczania miejsca jako zaufany. Logowanie z zaufanej lokalizacji obniża ryzyko użytkownika związane z logowaniem. Oznacz tę lokalizację jako zaufany tylko, jeśli wiesz, że wprowadzone zakresy adresów IP są uznane i wiarygodne w Twojej organizacji.
+1. Otwórz **Azure Active Directory** w Azure Portal
+2. Kliknij pozycję **dostęp warunkowy**
+3. Kliknij pozycję **nazwane lokalizacje**
+4. Kliknij pozycję **Nowa lokalizacja**
+5. W polu **Nazwa** Podaj opisową nazwę
+6. Wybierz, czy chcesz definiować lokalizację przy użyciu zakresów adresów IP, krajów/regionów
+   1. W przypadku korzystania z zakresów adresów IP
+      1. Zdecyduj, czy chcesz oznaczyć lokalizację jako zaufaną. Logowanie z zaufanej lokalizacji obniża ryzyko użytkownika związane z logowaniem. Oznacz tę lokalizację jako zaufaną, Jeśli wiesz, że wprowadzone zakresy adresów IP są ustalone i wiarygodne w organizacji.
       2. Określ zakresy adresów IP
-   2. Jeśli przy użyciu kraje/regiony
-      1. Rozwiń menu rozwijane i wybierz kraje lub regiony, które chcesz zdefiniować dla tej lokalizacji o nazwie.
-      2. Zdecyduj, czy Uwzględnij nieznane obszary. Nieznane obszary to adresy IP, których nie można mapować na kraj/region.
+   2. Jeśli są używane kraje/regiony
+      1. Rozwiń menu rozwijane i wybierz kraje lub regiony, które chcesz zdefiniować dla tej nazwanej lokalizacji.
+      2. Zdecyduj, czy mają być uwzględniane nieznane obszary. Nieznane obszary to adresy IP, których nie można mapować na kraj/region.
 7. Kliknij przycisk **Utwórz**.
 
-## <a name="plan-authentication-methods"></a>Planowanie metody uwierzytelniania
+## <a name="plan-authentication-methods"></a>Zaplanuj metody uwierzytelniania
 
-Administratorzy mogą wybrać [metod uwierzytelniania](../authentication/concept-authentication-methods.md) czy mają być dostępne dla użytkowników. Jest ważne zezwolić na więcej niż metoda uwierzytelniania pojedynczego, aby użytkownicy mieli dostępnej metody tworzenia kopii zapasowych w przypadku, gdy ich podstawową metodą jest niedostępny. Dostępne dla administratorów umożliwić są następujące metody:
+Administratorzy mogą wybrać [metody uwierzytelniania](../authentication/concept-authentication-methods.md) , które mają być dostępne dla użytkowników. Ważne jest, aby zezwalać na więcej niż jedną metodę uwierzytelniania, dzięki czemu użytkownicy mają dostępną metodę tworzenia kopii zapasowych w przypadku, gdy ich podstawowa metoda jest niedostępna. Następujące metody są dostępne dla administratorów do włączenia:
 
 ### <a name="notification-through-mobile-app"></a>Powiadomienie przez aplikację mobilną
 
-Powiadomienia wypychane są wysyłane do aplikacji Microsoft Authenticator na swoim urządzeniu przenośnym. Użytkownik przegląda powiadomienia i wybiera **Zatwierdź** aby ukończyć weryfikację. Powiadomienia wypychane za pośrednictwem aplikacji mobilnej udostępniają opcję najmniej istotnych dla użytkowników. Są one również opcja najbardziej niezawodną i bezpieczną, ponieważ używają one połączeń danych zamiast telefonii.
+Powiadomienie wypychane jest wysyłane do aplikacji Microsoft Authenticator na urządzeniu przenośnym. Użytkownik wyświetli powiadomienie i wybierze opcję Zatwierdź, aby ukończyć weryfikację. Powiadomienia wypychane za pomocą aplikacji mobilnej zapewniają najmniej niepożądane opcje dla użytkowników. Są one również najbardziej niezawodną i bezpieczną opcją, ponieważ korzystają z połączenia danych, a nie z telefonem.
 
 > [!NOTE]
-> Jeśli Twoja organizacja ma personel pracujący w lub podróży do Chin, **powiadomienie przez aplikację mobilną** metody **urządzeń z systemem Android** nie działa w danym kraju. Alternatywne metody powinny udostępnione dla tych użytkowników.
+> Jeśli Twoja organizacja ma pracowników pracujących w trakcie lub podróży z Chin, **powiadomienie za pomocą metody aplikacji mobilnej** na **urządzeniach z systemem Android** nie działa w tym kraju. Dla tych użytkowników należy udostępnić alternatywne metody.
 
 ### <a name="verification-code-from-mobile-app"></a>Kod weryfikacyjny z aplikacji mobilnej
 
-Aplikacja mobilna, takie jak aplikacja Microsoft Authenticator generuje nowego kodu weryfikacyjnego OATH co 30 sekund. Użytkownik wprowadza kod weryfikacyjny w interfejsie logowania. Opcję aplikacja mobilna może służyć informację określającą, czy numer telefonu ma danych lub w sieci komórkowej sygnału.
+Aplikacja mobilna, taka jak aplikacja Microsoft Authenticator, generuje nowy kod weryfikacyjny OATH co 30 sekund. Użytkownik wprowadza kod weryfikacyjny do interfejsu logowania. Opcja aplikacji mobilnej może być używana bez względu na to, czy telefon ma sygnał danych lub sieć komórkową.
 
 ### <a name="call-to-phone"></a>Połączenie z telefonem
 
-Automatyczne połączenie głosowe znajduje się użytkownik. Użytkownik odbierze połączenie i naciska klawisz **#** na klawiaturze telefonu w celu zatwierdzenia proces uwierzytelniania. Wywołania na telefon jest doskonałą metodę tworzenia kopii zapasowej dla powiadomienia lub weryfikacji kodu z aplikacji mobilnej.
+Automatyczne połączenie głosowe jest umieszczane dla użytkownika. Użytkownik odbierze połączenie i naciśnie klawisz **#** na klawiaturze telefonu, aby zatwierdzić swoje uwierzytelnienie. Wywołanie do telefonu to świetna metoda tworzenia kopii zapasowej dotycząca powiadomień lub kodu weryfikacyjnego z aplikacji mobilnej.
 
-### <a name="text-message-to-phone"></a>Wiadomość SMS na telefon
+### <a name="text-message-to-phone"></a>SMS na telefon
 
-Wiadomość SMS zawierającą kod weryfikacyjny jest wysyłany do użytkownika, użytkownik jest monitowany o podanie kodu weryfikacyjnego w interfejsie logowania.
+Wiadomość tekstowa zawierająca kod weryfikacyjny jest wysyłana do użytkownika, użytkownik otrzymuje monit o wprowadzenie kodu weryfikacyjnego w interfejsie logowania.
 
 ### <a name="choose-verification-options"></a>Wybierz opcje weryfikacji
 
-1. Przejdź do **usługi Azure Active Directory**, **użytkowników**, **uwierzytelnianie wieloskładnikowe**.
+1. Przejdź do **Azure Active Directory**, **użytkowników**, **uwierzytelniania**wieloskładnikowego.
 
-   ![Dostęp do portalu usługi Multi-Factor Authentication z bloku użytkownicy usługi Azure AD w witrynie Azure portal](media/howto-mfa-getstarted/users-mfa.png)
+   ![Uzyskiwanie dostępu do portalu usługi MFA z poziomu bloku Użytkownicy usług Azure AD w Azure Portal](media/howto-mfa-getstarted/users-mfa.png)
 
-1. W nowej karcie, która zostanie otwarta, przejdź do **ustawienia usługi**.
-1. W obszarze **opcje weryfikacji**, zaznacz wszystkie pola dla metody dostępne dla użytkowników.
+1. Na nowej karcie, która otwiera okno dialogowe Przejdź do **ustawień usługi**.
+1. W obszarze **Opcje weryfikacji**Sprawdź wszystkie pola dla dostępnych dla użytkowników metod.
 
-   ![Konfigurowanie metod weryfikacji, na karcie Ustawienia usługi Multi-Factor Authentication](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
+   ![Konfigurowanie metod weryfikacji na karcie Ustawienia usługi uwierzytelniania wieloskładnikowego](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
 1. Kliknij przycisk **Zapisz**.
-1. Zamknij **ustawienia usługi** kartę.
+1. Zamknij kartę **Ustawienia usługi** .
 
 ## <a name="plan-registration-policy"></a>Planowanie zasad rejestracji
 
-Administratorzy należy określić, jak użytkownicy będą rejestrować się w ich metod. Organizacje powinny wybierać [włączyć nowe środowisko rejestracji połączone](howto-registration-mfa-sspr-combined.md) dla usługi Azure MFA i haseł resetowania (SSPR). Samoobsługowe Resetowanie HASEŁ umożliwia użytkownikom do zresetowania swojego hasła w bezpieczny sposób za pomocą tych samych metod, których używają do uwierzytelniania wieloskładnikowego. Zalecane jest ona połączona rejestracji, obecnie dostępna w publicznej wersji zapoznawczej, ponieważ jest to doskonałe środowisko dla użytkownikom możliwość zarejestrowania się jeden raz dla obu usług. Włączenie tych samych metod dla funkcji samoobsługowego resetowania HASEŁ i uwierzytelniania Wieloskładnikowego Azure umożliwi użytkownikom być zarejestrowana do używania obie funkcje.
+Administratorzy muszą określić, w jaki sposób użytkownicy będą rejestrować swoje metody. Organizacje powinny [włączyć nowe, połączone środowisko rejestracji](howto-registration-mfa-sspr-combined.md) dla usługi Azure MFA i samoobsługowego resetowania hasła (SSPR). SSPR umożliwia użytkownikom Resetowanie hasła w bezpieczny sposób przy użyciu tych samych metod, które są używane do uwierzytelniania wieloskładnikowego. Firma Microsoft zaleca, aby ta połączona rejestracja była obecnie dostępna w publicznej wersji zapoznawczej, ponieważ jest to doskonałe środowisko dla użytkowników z możliwością rejestrowania jednokrotnie dla obu usług. Włączenie tych samych metod dla usług SSPR i Azure MFA umożliwi zarejestrowanie użytkowników w celu korzystania z obu funkcji.
 
-### <a name="registration-with-identity-protection"></a>Rejestracja w usłudze Identity Protection
+### <a name="registration-with-identity-protection"></a>Rejestracja przy użyciu programu Identity Protection
 
-Jeśli Twoja organizacja używa usługi Azure Active Directory Identity Protection, [Konfigurowanie zasad rejestracji MFA](../identity-protection/howto-mfa-policy.md) na monitowanie użytkowników, aby zarejestrować podczas następnego logowania interakcyjnego.
+Jeśli Twoja organizacja korzysta z Azure Active Directory Identity Protection, [Skonfiguruj zasady rejestracji usługi MFA](../identity-protection/howto-mfa-policy.md) , aby monitować użytkowników o zarejestrowanie przy następnym logowaniu.
 
 ### <a name="registration-without-identity-protection"></a>Rejestracja bez ochrony tożsamości
 
-Jeśli Twoja organizacja nie ma licencji, które włączyć usługę Identity Protection, użytkownicy są monitowani o zarejestrować przy następnym uruchomieniu usługa MFA jest wymagana podczas logowania. Użytkowników nie może zostać zarejestrowana usługi MFA, jeśli nie korzystają z aplikacji chronionych za pomocą usługi MFA. Jest ważne dla wszystkich użytkowników zarejestrowane, tak aby nieupoważnione osoby nie można odgadnąć hasło użytkownika i rejestrowania dla usługi MFA w ich imieniu skutecznie przejmowaniu konta.
+Jeśli w organizacji nie ma licencji umożliwiających ochronę tożsamości, użytkownicy są monitowani o zarejestrowanie się przy następnym zalogowaniu do usługi MFA. Użytkownicy nie mogą być zarejestrowani w usłudze MFA, jeśli nie korzystają z aplikacji chronionych za pomocą usługi MFA. Ważne jest, aby wszyscy użytkownicy zarejestrowali się w taki sposób, że niewłaściwymi aktorami nie może odgadnąć hasła użytkownika i zarejestrować się w usłudze MFA w ich imieniu, efektywnie przyjmując kontrolę nad tym kontem.
 
 #### <a name="enforcing-registration"></a>Wymuszanie rejestracji
 
-Wykonując następujące czynności dostępu warunkowego zasady można wymusić użytkownicy rejestrowali się w celu uwierzytelniania wieloskładnikowego
+Korzystając z następujących kroków, zasady dostępu warunkowego mogą zmusić użytkowników do rejestracji w usłudze uwierzytelniania wieloskładnikowego
 
-1. Utwórz grupę, dodać wszystkich użytkowników, nie jest obecnie zarejestrowany.
-2. Przy użyciu dostępu warunkowego, wymuszanie uwierzytelniania wieloskładnikowego dla tej grupy, aby uzyskać dostęp do wszystkich zasobów.
-3. Okresowo ponownie oceń członkostwa w grupie, a następnie usuń użytkowników, którzy zarejestrowali z grupy.
+1. Utwórz grupę, Dodaj wszystkich użytkowników, którzy nie są obecnie zarejestrowani.
+2. Korzystając z dostępu warunkowego, Wymuś uwierzytelnianie wieloskładnikowe dla tej grupy, aby uzyskać dostęp do wszystkich zasobów.
+3. Okresowo należy ponownie oszacować członkostwo w grupie i usunąć użytkowników, którzy zostali zarejestrowani z grupy.
 
-Zarejestrowanych i niezarejestrowanych użytkowników usługi Azure MFA może zidentyfikować za pomocą poleceń programu PowerShell, które zależą od [modułu MSOnline PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
+Możesz identyfikować zarejestrowanych i niezarejestrowanych użytkowników usługi Azure MFA za pomocą poleceń programu PowerShell, które są zależne od [modułu MSOnline PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
 
-#### <a name="identify-registered-users"></a>Identyfikowanie użytkowników zarejestrowanych
+#### <a name="identify-registered-users"></a>Identyfikowanie zarejestrowanych użytkowników
 
 ```PowerShell
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
 ```
 
-#### <a name="identify-non-registered-users"></a>Identyfikowanie użytkowników niezarejestrowanych
+#### <a name="identify-non-registered-users"></a>Zidentyfikuj niezarejestrowanych użytkowników
 
 ```PowerShell
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
 ```
 
-### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Konwertuj użytkowników z usługi MFA na użytkownika dostępu warunkowego na podstawie uwierzytelniania Wieloskładnikowego
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Konwertowanie użytkowników z usługi MFA na użytkownika na podstawie dostępu warunkowego
 
-Jeśli włączonych użytkowników przy użyciu włączone dla użytkownika, a następnie wymuszone uwierzytelnianie wieloskładnikowe systemu Azure następujące polecenie programu PowerShell może być pomocny w podejmowaniu konwersji na dostępu warunkowego na podstawie usługi Azure Multi-Factor Authentication.
+Jeśli użytkownicy zostali włączeni przy użyciu włączonego użytkownika i wymuszania usługi Azure MFA Authentication, poniższy program PowerShell może pomóc Ci w konwersji do usługi Azure MFA opartej na dostępie warunkowym.
 
 ```PowerShell
 # Disable MFA for all users, keeping their MFA methods intact
@@ -180,8 +180,7 @@ Get-MsolUser -All | Disable-MFA -KeepMethods
 # Enforce MFA for all users
 Get-MsolUser -All | Set-MfaState -State Enforced
 
-# Wrapper to disable MFA with the option to keep the MFA
-# methods (to avoid having to proof-up again later)
+# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
 function Disable-MFA {
 
     [CmdletBinding()]
@@ -235,100 +234,100 @@ function Set-MfaState {
 
 ```
 
-## <a name="plan-conditional-access-policies"></a>Planowanie zasady dostępu warunkowego
+## <a name="plan-conditional-access-policies"></a>Planowanie zasad dostępu warunkowego
 
-Zaplanuj strategię zasad dostępu warunkowego, który ustali, kiedy są wymagane uwierzytelnianie wieloskładnikowe i inne kontrolki, znaleźć [co to jest dostęp warunkowy w usłudze Azure Active Directory?](../conditional-access/overview.md).
+Aby zaplanować strategię zasad dostępu warunkowego, która określi, kiedy są wymagane usługi MFA i inne kontrolki, zobacz [temat co to jest dostęp warunkowy w Azure Active Directory?](../conditional-access/overview.md).
 
-Należy zapobiegać przypadkowemu zablokowania dostępu do dzierżawy usługi Azure AD. Pozwala ograniczyć wpływ przypadkowego braku dostępu administracyjnego przez [tworzenie dwóch lub więcej kont dostępu awaryjnego w Twojej dzierżawie](../users-groups-roles/directory-emergency-access.md) i wyłączając je z zasady dostępu warunkowego.
+Ważne jest, aby zapobiec przypadkowemu zablokowaniu dzierżawy usługi Azure AD. Można ograniczyć wpływ tego nieumyślnego braku dostępu administracyjnego przez [utworzenie dwóch lub więcej kont dostępu awaryjnego w dzierżawie](../users-groups-roles/directory-emergency-access.md) i wykluczenie ich z zasad dostępu warunkowego.
 
 ### <a name="create-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
-1. Przejdź do **usługi Azure Active Directory**, **dostępu warunkowego**.
-1. Wybierz **nowe zasady**.
-1. Podaj znaczącą nazwę zasady.
-1. W obszarze **użytkowników i grup**:
-   * Na **Include** zaznacz **wszyscy użytkownicy** przycisku radiowego
-   * Na **wykluczyć** kartę, zaznacz pole **użytkowników i grup** i wybierz pozycję konta dostępu awaryjnego.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
+1. Przejdź do **Azure Active Directory**, **dostęp warunkowy**.
+1. Wybierz pozycję **nowe zasady**.
+1. Podaj opisową nazwę zasad.
+1. W obszarze **Użytkownicy i grupy**:
+   * Na karcie **Dołącz** wybierz przycisk radiowy **Wszyscy użytkownicy**
+   * Na karcie **Wyklucz** , zaznacz pole wyboru **Użytkownicy i grupy** , a następnie wybierz swoje konta dostępu awaryjnego.
    * Kliknij przycisk **Gotowe**.
-1. W obszarze **aplikacje w chmurze**, wybierz opcję **wszystkie aplikacje w chmurze** przycisku radiowego.
-   * OPCJONALNIE: Na **wykluczyć** karty, wybierz aplikacje w chmurze, które Twoja organizacja nie wymaga uwierzytelniania Wieloskładnikowego dla.
+1. W obszarze **aplikacje w chmurze**wybierz przycisk radiowy **wszystkie aplikacje w chmurze** .
+   * ZDEFINIOWAĆ Na karcie **Wyklucz** wybierz pozycję aplikacje w chmurze, dla których Twoja organizacja nie wymaga uwierzytelniania wieloskładnikowego.
    * Kliknij przycisk **Gotowe**.
-1. W obszarze **warunki** sekcji:
-   * OPCJONALNIE: Po włączeniu usługi Azure Identity Protection można oceny ryzyka logowania jako część zasad.
-   * OPCJONALNIE: Jeśli skonfigurowano zaufanych lokalizacji lub lokalizacje z nazwą, można określić zostać dołączone lub wykluczone z tych lokalizacji z zasad.
-1. W obszarze **Grant**, upewnij się, że **udzielić dostępu** przycisk radiowy zostanie wybrany.
-    * Pole wyboru dla **Wymagaj uwierzytelniania wieloskładnikowego**.
-    * Kliknij pozycję **Wybierz**.
-1. Pomiń **sesji** sekcji.
-1. Ustaw **Włącz zasady** Przełącz, aby **na**.
-1. Kliknij pozycję **Utwórz**.
+1. W sekcji **warunki** :
+   * ZDEFINIOWAĆ Jeśli włączono usługę Azure Identity Protection, możesz wybrać ocenę ryzyka związanego z logowaniem w ramach zasad.
+   * ZDEFINIOWAĆ Jeśli skonfigurowano Zaufane lokalizacje lub lokalizacje nazwane, można określić, czy te lokalizacje mają zostać dołączone lub wykluczone z zasad.
+1. W obszarze **Grant (Udziel**) Upewnij się, że wybrano przycisk radiowy **Udziel dostępu** .
+    * Zaznacz pole wyboru **Wymagaj uwierzytelniania**wieloskładnikowego.
+    * Kliknij przycisk **wybierz**.
+1. Pomiń sekcję **sesji** .
+1. Ustaw przełącznik **Włącz zasady** na wartość **włączone**.
+1. Kliknij przycisk **Utwórz**.
 
-![Tworzenie zasad dostępu warunkowego, aby włączyć usługę MFA dla użytkowników portalu platformy Azure w grupie pilotażowej](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+![Tworzenie zasad dostępu warunkowego w celu włączenia uwierzytelniania wieloskładnikowego dla użytkowników Azure Portal w grupie pilotażowej](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
-## <a name="plan-integration-with-on-premises-systems"></a>Planowanie integracji z lokalnymi systemami
+## <a name="plan-integration-with-on-premises-systems"></a>Planowanie integracji z systemami lokalnymi
 
-Niektórych starszych i lokalnych aplikacji, które nie są uwierzytelniane bezpośrednio w odniesieniu do usługi Azure AD wymagają dodatkowych czynności w celu użycia usługi MFA w tym:
+Niektóre starsze i lokalne aplikacje, które nie są uwierzytelniane bezpośrednio w usłudze Azure AD, wymagają dodatkowych kroków do korzystania z usługi MFA, w tym:
 
-* Starsze lokalne aplikacje, które będą musieli używać serwera proxy aplikacji.
-* Lokalne aplikacje usługi RADIUS, które będą musieli używać karty MFA za pomocą serwera NPS.
-* Lokalnych aplikacji usług AD FS, które będą musieli używać usługi MFA karty przy użyciu usługi AD FS 2016.
+* Starsze aplikacje lokalne, które będą musiały korzystać z serwera proxy aplikacji.
+* Lokalne aplikacje usługi RADIUS, które będą musiały korzystać z karty usługi MFA z serwerem NPS.
+* Lokalne AD FS aplikacje, które będą musiały korzystać z karty usługi MFA z AD FS 2016 lub nowszym.
 
-Aplikacje, które uwierzytelniać się bezpośrednio z usługą Azure AD i korzystają z nowoczesnego uwierzytelniania (WS-Fed, SAML, OAuth, OpenID Connect) można skorzystać z dostępu warunkowego bezpośrednio zasad.
+Aplikacje, które uwierzytelniają się bezpośrednio w usłudze Azure AD i mają nowoczesne uwierzytelnianie (przy użyciu protokołu WS-Direct, SAML, OAuth, OpenID Connect Connect), mogą bezpośrednio korzystać z zasad dostępu warunkowego.
 
-### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Usługa Azure MFA za pomocą serwera Proxy aplikacji usługi Azure AD
+### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Korzystanie z usługi Azure MFA za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD
 
-Aplikacje mogą być publikowane przechowywanych lokalnie do usługi Azure AD dzierżawy za pośrednictwem [serwera Proxy aplikacji usługi Azure AD](../manage-apps/application-proxy.md) i korzystać z zalet usługi Azure Multi-Factor Authentication, jeśli są one skonfigurowane do używania usługi Azure AD wstępnego uwierzytelniania.
+Aplikacje znajdujące się w środowisku lokalnym można publikować w dzierżawie usługi Azure AD za pomocą [usługi azure serwer proxy aplikacji usługi Azure AD](../manage-apps/application-proxy.md) i korzystać z uwierzytelniania wieloskładnikowego systemu Azure, jeśli są skonfigurowane do korzystania z uwierzytelniania wstępnego usługi Azure AD.
 
-Te aplikacje mogą ulec zasady dostępu warunkowego, które wymuszają usługi Azure Multi-Factor Authentication, podobnie jak wszystkie inne aplikacji platformy Azure zintegrowanych z usługą AD.
+Te aplikacje podlegają zasadom dostępu warunkowego, które wymuszają uwierzytelnianie wieloskładnikowe systemu Azure, podobnie jak w przypadku dowolnej innej aplikacji zintegrowanej z usługą Azure AD.
 
-Podobnie jeśli uwierzytelnianie wieloskładnikowe systemu Azure jest wymuszane dla operacji logowania użytkownika, lokalnych aplikacji opublikowanych przy użyciu serwera Proxy aplikacji usługi Azure AD będą chronione.
+Podobnie, jeśli usługa Azure MFA Authentication zostanie wymuszona dla wszystkich logowań użytkowników, lokalne aplikacje opublikowane przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD będą chronione.
 
-### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Integrowanie usługi Azure Multi-Factor Authentication z serwera zasad sieciowych
+### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Integrowanie uwierzytelniania wieloskładnikowego systemu Azure z serwerem zasad sieciowych
 
-Rozszerzenia serwera zasad sieciowych (NPS) dla usługi Azure MFA dodaje oparte na chmurze usługa MFA możliwości do infrastruktury uwierzytelniania przy użyciu istniejących serwerów. Za pomocą rozszerzenia serwera NPS można dodać połączenie telefoniczne, wiadomość SMS lub weryfikacji aplikacji telefonicznej do istniejącego przepływu uwierzytelniania. Integracja ta ma następujące ograniczenia:
+Rozszerzenie serwera zasad sieciowych (NPS) dla usługi Azure MFA dodaje funkcje MFA oparte na chmurze do infrastruktury uwierzytelniania przy użyciu istniejących serwerów. Za pomocą rozszerzenia serwera NPS możesz dodać połączenie telefoniczne, wiadomość SMS lub weryfikację aplikacji telefonicznej do istniejącego przepływu uwierzytelniania. Ta integracja ma następujące ograniczenia:
 
-* Przy użyciu protokołu CHAPv2 obsługiwane są tylko powiadomienia push aplikacji uwierzytelniania i połączenie głosowe.
-* Nie można zastosować zasady dostępu warunkowego.
+* W przypadku protokołu CHAPv2 obsługiwane są tylko powiadomienia wypychane aplikacji uwierzytelniania i rozmowy głosowej.
+* Nie można zastosować zasad dostępu warunkowego.
 
-Rozszerzenia serwera NPS działa jako karty między RADIUS i oparte na chmurze usługi Azure MFA, aby zapewnić drugi składnik uwierzytelniania do ochrony [VPN](howto-mfa-nps-extension-vpn.md), [połączenia bramy usług pulpitu zdalnego](howto-mfa-nps-extension-rdg.md), lub inne możliwością RADIUS aplikacje. Użytkownicy, czy rejestrowanie na potrzeby usługi Azure MFA w tym środowisku jest wysyłane wyzwanie dla wszystkich prób uwierzytelnienia, brak zasad dostępu warunkowego oznaczają, że usługa MFA jest zawsze wymagana.
+Rozszerzenie serwera NPS pełni rolę karty między usługą RADIUS i chmurową platformą Azure MFA w celu zapewnienia drugiego czynnika uwierzytelniania w celu ochrony [sieci VPN](howto-mfa-nps-extension-vpn.md), [połączeń bramy pulpit zdalny](howto-mfa-nps-extension-rdg.md)lub innych aplikacji z obsługą usługi RADIUS. Użytkownicy rejestrujący usługę Azure MFA w tym środowisku będą zobowiązani do wszystkich prób uwierzytelnienia, ale brak zasad dostępu warunkowego oznacza, że usługa MFA jest zawsze wymagana.
 
 #### <a name="implementing-your-nps-server"></a>Implementowanie serwera NPS
 
-Jeśli masz wdrożonego wystąpienia serwera zasad Sieciowych i jest używane, odwołuje się jeszcze [integrowanie istniejącej infrastruktury NPS przy użyciu usługi Azure Multi-Factor Authentication](howto-mfa-nps-extension.md). Jeśli konfigurujesz serwer zasad Sieciowych po raz pierwszy, zapoznaj się [serwera zasad sieciowych (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) instrukcje. Wskazówki dotyczące rozwiązywania problemów można znaleźć w artykule [komunikatami o błędach z rozszerzenia serwera NPS dla usługi Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
+Jeśli masz już wdrożone wystąpienie serwera zasad sieciowych i używasz go, w celu [zintegrowania istniejącej infrastruktury NPS z usługą Azure MFA Authentication](howto-mfa-nps-extension.md). Jeśli konfigurujesz serwer zasad sieciowych po raz pierwszy, zapoznaj się z instrukcjami, aby uzyskać instrukcje dotyczące [serwera zasad sieciowych (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) . Wskazówki dotyczące rozwiązywania problemów można znaleźć w artykule [Rozwiązywanie komunikatów o błędach z rozszerzenia serwera NPS dla usługi Azure](howto-mfa-nps-extension-errors.md)MFA.
 
-#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>Przygotowywanie usług NPS dla użytkowników, którzy nie są zarejestrowane na potrzeby usługi MFA
+#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>Przygotuj serwer zasad sieciowych dla użytkowników, którzy nie są zarejestrowani na potrzeby uwierzytelniania wieloskładnikowego
 
-Wybierz, co się dzieje, gdy do uwierzytelniania użytkowników, którzy nie są zarejestrowane w usłudze MFA. Użyj ustawienia rejestru `REQUIRE_USER_MATCH` w ścieżce rejestru `HKLM\Software\Microsoft\AzureMFA` do sterowania zachowaniem funkcji. To ustawienie jest dostępna opcja jednej konfiguracji.
+Wybierz, co się stanie, gdy użytkownicy, którzy nie są zarejestrowani przy użyciu usługi MFA, spróbują przeprowadzić uwierzytelnianie. Aby kontrolować zachowanie funkcji `REQUIRE_USER_MATCH` , użyj ustawienia rejestru `HKLM\Software\Microsoft\AzureMFA` w ścieżce rejestru. To ustawienie ma jedną opcję konfiguracji.
 
-| Klucz | Wartość | Domyślne |
+| Klucz | Wartość | Domyślny |
 | --- | --- | --- |
-| `REQUIRE_USER_MATCH` | PRAWDA / FAŁSZ | Nieustawione (odpowiada to TRUE) |
+| `REQUIRE_USER_MATCH` | PRAWDA/FAŁSZ | Nie ustawiono (odpowiednik wartości TRUE) |
 
-To ustawienie ma na celu ustalić, co należy zrobić, gdy użytkownik nie zostanie zarejestrowane na potrzeby usługi MFA. Efekty zmiany tego ustawienia są wymienione w poniższej tabeli.
+Celem tego ustawienia jest określenie, co należy zrobić, gdy użytkownik nie jest zarejestrowany na potrzeby usługi MFA. Efekty zmiany tego ustawienia są wymienione w poniższej tabeli.
 
-| Ustawienia | Stan usługi MFA użytkownika | Efekty |
+| Ustawienia | Stan usługi MFA użytkownika | Wpływu |
 | --- | --- | --- |
-| Klucz nie istnieje. | Niezarejestrowane | Żądanie uwierzytelniania MFA zakończy się niepowodzeniem |
-| Wartość ustawiona na wartość True / nieustawiona | Niezarejestrowane | Żądanie uwierzytelniania MFA zakończy się niepowodzeniem |
-| Klucz jest ustawiony na wartość False | Niezarejestrowane | Uwierzytelnianie bez usługi MFA |
-| Klucz jest ustawiony na wartość FAŁSZ lub True | Zarejestrowane | Musi uwierzytelniać za pomocą usługi MFA |
+| Klucz nie istnieje | Nie zarejestrowano | Żądanie MFA nie powiodło się |
+| Wartość ustawiona na true/nie ustawiona | Nie zarejestrowano | Żądanie MFA nie powiodło się |
+| Klucz ustawiony na wartość false | Nie zarejestrowano | Uwierzytelnianie bez usługi MFA |
+| Klucz ma wartość false lub prawda | Zarejestrowane | Uwierzytelnianie za pomocą usługi MFA |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>Integracja z usługą Active Directory Federation Services
 
-Jeśli Twoja organizacja jest sfederowana z usługą Azure AD, możesz użyć [usługi Azure Multi-Factor Authentication, aby zabezpieczyć zasoby usług AD FS](multi-factor-authentication-get-started-adfs.md), zarówno lokalne jak i w chmurze. Usługa Azure MFA umożliwia zmniejszenie hasła i podaj Bezpieczniejszym sposobem uwierzytelniania. Począwszy od systemu Windows Server 2016, można teraz skonfigurować uwierzytelnianie wieloskładnikowe Azure dla uwierzytelniania podstawowego.
+Jeśli Twoja organizacja jest federacyjnym usługą Azure AD, możesz użyć [usługi Azure MFA Authentication do zabezpieczenia AD FS zasobów](multi-factor-authentication-get-started-adfs.md), zarówno lokalnych, jak i w chmurze. Usługa Azure MFA pozwala skrócić hasła i zapewnić bezpieczniejszy sposób uwierzytelniania. Począwszy od systemu Windows Server 2016, można teraz skonfigurować usługę Azure MFA na potrzeby uwierzytelniania podstawowego.
 
-W odróżnieniu od z usługami AD FS w systemie Windows Server 2012 R2, adaptera AD FS 2016 usługi Azure MFA integruje się bezpośrednio z usługą Azure AD i nie wymaga na lokalnym serwerze Azure MFA. Karty Azure MFA jest wbudowana w system Windows Server 2016, a nie trzeba, aby uzyskać więcej informacji.
+W przeciwieństwie do AD FS w systemie Windows Server 2012 R2, karta usługi Azure MFA AD FS 2016 integruje się bezpośrednio z usługą Azure AD i nie wymaga lokalnego serwera usługi Azure MFA. Karta Azure MFA jest wbudowana w system Windows Server 2016 i nie ma potrzeby dodatkowej instalacji.
 
-Gdy za pomocą usługi Azure MFA przy użyciu usługi AD FS 2016 i aplikacji docelowej będzie podlegała zasadom dostępu warunkowego, istnieją dodatkowe zagadnienia:
+W przypadku korzystania z usługi Azure MFA z AD FS 2016, a aplikacja docelowa podlega zasadom dostępu warunkowego, istnieją dodatkowe zagadnienia:
 
-* Dostęp warunkowy jest dostępny, gdy aplikacja jest Sfederowane z usługą AD FS 2016 jednostki uzależnionej firm do usługi Azure AD.
-* Dostęp warunkowy nie jest dostępna, gdy aplikacji jest uzależniona do usługi AD FS 2016 i jest zarządzany lub Sfederowanych z usługą AD FS 2016.
-* Dostęp warunkowy również nie jest dostępna podczas usługi AD FS 2016 jest skonfigurowany do używania usługi Azure MFA jako podstawową metodę uwierzytelniania.
+* Dostęp warunkowy jest dostępny, gdy aplikacja jest jednostką uzależnioną w usłudze Azure AD, federacyjna z AD FS 2016 lub nowszą.
+* Dostęp warunkowy nie jest dostępny, gdy aplikacja jest jednostką uzależnioną do AD FS 2016 lub AD FS 2019 i jest zarządzana lub federacyjna z AD FS 2016 lub AD FS 2019.
+* Dostęp warunkowy jest również niedostępny, gdy AD FS 2016 lub AD FS 2019 jest skonfigurowany do korzystania z usługi Azure MFA jako metody uwierzytelniania podstawowego.
 
-#### <a name="ad-fs-logging"></a>Usługi AD FS rejestrowania
+#### <a name="ad-fs-logging"></a>Rejestrowanie AD FS
 
-Standardowa usług AD FS 2016 logowania w dzienniku zabezpieczeń Windows i w dzienniku administratora programu AD FS zawiera informacje dotyczące żądania uwierzytelniania oraz ich powodzenia lub niepowodzenia. Dane dziennika zdarzeń w ramach tych zdarzeń będzie wskazywać, czy użyto usługi Azure MFA. Na przykład może zawierać identyfikator zdarzenia inspekcji FS AD 1200:
+Standard AD FS 2016 i 2019 logowanie zarówno w dzienniku zabezpieczeń systemu Windows, jak i w dzienniku administratora AD FS, zawiera informacje o żądaniach uwierzytelniania i ich powodzeniu lub niepowodzeniu. Dane dziennika zdarzeń w ramach tych zdarzeń wskazują, czy usługa Azure MFA została użyta. Na przykład zdarzenie AD FS inspekcji o IDENTYFIKATORze 1200 może zawierać:
 
 ```
 <MfaPerformed>true</MfaPerformed>
@@ -337,47 +336,50 @@ Standardowa usług AD FS 2016 logowania w dzienniku zabezpieczeń Windows i w dz
 
 #### <a name="renew-and-manage-certificates"></a>Odnawianie certyfikatów i zarządzanie nimi
 
-Na każdym serwerze usług AD FS na komputerze lokalnym My Store będzie istnieć podpisem usługi Azure MFA certyfikatu zatytułowanym OU = Microsoft AD FS Azure MFA, która zawiera datę wygaśnięcia certyfikatu. Sprawdzania okresu ważności certyfikatu na każdym serwerze usług AD FS, aby określić datę wygaśnięcia.
+Na każdym serwerze AD FS, na komputerze lokalnym mój magazyn, zostanie wypisana certyfikat usługi Azure MFA z podpisem własnym zatytułowany OU = Microsoft AD FS Azure MFA, który zawiera datę wygaśnięcia certyfikatu. Sprawdź okres ważności tego certyfikatu na każdym serwerze AD FS, aby określić datę wygaśnięcia.
 
-Jeśli okres ważności certyfikatów jest bliskie wygaśnięcia, [rejestrowania i weryfikowania nowego certyfikatu uwierzytelniania Wieloskładnikowego na każdym serwerze usług AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
+Jeśli okres ważności certyfikatów zbliża się do wygaśnięcia, [Wygeneruj i Sprawdź nowy certyfikat usługi MFA na każdym serwerze AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
-Poniższe wskazówki opisano, jak zarządzać certyfikaty usługi Azure MFA na serwerach usług AD FS. Podczas konfigurowania usług AD FS z usługą Azure MFA, certyfikaty wygenerowane za pomocą `New-AdfsAzureMfaTenantCertificate` polecenia cmdlet programu PowerShell są ważne przez 2 lata. Odnów i zainstalować certyfikatów przed wygaśnięciem owalny przerw w działaniu usługi MFA.
+Poniższe wskazówki zawierają szczegółowe informacje na temat zarządzania certyfikatami usługi Azure MFA na serwerach AD FS. W przypadku konfigurowania AD FS za pomocą usługi Azure MFA certyfikaty wygenerowane za `New-AdfsAzureMfaTenantCertificate` pośrednictwem polecenia cmdlet programu PowerShell są ważne przez 2 lata. Odnów i zainstaluj odnowione certyfikaty przed wygaśnięciem, aby ovoid przerwy w działaniu usługi MFA.
 
-## <a name="implement-your-plan"></a>Implementowanie własnego planu dotyczącego
+## <a name="implement-your-plan"></a>Implementowanie planu
 
-Teraz, że zaplanowano rozwiązania, można wdrożyć, wykonując poniższe kroki:
+Po zaplanowaniu rozwiązania możesz wdrożyć, wykonując poniższe kroki:
 
-1. Spełnia wszelkich niezbędnych wymagań wstępnych
-   1. Wdrażanie [program Azure AD Connect](../hybrid/whatis-hybrid-identity.md) dla dowolnego scenariuszy hybrydowych
-   1. Wdrażanie [serwera Proxy aplikacji usługi Azure AD](../manage-apps/application-proxy.md) dla dowolnej aplikacji w środowisku lokalnym opublikowana na potrzeby dostępu do chmury
-   1. Wdrażanie [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) dla uwierzytelniania usługi RADIUS
-   1. Upewnij się, że użytkownicy korzystają z nowoczesnego uwierzytelniania, włączone do obsługiwanych wersji programu Microsoft Office
-1. Konfigurowanie wybrane [metody uwierzytelniania](#choose-verification-options)
-1. Zdefiniuj swoje [o nazwie lokalizacje sieciowe](../conditional-access/location-condition.md#named-locations)
-1. Wybierz grupy, aby rozpocząć wdrażanie usługi MFA.
-1. Konfigurowanie usługi [zasady dostępu warunkowego](#create-conditional-access-policy)
-1. Skonfiguruj zasady rejestracji usługi MFA
-   1. [Połączone uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ](howto-registration-mfa-sspr-combined.md)
-   1. Za pomocą [Identity Protection](../identity-protection/howto-mfa-policy.md)
-1. Wyślij komunikacji użytkownika i Uzyskaj użytkownikom zarejestrowanie się na stronie [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
-1. [Informacje o zachować, który jest zarejestrowany](#identify-non-registered-users)
+1. Spełnienie wszelkich niezbędnych wymagań wstępnych
+   1. Wdrażanie [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) dla dowolnych scenariuszy hybrydowych
+   1. Wdróż [serwer proxy aplikacji usługi Azure AD platformy Azure](../manage-apps/application-proxy.md) dla wszystkich aplikacji lokalnych opublikowanych na potrzeby dostępu do chmury
+   1. Wdróż [serwer NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) pod kątem dowolnego uwierzytelniania usługi RADIUS
+   1. Upewnij się, że użytkownicy przeprowadzili uaktualnienie do obsługiwanych wersji Microsoft Office z włączonym nowoczesnym uwierzytelnianiem
+1. Skonfiguruj wybrane [metody uwierzytelniania](#choose-verification-options)
+1. Definiowanie [nazwanych lokalizacji sieciowych](../conditional-access/location-condition.md#named-locations)
+1. Wybierz grupy, aby rozpocząć wdrażanie MFA.
+1. Konfigurowanie [zasad dostępu warunkowego](#create-conditional-access-policy)
+1. Konfigurowanie zasad rejestracji usługi MFA
+   1. [Połączone usługi MFA i SSPR](howto-registration-mfa-sspr-combined.md)
+   1. Z usługą [Identity Protection](../identity-protection/howto-mfa-policy.md)
+1. Wysyłanie komunikacji użytkowników i uzyskiwanie użytkownikom rejestracji[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. [Śledź użytkowników zarejestrowanych](#identify-non-registered-users)
 
-## <a name="manage-your-solution"></a>Rozwiązania do zarządzania
+> [!TIP]
+> Użytkownicy w chmurze dla instytucji rządowych mogą rejestrować się w[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
-Raporty dotyczące usługi Azure MFA
+## <a name="manage-your-solution"></a>Zarządzanie rozwiązaniem
 
-Usługa Azure Multi-Factor Authentication udostępnia raporty za pomocą witryny Azure portal:
+Raporty usługi Azure MFA
+
+Uwierzytelnianie wieloskładnikowe systemu Azure udostępnia raporty za pomocą Azure Portal:
 
 | Raport | Location | Opis |
 | --- | --- | --- |
-| Alerty użycia i nadużyć | Usługa Azure AD > logowania | Zawiera informacje na temat użycia ogólnej, podsumowanie dotyczące użytkowników i szczegóły użytkownika; jak również historię alertów oszustwa przesłanych w zakresie dat., określony. |
+| Alerty użycia i oszustw | Logowanie za pomocą usługi Azure AD > | Zawiera informacje dotyczące ogólnego użycia, podsumowania użytkowników i szczegółów użytkownika; a także historia alertów o oszustwie przesłanych w określonym zakresie dat. |
 
-## <a name="troubleshoot-mfa-issues"></a>Rozwiązywanie problemów z usługi MFA
+## <a name="troubleshoot-mfa-issues"></a>Rozwiązywanie problemów z usługą MFA
 
-Znajdź rozwiązania typowych problemów z usługą Azure MFA na [artykułu Rozwiązywanie problemów z usługą Azure Multi-Factor Authentication](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) na Support Center firmy Microsoft.
+Poznaj rozwiązania typowych problemów z usługą Azure MFA w artykule dotyczącym [rozwiązywania problemów z usługą Azure wieloskładnikowe Authentication](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) w centrum pomoc techniczna firmy Microsoft.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Co to są metody uwierzytelniania?](concept-authentication-methods.md)
-* [Włącz konwergentnej rejestracji dla usługi Azure Multi-Factor Authentication i Azure AD samoobsługowego resetowania haseł](concept-registration-mfa-sspr-converged.md)
-* Dlaczego został użytkownika zostanie wyświetlony monit lub bez wyświetlania monitu o wykonać uwierzytelnianie wieloskładnikowe? Zobacz sekcję [raport logowania usługi Azure AD w raportach w dokumencie usługi Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+* [Włącz zbieżną rejestrację na potrzeby uwierzytelniania wieloskładnikowego platformy Azure i funkcji samoobsługowego resetowania hasła usługi Azure AD](concept-registration-mfa-sspr-converged.md)
+* Dlaczego użytkownik był monitowany lub nie ma monitu o przeprowadzenie uwierzytelniania MFA? Zapoznaj się z sekcją [raport dotyczący logowania usługi Azure AD w raportach w programie Azure MFA Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).

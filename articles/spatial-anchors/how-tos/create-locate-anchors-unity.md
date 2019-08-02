@@ -1,6 +1,6 @@
 ---
-title: Jak utworzyć i Znajdź kotwic przy użyciu Azure przestrzenne kotwic na platformie Unity | Dokumentacja firmy Microsoft
-description: Szczegółowe informacje dotyczące tworzenia i Znajdź zakotwiczenia przy użyciu Azure przestrzenne kotwic na platformie Unity.
+title: Jak utworzyć i zlokalizować kotwice przy użyciu kotwic Azure przestrzennego w środowisku Unity | Microsoft Docs
+description: Szczegółowe wyjaśnienie sposobu tworzenia i lokalizowania kotwic przy użyciu kotwic przestrzennych platformy Azure w środowisku Unity.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5a66746aa20e8397a4383b19cb0896faac8946d8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 343635db03273888fe1bd3747dfbe2502a23bff9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671992"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561452"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Jak utworzyć i Znajdź kotwic przy użyciu Azure przestrzenne kotwic na platformie Unity
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Jak utworzyć i zlokalizować kotwice przy użyciu kotwic Azure przestrzennego w środowisku Unity
 
 > [!div  class="op_single_selector"]
 > * [Unity](create-locate-anchors-unity.md)
@@ -25,25 +25,25 @@ ms.locfileid: "67671992"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami. Obsługuje ona kilka różne środowiska projektowania. W tym artykule będzie przejdziemy do sposobu używania Azure przestrzenne kotwic zestawu SDK na platformie Unity, do:
+Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami. Obsługuje kilka różnych środowisk programistycznych. W tym artykule szczegółowemy, jak używać zestawu Azure przestrzenny zakotwiczenias w środowisku Unity, aby:
 
-- Poprawnie skonfigurować i zarządzaj nimi sesję kotwic przestrzenne platformy Azure.
-- Utwórz i ustaw właściwości na lokalnych zakotwiczenia.
-- Przekazywanie ich do chmury.
-- Zlokalizuj i Usuń przestrzenne kotwic chmury.
+- Poprawna konfiguracja i zarządzanie sesją zakotwiczeń przestrzennych platformy Azure.
+- Tworzenie i Ustawianie właściwości dla kotwic lokalnych.
+- Przekaż je do chmury.
+- Znajdź i Usuń kotwice przestrzenne w chmurze.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten przewodnik, upewnij się, że masz:
 
-- Zapoznaj się z artykułem [Przegląd kotwic przestrzenne Azure](../overview.md).
-- Ukończono jeden z [5-minutowe Przewodniki Szybki Start](../index.yml).
-- Podstawową wiedzę na temat na C# i Unity.
-- Podstawową wiedzę na temat na <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> Jeśli chcesz używać systemu Android, lub <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> Jeśli chcesz używać dla systemu iOS.
+- Zapoznaj się z [omówieniem zakotwiczenia przestrzennego platformy Azure](../overview.md).
+- Ukończono jedno z [5-minutowych przewodników szybki start](../index.yml).
+- Podstawowa wiedza na C# temat platformy i aparatu Unity.
+- Podstawowa wiedza na temat <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> , jeśli chcesz użyć systemu Android lub <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a> , jeśli chcesz użyć systemu iOS.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-Dowiedz się więcej o [CloudSpatialAnchorSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession) klasy.
+Dowiedz się więcej o klasie [CloudSpatialAnchorSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession) .
 
 ```csharp
     CloudSpatialAnchorSession cloudSession;
@@ -53,7 +53,7 @@ Dowiedz się więcej o [CloudSpatialAnchorSession](https://docs.microsoft.com/do
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-Dowiedz się więcej o [SessionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration) klasy.
+Dowiedz się więcej o klasie [SessionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration) .
 
 ```csharp
     this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
@@ -67,7 +67,7 @@ Dowiedz się więcej o [SessionConfiguration](https://docs.microsoft.com/dotnet/
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-Dowiedz się więcej o [TokenRequiredDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate) delegować.
+Dowiedz się więcej na temat delegata [TokenRequiredDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate) .
 
 ```csharp
     this.cloudSession.TokenRequired += (object sender, TokenRequiredEventArgs args) =>
@@ -117,15 +117,11 @@ Dowiedz się więcej o [TokenRequiredDelegate](https://docs.microsoft.com/dotnet
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-Dowiedz się więcej o [Start](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) metody.
+Dowiedz się więcej o metodzie [Start](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) .
 
 ```csharp
-#if UNITY_IOS
-    this.arkitSession = UnityARSessionNativeInterface.GetARSessionNativeInterface();
-    this.cloudSession.Session = this.arkitSession.GetNativeSessionPtr();
-#elif UNITY_ANDROID
-    this.nativeSession = GoogleARCoreInternal.ARCoreAndroidLifecycleManager.Instance.NativeSession;
-    this.cloudSession.Session = this.nativeSession.SessionHandle;
+#if UNITY_ANDROID || UNITY_IOS
+    this.cloudSession.Session = aRSession.subsystem.nativePtr.GetPlatformPointer();
 #elif UNITY_WSA || WINDOWS_UWP
     // No need to set a native session pointer for HoloLens.
 #else
@@ -137,31 +133,29 @@ Dowiedz się więcej o [Start](https://docs.microsoft.com/dotnet/api/microsoft.a
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-Dowiedz się więcej o [ProcessFrame](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) metody.
+Dowiedz się więcej o metodzie [ProcessFrame](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) .
 
 ```csharp
-#if UNITY_ANDROID
-    long latestFrameTimeStamp = this.nativeSession.FrameApi.GetTimestamp();
-    bool newFrameToProcess = latestFrameTimeStamp > this.lastFrameProcessedTimeStamp;
-    if (newFrameToProcess)
+#if UNITY_ANDROID || UNITY_IOS
+    XRCameraFrame xRCameraFrame;
+    if (aRCameraManager.subsystem.TryGetLatestFrame(cameraParams, out xRCameraFrame))
     {
-        this.cloudSession.ProcessFrame(this.nativeSession.FrameHandle);
-        this.lastFrameProcessedTimeStamp = latestFrameTimeStamp;
-    }
-#endif
-#if UNITY_IOS
-    UnityARSessionNativeInterface.ARFrameUpdatedEvent += UnityARSessionNativeInterface_ARFrameUpdatedEvent;
+        long latestFrameTimeStamp = xRCameraFrame.timestampNs;
+        
+        bool newFrameToProcess = latestFrameTimeStamp > lastFrameProcessedTimeStamp;
 
-    void UnityARSessionNativeInterface_ARFrameUpdatedEvent(UnityARCamera camera)
-    {
-        this.cloudSession.ProcessFrame(this.arkitSession.GetNativeFramePtr());
+        if (newFrameToProcess)
+        {
+            session.ProcessFrame(xRCameraFrame.nativePtr.GetPlatformPointer());
+            lastFrameProcessedTimeStamp = latestFrameTimeStamp;
+        }
     }
 #endif
 ```
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-Dowiedz się więcej o [SessionUpdatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) delegować.
+Dowiedz się więcej na temat delegata [SessionUpdatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) .
 
 ```csharp
     this.cloudSession.SessionUpdated += (object sender, SessionUpdatedEventArgs args)
@@ -175,32 +169,17 @@ Dowiedz się więcej o [SessionUpdatedDelegate](https://docs.microsoft.com/dotne
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-Dowiedz się więcej o [CloudSpatialAnchor](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor) klasy.
+Dowiedz się więcej o klasie [CloudSpatialAnchor](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor) .
 
 ```csharp
     // Create a local anchor, perhaps by hit-testing and spawning an object within the scene
     Vector3 hitPosition = new Vector3();
-#if UNITY_IOS
-    var screenPosition = Camera.main.ScreenToViewportPoint(new Vector3(0.5f, 0.5f));
-    ARPoint point = new ARPoint
+#if UNITY_ANDROID || UNITY_IOS
+    List<ARRaycastHit> aRRaycastHits = new List<ARRaycastHit>();
+    if(arRaycastManager.Raycast(touch.position, aRRaycastHits) && aRRaycastHits.Count > 0)
     {
-        x = screenPosition.x,
-        y = screenPosition.y
-    };
-    var hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface().HitTest(point, ARHitTestResultType.ARHitTestResultTypeEstimatedHorizontalPlane | ARHitTestResultType.ARHitTestResultTypeExistingPlaneUsingExtent);
-    if (hitResults.Count > 0)
-    {
-        // The hitTest method sorts the resulting list by increasing distance from the camera
-        // The first hit result will usually be the most relevant when responding to user input
-        ARHitTestResult hitResult = hitResults[0];
-        hitPosition = UnityARMatrixOps.GetPosition(hitResult.worldTransform);
-    }
-#elif UNITY_ANDROID
-    TrackableHit hit;
-    TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon | TrackableHitFlags.FeaturePointWithSurfaceNormal;
-    if (Frame.Raycast(0.5f, 0.5f, raycastFilter, out hit))
-    {
-        hitPosition = hit.Pose.position;
+        ARRaycastHit hit = aRRaycastHits[0];
+        hitPosition = hit.pose.position;
     }
 #elif WINDOWS_UWP || UNITY_WSA
     RaycastHit hit;
@@ -225,7 +204,7 @@ Dowiedz się więcej o [CloudSpatialAnchor](https://docs.microsoft.com/dotnet/ap
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-Dowiedz się więcej o [GetSessionStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) metody.
+Dowiedz się więcej o metodzie [GetSessionStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) .
 
 ```csharp
     SessionStatus value = await this.cloudSession.GetSessionStatusAsync();
@@ -235,7 +214,7 @@ Dowiedz się więcej o [GetSessionStatusAsync](https://docs.microsoft.com/dotnet
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-Dowiedz się więcej o [parametr AppProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties) właściwości.
+Dowiedz się więcej o właściwości [AppProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties) .
 
 ```csharp
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor() { LocalAnchor = localAnchor };
@@ -246,7 +225,7 @@ Dowiedz się więcej o [parametr AppProperties](https://docs.microsoft.com/dotne
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-Dowiedz się więcej o [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) metody.
+Dowiedz się więcej o metodzie [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) .
 
 ```csharp
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -256,7 +235,7 @@ Dowiedz się więcej o [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-Dowiedz się więcej o [GetAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) metody.
+Dowiedz się więcej o metodzie [GetAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) .
 
 ```csharp
     var anchor = await cloudSession.GetAnchorPropertiesAsync(@"anchorId");
@@ -269,7 +248,7 @@ Dowiedz się więcej o [GetAnchorPropertiesAsync](https://docs.microsoft.com/dot
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-Dowiedz się więcej o [wygaśnięcia](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration) właściwości.
+Dowiedz się więcej o właściwości [wygaśnięcia](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration) .
 
 ```csharp
     cloudAnchor.Expiration = DateTimeOffset.Now.AddDays(7);
@@ -277,7 +256,7 @@ Dowiedz się więcej o [wygaśnięcia](https://docs.microsoft.com/dotnet/api/mic
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Dowiedz się więcej o [CreateWatcher](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) metody.
+Dowiedz się więcej [o metodzie](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) .
 
 ```csharp
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
@@ -287,7 +266,7 @@ Dowiedz się więcej o [CreateWatcher](https://docs.microsoft.com/dotnet/api/mic
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-Dowiedz się więcej o [AnchorLocatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate) delegować.
+Dowiedz się więcej na temat delegata [AnchorLocatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate) .
 
 ```csharp
     this.cloudSession.AnchorLocated += (object sender, AnchorLocatedEventArgs args) =>
@@ -316,7 +295,7 @@ Dowiedz się więcej o [AnchorLocatedDelegate](https://docs.microsoft.com/dotnet
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-Dowiedz się więcej o [DeleteAnchorAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) metody.
+Dowiedz się więcej o metodzie [DeleteAnchorAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) .
 
 ```csharp
     await this.cloudSession..DeleteAnchorAsync(cloudAnchor);
@@ -325,7 +304,7 @@ Dowiedz się więcej o [DeleteAnchorAsync](https://docs.microsoft.com/dotnet/api
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-Dowiedz się więcej o [zatrzymać](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) metody.
+Dowiedz się więcej o metodzie [stop](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) .
 
 ```csharp
     this.cloudSession.Stop();
@@ -333,7 +312,7 @@ Dowiedz się więcej o [zatrzymać](https://docs.microsoft.com/dotnet/api/micros
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Dowiedz się więcej o [resetowania](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) metody.
+Dowiedz się więcej [](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) o metodzie resetowania.
 
 ```csharp
     this.cloudSession.Reset();
@@ -341,7 +320,7 @@ Dowiedz się więcej o [resetowania](https://docs.microsoft.com/dotnet/api/micro
 
 [!INCLUDE [Cleanup](../../../includes/spatial-anchors-create-locate-anchors-cleanup-unity.md)]
 
-Dowiedz się więcej o [Dispose](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) metody.
+Dowiedz się więcej o metodzie [Dispose](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) .
 
 ```csharp
     this.cloudSession.Dispose();

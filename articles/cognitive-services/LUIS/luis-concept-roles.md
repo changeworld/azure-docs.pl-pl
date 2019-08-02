@@ -1,5 +1,5 @@
 ---
-title: Role dla jednostek
+title: Role dla jednostek — LUIS
 titleSuffix: Azure Cognitive Services
 description: Role są podtypy nazwanych, kontekstowych podmiotu używana tylko we wzorcach. Na przykład w wypowiedź `buy a ticket from New York to London`, zarówno w Nowym Jorku, jak i w Londynie są miast, ale każda ma inne znaczenie w zdaniu. Nowy Jork jest miasto źródła i Londyn jest miasta docelowego.
 services: cognitive-services
@@ -9,25 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 318e71b68bbabeeef34c75a412f9fdd5b6db754a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4bd61ea74055a04718d8a9d8d5ccd42671af2ac
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073025"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638337"
 ---
-# <a name="entity-roles-for-contextual-subtypes"></a>Role jednostki dla podtypów kontekstowych
+# <a name="entity-roles-for-contextual-subtypes"></a>Role jednostek dla podtypów kontekstowych
 
-Zezwalaj na role mają nazwane podtypy jednostki. Rolę można używać z dowolnego typu wbudowanych lub niestandardowych instytucji rządowej USA i używać zarówno w przykładzie wypowiedzi i wzorce. 
+Role umożliwiają jednostkom posiadanie nazwanych podtypów. Roli można używać z dowolnym prekompilowanym lub niestandardowym typem jednostki i używanym w obu przykładach wyrażenia długości i wzorców. 
 
 <a name="example-role-for-entities"></a>
 <a name="roles-with-prebuilt-entities"></a>
 
-## <a name="machine-learned-entity-example-of-roles"></a>Przykład przedstawiono maszyny jednostki ról
+## <a name="machine-learned-entity-example-of-roles"></a>Przykład ról poznania maszynowego
 
-W polu wypowiedź "Kup biletu z **Nowy Jork** do **Londyn**, zarówno w Nowym Jorku, jak i w Londynie są miast, ale każda ma inne znaczenie w zdaniu. Nowy Jork jest miasto źródła i Londyn jest miasta docelowego. 
+W wypowiedź "Kup bilet od **Nowego Jorku** do **Londyn**, zarówno Nowy Jork, jak i Londyn są miastami, ale każdy z nich ma inne znaczenie w zdaniu. Nowy Jork jest miasto źródła i Londyn jest miasta docelowego. 
 
 ```
 buy a ticket from New York to London
@@ -35,50 +35,50 @@ buy a ticket from New York to London
 
 Role nadaj nazwę różnic:
 
-|Typ jednostki|Nazwa jednostki|Rola|Przeznaczenie|
+|Typ jednostki|Nazwa jednostki|Role|Cel|
 |--|--|--|--|
-|Proste|Lokalizacja|źródło|Jeżeli płaszczyzny pozostawia z|
-|Proste|Lokalizacja|miejsce docelowe|gdzie wyładowuje płaszczyzna|
+|Proste|Location|źródło|Jeżeli płaszczyzny pozostawia z|
+|Proste|Location|miejsce docelowe|gdzie wyładowuje płaszczyzna|
 
-## <a name="non-machine-learned-entity-example-of-roles"></a>Przykład — przedstawiono maszyny jednostki ról
+## <a name="non-machine-learned-entity-example-of-roles"></a>Przykład ról niezgodnych z maszyną
 
-W wypowiedź "Zaplanuj spotkanie od 8 do 9", obie liczby wskazują godzinę, ale zawsze ma inne znaczenie w wypowiedź. Role zawierają nazwę różnice. 
+W wypowiedź "Zaplanuj spotkanie od 8 do 9", obie liczby wskazują godzinę, ale każdy z nich ma inne znaczenie w wypowiedź. Role podają nazwę różnic. 
 
 ```
 Schedule the meeting from 8 to 9
 ```
 
-|Typ jednostki|Nazwa roli|Wartość|
+|Typ jednostki|Nazwa roli|Value|
 |--|--|--|
-|Wstępnie utworzone datetimeV2|Godzina rozpoczęcia|8|
-|Wstępnie utworzone datetimeV2|Czas zakończenia|9|
+|Wstępnie utworzone datetimeV2|Rozpoczęcia|8|
+|Wstępnie utworzone datetimeV2|Endtime|9|
 
-## <a name="are-multiple-entities-in-an-utterance-the-same-thing-as-roles"></a>Czy wiele jednostek w wypowiedź tak samo jak role? 
+## <a name="are-multiple-entities-in-an-utterance-the-same-thing-as-roles"></a>Czy wiele jednostek w wypowiedź tym samym jako role? 
 
-Wiele jednostek może znajdować się w wypowiedź i można wyodrębnić bez korzystania z ról. Jeśli kontekst zdania wskazuje za pomocą wersji jednostki ma wartość, a następnie roli powinny być używane. 
+W wypowiedź może istnieć wiele jednostek i można go wyodrębnić bez użycia ról. Jeśli kontekst zdania wskazuje, która wersja jednostki ma wartość, należy użyć roli. 
 
 ### <a name="dont-use-roles-for-duplicates-without-meaning"></a>Nie używaj ról dla duplikatów bez znaczenia
 
-Jeśli wypowiedź zawiera listę lokalizacji, `I want to travel to Seattle, Cairo, and London.`, jest to lista gdzie każdy element nie ma dodatkowych znaczeń. 
+Jeśli wypowiedź zawiera listę lokalizacji `I want to travel to Seattle, Cairo, and London.`, to lista, w której każdy element nie ma dodatkowych znaczenia. 
 
-### <a name="use-roles-if-duplicates-indicate-meaning"></a>Używanie ról, jeśli duplikaty wskazują znaczenie
+### <a name="use-roles-if-duplicates-indicate-meaning"></a>Użyj ról, jeśli duplikaty wskazują znaczenie
 
-Jeśli wypowiedź zawiera listę lokalizacji o znaczeniu, `I want to travel from Seattle, with a layover in Londen, landing in Cairo.`, rozumieniu pochodzenia, layover i docelowym mają być przechwytywane z rolami.
+Jeśli wypowiedź zawiera listę lokalizacji z znaczeniem `I want to travel from Seattle, with a layover in Londen, landing in Cairo.`, należy przechwycić to znaczenie dla elementu Origin, layover i Destination z rolami.
 
-### <a name="roles-can-indicate-order"></a>Role można wskazać kolejność
+### <a name="roles-can-indicate-order"></a>Role mogą wskazywać kolejność
 
-Zmiana wypowiedź do wskazania kolejności, w którym chcesz wyodrębnić, `I want to first start with Seattle, second London, then third Cairo`, można wyodrębnić na kilka sposobów. Można oznaczyć tokenów, które wskazują z ról, `first start with`, `second`, `third`. Możesz też użyć wstępnie utworzone jednostki **numer** i **GeographyV2** wstępnie utworzone jednostki w jednostce złożone do przechwytywania pomysł, kolejność i miejsca. 
+Jeśli wypowiedź zmienił się w celu wskazania kolejności, którą chcesz wyodrębnić, `I want to first start with Seattle, second London, then third Cairo`można wyodrębnić ją na kilka sposobów. Można oznaczyć tokeny wskazujące rolę, `first start with` `second`,, `third`. Można również użyć wstępnie skompilowanej **liczby porządkowej** jednostki i wstępnie skompilowanej jednostki **GeographyV2** w jednostce złożonej, aby przechwycić pomysł dotyczący kolejności i miejsca. 
 
-## <a name="how-are-roles-used-in-example-utterances"></a>Jak role są używane w wyrażenia o przykład?
+## <a name="how-are-roles-used-in-example-utterances"></a>W jaki sposób role są używane w przykładowej wyrażenia długości?
 
-Jeśli określona jednostka ma rolę, a jednostka jest oznaczony w przykładzie wypowiedź, do wyboru masz wybranie tylko jednostki lub wybrania jednostki oraz roli. 
+Gdy jednostka ma rolę, a jednostka jest oznaczona jako przykład wypowiedź, możesz wybrać tylko jednostkę lub wybrać jednostkę i rolę. 
 
-Poniższy przykład wypowiedzi użyć jednostki i role:
+W poniższym przykładzie wyrażenia długości są używane jednostki i role:
 
-|Wyświetl tokenu|Wyświetl jednostki|
+|Widok tokenu|Widok jednostki|
 |--|--|
-|Jestem interesujące dowiedzieć więcej na temat **Seattle**|Interesuję się dodatkowe informacje o lokalizacji {Location}|
-|Kup biletu z Seattle w Nowym Jorku|Kup biletu pochodzenia {lokalizacji:} do {lokalizacji: Destination}|
+|Chcę dowiedzieć się więcej o **Seattle**|Chcę dowiedzieć się więcej o lokalizacji {Location}|
+|Kup bilet od Seattle do Nowego Jorku|Kup bilet od {Location: Origin} do {Location: Destination}|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Jak role są używane we wzorcach?
 W polu wypowiedź szablonu wzorca role są używane w ramach wypowiedź: 
@@ -91,13 +91,13 @@ W polu wypowiedź szablonu wzorca role są używane w ramach wypowiedź:
 ## <a name="role-syntax-in-patterns"></a>Składnia roli we wzorcach
 Jednostki i rola są ujęte w nawiasach, `{}`. Jednostka i rola są rozdzielone średnikiem. 
 
-## <a name="entity-roles-versus-collaborator-roles"></a>Role jednostki i role współpracownika
+## <a name="entity-roles-versus-collaborator-roles"></a>Role ról i współpracowników
 
-Role jednostki mają zastosowanie do modelu danych aplikacji usługi LUIS. [Współautor](luis-concept-collaborator.md) role dotyczą poziomów dostępu do tworzenia. 
+Role jednostek są stosowane do modelu danych aplikacji LUIS. [](luis-concept-collaborator.md) Role współpracowników dotyczą poziomów dostępu do autorstwa. 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Użyj [Podręcznik samouczku](tutorial-entity-roles.md) przy użyciu ról jednostki przy użyciu jednostek przedstawiono maszyny
+* Korzystanie z [samouczka praktycznego](tutorial-entity-roles.md) przy użyciu ról jednostek z jednostkami niezgodnymi z maszyną
 * Dowiedz się, jak dodać [ról](luis-how-to-add-entities.md#add-a-role-to-pattern-based-entity)

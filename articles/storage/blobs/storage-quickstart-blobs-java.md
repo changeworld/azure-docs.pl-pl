@@ -1,33 +1,31 @@
 ---
-title: Jak utworzyć obiekt blob w usłudze Azure Storage przy użyciu biblioteki klienta dla języka Java w wersji 7 | Dokumentacja firmy Microsoft
-description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Biblioteka klienta usługi Azure Storage dla języka Java w wersji 7 można następnie użyć do przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
-services: storage
+title: Jak utworzyć obiekt BLOB w usłudze Azure Storage przy użyciu biblioteki klienckiej dla języka Java wersji 7 | Microsoft Docs
+description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Następnie użyj biblioteki klienta usługi Azure Storage dla języka Java wersji 7, aby przekazać obiekt BLOB do usługi Azure Storage, pobrać obiekt BLOB i wyświetlić listę obiektów BLOB w kontenerze.
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: conceptual
-ms.date: 02/04/2019
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: f7cae5b3c7b0a7da6420674635ff9c3420a6436a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/04/2019
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.openlocfilehash: 8cb9a9c6dd2e84318cd4d05bf6e67e127fc39ce3
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154415"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726378"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu biblioteki klienta dla języka Java w wersji 7
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB przy użyciu biblioteki klienckiej dla języka Java wersji 7
 
-W tym przewodniku dowiesz się, jak używać biblioteki klienta dla języka Java w wersji 7 można przekazywać, pobierać i listę blokowych obiektów blob w kontenerze usługi Azure Blob storage.
+W tym przewodniku krok po kroku dowiesz się, jak za pomocą biblioteki klienckiej programu Java wersji 7 przekazywać, pobierać i wyświetlać listę blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage.
 
 > [!TIP]
-> Najnowszą wersję biblioteki klienta usługi Azure Storage dla języka Java jest v10. Firma Microsoft zaleca się, że używasz najnowszej wersji biblioteki klienta, gdy jest to możliwe. Aby rozpocząć pracę, przy użyciu v10, zobacz [Szybki Start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą V10 SDK magazynu Java](storage-quickstart-blobs-java-v10.md).
+> Najnowsza wersja biblioteki klienta usługi Azure Storage dla języka Java to V10. Firma Microsoft zaleca, aby użyć najnowszej wersji biblioteki klienta, gdy jest to możliwe. Aby rozpocząć korzystanie z usługi V10, [zobacz Szybki Start: Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB przy użyciu zestawu SDK magazynu Java](storage-quickstart-blobs-java-v10.md)v10.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Również utworzyć konto usługi Azure storage w [witryny Azure portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Aby uzyskać pomoc przy tworzeniu konta, zobacz [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
+Utwórz także konto usługi Azure Storage w [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Aby uzyskać pomoc przy tworzeniu konta, zobacz [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
 
 Upewnij się, że masz następujące wymagania wstępne:
 
@@ -35,11 +33,11 @@ Upewnij się, że masz następujące wymagania wstępne:
 
 * Możesz również zainstalować i skonfigurować narzędzie Maven tak, aby działało z poziomu wiersza polecenia.
 
-W tym przewodniku używane [Eclipse](https://www.eclipse.org/downloads/) z konfiguracją "Eclipse IDE for Java Developers".
+W tym przewodniku zastosowano przesekcję Zastąp [z](https://www.eclipse.org/downloads/) konfiguracją "przezaćmienie IDE for Java Developers".
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 
-[Przykładowa aplikacja](https://github.com/Azure-Samples/storage-blobs-java-quickstart) to podstawowa Aplikacja konsoli.  
+[Przykładowa aplikacja](https://github.com/Azure-Samples/storage-blobs-java-quickstart) jest podstawową aplikacją konsolową.  
 
 Użyj narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji do swojego środowiska projektowego. 
 
@@ -134,7 +132,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>Przekazywanie obiektów blob do kontenera
 
-Aby przekazać plik do blokowego obiektu blob, Pobierz odwołanie do obiektu blob w kontenerze docelowym. Po uzyskaniu odwołania do obiektu blob możesz przekazać do niego dane przy użyciu polecenia [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload). Ta operacja tworzy obiekt blob, jeśli jeszcze nie istnieje, lub zastępuje obiekt blob, jeśli już istnieje.
+Aby przekazać plik do blokowego obiektu BLOB, Pobierz odwołanie do obiektu BLOB w kontenerze docelowym. Po uzyskaniu odwołania do obiektu blob możesz przekazać do niego dane przy użyciu polecenia [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload). Ta operacja tworzy obiekt blob, jeśli jeszcze nie istnieje, lub zastępuje obiekt blob, jeśli już istnieje.
 
 Przykładowy kod tworzy plik lokalny do zastosowania w przypadku przekazywania i pobierania, przechowujący plik do przekazania jako **source** i nazwę obiektu blob w elemencie **blob**. Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartcontainer**.
 
@@ -186,7 +184,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już obiektów blob, które zostały przekazane, możesz usunąć cały kontener, korzystając [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists). Ta metoda spowoduje również usunięcie plików w kontenerze.
+Jeśli obiekty blob, które zostały przekazane, nie są już potrzebne, można usunąć cały kontener za pomocą [CloudBlobContainer. DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists). Ta metoda spowoduje również usunięcie plików w kontenerze.
 
 ```java
 try {
@@ -207,9 +205,9 @@ sourceFile.deleteOnExit();
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob storage przy użyciu języka Java. Aby dowiedzieć się więcej na temat pracy z językiem Java, przejdź do repozytorium kodu źródłowego w witrynie GitHub.
+W tym artykule przedstawiono sposób transferu plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Java. Aby dowiedzieć się więcej na temat pracy z językiem Java, przejdź do repozytorium kodu źródłowego w witrynie GitHub.
 
 > [!div class="nextstepaction"]
-> [Zestaw SDK usługi Microsoft Azure Storage v10 dla języka Java](https://github.com/azure/azure-storage-java) 
-> [dokumentacja interfejsu API języka Java](https://docs.microsoft.com/java/azure/)
-> [Code Samples dla języka Java](../common/storage-samples-java.md)
+> [](https://github.com/azure/azure-storage-java) 
+> [Przykłady kodu](../common/storage-samples-java.md) v10 zestawu SDK języka Java[Java](https://docs.microsoft.com/java/azure/)
+> dla języka Java Microsoft Azure Storage

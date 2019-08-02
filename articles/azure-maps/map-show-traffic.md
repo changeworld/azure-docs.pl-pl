@@ -1,50 +1,50 @@
 ---
-title: Pokaż ruchu przy użyciu usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Jak wyświetlać dane o ruchu na mapie kodu Javascript
+title: Pokaż ruch z Azure Maps | Microsoft Docs
+description: Jak wyświetlać dane o ruchu na mapie JavaScript
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/10/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7cd7c0dbb375dad78927183dbaffe574a0dc10c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55bfc434082b2d5b7de193e969fc34f710657cdb
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768839"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638636"
 ---
-# <a name="show-traffic-on-the-map"></a>Wyświetlanie ruchu na mapie
+# <a name="show-traffic-on-the-map"></a>Pokaż ruch na mapie
 
-W tym artykule przedstawiono sposób wyświetlania informacji o ruchu i zdarzeń na mapie.
+W tym artykule przedstawiono sposób wyświetlania informacji o ruchu i zdarzeniach na mapie.
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-<iframe height='456' scrolling='no' title='Wyświetlanie ruchu na mapie' src='//codepen.io/azuremaps/embed/WMLRPw/?height=456&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>wyświetlanie ruchu na mapie</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='456' scrolling='no' title='Pokaż ruch na mapie' src='//codepen.io/azuremaps/embed/WMLRPw/?height=456&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Pokaż ruch na mapie</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Możesz zobaczyć [Utwórz mapę](map-create.md) instrukcje.
+W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](map-create.md) .
 
-Drugi blok kodu używa [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkcji w obrębie mapy [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcji do renderowania przepływów ruchu i zdarzeń na mapie.
+Drugi blok kodu używa funkcji settraffic w funkcji [detektora zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy do renderowania przepływów ruchu i zdarzeń na mapie. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule:
-
-> [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-
-Zobacz następujące artykuły, aby wyświetlić przykłady pełnego kodu:
+Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Strona przykładowy kod](https://aka.ms/AzureMapsSamples)
+> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
-Zwiększyć komfort pracy użytkowników:
-
-> [!div class="nextstepaction"]
-> [Mapy interakcji ze zdarzeniami myszy](./map-events.md)
+Zapoznaj się z następującymi artykułami dotyczącymi pełnych przykładów kodu:
 
 > [!div class="nextstepaction"]
-> [Tworzenie mapy dostępne](./map-accessibility.md)
+> [Przykładowa strona kodowa](https://aka.ms/AzureMapsSamples)
+
+Ulepsz środowisko użytkownika:
+
+> [!div class="nextstepaction"]
+> [Interakcja mapy ze zdarzeniami myszy](./map-events.md)
+
+> [!div class="nextstepaction"]
+> [Kompilowanie dostępnej mapy](./map-accessibility.md)

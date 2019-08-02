@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z rozszerzenia diagnostyki Azure
-description: Rozwiązywanie problemów w przypadku korzystania z diagnostyki platformy Azure w usłudze Azure Virtual Machines, Service Fabric lub usług w chmurze.
+title: Rozwiązywanie problemów Diagnostyka Azure rozszerzenia
+description: Rozwiązywanie problemów podczas korzystania z diagnostyki platformy Azure na platformie Azure Virtual Machines, Service Fabric lub Cloud Services.
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -9,152 +9,152 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: robb
 ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "65471780"
 ---
-# <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów z usługi Diagnostyka Azure
-W tym artykule opisano informacje dotyczące rozwiązywania problemów, która jest odpowiednia do korzystania z usługi Azure Diagnostics. Aby uzyskać więcej informacji na temat usługi Diagnostyka Azure, zobacz [Omówienie usługi Azure Diagnostics](diagnostics-extension-overview.md).
+# <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów Diagnostyka Azure
+W tym artykule opisano Rozwiązywanie problemów związanych z używaniem Diagnostyka Azure. Aby uzyskać więcej informacji na temat diagnostyki platformy Azure, zobacz [omówienie Diagnostyka Azure](diagnostics-extension-overview.md).
 
-## <a name="logical-components"></a>Logiczne składniki
-**Uruchamianie diagnostyki wtyczki programu (DiagnosticsPluginLauncher.exe)** : Uruchamia rozszerzenie diagnostyki platformy Azure. Służy jako wpis punktu procesu.
+## <a name="logical-components"></a>Składniki logiczne
+**Uruchamianie wtyczki diagnostyki (DiagnosticsPluginLauncher. exe)** : Uruchamia rozszerzenie Diagnostyka Azure. Służy jako proces punktu wejścia.
 
-**Wtyczka diagnostyki (DiagnosticsPlugin.exe)** : Konfiguruje, uruchamia i zarządza czasem istnienia agenta monitorowania. Jest głównego procesu, który jest uruchamiany przez uruchamianie.
+**Wtyczka diagnostyki (DiagnosticsPlugin. exe)** : Konfiguruje, uruchamia i zarządza okresem istnienia agenta monitorowania. Jest to główny proces uruchamiany przez program uruchamiający.
 
-**Monitoring Agent (MonAgent\*procesy .exe)** : Monitoruje, zbiera i przesyła dane diagnostyczne.  
+**Agent monitorowania (procesy\*MonAgent. exe)** : Monitoruje, zbiera i przesyła dane diagnostyczne.  
 
-## <a name="logartifact-paths"></a>Ścieżki dziennika/artefaktu
-Poniżej przedstawiono ścieżki do niektórych ważnych dzienników i artefaktów. Nazywamy te informacje w pozostałej części dokumentu.
+## <a name="logartifact-paths"></a>Ścieżki dzienników/artefaktów
+Poniżej przedstawiono ścieżki do ważnych dzienników i artefaktów. Te informacje są używane w pozostałej części dokumentu.
 
 ### <a name="azure-cloud-services"></a>Usług Azure Cloud Services
-| Artefakt | Ścieżka |
+| Artefakt | Path |
 | --- | --- |
-| **Plik konfiguracji usługi Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
+| **Plik konfiguracji Diagnostyka Azure** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
 | **Pliki dziennika** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
 | **Magazyn lokalny dla danych diagnostycznych** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Tables |
-| **Monitorowanie pliku konfiguracji agenta** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Pakiet rozszerzenia diagnostyki Azure** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
-| **Ścieżka narzędzia kolekcji dziennika** | %SystemDrive%\Packages\GuestAgent\ |
+| **Plik konfiguracyjny monitorowania agenta** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Diagnostyka Azure pakiet rozszerzenia** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
+| **Ścieżka narzędzia do zbierania dzienników** | %SystemDrive%\Packages\GuestAgent\ |
 | **Plik dziennika MonAgentHost** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>Maszyny wirtualne
-| Artefakt | Ścieżka |
+| Artefakt | Path |
 | --- | --- |
-| **Plik konfiguracji usługi Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
+| **Plik konfiguracji Diagnostyka Azure** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
 | **Pliki dziennika** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
 | **Magazyn lokalny dla danych diagnostycznych** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Tables |
-| **Monitorowanie pliku konfiguracji agenta** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
+| **Plik konfiguracyjny monitorowania agenta** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
 | **Plik stanu** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
-| **Pakiet rozszerzenia diagnostyki Azure** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
-| **Ścieżka narzędzia kolekcji dziennika** | C:\WindowsAzure\Logs\WaAppAgent.log |
+| **Diagnostyka Azure pakiet rozszerzenia** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
+| **Ścieżka narzędzia do zbierania dzienników** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **Plik dziennika MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
-## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Dane metryk nie pojawia się w witrynie Azure portal
-Narzędzie diagnostyczne systemu Azure dostarcza danych metryk, które mogą być wyświetlane w witrynie Azure portal. Jeśli masz problemy z wyświetlaniem danych w portalu, sprawdź WADMetrics\* tabeli konta magazynu diagnostyki platformy Azure, aby sprawdzić, czy odpowiednie rekordy metryki są dostępne.
+## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Dane metryk nie są wyświetlane w Azure Portal
+Diagnostyka Azure udostępnia dane metryk, które mogą być wyświetlane w Azure Portal. Jeśli masz problemy z wyświetlaniem danych w portalu, sprawdź tabelę WADMetrics\* na koncie magazynu Diagnostyka Azure, aby sprawdzić, czy są tam odpowiednie rekordy metryk.
 
-W tym miejscu **PartitionKey** tabeli jest zasobów zestawu skalowania identyfikator, maszyny wirtualnej lub maszyny wirtualnej. **RowKey** jest nazwa metryki (znany także jako nazwa licznika wydajności).
+W tym miejscu **PartitionKey** tabeli jest identyfikatorem zasobu, maszyną wirtualną lub zestawem skalowania maszyn wirtualnych. **RowKey** to nazwa metryki (znana także jako Nazwa licznika wydajności).
 
-Jeśli identyfikator zasobu jest nieprawidłowy, sprawdź **diagnostyki** **konfiguracji** > **metryki** > **ResourceId**czy identyfikator zasobu jest ustawione prawidłowo.
+Jeśli identyfikator zasobu jest niepoprawny, sprawdź**identyfikatory** zasobów**metryk** >  **konfiguracji** >  **diagnostyki** , aby sprawdzić, czy identyfikator zasobu jest poprawnie ustawiony.
 
-Jeśli nie ma danych dla określonej metryki, sprawdź **konfiguracji diagnostyki** > **PerformanceCounter** czy metryki (licznika wydajności) jest dołączony. Domyślnie, firma Microsoft umożliwić następujące liczniki:
+Jeśli nie ma żadnych danych dla określonej metryki, sprawdź **konfigurację** > diagnostyki**PerformanceCounter** , aby sprawdzić, czy jest uwzględniona Metryka (licznik wydajności). Domyślnie włączone są następujące liczniki:
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
-- Aplikacje \ASP.NET (__całkowita__) \Requests/Sec
-- Aplikacje \ASP.NET (__całkowita__) \Errors liczba bajtów/s
+- \ ASP.NET aplikacje (__łącznie__) \ żądania/s
+- \ ASP.NET aplikacje (__łącznie__) \Errors łącznie/s
 - \ASP.NET\Requests w kolejce
 - \ASP.NET\Requests odrzucone
-- \Processor(W3wp)\% czas procesora
-- Bajty \Private \Process (w3wp)
-- \Process(WaIISHost)\% czas procesora
-- Bajty \Private \Process (WaIISHost)
-- \Process(WaWorkerHost)\% czas procesora
-- Bajty \Private \Process (WaWorkerHost)
-- \Memory\Page błędy na sekundę
-- \.Pamięć NET CLR (_globalnego_)\% czas działania modułu GC
-- Bajty zapisu \Disk \LogicalDisk (C:) / s
-- \Disk \LogicalDisk (C:) Odczytane bajty/s
-- Bajty zapisu \Disk \LogicalDisk (D:) / s
-- \Disk \LogicalDisk (D:) Odczytane bajty/s
+- \Processor (w3wp)\% — czas procesora
+- \Process (w3wp) \private bajtów
+- \Process (WaIISHost)\% — czas procesora
+- \Process (WaIISHost) \private bajtów
+- \Process (WaWorkerHost)\% — czas procesora
+- \Process (WaWorkerHost) \private bajtów
+- \Memory\Page błędy/s
+- \.Czas (globalna __ )\% środowiska CLR w GC
+- \Dysk logiczny (C:) \Bajty zapisu/s
+- \Dysk logiczny (C:) \Bajty bajty odczytu/s
+- \Dysk logiczny (D:) \Bajty zapisu/s
+- \Dysk logiczny (D:) \Bajty bajty odczytu/s
 
-Jeśli konfiguracja jest ustawiona poprawnie, ale nadal nie widzisz dane metryk, użyj następujących wytycznych, aby ułatwić rozwiązywanie problemów z.
+Jeśli konfiguracja jest poprawnie ustawiona, ale nadal nie będzie można zobaczyć danych metryk, Skorzystaj z poniższych wskazówek, aby pomóc w rozwiązywaniu problemów.
 
 
-## <a name="azure-diagnostics-is-not-starting"></a>Nie uruchamia usługi Diagnostyka Azure
-Aby uzyskać informacji na temat przyczyny niepowodzenia diagnostyki Azure do uruchomienia, zobacz **DiagnosticsPluginLauncher.log** i **DiagnosticsPlugin.log** pliki w lokalizacji plików dziennika, która została dostarczona wcześniej.
+## <a name="azure-diagnostics-is-not-starting"></a>Nie uruchomiono Diagnostyka Azure
+Aby uzyskać informacje o tym, dlaczego nie można uruchomić Diagnostyka Azure, zobacz pliki **DiagnosticsPluginLauncher. log** i **DiagnosticsPlugin. log** w lokalizacji plików dziennika, która została dostarczona wcześniej.
 
-Jeśli te dzienniki wskazują `Monitoring Agent not reporting success after launch`, oznacza to, wystąpił błąd podczas uruchamiania MonAgentHost.exe. Sprawdź dzienniki w lokalizacji, która jest wskazywana dla `MonAgentHost log file` w poprzedniej sekcji.
+Jeśli te dzienniki wskazują `Monitoring Agent not reporting success after launch`, oznacza to, że wystąpił błąd podczas uruchamiania programu MonAgentHost. exe. Sprawdź dzienniki w lokalizacji wskazanej `MonAgentHost log file` w poprzedniej sekcji.
 
-Ostatni wiersz pliki dziennika zawiera kod zakończenia.  
+Ostatni wiersz plików dziennika zawiera kod zakończenia.  
 
 ```
 DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] DiagnosticPlugin exited with code 0
 ```
-Jeśli okaże się **ujemna** kod zakończenia, zapoznaj się [tabeli kodów zakończenia](#azure-diagnostics-plugin-exit-codes) w [odwołuje się do sekcji](#references).
+Jeśli znajdziesz **negatywny** kod zakończenia, zapoznaj się z [tabelą kod zakończenia](#azure-diagnostics-plugin-exit-codes) w [sekcji odwołania](#references).
 
-## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Dane diagnostyczne nie jest zalogowany do usługi Azure Storage
-Określenia, czy żadne dane jest wyświetlany, i pojawia się niektórych danych.
+## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Dane diagnostyczne nie są rejestrowane w usłudze Azure Storage
+Ustal, czy nie są wyświetlane żadne dane, czy pojawiają się pewne dane.
 
 ### <a name="diagnostics-infrastructure-logs"></a>Dzienniki infrastruktury diagnostycznej
-Diagnostyka rejestruje wszystkie błędy w dzienniki infrastruktury diagnostycznej. Upewnij się, że włączono [przechwytywania infrastruktury diagnostyki dzienników w konfiguracji](#how-to-check-diagnostics-extension-configuration). Następnie można szybko wyszukać istotne błędy, które pojawiają się w `DiagnosticInfrastructureLogsTable` tabeli w ramach konta skonfigurowanego magazynu.
+Diagnostyka rejestruje wszystkie błędy w dziennikach infrastruktury diagnostyki. Upewnij się, że [w konfiguracji włączono funkcję przechwytywania dzienników infrastruktury diagnostyki](#how-to-check-diagnostics-extension-configuration). Następnie można szybko wyszukać wszelkie istotne błędy, które pojawiają `DiagnosticInfrastructureLogsTable` się w tabeli na skonfigurowanym koncie magazynu.
 
-### <a name="no-data-is-appearing"></a>Żadne dane nie jest wyświetlany.
-Najczęstszą przyczyną, że dane zdarzenia nie jest wyświetlana jest, że informacje o koncie magazynu jest niepoprawnie zdefiniowany.
+### <a name="no-data-is-appearing"></a>Nie są wyświetlane żadne dane
+Najczęstszym powodem, że dane zdarzenia nie pojawiają się w ogóle, są zdefiniowane nieprawidłowe informacje o koncie magazynu.
 
-Rozwiązanie: Popraw konfigurację diagnostyki i ponownie zainstaluj diagnostyki.
+Rozwiązanie: Popraw konfigurację diagnostyki i ponownie zainstaluj diagnostykę.
 
-Jeśli konto magazynu jest poprawnie skonfigurowane, dostęp zdalny do maszyny i upewnij się, że *DiagnosticsPlugin.exe* i *MonAgentCore.exe* są uruchomione. Jeśli nie są uruchomione, wykonaj kroki opisane w [nie uruchamia usługi Azure Diagnostics](#azure-diagnostics-is-not-starting).
+Jeśli konto magazynu jest poprawnie skonfigurowane, dostęp zdalny do maszyny i sprawdź, czy są uruchomione *DiagnosticsPlugin. exe* i *MonAgentCore. exe* . Jeśli nie są uruchomione, wykonaj kroki opisane w [Diagnostyka Azure nie uruchamia się](#azure-diagnostics-is-not-starting).
 
-Jeśli są uruchomione procesy, przejdź do strony [danych wprowadzenie przechwytywane lokalnie?](#is-data-getting-captured-locally) i postępuj zgodnie z instrukcjami.
+Jeśli procesy są uruchomione, przejdź do pozycji [czy dane są przechwytywane lokalnie?](#is-data-getting-captured-locally) i postępuj zgodnie z instrukcjami.
 
-Jeśli to nie rozwiąże problemu, spróbuj:
+Jeśli to nie rozwiąże problemu, spróbuj wykonać następujące polecenie:
 
-1. Odinstaluj agenta
+1. Odinstalowywanie agenta
 2. Usuń katalog C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics
-3. Ponownie zainstaluj agenta
+3. Zainstaluj agenta ponownie
 
 
-### <a name="part-of-the-data-is-missing"></a>Brakuje części danych
-Jeśli otrzymujesz pewne dane, ale nie wszystkich, oznacza to, potok kolekcji/transfer danych jest ustawiona poprawnie. Aby zawęzić ten problem, postępuj zgodnie z podsekcje, w tym miejscu.
+### <a name="part-of-the-data-is-missing"></a>Brak części danych
+Jeśli otrzymujesz pewne dane, ale nie wszystkie, oznacza to, że potok zbierania/transferu danych jest poprawnie ustawiony. Postępuj zgodnie z podsekcjami tutaj, aby zawęzić problem.
 
-#### <a name="is-the-collection-configured"></a>Kolekcja jest skonfigurowana?
-Konfiguracja diagnostyki zawiera instrukcje dotyczące określonego typu danych, które mają być zbierane. [Sprawdź konfigurację programu](#how-to-check-diagnostics-extension-configuration) Aby sprawdzić, czy tylko szukasz dane, które zostały skonfigurowane dla kolekcji.
+#### <a name="is-the-collection-configured"></a>Czy kolekcja jest skonfigurowana?
+Konfiguracja diagnostyki zawiera instrukcje dotyczące określonego typu danych, które mają być zbierane. [Przejrzyj konfigurację](#how-to-check-diagnostics-extension-configuration) , aby upewnić się, że szukasz tylko danych skonfigurowanych dla kolekcji.
 
-#### <a name="is-the-host-generating-data"></a>Host generuje dane?
-- **Liczniki wydajności**: Otwórz monitora wydajności i Sprawdź licznik.
+#### <a name="is-the-host-generating-data"></a>Czy host generuje dane?
+- **Liczniki wydajności**: Otwórz Monitor wydajności i sprawdź licznik.
 
-- **Dzienniki śledzenia**:  Zdalny dostęp do maszyny Wirtualnej i Dodaj TextWriterTraceListener do pliku konfiguracyjnego aplikacji.  Zobacz https://msdn.microsoft.com/library/sk36c28t.aspx skonfigurować odbiornik tekstu.  Upewnij się, że `<trace>` element ma `<trace autoflush="true">`.<br />
-Jeśli nie widzisz, że generowany w dziennikach śledzenia, zobacz więcej o dziennikach śledzenia Brak.
+- **Dzienniki śledzenia**:  Dostęp zdalny do maszyny wirtualnej i Dodawanie TextWriterTraceListener do pliku konfiguracji aplikacji.  Zobacz https://msdn.microsoft.com/library/sk36c28t.aspx , aby skonfigurować odbiornik tekstu.  Upewnij się, `<trace>` że element `<trace autoflush="true">`ma.<br />
+Jeśli dzienniki śledzenia nie są wyświetlane, Zobacz więcej informacji na temat brakujących dzienników śledzenia.
 
-- **Śladów funkcji ETW**: Dostęp zdalny do maszyny Wirtualnej i instalowanie narzędzia PerfView.  W narzędzia PerfView, uruchom **pliku** > **polecenie użytkownika** > **nasłuchiwania etwprovder1** > **etwprovider2**i tak dalej. **Nasłuchiwania** polecenia jest rozróżniana wielkość liter i nie może być spacji między rozdzielana przecinkami lista dostawców ETW. Jeśli polecenie nie powiedzie się uruchomić, możesz wybrać **dziennika** przycisk w prawym dolnym rogu narzędzia Perfview, aby zobaczyć, jakie podjęto próbę uruchomienia i jakiego wyniku.  Przy założeniu, że dane wejściowe są poprawne, nowe okno podręczne z. W ciągu kilku sekund możesz rozpocząć wyświetlanie śladów funkcji ETW.
+- **Ślady ETW**: Dostęp zdalny do maszyny wirtualnej i Instalowanie narzędzia PerfView.  W narzędzia PerfView, uruchom polecenie **File** > **User Command** > **Listen etwprovder1** > **etwprovider2**i tak dalej. Polecenie **Listen** ma wielkość liter i nie może zawierać spacji między listą oddzielonych przecinkami dostawców ETW. Jeśli wykonanie polecenia nie powiedzie się, możesz wybrać przycisk **dziennika** w prawym dolnym rogu narzędzia Narzędzia PerfView, aby zobaczyć, co próbowano uruchomić, oraz jaki był wynik.  Przy założeniu, że dane wejściowe są poprawne, pojawi się nowe okno. W ciągu kilku sekund zaczniesz oglądać ślady ETW.
 
-- **Dzienniki zdarzeń**: Dostęp zdalny do maszyny Wirtualnej. Otwórz `Event Viewer`, a następnie sprawdź, czy istnieją zdarzenia.
+- **Dzienniki zdarzeń**: Dostęp zdalny do maszyny wirtualnej. Otwórz `Event Viewer`program, a następnie upewnij się, że zdarzenia istnieją.
 
-#### <a name="is-data-getting-captured-locally"></a>To wprowadzenie przechwytywane dane lokalnie?
-Następnie upewnij się, że dane są wprowadzenie przechwytywane lokalnie.
-Dane są przechowywane lokalnie w `*.tsf` pliki w lokalnym magazynie danych diagnostycznych. Różne rodzaje dzienniki Pobierz zebranych w różnych `.tsf` plików. Nazwy są podobne do nazwy tabel w usłudze Azure Storage.
+#### <a name="is-data-getting-captured-locally"></a>Czy dane są przechwytywane lokalnie?
+Następnie upewnij się, że dane są przechwytywane lokalnie.
+Dane są przechowywane lokalnie w `*.tsf` plikach w lokalnym magazynie dla danych diagnostycznych. Różne rodzaje dzienników są zbierane w różnych `.tsf` plikach. Nazwy są podobne do nazw tabel w usłudze Azure Storage.
 
-Na przykład `Performance Counters` uzyskać zbierane w `PerformanceCountersTable.tsf`. Dzienniki zdarzeń Pobierz zebranych w `WindowsEventLogsTable.tsf`. Postępuj zgodnie z instrukcjami w [wyodrębniania w lokalnym dzienniku](#local-log-extraction) sekcji, aby otwierać pliki kolekcji lokalnej i sprawdzić, zobacz ich wprowadzenie zebrane na dysku.
+Na przykład `Performance Counters` Pobierz dane w `PerformanceCountersTable.tsf`. Dzienniki zdarzeń są zbierane w `WindowsEventLogsTable.tsf`programie. Skorzystaj z instrukcji w sekcji [wyodrębnianie dzienników lokalnych](#local-log-extraction) , aby otworzyć lokalne pliki kolekcji i sprawdzić, czy są one widoczne na dysku.
 
-Jeśli nie widzisz dzienników wprowadzenie zbierane lokalnie, a już sprawdzeniu, że host jest generowanie danych, należy prawdopodobnie występuje problem z konfiguracją. Uważnie Przejrzyj konfigurację.
+Jeśli nie widzisz dzienników, które są zbierane lokalnie, i już sprawdzono, że host generuje dane, prawdopodobnie występuje problem z konfiguracją. Uważnie Przejrzyj konfigurację.
 
-Sprawdź również konfiguracji, który został wygenerowany dla MonitoringAgent MaConfig.xml. Sprawdź, czy sekcja, która opisuje źródło odpowiedniego dziennika. Następnie sprawdź, że nie zostaną utracone w tłumaczeniu między konfiguracji diagnostyki i konfiguracji agenta monitorowania.
+Zapoznaj się również z konfiguracją wygenerowaną dla MonitoringAgent MaConfig. XML. Sprawdź, czy istnieje sekcja opisująca odpowiednie źródło dziennika. Następnie sprawdź, czy nie jest on tracony podczas tłumaczenia między konfiguracją diagnostyki a konfiguracją agenta monitorowania.
 
-#### <a name="is-data-getting-transferred"></a>To wprowadzenie przesyłanych danych?
-Jeśli upewnieniu się, że dane są wprowadzenie przechwytywane lokalnie, ale nadal nie widać jej w ramach konta magazynu, wykonaj następujące czynności:
+#### <a name="is-data-getting-transferred"></a>Czy dane są transferowane?
+Jeśli sprawdzono, że dane są przechwytywane lokalnie, ale nadal nie są wyświetlane na koncie magazynu, wykonaj następujące czynności:
 
-- Sprawdź, czy podane konto magazynu poprawną, a nie przywrócono kluczy dla danego konta magazynu. Usług Azure Cloud Services, czasami widzimy, że osoby nie Aktualizuj `useDevelopmentStorage=true`.
+- Sprawdź, czy podano poprawne konto magazynu i czy nie zostały wycofane klucze dla danego konta magazynu. W przypadku usługi Azure Cloud Services czasami widzimy, że osoby `useDevelopmentStorage=true`nie są aktualizowane.
 
-- Sprawdź poprawność podanego konta magazynu. Upewnij się, że nie ma ograniczenia sieci, które uniemożliwiają składniki docieranie do publicznych punktów końcowych. Jednym ze sposobów, w tym ma dostęp zdalny do maszyny, a następnie spróbuj zapisać coś, co do tego samego konta magazynu samodzielnie.
+- Sprawdź, czy podane konto magazynu jest poprawne. Upewnij się, że nie masz ograniczeń sieci, które uniemożliwiają składnikom osiągnięcie publicznych punktów końcowych magazynu. Jednym ze sposobów jest uzyskanie dostępu zdalnego do maszyny, a następnie próba napisania na tym samym koncie magazynu.
 
-- Na koniec można sprawdzić jakie błędy są zgłaszane przez agenta monitorowania. Agent monitorowania zapisuje jej dzienników w `maeventtable.tsf`, który znajduje się w magazynie lokalnym dla danych diagnostycznych. Postępuj zgodnie z instrukcjami w [wyodrębniania w lokalnym dzienniku](#local-log-extraction) sekcji do otwierania tego pliku. Spróbuj ustalić, czy są `errors` wskazujące błędy odczytu do plików lokalnych zapisywanie w magazynie.
+- Na koniec możesz sprawdzić, jakie błędy są zgłaszane przez agenta monitorowania. Agent monitorowania zapisuje swoje dzienniki w `maeventtable.tsf`lokalizacji, która znajduje się w lokalnym magazynie dla danych diagnostycznych. Aby otworzyć ten plik, postępuj zgodnie z instrukcjami w sekcji [wyodrębnianie dzienników lokalnych](#local-log-extraction) . Następnie spróbuj określić `errors` , czy istnieją błędy odczytu do plików lokalnych zapisu do magazynu.
 
 ### <a name="capturing-and-archiving-logs"></a>Przechwytywanie i archiwizowanie dzienników
-Jeśli myślisz o kontaktując się z pomocą techniczną, pierwszą rzeczą, jaką może poprosić Cię jest zbieranie dzienników z Twojego komputera. Aby zaoszczędzić czas, wykonując ten samodzielnie. Uruchom `CollectGuestLogs.exe` narzędzie w ścieżce narzędzia kolekcji dziennika. Generuje plik zip pliku przy użyciu platformy Azure wszystkie istotne rejestruje się w tym samym folderze.
+Jeśli myślisz o kontaktowanie się z pomocą techniczną, w pierwszej kolejności mogą wystąpić monity o zebranie dzienników z komputera. Możesz zaoszczędzić czas, wykonując te czynności. `CollectGuestLogs.exe` Uruchom narzędzie w ścieżce narzędzia do zbierania dzienników. Generuje plik. zip ze wszystkimi odpowiednimi dziennikami platformy Azure w tym samym folderze.
 
-## <a name="diagnostics-data-tables-not-found"></a>Nie można odnaleźć tabel danych diagnostycznych
-Tabel w usłudze Azure storage, które zawierają zdarzenia ETW są nazywane przy użyciu następującego kodu:
+## <a name="diagnostics-data-tables-not-found"></a>Nie znaleziono tabel danych diagnostycznych
+Tabele w usłudze Azure Storage, które przechowują zdarzenia ETW, są nazwane przy użyciu następującego kodu:
 
 ```csharp
         if (String.IsNullOrEmpty(eventDestination)) {
@@ -209,94 +209,94 @@ Ten kod generuje cztery tabele:
 
 | Wydarzenie | Nazwa tabeli |
 | --- | --- |
-| Dostawca = "prov1" &lt;zdarzenie o identyfikatorze = "1" /&gt; |WADEvent+MD5(“prov1”)+”1” |
-| Dostawca = "prov1" &lt;zdarzenie o identyfikatorze = "2" eventDestination = "dest1" /&gt; |WADdest1 |
-| Dostawca = "prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5(“prov1”) |
-| Dostawca = "prov2" &lt;DefaultEvents eventDestination = "dest2" /&gt; |WADdest2 |
+| Provider = "prov1" &lt;identyfikator zdarzenia = "1"/&gt; |WADEvent+MD5(“prov1”)+”1” |
+| Provider = "prov1" &lt;identyfikator zdarzenia = "2" eventDestination = "dest1"/&gt; |WADdest1 |
+| Provider = "prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("prov1") |
+| Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Dokumentacja
+## <a name="references"></a>Odwołania
 
-### <a name="how-to-check-diagnostics-extension-configuration"></a>Jak sprawdzić konfiguracji rozszerzenia diagnostyki
-Najprostszym sposobem, aby sprawdzić konfigurację rozszerzenia jest przejdź do [Eksploratora zasobów Azure](http://resources.azure.com), a następnie przejdź do maszyny wirtualnej lub w chmurze usługi gdzie przez rozszerzenie Diagnostyka Azure (IaaSDiagnostics / PaaDiagnostics) jest.
+### <a name="how-to-check-diagnostics-extension-configuration"></a>Jak sprawdzić konfigurację rozszerzenia diagnostyki
+Najprostszym sposobem sprawdzenia konfiguracji rozszerzenia jest przejście do [Azure Resource Explorer](http://resources.azure.com), a następnie przejście do maszyny wirtualnej lub usługi w chmurze, w której znajduje się rozszerzenie Diagnostyka Azure (IaaSDiagnostics/PaaDiagnostics).
 
-Alternatywnie pulpitu zdalnego do maszyny i spójrz na plik konfiguracji diagnostyki platformy Azure, opisana w sekcji ścieżki dziennika artefaktów.
+Możesz również przyjrzeć się pulpitowi zdalnemu do maszyny i sprawdzić Diagnostyka Azure pliku konfiguracji, który opisano w sekcji ścieżka artefaktów dziennika.
 
-W obu przypadkach Wyszukaj **Microsoft.Azure.Diagnostics**, a następnie dla **xmlCfg** lub **WadCfg** pola.
+W obu przypadkach Wyszukaj pozycję **Microsoft. Azure. Diagnostics**, a następnie pole **xmlCfg** lub **WadCfg** .
 
-Podczas wyszukiwania na maszynie wirtualnej i **WadCfg** pole jest obecny, oznacza to, konfiguracji jest w formacie JSON. Jeśli **xmlCfg** pole jest obecny, oznacza to, konfiguracji XML i jest kodowany algorytmem Base64. Musisz [zdekodować](https://www.bing.com/search?q=base64+decoder) aby zobaczyć plik XML, który został załadowany przez diagnostykę.
+Jeśli szukasz maszyny wirtualnej, a pole **WadCfg** jest obecne, oznacza to, że konfiguracja jest w formacie JSON. Jeśli pole **xmlCfg** jest obecne, oznacza to, że konfiguracja jest w formacie XML i jest zakodowana w formacie base64. Należy zdekodować [ją](https://www.bing.com/search?q=base64+decoder) , aby zobaczyć kod XML, który został załadowany przez diagnostykę.
 
-Dla roli usługi w chmurze, w przypadku wybrania konfiguracji z dysku, dane są zakodowane w formacie base64, więc należy [zdekodować](https://www.bing.com/search?q=base64+decoder) aby zobaczyć plik XML, który został załadowany przez diagnostykę.
+W przypadku roli usługi w chmurze w przypadku wybrania konfiguracji z dysku dane są kodowane algorytmem Base64, więc należy [je zdekodować](https://www.bing.com/search?q=base64+decoder) w celu wyświetlenia kodu XML, który został załadowany przez diagnostykę.
 
-### <a name="azure-diagnostics-plugin-exit-codes"></a>Kody zakończenia wtyczki w usłudze Azure diagnostyki
-Wtyczka zwraca poniższe kody zakończenia:
+### <a name="azure-diagnostics-plugin-exit-codes"></a>Kody zakończenia wtyczki Diagnostyka Azure
+Wtyczka zwraca następujące kody zakończenia:
 
 | Kod zakończenia | Opis |
 | --- | --- |
 | 0 |Powodzenie. |
-| -1 |Błąd ogólny. |
-| -2 |Nie można załadować pliku rcf.<p>Ten błąd wewnętrzny tylko powinno nastąpić, jeśli uruchamiania wtyczka agenta gościa jest ręcznego wywołania odbywa się niepoprawnie na maszynie Wirtualnej. |
-| -3 |Nie można załadować pliku konfiguracji diagnostyki.<p><p>Rozwiązanie: Spowodowane przez plik konfiguracji nie przeszły sprawdzanie poprawności schematu. To rozwiązanie jest podać plik konfiguracji, który jest zgodny ze schematem. |
-| -4 |Inne wystąpienie agenta monitorowania diagnostyki używa już katalog zasobów lokalnych.<p><p>Rozwiązanie: Określ inną wartość dla **LocalResourceDirectory**. |
-| -6 |Uruchamianie wtyczka agenta gościa próbowała uruchomić diagnostyki z nieprawidłowy wiersz polecenia.<p><p>Ten błąd wewnętrzny tylko powinno nastąpić, jeśli uruchamiania wtyczka agenta gościa jest ręcznego wywołania odbywa się niepoprawnie na maszynie Wirtualnej. |
-| -10 |Wtyczka diagnostyki został zakończony z powodu nieobsługiwanego wyjątku. |
-| -11 |Agent gościa nie może utworzyć procesu odpowiedzialnego za uruchamianie i monitorowanie agenta monitorowania.<p><p>Rozwiązanie: Sprawdź, czy wystarczających zasobów systemu są dostępne do uruchomienia nowych procesów.<p> |
-| -101 |Nieprawidłowe argumenty podczas wywoływania wtyczki diagnostyki.<p><p>Ten błąd wewnętrzny tylko powinno nastąpić, jeśli uruchamiania wtyczka agenta gościa jest ręcznego wywołania odbywa się niepoprawnie na maszynie Wirtualnej. |
-| -102 |Nie można zainicjować sam jest procesu wtyczki.<p><p>Rozwiązanie: Sprawdź, czy wystarczających zasobów systemu są dostępne do uruchomienia nowych procesów. |
-| -103 |Nie można zainicjować sam jest procesu wtyczki. W szczególności jest nie można utworzyć obiektu rejestratora.<p><p>Rozwiązanie: Sprawdź, czy wystarczających zasobów systemu są dostępne do uruchomienia nowych procesów. |
-| -104 |Nie można załadować pliku rcf dostarczone przez agenta gościa.<p><p>Ten błąd wewnętrzny tylko powinno nastąpić, jeśli uruchamiania wtyczka agenta gościa jest ręcznego wywołania odbywa się niepoprawnie na maszynie Wirtualnej. |
-| -105 |Wtyczka diagnostyki nie można otworzyć pliku konfiguracji diagnostyki.<p><p>Ten błąd wewnętrzny tylko powinno nastąpić, jeśli wtyczka diagnostyki jest ręcznego wywołania odbywa się niepoprawnie na maszynie Wirtualnej. |
-| -106 |Nie można odczytać pliku konfiguracji diagnostyki.<p><p>Spowodowane przez plik konfiguracji nie przeszły sprawdzanie poprawności schematu. <br><br>Rozwiązanie: Podaj plik konfiguracji, który jest zgodny ze schematem. Aby uzyskać więcej informacji, zobacz [Sprawdzanie konfiguracji rozszerzenia diagnostyki](#how-to-check-diagnostics-extension-configuration). |
-| -107 |Zasób katalogu — dostęp próbny agenta monitorowania jest nieprawidłowy.<p><p>Ten błąd wewnętrzny tylko powinno nastąpić, jeśli agent monitorowania jest ręcznego wywołania odbywa się niepoprawnie na maszynie Wirtualnej.</p> |
-| -108 |Nie można skonwertować pliku konfiguracji diagnostyki w pliku konfiguracji agenta monitorowania.<p><p>Ten błąd wewnętrzny tylko powinien nastąpić, jeśli wtyczka diagnostyki jest ręcznego wywołania odbywa się przy użyciu pliku nieprawidłowej konfiguracji. |
-| -110 |Błąd konfiguracji Diagnostyka ogólnego.<p><p>Ten błąd wewnętrzny tylko powinien nastąpić, jeśli wtyczka diagnostyki jest ręcznego wywołania odbywa się przy użyciu pliku nieprawidłowej konfiguracji. |
-| -111 |Nie można uruchomić agenta monitorowania.<p><p>Rozwiązanie: Sprawdź, czy wystarczających zasobów systemu są dostępne. |
+| -1 |Błąd rodzajowy. |
+| -2 |Nie można załadować pliku RCF.<p>Ten błąd wewnętrzny powinien wystąpić tylko w przypadku ręcznego wywołania programu uruchamiającego wtyczki agenta gościa na maszynie wirtualnej. |
+| -3 |Nie można załadować pliku konfiguracji diagnostyki.<p><p>Rozwiązanie: Spowodowane przez plik konfiguracji, który nie przekazuje walidacji schematu. Rozwiązanie ma dostarczyć plik konfiguracji, który jest zgodny ze schematem. |
+| -4 |Inne wystąpienie diagnostyki agenta monitorowania korzysta już z lokalnego katalogu zasobów.<p><p>Rozwiązanie: Określ inną wartość dla **LocalResourceDirectory**. |
+| -6 |Program uruchamiający wtyczki agenta gościa podjął próbę uruchomienia diagnostyki z nieprawidłowym wierszem polecenia.<p><p>Ten błąd wewnętrzny powinien wystąpić tylko w przypadku ręcznego wywołania programu uruchamiającego wtyczki agenta gościa na maszynie wirtualnej. |
+| -10 |Wtyczka diagnostyki zakończyła działanie, gdy wystąpił nieobsługiwany wyjątek. |
+| -11 |Agent gościa nie mógł utworzyć procesu odpowiedzialnego za uruchamianie i monitorowanie agenta monitorowania.<p><p>Rozwiązanie: Sprawdź, czy dostępne są wystarczające zasoby systemowe, aby uruchomić nowe procesy.<p> |
+| -101 |Nieprawidłowe argumenty podczas wywoływania wtyczki diagnostyki.<p><p>Ten błąd wewnętrzny powinien wystąpić tylko w przypadku ręcznego wywołania programu uruchamiającego wtyczki agenta gościa na maszynie wirtualnej. |
+| -102 |Proces wtyczki nie może zainicjować samego siebie.<p><p>Rozwiązanie: Sprawdź, czy dostępne są wystarczające zasoby systemowe, aby uruchomić nowe procesy. |
+| -103 |Proces wtyczki nie może zainicjować samego siebie. W odróżnieniu od tego nie można utworzyć obiektu rejestratora.<p><p>Rozwiązanie: Sprawdź, czy dostępne są wystarczające zasoby systemowe, aby uruchomić nowe procesy. |
+| -104 |Nie można załadować pliku RCF dostarczonego przez agenta gościa.<p><p>Ten błąd wewnętrzny powinien wystąpić tylko w przypadku ręcznego wywołania programu uruchamiającego wtyczki agenta gościa na maszynie wirtualnej. |
+| -105 |Wtyczka diagnostyki nie może otworzyć pliku konfiguracji diagnostyki.<p><p>Ten błąd wewnętrzny powinien wystąpić tylko wtedy, gdy wtyczka diagnostyki zostanie niepoprawnie wywołana na maszynie wirtualnej. |
+| -106 |Nie można odczytać pliku konfiguracji diagnostyki.<p><p>Spowodowane przez plik konfiguracji, który nie przekazuje walidacji schematu. <br><br>Rozwiązanie: Podaj plik konfiguracji, który jest zgodny ze schematem. Aby uzyskać więcej informacji, zobacz [Jak sprawdzić konfigurację rozszerzenia diagnostyki](#how-to-check-diagnostics-extension-configuration). |
+| -107 |Katalog zasobów przekazywany do agenta monitorowania jest nieprawidłowy.<p><p>Ten błąd wewnętrzny powinien wystąpić tylko wtedy, gdy Agent monitorowania jest niepoprawnie wywoływany ręcznie na maszynie wirtualnej.</p> |
+| -108 |Nie można przekonwertować pliku konfiguracji diagnostyki na plik konfiguracyjny agenta monitorowania.<p><p>Ten błąd wewnętrzny powinien wystąpić tylko wtedy, gdy wtyczka diagnostyki zostanie wywołana ręcznie przy użyciu nieprawidłowego pliku konfiguracji. |
+| -110 |Ogólny błąd konfiguracji diagnostyki.<p><p>Ten błąd wewnętrzny powinien wystąpić tylko wtedy, gdy wtyczka diagnostyki zostanie wywołana ręcznie przy użyciu nieprawidłowego pliku konfiguracji. |
+| -111 |Nie można uruchomić agenta monitorowania.<p><p>Rozwiązanie: Sprawdź, czy są dostępne wystarczające zasoby systemowe. |
 | -112 |Błąd ogólny |
 
-### <a name="local-log-extraction"></a>Wyodrębnianie lokalnym dzienniku
-Agent monitorowania służy do zbierania dzienników i artefaktów jak `.tsf` plików. `.tsf` Plik nie jest do odczytu, ale możesz przekonwertować go do `.csv` w następujący sposób:
+### <a name="local-log-extraction"></a>Wyodrębnianie dzienników lokalnych
+Agent monitorowania zbiera dzienniki i artefakty jako `.tsf` pliki. Plik nie jest czytelny, ale można go przekonwertować `.csv` na następujący sposób: `.tsf`
 
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
-Nowy plik o nazwie `<relevantLogFile>.csv` jest tworzony w tej samej ścieżce co odpowiedni `.tsf` pliku.
+Nowy plik o nazwie `<relevantLogFile>.csv` jest tworzony w tej samej ścieżce co odpowiedni `.tsf` plik.
 
 >[!NOTE]
-> Musisz uruchomić to narzędzie względem pliku .tsf głównego (na przykład PerformanceCountersTable.tsf). Załączonych plików (na przykład PerformanceCountersTables_\*\*001.tsf, PerformanceCountersTables_\*\*002.tsf i tak dalej) automatycznie są przetwarzane.
+> Wystarczy uruchomić to narzędzie tylko w odniesieniu do głównego pliku. TSF (na przykład PerformanceCountersTable. TSF). Pliki towarzyszące (na przykład PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF itd.) są automatycznie przetwarzane.
 
-### <a name="more-about-missing-trace-logs"></a>Więcej informacji na temat Brak dzienniki śledzenia
+### <a name="more-about-missing-trace-logs"></a>Więcej informacji o braku dzienników śledzenia
 
 >[!NOTE]
-> Poniższe informacje dotyczą przede wszystkim do usług Azure Cloud Services, chyba że skonfigurowano DiagnosticsMonitorTraceListener na aplikację, która jest uruchomiona na maszynie Wirtualnej IaaS.
+> Poniższe informacje odnoszą się głównie do usługi Azure Cloud Services, chyba że skonfigurowano DiagnosticsMonitorTraceListener na aplikacji działającej na maszynie wirtualnej IaaS.
 
-- Upewnij się, że **DiagnosticMonitorTraceListener** jest skonfigurowany w pliku web.config lub app.config.  Jest to konfiguracja domyślna w projekty usługi w chmurze. Jednakże, niektórzy klienci Wypowiedz go poza, co powoduje, że instrukcje śledzenia nie można pobrać przez diagnostykę.
+- Upewnij się, że **DiagnosticMonitorTraceListener** jest skonfigurowany w pliku Web. config lub App. config.  Ta konfiguracja jest domyślnie konfigurowana w projektach usługi w chmurze. Niektórzy klienci mają jednak komentarz, co powoduje, że instrukcje śledzenia nie są zbierane przez diagnostykę.
 
-- Jeśli nie wprowadzenie dziennikach z **OnStart** lub **Uruchom** metody, upewnij się, że **DiagnosticMonitorTraceListener** znajduje się w pliku app.config.  Domyślnie jest on w pliku web.config, ale która ma zastosowanie tylko do kodu uruchamianego w ramach w3wp.exe. Dlatego należy go w pliku app.config do przechwytywania śladów, które są uruchomione w WaIISHost.exe.
+- Jeśli dzienniki nie są zapisywane z metody **OnStart** lub **Run** , upewnij się, że **DiagnosticMonitorTraceListener** znajduje się w pliku App. config.  Domyślnie znajduje się on w pliku Web. config, ale ma zastosowanie tylko do kodu uruchomionego w w3wp. exe. Jest to potrzebne w pliku App. config do przechwytywania śladów uruchomionych w programie WaIISHost. exe.
 
-- Upewnij się, że używasz **Diagnostics.Trace.TraceXXX** zamiast **Diagnostics.Debug.WriteXXX.** Debugować instrukcje są usuwane z kompilacji wydania.
+- Upewnij się, że używasz funkcji **Diagnostics. Trace. TraceXXX** zamiast elementu **Diagnostics. Debug. WriteXXX.** Instrukcje debugowania są usuwane z kompilacji wydania.
 
-- Upewnij się, skompilowany kod faktycznie zawiera **wierszy Diagnostics.Trace** (umożliwia odblaskowego, ildasm lub użyciu narzędzia do dekompilacji Sprawdź). **Diagnostics.Trace** polecenia są usuwane z skompilowanym plikiem binarnym, chyba że używany jest symbol kompilacji warunkowej śledzenia. Jest to powszechny problem, który występuje, gdy używasz programu msbuild do kompilowania projektu.   
+- Upewnij się, że skompilowany kod ma rzeczywistą wartość **Diagnostics. Trace** (Użyj reflektora, Ildasm lub ILSpy do zweryfikowania). Polecenia **Diagnostics. Trace** są usuwane z skompilowanego pliku binarnego, chyba że jest używany symbol kompilacji warunkowej śledzenia. Jest to typowy problem występujący podczas kompilowania projektu przy użyciu programu MSBuild.   
 
-## <a name="known-issues-and-mitigations"></a>Znane problemy i ograniczenia
-Oto lista znanych problemów za pomocą znanych środki zaradcze:
+## <a name="known-issues-and-mitigations"></a>Znane problemy i środki zaradcze
+Poniżej znajduje się lista znanych problemów z znanymi ograniczeniami:
 
-**1. .NET 4.5 zależności**
+**1. zależność .NET 4,5**
 
-Rozszerzenie diagnostyki platformy Azure Windows ma zależności środowiska uruchomieniowego, w ramach platformy .NET 4.5 lub nowszej. W czasie pisania, wszystkie maszyny, które są udostępniane dla usług Azure Cloud Services, a także wszystkie oficjalne obrazy, które są oparte na maszynach wirtualnych platformy Azure należy zainstalować .NET 4.5 lub nowszy.
+Rozszerzenie Diagnostyka Azure systemu Windows ma zależność środowiska uruchomieniowego w programie .NET 4,5 Framework lub nowszym. W chwili pisania wszystkie komputery, które są obsługiwane dla platformy Azure Cloud Services, a także wszystkie obrazy oficjalne, które są oparte na usłudze Azure Virtual Machines, mają zainstalowany program .NET 4,5 lub nowszy.
 
-Jest nadal możliwe encounter sytuacji, gdy spróbujesz uruchomić rozszerzenia diagnostyki Azure Windows na komputerze, który nie ma .NET 4.5 lub nowszej. Dzieje się tak, po utworzeniu komputera ze starym obrazem lub migawki lub po przywróceniu niestandardowego dysku.
+Nadal można napotkać sytuację, w której próbujesz uruchomić rozszerzenie Diagnostyka Azure systemu Windows na komputerze, na którym nie jest zainstalowany program .NET 4,5 lub nowszy. Dzieje się tak, gdy tworzysz maszynę ze starego obrazu lub migawki lub przeniesiesz własny dysk niestandardowy.
 
-Zazwyczaj jest to manifesty jako kod zakończenia **255** podczas uruchamiania **DiagnosticsPluginLauncher.exe.** Awaria występuje z powodu następującego nieobsługiwanego wyjątku:
+Zwykle jest to kod wyjścia **255** podczas uruchamiania programu **DiagnosticsPluginLauncher. exe.** Błąd występuje z powodu następującego nieobsługiwanego wyjątku:
 ```
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```
 
-**Środki zaradcze:** Instalowanie platformy .NET 4.5 lub nowszy na swojej maszynie.
+**Środki zaradcze** Zainstaluj program .NET 4,5 lub nowszy na komputerze.
 
-**2. Dane liczników wydajności jest dostępny w magazyn, ale nie są wyświetlane w portalu**
+**2. Dane liczników wydajności są dostępne w magazynie, ale nie są wyświetlane w portalu**
 
-Środowisko pracy w portalu na maszynach wirtualnych przedstawia niektóre liczniki wydajności, domyślnie. Jeśli nie widzisz liczników wydajności, a wiadomo, że danych jest generowanych, ponieważ jest ono dostępne w magazynie, sprawdź następujące informacje:
+Środowisko portalu w maszynach wirtualnych domyślnie pokazuje pewne liczniki wydajności. Jeśli nie widzisz liczników wydajności i wiesz, że dane są generowane, ponieważ są one dostępne w magazynie, sprawdź następujące kwestie:
 
-- Czy dane w magazynie ma nazwy liczników w języku angielskim. Jeśli nazwy liczników nie są w języku angielskim, portalu wykresu metryki nie będą mogli je rozpoznać. **Środki zaradcze**: Zmień język komputera do języka angielskiego, dla konta system. Aby to zrobić, wybierz **Panelu sterowania** > **Region** > **administracyjne** > **ustawień kopii**. Następnie usuń zaznaczenie opcji **Witamy ekranu i system kont** tak, aby języka niestandardowego nie ma zastosowania do konta system.
+- Czy dane w magazynie mają nazwy liczników w języku angielskim. Jeśli nazwy liczników nie są w języku angielskim, wykres metryki portalu nie będzie mógł go rozpoznać. Środki zaradcze: Zmień język maszyny na angielski dla kont systemowych. W tym celu wybierz kolejno pozycje **panel** > sterowania**region** > **Ustawienia kopiowanie** **administracyjne** > . Następnie usuń zaznaczenie opcji **ekran powitalny i konta systemowe** , aby język niestandardowy nie został zastosowany do konta System.
 
-- Jeśli używane są symbole wieloznaczne (\*) w swojej nazwy licznika wydajności portalu nie będzie możliwość skorelowania skonfigurowany i zebranych liczników, liczniki wydajności wysyłanymi do ujścia usługi Azure Storage. **Środki zaradcze**: Aby upewnić się, można używać symboli wieloznacznych oraz korzystać z portalu, rozwiń węzeł (\*), liczniki wydajności do kierowania [ujścia "Usługi Azure Monitor"](diagnostics-extension-schema.md#diagnostics-extension-111).
+- Jeśli używasz symboli wieloznacznych (\*) w nazwach liczników wydajności, portal nie będzie w stanie skorelować skonfigurowanych i zebranych liczników, gdy liczniki wydajności są wysyłane do ujścia usługi Azure Storage. Środki zaradcze: Aby upewnić się, że można użyć symboli wieloznacznych, a Portal\*rozwinie (), Roześlij liczniki wydajności do [ujścia "Azure Monitor"](diagnostics-extension-schema.md#diagnostics-extension-111).
 

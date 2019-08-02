@@ -1,6 +1,6 @@
 ---
-title: Najlepsze praktyki
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Najlepsze praktyki — LUIS
+titleSuffix: Azure Cognitive Services
 description: Poznaj najlepsze rozwiązania usługi LUIS w celu uzyskania najlepszych wyników z aplikacją usługi LUIS modelu.
 services: cognitive-services
 author: diberry
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812914"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639278"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Najlepsze rozwiązania dotyczące tworzenia aplikacji interpretacji języka, dzięki usługom Cognitive Services
-Użyj procesu tworzenia aplikacji do tworzenia aplikacji usługi LUIS. 
+Tworzenie aplikacji LUIS za pomocą procesu tworzenia aplikacji: 
 
 * Tworzenie modelu językowego
 * Dodawanie wypowiedzi przykładu w usłudze kilka szkolenia (10 – 15 na intencje)
@@ -27,9 +27,9 @@ Użyj procesu tworzenia aplikacji do tworzenia aplikacji usługi LUIS.
 * Test z punktu końcowego 
 * Dodawanie funkcji
 
-Gdy Twoja aplikacja jest [opublikowane](luis-how-to-publish-app.md), użyj cyklu tworzenia Dodaj funkcje, publikowanie i testowanie z punktu końcowego. Nie zaczynają się na następny cykl i tworzenia pakietów administracyjnych, dodając więcej wypowiedzi przykładu. Nie zezwala, LUIS, Dowiedz się, modelu za pomocą wypowiedzi rzeczywistych użytkowników. 
+Po opublikowaniu aplikacji [](luis-how-to-publish-app.md)należy użyć cyklu tworzenia do dodawania funkcji, publikowania i testowania z punktu końcowego. Nie zaczynają się na następny cykl i tworzenia pakietów administracyjnych, dodając więcej wypowiedzi przykładu. Nie zezwala, LUIS, Dowiedz się, modelu za pomocą wypowiedzi rzeczywistych użytkowników. 
 
-Aby usługa LUIS to wydajny w jego zadania uczenia nie rozwijaj wypowiedzi aż bieżący zestaw wypowiedzi punktu końcowego i przykładowe są zwraca wyniki prognozowania pewność, wysoka. Poprawić wyniki za pomocą [aktywne uczenie](luis-concept-review-endpoint-utterances.md), [wzorców](luis-concept-patterns.md), i [frazę list](luis-concept-feature.md). 
+Aby usługa LUIS to wydajny w jego zadania uczenia nie rozwijaj wypowiedzi aż bieżący zestaw wypowiedzi punktu końcowego i przykładowe są zwraca wyniki prognozowania pewność, wysoka. Popraw wyniki przy użyciu [aktywnego uczenia](luis-concept-review-endpoint-utterances.md), [wzorców](luis-concept-patterns.md)i [list fraz](luis-concept-feature.md). 
 
 ## <a name="do-and-dont"></a>Wykonaj, a nie
 Poniższa lista zawiera najlepsze rozwiązania dotyczące aplikacji usługi LUIS:
@@ -40,13 +40,13 @@ Poniższa lista zawiera najlepsze rozwiązania dotyczące aplikacji usługi LUIS
 |[Odnalezienia punktu sweet między zbyt ogólne i zbyt specyficzny dla każdego intencji](#do-find-sweet-spot-for-intents)|[Użyj usługi LUIS jako platforma szkoleniowa](#dont-use-luis-as-a-training-platform)|
 |[Iteracyjne tworzenie aplikacji](#do-build-the-app-iteratively)|[Dodawanie wielu wypowiedzi przykład o tym samym formacie, ignorowanie innych formatów](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Dodawanie listy frazy i wzorców w późniejszej iteracji](#do-add-phrase-lists-and-patterns-in-later-iterations)|[Mieszanie definicji intencje i podmioty](#dont-mix-the-definition-of-intents-and-entities)|
-|[Saldo swoje wypowiedzi we wszystkich intencji](#balance-your-utterances-across-all-intents) , z wyjątkiem intencji None.<br>[Dodawanie wypowiedzi przykładzie Brak elementu intent](#do-add-example-utterances-to-none-intent)|[Tworzenie list frazy za wszystkie możliwe wartości](#dont-create-phrase-lists-with-all-the-possible-values)|
-|[Korzystać z tej funkcji sugerowanej dla aktywne uczenie](#do-leverage-the-suggest-feature-for-active-learning)|[Dodaj zbyt wielu wzorców](#dont-add-many-patterns)|
+|[Zrównoważ swój wyrażenia długości we wszystkich intencjach](#balance-your-utterances-across-all-intents) , z wyjątkiem intencji none.<br>[Dodawanie wypowiedzi przykładzie Brak elementu intent](#do-add-example-utterances-to-none-intent)|[Tworzenie list frazy za wszystkie możliwe wartości](#dont-create-phrase-lists-with-all-the-possible-values)|
+|[Korzystać z tej funkcji sugerowanej dla aktywne uczenie](#do-leverage-the-suggest-feature-for-active-learning)|[Dodaj zbyt wiele wzorców](#dont-add-many-patterns)|
 |[Monitorowanie wydajności aplikacji](#do-monitor-the-performance-of-your-app)|[Uczenie i publikowanie za pomocą każdego wypowiedź jednym przykładzie dodano](#dont-train-and-publish-with-every-single-example-utterance)|
 |[Użyj wersji dla każdej iteracji aplikacji](#do-use-versions-for-each-app-iteration)||
 
 ## <a name="do-define-distinct-intents"></a>Definiowanie różnych intencji
-Upewnij się, że słownika dla każdego celem jest po prostu na tym przeznaczeniem i nie nakładających się przy użyciu innego zamiaru. Na przykład jeśli chcesz mieć aplikację, że uchwyty podróży uzgodnień, takich jak linii lotniczych lotów i hoteli, można mieć tych dziedzin jako osobne intencji lub ten sam cel z jednostkami dla określonych danych wewnątrz wypowiedź.
+Upewnij się, że słownika dla każdego celem jest po prostu na tym przeznaczeniem i nie nakładających się przy użyciu innego zamiaru. Na przykład jeśli chcesz mieć aplikację, która obsługuje układy podróży, takie jak loty lotnicze i Hotele, możesz wybierać te obszary tematyczne jako osobne intencje lub te same cele z jednostkami dla określonych danych wewnątrz wypowiedź.
 
 Jeśli słownictwa między dwiema opcjami jest taka sama, Połącz intencji i korzystanie z jednostek. 
 
@@ -57,81 +57,81 @@ Należy wziąć pod uwagę następujące wypowiedzi przykładu:
 |Zarezerwuj lot|
 |Zarezerwuj hotelu|
 
-"Zarezerwuj lot" i "Zarezerwuj hotel" Używanie tego samego słownictwa "book". Ten format jest taka sama, więc powinno być tego samego intencji z innych wyrazów lotów i hoteli jako wyodrębnione jednostki. 
+"Zarezerwuj lot" i "Zarezerwuj hotel" Używanie tego samego słownictwa "book". Ten format jest taki sam, więc powinien być taki sam, jak w przypadku różnych wyrazów lotów i hotelu jako wyodrębnionych jednostek. 
 
 Informacje dodatkowe:
-* Pojęcia: [Pojęcia dotyczące intencje w aplikacją usługi LUIS](luis-concept-intent.md)
-* Samouczek: [Tworzenie aplikacji usługi LUIS Określanie zamiarach użytkownika](luis-quickstart-intents-only.md)
-* Instrukcje: [Dodawanie intencji, aby określić użytkownika zamiar wypowiedzi](luis-how-to-add-intents.md)
+* Związane [Pojęcia dotyczące intencji w aplikacji LUIS](luis-concept-intent.md)
+* Samouczek: [Kompiluj aplikację LUIS, aby określić intencje użytkownika](luis-quickstart-intents-only.md)
+* Instrukcje: [Dodawanie intencji w celu określenia zamiaru użytkownika wyrażenia długości](luis-how-to-add-intents.md)
 
 
 ## <a name="do-find-sweet-spot-for-intents"></a>Znaleźć miejsce sweet intencji
-Użyj danymi przewidywań, Luis, aby określić, jeśli nakładają się na Twoje intencje. Nakładające się intencji mylić usługi LUIS. Wynik jest zbyt Zamknij, aby się u góry oceniania intencji inną intencji. Nakładające się intencji, ponieważ usługa LUIS nie używa dokładnie takiej samej ścieżce danych szkoleniowych każdorazowo, ma prawdopodobieństwo przy pierwszej lub drugiej szkolenia. Chcesz, aby wynik wypowiedź dla każdego zamiar być dalej od siebie, więc nie jest realizowane tej drugiej/Odwróć w pionie. Dobre rozróżnienie na intencje powinno spowodować oczekiwanego intencji najważniejsze każdym razem, gdy. 
+Użyj danymi przewidywań, Luis, aby określić, jeśli nakładają się na Twoje intencje. Nakładające się intencje odmylić LUIS. Wynik jest zbyt Zamknij, aby się u góry oceniania intencji inną intencji. Nakładające się intencji, ponieważ usługa LUIS nie używa dokładnie takiej samej ścieżce danych szkoleniowych każdorazowo, ma prawdopodobieństwo przy pierwszej lub drugiej szkolenia. Chcesz, aby wyniki wypowiedź dla każdego zamiaru były od siebie oddzielone, aby nie nastąpiło Przerzucanie/flop. Dobre rozróżnienie na intencje powinno spowodować oczekiwanego intencji najważniejsze każdym razem, gdy. 
  
 ## <a name="do-build-the-app-iteratively"></a>Iteracyjne tworzenie aplikacji
-Zachowaj osobny zestaw nie jest używana jako wypowiedzi [wypowiedzi przykład](luis-concept-utterance.md) lub wypowiedzi punktu końcowego. Ulepszaj aplikacji zestawu testowego. Dostosuj ustawienie do odzwierciedlenia wypowiedzi rzeczywistego użytkownika testu. Użyj tego testu, zestawu do oceny każdej iteracji lub wersji aplikacji. 
+Przechowuj oddzielny zestaw wyrażenia długości, który nie jest używany jako [przykład wyrażenia długości](luis-concept-utterance.md) lub Endpoint wyrażenia długości. Ulepszaj aplikacji zestawu testowego. Dostosuj ustawienie do odzwierciedlenia wypowiedzi rzeczywistego użytkownika testu. Ten zestaw testów służy do obliczania każdej iteracji lub wersji aplikacji. 
 
-Deweloperzy powinni mieć trzy zestawów danych. Pierwsza to wypowiedzi przykład do tworzenia modelu. Druga jest przeznaczona dla testowania modelu w punkcie końcowym. Trzecia będzie niewidomych test dane używane w [testowania partii](luis-how-to-batch-test.md). Ten ostatni zestaw nie jest używany w szkolenia aplikacji ani wysyłane w punkcie końcowym.  
+Deweloperzy powinni mieć trzy zestawów danych. Pierwsza to wypowiedzi przykład do tworzenia modelu. Druga jest przeznaczona dla testowania modelu w punkcie końcowym. Trzecia będzie niewidomych test dane używane w [testowania partii](luis-how-to-batch-test.md). Ten ostatni zestaw nie jest używany w szkoleniu aplikacji ani wysyłania jej w punkcie końcowym.  
 
 Informacje dodatkowe:
-* Pojęcia: [Cykl tworzenia aplikacji usługi LUIS](luis-concept-app-iteration.md)
+* Związane [Cykl tworzenia aplikacji LUIS](luis-concept-app-iteration.md)
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Dodawanie listy frazy i wzorców w późniejszej iteracji
 
-Najlepszym rozwiązaniem jest nie chcesz stosować te rozwiązania przed aplikacja została przetestowana. Należy zrozumieć sposób działania aplikacji przed dodaniem list frazy i wzorce, ponieważ te funkcje mają większą wagę niż przykład wypowiedzi i będzie pochylanie zaufania. 
+Najlepszym rozwiązaniem jest niestosowanie tych zasad przed przetestowaniem aplikacji. Należy zrozumieć, jak działa aplikacja przed dodaniem [list](luis-concept-feature.md) i [wzorców](luis-concept-patterns.md) frazy, ponieważ te funkcje są ważone bardziej silnie niż przykład wyrażenia długości i pochylenie pozostanie niebezpieczne. 
 
-Po zapoznaniu się, jak aplikacja zachowuje się bez nich, należy dodać każdą z tych funkcji odnoszących się do aplikacji. Nie trzeba dodawać te funkcje z każdym [iteracji](luis-concept-app-iteration.md) lub zmieniać funkcje z każdą wersją. 
+Po zrozumieniu, jak działa aplikacja, Dodaj każdą z tych funkcji, które mają zastosowanie do aplikacji. Nie trzeba dodawać tych funkcji razem z każdą iteracją [](luis-concept-app-iteration.md) ani zmieniać funkcji w każdej wersji. 
 
-Nie powoduje żadnych problemów, dodając je na początku projektu modelu, ale znacznie łatwiej zobaczyć każdej funkcji zmiany wyników po wypowiedzi została przetestowana dla modelu. 
+Nie trzeba dodawać ich na początku projektu modelu, ale łatwiej jest zobaczyć, jak każda z nich zmienia wyniki po przetestowaniu modelu z wyrażenia długości. 
 
-Najlepszym rozwiązaniem jest przetestowanie za pośrednictwem [punktu końcowego](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) tak, aby uzyskać jednocześnie ma dodatkową zaletę [aktywne uczenie](luis-concept-review-endpoint-utterances.md). [Interaktywne okienko testowania](luis-interactive-test.md) jest również metodologii prawidłowej testów. 
+Najlepszym rozwiązaniem jest przetestowanie za pośrednictwem [punktu końcowego](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) , aby uzyskać dodatkową korzyść z [aktywnego uczenia](luis-concept-review-endpoint-utterances.md). [Okienko testowanie interaktywne](luis-interactive-test.md) jest również prawidłową metodologią testu. 
  
 
 ### <a name="phrase-lists"></a>Listy fraz
 
-[Frazę list](luis-concept-feature.md) umożliwiają definiowanie słowników wyrazy związane z domeny aplikacji. Inicjator frazy Twojej listy za pomocą kilku słowach, a następnie korzystać z funkcji sugerowanej, więc LUIS obsługującemu więcej słów w określonych słownictwa aplikacji. Lista fraz zwiększa intencji wykrywania i klasyfikacji jednostki, ulepszanie sygnał skojarzony z słów i fraz, które są istotne dla twojej aplikacji. 
+[Frazę list](luis-concept-feature.md) umożliwiają definiowanie słowników wyrazy związane z domeny aplikacji. Wypisz swoją listę wyrazów za pomocą kilku słów, a następnie użyj funkcji Sugeruj, aby LUIS wie o większej liczbie wyrazów specyficznych dla aplikacji. Lista fraz usprawnia wykrywanie zamierzeń i klasyfikację jednostek przez zwiększenie sygnału związanego z wyrazami lub frazami, które są istotne dla Twojej aplikacji. 
 
 Nie dodawaj każdy wyraz słownictwa, ponieważ lista wyrażenie nie jest dokładne dopasowanie. 
 
 Informacje dodatkowe:
-* Pojęcia: [Wyrażenie funkcji listy aplikacją usługi LUIS](luis-concept-feature.md)
-* Porady: [Użyj frazy Wyświetla sygnału boost listy programu word](luis-how-to-add-features.md)
+* Związane [Funkcje list fraz w aplikacji LUIS](luis-concept-feature.md)
+* Porady: [Użyj list fraz, aby zwiększyć liczbę sygnałów listy słów](luis-how-to-add-features.md)
 
 ### <a name="patterns"></a>Wzorce
 
 Wypowiedzi użytkowników z punktu końcowego, bardzo podobne do siebie nawzajem, może spowodować ujawnienie wzorców wybór programu word i umieszczania. [Wzorzec](luis-concept-patterns.md) funkcja przyjmuje ten wybór programu word i umieszczania wraz z wyrażeń regularnych w celu zwiększenia dokładności prognozy. We wzorcu wyrażenia regularnego umożliwia słów i znaki interpunkcyjne, które zamierzasz Ignoruj podczas nadal pasujących do wzorca. 
 
-Użyj wzorca [opcjonalnych składni](luis-concept-patterns.md) znaki interpunkcyjne, dzięki czemu można zignorować znaki interpunkcyjne. Użyj [jawną listę](luis-concept-patterns.md#explicit-lists) celu kompensacji pattern.any składni problemów. 
+Użyj opcjonalnej [składni](luis-concept-patterns.md) wzorca dla interpunkcji, aby można było zignorować interpunkcję. Użyj [jawnej listy](luis-concept-patterns.md#explicit-lists) , aby skompensować wzorzec. wszelkie problemy z składnią. 
 
 Informacje dodatkowe:
-* Pojęcia: [Wzorce zwiększenia dokładności prognozy](luis-concept-patterns.md)
-* Porady: [Jak dodać wzorców w celu zwiększenia dokładności prognozy](luis-how-to-model-intent-pattern.md)
+* Związane [Wzorce poprawiają dokładność przewidywania](luis-concept-patterns.md)
+* Porady: [Jak dodać wzorce, aby poprawić dokładność przewidywania](luis-how-to-model-intent-pattern.md)
 
-## <a name="balance-your-utterances-across-all-intents"></a>Saldo swoje wypowiedzi we wszystkich intencji
+## <a name="balance-your-utterances-across-all-intents"></a>Zrównoważ swój wyrażenia długości na wszystkie intencje
 
-Aby prognoz usługi LUIS muszą być dokładne ilość przykład wypowiedzi w każdym intencji (z wyjątkiem Brak intencji), musi być stosunkowo równy. 
+Aby przewidywania LUIS były dokładne, liczba przykładowych wyrażenia długości w każdym zamiarie (z wyjątkiem intencji None) musi być stosunkowo równa. 
 
-Jeśli masz intencji ze 100 przykład wypowiedzi i przeznaczenie z 20 wypowiedzi przykład intencji wypowiedź 100 będzie mieć wyższy stopień prognozowania.  
+Jeśli masz zamiar z 100 przykładem wyrażenia długości i zamiarem z 20 przykład wyrażenia długości, zamiaru 100-wypowiedź będzie miała wyższą stawkę prognozowania.  
 
 ## <a name="do-add-example-utterances-to-none-intent"></a>Dodawanie wypowiedzi przykładzie Brak elementu intent
 
-Celem tego jest plan awaryjny celem wskazane wszystko poza aplikację. Dodaj jeden wypowiedź przykład intencji dla każdego wypowiedzi przykład 10 w pozostałej części aplikacją usługi LUIS None.
+To zamierzenie jest zamiarem rezerwowym, które wykazało wszystko poza aplikacją. Dodaj jeden wypowiedź przykład intencji dla każdego wypowiedzi przykład 10 w pozostałej części aplikacją usługi LUIS None.
 
 Informacje dodatkowe:
-* Pojęcia: [Zrozumienie, co dobre wypowiedzi związanych z aplikacją usługi LUIS](luis-concept-utterance.md)
+* Związane [Dowiedz się, co to jest dobry wyrażenia długości dla aplikacji LUIS](luis-concept-utterance.md)
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Korzystać z funkcji sugerowanej aktywne uczenie
 
 Użyj [aktywne uczenie](luis-how-to-review-endpoint-utterances.md)firmy **Przejrzyj wypowiedzi punktu końcowego** na bieżąco, zamiast opcji dodawania więcej wypowiedzi przykład do intencji. Ponieważ aplikacja otrzymuje stale wypowiedzi punktu końcowego, ta lista jest rosnący i zmianę.
 
 Informacje dodatkowe:
-* Pojęcia: [Pojęcia dotyczące włączania aktywne uczenie, przeglądając wypowiedzi punktu końcowego](luis-concept-review-endpoint-utterances.md)
-* Samouczek: [Samouczek: Napraw prognozy nie wiesz, przeglądając wypowiedzi punktu końcowego](luis-tutorial-review-endpoint-utterances.md)
-* Porady: [Jak przeglądać wypowiedzi punktu końcowego w portalu usługi LUIS](luis-how-to-review-endpoint-utterances.md)
+* Związane [Pojęcia dotyczące włączania aktywnego uczenia przez przeglądanie punktu końcowego wyrażenia długości](luis-concept-review-endpoint-utterances.md)
+* Samouczek: [Samouczek: Usuń niegwarantowane przewidywania, przeglądając punkt końcowy wyrażenia długości](luis-tutorial-review-endpoint-utterances.md)
+* Porady: [Jak przejrzeć program Endpoint wyrażenia długości w portalu LUIS](luis-how-to-review-endpoint-utterances.md)
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Monitorowanie wydajności aplikacji
 
-Monitorowanie przy użyciu dokładność prognozowania [partii testów](luis-concept-batch-test.md) zestawu. 
+Monitoruj dokładność przewidywania przy użyciu zestawu [testów wsadowych](luis-concept-batch-test.md) . 
 
 ## <a name="dont-add-many-example-utterances-to-intents"></a>Nie dodawaj wiele wypowiedzi przykład do intencji
 
@@ -139,7 +139,7 @@ Po opublikowaniu aplikacji tylko dodawanie wypowiedzi z aktywne uczenie w proces
 
 ## <a name="dont-use-luis-as-a-training-platform"></a>Nie używaj usługi LUIS jako platforma szkoleniowa
 
-Usługa LUIS jest specyficzne dla domeny model języka. Nie jest on przeznaczony do pracy jako platforma szkoleniowa ogólne języka naturalnego. 
+Usługa LUIS jest specyficzne dla domeny model języka. Nie jest ona przeznaczona do pracy jako ogólna platforma szkoleń w języku naturalnym. 
 
 ## <a name="dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats"></a>Nie dodawaj wiele wypowiedzi przykład o tym samym formacie, ignorowanie innych formatów
 
@@ -169,15 +169,15 @@ Nie dodawaj zbyt wiele [wzorców](luis-concept-patterns.md). Usługa LUIS jest p
 
 Dodawanie wypowiedzi 10 lub 15 przed szkolenia i publikowania. Pozwala wyświetlić wpływ na dokładność prognozowania. Dodawanie pojedynczego wypowiedź nie może mieć widoczne wpływ na wynik. 
 
-## <a name="do-use-versions-for-each-app-iteration"></a>Należy używać wersji dla każdej iteracji aplikacji
+## <a name="do-use-versions-for-each-app-iteration"></a>Użyj wersji dla każdej iteracji aplikacji
 
-Każdy cykl tworzenia powinna mieścić się w nowej [wersji](luis-concept-version.md), sklonowany z istniejącą wersję. Usługa LUIS nie ma limitu dla wersji. Nazwa wersji jest używany jako część trasy interfejsu API, tak ważne jest, aby wybrać znaków dozwoloną w adresie URL, a także przechowywanie w ramach liczby 10 znaków dla wersji. Opracowanie strategii nazwy wersji o zachowaniu wersji zorganizowane. 
+Każdy cykl tworzenia powinien znajdować się w nowej [wersji](luis-concept-version.md), sklonowany z istniejącej wersji. LUIS nie ma limitu dla wersji. Nazwa wersji jest używana jako część trasy interfejsu API, co jest ważne, aby można było wybrać znaki dozwolone w adresie URL, a także zachować w ciągu 10 znaków dla wersji. Utwórz strategię nazw wersji, aby zachować swoją organizację. 
 
 Informacje dodatkowe:
-* Pojęcia: [Zrozumienie, jak i kiedy używać wersji usługi LUIS](luis-concept-version.md)
-* Porady: [Użyj wersji do edycji i przetestować bez wywierania wpływu na aplikacje przejściowych lub produkcyjnych](luis-how-to-manage-versions.md)
+* Związane [Informacje o tym, jak i kiedy używać wersji LUIS](luis-concept-version.md)
+* Porady: [Używanie wersji do edytowania i testowania bez wpływu na aplikacje tymczasowe i produkcyjne](luis-how-to-manage-versions.md)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się, jak [Planowanie aplikacji](luis-how-plan-your-app.md) w aplikacją usługi LUIS.

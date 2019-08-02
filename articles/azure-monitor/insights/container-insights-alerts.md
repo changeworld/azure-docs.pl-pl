@@ -1,6 +1,6 @@
 ---
-title: Tworzenie alertów wydajności przy użyciu usługi Azure Monitor dla kontenerów | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak tworzyć niestandardowe alerty bazujące na zapytaniach dzienników dla pamięci i Procesora CPU za pomocą usługi Azure Monitor dla kontenerów.
+title: Tworzenie alertów wydajności przy użyciu Azure Monitor dla kontenerów | Microsoft Docs
+description: W tym artykule opisano, jak za pomocą Azure Monitor dla kontenerów utworzyć niestandardowe alerty na podstawie zapytań dzienników dotyczących wykorzystania pamięci i procesora CPU.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2019
 ms.author: magoedte
-ms.openlocfilehash: 46ac6794272728069d50479f8cd097185bfeeb1a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b1ee0e56b5a133e65a25b5d9af645f351d039c0
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072393"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722680"
 ---
-# <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak skonfigurować alerty dotyczące problemów z wydajnością w usłudze Azure Monitor dla kontenerów
-Usługa Azure Monitor dla kontenerów monitoruje wydajność obciążeń kontenerów, które są wdrażane w usłudze Azure Container Instances lub zarządzanych klastrów Kubernetes, które są hostowane na platformie Azure Kubernetes Service (AKS).
+# <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak skonfigurować alerty dotyczące problemów z wydajnością w Azure Monitor dla kontenerów
+Azure Monitor dla kontenerów monitoruje wydajność obciążeń kontenera wdrożonych w celu Azure Container Instances lub do zarządzanych klastrów Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS).
 
 W tym artykule opisano sposób włączania alertów w następujących sytuacjach:
 
-- Gdy wykorzystanie procesora CPU lub pamięci na węzłach klastra przekracza próg
-- Gdy użycie procesora CPU lub pamięci na każdy kontener w kontrolerze przekroczy próg porównaniu limit, który jest ustawiony na odpowiadający jej zasób
-- *Niegotowe* zlicza stan węzła
-- *Nie powiodło się*, *oczekujące*, *nieznany*, *systemem*, lub *Powodzenie* liczby zasobników fazy
-- Gdy ilość wolnego miejsca na węzłach klastra przekracza próg 
+- Gdy użycie procesora CPU lub pamięci w węzłach klastra przekracza wartość progową
+- Gdy użycie procesora lub pamięci w dowolnym kontenerze w kontrolerze przekracza próg w porównaniu z limitem ustawionym dla odpowiedniego zasobu
+- Liczba węzłów stanu "nobieżniing"
+- Liczba zakończonych niepowodzeniem, *oczekujących*, nieznanych, *uruchomionych*lub *zakończonych powodzeniem*
+- Gdy ilość wolnego miejsca na dysku w węzłach klastra przekracza wartość progową 
 
-Aby otrzymywać alerty dla wysokie użycie procesora CPU, wykorzystanie pamięci lub małej ilości wolnego miejsca na węzłach klastra, użyj zapytań, które są dostarczane do utworzenia alertu dotyczącego metryki lub alertu pomiaru metryki. Alerty metryki mają mniejsze opóźnienia niż alertów dzienników. Ale alertów dzienników zapewnia zaawansowane zapytania i większego zaawansowania. Alerty zapytania porównania datetime bieżącej przy użyciu dzienników *teraz* operatora i będzie godzinę wstecz. (Usługa azure Monitor dla kontenerów przechowuje wszystkie daty w formacie uniwersalnego czasu koordynowanego (UTC)).
+Aby otrzymywać alerty dotyczące wysokiego użycia procesora CPU lub pamięci lub małej ilości wolnego miejsca na dysku klastra, użyj zapytań dostarczonych do utworzenia alertu metryki lub alertu pomiaru metryki. Alerty metryk mają mniejsze opóźnienia niż alerty dzienników. Alerty dzienników zapewniają zaawansowane zapytania i większe złożoności. Zapytania dotyczące alertów dziennika porównują datę i godzinę do obecne przy użyciu operatora *Now* i cofają jedną godzinę. (Azure Monitor dla kontenerów przechowuje wszystkie daty w formacie uniwersalnego czasu koordynowanego (UTC).)
 
-Jeśli nie znasz przy użyciu alertów usługi Azure Monitor, zobacz [Przegląd alertów na platformie Microsoft Azure](../platform/alerts-overview.md) przed rozpoczęciem. Aby dowiedzieć się więcej na temat alertów, które używają dziennika zapytań, zobacz [alerty dzienników w usłudze Azure Monitor](../platform/alerts-unified-log.md). Aby uzyskać więcej informacji dotyczących alertów dotyczących metryk, zobacz [alertów dotyczących metryk w usłudze Azure Monitor](../platform/alerts-metric-overview.md).
+Jeśli nie masz doświadczenia w Azure Monitor alertów, zobacz [Omówienie alertów w usłudze Microsoft Azure](../platform/alerts-overview.md) przed rozpoczęciem. Aby dowiedzieć się więcej o alertach korzystających z zapytań dzienników, zobacz [alerty dzienników w Azure monitor](../platform/alerts-unified-log.md). Aby uzyskać więcej informacji na temat alertów metryk, zobacz [alerty metryk w Azure monitor](../platform/alerts-metric-overview.md).
 
-## <a name="resource-utilization-log-search-queries"></a>Zapytania wyszukiwania w dzienniku wykorzystania zasobów
-Zapytania w tej sekcji scenariusza każdego alertu. Są one używane w kroku 7 [Utwórz alert](#create-an-alert-rule) dalszej części tego artykułu.
+## <a name="resource-utilization-log-search-queries"></a>Zapytania wyszukiwania dzienników wykorzystania zasobów
+Zapytania w tej sekcji obsługują każdy scenariusz związany z alertami. Są one używane w kroku 7 sekcji [Tworzenie alertu](#create-an-alert-rule) w tym artykule.
 
-Następujące zapytanie oblicza średnie wykorzystanie procesora CPU jako średnia wykorzystanie procesora CPU w węzłach Członkowskich co minutę.  
+Następujące zapytanie oblicza średnie użycie procesora jako średnie użycie procesora CPU przez węzły Członkowskie co minutę.  
 
 ```kusto
 let endDateTime = now();
@@ -73,7 +73,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 
-Następujące zapytanie oblicza średnie wykorzystanie pamięci jako średnia wykorzystania pamięci w węzłach Członkowskich co minutę.
+Poniższe zapytanie oblicza średnie użycie pamięci jako średnią wartość wykorzystania pamięci węzłów członkowskich co minutę.
 
 ```kusto
 let endDateTime = now();
@@ -108,9 +108,9 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->Następujące zapytania, użyj wartości symboli zastępczych \<your nazwa klastra > i \<Twojej nazwy kontrolera > do reprezentowania Twojej klastra i kontrolera. Zastąp je wartościami dla danego środowiska, podczas konfigurowania alertów.
+>Poniższe zapytania używają wartości \<symboli zastępczych Nazwa-klastra > i \<nazwa-kontrolera — > do reprezentowania Twojego klastra i kontrolera. Zastąp je wartościami specyficznymi dla danego środowiska podczas konfigurowania alertów.
 
-Następujące zapytanie oblicza średnie wykorzystanie Procesora dla wszystkich kontenerów w kontrolerze jako średnia wykorzystanie procesora CPU każdego wystąpienia kontenera w kontrolerze co minutę. Wartość jest wartością procentową limit dla kontenera.
+Następujące zapytanie oblicza średnie wykorzystanie procesora CPU przez wszystkie kontenery w kontrolerze jako średnie wykorzystanie procesora CPU każdego wystąpienia kontenera w kontrolerze co minutę. Pomiar jest wartością procentową limitu skonfigurowanego dla kontenera.
 
 ```kusto
 let endDateTime = now();
@@ -150,7 +150,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-Następujące zapytanie oblicza średnie użycie pamięci przez program wszystkie kontenery w kontrolerze jako średnia użycie pamięci przez każde wystąpienie kontenera w kontrolerze co minutę. Wartość jest wartością procentową limit dla kontenera.
+Poniższe zapytanie oblicza średnie użycie pamięci przez wszystkie kontenery w kontrolerze jako średnie użycie pamięci przez każde wystąpienie kontenera w kontrolerze co minutę. Pomiar jest wartością procentową limitu skonfigurowanego dla kontenera.
 
 ```kusto
 let endDateTime = now();
@@ -190,7 +190,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-Następujące zapytanie zwraca wszystkie węzły i liczniki, które mają stan *gotowe* i *niegotowe*.
+Następujące zapytanie zwraca wszystkie węzły i zliczenia o stanie *gotowe* i bez *bieżnika*.
 
 ```kusto
 let endDateTime = now();
@@ -217,7 +217,7 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-Następujące zapytanie zwraca, który zlicza fazy pod na podstawie wszystkich faz: *Nie powiodło się*, *oczekujące*, *nieznany*, *systemem*, lub *zakończyło się pomyślnie*.  
+Następujące zapytanie zwraca liczbę faz w oparciu o wszystkie fazy:Niepowodzenie, oczekiwanie, nieznane, *uruchomiono*lub powiodło *się*.  
 
 ```kusto
 let endDateTime = now();
@@ -254,9 +254,9 @@ let endDateTime = now();
 ```
 
 >[!NOTE]
->Aby utworzyć alerty dotyczące niektórych zasobnika faz, takich jak *oczekujące*, *nie powiodło się*, lub *nieznany*, zmodyfikuj ostatni wiersz zapytania. Na przykład w ramach alertu *FailedCount* użyć: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
+>Aby ostrzec o niektórych fazach, takich jak *oczekujące*, *zakończone niepowodzeniem*lub nieznane, należy zmodyfikować ostatni wiersz zapytania. Na przykład, aby ostrzec o *FailedCount* użyciu: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
-Następujące zapytanie zwraca dyski węzłów klastra, które przekraczają 90% wolnego miejsca. Aby uzyskać identyfikator klastra, najpierw uruchom następujące zapytanie, a następnie skopiuj wartość z `ClusterId` właściwości:
+Następujące zapytanie zwraca dyski węzłów klastra, które przekraczają 90% wolnego miejsca. Aby uzyskać identyfikator klastra, najpierw uruchom następujące zapytanie i skopiuj wartość z `ClusterId` właściwości:
 
 ```kusto
 InsightsMetrics
@@ -274,7 +274,7 @@ InsightsMetrics
 | where TimeGenerated < endDateTime
 | where TimeGenerated >= startDateTime
 | where Origin == 'container.azm.ms/telegraf'            
-| where Namespace == 'disk'            
+| where Namespace == 'container.azm.ms/disk'            
 | extend Tags = todynamic(Tags)            
 | project TimeGenerated, ClusterId = Tags['container.azm.ms/clusterId'], Computer = tostring(Tags.hostName), Device = tostring(Tags.device), Path = tostring(Tags.path), DiskMetricName = Name, DiskMetricValue = Val   
 | where ClusterId =~ clusterId       
@@ -284,34 +284,34 @@ InsightsMetrics
 ```
 
 ## <a name="create-an-alert-rule"></a>Tworzenie reguły alertu
-Wykonaj następujące kroki, aby utworzyć alert dziennika w usłudze Azure Monitor przy użyciu jednej z reguł wyszukiwania dziennika, które podano wcześniej.  
+Wykonaj następujące kroki, aby utworzyć alert dziennika w Azure Monitor przy użyciu jednej z reguł przeszukiwania dzienników, które zostały podane wcześniej.  
 
 >[!NOTE]
->Poniższą procedurę, aby utworzyć regułę alertu dla wykorzystanie zasobów kontenera, musisz przełączyć się do nowego dziennika alertów interfejsu API, zgodnie z opisem w [preferencji Przełącz interfejsu API dla dziennika alertów](../platform/alerts-log-api-switch.md).
+>Poniższa procedura umożliwia utworzenie reguły alertu dotyczącego użycia zasobów kontenera. w tym celu należy przełączyć się do nowego interfejsu API alertów dziennika, zgodnie z opisem w [preferencjach przełącznika interfejsu API dla alertów dzienników](../platform/alerts-log-api-switch.md).
 >
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **Monitor** w okienku po lewej stronie. W obszarze **Insights**, wybierz opcję **kontenery**.
-3. Na **monitorowania klastrów** , a następnie wybierz klaster, z listy.
-4. W okienku po lewej stronie w obszarze **monitorowanie**, wybierz opcję **dzienniki** aby otworzyć stronę dzienniki usługi Azure Monitor. Ta strona umożliwia pisanie i wykonywania zapytań w usłudze Azure Log Analytics.
-5. Na **dzienniki** wybierz opcję **+ Nowa reguła alertu**.
-6. W **warunek** zaznacz **jest zawsze wtedy, gdy dziennik wyszukiwania niestandardowego \<logika niezdefiniowana >** wstępnie zdefiniowanych warunków dziennika niestandardowego. **Przeszukiwania dzienników niestandardowych** typu sygnału jest automatycznie wybierana, ponieważ tworzymy regułę alertu bezpośrednio ze strony dzienniki usługi Azure Monitor.  
-7. Wklej jeden z [zapytania](#resource-utilization-log-search-queries) dostarczona wcześniej do **zapytania wyszukiwania** pola.
+2. Wybierz pozycję **monitor** z okienka po lewej stronie. W obszarze **szczegółowe**dane wybierz pozycję **kontenery**.
+3. Na karcie **monitorowane klastry** wybierz klaster z listy.
+4. W okienku po lewej stronie w obszarze **monitorowanie**wybierz pozycję **dzienniki** , aby otworzyć stronę Dzienniki Azure monitor. Ta strona służy do pisania i wykonywania zapytań Log Analytics platformy Azure.
+5. Na stronie **dzienniki** wybierz pozycję **+ Nowa reguła alertu**.
+6. W sekcji **warunek** wybierz opcję zawsze, **gdy niezdefiniowane \<wyszukiwanie w dzienniku niestandardowym >** wstępnie zdefiniowany warunek dziennika niestandardowego. Typ sygnału **niestandardowego wyszukiwania w dzienniku** jest automatycznie wybierany, ponieważ tworzymy regułę alertu bezpośrednio na stronie dzienników Azure monitor.  
+7. Wklej jedno z [zapytań](#resource-utilization-log-search-queries) dostarczonych wcześniej do pola **zapytania wyszukiwania** .
 8. Skonfiguruj alert w następujący sposób:
 
-    1. Z listy rozwijanej **Na podstawie** wybierz pozycję **Pomiar metryki**. Pomiar metryki tworzy alert dla każdego obiektu w zapytaniu, który ma wartość powyżej naszych określoną wartość progową.
-    1. Dla **warunek**, wybierz opcję **większy niż**, a następnie wprowadź **75** jako początkowej, podstawowej **próg** alertów wykorzystanie procesora CPU i pamięci . Alert małej ilości miejsca, wprowadź **90**. Lub wprowadź inną wartość, która spełnia podane kryteria.
-    1. W **wyzwalacz alertu na podstawie** zaznacz **kolejne naruszenia**. Wybierz z listy rozwijanej **większa**, a następnie wprowadź **2**.
-    1. Aby skonfigurować alert dla procesora CPU kontenera lub wykorzystanie pamięci, w obszarze **agregowane na**, wybierz opcję **ContainerName**. Aby skonfigurować alert małej ilości węzła klastra, wybierz **ClusterId**.
-    1. W **Evaluated na podstawie** sekcji, ustaw **okres** wartość **60 minut**. Reguła będzie uruchamiany co 5 minut i zwracają rekordy, które zostały utworzone w ciągu ostatniej godziny od bieżącego czasu. Ustawianie okresu kontom szerokości okna potencjalnych opóźnieniu przesyłania danych. Gwarantuje również, że zapytanie zwraca dane w celu uniknięcia ujemna wartość false, w którym nigdy nie wyzwala alert.
+    1. Z listy rozwijanej **Na podstawie** wybierz pozycję **Pomiar metryki**. Pomiar metryki tworzy alert dla każdego obiektu w zapytaniu, którego wartość przekracza nasz określony próg.
+    1. W obszarze **warunek**wybierz opcję **większe niż**i wprowadź **75** jako początkowy **próg** punktu odniesienia dla alertów użycia procesora CPU i pamięci. W przypadku alertu o małej ilości miejsca na dysku wprowadź **90**. Lub wprowadź inną wartość, która spełnia kryteria.
+    1. W sekcji **alert wyzwalacza na podstawie** wybierz pozycję **kolejne naruszenia**. Z listy rozwijanej wybierz pozycję **większe niż**, a następnie wprowadź wartość **2**.
+    1. Aby skonfigurować alert dotyczący użycia procesora lub pamięci kontenera, wobszarze agregowanie wybierzpozycję containerName. Aby skonfigurować alert niskiego dysku węzła klastra, wybierz pozycję **ClusterId**.
+    1. W sekcji **oceniane na podstawie** ustaw wartość **okresu** na **60 minut**. Reguła będzie działać co 5 minut i zwracać rekordy, które zostały utworzone w ciągu ostatniej godziny od bieżącego czasu. Ustawianie przedziału czasu dla kont okien szerokich dla potencjalnych opóźnień danych. Zapewnia również, że zapytanie zwraca dane, aby uniknąć fałszywych wartości ujemnych, w których alert nigdy nie jest uruchamiany.
 
-9. Wybierz **gotowe** aby zakończyć tworzenie reguły alertu.
-10. Wprowadź nazwę w **Nazwa reguły alertu** pola. Określ **opis** zapewniająca szczegóły dotyczące alertu. I wybierz poziom ważności odpowiednich opcji dostępnych.
-11. Aby od razu aktywować reguły alertu, zaakceptuj wartość domyślną dla **Włącz regułę po utworzeniu**.
-12. Wybierz istniejącą **grupy akcji** lub Utwórz nową grupę. Ten krok zapewnia te same akcje przekierowanie ilekroć dany alert zostanie wywołany. Konfigurowanie zależnie od działu IT lub DevOps zespół operacyjny zarządza zdarzenia.
-13. Wybierz **Utwórz regułę alertu** aby zakończyć tworzenie reguły alertu. Rozpoczyna ona działanie od razu.
+9. Wybierz pozycję **gotowe** , aby zakończyć regułę alertu.
+10. Wprowadź nazwę w polu **Nazwa reguły alertu** . Podaj **Opis** , który zawiera szczegóły dotyczące alertu. I wybierz odpowiedni poziom ważności z dostępnych opcji.
+11. Aby natychmiast aktywować regułę alertu, Zaakceptuj wartość domyślną dla **reguły Włącz przy tworzeniu**.
+12. Wybierz istniejącą **grupę akcji** lub Utwórz nową grupę. Ten krok zapewnia, że te same akcje są wykonywane za każdym razem, gdy zostanie wyzwolony alert. Skonfiguruj w zależności od tego, jak zespół IT lub DevOps Operations zarządza incydentami.
+13. Wybierz pozycję **Utwórz regułę alertu** , aby zakończyć regułę alertu. Rozpoczyna ona działanie od razu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Widok [dziennika przykłady zapytań](container-insights-log-search.md#search-logs-to-analyze-data) wstępnie zdefiniowane zapytania i przykłady do oceny lub Dostosuj alerty, wizualizacji i analizowanie klastry usługi.
-- Aby dowiedzieć się więcej na temat usługi Azure Monitor i monitorowanie innych aspektów wybranego działania klastra usługi AKS, zobacz [widok usługi Azure Kubernetes Service health](container-insights-analyze.md).
+- Wyświetl [przykłady zapytań dotyczących dzienników](container-insights-log-search.md#search-logs-to-analyze-data) , aby zobaczyć wstępnie zdefiniowane zapytania i przykłady do oszacowania lub dostosowania do tworzenia alertów, wizualizacji lub analizowania klastrów.
+- Aby dowiedzieć się więcej na temat Azure Monitor i sposobu monitorowania innych aspektów klastra AKS, zobacz [Wyświetlanie usługi Azure Kubernetes Service Health](container-insights-analyze.md).

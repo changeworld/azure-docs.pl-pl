@@ -1,6 +1,6 @@
 ---
-title: Omówienie Centrum zabezpieczeń Azure dla IoT koszty (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat kosztów związanych z Centrum zabezpieczeń Azure dla IoT i jak je kontrolować.
+title: Informacje dotyczące Azure Security Center kosztów IoT | Microsoft Docs
+description: Dowiedz się więcej o kosztach związanych z Azure Security Centerami dla IoT i sposobach ich kontrolowania.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,79 +13,76 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: dd041cdb1608eab60fa2a5fa756f381656a13a46
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 603df1def011232ad2120c37ad1ba256f2a30526
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618452"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596517"
 ---
 # <a name="pricing-and-associated-costs"></a>Cennik i powiązane koszty
 
-> [!IMPORTANT]
-> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-W tym artykule opisano usługi Azure Security Center (ASC) dla modelu cen IoT, znajduje się podsumowanie wszystkich powiązanych z nimi kosztów i wyjaśniono, jak nimi zarządzać.
+W tym artykule wyjaśniono Azure Security Center modelu cen usługi IoT, podsumowano wszystkie powiązane koszty i wyjaśniono, jak zarządzać nimi.
 
 ## <a name="pricing"></a>Cennik
 
-ASC dla IoT, model cen składa się z dwóch części i jest naliczana, gdy usługa IoT Hub jest [włączone](quickstart-onboard-iot-hub.md) w ASC IoT:
+Model cen usługi IoT Azure Security Center obejmuje dwie części, a opłaty są naliczane po [włączeniu](quickstart-onboard-iot-hub.md) IoT Hub w Azure Security Center dla IoT:
 
-- Koszt według urządzenia — funkcje wbudowane zabezpieczenia oparty na analizie dzienników usługi IoT Hub.
+- Koszt według wbudowanych funkcji zabezpieczeń urządzeń opartych na analizie IoT Hub dzienników.
 
-- Koszt według komunikatu — możliwości zwiększone zabezpieczenia oparty na zabezpieczenia komunikatów z urządzenia usługi IoT Edge lub typu liść.
+- Koszt dzięki ulepszonym funkcjom zabezpieczeń opartym na komunikatach zabezpieczeń z urządzeń IoT Edge lub liści.
 
   >[!Note]
-  > Zabezpieczenia komunikatów również spowoduje naliczenie opłaty za użycie przydziału w Centrum IoT Hub.
+  > Komunikaty o zabezpieczeniach również powodują użycie przydziału na IoT Hub.
 
-Aby uzyskać więcej informacji, zobacz [cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+Aby uzyskać więcej informacji, zobacz [Cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="associated-costs"></a>Powiązanych z nimi kosztów
+## <a name="associated-costs"></a>Powiązane koszty
 
-ASC IoT udostępnia dwa typy powiązanych z nimi kosztów, które nie są częścią bezpośrednie ceny:
+W przypadku Azure Security Center IoT istnieją dwa typy powiązanych kosztów, które nie są częścią cen bezpośrednich:
 
-- Użycie limitu przydziału usługi IoT Hub
+- Użycie limitu przydziału IoT Hub
 
-- Zaloguj się koszty usługi storage Analytics
+- Log Analytics koszty magazynu
 
-Można jednocześnie obniżając jej koszty, rezygnując z niektórych funkcji, zmieniając ustawienia.
+Aby zmniejszyć koszty związane z niektórymi funkcjami, można zmienić ustawienia.
 
-Aby zmienić swoje ustawienia:
+Aby zmienić ustawienia:
 
-1. Otwórz Centrum IoT Hub.
+1. Otwórz IoT Hub.
 
-2. W obszarze **zabezpieczeń**, kliknij przycisk **Przegląd**.
+2. W obszarze **zabezpieczenia**kliknij pozycję **Przegląd**.
 
 3. Kliknij pozycję **Ustawienia**.
 
-Poniższa tabela zawiera podsumowanie powiązanych z nimi kosztów i skutki każdej z nich.
+Poniższa tabela zawiera podsumowanie powiązanych kosztów i implikacje poszczególnych opcji.
 
 |     | Użycie | Komentarz |
 | --- | --- | --- |
-| **Użycie limitu przydziału usługi IoT Hub** |  |
-| [Eksportowanie urządzeń](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) zadania (Eksportowanie bliźniaczej reprezentacji) | raz dziennie | Wyłącz _bliźniaczej reprezentacji w kolekcji metadanych_ |
-| **Magazyn analizy dzienników** |  |
-| Urządzenia zaleceń i alertów| Zalecenie dotyczące zabezpieczeń i alerty wygenerowane przez usługę | Nie jest opcjonalny |
-| Dane pierwotne zabezpieczeń| Dane pierwotne zabezpieczeń z urządzeń IoT, zbierane przez agentów zabezpieczeń | Wyłącz _przechowywania zdarzeń zabezpieczeń urządzenia_ |
+| **Użycie limitu przydziału IoT Hub** |  |
+| [Eksportowanie zadania urządzenia](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (eksport z przędzą) | raz dziennie | Wyłącz _zbieranie metadanych_ z przędzy |
+| **Magazyn Log Analytics** |  |
+| Zalecenia i alerty dotyczące urządzeń| Zalecenia dotyczące zabezpieczeń i alerty wygenerowane przez usługę | Nieopcjonalne |
+| Surowe dane zabezpieczeń| Surowe dane zabezpieczeń z urządzeń IoT zebranych przez agentów zabezpieczeń | Wyłącz _zdarzenia związane z zabezpieczeniami magazynu RAW_ |
 
 >[!Important]
-> Zrezygnować ma poważny wpływ na dostępnych funkcji zabezpieczeń.
+> Rezygnacja ma poważne konsekwencje dla dostępnych funkcji zabezpieczeń.
   
-| Brak zgody | Implikacje |
+| Zrezygnuj | Implikacje |
 | --- | --- |
-| _Kolekcja metadanych bliźniaczych reprezentacji_ | Wyłącz [alerty niestandardowe](quickstart-create-custom-alerts.md) |
-| | Wyłącz zalecenia manifestu usługi IoT Edge |
-| | Wyłącz urządzenia na podstawie tożsamości zaleceń i alertów |
-| _Zdarzenia zabezpieczeń urządzenie niesformatowane Store_ | Szczegółowe informacje na temat zaleceń dotyczących linii bazowej systemu operacyjnego urządzenia nie są dostępne |
-| | Szczegółowe informacje na [alert](concept-security-alerts.md) i [zalecenie](concept-recommendations.md) badania nie są dostępne |
+| _Zbieranie metadanych z przędzy_ | Wyłącz [alerty niestandardowe](quickstart-create-custom-alerts.md) |
+| | Wyłącz zalecenia dotyczące IoT Edge manifest |
+| | Wyłączanie zaleceń i alertów opartych na tożsamości urządzenia |
+| _Przechowuj zdarzenia dotyczące zabezpieczeń nieprzetworzonych urządzeń_ | Szczegółowe informacje o zaleceniach bazowych systemu operacyjnego urządzeń nie są dostępne |
+| | Szczegóły dotyczące [](concept-security-alerts.md) postępowania z alertami i [zaleceniami](concept-recommendations.md) nie są dostępne |
+|
 
 
 ## <a name="see-also"></a>Zobacz także
 
-- Dostęp do Twojego [danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
+- Uzyskiwanie dostępu do [danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
 - [Badanie urządzenia](how-to-investigate-device.md)
-- Poznawanie i eksplorowanie [zalecenia dotyczące zabezpieczeń](concept-recommendations.md)
-- Poznawanie i eksplorowanie [alerty zabezpieczeń](concept-security-alerts.md)
+- Omówienie i eksplorowanie zaleceń dotyczących [zabezpieczeń](concept-recommendations.md)
+- Poznawanie i eksplorowanie [alertów zabezpieczeń](concept-security-alerts.md)

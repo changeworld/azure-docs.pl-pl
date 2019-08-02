@@ -2,24 +2,19 @@
 title: Sterownik woluminu Azure Files Service Fabric (wersja zapoznawcza) | Microsoft Docs
 description: Service Fabric obsługuje używanie Azure Files do tworzenia kopii zapasowych woluminów z kontenera. Jest to obecnie dostępne w wersji zapoznawczej.
 services: service-fabric
-documentationcenter: other
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
-ms.devlang: other
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/10/2018
-ms.author: aljo, subramar
-ms.openlocfilehash: 09ee729fea952665350aa25c21cdb3d5823b899f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
-ms.translationtype: HT
+ms.author: atsenthi
+ms.openlocfilehash: 36a3bb385064009f25a585ea299558d54714fc27
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489894"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599689"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Sterownik woluminu Azure Files Service Fabric (wersja zapoznawcza)
 Wtyczka woluminu Azure Files to [wtyczka woluminu platformy Docker](https://docs.docker.com/engine/extend/plugins_volume/) , która dostarcza woluminy oparte na [Azure Files](https:///azure/storage/files/storage-files-introduction) dla kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker ma postać pakietu aplikacji usługi Service Fabric, który można wdrożyć w klastrach usługi Service Fabric. Celem jest zapewnienie woluminów opartych na Azure Files dla innych aplikacji kontenera Service Fabric wdrożonych w klastrze.
@@ -250,6 +245,6 @@ Parametry aplikacji są obsługiwane w przypadku woluminów, jak pokazano w powy
 
 W przypadku określenia sterownika dziennika platformy Docker należy wdrożyć agentów (lub kontenery) w celu obsługi dzienników w klastrze. Tag **DriverOption** może służyć do określania opcji dla sterownika dziennika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby zobaczyć przykłady kontenerów, w tym sterownik woluminu, odwiedź [przykłady kontenerów Service Fabric](https://github.com/Azure-Samples/service-fabric-containers)
 * Aby wdrożyć kontenery w klastrze Service Fabric, zapoznaj się z artykułem [wdrażanie kontenera na Service Fabric](service-fabric-deploy-container.md)

@@ -1,7 +1,7 @@
 ---
 title: Dokumentacja interfejsu API — Custom Decision Service
 titlesuffix: Azure Cognitive Services
-description: Kompletny przewodnik interfejsu API usługi Custom Decision Service.
+description: Kompletny przewodnik po interfejsie API dla Custom Decision Service.
 services: cognitive-services
 author: slivkins
 manager: nitinme
@@ -10,22 +10,23 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
-ms.openlocfilehash: be9966f5d8e8d94aa3f49aac91b35b105195b108
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4f263e3b57103174f0084ab3d25430d8c47359fd
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60510957"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707308"
 ---
-# <a name="api"></a>Interfejs API
+# <a name="api"></a>interfejs API
 
-Azure Custom Decision Service udostępnia dwa interfejsy API, które są wywoływane dla każdej decyzji: [Ranking interfejsu API](#ranking-api) wprowadzanie klasyfikacji akcje i [interfejsu API za wynagrodzeniem](#reward-api) służący do wypełniania wyjściowego nagrody. Ponadto należy podać [API zestawu akcji](#action-set-api-customer-provided) umożliwia określenie akcji do usługi Azure Custom Decision Service. W tym artykule opisano te trzy interfejsy API. Typowym scenariuszem jest używana poniżej do wyświetlenia, gdy usługi Custom Decision Service optymalizuje klasyfikacji artykułów.
+Usługa Azure Custom Decision Service udostępnia dwa interfejsy API, które są wywoływane dla każdej decyzji: [interfejs API klasyfikacji](#ranking-api) do wprowadzania rankingu akcji i [interfejsu API nagradzania](#reward-api) w celu wygenerowania nagrody. Ponadto należy podać [interfejs API zestawu akcji](#action-set-api-customer-provided) , aby określić akcje na platformie Azure Custom Decision Service. W tym artykule opisano te trzy interfejsy API. Typowy scenariusz jest używany poniżej, aby pokazać, kiedy Custom Decision Service optymalizuje klasyfikację artykułów.
 
-## <a name="ranking-api"></a>Klasyfikacja interfejsu API
+## <a name="ranking-api"></a>Interfejs API klasyfikowania
 
-Interfejs API klasyfikacji używa standardowego [JSONP](https://en.wikipedia.org/wiki/JSONP)— wzorzec komunikacji stylu, aby zoptymalizować czas oczekiwania i pominąć [zasadami tego samego źródła](https://en.wikipedia.org/wiki/Same-origin_policy). Te ostatnie zabrania JavaScript pobieranie dane pochodzące spoza źródła strony.
+Interfejs API klasyfikacji używa standardowego wzorca komunikacji [JSONP](https://en.wikipedia.org/wiki/JSONP)do optymalizowania opóźnień i pomijania [zasad tego samego źródła](https://en.wikipedia.org/wiki/Same-origin_policy). To drugie zabrania skryptom JavaScript pobieranie danych spoza źródła strony.
 
-Wstaw ten fragment kodu do głowy HTML pierwszej strony (w którym są wyświetlane spersonalizowane listę artykułów):
+Wstaw ten fragment kodu do nagłówka HTML strony frontonu (gdzie jest wyświetlana spersonalizowana lista artykułów):
 
 ```html
 // define the "callback function" to render UI
@@ -41,13 +42,13 @@ Wstaw ten fragment kodu do głowy HTML pierwszej strony (w którym są wyświetl
 ```
 
 > [!IMPORTANT]
-> Funkcja wywołania zwrotnego muszą być zdefiniowane przed wywołaniem interfejsu API klasyfikacji.
+> Funkcja wywołania zwrotnego musi być zdefiniowana przed wywołaniem interfejsu API klasyfikacji.
 
 > [!TIP]
-> Aby poprawić czas oczekiwania, interfejs API Klasyfikacja jest uwidaczniany za pomocą protokołu HTTP zamiast HTTPS, podobnie jak w `https://ds.microsoft.com/api/v2/<appId>/rank/*`.
-> Jednak punkt końcowy HTTPS należy użyć, jeśli pierwsza strona jest obsługiwany za pośrednictwem protokołu HTTPS.
+> Aby zwiększyć opóźnienie, interfejs API klasyfikowania jest udostępniany za pośrednictwem protokołu HTTP, `https://ds.microsoft.com/api/v2/<appId>/rank/*`a nie https, jak w przypadku programu.
+> Jednak punkt końcowy HTTPS musi być używany, jeśli strona frontonu jest obsługiwana za pośrednictwem protokołu HTTPS.
 
-Gdy nie są używane parametry, odpowiedź HTTP z interfejsu API Klasyfikacja jest ciąg w formacie JSONP:
+Gdy parametry nie są używane, odpowiedź HTTP z interfejsu API klasyfikowania jest ciągiem sformatowanym przez JSONP:
 
 ```json
 callback({
@@ -60,34 +61,34 @@ callback({
 
 Następnie przeglądarka wykonuje ten ciąg jako wywołanie funkcji `callback()`.
 
-Parametr do funkcji wywołania zwrotnego w powyższym przykładzie jest zgodny z następującym schematem:
+Parametr funkcji wywołania zwrotnego w poprzednim przykładzie ma następujący schemat:
 
-- `ranking` udostępnia klasyfikacji adresów URL, który będzie wyświetlany.
-- `eventId` jest używana wewnętrznie przez usługi Custom Decision Service odpowiadający tej klasyfikacji za pomocą odpowiedniego kliknięć.
-- `appId` Umożliwia korzystanie z funkcji wywołania zwrotnego do rozróżnienia wielu aplikacji uruchomionych na tej samej strony sieci Web usługi Custom Decision Service.
-- `actionSets` Wyświetla listę każdej akcji, używany w klasyfikacji wywołania interfejsu API, oraz sygnatura czasowa UTC ostatnie pomyślne odświeżenie. Usługa Custom Decision Service okresowo odświeża źródła danych z zestawu działań. Na przykład jeśli niektóre z zestawów działań nie są aktualne, funkcja wywołania zwrotnego może być konieczne wracać do ich klasyfikację domyślną.
+- `ranking`zawiera klasyfikację adresów URL, które mają być wyświetlane.
+- `eventId`jest używany wewnętrznie przez Custom Decision Service w celu dopasowania do tej klasyfikacji przy użyciu odpowiednich kliknięć.
+- `appId`zezwala funkcji wywołania zwrotnego na rozróżnienie między wieloma aplikacjami Custom Decision Service uruchomionymi na tej samej stronie sieci Web.
+- `actionSets`Wyświetla listę wszystkich zestawów akcji używanych w wywołaniu interfejsu API klasyfikacji wraz z sygnaturą czasową UTC ostatniego pomyślnego odświeżenia. Custom Decision Service okresowo odświeża źródła zestawu akcji. Na przykład jeśli niektóre z zestawów akcji nie są aktualne, funkcja wywołania zwrotnego może wymagać powrotu do ich domyślnej klasyfikacji.
 
 > [!IMPORTANT]
-> Ustawia określoną akcję są przetwarzane i prawdopodobnie przeczyścić w celu utworzenia klasyfikacji domyślnej artykułów. Domyślnie jest stosowana pobiera następnie zmieniana i zwracany w odpowiedzi HTTP. Domyślnie jest stosowana jest zdefiniowane w tym miejscu:
+> Określone zestawy akcji są przetwarzane i prawdopodobnie oczyszczone, aby można było utworzyć domyślną klasyfikację artykułów. Klasyfikacja domyślna jest następnie zmieniana i zwracana w odpowiedzi HTTP. Klasyfikacja domyślna jest definiowana tutaj:
 >
-> - W ramach każdego zestawu akcji artykuły są oczyszczane 15 najnowsze artykuły (Jeśli nie zostały zwrócone więcej niż 15).
-> - Jeśli określono wiele zestawów działań, są one scalane w takiej samej kolejności jak wywołania interfejsu API. Oryginalna kolejność artykuły są zachowywane w obrębie każdego zestawu akcji. Duplikaty są usuwane na rzecz wcześniejszych wersji.
-> - Pierwszy `n` artykuły są przechowywane z scalonych listę artykułów, których `n=20` domyślnie.
+> - W ramach każdego zestawu akcji artykuły są oczyszczane do 15 najnowszych artykułów (jeśli zwracane są więcej niż 15).
+> - Jeśli określono wiele zestawów akcji, są one scalane w takiej samej kolejności jak w wywołaniu interfejsu API. Oryginalna kolejność artykułów jest zachowywana w ramach każdego zestawu akcji. Duplikaty są usuwane na korzyść wcześniejszych kopii.
+> - Pierwsze `n` artykuły są przechowywane na podstawie Scalonej listy artykułów, gdzie `n=20` domyślnie.
 
-### <a name="ranking-api-with-parameters"></a>Klasyfikacja interfejsu API z parametrami
+### <a name="ranking-api-with-parameters"></a>Interfejs API klasyfikacji z parametrami
 
-Klasyfikacja API umożliwia następujące parametry:
+Interfejs API klasyfikowania umożliwia następujące parametry:
 
-- `details=1` i `details=2` Wstawia dodatkowe szczegóły dotyczące każdego artykułu na liście `ranking`.
-- `limit=<n>` Określa maksymalny numer artykułów w klasyfikacji domyślnej. `n` musi mieć długość od `2` i `30` (lub inne jest obcinana do `2` lub `30`odpowiednio).
-- `dnt=1` Wyłącza plików cookie użytkownika.
+- `details=1`i `details=2` Wstawia dodatkowe szczegółowe informacje o każdym artykule wymienionym w `ranking`temacie.
+- `limit=<n>`Określa maksymalną liczbę artykułów w klasyfikacji domyślnej. `n`musi należeć `2` do `30` zakresu od do (lub w przeciwnym `2` razie `30`jest obcinany do lub, odpowiednio).
+- `dnt=1`wyłącza pliki cookie użytkownika.
 
-Parametry można łączyć w warstwie standardowa składni ciągów zapytania, na przykład `details=2&dnt=1`.
+Parametry można łączyć w standardowym, składni ciągu zapytania, na przykład `details=2&dnt=1`.
 
 > [!IMPORTANT]
-> Domyślne ustawienie w Europie powinien być `dnt=1` do momentu zaakceptowania transparent pliku cookie klienta. Należy również domyślne ustawienie dla witryn sieci Web przez osoby niepełnoletnie docelowych. Aby uzyskać więcej informacji, zobacz [warunki użytkowania](https://www.microsoft.com/cognitive-services/en-us/legal/CognitiveServicesTerms20160804).
+> Ustawieniem domyślnym w Europie powinna być `dnt=1` do momentu, gdy klient wyrazi zgodę na baner plików cookie. Powinno to być również ustawienie domyślne dla witryn sieci Web, które są pomocnicze. Aby uzyskać więcej informacji, zobacz [warunki użytkowania](https://www.microsoft.com/cognitive-services/en-us/legal/CognitiveServicesTerms20160804).
 
-`details=1` Wstawia element każdego artykułu `guid`, jeśli jest obsługiwany przez interfejs API zestawu akcji. Odpowiedź HTTP:
+Element wstawia każdy `guid`artykuł, jeśli jest obsługiwany przez interfejs API zestawu akcji. `details=1` Odpowiedź HTTP:
 
 ```json
 callback({
@@ -100,12 +101,12 @@ callback({
                  {"id":"<A2>","lastRefresh":"timeStamp2"}]});
 ```
 
-`details=2` Elementu dodaje więcej szczegółów, które usługi Custom Decision Service może wyodrębnić z metatagi optymalizacji dla aparatów wyszukiwania artykułach [kodu cechowania](https://github.com/Microsoft/mwt-ds/tree/master/Crawl):
+Element dodaje więcej szczegółów, które Custom Decision Service mogą wyodrębnić z artykułów "cechowania" w kodzie Meta tagów: [](https://github.com/Microsoft/mwt-ds/tree/master/Crawl) `details=2`
 
-- `title` z `<meta property="og:title" content="..." />` lub `<meta property="twitter:title" content="..." />` lub `<title>...</title>`
-- `description` z `<meta property="og:description" ... />` lub `<meta property="twitter:description" content="..." />` lub `<meta property="description" content="..." />`
-- `image` Z `<meta property="og:image" content="..." />`
-- `ds_id` Z `<meta name=”microsoft:ds_id” content="..." />`
+- `title`z `<meta property="og:title" content="..." />` lub `<meta property="twitter:title" content="..." />` lub`<title>...</title>`
+- `description`z `<meta property="og:description" ... />` lub `<meta property="twitter:description" content="..." />` lub`<meta property="description" content="..." />`
+- `image`wniosek`<meta property="og:image" content="..." />`
+- `ds_id`wniosek`<meta name=”microsoft:ds_id” content="..." />`
 
 Odpowiedź HTTP:
 
@@ -120,17 +121,17 @@ callback({
                  {"id":"<A2>","lastRefresh":"timeStamp2"}]});
 ```
 
-`<details>` Elementu:
+`<details>` Element:
 
 ```json
 [{"guid":"123"}, {"description":"some text", "ds_id":"234", "image":"ImageUrl1", "title":"some text"}]
 ```
 
-## <a name="reward-api"></a>Nagrody interfejsu API
+## <a name="reward-api"></a>Interfejs API nagradzania
 
-Niestandardowe kliknięć Decision Service używa tylko na najważniejszych miejsca. Każde kliknięcie jest interpretowany jako wynagrodzenie 1. Brak kliknięcie jest interpretowany jako wynagrodzenie 0. Kliknięcia są dopasowywane o odpowiedniej klasyfikacji przy użyciu identyfikatorów zdarzeń, które są generowane przez [Ranking API](#ranking-api) wywołania. Jeśli to konieczne, zdarzenia identyfikatory mogą być przekazywane za pomocą plików cookie sesji.
+Custom Decision Service używa kliknięć tylko w górnym gnieździe. Każde kliknięcie jest interpretowane jako wynagrodzenie 1. Brak kliknięcia jest interpretowany jako nagrody o wartości 0. Kliknięcia są zgodne z odpowiednimi klasyfikacjami przy użyciu identyfikatorów zdarzeń, które są generowane przez wywołanie [interfejsu API klasyfikacji](#ranking-api) . W razie konieczności identyfikatory zdarzeń mogą być przesyłane za pośrednictwem plików cookie sesji.
 
-Aby obsłużyć kliknięć w górnym gniazda, umieść ten kod na pierwszej stronie:
+Aby obsłużyć kliknij górne miejsce, Umieść ten kod na stronie frontonu:
 
 ```javascript
 $.ajax({
@@ -139,21 +140,21 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-W tym miejscu `data` jest argumentem `callback()` działać zgodnie z wcześniejszym opisem. Za pomocą `data` kliknięcie kodu obsługującego wymaga niektórych opiekę. Przykład przedstawiono w tym [samouczek](custom-decision-service-tutorial-news.md#use-the-apis).
+Oto `data` argument`callback()` funkcji, jak opisano wcześniej. Użycie `data` w kodzie obsługi kliknij wymaganie. W tym samouczku przedstawiono przykład [](custom-decision-service-tutorial-news.md#use-the-apis).
 
-Tylko do celów testowych, można wywołać interfejsu API programu nagradzania za pośrednictwem [cURL](https://en.wikipedia.org/wiki/CURL):
+Do celów testowych można wywołać interfejs API nagradzania [za pomocą zwinięcia](https://en.wikipedia.org/wiki/CURL):
 
 ```sh
 curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST -d 1 -H "Content-Type: application/json"
 ```
 
-Oczekiwany efekt jest odpowiedź HTTP 200 (OK). Możesz zobaczyć nagradzania 1 dla tego zdarzenia w dzienniku, (Jeśli klucz konta magazynu platformy Azure została dostarczona w portalu).
+Oczekiwany efekt to odpowiedź HTTP 200 (OK). W dzienniku można zobaczyć wynagrodzenie wartości 1 (Jeśli klucz konta usługi Azure Storage został dostarczony w portalu).
 
-## <a name="action-set-api-customer-provided"></a>Akcja Ustaw API (klienta)
+## <a name="action-set-api-customer-provided"></a>Interfejs API zestawu akcji (dostarczony klient)
 
-Na wysokim poziomie interfejsu API zestawu akcji zwraca listę artykułów (Akcje). Każdego artykułu jest określony przez jego adres URL i (opcjonalnie) tytuł artykułu i Data publikacji. Można określić kilka akcji zestawy w portalu. Różne API zestawu akcji powinna służyć dla każdego zestawu działań jako odrębne adresu URL.
+Na wysokim poziomie interfejs API zestawu akcji zwraca listę artykułów (akcji). Każdy artykuł jest określany za pomocą adresu URL i (opcjonalnie) tytułu artykułu oraz daty publikacji. Możesz określić kilka zestawów akcji w portalu. Dla każdego zestawu akcji należy użyć innego interfejsu API zestawu akcji, jako odrębnego adresu URL.
 
-Interfejs API każdej akcji Ustaw można zaimplementować na dwa sposoby: jako źródło danych RSS lub źródła danych Atom. Albo jeden powinna być zgodna ze standardem i zwróć poprawny kod XML. Aby uzyskać RSS Oto przykład:
+Każdy interfejs API zestawu akcji można zaimplementować na dwa sposoby: jako źródło danych RSS lub źródło danych Atom. Jeden z nich powinien być zgodny ze standardem i zwracać prawidłowy kod XML. Oto przykład dla funkcji RSS:
 
 ```xml
 <rss version="2.0">
@@ -171,20 +172,20 @@ Interfejs API każdej akcji Ustaw można zaimplementować na dwa sposoby: jako �
 </rss>
 ```
 
-Każdy najwyższego poziomu `<item>` element zawiera opis akcji:
+Każdy element najwyższego poziomu `<item>` opisuje akcję:
 
-- `<link>` jest wymagane i jest używany jako identyfikator działania.
-- `<date>` jest ignorowana, jeśli jest on mniejszy niż lub równa 15 elementów. w przeciwnym razie jest obowiązkowe.
-  - W przypadku więcej niż 15 elementów 15 ostatnich te są używane.
-  - Muszą być odpowiednio w standardowym formacie dla źródła danych RSS lub Atom:
-    - [RFC 822](https://tools.ietf.org/html/rfc822) dla RSS: na przykład `"Fri, 28 Apr 2017 18:02:06 GMT"`
-    - [RFC 3339](https://tools.ietf.org/html/rfc3339) dla Atom: na przykład `"2016-12-19T16:39:57-08:00"`
-- `<title>` jest opcjonalna i jest używany do generowania funkcji, które opisują tego artykułu.
-- `<guid>` jest opcjonalny i przekazanych przez system do funkcji wywołania zwrotnego (Jeśli `?details` określono parametr w wywołaniu Ranking interfejsu API).
+- `<link>`jest obowiązkowy i jest używany jako identyfikator akcji.
+- `<date>`jest ignorowany, jeśli jest mniejsze niż lub równe 15 elementów; w przeciwnym razie jest to wymagane.
+  - Jeśli jest więcej niż 15 elementów, używane są 15 najnowszych z nich.
+  - Musi być odpowiednio w standardowym formacie RSS lub Atom:
+    - [RFC 822](https://tools.ietf.org/html/rfc822) dla RSS: na przykład`"Fri, 28 Apr 2017 18:02:06 GMT"`
+    - [RFC 3339](https://tools.ietf.org/html/rfc3339) for Atom: na przykład`"2016-12-19T16:39:57-08:00"`
+- `<title>`jest opcjonalne i służy do generowania funkcji opisujących artykuł.
+- `<guid>`jest opcjonalne i przesyłane przez system do funkcji wywołania zwrotnego (Jeśli `?details` parametr jest określony w wywołaniu interfejsu API klasyfikacji).
 
-Inne elementy wewnątrz `<item>` są ignorowane.
+Inne elementy wewnątrz elementu `<item>` są ignorowane.
 
-Źródło danych używa wersji Atom, konwencje i tej samej składni XML.
+Wersja kanału informacyjnego Atom używa tych samych składni i Konwencji XML.
 
 > [!TIP]
-> Jeśli system używa swój własny artykuł identyfikatorów, one mogą być przekazywane do funkcji wywołania zwrotnego, za pomocą `<guid>`.
+> Jeśli system używa własnych identyfikatorów artykułów, mogą one być przesyłane do funkcji wywołania zwrotnego przy użyciu `<guid>`.

@@ -1,9 +1,9 @@
 ---
-title: Wprowadzenie do elementów Reliable Collections w usług stanowych w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Usługa Service Fabric usługi stanowe udostępniają elementy reliable collections, które umożliwiają pisanie aplikacji w chmurze wysoko dostępne, skalowalne i małym opóźnieniem.
+title: Wprowadzenie do niezawodnych kolekcji w usłudze Azure Service Fabric stanowe usługi | Microsoft Docs
+description: Service Fabric usługi stanowe udostępniają niezawodne kolekcje, które umożliwiają pisanie aplikacji w chmurze o wysokiej dostępności i skalowalności.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: masnider,rajak,zhol
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,60 +13,60 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 1/3/2019
-ms.author: aljo
-ms.openlocfilehash: 4ed76b207db4712058b5524cd1b31fd65b0e19a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: a7b30003fd02f8ab2e367311cdb3f56c80dbb4b2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773645"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599267"
 ---
-# <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Wprowadzenie do elementów Reliable Collections w usług stanowych w usłudze Azure Service Fabric
+# <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Wprowadzenie do niezawodnych kolekcji w usłudze Azure Service Fabric stanowe usługi
 
-Elementy Reliable Collections umożliwiają pisanie aplikacji w chmurze wysoko dostępne, skalowalne i małego opóźnienia, tak, jakby podczas pisania aplikacji z jednego komputera. Klasy w **Microsoft.ServiceFabric.Data.Collections** przestrzeni nazw udostępniają zestaw kolekcji, które automatycznie swój stan wysokiej dostępności. Deweloperzy muszą program tylko do niezawodne interfejsy API kolekcji i umożliwiają zarządzanie stanem replikowanych i lokalne z elementów Reliable Collections.
+Niezawodne Kolekcje umożliwiają pisanie aplikacji w chmurze o wysokiej dostępności, skalowalności i małych opóźnieniach, tak jakby były napisane aplikacje pojedynczej aplikacji. Klasy w przestrzeni nazw **Microsoft. servicefabric. Data. Collections** zapewniają zestaw kolekcji, które automatycznie sprawiają, że stan ma wysoką dostępność. Deweloperzy muszą programować tylko do niezawodnych interfejsów API kolekcji i umożliwiają niezawodne kolekcje zarządzać stanem replikowanym i lokalnym.
 
-Główną różnicą między elementami Reliable Collections i innych technologii wysokiej dostępności (np. pamięci podręcznej Redis Azure Table service i usługi kolejek platformy Azure) to, że stan są przechowywane lokalnie w wystąpieniu usługi podczas również wykonywane o wysokiej dostępności. Oznacza to, że:
+Kluczowa różnica między niezawodnymi kolekcjami i innymi technologiami wysokiej dostępności (takimi jak Redis, Azure Table service i Azure usługa kolejki) polega na tym, że stan jest przechowywany lokalnie w wystąpieniu usługi, a także zapewnia wysoką dostępność. Oznacza to, że:
 
-* Wszystkie operacje odczytu są lokalne, które powoduje małe opóźnienia i wysoką przepływność odczytuje.
-* Wszystkie operacje zapisu pociągnąć za sobą minimalną liczbę sieci dla systemu IOs, co skutkuje małe opóźnienia i zapisuje o wysokiej przepływności.
+* Wszystkie odczyty są lokalne, co skutkuje małymi opóźnieniami i odczytami o wysokiej przepływności.
+* Wszystkie zapisy mają minimalną liczbę urządzeń z systemem IOs, co skutkuje małymi opóźnieniami i zapisami o wysokiej przepływności.
 
-![Obraz przedstawiający ewolucji kolekcji.](media/service-fabric-reliable-services-reliable-collections/ReliableCollectionsEvolution.png)
+![Obraz ewolucji kolekcji.](media/service-fabric-reliable-services-reliable-collections/ReliableCollectionsEvolution.png)
 
-Elementy Reliable Collections mogą być uważane za naturalną kontynuacją **System.Collections** klasy: nowy zestaw kolekcji, które są przeznaczone dla aplikacji w chmurze i wielu komputerów bez zwiększania stopnia złożoności dla dla deweloperów. W efekcie elementów Reliable Collections to:
+Niezawodne Kolekcje można traktować jako naturalną ewolucję klas **System. Collections** : nowy zestaw kolekcji przeznaczony do obsługi aplikacji w chmurze i wielokomputerowych bez zwiększania złożoności dla deweloperów. W związku z tym niezawodne kolekcje są następujące:
 
-* Replikowane: Zmiany stanu są replikowane w celu zapewnienia wysokiej dostępności.
-* Zachowywane: Dane są utrwalane na dysku w celu zapewnienia trwałości przed awariami na dużą skalę (na przykład awaria zasilania centrum danych).
-* Ponieważ operacje zapisu są utrwalenia i replikacji, nie można utworzyć volatile ReliableDictionary, ReliableQueue lub inna kolekcja niezawodne, która tylko utrwala dane w pamięci.
-* Asynchroniczne: Interfejsy API są asynchroniczne, aby upewnić się, że wątki nie są blokowane podczas generowania operacji We/Wy.
-* Transakcyjne: Interfejsy API wykorzystywać pozyskiwania transakcji, tak łatwe zarządzanie wielu elementów Reliable Collections w ramach usługi.
+* Powtórzon Zmiany stanu są replikowane w celu zapewnienia wysokiej dostępności.
+* Trwale Dane są utrwalane na dysku w celu zapewnienia trwałości przed awariami na dużą skalę (na przykład w przypadku awarii w centrum danych).
+* Ponieważ zapisy są utrwalane i replikowane, nie można utworzyć nietrwałej ReliableDictionary, ReliableQueue lub innej niezawodnej kolekcji, która zachowuje tylko dane w pamięci.
+* Komunikacji Interfejsy API są asynchroniczne, aby zapewnić, że wątki nie są blokowane podczas nanoszenia we/wy.
+* Transakcyjna Interfejsy API wykorzystują abstrakcję transakcji, dzięki czemu można łatwo zarządzać wieloma niezawodnymi kolekcjami w ramach usługi.
 
-Elementy Reliable Collections zapewniają gwarancje silnej spójności poza pole, aby ułatwić logikę o stanie aplikacji.
-Wysoki poziom spójności uzyskuje się poprzez zapewnienie transakcji, które zatwierdzenia Zakończ tylko wtedy, gdy cała transakcja zalogował kworum z większością replik, w tym podstawowy.
-W celu osiągnięcia spójności słabszy, aplikacji można potwierdzić powrót do klienta/osoby żądającej przed zwraca zatwierdzania asynchronicznego.
+Niezawodne kolekcje oferują Gwarancje silnej spójności, aby zapewnić łatwiejsze tworzenie informacji o stanie aplikacji.
+Silna spójność jest zapewniana przez zagwarantowanie, że zatwierdzenia transakcji kończą się tylko po zarejestrowaniu całej transakcji na większości kworum replik, łącznie z podstawowym.
+Aby zapewnić słabą spójność, aplikacje mogą potwierdzić z powrotem do klienta/osoby żądającej przed zwróceniem asynchronicznej deklaracji.
 
-Niezawodne interfejsy API kolekcje są unowocześnienia kolekcji współbieżnych interfejsy API (w **System.Collections.Concurrent** przestrzeni nazw):
+Niezawodne interfejsy API kolekcji to ewolucja współbieżnych kolekcji interfejsów API (znajdujących się w przestrzeni nazw **System. Collections. współbieżne** ):
 
-* Asynchroniczne: Zwraca klasę task, ponieważ, w przeciwieństwie do kolekcji współbieżnych operacji są replikowane i utrwalone.
-* Brak parametrów out: Używa `ConditionalValue<T>` do zwrócenia `bool` i wartości zamiast parametrów out. `ConditionalValue<T>` przypomina `Nullable<T>` , ale nie wymaga T, aby być strukturą.
-* Transakcje: Używa obiektu transakcji, aby umożliwić użytkownikowi grupy akcji na wiele elementów Reliable Collections w transakcji.
+* Komunikacji Zwraca zadanie od, w przeciwieństwie do współbieżnych kolekcji, operacje są replikowane i utrwalane.
+* Brak parametrów out: Używa `ConditionalValue<T>` do`bool` zwracania wartości i zamiast parametrów out. `ConditionalValue<T>`przypomina, `Nullable<T>` ale nie musi być strukturą.
+* Akcja Używa obiektu transakcji, aby umożliwić użytkownikowi grupowanie akcji na wielu niezawodnych kolekcjach w transakcji.
 
-Obecnie **Microsoft.ServiceFabric.Data.Collections** zawiera trzy kolekcje:
+Dzisiaj **firma Microsoft. servicefabric. Data. Collections** zawiera trzy Kolekcje:
 
-* [Niezawodnego słownika](https://msdn.microsoft.com/library/azure/dn971511.aspx): Reprezentuje kolekcję replikowane, transakcji i asynchroniczne par klucz/wartość. Podobnie jak **ConcurrentDictionary**, zarówno klucz i wartość mogą być dowolnego typu.
-* [Niezawodna kolejka](https://msdn.microsoft.com/library/azure/dn971527.aspx): Reprezentuje replikowane, transakcji i asynchroniczne strict pierwszy w FIFO (FIFO) kolejkę. Podobnie jak **ConcurrentQueue**, wartość może być dowolnego typu.
-* [Niezawodna kolejka współbieżna](service-fabric-reliable-services-reliable-concurrent-queue.md): Reprezentuje replikowane, transakcji i asynchroniczne optymalnego porządkowanie kolejki wysokiej przepływności. Podobnie jak **ConcurrentQueue**, wartość może być dowolnego typu.
+* [Niezawodny słownik](https://msdn.microsoft.com/library/azure/dn971511.aspx): Reprezentuje replikowany, transakcyjny i asynchroniczny zbiór par klucz/wartość. Podobnie jak w przypadku **ConcurrentDictionary**, zarówno klucz, jak i wartość mogą być dowolnego typu.
+* [](https://msdn.microsoft.com/library/azure/dn971527.aspx)Niezawodna Kolejka: Przedstawia zreplikowaną, transakcyjną i asynchronicznie rygorystyczną kolejkę First-In, First-Out (FIFO). Podobnie jak w przypadku **ConcurrentQueue**, wartość może być dowolnego typu.
+* [](service-fabric-reliable-services-reliable-concurrent-queue.md)Niezawodna Kolejka współbieżna: Reprezentuje zreplikowaną, transakcyjną i asynchroniczną kolejkę kolejności, w której można uzyskać wysoką przepływność. Podobnie jak w przypadku **ConcurrentQueue**, wartość może być dowolnego typu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Reliable Collection wytyczne i zalecenia](service-fabric-reliable-services-reliable-collections-guidelines.md)
+* [Wskazówki dotyczące niezawodnej kolekcji & zalecenia](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [Praca z elementami Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Transakcje i blokady](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Zarządzanie danymi
   * [Tworzenie kopii zapasowej i przywracanie](service-fabric-reliable-services-backup-restore.md)
   * [Powiadomienia](service-fabric-reliable-services-notifications.md)
   * [Serializacja elementu Reliable Collection](service-fabric-reliable-services-reliable-collections-serialization.md)
-  * [Serializacja i uaktualnienia](service-fabric-application-upgrade-data-serialization.md)
-  * [Elementy Reliable State Manager konfiguracji](service-fabric-reliable-services-configuration.md)
+  * [Serializacja i uaktualnienie](service-fabric-application-upgrade-data-serialization.md)
+  * [Konfiguracja niezawodnego menedżera stanu](service-fabric-reliable-services-configuration.md)
 * Inne
-  * [Reliable Services — szybki start](service-fabric-reliable-services-quick-start.md)
-  * [Dokumentacja dla deweloperów dla elementów Reliable Collections](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Reliable Services Szybki Start](service-fabric-reliable-services-quick-start.md)
+  * [Dokumentacja dla deweloperów dla niezawodnych kolekcji](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

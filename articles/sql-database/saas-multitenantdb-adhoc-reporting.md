@@ -1,6 +1,6 @@
 ---
-title: Uruchamianie zapytań raportowania ad hoc w wielu bazach danych Azure SQL | Dokumentacja firmy Microsoft
-description: Uruchamianie zapytań ad hoc raportowania w wielu bazach danych SQL w przykładzie aplikacji wielodostępnej.
+title: Uruchamianie zapytań dotyczących raportów ad hoc w wielu bazach danych Azure SQL | Microsoft Docs
+description: Wykonaj zapytania dotyczące raportów ad hoc w wielu bazach danych SQL w przykładowej aplikacji wielodostępnej.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -8,136 +8,135 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
-ms.author: ayolubek
+ms.author: craigg
 ms.reviewer: sstein
-manager: craigg
 ms.date: 10/30/2018
-ms.openlocfilehash: d4c5a2ca88f982626c8c2a8b37e4a7d6dfdbe599
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a6b45db3c8b4071b591ca2b5fc604b986598c0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61485827"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570355"
 ---
-# <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Uruchamianie zapytań analitycznych ad-hoc w wielu bazach danych Azure SQL
+# <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Uruchamianie zapytań analizy ad hoc w wielu bazach danych Azure SQL
 
-W tym samouczku możesz uruchamiania rozproszonych zapytań dla całego zestawu dzierżawy baz danych, aby włączyć raportowanie interaktywne ad-hoc. Te zapytania mogą wyodrębnić szczegółowe informacje ukryte w codziennych danych operacyjnych, aplikacji SaaS o nazwie Wingtip Tickets. W celu wyodrębnienia te należy wdrożyć dodatkowe analitycznej bazy danych na serwerze wykazu i umożliwiają elastyczne zapytanie zapytań rozproszonych.
+W tym samouczku uruchomiono zapytania rozproszone w całym zestawie baz danych dzierżawy, aby umożliwić interakcyjne raportowanie ad hoc. Te zapytania mogą wyodrębnić szczegółowe dane dotyczące codziennych danych operacyjnych Wingtip biletów SaaS aplikacji. Aby wykonać te wyodrębnienia, należy wdrożyć dodatkową bazę danych analitycznych na serwerze wykazu i użyć zapytania elastycznego w celu włączenia zapytań rozproszonych.
 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > 
-> * Jak wdrożyć ad-hoc bazy danych raportowania
-> * Sposób uruchamiania rozproszonych zapytań dla wszystkich baz danych dzierżaw
+> * Jak wdrożyć bazę danych raportowania ad hoc
+> * Jak uruchamiać zapytania rozproszone we wszystkich bazach danych dzierżaw
 
 
 Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych:
 
-* Aplikacja o nazwie Wingtip Tickets SaaS wielodostępnej w bazie danych jest wdrażana. Aby wdrożyć w mniej niż pięć minut, zobacz [wdrażanie i eksplorowanie aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych](saas-multitenantdb-get-started-deploy.md)
+* Wdrożono Wingtip biletów SaaS aplikację bazy danych z wieloma dzierżawcami. Aby wdrożyć program w mniej niż pięć minut, zobacz [wdrażanie i eksplorowanie aplikacji bazy danych z obsługą wielu dzierżawców Wingtip SaaS](saas-multitenantdb-get-started-deploy.md)
 * Zainstalowany jest program Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
-* Zainstalowano program SQL Server Management Studio (SSMS). Aby pobrać i zainstalować narzędzie SSMS, zobacz [Pobierz SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+* SQL Server Management Studio (SSMS) jest zainstalowany. Aby pobrać i zainstalować program SSMS, zobacz [pobieranie SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 
-## <a name="ad-hoc-reporting-pattern"></a>Wzorzec raportowania ad hoc
+## <a name="ad-hoc-reporting-pattern"></a>Wzorzec sprawozdawczości ad hoc
 
 ![wzorzec raportowania ad hoc](media/saas-multitenantdb-adhoc-reporting/adhocreportingpattern_shardedmultitenantDB.png)
 
-Aplikacje SaaS można analizować ogromnej ilości danych dzierżawy, które są przechowywane centralnie w chmurze. Analizy ujawnić szczegółowych informacji o operacjach i użyciu aplikacji. Te informacje mogą ukierunkować rozwój funkcji, usprawnienia w zakresie użyteczności oraz inne inwestycje w usługach i aplikacjach.
+Aplikacje SaaS mogą analizować ogromną ilość danych dzierżawy, które są przechowywane centralnie w chmurze. Analizy ujawniają wgląd w operacje i użycie aplikacji. Te informacje mogą być pomocne podczas opracowywania funkcji, ulepszania użyteczności i innych inwestycji w aplikacje i usługi.
 
-Uzyskiwanie dostępu do tych danych w jednej wielodostępnej bazie danych jest łatwe, ale nie jest tak proste, gdy są one znacznie rozproszone, potencjalnie nawet na tysiące baz danych. Jedno z podejść jest użycie [zapytania elastycznego](sql-database-elastic-query-overview.md), które umożliwia wykonywanie zapytań do rozproszonego zestawu baz danych za pomocą wspólnego schematu. Te bazy danych mogą być rozproszone między różnych grup zasobów i subskrypcji. Jeszcze jednej wspólnej logowania musi mieć dostęp do wyodrębniania danych ze wszystkich baz danych. Elastyczne zapytanie używa pojedynczej *head* bazy danych, w którym są określone tabele zewnętrzne odzwierciedlające tabele lub widoki rozproszone (dzierżawcy) baz danych. Zapytania skierowane do tej głównej bazy danych są kompilowane w celu utworzenia planu zapytania rozproszonego, gdzie części zapytania są w razie potrzeby wypychane do baz danych dzierżawy. Elastyczne zapytanie używa podzielonej na fragmenty mapy w bazie danych wykazów do określenia lokalizacji wszystkich baz danych dzierżaw. Konfiguracja i zapytanie są proste przy użyciu standardu [języka Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)i obsługiwać zapytań ad hoc z narzędziami, takimi jak usługa Power BI i program Excel.
+Uzyskiwanie dostępu do tych danych w jednej wielodostępnej bazie danych jest łatwe, ale nie jest tak proste, gdy są one znacznie rozproszone, potencjalnie nawet na tysiące baz danych. Jednym z metod jest użycie [elastycznej kwerendy](sql-database-elastic-query-overview.md), która umożliwia wykonywanie zapytań w rozproszonym zestawie baz danych ze wspólnym schematem. Te bazy danych mogą być dystrybuowane między różnymi grupami zasobów i subskrypcjami. Jeszcze jedna wspólna nazwa logowania musi mieć dostęp do wyodrębniania danych ze wszystkich baz danych. Zapytanie elastyczne korzysta *z pojedynczej* bazy danych, w której są zdefiniowane tabele zewnętrzne, które stanowią duplikaty tabel lub widoków w rozproszonych bazach danych (dzierżawców). Zapytania skierowane do tej głównej bazy danych są kompilowane w celu utworzenia planu zapytania rozproszonego, gdzie części zapytania są w razie potrzeby wypychane do baz danych dzierżawy. Elastyczne zapytanie używa mapy fragmentu w bazie danych wykazu, aby określić lokalizację wszystkich baz danych dzierżaw. Instalator i zapytanie są proste przy użyciu standardowego [języka Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)i obsługują zapytania ad hoc z narzędzi takich jak Power BI i Excel.
 
-Dzięki rozłożeniu zapytań w bazach danych dzierżawy, elastyczne zapytanie zapewnia natychmiastowy wgląd w dane w środowisku produkcyjnym. Jednak jak elastyczne zapytanie pobiera dane z potencjalnie wiele baz danych, opóźnienie zapytań może być czasem wyższy niż w przypadku zapytań równoważne przesłane do jednej wielodostępnej bazie danych. Pamiętaj, aby projekt zapytań zminimalizowanie ilości danych, która jest zwracana. Zapytanie elastyczne w usłudze często najlepiej nadaje się do wykonywania zapytań na małe ilości danych w czasie rzeczywistym, w przeciwieństwie do tworzenia często używane lub analytics złożonych zapytań lub raportów. Jeśli zapytania nie zostaną wykonane poprawnie, Przyjrzyj się [plan wykonania](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) aby zobaczyć, jakie części zapytania została przekazana do zdalnej bazy danych. I ocenić, jak dużo danych jest zwracany. Zapytania wymagające złożone przetwarzanie analityczne mogą być lepiej obsługiwani przez zapisywanie danych wyodrębnionych dzierżawcy w bazie danych, który jest zoptymalizowany pod kątem zapytań analitycznych. SQL Database i SQL Data Warehouse może udostępniać takie analitycznej bazy danych.
+Dzięki rozproszeniu zapytań w bazach danych dzierżaw, elastyczne zapytanie zapewnia natychmiastowy wgląd w dane produkcyjne na żywo. Niemniej jednak, ponieważ elastyczne zapytanie pobiera dane z potencjalnie wielu baz danych, opóźnienie zapytania może być większe niż w przypadku równoważnych zapytań przesyłanych do jednej wielodostępnej bazy danych. Pamiętaj, aby zaprojektować zapytania, aby zminimalizować dane, które są zwracane. Elastyczne zapytanie jest często najlepiej dostosowane do wykonywania zapytań dotyczących niewielkich ilości danych w czasie rzeczywistym, zamiast tworzyć często używane lub złożone zapytania lub raporty analityczne. Jeśli zapytania nie działają prawidłowo, należy zapoznać się z [planem wykonywania](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) , aby sprawdzić, jaka część zapytania została przekazana do zdalnej bazy danych. I Oceń, ile danych jest zwracanych. Zapytania wymagające złożonego przetwarzania analitycznego mogą być lepiej obsługiwane przez zapisanie wyodrębnionych danych dzierżawy do bazy danych zoptymalizowanej pod kątem zapytań analitycznych. SQL Database i SQL Data Warehouse mogą obsługiwać taką bazę danych analitycznych.
 
-Ten wzorzec analizy została wyjaśniona w [samouczek analiz dzierżaw](saas-multitenantdb-tenant-analytics.md).
+Ten wzorzec dla analizy jest wyjaśniony w samouczku dotyczącym [analizy dzierżawców](saas-multitenantdb-tenant-analytics.md).
 
-## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Pobierz kod źródłowy aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych i skryptów
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Pobierz Wingtip bilety SaaS kodu źródłowego i skryptów aplikacji bazy danych z wieloma dzierżawcami
 
-Skryptów aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych i kod źródłowy aplikacji są dostępne w [WingtipTicketsSaaS MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) repozytorium GitHub. Zapoznaj się z [ogólne wskazówki dotyczące](saas-tenancy-wingtip-app-guidance-tips.md) kroków pobrać i odblokować skrypty SaaS o nazwie Wingtip Tickets.
+Wingtip bilety SaaS wielodostępnych skryptów bazy danych i kodu źródłowego aplikacji są dostępne w repozytorium GitHub [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) . Zapoznaj się [](saas-tenancy-wingtip-app-guidance-tips.md) z ogólnymi wskazówkami dotyczącymi kroków pobierania i odblokowywania Wingtip biletów SaaS.
 
-## <a name="create-ticket-sales-data"></a>Utwórz dane dotyczące sprzedaży biletów
+## <a name="create-ticket-sales-data"></a>Tworzenie danych sprzedaży biletów
 
-Aby uruchamiać zapytania dla zestawu danych bardziej interesujące, należy utworzyć dane dotyczące sprzedaży biletów, uruchamiając generator biletu.
+Aby uruchamiać zapytania dla bardziej interesującego zestawu danych, Utwórz dane sprzedaży biletów, uruchamiając Generator biletów.
 
-1. W *PowerShell ISE*, Otwórz... \\Learning Modules\\Operational Analytics\\raportowania ad hoc\\*AdhocReporting.ps1 pokaz* skrypt i ustaw następujące wartości:
-   * **$DemoScenario** = 1, **zakup biletów dla zdarzeń na wszystkie lokalizacje**.
-2. Naciśnij klawisz **F5** do uruchamiania skryptu i generowaniu możliwości sprzedaży biletów. Po uruchomieniu skryptu można kontynuować czynności w ramach tego samouczka. Dane biletu zostanie wysłane *wykonywania ad hoc rozproszonych zapytań* sekcji, więc poczekaj, aż generator biletu zakończyć.
+1. W *ISE programu PowerShell*Otwórz pozycję... \\\\ Learning modules Operational Analytics\\AdHoc raportowanie demo-AdhocReporting. ps1 i ustaw następujące wartości: \\
+   * **$DemoScenario** = 1, **bilety zakupu dla zdarzeń we wszystkich miejsc**.
+2. Naciśnij klawisz **F5** , aby uruchomić skrypt i wygenerować sprzedaż biletów. Po uruchomieniu skryptu wykonaj kroki opisane w tym samouczku. W sekcji *Uruchom zapytania rozproszone ad hoc* są wysyłane zapytania o dane biletów, więc poczekaj na ukończenie generatora biletów.
 
-## <a name="explore-the-tenant-tables"></a>Zapoznaj się z tabel dzierżawy 
+## <a name="explore-the-tenant-tables"></a>Eksplorowanie tabel dzierżaw 
 
-W aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych dzierżawy są przechowywane w modelu zarządzania dzierżawy hybrydowej — gdzie dane dzierżawy zostanie przechowywanych w wielodostępnej bazie danych lub bazę danych pojedynczej dzierżawy i można przenosić między nimi. Podczas wykonywania zapytania dla wszystkich baz danych dzierżawy, ważne jest zapytanie elastyczne można traktować dane tak, jakby jest częścią jednej logicznej bazy danych podzielonej na fragmenty przez dzierżawcę. 
+W Wingtip bilety SaaS wielodostępnej aplikacji bazy danych dzierżawcy są przechowywane w modelu zarządzania dzierżawcą hybrydową, gdzie dane dzierżawy są przechowywane w bazie danych z wieloma dzierżawami lub w pojedynczej bazie danych dzierżawy i mogą być przenoszone między nimi. Podczas wykonywania zapytań we wszystkich bazach danych dzierżawców ważne jest, aby elastyczne zapytanie było traktowane jako część pojedynczej logicznej bazy danych podzielonej na fragmenty przez dzierżawcę. 
 
-Aby osiągnąć ten wzorzec, obejmują wszystkie tabele dzierżawy *VenueId* kolumnę, która identyfikuje który dzierżawy danych należy do. *VenueId* jest obliczany jako skrót nazwy właściwości, ale wszystkie podejście może służyć do wprowadzenia unikatową wartość dla tej kolumny. To podejście jest podobne do sposób klucza dzierżawy jest kolumną obliczaną do użytku w wykazie. Tabele zawierające *VenueId* są używane przez zapytania elastycznego do zrównoleglenia zapytania i odesłać je do odpowiedniego dzierżawy zdalnej bazy danych. To znacznie zmniejsza ilość danych, które są zwracane i powoduje zwiększenie wydajności, szczególnie w przypadku, gdy istnieje wiele dzierżaw, którego dane są przechowywane w bazach danych pojedynczej dzierżawy.
+Aby osiągnąć ten wzorzec, wszystkie tabele dzierżaw zawierają kolumnę *VenueId* , która identyfikuje dzierżawcę, do którego należą dane. *VenueId* jest obliczany jako skrót nazwy miejsca, ale można użyć dowolnego podejścia do wprowadzenia unikatowej wartości dla tej kolumny. To podejście jest podobne do sposobu, w jaki klucz dzierżawy jest obliczany do użycia w wykazie. Tabele zawierające *VenueId* są używane przez zapytania elastyczne do zrównoleglanie zapytań i wypchnięcia ich do odpowiedniej zdalnej bazy danych dzierżawy. Znacznie zmniejsza to ilość zwracanych danych i skutkuje wzrostem wydajności szczególnie w przypadku wielu dzierżawców, których dane są przechowywane w bazach danych z pojedynczymi dzierżawcami.
 
-## <a name="deploy-the-database-used-for-ad-hoc-distributed-queries"></a>Wdrażanie bazy danych używane dla zapytań rozproszonych ad hoc
+## <a name="deploy-the-database-used-for-ad-hoc-distributed-queries"></a>Wdrażanie bazy danych używanej na potrzeby zapytań rozproszonych ad hoc
 
-To ćwiczenie wdraża *adhocreporting* bazy danych. Jest to główny bazy danych, który zawiera schemat używany podczas wykonywania zapytań we wszystkich bazach danych dzierżaw. Baza danych jest wdrażana do istniejącego serwera wykazu, czyli serwera używanego do wszystkich związanych z zarządzaniem baz danych w przykładowej aplikacji.
+W tym ćwiczeniu zostanie wdrożona baza danych *adhocreporting* . Jest to główna baza danych zawierająca Schemat używany do wykonywania zapytań we wszystkich bazach danych dzierżaw. Baza danych jest wdrażana na istniejącym serwerze wykazu, który jest serwerem używanym dla wszystkich baz danych związanych z zarządzaniem w przykładowej aplikacji.
 
-1. Otwórz... \\Learning Modules\\Operational Analytics\\raportowania ad hoc\\*AdhocReporting.ps1 pokaz* w *PowerShell ISE* i ustaw następujące wartości:
-   * **$DemoScenario** = 2, **wdrażanie Ad hoc analitycznej bazy danych**.
+1. Otwórz... \\\\\\Learning modules Operational Analytics AdHoc Reporting*demo-AdhocReporting. ps1* w programie *PowerShell ISE* i ustaw następujące wartości: \\
+   * **$DemoScenario** = 2, **Wdróż bazę danych analizy ad hoc**.
 
-2. Naciśnij klawisz **F5** Aby uruchomić skrypt i utworzyć *adhocreporting* bazy danych.
+2. Naciśnij klawisz **F5** , aby uruchomić skrypt i utworzyć bazę danych *adhocreporting* .
 
-W następnej sekcji dodasz schematu do bazy danych, dzięki czemu może służyć do uruchamiania rozproszonych zapytań.
+W następnej sekcji Dodaj schemat do bazy danych, aby można było używać go do uruchamiania zapytań rozproszonych.
 
-## <a name="configure-the-head-database-for-running-distributed-queries"></a>Konfigurowanie bazy danych "head" do uruchamiania rozproszonych zapytań
+## <a name="configure-the-head-database-for-running-distributed-queries"></a>Konfigurowanie bazy danych "nagłówkowej" na potrzeby uruchamiania zapytań rozproszonych
 
-To ćwiczenie dodaje schematu (zewnętrznego źródła danych i definicje tabeli zewnętrznej) do ad-hoc raportowania bazy danych, która umożliwia wykonywanie zapytań we wszystkich bazach danych dzierżaw.
+W tym ćwiczeniu do bazy danych raportowania ad hoc jest dodawany schemat (zewnętrzne definicje zewnętrznych źródeł danych i tabel zewnętrznych), który umożliwia wykonywanie zapytań we wszystkich bazach danych dzierżaw.
 
-1. Otwórz program SQL Server Management Studio i połączenia z bazą danych ad hoc raportowania utworzonej w poprzednim kroku. Nazwa bazy danych jest *adhocreporting*.
-2. Otwórz ...\Learning Modules\Operational Analytics\Adhoc Reporting\ *AdhocReportingDB.sql zainicjować* w programie SSMS.
-3. Przejrzyj skrypt SQL i pamiętaj o następujących kwestiach:
+1. Otwórz SQL Server Management Studio i nawiąż połączenie z bazą danych raportowania AdHoc utworzoną w poprzednim kroku. Nazwa bazy danych to *adhocreporting*.
+2. Otwórz. ..\Learning Modules\Operational Analytics\Adhoc Reporting \ *Initialize-AdhocReportingDB. SQL* w programie SSMS.
+3. Przejrzyj skrypt SQL i zwróć uwagę na następujące kwestie:
 
-   Elastyczne zapytanie używa poświadczeń o zakresie bazy danych, aby dostęp do wszystkich wymienionych baz danych dzierżawy. Te poświadczenia muszą być dostępne we wszystkich bazach danych i zwykle przyznanych minimalnych uprawnień powinien włączyć te zapytania ad hoc.
+   Zapytanie elastyczne używa poświadczeń z zakresem bazy danych w celu uzyskania dostępu do wszystkich baz danych dzierżaw. To poświadczenie musi być dostępne we wszystkich bazach danych i powinny być zwykle przyznawane minimalnymi prawami wymaganymi do włączenia tych zapytań ad hoc.
 
     ![tworzenie poświadczenia](media/saas-multitenantdb-adhoc-reporting/create-credential.png)
 
-   Za pomocą bazy danych wykazów jako zewnętrzne źródło danych, zapytania są dystrybuowane do wszystkich baz danych zarejestrowanych w wykazie, po uruchomieniu zapytania. Ponieważ nazwy serwerów są różne dla każdego wdrożenia, ten skrypt inicjowania pobiera lokalizację bazy danych wykazów, pobierając bieżącego serwera (@@servername) gdy skrypt zostanie wykonany.
+   Korzystając z bazy danych katalogu jako zewnętrznego źródła danych, zapytania są dystrybuowane do wszystkich baz danych zarejestrowanych w wykazie podczas uruchamiania zapytania. Ponieważ nazwy serwerów są różne dla każdego wdrożenia, ten skrypt inicjujący Pobiera lokalizację bazy danych wykazu przez pobranie bieżącego serwera (@@servername), w którym skrypt jest wykonywany.
 
-    ![Tworzenie zewnętrznego źródła danych](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
+    ![Utwórz zewnętrzne źródło danych](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
-   Tabele zewnętrzne, odwołujące się do tabel dzierżawy są zdefiniowane przy użyciu **dystrybucji = SHARDED(VenueId)** . Kierowane zapytania dla określonego *VenueId* z odpowiednią bazą danych i zwiększa wydajność w wielu scenariuszach, jak pokazano w następnej sekcji.
+   Tabele zewnętrzne odwołujące się do tabel dzierżawców są zdefiniowane za pomocą **dystrybucji = podzielonej na fragmenty (VenueId)** . To kieruje zapytanie dla konkretnej *VenueId* do odpowiedniej bazy danych i poprawi wydajność dla wielu scenariuszy, jak pokazano w następnej sekcji.
 
     ![Tworzenie tabel zewnętrznych](media/saas-multitenantdb-adhoc-reporting/external-tables.png)
 
-   Lokalnej tabeli *VenueTypes* , zostanie utworzony i wypełniony. Ta tabela danych odwołania jest typowe we wszystkich bazach danych dzierżaw, więc może być reprezentowany jako lokalnej tabeli i wypełnione za pomocą wspólnych danych. Dla niektórych kwerend, to może zmniejszyć ilość danych przenoszone między baz danych dzierżaw i *adhocreporting* bazy danych.
+   Lokalna tabela *VenueTypes* , która jest tworzona i wypełniana. Ta tabela danych referencyjnych jest wspólna we wszystkich bazach danych dzierżawy, więc może być reprezentowana w tym miejscu jako tabela lokalna i uzupełniona o wspólne dane. W przypadku niektórych zapytań może to zmniejszyć ilość danych przenoszonych między bazami danych dzierżawy i bazą danych *adhocreporting* .
 
-    ![Tworzenie tabeli](media/saas-multitenantdb-adhoc-reporting/create-table.png)
+    ![Utwórz tabelę](media/saas-multitenantdb-adhoc-reporting/create-table.png)
 
-   Tabele odwołań zostaną umieszczone w ten sposób, należy zaktualizować schemat tabeli i dane, po zaktualizowaniu bazy danych dzierżaw.
+   Jeśli dołączysz tabele referencyjne w ten sposób, pamiętaj, aby zaktualizować schemat i dane tabeli przy każdej aktualizacji baz danych dzierżaw.
 
-4. Naciśnij klawisz **F5** do uruchamiania skryptu i zainicjować *adhocreporting* bazy danych. 
+4. Naciśnij klawisz **F5** , aby uruchomić skrypt i zainicjować bazę danych *adhocreporting* . 
 
-Teraz możesz uruchamiania rozproszonych zapytań i zbierania szczegółowych informacji ze wszystkich dzierżaw!
+Teraz można uruchamiać zapytania rozproszone i zbierać szczegółowe informacje we wszystkich dzierżawach.
 
-## <a name="run-ad-hoc-distributed-queries"></a>Uruchamianie zapytań ad hoc rozproszonych
+## <a name="run-ad-hoc-distributed-queries"></a>Uruchamianie rozproszonych zapytań ad hoc
 
-Teraz, gdy *adhocreporting* bazy danych jest skonfigurowany, przejdź dalej i uruchomisz kilka zapytań rozproszonych. Obejmują planu wykonania w celu lepszego zrozumienia gdy przetwarzania kwerend się dzieje. 
+Teraz, gdy baza danych *adhocreporting* została skonfigurowana, należy uruchomić niektóre zapytania rozproszone. Uwzględnij plan wykonania, aby lepiej zrozumieć, gdzie jest wykonywane przetwarzanie zapytań. 
 
-Podczas sprawdzania plan wykonywania, umieść kursor nad ikony planu, aby uzyskać szczegółowe informacje. 
+Podczas sprawdzania planu wykonywania Umieść wskaźnik myszy nad ikonami planu, aby uzyskać szczegółowe informacje. 
 
-1. W *SSMS*, Otwórz... \\Learning Modules\\Operational Analytics\\raportowania ad hoc\\*AdhocReportingQueries.sql pokaz*.
-2. Upewnij się, nawiązano **adhocreporting** bazy danych.
-3. Wybierz **zapytania** menu i kliknij przycisk **zawierają rzeczywiste planu wykonania**
-4. Wyróżnij *miejsc, które są aktualnie zarejestrowane?* zapytania, a następnie naciśnij klawisz **F5**.
+1. W programie *SSMS*Otwórz pozycję... \\\\Learning modules Operational Analytics\\AdHoc Reporting demo-AdhocReportingQueries. SQL. \\
+2. Upewnij się, że nawiązano połączenie z bazą danych **adhocreporting** .
+3. Wybierz menu **zapytania** , a następnie kliknij pozycję **Dołącz rzeczywisty plan wykonania**
+4. Zaznacz, *które miejsca są obecnie zarejestrowane?* zapytanie i naciśnij klawisz **F5**.
 
-   Zapytanie zwraca listę całego miejsca, pokazujący, jak szybko i łatwo jest zapytania dla wszystkich dzierżaw i zwrócić dane z każdej dzierżawy.
+   Zapytanie zwraca całą listę miejsc, ilustrujące, jak szybka i łatwa jest kwerenda między wszystkimi dzierżawcami i zwracać dane z poszczególnych dzierżawców.
 
-   Zbadaj plan i sprawdzić, czy cały koszt zapytania zdalnego ponieważ możemy po prostu przechodząc do każdej bazy danych dzierżawy i wybierając informacje miejsc.
+   Sprawdź plan i sprawdź, czy cały koszt to zapytanie zdalne, ponieważ po prostu przejdziemy do każdej bazy danych dzierżawy i wybierzesz informacje o miejscu.
 
-   ![Wybierz * z dbo. Lokalizacje](media/saas-multitenantdb-adhoc-reporting/query1-plan.png)
+   ![Wybierz pozycję * z dbo. Lokalizacje](media/saas-multitenantdb-adhoc-reporting/query1-plan.png)
 
-5. Wybierz następne zapytania, a następnie naciśnij klawisz **F5**.
+5. Wybierz następne zapytanie i naciśnij klawisz **F5**.
 
-   To zapytanie sprzęga dane z bazy danych dzierżaw i lokalnej *VenueTypes* tabeli (lokalny, ponieważ znajduje się tabela *adhocreporting* bazy danych).
+   To zapytanie sprzęga dane z baz danych dzierżaw i lokalnej tabeli *VenueTypes* (lokalnego, tak jak w przypadku tabeli w bazie danych *adhocreporting* ).
 
-   Sprawdzanie planu i sprawdzić, czy większość koszt zapytania zdalnego ponieważ możemy wysyłać kwerendy informacji o właściwości każdego dzierżawcy (dbo. Miejsca), a następnie wykonaj szybkie sprzężenie lokalne przy użyciu lokalnej *VenueTypes* tabeli, aby wyświetlić przyjazną nazwę.
+   Sprawdź plan i sprawdź, czy większość kosztów jest kwerendą zdalną, ponieważ wysyłamy zapytania do informacji o miejscu poszczególnych dzierżawców (dbo. Miejsca), a następnie wykonaj szybkie sprzężenie lokalne z lokalną tabelą *VenueTypes* , aby wyświetlić przyjazną nazwę.
 
    ![Dołącz do danych zdalnych i lokalnych](media/saas-multitenantdb-adhoc-reporting/query2-plan.png)
 
-6. Teraz wybierz *na dzień najbardziej bilety sprzedano?* zapytania, a następnie naciśnij klawisz **F5**.
+6. Teraz wybierz, *dla którego dnia były sprzedawane najwięcej biletów?* zapytanie i naciśnij klawisz **F5**.
 
-   To zapytanie jest nieco bardziej złożonych dołączania i agregacji. Należy pamiętać, jest to że większość przetwarzania jest wykonywane zdalnie, a jeszcze raz, możemy przywrócić tylko wiersze, których potrzebujemy, zwracając tylko pojedynczy wiersz każde miejsce biletu łącznej sprzedaży liczby na dzień.
+   To zapytanie wykonuje nieco bardziej złożoną dołączenie i agregację. Ważne, aby zauważyć, że większość przetwarzania jest wykonywana zdalnie, a raz, przywracamy tylko te wiersze, których potrzebujemy, zwracając tylko jeden wiersz dla łącznej liczby sprzedaży biletów każdego miejsca dziennie.
 
    ![query](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
@@ -149,9 +148,9 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 > [!div class="checklist"]
 > 
 > * Uruchamiania rozproszonych zapytań dla wszystkich baz danych dzierżawy
-> * Wdrażanie ad-hoc bazy danych raportowania i dodać schematu do niego do uruchamiania rozproszonych zapytań.
+> * Wdróż bazę danych raportowania ad hoc i Dodaj do niej schemat do uruchamiania zapytań rozproszonych.
 
-Wypróbuj teraz [samouczek analitycznych](saas-multitenantdb-tenant-analytics.md) do eksplorowania wyodrębniania danych do oddzielnej analitycznej bazy danych, aby uzyskać bardziej złożone przetwarzanie analizy.
+Wypróbuj teraz [samouczek analizy dzierżawy](saas-multitenantdb-tenant-analytics.md) , aby poznać wyodrębnianie danych do oddzielnej bazy danych analitycznych w celu przetworzenia bardziej złożonej analizy.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

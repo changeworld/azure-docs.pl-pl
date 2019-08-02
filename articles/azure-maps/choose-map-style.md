@@ -1,64 +1,64 @@
 ---
-title: Mapowanie funkcji usługi Azure Maps stylu | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat usługi Azure Maps style powiązane funkcje.
+title: Funkcje stylu mapy w Azure Maps | Microsoft Docs
+description: Dowiedz się więcej na temat funkcji związanych z stylem Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/08/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ffed12b9184c7b6a690c30db9826f031fe6c9f9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52936b14264bd4fe1846ae365e1de447d594b612
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60795905"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639062"
 ---
-# <a name="choose-a-map-style-in-azure-maps"></a>Wybierz styl z mapy usługi Azure Maps
+# <a name="choose-a-map-style-in-azure-maps"></a>Wybierz styl mapy w Azure Maps
 
-Usługi Azure Maps ma cztery style różnych mapowań do wyboru. Aby uzyskać więcej informacji o stylach mapy, zobacz [obsługiwane style mapy w usługi Azure Maps](./supported-map-styles.md). W tym artykule pokazano, jak za pomocą funkcji stylu związane ustawienie stylu przy ładowaniu mapy, ustawienie nowego stylu i korzystanie z kontrolki selektor stylu.
+Azure Maps ma cztery różne style map do wyboru. Aby uzyskać więcej informacji na temat stylów mapy, zobacz [obsługiwane style mapy w Azure Maps](./supported-map-styles.md). W tym artykule przedstawiono sposób użycia funkcji związanych z stylem do ustawiania stylu obciążenia mapy, ustawiania nowego stylu i używania formantu selektora stylów.
 
-## <a name="set-style-on-map-load"></a>Ustaw styl przy ładowaniu mapy
+## <a name="set-style-on-map-load"></a>Ustawianie stylu podczas ładowania mapy
 
-<iframe height='500' scrolling='no' title='Ustawienia stylu przy ładowaniu mapy' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>ustawienia stylu przy ładowaniu mapy</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Ustawianie stylu podczas ładowania mapy' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zapoznaj się z piórem <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>Ustawianie stylu ładowania mapy</a> według Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Blok kodu powyżej Ustawia klucz subskrypcji i tworzy obiekt mapy ze stylem równa grayscale_dark. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
+Blok kodu powyżej ustawia klucz subskrypcji i tworzy obiekt mapy, z stylem ustawionym na grayscale_dark. Aby uzyskać instrukcje dotyczące sposobu tworzenia mapy, zobacz temat [Tworzenie mapy](./map-create.md) .
 
-## <a name="update-the-style"></a>Aktualizacja stylu
+## <a name="update-the-style"></a>Aktualizowanie stylu
 
-<iframe height='500' scrolling='no' title='Aktualizacja stylu' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>aktualizowanie styl</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Aktualizowanie stylu' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zapoznaj się z piórem <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>Aktualizowanie stylu</a> według<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Blok kodu powyżej Ustawia klucz subskrypcji i tworzy obiekt mapy bez wstępnie ustawienia stylu. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
+Ten blok kodu ustawia klucz subskrypcji i tworzy obiekt mapy bez wstępnego ustawiania stylu. Aby uzyskać instrukcje dotyczące sposobu tworzenia mapy, zobacz temat [Tworzenie mapy](./map-create.md) .
 
-Drugi blok kodu używa mapy [metody setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metodę, aby ustawić style mapy do satelity.
+Drugi blok kodu używa metody setStyle mapy [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) do ustawienia stylu mapy do satelity.
 
-## <a name="add-the-style-picker"></a>Dodaj selektor stylu
+## <a name="add-the-style-picker"></a>Dodaj selektor stylów
 
-<iframe height='500' scrolling='no' title='Dodawanie selektor stylu' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>Dodawanie selektor stylu</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Dodawanie selektora stylów' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro, <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>dodając selektor stylów</a> według Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Pierwszy blok kodu w powyższym kodzie Ustawia klucz subskrypcji i tworzy obiekt mapy, style mapy wstępnie jest ustawiona na grayscale_dark. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
+Pierwszy blok kodu w powyższym kodzie ustawia klucz subskrypcji i tworzy obiekt mapy, styl mapy jest wstępnie ustawiony na grayscale_dark. Aby uzyskać instrukcje dotyczące sposobu tworzenia mapy, zobacz temat [Tworzenie mapy](./map-create.md) .
 
-Drugi blok kodu tworzy selektor stylu, za pomocą atlas [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) konstruktora.
+Drugi blok kodu konstruuje selektor stylu przy użyciu konstruktora [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) Atlas.
 
-Selektor stylu umożliwia wybór stylu mapy. Trzeci blok kodu dodaje selektor stylu do mapy, przy użyciu mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Selektor stylu mieści się w planie **odbiornik zdarzeń** zapewnienie ładuje po mapy ładuje pełni.
+Selektor stylu umożliwia wybór stylu dla mapy. Trzeci blok kodu dodaje selektor stylu do mapy za pomocą [formantów mapy. Dodaj](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metodę. Selektor stylu znajduje się w obrębie **odbiornika zdarzeń** mapy, aby upewnić się, że ładuje się po całkowitym załadowaniu mapy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat klasy i metody używane w tym artykule:
-
-> [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-
-Dodawanie formantu do map:
+Aby dowiedzieć się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Dodawanie kontrolki mapy](./map-add-controls.md)
+> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
-Dodaj mapę kodu pin:
+Dodaj kontrolkę do swoich map:
 
 > [!div class="nextstepaction"]
-> [Dodawanie numeru pin](./map-add-pin.md)
+> [Dodaj kontrolki mapy](./map-add-controls.md)
+
+Dodaj numer PIN mapy:
+
+> [!div class="nextstepaction"]
+> [Dodaj numer PIN](./map-add-pin.md)

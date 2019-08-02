@@ -1,73 +1,73 @@
 ---
-title: Wyświetlanie informacji na temat współrzędnych przy użyciu usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Sposób wyświetlania informacji na temat adresu na mapie, gdy użytkownik wybierze Współrzędna
+title: Pokaż informacje o koordynacji z Azure Maps | Microsoft Docs
+description: Jak wyświetlić informacje o adresie na mapie, gdy użytkownik wybierze współrzędną
 author: jingjing-z
 ms.author: jinzh
-ms.date: 3/7/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3b635ab96f1438377cb0d282c17304c2531185be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df0966569a753d5000414451a2b69f1e69449b2c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357805"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638663"
 ---
 # <a name="get-information-from-a-coordinate"></a>Uzyskiwanie informacji na podstawie współrzędnych
 
-W tym artykule przedstawiono sposób wprowadzania wyszukiwania adres zwrotny, który zawiera adres lokalizacji kliknięto okna podręcznego.
+W tym artykule pokazano, jak utworzyć wyszukiwanie odwrotnego adresu, które pokazuje adres klikniętej lokalizacji podręcznej.
 
-Istnieją dwa sposoby utworzenia wyszukiwanie wsteczne adresu. Jednym ze sposobów jest zapytania [Azure Maps odwrotnego adres interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) przez moduł usługi. Druga metoda obejmuje korzystanie z [Fetch API](https://fetch.spec.whatwg.org/) Aby zgłosić wniosek o [Azure Maps odwrotnego adres interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) można znaleźć adresu. Obie metody są badane poniżej.
+Istnieją dwa sposoby przeszukiwania adresów odwrotnych. Jednym ze sposobów jest zbadanie [interfejsu API wyszukiwania odwrotnego adresu Azure Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) za pomocą modułu usługi. Innym sposobem jest użycie [interfejsu API pobierania](https://fetch.spec.whatwg.org/) w celu żądania do [Azure Maps interfejsu API wyszukiwania wstecznego adresu](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) w celu znalezienia adresu. Oba sposoby zostały przedstawione poniżej.
 
-## <a name="make-a-reverse-search-request-via-service-module"></a>Żądania wyszukiwania wstecznego, za pomocą modułu usług
+## <a name="make-a-reverse-search-request-via-service-module"></a>Utwórz żądanie wyszukiwania wstecznego za pośrednictwem modułu usługi
 
-<iframe height='500' scrolling='no' title='Uzyskiwanie informacji o współrzędnych (moduł usługi)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>uzyskać informacje na podstawie współrzędnych (moduł usługi)</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Uzyskiwanie informacji z współrzędnych (modułu usługi)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>Pobierz informacje z współrzędnych (modułu usługi)</a> przez Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy i ustawia mechanizm uwierzytelniania, korzystanie z klucza subskrypcji. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
+W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy i ustawia mechanizm uwierzytelniania do korzystania z tokenu dostępu. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](./map-create.md) .
 
-Tworzy drugi blok kodu `SubscriptionKeyCredentialPolicy` do uwierzytelniania żądań HTTP do usługi Azure Maps za pomocą klucza subskrypcji. A następnie `atlas.service.MapsURL.newPipeline()` przyjmuje `SubscriptionKeyCredential` zasad i tworzy [potoku](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) wystąpienia. `searchURL` Reprezentuje adres URL do usługi Azure Maps [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) operacji.
+Drugi blok kodu tworzy `TokenCredential` do uwierzytelniania żądań HTTP do Azure Maps z tokenem dostępu. Następnie przekazuje `TokenCredential` do `atlas.service.MapsURL.newPipeline()` i tworzy wystąpienie potoku [](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . Reprezentuje adres URL służący do Azure Maps operacji [wyszukiwania.](https://docs.microsoft.com/rest/api/maps/search) `searchURL`
 
-Aktualizuje styl kursor myszy na wskaźnik trzeci bloku kodu i tworzy [okno podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) obiektu. Możesz zobaczyć [dodać okno podręczne na mapie](./map-add-popup.md) instrukcje.
+Trzeci blok kodu aktualizuje styl kursora myszy do wskaźnika i tworzy obiekt [podręczny](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) . Aby uzyskać instrukcje, zobacz sekcję [Dodawanie okna podręcznego na mapie](./map-add-popup.md) .
 
-Czwarty bloku kodu dodaje kliknięcie myszą [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). Po wyzwoleniu tworzy zapytanie wyszukiwania za pomocą współrzędnych punktu klikniętego. Następnie używa moduł usługi [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) metody zapytania [Uzyskaj adres odwrotnego interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) adresu współrzędne. Kolekcja funkcji GeoJSON z odpowiedzi jest wyodrębniany przy użyciu `geojson.getFeatures()` metody.
+Czwarty blok kodu dodaje [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)kliknięcia myszą. Gdy jest wyzwalane, tworzy zapytanie wyszukiwania ze współrzędnymi klikniętego punktu. Następnie używa metody [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) modułu usługi do wykonywania zapytań w odniesieniu do [interfejsu API Odwróć adres wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) dla adresu współrzędnych. Kolekcja funkcji GEOJSON z odpowiedzi zostaje następnie wyodrębniona przy użyciu `geojson.getFeatures()` metody.
 
-Piąty bloku kodu konfiguruje zawartość okna podręcznego HTML, aby wyświetlić adres odpowiedzi kliknięto pozycję współrzędnych.
+Piąty blok kodu konfiguruje zawartość HTML podręczną, aby wyświetlić adres odpowiedzi dla klikniętej pozycji współrzędnej.
 
-Zmiana kursora, obiekt menu podręczne i zdarzenie click są tworzone na mapie [odbiornik zdarzeń ładowania](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zapewnienia pełnego ładowania mapy, aby można było pobrać informacji o współrzędnych.
+Przed pobraniem informacji o współrzędnych można utworzyć w [detektorze zdarzeń ładowania](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy wszystkie zmiany dotyczące kursora, obiektu podręcznego i zdarzenia kliknięcia.
 
-## <a name="make-a-reverse-search-request-via-fetch-api"></a>Wyślij żądanie wyszukiwania wstecznego za pośrednictwem pobrania interfejsu API
+## <a name="make-a-reverse-search-request-via-fetch-api"></a>Utwórz żądanie wyszukiwania wstecznego za pośrednictwem interfejsu API pobierania
 
-Kliknij na mapie, aby zgłosić wniosek geocode odwrotnego dla tej lokalizacji przy użyciu pobierania.
+Kliknij mapę, aby przetworzyć żądanie odwrotnego kodu dla tej lokalizacji przy użyciu funkcji pobierania.
 
-<iframe height='500' scrolling='no' title='Uzyskiwanie informacji na podstawie współrzędnych' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>uzyskać informacje na podstawie współrzędnych</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Uzyskiwanie informacji na podstawie współrzędnych' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>Pobierz informacje z</a> współrzędnych przez Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy i ustawia mechanizm uwierzytelniania, korzystanie z klucza subskrypcji. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
+W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy i ustawia mechanizm uwierzytelniania do korzystania z tokenu dostępu. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](./map-create.md) .
 
-Drugi blok kodu aktualizuje styl kursor myszy na wskaźnik i [okno podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) obiektu. Możesz zobaczyć [dodać okno podręczne na mapie](./map-add-popup.md) instrukcje.
+Drugi blok kodu aktualizuje styl kursora myszy do wskaźnika i obiektu podręcznego. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) Aby uzyskać instrukcje, zobacz sekcję [Dodawanie okna podręcznego na mapie](./map-add-popup.md) .
 
-Trzeci bloku kodu dodaje odbiornika zdarzeń dla kliknięcia myszą. Po kliknięciu myszą, wykorzystuje [pobrania interfejsu API](https://fetch.spec.whatwg.org/) do wykonywania zapytań [Azure Maps odwrotnego adres interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) adresu kliknięto współrzędnych. Pomyślnej odpowiedzi go zbiera adresów kliknięto lokalizacji, a następnie definiuje zawartość okna podręcznego i położenie za pośrednictwem [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) funkcji klasy okna podręcznego.
+Trzeci blok kodu dodaje odbiornik zdarzeń do kliknięć myszą. Po kliknięciu myszą jest używany [interfejs API pobierania](https://fetch.spec.whatwg.org/) do wykonywania zapytań w odniesieniu do [interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) dla klikniętego adresu Azure Maps. W przypadku pomyślnej odpowiedzi zbiera ona adres dla klikniętej lokalizacji i definiuje zawartość podręczną oraz pozycję za pomocą [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) funkcji SetOptions klasy popup.
 
-Zmiana kursora, obiekt menu podręczne i zdarzenie click są tworzone na mapie [odbiornik zdarzeń ładowania](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zapewnienia pełnego ładowania mapy, aby można było pobrać informacji o współrzędnych.
+Przed pobraniem informacji o współrzędnych można utworzyć w [detektorze zdarzeń ładowania](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy wszystkie zmiany dotyczące kursora, obiektu podręcznego i zdarzenia kliknięcia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule:
-
-> [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Okno podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
-
-Zobacz następujące artykuły, aby uzyskać przykłady pełnego kodu:
+> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Wyświetlanie instrukcji dotyczących trasy od A do B](./map-route.md)
+> [Elementy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+
+Zobacz następujące artykuły, aby zapoznać się z pełnymi przykładami kodu:
 
 > [!div class="nextstepaction"]
-> [Wyświetlanie ruchu](./map-show-traffic.md)
+> [Pokaż kierunki od A do B](./map-route.md)
+
+> [!div class="nextstepaction"]
+> [Pokaż ruch](./map-show-traffic.md)

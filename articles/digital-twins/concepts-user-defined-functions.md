@@ -1,52 +1,52 @@
 ---
-title: Przetwarzanie danych i funkcji zdefiniowanych przez użytkownika za pomocą Twins cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Omówienie przetwarzania danych, dopasowujące jednostki i funkcji zdefiniowanych przez użytkownika za pomocą Twins cyfrowych platformy Azure.
+title: Przetwarzanie danych i funkcje zdefiniowane przez użytkownika przy użyciu usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Omówienie przetwarzania i dopasowywania danych oraz funkcji zdefiniowanych przez użytkownika przy użyciu usługi Azure Digital bliźniaczych reprezentacji.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: 4db515a931bc7f423eb11ae31b7304a602f0da46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60925924"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638455"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Przetwarzanie danych i funkcje zdefiniowane przez użytkownika
 
-Twins cyfrowych platformy Azure oferuje możliwości zaawansowanych obliczeń. Deweloperzy mogą zdefiniować i uruchamiać funkcje niestandardowe wiadomości przychodzących danych telemetrycznych do wysyłania zdarzeń do wstępnie zdefiniowanych punktów końcowych.
+Usługa Azure Digital bliźniaczych reprezentacji oferuje zaawansowane możliwości obliczeniowe. Deweloperzy mogą definiować i uruchamiać funkcje niestandardowe w odniesieniu do przychodzących komunikatów telemetrycznych w celu wysyłania zdarzeń do wstępnie zdefiniowanych punktów końcowych.
 
 ## <a name="data-processing-flow"></a>Przepływ przetwarzania danych
 
-Po urządzenia wysyłają dane telemetryczne do reprezentacji urządzeń cyfrowych platformy Azure, deweloperzy może przetwarzać dane w czterech fazach: *zweryfikować*, *dopasowania*, *obliczenia*, i *wysyłania* .
+Gdy urządzenia wysyłają dane telemetryczne do usługi Azure Digital bliźniaczych reprezentacji, deweloperzy mogą przetwarzać dane w czterech fazach: *Walidacja*, *dopasowanie*, *Obliczanie*i *wysyłanie*.
 
-![Usługa Azure przepływ przetwarzania danych cyfrowych bliźniaczych reprezentacji][1]
+![Przepływ przetwarzania danych Digital bliźniaczych reprezentacji systemu Azure][1]
 
-1. Faza sprawdzania poprawności przekształca przychodzące komunikaty telemetryczne w celu prezentacji typowe [obiekt transferu danych](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) formatu. Ta faza wykonuje również weryfikacji urządzeń i czujników.
-1. Faza dopasowanie wyszukuje odpowiednie funkcje zdefiniowane przez użytkownika do uruchomienia. Wstępnie zdefiniowane dopasowujące jednostki Znajdź funkcje zdefiniowane przez użytkownika na podstawie urządzeń, czujników i informacji o miejscu na przychodzące komunikaty telemetryczne.
-1. Faza obliczeń działa funkcje zdefiniowane przez użytkownika dopasowane w poprzednim kroku. Te funkcje mogą odczytywać i aktualizować obliczonych wartości na przestrzenne programu graph węzły i może emitować niestandardowe powiadomienia.
-1. Faza wysyłania trasy niestandardowe powiadomienia z fazy obliczeń do punktów końcowych zdefiniowanych na wykresie.
+1. Faza walidacji przekształca przychodzące komunikaty telemetryczne do powszechnie rozumiany format [obiektu transferu danych](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) . W tej fazie wykonywane jest również Walidacja urządzenia i czujnika.
+1. Etap dopasowywania umożliwia znalezienie odpowiednich funkcji zdefiniowanych przez użytkownika do uruchomienia. Wstępnie zdefiniowane dopasowania znajdują funkcje zdefiniowane przez użytkownika na podstawie informacji o urządzeniu, czujniku i miejscu z przychodzącego komunikatu telemetrii.
+1. Faza obliczeń uruchamia zdefiniowane przez użytkownika funkcje dopasowane w poprzedniej fazie. Te funkcje mogą odczytywać i aktualizować obliczone wartości w węzłach wykresu przestrzennego i mogą emitować niestandardowe powiadomienia.
+1. Faza wysyłania kieruje wszystkie niestandardowe powiadomienia z fazy obliczeń do punktów końcowych zdefiniowanych w grafie.
 
-## <a name="data-processing-objects"></a>Przetwarzanie danych obiektów
+## <a name="data-processing-objects"></a>Obiekty przetwarzania danych
 
-Przetwarzanie danych w reprezentacji urządzeń cyfrowych platformy Azure składa się z Definiowanie trzy obiekty: *dopasowujące jednostki*, *funkcje zdefiniowane przez użytkownika*, i *przypisań ról*.
+Przetwarzanie danych w usłudze Azure Digital bliźniaczych reprezentacji składa się z definiowaniatrzech obiektów: dopasowań, *funkcji zdefiniowanych przez użytkownika*i przypisań *ról*.
 
-![Azure cyfrowego bliźniaczych reprezentacji przetwarzanie danych obiektów][2]
+![Obiekty przetwarzania danych Digital bliźniaczych reprezentacji na platformie Azure][2]
 
 <div id="matcher"></div>
 
-### <a name="matchers"></a>Dopasowujące jednostki
+### <a name="matchers"></a>Dopasowanie
 
-Dopasowujące jednostki definiują zestaw warunków określających, jakie akcje wykonane, na podstawie przychodzących danych telemetrycznych z czujnika. Aby określić dopasowanie może to być właściwości z czujnika, czujnik nadrzędnego urządzenia i czujnik nadrzędnego miejsca. Warunki są wyrażane jako porównania z typem [ścieżkę JSON](https://jsonpath.com/) zgodnie z opisem w tym przykładzie:
+Dopasowania definiują zestaw warunków, które sprawdzają, jakie akcje odbywają się w oparciu o przychodzące dane telemetryczne czujnika. Warunki do określenia dopasowania mogą obejmować właściwości z czujnika, urządzenie nadrzędne czujnika i przestrzeń nadrzędną czujnika. Warunki są wyrażane jako porównania ze [ścieżką JSON](https://jsonpath.com/) , jak pokazano w tym przykładzie:
 
-- Wszystkie czujniki datatype **temperatury** reprezentowany przez wartość ciągu o zmienionym znaczeniu `\"Temperature\"`
-- Posiadanie `01` ich portu
-- Które należą do urządzenia przy użyciu klucza właściwości rozszerzonej **producenta** ustawiona na wartość ciągu o zmienionym znaczeniu `\"GoodCorp\"`
-- Które należą do miejsca do magazynowania o typie określonym przez ciąg o zmienionym znaczeniu `\"Venue\"`
-- Które są elementy podrzędne elementu nadrzędnego **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
+- Wszystkie czujniki **temperatury** elementu DataType reprezentowane przez wartość ciągu ucieczki`\"Temperature\"`
+- Posiadanie `01` w porcie
+- Który należy do urządzeń z kluczem właściwości rozszerzonej **producent** ustawiony na wartość ciągu o zmienionym znaczeniu`\"GoodCorp\"`
+- Które należy do spacji typu określonego przez ciąg ucieczki`\"Venue\"`
+- Które są elementami podrzędnymi elementu nadrzędnego **SpaceId**`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
@@ -83,48 +83,48 @@ Dopasowujące jednostki definiują zestaw warunków określających, jakie akcje
 ```
 
 > [!IMPORTANT]
-> - Ścieżki JSON jest uwzględniana wielkość liter.
-> - Ładunek JSON jest taka sama jak ładunek, który jest zwracany przez:
->   - `/sensors/{id}?includes=properties,types` dla czujnika.
->   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes` Czujnik nadrzędnego urządzenia.
->   - `/spaces/{id}?includes=properties,types,location,timezone` Czujnik nadrzędnego miejsca.
-> - Porównania jest rozróżniana wielkość liter.
+> - W ścieżkach JSON jest rozróżniana wielkość liter.
+> - Ładunek JSON jest taki sam jak ładunek zwracany przez:
+>   - `/sensors/{id}?includes=properties,types`dla czujnika.
+>   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`dla urządzenia nadrzędnego czujnika.
+>   - `/spaces/{id}?includes=properties,types,location,timezone`dla obszaru nadrzędnego czujnika.
+> - W porównaniach jest rozróżniana wielkość liter.
 
 ### <a name="user-defined-functions"></a>Funkcje zdefiniowane przez użytkownika
 
-Funkcji zdefiniowanej przez użytkownika jest niestandardowa funkcja wykonana w izolowanym środowisku Twins cyfrowych platformy Azure. Funkcje zdefiniowane przez użytkownika mieć dostęp do czujników nieprzetworzone komunikaty telemetryczne pobiera otrzymał. Funkcje zdefiniowane przez użytkownika również mieć dostęp do przestrzennych usługi graph i dyspozytorem. Po zarejestrowaniu funkcji zdefiniowanej przez użytkownika w ramach wykres dopasowywania (szczegółowe [powyżej](#matcher)) musi zostać utworzona w celu określenia, kiedy funkcja zostanie uruchomiona. Na przykład gdy Twins cyfrowego Azure odbiera nowe dane telemetryczne z danym czujnika, dopasowany funkcji zdefiniowanej przez użytkownika można obliczyć ruchomą średnią ostatnich kilku odczyty czujników.
+Funkcja zdefiniowana przez użytkownika jest funkcją niestandardową wykonywaną w izolowanym środowisku usługi Azure Digital bliźniaczych reprezentacji. Funkcje zdefiniowane przez użytkownika mają dostęp do komunikatu telemetrii nieprzetworzonej czujnika, gdy zostanie on odebrany. Funkcje zdefiniowane przez użytkownika mają również dostęp do przestrzennego wykresu i usługi dyspozytora. Po zarejestrowaniu funkcji zdefiniowanej przez użytkownika w grafie należy utworzyć odpowiednika (szczegółowo [powyżej](#matcher)), aby określić czas wykonywania funkcji. Na przykład gdy usługa Azure Digital bliźniaczych reprezentacji otrzymuje nową telemetrię z danego czujnika, dopasowana funkcja zdefiniowana przez użytkownika może obliczyć średnią przesunięcia z ostatnich kilku odczytów czujnika.
 
-Funkcje zdefiniowane przez użytkownika można pisać w języku JavaScript. Metody pomocnicze wchodzić w interakcje z wykresem w środowisku wykonawczym zdefiniowanych przez użytkownika. Deweloperzy mogą wykonywać niestandardowe fragmenty kodu na podstawie komunikaty telemetryczne z czujników. Przykłady:
+Funkcje zdefiniowane przez użytkownika mogą być zapisywane w języku JavaScript. Metody pomocnika współpracują z wykresem w środowisku wykonawczym zdefiniowanym przez użytkownika. Deweloperzy mogą wykonywać niestandardowe fragmenty kodu w odniesieniu do komunikatów telemetrycznych czujnika. Przykłady:
 
-- Ustaw czujnik odczytu bezpośrednio na obiekt czujnika w obrębie wykresu.
-- Wykonaj czynności w oparciu o odczyty czujników różnych w obrębie przestrzeni na wykresie.
-- Utwórz powiadomienie, gdy są spełnione określone warunki dla czujnika przychodzących do czytania.
-- Dołącz grafu metadanych do czujnika czytania przed wysłaniem się powiadomienie.
+- Ustaw odczyt czujnika bezpośrednio do obiektu czujnika na grafie.
+- Wykonaj akcję w oparciu o różne odczyty czujników w obrębie obszaru wykresu.
+- Utwórz powiadomienie w przypadku spełnienia określonych warunków w przypadku odczytywania czujnika przychodzącego.
+- Dołącz metadane grafu do odczytu czujnika przed wysłaniem powiadomienia.
 
-Aby uzyskać więcej informacji, zobacz [jak używać funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
+Aby uzyskać więcej informacji, zobacz [jak korzystać z funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
 
 
 #### <a name="examples"></a>Przykłady
 
-[Repozytorium GitHub dla cyfrowego Twins C# przykładowe](https://github.com/Azure-Samples/digital-twins-samples-csharp/) zawiera kilka przykładów funkcje zdefiniowane przez użytkownika:
-- [Ta funkcja](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) szuka emisji dwutlenku węgla, ruchu i wartości temperatury, aby określić, czy pokoju jest dostępna z tymi wartościami w zakresie. [Samouczki bliźniaki cyfrowego](tutorial-facilities-udf.md) zapoznaj się z tej funkcji, które bardziej szczegółowo. 
-- [Ta funkcja](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) szuka danych z wielu czujników ruchu i ustali, że miejsce jest dostępna, jeśli żadna z nich wykryć wszelkie ruchu. Można łatwo zastąpić funkcji zdefiniowanej przez użytkownika używane w każdym [Szybki Start](quickstart-view-occupancy-dotnet.md), lub [samouczki](tutorial-facilities-setup.md), wprowadzając zmiany, o których wspomniano w sekcji komentarze w pliku. 
+[Repozytorium GitHub dla przykładu Digital bliźniaczych reprezentacji C# ](https://github.com/Azure-Samples/digital-twins-samples-csharp/) zawiera kilka przykładów funkcji zdefiniowanych przez użytkownika:
+- [Ta funkcja](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) szuka wartości ditlenku węgla, ruchu i temperatury, aby określić, czy pomieszczenie jest dostępne z tymi wartościami w zakresie. [Samouczki dotyczące usługi Digital bliźniaczych reprezentacji](tutorial-facilities-udf.md) eksplorują tę funkcję w bardziej szczegółowy sposób. 
+- [Ta funkcja](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) szuka danych z wielu czujników ruchu i określa, że ilość miejsca jest dostępna, jeśli żadna z nich nie wykryje żadnego ruchu. Można łatwo zastąpić funkcję zdefiniowaną przez użytkownika w przewodniku [Szybki Start](quickstart-view-occupancy-dotnet.md)lub samouczków, [](tutorial-facilities-setup.md)wprowadzając zmiany wymienione w sekcji komentarzy pliku. 
 
 
 
 ### <a name="role-assignment"></a>Przypisanie roli
 
-Akcje funkcji zdefiniowanej przez użytkownika podlegają Twins cyfrowego Azure [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) do zabezpieczania danych w ramach usługi. Przypisania ról definiują, jakie funkcje zdefiniowane przez użytkownika ma odpowiednie uprawnienia do interakcji z przestrzennego wykresu i jego jednostek. Na przykład funkcji zdefiniowanej przez użytkownika może mieć możliwości i uprawnienia do *Utwórz*, *odczytu*, *aktualizacji*, lub *Usuń* danych wykresu w obszarze danego miejsca. Poziom dostępu w funkcji zdefiniowanej przez użytkownika jest sprawdzany w funkcji zdefiniowanej przez użytkownika organ wykres danych lub podejmuje akcję. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach](./security-create-manage-role-assignments.md).
+Akcje funkcji zdefiniowane przez użytkownika podlegają [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) usługi Azure Digital bliźniaczych reprezentacji w celu zabezpieczania danych w ramach usługi. Przypisania ról definiują, które funkcje zdefiniowane przez użytkownika mają odpowiednie uprawnienia do współdziałania z wykresem przestrzennym i jego jednostkami. Na przykład funkcja zdefiniowana przez użytkownika może mieć możliwość i uprawnienia do *tworzenia*, odczytywania, *aktualizowania*lub *usuwania* danych grafu w danym miejscu. Poziom dostępu zdefiniowany przez użytkownika jest sprawdzany, gdy funkcja zdefiniowana przez użytkownika prosi wykres o dane lub próbuje wykonać akcję. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach](./security-create-manage-role-assignments.md).
 
-Istnieje możliwość dopasowania w celu wyzwolenia funkcji zdefiniowanej przez użytkownika, który nie ma roli przypisań. W takim przypadku funkcja zdefiniowana przez użytkownika nie może odczytać wszystkie dane z wykresu.
+Istnieje możliwość, aby można było wyzwolić funkcję zdefiniowaną przez użytkownika, która nie ma przypisań ról. W takim przypadku funkcja zdefiniowana przez użytkownika nie odczyta żadnych danych z grafu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej o tym, jak kierować zdarzenia i komunikaty telemetryczne z innymi usługami platformy Azure, przeczytaj [kierowanie zdarzeń i komunikatów](./concepts-events-routing.md).
+- Aby dowiedzieć się więcej o kierowaniu zdarzeń i komunikatów telemetrycznych do innych usług platformy Azure, Odczytaj [zdarzenia i komunikaty dotyczące trasy](./concepts-events-routing.md).
 
-- Aby dowiedzieć się więcej o sposobie tworzenia dopasowujące jednostki, funkcje zdefiniowane przez użytkownika i przypisań ról, przeczytaj [przewodnika dotyczące używania funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
+- Aby dowiedzieć się więcej na temat tworzenia dopasowań, funkcji zdefiniowanych przez użytkownika i przypisań ról, Przeczytaj [Przewodnik dotyczący korzystania z funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
 
-- Przegląd [funkcji zdefiniowanej przez użytkownika klienta biblioteki dokumentacji](./reference-user-defined-functions-client-library.md).
+- Przejrzyj [dokumentację dotyczącą biblioteki klienta funkcji zdefiniowanej przez użytkownika](./reference-user-defined-functions-client-library.md).
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-data-processing-flow.png

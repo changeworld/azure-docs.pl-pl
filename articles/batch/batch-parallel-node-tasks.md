@@ -16,10 +16,10 @@ ms.date: 04/17/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc6a607da2227ecf9acd6209e31b7aa0ef1c62d8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323362"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Uruchom zadania współbieżnie, aby zmaksymalizować użycie węzłów obliczeniowych wsadowych 
@@ -39,7 +39,7 @@ Przykładowo, aby zilustrować zalety równoległego wykonywania zadań, Załó�
 Zamiast używać standardowych\_węzłów D1, które mają 1 rdzeń procesora CPU, można użyć [standardowych\_węzłów D14](../cloud-services/cloud-services-sizes-specs.md) o 16 rdzeniach i włączyć równoległe wykonywanie zadań. W związku z tym, można użyć *16 razy mniej węzłów* — zamiast węzłów 1 000, wymagana jest tylko 63. Ponadto jeśli w każdym węźle są wymagane duże pliki aplikacji lub dane referencyjne, czas trwania zadania i wydajność są ponownie udoskonalane, ponieważ dane są kopiowane tylko do 63 węzłów.
 
 ## <a name="enable-parallel-task-execution"></a>Włącz równoległe wykonywanie zadań
-Węzły obliczeniowe można skonfigurować do równoległego wykonywania zadań na poziomie puli. Za pomocą biblioteki Batch .NET Ustaw element [CloudPool. MaxTasksPerComputeNode][maxtasks_net] property when you create a pool. If you are using the Batch REST API, set the [maxTasksPerNode][rest_addpool] w treści żądania podczas tworzenia puli.
+Węzły obliczeniowe można skonfigurować do równoległego wykonywania zadań na poziomie puli. Za pomocą biblioteki Batch .NET ustaw właściwość [CloudPool. MaxTasksPerComputeNode][maxtasks_net] podczas tworzenia puli. Jeśli używasz interfejsu API REST usługi Batch, Ustaw element [maxTasksPerNode][rest_addpool] w treści żądania podczas tworzenia puli.
 
 Azure Batch pozwala ustawiać zadania na węzeł do (4x) liczbę węzłów podstawowych. Na przykład, jeśli Pula jest skonfigurowana z węzłami o rozmiarze "duże" (cztery rdzenie), `maxTasksPerNode` wówczas może być ustawiona na 16. Jednak niezależnie od tego, ile rdzeni ma węzeł, nie można mieć więcej niż 256 zadań na węzeł. Aby uzyskać szczegółowe informacje o liczbie rdzeni dla każdego rozmiaru węzła, zobacz [rozmiary dla Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Aby uzyskać więcej informacji na temat limitów usługi, zobacz limity [przydziału i limity dla usługi Azure Batch](batch-quota-limit.md).
 
@@ -53,10 +53,10 @@ Gdy węzły obliczeniowe w puli mogą wykonywać zadania współbieżnie, ważne
 
 Za pomocą właściwości [CloudPool. TaskSchedulingPolicy][task_schedule] można określić, że zadania mają być przypisywane równomiernie we wszystkich węzłach w puli ("rozpraszanie"). Można też określić, że możliwie jak najwięcej zadań należy przypisać do każdego węzła przed przypisaniem zadań do innego węzła w puli ("pakowanie").
 
-Przykładowo, jak ta funkcja jest cenna, weź pod uwagę pulę [standardowych\_węzłów D14](../cloud-services/cloud-services-sizes-specs.md) (w powyższym przykładzie), która jest skonfigurowana za pomocą [CloudPool. MaxTasksPerComputeNode][maxtasks_net] value of 16. If the [CloudPool.TaskSchedulingPolicy][task_schedule] jest skonfigurowana z [ ComputeNodeFillType][fill_type] *Pack*, maksymalizuje użycie wszystkich 16 rdzeni każdego węzła i zezwoli [puli skalowania](batch-automatic-scaling.md) automatycznego na oczyszczanie nieużywanych węzłów z puli (węzły bez przypisanych zadań). Pozwala to zminimalizować użycie zasobów i zaoszczędzić pieniądze.
+Przykładowo, jak ta funkcja jest cenna, weź pod uwagę pulę [standardowych\_węzłów D14](../cloud-services/cloud-services-sizes-specs.md) (w powyższym przykładzie), która jest skonfigurowana z wartością [CloudPool. MaxTasksPerComputeNode][maxtasks_net] równą 16. Jeśli [CloudPool. TaskSchedulingPolicy][task_schedule] jest skonfigurowany z ComputeNodeFillTypeem [][fill_type] *Pack*, to maksymalizuje użycie wszystkich 16 rdzeni każdego węzła i zezwoli [puli skalowania](batch-automatic-scaling.md) automatycznego na oczyszczanie nieużywanych węzłów z puli (węzły bez wszystkie przypisane zadania). Pozwala to zminimalizować użycie zasobów i zaoszczędzić pieniądze.
 
 ## <a name="batch-net-example"></a>Przykład platformy .NET w usłudze Batch
-Ten [Partia programu .NET][api_net] API code snippet shows a request to create a pool that contains four nodes with a maximum of four tasks per node. It specifies a task scheduling policy that will fill each node with tasks prior to assigning tasks to another node in the pool. For more information on adding pools by using the Batch .NET API, see [BatchClient.PoolOperations.CreatePool][poolcreate_net].
+Ten fragment kodu interfejsu API usługi [Batch .NET][api_net] przedstawia żądanie utworzenia puli zawierającej cztery węzły z maksymalnie czterema zadaniami na węzeł. Określa zasady planowania zadań, które będą wypełnić każdy węzeł zadaniami przed przypisaniem zadań do innego węzła w puli. Aby uzyskać więcej informacji na temat dodawania pul przy użyciu interfejsu API usługi Batch platformy .NET, zobacz [BatchClient. PoolOperations. ispool][poolcreate_net].
 
 ```csharp
 CloudPool pool =
@@ -72,7 +72,7 @@ pool.Commit();
 ```
 
 ## <a name="batch-rest-example"></a>Przykład REST w usłudze Batch
-Ta [Partia zadań][api_rest] API snippet shows a request to create a pool that contains two large nodes with a maximum of four tasks per node. For more information on adding pools by using the REST API, see [Add a pool to an account][rest_addpool].
+Ten fragment kodu API [REST usługi Batch][api_rest] przedstawia żądanie utworzenia puli zawierającej dwa duże węzły z maksymalnie czterema zadaniami na węzeł. Aby uzyskać więcej informacji na temat dodawania pul przy użyciu interfejsu API REST, zobacz [Dodawanie puli do konta][rest_addpool].
 
 ```json
 {
@@ -95,7 +95,7 @@ Ta [Partia zadań][api_rest] API snippet shows a request to create a pool that c
 >
 
 ## <a name="code-sample"></a>Przykład kodu
-Właściwość [ParallelNodeTasks][parallel_tasks_sample] project on GitHub illustrates the use of the [CloudPool.MaxTasksPerComputeNode][maxtasks_net] .
+Projekt [ParallelNodeTasks][parallel_tasks_sample] w usłudze GitHub ilustruje użycie właściwości [CloudPool. MaxTasksPerComputeNode][maxtasks_net] .
 
 Ta C# Aplikacja konsolowa używa biblioteki [programu .NET Batch][api_net] do utworzenia puli z co najmniej jednym węzłem obliczeniowym. Wykonuje konfigurowalną liczbę zadań w tych węzłach, aby symulować obciążenie zmienne. Dane wyjściowe aplikacji określają, które węzły wykonali każde zadanie. Aplikacja zawiera również podsumowanie parametrów zadania i czasu trwania. Poniżej zostanie wyświetlona część podsumowania danych wyjściowych z dwóch różnych uruchomień przykładowej aplikacji.
 
@@ -120,11 +120,11 @@ Duration: 00:08:48.2423500
 Drugie uruchomienie przykładu pokazuje znaczny spadek czasu trwania zadania. Wynika to z faktu, że pula została skonfigurowana z czterema zadaniami na węzeł, co umożliwia równoległe wykonywanie zadań, aby zakończyć zadanie w prawie czwartym czasie.
 
 > [!NOTE]
-> Czasy trwania zadań w powyższych podsumowaniu nie obejmują czasu utworzenia puli. Każde z powyższych zadań zostało przesłane do wcześniej utworzonych pul, których węzły obliczeniowe były w  stanie bezczynności w czasie przesyłania.
+> Czasy trwania zadań w powyższych podsumowaniu nie obejmują czasu utworzenia puli. Każde z powyższych zadań zostało przesłane do wcześniej utworzonych pul, których węzły obliczeniowe były w stanie bezczynności w czasie przesyłania.
 >
 >
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 ### <a name="batch-explorer-heat-map"></a>Mapa cieplna Batch Explorer
 [Batch Explorer][batch_labs] to bezpłatne, bogate w funkcje, autonomiczne narzędzie klienta pomagające tworzyć, debugować i monitorować aplikacje Azure Batch. Batch Explorer zawiera funkcję *mapy cieplnej* , która zapewnia wizualizację wykonywania zadań. Podczas wykonywania przykładowej aplikacji [ParallelTasks][parallel_tasks_sample] można użyć funkcji mapy cieplnej, aby łatwo wizualizować wykonywanie równoległych zadań w każdym węźle.
 

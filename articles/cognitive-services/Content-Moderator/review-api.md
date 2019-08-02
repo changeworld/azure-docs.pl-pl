@@ -1,7 +1,7 @@
 ---
-title: Recenzje, przepływy pracy i zadania pojęcia — Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Więcej informacji na temat zadań, przepływy pracy i przeglądy
+title: Koncepcje przeglądów, przepływów pracy i zadań — Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Poznaj przeglądy, przepływy pracy i zadania
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,36 +10,36 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a77b93c46c9989181cf4473e8b908571a3df2f20
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607297"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565553"
 ---
-# <a name="content-moderation-reviews-workflows-and-jobs"></a>Przeglądy moderowanie zawartości, zadań i przepływów pracy
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>Przeglądy, przepływy pracy i zadania moderowania zawartości
 
-Pakiet Content Moderator łączy wspomaganego maszynowo moderowania możliwości człowieka w pętli, aby utworzyć proces moderowania optymalne dla scenariuszy w rzeczywistych warunkach. Jest to realizowane za pośrednictwem oparte na chmurze [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com). Ten przewodnik zawiera informacje o podstawowych pojęciach narzędzie do przeglądu: recenzje, zadań i przepływów pracy.
+Content Moderator łączy moderowane maszynowo z funkcjami w pętli, aby utworzyć optymalny proces moderowania dla rzeczywistych scenariuszy. Odbywa się to za pośrednictwem narzędzia do [przeglądu](https://contentmoderator.cognitive.microsoft.com)opartego na chmurze. W tym przewodniku omówiono podstawowe pojęcia narzędzia do przeglądu: przeglądy, przepływy pracy i zadania.
 
-## <a name="reviews"></a>Przeglądy
+## <a name="reviews"></a>Recenzje
 
-W przeglądzie, zawartość zostanie przekazany do narzędzia do przeglądu i pojawia się w obszarze **Przejrzyj** kartę. W tym miejscu użytkownicy mogą zmieniać zastosować znaczniki i Zastosuj własne niestandardowe tagi, zgodnie z potrzebami. Gdy użytkownik przesyła przeglądu, wyniki są wysyłane do punktu końcowego określonego wywołania zwrotnego, a zawartość zostanie usunięta z lokacji.
+W przeglądzie zawartość jest przekazywana do narzędzia przeglądu i pojawia się na karcie **Przegląd** . W tym miejscu użytkownicy mogą zmienić zastosowane znaczniki i zastosować własne niestandardowe znaczniki odpowiednio do potrzeb. Gdy użytkownik przesyła przegląd, wyniki są wysyłane do określonego punktu końcowego wywołania zwrotnego, a zawartość jest usuwana z lokacji.
 
-![Narzędzie do przeglądu witryny sieci Web otwórz w przeglądarce, na karcie Przegląd](./Review-Tool-user-Guide/images/image-workflow-review.png)
+![Przejrzyj witrynę internetową narzędzia Otwórz w przeglądarce, na karcie Przegląd](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-Zobacz [przewodnik narzędzie do przeglądu](./review-tool-user-guide/review-moderated-images.md) wprowadzenie do tworzenia przeglądów lub zobacz [Podręcznik interfejsu API REST](./try-review-api-review.md) Aby dowiedzieć się, jak to zrobić programowo.
+Zapoznaj [](./review-tool-user-guide/review-moderated-images.md) się z przewodnikiem po narzędziu przeglądowym, aby rozpocząć tworzenie przeglądów, lub zobacz [Przewodnik po interfejsie API REST](./try-review-api-review.md) , aby dowiedzieć się, jak to zrobić programowo
 
-## <a name="workflows"></a>Przepływy pracy
+## <a name="workflows"></a>Workflows
 
-Przepływ pracy jest oparta na chmurze dostosowane filtr dla zawartości. Przepływy pracy mogą łączyć się z różnych usług do filtrowania zawartości na różne sposoby, a następnie podjąć odpowiednie działania. Z łącznikiem usługi Content Moderator przepływu pracy można automatycznie zastosować znaczniki Moderowanie i Utwórz przeglądy przesłanych treści.
+Przepływ pracy to dostosowany do chmury filtr dla zawartości. Przepływy pracy mogą łączyć się z różnymi usługami, aby filtrować zawartość na różne sposoby, a następnie podejmować odpowiednie działania. Za pomocą łącznika Content Moderator przepływ pracy może automatycznie stosować Tagi moderowania i tworzyć przeglądy z przesłaną zawartością.
 
-### <a name="view-workflows"></a>Wyświetlanie przepływów pracy
+### <a name="view-workflows"></a>Wyświetl przepływy pracy
 
-Aby wyświetlić z istniejącymi przepływami pracy, przejdź do [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/) i wybierz **ustawienia** > **przepływy pracy**.
+Aby wyświetlić istniejące przepływy pracy, przejdź do [narzędzia przeglądu](https://contentmoderator.cognitive.microsoft.com/) i wybierz pozycję **Ustawienia** > **przepływy pracy**.
 
 ![Domyślny przepływ pracy](images/default-workflow-listed.PNG)
 
-Przepływy pracy mogą całkowicie opisane jako ciągi formatu JSON, co sprawia, że ich dostępny programowo. Jeśli wybierzesz **Edytuj** opcji dla przepływu pracy, a następnie wybierz pozycję **JSON** kartę, zostanie wyświetlone wyrażenie JSON, jak pokazano poniżej:
+Przepływy pracy można całkowicie opisać jako ciągi JSON, co sprawia, że są one dostępne programowo. Jeśli wybierzesz opcję **Edytuj** dla przepływu pracy, a następnie wybierzesz kartę **JSON** , zobaczysz wyrażenie JSON podobne do następujących:
 
 ```json
 {
@@ -64,16 +64,16 @@ Przepływy pracy mogą całkowicie opisane jako ciągi formatu JSON, co sprawia,
 }
 ```
 
-Zobacz [przewodnik narzędzie do przeglądu](./review-tool-user-guide/workflows.md) Rozpocznij tworzenie i korzystanie z przepływów pracy, lub zobacz [Podręcznik interfejsu API REST](./try-review-api-workflow.md) Aby dowiedzieć się, jak to zrobić programowo.
+Aby rozpocząć [](./review-tool-user-guide/workflows.md) tworzenie i używanie przepływów pracy, zobacz Przewodnik po [interfejsie API REST](./try-review-api-workflow.md) , aby dowiedzieć się, jak to zrobić programowo.
 
 ## <a name="jobs"></a>Zadania
 
-Zadania Moderowanie służy jako typ otoki dla funkcji moderowania zawartości, przepływy pracy i recenzje. Zadanie skanowania zawartości przy użyciu Moderowanie obrazów Content Moderator, interfejsu API lub interfejs API moderowania tekstu i następnie porównuje ją z wyznaczonym przepływu pracy. Na podstawie przepływu pracy wyników, może lub nie może utworzyć przeglądu zawartości w [narzędzie do przeglądu](./review-tool-user-guide/human-in-the-loop.md). Przeglądy i przepływów pracy można utworzone i skonfigurowane za pomocą ich odpowiednich interfejsów API, zadanie interfejsu API pozwala uzyskać szczegółowy raport dotyczący całego procesu, (które mogą być wysyłane do punktu końcowego określonego wywołania zwrotnego).
+Zadanie moderowania służy jako rodzaj otoki dla funkcji moderowania zawartości, przepływów pracy i przeglądów. Zadanie skanuje zawartość przy użyciu interfejsu API moderowania obrazu Content Moderator lub interfejsu API moderowania tekstu, a następnie sprawdza go pod kątem określonego przepływu pracy. W oparciu o wyniki przepływu pracy może to spowodować, że nie można utworzyć przeglądu zawartości w narzędziu do [przeglądu](./review-tool-user-guide/human-in-the-loop.md). Podczas gdy zarówno przeglądy, jak i przepływy pracy można tworzyć i konfigurować przy użyciu odpowiednich interfejsów API, interfejs API zadań pozwala uzyskać szczegółowy raport dotyczący całego procesu (który można wysłać do określonego punktu końcowego wywołania zwrotnego).
 
-Zobacz [Podręcznik interfejsu API REST](./try-review-api-job.md) na rozpoczęcie pracy przy użyciu zadań.
+Zobacz [Przewodnik po interfejsie API REST](./try-review-api-job.md) , aby rozpocząć pracę z zadaniami.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Wersja testowa [Konsola interfejsu API zadań](try-review-api-job.md)i przykłady kodu interfejsu API REST. Jeśli znasz program Visual Studio w języku C#, Sprawdź również [.NET zadania szybkiego startu](moderation-jobs-quickstart-dotnet.md). 
-* Aby rozpocząć pracę z [Konsola interfejsu API przeglądu](try-review-api-review.md)i przykłady kodu interfejsu API REST. Następnie zobacz [Szybki Start .NET przeglądy](moderation-reviews-quickstart-dotnet.md).
-* Przeglądy wideo, można użyć [wideo Przejrzyj Przewodnik Szybki Start](video-reviews-quickstart-dotnet.md)i Dowiedz się, jak [Dodaj transkrypcji do wideo przeglądu](video-transcript-reviews-quickstart-dotnet.md).
+* Przetestuj [konsolę interfejsu API zadania](try-review-api-job.md)i użyj przykładów kodu interfejsu API REST. Jeśli znasz program Visual Studio i C#zapoznaj się z zadaniami [Szybki Start dla programu .NET](moderation-jobs-quickstart-dotnet.md). 
+* Aby zapoznać się z przeglądami, Rozpocznij pracę z [konsolą interfejsu API przeglądu](try-review-api-review.md)i Skorzystaj z przykładów kodu interfejsu API REST. Zobacz [Przegląd przewodnika Szybki Start dla platformy .NET](moderation-reviews-quickstart-dotnet.md).
+* Aby poznać Recenzje wideo, Skorzystaj z [przewodnika Szybki Start](video-reviews-quickstart-dotnet.md)dotyczącego przeglądu filmów wideo i Dowiedz się, jak [dodać transkrypcje do przeglądu wideo](video-transcript-reviews-quickstart-dotnet.md).

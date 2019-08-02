@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do rejestrowania przepływu zabezpieczeń sieciowych grup przy użyciu usługi Azure Network Watcher | Dokumentacja firmy Microsoft
-description: W tym artykule wyjaśniono, jak korzystać z funkcji Dzienniki przepływu sieciowej grupy zabezpieczeń usługi Azure Network Watcher.
+title: Wprowadzenie do rejestrowania przepływów dla sieciowych grup zabezpieczeń przy użyciu usługi Azure Network Watcher | Microsoft Docs
+description: W tym artykule wyjaśniono, jak korzystać z funkcji sieciowej grupy zabezpieczeń Logs dzienników przepływu pracy w usłudze Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,96 +14,94 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 1ec7fd4116aa848a9c431df386997cb23f405f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c156e30f4fa0270082cd1108958c3472130a460
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925409"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640823"
 ---
-# <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń
+# <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowania przepływu dla sieciowych grup zabezpieczeń
 
-Dzienniki przepływu Sieciowej grupy zabezpieczeń sieci są funkcją usługi Network Watcher, który służy do wyświetlania informacji na temat przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń. Dzienniki przepływów są zapisywane w formacie JSON i Pokaż ruchu wychodzącego i przychodzącego przepływów na podstawie poszczególnych reguł, interfejsu sieciowego (NIC) przepływ dotyczy, 5-elementowych informacji na temat przepływu (źródłowego i docelowego adresu IP, źródłowy i docelowy port i protokół) Jeśli był ruch dozwolone lub odmowa i w wersji 2, informacji o przepływności (bajtów i pakietów).
+Dzienniki przepływu sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) są funkcją Network Watcher, która umożliwia wyświetlanie informacji dotyczących ruchu przychodzącego i wychodzącego IP przez sieciowej grupy zabezpieczeń. Dzienniki przepływów są zapisywane w formacie JSON i pokazują przepływy wychodzące i przychodzące dla każdej reguły, interfejs sieciowy (karta sieciowa) odnosi się do, 5-informacje krotki dotyczące przepływu (źródłowy/docelowy adres IP, port źródłowy/docelowy i protokół), jeśli ruch był dozwolone lub odrzucane, i w wersji 2, informacje o przepływności (bajty i pakiety).
 
 
-![Przegląd dzienników przepływu](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
+![Dzienniki przepływów — Omówienie](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
-Gdy dzienników przepływów sieciowych grup zabezpieczeń docelowej, nie są wyświetlane takie same jak inne dzienniki. Dzienniki przepływów są przechowywane tylko w ramach konta magazynu, a następnie wykonaj podana ścieżka pokazano w poniższym przykładzie:
+Podczas gdy dzienniki przepływów są docelowe sieciowych grup zabezpieczeń, nie są wyświetlane w taki sam sposób, jak w przypadku innych dzienników. Dzienniki przepływów są przechowywane tylko w ramach konta magazynu i są zgodne ze ścieżką rejestrowania pokazaną w poniższym przykładzie:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
-Można analizować dzienniki przepływu i Uzyskaj szczegółowe informacje dotyczące ruchu w sieci przy użyciu [traffic analytics](traffic-analytics.md).
+Można analizować dzienniki przepływu i uzyskiwać wgląd w ruch sieciowy przy użyciu [analizy ruchu](traffic-analytics.md).
 
-Te same zasady przechowywania widoczne dla innych dzienników dotyczą dzienników przepływów. Możesz ustawić zasady przechowywania dziennika od dnia 1 do 2147483647 dni. Jeśli zasady przechowywania nie są ustawione, dzienniki będą obsługiwane przez czas nieokreślony.
+Te same zasady przechowywania, które są widoczne dla innych dzienników, mają zastosowanie do dzienników przepływów. Zasady przechowywania dzienników można ustawić od 1 dnia do 2147483647 dni. Jeśli zasady przechowywania nie są ustawione, dzienniki będą obsługiwane przez czas nieokreślony.
 
 > [!NOTE] 
-> Funkcja zasad przechowywania użyciu rejestrowanie przepływu sieciowych grup zabezpieczeń może skutkować dużą liczbę operacji magazynu i powiązanych kosztów. Jeśli funkcja zasad przechowywania nie jest wymagane, zaleca się Ustaw tę wartość na 0.
+> Korzystanie z funkcji zasad przechowywania z rejestrowaniem przepływu sieciowej grupy zabezpieczeń może skutkować dużą ilością operacji magazynu i powiązanymi kosztami. Jeśli nie jest wymagana funkcja zasad przechowywania, zalecamy ustawienie wartości 0.
 
 
 ## <a name="log-file"></a>Plik dziennika
 
 Dzienniki przepływów obejmują następujące właściwości:
 
-* **czas** — godzina zarejestrowania zdarzenia
-* **systemId** -identyfikatorem zasobu sieciowej grupy zabezpieczeń.
-* **Kategoria** -kategorii zdarzenia. Kategoria jest zawsze **NetworkSecurityGroupFlowEvent**
-* **RESOURCEID** — identyfikator sieciowej grupy zabezpieczeń
-* **operationName** — zawsze NetworkSecurityGroupFlowEvents
-* **właściwości** — zbiór właściwości przepływu
-    * **Wersja** — numer wersji schemat zdarzeń dziennika przepływu
-    * **przepływy** — zbierania przepływów. Ta właściwość ma wiele wpisów dla różnych zasad
-        * **Reguła** -reguły są wyświetlane przepływów
-            * **przepływy** — zbierania przepływów
-                * **Mac** -adres MAC karty Sieciowej dla maszyny Wirtualnej, w którym przepływ został zebrany
-                * **flowTuples** — ciąg, który zawiera wiele właściwości dla krotki przepływu w formacie rozdzielonych przecinkami
-                    * **Sygnatury czasu** — ta wartość jest sygnaturę czasową, gdy przepływ występującym w formacie EPOKI systemu UNIX
-                    * **Źródłowy adres IP** -źródłowy adres IP
-                    * **Docelowego adresu IP** -docelowy adres IP
+* czas, w którym zdarzenie zostało zarejestrowane
+* **systemId** — identyfikator zasobu grupy zabezpieczeń sieci.
+* **Kategoria** — Kategoria zdarzenia. Kategoria jest zawsze **NetworkSecurityGroupFlowEvent**
+* **ResourceID** — identyfikator zasobu sieciowej grupy zabezpieczeń
+* **OperationName** — zawsze NetworkSecurityGroupFlowEvents
+* **Właściwości** — kolekcja właściwości przepływu
+    * Numer wersji w schemacie zdarzeń dziennika przepływu
+    * **przepływy** — kolekcja przepływów. Ta właściwość ma wiele wpisów dla różnych reguł
+        * **reguła** — reguła, dla której są wyświetlane przepływy
+            * **przepływy** — kolekcja przepływów
+                * **Mac** — adres MAC karty sieciowej dla maszyny wirtualnej, w której zebrano przepływ
+                * **flowTuples** — ciąg zawierający wiele właściwości krotki przepływu w formacie rozdzielonym przecinkami
+                    * **Sygnatura czasowa** — ta wartość jest sygnaturą czasową, gdy przepływ wystąpił w formacie epoki systemu UNIX
+                    * **Źródłowy adres IP** — źródłowy adres IP
+                    * **Docelowy adres IP** — docelowy adres IP
                     * **Port źródłowy** — port źródłowy
-                    * **Port docelowy** — docelowy Port
-                    * **Protokół** — protokół przepływ. Prawidłowe wartości to **T** dla protokołu TCP i **U** protokołu UDP
-                    * **Traffic Flow** -kierunek przepływu ruchu. Prawidłowe wartości to **I** dla ruchu przychodzącego i **O** dla ruchu wychodzącego.
-                    * **Ruch decyzji** — czy zezwolenie lub odrzucenie ruchu. Prawidłowe wartości to **A** dla dozwolone i **D** dla odmowa.
-                    * **Stan usługi Flow — tylko w wersji 2** -przechwytuje stan przepływu. Możliwe stany to **B**: początek — gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: kontynuacja — dotyczy trwającego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: koniec — gdy przepływ zostanie zakończony. Statystyki są podawane.
-                    * **Pakiety - źródła do miejsca docelowego — w wersji 2 tylko** całkowita liczba pakietów TCP lub UDP, które są odsyłane ze źródła do miejsca docelowego od czasu ostatniej aktualizacji.
-                    * **Liczba wysłanych bajtów - źródła do miejsca docelowego — w wersji 2 tylko** całkowita liczba bajtów pakiet TCP lub UDP, odsyłane ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.
-                    * **Pakiety - docelowe źródło — tylko w wersji 2** całkowita liczba pakietów TCP lub UDP, które są wysyłane z docelowym źródłem od czasu ostatniej aktualizacji.
-                    * **Liczba wysłanych bajtów - docelowe źródło — tylko w wersji 2** całkowita liczba bajtów pakiet TCP i UDP, wysyłane z docelowym źródłem od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.
+                    * **Port docelowy** — port docelowy
+                    * **Protokół** — protokół przepływu. Prawidłowe wartości to **T** dla protokołów TCP i **U** dla protokołu UDP
+                    * **Przepływ ruchu** — kierunek przepływu ruchu. Prawidłowe **wartości to dla** ruchu przychodzącego i **o** dla ruchu wychodzącego.
+                    * **Decyzja o ruchu** — czy ruch był dozwolony lub zabroniony. Prawidłowe **wartości to dozwolone** i **D** na odmowa.
+                    * **Stan przepływu — tylko wersja 2** — przechwytuje stan przepływu. Możliwe stany to **B**: początek — gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: kontynuacja — dotyczy trwającego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: koniec — gdy przepływ zostanie zakończony. Statystyki są podawane.
+                    * **Pakiety-tylko do miejsca docelowego — wersja 2** Całkowita liczba pakietów TCP lub UDP wysłanych ze źródła do miejsca docelowego od momentu ostatniej aktualizacji.
+                    * **Wysłane bajty — tylko źródło do wersji 2** Całkowita liczba bajtów pakietów TCP lub UDP wysłanych z lokalizacji źródłowej do docelowej od ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.
+                    * **Pakiety — tylko wersja docelowa do wersji 2** Całkowita liczba pakietów TCP lub UDP wysłanych z lokalizacji docelowej do źródła od momentu ostatniej aktualizacji.
+                    * **Bajty wysłane — miejsce docelowe do wersji 2** Całkowita liczba bajtów pakietów TCP i UDP wysłanych z lokalizacji docelowej do źródła od ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.
 
-## <a name="nsg-flow-logs-version-2"></a>W wersji 2 dzienników przepływów sieciowych grup zabezpieczeń
+## <a name="nsg-flow-logs-version-2"></a>Dzienniki przepływu sieciowej grupy zabezpieczeń w wersji 2
 
-Dzienniki w wersji 2 wprowadzono stan przepływu. Można skonfigurować, która wersja dzienników przepływu pojawi się. Aby dowiedzieć się, jak włączyć dzienniki przepływu, zobacz [rejestrowanie przepływu sieciowej grupy zabezpieczeń z włączeniem](network-watcher-nsg-flow-logging-portal.md).
+W wersji 2 dzienników przedstawiono stan przepływu. Można skonfigurować, która wersja odbieranych dzienników przepływu. Aby dowiedzieć się, jak włączyć dzienniki przepływów, zobacz [Włączanie rejestrowania przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-portal.md).
 
-Stan przepływu *B* jest rejestrowane, gdy przepływ jest inicjowana. Stan przepływu *C* i stan przepływu *E* są Stany, oznaczające kontynuacji przepływ i zakończenia przepływu. Zarówno *C* i *E* stany zawierają informacje o przepustowości ruchu.
+Stan przepływu *B* jest rejestrowany po zainicjowaniu przepływu. Stan przepływu *C* i stan przepływu *E* są stanami, które oznaczają kontynuację przepływu i zakończenie przepływu. Stany *C* i *E* zawierają informacje o przepustowości ruchu.
 
-Dla kontynuacji *C* i na końcu *E* Stany przepływu wygasają po, liczby bajtów i pakietów są łącznej liczby od czasu poprzedniego rekordu przepływu w spójnej kolekcji. Całkowita liczba pakietów przesyłanych odwołujące się do konwersacji poprzedniego przykładu, jest 1021 + 52 + 8005 + 47 = 9125. Całkowita liczba bajtów przesłanych jest 588096 + 29952 + 4610880 + 27072 = 5256000.
+**Przykład**: Kolekcje przepływu z konwersacji TCP między 185.170.185.105:35370 i 10.2.0.4:23:
 
-**Przykład**: Przepływ krotkami z konwersacji między 185.170.185.105:35370 i 10.2.0.4:23 TCP:
+"1493763938, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, B,,,," "1493695838, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, C, 1021, 588096, 8005, 4610880" "1493696138, 185.170.185.105, 10.2.0.4,
 
-"1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,,," "1493695838,185.170.185.105,10.2.0.4,35370,23,T,I,A,C,1021,588096,8005,4610880" "1493696138,185.170.185.105,10.2.0.4,35370,23,T,I,A,E,52,29952,47,27072"
+W przypadku Stanów kontynuacja *C* i End *E* , liczba bajtów i pakietów to liczba zagregowana od czasu poprzedniego rekordu krotki przepływu. Odwołując się do poprzedniej przykładowej konwersacji, Łączna liczba przesłanych pakietów to 1021 + 52 + 8005 + 47 = 9125. Łączna liczba przesłanych bajtów to 588096 + 29952 + 4610880 + 27072 = 5256000.
 
-Dla kontynuacji *C* i na końcu *E* Stany przepływu wygasają po, liczby bajtów i pakietów są łącznej liczby od czasu poprzedniego rekordu przepływu w spójnej kolekcji. Całkowita liczba pakietów przesyłanych odwołujące się do konwersacji poprzedniego przykładu, jest 1021 + 52 + 8005 + 47 = 9125. Całkowita liczba bajtów przesłanych jest 588096 + 29952 + 4610880 + 27072 = 5256000.
+Poniższy tekst jest przykładem dziennika przepływu. Jak widać, istnieje wiele rekordów, które są zgodne z listą właściwości opisaną w poprzedniej sekcji.
 
-Tekst, który następuje jest przykładem dziennika przepływu. Jak widać, istnieje wiele rekordów, które należy wykonać na liście właściwości opisanych w poprzedniej sekcji.
+## <a name="nsg-flow-logging-considerations"></a>Zagadnienia dotyczące rejestrowania przepływu sieciowej grupy zabezpieczeń
 
-## <a name="nsg-flow-logging-considerations"></a>Zagadnienia dotyczące rejestrowanie przepływu sieciowych grup zabezpieczeń
+**Włącz rejestrowanie przepływu sieciowej grupy zabezpieczeń na wszystkich sieciowych grup zabezpieczeńach dołączonych do zasobu**: Rejestrowanie przepływu na platformie Azure jest skonfigurowane dla zasobu sieciowej grupy zabezpieczeń. Przepływ zostanie skojarzony tylko z jedną regułą sieciowej grupy zabezpieczeń. W scenariuszach, w których jest używany wiele sieciowych grup zabezpieczeń, zalecamy włączenie rejestrowania przepływów sieciowej grupy zabezpieczeń na wszystkich sieciowych grup zabezpieczeń zastosowały podsieć lub interfejs sieciowy zasobu, aby upewnić się, że cały ruch jest zarejestrowany. Zobacz, [jak oceniany jest ruch](../virtual-network/security-overview.md#how-traffic-is-evaluated) , aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń. 
 
-**Włączyć NSG Flow rejestrowanie na wszystkie sieciowe grupy zabezpieczeń, które są dołączone do zasobu**: Przepływ rejestrowania na platformie Azure jest konfigurowany na zasób sieciowej grupy zabezpieczeń. Przepływ zostanie być skojarzony tylko z jedną regułę sieciowej grupy zabezpieczeń. W scenariuszach, gdzie są wykorzystywane wiele sieciowych grup zabezpieczeń, zaleca się, czy rejestrowanie przepływu sieciowych grup zabezpieczeń jest włączona na wszystkie sieciowe grupy zabezpieczeń stosowane zasobu podsiecią lub interfejsem sieciowym aby upewnić się, że cały ruch jest rejestrowane. Zobacz [jak ruch jest oceniany](../virtual-network/security-overview.md#how-traffic-is-evaluated) Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń. 
+**Koszty rejestrowania**w usłudze Flow: W przypadku rejestrowania przepływu sieciowej grupy zabezpieczeń są naliczane opłaty za wygenerowane dzienniki. Duże natężenie ruchu może skutkować dużym woluminem dziennika przepływu i powiązanymi kosztami. Cennik dziennika przepływu sieciowej grupy zabezpieczeń nie obejmuje podstawowych kosztów magazynu. Korzystanie z funkcji zasad przechowywania z rejestrowaniem przepływu sieciowej grupy zabezpieczeń może skutkować dużą ilością operacji magazynu i powiązanymi kosztami. Jeśli nie jest wymagana funkcja zasad przechowywania, zalecamy ustawienie wartości 0. Aby uzyskać dodatkowe informacje, zobacz [cennik Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher/) i [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/) .
 
-**Przepływ koszty rejestrowania**: Rejestrowanie przepływu sieciowych grup zabezpieczeń jest rozliczana na woluminie dzienników generowanych. Duży ruch woluminu może spowodować przepływ dużą woluminu dziennika i powiązanych kosztów. Cennik dzienników przepływów sieciowych grup zabezpieczeń nie obejmuje podstawowych kosztów magazynu. Funkcja zasad przechowywania użyciu rejestrowanie przepływu sieciowych grup zabezpieczeń może skutkować dużą liczbę operacji magazynu i powiązanych kosztów. Jeśli funkcja zasad przechowywania nie jest wymagane, zaleca się Ustaw tę wartość na 0. Zobacz [cennik usługi Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher/) i [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/) dodatkowe szczegóły.
+**Przepływy przychodzące zarejestrowane z Internetu adresów IP na maszynach wirtualnych bez publicznych adresów IP**: Maszyny wirtualne, które nie mają publicznego adresu IP przypisanego za pośrednictwem publicznego adresu IP skojarzonego z kartą sieciową jako publiczny adres IP na poziomie wystąpienia lub które są częścią puli zaplecza usługi równoważenia obciążenia, użyj [domyślnego](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) i adresu IP przypisanego przez platformę Azure, aby ułatwić łączność wychodząca. W związku z tym mogą pojawić się wpisy dziennika przepływu dla przepływów z internetowych adresów IP, jeśli przepływ jest przeznaczony do portu w zakresie portów przypisanych do tego elementu. Mimo że platforma Azure nie zezwala na te przepływy na maszynę wirtualną, próba zostanie zarejestrowana i zostanie wyświetlona Network Watcher w dzienniku przepływu sieciowej grupy zabezpieczeń przez zaprojektowanie. Zalecamy, aby niepożądane przychodzące ruch internetowy został jawnie zablokowany przy użyciu sieciowej grupy zabezpieczeń.
 
-**Dla ruchu przychodzącego przepływów rejestrowane z Internetu adresy IP do maszyn wirtualnych bez publiczne adresy IP**: Maszyny wirtualne nie mają przypisany za pośrednictwem publicznego adresu IP skojarzone z kartą Sieciową jako publiczny adres IP na poziomie wystąpienia publiczny adres IP lub które są częścią puli zaplecza modułu równoważenia obciążenia podstawowe, użyj [domyślne SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) i adres IP przypisany przez Azure w celu ułatwienia łączności wychodzącej. W rezultacie, zostanie wyświetlony przepływ wpisów dziennika dla przepływów z Internetu adresy IP, jeśli przepływ jest kierowany do portu z zakresu portów przypisanych do SNAT. Gdy platforma Azure nie zezwala na te przepływy do maszyny Wirtualnej, próba jest rejestrowane i pojawi się dzienników przepływu sieciowych grup zabezpieczeń usługi Network Watcher zgodnie z projektem. Zaleca się, że niechcianego przychodzącego ruchu internetowego można jawnie zablokowane za pomocą sieciowej grupy zabezpieczeń.
+## <a name="sample-log-records"></a>Przykładowe rekordy dziennika
 
-## <a name="sample-log-records"></a>Przykładowy rekord dziennika
-
-Tekst, który następuje jest przykładem dziennika przepływu. Jak widać, istnieje wiele rekordów, które należy wykonać na liście właściwości opisanych w poprzedniej sekcji.
+Poniższy tekst jest przykładem dziennika przepływu. Jak widać, istnieje wiele rekordów, które są zgodne z listą właściwości opisaną w poprzedniej sekcji.
 
 
 > [!NOTE]
-> Wartości w **flowTuples* właściwość to lista rozdzielonych przecinkami.
+> Wartości we właściwości **flowTuples* są rozdzielaną przecinkami listą.
  
-### <a name="version-1-nsg-flow-log-format-sample"></a>Próbki format dziennika, wersja 1 sieciowej grupy zabezpieczeń przepływu
+### <a name="version-1-nsg-flow-log-format-sample"></a>Przykład formatu dziennika przepływu sieciowej grupy zabezpieczeń w wersji 1
 ```json
 {
     "records": [
@@ -212,7 +210,7 @@ Tekst, który następuje jest przykładem dziennika przepływu. Jak widać, istn
         ,
         ...
 ```
-### <a name="version-2-nsg-flow-log-format-sample"></a>Próbki format dziennika, przepływu sieciowej grupy zabezpieczeń w wersji 2
+### <a name="version-2-nsg-flow-log-format-sample"></a>Przykład formatu dziennika przepływu sieciowej grupy zabezpieczeń w wersji 2
 ```json
  {
     "records": [
@@ -284,9 +282,9 @@ Tekst, który następuje jest przykładem dziennika przepływu. Jak widać, istn
         ...
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się, jak włączyć dzienniki przepływu, zobacz [rejestrowanie przepływu sieciowej grupy zabezpieczeń z włączeniem](network-watcher-nsg-flow-logging-portal.md).
-- Aby dowiedzieć się, jak odczytywać dzienniki przepływu, zobacz [dzienników przepływu sieciowej grupy zabezpieczeń odczytu](network-watcher-read-nsg-flow-logs.md).
-- Aby dowiedzieć się więcej na temat rejestrowania sieciowej grupy zabezpieczeń, zobacz [usługi Azure Monitor dzienników dla sieciowych grup zabezpieczeń (NSG)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- Aby określić, czy ruch jest dozwolony lub wychodzić do / z maszyny Wirtualnej, zobacz [diagnozowanie problemu z filtrowaniem ruchu maszyny Wirtualnej sieci](diagnose-vm-network-traffic-filtering-problem.md)
+- Aby dowiedzieć się, jak włączyć dzienniki przepływów, zobacz [Włączanie rejestrowania przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-portal.md).
+- Aby dowiedzieć się, jak czytać dzienniki przepływów, zobacz [odczytywanie dzienników przepływu sieciowej grupy zabezpieczeń](network-watcher-read-nsg-flow-logs.md).
+- Aby dowiedzieć się więcej o rejestrowaniu sieciowej grupy zabezpieczeń, zobacz [dzienniki Azure monitor dla sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- Aby określić, czy ruch jest dozwolony, czy odrzucany do lub z maszyny wirtualnej, zobacz [diagnozowanie problemu z filtrem ruchu sieciowego maszyny wirtualnej](diagnose-vm-network-traffic-filtering-problem.md)

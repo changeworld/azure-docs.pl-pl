@@ -1,7 +1,7 @@
 ---
-title: Wyodrębnianie danych
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Wyodrębnianie danych z tekstem wypowiedź intencje i podmioty. Dowiedz się, jakiego rodzaju dane można wyodrębnić z Language Understanding (LUIS).
+title: Wyodrębnianie danych — LUIS
+titleSuffix: Azure Cognitive Services
+description: Wyodrębnij dane z wypowiedź tekstu z intencjami i jednostkami. Dowiedz się, jakiego rodzaju dane mogą zostać wyodrębnione z Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 055cd25f534de5d3cc3ccbe44df88e7111e101a3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150697"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560754"
 ---
-# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Wyodrębnianie danych z tekstem wypowiedź intencje i podmioty
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Wyodrębnij dane z wypowiedź tekstu z intencjami i jednostkami
 Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub czatbot podjąć działania. W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON.
 
-Najtrudniejsze dane do wyodrębnienia to dane maszyny do opanowania, ponieważ nie znajduje się dopasowania tekstu do dokładnego dopasowania. Wyodrębnianie danych z maszyny przedstawiono [jednostek](luis-concept-entity-types.md) musi być częścią [cyklu tworzenia](luis-concept-app-iteration.md) aż masz pewność, odbieranie danych, o których oczekujesz.
+Najtrudniejsze dane do wyodrębnienia to dane zdobyte na maszynie, ponieważ nie jest to dokładne dopasowanie tekstu. Wyodrębnianie danych [jednostek](luis-concept-entity-types.md) , które są poznanie maszynowe, musi być częścią [cyklu tworzenia](luis-concept-app-iteration.md) , dopóki nie uzyskasz pewności, że otrzymasz oczekiwane dane.
 
 ## <a name="data-location-and-key-usage"></a>Użycie danych lokalizacji i klucz
 Usługa LUIS udostępnia dane z opublikowanego [punktu końcowego](luis-glossary.md#endpoint). **Żądanie HTTPS** (POST lub GET) zawiera wypowiedź, a także niektóre konfiguracje opcjonalne, takie jak środowisk przejściowych lub produkcyjnych.
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-`appID` Jest dostępny na **ustawienia** strony z aplikacją usługi LUIS, jak również w adresie URL (po `/apps/`) podczas edytowania aplikacji usługi LUIS. `subscription-key` Jest klucza punktu końcowego używanego na potrzeby zapytań Twojej aplikacji. Za pomocą klucza usługi bezpłatne Tworzenie/modułu uruchamiającego podczas zapoznawania się LUIS, jest ważne, aby zmienić wartość klucza punktu końcowego z kluczem, który obsługuje Twoja [oczekiwane użycie usługi LUIS](luis-boundaries.md#key-limits). `timezoneOffset` Jednostka jest minut.
+Jest ona dostępna na stronie **Ustawienia** aplikacji Luis, a także jako część adresu URL (po `/apps/`) podczas edytowania tej aplikacji Luis. `appID` `subscription-key` Jest klucza punktu końcowego używanego na potrzeby zapytań Twojej aplikacji. Chociaż możesz użyć bezpłatnego klucza autorstwa/początkowego podczas uczenia się LUIS, ważne jest, aby zmienić klucz punktu końcowego na klucz, który obsługuje [oczekiwane użycie Luis](luis-boundaries.md#key-limits). `timezoneOffset` Jednostka jest minut.
 
 **Odpowiedzi HTTPS** zawiera wszystkie informacje na temat intencji i jednostki usługi LUIS można określić na podstawie bieżącego opublikowanego modelu albo punktu końcowego przejściowych lub produkcyjnych. Punkt końcowy adres URL znajduje się na [LUIS](luis-reference-regions.md) witryny sieci Web w **Zarządzaj** sekcji na **kluczy i punktów końcowych** strony.
 
@@ -148,141 +148,15 @@ Na przykład w języku niemieckim, wyraz `das Bauernbrot` jest stokenizowana do 
 
 ## <a name="simple-entity-data"></a>Proste jednostki danych
 
-A [jednostki prostej](luis-concept-entity-types.md) jest wartością maszyny do opanowania. Można go wyrazu lub frazy.
-
-`Bob Jones wants 3 meatball pho`
-
-W poprzednim wypowiedź `Bob Jones` jest oznaczona jako prosty `Customer` jednostki.
-
-Dane zwrócone z punktu końcowego obejmuje nazwa jednostki, odnalezione tekst z wypowiedź, lokalizacja odnalezionych tekstu i oceny:
-
-```JSON
-"entities": [
-  {
-  "entity": "bob jones",
-  "type": "Customer",
-  "startIndex": 0,
-  "endIndex": 8,
-  "score": 0.473899543
-  }
-]
-```
-
-|Obiekt danych|Nazwa jednostki|Wartość|
-|--|--|--|
-|Proste jednostki|`Customer`|`bob jones`|
+A [jednostki prostej](reference-entity-simple.md) jest wartością maszyny do opanowania. Można go wyrazu lub frazy.
 
 ## <a name="composite-entity-data"></a>Dane złożone jednostki
-[Złożone](luis-concept-entity-types.md) jednostki są rozpoznane przez maszynę i może zawierać słowo lub frazę. Na przykład, należy wziąć pod uwagę złożonego jednostki wstępnie `number` i `Location::ToLocation` za pomocą następujących wypowiedź:
 
-`book 2 tickets to paris`
-
-Należy zauważyć, że `2`, liczba i `paris`, ToLocation mają słowa między nimi, które nie należą do żadnej z jednostki. Zielonym podkreśleniem, używane w etykietami wypowiedź w [LUIS](luis-reference-regions.md) witryny sieci Web, wskazuje obiekt złożony.
-
-![Złożone jednostki](./media/luis-concept-data-extraction/composite-entity.png)
-
-Złożone jednostki są zwracane w `compositeEntities` tablicy i wszystkich jednostek w ramach złożonego jest także zwracany w `entities` tablicy:
-
-```JSON
-
-"entities": [
-    {
-    "entity": "2 tickets to cairo",
-    "type": "ticketInfo",
-    "startIndex": 0,
-    "endIndex": 17,
-    "score": 0.67200166
-    },
-    {
-    "entity": "2",
-    "type": "builtin.number",
-    "startIndex": 0,
-    "endIndex": 0,
-    "resolution": {
-        "subtype": "integer",
-        "value": "2"
-    }
-    },
-    {
-    "entity": "cairo",
-    "type": "builtin.geographyV2",
-    "startIndex": 13,
-    "endIndex": 17
-    }
-],
-"compositeEntities": [
-    {
-    "parentType": "ticketInfo",
-    "value": "2 tickets to cairo",
-    "children": [
-        {
-        "type": "builtin.geographyV2",
-        "value": "cairo"
-        },
-        {
-        "type": "builtin.number",
-        "value": "2"
-        }
-    ]
-    }
-]
-```    
-
-|Obiekt danych|Nazwa jednostki|Wartość|
-|--|--|--|
-|Wstępnie utworzone jednostki — liczba|"builtin.number"|"2"|
-|Wstępnie utworzone jednostki - GeographyV2|"Location::ToLocation"|"Paryż"|
+[Jednostka złożona](reference-entity-composite.md) składa się z innych jednostek, takich jak wstępnie zbudowane jednostki, proste, wyrażenie regularne i jednostki listy. Osobne jednostki tworzą całej jednostki. 
 
 ## <a name="list-entity-data"></a>Lista danych jednostki
 
-A [listy](luis-concept-entity-types.md) jednostki nie jest maszyny do opanowania. Konieczne jest dopasowanie tekstu do dokładnego dopasowania. Lista reprezentuje elementy na liście wraz z synonimami tych elementów. Usługa LUIS oznacza jakiegokolwiek dopasowania do elementu w dowolnej listy jako jednostki w odpowiedzi. Jest to synonim mogą mieć więcej niż jednej listy.
-
-Załóżmy, że aplikacja ma listę o nazwie `Cities`, dzięki czemu dla zmian nazwy miast, w tym mieście Kuwejcie (Sea tac), kod lotniska (SEA), kod pocztowy zip (98101) i numer kierunkowy telefonu (206).
-
-|Element listy|Synonimy — element|
-|---|---|
-|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
-|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
-
-`book 2 tickets to paris`
-
-W poprzednim wypowiedź, wyraz `paris` jest mapowany na element Paryż jako część `Cities` listy jednostek. Jednostka listy dopasowuje zarówno znormalizowaną nazwę elementu, jak i synonimy elementu.
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 22,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
-
-Inny wypowiedź przykładzie, za pomocą synonim dla Paryż:
-
-`book 2 tickets to roissy`
-
-```JSON
-"entities": [
-  {
-    "entity": "roissy",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 23,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
+[Jednostki listy](reference-entity-list.md) reprezentują stały, zamknięty zestaw powiązanych słów wraz z ich synonimami. Usługa LUIS nie wykrywa dodatkowe wartości dla jednostek z listy. Użyj **zaleca się** funkcji, aby zobaczyć sugestie dotyczące nowych słów na podstawie bieżącej listy. Jeśli istnieje więcej niż jednej jednostki listy z taką samą wartość, każdy obiekt jest zwracany w kwerendy punktu końcowego. 
 
 ## <a name="prebuilt-entity-data"></a>Wstępnie utworzone jednostki danych
 [Wstępnie utworzone](luis-concept-entity-types.md) jednostki są wykrywane na podstawie dopasowania wyrażenia regularnego przy użyciu typu open-source [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text) projektu. Wstępnie utworzone jednostki są zwracane w tablicy jednostek i użyj nazwy typu prefiksem `builtin::`. Poniższy tekst to wypowiedź przykład za pomocą zwrócone ze wstępnie utworzonych jednostek:
@@ -369,56 +243,29 @@ Inny wypowiedź przykładzie, za pomocą synonim dla Paryż:
 ```
 
 ## <a name="regular-expression-entity-data"></a>Wyrażenie regularne danych dotyczących jednostki
-[Wyrażenie regularne](luis-concept-entity-types.md) jednostki są wykrywane na podstawie dopasowania wyrażenia regularnego przy użyciu wyrażenia podane podczas tworzenia jednostki. Korzystając z `kb[0-9]{6}` jako jej definicję wyrażenia regularnego, następującą odpowiedź JSON jest wypowiedź przykład z jednostkami zwrócone wyrażenie regularne dla zapytania `When was kb123456 published?`:
 
-```JSON
-{
-  "query": "when was kb123456 published?",
-  "topScoringIntent": {
-    "intent": "FindKBArticle",
-    "score": 0.933641255
-  },
-  "intents": [
-    {
-      "intent": "FindKBArticle",
-      "score": 0.933641255
-    },
-    {
-      "intent": "None",
-      "score": 0.04397359
-    }
-  ],
-  "entities": [
-    {
-      "entity": "kb123456",
-      "type": "KB number",
-      "startIndex": 9,
-      "endIndex": 16
-    }
-  ]
-}
-```
+[Jednostka wyrażenia regularnego](reference-entity-regular-expression.md) wyodrębnia jednostkę na podstawie podania wzorca wyrażenia regularnego.
 
 ## <a name="extracting-names"></a>Trwa wyodrębnianie nazw
-Pobieranie nazwy z wypowiedź jest trudne, ponieważ nazwa może zawierać niemal dowolną kombinację literami i wyrazami. W zależności od tego, jakiego rodzaju nazw można teraz wyodrębniania masz kilka opcji. Poniższe sugestie nie są reguły, ale dodatkowe wskazówki.
+Pobieranie nazwy z wypowiedź jest trudne, ponieważ nazwa może zawierać niemal dowolną kombinację literami i wyrazami. W zależności od typu wyodrębnianych nazw można korzystać z kilku opcji. Poniższe sugestie nie są regułami, ale są bardziej szczegółowe.
 
-### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>Dodaj wstępnie utworzone jednostki PersonName i GeographyV2
+### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>Dodawanie wstępnie utworzonych jednostek PersonName i GeographyV2
 
-[PersonName](luis-reference-prebuilt-person.md) i [GeographyV2](luis-reference-prebuilt-geographyV2.md) jednostki są dostępne w niektórych [kultur języka](luis-reference-prebuilt-entities.md). 
+[](luis-reference-prebuilt-person.md) Jednostki PersonName i [GeographyV2](luis-reference-prebuilt-geographyV2.md) są dostępne w niektórych [kulturach językowych](luis-reference-prebuilt-entities.md). 
 
 ### <a name="names-of-people"></a>Nazwiska osób
 
-Nazwa osób może mieć pewne niewielkie format, w zależności od języka i kultury. Użyj jednej ze wstępnie utworzonych **[personName](luis-reference-prebuilt-person.md)** jednostki lub **[jednostki prostej](luis-concept-entity-types.md#simple-entity)** z [role](luis-concept-roles.md) pierwszych i nazwisko. 
+Nazwa osób może mieć pewne niewielkie format, w zależności od języka i kultury. Użyj wstępnie utworzonej jednostki PersonName lub **[prostej jednostki](luis-concept-entity-types.md#simple-entity)** z [rolami](luis-concept-roles.md) imię i nazwisko. **[](luis-reference-prebuilt-person.md)** 
 
-Korzystając z prostego jednostki, upewnij się, zapewnienie przykłady z zastosowaniem imię i nazwisko w różnych częściach wypowiedź, wypowiedzi o różnej długości i wypowiedzi we wszystkich intencji, łącznie z Brak intencji. [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
+Jeśli używasz prostej jednostki, upewnij się, że są podane przykłady, które używają pierwszej i ostatniej nazwy w różnych częściach wypowiedź, w wyrażenia długości o różnej długości i wyrażenia długości we wszystkich intencjach, w tym dla opcji Brak. [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
 
 ### <a name="names-of-places"></a>Nazwy miejsc
 
-Nazwy lokalizacji są ustawiane i znany, takich jak miast, powiaty, Stany, prowincje i krajów/regionów. Użyj wstępnie utworzone jednostki **[geographyV2](luis-reference-prebuilt-geographyv2.md)** można wyodrębnić informacji o lokalizacji.
+Nazwy lokalizacji są ustawiane i znane, takie jak miasta, powiaty, Stany, prowincje i kraje/regiony. Aby wyodrębnić informacje o lokalizacji, Użyj wstępnie skompilowanej jednostki **[geographyV2](luis-reference-prebuilt-geographyv2.md)** .
 
 ### <a name="new-and-emerging-names"></a>Nowe i rozwijające się nazwy
 
-Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się nazwy, takie jak produkty lub firmy. Te typy nazw są najtrudniejsze typu wyodrębnianie danych. Zaczynają się od **[jednostki prostej](luis-concept-entity-types.md#simple-entity)** i Dodaj [listy fraz](luis-concept-feature.md). [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
+Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się nazwy, takie jak produkty lub firmy. Te typy nazw są najbardziej trudnym typem wyodrębniania danych. Zacznij od **[prostej jednostki](luis-concept-entity-types.md#simple-entity)** i Dodaj [listę fraz](luis-concept-feature.md). [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
 
 ## <a name="pattern-roles-data"></a>Wzorzec role danych
 Role różnią się kontekstowych jednostek.
@@ -482,49 +329,8 @@ Role różnią się kontekstowych jednostek.
 ```
 
 ## <a name="patternany-entity-data"></a>Pattern.any danych dotyczących jednostki
-Jednostki pattern.any to jednostki o zmiennej długości, używane w wypowiedzi szablonu z [wzorzec](luis-concept-patterns.md).
 
-```JSON
-{
-  "query": "where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.999999464
-  },
-  "intents": [
-    {
-      "intent": "FindForm",
-      "score": 0.999999464
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 4.883697E-06
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 9.278342E-07
-    },
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 9.278342E-07
-    }
-  ],
-  "entities": [
-    {
-      "entity": "understand your responsibilities as a member of the community",
-      "type": "FormName",
-      "startIndex": 18,
-      "endIndex": 78,
-      "role": ""
-    }
-  ]
-}
-```
-
+[Wzorzec. any](reference-entity-pattern-any.md) jest symbolem zastępczym o zmiennej długości używanym tylko w szablonie wzorca wypowiedź, aby oznaczyć, gdzie rozpoczyna się i kończą.  
 
 ## <a name="sentiment-analysis"></a>Analiza tonacji
 Jeśli jest skonfigurowana analiza tonacji, odpowiedź w formacie json usługi LUIS obejmuje analizę tonacji. Dowiedz się więcej na temat analizy tonacji w [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentacji.
@@ -718,7 +524,7 @@ Punkt końcowy usługi LUIS można odnajdywanie tych samych danych w różnych j
 }
 ```
 
-## <a name="data-matching-multiple-list-entities"></a>Dane dopasowania wielu jednostek listy
+## <a name="data-matching-multiple-list-entities"></a>Dane zgodne z wieloma jednostkami listy
 
 Jeśli wyraz lub frazę, pasuje do więcej niż jednej jednostki listy, kwerendy punktu końcowego zwraca każdy obiekt listy.
 
@@ -758,6 +564,6 @@ Dla zapytania `when is the best time to go to red rock?`, a aplikacja ma słowo 
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zobacz [Dodaj jednostki](luis-how-to-add-entities.md) Aby dowiedzieć się więcej o sposobie dodawania jednostki z aplikacją usługi LUIS.

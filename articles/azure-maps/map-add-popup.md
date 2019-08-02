@@ -1,68 +1,68 @@
 ---
-title: Dodawanie menu podręcznego za pomocą usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Jak dodać okno podręczne do mapy Javascript
+title: Dodawanie okna podręcznego z Azure Maps | Microsoft Docs
+description: Jak dodać okno podręczne do mapy JavaScript
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/09/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92d44ef3d0db8e93d4babd7441238c7fa105dbd5
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769553"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639008"
 ---
-# <a name="add-a-popup-to-the-map"></a>Dodawanie menu podręcznego do mapy
+# <a name="add-a-popup-to-the-map"></a>Dodawanie okna podręcznego do mapy
 
-W tym artykule pokazano, jak dodać okno podręczne z punktem na mapie.
+W tym artykule opisano sposób dodawania okna podręcznego do punktu na mapie.
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
 <a id="addAPopup"></a>
 
-<iframe height='500' scrolling='no' title='Dodawanie konta pop przy użyciu usługi Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>jest dodanie punktu pop przy użyciu usługi Azure Maps</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Dodawanie wyskakujących okienek przy użyciu Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Dodaj wyskakujące okienko przy użyciu Azure Maps</a> przez<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () w witrynie <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje. Tworzy również HTML zawartości mają być wyświetlane w menu podręcznego.
+W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](./map-create.md) . Tworzy również zawartość HTML, która będzie wyświetlana w menu podręcznym.
 
-Tworzy drugi blok kodu, źródła danych obiektu przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy. Punkt znajduje się [funkcji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z [punktu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) klasy. Obiekt point z właściwościami nazwę i opis jest następnie tworzony i dodawany do źródła danych.
+Drugi blok kodu tworzy obiekt źródła danych przy użyciu klasy [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) . Punkt jest [funkcją](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) klasy [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) . Obiekt punktu o właściwościach nazwa i opis jest następnie tworzony i dodawany do źródła danych.
 
-A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie.  Warstwa symboli jest tworzony w trzecim bloku kodu. Źródło danych jest dodawane do warstwy "symbol", która następnie zostanie dodany do mapy.
+[Warstwa symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikon do renderowania danych opartych na punkcie [w postaci symboli](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie.  Warstwa symboli jest tworzona w trzecim bloku kodu. Źródło danych jest dodawane do warstwy symboli, która jest następnie dodawana do mapy.
 
-Czwarty bloku kodu tworzy [obiekt menu podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) za pośrednictwem `new atlas.Popup()`. Menu podręczne właściwości, takie jak pozycja i pixelOffset są częścią [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions). PopupOptions można zdefiniować w Konstruktorze podręczny lub za pośrednictwem [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) funkcji klasy okna podręcznego. A `mouseover` odbiornik zdarzeń dla warstwy symbol zostanie utworzony.
+Czwarty blok kodu tworzy [obiekt podręczny](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) za pośrednictwem `new atlas.Popup()`. Właściwości podręczne, takie jak Position i pixelOffset, są częścią [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions). PopupOptions można zdefiniować w konstruktorze popup lub za [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) pomocą funkcji SetOptions klasy popup. Zostanie utworzony odbiornik zdarzeń dla warstwy symboli. `mouseover`
 
-Ostatni blok kodu tworzy funkcję, która jest wyzwalana przez `mouseover` odbiornik zdarzeń. Ona ustawia zawartość i właściwości wyskakujące okienko i dodaje obiekt menu podręczne do mapy.
+Ostatni blok kodu tworzy funkcję, która jest wyzwalana przez `mouseover` odbiornik zdarzeń. Ustawia zawartość i właściwości okna podręcznego i dodaje obiekt podręczny do mapy.
 
-## <a name="reusing-a-popup-with-multiple-points"></a>Ponowne użycie okna podręcznego z wieloma punktami
+## <a name="reusing-a-popup-with-multiple-points"></a>Używanie okna podręcznego z wieloma punktami
 
-Gdy istnieje wiele punktów i tylko mają być wyświetlane okno podręczne jeden naraz, najlepszym rozwiązaniem jest tworzenie jednego okna podręcznego i ponowne użycie jej zamiast tworzenia okna podręcznego dla każdej funkcji punktu. Dzięki temu liczba elementów DOM utworzonych przez aplikację jest znacznie mniejsze co może zapewnić lepszą wydajność. Ten przykład umożliwia utworzenie funkcji w punkcie 3. Kliknięcie dowolnego z nich, pojawi się okno podręczne z zawartością dla tej funkcji punktu.
+Jeśli masz wiele punktów i chcesz wyświetlić tylko jedno podręczne, najlepszym rozwiązaniem jest utworzenie jednego podręcznego i ponowne użycie go zamiast tworzenia okna podręcznego dla każdej funkcji punktu. Dzięki temu liczba elementów DOM utworzonych przez aplikację jest znacznie zmniejszona, co może zapewnić lepszą wydajność. Ten przykład tworzy funkcje 3 punktów. Po kliknięciu dowolnego z nich zostanie wyświetlone okno podręczne z zawartością dla tej funkcji punktu.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Ponowne użycie okna podręcznego z wiele numerów PIN' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>ponowne użycie okna podręcznego z wiele numerów PIN</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Używanie podręcznego z wieloma numerami PIN' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobaczysz piórem, <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>korzystając z okna podręcznego z wieloma</a> numerami PIN przez Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule:
+Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Okno podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Elementy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
 
-Zobacz następujące artykuły doskonałe przykłady pełnego kodu:
+Zobacz następujące wspaniałe artykuły dotyczące pełnych przykładów kodu:
 
 > [!div class="nextstepaction"]
 > [Dodaj warstwę symboli](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Dodaj znacznik HTML](./map-add-custom-html.md)
+> [Dodawanie znacznika HTML](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
 > [Dodawanie kształtu](./map-add-shape.md)

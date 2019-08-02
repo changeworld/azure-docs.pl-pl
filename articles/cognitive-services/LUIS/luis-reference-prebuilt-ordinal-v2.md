@@ -1,7 +1,7 @@
 ---
-title: Numer porządkowy V2 wstępnie utworzone jednostki
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Ten artykuł zawiera numer porządkowy V2 informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
+title: Wstępnie utworzona jednostka porządkowa v2 — LUIS
+titleSuffix: Azure Cognitive Services
+description: Ten artykuł zawiera wstępnie skompilowane informacje o jednostkach w wersji 2 w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 862b962f5642e01d7ed8250f49d51a6132447083
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 972f75fd1c977e79a2fa70c44bb3069e2c69a2c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486141"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563412"
 ---
-# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Numer porządkowy V2 wstępnie utworzone jednostki dla aplikacji usługi LUIS
-Rozwija porządkowa numer V2 [numer](luis-reference-prebuilt-ordinal.md) zapewnienie odwołania względne, takie jak `next`, `last`, i `previous`. Nie zostały one wyodrębnione porządkowe wstępnie utworzone jednostki.
+# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Wstępnie utworzona jednostka porządkowa v2 dla aplikacji LUIS
+Numer porządkowy v2 rozszerza [](luis-reference-prebuilt-ordinal.md) liczbę porządkową, aby zapewnić odwołania `next`względne, `previous`takie jak, `last`, i. Nie są one wyodrębniane przy użyciu wstępnie skompilowanej jednostki.
 
-## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Rozwiązania dla wstępnie utworzone jednostki w wersji 2 porządkowe
+## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Rozwiązanie dla wstępnie skompilowanej liczby porządkowej v2
 
-### <a name="api-version-2x"></a>Wersja interfejsu API 2.x
+### <a name="api-version-2x"></a>Interfejs API w wersji 2. x
 
-W poniższym przykładzie pokazano rozdzielczość **builtin.ordinalV2** jednostki.
+Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej. ordinalV2** .
 
 ```json
 {
@@ -55,9 +55,9 @@ W poniższym przykładzie pokazano rozdzielczość **builtin.ordinalV2** jednost
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API 3.x
+### <a name="preview-api-version-3x"></a>Wersja zapoznawcza interfejsu API w wersji 3. x
 
-Następujący kod JSON jest `verbose` parametr `false`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `false`
 
 ```json
 {
@@ -82,7 +82,7 @@ Następujący kod JSON jest `verbose` parametr `false`:
 }
 ```
 
-Następujący kod JSON jest `verbose` parametr `true`:
+Poniższy kod JSON jest z `verbose` parametrem ustawionym na: `true`
 
 ```json
 {
@@ -122,6 +122,6 @@ Następujący kod JSON jest `verbose` parametr `true`:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [procent](luis-reference-prebuilt-percentage.md), [numer telefonu](luis-reference-prebuilt-phonenumber.md), i [temperatury](luis-reference-prebuilt-temperature.md) jednostek. 
+Dowiedz się więcej na temat [wartości procentowej](luis-reference-prebuilt-percentage.md), [numeru telefonu](luis-reference-prebuilt-phonenumber.md)i jednostek [temperatury](luis-reference-prebuilt-temperature.md) . 

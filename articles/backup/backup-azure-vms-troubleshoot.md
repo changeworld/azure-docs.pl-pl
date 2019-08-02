@@ -1,121 +1,121 @@
 ---
-title: Rozwiązywanie problemów z błędami kopii zapasowych w usłudze Azure virtual machines
-description: Rozwiązywanie problemów z kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure
-services: backup
-author: srinathvasireddy
-manager: sivan
+title: Rozwiązywanie problemów z błędami kopii zapasowych w usłudze Azure Virtual Machine
+description: Rozwiązywanie problemów z tworzeniem kopii zapasowych i przywracaniem maszyn wirtualnych platformy Azure
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: srinathv
-ms.openlocfilehash: d7b99e7076e52db004bba7155922f4b144f2ad0a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: dacurwin
+ms.openlocfilehash: 810484060850400a6af8e5be4cf16164eb8f18cc
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704894"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688906"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi maszyn wirtualnych platformy Azure
-Można rozwiązać, napotkano błędy podczas używania usługi Azure Backup z informacjami o wymienionych poniżej:
+Możesz rozwiązywać problemy występujące podczas korzystania z Azure Backup z informacjami wymienionymi poniżej:
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowej
 W tej sekcji omówiono niepowodzenie operacji tworzenia kopii zapasowej maszyny wirtualnej platformy Azure.
 
-## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime - kopiowania danych kopii zapasowej z magazynu przekroczyło limit czasu
+## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime — Przekroczono limit czasu kopiowania danych kopii zapasowej z magazynu
 
 Kod błędu: CopyingVHDsFromBackUpVaultTakingLongTime <br/>
-Komunikat o błędzie: Kopiowanie danych kopii zapasowej z magazynu przekroczyło limit czasu
+Komunikat o błędzie: Przekroczono limit czasu kopiowania danych kopii zapasowej z magazynu
 
-Może się to zdarzyć z powodu błędów magazynu przejściowego lub brak wystarczającej ilości miejsca konta operacje We/Wy dla usługi kopii zapasowej na przesyłanie danych do magazynu przed upływem limitu czasu. Konfigurowanie kopii zapasowych maszyn wirtualnych przy użyciu tych [najlepsze praktyki](backup-azure-vms-introduction.md#best-practices) i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.
+Może się to zdarzyć z powodu przejściowych błędów magazynu lub niewystarczającej liczby operacji we/wy na koncie magazynu w celu przesłania danych do magazynu w ramach przedziału czasu. Skonfiguruj kopię zapasową maszyny wirtualnej przy użyciu tych [najlepszych](backup-azure-vms-introduction.md#best-practices) rozwiązań i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.
 
-## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState — maszyna wirtualna nie jest w stanie, który umożliwia tworzenie kopii zapasowych.
+## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState — maszyna wirtualna nie jest w stanie umożliwiającym tworzenie kopii zapasowych.
 
 Kod błędu: UserErrorVmNotInDesirableState <br/>
 Komunikat o błędzie: Maszyna wirtualna nie jest w stanie, który umożliwia tworzenie kopii zapasowych.<br/>
 
-Wykonywanie kopii zapasowej nie powiodło się, ponieważ maszyna wirtualna jest w stanie niepowodzenia. Do pomyślnego utworzenia kopii zapasowej maszyny Wirtualnej stan powinna być uruchomiona, zatrzymana lub zatrzymana (cofnięty przydział).
+Operacja tworzenia kopii zapasowej nie powiodła się, ponieważ maszyna wirtualna jest w stanie niepowodzenia. W celu pomyślnego utworzenia kopii zapasowej stan maszyny wirtualnej powinien być uruchomiony, zatrzymany lub zatrzymany (cofnięto przydział).
 
-* Jeśli maszyna wirtualna jest w stanie przejściowym między **systemem** i **Zamknij**, poczekaj, aż zmianę stanu. Następnie wyzwolić zadanie tworzenia kopii zapasowej.
-*  Jeśli maszyna wirtualna jest maszyną Wirtualną systemu Linux i używa modułu jądra systemu Linux Security-Enhanced, ścieżka agenta systemu Linux platformy Azure wykluczania **/var/lib/waagent** z zasad zabezpieczeń i upewnij się, że zainstalowano rozszerzenie kopii zapasowej.
+* Jeśli maszyna wirtualna jest w stanie przejściowym między **działaniem** i **wyłączaniem**, poczekaj na zmianę stanu. Następnie Wyzwól zadanie tworzenia kopii zapasowej.
+*  Jeśli maszyna wirtualna jest maszyną wirtualną z systemem Linux i używa modułu jądra systemu Linux z ulepszonymi zabezpieczeniami, Wyklucz z zasad zabezpieczeń **/var/lib/waagent** ścieżki agenta platformy Azure Linux i upewnij się, że rozszerzenie kopii zapasowej jest zainstalowane.
 
-## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed — nie można zablokować przynajmniej jednego punktu instalacji maszyny wirtualnej, aby utworzyć migawkę spójną systemu plików
+## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed — nie można zablokować co najmniej jednego punktu instalacji maszyny wirtualnej, aby utworzyć migawkę spójną na poziomie systemu plików
 
 Kod błędu: UserErrorFsFreezeFailed <br/>
 Komunikat o błędzie: Nie można zablokować co najmniej jednego punktu instalacji maszyny wirtualnej w celu utworzenia migawki spójnej z systemem plików.
 
-* Sprawdź stan systemu plików wszystkich zainstalowanych urządzeń przy użyciu **tune2fs** polecenia, na przykład **tune2fs -l/dev/sdb1 \\** .\| grep **stan systemu plików**.
-* Odinstaluj urządzenia, dla których stan systemu plików nie został wyczyszczony, za pomocą **umount** polecenia.
-* Uruchom sprawdzanie spójności systemu plików na tych urządzeniach za pomocą **fsck** polecenia.
-* Ponownie zainstaluj urządzeń i ponów próbę wykonania operacji tworzenia kopii zapasowej.</ol>
+* Sprawdź stan systemu plików wszystkich zainstalowanych urządzeń za pomocą polecenia **tune2fs** , na przykład **tune2fs-l \\/dev/sdb1** .\| grep **system plików**.
+* Odinstaluj urządzenia, dla których stan systemu plików nie został oczyszczony, przy użyciu polecenia **umount** .
+* Uruchom sprawdzanie spójności systemu plików na tych urządzeniach przy użyciu polecenia **fsck** .
+* Ponownie zainstaluj urządzenia i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.</ol>
 
-## <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC — operacja instalacji rozszerzenia nie powiodła się ze względu na błąd modelu COM +
+## <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC-instalacja/operacja nie powiodła się z powodu błędu modelu COM+
 
 Kod błędu: ExtensionSnapshotFailedCOM <br/>
-Komunikat o błędzie: Operacja migawki nie powiodła się z powodu błędu modelu COM +
+Komunikat o błędzie: Operacja migawki nie powiodła się z powodu błędu modelu COM+
 
 Kod błędu: ExtensionInstallationFailedCOM  <br/>
-Komunikat o błędzie: Operacja instalacji rozszerzenia nie powiodła się z powodu błędu modelu COM +
+Komunikat o błędzie: Instalacja rozszerzenia/operacja nie powiodła się z powodu błędu modelu COM+
 
 Kod błędu: ExtensionInstallationFailedMDTC <br/>
-Komunikat o błędzie: Nie można zainstalować rozszerzenia z powodu błędu "COM + nie może komunikować się z Microsoft Distributed Transaction Coordinator <br/>
+Komunikat o błędzie: Instalacja rozszerzenia nie powiodła się z powodu błędu "model COM+ nie mógł skontaktować się z Distributed Transaction Coordinatorem firmy Microsoft <br/>
 
-Operacja tworzenia kopii zapasowej nie powiodło się z powodu problemu z usługą Windows **modelu COM + System** aplikacji.  Aby rozwiązać ten problem, wykonaj poniższe czynności:
+Operacja tworzenia kopii zapasowej nie powiodła się z powodu problemu z aplikacją **systemową com+** systemu Windows.  Aby rozwiązać ten problem, wykonaj poniższe czynności:
 
-* Ponowne uruchamianie/usługa Windows **COM + System Application** (z wiersza polecenia z podwyższonym **-net start COMSysApp**).
-* Upewnij się, **Distributed Transaction Coordinator** services działa jako **Usługa sieciowa** konta. Jeśli nie, zmień ją na uruchamianie jako **Usługa sieciowa** konta, a następnie ponownie uruchom **aplikacja systemowa modelu COM +** .
-* Jeśli nie można ponownie uruchomić usługę, zainstaluj ponownie **Distributed Transaction Coordinator** usługi, wykonując następujące czynności:
+* Spróbuj uruchomić/ponownie uruchomić **aplikację systemową com+** systemu Windows (z wiersza polecenia z podwyższonym poziomem uprawnień **— net start COMSysApp**).
+* Upewnij się, że usługi **Distributed Transaction Coordinator** działają jako konto **usługi sieciowej** . W przeciwnym razie zmień ją na Uruchom jako konto **usługi sieciowej** i uruchom ponownie **aplikację systemową com+** .
+* Jeśli nie można uruchomić ponownie usługi, należy ponownie zainstalować usługę **Distributed Transaction Coordinator** , wykonując następujące czynności:
     * Zatrzymaj usługę MSDTC
     * Otwórz wiersz polecenia (cmd)
-    * Uruchom polecenie "msdtc — Odinstaluj"
-    * Uruchom polecenie "msdtc — instalowanie"
+    * Uruchom polecenie "MSDTC-Uninstall"
+    * un polecenia "MSDTC-Install"
     * Uruchom usługę MSDTC
-* Uruchom usługę Windows **aplikacja systemowa modelu COM +** . Po **aplikacja systemowa modelu COM +** jest uruchamiana, wyzwalanie zadania tworzenia kopii zapasowej w witrynie Azure portal.</ol>
+* Uruchom **aplikację systemową com+** usługi systemu Windows. Po uruchomieniu **aplikacji systemowej com+** Wyzwól zadanie tworzenia kopii zapasowej z Azure Portal.</ol>
 
-## <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState — operacja migawki nie powiodło się, ponieważ składniki zapisywania usługi VSS są w złym stanie
+## <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState — operacja migawki nie powiodła się z powodu nieprawidłowego stanu składników zapisywania usługi VSS
 
 Kod błędu: ExtensionFailedVssWriterInBadState <br/>
-Komunikat o błędzie: Operacja migawki nie powiodło się, ponieważ składniki zapisywania usługi VSS są w złym stanie.
+Komunikat o błędzie: Operacja migawki nie powiodła się z powodu nieprawidłowego stanu składników zapisywania usługi VSS.
 
-Uruchom ponownie składniki zapisywania usługi VSS, które znajdują się w nieprawidłowym stanie. W wierszu polecenia z podwyższonym poziomem uprawnień uruchom ```vssadmin list writers```. Dane wyjściowe zawierają wszystkie składniki zapisywania usługi VSS i ich stan. Dla każdego składnika zapisywania usługi VSS, stan, który nie jest **[1] stabilny**, aby ponownie uruchomić składnik zapisywania usługi VSS, uruchom następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień:
+Uruchom ponownie składniki zapisywania usługi VSS, które są w złej kondycji. W wierszu polecenia z podwyższonym poziomem ```vssadmin list writers```uprawnień uruchom polecenie. Dane wyjściowe zawierają wszystkie składniki zapisywania usługi VSS i ich stan. Dla każdego składnika zapisywania usługi VSS o stanie, który nie jest **[1] stabilny**, aby ponownie uruchomić składnik zapisywania usługi VSS, uruchom następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień:
 
   * ```net stop serviceName```
   * ```net start serviceName```
 
-## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure — nie można przeanalizować konfiguracji dla rozszerzenia kopii zapasowej
+## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure — błąd podczas analizowania konfiguracji dla rozszerzenia kopii zapasowej
 
 Kod błędu: ExtensionConfigParsingFailure<br/>
 Komunikat o błędzie: Nie można przeanalizować konfiguracji dla rozszerzenia kopii zapasowej.
 
-Ten błąd występuje z powodu zmiany uprawnień na **MachineKeys** katalogu: **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
-Uruchom następujące polecenie i sprawdź, że uprawnienia **MachineKeys** katalogu są domyślne:**icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
+Ten błąd występuje z powodu zmienionych uprawnień w katalogu **MachineKeys** : **%SYSTEMDRIVE%\programdata\microsoft\crypto\rsa\machinekeys**.
+Uruchom następujące polecenie i sprawdź, czy uprawnienia w katalogu **MachineKeys** są domyślne:**icacls%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
 
-Uprawnienia domyślne są następujące:
-* Każdy z nich: (R, W)
-* BUILTIN\Administratorzy: (F)
+Domyślne uprawnienia są następujące:
+* Widzieć (R, W)
+* Builtin\administratorzy N
 
-Jeśli widzisz uprawnień w **MachineKeys** katalogu są inne niż domyślne, wykonaj następujące kroki, popraw uprawnienia, usunąć certyfikat i wyzwalanie tworzenia kopii zapasowej:
+Jeśli w katalogu **MachineKeys** są wyświetlane uprawnienia inne niż ustawienia domyślne, wykonaj następujące kroki, aby rozwiązać odpowiednie uprawnienia, Usuń certyfikat i Wyzwól kopię zapasową:
 
-1. Usuń uprawnienia na **MachineKeys** katalogu. Za pomocą właściwości zabezpieczeń Explorer oraz zaawansowane ustawienia zabezpieczeń w katalogu, resetować uprawnienia do wartości domyślnych. Usuń wszystkie obiekty użytkowników z wyjątkiem ustawień domyślnych z katalogu i upewnij się, że **wszyscy** uprawnienie dostępu specjalnego ma w następujący sposób:
+1. Naprawianie uprawnień w katalogu **MachineKeys** . Korzystając z opcji właściwości zabezpieczeń Eksploratora i zaawansowane ustawienia zabezpieczeń w katalogu, zresetuj uprawnienia z powrotem do wartości domyślnych. Usuń wszystkie obiekty użytkownika z wyjątkiem ustawień domyślnych z katalogu i upewnij się, że uprawnienia **Wszyscy** mają specjalny dostęp w następujący sposób:
 
-    * Wyświetlanie zawartości folderu/Odczyt danych
-    * Odczyt atrybutów
+    * Wyświetlanie listy folderów/odczyt danych
+    * Atrybuty odczytu
     * Odczyt atrybutów rozszerzonych
-    * Tworzenie plików/Zapis danych
+    * Tworzenie plików/zapis danych
     * Tworzenie folderów/Dołączanie danych
-    * Zapis atrybutów
-    * Zapis atrybutów rozszerzonych
+    * Zapisz atrybuty
+    * Zapisz atrybuty rozszerzone
     * Uprawnienia do odczytu
-2. Usunąć wszystkie certyfikaty, gdzie **wystawiony dla** jest klasycznego modelu wdrażania lub **Generator certyfikatów systemu Windows Azure CRP**:
-    * [Otwórz przystawkę Certyfikaty na komputerze lokalnym konsoli](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx).
-    * W obszarze **osobistych** > **certyfikaty**, usunąć wszystkie certyfikaty, gdzie **wystawiony dla** jest klasycznego modelu wdrażania lub **CRP zostaje Zainstalowana Windows Azure Generator certyfikatu**.
-3. Wyzwalanie zadania tworzenia kopii zapasowej maszyny Wirtualnej.
+2. Usuń wszystkie certyfikaty, **w** których wystawiony jest klasyczny model wdrażania lub **Generator certyfikatów CRP systemu Windows Azure**:
+    * [Otwórz przystawkę Certyfikaty w konsoli komputera lokalnego](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx).
+    * W obszarze**Certyfikaty** **osobiste** > Usuń wszystkie certyfikaty, **w** których wystawiony jest klasyczny model wdrażania lub **Generator certyfikatów usługi Windows Azure CRP**.
+3. Wyzwalanie zadania tworzenia kopii zapasowej maszyny wirtualnej.
 
-## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState — stan rozszerzenia nie obsługuje operacji kopii zapasowej
+## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState — stan rozszerzenia nie obsługuje operacji tworzenia kopii zapasowej
 
 Kod błędu: ExtensionStuckInDeletionState <br/>
-Komunikat o błędzie: Stan rozszerzenia nie obsługuje operacji kopii zapasowej
+Komunikat o błędzie: Stan rozszerzenia nie obsługuje operacji tworzenia kopii zapasowej
 
-Operacja tworzenia kopii zapasowej nie powiodło się z powodu niespójnym stanie zapasowy numer wewnętrzny. Aby rozwiązać ten problem, wykonaj poniższe czynności:
+Operacja tworzenia kopii zapasowej nie powiodła się z powodu niespójnego stanu rozszerzenia kopii zapasowej. Aby rozwiązać ten problem, wykonaj poniższe czynności:
 
 * Upewnij się, że agent gościa jest zainstalowany i odpowiada
 * W witrynie Azure Portal przejdź do pozycji **Maszyna wirtualna** > **Wszystkie ustawienia** > **Rozszerzenia**
@@ -123,26 +123,26 @@ Operacja tworzenia kopii zapasowej nie powiodło się z powodu niespójnym stani
 * Po usunięciu rozszerzenia kopii zapasowej ponów próbę wykonania operacji tworzenia kopii zapasowej
 * Kolejna operacja tworzenia kopii zapasowej spowoduje zainstalowanie nowego rozszerzenia w odpowiednim stanie
 
-## <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>Przekroczono ExtensionFailedSnapshotLimitReachedError — migawki nie można wykonać operacji jako limit migawek dla niektórych dołączonych dysków
+## <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError — operacja migawki nie powiodła się, ponieważ Przekroczono limit migawek dla niektórych dołączonych dysków
 
-Kod błędu: ExtensionFailedSnapshotLimitReachedError  <br/>
-Komunikat o błędzie: Operacja migawki nie powiodło się, jak limit migawek został przekroczony dla niektórych dołączonych dysków
+Kod błędu: ExtensionFailedSnapshotLimitReachedError <br/>
+Komunikat o błędzie: Operacja migawki nie powiodła się, ponieważ Przekroczono limit migawek dla niektórych dołączonych dysków
 
-Operacja migawki nie powiodło się, jak limit migawek został przekroczony dla niektórych dołączonych dysków. Wykonaj poniższe Rozwiązywanie problemów z kroków, a następnie spróbuj ponownie wykonać operację.
+Operacja migawki nie powiodła się, ponieważ Przekroczono limit migawek dla niektórych dołączonych dysków. Wykonaj poniższe kroki rozwiązywania problemów, a następnie spróbuj ponownie wykonać operację.
 
-* Usuń obiekt blob migawki dysków, które nie są wymagane. Należy zachować ostrożność nie należy usuwać obiektów blob dysku, powinny zostać usunięte tylko migawki obiektów blob.
-* Jeśli usuwania nietrwałego jest włączona na dysku maszyny Wirtualnej kont magazynu, należy skonfigurować przechowywania usuwania nietrwałego w taki sposób, że istniejące migawki są mniejsze niż maksymalna dozwolona w dowolnym momencie.
-* Po włączeniu usługi Azure Site Recovery w kopii zapasowej maszyny Wirtualnej. następnie wykonaj poniższe:
+* Usuń obiekt BLOB dysku — migawki, które nie są wymagane. Należy zachować ostrożność, aby nie usuwać obiektów BLOB dysku, należy usunąć tylko obiekty blob migawek.
+* Jeśli funkcja usuwania nietrwałego jest włączona na dysku maszyny wirtualnej, należy skonfigurować przechowywanie nietrwałego usuwania w taki sposób, że istniejące migawki są mniejsze niż dopuszczalne maksimum w dowolnym momencie.
+* Jeśli Azure Site Recovery jest włączona w kopii zapasowej maszyny wirtualnej, wykonaj następujące czynności:
 
-    * Upewnij się, wartość **isanysnapshotfailed** jest ustawiony jako wartość false w /etc/azure/vmbackup.conf
-    * Planowanie usługi Azure Site Recovery w innym czasie, w taki sposób, że nie powoduje konfliktu operacji tworzenia kopii zapasowej.
+    * Upewnij się, że wartość **isanysnapshotfailed** jest ustawiona na false w/etc/Azure/vmbackup.conf
+    * Zaplanuj Azure Site Recovery w innym czasie, tak aby nie powodowała konfliktu operacji tworzenia kopii zapasowej.
 
-## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive — operacja migawki nie powiodło się ze względu na nieodpowiednie zasoby maszyny Wirtualnej.
+## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive — operacja migawki nie powiodła się z powodu niewystarczających zasobów maszyny wirtualnej.
 
 Kod błędu: ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
-Komunikat o błędzie: Operacja migawki nie powiodła się ze względu na nieodpowiednie zasoby maszyny Wirtualnej.
+Komunikat o błędzie: Operacja migawki nie powiodła się z powodu niewystarczających zasobów maszyny wirtualnej.
 
-Operacja tworzenia kopii zapasowej na maszynie Wirtualnej nie powiodła z powodu opóźnienia wywołań sieci podczas wykonywania operacji migawki. Aby rozwiązać ten problem, wykonaj krok 1. Jeśli problem będzie się powtarzał, spróbuj wykonać kroki 2 i 3.
+Operacja tworzenia kopii zapasowej na maszynie wirtualnej nie powiodła się z powodu opóźnienia wywołań sieciowych podczas wykonywania operacji migawki. Aby rozwiązać ten problem, wykonaj krok 1. Jeśli problem będzie się powtarzał, spróbuj wykonać kroki 2 i 3.
 
 **Krok 1**: Tworzenie migawki za pośrednictwem hosta
 
@@ -155,127 +155,127 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta gościa. Ponów próbę wykonania operacji tworzenia kopii zapasowej.
 
-**Krok 2**: Spróbuj zmienić harmonogram tworzenia kopii zapasowych do czasu, gdy maszyna wirtualna ma pod mniejszym obciążeniem (mniej itp procesora CPU/operacji We/Wy.)
+**Krok 2**: Spróbuj zmienić harmonogram tworzenia kopii zapasowych na czas, w którym maszyna wirtualna jest mniej załadowana (mniej procesora CPU/IOps itd.)
 
-**Krok 3**: Spróbuj [zwiększenie rozmiaru maszyny Wirtualnej](https://azure.microsoft.com/blog/resize-virtual-machines/) i spróbuj ponownie wykonać operację
+**Krok 3**. Spróbuj [zwiększyć rozmiar maszyny wirtualnej](https://azure.microsoft.com/blog/resize-virtual-machines/) , a następnie spróbuj ponownie wykonać operację.
 
-## <a name="common-vm-backup-errors"></a>Typowe błędy tworzenia kopii zapasowej maszyny Wirtualnej
+## <a name="common-vm-backup-errors"></a>Błędy typowej kopii zapasowej maszyny wirtualnej
 
 | Szczegóły błędu | Obejście |
 | ------ | --- |
-| Kod błędu: 320001<br/> Komunikat o błędzie: Nie można wykonać operacji, ponieważ maszyna wirtualna już nie istnieje. <br/> <br/> Kod błędu: 400094 <br/> Komunikat o błędzie: Maszyna wirtualna nie istnieje <br/> <br/>  Nie można znaleźć maszyny wirtualnej platformy Azure.  |Ten błąd występuje, gdy podstawowa maszyna wirtualna zostanie usunięta, ale zasady kopii zapasowych nadal wygląda dla maszyny Wirtualnej utworzyć kopię zapasową. Aby naprawić ten błąd, wykonaj następujące czynności: <ol><li> Ponownie utwórz maszynę wirtualną przy użyciu tej samej nazwie i tej samej nazwy grupy zasobów, **nazwa usługi w chmurze**,<br>**lub**</li><li> Zatrzymaj ochronę maszyny wirtualnej z lub bez usuwania danych kopii zapasowej. Aby uzyskać więcej informacji, zobacz [zatrzymanie ochrony maszyn wirtualnych](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
-| Maszyna wirtualna jest w stanie niepowodzenia inicjowania obsługi administracyjnej: <br>Ponowne uruchomienie maszyny Wirtualnej i upewnij się, że maszyna wirtualna jest uruchomiona lub zamknięta. | Ten błąd występuje, gdy jeden z błędami rozszerzeń umieszcza maszynę Wirtualną w stanie niepowodzenia inicjowania obsługi administracyjnej. Przejdź do listy rozszerzeń, należy sprawdzić, jeśli plik ma rozszerzenia nie powiodło się, usuń go i spróbuj ponownie uruchomić maszynę wirtualną. Wszystkie rozszerzenia są w stanie uruchomienia, sprawdź, czy Usługa agenta maszyny Wirtualnej jest uruchomiona. Jeśli nie, uruchom ponownie usługę agenta maszyny Wirtualnej. |
-|Kod błędu: UserErrorBCMPremiumStorageQuotaError<br/> Komunikat o błędzie: Nie można skopiować migawki maszyny wirtualnej, z powodu braku wolnego miejsca na koncie magazynu | Dla maszyn wirtualnych usługi premium na stos kopii zapasowej maszyny Wirtualnej w wersji 1 Firma Microsoft kopiowania migawki do konta magazynu. Ten krok pozwala się upewnić, że liczba operacji We/Wy dostępne dla aplikacji przy użyciu dysków w warstwie premium nie są ograniczone ruch zarządzania kopiami zapasowymi, który działa w migawce. <br><br>Zaleca się przydzielanie tylko 50 procent 17.5 TB miejsca do magazynowania łączna liczba kont. Następnie usługa Azure Backup można skopiować migawki do magazynu konta i transfer danych z tej lokalizacji skopiowany do magazynu na koncie magazynu. |
-| Nie można zainstalować rozszerzenia usługi Microsoft Recovery Services, ponieważ maszyna wirtualna nie jest uruchomiona. <br>Agent maszyny Wirtualnej jest wymaganiem wstępnym dla rozszerzenia usługi Azure Recovery Services. Zainstaluj agenta maszyny wirtualnej platformy Azure, a następnie ponownie uruchom operację rejestracji. |<ol> <li>Sprawdź, czy prawidłowo zainstalowano agenta maszyny Wirtualnej. <li>Upewnij się, że Flaga w konfiguracji maszyny Wirtualnej jest ustawiona poprawnie.</ol> Dowiedz się więcej na temat instalowania agenta maszyny Wirtualnej i sposób sprawdzania poprawności instalacji agenta maszyny Wirtualnej. |
-| Operacja migawki nie powiodło się z powodu błędu operacji usługi kopiowania woluminów w tle (VSS) **ten dysk jest zablokowany przez szyfrowanie dysków funkcją BitLocker. Musisz odblokować ten dysk w Panelu sterowania.** |Wyłącz funkcję BitLocker dla wszystkich dysków na maszynie Wirtualnej i sprawdź, czy usługi VSS problem został rozwiązany. |
-| Maszyna wirtualna znajduje się w stanie, który umożliwia tworzenie kopii zapasowych. |<ul><li>Jeśli maszyna wirtualna jest w stanie przejściowym między **systemem** i **Zamknij**, poczekaj, aż zmianę stanu. Następnie wyzwolić zadanie tworzenia kopii zapasowej. <li> Jeśli maszyna wirtualna jest maszyną Wirtualną systemu Linux i używa modułu jądra systemu Linux Security-Enhanced, ścieżka agenta systemu Linux platformy Azure wykluczania **/var/lib/waagent** z zasad zabezpieczeń i upewnij się, że zainstalowano rozszerzenie kopii zapasowej.  |
-| Agent maszyny Wirtualnej nie jest obecny w maszynie wirtualnej: <br>Zainstaluj wszelkie składniki wymagane wstępnie i agenta maszyny Wirtualnej. Następnie uruchom ponownie wykonać operację. |Przeczytaj więcej na temat [instalacji agenta maszyny Wirtualnej i sposób sprawdzania poprawności instalacji agenta maszyny Wirtualnej](#vm-agent). |
-| Kopia zapasowa nie można zablokować co najmniej jednego punktu instalacji maszyny wirtualnej, aby wykonać migawkę spójną z systemu plików. | Wykonaj następujące czynności: <ul><li>Sprawdź stan systemu plików wszystkich zainstalowanych urządzeń przy użyciu **"tune2fs"** polecenia. Na przykład **tune2fs -l/dev/sdb1 \\** .\| grep **stan systemu plików**. <li>Odinstaluj urządzenia, dla których stan systemu plików nie jest czysty przy użyciu **"umount"** polecenia. <li> Uruchom sprawdzanie spójności systemu plików na tych urządzeniach za pomocą **"fsck"** polecenia. <li> Zainstaluj ponownie urządzenia, a następnie spróbuj kopii zapasowej.</ol> |
-| Operacja migawki nie powiodło się z powodu błędu tworzenia kanału bezpiecznej komunikacji sieciowej. | <ol><li> Otwórz Edytor rejestru, uruchamiając **regedit.exe** w trybie podniesionych uprawnień. <li> Zidentyfikuj wszystkie wersje programu .NET Framework jest obecny w systemie. Są one obecne w hierarchii klucza rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> Dla każdej platformy .NET Framework w kluczu rejestru należy dodać następujący klucz: <br> **SchUseStrongCrypto"=dword:00000001**. </ol>|
-| Operacja migawki nie powiodło się z powodu błędu, aby zainstalować pakiet redystrybucyjny Visual C++ dla Visual Studio 2012. | Przejdź do C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion i zainstaluj vcredist2012_x64.<br/>Upewnij się, że wartość klucza rejestru, który umożliwia instalację usługi jest ustawiony do poprawnej wartości. Oznacza to, że ustawia **Start** wartość w **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** do **3** i nie **4**. <br><br>Jeśli nadal masz problemy z instalacją, uruchom ponownie usługę instalacji uruchamiając **MSIEXEC/unregister** następuje **MSIEXEC /REGISTER** z wiersza polecenia z podwyższonym poziomem uprawnień.  |
+| Kod błędu: 320001<br/> Komunikat o błędzie: Nie można wykonać operacji, ponieważ maszyna wirtualna już nie istnieje. <br/> <br/> Kod błędu: 400094 <br/> Komunikat o błędzie: Maszyna wirtualna nie istnieje <br/> <br/>  Nie znaleziono maszyny wirtualnej platformy Azure.  |Ten błąd występuje, gdy podstawowa maszyna wirtualna jest usuwana, ale zasady tworzenia kopii zapasowych nadal wyszukują maszynę wirtualną w celu utworzenia kopii zapasowej. Aby naprawić ten błąd, wykonaj następujące czynności: <ol><li> Utwórz ponownie maszynę wirtualną o tej samej nazwie i nazwie grupy zasobów, **nazwie usługi w chmurze**,<br>**lub**</li><li> Zatrzymaj ochronę maszyny wirtualnej z użyciem lub bez usuwania danych kopii zapasowej. Aby uzyskać więcej informacji, zobacz [Zatrzymywanie ochrony maszyn wirtualnych](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
+| Stan aprowizacji maszyny wirtualnej to niepowodzenie: <br>Uruchom ponownie maszynę wirtualną i upewnij się, że maszyna wirtualna jest uruchomiona lub wyłączona. | Ten błąd występuje, gdy jeden z błędów rozszerzenia przełączy maszynę wirtualną w stan niepowodzenia aprowizacji. Przejdź do listy rozszerzeń, sprawdź, czy nie ma rozszerzenia, usuń je i spróbuj ponownie uruchomić maszynę wirtualną. Jeśli wszystkie rozszerzenia są uruchomione, sprawdź, czy usługa agenta maszyny wirtualnej jest uruchomiona. Jeśli nie, uruchom ponownie usługę agenta maszyny wirtualnej. |
+|Kod błędu: UserErrorBCMPremiumStorageQuotaError<br/> Komunikat o błędzie: Nie można skopiować migawki maszyny wirtualnej z powodu niewystarczającej ilości wolnego miejsca na koncie magazynu | W przypadku maszyn wirtualnych w warstwie Premium w stosie kopii zapasowych maszyny wirtualnej w wersji 1 migawka jest kopiowana do konta magazynu. Ten krok zapewnia, że ruch związany z zarządzaniem kopiami zapasowymi, który działa na migawce, nie ogranicza liczby operacji we/wy dostępnych dla aplikacji korzystających z dysków w warstwie Premium. <br><br>Zalecamy przydzielenie tylko 50%, 17,5 TB, całkowitej przestrzeni kont magazynu. Następnie usługa Azure Backup może skopiować migawkę do konta magazynu i przenieść dane z tej lokalizacji do magazynu w ramach konta magazynu. |
+| Nie można zainstalować rozszerzenia Recovery Services Microsoft, ponieważ maszyna wirtualna nie jest uruchomiona <br>Agent maszyny wirtualnej jest wymaganiem wstępnym dla rozszerzenia Recovery Services platformy Azure. Zainstaluj agenta maszyny wirtualnej platformy Azure i ponownie uruchom operację rejestracji. |<ol> <li>Sprawdź, czy Agent maszyny wirtualnej został zainstalowany poprawnie. <li>Upewnij się, że flaga konfiguracji maszyny wirtualnej jest ustawiona poprawnie.</ol> Przeczytaj więcej na temat instalowania agenta maszyny wirtualnej i sprawdzanie poprawności instalacji agenta maszyny wirtualnej. |
+| Operacja migawki nie powiodła się z powodu błędu **operacji usługa kopiowania woluminów w tle (VSS) ten dysk jest zablokowany przez szyfrowanie dysków funkcją BitLocker. Ten dysk należy odblokować w panelu sterowania.** |Wyłącz funkcję BitLocker dla wszystkich dysków na maszynie wirtualnej i sprawdź, czy problem z usługą VSS został rozwiązany. |
+| Maszyna wirtualna nie jest w stanie umożliwiającym wykonywanie kopii zapasowych. |<ul><li>Jeśli maszyna wirtualna jest w stanie przejściowym między **działaniem** i **wyłączaniem**, poczekaj na zmianę stanu. Następnie Wyzwól zadanie tworzenia kopii zapasowej. <li> Jeśli maszyna wirtualna jest maszyną wirtualną z systemem Linux i używa modułu jądra systemu Linux z ulepszonymi zabezpieczeniami, Wyklucz z zasad zabezpieczeń **/var/lib/waagent** ścieżki agenta platformy Azure Linux i upewnij się, że rozszerzenie kopii zapasowej jest zainstalowane.  |
+| Agent maszyny wirtualnej nie znajduje się na komputerze wirtualnym: <br>Zainstaluj wszystkie wymagania wstępne i agenta maszyny wirtualnej. Następnie ponownie uruchom operację. |Przeczytaj więcej na temat [instalacji agenta maszyny wirtualnej i sprawdzanie poprawności instalacji agenta maszyny wirtualnej](#vm-agent). |
+| Wykonanie kopii zapasowej nie powiodło się, ponieważ nie można zablokować co najmniej jednego punktu instalacji maszyny wirtualnej w celu utworzenia migawki spójnej z systemem plików. | Wykonaj następujące czynności: <ul><li>Sprawdź stan systemu plików wszystkich zainstalowanych urządzeń za pomocą polecenia **"tune2fs"** . Przykładem jest **tune2fs-l/dev/sdb1 \\** .\| grep systemu **plików**. <li>Odinstaluj urządzenia, dla których stan systemu plików nie jest czysty przy użyciu polecenia **"umount"** . <li> Uruchom sprawdzanie spójności systemu plików na tych urządzeniach przy użyciu polecenia **"fsck"** . <li> Ponownie zainstaluj urządzenia i spróbuj utworzyć kopię zapasową.</ol> |
+| Operacja migawki nie powiodła się z powodu błędu podczas tworzenia kanału bezpiecznej komunikacji sieciowej. | <ol><li> Otwórz Edytor rejestru, uruchamiając **regedit. exe** w trybie podniesionych uprawnień. <li> Zidentyfikuj wszystkie wersje .NET Framework znajdujących się w systemie. Znajdują się one w hierarchii klucza rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> Dla każdej .NET Framework znajdującej się w kluczu rejestru Dodaj następujący klucz: <br> **Schusestrongcrypto we "= DWORD: 00000001**. </ol>|
+| Operacja migawki nie powiodła się z powodu błędu instalacji C++ pakietu redystrybucyjnego visual Studio 2012. | Przejdź do C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion i zainstaluj vcredist2012_x64.<br/>Upewnij się, że wartość klucza rejestru, która umożliwia instalację usługi, jest ustawiona na poprawną wartość. Oznacza to, że należy ustawić wartość początkową w **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** na **3** , a nie **4**. <br><br>Jeśli nadal występują problemy z instalacją, uruchom ponownie usługę instalacji, uruchamiając polecenie **msiexec/unregister** , a następnie pozycję **msiexec/Register** z wiersza polecenia z podwyższonym poziomem uprawnień.  |
 
 
 ## <a name="jobs"></a>Zadania
 
 | Szczegóły błędu | Obejście |
 | --- | --- |
-| Unieważnieniu nie jest obsługiwana dla tego typu zadania: <br>Poczekaj na zakończenie zadania. |Brak |
-| Zadanie nie jest w stanie cancelable: <br>Poczekaj na zakończenie zadania. <br>**lub**<br> Wybrane zadanie nie jest w stanie cancelable: <br>Poczekaj na zakończenie zadania. |Istnieje prawdopodobieństwo, że zadanie jest prawie gotowy. Poczekaj na zakończenie zadania.|
-| Kopia zapasowa nie można anulować zadania, ponieważ nie jest w toku: <br>Anulowanie jest obsługiwana tylko w przypadku zadania w toku. Spróbuj anulować zadanie w toku. |Ten błąd występuje ze względu na stan przejściowy. Poczekaj chwilę i ponów próbę wykonania operacji anulowania. |
-| Nie można anulować zadania kopii zapasowej: <br>Poczekaj na zakończenie zadania. |Brak |
+| Anulowanie nie jest obsługiwane dla tego typu zadania: <br>Poczekaj na zakończenie zadania. |Brak |
+| Zadanie nie jest w stanie do anulowania: <br>Poczekaj na zakończenie zadania. <br>**lub**<br> Wybrane zadanie nie jest w stanie do anulowania: <br>Poczekaj na zakończenie zadania. |Prawdopodobnie zadanie jest niemal ukończone. Poczekaj na zakończenie zadania.|
+| Kopia zapasowa nie może anulować zadania, ponieważ nie jest w toku: <br>Anulowanie jest obsługiwane tylko dla zadań w toku. Spróbuj anulować zadanie w toku. |Ten błąd występuje ze względu na stan przejściowy. Poczekaj chwilę i spróbuj ponownie wykonać operację anulowania. |
+| Wykonanie kopii zapasowej nie powiodło się: <br>Poczekaj na zakończenie zadania. |Brak |
 
-## <a name="restore"></a>Przywracanie
+## <a name="restore"></a>Przywróć
 
 | Szczegóły błędu | Obejście |
 | --- | --- |
-| Przywracanie nie powiodło się z powodu błędu wewnętrznego chmury. |<ol><li>Usługą w chmurze, do którego próbujesz przywrócić skonfigurowano ustawienia DNS. Możesz sprawdzić: <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**.<br>Jeśli **adres** jest skonfigurowany, a następnie ustawienia DNS są skonfigurowane.<br> <li>Skonfigurowano usługę chmurową, do którego próbujesz przywrócić **zastrzeżonego adresu IP**, i istniejących maszyn wirtualnych w usłudze w chmurze znajdują się w stanie zatrzymania. Możesz sprawdzić, czy usługa w chmurze zarezerwował adresu IP za pomocą następujących poleceń cmdlet programu PowerShell: **$deployment = Get-AzureDeployment - ServiceName "servicename"-miejsca $ "Produkcja" w programie dep. Nazwa zastrzeżonego adresu IP**. <br><li>Próbujesz przywrócić maszynę wirtualną za pomocą następujących specjalnymi konfiguracjami sieci w tej samej usłudze w chmurze: <ul><li>Maszyny wirtualne w ramach konfiguracji usługi równoważenia obciążenia, wewnętrznych i zewnętrznych.<li>Maszyny wirtualne za pomocą wielu zastrzeżonych adresów IP. <li>Maszyny wirtualne z wieloma kartami sieciowymi. </ul><li>Wybierz nową usługę w chmurze w interfejsie użytkownika lub zobacz [przywrócić zagadnienia](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) dla maszyn wirtualnych ze specjalnymi konfiguracjami sieci.</ol> |
-| Wybrana nazwa DNS jest już zajęta: <br>Określ inną nazwę DNS i spróbuj ponownie. |Tę nazwę DNS, który odwołuje się do nazwa usługi w chmurze, kończąc się zwykle **. cloudapp.net**. Ta nazwa musi być unikatowa. Jeśli ten błąd, należy wybrać inną nazwę maszyny Wirtualnej podczas przywracania. <br><br> Ten błąd jest wyświetlany tylko dla użytkowników w witrynie Azure Portal. Operacja przywracania za pomocą programu PowerShell zakończy się pomyślnie, ponieważ przywraca tylko dyski i nie tworzy maszynę Wirtualną. Ten błąd będzie się sterowaną maszyny Wirtualnej jest jawnie utworzone przez użytkownika, po operacji przywracania dysku. |
-| Określona konfiguracja sieci wirtualnej nie jest prawidłowy: <br>Określ inną konfigurację sieci wirtualnej i spróbuj ponownie. |Brak |
-| Określona usługa w chmurze używa zastrzeżonego adresu IP, który nie odpowiada konfiguracji przywracanej maszyny wirtualnej: <br>Określ inną usługę w chmurze, która nie używa zastrzeżonego adresu IP. Lub wybierz inny punkt odzyskiwania, aby przywrócić z. |Brak |
-| Usługi w chmurze osiągnął limit liczby wejściowych punktów końcowych: <br>Spróbuj ponownie wykonać operację, określając inną usługę w chmurze lub za pomocą istniejącego punktu końcowego. |Brak |
-| Usługi Recovery Services vault i docelowe konto magazynu znajdują się w dwóch różnych regionach: <br>Upewnij się, że konto magazynu określone w operacji przywracania jest w tym samym regionie platformy Azure co magazyn usługi Recovery Services. |Brak |
-| Konto magazynu określone dla operacji przywracania nie jest obsługiwane: <br>Tylko podstawowa lub standardowa z ustawieniami lokalnie nadmiarowej lub geograficznie nadmiarowej replikacji są obsługiwane konta magazynu. Wybieranie konta magazynu obsługiwane. |Brak |
-| Typ konta magazynu określony dla operacji przywracania nie jest w trybie online: <br>Upewnij się, że konto magazynu określone w operacji przywracania jest w trybie online. |Ten błąd może wystąpić z powodu błędu przejściowego w usłudze Azure Storage lub z powodu awarii. Wybierz inne konto magazynu. |
-| Osiągnięto limit przydziału grupy zasobów: <br>Usuń niektóre grupy zasobów w witrynie Azure portal lub skontaktuj się z działem pomocy technicznej systemu Azure w celu zwiększenia limitów. |Brak |
+| Przywracanie nie powiodło się z powodu błędu wewnętrznego w chmurze. |<ol><li>Usługa w chmurze, do której próbujesz przywrócić, jest skonfigurowana przy użyciu ustawień DNS. Możesz sprawdzić: <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**.<br>Jeśli **adres** jest skonfigurowany, ustawienia DNS są skonfigurowane.<br> <li>Usługa w chmurze, do której próbujesz przywrócić, jest skonfigurowana za pomocą **zastrzeżonego adresu IP**, a istniejące maszyny wirtualne w usłudze w chmurze mają stan zatrzymany. Możesz sprawdzić, czy usługa w chmurze zarezerwował adres IP przy użyciu następujących poleceń cmdlet programu PowerShell: **$Deployment = Get-AzureDeployment-ServiceName "ServiceName"-Slot "Product" $DEP. ReservedIPName**. <br><li>Próbujesz przywrócić maszynę wirtualną z następującymi specjalnymi konfiguracjami sieci w tej samej usłudze w chmurze: <ul><li>Maszyny wirtualne w obszarze Konfiguracja usługi równoważenia obciążenia, wewnętrzne i zewnętrzne.<li>Maszyny wirtualne z wieloma zarezerwowanymi adresami IP. <li>Maszyny wirtualne z wieloma kartami sieciowymi. </ul><li>Wybierz nową usługę w chmurze w interfejsie użytkownika lub zapoznaj się z tematami dotyczącymi [przywracania](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) maszyn wirtualnych mających specjalne konfiguracje sieci.</ol> |
+| Wybrana nazwa DNS jest już zajęta: <br>Określ inną nazwę DNS i spróbuj ponownie. |Ta nazwa DNS odwołuje się do nazwy usługi w chmurze, zazwyczaj kończącej się rozszerzeniem **. cloudapp.NET**. Ta nazwa musi być unikatowa. Jeśli zostanie wyświetlony ten błąd, należy wybrać inną nazwę maszyny wirtualnej podczas przywracania. <br><br> Ten błąd jest wyświetlany tylko dla użytkowników Azure Portal. Operacja przywracania za pomocą programu PowerShell kończy się powodzeniem, ponieważ przywraca tylko dyski i nie tworzy maszyny wirtualnej. Ten błąd zostanie zwrócony, gdy maszyna wirtualna zostanie jawnie utworzona przez użytkownika po operacji przywracania dysku. |
+| Określona konfiguracja sieci wirtualnej jest nieprawidłowa: <br>Określ inną konfigurację sieci wirtualnej i spróbuj ponownie. |Brak |
+| Określona usługa w chmurze używa zastrzeżonego adresu IP, który nie jest zgodny z konfiguracją przywracanej maszyny wirtualnej: <br>Określ inną usługę w chmurze, która nie używa zastrzeżonego adresu IP. Lub wybierz inny punkt odzyskiwania do przywrócenia. |Brak |
+| Osiągnięto limit liczby wejściowych punktów końcowych w usłudze w chmurze: <br>Spróbuj ponownie wykonać operację, określając inną usługę w chmurze lub używając istniejącego punktu końcowego. |Brak |
+| Magazyn Recovery Services i docelowe konto magazynu znajdują się w dwóch różnych regionach: <br>Upewnij się, że konto magazynu określone w operacji przywracania znajduje się w tym samym regionie platformy Azure co magazyn Recovery Services. |Brak |
+| Konto magazynu określone dla operacji przywracania nie jest obsługiwane: <br>Obsługiwane są tylko podstawowe lub standardowe konta magazynu z lokalnymi nadmiarowymi lub geograficznie nadmiarowymi ustawieniami replikacji. Wybierz obsługiwane konto magazynu. |Brak |
+| Typ konta magazynu określony dla operacji przywracania nie jest w trybie online: <br>Upewnij się, że konto magazynu określone w operacji przywracania jest w trybie online. |Ten błąd może wystąpić z powodu przejściowego błędu w usłudze Azure Storage lub z powodu przestoju. Wybierz inne konto magazynu. |
+| Osiągnięto limit przydziału grupy zasobów: <br>Usuń niektóre grupy zasobów z Azure Portal lub skontaktuj się z pomocą techniczną platformy Azure w celu zwiększenia limitów. |Brak |
 | Wybrana podsieć nie istnieje: <br>Wybierz podsieć, która istnieje. |Brak |
-| Usługa Kopia zapasowa nie ma autoryzacji do dostępu do zasobów w ramach subskrypcji. |Aby rozwiązać ten problem, najpierw Przywróć dyski wykonując kroki opisane w [przywracanie kopii zapasowych dysków](backup-azure-arm-restore-vms.md#restore-disks). Następnie użyj programu PowerShell kroki [tworzenie maszyny Wirtualnej z przywróconych dysków](backup-azure-vms-automation.md#restore-an-azure-vm). |
+| Usługa kopii zapasowej nie ma autoryzacji umożliwiającej dostęp do zasobów w Twojej subskrypcji. |Aby rozwiązać ten problem, należy najpierw przywrócić dyski, wykonując kroki opisane w sekcji [przywracanie kopii zapasowej dysków](backup-azure-arm-restore-vms.md#restore-disks). Następnie użyj kroków programu PowerShell z sekcji [Tworzenie maszyny wirtualnej z przywróconych dysków](backup-azure-vms-automation.md#restore-an-azure-vm). |
 
-## <a name="backup-or-restore-takes-time"></a>Instrukcja BACKUP lub restore wymaga czasu
-Jeśli kopia zapasowa ma więcej niż 12 godzin lub przywracania przyjmuje więcej niż 6 godzin, zapoznaj się z [najlepsze praktyki](backup-azure-vms-introduction.md#best-practices) i [zagadnienia dotyczące wydajności](backup-azure-vms-introduction.md#backup-performance)
+## <a name="backup-or-restore-takes-time"></a>Czas wykonywania kopii zapasowej lub przywracania
+Jeśli kopia zapasowa trwa dłużej niż 12 godzin lub przywracanie trwa ponad 6 godzin, zapoznaj [](backup-azure-vms-introduction.md#best-practices) się z najlepszymi rozwiązaniami i zagadnieniami dotyczącymi [wydajności](backup-azure-vms-introduction.md#backup-performance)
 
-## <a name="vm-agent"></a>Agent maszyny Wirtualnej
-### <a name="set-up-the-vm-agent"></a>Konfigurowanie agenta maszyny Wirtualnej
-Zazwyczaj Agent maszyny Wirtualnej jest już obecny w maszynach wirtualnych, które są tworzone z poziomu galerii Azure. Ale maszyny wirtualne, które są migrowane z lokalnych centrów danych, nie będziesz mieć zainstalowanego agenta maszyny Wirtualnej. Dla tych maszyn wirtualnych agenta maszyny Wirtualnej musi być jawnie zainstalowany.
+## <a name="vm-agent"></a>Agent maszyny wirtualnej
+### <a name="set-up-the-vm-agent"></a>Konfigurowanie agenta maszyny wirtualnej
+Zazwyczaj Agent maszyny wirtualnej znajduje się już w maszynach wirtualnych utworzonych za pomocą galerii platformy Azure. Jednak maszyny wirtualne migrowane z lokalnych centrów danych nie będą miały zainstalowanego agenta maszyny wirtualnej. W przypadku tych maszyn wirtualnych agent maszyny wirtualnej musi zostać zainstalowany jawnie.
 
 #### <a name="windows-vms"></a>Maszyny wirtualne z systemem Windows
 
-* Pobierz i zainstaluj [plik MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Niezbędne są uprawnienia administratora, aby zakończyć instalację.
-* Dla maszyn wirtualnych utworzonych przy użyciu klasycznego modelu wdrażania [zaktualizować właściwości maszyny Wirtualnej](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) do wskazania, że agent jest zainstalowany. Ten krok nie jest wymagane dla maszyn wirtualnych usługi Azure Resource Manager.
+* Pobierz i zainstaluj [plik MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Aby zakończyć instalację, musisz mieć uprawnienia administratora.
+* W przypadku maszyn wirtualnych utworzonych przy użyciu klasycznego modelu wdrażania należy [zaktualizować Właściwość maszyny wirtualnej](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) , aby wskazać, że Agent jest zainstalowany. Ten krok nie jest wymagany w przypadku Azure Resource Manager maszyn wirtualnych.
 
 #### <a name="linux-vms"></a>Maszyny wirtualne z systemem Linux
 
-* Zainstaluj najnowszą wersję agenta z repozytorium dystrybucji. Aby uzyskać szczegółowe informacje dotyczące nazwy pakietu, zobacz [repozytorium agenta systemu Linux](https://github.com/Azure/WALinuxAgent).
-* Dla maszyn wirtualnych utworzonych przy użyciu klasycznego modelu wdrażania [Użyj ten blog](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) Aby zaktualizować właściwości maszyny Wirtualnej i sprawdź, czy agent jest zainstalowany. Ten krok nie jest wymagane dla maszyn wirtualnych usługi Resource Manager.
+* Zainstaluj najnowszą wersję agenta z repozytorium dystrybucji. Aby uzyskać szczegółowe informacje na temat nazwy pakietu, zobacz [repozytorium agentów systemu Linux](https://github.com/Azure/WALinuxAgent).
+* W przypadku maszyn wirtualnych utworzonych przy użyciu klasycznego modelu wdrażania [Użyj tego bloga](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) , aby zaktualizować Właściwość maszyny wirtualnej i sprawdzić, czy Agent został zainstalowany. Ten krok nie jest wymagany w przypadku Menedżer zasobów maszyn wirtualnych.
 
-### <a name="update-the-vm-agent"></a>Zaktualizuj agenta maszyny Wirtualnej
+### <a name="update-the-vm-agent"></a>Aktualizowanie agenta maszyny wirtualnej
 #### <a name="windows-vms"></a>Maszyny wirtualne z systemem Windows
 
-* Aby zaktualizować agenta maszyny Wirtualnej, należy ponownie zainstalować [plików binarnych agenta maszyny Wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Przed uaktualnieniem agent, upewnij się, że żadne operacje tworzenia kopii zapasowej wystąpić podczas aktualizowania agenta maszyny Wirtualnej.
+* Aby zaktualizować agenta maszyny wirtualnej, zainstaluj ponownie [pliki binarne agenta maszyny wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Przed aktualizacją agenta upewnij się, że w trakcie aktualizacji agenta maszyny wirtualnej nie wystąpią żadne operacje tworzenia kopii zapasowej.
 
 #### <a name="linux-vms"></a>Maszyny wirtualne z systemem Linux
 
-* Aby zaktualizować agenta maszyny Wirtualnej systemu Linux, postępuj zgodnie z instrukcjami w artykule [aktualizowania agenta maszyny Wirtualnej systemu Linux](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Aby zaktualizować agenta maszyny wirtualnej z systemem Linux, postępuj zgodnie z instrukcjami zawartymi w artykule [Aktualizowanie agenta maszyny wirtualnej z systemem Linux](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
     > [!NOTE]
-    > Aby zaktualizować agenta należy zawsze używać repozytorium dystrybucji.
+    > Należy zawsze używać repozytorium dystrybucji do aktualizowania agenta.
 
-    Nie można pobrać kod agenta z witryny GitHub. Najnowszą wersję agenta nie jest dostępna dla Twojej dystrybucji, należy skontaktować się z pomocy technicznej dystrybucji, aby uzyskać instrukcje uzyskać najnowszą wersję agenta. Możesz również sprawdzić najnowsze [agenta systemu Windows Azure Linux](https://github.com/Azure/WALinuxAgent/releases) informacje w repozytorium GitHub.
+    Nie pobieraj kodu agenta z usługi GitHub. Jeśli najnowszy Agent nie jest dostępny dla dystrybucji, skontaktuj się z pomocą techniczną, aby uzyskać instrukcje dotyczące uzyskiwania najnowszego agenta. Najnowsze informacje o [agencie systemu Windows Azure Linux](https://github.com/Azure/WALinuxAgent/releases) można także sprawdzić w repozytorium GitHub.
 
-### <a name="validate-vm-agent-installation"></a>Sprawdzanie poprawności instalacji agenta maszyny Wirtualnej
+### <a name="validate-vm-agent-installation"></a>Weryfikowanie instalacji agenta maszyny wirtualnej
 
-Sprawdź wersję agenta maszyny Wirtualnej, na maszynach wirtualnych Windows:
+Sprawdź wersję agenta maszyny wirtualnej na maszynach wirtualnych z systemem Windows:
 
-1. Zaloguj się do maszyny wirtualnej platformy Azure i przejdź do folderu **C:\WindowsAzure\Packages**. Powinien znajdować się **WaAppAgent.exe** pliku.
-2. Kliknij prawym przyciskiem myszy plik i przejdź do **właściwości**. Następnie wybierz pozycję **szczegóły** kartę. **Wersji produktu** pola powinny znajdować się wartość 2.6.1198.718 lub wyższa.
+1. Zaloguj się do maszyny wirtualnej platformy Azure i przejdź do folderu **C:\WindowsAzure\Packages**. Należy znaleźć plik **WaAppAgent. exe** .
+2. Kliknij plik prawym przyciskiem myszy i przejdź do pozycji **Właściwości**. Następnie wybierz kartę **szczegóły** . Pole **wersji produktu** powinno mieć wartość 2.6.1198.718 lub wyższą.
 
-## <a name="troubleshoot-vm-snapshot-issues"></a>Rozwiązywanie problemów dotyczących migawki maszyny Wirtualnej
-Kopia zapasowa maszyny Wirtualnej, zależy od tego, wystawiania poleceń migawkę bazowego magazynu. Nie ma dostępu do magazynu lub opóźnienia w zadaniu migawki Uruchom może spowodować zadania tworzenia kopii zapasowej nie powiedzie się. Następujące warunki mogą spowodować niepowodzenie zadania migawki:
+## <a name="troubleshoot-vm-snapshot-issues"></a>Rozwiązywanie problemów z migawką maszyny wirtualnej
+Kopia zapasowa maszyny wirtualnej polega na wystawianiu poleceń migawek do magazynu bazowego. Brak dostępu do magazynu lub opóźnień w ramach zadania migawki uruchomienie może spowodować niepowodzenie zadania tworzenia kopii zapasowej. Następujące warunki mogą spowodować niepowodzenie zadania migawki:
 
-- **Dostęp sieciowy do magazynu jest zablokowany za pomocą sieciowej grupy zabezpieczeń**. Dowiedz się więcej na temat sposobu [ustanowić dostępu do sieci](backup-azure-arm-vms-prepare.md#establish-network-connectivity) do magazynu przy użyciu obu listy dozwolonych adresów IP lub za pośrednictwem serwera proxy.
-- **Maszyny wirtualne z skonfigurowano kopii zapasowej programu SQL Server może spowodować opóźnienie zadań migawek**. Domyślnie kopia zapasowa maszyny Wirtualnej tworzy VSS pełnej kopii zapasowej na maszynach wirtualnych Windows. Maszyny wirtualne z programem SQL Server, za pomocą programu SQL Server skonfigurowano kopię zapasową, mogą występować opóźnienia migawki. W przypadku opóźnienia migawki powodować niepowodzenia tworzenia kopii zapasowej, należy ustawić następujący klucz rejestru:
+- **Dostęp sieciowy do magazynu jest blokowany przy użyciu sieciowej grupy zabezpieczeń**. Dowiedz się więcej na temat sposobu [nawiązywania dostępu sieciowego](backup-azure-arm-vms-prepare.md#establish-network-connectivity) do magazynu przy użyciu listy dozwolonych adresów IP lub serwera proxy.
+- **Maszyny wirtualne z skonfigurowanym SQL Server kopii zapasowej mogą spowodować opóźnienie zadania migawki**. Domyślnie kopia zapasowa maszyny wirtualnej tworzy pełną kopię zapasową VSS na maszynach wirtualnych z systemem Windows. W przypadku maszyn wirtualnych z systemem SQL Server z konfiguracją SQL Server Backup mogą wystąpić opóźnienia migawek. Jeśli w przypadku migawek są opóźniane błędy kopii zapasowych, Ustaw następujący klucz rejestru:
 
    ```
    [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
    "USEVSSCOPYBACKUP"="TRUE"
    ```
 
-- **Stan maszyny Wirtualnej jest zgłaszany niepoprawnie, ponieważ maszyna wirtualna jest zamknięta w protokole RDP**. Jeśli używasz pulpitu zdalnego można zamknąć maszyny wirtualnej, sprawdź, czy stan maszyny Wirtualnej w portalu jest poprawna. Jeśli stan nie jest poprawny, należy użyć **zamknięcia** opcję zamykania maszyny Wirtualnej w pulpicie nawigacyjnym maszyn wirtualnych w portalu.
-- **Jeśli więcej niż czterech maszyn wirtualnych z udziału jednej usługi w chmurze rozkłada się na maszyny wirtualne wielu zasad tworzenia kopii zapasowych**. Przesunąć godziny tworzenia kopii zapasowej, więc nie, uruchom więcej niż cztery kopii zapasowych maszyn wirtualnych, w tym samym czasie. Próbuje oddzielić godziny rozpoczęcia w zasadach przez co najmniej godzinę.
-- **Maszyna wirtualna działa na wysoki procesora CPU lub pamięci**. Jeśli maszyna wirtualna jest wykonywany na dużą ilość pamięci lub użycia procesora CPU, więcej niż 90 procent zadanie migawki jest umieszczane w kolejce i opóźnienia. Po pewnym czasie upłynie limit czasu. Jeśli występuje ten problem, spróbuj kopii zapasowej na żądanie.
+- **Stan maszyny wirtualnej jest raportowany niepoprawnie, ponieważ maszyna wirtualna jest wyłączona w protokole RDP**. Jeśli używasz pulpitu zdalnego do zamykania maszyny wirtualnej, sprawdź, czy stan maszyny wirtualnej w portalu jest prawidłowy. Jeśli stan jest niepoprawny, użyj opcji **zamykania** na pulpicie NAWIGACYJNYM maszyny wirtualnej portalu, aby zamknąć maszynę wirtualną.
+- **Jeśli więcej niż cztery maszyny wirtualne współużytkują tę samą usługę w chmurze, należy rozłożyć maszyny wirtualne na wiele zasad tworzenia kopii zapasowych**. Rozłożenie czasu wykonywania kopii zapasowych, więc nie można uruchomić więcej niż czterech kopii zapasowych maszyn wirtualnych. Spróbuj oddzielić godziny rozpoczęcia w zasadach o co najmniej godzinie.
+- **Maszyna wirtualna jest uruchamiana z dużym procesorem CPU lub pamięcią**. Jeśli maszyna wirtualna działa z dużą ilością pamięci lub użyciem procesora CPU, więcej niż 90 procent, zadanie migawki jest umieszczane w kolejce i opóźnione. Ostatecznie przeprowadzi limit czasu. Jeśli ten problem wystąpi, wypróbuj kopię zapasową na żądanie.
 
 ## <a name="networking"></a>Networking
-Podobnie jak wszystkie rozszerzenia rozszerzenia kopii zapasowej muszą mieć dostęp do publicznego Internetu do pracy. Nie masz dostępu do publicznego Internetu można objawiać na różne sposoby:
+Podobnie jak w przypadku wszystkich rozszerzeń, rozszerzenia kopii zapasowej muszą mieć dostęp do publicznej sieci Internet. Brak dostępu do publicznej sieci Internet może być w sposób niezgodny z różnymi sposobami:
 
 * Instalacja rozszerzenia może zakończyć się niepowodzeniem.
-* Operacje tworzenia kopii zapasowej, takie jak migawki dysku może zakończyć się niepowodzeniem.
+* Operacje kopii zapasowej, takie jak migawka dysku, mogą zakończyć się niepowodzeniem
 * Wyświetlanie stanu operacji tworzenia kopii zapasowej może zakończyć się niepowodzeniem.
 
-Trzeba rozwiązać publiczne adresy internetowe została omówiona w [ten blog pomocy technicznej systemu Azure](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx). Sprawdź konfiguracje DNS dla sieci Wirtualnej i upewnij się, że może zostać rozpoznana identyfikatorów URI usługi Azure.
+Należy rozwiązać problemy z publicznymi adresami internetowymi w [tym blogu pomocy technicznej systemu Azure](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx). Sprawdź konfiguracje systemu DNS dla sieci wirtualnej i upewnij się, że można rozpoznać identyfikatory URI platformy Azure.
 
-Po rozpoznawanie nazw odbywa się poprawnie, dostęp do adresów IP platformy Azure wymaga także podać. Aby odblokować dostęp do infrastruktury platformy Azure, wykonaj jedną z następujących czynności:
+Po poprawnym zakończeniu rozpoznawania nazw należy również podać dostęp do adresów IP platformy Azure. Aby odblokować dostęp do infrastruktury platformy Azure, wykonaj jedną z następujących czynności:
 
-- Zezwalaj na listę zakresów IP centrum danych platformy Azure:
-   1. Pobierz listę [centrum danych platformy Azure adresy IP](https://www.microsoft.com/download/details.aspx?id=41653) aby być w liście dozwolonych.
-   1. Odblokuj adresów IP przy użyciu [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) polecenia cmdlet. Uruchom to polecenie cmdlet na maszynie wirtualnej platformy Azure, w oknie programu PowerShell z podwyższonym poziomem uprawnień. Uruchom jako Administrator.
-   1. Dodaj reguły do sieciowej grupy zabezpieczeń, jeśli nie masz w miejscu, aby umożliwić dostęp do adresów IP.
-- Tworzenie ścieżki dla ruchu HTTP do przepływu:
-   1. W przypadku niektórych ograniczeń sieci w miejscu, należy wdrożyć serwer proxy HTTP do kierowania ruchu sieciowego. Przykładem jest sieciowa grupa zabezpieczeń. Zobacz kroki wdrażania serwera proxy HTTP w [ustanowienia połączenia z siecią](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
-   1. Dodaj reguły do sieciowej grupy zabezpieczeń, jeśli nie masz w miejscu, aby zezwolić na dostęp do Internetu z serwera proxy HTTP.
+- Lista dozwolonych zakresów adresów IP centrum danych platformy Azure:
+   1. Pobierz listę [adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) na liście dozwolonych.
+   1. Odblokuj adresy IP przy użyciu polecenia cmdlet [New-Route](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) . Uruchom to polecenie cmdlet w ramach maszyny wirtualnej platformy Azure, w oknie programu PowerShell z podwyższonym poziomem uprawnień. Uruchom jako administrator.
+   1. Aby zezwolić na dostęp do adresów IP, Dodaj reguły do sieciowej grupy zabezpieczeń, jeśli są one dostępne.
+- Utwórz ścieżkę dla ruchu HTTP do przepływu:
+   1. W przypadku ograniczenia sieci należy wdrożyć serwer proxy HTTP, aby skierować ruch. Przykładem jest Grupa zabezpieczeń sieci. Zapoznaj się z instrukcjami wdrażania serwera proxy HTTP w programie [ustanawianie łączności sieciowej](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+   1. Aby zezwolić na dostęp do Internetu z serwera proxy HTTP, należy dodać reguły do sieciowej grupy zabezpieczeń.
 
 > [!NOTE]
-> DHCP musi być włączona w systemie gościa dla maszyn wirtualnych IaaS do pracy. Jeśli potrzebujesz statycznego prywatnego adresu IP, należy go skonfigurować za pomocą witryny Azure portal lub programu PowerShell. Upewnij się, że jest włączona opcja DHCP wewnątrz maszyny Wirtualnej.
-> Uzyskaj więcej informacji na temat sposobu konfigurowania statycznego adresu IP za pomocą programu PowerShell:
-> - [Jak dodać statycznego adresu IP wewnętrznej do istniejącej maszyny Wirtualnej](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
-> - [Zmienić metodę alokacji na prywatny adres IP przypisany do interfejsu sieciowego](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
+> Aby tworzenie kopii zapasowej maszyny wirtualnej IaaS było możliwe, należy włączyć protokół DHCP wewnątrz gościa. Jeśli potrzebujesz statycznego prywatnego adresu IP, skonfiguruj go za pomocą Azure Portal lub programu PowerShell. Upewnij się, że opcja DHCP wewnątrz maszyny wirtualnej jest włączona.
+> Uzyskaj więcej informacji na temat konfigurowania statycznego adresu IP za pomocą programu PowerShell:
+> - [Jak dodać statyczny wewnętrzny adres IP do istniejącej maszyny wirtualnej](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+> - [Zmień metodę alokacji dla prywatnego adresu IP przypisanego do interfejsu sieciowego](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 >
 >
