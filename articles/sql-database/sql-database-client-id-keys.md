@@ -1,6 +1,6 @@
 ---
-title: Pobieranie wartości do uwierzytelniania aplikacji — Azure SQL Database | Dokumentacja firmy Microsoft
-description: Tworzenie jednostki usługi do uzyskiwania dostępu do bazy danych SQL z poziomu kodu.
+title: Pobierz wartości uwierzytelniania aplikacji — Azure SQL Database | Microsoft Docs
+description: Utwórz nazwę główną usługi, aby uzyskać dostęp do SQL Database z kodu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,24 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 1d60e875b12f02c957ebd6259eb0e7267f23ee51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7c8c6788a8699c5b57c39731c148454ad8dcfcf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150212"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569324"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Pobieranie wymaganych wartości do uwierzytelniania aplikacji dostęp do bazy danych SQL z kodu
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Pobierz wymagane wartości w celu uwierzytelnienia aplikacji w celu uzyskania dostępu do SQL Database z kodu
 
-Tworzenie i zarządzanie usługą SQL Database z kodu, należy zarejestrować aplikację w domenie usługi Azure Active Directory (AAD) w ramach subskrypcji, w której zostały utworzone zasoby platformy Azure.
+Aby utworzyć SQL Database z kodu i zarządzać nim, musisz zarejestrować aplikację w domenie Azure Active Directory (AAD) w subskrypcji, w której zostały utworzone zasoby platformy Azure.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Tworzenie jednostki usługi dostępu do zasobów z aplikacji
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Tworzenie jednostki usługi w celu uzyskania dostępu do zasobów z aplikacji
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
+> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
 
 Poniższy skrypt środowiska PowerShell tworzy aplikację usługi Active Directory (AD) oraz jednostkę usługi wymaganą do uwierzytelnienia aplikacji w języku C#. Skrypt generuje wartości wyjściowe potrzebne w poprzednim przykładzie w języku C#. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie usługi podmiotu używanej do uzyskiwania dostępu do zasobów przy użyciu programu Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
@@ -73,6 +72,6 @@ Poniższy skrypt środowiska PowerShell tworzy aplikację usługi Active Directo
 
 
 ## <a name="see-also"></a>Zobacz także
-* [Tworzenie bazy danych SQL w języku C#](sql-database-get-started-csharp.md)
-* [Łączenie z bazą danych SQL przy użyciu uwierzytelniania usługi Azure Active Directory](sql-database-aad-authentication.md)
+* [Tworzenie bazy danych SQL za pomocąC#](sql-database-get-started-csharp.md)
+* [Nawiązywanie połączenia z SQL Database przy użyciu uwierzytelniania Azure Active Directory](sql-database-aad-authentication.md)
 
