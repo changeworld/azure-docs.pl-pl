@@ -9,89 +9,89 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
-ms.date: 04/26/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce18b0060fe0bd0f9d5a8308fe1358e300c04441
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c0c65f364e9e72d87d6618944ab296354e03a1fc
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165624"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736193"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
-Usługa Azure Time Series Insights został opracowany pod kątem przechowywania oraz ich wizualizowanie i zapytania dużych ilości danych szeregów czasowych, takich jak wygenerowany przez urządzenia IoT. Jeśli chcesz przechowywać, odpytywać i wizualizować dane szeregów czasowych w chmurze oraz zarządzać nimi, usługa Time Series Insights będzie prawdopodobnie odpowiednia dla Ciebie. 
+Azure Time Series Insights jest zbudowana do przechowywania, wizualizowania i wykonywania zapytań dotyczących dużych ilości danych szeregów czasowych, takich jak te wygenerowane przez urządzenia IoT. Jeśli chcesz przechowywać, odpytywać i wizualizować dane szeregów czasowych w chmurze oraz zarządzać nimi, usługa Time Series Insights będzie prawdopodobnie odpowiednia dla Ciebie. 
 
 ![Schemat blokowy usługi Time Series Insights](media/overview/time-series-insights-flowchart.png)
 
 Usługa Time Series Insights ma cztery kluczowe zadania:
 
-- Jest w pełni zintegrowany z bramy chmury, takich jak usługi Azure IoT Hub i Azure Event Hubs. Łatwo łączy się z takimi źródłami zdarzeń i analizuje kod JSON z komunikatów i struktur z danymi w postaci czytelnych wierszy i kolumn. Łączy metadane z telemetrią i indeksuje dane w magazynie kolumnowym.
-- Usługa Time Series Insights zarządza magazynu danych. Aby upewnić się, że dane zawsze są łatwo dostępne, przechowuje dane w pamięci i dysków SSD dla maksymalnie 400 dni. Można tworzyć interaktywne zapytania miliardów zdarzeń w ciągu kilku sekund na żądanie.
-- Usługa Time Series Insights zapewnia wizualizacji out-of--box za pomocą Eksploratora usługi Time Series Insights. 
-- Usługa Time Series Insights udostępnia usługi zapytań w Eksploratorze usługi Time Series Insights i za pomocą interfejsów API, który można łatwo zintegrować do osadzania danych szeregów czasowych w aplikacjach niestandardowych.
+- Jest ona w pełni zintegrowana z bramami w chmurze, takimi jak Azure IoT Hub i Azure Event Hubs. Łatwo łączy się z takimi źródłami zdarzeń i analizuje kod JSON z komunikatów i struktur z danymi w postaci czytelnych wierszy i kolumn. Łączy metadane z telemetrią i indeksuje dane w magazynie kolumnowym.
+- Time Series Insights zarządza magazynem danych. Aby mieć pewność, że dane są zawsze łatwo dostępne, przechowuje dane w pamięci i dysków SSD przez maksymalnie 400 dni. Możesz interaktywnie wysyłać zapytania o miliardy zdarzeń w ciągu kilku sekund — na żądanie.
+- Time Series Insights zapewnia wbudowaną wizualizację za pomocą Eksploratora Time Series Insights. 
+- Time Series Insights udostępnia usługę zapytań, zarówno w Eksploratorze Time Series Insights, jak i za pomocą interfejsów API, które można łatwo zintegrować, aby osadzić dane szeregów czasowych w aplikacjach niestandardowych.
 
-W przypadku tworzenia aplikacji do użytku wewnętrznego lub zewnętrznego klienci będą mogli używać można użyć usługi Time Series Insights jako zaplecza. Służy ona do indeksu, magazynu i łączny czas serii danych. Aby utworzyć niestandardowe wizualizacje i środowisko użytkownika na górze, użyj [zestawu SDK klienta](tutorial-explore-js-client-lib.md). Usługa Time Series Insights jest również wyposażony w kilka [interfejsów API zapytań](how-to-shape-query-json.md) Aby włączyć te dostosowaną scenariuszy.
+W przypadku tworzenia aplikacji do użytku wewnętrznego lub dla klientów zewnętrznych można użyć Time Series Insights jako zaplecza. Można jej użyć do indeksowania, przechowywania i agregowania danych szeregów czasowych. Aby utworzyć wizualizację niestandardową i środowisko użytkownika na górze, użyj [zestawu SDK klienta](tutorial-explore-js-client-lib.md). Time Series Insights jest również wyposażony w kilka [interfejsów API zapytań](how-to-shape-query-json.md) , aby umożliwić te niestandardowe scenariusze.
 
-Dane szeregów czasowych przedstawiają, jak zasób lub proces zmienia się wraz z upływem czasu. Dane szeregów czasowych jest indeksowane według sygnatur czasowych, a czas jest największe znaczenie osi, na której takie dane są organizowane. Dane szeregów czasowych zwykle nadejściu w kolejności sekwencyjnej, więc zwykle jest ona traktowana jako wstawiania, a nie aktualizacji do bazy danych.
+Dane szeregów czasowych przedstawiają, jak zasób lub proces zmienia się wraz z upływem czasu. Dane szeregów czasowych są indeksowane przez sygnatury czasowe, a czas jest najbardziej znaczącą osią, na której zorganizowane są takie dane. Dane szeregów czasowych są zwykle docierane w kolejności sekwencyjnej, więc jest traktowana jako INSERT, a nie aktualizacja bazy danych.
 
-Może być wyzwaniem wymagającym przechowywania, indeks, zapytania, analizowanie i wizualizowanie danych szeregów czasowych w dużych woluminów.
-Azure Time Series Insights powoduje przechwycenie i każdego nowego zdarzenia są przechowywane jako wiersz, a zmiana efektywnie jest mierzony wraz z upływem czasu. W rezultacie możesz przejrzeć wstecz do rysowania szczegółowe informacje z przeszłości w celu przewidywania przyszłych zmian.
+Może być wyzwaniem do przechowywania, indeksowania, wykonywania zapytań, analizowania i wizualizowania danych szeregów czasowych w dużych woluminach.
+Azure Time Series Insights przechwytuje i zapisuje każde nowe zdarzenie jako wiersz, a zmiana jest efektywnie mierzona w czasie. W związku z tym możesz odszukać szczegółowe informacje od przeszłości, aby ułatwić prognozowanie przyszłych zmian.
 
 ## <a name="video"></a>Połączenia wideo
 
-### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>Dowiedz się więcej na temat usługi Azure Time Series Insights, platforma analiz IoT opartych na chmurze.</br>
+### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>Dowiedz się więcej o Azure Time Series Insights, opartej na chmurze platformie IoT Analytics.</br>
 
-[![FILM WIDEO](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
+[![PLIKÓW](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Podstawowe scenariusze
 
-- Store danych szeregów czasowych w skalowalny sposób. 
+- Przechowuj dane szeregów czasowych w sposób skalowalny. 
 
-   Zasadniczo usługa Time Series Insights ma bazę danych zaprojektowaną z myślą o danych szeregów czasowych. Ponieważ jest skalowalna i w pełni zarządzana usługa Time Series Insights obsługuje pracy przechowywania i zarządzania nimi zdarzenia.
+   Zasadniczo usługa Time Series Insights ma bazę danych zaprojektowaną z myślą o danych szeregów czasowych. Ponieważ jest skalowalna i w pełni zarządzana, Time Series Insights obsługuje zadania przechowywania i zarządzania zdarzeniami.
 
-- Eksplorowanie danych w czasie zbliżonym do rzeczywistego. 
+- Eksploruj dane niemal w czasie rzeczywistym. 
 
-   Usługi Time Series Insights zapewnia ono Eksploratora, która wizualizuje wszystkie dane tego strumieni w środowisku. Wkrótce, po nawiązaniu połączenia ze źródłem zdarzeń, można wyświetlać, zapoznaj się z i wykonywanie zapytań o dane zdarzeń w ramach usługi Time Series Insights. Dane pomaga sprawdzić, czy urządzenie emituje dane zgodnie z oczekiwaniami i monitorowanie zasobów IoT kondycji, wydajności i ogólną efektywność. 
+   Time Series Insights udostępnia Eksploratora, który wizualizuje wszystkie dane przesyłane strumieniowo do środowiska. Wkrótce po nawiązaniu połączenia ze źródłem zdarzeń można wyświetlać, eksplorować i badać dane zdarzeń w Time Series Insights. Dane pomagają sprawdzić, czy urządzenie emituje dane zgodnie z oczekiwaniami, oraz aby monitorować zasoby IoT pod kątem kondycji, produktywności i ogólnej skuteczności. 
 
-- Przeprowadź analizę głównej przyczyny i wykrywania anomalii.
+- Wykonaj analizę głównych przyczyn i Wykryj anomalie.
 
-   Usługa Time Series Insights ma narzędzi, takich jak wzorce i widoki perspektywy do prowadzenia i zapisać analizy wieloetapowego przyczyny. Usługa Time Series Insights również współdziała z alertów usług, takich jak Azure Stream Analytics, tak aby wyświetlać alerty i wykryte anomalie w czasie zbliżonym do rzeczywistego w Eksploratorze usługi Time Series Insights. 
+   Time Series Insights zawiera narzędzia, takie jak wzorce i widoki perspektywy, do przeprowadzania i zapisywania analizy głównej przyczyny wieloetapowej. Time Series Insights działa również z usługami alertów, takimi jak Azure Stream Analytics, aby można było wyświetlać alerty i wykryte anomalie niemal w czasie rzeczywistym w Eksploratorze Time Series Insights. 
 
-- Uzyskaj globalny widok danych szeregów czasowych, który przesyła strumieniowo z różnych lokalizacji dla porównania wielu zasobów lub witryny.
+- Uzyskaj globalny wgląd w dane szeregów czasowych, które przesyła strumieniowo z różnych lokalizacji na potrzeby porównania wielu zasobów lub lokacji.
 
-   Ze środowiskiem usługi Time Series Insights można połączyć wiele źródeł zdarzeń. W ten sposób możesz wyświetlić dane strumieniowo w z wielu różnych lokalizacji razem w niemal w czasie rzeczywistym. Użytkownicy mogą wykorzystać ten widoczność udostępniania danych Liderzy w branży. Mogą one współpracować lepiej eksperci domeny mogą stosować swoją wiedzę, aby ułatwić rozwiązywanie problemów, zastosować najlepsze rozwiązania i wnioski dotyczące udostępniania.
+   Ze środowiskiem usługi Time Series Insights można połączyć wiele źródeł zdarzeń. W ten sposób można wyświetlać dane przesyłane strumieniowo z wielu różnych lokalizacji w czasie niemal rzeczywistym. Użytkownicy mogą korzystać z tej widoczności, aby współużytkować dane ze liderami biznesowymi. Mogą współpracować z ekspertami domeny, którzy mogą stosować swoje doświadczenia, aby pomóc w rozwiązywaniu problemów, stosowaniu najlepszych rozwiązań i udostępnianiu informacji.
 
-- Tworzenie aplikacji klienta na podstawie usługi Time Series Insights. 
+- Kompiluj aplikację klienta na Time Series Insights. 
 
-   Usługa Time Series Insights udostępnia interfejsy API zapytań REST używanego do tworzenia aplikacji, które używają danych szeregów czasowych.
+   Time Series Insights uwidacznia interfejsy API zapytania REST, których można użyć do kompilowania aplikacji korzystających z danych szeregów czasowych.
 
 ## <a name="capabilities"></a>Możliwości
 
-- **Szybko Rozpocznij pracę**: Usługa Azure Time Series Insights nie wymaga wcześniejszego przygotowania danych, dzięki czemu możesz szybko nawiązać milionów zdarzeń w usłudze IoT hub lub Centrum zdarzeń. Po połączeniu możesz wizualizować i wchodzić w interakcje z danymi czujników w celu szybkie weryfikowanie rozwiązań IoT. Możesz mogą wchodzić w interakcje z danymi bez konieczności pisania kodu, a nie musisz uczyć się nowego języka. Usługa Time Series Insights zapewnia powierzchni szczegółowe, dowolny tekst zapytania dla użytkowników zaawansowanych i kliknięcia eksploracji.
+- **Szybko Rozpocznij pracę**: Azure Time Series Insights nie wymaga przygotowania do przedniego danych, dzięki czemu możesz szybko połączyć się z milionami zdarzeń w centrum IoT Hub lub centrum zdarzeń. Po nawiązaniu połączenia możesz wizualizować dane czujników i korzystać z nich, aby szybko weryfikować Twoje rozwiązania IoT. Możesz korzystać z danych bez pisania kodu i nie musisz uczyć się nowego języka. Time Series Insights udostępnia szczegółową, niezależną powierzchnię zapytania dla zaawansowanych użytkowników, a następnie wskaż i kliknij eksplorację.
 
-- **Uzyskiwanie wglądu**: Usługa Time Series Insights może pozyskiwać milionów zdarzeń czujników dziennie z jednominutowym opóźnieniem. Usługa Time Series Insights pomaga uzyskać wgląd w dane czujników. Go użyć do wykrywania trendów i anomalii, przeprowadzanie analiz głównych przyczyn i unikanie kosztownych przestojów. Krzyżowe korelacji między informacjami uzyskiwanymi w czasie rzeczywistym i danymi historycznymi ułatwia znajdowanie ukryte trendy w danych.
+- **Szczegółowe informacje**w czasie rzeczywistym: Time Series Insights mogą pozyskiwanie milionów zdarzeń czujników dziennie z opóźnieniem jednej minuty. Time Series Insights pomaga uzyskać wgląd w dane czujników. Korzystaj z nich, aby wypróbować trendy i anomalie, przeprowadzać analizy głównych przyczyn i uniknąć kosztownych przestojów. Wzajemna korelacja między danymi w czasie rzeczywistym i historycznymi ułatwia znalezienie ukrytych trendów w danych.
 
-- **Twórz niestandardowe rozwiązania**: Osadzanie danych usługi Azure Time Series Insights w istniejących aplikacji. Możesz również utworzyć nowe niestandardowe rozwiązania przy użyciu interfejsów API REST usługi Insights serii czasu. Utwórz widoki spersonalizowane, które można udostępniać innym, aby umożliwić im eksplorowanie Twoich szczegółowych danych.
+- **Tworzenie niestandardowych rozwiązań**: Osadź Azure Time Series Insights dane w istniejących aplikacjach. Można również tworzyć nowe niestandardowe rozwiązania przy użyciu Time Series Insights interfejsów API REST. Utwórz widoki spersonalizowane, które można udostępniać innym, aby umożliwić im eksplorowanie Twoich szczegółowych danych.
 
-- **Skalowalność**: usługa Time Series Insights obsługuje urządzenia IoT na dużą skalę. Umożliwia pozyskiwanie od 1 miliona do 100 milionów zdarzeń dziennie, które domyślnie są przechowywane przez 31 dni. Możesz wizualizować i analizować strumienie bieżących danych niemal w czasie rzeczywistym, wraz z danych historycznych.
+- **Skalowalność**: usługa Time Series Insights obsługuje urządzenia IoT na dużą skalę. Umożliwia pozyskiwanie od 1 miliona do 100 milionów zdarzeń dziennie, które domyślnie są przechowywane przez 31 dni. Możesz wizualizować i analizować strumienie danych na żywo niemal w czasie rzeczywistym, obok danych historycznych.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 
-Aby rozpocząć pracę, wykonaj następujące kroki.
+Aby rozpocząć, wykonaj następujące kroki.
 
-1. Aprowizowanie środowiska usługi Time Series Insights w witrynie Azure portal.
-1. Łączenie ze źródłem zdarzeń, takich jak usługi IoT hub lub Centrum zdarzeń. 
-1. Przekazywanie danych referencyjnych. Nie jest to dodatkową usługę.
+1. Zainicjuj obsługę środowiska Time Series Insights w Azure Portal.
+1. Nawiąż połączenie ze źródłem zdarzenia, takim jak IoT Hub lub centrum zdarzeń. 
+1. Przekaż dane referencyjne. To nie jest dodatkowa usługa.
 1. Po kilku minutach zobaczysz swoje dane w eksploratorze usługi Time Series Insights.
 
 ## <a name="time-series-insights-explorer"></a>Eksplorator usługi Time Series Insights
 
-Ten diagram przedstawia przykład szeregów czasowych danych usługi insights wyświetlane za pomocą Eksploratora usługi Time Series Insights.
+Ten diagram przedstawia przykład danych usługi Time Series Insights wyświetlanych za pomocą Eksploratora Time Series Insights.
 
 ![Eksplorator usługi Time Series Insights](media/time-series-insights-explorer/explorer4.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się z ogólną dostępność usługi Azure Time Series Insights [bezpłatnym środowisku pokazowym](./time-series-quickstart.md).
-- Dowiedz się więcej na temat [planu usługi Time Series Insights](time-series-insights-environment-planning.md) środowiska.
+- Poznaj Azure Time Series Insights ogólnej dostępności [bezpłatnego środowiska demonstracyjnego](./time-series-quickstart.md).
+- Dowiedz się więcej o [tym](time-series-insights-environment-planning.md) , jak planować środowisko Time Series Insights.

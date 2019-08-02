@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8babf2a6a4f4a15c6d2979ea0d5ce558dfb0cd6a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c9de4a9b72e446a7d2b6687af380ee910b58980
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052136"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741286"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Samouczek: ręczne konfigurowanie urządzeń dołączonych hybrydowo do usługi Azure Active Directory
 
@@ -83,7 +83,7 @@ Skorzystaj z poniższej tabeli, aby uzyskać przegląd kroków wymaganych dla da
 | Konfigurowanie punktu połączenia usługi | ![Sprawdź][1] | ![Sprawdź][1] | ![Sprawdź][1] |
 | Konfigurowanie wystawiania oświadczeń |     | ![Sprawdź][1] | ![Sprawdź][1] |
 | Włączanie urządzeń z systemem innym niż Windows 10 |       |        | ![Sprawdź][1] |
-| Weryfikowanie dołączonych urządzeń | ![Sprawdź][1] | ![Sprawdź][1] | [Sprawdź][1] |
+| Weryfikowanie dołączonych urządzeń | ![Sprawdź][1] | ![Sprawdź][1] | [Niezaznaczone][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Konfigurowanie punktu połączenia usługi
 
@@ -139,7 +139,7 @@ Polecenie cmdlet `Initialize-ADSyncDomainJoinedComputerSync`:
 
 * Korzysta z modułu Active Directory PowerShell i narzędzi usług Azure Active Directory Domain Services (Azure AD DS). Te narzędzia są zależne od usług internetowych usługi Active Directory uruchomionych na kontrolerze domeny. Usługi internetowe usługi Active Directory są obsługiwane na kontrolerach domeny z systemem Windows Server 2008 R2 lub nowszym.
 * Jest obsługiwane tylko przez moduł MSOnline programu PowerShell w wersji 1.1.166.0. Aby pobrać ten moduł, użyj [tego linku](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/).
-* Jeśli nie zainstalowano narzędzia usług AD DS, `Initialize-ADSyncDomainJoinedComputerSync` zakończy się niepowodzeniem. Możesz zainstalować narzędzia usług AD DS za pomocą Menedżera serwera w obszarze **funkcji** > **narzędzia administracji zdalnej serwera** > **narzędzia do administrowania rolami**.
+* Jeśli narzędzia AD DS nie są zainstalowane, `Initialize-ADSyncDomainJoinedComputerSync` program zakończy się niepowodzeniem. Narzędzia AD DS można zainstalować za pomocą Menedżer serwera w obszarze **funkcje** > **Narzędzia administracji zdalnej serwera** > **Narzędzia do administrowania rolami**.
 
 W przypadku kontrolerów domeny z systemem Windows Server 2008 i jego wcześniejszymi wersjami użyj następującego skryptu, aby utworzyć punkt połączenia usługi. W konfiguracji z wieloma lasami użyj następującego skryptu, aby utworzyć punkt połączenia usługi w każdym lesie, w którym istnieją komputery.
 
@@ -174,10 +174,19 @@ W konfiguracji federacyjnej usługi Azure AD urządzenia korzystają z usług AD
 
 Urządzenia z bieżącym systemem Windows uwierzytelniają się przy użyciu zintegrowanego uwierzytelniania systemu Windows w aktywnym punkcie końcowym protokołu WS-Trust (w wersji 1.3 lub 2005) hostowanym przez lokalną usługę federacyjną.
 
+W przypadku korzystania z AD FS należy włączyć następujące punkty końcowe protokołu WS-Trust
+- `/adfs/services/trust/2005/windowstransport`
+- `/adfs/services/trust/13/windowstransport`
+- `/adfs/services/trust/2005/usernamemixed`
+- `/adfs/services/trust/13/usernamemixed`
+- `/adfs/services/trust/2005/certificatemixed`
+- `/adfs/services/trust/13/certificatemixed`
+
+> [!WARNING]
+> **Usługi ADFS/Services/Trust/2005/windowstransport** lub **ADFS/Services/Trust/13/windowstransport** powinny być włączone tylko jako punkty końcowe dostępne dla intranetu i nie mogą być udostępniane jako punkty końcowe dla ekstranetu za pośrednictwem serwera proxy aplikacji sieci Web. Aby dowiedzieć się więcej na temat wyłączania punktów końcowych usługi WS-Trust systemu WIndows, zobacz temat [wyłączanie punktów końcowych systemu Windows WS-Trust na serwerze proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Możesz zobaczyć, jakie punkty końcowe są włączone, za pomocą konsoli zarządzania usług AD FS w obszarze **Usługi** > **Punkty końcowe**.
+
 > [!NOTE]
-> W przypadku korzystania z usług AD FS wymagane jest włączenie punktu końcowego **adfs/services/trust/13/windowstransport** lub **adfs/services/trust/2005/windowstransport**. Jeśli używasz internetowego serwera proxy uwierzytelniania, upewnij się również, że ten punkt końcowy jest publikowany przez serwer proxy. Możesz zobaczyć, jakie punkty końcowe są włączone, za pomocą konsoli zarządzania usług AD FS w obszarze **Usługi** > **Punkty końcowe**.
->
-> Jeśli nie masz usługi AD FS jako lokalnej usługi federacyjnej, postępuj zgodnie z instrukcjami od dostawcy, aby upewnić się, że obsługuje on punkty końcowe protokołu WS-Trust 1.3 lub 2005, i że są one publikowane za pomocą pliku wymiany metadanych (MEX).
+>Jeśli nie masz usługi AD FS jako lokalnej usługi federacyjnej, postępuj zgodnie z instrukcjami od dostawcy, aby upewnić się, że obsługuje on punkty końcowe protokołu WS-Trust 1.3 lub 2005, i że są one publikowane za pomocą pliku wymiany metadanych (MEX).
 
 Aby rejestracja urządzenia została ukończona, poniższe oświadczenia muszą istnieć w tokenie odebranym przez usługę Azure DRS. Usługa Azure DRS utworzy obiekt urządzenia w usłudze Azure AD za pomocą niektórych z tych informacji. Program Azure AD Connect następnie używa tych informacji do skojarzenia nowo utworzonego obiektu urządzenia za pomocą lokalnego konta komputera.
 
@@ -508,7 +517,7 @@ Lokalna usługa federacyjna musi obsługiwać wystawianie oświadczeń **authent
 
 Jeśli takie żądanie przychodzi, lokalna usługa federacyjna musi uwierzytelnić użytkownika przy użyciu zintegrowanego uwierzytelniania systemu Windows. W razie powodzenia usługa ta musi wystawić dwa następujące oświadczenia:
 
-   `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows` `http://schemas.microsoft.com/claims/wiaormultiauthn`
+   `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows``http://schemas.microsoft.com/claims/wiaormultiauthn`
 
 W usługach AD FS musisz dodać regułę przekształcania wystawiania, która przechodzi przez metodę uwierzytelniania. Aby dodać tę regułę:
 
@@ -534,7 +543,7 @@ Aby uniknąć monitów o certyfikat podczas uwierzytelniania użytkowników zare
 
 ### <a name="control-windows-down-level-devices"></a>Kontrolowanie urządzeń z systemem Windows niższego poziomu
 
-Aby zarejestrować urządzenia z systemem Windows niższego poziomu, musisz pobrać i zainstalować pakiet Instalatora Windows (msi) z Centrum pobierania. Aby uzyskać więcej informacji, zobacz sekcję [kontrolowana Walidacja dołączenie do hybrydowej usługi Azure AD na urządzeniach z Windows niższego poziomu](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices).
+Aby zarejestrować urządzenia z systemem Windows niższego poziomu, musisz pobrać i zainstalować pakiet Instalatora Windows (msi) z Centrum pobierania. Aby uzyskać więcej informacji, zapoznaj się z sekcją kontrola poprawności hybrydowego dołączania do [usługi Azure AD na urządzeniach niskiego poziomu systemu Windows](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices).
 
 ## <a name="verify-joined-devices"></a>Weryfikowanie dołączonych urządzeń
 
@@ -549,7 +558,7 @@ Jeśli występują problemy z ukończeniem dołączania hybrydowego do usługi A
 * [Rozwiązywanie problemów z dołączeniem hybrydowym do usługi Azure AD urządzeń z bieżącym systemem Windows](troubleshoot-hybrid-join-windows-current.md)
 * [Rozwiązywanie problemów z dołączeniem hybrydowym do usługi Azure AD urządzeń z systemem Windows niższego poziomu](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](overview.md)
 

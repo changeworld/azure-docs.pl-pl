@@ -398,7 +398,7 @@
     - name: Forum użytkowników
       href: 'https://aka.ms/aml-forum-service'
     - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
+      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Porównanie naszych produktów do uczenia maszynowego
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Co się stało z aplikacją Workbench

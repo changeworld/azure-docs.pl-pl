@@ -7,9 +7,7 @@
     - name: PowerShell — Szybki start
       href: quickstart-powershell.md
 - name: Funkcje i narzędzia
-  items:
-    - name: Funkcje i narzędzia
-      href: features.md
+  href: features.md
 - name: Samouczki
   items:
     - name: Ansible

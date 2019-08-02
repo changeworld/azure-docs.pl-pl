@@ -3,26 +3,26 @@ title: Omówienie usługi Azure Digital Twins | Microsoft Docs
 description: Dowiedz się więcej o usłudze Azure Digital Twins, rozwiązaniu IoT platformy Azure do analizy przestrzennej.
 author: julieseto
 ms.author: jseto
-ms.date: 05/31/2019
+ms.date: 08/01/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 0bbbb924cace93e44af84fd96926a2d7153dd5f8
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 6bd4e3bb688e92d30a21c39599e2e5bdb7b17dba
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67459022"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736965"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Omówienie usługi Azure Digital Twins
 
-Azure cyfrowego bliźniaczych reprezentacji (wersja zapoznawcza) jest usługą Azure IoT, która tworzy kompleksowy modele środowiska fizycznego. Umożliwia ona tworzenie grafów analizy przestrzennej do modelowania relacji i interakcji między osobami, obszarami i urządzeniami.
+Azure Digital bliźniaczych reprezentacji w wersji zapoznawczej to usługa Azure IoT, która tworzy kompleksowe modele środowiska fizycznego. Umożliwia ona tworzenie grafów analizy przestrzennej do modelowania relacji i interakcji między osobami, obszarami i urządzeniami.
 
 Usługa Azure Digital Twins pozwala na wykonywanie zapytań o dane z obszaru fizycznego, zamiast z wielu różnorodnych czujników. Ta usługa pomaga w konstruowaniu środowisk wielokrotnego użytku o wysokim stopniu skalowalności, rozpoznających przestrzeń, które łączą dane przesyłane strumieniowo z cyfrowego i fizycznego świata. Twoje aplikacje są rozszerzone o te wyjątkowo dobrze dobrane funkcje kontekstowe. 
 
-Twins cyfrowych platformy Azure ma zastosowanie do wszystkich typów środowisk, takich jak magazyny, oddziałów, szkoły, szpitale i banki. Można jej używać nawet w przypadku stadionów, fabryk, parkingów, parków, sieci inteligentnych i miast. Poniżej przedstawiono kilka scenariuszy, w którym Twins cyfrowych platformy Azure mogą być pomocne:
+Usługa Azure Digital bliźniaczych reprezentacji ma zastosowanie do wszystkich typów środowisk, takich jak magazyny, biura, szkoły, szpitale i banki. Można jej używać nawet w przypadku stadionów, fabryk, parkingów, parków, sieci inteligentnych i miast. Poniżej przedstawiono kilka scenariuszy, w których usługa Azure Digital bliźniaczych reprezentacji może być przydatna:
 
 - Przewidywanie potrzeb związanych z konserwacją w fabryce.
 - Analizowanie wymagań energetycznych w czasie rzeczywistym dla sieci elektrycznej.
@@ -33,7 +33,7 @@ Twins cyfrowych platformy Azure ma zastosowanie do wszystkich typów środowisk,
 - Analizowanie poziomów zajętości budynku.
 - Znajdowanie najbardziej zajętej kasy w sklepie.
 
-Niezależnie od danego scenariusza biznesowego rzeczywistych jest, jest bardzo prawdopodobne, odpowiednie wystąpienie cyfrowego mogą być udostępniane za pomocą Twins cyfrowych platformy Azure.
+Bez względu na rzeczywisty scenariusz biznesowy jest bardzo prawdopodobnie odpowiednie wystąpienie cyfrowe może być obsługiwane za pomocą usługi Azure Digital bliźniaczych reprezentacji.
 
 W poniższym klipie wideo bardziej szczegółowo omówiono usługę Azure Digital Twins.
 
@@ -53,7 +53,7 @@ Wyobraź sobie inteligentną aplikację narzędziową, która obejmuje kilka mie
 
 [Cyfrowe modele obiektów bliźniaczych](./concepts-objectmodel-spatialgraph.md#model) to wstępnie zdefiniowane protokoły urządzeń i schematy danych. Są one dostosowane do wymagań specyficznych dla danego obszaru, które przyspieszają i upraszczają tworzenie rozwiązań.
 
-Na przykład aplikacja zajmowania miejsca może użyć miejsca wstępnie zdefiniowanych typów, takich jak campus, budynek, piętro i miejsca.
+Na przykład aplikacja pokojowa może korzystać ze wstępnie zdefiniowanych typów miejsca, takich jak kampus, budynek, piętro i pokój.
 
 ### <a name="multiple-and-nested-tenants"></a>Wiele dzierżaw i dzierżawy zagnieżdżone
 
@@ -97,7 +97,7 @@ Usługa Azure Digital Twins używa usługi Azure IoT Hub w celu łączenia urzą
 
 Aby uzyskać więcej informacji na temat Internetu rzeczy, zobacz [Technologie i rozwiązania usługi Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przejdź do krótkiego pokazu poświęconego usłudze Azure Digital Twins:
 

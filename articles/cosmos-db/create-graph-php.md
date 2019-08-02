@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 15d312ff4dfdb789cb0d9ee85941ea8760ddb08f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480605"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736644"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Szybki start: tworzenie grafowej bazy danych w usłudze Azure Cosmos DB przy użyciu języka PHP i witryny Azure Portal
 
@@ -113,7 +113,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o połączeniu i s
 
     ```php
     $db = new Connection([
-        'host' => 'testgraphacct.graphs.azure.com',
+        'host' => 'testgraphacct.gremlin.cosmosdb.azure.com',
         'username' => '/dbs/<db>/colls/<coll>',
         'password' => 'your_primary_key'
         ,'port' => '443'
@@ -123,9 +123,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o połączeniu i s
     ]);
     ```
 
-3. Jeśli konto bazy danych programu Graph zostało utworzone przed 20 grudnia 2017 r., zmień wartość `graphs.azure.com` w nazwie hosta na `gremlin.cosmosdb.azure.com`.
-
-4. Zamień parametr `username` w obiekcie połączenia na nazwę bazy danych i nazwę grafu. Jeśli zostały użyte zalecane wartości `sample-database` i `sample-graph`, powinno to wyglądać podobnie do poniższego kodu:
+3. Zamień parametr `username` w obiekcie połączenia na nazwę bazy danych i nazwę grafu. Jeśli zostały użyte zalecane wartości `sample-database` i `sample-graph`, powinno to wyglądać podobnie do poniższego kodu:
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
@@ -133,7 +131,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o połączeniu i s
 
     ```php
     $db = new Connection([
-        'host' => 'testgraphacct.graphs.azure.com',
+        'host' => 'testgraphacct.gremlin.cosmosdb.azure.com',
         'username' => '/dbs/sample-database/colls/sample-graph',
         'password' => 'your_primary_key',
         'port' => '443'
@@ -143,7 +141,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o połączeniu i s
     ]);
     ```
 
-5. W witrynie Azure Portal użyj przycisku kopiowania, aby skopiować wartość KLUCZ PODSTAWOWY, i wklej ją w lokalizacji `your_primary_key` w parametrze password.
+4. W witrynie Azure Portal użyj przycisku kopiowania, aby skopiować wartość KLUCZ PODSTAWOWY, i wklej ją w lokalizacji `your_primary_key` w parametrze password.
 
     Inicjowanie obiektu Connection powinno teraz wyglądać podobnie do poniższego kodu:
 
@@ -159,7 +157,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o połączeniu i s
     ]);
     ```
 
-6. Zapisz plik `connect.php`.
+5. Zapisz plik `connect.php`.
 
 ## <a name="run-the-console-app"></a>Uruchamianie aplikacji konsolowej
 
@@ -196,7 +194,7 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
    ![Tworzenie nowych dokumentów w Eksploratorze danych w witrynie Azure Portal](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
 
-2. Na liście **Wyniki** zwróć uwagę na nowych użytkowników dodanych do grafu. Wybierz **ben** i zwróć uwagę, że są one połączone z użytkownikiem robin. Możesz przenosić wierzchołki, przeciągając je i upuszczając, zmieniać powiększenie przy użyciu kółka myszy oraz powiększać rozmiar grafu przy użyciu podwójnej strzałki. 
+2. Na liście **Wyniki** zwróć uwagę na nowych użytkowników dodanych do grafu. Wybierz pozycję **Ben** i zwróć uwagę, że są one podłączone do działania. Możesz przenosić wierzchołki, przeciągając je i upuszczając, zmieniać powiększenie przy użyciu kółka myszy oraz powiększać rozmiar grafu przy użyciu podwójnej strzałki. 
 
    ![Nowe wierzchołki grafu w Eksploratorze danych w witrynie Azure Portal](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
 
@@ -206,13 +204,13 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
 4. Wprowadź etykietę *osoba*.
 
-5. Kliknij pozycję **Dodaj właściwość**, aby dodać poszczególne poniższe właściwości. Zauważ, że możesz utworzyć unikatowe właściwości dla każdej osoby w grafie. Tylko klucz id jest wymagany.
+5. Kliknij pozycję **Dodaj właściwość**, aby dodać poszczególne poniższe właściwości. Zauważ, że możesz utworzyć unikatowe właściwości dla każdej osoby w grafie. Wymagany jest tylko klucz **identyfikatora** .
 
-    key|wartość|Uwagi
+    Klucz | Wartość | Uwagi
     ----|----|----
-    id|ashley|Unikatowy identyfikator wierzchołka. Jeśli nie określono identyfikatora, zostanie on wygenerowany.
-    płeć|kobieta| 
-    techniczne | java | 
+    **id** | ashley | Unikatowy identyfikator wierzchołka. Jeśli nie określono identyfikatora, zostanie on wygenerowany.
+    **skorygowan** | kobieta | 
+    **TechNet** | java | 
 
     > [!NOTE]
     > W tym przewodniku Szybki start tworzona jest kolekcja niepartycjonowana. Niemniej jednak, jeśli utworzysz kolekcję partycjonowaną poprzez określenie klucza partycji podczas tworzenia kolekcji, musisz uwzględnić klucz partycji jako klucz w każdym nowym wierzchołku. 
@@ -224,12 +222,12 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 8. Wprowadź etykietę *osoba*.
 
 9. Kliknij pozycję **Dodaj właściwość**, aby dodać poszczególne poniższe właściwości:
-
-    key|wartość|Uwagi
+    
+    Klucz | Value | Uwagi
     ----|----|----
-    id|rakesh|Unikatowy identyfikator wierzchołka. Jeśli nie określono identyfikatora, zostanie on wygenerowany.
-    płeć|mężczyzna| 
-    szkoła|MIT| 
+    **id** | rakesh | Unikatowy identyfikator wierzchołka. Jeśli nie określono identyfikatora, zostanie on wygenerowany.
+    **skorygowan** | mężczyzna | 
+    **służbowego** | MIT | 
 
 10. Kliknij przycisk **OK**. 
 

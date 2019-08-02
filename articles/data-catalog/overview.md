@@ -1,21 +1,21 @@
 ---
-title: Wprowadzenie do usługi Azure Data Catalog
+title: Wprowadzenie do Azure Data Catalog
 description: W tym artykule omówiono usługę Microsoft Azure Data Catalog i jej funkcje oraz problemy, które ona rozwiązuje. Usługa Data Catalog umożliwia każdemu użytkownikowi rejestrowanie, odnajdywanie, zrozumienie i używanie źródeł danych.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
-ms.date: 04/05/2019
-ms.openlocfilehash: 87c86ddeaa24693d393d250e1dc699b9a15ea84b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 08/01/2019
+ms.openlocfilehash: 9b7a5d5ca6cbad897839c8e28c9e3efd1eeabaf0
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60861257"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736977"
 ---
 # <a name="what-is-azure-data-catalog"></a>Co to jest usługa Azure Data Catalog?
 
-Azure Data Catalog to w pełni zarządzana usługa w chmurze. Umożliwia użytkownikom dostęp do danych źródła, czego potrzebuje i zrozumieć użycie źródeł danych mogą odnaleźć. Jednocześnie usługa Data Catalog pomaga organizacjom w osiąganiu większych zysków z ich istniejących inwestycji.
+Azure Data Catalog to w pełni zarządzana usługa w chmurze. Umożliwia użytkownikom odnajdywanie potrzebnych źródeł danych i zrozumienie znalezionych przez nich źródeł danych. Jednocześnie usługa Data Catalog pomaga organizacjom w osiąganiu większych zysków z ich istniejących inwestycji.
 
 Za pomocą usługi Data Catalog każdy użytkownik (analityk, badacz danych lub deweloper) może odnaleźć, zrozumieć i używać źródła danych. Usługa Data Catalog korzysta z crowdsourcingowego modelu metadanych i adnotacji. Jest to centralne miejsce dla wszystkich użytkowników w organizacji, którzy dzielą się swoją wiedzą w celu stworzenia społeczności i uporządkowania danych.
 
@@ -23,10 +23,10 @@ Za pomocą usługi Data Catalog każdy użytkownik (analityk, badacz danych lub 
 
 Tradycyjnie wykrywanie firmowych źródeł danych było organicznym procesem opartym na wiedzy pochodzącej z wewnątrz firmy. Przed firmami, które chciały uzyskać najlepsze efekty podczas pracy ze swoimi zasobami informacyjnymi, takie podejście stawia wiele wyzwań:
 
-* Użytkownicy mogą nie wiedzieć, że źródło danych istnieje, dopóki nie natrafią go jako część innego procesu. Brak lokalizacji centralnej rejestracji źródła danych.
+* Użytkownicy mogą nie wiedzieć, że źródło danych istnieje, chyba że nastąpi kontakt z działem IT w ramach innego procesu. Brak lokalizacji centralnej rejestracji źródła danych.
 * Dopóki użytkownicy nie będą znali lokalizacji źródła danych, nie mogą połączyć się z danymi za pomocą aplikacji klienckiej. Podczas korzystania z danych użytkownicy muszą znać parametry połączenia lub ścieżkę.
 * Jeśli użytkownicy nie znają lokalizacji dokumentacji źródła danych, nie mogą zrozumieć zamierzonych sposobów użycia danych. Źródła danych i dokumentacja mogą znajdować się w różnych miejscach i być używane w różny sposób.
-* Jeśli użytkownicy mają pytania dotyczące zasobu informacyjnego, muszą zlokalizować specjalistę lub zespół, który jest odpowiedzialny za te dane, i skontaktować się z nimi w trybie offline. Istnieje jawne połączenie między danymi i eksperci, którzy mają perspektywy przy jej użyciu.
+* Jeśli użytkownicy mają pytania dotyczące zasobu informacyjnego, muszą zlokalizować specjalistę lub zespół, który jest odpowiedzialny za te dane, i skontaktować się z nimi w trybie offline. Nie istnieje jawne połączenie między danymi a ekspertami, którzy mają perspektywę do użycia.
 * Jeśli użytkownik nie ma wiedzy na temat procesu żądania dostępu do źródła danych, nawet odnalezienie źródła danych i jego dokumentacji nie pomoże mu w dostępie do danych.
 
 ## <a name="discovery-challenges-for-data-producers"></a>Wyzwania dotyczące odnajdywania dla producentów danych
@@ -34,7 +34,7 @@ Tradycyjnie wykrywanie firmowych źródeł danych było organicznym procesem opa
 Chociaż konsumenci danych stawiają czoła tym wyżej wymienionym wyzwaniom, przed użytkownikami odpowiedzialnymi za tworzenie i utrzymywanie zasobów informacyjnych stoją inne wyzwania:
 
 * Dodawanie adnotacji do źródeł danych z opisowymi metadanymi jest często niepotrzebnym wysiłkiem. Aplikacje klienckie zwykle ignorują opisy przechowywane w źródle danych.
-* Tworzenie dokumentacji dla źródeł danych jest często niepotrzebnym wysiłkiem. Synchronizacja dokumentacji ze źródłami danych stanowi ciągły proces. Użytkownicy mogą wykazywać Brak zaufania do dokumentacji, która jest traktowana jako nieaktualna.
+* Tworzenie dokumentacji dla źródeł danych jest często niepotrzebnym wysiłkiem. Utrzymywanie dokumentacji w synchronizacji ze źródłami danych jest ciągłą odpowiedzialnością. Użytkownicy mogą nie mieć zaufania w dokumentacji, która jest postrzegana jako nieaktualna.
 * Tworzenie i utrzymywanie dokumentacji źródeł danych to złożony i czasochłonny proces. Częściej nawet większym wyzwaniem jest zapewnienie łatwości dostępu do dokumentacji dla wszystkich użytkowników źródła danych.
 * Nieustannym wyzwaniem jest też ograniczanie dostępu do źródeł danych i zapewnienie, że użytkownicy danych wiedzą, w jaki sposób zażądać dostępu do nich.
 
@@ -46,7 +46,7 @@ Usługa Data Catalog została zaprojektowana w celu rozwiązywania powyższych p
 
 Usługa Data Catalog udostępnia usługę w chmurze, w której można zarejestrować źródło danych. Dane pozostają w istniejącej lokalizacji, ale kopia ich metadanych wraz z odwołaniem do lokalizacji źródła danych jest dodawana do usługi Data Catalog. Te metadane są również indeksowane, aby można było je łatwo odnaleźć za pomocą wyszukiwania oraz uczynić je zrozumiałymi dla użytkowników, którzy je odnajdą.
 
-Po zarejestrowaniu źródła danych jego metadane mogą zostać następnie wzbogacone. Metadane można dodawać przez użytkownika, który jest on zarejestrowany lub przez innych użytkowników w przedsiębiorstwie. Każdy użytkownik może dodawać adnotacje do źródła danych, podając opisy, tagi lub inne metadane, takie jak dokumentacja i procesy służące do żądania dostępu do źródła danych. Te metadane opisowe uzupełniają metadane strukturalne (takie jak nazwy kolumn i typy danych) zarejestrowane ze źródła danych.
+Po zarejestrowaniu źródła danych jego metadane można wzbogacać. Metadane mogą być dodawane przez użytkownika, który zarejestrował go lub przez innych użytkowników w przedsiębiorstwie. Każdy użytkownik może dodawać adnotacje do źródła danych, podając opisy, tagi lub inne metadane, takie jak dokumentacja i procesy służące do żądania dostępu do źródła danych. Te metadane opisowe uzupełniają metadane strukturalne (takie jak nazwy kolumn i typy danych) zarejestrowane ze źródła danych.
 
 Wykrywanie źródeł danych i ich zrozumienie to główny cel rejestrowania źródeł. Użytkownicy w organizacji mogą potrzebować danych do analizy biznesowej, projektowania aplikacji, analizy danych lub innych zadań, w których wymagane są odpowiednie dane. Aby szybko znaleźć odpowiadające ich potrzebom dane, zrozumieć je w celu oceny ich przydatności do tego celu i skorzystać z danych przez otwarcie źródła danych w wybranym narzędziu, mogą użyć środowiska odnajdywania usługi Data Catalog. 
 
@@ -68,9 +68,9 @@ Aby dowiedzieć się więcej o możliwościach wykazu danych, zobacz:
 * [Jak skonfigurować słownik biznesowy](data-catalog-how-to-business-glossary.md)
 * [Często zadawane pytania](data-catalog-frequently-asked-questions.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć pracę z usługą Data Catalog:
+Aby rozpocząć pracę z Data Catalog:
 
-* [Szybki start: Tworzenie usługi Azure Data Catalog](data-catalog-get-started.md)
-* [Otwórz swoje usługi Azure Data Catalog](https://www.azuredatacatalog.com)
+* [Szybki start: Tworzenie Azure Data Catalog](data-catalog-get-started.md)
+* [Otwórz Azure Data Catalog](https://www.azuredatacatalog.com)
