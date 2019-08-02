@@ -1,6 +1,6 @@
 ---
-title: Usługi Azure Billing interfejsów API przedsiębiorstwa | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat raportowania interfejsów API, które umożliwiają klientom Enterprise Azure programowo ściągnąć dane dotyczące zużycia.
+title: Azure Rozlicz interfejsy API przedsiębiorstwa | Microsoft Docs
+description: Dowiedz się więcej na temat interfejsów API raportowania, które umożliwiają klientom platformy Azure korzystanie z danych programistycznych.
 services: ''
 documentationcenter: ''
 author: mumami
@@ -14,53 +14,53 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
-ms.author: erikre
-ms.openlocfilehash: 5722e05e5a5e3a57b4d12b70b14f8674364f824b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: banders
+ms.openlocfilehash: f706ad86493981d5b38248ec209a7c8b936f6817
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244814"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443210"
 ---
-# <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Omówienie interfejsy API raportowania usługi dla klientów korporacyjnych
-Interfejsy API raportowania pozwala klientom usługi Azure Enterprise programowo ściągnięcia zużycia i danych dotyczących rozliczeń do narzędzia do analizy danych preferowany. Klienci korporacyjni utworzyli [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) za pomocą platformy Azure na wynegocjowanym zobowiązań pieniężnych i uzyskać dostęp do ceny niestandardowe dla zasobów platformy Azure.
+# <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Omówienie interfejsów API raportowania dla klientów korporacyjnych
+Interfejsy API raportowania umożliwiają klientom korporacyjnym platformy Azure programowe ściąganie danych użycia i rozliczeń do preferowanych narzędzi do analizy danych. Klienci korporacyjni podpisali [Umowa Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) na platformie Azure, aby wynegocjować zobowiązania pieniężne i uzyskać dostęp do niestandardowych cen zasobów platformy Azure.
 
-## <a name="enabling-data-access-to-the-api"></a>Włączanie dostępu do danych w interfejsie API
-* **Generowanie lub pobrać klucz interfejsu API** — Zaloguj się do witryny Enterprise portal i przejdź do raportów > Pobierz dane użycia > klucz dostępu interfejsu API, aby wygenerować lub pobrać klucza interfejsu API.
-* **Przekazanie kluczy w interfejsie API** — klucz interfejsu API, które należy przekazać dla każdego wywołania do uwierzytelniania i autoryzacji. Następująca właściwość musi być z nagłówkami HTTP
+## <a name="enabling-data-access-to-the-api"></a>Włączanie dostępu do danych do interfejsu API
+* **Wygeneruj lub Pobierz klucz interfejsu API** — Zaloguj się do witryny Enterprise Portal i przejdź do raportów > pobierz użycie > klucz dostępu interfejsu API, aby wygenerować lub pobrać klucz interfejsu API.
+* **Przekazywanie kluczy w interfejsie API** — należy przekazać klucz interfejsu API dla każdego wywołania uwierzytelniania i autoryzacji. Następująca właściwość musi znajdować się w nagłówkach HTTP
 
-|Klucz nagłówka żądania | Wartość|
+|Klucz nagłówka żądania | Value|
 |-|-|
-|Autoryzacja| Określ wartość w następującym formacie: **bearer {API_KEY}** <br/> Przykład: eyr elementu nośnego... 09| 
+|Authorization| Określ wartość w tym formacie: **Bearer {API_KEY}** <br/> Przykład: Bearer Eyr... 09| 
 
-## <a name="consumption-apis"></a>Użycie interfejsów API
-Punktu końcowego struktury Swagger jest dostępna [tutaj](https://consumption.azure.com/swagger/ui/index) dla interfejsów API opisanego poniżej której powinna umożliwiają łatwe introspekcji interfejsu API oraz do generowania zestawów SDK klienta przy użyciu [AutoRest](https://github.com/Azure/AutoRest) lub [programu Swagger Generowanie kodu](https://swagger.io/swagger-codegen/). Dane, począwszy od 1 maja 2014 roku. jest dostępna za pośrednictwem tego interfejsu API. 
+## <a name="consumption-apis"></a>Interfejsy API użycia
+Punkt końcowy struktury Swagger jest dostępny w [tym miejscu](https://consumption.azure.com/swagger/ui/index) dla opisanych poniżej interfejsów API, które powinny umożliwić łatwą INTROSPEKCJI interfejsu API i możliwość generowania zestawów [](https://github.com/Azure/AutoRest) SDK klienta przy użyciu funkcji AutoRest lub [struktury Swagger codegen](https://swagger.io/swagger-codegen/). Dane od 1 maja 2014 są dostępne za poorednictwem tego interfejsu API. 
 
-* **Informacji o saldach i Podsumowanie** — [informacji o saldach i podsumowanie interfejsu API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) oferuje miesięczne podsumowanie informacji na temat salda, nowe zakupy, opłaty za usługę portalu Azure Marketplace, korekt i opłaty za użycie nadwyżkowe.
+* **Saldo i podsumowanie** — [interfejs API równoważenia i podsumowania](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) oferuje comiesięczne podsumowanie informacji dotyczących sald, nowych zakupów, opłat za usługę Azure Marketplace, korekt i opłat za użycie nadwyżkowe.
 
-* **Szczegóły użycia** — [interfejs API użycia szczegółów](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) oferuje rozbiciem na poszczególne dni ilości wykorzystanych i oszacowanie opłat przy rejestracji. Wynik zawiera również informacje na temat wystąpień, liczniki i działów. Interfejs API może być odpytywany za okres rozliczeniowy lub określonej daty rozpoczęcia i zakończenia. 
+* **Szczegóły użycia** — [interfejs API szczegóły użycia](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) oferuje dzienny podział zużytych ilości i szacowane opłaty przez rejestrację. Wynik zawiera również informacje dotyczące wystąpień, gazomierzy i działów. Do interfejsu API można wykonywać zapytania według okresu rozliczeniowego lub według określonej daty rozpoczęcia i zakończenia. 
 
-* **Opłaty w portalu Marketplace Store** — [interfejsu API opłaty Store Marketplace](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) zwraca podział opłaty na podstawie użycia portalu marketplace dzienne dla danego okresu rozliczeniowego lub daty rozpoczęcia i zakończenia (jeden raz opłaty nie są uwzględnione).
+* **Opłata za sklep z portalu Marketplace** — [interfejs API z opłatą za Sklep Marketplace](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) zwraca opłaty w witrynie Marketplace na podstawie użycia według dnia dla określonego okresu rozliczeniowego lub daty rozpoczęcia i zakończenia (jednorazowe opłaty nie są uwzględniane).
 
-* **Arkusz cen** — [interfejsu API arkusza cen](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) przewiduje stawkę w ramach każdego miernika danego rejestracji i okres rozliczeniowy.
+* **Arkusz cen** — [interfejs API arkusza cen](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) zapewnia odpowiednią stawkę za każdy licznik dla danego okresu rejestracji i rozliczeń.
 
-* **Szczegóły wystąpienia zarezerwowane** — [interfejs API użycia wystąpień zarezerwowanych](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) zwraca zakupów użycie wystąpień zarezerwowanych. [Wystąpienia zarezerwowanego opłaty za interfejs API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) pokazuje rozliczeń transakcji wykonanych. 
+* **Szczegóły wystąpienia zastrzeżonego** — [interfejs API użycia wystąpienia zarezerwowanego](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) zwraca użycie zakupów wystąpień zarezerwowanych. [Interfejs API opłat za wystąpienia zarezerwowane](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) pokazuje dokonane transakcje rozliczania. 
 
 ## <a name="data-freshness"></a>Aktualność danych
-Elementy etag zostaną zwrócone w odpowiedzi na wszystkie powyższe wywołanie interfejsu API. Zmiana elementu Etag wskazuje, że dane zostały odświeżone.  W kolejnych wywołaniach do tego samego interfejsu API, z tymi samymi parametrami należy przekazać przechwyconych Etag z kluczem "If-None-Match" w nagłówku żądania http. Kod stanu odpowiedzi będzie "NotModified", jeśli dane nie zostały odświeżone kolejne i zostaną zwrócone nie dane. Interfejs API zwróci pełny zestaw danych w okresie wymagana zawsze wtedy, gdy nie nastąpiła zmiana elementu etag.
+Elementy ETag zostaną zwrócone w odpowiedzi dla wszystkich powyższych interfejsów API. Zmiana w elemencie ETag wskazuje, że dane zostały odświeżone.  W kolejnych wywołaniach do tego samego interfejsu API przy użyciu tych samych parametrów Przekaż przechwycony element ETag z kluczem "If-None-Match" w nagłówku żądania HTTP. Kod stanu odpowiedzi będzie "NotModified", jeśli dane nie zostały jeszcze odświeżone i nie zostaną zwrócone żadne dane. Interfejs API zwróci pełen zestaw danych dla wymaganego okresu, gdy istnieje zmiana elementu ETag.
 
-## <a name="helper-apis"></a>Interfejsy API pomocy
- **Lista okresy fakturowania** — [interfejs API rozliczeń okresy](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) zwraca listę okresami rozliczeniowymi znajdują się dane użycia dla określonego rejestracji w odwrotnej kolejności chronologicznej. Każdego okresu zawiera właściwość wskazujący trasę interfejsu API dla czterech zestawów danych — BalanceSummary, UsageDetails, opłatach w portalu Marketplace i cenniku.
+## <a name="helper-apis"></a>Interfejsy API pomocnika
+ **Wyświetlanie listy okresów rozliczeniowych** — [interfejs API okresów rozliczeniowych](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) zwraca listę okresów rozliczeniowych, które mają dane dotyczące zużycia dla określonej rejestracji w odwrotnej kolejności chronologicznej. Każdy okres zawiera właściwość wskazującą trasę interfejsu API dla czterech zestawów danych — BalanceSummary, UsageDetails, opłat w witrynie Marketplace i arkusza cen.
 
 
 ## <a name="api-response-codes"></a>Kody odpowiedzi interfejsu API   
 |Kod stanu odpowiedzi|Message|Opis|
 |-|-|-|
-|200| OK|Brak błędu|
-|401| Brak autoryzacji| Klucz interfejsu API nie można odnaleźć, nieprawidłowy, wygasło itp.|
+|200| OK|Brak błędów|
+|401| Brak autoryzacji| Nie znaleziono klucza interfejsu API, jest on nieprawidłowy, wygasł itd.|
 |404| Niedostępny| Nie znaleziono punktu końcowego raportu|
-|400| Nieprawidłowe żądanie| Nieprawidłowe parametry — zakresy dat, liczb umowy EA itp.|
-|500| Błąd serwera| Nieoczekiwany błąd podczas przetwarzania żądania| 
+|400| Nieprawidłowe żądanie| Nieprawidłowe parametry — zakresy dat, numery EA itd.|
+|500| Błąd serwera| Nieoczekiwane żądanie przetworzenia błędu| 
 
 
 

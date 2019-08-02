@@ -3,17 +3,18 @@ title: Samouczek — przygotowywanie obrazu kontenera dla usługi Azure Containe
 description: Samouczek usługi Azure Container Instances, część 1 z 3 — przygotowywanie aplikacji w obrazie kontenera do wdrożenia w usłudze Azure Container Instances
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f5d6ac81cc2553cc4a2d7b86c21417aa5ab1d572
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 719237f63d387cf56ab7947f8f168e0aa4351376
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60685703"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68325585"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Samouczek: Tworzenie obrazu kontenera do wdrożenia w usłudze Azure Container Instances
 
@@ -34,7 +35,7 @@ Podczas pracy z częścią drugą i trzecią samouczka przekażesz obraz do usł
 
 ## <a name="get-application-code"></a>Pobieranie kodu aplikacji
 
-Przykład aplikacji podany w tym samouczku obejmuje prostą aplikację internetową utworzoną za pomocą oprogramowania [Node.js][nodejs]. Aplikacja służy za statyczną stronę HTML i wygląda podobnie do poniższego zrzutu ekranu:
+Przykładowa aplikacja w tym samouczku to prosta aplikacja internetowa skompilowana w języku [Node. js][nodejs]. Aplikacja służy za statyczną stronę HTML i wygląda podobnie do poniższego zrzutu ekranu:
 
 ![Samouczek aplikacji wyświetlony w przeglądarce][aci-tutorial-app]
 
@@ -44,11 +45,11 @@ Użyj narzędzia Git, aby sklonować repozytorium przykładowej aplikacji:
 git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```
 
-Możesz też [pobrać archiwum ZIP][aci-helloworld-zip] bezpośrednio z usługi GitHub.
+Możesz również [pobrać archiwum zip][aci-helloworld-zip] bezpośrednio z usługi GitHub.
 
 ## <a name="build-the-container-image"></a>Kompilowanie obrazu kontenera
 
-Plik Dockerfile w przykładowej aplikacji przedstawia sposób tworzenia kontenera. Praca rozpoczyna się od [oficjalnego obrazu oprogramowania Node.js][docker-hub-nodeimage] opartego na systemie [Alpine Linux][alpine-linux], małej dystrybucji, która dobrze nadaje się do korzystania z kontenerów. Kolejny krok to skopiowanie plików aplikacji do kontenera, zainstalowanie zależności za pomocą programu Node Package Manager i na koniec uruchomienie aplikacji.
+Plik Dockerfile w przykładowej aplikacji przedstawia sposób tworzenia kontenera. Rozpoczyna się od [oficjalnego obrazu Node. js][docker-hub-nodeimage] opartego na systemie [Alpine Linux][alpine-linux], małej dystrybucji, która dobrze nadaje się do użycia z kontenerami. Kolejny krok to skopiowanie plików aplikacji do kontenera, zainstalowanie zależności za pomocą programu Node Package Manager i na koniec uruchomienie aplikacji.
 
 ```Dockerfile
 FROM node:8.9.3-alpine
@@ -59,13 +60,13 @@ RUN npm install
 CMD node /usr/src/app/index.js
 ```
 
-Użyj polecenia [docker build][docker-build], aby utworzyć obraz kontenera, a następnie otaguj go jako *aci-tutorial-app*:
+Użyj polecenia [Docker Build][docker-build] , aby utworzyć obraz kontenera i oznaczyć go jako *ACI-samouczek-App*:
 
 ```bash
 docker build ./aci-helloworld -t aci-tutorial-app
 ```
 
-Dane wyjściowe polecenia [docker build][docker-build] są podobne do następujących (tutaj obcięto je dla zwiększenia czytelności):
+Dane wyjściowe polecenia [Docker Build][docker-build] są podobne do następujących (obcięte na potrzeby czytelności):
 
 ```console
 $ docker build ./aci-helloworld -t aci-tutorial-app
@@ -87,7 +88,7 @@ Successfully built 6edad76d09e9
 Successfully tagged aci-tutorial-app:latest
 ```
 
-Użyj polecenia [docker images][docker-images], aby wyświetlić utworzony obraz:
+Użyj polecenia [Docker images][docker-images] , aby wyświetlić utworzony obraz:
 
 ```bash
 docker images
@@ -103,7 +104,7 @@ aci-tutorial-app    latest    5c745774dfa9    39 seconds ago    68.1 MB
 
 ## <a name="run-the-container-locally"></a>Uruchamianie kontenera w środowisku lokalnym
 
-Przed wdrożeniem kontenera w usłudze Azure Container Instances użyj polecenia [docker run][docker-run], aby uruchomić go lokalnie i sprawdzić, czy działa. Przełącznik `-d` umożliwia uruchamianie kontenera w tle, a element `-p` — mapowanie dowolnego portu komputera do portu 80 w kontenerze.
+Przed wdrożeniem kontenera do Azure Container Instances należy uruchomić go [][docker-run] lokalnie i upewnić się, że działa. Przełącznik `-d` umożliwia uruchamianie kontenera w tle, a element `-p` — mapowanie dowolnego portu komputera do portu 80 w kontenerze.
 
 ```bash
 docker run -d -p 8080:80 aci-tutorial-app
@@ -120,7 +121,7 @@ Teraz przejdź do adresu `http://localhost:8080` w przeglądarce, aby potwierdzi
 
 ![Uruchamianie aplikacji lokalnie w przeglądarce][aci-tutorial-app-local]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Podczas pracy z samouczkiem utworzono obraz kontenera, który można wdrożyć w usłudze Azure Container Instances i zweryfikować jego działanie lokalnie. Jak dotąd wykonano następujące czynności:
 

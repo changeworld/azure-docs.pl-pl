@@ -1,43 +1,43 @@
 ---
-title: Zdefiniuj unikatowe klucze dla kontenera usługi Azure Cosmos
-description: Dowiedz się, jak zdefiniować unikatowe klucze dla kontenera usługi Azure Cosmos
+title: Definiowanie unikatowych kluczy dla kontenera usługi Azure Cosmos
+description: Dowiedz się, jak definiować unikatowe klucze dla kontenera usługi Azure Cosmos
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: fb9872d2fd41066899ff9198915d573bfb4a0b84
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 313dd07c2b8eeb5684310b57d74053d3cbc1b5e1
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240976"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356385"
 ---
-# <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Zdefiniuj unikatowe klucze dla kontenera usługi Azure Cosmos
+# <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definiowanie unikatowych kluczy dla kontenera usługi Azure Cosmos
 
-W tym artykule przedstawiono różne sposoby, aby zdefiniować [unikatowe klucze](unique-keys.md) podczas tworzenia kontenera usługi Azure Cosmos. Jest to obecnie możliwe do wykonania tej operacji za pomocą witryny Azure portal lub za pomocą jednego z zestawów SDK.
+W tym artykule przedstawiono różne sposoby definiowania [unikatowych kluczy](unique-keys.md) podczas tworzenia kontenera usługi Azure Cosmos. Obecnie jest możliwe wykonanie tej operacji przy użyciu Azure Portal lub jednego z zestawów SDK.
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account) lub wybierz istniejącą grupę.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account) lub Wybierz istniejące.
 
-1. Otwórz **Eksplorator danych** okienka i wybierz kontener, w którym chcesz pracować.
+1. Otwórz okienko **Eksplorator danych** i wybierz kontener, w którym chcesz korzystać.
 
 1. Kliknij pozycję **nowy kontener**.
 
-1. W **Dodaj kontener** okno dialogowe, kliknij pozycję **+ Dodaj Unikatowy klucz** można dodać wpisu klucza unikatowy.
+1. W oknie dialogowym **Dodawanie kontenera** kliknij pozycję **+ Dodaj unikatowy klucz** , aby dodać unikatowy wpis klucza.
 
-1. Wprowadź ścieżki unikatowe ograniczenie klucza
+1. Wprowadź ścieżki unikatowego klucza ograniczenia
 
-1. W razie potrzeby dodaj więcej wpisów kluczy unikatowych, klikając **+ Dodaj Unikatowy klucz.**
+1. W razie konieczności Dodaj więcej unikatowych wpisów kluczy, klikając pozycję **+ Dodaj klucz unikatowy** .
 
-![Zrzut ekranu przedstawiający wpis unikatowego ograniczenia klucza w witrynie Azure portal](./media/how-to-define-unique-keys/unique-keys-portal.png)
+![Zrzut ekranu wpisu ograniczenia klucza unikatowego na Azure Portal](./media/how-to-define-unique-keys/unique-keys-portal.png)
 
-## <a name="use-the-net-sdk-v2"></a>Użyj zestawu SDK platformy .NET w wersji 2
+## <a name="use-the-net-sdk-v2"></a>Korzystanie z zestawu .NET SDK V2
 
-Podczas tworzenia nowego kontenera przy użyciu [zestawu SDK platformy .NET w wersji 2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/), `UniqueKeyPolicy` obiekt może służyć do definiowania ograniczeń unique klucza.
+Podczas tworzenia nowego kontenera przy użyciu [zestawu .NET SDK V2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) `UniqueKeyPolicy` obiekt może służyć do definiowania unikatowych ograniczeń klucza.
 
 ```csharp
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
@@ -54,9 +54,9 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 });
 ```
 
-## <a name="use-the-java-sdk"></a>Korzystanie z języka Java SDK
+## <a name="use-the-java-sdk"></a>Korzystanie z zestawu SDK języka Java
 
-Podczas tworzenia nowego kontenera przy użyciu [zestawu Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb), `UniqueKeyPolicy` obiekt może służyć do definiowania ograniczeń unique klucza.
+Podczas tworzenia nowego kontenera przy użyciu `UniqueKeyPolicy` [zestawu SDK języka Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)obiekt może służyć do definiowania unikatowych ograniczeń klucza.
 
 ```java
 // create a new DocumentCollection object
@@ -86,9 +86,9 @@ container.setUniqueKeyPolicy(uniqueKeyPolicy);
 client.createCollection(String.format("/dbs/%s", "database"), container, null);
 ```
 
-## <a name="use-the-nodejs-sdk"></a>Korzystanie z zestawu SDK środowiska Node.js
+## <a name="use-the-nodejs-sdk"></a>Korzystanie z zestawu SDK środowiska Node. js
 
-Podczas tworzenia nowego kontenera przy użyciu [zestawu SDK środowiska Node.js](https://www.npmjs.com/package/@azure/cosmos), `UniqueKeyPolicy` obiekt może służyć do definiowania ograniczeń unique klucza.
+Podczas tworzenia nowego kontenera przy użyciu `UniqueKeyPolicy` [zestawu SDK środowiska Node. js](https://www.npmjs.com/package/@azure/cosmos)obiekt może służyć do definiowania unikatowych ograniczeń klucza.
 
 ```javascript
 client.database('database').containers.create({
@@ -102,17 +102,17 @@ client.database('database').containers.create({
 });
 ```
 
-## <a name="use-the-python-sdk"></a>Korzystanie z języka Python SDK
+## <a name="use-the-python-sdk"></a>Korzystanie z zestawu SDK języka Python
 
-Podczas tworzenia nowego kontenera przy użyciu [zestawu SDK języka Python](https://pypi.org/project/azure-cosmos/), unikatowych ograniczeń klucza można określić jako część słownika przekazany jako parametr.
+Podczas tworzenia nowego kontenera przy użyciu [zestawu SDK języka Python](https://pypi.org/project/azure-cosmos/)można określić unikalne ograniczenia klucza jako część słownika przekazaną jako parametr.
 
 ```python
 client.CreateContainer('dbs/' + config['DATABASE'], {
     'id': 'container',
     'uniqueKeyPolicy': {
         'uniqueKeys': [
-            { 'paths': ['/firstName', '/lastName', '/emailAddress'] },
-            { 'paths': ['/address/zipCode'] }
+            {'paths': ['/firstName', '/lastName', '/emailAddress']},
+            {'paths': ['/address/zipCode']}
         ]
     }
 })
@@ -120,5 +120,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [partycjonowania](partition-data.md)
-- Zapoznaj się z [jak działa indeksowanie](index-overview.md)
+- Dowiedz się [](partition-data.md) więcej na temat partycjonowania
+- Zapoznaj się z [działaniem indeksowania](index-overview.md)

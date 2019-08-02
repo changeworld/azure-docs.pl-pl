@@ -1,0 +1,149 @@
+---
+title: 'Samouczek: Azure Active Directory integrację z usługą productboard | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i productboard.
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: mtillman
+ms.reviewer: barbkess
+ms.assetid: 1f49e39f-53e4-4170-877a-546898d66d11
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: tutorial
+ms.date: 07/04/2019
+ms.author: jeedes
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a4974f4e39b0b16971d0d666134618d5a1f64e11
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68425965"
+---
+# <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>Samouczek: Integruj productboard z Azure Active Directory
+
+W tym samouczku dowiesz się, jak zintegrować usługę productboard z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi productboard z usługą Azure AD można:
+
+* Kontrolka w usłudze Azure AD, która ma dostęp do productboard.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi productboard przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
+
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby rozpocząć, potrzebne są następujące elementy:
+
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz skorzystać z miesięcznej bezpłatnej wersji próbnej [](https://azure.microsoft.com/pricing/free-trial/).
+* subskrypcja z włączonym logowaniem jednokrotnym (SSO) productboard.
+
+## <a name="scenario-description"></a>Opis scenariusza
+
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* productboard obsługuje usługę **SP i dostawcy tożsamości** zainicjowano Logowanie jednokrotne
+* productboard obsługuje Inicjowanie obsługi użytkowników **just in Time**
+
+## <a name="adding-productboard-from-the-gallery"></a>Dodawanie productboard z galerii
+
+Aby skonfigurować integrację programu productboard z usługą Azure AD, musisz dodać productboard z galerii do listy zarządzanych aplikacji SaaS.
+
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **productboard** w polu wyszukiwania.
+1. Wybierz pozycję **productboard** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą productboard przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w productboard.
+
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą productboard, wykonaj następujące bloki konstrukcyjne:
+
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie](#configure-productboard-sso)** jednokrotne w usłudze productboard, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Utwórz użytkownika testowego productboard](#create-productboard-test-user)** , aby uzyskać odpowiednik Britta Simon w productboard, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
+
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
+
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Productboard** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
+
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
+
+    W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<projectname>.productboard.com/users/auth/saml/callback`
+
+1. Kliknij pozycję **Ustaw dodatkowe adresy URL** i wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w trybie inicjowania programu **SP** :
+
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<projectname>.productboard.com/`
+
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta productboard](mailto:support@productboard.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** kliknij przycisk Kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
+
+    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
+
+### <a name="configure-productboard-sso"></a>Konfigurowanie logowania jednokrotnego productboard
+
+Aby skonfigurować Logowanie jednokrotne na stronie **productboard** , musisz wysłać **adres URL metadanych federacji aplikacji** do [zespołu pomocy technicznej productboard](mailto:support@productboard.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
+
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi productboard.
+
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **productboard**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
+
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-productboard-test-user"></a>Utwórz użytkownika testowego productboard
+
+W tej sekcji użytkownik o nazwie B. Simon został utworzony w productboard. productboard obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze productboard, zostanie utworzony nowy po uwierzytelnieniu.
+
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne
+
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+
+Po kliknięciu kafelka productboard w panelu dostępu należy automatycznie zalogować się do productboard, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+
+## <a name="additional-resources"></a>Dodatkowe zasoby
+
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

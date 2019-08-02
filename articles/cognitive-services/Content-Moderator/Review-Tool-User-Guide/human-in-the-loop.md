@@ -1,7 +1,7 @@
 ---
-title: Informacje na temat narzędzia przeglądu - Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się więcej o narzędziu Content Moderator analizować, witryny sieci Web, która koordynuje połączone sztucznej Inteligencji i nakładu pracy Moderowanie przeglądu przez ludzi.
+title: Poznaj pojęcia dotyczące narzędzia do przeglądu — Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się więcej na temat narzędzia do przeglądu Content Moderator, witryny sieci Web, która koordynuje związany z tym, że nastąpi łagodzenie połączonych plików AI i
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -10,43 +10,43 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: sajagtap
-ms.openlocfilehash: b7ec997fd3e9bfe294050893d80fd57a96a47aae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f20b9c824045ac2f8c13df3ed8f776195de611a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61270008"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564513"
 ---
-# <a name="content-moderator-review-tool"></a>Content narzędzie do przeglądu moderatora
+# <a name="content-moderator-review-tool"></a>Narzędzie do przeglądu Content Moderator
 
-Usługa Azure Content Moderator udostępnia usługi połączyć machine learning moderowanie zawartości dzięki ludziom dokonywanie i [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com) witryny sieci Web jest przyjazny dla użytkownika fronton, który zapewnia szczegółowe dostęp do tych usług.
+Usługa Azure Content Moderator zapewnia usługi do łączenia moderowania zawartości usługi Machine Learning z recenzjami ludzkimi, a witryna internetowa [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com) jest przyjaznym frontonem, który zapewnia szczegółowy dostęp do tych usług.
 
-![Pulpit nawigacyjny narzędzie do przeglądu w przeglądarce](./images/0-dashboard.png)
+![Pulpit nawigacyjny narzędzia przeglądu w przeglądarce](./images/0-dashboard.png)
 
 ## <a name="what-it-does"></a>Wyniki działania
 
-[Narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com), gdy jest używana w połączeniu z wspomaganego maszynowo moderowania interfejsów API, można wykonywać następujące zadania w procesie moderowanie zawartości:
+[Narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com), używane w połączeniu z interfejsami API moderowanymi maszynowo, umożliwia wykonywanie następujących zadań w procesie moderowania zawartości:
 
-- Jeden zestaw narzędzi umożliwia moderowanie zawartości w wielu formatach (tekstu, obrazów i wideo).
-- Aby zautomatyzować tworzenie ludzkich [przeglądy](../review-api.md#reviews) gdy interfejs API moderowania powoduje wróć w.
-- Przypisz lub Eskalowanie recenzji zawartości do wielu zespołów przeglądu, uporządkowane według zawartości poziom kategorii lub środowiska.
-- Użyj domyślnej lub niestandardowej logiki filtry ([przepływy pracy](../review-api.md#workflows)) do sortowania i śledzenie zawartości, bez konieczności pisania jakiegokolwiek kodu.
-- Użyj [łączników](./configure.md#connectors) przetwarzania zawartości z PhotoDNA firmy Microsoft, analiza tekstu i interfejsy API rozpoznawania twarzy, oprócz interfejsów API Moderator zawartości.
-- Tworzenie własnego łącznika można tworzyć przepływy pracy dla dowolnego interfejsu API lub procesów biznesowych.
-- Uzyskaj kluczowe metryki wydajności na procesy moderowanie zawartości.
+- Użyj jednego zestawu narzędzi do umiarkowanej zawartości w wielu formatach (tekst, obraz i wideo).
+- Automatyzuj tworzenie przeglądów ludzkich [](../review-api.md#reviews) , gdy są dostępne wyniki interfejsu API moderowania.
+- Przypisywać lub eskalować przeglądy zawartości do wielu zespołów przeglądów zorganizowanych według kategorii zawartości lub poziomu doświadczenia.
+- Użyj domyślnych lub niestandardowych filtrów logiki,[](../review-api.md#workflows)aby sortować i śledzić zawartość, bez konieczności pisania kodu.
+- Użyj [łączników](./configure.md#connectors) , aby przetwarzać zawartość za pomocą interfejsów Content moderator API firmy Microsoft PhotoDNA, analiza tekstu i rozpoznawania.
+- Utwórz własny łącznik, aby utworzyć przepływy pracy dla dowolnego interfejsu API lub procesu biznesowego.
+- Pobierz kluczowe metryki wydajności procesów moderowania zawartości.
 
-## <a name="review-tool-dashboard"></a>Pulpit nawigacyjny narzędzie do przeglądu
+## <a name="review-tool-dashboard"></a>Przejrzyj pulpit nawigacyjny narzędzi
 
-Na **pulpit nawigacyjny** karcie widać najważniejszych metryk dla zawartości przeglądy wykonywane w narzędziu. Zobacz liczby całkowitej, zakończone i oczekujących przeglądów dla obrazów, tekstu i zawartości wideo. Widać również podział użytkownicy i zespoły, które zostały wykonane, przeglądy, a także tagi Moderowanie, które zostały zastosowane.
+Na karcie **pulpit nawigacyjny** można zobaczyć kluczowe metryki dla przeglądów zawartości wykonywane w ramach tego narzędzia. Zobacz, ile całkowitej, pełnej i oczekującej oceny zawartości obrazu, tekstu i wideo. Można także zobaczyć podział użytkowników i zespołów, którzy ukończyli przeglądy, a także Tagi moderowania, które zostały zastosowane.
 
 ![Wyświetl pulpit nawigacyjny](images/0-dashboard.png)
 
-## <a name="review-tool-credentials"></a>Poświadczenia narzędzia do przeglądu
+## <a name="review-tool-credentials"></a>Zapoznaj się z poświadczeniami narzędzia
 
-Kiedy należy zarejestrować się przy użyciu [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com), zostanie wyświetlony monit wybierz region platformy Azure o koncie. Jest to spowodowane [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com) generuje klucz bezpłatnej wersji próbnej usługi Azure Content Moderator; konieczne będzie ten klucz ma dostęp do wszystkich usług z wywołania REST lub zestawu SDK klienta. Adres URL punktu końcowego klucza i interfejsu API można wyświetlić, wybierając **ustawienia** > **poświadczenia**.
+Po zarejestrowaniu się za pomocą [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com)zostanie wyświetlony monit o wybranie regionu platformy Azure dla konta. Wynika to z faktu, że [Narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com) generuje bezpłatny klucz wersji próbnej dla usług Azure Content moderator Services. Ten klucz będzie potrzebny do uzyskiwania dostępu do dowolnych usług z poziomu usługi REST lub zestawu SDK klienta. Możesz wyświetlić klucz i adres URL punktu końcowego interfejsu API, wybierając pozycję **Ustawienia** > **poświadczenia**.
 
-![Poświadczenia usługi Content Moderator](images/settings-6-credentials.png)
+![Poświadczenia Content Moderator](images/settings-6-credentials.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [skonfigurować narzędzie do przeglądu](./configure.md) Aby dowiedzieć się, jak uzyskać dostęp do zasobów narzędzie do przeglądu i zmieniać ustawienia.
+Zobacz [Konfigurowanie narzędzia do przeglądu](./configure.md) , aby dowiedzieć się, jak uzyskać dostęp do zasobów narzędzia do przeglądu i zmienić ustawienia.

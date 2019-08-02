@@ -1,6 +1,6 @@
 ---
-title: Wygaśnięciu komunikatów w usłudze Azure Service Bus | Dokumentacja firmy Microsoft
-description: Wygaśnięcia i godzina wygaśnięcia komunikatów usługi Azure Service Bus
+title: Wygaśnięcie komunikatu Azure Service Bus | Microsoft Docs
+description: Wygaśnięcie i czas na żywo komunikatów Azure Service Bus
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,78 +13,78 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: fdfd7794961b0254526b124525c6e978d13b0114
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 109ecc671b43365c433a626ff8d9fe55a5a626b5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800274"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310295"
 ---
 # <a name="message-expiration-time-to-live"></a>Wygaśnięcie komunikatu (czas wygaśnięcia)
 
-Ładunek w wiadomości, lub polecenie lub zapytanie komunikat przekazywanych do odbiorcy przez prawie zawsze podlega pewnego rodzaju termin wygaśnięcia na poziomie aplikacji. Po takich terminu już dostarczania zawartości lub Żądana operacja nie jest wykonywany.
+Ładunek w wiadomości lub polecenie lub zapytanie wysyłane przez komunikat do odbiorcy jest prawie zawsze uzależnione od formy wygaśnięcia na poziomie aplikacji. Po upływie tego terminu zawartość nie jest już dostarczana lub żądana operacja nie jest już wykonywana.
 
-Środowiska projektowania i testowania w których kolejki i tematy są często używane w kontekście częściowe przebiegach aktualizacji aplikacji lub części aplikacji jest również pożądane dla wiadomości testowe opuszczone będą automatycznie bezużyteczne tak, aby uruchomić Następny test może rozpoczynanie czyszczenia.
+W przypadku środowisk deweloperskich i testowych, w których kolejki i tematy często są używane w kontekście częściowych przebiegów aplikacji lub części aplikacji, pożądane jest również, aby komunikaty testowe były automatycznie zbierane jako elementy bezużyteczne, aby następny przebieg testu mógł Rozpocznij czyszczenie.
 
-Wygaśnięcie dla wszystkie poszczególne komunikaty mogą być kontrolowane przez ustawienie [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) właściwości systemu, który określa względne czasu trwania. Czas wygaśnięcia staje się natychmiastową bezwzględny, gdy komunikat jest umieszczonych w kolejce do jednostki. W tym czasie [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) właściwość przyjmuje wartość [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Ustawienie czasu wygaśnięcia (TTL), na komunikatu obsługiwanego przez brokera nie są wymuszane, gdy żaden klient nie jest aktywnie nasłuchuje.
+Wygaśnięcie poszczególnych komunikatów może być kontrolowane przez ustawienie właściwości System [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) , która określa względny czas trwania. Wygaśnięcie jest bezwzględnym chwilą, gdy wiadomość zostanie przejdzie do kolejki w jednostce. W tym czasie Właściwość [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) przyjmuje wartość [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Ustawienie czasu wygaśnięcia (TTL) dla komunikatu obsługiwanego przez brokera nie jest wymuszane w przypadku, gdy żaden klient aktywnie nasłuchuje.
 
-Ostatnie **ExpiresAtUtc** błyskawiczne, wiadomości kwalifikować się do pobrania. Czas wygaśnięcia nie ma wpływu na wiadomości, które są aktualnie zablokowane w celu dostarczenia; te komunikaty są nadal obsługiwane normalnie. Czy wygaśnięciu blokady komunikat zostanie porzucony, po upływie ma natychmiastowy wpływ.
+Po **ExpiresAtUtc** natychmiast wiadomości stają się nieodpowiednie do pobrania. Wygaśnięcie nie ma wpływu na komunikaty, które są aktualnie zablokowane na potrzeby dostarczania; te komunikaty są nadal obsługiwane normalnie. Jeśli blokada wygaśnie lub komunikat zostanie porzucony, wygaśnięcie będzie obowiązywać natychmiast.
 
-Natomiast wiadomość blokady, aplikacja może być w posiadaniu komunikat, który wygasł. Czy chce hypervreplicavolumesize przetwarzania lub wybiera można porzucić wiadomości w aplikacji zależy od implementujący.
+Gdy wiadomość jest zablokowana, aplikacja może być w posiadaniu wiadomości, która wygasła. Bez względu na to, czy aplikacja jest gotowa do przetworzenia, czy też decyduje o odrzuceniu komunikatu do realizatora.
 
-## <a name="entity-level-expiration"></a>Jednostki poziomu ważności
+## <a name="entity-level-expiration"></a>Wygaśnięcie na poziomie jednostki
 
-Wszystkie komunikaty wysyłane do kolejki lub tematu jest zależna od wygaśnięcia domyślny, który jest ustawiony w jednostce poziom dzięki [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) właściwości, które również można ustawić w portalu podczas tworzenia i zmienić później. Domyślny czas wygaśnięcia jest używany dla wszystkich komunikatów wysłanych do jednostki gdzie [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) nie jest jawnie określona. Domyślny czas wygaśnięcia działa również jako pułap **TimeToLive** wartość. Wiadomości, które mają dłuższego **TimeToLive** wygaśnięcia niż domyślna wartość dyskretnie są dostosowywane do **defaultMessageTimeToLive** wartość przed umieszczonych w kolejce.
+Wszystkie komunikaty wysyłane do kolejki lub tematu podlegają domyślnym wygaśnięciu ustawionym na poziomie jednostki z właściwością [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) , które można również ustawić w portalu podczas tworzenia i korygowania później. Domyślne wygaśnięcie jest używane dla wszystkich komunikatów wysyłanych do jednostki, gdzie [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) nie jest jawnie ustawiona. Domyślne wygaśnięcie również działa jako pułap dla wartości **TimeToLive** . Komunikaty, które mają dłuższy czas wygaśnięcia **TimeToLive** niż wartość domyślna, są w trybie dyskretnym dostosowywane do wartości **defaultMessageTimeToLive** przed utworzeniem ich w kolejce.
 
 > [!NOTE]
-> Wartość domyślna [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) wartość dla komunikatu obsługiwanego przez brokera jest [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) , jeśli nie określono inaczej.
+> Domyślna wartość [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) dla komunikatu obsługiwanego przez brokera to [TimeSpan. Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) , jeśli nie określono inaczej.
 >
-> Dla jednostki (kolejek i tematów) do obsługi komunikatów, domyślny czas wygaśnięcia jest również [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) usługi Service Bus w warstwach standardowa i premium.  W przypadku warstwy basic domyślny czas wygaśnięcia to 14 dni.
+> W przypadku jednostek obsługi komunikatów (kolejek i tematów) domyślny czas wygaśnięcia jest określany jako [TimeSpan. Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) dla warstw Service Bus Standard i Premium.  W przypadku warstwy Podstawowa domyślny czas wygaśnięcia wynosi 14 dni.
 
-Opcjonalnie można przenieść wygasłe wiadomości do [kolejki utraconych wiadomości](service-bus-dead-letter-queues.md) , ustawiając [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) właściwości lub zaznaczając odpowiednie pole wyboru w portalu. Jeśli opcja zostanie wyłączona, wygasłe wiadomości są porzucane. Wygasłe wiadomości przeniesiona do kolejki utraconych wiadomości można odróżnić od innych lettered Obsługa utraconych komunikatów poprzez ocenę [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) właściwość, która przez brokera są przechowywane w sekcji właściwości użytkownika; wartość [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) w tym przypadku.
+Wygasłe komunikaty można opcjonalnie przenieść do [kolejki utraconych wiadomości](service-bus-dead-letter-queues.md) , ustawiając właściwość [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) lub zaznaczając odpowiednie pole w portalu. Jeśli opcja jest wyłączona, wygasłe komunikaty są usuwane. Wygasłe komunikaty przeniesione do kolejki utraconych wiadomości można odróżnić od innych utraconych wiadomości, oceniając Właściwość [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) , która jest przechowywana przez brokera w sekcji właściwości użytkownika; w tym przypadku wartość jest [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) .
 
-W przypadku wyżej, w którym komunikat jest chroniony przed wygaśnięcia podczas blokady i jeśli flaga jest ustawiona na jednostce wiadomość zostanie przeniesiona do kolejki utraconych wiadomości, jak blokadę zostaje porzucona lub wygaśnie. Jednak nie jest przenoszony Jeśli komunikat zostanie pomyślnie rozliczona, która zakłada się, czy aplikacja ma pomyślnie obsłużony, pomimo nominalna wygaśnięcia.
+W powyższym przypadku, gdy komunikat jest chroniony przed wygaśnięciem, a w obszarze Zablokuj i jeśli flaga jest ustawiona w jednostce, komunikat jest przenoszony do kolejki utraconych wiadomości, ponieważ blokada została porzucona lub wygaśnie. Nie jest on jednak przenoszony w przypadku pomyślnego rozliczenia komunikatu, a następnie zakłada, że aplikacja została pomyślnie obsłużona, a nie przez wartość nominalną ważności.
 
-Kombinacja [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) i automatyczne (i transakcyjnych) Obsługa utraconych komunikatów po upływie są przydatnym narzędziem do ustanawiania zaufania do tego, czy zadanie do obsługi lub grupę programów obsługi w ramach terminu będą pobierane dla Przetwarzanie jako termin zostanie osiągnięty.
+Kombinacja [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) i automatycznych (i transakcyjnych) utraconych wiadomości w dniu wygaśnięcia jest cennym narzędziem do ustanowienia pewności, czy zadanie przekazane do procedury obsługi lub grupy programów obsługi w ramach terminu ostatecznego jest pobierane do przetwarzania jako termin ostateczny zostanie osiągnięty.
 
-Na przykład należy wziąć pod uwagę witryny sieci web, który musi niezawodne wykonywanie zadań w wewnętrznej bazie danych ograniczonego skali, a od czasu do czasu gwałtowne wzrosty ruchu środowiska, lub chce być odizolowane od dostępności odcinki tego wewnętrznej bazy danych. W przypadku regularnego obsługi po stronie serwera dla danych użytkownika przesłane wypycha dane do kolejki i następnie otrzyma odpowiedź potwierdzenie pomyślnego obsługi transakcji do kolejki odpowiedzi. W przypadku nagły wzrost ruchu obsługi wewnętrznej bazy danych nie może przetworzyć jego elementów zaległości w czasie, wygasłych zadania są zwracane do kolejki utraconych wiadomości. Użytkownik interakcyjny, może zostać poinformowany, czy Żądana operacja zajmie trochę dłużej niż zwykle, a żądanie następnie można umieścić w kolejce różne ścieżki przetwarzania wysyłania wyniku przetwarzania ostatecznej użytkownikowi za pośrednictwem poczty e-mail. 
+Rozważmy na przykład witrynę sieci Web, która wymaga niezawodnego wykonywania zadań w zasobie z ograniczeniami skalowalnymi, a czasami powoduje, że ruch jest osiągany w zależności od dostępności tego zaplecza. W regularnych przypadkach program obsługi po stronie serwera dla przesłanych danych użytkownika wypycha informacje do kolejki, a następnie otrzymuje odpowiedź potwierdzającą pomyślne obsłudze transakcji w kolejce odpowiedzi. W przypadku przepełnienia ruchu, gdy program obsługi zaplecza nie może przetworzyć swoich elementów zaległości w czasie, wygasłe zadania są zwracane w kolejce utraconych wiadomości. Użytkownik interaktywny może zostać powiadomiony o tym, że żądana operacja potrwa nieco dłużej niż zwykle, a żądanie może zostać umieszczone w innej kolejce dla ścieżki przetwarzania, w której wyniki przetwarzania ostatecznego są wysyłane do użytkownika za pośrednictwem poczty e-mail. 
 
 
-## <a name="temporary-entities"></a>Tymczasowe jednostek
+## <a name="temporary-entities"></a>Jednostki tymczasowe
 
-Kolejki usługi Service Bus, tematy i subskrypcje, mogą być tworzone jako tymczasowy jednostki, które są automatycznie usuwane, gdy nie były używane przez określony czas.
+Service Bus kolejkami, tematami i subskrypcjami można utworzyć jako jednostki tymczasowe, które są automatycznie usuwane, gdy nie były używane przez określony czas.
  
-Automatyczne oczyszczanie jest przydatne w scenariuszach tworzenia i testowania, w których podmioty są tworzone dynamicznie i nie są czyszczone po użyciu ze względu na pewne zakłóceń w działaniu testów lub debugowanie Uruchom. Jest również przydatna, jeśli aplikacja tworzy dynamiczne jednostek, takich jak kolejki odpowiedzi, do odbierania odpowiedzi z powrotem do procesu serwera sieci web lub do innego obiektu stosunkowo krótkotrwałe, gdzie jest trudny do niezawodnego wyczyścić te jednostki po obiektu wystąpienie zostanie usunięte.
+Automatyczne czyszczenie jest przydatne w scenariuszach deweloperskich i testowych, w których jednostki są tworzone dynamicznie i nie są czyszczone po ich użyciu z powodu przerwy w działaniu testu lub debugowania. Jest on również przydatny, gdy aplikacja tworzy jednostki dynamiczne, takie jak kolejka odpowiedzi, do odbierania odpowiedzi z powrotem do procesu serwera sieci Web lub do innego stosunkowo krótkotrwałego obiektu, w którym trudno wyczyścić te jednostki, gdy obiekt wystąpienie znika.
 
-Ta funkcja jest włączona, przy użyciu [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) właściwości. Ta właściwość jest równa czas trwania, dla którego jednostki musi być bezczynne (nieużywane) zanim zostanie on automatycznie usunięty. Minimalna wartość tej właściwości to 5.
+Funkcja jest włączona przy użyciu właściwości [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) . Ta właściwość jest ustawiona na czas trwania, przez który jednostka musi być bezczynna (nieużywana), zanim zostanie automatycznie usunięta. Minimalna wartość tej właściwości to 5.
  
-**AutoDeleteOnIdle** za pośrednictwem operacji usługi Azure Resource Manager lub przy użyciu klienta programu .NET Framework, należy ustawić właściwość [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) interfejsów API. Nie możesz ustawić w portalu.
+Właściwość **autoDeleteOnIdle** musi być ustawiona za pośrednictwem operacji Azure Resource Manager lub za pośrednictwem interfejsów [](/dotnet/api/microsoft.servicebus.namespacemanager) API .NET Framework Client NamespaceManager. Nie można go ustawić w portalu.
 
 ## <a name="idleness"></a>Bezczynność
 
-Oto, co uznawany za Bezczynność jednostek (kolejki, tematy i subskrypcje):
+Poniżej przedstawiono informacje, które są uważane za bezczynne jednostki (kolejki, tematy i subskrypcje):
 
 - Kolejki
-    - Nie wysyła  
-    - Nie odbiera  
-    - Brak aktualizacji do kolejki  
-    - Nie zaplanowanych wiadomości  
-    - Przeglądaj/Odbierz 
+    - Brak wysłanych  
+    - Nie odebrano  
+    - Brak aktualizacji kolejki  
+    - Brak zaplanowanych komunikatów  
+    - Brak przeglądania/wglądu 
 - Tematy  
-    - Nie wysyła  
-    - Brak aktualizacji do tematu  
-    - Nie zaplanowanych wiadomości 
-- Subscriptions
-    - Nie odbiera  
-    - Brak aktualizacji do subskrypcji  
-    - Nie nowych zasad dodane do subskrypcji  
-    - Przeglądaj/Odbierz  
+    - Brak wysłanych  
+    - Brak aktualizacji tematu  
+    - Brak zaplanowanych komunikatów 
+- Subskrypcje
+    - Nie odebrano  
+    - Brak aktualizacji subskrypcji  
+    - Nie dodano żadnych nowych reguł do subskrypcji  
+    - Brak przeglądania/wglądu  
  
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus, zobacz następujące tematy:
+Aby dowiedzieć się więcej na temat Service Bus Messaging, zobacz następujące tematy:
 
 * [Kolejki, tematy i subskrypcje usługi Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)

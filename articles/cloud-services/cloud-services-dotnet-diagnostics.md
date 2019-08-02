@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: gwallace
 ms.openlocfilehash: 5f2ec77452b90d4270de043955fc0b443f045d5b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "68359692"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Włączanie Diagnostyka Azure na platformie Azure Cloud Services
@@ -24,7 +24,7 @@ Zobacz [Diagnostyka Azure przegląd](../azure-diagnostics.md) dla tła na Diagno
 W tym przewodniku opisano sposób implementacji roli procesu roboczego platformy Azure, która emituje dane telemetryczne przy użyciu klasy EventSource programu .NET. Diagnostyka Azure służy do zbierania danych telemetrycznych i przechowywania ich na koncie usługi Azure Storage. Podczas tworzenia roli procesu roboczego program Visual Studio automatycznie włącza diagnostykę 1,0 w ramach rozwiązania w zestawach SDK platformy Azure dla platformy .NET 2,4 i starszych. Poniższe instrukcje opisują proces tworzenia roli procesu roboczego, wyłączania diagnostyki 1,0 z rozwiązania oraz wdrażania diagnostyki 1,2 lub 1,3 do roli procesu roboczego.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule przyjęto założenie, że masz subskrypcję platformy Azure i korzystasz z programu Visual Studio z zestawem Azure SDK. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć konto [bezpłatnej wersji próbnej][Free Trial]. Make sure to [Install and configure Azure PowerShell version 0.8.7 or later][Install and configure Azure PowerShell version 0.8.7 or later].
+W tym artykule przyjęto założenie, że masz subskrypcję platformy Azure i korzystasz z programu Visual Studio z zestawem Azure SDK. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć konto [bezpłatnej wersji próbnej][Free Trial]. Upewnij się [, że instalujesz i konfigurujesz Azure PowerShell w wersji 0.8.7 lub nowszej][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>Krok 1: Utwórz rolę procesu roboczego
 1. Uruchom program **Visual Studio**.
@@ -136,7 +136,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Dodaj plik XML do projektu **WorkerRole1** , klikając prawym przyciskiem myszy projekt **WorkerRole1** i wybierając polecenie **Dodaj** -> **nowy element...** -> **C#**  -> **Plik XML**danychelementówwizualnych -> . Nazwij plik "WadExample. xml".
+2. Dodaj plik XML do projektu **WorkerRole1** , klikając prawym przyciskiem myszy projekt **WorkerRole1** i wybierając polecenie **Dodaj** -> **nowy element...** -> **C#**  -> **Plik XML** **** danychelementówwizualnych -> . Nazwij plik "WadExample. xml".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. Skojarz plik WadConfig. xsd z plikiem konfiguracji. Upewnij się, że okno edytora WadExample. XML jest oknem aktywnym. Naciśnij klawisz **F4** , aby otworzyć okno **Właściwości** . Kliknij właściwość **schematy** w oknie **Właściwości** . Kliknij przycisk **...** we właściwości **schematy** . Kliknij przycisk **Dodaj...** i przejdź do lokalizacji, w której zapisano plik XSD, a następnie wybierz plik WadConfig. xsd. Kliknij przycisk **OK**.

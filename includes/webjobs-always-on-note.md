@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 14f2e663e3db81684a73c4ea093ed0403cbb09ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 82e5221daefaecb687ad9feb79305e546d4ec17e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183389"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424167"
 ---
 > [!NOTE]
-> Aplikacja sieci web można limit czasu po upływie 20 minut braku aktywności. Tylko żądania do aplikacji internetowej rzeczywiste zresetowanie czasomierza. Wyświetlanie konfiguracji aplikacji w witrynie Azure portal lub wysyłania żądań do lokacji zaawansowane narzędzia (`https://<app_name>.scm.azurewebsites.net`) nie Resetuj czasomierza. Jeśli aplikacja działa w ciągłej lub Włącz zaplanowane zadania Webjob, **Always On** aby zapewnić niezawodne uruchamianie zadania Webjob. Ta funkcja jest dostępna tylko w języku Basic, Standard i Premium [warstw cenowych](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+> Aplikacja internetowa może przekroczyć limit czasu po 20 minutach braku aktywności. Czasomierz może zresetować tylko żądania do rzeczywistej aplikacji sieci Web. Wyświetlanie konfiguracji aplikacji w Azure Portal lub wykonywanie żądań do zaawansowanej witryny narzędzi (`https://<app_name>.scm.azurewebsites.net`) nie Zresetuj czasomierza. Jeśli aplikacja uruchamia zadania WebJob w trybie ciągłym lub zaplanowanym (wyzwalacz czasomierza), Włącz opcję **zawsze** włączone, aby upewnić się, że Zadania WebJob działają niezawodnie. Ta funkcja jest dostępna tylko w warstwach cenowych podstawowa, standardowa [](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)i Premium.

@@ -1,6 +1,6 @@
 ---
-title: Warstwa ogólnego przeznaczenia usługi — Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o usłudze Azure SQL Database w warstwie ogólnego przeznaczenia
+title: Warstwa usługi ogólnego przeznaczenia — Azure SQL Database | Microsoft Docs
+description: Dowiedz się więcej na temat Azure SQL Database warstwie ogólnego przeznaczenia
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -8,48 +8,47 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
-ms.author: jovanpop-msft
+ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: b972ea985a09457d8b6a17a292e18754761f5a6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 711552501825e5d34d3547ede8dc998065083c96
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479196"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566738"
 ---
-# <a name="general-purpose-service-tier---azure-sql-database"></a>Warstwy usług ogólnego przeznaczenia — usługi Azure SQL Database
+# <a name="general-purpose-service-tier---azure-sql-database"></a>Warstwa usługi ogólnego przeznaczenia — Azure SQL Database
 
 > [!NOTE]
-> Warstwa ogólnego przeznaczenia usługi w modelu zakupu opartego na rdzeniach wirtualnych nosi nazwę w modelu zakupu opartego na jednostkach DTU warstwie usługi standardowa. Dla porównania modelu zakupu opartego na rdzeniach wirtualnych za pomocą modelu zakupu opartego na jednostkach DTU, zobacz [zakupu modeli i zasobów bazy danych SQL Azure](sql-database-purchase-models.md).
+> Warstwa usług ogólnego przeznaczenia w modelu zakupu opartego na rdzeń wirtualny jest nazywana warstwą usługi standardowej w modelu zakupu opartym na jednostkach DTU. Aby zapoznać się z porównaniem modelu zakupu opartego na rdzeń wirtualny z modelem zakupów opartym na jednostkach DTU, zobacz [Azure SQL Database kupowanie modeli i zasobów](sql-database-purchase-models.md).
 
-Usługa Azure SQL Database jest oparty na architekturze aparatu bazy danych programu SQL Server zostało dostosowane do środowiska chmury w celu zapewnienia dostępności 99,99%, nawet w przypadku wystąpienia awarii infrastruktury. Istnieją trzy warstwy usług, które są używane w usłudze Azure SQL Database, każdy z różnych modeli architektury. Te warstwy usługi są:
+Azure SQL Database jest oparta na architekturze SQL Server Database Engine przystosowanej do środowiska chmury w celu zapewnienia dostępności 99,99% nawet w przypadku awarii infrastruktury. Istnieją trzy warstwy usług, które są używane w Azure SQL Database, z których każdy ma różne modele architektury. Następujące warstwy usług:
 
-- Zastosowania ogólne
+- Ogólnego przeznaczenia
 - Krytyczne dla działania firmy
 - Hiperskala
 
-Architektury model dla warstwy usług ogólnego przeznaczenia opiera się na oddzielenie zasobów obliczeniowych i magazynowych. Ten model architektury opiera się na wysoką dostępność i niezawodność usługi Azure Blob storage, w sposób przezroczysty replikuje pliki bazy danych i gwarantuje bez utraty danych, jeśli podstawowy błąd infrastruktury się dzieje.
+Model architektoniczny dla warstwy usług ogólnego przeznaczenia jest oparty na rozdzieleniu zasobów obliczeniowych i magazynu. Ten model architektury polega na wysokiej dostępności i niezawodności magazynu obiektów blob platformy Azure, który w sposób przezroczysty replikuje pliki bazy danych i nie gwarantuje utraty danych, jeśli wystąpi awaria infrastruktury.
 
-Na poniższej ilustracji przedstawiono cztery węzły w standardowych architektury modelu z rozdzielonych warstwy obliczeń i magazynu.
+Poniższy rysunek przedstawia cztery węzły w standardowym modelu architektury z oddzielnymi warstwami obliczeniowymi i magazynem.
 
-![Oddzielenie zasobów obliczeniowych i magazynu](media/sql-database-managed-instance/general-purpose-service-tier.png)
+![Rozdzielenie zasobów obliczeniowych i magazynu](media/sql-database-managed-instance/general-purpose-service-tier.png)
 
 W modelu architektury dla warstwy usług ogólnego przeznaczenia istnieją dwie warstwy:
 
-- Warstwy obliczeniowej bezstanowe uruchomioną `sqlserver.exe` przetwarzania i zawiera tylko błędy przejściowe i buforowanych danych (na przykład — pamięci podręcznej planu, puli buforów, pula magazynu kolumn). To bezstanowe węzła programu SQL Server jest obsługiwany przez usługi Azure Service Fabric inicjuje proces, który kontroluje kondycji węzła i wykonuje trybu failover w inne miejsce, jeśli to konieczne.
-- Warstwy danych stanowych z plikami bazy danych (.mdf/.ldf), które są przechowywane w usłudze Azure Blob storage. Usługa Azure Blob storage gwarantuje, że będzie bez utraty danych, dla dowolnego rekordu, który znajduje się w dowolnym pliku bazy danych. Usługa Azure Storage ma wbudowane dostępność/nadmiarowości danych gwarantuje, że każdy rekord w pliku dziennika lub strony w pliku danych zostaną zachowane nawet, jeśli wystąpiła awaria procesu programu SQL Server.
+- Warstwa obliczeń bezstanowych, która uruchamia `sqlserver.exe` proces i zawiera tylko dane przejściowe i buforowane (na przykład pamięć podręczna planu, pula buforów, pula magazynu kolumn). Ten bezstanowy węzeł SQL Server jest obsługiwany przez platformę Azure Service Fabric, która inicjuje proces, kontroluje kondycję węzła i przeprowadza przejście w tryb failover w razie potrzeby w inne miejsce.
+- Warstwa danych stanowych z plikami bazy danych (. mdf/. ldf), które są przechowywane w usłudze Azure Blob Storage. Usługa Azure Blob Storage gwarantuje, że nie utracie danych żadnego rekordu, który jest umieszczany w pliku bazy danych. Usługa Azure Storage ma wbudowaną dostępność i nadmiarowość danych, która zapewnia, że każdy rekord w pliku dziennika lub stronie w pliku danych zostanie zachowany nawet w przypadku awarii procesu SQL Server.
 
-Zawsze, gdy aparat bazy danych lub system operacyjny zostanie uaktualniony, część podstawowej infrastruktury nie powiedzie się lub jeśli jakiś problem krytyczny zostanie wykryte w procesie programu SQL Server, usługi Azure Service Fabric zostanie przesunięty bezstanowe procesu programu SQL Server do innego węzła obliczeniowego o bezstanowa. Istnieje zestaw węzłów zapasowych, który oczekuje na uruchomienie nowych usług obliczeniowych, jeśli występuje przejściu w tryb failover węzła podstawowego, aby zminimalizować czas pracy awaryjnej. W warstwie usługi Azure storage to nie miało wpływu na dane i pliki danych/dziennika są dołączone do nowo utworzonym procesu programu SQL Server. Tego procesu gwarantuje dostępność przez 99,99%, ale może mieć wpływ na niektóre wydajności na duże obciążenie, które działa ze względu na czas przejścia i fakt nowego węzła programu SQL Server, który rozpoczyna się od zimnych pamięci podręcznej.
+Po uaktualnieniu aparatu bazy danych lub systemu operacyjnego część podstawowej infrastruktury nie powiedzie się lub w przypadku wykrycia błędu krytycznego w procesie SQL Server usługa Azure Service Fabric przeniesie proces bezstanowy SQL Server do innego bezstanowego węzła obliczeniowego. Istnieje zestaw węzłów zapasowych, które oczekują na uruchomienie nowej usługi obliczeniowej, jeśli tryb failover węzła podstawowego wystąpi w celu zminimalizowania czasu pracy w trybie failover. Nie dotyczy to danych w warstwie usługi Azure Storage, a pliki danych/dziennika są dołączone do nowo zainicjowanego procesu SQL Server. Ten proces gwarantuje dostępność na 99,99%, ale może mieć wpływ na wydajność dużego obciążenia, które jest uruchomione z powodu czasu przejścia, a fakt, że nowy węzeł SQL Server rozpoczyna się od zimnej pamięci podręcznej.
 
-## <a name="when-to-choose-this-service-tier"></a>Kiedy należy wybrać w tej warstwie usługi
+## <a name="when-to-choose-this-service-tier"></a>Kiedy należy wybrać tę warstwę usług
 
-Warstwy usług w usłudze ogólnego przeznaczenia jest domyślną warstwę usługi, w bazie danych SQL Azure, przeznaczony dla większości obciążeń ogólnego. Jeśli potrzebujesz aparatu w pełni zarządzana baza danych, z umową SLA dostępność przez 99,99% z opóźnieniem magazynu między 5-10 ms, odpowiadające platformie IaaS Azure SQL w większości przypadków, warstwa ogólnego przeznaczenia jest opcją w.
+Ogólnego przeznaczenia warstwa usługi jest domyślną warstwą usług w Azure SQL Database, która jest przeznaczona dla większości obciążeń zwykłych. Jeśli potrzebujesz w pełni zarządzanego aparatu bazy danych z umową SLA na 99,99% z opóźnieniem magazynu od 5 do 10 ms, które są zgodne z usługą Azure SQL IaaS w większości przypadków Ogólnego przeznaczenia, jest to opcja.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Znajdowanie zasobów cechy (liczba rdzeni, we/wy, pamięć) warstwa ogólnego przeznaczenia/Standard w [wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), pojedyncze bazy danych w [modelu rdzenia wirtualnego](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) lub [modelu jednostek DTU](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes), lub Elastycznej puli w [modelu rdzenia wirtualnego](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) i [modelu jednostek DTU](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits).
-- Dowiedz się więcej o [krytyczne dla działania firmy](sql-database-service-tier-business-critical.md) i [Hiperskali](sql-database-service-tier-hyperscale.md) warstw.
-- Dowiedz się więcej o [usługi Service Fabric](../service-fabric/service-fabric-overview.md).
-- Aby uzyskać więcej opcji wysokiej dostępności i odzyskiwania po awarii, zobacz [ciągłość prowadzenia działalności biznesowej](sql-database-business-continuity.md).
+- Znajdź charakterystyki zasobów (liczbę rdzeni, operacji we/wy, pamięci) Ogólnego przeznaczenia/warstwy standardowej w [wystąpieniu zarządzanym](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), pojedynczą bazę danych w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) lub [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)lub elastyczną pulę w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) i [modelu DTU](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits).
+- Dowiedz się więcej na temat warstw [krytyczne dla działania firmy](sql-database-service-tier-business-critical.md) i [skalowania](sql-database-service-tier-hyperscale.md) .
+- Dowiedz się więcej na temat [Service Fabric](../service-fabric/service-fabric-overview.md).
+- Aby uzyskać więcej opcji dotyczących wysokiej dostępności i odzyskiwania po awarii [](sql-database-business-continuity.md), zobacz ciągłość działania.

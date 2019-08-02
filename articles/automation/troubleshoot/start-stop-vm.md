@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów, uruchamianie i zatrzymywanie maszyn wirtualnych przy użyciu usługi Azure Automation
-description: Ten artykuł zawiera informacje na temat rozwiązywania problemów, uruchamianie i zatrzymywanie maszyn wirtualnych w usłudze Azure Automation
+title: Rozwiązywanie problemów z uruchamianiem i zatrzymywaniem maszyn wirtualnych z Azure Automation
+description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z uruchamianiem i zatrzymywaniem maszyn wirtualnych w programie Azure Automation
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,20 +9,20 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d24b533d4335e1a6142944ad42484bbe9d2bb96
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 447aa4f5bb3c274900beddcef8c89db88d3f3ee9
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477437"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688050"
 ---
-# <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Rozwiązywanie problemów z uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania
+# <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Rozwiązywanie problemów dotyczących uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami
 
-## <a name="deployment-failure"></a>Scenariusz: Rozwiązanie uruchamianie/zatrzymywanie maszyny Wirtualnej nie powiedzie się prawidłowo wdrażania
+## <a name="deployment-failure"></a>Scenariusz Nie można poprawnie wdrożyć rozwiązania uruchamiania/zatrzymywania maszyny wirtualnej
 
 ### <a name="issue"></a>Problem
 
-W przypadku wdrażania [uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania](../automation-solution-vm-management.md), zostanie wyświetlony jeden z następujących błędów:
+Podczas wdrażania [maszyny wirtualnej uruchamiania/zatrzymywania w trakcie](../automation-solution-vm-management.md)korzystania z rozwiązania w ciągu kilku godzin otrzymujesz jeden z następujących błędów:
 
 ```error
 Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
@@ -46,49 +46,49 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 ### <a name="cause"></a>Przyczyna
 
-Wdrażanie może zakończyć się niepowodzeniem z jednego z następujących powodów:
+Wdrożenia mogą zakończyć się niepowodzeniem z jednego z następujących powodów:
 
-1. Istnieje już konto usługi Automation o tej samej nazwie w wybranego regionu.
-2. Zasady zostaną w miejscu, które nie zezwalają na wdrożenie rozwiązania uruchamianie/zatrzymywanie maszyn wirtualnych.
-3. `Microsoft.OperationsManagement`, `Microsoft.Insights`, Lub `Microsoft.Automation` typów zasobów nie są zarejestrowane.
-4. Obszar roboczy usługi Log Analytics jest zablokowany.
+1. W wybranym regionie istnieje już konto usługi Automation o tej samej nazwie.
+2. Stosowane są zasady, które uniemożliwiają wdrożenie rozwiązania uruchamiania/zatrzymywania maszyn wirtualnych.
+3. Typy zasobów `Microsoft.Insights`, `Microsoft.OperationsManagement` i`Microsoft.Automation` nie są zarejestrowane.
+4. Obszar roboczy Log Analytics ma blokadę.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Przejrzyj następującą listę potencjalne rozwiązania problemów lub miejsca do przeszukania:
+Zapoznaj się z poniższą listą, aby zapoznać się z potencjalnymi rozwiązaniami problemu lub miejscami, aby
 
-1. Konta usługi Automation muszą być unikatowe w obrębie regionu Azure, nawet jeśli leżą one w różnych grupach zasobów. Sprawdź istniejące konta usługi Automation, w regionie docelowym.
-2. Istniejące zasady zapobiega zasobów, która jest wymagana dla rozwiązania uruchamianie/zatrzymywanie maszyn wirtualnych do wdrożenia. Przejdź do przypisania zasad w witrynie Azure portal i sprawdź, czy masz przypisanie zasad, które nie zezwalają na wdrożenie tego zasobu. Aby dowiedzieć się więcej na ten temat, zobacz [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md).
-3. W celu wdrożenia rozwiązania uruchamianie/zatrzymywanie maszyn wirtualnych, Twoja subskrypcja musi zostać zarejestrowany do następujących przestrzeni nazw zasobów platformy Azure:
+1. Konta usługi Automation muszą być unikatowe w obrębie regionu świadczenia usługi Azure, nawet jeśli znajdują się w różnych grupach zasobów. Sprawdź istniejące konta usługi Automation w regionie docelowym.
+2. Istniejące zasady uniemożliwiają wdrożenie zasobu, który jest wymagany dla rozwiązania uruchamiania/zatrzymywania maszyny wirtualnej. Przejdź do przypisań zasad w Azure Portal i sprawdź, czy masz przypisanie zasad, które uniemożliwia wdrożenie tego zasobu. Aby dowiedzieć się więcej na ten temat, zobacz [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md).
+3. Aby wdrożyć rozwiązanie do uruchamiania/zatrzymywania maszyny wirtualnej, należy zarejestrować subskrypcję w następujących przestrzeniach nazw zasobów platformy Azure:
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
-   Zobacz, [rozwiązać błędy rejestracji dostawcy zasobów](../../azure-resource-manager/resource-manager-register-provider-errors.md) Aby dowiedzieć się więcej na temat błędów podczas rejestrowania dostawców.
-4. Jeśli masz blokadę w obszarze roboczym usługi Log Analytics, przejdź do obszaru roboczego w witrynie Azure portal i Usuń wszystkie blokady dla zasobu.
+   Zobacz, [Rozwiązywanie problemów dotyczących rejestracji dostawcy zasobów](../../azure-resource-manager/resource-manager-register-provider-errors.md) , aby dowiedzieć się więcej o błędach podczas rejestrowania dostawców.
+4. Jeśli masz blokadę obszaru roboczego Log Analytics, przejdź do obszaru roboczego w obszarze Azure Portal i Usuń wszystkie blokady zasobu.
 
-## <a name="all-vms-fail-to-startstop"></a>Scenariusz: Nie powiodło się uruchomienie/zatrzymanie wszystkich maszyn wirtualnych
+## <a name="all-vms-fail-to-startstop"></a>Scenariusz Uruchamianie/zatrzymywanie wszystkich maszyn wirtualnych nie powiodło się
 
 ### <a name="issue"></a>Problem
 
-Skonfigurowano rozwiązanie uruchamianie/zatrzymywanie maszyn wirtualnych, ale go nie uruchomić lub zatrzymać wszystkie maszyny wirtualne skonfigurowane.
+Skonfigurowano rozwiązanie uruchamiania/zatrzymywania maszyny wirtualnej, ale nie uruchomiono ani nie zatrzymano wszystkich skonfigurowanych maszyn wirtualnych.
 
 ### <a name="cause"></a>Przyczyna
 
-Ten błąd może być spowodowany przez jedną z następujących powodów:
+Ten błąd może być spowodowany jedną z następujących przyczyn:
 
-1. Harmonogram nie jest poprawnie skonfigurowany.
-2. Konto Uruchom jako może nie być poprawnie skonfigurowany
-3. Element runbook może mieć napotkasz błędy
-4. Maszyny wirtualne zostały wyłączone
+1. Harmonogram nie jest prawidłowo skonfigurowany
+2. Konto Uruchom jako może nie być poprawnie skonfigurowane
+3. W elemencie Runbook mogły wystąpić błędy
+4. Maszyny wirtualne mogły zostać wykluczone
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Przejrzyj następującą listę potencjalne rozwiązania problemów lub miejsca do przeszukania:
+Zapoznaj się z poniższą listą, aby zapoznać się z potencjalnymi rozwiązaniami problemu lub miejscami, aby
 
-* Sprawdzanie zostało poprawnie skonfigurowane harmonogram dla rozwiązań uruchamianie/zatrzymywanie maszyn wirtualnych. Aby dowiedzieć się, jak skonfigurować harmonogram, zobacz [harmonogramy](../automation-schedules.md) artykułu.
+* Sprawdź, czy skonfigurowano harmonogram dla rozwiązania uruchamiania/zatrzymywania maszyny wirtualnej. Aby dowiedzieć się, jak skonfigurować harmonogram, zobacz [](../automation-schedules.md) artykuł dotyczący harmonogramów.
 
-* Sprawdź [zadania strumieni](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) sprawdzić pod kątem błędów. W portalu, przejdź na swoje konto usługi Automation, a następnie wybierz pozycję **zadania** w obszarze **automatyzacji procesów**. Z **zadań** wygląd strony dla zadań z jednego z następujących elementów runbook:
+* Sprawdź [strumienie zadań](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) , aby wyszukać błędy. W portalu przejdź do konta usługi Automation i wybierz pozycję **zadania** w obszarze **Automatyzacja procesów**. Na stronie **zadania** Wyszukaj zadania z jednego z następujących elementów Runbook:
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -100,123 +100,126 @@ Przejrzyj następującą listę potencjalne rozwiązania problemów lub miejsca 
   * ScheduledStartStop_Parent
   * SequencedStartStop_Parent
 
-* Sprawdź swoje [konto Uruchom jako](../manage-runas-account.md) ma odpowiednie uprawnienia do próbujesz uruchamianiem lub zatrzymywaniem maszyn wirtualnych. Aby dowiedzieć się, jak sprawdzić uprawnienia do zasobu, zobacz [Szybki Start: Wyświetlanie ról przypisanych do użytkownika za pomocą witryny Azure portal](../../role-based-access-control/check-access.md). Należy podać identyfikator aplikacji jednostki usługi używany przez konto Uruchom jako. Tę wartość można pobrać, przechodząc do konta usługi Automation w witrynie Azure portal, wybierając **konta Uruchom jako** w obszarze **ustawienia konta** i klikając odpowiednie konto Uruchom jako.
+* Sprawdź, czy [konto Uruchom jako](../manage-runas-account.md) ma odpowiednie uprawnienia do maszyn wirtualnych, które próbujesz uruchomić lub zatrzymać. Aby dowiedzieć się, jak sprawdzić uprawnienia do zasobu, zobacz [szybki start: Wyświetl role przypisane do użytkownika przy użyciu Azure Portal](../../role-based-access-control/check-access.md). Należy podać identyfikator aplikacji dla jednostki usługi używanej przez konto Uruchom jako. Możesz pobrać tę wartość, przechodząc do konta usługi Automation w Azure Portal, wybierając pozycję **konta Uruchom jako** w obszarze **Ustawienia konta** i klikając odpowiednie konto Uruchom jako.
 
-* Maszyny wirtualne nie może być uruchomiony lub zatrzymany, jeśli jest on jawnie wykluczone. Wykluczone maszyn wirtualnych w zestawie w **External_ExcludeVMNames** zmiennej w ramach konta usługi Automation wdrożeniu rozwiązania. Poniższy przykład pokazuje, jak możesz zbadać tę wartość przy użyciu programu PowerShell.
+* Maszyny wirtualne mogą nie zostać uruchomione lub zatrzymane, jeśli są jawnie wykluczone. Wykluczone maszyny wirtualne ustawione w zmiennej **External_ExcludeVMNames** na koncie usługi Automation, do którego wdrożono rozwiązanie. Poniższy przykład pokazuje, jak można zbadać tę wartość za pomocą programu PowerShell.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-## <a name="some-vms-fail-to-startstop"></a>Scenariusz: Niektóre z moich maszyn wirtualnych nie można uruchomić lub zatrzymać
+## <a name="some-vms-fail-to-startstop"></a>Scenariusz Uruchamianie lub zatrzymywanie niektórych z moich maszyn wirtualnych nie powiodło się
 
 ### <a name="issue"></a>Problem
 
-Skonfigurowano rozwiązanie uruchamianie/zatrzymywanie maszyn wirtualnych, ale go nie uruchomić lub zatrzymać niektóre maszyny wirtualne skonfigurowane.
+Skonfigurowano rozwiązanie uruchamiania/zatrzymywania maszyny wirtualnej, ale nie uruchomiono lub nie zatrzymano niektórych skonfigurowanych maszyn wirtualnych.
 
 ### <a name="cause"></a>Przyczyna
 
-Ten błąd może być spowodowany przez jedną z następujących powodów:
+Ten błąd może być spowodowany jedną z następujących przyczyn:
 
-1. Jeśli używasz scenariusza sekwencji, tagu może być brakujące lub nieprawidłowe
-2. Maszyna wirtualna może być wyłączony.
-3. Konto Uruchom jako może nie mieć wystarczających uprawnień na maszynie Wirtualnej
-4. Maszyna wirtualna może mieć coś, co jej uruchamianie lub zatrzymywanie zatrzymana
+1. Jeśli jest używany scenariusz sekwencji, może brakować znacznika lub jest on nieprawidłowy
+2. Maszyna wirtualna może zostać wykluczona
+3. Konto Uruchom jako może nie mieć wystarczających uprawnień do maszyny wirtualnej
+4. Maszyna wirtualna może znajdować się w stanie zatrzymania lub zatrzymywania
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Przejrzyj następującą listę potencjalne rozwiązania problemów lub miejsca do przeszukania:
+Zapoznaj się z poniższą listą, aby zapoznać się z potencjalnymi rozwiązaniami problemu lub miejscami, aby
 
-* Korzystając z [scenariusza sekwencji](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) uruchamianie/zatrzymywanie maszyny wirtualnej podczas poza godziny rozwiązania, musisz upewnić się, każda maszyna wirtualna, chcesz, aby rozpocząć lub zatrzymać ma odpowiedniego tagu. Upewnić się, że maszyny wirtualne, które chcesz uruchomić mają `sequencestart` tagu i maszyn wirtualnych, aby zatrzymać `sequencestop` tagu. Tagi oba wymagają dodatnią liczbą całkowitą. Podobnie jak w poniższym przykładzie zapytanie służy do wyszukania wszystkich maszyn wirtualnych z tagami i ich wartości.
+* W przypadku korzystania z [scenariusza kolejności](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) uruchamiania/zatrzymywania maszyny wirtualnej poza godzinami należy upewnić się, że każda maszyna wirtualna, która ma zostać uruchomiona lub zatrzymana, ma odpowiedni tag. Upewnij się, że maszyny wirtualne, które chcesz uruchomić, `sequencestart` mają tag i maszyny wirtualne, które mają zostać zatrzymane, `sequencestop` mają tag. Oba Tagi wymagają dodatniej wartości całkowitej. Można użyć zapytania podobnego do poniższego przykładu, aby wyszukać wszystkie maszyny wirtualne ze znacznikami i ich wartościami.
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* Maszyny wirtualne nie może być uruchomiony lub zatrzymany, jeśli jest on jawnie wykluczone. Wykluczone maszyn wirtualnych w zestawie w **External_ExcludeVMNames** zmiennej w ramach konta usługi Automation wdrożeniu rozwiązania. Poniższy przykład pokazuje, jak możesz zbadać tę wartość przy użyciu programu PowerShell.
+* Maszyny wirtualne mogą nie zostać uruchomione lub zatrzymane, jeśli są jawnie wykluczone. Wykluczone maszyny wirtualne ustawione w zmiennej **External_ExcludeVMNames** na koncie usługi Automation, do którego wdrożono rozwiązanie. Poniższy przykład pokazuje, jak można zbadać tę wartość za pomocą programu PowerShell.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* Uruchamianie i zatrzymywanie maszyn wirtualnych, konto Uruchom jako dla konta usługi Automation musi mieć odpowiednie uprawnienia do maszyny Wirtualnej. Aby dowiedzieć się, jak sprawdzić uprawnienia do zasobu, zobacz [Szybki Start: Wyświetlanie ról przypisanych do użytkownika za pomocą witryny Azure portal](../../role-based-access-control/check-access.md). Należy podać identyfikator aplikacji jednostki usługi używany przez konto Uruchom jako. Tę wartość można pobrać, przechodząc do konta usługi Automation w witrynie Azure portal, wybierając **konta Uruchom jako** w obszarze **ustawienia konta** i klikając odpowiednie konto Uruchom jako.
+* Aby można było uruchamiać i zatrzymywać maszyny wirtualne, konto Uruchom jako dla konta usługi Automation musi mieć odpowiednie uprawnienia do maszyny wirtualnej. Aby dowiedzieć się, jak sprawdzić uprawnienia do zasobu, zobacz [szybki start: Wyświetl role przypisane do użytkownika przy użyciu Azure Portal](../../role-based-access-control/check-access.md). Należy podać identyfikator aplikacji dla jednostki usługi używanej przez konto Uruchom jako. Możesz pobrać tę wartość, przechodząc do konta usługi Automation w Azure Portal, wybierając pozycję **konta Uruchom jako** w obszarze **Ustawienia konta** i klikając odpowiednie konto Uruchom jako.
 
-* Jeśli maszyna wirtualna ma problem z uruchomienie lub cofnięcie przydziału, to zachowanie może być spowodowane problemu na samej maszyny Wirtualnej. Niektóre przykłady lub potencjalne problemy są, stosowania aktualizacji podczas próby zamknięcia, usługa zawiesza się i nie tylko). Przejdź do zasobu maszyny Wirtualnej, a następnie sprawdź **dzienników aktywności** aby zobaczyć, czy istnieją błędy w dziennikach. Również może próbować zalogować się do maszyny Wirtualnej, aby zobaczyć, czy istnieją błędy w dziennikach zdarzeń. Aby dowiedzieć się więcej na temat rozwiązywania problemów z maszyną Wirtualną, zobacz [Rozwiązywanie problemów z usługi Azure virtual machines](../../virtual-machines/troubleshooting/index.md)
+* Jeśli maszyna wirtualna ma problem z uruchamianiem lub cofaniem przydziału, to zachowanie może być spowodowane przez problem związany z maszyną wirtualną. Niektóre przykłady lub potencjalne problemy polegają na tym, że aktualizacja jest stosowana podczas próby zamknięcia usługi, a usługa zawiesza się i nie tylko. Przejdź do zasobu maszyny wirtualnej i sprawdź **dzienniki aktywności** , aby sprawdzić, czy w dziennikach znajdują się błędy. Możesz także próbować zalogować się do maszyny wirtualnej, aby sprawdzić, czy w dziennikach zdarzeń występują błędy. Aby dowiedzieć się więcej o rozwiązywaniu problemów dotyczących maszyny wirtualnej, zobacz [Rozwiązywanie problemów z maszynami wirtualnymi](../../virtual-machines/troubleshooting/index.md)
 
-* Sprawdź [zadania strumieni](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) sprawdzić pod kątem błędów. W portalu, przejdź na swoje konto usługi Automation, a następnie wybierz pozycję **zadania** w obszarze **automatyzacji procesów**.
+* Sprawdź [strumienie zadań](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) , aby wyszukać błędy. W portalu przejdź do konta usługi Automation i wybierz pozycję **zadania** w obszarze **Automatyzacja procesów**.
 
-## <a name="custom-runbook"></a>Scenariusz: Moje niestandardowe elementu runbook nie można rozpocząć lub zatrzymać moich maszyn wirtualnych
-
-### <a name="issue"></a>Problem
-
-Zostały utworzone z niestandardowych elementów runbook lub pobrany z galerii programu PowerShell, a nie działa prawidłowo.
-
-### <a name="cause"></a>Przyczyna
-
-Przyczyną błędu może być jedna z wielu czynności. Przejdź do konta usługi Automation w witrynie Azure portal i wybierz pozycję **zadania** w obszarze **automatyzacji procesów**. Z **zadań** strony, poszukaj zadań w elemencie runbook, aby wyświetlić Nieudane wykonanie zadań.
-
-### <a name="resolution"></a>Rozwiązanie
-
-Zaleca się używać [uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania](../automation-solution-vm-management.md) uruchamianie i zatrzymywanie maszyn wirtualnych w usłudze Azure Automation. To rozwiązanie jest tworzone przez firmę Microsoft. Niestandardowe elementy runbook nie są obsługiwane przez firmę Microsoft. Może znaleźć rozwiązania dla Twojego niestandardowego elementu runbook, odwiedzając [Rozwiązywanie problemów z elementu runbook](runbooks.md) artykułu. Ten artykuł zawiera ogólne wskazówki i rozwiązywanie problemów dotyczących elementów runbook wszystkich typów. Sprawdź [zadania strumieni](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) sprawdzić pod kątem błędów. W portalu, przejdź na swoje konto usługi Automation, a następnie wybierz pozycję **zadania** w obszarze **automatyzacji procesów**.
-
-## <a name="dont-start-stop-in-sequence"></a>Scenariusz: Maszyny wirtualne nie uruchomić lub zatrzymać w prawidłowej sekwencji
+## <a name="custom-runbook"></a>Scenariusz Wystąpił błąd mojego niestandardowego elementu Runbook podczas uruchamiania lub zatrzymywania moich maszyn wirtualnych
 
 ### <a name="issue"></a>Problem
 
-Maszyny wirtualne, które zostały skonfigurowane w rozwiązaniu nie uruchomić lub zatrzymać w poprawnej kolejności.
+Utworzono niestandardowy element Runbook lub został on pobrany z Galeria programu PowerShell i nie działa prawidłowo.
 
 ### <a name="cause"></a>Przyczyna
 
-Jest to spowodowane przez niepoprawne znakowanie na maszynach wirtualnych.
+Przyczyną niepowodzenia może być jedna z wielu rzeczy. Przejdź do konta usługi Automation w Azure Portal i wybierz pozycję **zadania** w obszarze **Automatyzacja procesów**. Na stronie **zadania** Znajdź zadania z elementu Runbook, aby wyświetlić wszystkie błędy zadań.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Wykonaj następujące kroki, aby upewnić się, że rozwiązanie jest poprawnie skonfigurowany.
+Zaleca się, aby do uruchamiania i zatrzymywania maszyn wirtualnych w Azure Automation używać [rozwiązania do uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami](../automation-solution-vm-management.md) . To rozwiązanie jest tworzone przez firmę Microsoft. Niestandardowe elementy Runbook nie są obsługiwane przez firmę Microsoft. Rozwiązanie dla niestandardowego elementu Runbook można znaleźć, odwiedzając artykuł dotyczący [rozwiązywania problemów](runbooks.md) z elementem Runbook. Ten artykuł zawiera ogólne wskazówki i rozwiązywanie problemów dotyczących elementów Runbook wszystkich typów. Sprawdź [strumienie zadań](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) , aby wyszukać błędy. W portalu przejdź do konta usługi Automation i wybierz pozycję **zadania** w obszarze **Automatyzacja procesów**.
 
-1. Upewnij się, wszystkie maszyny wirtualne, aby być uruchomiona lub zatrzymana `sequencestart` lub `sequencestop` znacznika, w zależności od konkretnej sytuacji. Te znaczniki wymagają dodatnią liczbę całkowitą jako wartość. Maszyny wirtualne są przetwarzane w kolejności rosnącej według tej wartości.
-2. Upewnij się, grupy zasobów dla maszyn wirtualnych ma zostać uruchomiony lub zatrzymany znajdują się w `External_Start_ResourceGroupNames` lub `External_Stop_ResourceGroupNames` zmiennych, w zależności od konkretnej sytuacji.
-3. Przetestować zmiany przez wykonanie `SequencedStartStop_Parent` elementu runbook za pomocą parametru WHATIF ustawiona na wartość True, aby wyświetlić podgląd zmian.
-
-Aby uzyskać bardziej szczegółowe i dodatkowe instrukcje dotyczące sposobu rozwiązania umożliwia uruchamianie i zatrzymywanie maszyn wirtualnych w sekwencji, zobacz [uruchamianie/zatrzymywanie maszyn wirtualnych w sekwencji](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
-
-## <a name="403"></a>Scenariusz: Zadanie uruchamiania/zatrzymywania maszyny Wirtualnej nie powiedzie się stanem 403 Zabronione 
+## <a name="dont-start-stop-in-sequence"></a>Scenariusz Maszyny wirtualne nie uruchamiają się ani nie zatrzymują w poprawnej kolejności
 
 ### <a name="issue"></a>Problem
 
-Znajdź zadania, które nie powiodło się z `403 forbidden` błąd uruchamianie/zatrzymywanie maszyn wirtualnych poza elementów runbook rozwiązań godzin.
+Maszyny wirtualne, które zostały skonfigurowane w rozwiązaniu, nie zaczynają się ani nie są zatrzymane w poprawnej kolejności.
 
 ### <a name="cause"></a>Przyczyna
 
-Ten problem może być spowodowane nieprawidłowo skonfigurowany lub wygasł kontem Uruchom jako. Może to być również ze względu na niewystarczające uprawnienia do zasobów maszyny Wirtualnej przez konto usługi Automation konta Uruchom jako.
+Jest to spowodowane przez nieprawidłowe znakowanie na maszynach wirtualnych.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Aby sprawdzić, konta Uruchom jako jest prawidłowo skonfigurowane, przejdź do konta usługi Automation w witrynie Azure portal i wybierz pozycję **konta Uruchom jako** w obszarze **ustawienia konta**. W tym miejscu zostanie wyświetlony stan uruchomienia usługi jako konta, jeśli konto Uruchom jako jest nieprawidłowo skonfigurowany lub wygasł stan będzie wyświetlany jako to.
+Wykonaj następujące kroki, aby upewnić się, że rozwiązanie jest prawidłowo skonfigurowane.
 
-Jeśli Twoje konto Uruchom jako jest [nieprawidłowo](../manage-runas-account.md#misconfiguration), należy usunąć i ponownie utworzyć Twoje konto Uruchom jako.
+1. Upewnij się, że wszystkie maszyny wirtualne, które mają `sequencestart` zostać `sequencestop` uruchomione lub zatrzymane, mają tag lub, w zależności od sytuacji. Tagi te wymagają dodatniej liczby całkowitej jako wartości. Maszyny wirtualne są przetwarzane w kolejności rosnącej na podstawie tej wartości.
+2. Upewnij się, że grupy zasobów dla maszyn wirtualnych, które mają być uruchomione lub zatrzymane `External_Stop_ResourceGroupNames` , znajdują się w zmiennych `External_Start_ResourceGroupNames` lub, w zależności od sytuacji.
+3. Przetestuj zmiany, wykonując `SequencedStartStop_Parent` element Runbook z parametrem WHATIF ustawionym na wartość true, aby wyświetlić podgląd zmian.
 
-Jeśli certyfikat wygasł dla Twojego konta Uruchom jako, wykonaj kroki opisane w temacie [odnawiania certyfikatu z podpisem własnym](../manage-runas-account.md#cert-renewal) Aby odnowić certyfikat.
+Aby uzyskać bardziej szczegółowe i dodatkowe instrukcje dotyczące sposobu używania rozwiązania do uruchamiania i zatrzymywania maszyn wirtualnych w sekwencji, zobacz [Uruchamianie/zatrzymywanie maszyn wirtualnych w sekwencji](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
 
-Ten problem może być spowodowane przez brak uprawnień. Aby dowiedzieć się, jak sprawdzić uprawnienia do zasobu, zobacz [Szybki Start: Wyświetlanie ról przypisanych do użytkownika za pomocą witryny Azure portal](../../role-based-access-control/check-access.md). Należy podać identyfikator aplikacji jednostki usługi używany przez konto Uruchom jako. Tę wartość można pobrać, przechodząc do konta usługi Automation w witrynie Azure portal, wybierając **konta Uruchom jako** w obszarze **ustawienia konta** i klikając odpowiednie konto Uruchom jako.
-
-## <a name="other"></a>Scenariusz: Mojego problemu nie ma na liście powyżej
+## <a name="403"></a>Scenariusz Zadanie uruchamiania/zatrzymywania maszyny wirtualnej kończy się niepowodzeniem z niedozwolonym stanem 403
 
 ### <a name="issue"></a>Problem
 
-Występują problemu lub nieoczekiwany wynik podczas za pomocą uruchamianie/zatrzymywanie maszyn wirtualnych podczas rozwiązanie po godzinach pracy, które nie są wymienione na tej stronie.
+Znajdziesz zadania, które nie powiodły się `403 forbidden` z powodu błędu dotyczącego uruchamiania/zatrzymywania maszyn wirtualnych w czasie wykonywania elementów Runbook rozwiązania.
 
 ### <a name="cause"></a>Przyczyna
 
-Wiele razy błędy mogą być spowodowane przy użyciu starego i przestarzałe wersji rozwiązania.
+Przyczyną tego problemu może być nieprawidłowo skonfigurowane lub wygasłe konto Uruchom jako. Może to być również spowodowane niewystarczającymi uprawnieniami do zasobów maszyny wirtualnej przy użyciu konta Uruchom jako konta usługi Automation.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Aby rozwiązać wiele błędów, zaleca się usuwanie i aktualizowanie rozwiązania. Aby dowiedzieć się, jak zaktualizować rozwiązania, zobacz [aktualizacji uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania](../automation-solution-vm-management.md#update-the-solution). Ponadto można sprawdzić [zadania strumieni](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) sprawdzić pod kątem błędów. W portalu, przejdź na swoje konto usługi Automation, a następnie wybierz pozycję **zadania** w obszarze **automatyzacji procesów**.
+Aby sprawdzić, czy konto Uruchom jako jest prawidłowo skonfigurowane, przejdź do konta usługi Automation w Azure Portal i wybierz pozycję **konta Uruchom jako** w obszarze **Ustawienia konta**. W tym miejscu zobaczysz stan kont Uruchom jako, jeśli konto Uruchom jako jest nieprawidłowo skonfigurowane lub wygasło jego stan.
+
+Jeśli konto Uruchom jako jest [nieprawidłowo skonfigurowane](../manage-runas-account.md#misconfiguration), należy usunąć i ponownie utworzyć konto Uruchom jako.
+
+Jeśli certyfikat wygasł dla konta Uruchom jako, wykonaj czynności opisane w sekcji [odnowienie certyfikatu](../manage-runas-account.md#cert-renewal) z podpisem własnym, aby odnowić certyfikat.
+
+Problem może być spowodowany brakiem uprawnień. Aby dowiedzieć się, jak sprawdzić uprawnienia do zasobu, zobacz [szybki start: Wyświetl role przypisane do użytkownika przy użyciu Azure Portal](../../role-based-access-control/check-access.md). Należy podać identyfikator aplikacji dla jednostki usługi używanej przez konto Uruchom jako. Możesz pobrać tę wartość, przechodząc do konta usługi Automation w Azure Portal, wybierając pozycję **konta Uruchom jako** w obszarze **Ustawienia konta** i klikając odpowiednie konto Uruchom jako.
+
+## <a name="other"></a>Scenariusz Mój problem nie jest wymieniony powyżej
+
+### <a name="issue"></a>Problem
+
+Wystąpił problem lub nieoczekiwany wynik podczas korzystania z maszyn wirtualnych Start/Stop w nieprawidłowym rozwiązaniu, które nie znajdują się na tej stronie.
+
+### <a name="cause"></a>Przyczyna
+
+Wiele błędów może być spowodowanych przez użycie starej i nieaktualnej wersji rozwiązania.
+
+> [!NOTE]
+> Maszyny wirtualne uruchamiania/zatrzymywania w trakcie rozwiązania offline zostały przetestowane z modułami platformy Azure, które zostały zaimportowane do konta usługi Automation podczas wdrażania rozwiązania. Rozwiązanie nie działa obecnie z nowszymi wersjami modułu platformy Azure. Ma to wpływ tylko na konto usługi Automation, którego używasz do uruchamiania maszyn wirtualnych Start/Stop w niegodzinach. Nadal można używać nowszych wersji modułu platformy Azure na innych kontach usługi Automation, zgodnie z opisem w artykule [jak zaktualizować moduły Azure PowerShell w Azure Automation](../automation-update-azure-modules.md)
+
+### <a name="resolution"></a>Rozwiązanie
+
+Aby rozwiązać wiele błędów, zaleca się usunięcie i zaktualizowanie rozwiązania. Aby dowiedzieć się, jak zaktualizować rozwiązanie, zobacz temat [Aktualizowanie uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami](../automation-solution-vm-management.md#update-the-solution). Dodatkowo można sprawdzić [strumienie zadań](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) , aby wyszukać błędy. W portalu przejdź do konta usługi Automation i wybierz pozycję **zadania** w obszarze **Automatyzacja procesów**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli nie był widoczny problemu lub są w stanie rozwiązać problemu, odwiedź jedną z następujących kanałów obsługi więcej:
+Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 
 * Uzyskaj odpowiedzi od ekspertów w zakresie platformy Azure na [forach dotyczących platformy Azure](https://azure.microsoft.com/support/forums/)
 * Połącz się z kontem [@AzureSupport](https://twitter.com/azuresupport) — oficjalnym kontem platformy Microsoft Azure utworzonym w celu podniesienia jakości obsługi klientów przez połączenie społeczności platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
-* Jeśli potrzebujesz więcej pomocy, mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz **uzyskiwanie pomocy technicznej**.
+* Jeśli potrzebujesz więcej pomocy, możesz obsłużyć zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**.

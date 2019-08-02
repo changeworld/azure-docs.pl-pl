@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: quickstart
-author: garyericson
-ms.author: garye
+author: xiaoharper
+ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 0819c232412e1619f82a25476a8318d26c8087da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5c004b69f24b50ed2eb3a10dbd0a7915c0773ce
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753442"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515112"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Szybki start: Tworzenie pierwszego eksperymentu dotyczącego nauki o danych w usłudze Azure Machine Learning Studio
 
@@ -87,16 +87,16 @@ Zestawy danych zwykle wymagają przetworzenia wstępnego przed rozpoczęciem ana
 
 Najpierw dodamy moduł, który całkowicie usunie kolumnę **normalized-losses** (znormalizowane straty). Następnie dodamy kolejny moduł usuwający wszystkie wiersze, w których brakuje danych.
 
-1. Wpisz ciąg **select columns** (wybieranie kolumn) w polu wyszukiwania w górnej części palety modułów, aby znaleźć moduł [Select Columns in Dataset][select-columns] (Wybieranie kolumn w zestawie danych). Następnie przeciągnij go do obszaru roboczego eksperymentu. Ten moduł pozwala wybierać kolumny danych, które mają zostać dołączone do modelu lub wykluczone z niego.
+1. Wpisz **Wybierz kolumny** w polu wyszukiwania w górnej części palety modułów, aby znaleźć [pozycję Wybierz kolumny w zestawie danych][select-columns] . Następnie przeciągnij go do obszaru roboczego eksperymentu. Ten moduł pozwala wybierać kolumny danych, które mają zostać dołączone do modelu lub wykluczone z niego.
 
 1. Połącz port wyjściowy zestawu danych **Automobile price data (Raw)** (Nieprzetworzone dane z cenami samochodów) z portem wejściowym modułu Select Columns in Dataset (Wybieranie kolumn w zestawie danych).
 
     ![Dodawanie modułu „Select Columns in Dataset” (Wybieranie kolumn w zestawie danych) do obszaru roboczego eksperymentu i tworzenie połączenia](./media/create-experiment/type-select-columns.png)
 
-1. Kliknij moduł [Select Columns in Dataset][select-columns] (Wybieranie kolumn w zestawie danych) i kliknij pozycję **Launch column selector** (Uruchom selektora kolumn) w okienku **Properties** (Właściwości).
+1. Kliknij pozycję [Wybierz kolumny w zestawie danych][select-columns] , a następnie kliknij pozycję **Uruchom selektor kolumny** w okienku **Właściwości** .
 
    - Po lewej stronie kliknij pozycję **With rules** (Za pomocą reguł).
-   - W obszarze **Begin With** (Rozpocznij od) kliknij pozycję **All columns** (Wszystkie kolumny). Te reguły spowodują przetworzenie wszystkich kolumn (z wyjątkiem tych wykluczonych) przez moduł [Select Columns in Dataset][select-columns] (Wybieranie kolumn w zestawie danych).
+   - W obszarze **Begin With** (Rozpocznij od) kliknij pozycję **All columns** (Wszystkie kolumny). Te reguły umożliwiają bezpośrednie [Wybieranie kolumn w zestawie danych][select-columns] w celu przekazywania wszystkich kolumn (z wyjątkiem tych, które zostały wykluczone).
    - Z list rozwijanych wybierz pozycje **Exclude** (Wyklucz) i **column names** (nazwy kolumn), a następnie kliknij wewnątrz pola tekstowego. Zostanie wyświetlona lista kolumn. Wybierz pozycję **normalized-losses** (znormalizowane straty), aby dodać ją do pola tekstowego.
    - Kliknij przycisk znacznika wyboru (OK), aby zamknąć selektora kolumn (w prawym dolnym rogu).
 
@@ -107,11 +107,11 @@ Najpierw dodamy moduł, który całkowicie usunie kolumnę **normalized-losses**
      ![Zawartość okienka właściwości wskazuje na wykluczenie kolumny „normalized-losses” (znormalizowane straty)](./media/create-experiment/showing-excluded-column.png)
 
      > [!TIP] 
-     > Aby dodać komentarz do modułu, kliknij dwukrotnie moduł i wpisz tekst. Pozwoli to od razu sprawdzić rolę modułu w eksperymencie. W tym przypadku kliknij dwukrotnie moduł [Select Columns in Dataset][select-columns] (Wybieranie kolumn w zestawie danych) i dodaj komentarz „Wykluczenie kolumny znormalizowanych strat”.
+     > Aby dodać komentarz do modułu, kliknij dwukrotnie moduł i wpisz tekst. Pozwoli to od razu sprawdzić rolę modułu w eksperymencie. W tym przypadku kliknij dwukrotnie moduł [SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych][select-columns] ) i wpisz komentarz "Wykluczanie znormalizowanych strat".
 
      ![Dwukrotne kliknięcie modułu umożliwia dodanie komentarza](./media/create-experiment/add-comment.png)
 
-1. Przeciągnij moduł [Clean Missing Data][clean-missing-data] (Czyszczenie brakujących danych) do obszaru roboczego eksperymentu i połącz go z modułem [Select Columns in Dataset][select-columns] (Wybieranie kolumn w zestawie danych). W okienku **Properties** (Właściwości) w obszarze **Cleaning mode** (Tryb czyszczenia) wybierz pozycję **Remove entire row** (Usuń cały wiersz). Te opcje spowodują wyczyszczenie danych przez moduł [Clean Missing Data][clean-missing-data] (Czyszczenie brakujących danych) — zostaną usunięte wiersze, w których brakuje wartości. Kliknij dwukrotnie moduł i wpisz komentarz „Usunięcie wierszy z brakującymi wartościami”.
+1. Przeciągnij [czysty moduł brakujących danych][clean-missing-data] do kanwy eksperymentu i połącz go z modułem [SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych][select-columns] ). W okienku **Properties** (Właściwości) w obszarze **Cleaning mode** (Tryb czyszczenia) wybierz pozycję **Remove entire row** (Usuń cały wiersz). Te opcje umożliwiają bezpośrednie [czyszczenie brakujących danych][clean-missing-data] w celu oczyszczenia danych przez usunięcie wierszy, które mają brakujące wartości. Kliknij dwukrotnie moduł i wpisz komentarz „Usunięcie wierszy z brakującymi wartościami”.
 
     ![Ustawianie trybu czyszczenia na wartość „Remove entire row” (Usuń cały wiersz) w module „Clean Missing Data” (Czyszczenie brakujących danych)](./media/create-experiment/set-remove-entire-row.png)
 
@@ -122,9 +122,9 @@ Najpierw dodamy moduł, który całkowicie usunie kolumnę **normalized-losses**
     ![Gdy działanie eksperymentu zakończy się, powinien on wyglądać mniej więcej tak](./media/create-experiment/early-experiment-run.png)
 
 > [!TIP]
-> Dlaczego teraz uruchomiliśmy eksperyment? Uruchomienie eksperymentu spowodowało przekazanie definicji kolumn danych z zestawu danych do modułów [Select Columns in Dataset][select-columns] (Wybieranie kolumn w zestawie danych) i [Clean Missing Data][clean-missing-data] (Czyszczenie brakujących danych). Oznacza to, że informacje te będą dostępne dla wszystkich modułów połączonych z modułem [Clean Missing Data][clean-missing-data] (Czyszczenie brakujących danych).
+> Dlaczego teraz uruchomiliśmy eksperyment? Uruchamiając eksperyment, definicje kolumn dla danych przekazywanych z zestawu danych, za pośrednictwem modułu [Wybierz kolumny w zestawie danych][select-columns] i za pośrednictwem [czystego brakującego modułu danych][clean-missing-data] . Oznacza to, że wszystkie moduły, które nawiązują połączenie z [czystymi brakującymi danymi][clean-missing-data] , również będą mieć te same informacje.
 
-Teraz mamy czyste dane. Jeśli chcesz wyświetlić oczyszczony zestaw danych, kliknij lewy port wyjściowy modułu [Clean Missing Data][clean-missing-data] (Czyszczenie brakujących danych) i wybierz pozycję **Visualize** (Wizualizacja). Zwróć uwagę na to, że kolumna **normalized-losses** (znormalizowane straty) nie jest już uwzględniana i nie ma brakujących wartości.
+Teraz mamy czyste dane. Jeśli chcesz wyświetlić oczyszczony zestaw danych, kliknij lewy port wyjściowy modułu [czyste brakujące dane][clean-missing-data] i wybierz polecenie **Wizualizuj**. Zwróć uwagę na to, że kolumna **normalized-losses** (znormalizowane straty) nie jest już uwzględniana i nie ma brakujących wartości.
 
 Po oczyszczeniu danych można określić, jakie cechy zostaną użyte w modelu predykcyjnym.
 
@@ -138,7 +138,7 @@ Utworzymy model, który korzysta z podzbioru cech zawartych w naszym zestawie da
 
     make, body-style, wheel-base, engine-size, horsepower, peak-rpm, highway-mpg, price
 
-1. Przeciągnij kolejny moduł [Select Columns in Dataset][select-columns] (Wybieranie kolumn w zestawie danych) do obszaru roboczego eksperymentu. Połącz lewy port wyjściowy modułu [Clean Missing Data][clean-missing-data] (Czyszczenie brakujących danych) z wejściem modułu [Select Columns in Dataset][select-columns] (Wybieranie kolumn w zestawie danych).
+1. Przeciągnij kolejną [kolumnę SELECT w module DataSet][select-columns] do kanwy eksperymentu. Połącz lewy port wyjściowy modułu [czyste brakujące dane][clean-missing-data] na dane wejściowe modułu [SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych][select-columns] ).
 
     ![Łączenie modułu „Select Columns in Dataset” (Wybieranie kolumn w zestawie danych) z modułem „Clean Missing Data” (Czyszczenie brakujących danych)](./media/create-experiment/connect-clean-to-select.png)
 
@@ -170,24 +170,24 @@ Uczenie modelu polega na przekazaniu mu zestawu danych zawierających cenę. Mod
 
 Dane dzielimy na dwa oddzielne zestawy, aby użyć ich do celów szkoleniowych i do testów.
 
-1. Wybierz moduł [Split Data][split] (Podział danych) i przeciągnij go do obszaru roboczego eksperymentu, a następnie połącz go z ostatnim modułem [Select Columns in Dataset][select-columns] (Wybieranie kolumn w zestawie danych).
+1. Wybierz i przeciągnij moduł [Split Data (podział danych][split] ) na kanwę eksperymentu i połącz go z ostatnim [wybieraniem kolumn w module DataSet][select-columns] .
 
-1. Wybierz moduł [Split Data][split] (Podział danych), klikając go. Znajdź opcję **Fraction of rows in the first output dataset** (Odsetek wierszy w pierwszym zestawie danych wyjściowych) (w okienku **Właściwości** po prawej stronie obszaru roboczego) i ustaw dla niej wartość 0,75. Dzięki temu 75% danych zostanie użytych do nauczenia modelu, a pozostałe 25% do testów.
+1. Kliknij moduł [Podziel dane][split] , aby go zaznaczyć. Znajdź opcję **Fraction of rows in the first output dataset** (Odsetek wierszy w pierwszym zestawie danych wyjściowych) (w okienku **Właściwości** po prawej stronie obszaru roboczego) i ustaw dla niej wartość 0,75. Dzięki temu 75% danych zostanie użytych do nauczenia modelu, a pozostałe 25% do testów.
 
     ![Ustawianie parametru podziału modułu „Split Data” (Podział danych) na wartość 0,75](./media/create-experiment/set-split-data-percentage.png)
 
     > [!TIP]
     > Zmieniając wartość parametru **Random seed** (Inicjator losowy) można uzyskać różne próbki losowe do celów szkoleniowych i testów. Ten parametr umożliwia sterowanie inicjacją pseudolosowego generatora liczb.
 
-1. Uruchom eksperyment. Po uruchomieniu eksperymentu moduły [Select Columns in Dataset][select-columns] (Wybieranie kolumn w zestawie danych) i [Split Data][split] (Podział danych) przekażą definicje kolumn do modułów, które będą dodawane później.  
+1. Uruchom eksperyment. Po uruchomieniu eksperymentu moduły [Wybieranie kolumn w zestawie danych][select-columns] i [Podziel dane][split] przekazują definicje kolumn do modułów, które będą dodawane dalej.  
 
-1. Aby wybrać algorytm uczenia, rozwiń kategorię **Machine Learning** (Uczenie maszynowe) na palecie modułów wyświetlanej z lewej strony obszaru roboczego, a następnie rozwiń węzeł **Initialize Model** (Inicjacja modelu). Zostaną wyświetlone różne kategorie modułów, których można użyć do zainicjowania algorytmów uczenia maszynowego. W tym eksperymencie wybierz moduł [Linear Regression][linear-regression] (Regresja liniowa) z kategorii **Regression** (Regresja) i przeciągnij go do obszaru roboczego eksperymentu. (Możesz również znaleźć go, wpisując „linear regression” [regresja liniowa] w polu wyszukiwania palety).
+1. Aby wybrać algorytm uczenia, rozwiń kategorię **Machine Learning** (Uczenie maszynowe) na palecie modułów wyświetlanej z lewej strony obszaru roboczego, a następnie rozwiń węzeł **Initialize Model** (Inicjacja modelu). Zostaną wyświetlone różne kategorie modułów, których można użyć do zainicjowania algorytmów uczenia maszynowego. Na potrzeby tego eksperymentu wybierz [][linear-regression] moduł regresja liniowa w kategorii **regresja** , a następnie przeciągnij go do kanwy eksperymentu. (Możesz również znaleźć go, wpisując „linear regression” [regresja liniowa] w polu wyszukiwania palety).
 
-1. Znajdź moduł [Train Model][train-model] (Uczenie modelu) i przeciągnij go do obszaru roboczego eksperymentu. Połącz wyjście modułu [Linear Regression][linear-regression] (Regresja liniowa) z lewym wejściem modułu [Train Model][train-model] (Uczenie modelu) i połącz wyjście danych szkoleniowych (lewy port) modułu [Split Data][split] (Podział danych) z prawym wejściem modułu [Train Model][train-model] (Uczenie modelu).
+1. Znajdź i przeciągnij moduł [uczenie modelu][train-model] do kanwy eksperymentu. Połącz dane wyjściowe modułu [regresji liniowej][linear-regression] z lewym wejściem modułu uczenie [modelu][train-model] i Połącz dane wyjściowe szkoleń (lewy port) modułu [Split Data (podział danych][split] ) z prawym wejściem modułu [szkolenia model][train-model] .
 
     ![Łączenie modułu „Train model” (Uczenie modelu) z modułami „Linear Regression” (Regresja liniowa) i „Split Data” (Podział danych)](./media/create-experiment/connect-train-model.png)
 
-1. Kliknij moduł [Train Model][train-model] (Uczenie modelu), kliknij pozycję **Launch column selector** (Uruchom selektora kolumn) w okienku **Properties** (Właściwości), a następnie wybierz kolumnę **price** (cena). **Price** (Cena) to wartość, która będzie prognozowana przez nasz model.
+1. Kliknij moduł [uczenie modelu][train-model] , kliknij pozycję **Uruchom selektor kolumny** w okienku **Właściwości** , a następnie wybierz kolumnę **Cena** . **Price** (Cena) to wartość, która będzie prognozowana przez nasz model.
 
     Kolumnę **price** (cena) możesz wybrać, przenosząc ją z listy **Available columns** (Dostępne kolumny) do listy **Selected columns** (Wybrane kolumny) w selektorze kolumn.
 
@@ -203,21 +203,21 @@ W efekcie powstał nauczony model regresji, który może służyć do generowani
 
 Gdy udało się nauczyć model przy użyciu 75% danych, można wygenerować wyniki dla pozostałych 25% danych, aby sprawdzić poprawność funkcjonowania modelu.
 
-1. Znajdź moduł [Score Model][score-model] (Generowanie wyników przez model) i przeciągnij go do obszaru roboczego eksperymentu. Połącz wyjście modułu [Train Model][train-model] (Uczenie modelu) z lewym portem wejściowym modułu [Score Model][score-model] (Generowanie wyników przez model). Połącz wyjście danych testowych (prawy port) modułu [Split Data][split] (Podział danych) z prawym portem wejściowym modułu [Score Model][score-model] (Generowanie wyników przez model).
+1. Znajdź i przeciągnij moduł [model oceny][score-model] do kanwy eksperymentu. Połącz dane wyjściowe modułu [uczenie modelu][train-model] z lewym portem wejściowym [modelu wynikowego][score-model]. Połącz dane wyjściowe testu (prawy port) modułu [Split Data (dane][split] wejściowe) z odpowiednim portem wejściowym [modelu wynikowego][score-model].
 
     ![Łączenie modułu „Score model” (Generowanie wyników przez model) z modułami „Train Model” (Uczenie modelu) i „Split Data” (Podział danych)](./media/create-experiment/connect-score-model.png)
 
-1. Uruchom eksperyment, aby wyświetlić dane wyjściowe z modułu [Score Model][score-model] (Generowanie wyników przez model). W tym celu kliknij port wyjściowy modułu [Score Model][score-model] i wybierz pozycję **Visualize** (Wizualizacja). Dane wyjściowe zawierają przewidywane wartości cen oraz znane wartości pochodzące z danych testowych.  
+1. Uruchom eksperyment i Wyświetl dane wyjściowe z modułu [wynik model][score-model] , klikając port wyjściowy [modelu oceny][score-model] i wybierz polecenie **Wizualizuj**. Dane wyjściowe zawierają przewidywane wartości cen oraz znane wartości pochodzące z danych testowych.  
 
     ![Dane wyjściowe modułu „Score model” (Generowanie wyników przez model)](./media/create-experiment/score-model-output.png)
 
-1. Na koniec przetestujemy jakość wyników. Wybierz moduł [Evaluate Model][evaluate-model] (Ocena modelu) i przeciągnij go do obszaru roboczego eksperymentu, a następnie połącz wyjście modułu [Score Model][score-model] (Generowanie wyników przez model) z lewym wejściem modułu [Evaluate Model][evaluate-model] (Ocena modelu). Końcowy eksperyment powinien wyglądać następująco:
+1. Na koniec przetestujemy jakość wyników. Wybierz i przeciągnij moduł [Oceń model][evaluate-model] do kanwy eksperymentu, a następnie Połącz dane wyjściowe modułu [][score-model] z modelem wynikowym z lewym wejściem do [oceny modelu][evaluate-model]. Końcowy eksperyment powinien wyglądać następująco:
 
     ![Eksperyment końcowy](./media/create-experiment/complete-linear-regression-experiment.png)
 
 1. Uruchom eksperyment.
 
-Aby wyświetlić dane wyjściowe z modułu [Evaluate Model][evaluate-model] (Ocena modelu), kliknij port wyjściowy i wybierz pozycję **Visualize** (Wizualizacja).
+Aby wyświetlić dane wyjściowe z modułu [Oceń model][evaluate-model] , kliknij port wyjściowy, a następnie wybierz opcję **Wizualizuj**.
 
 ![Wyniki oceny eksperymentu](./media/create-experiment/evaluation-results.png)
 

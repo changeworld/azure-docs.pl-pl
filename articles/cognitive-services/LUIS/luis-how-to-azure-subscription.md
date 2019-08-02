@@ -1,7 +1,7 @@
 ---
-title: Klucze subskrypcji
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Jest konieczne tworzenie kluczy subskrypcji do użycia zapytania bezpłatne pierwszego 1000 punkt końcowy. Jeśli zostanie wyświetlony _poza limit przydziału_ błąd w formie HTTP 403 i 429, należy utworzyć klucz i przypisać ją do swojej aplikacji.
+title: Klucze subskrypcji — LUIS
+titleSuffix: Azure Cognitive Services
+description: Nie musisz tworzyć kluczy subskrypcji, aby korzystać z bezpłatnych pierwszych 1000 zapytań punktów końcowych. Jeśli wystąpi błąd _braku przydziału_ w postaci HTTP 403 lub 429, musisz utworzyć klucz i przypisać go do aplikacji.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: c7e23c78b5d03b834d593bd2b53958c3379c51f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797947"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560511"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Używanie kluczy subskrypcji z aplikacją usługi LUIS
 
-Przy pierwszym użyciu Language Understanding (LUIS), jest konieczne tworzenie kluczy subskrypcji. Podane są zapytania do endpoint 1000 rozpoczynać się. 
+Przy pierwszym użyciu Language Understanding (LUIS) nie trzeba tworzyć kluczy subskrypcji. Otrzymujesz 1000 zapytań punktów końcowych, które zaczynają się od. 
 
 Testowanie i prototypu tylko przy użyciu warstwy bezpłatna (F0). W przypadku systemów produkcyjnych, użyj [płatnych](https://aka.ms/luis-price-tier) warstwy. Nie używaj [tworzenia klucza](luis-concept-keys.md#authoring-key) dla punktu końcowego kwerend w środowisku produkcyjnym.
 
@@ -28,11 +28,11 @@ Testowanie i prototypu tylko przy użyciu warstwy bezpłatna (F0). W przypadku s
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
-## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Tworzenie zasobu środowiska uruchomieniowego endpoint prognoz w witrynie Azure portal
+## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Utwórz zasób środowiska uruchomieniowego punktu końcowego w Azure Portal
 
-Możesz utworzyć [zasobów endpoint prognoz](get-started-portal-deploy-app.md#create-the-endpoint-resource) w witrynie Azure portal. Ten zasób powinien być użyty tylko dla zapytania prediction punktu końcowego. Nie należy używać tego zasobu dla tworzenia zmian do aplikacji.
+Tworzysz [zasób punktu końcowego przewidywania](get-started-portal-deploy-app.md#create-the-endpoint-resource) w Azure Portal. Tego zasobu należy używać tylko w przypadku zapytań prognozowania punktów końcowych. Nie używaj tego zasobu do tworzenia zmian w aplikacji.
 
-Można utworzyć zasobu Language Understanding lub zasobu usług Cognitive Services. W przypadku tworzenia zasobu Language Understanding, dobrym rozwiązaniem jest postpend typ zasobu do nazwy zasobu. 
+Można utworzyć zasób Language Understanding lub zasób Cognitive Services. W przypadku tworzenia zasobu Language Understanding dobrym sposobem jest postpend typu zasobu na nazwę zasobu. 
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -47,19 +47,19 @@ Można utworzyć zasobu Language Understanding lub zasobu usług Cognitive Servi
 <a name="assign-endpoint-key"></a>
 <a name="assign-resource"></a>
 
-### <a name="using-resource-from-luis-portal"></a>Za pomocą zasobów z portalu usługi LUIS
+### <a name="using-resource-from-luis-portal"></a>Korzystanie z zasobów z portalu LUIS
 
-Jeśli używasz zasobów z portalu usługi LUIS, nie trzeba wiedzieć klucz lokalizacji. Zamiast tego musisz znać swoje dzierżawcy zasobów, subskrypcji i nazwę zasobu.
+Jeśli używasz zasobu z portalu LUIS, nie musisz znać Twojego klucza i lokalizacji. Zamiast tego musisz znać dzierżawę zasobów, subskrypcję i nazwę zasobu.
 
-Po [przypisać](#assign-resource-key-to-luis-app-in-luis-portal) zasobu z aplikacją usługi LUIS w portalu usługi LUIS, klucza i lokalizacja są dostarczane jako część adresu URL punktu końcowego prognozowania zapytania w sekcji Zarządzanie **kluczy i punktu końcowego ustawienia** strony.
+Po przypisaniu zasobu do aplikacji LUIS w portalu LUIS klucz i lokalizacja są dostarczane jako część adresu URL punktu końcowego przewidywania zapytania na stronie Zarządzanie **kluczami i ustawieniami punktu końcowego** sekcji Zarządzaj. [](#assign-resource-key-to-luis-app-in-luis-portal)
  
-### <a name="using-resource-from-rest-api-or-sdk"></a>Za pomocą zasobów z interfejsu API REST lub zestawu SDK
+### <a name="using-resource-from-rest-api-or-sdk"></a>Korzystanie z zasobu z interfejsu API REST lub zestawu SDK
 
-Jeśli używasz zasobów z REST API(s) lub zestawu SDK, musisz wiedzieć Twojego klucza i lokalizacji. Te informacje są dostarczane jako część adresu URL punktu końcowego prognozowania zapytania w sekcji Zarządzanie **kluczy i punktu końcowego ustawienia** strony, jak i w witrynie Azure portal, na stronach przeglądu i klucze zasobu.
+Jeśli używasz zasobu z interfejsów API REST lub zestawu SDK, musisz znać klucz i lokalizację. Te informacje są dostępne jako część adresu URL punktu końcowego przewidywania zapytania na stronie Zarządzanie kluczami **i kluczami punktu końcowego, a** także w Azure Portal na stronach omówienie i klucze zasobu.
 
-## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Przypisz klucz zasobu do aplikacji usługi LUIS w portalu usługi LUIS
+## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Przypisywanie klucza zasobu do aplikacji LUIS w portalu LUIS
 
-Za każdym razem, gdy tworzysz nowy zasób dla usługi LUIS, musisz [przypisywanie zasobów do aplikacji usługi LUIS](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). Po przypisaniu, nie będzie trzeba ponownie wykonaj ten krok, jeśli nie możesz utworzyć nowy zasób. Można utworzyć nowy zasób, aby rozwinąć regionów aplikacji lub do obsługi większej liczby zapytań prognozowania.
+Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz [przypisać zasób do aplikacji Luis](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). Po jego przypisaniu nie trzeba wykonać tego kroku ponownie, chyba że zostanie utworzony nowy zasób. Możesz utworzyć nowy zasób, aby rozszerzyć regiony aplikacji lub obsłużyć większą liczbę zapowiadanych zapytań.
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>
@@ -102,7 +102,7 @@ Intencji i ich wyniki są również uwzględnione w dziennikach punktu końcoweg
 ### <a name="enable-bing-spell-checker"></a>Włączanie sprawdzania pisowni Bing 
 W **ustawienia adresu url punktu końcowego**, **sprawdzania pisowni Bing** przełącznik umożliwia usługi LUIS do poprawianie błędnie napisanych wyrazów przed prognozy. Tworzenie  **[klucz sprawdzania pisowni Bing](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** . 
 
-Dodaj **sprawdzania pisowni = true** parametr querystring i **bing pisowni wyboru subscription-key = {YOUR_BING_KEY_HERE}** . Zastąp `{YOUR_BING_KEY_HERE}` kluczem moduł sprawdzania pisowni Bing.
+Dodaj parametr **sprawdzania pisowni = true** QueryString i **Bing-pisownia-Check-Subscription-Key = {YOUR_BING_KEY_HERE}** . Zastąp `{YOUR_BING_KEY_HERE}` kluczem moduł sprawdzania pisowni Bing.
 
 ```JSON
 {
@@ -126,7 +126,7 @@ Do celów usługi automation, takich jak potok ciągłej integracji/ciągłego w
 
 1. Pobierz token do usługi Azure Resource Manager z tego [witryny sieci Web](https://resources.azure.com/api/token?plaintext=true). Ten token wygaśnie więc natychmiast zastosować go. Żądanie zwraca tokenu usługi Azure Resource Manager.
 
-    ![Żądanie tokenu usługi Azure Resource Manager i otrzymywanie tokenu usługi Azure Resource Manager](./media/luis-manage-keys/get-arm-token.png)
+    ![Token Azure Resource Manager żądania i Odbierz token Azure Resource Manager](./media/luis-manage-keys/get-arm-token.png)
 
 1. Użyj tokenu na potrzeby żądania zasobów usługi LUIS w subskrypcjach, z [uzyskać LUIS azure konta interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), Twoje konto użytkownika ma dostęp do. 
 
@@ -153,42 +153,42 @@ Do celów usługi automation, takich jak potok ciągłej integracji/ciągłego w
 
     Po pomyślnym ten interfejs API zwraca 201 - stan utworzone. 
 
-## <a name="change-pricing-tier"></a>Zmiana warstwy cenowej
+## <a name="change-pricing-tier"></a>Zmień warstwę cenową
 
 1.  W [Azure](https://portal.azure.com), Znajdź swoją subskrypcję usługi LUIS. Wybierz subskrypcję usługi LUIS.
     ![Znajdź swoją subskrypcję usługi LUIS](./media/luis-usage-tiers/find.png)
-1.  Wybierz **warstwa cenowa** aby można było wyświetlić dostępnych warstw cenowych. 
+1.  Wybierz pozycję **warstwa cenowa** , aby wyświetlić dostępne warstwy cenowe. 
     ![Wyświetl warstwy cenowe](./media/luis-usage-tiers/subscription.png)
-1.  Wybierz warstwę cenową i wybierz pozycję **wybierz** można zapisać zmiany. 
+1.  Wybierz warstwę cenową, a następnie wybierz pozycję **Wybierz** , aby zapisać zmiany. 
     ![Zmień warstwę płatności usługi LUIS](./media/luis-usage-tiers/plans.png)
 1.  Po zakończeniu zmianą cen okno podręczne sprawdza nowej warstwy cenowej. 
     ![Sprawdź warstwę płatności usługi LUIS](./media/luis-usage-tiers/updated.png)
 1. Pamiętaj, aby [przypisania tego klucza punktu końcowego](#assign-endpoint-key) na **Publikuj** strony i używać jej w wszystkie zapytania punktu końcowego. 
 
-## <a name="fix-http-status-code-403-and-429"></a>Napraw kod stanu HTTP 403 i 429
+## <a name="fix-http-status-code-403-and-429"></a>Popraw kod stanu HTTP 403 i 429
 
-Błąd 403 i 429 kodów stanu po przekroczeniu transakcji na sekundę lub liczba transakcji miesięcznie w warstwie cenowej.
+Kody stanu błędów 403 i 429 są uzyskiwane w przypadku przekroczenia liczby transakcji na sekundę lub transakcji miesięcznie dla warstwy cenowej.
 
-### <a name="when-you-receive-an-http-403-error-status-code"></a>Po otrzymaniu kod statusu błędu HTTP 403
+### <a name="when-you-receive-an-http-403-error-status-code"></a>Po otrzymaniu kodu stanu błędu HTTP 403
 
-Użyj wszystkich tych bezpłatnych 1000 punkt końcowy zapytań lub przekracza warstwy cenowej miesięczny limit przydziału transakcji, otrzymasz kod statusu błędu HTTP 403. 
+W przypadku korzystania ze wszystkich bezpłatnych zapytań dotyczących punktów końcowych 1000 lub przekroczenia limitu przydziału miesięcznych transakcji warstwy cenowej występuje kod stanu błędu HTTP 403. 
 
-Aby naprawić ten błąd, musisz albo [zmienić warstwę cenową](luis-how-to-azure-subscription.md#change-pricing-tier) na wyższą warstwę lub [Utwórz nowy zasób](get-started-portal-deploy-app.md#create-the-endpoint-resource) i [przypisać go do swojej aplikacji](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+Aby naprawić ten błąd, należy [zmienić warstwę cenową](luis-how-to-azure-subscription.md#change-pricing-tier) na wyższą lub [utworzyć nowy zasób](get-started-portal-deploy-app.md#create-the-endpoint-resource) i [przypisać go do aplikacji](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
 
-Rozwiązania dla tego błędu obejmują:
+Rozwiązania tego błędu obejmują:
 
-* W [witryny Azure portal](https://portal.azure.com), na język opis zasobu na **zarządzania zasobami -> Warstwa cenowa**, zmienić warstwę cenową na wyższą warstwę TPS. Nie ma potrzeby wykonywania żadnych czynności w portalu usługi Language Understanding, jeśli zasób jest już przypisany do aplikacji interpretacji języka.
-*  Jeśli użycie przekracza najwyższej warstwy cenowej, należy dodać więcej zasobów Language Understanding z modułem równoważenia obciążenia przed nimi. [Kontenera Language Understanding](luis-container-howto.md) przy użyciu rozwiązania Kubernetes lub narzędzia Docker Compose może w tym pomóc.
+* W [Azure Portal](https://portal.azure.com), w Language Understanding zasobów, w **warstwie cenowej zarządzanie zasobami — >** Zmień warstwę cenową na wyższą warstwę TPS. Nie musisz wykonywać żadnych czynności w portalu Language Understanding, jeśli zasób został już przypisany do aplikacji Language Understanding.
+*  Jeśli użycie przekroczy najwyższą warstwę cenową, należy dodać więcej Language Understanding zasobów przy użyciu modułu równoważenia obciążenia przed nimi. [Language Understanding kontener](luis-container-howto.md) z Kubernetes lub Docker Compose może Ci pomóc.
 
-### <a name="when-you-receive-an-http-429-error-status-code"></a>Po otrzymaniu kod statusu błędu HTTP 429
+### <a name="when-you-receive-an-http-429-error-status-code"></a>Po otrzymaniu kodu stanu błędu HTTP 429
 
-Ten kod stanu jest zwracany, gdy transakcji na sekundę przekracza warstwę cenową.  
+Ten kod stanu jest zwracany, gdy liczba transakcji na sekundę przekracza Twoją warstwę cenową.  
 
 Rozwiązania obejmują:
 
-* Możesz [zwiększyć warstwy cenowej](#change-pricing-tier), jeśli nie jesteś w najwyższej warstwie.
-* Jeśli użycie przekracza najwyższej warstwy cenowej, należy dodać więcej zasobów Language Understanding z modułem równoważenia obciążenia przed nimi. [Kontenera Language Understanding](luis-container-howto.md) przy użyciu rozwiązania Kubernetes lub narzędzia Docker Compose może w tym pomóc.
-* Można blokują żądań aplikacji klienta za pomocą [zasady ponawiania](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) należy zaimplementować samodzielnie po otrzymaniu tego kodu stanu. 
+* Możesz [zwiększyć swoją warstwę cenową](#change-pricing-tier), jeśli nie masz najwyższej warstwy.
+* Jeśli użycie przekroczy najwyższą warstwę cenową, należy dodać więcej Language Understanding zasobów przy użyciu modułu równoważenia obciążenia przed nimi. [Language Understanding kontener](luis-container-howto.md) z Kubernetes lub Docker Compose może Ci pomóc.
+* Po otrzymaniu tego kodu stanu można posłużyć do żądania aplikacji klienckich przy użyciu [zasad ponawiania](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) . 
 
 ## <a name="viewing-summary-usage"></a>Wyświetlanie podsumowania użycia
 Możesz wyświetlić informacje dotyczące użycia usługi LUIS na platformie Azure. **Przegląd** strona zawiera najnowsze informacje podsumowania, w tym połączeń i błędów. Jeśli usługa LUIS żądania punktu końcowego, następnie natychmiast obejrzeć **strony Przegląd**, Zezwalaj na użycie pojawienie się do pięciu minut.

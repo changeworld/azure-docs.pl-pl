@@ -1,96 +1,96 @@
 ---
-title: Grupy kontenerów w usłudze Azure Container Instances
-description: Zrozumieć, jak wiele kontenerów, grup pracy w usłudze Azure Container Instances
+title: Azure Container Instances grupy kontenerów
+description: Informacje o tym, jak grupy wielokontenerowe działają w Azure Container Instances
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cba57875daf9b570d274ec8c4e9c4146af0dc045
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b17004e7821bcac61ca98afdbeaf87644da2a441
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072834"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68326050"
 ---
-# <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w usłudze Azure Container Instances
+# <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w Azure Container Instances
 
-Zasób najwyższego poziomu w usłudze Azure Container Instances jest *grupy kontenerów*. W tym artykule opisano, co to są grupy kontenerów oraz typy scenariusze, które umożliwiają one.
+Zasób najwyższego poziomu w Azure Container Instances jest *grupą kontenerów*. W tym artykule opisano, co to są grupy kontenerów i jakie typy scenariuszy są włączane.
 
 ## <a name="how-a-container-group-works"></a>Jak działa Grupa kontenerów
 
-Grupy kontenerów to zbiór kontenerów, które są planowane na tym samym komputerze hosta. Kontenery w grupie kontenerów udostępniać cykl życia, zasobów, sieci lokalnej i woluminy magazynu. Jest podobna do *pod* w [Kubernetes][kubernetes-pod].
+Grupa kontenerów to kolekcja kontenerów, które są planowane na tym samym komputerze-hoście. Kontenery w grupie kontenerów współdzielą cykl życia, zasoby, sieć lokalną i woluminy magazynu. Jest to podobne w koncepcji w [Kubernetes][kubernetes-pod].
 
-Na poniższym diagramie przedstawiono przykład grupy kontenerów, która zawiera wiele kontenerów:
+Na poniższym diagramie przedstawiono przykład grupy kontenerów zawierającej wiele kontenerów:
 
-![Diagram grupy kontenerów][container-groups-example]
+![Diagram grup kontenerów][container-groups-example]
 
-Ten przykład grupy kontenerów:
+Ta przykładowa Grupa kontenerów:
 
-* Zaplanowano jednego komputera-hosta.
-* Jest przypisana etykieta nazwy DNS.
-* Przedstawia jeden publiczny adres IP, za pomocą jednej ujawnionych portów.
-* Składa się z dwóch kontenerów. Jeden kontener nasłuchuje na porcie 80, podczas innych nasłuchuje na porcie 5000.
-* Zawiera dwie udziałów plików platformy Azure jako woluminu instaluje i każdego kontenera na komputerze instalująca jeden z udziałów lokalnie.
+* Zaplanowano na pojedynczym komputerze-hoście.
+* Ma przypisaną etykietę nazw DNS.
+* Udostępnia jeden publiczny adres IP z jednym uwidocznionym portem.
+* Składa się z dwóch kontenerów. Jeden kontener nasłuchuje na porcie 80, podczas gdy drugi nasłuchuje na porcie 5000.
+* Obejmuje dwa udziały plików platformy Azure jako instalacje woluminów, a każdy kontener instaluje jeden z udziałów lokalnie.
 
 > [!NOTE]
-> Grup wielu kontenerów obsługuje obecnie tylko kontenerów systemu Linux. Kontenery Windows Azure Container Instances obsługuje tylko wdrożenie pojedynczego wystąpienia. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje dostępne w kontenerach Windows, bieżące różnice dotyczące platform w usłudze można znaleźć [Przegląd](container-instances-overview.md#linux-and-windows-containers).
+> Grupy wielokontenerowe obsługują obecnie tylko kontenery systemu Linux. W przypadku kontenerów systemu Windows Azure Container Instances obsługuje tylko wdrożenie jednego wystąpienia. Gdy pracujemy nad przełączeniem wszystkich funkcji do kontenerów systemu Windows, w przeglądzie usługi można znaleźć [](container-instances-overview.md#linux-and-windows-containers)bieżące różnice między platformami.
 
 ## <a name="deployment"></a>Wdrożenie
 
-Poniżej przedstawiono dwa podstawowe sposoby wdrażania grupy wielu kontenerów: Użyj [szablonu usługi Resource Manager] [ resource-manager template] lub [pliku YAML][yaml-file]. Szablon usługi Resource Manager jest zalecane, gdy należy wdrożyć zasoby dodatkowe usługi platformy Azure (na przykład [udostępniać usługi Azure Files][azure-files]) podczas wdrażania wystąpień kontenerów. Ze względu na charakter bardziej zwięzły widok formacie YAML pliku YAML jest zalecane, gdy Twoje wdrożenie obejmuje tylko wystąpienia kontenera.
+Poniżej przedstawiono dwa typowe sposoby wdrażania grupy wielokontenerowej: Użyj [szablonu Menedżer zasobów][resource-manager template] lub [pliku YAML][yaml-file]. Szablon Menedżer zasobów jest zalecany, gdy konieczne jest wdrożenie dodatkowych zasobów usługi platformy Azure (na przykład [udziału Azure Files][azure-files]) podczas wdrażania wystąpień kontenerów. Ze względu na bardziej zwięzły YAML formatu pliku YAML zaleca się, gdy wdrożenie obejmuje tylko wystąpienia kontenerów.
 
-Aby zachować konfigurację grupy kontenerów, możesz wyeksportować konfigurację do pliku YAML, za pomocą polecenia wiersza polecenia platformy Azure [az container eksportu][az-container-export]. Eksportowanie służy do przechowywania konfiguracji grupy kontenerów w systemie kontroli wersji dla "konfiguracji jako kodu". Możesz też użyć wyeksportowanego pliku jako punktu wyjścia podczas tworzenia nowej konfiguracji w YAML.
+Aby zachować konfigurację grupy kontenerów, można wyeksportować konfigurację do pliku YAML przy użyciu polecenia [AZ Container Export][az-container-export]na platformie Azure. Eksport umożliwia przechowywanie konfiguracji grupy kontenerów w kontroli wersji dla "konfiguracji jako kodu". Można też użyć wyeksportowanego pliku jako punktu wyjścia podczas tworzenia nowej konfiguracji w programie YAML.
 
 ## <a name="resource-allocation"></a>Alokacja zasobów
 
-Usługa Azure Container Instances przydziela zasoby, takie jak procesory, pamięć i opcjonalnie [procesorów GPU] [ gpus] (wersja zapoznawcza) do grupy kontenerów przez dodanie [żądania zasobu] [ resource-requests] wystąpień w grupie. Biorąc zasobów procesora CPU na przykład, jeśli tworzysz grupę kontenerów z dwóch wystąpień, każdego żądania 1 procesor CPU, a następnie grupy kontenerów jest przydzielany 2 procesory CPU.
+Azure Container Instances przydzielać zasoby, takie jak procesory CPU, pamięć i opcjonalnie [procesory GPU][gpus] (wersja zapoznawcza) do grupy kontenerów przez dodanie [żądań zasobów][resource-requests] wystąpień w grupie. Jeśli na przykład utworzysz grupę kontenerów z dwoma wystąpieniami, każdy z nich żąda 1 procesora CPU, Grupa kontenerów zostanie przypisana 2 procesory CPU.
 
-Maksymalna zasoby dostępne dla grupy kontenerów są zależne od [regionu świadczenia usługi Azure] [ region-availability] używaną na potrzeby wdrożenia.
+Maksymalna liczba zasobów dostępnych dla grupy kontenerów zależy od [regionu platformy Azure][region-availability] używanego do wdrożenia.
 
-### <a name="container-resource-requests-and-limits"></a>Żądania zasobów kontenera i limity
+### <a name="container-resource-requests-and-limits"></a>Żądania i limity zasobów kontenera
 
-* Domyślnie wystąpień kontenerów w grupie Udostępnij żądanych zasobów grupy. W grupie przy użyciu dwóch wystąpień każdego żądania 1 procesor CPU, grupa jako całość ma dostęp do 2 procesory CPU. Każde wystąpienie można wykorzystać maksymalnie 2 procesory CPU i wystąpienia mogą konkurować o zasoby procesora CPU, gdy są one uruchomione.
+* Domyślnie wystąpienia kontenerów w grupie udostępniają żądane zasoby grupy. W grupie z dwoma wystąpieniami żądające 1 procesora CPU Grupa jako całość ma dostęp do 2 procesorów CPU. Każde wystąpienie może korzystać z maksymalnie dwóch procesorów CPU, a wystąpienia mogą ulec konkurowaniu w przypadku zasobów procesora CPU, gdy są uruchomione.
 
-* Aby ograniczyć użycie zasobów przez wystąpienie w grupie, opcjonalnie ustawić [limit zasobów] [ resource-limits] dla tego wystąpienia. W grupie z dwoma wystąpieniami żądanie 1 procesor CPU, jeden z kontenerów może wymagać większej liczby procesorów CPU niż drugi.
+* Aby ograniczyć użycie zasobów przez wystąpienie w grupie, opcjonalnie Ustaw [Limit zasobów][resource-limits] dla tego wystąpienia. W grupie zawierającej dwa wystąpienia żądające 1 procesora CPU jeden z kontenerów może wymagać od siebie więcej procesorów CPU.
 
-  W tym scenariuszu można ustawić limit zasobów wynosi 0,5 CPU dla jednego wystąpienia, a limit wynoszący 2 procesory CPU dla drugiego. Ta konfiguracja ogranicza użycie zasobów pierwszego kontenera 0,5 CPU, co drugi kontener, aby zużyć w pełnej 2 procesory CPU, jeśli jest dostępny.
+  W tym scenariuszu można ustawić limit zasobów 0,5 CPU dla jednego wystąpienia i limit 2 procesorów CPU dla drugiego. Ta konfiguracja ogranicza użycie zasobów pierwszego kontenera do 0,5 procesora CPU, co pozwala drugiemu kontenerowi używać do pełnych 2 procesorów CPU, jeśli są dostępne.
 
-Aby uzyskać więcej informacji, zobacz [ResourceRequirements] [ resource-requirements] właściwość w kontenerze grup interfejsu API REST.
+Aby uzyskać więcej informacji, zobacz Właściwość [ResourceRequirements][resource-requirements] w interfejsie API REST grup kontenerów.
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimalna i maksymalna alokacja
 
-* Przydziel **minimalne** 1 procesora CPU i 1 GB pamięci do grupy kontenerów. Pojedynczy kontener wystąpień w obrębie grupy mogą być udostępniane z mniej niż 1 procesora CPU i 1 GB pamięci. 
+* Przydziel **co najmniej** 1 procesor CPU i 1 GB pamięci do grupy kontenerów. Można obsługiwać poszczególne wystąpienia kontenerów w grupie przy użyciu mniej niż 1 procesora CPU i 1 GB pamięci. 
 
-* Aby uzyskać **maksymalna** zasoby w grupie kontenerów, zobacz [dostępności zasobów] [ region-availability] dla usługi Azure Container Instances w regionie wdrażania.
+* Aby uzyskać **maksymalną liczbę** zasobów w grupie kontenerów, zapoznaj się z tematem [dostępność zasobów][region-availability] dla Azure Container Instances w regionie wdrożenia.
 
 ## <a name="networking"></a>Networking
 
-Grupy kontenerów udostępnić adres IP i port przestrzeni nazw na ten adres IP. Aby włączyć klientów zewnętrznych dotrzeć do kontenera w grupie, należy udostępnić portu, adresu IP i z kontenera. Ponieważ kontenery w obrębie grupy współdzielą portu przestrzeni nazw, mapowanie portów nie jest obsługiwane. Kontenery w obrębie grupy docierać do siebie nawzajem za pośrednictwem hosta lokalnego na portach, które mogą mieć dostępne, nawet wtedy, gdy te porty nie są widoczne zewnętrznie na adres IP grupy.
+Grupy kontenerów udostępniają adresy IP i przestrzeń nazw portów na tym adresie IP. Aby umożliwić klientom zewnętrznym dotarcie do kontenera w grupie, należy uwidocznić port w adresie IP i z kontenera. Ponieważ kontenery w grupie współużytkują przestrzeń nazw portu, mapowanie portów nie jest obsługiwane. Kontenery w obrębie grupy mogą się łączyć ze sobą za pomocą hosta lokalnego na portach, które zostały uwidocznione, nawet jeśli te porty nie są udostępniane zewnętrznie na adresie IP grupy.
 
-Opcjonalnie wdrażają grup kontenerów do [sieci wirtualnej platformy Azure] [ virtual-network] (wersja zapoznawcza), aby umożliwić kontenerów do bezpiecznego komunikowania się z innymi zasobami w sieci wirtualnej.
+Opcjonalnie można wdrożyć grupy kontenerów w usłudze [Azure Virtual Network][virtual-network] (wersja zapoznawcza), aby umożliwić kontenerom bezpieczne komunikowanie się z innymi zasobami w sieci wirtualnej.
 
 ## <a name="storage"></a>Magazyn
 
-Można określić zewnętrzne woluminów należy zainstalować w ramach grupy kontenerów. Woluminy można mapować do określonej ścieżki w ramach poszczególnych kontenerów w grupie.
+Możesz określić woluminy zewnętrzne do zainstalowania w obrębie grupy kontenerów. Te woluminy można mapować na określone ścieżki w poszczególnych kontenerach w grupie.
 
 ## <a name="common-scenarios"></a>Typowe scenariusze
 
-Grup wielu kontenerów są przydatne w sytuacjach, w którym chcesz podzielić funkcjonalności pojedynczego zadania na niewielką liczbę obrazów kontenerów. Obrazy te mogą być następnie dostarczane przez różne zespoły i mają wymagania osobnego zasobu.
+Grupy wielu kontenerów są przydatne w przypadkach, w których chcesz podzielić pojedyncze zadanie funkcjonalne na niewielką liczbę obrazów kontenerów. Te obrazy mogą następnie zostać dostarczone przez różne zespoły i mieć oddzielne wymagania dotyczące zasobów.
 
-Przykład użycia mogą obejmować:
+Przykładowe użycie może obejmować:
 
-* Kontener obsługujący aplikację sieci web i kontener pobierać najnowszą zawartość z kontroli źródła.
-* Kontener aplikacji i kontenerów rejestrowania. Kontener rejestrowania zbiera dane wyjściowe dzienników i metryk przez główne aplikacji i zapisuje je do magazynu długoterminowego.
-* Kontener aplikacji i monitorowania kontenerów. Monitorowania kontenera okresowo wysyła żądanie do aplikacji, aby upewnić się, że jest uruchomiona i odpowiada poprawnie i zgłasza alert, jeśli nie jest.
-* Kontener frontonu i zaplecza kontenera. Fronton może służyć aplikacji sieci web z zapleczem usługi do pobierania danych. 
+* Kontener obsługujący aplikację sieci Web i kontener ściągający najnowszą zawartość z kontroli źródła.
+* Kontener aplikacji i kontener rejestrowania. Kontener rejestrowania zbiera dzienniki i metryki dane wyjściowe przez główną aplikację i zapisuje je do magazynu długoterminowego.
+* Kontener aplikacji i kontener monitorowania. Kontener monitorujący okresowo wysyła żądanie do aplikacji, aby upewnić się, że działa i odpowiada poprawnie, i zgłasza alert, jeśli nie jest.
+* Kontener frontonu i kontener zaplecza. Fronton może obtworzyć aplikację sieci Web przy użyciu zaplecza z uruchomioną usługą w celu pobierania danych. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak wdrożyć grupę kontenerów z obsługą wielu kontenerów przy użyciu szablonu usługi Azure Resource Manager:
+Dowiedz się, jak wdrożyć wielokontenerową grupę kontenerów z szablonem Azure Resource Manager:
 
 > [!div class="nextstepaction"]
 > [Wdrażanie grupy kontenerów][resource-manager template]

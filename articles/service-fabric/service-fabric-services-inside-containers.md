@@ -1,9 +1,9 @@
 ---
-title: Konteneryzowanie usługi Azure Service Fabric na Windows
-description: Dowiedz się, jak konteneryzowanie usług usługi Service Fabric Reliable Services i Reliable Actors w Windows.
+title: Konteneryzowanie usługi Azure Service Fabric w systemie Windows
+description: Dowiedz się, jak konteneryzowanie Reliable Services Service Fabric i usługi Reliable Actors w systemie Windows.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: anmolah
 editor: roroutra
 ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 1210b34590484379ae487ad1b87e76a433e4582a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621817"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599208"
 ---
-# <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Konteneryzowanie Twojego usług usługi Service Fabric Reliable Services i Reliable Actors w Windows
+# <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Konteneryzowanie Reliable Services Service Fabric i Reliable Actors w systemie Windows
 
-Usługa Service Fabric obsługuje konteneryzowania mikrousług usługi Service Fabric (usług Reliable Services i Reliable Actor na podstawie usług). Aby uzyskać więcej informacji, zobacz [usługi Service fabric, kontenerów](service-fabric-containers-overview.md).
+Service Fabric obsługuje mikrousługi konteneryzowania Service Fabric (Reliable Services i niezawodne usługi oparte na aktorze). Aby uzyskać więcej informacji, zobacz [kontenery usługi Service Fabric](service-fabric-containers-overview.md).
 
-Ten dokument zawiera wskazówki dotyczące usługi uruchomionej w kontenerze Windows.
+Ten dokument zawiera wskazówki dotyczące uruchamiania usługi w kontenerze systemu Windows.
 
 > [!NOTE]
-> Obecnie ta funkcja działa tylko dla Windows. Do uruchamiania kontenerów, klaster musi działać w systemie Windows Server 2016 z kontenerami.
+> Obecnie ta funkcja działa tylko dla systemu Windows. Aby uruchamiać kontenery, klaster musi działać w systemie Windows Server 2016 z kontenerami.
 
-## <a name="steps-to-containerize-your-service-fabric-application"></a>Kroki, aby konteneryzowanie aplikacji usługi Service Fabric
+## <a name="steps-to-containerize-your-service-fabric-application"></a>Kroki umożliwiające konteneryzowanie aplikacji Service Fabric
 
-1. Otwórz aplikację usługi Service Fabric w programie Visual Studio.
+1. Otwórz aplikację Service Fabric w programie Visual Studio.
 
-2. Dodaj klasę [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) do projektu. Kod tej klasy jest pomocnika można poprawnie załadować danych binarnych środowiska uruchomieniowego usługi Service Fabric w Twojej aplikacji podczas uruchamiania w kontenerze.
+2. Dodaj klasę [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) do projektu. Kod w tej klasie jest pomocnikem do prawidłowego ładowania plików binarnych środowiska uruchomieniowego Service Fabric wewnątrz aplikacji podczas uruchamiania wewnątrz kontenera.
 
-3. Dla każdego pakietu kodu, który chcesz konteneryzowanie, zainicjować modułu ładującego na wpis programu punktu. Dodaj Konstruktor statyczny pokazano w poniższym fragmencie kodu do pliku punktu wejścia programu.
+3. Dla każdego pakietu kodu, który chcesz konteneryzowanie, zainicjuj moduł ładujący w punkcie wejścia programu. Dodaj statyczny Konstruktor przedstawiony w poniższym fragmencie kodu do pliku punktu wejścia programu.
 
    ```csharp
    namespace MyApplication
@@ -55,9 +55,9 @@ Ten dokument zawiera wskazówki dotyczące usługi uruchomionej w kontenerze Win
           {
    ```
 
-4. Tworzenie i [pakietu](service-fabric-package-apps.md#Package-App) projektu. Aby skompilować i utworzyć pakiet, kliknij prawym przyciskiem myszy projekt aplikacji w Eksploratorze rozwiązań, a następnie wybierz **pakietu** polecenia.
+4. Kompilowanie i [pakowanie](service-fabric-package-apps.md#Package-App) projektu. Aby skompilować i utworzyć pakiet, kliknij prawym przyciskiem myszy projekt aplikacji w Eksplorator rozwiązań i wybierz polecenie **pakiet** .
 
-5. Dla każdego pakietu kodu należy konteneryzowanie, uruchom skrypt programu PowerShell [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1). Użycie jest następująca:
+5. Dla każdego pakietu kodu, który należy konteneryzowanie, uruchom skrypt programu PowerShell [CreateDockerPackage. ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1). Użycie jest następujące:
 
     Pełny .NET
       ```powershell
@@ -73,11 +73,11 @@ Ten dokument zawiera wskazówki dotyczące usługi uruchomionej w kontenerze Win
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      Skrypt tworzy folder z artefaktami platformy Docker w $dockerPackageOutputDirectoryPath. Wygenerowany plik Dockerfile, aby zmodyfikować `expose` żadnych portów i uruchomić skrypty instalacyjne i tak dalej. zgodnie z potrzebami.
+      Skrypt tworzy folder z artefaktami Docker w $dockerPackageOutputDirectoryPath. Zmodyfikuj wygenerowane pliku dockerfile na `expose` dowolne porty, Uruchom skrypty instalacyjne i tak dalej. na podstawie Twoich potrzeb.
 
-6. Następnie trzeba [kompilacji](service-fabric-get-started-containers.md#Build-Containers) i [wypychania](service-fabric-get-started-containers.md#Push-Containers) pakietu kontenera platformy Docker do repozytorium.
+6. Następnie musisz [skompilować](service-fabric-get-started-containers.md#Build-Containers) i wypchnąć [](service-fabric-get-started-containers.md#Push-Containers) pakiet kontenera Docker do repozytorium.
 
-7. Zmodyfikuj ApplicationManifest.xml i ServiceManifest.xml, aby dodać obraz kontenera, informacje o repozytorium, uwierzytelnianie rejestru i mapowania portów na hoście. Do modyfikowania manifestów, zobacz [tworzenie aplikacji kontenera usługi Azure Service Fabric](service-fabric-get-started-containers.md). Definicja pakietu kodu w manifeście usługi musi zostać zamieniona odpowiadających im obrazów kontenera. Upewnij się zmienić typ ContainerHost punktu wejścia.
+7. Zmodyfikuj ApplicationManifest. XML i servicemanifest. XML w celu dodania obrazu kontenera, informacji o repozytorium, uwierzytelniania rejestru i mapowania portów do hosta. Aby zmodyfikować manifesty, zobacz [Tworzenie aplikacji kontenera Service Fabric platformy Azure](service-fabric-get-started-containers.md). Definicja pakietu kodu w manifeście usługi musi zostać zamieniona na odpowiedni obraz kontenera. Upewnij się, że punkt wejścia został zmieniony na typ ContainerHost.
 
    ```xml
    <!-- Code package is your service executable. -->
@@ -92,7 +92,7 @@ Ten dokument zawiera wskazówki dotyczące usługi uruchomionej w kontenerze Win
    </CodePackage>
    ```
 
-8. Dodaj mapowanie port do hosta, replikatora i punktu końcowego usługi. Ponieważ oba te porty są przypisywane w czasie wykonywania przez usługę Service Fabric, ContainerPort jest równa zero do korzystania z portu przypisanego do mapowania.
+8. Dodaj mapowanie portów do hosta dla replikatora i punktu końcowego usługi. Ponieważ oba te porty są przypisane w czasie wykonywania przez Service Fabric, ContainerPort jest ustawiona na zero, aby użyć przypisanego portu do mapowania.
 
    ```xml
    <Policies>
@@ -103,7 +103,7 @@ Ten dokument zawiera wskazówki dotyczące usługi uruchomionej w kontenerze Win
    </Policies>
    ```
 
-9. Do konfigurowania trybu izolacji kontenera, zobacz [Konfigurowanie trybu izolacji]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). System Windows obsługuje dwa tryby izolacji dla kontenerów: tryb procesu oraz tryb funkcji Hyper-V. Poniższe fragmenty kodu pokazują, jak tryb izolacji można określić w pliku manifestu aplikacji.
+9. Aby skonfigurować tryb izolacji kontenera, zobacz [Configure izolacj Mode]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). System Windows obsługuje dwa tryby izolacji dla kontenerów: tryb procesu oraz tryb funkcji Hyper-V. Poniższe fragmenty kodu pokazują, jak tryb izolacji jest określony w pliku manifestu aplikacji.
 
    ```xml
    <Policies>
@@ -121,7 +121,7 @@ Ten dokument zawiera wskazówki dotyczące usługi uruchomionej w kontenerze Win
    ```
 
 > [!NOTE] 
-> Domyślnie aplikacje usługi Service Fabric mają dostęp do środowiska uruchomieniowego usługi Service Fabric, w postaci punkt końcowy, akceptując żądania specyficzne dla aplikacji. Rozważ wyłączenie dostępu, gdy aplikacja udostępnia niezaufanego kodu. Aby uzyskać więcej informacji, zobacz [najważniejsze wskazówki dotyczące zabezpieczeń w usłudze Service Fabric](service-fabric-best-practices-security.md#platform-isolation). Aby wyłączyć dostęp do środowiska uruchomieniowego usługi Service Fabric, Dodaj następujące ustawienie w sekcji zasady manifest aplikacji odpowiadający manifestu usługi importowany, w następujący sposób:
+> Domyślnie aplikacje Service Fabric mają dostęp do środowiska uruchomieniowego Service Fabric, w postaci punktu końcowego akceptującego żądania specyficzne dla aplikacji. Należy rozważyć wyłączenie tego dostępu, gdy aplikacja hostuje niezaufany kod. Aby uzyskać więcej informacji, zobacz [najlepsze rozwiązania w zakresie zabezpieczeń w Service Fabric](service-fabric-best-practices-security.md#platform-isolation). Aby wyłączyć dostęp do środowiska uruchomieniowego Service Fabric, należy dodać następujące ustawienie w sekcji zasady manifestu aplikacji odpowiadające zaimportowanemu Manifestowi usługi w następujący sposób:
 >
 ```xml
   <Policies>
@@ -130,7 +130,7 @@ Ten dokument zawiera wskazówki dotyczące usługi uruchomionej w kontenerze Win
 ```
 >
 
-10. Aby przetestować tę aplikację, należy wdrożyć w klastrze, na którym uruchomiony jest w wersji 5.7 lub nowszej. Środowisko uruchomieniowe w wersji 6.1 lub niższe należy edytować i aktualizować ustawienia klastra, aby włączyć tę funkcję w wersji zapoznawczej. Wykonaj kroki opisane w tym [artykułu](service-fabric-cluster-fabric-settings.md) Aby dodać ustawienie pokazano dalej.
+10. Aby przetestować tę aplikację, należy wdrożyć ją w klastrze z systemem w wersji 5,7 lub nowszej. W przypadku środowiska uruchomieniowego w wersji 6,1 lub niższej należy edytować i zaktualizować ustawienia klastra, aby włączyć tę funkcję w wersji zapoznawczej. Wykonaj kroki opisane w tym [artykule](service-fabric-cluster-fabric-settings.md) , aby dodać wyświetlone ustawienie dalej.
     ```
       {
         "name": "Hosting",
@@ -143,9 +143,9 @@ Ten dokument zawiera wskazówki dotyczące usługi uruchomionej w kontenerze Win
       }
     ```
 
-11. Następny [wdrażanie](service-fabric-deploy-remove-applications.md) pakiet aplikacji edytowanych do tego klastra.
+11. Następnie [Wdróż](service-fabric-deploy-remove-applications.md) zmodyfikowany pakiet aplikacji w tym klastrze.
 
-Teraz masz konteneryzowanych aplikacji usługi Service Fabric klaster uruchomiony.
+Teraz należy mieć Service Fabric aplikację, na której działa klaster.
 
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o uruchamianiu [kontenerów w usłudze Service Fabric](service-fabric-get-started-containers.md).

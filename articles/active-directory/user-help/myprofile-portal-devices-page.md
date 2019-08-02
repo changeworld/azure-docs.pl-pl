@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie połączonych urządzeń z portalu Mój profil (wersja zapoznawcza) — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Ogólne omówienie o stronie urządzenia w portalu Mój profil.
+title: Zarządzaj podłączonymi urządzeniami z poziomu portalu My profile (wersja zapoznawcza) Azure Active Directory | Microsoft Docs
+description: Ogólne omówienie na stronie urządzeń portalu My profile.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,41 +12,44 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9035d68e95798eb238c1836e617e485c39194c4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475855"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383034"
 ---
-# <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>Zarządzanie połączonych urządzeń z poziomu portalu Mój profil (wersja zapoznawcza)
-Możesz zarządzać urządzeniami, w którym nawiązano połączenie przy użyciu konta służbowego lub szkolnego, wyłączenie tych, które nie jest już właścicielem, z **urządzeń** strony **Mój profil** portalu.
+# <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>Zarządzanie urządzeniami połączonymi z poziomu portalu My profile (wersja zapoznawcza)
+
+Urządzeniami, z którymi nawiązano połączenie, można zarządzać za pomocą konta służbowego, a także wyłączać je, korzystając ze strony **urządzenia** w portalu **My profile** .
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
-## <a name="view-your-connected-devices"></a>Wyświetlanie połączonych urządzeń
-1. Zaloguj się do swojego konta firmowego lub szkolnego, a następnie przejdź do swojej https://myprofile.microsoft.com/ strony.
+## <a name="view-your-connected-devices"></a>Wyświetlanie podłączonych urządzeń
 
-2. Wybierz **urządzeń** z lewego okienka nawigacji lub wybierz **zarządzania urządzeniami** link z **urządzeń** bloku.
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź do https://myprofile.microsoft.com/ strony.
 
-    ![Strona Moje profilu, pokazujący wyróżnione łączy urządzenia](media/myprofile-portal/myprofile-portal-devices.png)
+2. Wybierz pozycję **urządzenia** w okienku nawigacji po lewej stronie lub wybierz łącze **Zarządzaj urządzeniami** w bloku **urządzenia** .
 
-3. Przejrzyj informacje o połączonych urządzeń, upewniając się, możesz je rozpoznać wszystkich. 
+    ![Strona Moje profile z wyświetlonymi łączami wyróżnionych urządzeń](media/myprofile-portal/myprofile-portal-devices.png)
 
-    ![Urządzenia, przedstawiający stronę połączone urządzenia](media/myprofile-portal/myprofile-portal-devices-page.png)
+3. Zapoznaj się z informacjami dotyczącymi połączonych urządzeń, aby upewnić się, że są one rozpoznawane. 
+
+    ![Strona urządzenia, przedstawiająca podłączone urządzenia](media/myprofile-portal/myprofile-portal-devices-page.png)
 
 ## <a name="disable-a-device"></a>Wyłącz urządzenie
-W dowolnym momencie można wyłączyć żadnego z połączonych urządzeń. Jest to szczególnie ważne, jeśli urządzenie nie jest znanym lub utraty lub kradzieży urządzenia. Po wyłączeniu urządzenia nie może zostać uwierzytelniony przez Twoją organizację, a nie będzie można uzyskać dostępu do żadnych zasobów organizacji.
+
+Dowolne z połączonych urządzeń można wyłączyć w dowolnym momencie. Jest to szczególnie ważne, jeśli urządzenie nie jest znane użytkownikowi lub jeśli urządzenie zostało zgubione lub skradzione. Gdy urządzenie nie zostanie już uwierzytelnione przez organizację i nie będzie mogło uzyskać dostępu do żadnych zasobów organizacji.
 
 >[!Important]
->Jeśli urządzenie jest wyłączone przez pomyłkę, nie ma możliwości jej cofnąć. Musisz skontaktować się z administratorem Twojej organizacji, aby dodać urządzenie ponownie.
+>Jeśli wyłączysz urządzenie przez pomyłkę, nie ma możliwości jego cofnięcia. Musisz skontaktować się z administratorem organizacji, aby ponownie dodać urządzenie.
 
-1. Wybierz **wyłączyć** z urządzenia, które chcesz usunąć.
+1. Wybierz opcję **Wyłącz** z urządzenia, które chcesz usunąć.
 
-    ![Strona urządzenia z wyróżniony link Disable](media/myprofile-portal/myprofile-portal-devices-disable.png)
+    ![Strona urządzenia z wyróżnionym linkiem Wyłącz](media/myprofile-portal/myprofile-portal-devices-disable.png)
 
-2. Wybierz **tak** aby upewnić się, aby wyłączyć urządzenia.
+2. Wybierz pozycję **tak** , aby potwierdzić, że chcesz wyłączyć urządzenie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Po obejrzeniu połączonych urządzeń, można wybrać wyświetlanie i zarządzanie swoje [informacje zabezpieczające](user-help-security-info-overview.md), [organizacje](myprofile-portal-organizations-page.md), widoku lub jak organizacji [używa danych](myprofile-portal-privacy-page.md).
+- Po wyświetleniu połączonych urządzeń możesz wybrać opcję wyświetlania lub zarządzania [informacjami o zabezpieczeniach](user-help-security-info-overview.md), organizacjach [](myprofile-portal-organizations-page.md)lub zobaczyć, jak Twoja organizacja [korzysta z Twoich danych](myprofile-portal-privacy-page.md).

@@ -1,6 +1,6 @@
 ---
-title: Odzyskiwanie po awarii bazy danych SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak odzyskać bazę danych po awarii regionalnego centrum danych lub błędu przy użyciu aktywnej replikacji geograficznej usługi Azure SQL Database, a także funkcje przywracania geograficznego.
+title: SQL Database odzyskiwania po awarii | Microsoft Docs
+description: Dowiedz się, jak odzyskać bazę danych z regionalnego przestoju lub niepowodzenia w przypadku korzystania z Azure SQL Database aktywnej replikacji geograficznej oraz możliwości przywracania geograficznego.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,115 +10,114 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 06/21/2019
-ms.openlocfilehash: 00fa1128df03befda8b15be2d7f2c527f65f9973
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 95814805d0bcb2532c09f4f68c6b8d97c3b8c6a5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341077"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568821"
 ---
-# <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie bazy danych SQL Azure lub trybu failover do dodatkowej
+# <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie Azure SQL Database lub przełączenia w tryb failover do pomocniczego
 
-Usługa Azure SQL Database oferuje następujące możliwości odzyskiwania sprawności po awarii:
+Azure SQL Database oferuje następujące możliwości odzyskiwania po awarii:
 
 - [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md)
 - [Grupy automatycznego trybu failover](sql-database-auto-failover-group.md)
-- [Funkcja przywracania geograficznego](sql-database-recovery-using-backups.md#point-in-time-restore)
+- [Przywracanie geograficzne](sql-database-recovery-using-backups.md#point-in-time-restore)
 - [Strefowo nadmiarowe bazy danych](sql-database-high-availability.md)
 
-Aby dowiedzieć się więcej na temat ciągłość działania — scenariusze i funkcje obsługi tych scenariuszy, zobacz [ciągłość prowadzenia działalności biznesowej](sql-database-business-continuity.md).
+Aby dowiedzieć się więcej o scenariuszach ciągłości biznesowej i funkcjach obsługujących te [](sql-database-business-continuity.md)scenariusze, zobacz ciągłość działania.
 
 > [!NOTE]
-> Jeśli używasz strefowo nadmiarowych baz danych Premium lub krytyczne dla działania firmy lub pul jest zautomatyzowany proces odzyskiwania, a pozostała część tego materiału nie ma zastosowania.
+> W przypadku używania strefowo nadmiarowych baz danych lub Krytyczne dla działania firmy, proces odzyskiwania jest zautomatyzowany, a pozostała część tego materiału nie ma zastosowania.
 
 > [!NOTE]
-> Podstawowych i pomocniczych baz danych muszą mieć taką samą warstwę usług. Zalecane jest również zdecydowanie, czy pomocniczej bazy danych został utworzony przy użyciu tych samych obliczeń rozmiaru (jednostki Dtu lub rdzeni wirtualnych) jako podstawowy. Aby uzyskać więcej informacji, zobacz [uaktualnianie, lub obniżenie jako podstawowej bazy danych](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database).
+> Podstawowa i pomocnicza baza danych muszą mieć tę samą warstwę usług. Zdecydowanie zaleca się również utworzenie pomocniczej bazy danych z tym samym rozmiarem obliczeń (DTU lub rdzeni wirtualnych) jako podstawową. Aby uzyskać więcej informacji, zobacz [Uaktualnianie lub obniżanie wersji jako podstawowej bazy danych](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database).
 
 > [!NOTE]
-> Użyj jednej lub kilku grup trybu failover można zarządzać trybem failover wielu baz danych.
-> Jeśli dodasz istniejącej relacji replikacji geograficznej do grupy trybu failover upewnij się, że pomocniczej geograficznej jest skonfigurowany z tej samej warstwy usług i rozmiaru obliczeń jako podstawowy. Aby uzyskać więcej informacji, zobacz [umożliwiają automatyczny tryb failover grupy przejrzyste i skoordynowany pracy w trybie failover wielu baz danych](sql-database-auto-failover-group.md).
+> Aby zarządzać trybem failover wielu baz danych, należy użyć jednej lub kilku grup trybu failover.
+> W przypadku dodania istniejącej relacji replikacji geograficznej do grupy trybu failover upewnij się, że dla elementu podrzędnego jest skonfigurowana ta sama warstwa usługi i rozmiar obliczeń jako podstawowa. Aby uzyskać więcej informacji, zobacz [Korzystanie z grup autotrybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych](sql-database-auto-failover-group.md).
 
-## <a name="prepare-for-the-event-of-an-outage"></a>Przygotuj się na wypadek wystąpienia awarii
+## <a name="prepare-for-the-event-of-an-outage"></a>Przygotuj się na zdarzenie przestoju
 
-Do poprawnego działania odzyskiwania do innego regionu danych przy użyciu grupy trybu failover lub geograficznie nadmiarowych kopii zapasowych, należy przygotować serwer w innym centrum danych awarię w stanie się nowym serwerem podstawowym należy wystąpić również mają dobrze zdefiniowane czynności opisanych i należy przetestować, aby zapewnić sprawne odzyskiwanie. Te kroki przygotowania obejmują:
+W przypadku pomyślnego odzyskiwania do innego regionu danych przy użyciu grup trybu failover lub kopii zapasowych nadmiarowych należy przygotować serwer w innej awarii centrum danych, aby stał się nowym serwerem podstawowym, w razie potrzeby, jak również dobrze zdefiniowane kroki i Przetestowano, aby zapewnić płynne odzyskiwanie. Te kroki przygotowawcze obejmują:
 
-- Określ serwer bazy danych SQL w innym regionie, aby stać się nowym serwerem podstawowym. Dla przywracania geograficznego, zwykle jest to serwer w [sparowanym regionie](../best-practices-availability-paired-regions.md) dla regionu, w którym znajdują się bazy danych. Pozwala to wyeliminować koszty dodatkowy ruch podczas operacji przywracania geograficznego.
-- Identyfikowanie i opcjonalnie zdefiniowanie, reguły zapory poziomu serwera IP potrzebne na użytkownikom dostęp do nowej podstawowej bazy danych.
-- Określ, jak chcesz przekierować użytkowników do nowym serwerem podstawowym, takie jak, zmieniając parametry połączenia lub zmieniając wpisy DNS.
-- Identyfikowanie i opcjonalnie utworzyć, dane logowania, które muszą znajdować się w bazie danych master w nowym serwerem podstawowym i upewnij się, że te logowania do odpowiednich uprawnień w bazie danych master, jeśli istnieje. Aby uzyskać więcej informacji, zobacz [zabezpieczeń bazy danych SQL Database po awarii](sql-database-geo-replication-security-config.md)
-- Określ reguły alertów, które muszą zostać zaktualizowane, aby mapować do nowej podstawowej bazy danych.
-- Dokument inspekcji konfiguracji podstawowej bazy danych
-- Wykonaj [próbnego odzyskiwania po awarii](sql-database-disaster-recovery-drills.md). Symulowanie awarii przywracania geograficznego, można usunąć lub zmienić nazwę źródłowej bazy danych, aby spowodować, że błąd łączności z aplikacji. Symulowanie awarii przy użyciu grupy trybu failover, można wyłączyć aplikacji sieci web lub maszyny wirtualnej podłączone do bazy danych lub pracy awaryjnej bazy danych, aby spowodować błędów łączności aplikacji.
+- Zidentyfikuj serwer SQL Database w innym regionie, aby stał się nowym serwerem podstawowym. W przypadku przywracania geograficznego jest to ogólnie serwer w [sparowanym regionie](../best-practices-availability-paired-regions.md) dla regionu, w którym znajduje się baza danych. Eliminuje to dodatkowy koszt ruchu podczas operacji przywracania geograficznego.
+- Zidentyfikuj i opcjonalnie Zdefiniuj reguły zapory adresów IP na poziomie serwera, które są konieczne dla użytkowników w celu uzyskania dostępu do nowej podstawowej bazy danych.
+- Określ sposób przekierowywania użytkowników do nowego serwera podstawowego, na przykład przez zmianę parametrów połączenia lub zmianę wpisów DNS.
+- Zidentyfikuj i opcjonalnie Utwórz, logowania, które muszą znajdować się w bazie danych Master na nowym serwerze podstawowym, i upewnij się, że te nazwy logowania mają odpowiednie uprawnienia w bazie danych Master (jeśli istnieją). Aby uzyskać więcej informacji, zobacz [SQL Database zabezpieczenia po odzyskiwaniu po awarii](sql-database-geo-replication-security-config.md)
+- Zidentyfikuj reguły alertów, które muszą zostać zaktualizowane w celu zamapowania na nową podstawową bazę danych.
+- Udokumentowanie konfiguracji inspekcji w bieżącej podstawowej bazie danych
+- Wykonaj [drążenie odzyskiwania po awarii](sql-database-disaster-recovery-drills.md). Aby symulować awarię w przypadku przywracania geograficznego, można usunąć źródłową bazę danych lub zmienić jej nazwę, aby spowodować awarię łączności aplikacji. Aby symulować awarię przy użyciu grup trybu failover, można wyłączyć aplikację sieci Web lub maszynę wirtualną połączonej z bazą danych lub przełączyć ją w tryb failover w celu spowodowania błędów łączności aplikacji.
 
-## <a name="when-to-initiate-recovery"></a>Kiedy należy rozpocząć odzyskiwania
+## <a name="when-to-initiate-recovery"></a>Kiedy należy inicjować odzyskiwanie
 
-Operacja odzyskiwania ma wpływ na aplikację. Ona konieczna jest zmiana parametrów połączenia SQL lub przekierowania przy użyciu systemu DNS i może spowodować utratę danych trwałych. W związku z tym należy to zrobić tylko w przypadku, gdy awaria zostanie prawdopodobnie wystarczą na dłużej, niż cel czasu odzyskiwania aplikacji. Gdy aplikacja jest wdrażana w środowisku produkcyjnym należy wykonać regularnego monitorowania kondycji aplikacji i użyć następujących punktów danych do potwierdzenia, że jest to uzasadnione odzyskiwania:
+Operacja odzyskiwania ma wpływ na aplikację. Wymaga zmiany parametrów połączenia SQL lub przekierowania przy użyciu systemu DNS, co może skutkować utratą danych trwałych. W związku z tym należy to zrobić tylko wtedy, gdy przestoje najprawdopodobniej będzie trwać dłużej niż cel czasu odzyskiwania aplikacji. Gdy aplikacja jest wdrażana w środowisku produkcyjnym, należy regularnie monitorować kondycję aplikacji i używać następujących punktów danych w celu potwierdzenia, że odzyskiwanie jest uzasadnione:
 
-1. Błąd trwały łączności z warstwy aplikacji do bazy danych.
-2. Witryna Azure portal pokazuje alert o zdarzenia w regionie wywierają duży wpływ.
+1. Trwała awaria łączności z poziomu aplikacji do bazy danych.
+2. Azure Portal pokazuje alert dotyczący incydentu w regionie o szerokim wpływie.
 
 > [!NOTE]
-> Jeśli są używane grupy trybu failover, a wybrana automatycznej pracy awaryjnej, proces odzyskiwania jest zautomatyzowanych i niewidoczna dla aplikacji.
+> Jeśli używasz grup trybu failover i wybierasz automatyczną pracę awaryjną, proces odzyskiwania jest zautomatyzowany i niewidoczny dla aplikacji.
 
-W zależności od aplikacji tolerancji przestojów i możliwych odpowiedzialności biznesowych należy rozważyć następujące opcje odzyskiwania.
+W zależności od tolerancji aplikacji do przestoju i możliwej odpowiedzialności biznesowej można wziąć pod uwagę następujące opcje odzyskiwania.
 
-Użyj [uzyskać odzyskiwalne bazy danych](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) można pobrać najnowszy punkt przywracania z replikacją geograficzną.
+Użyj funkcji [Pobierz odzyskiwalną bazę danych](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*), aby uzyskać najnowszy punkt przywracania z replikacją geograficzną.
 
-## <a name="wait-for-service-recovery"></a>Poczekaj, aż odzyskiwanie
+## <a name="wait-for-service-recovery"></a>Zaczekaj na odzyskanie usługi
 
-Pracy zespoły Azure przerwami, aby przywrócić dostępność usługi, jak szybko jak to możliwe, ale w zależności od głównego to spowodowane może zająć godziny lub dni.  Jeśli Twoja aplikacja może tolerować znaczących przestojów, można po prostu poczekaj odzyskiwania zakończyć. W takim wypadku żadna akcja ze strony użytkownika jest wymagana. Można wyświetlić bieżący stan usługi na naszych [pulpit nawigacyjny kondycji usługi platformy Azure](https://azure.microsoft.com/status/). Po odzyskaniu regionu zostanie przywrócony dostępność aplikacji.
+Zespoły platformy Azure pracujemyą w celu przywrócenia dostępności usługi tak szybko, jak to możliwe, ale w zależności od przyczyny głównej może upłynąć kilka godzin lub dni.  Jeśli aplikacja może tolerować znaczący przestój, możesz po prostu poczekać na ukończenie odzyskiwania. W takim przypadku nie jest wymagana żadna akcja z Twojej strony. Bieżący stan usługi można zobaczyć na naszym [pulpicie nawigacyjnym Azure Service Health](https://azure.microsoft.com/status/). Po odzyskaniu regionu dostępność aplikacji zostanie przywrócona.
 
-## <a name="fail-over-to-geo-replicated-secondary-server-in-the-failover-group"></a>Awaryjnie na serwer pomocniczy w grupie trybu failover replikacji geograficznej
+## <a name="fail-over-to-geo-replicated-secondary-server-in-the-failover-group"></a>Przełączanie do trybu failover na serwerze pomocniczym z replikacją geograficzną w grupie pracy awaryjnej
 
-W przypadku przerwy w działaniu Twojej aplikacji może spowodować odpowiedzialność firmy, należy używać grupy trybu failover. Umożliwia aplikacji szybkie przywracanie dostępności w innym regionie na wypadek awarii. Aby zapoznać się z samouczkiem, zobacz [Implementowanie rozproszonej geograficznie bazy danych](sql-database-implement-geo-distributed-database.md).
+Jeśli przestój aplikacji może skutkować odpowiedzialnością biznesową, należy korzystać z grup trybu failover. Dzięki temu aplikacja może szybko przywrócić dostępność w innym regionie w przypadku przestoju. Aby zapoznać się z samouczkiem, zobacz [implementowanie rozproszonej geograficznie bazy danych](sql-database-implement-geo-distributed-database.md).
 
-Aby przywrócić dostępność bazy danych, musisz zainicjować trybu failover na serwer pomocniczy przy użyciu jednej z obsługiwanych metod.
+Aby przywrócić dostępność baz danych, należy zainicjować tryb failover na serwerze pomocniczym przy użyciu jednej z obsługiwanych metod.
 
-Do trybu failover do pomocniczej bazy danych replikowanej geograficznie, użyj jednej z następujących przewodników:
+Użyj jednej z następujących przewodników, aby przełączyć się w tryb failover do pomocniczej bazy danych replikowanej geograficznie:
 
-- [Awaryjnie na serwer pomocniczy replikacją geograficzną za pomocą witryny Azure portal](sql-database-geo-replication-portal.md)
-- [Awaryjnie na serwer pomocniczy przy użyciu programu PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-- [Awaryjnie na serwer pomocniczy przy użyciu języka Transact-SQL (T-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
+- [Przełączenie w tryb failover na serwer pomocniczy z replikacją geograficzną przy użyciu Azure Portal](sql-database-geo-replication-portal.md)
+- [Przechodzenie w tryb failover na serwerze pomocniczym przy użyciu programu PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+- [Przełączanie do trybu failover na serwerze pomocniczym przy użyciu języka Transact-SQL (T-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
 
-## <a name="recover-using-geo-restore"></a>Odzyskiwanie przy użyciu przywracania geograficznego
+## <a name="recover-using-geo-restore"></a>Odzyskaj przy użyciu funkcji przywracania geograficznego
 
-Jeśli nie powoduje przestojów aplikacji odpowiedzialność firmy możesz użyć [przywracania geograficznego](sql-database-recovery-using-backups.md) jako metody odzyskiwania baz danych aplikacji. Tworzy kopię bazy danych z magazynu geograficznie nadmiarowego najnowszej kopii zapasowej.
+Jeśli przestój aplikacji nie powoduje odpowiedzialności biznesowej, można użyć funkcji [przywracania](sql-database-recovery-using-backups.md) geograficznego jako metody odzyskiwania baz danych aplikacji. Tworzy kopię bazy danych z jej najnowszej geograficznie nadmiarowej kopii zapasowej.
 
-## <a name="configure-your-database-after-recovery"></a>Konfigurowanie bazy danych po odzyskaniu
+## <a name="configure-your-database-after-recovery"></a>Skonfiguruj bazę danych po odzyskaniu
 
-Jeśli używasz przywracania geograficznego odzyskiwania sprawności po awarii, upewnij się, że łączność z nowych baz danych jest odpowiednio skonfigurowana tak, aby funkcja normalne aplikacji może być wznowione. Jest to lista kontrolna zadań w celu przygotowania odzyskanej bazy danych w środowisku produkcyjnym.
+Jeśli używasz funkcji przywracania geograficznego do odzyskiwania po awarii, musisz upewnić się, że połączenie z nowymi bazami danych jest prawidłowo skonfigurowane, aby można było wznowić normalną funkcję aplikacji. Jest to lista kontrolna zadań umożliwiających przywrócenie gotowej produkcji bazy danych.
 
 ### <a name="update-connection-strings"></a>Zaktualizuj parametry połączenia
 
-Ponieważ odzyskanej bazy danych znajduje się na innym serwerze, należy zaktualizować parametry połączenia aplikacji, aby wskazywała na tym serwerze.
+Ponieważ odzyskana baza danych znajduje się na innym serwerze, należy zaktualizować parametry połączenia aplikacji, aby wskazywały na ten serwer.
 
-Aby uzyskać więcej informacji na temat zmiany parametrów połączenia, zobacz język programowania odpowiednie dla Twojego [biblioteki połączeń](sql-database-libraries.md).
+Aby uzyskać więcej informacji na temat zmiany parametrów połączenia, zobacz odpowiedni język programistyczny dla [biblioteki połączeń](sql-database-libraries.md).
 
 ### <a name="configure-firewall-rules"></a>Konfigurowanie reguł zapory
 
-Należy się upewnić, że reguły zapory skonfigurowane na serwerze i w bazie danych są zgodne te, które zostały skonfigurowane na serwerze podstawowym i podstawowej bazy danych. Aby uzyskać więcej informacji, zobacz [jak: Konfigurowanie ustawień zapory (usługa Azure SQL Database)](sql-database-configure-firewall-settings.md).
+Należy upewnić się, że reguły zapory skonfigurowane na serwerze i w bazie danych są zgodne z tymi, które zostały skonfigurowane na serwerze podstawowym i w podstawowej bazie danych. Aby uzyskać więcej informacji, zobacz [jak: Skonfiguruj ustawienia zapory (Azure SQL Database)](sql-database-configure-firewall-settings.md).
 
 ### <a name="configure-logins-and-database-users"></a>Konfigurowanie logowania i użytkowników bazy danych
 
-Należy się upewnić, że wszystkie nazwy logowania używanych przez aplikację istnieje na serwerze, który jest hostem odzyskanej bazy danych. Aby uzyskać więcej informacji, zobacz [konfigurację zabezpieczeń dla replikacji geograficznej](sql-database-geo-replication-security-config.md).
+Musisz się upewnić, że wszystkie logowania używane przez aplikację istnieją na serwerze, na którym jest obsługiwana odzyskana baza danych. Aby uzyskać więcej informacji, zobacz [Konfiguracja zabezpieczeń na potrzeby replikacji](sql-database-geo-replication-security-config.md)geograficznej.
 
 > [!NOTE]
-> Należy skonfigurować i przetestować reguły zapory serwera i nazwy logowania (i ich uprawnienia) podczas odzyskiwania po awarii. Te obiekty na poziomie serwera i ich konfiguracja może być dostępny podczas awarii.
+> Podczas przechodzenia do szczegółów odzyskiwania po awarii należy skonfigurować i przetestować reguły zapory serwera oraz nazwy logowania (i ich uprawnienia). Te obiekty na poziomie serwera i ich konfiguracje mogą nie być dostępne podczas przestoju.
 
-### <a name="setup-telemetry-alerts"></a>Skonfigurować alerty dotyczące danych telemetrycznych
+### <a name="setup-telemetry-alerts"></a>Konfigurowanie alertów telemetrycznych
 
-Należy się upewnić, że Twoje istniejące ustawienia reguły alertu są aktualizowane do mapowania odzyskanej bazy danych i inny serwer.
+Musisz się upewnić, że istniejące ustawienia reguły alertu zostały zaktualizowane, aby mapować do odzyskiwanej bazy danych i innego serwera.
 
-Aby uzyskać więcej informacji na temat reguł alertów bazy danych, zobacz [odbieranie powiadomień Alert](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) i [Track Service Health](../monitoring-and-diagnostics/insights-service-health.md).
+Aby uzyskać więcej informacji na temat reguł alertów bazy danych, zobacz [Odbieranie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) i [śledzenie Service Health](../monitoring-and-diagnostics/insights-service-health.md).
 
-### <a name="enable-auditing"></a>Włączanie inspekcji
+### <a name="enable-auditing"></a>Włącz inspekcję
 
-Jeśli inspekcja jest wymagany dostęp do bazy danych, musisz włączyć inspekcję po odzyskaniu bazy danych. Aby uzyskać więcej informacji, zobacz [inspekcja bazy danych](sql-database-auditing.md).
+Jeśli do uzyskania dostępu do bazy danych jest wymagana inspekcja, należy włączyć inspekcję po odzyskaniu bazy danych. Aby uzyskać więcej informacji, zobacz [Inspekcja bazy danych](sql-database-auditing.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat usługi Azure SQL Database automatyczne kopie zapasowe, zobacz [bazy danych SQL, automatyczne kopie zapasowe](sql-database-automated-backups.md)
-- Aby dowiedzieć się więcej o scenariuszach projektu i odzyskiwania ciągłości biznesowej, zobacz [ciągłość działania — scenariusze](sql-database-business-continuity.md)
-- Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych do odzyskania, zobacz [przywrócić bazę danych z kopii zapasowych zainicjowanych przez usługę](sql-database-recovery-using-backups.md)
+- Aby dowiedzieć się więcej o Azure SQL Database zautomatyzowanych kopii zapasowych, zobacz [SQL Database zautomatyzowane kopie zapasowe](sql-database-automated-backups.md)
+- Aby dowiedzieć się więcej o scenariuszach związanych z planowaniem i odzyskiwaniem ciągłości biznesowej, zobacz [scenariusze ciągłości](sql-database-business-continuity.md)
+- Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych na potrzeby odzyskiwania, zobacz [przywracanie bazy danych z kopii zapasowych inicjowanych przez usługę](sql-database-recovery-using-backups.md)

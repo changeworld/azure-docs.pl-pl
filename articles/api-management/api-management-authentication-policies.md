@@ -1,6 +1,6 @@
 ---
-title: Zasady uwierzytelniania w usłudze Azure API Management | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat zasad uwierzytelniania można używać w usłudze Azure API Management.
+title: Zasady uwierzytelniania API Management platformy Azure | Microsoft Docs
+description: Dowiedz się więcej na temat zasad uwierzytelniania dostępnych do użycia w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,139 +14,139 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: c0f8da779ca656cf357c418b8766a53307643695
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ca9bd4964cf190eaa2be6d66d57c7ada971d675
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708791"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442402"
 ---
-# <a name="api-management-authentication-policies"></a>Zasady uwierzytelniania usługi API Management
-Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
+# <a name="api-management-authentication-policies"></a>Zasady uwierzytelniania API Management
+Ten temat zawiera informacje dotyczące następujących zasad API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasady w API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-##  <a name="AuthenticationPolicies"></a> Zasady uwierzytelniania  
-  
--   [Uwierzytelnianie Basic](api-management-authentication-policies.md#Basic) — uwierzytelnianie za pomocą usługi zaplecza przy użyciu uwierzytelniania podstawowego.  
-  
--   [Uwierzytelnianie za pomocą certyfikatu klienta](api-management-authentication-policies.md#ClientCertificate) — uwierzytelnianie za pomocą usługi zaplecza przy użyciu certyfikatów klienta.  
+##  <a name="AuthenticationPolicies"></a>Zasady uwierzytelniania
 
--   [Uwierzytelnianie za pomocą tożsamości zarządzanej](api-management-authentication-policies.md#ManagedIdentity) — uwierzytelnianie za pomocą [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) usługi API Management.  
-  
-##  <a name="Basic"></a> Uwierzytelnianie Basic  
- Użyj `authentication-basic` zasad uwierzytelniania za pomocą usługi zaplecza przy użyciu uwierzytelniania podstawowego. Ta zasada efektywnie ustawia nagłówek autoryzacji HTTP na wartość odpowiadającą poświadczenia podane w zasadach.  
-  
-### <a name="policy-statement"></a>Deklaracja zasad  
-  
-```xml  
-<authentication-basic username="username" password="password" />  
-```  
-  
-### <a name="example"></a>Przykład  
-  
-```xml  
-<authentication-basic username="testuser" password="testpassword" />  
-```  
-  
-### <a name="elements"></a>Elementy  
-  
-|Name (Nazwa)|Opis|Wymagane|  
-|----------|-----------------|--------------|  
-|Uwierzytelnianie podstawowe|Element główny.|Yes|  
-  
-### <a name="attributes"></a>Atrybuty  
-  
-|Name (Nazwa)|Opis|Wymagane|Domyślne|  
-|----------|-----------------|--------------|-------------|  
-|username|Określa atrybut username podstawowych poświadczeń.|Yes|ND|  
-|password|Określa hasło podstawowych poświadczeń.|Tak|ND|  
-  
-### <a name="usage"></a>Sposób użycia  
- Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
-  
--   **Sekcje zasad:** dla ruchu przychodzącego  
-  
--   **Zakresy zasad:** Interfejs API  
-  
-##  <a name="ClientCertificate"></a> Uwierzytelnianie za pomocą certyfikatu klienta  
- Użyj `authentication-certificate` zasad uwierzytelniania za pomocą usługi zaplecza przy użyciu certyfikatu klienta. Ten certyfikat musi być [zainstalowane do usługi API Management](https://go.microsoft.com/fwlink/?LinkID=511599) pierwszy i jest identyfikowany przez jego odcisk palca.  
-  
-### <a name="policy-statement"></a>Deklaracja zasad  
-  
-```xml  
-<authentication-certificate thumbprint="thumbprint" certificate-id="resource name"/>  
-```  
-  
-### <a name="examples"></a>Przykłady  
-  
-W tym przykładzie kliencie certyfikatu jest identyfikowane przez jego odcisk palca.
-```xml  
-<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />  
-``` 
-W tym przykładzie certyfikat klienta jest identyfikowane przez nazwę zasobu.
-```xml  
-<authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
-```  
+-   [Uwierzytelnianie z](api-management-authentication-policies.md#Basic) uwierzytelnianiem Basic z użyciem usługi wewnętrznej bazy danych przy użyciu uwierzytelniania podstawowego.
 
-### <a name="elements"></a>Elementy  
-  
-|Name (Nazwa)|Opis|Wymagane|  
-|----------|-----------------|--------------|  
-|authentication-certificate|Element główny.|Tak|  
-  
-### <a name="attributes"></a>Atrybuty  
-  
-|Name (Nazwa)|Opis|Wymagane|Domyślne|  
-|----------|-----------------|--------------|-------------|  
-|thumbprint|Odcisk palca certyfikatu klienta.|Albo `thumbprint` lub `certificate-id` musi być obecny.|ND|  
-|Identyfikator certyfikatu|Nazwa zasobu certyfikatu.|Albo `thumbprint` lub `certificate-id` musi być obecny.|ND|  
-  
-### <a name="usage"></a>Sposób użycia  
- Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
-  
--   **Sekcje zasad:** dla ruchu przychodzącego  
-  
--   **Zakresy zasad:** Interfejs API  
+-   [Uwierzytelnianie przy użyciu certyfikatu klienta](api-management-authentication-policies.md#ClientCertificate) — uwierzytelnianie za pomocą usługi zaplecza przy użyciu certyfikatów klienta.
 
-##  <a name="ManagedIdentity"></a> Uwierzytelnianie za pomocą tożsamości zarządzanych  
- Użyj `authentication-managed-identity` zasad uwierzytelniania za pomocą usługi zaplecza, używając zarządzanej tożsamości usługi API Management. Te zasady skutecznie korzysta z tożsamości zarządzanej można uzyskać tokenu dostępu z usługi Azure Active Directory do uzyskiwania dostępu do określonego zasobu. 
-  
-### <a name="policy-statement"></a>Deklaracja zasad  
-  
-```xml  
-<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
-```  
-  
-### <a name="example"></a>Przykład  
-  
-```xml  
-<authentication-managed-identity resource="https://graph.windows.net" output-token-variable-name="test-access-token" ignore-error="true" /> 
-```  
-  
-### <a name="elements"></a>Elementy  
-  
-|Name (Nazwa)|Opis|Wymagane|  
-|----------|-----------------|--------------|  
-|Uwierzytelnianie zarządzane identity |Element główny.|Tak|  
-  
-### <a name="attributes"></a>Atrybuty  
-  
-|Name (Nazwa)|Opis|Wymagane|Domyślne|  
-|----------|-----------------|--------------|-------------|  
-|resource|ciąg. Identyfikator URI Identyfikatora aplikacji docelowej sieci Web interfejsu API (zabezpieczono zasób) w usłudze Azure Active Directory.|Tak|ND|  
-|dane wyjściowe — token-— nazwa zmiennej|ciąg. Nazwa zmiennej kontekstu, który otrzyma wartość tokenu jako typ obiektu `string`.|Nie|ND|  
-|ignore-error|Wartość logiczna. Jeśli ustawiono `true`, potok zasady będą w dalszym ciągu wykonują nawet wtedy, gdy token dostępu nie zostanie uzyskana.|Nie|false|  
-  
-### <a name="usage"></a>Sposób użycia  
- Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
-  
--   **Sekcje zasad:** dla ruchu przychodzącego  
-  
--   **Zakresy zasad:** globalny, produktu, interfejsu API, operacji  
+-   [Uwierzytelnianie przy użyciu tożsamości zarządzanej](api-management-authentication-policies.md#ManagedIdentity) — uwierzytelnianie za pomocą [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla usługi API Management.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji, w pracy z tymi zasadami zobacz:
+##  <a name="Basic"></a>Uwierzytelnianie za pomocą języka Basic
+ `authentication-basic` Zasady służą do uwierzytelniania w usłudze wewnętrznej bazy danych przy użyciu uwierzytelniania podstawowego. Te zasady skutecznie ustawiają nagłówek autoryzacji HTTP na wartość odpowiadającą podanym w zasadzie poświadczeniami.
 
-+ [Zasady usługi API Management](api-management-howto-policies.md)
+### <a name="policy-statement"></a>Instrukcja zasad
+
+```xml
+<authentication-basic username="username" password="password" />
+```
+
+### <a name="example"></a>Przykład
+
+```xml
+<authentication-basic username="testuser" password="testpassword" />
+```
+
+### <a name="elements"></a>Elementy
+
+|Name (Nazwa)|Opis|Wymagane|
+|----------|-----------------|--------------|
+|Uwierzytelnianie — podstawowe|Element główny.|Yes|
+
+### <a name="attributes"></a>Atrybuty
+
+|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|----------|-----------------|--------------|-------------|
+|username|Określa nazwę użytkownika poświadczeń podstawowych.|Yes|ND|
+|password|Określa hasło poświadczeń podstawowych.|Tak|ND|
+
+### <a name="usage"></a>Użycie
+ Tych zasad można używać w następujących sekcjach i [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zakresach [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
+
+-   **Sekcje zasad:** przychodzące
+
+-   **Zakresy zasad:** wszystkie zakresy
+
+##  <a name="ClientCertificate"></a>Uwierzytelnianie przy użyciu certyfikatu klienta
+ `authentication-certificate` Zasady służą do uwierzytelniania w usłudze wewnętrznej bazy danych przy użyciu certyfikatu klienta. Certyfikat musi zostać [zainstalowany do API Management](https://go.microsoft.com/fwlink/?LinkID=511599) jako pierwszy i jest identyfikowany przez jego odcisk palca.
+
+### <a name="policy-statement"></a>Instrukcja zasad
+
+```xml
+<authentication-certificate thumbprint="thumbprint" certificate-id="resource name"/>
+```
+
+### <a name="examples"></a>Przykłady
+
+Ten przykładowy certyfikat klienta jest identyfikowany za pomocą odcisku palca.
+```xml
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
+```
+Ten przykładowy certyfikat klienta jest identyfikowany według nazwy zasobu.
+```xml
+<authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />
+```
+
+### <a name="elements"></a>Elementy
+
+|Name (Nazwa)|Opis|Wymagane|
+|----------|-----------------|--------------|
+|Uwierzytelnianie — certyfikat|Element główny.|Tak|
+
+### <a name="attributes"></a>Atrybuty
+
+|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|----------|-----------------|--------------|-------------|
+|thumbprint|Odcisk palca certyfikatu klienta.|Albo `thumbprint`musibyćobecny `certificate-id` .|ND|
+|Identyfikator certyfikatu|Nazwa zasobu certyfikatu.|Albo `thumbprint`musibyćobecny `certificate-id` .|ND|
+
+### <a name="usage"></a>Użycie
+ Tych zasad można używać w następujących sekcjach i [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zakresach [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
+
+-   **Sekcje zasad:** przychodzące
+
+-   **Zakresy zasad:** wszystkie zakresy
+
+##  <a name="ManagedIdentity"></a>Uwierzytelnianie przy użyciu tożsamości zarządzanej
+ `authentication-managed-identity` Zasady służą do uwierzytelniania w usłudze wewnętrznej bazy danych przy użyciu tożsamości zarządzanej usługi API Management. Te zasady efektywnie wykorzystują zarządzaną tożsamość do uzyskiwania tokenu dostępu z Azure Active Directory na potrzeby uzyskiwania dostępu do określonego zasobu.
+
+### <a name="policy-statement"></a>Instrukcja zasad
+
+```xml
+<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>
+```
+
+### <a name="example"></a>Przykład
+
+```xml
+<authentication-managed-identity resource="https://graph.windows.net" output-token-variable-name="test-access-token" ignore-error="true" />
+```
+
+### <a name="elements"></a>Elementy
+
+|Name (Nazwa)|Opis|Wymagane|
+|----------|-----------------|--------------|
+|Uwierzytelnianie — tożsamość zarządzana |Element główny.|Tak|
+
+### <a name="attributes"></a>Atrybuty
+
+|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|----------|-----------------|--------------|-------------|
+|resource|Parametry. Identyfikator URI aplikacji docelowego internetowego interfejsu API (zabezpieczony zasób) w Azure Active Directory.|Yes|ND|
+|Output-token-Variable-Name|Parametry. Nazwa zmiennej kontekstowej, która będzie otrzymywać wartość tokenu jako typ `string`obiektu.|Nie|ND|
+|Ignoruj-błąd|Typu. W przypadku wybrania opcji `true`potok zasad będzie nadal wykonywany nawet wtedy, gdy nie zostanie uzyskany token dostępu.|Nie|false|
+
+### <a name="usage"></a>Użycie
+ Tych zasad można używać w następujących sekcjach i [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zakresach [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
+
+-   **Sekcje zasad:** przychodzące
+
+-   **Zakresy zasad:** wszystkie zakresy
+
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat pracy z zasadami, zobacz:
+
++ [Zasady w API Management](api-management-howto-policies.md)
 + [Przekształć interfejsy API](transform-api.md)
-+ [Informacje o zasadach](api-management-policy-reference.md) pełną listę zasad i ich ustawienia
-+ [Przykłady zasad](policy-samples.md)   
++ [Dokumentacja zasad](api-management-policy-reference.md) pełna lista instrukcji zasad i ich ustawień
++ [Przykłady zasad](policy-samples.md)

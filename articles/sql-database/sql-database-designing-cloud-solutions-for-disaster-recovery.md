@@ -1,7 +1,7 @@
 ---
-title: Projektowania dostępnej globalnie usługi przy użyciu usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat projektowania aplikacji dla usług o wysokiej dostępności przy użyciu usługi Azure SQL Database.
-keywords: odzyskiwanie po awarii, rozwiązania odzyskiwania po awarii, kopia zapasowa danych aplikacji, replikacji geograficznej w chmurze planowania ciągłości biznesowej
+title: Projektuj usługi dostępne globalnie przy użyciu Azure SQL Database | Microsoft Docs
+description: Zapoznaj się z tematem projektowanie aplikacji dla usług o wysokiej dostępności przy użyciu Azure SQL Database.
+keywords: odzyskiwanie po awarii w chmurze, rozwiązania odzyskiwania po awarii, tworzenie kopii zapasowych danych aplikacji, replikacja geograficzna, Planowanie ciągłości biznesowej
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,159 +11,158 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 46232afcaf9504d4cfbd80160e2d7e7ea958d600
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a79fa40568502a73194e467de2227d54931d0100
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61488188"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568954"
 ---
-# <a name="designing-globally-available-services-using-azure-sql-database"></a>Projektowania dostępnej globalnie usługi przy użyciu usługi Azure SQL Database
+# <a name="designing-globally-available-services-using-azure-sql-database"></a>Projektowanie usług dostępnych globalnie przy użyciu Azure SQL Database
 
-Podczas kompilowania i wdrażania usług w chmurze z usługą Azure SQL Database, możesz użyć [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) lub [automatyczny tryb failover grupy](sql-database-auto-failover-group.md) aby zapewnić odporność na katastrofalnych awarii i awarii regionalnej. Tej samej funkcji umożliwia tworzenie aplikacji dystrybuowanych globalnie, zoptymalizowane pod kątem lokalnego dostępu do danych. W tym artykule omówiono typowych wzorców do zastosowań, łącznie z zalet i wad poszczególnych opcji.
+Podczas kompilowania i wdrażania usług w chmurze przy użyciu Azure SQL Database można użyć [aktywnej replikacji](sql-database-active-geo-replication.md) geograficznej lub [grup autotrybu failover](sql-database-auto-failover-group.md) w celu zapewnienia odporności na awarie regionalne i błędy krytyczne. Ta sama funkcja umożliwia tworzenie globalnie rozproszonych aplikacji zoptymalizowanych pod kątem lokalnego dostępu do danych. W tym artykule omówiono typowe wzorce aplikacji, w tym zalety i wady poszczególnych opcji.
 
 > [!NOTE]
-> Jeśli używasz wersji Premium lub krytyczne dla działania firmy baz danych i pul elastycznych, możesz zwiększyć ich odporne na błędy regionalnych przestojów przez konwertowania go na potrzeby konfiguracji wdrożenia nadmiarowe strefy. Zobacz [strefowo nadmiarowe bazy danych](sql-database-high-availability.md).  
+> Jeśli używasz baz danych Premium lub Krytyczne dla działania firmy i pul elastycznych, możesz je odporne na awarie regionalne, konwertując je na konfigurację nadmiarowego wdrożenia strefy. Zobacz [bazy danych strefowo](sql-database-high-availability.md)nadmiarowe.  
 
-## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Scenariusz 1: Za pomocą dwóch regionach platformy Azure w celu zachowania ciągłości przy minimalnych przestojach
+## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Scenariusz 1: Korzystanie z dwóch regionów świadczenia usługi Azure w celu zapewnienia ciągłości biznesowej z minimalnym czasem przestoju
 
 W tym scenariuszu aplikacje mają następującą charakterystykę:
 
 * Aplikacja jest aktywna w jednym regionie platformy Azure
-* Wszystkie sesje bazy danych wymagają dostępu odczytu i zapisu (RW) z danymi
-* Warstwy danych i sieci Web musi być zlokalizowana, aby zmniejszyć koszt opóźnienia i ruchu
-* Zasadniczo przestój jest większe ryzyko biznesowe dla tych aplikacji niż utraty danych
+* Wszystkie sesje bazy danych wymagają dostępu do odczytu i zapisu (RW) do danych
+* Warstwa sieci Web i warstwa danych muszą być rozmieszczone w celu ograniczenia opóźnienia i kosztu ruchu
+* W zasadniczy sposób przestój jest wyższym ryzykiem biznesowym w przypadku tych aplikacji niż utrata danych
 
-W tym przypadku topologii wdrożenia aplikacji jest zoptymalizowane pod kątem obsługi awarii regionalnej, gdy wszystkie składniki aplikacji muszą ze sobą pracy awaryjnej. Poniższy diagram przedstawia tej topologii. W celu zapewnienia nadmiarowości geograficznej zasoby aplikacji są wdrażane w regionie, A i B. Jednak zasoby w regionie B nie są używane, aż Region, A nie powiedzie się. Grupy trybu failover skonfigurowano między dwoma regionami, aby zarządzać łączność z bazą danych, replikacji i trybu failover. Usługa sieci web w obu regionach jest skonfigurowany do dostępu do bazy danych za pośrednictwem odbiornika odczytu i zapisu  **&lt;nazwę grupy trybu failover&gt;. database.windows.net** (1). Usługa Traffic manager jest skonfigurowany do użycia [metody routingu opartego na priorytecie](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
-
-> [!NOTE]
-> [Usługi Azure traffic manager](../traffic-manager/traffic-manager-overview.md) jest używany w tym artykule tylko w celach ilustracyjnych. Możesz użyć żadne rozwiązanie równoważenia obciążenia, który obsługuje metody routingu opartego na priorytecie.
-
-Na poniższym diagramie przedstawiono tę konfigurację przed awarii:
-
-![Scenariusz 1. Konfiguracja przed awarii.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
-
-Po awarii w regionie podstawowym usługa SQL Database wykryje, że podstawowa baza danych nie jest dostępny i wyzwala trybu failover do regionu pomocniczego, na podstawie parametrów zasad automatycznej pracy awaryjnej (1). W zależności od umowy SLA w aplikacji można skonfigurować okres prolongaty, który określa czas między wykrywanie awarii i pracy awaryjnej, sam. Jest możliwe, w tym usługi traffic manager inicjuje przełączenie w tryb failover punktu końcowego przed grupy trybu failover wyzwala trybu failover bazy danych. W takim przypadku aplikacja sieci web nie można natychmiast ponownie z bazą danych. Jednak ponowne łączenie będą automatycznie pomyślne zaraz po zakończeniu trybu failover bazy danych. Po nieudanych region przywrócona i wróci do trybu online, stary serwer podstawowy automatycznie połączy się ponownie jako nowym serwerem pomocniczym. Na poniższym diagramie przedstawiono konfigurację po pracy awaryjnej.
+W takim przypadku topologia wdrażania aplikacji jest zoptymalizowana pod kątem obsługi awarii regionalnych, gdy wszystkie składniki aplikacji muszą jednocześnie przełączeć w tryb failover. Na poniższym diagramie przedstawiono topologię. W przypadku nadmiarowości geograficznej zasoby aplikacji są wdrażane w regionie A i B. Jednak zasoby w regionie B nie są wykorzystywane do momentu awarii regionu A. Grupa trybu failover jest konfigurowana między dwoma regionami w celu zarządzania łącznością z bazą danych, replikacją i trybem failover. Usługa sieci Web w obu regionach jest skonfigurowana do uzyskiwania dostępu do bazy danych za pośrednictwem  **&lt;trybu failover odbiornika do odczytu i&gt;zapisu-Group-Name. Database.Windows.NET** (1). Usługa Traffic Manager jest skonfigurowana do używania [metody routingu priorytetowego](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
 
 > [!NOTE]
-> Wszystkie transakcje zatwierdzone po przełączeniu w tryb failover zostaną utracone podczas ponownego łączenia. Po zakończeniu pracy w trybie failover do aplikacji w regionie B będzie mógł ponownie połączyć i uruchom ponownie przetwarzanie żądania użytkownika. Zarówno aplikacji sieci web, jak i podstawowej bazy danych są obecnie dostępne w regionie B i pozostają w tej samej lokalizacji.
+> [Usługa Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) jest używana w tym artykule wyłącznie na potrzeby ilustracji. Można użyć dowolnego rozwiązania równoważenia obciążenia, które obsługuje metodę routingu priorytetowego.
 
-![Scenariusz 1. Konfiguracja po włączeniu trybu failover](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
+Na poniższym diagramie przedstawiono tę konfigurację przed awarią:
 
-Jeśli wystąpi awaria w regionie B, proces replikacji pomiędzy podstawowej i pomocniczej bazy danych zostanie zawieszone, ale łącze między tymi dwoma pozostaje bez zmian (1). Ruchu zarządzane wykryje, że łączność z regionu B jest uszkodzona i czy oznacza punkt końcowy aplikacji sieci web 2 jako obniżony (2). Wydajność aplikacji nie ulega zmianie w tym przypadku, ale baza danych stanie się widoczne, i w związku z tym ugruntowanej utraty danych w przypadku regionu, A nie powiedzie się w przedziale czasu.
+![Scenariusz 1. Konfiguracja przed awarią.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
+
+Po awarii w regionie podstawowym usługa SQL Database wykrywa, że podstawowa baza danych nie jest dostępna i wyzwala tryb failover w regionie pomocniczym na podstawie parametrów zasad automatycznych trybu failover (1). W zależności od umowy SLA aplikacji można skonfigurować okres prolongaty, który kontroluje czas między wykryciem przestoju i pracą w trybie failover. Istnieje możliwość, że Menedżer ruchu inicjuje tryb failover punktu końcowego, zanim Grupa trybu failover wyzwoli tryb failover bazy danych. W takim przypadku aplikacja sieci Web nie może natychmiast ponownie nawiązać połączenia z bazą danych. Jednak ponowne połączenia będą automatycznie kończyć się powodzeniem zaraz po zakończeniu pracy w trybie failover bazy danych. Po przywróceniu i ponownym przełączeniu regionu zakończonego niepowodzeniem stary podstawowy automatycznie ponownie nawiąże połączenie jako nowe pomocnicze. Poniższy diagram ilustruje konfigurację po przejściu do trybu failover.
 
 > [!NOTE]
-> Odzyskiwania po awarii firma Microsoft zaleca konfiguracji z wdrożenia aplikacji jest ograniczona do dwóch regionach. Jest tak, ponieważ większość lokalizacjach geograficznych platformy Azure ma tylko dwa regiony. Ta konfiguracja nie chroni aplikacji przed jednoczesnych poważnej awarii w obu regionach. W razie mało prawdopodobnej awarii, można odzyskać bazy danych za pomocą trzeciego regionu [operacji przywracania geograficznego](sql-database-disaster-recovery.md#recover-using-geo-restore).
+> Wszystkie transakcje przekazane po przejściu do trybu failover zostaną utracone podczas ponownego nawiązywania połączenia. Po zakończeniu pracy w trybie failover aplikacja w regionie B będzie mogła ponownie nawiązać połączenie i ponownie przetworzyć żądania użytkownika. Zarówno aplikacja sieci Web, jak i podstawowa baza danych znajdują się teraz w regionie B i pozostają w tym samym miejscu.
+
+![Scenariusz 1. Konfiguracja po przejściu do trybu failover](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
+
+Jeśli wystąpi awaria w regionie B, proces replikacji między podstawową i pomocniczą bazą danych zostanie zawieszony, ale połączenie między nimi pozostaje nienaruszone (1). Zarządzany ruch wykrywa, że łączność z regionem B jest uszkodzona i oznacza aplikację sieci Web punktu końcowego 2 jako obniżoną (2). W tym przypadku nie ma to wpływu na wydajność aplikacji, ale baza danych zostanie ujawniona i w związku z tym w większym stopniu ryzyko utraty danych w regionie przypadku kończy się niepowodzeniem.
+
+> [!NOTE]
+> W przypadku odzyskiwania po awarii zalecamy konfigurację z wdrożeniem aplikacji ograniczoną do dwóch regionów. Wynika to z faktu, że większość lokalizacje geograficzne platformy Azure ma tylko dwa regiony. Ta konfiguracja nie chroni aplikacji przed równoczesnym uszkodzeniem obu regionów. W mało prawdopodobnym wystąpieniu tego błędu można odzyskać bazy danych w trzecim regionie przy użyciu [operacji przywracania](sql-database-disaster-recovery.md#recover-using-geo-restore)geograficznego.
 >
 
- Po zminimalizowaniu wpływu awarii pomocniczej bazy danych automatycznie synchronizuje się z podstawowym. Podczas synchronizacji może mieć wpływ na wydajność podstawowego. Szczególne znaczenie zależy od ilości danych nowego podstawowego uzyskanych od trybu failover. Na poniższym diagramie przedstawiono awaria w regionie pomocniczym:
+ Gdy awaria zostanie wyeliminowana, pomocnicza baza danych automatycznie ponownie zsynchronizuje się z serwerem podstawowym. W trakcie synchronizacji można mieć wpływ na wydajność podstawowej. Konkretny wpływ zależy od ilości danych uzyskanych przez nowy podstawowy od przejścia w tryb failover. Na poniższym diagramie przedstawiono awarię w regionie pomocniczym:
 
 ![Scenariusz 1. Konfiguracja po awarii w regionie pomocniczym.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 
-Klucz **zalety** tym wzorcu projektowym są:
+Kluczowe **zalety** tego wzorca projektowego są następujące:
 
-* Ta sama aplikacja sieci web jest wdrażana dla obu regionów, bez żadnej konfiguracji określonego regionu i nie wymagają dodatkowej logiki, aby zarządzać trybem failover.
-* Wydajność aplikacji nie ma wpływu trybu failover jako aplikacja sieci web i bazy danych są zawsze tej samej lokalizacji.
+* Ta sama aplikacja sieci Web jest wdrażana w obu regionach bez żadnej konfiguracji specyficznej dla regionu i nie wymaga dodatkowej logiki do zarządzania pracą w trybie failover.
+* Tryb failover nie ma wpływu na wydajność aplikacji, ponieważ aplikacja sieci Web i baza danych są zawsze zlokalizowane.
 
-Głównym **kosztem** jest, że zasoby aplikacji w regionie B będą wykorzystane niedostatecznie przez większość czasu.
+Głównym **kompromisem** jest to, że zasoby aplikacji w regionie B są bezterminowo wykorzystywane.
 
-## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>Scenariusz 2: Regiony platformy Azure dla ciągłości działania za pomocą zachowanie maksymalnej danych
+## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>Scenariusz 2: Regiony platformy Azure w celu zapewnienia ciągłości działania z maksymalnym zachowaniem danych
 
-Ta opcja jest najbardziej odpowiednie dla aplikacji o następującej charakterystyce:
+Ta opcja jest najbardziej przydatna w przypadku aplikacji o następujących cechach:
 
-* Utraty danych jest ryzyko biznesowe wysoki. Tryb failover bazy danych należy używać tylko w ostateczności Jeżeli przestój jest spowodowany przez poważnej awarii.
-* Aplikacja obsługuje tryb tylko do odczytu i odczytu / zapisu operacji i może działać w trybie"tylko do odczytu" w okresie czasu.
+* Wszelkie utraty danych to duże ryzyko biznesowe. Trybu failover bazy danych można używać tylko jako ostatniej, jeśli awaria jest spowodowana przez Katastrofalny błąd.
+* Aplikacja obsługuje tryby operacji tylko do odczytu i odczytu i zapisu oraz może działać w trybie tylko do odczytu w danym okresie czasu.
 
-W tym wzorcu aplikacja przełącza się do trybu tylko do odczytu podczas połączenia odczytu i zapisu zaczniesz błędy przekroczenia limitu czasu. Aplikacja sieci Web jest wdrożony w obu regionach i Dodaj połączenie punkt końcowy odbiornika do odczytu i zapisu oraz inne połączenie na punkt końcowy odbiornika tylko do odczytu (1). Należy użyć profilu usługi Traffic manager [routingu priorytet](../traffic-manager/traffic-manager-configure-priority-routing-method.md). [Monitorowanie punktu końcowego](../traffic-manager/traffic-manager-monitoring.md) powinna być włączona dla punktu końcowego aplikacji w każdym regionie (2).
+W tym wzorcu aplikacja przełącza się do trybu tylko do odczytu, gdy połączenia do odczytu i zapisu zaczynają otrzymywać błędy limitu czasu. Aplikacja sieci Web jest wdrażana w obu regionach i obejmuje połączenie z punktem końcowym odbiornika odczytu i zapisu oraz innym połączeniem z punktem końcowym odbiornika tylko do odczytu (1). Profil usługi Traffic Manager powinien używać [routingu priorytetowego](../traffic-manager/traffic-manager-configure-priority-routing-method.md). [Monitorowanie punktu końcowego](../traffic-manager/traffic-manager-monitoring.md) powinno być włączone dla punktu końcowego aplikacji w każdym regionie (2).
 
-Na poniższym diagramie przedstawiono tę konfigurację przed awarii:
+Na poniższym diagramie przedstawiono tę konfigurację przed awarią:
 
-![Scenariusz 2. Konfiguracja przed awarii.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-a.png)
+![Scenariusz 2. Konfiguracja przed awarią.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-a.png)
 
-Gdy usługi traffic manager wykryje błąd łączności do regionu A, przełącza się ruchu użytkowników do wystąpienia aplikacji w regionie B. W ramach tego wzorca ważne jest ustawienie z utratą danych musi upłynąć okres prolongaty wystarczająco dużą wartość, na przykład 24 godziny. Zapewnia, że dane ponosi strat, jeżeli przestój jest zmniejszany w tym czasie. Po aktywowaniu aplikacji sieci Web w regionie B operacje odczytu i zapisu może kończyć się niepowodzeniem. W tym momencie należy przełączyć do trybu tylko do odczytu (1). W tym trybie żądania są automatycznie kierowane do pomocniczej bazy danych. Jeśli awaria jest spowodowany przez poważnej awarii, prawdopodobnie jej nie da się ograniczyć okres prolongaty. Kiedy wygasa wyzwalaczy grupy trybu failover przełączenie w tryb failover. Po udostępnieniu odbiornika odczytu i zapisu, która połączenia do niego zatrzymać kończy się niepowodzeniem (2). Na poniższym diagramie przedstawiono dwa etapy procesu odzyskiwania.
+Gdy Menedżer ruchu wykrywa niepowodzenie łączności z regionem A, automatycznie przełącza ruch użytkownika do wystąpienia aplikacji w regionie B. W tym wzorcu ważne jest, aby ustawić okres prolongaty z utratą danych na wystarczająco wysoką wartość, na przykład 24 godziny. Gwarantuje to, że utrata danych jest niedostępna, jeśli w tym czasie czas przestoju zostanie skorygowany. Po aktywowaniu przez aplikację sieci Web w regionie B operacje odczytu i zapisu kończą się niepowodzeniem. W tym momencie należy przełączyć się do trybu tylko do odczytu (1). W tym trybie żądania są automatycznie kierowane do pomocniczej bazy danych. Jeśli awaria jest spowodowana przez Katastrofalny błąd, prawdopodobnie nie można rozwiązać tego problemu w okresie prolongaty. Po jego wygaśnięciu Grupa trybu failover wyzwala tryb failover. Gdy odbiornik do odczytu i zapisu stanie się dostępny, a połączenia z nim zakończą się niepowodzeniem (2). Na poniższym diagramie przedstawiono dwa etapy procesu odzyskiwania.
 
 > [!NOTE]
-> Jeśli awaria w regionie głównym jest zmniejszany w trakcie okresu prolongaty, usługi traffic manager wykryje przywrócenia łączności region podstawowy i przełącza ruchu użytkowników do wystąpienia aplikacji w regionie A. To wystąpienie aplikacji wznawia i działa w trybie odczytu i zapisu przy użyciu podstawowej bazy danych w regionie A, jak pokazano na poprzednim diagramie.
+> Jeśli awaria w regionie podstawowym zostaną wyeliminowane w okresie prolongaty, Menedżer ruchu wykrywa przywracanie połączenia w regionie podstawowym i przełącza ruch użytkownika z powrotem do wystąpienia aplikacji w regionie A. To wystąpienie aplikacji wznawia działanie i działa w trybie odczytu i zapisu przy użyciu podstawowej bazy danych w regionie A, jak pokazano na poprzednim diagramie.
 
 ![Scenariusz 2. Etapy odzyskiwania po awarii.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-b.png)
 
-Jeśli wystąpi awaria w regionie B, traffic manager wykryje błąd punktu końcowego sieci web-app-2, w regionie B i znaczniki go negatywny wpływ na dostępność (1). W międzyczasie grupy trybu failover przełącza odbiornika tylko do odczytu do regionu A (2). Tej niedostępności nie ma wpływu na środowisko użytkownika końcowego, ale podstawowa baza danych jest dostępna podczas awarii. Na poniższym diagramie przedstawiono awaria w regionie pomocniczym:
+Jeśli wystąpi awaria w regionie B, Menedżer ruchu wykrywa awarię sieci Web punktu końcowego w regionie B i oznacza ją obniżoną (1). W międzyczasie grupa trybu failover przełącza odbiornik tylko do odczytu do regionu A (2). Ta awaria nie ma wpływu na środowisko użytkownika końcowego, ale podstawowa baza danych jest narażona na awarię. Na poniższym diagramie przedstawiono awarię w regionie pomocniczym:
 
-![Scenariusz 2. Awaria w regionie pomocniczym.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-c.png)
+![Scenariusz 2. Awaria regionu pomocniczego.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-c.png)
 
-Po zminimalizowaniu wpływu awarii pomocniczej bazy danych jest od razu synchronizowane z podstawowej i przełączeniu odbiornika tylko do odczytu w pomocniczej bazie danych w regionie B. Podczas synchronizacji z podstawowych może mieć nieco wpływ na wydajność w zależności od ilości danych, które muszą być zsynchronizowane.
+Po ograniczeniu przestojów pomocnicza baza danych jest natychmiast synchronizowana z serwerem podstawowym, a odbiornik tylko do odczytu jest przełączany do pomocniczej bazy danych w regionie B. Podczas synchronizacji, w zależności od ilości danych, które muszą zostać zsynchronizowane, może być nieco nieznacznie wpływać na jego wydajność.
 
-Ten wzorzec projektowy ma kilka **zalety**:
+Ten Wzorzec projektowy ma kilka **zalet**:
 
-* Takie rozwiązanie pomaga uniknąć utraty danych podczas tymczasowe awarii.
-* Czas przestoju zależy od tylko jak szybko traffic manager wykryje błąd łączności, które można konfigurować.
+* Pozwala to uniknąć utraty danych w trakcie tymczasowego okresu przestoju.
+* Przestój zależy tylko od tego, jak szybko Menedżer ruchu wykrywa błąd łączności, który można skonfigurować.
 
-**Kosztem** jest, że aplikacja musi umożliwiać działają w trybie tylko do odczytu.
+**Kompromis** polega na tym, że aplikacja musi być w stanie pracować w trybie tylko do odczytu.
 
-## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Scenariusz 3: Przeniesienie aplikacji do innej lokalizacji geograficznej, bez utraty danych i niemal przestojów
+## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Scenariusz 3: Relokacja aplikacji do innej lokalizacji geograficznej bez utraty danych i bliskiego przestoju
 
 W tym scenariuszu aplikacja ma następujące cechy:
 
-* Użytkownicy końcowi dostępu do aplikacji z różnych lokalizacji geograficznych
-* Aplikacja zawiera tylko do odczytu obciążeń, które nie są zależne od pełną synchronizację z najnowszymi aktualizacjami
-* Dostęp do zapisu danych powinna być obsługiwana w tej samej lokalizacji geograficznej dla większości użytkowników
-* Opóźnienie odczytu jest krytyczny dla środowiska użytkownika końcowego
+* Użytkownicy końcowi uzyskują dostęp do aplikacji z różnych lokalizacje geograficzne
+* Aplikacja zawiera obciążenia tylko do odczytu, które nie zależą od pełnej synchronizacji z najnowszymi aktualizacjami
+* Dostęp do zapisu do danych powinien być obsługiwany w tej samej lokalizacji geograficznej dla większości użytkowników
+* Opóźnienie odczytu ma kluczowe znaczenie dla środowiska użytkownika końcowego
 
-Aby spełnić te wymagania, należy zagwarantować, że urządzenie użytkownika **zawsze** łączy do aplikacji wdrożonych w tej samej lokalizacji geograficznej dla operacji tylko do odczytu, takich jak dane przeglądania, analiz itd. Natomiast operacji OLTP są przetwarzane w tej samej lokalizacji geograficznej **większość czasu**. Na przykład w czasie dnia operacji OLTP są przetwarzane w tej samej lokalizacji geograficznej, ale godzinach wyłączone można było przetworzyć w innej lokalizacji geograficznej. Jeśli działania użytkowników końcowych najczęściej występuje podczas godzin pracy, można zagwarantować optymalną wydajność w przypadku większości użytkowników większość czasu. Na poniższym diagramie przedstawiono tej topologii.
+Aby spełnić te wymagania, należy zazagwarantować, że urządzenie użytkownika **zawsze** łączy się z aplikacją wdrożoną w tej samej lokalizacji geograficznej w przypadku operacji tylko do odczytu, takich jak przeglądanie danych, analiza itp. W związku z tym operacje OLTP są przetwarzane w tym samym obszarze geograficznym **większości czasu**. Na przykład w czasie trwania operacji OLTP w trakcie dnia są przetwarzane w tej samej lokalizacji geograficznej, ale w godzinach, w których mogą być przetwarzane w innej lokalizacji geograficznej. Jeśli działanie użytkownika końcowego przede wszystkim odbywa się w godzinach pracy, można zagwarantować optymalną wydajność większości użytkowników w większości czasu. Na poniższym diagramie przedstawiono tę topologię.
 
-Zasoby aplikacji powinny być wdrażane w każdej lokalizacji geograficznej, w którym znajduje się żądanie znaczne wykorzystanie. Na przykład jeśli aplikacja jest aktywnie używana w Stanach Zjednoczonych, Unii Europejskiej i Azja południowo-wschodnia aplikacji powinny zostać wdrożone do wszystkich tych obszarów geograficznych. Podstawowej bazy danych powinny być dynamicznie przełączane z jednej lokalizacji geograficznej do następnego pod koniec godziny pracy. Ta metoda jest wywoływana, "follow słońce". Obciążenia OLTP zawsze nawiązuje połączenie z bazą danych przy użyciu odbiornika odczytu i zapisu  **&lt;nazwę grupy trybu failover&gt;. database.windows.net** (1). Obciążenie tylko do odczytu nawiązanie połączenia z lokalnej bazy danych bezpośrednio przy użyciu punktu końcowego serwera bazy danych  **&lt;nazwy serwera&gt;. database.windows.net** (2). Skonfigurowano usługi Traffic manager [metody routingu opartego na wydajności](../traffic-manager/traffic-manager-configure-performance-routing-method.md). Zapewnia, że urządzenie użytkownika końcowego jest połączony z usługą sieci web w regionie najbliższym. Usługa Traffic manager, powinny zostać skonfigurowane przy użyciu monitorowanie punktu końcowego jest włączone dla każdego punktu końcowego usługi sieci web (3).
-
-> [!NOTE]
-> Konfiguracja grupy trybu failover definiuje region, który jest używany dla trybu failover. Ponieważ nową podstawową znajduje się w innej lokalizacji geograficznej, przełączenie w tryb failover w wyniku dłuższe opóźnienie OLTP i obciążeń tylko do odczytu do momentu objęte wpływem region jest wróci do trybu online.
-
-![Scenariusz 3. Konfiguracja z podstawowego we wschodnim regionie USA.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
-
-Na koniec dnia (na przykład o godzinie 23: 00 czasu lokalnego) aktywnych baz danych powinien być przełączane do następnego regionu (Europa Północna). To zadanie można całkowicie zautomatyzować przy użyciu [platformy Azure, usługą planowania](../scheduler/scheduler-intro.md).  Zadanie obejmuje następujące czynności:
-
-* Przełącz serwer podstawowy w grupie trybu failover do Europa Północna, przy użyciu przyjaznej trybu failover (1)
-* Usuwanie grupy trybu failover między wschodnie stany USA i Europa Północna
-* Utwórz nową grupę trybu failover o takiej samej nazwie, ale między Europa Północna i Azja Wschodnia (2).
-* Dodaj podstawową w regionie Europa Północna i dodatkowych w Azji Wschodniej do tej grupy trybu failover (3).
-
-Na poniższym diagramie przedstawiono nową konfigurację po planowanego trybu failover:
-
-![Scenariusz 3. Przejście podstawowej do Europa Północna.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
-
-Jeśli awaria występuje na przykład w regionie Europa Północna, automatycznych kopiach przełączenie w tryb failover jest inicjowane przez grupy trybu failover, co skutkuje skutecznie przenoszenie aplikacji do następnego regionu w przód od harmonogramu (1).  W takim przypadku wschodnie stany USA jest tylko pozostałe regionu pomocniczego do momentu powrotu do trybu online Europa Północna. Pozostałe dwa regiony obsługiwać klientów we wszystkich trzech różnych obszarach geograficznych, przełączając ról. Usługa Azure scheduler musi zostać odpowiednio dostosowane. Ponieważ w pozostałych regionach uzyskać ruchu dodatkowych użytkowników z Europy, aplikacja jest wpływ na wydajność nie tylko przez dodatkowe opóźnienie, ale także przez większą liczbę połączeń użytkowników końcowych. Po awarii jest zmniejszany w regionie Europa Północna, pomocniczej bazy danych jest od razu synchronizowane z bieżącego podstawowego. Na poniższym diagramie przedstawiono awaria w regionie Europa Północna:
-
-![Scenariusz 3. Awaria w regionie Europa Północna.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
+Zasoby aplikacji należy wdrożyć w każdej lokalizacji geograficznej, w której masz duże zapotrzebowanie na użycie. Na przykład jeśli aplikacja jest aktywnie używana w Stany Zjednoczone, Unii Europejskiej i Południowej Azja Wschodnia, aplikacja powinna zostać wdrożona we wszystkich tych lokalizacje geograficzneach. Podstawowa baza danych powinna zostać przełączona dynamicznie z jednej lokalizacji geograficznej na następną na końcu godzin pracy. Ta metoda jest wywoływana "po". Obciążenie OLTP zawsze nawiązuje połączenie z bazą danych za pośrednictwem  **&lt;trybu failover odbiornika do odczytu i zapisu&gt;— Grupa-Name. Database.Windows.NET** (1). Obciążenie tylko do odczytu nawiązuje połączenie z lokalną bazą danych bezpośrednio przy użyciu bazy danych serwera punktu końcowego  **&lt;serwera — Name&gt;. Database.Windows.NET** (2). Usługa Traffic Manager jest konfigurowana z użyciem [metody routingu wydajności](../traffic-manager/traffic-manager-configure-performance-routing-method.md). Gwarantuje to, że urządzenie użytkownika końcowego jest połączone z usługą sieci Web w najbliższym regionie. Należy skonfigurować usługę Traffic Manager z włączonym monitorowaniem punktu końcowego dla każdego punktu końcowego usługi sieci Web (3).
 
 > [!NOTE]
-> Można zmniejszyć czas, gdy środowisko użytkownika końcowego w Europie ma obniżoną wydajność przez długi czas oczekiwania. W tym, powinny aktywnie wdrażania kopii aplikacji i tworzenie pomocnicze bazy danych w innym regionie lokalnym (Europa Zachodnia) jako zamiennika wystąpienia aplikacji w trybie offline w regionie Europa Północna. Po drugie wróci do trybu online można zdecydować, czy nadal korzystać z Europa Zachodnia lub usunąć kopię ją tam i przejdź z powrotem do przy użyciu Europa Północna.
+> Konfiguracja grupy trybu failover określa, który region jest używany do pracy w trybie failover. Ponieważ nowy element podstawowy znajduje się w innej lokalizacji geograficznej, przełączenie w tryb failover skutkuje dłuższym opóźnieniem dla obciążeń w ramach OLTP i tylko do odczytu, dopóki zagrożony region nie zostanie przywrócony do trybu online.
 
-Klucz **korzyści** w tym projekcie są:
+![Scenariusz 3. Konfiguracja z podstawową w regionie Wschodnie stany USA.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-* Obciążenie aplikacji tylko do odczytu uzyskuje dostęp do danych w regionie półek przez cały czas.
-* Obciążenia odczytu i zapisu aplikacji uzyskuje dostęp do danych w regionie najbliższym w okresie najwyższy działań w każdej lokalizacji geograficznej
-* Ponieważ aplikacja jest wdrażana w wielu regionach, go nie są unieważniane utraty jednego z regionów bez żadnych znaczących przestojów.
+Na koniec dnia (na przykład w czasie lokalnym 23:00) aktywne bazy danych powinny zostać przełączone do następnego regionu (Europa Północna). To zadanie można całkowicie zautomatyzować przy użyciu [usługi planowania platformy Azure](../scheduler/scheduler-intro.md).  Zadanie obejmuje następujące kroki:
 
-Jednak istnieją pewne **wady i zalety**:
+* Przełącz serwer podstawowy w grupie trybu failover do Europy Północnej przy użyciu przyjaznego trybu failover (1)
+* Usuń grupę trybu failover między regionami Wschodnie stany USA i Europa Północna
+* Utwórz nową grupę trybu failover o tej samej nazwie, ale między Europą Północna a Azja Wschodnia (2).
+* Dodaj podstawową w Europie Północnej i pomocniczą Azja Wschodnia do tej grupy trybu failover (3).
 
-* Powoduje awarii regionalnej w lokalizacji geograficznej, aby mieć wpływ na dłuższy czas oczekiwania. Obciążenia odczytu i zapisu i tylko do odczytu jest obsługiwany przez tę aplikację w innej lokalizacji geograficznej.
-* Obciążenia tylko do odczytu, musisz połączyć do innego punktu końcowego w każdym regionie.
+Na poniższym diagramie przedstawiono nową konfigurację po planowanej pracy w trybie failover:
 
-## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Planowania ciągłości biznesowej: Wybierz projekt aplikacji do odzyskiwania po awarii w chmurze
+![Scenariusz 3. Przejście podstawowego do Europy Północnej.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-Strategię odzyskiwania po awarii w chmurze można połączyć lub rozszerzać te wzorce projektowe, aby najlepiej zaspokoić potrzeb aplikacji.  Jak wspomniano wcześniej, strategii, którą wybierzesz opiera się na umowie SLA mają być oferowane do klientów i topologii wdrażania aplikacji. Pomoc na decyzję, w poniższej tabeli porównano opcje, w zależności od celu punktu odzyskiwania (RPO) i szacowany czas odzyskiwania (ERT).
+W przypadku awarii w Europie Północnej na przykład automatyczne przejście do trybu failover bazy danych jest inicjowane przez grupę trybu failover, co efektywnie skutkuje przeniesieniem aplikacji do następnego regionu przed harmonogramem (1).  W takim przypadku Wschodnie stany USA są jedynym pozostałym regionem pomocniczym, dopóki Europa Północna nie będzie w trybie online. Pozostałe dwa regiony umożliwiają klientom wszystkie trzy lokalizacje geograficzne przez przełączanie ról. Harmonogram Azure należy odpowiednio dostosować. Ponieważ pozostałe regiony uzyskują dodatkowy ruch użytkownika z Europy, wpływ na wydajność aplikacji jest taki sam jak w przypadku dodatkowych opóźnień, ale również przez większą liczbę połączeń użytkowników końcowych. Po zmniejszeniu przestojów w Europie Północnej, pomocnicza baza danych jest natychmiast synchronizowana z bieżącym serwerem podstawowym. Na poniższym diagramie przedstawiono awarię w Europie Północnej:
 
-| Wzorce | RPO | ERT |
+![Scenariusz 3. Awaria w Europie Północnej.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
+
+> [!NOTE]
+> Można skrócić czas, w którym środowisko użytkownika końcowego w Europie jest obniżone o długi czas oczekiwania. Aby to zrobić, należy wdrożyć kopię aplikacji i utworzyć pomocnicze bazy danych w innym regionie lokalnym (Europa Zachodnia) jako zastąpienie wystąpienia aplikacji offline w Europie Północnej. Kiedy Ostatnia wraca do trybu online, możesz zdecydować, czy kontynuować korzystanie z Europa Zachodnia, czy też usunąć kopię aplikacji, a następnie przełączyć się z powrotem do korzystania z Europy Północnej.
+
+Najważniejsze **zalety** tego projektu to:
+
+* Obciążenie aplikacji tylko do odczytu uzyskuje dostęp do danych w regionie w każdym momencie.
+* Obciążenie aplikacji do odczytu i zapisu uzyskuje dostęp do danych w najbliższym regionie w okresie największej aktywności w każdej lokalizacji geograficznej.
+* Ze względu na to, że aplikacja jest wdrażana w wielu regionach, może przeżyły utratę jednego z regionów bez jakiegokolwiek znaczącego przestoju.
+
+Istnieją jednak pewne **kompromisy**:
+
+* Regionalna awaria powoduje, że w lokalizacji geograficznej ma wpływ dłuższy czas oczekiwania. Zarówno do odczytu, jak i do odczytu obciążenia są obsługiwane przez aplikację w innej lokalizacji geograficznej.
+* Obciążenia tylko do odczytu muszą łączyć się z innym punktem końcowym w każdym regionie.
+
+## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Planowanie ciągłości działania: Wybierz projekt aplikacji na potrzeby odzyskiwania po awarii w chmurze
+
+Konkretna Strategia odzyskiwania po awarii w chmurze może łączyć lub zwiększać te wzorce projektowe, aby najlepiej spełniały potrzeby aplikacji.  Jak wspomniano wcześniej, wybrana strategia jest oparta na umowie SLA, która ma być oferowana klientom i topologii wdrażania aplikacji. Aby ułatwić podjęcie decyzji, Poniższa tabela zawiera porównanie opcji na podstawie celu punktu odzyskiwania (RPO) i szacowanego czasu odzyskiwania (ERT).
+
+| Wzorzec | RPO | ERT |
 |:--- |:--- |:--- |
-| Aktywny / pasywny wdrożenia odzyskiwania po awarii przy użyciu dostępu do tej samej lokalizacji bazy danych |Dostęp do odczytu i zapisu < 5 s |Czas wykrycia awarii i czasu wygaśnięcia DNS |
-| Aktywne aktywne wdrożenie równoważenia obciążenia aplikacji |Dostęp do odczytu i zapisu < 5 s |Czas wykrycia awarii i czasu wygaśnięcia DNS |
-| Aktywny / pasywny wdrożenie ochrony danych |Dostęp tylko do odczytu < 5 s | Dostęp tylko do odczytu = 0 |
-||Dostęp do odczytu i zapisu = 0 | Dostęp do odczytu i zapisu = czas wykrycia awarii i okres prolongaty z utratą danych |
+| Wdrożenie Active-pasywne na potrzeby odzyskiwania po awarii z dostępem do udostępnionej bazy danych |Dostęp do odczytu i zapisu < 5 sek. |Czas wykrywania niepowodzeń + wartość czasu wygaśnięcia systemu DNS |
+| Wdrażanie aktywne-aktywne na potrzeby równoważenia obciążenia aplikacji |Dostęp do odczytu i zapisu < 5 sek. |Czas wykrywania niepowodzeń + wartość czasu wygaśnięcia systemu DNS |
+| Wdrożenie aktywne-pasywne na potrzeby zachowywania danych |Dostęp tylko do odczytu < 5 sek | Dostęp tylko do odczytu = 0 |
+||Dostęp do odczytu i zapisu = zero | Dostęp do odczytu i zapisu = czas wykrycia błędu + okres prolongaty z utratą danych |
 |||
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Omówienie ciągłości działania i scenariuszach można znaleźć [omówienie ciągłości działania](sql-database-business-continuity.md)
-* Aby dowiedzieć się więcej na temat aktywnej replikacji geograficznej, zobacz [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md).
-* Aby dowiedzieć się więcej o grupach automatyczny tryb failover, zobacz [automatyczny tryb failover grupy](sql-database-auto-failover-group.md).
-* Aby uzyskać informacji na temat aktywnej replikacji geograficznej z pulami elastycznymi, zobacz [Strategie odzyskiwania po awarii dla puli elastycznej](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+* Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat ciągłość działania [— Omówienie](sql-database-business-continuity.md)
+* Aby dowiedzieć się więcej o aktywnej replikacji [](sql-database-active-geo-replication.md)geograficznej, zobacz aktywną replikację geograficzną.
+* Aby dowiedzieć się więcej na temat grup autotrybu failover, zobacz [grupy autopraca awaryjna](sql-database-auto-failover-group.md).
+* Aby uzyskać informacje o aktywnej replikacji geograficznej z pulami elastycznych, zobacz [strategie dotyczące odzyskiwania po awarii puli elastycznej](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

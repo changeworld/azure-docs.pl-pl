@@ -1,73 +1,73 @@
 ---
-title: Tworzenie mapy za pomocą usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Tworzenie Javascript map
+title: Tworzenie mapy za pomocą Azure Maps | Microsoft Docs
+description: Jak utworzyć mapę JavaScript
 author: jingjing-z
 ms.author: jinzh
-ms.date: 10/30/2018
+ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 222fc5e9083c03ff0d4e31927363c5f517cf32a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a4f67290e93d8b296added9023fe9b6947ba02c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62108603"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638683"
 ---
 # <a name="create-a-map"></a>Tworzenie mapy
 
-W tym artykule przedstawiono sposoby tworzenia mapy i animować mapy.  
+W tym artykule pokazano, jak utworzyć mapę i animować mapę.  
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-Istnieją dwa sposoby, możesz utworzyć mapę. Aparat fotograficzny, mapy można ustawić przez określenie punktu centralnego i poziom powiększenia lub można ustawić granice aparatu mapy, określając zachodzie i północno-wschodnie blokujących punktów.
+Istnieją dwa sposoby konstruowania mapy. Można ustawić kamerę mapy, określając punkt środkowy i poziom powiększenia lub można ustawić granice aparatu mapy, określając punkty środkowe i środkowe.
 
 <a id="setCameraOptions"></a>
 
-### <a name="set-the-camera"></a>Ustaw aparat fotograficzny
+### <a name="set-the-camera"></a>Ustawianie aparatu
 
-<iframe height='500' scrolling='no' title='Utwórz mapę za pośrednictwem CameraOptions' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>Tworzenie mapy za pomocą `CameraOptions` </a>przez usług Azure Location Based Services (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Tworzenie mapy za pomocą CameraOptions' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>Utwórz mapę `CameraOptions` </a>przez Azure Location based Services (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie [obiektu mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) zostały utworzone za pomocą `new atlas.Map()` i wyśrodkowanie i powiększenie są ustawione. Właściwości mapy, takie jak poziom Wyśrodkowanie i powiększenie są częścią [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions).
+W powyższym kodzie [obiekt mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) jest tworzony przez `new atlas.Map()` , a ustawienia Wyśrodkuj i powiększania są ustawione. Właściwości mapy, takie jak centrum i poziom powiększenia, są częścią [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions).
 
 <a id="setCameraBoundsOptions"></a>
 
-### <a name="set-the-camera-bounds"></a>Ustaw granice kamery
+### <a name="set-the-camera-bounds"></a>Ustawianie granic kamery
 
-<iframe height='500' scrolling='no' title='Utwórz mapę za pośrednictwem CameraBoundsOptions' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>Tworzenie mapy za pomocą `CameraBoundsOptions` </a>przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Tworzenie mapy za pomocą CameraBoundsOptions' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>Utwórz mapę `CameraBoundsOptions` </a>przez Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie [obiektu mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) jest tworzony za pomocą `new atlas.Map()`. Właściwości mapy, takich jak `CameraBoundsOptions` mogą być definiowane za pomocą [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkcji klasy mapy. Granice i wypełnienie właściwości są ustawiane przy użyciu `setCamera`.
+W powyższym kodzie [obiekt mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) jest konstruowany przez `new atlas.Map()`. Właściwości mapy, takie `CameraBoundsOptions` jak można zdefiniować za pomocą funkcji setcamera klasy map. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) Właściwości Bound i uzupełnienie są ustawiane przy `setCamera`użyciu.
 
-### <a name="animate-map-view"></a>Animowanie widoku mapy
+### <a name="animate-map-view"></a>Animuj widok mapy
 
-<iframe height='500' scrolling='no' title='Animowanie widoku mapy' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/WayvbO/'>animować widoku mapy</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Animuj widok mapy' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Obejrzyj <a href='https://codepen.io/azuremaps/pen/WayvbO/'>Widok mapy animacji</a> piórem według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie pierwszy blok kodu tworzy [obiektu mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) za pośrednictwem `new atlas.Map()`. Właściwości mapy, takie jak poziom Wyśrodkowanie i powiększenie są częścią [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions). `CameraOptions` można zdefiniować w Konstruktorze mapy lub za pośrednictwem [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkcji klasy mapy. [Mapy styl](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) ustawiono `road`.
+W powyższym kodzie, pierwszy blok kodu tworzy [obiekt mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) za pośrednictwem `new atlas.Map()`. Właściwości mapy, takie jak centrum i poziom powiększenia, są częścią [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions). `CameraOptions`można zdefiniować w konstruktorze mapy lub za pomocą [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkcji setcamera klasy map. [Styl mapy](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) jest ustawiony na `road`.
 
-Drugi blok kodu tworzy funkcji mapy animowanie animuje zmiany w widoku mapy, definiując [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) za pośrednictwem [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkcji. Funkcja jest wyzwalana po kliknięciu przycisku "Animować mapy" do generowania losowego powiększenia na każde kliknięcie.
+Drugi blok kodu tworzy funkcję mapy animacji, która Animuj zmiany w widoku mapy przez definiowanie [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) przez funkcję setcamera [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) . Funkcja jest wyzwalana przez przycisk "Animuj map", aby wygenerować losowy poziom powiększenia przy każdym kliknięciu.
 
 ## <a name="try-out-the-code"></a>Wypróbuj kod
 
-Spójrz na powyższym przykładowym kodzie. Można edytować kod JavaScript na **kartę JS** po lewej i zobacz, w widoku mapy zmieni się na **karty wyników** po prawej stronie. Możesz również kliknąć **edytować na funkcji codepen można** znajdujący się i edytowanie kodu w funkcji codepen można.
+Zapoznaj się z przykładowym kodem powyżej. Kod JavaScript można edytować na **karcie js** po lewej stronie i zobaczyć zmiany w widoku mapy na **karcie wynik** po prawej stronie. Możesz również kliknąć przycisk **Edytuj na CodePen** i edytować kod w CodePen.
 
 <a id="relatedReference"></a>
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule:
+Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 Zobacz przykłady kodu, aby dodać funkcje do aplikacji:
 
 > [!div class="nextstepaction"]
-> [Wybierz style mapy](choose-map-style.md)
+> [Wybieranie stylu mapy](choose-map-style.md)
 
 > [!div class="nextstepaction"]
-> [Dodawanie kontrolki mapy](map-add-controls.md)
+> [Dodaj kontrolki mapy](map-add-controls.md)

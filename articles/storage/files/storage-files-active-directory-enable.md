@@ -1,99 +1,98 @@
 ---
-title: Włącz uwierzytelnianie usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza) — usługi Azure Storage
-description: Dowiedz się, jak włączyć uwierzytelnianie oparte na tożsamości za pośrednictwem protokołu SMB (Server Message Block) (wersja zapoznawcza) dla usługi Azure Files za pomocą usług domenowych Azure Active Directory (Azure AD). Przyłączone do domeny Windows maszyn wirtualnych (VM) mogą uzyskiwać dostęp do udziałów plików platformy Azure przy użyciu poświadczeń usługi Azure AD.
-services: storage
+title: Włączanie uwierzytelniania Azure Active Directory za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza) — Azure Storage
+description: Dowiedz się, jak włączyć uwierzytelnianie oparte na tożsamościach za pośrednictwem bloku komunikatów serwera (SMB) dla Azure Files za pośrednictwem Azure Active Directory Domain Services. Przyłączone do domeny maszyny wirtualne z systemem Windows mogą następnie uzyskiwać dostęp do udziałów plików platformy Azure przy użyciu poświadczeń usługi Azure AD.
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rogarana
-ms.openlocfilehash: cd4c952caa336f2602d3c30e0db3e10ebee59cb9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c0cfb8b7f0d6e3988ccdfa51cae2748b7008308d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696120"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699767"
 ---
-# <a name="enable-azure-active-directory-domain-service-authentication-over-smb-for-azure-files-preview"></a>Włącz uwierzytelnianie usługi Azure Active Directory domeny za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
+# <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files-preview"></a>Włącz uwierzytelnianie Azure Active Directory Domain Services za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Aby uzyskać omówienie uwierzytelniania usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files, zobacz [uwierzytelniania Omówienie programu Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)](storage-files-active-directory-overview.md).
+Omówienie uwierzytelniania usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files można znaleźć w temacie [Omówienie uwierzytelniania Azure Active Directory za pośrednictwem protokołu SMB dla Azure Files (wersja zapoznawcza)](storage-files-active-directory-overview.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview-of-the-workflow"></a>Omówienie przepływu pracy
-Zanim włączysz uwierzytelnianie usługi Azure AD DS za pośrednictwem protokołu SMB dla usługi Azure Files, upewnij się, że usługi Azure AD i środowisk Azure Storage są poprawnie skonfigurowane. Zalecane jest, zapoznaj się z za pośrednictwem [wymagania wstępne](#prerequisites) aby upewnić się, że zostało wykonane wszystkie wymagane kroki. 
+## <a name="overview-of-the-workflow"></a>Przegląd przepływu pracy
+Przed włączeniem uwierzytelniania AD DS platformy Azure za pośrednictwem protokołu SMB dla Azure Files upewnij się, że środowiska usługi Azure AD i Azure Storage zostały prawidłowo skonfigurowane. Zalecamy zapoznanie się z wymaganiami wstępnymi [](#prerequisites) , aby upewnić się, że zostały wykonane wszystkie wymagane kroki.
 
-Następnie udzielać dostępu do zasobów usługi Azure Files przy użyciu poświadczeń usługi Azure AD, wykonaj następujące czynności: 
+Następnie Udziel dostępu do zasobów Azure Files przy użyciu poświadczeń usługi Azure AD, wykonując następujące czynności: 
 
-1. Włącz uwierzytelnianie usługi Azure AD DS za pośrednictwem protokołu SMB dla konta magazynu do rejestrowania konta magazynu przy użyciu powiązanego wdrożenia usług domenowych Azure AD.
-2. Przypisz uprawnienia dostępu dla udziału do tożsamości usługi Azure AD (użytkownika, grupy lub jednostki usługi).
-3. Skonfiguruj uprawnienia NTFS za pośrednictwem protokołu SMB plików i katalogów.
-4. Instalowanie udziału plików platformy Azure z maszyn wirtualnych przyłączonych do domeny.
+1. Włącz uwierzytelnianie AD DS platformy Azure za pośrednictwem protokołu SMB dla konta magazynu, aby zarejestrować konto magazynu przy użyciu skojarzonego wdrożenia usługi Azure AD DS.
+2. Przypisywanie uprawnień dostępu dla udziału do tożsamości usługi Azure AD (użytkownika, grupy lub nazwy głównej usługi).
+3. Skonfiguruj uprawnienia systemu plików NTFS za pośrednictwem protokołu SMB dla katalogów i plików.
+4. Zainstaluj udział plików platformy Azure z maszyny wirtualnej przyłączonej do domeny.
 
-Poniższy diagram przedstawia przepływ pracy end-to-end włączania uwierzytelniania usługi Azure AD DS za pośrednictwem protokołu SMB dla usługi Azure Files. 
+Na poniższym diagramie przedstawiono kompleksowy przepływ pracy służący do włączania uwierzytelniania AD DS platformy Azure za pośrednictwem protokołu SMB dla Azure Files. 
 
-![Diagram przedstawiający usługi Azure AD przy użyciu protokołu SMB dla przepływu pracy z usługą Azure Files](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
+![Diagram przedstawiający przepływ pracy usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed włączeniem usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files, upewnij się, że zostały wykonane następujące wymagania wstępne:
+Przed włączeniem usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files upewnij się, że zostały spełnione następujące wymagania wstępne:
 
 1.  **Wybierz lub Utwórz dzierżawę usługi Azure AD.**
 
-    Nowych i istniejących dzierżawców można użyć uwierzytelniania usługi Azure AD przy użyciu protokołu SMB. Dzierżawy i udział plików, który chcesz uzyskać dostęp do musi być skojarzony z tą samą subskrypcją.
+    Możesz użyć nowej lub istniejącej dzierżawy do uwierzytelniania w usłudze Azure AD za pośrednictwem protokołu SMB. Dzierżawa i udział plików, do których chcesz uzyskać dostęp, muszą być skojarzone z tą samą subskrypcją.
 
-    Aby utworzyć nową dzierżawę usługi Azure AD możesz [Dodawanie dzierżawy usługi Azure AD i subskrypcję usługi Azure AD](https://docs.microsoft.com/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription). Jeśli masz istniejącą dzierżawę usługi Azure AD, ale chcesz utworzyć nową dzierżawę do użycia z usługą Azure Files, zobacz [tworzenie dzierżawy usługi Azure Active Directory](https://docs.microsoft.com/rest/api/datacatalog/create-an-azure-active-directory-tenant).
+    Aby utworzyć nową dzierżawę usługi Azure AD, możesz [dodać dzierżawę usługi Azure AD i subskrypcję usługi Azure AD](https://docs.microsoft.com/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription). Jeśli masz istniejącą dzierżawę usługi Azure AD, ale chcesz utworzyć nową dzierżawę do użycia z Azure Files, zobacz [Tworzenie dzierżawy Azure Active Directory](https://docs.microsoft.com/rest/api/datacatalog/create-an-azure-active-directory-tenant).
 
-2.  **Włączanie usług domenowych Azure AD dla dzierżawy usługi Azure AD.**
+2.  **Włącz Azure AD Domain Services w dzierżawie usługi Azure AD.**
 
-    Aby zapewnić obsługę uwierzytelniania przy użyciu poświadczeń usługi Azure AD, należy włączyć usługi Azure AD Domain Services dla dzierżawy usługi Azure AD. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie z szczegółowymi wskazówkami dotyczącymi [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/create-instance.md).
+    Aby zapewnić obsługę uwierzytelniania przy użyciu poświadczeń usługi Azure AD, musisz włączyć usługę Azure AD DS dla dzierżawy usługi Azure AD. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie ze wskazówkami krok po kroku, aby [włączyć Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/create-instance.md).
 
-    Zwykle trwa około 15 minut wdrożenia usług domenowych Azure AD zakończyć. Sprawdź, czy stan kondycji usługi domenowe Azure AD zawiera **systemem**, z włączoną synchronizacją skrótów haseł, przed przejściem do następnego kroku.
+    Ukończenie wdrożenia usługi Azure AD DS zwykle trwa około 15 minut. Przed przejściem do następnego kroku Sprawdź, czy stan kondycji usługi Azure AD DS jest **uruchomiony**z włączoną funkcją synchronizacji skrótów haseł.
 
-3.  **Przyłączanie do domeny maszyny Wirtualnej platformy Azure za pomocą usługi Azure AD Domain Services.**
+3.  **Przyłączanie domeny do maszyny wirtualnej platformy Azure przy użyciu usługi Azure AD DS.**
 
-    Dostępu do udziału plików przy użyciu poświadczeń usługi Azure AD z maszyny Wirtualnej, maszyna wirtualna musi być przyłączony do domeny usług domenowych Azure AD. Aby uzyskać więcej informacji na temat przyłączania do domeny maszyny Wirtualnej, zobacz [dołączanie maszyny wirtualnej systemu Windows Server do domeny zarządzanej](../../active-directory-domain-services/join-windows-vm.md).
+    Aby uzyskać dostęp do udziału plików przy użyciu poświadczeń usługi Azure AD z maszyny wirtualnej, maszyna wirtualna musi być przyłączona do domeny do usługi Azure AD DS. Aby uzyskać więcej informacji na temat dołączania do maszyny wirtualnej, zobacz Dołączanie [maszyny wirtualnej z systemem Windows Server do domeny zarządzanej](../../active-directory-domain-services/join-windows-vm.md).
 
     > [!NOTE]
-    > Uwierzytelnianie usługi Azure AD DS za pośrednictwem protokołu SMB za pomocą usługi Azure Files jest obsługiwana tylko na platformie Azure maszyn wirtualnych uruchomionych na wersje systemów operacyjnych Windows 7 lub Windows Server 2008 R2.
+    > Uwierzytelnianie AD DS platformy Azure za pośrednictwem protokołu SMB z usługą Azure Files jest obsługiwane tylko na maszynach wirtualnych platformy Azure działających w systemach operacyjnych starszych niż Windows 7 lub Windows Server 2008 R2.
 
 4.  **Wybierz lub Utwórz udział plików platformy Azure.**
 
-    Wybierz udział plików nowej lub istniejącej, która jest skojarzona z tej samej subskrypcji co dzierżawy usługi Azure AD. Aby uzyskać informacje dotyczące tworzenia nowego udziału plików, zobacz [Utwórz udział plików w usłudze Azure Files](storage-how-to-create-file-share.md). 
-    Aby uzyskać optymalną wydajność firma Microsoft zaleca, że udział plików znajduje się w tym samym regionie co maszyna wirtualna, z którego planujesz uzyskiwać dostęp do udziału.
+    Wybierz nowy lub istniejący udział plików skojarzony z tą samą subskrypcją co dzierżawy usługi Azure AD. Aby uzyskać informacje na temat tworzenia nowego udziału plików, zobacz [Tworzenie udziału plików w Azure Files](storage-how-to-create-file-share.md). 
+    W celu uzyskania optymalnej wydajności zalecamy, aby udział plików znajdował się w tym samym regionie co maszyna wirtualna, z której planujesz uzyskać dostęp do udziału.
 
-5.  **Sprawdź łączność z usługą Azure Files przy instalowanie udziałów plików platformy Azure przy użyciu klucza konta magazynu.**
+5.  **Sprawdź łączność Azure Files, instalując udziały plików platformy Azure przy użyciu klucza konta magazynu.**
 
-    Aby sprawdzić, czy sieci maszyny Wirtualnej i udział plików są prawidłowo skonfigurowane, spróbuj zainstalowanie udziału plików przy użyciu klucza konta magazynu. Aby uzyskać więcej informacji, zobacz [instalowanie udziału plików platformy Azure i uzyskiwanie dostępu do udziału w Windows](storage-how-to-use-files-windows.md).
+    Aby sprawdzić, czy maszyna wirtualna i udział plików są prawidłowo skonfigurowane, spróbuj zainstalować udział plików przy użyciu klucza konta magazynu. Aby uzyskać więcej informacji, zobacz [Instalowanie udziału plików platformy Azure i uzyskiwanie dostępu do udziału w systemie Windows](storage-how-to-use-files-windows.md).
 
-## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Włącz uwierzytelnianie usługi Azure AD DS dla swojego konta
+## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Włącz uwierzytelnianie AD DS platformy Azure dla Twojego konta
 
-Aby włączyć uwierzytelnianie usługi Azure AD DS za pośrednictwem protokołu SMB dla usługi Azure Files, można ustawić właściwości dla kont magazynu utworzonych po 24 września 2018 roku przy użyciu witryny Azure portal, programu Azure PowerShell lub wiersza polecenia platformy Azure. Ustawienie tej właściwości rejestruje konta magazynu skojarzone wdrożenie usług domenowych Azure AD. Uwierzytelnianie usługi Azure AD DS za pośrednictwem protokołu SMB następnie jest włączona dla wszystkich udziałów plików nowych i istniejących na koncie magazynu. 
+Aby włączyć uwierzytelnianie AD DS platformy Azure za pośrednictwem protokołu SMB dla Azure Files, można ustawić właściwość kont magazynu utworzonych po 24 września 2018 przy użyciu Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Ustawienie tej właściwości rejestruje konto magazynu ze skojarzonym wdrożeniem usługi Azure AD DS. Uwierzytelnianie AD DS platformy Azure za pośrednictwem protokołu SMB jest następnie włączone dla wszystkich nowych i istniejących udziałów plików na koncie magazynu.
 
-Należy pamiętać, że można włączyć uwierzytelnianie usługi Azure AD DS za pośrednictwem protokołu SMB tylko wtedy, gdy została pomyślnie wdrożona usług domenowych Azure AD dla Twojej dzierżawy usługi Azure AD. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
+Pamiętaj, że możesz włączyć uwierzytelnianie na platformie Azure AD DS za pośrednictwem protokołu SMB dopiero po pomyślnym wdrożeniu usługi Azure AD DS w dzierżawie usługi Azure AD. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](#prerequisites).
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Aby włączyć uwierzytelnianie usługi Azure AD DS za pośrednictwem protokołu SMB za pomocą [witryny Azure portal](https://portal.azure.com), wykonaj następujące kroki:
+Aby włączyć uwierzytelnianie AD DS platformy Azure za pośrednictwem protokołu SMB przy użyciu [Azure Portal](https://portal.azure.com), wykonaj następujące czynności:
 
-1. W witrynie Azure portal przejdź do istniejącego konta magazynu lub [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
-2. W **ustawienia** zaznacz **konfiguracji**.
-3. Włącz **Azure uwierzytelniania usługi Active Directory dla usługi Azure Files (wersja zapoznawcza)** .
+1. W Azure Portal przejdź do istniejącego konta magazynu lub [Utwórz konto magazynu](../common/storage-quickstart-create-account.md).
+2. W sekcji **Ustawienia** wybierz pozycję **Konfiguracja**.
+3. Włącz **Azure Active Directory uwierzytelnianie dla Azure Files (wersja zapoznawcza)** .
 
-Na poniższej ilustracji przedstawiono sposób włączania uwierzytelniania usługi Azure AD przy użyciu protokołu SMB dla konta magazynu.
+Na poniższej ilustracji przedstawiono sposób włączania uwierzytelniania AD DS platformy Azure za pośrednictwem protokołu SMB dla konta magazynu.
 
-![Włącz uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB w witrynie Azure portal](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
+![Włącz uwierzytelnianie usługi Azure AD za pośrednictwem protokołu SMB w Azure Portal](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
   
 ### <a name="powershell"></a>PowerShell  
 
-Aby włączyć uwierzytelnianie usługi Azure AD DS za pośrednictwem protokołu SMB przy użyciu programu Azure PowerShell: Najpierw zainstaluj najnowszy moduł Az (2.4 lub nowszej) lub moduł Az.Storage (w wersji 1.5 lub nowszej). Aby uzyskać więcej informacji na temat instalowania programu PowerShell, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps):
+Aby włączyć uwierzytelnianie AD DS platformy Azure za pośrednictwem protokołu SMB z Azure PowerShell, zainstaluj najnowszą wersję AZ module (2,4 lub nowszą) lub moduł AZ. Storage (1,5 lub nowszy). Aby uzyskać więcej informacji na temat instalowania programu PowerShell, zobacz [Install Azure PowerShell in Windows with PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps):
 
 ```powershell
 Install-Module -Name Az.Storage -AllowPrerelease -Force -AllowClobber
 ```
 
-Następnie utwórz nowy magazyn konta, a następnie wywołaj [AzStorageAccount zestaw](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) i ustaw **EnableAzureActiveDirectoryDomainServicesForFile** parametr **true**. W poniższym przykładzie Pamiętaj, aby zastąpić symbole zastępcze własnymi wartościami. (Jeśli była używana poprzedni moduł (wersja zapoznawcza), parametr do włączenia funkcji jest **EnableAzureFilesAadIntegrationForSMB**.)
+Utwórz nowe konto magazynu, wywołaj polecenie [Set-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount), a następnie ustaw parametr **EnableAzureActiveDirectoryDomainServicesForFile** na **wartość true**. W poniższym przykładzie Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami. (Jeśli używasz poprzedniego modułu w wersji zapoznawczej, parametr do włączenia funkcji jest **EnableAzureFilesAadIntegrationForSMB**).
 
 ```powershell
 # Create a new storage account
@@ -104,7 +103,7 @@ New-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Kind StorageV2 `
     -EnableAzureActiveDirectoryDomainServicesForFile $true
 ```
-Aby włączyć tę funkcję na istniejących kont magazynu, użyj następującego polecenia:
+Aby włączyć tę funkcję na istniejących kontach magazynu, użyj następującego polecenia:
 
 ```powershell
 # Update a storage account
@@ -116,47 +115,47 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB z interfejsu wiersza polecenia platformy Azure w wersji 2.0, należy najpierw zainstalować `storage-preview` rozszerzenia:
+Aby włączyć uwierzytelnianie usługi Azure AD za pośrednictwem protokołu SMB z poziomu interfejsu wiersza `storage-preview` polecenia platformy Azure 2,0, najpierw zainstaluj rozszerzenie:
 
 ```cli-interactive
 az extension add --name storage-preview
 ```
   
-Następnie utwórz nowy magazyn konta, a następnie wywołaj [aktualizacja konta magazynu az](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) i ustaw `--file-aad` właściwości **true**. W poniższym przykładzie Pamiętaj, aby zastąpić symbole zastępcze własnymi wartościami.
+Następnie utwórz nowe konto magazynu, wywołaj [AZ Storage account Update](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update)i ustaw `--file-aad` właściwość na **wartość true**. W poniższym przykładzie Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami.
 
 ```azurecli-interactive
 # Create a new storage account
 az storage account create -n <storage-account-name> -g <resource-group-name> --file-aad true
 ```
 
-## <a name="assign-access-permissions-to-an-identity"></a>Przypisanie uprawnień dostępu do tożsamości usługi 
+## <a name="assign-access-permissions-to-an-identity"></a>Przypisywanie uprawnień dostępu do tożsamości
 
-Aby uzyskać dostęp do zasobów usługi Azure Files przy użyciu poświadczeń usługi Azure AD, tożsamości (użytkownika, grupy lub jednostki usługi) musi mieć odpowiednie uprawnienia na poziomie udziału. Ten proces jest podobny do określania uprawnień udostępniania Windows, gdzie Określ typ dostępu do udziału plików danego użytkownika. Wskazówki zawarte w tej sekcji pokazano, jak przypisać odczytu, zapisu lub usunąć uprawnienia dla udziału plików do tożsamości usługi.
+Aby uzyskać dostęp do zasobów Azure Files przy użyciu poświadczeń usługi Azure AD, tożsamość (nazwa użytkownika, Grupa lub nazwa główna usługi) musi mieć odpowiednie uprawnienia na poziomie udziału. Ten proces jest podobny do określania uprawnień do udziału w systemie Windows, w którym można określić typ dostępu określonego użytkownika do udziału plików. Wskazówki zawarte w tej sekcji przedstawiają sposób przypisywania uprawnień do odczytu, zapisu lub usuwania udziału plików do tożsamości.
 
-Wprowadziliśmy dwie Azure wbudowane role, do przyznawania uprawnień na poziomie udziału dla użytkowników: Czytnik udziału SMB dla pliku danych, magazynu i współautorem udziału SMB dla magazynu plików. 
+Wprowadziliśmy dwie wbudowane role platformy Azure na potrzeby udzielania użytkownikom uprawnień na poziomie udziału:
 
-- **Czytnik udziału SMB dla pliku danych, magazynu** umożliwia dostęp do odczytu w udziałach plików usługi Azure Storage za pośrednictwem protokołu SMB
-- **Współautor udziału SMB dla pliku danych, magazynu** umożliwia odczytu, zapisu i usuwania dostępu w udziałach plików usługi Azure Storage za pośrednictwem protokołu SMB
+- **Czytnik udziałów plików dla plików magazynu (SMB** ) umożliwia dostęp do odczytu w udziałach pliku usługi Azure Storage za pośrednictwem protokołu SMB.
+- **Współautor udostępniania danych plików magazynu SMB** umożliwia dostęp do odczytu, zapisu i usuwania w udziałach plików usługi Azure Storage za pośrednictwem protokołu SMB.
 
 > [!IMPORTANT]
-> Pełną kontrolę administracyjną nad udział plików, w tym możliwość przypisania roli do tożsamości usługi wymaga przy użyciu klucza konta magazynu. Kontrola administracyjna nie jest obsługiwana przy użyciu poświadczeń usługi Azure AD. 
+> Pełna kontrola administracyjna udziału plików, w tym możliwość przypisania roli do tożsamości, wymaga użycia klucza konta magazynu. Kontrolka administracyjna nie jest obsługiwana w przypadku poświadczeń usługi Azure AD.
 
-Można przypisać wbudowane role do tożsamości usługi Azure AD dla użytkownika, przyznawania uprawnień na poziomie udziału, można użyć witryny Azure portal, programu PowerShell lub wiersza polecenia platformy Azure. 
+Korzystając z Azure Portal, PowerShell lub interfejsu wiersza polecenia platformy Azure, można przypisać wbudowane role do tożsamości usługi Azure AD użytkownika w celu udzielenia uprawnień na poziomie udziału.
 
 #### <a name="azure-portal"></a>Azure Portal
-Aby przypisać rolę RBAC do tożsamości usługi Azure AD przy użyciu [witryny Azure portal](https://portal.azure.com), wykonaj następujące kroki:
+Aby przypisać rolę RBAC do tożsamości usługi Azure AD przy użyciu [Azure Portal](https://portal.azure.com), wykonaj następujące czynności:
 
-1. W witrynie Azure portal przejdź do udziału plików, lub [Utwórz udział plików w usłudze Azure Files](storage-how-to-create-file-share.md).
+1. W Azure Portal przejdź do udziału plików lub [Utwórz udział plików w Azure Files](storage-how-to-create-file-share.md).
 2. Wybierz **kontrola dostępu (IAM)** .
-3. Wybierz **Dodaj przypisanie roli**
-4. W **Dodaj przypisanie roli** bloku, wybierz odpowiednią rolę wbudowaną (czytnik udziału SMB dla pliku danych, magazynu, współautor udziału SMB dla pliku danych, magazynu) z **roli** listy rozwijanej. Zachowaj **Przypisz dostęp do** jako domyślny: "Użytkownik usługi azure AD, grupy lub jednostki usługi" i wybierz docelową tożsamości usługi Azure AD według nazwy lub adresu e-mail. 
-5. Na koniec wybierz **Zapisz** można ukończyć operacji przypisania roli.
+3. Wybierz pozycję **Dodaj przypisanie roli**
+4. W bloku **Dodaj przypisanie roli** wybierz odpowiednią rolę wbudowaną (plik magazynu: czytnik udziałów SMB, współautor udziału danych plików magazynu) z listy **rola** . Pozostaw ustawienie domyślne opcji **Przypisz dostęp do** : **Użytkownik, Grupa lub nazwa główna usługi Azure AD**. Wybierz docelową tożsamość usługi Azure AD według nazwy lub adresu e-mail.
+5. Wybierz pozycję **Zapisz** , aby ukończyć operację przypisywania roli.
 
 #### <a name="powershell"></a>PowerShell
 
-Następujące polecenie programu PowerShell pokazuje, jak przypisać rolę RBAC do tożsamości usługi Azure AD, w oparciu o nazwę logowania. Aby uzyskać więcej informacji na temat przypisywania ról RBAC przy użyciu programu PowerShell, zobacz [zarządzanie dostępem przy użyciu RBAC i programu Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Następujące polecenie programu PowerShell pokazuje, jak przypisać rolę RBAC do tożsamości usługi Azure AD na podstawie nazwy logowania. Aby uzyskać więcej informacji na temat przypisywania ról RBAC przy użyciu programu PowerShell, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
-Podczas uruchamiania następującego skryptu przykładowego, pamiętaj, aby zastąpić wartości symboli zastępczych, razem z nawiasami własnymi wartościami.
+Przed uruchomieniem następującego przykładowego skryptu pamiętaj, aby zastąpić wartości symboli zastępczych, w tym nawiasów, z własnymi wartościami.
 
 ```powershell
 #Get the name of the custom role
@@ -169,70 +168,72 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>Interfejs wiersza polecenia
   
-Następujące polecenie interfejsu wiersza polecenia 2.0 pokazuje, jak przypisać rolę RBAC do tożsamości usługi Azure AD, w oparciu o nazwę logowania. Aby uzyskać więcej informacji na temat przypisywania ról RBAC przy użyciu wiersza polecenia platformy Azure, zobacz [zarządzanie dostępem przy użyciu RBAC i wiersza polecenia platformy Azure](../../role-based-access-control/role-assignments-cli.md). 
+Następujące polecenie interfejsu wiersza polecenia 2,0 pokazuje, jak przypisać rolę RBAC do tożsamości usługi Azure AD na podstawie nazwy logowania. Aby uzyskać więcej informacji na temat przypisywania ról RBAC przy użyciu interfejsu wiersza polecenia platformy Azure, zobacz [Zarządzanie dostępem przy użyciu RBAC i interfejsu wiersza polecenia platformy Azure](../../role-based-access-control/role-assignments-cli.md). 
 
-Podczas uruchamiania następującego skryptu przykładowego, pamiętaj, aby zastąpić wartości symboli zastępczych, razem z nawiasami własnymi wartościami.
+Przed uruchomieniem następującego przykładowego skryptu pamiętaj, aby zastąpić wartości symboli zastępczych, w tym nawiasów, z własnymi wartościami.
 
 ```azurecli-interactive
 #Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 ```
 
-## <a name="configure-ntfs-permissions-over-smb"></a>Skonfiguruj uprawnienia NTFS za pośrednictwem protokołu SMB 
-Po przypisaniu uprawnienia na poziomie udziału za pomocą funkcji RBAC, należy przypisać odpowiednie uprawnienia systemu plików NTFS w poziomie głównym, katalogu lub pliku. Pomyśl o uprawnienia na poziomie udziału, jak strażnik wysokiego poziomu, która określa, czy użytkownik może uzyskiwać dostęp udziału, a uprawnień NTFS działania na bardziej szczegółowym poziomie, aby określić, jakie operacje użytkownik może wykonywać na poziomie pliku lub katalogu. 
+## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurowanie uprawnień systemu plików NTFS przy użyciu protokołu SMB 
+Po przypisaniu uprawnień na poziomie udziałów przy użyciu RBAC należy przypisać odpowiednie uprawnienia systemu plików NTFS do poziomu głównego, katalogu lub pliku. Należy traktować uprawnienia na poziomie udziałów jako strażnika wysokiego poziomu, który określa, czy użytkownik może uzyskać dostęp do udziału. Uprawnienia NTFS działają na bardziej szczegółowym poziomie, aby określić, jakie operacje może wykonać użytkownik na poziomie katalogu lub pliku.
 
-Usługa pliki systemu Azure obsługuje pełny zestaw podstawowych i zaawansowanych uprawnienia systemu plików NTFS. Można wyświetlać i konfigurować uprawnienia systemu plików NTFS dla katalogów i plików w udziale plików platformy Azure przez zainstalowanie udziału, a następnie uruchamiając Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) lub [listy ACL zestaw](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) polecenia. 
+Azure Files obsługuje pełny zestaw uprawnień systemu plików NTFS podstawowych i zaawansowanych. Możesz wyświetlić i skonfigurować uprawnienia NTFS do katalogów i plików w udziale plików platformy Azure, instalując udział, a następnie uruchamiając polecenie Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) lub [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) . 
 
 > [!NOTE]
-> Wersja zapoznawcza obsługuje wyświetlanie za pomocą Eksploratora plików Windows tylko uprawnienia. Edytowanie uprawnień nie jest jeszcze obsługiwane.
+> Wersja zapoznawcza obsługuje tylko wyświetlanie uprawnień w Eksploratorze plików systemu Windows. Uprawnienia do edycji nie są jeszcze obsługiwane.
 
-Aby skonfigurować uprawnienia systemu plików NTFS z uprawnieniami administratora, musi zainstalowania udziału za pomocą klucza konta magazynu z maszyny Wirtualnej z przyłączonym do domeny. Postępuj zgodnie z instrukcjami w następnej sekcji, aby zainstalować udział plików platformy Azure z poziomu wiersza polecenia i odpowiednio skonfigurować uprawnienia systemu plików NTFS.
+Aby skonfigurować system plików NTFS z uprawnieniami administratora, należy zainstalować udział przy użyciu klucza konta magazynu z maszyny wirtualnej przyłączonej do domeny. Postępuj zgodnie z instrukcjami w następnej sekcji, aby zainstalować udział plików platformy Azure z wiersza polecenia i odpowiednio skonfigurować uprawnienia systemu plików NTFS.
 
-Następujące zestawy uprawnień są obsługiwane w katalogu głównym udziału plików:
+W katalogu głównym udziału plików są obsługiwane następujące zestawy uprawnień:
 
-- BUILTIN\Administrators:(oi)(ci)(F)
-- NT AUTHORITY\SYSTEM:(OI)(CI)(F)
-- BUILTIN\Users:(RX)
-- BUILTIN\Users:(oi)(ci)(IO)(GR,GE)
-- Users:(OI)(CI)(M) grupę Zarządzanie NT\Użytkownicy NT
-- NT AUTHORITY\SYSTEM:(F)
-- TWÓRCA OWNER:(OI)(CI)(IO)(F)
+- Builtin\administratorzy: (OI) (CI) (F)
+- NT NT\SYSTEM: (OI) (CI) (CI) (F)
+- BUILTIN\Users: (RX)
+- BUILTIN\Users: (OI) (CI) (we/wy) (GR, GE)
+- Użytkownicy NT AUTHORITY\Authenticated: (OI) (CI) (M)
+- ZARZĄDZANIE NT\SYSTEM: (F)
+- TWÓRCA-WŁAŚCICIEL: (OI) (WE/WY) (IO) (F)
 
-### <a name="mount-a-file-share-from-the-command-prompt"></a>Instalowanie udziału plików z poziomu wiersza polecenia
+### <a name="mount-a-file-share-from-the-command-prompt"></a>Instalowanie udziału plików z wiersza polecenia
 
-Użyj Windows **net użyj** polecenie, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić symbole zastępcze w przykładzie własnymi wartościami. Aby uzyskać więcej informacji na temat Instalowanie udziałów plików, zobacz [instalowanie udziału plików platformy Azure i uzyskiwanie dostępu do udziału w Windows](storage-how-to-use-files-windows.md).
+Użyj polecenia Windows **net use** , aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić wartości symboli zastępczych w poniższym przykładzie własnymi wartościami. Aby uzyskać więcej informacji na temat instalowania udziałów plików, zobacz [Instalowanie udziału plików platformy Azure i uzyskiwanie dostępu do udziału w systemie Windows](storage-how-to-use-files-windows.md).
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
 ```
 
-### <a name="configure-ntfs-permissions-with-icacls"></a>Skonfiguruj uprawnienia NTFS z icacls
-Użyj następującego polecenia Windows, aby przyznać pełne uprawnienia do wszystkich katalogów i plików w udziale plików, w tym katalogu głównego. Pamiętaj, aby zastąpić symbole zastępcze w nawiasie w przykładzie własnymi wartościami.
+### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurowanie uprawnień systemu plików NTFS przy użyciu icacls
+Użyj następującego polecenia systemu Windows, aby przyznać pełne uprawnienia do wszystkich katalogów i plików w udziale plików, w tym katalogu głównego. Pamiętaj, aby zastąpić wartości symboli zastępczych w przykładzie własnymi wartościami.
 
 ```
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-Aby uzyskać więcej informacji na temat korzystania icacls, aby ustawić uprawnienia systemu plików NTFS i na różnych typów uprawnień obsługiwane, zobacz [wiersza polecenia dla icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
+Aby uzyskać więcej informacji na temat używania icacls do ustawiania uprawnień systemu plików NTFS i różnych typów obsługiwanych uprawnień, zobacz [informacje dotyczące wiersza polecenia dla icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
-## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Instalowanie udziału plików z maszyny Wirtualnej przyłączone do domeny 
+## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Instalowanie udziału plików z maszyny wirtualnej przyłączonej do domeny
 
-Teraz jesteś gotowy zweryfikować, że powyższe kroki została ukończona pomyślnie za pomocą swoje poświadczenia usługi Azure AD, aby uzyskać dostęp do pliku platformy Azure będzie udostępniać z przyłączonym do domeny maszyny Wirtualnej. Najpierw zaloguj się do maszyny Wirtualnej przy użyciu tożsamości usługi Azure AD, do którego mają przyznane uprawnienia, jak pokazano na poniższej ilustracji.
+Następujący proces sprawdza, czy poświadczenia usługi Azure AD zostały prawidłowo skonfigurowane i czy można uzyskać dostęp do udziału plików platformy Azure z maszyny wirtualnej przyłączonej do domeny: 
 
-![Zrzut ekranu przedstawiający usługi Azure AD ekran logowania do uwierzytelniania użytkownika](media/storage-files-active-directory-enable/azure-active-directory-authentication-dialog.png)
+Zaloguj się do maszyny wirtualnej przy użyciu tożsamości usługi Azure AD, do której udzielono uprawnień, jak pokazano na poniższej ilustracji.
 
-Następnie użyj następującego polecenia, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić symbole zastępcze własnymi wartościami. Ponieważ należy już został uwierzytelniony, nie należy podać klucz konta magazynu lub usługi Azure AD, nazwę użytkownika i hasło. Usługa Azure AD przy użyciu protokołu SMB obsługuje logowanie jednokrotne przy użyciu poświadczeń usługi Azure AD.
+![Zrzut ekranu przedstawiający ekran logowania do usługi Azure AD na potrzeby uwierzytelniania użytkowników](media/storage-files-active-directory-enable/azure-active-directory-authentication-dialog.png)
+
+Użyj poniższego polecenia, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami. Ponieważ użytkownik został już uwierzytelniony, nie trzeba podawać klucza konta magazynu ani nazwy użytkownika i hasła usługi Azure AD. Usługa Azure AD za pośrednictwem protokołu SMB obsługuje logowanie jednokrotne przy użyciu poświadczeń usługi Azure AD.
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
 ```
 
-Teraz pomyślnie włączone uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB i przypisać rolę niestandardową, która zapewnia dostęp do udziału plików do tożsamości usługi Azure AD. Aby udzielić dostępu do udziału plików do dodatkowych użytkowników, postępuj zgodnie z instrukcjami w kroku 2 i 3.
+Pomyślnie włączono uwierzytelnianie usługi Azure AD za pośrednictwem protokołu SMB i przypisano rolę niestandardową, która zapewnia dostęp do udziału plików platformy Azure za pomocą tożsamości usługi Azure AD. Aby udzielić dodatkowych użytkownikom dostępu do udziału plików, postępuj zgodnie z instrukcjami podanymi w sekcji [przypisywanie uprawnień dostępu do tożsamości](#assign-access-permissions-to-an-identity) i [Konfigurowanie uprawnień NTFS za pośrednictwem protokołu SMB](#configure-ntfs-permissions-over-smb) .
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat usługi Azure Files i używanie programu Azure AD przy użyciu protokołu SMB zobacz następujące zasoby:
+Aby uzyskać więcej informacji na temat Azure Files i sposobu korzystania z usługi Azure AD za pośrednictwem protokołu SMB, zobacz następujące zasoby:
 
-- [Wprowadzenie do usługi Azure Files](storage-files-introduction.md)
+- [Wprowadzenie do Azure Files](storage-files-introduction.md)
 - [Omówienie uwierzytelniania usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)](storage-files-active-directory-overview.md)
 - [Często zadawane pytania](storage-files-faq.md)

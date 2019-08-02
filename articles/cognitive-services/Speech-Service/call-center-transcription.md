@@ -1,7 +1,7 @@
 ---
-title: Wywołaj transkrypcji Centrum — usługi mowy
+title: Transkrypcja centrum wywołania — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Typowy scenariusz dla mowy na tekst jest przepisywania dużych ilości danych telefonii, które mogą pochodzić z różnych systemów, takich jak interakcyjne odpowiedzi głosowych (IVR). Dźwięk można stereo lub mono i pierwotnych z nieco nie operację przetwarzania końcowego wykonywane na sygnał. Korzystając z usług przetwarzania mowy i ujednoliconego modelu mowy, firmy mogą uzyskać wysokiej jakości, transkrypcje z wielu systemów przechwytywania audio.
+description: Typowy scenariusz dla zamiany mowy na tekst to jego przepisywania duże ilości danych telefonii, które mogą pochodzić z różnych systemów, takich jak interaktywna Odpowiedź głosowa (IVR). Dźwięk może być stereo lub mono oraz RAW z niewielką ilością przetwarzania post na sygnał. Przy użyciu usług mowy i ujednoliconego modelu mowy firma może uzyskać transkrypcje o wysokiej jakości z wieloma systemami przechwytywania audio.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,136 +10,136 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 37d68a4d2b7658542ebcfdb5d22a10676a8e4d52
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b7c7bfffb5ddf947dc9bd25e6828e2816a7325cd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603301"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559742"
 ---
-# <a name="speech-services-for-telephony-data"></a>Usług przetwarzania mowy danych telefonii
+# <a name="speech-services-for-telephony-data"></a>Usługi mowy dla danych telefonii
 
-Dane telefonii, które jest generowany przy użyciu landlines, telefony komórkowe i urządzeń radiowych są zwykle niska jakość i wąskopasmowych w zakresie 8 KHz, który tworzy wyzwania podczas konwertowania mowy na tekst. Najnowsze modeli rozpoznawania mowy z usług przetwarzania mowy platformy Azure programu excel na przepisywania te dane telefonii, nawet w przypadkach, gdy dane znajdują się trudne dla człowieka zrozumieć. Te modele są uczone z użyciem dużej ilości danych telefonii i mają najlepszych dokładności rozpoznawania na rynku, nawet w środowiskach generujące dużo alertów.
+Dane telefoniczne generowane za pomocą telefonu stacjonarnego, telefonów komórkowych i odbiorników radiowych są zwykle niskiej jakości i są wydawane w zakresie 8 KHz, które tworzą wyzwania podczas konwertowania zamiany mowy na tekst. Najnowsze modele rozpoznawania mowy z programu Excel usługi Azure Speech Services pod adresem jego przepisywania te dane, nawet w przypadkach, gdy dane są trudne do zrozumienia przez człowieka. Modele te są przeszkolone z dużymi ilościami danych telefonicznych i najlepiej są zgodne z dokładnością rozpoznawania rynku, nawet w środowiskach z zakłóceniami.
 
-Typowy scenariusz dla mowy na tekst jest przepisywania dużych ilości danych telefonii, które mogą pochodzić z różnych systemów, takich jak interakcyjne odpowiedzi głosowych (IVR). Dźwięk, podane w tych systemach można stereo lub mono i raw z niewielkim nie operację przetwarzania końcowego na sygnał. Korzystając z usług przetwarzania mowy i ujednoliconego modelu mowy, firmy mogą uzyskać transkrypcje wysokiej jakości, niezależnie od systemy używane do przechwytywania audio.
+Typowy scenariusz dla zamiany mowy na tekst to jego przepisywania duże ilości danych telefonii, które mogą pochodzić z różnych systemów, takich jak interaktywna Odpowiedź głosowa (IVR). Te systemy mogą być stereofoniczne stereo lub mono oraz RAW z niewielką ilością operacji przetwarzania post na tym sygnale. Korzystając z usług mowy i ujednoliconego modelu mowy, firma może uzyskać transkrypcje o wysokiej jakości, niezależnie od systemów używanych do przechwytywania audio.
 
-Telefonii danych umożliwia lepsze zrozumienie potrzeb klientów, znaleźć nowe możliwości marketingowe lub oceny wydajności wywołania Centrum agentów. Po danych jest transkrybowanego, firma wykorzystywać dane wyjściowe dla ulepszone telemetrii, zidentyfikowanie kluczowych fraz lub analizowanie nastroje klientów.
+Dane telefonii mogą służyć do lepszego zrozumienia potrzeb klientów, zidentyfikowania nowych szans marketingowych lub oceny wydajności agentów centrum połączeń. Po uzyskanego danych firma może użyć danych wyjściowych dla ulepszonej telemetrii, identyfikacji kluczowych fraz lub analizowania tonacji klienta.
 
-Technologie opisane na tej stronie są przez firmę Microsoft wewnętrznie obsługi różnych usług przetwarzania wywołania, zarówno w czasie rzeczywistym, jak i w trybie wsadowym.
+Technologie opisane na tej stronie są wewnętrznie przez firmę Microsoft w przypadku różnych usług przetwarzania wywołań w czasie rzeczywistym i w trybie wsadowym.
 
-Omówmy niektóre technologii i oferty usług przetwarzania mowy platformy Azure powiązanych funkcji.
+Zapoznaj się z tematem oferta usługi Azure Speech Services związana z technologią.
 
 > [!IMPORTANT]
-> Modelu ujednolicone usługi mowy jest uczony przy użyciu różnych danych i oferuje rozwiązania pojedynczego modelu do liczby scenariusza z dyktowanie telefonii analizy.
+> Ujednolicony model usługi Speech Services jest szkolony z różnymi danymi i oferuje jedno rozwiązanie modelu w wielu scenariuszach od dyktowania do analizy telefonii.
 
-## <a name="azure-technology-for-call-centers"></a>Technologię Azure w centrach wywołania
+## <a name="azure-technology-for-call-centers"></a>Technologia platformy Azure dla centrów wywołań
 
-Poza aspekt funkcjonalności usług przetwarzania mowy ich głównym celem — w przypadku zastosowania do Centrum telefonicznej — jest poprawy jakości obsługi klienta. Trzy domeny wyczyść istnieje w tym zakresie:
+Poza funkcjonalnym aspektem usług mowy, których głównym celem jest zastosowana do centrum wywołania — jest poprawa środowiska klienta. W tej kwestii istnieją trzy puste domeny:
 
-* Po wywołaniu analizy partii oznacza to, przetwarzania nagrania wywołania
-* Przetwarzanie analizy w czasie rzeczywistym sygnału dźwiękowego, aby wyodrębnić różne szczegółowe informacje, jak wywołania odbywa się (z opinii jest przypadek użycia wyraźną) i
-* Asystenci wirtualnego (robotom), prowadzenie dialog między klienta i bota w celu podjęcia próby rozwiązania problemu klienta bez udziału agent lub przy zastosowaniu sztucznej Inteligencji protokoły ułatwiają agenta.
+* Analiza po wywołaniu, która polega na przetwarzaniu wsadowym nagrań wywołań
+* Przetwarzanie danych analitycznych w czasie rzeczywistym w celu wyodrębnienia różnych szczegółowych informacji w trakcie wywołania (z tonacjiem jest widocznym przypadkiem użycia) i
+* Wirtualne asystenci (botów), prowadzący do dialogu między klientem a bot w celu rozwiązania problemu klienta bez udziału agenta lub zastosowania protokołów AI do ułatwienia agentowi.
 
-Diagram typowej architektury realizacji scenariusza usługi batch jest przedstawiony na ilustracji poniżej ![architektura transkrypcji Centrum wywołania](media/scenarios/call-center-transcription-architecture.png)
+Typowy diagram architektury implementacji scenariusza wsadowego przedstawiono na ilustracji poniżej ![architektury transkrypcji centrum wywołania](media/scenarios/call-center-transcription-architecture.png)
 
 ## <a name="speech-analytics-technology-components"></a>Składniki technologii analizy mowy
 
-Czy domena jest wywołanie po lub w czasie rzeczywistym, platforma Azure oferuje zestaw zestaw dojrzałych i rozwijających się technologii, w celu poprawy jakości obsługi klienta.
+Bez względu na to, czy domena jest wywoływana po wywołaniu, czy w czasie rzeczywistym, platforma Azure oferuje zestaw codziennych i pojawiających się zestawów technologii usprawniających obsługę klientów.
 
-### <a name="speech-to-text-stt"></a>Zamiana mowy na tekst (STT)
+### <a name="speech-to-text-stt"></a>Zamiana mowy na tekst (monitora STT)
 
-[Zamiany mowy na tekst](speech-to-text.md) będzie najczęściej używanych po funkcji w żadnym rozwiązaniu do Centrum połączenia. Ponieważ zależne wiele procesów podrzędnych analizy uzyskanego tekstu, współczynnik błędów programu word (WER) ma priorytetowe znaczenie. Jedną z kluczowych wyzwań w wywołaniu Centrum transkrypcji jest szumu, która jest powszechnie znane w Centrum telefonicznej (na przykład inni agenci wypowiedzi w tle), sformatowany różnych ustawień regionalnych języka i dialekty oraz niskiej jakości sygnału rzeczywistego telefonu. Raportowanie błędów systemu Windows są ściśle powiązane z stopnia akustyczne i językowe modele są uczone dla danego ustawienia regionalnego, dlatego możliwość dostosować model, który ma ustawienia regionalne jest ważne. Nasze najnowsze modeli 4.x wersji ujednoliconego są rozwiązaniem transkrypcji dokładności i opóźnienie. Uczone z użyciem dziesiątek tysięcy godzin dane akustyczne i miliardów leksykalne informacji ujednoliconej modele są najdokładniejszych modele na rynku także wywołania centrum danych.
+Funkcja [zamiany mowy na tekst](speech-to-text.md) jest najbardziej poszukiwana po funkcji w dowolnym rozwiązaniu centrum połączeń. Ze względu na to, że wiele procesów analizy z przedziału bazuje na tekście uzyskanego, współczynnik błędów wyrazów (WER) ma największą ważność. Jednym z najważniejszych wyzwań związanych z transkrypcją centrum rozmów jest szum, który jest powszechnie rozpowszechniony w centrum wywołania (na przykład inne agenci mówiący w tle), bogaty zakres ustawień regionalnych i dialektów języka oraz niska jakość rzeczywistego sygnału telefonu. Funkcja Raportowanie błędów systemu Windows jest wysoce skorelowana z tym, jak dobrze są przeszkolone modele akustyczne i językowe dla danego ustawienia regionalnego, dzięki czemu można dostosować model do ustawień regionalnych. Nasze najnowsze ujednolicone modele w wersji 4. x to rozwiązanie do dokładności i opóźnień transkrypcji. Nauczenie się z dziesiątki tysięcy godzin danych akustycznych i miliardów ujednoliconych modeli informacji leksykalnych to najbardziej dokładne modele na rynku do transkrypcja danych centrum połączeń.
 
 ### <a name="sentiment"></a>Opinia
-Oceny, czy klient miał dobre środowisko jest jednym z najważniejszych obszarów analizy mowy, po zastosowaniu do obszaru roboczego wywołania. Nasze [interfejsu API usługi Batch transkrypcji](batch-transcription.md) oferuje analizę tonacji na wypowiedź. Można zagregować zbiór wartości uzyskane w ramach transkrypcję wywołanie, aby określić tonacji wywołanie zarówno klient, jak i agentów.
+Oceny, czy klient był dobrym doświadczeniem, jest jednym z najważniejszych obszarów analizy mowy w przypadku zastosowania do obszaru Centrum wywołania. Nasz [interfejs API transkrypcji usługi Batch](batch-transcription.md) oferuje analizę tonacji na wypowiedź. Można agregować zbiór wartości uzyskanych jako część transkrypcji wywołania, aby określić tonacji wywołań dla agentów i klienta.
 
-### <a name="silence-non-talk"></a>Wyciszenia (inne niż dyskretne)
-nie jest niczym niezwykłym 35 procent z pomocy technicznej to tak zwany czas bez połączenia. Są sytuacje, w których bez dyskretne występuje: agentów wyszukanie wcześniejsze historia przypadku z klientem, agentów przy użyciu narzędzia, które zezwolić na dostęp klienta pulpitu i wykonywania funkcji, klienci "siedzieć" na przechowywania oczekiwanie na przekazanie i tak dalej. Bardzo ważne jest, można mierzyć, gdy wyciszenia odbywa się w wywołaniu, ponieważ istnieją liczby wrażliwość ważnego klienta, które występować wokół tego rodzaju scenariuszy i gdzie występują one w wywołaniu.
+### <a name="silence-non-talk"></a>Wyciszenie (bez rozmowy)
+Nie jest to nietypowe w przypadku 35% wywołania pomocy technicznej, aby wywoływać czas braku rozmowy. Niektóre scenariusze, które są niekomunikowane: agenci szukający wcześniejszej historii przypadków u klienta, agenci korzystający z narzędzi, które umożliwiają im dostęp do pulpitu klienta i wykonują funkcje, klienci oczekują na wstrzymanie się w celu przeniesienia i tak dalej. Niezwykle ważne jest, aby można było ocenić, kiedy wystąpiło wyciszenie w wywołaniu, ponieważ istnieje wiele ważnych sensitivities klientów, które występują w tym typie scenariuszy i gdzie występują w wywołaniu.
 
 ### <a name="translation"></a>{1&gt;Translacja&lt;1}
-Niektóre firmy eksperymentują z udostępnianiem przetłumaczone transkrypcje z języków obcych interwencji obsługi tak, aby menedżerów może zrozumieć środowisko swoich klientów na całym świecie. Nasze [tłumaczenia](translation.md) możliwości jest taki sam. Firma Microsoft może dokonywać translacji audio, audio lub audio na tekst z dużą liczbą ustawień regionalnych.
+Niektóre firmy są eksperymentować z przekazywaniem przetłumaczonych transkrypcji z obsługi języków obcych, dzięki czemu menedżerowie ds. dostarczania mogą zrozumieć światowe środowisko klientów. Nasze możliwości [tłumaczenia](translation.md) są niezbyt nadmiarowe. Możemy przetłumaczyć dźwięk na dźwięk lub dźwięk na tekst z dużej liczby ustawień regionalnych.
 
 ### <a name="text-to-speech"></a>Zamiana tekstu na mowę
-[Zamiana tekstu na mowę](text-to-speech.md) jest kolejnym obszarem istotne we wdrażaniu Boty, które wchodzić w interakcje z klientami. Typowe ścieżki polega na komunikuje się klient, głosu jest przetłumaczone na tekst, analizy tekstu na intencje, odpowiedź jest przekształcony oparty na celu rozpoznawanym i następnie zasób albo jest udostępniane klientom lub odpowiedzi głosowych syntetyzowany wygenerowany. Oczywiście to wszystko musi nastąpić szybko — dlatego opóźnienie jest ważnym elementem powodzenia tych systemów.
+[Zamiana tekstu na mowę](text-to-speech.md) jest innym ważnym obszarem wdrażania botów, które współdziałają z klientami. Typowym profilem jest to, że klient mówi, że jego głos jest uzyskanego do tekstu, a tekst jest analizowany pod kątem intencji, odpowiedź jest obliczana na podstawie rozpoznanego celu, a następnie jest przyznana do klienta lub z syntezą głosu. wytwarza. Oczywiście należy szybko wykonać wszystkie te działania, co oznacza, że opóźnienie jest ważnym składnikiem w sukcesie tych systemów.
 
-Nasza end-to-end opóźnieniami jest bardzo niska, biorąc pod uwagę różne technologie związane, takie jak [mowy na tekst](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [platformy Bot Framework](https://dev.botframework.com/), [ Zamiana tekstu na mowę](text-to-speech.md).
+Nasze opóźnienia kompleksowe są dość małe, biorąc pod uwagę różne technologie, takie jak Zamiana [mowy na tekst](speech-to-text.md), [Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [bot Framework](https://dev.botframework.com/), zamiana [tekstu na mowę](text-to-speech.md).
 
-Nasz nowy głosy są nie do odróżnienia od głosów ludzi. Umożliwia się głosów Boty są naprawdę jego unikatowy osobowość.
+Nasze nowe głosy są również odróżniane od głosów ludzkich. Możesz użyć głosów out, aby bot swój unikatowy charakter.
 
-### <a name="search"></a>Wyszukiwanie
-Inny zszywanie analizy cel to zidentyfikowanie interakcje w przypadku, gdy wystąpi określone zdarzenie lub wystąpił środowisko. Zazwyczaj jest to wykonywane przy użyciu jednej z dwóch metod, albo wyszukaj ad-hoc, gdy użytkownik po prostu wpisuje frazę i zachowuje się system lub bardziej ustrukturyzowane zapytania, w którym analityk można utworzyć zestaw instrukcji logiczne, identyfikowanie scenariusza, w wywołaniu , a następnie każdego wywołania mogą być indeksowane względem tych zestawu zapytań. Przykład dobrą wyszukiwanie jest instrukcja wszechobecne zgodności "tego wywołania są zapisywane do celów jakości... "— jak wiele firm chce upewnij się, że ich agentami udostępniają to zastrzeżenie dla klientów przed wywołanie jest faktycznie zarejestrowane. Większość systemów analytics mają możliwość zachowania znalezione przez algorytmy /search zapytania — trend, zgodnie z tym raportów trendów ostatecznie to klient jest jedną z najważniejszych funkcji systemu analizy. Za pomocą [katalog usług Cognitive services](https://azure.microsoft.com/services/cognitive-services/directory/search/) rozwiązania typu end to end może znacznie rozszerzyć możliwości indeksowania i wyszukiwania.
+### <a name="search"></a>Wyszukaj
+Kolejną zszywaniem funkcji analitycznych jest zidentyfikowanie interakcji w przypadku wystąpienia konkretnego zdarzenia lub doświadczenia. Zwykle odbywa się to przy użyciu jednego z dwóch metod — wyszukiwanie ad hoc, gdzie użytkownik po prostu wpisuje frazę i system odpowiada, lub bardziej strukturalne zapytanie, gdzie analityk może utworzyć zestaw instrukcji logicznych, które identyfikują scenariusz w wywołaniu , a następnie każde wywołanie można indeksować względem tego zestawu zapytań. Dobrym przykładem wyszukiwania jest Powszechna Deklaracja zgodności "to wywołanie jest rejestrowane w celach jakościowych... "— tak wiele firm chce, aby upewnić się, że ich agenci świadczą tę klauzulę klientom przed faktycznym zarejestrowaniem połączenia. Większość systemów analitycznych ma możliwość trendu zachowań znalezionych w ramach algorytmów/Search zapytania — ponieważ takie raportowanie trendów jest ostatecznie jedną z najważniejszych funkcji systemu analitycznego. Za pomocą [katalogu usług poznawczych](https://azure.microsoft.com/services/cognitive-services/directory/search/) kompleksowe rozwiązanie można znacznie rozszerzyć za pomocą funkcji indeksowania i wyszukiwania.
 
 ### <a name="key-phrase-extraction"></a>Wyodrębnianie kluczowych fraz
-Ten obszar jest jednym z bardziej wymagająca aplikacji do analizowania i jedną, która oferuje korzyści ze stosowania sztucznej Inteligencji i uczenia Maszynowego. Jest to podstawowy scenariusz wywnioskowania zamiarach klienta. Dlaczego wywołuje klienta? Co to jest problem klienta? Dlaczego klient ma ujemną środowisko? Nasze [usługa analizy tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) zapewnia zestawu analiz gotowych szybko uaktualniania rozwiązania typu end to end, aby wyodrębnić te ważne słów kluczowych lub fraz.
+Ten obszar jest jednym z trudniejszych aplikacji analitycznych, które korzystają z aplikacji AI i ML. Głównym scenariuszem jest wywnioskowanie intencji klienta. Dlaczego klient dzwoni? Co to jest problem z klientem? Dlaczego klient ma negatywny wpływ? Nasza [Usługa analizy tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) udostępnia zestaw analiz, dzięki którym można szybko uaktualnić kompleksowe rozwiązanie, aby wyodrębnić te ważne słowa kluczowe lub frazy.
 
-Przejdźmy teraz zapoznaj się z przetwarzania wsadowego i potoki w czasie rzeczywistym, rozpoznawania mowy nieco bardziej szczegółowo.
+Teraz przyjrzyjmy się przetwarzaniu wsadowemu i potokom w czasie rzeczywistym na potrzeby rozpoznawania mowy na nieco bardziej szczegółowym poziomie.
 
-## <a name="batch-transcription-of-call-center-data"></a>Batch transkrypcji wywołanie centrum danych
+## <a name="batch-transcription-of-call-center-data"></a>Transkrypcja partii danych centrum połączeń
 
-Dla przepisywania zbiorcze audio opracowaliśmy [interfejsu API usługi Batch transkrypcji](batch-transcription.md). Interfejs API usługi Batch transkrypcji został opracowany, aby asynchronicznie transkrypcja dużych ilości danych audio. W odniesieniu do przepisywania wywołanie centrum danych, nasze rozwiązanie opiera się na tych filarów:
+Aby uzyskać jego przepisywaniay za dźwięk, opracowano [interfejs API transkrypcji usługi Batch](batch-transcription.md). Interfejs API transkrypcji usługi Batch został opracowany z myślą o transkrypcja dużej ilości danych dźwiękowych asynchronicznie. W odniesieniu do danych centrum połączeń jego przepisywania nasze rozwiązanie jest oparte na następujących filarach:
 
-* **Dokładność**: Przy użyciu modeli ujednoliconej czwarty generacji firma Microsoft oferuje jakości najwyższych transkrypcji.
-* **Opóźnienie**: Rozumiemy, że podczas ustalania transkrypcje zbiorcze, transkrypcje są potrzebne szybko. Zadania przekształcania są inicjowane za pośrednictwem [interfejsu API usługi Batch transkrypcji](batch-transcription.md) zostaną umieszczone w kolejce natychmiast po uruchomieniu zadania jest przeprowadzane szybciej niż w czasie rzeczywistym transkrypcji.
-* **Bezpieczeństwo**: Rozumiemy, że połączenia mogą zawierać poufne dane. Miej pewność, że bezpieczeństwo to jeden z naszych najistotniejszych. Nasza usługa uzyskał ISO, SOC, HIPAA, PCI certyfikaty.
+* **Dokładność**: Przy użyciu ujednoliconych modeli generacji firma Microsoft oferuje nieprzekraczanie jakości transkrypcji.
+* **Opóźnienie**: Wiemy, że podczas przeprowadzania zbiorczych transkrypcji, transkrypcje są zbędne szybko. Zadania transkrypcji zainicjowane za pośrednictwem [interfejsu API transkrypcji usługi Batch](batch-transcription.md) będą natychmiast umieszczane w kolejce, a po uruchomieniu zadania są wykonywane szybciej niż transkrypcja w czasie rzeczywistym.
+* **Bezpieczeństwo**: Rozumiemy, że wywołania mogą zawierać poufne dane. Zagwarantowanie, że bezpieczeństwo jest jednym z naszych największych priorytetów. Nasza usługa uzyskała certyfikaty ISO, SOC, HIPAA i PCI.
 
-Biurem obsługi generują duże ilości danych audio codziennie. Jeśli firmy przechowuje dane telefonii w centralnej lokalizacji, takich jak usługi Azure Storage, możesz użyć [interfejsu API usługi Batch transkrypcji](batch-transcription.md) asynchronicznie żądania i otrzymywania transkrypcji.
+Centra wywołań generują codziennie duże ilości danych audio. Jeśli firma przechowuje dane telefoniczne w centralnej lokalizacji, takiej jak usługa Azure Storage, można użyć [interfejsu API transkrypcji usługi Batch](batch-transcription.md) do asynchronicznego żądania i otrzymywania transkrypcji.
 
-Typowe rozwiązanie korzysta z tych usług:
+Typowe rozwiązanie używa tych usług:
 
-* Usługi mowy platformy Azure są używane do transkrypcja mowy na tekst. Standardowa subskrypcja (tak) dla usług przetwarzania mowy jest wymagana do korzystania z interfejsu API usługi Batch transkrypcji. Bezpłatnej subskrypcji (F0) nie będzie działać.
-* [Usługa Azure Storage](https://azure.microsoft.com/services/storage/) służy do przechowywania danych telefonii i zapisy zwracane przez interfejs API usługi Batch transkrypcji. To konto magazynu należy użyć powiadomienia, specjalnie pod kątem, po dodaniu nowych plików. Te powiadomienia są używane do wyzwalania procesu transkrypcji.
-* [Usługa Azure Functions](https://docs.microsoft.com/azure/azure-functions/) służy do tworzenia sygnatury dostępu współdzielonego (SAS) identyfikator URI dla każdego rejestrowania i wyzwalacza żądania HTTP POST uruchomienia transkrypcji. Ponadto usługi Azure Functions jest używany do tworzenia żądań pobierania i usuwania transkrypcje przy użyciu interfejsu API usługi Batch transkrypcji.
-* [Elementy Webhook](webhooks.md) umożliwia otrzymywanie powiadomień po zakończeniu transkrypcji.
+* Usługi Azure Speech Services umożliwiają transkrypcja zamiany mowy na tekst. Do korzystania z interfejsu API transkrypcji usługi Batch jest wymagana Standardowa subskrypcja usług mowy. Bezpłatne subskrypcje (F0) nie będą działały.
+* [Usługa Azure Storage](https://azure.microsoft.com/services/storage/) służy do przechowywania danych telefonicznych i transkrypcji zwróconych przez interfejs API transkrypcji partii. To konto magazynu powinno używać powiadomień, w odniesieniu do gdy dodawane są nowe pliki. Te powiadomienia są używane do wyzwalania procesu transkrypcji.
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) służy do tworzenia identyfikatora URI sygnatury dostępu współdzielonego (SAS) dla każdego rejestrowania i wyzwalania żądania HTTP post w celu rozpoczęcia transkrypcji. Ponadto Azure Functions służy do tworzenia żądań pobrania i usunięcia transkrypcji przy użyciu interfejsu API transkrypcji usługi Batch.
+* [](webhooks.md) Elementy webhook są używane do uzyskiwania powiadomień po zakończeniu transkrypcji.
 
-Wewnętrznie użyto powyższych technologii do obsługi wywołań klienta firmy Microsoft w trybie wsadowym.
-![Architektura usługi Batch](media/scenarios/call-center-batch-pipeline.png)
+Wewnętrznie korzystamy z powyższych technologii do obsługi wywołań klientów firmy Microsoft w trybie wsadowym.
+![Architektura partii](media/scenarios/call-center-batch-pipeline.png)
 
-## <a name="real-time-transcription-for-call-center-data"></a>Tekst w czasie rzeczywistym dla danych Centrum połączeń
+## <a name="real-time-transcription-for-call-center-data"></a>Transkrypcja w czasie rzeczywistym dla danych centrum wywołań
 
-Niektóre firmy muszą także rozmowy w czasie rzeczywistym. Tekst w czasie rzeczywistym może służyć do identyfikowania słów kluczowych i wyzwolić wyszukuje zawartość i zasoby dotyczą konwersacji, do monitorowania opinii, poprawić dostępność lub Podaj tłumaczenia dla klientów i agentów, którzy nie są natywne Prelegenci.
+Niektóre firmy muszą transkrypcja konwersacje w czasie rzeczywistym. Transkrypcja w czasie rzeczywistym może służyć do identyfikowania słów kluczowych i wyzwalania wyszukiwania zawartości i zasobów związanych z konwersacją, monitorowania tonacji, w celu usprawnienia ułatwienia dostępu lub do przekazywania tłumaczeń dla klientów i agentów, którzy nie są natywni SŁUCHAW.
 
-W przypadku scenariuszy, które wymagają transkrypcji w czasie rzeczywistym firma Microsoft zaleca używanie [zestaw SDK rozpoznawania mowy](speech-sdk.md). Obecnie usługa mowy na tekst jest dostępna w [ponad 20 języków](language-support.md), i zestawu SDK jest dostępny w C++, C#, Java, Python, Node.js, Objective-C i JavaScript. Przykłady są dostępne w każdym języku na [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Aby uzyskać najnowsze wiadomości i aktualizacji, zobacz [informacje o wersji](releasenotes.md).
+W scenariuszach wymagających transkrypcji w czasie rzeczywistym zalecamy użycie [zestawu Speech SDK](speech-sdk.md). Obecnie funkcja zamiany mowy na tekst jest dostępna w [ponad 20 językach](language-support.md), a zestaw SDK jest dostępny w C++językach, C#, Java, Python, Node. js, celu-C i JavaScript. Przykłady są dostępne w każdym języku w serwisie [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Najnowsze wiadomości i aktualizacje znajdują się w temacie [Informacje o wersji](releasenotes.md).
 
-Wewnętrznie użyto powyższych technologii do analizy w w czasie rzeczywistym telefonów od klientów firmy Microsoft, po ich wprowadzeniu.
+Wewnętrznie korzystamy z powyższych technologii, aby analizować w czasie rzeczywistym wywołania klientów firmy Microsoft w miarę ich występowania.
 
-![Architektura usługi Batch](media/scenarios/call-center-reatime-pipeline.png)
+![Architektura partii](media/scenarios/call-center-reatime-pipeline.png)
 
-## <a name="a-word-on-ivrs"></a>Word na IVRs
+## <a name="a-word-on-ivrs"></a>Słowo w IVRs
 
-Usługi mowy można łatwo zintegrować w żadnym rozwiązaniu przy użyciu [zestaw SDK rozpoznawania mowy](speech-sdk.md) lub [interfejsu API REST](rest-apis.md). Jednak transkrypcji Centrum wywołanie może wymagać dodatkowych technologii. Zazwyczaj połączenie między usługą systemu IVR i na platformie Azure jest wymagana. Mimo że firma Microsoft nie oferuje takie składniki, chcielibyśmy opisują, jakie połączenie IVR pociąga za sobą.
+Usługi mowy można łatwo zintegrować w dowolnym rozwiązaniu za pomocą [zestawu Speech SDK](speech-sdk.md) lub [interfejsu API REST](rest-apis.md). Jednak transkrypcja centrum połączeń może wymagać dodatkowych technologii. Zwykle jest wymagane połączenie między systemem IVR i platformą Azure. Mimo że te składniki nie są oferowane, chcemy opisać, co wiąże się z IVR.
 
-Kilka produktów usługi IVR lub telefoniczne (na przykład Genesys lub AudioCodes) oferuje funkcje integracji, które mogą być wykorzystywane do ruchu przychodzącego i wychodzącego audio przekazywanie do usługi platformy Azure. Po prostu niestandardowych usługi Azure może zapewnić określonego interfejsu, aby zdefiniować sesji rozmowy telefonicznej (na przykład wywołać Start lub na końcu wywołania) i udostępnić interfejs API WebSocket, aby otrzymywać przychodzący strumień audio, który jest używany z usług przetwarzania mowy. Wychodzące odpowiedzi, takie jak transkrypcji konwersacji lub połączenia przy użyciu platformy Bot Framework może być przekształcony w usłudze zamiany tekstu na mowę firmy Microsoft i zwracane IVR do odtwarzania.
+Kilka produktów usługi IVR lub usług telefonii (takich jak Genesys lub AudioCodes) oferuje możliwości integracji, których można użyć do włączenia przychodzącego i wychodzącego przekazywania audio do usługi platformy Azure. W zasadzie niestandardowa usługa platformy Azure może udostępnić określony interfejs do definiowania sesji połączeń telefonicznych (takich jak wywołanie uruchomienia lub wywołania końcowego) i uwidocznić interfejs API protokołu WebSocket, który będzie odbierać strumienie audio dla ruchu przychodzącego, który jest używany z usługami mowy. Odpowiedzi wychodzące, takie jak transkrypcja konwersacji lub połączenia z platformą bot, można wyszukiwać za pomocą usługi zamiany tekstu na mowę firmy Microsoft i zwrócić do IVR na potrzeby odtwarzania.
 
-Inny scenariusz polega na bezpośrednie SIP integracji. Usługi systemu Azure łączy na serwerze SIP, w związku z tym wprowadzenie strumień przychodzący i wychodzący strumienia, który jest używany dla fazy mowy na tekst i zamiany tekstu na mowę. Połączyć się z SIP serwera są ofert komercyjne oprogramowanie, takie jak Ozeki SDK lub [zespoły wywoływania i interfejsu API spotkań](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta) (obecnie dostępna w wersji beta), te zostały zaprojektowane do obsługi tego rodzaju scenariusza dla połączeń audio.
+Innym scenariuszem jest bezpośrednia integracja z SIP. Usługa platformy Azure nawiązuje połączenie z serwerem SIP, dzięki czemu uzyskuje strumień przychodzący i strumień wychodzący, który jest używany na potrzeby faz zamiany mowy na tekst i zamiany tekstu na mowę. Aby nawiązać połączenie z serwerem SIP, istnieją komercyjne oferty oprogramowania, takie jak Ozeki SDK, lub [zespoły wywołujące i](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta) zajmujące się interfejsem API (obecnie w wersji beta), które są przeznaczone do obsługi tego typu scenariusza dla wywołań audio.
 
-## <a name="customize-existing-experiences"></a>Dostosowywanie istniejących funkcji
+## <a name="customize-existing-experiences"></a>Dostosowywanie istniejących środowisk
 
-Usługi mowy platformy Azure działa dobrze z wbudowanych modeli, jednak warto dalsze dostosowywanie i dostrojenie środowiska dla danego produktu lub środowiska. Dostosowywanie opcje z zakresu od model akustyczny dostroić czcionki głosowe unikatowy dla Twojej marki. Po utworzeniu modelu niestandardowego służy za pomocą dowolnej z usług przetwarzania mowy platformy Azure, zarówno w czasie rzeczywistym, lub w trybie wsadowym.
+Usługi Azure Speech Services dobrze sprawdzają się w połączeniu z wbudowanymi modelami, ale warto dodatkowo dostosowywać i dostrajać środowisko dla danego produktu lub środowiska. Opcje dostosowania przestają być od modelu akustycznego na unikatowe czcionki głosowe dla marki. Po skompilowaniu modelu niestandardowego można go używać z dowolną usługą Azure Speech Services w czasie rzeczywistym lub w trybie wsadowym.
 
-| Usługa rozpoznawania mowy | Modelowanie | Opis |
+| Usługa mowy | Modelowanie | Opis |
 |----------------|-------|-------------|
-| Zamiany mowy na tekst | [Model akustyczny](how-to-customize-acoustic-models.md) | Utwórz niestandardowy model akustyczny dla aplikacji, narzędzi, lub urządzenia, które są używane w szczególności środowiskach, takich jak jadąca samochodem, lub w fabrykach, każdy z rejestrowania określonych warunków. Przykłady obejmują akcentowanych mowy, określonych szum lub przy użyciu określonych mikrofonu rejestrowania. |
-| | [Model językowy](how-to-customize-language-model.md) | Utwórz model języka niestandardowego usprawniających transkrypcji słownika specyficzne dla branży i gramatyki, takie jak terminologia medycznych lub żargon IT. |
-| | [Model wymowy](how-to-customize-pronunciation.md) | Za pomocą modelu niestandardowego Wymowa można zdefiniować fonetycznych formularza i wyświetlanie słowa lub terminy. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko, czego potrzebujesz do rozpoczęcia jest plikiem Wymowa — plik prosty txt. |
-| Zamiana tekstu na mowę | [Czcionka głosowa](how-to-customize-voice-font.md) | Czcionki głosowe niestandardowe umożliwiają tworzenie mówiącą, jeden z rodzajem głosu dla Twojej marki. Trwa tylko niewielką ilość danych, aby rozpocząć pracę. Im więcej danych, możesz podać więcej naturalnego i przypominającej ludzką dźwiękowe czcionki głosowe. |
+| Zamiany mowy na tekst | [Model akustyczny](how-to-customize-acoustic-models.md) | Utwórz niestandardowy model akustyczny dla aplikacji, narzędzi lub urządzeń używanych w określonych środowiskach, takich jak samochód lub piętro fabryki, z których każdy ma określone warunki rejestrowania. Przykłady obejmują akcentowanie mowy, konkretne zakłócenia w tle lub użycie określonego mikrofonu do nagrywania. |
+| | [Model językowy](how-to-customize-language-model.md) | Utwórz niestandardowy model języka w celu usprawnienia transkrypcji słownictwa i gramatyki właściwych dla branży, takich jak Terminologia medyczna lub żargon IT. |
+| | [Model wymowy](how-to-customize-pronunciation.md) | Przy użyciu niestandardowego modelu wymowy można zdefiniować formularz fonetyczny i wyświetlić wyraz lub termin. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko, czego potrzebujesz do rozpoczęcia jest plikiem Wymowa — plik prosty txt. |
+| Zamiana tekstu na mowę | [Czcionka głosowa](how-to-customize-voice-font.md) | Niestandardowe czcionki głosowe umożliwiają utworzenie rozpoznawalnego, jednoczęściowego głosu dla marki. Rozpoczęcie pracy wymaga jedynie niewielkiej ilości danych. Im więcej danych zapewniasz, tym bardziej naturalna i przypominająca Twoja czcionka głosu będzie dźwiękowa. |
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Przykładowy kod jest dostępny w witrynie GitHub dla każdej z usług przetwarzania mowy platformy Azure. Te przykłady obejmują typowe scenariusze, takie jak odczytywanie dźwięku z pliku lub strumienia, ciągłe i pojedynczego zrzutu ręcznego i Praca z modelami niestandardowych. Użyj poniższych linków, aby wyświetlić przykłady zestawu SDK i REST:
+Przykładowy kod jest dostępny w witrynie GitHub dla każdej usługi Azure Speech Services. Te przykłady obejmują typowe scenariusze, takie jak odczytywanie audio z pliku lub strumienia, rozpoznawanie ciągłe i jednokrotne oraz praca z modelami niestandardowymi. Użyj tych linków, aby wyświetlić zestaw SDK i przykłady REST:
 
-* [Przykłady tłumaczenia mowy na tekst i mowy (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [Przykłady transkrypcji dla usługi Batch (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+* [Przykłady zamiany mowy na tekst i mowy (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [Przykłady transkrypcji partii (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 * [Przykłady zamiany tekstu na mowę (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="reference-docs"></a>Dokumentacja
 
 * [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
-* [Zestaw Speech Devices SDK](speech-devices-sdk.md)
-* [INTERFEJS API REST: Zamiany mowy na tekst](rest-speech-to-text.md)
+* [Zestaw SDK urządzeń mowy](speech-devices-sdk.md)
+* [INTERFEJS API REST: Zamiana mowy na tekst](rest-speech-to-text.md)
 * [INTERFEJS API REST: Zamiana tekstu na mowę](rest-text-to-speech.md)
-* [INTERFEJS API REST: Dostosowywanie i transkrypcji usługi Batch](https://westus.cris.ai/swagger/ui/index)
+* [INTERFEJS API REST: Transkrypcja i dostosowywanie partii](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Bezpłatnie Uzyskaj klucz subskrypcji usług przetwarzania mowy](get-started.md)
+> [Uzyskaj bezpłatnie klucz subskrypcji usługi Speech Services](get-started.md)

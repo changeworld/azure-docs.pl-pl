@@ -1,9 +1,9 @@
 ---
-title: ReliableConcurrentQueue w usłudze Azure Service Fabric
-description: ReliableConcurrentQueue jest kolejką o wysokiej przepływności, co umożliwia równoległe umieszczeniu i dequeues.
+title: ReliableConcurrentQueue na platformie Azure Service Fabric
+description: ReliableConcurrentQueue to kolejka o wysokiej przepływności, która umożliwia równoległe enqueues i dequeues.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,49 +13,49 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: aljo
-ms.openlocfilehash: dbdfa4686c047fa7cf5d74cd9aca768447f9db93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 8cb35d6265bafe2b259774a55119d33f8ae94fe9
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60774016"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599259"
 ---
-# <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Wprowadzenie do ReliableConcurrentQueue w usłudze Azure Service Fabric
-Niezawodna kolejka współbieżna jest kolejką asynchronicznego, transakcji i replikowane concurrency które funkcje wysokiej umieścić w kolejce i pobierać operacji. Zaprojektowano w celu dostarczania wysokiej przepływności i małego opóźnienia, złagodzić ścisłe porządkowanie FIFO dostarczone przez [niezawodna kolejka](https://msdn.microsoft.com/library/azure/dn971527.aspx) i przekazuje porządkowanie największej staranności.
+# <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Wprowadzenie do ReliableConcurrentQueue na platformie Azure Service Fabric
+Niezawodna Kolejka współbieżna jest asynchroniczną, transakcyjną i replikowaną kolejką, która zapewnia wysoką współbieżność dla operacji na kolejce i w kolejce. Zaprojektowano w celu zapewnienia wysokiej przepływności i małych opóźnień dzięki złagodzeniu wymagań dotyczących ścisłej kolejności [](https://msdn.microsoft.com/library/azure/dn971527.aspx) FIFO dostarczonej przez niezawodną kolejkę, a zamiast tego zapewnia optymalną kolejność.
 
 ## <a name="apis"></a>interfejsy API
 
 |Kolejka współbieżna                |Niezawodna kolejka współbieżna                                         |
 |--------------------------------|------------------------------------------------------------------|
-| void Enqueue(T item)           | Zadanie EnqueueAsync (tx ITransaction elementu T)                       |
-| wartość logiczna TryDequeue (out wynik T)  | Zadanie < ConditionalValue < T >> TryDequeueAsync (ITransaction tx)  |
-| int Count()                    | long Count()                                                     |
+| Anulowanie kolejki (element T)           | Task EnqueueAsync (ITransaction TX, T element)                       |
+| bool — TryDequeue (wynik T)  | Zadanie < ConditionalValue < T > > TryDequeueAsync (ITransaction TX)  |
+| Liczba int ()                    | Liczba długa ()                                                     |
 
-## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Porównanie z [niezawodna kolejka](https://msdn.microsoft.com/library/azure/dn971527.aspx)
+## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Porównanie z [](https://msdn.microsoft.com/library/azure/dn971527.aspx) niezawodną kolejką
 
-Niezawodna kolejka współbieżna jest oferowany jako alternatywa [niezawodna kolejka](https://msdn.microsoft.com/library/azure/dn971527.aspx). Należy jej używać w przypadku gdy ścisłe porządkowanie FIFO nie jest wymagane, jako gwarantujących FIFO wymaga to z kompromisem ze współbieżnością.  [Niezawodna kolejka](https://msdn.microsoft.com/library/azure/dn971527.aspx) blokady są używane do wymuszania, FIFO kolejności, co najwyżej jedna transakcja może umieścić w kolejce i co najwyżej jedna transakcja, możliwość usuwania z kolejki w danym momencie. W odróżnieniu od niezawodna kolejka współbieżna zwalnia ograniczenie sortowania i umożliwia liczba jednoczesnych transakcji przeplot ich dodawania do kolejki operacji. Kolejność optymalnych zostanie podana, jednak względną kolejność dwóch wartości w niezawodna kolejka współbieżna może nigdy nie może zagwarantować.
+Niezawodna Kolejka współbieżna jest oferowana jako alternatywa dla [niezawodnej kolejki](https://msdn.microsoft.com/library/azure/dn971527.aspx). Powinna być używana w przypadkach, gdy ścisła kolejność FIFO nie jest wymagana, ponieważ gwarantuje to, że funkcja FIFO wymaga kompromisu z współbieżnością.  [](https://msdn.microsoft.com/library/azure/dn971527.aspx) Niezawodna Kolejka używa blokad, aby wymusić kolejność FIFO, z co najwyżej jedną transakcją dopuszczalną do kolejki i co najwyżej jedną transakcję, która może zostać odrzucona jednocześnie. W porównaniu, niezawodna Kolejka współbieżna ogranicza ograniczenia kolejności i pozwala na równoczesne wykonywanie operacji w kolejce i usuwaniu ich z kolejki. Podano optymalny sposób porządkowania, ale względne porządkowanie dwóch wartości w niezawodnej kolejki współbieżnej nigdy nie jest gwarantowane.
 
-Niezawodna kolejka współbieżna zapewnia wyższą przepływność i mniejsze opóźnienia niż [niezawodna kolejka](https://msdn.microsoft.com/library/azure/dn971527.aspx) zawsze wtedy, gdy istnieje wielu jednoczesnych transakcji wykonywania umieszczeniu i/lub dequeues.
+Niezawodna Kolejka współbieżna zapewnia wyższą przepływność i mniejsze opóźnienia niż niezawodna [Kolejka](https://msdn.microsoft.com/library/azure/dn971527.aspx) , gdy istnieje wiele współbieżnych transakcji wykonujących enqueues i/lub wszystkie kolejki.
 
-Przykład przypadek użycia jest ReliableConcurrentQueue [kolejki komunikatów](https://en.wikipedia.org/wiki/Message_queue) scenariusza. W tym scenariuszu jednego lub kilku producentów komunikat tworzyć i dodawać elementy do kolejki, a co najmniej jeden odbiorcami komunikatów ściągają komunikaty z kolejki i przetwarzać je. Wielu producentów i konsumentów może działać niezależnie, za pomocą równoczesnych transakcji, aby przetworzyć kolejkę.
+Przykładowy przypadek użycia dla ReliableConcurrentQueue jest scenariuszem [kolejki komunikatów](https://en.wikipedia.org/wiki/Message_queue) . W tym scenariuszu co najmniej jeden producent wiadomości tworzy i dodaje elementy do kolejki, a co najmniej jeden odbiorca wiadomości pobiera komunikaty z kolejki i przetwarza je. Wielu producentów i konsumenci mogą działać niezależnie, korzystając z współbieżnych transakcji w celu przetworzenia kolejki.
 
-## <a name="usage-guidelines"></a>Wytyczne dotyczące użycia
-* Kolejka oczekuje, że elementów w kolejce mają okres przechowywania niski. Oznacza to, że elementy nie będzie pozostają w kolejce przez długi czas.
-* Kolejka nie gwarantuje ścisłe porządkowanie FIFO.
-* Kolejka nie odczytuje swój własny zapisy. Jeśli element jest dodawanych do kolejki w obrębie transakcji, nie będą widoczne na dequeuer w ramach tej samej transakcji.
-* Dequeues nie są od siebie odizolowane. Jeśli element *A* jest usuwane z kolejki w transakcji *txnA*, nawet jeśli *txnA* nie zostanie zatwierdzony, element *A* nie będzie widoczny na równoczesne Transakcja *txnB*.  Jeśli *txnA* przerywa, *A* staną się widoczne dla *txnB* natychmiast.
-* *TryPeekAsync* zachowanie można zaimplementować przy użyciu *TryDequeueAsync* i następnie Przerywanie transakcji. Na przykład można znaleźć w sekcji wzorce programowania.
-* Liczba nie jest transakcyjna. Może służyć do poznać liczbę elementów w kolejce, ale reprezentuje punkt w czasie i nie można polegać.
-* Nie ma zostać wykonane przetwarzanie kosztowne dequeued elementów, gdy transakcja jest aktywny, aby uniknąć długotrwałych transakcji, które mogą mieć wpływ na wydajność systemu.
+## <a name="usage-guidelines"></a>Wskazówki dotyczące użycia
+* Kolejka oczekuje, że elementy w kolejce mają niski okres przechowywania. Oznacza to, że elementy nie pozostają w kolejce przez długi czas.
+* Kolejka nie gwarantuje ścisłej kolejności FIFO.
+* Kolejka nie odczytuje własnych zapisów. Jeśli element znajduje się w kolejce transakcji, nie będzie widoczny dla dequeueer w ramach tej samej transakcji.
+* Dekolejki nie są od siebie odizolowane. Jeśli element *a* zostanie usunięty z kolejki w transakcji *txnA*, nawet jeśli *txnA* nie jest zadeklarowany, element *A* nie byłby widoczny dla współbieżnych transakcji *txnB*.  Jeśli *txnA* zostanie przerwana, staje się *od* razu widoczny do *txnB* .
+* Zachowanie *TryPeekAsync* można zaimplementować przy użyciu *TryDequeueAsync* , a następnie przerwać transakcję. Przykład można znaleźć w sekcji wzorców programowania.
+* Liczba nie jest transakcyjna. Może służyć do uzyskania pomysłu dotyczącego liczby elementów w kolejce, ale reprezentuje punkt w czasie i nie może być używany.
+* Kosztowne przetwarzanie w oddziałach elementów nie powinno być wykonywane, gdy transakcja jest aktywna, aby uniknąć długotrwałych transakcji, które mogą mieć wpływ na wydajność systemu.
 
 ## <a name="code-snippets"></a>Wstawki kodu
-Przyjrzyjmy się kilku fragmenty kodu i ich oczekiwane dane wyjściowe. Obsługa wyjątków jest ignorowany w tej sekcji.
+Poczekaj, aż kilka fragmentów kodu i ich oczekiwanych danych wyjściowych. Obsługa wyjątków została zignorowana w tej sekcji.
 
 ### <a name="enqueueasync"></a>EnqueueAsync
-Poniżej przedstawiono kilka fragmenty kodu przy użyciu EnqueueAsync następuje ich oczekiwane dane wyjściowe.
+Oto kilka fragmentów kodu do użycia EnqueueAsync, a następnie ich oczekiwanych danych wyjściowych.
 
-- *Przypadek 1: Pojedyncze zadanie w kolejce*
+- *Przypadek 1: Zadanie pojedynczej kolejki*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -67,14 +67,14 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Załóżmy, że zadanie zakończyło się pomyślnie i czy nie zostały wprowadzone żadne transakcje współbieżnych modyfikowanie kolejki. Użytkownika można oczekiwać, że kolejka zawiera elementów w jednym z następujących zamówień:
+Załóżmy, że zadanie zostało ukończone pomyślnie oraz że nie wystąpiły żadne współbieżne transakcje modyfikujące kolejkę. Użytkownik może oczekiwać, aby Kolejka zawierała elementy w jednym z następujących zamówień:
 
 > 10, 20
 > 
 > 20, 10
 
 
-- *Przypadek 2: Parallel Enqueue Task*
+- *Przypadek 2: Równoległe zadanie kolejkowania*
 
 ```
 // Parallel Task 1
@@ -96,14 +96,14 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Przyjęto założenie, że zadań została ukończona pomyślnie, czy zadania uruchomione w sposób równoległy i czy nie było żadnych innych równoczesnych transakcji modyfikowanie kolejki. Wnioskowanie nie można wykonywać na temat kolejności elementów w kolejce. Dla tego fragmentu kodu elementy może występować w dowolnym z 4! możliwe porządkowania.  Kolejka będzie próbował zachować elementy w kolejności, oryginalnym (umieszczonych w kolejce), ale może być zmuszona, aby zmienić ich kolejność z powodu jednoczesnych operacji lub błędów.
+Załóżmy, że zadania zostały ukończone pomyślnie, wykonane równolegle zadania i że nie było żadnych innych współbieżnych transakcji modyfikujących kolejkę. Nie można wykonać wnioskowania o kolejności elementów w kolejce. Dla tego fragmentu kodu elementy mogą pojawić się w dowolnym z 4! możliwe zamówienia.  Kolejka podejmie próbę zachowania elementów w pierwotnej (kolejkowanej) kolejności, ale może zostać wymuszone ich zmiana kolejności z powodu równoczesnych operacji lub błędów.
 
 
 ### <a name="dequeueasync"></a>DequeueAsync
-Poniżej przedstawiono kilka fragmenty kodu przy użyciu TryDequeueAsync następuje oczekiwane dane wyjściowe. Załóżmy, że jest już ona wypełniana przy użyciu następujących elementów w kolejce:
+Oto kilka fragmentów kodu do użycia TryDequeueAsync, a następnie oczekiwanych danych wyjściowych. Załóżmy, że kolejka została już wypełniona następującymi elementami w kolejce:
 > 10, 20, 30, 40, 50, 60
 
-- *Przypadek 1: Pojedynczej kolejki zadań*
+- *Przypadek 1: Pojedyncze zadanie usuwania z kolejki*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -116,9 +116,9 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Załóżmy, że zadanie zakończyło się pomyślnie i czy nie zostały wprowadzone żadne transakcje współbieżnych modyfikowanie kolejki. Ponieważ wnioskowania nie może się o kolejność elementów w kolejce, wszystkie trzy elementy mogą być usuwane z kolejki, w dowolnej kolejności. Kolejka będzie próbował zachować elementy w kolejności, oryginalnym (umieszczonych w kolejce), ale może być zmuszona, aby zmienić ich kolejność z powodu jednoczesnych operacji lub błędów.  
+Załóżmy, że zadanie zostało ukończone pomyślnie oraz że nie wystąpiły żadne współbieżne transakcje modyfikujące kolejkę. Ponieważ nie można wywnioskować o kolejności elementów w kolejce, wszystkie trzy elementy mogą być dekolejkowane w dowolnej kolejności. Kolejka podejmie próbę zachowania elementów w pierwotnej (kolejkowanej) kolejności, ale może zostać wymuszone ich zmiana kolejności z powodu równoczesnych operacji lub błędów.  
 
-- *Przypadek 2: Równoległe kolejki zadań*
+- *Przypadek 2: Równoległe zadanie usuwania z kolejki*
 
 ```
 // Parallel Task 1
@@ -142,13 +142,13 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Przyjęto założenie, że zadań została ukończona pomyślnie, czy zadania uruchomione w sposób równoległy i czy nie było żadnych innych równoczesnych transakcji modyfikowanie kolejki. Ponieważ wnioskowania nie można wykonywać na temat kolejności elementów w kolejce, list *dequeue1* i *dequeue2* będzie każdy zawiera dwa elementy, w dowolnej kolejności.
+Załóżmy, że zadania zostały ukończone pomyślnie, wykonane równolegle zadania i że nie było żadnych innych współbieżnych transakcji modyfikujących kolejkę. Ponieważ nie można wywnioskować o kolejności elementów w kolejce, listy *dequeue1* i *dequeue2* będą zawierać dowolne dwa elementy w dowolnej kolejności.
 
-Taki sam element będzie *nie* pojawiają się w obu list. W związku z tym jeśli ma dequeue1 *10*, *30*, a następnie miałby dequeue2 *20*, *40*.
+Ten sam element *nie* będzie widoczny na obu listach. W związku z tym, jeśli dequeue1 ma *10*, *30*, wówczas dequeue2 byłaby *20*, *40*.
 
-- *Przypadek 3: Usuń z kolejki kolejności z przerwać transakcji*
+- *Przypadek 3: Kolejność usuwania z kolejki z przerwaniem transakcji*
 
-Trwa przerywanie transakcji z śledząc dequeues umieszcza elementy z powrotem na główny kolejki. Kolejność, w której elementy są ponownie wprowadzane na główny kolejki nie jest gwarantowana. Przyjrzyjmy się następujący kod:
+Przerwanie transakcji z odłożeniami w locie powoduje umieszczenie elementów z powrotem na początku kolejki. Kolejność, w której elementy są umieszczane na początku kolejki, nie jest gwarantowana. Poinformuj nas o następującym kodzie:
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -160,21 +160,21 @@ using (var txn = this.StateManager.CreateTransaction())
     await txn.AbortAsync();
 }
 ```
-Załóżmy, że elementy były usuwane z kolejki w następującej kolejności:
+Załóżmy, że elementy zostały rozkolejkowane w następującej kolejności:
 > 10, 20
 
-Gdy firma Microsoft przerwać transakcji, elementy były dodawane do głowy kolejki w jednym z następujących zamówień:
+Po przerwaniu transakcji elementy zostaną dodane z powrotem do szefa kolejki w jednym z następujących zamówień:
 > 10, 20
 > 
 > 20, 10
 
-To samo dotyczy wszystkich przypadków, gdy transakcja nie została pomyślnie *przydzielony*.
+Ta sama wartość dotyczy wszystkich przypadków, w których transakcja nie została pomyślnie *zatwierdzona*.
 
 ## <a name="programming-patterns"></a>Wzorce programowania
-W tej sekcji, Przyjrzyjmy się kilku programowania wzorców, które mogą być pomocne przy użyciu ReliableConcurrentQueue.
+W tej sekcji poinformuj nas o kilku wzorcach programistycznych, które mogą być pomocne przy użyciu ReliableConcurrentQueue.
 
-### <a name="batch-dequeues"></a>Dequeues usługi Batch
-Zalecanym programowania wzorzec jest konsument zadania usługi batch jego dequeues zamiast przeprowadzania jednej kolejki w danym momencie. Użytkownik może wybrać ograniczać opóźnienia między każdej partii lub rozmiar partii. Poniższy fragment kodu przedstawia ten model programowania.  Należy pamiętać, że w tym przykładzie przetwarzanie odbywa się po transakcja została zatwierdzona, więc gdyby błąd występuje podczas przetwarzania nieprzetworzonych elementy zostaną utracone bez konieczności został przetworzony.  Alternatywnie przetwarzanie może odbywać się w zakresie transakcji, ale to może mieć negatywny wpływ na wydajność i wymaga obsługi elementów już przetworzone.
+### <a name="batch-dequeues"></a>Dekolejki wsadowe
+Zalecany wzorzec programistyczny służy do wykonywania zadania wsadowego w partiach, a nie do jednej dekolejki w danym momencie. Użytkownik może zdecydować się na ograniczenie opóźnień między wszystkimi partiami lub rozmiarem partii. Poniższy fragment kodu przedstawia ten model programowania.  Należy zauważyć, że w tym przykładzie przetwarzanie jest wykonywane po zatwierdzeniu transakcji, więc jeśli wystąpi błąd podczas przetwarzania, elementy nieprzetworzone zostaną utracone bez przetworzenia.  Alternatywnie przetwarzanie może odbywać się w zakresie transakcji, jednak może to mieć negatywny wpływ na wydajność i wymaga obsługi już przetworzonych elementów.
 
 ```
 int batchSize = 5;
@@ -219,8 +219,8 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-notification-based-processing"></a>Przetwarzanie oparte na powiadomienie optymalnych
-Inny interesujący wzorzec programowania za pomocą interfejsu API licznik. W tym miejscu można zaimplementować największej staranności powiadomień na podstawie przetwarzania dla kolejki. Kolejka liczba może służyć do ograniczania umieścić w kolejce "lub" task usuwania z kolejki.  Należy pamiętać, że co w poprzednim przykładzie, ponieważ przetwarzanie zachodzi poza tą transakcją, nieprzetworzonych elementy mogą zostać utracone jeśli błąd wystąpi podczas przetwarzania.
+### <a name="best-effort-notification-based-processing"></a>Przetwarzanie oparte na powiadomieniach o najlepszym wysiłku
+Inny interesujący wzór programistyczny używa interfejsu API Count. Tutaj można zaimplementować dla kolejki optymalne, oparte na powiadomieniach przetwarzanie. Liczba kolejek może być używana do ograniczania do kolejki lub zadania usuwania z kolejki.  Należy pamiętać, że tak jak w poprzednim przykładzie, ponieważ przetwarzanie następuje poza transakcją, elementy nieprzetworzone mogą zostać utracone, jeśli wystąpi błąd podczas przetwarzania.
 
 ```
 int threshold = 5;
@@ -267,10 +267,10 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-drain"></a>Optymalny opróżniania
-Nie można zagwarantować opróżniania kolejki ze względu na charakter współbieżnych struktury danych.  Jest to możliwe, że nawet jeśli żadne operacje użytkownika w kolejce są aktywne, wywołania określonej TryDequeueAsync mogą nie zwracać element, który był wcześniej umieszczonych w kolejce i zatwierdzone.  Element umieszczonych w kolejce jest gwarantowane, *ostatecznie* stają się widoczne dla kolejki, jednak bez mechanizm komunikacji poza pasmem konsumenta niezależnych nie wiedzieć, że kolejki osiągnął stan nawet wtedy, gdy wszyscy producenci zostały zatrzymane, a nie nowy umieścić, dozwolone są operacje. W związku z tym Operacja opróżniania jest optymalny zaimplementowanego poniżej.
+### <a name="best-effort-drain"></a>Odzyskanie najlepszego wysiłku
+Nie można zagwarantować opróżniania kolejki z powodu jednoczesnego charakteru struktury danych.  Istnieje możliwość, że nawet jeśli żadne operacje użytkownika w kolejce nie są wykonywane w locie, określone wywołanie TryDequeueAsync może nie zwracać elementu, który był wcześniej w kolejce i został przekazany.  Element znajdujący się w kolejce jest zagwarantowany, *aby stał się* widoczny do odłożenia, ale bez mechanizmu komunikacji poza pasmem, niezależny odbiorca nie wie, że kolejka osiągnęła stan stabilny, nawet jeśli wszyscy producenci zostali zatrzymani i nie dozwolone są nowe operacje dodawania do kolejki. W ten sposób operacja opróżniania jest optymalna dla implementacji poniżej.
 
-Użytkownik, należy zatrzymać dalsze producenta i konsumenta zadania i poczekaj, aż wszystkie aktywne transakcje zatwierdzenia lub przerwania przed podjęciem próby opróżnienia kolejki.  Jeśli użytkownik zna oczekiwanej liczby elementów w kolejce, można skonfigurować powiadomienia, które sygnalizują, że wszystkie elementy mają został usunięty z kolejki.
+Użytkownik powinien zatrzymać wszystkie pozostałe zadania producenta i konsumenta oraz poczekać na zatwierdzenie lub przerwanie transakcji w locie przed podjęciem próby opróżnienia kolejki.  Jeśli użytkownik zna oczekiwaną liczbę elementów w kolejce, może skonfigurować powiadomienie wskazujące, że wszystkie elementy zostały odkolejkowane.
 
 ```
 int numItemsDequeued;
@@ -306,8 +306,8 @@ do
 } while (ret.HasValue);
 ```
 
-### <a name="peek"></a>Peek
-Nie obejmuje ReliableConcurrentQueue *TryPeekAsync* interfejsu api. Użytkownicy będą mogli uzyskać wartość szczytową semantycznych przy użyciu *TryDequeueAsync* i następnie Przerywanie transakcji. W tym przykładzie dequeues są przetwarzane tylko wtedy, gdy wartość elementu jest większa niż *10*.
+### <a name="peek"></a>Wgląd
+ReliableConcurrentQueue nie udostępnia interfejsu API *TryPeekAsync* . Użytkownicy mogą uzyskać semantykę wglądu przy użyciu *TryDequeueAsync* , a następnie przerwać transakcję. W tym przykładzie dequeues są przetwarzane tylko wtedy, gdy wartość elementu jest większa niż *10*.
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -336,12 +336,12 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-## <a name="must-read"></a>Należy odczytać
-* [Przewodnik Szybki Start usług Reliable Services](service-fabric-reliable-services-quick-start.md)
+## <a name="must-read"></a>Należy przeczytać
+* [Reliable Services Szybki start](service-fabric-reliable-services-quick-start.md)
 * [Praca z elementami Reliable Collections](service-fabric-work-with-reliable-collections.md)
-* [Niezawodne usługi powiadomień](service-fabric-reliable-services-notifications.md)
-* [Niezawodne usługi Kopia zapasowa i przywracanie (odzyskiwanie po awarii)](service-fabric-reliable-services-backup-restore.md)
-* [Konfiguracja Reliable State Manager](service-fabric-reliable-services-configuration.md)
-* [Wprowadzenie do usług interfejsu API sieci Web w usłudze Service Fabric](service-fabric-reliable-services-communication-webapi.md)
-* [Zaawansowane zastosowania usług Reliable Services w modelu programowania](service-fabric-reliable-services-advanced-usage.md)
-* [Dokumentacja dla deweloperów dla elementów Reliable Collections](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Powiadomienia Reliable Services](service-fabric-reliable-services-notifications.md)
+* [Reliable Services kopii zapasowej i przywracania (odzyskiwanie po awarii)](service-fabric-reliable-services-backup-restore.md)
+* [Konfiguracja niezawodnego menedżera stanu](service-fabric-reliable-services-configuration.md)
+* [Wprowadzenie z usługami interfejsu API sieci Web Service Fabric](service-fabric-reliable-services-communication-webapi.md)
+* [Zaawansowane użycie modelu programowania Reliable Services](service-fabric-reliable-services-advanced-usage.md)
+* [Dokumentacja dla deweloperów dla niezawodnych kolekcji](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

@@ -1,36 +1,37 @@
 ---
-title: Tworzenie maszyny Wirtualnej z systemem Linux przy użyciu Kreatora obrazów platformy Azure (wersja zapoznawcza)
-description: Utwórz Maszynę wirtualną systemu Linux za pomocą Konstruktora obrazów systemu Azure.
+title: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu programu Azure Image Builder (wersja zapoznawcza)
+description: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu programu Azure Image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2966a1803d0664312d71ba992a5ba65f73b27370
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1bac04bbb67c7472de92c6da322121bafc20a560
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667524"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695428"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Wersja zapoznawcza: Tworzenie maszyny Wirtualnej z systemem Linux przy użyciu Kreatora obrazów platformy Azure
+# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Wersja zapoznawcza: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu programu Azure Image Builder
 
-W tym artykule przedstawiono sposób tworzenia dostosowanego obrazu systemu Linux przy użyciu Kreatora obrazów platformy Azure i wiersza polecenia platformy Azure. W przykładzie w tym artykule używa trzech różnych [twórcom dostosowań](image-builder-json.md#properties-customize) dostosowywania obrazu:
+W tym artykule opisano sposób tworzenia dostosowanego obrazu systemu Linux przy użyciu narzędzia Azure Image Builder i interfejsu wiersza polecenia platformy Azure. W przykładzie w tym artykule są stosowane trzy [](image-builder-json.md#properties-customize) różne konfiguratorzy dostosowywania obrazu:
 
-- Shell (ScriptUri) — pliki do pobrania i uruchomienia [skrypt powłoki](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh).
-- Shell (wbudowane) — określone polecenia uruchomienia. W tym przykładzie polecenia wbudowanego obejmują tworzenie katalogu i aktualizowanie systemu operacyjnego.
-- Plik — kopiuje [plik z repozytorium GitHub](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) do katalogu na maszynie Wirtualnej.
+- Shell (ScriptUri) — pobiera i uruchamia [skrypt powłoki](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh).
+- Powłoka (wbudowana) — uruchamia określone polecenia. W tym przykładzie polecenia wbudowane obejmują tworzenie katalogu i aktualizowanie systemu operacyjnego.
+- Plik — kopiuje [plik z usługi GitHub](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) do katalogu na maszynie wirtualnej.
 
+Można również określić `buildTimeoutInMinutes`. Wartość domyślna to 240 minut i można zwiększyć czas kompilacji, aby umożliwić dłuższe wykonywanie kompilacji.
 
-Firma Microsoft będzie używać przykładowy szablon JSON do obrazu. Użyto pliku JSON jest tutaj: [helloImageTemplateLinux.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
+Aby skonfigurować obraz, będziemy używać szablonu przykład. JSON. Używany plik JSON jest tutaj: [helloImageTemplateLinux. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
 
 > [!IMPORTANT]
-> Kreator obrazów platformy Azure jest obecnie w publicznej wersji zapoznawczej.
+> Usługa Azure Image Builder jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Rejestrowanie funkcji
-Aby użyć Kreatora obrazów platformy Azure w wersji zapoznawczej, musisz zarejestrować nową funkcję.
+Aby korzystać z usługi Azure Image Builder w wersji zapoznawczej, należy zarejestrować nową funkcję.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -50,7 +51,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Jeśli nie mówią zarejestrowanych, uruchom następujące polecenie:
+Jeśli nie powiedzie się, uruchom następujące polecenie:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -58,9 +59,9 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="setup-example-variables"></a>Konfigurowanie zmiennych przykład
+## <a name="setup-example-variables"></a>Przykładowe zmienne konfiguracji
 
-Firma Microsoft będzie używać niektórych rodzajów informacji wielokrotnie, dlatego utworzymy pewne zmienne do przechowywania tych informacji.
+Będziemy wielokrotnie używać niektórych informacji, więc utworzymy pewne zmienne do przechowywania tych informacji.
 
 
 ```azurecli-interactive
@@ -74,23 +75,23 @@ imageName=myBuilderImage
 runOutputName=aibLinux
 ```
 
-Utwórz zmienną dla Twojego identyfikatora subskrypcji. Można uzyskać, to przy użyciu `az account show | grep id`.
+Utwórz zmienną dla identyfikatora subskrypcji. Można to zrobić za pomocą `az account show | grep id`polecenia.
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
 ```
 
 ## <a name="create-the-resource-group"></a>Utwórz grupę zasobów.
-Służy do przechowywania artefaktów szablonu konfiguracji obrazu i obraz.
+Służy do przechowywania artefaktu szablonu konfiguracji obrazu i obrazu.
 
 ```azurecli-interactive
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Ustaw uprawnienia dla grupy zasobów
-Nadaj uprawnienia "Współautor" kreatora obrazów do utworzenia obrazu w grupie zasobów. Bez odpowiednich uprawnień budowania obrazu zakończy się niepowodzeniem. 
+## <a name="set-permissions-on-the-resource-group"></a>Ustawianie uprawnień do grupy zasobów
+Nadaj elementowi "Współautor" konstruktora obrazu uprawnienia do tworzenia obrazu w grupie zasobów. Bez odpowiednich uprawnień kompilacja obrazu zakończy się niepowodzeniem. 
 
-`--assignee` Wartość Identyfikatora rejestracji aplikacji dla usługi kreatora obrazów. 
+`--assignee` Wartość to identyfikator rejestracji aplikacji dla usługi Image Builder. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -101,7 +102,7 @@ az role assignment create \
 
 ## <a name="download-the-template-example"></a>Pobierz przykład szablonu
 
-Sparametryzowany przykładowy obraz konfiguracji utworzono szablon do użycia. Pobierz przykładowy plik JSON, a następnie skonfigurować go przy użyciu zmiennych, które zostały ustawione wcześniej.
+Szablon konfiguracji przykładowego obrazu z parametrami został utworzony do użycia. Pobierz plik Sample. JSON i skonfiguruj go przy użyciu ustawionych wcześniej zmiennych.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json -o helloImageTemplateLinux.json
@@ -113,20 +114,20 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-Ten przykład JSON można zmodyfikować zgodnie z potrzebami. Na przykład, można zwiększyć wartość `buildTimeoutInMinutes` umożliwiające dłuższe uruchomionej kompilacji. Możesz edytować plik w usłudze Cloud Shell przy użyciu `vi`.
+W razie konieczności można zmodyfikować ten przykład. JSON. Na przykład można zwiększyć wartość `buildTimeoutInMinutes` , aby zezwolić na dłuższe kompilacje. Plik można edytować w Cloud Shell przy użyciu edytora tekstu, takiego jak `vi`.
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> Źródło obrazu, należy zawsze [Określ wersję](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), nie można użyć `latest`.
+> W przypadku obrazu źródłowego należy zawsze [określić wersję](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), której nie można użyć `latest`.
 >
-> W przypadku dodania lub Zmień grupę zasobów, w miejsce dystrybucji obrazu należy upewnić się, że [uprawnień ustawionych dla grupy zasobów](#set-permissions-on-the-resource-group).
+> W przypadku dodania lub zmiany grupy zasobów, w której jest dystrybuowany obraz, należy upewnić się, że [uprawnienia zostały ustawione dla grupy zasobów](#set-permissions-on-the-resource-group).
 
 
-## <a name="submit-the-image-configuration"></a>Prześlij konfigurację obrazów
-Prześlij konfigurację obrazu, aby usługa kreatora obrazów maszyn wirtualnych
+## <a name="submit-the-image-configuration"></a>Prześlij konfigurację obrazu
+Prześlij konfigurację obrazu do usługi Konstruktor obrazów maszyn wirtualnych
 
 ```azurecli-interactive
 az resource create \
@@ -137,14 +138,14 @@ az resource create \
     -n helloImageTemplateLinux01
 ```
 
-Po pomyślnym ukończeniu, go zwróci komunikat o powodzeniu i utworzyć obraz konstruktora konfiguracji szablonu artefakt w $imageResourceGroup. Grupy zasobów w portalu możesz zobaczyć, jeśli zostanie włączone ustawienie "Pokaż ukryte typy".
+Jeśli zakończyło się pomyślnie, zwróci komunikat o powodzeniu i utworzysz artefakt szablonu konfiguracji konstruktora obrazów w $imageResourceGroup. Grupę zasobów można wyświetlić w portalu, jeśli zostanie włączona wartość "Pokaż ukryte typy".
 
-Ponadto w tle, Kreator obrazów tworzy tymczasową grupy zasobów w ramach subskrypcji. Kreator obrazów używa przemieszczania grupy zasobów do budowania obrazu. Nazwa grupy zasobów będzie mieć następujący format: `IT_<DestinationResourceGroup>_<TemplateName>`.
+Ponadto w tle Konstruktor obrazów tworzy tymczasową grupę zasobów w ramach subskrypcji. Konstruktor obrazów używa tymczasowej grupy zasobów dla kompilacji obrazu. Nazwa grupy zasobów będzie w tym formacie: `IT_<DestinationResourceGroup>_<TemplateName>`.
 
 > [!IMPORTANT]
-> Nie usuwaj przemieszczania grupę zasobów bezpośrednio. Jeśli usuniesz artefaktu szablon obrazu, automatycznie usunie przemieszczania grupy zasobów. Aby uzyskać więcej informacji, zobacz [wyczyścić](#clean-up) sekcji na końcu tego artykułu.
+> Nie usuwaj bezpośrednio tymczasowej grupy zasobów. Usunięcie artefaktu szablonu obrazu spowoduje automatyczne usunięcie grupy zasobów tymczasowych. Aby uzyskać więcej informacji, zobacz [](#clean-up) sekcję oczyszczanie na końcu tego artykułu.
 
-Jeśli usługa zgłasza błąd podczas przesyłania obrazów konfiguracji szablonu, zobacz [Rozwiązywanie problemów z](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) kroki. Należy również usunąć szablon przed ponowieniem próby przesyłanie kompilacji. Aby usunąć szablon:
+Jeśli usługa zgłasza błąd podczas przekazywania szablonu konfiguracji obrazu, zobacz kroki [rozwiązywania problemów](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) . Należy również usunąć szablon przed ponowną próbą przesłania kompilację. Aby usunąć szablon:
 
 ```azurecli-interactive
 az resource delete \
@@ -166,14 +167,14 @@ az resource invoke-action \
      --action Run 
 ```
 
-Poczekaj, aż kompilacja zostanie zakończona, w taki sposób, w tym przykładzie, może potrwać 10 – 15 minut.
+Poczekaj, aż kompilacja zostanie ukończona, w tym przykładzie może upłynąć do 10-15 minut.
 
-Jeśli wystąpią jakiekolwiek problemy, przejrzyj te [Rozwiązywanie problemów z](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) kroki.
+W przypadku wystąpienia błędów zapoznaj się z tymi krokami [rozwiązywania problemów](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) .
 
 
 ## <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej
 
-Tworzenie maszyny Wirtualnej przy użyciu tworzonej obrazu.
+Utwórz maszynę wirtualną przy użyciu skompilowanego obrazu.
 
 ```azurecli-interactive
 az vm create \
@@ -185,13 +186,13 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Uzyskaj adres IP z danych wyjściowych tworzenia maszyny Wirtualnej i przy jego użyciu SSH z maszyną Wirtualną.
+Pobierz adres IP z danych wyjściowych tworzenia maszyny wirtualnej i użyj go do połączenia SSH z maszyną wirtualną.
 
 ```azurecli-interactive
 ssh azureuser@<pubIp>
 ```
 
-Powinien pojawić się obraz, który został dostosowany komunikatem dnia, jak najszybciej po nawiązaniu połączenia SSH!
+Obraz został dostosowany wraz z komunikatem dnia zaraz po nawiązaniu połączenia SSH.
 
 ```console
 
@@ -202,23 +203,23 @@ Powinien pojawić się obraz, który został dostosowany komunikatem dnia, jak n
 *******************************************************
 ```
 
-Typ `exit` po zakończeniu zamknij połączenie SSH.
+Wpisz `exit` po zakończeniu połączenia SSH.
 
-## <a name="check-the-source"></a>Sprawdź źródłowy
+## <a name="check-the-source"></a>Sprawdź Źródło
 
-W szablonie konstruktora obraz w programie "Properties", zobaczysz obrazu źródłowego, dostosowywania skryptu przebiegów, gdzie jest dystrybuowane.
+W szablonie konstruktora obrazów w obszarze "właściwości" pojawi się obraz źródłowy, uruchamiany skrypt dostosowania i miejsce, w którym jest dystrybuowany.
 
 ```azurecli-interactive
 cat helloImageTemplateLinux.json
 ```
 
-Aby uzyskać szczegółowe informacje o tym pliku JSON, zobacz [Image builder odwołanie do szablonu](image-builder-json.md)
+Aby uzyskać szczegółowe informacje na temat tego pliku JSON, zobacz [Dokumentacja szablonu konstruktora obrazów](image-builder-json.md)
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Gdy wszystko będzie gotowe, możesz usunąć zasoby.
+Gdy skończysz, możesz usunąć zasoby.
 
-Usuń szablon konstruktora obrazu.
+Usuń szablon Konstruktor obrazów.
 
 ```azurecli-interactive
 az resource delete \
@@ -236,4 +237,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o składnikach plik JSON używanych w tym artykule, zobacz [odwołanie do szablonu Kreatora obrazów](image-builder-json.md).
+Aby dowiedzieć się więcej o składnikach pliku JSON używanego w tym artykule, zobacz [Dokumentacja szablonu konstruktora obrazów](image-builder-json.md).

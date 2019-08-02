@@ -1,6 +1,6 @@
 ---
-title: Stream dane diagnostyczne platformy Azure do usługi Event Hubs
-description: Konfigurowanie diagnostyki platformy Azure za pomocą usługi Event Hubs typu end to end, w tym wskazówki dotyczące typowych scenariuszy.
+title: Przesyłanie strumieniowe danych Diagnostyka Azure do Event Hubs
+description: Konfigurowanie Diagnostyka Azure na zakończenie Event Hubs, w tym wskazówki dotyczące typowych scenariuszy.
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -10,14 +10,14 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "64922829"
 ---
-# <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Strumieniowe przesyłanie danych diagnostycznych platformy Azure w warstwie gorąca ścieżce za pomocą usługi Event Hubs
-Narzędzie diagnostyczne systemu Azure oferuje elastyczne sposoby zbierać metryki i dzienniki z maszyn wirtualnych usługi w chmurze (VM) i przenieść wyniki do usługi Azure Storage. Począwszy od marca 2016 r. (zestaw SDK 2.9) przedział czasu możesz wysyłanie danych diagnostycznych niestandardowymi źródłami danych i transferu danych ścieżkę aktywną w ciągu kilku sekund przy użyciu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
+# <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Przesyłanie strumieniowe danych Diagnostyka Azure w ścieżce gorąca przy użyciu Event Hubs
+Diagnostyka Azure zapewnia elastyczne sposoby zbierania metryk i dzienników z maszyn wirtualnych usług Cloud Services i przesyłania wyników do usługi Azure Storage. Począwszy od okresu 2016 marca (SDK 2,9), można wysyłać diagnostykę do niestandardowych źródeł danych i transferować dane w postaci gorącej ścieżki w ciągu kilku sekund przy użyciu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
 
 Obsługiwane typy danych obejmują:
 
@@ -27,25 +27,25 @@ Obsługiwane typy danych obejmują:
 * Dzienniki aplikacji
 * Dzienniki infrastruktury diagnostyki Azure
 
-W tym artykule przedstawiono sposób konfigurowania usługi Azure Diagnostics przy użyciu usługi Event Hubs od końca do końca. Wskazówki dotyczące również znajduje się w następujących typowych scenariuszach:
+W tym artykule opisano sposób konfigurowania Diagnostyka Azure z Event Hubs od końca do końca. Wskazówki są również udostępniane w następujących typowych scenariuszach:
 
-* Jak dostosować dzienników i metryk, które są wysyłane do usługi Event Hubs
+* Jak dostosować dzienniki i metryki, które są wysyłane do Event Hubs
 * Jak zmienić konfiguracje w każdym środowisku
-* Jak wyświetlać dane strumienia usługi Event Hubs
+* Jak wyświetlać dane strumienia Event Hubs
 * Jak rozwiązywać problemy z połączeniem  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Usługa Event Hubs odbierania danych z usługi Azure Diagnostics jest obsługiwana w usługi w chmurze, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i usługi Service Fabric, począwszy od Azure SDK 2.9 i odpowiednie narzędzia systemu Azure dla programu Visual Studio.
+Event Hubs otrzymywanie danych z Diagnostyka Azure jest obsługiwane w Cloud Services, maszynach wirtualnych, Virtual Machine Scale Sets i Service Fabric, począwszy od zestawu Azure SDK 2,9 i odpowiednich narzędzi platformy Azure dla programu Visual Studio.
 
-* Rozszerzenie diagnostyki platformy Azure w wersji 1.6 ([zestawu Azure SDK dla platformy .NET 2.9 lub nowszej](https://azure.microsoft.com/downloads/) jest przeznaczony dla to domyślnie)
+* Diagnostyka Azure rozszerzenia 1,6 ([zestaw Azure SDK dla programu .net 2,9 lub nowszego jest domyślnie przeznaczony dla tego elementu](https://azure.microsoft.com/downloads/) )
 * [Visual Studio 2013 lub nowszy](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
-* Istniejących konfiguracji diagnostyki platformy Azure w aplikacji przy użyciu *.wadcfgx* pliku i jeden z następujących metod:
-  * Visual Studio: [Konfigurowanie diagnostyki dla usług Azure Cloud Services i Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
-  * Windows PowerShell: [Włączanie diagnostyki w usługach Azure Cloud Services przy użyciu programu PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md)
-* Aprowizowane na artykułu, przestrzeń nazw usługi Event Hubs [Rozpoczynanie pracy z usługą Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* Istniejące konfiguracje Diagnostyka Azure w aplikacji przy użyciu pliku *. wadcfgx* oraz jednej z następujących metod:
+  * Visual Studio: [Konfigurowanie diagnostyki dla Cloud Services platformy Azure i Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+  * Program Windows PowerShell: [Włączanie diagnostyki na platformie Azure Cloud Services przy użyciu programu PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md)
+* Event Hubs przestrzeń nazw, która została zainicjowana zgodnie z artykułem, [wprowadzenie do Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
-## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Łączenie usługi Azure Diagnostics do ujścia usługi Event Hubs
-Domyślnie Diagnostyka Azure zawsze wysyła dzienniki i metryki na konto usługi Azure Storage. Aplikacja może również wysyłać dane do usługi Event Hubs, dodając nowe **wychwytywanie** sekcji **PublicConfig** / **WadCfg** elementu *. wadcfgx* pliku. W programie Visual Studio *.wadcfgx* plik jest przechowywany w następującej ścieżce: **Projekt usługi w chmurze** > **role** >  **(RoleName)**  > **diagnostics.wadcfgx** pliku.
+## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Łączenie Diagnostyka Azure z Event Hubs ujścia
+Domyślnie program Diagnostyka Azure zawsze wysyła dzienniki i metryki do konta usługi Azure Storage. Aplikacja może również wysyłać dane do Event Hubs przez dodanie nowej sekcji **ujścia** w elemencie **PublicConfig** / **WadCfg** pliku *. wadcfgx* . W programie Visual Studio plik *. wadcfgx* jest przechowywany w następującej ścieżce: > Plik diagnostyczny >  **** role > projektu usługi w chmurze (rolename **)** .**wadcfgx** .
 
 ```xml
 <SinksConfig>
@@ -68,18 +68,18 @@ Domyślnie Diagnostyka Azure zawsze wysyła dzienniki i metryki na konto usługi
 }
 ```
 
-W tym przykładzie adres URL z Centrum zdarzeń jest równa w pełni kwalifikowaną przestrzeń nazw Centrum zdarzeń: Przestrzeń nazw usługi Event Hubs + "/" + Nazwa Centrum zdarzeń.  
+W tym przykładzie adres URL centrum zdarzeń jest ustawiony na w pełni kwalifikowaną przestrzeń nazw centrum zdarzeń: Event Hubs przestrzeń nazw + "/" + nazwa centrum zdarzeń.  
 
-Adres URL jest wyświetlany w Centrum zdarzeń [witryny Azure portal](https://go.microsoft.com/fwlink/?LinkID=213885) na pulpicie nawigacyjnym usługi Event Hubs.  
+W [Azure Portal](https://go.microsoft.com/fwlink/?LinkID=213885) na pulpicie nawigacyjnym Event Hubs zostanie wyświetlony adres URL centrum zdarzeń.  
 
-**Ujścia** nazwy, można ustawić dowolny prawidłowy ciąg, tak długo, jak taką samą wartość, jest stosowane konsekwentnie w całym pliku konfiguracji.
+Nazwę **ujścia** można ustawić na dowolny prawidłowy ciąg, o ile ta sama wartość jest używana spójnie w całym pliku konfiguracyjnym.
 
 > [!NOTE]
-> Mogą istnieć dodatkowe ujścia, takich jak *applicationInsights* skonfigurowane w tej sekcji. Narzędzie diagnostyczne systemu Azure umożliwia ujść co najmniej jeden zdefiniowany, jeśli każdy obiekt sink także jest zadeklarowany w **PrivateConfig** sekcji.  
+> Mogą istnieć dodatkowe ujścia, takie jak *applicationInsights* skonfigurowany w tej sekcji. Diagnostyka Azure umożliwia zdefiniowanie co najmniej jednego ujścia, jeśli każdy obiekt ujścia jest również zadeklarowany w sekcji **PrivateConfig** .  
 >
 >
 
-Obiekt sink usługi Event Hubs również musi być zadeklarowana i zdefiniowane w **PrivateConfig** części *.wadcfgx* pliku konfiguracji.
+Obiekt sink Event Hubs musi być również zadeklarowany i zdefiniowany w sekcji **PrivateConfig** w pliku konfiguracyjnym *. wadcfgx* .
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -100,17 +100,17 @@ Obiekt sink usługi Event Hubs również musi być zadeklarowana i zdefiniowane 
 }
 ```
 
-`SharedAccessKeyName` Wartość musi być zgodna klucza sygnatury dostępu współdzielonego (SAS) i zasad, które zostały zdefiniowane w **usługi Event Hubs** przestrzeni nazw. Przejdź do pulpitu nawigacyjnego usługi Event Hubs w [witryny Azure portal](https://portal.azure.com), kliknij przycisk **Konfiguruj** karcie i skonfiguruj zasady o nazwie (na przykład "SendRule"), który ma *wysyłania* uprawnienia. **StorageAccount** zadeklarowano również w **PrivateConfig**. Nie ma potrzeby można zmienić wartości w tym miejscu, jeśli pracują. W tym przykładzie pozostawimy wartości puste, który jest znakiem, że zasobu podrzędnego spowoduje ustawienie wartości. Na przykład *ServiceConfiguration.Cloud.cscfg* pliku konfiguracji środowiska ustawia odpowiednie środowisko nazwy i klucze.  
+Wartość musi być zgodna z kluczem sygnatury dostępu współdzielonego (SAS) i zasadami zdefiniowanymi w przestrzeni nazw **Event Hubs.** `SharedAccessKeyName` Przejdź do pulpitu nawigacyjnego Event Hubs w [Azure Portal](https://portal.azure.com), kliknij kartę **Konfiguracja** i skonfiguruj nazwane zasady (na przykład "SendRule"), które mają uprawnienia do *wysyłania* . **StorageAccount** jest również zadeklarowany w **PrivateConfig**. Nie ma potrzeby zmiany wartości w tym miejscu, jeśli działają. W tym przykładzie pozostawiamy puste wartości, co oznacza, że zasób podrzędny ustawi wartości. Na przykład plik konfiguracyjny środowiska *ServiceConfiguration. Cloud. cscfg* ustawia nazwy i klucze odpowiednie dla środowiska.  
 
 > [!WARNING]
-> Klucz sygnatury dostępu Współdzielonego Event Hubs jest przechowywany w postaci zwykłego tekstu w *.wadcfgx* pliku. Często ten klucz jest zaewidencjonowane do kontroli kodu źródłowego lub jest dostępna jako zasobu na serwerze kompilacji, więc należy je chronić zgodnie z potrzebami. Firma Microsoft zaleca używanie klucza sygnatury dostępu Współdzielonego w tym miejscu przy użyciu *wysłać tylko* uprawnienia tak, aby złośliwy użytkownik zapisu do Centrum zdarzeń, ale nie może nasłuchiwać go ani zarządzać nim.
+> Klucz SAS Event Hubs jest przechowywany w postaci zwykłego tekstu w pliku *. wadcfgx* . Często ten klucz jest zaewidencjonowany do kontroli kodu źródłowego lub jest dostępny jako element zawartości na serwerze kompilacji, dlatego należy chronić go zgodnie z potrzebami. Zalecamy używanie klucza SAS tutaj z uprawnieniami *tylko do wysyłania* , aby złośliwy użytkownik mógł zapisywać w centrum zdarzeń, ale nie mógł się z nim odsłuchiwać ani zarządzać nim.
 >
 >
 
-## <a name="configure-azure-diagnostics-to-send-logs-and-metrics-to-event-hubs"></a>Konfigurowanie diagnostyki Azure do wysyłania dzienników i metryk do usługi Event Hubs
-Jak omówiono wcześniej, wszystkie domyślne i Diagnostyka niestandardowa dane, oznacza to, metryk i dzienników, jest automatycznie przesyłany do usługi Azure Storage w skonfigurowanych interwałów. Za pomocą usługi Event Hubs i wszelkie dodatkowe ujścia w hierarchii do wysłania do Centrum zdarzeń można określić dowolny węzeł główny lub typu liść. Obejmuje to zdarzenia ETW, liczniki wydajności, Windows, dzienniki zdarzeń i dzienników aplikacji.   
+## <a name="configure-azure-diagnostics-to-send-logs-and-metrics-to-event-hubs"></a>Konfigurowanie Diagnostyka Azure do wysyłania dzienników i metryk do Event Hubs
+Jak wspomniano wcześniej, wszystkie domyślne i niestandardowe dane diagnostyczne, czyli metryki i dzienniki, są automatycznie wysyłane do usługi Azure Storage w skonfigurowanych odstępach czasu. Za pomocą Event Hubs i dowolnego dodatkowego ujścia można określić dowolny węzeł główny lub liścia w hierarchii, który ma być wysyłany do centrum zdarzeń. Dotyczy to zdarzeń ETW, liczników wydajności, dzienników zdarzeń systemu Windows i dzienników aplikacji.   
 
-Należy wziąć pod uwagę, jak wiele punktów danych, faktycznie mają zostać przeniesione do usługi Event Hubs. Zazwyczaj deweloperów transferu danych hot ścieżki o małych opóźnieniach, który musi być używane i szybko interpretowane. Przykłady są systemy monitorowania, alertów i reguł skalowania automatycznego. Deweloper może także skonfigurować Magazyn alternatywnego analizy lub Wyszukaj magazynu — na przykład usługi Azure Stream Analytics, usługi Elasticsearch, niestandardowego systemu monitorowania lub ulubionego systemu monitorowania przez inne osoby.
+Ważne jest, aby uwzględnić liczbę punktów danych, które powinny być transferowane do Event Hubs. Zazwyczaj deweloperzy przesyłają dane gorącej ścieżki o małym opóźnieniu, które muszą być używane i interpretowane szybko. Przykładami są systemy, które monitorują alerty lub reguły automatycznego skalowania. Deweloper może również skonfigurować alternatywny magazyn analizy lub magazyn wyszukiwania — na przykład Azure Stream Analytics, Elasticsearch, niestandardowy system monitorowania lub ulubiony system monitorowania od innych.
 
 Poniżej przedstawiono kilka przykładowych konfiguracji.
 
@@ -142,7 +142,7 @@ Poniżej przedstawiono kilka przykładowych konfiguracji.
 }
 ```
 
-W powyższym przykładzie obiekt sink jest stosowany do nadrzędnego **liczniki wydajności** węzeł w hierarchii, co oznacza, że wszystkie podrzędne **liczniki wydajności** będą wysyłane do usługi Event Hubs.  
+W powyższym przykładzie obiekt ujścia jest stosowany do węzła nadrzędnego **liczniki wydajności** w hierarchii, co oznacza, że wszystkie podrzędne **liczniki wydajności** będą wysyłane do Event Hubs.  
 
 ```xml
 <PerformanceCounters scheduledTransferPeriod="PT1M">
@@ -184,9 +184,9 @@ W powyższym przykładzie obiekt sink jest stosowany do nadrzędnego **liczniki 
 }
 ```
 
-W poprzednim przykładzie obiekt sink jest stosowany do tylko trzy liczniki: **Żądania w kolejce**, **żądań odrzuconych**, i **czas procesora (%)** .  
+W poprzednim przykładzie ujścia jest stosowane tylko do trzech liczników: **Żądania dodane do kolejki**, **żądania odrzucone**i **czas procesora (%)** .  
 
-Poniższy przykład pokazuje, jak deweloper może ograniczyć ilość danych wysłanych do krytyczne metryki, które są używane na potrzeby tej usługi kondycji.  
+Poniższy przykład pokazuje, jak Projektant może ograniczyć ilość wysłanych danych jako metryki krytyczne, które są używane dla kondycji tej usługi.  
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" sinks="HotPath" scheduledTransferLogLevelFilter="Error" />
@@ -199,32 +199,32 @@ Poniższy przykład pokazuje, jak deweloper może ograniczyć ilość danych wys
 }
 ```
 
-W tym przykładzie obiekt sink jest stosowany do dzienników i jest filtrowana tylko do śledzenia poziomu błędu.
+W tym przykładzie obiekt sink jest stosowany do dzienników i jest filtrowany tylko w ślad poziomu błędu.
 
-## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Wdrażanie i aktualizowanie konfiguracji aplikacji i Diagnostyka usług w chmurze
-Program Visual Studio udostępnia najłatwiejszą drogą do wdrażania aplikacji i konfiguracji ujścia usługi Event Hubs. Aby wyświetlić i edytować plik, otwórz *.wadcfgx* pliku w programie Visual Studio, edytować go i zapisz go. Ścieżka jest **projekt usługi w chmurze** > **role** >  **(RoleName)**  > **diagnostics.wadcfgx**.  
+## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Wdrażanie i aktualizowanie Cloud Services aplikacji i konfiguracji diagnostyki
+Program Visual Studio zapewnia najłatwą ścieżkę do wdrożenia aplikacji i Event Hubs konfiguracji ujścia. Aby wyświetlić i edytować plik, Otwórz plik *. wadcfgx* w programie Visual Studio, edytuj go i Zapisz. Ścieżka jest diagnostyczna**role** >  **projektu** > usługi w chmurze (rolename **)**  >  **. wadcfgx**.  
 
-W tym momencie wszystkie wdrożeniem i aktualizowanie działań w Visual Studio, Visual Studio Team System i wszystkich poleceń lub skryptów, które są oparte na MSBuild i użyj **/t: publikowanie** docelowy obejmują *.wadcfgx* w procesie tworzenia pakietów. Ponadto wdrożenia i aktualizacje wdrażanie pliku na platformie Azure przy użyciu odpowiedniego rozszerzenia agenta usługi Azure Diagnostics na maszynach wirtualnych.
+W tym momencie wszystkie akcje aktualizacji wdrożenia i wdrożenia w programie Visual Studio, Visual Studio Team System i wszystkie polecenia lub skrypty, które są oparte na programie MSBuild i używają elementu docelowego **/t: Publish** , obejmują *. wadcfgx* w procesie pakowania. Ponadto wdrożenia i aktualizacje wdrażają plik na platformie Azure przy użyciu odpowiedniego rozszerzenia agenta Diagnostyka Azure na maszynach wirtualnych.
 
-Po wdrożeniu aplikacji i konfiguracji usługi Azure Diagnostics, natychmiast zobaczysz aktywność na pulpicie nawigacyjnym Centrum zdarzeń. Oznacza to, że możesz przejść do przeglądania danych ścieżkę aktywną w narzędziu klienta lub analiza odbiornika wybranego.  
+Po wdrożeniu aplikacji i konfiguracji Diagnostyka Azure natychmiast będzie ona widoczna na pulpicie nawigacyjnym centrum zdarzeń. Oznacza to, że wszystko jest gotowe do przejścia do wyświetlania danych w ścieżce gorącej w wybranym przez klienta odbiornika lub narzędziu do analizy.  
 
-Na poniższej ilustracji na pulpicie nawigacyjnym usługi Event Hubs zawiera dobrej kondycji wysyłania danych diagnostycznych do Centrum zdarzeń, od pewnego czasu po 23: 00. Gdy aplikacja została wdrożona przy użyciu zaktualizowanych *.wadcfgx* plików i obiekt sink został prawidłowo skonfigurowany.
+Na poniższej ilustracji na pulpicie nawigacyjnym Event Hubs są wyświetlane prawidłowe wysyłanie danych diagnostycznych do centrum zdarzeń, rozpoczynając od 11 PM. Oznacza to, że aplikacja została wdrożona przy użyciu zaktualizowanego pliku *. wadcfgx* , a ujścia zostało prawidłowo skonfigurowane.
 
 ![][0]  
 
 > [!NOTE]
-> Po wprowadzeniu aktualizacji do pliku konfiguracji usługi Azure Diagnostics (.wadcfgx), zaleca się wypchnięciu aktualizacji do całej aplikacji, a także konfigurację przy użyciu publikowania w programie Visual Studio lub skryptu środowiska Windows PowerShell.  
+> Po wprowadzeniu aktualizacji Diagnostyka Azure pliku konfiguracji (. wadcfgx) zaleca się wypchnięcie aktualizacji do całej aplikacji oraz konfigurację przy użyciu programu Visual Studio Publishing lub skryptu programu Windows PowerShell.  
 >
 >
 
-## <a name="view-hot-path-data"></a>Wyświetl dane ścieżkę aktywną
-Jak wcześniej wspomniano, istnieje wiele zastosowań do nasłuchiwania i przetwarzanie danych usługi Event Hubs.
+## <a name="view-hot-path-data"></a>Wyświetlanie danych ścieżki gorącej
+Jak wspomniano wcześniej, istnieje wiele przypadków użycia do nasłuchiwania i przetwarzania danych Event Hubs.
 
-Jest jednym proste podejście do tworzenia aplikacji konsolowej mały test, do nasłuchiwania Centrum zdarzeń i drukowanie w strumieniu wyjściowym. Możesz umieścić następujący kod, który zostało wyjaśnione bardziej szczegółowo w [Rozpoczynanie pracy z usługą Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)), w aplikacji konsoli.  
+Jednym z prostych metod jest utworzenie niewielkiej aplikacji konsolowej testowej w celu nasłuchiwania centrum zdarzeń i wydrukowania strumienia wyjściowego. Można umieścić Poniższy kod, który jest bardziej szczegółowy w temacie [wprowadzenie do Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)) w aplikacji konsolowej.  
 
-Należy zauważyć, że aplikacja konsoli musi zawierać [pakietu NuGet hosta procesora zdarzeń](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
+Należy pamiętać, że Aplikacja konsolowa musi zawierać [pakiet NuGet hosta procesora zdarzeń](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
 
-Pamiętaj, aby zastąpić wartości w nawiasy ostre w **Main** funkcji z wartościami dla zasobów.   
+Pamiętaj, aby zastąpić wartości w nawiasach kątowych w funkcji **Main** wartością dla zasobów.   
 
 ```csharp
 //Console application code for EventHub test client
@@ -307,21 +307,21 @@ namespace EventHubListener
 }
 ```
 
-## <a name="troubleshoot-event-hubs-sinks"></a>Rozwiązywanie problemów z ujścia usługi Event Hubs
-* Centrum zdarzeń nie są wyświetlane zdarzenia przychodzące lub wychodzące działania zgodnie z oczekiwaniami.
+## <a name="troubleshoot-event-hubs-sinks"></a>Rozwiązywanie problemów z Event Hubs ujściami
+* Centrum zdarzeń nie wyświetla aktywności zdarzenia przychodzącego lub wychodzącego zgodnie z oczekiwaniami.
 
-    Sprawdź, czy Centrum zdarzeń nie zostanie pomyślnie aprowizowane. Wszystkie informacje o połączeniu w **PrivateConfig** części *.wadcfgx* musi odpowiadać wartości zasobu, jak pokazano w portalu. Upewnij się, że zasady sygnatury dostępu Współdzielonego zdefiniowanych ("SendRule" w przykładzie) w portalu, który *wysyłania* uprawnienia.  
-* Po zaktualizowaniu Centrum zdarzeń nie jest już aktywnością zdarzeń przychodzących lub wychodzących.
+    Sprawdź, czy centrum zdarzeń zostało pomyślnie zainicjowane. Wszystkie informacje o połączeniu w sekcji **PrivateConfig** *. wadcfgx* muszą być zgodne z wartościami Twojego zasobu wyświetlanymi w portalu. Upewnij się, że masz zdefiniowane zasady sygnatury dostępu współdzielonego ("SendRule" w przykładzie) w portalu oraz że udzielono uprawnienia do *wysyłania* .  
+* Po aktualizacji centrum zdarzeń nie pokazuje już aktywności zdarzenia przychodzącego lub wychodzącego.
 
-    Najpierw upewnij się, że informacje o Centrum i konfiguracji zdarzenia jest poprawna, jak wyjaśniono wcześniej. Czasami **PrivateConfig** jest resetowany do aktualizacji wdrożenia. Zalecane poprawki, jest zapewnienie wszystkie zmiany *.wadcfgx* w projekcie, a następnie wypychania aktualizacji kompletnej aplikacji. Jeśli nie jest to możliwe, upewnij się, że aktualizacji diagnostyki wypycha kompletna **PrivateConfig** zawierającej klucz sygnatury dostępu Współdzielonego.  
-* Podjęto sugestii i Centrum zdarzeń nadal nie działa.
+    Najpierw upewnij się, że informacje o centrum zdarzeń i konfiguracji są poprawne, jak wyjaśniono wcześniej. Czasami **PrivateConfig** jest resetowana w aktualizacji wdrożenia. Zalecanym rozwiązaniem jest wprowadzenie wszystkich zmian do *. wadcfgx* w projekcie, a następnie wypchnięcie pełnej aktualizacji aplikacji. Jeśli nie jest to możliwe, należy się upewnić, że aktualizacja diagnostyki wypycha pełną **PrivateConfig** , która zawiera klucz sygnatury dostępu współdzielonego.  
+* Podjęto próbę dokonania sugestii, a centrum zdarzeń nadal nie działa.
 
-    Spróbuj wykonać wyszukiwanie w tabeli usługi Azure Storage, która zawiera dzienniki i błędów dla usługi Azure Diagnostics, sama: **WADDiagnosticInfrastructureLogsTable**. Jedną z opcji jest, aby użyć narzędzia, takie jak [Eksploratora usługi Azure Storage](https://www.storageexplorer.com) połączyć się z tego konta magazynu, wyświetlić tę tabelę, a następnie dodaj zapytanie dla sygnatury czasowej w ostatnich 24 godzinach. To narzędzie umożliwia eksportowanie pliku CSV, a następnie otwórz go w aplikacji, takich jak program Microsoft Excel. Excel można łatwo wyszukiwać ciągi karty telefonicznej, takich jak **EventHubs**, aby zobaczyć, jaki dokładnie błąd jest zgłaszany.  
+    Spróbuj zajrzeć do tabeli usługi Azure Storage zawierającej dzienniki i błędy dla Diagnostyka Azure samego siebie: **WADDiagnosticInfrastructureLogsTable**. Jedną z opcji jest użycie narzędzia, takiego jak [Eksplorator usługi Azure Storage](https://www.storageexplorer.com) , aby nawiązać połączenie z tym kontem magazynu, wyświetlić tę tabelę i dodać zapytanie dla sygnatury czasowej w ciągu ostatnich 24 godzin. Możesz użyć narzędzia, aby wyeksportować plik CSV i otworzyć go w aplikacji, takiej jak program Microsoft Excel. Program Excel ułatwia wyszukiwanie ciągów kart wywołujących, takich jak **EventHubs**, aby zobaczyć, jaki błąd jest zgłaszany.  
 
-## <a name="next-steps"></a>Kolejne kroki
-• [Dowiedz się więcej o usłudze Event Hubs](https://azure.microsoft.com/services/event-hubs/)
+## <a name="next-steps"></a>Następne kroki
+• [Dowiedz się więcej o Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 
-## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Dodatek: Kompletny przykład pliku (.wadcfgx) konfiguracji diagnostyki platformy Azure
+## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Dodatek Zakończono przykład pliku konfiguracji Diagnostyka Azure (wadcfgx)
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -375,7 +375,7 @@ namespace EventHubListener
 </DiagnosticsConfiguration>
 ```
 
-Uzupełniające *ServiceConfiguration.Cloud.cscfg* dla tego przykładu wygląda podobnie do następującej.
+Uzupełniająca *Konfiguracja ServiceConfiguration. Cloud. cscfg* tego przykładu wygląda następująco.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -389,9 +389,9 @@ Uzupełniające *ServiceConfiguration.Cloud.cscfg* dla tego przykładu wygląda 
 </ServiceConfiguration>
 ```
 
-Odpowiedniki ustawień JSON dla maszyn wirtualnych jest następująca:
+Równoważne ustawienia JSON dla maszyn wirtualnych są następujące:
 
-Ustawienia publicznego:
+Ustawienia publiczne:
 ```JSON
 {
     "WadCfg": {
@@ -491,7 +491,7 @@ Ustawienia publicznego:
 
 ```
 
-Chronione ustawienia:
+Ustawienia chronione:
 ```JSON
 {
     "storageAccountName": "{account name}",
@@ -505,7 +505,7 @@ Chronione ustawienia:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
 * [Omówienie usługi Event Hubs](../../event-hubs/event-hubs-about.md)

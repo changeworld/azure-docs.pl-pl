@@ -1,6 +1,6 @@
 ---
-title: Jak używać transkrypcji usługi Batch — usługi mowy
-titlesuffix: Azure Cognitive Services
+title: Jak korzystać z transkrypcji usługi Batch — usługa mowy
+titleSuffix: Azure Cognitive Services
 description: Transkrypcja partii jest idealnym rozwiązaniem, jeśli chcesz także dużej ilości dźwięk w magazynie, takim jak obiektów blob platformy Azure. Za pomocą dedykowanego interfejsu API REST, można wskazać pliki audio, przy użyciu sygnatury dostępu współdzielonego (SAS) identyfikator URI i asynchronicznie otrzymywać transkrypcji.
 services: cognitive-services
 author: PanosPeriorellis
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: b71400c3ae3c1cc6737d9194b4d94bf0b9c7efa9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 088b6ef93631cb964979de3621453caa430c5b1e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606741"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559700"
 ---
 # <a name="why-use-batch-transcription"></a>Dlaczego warto używać usługi Batch transkrypcji?
 
@@ -32,7 +32,7 @@ Jak z wszystkich funkcji usługi rozpoznawania mowy, tworzenie klucz subskrypcji
 
 ### <a name="custom-models"></a>Modele niestandardowe
 
-Jeśli zamierzasz dostosować modele akustyczne lub języka, wykonaj kroki opisane w [dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md) i [dostosowywanie modeli językowych](how-to-customize-language-model.md). Używanie modeli utworzonych w transkrypcji usługi batch należy ich identyfikatory modelu. Ten identyfikator nie jest identyfikator punktu końcowego, który można znaleźć w widoku Szczegóły punktu końcowego, jest identyfikator modelu, który można pobrać po wybraniu szczegółów modeli.
+Jeśli planujesz dostosowanie modeli akustycznych lub modelowych, postępuj zgodnie z instrukcjami w temacie [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md) i [Dostosowywanie modeli języków](how-to-customize-language-model.md). Aby można było użyć utworzonych modeli w transkrypcji wsadowej, potrzebne są ich identyfikatory modeli. Ten identyfikator nie jest IDENTYFIKATORem punktu końcowego, który znajduje się w widoku szczegółów punktu końcowego, jest IDENTYFIKATORem modelu, który można pobrać po wybraniu szczegółów dla modeli.
 
 ## <a name="the-batch-transcription-api"></a>Transkrypcji interfejsu API usługi Batch
 
@@ -43,7 +43,7 @@ Interfejs API transkrypcji usługi Batch oferuje asynchroniczne transkrypcja mow
 1. Pobieranie transkrypcji
 
 > [!NOTE]
-> Interfejs API transkrypcji usługi Batch jest idealny dla wywołania roboczych, które zazwyczaj są gromadzone tysiące godzin audio. Ułatwia on także bardzo dużych ilości nagrania audio.
+> Interfejs API transkrypcji usługi Batch jest idealny dla wywołania roboczych, które zazwyczaj są gromadzone tysiące godzin audio. Ułatwia to transkrypcja dużych ilości nagrań dźwiękowych.
 
 ### <a name="supported-formats"></a>Obsługiwane formaty
 
@@ -55,11 +55,11 @@ Interfejs API transkrypcji usługi Batch obsługuje następujące formaty:
 | MP3 | MODUŁU PCM | 16-bitowych | stereo mono, kHz, 8 lub 16 |
 | OGG | DZIELE | 16-bitowych | stereo mono, kHz, 8 lub 16 |
 
-Dla strumieni audio stereo transkrypcji interfejsu API usługi Batch dzieli kanału lewy i prawy podczas transkrypcji. Każdy dwa pliki JSON z wynikiem są tworzone z pojedynczy kanał. Sygnatury czasowe na wypowiedź Włącz dla deweloperów utworzyć uporządkowany końcowego transkrypcji. To przykładowe żądanie zawiera właściwości filtrowania wulgaryzmów, znaki interpunkcyjne i sygnatury czasowe z poziomu programu word.
+Dla strumieni audio stereo transkrypcji interfejsu API usługi Batch dzieli kanału lewy i prawy podczas transkrypcji. Każdy dwa pliki JSON z wynikiem są tworzone z pojedynczy kanał. Sygnatury czasowe na wypowiedź Włącz dla deweloperów utworzyć uporządkowany końcowego transkrypcji. To przykładowe żądanie zawiera właściwości dotyczące filtrowania niewulgarności, interpunkcji i znaczników czasu na poziomie wyrazów.
 
 ### <a name="configuration"></a>Konfigurowanie
 
-Parametry konfiguracji są dostarczane jako dane JSON:
+Parametry konfiguracji są podane jako dane JSON:
 
 ```json
 {
@@ -82,31 +82,31 @@ Parametry konfiguracji są dostarczane jako dane JSON:
 
 ### <a name="configuration-properties"></a>Właściwości konfiguracji
 
-Aby skonfigurować transkrypcji, wykonaj następujące opcjonalne właściwości:
+Użyj tych opcjonalnych właściwości, aby skonfigurować transkrypcję:
 
 | Parametr | Opis |
 |-----------|-------------|
 | `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza filtrowanie wulgaryzmów `masked` gwiazdek, która zastępuje wulgaryzmów `removed` z wyników, które powoduje usunięcie wszystkich wulgaryzmów lub `tags` dodaje tagi "wulgaryzmów". Ustawieniem domyślnym jest `masked`. |
 | `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `none` która wyłącza znak interpunkcyjny, `dictated` co oznacza jawne znak interpunkcyjny, `automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `dictatedandautomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. |
- | `AddWordLevelTimestamps` | Określa, jeśli sygnatury czasowe z poziomu programu word powinna być dodana do danych wyjściowych. Akceptowane wartości to `true` umożliwiająca sygnatury czasowe z poziomu programu word i `false` (wartość domyślna) można ją wyłączyć. |
- | `AddSentiment` | Określa, że wskaźniki nastrojów klientów powinny zostać dodane do wypowiedź. Akceptowane wartości to `true` umożliwiająca tonacji na wypowiedź i `false` (wartość domyślna) można ją wyłączyć. |
- | `AddDiarization` | Określa, że ten alalysis diarization powinny być przeprowadzane na danych wejściowych, który powinien być mono kanał, zawierający dwie głosów. Akceptowane wartości to `true` umożliwiająca diarization i `false` (wartość domyślna) można ją wyłączyć. Wymaga to również `AddWordLevelTimestamps` należy ustawić na wartość true.|
+ | `AddWordLevelTimestamps` | Określa, czy sygnatury czasowe poziomu słowa mają być dodawane do danych wyjściowych. Akceptowane wartości to `true` między innymi znaczniki czasu na poziomie programu `false` Word i (wartość domyślna). |
+ | `AddSentiment` | Należy dodać tonacji do wypowiedź. Akceptowane wartości to `true` tonacji na wypowiedź i `false` (wartość domyślna), aby je wyłączyć. |
+ | `AddDiarization` | Określa, że diarization alalysis należy wykonać na wejściu, który powinien być kanałem mono zawierającym dwa głosy. Akceptowane wartości to `true` diarization i `false` (wartość domyślna), aby je wyłączyć. Wymagane `AddWordLevelTimestamps` jest również ustawienie wartości true.|
 
 ### <a name="storage"></a>Magazyn
 
-Usługa Batch obsługuje transkrypcji [usługi Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) do odczytywania audio i transkrypcje zapisywania do magazynu.
+Transkrypcja usługi Batch obsługuje [usługę Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) do odczytu i zapisywania transkrypcji w magazynie.
 
 ## <a name="webhooks"></a>Elementy webhook
 
-Sondowania stanu transkrypcji nie może być większość wydajne lub zapewnia najlepsze środowisko użytkownika. Aby wykonać sondowanie dotyczące stanu, należy zarejestrować wywołania zwrotne, które powiadomi klienta po zakończeniu długotrwałych zadań transkrypcji.
+Sondowanie stanu transkrypcji może nie być najbardziej wydajne lub zapewniają najlepsze środowisko użytkownika. Aby przeprowadzić sondowanie w poszukiwaniu stanu, można zarejestrować wywołania zwrotne, co spowoduje powiadomienie klienta o zakończeniu długotrwałych zadań transkrypcji.
 
-Aby uzyskać więcej informacji, zobacz [elementów Webhook](webhooks.md).
+Aby uzyskać więcej informacji, [](webhooks.md)Zobacz elementy webhook.
 
-## <a name="speaker-separation-diarization"></a>Rozdzielenie osoby mówiącej (Diarization)
+## <a name="speaker-separation-diarization"></a>Separacja głośników (Diarization)
 
-Diarization jest proces głośników w fragmentu audio. Nasz potok usługi Batch obsługuje Diarization i jest w stanie rozpoznawać dwóch prelegentów na nagrania mono kanału.
+Diarization to proces oddzielania głośników w części audio. Nasz potok wsadowy obsługuje Diarization i jest w stanie rozpoznawać dwa głośniki w nagraniach kanału mono.
 
-Aby zażądać, że żądania transkrypcję audio są przetwarzane dla diarization, wystarczy dodać odpowiedniego parametru w żądaniu HTTP, jak pokazano poniżej.
+Aby zażądać przetworzenia żądania transkrypcji audio dla diarization, wystarczy dodać odpowiedni parametr w żądaniu HTTP, jak pokazano poniżej.
 
  ```json
 {
@@ -122,30 +122,30 @@ Aby zażądać, że żądania transkrypcję audio są przetwarzane dla diarizati
 }
 ```
 
-Sygnatury czasowe z poziomu programu Word będzie również musiał zostać "włączona", jak wskazać parametrów w żądaniu powyżej.
+Sygnatury czasowe poziomu słów również muszą mieć wartość "włączone", ponieważ parametry w powyższym żądaniu wskazują.
 
-Odpowiadające im pliki audio będzie zawierać Prelegenci identyfikowana przez numer (obecnie obsługujemy tylko dwa głosy, więc prelegentów zostaną zidentyfikowane jako "osoby mówiącej 1" i "Osoby mówiącej 2") następuje dane wyjściowe transkrypcji.
+Odpowiedni dźwięk będzie zawierać głośniki identyfikowane przez liczbę (obecnie obsługujemy tylko dwa głosy, więc głośniki będą identyfikowane jako "prelegent 1" i "prelegent 2"), a następnie dane wyjściowe transkrypcji.
 
-Należy również zauważyć, że Diarization nie jest dostępna w Stereo nagrania. Ponadto JSON wszystkie dane wyjściowe będą zawierać tag osoby mówiącej. Jeżeli nie zastosowano diarization, widoczna będzie "osoby mówiącej: Wartość null "w kodzie JSON, dane wyjściowe.
+Należy również zauważyć, że Diarization nie jest dostępny w nagraniach stereo. Ponadto wszystkie dane wyjściowe JSON będą zawierać tag głośników. Jeśli diarization nie jest używana, zostanie wyświetlona wartość "Prelegent: Wartość null w danych wyjściowych JSON.
 
 > [!NOTE]
-> Diarization jest dostępna we wszystkich regionach, jak i dla wszystkich ustawień regionalnych!
+> Diarization jest dostępny we wszystkich regionach i dla wszystkich ustawień regionalnych.
 
 ## <a name="sentiment"></a>Opinia
 
-Wskaźniki nastrojów klientów jest nowa funkcja interfejsu API usługi Batch transkrypcji i ważną funkcję w domenie Centrum połączenia. Klienci mogą używać `AddSentiment` parametrów na ich żądania
+Tonacji to nowa funkcja w interfejsie API transkrypcji usługi Batch i jest ważną funkcją w domenie usługi Call Center. Klienci mogą używać `AddSentiment` parametrów do ich żądań, aby
 
-1.  Uzyskuj szczegółowe informacje dotyczące zadowolenia klientów
-2.  Uzyskaj wgląd na wydajność agentów (zespół przyjmowanie wywołań)
-3.  Wykrywanie dokładny moment w czasie, gdy wywołanie trwało Włącz w kierunku ujemna
-4.  Wykrywanie, co poszło dobrze w przypadku, gdy włączenie wywołania ujemny wynik dodatni
-5.  Identyfikowanie klientów lubi i co one podoba produktu lub usługi
+1.  Uzyskaj wgląd w szczegółowe informacje na temat zadowolenia klientów
+2.  Uzyskaj wgląd w wydajność agentów (zespół przejmowania wywołań)
+3.  Lokalizowanie dokładnego punktu w czasie, gdy wywołanie zajęło negatywny kierunek
+4.  Określ, co poszło dobrze, gdy wyłączają ujemne wywołania dodatnie
+5.  Określ, co Ci klienci i co nie lubię o produkcie lub usłudze
 
-Wynik tonacji skategoryzowano według segmentu audio, gdzie audio segmentu jest zdefiniowany jako okres od początku wypowiedź (przesunięciem) i wyciszenia wykrywania końca strumienia bajtów. Cały tekst w tym segmencie jest używane do obliczania wskaźniki nastrojów klientów. Firma Microsoft nie obliczać wartości tonacji agregacji całego połączenia lub całego mowy poszczególnych kanałów. Tych agregacji są pozostawiane do właściciela domeny, do dalszego zastosowania.
+Tonacji jest oceniane dla segmentu audio, gdzie segment audio jest zdefiniowany, gdy czas przepada między początkiem wypowiedź (offset) i wykryciem ostatniego strumienia bajtów. Cały tekst w tym segmencie jest używany do obliczania tonacji. NIE obliczamy żadnych zagregowanych wartości tonacji dla całego wywołania ani całej mowy każdego kanału. Te agregacje pozostały do właściciela domeny w celu dalszej zastosowania.
 
-Wskaźniki nastrojów klientów są stosowane w formularzu leksykalne.
+Tonacji jest zastosowany do formy leksykalnej.
 
-Przykładowe dane wyjściowe JSON wygląda jak poniżej:
+Przykład danych wyjściowych JSON wygląda następująco:
 
 ```json
 {
@@ -180,36 +180,36 @@ Przykładowe dane wyjściowe JSON wygląda jak poniżej:
   ]
 }
 ```
-Funkcja korzysta z modelu tonacji, która jest obecnie dostępna w wersji Beta.
+Funkcja używa modelu tonacji, który jest obecnie w wersji beta.
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Pełne przykłady są dostępne w [repozytorium przykładów GitHub](https://aka.ms/csspeech/samples) wewnątrz `samples/batch` podkatalogu.
+Kompletne przykłady są dostępne w `samples/batch` [repozytorium przykładowym GitHub](https://aka.ms/csspeech/samples) w podkatalogu.
 
-Trzeba dostosować przykładowego kodu, informacje o subskrypcji, usługa region sygnatury dostępu Współdzielonego identyfikator URI wskazujący na plik dźwiękowy transkrypcja i identyfikatory modelu, w przypadku, gdy chcesz użyć niestandardowego modelu akustycznego lub języka.
+Musisz dostosować przykładowy kod przy użyciu informacji o subskrypcji, regionu usługi, identyfikatora URI sygnatury dostępu współdzielonego, wskazującego plik audio do Transkrypcja, oraz identyfikatorów modeli w przypadku, gdy chcesz użyć niestandardowego modelu akustycznego lub języka.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
-Przykładowy kod będzie instalacji klienta i przesłać żądanie transkrypcji. Zostanie następnie sondowania pod kątem informacji o stanie i Drukuj szczegóły o postępie transkrypcji.
+Przykładowy kod spowoduje skonfigurowanie klienta i przesłanie żądania transkrypcji. Następnie będzie sondował informacje o stanie i wydrukować szczegółowe informacje o postępie transkrypcji.
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
-Aby uzyskać szczegółowe informacje dotyczące poprzedniego wywołania, zobacz nasze [dokument struktury Swagger](https://westus.cris.ai/swagger/ui/index). Aby uzyskać pełny przykład pokazano poniżej, przejdź do [GitHub](https://aka.ms/csspeech/samples) w `samples/batch` podkatalogu.
+Aby uzyskać szczegółowe informacje o poprzednich wywołaniach, zobacz [dokument struktury Swagger](https://westus.cris.ai/swagger/ui/index). Aby wyświetlić pełny przykład, przejdź do witryny [GitHub](https://aka.ms/csspeech/samples) w `samples/batch` podkatalogu.
 
 Zwróć uwagę na asynchroniczne Instalatora w celu opublikowanie audio i odbieranie stanu transkrypcji. Klient, który tworzysz to klient HTTP platformy .NET. Brak `PostTranscriptions` Metoda przesyłania plików audio i `GetTranscriptions` metody do odbierania wyników. `PostTranscriptions` Zwraca uchwyt, a `GetTranscriptions` używa jej do utworzenia dojście można pobrać stanu transkrypcji.
 
 Bieżący kod przykładowy nie określono modelu niestandardowego. Usługa używa modele planu bazowego dla przepisywania pliku lub plików. Aby określić te modele, można przekazać w tej samej metody identyfikatory modelu akustycznego i modelu języka.
 
 > [!NOTE]
-> W transkrypcji punktu odniesienia nie jest wymagana do deklarowania Identyfikatora dla modeli linii bazowej. Jeśli określisz tylko język, w identyfikator modelu (a nie Identyfikatora model akustyczny), pasujące model akustyczny wybierana jest. Jeśli określono tylko identyfikator model akustyczny, dopasowania modelu języka jest wybierana.
+> W przypadku transkrypcji bazowej nie trzeba deklarować identyfikatora dla modeli bazowych. Jeśli określisz tylko identyfikator modelu języka (bez identyfikatora modelu akustycznego), zostanie automatycznie wybrany zgodny model akustyczny. Jeśli określisz tylko identyfikator modelu akustycznego, zostanie automatycznie wybrany pasujący model języka.
 
 ## <a name="download-the-sample"></a>Pobierz przykład
 
-Można znaleźć przykład w `samples/batch` katalogu w [repozytorium przykładów GitHub](https://aka.ms/csspeech/samples).
+Przykład można znaleźć w `samples/batch` katalogu w przykładowym [repozytorium GitHub](https://aka.ms/csspeech/samples).
 
 > [!NOTE]
-> Batch transkrypcji zadania zaplanowane na optymalne, nie ma żadnych szacowany czas podczas zadania zmieni się w stanie uruchomienia. Jeden raz w stanie uruchomienia, rzeczywiste transkrypcji są przetwarzane szybciej niż audio czasu rzeczywistego.
+> Zadania transkrypcji usługi Batch są planowane według najlepszego nakładu pracy, ale nie ma oszacowania czasu, gdy zadanie zostanie zmienione w stanie uruchomionym. Po uruchomieniu rzeczywista transkrypcja jest przetwarzana szybciej niż w czasie rzeczywistym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)

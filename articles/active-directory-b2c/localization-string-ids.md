@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: da1390de4e2eb0624032dc490416e7b6e5d61baa
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67846849"
 ---
 # <a name="localization-string-ids"></a>Identyfikatory ciągów lokalizacji
@@ -29,24 +29,24 @@ Następujące identyfikatory są używane dla definicji zawartości o IDENTYFIKA
 
 | id | Wartość domyślna |
 | -- | ------------- |
-| **local_intro_email** | Zaloguj się przy użyciu istniejącego konta |
+| **local_intro_email** | Zaloguj się za pomocą istniejącego konta |
 | **logonIdentifier_email** | Adres e-mail |
 | **requiredField_email** | Wprowadź swój adres e-mail |
 | **invalid_email** | Wprowadź prawidłowy adres e-mail |
 | **email_pattern** | ^ [a-za-Z0-9.! # $% & "" *+/=? ^ _\`{\|} ~-] + @ [a-za-Z0-9-] + (?:\\. [ a-za-Z0-9-] +)* $ |
-| **local_intro_username** | Zaloguj się przy użyciu nazwy użytkownika |
+| **local_intro_username** | Zaloguj się przy użyciu swojej nazwy użytkownika |
 | **logonIdentifier_username** | Nazwa użytkownika |
 | **requiredField_username** | Wprowadź swoją nazwę użytkownika |
 | **Hasło** | Hasło |
-| **requiredField_password** | Wprowadź hasło |
+| **requiredField_password** | Wprowadź swoje hasło |
 | **invalid_password** | Wprowadzone hasło ma nieoczekiwany format. |
 | **forgotpassword_link** | Nie pamiętasz hasła? |
 | **createaccount_intro** | Nie masz jeszcze konta? |
-| **createaccount_link** | Utwórz konto teraz |
+| **createaccount_link** | Zarejestruj się teraz |
 | **divider_title** | LUB |
 | **cancel_message** | Użytkownik zapomniał hasła |
 | **button_signin** | Logowanie |
-| **social_intro** | Zaloguj się przy użyciu konta społecznościowego |
+| **social_intro** | Zaloguj się za pomocą swojego konta społecznościowego |
   **remember_me** |Nie wylogowuj mnie|
 | **unknown_error** | Mamy problemy z zalogowaniem się. Spróbuj ponownie później. |
 
@@ -83,10 +83,10 @@ Poniższy przykład lokalizuje dostawcę tożsamości w serwisie Facebook do ję
 
 | id | Wartość domyślna |
 | -- | ------------- |
-| **UserMessageIfInvalidPassword** | Hasło jest niepoprawne. |
+| **UserMessageIfInvalidPassword** | Twoje hasło jest nieprawidłowe. |
 | **UserMessageIfClaimsPrincipalDoesNotExist** | Nie możemy znaleźć Twojego konta. |
-| **UserMessageIfOldPasswordUsed** | Wygląda na to, że użyto starego hasła. |
-| **DefaultMessage** | Nieprawidłowa nazwa użytkownika lub hasło. |
+| **UserMessageIfOldPasswordUsed** | Prawdopodobnie używasz starego hasła. |
+| **DefaultMessage** | Nieprawidłowa nazwa użytkownika lub nieprawidłowe hasło. |
 | **UserMessageIfUserAccountDisabled** | Twoje konto zostało zablokowane. Skontaktuj się z pomocą techniczną, aby ją odblokować, a następnie spróbuj ponownie. |
 | **UserMessageIfUserAccountLocked** | Twoje konto jest tymczasowo zablokowane, aby zapobiec nieautoryzowanemu użyciu. Spróbuj ponownie później. |
 | **AADRequestsThrottled** | W tej chwili jest zbyt wiele żądań. Poczekaj chwilę i spróbuj ponownie. |
@@ -97,7 +97,7 @@ Poniżej przedstawiono identyfikatory dla definicji zawartości z identyfikatore
 
 | id | Wartość domyślna |
 | -- | ------------- |
-| **ver_sent** | Kod weryfikacyjny został wysłany do: |
+| **ver_sent** | Kod weryfikacyjny został wysłany na adres: |
 | **ver_but_default** | Domyślny |
 | **cancel_message** | Użytkownik anulował wprowadzanie niepotwierdzonych informacji |
 | **preloader_alt** | Czekaj |
@@ -105,30 +105,30 @@ Poniżej przedstawiono identyfikatory dla definicji zawartości z identyfikatore
 | **alert_yes** | Tak |
 | **error_fieldIncorrect** | Co najmniej jedno pole jest wypełniane nieprawidłowo. Sprawdź swoje wpisy i spróbuj ponownie. |
 | **czteroletniego** | Rok |
-| **verifying_blurb** | Zaczekaj na przetworzenie informacji. |
+| **verifying_blurb** | Poczekaj na przetworzenie Twoich informacji. |
 | **button_cancel** | Cancel |
 | **ver_fail_no_retry** | Wykonano zbyt wiele nieudanych prób. Spróbuj ponownie później. |
 | **bieżącym** | Miesiąc |
 | **ver_success_msg** | Zweryfikowano adres E-mail. Teraz można kontynuować. |
-| **months** | Styczeń, luty, Marzec, Kwiecień, maj, czerwiec, Lipiec, sierpień, wrzesień, październik, listopad, grudzień |
+| **months** | styczeń, luty, marzec, kwiecień, maj, czerwiec, lipiec, sierpień, wrzesień, październik, listopad, grudzień |
 | **ver_fail_server** | Wystąpił problem podczas weryfikowania Twojego adresu e-mail. Wprowadź prawidłowy adres e-mail i spróbuj ponownie. |
 | **error_requiredFieldMissing** | Brak wymaganego pola. Wypełnij wszystkie wymagane pola i spróbuj ponownie. |
-| **initial_intro** | Podaj następujące informacje. |
+| **initial_intro** | Podaj następujące szczegóły. |
 | **ver_but_resend** | Wyślij nowy kod |
 | **button_continue** | Create |
 | **error_passwordEntryMismatch** | Pola wprowadzania hasła nie są zgodne. Wprowadź to samo hasło w obu polach i spróbuj ponownie. |
 | **ver_incorrect_format** | Niepoprawny format. |
 | **ver_but_edit** | Zmień adres e-mail |
-| **ver_but_verify** | Weryfikuj kod |
+| **ver_but_verify** | Zweryfikuj kod |
 | **alert_no** | Nie |
 | **ver_info_msg** | Kod weryfikacyjny został wysłany do Twojej skrzynki odbiorczej. Skopiuj ją do poniższego pola wejściowego. |
 | **dzień** | Dzień |
 | **ver_fail_throttled** | Zbyt wiele żądań do zweryfikowania tego adresu e-mail. Zaczekaj chwilę, a następnie spróbuj ponownie. |
 | **helplink_text** | Co to jest? |
 | **ver_fail_retry** | Ten kod jest nieprawidłowy. Spróbuj ponownie. |
-| **alert_title** | Anuluj wprowadzanie szczegółów |
+| **alert_title** | Anuluj wprowadzanie swoich danych |
 | **required_field** | Te informacje są wymagane. |
-| **alert_message** | Czy na pewno chcesz anulować wprowadzanie szczegółów? |
+| **alert_message** | Czy na pewno chcesz anulować wprowadzanie danych? |
 | **ver_intro_msg** | Konieczna jest weryfikacja. Kliknij przycisk Wyślij. |
 | **ver_input** | Kod weryfikacyjny |
 
@@ -162,29 +162,29 @@ Poniżej przedstawiono identyfikatory dla definicji zawartości o IDENTYFIKATORz
 | **button_verify** | Zadzwoń do mnie |
 | **country_code_label** | Numer kierunkowy kraju |
 | **cancel_message** | Użytkownik anulował uwierzytelnianie wieloskładnikowe |
-| **text_button_send_second_code** | Wyślij nowy kod |
+| **text_button_send_second_code** | wyślij nowy kod |
 | **code_pattern** | \\d{6} |
 | **intro_mixed** | Mamy dla Ciebie następujący numer rekordu. Możemy wysłać kod za pośrednictwem wiadomości SMS lub telefonu w celu uwierzytelnienia użytkownika. |
 | **intro_mixed_p** | W rekordach są dostępne następujące numery. Wybierz numer telefonujący lub Wyślij kod za pośrednictwem wiadomości SMS w celu uwierzytelnienia użytkownika. |
-| **button_verify_code** | Weryfikuj kod |
+| **button_verify_code** | Zweryfikuj kod |
 | **requiredField_code** | Wprowadź otrzymany kod weryfikacyjny |
 | **invalid_code** | Wprowadź otrzymany 6-cyfrowy kod |
 | **button_cancel** | Cancel |
 | **local_number_input_placeholder_text** | Numer telefonu |
 | **button_retry** | Ponawianie próby |
-| **alternative_text** | Nie mam mojego telefonu |
+| **alternative_text** | Nie mam swojego telefonu |
 | **intro_phone_p** | W rekordach są dostępne następujące numery. Wybierz numer telefonu, z którym możemy się uwierzytelnić. |
 | **intro_phone** | Mamy dla Ciebie następujący numer rekordu. Będziemy telefonować. |
 | **enter_code_text_intro** | Wprowadź kod weryfikacyjny poniżej lub  |
-| **intro_entry_phone** | Wprowadź numer poniżej, aby można było uwierzytelnić się za pomocą telefonu. |
-| **intro_entry_sms** | Wprowadź numer poniżej, aby można było wysłać kod za pośrednictwem wiadomości SMS w celu uwierzytelnienia użytkownika. |
+| **intro_entry_phone** | Wprowadź poniżej numer, na który możemy zadzwonić, aby Cię uwierzytelnić. |
+| **intro_entry_sms** | Wprowadź poniżej numer, na który możemy wysłać wiadomość SMS z kodem, aby Cię uwierzytelnić. |
 | **button_send_code** | Wyślij kod |
 | **invalid_number** | Wprowadź prawidłowy numer telefonu |
 | **intro_sms** | Mamy dla Ciebie następujący numer rekordu. Wyślemy kod za pośrednictwem wiadomości SMS w celu uwierzytelnienia użytkownika. |
-| **intro_entry_mixed** | Wprowadź numer poniżej, aby można było wysłać kod za pośrednictwem wiadomości SMS lub telefonu w celu uwierzytelnienia użytkownika. |
+| **intro_entry_mixed** | Wprowadź poniżej numer, na który możemy wysłać wiadomość SMS z kodem lub zadzwonić, aby Cię uwierzytelnić. |
 | **number_pattern** | ^\\+ (?: [0-9] [\\x20-]?) {6,14}[0-9] $ |
 | **intro_sms_p** |W rekordach są dostępne następujące numery. Wybierz numer, który możemy wysłać kod za pośrednictwem wiadomości SMS w celu uwierzytelnienia użytkownika. |
-| **requiredField_countryCode** | Wybierz swój kod kraju |
+| **requiredField_countryCode** | Wybierz kod kraju |
 | **requiredField_number** | Wprowadź numer telefonu |
 | **country_code_input_placeholder_text** |Kraj lub region |
 | **number_label** | Numer telefonu |

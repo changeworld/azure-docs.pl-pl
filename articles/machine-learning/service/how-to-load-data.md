@@ -1,5 +1,5 @@
 ---
-title: 'Obciążenia: przeznaczonego do przygotowania danych zestawu SDK języka Python'
+title: 'Ładowanie: zestaw SDK języka Python do przygotowywania danych'
 titleSuffix: Azure Machine Learning service
 description: Więcej informacji na temat ładowania danych przy użyciu zestawu SDK usługi Azure Machine Learning danych przedprodukcyjnym. Możesz załadować różnego rodzaju dane wejściowe, określić typy plików danych i parametry lub automatycznie Wykryj typ pliku przy użyciu funkcji odczytu inteligentne zestawu SDK.
 services: machine-learning
@@ -10,31 +10,31 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 02/22/2019
+ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: fef3281f1f4e727b58878439e3f6456fee3b6241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd60d9f9bee55ef1342fe344e8b4f2f64e313331
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752935"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360976"
 ---
-# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
-W tym artykule dowiesz się różnych metod ładowania danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data.  Zestaw SDK obsługuje wiele funkcji pozyskiwania danych, takich jak:
+# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Ładowanie i odczytywanie danych za pomocą zestawu SDK przygotowywania danych Azure Machine Learning
+W tym artykule przedstawiono różne metody ładowania danych przy użyciu zestawu SDK przygotowywania danych Azure Machine Learning.  Zestaw SDK obsługuje wiele funkcji pozyskiwania danych, takich jak:
 
 * Ładowanie z wiele typów plików za pomocą analizy parametru wnioskowania (kodowanie, separator, nagłówki)
 * Konwersja typu użycia wnioskowania podczas ładowania pliku
 * Funkcja obsługi połączeń MS SQL Server i usługi Azure Data Lake Storage
 
 > [!Important]
-> Jeśli tworzysz nowe rozwiązanie, spróbuj [zestawów danych Learning maszyny Azure](how-to-explore-prepare-data.md) (wersja zapoznawcza) do eksploracji danych i przygotowania. Zestawy danych to następna wersja przygotowywanie danych zestawu SDK, oferując rozszerzona funkcjonalność zarządzania zestawów danych w przypadku rozwiązań sztucznej Inteligencji.
-> Jeśli używasz `azureml-dataprep` pakietu do utworzenia przepływu danych przy użyciu przekształceń zamiast `azureml-datasets` pakietu, aby utworzyć zestaw danych, nie będzie można później użyć migawki lub numerów wersji zestawów danych.
+> Jeśli tworzysz nowe rozwiązanie, wypróbuj [Azure Machine Learning zestawy](how-to-explore-prepare-data.md) danych (wersja zapoznawcza) na potrzeby eksploracji i przygotowania. Zestawy danych to następna wersja zestawu SDK przygotowywania danych, oferująca rozszerzoną funkcję zarządzania zestawami w ramach rozwiązań AI.
 
-W poniższej tabeli przedstawiono szereg funkcji, które służą do ładowania danych z popularnych typów plików.
 
-| Typ pliku | Funkcja | Opis łącza |
+W poniższej tabeli przedstawiono wybór funkcji służących do ładowania danych ze wspólnych typów plików.
+
+| Typ pliku | Funkcja | Link odwołania |
 |-------|-------|-------|
-|Dowolne|`auto_read_file()`|[Odwołanie](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
+|Any|`auto_read_file()`|[Odwołanie](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
 |Text|`read_lines()`|[Odwołanie](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-lines-path--filepath--header--azureml-dataprep-api-dataflow-promoteheadersmode----promoteheadersmode-none--0---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---skip-rows--int---0--skip-mode--azureml-dataprep-api-dataflow-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
 |CSV|`read_csv()`|[Odwołanie](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-csv-path--filepath--separator--str--------header--azureml-dataprep-api-dataflow-promoteheadersmode----promoteheadersmode-constantgrouped--3---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---quoting--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--skip-mode--azureml-dataprep-api-dataflow-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false--archive-options--azureml-dataprep-api--archiveoption-archiveoptions---none--infer-column-types--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
 |Excel|`read_excel()`|[Odwołanie](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-excel-path--filepath--sheet-name--str---none--use-column-headers--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--include-path--bool---false--infer-column-types--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
@@ -43,7 +43,7 @@ W poniższej tabeli przedstawiono szereg funkcji, które służą do ładowania 
 
 ## <a name="load-data-automatically"></a>Automatyczne ładowanie danych
 
-Aby załadować dane automatycznie bez określenia typu pliku, należy użyć `auto_read_file()` funkcji. Typ pliku i argumenty wymagane do jego odczytu są automatycznie wywnioskować.
+Aby automatycznie ładować dane bez określania typu pliku, należy użyć `auto_read_file()` funkcji. Typ pliku i argumenty wymagane do jego odczytania są wywnioskowane automatycznie.
 
 ```python
 import azureml.dataprep as dprep
@@ -51,13 +51,13 @@ import azureml.dataprep as dprep
 dflow = dprep.auto_read_file(path='./data/any-file.txt')
 ```
 
-Funkcja ta jest przydatna do automatycznego wykrywania typu pliku, kodowanie i inne argumenty analizy wszystko z jednego wpisu wygodny punkt. Funkcja automatycznie wykonuje następujące czynności, które są najczęściej wykonywane podczas ładowania danych podzielonej:
+Ta funkcja jest przydatna do automatycznego wykrywania typu pliku, kodowania i innych argumentów analizy z jednego wygodnego punktu wejścia. Funkcja automatycznie wykonuje również następujące czynności, które są wykonywane często podczas ładowania rozdzielanych danych:
 
-* Wnioskowanie i ustawiania ogranicznik
-* Pomija puste rekordy w górnej części pliku
-* Wnioskowanie i ustawiając wiersz nagłówka
+* Wnioskowanie i ustawienie ogranicznika
+* Pomijanie pustych rekordów w górnej części pliku
+* Wnioskowanie i Ustawianie wiersza nagłówka
 
-Alternatywnie Jeśli znasz pliku, wpisz wcześniej i chcesz jawnie kontrolować sposób, który jest analizowany, należy użyć funkcji specyficznych dla pliku.
+Alternatywnie, jeśli znasz typ pliku przed czasem i chcesz jawnie kontrolować sposób analizowania, użyj funkcji specyficznych dla pliku.
 
 ## <a name="load-text-line-data"></a>Ładowanie danych wiersza tekstu
 
@@ -101,7 +101,7 @@ Aby wykluczyć wiersze podczas ładowania, należy zdefiniować `skip_rows` para
 
 ```python
 dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
-                          skip_rows=1)
+                       skip_rows=1)
 dflow.head(5)
 ```
 
@@ -128,7 +128,7 @@ Dane wyjściowe:
 
 Domyślnie program Azure Machine Learning Prep zestawu SDK usługi Data nie zmienia typu danych. Źródła danych, które czytasz z jest plikiem tekstowym, aby zestaw SDK odczytuje wszystkie wartości jako ciągi. W tym przykładzie kolumny liczbowe ma być analizowana pod jako liczby. Ustaw `inference_arguments` parametr `InferenceArguments.current_culture()` automatycznie wywnioskować i przekonwertować typy kolumn podczas plik odczytany.
 
-```
+```python
 dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1,
                           inference_arguments=dprep.InferenceArguments.current_culture())
@@ -168,7 +168,8 @@ dflow.head(5)
 Dane wyjściowe pokazują, że dane w arkuszu drugi miał trzy puste wiersze przed nagłówków. `read_excel()` Funkcja zawiera parametry opcjonalne dla pomijania wierszy i korzystanie z nagłówków. Uruchom poniższy kod, aby pominąć pierwsze trzy wiersze, a następnie użyć czwartego wiersza jako nagłówków.
 
 ```python
-dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
+dflow = dprep.read_excel(path='./data/excel.xlsx',
+                         sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
 ```
 
 ||Ranga|Stanowisko|Studio|Cały świat|Wywiad krajowy / %|Kolumna1|Zbiorowość / %|Kolumna2|Rok ^|
@@ -178,10 +179,11 @@ dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_colu
 
 ## <a name="load-fixed-width-data-files"></a>Ładowanie plików danych o stałej szerokości
 
-Aby załadować pliki o stałej szerokości, należy określić listę znaków offsetowych. Pierwsza kolumna jest zawsze zakłada się, że rozpoczynają się od przesunięcia, zerowego.
+Aby załadować pliki o stałej szerokości, należy określić listę przesunięć znaków. Pierwsza kolumna jest zawsze zakłada się, że rozpoczynają się od przesunięcia, zerowego.
 
 ```python
-dflow = dprep.read_fwf('./data/fixed_width_file.txt', offsets=[7, 13, 43, 46, 52, 58, 65, 73])
+dflow = dprep.read_fwf('./data/fixed_width_file.txt',
+                       offsets=[7, 13, 43, 46, 52, 58, 65, 73])
 dflow.head(5)
 ```
 
@@ -195,8 +197,8 @@ Aby uniknąć wykrywania nagłówka i analizy danych, należy przekazać `Promot
 
 ```python
 dflow = dprep.read_fwf('./data/fixed_width_file.txt',
-                          offsets=[7, 13, 43, 46, 52, 58, 65, 73],
-                          header=dprep.PromoteHeadersMode.NONE)
+                       offsets=[7, 13, 43, 46, 52, 58, 65, 73],
+                       header=dprep.PromoteHeadersMode.NONE)
 ```
 
 ||Kolumna1|Kolumna2|Kolumna3|Kolumna4|Column5|Kolumna6|Column7|Column8|Column9|
@@ -207,7 +209,7 @@ dflow = dprep.read_fwf('./data/fixed_width_file.txt',
 
 ## <a name="load-sql-data"></a>Ładowanie danych SQL
 
-Zestaw SDK może również ładowanie danych ze źródła SQL. Aktualnie obsługiwana jest tylko program Microsoft SQL Server. Do odczytywania danych z programu SQL server, należy utworzyć [ `MSSQLDataSource` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.mssqldatasource?view=azure-dataprep-py) obiekt, który zawiera parametry połączenia. Parametr hasła `MSSQLDataSource` akceptuje [ `Secret` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#register-secret-value--str--id--str---none-----azureml-dataprep-api-engineapi-typedefinitions-secret) obiektu. Można utworzyć wpisu tajnego obiektu na dwa sposoby:
+Zestaw SDK może również ładowanie danych ze źródła SQL. Aktualnie obsługiwana jest tylko program Microsoft SQL Server. Aby odczytać dane z programu SQL Server, Utwórz [`MSSQLDataSource`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.mssqldatasource?view=azure-dataprep-py) obiekt zawierający parametry połączenia. Parametr `MSSQLDataSource` [Password`Secret`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#register-secret-value--str--id--str---none-----azureml-dataprep-api-engineapi-typedefinitions-secret) akceptuje obiekt. Można utworzyć wpisu tajnego obiektu na dwa sposoby:
 
 * Zarejestruj wpisu tajnego i jego wartość przy użyciu aparatu wykonywania.
 * Tworzenie wpisu tajnego z tylko `id` (Jeśli wartość wpisu tajnego jest już zarejestrowany w środowisku wykonawczym) przy użyciu `dprep.create_secret("[SECRET-ID]")`.
@@ -294,15 +296,18 @@ servicePrincipalAppId = "8dd38f34-1fcb-4ff9-accd-7cd60b757174"
 
 ### <a name="acquire-an-oauth-access-token"></a>Uzyskiwanie tokenu dostępu OAuth
 
-Użyj `adal` pakietu (`pip install adal`) do tworzenia kontekstu uwierzytelniania w dzierżawie MSFT i uzyskiwanie tokenu dostępu OAuth. Azure Data Lake Store, zasobu w żądania tokenu musi być dla "https:\//datalake.azure.net", która różni się od najbardziej innych zasobów platformy Azure.
+Użyj `adal` pakietu (`pip install adal`) do tworzenia kontekstu uwierzytelniania w dzierżawie MSFT i uzyskiwanie tokenu dostępu OAuth. W przypadku ADLS zasób w żądaniu tokenu musi mieć wartość "https:\//datalake.Azure.NET", który jest inny niż w przypadku większości innych zasobów platformy Azure.
 
 ```python
 import adal
 from azureml.dataprep.api.datasources import DataLakeDataSource
 
-ctx = adal.AuthenticationContext('https://login.microsoftonline.com/microsoft.onmicrosoft.com')
-token = ctx.acquire_token_with_client_certificate('https://datalake.azure.net/', servicePrincipalAppId, certificate, certThumbprint)
-dflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', accessToken=token['accessToken']))
+ctx = adal.AuthenticationContext(
+    'https://login.microsoftonline.com/microsoft.onmicrosoft.com')
+token = ctx.acquire_token_with_client_certificate(
+    'https://datalake.azure.net/', servicePrincipalAppId, certificate, certThumbprint)
+dflow = dprep.read_csv(path=DataLakeDataSource(
+    path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', accessToken=token['accessToken']))
 dflow.to_pandas_dataframe().head()
 ```
 
@@ -314,6 +319,6 @@ dflow.to_pandas_dataframe().head()
 |3|1009364|106 S. głównej ulicy rolników rynku|http://thetownofsixmile.wordpress.com/ |106 S. głównej ulicy|Sześć mila|||
 |4|1010691|Ulica 10 społeczności rolników rynku|https://agrimissouri.com/... |Ulica 10 i topoli|Lamar|Barton|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Zobacz zestaw SDK Azure Machine Learning danych Prep [samouczek](tutorial-data-prep.md) przykładem rozwiązania konkretnego scenariusza
+* Przykład rozwiązywania określonego scenariusza można [](tutorial-data-prep.md) znaleźć w samouczku dotyczącym przygotowania zestawu danych Azure Machine Learning.

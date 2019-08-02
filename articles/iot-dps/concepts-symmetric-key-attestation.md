@@ -1,6 +1,6 @@
 ---
-title: Usługi platformy Azure IoT Hub urządzenia aprowizacji - zaświadczenie klucza symetrycznego
-description: Ten artykuł zawiera omówienie pojęć dotyczących symetrycznego zaświadczenie klucza przy użyciu IoT Device Provisioning.
+title: Azure IoT Hub Device Provisioning Service — zaświadczenie klucza symetrycznego
+description: Ten artykuł zawiera omówienie pojęć związanych z zaświadczeniem klucza symetrycznego przy użyciu usługi IoT Device Provisioning.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,74 +8,74 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746184"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348357"
 ---
 # <a name="symmetric-key-attestation"></a>Zaświadczanie klucza symetrycznego
 
-W tym artykule opisano proces zaświadczania tożsamości, gdy z usługą Device Provisioning przy użyciu kluczy symetrycznych. 
+W tym artykule opisano proces zaświadczania tożsamości w przypadku używania kluczy symetrycznych z usługą Device Provisioning. 
 
-Zaświadczenie klucza symetrycznego jest proste podejście do uwierzytelniania urządzeń przy użyciu wystąpienia usługi Device Provisioning. Ta metoda zaświadczania reprezentuje środowisko "Hello world" dla deweloperów, którzy dopiero Inicjowanie obsługi administracyjnej urządzeń lub nie ma wymagań dotyczących zabezpieczeń z ograniczeniami. Urządzenie korzysta z zaświadczania [modułu TPM](concepts-tpm-attestation.md) lub [certyfikat X.509](concepts-security.md#x509-certificates) jest więcej bezpieczny i powinna być używana w bardziej rygorystycznych wymagań dotyczących zabezpieczeń.
+Zaświadczenie klucza symetrycznego to proste podejście do uwierzytelniania urządzenia za pomocą wystąpienia usługi Device Provisioning. Ta metoda zaświadczania reprezentuje środowisko "Hello World" dla deweloperów, którzy są nowym sposobem aprowizacji urządzeń lub nie mają rygorystycznych wymagań dotyczących zabezpieczeń. Zaświadczenie urządzenia przy użyciu [modułu TPM](concepts-tpm-attestation.md) lub [certyfikatu X. 509](concepts-security.md#x509-certificates) jest bezpieczniejsze i powinno być używane do bardziej rygorystycznych wymagań w zakresie bezpieczeństwa.
 
-Rejestracje klucza symetrycznego także udostępnić to doskonały sposób starsze urządzenia, dzięki funkcji ograniczonych zabezpieczeń do uruchamiania w chmurze za pomocą usługi Azure IoT. Aby uzyskać więcej informacji na temat symetrycznego zaświadczenie klucza przy użyciu starszych urządzeń, zobacz [sposobu użycia kluczy symetrycznych przy użyciu starszych urządzeń](how-to-legacy-device-symm-key.md).
+Rejestracje klucza symetrycznego zapewniają również doskonały sposób na starszych urządzeniach z ograniczoną funkcjonalnością zabezpieczeń do ładowania początkowego do chmury za pośrednictwem usługi Azure IoT. Aby uzyskać więcej informacji na temat zaświadczania klucza symetrycznego ze starszymi urządzeniami, zobacz [jak używać kluczy symetrycznych ze starszymi urządzeniami](how-to-legacy-device-symm-key.md).
 
 
 ## <a name="symmetric-key-creation"></a>Tworzenie klucza symetrycznego
 
-Domyślnie usługi Device Provisioning Service tworzy nowe klucze symetryczne o długości domyślnego 32-bitowej po zapisaniu na nowe rejestracje z **automatycznie Generuj klucze** po włączeniu opcji.
+Domyślnie usługa Device Provisioning tworzy nowe klucze symetryczne z domyślną długością 32 bajtów w przypadku zapisania nowych rejestracji z włączoną opcją **automatycznego generowania kluczy** .
 
-![Klucze symetryczne Generuj automatycznie](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
+![Automatycznie Generuj klucze symetryczne](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 
-Po wyłączeniu tej opcji, możesz także podać własne klucze symetryczne do rejestracji. Podczas określania klucze symetryczne, klucze musi mieć klucz o długości od 16 bajtów do 64 bajtów. Ponadto klucze symetryczne musi być podana w prawidłowym formacie Base64.
+Można również udostępnić klucze symetryczne do rejestracji, wyłączając tę opcję. Podczas określania własnych kluczy symetrycznych klucze muszą mieć długość klucza wynoszącą od 16 bajtów do 64 bajtów. Ponadto klucze symetryczne muszą być podane w prawidłowym formacie base64.
 
 
 
-## <a name="detailed-attestation-process"></a>Proces zaświadczania szczegółowe
+## <a name="detailed-attestation-process"></a>Szczegółowy proces zaświadczania
 
-Zaświadczenie klucza symetrycznego, przy użyciu usługi Device Provisioning jest wykonywane, korzystając z tych samych [tokenów zabezpieczających](../iot-hub/iot-hub-devguide-security.md#security-token-structure) obsługiwane przez centra IoT Hub, aby zidentyfikować urządzenia. Te tokeny zabezpieczające są [tokeny sygnatury dostępu współdzielonego (SAS)](../service-bus-messaging/service-bus-sas.md). 
+Zaświadczenie klucza symetrycznego za pomocą usługi Device Provisioning jest realizowane przy użyciu [](../iot-hub/iot-hub-devguide-security.md#security-token-structure) tych samych tokenów zabezpieczających, które są obsługiwane przez centra IoT do identyfikowania urządzeń. Te tokeny zabezpieczające są [tokenami sygnatury dostępu współdzielonego (SAS)](../service-bus-messaging/service-bus-sas.md). 
 
-Tokeny sygnatur dostępu Współdzielonego mają skrótu *podpisu* utworzonego przy użyciu klucza symetrycznego. Podpis jest ponownie tworzone przez usługę aprowizacji urządzeń, aby sprawdzić, czy token zabezpieczający prezentowane podczas zaświadczania jest autentyczna, czy nie.
+Tokeny sygnatury dostępu współdzielonego mają *sygnaturę* skrótu, która jest tworzona przy użyciu klucza symetrycznego. Sygnatura jest tworzona ponownie przez usługę Device Provisioning w celu sprawdzenia, czy token zabezpieczający przedstawiony podczas zaświadczania jest autentyczny.
 
-Tokeny sygnatur dostępu Współdzielonego mają następującą postać:
+Tokeny sygnatury dostępu współdzielonego mają następującą formę:
 
 `SharedAccessSignature sig={signature}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`
 
-Poniżej przedstawiono składniki każdy token:
+Poniżej przedstawiono składniki każdego tokenu:
 
-| Wartość | Opis |
+| Value | Opis |
 | --- | --- |
-| {Sygnatura} |Ciąg sygnatury HMAC SHA256. Dla rejestracji indywidualnych ten podpis jest generowany przy użyciu klucza symetrycznego (podstawowe lub pomocnicze), aby wykonać skrót. W przypadku grup rejestracji klucza generowanego z klucza rejestracji grupy służy do wykonywania skrót. Wartość skrótu jest wykonywana na komunikat w postaci: `URL-encoded-resourceURI + "\n" + expiry`. **Ważne**: Klucz musi zostać odczytany z formatu base64 przed używany do wykonywania obliczeń HMAC SHA256. Ponadto wynik podpisu musi być zakodowane w adresie URL. |
-| {resourceURI} |Identyfikator URI punktu końcowego rejestracji, który jest możliwy z tym tokenem, począwszy od Identyfikatora zakresu dla tego wystąpienia usługi Device Provisioning. Na przykład: `{Scope ID}/registrations/{Registration ID}` |
-| {expiry} |Ciągi UTF8 liczba sekund od epoki 00:00:00 czasu UTC na 1 stycznia 1970. |
-| {URL-encoded-resourceURI} |Małe zamierzone, Zapisz kodowania adresu URL identyfikator URI zasobu małymi literami |
-| {policyName} |Nazwa zasad dostępu współdzielonego, do którego odwołuje się ten token. Nazwa zasad używanych podczas aprowizowania za pomocą zaświadczenie klucza symetrycznego jest **rejestracji**. |
+| podpisane |Ciąg sygnatury HMAC-SHA256. W przypadku indywidualnych rejestracji Ta sygnatura jest generowana przy użyciu klucza symetrycznego (podstawowego lub pomocniczego) do wykonania skrótu. W przypadku grup rejestracji do wykonania skrótu jest używany klucz pochodzący z klucza grupy rejestracji. Skrót jest wykonywany w postaci komunikatu: `URL-encoded-resourceURI + "\n" + expiry`. **Ważne**: Przed użyciem kodowania HMAC-SHA256 należy zdekodować klucz przy użyciu algorytmu Base64. Ponadto wynik podpisu musi być zakodowany w adresie URL. |
+| ResourceURI |Identyfikator URI punktu końcowego rejestracji, do którego można uzyskać dostęp za pomocą tego tokenu, rozpoczynając od identyfikatora zakresu dla wystąpienia usługi Device Provisioning. Na przykład: `{Scope ID}/registrations/{Registration ID}` |
+| wygaśnięcia |Ciągi UTF8 przez liczbę sekund od czasu epoki 00:00:00 UTC 1 stycznia 1970. |
+| {URL-encoded-resourceURI} |Małe adresy URL — kodowanie identyfikatora URI zasobu niższej wielkości liter |
+| {policyName} |Nazwa zasad dostępu współdzielonego, do których odwołuje się ten token. Nazwa zasad używana podczas aprowizacji z zaświadczeniem klucza symetrycznego jest **zarejestrowani**. |
 
-Gdy urządzenie jest zaświadczanie o rejestrację indywidualną, urządzenie używa klucza symetrycznego zdefiniowane w wpisu rejestracji indywidualnej do tworzenia skrótu podpisu tokenu sygnatury dostępu Współdzielonego.
+Gdy urządzenie jest zaświadczania rejestracji indywidualnej, urządzenie używa klucza symetrycznego zdefiniowanego w wpisie rejestracji indywidualnej w celu utworzenia skrótu sygnatury dla tokenu sygnatury dostępu współdzielonego.
 
-Aby uzyskać przykłady kodu, które utworzyć token sygnatury dostępu Współdzielonego, zobacz [tokenów zabezpieczających](../iot-hub/iot-hub-devguide-security.md#security-token-structure).
+Przykłady kodu, które tworzą token SAS, znajdują się w temacie [tokeny zabezpieczające](../iot-hub/iot-hub-devguide-security.md#security-token-structure).
 
-Tworzenie tokenów zabezpieczających, aby uzyskać zaświadczenie klucza symetrycznego jest obsługiwane przez zestaw SDK C usługi Azure IoT. Na przykład zaświadczania za pomocą rejestracji indywidualnej przy użyciu zestawu SDK C usługi IoT platformy Azure, zobacz [Aprowizowanie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md).
+Tworzenie tokenów zabezpieczających dla zaświadczania klucza symetrycznego jest obsługiwane przez zestaw SDK języka C dla usługi Azure IoT. Aby zapoznać się z przykładem za pomocą zestawu SDK usługi Azure IoT C do zaświadczania rejestracji indywidualnej, zobacz temat [udostępnianie urządzenia symulowanego za pomocą kluczy symetrycznych](quick-create-simulated-device-symm-key.md).
 
 
-## <a name="group-enrollments"></a>Grupy rejestracji
+## <a name="group-enrollments"></a>Rejestracje grup
 
-Klucze symetryczne dla rejestracji grup nie są używane bezpośrednio przez urządzenia, podczas inicjowania obsługi administracyjnej. Zamiast tego urządzenia, które należą do rejestrowania grupy aprowizacji przy użyciu klucza pochodnego urządzenia. 
+Klucze symetryczne dla rejestracji grup nie są używane bezpośrednio przez urządzenia podczas aprowizacji. Zamiast tego urządzenia należące do grupy rejestracji są inicjowane przy użyciu klucza urządzenia pochodnego. 
 
-Po pierwsze identyfikator rejestracji jest zdefiniowana dla każdego urządzenia zaświadczanie o grupie rejestracji. Prawidłowe znaki dla Identyfikatora rejestracji to małe znaki alfanumeryczne i kreski ("-"). Ten identyfikator rejestracji powinien być unikatowym identyfikujących urządzenie. Na przykład starszego urządzenia mogą nie obsługiwać wielu funkcji zabezpieczeń. Starsze urządzenia mogą mieć adres MAC lub numer seryjny jest dostępny do unikatowej identyfikacji tego urządzenia. W takiej sytuacji identyfikator rejestracji może składać się z adresu MAC i numer seryjny jest podobny do następującego:
+Najpierw unikatowy identyfikator rejestracji jest definiowany dla każdego urządzenia zaświadczania do grupy rejestracji. Prawidłowe znaki identyfikatora rejestracji to małe litery alfanumeryczne i myślnik ("-"). Ten identyfikator rejestracji powinien być unikatowy, który identyfikuje urządzenie. Na przykład starsze urządzenie może nie obsługiwać wielu funkcji zabezpieczeń. Na starszej urządzeniu może być dostępny tylko adres MAC lub numer seryjny, aby można było jednoznacznie zidentyfikować to urządzenie. W takim przypadku Identyfikator rejestracji może składać się z adresu MAC i numeru seryjnego podobnego do poniższego:
 
 ```
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-W tym przykładzie dokładnie jest używany w [jak inicjować obsługę starszych urządzeń przy użyciu kluczy symetrycznych](how-to-legacy-device-symm-key.md) artykułu.
+Ten dokładny przykład jest używany w artykule [jak udostępnić starsze urządzenia przy użyciu kluczy symetrycznych](how-to-legacy-device-symm-key.md) .
 
-Gdy identyfikator rejestracji została zdefiniowana dla tego urządzenia, klucz symetryczny dla grupy rejestracji jest używany do obliczenia [HMAC SHA256](https://wikipedia.org/wiki/HMAC) skrótu identyfikator rejestracji w celu wygenerowania klucza pochodnego urządzenia. Mieszanie identyfikator rejestracji można wykonać przy użyciu następującego kodu C#:
+Po zdefiniowaniu identyfikatora rejestracji dla urządzenia klucz symetryczny dla grupy rejestracji jest używany do obliczania skrótu [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) identyfikatora rejestracji w celu utworzenia pochodnego klucza urządzenia. Skrót identyfikatora rejestracji można wykonać przy użyciu następującego C# kodu:
 
-```C#
+```csharp
 using System; 
 using System.Security.Cryptography; 
 using System.Text;  
@@ -92,28 +92,28 @@ public static class Utils
 } 
 ```
 
-```C#
+```csharp
 String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(masterKey), registrationId);
 ```
 
-Wynikowy klucz urządzenia jest następnie używany do generowania tokenu sygnatury dostępu Współdzielonego ma być używany na potrzeby zaświadczania. Każde urządzenie w grupie rejestracji jest wymagana do poświadczenia, za pomocą tokenu zabezpieczeń wygenerowanych z Unikatowy klucza pochodnego. Klucz symetryczny grupy rejestracji nie można używać bezpośrednio na potrzeby zaświadczania.
+Otrzymany klucz urządzenia jest następnie używany do generowania tokenu sygnatury dostępu współdzielonego, który będzie używany na potrzeby zaświadczania. Każde urządzenie w grupie rejestracji jest wymagane do zaświadczania przy użyciu tokenu zabezpieczającego wygenerowanego na podstawie unikatowego klucza pochodnego. Klucza symetrycznego grupy rejestracji nie można używać bezpośrednio na potrzeby zaświadczania.
 
-#### <a name="installation-of-the-derived-device-key"></a>Instalacja klucza pochodnego urządzenia
+#### <a name="installation-of-the-derived-device-key"></a>Instalacja pochodnego klucza urządzenia
 
-Najlepiej klucze urządzeń są uzyskane i zainstalowane w fabryce. Ta metoda gwarancję, że klucz grupy nigdy nie jest uwzględniony w oprogramowanie wdrożone na urządzeniu. Gdy urządzenie jest przypisany adres MAC lub numer seryjny, klucz może pochodnej i wprowadzony na urządzeniu, natomiast producenta zdecyduje się na przechowywanie ich.
+Najlepiej, gdy klucze urządzeń są wyprowadzane i instalowane w fabryce. Ta metoda gwarantuje, że klucz grupy nigdy nie jest uwzględniony w oprogramowaniu wdrożonym na urządzeniu. Gdy urządzenie ma przypisany adres MAC lub numer seryjny, klucz może być wyprowadzany i wprowadzany do urządzenia, ale producent zdecyduje się na jego przechowanie.
 
-Należy wziąć pod uwagę Poniższy diagram, który przedstawia tabelę klucze urządzeń wygenerowane w fabryce mieszania identyfikator rejestracji każdego urządzenia przy użyciu klucza rejestracji grupy (**K**). 
+Rozważmy poniższy diagram, który pokazuje tabelę kluczy urządzeń generowanych w fabryce przez Podmieszanie poszczególnych identyfikatorów rejestracji urządzeń z kluczem rejestracji grupy (**K**). 
 
-![Klucze urządzeń, które przypisane z fabryki](./media/concepts-symmetric-key-attestation/key-diversification.png)
+![Klucze urządzeń przypisane z fabryki](./media/concepts-symmetric-key-attestation/key-diversification.png)
 
-Tożsamość każdego urządzenia jest reprezentowany przez identyfikator rejestracji i klucz urządzenia pochodnej, który jest zainstalowany w fabryce. Klucz urządzenia nigdy nie jest kopiowany do innej lokalizacji, a klucz grupy nigdy nie jest przechowywany na urządzeniu.
+Tożsamość każdego urządzenia jest reprezentowana przez identyfikator rejestracji i pochodny klucz urządzenia, który jest instalowany w fabryce. Klucz urządzenia nigdy nie jest kopiowany do innej lokalizacji, a klucz grupy nigdy nie jest przechowywany na urządzeniu.
 
-Jeśli klucze urządzeń nie są zainstalowane w tej fabryce [przez moduł HSM do sprzętowego modułu zabezpieczeń](concepts-security.md#hardware-security-module) stosuje się do bezpiecznego przechowywania tożsamości urządzenia.
+Jeśli klucze urządzeń nie są zainstalowane w fabryce, w celu bezpiecznego przechowywania tożsamości urządzenia należy używać [sprzętowego modułu HSM](concepts-security.md#hardware-security-module) .
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy masz zrozumienia zaświadczenie klucza symetrycznego, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej:
+Teraz, gdy znasz już zaświadczenie klucza symetrycznego, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej:
 
-* [Szybki start: Aprowizowanie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
-* [Dowiedz się więcej o kwestie poruszane w automatycznej aprowizacji](./concepts-auto-provisioning.md)
-* [Rozpoczęcie korzystania z automatycznej aprowizacji](./quick-setup-auto-provision.md) 
+* [Szybki start: Udostępnianie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
+* [Informacje na temat pojęć związanych z obsługą administracyjną](./concepts-auto-provisioning.md)
+* [Wprowadzenie do korzystania z funkcji autoaprowizacji](./quick-setup-auto-provision.md) 

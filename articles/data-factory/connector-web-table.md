@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z tabeli w sieci Web za pomocą usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o sieci Web tabeli łącznika usługi Azure Data Factory, która umożliwia kopiowania danych z tabeli w sieci web do magazynów danych obsługiwanych przez usługę Data Factory jako ujścia.
+title: Kopiowanie danych z tabeli sieci Web przy użyciu Azure Data Factory | Microsoft Docs
+description: Informacje o łączniku tabeli sieci Web Azure Data Factory, który umożliwia kopiowanie danych z tabeli sieci Web do magazynów danych obsługiwanych przez Data Factory jako ujścia.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,54 +10,54 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: e578b3a6b3905569567b568b0130c1ed1b90d915
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 09de2919b22ebb088b23c1ab59f60d182657a2f1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557770"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720409"
 ---
-# <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopiowanie danych z tabeli w sieci Web przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
+# <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopiowanie danych z tabeli sieci Web przy użyciu Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-web-table-connector.md)
 > * [Bieżąca wersja](connector-web-table.md)
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z tabeli bazy danych w sieci Web. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych tabeli sieci Web. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-Różnica między ten łącznik Tabela sieci Web [REST łącznika](connector-rest.md) i [łącznik protokołu HTTP](connector-http.md) są:
+Różnica między tym łącznikiem tabeli sieci Web, [łącznikiem REST](connector-rest.md) i [łącznikiem http](connector-http.md) :
 
-- **Łącznik Tabela sieci Web** wyodrębnia tabelę zawartości z sieci Web w formacie HTML.
-- **Łącznik REST** specjalnie do obsługi kopiowania danych z interfejsów API RESTful.
-- **Łącznik protokołu HTTP** ogólnego do pobierania danych z dowolnego punktu końcowego HTTP, np. Aby pobrać plik. 
+- **Łącznik tabeli sieci Web** wyodrębnia zawartość tabeli z strony html.
+- **Łącznik REST** obsługujący kopiowanie danych z interfejsów API RESTful.
+- **Łącznik http** jest ogólny do pobierania danych z dowolnego punktu końcowego http, np. do pobrania pliku. 
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z bazy danych tabel w sieci Web, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z bazy danych tabeli sieci Web można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-W szczególności ten łącznik Tabela sieci Web obsługuje **wyodrębniania zawartości tabeli ze strony HTML**.
+Ten łącznik tabeli sieci Web obsługuje **wyodrębnianie zawartości tabeli ze strony HTML**.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego łącznika Tabela sieci Web, musisz skonfigurować środowiskiem Integration Runtime. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
+Aby użyć tego łącznika tabeli sieci Web, należy skonfigurować samoobsługowy Integration Runtime. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika Tabela sieci Web.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika tabeli sieci Web.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Następujące właściwości są obsługiwane dla sieci Web tabeli połączonej usługi:
+Następujące właściwości są obsługiwane dla połączonej usługi tabeli sieci Web:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Sieć Web** |Yes |
-| url | Adres URL źródła w sieci Web |Tak |
-| authenticationType | Dozwolone wartości to: **Anonimowe**. |Tak |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Własne środowisko IR jest wymagany, zgodnie z opisem w [wymagania wstępne](#prerequisites). |Yes |
+| — typ | Właściwość Type musi mieć ustawioną wartość: **Sieć Web** |Yes |
+| url | Adres URL źródła sieci Web |Tak |
+| authenticationType | Dozwolona wartość to: **Anonimowe**. |Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano [](#prerequisites)w wymaganiach wstępnych. |Tak |
 
 **Przykład:**
 
@@ -80,15 +80,15 @@ Następujące właściwości są obsługiwane dla sieci Web tabeli połączonej 
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych tabeli w sieci Web.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych tabeli sieci Web.
 
-Aby skopiować dane z tabeli w sieci Web, należy ustawić właściwość typu zestawu danych na **WebTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z tabeli sieci Web, ustaw właściwość Type zestawu danych na **webtable**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **Usługa WebTable** | Yes |
-| path |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, używana jest tylko adres URL, które są określone w definicji połączonej usługi. |
-| index |Indeks tabeli w zasobie. Zobacz [Get indeksu tabeli na stronie HTML](#get-index-of-a-table-in-an-html-page) sekcji instrukcje pobierania indeksu tabeli na stronie HTML. |Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Webtable** | Tak |
+| path |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, zostanie użyta tylko adres URL określony w definicji połączonej usługi. |
+| index |Indeks tabeli w zasobie. Zobacz sekcję [pobieranie indeksu tabeli w sekcji strony HTML,](#get-index-of-a-table-in-an-html-page) aby poznać procedurę pobierania indeksu tabeli na stronie HTML. |Tak |
 
 **Przykład:**
 
@@ -97,13 +97,14 @@ Aby skopiować dane z tabeli w sieci Web, należy ustawić właściwość typu z
     "name": "WebTableInput",
     "properties": {
         "type": "WebTable",
-        "linkedServiceName": {
-            "referenceName": "<Web linked service name>",
-            "type": "LinkedServiceReference"
-        },
         "typeProperties": {
             "index": 1,
             "path": "AFI's_100_Years...100_Movies"
+        },
+        "schema": [],
+        "linkedServiceName": {
+            "referenceName": "<Web linked service name>",
+            "type": "LinkedServiceReference"
         }
     }
 }
@@ -111,11 +112,11 @@ Aby skopiować dane z tabeli w sieci Web, należy ustawić właściwość typu z
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło tabeli w sieci Web.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło tabeli sieci Web.
 
-### <a name="web-table-as-source"></a>Tabela sieci Web jako źródło
+### <a name="web-table-as-source"></a>Tabela internetowa jako źródło
 
-Aby skopiować dane z tabeli w sieci Web, należy ustawić typ źródłowego w działaniu kopiowania, aby **WebSource**, żadne dodatkowe właściwości są obsługiwane.
+Aby skopiować dane z tabeli sieci Web, ustaw typ źródła w działaniu Kopiuj do **websource**, a żadne dodatkowe właściwości nie są obsługiwane.
 
 **Przykład:**
 
@@ -150,32 +151,32 @@ Aby skopiować dane z tabeli w sieci Web, należy ustawić typ źródłowego w d
 
 ## <a name="get-index-of-a-table-in-an-html-page"></a>Pobieranie indeksu tabeli na stronie HTML
 
-Aby uzyskać indeks tabeli, które należy skonfigurować w [właściwości zestawu danych](#dataset-properties), np. Excel 2016 narzędzia można użyć w następujący sposób:
+Aby uzyskać indeks tabeli, która jest potrzebna do skonfigurowania we [właściwościach zestawu danych](#dataset-properties), można użyć np. Excel 2016 jako narzędzia w następujący sposób:
 
-1. Uruchom **programu Excel 2016** i przełącz się do **danych** kartę.
-2. Kliknij przycisk **nowe zapytanie** na pasku narzędzi, wskaż polecenie **z innych źródeł** i kliknij przycisk **z sieci Web**.
+1. Uruchom **program Excel 2016** i przejdź do karty **dane** .
+2. Na pasku narzędzi kliknij pozycję **nowe zapytanie** , wskaż polecenie **z innych źródeł** i kliknij opcję **z sieci Web**.
 
-    ![Menu zapytań zasilania](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. W **z sieci Web** okna dialogowego wprowadź **adresu URL** zostanie wykorzystany w połączonej usługi JSON (na przykład: https://en.wikipedia.org/wiki/) wraz ze ścieżką, należy określić dla zestawu danych (na przykład: AFI % 27s_100_Years... 100_Movies) i kliknij przycisk **OK**.
+    ![Menu Power Query](./media/copy-data-from-web-table/PowerQuery-Menu.png)
+3. W oknie dialogowym **z sieci Web** wprowadź **adres URL** , który będzie używany w formacie JSON połączonej usługi (na https://en.wikipedia.org/wiki/) przykład: wraz z ścieżką, którą określisz dla zestawu danych (na przykład: AFI%27s_100_Years... 100_Movies) i kliknij przycisk **OK**.
 
-    ![W oknie dialogowym sieci Web](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
+    ![Z okna dialogowego sieci Web](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
     Adres URL używany w tym przykładzie: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. Jeśli widzisz **zawartości sieci Web Access** okna dialogowego Wybierz po prawej stronie **adresu URL**, **uwierzytelniania**i kliknij przycisk **Connect**.
+4. Jeśli zobaczysz okno dialogowe **dostęp do zawartości sieci Web** , wybierz prawidłowy **adres URL**, **uwierzytelnianie**i kliknij przycisk **Połącz**.
 
-   ![Okno dialogowe zawartości sieci Web Access](./media/copy-data-from-web-table/AccessWebContentDialog.png)
-5. Kliknij przycisk **tabeli** elementu w widoku drzewa, aby wyświetlić zawartość z tabeli, a następnie kliknij przycisk **Edytuj** znajdujący się u dołu.  
+   ![Okno dialogowe dostęp do zawartości sieci Web](./media/copy-data-from-web-table/AccessWebContentDialog.png)
+5. Kliknij element **tabeli** w widoku drzewa, aby wyświetlić zawartość z tabeli, a następnie kliknij przycisk **Edytuj** u dołu.  
 
-   ![Okno dialogowe Nawigator](./media/copy-data-from-web-table/Navigator-DialogBox.png)
-6. W **edytora zapytań** okna, kliknij przycisk **edytora zaawansowanego** przycisk na pasku narzędzi.
+   ![Okno dialogowe nawigatora](./media/copy-data-from-web-table/Navigator-DialogBox.png)
+6. W oknie **Edytor zapytań** kliknij przycisk **Edytor zaawansowany** na pasku narzędzi.
 
     ![Przycisk Edytor zaawansowany](./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png)
-7. Okno dialogowe Edytor zaawansowany numer obok "Źródło" to indeks.
+7. W oknie dialogowym Edytor zaawansowany liczba obok pozycji "Źródło" jest indeksem.
 
-    ![Zaawansowany edytor — indeks](./media/copy-data-from-web-table/AdvancedEditor-Index.png)
+    ![Edytor zaawansowany — indeks](./media/copy-data-from-web-table/AdvancedEditor-Index.png)
 
-Jeśli używasz programu Excel 2013, należy użyć [dodatku Microsoft Power Query dla programu Excel](https://www.microsoft.com/download/details.aspx?id=39379) pobranie indeksu. Zobacz [Connect do strony sieci web](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) artykuł, aby uzyskać szczegółowe informacje. Kroki są podobne, jeśli używasz [Microsoft Power BI for Desktop](https://powerbi.microsoft.com/desktop/).
+Jeśli używasz programu Excel 2013, użyj [Microsoft Power Query dla programu Excel](https://www.microsoft.com/download/details.aspx?id=39379) , aby pobrać indeks. Aby uzyskać szczegółowe informacje, zobacz artykuł [nawiązywanie połączenia ze stroną sieci Web](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) . Kroki są podobne, jeśli używasz [programu Microsoft Power BI for Desktop](https://powerbi.microsoft.com/desktop/).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

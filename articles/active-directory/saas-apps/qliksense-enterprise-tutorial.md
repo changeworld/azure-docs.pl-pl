@@ -12,121 +12,95 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 06/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e72ec4f9c512f6525f790d555794c1a120ac07c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9265a5951ceb7b0cb757e392c2e26aa19bfefd06
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093420"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678518"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Qlik Sense Enterprise
+# <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Samouczek: Integruj Qlike przedsiębiorstwa z Azure Active Directory
 
-Z tego samouczka dowiesz się, jak zintegrować usługę Qlik Sense Enterprise z usługą Azure Active Directory (Azure AD).
-Zintegrowanie usługi Qlik Sense Enterprise z usługą Azure AD daje następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę Qlik sens przedsiębiorstwa z Azure Active Directory (Azure AD). Po zintegrowaniu usługi Qlik Sense Enterprise z usługą Azure AD można:
 
-* Możliwość kontrolowania dostępu do usługi Qlik Sense Enterprise za pomocą usługi Azure AD.
-* Możliwość skonfigurowania użytkowników pod kątem automatycznego logowania do usługi Qlik Sense Enterprise przy użyciu kont usługi Azure AD (logowanie jednokrotne).
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do Qlik wykrywania przedsiębiorstwa.
+* Zezwól użytkownikom na automatyczne logowanie do Qlik wykrywania przedsiębiorstwa przy użyciu kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z usługą Qlik Sense Enterprise, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja usługi Qlik Sense Enterprise z włączonym logowaniem jednokrotnym
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz skorzystać z miesięcznej bezpłatnej wersji próbnej [](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) w przedsiębiorstwie Qlik.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
-
-* Usługa Qlik Sense Enterprise obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. Qlik sens przedsiębiorstwa obsługuje logowanie jednokrotne w usłudze **SP** .
 
 ## <a name="adding-qlik-sense-enterprise-from-the-gallery"></a>Dodawanie usługi Qlik Sense Enterprise z galerii
 
 Aby skonfigurować integrację usługi Qlik Sense Enterprise z usługą Azure AD, należy dodać usługę Qlik Sense Enterprise z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać usługę Qlik Sense Enterprise z galerii, wykonaj następujące kroki:**
-
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
-
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
-
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
-
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
-
-4. W polu wyszukiwania wpisz ciąg **Qlik Sense Enterprise**, wybierz pozycję **Qlik Sense Enterprise** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
-
-     ![Usługa Qlik Sense Enterprise na liście wyników](common/search-new-app.png)
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Qlik sens Enterprise** w polu wyszukiwania.
+1. Wybierz pozycję **Qlik wykrywanie przedsiębiorstwa** z poziomu panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w usłudze Qlik Sense Enterprise, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem usługi Qlik Sense Enterprise.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Qlik wykrywania przedsiębiorstwa przy użyciu użytkownika testowego o nazwie **Britta Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w usłudze Qlik sens przedsiębiorstwa.
 
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w usłudze Qlik Sense Enterprise, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Qlik wykrywania przedsiębiorstwa, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego usługi Qlik Sense Enterprise](#configure-qlik-sense-enterprise-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj Qlik wykrywanie](#configure-qlik-sense-enterprise-sso)** logowania jednokrotnego w przedsiębiorstwie — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Tworzenie użytkownika testowego usługi Qlik Sense Enterprise](#create-qlik-sense-enterprise-test-user)** — aby udostępnić w usłudze Qlik Sense Enterprise odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+6. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Qlik Sense Enterprise, wykonaj następujące kroki:
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja z aplikacją **Qlik wykrywanie przedsiębiorstwa** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji usługi **Qlik Sense Enterprise** wybierz pozycję **Logowanie jednokrotne**.
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+1. Na stronie **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
 
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
-
-    ![Informacje o domenie i adresach URL pojedynczego logowania usługi Qlik Sense Enterprise](common/sp-identifier-reply.png)
-
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/hub`
 
     b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
 
     | |
     |--|
-    | `https://<Qlik Sense Fully Qualifed Hostname>.qlikpoc.com`|
-    | `https://<Qlik Sense Fully Qualifed Hostname>.qliksense.com`|
+    | `https://<Fully Qualified Domain Name>.qlikpoc.com`|
+    | `https://<Fully Qualified Domain Name>.qliksense.com`|
     | |
 
     c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
 
-    `https://<Qlik Sense Fully Qualifed Hostname>:4443/samlauthn/`
+    `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/samlauthn/`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami adresu URL logowania jednokrotnego, identyfikatora i adresu URL odpowiedzi (są one objaśnione w dalszej części tego samouczka) lub skontaktuj się z [zespołem pomocy technicznej klienta usługi Qlik Sense Enterprise](https://www.qlik.com/us/services/support), aby uzyskać te wartości.
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami adresu URL logowania jednokrotnego, identyfikatora i adresu URL odpowiedzi (są one objaśnione w dalszej części tego samouczka) lub skontaktuj się z [zespołem pomocy technicznej klienta usługi Qlik Sense Enterprise](https://www.qlik.com/us/services/support), aby uzyskać te wartości. Domyślnym portem dla adresów URL jest 443, ale można go dostosować do potrzeb organizacji.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **XML metadanych Federacji** z określonych opcji zgodnie z wymaganiami i Zapisz je na komputerze.
 
     ![Link pobierania certyfikatu](common/metadataxml.png)
 
-### <a name="configure-qlik-sense-enterprise-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Qlik Sense Enterprise
+### <a name="configure-qlik-sense-enterprise-sso"></a>Konfigurowanie Qlik wykrywania rejestracji jednokrotnej przedsiębiorstwa
 
 1. Przygotuj plik XML metadanych federacji, który można przekazać na serwer Qlik Sense.
 
@@ -203,7 +177,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Qlik Sense 
 
     ![QlikSense][qs13]
 
-    Pole Host white list (Lista dozwolonych hostów) określa nazwy hostów akceptowane podczas nawiązywania połączenia z serwerem Qlik Sense.  **Podaj nazwę hosta, którą użytkownicy będą określać podczas nawiązywania połączenia z serwerem Qlik Sense.** Nazwa hosta jest taka sama jak identyfikator URI hosta SAML, jednak bez prefiksu https://.
+    Lista dozwolonych hostów identyfikuje nazwy hostów, które są akceptowane podczas nawiązywania połączenia z serwerem wykrywania Qlik.  **Podaj nazwę hosta, którą użytkownicy będą określać podczas nawiązywania połączenia z serwerem Qlik Sense.** Nazwa hosta jest taka sama jak identyfikator URI hosta SAML, jednak bez prefiksu https://.
 
 11. Następnie kliknij przycisk **Apply** (Zastosuj).
 
@@ -243,66 +217,43 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Qlik Sense 
 
     ![QlikSense][qs53]
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie Britta Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `Britta Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji udostępnisz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do usługi Qlik Sense Enterprise.
+W tej sekcji włączysz usługę Britta Simon do korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do przedsiębiorstwa z systemem Qlik.
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw** i **Wszystkie aplikacje**, a następnie **Qlik Sense Enterprise**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **Qlik wykrywanie przedsiębiorstwa**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-2. Na liście aplikacji wpisz ciąg **Qlik Sense Enterprise** i wybierz odpowiednią pozycję.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Link usługi Qlik Sense Enterprise na liście Aplikacje](common/all-applications.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **Britta Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Tworzenie użytkownika testowego usługi Qlik Sense Enterprise
 
 W tej sekcji utworzysz użytkownika o nazwie Britta Simon w usłudze Qlik Sense Enterprise. Skontaktuj się z  [zespołem pomocy technicznej usługi Qlik Sense Enterprise](https://www.qlik.com/us/services/support), aby dodać użytkowników na platformie Qlik Sense Enterprise. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka Qlik Sense Enterprise na panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi Qlik Sense Enterprise, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Qlik na poziomie przedsiębiorstwa w panelu dostępu należy automatycznie zalogować się do przedsiębiorstwa Qlik wykrywania, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -310,7 +261,7 @@ Po kliknięciu kafelka Qlik Sense Enterprise na panelu dostępu powinno nastąpi
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 <!--Image references-->
 
@@ -333,4 +284,3 @@ Po kliknięciu kafelka Qlik Sense Enterprise na panelu dostępu powinno nastąpi
 [qs51]: ./media/qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_51.png
 [qs52]: ./media/qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_52.png
 [qs53]: ./media/qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_53.png
-

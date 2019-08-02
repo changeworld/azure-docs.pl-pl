@@ -1,6 +1,6 @@
 ---
-title: Inteligentne wykrywanie - anomalie wydajności | Dokumentacja firmy Microsoft
-description: Usługa Application Insights wykonuje inteligentne analizy telemetrii aplikacji i ostrzega o potencjalnych problemach. Ta funkcja wymaga ustawień.
+title: Wykrywanie inteligentne — anomalie wydajności | Microsoft Docs
+description: Application Insights przeprowadza inteligentnej analizy telemetrii aplikacji i ostrzega o potencjalnych problemach. Ta funkcja nie wymaga instalacji.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -13,181 +13,181 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b1a3b04427839736359c88f8ad6a8db5eedf8488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61294087"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867706"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Wykrywanie inteligentne — anomalie wydajności
 
-[Usługa Application Insights](../../azure-monitor/app/app-insights-overview.md) automatycznie analizuje wydajność aplikacji sieci web i może zostać wyświetlone ostrzeżenie o potencjalnych problemach. Użytkownik może być odczytywanie to ponieważ jeden z naszych wykrywanie inteligentne powiadomienia otrzymane.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) automatycznie analizuje wydajność aplikacji sieci Web i może ostrzec o potencjalnych problemach. Może się to zdarzyć z powodu odebrania jednego z naszych powiadomień dotyczących wykrywania inteligentnego.
 
-Ta funkcja wymaga nie specjalne ustawienia innego niż Konfigurowanie aplikacji dla usługi Application Insights (na [ASP.NET](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md), lub [Node.js](../../azure-monitor/app/nodejs.md), a następnie w [strony sieci web Kod](../../azure-monitor/app/javascript.md)). Może to być aktywny, gdy aplikacja generuje wystarczającej ilości danych telemetrycznych.
+Ta funkcja nie wymaga żadnych specjalnych ustawień, innych niż Konfigurowanie aplikacji do Application Insights (w [ASP.NET](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md)lub [Node. js](../../azure-monitor/app/nodejs.md)oraz w [kodzie strony sieci Web](../../azure-monitor/app/javascript.md)). Jest ona aktywna, gdy aplikacja generuje wystarczającą ilość danych telemetrycznych.
 
-## <a name="when-would-i-get-a-smart-detection-notification"></a>Gdy otrzyma powiadomienie wykrywania inteligentnego
+## <a name="when-would-i-get-a-smart-detection-notification"></a>Kiedy otrzymuję powiadomienie o wykryciu Smart Detect?
 
-Usługa Application Insights wykrył, że wydajność aplikacji ma negatywny wpływ na dostępność w jednym z następujących sposobów:
+Application Insights wykrył, że wydajność aplikacji uległa obniżeniu na jeden z następujących sposobów:
 
-* **Wydłużenie czasu odpowiedzi** — aplikacja została uruchomiona, odpowiada na żądania wolniej niż. Zmiany mogły zostać szybkie, na przykład powodu regresji we wdrożeniu najnowszych. Lub było stopniowe, może być spowodowany przez przeciek pamięci. 
-* **Spadek czasu trwania zależności** -Twojej aplikacji wykonywania wywołań do interfejsu API REST, bazy danych lub innych zależności. Zależność odpowiada wolniej niż.
-* **Wzorzec niską wydajność** -aplikacji wydaje się mieć problem z wydajnością, który ma wpływ na tylko niektóre żądania. Na przykład strony są ładowane wolniej na jednym typie przeglądarki niż inne osoby; lub żądania są podawane wolniej z określonego serwera. Obecnie nasze algorytmy Przyjrzyj się krótszy czas ładowania strony, czasów odpowiedzi żądań i czasów odpowiedzi zależności.  
+* **Obniżenie czasu odpowiedzi** — aplikacja rozpoczęła reagowanie na żądania wolniej niż używane do. Ta zmiana może być na przykład szybka, ponieważ w ostatnim wdrożeniu wystąpił regresja. Lub może to być stopniowe, może to być spowodowane przeciekiem pamięci. 
+* **Pogorszenie czasu trwania zależności** — aplikacja wykonuje wywołania do interfejsu API REST, bazy danych lub innej zależności. Zależność reaguje wolniej niż jej użycie.
+* **Wzorzec powolnej wydajności** — prawdopodobnie aplikacja ma problem z wydajnością, który ma wpływ tylko na niektóre żądania. Na przykład strony są ładowane wolniej w jednym typie przeglądarki niż inne. lub żądania są udostępniane wolniej z jednego określonego serwera. Obecnie nasze algorytmy wyglądają na czasy ładowania stron, czasy odpowiedzi na żądania i czasy odpowiedzi dla zależności.  
 
-Wykrywanie inteligentne wymaga co najmniej 8 dni telemetrii w ilościach wymagającego, aby ustalić punkt odniesienia normalnej wydajności. Tak po aplikacja została uruchomiona w tym okresie, wszelkie istotne problemy w wyniku powiadomienia.
+Inteligentne wykrywanie wymaga co najmniej 8 dni telemetrii w woluminie, aby można było ustalić linię bazową normalnej wydajności. W związku z tym po uruchomieniu aplikacji przez ten okres każdy znaczący problem spowoduje powiadomienie.
 
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Czy Moja aplikacja ma zdecydowanie problem?
+## <a name="does-my-app-definitely-have-a-problem"></a>Czy moja aplikacja ma w nieskończoność problem?
 
-Nie, powiadomienia nie oznacza, że Twoja aplikacja ma zdecydowanie problem. Jest po prostu sugestią dotyczącą coś czy może chcesz Przyjrzyj się bliżej więcej.
+Nie, powiadomienie nie oznacza, że w aplikacji występuje problem. To po prostu sugestia dotyczącą czegoś, czemu możesz chcieć przyjrzeć się bliżej.
 
 ## <a name="how-do-i-fix-it"></a>Jak go naprawić?
 
 Powiadomienia obejmują informacje diagnostyczne. Oto przykład:
 
 
-![Oto przykład wykrywania wydłużenie czasu odpowiedzi serwera](media/proactive-performance-diagnostics/server_response_time_degradation.png)
+![Oto przykład wykrywania pogorszenia czasu odpowiedzi serwera](media/proactive-performance-diagnostics/server_response_time_degradation.png)
 
-1. **Klasyfikacja**. Powiadomienie zawiera informację, ilu użytkowników lub ile operacji uległy zmianie. Może to pomóc Ci przypisać priorytet problemu.
-2. **Zakres**. Ten problem wpływa na cały ruch lub tylko niektóre strony? Jest on ograniczony do określonego przeglądarki lub lokalizacji? Te informacje można uzyskać z powiadomienia.
-3. **Diagnozowanie**. Często informacje diagnostyczne w powiadomieniu sugeruje rodzaj problemu. Na przykład jeśli czas odpowiedzi spowalnia, jeżeli liczba żądań jest wysoka, który sugeruje, że serwer lub zależności są przeciążone. 
+1. **Klasyfikacja**. Powiadomienie przedstawia liczbę użytkowników lub liczbę operacji, których dotyczy. Może to pomóc w przypisaniu priorytetu do problemu.
+2. **Zakres**. Czy problem wpływa na cały ruch, czy tylko niektóre strony? Czy jest ograniczone do określonych przeglądarek lub lokalizacji? Te informacje można uzyskać na podstawie powiadomienia.
+3. **Diagnozuj**. Często informacje diagnostyczne w powiadomieniu zasugerują charakter problemu. Na przykład jeśli czas odpowiedzi jest wolniejszy, gdy liczba żądań jest wysoka, sugeruje serwer lub zależności, które są przeciążone. 
 
-    W przeciwnym przypadku Otwórz blok wydajność, w usłudze Application Insights. Tam możesz znaleźć [Profiler](profiler.md) danych. Jeśli istnieją wyjątki zgłaszane, możesz też spróbować [rozszerzenia snapshot debugger](../../azure-monitor/app/snapshot-debugger.md).
+    W przeciwnym razie Otwórz blok wydajność w Application Insights. W tym miejscu znajdują się dane [profilera](profiler.md) . Jeśli zostały zgłoszone wyjątki, można również wypróbować [debuger migawek](../../azure-monitor/app/snapshot-debugger.md).
 
 
 
 ## <a name="configure-email-notifications"></a>Konfigurowanie powiadomień E-mail
 
-Inteligentne wykrywanie powiadomienia są domyślnie włączone i wysyłane do tych, którzy mają [właściciele, współautorzy i czytelnicy dostęp do zasobu usługi Application Insights](../../azure-monitor/app/resources-roles-access-control.md). Aby zmienić to ustawienie, kliknij przycisk **Konfiguruj** powiadomienia e-mail, lub Otwórz ustawienia wykrywania inteligentnego w usłudze Application Insights. 
+Powiadomienia inteligentnego wykrywania są domyślnie włączone i wysyłane do tych, którzy mają [kontrolę](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) dostępu współautora i [monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) do subskrypcji, w której znajduje się zasób Application Insights. Aby to zmienić, kliknij pozycję **Konfiguruj** w powiadomieniu e-mail lub Otwórz ustawienia inteligentnego wykrywania w Application Insights. 
   
-  ![Ustawienia wykrywania inteligentnego](media/proactive-performance-diagnostics/smart_detection_configuration.png)
+  ![Ustawienia inteligentnego wykrywania](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * Możesz użyć **anulować** linku w wiadomości e-mail wykrywania inteligentnego, aby przestać otrzymywać powiadomienia e-mail.
+  * Aby zrezygnować z otrzymywania powiadomień e-mail, możesz użyć linku **anulowania subskrypcji** w wiadomości e-mail dotyczącej wykrywania inteligentnego.
 
-Wiadomości e-mail o anomaliach wydajności wykrywania inteligentnego mogą zawierać maksymalnie jeden adres e-mail każdego dnia na zasób usługi Application Insights. Wiadomości e-mail będą wysyłane tylko wtedy, gdy co najmniej jeden nowy problem, które zostało wykryte w tym dniu. Nie otrzymasz powtórzeń wszystkie komunikaty. 
+Wiadomości e-mail dotyczące anomalii dotyczących wydajności wykrywania inteligentnego są ograniczone do jednej wiadomości e-mail dziennie na Application Insights zasób. Wiadomość e-mail zostanie wysłana tylko wtedy, gdy w tym dniu wykryjesz co najmniej jeden nowy problem. Nie zostaną powtórzone żadne komunikaty. 
 
 ## <a name="faq"></a>Często zadawane pytania
 
-* *Tak pracownicy firmy Microsoft Przyjrzyj się moje dane?*
-  * Nie. Usługa jest całkowicie automatyczne. Tylko otrzymasz powiadomienia. Twoje dane są [prywatnej](../../azure-monitor/app/data-retention-privacy.md).
-* *Czy można analizować wszystkie dane zebrane przez usługę Application Insights?*
-  * Nie w chwili obecnej. Obecnie analizujemy żądania czas odpowiedzi oraz czas odpowiedzi zależności czas ładowania. Analiza dodatkowe metryki znajduje się na naszej liście prac wyszukiwania do przodu.
+* *Tak więc personel firmy Microsoft szuka moich danych?*
+  * Nie. Usługa jest całkowicie automatyczna. Tylko otrzymujesz powiadomienia. Twoje dane są [prywatne](../../azure-monitor/app/data-retention-privacy.md).
+* *Czy analizujesz wszystkie dane zbierane przez Application Insights?*
+  * Jeszcze nie. Obecnie analizujemy czas odpowiedzi na żądanie, czas odpowiedzi zależności i czas ładowania strony. Analiza dodatkowych metryk znajduje się w naszej zaległości.
 
-* Jakie typy aplikacji to działa dla?
-  * Te spadku wydajności są wykrywane w dowolnej aplikacji, która generuje odpowiednie dane telemetryczne. Po zainstalowaniu usługi Application Insights w aplikacji sieci web, następnie żądania i zależności są automatycznie śledzone. Ale w usług zaplecza lub innych aplikacji, jeśli wstawiono wywołania [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) lub [TrackDependency](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency), Inteligentne wykrywanie będzie działać w taki sam sposób.
+* Dla jakich typów aplikacji jest to działanie?
+  * Te degradacje są wykrywane w każdej aplikacji, która generuje odpowiednie dane telemetryczne. Jeśli zainstalowano Application Insights w aplikacji sieci Web, żądania i zależności są automatycznie śledzone. Jednak w usługach zaplecza lub innych aplikacjach, jeśli wstawiono wywołania [TrackRequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) lub [TrackDependency](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency), Inteligentne wykrywanie będzie działało w ten sam sposób.
 
-* *Można utworzyć reguły wykrywania anomalii własnego lub dostosować istniejące zasady?*
+* *Czy mogę utworzyć własne reguły wykrywania anomalii lub dostosować istniejące reguły?*
 
-  * Jeszcze nie ale możesz:
-    * [Konfigurowanie alertów](../../azure-monitor/app/alerts.md) , poinformować Cię, gdy Metryka przekracza próg.
-    * [Eksportowanie telemetrii](../../azure-monitor/app/export-telemetry.md) do [bazy danych](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) lub [do usługi Power BI](../../azure-monitor/app/export-power-bi.md ), gdzie można analizować je samodzielnie.
-* *Jak często jest wykonywana analiza*
+  * Jeszcze nie, ale możesz:
+    * [Skonfiguruj alerty](../../azure-monitor/app/alerts.md) informujące o przekroczeniu progu przez metrykę.
+    * [](../../azure-monitor/app/export-telemetry.md) Wyeksportuj dane telemetryczne do [bazy danych](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) lub [do usługi PowerBI](../../azure-monitor/app/export-power-bi.md ), gdzie możesz ją przeanalizować.
+* *Jak często przeprowadzana jest analiza?*
 
-  * Firma Microsoft analizy Codzienne uruchamianie WE dane telemetryczne z poprzedniego dnia (pełny dzień w strefie czasowej UTC).
-* *To samo dotyczy to Zastąp [alertów dotyczących metryk](../../azure-monitor/app/alerts.md)?*
-  * Nie.  Nie jesteśmy zaangażowani w zapewnienie wykrywania co warto rozważyć nietypowe zachowanie.
+  * Przeprowadzamy analizę codziennie na danych telemetrycznych od poprzedniego dnia (pełny dzień w strefie czasowej UTC).
+* *Czy te zastępują [alerty metryk](../../azure-monitor/app/alerts.md)?*
+  * Nie.  Nie zobowiązujemy się do wykrywania wszystkich zachowań, które mogą być rozważane nietypowe.
 
 
-* *Jeśli I nie robią niczego w odpowiedzi na powiadomienie, I zostanie wyświetlony monit?*
-  * Nie, zostanie wyświetlony komunikat o każdym tylko raz. Jeśli problem będzie się powtarzać zostaną również zaktualizowane w inteligentne wykrywanie kanału informacyjnego bloku.
-* *Czy mogę utracone wiadomości e-mail. Gdzie znaleźć powiadomienia w portalu*
-  * W ramach przeglądu usługi Application Insights w swojej aplikacji kliknij **wykrywania inteligentnego** kafelka. Będzie mógł odnaleźć wszystkie powiadomienia się do tyłu 90 dni.
+* *Czy jeśli nie chcę niczego w odpowiedzi na powiadomienie, otrzymam przypomnienie?*
+  * Nie. otrzymasz komunikat o każdym problemie tylko raz. Jeśli problem będzie się powtarzać, zostanie zaktualizowany w bloku Smart Detection.
+* *Wiadomość e-mail została utracona. Gdzie mogę znaleźć powiadomienia w portalu?*
+  * W Application Insights przegląd aplikacji kliknij kafelek **wykrywanie inteligentne** . Będzie można znaleźć wszystkie powiadomienia z powrotem do 90 dni.
 
-## <a name="how-can-i-improve-performance"></a>Jak poprawić wydajność?
-Powolne, jak i niepowodzeniem odpowiedzi to jeden z największych frustrations dla użytkowników witryny sieci web, wiemy z własnego doświadczenia. Tak jest ważne, aby rozwiązać problemy z.
+## <a name="how-can-i-improve-performance"></a>Jak można poprawić wydajność?
+Powolne i nieudane odpowiedzi to jeden z największych frustrations dla użytkowników witryny sieci Web, jak wiadomo, że masz doświadczenie. Dlatego ważne jest, aby rozwiązać problemy.
 
 ### <a name="triage"></a>Klasyfikacja
-Najpierw czy ma to znaczenie? Jeśli strona jest zawsze ładować się wolno, ale tylko 1% witryny użytkownicy nigdy nie trzeba przyjrzeć się im, być może masz więcej o czym należy wziąć pod uwagę. Z drugiej strony jeśli tylko 1 procent użytkowników, otwórz go, ale zawsze zgłasza wyjątek wyjątków, który może być warte zbadania.
+Po pierwsze czy ma to znaczenie? Jeśli strona jest zawsze powolnie załadowana, ale tylko 1% użytkowników witryny musi być na nim przyjrzeć, być może masz ważniejsze rzeczy. Z drugiej strony, jeśli tylko 1% użytkowników otworzy go, ale zgłasza wyjątki za każdym razem, co może być cennym badaniem.
 
-Jako ogólnej wskazówki należy użyć instrukcji wpływ (narażeni użytkownicy lub % ruchu), ale należy pamiętać, że nie jest cały artykuł. Zbierać inne dokumenty, aby potwierdzić.
+Użyj instrukcji wpływającej (wpływ na użytkowników lub% ruchu) jako przewodnika ogólnego, ale pamiętaj, że nie jest to cały wątek. Zbierz inne dowody do potwierdzenia.
 
-Należy wziąć pod uwagę parametry tego problemu. Jeśli jest to zależne od lokalizacji geograficznej, skonfiguruj [testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) łącznie z tego regionu: może po prostu być problemy z siecią w tym obszarze.
+Należy wziąć pod uwagę parametry problemu. Jeśli jest zależna od lokalizacji geograficznej, skonfiguruj [testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) włącznie z tym regionem: w tym obszarze mogą znajdować się problemy z siecią.
 
-### <a name="diagnose-slow-page-loads"></a>Diagnozowanie powolne ładowanie stron
-Gdzie jest problem? Jest wolne odpowiedzi serwera, jest bardzo długi strony lub czy przeglądarka musi wykonać dużo pracy, aby go wyświetlić?
+### <a name="diagnose-slow-page-loads"></a>Diagnozuj wolne ładowanie stron
+Gdzie jest problem? Czy serwer jest powolnie reagować, czy jest to strona bardzo długa, czy w przeglądarce trzeba wykonać dużą pracę, aby ją wyświetlić?
 
-Otwórz blok przeglądarki, metryki. Segmenty wyświetlania przeglądarki strony obciążenia czasu wskazuje, gdzie czas. 
+Otwórz blok metryki przeglądarki. Segmentowy widok czasu ładowania strony w przeglądarce pokazuje, gdzie odbywa się czas. 
 
-* Jeśli **czas wysyłania żądania** jest wysokie, albo serwer odpowiada powoli lub żądanie jest żądaniem post z dużą ilością danych. Przyjrzyj się [metryki wydajności](../../azure-monitor/app/web-monitor-performance.md#metrics) do badania czasy odpowiedzi.
-* Konfigurowanie [śledzenia zależności](../../azure-monitor/app/asp-net-dependencies.md) aby zobaczyć, czy powolność wynika z usługami zewnętrznymi lub bazy danych.
-* Jeśli **odbierania odpowiedzi** jest dominującym, strony i jego zależne elementy — JavaScript, CSS, obrazów i tak dalej (ale nie asynchronicznie załadowanych danych) są długie. Konfigurowanie [testu dostępności](../../azure-monitor/app/monitor-web-app-availability.md)i należy ustawić opcję, aby załadować zależne elementy. Po otrzymaniu niektórych wyników Otwórz szczegóły wyniku i rozwiń go, aby zobaczyć, czasy ładowania różnych plików.
-* Wysoka **czas przetwarzania klienta** sugeruje skrypty działają wolno. Jeśli przyczyną jest oczywiste, Rozważ dodanie kodu czasu i czasy wysyłania w wywołaniach trackMetric.
+* Jeśli **czas żądania wysłania** jest wysoki, serwer reaguje powoli lub żądanie jest wpisem z dużą ilością danych. Sprawdź metryki [wydajności](../../azure-monitor/app/web-monitor-performance.md#metrics) , aby zbadać czasy odpowiedzi.
+* Skonfiguruj [Śledzenie zależności](../../azure-monitor/app/asp-net-dependencies.md) , aby zobaczyć, czy spowolnienie jest spowodowane usługami zewnętrznymi czy bazą danych.
+* Jeśli **otrzymujesz odpowiedź** , Twoja strona i jej zależne części — JavaScript, CSS, obrazy i tak dalej (ale dane ładowane asynchronicznie) są długie. Skonfiguruj [Test dostępności](../../azure-monitor/app/monitor-web-app-availability.md)i pamiętaj, aby ustawić opcję ładowania części zależnych. Po otrzymaniu pewnych wyników Otwórz szczegóły wyniku i rozwiń go, aby zobaczyć czasy ładowania różnych plików.
+* Wysoka **godzina przetwarzania przez klienta** sugeruje, że skrypty działają wolno. Jeśli powód nie jest oczywisty, rozważ dodanie pewnego kodu chronometrażu i wysłanie czasu w wywołaniach trackMetric.
 
-### <a name="improve-slow-pages"></a>Poprawa powolne strony
-Brak sieci web, pełna porad na temat zwiększania Twoje odpowiedzi serwera i czasy ładowania stron, dlatego firma Microsoft nie będzie podejmowana próba powtórzyć je wszystkie w tym miejscu. Poniżej przedstawiono kilka wskazówek, które prawdopodobnie już wiesz, po prostu pomagające w myśl:
+### <a name="improve-slow-pages"></a>Popraw wolne strony
+W sieci Web jest dostępna pełna informacja o ulepszaniu odpowiedzi serwera i czasów ładowania stron, dlatego nie będziemy próbować powtórzyć ich w tym miejscu. Oto kilka porad, które prawdopodobnie już wiesz, po prostu zapoznaj się z nim:
 
-* Powolne ładowanie ze względu na duże pliki: Załaduj asynchronicznie skrypty i inne elementy. Za pomocą tworzenia pakietów skryptów. Strona główna przerwać działanie elementów widget, które ładują dane oddzielnie. Nie wysyłaj zwykłe stare kod HTML dla długich tabel: dane żądania JSON lub innych kompaktowego formatu za pomocą skryptu, a następnie wypełnij tabelę w miejscu. Brak wspaniałych środowisk pomoże Ci to wszystko. (One także pociąga za sobą skrypty big Data, oczywiście.)
-* Zależności serwera wolne: Należy wziąć pod uwagę lokalizacji geograficznych poszczególnych składnikach. Na przykład jeśli używasz platformy Azure, upewnij się, że serwer sieci web i bazy danych znajdują się w tym samym regionie. Czy zapytania pobierają więcej informacji, niż jest to wymagane? Czy buforowanie lub adapterów przetwarzania wsadowego pomocy?
-* Pojemności problemy: Spójrz na metryk serwera czasów odpowiedzi i liczby żądań. Jeśli czas reakcji osiągają szczytowe użycie nieproporcjonalnie z okresami liczby żądań, prawdopodobnie konfiguracji serwerów.
+* Wolne ładowanie z powodu dużych plików: Załaduj skrypty i inne części asynchronicznie. Użyj grupowania skryptów. Podziel stronę główną na widżety, które ładują dane oddzielnie. Nie wysyłaj zwykłego pliku HTML dla długich tabel: Użyj skryptu, aby zażądać danych jako JSON lub innego formatu kompaktowego, a następnie wypełnij tabelę. Istnieją wspaniałe platformy, które pomogą Ci. (Pociąga to za sobą również duże skrypty).
+* Wolne zależności serwera: Uwzględnij lokalizacje geograficzne składników. Jeśli na przykład używasz platformy Azure, upewnij się, że serwer sieci Web i baza danych znajdują się w tym samym regionie. Czy zapytania są pobierają więcej informacji niż są one potrzebne? Czy chcesz buforować lub wsadowo pomoc?
+* Problemy z pojemnością: Sprawdź metryki serwera dotyczące czasów odpowiedzi i liczby żądań. Jeśli czas odpowiedzi jest nieproporcjonalny z szczytami w licznikach żądań, prawdopodobnie serwery są rozciągane.
 
 
-## <a name="server-response-time-degradation"></a>Wydłużenie czasu odpowiedzi serwera
+## <a name="server-response-time-degradation"></a>Obniżenie czasu odpowiedzi serwera
 
-Powiadomienia o spadku czas odpowiedzi zawiera:
+Powiadomienie o obniżeniu czasu odpowiedzi informuje o tym, że:
 
-* Czas odpowiedzi w porównaniu do czasu odpowiedzi normalne dla tej operacji.
-* Ilu użytkowników dotyczy problem.
-* Średni czas odpowiedzi i 90. percentyl czas odpowiedzi dla tej operacji w dniu wykrywania i 7 dni przed. 
-* Liczba żądań tej operacji w dniu wykrywania i 7 dni przed.
-* Korelacja między obniżenie wydajności tej operacji i obniżenia wydajności w powiązane zależności. 
-* Linki pomagające zdiagnozować problem.
-  * Ślady Profiler, aby wyświetlić, gdy operacja jest zużywany czas (łącze jest dostępne, jeśli Profiler śledzenia przykłady zostały zebrane dla tej operacji w okresie wykrywania). 
-  * Raporty wydajności w Eksploratorze metryk, których użytkownik może kątami filtry zakresów czasu dla tej operacji.
-  * Wyszukaj to wywołanie wyświetlić właściwości wywołań.
-  * Zgłasza błąd — Jeśli liczba 1 > oznacza to, że wystąpiły błędy w tej operacji, które mogą przyczynić się do obniżenia wydajności.
+* Czas odpowiedzi w porównaniu do normalnego czasu odpowiedzi dla tej operacji.
+* Liczba użytkowników, których to dotyczy.
+* Średni czas odpowiedzi i 90-krotny czas odpowiedzi dla tej operacji w dniu wykrywania i 7 dni przed. 
+* Liczba żądań operacji w dniu wykrycia i 7 dni przed.
+* Korelacja między obniżeniem w tej operacji a obniżeniem wydajności w powiązanych zależnościach. 
+* Linki ułatwiające zdiagnozowanie problemu.
+  * Ślady profilera ułatwiające wyświetlenie czasu trwania operacji (link jest dostępny, jeśli przykłady śledzenia profilera zostały zebrane dla tej operacji w okresie wykrywania). 
+  * Raporty dotyczące wydajności w Eksploratorze metryk, w którym można wydzielić i indeksować zakres czasu/filtry dla tej operacji.
+  * Wyszukaj to wywołanie, aby wyświetlić określone właściwości wywołania.
+  * Raporty o błędach — w przypadku zliczenia > 1 oznacza to, że wystąpiły błędy w tej operacji, które mogły przyczynić się do obniżenia wydajności.
 
-## <a name="dependency-duration-degradation"></a>Spadek czasu trwania zależności
+## <a name="dependency-duration-degradation"></a>Pogorszenie czasu trwania zależności
 
-Nowoczesną aplikacją bardziej przyjąć podejście do projektowania wczesnych, który w wielu przypadkach prowadzi do dużych niezawodność w przypadku usług zewnętrznych. Na przykład jeśli aplikacja opiera się na niektórych platformach danych lub nawet wtedy, gdy tworzysz własne bot usługę, którą należy prawdopodobnie będzie przekazywał dla niektórych dostawcy usług cognitive services, dzięki której Boty wchodzić w interakcje w sposób bardziej ludzki i niektóre usługi magazynu danych dla bot do ściągania dla odpowiedzi m.  
+Nowoczesne aplikacje bardziej i bardziej wdrażają podejście do projektowania mikrousług, które w wielu przypadkach prowadzi do dużej niezawodności usług zewnętrznych. Na przykład, jeśli aplikacja korzysta z pewnej platformy danych, a nawet w przypadku tworzenia własnej usługi bot, prawdopodobnie zostanie przekazany na niektórych dostawców usług poznawczej, aby umożliwić botówom współdziałanie w bardziej ludzki sposób, a niektóre usługi magazynu danych Bot do ściągania odpowiedzi z mol.  
 
-Przykładowe zależności degradacji powiadomień:
+Przykładowe powiadomienie o obniżeniu zależności:
 
-![Oto przykład wykrywania spadek czasu trwania zależności](media/proactive-performance-diagnostics/dependency_duration_degradation.png)
+![Oto przykład wykrywania pogorszenia czasu trwania zależności](media/proactive-performance-diagnostics/dependency_duration_degradation.png)
 
-Zwróć uwagę, że informuje:
+Zwróć uwagę, że:
 
-* Czas trwania w porównaniu do czasu odpowiedzi normalne dla tej operacji
-* Ilu użytkowników dotyczy problem
-* Średni czas trwania i 90. percentyl czas trwania tej zależności w dniu wykrywania i 7 dni przed
-* Liczba zależności wywołań w dniu wykrywania i 7 dni przed
-* Linki pomagające zdiagnozować problem
+* Czas trwania w porównaniu do normalnego czasu odpowiedzi dla tej operacji
+* Liczba użytkowników, których to dotyczy
+* Średni czas trwania i 90-krotny czas trwania dla tej zależności w dniu wykrywania i 7 dni przed
+* Liczba wywołań zależności w dniu wykrycia i 7 dni przed
+* Linki ułatwiające zdiagnozowanie problemu
   * Raporty dotyczące wydajności w Eksploratorze metryk dla tej zależności
-  * Wyszukaj wywołania tej zależności, aby wyświetlić właściwości wywołania
-  * Raporty awarii — jeśli liczba > 1, oznacza to, że wystąpiły zależność zakończona niepowodzeniem wywołuje w okresie wykrywania, która może przyczynić się do spadek czasu trwania. 
-  * Otwórz Analytics z zapytaniami, które obliczają ten czas trwania zależności i liczba  
+  * Wyszukaj te wywołania zależności, aby wyświetlić właściwości wywołań
+  * Raporty o błędach — w przypadku liczby > 1 oznacza to, że w okresie wykrywania Wystąpił błąd wywołania zależności, które mogły przyczynić się do obniżenia czasu trwania. 
+  * Otwórz analizę z zapytaniami, które obliczają ten czas trwania zależności i liczbę  
 
-## <a name="smart-detection-of-slow-performing-patterns"></a>Inteligentne wykrywanie powolnego wzorce wykonywania 
+## <a name="smart-detection-of-slow-performing-patterns"></a>Inteligentne wykrywanie wolnych wzorców wykonywania 
 
-Usługa Application Insights umożliwia znalezienie problemów z wydajnością, którzy mogą wpływ tylko na część użytkowników lub wpływ tylko na użytkowników, w niektórych przypadkach. Na przykład powiadomienia o ładowania stron jest wolniejszy na jednym typie przeglądarki niż na inne typy przeglądarek, lub jeśli żądania są obsługiwane wolniej z określonego serwera. Umożliwia również odnajdywanie problemów związanych z kombinacji właściwości, takie jak powolne strona ładuje się w jednym obszarze geograficznym w przypadku klientów z określonym systemem operacyjnym.  
+Application Insights odnajduje problemy z wydajnością, które mogą mieć wpływ tylko na niektóre części użytkowników, lub mieć wpływ tylko na użytkowników w niektórych przypadkach. Na przykład powiadomienia o ładowaniu stron są wolniejsze w jednym typie przeglądarki niż w przypadku innych typów przeglądarek, lub jeśli żądania są przekazywane wolniej od określonego serwera. Może również wykrywać problemy związane z połączeniami właściwości, takimi jak wolne ładowanie stron w jednym obszarze geograficznym w przypadku klientów korzystających z określonego systemu operacyjnego.  
 
-Anomalie, takie jak te są bardzo trudne do wykrycia, po prostu, sprawdzając dane, ale są bardziej powszechne, niż myślisz. Często są tylko powierzchni, gdy klienci zaczną zgłaszać skargi. Do tego czasu jest za późno: narażeni użytkownicy są już przełączanie do Twoich konkurentów!
+Anomalie takie jak te są bardzo trudne do wykrycia, sprawdzając dane, ale są one bardziej typowe, niż można myśleć. Często są one używane tylko wtedy, gdy klient zauważa. Przez ten czas jest zbyt późno: zaatakowany użytkownicy już przełączają się do Twoich konkurentów.
 
-Obecnie nasze algorytmy Przyjrzyj się krótszy czas ładowania strony, czasów odpowiedzi żądania na serwerze i czasów odpowiedzi zależności.  
+Obecnie nasze algorytmy wyglądają na czasy ładowania stron, żądania czasów odpowiedzi na serwerze i czasy odpowiedzi dla zależności.  
 
-Nie masz ustawić któryś z progów lub skonfigurować reguły. Uczenie maszynowe i algorytmy wyszukiwania danych są używane do wykrywania nietypowe wzorce.
+Nie musisz ustawiać żadnych progów ani konfigurować reguł. Algorytmy uczenia maszynowego i wyszukiwania danych są używane do wykrywania nietypowych wzorców.
 
-![Alert e-mail kliknij link, aby otworzyć raport diagnostyczny na platformie Azure](./media/proactive-performance-diagnostics/03.png)
+![Na stronie alertu e-mail kliknij link, aby otworzyć raport diagnostyczny na platformie Azure](./media/proactive-performance-diagnostics/03.png)
 
-* **Gdy** przedstawia czas wykrycia problemu.
-* **Co** opisano:
+* **Gdy** pokazuje czas wykrycia problemu.
+* **Opis:**
 
-  * Ten problem, który został wykryty;
-  * Właściwości zestaw zdarzeń, które znaleźliśmy wyświetlane zachowanie problem.
-* W tabeli przedstawiono porównanie zestawu niskiej, średniej zachowanie inne zdarzenia.
+  * Wykryto problem;
+  * Charakterystyki zestawu zdarzeń, które znaleźliśmy, wykryto zachowanie problemu.
+* Tabela porównuje źle wykonywany zestaw z średnim zachowaniem wszystkich innych zdarzeń.
 
-Kliknij łącza, aby otworzyć Eksploratora metryk i wyszukiwanie w odpowiednich raportach, filtrowanie czasu i właściwości zestawu działają wolno.
+Kliknij linki, aby otworzyć Eksploratora metryk i wyszukać odpowiednie raporty, filtrować według czasu i właściwości powolnego zestawu.
 
-Zmodyfikuj zakres czasu i filtry, aby eksplorować dane telemetryczne.
+Zmodyfikuj zakres czasu i filtry, aby poznać dane telemetryczne.
 
-## <a name="next-steps"></a>Kolejne kroki
-Te narzędzia diagnostyczne ułatwiają sprawdzanie danych telemetrycznych z Twojej aplikacji:
+## <a name="next-steps"></a>Następne kroki
+Te narzędzia diagnostyczne ułatwiają inspekcję danych telemetrycznych z aplikacji:
 
 * [Profiler](profiler.md) 
-* [Rozszerzenie Snapshot debugger](../../azure-monitor/app/snapshot-debugger.md)
+* [Debuger migawek](../../azure-monitor/app/snapshot-debugger.md)
 * [Analiza](../../azure-monitor/log-query/get-started-portal.md)
-* [Analiza inteligentna Diagnostyka](../../azure-monitor/app/analytics.md)
+* [Inteligentna diagnostyka analityczna](../../azure-monitor/app/analytics.md)
 
-Wykrywanie inteligentne są całkowicie automatyczny. A może chcesz skonfigurować niektóre alerty więcej?
+Inteligentne wykrywanie są całkowicie automatyczne. Ale być może chcesz skonfigurować więcej alertów?
 
-* [Ręcznie skonfigurowane alertów dotyczących metryk](../../azure-monitor/app/alerts.md)
-* [Testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Ręcznie skonfigurowane alerty metryk](../../azure-monitor/app/alerts.md)
+* [Testy sieci Web dostępności](../../azure-monitor/app/monitor-web-app-availability.md)

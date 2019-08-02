@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Storage wydajność i skalowalność Lista kontrolna | Dokumentacja firmy Microsoft
-description: Lista kontrolna sprawdzonych rozwiązań dotyczących użycia z usługą Azure Storage w tworzenie wydajnych aplikacji.
+title: Lista kontrolna wydajności i skalowalności usługi Azure Storage | Microsoft Docs
+description: Lista kontrolna sprawdzonych praktyk do użycia z usługą Azure Storage w przypadku tworzenia aplikacji wykonujących aplikacje.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,485 +8,483 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c5bbd19969349965ea20fa4cfc09e10119a9a86c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ee216bd4d6994179e347465c30039f2f8e293c85
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295746"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233017"
 ---
-# <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna wydajności i skalowalności usługi Microsoft Azure Storage
+# <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna wydajności i skalowalności Microsoft Azure Storage
 
-Po wydaniu usługi Microsoft Azure Storage firma Microsoft opracowała wiele sprawdzone rozwiązania dotyczące korzystania z tych usług w sposób wydajny, a ten artykuł służy do konsolidowania najważniejsze z nich do listy styl listy kontrolnej. Części tego artykułu jest pomoc deweloperom aplikacji, sprawdź, czy używasz sprawdzone rozwiązania z usługą Azure Storage i pomoc w identyfikacji innych sprawdzone rozwiązania, należy rozważyć przyjęcie. W tym artykule nie jest podejmowana próba obejmują co możliwości optymalizacji wydajności i skalowalności — wyklucza te, które są małe w ich wpływ lub nie szerokie zastosowanie. W zakresie, w jakim można przewidzieć zachowania aplikacji podczas projektowania, warto zachować te pamiętać na wczesnym etapie, aby uniknąć projekty, które będą uruchamiane w problemy z wydajnością.  
+Od momentu wydania usług Microsoft Azure Storage, firma Microsoft opracowała kilka sprawdzonych praktyk związanych z korzystaniem z tych usług w sposób właściwy, a ten artykuł służy do konsolidacji najważniejszych z nich do listy stylów list kontrolnych. Zamiarem tego artykułu jest ułatwienie deweloperom aplikacji zweryfikowania, że korzystają z sprawdzonych praktyk w usłudze Azure Storage i pomagają im identyfikować inne sprawdzone praktyki, które powinny rozważyć przyjęcie. Ten artykuł nie podejmuje próby zakrycia każdej możliwej optymalizacji wydajności i skalowalności — wyklucza te, które są niewielkie w ich wpływie lub nie są szeroko stosowane. W takim zakresie, w jakim zachowanie aplikacji może być przewidywane podczas projektowania, warto pamiętać o wczesnym zapewnieniu, aby uniknąć projektów, które będą działały w przypadku problemów z wydajnością.  
 
-Każdy deweloper aplikacji przy użyciu usługi Azure Storage powinien trwać przeczytaj ten artykuł, i sprawdzić ich stosowania następuje każdego sprawdzonych rozwiązań wymienione poniżej.  
+Każdy deweloper aplikacji korzystający z usługi Azure Storage powinien odczytać ten artykuł, a następnie sprawdzić, czy ich aplikacje są zgodne z poszczególnymi opisanymi praktykami wymienionymi poniżej.  
 
 ## <a name="checklist"></a>Lista kontrolna
 
-W tym artykule organizuje sprawdzonych rozwiązań w następujących grupach. Sprawdzone rozwiązania mające zastosowanie do:  
+Ten artykuł organizuje sprawdzone praktyki w następujących grupach. Sprawdzone praktyki mające zastosowanie do:  
 
-* Wszystkie usługi Azure Storage (obiekty BLOB, tabel, kolejek i plików)
+* Wszystkie usługi Azure Storage (obiekty blob, tabele, kolejki i pliki)
 * Obiekty blob
 * Tabele
 * Kolejki  
 
-| Gotowe | Obszar | Category | Pytanie |
+| Gotowe | Obszar | Kategoria | Pytanie |
 | --- | --- | --- | --- |
-| &nbsp; | Wszystkie usługi |Cele skalowalności |[Aplikacja zaprojektowano w celu uniknięcia zbliża się cele skalowalności?](#subheading1) |
-| &nbsp; | Wszystkie usługi |Cele skalowalności |[Konwencja nazewnictwa zaprojektowana w celu umożliwienia lepszego równoważenia obciążenia?](#subheading47) |
-| &nbsp; | Wszystkie usługi |Networking |[Urządzenia po stronie klienta mają wystarczająco dużej przepustowości i małych opóźnień w celu osiągnięcia wydajności potrzebne?](#subheading2) |
-| &nbsp; | Wszystkie usługi |Networking |[Czy urządzenia po stronie klienta mają łącze wystarczająco wysokiej jakości?](#subheading3) |
-| &nbsp; | Wszystkie usługi |Networking |[Aplikacja klienta znajduje się "w pobliżu" konto magazynu?](#subheading4) |
-| &nbsp; | Wszystkie usługi |Dystrybucja zawartości |[Czy używasz usługi CDN do dystrybucji zawartości?](#subheading5) |
-| &nbsp; | Wszystkie usługi |Bezpośredni dostęp do klienta |[Czy używasz mechanizmu CORS i sygnaturę dostępu Współdzielonego umożliwia bezpośredni dostęp do magazynu, a nie serwera proxy?](#subheading6) |
-| &nbsp; | Wszystkie usługi |Buforowanie |[Uzyskuje się rzadko swojej pamięci podręcznej danych aplikacji, które jest często używana i zmiany?](#subheading7) |
-| &nbsp; | Wszystkie usługi |Buforowanie |[Aplikacja jest przetwarzanie wsadowe aktualizacji (buforowanie ich po stronie klienta, a następnie przekazywanie w większych zestawów)?](#subheading8) |
-| &nbsp; | Wszystkie usługi |Konfiguracja platformy .NET |[Czy skonfigurowano klientowi korzystanie z wystarczającą liczbą równoczesnych połączeń?](#subheading9) |
-| &nbsp; | Wszystkie usługi |Konfiguracja platformy .NET |[Czy skonfigurowano .NET do użycia z wystarczającą liczbą wątków?](#subheading10) |
-| &nbsp; | Wszystkie usługi |Konfiguracja platformy .NET |[Czy używasz platformy .NET 4.5 lub nowszej, który poprawiła się wyrzucanie elementów bezużytecznych?](#subheading11) |
-| &nbsp; | Wszystkie usługi |Równoległość |[Mają zapewniony, równoległości jest odpowiednio ograniczone tak, aby nie przeciążają swoje zdolności klienta lub cele skalowalności?](#subheading12) |
-| &nbsp; | Wszystkie usługi |Narzędzia |[Możesz korzystać z najnowszej wersji programu Microsoft znajdują się narzędzia i biblioteki klienckie?](#subheading13) |
-| &nbsp; | Wszystkie usługi |Ponowne próby |[Czy przy użyciu wykładniczego wycofywania zasad ograniczania błędów i przekroczeń limitu czasu ponawiania?](#subheading14) |
-| &nbsp; | Wszystkie usługi |Ponowne próby |[Jest unikanie ponownych prób Twojej aplikacji bez możliwości ponowienia próby błędów?](#subheading15) |
-| &nbsp; | Obiekty blob |Cele skalowalności |[Czy masz dużą liczbę klientów uzyskujących dostęp do pojedynczego obiektu jednocześnie?](#subheading46) |
-| &nbsp; | Obiekty blob |Cele skalowalności |[Aplikacja przebywa w tę docelową skalowalność przepustowości lub operacji dla pojedynczego obiektu blob?](#subheading16) |
-| &nbsp; | Obiekty blob |Kopiowanie obiektów blob |[Kopiowanie blob znajdują się w sposób efektywny?](#subheading17) |
-| &nbsp; | Obiekty blob |Kopiowanie obiektów blob |[Czy używasz narzędzia AzCopy do zbiorczego kopiowania obiektów blob?](#subheading18) |
-| &nbsp; | Obiekty blob |Kopiowanie obiektów blob |[Czy używasz usługi Azure Import/Export do przesyłania dużych ilości danych?](#subheading19) |
-| &nbsp; | Obiekty blob |Use Metadata |[Czy przechowywania często używanych metadane dotyczące obiektów blob w ich metadanych?](#subheading20) |
-| &nbsp; | Obiekty blob |Szybkie przekazywanie |[Podczas próby szybko przekazać jeden obiekt blob, przekazujesz bloków w sposób równoległy?](#subheading21) |
-| &nbsp; | Obiekty blob |Szybkie przekazywanie |[Podczas próby szybko przekazać wiele obiektów blob, przekazujesz obiektów blob w sposób równoległy?](#subheading22) |
-| &nbsp; | Obiekty blob |Popraw typ obiektu Blob |[Czy używasz stronicowych obiektów blob lub blokowych obiektów blob, jeśli jest potrzebne?](#subheading23) |
-| &nbsp; | Tabele |Cele skalowalności |[Czy Zbliżasz cele skalowalności dla jednostek na sekundę](#subheading24) |
-| &nbsp; | Tabele |Konfigurowanie |[Czy używasz JSON dla żądań tabeli?](#subheading25) |
-| &nbsp; | Tabele |Konfigurowanie |[Możesz wyłączyć Nagle'a zwiększa wydajność żądań o małym rozmiarze?](#subheading26) |
-| &nbsp; | Tabele |Tabele i partycje |[Masz można prawidłowo podzielona na partycje dane?](#subheading27) |
-| &nbsp; | Tabele |Partycje w warstwie gorąca |[Jest unikanie wzorców tylko do dołączania i tylko dołączana?](#subheading28) |
-| &nbsp; | Tabele |Partycje w warstwie gorąca |[Czy operacje wstawiania/aktualizacji są dystrybuowane w wielu partycjach?](#subheading29) |
-| &nbsp; | Tabele |Zakres kwerendy |[Zostały tak zaprojektowane schematu do obsługi zapytań o punkt ma być używany w większości przypadków i zapytania tabeli należy używać oszczędnie?](#subheading30) |
-| &nbsp; | Tabele |Gęstość zapytania |[Czy skanowania zazwyczaj tylko zapytania i zwraca wiersze, które Twoja aplikacja będzie używać?](#subheading31) |
-| &nbsp; | Tabele |Ograniczenie zwrócone dane |[Czy używasz filtrowania w celu uniknięcia zwracanie jednostki, które nie są potrzebne?](#subheading32) |
-| &nbsp; | Tabele |Ograniczenie zwrócone dane |[Czy używasz projekcji w celu uniknięcia zwracanie właściwości, które nie są potrzebne?](#subheading33) |
-| &nbsp; | Tabele |Denormalizacja |[Twoje dane mają nieznormalizowane tak, aby uniknąć nieefektywne zapytania lub wielu żądań odczytu podczas próby pobrania danych?](#subheading34) |
-| &nbsp; | Tabele |Wstawiania/aktualizowania/usuwania |[Czy możesz dzielenia na partie żądania, które muszą być transakcyjne i może odbywać się w tym samym czasie, aby zmniejszyć rund?](#subheading35) |
-| &nbsp; | Tabele |Wstawiania/aktualizowania/usuwania |[Jest unikanie pobierania jednostki tylko w celu ustalenia, czy należy wywołać, insert nebo update?](#subheading36) |
-| &nbsp; | Tabele |Wstawiania/aktualizowania/usuwania |[Bierzesz pod uwagę przechowywanie serii danych, które często mają zostać pobrane ze sobą w pojedynczą jednostkę jako właściwości zamiast wielu jednostek?](#subheading37) |
-| &nbsp; | Tabele |Wstawiania/aktualizowania/usuwania |[Dla jednostek, które będą zawsze pobierane ze sobą i mogą być zapisywane w partiach (na przykład, dane szeregów czasowych) bierzesz pod uwagę przy użyciu obiektów blob zamiast tabel?](#subheading38) |
-| &nbsp; | Kolejki |Cele skalowalności |[Czy Zbliżasz cele skalowalności dla komunikatów na sekundę](#subheading39) |
-| &nbsp; | Kolejki |Konfigurowanie |[Możesz wyłączyć Nagle'a zwiększa wydajność żądań o małym rozmiarze?](#subheading40) |
-| &nbsp; | Kolejki |Rozmiar komunikatu |[Czy compact Twojej wiadomości zwiększa wydajność kolejki?](#subheading41) |
-| &nbsp; | Kolejki |Zbiorcze pobieranie |[Czy pobieranie wielu komunikatów w ramach jednej operacji "Pobierz"?](#subheading42) |
-| &nbsp; | Kolejki |Częstotliwość sondowania |[Są możesz sondowania wystarczająco często, aby zmniejszyć opóźnienie postrzegany aplikacji?](#subheading43) |
-| &nbsp; | Kolejki |Aktualizacja wiadomości |[Czy używasz UpdateMessage do przechowywania postęp w przetwarzanie komunikatów, unikając konieczności Przetwarzaj ponownie cały komunikat, jeśli wystąpi błąd?](#subheading44) |
-| &nbsp; | Kolejki |Architektura |[Czy używasz kolejek na całej aplikacji bardziej skalowalna przechowując obciążeń długo działających poza ścieżki krytycznej i niezależne skalowanie, następnie?](#subheading45) |
+| &nbsp; | Wszystkie usługi |Tarcze skalowalności |[Czy aplikacja została zaprojektowana tak, aby uniknąć zbliżania się celów skalowalności?](#subheading1) |
+| &nbsp; | Wszystkie usługi |Tarcze skalowalności |[Czy Twoja Konwencja nazewnictwa została zaprojektowana w celu umożliwienia lepszego równoważenia obciążenia?](#subheading47) |
+| &nbsp; | Wszystkie usługi |Networking |[Czy urządzenia po stronie klienta mają dostatecznie wysoką przepustowość i małe opóźnienia w celu osiągnięcia wymaganej wydajności?](#subheading2) |
+| &nbsp; | Wszystkie usługi |Networking |[Czy urządzenia po stronie klienta mają wystarczająco dużo linku jakości?](#subheading3) |
+| &nbsp; | Wszystkie usługi |Networking |[Czy aplikacja kliencka znajduje się "blisko" konta magazynu?](#subheading4) |
+| &nbsp; | Wszystkie usługi |Dystrybucja zawartości |[Czy używasz sieci CDN do dystrybucji zawartości?](#subheading5) |
+| &nbsp; | Wszystkie usługi |Bezpośredni dostęp klienta |[Czy używasz sygnatury dostępu współdzielonego i mechanizmu CORS, aby zezwalać na bezpośredni dostęp do magazynu zamiast serwera proxy?](#subheading6) |
+| &nbsp; | Wszystkie usługi |Buforowanie |[Czy aplikacja jest używana do buforowania danych, które są wielokrotnie używane i rzadko zmieniane?](#subheading7) |
+| &nbsp; | Wszystkie usługi |Buforowanie |[Czy aktualizacje wsadowe aplikacji (buforowanie po stronie klienta, a następnie przekazywanie w większych zestawach)?](#subheading8) |
+| &nbsp; | Wszystkie usługi |Konfiguracja platformy .NET |[Czy skonfigurowano klienta tak, aby używał wystarczającej liczby jednoczesnych połączeń?](#subheading9) |
+| &nbsp; | Wszystkie usługi |Konfiguracja platformy .NET |[Czy skonfigurowano platformę .NET do używania wystarczającej liczby wątków?](#subheading10) |
+| &nbsp; | Wszystkie usługi |Konfiguracja platformy .NET |[Czy używasz programu .NET 4,5 lub nowszego, który ma ulepszone odzyskiwanie pamięci?](#subheading11) |
+| &nbsp; | Wszystkie usługi |Równoległości |[Czy zapewniono, że równoległość jest odpowiednio ograniczona, aby nie przeciążać możliwości klientów ani celów skalowalności?](#subheading12) |
+| &nbsp; | Wszystkie usługi |Narzędzia |[Czy używasz najnowszej wersji dostarczonych przez firmę Microsoft bibliotek i narzędzi klienta?](#subheading13) |
+| &nbsp; | Wszystkie usługi |Ponowne próby |[Czy używasz wykładniczej zasady ponawiania wycofywania do ograniczania błędów i limitów czasu?](#subheading14) |
+| &nbsp; | Wszystkie usługi |Ponowne próby |[Czy aplikacja unika ponawiania prób w przypadku błędów, które nie są ponawiane?](#subheading15) |
+| &nbsp; | Obiekty blob |Tarcze skalowalności |[Czy masz dużą liczbę klientów uzyskujących dostęp do pojedynczego obiektu jednocześnie?](#subheading46) |
+| &nbsp; | Obiekty blob |Tarcze skalowalności |[Czy Twoja aplikacja jest zastosowana w celu zapewnienia przepustowości lub skalowalności operacji dla pojedynczego obiektu BLOB?](#subheading16) |
+| &nbsp; | Obiekty blob |Kopiowanie obiektów BLOB |[Czy są kopiowane obiekty blob w wydajny sposób?](#subheading17) |
+| &nbsp; | Obiekty blob |Kopiowanie obiektów BLOB |[Czy używasz AzCopy do zbiorczego kopiowania obiektów BLOB?](#subheading18) |
+| &nbsp; | Obiekty blob |Kopiowanie obiektów BLOB |[Czy używasz usługi Azure Import/Export do transferowania dużych ilości danych?](#subheading19) |
+| &nbsp; | Obiekty blob |Użyj metadanych |[Czy są przechowywane często używane metadane dotyczące obiektów BLOB w swoich metadanych?](#subheading20) |
+| &nbsp; | Obiekty blob |Szybkie przekazywanie |[Czy podczas próby przekazania jednego obiektu BLOB szybko przekazująsz bloki?](#subheading21) |
+| &nbsp; | Obiekty blob |Szybkie przekazywanie |[Czy podczas próby przeładowania wielu obiektów BLOB szybko przekazujesz obiekty blob?](#subheading22) |
+| &nbsp; | Obiekty blob |Prawidłowy typ obiektu BLOB |[Czy używasz stronicowych obiektów blob lub blokowych obiektów BLOB w razie potrzeby?](#subheading23) |
+| &nbsp; | Tabele |Tarcze skalowalności |[Czy zbliżasz się do elementów docelowych skalowalności dla jednostek na sekundę?](#subheading24) |
+| &nbsp; | Tabele |Konfigurowanie |[Czy używasz formatu JSON dla żądań tabeli?](#subheading25) |
+| &nbsp; | Tabele |Konfigurowanie |[Czy zostały wyłączone nagle w celu zwiększenia wydajności małych żądań?](#subheading26) |
+| &nbsp; | Tabele |Tabele i partycje |[Czy masz poprawnie partycjonowane dane?](#subheading27) |
+| &nbsp; | Tabele |Partycje aktywne |[Czy unikasz wzorców tylko do dołączania i tylko do prefiksu?](#subheading28) |
+| &nbsp; | Tabele |Partycje aktywne |[Czy operacje wstawiania/aktualizowania są rozłożone na wiele partycji?](#subheading29) |
+| &nbsp; | Tabele |Zakres zapytania |[Czy schemat został zaprojektowany w taki sposób, aby zezwalał na używanie zapytań do punktów w większości przypadków, a zapytania tabeli, które mają być używane oszczędnie?](#subheading30) |
+| &nbsp; | Tabele |Gęstość zapytania |[Czy zapytania zwykle skanują i zwracają wiersze, które będą używane przez aplikację?](#subheading31) |
+| &nbsp; | Tabele |Ograniczanie zwracanych danych |[Czy używasz filtrowania, aby uniknąć zwracania jednostek, które nie są potrzebne?](#subheading32) |
+| &nbsp; | Tabele |Ograniczanie zwracanych danych |[Czy używasz projekcji, aby uniknąć zwracania właściwości, które nie są potrzebne?](#subheading33) |
+| &nbsp; | Tabele |Denormalizacja |[Czy masz rozznormalizowane dane, aby uniknąć nieefektywnych zapytań lub wielu żądań odczytu podczas próby pobrania danych?](#subheading34) |
+| &nbsp; | Tabele |Wstaw/Aktualizuj/Usuń |[Czy są przetwarzane zbiorczo żądania, które muszą być transakcyjne lub mogą być wykonywane w tym samym czasie w celu zmniejszenia liczby operacji rundy?](#subheading35) |
+| &nbsp; | Tabele |Wstaw/Aktualizuj/Usuń |[Czy unikasz pobierania jednostki tylko w celu ustalenia, czy chcesz wywołać Wstawianie czy aktualizowanie?](#subheading36) |
+| &nbsp; | Tabele |Wstaw/Aktualizuj/Usuń |[Czy należy wziąć pod uwagę przechowywanie serii danych, które często będą pobierane razem w jednej jednostce jako właściwości zamiast wielu jednostek?](#subheading37) |
+| &nbsp; | Tabele |Wstaw/Aktualizuj/Usuń |[W przypadku jednostek, które będą zawsze pobierane razem i mogą być zapisywane w partiach (na przykład dane szeregów czasowych), należy wziąć pod uwagę użycie obiektów BLOB zamiast tabel?](#subheading38) |
+| &nbsp; | Kolejki |Tarcze skalowalności |[Czy zbliżasz się do skalowalnych elementów docelowych dla komunikatów na sekundę?](#subheading39) |
+| &nbsp; | Kolejki |Konfigurowanie |[Czy zostały wyłączone nagle w celu zwiększenia wydajności małych żądań?](#subheading40) |
+| &nbsp; | Kolejki |Rozmiar komunikatu |[Czy komunikaty są kompaktowe, aby zwiększyć wydajność kolejki?](#subheading41) |
+| &nbsp; | Kolejki |Pobieranie zbiorcze |[Czy pobierasz wiele komunikatów w ramach jednej operacji "Get"?](#subheading42) |
+| &nbsp; | Kolejki |Częstotliwość sondowania |[Czy trwa sondowanie na tyle często, aby zmniejszyć postrzegane opóźnienie aplikacji?](#subheading43) |
+| &nbsp; | Kolejki |Aktualizuj komunikat |[Czy używasz UpdateMessage do przechowywania postępu w przetwarzaniu komunikatów, unikając konieczności ponownego przetwarzania całej wiadomości w przypadku wystąpienia błędu?](#subheading44) |
+| &nbsp; | Kolejki |Architektura |[Czy używasz kolejek, aby zwiększyć skalowalność całej aplikacji przez utrzymywanie długotrwałych obciążeń z ścieżki krytycznej i skalowalność niezależnie?](#subheading45) |
 
 ## <a name="allservices"></a>Wszystkie usługi
 
-W tej sekcji przedstawiono sprawdzone rozwiązania, które mają zastosowanie do użycia usług Azure Storage (obiekty BLOB, tabel, kolejek lub plików).  
+W tej sekcji przedstawiono sprawdzone praktyki dotyczące korzystania z dowolnych usług Azure Storage (obiektów blob, tabel, kolejek lub plików).  
 
-### <a name="subheading1"></a>cele skalowalności
+### <a name="subheading1"></a>Tarcze skalowalności
 
-Usługa Azure Storage, sama ma ograniczenie do 250 kont magazynu na region na subskrypcję. W przypadku osiągnięcia tego limitu nie będzie można utworzyć kolejnych kont magazynu w tej kombinacji subskrypcji/regionu.
+Sam magazyn platformy Azure ma limit 250 kont magazynu na region na subskrypcję. W przypadku osiągnięcia tego limitu nie będzie można utworzyć kolejnych kont magazynu w tej kombinacji subskrypcji/regionu.
 
-Każda z usług Azure Storage ma wartości docelowe skalowalności pojemność (GB), stawka za transakcje i przepustowość. Jeśli aplikacja zbliża się lub przekroczy cele skalowalności, może to wystąpić opóźnienia zwiększone transakcji lub ograniczenia przepustowości. Gdy Usługa magazynu ogranicza twoją aplikację, usługi rozpoczyna się do zwrócenia "503 Serwer jest zajęty" lub "500 limit czasu operacji" kodami błędów niektóre transakcje magazynu. W tej sekcji omówiono zarówno ogólne podejście do rozwiązywania problemów związanych z cele skalowalności i cele skalowalności przepustowości w szczególności. Kolejnych sekcjach, które zajmują się indywidualne magazynowania omawia cele skalowalności w kontekście określonej usługi:  
+Każda z usług Azure Storage ma tarcze skalowalności dla pojemności (GB), liczby transakcji i przepustowości. Jeśli aplikacja zbliża się lub przekroczy elementy docelowe skalowalności, może wystąpić zwiększenie opóźnień transakcji lub ograniczenie przepustowości. Gdy usługa magazynu ogranicza swoją aplikację, usługa zaczyna zwracać kody błędów "503 serwer zajęty" lub "limit czasu operacji 500" dla niektórych transakcji magazynu. W tej części omówiono ogólny sposób postępowania z celami skalowalności i celami skalowalności przepustowości. Dalsze sekcje, które zajmują się poszczególnymi usługami magazynu omawiają elementy docelowe skalowalności w kontekście tej konkretnej usługi:  
 
-* [Obiekt blob przepustowości i żądań na sekundę](#subheading16)
-* [Tabela jednostek na sekundę](#subheading24)
-* [Wiadomości w kolejce na sekundę](#subheading39)  
+* [Przepustowość obiektów blob i żądania na sekundę](#subheading16)
+* [Jednostki tabeli na sekundę](#subheading24)
+* [Komunikaty w kolejce na sekundę](#subheading39)  
 
 #### <a name="sub1bandwidth"></a>Cel skalowalności przepustowości dla wszystkich usług
 
-W czasie pisania cele przepustowości w Stanach Zjednoczonych konto magazyn geograficznie nadmiarowy (GRS) są 10 gigabity na sekundę (GB/s) dla ruchu przychodzącego (dane wysyłane do konta magazynu) i 20 GB/s dla danych wychodzących (dane wysyłane z konta magazynu). Konto magazynu lokalnie nadmiarowego (LRS), limity są wyższe — 20 GB/s dla ruchu przychodzącego i 30 GB/s dla ruchu wychodzącego.  Limity przepustowości międzynarodowych może być niższa i można znaleźć na naszej [strony cele skalowalności](https://msdn.microsoft.com/library/azure/dn249410.aspx).  Aby uzyskać więcej informacji na temat opcji nadmiarowości magazynu Zobacz linki poniżej przydatne zasoby.  
+W momencie pisania, cele przepustowości w Stanach Zjednoczonych dla magazynu geograficznie nadmiarowego (GRS) są 10 Gigabit na sekundę (GB/s) dla ruchu przychodzącego (dane wysyłane do konta magazynu) i 20 GB/s dla danych wychodzących (dane wysyłane z konta magazynu). W przypadku konta usługi Magazyn lokalnie nadmiarowy (LRS) limity są wyższe — 20 GB/s w przypadku ruchu przychodzącego i 30 GB/s na ruch wychodzący.  Limity przepustowości międzynarodowej mogą być niższe i można je znaleźć na naszej [stronie elementów docelowych skalowalności](https://msdn.microsoft.com/library/azure/dn249410.aspx).  Aby uzyskać więcej informacji na temat opcji nadmiarowości magazynu, zobacz linki w obszarze przydatne zasoby poniżej.  
 
-#### <a name="what-to-do-when-approaching-a-scalability-target"></a>Co należy zrobić podczas kontaktowania się z docelową skalowalność
+#### <a name="what-to-do-when-approaching-a-scalability-target"></a>Co należy zrobić podczas zbliżania się celu skalowalności
 
-Jeśli zbliża się limit kont magazynu, posiadane w połączeniu określonej subskrypcji/regionu, należy ocenić aplikacji i użycia kont magazynu i określić, jeśli którykolwiek z tych warunków zastosować.
+Jeśli zbliżasz się do limitu kont magazynu, które możesz mieć w określonej kombinacji subskrypcji/regionu, Oceń swoją aplikację i użycie kont magazynu i ustal, czy którykolwiek z tych warunków ma zastosowanie.
 
-* Używanie kont magazynu jako dyski niezarządzane i dodanie tych dysków do maszyny wirtualnej. W tym scenariuszu zaleca się używanie [usługi managed disks](../../virtual-machines/windows/managed-disks-overview.md), ponieważ obsługują storage dotyczące skalowalności dysku dla Ciebie bez konieczności tworzenia i zarządzania kontami magazynu.
-* Na podstawie poszczególnych klientów na potrzeby izolacji danych, przy użyciu jednego konta magazynu. W tym scenariuszu firma Microsoft zaleca używanie kontenerów magazynu dla każdego klienta, a nie całe konto magazynu. Usługa Azure Storage umożliwia teraz określenie kontroli dostępu opartej na rolach na poszczególnych [podstawy kontenera](storage-auth-aad-rbac-portal.md).
-* Zwiększenie skalowalności pojemność zdarzeń przychodzących/wychodzących/operacji We/Wy/przy użyciu wielu kont magazynu do fragmentu. W tym scenariuszu, jeśli to możliwe, zaleca się korzystać z [zwiększenie limitów](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) kont magazynu w warstwie standardowa w celu zmniejszenia liczby kont magazynu wymagana dla obciążenia.
+* Używanie kont magazynu jako dysków niezarządzanych i Dodawanie tych dysków do maszyn wirtualnych. W tym scenariuszu zalecamy używanie [dysków zarządzanych](../../virtual-machines/windows/managed-disks-overview.md), ponieważ obsługują one skalowalność dysku magazynu, bez konieczności tworzenia poszczególnych kont magazynu i zarządzania nimi.
+* Korzystanie z jednego konta magazynu dla poszczególnych klientów na potrzeby izolacji danych. W tym scenariuszu zalecamy używanie kontenerów magazynu dla każdego klienta, a nie całego konta magazynu. Usługa Azure Storage umożliwia teraz określenie kontroli dostępu opartej na rolach dla poszczególnych [kontenerów](storage-auth-aad-rbac-portal.md).
+* Używanie wielu kont magazynu do fragmentu w celu zwiększenia skalowalności ruchu przychodzącego/wychodzącego/operacji we/wy na sekundę. W tym scenariuszu, jeśli jest to możliwe, zalecamy skorzystanie z [zwiększonych limitów](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) kont magazynu w warstwie Standardowa, aby zmniejszyć liczbę kont magazynu wymaganych do obciążania.
 
-Jeśli aplikacja zbliża się do wartości docelowe skalowalności pojedynczego konta magazynu, należy rozważyć przyjęcie jedną z następujących metod:  
+Jeśli aplikacja zbliża się do celów skalowalności dla jednego konta magazynu, należy rozważyć przyjęcie jednej z następujących metod:  
 
-* Ponowne rozpatrzenie obciążenia, które powoduje, że aplikacja podejście lub przekracza tę docelową skalowalność. Można zaprojektować, jest inaczej użycie mniejszej przepustowości lub pojemności lub mniejszej liczby transakcji?
-* Jeśli aplikacja może przekraczać jeden cele skalowalności, należy utworzyć wiele kont magazynu i partycji danych aplikacji na tych wielu kontach magazynu. Jeśli używasz tego wzorca, następnie należy projektowanie aplikacji tak, aby dodać więcej kont magazynu w przyszłości do równoważenia obciążenia. W czasie pisania Każda subskrypcja platformy Azure może mieć do 250 kont magazynu na region (jeśli jest wdrażane za pomocą modelu usługi Azure Resource Manager).  Konta magazynu mają również bezpłatnie niż użycie pod względem — dane przechowywane, transakcje, wprowadzonych lub przesłanych danych.
-* Jeśli aplikacja osiągnie cele przepustowości, należy wziąć pod uwagę kompresji danych w kliencie w celu zmniejszenia obciążenia przepustowości wymagane, aby wysyłać dane do usługi storage.  Chociaż może to oszczędzić przepustowość i zwiększyć wydajność sieci, może też mieć pewne negatywnego wpływu.  Należy ocenić wpływ na wydajność tej ze względu na wymagania dodatkowego przetwarzania do kompresowania i dekompresowania danych w kliencie. Ponadto przechowywane skompresowane dane mogą utrudnić do rozwiązywania problemów, ponieważ może to być trudniejsze do wyświetlania przechowywanych danych przy użyciu standardowych narzędzi.
-* Jeśli aplikacja osiągnie cele skalowalności, upewnij się, że używasz wykładniczego wycofywania ponownych prób (zobacz [ponownych prób](#subheading14)).  Zaleca się upewnić się, nigdy nie podejście cele skalowalności (przy użyciu jednej z metod powyżej), ale daje to pewność, że aplikacja nie będzie po prostu ponawiać szybko, co gorsza ograniczania.  
+* Zapoznaj się z obciążeniem, które powoduje, że aplikacja może obsłużyć lub przekroczyć obiekt docelowy skalowalności. Czy można projektować inaczej, aby używać mniejszej przepustowości lub pojemności lub mniejszej liczby transakcji?
+* Jeśli aplikacja musi przekroczyć jeden z celów skalowalności, należy utworzyć wiele kont magazynu i podzielić na partycje dane aplikacji na te wiele kont magazynu. Jeśli używasz tego wzorca, pamiętaj, aby zaprojektować aplikację tak, aby w przyszłości można było dodać więcej kont magazynu do równoważenia obciążenia. W czasie pisania Każda subskrypcja platformy Azure może mieć do 250 kont magazynu na region (w przypadku wdrożenia z modelem Azure Resource Manager).  Konta magazynu nie mają też kosztu innego niż użycie w odniesieniu do danych przechowywanych, wykonanych transakcji lub przesłanych danych.
+* Jeśli aplikacja trafi na tarcze przepustowości, rozważ kompresję danych na kliencie, aby zmniejszyć przepustowość wymaganą do wysłania danych do usługi Storage.  Chociaż może to spowodować oszczędność przepustowości i zwiększenie wydajności sieci, może to również mieć negatywny wpływ na.  Należy oszacować wpływ tego wpływu na wydajność ze względu na dodatkowe wymagania dotyczące przetwarzania kompresji i dekompresowania danych w kliencie. Ponadto przechowywanie skompresowanych danych może utrudniać Rozwiązywanie problemów, ponieważ może być trudniejsze do wyświetlenia przechowywanych danych przy użyciu standardowych narzędzi.
+* Jeśli aplikacja trafi tarcze skalowalności, upewnij się, że używasz wykładniczej wycofywania do ponawiania prób (zobacz [ponownych prób](#subheading14)).  Lepiej jest upewnić się, że nigdy nie zbliża się do obiektów docelowych skalowalności (przy użyciu jednej z powyższych metod), ale zapewnia to, że aplikacja nie będzie po prostu ponawiać próby, powodując gorszą przepływność.  
 
 #### <a name="useful-resources"></a>Przydatne zasoby
 
-Poniższe linki zawierają dodatkowe szczegóły dotyczące cele skalowalności:
+Poniższe linki zawierają dodatkowe szczegóły dotyczące skalowalności:
 
-* Zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md) uzyskać informacji na temat cele skalowalności.
-* Zobacz [replikacja usługi Azure Storage](storage-redundancy.md) oraz wpis w blogu [Opcje nadmiarowości magazynu platformy Azure i Magazyn geograficznie nadmiarowy dostęp do odczytu](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) uzyskać informacji na temat opcji nadmiarowości magazynu.
-* Aby uzyskać aktualne informacje na temat cen usług platformy Azure, zobacz [cennik usługi Azure](https://azure.microsoft.com/pricing/overview/).  
+* Informacje o obiektach docelowych skalowalności [i wydajności usługi Azure Storage](storage-scalability-targets.md) można znaleźć w temacie.
+* Aby uzyskać informacje na temat opcji nadmiarowości magazynu, zobacz [Replikacja usługi Azure Storage](storage-redundancy.md) i wpis w blogu [Opcje nadmiarowości usługi Azure Storage oraz dostęp do odczytu geograficznie](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) nadmiarowego.
+* Aby uzyskać aktualne informacje o cenach dla usług platformy Azure, zobacz [Cennik platformy Azure](https://azure.microsoft.com/pricing/overview/).  
 
-### <a name="subheading47"></a>Konwencją nazewnictwa partycji
+### <a name="subheading47"></a>Konwencja nazewnictwa partycji
 
-Usługa Azure Storage korzysta z opartej na zakresie schematu partycjonowania do skalowania i równoważenia obciążenia systemu. Klucz partycji (konta i kontenera obiektów blob) służy do partycji, które dane do zakresów i tych zakresów są równoważenia obciążenia w systemie. Oznacza to, że konwencji nazewnictwa, takie jak zamawianie leksykalne (na przykład *mypayroll*, *myperformance*, *myemployees*, itp.) lub za pomocą sygnatur czasowych ( *log20160101*, *log20160102*, *log20160102*, itp.) będą przystosowany do partycji jest potencjalnie kolokowane na tym samym serwerze partycji, aż do Równoważenie obciążenia operacji dzieli je na mniejsze zakresów. Na przykład wszystkie obiekty BLOB w kontenerze mogą służyć za pojedynczego serwera do momentu obciążenia tych obiektów blob wymaga dalszych ponowne równoważenie zakresu partycji. Podobnie grupy mniej obciążonych kont przy użyciu ich nazw, w kolejności leksykalne mogą być obsługiwani przez jeden serwer, aż do obciążenia na jednym lub wszystkich tych kont wymagają podzielone między wiele serwerów partycji. Każda operacja równoważenia obciążenia może mieć wpływ na opóźnienia wywołań magazynu podczas operacji. Zdolność systemu do obsługi nagłych wzrostów ruchu do partycji jest ograniczona skalowalność serwera jednej partycji do momentu operacji równoważenia obciążenia w kopnięć i ponowne salda zakres kluczy partycji.
+Usługa Azure Storage korzysta z schematu partycjonowania opartego na zakresie do skalowania i równoważenia obciążenia systemu. Klucz partycji (konto + kontener + obiekt BLOB) służy do partycjonowania danych do zakresów, a te zakresy są zrównoważone obciążenie w systemie. Oznacza to, że konwencje nazewnictwa, takie jak porządkowanie leksykalne (na przykład moja *Lista płac*, moja *wydajność*, *pracownicy*itp.) lub użycie sygnatur czasowych (*log20160101*, *log20160102*, *log20160102*itp.), będą udzielać sama do partycji, które mogą się znajdować na tym samym serwerze partycji, dopóki operacja równoważenia obciążenia nie podzieli ich na mniejsze zakresy. Na przykład wszystkie obiekty blob w kontenerze mogą być obsługiwane przez jeden serwer do momentu, aż obciążenie tych obiektów BLOB wymaga ponownego zrównoważenia zakresów partycji. Analogicznie, Grupa jasno załadowanych kont z ich nazwami uporządkowanymi w kolejności leksykalnej może być obsługiwana przez pojedynczy serwer do momentu, gdy obciążenie jednego lub wszystkich tych kont nie będzie wymagało podzielenia między serwery z wieloma partycjami. Każda operacja równoważenia obciążenia może mieć wpływ na opóźnienie wywołań magazynu podczas operacji. Zdolność systemu do obsługi nagłego rozłożenia ruchu do partycji jest ograniczona przez skalowalność serwera pojedynczej partycji, dopóki operacja równoważenia obciążenia nie zostanie rozpoczęta i ponownie zrównoważy zakres kluczy partycji.
 
-Możesz wykonać niektóre najlepsze rozwiązania, aby zmniejszyć częstotliwość takich operacji.  
+Aby zmniejszyć częstotliwość takich operacji, można wykonać kilka najlepszych rozwiązań.  
 
-* Jeśli to możliwe Użyj większe rozmiary umieszczanie obiektu Blob lub umieścić blok (większa niż 4 MiB dla konta w warstwie standardowa i większa niż 256 KiB dla kont usługi premium) można aktywować o wysokiej przepływności blokowych obiektów Blob (HTBB). HTBB zapewnia najwyższej wydajności pozyskiwania, które nie mają wpływu nazewnictwo partycji.
-* Sprawdź konwencji nazewnictwa używanych w przypadku kont, kontenerów, obiektów blob, tabele i kolejki, dokładnie. Należy rozważyć dodanie przedrostka konto, kontener lub nazw obiektów blob za pomocą skrótu 3-cyfrowy przy użyciu funkcji skrótu, który najlepiej odpowiada Twoim potrzebom.  
-* Organizowania danych przy użyciu sygnatur czasowych lub identyfikatory numeryczne należy upewnić się, że nie używasz wzorców ruchu tylko do dołączania (lub tylko dołączana). Wzorce te nie są odpowiednie dla zakresu — na podstawie partycjonowania systemu i może doprowadzić do całego ruchu, przechodząc do pojedynczej partycji i skutecznie ograniczenie systemu z równoważenia obciążenia. Na przykład w przypadku codziennych operacji korzystających z obiektu blob z sygnaturą czasową takich jak *RRRRMMDD*, a następnie cały ruch do tego codziennej pracy zostaje skierowany do jednego obiektu, który jest obsługiwany przez serwer z jedną partycją. Sprawdź, czy na limity obiektów blob na partycję limity potrzeb i rozważ podzielenie tej operacji na wielu obiektów blob, jeśli to konieczne. Podobnie jeśli przechowujesz dane szeregów czasowych w tabelach wszystko, co może być ruch skierowany do ostatniego część obszaru nazw kluczy. Jeśli musisz użyć sygnatur czasowych lub identyfikatory numeryczne, prefiks Identyfikatora znakiem numeru 3-cyfrowy lub w przypadku sygnatury czasowe takie jak prefiks część sekund czasu *ssyyyymmdd*. Wyświetlanie listy i badanie działań rutynowo wykonywane, jeśli funkcja wyznaczania wartości skrótu, która powoduje ograniczenie liczby zapytań. W innych przypadkach losowe prefiks, który może być wystarczające.  
-* Aby uzyskać dodatkowe informacje na temat schematu partycjonowania używane w usłudze Azure Storage, zobacz [usługi Azure Storage: Usługi magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
+* Jeśli to możliwe, użyj większych rozmiarów obiektów blob lub Put bloków (więcej niż 4 MiB dla kont standardowych i więcej niż 256 KiB dla kont Premium), aby uaktywnić blokowy obiekt BLOB o wysokiej przepływności (HTBB). HTBB zapewnia wysoką wydajność, która nie ma wpływ na nazewnictwo partycji.
+* Należy dokładnie zapoznać się z konwencją nazewnictwa używaną dla kont, kontenerów, obiektów blob, tabel i kolejek. Należy rozważyć prefiksowanie nazw kont, kontenerów lub obiektów blob z 3-cyfrowym skrótem przy użyciu funkcji tworzenia skrótów, która najlepiej odpowiada Twoim potrzebom.  
+* Jeśli organizujesz dane przy użyciu sygnatur czasowych lub identyfikatorów liczbowych, musisz upewnić się, że nie używasz wzorców ruchu tylko do dołączania (lub tylko do odczytu). Wzorce te nie są odpowiednie dla systemu partycjonowania opartego na zakresie i mogą prowadzić do całego ruchu kierowanego do jednej partycji i ograniczając system od efektywnego równoważenia obciążenia. Na przykład jeśli masz codzienne operacje, które używają obiektu BLOB z sygnaturą czasową, taką jak *RRRRMMDD*, cały ruch dla tej codziennej operacji jest kierowany do pojedynczego obiektu, który jest obsługiwany przez serwer z jedną partycją. Sprawdź, czy limity na obiekt BLOB i limity partycji spełniają Twoje potrzeby, i rozważ przerwanie tej operacji do wielu obiektów BLOB w razie potrzeby. Podobnie, Jeśli przechowujesz dane szeregów czasowych w tabelach, cały ruch może być kierowany do ostatniej części przestrzeni nazw kluczy. Jeśli musisz użyć sygnatur czasowych lub identyfikatorów liczbowych, poprzedź identyfikator prefiksem 3-cyfrowym lub w przypadku sygnatur czasowych prefiks części sekund czasu, takich jak *ssyyyymmdd*. Jeśli operacje tworzenia listy i wykonywania zapytań są wykonywane rutynowo, należy wybrać funkcję tworzenia skrótów, która będzie ograniczać liczbę zapytań. W innych przypadkach losowy prefiks może być wystarczający.  
+* Aby uzyskać dodatkowe informacje o schemacie partycjonowania używanym w usłudze [Azure Storage, zobacz Azure Storage: Usługa magazynu w chmurze o wysokiej dostępności z silną spójnością](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
 
 ### <a name="networking"></a>Networking
 
-Gdy interfejs API wywołuje sprawy, często ograniczenia sieci fizycznej aplikacji mieć znaczący wpływ na wydajność. Poniżej opisano niektóre ograniczenia, o których użytkownicy mogą wystąpić.  
+Chociaż wywołania interfejsu API są zależne, często ograniczenia sieci fizycznej aplikacji mają znaczny wpływ na wydajność. Poniżej opisano niektóre ograniczenia, które mogą napotkać użytkownicy.  
 
-#### <a name="client-network-capability"></a>Klient dostępu do sieci
+#### <a name="client-network-capability"></a>Możliwość sieci klienta
 
-##### <a name="subheading2"></a>Przepływność
+##### <a name="subheading2"></a>Kazany
 
-Przepustowość problem jest często możliwości klienta. Na przykład podczas jednego konta magazynu może obsługiwać 10 GB/s lub więcej z transferem danych przychodzących (zobacz [cele skalowalności przepustowości](#sub1bandwidth)), szybkość sieci w wystąpieniu "Małe" Rola procesu roboczego platformy Azure obsługuje jedynie około 100 MB/s. Większych wystąpień platformy Azure mają kart sieciowych o większej pojemności, dlatego należy rozważyć użycie większego wystąpienia lub więcej maszyn wirtualnych, jeśli potrzebujesz wyższych limitów sieci z jednego komputera. Jeśli uzyskujesz dostęp do usługi Storage w aplikacji lokalnej, wówczas ta sama zasada dotyczy: zapoznać się z funkcjami sieci na urządzeniu klienckim i łączność sieciową do lokalizacji magazynu platformy Azure i jedną zwiększenia je stosownie do potrzeb lub projektowania usługi do działania aplikacji w ramach ich możliwości.  
+W przypadku przepustowości problem jest często możliwością klienta programu. Na przykład, chociaż jedno konto magazynu może obsługiwać 10 GB/s lub więcej ruchu przychodzącego (zobacz [elementy docelowe skalowalności przepustowości](#sub1bandwidth)), szybkość sieci w przypadku wystąpienia roli procesu roboczego platformy Azure "małe" ma maksymalnie 100 MB/s. Większe wystąpienia platformy Azure mają karty sieciowe o większej pojemności, dlatego należy rozważyć użycie większego wystąpienia lub większej liczby maszyn wirtualnych, jeśli potrzebne są wyższe limity sieci z jednej maszyny. Jeśli uzyskujesz dostęp do usługi magazynu z aplikacji lokalnej, ta sama reguła ma zastosowanie: omówienie możliwości sieciowych urządzenia klienckiego i połączenia sieciowego z lokalizacją usługi Azure Storage, a następnie popraw je w razie potrzeby lub Zaprojektuj Aplikacja do pracy w ramach możliwości.  
 
-##### <a name="subheading3"></a>Link jakości
+##### <a name="subheading3"></a>Jakość łącza
 
-Podobnie jak w przypadku każde użycie sieci, należy pamiętać, że warunki sieciowe skutkuje błędów i utraty pakietów spowolni skuteczne przepływności.  Za pomocą programu WireShark lub Monitor sieci może pomóc w zdiagnozowaniu tego problemu.  
+Podobnie jak w przypadku dowolnego użycia sieci należy pamiętać, że warunki sieci powodujące błędy i utrata pakietów spowodują spowolnienie przepływności.  Korzystanie z programu WireShark lub NetMon może pomóc w zdiagnozowaniu tego problemu.  
 
 ##### <a name="useful-resources"></a>Przydatne zasoby
 
-Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych i przydzielonej przepustowości, zobacz [rozmiarów maszyn wirtualnych Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) lub [rozmiarów maszyn wirtualnych systemu Linux](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
+Aby uzyskać więcej informacji o rozmiarach maszyn wirtualnych i przydzieloną przepustowość, zobacz [rozmiary maszyn wirtualnych systemu Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) lub [rozmiary maszyn wirtualnych z systemem Linux](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
-#### <a name="subheading4"></a>Lokalizacja
+#### <a name="subheading4"></a>Przeniesienie
 
-W dowolnym środowisku rozproszonym wprowadzenie do klienta, które się w pobliżu serwer zapewnia najlepszą wydajność. Aby uzyskać dostęp do usługi Azure Storage zapewnia najniższe opóźnienie, najlepszą lokalizację dla klienta mieści się w tym samym regionie platformy Azure. Na przykład jeśli masz witrynę sieci Web platformy Azure, która używa usługi Azure Storage, ma oba te szukać w jednym regionie (na przykład zachodnie stany USA lub Azja południowo-wschodnia). Powoduje to zmniejszenie opóźnień i kosztów — w czasie pisania, przepustowości w jednym regionie jest bezpłatny.  
+W każdym środowisku rozproszonym, umieszczenie klienta w sąsiedztwie z serwerem zapewnia najlepszą wydajność. Aby uzyskać dostęp do usługi Azure Storage z najniższym opóźnieniem, Najlepsza lokalizacja klienta jest w tym samym regionie świadczenia usługi Azure. Jeśli na przykład masz witrynę sieci Web systemu Azure korzystającą z usługi Azure Storage, należy ją zlokalizować zarówno w jednym regionie (na przykład zachodnie stany USA, Azja Południowo-Wschodnia). Pozwala to skrócić czas oczekiwania i koszt — w czasie pisania użycie przepustowości w jednym regionie jest bezpłatne.  
 
-Jeśli Twój klient, który aplikacje nie są hostowane w obrębie platformy Azure (np. aplikacji urządzenia przenośnego lub usług enterprise lokalnych), następnie ponownie umieszczenie na koncie magazynu w regionie blisko urządzenia, które zostanie do niego dostęp i będzie ogólnie zmniejszyć opóźnienie. Jeśli klienci są szeroko rozproszone (na przykład niektóre w Ameryce Północnej i niektóre w Europie), a następnie należy rozważyć użycie wielu kont magazynu: jeden znajduje się w regionie Ameryki Północnej i jeden WE regionu Europy. Pomoże to zmniejszenie opóźnień dla użytkowników w obu regionach. To podejście jest łatwiejsze do implementacji, jeśli dane aplikacji są przechowywane jest przeznaczony dla poszczególnych użytkowników i nie wymaga replikowania danych między kontami magazynu.  Szeroka dystrybucja zawartości zaleca się sieci CDN — zobacz następną sekcję, aby uzyskać więcej informacji.  
+Jeśli aplikacje klienckie nie są hostowane na platformie Azure (np. w przypadku aplikacji urządzenia przenośnego lub lokalnych usług przedsiębiorstwa), wówczas ponowne umieszczenie konta magazynu w regionie blisko urządzeń, które mają do niego dostęp, spowoduje zwykle skrócenie opóźnienia. Jeśli klienci są rozległie dystrybuowani (na przykład niektóre w Ameryka Północna, a niektóre w Europie), należy rozważyć użycie wielu kont magazynu: jeden w regionie Ameryki Północnej i jeden w regionie Europy. Pomoże to ograniczyć opóźnienia dla użytkowników w obu regionach. To podejście jest łatwiejsze do wdrożenia, jeśli dane przechowywane przez aplikacje są specyficzne dla poszczególnych użytkowników i nie wymagają replikowania danych między kontami magazynu.  Aby uzyskać szeroką dystrybucję zawartości, zalecane jest, aby uzyskać więcej informacji, zobacz następną sekcję.  
 
 ### <a name="subheading5"></a>Dystrybucja zawartości
 
-Czasami aplikacja musi obsługiwać tę samą zawartość do wielu użytkowników (na przykład produktu pokaz wideo używane na stronie głównej witryny sieci Web), znajdujący się w tym samym lub wielu regionach. W tym scenariuszu należy używać Content Delivery Network (CDN) takich jak usługa Azure CDN, a sieci CDN mogą używać usługi Azure storage jako źródła danych. W przeciwieństwie do konta usługi Azure Storage znajdujące się w jednym regionie, który nie można dostarczać zawartość z niskim opóźnieniem do innych regionów usługi Azure CDN używa serwerów w wielu centrach danych na całym świecie. Ponadto usługi CDN, zazwyczaj może obsługiwać znacznie wyższe limity wychodzących niż pojedynczego konta magazynu.  
+Czasami aplikacja musi obsłużyć tę samą zawartość dla wielu użytkowników (na przykład wideo demonstracyjne dla produktu używanego na stronie głównej witryny sieci Web), znajdujące się w jednym lub wielu regionach. W tym scenariuszu należy użyć Content Delivery Network (CDN), takiego jak Azure CDN, a sieć CDN będzie używać usługi Azure Storage jako źródła danych. W przeciwieństwie do konta usługi Azure Storage, które istnieje w jednym regionie i który nie może dostarczać zawartości o małym opóźnieniu do innych regionów, Azure CDN używa serwerów w wielu centrach danych na całym świecie. Ponadto sieć CDN może zazwyczaj obsługiwać znacznie wyższe limity ruchu wychodzącego niż pojedyncze konto magazynu.  
 
-Aby uzyskać więcej informacji na temat usługi Azure CDN, zobacz [wysokiej dostępności treści Azure](https://azure.microsoft.com/services/cdn/).  
+Aby uzyskać więcej informacji na temat Azure CDN, zobacz [Azure CDN](https://azure.microsoft.com/services/cdn/).  
 
-### <a name="subheading6"></a>Przy użyciu sygnatury dostępu Współdzielonego i mechanizmu CORS
+### <a name="subheading6"></a>Używanie sygnatury dostępu współdzielonego i mechanizmu CORS
 
-Gdy musisz autoryzować kodu takiego jak JavaScript w przeglądarce sieci web lub aplikacji mobilnej na dostęp do danych w usłudze Azure Storage, jedno z podejść jest użycie aplikacji w roli sieci web jako serwer proxy: urządzenie użytkownika uwierzytelnia się za pomocą roli sieci web , który z kolei autoryzuje dostępu do zasobów magazynu. W ten sposób można uniknąć, klucze konta magazynu na urządzeniach niebezpieczne udostępnianie. Jednak to powoduje znaczne obciążenie roli sieci web ponieważ wszystkie dane przesyłane między urządzeniami użytkowników i usługi storage musi przechodzić przez rolę sieci web. Można uniknąć, rola sieć web jako serwer proxy dla usługi storage przy użyciu dostępu współdzielonego Signatures (SAS), czasami w połączeniu z nagłówkami współużytkowanie zasobów między źródłami (CORS). Przy użyciu sygnatury dostępu Współdzielonego, można zezwolić urządzeniu użytkownika wysyłać żądania bezpośrednio do usługi storage przy użyciu tokenu ograniczonego dostępu. Na przykład jeśli użytkownik chce Przekaż zdjęcie do aplikacji, roli sieci web można Generowanie i wysłać do urządzenia użytkownika tokenu sygnatury dostępu Współdzielonego, który przyznaje uprawnienia do zapisu do konkretnego obiektu blob lub kontenera dla następnych 30 minut (po upływie których token sygnatury dostępu Współdzielonego wygasa).
+W przypadku konieczności autoryzowania kodu, takiego jak JavaScript w przeglądarce sieci Web użytkownika lub aplikacji mobilnej dla urządzeń przenośnych w celu uzyskania dostępu do danych w usłudze Azure Storage, jedno podejście polega na użyciu aplikacji w roli sieci Web jako serwera proxy: urządzenie użytkownika uwierzytelnia się za pomocą roli sieci Web , które z kolei autoryzują dostęp do zasobów magazynu. W ten sposób można uniknąć ujawniania kluczy konta magazynu na niezabezpieczonych urządzeniach. Powoduje to jednak znaczne obciążenie roli sieci Web, ponieważ wszystkie dane przesyłane między urządzeniem użytkownika a usługą magazynu muszą być przekazywane przez rolę sieci Web. Możesz uniknąć używania roli sieci Web jako serwera proxy dla usługi magazynu, używając sygnatur dostępu współdzielonego (SAS), czasami w połączeniu z nagłówkami udostępniania zasobów między źródłami (CORS). Za pomocą SYGNATURy dostępu współdzielonego można zezwolić urządzeniu użytkownika na wykonywanie żądań bezpośrednio do usługi magazynu przy użyciu ograniczonego tokenu. Na przykład jeśli użytkownik chce przekazać zdjęcie do aplikacji, rola sieci Web może generować i wysyłać do urządzenia użytkownika token sygnatury dostępu współdzielonego, który przyznaje uprawnienia do zapisu do określonego obiektu BLOB lub kontenera przez następne 30 minut (po upływie którego token sygnatury dostępu współdzielonego wygaśnie).
 
-Zwykle przeglądarki nie zezwoli JavaScript na stronie hostowanej przez witrynę internetową na jedną domenę do wykonywania określonych operacji, takich jak "PUT" do innej domeny. Na przykład jeśli hostowania na "contosomarketing.cloudapp.net" Rola sieć web i chcesz użyć JavaScript po stronie klienta, aby przekazać obiekt blob konta magazynu "contosoproducts.blob.core.windows.net" przeglądarki "tego samego źródła policy" zabraniają tej operacji. CORS to funkcja przeglądarki, która umożliwia domeny docelowej (w tym przypadku konta magazynu) do komunikacji z przeglądarki, że subskrypcja ufa żądań pochodzących z domeny źródłowej (w tym przypadku roli sieci web).  
+Zwykle przeglądarka nie zezwoli na kod JavaScript na stronie hostowanej przez witrynę sieci Web w jednej domenie, aby wykonać określone operacje, takie jak "PUT" w innej domenie. Na przykład w przypadku hostowania roli sieci Web pod adresem "contosomarketing.cloudapp.net" i użycia kodu JavaScript po stronie klienta do przekazania obiektu BLOB do konta magazynu w lokalizacji "contosoproducts.blob.core.windows.net" te zasady będą zabraniać tej operacji. Mechanizmu CORS to funkcja przeglądarki umożliwiająca domenie docelowej (w tym przypadku konto magazynu) komunikowanie się z przeglądarką, która ufa żądaniami pochodzącymi z domeny źródłowej (w tym przypadku rolą sieci Web).  
 
-Obie te technologie mogą pomóc w uniknięciu niepotrzebne obciążenie (i wąskie gardła) w aplikacji sieci web.  
+Obie te technologie mogą pomóc uniknąć niepotrzebnego obciążenia (i wąskich gardeł) w aplikacji sieci Web.  
 
 #### <a name="useful-resources"></a>Przydatne zasoby
 
-Aby uzyskać więcej informacji na temat sygnatury dostępu Współdzielonego, zobacz [sygnatur dostępu współdzielonego, część 1: Opis modelu sygnatur dostępu Współdzielonego](../storage-dotnet-shared-access-signature-part-1.md).  
+Aby uzyskać więcej informacji na temat SAS [, zobacz sygnatury dostępu współdzielonego, część 1: Omówienie modelu](../storage-dotnet-shared-access-signature-part-1.md)SAS.  
 
-Aby uzyskać więcej informacji na temat mechanizmu CORS zobacz [obsługi udostępniania zasobów między źródłami (CORS) dla usług Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
+Aby uzyskać więcej informacji na temat mechanizmu CORS, zobacz temat [Obsługa udostępniania zasobów między źródłami (CORS) dla usług Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
 ### <a name="caching"></a>Buforowanie
 
 #### <a name="subheading7"></a>Pobieranie danych
 
-Ogólnie rzecz biorąc pobieranie danych z usługi po jest lepsza niż wprowadzenie go dwukrotnie. Rozważmy przykład aplikacji sieci web MVC uruchomionej w roli sieci web, który już ma pobrać obiekt blob 50 MB z usługi storage, która będzie służyć jako zawartość dla użytkownika. Aplikacja może następnie pobrać tego samego obiektu blob, za każdym razem, gdy użytkownik zażąda go lub go można w pamięci podręcznej ją lokalnie na dysku i ponowne użycie pamięci podręcznej wersji kolejne żądania użytkowników. Ponadto zawsze, gdy użytkownik zażąda danych, aplikacja może problem UZYSKAĆ z nagłówkiem warunkowego czas modyfikacji, które pozwoliłoby uniknąć pobierania całego obiektu blob, jeśli nie zostały zmodyfikowane. Tego samego wzorca można zastosować do pracy z jednostkami tabeli.  
+Ogólnie rzecz biorąc, pobieranie danych z usługi jest lepsze niż dwa razy. Rozważmy przykład aplikacji sieci Web MVC działającej w roli sieci Web, która już pobrała obiekt BLOB 50-MB z usługi Storage, aby zapewnić użytkownikowi zawartość. Następnie aplikacja może pobrać ten sam obiekt BLOB za każdym razem, gdy użytkownik zażąda tego lub może buforować go lokalnie na dysku i ponownie używać buforowanej wersji dla kolejnych żądań użytkownika. Ponadto zawsze, gdy użytkownik zażąda danych, aplikacja może wydać polecenie GET z nagłówkiem warunkowym w celu zmodyfikowania czasu, co może uniemożliwić pobranie całego obiektu BLOB, jeśli nie został on zmodyfikowany. Ten sam wzorzec można zastosować do pracy z jednostkami tabeli.  
 
-W niektórych przypadkach może się okazać, że aplikację można założyć, obiekt blob pozostaje ważny przez krótki okres, po pobraniu go i że w tym okresie aplikacji nie trzeba sprawdzić, jeśli obiekt blob został zmodyfikowany.
+W niektórych przypadkach można zdecydować, że aplikacja może założyć, że obiekt BLOB pozostaje ważny przez krótki czas po jego pobraniu i w tym okresie aplikacja nie musi sprawdzać, czy obiekt BLOB został zmodyfikowany.
 
-Konfiguracja, wyszukiwania i inne dane, które są zawsze używane przez aplikację są doskonałymi kandydatami do buforowania.  
+Konfiguracja, wyszukiwanie i inne dane, które są zawsze używane przez aplikację, są doskonałymi kandydatami do buforowania.  
 
-Na przykład jak uzyskać właściwości obiektu blob, aby odnaleźć daty ostatniej modyfikacji przy użyciu platformy .NET, zobacz [zestawu i pobieranie właściwości oraz metadanych](../blobs/storage-properties-metadata.md). Aby uzyskać więcej informacji na temat warunkowego pliki do pobrania, zobacz [warunkowo odświeżyć lokalną kopię obiektu Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx).  
+Aby uzyskać więcej informacji na temat pobierania warunkowego, zobacz [Określanie nagłówków warunkowych dla operacji BLOB Service](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations).  
 
-#### <a name="subheading8"></a>Przekazywanie danych w plikach wsadowych
+#### <a name="subheading8"></a>Przekazywanie danych w partiach
 
-W niektórych scenariuszach możesz agregować dane lokalnie i następnie okresowo przekaż go w zadaniu wsadowym zamiast przekazywania każdego fragmentu danych natychmiast. Na przykład aplikacja sieci web może przechowywać plik dziennika działań: aplikacji albo można przekazać szczegółowe informacje o każdym działaniu, zdarza się to jako jednostkę tabeli (co wymaga wielu operacji magazynu) lub jego można zapisać szczegółów działania w lokalnym pliku dziennika, a następnie Okresowo należy przekazać wszystkie szczegóły działań jako rozdzielonym pliku do obiektu blob. W przypadku każdego wpisu dziennika 1 KB rozmiaru, możesz przekazać tysięcy w ramach jednej transakcji "Blob umieścić" (możesz przekazać obiekt blob do 64 MB w rozmiarze w ramach jednej transakcji). Jeśli komputer lokalny ulegnie awarii przed przekazywania, potencjalnie spowoduje utratę niektórych danych dziennika: Deweloper aplikacji musi projektowania możliwości urządzeń klienckich lub błędy przekazywania.  Jeśli dane o aktywności musi zostać pobrane dla timespans (nie tylko pojedyncze działanie), BLOB są zalecane przez tabele.
+W niektórych scenariuszach aplikacji można agregować dane lokalnie, a następnie okresowo przekazać je do partii, zamiast bezpośrednio przekazywać dane. Na przykład aplikacja sieci Web może przechowywać plik dziennika działań: aplikacja może przekazać szczegółowe informacje o każdym działaniu, tak jak w przypadku jednostki tabeli (która wymaga wielu operacji magazynowania) lub może zapisać szczegóły działania w lokalnym pliku dziennika, a następnie okresowo Przekazuj wszystkie szczegóły działania jako rozdzielany plik do obiektu BLOB. Jeśli każdy wpis dziennika ma rozmiar 1 KB, można przekazać tysiące w jednej transakcji "Put BLOB" (można przekazać obiekt BLOB o rozmiarze do 64 MB w jednej transakcji). Jeśli komputer lokalny ulegnie awarii przed przekazaniem, może to spowodować utratę niektórych danych dziennika: Deweloper aplikacji musi projektować w celu uzyskania możliwości niepowodzenia urządzenia klienckiego lub przeładowania.  Jeśli dane dotyczące aktywności muszą zostać pobrane dla przedziałów czasu (nie tylko pojedyncze działanie), obiekty blob są zalecane w porównaniu z tabelami.
 
 ### <a name="net-configuration"></a>Konfiguracja platformy .NET
 
-Jeśli używasz programu .NET Framework, w tej sekcji przedstawiono kilka ustawień szybkiej konfiguracji, które można wprowadzić znaczne ulepszenia wydajności w.  Jeśli używasz innych języków, należy sprawdzić, jeśli podobne uniwersalne w wybranym języku.  
+W przypadku korzystania z .NET Framework Ta sekcja zawiera kilka ustawień szybkiego konfigurowania, których można użyć w celu zwiększenia wydajności.  Jeśli używasz innych języków, sprawdź, czy podobne koncepcje dotyczą wybranego języka.  
 
-#### <a name="subheading9"></a>Zwiększenia domyślnego limitu połączeń
+#### <a name="subheading9"></a>Zwiększ domyślny limit połączeń
 
-Na platformie .NET poniższy kod powoduje zwiększenie domyślny limit połączeń (która jest zwykle 2 w środowisku klienta lub 10 w środowisku serwera) do 100. Zazwyczaj należy przypisać wartość około liczbę wątków używanych przez aplikację.  
+W programie .NET Poniższy kod zwiększa domyślny limit połączeń (zwykle 2 w środowisku klienta lub 10 w środowisku serwera) do 100. Zazwyczaj należy ustawić wartość na około liczbę wątków używanych przez aplikację.  
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
 ```
 
-Należy ustawić limit połączeń, przed otwarciem żadnych połączeń.  
+Przed otwarciem wszystkich połączeń należy ustawić limit połączeń.  
 
-Dla innych języków programowania zobacz dokumentację danego języka, aby określić, jak ustawić limit połączeń.  
+W przypadku innych języków programowania zapoznaj się z dokumentacją tego języka, aby określić, jak ustawić limit połączeń.  
 
-Aby uzyskać więcej informacji, zobacz wpis w blogu [usług sieci Web: Połączenia współbieżne](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
+Aby uzyskać więcej informacji, zobacz wpis [w blogu usługi sieci Web: Połączenia](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx)współbieżne.  
 
-#### <a name="subheading10"></a>Zwiększ minimalna liczba wątków, jeśli przy użyciu kodu synchronicznego przy użyciu zadań asynchronicznych
+#### <a name="subheading10"></a>Zwiększ minimalną liczbę wątków, jeśli używasz kodu synchronicznego z zadaniami asynchronicznymi
 
-Ten kod będzie zwiększyć minimalną liczbę wątków w puli wątków:  
+Ten kod spowoduje zwiększenie minimalnej liczby wątków w puli wątków:  
 
 ```csharp
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Aby uzyskać więcej informacji, zobacz [metoda ThreadPool.SetMinThreads](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).  
+Aby uzyskać więcej informacji, zobacz [Metoda wątków. SetMinThreads —](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).  
 
-#### <a name="subheading11"></a>Korzystaj z platformy .NET 4.5 i wyższych wyrzucania elementów bezużytecznych
+#### <a name="subheading11"></a>Korzystanie z programu .NET 4,5 i wyższego wyrzucania elementów bezużytecznych
 
-Użyj platformy .NET 4.5 lub nowszy dla aplikacji klienckiej, aby wykorzystać ulepszenia wydajności w systemie serwer wyrzucania elementów bezużytecznych.
+Użyj programu .NET 4,5 lub nowszego dla aplikacji klienckiej, aby wykorzystać ulepszenia wydajności w wyrzucaniu elementów bezużytecznych serwera.
 
-Aby uzyskać więcej informacji, zobacz artykuł [Przegląd o ulepszenia wydajności w .NET 4.5](https://msdn.microsoft.com/magazine/hh882452.aspx).  
+Aby uzyskać więcej informacji, zobacz artykuł [Omówienie ulepszeń wydajności w programie .net 4,5](https://msdn.microsoft.com/magazine/hh882452.aspx).  
 
-### <a name="subheading12"></a>Niepowiązane równoległości
+### <a name="subheading12"></a>Nieograniczona równoległość
 
-Równoległość mogą być bardzo przydatne na potrzeby wydajności, należy zachować ostrożność, korzystając z równoległości niepowiązane (brak limitu liczby wątków i/lub żądań równoległych) przekazywanie lub pobieranie danych za pomocą wielu procesów roboczych na dostęp do wielu partycji (kontenery, kolejki, lub partycje tabeli) w tym samym koncie magazynu lub dostępu do wielu elementów w tej samej partycji. W przypadku niepowiązanych równoległości, aplikacja może być dłuższa niż możliwości urządzeń klienckich lub skalowalności konta magazynu jest przeznaczony dla skutkuje większe opóźnienia i ograniczania przepustowości.  
+Chociaż równoległość może być znakomitym rozwiązaniem dla wydajności, należy zachować ostrożność przy użyciu nieograniczonej równoległości (bez limitu liczby wątków i/lub żądań równoległych) w celu przekazywania lub pobierania danych przy użyciu wielu procesów roboczych, aby uzyskać dostęp do wielu partycji (kontenerów, kolejek lub partycje tabeli) na tym samym koncie magazynu lub w celu uzyskania dostępu do wielu elementów w tej samej partycji. Jeśli równoległość jest nieograniczona, aplikacja może przekroczyć możliwości urządzenia klienckiego lub elementy docelowe skalowalności konta magazynu, co spowodowało dłuższe opóźnienia i ograniczanie przepustowości.  
 
-### <a name="subheading13"></a>Narzędzia i biblioteki klienta magazynu
+### <a name="subheading13"></a>Biblioteki i narzędzia klienta magazynu
 
-Zawsze używaj najnowszej firmy Microsoft, pod warunkiem klienta biblioteki i narzędzia. W czasie pisania są dostępne dla platformy .NET, Windows Phone, Windows Runtime, Java i C++ biblioteki klienta, a także biblioteki podglądu dla innych języków. Ponadto firma Microsoft wydała poleceń cmdlet programu PowerShell i polecenia wiersza polecenia platformy Azure do pracy z usługą Azure Storage. Firma Microsoft aktywnie opracowuje tych narzędzi z wydajność Pamiętaj, jednocześnie dbając o ich aktualne za pomocą najnowszej wersji usługi i gwarantuje, że wiele praktyk sprawdzonej wydajności wewnętrznie obsługują.  
+Zawsze korzystaj z najnowszych bibliotek i narzędzi klienta dostarczonych przez firmę Microsoft. W momencie pisania istnieją biblioteki klienckie dostępne dla platformy .NET, Windows Phone, środowisko wykonawcze systemu Windows, Java i, a C++także bibliotek w wersji zapoznawczej dla innych języków. Ponadto firma Microsoft wyłączyła poleceń cmdlet programu PowerShell i interfejsu wiersza polecenia platformy Azure służących do pracy z usługą Azure Storage. Firma Microsoft aktywnie opracowuje te narzędzia z uwzględnieniem wydajności i zapewnia ich aktualność przy użyciu najnowszych wersji usługi i gwarantuje, że obsługa wielu sprawdzonych rozwiązań dotyczących wydajności jest zastosowana wewnętrznie.  
 
 ### <a name="retries"></a>Ponowne próby
 
-#### <a name="subheading14"></a>Błędów zajętego serwera i ograniczanie
+#### <a name="subheading14"></a>Ograniczenia i błędy zajętości serwera
 
-W niektórych przypadkach usługa magazynu może ograniczać aplikacji lub po prostu nie będzie mogła obsłużyć żądania ze względu na pewne stan przejściowy i zwrócić komunikat "503 Serwer jest zajęty" lub "500 limit czasu".  Może to nastąpić, jeśli aplikacja zbliża się do dowolnej cele skalowalności lub jeśli system jest ponowne równoważenie podzielonym na partycje dane, aby umożliwić większą przepływność.  Aplikacja kliencka zazwyczaj powinien ponownie wykonać operację, która powoduje występowanie takiego komunikatu o błędzie: próba później tego samego żądania mogły się powieść. Jednak usługa magazynu jest ograniczanie aplikacji, ponieważ przekracza cele skalowalności lub nawet wtedy, gdy usługa nie może obsłużyć żądania innego powodu, agresywne ponownych prób zwykle należy gorsza problem. Z tego powodu należy używać wykładniczego ponownie wył. klient biblioteki to zachowanie. Na przykład aplikacja może ponowienie próby po 2 sekundy, a następnie 4 sekundy, 10 sekund, a następnie 30 sekund, a następnie zrezygnuje całkowicie. Takie zachowanie wynika w aplikacji znacznie zmniejszyć obciążenie usługi programu zamiast powiększając istniejące wszelkie problemy.  
+W niektórych przypadkach usługa magazynu może ograniczać swoją aplikację lub po prostu nie może wykonać żądania z powodu przejściowego warunku i zwrócić komunikat "503 serwer zajęty" lub "500 limit czasu".  Taka sytuacja może wystąpić, jeśli aplikacja zbliża się do któregokolwiek z obiektów docelowych skalowalności lub system ponownie zrównoważy dane partycjonowane w celu zapewnienia większej przepływności.  Aplikacja kliencka powinna zwykle ponowić próbę wykonania operacji, która powoduje wystąpienie tego błędu: próba przeprowadzenia tego samego żądania później może powieść się. Jeśli jednak usługa magazynu ogranicza swoją aplikację, ponieważ przekracza ona elementy docelowe skalowalności, a nawet jeśli usługa nie mogła obsłużyć żądania z jakiegoś innego powodu, agresywne ponowne próby zwykle sprawiają, że problem będzie gorszy. Z tego powodu należy wycofać wartość wykładniczą (biblioteki klienckie domyślnie to zachowanie). Na przykład aplikacja może ponowić próbę po upływie 2 sekund, następnie 4 sekund, następnie 10 sekund, a następnie 30 sekundach, a następnie zadawać całkowicie. W wyniku tego działania aplikacja znacznie zmniejsza obciążenie usługi, a nie zaostrza jakichkolwiek problemów.  
 
-Błędy związane z łącznością mogą być ponawiane natychmiast, ponieważ nie są wynikiem ograniczania przepustowości i powinny to być błąd przejściowy.  
+Błędy łączności mogą być podejmowane natychmiast, ponieważ nie są one wynikiem ograniczenia przepustowości i powinny być przejściowe.  
 
-#### <a name="subheading15"></a>Błędy niepowtarzający operacji
+#### <a name="subheading15"></a>Błędy nieponowień
 
-Biblioteki klienckie są znane błędy, które mogą ponownych prób, a które nie są. Jednak jeśli piszesz kod wykonywanych przy użyciu interfejsu API REST magazynu należy pamiętać, występują błędy, które nie powinny kolejnej próby: na przykład 400 (złe żądanie) odpowiedź wskazuje, że aplikacja kliencka wysłane żądanie, które nie może zostać przetworzona, ponieważ nie był w formularzu oczekiwane. Już to żądanie spowoduje, że tę samą odpowiedź każdym razem, dlatego nie ma sensu ponawianie próby go. Jeśli piszesz kod wykonywanych przy użyciu interfejsu API REST magazynu należy pamiętać, co oznaczają kody błędów i właściwy sposób, aby spróbować ponownie (lub nie) dla każdego z nich.  
+Biblioteki klienckie są świadome tego, których błędów można ponowić, a które nie. Jeśli jednak piszesz własny kod przy użyciu interfejsu API REST usługi Storage, pamiętaj, że niektóre błędy nie powinny być ponawiane: na przykład odpowiedź 400 (złe żądanie) wskazuje, że aplikacja kliencka wysłała żądanie, którego nie można przetworzyć, ponieważ nie było w oczekiwanym formularzu. Ponowne wysłanie tego żądania będzie powodowało taką samą odpowiedź za każdym razem, więc nie ma żadnego punktu na ponowną próbę. Jeśli piszesz własny kod w interfejsie API REST usługi Storage, weź pod uwagę znaczenie kodów błędów i odpowiedni sposób ponawiania prób (lub nie) dla każdego z nich.  
 
 #### <a name="useful-resources"></a>Przydatne zasoby
 
-Aby uzyskać więcej informacji o kodach błędów magazynu, zobacz [stanu i kodów błędów](https://msdn.microsoft.com/library/azure/dd179382.aspx) w witrynie sieci web Microsoft Azure.  
+Aby uzyskać więcej informacji na temat kodów błędów magazynu, zobacz [stan i kody błędów](https://msdn.microsoft.com/library/azure/dd179382.aspx) w witrynie sieci Web Microsoft Azure.  
 
 ## <a name="blobs"></a>Obiekty blob
 
-Oprócz sprawdzonych rozwiązań dotyczących [wszystkich usług](#allservices) opisanych powyżej, poniżej sprawdzone rozwiązania dotyczą wyłącznie na usługę Blob service.  
+Oprócz sprawdzonych praktyk dla [wszystkich usług](#allservices) opisanych wcześniej, następujące sprawdzone rozwiązania mają zastosowanie w odniesieniu do BLOB Service.  
 
-### <a name="blob-specific-scalability-targets"></a>Cele skalowalności na specyficznych dla obiektów blob
+### <a name="blob-specific-scalability-targets"></a>Tarcze skalowalności specyficzne dla obiektów BLOB
 
-#### <a name="subheading46"></a>Wielu klientów jednocześnie dostęp do pojedynczego obiektu
+#### <a name="subheading46"></a>Wielu klientów uzyskuje dostęp do pojedynczego obiektu współbieżnie
 
-Jeśli masz dużą liczbę klientów uzyskujących dostęp do pojedynczego obiektu jednocześnie, należy wziąć pod uwagę na obiekt i magazynu cele skalowalności konta. Dokładna liczba klientów, którzy mogą uzyskiwać dostęp do pojedynczego obiektu będą się różnić w zależności od czynników, takich jak liczba klientów równocześnie, żądanie obiektu rozmiar obiektu, sieci warunki itp.
+Jeśli masz dużą liczbę klientów, którzy uzyskują dostęp do pojedynczego obiektu współbieżnie, musisz wziąć pod uwagę elementy docelowe skalowalności dla obiektów i kont magazynu. Dokładna liczba klientów, którzy mogą uzyskać dostęp do pojedynczego obiektu, różni się w zależności od czynników, takich jak liczba klientów żądających obiektu jednocześnie, rozmiar obiektu, warunki sieci itp.
 
-Jeśli obiekt mogą być dystrybuowane za pośrednictwem sieci CDN, takie jak obrazy lub filmy wideo są obsługiwane w witrynie sieci Web, a następnie należy używać sieci CDN. Zobacz [tutaj](#subheading5).
+Jeśli obiekt może być dystrybuowany za pośrednictwem sieci CDN, takiego jak obrazy lub wideo obsługiwane przez witrynę sieci Web, należy użyć sieci CDN. Zobacz [tutaj](#subheading5).
 
-W innych scenariuszach, takich jak symulacje naukowych, gdzie dane są poufne masz dwie opcje. Pierwsza to aby przesunąć dostęp do Twojego obciążenia w taki sposób, że obiekt jest dostępny w okresie czas uzyskiwany jednocześnie w porównaniu. Alternatywnie możesz tymczasowo skopiować obiekt do wielu kont magazynu, zwiększając w ten sposób łączna liczba operacji We/Wy dla każdego obiektu i na kontach magazynu. Podczas testowania ograniczone znaleziono, że około 25 maszyn wirtualnych może być jednocześnie pobierany 100-Gigabajtowego obiektu blob w sposób równoległy (każda maszyna wirtualna została przekształcają pliki do pobrania przy użyciu 32 wątków). Jeśli masz 100 klientów, bez potrzeby dostępu do obiektu, najpierw skopiuj go do drugiego konta magazynu, a następnie miał 50 pierwszych maszyn wirtualnych dostęp do pierwszego obiektu blob i drugi 50 VMs dostęp do drugiego obiektu blob. Wyniki zależy od swoje zachowanie aplikacji, więc należy sprawdzić, to podczas projektowania. 
+W innych scenariuszach, takich jak symulacje naukowe, w przypadku których dane są poufne, są dostępne dwie opcje. Pierwszy polega na rozdzieleniu dostępu do obciążenia w taki sposób, że dostęp do obiektu jest uzyskiwany w określonym czasie, a jednocześnie jest dostępny jednocześnie. Alternatywnie można tymczasowo skopiować obiekt na wiele kont magazynu w taki sposób, aby zwiększyć łączną liczbę operacji we/wy na jeden obiekt i na kontach magazynu. W ograniczonych testach znaleźliśmy, że około 25 maszyn wirtualnych mogło jednocześnie pobrać 100 GB obiektów BLOB (w przypadku każdej maszyny wirtualnej przekształcają pobieranie przy użyciu wątków 32). Jeśli masz 100 klientów potrzebnych do uzyskania dostępu do obiektu, najpierw skopiuj go na drugie konto magazynu, a następnie wybierz pierwsze 50 maszyny wirtualne, które uzyskują dostęp do pierwszego obiektu BLOB, a drugie, 50 maszyny wirtualne uzyskują dostęp do drugiego obiektu BLOB. Wyniki będą się różnić w zależności od zachowania aplikacji, dlatego należy je przetestować podczas projektowania. 
 
-#### <a name="subheading16"></a>Przepustowość i operacji na obiekt blob
+#### <a name="subheading16"></a>Przepustowość i operacje na obiekt BLOB
 
-Może odczytać lub zapisać do jednego obiektu blob w lokalizacji maksymalnie 60 MB na sekundę (jest to około 480 MB/s, która rozszerza możliwości wiele sieci po stronie klienta (w tym fizycznej karty Sieciowej na urządzeniu klienckim). Ponadto pojedynczy obiekt blob obsługuje maksymalnie 500 żądań na sekundę. Jeśli wielu klientów, którzy muszą odczytywać tego samego obiektu blob może być przekroczenia tych ograniczeń, należy rozważyć użycie sieci CDN do dystrybucji obiektu blob.  
+Można odczytać lub zapisać w pojedynczym obiekcie blob o maksymalnym rozmiarze 60 MB/s (około 480 MB/s, który przekracza możliwości wielu sieci po stronie klienta (w tym fizycznej karty sieciowej na urządzeniu klienckim). Dodatkowo pojedynczy obiekt BLOB obsługuje do 500 żądań na sekundę. Jeśli istnieje wielu klientów, którzy muszą odczytać ten sam obiekt BLOB i można przekroczyć te limity, należy rozważyć użycie sieci CDN do dystrybucji obiektu BLOB.  
 
-Aby uzyskać więcej informacji na temat docelowa przepustowość dla obiektów blob, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md).  
+Aby uzyskać więcej informacji na temat docelowej przepływności dla obiektów blob, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](storage-scalability-targets.md).  
 
-### <a name="copying-and-moving-blobs"></a>Kopiowanie i przenoszenie obiektów blob
+### <a name="copying-and-moving-blobs"></a>Kopiowanie i przeniesienie obiektów BLOB
 
-#### <a name="subheading17"></a>Kopiowanie obiektu blob
+#### <a name="subheading17"></a>Kopiuj obiekt BLOB
 
-Magazyn interfejsu API REST w wersji 2012-02-12 wprowadzone przydatne możliwość kopiowania obiektów blob na kontach: aplikacja kliencka wydać z usługi storage, aby skopiować obiekt blob z innego źródła (prawdopodobnie w innego konta magazynu), a następnie umożliwił wykonaj usługi Kopia asynchronicznie. Może to znacznie zmniejszyć przepustowości wymaganej dla aplikacji, podczas migracji danych z innych kont magazynu, ponieważ nie trzeba pobierać i przekazywać dane.  
+Interfejs API REST usługi Storage w wersji 2012-02-12 wprowadził przydatną możliwość kopiowania obiektów BLOB między kontami: aplikacja kliencka może nakazać usłudze magazynu skopiowanie obiektu BLOB z innego źródła (prawdopodobnie w innym koncie magazynu), a następnie pozwolić na wykonanie usługi kopia asynchroniczna. Może to znacznie zmniejszyć przepustowość potrzebną dla aplikacji podczas migrowania danych z innych kont magazynu, ponieważ nie jest konieczne pobieranie i przekazywanie danych.  
 
-Pierwsza kwestia, jest jednak, że podczas kopiowania między kontami magazynu, nie ma żadnej gwarancji czasu na gdy zostanie ukończone kopii. Jeśli Twoja aplikacja potrzebuje do ukończenia kopiowania obiektów blob, szybko pod kontrolą, może być lepszym rozwiązaniem skopiować obiektu blob, pobierając go z maszyną wirtualną i przekazać go do miejsca docelowego.  Pełne przewidywalność w takiej sytuacji upewnij się, że kopia jest wykonywane przez maszynę Wirtualną z systemem w tym samym regionie platformy Azure; w przeciwnym razie warunki sieciowe mogą i prawdopodobnie będzie mają wpływ na wydajność kopii.  Ponadto można monitorować postęp asynchronicznych kopii programowo.  
+Jednak w przypadku kopiowania między kontami magazynu nie ma gwarancji czasu, kiedy kopia zostanie ukończona. Jeśli aplikacja musi szybko wykonać kopię obiektu BLOB w kontrolce, lepszym rozwiązaniem może być skopiowanie obiektu BLOB przez pobranie go na maszynę wirtualną, a następnie przekazanie go do miejsca docelowego.  Aby zapewnić pełną przewidywalność w takiej sytuacji, należy się upewnić, że kopia jest wykonywana przez maszynę wirtualną działającą w tym samym regionie świadczenia usługi Azure, lub w przeciwnym razie może to mieć wpływ na wydajność kopiowania.  Ponadto można programowo monitorować postęp kopii asynchronicznej.  
 
-Kopie w obrębie tego samego konta magazynu, sama zwykle odbywa się szybko.  
+Kopie w ramach samego konta magazynu są zwykle wykonywane szybko.  
 
-Aby uzyskać więcej informacji, zobacz [obiektu Blob kopiowania](https://msdn.microsoft.com/library/azure/dd894037.aspx).  
+Aby uzyskać więcej informacji, zobacz [Kopiuj obiekt BLOB](https://msdn.microsoft.com/library/azure/dd894037.aspx).  
 
-#### <a name="subheading18"></a>Korzystanie z narzędzia AzCopy
+#### <a name="subheading18"></a>Użyj AzCopy
 
-Zespół usługi Azure Storage została wydana narzędzie wiersza polecenia "Narzędzia AzCopy" który jest przeznaczony do pomocy za pomocą zbiorczego transferu wiele obiektów blob do z i na kontach magazynu.  To narzędzie jest zoptymalizowany pod kątem tego scenariusza i mogą osiągnąć dużą szybkością.  Zaleca się jej użycie przekazywania masowego, pobieranie i kopiowanie scenariuszy. Aby uzyskać więcej informacji i pobierz go, zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md).  
+Zespół usługi Azure Storage udostępnił narzędzie wiersza polecenia "AzCopy", które umożliwia zbiorcze Transferowanie wielu obiektów BLOB do, z i między kontami magazynu.  To narzędzie jest zoptymalizowane pod kątem tego scenariusza i może osiągać wysokie szybkości transferu.  Jest to zalecane w przypadku scenariuszy przekazywania zbiorczego, pobierania i kopiowania. Aby dowiedzieć się więcej na ten temat i pobrać, zobacz [transfer danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md).  
 
 #### <a name="subheading19"></a>Usługa Azure Import/Export
 
-Dla dużych ilości danych (więcej niż 1 TB) Magazyn Azure oferuje usługę Import/Export, która umożliwia wysyłanie i pobieranie z usługi blob storage przez wysyłanie dysków twardych.  Możesz Niech Twoje dane na dysku twardym i wysyłać je do firmy Microsoft w celu przekazania lub wysyłać pusty dysk twardy do firmy Microsoft, aby pobrać dane.  Aby uzyskać więcej informacji, zobacz [Use the Microsoft Azure Import/Export Service to Transfer Data to Blob Storage (Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export)](../storage-import-export-service.md).  Może to być znacznie bardziej efektywne niż Trwa przekazywanie/pobieranie tego woluminu danych za pośrednictwem sieci.  
+W przypadku dużych ilości danych (więcej niż 1 TB) usługa Azure Storage oferuje usługę Import/Export, która umożliwia przekazywanie i pobieranie z magazynu obiektów BLOB przez wysyłanie dysków twardych.  Możesz umieścić dane na dysku twardym i wysłać je do firmy Microsoft w celu przekazania lub wysłać pusty dysk twardy do firmy Microsoft w celu pobrania danych.  Aby uzyskać więcej informacji, zobacz [Use the Microsoft Azure Import/Export Service to Transfer Data to Blob Storage (Przesyłanie danych do usługi Blob Storage za pomocą usługi Microsoft Azure Import/Export)](../storage-import-export-service.md).  Może to być znacznie bardziej wydajne niż przekazywanie/Pobieranie tej ilości danych przez sieć.  
 
-### <a name="subheading20"></a>Używanie metadanych
+### <a name="subheading20"></a>Użyj metadanych
 
-Usługa Blob obsługuje żądania head, które mogą obejmować metadane dotyczące obiektów blob. Na przykład w razie aplikacji danych EXIF poza zdjęcie może pobrania zdjęcia i Wyodrębnij jego zawartość. Aby oszczędzić przepustowość i zwiększyć wydajność, aplikacja może przechowywać danych EXIF w metadanych obiektu blob, aplikacja przekazywane zdjęcie: można później odzyskać danych EXIF w metadanych przy użyciu tylko żądania HEAD, co znaczne ograniczenie użycia przepustowości i czas przetwarzania potrzebny do wyodrębniania danych EXIF każdorazowo obiekt blob jest do odczytu. Jest to przydatne w scenariuszach, gdzie potrzebujesz tylko metadane i nie pełnej zawartości obiektu blob.  Tylko w rozmiarze 8 KB metadanych mogą być przechowywane na obiekt blob (usługa nie będzie akceptować żądania magazynu wyższej), więc jeśli dane nie mieści się w tym rozmiar, nie można używać tego podejścia.  
-
-Na przykład sposobu uzyskania metadanych obiektu blob przy użyciu platformy .NET, zobacz [zestawu i pobieranie właściwości oraz metadanych](../blobs/storage-properties-metadata.md).  
+Blob service obsługuje żądania główne, które mogą zawierać metadane dotyczące obiektu BLOB. Na przykład jeśli aplikacja wymaga danych EXIF ze zdjęcia, może pobrać zdjęcie i wyodrębnić ją. Aby zaoszczędzić przepustowość i zwiększyć wydajność, aplikacja może przechowywać dane EXIF w metadanych obiektu BLOB, gdy aplikacja przekazała Zdjęcie: można następnie pobrać dane EXIF w metadanych przy użyciu tylko żądania elementu głównego, co oszczędza znaczną przepustowość i czas przetwarzania wymagany do wyodrębnienia danych EXIF za każdym razem, gdy obiekt BLOB zostanie odczytany. Jest to przydatne w scenariuszach, w których potrzebne są tylko metadane, a nie Pełna zawartość obiektu BLOB.  Na obiekt BLOB mogą być przechowywane tylko 8 KB metadanych (usługa nie akceptuje żądania przechowania więcej niż tej), więc jeśli dane nie mieszczą się w tym rozmiarze, korzystanie z tego podejścia może być niemożliwe.  
 
 ### <a name="rapid-uploading"></a>Szybkie przekazywanie
 
-Aby szybko przekazać obiekty BLOB, jest pierwsze pytanie do odpowiedzi: czy przekazywanie jeden obiekt blob lub wiele?  Użyj poniższych wskazówek, aby określić poprawną metodę do użycia w zależności od scenariusza.  
+Aby szybko przekazać obiekty blob, najpierw należy odpowiedzieć na pytanie: czy są przekazywane jeden obiekt BLOB czy wiele?  Skorzystaj z poniższych wskazówek, aby określić poprawną metodę do użycia w zależności od danego scenariusza.  
 
-#### <a name="subheading21"></a>Szybkie przekazywanie jeden duży obiekt blob
+#### <a name="subheading21"></a>Szybkie przekazywanie jednego dużego obiektu BLOB
 
-Aby szybko przekazać jeden duży obiekt blob, Twoja aplikacja kliencka należy przekazać jej bloków lub stron równolegle (co mając na uwadze cele skalowalności dla poszczególnych obiektów blob i konta magazynu jako całość).  Oficjalnych bibliotek udostępnionych przez firmę Microsoft klienta RTM magazynu (.NET, Java) mają możliwość to zrobić.  Dla każdej wersji biblioteki, użyj poniżej określonego obiektu/właściwości można ustawić poziom współbieżności:  
+Aby szybko przekazać pojedynczy duży obiekt BLOB, aplikacja kliencka powinna przekazywać równolegle swoje bloki lub strony (co jest świadome obiektów docelowych skalowalności dla poszczególnych obiektów blob i konta magazynu jako całości).  Oficjalne biblioteki klienckie magazynu RTM firmy Microsoft (.NET, Java) mają tę możliwość.  Dla każdej biblioteki Użyj poniższego określonego obiektu/właściwości, aby ustawić poziom współbieżności:  
 
-* .NET: Ustaw ParallelOperationThreadCount w obiekcie BlobRequestOptions ma być używany.
+* .NET: Ustaw ParallelOperationThreadCount dla obiektu BlobRequestOptions, który ma być używany.
 * Java/Android: Use BlobRequestOptions.setConcurrentRequestCount()
-* Node.js: Użyj parallelOperationThreadCount od opcji żądania lub usługi Blob.
-* C++: Use the blob_request_options::set_parallelism_factor method.
+* Node.js: Użyj parallelOperationThreadCount na temat opcji żądania lub Blob service.
+* C++: Użyj metody blob_request_options:: set_parallelism_factor.
 
-#### <a name="subheading22"></a>Szybkie przekazywanie wiele obiektów blob
+#### <a name="subheading22"></a>Szybkie przekazywanie wielu obiektów BLOB
 
-Aby szybko przekazać wiele obiektów blob, przekazywanie obiektów blob w sposób równoległy. To jest szybsza niż przekazywanie pojedynczego obiektów blob w czasie z bloku równoległe przekazywanie, ponieważ rozprzestrzenia się przekazywania na wielu partycjach usługi storage. Pojedynczy obiekt blob obsługuje tylko przepływność 60 MB na sekundę (około 480 MB/s). W momencie pisania tego konta amerykańskiej LRS obsługuje maksymalnie 20 GB transferu danych przychodzących, która jest o wiele więcej niż obsługiwane przez poszczególne obiektów blob.  [Narzędzie AzCopy](#subheading18) wykonuje przekazywanie w równoległych domyślnie i jest zalecane w przypadku tego scenariusza.  
+Aby szybko przekazać wiele obiektów blob, należy przekazać obiekty blob równolegle. Jest to szybsze niż przekazywanie pojedynczych obiektów BLOB jednocześnie przy użyciu równoległych bloków przekazywania, ponieważ rozkłada je na wiele partycji usługi Storage. Pojedynczy obiekt BLOB obsługuje tylko przepływność wynoszącą 60 MB/s (około 480 MB/s). W chwili pisania konto LRS oparte na USA obsługuje do 20 GB/s danych przychodzących, które jest znacznie większe niż przepływność obsługiwana przez pojedynczy obiekt BLOB.  [AzCopy](#subheading18) domyślnie wykonuje operacje przekazywania równolegle i jest to zalecane w tym scenariuszu.  
 
-### <a name="subheading23"></a>Wybierając odpowiedni typ obiektu blob
+### <a name="subheading23"></a>Wybieranie poprawnego typu obiektu BLOB
 
-Usługa Azure Storage obsługuje dwa typy obiektów blob: *strony* obiektów blob i *bloku* obiektów blob. Dla scenariusza użycia danego typu blob wybór ten wpłynie wydajności i skalowalności rozwiązania. Blokowe obiekty BLOB są odpowiednie w przypadku, gdy użytkownik chce efektywnie przekazywanie dużych ilości danych: na przykład, aplikacja kliencka może być konieczne przekazywanie zdjęcia lub filmu wideo do usługi blob storage. Stronicowe obiekty BLOB są odpowiednie, jeśli aplikacja musi wykonać losowe operacje zapisu na danych: na przykład wirtualnych dysków twardych platformy Azure są przechowywane jako stronicowe obiekty BLOB.  
+Usługa Azure Storage obsługuje dwa typy obiektów BLOB ** : stronicowe obiekty blob i *blokowe* obiekty blob. Dla danego scenariusza użycia wybór typu obiektu BLOB będzie miał wpływ na wydajność i skalowalność rozwiązania. Blokowe obiekty blob są odpowiednie, gdy chcesz efektywnie przekazywać duże ilości danych: na przykład aplikacja kliencka może wymagać przeładowania zdjęć lub wideo do usługi BLOB Storage. Stronicowe obiekty blob są odpowiednie, jeśli aplikacja musi wykonywać losowe operacje zapisu na danych: na przykład dyski VHD platformy Azure są przechowywane jako stronicowe obiekty blob.  
 
-Aby uzyskać więcej informacji, zobacz [omówienie blokowych obiektów blob, Uzupełnialnych obiektów blob i stronicowe obiekty BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).  
+Aby uzyskać więcej informacji, zobacz [Omówienie blokowych obiektów blob, dołączanie obiektów blob i stronicowych obiektów BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).  
 
 ## <a name="tables"></a>Tabele
 
-Oprócz sprawdzonych rozwiązań dotyczących [wszystkich usług](#allservices) opisanych powyżej, poniżej sprawdzone rozwiązania mają zastosowanie szczególnie w usłudze table service.  
+Oprócz sprawdzonych praktyk dla [wszystkich usług](#allservices) opisanych wcześniej, następujące sprawdzone rozwiązania mają zastosowanie w odniesieniu do usługi Table Service.  
 
-### <a name="subheading24"></a>Cele skalowalności na specyficznych dla tabeli
+### <a name="subheading24"></a>Cele skalowalności specyficzne dla tabeli
 
-Oprócz ograniczenia przepustowości całe konto magazynu tabele zawierają następujące limit skalowalności określone.  System będzie równoważenia obciążenia z wzrostem ruchu, ale jeśli lawinowo gwałtownym wzrostem ruchu może nie można uzyskiwać natychmiastowy dostęp tego woluminu przepływności.  Deseń lawinowo, należy się spodziewać się ograniczania przepustowości i/lub przekroczenia limitu czasu podczas serii jako magazyn usługa automatycznie równoważy obciążenie limit tabeli.  Rozwijanie powoli zazwyczaj ma lepsze wyniki, jak widać, czas systemowy, który umożliwia zrównoważenie obciążenia odpowiednio.  
+Oprócz ograniczeń przepustowości całego konta magazynu tabele mają następujący określony limit skalowalności.  System będzie równoważyć obciążenie w miarę wzrostu ruchu, ale jeśli ruch ma nagłe rozerwania, nie można natychmiast uzyskać tej ilości przepływności.  Jeśli Twój wzorzec zawiera szeregi, należy oczekiwać, że ograniczanie i/lub przekroczenie limitu czasu podczas serii, ponieważ usługa magazynu automatycznie równoważy obciążenie tabeli.  Spowolnienie zwiększają się, ponieważ zapewnia czas systemowy odpowiednio do równoważenia obciążenia.  
 
-#### <a name="entities-per-second-storage-account"></a>Jednostek na sekundę (konta magazynu)
+#### <a name="entities-per-second-storage-account"></a>Jednostki na sekundę (konto magazynu)
 
-Limit skalowalności do uzyskiwania dostępu do tabel jest maksymalnie 20 000 jednostek (1 KB) na sekundę dla konta.  Ogólnie rzecz biorąc każda jednostka, która jest wstawiany zaktualizowany, usunięty lub skanowania liczby kierunku ten element docelowy.  Dlatego Wstawianie wsadowe, która zawiera 100 jednostek jest traktowany jako 100 jednostek.  Zapytanie, które skanuje 1000 jednostek i zwraca 5 jest traktowany jako 1000 jednostek.  
+Limit skalowalności dla dostępu do tabel to 20 000 jednostek (1 KB każdej) na sekundę dla konta.  Ogólnie rzecz biorąc, każda jednostka, która jest wstawiana, aktualizowana, usuwana lub skanowana, jest uwzględniana w tym miejscu docelowym.  Dzięki temu wstawka wsadowa zawierająca jednostki 100 będzie liczyć jako jednostki 100.  Zapytanie, które skanuje jednostki 1000 i zwraca wartość 5, będzie liczyć jako jednostki 1000.  
 
-#### <a name="entities-per-second-partition"></a>Jednostek na sekundę (partycja)
+#### <a name="entities-per-second-partition"></a>Jednostki na sekundę (partycja)
 
-W ramach jednej partycji tę docelową skalowalność na potrzeby uzyskiwania dostępu do tabel jest 2000 jednostek (1 KB) na sekundę, przy użyciu tego samego zliczanie zgodnie z opisem w poprzedniej sekcji.  
+W ramach jednej partycji obiekt docelowy skalowalności do uzyskiwania dostępu do tabel to 2 000 jednostek (1 KB każdej) na sekundę przy użyciu tego samego zliczania, jak opisano w poprzedniej sekcji.  
 
 ### <a name="configuration"></a>Konfigurowanie
 
-W tej sekcji przedstawiono kilka ustawień szybkiej konfiguracji, które można użyć, aby wprowadzić znaczne ulepszenia wydajności w usłudze table service:  
+Ta sekcja zawiera kilka ustawień szybkiego konfigurowania, których można użyć, aby zwiększyć wydajność usługi Table Service:  
 
-#### <a name="subheading25"></a>Przy użyciu formatu JSON
+#### <a name="subheading25"></a>Użyj JSON
 
-Począwszy od wersji usługi storage 2013-08-15, usłudze table service obsługuje, przy użyciu zamiast formatu AtomPub oparty na formacie XML do przesyłania danych tabeli. To może zmniejszyć rozmiary obciążeń żądań, o ile 75% i może znacznie poprawić wydajność aplikacji.
+Począwszy od usługi Storage w wersji 2013-08-15, usługa Table Service obsługuje używanie kodu JSON zamiast formatu AtomPub opartego na języku XML do przesyłania danych tabeli. Może to zmniejszyć rozmiar ładunku o nawet 75% i znacząco zwiększyć wydajność aplikacji.
 
-Aby uzyskać więcej informacji, zobacz wpis [tabele platformy Azure firmy Microsoft: Wprowadzenie do formatu JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) i [Format ładunku dla operacji usługi tabeli](https://msdn.microsoft.com/library/azure/dn535600.aspx).
+Aby uzyskać więcej informacji, Zobacz tabele [Microsoft Azure publikowania: Wprowadzenie do](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) formatu JSON i [ładunku dla operacji usługi Table Service](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
-#### <a name="subheading26"></a>Wyłącz Nagle'a
+#### <a name="subheading26"></a>Wyłącz nagle
 
-Algorytm Nagle'a firmy jest często stosowana w sieciach TCP/IP w celu zwiększenia wydajności sieci. Jednak nie jest optymalna w każdych okolicznościach (na przykład wysoce interaktywnych środowisk). Dla usługi Azure Storage algorytm Nagle'a firmy ma negatywny wpływ na wydajność żądań do tabel i kolejek usługi i należy ją wyłączyć, jeśli jest to możliwe.
+Algorytm nagle jest szeroko implementowany w sieciach TCP/IP jako środek w celu zwiększenia wydajności sieci. Nie jest to jednak optymalne we wszystkich sytuacjach (takich jak wysoce interaktywne środowiska). W przypadku usługi Azure Storage algorytm nagle ma negatywny wpływ na wydajność żądań do usług tabel i kolejek i należy go wyłączyć, jeśli jest to możliwe.
 
 ### <a name="schema"></a>Schemat
 
-Jak reprezentują i wykonuj zapytania na danych jest największy pojedynczy czynnik, który wpływa na wydajność usługi table service. Gdy każda aplikacja jest inna, w tej sekcji przedstawiono pewne ogólne sprawdzonych rozwiązań, które odnoszą się do:  
+Sposób reprezentowania danych i wykonywania w nim zapytań jest największym czynnikiem wpływającym na wydajność usługi Table Service. Chociaż każda aplikacja jest różna, w tej sekcji opisano niektóre ogólne sprawdzone rozwiązania, które odnoszą się do:  
 
-* Projektowaniu tabel
+* Projektowanie tabel
 * Wydajne zapytania
-* Aktualizacje wydajne danych  
+* Wydajne aktualizacje danych  
 
 #### <a name="subheading27"></a>Tabele i partycje
 
-Tabele są podzielone na partycje. Każda jednostka, przechowywane w partycji udostępnia ten sam klucz partycji i kluczu unikatowych wierszach, aby zidentyfikować go w ramach tej partycji. Partycje zapewniają korzyści, ale także wprowadzają limity skalowalności.  
+Tabele są podzielone na partycje. Każda jednostka przechowywana na partycji ma ten sam klucz partycji i ma unikatowy klucz wiersza, aby zidentyfikować ją w ramach tej partycji. Partycje zapewniają korzyści, ale również wprowadzają limity skalowalności.  
 
-* Korzyści: Można aktualizować jednostek w tej samej partycji w jednym, atomic, batch transakcji, która zawiera maksymalnie 100 operacji przechowywania (ograniczenie całkowitego rozmiaru 4 MB). Zakładając, że taką samą liczbę jednostek, które mają zostać pobrane, możesz także zbadać danych w jednej partycji efektywniej niż danych z różnych partycji (chociaż należy zapoznać się otrzymać dalsze zalecenia na wykonywanie zapytań o dane tabeli).
-* Limit skalowalności: Dostęp do jednostek przechowywanych w jednej partycji nie może być równoważenia obciążenia ponieważ partycje obsługuje transakcje niepodzielne partii. Z tego powodu tę docelową skalowalność dla pojedynczej tabeli partycji jest mniejszy niż usługi tabeli jako całości.  
+* Korzyści: Jednostki można aktualizować w jednej, niepodzielnej transakcji wsadowej zawierającej do 100 oddzielnych operacji magazynowania (limit rozmiaru o rozmiarze 4 MB). Przy założeniu, że ta sama liczba jednostek ma być pobierana, można również wykonywać zapytania dotyczące danych w pojedynczej partycji bardziej wydajniej niż dane, które obejmują partycje (należy przeczytać, aby uzyskać dalsze zalecenia dotyczące wykonywania zapytań dotyczących danych tabeli).
+* Limit skalowalności: Dostęp do jednostek przechowywanych w pojedynczej partycji nie może być zrównoważony pod względem obciążenia, ponieważ partycje obsługują niepodzielną transakcję wsadową. Z tego powodu cel skalowalności dla pojedynczej partycji tabeli jest niższy niż w przypadku usługi Table Service jako całości.  
 
-Ze względu na te cechy tabele i partycje powinna przyjąć następujące zasady projektowania:  
+Ze względu na te cechy tabel i partycji należy przyjąć następujące zasady dotyczące projektowania:  
 
-* Dane, które Twoja aplikacja kliencka często zaktualizowane lub wykonać zapytania w tej samej jednostki logicznej pracy powinny znajdować się w tej samej partycji.  Może to być, ponieważ aplikacja jest agregowanie zapisów lub chcesz korzystać z zalet operacji wsadowych atomic.  Ponadto danych w jednej partycji mogą być bardziej efektywnie wyszukiwane w pojedyncze zapytanie niż odzyskiwanie danych między partycjami.
-* Dane, które Twoja aplikacja kliencka nie wstawiania/aktualizacji lub zapytania w tej samej jednostki logicznej pracy (jednego zapytania lub aktualizację partii) powinien znajdować się w oddzielnych partycjach.  OneNote ważne jest, czy nie ma żadnego limitu liczby kluczy partycji w jednej tabeli, więc po miliony kluczy partycji nie jest problemem i nie ma wpływu na wydajność.  Na przykład jeśli aplikacja jest popularne witryny sieci Web przy użyciu nazwy logowania użytkownika, przy użyciu Identyfikatora użytkownika jako klucza partycji może być dobrym wyborem.  
+* Dane, które aplikacja kliencka często aktualizowana lub zapytania w tej samej jednostce logicznej pracy, powinny znajdować się w tej samej partycji.  Może to być spowodowane tym, że aplikacja agreguje zapisy lub że chcesz wykorzystać niepodzielną operację wsadową.  Ponadto dane w pojedynczej partycji mogą być bardziej wydajne w pojedynczej kwerendzie niż dane między partycjami.
+* Dane, które aplikacja kliencka nie wstawia/aktualizuje ani nie wykonują zapytania w tej samej logicznej jednostce pracy (pojedyncze zapytanie lub aktualizacja wsadowa), powinny znajdować się w oddzielnych partycjach.  Jedna ważna Uwaga polega na tym, że nie ma żadnych ograniczeń dotyczących liczby kluczy partycji w pojedynczej tabeli, tak aby miliony kluczy partycji nie było problemem i nie wpłynie to na wydajność.  Na przykład jeśli aplikacja jest popularną witryną sieci Web z logowaniem użytkownika, użycie identyfikatora użytkownika jako klucza partycji może być dobrym wyborem.  
 
-#### <a name="hot-partitions"></a>Partycje w warstwie gorąca
+#### <a name="hot-partitions"></a>Partycje aktywne
 
-Gorącą partycją to taki, który otrzymuje nieproporcjonalnie duży ruch do konta usługi i nie może być ze zrównoważonym obciążeniem ponieważ jednej partycji.  Ogólnie rzecz biorąc gorąca partycji tworzone są dwa sposoby:  
+Partycja gorąca to taka, która otrzymuje nieproporcjonalny odsetek ruchu do konta i nie może być zrównoważona pod względem obciążenia, ponieważ jest jedną partycją.  Ogólnie rzecz biorąc, partycje gorące są tworzone jeden z dwóch sposobów:  
 
-##### <a name="subheading28"></a>Tylko Dołącz i dołączana tylko wzorców
+##### <a name="subheading28"></a>Tylko Dołącz wzorce i tylko poprzedź
 
-Wzorzec "Tylko dołączanie" jest jednym gdzie (większość lub wszystkie) ruchu do danego klucza produktu, zwiększa i zmniejsza zgodnie z bieżącą godzinę.  Przykładem jest, jeśli jako klucza partycji dla danych dziennika aplikacji używana bieżącą datę.  Skutkuje to wszystkie operacje wstawiania przerywaj ostatniej partycji w tabeli, a system nie może załadować saldo, ponieważ wszystkie operacje zapisu przechodzenia na koniec tabeli.  Jeśli wielkość ruchu sieciowego do tej partycji przekracza tę docelową skalowalność poziomu partycji, a następnie spowoduje ograniczenie.  Zaleca się upewnić się, że ruch jest wysyłany do wielu partycji, aby włączyć równoważenie obciążenia żądań w tabeli.  
+Wzorzec "Append Only" to jeden tam, gdzie wszystkie (lub niemal wszystkie) ruchu do danego klucza podstawowego rosną i zmniejszają się w zależności od bieżącego czasu.  Przykładem jest to, że aplikacja użyła bieżącej daty jako klucza partycji dla danych dziennika.  Powoduje to wszystkie operacje wstawiania do ostatniej partycji w tabeli, a system nie może równoważyć obciążenia, ponieważ wszystkie zapisy przechodzą do końca tabeli.  Jeśli ilość ruchu do tej partycji przekracza miejsce docelowe skalowalności na poziomie partycji, spowoduje to ograniczenie przepustowości.  Lepiej jest zapewnić, że ruch jest wysyłany do wielu partycji, aby umożliwić Równoważenie obciążenia żądaniami w tabeli.  
 
 ##### <a name="subheading29"></a>Dane o dużym natężeniu ruchu
 
-Jeśli schemat partycjonowania w wyniku jedną partycję, która zawiera tylko dane o wiele bardziej używane od innych partycji, ograniczania przepływności mogą również wystąpić jako partycja zbliża się tę docelową skalowalność w jednej partycji.  Zaleca się upewnić się, że schemat partycji powoduje nie jednej partycji, zbliża się cele skalowalności.  
+Jeśli schemat partycjonowania składa się z pojedynczej partycji, która ma tylko dane, które są znacznie bardziej używane niż inne partycje, można także sprawdzić ograniczenia, ponieważ ta partycja zbliża się do celu skalowalności dla jednej partycji.  Lepszym rozwiązaniem jest upewnienie się, że schemat partycji nie ma żadnej pojedynczej partycji, która zbliża się do celów skalowalności.  
 
 #### <a name="querying"></a>Wykonywanie zapytania
 
-W tej sekcji opisano sprawdzone rozwiązania na potrzeby wykonywania zapytań w usłudze table service.  
+W tej sekcji opisano sprawdzone praktyki dotyczące wykonywania zapytań dotyczących usługi Table Service.  
 
-##### <a name="subheading30"></a>Zakres kwerendy
+##### <a name="subheading30"></a>Zakres zapytania
 
-Istnieje kilka sposobów, aby określić zakres jednostek do wykonywania zapytań.  Poniżej przedstawiono omówienie używa każdego.  
+Istnieje kilka sposobów określania zakresu jednostek do zapytania.  Poniżej przedstawiono omówienie użycia każdego z nich.  
 
-Ogólnie rzecz biorąc Unikaj skanowania (zapytań, większa niż jeden podmiot), ale jeśli musisz przeprowadzić skanowanie, spróbuj organizowania danych, tak aby usługi skanowania pobierać dane, które wymagają bez skanowanie lub zwracania znacznej ilości jednostek, które nie są potrzebne.  
+Ogólnie rzecz biorąc, unikaj skanowania (zapytania większe niż pojedyncza jednostka), ale jeśli musisz skanować, spróbuj zorganizować dane tak, aby skany pobierają potrzebne dane bez skanowania lub zwracania znaczących niepotrzebnych jednostek.  
 
-###### <a name="point-queries"></a>Zapytań o punkt
+###### <a name="point-queries"></a>Zapytania punktu
 
-Kwerendy punktu pobiera dokładnie jedną jednostkę. Robi to poprzez określenie klucza partycji i klucz wiersza jednostki do pobrania. Te zapytania są wydajne i należy ich używać, gdy jest to możliwe.  
+Zapytanie o punkt pobiera dokładnie jedną jednostkę. W tym celu należy określić klucz partycji i klucz wiersza jednostki do pobrania. Te zapytania są wydajne i należy ich używać wszędzie tam, gdzie jest to możliwe.  
 
-###### <a name="partition-queries"></a>Partycja zapytania
+###### <a name="partition-queries"></a>Zapytania dotyczące partycji
 
-Zapytanie partycji jest zapytanie, które pobiera zestaw danych, która udostępnia wspólny klucz partycji. Zazwyczaj zapytanie określa zakres wartości klucza wiersza lub zakres wartości dla niektórych właściwości jednostki, oprócz klucza partycji. Są one mniej wydajne niż zapytań o punkt i powinny być używane rzadko.  
+Zapytanie partycji to zapytanie, które pobiera zestaw danych, które współużytkują wspólny klucz partycji. Zwykle zapytanie określa zakres wartości klucza wiersza lub zakres wartości dla niektórych właściwości jednostki oprócz klucza partycji. Są one mniej wydajne niż zapytania punktowe i powinny być używane oszczędnie.  
 
-###### <a name="table-queries"></a>Tabela zapytania
+###### <a name="table-queries"></a>Zapytania tabeli
 
-Zapytanie tabeli jest zapytanie, które pobiera zestaw jednostek, który nie udostępnia wspólny klucz partycji. Te zapytania nie są wydajne i nie należy ich, jeśli jest to możliwe.  
+Zapytanie tabeli to zapytanie, które pobiera zestaw jednostek, które nie korzystają ze wspólnego klucza partycji. Te zapytania są niewydajne i należy je unikać, jeśli jest to możliwe.  
 
 ##### <a name="subheading31"></a>Gęstość zapytania
 
-Innym czynnikiem klucza w wydajności zapytania jest liczby jednostek zwróconych w porównaniu do liczby jednostek przeskanowane w celu znalezienia zwróconego zestawu. Jeśli aplikacja wykonuje zapytania tabeli za pomocą filtru dla wartości właściwości, czy tylko 1% udziały danych zapytania będą skanować 100 jednostek dla każdej jednostki jednego, który zwraca. Cele skalowalności tabeli omówionych wcześniej wszystkie odnoszą się do liczby jednostek skanowania, a nie liczby jednostek zwróconych: zapytania niskiej gęstości mogą łatwo spowodować usłudze table service ograniczać aplikacji, ponieważ wymaga skanowania, tak wiele jednostek do pobranie jednostki, którego szukasz.  Zobacz sekcję poniżej na [denormalizacja](#subheading34) Aby uzyskać więcej informacji na temat tego uniknąć.  
+Drugim czynnikiem wydajności zapytania jest liczba jednostek zwróconych w porównaniu do liczby przeskanowanych jednostek w celu znalezienia zwracanego zestawu. Jeśli aplikacja wykonuje zapytanie tabeli z filtrem dla wartości właściwości, która ma tylko 1% udziałów danych, zapytanie przeskanuje jednostki 100 dla każdej jednostki, która zwraca. Obiekty docelowe skalowalności tabeli omawiane poprzednio odnoszą się do liczby przeskanowanych jednostek, a nie liczby zwróconych jednostek: niska gęstość zapytania może łatwo spowodować ograniczenie aplikacji do usługi Table Service, ponieważ musi ona skanować wiele jednostek do Pobierz szukaną jednostkę.  Więcej informacji na temat tego [](#subheading34) , jak można uniknąć, można znaleźć w sekcji poniżej.  
 
-##### <a name="limiting-the-amount-of-data-returned"></a>Ograniczenie ilości danych zwracane
+##### <a name="limiting-the-amount-of-data-returned"></a>Ograniczanie ilości zwracanych danych
 
-###### <a name="subheading32"></a>Filtrowanie
+###### <a name="subheading32"></a>Identyfikatorów
 
-W przypadku, gdy wiesz, że kwerenda będzie zwracać jednostek, które nie wymagają w aplikacji klienckiej, należy wziąć pod uwagę przy użyciu filtru, aby zmniejszyć rozmiar zwróconego zestawu. Podczas gdy jednostki nie jest zwracana do klienta nadal wliczają się do ograniczeń skalowalności, ze względu na rozmiar ładunku mniejsze sieci i ograniczoną liczbę jednostek, które Twoja aplikacja kliencka musi przetworzyć zwiększy się wydajność aplikacji.  Zobacz powyżej Uwaga na [gęstość zapytania](#subheading31), jednak — cele skalowalności odnoszą się do liczby jednostek skanowania, dzięki czemu zapytania, który odfiltrowuje wielu jednostek może nadal spowodować ograniczanie przepustowości, nawet jeśli kilka jednostek są zwracane.  
+Jeśli wiesz, że zapytanie zwróci jednostki, które nie są potrzebne w aplikacji klienckiej, rozważ użycie filtru, aby zmniejszyć rozmiar zwracanego zestawu. Mimo że jednostki, które nie są zwracane do klienta, są nadal wliczane do ograniczeń skalowalności, wydajność aplikacji poprawi się z powodu zmniejszonego rozmiaru ładunku sieciowego i zredukowanej liczby jednostek, które aplikacja kliencka musi przetworzyć.  Zapoznaj się z powyższymi uwagami dotyczącymi [gęstości zapytań](#subheading31), jednak elementy docelowe skalowalności odnoszą się do liczby przeskanowanych jednostek, więc zapytanie filtrujące wiele jednostek może nadal powodować ograniczenie przepustowości, nawet jeśli zwracane są kilka jednostek.  
 
-###### <a name="subheading33"></a>Projekcja
+###### <a name="subheading33"></a>Stając
 
-Jeśli Twoja aplikacja kliencka potrzebuje tylko ograniczony zestaw właściwości między jednostkami w tabeli, umożliwia ograniczenie rozmiaru zestawu danych zwróconego przez osoby projekcji. Podobnie jak w przypadku filtrowania, pozwala to zmniejszyć obciążenie sieci i przetwarzania klienta.  
+Jeśli aplikacja kliencka wymaga tylko ograniczonego zestawu właściwości z jednostek w tabeli, można użyć projekcji, aby ograniczyć rozmiar zwracanego zestawu danych. Podobnie jak w przypadku filtrowania, pozwala to zmniejszyć obciążenie sieci i przetwarzanie klienta.  
 
 ##### <a name="subheading34"></a>Denormalizacja
 
-W przeciwieństwie do pracy z relacyjnych baz danych, sprawdzonych rozwiązań dotyczących wydajne wykonywanie zapytań o dane tabeli prowadzić denormalizing danych. Oznacza to, powielanie te same dane w wielu jednostek (po jednym dla każdego klucza, możesz użyć, aby znaleźć dane) aby ograniczyć liczbę jednostek, które zapytania wymaga skanowania można znaleźć danych klienta wymaga, zamiast konieczności skanowania dużej liczby obiektów, aby znaleźć dane aplikacji wymaga się instalowania aplikacji.  Na przykład w witrynie internetowej handlu elektronicznego, warto znajdowanie zamówienia zarówno według Identyfikatora klienta (należy nadać mi zamówień tego klienta) oraz według daty (należy nadać mi zamówienia w dniu).  W usłudze Table Storage, najlepiej przechowywać jednostki (lub odwołanie do niej) jest dwa razy — raz z nazwą tabeli klucza podstawowego i RK, aby ułatwić znajdowanie przez klienta identyfikator, jeden raz ułatwiające znalezienie go według daty.  
+W przeciwieństwie do pracy z relacyjnymi bazami danych, sprawdzone rozwiązania do wydajnego wykonywania zapytań o dane tabeli prowadzą do denormalizacji danych. Oznacza to, że duplikowanie tych samych danych w wielu jednostkach (po jednym dla każdego klucza, którego można użyć do znajdowania danych) w celu zminimalizowania liczby jednostek, które muszą zostać przeskanowane przez zapytanie w celu znalezienia danych potrzebnych przez klienta, a nie konieczności skanowania dużej liczby jednostek w celu znalezienia danych aplikacji likacji.  Na przykład w witrynie internetowej handlu elektronicznego możesz chcieć znaleźć zamówienie zarówno według identyfikatora klienta, jak i daty (podać zamówienia tego klienta), a w dniu  W Table Storage najlepiej przechowywać jednostkę (lub odwołanie do niej) dwa razy — raz z nazwą tabeli, PK i RK, aby ułatwić znajdowanie według identyfikatora klienta, co ułatwia znalezienie go w dniu.  
 
-#### <a name="insertupdatedelete"></a>Wstawiania/aktualizowania/usuwania
+#### <a name="insertupdatedelete"></a>Wstaw/Aktualizuj/Usuń
 
-W tej sekcji opisano sprawdzonych rozwiązań dotyczących modyfikowania jednostek przechowywanych w usłudze table service.  
+W tej sekcji opisano sprawdzone rozwiązania dotyczące modyfikowania jednostek przechowywanych w usłudze Table Service.  
 
-##### <a name="subheading35"></a>Przetwarzanie wsadowe
+##### <a name="subheading35"></a>Partie
 
-Transakcje usługi Batch są określane jako transakcje grupy jednostek (ETG) w usłudze Azure Storage; wszystkie operacje w ramach ETG musi być w jednej partycji w jednej tabeli. Jeśli to możliwe, należy użyć ETGs przeprowadzić wstawiania, aktualizacji i usuwania w partiach. To zmniejsza liczbę rund z aplikacji klienta do serwera, zmniejsza liczbę transakcji do rozliczenia (ETG jest liczona jako pojedynczą transakcję, dla celów rozliczeniowych i może zawierać do 100 operacji magazynu) i umożliwia atomic aktualizacje, (wszystkie wersje operacje kończą się pomyślnie lub nie powiedzie się w obrębie ETG). Środowiska z wysokimi opóźnieniami, takich jak urządzenia przenośne będzie znacznie korzyści ze stosowania ETGs.  
+Transakcje usługi Batch są nazywane transakcjami grupy jednostek (ETG) w usłudze Azure Storage. wszystkie operacje w ramach elementu ETG muszą znajdować się na jednej partycji w pojedynczej tabeli. Tam, gdzie to możliwe, użyj ETGs do wykonywania operacji wstawiania, aktualizacji i usuwania w partiach. Zmniejsza to liczbę operacji rundy z aplikacji klienckiej do serwera programu, ograniczając liczbę transakcji rozliczanych (ETG jako pojedynczą transakcję na potrzeby rozliczeń i może zawierać do 100) i włącza aktualizacje niepodzielne (wszystko operacje zakończone powodzeniem lub zakończone niepowodzeniem w ramach elementu ETG). Środowiska z dużymi opóźnieniami, takimi jak urządzenia przenośne, znacznie pomogą korzystać z usługi ETGs.  
 
-##### <a name="subheading36"></a>UPSERT
+##### <a name="subheading36"></a>Upsert
 
-Użyj tabeli **Upsert** operacje wszędzie tam, gdzie to możliwe. Istnieją dwa rodzaje **Upsert**, które mogą być bardziej efektywne niż tradycyjne **Wstaw** i **aktualizacji** operacje:  
+W miarę możliwości używaj tabeli **upsert** . Istnieją dwa typy **upsert**, które mogą być bardziej wydajne niż tradycyjne operacje **wstawiania** i **aktualizacji** :  
 
-* **InsertOrMerge**: Użyj tego ustawienia podczas przekazywania podzbioru właściwości jednostki, ale nie wiesz, czy ta jednostka już istnieje. Jeśli jednostka istnieje, to wywołanie aktualizuje właściwości zawarte w **Upsert** operacji i pozostawia wszystkich istniejących właściwości są one, jeśli jednostka nie istnieje, Nowa jednostka do wstawienia. Jest to podobne do rzutowania w zapytaniu, w tym, że musisz przekazać właściwości, które zmieniają się.
-* **InsertOrReplace**: Użyj tego, gdy chcesz przekazać nowe jednostki, ale nie masz pewności, czy już istnieje. Należy używać tylko to, gdy wiesz, że nowo przesłanym jednostki jest całkowicie poprawny całkowicie zastępuje stare jednostki. Na przykład chcesz zaktualizować jednostki, która przechowuje lokalizację bieżącego użytkownika, niezależnie od tego, czy aplikacja wcześniej zapisanych danych lokalizacji dla użytkownika; Nowa jednostka lokalizacji zostało zakończone, a nie ma potrzeby dowolnych informacji z dowolnej poprzedniej jednostki.
+* **InsertOrMerge**: Użyj tego, jeśli chcesz przekazać podzestaw właściwości jednostki, ale nie ma pewności, czy jednostka już istnieje. Jeśli jednostka istnieje, to wywołanie aktualizuje właściwości zawarte w operacji **upsert** i pozostawia wszystkie istniejące właściwości, jeśli są one, jeśli jednostka nie istnieje, wstawia nową jednostkę. Jest to podobne do użycia projekcji w zapytaniu, w którym należy jedynie przekazać właściwości, które są zmieniane.
+* **InsertOrReplace**: Użyj tego, jeśli chcesz przekazać całkowicie nową jednostkę, ale nie masz pewności, czy już istnieje. Tej funkcji należy używać tylko wtedy, gdy wiadomo, że nowo przekazana jednostka jest całkowicie poprawna, ponieważ całkowicie zastępuje starą jednostkę. Na przykład, chcesz zaktualizować jednostkę, która przechowuje bieżącą lokalizację użytkownika, niezależnie od tego, czy aplikacja ma poprzednio przechowywane dane lokalizacji dla użytkownika; Nowa jednostka lokalizacji została ukończona i nie są potrzebne żadne informacje z poprzedniej jednostki.
 
-##### <a name="subheading37"></a>Przechowywanie serii danych w pojedynczej jednostki
+##### <a name="subheading37"></a>Przechowywanie serii danych w jednej jednostce
 
-Czasami aplikacja przechowuje serie danych, która często potrzebuje do pobrania w całości: na przykład aplikacja może śledzić użycie procesora CPU wraz z upływem czasu do wykreślenia wykresu stopniowe danych z ostatnich 24 godzinach. Jedno z podejść jest jedną jednostkę tabeli na godzinę, o każdej jednostki reprezentującą określoną godzinę i przechowywanie użycie procesora CPU dla danej godziny. Do wykreślenia te dane, aplikacja musi pobrać jednostek zawierających dane z ostatnich 24 godzin.  
+Czasami aplikacja przechowuje serie danych, które często mają być pobierane jednocześnie: na przykład aplikacja może śledzić użycie procesora w czasie w celu wykreślania przenoszonego wykresu danych z ostatnich 24 godzin. Jednym z metod jest posiadanie jednej jednostki tabeli na godzinę, dla każdej jednostki reprezentującej określoną godzinę i przechowywanie użycia procesora CPU przez daną godzinę. Aby wykreślić te dane, aplikacja musi pobrać jednostki przechowujące dane z 24 ostatnich godzin.  
 
-Alternatywnie aplikacja może przechowywać użycie procesora CPU dla każdej godziny jako osobne właściwości pojedynczej jednostki: Aby zaktualizować co godzinę, aplikacja może używać jednej **InsertOrMerge Upsert** wywołanie, aby zaktualizować wartość ostatniego Godzina. Przedstawianie danych, aplikacja tylko musi pobrać pojedynczą jednostkę zamiast 24, dzięki czemu wydajne zapytania (zobacz powyżej dyskusji na [kwerendy zakresu](#subheading30)).
+Alternatywnie, aplikacja może przechowywać użycie procesora CPU przez każdą godzinę jako oddzielną Właściwość pojedynczej jednostki: Aby zaktualizować każdą godzinę, aplikacja może użyć pojedynczego wywołania **InsertOrMerge upsert** , aby zaktualizować wartość dla ostatniej godziny. Aby wykreślić dane, aplikacja musi pobrać tylko jedną jednostkę zamiast 24, co pozwala na wydajne zapytanie (patrz powyżej w omówieniu [zakresu zapytania](#subheading30)).
 
-##### <a name="subheading38"></a>Przechowywanie ustrukturyzowanych danych w obiektach blob
+##### <a name="subheading38"></a>Przechowywanie danych strukturalnych w obiektach Blob
 
-Czasami ustrukturyzowanych danych tak, jak powinien przeprowadzić w tabelach, ale zakresy jednostki są zawsze pobierane ze sobą i można wstawiać usługi batch.  Dobrym przykładem jest plik dziennika.  W takim przypadku można partii dzienników z kilku minut, umieść je, a następnie kilka minut dzienników w czasie jak również są zawsze pobierane.  W tym przypadku wydajności, go lepiej jest użyć zamiast tabel, obiektów blob, ponieważ mogą znacznie zmniejszyć liczbę obiekty napisane/zwracane, a także zazwyczaj liczbę żądań, które muszą.  
+Czasami dane strukturalne uważają się za takie jak w tabelach, ale zakresy jednostek są zawsze pobierane razem i można dodać partię.  Dobrym przykładem jest plik dziennika.  W takim przypadku można wykonać wsadowe kilka minut dzienników, wstawić je, a następnie zawsze pobierać kilka minut dzienników jednocześnie.  W tym przypadku, w przypadku wydajności, lepiej jest używać obiektów BLOB zamiast tabel, ponieważ można znacząco ograniczyć liczbę obiektów, które są zapisywane/zwracane, a także zazwyczaj liczbę żądań, które są potrzebne.  
 
 ## <a name="queues"></a>Kolejki
 
-Oprócz sprawdzonych rozwiązań dotyczących [wszystkich usług](#allservices) opisanych powyżej, poniżej sprawdzone rozwiązania mają zastosowanie szczególnie w przypadku usługi kolejki.  
+Oprócz sprawdzonych praktyk dla [wszystkich usług](#allservices) opisanych wcześniej, następujące sprawdzone rozwiązania mają zastosowanie w odniesieniu do usługi kolejki.  
 
 ### <a name="subheading39"></a>Limity skalowalności
 
-Kolejka może przetworzyć około 2000 komunikatów (1 KB) na sekundę (AddMessage GetMessage i DeleteMessage są traktowane jak jeden komunikat w tym miejscu). Jeśli jest niewystarczająca dla aplikacji, należy użyć wielu kolejek i rozłożyć wiadomości między nimi.  
+Pojedyncza Kolejka może przetwarzać około 2 000 komunikatów (1 KB każdej) na sekundę (każdy AddMessage, GetMessage i DeleteMessage Count jako komunikat). Jeśli jest to niewystarczające dla aplikacji, należy użyć wielu kolejek i rozłożyć komunikaty między nimi.  
 
-Wyświetl bieżące cele skalowalności w [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md).  
+Wyświetlaj bieżące elementy docelowe skalowalności w zakresie [skalowalności i wydajności usługi Azure Storage](storage-scalability-targets.md).  
 
-### <a name="subheading40"></a>Wyłącz Nagle'a
+### <a name="subheading40"></a>Wyłącz nagle
 
-Zobacz sekcję dotyczącą konfiguracji tabeli, która w tym artykule omówiono algorytm Nagle'a — algorytm Nagle'a jest zazwyczaj negatywnie wpływać na wydajność żądań kolejki i należy je wyłączyć.  
+Zapoznaj się z sekcją w sekcji Konfiguracja tabeli, która omawia algorytm nagle — algorytm nagle jest zwykle nieodpowiedni dla wydajności żądań kolejki i należy go wyłączyć.  
 
 ### <a name="subheading41"></a>Rozmiar komunikatu
 
-Kolejki, wydajność i skalowalność zmniejszenie wzrostem rozmiaru wiadomości. W komunikacie, należy umieścić tylko te informacje, które wymaga odbiorcy.  
+Wydajność i skalowalność kolejki zmniejsza się w miarę wzrostu rozmiaru wiadomości. W komunikacie należy umieścić tylko te informacje, których potrzebuje odbiornik.  
 
-### <a name="subheading42"></a>Pobieranie usługi Batch
+### <a name="subheading42"></a>Pobieranie wsadowe
 
-Możesz pobrać maksymalnie 32 komunikaty z kolejki w ramach jednej operacji. Może to zmniejszyć liczbę natężenie ruchu od aplikacji klienckiej, która jest szczególnie przydatne w przypadku środowisk, takich jak urządzenia przenośne dużymi opóźnieniami.  
+Można pobrać maksymalnie 32 komunikatów z kolejki w ramach jednej operacji. Może to zmniejszyć liczbę roundtrip z aplikacji klienckiej, która jest szczególnie przydatna w środowiskach, takich jak urządzenia przenośne, z dużym opóźnieniem.  
 
 ### <a name="subheading43"></a>Interwał sondowania kolejki
 
-Większość aplikacji sondowania pod kątem komunikatów z kolejki, która może być jednym z największych źródeł transakcje dla tej aplikacji. Należy uważnie wybierz swoje interwał sondowania: sondowania zbyt częste może spowodować, że aplikacji podejście cele skalowalności dla kolejki. Jednak w 200 000 transakcji dla $0.01 (w momencie pisania), przez pojedynczy procesor sondowania po każdej sekundzie przez jeden miesiąc będzie kosztować mniej niż 15 centów, więc koszt jest zwykle czynnikiem, który ma wpływ na wybór interwału sondowania.  
+Większość aplikacji sonduje komunikaty z kolejki, co może być jednym z największych źródeł transakcji dla danej aplikacji. Wielokrotnie wybieraj interwał sondowania: sondowanie zbyt często może spowodować, że aplikacja zbliża się do celów skalowalności dla kolejki. Jednak w przypadku 200 000 transakcji dla $0,01 (w momencie pisania) pojedynczy procesor sondowanie co sekundę przez miesiąc ma koszt mniejszy niż 15 centów, dzięki czemu koszt nie jest zwykle czynnikiem wpływającym na wybór interwału sondowania.  
 
-Koszt aktualności informacji, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Aby uzyskać aktualne informacje o kosztach, zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
 
-### <a name="subheading44"></a>Aktualizacja wiadomości
+### <a name="subheading44"></a>Aktualizuj komunikat
 
-Możesz użyć **aktualizacji komunikat** operację, aby zwiększyć limit czasu niewidoczności lub zaktualizować informacje o stanie wiadomości. Gdy jest to zaawansowane, należy pamiętać, że każdy **komunikat dotyczący aktualizacji** operacji liczy się do tę docelową skalowalność. Jednak może to być to podejście znacznie bardziej efektywne niż posiadanie przepływu pracy, który przekazuje zadania z jedną kolejką na następny jako krok po kroku przez zadanie jest ukończone. Za pomocą **komunikat dotyczący aktualizacji** operacji umożliwia aplikacji w taki sposób zapisać stan zadania do wiadomości, a następnie kontynuować pracę, zamiast requeuing wiadomości do kolejnego kroku zadania, za każdym razem, gdy krok jest wykonywany.  
+Za pomocą operacji **Aktualizuj komunikat** można zwiększyć limit czasu niewidoczności lub zaktualizować informacje o stanie wiadomości. Chociaż jest to wydajne, należy pamiętać, że każda operacja **aktualizacji komunikatów** jest liczona względem celu skalowalności. Jednak może to być znacznie bardziej wydajne podejście niż posiadanie przepływu pracy, który przekazuje zadanie z jednej kolejki do następnego, ponieważ każdy krok zadania zostanie ukończony. Przy użyciu operacji **Aktualizuj komunikat** zezwala aplikacji na zapisanie stanu zadania w komunikacie, a następnie kontynuowanie pracy, zamiast umieszczania w kolejce komunikatu dla następnego kroku zadania za każdym razem, gdy krok zostanie ukończony.  
 
-Aby uzyskać więcej informacji, zobacz artykuł [jak: Zmień zawartość komunikatu w kolejce](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
+Aby uzyskać więcej informacji, zobacz artykuł [How to: Zmień zawartość komunikatu](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message)znajdującego się w kolejce.  
 
 ### <a name="subheading45"></a>Architektura aplikacji
 
-Należy użyć kolejek się skalowalne architektury aplikacji. Poniżej wymieniono niektóre sposoby kolejek można użyć, aby Twoje aplikacje były bardziej skalowalne:  
+Aby architektura aplikacji była skalowalna, należy użyć kolejek. Poniżej wymieniono niektóre sposoby używania kolejek w celu zapewnienia bardziej skalowalności aplikacji:  
 
-* Tworzenie zaległości pracy do przetwarzania i wygładzania nagłych obciążeń w aplikacji, można użyć kolejki. Na przykład można kolejkować się żądań od użytkowników do wykonywania pracy o znacznym wykorzystaniu procesora, takich jak zmiany rozmiaru przekazanych obrazów.
-* Kolejki umożliwia rozdzielenie poszczególnych części aplikacji, dzięki czemu można je skalować niezależnie. Na przykład frontonu sieci web można umieścić wyniki badań od użytkowników w kolejce do nowszych analizy i magazynowania. Można dodać więcej wystąpień roli procesu roboczego, aby przetwarzać dane w kolejce zgodnie z potrzebami.  
+* Za pomocą kolejek można tworzyć zaległości służbowe do przetwarzania i wygładzania obciążeń w aplikacji. Na przykład można kolejkować żądania od użytkowników w celu wykonywania dużej ilości pracy procesora, takich jak zmienianie rozmiarów przekazanych obrazów.
+* Za pomocą kolejek można rozdzielić części aplikacji, aby umożliwić ich niezależne skalowanie. Na przykład fronton sieci Web może umieścić wyniki ankiety od użytkowników w kolejce na potrzeby późniejszej analizy i magazynu. Można dodać więcej wystąpień roli procesu roboczego, aby przetworzyć dane kolejki zgodnie z wymaganiami.  
 
-## <a name="conclusion"></a>Podsumowanie
+## <a name="conclusion"></a>Wniosek
 
-W tym artykule omówiono niektóre z najczęściej stosowanych, sprawdzonych rozwiązań dotyczących optymalizacji wydajności w przypadku korzystania z usługi Azure Storage. Zachęcamy każdego dewelopera aplikacji do oceny swoich aplikacji pod kątem powyższych rozwiązań oraz do postępowania zgodnie z zaleceniami mającymi na celu uzyskanie optymalnej wydajności aplikacji korzystających z usługi Azure Storage.
+W tym artykule omówiono niektóre z najpopularniejszych, sprawdzonych rozwiązań dotyczących optymalizacji wydajności podczas korzystania z usługi Azure Storage. Zachęcamy każdego dewelopera aplikacji do oceny swoich aplikacji pod kątem powyższych rozwiązań oraz do postępowania zgodnie z zaleceniami mającymi na celu uzyskanie optymalnej wydajności aplikacji korzystających z usługi Azure Storage.

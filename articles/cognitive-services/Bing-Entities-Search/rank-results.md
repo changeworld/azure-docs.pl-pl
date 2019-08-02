@@ -1,7 +1,7 @@
 ---
-title: Przy użyciu klasyfikacji do wyświetlenia odpowiedzi — wyszukiwanie jednostek Bing
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak używać funkcji Klasyfikacja do wyświetlania odpowiedzi, które zwraca interfejs API wyszukiwania jednostek Bing.
+title: Używanie klasyfikacji do wyświetlania odpowiedzi — wyszukiwanie jednostek Bing
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak używać funkcji rankingu do wyświetlania odpowiedzi zwracanych przez interfejs API wyszukiwania jednostek Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 9e2a4075436145a0cc185b7ab1b406fa8d27b8e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60309338"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423918"
 ---
-# <a name="using-ranking-to-display-entity-search-results"></a>Przy użyciu klasyfikacji do wyświetlenia wyników wyszukiwania jednostek  
+# <a name="using-ranking-to-display-entity-search-results"></a>Używanie klasyfikacji do wyświetlania wyników wyszukiwania jednostek  
 
-Każda jednostka wyszukiwania odpowiedź zawiera [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) odpowiedzi, który określa sposób musisz wyświetlić wyniki wyszukiwania zwracane przez interfejs API wyszukiwania jednostek Bing. Odpowiedź klasyfikacji grupuje wyniki do bieguna linii głównej i zawartość paska bocznego. Wynik bieguna jest wynikiem najważniejsze lub wyraźną i powinny być wyświetlane jako pierwsze. Jeśli nie są wyświetlane wyniki pozostałe w przypadku tradycyjnych linii głównej i paska bocznego format, musisz podać linii głównej zawartości bardziej widoczny niż zawartość pasku bocznym. 
+Każda odpowiedź wyszukiwania jednostki zawiera odpowiedź [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) , która określa, jak należy wyświetlić wyniki wyszukiwania zwrócone przez interfejs API wyszukiwania jednostek Bing. Wyniki klasyfikacji są uwzględniane w grupach, linii głównej i na pasku bocznym. Wynik tego punktu jest najważniejszym lub widocznym wynikiem i powinien być wyświetlany jako pierwszy. Jeśli pozostałe wyniki nie są wyświetlane w tradycyjnym formacie linii głównej i paska bocznego, należy udostępnić zawartość linii głównej wyższą widoczność niż zawartość paska bocznego. 
   
-W każdej grupie [elementów](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) tablicy identyfikuje zawartość musi znajdować się w podanej kolejności. Każdy element zawiera zidentyfikować wynik w odpowiedzi na dwa sposoby.  
+W każdej grupie tablica [Items](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) identyfikuje kolejność, w której zawartość musi być wyświetlana. Każdy element zapewnia dwa sposoby identyfikacji wyniku w odpowiedzi.  
  
 
 |Pole | Opis  |
 |---------|---------|
-|`answerType` i `resultIndex` | `answerType` identyfikuje odpowiedzi (jednostki lub umieść) i `resultIndex` identyfikuje wynik w ramach tej odpowiedzi (na przykład jednostka). Indeks zaczyna się od 0.|
-|`value`    | `value` Zawiera identyfikator, który jest zgodny z Identyfikatorem odpowiedzi lub wyniku w odpowiedzi. Odpowiedź na pytanie lub wyniki zawierają identyfikator, ale nie oba jednocześnie. |
+|`answerType` i `resultIndex` | `answerType`Identyfikuje odpowiedź (jednostkę lub miejsce) i `resultIndex` identyfikuje wynik w odpowiedzi (na przykład jednostki). Indeks zaczyna się od 0.|
+|`value`    | `value`Zawiera identyfikator, który odpowiada IDENTYFIKATORowi odpowiedzi lub wynikowi w odpowiedzi. Odpowiedź lub wyniki zawierają identyfikator, ale nie oba jednocześnie. |
   
-Za pomocą `answerType` i `resultIndex` jest procesem dwuetapowym. Najpierw za pomocą `answerType` do identyfikowania odpowiedzi, który zawiera wyników do wyświetlenia. Następnie użyj `resultIndex` do indeksu na wyniki tej odpowiedzi, aby uzyskać wynik do wyświetlenia. ( `answerType` Wartością jest nazwa pola w [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) obiektu.) Jeśli masz powinien wyświetlić wyników wszystkich odpowiedzi ze sobą, odpowiedź klasyfikacji elementu nie zawiera `resultIndex` pola.
+Korzystanie z `answerType` i `resultIndex` jest procesem dwuetapowym. Najpierw użyj `answerType` , aby zidentyfikować odpowiedź, która zawiera wyniki do wyświetlenia. Następnie użyj `resultIndex` do indeksowania wyników odpowiedzi, aby uzyskać wynik do wyświetlenia. (Wartość jest nazwą pola w obiekcie SearchResponse). [](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) `answerType` Jeśli chcesz wyświetlić wszystkie wyniki odpowiedzi razem, element odpowiedzi rankingu nie zawiera `resultIndex` pola.
 
-Przy użyciu Identyfikatora wymaga jest zgodny z Identyfikatorem klasyfikacji o identyfikatorze odpowiedzi lub jednego z jego wyniki. Jeśli obiekt odpowiedzi zawiera `id` pola, wyświetlić wyniki wszystkich odpowiedzi ze sobą. Na przykład jeśli `Entities` obiekt zawiera `id` pola, Wyświetl wszystkie artykuły jednostki razem. Jeśli `Entities` nie ma obiektu `id` pola, a następnie każda jednostka zawiera `id` pola i odpowiedzi klasyfikacji napisana jednostki z wynikami miejsc.  
+Użycie identyfikatora wymaga dopasowania identyfikatora klasyfikacji z IDENTYFIKATORem odpowiedzi lub jednym z jej wyników. Jeśli obiekt odpowiedzi zawiera `id` pole, Wyświetl wszystkie wyniki odpowiedzi ze sobą. Na przykład jeśli `Entities` obiekt `id` zawiera pole, Wyświetl wszystkie artykuły dotyczące jednostek razem. Jeśli obiekt nie `id` zawiera pola, każda jednostka zawiera `id` pole, a odpowiedź rankingu miesza jednostki z wynikami. `Entities`  
   
-## <a name="ranking-response-example"></a>Klasyfikacja przykład odpowiedzi
+## <a name="ranking-response-example"></a>Przykład klasyfikacji odpowiedzi
 
-Poniżej pokazano przykład [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse).
+Poniżej przedstawiono przykład [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse).
   
 ```json
 {
@@ -67,9 +67,9 @@ Poniżej pokazano przykład [RankingResponse](https://docs.microsoft.com/rest/ap
 }
 ```
 
-Na podstawie tej klasyfikacji odpowiedzi, paska bocznego umożliwią wyświetlanie wyników dwie jednostki związane z Jimi Hendrix.
+W oparciu o tę odpowiedź klasyfikacji pasek boczny będzie wyświetlał dwa wyniki jednostki związane z Jimi Hendrix.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-entities-search-single-page-app.md)

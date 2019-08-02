@@ -1,10 +1,10 @@
 ---
-title: Połączenia wychodzące na platformie Azure (wersja klasyczna)
+title: Połączenia wychodzące na platformie Azure (klasyczne)
 titlesuffix: Azure Load Balancer
-description: W tym artykule wyjaśniono, jak platforma Azure zapewnia usługi do komunikacji z publicznych usług internetowych w chmurze.
+description: W tym artykule wyjaśniono, jak platforma Azure umożliwia usługom w chmurze komunikowanie się z publicznymi usługami internetowymi.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,174 +12,174 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
-ms.author: kumud
-ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 10af3b4838aae1565bac1d996997c117a74cedbc
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595043"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274662"
 ---
 # <a name="outbound-connections-classic"></a>Połączenia wychodzące (klasyczne)
 
-Platforma Azure udostępnia połączenia ruchu wychodzącego dla wdrożenia klienta za pomocą kilku różnych mechanizmów. W tym artykule opisano scenariusze są, gdy są spełnione, jak działają i jak nimi zarządzać.
+Platforma Azure zapewnia łączność wychodzącą dla wdrożeń klientów przy użyciu kilku różnych mechanizmów. W tym artykule opisano scenariusze, w których są one stosowane, jak działają i jak nimi zarządzać.
 
 >[!NOTE]
->W tym artykule opisano tylko w przypadku wdrożeń model klasyczny.  Przegląd [połączeń wychodzących](load-balancer-outbound-connections.md) we wszystkich scenariuszach wdrażania usługi Resource Manager na platformie Azure.
+>W tym artykule omówiono tylko wdrożenia klasyczne.  Przejrzyj [połączenia](load-balancer-outbound-connections.md) wychodzące dla wszystkich scenariuszy wdrażania Menedżer zasobów na platformie Azure.
 
-Wdrożenie na platformie Azure mogą komunikować się z punktami końcowymi spoza platformy Azure w przestrzeń publicznych adresów IP. Gdy wystąpienie inicjuje przepływ ruchu wychodzącego do miejsca docelowego w przestrzeń publicznych adresów IP, Azure dynamicznie mapuje prywatny adres IP na publiczny adres IP. Po utworzeniu tego mapowania ruch powrotny dla tego ruchu wychodzącego przepływu pochodzącej może także łączyć prywatny adres IP skąd pochodzi przepływ.
+Wdrożenie na platformie Azure może komunikować się z punktami końcowymi poza platformą Azure w publicznej przestrzeni adresów IP. Gdy wystąpienie inicjuje przepływ wychodzący do miejsca docelowego w publicznej przestrzeni adresów IP, platforma Azure dynamicznie mapuje prywatny adres IP na publiczny adres IP. Po utworzeniu tego mapowania ruch powrotny dla tego wychodzącego przepływu może również dotrzeć do prywatnego adresu IP, z którego pochodzi przepływ.
 
-Platforma Azure używa translatora adresów sieciowych źródła (SNAT), aby wykonać tę funkcję. W przypadku wielu prywatnych adresów IP są maskaradę za jeden publiczny adres IP, platforma Azure używa [portu translacji adresów (PAT)](#pat) poczynania prywatnych adresów IP. Porty efemeryczne są używane do osobisty token dostępu i są [wstępnie przydzielonych](#preallocatedports) na podstawie rozmiaru puli.
+Na platformie Azure do wykonania tej funkcji jest stosowany translator adresów sieciowych (Resources). Gdy wiele prywatnych adresów IP jest rozliczanych za pojedynczym publicznym adresem IP, platforma Azure używa [translatora adresów portu (Binding)](#pat) do zamaskowanego prywatnych adresów IP. Porty tymczasowe są używane na potrzeby usługi i są [wstępnie przydzieloną](#preallocatedports) na podstawie rozmiaru puli.
 
-Dostępnych jest wiele [scenariusze ruchu wychodzącego](#scenarios). Można połączyć te scenariusze, zgodnie z potrzebami. Zapoznaj się z nimi, aby zrozumieć możliwości, ograniczenia i wzorce, ponieważ mają one zastosowanie do modelu wdrażania i scenariusz aplikacji. Przejrzyj wskazówki dotyczące [Zarządzanie te scenariusze](#snatexhaust).
+Istnieje wiele [scenariuszy wychodzących](#scenarios). Te scenariusze można połączyć zgodnie z wymaganiami. Uważnie przejrzyj je, aby zrozumieć możliwości, ograniczenia i wzorce, które mają zastosowanie do modelu wdrożenia i scenariusza aplikacji. Zapoznaj się ze wskazówkami dotyczącymi [zarządzania tymi scenariuszami](#snatexhaust).
 
 ## <a name="scenarios"></a>Omówienie scenariusza
 
-Platforma Azure udostępnia trzy różnych metod na osiągnięcie łączności wychodzącej klasycznego wdrożenia.  Nie wszystkie wdrożenia klasycznego mają wszystkie trzy scenariusze dostępne dla nich:
+Platforma Azure oferuje trzy różne metody do osiągnięcia klasycznych wdrożeń łączności z ruchem wychodzącym.  Nie wszystkie klasyczne wdrożenia mają dostępne wszystkie trzy scenariusze:
 
-| Scenariusz | Metoda | Protokoły IP | Opis | Rola procesu roboczego w sieci Web | IaaS | 
+| Scenariusz | Metoda | Protokoły IP | Opis | Rola proces roboczy sieci Web | IaaS | 
 | --- | --- | --- | --- | --- | --- |
-| [1. Maszyny Wirtualnej przy użyciu adresu publicznego adresu IP poziomu wystąpienia](#ilpip) | Nieużywany port maskaradę SNAT, | TCP, UDP, ICMP, ESP | Platforma Azure używa publicznego adresu IP, przypisany do maszyny wirtualnej. Wystąpienie ma wszystkie dostępne porty efemeryczne. | Nie | Tak |
-| [2. publicznego punktu końcowego, które są ze zrównoważonym obciążeniem](#publiclbendpoint) | SNAT przy użyciu portu (PAT) maskaradę publicznego punktu końcowego | TCP, UDP | Platforma Azure udostępnia publicznego adresu IP adres punktu końcowego publicznego z wieloma punktami końcowymi prywatnych. Platforma Azure używa portów tymczasowych publicznego punktu końcowego uzyskać osobisty token dostępu. | Tak | Tak |
-| [3. Autonomiczna maszyna wirtualna](#defaultsnat) | SNAT przy użyciu portu maskaradę (PAT) | TCP, UDP | Azure automatycznie wyznacza publiczny adres IP dla SNAT, udostępni ten publiczny adres IP całe wdrożenie i wykorzystuje porty efemeryczne punktu końcowego publicznego adresu IP osobisty token dostępu. Jest to rezerwowego scenariusz dla powyższych scenariuszy. Firma Microsoft nie zaleca, aby uzyskać lepszy wgląd i kontrolę. | Tak | Yes |
+| [1. Maszyna wirtualna z publicznym adresem IP na poziomie wystąpienia](#ilpip) | Reportcy adresów sieciowych, nie użyto zamaskowanego portu | TCP, UDP, ICMP, ESP | Platforma Azure używa maszyny wirtualnej z przypisaną publicznym adresem IP. Dla tego wystąpienia są dostępne wszystkie porty tymczasowe. | Nie | Tak |
+| [2. publiczny punkt końcowy o zrównoważonym obciążeniu](#publiclbendpoint) | Reportcy adresów sieciowych z zamaskowanem portów do publicznego punktu końcowego | TCP, UDP | Platforma Azure udostępnia publiczny publiczny adres IP z wieloma prywatnymi punktami końcowymi. Platforma Azure używa tymczasowych portów publicznego punktu końcowego w celu uzyskania dostępu. | Yes | Tak |
+| [3. Autonomiczna maszyna wirtualna](#defaultsnat) | Reportcy adresów sieciowych z zamaskowanem portów | TCP, UDP | Platforma Azure automatycznie wyznacza publiczny adres IP dla protokołu reportowego, udostępnia ten publiczny adres IP w całym wdrożeniu i używa tymczasowych portów publicznego adresu IP dla usługi. Jest to scenariusz rezerwowy dla powyższych scenariuszy. Nie zalecamy jej, jeśli potrzebujesz widoczności i kontroli. | Yes | Yes |
 
-Jest to podzbiór funkcji połączeń wychodzących dostępnych w przypadku wdrożeń usługi Resource Manager na platformie Azure.  
+Jest to podzbiór funkcji połączenia wychodzącego dostępna dla wdrożeń Menedżer zasobów na platformie Azure.  
 
-Różnych wdrożeń w modelu klasycznym mają różne funkcje:
+Różne wdrożenia klasyczne mają różne funkcje:
 
-| Wdrożenie klasyczne | Funkcje dostępne | 
+| Wdrożenie klasyczne | Dostępna funkcja | 
 | --- | --- |
-| Maszyna wirtualna | Scenariusz [1](#ilpip), [2](#publiclbendpoint), lub [3](#defaultsnat) |
-| Rola procesu roboczego w sieci Web | tylko scenariusz [2](#publiclbendpoint), [3](#defaultsnat) | 
+| Maszyna wirtualna | scenariusz [1](#ilpip), [2](#publiclbendpoint)lub [3](#defaultsnat) |
+| Rola proces roboczy sieci Web | scenariusz [2](#publiclbendpoint), [3](#defaultsnat) | 
 
-[Strategii ograniczania ryzyka](#snatexhaust) też różnią się w ten sam sposób.
+[Strategie zaradcze](#snatexhaust) mają także takie same różnice.
 
-Algorytm używany do przydzielone portów tymczasowych dla osobisty token dostępu w przypadku wdrożeń klasycznych jest taka sama, jak w przypadku wdrożenia zasobów usługi Azure Resource Manager.
+Algorytm używany do prealokowania portów tymczasowych dla usługi w przypadku wdrożeń klasycznych jest taki sam jak w przypadku wdrożeń zasobów Azure Resource Manager.
 
-### <a name="ilpip"></a>Scenariusz 1: Maszyny Wirtualnej przy użyciu adresu publicznego adresu IP poziomu wystąpienia
+### <a name="ilpip"></a>Scenariusz 1: Maszyna wirtualna z publicznym adresem IP na poziomie wystąpienia
 
-W tym scenariuszu maszyna wirtualna ma wystąpienia poziom publicznego adresu IP (ILPIP) do niej przypisany. Jeśli chodzi o połączeniach wychodzących, nie ma znaczenia, czy maszyna wirtualna ma punkt końcowy z równoważeniem obciążenia, czy nie. Ten scenariusz ma pierwszeństwo przed innymi. Gdy używany jest ILPIP, maszyna wirtualna używa ILPIP wszystkie przepływy ruchu wychodzącego.  
+W tym scenariuszu maszyna wirtualna ma przypisany publiczny adres IP na poziomie wystąpienia (ILPIP). Jeśli chodzi o połączenia wychodzące, nie ma znaczenia, czy maszyna wirtualna ma zrównoważony punkt końcowy. Ten scenariusz ma pierwszeństwo przed innymi. Gdy ILPIP jest używany, maszyna wirtualna używa ILPIP dla wszystkich przepływów wychodzących.  
 
-Publiczny adres IP przypisane do maszyny Wirtualnej jest 1:1 relację (zamiast 1: duży zakres) i zaimplementowane jako bezstanowej translatorem adresów sieciowych 1:1  Nie jest używany port zamaskowany (PAT), a maszyna wirtualna ma wszystkie porty efemeryczne dostępne do użycia.
+Publiczny adres IP przypisany do maszyny wirtualnej jest relacją 1:1 (a nie 1: wiele) i zaimplementowaną jako bezstanowe urządzenie NAT 1:1.  Nie jest używane zamaskowane portów, a maszyna wirtualna ma dostęp do wszystkich tymczasowych portów do użycia.
 
-Jeśli wystąpią wyczerpanie portów SNAT aplikacji inicjuje wiele przepływów ruchu wychodzącego, należy wziąć pod uwagę przypisywanie [ILPIP złagodzić ograniczenia SNAT](#assignilpip). Przegląd [wyczerpania Zarządzanie SNAT](#snatexhaust) w całości.
+Jeśli aplikacja inicjuje wiele przepływów wychodzących i wyczerpanie portów wiązania adresów sieciowych, należy rozważyć przypisanie [ILPIP do ograniczania ograniczeń dotyczących translatora adresów sieciowych](#assignilpip). Zapoznaj się z [zarządzaniem wyczerpaniem spalin](#snatexhaust) w całości.
 
-### <a name="publiclbendpoint"></a>Scenariusz 2: Publiczny punkt końcowy z równoważeniem obciążenia
+### <a name="publiclbendpoint"></a>Scenariusz 2: Publiczny punkt końcowy o zrównoważonym obciążeniu
 
-W tym scenariuszu maszyny Wirtualnej lub sieci Web, rola procesu roboczego jest skojarzony z publicznym adresem IP za pośrednictwem punktu końcowego ze zrównoważonym obciążeniem. Maszyna wirtualna nie ma do niej przypisany publiczny adres IP. 
+W tym scenariuszu rola maszyny wirtualnej lub procesu roboczego sieci Web jest skojarzona z publicznym adresem IP za pomocą punktu końcowego ze zrównoważonym obciążeniem. Do maszyny wirtualnej nie jest przypisany publiczny adres IP. 
 
-W przypadku maszyn wirtualnych ze zrównoważonym obciążeniem tworzy przepływu wychodzącego, Azure tłumaczy prywatnej źródłowy adres IP przepływu wychodzącego publiczny adres IP ze zrównoważonym obciążeniem punktu końcowego publicznego. Platforma Azure używa SNAT, aby wykonać tę funkcję. Platforma Azure również używa [osobisty token dostępu](#pat) poczynania wielu prywatnych adresów IP za pomocą publicznego adresu IP. 
+Gdy maszyna wirtualna ze zrównoważonym obciążeniem tworzy przepływ wychodzący, platforma Azure tłumaczy prywatny adres IP przepływu wychodzącego na publiczny adres IP publicznego punktu końcowego ze zrównoważonym obciążeniem. Aby wykonać tę funkcję, platforma Azure używa tego programu. Platforma Azure używa [](#pat) również usługi, aby zamaskowane wiele prywatnych adresów IP za publicznym adresem IP. 
 
-Efemeryczne porty frontonu adres IP publicznego modułu równoważenia obciążenia są używane w celu odróżnienia poszczególnych przepływy tworzone przez maszynę Wirtualną. Dynamicznie używa SNAT [wstępnie przydzielonych portów tymczasowych](#preallocatedports) utworzenia przepływy wychodzące. W tym kontekście portów tymczasowych używany do SNAT są nazywane SNAT portów.
+Tymczasowe porty frontonu publicznego adresu IP modułu równoważenia obciążenia są używane do rozróżniania poszczególnych przepływów pochodzących z maszyny wirtualnej. W przypadku tworzenia przepływów ruchu wychodzącego w ramach strumienia danych dynamicznie [przydzielono wstępnie przydzieloną porty](#preallocatedports) tymczasowe. W tym kontekście porty, które są używane do przystawcy adresów sieciowych, są nazywane portami.
 
-Są wstępnie przydzielonych portów SNAT, zgodnie z opisem w [SNAT zrozumienie i osobisty token dostępu](#snat) sekcji. Są one ograniczone zasób, który może wyczerpać. Jest ważne zrozumieć, jak są one [używane](#pat). Aby dowiedzieć się, jak zaprojektować za to użycie i ograniczać zgodnie z potrzebami, zapoznaj się z [wyczerpania Zarządzanie SNAT](#snatexhaust).
+Porty przydziałów adresów sieciowych są wstępnie przydzielonymi, zgodnie z opisem w sekcji [Omówienie adresów i](#snat) elementów. Są to skończone zasoby, które mogą być wyczerpane. Ważne jest, aby zrozumieć, jak są [używane](#pat). Aby dowiedzieć się, jak projektować w tym zużyciu i w razie potrzeby rozwiązać problem, przejrzyj [Zarządzanie wyczerpaniem](#snatexhaust)zasobów.
 
-Gdy [wielu publicznych ze zrównoważonym obciążeniem punktów końcowych](load-balancer-multivip.md) istnieje, te publiczne adresy IP są kandydatem do przepływy wychodzące i jeden losowo wybrany.  
+Gdy istnieje [wiele publicznych punktów końcowych](load-balancer-multivip.md) ze zrównoważonym obciążeniem, każdy z tych publicznych adresów IP jest kandydatem dla przepływów wychodzących, a jeden jest wybierany losowo.  
 
-### <a name="defaultsnat"></a>Scenariusz 3: Brak publicznego adresu IP, które są skojarzone
+### <a name="defaultsnat"></a>Scenariusz 3: Brak skojarzonego publicznego adresu IP
 
-W tym scenariuszu maszyny Wirtualnej lub sieci Web, rola procesu roboczego nie jest częścią publicznego punktu końcowego o zrównoważonym obciążeniu.  A w przypadku maszyn wirtualnych, nie ma przypisanego adresu ILPIP. Podczas tworzenia maszyny Wirtualnej przepływu wychodzącego, Azure tłumaczy prywatnej źródłowy adres IP przepływu wychodzącego do publicznych źródłowego adresu IP. Publiczny adres IP używany dla tego przepływu ruchu wychodzącego nie konfiguruje się i nie wliczają subskrypcji publicznego adresu IP limit zasobów.  Platforma Azure automatycznie przydziela ten adres.
+W tym scenariuszu rola maszyny wirtualnej lub procesu roboczego sieci Web nie jest częścią publicznego punktu końcowego ze zrównoważonym obciążeniem.  A w przypadku maszyny wirtualnej nie ma przypisanego adresu ILPIP. Gdy maszyna wirtualna tworzy przepływ wychodzący, platforma Azure tłumaczy prywatny adres IP przepływu wychodzącego na publiczny źródłowy adres IP. Publiczny adres IP używany dla tego przepływu wychodzącego nie jest konfigurowalny i nie jest uwzględniany w limicie limitu zasobów publicznego adresu IP subskrypcji.  Platforma Azure automatycznie przydziela ten adres.
 
-Platforma Azure używa SNAT przy użyciu portu maskaradę ([osobisty token dostępu](#pat)) do wykonywania tej funkcji. Ten scenariusz jest podobny do scenariusza 2, jednak istnieje nie kontroluje adres IP używany. Jest to rezerwowego scenariusz dla sytuacji scenariusze 1 i 2, nie istnieje. Jeśli chcesz mieć kontrolę nad adresów ruchu wychodzącego nie zaleca tego scenariusza. W przypadku połączeń wychodzących krytycznych części aplikacji została wybrana opcja inny scenariusz.
+Aby można było wykonać tę funkcję, Platforma[](#pat)Azure używa podszywającego się na portach. Ten scenariusz jest podobny do scenariusza 2, z tą różnicą, że nie ma kontroli nad używanym adresem IP. Jest to scenariusz rezerwowy dla sytuacji, gdy scenariusze 1 i 2 nie istnieją. Nie zalecamy tego scenariusza, jeśli chcesz kontrolować adres wychodzący. Jeśli połączenia wychodzące są krytyczną częścią aplikacji, należy wybrać inny scenariusz.
 
-Są wstępnie przydzielonych portów SNAT, zgodnie z opisem w [SNAT zrozumienie i osobisty token dostępu](#snat) sekcji.  Liczba maszyn wirtualnych lub ról procesów roboczych w sieci Web do udostępniania publiczny adres IP określa liczbę przydzielonych wstępnie portów tymczasowych.   Jest ważne zrozumieć, jak są one [używane](#pat). Aby dowiedzieć się, jak zaprojektować za to użycie i ograniczać zgodnie z potrzebami, zapoznaj się z [wyczerpania Zarządzanie SNAT](#snatexhaust).
+Porty przydziałów adresów sieciowych są wstępnie przydzielonymi, zgodnie z opisem w sekcji [Omówienie adresów i](#snat) elementów.  Liczba ról maszyn wirtualnych lub procesów roboczych sieci Web współużytkujących publiczny adres IP określa liczbę wstępnie alokowanych portów tymczasowych.   Ważne jest, aby zrozumieć, jak są [używane](#pat). Aby dowiedzieć się, jak projektować w tym zużyciu i w razie potrzeby rozwiązać problem, przejrzyj [Zarządzanie wyczerpaniem](#snatexhaust)zasobów.
 
-## <a name="snat"></a>Opis SNAT i osobisty token dostępu
+## <a name="snat"></a>Informacje o porozumieniu i niepomyślnym
 
-### <a name="pat"></a>Port zamaskowany SNAT (PAT)
+### <a name="pat"></a>Przymaskowany port do podszywającego się
 
-Po wdrożeniu sprawia, że połączenia wychodzącego, jest przepisany każde źródło połączeń wychodzących. Źródło jest przepisany z przestrzeń prywatnych adresów IP na publiczny adres IP skojarzonym z wdrożeniem (oparte na scenariuszach opisanych powyżej). W publicznej przestrzeni adresowej IP tuple 5 (źródłowy adres IP, port źródłowy, protokół transportowy IP, docelowy adres IP, port docelowy) przepływu musi być unikatowa.  
+Gdy wdrożenie wykonuje połączenie wychodzące, każde źródło połączenia wychodzącego jest ponownie zapisywane. Źródło jest ponownie zapisywane z prywatnego obszaru adresów IP na publiczny adres IP skojarzony z wdrożeniem (na podstawie scenariuszy opisanych powyżej). W publicznej przestrzeni adresowej IP, 5-krotka przepływu (źródłowy adres IP, port źródłowy, protokół transportu IP, docelowy adres IP, port docelowy) musi być unikatowa.  
 
-Efemeryczne porty (SNAT) są używane do osiągnięcia tego celu po ponownego zapisywania adresów prywatnych źródłowy adres IP, ponieważ wiele przepływów pochodzi z jednego publicznego adresu IP. 
+Porty tymczasowe (porty IP) są używane do osiągnięcia tego po zapisaniu prywatnego źródłowego adresu IP, ponieważ wiele przepływów pochodzi z jednego publicznego adresu IP. 
 
-Jednym SNAT port jest używany na przepływ jeden docelowy adres IP, portu i protokołu. Każdy przepływ zajmują jednoportowe SNAT wiele przepływów do docelowego adresu IP, portu i protokołu. Dzięki temu przepływy są unikatowe, gdy pochodziły z tego samego publicznego adresu IP i przejdź do tego samego adresu IP, portu i protokołu. 
+Jeden port strumienia adresów sieciowych jest zużywany na przepływ do jednego docelowego adresu IP, portu i protokołu. W przypadku wielu przepływów na ten sam docelowy adres IP, port i protokół każdy przepływ wykorzystuje jeden port. Gwarantuje to, że przepływy są unikatowe, gdy pochodzą z tego samego publicznego adresu IP i przejdź do tego samego docelowego adresu IP, portu i protokołu. 
 
-Wiele przepływów, do innego adresu IP, portu i protokołu, udostępniać pojedynczy port SNAT. Docelowy adres IP, port i protokół unikatowość przepływy bez konieczności stosowania dodatkowych źródła portów w celu odróżnienia przepływów przestrzeń publicznych adresów IP.
+Wiele przepływów, każdy do innego docelowego adresu IP, portu i protokołu, współużytkuje jeden port. Docelowy adres IP, port i protokół sprawiają, że przepływy są unikatowe bez konieczności stosowania dodatkowych portów źródłowych do rozróżnienia przepływów w publicznej przestrzeni adresów IP.
 
-Wyczerpania zasobów portu SNAT, przepływy wychodzące zakończyć się niepowodzeniem aż do istniejących przepływów zwolnienia SNAT portów. Moduł równoważenia obciążenia odzyskuje porty SNAT, gdy przepływ zostanie zamknięty i używa [limitu czasu bezczynności 4-minutowej](#idletimeout) dla odzyskiwanie porty SNAT wychodzących z przepływów bezczynności.
+W przypadku wyczerpania zasobów portów współdziałania przepływy wychodzące kończą się niepowodzeniem, dopóki istniejące przepływy nie zwolnią portów. Load Balancer przejmowanie portów protokołu równorzędnego, gdy przepływ zostanie zamknięty i korzysta z [4-minutowego limitu czasu bezczynności](#idletimeout) w przypadku odzyskiwania portów ze STRUMIENIAMI adresów sieciowych z bezczynnych przepływów.
 
-Wzorce i ułatwiają eliminowanie warunki, które często prowadzą do wyczerpanie portów SNAT, można przejrzeć [Zarządzanie SNAT](#snatexhaust) sekcji.
+Aby uzyskać wzorce ograniczające warunki, które zwykle prowadzą do wyczerpania portów, przejrzyj sekcję [Zarządzanie](#snatexhaust) reportem adresów sieciowych.
 
-### <a name="preallocatedports"></a>Wstępne portów efemerycznych przydzielanie dla portu maskaradę SNAT (PAT)
+### <a name="preallocatedports"></a>Wstępne przydzielanie portów tymczasowych dla podszywającego się portu
 
-Używa platformy Azure, algorytm, aby określić liczbę użyć funkcji SNAT względem wstępnie przydzielonych portów dostępnych na podstawie rozmiaru puli zaplecza przy użyciu portu zamaskowany SNAT ([osobisty token dostępu](#pat)). SNAT porty są dostępne dla określonego publicznego źródłowego adresu IP portów tymczasowych.
+Platforma Azure używa algorytmu do określenia liczby wstępnie przyalokowanych portów przydziałów adresów sieciowych, które są dostępne na podstawie rozmiaru puli zaplecza przy użyciu[](#pat)podzestawu adresów sieciowych z zamaskowanem portem. Porty IP to tymczasowe porty dostępne dla określonego publicznego adresu IP.
 
-Azure preallocates SNAT portów w przypadku wystąpienia jest wdrażany w oparciu o liczbę wystąpień maszyn wirtualnych lub roli procesu roboczego internetowych udostępnianie danego publicznego adresu IP.  Po utworzeniu przepływy wychodzące [osobisty token dostępu](#pat) dynamicznie zużywa (w granicach przydzielony wstępnie) i zwalnia te porty, gdy strumień zostanie zamknięty lub się zdarzyć, limity czasu bezczynności.
+Platforma Azure wstępnie przydziela porty do adresów IP, gdy wystąpienie jest wdrożone na podstawie liczby wystąpień roli maszyny wirtualnej lub procesu roboczego sieci Web, które korzystają z danego publicznego adresu.  Gdy przepływy wychodzące [](#pat) są tworzone, za pomocą tego portu są dynamicznie zużywane (do wstępnie przydzielonych limitów) i zwalniają te porty, gdy następuje zamknięcie przepływu lub przekroczenie limitu czasu bezczynności.
 
-W poniższej tabeli przedstawiono preallocations portu SNAT dla warstw rozmiary pul zaplecza:
+W poniższej tabeli przedstawiono alokacje wstępne portów adresów sieciowych dla warstw rozmiaru puli zaplecza:
 
-| Wystąpienia | Przydzielony wstępnie porty SNAT za wystąpienie usługi |
+| Wystąpienia | Wstępnie przydzielony porty dla każdego wystąpienia |
 | --- | --- |
 | 1-50 | 1,024 |
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
 
-Należy pamiętać, że liczba dostępnych portów SNAT nie przekłada się bezpośrednio do liczba przepływów. Pojedynczy port SNAT można ponownie wielu unikatowe miejsca docelowe. Porty są używane tylko wtedy, gdy jest to niezbędne do zapewnienia unikatowych przepływów. Aby uzyskać wskazówki dotyczące projektowania i ograniczania ryzyka, zapoznaj się z sekcją o [sposób zarządzać tym zasobem wyczerpującymi](#snatexhaust) i sekcji, która opisuje [osobisty token dostępu](#pat).
+Należy pamiętać, że liczba dostępnych portów nie jest tłumaczona bezpośrednio na liczbę przepływów. Można ponownie użyć pojedynczego portu źródłowego dla wielu unikatowych miejsc docelowych. Porty są używane tylko wtedy, gdy konieczne jest przeprowadzenie unikatowych przepływów. Aby zapoznać się z zaleceniami dotyczącymi projektowania i rozwiązywania problemów, zapoznaj się z sekcją [jak zarządzać tym zasobem exhaustible](#snatexhaust) i sekcją opisującą. [](#pat)
 
-Zmiana rozmiaru wdrożenia mogą mieć wpływ na niektóre z ustanowionym przepływów. Jeśli rozmiar puli wewnętrznej bazy danych zwiększa się i przechodzi do następnej warstwy, połowa swoje przydzielony wstępnie portów SNAT są odzyskiwane podczas przejścia do następnej warstwie większych puli zaplecza. Przepływy, które są skojarzone z portem SNAT odzyskiwanego przekroczy limit czasu i trzeba je ponownie ustanowić. Jeśli nastąpi próba utworzenia nowego przepływu przepływ zakończy się pomyślnie natychmiast tak długo, jak przydzielony wstępnie porty są dostępne.
+Zmiana rozmiaru wdrożenia może mieć wpływ na niektóre z określonych przepływów. Jeśli rozmiar puli zaplecza zwiększy się i przejdzie do następnej warstwy, połowa wstępnie przydzielonego portu ze współdzielonym zestawem danych jest odzyskiwana podczas przejścia do następnej większej warstwy puli zaplecza. Przepływy skojarzone z odwiązanym portem wiązania adresów sieciowych przekroczą limit czasu i muszą zostać ponownie nawiązane. Jeśli zostanie podjęta próba nowego przepływu, przepływ zakończy się pomyślnie, o ile dostępne są wstępnie przydzieloną porty.
 
-Jeśli zmniejsza rozmiar wdrożenia, a następnie zwiększa liczbę dostępnych portów SNAT przejścia do niższej warstwy. W tym przypadku SNAT istniejące przydzielonych portów i ich odpowiednich przepływów nie ulegają zmianom.
+Jeśli rozmiar wdrożenia zmniejsza się i przechodzi do niższej warstwy, zwiększa się liczba dostępnych portów. W takim przypadku nie ma to wpływ na istniejące przyłączone porty i ich przepływy.
 
-Jeśli usługa w chmurze jest ponownie wdrażana lub zmienione, infrastruktura tymczasowo mogą zgłaszać puli zaplecza za maksymalnie dwa razy na duży jak rzeczywista i platformy Azure będzie z kolei wstępnie Przydziel mniej SNAT portów dla każdego wystąpienia niż oczekiwano.  To jest tymczasowo zwiększyć prawdopodobieństwo SNAT wyczerpanie portów. Po pewnym czasie rozmiar puli będzie przejście do rzeczywistego rozmiaru i Azure automatycznie zwiększy przydzielony wstępnie portów SNAT oczekiwana liczba zgodnie z powyższej tabeli.  To zachowanie jest celowe i nie jest konfigurowany.
+Jeśli usługa w chmurze jest ponownie wdrażana lub zmieniana, infrastruktura może tymczasowo zgłosić pulę zaplecza tak, aby była większa od wartości rzeczywistej, a na platformie Azure zostanie wydzielona mniejsza liczba portów podrzędnego ruchu źródłowego na wystąpienie.  Może to spowodować tymczasowe zwiększenie prawdopodobieństwa wyczerpania portów przez translatora adresów sieciowych. Ostatecznie rozmiar puli zostanie zmieniony na rozmiar rzeczywisty, a platforma Azure automatycznie zwiększy wstępnie przydzieloną liczbę portów podzestawów adresów sieciowych do oczekiwanej liczby zgodnie z powyższą tabelą.  To zachowanie jest zaprojektowane i nie można go konfigurować.
 
-SNAT porty są określonego protokołu transportowego IP (TCP i UDP są obsługiwane osobno) i są wydawane w następujących warunkach:
+Alokacje portów przydziałów adresów IP są zależne od protokołu NNTP (TCP i UDP są obsługiwane oddzielnie) i są publikowane w następujących warunkach:
 
-### <a name="tcp-snat-port-release"></a>Wersja port TCP SNAT
+### <a name="tcp-snat-port-release"></a>Wydanie portu źródłowego protokołu TCP
 
-- Jeśli oba serwerze/kliencie wysyła FIN/potwierdzenia, SNAT port zostaną wydane po 240 sekundach.
-- Jeśli występuje RST, SNAT port zostaną wydane po 15 sekundach.
+- Jeśli zarówno serwer, jak i klient wysyłają polecenie FIN/ACK, port z podsiecią zostanie wydaną po 240 sekundach.
+- Jeśli jest widoczny parametr RST, port elementu poddanego zostanie wystawiony po 15 sekundach.
 - Osiągnięto limit czasu bezczynności
 
-### <a name="udp-snat-port-release"></a>Wersja port UDP SNAT
+### <a name="udp-snat-port-release"></a>Wydanie portu przychodzący protokołu UDP
 
 - Osiągnięto limit czasu bezczynności
 
-## <a name="problemsolving"></a> Rozwiązywanie problemów 
+## <a name="problemsolving"></a>Rozwiązywanie problemów 
 
-Ta sekcja ma na celu ułatwić uniknięcie wyczerpania SNAT i innych scenariuszy, które mogą wystąpić w przypadku połączeń wychodzących na platformie Azure.
+Ta sekcja ma pomóc w eliminowaniu wyczerpania i innych scenariuszy, które mogą wystąpić w przypadku połączeń wychodzących na platformie Azure.
 
-### <a name="snatexhaust"></a> Zarządzanie wyczerpanie portów SNAT (PAT)
-[Porty efemeryczne](#preallocatedports) umożliwiający [osobisty token dostępu](#pat) są wyczerpującymi zasobów zgodnie z opisem w [nie publiczny adres IP skojarzony](#defaultsnat) i [publiczny punkt końcowy z równoważeniem obciążenia](#publiclbendpoint).
+### <a name="snatexhaust"></a>Zarządzanie wyczerpaniem portów (z)
+[Porty](#preallocatedports) tymczasowe używane do [](#pat) nałożenia są exhaustible zasobów, zgodnie z opisem w artykule [Brak skojarzonego publicznego adresu IP](#defaultsnat) i [publicznego punktu końcowego](#publiclbendpoint)ze zrównoważonym obciążeniem.
 
-Jeśli wiesz, że one inicjowanie wielu TCP lub UDP na połączenia wychodzące przez ten sam docelowy adres IP i port, i obserwować niepowodzenie połączenia wychodzące lub doradza przez dział pomocy technicznej już wyczerpuje porty SNAT (wstępnie przydzielonych [efemeryczne porty](#preallocatedports) posługują się [osobisty token dostępu](#pat)), masz kilka opcji ogólnych środki zaradcze. Zapoznaj się z tymi opcjami i określić, jaka jest dostępna i najlepsze w przypadku danego scenariusza. Istnieje możliwość, że co najmniej jeden ułatwiają zarządzanie tego scenariusza.
+Jeśli wiesz, że masz wiele wychodzących połączeń TCP lub UDP z tym samym docelowym adresem IP i portem, możesz zauważyć, że połączenia wychodzące kończą się niepowodzeniem lub są zalecane przez pomoc techniczną w przypadku wyczerpania portów przydzielonej liczby [portów tymczasowych](#preallocatedports) używane przezbinding) masz kilka ogólnych opcji zaradczych. [](#pat) Zapoznaj się z tymi opcjami i zdecyduj, co jest dostępne i najlepsze dla Twojego scenariusza. Istnieje możliwość, że co najmniej jedna może pomóc w zarządzaniu tym scenariuszem.
 
-Jeśli problemy z zrozumienie zachowania połączeń wychodzących można użyć statystyki stos IP (netstat). Lub może być przydatne do przestrzegania zachowania połączenia przy użyciu przechwytywania pakietów.
+Jeśli masz problemy z zrozumieniem zachowania połączenia wychodzącego, możesz użyć statystyk stosu IP (netstat). Może być również pomocne w obserwowanie zachowań połączenia za pomocą przechwytywania pakietów.
 
-#### <a name="connectionreuse"></a>Modyfikowanie aplikacji to ponowne użycie połączenia 
-Można zmniejszyć zapotrzebowanie na portów tymczasowych, które są używane do SNAT dzięki ponownemu wykorzystaniu połączeń w aplikacji. Jest to szczególnie istotne dla protokołów, takich jak HTTP/1.1, których ponowne użycie połączenia jest ustawieniem domyślnym. I innych protokołów, które korzystają z protokołu HTTP jako transportu (na przykład, interfejs API REST) mogą korzystać z kolei. 
+#### <a name="connectionreuse"></a>Modyfikowanie aplikacji w celu ponownego użycia połączeń 
+Można zmniejszyć zapotrzebowanie na porty tymczasowe, które są używane w przypadku usługi reportcy, przez ponowną obsługę połączeń w aplikacji. Jest to szczególnie prawdziwe w przypadku protokołów takich jak HTTP/1.1, w przypadku których użycie połączenia jest domyślne. Inne protokoły używające protokołu HTTP jako transportu (na przykład REST) mogą korzystać z tej usługi. 
 
-Ponowne użycie zawsze jest lepsza niż osobę, atomic połączeń TCP dla każdego żądania. Ponowne użycie skutkuje wydajniej bardzo wydajny transakcji protokołu TCP.
+Ponowne użycie jest zawsze lepsze niż pojedyncze, niepodzielne połączenia TCP dla każdego żądania. Wielokrotne użycie powoduje skuteczniejsze, bardzo wydajne transakcje TCP.
 
-#### <a name="connection pooling"></a>Modyfikowanie aplikacji do korzystania z puli połączeń
-Można używać połączenia, buforowanie schemat w aplikacji, w której żądania wewnętrznie są rozsyłane ustalony zestaw elementów połączenia (każdego ponowne użycie w przypadku, gdy to możliwe). Ten schemat ogranicza liczbę portów tymczasowych w użyciu i tworzy środowisko bardziej przewidywalne. Ten schemat można również zwiększyć przepływność żądań, umożliwiając wiele jednoczesnych operacji, gdy blokuje przez pojedyncze połączenie w przypadku odpowiedzi operacji.  
+#### <a name="connection pooling"></a>Modyfikowanie aplikacji tak, aby używała puli połączeń
+Można użyć schematu puli połączeń w aplikacji, w którym żądania są dystrybuowane wewnętrznie w ramach ustalonego zestawu połączeń (z każdym z nich, gdzie to możliwe). Ten schemat ogranicza liczbę używanych portów tymczasowych i tworzy bardziej przewidywalne środowisko. Ten schemat może również zwiększyć przepływność żądań przez umożliwienie wielu równoczesnych operacji, gdy jedno połączenie blokuje odpowiedzi na odpowiedź operacji.  
 
-Pula połączeń może już istnieć w ramach używanej do tworzenia aplikacji lub ustawienia konfiguracji dla aplikacji. Można łączyć, pula połączeń o ponowne użycie połączenia. Wiele żądań następnie zużyć je stałą, przewidywalną liczbę portów, które mają ten sam docelowy adres IP i port. Żądania, która jest również korzystać z efektywne wykorzystanie transakcji TCP zmniejszenie opóźnień i użycia zasobów. Transakcje UDP mogą również zyskać, ponieważ zarządzanie liczba przepływów UDP mogą z kolei uniknąć warunków spalin oraz zarządzać nimi SNAT użycie portu.
+Pule połączeń mogą już istnieć w ramach platformy, która jest używana do tworzenia aplikacji lub ustawień konfiguracji aplikacji. Pulę połączeń można połączyć z wielokrotnym użyciem połączenia. Wiele żądań korzysta z ustalonej, przewidywalnej liczby portów na ten sam docelowy adres IP i port. Żądania korzystają również z efektywnego wykorzystania transakcji TCP redukujących opóźnienia i wykorzystanie zasobów. Transakcje UDP mogą również być korzystne, ponieważ zarządzanie liczbą przepływów UDP może mieć na celu uniknięcie przekroczenia warunków i zarządzanie wykorzystaniem portów przystawek.
 
-#### <a name="retry logic"></a>Modyfikowanie aplikacji do korzystania z łagodniej logikę ponawiania próby
-Gdy [wstępnie przydzielonych portów tymczasowych](#preallocatedports) umożliwiający [osobisty token dostępu](#pat) są aplikacji lub został wyczerpany wystąpią błędy, wymuś agresywne lub atak ponawia próbę bez zanikania i wycofywania logiki spowodować wyczerpanie wystąpienia lub zachować. Można zmniejszyć zapotrzebowanie na portów tymczasowych za pomocą łagodniej logikę ponawiania próby. 
+#### <a name="retry logic"></a>Modyfikowanie aplikacji tak, aby była używana mniej agresywna logika ponawiania
+Gdy [wstępnie alokowany porty](#preallocatedports) tymczasowe są [](#pat) używane na potrzeby odbierania lub występują błędy aplikacji, agresywne lub bezproblemowe wymuszanie ponawiania prób bez pozostałego działania lub logiki wycofywania. Możesz zmniejszyć zapotrzebowanie na tymczasowe porty przy użyciu mniej agresywnej logiki ponawiania. 
 
-Porty efemeryczne ma 4-minutowy limit czasu bezczynności (nie można dostosować). W przypadku zbyt agresywne ponowne próby wyczerpanie ma możliwość wyczyszczenia samodzielnie. W związku z tym biorąc pod uwagę sposób — i jak często — aplikacja ponawia próbę transakcji jest kluczową częścią projektu.
+Porty tymczasowe mają 4-minutowy limit czasu bezczynności (nieregulowane). Jeśli ponowna próba jest zbyt agresywna, wyczerpanie nie ma możliwości samodzielnego wyczyszczenia. W związku z tym rozważać, jak i jak często — transakcje ponawiania prób aplikacji są istotną częścią projektu.
 
-#### <a name="assignilpip"></a>Przypisywanie wystąpienia poziomu publicznego adresu IP do każdej maszyny Wirtualnej
-Przypisywanie ILPIP zmienia dany scenariusz [wystąpienia poziom publicznego adresu IP do maszyny Wirtualnej](#ilpip). Wszystkie porty efemeryczne publicznego adresu IP, które są używane dla każdej maszyny Wirtualnej są dostępne dla maszyny Wirtualnej. (W przeciwieństwie do scenariuszy gdzie portów tymczasowych z publicznym adresem IP są udostępniane wszystkie maszyny wirtualne skojarzone z odpowiednim wdrożeniem). Brak kompromisów należy wziąć pod uwagę, takie jak potencjalny wpływ umieszczania na białej liście dużej liczby poszczególnych adresów IP.
+#### <a name="assignilpip"></a>Przypisz publiczny adres IP na poziomie wystąpienia do każdej maszyny wirtualnej
+Przypisanie ILPIP zmienia swój scenariusz na [publiczny adres IP na poziomie wystąpienia na maszynę wirtualną](#ilpip). Wszystkie tymczasowe porty publicznego adresu IP, które są używane dla każdej maszyny wirtualnej, są dostępne dla maszyny wirtualnej. (W przeciwieństwie do scenariuszy, w których porty tymczasowe publicznego adresu IP są udostępniane wszystkim maszynom wirtualnym skojarzonym z odpowiednim wdrożeniem). Istnieją kompromisy, które należy wziąć pod uwagę, takie jak potencjalny wpływ listy dozwolonych dużej liczby pojedynczych adresów IP.
 
 >[!NOTE] 
->Ta opcja nie jest dostępne dla ról procesów roboczych w sieci web.
+>Ta opcja nie jest dostępna dla ról procesów roboczych sieci Web.
 
-### <a name="idletimeout"></a>Użyj keepalives, aby zresetować wychodzącego limitu czasu bezczynności
+### <a name="idletimeout"></a>Aby zresetować limit czasu bezczynności dla ruchu wychodzącego, użyj utrzymywania aktywności
 
-Połączenia wychodzące ma 4-minutowy limit czasu bezczynności. Limit czasu nie jest zmieniane. Jednak można użyć transportu (na przykład keepalives TCP) lub warstwy aplikacji keepalives odświeżanie bezczynności przepływu i zresetować ten limit czasu bezczynności, jeśli to konieczne.  Skontaktuj się z dostawcą dowolnego oprogramowania w pakiecie na tego, czy ta funkcja jest obsługiwana lub jak je włączyć.  Zazwyczaj tylko po jednej stronie musi wygenerować keepalives zresetować limitu czasu bezczynności. 
+Połączenia wychodzące mają 4-minutowy limit czasu bezczynności. Ten limit czasu nie jest regulowany. Można jednak użyć transportu (na przykład aktywności protokołu TCP) lub nieaktywności warstwy aplikacji, aby odświeżyć bezczynny przepływ i zresetować ten limit czasu bezczynności w razie potrzeby.  Należy skontaktować się z dostawcą każdego spakowanego oprogramowania, które jest obsługiwane lub jak je włączyć.  Zwykle tylko jedna strona musi generować utrzymywanie aktywności w celu zresetowania limitu czasu bezczynności. 
 
-## <a name="discoveroutbound"></a>Odnajdywania publicznego adresu IP, który korzysta z maszyny Wirtualnej
-Istnieje wiele sposobów, aby określić źródłowy publiczny adres IP połączenia wychodzącego. OpenDNS zapewnia usługę, który można wyświetlić publiczny adres IP swojej maszyny wirtualnej. 
+## <a name="discoveroutbound"></a>Odnajdywanie publicznego adresu IP używanego przez maszynę wirtualną
+Istnieje wiele sposobów określenia publicznego źródłowego adresu IP połączenia wychodzącego. OpenDNS zapewnia usługę, która może wyświetlać publiczny adres IP maszyny wirtualnej. 
 
-Za pomocą polecenia nslookup, możesz wysłać zapytanie DNS dotyczące myip.opendns.com nazwa OpenDNS program rozpoznawania nazw. Usługa zwraca źródłowy adres IP, który został użyty do wysłania zapytania. Po uruchomieniu następującego zapytania z maszyny Wirtualnej, odpowiedź jest publiczny adres IP używany dla tej maszyny Wirtualnej:
+Za pomocą polecenia nslookup można wysłać zapytanie DNS dla nazwy myip.opendns.com do OpenDNS rozpoznawania nazw. Usługa zwraca źródłowy adres IP, który został użyty do wysłania zapytania. Po uruchomieniu następującego zapytania z maszyny wirtualnej odpowiedź jest publicznym adresem IP używanym dla tej maszyny wirtualnej:
 
     nslookup myip.opendns.com resolver1.opendns.com
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [modułu równoważenia obciążenia](load-balancer-overview.md) używane w przypadku wdrożeń usługi Resource Manager.
-- Dowiedz się więcej o [połączeń wychodzących](load-balancer-outbound-connections.md) scenariuszy dostępne w przypadku wdrożeń usługi Resource Manager.
+- Dowiedz się więcej o [Load Balancer](load-balancer-overview.md) używanych w Menedżer zasobów wdrożeniach.
+- Tryb informacji o scenariuszach [połączeń wychodzących](load-balancer-outbound-connections.md) dostępnych w ramach wdrożeń Menedżer zasobów.

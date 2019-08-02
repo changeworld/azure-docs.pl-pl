@@ -4,14 +4,14 @@ description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/11/2019
+ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0b65c7a9b6d4f025c574c2dddace6fa45b77398c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 7548b75f201c896e3a5248cb9d0154a9a676a86f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835785"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698194"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -29,11 +29,11 @@ Aby uzyskać wartości parametrów, zmienne lub bieżącego wdrożenia, zobacz [
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="list"></a>Lista *
+## <a name="list"></a>staw
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-Składnia tej funkcji zależy od nazwy operacji listy. Każda implementacja zwraca wartości dla typu zasobu, który obsługuje operację listy. Nazwa operacji musi rozpoczynać się `list`. Niektóre typowego użycia są `listKeys` i `listSecrets`. 
+Składnia tej funkcji różni się od nazwy operacji na liście. Każda implementacja zwraca wartości dla typu zasobu, który obsługuje operację listy. Nazwa operacji musi rozpoczynać się `list`od. Niektóre typowe zastosowania to `listKeys` i. `listSecrets` 
 
 ### <a name="parameters"></a>Parametry
 
@@ -41,37 +41,37 @@ Składnia tej funkcji zależy od nazwy operacji listy. Każda implementacja zwra
 |:--- |:--- |:--- |:--- |
 | resourceName lub resourceIdentifier |Yes |ciąg |Unikatowy identyfikator dla zasobu. |
 | apiVersion |Yes |ciąg |Wersja interfejsu API stanu środowiska uruchomieniowego zasobu. Zazwyczaj w formacie **rrrr mm-dd**. |
-| functionValues |Nie |obiekt | Obiekt, który zawiera wartości dla funkcji. Podaj tylko ten obiekt funkcji, które obsługują odbieranie obiekt o wartości parametrów, takich jak **listAccountSas** na koncie magazynu. W tym artykule przedstawiono przykładowy przekazywania wartości funkcji. | 
+| functionValues |Nie |obiekt | Obiekt, który zawiera wartości dla funkcji. Podaj tylko ten obiekt funkcji, które obsługują odbieranie obiekt o wartości parametrów, takich jak **listAccountSas** na koncie magazynu. Przykład przekazywania wartości funkcji przedstawiono w tym artykule. | 
 
 ### <a name="implementations"></a>Implementacje
 
-Możliwości wykorzystania listy * są wyświetlane w poniższej tabeli.
+W poniższej tabeli przedstawiono możliwe zastosowania list *.
 
 | Typ zasobu | Nazwa funkcji |
 | ------------- | ------------- |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.AppConfiguration/configurationStores | klucze list |
+| Microsoft.AppConfiguration/configurationStores | ListKeys |
 | Microsoft.Automation/automationAccounts | [klucze list](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
-| Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
-| Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
-| Microsoft.BotService/botServices/channels | listChannelWithKeys |
+| Microsoft. Batchai Job/obszary robocze/eksperymenty/zadania | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft. łańcucha bloków/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
+| Microsoft. łańcucha bloków/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| Microsoft. BotService/botServices/Channels | listChannelWithKeys |
 | Microsoft.Cache/redis | [klucze list](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [klucze list](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
 | Microsoft.ContainerRegistry/registries | [listPolicies](/rest/api/containerregistry/registries/listpolicies) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
-| Microsoft.ContainerRegistry/registries/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
+| Microsoft. ContainerRegistry/rejestry/elementy webhook | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
 | Microsoft.ContainerRegistry/registries/tasks | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
 | Microsoft.ContainerService/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
 | Microsoft.ContainerService/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
 | Microsoft.ContainerService/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
-| Microsoft.DataBox/jobs | listCredentials |
+| Microsoft. DataBox/zadania | listCredentials |
 | Microsoft.DataFactory/datafactories/gateways | listauthkeys |
-| Microsoft.DataFactory/factories/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
+| Microsoft. DataFactory/Factors/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
 | Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
 | Microsoft.Devices/iotHubs | [listkeys](/rest/api/iothub/iothubresource/listkeys) |
 | Microsoft.Devices/provisioningServices/keys | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
@@ -84,11 +84,11 @@ Możliwości wykorzystania listy * są wyświetlane w poniższej tabeli.
 | Microsoft.DocumentDB/databaseAccounts | [klucze list](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/domains | [klucze list](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/topics | [klucze list](/rest/api/eventgrid/topics/listsharedaccesskeys) |
-| Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
+| Microsoft. EventGrid/domeny | [klucze list](/rest/api/eventgrid/domains/listsharedaccesskeys) |
+| Microsoft. EventGrid/tematy | [klucze list](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft. EventHub/przestrzenie nazw/reguł autoryzacji | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
 | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
+| Microsoft. EventHub/przestrzenie nazw/eventhubs/reguł autoryzacji | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
 | Microsoft.ImportExport/jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
 | Microsoft.LabServices/users | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
 | Microsoft.LabServices/users | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
@@ -98,57 +98,57 @@ Możliwości wykorzystania listy * są wyświetlane w poniższej tabeli.
 | Microsoft.Logic/integrationAccounts | [listKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
 | Microsoft.Logic/integrationAccounts/maps | [listContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
 | Microsoft.Logic/integrationAccounts/partners | [listContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts/schemas | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
+| Microsoft. Logic/integrationAccounts/schematy | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
 | Microsoft.Logic/workflows | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
 | Microsoft.Logic/workflows | [listSwagger](/rest/api/logic/workflows/listswagger) |
-| Microsoft.Logic/workflows/triggers | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
-| Microsoft.Logic/workflows/versions/triggers | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
-| Microsoft.MachineLearning/webServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
-| Microsoft.MachineLearning/Workspaces | listworkspacekeys |
-| Microsoft.MachineLearningServices/workspaces/computes | klucze list |
-| Microsoft.MachineLearningServices/workspaces | klucze list |
-| Microsoft.Maps/accounts | [klucze list](/rest/api/maps-management/accounts/listkeys) |
-| Microsoft.Media/mediaservices/assets | [listContainerSas](/rest/api/media/assets/listcontainersas) |
-| Microsoft.Media/mediaservices/assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
-| Microsoft.Media/mediaservices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
-| Microsoft.Media/mediaservices/streamingLocators | [listPaths](/rest/api/media/streaminglocators/listpaths) |
+| Microsoft. Logic/przepływy pracy/wyzwalacze | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
+| Microsoft. Logic/przepływy pracy/wersje/wyzwalacze | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
+| Microsoft. MachineLearning/WebServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
+| Microsoft. MachineLearning/obszary robocze | listworkspacekeys |
+| Microsoft. MachineLearningServices/obszary robocze/obliczenia | listKeys |
+| Microsoft.MachineLearningServices/workspaces | listKeys |
+| Microsoft. Maps/konta | [klucze list](/rest/api/maps-management/accounts/listkeys) |
+| Microsoft. Media/MediaServices/zasoby | [listContainerSas](/rest/api/media/assets/listcontainersas) |
+| Microsoft. Media/MediaServices/zasoby | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
+| Microsoft. Media/MediaServices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
+| Microsoft. Media/MediaServices/streamingLocators | [listPaths](/rest/api/media/streaminglocators/listpaths) |
 | Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
 | Microsoft.NotificationHubs/Namespaces/authorizationRules | [listkeys](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](/rest/api/notificationhubs/notificationhubs/listkeys) |
 | Microsoft.OperationalInsights/workspaces | [klucze list](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
-| Microsoft.Relay/namespaces/authorizationRules | [listkeys](/rest/api/relay/namespaces/listkeys) |
-| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | klucze list |
-| Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
-| Microsoft.Relay/namespaces/WcfRelays/authorizationRules | [listkeys](/rest/api/relay/wcfrelays/listkeys) |
+| Microsoft. Relay/przestrzenie nazw/reguł autoryzacji | [listkeys](/rest/api/relay/namespaces/listkeys) |
+| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
+| Microsoft. Relay/przestrzenie nazw/HybridConnections/reguł autoryzacji | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
+| Microsoft. Relay/przestrzenie nazw/WcfRelays/reguł autoryzacji | [listkeys](/rest/api/relay/wcfrelays/listkeys) |
 | Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
 | Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
-| Microsoft.ServiceBus/namespaces/authorizationRules | [listkeys](/rest/api/servicebus/namespaces/listkeys) |
+| Microsoft. ServiceBus/przestrzenie nazw/reguł autoryzacji | [listkeys](/rest/api/servicebus/namespaces/listkeys) |
 | Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
-| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [listkeys](/rest/api/servicebus/queues/listkeys) |
-| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listkeys](/rest/api/servicebus/topics/listkeys) |
+| Microsoft. ServiceBus/przestrzenie nazw/kolejki/reguł autoryzacji | [listkeys](/rest/api/servicebus/queues/listkeys) |
+| Microsoft. ServiceBus/przestrzenie nazw/tematy/reguł autoryzacji | [listkeys](/rest/api/servicebus/topics/listkeys) |
 | Microsoft.SignalRService/SignalR | [listkeys](/rest/api/signalr/signalr/listkeys) |
 | Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
 | Microsoft.Storage/storageAccounts | [listkeys](/rest/api/storagerp/storageaccounts/listkeys) |
 | Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
 | Microsoft.StorSimple/managers/devices | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
 | Microsoft.StorSimple/managers/devices | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
-| Microsoft.StorSimple/managers | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
-| Microsoft.StorSimple/managers | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
-| Microsoft.Web/connectionGateways | ListStatus |
-| Microsoft.Web/Connections | listconsentlinks |
-| Microsoft.Web/customApis | listWsdlInterfaces |
-| microsoft.web/locations | listwsdlinterfaces |
-| Microsoft.Web/apimanagementaccounts/APIs/Connections | listconnectionkeys |
-| Microsoft.Web/apimanagementaccounts/APIs/Connections | listsecrets |
-| Microsoft.Web/Sites/Functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
-| Microsoft.Web/Sites/hybridconnectionnamespaces/relays | [listkeys](/rest/api/appservice/webapps/listhybridconnectionkeys) |
-| Microsoft.Web/Sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
-| Microsoft.Web/Sites/Slots/Functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| Microsoft. StorSimple/menedżerowie | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
+| Microsoft. StorSimple/menedżerowie | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
+| Microsoft. Web/connectionGateways | ListStatus |
+| Microsoft. Web/Connections | listconsentlinks |
+| Microsoft. Web/customApis | listWsdlInterfaces |
+| Microsoft. Web/lokalizacje | listwsdlinterfaces |
+| Microsoft. Web/apimanagementaccounts/interfejsy API/połączenia | listconnectionkeys |
+| Microsoft. Web/apimanagementaccounts/interfejsy API/połączenia | listsecrets |
+| Microsoft. Web/Sites/Functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
+| Microsoft. Web/Sites/hybridconnectionnamespaces/Przekaźniki | [listkeys](/rest/api/appservice/webapps/listhybridconnectionkeys) |
+| Microsoft. Web/witryny | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
+| Microsoft. Web/Sites/Slots/Functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
 Aby ustalić, typów zasobów, które mają operacja listy, dostępne są następujące opcje:
 
 * Widok [operacji interfejsu API REST](/rest/api/) dla dostawcy zasobów i wygląd na potrzeby operacji listy. Na przykład konta magazynu mają [operacji listKeys](/rest/api/storagerp/storageaccounts).
-* Użyj [Get AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) polecenia cmdlet programu PowerShell. Poniższy przykład pobiera wszystkie operacje dotyczące list dla kont magazynu:
+* Użyj polecenia cmdlet programu PowerShell [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) . Poniższy przykład pobiera wszystkie operacje dotyczące list dla kont magazynu:
 
   ```powershell
   Get-AzProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
@@ -161,7 +161,7 @@ Aby ustalić, typów zasobów, które mają operacja listy, dostępne są nastę
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Zwrócony obiekt jest zależna od funkcji listy, której używasz. Na przykład klucze listy dla konta magazynu zwraca następujący format:
+Zwrócony obiekt różni się w zależności od używanej funkcji list. Na przykład listKeys dla konta magazynu zwraca następujący format:
 
 ```json
 {
@@ -184,15 +184,15 @@ Inne funkcje listy mają różne formaty zwrotu. Aby wyświetlić format funkcji
 
 ### <a name="remarks"></a>Uwagi
 
-Określ zasób, używając nazwy zasobu lub [funkcja resourceId](#resourceid). Podczas korzystania z funkcji listy, w tym samym szablonie, który wdraża przywoływany zasób, należy użyć nazwy zasobu.
+Określ zasób, używając nazwy zasobu lub [funkcja resourceId](#resourceid). W przypadku używania funkcji list w tym samym szablonie, który wdraża przywoływany zasób, należy użyć nazwy zasobu.
 
-Jeśli używasz **listy** w zasobie warunkowo wdrożeniu funkcji szacowania funkcji będzie nawet, jeśli zasób nie jest wdrożona. Jeśli wystąpi błąd **listy** funkcja odnosi się do zasobu, który nie istnieje. Użyj **Jeśli** funkcję, aby upewnić się, czy funkcja jest oceniane tylko, gdy zasób jest wdrażany. Zobacz [Jeśli funkcja](resource-group-template-functions-logical.md#if) przykładowego szablonu, który używa, jeśli i listę warunkowo wdrożony zasób.
+Jeśli używasz funkcji **list** w zasobie, który jest wdrażany warunkowo, funkcja zostanie oceniona, nawet jeśli zasób nie zostanie wdrożony. Występuje błąd, jeśli funkcja **list** odwołuje się do zasobu, który nie istnieje. Użyj funkcji **if** , aby upewnić się, że funkcja jest obliczana tylko wtedy, gdy zasób jest wdrażany. Zobacz [funkcję if](resource-group-template-functions-logical.md#if) , aby zapoznać się z przykładowym szablonem, który używa elementu if i z użyciem warunkowo wdrożonego zasobu.
 
 ### <a name="example"></a>Przykład
 
 Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) przedstawia sposób zwrócenia klucze podstawowe i pomocnicze z konta magazynu w sekcji danych wyjściowych. Zwraca token sygnatury dostępu Współdzielonego dla konta magazynu. 
 
-Aby uzyskać token sygnatury dostępu Współdzielonego, należy przekazać obiekt czas wygaśnięcia. Czas wygaśnięcia musi przypadać w przyszłości. W tym przykładzie jest przeznaczona do korzystania z funkcji listy. Zazwyczaj można będzie użyć tokenu sygnatury dostępu Współdzielonego w wartości zasobów zamiast zwracanie go jako wartość wyjściową. Wartości wyjściowe są zapisywane w historii wdrożenia i nie są bezpieczne.
+Aby uzyskać token SAS, należy przekazać obiekt przez czas wygaśnięcia. Czas wygaśnięcia musi przypadać w przyszłości. W tym przykładzie jest przeznaczona do korzystania z funkcji listy. Zazwyczaj można będzie użyć tokenu sygnatury dostępu Współdzielonego w wartości zasobów zamiast zwracanie go jako wartość wyjściową. Wartości wyjściowe są zapisywane w historii wdrożenia i nie są bezpieczne.
 
 ```json
 {
@@ -354,11 +354,13 @@ Każdy typ zasobu zwraca różne właściwości odwołanie funkcji. Funkcja nie 
 
 Funkcja odwołanie pobiera stan środowiska uruchomieniowego wdrożonej wcześniej zasobów lub zasobu, wdrożonych w bieżącym szablonie. W tym artykule przedstawiono przykłady oba scenariusze. Podczas odwoływania się do zasobów w bieżącym szablonie, podaj nazwę zasobu jako parametr. Podczas odwoływania się do wcześniej wdrożony zasób, należy podać wersję interfejsu API i identyfikator zasobu dla zasobu. Należy określić prawidłowe wersje interfejsu API dla zasobu w [odwołanie do szablonu](/azure/templates/).
 
-Odwołanie funkcji należy używać tylko w właściwości definicji zasobu i sekcję danych wyjściowych szablonu lub wdrożenia. Gdy jest używane z [iteracji właściwość](resource-group-create-multiple.md#property-iteration), możesz użyć funkcji odwołania dla `input` ponieważ wyrażenie jest przypisany do właściwości zasobu. Nie można używać z `count` ponieważ musi zostać określona liczba, przed odwołanie funkcji nie zostanie rozwiązany.
+Odwołanie funkcji należy używać tylko w właściwości definicji zasobu i sekcję danych wyjściowych szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](resource-group-create-multiple.md#property-iteration), można użyć funkcji Reference dla `input` , ponieważ wyrażenie jest przypisane do właściwości Resource. Nie można jej użyć z `count` powodu, gdy liczba musi być określona przed rozwiązanym funkcją referencyjną.
+
+Nie można użyć funkcji Reference w danych wyjściowych [szablonu zagnieżdżonego](resource-group-linked-templates.md#nested-template) , aby zwrócić zasób wdrożony w szablonie zagnieżdżonym. Zamiast tego należy użyć [połączonego szablonu](resource-group-linked-templates.md#external-template-and-external-parameters).
 
 Za pomocą funkcji odwołania, niejawnie Deklarujesz, jeden zasób jest zależny od innego zasobu, jeśli przywoływany zasób jest obsługiwana w ramach tego samego szablonu i odwołania do zasobu według jego nazwy (a nie identyfikator zasobu). Nie musisz również użyć właściwości dependsOn. Funkcja nie jest obliczane, dopóki nie zakończy się przywoływany zasób wdrożenia.
 
-Jeśli używasz **odwołania** w zasobie warunkowo wdrożeniu funkcji szacowania funkcji będzie nawet, jeśli zasób nie jest wdrożona.  Jeśli wystąpi błąd **odwołania** funkcja odnosi się do zasobu, który nie istnieje. Użyj **Jeśli** funkcję, aby upewnić się, czy funkcja jest oceniane tylko, gdy zasób jest wdrażany. Zobacz [Jeśli funkcja](resource-group-template-functions-logical.md#if) przykładowego szablonu, który używa, jeśli i odwołania z warunkowo wdrożony zasób.
+Jeśli używasz funkcji **Reference** w zasobie, który jest wdrażany warunkowo, funkcja jest oceniana, nawet jeśli zasób nie zostanie wdrożony.  Występuje błąd, jeśli funkcja **referencyjna** odwołuje się do zasobu, który nie istnieje. Użyj funkcji **if** , aby upewnić się, że funkcja jest obliczana tylko wtedy, gdy zasób jest wdrażany. Zobacz [funkcję if](resource-group-template-functions-logical.md#if) , aby zapoznać się z przykładowym szablonem, który używa if i Reference z wdrożonym warunkowo zasobem.
 
 Aby wyświetlić nazwy właściwości i wartości dla typu zasobu, należy utworzyć szablon, który zwraca obiekt, w sekcji danych wyjściowych. W przypadku istniejącego zasobu tego typu szablonu zwraca obiekt bez wdrażania wszystkie nowe zasoby. 
 
@@ -548,7 +550,7 @@ Zwrócony obiekt jest w następującym formacie:
 
 ### <a name="remarks"></a>Uwagi
 
-`resourceGroup()` Nie można użyć funkcji w szablonie, który jest [wdrożone na poziomie subskrypcji](deploy-to-subscription.md). Można można używać tylko w szablonach, które są wdrożone w grupie zasobów.
+Nie można użyć [](deploy-to-subscription.md) funkcjiwszabloniewdrożonymnapoziomie`resourceGroup()` subskrypcji. Może być używany tylko w szablonach wdrożonych w grupie zasobów.
 
 Typowym zastosowaniem funkcji resourceGroup jest do tworzenia zasobów w tej samej lokalizacji co grupa zasobów. W poniższym przykładzie użyto lokalizacji grupy zasobów, aby przypisać lokalizacji dla witryny sieci web.
 
@@ -563,6 +565,8 @@ Typowym zastosowaniem funkcji resourceGroup jest do tworzenia zasobów w tej sam
    }
 ]
 ```
+
+Można również użyć funkcji grupy zasobów, aby zastosować do zasobu Tagi ze źródła danych. Aby uzyskać więcej informacji, zobacz [stosowanie tagów z grupy zasobów](resource-group-using-tags.md#apply-tags-from-resource-group).
 
 ### <a name="example"></a>Przykład
 
@@ -621,7 +625,7 @@ Identyfikator jest zwracany w następującym formacie:
 
 ### <a name="remarks"></a>Uwagi
 
-Gdy jest używane z [wdrażania na poziomie subskrypcji](deploy-to-subscription.md), `resourceId()` funkcji można pobrać jedynie identyfikator zasobami wdrożonymi na tym samym poziomie. Na przykład możesz uzyskać identyfikator definicji zasad lub definicji roli, ale nie identyfikator konta magazynu. W przypadku wdrożeń w grupie zasobów przeciwieństwo ma wartość true. Nie można pobrać Identyfikatora zasobu zasobów wdrożonych na poziomie subskrypcji.
+W przypadku użycia `resourceId()` z [wdrożeniem na poziomie subskrypcji](deploy-to-subscription.md)funkcja może pobrać tylko identyfikator zasobów wdrożonych na tym poziomie. Można na przykład uzyskać identyfikator definicji zasad lub definicji roli, ale nie identyfikator konta magazynu. W przypadku wdrożeń dla grupy zasobów, przeciwieństwem jest true. Nie można uzyskać identyfikatora zasobu wdrożonego na poziomie subskrypcji.
 
 Wartości parametrów, które określisz, zależą od tego, czy zasób jest w tej samej subskrypcji i grupie zasobów co bieżącego wdrożenia. Aby uzyskać identyfikator zasobu dla konta magazynu w tej samej subskrypcji i grupie zasobów, użyj:
 
@@ -647,7 +651,7 @@ Aby uzyskać identyfikator zasobu dla bazy danych w innej grupie zasobów, nale�
 "[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
 ```
 
-Aby uzyskać identyfikator zasobu zasobów poziom subskrypcji, w przypadku wdrażania w zakresie subskrypcji, użyj:
+Aby uzyskać identyfikator zasobu na poziomie subskrypcji podczas wdrażania w zakresie subskrypcji, użyj:
 
 ```json
 "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
@@ -773,7 +777,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
 * Aby scalić wiele szablonów, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).

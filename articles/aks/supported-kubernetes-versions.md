@@ -1,28 +1,28 @@
 ---
-title: Obsługiwane wersje rozwiązania Kubernetes w usłudze Azure Kubernetes Service
-description: Zasady pomocy technicznej wersji platformy Kubernetes i cyklem życia klastrów w usłudze Azure Kubernetes Service (AKS)
+title: Obsługiwane wersje Kubernetes w usłudze Azure Kubernetes Service
+description: Informacje na temat zasad obsługi wersji Kubernetes i cyklu życia klastrów w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: b7910ee6f58c582b824cec834d92a24c0e184bfb
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: a4726444e2103228cd26be3d3a6d516b31e315ee
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205270"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304331"
 ---
-# <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
+# <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
-Społeczność platformy Kubernetes wydaje wersje pomocnicze średnio co trzy miesiące. Te wydania zawierają nowe funkcje i ulepszenia. Wydania poprawek odbywają się częściej (czasami co tydzień) i mają na celu naprawienie tylko krytycznych usterek w wersji pomocniczej. Wersje te poprawki zawierają poprawki luk w zabezpieczeniach lub główne usterki wpływające na ochronę dużej liczby klientów i produktów, działających w oparciu o rozwiązania Kubernetes w środowisku produkcyjnym.
+Społeczność platformy Kubernetes wydaje wersje pomocnicze średnio co trzy miesiące. Te wydania zawierają nowe funkcje i ulepszenia. Wydania poprawek odbywają się częściej (czasami co tydzień) i mają na celu naprawienie tylko krytycznych usterek w wersji pomocniczej. Te wersje poprawek obejmują poprawki dotyczące luk w zabezpieczeniach lub poważnych usterek, które mają wpływ na dużą liczbę klientów i produktów działających w środowisku produkcyjnym w oparciu o Kubernetes.
 
-AKS ma na celu certyfikowania i wydawania nowych wersji rozwiązania Kubernetes w ciągu 30 dni wersji nadrzędnego, z zastrzeżeniem stabilności wersji.
+AKS mają na celu certyfikowanie i wydanie nowych wersji Kubernetes w ciągu 30 dni od wydania nadrzędnego, z zastrzeżeniem stabilności wersji.
 
-## <a name="kubernetes-versions"></a>Wersje rozwiązania Kubernetes
+## <a name="kubernetes-versions"></a>Wersje Kubernetes
 
-Kubernetes używa standardu [Semantic Versioning](https://semver.org/) schematu przechowywania wersji. Oznacza to, że każda wersja programu Kubernetes następuje tego systemu numeracji:
+Kubernetes używa standardowego schematu [](https://semver.org/) obsługi wersji semantycznej. Oznacza to, że każda wersja programu Kubernetes jest zgodna z tym schematem numeracji:
 
 ```
 [major].[minor].[patch]
@@ -33,102 +33,113 @@ Example:
   1.13.7
 ```
 
-Każdą liczbę w wersji wskazuje ogólnej zgodności z poprzednią wersją:
+Każda liczba w wersji wskazuje ogólną zgodność z poprzednią wersją:
 
-* Zmiany interfejsu API zmiany wersji głównych, gdy jest to niezgodne, lub wstecznej zgodności może być uszkodzony.
-* Wersje pomocnicze zmianie, gdy funkcje zmian, które są wstecznie zgodne z innych wersji pomocniczej.
-* Zastosować poprawki zostały wprowadzone zmiany, gdy poprawki błędów wstecznie zgodne wersje.
+* Wersje główne zmieniają się, gdy niezgodne zmiany interfejsu API lub zgodność z poprzednimi wersjami mogą zostać uszkodzone.
+* Wersje pomocnicze zmieniają się, gdy wprowadzane są zmiany funkcjonalności, które są wstecznie zgodne z innymi wersjami pomocniczymi.
+* Wersje poprawek zmieniają się w przypadku wprowadzenia poprawek błędów zgodnych z poprzednimi wersjami.
 
-Ogólnie rzecz biorąc, użytkownicy powinna wszelkich starania, aby uruchomić najnowszą wersję poprawki wersji pomocniczej, są uruchomione, na przykład jeśli klastrem produkcyjnym znajduje się na *1.13.6* i *1.13.7* jest najnowsza wersja poprawki wersja jest dostępna dla *1.13* serii, należy uaktualnić system do *1.13.7* jak tylko można zapewnić klastra jest w pełni poprawkami i obsługiwane.
+Ogólnie rzecz biorąc, użytkownicy powinni Endeavor, aby uruchomić najnowszą wersję poprawki wersji pomocniczej, na przykład jeśli klaster produkcyjny znajduje się na *1.13.6* i *1.13.7* to najnowsza dostępna wersja poprawki dostępna dla serii *1,13* . należy uaktualnić do *1.13.7* zaraz po zapewnieniu, że klaster jest w pełni objęty poprawką i jest obsługiwany.
 
 ## <a name="kubernetes-version-support-policy"></a>Zasady obsługi wersji platformy Kubernetes
 
 Usługa AKS obsługuje cztery wersje pomocnicze platformy Kubernetes:
 
-* Bieżąca wersja pomocnicza publikowany w usłudze AKS (N)
+* Bieżąca wersja pomocnicza wydana w AKS (N)
 * Trzy poprzednie wersje pomocnicze. Każda obsługiwana wersja pomocnicza obsługuje także dwie stabilne poprawki.
 
-Jest to nazywane "N-3"-(N (Najnowsza wersja) - 3 (wersje pomocnicze)).
+Jest to tzw. "N-3" — (N (Najnowsza wersja) — 3 (wersje pomocnicze)).
 
-Na przykład, jeśli wprowadzono AKS *1.13.x* obecnie Pomoc techniczna jest dostępna dla następujących wersji:
+Na przykład jeśli AKS wprowadza *1.13. x* dzisiaj, pomoc techniczna jest świadczona dla następujących wersji:
 
 Nowa wersja pomocnicza    |    Lista obsługiwanych wersji
 -----------------    |    ----------------------
-1.13.x               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
+1.13. x               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
 
-Gdzie "x" i ".a" i "b" to wersje reprezentatywny poprawki.
+Gdzie "x" i ". b" są reprezentatywnymi wersjami poprawek.
 
-Szczegółowe informacje dotyczące komunikacji w sprawie zmiany wersji i oczekiwania zobacz "Komunikacja" poniżej.
+Aby uzyskać szczegółowe informacje na temat komunikacji dotyczącej zmian wersji i oczekiwań, zobacz "komunikacja" poniżej.
 
-Jeśli wprowadzono nową wersję pomocniczą najstarsze pomocniczej wersji i poprawki wersji obsługiwane są przestarzałe i usuwać. Na przykład, jeśli bieżący obsługiwany listę wersji jest:
+Po wprowadzeniu nowej wersji pomocniczej, najstarsza wersja pomocnicza i wersje poprawek są przestarzałe i usunięte. Na przykład jeśli bieżącą obsługiwaną listą wersji jest:
 
-<a name="supported-version-list"></a>Lista obsługiwanych wersji
-----------------------
-1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b, 1.9.a, 1.9.b
+```
+1.12.a
+1.12.b
+1.11.a
+1.11.b
+1.10.a
+1.10.b
+1.9.a
+1.9.b
+```
 
-I AKS zwalnia 1.13.x, oznacza to, zostaną usunięte wersje 1.9.x (wszystkich 1,9 wersje) oraz okres wsparcia technicznego upływa.
+I AKS wersje 1.13. x oznacza to, że wersje 1.9. x (wszystkie wersje 1,9) zostaną usunięte i nie będą obsługiwane.
 
 > [!NOTE]
-> Należy pamiętać, że klienci korzystający z nieobsługiwanej wersji platformy Kubernetes, ich poprosimy Cię o uaktualnienie podczas przesyłania żądania pomocy technicznej dla klastra. Klastry z systemem nieobsługiwane wersje rozwiązania Kubernetes nie są objęte [AKS obsługuje zasady](https://docs.microsoft.com/azure/aks/support-policies).
+> Należy pamiętać, że jeśli klienci korzystają z nieobsługiwanej wersji programu Kubernetes, zostanie poproszony o uaktualnienie w przypadku żądania pomocy technicznej dotyczącej klastra. Klastry z nieobsługiwanymi wersjami Kubernetes nie są objęte [zasadami obsługi AKS](https://docs.microsoft.com/azure/aks/support-policies).
 
 
-Oprócz powyższych na wersje pomocnicze AKS obsługuje dwa najnowsze *poprawki** wersji danej wersji pomocniczej. Na przykład biorąc pod uwagę następujące obsługiwane wersje:
+Oprócz powyższych w wersjach pomocniczych program AKS obsługuje dwie najnowsze wersje *poprawki** danej wersji pomocniczej. Na przykład, mając następujące obsługiwane wersje:
 
-<a name="supported-version-list"></a>Lista obsługiwanych wersji
-----------------------
+```
+Current Supported Version List
+------------------------------
 1.12.1, 1.12.2, 1.11.4, 1.11.5
+```
 
-Jeśli oryginalne rozwiązanie Kubernetes wydane 1.12.3 i 1.11.6 i zwalnia AKS patch te wersje, najstarsze wersje poprawki są przestarzałe i usunięte i staje się lista obsługiwanych wersji:
+Jeśli Kubernetes 1.12.3 i 1.11.6 i AKS wystawia te wersje, najstarsze wersje poprawek są przestarzałe i usunięte, a lista obsługiwanych wersji staje się:
 
-<a name="supported-version-list"></a>Lista obsługiwanych wersji
+```
+New Supported Version List
 ----------------------
 1.12.*2*, 1.12.*3*, 1.11.*5*, 1.11.*6*
+```
 
 > [!NOTE]
-> Klienci nie powinien przypiąć tworzenia klastra, ciągłą Integrację lub innych zadań automatycznych do określonej poprawki wersji. 
+> Klienci nie powinni przypinać tworzenia klastra, CI ani innych zautomatyzowanych zadań do określonych wersji poprawek. 
 
 ### <a name="communications"></a>Komunikacja
 
-* Dla nowych **pomocnicza** wersji rozwiązania Kubernetes
-  * Wszystkie użytkownicy są powiadamiani publicznie nową wersję i jakie wersja zostanie usunięta.
-  * Po wydaniu nowej wersji poprawki najstarsza wersja poprawki zostanie usunięty w tym samym czasie.
-  * Klienci mają **60 dni** od daty publicznych powiadomień uaktualnić do wersji obsługiwanej wersji pomocniczej.
-* Dla nowych **poprawki** wersji rozwiązania Kubernetes
-  * Wszyscy użytkownicy są powiadamiani, zostały udostępnione nowej wersji poprawki i uaktualnienia do najnowszej wersji poprawki.
-  * Użytkownicy mają **30 dni** uaktualnić do wersji nowsze, obsługiwanych poprawki. Użytkownicy mają **30 dni** uaktualnienia do wersji obsługiwana poprawka, zanim najstarsze zostanie usunięte.
+* Nowe wersje **pomocnicze** programu Kubernetes
+  * Wszyscy użytkownicy są powiadamiani publicznie o nowej wersji i o wersji, która zostanie usunięta.
+  * Po wydaniu nowej wersji poprawki najstarsza wersja poprawki jest usuwana w tym samym czasie.
+  * Klienci mają **60 dni** od publicznej daty powiadomienia, aby przeprowadzić uaktualnienie do obsługiwanej wersji pomocniczej.
+* Nowe wersje **poprawek** Kubernetes
+  * Wszyscy użytkownicy otrzymają powiadomienie o wydaniu nowej wersji poprawki i przeprowadź uaktualnienie do najnowszej wersji poprawki.
+  * Użytkownicy mający **30 dni** na uaktualnienie do nowszej obsługiwanej wersji poprawki. Użytkownicy mają **30 dni** , aby przeprowadzić uaktualnienie do obsługiwanej wersji poprawki przed usunięciem najstarszego elementu.
 
-AKS definiuje "wydane" jako ogólnej dostępności w celu SLO wszystkie włączone / jakości pomiarów usługi i jest dostępna we wszystkich regionach.
+AKS definiuje "wydane" jako ogólną dostępność, włączone we wszystkich pomiarach SLO/Quality of Service i dostępne we wszystkich regionach.
 
 > [!NOTE]
-> Klienci są powiadamiani kubernetes wersjach i deprecations, gdy wersja pomocnicza jest przestarzała lub usunięci użytkownicy otrzymują 60 dni uaktualnić do obsługiwanej wersji. W przypadku wersji poprawki klienci otrzymują 30 dni uaktualnić do obsługiwanej wersji.
+> Klienci są powiadamiani o wydaniach wersji Kubernetes i ich zaniechaniu, gdy wersja pomocnicza jest przestarzała/usuniętych użytkowników podano 60 dni, aby przeprowadzić uaktualnienie do obsługiwanej wersji. W przypadku wersji poprawek klienci otrzymują 30 dni na uaktualnienie do obsługiwanej wersji.
 
 Powiadomienia są wysyłane za pośrednictwem:
 
-* [Informacje o wersji usługi AKS](https://aka.ms/aks/releasenotes)
-* Powiadomienia o witrynie Azure portal
+* [Informacje o wersji AKS](https://aka.ms/aks/releasenotes)
+* Powiadomienia Azure Portal
 * [Kanał aktualizacji platformy Azure][azure-update-channel]
 
-### <a name="policy-exceptions"></a>Wyjątki od zasad
+### <a name="policy-exceptions"></a>Wyjątki zasad
 
-AKS zastrzega sobie prawo do dodawania lub usuwania nowe i istniejące wersje, zidentyfikowanych mieć co najmniej jeden produkcyjne krytyczne, wpływ na błędy lub problemy z zabezpieczeniami bez wcześniejszego powiadomienia.
+AKS zastrzega sobie prawo do dodawania lub usuwania nowych/istniejących wersji, które zostały zidentyfikowane, aby mieć co najmniej jeden krytyczny wpływ na błędy lub problemy z zabezpieczeniami bez wcześniejszego powiadomienia.
 
-Wersje określona poprawka może zostać pominięta lub accelerated wdrożenia, w zależności od ważności problemu usterki lub zabezpieczeń.
+Określone wersje poprawek mogą zostać pominięte lub przyspieszone wdrożenia w zależności od ważności usterki lub problemu z zabezpieczeniami.
 
-### <a name="azure-portal-and-cli-default-versions"></a>Witryna Azure portal i interfejs wiersza polecenia domyślne wersje
+### <a name="azure-portal-and-cli-default-versions"></a>Azure Portal i domyślne wersje interfejsu wiersza polecenia
 
-Podczas wdrażania klastra usługi AKS w portalu lub przy użyciu wiersza polecenia platformy Azure, klaster ma zawsze wartość wersji pomocniczej n-1 i najnowszych poprawek. Na przykład, jeśli obsługuje AKS *1.13.x*, *1.12.a* + *1.12.b*, *1.11.a*  +   *1.11.b*, *1.10.a* + *1.10b*, jest wersja domyślna dla nowych klastrów *1.12.b*.
+W przypadku wdrażania klastra AKS w portalu lub za pomocą interfejsu wiersza polecenia platformy Azure klaster jest zawsze ustawiany jako wersja pomocnicza N-1 i Najnowsza poprawka. Na przykład jeśli AKS obsługuje *1.13. x*, *1.12. a* + *1.12. b*, *1.11* +  + . a*1.11. b*, *1.10*. a*b*, domyślna wersja dla nowych klastrów to *1.12. b* .
 
-AKS wartość domyślna to n-1 (na przykład 1.12.b minor.latestPatch) aby zapewnić klientom znanych, stabilnego i poprawiono wersji domyślnie.
+AKS domyślnie N-1 (pomocnicze. latestPatch, EG 1.12. b), aby zapewnić klientom domyślnie znaną, stabilną i zaznaczoną dla wersji wersję.
 
-## <a name="list-currently-supported-versions"></a>Lista aktualnie obsługiwane wersje
+## <a name="list-currently-supported-versions"></a>Wyświetl listę obecnie obsługiwanych wersji
 
-Aby dowiedzieć się, jakie wersje są obecnie dostępne dla Twojej subskrypcji oraz regionu, należy użyć [az aks get wersje] [ az-aks-get-versions] polecenia. Poniższy przykład wyświetla listę dostępnych wersji rozwiązania Kubernetes dla *EastUS* regionu:
+Aby dowiedzieć się, jakie wersje są obecnie dostępne dla Twojej subskrypcji i regionu, użyj polecenia [AZ AKS Get-Versions][az-aks-get-versions] . Poniższy przykład zawiera listę dostępnych wersji Kubernetes dla regionu *wschodniego* :
 
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
 ```
 
-Dane wyjściowe są podobne do poniższego przykładu, który pokazuje tę wersję rozwiązania Kubernetes *pytanie 1.13.5* jest dostępny do najnowszej wersji:
+Dane wyjściowe są podobne do poniższego przykładu, który pokazuje, że Kubernetes wersja *1.13.5* to najnowsza dostępna wersja:
 
 ```
 KubernetesVersion    Upgrades
@@ -144,28 +155,28 @@ KubernetesVersion    Upgrades
 
 ## <a name="faq"></a>Często zadawane pytania
 
-**Co się stanie, gdy klient uaktualni klaster usługi Kubernetes przy użyciu wersji pomocniczej, która nie jest obsługiwana?**
+**Co się stanie, gdy klient uaktualnia klaster Kubernetes z nieobsługiwaną wersją pomocniczą?**
 
-Jeśli użytkownik pracuje na *n-4* wersji, możesz znajdują się poza pomocy technicznej i zostanie poproszony o uaktualnienie. W przypadku uaktualnienia z wersji n-4 do n-3 zakończy się powodzeniem, jest teraz w ramach naszych zasad pomocy technicznej. Na przykład:
+Jeśli korzystasz z wersji *n-4* , jesteś poza pomocą techniczną i zostanie wyświetlony monit o uaktualnienie. Jeśli uaktualnienie z wersji n-4 do n-3 powiedzie się, jesteś teraz w naszych zasadach pomocy technicznej. Na przykład:
 
-- W przypadku obsługiwanych wersji usługi AKS *1.13.x*, *1.12.a* + *1.12.b*, *1.11.c*  +  *1.11d*, i *1.10.e* + *1.10F* i znajdują się na *1.9.g* lub *1.9.h*, znajdują się poza pomocy technicznej.
-- Jeśli uaktualnienie z *1.9.g* lub *1.9.h* do *1.10.e* lub *1.10.f* zakończy się powodzeniem, są ponownie w ramach naszych zasad pomocy technicznej.
+- Jeśli obsługiwane wersje AKS to *1.13. x*, *1.12. a* + *1.12. b*, *1.11. c* + *1.11 d*, i *1.10. e* + *1.10 f* i w dniu *1.9. g* lub *1.9. h*, jesteś poza pomocą techniczną.
+- Jeśli uaktualnienie z *1,9. g* lub *1.9. h* do *1.10. e* lub *1.10. f* powiedzie się, jesteś z powrotem w ramach naszych zasad pomocy technicznej.
 
-Uaktualnienia do wersji starszej niż *n-4* nie są obsługiwane. W takich przypadkach firma Microsoft zaleca klientom tworzenie nowych klastrów usługi AKS i ponownie wdrożyć swoje obciążenia.
+Uaktualnienia do wersji starszych niż *n-4* nie są obsługiwane. W takich przypadkach zalecamy utworzenie nowych klastrów AKS i ponowne wdrożenie ich obciążeń.
 
-**Co oznacza "poza Support"**
+**Co oznacza "poza pomocą techniczną"**
 
-"Poza pomocy technicznej" oznacza, że wersję, którą pracujesz, jest poza listą obsługiwanych wersji i użytkownik będzie musiał uaktualnić klaster do obsługiwanej wersji, przesyłając żądanie pomocy technicznej. Ponadto AKS nie powoduje żadnych wykonawcza lub innych gwarancji, w przypadku klastrów poza listą obsługiwanych wersji.
+"Poza obsługą" oznacza, że uruchomiona wersja znajduje się poza listą obsługiwanych wersji, a podczas żądania pomocy technicznej zostanie wyświetlony monit o uaktualnienie klastra do obsługiwanej wersji. Ponadto AKS nie wykonuje żadnego środowiska uruchomieniowego ani innych gwarancji dla klastrów spoza listy obsługiwanych wersji.
 
-**Co się stanie, gdy klient skaluje klaster usługi Kubernetes przy użyciu wersji pomocniczej, która nie jest obsługiwana?**
+**Co się stanie, gdy klient skaluje klaster Kubernetes z wersją pomocniczą, która nie jest obsługiwana?**
 
-Dla wersji pomocniczej, nie są obsługiwane przez usługę AKS skalowanie do wewnątrz lub na zewnątrz w dalszym ciągu działać bez problemów.
+W przypadku wersji pomocniczych nieobsługiwanych przez AKS skalowanie w górę lub w dół w dalszym ciągu działa bez żadnych problemów.
 
-**Można klient Pozostań na wersję rozwiązania Kubernetes nieskończona?**
+**Czy klient może nadal korzystać z wersji Kubernetes?**
 
-Tak. Jednakże jeśli klaster nie znajduje się w jednej z wersji obsługiwane przez usługę AKS, klastra jest poza zasady pomocy technicznej usługi AKS. Azure automatycznie uaktualnić klaster lub usunąć łącznik.
+Tak. Jeśli jednak klaster nie znajduje się w jednej z wersji obsługiwanej przez AKS, klaster jest spoza zasad obsługi AKS. Platforma Azure nie uaktualnia automatycznie klastra ani nie usuwa go.
 
-**Jaka wersja jest główny Pomocy technicznej, jeśli klaster agenta nie znajduje się w jednym z obsługiwanych wersji usługi AKS?**
+**Jaka wersja jest obsługiwana przez główną, Jeśli klaster agentów nie znajduje się w jednej z obsługiwanych wersji AKS?**
 
 Wzorzec zostanie automatycznie zaktualizowany do najnowszej obsługiwanej wersji.
 

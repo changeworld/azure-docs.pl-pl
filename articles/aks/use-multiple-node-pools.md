@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 4ba9840d745995fdf7b8b14889a0c021917f0ec3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 72f34d9711e1ba4658288bfdeb847632d32d0fcf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278173"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68478327"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -32,7 +32,7 @@ Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.61 lub no
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
 
-Aby można było używać wielu nodepools, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej AKS* , wykorzystując polecenie [AZ Extension Add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] ::
+Aby można było używać wielu nodepools, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji* zapoznawczej przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] ::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -145,7 +145,9 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 
 ## <a name="upgrade-a-node-pool"></a>Uaktualnianie puli węzłów
 
-Po utworzeniu klastra AKS w pierwszym kroku został określony element `--kubernetes-version` *1.13.5* . Uaktualnimy *mynodepool* do Kubernetes *1.13.7*. Użyj polecenia [AZ AKS Node Pool upgrade][az-aks-nodepool-upgrade] , aby uaktualnić pulę węzłów, jak pokazano w następującym przykładzie:
+Po utworzeniu klastra AKS w pierwszym kroku został określony element `--kubernetes-version` *1.13.5* . Ustawia wersję Kubernetes dla płaszczyzny kontroli i początkowej puli węzłów. Istnieją różne polecenia służące do uaktualniania wersji Kubernetes płaszczyzny kontroli i puli węzłów. Polecenie jest używane do uaktualniania płaszczyzny kontroli, `az aks nodepool upgrade` podczas gdy jest używana do uaktualnienia puli poszczególnych węzłów. `az aks upgrade`
+
+Uaktualnimy *mynodepool* do Kubernetes *1.13.7*. Użyj polecenia [AZ AKS Node Pool upgrade][az-aks-nodepool-upgrade] , aby uaktualnić pulę węzłów, jak pokazano w następującym przykładzie:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -155,6 +157,9 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.7 \
     --no-wait
 ```
+
+> [!Tip]
+> Aby uaktualnić płaszczyznę kontroli do *1.13.7*, uruchom `az aks upgrade -k 1.13.7`polecenie.
 
 Ponownie utwórz listę stan pul węzłów za pomocą polecenia [AZ AKS Node Pool list][az-aks-nodepool-list] . Poniższy przykład pokazuje, że *mynodepool* jest w stanie *uaktualnienia* do *1.13.7*:
 
@@ -170,6 +175,15 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 Uaktualnienie węzłów do określonej wersji może potrwać kilka minut.
 
 Najlepszym rozwiązaniem jest uaktualnienie wszystkich pul węzłów w klastrze AKS do tej samej wersji Kubernetes. Możliwość uaktualnienia poszczególnych pul węzłów umożliwia przeprowadzenie uaktualnienia stopniowego i zaplanowanie między pulami węzłów, aby zachować czas działania aplikacji.
+
+> [!NOTE]
+> Kubernetes używa standardowego schematu [](https://semver.org/) obsługi wersji semantycznej. Numer wersji jest wyrażony jako *x. y. z*, gdzie *x* jest wersją główną, *y* jest wersją pomocniczą, a *z* to wersja poprawki. Na przykład w wersji *1.12.6*1 jest wersją główną, 12 jest wersją pomocniczą, a 6 to wersja poprawki. Wersja Kubernetes płaszczyzny kontroli oraz początkowa Pula węzłów są ustawiane podczas tworzenia klastra. Wszystkie dodatkowe pule węzłów mają ustawioną wersję Kubernetes po dodaniu ich do klastra. Wersje Kubernetes mogą się różnić między pulami węzłów, a także między pulą węzłów i płaszczyzną kontroli, ale obowiązują następujące ograniczenia:
+> 
+> * Wersja puli węzłów musi mieć taką samą wersję główną jak płaszczyzna kontroli.
+> * Wersja puli węzłów może być jedną wersją pomocniczą mniejszą niż wersja płaszczyzny kontroli.
+> * Wersja puli węzłów może być dowolną wersją poprawki, o ile są spełnione inne dwa ograniczenia.
+> 
+> Aby uaktualnić wersję Kubernetes płaszczyzny kontroli, użyj `az aks upgrade`. Jeśli klaster ma tylko jedną pulę węzłów, `az aks upgrade` polecenie spowoduje również uaktualnienie wersji Kubernetes puli węzłów.
 
 ## <a name="scale-a-node-pool"></a>Skalowanie puli węzłów
 
@@ -270,8 +284,8 @@ aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.5
 
 Harmonogram Kubernetes może używać przyniesień i tolerowanych elementów w celu ograniczenia obciążeń, które mogą być uruchamiane w węzłach.
 
-* Do  węzła jest stosowany obiekt, który wskazuje na ich zaplanowanie tylko określonych zasobników.
-* **Tolerowana** jest następnie stosowana do elementu, który umożliwia im tolerowanie  kształtu węzła.
+* Do **węzła jest stosowany** obiekt, który wskazuje na ich zaplanowanie tylko określonych zasobników.
+* **Tolerowana** jest następnie stosowana do elementu, który umożliwia im tolerowanie kształtu węzła.
 
 Aby uzyskać więcej informacji na temat korzystania z zaawansowanych funkcji usługi Kubernetes, zobacz [najlepsze rozwiązania dotyczące zaawansowanych funkcji usługi Scheduler w AKS][taints-tolerations]
 

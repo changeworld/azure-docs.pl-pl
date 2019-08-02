@@ -1,124 +1,124 @@
 ---
-title: Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
-description: Dowiedz się, jak tworzyć grupy i zarządzać nimi akcji w witrynie Azure portal.
+title: Tworzenie grup akcji i zarządzanie nimi w Azure Portal
+description: Dowiedz się, jak tworzyć grupy akcji i zarządzać nimi w Azure Portal.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/08/2019
+ms.date: 7/22/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 842965aa49ae4cd546fe9c107107d2a2ceebebbb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 52d7b84fe6210d8a4d46814ad6749bed0463478e
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705256"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405651"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
-Grupy akcji to zbiór preferencje powiadamiania zdefiniowane przez właściciela subskrypcji platformy Azure. Alerty monitorowania i kondycji usług platformy Azure umożliwia powiadomienie użytkowników, czy alert został wywołany grup akcji. Różne alerty może używać tej samej grupy akcji lub grupy inną akcję w zależności od wymagań użytkownika. Można skonfigurować maksymalnie 2000 grup akcji w ramach subskrypcji.
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup akcji i zarządzanie nimi w Azure Portal
+Grupa akcji to zbiór preferencji powiadomień definiowanych przez właściciela subskrypcji platformy Azure. Alerty Azure Monitor i Service Health umożliwiają Powiadamianie użytkowników o wyzwoleniu alertu. Różne alerty mogą korzystać z tej samej grupy akcji lub różnych grup akcji w zależności od wymagań użytkownika. W ramach subskrypcji można skonfigurować maksymalnie 2 000 grup akcji.
 
-Możesz skonfigurować akcję, aby powiadomić osoby, adres e-mail lub wiadomości SMS, otrzymują potwierdzenie wskazujący, że zostały one dodane do grupy akcji.
+Użytkownik konfiguruje akcję w celu powiadomienia osoby za pośrednictwem poczty e-mail lub wiadomości SMS otrzymuje potwierdzenie wskazujące, że zostały dodane do grupy akcji.
 
-W tym artykule przedstawiono sposób tworzenia grup i zarządzanie nimi akcji w witrynie Azure portal.
+W tym artykule przedstawiono sposób tworzenia grup akcji i zarządzania nimi w Azure Portal.
 
-Każda akcja składa się z następującymi właściwościami:
+Każda akcja składa się z następujących właściwości:
 
-* **Nazwa**: Unikatowy identyfikator w obrębie grupy akcji.  
-* **Typ akcji**: Akcja została wykonana. Przykłady obejmują wysyłanie pocztą e-mail wywołanie, wiadomość SMS, głos; lub różnego rodzaju akcje automatyczne wyzwalanie. Zobacz typy w dalszej części tego artykułu.
-* **Szczegóły**: Odpowiednimi szczegółami, które różnią się zależnie od *typ akcji*.
+* **Nazwa**: Unikatowy identyfikator w grupie akcji.  
+* **Typ akcji**: Wykonana akcja. Przykładami mogą być wysyłanie połączeń głosowych, wiadomości SMS i poczty e-mail; lub wyzwalając różne typy zautomatyzowanych akcji. Zobacz typy w dalszej części tego artykułu.
+* **Szczegóły**: Odpowiednie szczegóły, które różnią się w zależności od *typu akcji*.
 
-Aby uzyskać informacje na temat konfigurowania grup akcji przy użyciu szablonów usługi Azure Resource Manager, zobacz [szablonów usługi Resource Manager grupy akcji](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Aby uzyskać informacje na temat sposobu konfigurowania grup akcji przy użyciu szablonów Azure Resource Manager, zobacz [Group action Menedżer zasobów templates](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-## <a name="create-an-action-group-by-using-the-azure-portal"></a>Tworzenie grupy akcji przy użyciu witryny Azure portal
+## <a name="create-an-action-group-by-using-the-azure-portal"></a>Tworzenie grupy akcji przy użyciu Azure Portal
 
-1. W [witryny Azure portal](https://portal.azure.com), wybierz opcję **Monitor**. **Monitor** okienko konsoliduje wszystkie ustawienia monitorowania i danych w jednym widoku.
+1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Monitoruj**. Okienko **monitorowanie** konsoliduje wszystkie ustawienia monitorowania i dane w jednym widoku.
 
     ![Usługa "Monitor"](./media/action-groups/home-monitor.png)
     
-1. Wybierz **alerty** polecenie **zarządzać akcjami**.
+1. Wybierz pozycję **alerty** , a następnie wybierz pozycję **Zarządzaj akcjami**.
 
-    ![Zarządzanie przycisk Akcje](./media/action-groups/manage-action-groups.png)
+    ![Przycisk zarządzania akcjami](./media/action-groups/manage-action-groups.png)
     
-1. Wybierz **Dodaj grupę akcji**, a następnie wypełnij pola.
+1. Wybierz pozycję **Dodaj grupę akcji**i wypełnij pola.
 
     ![Polecenie "Dodaj grupę akcji"](./media/action-groups/add-action-group.png)
     
-1. Wprowadź nazwę w **Nazwa grupy akcji** polu, a następnie wprowadź nazwę w **krótką nazwę** pole. Nazwa krótka jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
+1. Wprowadź nazwę w polu **Nazwa grupy akcji** , a następnie wprowadź nazwę w polu krótka **Nazwa** . Nazwa krótka jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
 
-      ![Okno dialogowe Dodawanie grupy akcji"](./media/action-groups/action-group-define.png)
+      ![Okno dialogowe Dodawanie grupy akcji](./media/action-groups/action-group-define.png)
 
-1. **Subskrypcji** polu autofills przy użyciu Twojej bieżącej subskrypcji. Ta subskrypcja jest ten, w którym jest zapisany do grupy akcji.
+1. Pole **subskrypcji** wypełnia bieżącą subskrypcję. Ta subskrypcja jest taka, w której jest zapisywana grupa akcji.
 
-1. Wybierz **grupy zasobów** w są zapisywane do grupy akcji.
+1. Wybierz **grupę zasobów** , w której jest zapisywana grupa akcji.
 
-1. Zdefiniuj listę akcji. Podaj następujące czynności dla każdej akcji:
+1. Zdefiniuj listę akcji. Dla każdej akcji podaj następujące elementy:
 
     1. **Nazwa**: Wprowadź unikatowy identyfikator dla tej akcji.
 
-    1. **Typ akcji**: Wybierz adres E-mail/SMS/wypychania/rejestr, aplikację logiki, element Webhook, ITSM lub elementu Runbook usługi Automation.
+    1. **Typ akcji**: Wybierz pozycję Poczta E-mail/SMS/wypychanie/głos, aplikacja logiki, element webhook, narzędzia ITSM lub element Runbook usługi Automation.
 
-    1. **Szczegóły**: Na podstawie akcji typu, wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook, aplikacja platformy Azure, połączenia narzędzia ITSM lub elementu runbook usługi Automation. Dla akcji ITSM, należy również określić **elementu roboczego** i wymaga narzędziem ITSM, inne pola.
+    1. **Szczegóły**: Na podstawie typu akcji wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook, aplikację platformy Azure, połączenie narzędzia ITSM lub element Runbook usługi Automation. Dla akcji narzędzia ITSM należy dodatkowo określić **element roboczy** i inne pola wymagane przez narzędzie narzędzia ITSM.
     
-    1. **Wspólny schemat alertu**: Istnieje możliwość włączenia [wspólny schemat alertu](https://aka.ms/commonAlertSchemaDocs), zapewniającą zaletą pojedynczej rozszerzalne i ujednoliconego ładunku alertu przez ten alert usługi w usłudze Azure Monitor.
+    1. **Wspólny schemat alertów**: Możesz włączyć [wspólny schemat alertów](https://aka.ms/commonAlertSchemaDocs), który umożliwia korzystanie z jednego rozszerzalnego i ujednoliconego ładunku alertów dla wszystkich usług alertów w Azure monitor.
 
-1. Wybierz **OK** można utworzyć grupy akcji.
+1. Wybierz **przycisk OK** , aby utworzyć grupę akcji.
 
-## <a name="manage-your-action-groups"></a>Zarządzanie grupami działań
+## <a name="manage-your-action-groups"></a>Zarządzanie grupami akcji
 
-Po utworzeniu grupy akcji, jest ona widoczna na **grup akcji** części **Monitor** okienka. Wybierz grupę akcji, które mają być zarządzane do:
+Po utworzeniu grupy akcji jest ona widoczna w sekcji **grupy akcji** okienka **monitorowanie** . Wybierz grupę akcji, do której chcesz zarządzać:
 
 * Dodawanie, edytowanie lub usuwanie akcji.
 * Usuń grupę akcji.
 
-## <a name="action-specific-information"></a>Informacje o określonej akcji
+## <a name="action-specific-information"></a>Informacje dotyczące akcji
 
 > [!NOTE]
-> Zobacz [limity usług subskrypcji do monitorowania](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) dla ograniczeń numerycznych na każdym z poniższych elementów.  
+> Zobacz [limity usługi subskrypcji, aby monitorować](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) limity liczbowe dla każdego z poniższych elementów.  
 
-### <a name="azure-app-push-notifications"></a>Powiadomienia Push aplikacji platformy Azure
-Ograniczona liczba akcji aplikacji platformy Azure może mieć w grupy akcji.
+### <a name="azure-app-push-notifications"></a>Powiadomienia push aplikacji platformy Azure
+W grupie akcji może istnieć ograniczona liczba akcji aplikacji platformy Azure.
 
 ### <a name="email"></a>Email
-Wiadomości e-mail będą wysyłane z następujących adresów e-mail. Upewnij się, że filtrowanie wiadomości e-mail jest prawidłowo skonfigurowany
+Wiadomości e-mail będą wysyłane z następujących adresów e-mail. Upewnij się, że filtrowanie poczty e-mail jest skonfigurowane odpowiednio
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-Mogą mieć ograniczoną liczbę akcji poczty e-mail do grupy akcji. Zobacz [ograniczania informacje o szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) artykułu.
+W grupie akcji może istnieć ograniczona liczba akcji poczty e-mail. Zobacz artykuł [Informacje o ograniczeniu szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
 ### <a name="itsm"></a>ITSM
-Akcja ITSM wymaga połączenia narzędzia ITSM. Dowiedz się, jak utworzyć [połączenia narzędzia ITSM](../../azure-monitor/platform/itsmc-overview.md).
+Akcja narzędzia ITSM wymaga połączenia narzędzia ITSM. Dowiedz się, jak utworzyć [połączenie narzędzia ITSM](../../azure-monitor/platform/itsmc-overview.md).
 
-Mogą mieć ograniczoną liczbę akcje ITSM w grupy akcji. 
+W grupie akcji może istnieć ograniczona liczba akcji narzędzia ITSM. 
 
 ### <a name="logic-app"></a>Aplikacja logiki
-Może być ograniczona liczba akcji aplikacji logiki do grupy akcji.
+W grupie akcji może istnieć ograniczona liczba akcji aplikacji logiki.
 
 ### <a name="function"></a>Funkcja
-Klawiszy funkcyjnych dla aplikacji funkcji, skonfigurowany jako akcje są odczytywane przy użyciu interfejsu API funkcji wymagająca aplikacji funkcji w wersji 2 do skonfigurowania aplikacji, ustawienie "AzureWebJobsSecretStorageType" na "files". Aby uzyskać więcej informacji, zobacz [zmieni się na zarządzanie kluczami w funkcje w wersji 2]( https://aka.ms/funcsecrets).
+Klucze funkcji dla aplikacji funkcji skonfigurowanych jako akcje są odczytywane za pomocą interfejsu API funkcji, który obecnie wymaga aplikacji funkcji w wersji 2, aby skonfigurować ustawienie aplikacji "AzureWebJobsSecretStorageType" jako "Files". Aby uzyskać więcej informacji, zobacz [zmiany w zarządzaniu kluczami w funkcjach v2]( https://aka.ms/funcsecrets).
 
-Mogą mieć ograniczoną liczbę funkcji akcji grupy akcji.
+W grupie akcji może istnieć ograniczona liczba akcji funkcji.
 
-### <a name="automation-runbook"></a>Element Runbook usługi Automation
-Zapoznaj się [limity usług subskrypcji platformy Azure](../../azure-subscription-service-limits.md) limity ładunków elementu Runbook.
+### <a name="automation-runbook"></a>Element runbook automatyzacji
+Limity dotyczące ładunków elementów Runbook można znaleźć w [limitach usługi subskrypcji platformy Azure](../../azure-subscription-service-limits.md) .
 
-Grupy akcji, mogą mieć ograniczoną liczbę działań elementu Runbook. 
+W grupie akcji może istnieć ograniczona liczba akcji elementu Runbook. 
 
 ### <a name="sms"></a>SMS
-Zobacz [ograniczania informacje o szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) i [SMS alert zachowanie](../../azure-monitor/platform/alerts-sms-behavior.md) dodatkowe ważne informacje.
+Aby uzyskać dodatkowe informacje, zobacz [informacje dotyczące ograniczania szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) oraz [zachowanie alertu programu SMS](../../azure-monitor/platform/alerts-sms-behavior.md) .
 
-Mogą mieć ograniczoną liczbę akcji programu SMS w grupy akcji.  
+W grupie akcji może istnieć ograniczona liczba akcji programu SMS.  
 
-### <a name="voice"></a>Połączenia głosowe
-Zobacz [ograniczania informacje o szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) artykułu.
+### <a name="voice"></a>Głos
+Zobacz artykuł [Informacje o ograniczeniu szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
-Mogą mieć ograniczoną liczbę akcji głosu w grupy akcji.
+W grupie akcji może istnieć ograniczona liczba akcji głosowych.
 
-### <a name="webhook"></a>Webhook
-Elementy Webhook są zwalniane, używając następujących reguł. Wywołanie elementu webhook zostanie ponowiony więcej niż 2 godziny po następujące kody stanu HTTP są zwracane: 408, 429, 503, 504 lub punkt końcowy HTTP nie odpowiada. Pierwsze ponowienie próby odbywa się po 10 sekundach. Drugi ponawiania odbywa się po 100 sekund. Po awarii dwóch węzłów żadna grupa akcji wywoła punktu końcowego w ciągu 30 minut. 
+### <a name="webhook"></a>Element webhook
+Próby elementów webhook zostały ponowione przy użyciu następujących reguł. Wywołanie elementu webhook jest ponawiane maksymalnie 2 razy, gdy zwracane są następujące kody stanu HTTP: 408, 429, 503, 504 lub punkt końcowy HTTP nie odpowiada. Pierwsze ponowienie próby odbywa się po 10 sekundach. Druga ponowna próba nastąpi po 100 sekundach. Po dwóch awariach żadna grupa akcji nie będzie wywoływała punktu końcowego przez 30 minut. 
 
-Zakresy adresów IP źródła
+Zakresy źródłowych adresów IP
  - 13.72.19.232
  - 13.106.57.181
  - 13.106.54.3
@@ -126,6 +126,7 @@ Zakresy adresów IP źródła
  - 13.106.38.142
  - 13.106.38.148
  - 13.106.57.196
+ - 13.106.57.197
  - 52.244.68.117
  - 52.244.65.137
  - 52.183.31.0
@@ -134,33 +135,33 @@ Zakresy adresów IP źródła
  - 51.5.148.86
  - 51.5.149.19
 
-Aby otrzymywać aktualizacje o zmianach na te adresy IP, zalecane Konfigurowanie alertu usługa kondycji monitoruje informacyjny powiadomień dotyczących usługi grupy akcji.
+Aby otrzymywać aktualizacje dotyczące zmian wprowadzonych w tych adresach IP, zalecamy skonfigurowanie alertu Service Health, który monitoruje powiadomienia informacyjne o usłudze grup akcji.
 
-Mogą mieć ograniczoną liczbę akcji elementów Webhook w grupy akcji.
+W grupie akcji może istnieć ograniczona liczba akcji elementu webhook.
 
-#### <a name="secure-webhook"></a>Zabezpieczenia elementu Webhook
-**Funkcja bezpiecznego elementu Webhook jest obecnie w wersji zapoznawczej.**
+#### <a name="secure-webhook"></a>Zabezpieczanie elementu webhook
+**Funkcja bezpiecznego elementu webhook jest obecnie dostępna w wersji zapoznawczej.**
 
-Ta akcja elementu Webhook grup akcji umożliwia korzystanie z zalet usługi Azure Active Directory, aby zabezpieczyć połączenia między grupy akcji i chronionego internetowego interfejsu API (punkt końcowy elementu webhook). Poniżej opisano ogólny przepływ pracy korzystając z zalet tej funkcji. Aby uzyskać omówienie aplikacje usługi Azure AD i nazwy główne usług, zobacz [Przegląd platformy (w wersji 2.0) programu Microsoft identity](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+Akcja elementu webhook grup akcji umożliwia korzystanie z Azure Active Directory w celu zabezpieczenia połączenia między grupą akcji i chronionym internetowym interfejsem API (punkt końcowy elementu webhook). Poniżej opisano ogólny przepływ pracy w celu skorzystania z zalet tej funkcji. Omówienie aplikacji usługi Azure AD i nazw głównych usług można znaleźć w temacie [Microsoft Identity platform (v 2.0) — Omówienie](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
 
-1. Utwórz aplikację usługi Azure AD chronionego internetowego interfejsu API. Zobacz https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
-    - Skonfiguruj chronione interfejsu API można wywoływać za pomocą aplikacji demona.
+1. Utwórz aplikację usługi Azure AD dla chronionego internetowego interfejsu API. Zobacz https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
+    - Skonfiguruj chroniony interfejs API do wywoływania przez aplikację demona.
     
-1. Włącz grup akcji w celu korzystania z aplikacji usługi AD systemu Azure.
+1. Włącz grupy akcji, aby korzystać z aplikacji usługi Azure AD.
 
     > [!NOTE]
-    > Musisz być członkiem [roli administratora usługi Azure AD aplikacji](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) do uruchomienia tego skryptu.
+    > Aby wykonać ten skrypt, musisz być członkiem [roli administratora aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) .
     
-    - Zmodyfikuj wywołanie Connect-AzureAD skrypt programu PowerShell Użyj identyfikatora swojej dzierżawy usługi Azure AD.
-    - Zmodyfikuj skrypt programu PowerShell zmiennej $myAzureADApplicationObjectId używanej identyfikator obiektu aplikacji usługi AD systemu Azure
+    - Zmodyfikuj wywołanie Connect-AzureAD skryptu programu PowerShell, aby użyć identyfikatora dzierżawy usługi Azure AD.
+    - Zmodyfikuj zmienną $myAzureADApplicationObjectId skryptu programu PowerShell, aby użyć identyfikatora obiektu aplikacji usługi Azure AD
     - Uruchom zmodyfikowany skrypt.
     
-1. Konfigurowanie akcji elementu Webhook grupy akcji.
-    - Skopiuj $myApp.ObjectId wartości ze skryptu, a następnie wprowadź go w polu Identyfikator obiektu aplikacji w definicji działania elementu Webhook.
+1. Skonfiguruj akcję elementu webhook grupy akcji.
+    - Skopiuj wartość $myApp. ObjectId ze skryptu i wprowadź ją w polu Identyfikator obiektu aplikacji w definicji akcji elementu webhook.
     
-    ![Zabezpieczanie Akcja elementu Webhook](./media/action-groups/action-groups-secure-webhook.png)
+    ![Akcja bezpiecznego elementu webhook](./media/action-groups/action-groups-secure-webhook.png)
 
-##### <a name="secure-webhook-powershell-script"></a>Zabezpieczanie skrypt programu PowerShell elementu Webhook
+##### <a name="secure-webhook-powershell-script"></a>Bezpieczny skrypt programu PowerShell elementu webhook
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -230,10 +231,10 @@ Write-Host $myApp.AppRoles
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [SMS alert zachowanie](../../azure-monitor/platform/alerts-sms-behavior.md).  
-* Uzyskaj [zrozumieć schemat elementów webhook alertu dziennika aktywności](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* Dowiedz się więcej o [łącznik ITSM](../../azure-monitor/platform/itsmc-overview.md)
-* Dowiedz się więcej o [szybkości](../../azure-monitor/platform/alerts-rate-limiting.md) alerty.
-* Pobierz [Przegląd alertów dziennika aktywności](../../azure-monitor/platform/alerts-overview.md)i Dowiedz się, jak otrzymywać alerty.  
-* Dowiedz się, jak [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się więcej na temat [zachowania alertu programu SMS](../../azure-monitor/platform/alerts-sms-behavior.md).  
+* Uzyskaj [informacje na temat schematu elementu webhook alertu dziennika aktywności](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
+* Dowiedz się więcej o [Łącznik ITSM](../../azure-monitor/platform/itsmc-overview.md)
+* Dowiedz się [](../../azure-monitor/platform/alerts-rate-limiting.md) więcej o ograniczaniu liczby alertów.
+* Zapoznaj się z [omówieniem alertów dziennika aktywności](../../azure-monitor/platform/alerts-overview.md)i Dowiedz się, jak otrzymywać alerty.  
+* Informacje o sposobie [konfigurowania alertów za każdym razem, gdy jest ogłaszane powiadomienie o kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).

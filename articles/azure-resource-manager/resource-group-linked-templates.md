@@ -4,14 +4,14 @@ description: Opisuje sposób użycia połączonymi szablonami w szablonie usług
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4a5fe1bd2bf57fbec240ab242dd889014dde9578
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206431"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311700"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Za pomocą połączone i zagnieżdżone szablony, podczas wdrażania zasobów platformy Azure
 
@@ -24,7 +24,7 @@ Korzystając z połączonymi szablonami, można utworzyć głównego szablonu, k
 Aby zapoznać się z samouczkiem, zobacz [samouczek: Tworzenie szablonów usługi połączonej usługi Azure Resource Manager](./resource-manager-tutorial-create-linked-templates.md).
 
 > [!NOTE]
-> Dla połączonych lub zagnieżdżonych szablonów, można użyć tylko [przyrostowe](deployment-modes.md) tryb wdrożenia.
+> W przypadku szablonów połączonych lub zagnieżdżonych można używać tylko [](deployment-modes.md) trybu wdrożenia przyrostowego.
 >
 
 ## <a name="link-or-nest-a-template"></a>Połącz lub zagnieżdżanie szablonu
@@ -83,14 +83,14 @@ Aby zagnieździć szablonu w ramach głównego szablonu, należy użyć **szablo
 > [!NOTE]
 > Zagnieżdżone szablony nie można używać parametry lub zmienne, które są zdefiniowane w obrębie zagnieżdżonych szablonów. Można użyć parametrów i zmiennych z głównego szablonu. W powyższym przykładzie `[variables('storageName')]` pobiera wartość z głównego szablonu, a nie zagnieżdżonych szablonów. To ograniczenie nie ma zastosowania do szablonów zewnętrznych.
 >
-> Dla dwa zasoby zdefiniowane wewnątrz zagnieżdżonych szablonów i jeden zasób jest zależny od innych, wartość zależność jest po prostu nazwą zasób zależny:
+> Dla dwóch zasobów zdefiniowanych w zagnieżdżonym szablonie, a jeden z nich zależy od drugiej, wartość zależności jest po prostu nazwą zasobu zależnego:
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"
 > ],
 > ```
 >
-> Nie można użyć `reference` funkcji w danych wyjściowych części zagnieżdżonych szablonów. Aby zwrócić wartości dla zasobów wdrożonych w zagnieżdżonych szablonów, należy przekonwertować zagnieżdżony szablon do dołączonego szablonu.
+> Nie można użyć `reference` funkcji w sekcji dane wyjściowe szablonu zagnieżdżonego dla zasobu wdrożonego w zagnieżdżonym szablonie. Aby zwrócić wartości dla zasobów wdrożonych w zagnieżdżonych szablonów, należy przekonwertować zagnieżdżony szablon do dołączonego szablonu.
 
 Zagnieżdżony szablon wymaga [tymi samymi właściwościami](resource-group-authoring-templates.md) jako standardowego szablonu.
 
@@ -147,11 +147,11 @@ Aby przekazać wartość z głównego szablonu do dołączonego szablonu, należ
 ]
 ```
 
-## <a name="using-copy"></a>Przy użyciu kopii
+## <a name="using-copy"></a>Używanie kopiowania
 
-Aby utworzyć wiele wystąpień zasobu z zagnieżdżonych szablonów, należy dodać copy element na poziomie **Microsoft.Resources/deployments** zasobów.
+Aby utworzyć wiele wystąpień zasobu z zagnieżdżonym szablonem, Dodaj element Copy na poziomie zasobu **Microsoft. resources/Deployments** .
 
-Następującego przykładowego szablonu przedstawia sposób kopiowania za pomocą zagnieżdżonych szablonów.
+Poniższy przykładowy szablon pokazuje, jak używać kopiowania z zagnieżdżonym szablonem.
 
 ```json
 "resources": [
@@ -508,7 +508,7 @@ Poniższy przykład pokazuje, jak przekazać token sygnatury dostępu Współdzi
 }
 ```
 
-W programie PowerShell możesz uzyskać token dla kontenera i wdrażanie szablonów za pomocą następujących poleceń. Należy zauważyć, że **containerSasToken** parametru jest zdefiniowane w szablonie. Nie jest parametrem w **New AzResourceGroupDeployment** polecenia.
+W programie PowerShell możesz uzyskać token dla kontenera i wdrażanie szablonów za pomocą następujących poleceń. Należy zauważyć, że **containerSasToken** parametru jest zdefiniowane w szablonie. Polecenie **New-AzResourceGroupDeployment** nie jest parametrem.
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates

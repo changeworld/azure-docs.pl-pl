@@ -1,7 +1,7 @@
 ---
-title: Uaktualnij Bing w wersji 5 interfejsu API wyszukiwania wideo do wersji 7
-titlesuffix: Azure Cognitive Services
-description: Identyfikuje części Twojej aplikacji, należy zaktualizować do używania w wersji 7.
+title: Uaktualnij interfejs API wyszukiwania wideo Bing V5 do wersji 7
+titleSuffix: Azure Cognitive Services
+description: Identyfikuje części aplikacji, które należy zaktualizować, aby użyć wersji 7.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,45 +10,45 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 32dc928147af8fbb3c84bdb76e50cee4fdabe17d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5dc4c870ae8dbe9f082456d738836aced1271732
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66386645"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500729"
 ---
-# <a name="video-search-api-upgrade-guide"></a>Przewodnik uaktualnienia z interfejsu API wyszukiwania wideo
+# <a name="video-search-api-upgrade-guide"></a>Przewodnik uaktualniania wyszukiwanie wideo API
 
-Ten przewodnik uaktualniania identyfikuje zmiany między w wersji 5 i interfejs API wyszukiwania wideo Bing w wersji 7. Użyj tego przewodnika, aby pomóc w zidentyfikowaniu części Twojej aplikacji, należy zaktualizować do używania w wersji 7.
+Ten przewodnik uaktualniania identyfikuje zmiany między wersjami 5 i 7 interfejs API wyszukiwania wideo Bing. Skorzystaj z tego przewodnika, aby ułatwić identyfikację części aplikacji, które należy zaktualizować, aby użyć wersji 7.
 
 ## <a name="breaking-changes"></a>Zmiany powodujące niezgodność
 
 ### <a name="endpoints"></a>Punkty końcowe
 
-- Numer wersji punktu końcowego zmieniła się z 5 w wersji 7. Na przykład `https://api.cognitive.microsoft.com/bing/v7.0/videos/search`.
+- Numer wersji punktu końcowego został zmieniony z 5 na wersji 7. Na przykład `https://api.cognitive.microsoft.com/bing/v7.0/videos/search`.
 
-### <a name="error-response-objects-and-error-codes"></a>Błąd odpowiedzi obiektów i kody błędów
+### <a name="error-response-objects-and-error-codes"></a>Obiekty odpowiedzi błędów i kody błędów
 
-- Wszystkie żądania zakończone niepowodzeniem powinny znajdować się teraz `ErrorResponse` obiektu w treści odpowiedzi.
+- Wszystkie żądania zakończone niepowodzeniem powinny teraz `ErrorResponse` zawierać obiekt w treści odpowiedzi.
 
 - Dodano następujące pola do `Error` obiektu.  
-  - `subCode`&mdash;Dzieli na partycje kod błędu w przedziały dyskretnych, jeśli jest to możliwe
-  - `moreDetails`&mdash;Dodatkowe informacje o błędzie opisany w `message` pola
+  - `subCode`&mdash;Dzieli kod błędu do zasobników dyskretnych, o ile to możliwe
+  - `moreDetails`&mdash;Dodatkowe informacje na temat błędu opisanego w `message` polu
    
 
-- Zastąpione następujące możliwe kody błędów w wersji 5 `code` i `subCode` wartości.
+- Zamieniono kody błędów v5 z następującymi możliwymi `code` wartościami i. `subCode`
 
-|Kod|Podrzędnego|Opis
+|Kod|Podkod|Opis
 |-|-|-
-|Błąd ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Wyszukiwarka Bing zwróci błąd ServerError w każdym przypadku, gdy wystąpi którykolwiek z warunków podkodem. Odpowiedź zawiera te błędy, jeśli kod stanu HTTP 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowane|Wyszukiwarka Bing zwróci InvalidRequest zawsze wtedy, gdy dowolnej części żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>W przypadku ParameterMissing lub ParameterInvalidValue błędu 400 jest kod stanu HTTP.<br/><br/>Jeśli ten błąd jest HttpNotAllowed, kod stanu HTTP 410.
-|RateLimitExceeded||Wyszukiwarka Bing zwróci RateLimitExceeded zawsze wtedy, gdy przekracza z zapytań na sekundę (QPS) lub zapytania na miesiąc (QPM) limitu przydziału.<br/><br/>Wyszukiwarka Bing zwróci kod stanu HTTP 429 w przypadku przekroczenia liczby zapytań na Sekundę i 403 przekroczeniu QPM.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Wyszukiwarka Bing zwróci InvalidAuthorization, kiedy Bing nie może uwierzytelnić obiektu wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje w przypadku określenia więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli ten błąd jest InvalidAuthorization, kod stanu HTTP jest 401.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Wyszukiwarka Bing zwróci InsufficientAuthorization, gdy obiekt wywołujący nie ma uprawnień dostępu do zasobu. Może to wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli ten błąd jest InsufficientAuthorization, kod stanu HTTP jest 403.
+|Błąd servererror|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing zwraca błąd servererror w każdym wystąpieniu kodu podrzędnego. Odpowiedź zawiera te błędy, jeśli kod stanu HTTP to 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowany|Bing zwraca InvalidRequest, gdy jakakolwiek część żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>Jeśli błąd to ParameterMissing lub ParameterInvalidValue, kod stanu HTTP to 400.<br/><br/>Jeśli błąd to HttpNotAllowed, kod stanu HTTP 410.
+|RateLimitExceeded||Bing zwraca RateLimitExceeded za każdym razem, gdy przekroczą limit przydziału zapytań na sekundę (zapytań) lub zapytania miesięcznie (QPM).<br/><br/>Bing zwraca kod stanu HTTP 429 w przypadku przekroczenia zapytań i 403 w przypadku przekroczenia QPM.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing zwraca InvalidAuthorization, gdy Bing nie może uwierzytelnić obiektu wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje, jeśli określono więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli błąd to InvalidAuthorization, kod stanu HTTP to 401.
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Usługa Bing zwraca InsufficientAuthorization, gdy obiekt wywołujący nie ma uprawnień dostępu do zasobu. Taka sytuacja może wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli błąd to InsufficientAuthorization, kod stanu HTTP to 403.
 
-- Następujące mapuje poprzednie kody błędów nowe kody. Jeśli zależność wykonanych o kodach błędów w wersji 5, należy odpowiednio zaktualizować swój kod.
+- Poniżej przedstawiono mapowanie poprzednich kodów błędów do nowych kodów. Jeśli pobrano zależność od kodów błędów w programie V5, zaktualizuj kod odpowiednio.
 
-|Kod wersji 5|Code.subCode w wersji 7
+|Kod w wersji 5|Kod w wersji 7. podkod
 |-|-
 |RequestParameterMissing|InvalidRequest.ParameterMissing
 RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
@@ -56,8 +56,8 @@ ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
 Wyłączone|InsufficientAuthorization.AuthorizationDisabled
-UnexpectedError|ServerError.UnexpectedError
-DataSourceErrors|ServerError.ResourceError
+UnexpectedError|Błąd servererror. UnexpectedError
+DataSourceErrors|Błąd servererror. ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
 HttpNotAllowed|InvalidRequest.HttpNotAllowed
 UserAgentMissing|InvalidRequest.ParameterMissing
@@ -67,15 +67,15 @@ InvalidAuthorizationMethod|InvalidAuthorization
 MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
 ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
 InsufficientScope|InsufficientAuthorization
-Zablokowane|InvalidRequest.Blocked
+Zablokowany|InvalidRequest. zablokowane
 
 ### <a name="query-parameters"></a>Parametry zapytania
 
-- Zmieniono nazwę `modulesRequested` parametr do zapytania [modułów](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested).  
+- Nazwa parametru zapytania została zmieniona na [moduły.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) `modulesRequested`  
 
-### <a name="object-changes"></a>Zmiany obiektu
+### <a name="object-changes"></a>Zmiany obiektów
 
-- Zmieniono nazwę `nextOffsetAddCount` pole [wideo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) do `nextOffset`. Sposób użycia przesunięcie został zmieniony. Wcześniej, należy ustawić [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) parametr do zapytania `nextOffset` wartości oraz poprzedniej wartości przesunięcia plus liczba filmów wideo w wyniku. Teraz, po prostu ustaw `offset` parametr do zapytania `nextOffset` wartość.  
+- Zmieniono nazwę `nextOffset`pola wideo na. [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) `nextOffsetAddCount` Sposób korzystania z przesunięcia również został zmieniony. Wcześniej należy ustawić parametr zapytania przesunięcia na [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) `nextOffset` wartość i poprzednią wartość przesunięcia oraz liczbę filmów wideo w wyniku. Teraz możesz po prostu ustawić `offset` parametr zapytania `nextOffset` na wartość.  
   
-- Zmieniony typ danych `relatedVideos` pola z `Video[]` do [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (zobacz [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
+- Zmieniono typ `relatedVideos` danych pola z `Video[]` na [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (zobacz [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
 

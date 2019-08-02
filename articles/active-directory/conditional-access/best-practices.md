@@ -1,6 +1,6 @@
 ---
-title: Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat czynności, które należy znać i co to jest należy unikać wykonywania podczas konfigurowania zasad dostępu warunkowego.
+title: Najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory | Microsoft Docs
+description: Informacje o kwestiach, które należy znać, oraz o tym, co należy unikać podczas konfigurowania zasad dostępu warunkowego.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,137 +11,137 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79a27fb5e243d2590e3fae85c6c820c4a43af0d5
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 08be09f7bee3aa17ff9d1baae4271e994fa235cb
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509418"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248879"
 ---
-# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania w zakresie dostępu warunkowego w usłudze Azure Active Directory
+# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory
 
-Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak autoryzowanego dostępu użytkowników można kontrolować swoje aplikacje w chmurze. Ten artykuł zawiera informacje dotyczące:
+Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)można kontrolować sposób, w jaki autoryzowani użytkownicy uzyskują dostęp do aplikacji w chmurze. Ten artykuł zawiera informacje na temat:
 
-- Czynności, które należy znać 
-- Co to jest należy unikać wykonywania podczas konfigurowania zasad dostępu warunkowego. 
+- Rzeczy, które należy znać 
+- Co należy unikać podczas konfigurowania zasad dostępu warunkowego. 
 
-W tym artykule założono, że korzystały pojęcia i terminologia opisane w temacie [co to jest dostęp warunkowy w usłudze Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
+W tym artykule założono, że znasz koncepcje i terminologię podaną w temacie [co to jest dostęp warunkowy w Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
 
-## <a name="whats-required-to-make-a-policy-work"></a>Co to są wymagane w celu zmiany celu zasad działają?
+## <a name="whats-required-to-make-a-policy-work"></a>Co jest wymagane do wprowadzenia zasad?
 
-Podczas tworzenia nowych zasad są nie użytkowników, grup, aplikacji lub kontroli dostępu, zaznaczone.
+Podczas tworzenia nowych zasad nie wybrano żadnych użytkowników, grup, aplikacji ani kontroli dostępu.
 
 ![Aplikacje w chmurze](./media/best-practices/02.png)
 
-Aby ułatwić zasad usługi działa, należy skonfigurować:
+Aby zasady działały, należy skonfigurować:
 
-| Elementy           | Jak                                  | Dlaczego |
+| Elementy           | Jaka                                  | Zalet |
 | :--            | :--                                  | :-- |
-| **Aplikacje w chmurze** |Wybierz co najmniej jedną aplikację.  | Celem zasad dostępu warunkowego jest umożliwiają kontrolowanie sposobu autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze.|
-| **Użytkownicy i grupy** | Wybierz co najmniej jednego użytkownika lub grupę, która dysponuje autoryzacją do dostępu do aplikacji w wybranej chmurze. | Zasady dostępu warunkowego, które nie ma użytkowników i grup przypisanych, nigdy nie zostanie wywołany. |
-| **Kontrola dostępu** | Wybierz co najmniej jedno dostępu kontrolkę. | Jeśli warunki są spełnione, procesor zasad musi wiedzieć, co należy zrobić. |
+| **Aplikacje w chmurze** |Wybierz co najmniej jedną aplikację.  | Celem zasad dostępu warunkowego jest umożliwienie kontroli nad sposobem, w jaki autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze.|
+| **Użytkownicy i grupy** | Wybierz co najmniej jednego użytkownika lub grupę, która ma uprawnienia dostępu do wybranych aplikacji w chmurze. | Zasady dostępu warunkowego, które nie mają przypisanych użytkowników i grup, nigdy nie są wyzwalane. |
+| **Kontrola dostępu** | Wybierz co najmniej jedną kontrolę dostępu. | Jeśli warunki są spełnione, procesor zasad musi wiedzieć, co należy zrobić. |
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
 
-### <a name="how-are-conditional-access-policies-applied"></a>Jak są stosowane zasady dostępu warunkowego
+### <a name="how-are-conditional-access-policies-applied"></a>Jak są stosowane zasady dostępu warunkowego?
 
-Więcej niż jedne zasady dostępu warunkowego może stosować, gdy uzyskujesz dostęp do aplikacji w chmurze. W takim przypadku należy spełnić wszystkie zasady, które są stosowane. Na przykład jeśli jedna zasada wymaga uwierzytelniania Wieloskładnikowego, a druga zgodnego urządzenia, należy przejść przez usługę MFA i użyj zgodnego urządzenia. 
+Podczas uzyskiwania dostępu do aplikacji w chmurze mogą być stosowane więcej niż jedna zasada dostępu warunkowego. W takim przypadku wszystkie zasady, które mają zastosowanie, muszą być spełnione. Jeśli na przykład jedna zasada wymaga usługi MFA, a druga wymaga zgodnego urządzenia, musisz przejść przez usługę MFA i użyć zgodnego urządzenia. 
 
 Wszystkie zasady są wymuszane w dwóch fazach:
 
-- W **pierwszy** fazy, wszystkie zasady są oceniane i wszystkich kontroli dostępu, które nie są spełnione są zbierane. 
-- W **drugi** fazy, zostanie wyświetlony monit, aby spełniać wymagania nie zostały spełnione. Jeśli dowolne spośród zasady blokowanie dostępu, są zablokowany, a nie otrzyma monitu o spełnia inne kontrolki zasad. Jeśli zasady zablokujemy Cię, wyświetlany jest monit o spełnia inne kontrolki zasad, w następującej kolejności:
+- W **pierwszej** fazie są oceniane wszystkie zasady i wszystkie kontrole dostępu, które nie zostały spełnione. 
+- W **drugiej** fazie zostanie wyświetlony monit o spełnienie wymagań, które nie zostały spełnione. Jeśli jedna z zasad blokuje dostęp, zostanie zablokowana i nie zostanie wyświetlony monit o spełnienie innych kontroli zasad. Jeśli zasady zostaną zablokowane, zostanie wyświetlony monit o spełnienie innych kontroli zasad w następującej kolejności:
 
    ![Zamówienie](./media/best-practices/06.png)
     
-   Zewnętrznych dostawców usługi MFA i warunki użytkowania są dalej.
+   Dostawcy zewnętrznych usług MFA i warunki użytkowania są dalej.
 
-### <a name="how-are-assignments-evaluated"></a>Jak są obliczane przypisania
+### <a name="how-are-assignments-evaluated"></a>Jak są oceniane przypisania?
 
-Wszystkie przypisania są logicznie **wykonywana**. Jeśli masz więcej niż jedno przypisanie, skonfigurowane, wszystkie przypisania muszą być spełnione do wyzwolenia zasad.  
+Wszystkie przydziały są logicznie **ANDed**. W przypadku skonfigurowania więcej niż jednego przypisania należy spełnić wszystkie przypisania, aby wyzwolić zasady.  
 
-Jeśli musisz skonfigurować warunek lokalizacji, która ma zastosowanie do wszystkich połączeń z spoza sieci organizacji:
+Jeśli trzeba skonfigurować warunek lokalizacji dotyczący wszystkich połączeń wykonanych poza siecią organizacji:
 
-- Obejmują **wszystkie lokalizacje**
-- Wyklucz **wszystkie zaufane adresy IP**
+- Uwzględnij **wszystkie lokalizacje**
+- Wyklucz **wszystkie Zaufane adresy IP**
 
-### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>Co należy zrobić, jeśli są zablokowane z portalu administratora usługi Azure AD?
+### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>Co należy zrobić, jeśli masz zablokowany Portal administratora usługi Azure AD?
 
-Jeśli użytkownik z zablokowanym dostępem do portalu usługi Azure AD z powodu niepoprawnego ustawienia zasad dostępu warunkowego:
+Jeśli masz zablokowany dostęp do portalu usługi Azure AD z powodu niepoprawnego ustawienia zasad dostępu warunkowego:
 
-- Sprawdź jest, że nie ma innych administratorów w Twojej organizacji, które nie są jeszcze zablokowane. Administrator z uprawnieniami do witryny Azure portal można wyłączyć zasady, które ma wpływ na logowanie. 
-- Jeśli żaden z administratorami w organizacji można zaktualizować zasad, należy przesłać żądanie pomocy technicznej. Pomoc techniczna firmy Microsoft można przeglądać i aktualizować zasady dostępu warunkowego, które uniemożliwiają dostęp.
+- Sprawdź, czy w organizacji znajdują się inni administratorzy, którzy nie zostali jeszcze Zablokowani. Administrator z dostępem do Azure Portal może wyłączyć zasady, które mają wpływ na logowanie. 
+- Jeśli żadna z administratorów w organizacji nie może zaktualizować zasad, należy przesłać żądanie pomocy technicznej. Pomoc techniczna firmy Microsoft może przeglądać i aktualizować zasady dostępu warunkowego, które uniemożliwiają dostęp.
 
-### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Co się stanie, jeśli masz zasady w klasycznym portalu Azure i skonfigurowany z witryny Azure portal?  
+### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Co się stanie w przypadku, gdy masz zasady w klasycznym portalu Azure i Azure Portal skonfigurowany?  
 
-Obie zasady są wymuszane przez usługę Azure Active Directory, a użytkownik uzyskuje dostęp tylko wtedy, gdy są spełnione wszystkie wymagania.
+Obie zasady są wymuszane przez Azure Active Directory, a użytkownik uzyskuje dostęp tylko po spełnieniu wszystkich wymagań.
 
-### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Co się stanie, jeśli masz zasady, w portalu usługi Intune z programem Silverlight i witryny Azure portal?
+### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Co się stanie w przypadku posiadania zasad w portalu usługi Intune Silverlight i Azure Portal?
 
-Obie zasady są wymuszane przez usługę Azure Active Directory, a użytkownik uzyskuje dostęp tylko wtedy, gdy są spełnione wszystkie wymagania.
+Obie zasady są wymuszane przez Azure Active Directory, a użytkownik uzyskuje dostęp tylko po spełnieniu wszystkich wymagań.
 
-### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Co się stanie, jeśli mam wiele zasad dla tego samego użytkownika skonfigurowane?  
+### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Co się stanie, jeśli dla tego samego użytkownika skonfigurowano wiele zasad?  
 
-Podczas każdego logowania usługi Azure Active Directory ocenia wszystkie zasady i gwarantuje, że spełnione są wszystkie wymagania, przed udzielony dostęp do użytkownika. Blokuj dostęp trumps wszystkich innych ustawień konfiguracji. 
+Dla każdego logowania Azure Active Directory oblicza wszystkie zasady i gwarantuje, że wszystkie wymagania są spełnione przed udzieleniem dostępu użytkownikowi. Blokuj dostęp ma priorytet przed wszystkie inne ustawienia konfiguracji. 
 
-### <a name="does-conditional-access-work-with-exchange-activesync"></a>Dostęp warunkowy działa z programem Exchange ActiveSync?
+### <a name="does-conditional-access-work-with-exchange-activesync"></a>Czy dostęp warunkowy działa z programem Exchange ActiveSync?
 
-Tak, można użyć programu Exchange ActiveSync w zasadach dostępu warunkowego z niektórymi [ograniczenia](block-legacy-authentication.md). 
+Tak, w ramach zasad dostępu warunkowego można użyć programu Exchange ActiveSync z [](block-legacy-authentication.md)pewnymi ograniczeniami. 
 
-### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak należy skonfigurować dostęp warunkowy przy użyciu aplikacji usługi Office 365?
+### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak należy skonfigurować dostęp warunkowy przy użyciu aplikacji pakietu Office 365?
 
-Ponieważ aplikacje usługi Office 365 są połączone ze sobą, zalecane jest przypisanie najczęściej używane aplikacje razem podczas tworzenia zasad.
+Ze względu na to, że aplikacje pakietu Office 365 są połączone, zalecamy przypisanie często używanych aplikacji podczas tworzenia zasad.
 
-Typowych aplikacji połączonych ze sobą obejmują Microsoft Flow, Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, usługi Office 365 SharePoint Online i Office 365 w Yammerze.
+Często połączone aplikacje obejmują Microsoft Flow, Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, Office 365 SharePoint Online i Office 365 Yammer.
 
-Jest to ważne w przypadku zasad, które wymagają interakcji z użytkownikami, takich jak uwierzytelnianie wieloskładnikowe, gdy dostęp jest kontrolowany na początku sesji lub zadania. Jeśli nie, użytkownicy nie będą mogli wykonać niektóre zadania w aplikacji. Na przykład jeśli wymagane jest uwierzytelnianie wieloskładnikowe na urządzeniach niezarządzanych do dostępu do programu SharePoint, ale nie do poczty e-mail, użytkowników pracujących w wiadomości e-mail nie będzie mógł dołączyć plików programu SharePoint do wiadomości. Więcej informacji można znaleźć w artykule [co to są zależności usługi Azure Active Directory dostępu warunkowego?](service-dependencies.md).
+Jest to ważne w przypadku zasad wymagających interakcji użytkownika, takich jak uwierzytelnianie wieloskładnikowe, gdy dostęp jest kontrolowany na początku sesji lub zadania. W przeciwnym razie użytkownicy nie będą mogli wykonywać niektórych zadań w ramach aplikacji. Na przykład, jeśli wymagane jest uwierzytelnianie wieloskładnikowe na urządzeniach niezarządzanych w celu uzyskania dostępu do programu SharePoint, ale nie do poczty e-mail, użytkownicy pracujący w ich wiadomości e-mail nie będą mogli dołączać plików programu SharePoint do wiadomości. Więcej informacji można znaleźć w artykule [co to są zależności usługi w Azure Active Directory dostęp warunkowy?](service-dependencies.md).
 
-## <a name="what-you-should-avoid-doing"></a>Co należy zrobić
+## <a name="what-you-should-avoid-doing"></a>Co należy unikać
 
-Framework dostęp warunkowy zapewnia elastyczność konfigurację wspaniałe. Jednak elastyczność oznacza także, należy dokładnie przejrzeć wszystkie zasady konfiguracji przed zwolnieniem, aby uniknąć niepożądane wyniki. W tym kontekście, należy zwrócić szczególną uwagę na przydziały wpływające na zestawy, takie jak **wszyscy użytkownicy / grupy / aplikacje w chmurze**.
+Struktura dostępu warunkowego zapewnia dużą elastyczność konfiguracji. Jednak doskonałe elastyczność oznacza, że należy uważnie przejrzeć każdą zasadę konfiguracji przed jej zwolnieniem, aby uniknąć niepożądanych wyników. W tym kontekście należy zwrócić szczególną uwagę na przydziały mające wpływ na kompletne zestawy, takie jak **Wszyscy użytkownicy/grupy/aplikacje w chmurze**.
 
-W danym środowisku należy unikać następujące konfiguracje:
+W danym środowisku należy unikać następujących konfiguracji:
 
 **Dla wszystkich użytkowników wszystkie aplikacje w chmurze:**
 
-- **Zablokuj dostęp** — ta konfiguracja zablokuje całej organizacji, które ostatecznie nie jest dobrym pomysłem.
-- **Wymagają zgodnego urządzenia** — dla użytkowników, które nie zarejestrowali swoich urządzeń, ale te zasady blokują dostęp wszystkie, łącznie z dostępem do portalu usługi Intune. Jeśli jesteś administratorem bez zarejestrowanego urządzenia, ta zasada blokuje powrót do portalu Azure do zmiany zasad.
-- **Wymagane było przyłączenie do domeny** — ten blok zasad dostępu również może potencjalnie zablokować dostęp dla wszystkich użytkowników w Twojej organizacji, jeśli nie masz jeszcze urządzenia przyłączone do domeny.
-- **Wymagane zasady ochrony aplikacji** — ten blok zasad dostępu również może potencjalnie zablokować dostęp dla wszystkich użytkowników w Twojej organizacji, jeśli nie masz zasad usługi Intune. Jeśli jesteś administratorem bez aplikację kliencką, która ma zasady ochrony aplikacji usługi Intune, ta zasada blokuje powrót do portale, takie jak usługa Intune i Azure.
+- **Blokuj dostęp** — ta konfiguracja blokuje całą organizację, która nie jest dobrym pomysłem.
+- **Wymagaj zgodnego urządzenia** — dla użytkowników, którzy nie zarejestrowali jeszcze urządzeń, ta zasada blokuje dostęp do portalu usługi Intune. Jeśli jesteś administratorem programu bez zarejestrowanego urządzenia, ta zasada uniemożliwia powrót do Azure Portal, aby zmienić zasady.
+- **Wymagaj** przyłączenia do domeny — ta zasada blokuje również możliwość blokowania dostępu dla wszystkich użytkowników w organizacji, jeśli nie masz jeszcze urządzenia przyłączonego do domeny.
+- **Wymagaj zasad ochrony aplikacji** — ten blok dostępu blokuje również możliwość blokowania dostępu dla wszystkich użytkowników w organizacji, jeśli nie masz zasad usługi Intune. Jeśli jesteś administratorem bez aplikacji klienckiej z zasadami ochrony aplikacji usługi Intune, te zasady uniemożliwiają powrót do portali, takich jak usługa Intune i platforma Azure.
 
 **Dla wszystkich użytkowników, wszystkie aplikacje w chmurze, wszystkie platformy urządzeń:**
 
-- **Zablokuj dostęp** — ta konfiguracja zablokuje całej organizacji, które ostatecznie nie jest dobrym pomysłem.
+- **Blokuj dostęp** — ta konfiguracja blokuje całą organizację, która nie jest dobrym pomysłem.
 
-## <a name="how-should-you-deploy-a-new-policy"></a>Jak możesz wdrożyć nowe zasady
+## <a name="how-should-you-deploy-a-new-policy"></a>Jak należy wdrożyć nowe zasady?
 
-Pierwszym krokiem należy ocenić przy użyciu zasad [narzędzie analizy warunkowej](what-if-tool.md).
+Najpierw należy oszacować zasady za pomocą [Narzędzia](what-if-tool.md)do wykonywania.
 
-Gdy nowe zasady są gotowe do środowiska, należy wdrożyć je w fazach:
+Jeśli nowe zasady są gotowe dla danego środowiska, wdróż je w fazach:
 
-1. Zastosuj zasady wśród małej grupy użytkowników i sprawdź, czy działa zgodnie z oczekiwaniami. 
-1. Po rozwinięciu zasady w celu uwzględnienia większej liczby użytkowników. Przejdź do wykluczenia wszystkich administratorów z zasad, aby upewnić się, że nadal mieć dostęp i można zaktualizować zasad, jeśli jest wymagane zmiany.
-1. Zastosuj zasady do wszystkich użytkowników tylko wtedy, gdy jest to konieczne. 
+1. Zastosuj zasady do małego zestawu użytkowników i sprawdź, czy działa ono zgodnie z oczekiwaniami. 
+1. Po rozszerzeniu zasad w celu uwzględnienia większej liczby użytkowników. Nadal Wyklucz wszystkich administratorów z zasad, aby upewnić się, że nadal mają dostęp, i zaktualizuj zasady, jeśli jest wymagana zmiana.
+1. Zastosuj zasady dla wszystkich użytkowników tylko w razie potrzeby. 
 
-Najlepszym rozwiązaniem jest tworzenie konta użytkownika, który jest:
+Najlepszym rozwiązaniem jest utworzenie konta użytkownika, które jest następujące:
 
-- Dedykowane administrowanie zasadami 
+- Przeznaczone do administrowania zasadami 
 - Wykluczone ze wszystkich zasad
 
 ## <a name="policy-migration"></a>Migracja zasad
 
-Należy rozważyć Migrowanie zasad, które nie zostały utworzone w witrynie Azure portal ponieważ:
+Rozważ Migrowanie zasad, które nie zostały utworzone w Azure Portal, ponieważ:
 
-- Teraz można rozwiązać scenariusze, które nie może obsłużyć przed.
-- Można zmniejszyć liczbę zasad, którą trzeba zarządzać konsolidując je.   
-- Możesz zarządzać wszystkie zasady dostępu warunkowego w jednej centralnej lokalizacji.
+- Teraz możesz rozwiązywać scenariusze, których nie można obsłużyć wcześniej.
+- Aby zmniejszyć liczbę zasad, którymi trzeba zarządzać, można je skonsolidować.   
+- Można zarządzać wszystkimi zasadami dostępu warunkowego w jednej centralnej lokalizacji.
 - Klasyczny portal Azure został wycofany.   
 
-Aby uzyskać więcej informacji, zobacz [Migrowanie zasad klasycznych w witrynie Azure portal](policy-migration.md).
+Aby uzyskać więcej informacji, zobacz [Migrowanie zasad klasycznych w Azure Portal](policy-migration.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli chcesz wiedzieć:
+Jeśli chcesz poznać następujące informacje:
 
-- Jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
-- Jak zaplanować zasady dostępu warunkowego, zobacz [jak zaplanować wdrożenie dostępu warunkowego w usłudze Azure Active Directory](plan-conditional-access.md).
+- Jak skonfigurować zasady dostępu warunkowego, zobacz [Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji, Azure Active Directory dostępu warunkowego](app-based-mfa.md).
+- Jak planować zasady dostępu warunkowego, zobacz [jak zaplanować wdrożenie dostępu warunkowego w Azure Active Directory](plan-conditional-access.md).

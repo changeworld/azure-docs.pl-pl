@@ -1,6 +1,6 @@
 ---
-title: Opis usługi Azure IoT Hub bliźniaczych reprezentacji urządzeń | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — Użyj bliźniaczych reprezentacji urządzeń do synchronizacji danych stanu i konfiguracji między centrum IoT Hub i urządzeniach
+title: Informacje o usłudze Azure IoT Hub Device bliźniaczych reprezentacji | Microsoft Docs
+description: Przewodnik dla deweloperów — używanie bliźniaczych reprezentacji urządzeń do synchronizowania danych stanu i konfiguracji między IoT Hub i urządzeniami
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,61 +8,61 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: fbc68b551db1f68fe253a833ad26c88de1b92f30
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f4db353e3c2f625478df6a547d1b67c5d074d18a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055375"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640616"
 ---
-# <a name="understand-and-use-device-twins-in-iot-hub"></a>Zrozumienie i używają bliźniaczych reprezentacji urządzeń w usłudze IoT Hub
+# <a name="understand-and-use-device-twins-in-iot-hub"></a>Zrozumienie i używanie bliźniaczych reprezentacji urządzeń w IoT Hub
 
-*Bliźniacze reprezentacje urządzeń* to dokumenty JSON, które przechowują informacje o stanie urządzenia w tym metadane, konfiguracje i warunki. Usługa Azure IoT Hub utrzymuje bliźniaczą reprezentację urządzenia dla każdego urządzenia, na którym jest nawiązywane połączenie usługi IoT Hub. 
+*Bliźniaczych reprezentacji urządzeń* to dokumenty JSON, które przechowują informacje o stanie urządzenia, w tym metadane, konfiguracje i warunki. Usługa Azure IoT Hub obsługuje sznurki urządzenia dla każdego urządzenia, które nawiązuje połączenie z IoT Hub. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 W tym artykule opisano:
 
-* Struktura bliźniaczej reprezentacji urządzenia: *tagi*, *żądaną* i *zgłaszanych właściwości*.
-* Operacje, które aplikacje urządzeń i zapleczy, które mogą wykonywać na bliźniaczych reprezentacji urządzeń.
+* Struktura sznurka urządzenia: *Tagi*, *odpowiednie* i raportowane *Właściwości*.
+* Operacje, które aplikacje i zaplecza urządzeń mogą wykonywać na urządzeniu bliźniaczych reprezentacji.
 
-Używają bliźniaczych reprezentacji urządzeń do:
+Użyj bliźniaczych reprezentacji urządzenia, aby:
 
-* Store metadanych dla określonego urządzenia w chmurze. Na przykład lokalizacja wdrożenia Automat.
+* Przechowuj metadane specyficzne dla urządzenia w chmurze. Na przykład lokalizacja wdrożenia maszyny sprzedaży.
 
-* Raport bieżące informacje o stanie, takie jak dostępne możliwości i warunków z aplikacji urządzenia. Na przykład urządzenie jest podłączone do usługi IoT hub w sieci komórkowej lub Wi-Fi.
+* Zgłoś bieżące informacje o stanie, takie jak dostępne możliwości i warunki z aplikacji urządzenia. Na przykład urządzenie jest połączone z usługą IoT Hub przez sieć komórkową lub Wi-Fi.
 
-* Synchronizuj stan długotrwałe przepływy pracy między aplikacją urządzenia i aplikacji zaplecza. Na przykład podczas kopii rozwiązania end określa nowej wersji oprogramowania układowego do zainstalowania i aplikacji urządzenia raporty na różnych etapach procesu aktualizacji.
+* Zsynchronizuj stan długotrwałych przepływów pracy między aplikacją urządzenia a aplikacją zaplecza. Na przykład jeśli zaplecze rozwiązania określa nową wersję oprogramowania układowego do zainstalowania, a aplikacja urządzenia zgłosi różne etapy procesu aktualizacji.
 
-* Zapytanie z metadanych urządzeń, konfiguracji lub stanu.
+* Wykonaj zapytanie dotyczące metadanych, konfiguracji lub stanu urządzenia.
 
-Zapoznaj się [wskazówki dotyczące komunikacji urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) wskazówki dotyczące za pomocą zgłoszonych właściwości, komunikaty z urządzenia do chmury lub przekazywanie pliku.
+Zapoznaj się ze wskazówkami dotyczącymi [komunikacji między urządzeniami](iot-hub-devguide-d2c-guidance.md) i chmurą, aby uzyskać wskazówki dotyczące korzystania z raportowanych właściwości, komunikatów przesyłanych z urządzeń do chmury lub przekazywania plików.
 
-Zapoznaj się [wskazówki dotyczące komunikacji chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) wskazówki na temat korzystania z żądanych właściwości, metod bezpośrednich lub komunikatów z chmury do urządzeń.
+Zapoznaj się ze wskazówkami dotyczącymi [komunikacji między chmurą i urządzeniami](iot-hub-devguide-c2d-guidance.md) , aby uzyskać wskazówki dotyczące używania żądanych właściwości, metod bezpośrednich lub komunikatów z chmury do urządzenia.
 
-## <a name="device-twins"></a>Bliźniacze reprezentacje urządzeń
+## <a name="device-twins"></a>Bliźniaczych reprezentacji urządzenia
 
-Bliźniacze reprezentacje urządzeń przechowywania informacji związanych z urządzeniami który:
+Urządzenie bliźniaczych reprezentacji przechowuje informacje dotyczące urządzenia, które:
 
-* Urządzenia i z powrotem kończy się umożliwia synchronizowanie warunków urządzenia i konfiguracji.
+* Urządzenia i zaplecza mogą służyć do synchronizowania warunków i konfiguracji urządzenia.
 
-* Zaplecze rozwiązania służy do zapytań i docelowy długotrwałych operacji.
+* Zaplecze rozwiązania może użyć do wykonywania zapytań i docelowych operacji długotrwałych.
 
-Cykl życia w bliźniaczej reprezentacji urządzenia jest połączony z odpowiednich [tożsamości urządzenia](iot-hub-devguide-identity-registry.md). Bliźniacze reprezentacje urządzeń są niejawnie tworzone i usunięte po utworzeniu lub usunięciu w usłudze IoT Hub tożsamości urządzenia.
+Cykl życia urządzenia ze znakiem jest połączony z odpowiadającą [tożsamością urządzenia](iot-hub-devguide-identity-registry.md). Bliźniaczych reprezentacji urządzeń są niejawnie tworzone i usuwane, gdy tożsamość urządzenia jest tworzona lub usuwana w IoT Hub.
 
-Bliźniacza reprezentacja urządzenia to dokument JSON, który zawiera:
+Sznurki urządzenia to dokument JSON, który zawiera:
 
-* **Tagi**. Sekcja dokumentu JSON, który zaplecze rozwiązania może odczytywać i zapisywać. Tagi nie są widoczne dla aplikacji dla urządzeń.
+* **Tagi**. Sekcja dokumentu JSON, z której zaplecze rozwiązania może odczytywać i zapisywać dane. Tagi nie są widoczne dla aplikacji urządzenia.
 
-* **Żądane właściwości**. Używać razem z zgłaszanych właściwości, aby zsynchronizować konfiguracji urządzenia lub warunki. Zaplecze rozwiązania może ustawić żądanych właściwości i może je odczytać aplikacji urządzenia. W aplikacji urządzenia może również odbierać powiadomienia o zmianach w odpowiednich właściwości.
+* **Żądane właściwości**. Używane wraz z raportowanymi właściwościami do synchronizacji konfiguracji lub warunków urządzenia. Zaplecze rozwiązania może ustawić żądane właściwości, a aplikacja urządzenia może je odczytać. Aplikacja urządzenia może również odbierać powiadomienia o zmianach w odpowiednich właściwościach.
 
-* **Zgłaszane właściwości**. Używać razem z żądanych właściwości, aby zsynchronizować konfiguracji urządzenia lub warunki. W aplikacji urządzenia można ustawić zgłaszanych właściwości, a zaplecze rozwiązania może odczytywać i wyszukiwać w nich.
+* **Raportowane właściwości**. Używane wraz z pożądanymi właściwościami do synchronizowania konfiguracji lub warunków urządzenia. Aplikacja urządzenia może ustawiać raportowane właściwości, a zaplecze rozwiązania może odczytywać i wysyłać do nich zapytania.
 
-* **Właściwości tożsamości urządzenia**. Katalog główny dokumentów JSON bliźniaczej reprezentacji urządzenia zawiera właściwości tylko do odczytu z odpowiedniej tożsamości urządzenia, przechowywane w [rejestr tożsamości](iot-hub-devguide-identity-registry.md).
+* **Właściwości tożsamości urządzenia**. Katalog główny dokumentu JSON dotyczącego urządzeń z dostępem do urządzenia zawiera właściwości tylko do odczytu z odpowiedniej tożsamości urządzenia przechowywanej w [rejestrze tożsamości](iot-hub-devguide-identity-registry.md).
 
-![Zrzut ekranu z właściwości bliźniaczych reprezentacji urządzeń](./media/iot-hub-devguide-device-twins/twin.png)
+![Zrzut ekranu przedstawiający właściwości sznurka urządzenia](./media/iot-hub-devguide-device-twins/twin.png)
 
-W bliźniaczej reprezentacji urządzenia dokument JSON można znaleźć w poniższym przykładzie:
+W poniższym przykładzie przedstawiono dokument JSON:
 
 ```json
 {
@@ -108,20 +108,20 @@ W bliźniaczej reprezentacji urządzenia dokument JSON można znaleźć w poniż
 }
 ```
 
-W głównym obiekcie są urządzenia właściwości tożsamości i obiekty kontenera dla `tags` i wartościami `reported` i `desired` właściwości. `properties` Kontener zawiera niektóre elementy tylko do odczytu (`$metadata`, `$etag`, i `$version`) opisanego w [metadanych bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md#device-twin-metadata) i [optymistycznej współbieżności](iot-hub-devguide-device-twins.md#optimistic-concurrency) sekcje.
+W obiekcie głównym są właściwości tożsamości urządzenia i obiekty kontenera dla `tags` i obie `reported` i `desired` właściwości. `$etag` `$version``$metadata` [](iot-hub-devguide-device-twins.md#optimistic-concurrency) [](iot-hub-devguide-device-twins.md#device-twin-metadata) Kontener zawiera elementy tylko do odczytu (, i) opisane w metadanych przędzy za urządzeniem i optymistyczne współbieżności. `properties`
 
-### <a name="reported-property-example"></a>Przykład zgłaszanej właściwości
+### <a name="reported-property-example"></a>Przykład raportowanej właściwości
 
-W poprzednim przykładzie, bliźniacza reprezentacja urządzenia zawiera `batteryLevel` właściwości, który jest zgłaszany przez aplikację urządzenia. Ta właściwość umożliwia zapytania i działają na urządzeniach, na podstawie ostatniego poziomu zgłoszone baterii. Przykłady innych opcji łączności lub możliwości raportowania urządzenia aplikacji urządzenia.
+W poprzednim przykładzie sznurek urządzenia zawiera `batteryLevel` właściwość, która jest raportowana przez aplikację urządzenia. Ta właściwość umożliwia wykonywanie zapytań i obsługi na urządzeniach na podstawie ostatniego zgłoszonego poziomu baterii. Inne przykłady obejmują możliwości urządzeń z raportowaniem aplikacji urządzeń lub opcje łączności.
 
 > [!NOTE]
-> Zgłaszane właściwości uproszczenia scenariuszy, w których zaplecze rozwiązania jest zainteresowany ostatniej znanej wartości właściwości. Użyj [komunikatów z urządzenia do chmury](iot-hub-devguide-messages-d2c.md) zaplecze rozwiązania musi przetworzyć danych telemetrycznych z urządzenia w formie sekwencje zdarzenia oznaczony sygnaturą czasową, takie jak szeregów czasowych.
+> Raportowane właściwości upraszczają scenariusze, w których zaplecze rozwiązania jest zainteresowane ostatnią znaną wartością właściwości. Użyj [komunikatów z urządzenia do chmury](iot-hub-devguide-messages-d2c.md) , jeśli zaplecze rozwiązania musi przetworzyć dane telemetryczne urządzenia w postaci sekwencji zdarzeń z sygnaturami czasowymi, takich jak szeregi czasowe.
 
 ### <a name="desired-property-example"></a>Przykład żądanej właściwości
 
-W poprzednim przykładzie `telemetryConfig` żądanego bliźniacza reprezentacja urządzenia i zgłaszane właściwości są używane przez zaplecze rozwiązania i aplikacji urządzenia do synchronizacji konfiguracji telemetrii dla tego urządzenia. Na przykład:
+W poprzednim przykładzie `telemetryConfig` pożądane i zgłoszone właściwości są używane przez zaplecze rozwiązania oraz aplikację urządzenia do synchronizacji konfiguracji telemetrii dla tego urządzenia. Na przykład:
 
-1. Zaplecze rozwiązania ustawia żądaną właściwość z wartością żądaną konfiguracją. Poniżej przedstawiono część dokumentu z odpowiednią właściwością:
+1. Zaplecze rozwiązania ustawia odpowiednią właściwość o żądaną wartość konfiguracji. Poniżej znajduje się część dokumentu z żądanym zestawem właściwości:
 
    ```json
    "desired": {
@@ -132,7 +132,7 @@ W poprzednim przykładzie `telemetryConfig` żądanego bliźniacza reprezentacja
    },
    ```
 
-2. Powiadomienie do aplikacji urządzenia zmian natychmiast, jeśli połączone lub na pierwszym próba ponownego połączenia. W aplikacji urządzenia funkcję następnie raportów zaktualizowanej konfiguracji (lub warunek błędu przy użyciu `status` właściwości). Poniżej przedstawiono część zgłaszanych właściwości:
+2. Aplikacja urządzenia zostanie powiadomiona o zmianie natychmiast po powiązaniu połączenia lub przy pierwszym ponownym połączeniu. Następnie aplikacja urządzenia zgłosi zaktualizowaną konfigurację (lub warunek błędu za pomocą `status` właściwości). Oto część raportowanych właściwości:
 
    ```json
    "reported": {
@@ -144,21 +144,21 @@ W poprzednim przykładzie `telemetryConfig` żądanego bliźniacza reprezentacja
    }
    ```
 
-3. Zaplecze rozwiązania może śledzić wyniki operacja konfiguracji różnych urządzeniach przez [zapytań](iot-hub-devguide-query-language.md) bliźniaczych reprezentacji urządzeń.
+3. Zaplecze rozwiązania może śledzić wyniki operacji konfiguracji na wielu urządzeniach, [badając](iot-hub-devguide-query-language.md) urządzenie bliźniaczych reprezentacji.
 
 > [!NOTE]
-> Poprzedzających fragmentów są przykładami, zoptymalizowane pod kątem czytelności jednym ze sposobów kodowanie konfigurację urządzenia i jego stan. Bliźniacza reprezentacja urządzenia żądanego i zgłaszane właściwości bliźniaczych reprezentacji urządzeń usługi IoT Hub nie nakłada określonego schematu.
+> Poprzednie fragmenty kodu to przykłady, zoptymalizowane pod kątem czytelności, w jednym ze sposobów kodowania konfiguracji urządzeń i jej stanu. IoT Hub nie nakłada określonego schematu dla potrzebnych sznurów urządzeń i zgłosiło właściwości w urządzeniu bliźniaczych reprezentacji.
 > 
 
-Za pomocą twins do synchronizowania długotrwałych operacji, takich jak aktualizacje oprogramowania układowego. Aby uzyskać więcej informacji o tym, jak korzystać z właściwości synchronizacji i śledzenie długotrwałej operacji na urządzeniach, zobacz [Użyj żądane właściwości, aby skonfigurować urządzenia](tutorial-device-twins.md).
+Za pomocą bliźniaczych reprezentacji można synchronizować długotrwałe operacje, takie jak aktualizacje oprogramowania układowego. Aby uzyskać więcej informacji na temat sposobu użycia właściwości do synchronizowania i śledzenia długotrwałej operacji na różnych urządzeniach, zobacz [Używanie żądanych właściwości do konfigurowania urządzeń](tutorial-device-twins.md).
 
 ## <a name="back-end-operations"></a>Operacje zaplecza
 
-Zaplecze rozwiązania działa w bliźniaczej reprezentacji urządzenia przy użyciu następujących niepodzielne operacje udostępniane za pośrednictwem protokołu HTTPS:
+Zaplecze rozwiązania działa na bliźniaczych urządzeniach przy użyciu następujących operacji niepodzielnych udostępnianych za pośrednictwem protokołu HTTPS:
 
-* **Pobieranie bliźniaczej reprezentacji urządzenia za pomocą Identyfikatora**. Ta operacja zwraca dokumentu bliźniaczej reprezentacji urządzenia, tym tagów i właściwości żądaną i podać systemu.
+* **Pobierz sznurki urządzenia według identyfikatora**. Ta operacja zwraca dokument z przędzą na urządzeniu, w tym Tagi i odpowiednie i zgłoszone właściwości systemu.
 
-* **Częściowo zaktualizować bliźniaczej reprezentacji urządzenia**. Ta operacja umożliwia zapleczu rozwiązania celu częściowego zaktualizowania tagi i żądane właściwości w bliźniaczej reprezentacji urządzenia. Częściową aktualizację jest wyrażona jako dokument JSON, który dodaje lub aktualizuje dowolną właściwość. Właściwości ustawione na `null` są usuwane. Poniższy przykład tworzy nowy żądaną właściwość z wartością `{"newProperty": "newValue"}`, zastępuje istniejącą wartość z `existingProperty` z `"otherNewValue"`i usuwa `otherOldProperty`. Żadne inne zmiany zostaną wprowadzone do istniejącego żądane właściwości lub tagi:
+* **Częściowo Aktualizuj sznurek urządzeń**. Ta operacja umożliwia zapleczu rozwiązania częściowo aktualizowanie tagów lub żądanych właściwości w postaci sznurka urządzenia. Aktualizacja częściowa jest wyrażona jako dokument JSON, który dodaje lub aktualizuje każdą właściwość. Właściwości ustawione na `null` są usuwane. Poniższy przykład tworzy nową `{"newProperty": "newValue"}`pożądaną właściwość o wartości, zastępuje istniejącą `existingProperty` wartość z `"otherNewValue"`i usuwa `otherOldProperty`. Nie wprowadzono żadnych innych zmian do istniejących żądanych właściwości lub tagów:
 
    ```json
    {
@@ -174,31 +174,31 @@ Zaplecze rozwiązania działa w bliźniaczej reprezentacji urządzenia przy uży
    }
    ```
 
-* **Zastąp żądane właściwości**. Ta operacja umożliwia zaplecza rozwiązania całkowicie zastąpienie wszystkich istniejących żądane właściwości i Wstaw nowy dokument JSON dla `properties/desired`.
+* **Zastąp żądane właściwości**. Ta operacja umożliwia zapleczu rozwiązania całkowicie zastępowanie wszystkich istniejących żądanych właściwości i zastąpienie nowego dokumentu `properties/desired`json.
 
-* **Zastąp tagi**. Ta operacja umożliwia zaplecza rozwiązania całkowicie zastąpienie wszystkich istniejących tagów i Wstaw nowy dokument JSON dla `tags`.
+* **Zamień Tagi**. Ta operacja umożliwia zapleczu rozwiązania całkowicie zastępowanie wszystkich istniejących tagów i zastąpienie nowego dokumentu `tags`json.
 
-* **Otrzymuj powiadomienia bliźniaczej reprezentacji**. Ta operacja umożliwia zapleczu rozwiązania otrzymywać powiadomienia po zmodyfikowaniu bliźniaczej reprezentacji. Aby to zrobić, rozwiązanie IoT musi utworzyć trasę i ustaw źródło danych jest równa *twinChangeEvents*. Domyślnie nie takie trasy wstępnie istnieje, więc są wysyłane żadne powiadomienia bliźniaczej reprezentacji. Jeśli szybkość zmian jest zbyt duża lub z innych powodów, takich jak wewnętrzne błędy, usługa IoT Hub może wysłać tylko jedno powiadomienie, który zawiera wszystkie zmiany. W związku z tym jeśli aplikacja wymaga inspekcji i rejestrowania dla wszystkich pośrednich stanów niezawodne, należy użyć komunikatów z urządzenia do chmury. Bliźniacza reprezentacja komunikat powiadomienia zawiera właściwości i treść.
+* **Otrzymywanie powiadomień bliźniaczych**. Ta operacja umożliwia zaplecze rozwiązania powiadamianie o modyfikacji dwuosiowej. W tym celu Twoje rozwiązanie IoT musi utworzyć trasę i ustawić źródło danych równe *twinChangeEvents*. Domyślnie żadna taka trasa nie istnieje, więc nie są wysyłane żadne powiadomienia o przędze. Jeśli współczynnik zmiany jest zbyt wysoki lub z innych przyczyn, takich jak błędy wewnętrzne, IoT Hub może wysłać tylko jedno powiadomienie zawierające wszystkie zmiany. W związku z tym, jeśli aplikacja wymaga niezawodnej inspekcji i rejestrowania wszystkich stanów pośrednich, należy użyć komunikatów z urządzenia do chmury. Wiadomość z powiadomieniem o przędzy obejmuje właściwości i treść.
 
   - Właściwości
 
     | Name (Nazwa) | Wartość |
     | --- | --- |
-    $content — typ | application/json |
-    $iothub-enqueuedtime |  Czas wysłania powiadomienia |
+    Typ $content | application/json |
+    $iothub-enqueuedtime |  Godzina wysłania powiadomienia |
     $iothub-message-source | twinChangeEvents |
     $content — kodowanie | UTF-8 |
     deviceId | Identyfikator urządzenia |
-    hubName | Nazwa centrum IoT Hub |
+    hubName | Nazwa IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) sygnatura czasowa operacji |
     iothub-message-schema | deviceLifecycleNotification |
     opType | "replaceTwin" lub "updateTwin" |
 
-    Właściwości systemu komunikat mają prefiks `$` symboli.
+    Właściwości systemu wiadomości są poprzedzone `$` symbolem.
 
   - Treść
         
-    Ta sekcja zawiera wszystkie zmiany bliźniaczą reprezentację w formacie JSON. Używa tego samego formatu poprawek, z tą różnicą, że może zawierać wszystkie sekcje bliźniaczej reprezentacji: tagi, properties.reported, properties.desired i czy zawiera on elementy "$metadata". Na przykład:
+    Ta sekcja zawiera wszystkie zmiany w formacie JSON. Używa tego samego formatu co poprawka, z różnicą, że może zawierać wszystkie sekcje sznurów: Tagi, właściwości. raportowane, właściwości. wymagane i że zawiera elementy "$metadata". Na przykład
 
     ```json
     {
@@ -219,37 +219,37 @@ Zaplecze rozwiązania działa w bliźniaczej reprezentacji urządzenia przy uży
     }
     ```
 
-Obsługa wszystkich poprzednich operacji [optymistycznej współbieżności](iot-hub-devguide-device-twins.md#optimistic-concurrency) i wymagają **ServiceConnect** uprawnienia, zgodnie z definicją w [kontrolować dostęp do usługi IoT Hub](iot-hub-devguide-security.md).
+Wszystkie poprzednie operacje obsługują [optymistyczną współbieżność](iot-hub-devguide-device-twins.md#optimistic-concurrency) i wymagają uprawnienia serviceconnect, zgodnie z definicją w polu [kontroluj dostęp do IoT Hub](iot-hub-devguide-security.md).
 
 Oprócz tych operacji zaplecze rozwiązania może:
 
-* Zapytań bliźniaczych reprezentacji urządzeń przy użyciu przypominającego SQL [język zapytań usługi IoT Hub](iot-hub-devguide-query-language.md).
+* Zbadaj bliźniaczych reprezentacji urządzenia, używając [języka zapytań IoT Hub](iot-hub-devguide-query-language.md), takich jak SQL.
 
-* Wykonywanie operacji w dużych zestawach bliźniaczych reprezentacji urządzeń przy użyciu [zadań](iot-hub-devguide-jobs.md).
+* Wykonywanie operacji na dużych zestawach urządzeń bliźniaczych reprezentacji za pomocą [zadań](iot-hub-devguide-jobs.md).
 
-## <a name="device-operations"></a>Operacje dotyczące urządzenia
+## <a name="device-operations"></a>Operacje na urządzeniach
 
-Aplikacji urządzenie działa w bliźniaczej reprezentacji urządzenia przy użyciu następujących niepodzielne operacje:
+Aplikacja urządzenia działa na sznurze urządzenia przy użyciu następujących operacji niepodzielnych:
 
-* **Pobieranie bliźniaczej reprezentacji urządzenia**. Ta operacja zwraca dokument bliźniaczej reprezentacji urządzenia (w tym tagów i właściwości żądaną i podać system) dla aktualnie podłączonego urządzenia.
+* **Pobierz sznurki urządzeń**. Ta operacja zwraca dokument z sznurka urządzenia (w tym odpowiednie i zgłoszone właściwości systemu) dla aktualnie podłączonego urządzenia. (Tagi nie są widoczne dla aplikacji urządzenia).
 
-* **Częściowo aktualizowania zgłoszonych właściwości**. Ta operacja umożliwia częściową aktualizację zgłoszonych właściwości aktualnie podłączonego urządzenia. Ta operacja używa tego samego formatu aktualizacji JSON, że rozwiązanie kopię końcowych zastosowań częściową aktualizację żądane właściwości.
+* **Częściowo Zaktualizowano raportowane właściwości**. Ta operacja umożliwia częściowe aktualizowanie raportowanych właściwości aktualnie podłączonego urządzenia. Ta operacja używa tego samego formatu aktualizacji JSON, którego zaplecze rozwiązanie używa do częściowej aktualizacji żądanych właściwości.
 
-* **Obserwuj żądane właściwości**. Obecnie podłączone urządzenie można otrzymywać powiadomienia o aktualizacjach, żądanych właściwości, gdy wystąpią. Urządzenie otrzyma tego samego formularza update (wymiana częściowego lub pełnego) wykonywana przez zaplecze rozwiązania.
+* **Obserwuj żądane właściwości**. Aktualnie połączone urządzenie może otrzymywać powiadomienia o aktualizacjach żądanych właściwości, gdy wystąpią. Urządzenie otrzymuje tę samą formę aktualizacji (częściowej lub pełnej wymiany) wykonywanej przez zaplecze rozwiązania.
 
-Wymagaj wszystkich poprzednich operacji **DeviceConnect** uprawnienia, zgodnie z definicją w [kontroli dostępu do usługi IoT Hub](iot-hub-devguide-security.md).
+Wszystkie poprzednie operacje wymagają uprawnienia **DeviceConnect** , zgodnie z definicją w polu [kontroluj dostęp do IoT Hub](iot-hub-devguide-security.md).
 
-[Zestawy SDK urządzeń Azure IoT](iot-hub-devguide-sdks.md) ułatwiają używać poprzedniej operacji z wielu języków i platform. Aby uzyskać więcej informacji na potrzeby szczegółów elementów podstawowych usługi IoT Hub dla żądanych właściwości synchronizacji, zobacz [przepływ ponownego łączenia urządzeń](iot-hub-devguide-device-twins.md#device-reconnection-flow).
+[Zestawy SDK urządzeń Azure IoT](iot-hub-devguide-sdks.md) ułatwiają używanie powyższych operacji z wielu języków i platform. Aby uzyskać więcej informacji na temat szczegółów IoT Hub podstawowych dla synchronizacji żądanych właściwości, zobacz [przepływ ponownego połączenia urządzenia](iot-hub-devguide-device-twins.md#device-reconnection-flow).
 
-## <a name="tags-and-properties-format"></a>Format właściwości i tagów
+## <a name="tags-and-properties-format"></a>Formatowanie tagów i właściwości
 
-Tagi, żądanych właściwości i zgłaszane właściwości są obiektami JSON z następującymi zastrzeżeniami:
+Tagi, żądane właściwości i raportowane właściwości są obiektami JSON z następującymi ograniczeniami:
 
-* Wszystkie klucze w obiekty JSON jest rozróżniana wielkość liter 64 bajtów ciągów UNICODE UTF-8. Dozwolone znaki wykluczenia znaków kontrolnych UNICODE (segmenty C0 i C1) i `.`, `$`i SP.
+* Wszystkie klucze w obiektach JSON uwzględniają wielkość liter 64 bajtów UTF-8 UNICODE. Dozwolone znaki wykluczają znaki kontrolne Unicode (segmenty C0 i `.`C1 `$`), oraz, i Sp.
 
-* Wszystkie wartości w obiekty JSON może być następujących typów JSON: atrybut typu wartość logiczna, liczba, ciąg, obiekt. Tablice są niedozwolone. Maksymalna wartość dla liczb całkowitych jest 4503599627370495, a wartość minimalna dla liczb całkowitych jest-4503599627370496.
+* Wszystkie wartości w obiektach JSON mogą mieć następujące typy JSON: Boolean, Number, String, Object. Tablice są niedozwolone. Maksymalna wartość dla liczb całkowitych to 4503599627370495, a minimalna wartość dla liczb całkowitych to-4503599627370496.
 
-* Wszystkie obiekty JSON w tagi i żądane i zgłaszanych właściwości może mieć maksymalną głębokość 5. Na przykład następujący obiekt jest prawidłowy:
+* Wszystkie obiekty JSON w tagach, żądanych i raportowanych właściwościach mogą mieć maksymalną głębokość wynoszącą 5. Na przykład następujący obiekt jest prawidłowy:
 
    ```json
    {
@@ -271,21 +271,21 @@ Tagi, żądanych właściwości i zgłaszane właściwości są obiektami JSON z
    }
    ```
 
-* Wszystkie ciągi mogą mieć maksymalnie 512 bajtów długości.
+* Wszystkie wartości ciągu mogą mieć długość maksymalnie 512 bajtów.
 
-## <a name="device-twin-size"></a>Rozmiar bliźniaczej reprezentacji urządzenia
+## <a name="device-twin-size"></a>Rozmiar przędzy urządzenia
 
-Usługa IoT Hub wymusza ograniczenie rozmiaru 8KB na wszystkich odpowiednich wartości całkowitej `tags`, `properties/desired`, i `properties/reported`, z wyłączeniem elementów tylko do odczytu.
+IoT Hub wymusza ograniczenie rozmiaru rozmiarze 8 KB na każdej z odpowiednich wartości `tags`całkowitych, `properties/desired`i `properties/reported`, z wyłączeniem elementów tylko do odczytu.
 
-Rozmiar jest obliczany od policzenia wszystkich znaków, z wyjątkiem znaków kontrolnych UNICODE (segmenty C0 i C1) i miejsca do magazynowania, które znajdują się poza stałe typu string.
+Rozmiar jest obliczany przez liczenie wszystkich znaków, z wyłączeniem znaków kontrolnych UNICODE (segmenty C0 i C1) i spacji, które znajdują się poza stałymi ciągami.
 
-Usługa IoT Hub z powodu błędu odrzuca wszystkie operacje, które spowoduje zwiększenie rozmiaru dokumentów, które przekracza limit.
+IoT Hub odrzuca z powodu błędu wszystkie operacje, które spowodują zwiększenie rozmiaru tych dokumentów powyżej limitu.
 
-## <a name="device-twin-metadata"></a>Metadane bliźniaczej reprezentacji urządzenia
+## <a name="device-twin-metadata"></a>Metadane dotyczące sznurka urządzenia
 
-Usługa IoT Hub utrzymuje sygnaturę czasową ostatniej aktualizacji dla każdego obiektu JSON w bliźniaczej reprezentacji urządzenia żądanego i zgłaszanych właściwości. Sygnatury czasowe są w UTC i zakodowane w [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format `YYYY-MM-DDTHH:MM:SS.mmmZ`.
+IoT Hub utrzymuje sygnaturę czasową ostatniej aktualizacji dla każdego obiektu JSON w pożądanej sznurze urządzenia i raportowane właściwości. Sygnatury czasowe są zakodowane w formacie `YYYY-MM-DDTHH:MM:SS.mmmZ`UTC i kodowane w [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) .
 
-Na przykład:
+Przykład:
 
 ```json
 {
@@ -332,55 +332,55 @@ Na przykład:
 }
 ```
 
-Te informacje są przechowywane na każdym poziomie (nie tylko liście strukturze JSON), aby zachować aktualizacje, które usunąć klucze obiektów.
+Te informacje są przechowywane na każdym poziomie (nie tylko przed opuszczeniem struktury JSON), aby zachować aktualizacje, które usuwają klucze obiektów.
 
 ## <a name="optimistic-concurrency"></a>Optymistyczna współbieżność
 
-Tagi, żądane i zgłaszanych właściwości wszystkich Obsługa optymistycznej współbieżności.
-Tagi mają element ETag zgodnie [RFC7232](https://tools.ietf.org/html/rfc7232), reprezentujący reprezentacji JSON znacznika. W celu zapewnienia spójności, można użyć elementów etag w operacjach aktualizowania warunkowe z zapleczem rozwiązania.
+Tagi, odpowiednie i raportowane właściwości All obsługują optymistyczną współbieżność.
+Tagi mają element ETag, jak na [RFC7232](https://tools.ietf.org/html/rfc7232), który reprezentuje reprezentację JSON znacznika. Aby zapewnić spójność, można użyć elementów ETag w operacjach aktualizacji warunkowej z zaplecza rozwiązania.
 
-Bliźniacza reprezentacja urządzenia żądanego i zgłaszanych właściwości nie ma elementów etag, ale `$version` wartość, która może być przyrostowe. Podobnie na element ETag wersji może służyć przez stronę aktualizacji do wymuszenia spójności aktualizacji. Na przykład aplikacji urządzenia dla zgłaszanych właściwości lub zaplecze rozwiązania dla żądanej właściwości.
+Wymagane sznurki urządzenia i zgłoszone właściwości nie mają elementów ETag, ale mają `$version` gwarantowaną wartość, która ma być przyrostowa. Podobnie jak w przypadku elementu ETag, wersja może być używana przez stronę aktualizacji w celu wymuszenia spójności aktualizacji. Na przykład aplikacja urządzenia dla raportowanej właściwości lub zaplecza rozwiązania dla żądanej właściwości.
 
-Wersje są również przydatne, gdy observing agenta (np. aplikacji urządzenia, żądanych właściwości obserwowania) należy uzgodnić sam między wynik operacji pobierania i powiadomienie o aktualizacji. [Sekcji przepływu ponowne nawiązanie połączenia urządzenia](iot-hub-devguide-device-twins.md#device-reconnection-flow) zawiera więcej informacji.
+Wersje są również przydatne, gdy Agent obserwowania (na przykład aplikacja urządzenia obserwowanie żądanych właściwości) musi uzgodnić Races między wynikiem operacji pobierania a powiadomieniem o aktualizacji. [Sekcja przepływ ponownego połączenia urządzenia](iot-hub-devguide-device-twins.md#device-reconnection-flow) zawiera więcej informacji.
 
-## <a name="device-reconnection-flow"></a>Przepływ ponownego łączenia urządzeń
+## <a name="device-reconnection-flow"></a>Przepływ ponownego połączenia urządzenia
 
-Usługa IoT Hub nie zostaną zachowane żądane właściwości powiadomienia o aktualizacji dla urządzeń o odłączony. Wynika, że urządzenia, które nawiązuje połączenie musi pobrać pełną żądane właściwości dokumentu, oprócz subskrypcji powiadomień o aktualizacji. Biorąc pod uwagę możliwość sam między powiadomienia o aktualizacji i pełne pobieranie, należy zapewnić następujący przepływ:
+IoT Hub nie zachowuje żądanych właściwości powiadomienia o aktualizacjach dla odłączonych urządzeń. Po nawiązaniu połączenia w celu powiadomienia o aktualizacjach należy pobrać pełny dokument z żądanymi właściwościami. Ze względu na możliwość Races między powiadomieniami o aktualizacji i pełnym pobieraniem należy zapewnić następujący przepływ:
 
-1. Łączy się z Centrum IoT hub z aplikacji urządzenia.
-2. Subskrybuje aplikacji urządzenia dla żądanych właściwości powiadomienia o aktualizacji.
-3. Aplikacja urządzenia pobiera pełny dokument dla odpowiednich właściwości.
+1. Aplikacja urządzenia nawiązuje połączenie z usługą IoT Hub.
+2. Aplikacja urządzenia subskrybuje powiadomienia o aktualizacjach żądanych właściwości.
+3. Aplikacja urządzenia pobiera pełen dokument dla żądanych właściwości.
 
-Zignorować wszystkie powiadomienia z aplikacji urządzenia `$version` mniejsza lub równa wersji pełny dokument pobrany. Takie podejście jest możliwe, ponieważ usługa IoT Hub gwarantuje wersje zawsze zwiększyć.
+Aplikacja urządzenia może ignorować wszystkie powiadomienia z `$version` mniejszą lub równą wersji pełnego pobranego dokumentu. Takie podejście jest możliwe, ponieważ IoT Hub gwarantuje, że wersje są zawsze zwiększane.
 
 > [!NOTE]
-> Tę logikę został już zaimplementowany w [zestawy SDK urządzeń Azure IoT](iot-hub-devguide-sdks.md). Ten opis jest przydatny tylko wtedy, gdy aplikacji urządzenia nie mogą używać żadnych zestawów SDK urządzeń Azure IoT i należy prawidłowo programu interfejsu MQTT.
+> Ta logika jest już zaimplementowana w zestawach [SDK urządzeń usługi Azure IoT](iot-hub-devguide-sdks.md). Ten opis jest przydatny tylko wtedy, gdy aplikacja urządzenia nie może używać żadnego z zestawów SDK urządzeń usługi Azure IoT i musi bezpośrednio programować interfejs MQTT.
 > 
 
-## <a name="additional-reference-material"></a>Dodatkowe materiały
+## <a name="additional-reference-material"></a>Dodatkowe materiały referencyjne
 
-Inne tematy referencyjne w przewodniku dla deweloperów usługi IoT Hub obejmują:
+Inne tematy referencyjne w przewodniku dewelopera IoT Hub obejmują:
 
-* [Punktów końcowych usługi IoT Hub](iot-hub-devguide-endpoints.md) artykule opisano różne punkty końcowe, które każde Centrum IoT hub udostępnia dla operacji zarządzania i środowiska wykonawczego.
+* W artykule [IoT Hub punkty końcowe](iot-hub-devguide-endpoints.md) opisano różne punkty końcowe, które są uwidaczniane przez poszczególne usługi IoT Hub na potrzeby operacji w czasie wykonywania i zarządzania.
 
-* [Przydziału i ograniczanie przepływności](iot-hub-devguide-quotas-throttling.md) artykule opisano przydziały, które mają zastosowanie do usługi IoT Hub i zachowanie ograniczania przepływności można oczekiwać, gdy korzystasz z usługi.
+* W artykule dotyczącej [ograniczania i](iot-hub-devguide-quotas-throttling.md) przydziałów opisano przydziały, które mają zastosowanie do usługi IoT Hub oraz zachowanie ograniczania, które należy oczekiwać podczas korzystania z usługi.
 
-* [Zestawy SDK urządzeń i usługi Azure IoT](iot-hub-devguide-sdks.md) artykule wymieniono języka różnych zestawów SDK, można użyć podczas tworzenia aplikacji usług i urządzeń, które współdziałają z usługą IoT Hub.
+* W artykule na temat [zestawów SDK urządzeń i usług Azure IoT](iot-hub-devguide-sdks.md) przedstawiono różne zestawy SDK języka, których można używać podczas tworzenia aplikacji dla urządzeń i usług, które współpracują z usługą IoT Hub.
 
-* [Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu wiadomości](iot-hub-devguide-query-language.md) artykule języka zapytań usługi IoT Hub, można użyć, aby pobrać informacje z usługi IoT Hub o bliźniaczych reprezentacji urządzeń i zadań.
+* [Język zapytań IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu komunikatów](iot-hub-devguide-query-language.md) zawiera opis języka zapytań IoT Hub, za pomocą którego można pobrać informacje z IoT Hub o urządzeniu bliźniaczych reprezentacji i zadaniach.
 
-* [Obsługa protokołu MQTT Centrum IoT](iot-hub-mqtt-support.md) artykuł zawiera więcej informacji na temat usługi IoT Hub, obsługa protokołu MQTT.
+* Artykuł [pomocy technicznej IoT Hub MQTT](iot-hub-mqtt-support.md) zawiera więcej informacji na temat obsługi IoT Hub protokołu MQTT.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz wiesz o bliźniaczych reprezentacji urządzeń, może zainteresować się w następujących tematach przewodnik dla deweloperów usługi IoT Hub:
+Teraz wiesz już, jak bliźniaczych reprezentacji urządzenia, możesz zainteresować następujące tematy dotyczące przewodnika dla deweloperów IoT Hub:
 
-* [Zrozumieniu i użytkowaniu bliźniaczych reprezentacjach modułów usługi IoT Hub](iot-hub-devguide-module-twins.md)
-* [Wywoływanie metody bezpośredniej o urządzeniu](iot-hub-devguide-direct-methods.md)
+* [Zrozumienie i Używanie modułu bliźniaczych reprezentacji w IoT Hub](iot-hub-devguide-module-twins.md)
+* [Wywoływanie metody bezpośredniej na urządzeniu](iot-hub-devguide-direct-methods.md)
 * [Planowanie zadań na wielu urządzeniach](iot-hub-devguide-jobs.md)
 
-Aby wypróbować pojęcia opisane w tym artykule, zobacz następujące samouczki usługi IoT Hub:
+Aby wypróbować niektóre koncepcje opisane w tym artykule, zobacz następujące samouczki IoT Hub:
 
-* [Jak używać bliźniaczej reprezentacji urządzenia](iot-hub-node-node-twin-getstarted.md)
-* [Jak korzystać z właściwości bliźniaczych reprezentacji urządzeń](tutorial-device-twins.md)
-* [Zarządzanie urządzeniami za pomocą narzędzia IoT platformy Azure dla programu VS Code](iot-hub-device-management-iot-toolkit.md)
+* [Jak korzystać z sznurka urządzenia](iot-hub-node-node-twin-getstarted.md)
+* [Jak korzystać z właściwości sznurka urządzenia](tutorial-device-twins.md)
+* [Zarządzanie urządzeniami za pomocą narzędzi Azure IoT Tools for VS Code](iot-hub-device-management-iot-toolkit.md)

@@ -1,24 +1,24 @@
 ---
-title: 'Usługa Azure Backup: Magazyny usługi Recovery Services'
-description: Tworzenie magazynów usługi Recovery Services, które przechowuje kopie zapasowe i punkty odzyskiwania
-services: backup
-author: sogup
-manager: vijayts
-keywords: Magazyn usługi Recovery Services; Kopia zapasowa maszyny Wirtualnej platformy Azure; Przywracanie maszyny Wirtualnej platformy Azure;
+title: 'Azure Backup: Tworzenie magazynów Recovery Services'
+description: Tworzenie magazynów Recovery Services, w których są przechowywane kopie zapasowe i punkty odzyskiwania
+ms.reviewer: sogup
+author: dcurwin
+manager: carmonm
+keywords: Magazyn Recovery Services; Kopia zapasowa maszyny wirtualnej platformy Azure; Przywracanie maszyny wirtualnej platformy Azure;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: sogup
-ms.openlocfilehash: 9fba7d679b7d0edb3c99207c99b23f9616c6fa0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: dacurwin
+ms.openlocfilehash: d13aff40d735e98e7745358f8caddcd8cdc20727
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66477574"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688560"
 ---
 # <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
-Magazyn usługi Recovery Services jest jednostką, która przechowuje kopie zapasowe i punkty odzyskiwania utworzone wraz z upływem czasu. Magazyn usługi Recovery Services zawiera także zasady tworzenia kopii zapasowych, które są skojarzone z chronionych maszyn wirtualnych.
+Magazyn Recovery Services jest jednostką, która przechowuje kopie zapasowe i punkty odzyskiwania utworzone w czasie. Magazyn Recovery Services zawiera również zasady tworzenia kopii zapasowych, które są skojarzone z chronionymi maszynami wirtualnymi.
 
 Aby utworzyć magazyn Usług odzyskiwania:
 
@@ -28,57 +28,57 @@ Aby utworzyć magazyn Usług odzyskiwania:
 
     ![Wybieranie pozycji Wszystkie usługi](./media/backup-create-rs-vault/click-all-services.png)
 
-3. W oknie dialogowym **Wszystkie usługi** wprowadź frazę **Recovery Services**. Filtruje listę zasobów zgodnie z dane wejściowe. Na liście zasobów wybierz **Magazyny usługi Recovery Services**.
+3. W oknie dialogowym **Wszystkie usługi** wprowadź frazę **Recovery Services**. Lista filtrów zasobów zgodnie z danymi wejściowymi. Na liście zasobów wybierz pozycję magazyny **Recovery Services**.
 
     ![Wprowadzanie i wybieranie pozycji Magazyny usługi Recovery Services](./media/backup-create-rs-vault/all-services.png)
 
     Zostanie wyświetlona lista magazynów usługi Recovery Services w ramach subskrypcji.
 
-4. Na **Magazyny usługi Recovery Services** pulpitu nawigacyjnego, wybierz opcję **Dodaj**.
+4. Na pulpicie nawigacyjnym **Recovery Services magazynów** wybierz pozycję **Dodaj**.
 
-    ![Dodaj magazyn usługi Recovery Services](./media/backup-create-rs-vault/add-button-create-vault.png)
+    ![Dodawanie magazynu Recovery Services](./media/backup-create-rs-vault/add-button-create-vault.png)
 
-    **Magazyn usługi Recovery Services** zostanie otwarte okno dialogowe. Podaj wartości dla **nazwa**, **subskrypcji**, **grupy zasobów**, i **lokalizacji**.
+    Zostanie otwarte okno dialogowe **magazyn Recovery Services** . Podaj wartości dla **nazwy**, **subskrypcji**, **grupy zasobów**i **lokalizacji**.
 
-    ![Konfigurowanie magazynu usługi Recovery Services](./media/backup-create-rs-vault/create-new-vault-dialog.png)
+    ![Konfigurowanie magazynu Recovery Services](./media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Nazwa**: Wprowadź przyjazną nazwę identyfikującą magazyn. Nazwa musi być unikatowa dla subskrypcji platformy Azure. Określ nazwę, która ma co najmniej dwa, ale nie więcej niż 50 znaków. Nazwa musi zaczynać się literą i zawierać tylko litery, cyfry i łączniki.
-   - **Subskrypcja**: Wybierz subskrypcję do użycia. Jeśli jesteś członkiem tylko jedną subskrypcję, zobaczysz tę nazwę. Jeśli nie masz pewności, której subskrypcji użyć, należy użyć subskrypcji domyślna (zalecane). Istnieje wiele opcji tylko wtedy, gdy pracy lub konto służbowe jest skojarzone z więcej niż jedną subskrypcję platformy Azure.
-   - **Grupa zasobów**: Użyj istniejącej grupy zasobów lub Utwórz nową. Aby wyświetlić listę dostępnych grup zasobów w ramach subskrypcji, wybierz **Użyj istniejącej**, a następnie wybierz zasób w polu listy rozwijanej. Aby utworzyć nową grupę zasobów, wybierz **Utwórz nową** i wprowadź nazwę. Aby uzyskać pełne informacje na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
-   - **Lokalizacja**: Wybierz region geograficzny magazynu. Aby utworzyć magazyn chronić maszyny wirtualne, magazyn **musi** należeć do tego samego regionu maszyn wirtualnych.
+   - **Nazwa**: Wprowadź przyjazną nazwę, aby zidentyfikować magazyn. Nazwa musi być unikatowa dla subskrypcji platformy Azure. Określ nazwę, która ma co najmniej dwa znaki, ale nie więcej niż 50 znaków. Nazwa musi rozpoczynać się od litery i zawierać tylko litery, cyfry i łączniki.
+   - **Subskrypcja**: Wybierz subskrypcję, która ma zostać użyta. Jeśli jesteś członkiem tylko jednej subskrypcji, zobaczysz tę nazwę. Jeśli nie masz pewności, której subskrypcji użyć, Użyj domyślnej (sugerowanej) subskrypcji. Istnieje wiele opcji, które są dostępne tylko wtedy, gdy konto służbowe jest skojarzone z więcej niż jedną subskrypcją platformy Azure.
+   - **Grupa zasobów**: Użyj istniejącej grupy zasobów lub Utwórz nową. Aby wyświetlić listę dostępnych grup zasobów w ramach subskrypcji, wybierz pozycję **Użyj istniejącej**, a następnie wybierz zasób z listy rozwijanej. Aby utworzyć nową grupę zasobów, wybierz pozycję **Utwórz nową** i wprowadź nazwę. Aby uzyskać pełne informacje na temat grup zasobów, zobacz [Azure Resource Manager przegląd](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+   - **Lokalizacja**: Wybierz region geograficzny magazynu. Aby utworzyć magazyn do ochrony maszyn wirtualnych, magazyn **musi** znajdować się w tym samym regionie co maszyny wirtualne.
 
       > [!IMPORTANT]
-      > Jeśli nie masz pewności lokalizacji maszyny Wirtualnej, należy zamknąć okno dialogowe. Przejdź do listy maszyn wirtualnych w portalu. Jeśli masz maszyny wirtualne w wielu regionach, utwórz magazyn usługi Recovery Services w każdym regionie. Utwórz magazyn w pierwszej lokalizacji, przed przystąpieniem do tworzenia magazynu pod kątem innej lokalizacji. Nie ma potrzeby określania kont magazynu do przechowywania danych kopii zapasowej. Magazyn usługi Recovery Services i usługi Azure Backup określają, automatycznie.
+      > Jeśli nie masz pewności co do lokalizacji maszyny wirtualnej, Zamknij okno dialogowe. Przejdź do listy maszyn wirtualnych w portalu. Jeśli masz maszyny wirtualne w kilku regionach, Utwórz magazyn Recovery Services w każdym regionie. Utwórz magazyn w pierwszej lokalizacji, zanim utworzysz magazyn dla innej lokalizacji. Nie ma potrzeby określania kont magazynu do przechowywania danych kopii zapasowej. Magazyn Recovery Services i usługa Azure Backup obsługują automatycznie.
       >
       >
 
-5. Gdy wszystko będzie gotowe utworzyć magazyn usługi Recovery Services, wybierz pozycję **Utwórz**.
+5. Gdy wszystko będzie gotowe do utworzenia magazynu Recovery Services, wybierz pozycję **Utwórz**.
 
-    ![Utwórz magazyn usługi Recovery Services](./media/backup-create-rs-vault/click-create-button.png)
+    ![Tworzenie magazynu Recovery Services](./media/backup-create-rs-vault/click-create-button.png)
 
-    Może upłynąć trochę czasu, aby utworzyć magazyn usługi Recovery Services. Monitoruj powiadomienia o stanie wyświetlane w **powiadomienia** obszar w prawym górnym rogu portalu. Po utworzeniu magazynu jest widoczna na liście magazynów usługi Recovery Services. Jeśli nie widzisz swojego magazynu wybierz **Odśwież**.
+    Utworzenie magazynu Recovery Services może chwilę potrwać. Monitoruj powiadomienia o stanie w obszarze **powiadomień** w prawym górnym rogu portalu. Po utworzeniu magazynu będzie on widoczny na liście magazynów Recovery Services. Jeśli Twój magazyn nie jest widoczny, wybierz pozycję **Odśwież**.
 
-     ![Odśwież listę magazynów kopii zapasowych](./media/backup-create-rs-vault/refresh-button.png)
+     ![Odświeżanie listy magazynów kopii zapasowych](./media/backup-create-rs-vault/refresh-button.png)
 
-## <a name="set-storage-redundancy"></a>Zestaw nadmiarowości magazynu
+## <a name="set-storage-redundancy"></a>Ustawianie nadmiarowości magazynu
 
-Usługa Azure Backup automatycznie obsługuje magazynu dla magazynu. Należy określić sposób replikowania tego magazynu.
+Azure Backup automatycznie obsługuje magazyn dla magazynu. Należy określić sposób replikowania magazynu.
 
-1. W bloku **Magazyny usług Recovery Services** kliknij nowy magazyn. W obszarze **ustawienia** kliknij **właściwości**.
-2. W **właściwości**w obszarze **konfiguracji kopii zapasowej**, kliknij przycisk **aktualizacji**.
+1. W bloku **Magazyny usług Recovery Services** kliknij nowy magazyn. W sekcji **Ustawienia** kliknij pozycję **Właściwości**.
+2. W obszarze **Właściwości**, w obszarze **Konfiguracja kopii zapasowej**, kliknij przycisk **Aktualizuj**.
 
-3. Wybierz typ replikacji magazynu, a następnie kliknij przycisk **Zapisz**.
+3. Wybierz typ replikacji magazynu i kliknij przycisk **Zapisz**.
 
      ![Ustawianie konfiguracji przechowywania dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-   - Zaleca się, jeśli używasz platformy Azure jako punktu końcowego podstawowego magazynu kopii zapasowych w dalszym ciągu używać ustawień domyślnych **magazynu geograficznie nadmiarowego** ustawienie.
+   - Zalecamy, aby Jeśli używasz platformy Azure jako punktu końcowego podstawowego magazynu kopii zapasowych, Kontynuuj, aby użyć domyślnego ustawienia geograficznie nadmiarowego.
    - Jeśli nie używasz platformy Azure jako punktu końcowego podstawowego magazynu kopii zapasowych, wybierz pozycję **Lokalnie nadmiarowy**, co zmniejszy koszty magazynów platformy Azure.
-   - Dowiedz się więcej o [geograficznie](../storage/common/storage-redundancy-grs.md) i [lokalnego](../storage/common/storage-redundancy-lrs.md) nadmiarowości.
+   - Dowiedz się [](../storage/common/storage-redundancy-grs.md) więcej o nadmiarowości geograficznym i [lokalnym](../storage/common/storage-redundancy-lrs.md) .
 
 > [!NOTE]
-> Zmiana **typu replikacji magazynu** (lokalnie nadmiarowy / geograficznie nadmiarowy) dla magazynu usług Recovery services musi odbywać się przed rozpoczęciem konfigurowania kopii zapasowych w magazynie. Po skonfigurowania kopii zapasowej, opcja modyfikowania jest wyłączona i nie można zmienić **typu replikacji magazynu**. 
+> Przed skonfigurowaniem kopii zapasowych w magazynie należy zmienić **Typ replikacji magazynu** (lokalnie nadmiarowy lub geograficznie nadmiarowy) dla magazynu usługi Recovery Services. Po skonfigurowaniu kopii zapasowej opcja Modyfikuj jest wyłączona i nie można zmienić **typu replikacji magazynu**. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej o](backup-azure-recovery-services-vault-overview.md) Magazyny usługi Recovery Services.
-[Dowiedz się więcej o](backup-azure-delete-vault.md) Magazyny usługi Recovery Services usunąć.
+[Dowiedz się więcej o](backup-azure-recovery-services-vault-overview.md) Magazyny Recovery Services.
+[Dowiedz się więcej o](backup-azure-delete-vault.md) Usuń magazyny Recovery Services.

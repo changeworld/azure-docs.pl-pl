@@ -1,6 +1,6 @@
 ---
-title: Mainframe rehosting na maszynach wirtualnych platformy Azure
-description: Ponowne hostowanie obciążeń mainframe, takie jak systemu IBM Z używaniem maszyn wirtualnych (VM) w systemie Microsoft Azure.
+title: Rehostowanie komputera mainframe na maszynach wirtualnych platformy Azure
+description: Hostowanie obciążeń mainframe, takich jak systemy oparte na firmie IBM Z, przy użyciu maszyn wirtualnych na Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -10,116 +10,116 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: c1d7b52bdce77ca108781a999a8a85b3e3fca0b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61487486"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305848"
 ---
-# <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Mainframe rehosting na maszynach wirtualnych platformy Azure
+# <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Rehostowanie komputera mainframe na maszynach wirtualnych platformy Azure
 
-Migrowanie obciążeń z komputera mainframe środowisk w chmurze umożliwia modernizuj swoją infrastrukturę i często zaoszczędzić na kosztach. Wiele obciążeń można przenieść tylko drobnych zmian w kodzie, takie jak aktualizowanie nazwy baz danych na platformie Azure.
+Migrowanie obciążeń ze środowisk mainframe do chmury umożliwia modernizację infrastruktury i często pozwala zaoszczędzić na kosztach. Wiele obciążeń można przenieść na platformę Azure z uwzględnieniem tylko drobnych zmian kodu, takich jak aktualizowanie nazw baz danych.
 
-Ogólnie rzecz biorąc, określenie *mainframe* oznacza, że system komputerowy dużych. W szczególności większość obecnie w użyciu są serwery Z systemem IBM lub IBM plug-compatible komputerach MVS, DOS, VSE, system operacyjny/390 lub z/OS.
+Ogólnie mówiąc, termin *mainframe* oznacza duży system komputerowy. W odróżnieniu od tego większość większość jest obecnie używana w systemie IBM System Z lub systemami zgodnymi z technologią IBM, które działają w systemu MVS, DOS, VSE, OS/390 lub Z/OS.
 
-Maszyny wirtualnej (VM) platformy Azure służy do izolowania i zarządzanie zasobami dla określonej aplikacji w pojedynczym wystąpieniu. Komputery mainframe firmy IBM z/OS np. użycia partycje logiczne (LPARS), w tym celu. Mainframe korzystać LPAR jeden region CICS z skojarzone z nim programy COBOL i oddzielnych LPAR dla bazy danych programu IBM Db2. Typowa [aplikacji n warstwowej na platformie Azure](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server) służy do wdrażania maszyn wirtualnych platformy Azure w sieci wirtualnej, którą można podzielić na podsieci dla każdej warstwy.
+Maszyna wirtualna platformy Azure służy do izolowania zasobów dla określonej aplikacji i zarządzania nimi w jednym wystąpieniu. Komputery mainframe, takie jak IBM z/OS, wykorzystują partycje logiczne (LPARS) do tego celu. Komputery mainframe mogą używać jednego LPAR dla regionu CICS ze skojarzonymi programami COBOL oraz osobnym LPAR dla bazy danych programu IBM DB2. Typowa [aplikacja n-warstwowa na platformie Azure](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server) wdraża maszyny wirtualne platformy Azure w sieci wirtualnej, które mogą być podzielone na podsieci dla każdej warstwy.
 
-Maszyny wirtualne platformy Azure można uruchomić środowiska emulacji mainframe i kompilatory, które obsługują scenariusze lift-and-shift. Projektowanie i testowanie są często wśród pierwszych obciążeń do migracji z komputera mainframe do środowiska usługi Azure dev/test. Typowe składniki serwera, które może emulować obejmują przetwarzania transakcji online (OLTP), partii i systemy pozyskiwania danych, jak przedstawiono na poniższym rysunku.
+Maszyny wirtualne platformy Azure mogą uruchamiać środowiska emulacji mainframe i kompilatory obsługujące scenariusze podnoszenia i przesunięcia. Projektowanie i testowanie są często między pierwszymi obciążeniami do migracji z komputera mainframe do środowiska deweloperskiego/testowego platformy Azure. Typowe składniki serwera, które można emulować, obejmują systemy przetwarzania transakcji online (OLTP), Batch i pozyskiwania danych, jak pokazano na poniższej ilustracji.
 
-![Emulacja środowisk na platformie Azure umożliwiają systemami systemu z/OS.](media/01-overview.png)
+![Środowiska emulacji na platformie Azure umożliwiają uruchamianie systemów z/OS.](media/01-overview.png)
 
-Niektórych obciążeń mainframe można migrować na platformę Azure przy zachowaniu, podczas gdy inne osoby mogą rehosted na platformie Azure przy użyciu rozwiązania partnerskiego. Aby uzyskać szczegółowe wskazówki dotyczące wybierania rozwiązaniem partnera [Centrum migracji komputera Mainframe Azure](https://azure.microsoft.com/migration/mainframe/) może pomóc.
+Niektóre obciążenia komputerów mainframe można migrować na platformę Azure z relatywną łatwością, podczas gdy inne mogą być hostowane na platformie Azure przy użyciu rozwiązania partnerskiego. Aby uzyskać szczegółowe wskazówki dotyczące wybierania rozwiązania partnerskiego, [centrum migracji systemu Azure mainframe](https://azure.microsoft.com/migration/mainframe/) może pomóc.
 
 ## <a name="mainframe-migration"></a>Migracja komputera mainframe
 
-Rehost, ponownie skompilować, Zamień lub wycofać? IaaS lub PaaS? Aby określić strategii migracji odpowiednie dla twojej aplikacji mainframe, zobacz [migracji komputera Mainframe](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) przewodnik w Centrum architektury platformy Azure.
+Ponownie hostować, odbudować, zastąpić lub wycofać? IaaS lub PaaS? Aby określić odpowiednią strategię migracji dla aplikacji typu mainframe, zobacz Przewodnik [migracji komputera mainframe](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) w centrum architektury platformy Azure.
 
-## <a name="micro-focus-rehosting-platform"></a>Platforma wczesnych rehosting koncentracji uwagi
+## <a name="micro-focus-rehosting-platform"></a>Platforma rehostowania mikrozespołów
 
-Micro fokus Enterprise Server jest jednym z największych komputera mainframe rehosting dostępnych platform. Umożliwia uruchamianie obciążeń z/OS na mniej kosztowne x86 platform na platformie Azure.
+Serwer z mikrofokusem jest jednym z największych dostępnych platform do udostępniania komputerów mainframe. Możesz użyć jej do uruchomienia obciążeń z/OS na tańszej platformie x86 na platformie Azure.
 
 Aby rozpocząć pracę:
 
-- [Instalowanie serwera Enterprise i Enterprise Developer na platformie Azure](./microfocus/set-up-micro-focus-azure.md)
-- [Konfigurowanie CICS BankDemo dla dewelopera przedsiębiorstwa na platformie Azure](./microfocus/demo.md)
-- [Uruchamianie serwera przedsiębiorstwa w kontenerze platformy Docker na platformie Azure](./microfocus/run-enterprise-server-container.md)
+- [Instalowanie programu Enterprise Server i Enterprise Developer na platformie Azure](./microfocus/set-up-micro-focus-azure.md)
+- [Konfigurowanie programu CICS BankDemo for Enterprise Developer na platformie Azure](./microfocus/demo.md)
+- [Uruchamianie programu Enterprise Server w kontenerze platformy Docker na platformie Azure](./microfocus/run-enterprise-server-container.md)
 
 
 ## <a name="tmaxsoft-openframe-on-azure"></a>TmaxSoft OpenFrame na platformie Azure
 
-TmaxSoft OpenFrame jest rozwiązaniem rehosting popularnych mainframe używane w scenariuszach lift-and-shift. Środowisko OpenFrame na platformie Azure nadaje się do rozwoju, pokazów, testów lub obciążeń produkcyjnych.
+TmaxSoft OpenFrame to popularne rozwiązanie do ponownego hostowania komputerów mainframe używane w scenariuszach podnoszenia i przesunięcia. Środowisko OpenFrame na platformie Azure jest odpowiednie do tworzenia, demonstracji, testowania lub obciążeń produkcyjnych.
 
 Aby rozpocząć pracę:
 
-- [Rozpoczynanie pracy z usługą TmaxSoft OpenFrame](./tmaxsoft/get-started.md)
+- [Wprowadzenie do TmaxSoft OpenFrame](./tmaxsoft/get-started.md)
 - [Pobierz książkę elektroniczną](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
 ## <a name="ibm-zdt-120"></a>IBM zD&T 12.0
 
-Programowanie Z IBM i środowiska testowego (IBM zD & T) konfiguruje poza środowiskiem produkcyjnym na platformie Azure, który służy do tworzenia, testowania i demonstracji aplikacji opartych na z/OS.
+Środowisko deweloperskie i testowe firmy IBM Z (IBM zD & T) konfiguruje Środowisko nieprodukcyjne na platformie Azure, za pomocą którego można programistycznie, testować i demonstracje aplikacji opartych na systemie operacyjnym.
 
-Emulacja środowiska na platformie Azure można hostować różne rodzaje Z wystąpień za pośrednictwem dystrybucji kontrolowane przez deweloperów aplikacji (ADCDs). Możesz uruchomić zD & T w wersji osobistej, zD & T Sysplex równoległych i zD & T Enterprise Edition na platformie Azure i usługi Azure Stack.
+Środowisko emulacji na platformie Azure może hostować różne rodzaje wystąpień Z za pomocą dystrybucji kontrolowanych przez deweloperów aplikacji (ADCDs). Możesz uruchomić zD & T Personal Edition, zD & T Parallel Sysplex i zD & T Enterprise Edition na platformie Azure i Azure Stack.
 
 Aby rozpocząć pracę:
 
-- [Konfigurowanie IBM zD & T 12.0 na platformie Azure](./ibm/install-ibm-z-environment.md)
+- [Konfigurowanie usług IBM zD & T 12,0 na platformie Azure](./ibm/install-ibm-z-environment.md)
 - [Konfigurowanie ADCD na zD & T](./ibm/demo.md)
 
 ## <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale na platformie Azure
 
-Środowisko pureScale IBM DB2 zapewnia klaster bazy danych na platformie Azure. Nie jest taka sama jak oryginalne środowisko, ale zapewnia podobne dostępności i skalowalności jako IBM DB2 w przypadku uruchamiania w Instalatorze Sysplex równolegle z/OS.
+Środowisko IBM DB2 pureScale udostępnia klaster bazy danych dla platformy Azure. Nie jest on identyczny z oryginalnym środowiskiem, ale zapewnia podobną dostępność i skalowanie jako IBM DB2 dla systemu z/OS działającego w ramach równoległej konfiguracji Sysplex.
 
-Aby rozpocząć pracę, zobacz [pureScale IBM DB2 na platformie Azure](/azure/virtual-machines/linux/ibm-db2-purescale-azure).
+Aby rozpocząć, zobacz temat [IBM DB2 pureScale na platformie Azure](/azure/virtual-machines/linux/ibm-db2-purescale-azure).
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Podczas migracji komputera mainframe obciążeń do infrastruktury platformy Azure jako usługa (IaaS), można wybrać spośród kilku typów na żądanie, skalowalnych zasobów obliczeniowych, w tym maszyn wirtualnych platformy Azure. Platforma Azure oferuje szeroką gamę [Linux](/azure/virtual-machines/linux/overview) i [Windows](/azure/virtual-machines/windows/overview) maszyn wirtualnych.
+Podczas migrowania obciążeń programu mainframe do infrastruktury platformy Azure jako usługi (IaaS) można wybrać spośród kilku typów skalowalnych zasobów obliczeniowych na żądanie, w tym maszyn wirtualnych platformy Azure. Platforma Azure oferuje wiele maszyn wirtualnych z [systemami](/azure/virtual-machines/windows/overview) [Linux](/azure/virtual-machines/linux/overview) i Windows.
 
 ### <a name="compute"></a>Wystąpienia obliczeniowe
 
-Pojemność mainframe favorably porównuje moc obliczeniową platformy Azure. Jeśli zamierzasz przenoszenie obciążenia komputera mainframe na platformie Azure, porównywać metryki mainframe instrukcji jeden milion na sekundę (MIPS) na procesory wirtualne. 
+Usługa Azure COMPUTE pobór porównuje favorably z pojemnością komputera mainframe. Jeśli zastanawiasz się nad przeniesieniem obciążenia komputera mainframe na platformę Azure, porównaj metrykę komputera mainframe z 1 000 000 instrukcjami na sekundę (MIPS) do wirtualnych procesorów CPU. 
 
-Dowiedz się, jak [przenieść mainframe obliczeniowych na platformę Azure](./concepts/mainframe-compute-azure.md).
+Dowiedz się, jak [przenieść obliczeniowe komputerów mainframe na platformę Azure](./concepts/mainframe-compute-azure.md).
 
 ### <a name="high-availability-and-failover"></a>Wysoka dostępność i tryb failover
 
-Platforma Azure oferuje na podstawie zobowiązania umowy poziomu usług (SLA). Dostępność wielu nines jest ustawieniem domyślnym i umów SLA można zoptymalizować za pomocą replikacji lokalne lub oparte na lokalizacji geograficznej usług. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
+Platforma Azure oferuje umowy dotyczące poziomu usług oparte na zobowiązaniach (umowy SLA). Wartość domyślna to wiele dziewięciu, a umowy SLA można zoptymalizować przy użyciu lokalnej lub geograficznie replikacji usług. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
 
-Za pomocą usługi Azure IaaS, np. maszyna wirtualna, funkcje właściwe dla systemu zapewniają obsługę trybu failover — na przykład klastra trybu failover wystąpienia i [zestawy dostępności](/azure/virtual-machines/windows/regions-and-availability#availability-sets). Korzystając z platformy Azure jako zasoby usługi (PaaS), platforma automatycznie obsługuje tryb failover. Przykłady obejmują [usługi Azure SQL Database](/azure/sql-database/sql-database-technical-overview) i [usługi Azure Cosmos DB](/azure/cosmos-db/introduction).
+Dzięki platformie Azure IaaS, takiej jak maszyna wirtualna, konkretne funkcje systemowe zapewniają obsługę trybu failover, na przykład wystąpienia klastra trybu failover i zestawy dostępności. Gdy korzystasz z zasobów platformy Azure jako usługi (PaaS), platforma automatycznie obsługuje tryb failover. Przykłady obejmują [Azure SQL Database](/azure/sql-database/sql-database-technical-overview) i [Azure Cosmos DB](/azure/cosmos-db/introduction).
 
 ### <a name="scalability"></a>Skalowalność
 
-Komputery mainframe zazwyczaj skalowanie w górę, podczas skalowania środowiska chmury w poziomie. Platforma Azure oferuje szeroką gamę [Linux](/azure/virtual-machines/linux/sizes) i [Windows](/azure/virtual-machines/windows/sizes) rozmiarów do własnych potrzeb. Chmura również skalowany w górę lub w dół do specyfikacji użytkownika dokładnego dopasowania. Obliczenia mocy obliczeniowej, magazynu i usług [skalowania](/azure/architecture/best-practices/auto-scaling) na żądanie w ramach modelu rozliczania użycia.
+Komputery mainframe zazwyczaj skalują w górę, a środowiska chmury skalują w poziomie. Platforma Azure oferuje wiele rozmiarów systemów [Linux](/azure/virtual-machines/linux/sizes) i [Windows](/azure/virtual-machines/windows/sizes) spełniających Twoje potrzeby. Chmura również skaluje się w górę lub w dół, aby dopasować dokładne specyfikacje użytkownika. Skalowanie mocy obliczeniowej, magazynu [](/azure/architecture/best-practices/auto-scaling) i usług na żądanie w ramach modelu rozliczania opartego na użyciu.
 
 ### <a name="storage"></a>Magazyn
 
-W chmurze masz kilka opcji magazynu elastyczną i skalowalną, i płacisz tylko za potrzebne. [Usługa Azure Storage](/azure/storage/common/storage-introduction) oferuje wysoce skalowalny magazyn obiektów dla obiektów danych, usługę systemu plików w chmurze, niezawodny Magazyn obsługi komunikatów i magazyn danych NoSQL. W przypadku maszyn wirtualnych dyski zarządzane i niezarządzane zapewniają trwały, bezpieczny magazyn dyskowy.
+W chmurze masz szereg elastycznych, skalowalnych opcji magazynu i płacisz tylko za to, czego potrzebujesz. Usługa [Azure Storage](/azure/storage/common/storage-introduction) oferuje wysoce skalowalny magazyn obiektów dla obiektów danych, usługę systemu plików dla chmury, niezawodny magazyn komunikatów i Magazyn NoSQL. W przypadku maszyn wirtualnych dyski zarządzane i niezarządzane zapewniają trwały, bezpieczny magazyn dyskowy.
 
-Dowiedz się, jak [przenieść magazyn komputera mainframe na platformie Azure](./concepts/mainframe-storage-azure.md).
+Dowiedz się, jak [przenieść magazyn mainframe na platformę Azure](./concepts/mainframe-storage-azure.md).
 
 ### <a name="backup-and-recovery"></a>Tworzenie i przywracanie kopii zapasowych
 
-Utrzymywania własnej lokacji odzyskiwania po awarii może być kosztowne oferty. Platforma Azure oferuje łatwe Implementowanie i ekonomiczne opcje [kopii zapasowej](/azure/backup/backup-introduction-to-azure-backup), [odzyskiwania](/azure/site-recovery/site-recovery-overview), i [nadmiarowości](/azure/storage/common/storage-redundancy) poziomie lokalnych i regionalnych, lub za pośrednictwem nadmiarowości geograficznej.
+Utrzymywanie własnej witryny odzyskiwania po awarii może być kosztowne. Platforma Azure oferuje łatwe w implementacji i ekonomiczne opcje [tworzenia kopii zapasowych](/azure/backup/backup-introduction-to-azure-backup), [odzyskiwania](/azure/site-recovery/site-recovery-overview)i [nadmiarowości](/azure/storage/common/storage-redundancy) na poziomach lokalnym lub regionalnym lub za pośrednictwem nadmiarowości geograficznej.
 
-## <a name="azure-government-for-mainframe-migrations"></a>Platforma Azure Government dla migracji komputera mainframe
+## <a name="azure-government-for-mainframe-migrations"></a>Azure Government migracji komputera mainframe
 
-Jednostki sektora publicznego wiele chcielibyśmy Przenieś swoje aplikacje mainframe na bardziej nowoczesny, elastyczną platformę. Microsoft Azure dla instytucji rządowych jest fizycznie oddzielone wystąpienie globalnej platformy Microsoft Azure — spakowane do systemów rządowych Federalnej, stanowej i lokalnej. Zapewnia światowej klasy zabezpieczenia, ochronę i zgodnością, mające specjalnie dla agencji rządowych Stanów Zjednoczonych i partnerów tych instytucji.
+Wiele jednostek sektora publicznego przyniesie Cię do przenoszenia aplikacji typu mainframe do bardziej nowoczesnej, elastycznej platformy. Microsoft Azure Government to fizyczne rozdzielone wystąpienie globalnej Microsoft Azure platformy — spakowane dla federalnych, stanowych i lokalnych systemów rządowych. Zapewnia ona światowej klasy usługi zabezpieczeń, ochrony i zgodności przeznaczone dla Stany Zjednoczone instytucji rządowych i ich partnerów.
 
-Platforma Azure Government zdobytych certyfikację Provisional Authority to Operate (P-ATO) o dużym znaczeniu FedRAMP dla systemów, które potrzebują tego typu środowiska.
+Azure Government uzyskała tymczasowy organ do obsługi (P-ATO) w celu uzyskania wysokiego wpływu na systemy, które wymagają tego typu środowiska.
 
-Aby rozpocząć pracę, Pobierz [chmura platformy Microsoft Azure Government dla aplikacji mainframe](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/).
+Aby rozpocząć, Pobierz [Microsoft Azure Government chmurę dla aplikacji dla komputerów mainframe](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Poproś naszych [partnerów](partner-workloads.md) aby pomóc Ci przy migracji lub ponowne hostowanie Twoich aplikacji mainframe. Aby uzyskać szczegółowe wskazówki dotyczące wybierania rozwiązania partnerskiego, zobacz [Alliance modernizacji platformy](https://www.platformmodernization.org/pages/mainframe.aspx) witryny sieci Web.
+Podawaj naszych [partnerów](partner-workloads.md) , aby ułatwić migrację lub ponowne hostowanie aplikacji typu mainframe. Aby uzyskać szczegółowe wskazówki dotyczące wybierania rozwiązania partnerskiego, zobacz witrynę sieci Web dotyczącą [modernizacji platformy](https://www.platformmodernization.org/pages/mainframe.aspx) .
 
 Zobacz też:
 
-- [Oficjalne dokumenty dotyczące zagadnień związanych z komputera mainframe](mainframe-white-papers.md)
+- [Oficjalne dokumenty dotyczące tematów mainframe](mainframe-white-papers.md)
 - [Migracja komputera mainframe](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Rozwiązywanie problemów](/azure/virtual-machines/troubleshooting/)
-- [Demystifying mainframe do migracji na platformę Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+- [Sztuczna komputera mainframe do migracji na platformę Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->
 [microfocus-get-started]: /microfocus/get-started.md

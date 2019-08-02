@@ -1,43 +1,44 @@
 ---
-title: Zainstalować woluminu gitRepo usługi Azure Container Instances
-description: Dowiedz się, jak można zainstalować woluminu gitRepo, aby sklonować repozytorium Git do wystąpienia kontenera
+title: Zainstaluj wolumin gitRepo Azure Container Instances
+description: Dowiedz się, jak zainstalować wolumin gitRepo, aby sklonować repozytorium git do wystąpień kontenera
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: 86f8c099061cd3b75b77330c567f34dea2b34928
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: e8afa9e14941920cdcfb984e6660bdc666240716
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657601"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325442"
 ---
-# <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Zainstalować woluminu gitRepo w usłudze Azure Container Instances
+# <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Zainstaluj wolumin gitRepo w Azure Container Instances
 
-Dowiedz się, jak zainstalować *gitRepo* woluminu, aby sklonować repozytorium Git do wystąpienia kontenera.
+Dowiedz się, jak zainstalować wolumin *gitRepo* , aby sklonować repozytorium git do wystąpień kontenerów.
 
 > [!NOTE]
-> Instalowanie *gitRepo* wolumin jest obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje dostępne w kontenerach Windows, można znaleźć bieżące różnice dotyczące platform w [Przegląd](container-instances-overview.md#linux-and-windows-containers).
+> Instalowanie woluminu *gitRepo* jest obecnie ograniczone do kontenerów systemu Linux. Gdy pracujemy nad przełączeniem wszystkich funkcji do kontenerów systemu Windows, w przeglądzie można znaleźć [](container-instances-overview.md#linux-and-windows-containers)bieżące różnice między platformami.
 
 ## <a name="gitrepo-volume"></a>wolumin gitRepo
 
-*GitRepo* wolumin instaluje katalogu i klony określonego repozytorium Git do niej podczas uruchamiania kontenera. Za pomocą *gitRepo* woluminu w usługi container instances, można uniknąć, dodając kod, aby to zrobić w swoich aplikacjach.
+Wolumin *gitRepo* instaluje katalog i klonuje określone repozytorium git przy uruchamianiu kontenera. Przy użyciu woluminu *gitRepo* w wystąpieniach kontenera można uniknąć dodawania kodu do wykonania w aplikacjach.
 
-Podczas instalowania *gitRepo* woluminu, można ustawić trzy właściwości, aby skonfigurować woluminu:
+Podczas instalowania woluminu *gitRepo* można ustawić trzy właściwości, aby skonfigurować wolumin:
 
 | Właściwość | Wymagane | Opis |
 | -------- | -------- | ----------- |
-| `repository` | Yes | Pełny adres URL, w tym `http://` lub `https://`, repozytorium Git do sklonowania.|
-| `directory` | Nie | Katalog, w którym można sklonować repozytorium. Ścieżka musi nie zawierały lub rozpoczynały się "`..`".  Jeśli określisz "`.`", repozytorium został sklonowany w katalogu woluminu. W przeciwnym razie repozytorium Git został sklonowany w podkatalogu o podanej nazwie w katalogu woluminu. |
-| `revision` | Nie | Skrót zatwierdzenia poprawki, aby sklonować. Jeśli nie zostanie podany, `HEAD` został sklonowany poprawki. |
+| `repository` | Yes | Pełny adres URL, w `http://` tym `https://`lub, repozytorium git do sklonowania.|
+| `directory` | Nie | Katalog, do którego ma zostać Sklonowane repozytorium. Ścieżka nie może zawierać znaków "" ani zaczynać się od znaku "`..`".  Jeśli określisz "`.`", repozytorium zostanie sklonowane do katalogu woluminu. W przeciwnym razie repozytorium git zostanie sklonowane do podkatalogu o podaną nazwę w katalogu woluminów. |
+| `revision` | Nie | Skrót zatwierdzenia poprawki do klonowania. Jeśli nie zostanie określony, `HEAD` poprawka zostanie sklonowana. |
 
-## <a name="mount-gitrepo-volume-azure-cli"></a>Wolumin gitRepo instalacji: Interfejs wiersza polecenia platformy Azure
+## <a name="mount-gitrepo-volume-azure-cli"></a>Zainstaluj wolumin gitRepo: Interfejs wiersza polecenia platformy Azure
 
-Aby zainstalować wolumin gitRepo podczas wdrażania wystąpień kontenera za pomocą [wiersza polecenia platformy Azure](/cli/azure), dostarczają `--gitrepo-url` i `--gitrepo-mount-path` parametry [utworzyć kontener az][az-container-create] polecenia. Opcjonalnie można określić katalog, w obrębie woluminu, aby sklonować do (`--gitrepo-dir`) oraz skrót zatwierdzenia poprawki do sklonowania (`--gitrepo-revision`).
+Aby zainstalować wolumin gitRepo podczas wdrażania wystąpień kontenerów za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure), `--gitrepo-url` Podaj `--gitrepo-mount-path` parametry i w polu [AZ Container Create][az-container-create] . Opcjonalnie możesz określić katalog w woluminie, który ma zostać sklonowany`--gitrepo-dir`do () i skrót zatwierdzenia poprawki do sklonowania (`--gitrepo-revision`).
 
-To przykładowe polecenie klonuje Microsoft [aci-helloworld][aci-helloworld] przykładowej aplikacji do `/mnt/aci-helloworld` w wystąpieniu kontenera:
+To przykładowe polecenie klonuje przykładową aplikację Microsoft [ACI-HelloWorld][aci-helloworld] do `/mnt/aci-helloworld` programu w ramach wystąpienia kontenera:
 
 ```azurecli-interactive
 az container create \
@@ -50,7 +51,7 @@ az container create \
     --gitrepo-mount-path /mnt/aci-helloworld
 ```
 
-Aby sprawdzić, czy wolumin gitRepo został zainstalowany, uruchom powłokę w kontenerze za pomocą [az container exec][az-container-exec] i wyświetlanie listy katalogu:
+Aby sprawdzić, czy wolumin gitRepo został zainstalowany, Uruchom powłokę w kontenerze za pomocą [AZ Container exec][az-container-exec] i wystaw katalog:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
@@ -62,53 +63,53 @@ total 16
 drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 ```
 
-## <a name="mount-gitrepo-volume-resource-manager"></a>Wolumin gitRepo instalacji: Resource Manager
+## <a name="mount-gitrepo-volume-resource-manager"></a>Zainstaluj wolumin gitRepo: Resource Manager
 
-Aby zainstalować wolumin gitRepo podczas wdrażania wystąpień kontenera za pomocą [szablonu usługi Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups), najpierw wypełnić `volumes` tablicy w grupie kontenerów `properties` części szablonu. Następnie dla każdego kontenera w grupie kontenerów, w którym chcesz zainstalować *gitRepo* woluminu, wypełnij `volumeMounts` tablicy w `properties` sekcja definicji kontenera.
+Aby zainstalować wolumin gitRepo podczas wdrażania wystąpień kontenerów z szablonem [Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups), należy najpierw wypełnić `volumes` tablicę w sekcji Grupa `properties` kontenerów szablonu. Następnie dla każdego kontenera w grupie kontenerów, w której chcesz zainstalować wolumin *gitRepo* , Wypełnij `volumeMounts` tablicę w `properties` sekcji definicji kontenera.
 
-Na przykład następujący szablon usługi Resource Manager tworzy grupę kontenerów składające się z jednego kontenera. Kontener klony dwóch repozytoriów GitHub, określony przez *gitRepo* bloków woluminu. Drugi wolumin zawiera dodatkowe właściwości, określając katalog w celu sklonowania oraz skrót zatwierdzenia określoną poprawkę, aby sklonować.
+Na przykład poniższy szablon Menedżer zasobów tworzy grupę kontenerów składającą się z jednego kontenera. Kontener klonuje dwa repozytoria GitHub określone przez bloki woluminów *gitRepo* . Drugi wolumin zawiera dodatkowe właściwości określające katalog do klonowania oraz skrót zatwierdzania określonej poprawki do klonowania.
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
 [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
-Wynikowy struktura katalogów dwóch sklonowanych repozytoriów zdefiniowane w szablonie poprzedzającego jest:
+Powstająca struktura katalogów dwóch sklonowanych repozytoriów zdefiniowanych w poprzednim szablonie to:
 
 ```
 /mnt/repo1/aci-helloworld
 /mnt/repo2/my-custom-clone-directory
 ```
 
-Aby zapoznać się z przykładem wdrażaniem wystąpienia kontenera za pomocą szablonu usługi Azure Resource Manager, zobacz [wdrażanie grup wielu kontenerów w usłudze Azure Container Instances](container-instances-multi-container-group.md).
+Aby zobaczyć przykład wdrożenia wystąpienia kontenera z szablonem Azure Resource Manager, zobacz [wdrażanie grup wielokontenerowych w Azure Container Instances](container-instances-multi-container-group.md).
 
-## <a name="private-git-repo-authentication"></a>Uwierzytelnianie repozytorium Git prywatne
+## <a name="private-git-repo-authentication"></a>Uwierzytelnianie prywatnego repozytorium git
 
-Aby zainstalować wolumin gitRepo do prywatnego repozytorium Git, należy określić poświadczenia w adresie URL repozytorium. Zwykle poświadczenia znajdują się w formie nazwy użytkownika i osobistego tokenu dostępu (PAT) przyznająca dostęp do repozytorium o określonym zakresie.
+Aby zainstalować wolumin gitRepo dla prywatnego repozytorium git, określ poświadczenia w adresie URL repozytorium. Zazwyczaj poświadczenia są w postaci nazwy użytkownika i osobistego tokenu dostępu, który przyznaje dostęp do zakresu repozytorium.
 
-Na przykład interfejsu wiersza polecenia Azure `--gitrepo-url` parametr prywatne repozytorium GitHub będzie wyglądać podobnie do następujące (gdzie "gituser" jest nazwą użytkownika usługi GitHub, a "abcdef1234fdsa4321abcdef" użytkownika osobistego tokenu dostępu):
+Na przykład parametr interfejsu wiersza polecenia `--gitrepo-url` platformy Azure dla prywatnego repozytorium GitHub będzie wyglądać podobnie do poniższego (gdzie "gituser" jest nazwą użytkownika serwisu GitHub, a "abcdef1234fdsa4321abcdef" jest osobistym tokenem dostępu użytkownika):
 
 ```azurecli
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
-Repozytorium Git repozytoriów platformy Azure należy określić w połączeniu z prawidłową osobisty token dostępu dowolną nazwę użytkownika (jak w poniższym przykładzie można użyć "azurereposuser"):
+W przypadku repozytorium Azure Repos git określ dowolną nazwę użytkownika (można użyć "azurereposuser", jak w poniższym przykładzie) w połączeniu z prawidłowym identyfikatorem:
 
 ```azurecli
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 
-Aby uzyskać więcej informacji na temat osobiste tokeny dostępu usługi GitHub i repozytoriów platformy Azure zobacz następujące tematy:
+Aby uzyskać więcej informacji na temat osobistych tokenów dostępu dla usługi GitHub i Azure Repos, zobacz następujące tematy:
 
-GitHub: [Tworzenie osobistego tokenu dostępu dla wiersza polecenia][pat-github]
+GitHub [Tworzenie osobistego tokenu dostępu dla wiersza polecenia][pat-github]
 
-Azure Repos: [Tworzyć osobiste tokeny dostępu do uwierzytelniania dostępu][pat-repos]
+Azure Repos: [Tworzenie osobistych tokenów dostępu w celu uwierzytelniania dostępu][pat-repos]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak zainstalować inne typy woluminu w usłudze Azure Container Instances:
+Dowiedz się, jak zainstalować inne typy woluminów w Azure Container Instances:
 
 * [Instalowanie udziału plików platformy Azure w usłudze Azure Container Instances](container-instances-volume-azure-files.md)
 * [Zainstalować emptyDir woluminu w wystąpień kontenera platformy Azure](container-instances-volume-emptydir.md)
-* [Zainstaluj wolumin tajny w usłudze Azure Container Instances](container-instances-volume-secret.md)
+* [Zainstaluj wolumin tajny w Azure Container Instances](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld

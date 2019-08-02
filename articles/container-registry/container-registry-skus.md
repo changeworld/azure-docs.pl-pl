@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.author: danlep
 ms.openlocfilehash: bf620178a0c10661126b3e52c7b908ccc9a90d89
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68311887"
 ---
 # <a name="azure-container-registry-skus"></a>Jednostki SKU Azure Container Registry
@@ -21,15 +21,15 @@ Azure Container Registry (ACR) jest dostępny w wielu warstwach usług, znanych 
 
 | SKU | Zarządzane | Opis |
 | --- | :-------: | ----------- |
-| **Podstawowa** | Tak | Zoptymalizowany pod kątem kosztów punkt wejścia dla deweloperów poznających usługę Azure Container Registry. Podstawowe rejestry mają takie same funkcje programistyczne jak standard i Premium (takie jak Azure Active Directory [integracja](container-registry-authentication.md#individual-login-with-azure-ad)z uwierzytelnianiem, [usuwanie][container-registry-delete], and [webhooks][container-registry-webhook]obrazu). Jednak przepływność dołączonego magazynu i obrazu jest najbardziej odpowiednia w przypadku małych scenariuszy użycia. |
-| **Standardowa** | Yes | Standardowe rejestry oferują te same możliwości co podstawowa, dzięki czemu można zwiększyć pojemność magazynu i przepływność obrazu. Rejestry w warstwie Standardowa powinny spełniać wymagania większości scenariuszy produkcyjnych. |
+| **Podstawowa** | Yes | Zoptymalizowany pod kątem kosztów punkt wejścia dla deweloperów poznających usługę Azure Container Registry. Podstawowe rejestry mają takie same funkcje programistyczne jak standard i Premium (takie jak Azure Active Directory [integracja](container-registry-authentication.md#individual-login-with-azure-ad)z uwierzytelnianiem, [Usuwanie obrazu][container-registry-delete]i elementy webhook). [][container-registry-webhook] Jednak przepływność dołączonego magazynu i obrazu jest najbardziej odpowiednia w przypadku małych scenariuszy użycia. |
+| **Standardowa** | Tak | Standardowe rejestry oferują te same możliwości co podstawowa, dzięki czemu można zwiększyć pojemność magazynu i przepływność obrazu. Rejestry w warstwie Standardowa powinny spełniać wymagania większości scenariuszy produkcyjnych. |
 | **Premium** | Tak | Rejestry Premium zapewniają największą ilość dołączonego magazynu i współbieżnych operacji, co umożliwia wykonywanie scenariuszy o dużej pojemności. Oprócz wyższej przepływności obrazów Premium dodaje funkcje, w tym [replikację geograficzną][container-registry-geo-replication] służącą do zarządzania pojedynczym rejestrem w wielu regionach, [zaufania zawartości](container-registry-content-trust.md) dla podpisywania tagów obrazu oraz [zapory i sieci wirtualne (wersja zapoznawcza)](container-registry-vnet.md) do Ogranicz dostęp do rejestru. |
 |  Klasyczny (niedostępne*po 2019 kwietnia*) | Nie | Ta jednostka SKU włączyła początkową wersję usługi Azure Container Registry na platformie Azure. Klasyczne rejestry są obsługiwane przez konto magazynu utworzone w ramach subskrypcji przez platformę Azure, co ogranicza możliwość udostępniania funkcji ACR na wyższym poziomie, takich jak zwiększona przepływność i replikacja geograficzna. |
 
 > [!IMPORTANT]
 > Jednostka SKU rejestru klasycznego jest **przestarzała**i będzie niedostępna po **2019 kwietnia**. Zalecamy używanie wersji Basic, Standard lub Premium dla wszystkich nowych rejestrów. Przed 2019 kwietnia należy uaktualnić wszystkie istniejące rejestry klasyczne. Informacje o uaktualnianiu znajdują się w temacie [uaktualnianie rejestru klasycznego][container-registry-upgrade].
 
-Jednostki SKU w warstwach Podstawowa, standardowa i Premium ( nazywane zbiorczo rejestrami zarządzanymi) zapewniają te same możliwości programistyczne. Wszystkie korzyści z [magazynu obrazów][container-registry-storage] są również zarządzane całkowicie przez platformę Azure. Wybranie jednostki SKU wyższego poziomu zapewnia większą wydajność i skalowalność. W przypadku wielu warstw usług możesz rozpocząć pracę z usługą Basic, a następnie przekonwertować ją na Standard i Premium w miarę wzrostu użycia rejestru.
+Jednostki SKU w warstwach Podstawowa, standardowa i Premium (nazywane zbiorczo rejestrami zarządzanymi) zapewniają te same możliwości programistyczne. Wszystkie korzyści z [magazynu obrazów][container-registry-storage] są również zarządzane całkowicie przez platformę Azure. Wybranie jednostki SKU wyższego poziomu zapewnia większą wydajność i skalowalność. W przypadku wielu warstw usług możesz rozpocząć pracę z usługą Basic, a następnie przekonwertować ją na Standard i Premium w miarę wzrostu użycia rejestru.
 
 ## <a name="sku-feature-matrix"></a>Macierz funkcji SKU
 

@@ -1,29 +1,29 @@
 ---
-title: Tagów zasobów platformy Azure dla organizacji logicznego | Dokumentacja firmy Microsoft
-description: Pokazuje, jak zastosować znaczniki do organizowania zasobów platformy Azure do rozliczeń i zarządzania nimi.
+title: Oznacz zasoby platformy Azure dla organizacji logicznej | Microsoft Docs
+description: Pokazuje, jak zastosować Tagi do organizowania zasobów platformy Azure na potrzeby rozliczeń i zarządzania nimi.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 77175738a0cae5c6185a8ac74e51e9b91b685235
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: e18fc040249954ce7ea6a8a686e121a4b56fb54a
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827934"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312134"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
-Aby zastosować znaczniki do zasobów, użytkownik musi mieć dostęp do zapisu do tego typu zasobu. Aby zastosować znaczniki do wszystkich typów zasobów, użyj [Współautor](../role-based-access-control/built-in-roles.md#contributor) roli. Aby zastosować znaczniki do typu tylko jeden zasób, należy użyć roli współautora dla tego zasobu. Na przykład, aby zastosować znaczniki do maszyn wirtualnych, należy użyć [Współautor maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+Aby zastosować Tagi do zasobów, użytkownik musi mieć dostęp do zapisu dla tego typu zasobu. Aby zastosować Tagi do wszystkich typów zasobów, użyj roli [współautor](../role-based-access-control/built-in-roles.md#contributor) . Aby zastosować Tagi tylko do jednego typu zasobu, należy użyć roli współautor dla tego zasobu. Aby na przykład zastosować Tagi do maszyn wirtualnych, użyj współautora [maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="policies"></a>Zasady
 
-Możesz użyć [usługi Azure Policy](../governance/policy/overview.md) do wymuszania znakowania reguł i Konwencji. Tworząc zasady, należy unikać scenariusza zasoby wdrażane na Twojej subskrypcji, które nie są zgodne z oczekiwanych tagów w Twojej organizacji. Zamiast ręcznego zastosowania tagów lub wyszukiwanie zasobów, które nie są zgodne można utworzyć zasadę, która automatycznie stosuje znaczniki wymagane podczas wdrażania. W poniższej sekcji pokazano przykładowe zasady dla tagów.
+Aby wymusić reguły tagowania i konwencje, można użyć [Azure Policy](../governance/policy/overview.md) . Utworzenie zasad pozwala uniknąć scenariusza wdrażania zasobów w ramach subskrypcji, które nie są zgodne z oczekiwanymi tagami w organizacji. Zamiast ręcznie stosować Tagi lub wyszukiwać zasoby, które nie są zgodne, można utworzyć zasady, które automatycznie stosują potrzebne Tagi podczas wdrażania. W poniższej sekcji przedstawiono przykładowe zasady dla tagów.
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
@@ -70,7 +70,7 @@ Aby uzyskać *zasoby, które mają konkretny tag*, użyj:
 (Get-AzResource -Tag @{ Dept="Finance"}).Name
 ```
 
-Aby uzyskać *zasoby, które mają konkretny tag nazwę*, użyj:
+Aby uzyskać *zasoby z określoną nazwą tagu*, użyj:
 
 ```azurepowershell-interactive
 (Get-AzResource -TagName Dept).Name
@@ -107,7 +107,7 @@ $r.Tags.Add("Status", "Approved")
 Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-Aby zastosować wszystkie tagi z grupy zasobów do swoich zasobów i *nie zachowuj tagów istniejących w zasobach*, użyj następującego skryptu:
+Aby zastosować wszystkie Tagi z grupy zasobów do jej zasobów i *nie utrzymywać istniejących tagów w zasobach*, użyj następującego skryptu:
 
 ```azurepowershell-interactive
 $groups = Get-AzResourceGroup
@@ -117,7 +117,7 @@ foreach ($g in $groups)
 }
 ```
 
-Aby zastosować wszystkie tagi z grupy zasobów do swoich zasobów i *istniejące tagi bądź na bieżąco z zasobami, które nie znajdują się duplikaty*, użyj następującego skryptu:
+Aby zastosować wszystkie Tagi z grupy zasobów do jej zasobów i *zachować istniejące Tagi dla zasobów, które nie są duplikatami*, użyj następującego skryptu:
 
 ```azurepowershell-interactive
 $group = Get-AzResourceGroup "examplegroup"
@@ -168,25 +168,25 @@ Ten skrypt zwraca następujący format:
 }
 ```
 
-Aby wyświetlić istniejące tagi dla *zasób, który ma określoną grupę nazwa, typ i zasobów*, użyj:
+Aby wyświetlić istniejące Tagi dla *zasobu, który ma określoną nazwę, typ i grupę zasobów*, należy użyć:
 
 ```azurecli
 az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
 ```
 
-Po pętli kolekcją zasobów, możesz chcieć pokazać identyfikator zasobu, zasób Pełny przykład przedstawiono w dalszej części tego artykułu. Aby wyświetlić istniejące tagi dla *zasobu o określonym identyfikatorze zasobu*, użyj:
+W przypadku zapętlenia przez kolekcję zasobów warto wyświetlić zasób według identyfikatora zasobu. Pełny przykład przedstawiono w dalszej części tego artykułu. Aby wyświetlić istniejące tagi dla *zasobu o określonym identyfikatorze zasobu*, użyj:
 
 ```azurecli
 az resource show --id <resource-id> --query tags
 ```
 
-Aby uzyskać grupy zasobów, które mają konkretny tag, użyj `az group list`:
+Aby uzyskać grupy zasobów, które mają określony tag, użyj `az group list`:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-Aby uzyskać wszystkie zasoby, które mają konkretny tag i konkretną wartość, użyj `az resource list`:
+Aby uzyskać wszystkie zasoby, które mają określony tag i wartość, użyj `az resource list`:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -206,7 +206,7 @@ Aby dodać tagi do *zasobu bez istniejących tagów*, użyj:
 az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Aby dodać tagi do zasobu, który ma już tagi, Pobierz istniejące tagi, ponownie sformatować tę wartość i ponownie zastosuj tagi istniejące i nowe:
+Aby dodać tagi do zasobu, który ma już Tagi, Pobierz istniejące Tagi, przesformatuj tę wartość i ponownie Zastosuj istniejące i nowe Tagi:
 
 ```azurecli
 jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags)
@@ -214,7 +214,7 @@ rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Aby zastosować wszystkie tagi z grupy zasobów do swoich zasobów i *nie zachowuj tagów istniejących w zasobach*, użyj następującego skryptu:
+Aby zastosować wszystkie Tagi z grupy zasobów do jej zasobów i *nie utrzymywać istniejących tagów w zasobach*, użyj następującego skryptu:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -230,7 +230,7 @@ do
 done
 ```
 
-Aby zastosować wszystkie tagi z grupy zasobów do swoich zasobów i *istniejące tagi bądź na bieżąco z zasobami*, użyj następującego skryptu:
+Aby zastosować wszystkie Tagi z grupy zasobów do jej zasobów i *zachować istniejące Tagi w zasobach*, użyj następującego skryptu:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -250,7 +250,148 @@ done
 
 ## <a name="templates"></a>Szablony
 
-[!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
+Aby oznaczyć zasób podczas wdrażania, Dodaj `tags` element do zasobu, który jest wdrażany. Podaj nazwę i wartość tagu.
+
+### <a name="apply-a-literal-value-to-the-tag-name"></a>Stosowanie wartości literału do nazwy tagu
+
+W poniższym przykładzie przedstawiono konto magazynu z dwoma tagami (`Dept` i `Environment`), dla których ustawiono wartości literału:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Dept": "Finance",
+                "Environment": "Production"
+            },
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
+
+Aby ustawić tag na wartość DateTime, użyj [funkcji UtcNow](resource-group-template-functions-string.md#utcnow).
+
+### <a name="apply-an-object-to-the-tag-element"></a>Stosowanie obiektu do elementu tagu
+
+Możesz zdefiniować parametr obiektu przechowującego kilka tagów i zastosować ten obiekt do elementu tagu. Każda właściwość obiektu będzie osobnym tagiem dla zasobu. Poniższy przykład zawiera parametr o nazwie `tagValues`, który został zastosowany do elementu tagu.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "tagValues": {
+            "type": "object",
+            "defaultValue": {
+                "Dept": "Finance",
+                "Environment": "Production"
+            }
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('tagValues')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
+
+### <a name="apply-a-json-string-to-the-tag-name"></a>Stosowanie ciągu JSON do nazwy tagu
+
+Aby przechowywać wiele wartości w jednym tagu, zastosuj ciąg JSON reprezentujący te wartości. Cały ciąg JSON jest przechowywany jako jeden tag, który nie może zawierać więcej niż 256 znaków. Poniższy przykład zawiera pojedynczy tag o nazwie `CostCenter`, który zawiera kilka wartości z ciągu JSON:  
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
+            },
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
+
+### <a name="apply-tags-from-resource-group"></a>Zastosuj Tagi z grupy zasobów
+
+Aby zastosować Tagi z grupy zasobów do zasobu, użyj funkcji Resources. [](resource-group-template-functions-resource.md#resourcegroup) Podczas pobierania wartości tagu Użyj `tags.[tag-name]` składni zamiast `tags.tag-name` składni, ponieważ niektóre znaki nie są prawidłowo analizowane w notacji kropkowej.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Dept": "[resourceGroup().tags['Dept']]",
+                "Environment": "[resourceGroup().tags['Environment']]"
+            },
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
 
 ## <a name="portal"></a>Portal
 
@@ -258,17 +399,17 @@ done
 
 ## <a name="rest-api"></a>Interfejs API REST
 
-Witryna Azure portal i programu PowerShell, użyj obu [interfejsu REST API usługi Resource Manager](https://docs.microsoft.com/rest/api/resources/) w tle. Jeśli zachodzi potrzeba integracja znakowanie do innego środowiska, można uzyskać tagów za pomocą **UZYSKAĆ** na identyfikator zasobu i zaktualizuj zestaw znaczników, które przy użyciu **PATCH** wywołania.
+Azure Portal i program PowerShell używają [interfejsu API REST Menedżer zasobów](https://docs.microsoft.com/rest/api/resources/) w tle. Jeśli trzeba zintegrować znakowanie w innym środowisku, można uzyskać Tagi przy użyciu funkcji **Get** na identyfikatorze zasobu i zaktualizować zestaw tagów przy użyciu wywołania **patch** .
 
-## <a name="tags-and-billing"></a>Znaczniki i rozliczenia
+## <a name="tags-and-billing"></a>Znaczniki i rozliczanie
 
-Tagi służą do grupowania danych dotyczących rozliczeń. Na przykład jeśli korzystasz z wielu maszyn wirtualnych dla różnych organizacji, należy użyć tagów, aby używanie grupy przez Centrum kosztów. Tagów umożliwia również kategoryzowanie kosztów przez środowisko uruchomieniowe, takie jak rozliczanego użycia dla maszyn wirtualnych uruchomionych w środowisku produkcyjnym.
+Za pomocą tagów można grupować dane dotyczące rozliczeń. Jeśli na przykład używasz wielu maszyn wirtualnych dla różnych organizacji, użyj tagów, aby grupować użycie według centrum kosztów. Za pomocą tagów można również klasyfikować koszty według środowiska uruchomieniowego, takich jak użycie rozliczeń dla maszyn wirtualnych działających w środowisku produkcyjnym.
 
-Można pobrać informacji na temat tagów za pośrednictwem [użycia zasobów platformy Azure i interfejsów API usługi RateCard](../billing/billing-usage-rate-card-overview.md) lub użycie pliku wartości rozdzielanych przecinkami (CSV). Pobieranie pliku użycia z [Centrum konta platformy Azure](https://account.azure.com/Subscriptions) lub witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [pobrania lub wyświetlenia faktury i dane dziennego użycia rozliczeniową za platformę Azure](../billing/billing-download-azure-invoice-daily-usage-date.md). Podczas pobierania pliku użycia z Centrum konta platformy Azure, wybierz **w wersji 2**. W przypadku usług, które obsługują tagi z rozliczeniem znaczniki są wyświetlane w **tagi** kolumny.
+Informacje o tagach można uzyskać za pomocą [interfejsów API użycia zasobów platformy Azure i RateCard](../billing/billing-usage-rate-card-overview.md) lub pliku z wartościami rozdzielanymi przecinkami (CSV). Plik użycia można pobrać z [centrum konta platformy Azure](https://account.azure.com/Subscriptions) lub Azure Portal. Aby uzyskać więcej informacji, zobacz [pobieranie lub wyświetlanie faktury rozliczeń na platformie Azure oraz danych dziennego użycia](../billing/billing-download-azure-invoice-daily-usage-date.md). Podczas pobierania pliku użycia z Centrum konta platformy Azure wybierz pozycję **wersja 2**. W przypadku usług, które obsługują Tagi z rozliczeniami, Tagi są wyświetlane w kolumnie **Tagi** .
 
-Dla operacji interfejsu API REST, zobacz [dokumentacja interfejsu API REST rozliczeń platformy Azure](/rest/api/billing/).
+Aby uzyskać informacje na temat operacji interfejsu API REST, zobacz [Dokumentacja interfejsu API REST rozliczeń platformy Azure](/rest/api/billing/).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Nie wszystkie typy zasobów obsługują tagów. Aby określić, jeśli tag można zastosować do typu zasobu, zobacz [obsługę dla zasobów platformy Azure tagów](tag-support.md).
-* Wprowadzenie do korzystania z portalu, zobacz [przy użyciu witryny Azure portal do zarządzania zasobami platformy Azure](manage-resource-groups-portal.md).  
+* Nie wszystkie typy zasobów obsługują Tagi. Aby określić, czy można zastosować tag do typu zasobu, zobacz [obsługa tagów dla zasobów platformy Azure](tag-support.md).
+* Aby zapoznać się z wprowadzeniem do korzystania z portalu, zobacz [używanie Azure Portal do zarządzania zasobami platformy Azure](manage-resource-groups-portal.md).  
