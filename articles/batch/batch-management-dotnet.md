@@ -17,10 +17,10 @@ ms.date: 04/24/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 41f3eecb1b3f488c355b1bad65b90dae8c76126e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323457"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Zarządzanie kontami i przydziałami usługi Batch za pomocą biblioteki klienta zarządzania usługą Batch dla platformy .NET
@@ -36,7 +36,7 @@ Możesz obniżyć koszty utrzymania w aplikacjach Azure Batch przy użyciu bibli
 * **Tworzenie i usuwanie kont wsadowych** w dowolnym regionie. Jeśli na przykład jako niezależny dostawca oprogramowania zostanie podaną usługę dla klientów, za pomocą której każdy ma przypisane oddzielne konto usługi Batch na potrzeby rozliczeń, można dodać możliwości tworzenia i usuwania kont do portalu klientów.
 * **Pobierz i ponownie wygeneruj klucze kont** dla dowolnego konta usługi Batch. Może to ułatwić przestrzeganie zasad zabezpieczeń, które wymuszają okresowe Przerzucanie lub wygaśnięcie kluczy konta. Jeśli masz kilka kont usługi Batch w różnych regionach platformy Azure, Automatyzacja tego procesu przerzucania spowoduje zwiększenie wydajności rozwiązania.
 * **Sprawdź przydziały kont** i zapoznaj się z informacjami o tym, które konta usługi Batch mają ograniczenia. Sprawdzając przydziały kont przed rozpoczęciem wykonywania zadań, tworzeniu pul lub dodawaniu węzłów obliczeniowych, możesz proaktywnie dostosować miejsce i czas tworzenia tych zasobów obliczeniowych. Można określić, które konta wymagają zwiększenia limitu przydziału przed przydzieleniem dodatkowych zasobów na tych kontach.
-* **Połącz funkcje innych usług platformy Azure** , aby skorzystać z w pełni funkcjonalnego środowiska zarządzania — za pomocą usługi Batch Management .NET [Azure Active Directory][aad_about] , and the [Azure Resource Manager][resman_overview] razem w tej samej aplikacji. Korzystając z tych funkcji i ich interfejsów API, można zapewnić bezproblemowe środowisko uwierzytelniania, możliwość tworzenia i usuwania grup zasobów oraz funkcje, które są opisane powyżej dla kompleksowego rozwiązania do zarządzania.
+* **Połącz funkcje innych usług platformy Azure** , aby skorzystać z w pełni funkcjonalnego środowiska zarządzania — za pomocą usługi Batch Management .net, [Azure Active Directory][aad_about]i [Azure Resource Manager][resman_overview] razem w tej samej aplikacji. Korzystając z tych funkcji i ich interfejsów API, można zapewnić bezproblemowe środowisko uwierzytelniania, możliwość tworzenia i usuwania grup zasobów oraz funkcje, które są opisane powyżej dla kompleksowego rozwiązania do zarządzania.
 
 > [!NOTE]
 > Ten artykuł koncentruje się na zarządzaniu zarządzanymi kontami usługi Batch, kluczami i przydziałami, ale można wykonać wiele z tych działań za pomocą [Azure Portal][azure_portal]. Aby uzyskać więcej informacji, zobacz [Tworzenie konta Azure Batch przy użyciu Azure Portal](batch-account-create-portal.md) i [przydziałów i limitów dla usługi Azure Batch](batch-quota-limit.md).
@@ -44,7 +44,7 @@ Możesz obniżyć koszty utrzymania w aplikacjach Azure Batch przy użyciu bibli
 > 
 
 ## <a name="create-and-delete-batch-accounts"></a>Tworzenie i usuwanie kont w usłudze Batch
-Jak wspomniano, jedną z podstawowych funkcji interfejsu API zarządzania usługą Batch jest tworzenie i usuwanie kont usługi Batch w regionie platformy Azure. W tym celu należy użyć [BatchManagementClient. Account. setasync][net_create] and [DeleteAsync][net_delete]lub synchronicznych odpowiedników.
+Jak wspomniano, jedną z podstawowych funkcji interfejsu API zarządzania usługą Batch jest tworzenie i usuwanie kont usługi Batch w regionie platformy Azure. Aby to zrobić, użyj [BatchManagementClient. Account. setasync][net_create] i [DeleteAsync][net_delete]lub ich synchronicznych odpowiedników.
 
 Poniższy fragment kodu tworzy konto, uzyskuje nowo utworzone konto z usługi Batch, a następnie usuwa je. W tym fragmencie kodu i innych w tym artykule `batchManagementClient` jest w pełni zainicjowane wystąpienie [BatchManagementClient][net_mgmt_client].
 
@@ -69,7 +69,7 @@ await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name)
 > 
 
 ## <a name="retrieve-and-regenerate-account-keys"></a>Pobieranie i ponowne generowanie kluczy konta
-Uzyskaj podstawowe i pomocnicze klucze konta z dowolnego konta usługi Batch w ramach subskrypcji przy użyciu usługi [ListKeysAsync][net_list_keys]. You can regenerate those keys by using [RegenerateKeyAsync][net_regenerate_keys].
+Uzyskaj podstawowe i pomocnicze klucze konta z dowolnego konta usługi Batch w ramach subskrypcji przy użyciu usługi [ListKeysAsync][net_list_keys]. Klucze te można wygenerować ponownie przy użyciu [RegenerateKeyAsync][net_regenerate_keys].
 
 ```csharp
 // Get and print the primary and secondary keys
@@ -91,7 +91,7 @@ BatchAccountRegenerateKeyResponse newKeys =
 ```
 
 > [!TIP]
-> Można utworzyć wydajny przepływ pracy połączenia dla aplikacji do zarządzania. Najpierw należy uzyskać klucz konta dla konta usługi Batch, którym chcesz zarządzać za pomocą klasy [ListKeysAsync][net_list_keys] . Then, use this key when initializing the Batch .NET library's [BatchSharedKeyCredentials][net_sharedkeycred] , która jest używana podczas inicjowania [BatchClient][net_batch_client].
+> Można utworzyć wydajny przepływ pracy połączenia dla aplikacji do zarządzania. Najpierw Uzyskaj klucz konta dla konta usługi Batch, którym chcesz zarządzać za pomocą usługi [ListKeysAsync][net_list_keys]. Następnie użyj tego klucza podczas inicjowania klasy [BatchSharedKeyCredentials][net_sharedkeycred] biblioteki .NET partii, która jest używana podczas inicjowania [BatchClient][net_batch_client].
 > 
 > 
 
@@ -101,7 +101,7 @@ Subskrypcje platformy Azure i indywidualne usługi platformy Azure, takie jak Ba
 ### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>Sprawdź subskrypcję platformy Azure dla przydziałów konta usługi Batch
 Przed utworzeniem konta usługi Batch w regionie możesz sprawdzić swoją subskrypcję platformy Azure, aby sprawdzić, czy można dodać konto w tym regionie.
 
-W poniższym fragmencie kodu najpierw należy użyć [BatchManagementClient. Account. ListAsync][net_mgmt_listaccounts] to get a collection of all Batch accounts that are within a subscription. Once we've obtained this collection, we determine how many accounts are in the target region. Then we use [BatchManagementClient.Subscriptions][net_mgmt_subscriptions] , aby uzyskać limit przydziału konta w usłudze Batch i określić, ile kont (jeśli istnieje) można utworzyć w tym regionie.
+W poniższym fragmencie kodu najpierw użyto [BatchManagementClient. Account. ListAsync][net_mgmt_listaccounts] , aby uzyskać kolekcję wszystkich kont usługi Batch, które znajdują się w ramach subskrypcji. Po uzyskaniu tej kolekcji określimy, ile kont znajduje się w regionie docelowym. Następnie korzystamy z [BatchManagementClient. subscriptions][net_mgmt_subscriptions] w celu uzyskania przydziału konta wsadowego i określenia, ile kont (jeśli istnieje) można utworzyć w tym regionie.
 
 ```csharp
 // Get a collection of all Batch accounts within the subscription
@@ -125,7 +125,7 @@ Console.WriteLine("Accounts in {0}: {1}", region, accountsInRegion);
 Console.WriteLine("You can create {0} accounts in the {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
 ```
 
-W powyższym `creds` fragmencie kodu jest wystąpieniem przykładu kod [TokenCloudCredentials][azure_tokencreds] . To see an example of creating this object, see the [AccountManagement][acct_mgmt_sample] w witrynie GitHub.
+W powyższym `creds` fragmencie kodu jest wystąpienie elementu [TokenCloudCredentials][azure_tokencreds]. Aby zapoznać się z przykładem tworzenia tego obiektu, zobacz przykładowy kod [zarządzania kontem][acct_mgmt_sample] w witrynie GitHub.
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Sprawdź konto usługi Batch dla przydziałów zasobów obliczeniowych
 Przed zwiększeniem zasobów obliczeniowych w rozwiązaniu wsadowym można sprawdzić, czy zasoby, które mają zostać przydzielone, nie przekraczają przydziałów konta. W poniższym fragmencie kodu wypisujemy informacje o przydziale dla konta usługi Batch `mybatchaccount`o nazwie. W aplikacji można użyć takich informacji w celu ustalenia, czy konto może obsługiwać dodatkowe zasoby, które mają zostać utworzone.

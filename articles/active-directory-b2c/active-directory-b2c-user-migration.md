@@ -1,110 +1,113 @@
 ---
-title: Zbliża się do migracji użytkowników w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Omówiono podstawowe i zaawansowane pojęcia dotyczące migracji użytkownika przy użyciu interfejsu API programu Graph i opcjonalnie za pomocą niestandardowych zasad usługi Azure AD B2C.
+title: Podejścia do migracji użytkowników w Azure Active Directory B2C
+description: W tym artykule omówiono podstawowe i zaawansowane koncepcje dotyczące migracji użytkowników przy użyciu usługi Azure AD interfejs API programu Graph i opcjonalnie można używać Azure AD B2C zasad niestandardowych.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/04/2017
+ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a8a3c6f5e18d4d6b75e8d0884acd52ef6bb716bd
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 128aa17c3f3d19f5551958fde488f803224d1cd5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835659"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693373"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migracja użytkowników
-W przypadku migracji dostawcy tożsamości do usługi Azure Active Directory B2C (Azure AD B2C), może być również konieczne migracji konta użytkownika. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont użytkowników z dowolnego dostawcy tożsamości do usługi Azure AD B2C. Artykuł jest nie należy traktować jako przetestowanego rozwiązania ze szczegółami, ale raczej opisano w nim kilka scenariuszy. Deweloper jest odpowiedzialny za przydatności każde podejście.
+
+Podczas migrowania dostawcy tożsamości do Azure Active Directory B2C (Azure AD B2C) może być również konieczne przeprowadzenie migracji kont użytkowników. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont użytkowników z dowolnego dostawcy tożsamości do Azure AD B2C. Artykuł nie ma zastosowania, ale jest to opis kilku scenariuszy. Deweloper jest odpowiedzialny za przydatność poszczególnych rozwiązań.
 
 ## <a name="user-migration-flows"></a>Przepływy migracji użytkowników
-Za pomocą usługi Azure AD B2C można przeprowadzić migrację użytkowników za pomocą [interfejsu API usługi Azure AD Graph][B2C-GraphQuickStart]. Proces migracji użytkownika należy do dwóch przepływów:
 
-- **Przed migracją**: Ten przepływ ma zastosowanie, gdy masz albo wyczyść dostęp do poświadczeń użytkownika (nazwy użytkownika i hasło) lub poświadczenia są szyfrowane, ale można je odszyfrować. Proces migracji wstępnej obejmuje odczytywania użytkowników u starego dostawcy tożsamości i tworzenia nowych kont w katalogu usługi Azure AD B2C.
+Za pomocą Azure AD B2C można migrować użytkowników za pomocą [interfejs API programu Graph usługi Azure AD][B2C-GraphQuickStart]. Proces migracji użytkowników odbywa się w dwóch przepływach:
 
-- **Przed migracją i resetowaniem hasła**: Ten przepływ ma zastosowanie, gdy hasło tego użytkownika nie jest dostępny. Przykład:
-   - Hasło jest przechowywane w formacie wyznaczania wartości skrótu.
-   - Hasło jest przechowywane w dostawcy tożsamości, którego nie można uzyskać dostęp. Stary dostawca tożsamości weryfikuje poświadczenia użytkownika, przez wywołanie usługi sieci web.
+- **Przed migracją**: Ten przepływ ma zastosowanie, gdy masz czysty dostęp do poświadczeń użytkownika (nazwa użytkownika i hasło) lub poświadczenia są zaszyfrowane, ale można je odszyfrować. Proces poprzedzający migrację obejmuje odczytywanie użytkowników ze starego dostawcy tożsamości i tworzenie nowych kont w katalogu Azure AD B2C.
 
-W obu przepływów możesz najpierw uruchom proces migracji wstępnej, przeczytaj użytkowników ze starego dostawcy tożsamości i tworzenia nowych kont w katalogu usługi Azure AD B2C. Jeśli nie masz hasła, możesz utworzyć konto przy użyciu hasła, który jest generowany losowo. Następnie poproś użytkownika o zmianę hasła, lub gdy użytkownik loguje się po raz pierwszy, usługi Azure AD B2C z monitem o zresetowanie go.
+- **Przed migracją i resetowaniem hasła**: Ten przepływ ma zastosowanie, gdy hasło użytkownika jest niedostępne. Na przykład:
+  - Hasło jest przechowywane w formacie skrótu.
+  - Hasło jest przechowywane w dostawcy tożsamości, do którego nie można uzyskać dostępu. Stary dostawca tożsamości sprawdza poprawność poświadczeń użytkownika przez wywołanie usługi sieci Web.
+
+W obu przepływach najpierw należy uruchomić proces poprzedzający migrację, odczytać użytkowników ze starego dostawcy tożsamości i utworzyć nowe konta w katalogu Azure AD B2C. Jeśli nie masz hasła, możesz utworzyć konto przy użyciu hasła, które zostało wygenerowane losowo. Następnie poprosisz użytkownika o zmianę hasła lub, gdy użytkownik loguje się po raz pierwszy, Azure AD B2C prosi użytkownika o jego zresetowanie.
 
 ## <a name="password-policy"></a>Zasady haseł
-Zasady haseł usługi Azure AD B2C (dla kont lokalnych) jest oparta na zasadach usługi Azure AD. Usługa Azure AD B2C rejestracji lub logowania i hasło Resetuj zasady, użyj siły "silnego" hasła i wygaśnięcia hasła. Aby uzyskać więcej informacji, zobacz [zasad haseł usługi Azure AD][AD-PasswordPolicies].
 
-Jeśli konta, które mają zostać zmigrowane, użyj słabszy siły hasła, niż [siły silne hasło, wymuszane przez usługę Azure AD B2C][AD-PasswordPolicies], możesz wyłączyć wymaganie silne hasło. Aby zmienić domyślne zasady haseł, należy ustawić `passwordPolicies` właściwość `DisableStrongPassword`. Na przykład utwórz żądanie użytkownika można zmodyfikować w następujący sposób:
+Zasady haseł Azure AD B2C (dla kont lokalnych) są oparte na zasadach usługi Azure AD. Zasady rejestrowania i logowania Azure AD B2C i resetowania haseł używają silnego siły hasła i nie tracą hasła. Aby uzyskać więcej informacji, zobacz [zasady haseł usługi Azure AD][AD-PasswordPolicies].
+
+Jeśli konta, które mają zostać poddane migracji, korzystają z słabszego siły hasła niż [silne hasła wymuszone przez Azure AD B2C][AD-PasswordPolicies], można wyłączyć wymaganie silnego hasła. Aby zmienić domyślne zasady haseł, należy ustawić `passwordPolicies` właściwość na. `DisableStrongPassword` Na przykład można zmodyfikować polecenie Utwórz żądanie użytkownika w następujący sposób:
 
 ```JSON
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
-## <a name="step-1-use-azure-ad-graph-api-to-migrate-users"></a>Krok 1: Migrowanie użytkowników za pomocą interfejsu API programu Graph usługi Azure AD
-Utworzysz konto użytkownika usługi Azure AD B2C za pośrednictwem interfejsu API programu Graph (przy użyciu hasła lub przy użyciu losowego hasła). W tej sekcji opisano proces tworzenia kont użytkowników w katalogu usługi Azure AD B2C przy użyciu interfejsu API programu Graph.
+## <a name="step-1-use-azure-ad-graph-api-to-migrate-users"></a>Krok 1: Migrowanie użytkowników przy użyciu usługi Azure AD interfejs API programu Graph
 
-### <a name="step-11-register-your-application-in-your-tenant"></a>Krok 1.1: Zarejestruj swoją aplikację w dzierżawie
-Aby komunikować się za pomocą interfejsu API programu Graph, należy najpierw musi mieć konto usługi z uprawnieniami administracyjnymi. W usłudze Azure AD należy zarejestrować aplikację i uwierzytelniania usługi Azure AD. Poświadczenia aplikacji są **identyfikator aplikacji** i **klucz tajny aplikacji**. Aplikacja działa w swoim imieniu, nie jako użytkownik, do wywołania interfejsu API programu Graph.
+Można utworzyć konto użytkownika Azure AD B2C za pośrednictwem interfejs API programu Graph (z hasłem lub hasłem losowym). W tej sekcji opisano proces tworzenia kont użytkowników w katalogu Azure AD B2C przy użyciu interfejs API programu Graph.
 
-Najpierw zarejestrować aplikację migracji w usłudze Azure AD. Utwórz klucz aplikacji (klucz tajny aplikacji) i ustaw ją z uprawnieniami do zapisu.
+### <a name="step-11-register-your-application-in-your-tenant"></a>Krok 1,1: Rejestrowanie aplikacji w dzierżawie
+
+Aby móc komunikować się z interfejs API programu Graph, musisz najpierw mieć konto usługi z uprawnieniami administracyjnymi. W usłudze Azure AD rejestrujesz aplikację i uwierzytelnianie w usłudze Azure AD. Poświadczenia aplikacji to **Identyfikator aplikacji** i **klucz tajny aplikacji**. Aplikacja działa jako sama, a nie jako użytkownik, aby wywołać interfejs API programu Graph.
+
+Najpierw Zarejestruj swoją aplikację migracji w usłudze Azure AD. Następnie Utwórz klucz aplikacji (klucz tajny aplikacji) i Ustaw aplikację z uprawnieniami do zapisu.
 
 1. Zaloguj się w witrynie [Azure Portal][Portal].
-
-1. Wybierz usługę Azure AD **B2C** dzierżawy, wybierając swoje konto w prawym górnym rogu okna.
-
-1. W okienku po lewej stronie wybierz **usługi Azure Active Directory** (nie usługi Azure AD B2C). Aby ją znaleźć, konieczne może być wybierz **więcej usług**.
-
-1. Wybierz pozycję **Rejestracje aplikacji**.
-
+1. Wybierz filtr **katalogów i subskrypcji** w prawym górnym rogu portalu.
+1. Wybierz katalog zawierający dzierżawcę Azure AD B2C.
+1. W menu po lewej stronie wybierz pozycję **Azure Active Directory** (*nie* Azure AD B2C). Aby go znaleźć, może być konieczne wybranie opcji **wszystkie usługi**.
+1. Wybierz pozycję **rejestracje aplikacji (starsza wersja)** .
 1. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 
-   ![Usługa Azure Active Directory i aplikacja elementów rejestracji w menu wyróżniony](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
+   ![Wyróżnione elementy menu Azure Active Directory i Rejestracje aplikacji](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
 
 1. Utwórz nową aplikację, wykonując następujące czynności:
-   - Dla **nazwa**, użyj **B2CUserMigration** lub dowolnej innej nazwy, które chcesz.
-   - Aby uzyskać **typ aplikacji**, użyj **aplikacji/interfejs API sieci Web**.
-   - Aby uzyskać **adres URL logowania**, użyj `https://localhost` (co nie jest odpowiednie dla tej aplikacji).
+
+   - W obszarze **Nazwa**Użyj *B2CUserMigration* lub dowolną inną nazwę.
+   - W obszarze **Typ aplikacji**wybierz pozycję **aplikacja sieci Web/interfejs API**.
+   - W przypadku **adresu URL logowania**Użyj `https://localhost` (nie dotyczy to aplikacji).
    - Wybierz pozycję **Utwórz**.
 
-1. Po utworzeniu aplikacji w **aplikacje** wybierz nowo utworzony **B2CUserMigration** aplikacji.
+    Po utworzeniu aplikacji zostanie wyświetlona strona **zarejestrowana aplikacja** zawierająca jej właściwości.
+1. Skopiuj **Identyfikator aplikacji**aplikacji i Zapisz go później.
 
-1. Wybierz **właściwości**, kopia **identyfikator aplikacji**i zapisz go na później.
+### <a name="step-12-create-the-application-secret"></a>Krok 1,2: Tworzenie klucza tajnego aplikacji
 
-### <a name="step-12-create-the-application-secret"></a>Krok 1.2: Utwórz klucz tajny aplikacji
-1. W witrynie Azure portal **zarejestrowana aplikacja** wybierz **klucze**.
+1. Na stronie **zarejestrowana aplikacja** wybierz pozycję **Ustawienia**.
+1. Wybierz pozycję **Klucze**.
+1. W obszarze **hasła**Dodaj nowy klucz (znany również jako klucz tajny klienta) o nazwie *MyClientSecret* lub inną wybraną nazwę, wybierz okno wygaśnięcie, wybierz pozycję **Zapisz**, a następnie skopiuj wartość klucza do późniejszego użycia.
 
-1. Dodaj nowy klucz (znany także jako klucz tajny klienta), a następnie skopiuj klucz do późniejszego użycia.
+    ![Element menu wartości identyfikatora aplikacji i kluczy wyróżniony w Azure Portal](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
 
-   ![Wartość Identyfikatora aplikacji i menu klucze elementów wyróżnione w witrynie Azure portal](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
+### <a name="step-13-grant-administrative-permission-to-your-application"></a>Krok 1,3: Przyznawanie uprawnień administracyjnych aplikacji
 
-### <a name="step-13-grant-administrative-permission-to-your-application"></a>Krok 1.3. Przyznanie uprawnień administracyjnych do aplikacji
-1. W witrynie Azure portal **zarejestrowana aplikacja** wybierz **wymagane uprawnienia**.
+1. W menu **Ustawienia** wybierz pozycję **wymagane uprawnienia**.
+1. Wybierz pozycję **Windows Azure Active Directory**.
+1. W okienku **Włącz dostęp** w obszarze **uprawnienia aplikacji**wybierz pozycję **Odczytuj i Zapisz dane katalogu**, a następnie wybierz pozycję **Zapisz**.
+1. W okienku **wymagane uprawnienia** wybierz pozycję **Udziel uprawnień**, a następnie wybierz pozycję **tak**.
 
-1. Wybierz **Windows Azure Active Directory**.
+   ![Pole wyboru Odczyt/zapis w katalogu, uprawnienie zapisywanie i przyznawanie uprawnień](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
 
-1. W **Włącz dostęp za pomocą** okienko, w obszarze **uprawnienia aplikacji**, wybierz opcję **odczytu i zapisu danych katalogu**, a następnie wybierz pozycję **Zapisz**.
+Teraz masz aplikację z uprawnieniami do tworzenia, odczytywania i aktualizowania użytkowników z dzierżawy Azure AD B2C.
 
-1. W **wymagane uprawnienia** okienku wybierz **Udziel uprawnień**.
+### <a name="step-14-optional-environment-cleanup"></a>Krok 1,4: Obowiązkowe Czyszczenie środowiska
 
-   ![Odczyt/zapis directory zaznacz pole wyboru Zapisz i udzielanie uprawnień wyróżniony](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
-
-Teraz gdy masz już aplikację z uprawnieniami do tworzenia, odczytywania i aktualizowania użytkowników w dzierżawie usługi Azure AD B2C.
-
-### <a name="step-14-optional-environment-cleanup"></a>Krok 1.4. (Opcjonalnie) Czyszczenie środowiska
-Odczyt i zapis, czy uprawnienia do danych katalogu *nie* obejmują prawo do usuwania użytkowników. Aby zapewnić aplikacji możliwość usuwania użytkowników (czyszczenie środowiska), należy wykonać dodatkowe czynności, które polega na uruchomieniu programu PowerShell, aby ustawić uprawnienia Administrator kont użytkowników. W przeciwnym razie możesz przejść do następnej sekcji.
+Uprawnienia do odczytu i zapisu danych katalogu *nie obejmują prawa* do usuwania użytkowników. Aby umożliwić aplikacji usuwanie użytkowników (czyszczenie środowiska), należy wykonać dodatkowy krok, który polega na uruchomieniu programu PowerShell w celu ustawienia uprawnień administratora konta użytkownika. W przeciwnym razie możesz przejść do następnej sekcji.
 
 > [!IMPORTANT]
-> Należy użyć konta administratora dzierżawy B2C, który jest *lokalnego* do dzierżawy usługi B2C. Składnia nazwy konta jest *administratora\@contosob2c.onmicrosoft.com*.
+> Musisz użyć konta administratora dzierżawy B2C, które jest *lokalne* dla dzierżawy B2C. Składnia nazwy konta to *admin\@contosob2c.onmicrosoft.com*.
 
->[!NOTE]
-> Poniższy skrypt programu PowerShell wymaga [usługi Azure Active Directory PowerShell w wersji 2][AD-Powershell].
+W tym skrypcie programu PowerShell, który wymaga [modułu Azure AD PowerShell V2][AD-Powershell], wykonaj następujące czynności:
 
-Ten skrypt programu PowerShell wykonaj następujące czynności:
-1. Łączenie z usługą online. Aby to zrobić, uruchom `Connect-AzureAD` polecenia cmdlet w programie Windows PowerShell, wiersz polecenia i podaj swoje poświadczenia.
+1. Nawiąż połączenie z usługą online. Aby to zrobić, uruchom `Connect-AzureAD` polecenie cmdlet w wierszu polecenia programu Windows PowerShell i podaj swoje poświadczenia.
 
-1. Użyj **identyfikator aplikacji** przypisania aplikacji z roli użytkownika konta administratora. Te role mają dobrze znane identyfikatory, więc wszystko, czego potrzebujesz, aby zrobić to, wprowadź swoje **identyfikator aplikacji** w skrypcie.
+1. Użyj **identyfikatora aplikacji** , aby przypisać aplikację do roli administratora konta użytkownika. Role te mają dobrze znane identyfikatory, więc wystarczy wprowadzić **Identyfikator aplikacji** w skrypcie.
 
 ```powershell
+# NOTE: This script REQUIRES the Azure AD PowerShell V2 module
+#       https://docs.microsoft.com/powershell/azure/active-directory/install-adv2
+
 Connect-AzureAD
 
 $AppId = "<Your application ID>"
@@ -132,19 +135,22 @@ Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ```
 
-Zmiana `$AppId` wartości za pomocą usługi Azure AD **identyfikator aplikacji**.
+Zmień wartość przy użyciu **identyfikatora aplikacji**usługi Azure AD. `$AppId`
 
 ## <a name="step-2-pre-migration-application-sample"></a>Krok 2: Przykład aplikacji przed migracją
-[Pobieranie i uruchamianie przykładowego kodu][UserMigrationSample]. Możesz ją pobrać jako plik .zip.
+
+[Pobierz i uruchom przykładowy kod][UserMigrationSample]. Można go pobrać jako plik. zip.
 
 ### <a name="step-21-edit-the-migration-data-file"></a>Krok 2.1. Edytuj plik danych migracji
-Przykładowa aplikacja używa pliku JSON, który zawiera dane użytkownika fikcyjnego z rolą. Po pomyślnym uruchomieniu przykładu możesz zmienić kod do pracy z danymi z własną bazę danych. Lub można wyeksportować profilu użytkownika do pliku JSON, a następnie ustaw aplikację, aby użyć tego pliku.
 
-Aby edytować plik JSON, otwórz `AADB2C.UserMigration.sln` rozwiązania Visual Studio. W `AADB2C.UserMigration` otwarty projekt `UsersData.json` pliku.
+Przykładowa aplikacja używa pliku JSON, który zawiera fikcyjne dane użytkownika. Po pomyślnym uruchomieniu przykładu można zmienić kod w taki sposób, aby korzystał z danych z własnej bazy danych. Można też wyeksportować profil użytkownika do pliku JSON, a następnie skonfigurować aplikację do korzystania z tego pliku.
 
-![Część pliku UsersData.json przedstawiający bloki JSON dwóch użytkowników](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
+Aby edytować plik JSON, Otwórz `AADB2C.UserMigration.sln` rozwiązanie Visual Studio. `AADB2C.UserMigration` W projekcie`UsersData.json` Otwórz plik.
+
+![Część pliku UsersData. JSON przedstawiająca bloki JSON dwóch użytkowników](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Jak widać, plik zawiera listę jednostek użytkownika. Każda jednostka użytkownika ma następujące właściwości:
+
 - email
 - displayName
 - firstName
@@ -155,7 +161,8 @@ Jak widać, plik zawiera listę jednostek użytkownika. Każda jednostka użytko
 > W czasie kompilacji program Visual Studio kopiuje plik do `bin` katalogu.
 
 ### <a name="step-22-configure-the-application-settings"></a>Krok 2.2. Konfigurowanie ustawień aplikacji
-W obszarze `AADB2C.UserMigration` otwarty projekt *App.config* pliku. Zastąp następujące ustawienia aplikacji przy użyciu własnych wartości:
+
+W obszarze Projekt Otwórz plik *App. config.* `AADB2C.UserMigration` Zastąp następujące ustawienia aplikacji własnymi wartościami:
 
 ```XML
 <appSettings>
@@ -168,28 +175,29 @@ W obszarze `AADB2C.UserMigration` otwarty projekt *App.config* pliku. Zastąp na
 ```
 
 > [!NOTE]
-> - Korzystanie z parametrów połączenia usługi Azure table jest opisane w kolejnych sekcjach.
-> - Nazwa dzierżawy B2C jest domeną, która wprowadzona podczas tworzenia dzierżawy i jest wyświetlany w witrynie Azure portal. Nazwa dzierżawy kończy się zazwyczaj z sufiksem *. onmicrosoft.com* (na przykład *contosob2c.onmicrosoft.com*).
+> - Użycie parametrów połączenia z tabelą platformy Azure jest opisane w następnych sekcjach.
+> - Nazwa dzierżawy B2C jest domeną wprowadzoną podczas tworzenia dzierżawy i jest wyświetlana w Azure Portal. Nazwa dzierżawy zwykle jest zakończona sufiksem *. onmicrosoft.com* (na przykład *contosob2c.onmicrosoft.com*).
 
-### <a name="step-23-run-the-pre-migration-process"></a>Krok 2.3 Uruchom proces migracji wstępnej
-Kliknij prawym przyciskiem myszy `AADB2C.UserMigration` rozwiązania, a następnie ponownej kompilacji próbki. Po pomyślnym wykonaniu `UserMigration.exe` plik wykonywalny znajduje się w `AADB2C.UserMigration\bin\Debug\net461`. Aby uruchomić proces migracji, użyj jednej z poniższych parametrów wiersza polecenia:
+### <a name="step-23-run-the-pre-migration-process"></a>Krok 2,3: Uruchamianie procesu przed migracją
 
-- Aby **migrację użytkowników za pomocą hasła**, użyj `UserMigration.exe 1` polecenia.
+Kliknij prawym przyciskiem `AADB2C.UserMigration` myszy rozwiązanie, a następnie Skompiluj ponownie przykład. Jeśli się powiedzie, powinien teraz `UserMigration.exe` znajdować się plik wykonywalny w programie. `AADB2C.UserMigration\bin\Debug\net461` Aby uruchomić proces migracji, użyj jednego z następujących parametrów wiersza polecenia:
 
-- Aby **migrację użytkowników za pomocą hasła losowego**, użyj `UserMigration.exe 2` polecenia. Ta operacja tworzy również jednostkę tabeli platformy Azure. Następnie należy skonfigurować zasady aby wywołać usługę interfejsu API REST. Usługa używa tabeli platformy Azure do śledzenia i zarządzania procesem migracji.
+- Aby **migrować użytkowników przy użyciu hasła**, użyj `UserMigration.exe 1` polecenia.
 
-![Okno wiersza polecenia, przedstawiający dane wyjściowe polecenia UserMigration.exe](media/active-directory-b2c-user-migration/pre-migration-demo.png)
+- Aby **migrować użytkowników przy użyciu hasła losowego**, `UserMigration.exe 2` Użyj polecenia. Ta operacja powoduje także utworzenie jednostki tabeli platformy Azure. Później można skonfigurować zasady, aby wywoływać usługę interfejsu API REST. Usługa używa tabeli platformy Azure do śledzenia procesu migracji i zarządzania nim.
 
-### <a name="step-24-check-the-pre-migration-process"></a>Krok 2.4 Sprawdź proces migracji wstępnej
-Aby sprawdzić poprawność migracji, należy użyć jednej z następujących dwóch metod:
+![Okno wiersza polecenia przedstawiające dane wyjściowe polecenia UserMigration. exe](media/active-directory-b2c-user-migration/pre-migration-demo.png)
 
-- Aby wyszukać konkretnego użytkownika według nazwy wyświetlanej, należy użyć witryny Azure portal:
+### <a name="step-24-check-the-pre-migration-process"></a>Krok 2,4: Sprawdź proces przed migracją
 
-   1. Otwórz **usługi Azure AD B2C**, a następnie wybierz pozycję **użytkowników i grup**.
+Aby sprawdzić poprawność migracji, użyj jednej z następujących dwóch metod:
 
-   1. W polu wyszukiwania wpisz nazwę wyświetlaną tego użytkownika, a następnie Wyświetl profil użytkownika.
+- Aby wyszukać użytkownika według nazwy wyświetlanej, użyj Azure Portal:
 
-- Aby pobrać użytkownika według adresu e-mail logowania, należy użyć tej aplikacji przykładowej:
+   1. Otwórz **Azure AD B2C**a następnie wybierz pozycję **Użytkownicy**.
+   1. W polu wyszukiwania wpisz nazwę wyświetlaną użytkownika, a następnie Wyświetl profil użytkownika.
+
+- Aby pobrać użytkownika przy użyciu adresu e-mail logowania, Użyj tej przykładowej aplikacji:
 
    1. Uruchom następujące polecenie:
 
@@ -198,66 +206,69 @@ Aby sprawdzić poprawność migracji, należy użyć jednej z następujących dw
       ```
 
       > [!TIP]
-      > Możesz również pobrać użytkownika według nazwy wyświetlanej, za pomocą następującego polecenia: `UserMigration.exe 4 "<Display name>"`.
+      > Możesz również pobrać użytkownika według nazwy wyświetlanej za pomocą następującego polecenia: `UserMigration.exe 4 "<Display name>"`.
 
-   1. Otwórz plik UserProfile.json w edytorze JSON, aby wyświetlić informacje o użytkowniku.
+   1. Otwórz plik UserProfile. JSON w edytorze JSON, aby wyświetlić informacje o użytkowniku.
 
-      ![Można otworzyć pliku UserProfile.json w edytorze programu Visual Studio Code](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
+      ![Plik UserProfile. JSON jest otwarty w edytorze Visual Studio Code](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
 
-### <a name="step-25-optional-environment-cleanup"></a>Krok 2.5 (Opcjonalnie) Czyszczenie środowiska
-Jeśli chcesz wyczyścić dzierżawy usługi Azure AD Konfigurowanie i usuwanie użytkowników z katalogu usługi Azure AD, uruchom `UserMigration.exe 5` polecenia.
+### <a name="step-25-optional-environment-cleanup"></a>Krok 2,5: Obowiązkowe Czyszczenie środowiska
+
+Jeśli chcesz wyczyścić dzierżawę usługi Azure AD i usunąć użytkowników z katalogu usługi Azure AD, uruchom `UserMigration.exe 5` polecenie.
 
 > [!NOTE]
-> * Aby wyczyścić swoją dzierżawę, należy skonfigurować uprawnienia Administrator kont użytkowników dla aplikacji.
-> * Przykładowa aplikacja migracji czyści wszyscy użytkownicy, którzy są wymienione w pliku JSON.
+> * Aby oczyścić dzierżawcę, Skonfiguruj uprawnienia administratora konta użytkownika dla aplikacji.
+> * Przykładowa aplikacja do migracji czyści wszystkich użytkowników, którzy znajdują się na liście w pliku JSON.
 
-### <a name="step-26-sign-in-with-migrated-users-with-password"></a>Krok 2.6: Zaloguj się przy użyciu migrowanych użytkowników (przy użyciu hasła)
-Po uruchomieniu proces migracji wstępnej przy użyciu haseł użytkowników kont są gotowe do użycia, a użytkownicy mogą się logować do swojej aplikacji za pomocą usługi Azure AD B2C. Jeśli nie mają dostępu do hasła użytkowników, przejdź do następnej sekcji.
+### <a name="step-26-sign-in-with-migrated-users-with-password"></a>Krok 2,6: Zaloguj się przy użyciu zmigrowanych użytkowników (z hasłem)
 
-## <a name="step-3-help-users-reset-their-password"></a>Krok 3: Pomaganie użytkownikom zresetowanie hasła
-W przypadku migrowania użytkowników za pomocą hasła losowego one należy zresetować swoje hasło. Aby pomóc im zresetować hasło, należy wysłać powitalną wiadomość e-mail z linkiem do resetowania hasła.
+Po uruchomieniu procesu sprzed migracji z hasłami użytkowników konta są gotowe do użycia, a użytkownicy mogą logować się do aplikacji przy użyciu Azure AD B2C. Jeśli nie masz dostępu do hasła użytkownika, przejdź do następnej sekcji.
 
-Aby uzyskać link do zasad resetowania hasła, wykonaj następujące czynności:
+## <a name="step-3-help-users-reset-their-password"></a>Krok 3: Pomóż użytkownikom zresetować swoje hasło
 
-1. Wybierz **ustawienia usługi Azure AD B2C**, a następnie wybierz pozycję **Resetuj hasło** właściwości zasad.
+W przypadku migrowania użytkowników przy użyciu hasła losowego należy zresetować swoje hasło. Aby pomóc im zresetować hasło, Wyślij powitalną wiadomość e-mail z linkiem umożliwiającym zresetowanie hasła.
 
-1. Wybierz swoją aplikację.
+Aby uzyskać link do zasad resetowania hasła, wykonaj następujące kroki. W tej procedurze przyjęto założenie, że wcześniej utworzono [zasady niestandardowe](active-directory-b2c-get-started-custom.md)resetowania hasła.
+
+1. Wybierz katalog zawierający dzierżawcę Azure AD B2C przy użyciu filtru **Directory + Subscription** w prawej górnej części [Azure Portal](https://portal.azure.com).
+1. Wybierz pozycję **Azure AD B2C** w menu po lewej stronie (lub w obszarze **wszystkie usługi**).
+1. W obszarze **zasady**wybierz pozycję **platforma obsługi tożsamości**.
+1. Wybierz Zasady resetowania hasła. Na przykład *B2C_1A_PasswordReset*.
+1. Wybierz aplikację z listy rozwijanej **Wybierz aplikację** .
 
     > [!NOTE]
-    > Uruchom teraz wymaga co najmniej jedną aplikację, aby być jest wstępnie zarejestrowane w ramach dzierżawy. Aby dowiedzieć się, jak zarejestrować aplikacji, zobacz temat usługi Azure AD B2C [wprowadzenie][B2C-GetStarted] article or the [Application registration][B2C-AppRegister] artykułu.
+    > **Uruchomienie teraz** wymaga, aby co najmniej jedna aplikacja była zarejestrowana w dzierżawie. Aby dowiedzieć się, jak zarejestrować aplikacje [, zobacz Samouczek: Zarejestruj aplikację w Azure Active Directory B2C][B2C-AppRegister].
 
-1. Wybierz **Uruchom teraz**, a następnie sprawdź zasady.
+1. Skopiuj adres URL wyświetlany w polu tekstowym **Uruchom teraz punkt końcowy** , a następnie wyślij go do użytkowników.
 
-1. W **Uruchom punkt końcowy do natychmiastowego** polu, skopiuj adres URL i wysłać go do użytkowników.
+    ![Strona zasad resetowania hasła z wyróżnionym punktem końcowym Uruchom teraz](media/active-directory-b2c-user-migration/pre-migration-policy-uri.png)
 
-    ![Strona zasad resetowania hasła z punktem końcowym teraz przebieg wyróżniony](media/active-directory-b2c-user-migration/pre-migration-policy-uri.png)
-
-## <a name="step-4-optional-change-your-policy-to-check-and-set-the-user-migration-status"></a>Krok 4: (Opcjonalnie) Zmień zasady, aby sprawdzić i ustawić stan migracji użytkowników
+## <a name="step-4-optional-change-your-policy-to-check-and-set-the-user-migration-status"></a>Krok 4: Obowiązkowe Zmień zasady, aby sprawdzić i ustawić stan migracji użytkownika
 
 > [!NOTE]
-> Aby sprawdzić i zmienić stan migracji użytkownika, należy użyć zasad niestandardowych. Instrukcje dotyczące konfiguracji od [wprowadzenie do zasad niestandardowych][B2C-GetStartedCustom] muszą zostać wykonane.
->
+> Aby sprawdzić i zmienić stan migracji użytkowników, należy użyć zasad niestandardowych. Instrukcje Set-up od [początku do zasad niestandardowych][B2C-GetStartedCustom] muszą zostać ukończone.
 
-Gdy użytkownicy próbują zalogować bez resetowania hasła, najpierw, zasad powinien zwrócić przyjazny komunikat o błędzie. Na przykład:
->*Twoje hasło wygasło. Aby ją zresetować, wybierz link resetowania hasła.*
+Gdy użytkownicy próbują zalogować się bez wcześniejszego resetowania hasła, zasady powinny zwrócić przyjazny komunikat o błędzie. Na przykład:
 
-Ten opcjonalny etap wymagane jest użycie niestandardowych zasad usługi Azure AD B2C, zgodnie z opisem w [wprowadzenie do zasad niestandardowych][B2C-GetStartedCustom] artykułu.
+> *Twoje hasło wygasło. Aby zresetować ją, wybierz link resetowania hasła.*
 
-W tej sekcji możesz zmienić zasady Aby sprawdzić stan migracji użytkownika zalogowaniu. Jeśli użytkownik nie zmienił hasło, zwraca komunikat o błędzie HTTP 409, która prosi użytkownika o wybranie **nie pamiętasz hasła?** łącza.
+Ten opcjonalny krok wymaga zastosowania zasad niestandardowych Azure AD B2C, zgodnie z opisem w artykule [wprowadzenie do zasad niestandardowych][B2C-GetStartedCustom] .
 
-Aby śledzić zmiany hasła, należy użyć tabeli platformy Azure. Po uruchomieniu proces migracji wstępnej za pomocą parametru wiersza polecenia `2`, tworzyć jednostki użytkownika w tabeli platformy Azure. Usługa zapewnia następujące funkcje:
+W tej sekcji zmienisz zasady, aby sprawdzić stan migracji użytkownika podczas logowania. Jeśli użytkownik nie zmienił hasła, należy zwrócić komunikat o błędzie HTTP 409, który prosi użytkownika o wybranie zapomnianego **hasła?**
 
-- Na logowanie zasady usługi Azure AD B2C wywołuje migracji do usługi RESTful, wysyłając wiadomość e-mail jako danych wejściowych roszczenia. Usługa wyszukuje adres e-mail w tabeli platformy Azure. Jeśli istnieje adres, Usługa generuje komunikat o błędzie: *Musisz zmienić hasło*.
+Aby śledzić zmianę hasła, należy użyć tabeli platformy Azure. Po uruchomieniu procesu przed migracją za pomocą parametru `2`wiersza polecenia należy utworzyć jednostkę użytkownika w tabeli platformy Azure. Usługa wykonuje następujące czynności:
 
-- Po użytkownik pomyślnie zmienia hasło, należy usunąć jednostki z tabeli platformy Azure.
+- Podczas logowania zasady Azure AD B2C wywoła usługę RESTful migracji, wysyłając wiadomość e-mail jako dane wejściowe. Usługa wyszukuje adres e-mail w tabeli platformy Azure. Jeśli adres istnieje, usługa zgłosi komunikat o błędzie: *Musisz zmienić hasło*.
 
->[!NOTE]
->Używamy tabeli platformy Azure, aby uprościć przykład. Stan migracji można przechowywać w dowolnej bazie danych lub jako właściwości niestandardowych w ramach konta usługi Azure AD B2C.
+- Po pomyślnym zmianie hasła przez użytkownika Usuń jednostkę z tabeli platformy Azure.
 
-### <a name="41-update-your-application-setting"></a>4.1: Zaktualizuj ustawienie aplikacji
-1. Aby przetestować wersji demonstracyjnej interfejsu API RESTful, otwórz `AADB2C.UserMigration.sln` w programie Visual Studio.
+> [!NOTE]
+> Używamy tabeli platformy Azure do uproszczenia przykładu. Stan migracji można zapisać w dowolnej bazie danych lub jako właściwość niestandardowa na koncie Azure AD B2C.
 
-1. W `AADB2C.UserMigration.API` otwarty projekt *Web.config* pliku. Zastąp ustawienia skonfigurowane w [krok 2.2](#step-22-configure-the-application-settings):
+### <a name="41-update-your-application-setting"></a>4,1: Aktualizowanie ustawienia aplikacji
+
+1. Aby przetestować demonstrację interfejsu API RESTful, `AADB2C.UserMigration.sln` Otwórz w programie Visual Studio.
+1. W projekcie Otwórz plik *Web. config.* `AADB2C.UserMigration.API` Zastąp ustawienie atrybutem skonfigurowanym w [kroku 2,2](#step-22-configure-the-application-settings):
 
     ```json
     {
@@ -266,14 +277,16 @@ Aby śledzić zmiany hasła, należy użyć tabeli platformy Azure. Po uruchomie
     }
     ```
 
-### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>Krok 4.2 Wdrażanie aplikacji sieci web w usłudze Azure App Service
-W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy `AADB2C.UserMigration.API`, wybierz pozycję "Opublikuj...". Postępuj zgodnie z instrukcjami, aby opublikować w usłudze Azure App Service. Aby uzyskać więcej informacji, zobacz [wdrażanie aplikacji w usłudze Azure App Service][AppService-Deploy].
+### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>Krok 4,2: Wdróż aplikację sieci Web do Azure App Service
 
-### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Krok 4.3: Dodaj do swoich zasad profilu technicznego i weryfikacji profilu technicznego
-1. W Eksploratorze rozwiązań rozwiń "Elementy rozwiązania", a następnie otwórz *TrustFrameworkExtensions.xml* plik zasad.
-1. Zmiana `TenantId`, `PublicPolicyUri` i `<TenantId>` pola z `yourtenant.onmicrosoft.com` na nazwę Twojej dzierżawy.
-1. W obszarze `<TechnicalProfile Id="login-NonInteractive">` element, zastąpić wszystkie wystąpienia `ProxyIdentityExperienceFrameworkAppId` i `IdentityExperienceFrameworkAppId` o identyfikatorach aplikacji skonfigurowanych w [wprowadzenie do zasad niestandardowych][B2C-GetStartedCustom].
-1. W obszarze `<ClaimsProviders>` węzła, znajdź następujący fragment kodu XML. Zmień wartość właściwości `ServiceUrl` wskaż adres URL usługi aplikacji Azure.
+W Eksplorator rozwiązań kliknij prawym przyciskiem `AADB2C.UserMigration.API`myszy, wybierz pozycję "Opublikuj...". Postępuj zgodnie z instrukcjami, aby publikować w Azure App Service. Aby uzyskać więcej informacji, zobacz [wdrażanie aplikacji do Azure App Service][AppService-Deploy].
+
+### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Krok 4,3: Dodawanie profilu technicznego i walidacji profilu technicznego do zasad
+
+1. W Eksplorator rozwiązań rozwiń węzeł "elementy rozwiązania" i Otwórz plik zasad *TrustFrameworkExtensions. XML* .
+1. Zmień `TenantId`i polaod`yourtenant.onmicrosoft.com` do nazwy dzierżawy. `<TenantId>` `PublicPolicyUri`
+1. W obszarze `ProxyIdentityExperienceFrameworkAppId` `IdentityExperienceFrameworkAppId` elementu Zastąp wszystkie wystąpienia i identyfikatorami aplikacji skonfigurowanymi w temacie [wprowadzenie do zasad niestandardowych.][B2C-GetStartedCustom] `<TechnicalProfile Id="login-NonInteractive">`
+1. `<ClaimsProviders>` W węźle Znajdź Poniższy fragment kodu XML. Zmień wartość `ServiceUrl` tak, aby wskazywała adres URL Azure App Service.
 
     ```XML
     <ClaimsProvider>
@@ -311,55 +324,47 @@ W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy `AADB2C.UserMigrati
     </ClaimsProvider>
     ```
 
-Poprzedni profilu technicznego definiuje jedno oświadczenie wejściowe: `signInName` (Wyślij jako adres e-mail). Na logowanie oświadczenia są wysyłane do punktu końcowego usługi RESTful.
+Poprzedni profil techniczny definiuje jedno z roszczeń wejściowych: `signInName` (Wyślij jako wiadomość e-mail). W przypadku logowania, to jest wysyłane do punktu końcowego RESTful.
 
-Po zdefiniowaniu profilu technicznego dla interfejsu API RESTful, poinformuj zasady usługi Azure AD B2C, aby wywołać profilu technicznego. Fragment kodu XML zastępuje `SelfAsserted-LocalAccountSignin-Email`, która została zdefiniowana w zasadach podstawowych. Fragment kodu XML również dodaje `ValidationTechnicalProfile`, za pomocą ReferenceId, wskazując polecenie usługi profilu technicznego `LocalAccountUserMigration`.
+Po zdefiniowaniu profilu technicznego dla interfejsu API RESTful poinformuj zasady Azure AD B2C, aby wywoływać profil techniczny. Zastąpienie `SelfAsserted-LocalAccountSignin-Email`fragmentu kodu XML, który jest zdefiniowany w zasadach podstawowych. Fragment kodu XML dodaje `ValidationTechnicalProfile`również z ReferenceId wskazujący Twój profil `LocalAccountUserMigration`techniczny.
 
-### <a name="step-44-upload-the-policy-to-your-tenant"></a>Krok 4.4 Przekazywanie zasad dla Twojej dzierżawy
-1. W [witryny Azure portal][Portal], switch to the [context of your Azure AD B2C tenant][B2C-NavContext], a następnie wybierz pozycję **usługi Azure AD B2C**.
+### <a name="step-44-upload-the-policy-to-your-tenant"></a>Krok 4,4: Przekazywanie zasad do dzierżawy
 
-1. Wybierz **struktura środowiska tożsamości**.
+1. W [Azure Portal][Portal]przejdź do [kontekstu Azure AD B2C dzierżawy][B2C-NavContext], a następnie wybierz pozycję **Azure AD B2C**.
+1. Wybierz pozycję **platforma obsługi tożsamości**.
+1. Wybierz pozycję **wszystkie zasady**.
+1. Wybierz pozycję **Przekaż zasady**.
+1. Zaznacz pole wyboru **Zastąp zasady, jeśli istnieje** .
+1. Przekaż plik *TrustFrameworkExtensions. XML* i upewnij się, że przeszedł sprawdzanie poprawności.
 
-1. Wybierz **wszystkie zasady**.
+### <a name="step-45-test-the-custom-policy-by-using-run-now"></a>Krok 4,5: Testowanie zasad niestandardowych za pomocą polecenia Uruchom teraz
 
-1. Wybierz **przekazywać zasady**.
+1. Wybierz pozycję **Azure AD B2C**, a następnie wybierz pozycję **platforma obsługi tożsamości**.
+1. Otwórz *B2C_1A_signup_signin*, załadowane zasady niestandardowe jednostki uzależnionej (RP), a następnie wybierz pozycję **Uruchom teraz**.
+1. Wprowadź poświadczenia jednego z zmigrowanych użytkowników, a następnie wybierz pozycję **Zaloguj się**. Interfejs API REST powinien zgłosić następujący komunikat o błędzie:
 
-1. Wybierz **Zastąp zasady Jeśli istnieje** pole wyboru.
+    ![Strona rejestracji logowania z komunikatem o błędzie zmiany hasła](media/active-directory-b2c-user-migration/pre-migration-error-message.png)
 
-1. Przekaż *TrustFrameworkExtensions.xml* pliku i upewnij się, że przekazuje sprawdzania poprawności.
+### <a name="step-46-optional-troubleshoot-your-rest-api"></a>Krok 4,6: Obowiązkowe Rozwiązywanie problemów z interfejsem API REST
 
-### <a name="step-45-test-the-custom-policy-by-using-run-now"></a>Krok 4.5: Testowanie zasad niestandardowych za pomocą polecenia Uruchom teraz
-1. Wybierz **ustawienia usługi Azure AD B2C**, a następnie przejdź do **struktura środowiska tożsamości**.
+Informacje o rejestrowaniu można wyświetlać i monitorować w czasie niemal rzeczywistym.
 
-1. Otwórz **B2C_1A_signup_signin**, jednostki uzależnionej strona (RP) zasad niestandardowych, które przekazane, a następnie wybierz **Uruchom teraz**.
-
-1. Spróbuj zalogować się przy użyciu jednego z migrowanych użytkowników poświadczenia, a następnie wybierz **Sign In**. Interfejs API REST powinien zgłaszać następujący komunikat o błędzie:
-
-    ![Zarejestruj się strona logowania przedstawiający komunikat o błędzie zmiany hasła](media/active-directory-b2c-user-migration/pre-migration-error-message.png)
-
-### <a name="step-46-optional-troubleshoot-your-rest-api"></a>Krok 4.6: (Opcjonalnie) Rozwiązywanie problemów z interfejsu API REST
-Możesz wyświetlić i monitorować informacje rejestrowania w czasie niemal rzeczywistym.
-
-1. W menu Ustawienia aplikacji RESTful w obszarze **monitorowanie**, wybierz opcję **dzienniki diagnostyczne**.
-
-1. Ustaw **rejestrowanie aplikacji (system plików)** do **na**.
-
-1. Ustaw **poziom** do **pełne**.
-
+1. W menu Ustawienia aplikacji RESTful, w obszarze **monitorowanie**wybierz pozycję **dzienniki diagnostyczne**.
+1. Ustaw **Rejestrowanie aplikacji (system plików)** na **włączone**.
+1. Ustaw **poziom** na **pełne**.
 1. Wybierz **Zapisz**
 
-    ![Strona konfiguracji dzienniki diagnostyczne w witrynie Azure portal](media/active-directory-b2c-user-migration/pre-migration-diagnostic-logs.png)
+    ![Strona konfiguracji dzienników diagnostycznych w Azure Portal](media/active-directory-b2c-user-migration/pre-migration-diagnostic-logs.png)
 
-1. Na **ustawienia** menu, wybierz opcję **strumień dziennika**.
-
+1. W menu **Ustawienia** wybierz pozycję **strumień dzienników**.
 1. Sprawdź dane wyjściowe interfejsu API RESTful.
 
 > [!IMPORTANT]
-> Dzienniki diagnostyczne należy używać tylko podczas tworzenia i testowania aplikacji. Interfejs API RESTful danych wyjściowych może zawierać informacje poufne, które nie powinny zostać ujawnione w środowisku produkcyjnym.
->
+> Dzienników diagnostycznych należy używać tylko podczas tworzenia i testowania. Dane wyjściowe interfejsu API RESTful mogą zawierać poufne informacje, które nie powinny być ujawnione w środowisku produkcyjnym.
 
-## <a name="optional-download-the-complete-policy-files"></a>(Opcjonalnie) Pobierz pliki pełną zasad
-Po ukończeniu [wprowadzenie do zasad niestandardowych][B2C-GetStartedCustom] walkthrough, we recommend that you build your scenario by using your own custom policy files. For your reference, we have provided [Sample policy files][UserMigrationSample].
+## <a name="optional-download-the-complete-policy-files"></a>Obowiązkowe Pobieranie kompletnych plików zasad
+
+Po wykonaniu instruktażu wprowadzenie do [zasad niestandardowych][B2C-GetStartedCustom] zalecamy utworzenie scenariusza przy użyciu własnych niestandardowych plików zasad. W odniesieniu do Twojej dokumentacji udostępniono [przykładowe pliki zasad][UserMigrationSample].
 
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
 [AD-Powershell]: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2

@@ -1,19 +1,20 @@
 ---
 title: 'Azure Backup: spójne z aplikacjami kopie zapasowe maszyn wirtualnych z systemem Linux'
 description: Twórz spójne z aplikacjami kopie zapasowe maszyn wirtualnych z systemem Linux na platformie Azure. W tym artykule wyjaśniono, jak skonfigurować strukturę skryptów do tworzenia kopii zapasowych maszyn wirtualnych z systemem Linux wdrożonych na platformie Azure. Ten artykuł zawiera również informacje dotyczące rozwiązywania problemów.
-author: anuragmehrotra
-manager: shivamg
+ms.reviewer: anuragm
+author: dcurwin
+manager: carmonm
 keywords: kopia zapasowa spójna na poziomie aplikacji; spójna na poziomie aplikacji kopia zapasowa maszyny wirtualnej platformy Azure; Kopia zapasowa maszyny wirtualnej systemu Linux; Azure Backup
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/12/2018
-ms.author: anuragm
-ms.openlocfilehash: adcadf0de2480b0f231dd8808d84cb2907685842
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: dae2268abc3771e43d717c65c19eed37b9f48e8e
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466139"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689253"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Kopia zapasowa spójna na poziomie aplikacji maszyn wirtualnych platformy Azure z systemem Linux
 

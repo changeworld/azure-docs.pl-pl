@@ -1,6 +1,6 @@
 ---
-title: Funkcjonalność systemu operacyjnego w usłudze App Service — platformy Azure
-description: Dowiedz się więcej o funkcji systemu operacyjnego, dostępnych dla aplikacji internetowych, zapleczy aplikacji mobilnych i aplikacji API apps w usłudze Azure App Service
+title: Funkcjonalność systemu operacyjnego w App Service — Azure
+description: Dowiedz się więcej na temat funkcji systemu operacyjnego dostępnych dla aplikacji sieci Web, frontonów aplikacji mobilnych i aplikacji interfejsu API w systemie Azure App Service
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -15,125 +15,125 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f8087afc541dba41d23eacd2dd0f50e8f0180af1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f06b0866f5a79756f3404d7911f03bcdcc7f67d7
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808394"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608038"
 ---
-# <a name="operating-system-functionality-on-azure-app-service"></a>Funkcjonalność systemu operacyjnego w usłudze Azure App Service
-W tym artykule opisano typowych funkcji systemu operacyjnego linii bazowej, która jest dostępna dla wszystkich aplikacji Windows działających na [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ta funkcja obejmuje plików, sieci i dostępu do rejestru i dzienniki diagnostyczne i zdarzenia. 
+# <a name="operating-system-functionality-on-azure-app-service"></a>Funkcjonalność systemu operacyjnego na Azure App Service
+W tym artykule opisano typowe podstawowe funkcje systemu operacyjnego, które są dostępne dla wszystkich aplikacji systemu Windows działających na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ta funkcja obejmuje dostęp do plików, sieci i rejestru oraz dzienniki i zdarzenia diagnostyczne. 
 
 > [!NOTE] 
-> [Aplikacje systemu Linux](containers/app-service-linux-intro.md) w usłudze App Service, uruchom w ich własnych kontenerów. Brak dostępu do systemu operacyjnego hosta jest dozwolone, masz dostęp do kontenera na poziomie administratora. Podobnie, aby uzyskać [aplikacji działających w kontenerach Windows](app-service-web-get-started-windows-container.md), masz dostęp administracyjny do kontenera, ale brak dostępu do systemu operacyjnego hosta. 
+> [Aplikacje systemu Linux](containers/app-service-linux-intro.md) w App Service uruchamiane we własnych kontenerach. Żaden dostęp do systemu operacyjnego hosta nie jest dozwolony, masz dostęp do kontenera. Podobnie w przypadku [aplikacji działających w kontenerach systemu Windows](app-service-web-get-started-windows-container.md)użytkownik ma dostęp administracyjny do kontenera, ale nie ma dostępu do systemu operacyjnego hosta. 
 >
 
 <a id="tiers"></a>
 
-## <a name="app-service-plan-tiers"></a>Warstw planu usługi App Service
-Usługa App Service uruchamia aplikacje klienta w środowisku hostingu z wieloma dzierżawami. Aplikacje wdrożone w **bezpłatna** i **Shared** warstwy Uruchom w procesach roboczych na udostępnionych maszynach wirtualnych, gdy aplikacje wdrożone w **standardowa** i **— wersja Premium**  warstwy uruchamiania na maszynach wirtualnych w wersji dedykowanej specjalnie dla aplikacji skojarzonych z jednego klienta.
+## <a name="app-service-plan-tiers"></a>Warstwy planu App Service
+App Service uruchamia aplikacje klienta w środowisku hostingu z wieloma dzierżawcami. Aplikacje wdrożone w warstwach **bezpłatna** i współdzielona są uruchamiane w ramach procesów roboczych na udostępnionych maszynach wirtualnych, podczas gdy aplikacje wdrożone w warstwach **standardowa** i **Premium** są uruchamiane na maszynach wirtualnych przeznaczonych specjalnie dla aplikacji skojarzonych z pojedynczym klientem.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Ponieważ usługi App Service umożliwia bezproblemowe skalowanie między różnych warstw, konfiguracji zabezpieczeń, wymuszane dla aplikacji usługi App Service pozostaje taki sam. Daje to gwarancję, że aplikacje nie nagle zachowywać się inaczej, kończy się niepowodzeniem w nieoczekiwany sposób, gdy plan usługi App Service zmienia się z jednej warstwy do innej.
+Ponieważ App Service obsługuje bezproblemowe skalowanie między różnymi warstwami, Konfiguracja zabezpieczeń wymuszana dla App Service aplikacji pozostaje taka sama. Gwarantuje to, że aplikacje nie będą nagle działać inaczej, podczas gdy App Service planuje przełączać się między warstwami.
 
 <a id="developmentframeworks"></a>
 
-## <a name="development-frameworks"></a>Struktur programowania
-Warstwy cenowe usługi App Service kontroli ilości zasobów obliczeniowych (procesora CPU, dysku magazynu, pamięci i wychodzący ruch sieciowy) dostępne dla aplikacji. Jednak szeroki zakres funkcji framework, które są dostępne dla aplikacji pozostaje taki sam, niezależnie od skalowania warstwy.
+## <a name="development-frameworks"></a>Platformy programistyczne
+App Service warstwy cenowe kontrolują ilość zasobów obliczeniowych (procesor CPU, magazyn dyskowy, pamięć i ruch wychodzący w sieci), które są dostępne dla aplikacji. Jednak szerokość platformy dostępna dla aplikacji pozostaje taka sama niezależnie od warstw skalowania.
 
-Usługa App Service obsługuje szereg struktur programowania, w tym ASP.NET, klasyczne ASP, node.js, PHP i Python — wszystkie z nich są uruchamiane jako rozszerzenia w ramach usług IIS. Aplikacje usługi App Service w celu uproszczenia i normalizacji konfiguracji zabezpieczeń, jest zazwyczaj uruchamiane różnych struktur programowania przy użyciu ustawień domyślnych. Jedno z podejść do konfigurowania aplikacji mogło być dostosować obszar powierzchni interfejsu API i funkcje dla każdej struktury poszczególnych rozwoju. Usługi App Service zamiast tego przyjmuje bardziej ogólnym podejściem, należy włączyć wspólne podstawową funkcjonalność systemu operacyjnego, niezależnie od tego, w ramach rozwoju aplikacji.
+App Service obsługuje różne platformy programistyczne, w tym ASP.NET, klasyczne ASP, Node. js, PHP i Python — wszystkie te, które są uruchamiane jako rozszerzenia w ramach usług IIS. Aby uprościć i znormalizować konfigurację zabezpieczeń, App Service aplikacje zwykle uruchamiają różne platformy programistyczne z ustawieniami domyślnymi. Jednym z metod konfigurowania aplikacji może być dostosowanie obszaru powierzchni interfejsu API do poszczególnych platform programistycznych. App Service zamiast tego przyjmuje bardziej ogólne podejście, włączając wspólną podstawę funkcji systemu operacyjnego niezależnie od struktury projektowania aplikacji.
 
-W poniższych sekcjach opisano ogólne rodzaje funkcjonalność systemu operacyjnego są dostępne dla aplikacji usługi App Service.
+Poniższe sekcje zawierają podsumowanie ogólnych rodzajów funkcji systemu operacyjnego dostępnych dla App Service aplikacji.
 
 <a id="FileAccess"></a>
 
 ## <a name="file-access"></a>Dostęp do plików
-Istnieją różne dyski w ramach usługi App Service, w tym dyskach lokalnych i dyskach sieciowych.
+Istnieją różne dyski w App Service, w tym dyski lokalne i dyski sieciowe.
 
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Dyski lokalne
-Zasadniczo App Service to w usłudze działającej na szczycie infrastruktury Azure PaaS (platforma jako usługa). W rezultacie dyski lokalne, dołączonych "" do maszyny wirtualnej są takie same typy dysku dostępne dla dowolnej roli procesu roboczego, działające na platformie Azure. Obejmuje to:
+App Service to usługa działająca w oparciu o infrastrukturę platformy Azure PaaS (platforma jako usługa). W związku z tym dyski lokalne, które są "dołączone" do maszyny wirtualnej, są tymi samymi dyskami, które są dostępne dla każdej roli procesu roboczego działającej na platformie Azure. Obejmuje to:
 
-- Dysk systemu operacyjnego (dysku D:\)
-- Dysk aplikacji, który zawiera pliki cspkg pakiet Azure używany wyłącznie przez usługę App Service (i dostępnych dla klientów)
-- "User" dysku (dysk C:\), którego rozmiar różni się w zależności od rozmiaru maszyny Wirtualnej. 
+- Dysk systemu operacyjnego (D:\ litera
+- Dysk aplikacji zawierający pliki cspkg pakietu platformy Azure używane wyłącznie przez App Service (i niedostępne dla klientów)
+- Stacja "użytkownika" (C:\ Drive), którego rozmiar zmienia się w zależności od rozmiaru maszyny wirtualnej. 
 
-Należy monitorować wykorzystaniu dysku, w miarę wzrostu aplikacji. W przypadku osiągnięcia limitu przydziału dysku może mieć niepożądane skutki do aplikacji. Na przykład: 
+Ważne jest, aby monitorować wykorzystanie dysku w miarę zwiększania się aplikacji. Po osiągnięciu limitu przydziału dysku może on mieć niekorzystny wpływ na aplikację. Na przykład: 
 
-- Aplikacja może zgłaszać błąd wskazujący za mało miejsca na dysku.
-- Podczas przeglądania do konsoli Kudu, mogą pojawić się błędy na dysku.
-- Wdrażanie z DevOps platformy Azure lub programu Visual Studio może się nie powieść `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
-- Aplikacja może to spowodować obniżenie wydajności.
+- Aplikacja może zgłosić błąd informujący o braku wystarczającej ilości miejsca na dysku.
+- Błędy dysku mogą być widoczne podczas przeglądania do konsoli kudu.
+- Wdrożenie z usługi Azure DevOps lub programu Visual Studio może `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`zakończyć się niepowodzeniem.
+- Aplikacja może mieć negatywny wpływ na wydajność.
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>Dyskach sieciowych (zwane również udziały UNC)
-Jednym z unikatowe aspekty usługi App Service, która umożliwia proste wdrażanie aplikacji i konserwacji jest, że cała zawartość użytkownika jest przechowywany na zbiór udziały UNC. Ten model mapuje dobrze wspólny wzorzec przechowywania zawartości, które korzystają z lokalnych hostingu środowiska, w których wiele serwerów z równoważeniem obciążenia. 
+### <a name="network-drives-aka-unc-shares"></a>Dyski sieciowe (udziały UNC)
+Jednym z unikatowych aspektów App Service, które ułatwiają wdrażanie i konserwację aplikacji, jest to, że cała zawartość użytkownika jest przechowywana na zestawie udziałów UNC. Ten model jest dobrze mapowany do wspólnego wzorca magazynu zawartości używanego przez lokalne środowiska hostingu w sieci Web, które mają wiele serwerów o zrównoważonym obciążeniu. 
 
-W ramach usługi App Service istnieje szereg udziały UNC, utworzone w każdym centrum danych. Procent zawartość użytkownika dla wszystkich klientów w każdym centrum danych jest przydzielona do każdego udziału UNC. Ponadto zawartość dla subskrypcji pojedynczego klienta zawsze znajduje się na tym samym UNC pliku udostępniać. 
+W ramach App Service istnieje wiele udziałów UNC utworzonych w każdym centrum danych. Procent zawartości użytkownika dla wszystkich klientów w poszczególnych centrach danych jest przypisywany do każdego udziału UNC. Ponadto cała zawartość pliku dla subskrypcji jednego klienta jest zawsze umieszczana w tym samym udziale UNC. 
 
-Ze względu na sposób Azure działają usługi odpowiedzialny za hostingu udziału UNC określonej maszyny wirtualnej zmieni się wraz z upływem czasu. Ma żadnej gwarancji, że udziały UNC zostanie zainstalowany przez różnych maszyn wirtualnych zgodnie z ich wprowadzenia w górę i w dół w trakcie normalnego przebiegu operacji na platformie Azure. Z tego powodu aplikacje nigdy nie należy upewnić ustaloną założenia, że informacje o maszynie w ścieżce UNC pliku jest trwały na wraz z upływem czasu. Zamiast tego należy używać wygodne *symulowane* ścieżka bezwzględna **D:\home\site** udostępniająca usługi App Service. Ta ścieżka bezwzględna symulowane zapewnia przenośnych, i — użytkownik — niezależnie od aplikacji metoda odwoływania się do własnych aplikacji. Za pomocą **D:\home\site**, jeden mogą przesyłać pliki udostępnione z aplikacji bez konieczności konfigurowania nowej ścieżki bezwzględnej dla każdego transferu.
+Ze względu na sposób działania usług platformy Azure, określona maszyna wirtualna odpowiedzialna za hostowanie udziału UNC zmieni się z upływem czasu. Jest gwarantowane, że udziały UNC będą instalowane przez różne maszyny wirtualne w miarę ich przygotowywania w trakcie normalnego działania platformy Azure. Z tego powodu aplikacje nigdy nie powinny wprowadzać sztywno założeń, że informacje o maszynie w ścieżce pliku UNC pozostaną stabilne w czasie. Zamiast tego powinny *używać wygodnej* , **D:\home\site** ścieżki bezwzględnej, która zapewnia App Service. Ta przysymulowana ścieżka bezwzględna zapewnia przenośną metodę niezależny od, App-and-User-dla odwołującą się do własnej aplikacji. Za pomocą **D:\home\site**, jeden może przesyłać pliki udostępnione z aplikacji do aplikacji bez konieczności konfigurowania nowej ścieżki bezwzględnej dla każdego transferu.
 
 <a id="TypesOfFileAccess"></a>
 
-### <a name="types-of-file-access-granted-to-an-app"></a>Typy plików udzielono dostępu do aplikacji
-Subskrypcja każdy klient ma strukturę katalogów zarezerwowane w określonym udziale UNC w centrum danych. Klient może mieć wiele aplikacji tworzone w obrębie centrum danych specyficznych dla wszystkich katalogów należącymi do subskrypcji pojedynczego klienta są tworzone na tym samym UNC udostępniania. Udział może obejmować katalogi, takich jak te dotyczące zawartości, błędów i dzienniki diagnostyczne i wcześniejszych wersjach aplikację utworzoną za pomocą kontroli źródła. Zgodnie z oczekiwaniami, katalogów aplikacji klienta są dostępne do odczytu i zapisu w czasie wykonywania przez kod aplikacji w aplikacji.
+### <a name="types-of-file-access-granted-to-an-app"></a>Typy dostępu do plików przyznane aplikacji
+Każda subskrypcja klienta ma zastrzeżoną strukturę katalogów w określonym udziale UNC w centrum danych. Klient może mieć wiele aplikacji utworzonych w ramach określonego centrum danych, więc wszystkie katalogi należące do pojedynczej subskrypcji klienta są tworzone w tym samym udziale UNC. Udział może zawierać katalogi, takie jak te dla zawartości, dzienniki błędów i diagnostyki oraz wcześniejsze wersje aplikacji utworzonej przez kontrolę źródła. Zgodnie z oczekiwaniami katalogi aplikacji klienta są dostępne do odczytu i zapisu w czasie wykonywania przez kod aplikacji aplikacji.
 
-Na dyski lokalne dołączone do maszyny wirtualnej, która uruchamia aplikację usługa App Service rezerwuje fragmentów miejsca na dysku C:\ jako tymczasowego magazynu lokalnego specyficzny dla aplikacji. Mimo że aplikacja ma pełny odczyt/zapis dostęp do jego własnej tymczasowego magazynu lokalnego, że magazyn tak naprawdę nie jest przeznaczona do użycia bezpośrednio przez kod aplikacji. Przeciwnie celem jest zapewnienie przechowywania plików tymczasowych dla usług IIS i sieci web struktury aplikacji. Usługa App Service również ogranicza tymczasowego magazynu lokalnego, dostępne dla poszczególnych aplikacji, aby uniemożliwić korzystanie z nadmiernej ilości pamięci masowej z pliku lokalnego poszczególnych aplikacji.
+Na dyskach lokalnych podłączonych do maszyny wirtualnej, na której działa aplikacja, App Service rezerwuje fragmentu miejsca na C:\ Stacja dysków dla tymczasowego magazynu lokalnego dla konkretnej aplikacji. Mimo że aplikacja ma pełny dostęp do odczytu i zapisu do własnego tymczasowego magazynu lokalnego, magazyn naprawdę nie jest przeznaczony do użycia bezpośrednio w kodzie aplikacji. Zamiast tego należy zapewnić tymczasowy magazyn plików dla usług IIS i struktur aplikacji sieci Web. App Service również ogranicza ilość tymczasowego magazynu lokalnego dostępnego dla każdej aplikacji, aby uniemożliwić poszczególnym aplikacjom zużywanie nadmiernych ilości lokalnych plików magazynu.
 
-Jak usługa App Service używa tymczasowy magazyn lokalny dwa przykłady są katalogu na pliki tymczasowe platformy ASP.NET i katalogu dla usług IIS skompresowane pliki. Systemu kompilacji platformy ASP.NET używa katalogu "Temporary ASP.NET Files" jako lokalizację pamięci podręcznej tymczasowe kompilacji. Usługi IIS używają katalogu "Usług IIS skompresowanych plików tymczasowych" do przechowywania danych wyjściowych skompresowanych odpowiedzi. Oba typy plików użycia (a także inne) są mapowane ponownie w usłudze App Service do lokalnego magazynu tymczasowego dla aplikacji. To ponowne mapowanie gwarantuje, że funkcje jest kontynuowane zgodnie z oczekiwaniami.
+Dwa przykłady użycia tymczasowego magazynu lokalnego przez App Service są katalogiem plików tymczasowych ASP.NET i katalogiem skompresowanych plików usług IIS. System kompilacji ASP.NET używa katalogu "Temporary ASP.NET Files" jako tymczasowej lokalizacji pamięci podręcznej kompilacji. Usługi IIS używają katalogu "tymczasowe pliki skompresowane usługi IIS" do przechowywania danych wyjściowych skompresowanych odpowiedzi. Oba typy użycia plików (a także inne) są ponownie mapowane w App Service do tymczasowego magazynu lokalnego dla aplikacji. To ponowne mapowanie zapewnia, że funkcje będą nadal działać zgodnie z oczekiwaniami.
 
-Każda aplikacja w usłudze App Service działa jako tożsamość procesu losowy unikatowy procesu roboczego z niskim poziomem uprawnień, o nazwie "tożsamość puli aplikacji", opisane dalej w tym miejscu: [ https://www.iis.net/learn/manage/configuring-security/application-pool-identities ](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Kod aplikacji używa tej tożsamości dla podstawowego dostępu tylko do odczytu na dysku systemu operacyjnego (dysku D:\). Oznacza to, kod aplikacji, można wyświetlić listę typowych struktur katalogów i przeczytaj wspólne pliki na dysku systemu operacyjnego. Chociaż to może się wydawać nieco szerokiego poziom dostępu, tym samym katalogi i pliki są dostępne podczas aprowizowania roli proces roboczy na platformie Azure usługa hostowana i odczytywać zawartość dysku. 
+Każda aplikacja w App Service jest uruchamiana jako Losowa unikatowa tożsamość procesu roboczego o niskim poziomie uprawnień o nazwie "tożsamość puli aplikacji", opisana tutaj [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities):. Kod aplikacji używa tej tożsamości do podstawowego dostępu tylko do odczytu do dysku systemu operacyjnego (D:\ dysk). Oznacza to, że kod aplikacji może wyświetlać listę wspólnych struktur katalogów i odczytywać typowe pliki na dysku z systemem operacyjnym. Chociaż może to być nieco szerszego poziomu dostępu, te same katalogi i pliki są dostępne podczas aprowizacji roli proces roboczy w usłudze hostowanej platformy Azure i odczytywania zawartości dysku. 
 
 <a name="multipleinstances"></a>
 
 ### <a name="file-access-across-multiple-instances"></a>Dostęp do plików w wielu wystąpieniach
-Katalog macierzysty zawiera zawartość aplikacji, a kod aplikacji może zapisywać do niego. Jeśli aplikacja działa w wielu wystąpieniach, katalog macierzysty jest udostępniona wszystkim wystąpieniom, dzięki czemu wszystkie wystąpienia widoczne w tym samym katalogu. Tak na przykład, jeśli aplikacja zapisuje przekazywanych plików do katalogu macierzystego, te pliki są natychmiast dostępne dla wszystkich wystąpień. 
+Katalog macierzysty zawiera zawartość aplikacji i może zapisywać w niej kod aplikacji. Jeśli aplikacja działa w wielu wystąpieniach, katalog macierzysty jest współużytkowany między wszystkimi wystąpieniami, tak aby wszystkie wystąpienia były widoczne w tym samym katalogu. Jeśli na przykład aplikacja zapisuje przekazane pliki do katalogu macierzystego, te pliki są natychmiast dostępne dla wszystkich wystąpień. 
 
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>Dostęp do sieci
-Kod aplikacji może być TCP/IP i protokołów opartych na protokole UDP nawiązywać połączenia sieciowego ruchu wychodzącego z Internet dostępne punkty końcowe, z użyciem usług zewnętrznych. Aplikacje mogą używać tych tych samych protokołów łączenie się z usługami w ramach platformy Azure&#151;na przykład, ustanawiając połączenia HTTPS do usługi SQL Database.
+Kod aplikacji może korzystać z protokołów TCP/IP i UDP, aby wychodzące połączenia sieciowe z punktami końcowymi dostępnymi do Internetu, które uwidaczniają usługi zewnętrzne. Aplikacje mogą używać tych samych protokołów do łączenia się z usługami w ramach platformy Azure, na przykład przez ustanawianie połączeń HTTPS do SQL Database.
 
-Istnieje również ograniczone możliwości dla aplikacji ustanowić jedno połączenie lokalnego sprzężenia zwrotnego i aplikacji nasłuchiwać tego gniazda lokalnego sprzężenia zwrotnego. Ta funkcja istnieje głównie w celu przygotowania aplikacji, które nasłuchują na sockets lokalnego sprzężenie zwrotne jako część ich funkcje. Każda aplikacja widzi połączenia sprzężenia zwrotnego "private". Aplikacja "A" nie może nasłuchiwać na gniazdo lokalnego sprzężenie zwrotne ustanowione przez aplikację "B".
+Istnieje również ograniczona możliwość dla aplikacji do nawiązywania jednego lokalnego połączenia sprzężenia zwrotnego i nasłuchiwania aplikacji na tym lokalnym gnieździe sprzężenia zwrotnego. Ta funkcja istnieje głównie do włączania aplikacji nasłuchujących lokalnych gniazd sprzężenia zwrotnego w ramach ich funkcjonalności. Każda aplikacja widzi "prywatne" połączenie sprzężenia zwrotnego. Aplikacja "A" nie może nasłuchiwać lokalnego gniazda sprzężenia zwrotnego określonego przez aplikację "B".
 
-Nazwane potoki są również obsługiwane w mechanizmie komunikacji międzyprocesowej (IPC) między różne procesy, które wspólnie uruchamiania aplikacji. Na przykład moduł FastCGI usług IIS opiera się na nazwanych potoków do zapewnienia koordynacji procesów poszczególnych, systemem strony PHP.
+Nazwane potoki są również obsługiwane jako mechanizm komunikacji między procesami (IPC) między różnymi procesami, które zbiorczo uruchamiają aplikację. Na przykład moduł FastCGI usług IIS korzysta z nazwanych potoków, aby koordynować poszczególne procesy, które uruchamiają strony PHP.
 
 <a id="Code"></a>
 
-## <a name="code-execution-processes-and-memory"></a>Wykonywanie kodu, procesów i pamięci
-Jak wspomniano wcześniej, aplikacje są uruchamiane wewnątrz niskim poziomem uprawnień procesów przy użyciu tożsamości puli aplikacji losowych. Kod aplikacji ma dostęp do obszaru pamięci skojarzone z procesu roboczego, a także wszystkie podrzędne procesy, które może być zduplikowana przez procesy CGI lub innych aplikacji. Jednak jedna aplikacja nie może uzyskać dostępu pamięci lub danych innej aplikacji, nawet jeśli nie znajduje się na tej samej maszyny wirtualnej.
+## <a name="code-execution-processes-and-memory"></a>Wykonywanie kodu, procesy i pamięć
+Jak wspomniano wcześniej, aplikacje działają w ramach procesów roboczych z niskim poziomem uprawnień przy użyciu tożsamości losowej puli aplikacji. Kod aplikacji ma dostęp do przestrzeni pamięci skojarzonej z procesem roboczym, a także wszystkich procesów podrzędnych, które mogą być duplikowane przez procesy CGI lub inne aplikacje. Jednak jedna aplikacja nie może uzyskać dostępu do pamięci lub danych innej aplikacji, nawet jeśli znajduje się na tej samej maszynie wirtualnej.
 
-Aplikacje mogą być uruchamiane skrypty lub stron napisane przy użyciu struktur projektowania sieci web obsługiwane. Usługa App Service nie Skonfiguruj ustawienia framework sieci web do bardziej ograniczony tryby. Na przykład aplikacji ASP.NET uruchomionej w usłudze App Service, uruchom w zaufaniu "pełnej" w przeciwieństwie do bardziej ograniczony tryb zaufania. Platform sieci Web, w tym ASP klasycznego i ASP.NET, można wywołać w procesie komponentów COM (ale nie poza składników COM, proces), takich jak ADO (ActiveX Data Objects), która jest zarejestrowana domyślnie w systemie operacyjnym Windows.
+Aplikacje mogą uruchamiać skrypty lub strony z obsługiwanymi strukturami programowania w sieci Web. App Service nie konfiguruje żadnych ustawień platformy sieci Web w celu uzyskania większej liczby trybów ograniczonych. Na przykład aplikacje ASP.NET uruchomione w App Service działają w "pełnej" relacji zaufania, a nie w trybie ograniczonym zaufania. Platformy sieci Web, w tym klasyczne ASP i ASP.NET, mogą wywoływać składniki COM (ale nie procesy), takie jak ADO (ActiveX Data Objects), które są domyślnie zarejestrowane w systemie operacyjnym Windows.
 
-Aplikacje można zduplikować i uruchomić dowolny kod. Jest dozwolony dla aplikacji wykonywanie takich czynności jak duplikowanie powłoki poleceń lub uruchom skrypt programu PowerShell. Mimo że dowolnego kodu i procesów można zduplikowany z aplikacji, programów wykonywalnych i skryptów są jednak nadal ograniczony do uprawnień przyznanych nadrzędnej puli aplikacji. Na przykład aplikację można zduplikować plik wykonywalny, który sprawia, że wywołanie HTTP ruchu wychodzącego, ale ta sama pliku wykonywalnego nie ma możliwości usunięcia powiązania adres IP maszyny wirtualnej na podstawie jego karty sieciowej. Wywołania sieciowe dotyczące połączeń wychodzących jest dozwolony na kod z niskim poziomem uprawnień, ale podjęto próbę ponownego konfigurowania ustawień sieciowych na maszynie wirtualnej wymaga uprawnień administracyjnych.
+Aplikacje mogą zduplikować i uruchamiać dowolny kod. Jest to możliwe, aby aplikacja mogła wykonywać takie czynności jak duplikowanie powłoki poleceń lub uruchamianie skryptu programu PowerShell. Jednak mimo że dowolny kod i procesy można zduplikować z aplikacji, programy wykonywalne i skrypty nadal są ograniczone do uprawnień przypisanych do nadrzędnej puli aplikacji. Na przykład aplikacja może zduplikować plik wykonywalny, który wykonuje wychodzące wywołanie HTTP, ale ten sam plik wykonywalny nie może próbować usunąć powiązania adresu IP maszyny wirtualnej z jej karty sieciowej. Wychodzące wywołanie sieciowe może mieć kod z niskimi uprawnieniami, ale próba zmiany konfiguracji ustawień sieciowych na maszynie wirtualnej wymaga uprawnień administracyjnych.
 
 <a id="Diagnostics"></a>
 
-## <a name="diagnostics-logs-and-events"></a>Dzienniki diagnostyczne i zdarzenia
-Informacje w dzienniku jest inny zestaw danych, które niektóre aplikacje próbują uzyskać dostęp. Typy informacji dziennika, które są dostępne dla kodu uruchamianego w środowisku usługi App Service obejmuje diagnostyki i rejestrowania informacji generowanych przez aplikację, która również jest łatwo dostępny do aplikacji. 
+## <a name="diagnostics-logs-and-events"></a>Dzienniki i zdarzenia diagnostyczne
+Informacje dziennika to kolejny zestaw danych, do których niektóre aplikacje próbują uzyskać dostęp. Typy informacji dziennika dostępne dla kodu uruchomionego w App Service zawierają informacje diagnostyczne i dzienniki wygenerowane przez aplikację, która jest również łatwo dostępna dla aplikacji. 
 
-Na przykład W3C HTTP dzienniki generowane przez aktywnych aplikacji dostępnych w katalogu dziennika w lokalizacji w udziale sieciowym, utworzony dla aplikacji, lub będą dostępne w magazynie obiektów blob, jeśli klient został skonfigurowany do rejestrowania W3C do magazynu. Tę druga opcję umożliwia dużych ilości dzienniki, aby zebrać bez ryzyka przekroczenia limitów magazynu plików skojarzonych z udziału sieciowego.
+Na przykład dzienniki W3C protokołu HTTP generowane przez aktywną aplikację są dostępne w katalogu dziennika w lokalizacji udziału sieciowego utworzonego dla aplikacji lub dostępne w usłudze BLOB Storage, jeśli klient skonfigurował rejestrowanie W3C w magazynie. Ta ostatnia opcja umożliwia zebranie dużych ilości dzienników bez ryzyka przekroczenia limitów magazynowania plików skojarzonych z udziałem sieciowym.
 
-W podobny względzie informacji diagnostycznych w czasie rzeczywistym z aplikacji platformy .NET mogą również być rejestrowane za pomocą śledzenia .NET i infrastruktury diagnostyki z opcjami, aby zapisać informacje o śledzeniu do udziału sieciowego przez aplikację, lub też do lokalizacji magazynu obiektów blob.
+W podobnym przerostie informacje diagnostyczne z aplikacji .NET mogą być również rejestrowane przy użyciu infrastruktury śledzenia i diagnostyki .NET, z opcjami zapisywania informacji śledzenia w udziale sieciowym aplikacji, a także do lokalizacji magazynu obiektów BLOB.
 
-Obszary diagnostyki rejestrowania i śledzenia, które nie są dostępne dla aplikacji są zdarzenia Windows ETW i dzienniki zdarzeń w usłudze common Windows (na przykład systemu, aplikacji i zabezpieczeń dzienniki zdarzeń). Ponieważ informacje ze śledzenia zdarzeń systemu Windows może potencjalnie być widoczne dla komputera (z prawej strony listy ACL), są blokowane odczytu i zapisu do zdarzenia ETW. Deweloperzy zauważyć, że wywołania interfejsu API do odczytu i zapisu ETW, zdarzeń i dzienników zdarzeń w usłudze common Windows wydaje się działać, ale wynika to z usługi App Service jest "faking" wywołania, tak aby pojawiały się sukcesem. W rzeczywistości kod aplikacji nie ma dostępu do tych danych zdarzenia.
+Obszary rejestrowania i śledzenia diagnostyki, które nie są dostępne dla aplikacji, to zdarzenia ETW systemu Windows i typowe dzienniki zdarzeń systemu Windows (na przykład system, aplikacja i dzienniki zdarzeń zabezpieczeń). Ze względu na to, że informacje śledzenia funkcji ETW mogą być potencjalnie widoczne dla maszyn (z prawidłowymi listami ACL), dostęp do odczytu i zapisu do zdarzeń ETW jest blokowany. Deweloperzy mogą zauważyć, że wywołania interfejsu API odczytu i zapisu zdarzeń ETW oraz typowe dzienniki zdarzeń systemu Windows wyglądają na działanie, ale jest to spowodowane tym, że App Service jest "faking" wywołania, aby pojawiły się pomyślnie. W rzeczywistości kod aplikacji nie ma dostępu do danych tego zdarzenia.
 
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>Dostęp do rejestru
-Aplikacje mają dostęp tylko do odczytu do większości (choć nie wszystkie) rejestru maszyny wirtualnej są uruchomione. W praktyce oznacza to, że klucze rejestru, które umożliwiają dostęp tylko do odczytu do lokalnej grupy użytkowników są dostępne dla aplikacji. Jeden obszar rejestru, który nie jest obecnie obsługiwane dla odczytu lub zapisu jest HKEY\_bieżącego\_gałęzi użytkownika.
+Aplikacje mają dostęp tylko do odczytu do wielu (choć nie wszystkie) rejestru maszyny wirtualnej, w której są uruchomione. W rzeczywistości oznacza to, że klucze rejestru zezwalające na dostęp tylko do odczytu do grupy Użytkownicy lokalni są dostępne dla aplikacji. Jednym z obszarów rejestru, który nie jest obecnie obsługiwany w przypadku dostępu do odczytu lub zapisu, jest\_HKEY\_bieżącej gałęzi użytkownika.
 
-Dostęp do zapisu w rejestrze jest zablokowany, łącznie z dostępem do żadnych kluczy rejestru na użytkownika. Z perspektywy aplikacji dostęp do zapisu w rejestrze powinno nigdy nie można polegać w środowisku platformy Azure, ponieważ aplikacje można (i należy) migrowani na różnych maszynach wirtualnych. Tylko trwałego magazynu zapisywalny, który może być zależna od aplikacji jest struktury zawartości katalogu aplikacji przechowywanych w udziałach UNC usługi aplikacji. 
+Dostęp do zapisu w rejestrze jest blokowany, w tym dostęp do dowolnych kluczy rejestru dla poszczególnych użytkowników. Z punktu widzenia aplikacji dostęp do zapisu w rejestrze nigdy nie powinien być w środowisku platformy Azure, ponieważ aplikacje mogą wykonywać migrację między różnymi maszynami wirtualnymi. Jedyną trwałym magazynem zapisywalnym, z którym może być zależna aplikacja, jest struktura katalogów zawartości dla aplikacji przechowywana w App Service udziałach UNC. 
 
 ## <a name="remote-desktop-access"></a>Dostęp do pulpitu zdalnego
 
-Usługa App Service nie zapewnia dostęp do pulpitu zdalnego do wystąpień maszyn wirtualnych.
+App Service nie zapewnia dostępu pulpitu zdalnego do wystąpień maszyn wirtualnych.
 
 ## <a name="more-information"></a>Więcej informacji
 
-[Usługa Azure App Service piaskownicy](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) — najbardziej aktualne informacje o środowisku wykonawczym usługi App Service. Na tej stronie są obsługiwane bezpośrednio przez zespół programistyczny usługi App Service.
+[Azure App Service piaskownicy](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) — najbardziej aktualne informacje o środowisku wykonawczym App Service. Ta strona jest utrzymywana bezpośrednio przez zespół deweloperów App Service.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 66b54c027cde6341b23aef2c10b43fa21bf357da
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1afd78a0525be523f677cf0146c8a120155130ea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383467"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554680"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Zapoznaj się z postanowieniami dotyczącymi pliku użycia i opłat związanych z platformą Azure
 
@@ -26,9 +26,9 @@ W poniższej tabeli przedstawiono opłaty za poszczególne typy kont.
 
 Typ konta | Użycie platformy Azure | Użycie witryny Marketplace | Kupione | Zwroty
 --- | --- | --- | --- | ---
-Enterprise Agreement (EA) | Tak | Yes | Yes | Nie
+Enterprise Agreement (EA) | Yes | Yes | Yes | Nie
 Umowa klienta firmy Microsoft | Tak | Yes | Yes | Tak
-Płatność zgodnie z rzeczywistym użyciem (PAYG) | Yes | Nie | Nie | Nie
+Płatność zgodnie z rzeczywistym użyciem (PAYG) | Tak | Yes | Nie | Nie
 
 Aby dowiedzieć się więcej o zamówieniach w witrynie Marketplace (znanych również jako usługi zewnętrzne), zobacz [Omówienie opłat za usługi zewnętrzne platformy Azure](billing-understand-your-azure-marketplace-charges.md).
 
@@ -65,8 +65,6 @@ EffectivePrice | Wszyscy | Cena jednostkowa zmieszana za okres. Mieszane ceny pr
 ExchangeRateDate | MCA | Data ustalenia kursu wymiany.
 ExchangeRatePricingToBilling | MCA | Kurs wymiany używany do konwersji kosztów w walucie cenowej na walutę rozliczeń.
 Częstotliwość | Wszyscy | Wskazuje, czy opłata powinna zostać powtórzona. Opłaty mogą mieć miejsce raz (**jednorazowej**), powtarzać się w oparciu o co miesiąc lubco rok (cyklicznie) lub być oparte na użyciu (**UsageBased**).
-IncludedQuantity | PAYG | Ilość licznika, która jest uwzględniana bez opłat w bieżącym okresie rozliczeniowym.
-Identyfikator wystąpienia | PAGY | Zobacz ResourceId.
 InvoiceId | PAYG, MCA | Unikatowy identyfikator dokumentu w pliku PDF faktury.
 InvoiceSection | MCA | Zobacz InvoiceSectionName.
 InvoiceSectionId | EA, MCA | Unikatowy identyfikator dla działu EA lub faktury MCA.
@@ -105,6 +103,7 @@ ServicePeriodStartDate | MCA | Data rozpoczęcia okresu oceny, który został zd
 SubscriptionId | Wszyscy | Unikatowy identyfikator dla subskrypcji platformy Azure.
 SubscriptionName | Wszyscy | Nazwa subskrypcji platformy Azure.
 `Tags` | Wszyscy | Tagi przypisane do zasobu. Nie obejmuje tagów grupy zasobów. Może służyć do grupowania lub dystrybucji kosztów dla wewnętrznej obciążenia zwrotnego. Aby uzyskać więcej informacji, zobacz [organizowanie zasobów platformy Azure za pomocą tagów](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+Termin | Wszyscy | Przedstawia termin ważności oferty. Na przykład: W przypadku wystąpień zarezerwowanych w danym okresie będzie wyświetlana 12 miesięcy. Dla jednorazowych zakupów lub cyklicznych zakupów termin wynosi 1 miesiąc (SaaS, pomoc techniczna Marketplace). Nie dotyczy to użycia platformy Azure.
 Jednostka miary | Wszyscy | Jednostka miary dla rozliczeń dla usługi. Na przykład usługi obliczeniowe są rozliczane na godzinę.
 Jednostk | EA, PAYG | Cena za jednostkę dla opłaty.
 

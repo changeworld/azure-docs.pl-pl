@@ -1,6 +1,6 @@
 ---
-title: Narzędzia do pracy z usługą Azure Storage | Dokumentacja firmy Microsoft
-description: Lista narzędzi, które pozwalają na danych/interakcji z danymi usługi Azure Storage.
+title: Narzędzia do pracy z usługą Azure Storage | Microsoft Docs
+description: Lista narzędzi, które umożliwiają wyświetlanie danych usługi Azure Storage i korzystanie z nich.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,26 +9,26 @@ ms.date: 09/06/2017
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 6d80bc71c01d0f1c887d9161edee5516d6b0925b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 14cbc076f4c9eebd2647cd667acc856b393e4d93
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443697"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68665746"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage Client Tools
-Użytkownicy usługi Azure Storage często chcą mieć możliwość danych/interakcji z danymi za pomocą narzędzia klienta usługi Azure Storage. W poniższych tabelach listę szereg narzędzi, które pozwalają w tym celu. Umieściliśmy "X" w każdym bloku zapewnia możliwość zarówno wyliczanie i/lub dostęp do pozyskiwania danych. W tabeli przedstawiono również, czy jest bezpłatne narzędzia, czy nie. "Próbne" wskazuje, czy istnieje bezpłatna wersja próbna, ale pełnego produktu nie jest bezpłatne. "T/N" wskazuje, że wersja jest dostępna bezpłatnie, podczas gdy inna wersja jest dostępna do zakupu.
+Użytkownicy usługi Azure Storage często chcą mieć możliwość wyświetlania danych i korzystania z nich przy użyciu narzędzia klienckiego usługi Azure Storage. W poniższych tabelach przedstawiono kilka narzędzi, które umożliwiają wykonanie tej czynności. W każdym bloku umieścimy symbol "X", jeśli umożliwia on Wyliczenie i/lub uzyskanie dostępu do abstrakcji danych. W tabeli pokazano również, czy narzędzia są wolne, czy nie. "Wersja próbna" oznacza, że jest dostępna bezpłatna wersja próbna, ale pełny produkt nie jest bezpłatny. "T/N" wskazuje, że wersja jest dostępna bezpłatnie, podczas gdy dostępna jest inna wersja do zakupu.
 
-Przedstawiliśmy tylko migawki dostępnych narzędzi klienta usługi Azure Storage. Te narzędzia mogą nadal się rozwijać i rozwój funkcji. W przypadku aktualizacji lub poprawek, pozostaw komentarz, aby dać nam znać. Jest taka sama wartość true, jeśli wiesz, narzędzi, które powinny się znajdować tutaj — będziemy wszystkiego dodać je.
+Podano tylko migawkę dostępnych narzędzi klienckich usługi Azure Storage. Te narzędzia mogą nadal rozwijać i zwiększać funkcjonalność. Jeśli istnieją poprawki lub aktualizacje, należy pozostawić komentarz, aby poinformować nas o tym. To samo jest prawdziwe, jeśli znasz narzędzia, które powinny być tutaj — będziemy mogli je dodać.
 
-**Microsoft Azure Storage Client Tools**
+**Microsoft Azure Storage narzędzia klienckie**
 
 <table>
   <tr>
-    <th rowspan="2">Azure Storage Client Tool</th>
-    <th rowspan="2">Blokowe obiekty Blob</th>
-    <th rowspan="2">Obiekt blob typu Page</th>
-    <th rowspan="2">Obiekt Blob dołączania</th>
+    <th rowspan="2">Narzędzie klienckie usługi Azure Storage</th>
+    <th rowspan="2">Blokowy obiekt blob</th>
+    <th rowspan="2">Stronicowy obiekt blob</th>
+    <th rowspan="2">Dołącz obiekt blob</th>
     <th rowspan="2">Tabele</th>
     <th rowspan="2">Kolejki</th>
     <th rowspan="2">Pliki</th>
@@ -49,7 +49,7 @@ Przedstawiliśmy tylko migawki dostępnych narzędzi klienta usługi Azure Stora
     <td>X</td>
     <td>X</td>
     <td>X</td>
-    <td>Tak</td>
+    <td>T</td>
     <td>X</td>
     <td></td>
     <td></td>
@@ -63,7 +63,7 @@ Przedstawiliśmy tylko migawki dostępnych narzędzi klienta usługi Azure Stora
     <td>X</td>
     <td>X</td>
     <td>X</td>
-    <td>Tak</td>
+    <td>T</td>
     <td></td>
     <td>X</td>
     <td>X</td>
@@ -77,7 +77,7 @@ Przedstawiliśmy tylko migawki dostępnych narzędzi klienta usługi Azure Stora
     <td>X</td>
     <td>X</td>
     <td></td>
-    <td>Tak</td>
+    <td>T</td>
     <td></td>
     <td>X</td>
     <td></td>
@@ -85,16 +85,16 @@ Przedstawiliśmy tylko migawki dostępnych narzędzi klienta usługi Azure Stora
   </tr>
 </table>
 
-**Innych firm, usługi Azure Storage Client Tools**
+**Narzędzia klienckie usługi Azure Storage innych firm**
 
-Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następujące narzędzia firm, a ich lista nie oznacza, że firma Microsoft wspiera.
+Nie sprawdziłem funkcjonalności ani jakości pożądanych przez następujące narzędzia innych firm, a ich oferty nie wymagają potwierdzenia przez firmę Microsoft.
 
 <table>
   <tr>
-    <th rowspan="2">Azure Storage Client Tool</th>
-    <th rowspan="2">Blokowe obiekty Blob</th>
-    <th rowspan="2">Obiekt blob typu Page</th>
-    <th rowspan="2">Obiekt Blob dołączania</th>
+    <th rowspan="2">Narzędzie klienckie usługi Azure Storage</th>
+    <th rowspan="2">Blokowy obiekt blob</th>
+    <th rowspan="2">Stronicowy obiekt blob</th>
+    <th rowspan="2">Dołącz obiekt blob</th>
     <th rowspan="2">Tabele</th>
     <th rowspan="2">Kolejki</th>
     <th rowspan="2">Pliki</th>
@@ -129,7 +129,7 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
     <td></td>
     <td></td>
     <td></td>
-    <td>Tak</td>
+    <td>T</td>
     <td></td>
     <td>X</td>
     <td></td>
@@ -142,15 +142,15 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
     <td></td>
     <td>X</td>
     <td>X</td>
-    <td></td>
-    <td>Tak</td>
-    <td></td>
     <td>X</td>
+    <td>T</td>
+    <td>X</td>
+    <td></td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.cloudberrylab.com/explorer/microsoft-azure.aspx">Eksplorator cloudBerry</a></td>
+    <td><a href="https://www.cloudberrylab.com/explorer/microsoft-azure.aspx">Eksplorator CloudBerry</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -164,7 +164,7 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.gapotchenko.com/cloudcombine">Cloud Combine</a></td>
+    <td><a href="https://www.gapotchenko.com/cloudcombine">Połączenie z chmurą</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -185,14 +185,14 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
     <td>X</td>
     <td>X</td>
     <td>X</td>
-    <td>Tak</td>
+    <td>T</td>
     <td></td>
     <td>X</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.gladinet.com/Azure-Storage/index.htm">Gladinet Cloud</a></td>
+    <td><a href="https://www.gladinet.com/Azure-Storage/index.htm">Chmura Gladinet</a></td>
     <td>X</td>
     <td></td>
     <td></td>

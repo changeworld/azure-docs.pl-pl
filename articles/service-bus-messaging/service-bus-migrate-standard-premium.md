@@ -1,6 +1,6 @@
 ---
-title: Migrowanie istniejących standardowych przestrzeni nazw usługi Azure Service Bus w warstwie premium | Dokumentacja firmy Microsoft
-description: Przewodnik dotyczący umożliwia migrację istniejącej usługi Azure Service Bus standardowe przestrzenie nazw do wersji premium
+title: Migruj istniejące Azure Service Bus standardowe przestrzenie nazw do warstwy Premium | Microsoft Docs
+description: Przewodnik umożliwiający migrację istniejących Azure Service Bus standardowych przestrzeni nazw do warstwy Premium
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
 ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67566079"
 ---
-# <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrowanie istniejących standardowych przestrzeni nazw usługi Azure Service Bus w warstwie premium
-Azure Service Bus oferowane wcześniej, przestrzenie nazw tylko w warstwie standardowa. Przestrzenie nazw są konfiguracje wielodostępnych, które są zoptymalizowane pod kątem niskiej przepustowości i środowisk deweloperskich. Warstwa premium oferuje dedykowanych zasobów na przestrzeń nazw przewidywalne opóźnienie i zwiększać przepustowość w stałej cenie. Warstwa premium jest zoptymalizowany pod kątem wysokiej przepływności i środowisk produkcyjnych, które wymagają funkcji przedsiębiorstwa.
+# <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrowanie istniejących Azure Service Bus standardowych przestrzeni nazw do warstwy Premium
+Wcześniej Azure Service Bus oferowane przestrzenie nazw tylko w warstwie Standardowa. Przestrzenie nazw to konfiguracje wielodostępne, które są zoptymalizowane pod kątem małych przepływności i środowisk deweloperskich. Warstwa Premium oferuje dedykowane zasoby na przestrzeń nazw na potrzeby przewidywalnego opóźnienia i zwiększonej przepływności przy stałej cenie. Warstwa Premium jest zoptymalizowana pod kątem wysokiej przepływności i środowisk produkcyjnych, które wymagają dodatkowych funkcji w przedsiębiorstwie.
 
-W tym artykule opisano sposób migrowania istniejącej przestrzeni nazw w warstwie standardowa do warstwy premium.  
+W tym artykule opisano sposób migrowania istniejących przestrzeni nazw warstwy standardowej do warstwy Premium.  
 
 >[!WARNING]
-> Migracji jest przeznaczony dla standardowych przestrzeni nazw usługi Service Bus ma zostać uaktualniony do warstwy premium. Narzędzie migracji nie obsługuje zmiany na starszą wersję.
+> Migracja jest przeznaczona dla Service Bus standardowych przestrzeni nazw, które mają zostać uaktualnione do warstwy Premium. Narzędzie migracji nie obsługuje obniżania poziomu.
 
-Niektóre punkty, należy pamiętać: 
-- Ta migracja jest przeznaczona do wykonania w miejscu, co oznacza, że istniejące aplikacje nadawcą i odbiorcą **nie wymaga żadnych zmian w kodzie lub konfiguracji**. Istniejących parametrów połączenia będzie automatycznie wskazywać nowej przestrzeni nazw premium.
-- **Premium** przestrzeń nazw powinna mieć **żadnych jednostek** w niej do migracji została wykonana pomyślnie. 
-- Wszystkie **jednostek** w standardowej przestrzeni nazw są **skopiowane** do przestrzeni nazw premium podczas procesu migracji. 
-- Obsługuje migrację **1000 jednostek na jednostkę obsługi komunikatów** w warstwie premium. Aby określić liczbę jednostek obsługi komunikatów, należy, rozpoczynać się liczby jednostek, które mają w ramach bieżącego standardowych przestrzeni nazw. 
-- Bezpośrednio nie można migrować z **warstwa podstawowa** do **warstwy premier**, ale możesz to zrobić tak pośrednio przy użyciu funkcji migracji z podstawowa na standardowa pierwszy, a następnie od planu standard do premium w następnym kroku.
+Niektóre punkty do zanotowania: 
+- Ta migracja ma miejsce, co oznacza, że istniejące aplikacje nadawcy i odbiorcy **nie wymagają żadnych zmian w kodzie ani konfiguracji**. Istniejące parametry połączenia będą automatycznie wskazywały na nową przestrzeń nazw w warstwie Premium.
+- Przestrzeń nazw **Premium** nie powinna mieć **żadnych jednostek** , aby migracja zakończyła się pomyślnie. 
+- Wszystkie **jednostki** w standardowej przestrzeni nazw są **kopiowane** do przestrzeni nazw Premium podczas procesu migracji. 
+- Migracja obsługuje jednostki **1 000 na jednostkę obsługi komunikatów** w warstwie Premium. Aby określić liczbę potrzebnych jednostek obsługi komunikatów, Zacznij od liczby jednostek, które znajdują się w bieżącej przestrzeni nazw w warstwie Standardowa. 
+- Nie można bezpośrednio migrować z **warstwy Podstawowa** do **warstwy**Premium, ale możesz to zrobić pośrednio przez migrację z wersji Basic do wersji Standard, a następnie z wersji standardowa do wersji Standard w następnym kroku.
 
 ## <a name="migration-steps"></a>Kroki migracji
-Niektóre warunki są skojarzone z procesu migracji. Zapoznaj się z następujące kroki, aby zmniejszyć prawdopodobieństwo wystąpienia błędów. Te kroki opisują proces migracji, a w kolejnych sekcjach znajdują się szczegółowe informacje krok po kroku.
+Niektóre warunki są skojarzone z procesem migracji. Zapoznaj się z poniższymi krokami, aby zmniejszyć prawdopodobieństwo wystąpienia błędów. W tych krokach opisano proces migracji, a szczegóły krok po kroku znajdują się w poniższych sekcjach.
 
-1. Utwórz nową przestrzeń nazw premium.
-1. Sparuj przestrzeni nazw warstwy standardowa i premium do siebie nawzajem.
-1. Jednostki synchronizacji (kopia over) ze standardu do przestrzeni nazw premium.
-1. Zatwierdzenie migracji.
-1. Opróżnij jednostek w standardowej przestrzeni nazw, używając nazwy po przeprowadzeniu migracji przestrzeni nazw.
+1. Utwórz nową przestrzeń nazw Premium.
+1. Parowanie przestrzeni nazw w warstwie Standardowa i Premium.
+1. Synchronizuj (kopiowanie) jednostki od normy do przestrzeni nazw w warstwie Premium.
+1. Zatwierdź migrację.
+1. Opróżniaj jednostki w standardowej przestrzeni nazw przy użyciu nazwy po migracji dla przestrzeni nazw.
 1. Usuń standardową przestrzeń nazw.
 
 >[!IMPORTANT]
-> Po migracji zostało zatwierdzone, dostęp do starych standardową przestrzeń nazw i opróżnianie subskrypcji i kolejek. Po mają zostać opróżniane komunikaty, mogą być wysyłane do nowej przestrzeni nazw w warstwie premium na przetworzenie przez odbiorcę aplikacje. Po opróżniane kolejek i subskrypcji, zaleca się usunięcie starych standardową przestrzeń nazw.
+> Po zatwierdzeniu migracji uzyskaj dostęp do starej, standardowej przestrzeni nazw i Opróżnij kolejki i subskrypcje. Po opróżnieniu wiadomości mogą one być wysyłane do nowej przestrzeni nazw Premium, która ma zostać przetworzona przez aplikacje odbiornika. Po opróżnieniu kolejek i subskrypcji zalecamy usunięcie starej standardowej przestrzeni nazw.
 
-### <a name="migrate-by-using-the-azure-cli-or-powershell"></a>Migrowanie przy użyciu wiersza polecenia platformy Azure lub programu PowerShell
+### <a name="migrate-by-using-the-azure-cli-or-powershell"></a>Migrowanie przy użyciu interfejsu wiersza polecenia platformy Azure lub programu PowerShell
 
-Aby przeprowadzić migrację standardową przestrzeń nazw usługi Service Bus do warstwy premium przy użyciu wiersza polecenia platformy Azure lub narzędzia programu PowerShell, wykonaj następujące kroki.
+Aby przeprowadzić migrację standardowej przestrzeni nazw Service Bus do warstwy Premium przy użyciu interfejsu wiersza polecenia platformy Azure lub narzędzia PowerShell, wykonaj następujące kroki.
 
-1. Utwórz nową przestrzeń nazw usługi Service Bus premium. Możesz odwoływać się do [szablonów usługi Azure Resource Manager](service-bus-resource-manager-namespace.md) lub [za pomocą witryny Azure portal](service-bus-create-namespace-portal.md). Pamiętaj o wybraniu **premium** dla **serviceBusSku** parametru.
+1. Utwórz nową przestrzeń nazw w warstwie Premium Service Bus. Możesz odwoływać się do [szablonów Azure Resource Manager](service-bus-resource-manager-namespace.md) lub [użyć Azure Portal](service-bus-create-namespace-portal.md). Upewnij się, że wybrano opcję **Premium** dla parametru **serviceBusSku** .
 
-1. Ustaw następujące zmienne środowiskowe w celu uproszczenia polecenia migracji.
+1. Ustaw następujące zmienne środowiskowe, aby uprościć polecenia migracji.
    ```azurecli
    resourceGroup = <resource group for the standard namespace>
    standardNamespace = <standard namespace to migrate>
@@ -63,112 +63,112 @@ Aby przeprowadzić migrację standardową przestrzeń nazw usługi Service Bus d
    ```
 
     >[!IMPORTANT]
-    > Po przeprowadzeniu migracji/nazwa aliasu (post_migration_dns_name) będzie służyć do dostępu do starego standardową przestrzeń nazw po migracji. Użyj tego, aby opróżnić kolejek i subskrypcji, a następnie usunąć przestrzeni nazw.
+    > Alias/nazwa (post_migration_dns_name) po migracji zostanie użyta w celu uzyskania dostępu do starej standardowej migracji przestrzeni nazw. Użyj tego, aby opróżnić kolejki i subskrypcje, a następnie usuń przestrzeń nazw.
 
-1. Sparuj przestrzeni nazw warstwy standardowa i premium, a następnie uruchomić synchronizacji przy użyciu następującego polecenia:
+1. Parowanie przestrzeni nazw warstwy Standardowa i Premium oraz Rozpoczynanie synchronizacji przy użyciu następującego polecenia:
 
     ```azurecli
     az servicebus migration start --resource-group $resourceGroup --name $standardNamespace --target-namespace $premiumNamespaceArmId --post-migration-name $postMigrationDnsName
     ```
 
 
-1. Sprawdź stan migracji za pomocą następującego polecenia:
+1. Sprawdź stan migracji przy użyciu następującego polecenia:
     ```azurecli
     az servicebus migration show --resource-group $resourceGroup --name $standardNamespace
     ```
 
-    Migracja uważa się za ukończoną, gdy pojawi się następujące wartości:
-    * MigrationState = "Aktywny"
+    Migracja jest uważana za ukończoną, gdy widoczne są następujące wartości:
+    * MigrationState = "Active"
     * pendingReplicationsOperationsCount = 0
-    * provisioningState = "Powodzenie"
+    * provisioningState = "powodzenie"
 
-    To polecenie wyświetla również konfiguracja migracji. Sprawdź, aby upewnić się, że wartości są ustawione poprawnie. Sprawdź także przestrzeń nazw premium w portalu, aby upewnić się, wszystkie kolejki i tematy zostały utworzone i są zgodne, co istniał w standardowej przestrzeni nazw.
+    To polecenie wyświetla również konfigurację migracji. Sprawdź, czy wartości są ustawione prawidłowo. Sprawdź również przestrzeń nazw Premium w portalu, aby upewnić się, że wszystkie kolejki i tematy zostały utworzone i że są one zgodne z tym, co istniało w standardowej przestrzeni nazw.
 
-1. Zatwierdzenie migracji, wykonując następujące polecenie ukończone:
+1. Zatwierdź migrację, wykonując następujące polecenie:
    ```azurecli
    az servicebus migration complete --resource-group $resourceGroup --name $standardNamespace
    ```
 
-### <a name="migrate-by-using-the-azure-portal"></a>Migrowanie za pomocą witryny Azure portal
+### <a name="migrate-by-using-the-azure-portal"></a>Migrowanie przy użyciu Azure Portal
 
-Migracja za pomocą witryny Azure portal ma ten sam przepływ logiczny co migracja za pomocą poleceń. Wykonaj następujące kroki, aby przeprowadzić migrację za pomocą witryny Azure portal.
+Migracja przy użyciu Azure Portal ma ten sam przepływ logiczny co migracja przy użyciu poleceń. Wykonaj następujące kroki, aby przeprowadzić migrację przy użyciu Azure Portal.
 
-1. Na **nawigacji** menu w lewym okienku wybierz **migracji do warstwy premium**. Kliknij przycisk **wprowadzenie** przycisk, aby przejść do następnej strony.
+1. W menu **nawigacji** w okienku po lewej stronie wybierz pozycję **Migruj do warstwy Premium**. Kliknij przycisk **Rozpocznij** , aby przejść do następnej strony.
     ![Strona docelowa migracji][]
 
-1. Pełne **Instalatora**.
-   ![Konfigurowanie przestrzeni nazw][]
-   1. Utwórz i przypisz przestrzeń nazw premium, aby przeprowadzić migrację istniejących standardową przestrzeń nazw do.
-        ![Konfigurowanie przestrzeni nazw — tworzenie przestrzeni nazw w warstwie premium][]
-   1. Wybierz **nazwy po migracji**. Ta nazwa będzie używana do uzyskiwania dostępu do standardową przestrzeń nazw, po zakończeniu migracji.
-        ![Konfigurowanie przestrzeni nazw — wybierz nazwę migracji ogłoszenia][]
-   1. Wybierz **'Dalej'** aby kontynuować.
-1. Jednostki synchronizacji między obszarami nazw warstwy standardowa i premium.
-    ![Konfigurowanie — synchronizacja jednostki — przestrzeń nazw start][]
+1. Ukończ **instalację**.
+   ![Konfiguracja przestrzeni nazw][]
+   1. Utwórz i przypisz przestrzeń nazw Premium, aby przeprowadzić migrację istniejącej standardowej przestrzeni nazw do programu.
+        ![Konfiguracja przestrzeni nazw — tworzenie przestrzeni nazw Premium][]
+   1. Wybierz **nazwę po migracji**. Ta nazwa będzie używana w celu uzyskania dostępu do standardowej przestrzeni nazw po zakończeniu migracji.
+        ![Konfiguracja przestrzeni nazw — wybierz nazwę migracji][]
+   1. Wybierz pozycję **"dalej"** , aby kontynuować.
+1. Synchronizuj jednostki między przestrzeniami nazw Standard i Premium.
+    ![Konfiguracja przestrzeni nazw — jednostki synchronizacji — Rozpocznij][]
 
-   1. Wybierz **Rozpocznij synchronizację** aby rozpocząć synchronizowanie jednostki.
-   1. Wybierz **tak** w oknie dialogowym, aby potwierdzić, a następnie uruchomić synchronizacji.
-   1. Zaczekaj, aż synchronizacja została zakończona. Stan jest dostępna na pasku stanu.
-        ![Przestrzeń nazw — synchronizacja jednostki — postęp instalacji][]
+   1. Wybierz pozycję **Rozpocznij synchronizację** , aby rozpocząć synchronizowanie jednostek.
+   1. W oknie dialogowym wybierz pozycję **tak** , aby potwierdzić i uruchomić synchronizację.
+   1. Poczekaj, aż synchronizacja zostanie zakończona. Stan jest dostępny na pasku stanu.
+        ![Konfiguracja przestrzeni nazw — jednostki synchronizacji — postęp][]
         >[!IMPORTANT]
-        > Jeśli trzeba przerwać migrację z jakiegokolwiek powodu, zapoznaj się z przepływem przerwania w sekcji często zadawane pytania dotyczące niniejszego dokumentu.
-   1. Po ukończeniu synchronizacji wybierz **dalej** w dolnej części strony.
+        > Jeśli zachodzi potrzeba przerwania migracji z dowolnego powodu, zapoznaj się z przepływem przerwań w sekcji często zadawanych pytań tego dokumentu.
+   1. Po zakończeniu synchronizacji wybierz pozycję **dalej** w dolnej części strony.
 
-1. Przejrzyj zmiany na stronie podsumowania. Wybierz **kończenia migracji** Aby przełączyć przestrzenie nazw, a także do przeprowadzenia migracji.
-    ![Przełącz przestrzeń nazw — menu przełącznika][] strona potwierdzenia jest wyświetlany, gdy migracja zostanie zakończona.
-    ![Przestrzeń nazw przełącznika — Powodzenie][]
+1. Przejrzyj zmiany na stronie Podsumowanie. Wybierz pozycję **pełna migracja** , aby przełączyć obszary nazw i ukończyć migrację.
+    ![Przełącz menu][] przełączenia, strona potwierdzenia pojawia się po zakończeniu migracji.
+    ![Przełącz przestrzeń nazw — powodzenie][]
 
-## <a name="caveats"></a>Ostrzeżenia
+## <a name="caveats"></a>Zastrzeżenia
 
-Niektóre z funkcji oferowanych przez Azure Service Bus w warstwie standardowa nie są obsługiwane przez warstwę usługi Azure Service Bus w warstwie Premium. Są to zgodnie z projektem, ponieważ w warstwie premium oferuje dedykowanych zasobów kątem przewidywalnej przepływności i opóźnień.
+Niektóre funkcje udostępniane przez usługę Azure Service Bus Standard nie są obsługiwane przez Azure Service Bus warstwy Premium. Są one zaprojektowane, ponieważ warstwa Premium oferuje dedykowane zasoby umożliwiające przewidywalną przepływność i opóźnienia.
 
-Poniżej przedstawiono listę funkcji, które nie są obsługiwane przez — wersja Premium i ich ograniczenia- 
+Poniżej znajduje się lista funkcji nieobsługiwanych przez usługę Premium i ich środki zaradcze. 
 
 ### <a name="express-entities"></a>Jednostki ekspresowe
 
-   Jednostki ekspresowe, które nie zatwierdzić wszystkie dane komunikat do magazynu nie są obsługiwane w warstwie Premium. Dedykowane zasoby udostępniane zwiększenie znaczące przepustowości przy jednoczesnym zapewnieniu, że dane są utrwalane, ponieważ oczekuje się od każdej firmie systemu obsługi komunikatów.
+   Jednostki ekspresowe, które nie zatwierdzają żadnych danych komunikatu do magazynu, nie są obsługiwane w wersji Premium. Dedykowane zasoby zapewniają znaczną poprawę przepływności przy jednoczesnym zapewnieniu, że dane są utrwalane, zgodnie z oczekiwaniami z dowolnego systemu obsługi komunikatów w przedsiębiorstwie.
    
-   Podczas migracji dowolnej jednostki ekspresowe w standardowych przestrzeni nazw zostanie utworzony w przestrzeni nazw Premium jako jednostka-express.
+   Podczas migracji każda z jednostek ekspresowych w standardowej przestrzeni nazw zostanie utworzona w przestrzeni nazw Premium jako jednostka niebędąca ekspresem.
    
-   Korzystanie z szablonów usługi Azure Resource Manager (ARM) upewnij się, Usuń flagę "enableExpress" od konfiguracji wdrożenia, tak aby zautomatyzowanych przepływów pracy wykonane bez błędów.
+   W przypadku korzystania z szablonów Azure Resource Manager (ARM) Upewnij się, że flaga "enableExpress" została usunięta z konfiguracji wdrożenia, aby automatyczne przepływy pracy były wykonywane bez błędów.
 
 ### <a name="partitioned-entities"></a>Partycjonowane jednostki
 
-   Partycjonowane jednostki były obsługiwane w warstwie standardowa, aby zapewnić lepszą dostępność w konfiguracji z wieloma dzierżawami. Z zapewnieniem dedykowanych zasobów dostępnych na przestrzeń nazw w warstwie Premium to nie jest już potrzebny.
+   Partycjonowane jednostki były obsługiwane w warstwie Standardowa w celu zapewnienia lepszej dostępności w konfiguracji wielodostępnej. Po udostępnieniu dedykowanych zasobów dla przestrzeni nazw w warstwie Premium nie jest to już potrzebne.
    
-   Podczas migracji wszystkie jednostki podzielonej na partycje w standardowej przestrzeni nazw jest tworzony na przestrzeń nazw Premium jako jednostki niepartycjonowana.
+   Podczas migracji każda jednostka partycjonowana w standardowej przestrzeni nazw jest tworzona w przestrzeni nazw Premium jako jednostka niepartycjonowana.
    
-   Jeśli Twój szablon ARM ustawi "enablePartitioning" na "true" dla określonej kolejki lub tematu, następnie go zostaną zignorowane przez brokera.
+   Jeśli szablon ARM ustawia "enablePartitioning" na wartość "true" dla określonej kolejki lub tematu, to zostanie on zignorowany przez brokera.
 
 ## <a name="faqs"></a>Często zadawane pytania
 
-### <a name="what-happens-when-the-migration-is-committed"></a>Co się stanie, gdy migracja zostanie zatwierdzone?
+### <a name="what-happens-when-the-migration-is-committed"></a>Co się stanie, gdy migracja zostanie zatwierdzona?
 
-Po migracji zostanie zatwierdzone, parametry połączenia, które wskazywał standardową przestrzeń nazw będzie wskazywać przestrzeń nazw premium.
+Po zatwierdzeniu migracji parametry połączenia wskazujące standardową przestrzeń nazw będą wskazywały na przestrzeń nazw w warstwie Premium.
 
-Aplikacji nadawcy i odbiorcy będą Odłącz od standardowego Namespace i ponowne łączenie do przestrzeni nazw premium.
+Aplikacje nadawcy i odbiorcy będą rozłączane ze standardową przestrzenią nazw i automatycznie łączą się z przestrzenią nazw w warstwie Premium.
 
-### <a name="what-do-i-do-after-the-standard-to-premium-migration-is-complete"></a>Co należy zrobić po zakończeniu standard do premium migracji?
+### <a name="what-do-i-do-after-the-standard-to-premium-migration-is-complete"></a>Co mam zrobić po zakończeniu migracji z wersji Standard do Premium?
 
-Standard do premium migracji gwarantuje, że metadane jednostki, takie jak tematy, subskrypcje i filtry są kopiowane z standardową przestrzeń nazw do przestrzeni nazw premium. Dane wiadomości, które na standardową przestrzeń nazw nie zostaną skopiowane ze standardową przestrzeń nazw do przestrzeni nazw premium.
+Migracja standardowa na Premium zapewnia, że metadane jednostki, takie jak tematy, subskrypcje i filtry, są kopiowane z standardowej przestrzeni nazw do przestrzeni nazw w warstwie Premium. Dane komunikatu przekazane do standardowej przestrzeni nazw nie są kopiowane z standardowej przestrzeni nazw do przestrzeni nazw Premium.
 
-Standardową przestrzeń nazw może mieć inne wiadomości wysłanych i zatwierdzone, podczas migracji jest w toku. Ręcznie opróżnić te komunikaty z Namespace standardowe i ręcznie wysyłać je do warstwy premium Namespace. Aby ręcznie opróżnić wiadomości, użyj aplikacji konsoli lub skrypt, który wstrzymanie jednostek standardowych przestrzeni nazw przy użyciu nazwy DNS migracji wpis, który określiłeś w poleceniach migracji. Te komunikaty Aby wysłać do przestrzeni nazw premium mogą być przetwarzane przez odbiorców.
+Standardowa przestrzeń nazw może zawierać komunikaty, które zostały wysłane i zatwierdzone podczas migracji. Ręcznie Opróżniaj te komunikaty ze standardowego obszaru nazw i ręcznie Wyślij je do przestrzeni nazw Premium. Aby ręcznie opróżnić komunikaty, użyj aplikacji konsolowej lub skryptu, który opróżnia standardowe jednostki przestrzeni nazw za pomocą nazwy DNS po migracji określonej w poleceniach migracji. Wyślij te komunikaty do przestrzeni nazw Premium, aby mogły być przetwarzane przez odbiorniki.
 
-Po mają zostać opróżniane komunikaty, należy usunąć standardową przestrzeń nazw.
+Po opróżnieniu komunikatów Usuń standardową przestrzeń nazw.
 
 >[!IMPORTANT]
-> Po ma zostały opróżniane wiadomości od standardowej przestrzeni nazw, należy usunąć standardową przestrzeń nazw. Jest to ważne, ponieważ parametry połączenia, które początkowo teraz określone standardową przestrzeń nazw, który odwołuje się do przestrzeni nazw premium. Nie potrzebujesz już standardowa Namespace. Usuwanie standardową przestrzeń nazw, który został zmigrowany pomaga nowsze pomyłek.
+> Po opróżnieniu komunikatów ze standardowego obszaru nazw usuń standardową przestrzeń nazw. Jest to ważne, ponieważ parametry połączenia, które początkowo odwołują się do standardowej przestrzeni nazw, teraz odwołują się do przestrzeni nazw w warstwie Premium. Nie będzie już potrzebna standardowa przestrzeń nazw. Usunięcie przemigrowanej standardowej przestrzeni nazw pomaga zmniejszyć liczbę dalszych pomyłek.
 
-### <a name="how-much-downtime-do-i-expect"></a>Jak długi przestój oczekiwać?
-Proces migracji jest przeznaczony do zmniejszenia przewidywany czas przestoju w odniesieniu do aplikacji. Czas przestoju została zmniejszona o przy użyciu parametrów połączenia, używanego przez aplikacje nadawcą i odbiorcą by wskazywał nową przestrzeń nazw premium.
+### <a name="how-much-downtime-do-i-expect"></a>Jak dużo przestojów oczekuje?
+Proces migracji ma na celu zmniejszenie oczekiwanych przestojów aplikacji. Przestoje są skracane przy użyciu parametrów połączenia, które są używane przez nadawcę i aplikacje odbiornika do wskazywania nowej przestrzeni nazw w warstwie Premium.
 
-Przestój, jaki wystąpił przez aplikację jest ograniczona do czasu potrzebnego do zaktualizowania wpisu DNS, aby wskazywał przestrzeń nazw premium. Przestój trwa około 5 minut.
+Przestój, który jest napotykany przez aplikację, jest ograniczony do czasu potrzebnego do zaktualizowania wpisu DNS, aby wskazywał przestrzeń nazw Premium. Przestój jest około 5 minut.
 
-### <a name="do-i-have-to-make-any-configuration-changes-while-doing-the-migration"></a>Czy muszę wprowadzać żadnych zmian konfiguracji podczas wykonywania migracji?
-Nie wprowadzono żadnych zmian kodu lub konfiguracji, wymagane do wykonania migracji. Parametry połączenia, które umożliwia dostęp standardowy Namespace aplikacji nadawcy i odbiorcy jest automatycznie mapowany do działania jako alias dla przestrzeni nazw premium.
+### <a name="do-i-have-to-make-any-configuration-changes-while-doing-the-migration"></a>Czy muszę wprowadzić jakiekolwiek zmiany w konfiguracji podczas migracji?
+Nie, nie trzeba zmieniać kodu lub konfiguracji, aby przeprowadzić migrację. Parametry połączenia używane przez nadawcę i aplikacje odbiornika do uzyskiwania dostępu do standardowej przestrzeni nazw są automatycznie mapowane do działania jako alias dla przestrzeni nazw w warstwie Premium.
 
-### <a name="what-happens-when-i-abort-the-migration"></a>Co się stanie, gdy można przerwać migrację?
-Migracja może zostało przerwane, za pomocą `Abort` polecenia lub przy użyciu witryny Azure portal. 
+### <a name="what-happens-when-i-abort-the-migration"></a>Co się stanie w przypadku przerwania migracji?
+Migrację można przerwać przy użyciu `Abort` polecenia lub za pomocą Azure Portal. 
 
 #### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -178,49 +178,49 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>Azure Portal
 
-![Przerwanie usługi flow — przerwać synchronizacji][]
-![przerwanie przepływu — przerwać pełne][]
+![Przerwij przepływ — Przerwij przepływ][]
+przerwania synchronizacji![— ukończono przerywanie][]
 
-Podczas procesu migracji zostało przerwane, przerywa proces kopiowania jednostki (tematy, subskrypcje i filtrów) ze standardu przestrzeń nazw w warstwie premium i przerywa parowanie.
+Gdy proces migracji zostanie przerwany, przerywa proces kopiowania jednostek (tematów, subskrypcji i filtrów) z warstwy Standardowa do przestrzeni nazw Premium i przerywa parowanie.
 
-Parametry połączenia nie są aktualizowane, aby wskazywał przestrzeń nazw premium. Istniejące aplikacje nadal działają tak samo jak przed rozpoczęciem migracji.
+Parametry połączenia nie są aktualizowane, aby wskazywały przestrzeń nazw w warstwie Premium. Istniejące aplikacje będą nadal działały tak, jak przed rozpoczęciem migracji.
 
-Jednak nie jest usuwanie jednostek w przestrzeni nazw premium lub usunąć przestrzeń nazw premium. Usuń jednostki ręcznie, jeśli nie chcesz kontynuować migrację.
+Nie usuwa jednak jednostek z przestrzeni nazw Premium ani nie usuwa przestrzeni nazw Premium. Usuń jednostki ręcznie, jeśli zdecydujesz się nie przenieść dalej do migracji.
 
 >[!IMPORTANT]
-> Jeśli zdecydujesz się przerwać migrację, należy usunąć premium Namespace aprowizowana przez Ciebie miał do migracji, aby nie są naliczane za zasoby.
+> Jeśli zdecydujesz się na przerwanie migracji, Usuń przestrzeń nazw Premium, która została zainicjowana dla migracji, aby nie naliczać opłat za zasoby.
 
-#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nie chcę opróżnić komunikaty. Co mam zrobić?
+#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nie chcę, aby opróżniał komunikaty. Co mam zrobić?
 
-Może to być wiadomości, które są wysyłane przez aplikacje nadawcy i przekazane do magazynu w obrębie standardowa Namespace, podczas migracji odbywa się i przed migracją zatwierdzone.
+Mogą istnieć komunikaty wysyłane przez aplikacje nadawców i zatwierdzone do magazynu w standardowej przestrzeni nazw podczas migracji, a dopiero po zatwierdzeniu migracji.
 
-Podczas migracji rzeczywistych danych/ładunek komunikatu nie zostaną skopiowane ze standardu do przestrzeni nazw premium. Komunikaty muszą być ręcznie opróżniane, a następnie wysyłane do przestrzeni nazw premium.
+Podczas migracji rzeczywiste dane komunikatów/ładunek nie są kopiowane z warstwy Standardowa do przestrzeni nazw Premium. Komunikaty muszą być opróżniane ręcznie, a następnie wysyłane do przestrzeni nazw w warstwie Premium.
 
-Jednakże jeśli można migrować przedziale planowanej konserwacji/celów, a nie chcesz ręcznie opróżnić i wysyłać wiadomości, wykonaj następujące kroki:
+Jeśli jednak można przeprowadzić migrację w oknie planowanej konserwacji/dla gospodarstw domowych i nie chcesz ręcznie opróżniać i wysyłać komunikatów, wykonaj następujące kroki:
 
-1. Zatrzymaj aplikacjach nadawcy. Aplikacje odbiorcy będą przetwarzane wiadomości, które są obecnie dostępne w standardowej przestrzeni nazw i będzie opróżnienia kolejki.
-1. Po kolejek i subskrypcji w standardowych Namespace są puste, postępuj zgodnie z procedurą, opisanego wcześniej do wykonania migracji z standardowych przestrzeni nazw premium.
-1. Po zakończeniu migracji można ponownie uruchomić aplikacji nadawcy.
-1. Nadawcami a odbiornikami teraz automatycznie połączy się w przestrzeni nazw premium.
+1. Zatrzymaj aplikacje nadawcy. Aplikacje odbiornika będą przetwarzać komunikaty znajdujące się obecnie w standardowej przestrzeni nazw i opróżniają kolejkę.
+1. Gdy kolejki i subskrypcje w standardowej przestrzeni nazw są puste, wykonaj procedurę opisaną wcześniej w celu przeprowadzenie migracji z warstwy Standardowa do przestrzeni nazw Premium.
+1. Po zakończeniu migracji możesz ponownie uruchomić aplikacje nadawcy.
+1. Nadawcy i odbiorcy będą teraz automatycznie łączyć się z przestrzenią nazw Premium.
 
     >[!NOTE]
-    > Nie masz można zatrzymać aplikacji odbiornika do migracji.
+    > Nie jest konieczne zatrzymywanie aplikacji odbiornika do migracji.
     >
-    > Po zakończeniu migracji aplikacji odbiornika odłączyć od standardowej przestrzeni nazw, a automatyczne łączenie z przestrzeni nazw premium.
+    > Po zakończeniu migracji aplikacje odbiornika rozłączą się ze standardową przestrzenią nazw i automatycznie łączą się z przestrzenią nazw Premium.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [różnice między komunikatów w warstwie standardowa i premium](./service-bus-premium-messaging.md).
-* Dowiedz się więcej o [aspekty odzyskiwania o wysokiej dostępności i po awarii geograficznej dla usługi Service Bus premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
+* Dowiedz się więcej o [różnicach między obsługą komunikatów w warstwach Standardowa i Premium](./service-bus-premium-messaging.md).
+* Dowiedz się więcej na temat [aspektów odzyskiwania o wysokiej dostępności i geograficznej awarii dla Service Bus Premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
 
 [Strona docelowa migracji]: ./media/service-bus-standard-premium-migration/1.png
-[Konfigurowanie przestrzeni nazw]: ./media/service-bus-standard-premium-migration/2.png
-[Konfigurowanie przestrzeni nazw — tworzenie przestrzeni nazw w warstwie premium]: ./media/service-bus-standard-premium-migration/3.png
-[Konfigurowanie przestrzeni nazw — wybierz nazwę migracji ogłoszenia]: ./media/service-bus-standard-premium-migration/4.png
-[Konfigurowanie — synchronizacja jednostki — przestrzeń nazw start]: ./media/service-bus-standard-premium-migration/5.png
-[Przestrzeń nazw — synchronizacja jednostki — postęp instalacji]: ./media/service-bus-standard-premium-migration/8.png
-[Przestrzeń nazw przełącznika - przełącznika menu]: ./media/service-bus-standard-premium-migration/9.png
-[Przestrzeń nazw przełącznika — Powodzenie]: ./media/service-bus-standard-premium-migration/12.png
+[Konfiguracja przestrzeni nazw]: ./media/service-bus-standard-premium-migration/2.png
+[Konfiguracja przestrzeni nazw — tworzenie przestrzeni nazw Premium]: ./media/service-bus-standard-premium-migration/3.png
+[Konfiguracja przestrzeni nazw — wybierz nazwę migracji]: ./media/service-bus-standard-premium-migration/4.png
+[Konfiguracja przestrzeni nazw — jednostki synchronizacji — Rozpocznij]: ./media/service-bus-standard-premium-migration/5.png
+[Konfiguracja przestrzeni nazw — jednostki synchronizacji — postęp]: ./media/service-bus-standard-premium-migration/8.png
+[Przełącz menu przełączania przestrzeni nazw]: ./media/service-bus-standard-premium-migration/9.png
+[Przełącz przestrzeń nazw — powodzenie]: ./media/service-bus-standard-premium-migration/12.png
 
-[Przerwanie usługi flow — przerwać synchronizacji]: ./media/service-bus-standard-premium-migration/abort1.png
-[Przerwanie usługi flow — przerwać ukończone]: ./media/service-bus-standard-premium-migration/abort3.png
+[Przerwij przepływ — Przerwij synchronizację]: ./media/service-bus-standard-premium-migration/abort1.png
+[Przerwanie przepływu — ukończono przerywanie]: ./media/service-bus-standard-premium-migration/abort3.png

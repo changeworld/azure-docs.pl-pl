@@ -1,19 +1,18 @@
 ---
 title: Korzystanie z udziału plików platformy Azure w systemie Windows | Microsoft Docs
 description: Dowiedz się, jak używać udziału plików platformy Azure w systemach Windows i Windows Server.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 02a8b825a513c75ef7c037348ccaecdf5026ded2
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: d2bad808d0bcbbd5dc8052db0f8fd32fc4c1180a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560473"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699476"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Korzystanie z udziału plików platformy Azure w systemie Windows
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziałów plików platformy Azure można bezproblemowo używać w systemach Windows i Windows Server. W tym artykule omówiono zagadnienia dotyczące korzystania z udziału plików platformy Azure w systemach Windows i Windows Server.
@@ -25,14 +24,14 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 | Wersja systemu Windows        | Wersja protokołu SMB | Możliwa instalacja na maszynie wirtualnej platformy Azure | Możliwa instalacja w środowisku lokalnym |
 |------------------------|-------------|-----------------------|----------------------|
 | Windows Server 2019    | SMB 3.0 | Yes | Yes |
-| Windows 10<sup>1</sup> | SMB 3.0 | Tak | Yes |
-| Windows Server semi-annual channel<sup>2</sup> | SMB 3.0 | Tak | Yes |
-| Windows Server 2016    | SMB 3.0     | Tak                   | Yes                  |
-| Windows 8.1            | SMB 3.0     | Yes                   | Tak                  |
+| Windows 10<sup>1</sup> | SMB 3.0 | Tak | Tak |
+| Windows Server semi-annual channel<sup>2</sup> | SMB 3.0 | Yes | Tak |
+| Windows Server 2016    | SMB 3.0     | Tak                   | Tak                  |
+| Windows 8.1            | SMB 3.0     | Tak                   | Tak                  |
 | Windows Server 2012 R2 | SMB 3.0     | Tak                   | Tak                  |
-| Windows Server 2012    | SMB 3.0     | Tak                   | Tak                  |
-| Windows 7              | SMB 2.1     | Tak                   | Nie                   |
-| Windows Server 2008 R2 | SMB 2.1     | Yes                   | Nie                   |
+| Windows Server 2012    | SMB 3.0     | Tak                   | Yes                  |
+| Windows 7              | SMB 2.1     | Yes                   | Nie                   |
+| Windows Server 2008 R2 | SMB 2.1     | Tak                   | Nie                   |
 
 <sup>1</sup>Windows 10, wersje 1507, 1607, 1703, 1709, 1803 i 1809.  
 <sup>2</sup>Windows Server, wersje 1709 i 1803.
@@ -48,9 +47,9 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 
 * **Klucz konta magazynu**: aby zainstalować udział plików platformy Azure, konieczne będzie posiadanie podstawowego (lub dodatkowego) klucza magazynu. Klucze sygnatur dostępu współdzielonego nie są aktualnie obsługiwane na potrzeby instalowania.
 
-* **Otwarty port 445**: protokół SMB wymaga otwartego portu TCP 445; połączenia zakończą się niepowodzeniem, jeśli port 445 będzie zablokowany. Aby sprawdzić, czy zapora blokuje port 445, można użyć polecenia cmdlet `Test-NetConnection`. Informacje na temat [różne sposoby obejścia zablokowany port 445 tutaj](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
+* **Otwarty port 445**: protokół SMB wymaga otwartego portu TCP 445; połączenia zakończą się niepowodzeniem, jeśli port 445 będzie zablokowany. Aby sprawdzić, czy zapora blokuje port 445, można użyć polecenia cmdlet `Test-NetConnection`. Można dowiedzieć się więcej [na temat różnych sposobów obejścia zablokowanego portu 445 w tym miejscu](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
 
-    Następujące polecenie programu PowerShell kodu przyjęto założenie, zostanie zainstalowany, moduł programu Azure PowerShell, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) Aby uzyskać więcej informacji. Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resource-group-name>` nazwami odpowiednimi dla konta magazynu.
+    W poniższym kodzie programu PowerShell założono, że zainstalowano moduł Azure PowerShell, zobacz [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps) , aby uzyskać więcej informacji. Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resource-group-name>` nazwami odpowiednimi dla konta magazynu.
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -237,16 +236,16 @@ W poniższej tabeli zebrano szczegółowe informacje dotyczące stanu protokołu
 | Windows Server 2019                       | Wyłączone             | Usunięcie za pomocą funkcji systemu Windows |
 | Windows Server w wersjach 1709+            | Wyłączone             | Usunięcie za pomocą funkcji systemu Windows |
 | Windows 10 w wersjach 1709+                | Wyłączone             | Usunięcie za pomocą funkcji systemu Windows |
-| Windows Server 2016                       | Enabled (Włączony)              | Usunięcie za pomocą funkcji systemu Windows |
-| Windows 10 w wersjach 1507, 1607 i 1703 | Enabled (Włączony)              | Usunięcie za pomocą funkcji systemu Windows |
-| Windows Server 2012 R2                    | Enabled (Włączony)              | Usunięcie za pomocą funkcji systemu Windows | 
-| Windows 8.1                               | Enabled (Włączony)              | Usunięcie za pomocą funkcji systemu Windows | 
-| Windows Server 2012                       | Enabled (Włączony)              | Wyłączenie za pomocą rejestru       | 
-| Windows Server 2008 R2                    | Enabled (Włączony)              | Wyłączenie za pomocą rejestru       |
-| Windows 7                                 | Enabled (Włączony)              | Wyłączenie za pomocą rejestru       | 
+| Windows Server 2016                       | Włączono              | Usunięcie za pomocą funkcji systemu Windows |
+| Windows 10 w wersjach 1507, 1607 i 1703 | Włączono              | Usunięcie za pomocą funkcji systemu Windows |
+| Windows Server 2012 R2                    | Włączono              | Usunięcie za pomocą funkcji systemu Windows | 
+| Windows 8.1                               | Włączono              | Usunięcie za pomocą funkcji systemu Windows | 
+| Windows Server 2012                       | Włączono              | Wyłączenie za pomocą rejestru       | 
+| Windows Server 2008 R2                    | Włączono              | Wyłączenie za pomocą rejestru       |
+| Windows 7                                 | Włączono              | Wyłączenie za pomocą rejestru       | 
 
 ### <a name="auditing-smb-1-usage"></a>Inspekcja użycia protokołu SMB 1
-> Ma zastosowanie do 2019 r Server systemu Windows systemu Windows Server semi-Annual channel (w wersji 1709 i 1803), systemu Windows Server 2016, Windows 10 (w wersji 1507, 1607, 1703, 1709 i 1803), Windows Server 2012 R2 i Windows 8.1
+> Dotyczy systemu Windows Server 2019, półrocznego kanału z systemem Windows Server (wersje 1709 i 1803), Windows Server 2016, Windows 10 (wersje 1507, 1607, 1703, 1709 i 1803), Windows Server 2012 R2 i Windows 8.1
 
 Przed usunięciem protokołu SMB 1 ze środowiska można przeprowadzić inspekcję użycia tego protokołu, aby sprawdzić, czy ta zmiana będzie miała negatywny wpływ na działanie jakichś klientów. W przypadku wystąpienia jakichkolwiek żądań względem udziałów SMB za pośrednictwem protokołu SMB 1 zdarzenia inspekcji będą rejestrowane w dzienniku zdarzeń w ścieżce `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit`. 
 
@@ -260,7 +259,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Usuwanie protokołu SMB 1 z systemu Windows Server
-> Ma zastosowanie do systemu Windows Server 2019, systemu Windows Server semi-Annual channel (wersja 1709 i 1803), Windows Server 2016, Windows Server 2012 R2
+> Dotyczy systemu Windows Server 2019, półrocznego kanału z systemem Windows Server (wersje 1709 i 1803), Windows Server 2016, Windows Server 2012 R2
 
 Aby usunąć protokół SMB 1 z wystąpienia systemu Windows Server, wykonaj następujące polecenie cmdlet w sesji programu PowerShell z podwyższonym poziomem uprawnień:
 
@@ -303,7 +302,7 @@ Po utworzeniu tego klucza rejestru należy ponownie uruchomić serwer, aby wył�
 - [Discover SMB 1 in your environment with DSCEA](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/) (Wykrywanie protokołu SMB 1 w środowisku za pomocą modułu DSCEA)
 - [Disabling SMB 1 through Group Policy](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/) (Wyłączanie protokołu SMB 1 za pomocą zasad grupy)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files:
 - [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
 - [Często zadawane pytania](../storage-files-faq.md)

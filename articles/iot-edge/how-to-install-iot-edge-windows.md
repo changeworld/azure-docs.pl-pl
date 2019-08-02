@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 7f20e04fa65d0266d9e77b8bbcf2e2c4b1fd9eab
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 1af6ed2743807f75e96bed0ae67d0070aa55c0ef
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227456"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677465"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Zainstaluj środowisko uruchomieniowe Azure IoT Edge w systemie Windows
 
@@ -142,23 +142,21 @@ Poniższy przykład ilustruje instalację automatyczną przy użyciu kontenerów
 
 1. W tym momencie urządzenia IoT Core mogą zostać automatycznie uruchomione ponownie. Inne urządzenia z systemem Windows 10 lub Windows Server mogą monitować o ponowne uruchomienie. Jeśli tak, ponownie uruchom urządzenie teraz. Gdy urządzenie jest gotowe, uruchom ponownie program PowerShell jako administrator.
 
-1. Polecenie **Initialize-IoTEdge** konfiguruje środowisko uruchomieniowe IoT Edge na komputerze. Polecenie domyślnie umożliwia ręczne Inicjowanie obsługi przy użyciu kontenerów systemu Windows. `-Dps` Użyj flagi, aby użyć usługi Device Provisioning zamiast ręcznego inicjowania obsługi.
+1. Polecenie **Initialize-IoTEdge** konfiguruje środowisko uruchomieniowe IoT Edge na komputerze. Polecenie domyślnie umożliwia ręczne Inicjowanie obsługi przy użyciu kontenerów systemu Windows. `-Dps` Użyj flagi, aby użyć usługi Device Provisioning zamiast ręcznego inicjowania obsługi. Zastąp `{scope ID}` wartość identyfikatorem zakresu z usługi Device Provisioning i `{registration ID}` identyfikatorem rejestracji z urządzenia, z którego wszystkie mają zostać pobrane w kroku 1.
 
    Użycie polecenia **Initialize-IoTEdge** w celu użycia usługi DPS z zaświadczeniem modułu TPM:
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID}
    ```
 
    Użycie polecenia **Initialize-IoTEdge** w celu użycia usługi DPS z zaświadczeniem klucza symetrycznego. Zamień `{symmetric key}` na klucz urządzenia.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -SymmetricKey {symmetric key}
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
    ```
-
-1. Po wyświetleniu monitu podaj identyfikator zakresu z usługi Device Provisioning i Identyfikator rejestracji z urządzenia, z którego wszystkie mają zostać pobrane w kroku 1.
 
 1. Wykonaj kroki opisane w sekcji Weryfikowanie pomyślnej [instalacji](#verify-successful-installation) , aby sprawdzić stan IoT Edge na urządzeniu. 
 
@@ -285,7 +283,7 @@ Polecenie Deploy-IoTEdge pobiera i wdraża demona zabezpieczeń IoT Edge i jej z
 | **Proxy** | Adres URL serwera proxy | Należy uwzględnić ten parametr, jeśli urządzenie musi przejść przez serwer proxy, aby połączyć się z Internetem. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |
 | **OfflineInstallationPath** | Ścieżka katalogu | Jeśli ten parametr zostanie uwzględniony, Instalator sprawdzi katalog na wymienionym katalogu dla plików MSI IoT Edge cab i VC Runtime wymaganych do instalacji. Wszystkie pliki, które nie znajdują się w katalogu, są pobierane. Jeśli oba pliki znajdują się w katalogu, można zainstalować IoT Edge bez połączenia z Internetem. Można również użyć tego parametru, aby użyć określonej wersji. |
 | **InvokeWebRequestParameters** | Hashtable parametrów i wartości | Podczas instalacji wykonywane jest kilka żądań sieci Web. To pole służy do ustawiania parametrów dla tych żądań sieci Web. Ten parametr jest przydatny do konfigurowania poświadczeń dla serwerów proxy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |
-| **RestartIfNeeded** | Dawaj | Ta flaga umożliwia skryptowi wdrożenia ponowne uruchomienie maszyny bez monitowania, w razie potrzeby. |
+| **RestartIfNeeded** | brak | Ta flaga umożliwia skryptowi wdrożenia ponowne uruchomienie maszyny bez monitowania, w razie potrzeby. |
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
@@ -297,7 +295,7 @@ Polecenie Initialize-IoTEdge konfiguruje IoT Edge przy użyciu parametrów poł�
 | **Dokumenty** | Brak | **Parametr przełącznika**. Jeśli typ aprowizacji nie zostanie określony, wartość domyślna to ręczna.<br><br>Deklaruje, że podajesz identyfikator zakresu usługi Device Provisioning Service (DPS) i Identyfikator rejestracji urządzenia, aby zapewnić obsługę administracyjną.  |
 | **DeviceConnectionString** | Parametry połączenia z urządzenia IoT Edge zarejestrowane w IoT Hub, w pojedynczym cudzysłowie | **Wymagane** do instalacji ręcznej. Jeśli nie podano parametrów połączenia w parametrach skryptu, zostanie wyświetlony monit o podanie jednej podczas instalacji. |
 | **Identyfikatora zakresu** | Identyfikator zakresu z wystąpienia usługi Device Provisioning skojarzonej z IoT Hubem. | **Wymagane** na potrzeby instalacji usługi DPS. Jeśli nie podano identyfikatora zakresu w parametrach skryptu, zostanie wyświetlony monit o podanie jednej podczas instalacji. |
-| **Identyfikator rejestracji** | Identyfikator rejestracji generowany przez urządzenie | **Wymagane** na potrzeby instalacji usługi DPS. Jeśli nie podano identyfikatora rejestracji w parametrach skryptu, zostanie wyświetlony monit o podanie jednej podczas instalacji. |
+| **Identyfikator rejestracji** | Identyfikator rejestracji generowany przez urządzenie | **Wymagane** na potrzeby instalacji usługi DPS. |
 | **SymmetricKey** | Klucz symetryczny używany do inicjowania obsługi tożsamości urządzenia IoT Edge podczas korzystania z usługi DPS | **Wymagane** do instalacji usługi DPS w przypadku korzystania z zaświadczania klucza symetrycznego. |
 | **ContainerOs** | **System Windows** lub **Linux** | Jeśli nie określono systemu operacyjnego kontenera, system Windows jest wartością domyślną.<br><br>W przypadku kontenerów systemu Windows IoT Edge używa aparatu kontenera Moby dołączonego do instalacji. W przypadku kontenerów systemu Linux należy zainstalować aparat kontenera przed rozpoczęciem instalacji. |
 | **InvokeWebRequestParameters** | Hashtable parametrów i wartości | Podczas instalacji wykonywane jest kilka żądań sieci Web. To pole służy do ustawiania parametrów dla tych żądań sieci Web. Ten parametr jest przydatny do konfigurowania poświadczeń dla serwerów proxy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |
@@ -313,14 +311,14 @@ Polecenie Initialize-IoTEdge konfiguruje IoT Edge przy użyciu parametrów poł�
 | **Proxy** | Adres URL serwera proxy | Należy uwzględnić ten parametr, jeśli urządzenie musi przejść przez serwer proxy, aby połączyć się z Internetem. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |
 | **InvokeWebRequestParameters** | Hashtable parametrów i wartości | Podczas instalacji wykonywane jest kilka żądań sieci Web. To pole służy do ustawiania parametrów dla tych żądań sieci Web. Ten parametr jest przydatny do konfigurowania poświadczeń dla serwerów proxy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |
 | **OfflineInstallationPath** | Ścieżka katalogu | Jeśli ten parametr zostanie uwzględniony, Instalator sprawdzi katalog na wymienionym katalogu dla plików MSI IoT Edge cab i VC Runtime wymaganych do instalacji. Wszystkie pliki, które nie znajdują się w katalogu, są pobierane. Jeśli oba pliki znajdują się w katalogu, można zainstalować IoT Edge bez połączenia z Internetem. Można również użyć tego parametru, aby użyć określonej wersji. |
-| **RestartIfNeeded** | Dawaj | Ta flaga umożliwia skryptowi wdrożenia ponowne uruchomienie maszyny bez monitowania, w razie potrzeby. |
+| **RestartIfNeeded** | brak | Ta flaga umożliwia skryptowi wdrożenia ponowne uruchomienie maszyny bez monitowania, w razie potrzeby. |
 
 ### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
 | Parametr | Akceptowane wartości | Komentarze |
 | --------- | --------------- | -------- |
-| **Moc** | Dawaj | Ta flaga wymusza dezinstalację w przypadku, gdy poprzednia próba odinstalowania zakończyła się niepowodzeniem. 
-| **RestartIfNeeded** | Dawaj | Ta flaga umożliwia skryptowi dezinstalacji ponowne uruchomienie maszyny bez monitowania, w razie potrzeby. |
+| **Moc** | brak | Ta flaga wymusza dezinstalację w przypadku, gdy poprzednia próba odinstalowania zakończyła się niepowodzeniem. 
+| **RestartIfNeeded** | brak | Ta flaga umożliwia skryptowi dezinstalacji ponowne uruchomienie maszyny bez monitowania, w razie potrzeby. |
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,7 +1,7 @@
 ---
-title: Jak za pomocą usług znakowania wersji modelu uczeń konwersacji — usług Azure Cognitive Services | Dokumentacja firmy Microsoft
+title: Jak używać tagowania wersji z modelem Conversation Learner — Azure Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak używać przechowywanie wersji i znakowanie z modelem uczeń konwersacji.
+description: Dowiedz się, jak korzystać z wersji i tagowania z modelem Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,103 +10,104 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 4067c7fb43cc200b8f49dbc14151c69a188e4e8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0279363c039e3ec3c2deac3bc7f71c32c547e9d1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475711"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703375"
 ---
-# <a name="how-to-use-version-tagging"></a>Jak używać wersji znakowanie
+# <a name="how-to-use-version-tagging"></a>Jak używać tagowania wersji
 
-Ten samouczek przedstawia sposób tag wersji modelu uczeń konwersacji, a następnie ustaw, która wersja jest "na żywo".  
+W tym samouczku pokazano, jak oznaczyć wersje modelu Conversation Learner i ustawić wersję "Live".  
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga Tworzenie dziennika okien dialogowych, nie dziennika okna dialogowego internetowego interfejsu użytkownika przy użyciu emulatora usługi Bot Framework.  
+Ten samouczek wymaga użycia emulatora programu bot Framework do tworzenia okien dialogowych dziennika, a nie interfejsu użytkownika sieci Web okna dialogowego.  
 
-Ten samouczek wymaga, że ogólne samouczek Bot działa:
+Ten samouczek wymaga, aby bot samouczek został uruchomiony:
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
 
-Oznakowane wersji modelu są statyczne; Nie można edytować ani zmieniać ich. Edytowanie modelu, są zawsze edycji, wzorzec wersji. Podczas dodawania nowego tagu uczeń konwersacji umożliwia przechwytywanie migawek modelu w danym momencie. 
+Oznakowane wersje modelu są statyczne; nie można ich edytować ani zmieniać. Podczas edytowania modelu zawsze będziesz edytować wersję główną. Po dodaniu nowego tagu Conversation Learner przechwytuje migawkę modelu w tym momencie. 
 
-Twój Bot będzie używać wersji modelu, który wybrano w wersji "Live", ale wszelkie rozmowy, które przedstawiono w nim będzie widoczny tylko wtedy, gdy ustawiono "Edycji Tag" z gałęzią "główną". Jeśli właściwość "Edycji Tag" modelu jest ustawiona na inny niż "Master", następnie można wyświetlić migawkę modelu, ale nie można go zmienić w dowolny sposób.
+Bot będzie używać wersji modelu, która została wybrana jako wersja "Live", ale wszystkie konwersacje, które ma, będą widoczne tylko wtedy, gdy "Tag edycji" jest ustawiony na "Master". Jeśli właściwość "Edytuj tag" modelu jest ustawiona na coś innego niż "Master", wówczas można wyświetlić migawkę modelu, ale nie można go zmienić w jakikolwiek sposób.
 
 ## <a name="steps"></a>Kroki
 
-### <a name="install-the-bot-framework-emulator"></a>Zainstaluj Bot Framework Emulator
+### <a name="install-the-bot-framework-emulator"></a>Instalowanie emulatora struktury bot Framework
 
 1. Przejdź do obszaru [https://github.com/Microsoft/BotFramework-Emulator](https://github.com/Microsoft/BotFramework-Emulator) (Ustawienia — Integracje i usługi).
 2. Pobierz i zainstaluj emulator.
 
 ### <a name="create-a-model"></a>Tworzenie modelu
 
-1. Z modelu listy stronie głównej kliknij `New Model` przycisku.
-2. W `Name` pola typu "Samouczek-18-Versioning", naciśnij klawisz enter.
-4. Na lewym panelu kliknij przycisk "Ustawienia".
+1. Na stronie głównej listy modeli kliknij `New Model` przycisk.
+2. `Name` W polu Typ pola "samouczek-18 — Obsługa wersji" naciśnij klawisz ENTER.
+4. Na panelu po lewej stronie kliknij pozycję "Ustawienia".
 5. Skopiuj zawartość pola CONVERSATION_LEARNER_MODEL_ID do Schowka.
 
-### <a name="configure-the-emulator"></a>Konfigurowanie Emulator
+### <a name="configure-the-emulator"></a>Konfigurowanie emulatora
 
-1. W folderze głównym uczeń konwersacji Otwórz plik "ENV".
-2. Dodaj linię do pliku "ENV" następująco:
+1. W folderze głównym Conversation Learner Otwórz plik "ENV".
+2. Dodaj wiersz do pliku "ENV" w następujący sposób:
     - `CONVERSATION_LEARNER_MODEL_ID=[paste-model-id-from-clipboard-here]`
-3. Uruchom ponownie usługę uczeń konwersacji, zakończone, w wierszu polecenia, a następnie ponowne uruchomienie:
+3. Uruchom ponownie usługę Conversation Learner, polecenie z wiersza polecenia, a następnie uruchamiając program:
     - `npm run tutorial-general`
-4. Bot Framework, w emulatorze Utwórz nową konfigurację bot, należy ustawić adres URL punktu końcowego `http://localhost:3978/api/messages`
+4. W emulatorze bot Framework Utwórz nową konfigurację bot, ustaw adres URL punktu końcowego na`http://localhost:3978/api/messages`
 
 ### <a name="version-1"></a>Wersja 1
 
-Utworzymy jednej akcji dla wersji 1.
+Utworzymy jedną akcję dla wersji 1.
 
-1. W lewym panelu interfejs użytkownika sieci Web, kliknij przycisk "Akcje", a następnie kliknij przycisk `New Action` przycisku.
-2. W "Response Botów" Wprowadź "cześć miejsca (wersja 1)".
+1. W lewym panelu interfejsu użytkownika sieci Web kliknij pozycję "akcje", a następnie kliknij `New Action` przycisk.
+2. W polu "odpowiedź bot" wpisz "Witaj tam (wersja 1)".
 3. Kliknij przycisk `Save`.
 
-Obecnie firma Microsoft będzie Oznacz ten element jako "Wersja 1" modelu.
+Teraz oznaczmy ten tag jako "wersję 1" modelu.
 
-1. W panelu po lewej stronie kliknij pozycję "ustawienia", a następnie kliknij pozycję ![](../media/tutorial18_version_tags.PNG)ikonę "Wersji Tags", aby wyświetlić `New Tag` przycisk, który należy kliknąć opcję.
-    - Nadaj jej nazwę na "Wersja 1"
-1. W "na żywo Tag" listy rozwijanej wybierz pozycję "wersja 1".  
-    - Teraz kanały przy użyciu tego Bota użyje "Wersja 1" Nasz Model.
-    - Nie można zmienić jednostek, akcje i szkolenie okien dialogowych w tej wersji 1 modelu.
-    - Wybierz "Wersja 1" jako "Edycja tagu" tylko będzie mogła wyświetlać modelu i nie można go edytować.
-    - Pozostaw "edycji Tag" wartość "Master", jest tylko wersja modelu, który można edytować.
+1. W lewym panelu kliknij pozycję "Ustawienia", a następnie kliknij ![](../media/tutorial18_version_tags.PNG)ikonę "znaczniki wersji", aby `New Tag` wyświetlić przycisk, który powinien zostać kliknięty.
+    - Nadaj mu nazwę "wersja 1"
+1. Na liście rozwijanej "tag dynamiczny" Wybierz pozycję "wersja 1".  
+    - Teraz kanały używające tego bot będą używać wersji 1 w naszym modelu.
+    - Nie można już zmienić tych okien dialogowych obiektów, akcji i pouczenia tego modelu w wersji 1.
+    - W przypadku wybrania opcji "wersja 1" jako "tagu edycji" będziesz mieć możliwość wyświetlania tylko modelu i nie można go edytować.
+    - Pozostaw "Tag edycji" ustawiony na "Master", jest to jedyna wersja modelu, który można edytować.
 
-Zostanie wyświetlone "Wersja 1" w siatce "Wersji Tags".
+Teraz w siatce "znaczniki wersji" zobaczysz wartość "wersja 1".
 
 ### <a name="version-2"></a>Wersja 2
 
-Firma Microsoft będzie teraz edytować nasz Model, w odróżnieniu od wersji 1.
+Teraz edytujemy nasz model w celu odróżnienia go od wersji 1.
 
-1. W panelu po lewej stronie kliknij pozycję "Akcje".
-2. W siatce Akcje kliknij pozycję "cześć miejsca (wersja 1)".
-3. Zmiany pola "response Botów" "cześć miejsca (wersja 2)".
+1. W lewym panelu kliknij pozycję "akcje".
+2. W siatce akcji kliknij pozycję "Witaj tam (wersja 1)".
+3. Zmień pole "odpowiedź bot" na "Witaj tam (wersja 2)".
 4. Kliknij przycisk `Save`.
 5. Kliknij przycisk `New Action`.
-6. W "Botów odpowiedzi" pola typu "bye bye (wersja 2)".
+6. W polu "odpowiedź bot" wpisz "Bye bye (wersja 2)".
 
-### <a name="confirm-bot-framework-emulator-is-using-version-1"></a>Upewnij się, że Bot Framework Emulator jest przy użyciu wersji 1
+### <a name="confirm-bot-framework-emulator-is-using-version-1"></a>Potwierdź, że emulator platformy bot Framework korzysta z wersji 1
 
-1. Bot Framework, w emulatorze wpisz komunikat, "Hej, istnieje".
-2. Należy zauważyć, że Bot odpowiada za pomocą "cześć miejsca (wersja 1)".
-    - Sprawdza, czy w wersji 1 jest "na żywo".
+1. W emulatorze bot Framework wpisz w komunikacie "Hej tam".
+2. Zwróć uwagę, że bot reaguje na "Witaj tam (wersja 1)".
+    - Spowoduje to sprawdzenie, czy wersja 1 ma wartość "Live".
 
-### <a name="view-the-conversation-logs-in-conversation-learner-web-ui"></a>Wyświetlanie dzienników konwersacji w sieci Web uczeń konwersacji interfejsu użytkownika
+### <a name="view-the-conversation-logs-in-conversation-learner-web-ui"></a>Wyświetlanie dzienników konwersacji w Conversation Learner interfejsie użytkownika sieci Web
 
-1. W lewym panelu, kliknij na "Okien dialogowych dziennik"
-    - Jeśli nie widzisz wszystkie okna dialogowe, kliknij przycisk Odśwież.
-2. Zwróć uwagę, tagu "Wersja 1" w siatce.
-3. W siatce, wybierz polecenie "cześć miejsca (wersja 1)"
+1. W lewym panelu kliknij pozycję "dzienniki okien dialogowych"
+    - Jeśli nie widzisz żadnych okien dialogowych, kliknij przycisk Odśwież.
+2. Zwróć uwagę na tag "wersja 1" w siatce.
+3. W siatce kliknij pozycję "Witaj tam (wersja 1)"
 
 > [!NOTE]
-> Firma Microsoft może wprowadzić poprawki, wybierając z wszystkie obecnie dostępne funkcje uczeń konwersacji, jednak te zmiany zostaną wprowadzone do gałęzi głównej, a nie w wersji 1.
+> Możemy wprowadzić poprawki, wybierając spośród wszystkich aktualnie dostępnych Conversation Learner funkcje, ale te zmiany zostaną wprowadzone do wersji głównej, a nie do wersja 1.
 
-Teraz wiesz, jak działa przechowywanie wersji i jak możesz korzystać z botem przy użyciu emulatora usługi Bot Framework.
+Zobaczysz, jak działa wersja i w jaki sposób można korzystać z bot przy użyciu emulatora platformy bot Framework.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Wyliczenie jednostki i akcje jednostki z zestawu](./tutorial-enum-set-entity.md)
+> [Jednostki wyliczenia i akcje ustawiania jednostek](./tutorial-enum-set-entity.md)

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 904893d4881de6be2c9055fefa9a8267cb045afd
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b8b2cad95929d6132a4f0ae52597fb1633874ff1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849408"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592116"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -42,11 +42,11 @@ Element **TrustFrameworkPolicy** zawiera następujące atrybuty:
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Yes | Wersja schematu, która ma zostać użyta do wykonania zasad. Wartość musi być równa`0.3.0.0` |
 | TenantObjectId | Nie | Unikatowy identyfikator obiektu dzierżawy usługi Azure Active Directory (Azure AD) B2C. |
-| TenantId | Tak | Unikatowy identyfikator dzierżawy, do której należy ta zasada. |
+| TenantId | Yes | Unikatowy identyfikator dzierżawy, do której należy ta zasada. |
 | `PolicyId` | Tak | Unikatowy identyfikator zasad. Ten identyfikator musi być poprzedzony przez *B2C_1A_* |
 | PublicPolicyUri | Yes | Identyfikator URI dla zasad, który jest kombinacją identyfikatora dzierżawy i identyfikatora zasad. |
 | DeploymentMode | Nie | Możliwe wartości: `Production`, `Debugging`, lub `Development`. Wartość domyślna to `Production`. Ta właściwość służy do debugowania zasad. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](active-directory-b2c-troubleshoot-custom.md). |
-| UserJourneyRecorderEndpoint | Nie | Punkt końcowy, który jest używany  , gdy DeploymentMode ma `Development`ustawioną wartość. Wartość musi być `urn:journeyrecorder:applicationinsights`. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](active-directory-b2c-troubleshoot-custom.md). |
+| UserJourneyRecorderEndpoint | Nie | Punkt końcowy, który jest używany , gdy DeploymentMode ma `Development`ustawioną wartość. Wartość musi być `urn:journeyrecorder:applicationinsights`. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](active-directory-b2c-troubleshoot-custom.md). |
 
 
 Poniższy przykład pokazuje, jak określić element **TrustFrameworkPolicy** :
@@ -88,7 +88,7 @@ Aby dziedziczyć zasady z innych zasad, element **BasePolicy** musi być zadekla
 
 Element **BasePolicy** zawiera następujące elementy:
 
-| Element | Wystąpień | Opis |
+| Element | Wystąpienia | Opis |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Identyfikator dzierżawy Azure AD B2C. |
 | `PolicyId` | 1:1 | Identyfikator zasad nadrzędnych. |
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase lub B2C_1A_TrustFrameworkExtensionPolicy:
 
 Podróż użytkownika definiuje logikę biznesową, przez którą przechodzi użytkownik. Każda podróż użytkownika to zestaw kroków aranżacji, które wykonują serię akcji, w kolejności pod względem uwierzytelniania i zbierania informacji.
 
-Plik zasad **SocialAndLocalAccounts** w [pakiecie początkowym](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies) zawiera SignUpOrSignIn, ProfileEdit, PasswordReset użytkownika. Możesz dodać więcej podróży użytkowników dla innych scenariuszy, takich jak zmiana adresu e-mail lub łączenie i odłączanie konta społecznościowego.
+Plik zasad **SocialAndLocalAccounts** w [pakiecie początkowym](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack) zawiera SignUpOrSignIn, ProfileEdit, PasswordReset użytkownika. Możesz dodać więcej podróży użytkowników dla innych scenariuszy, takich jak zmiana adresu e-mail lub łączenie i odłączanie konta społecznościowego.
 
 Kroki aranżacji mogą wywołać [profil techniczny](technicalprofiles.md). Profil techniczny zapewnia platformę z wbudowanym mechanizmem do komunikowania się z różnymi typami stron. Na przykład profil techniczny może wykonywać następujące działania między innymi:
 

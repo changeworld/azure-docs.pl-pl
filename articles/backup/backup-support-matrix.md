@@ -1,18 +1,18 @@
 ---
 title: Tabela obsługi usługi Azure Backup
 description: Zawiera podsumowanie ustawień obsługi i ograniczeń dotyczących usługi Azure Backup.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.author: raynew
-ms.openlocfilehash: a6b7dfe8fb8ade7f84f41fb5602aff68b4f52cf2
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7ee4cffea9c997e5fcd3631594d61e6d5383cb38
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464833"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639481"
 ---
 # <a name="azure-backup-support-matrix"></a>Tabela obsługi usługi Azure Backup
 
@@ -116,10 +116,10 @@ Azure Backup obsługuje szyfrowanie danych w trakcie przesyłania i w czasie spo
 
 **Maszyna** | **Przesyłanie** | **Magazynowanie**
 --- | --- | ---
-**Lokalne maszyny z systemem Windows bez programu DPM/serwera usługi MAB** | ![Yes][green] | ![Yes][green]
+**Lokalne maszyny z systemem Windows bez programu DPM/serwera usługi MAB** | ![Tak][green] | ![Tak][green]
 **Maszyny wirtualne platformy Azure** | ![Tak][green] | ![Tak][green]
-**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z programem DPM** | ![Tak][green] | ![Tak][green]
-**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z usługą serwera usługi MAB** | ![Yes][green] | ![Tak][green]
+**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z programem DPM** | ![Yes][green] | ![Tak][green]
+**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z usługą serwera usługi MAB** | ![Tak][green] | ![Tak][green]
 
 ## <a name="compression-support"></a>Obsługa kompresji
 
@@ -146,7 +146,7 @@ Funkcja Backup obsługuje kompresję ruchu kopii zapasowej, jak przedstawiono w 
 **Maksymalny okres przechowywania** | Zależnie od częstotliwości wykonywania kopii zapasowych
 **Punkty odzyskiwania na dysku programu DPM/serwera usługi MAB** | 64 dla serwerów plików; 448 dla serwerów aplikacji <br/><br/>Nieograniczona liczba punktów odzyskiwania na taśmie dla lokalnego programu DPM
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Przejrzyj macierz pomocy technicznej](backup-support-matrix-iaas.md) dla kopii zapasowej maszyny wirtualnej platformy Azure.
 

@@ -2,22 +2,22 @@
 title: Dodaj lub zaktualizuj informacje o profilu użytkownika - usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Instrukcje dotyczące dodawania informacji o profilu użytkownika usługi Azure Active Directory, w tym szczegółów obrazu i zadań.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 04/11/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4002c14ed6340a0e1a89ee295d47c98436515775
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248097"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561783"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Dodaj lub zaktualizuj informacje o profilu użytkownika przy użyciu usługi Azure Active Directory
 Dodaj informacje o profilu użytkownika, w tym zdjęcie profilowe, informacje specyficzne dla zadania i niektóre ustawienia za pomocą usługi Azure Active Directory (Azure AD). Aby uzyskać więcej informacji na temat dodawania nowych użytkowników, zobacz [jak dodawanie lub usuwanie użytkowników w usłudze Azure Active Directory](add-users-azure-active-directory.md).
@@ -26,7 +26,7 @@ Dodaj informacje o profilu użytkownika, w tym zdjęcie profilowe, informacje sp
 Jak można zauważyć, ma więcej dostępnych informacji w profilu użytkownika, od czego możesz dodać podczas tworzenia użytkownika. Są to informacje dodatkowe jest opcjonalne i można dodać odpowiednio do potrzeb swojej organizacji.
 
 ## <a name="to-add-or-change-profile-information"></a>Aby dodać lub zmienić informacje o profilu
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) Administrator użytkowników w organizacji.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako administrator użytkownika w organizacji.
 
 2. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz użytkownika. Na przykład _Alain Charon_.
 
@@ -40,7 +40,7 @@ Jak można zauważyć, ma więcej dostępnych informacji w profilu użytkownika,
 
     - **Zdjęcie profilowe.** Wybierz obraz miniatury dla konta użytkownika. Ten obraz jest wyświetlany w usłudze Azure Active Directory i na stronach osobiste użytkownika, takich jak strony myapps.microsoft.com.
 
-    - **Tożsamość.** Dodaj lub zaktualizuj wartość dodatkowe tożsamości użytkownika, takie jak zamężną nazwisko. Ta nazwa można ustawić niezależnie od wartości imię i nazwisko. Na przykład można użyć go obejmują inicjały, podaj nazwę firmy lub zmienić kolejność nazw wyświetlanych. W kolejnym przykładzie dla dwóch użytkowników, których nazwy są "Jan Kowalski" wystarczą ciąg tożsamości ustawić ich nazwy na "Jan B. Kowalski" "Jan R. Kowalski (Contoso)".
+    - **Tożsamość.** Dodaj lub zaktualizuj dodatkową wartość tożsamości dla użytkownika, na przykład nazwisko ślubu. Tę nazwę można ustawić niezależnie od wartości imię i nazwisko. Na przykład można użyć go do uwzględnienia inicjałów, nazwy firmy lub zmiany sekwencji wyświetlanych nazw. W innym przykładzie dla dwóch użytkowników, których nazwy są "Krzysztof Green", można użyć ciągu tożsamości w celu ustawienia ich nazw na "Krzysztof B. zielony" "Krzysztof R. Green (contoso)".
 
     - **Informacje o zadaniu.** Dodać informacje dotyczące zadania, takie jak stanowisko, dział lub menedżera użytkownika.
 

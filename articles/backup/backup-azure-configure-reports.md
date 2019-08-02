@@ -1,18 +1,19 @@
 ---
 title: Skonfiguruj raporty dla Azure Backup
 description: Skonfiguruj Power BI raporty dla Azure Backup przy użyciu magazynu Recovery Services.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: adigan
-ms.openlocfilehash: ae772446a4955f9f9def830d5c770f7d826b7e48
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 169ce73ead52d6a275f13f084c681e14c89ab606
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466608"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689353"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfiguruj raporty usługi Azure Backup
 W tym artykule przedstawiono kroki, które należy wykonać, aby skonfigurować raporty dla Azure Backup przy użyciu magazynu Recovery Services. Pokazano również, jak uzyskać dostęp do raportów za pomocą Power BI. Po wykonaniu tych kroków możesz przejść bezpośrednio do Power BI, aby wyświetlać, dostosowywać i tworzyć raporty.
@@ -101,7 +102,7 @@ Jeśli chcesz dostosować i udostępnić raport, Utwórz obszar roboczy i wykona
 
 7. Po pomyślnym zaimportowaniu danych pakiet zawartości **Azure Backup** będzie widoczny w **aplikacjach** w okienku nawigacji. W obszarze **pulpity nawigacyjne**, **raporty**i **zestawy danych**lista zawiera teraz Azure Backup.
 
-8. W obszarze pulpity nawigacyjne wybierz pozycję **Azure Backup**, która pokazuje zestaw przypiętych raportów kluczy.
+8. Wobszarze pulpity nawigacyjne wybierz pozycję **Azure Backup**, która pokazuje zestaw przypiętych raportów kluczy.
 
       ![Pulpit nawigacyjny Azure Backup](./media/backup-azure-configure-reports/azure-backup-dashboard.png) <br/>
 9. Aby wyświetlić pełny zestaw raportów, wybierz dowolny raport na pulpicie nawigacyjnym.
@@ -118,7 +119,7 @@ Jeśli chcesz dostosować i udostępnić raport, Utwórz obszar roboczy i wykona
 | Po skonfigurowaniu konta magazynu dla raportów kopii zapasowych nadal **nie jest skonfigurowane** **konto magazynu** . | Po pomyślnym skonfigurowaniu konta magazynu dane raportowania są przesyłane pomimo tego problemu. Aby rozwiązać ten problem, przejdź do Azure Portal i wybierz kolejno opcje **wszystkie usługi** > **Ustawienia** > diagnostyki**Recovery Services magazyn** >  **.** Usuń poprzednio skonfigurowane ustawienie i Utwórz nowe ustawienie w tym samym bloku. Tym razem w polu **Nazwa** wybierz pozycję **Usługa**. Teraz zostanie wyświetlone skonfigurowane konto magazynu. |
 |Po zaimportowaniu pakietu zawartości Azure Backup w programie Power BI zostanie wyświetlony komunikat o błędzie "404-kontener nie zostanie znaleziony". | Jak wspomniano wcześniej, należy odczekać 24 godziny od momentu skonfigurowania raportów w magazynie Recovery Services, aby zobaczyć je prawidłowo w Power BI. Jeśli spróbujesz uzyskać dostęp do raportów przed 24 godzinami, zostanie wyświetlony komunikat o błędzie, ponieważ kompletne dane nie są jeszcze dostępne, aby pokazać prawidłowe raporty. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po skonfigurowaniu konta magazynu i zaimportowaniu pakietu zawartości Azure Backup następnym etapem jest dostosowanie raportów i użycie modelu danych raportowania do tworzenia raportów. Aby uzyskać więcej informacji, zobacz następujące artykuły.
 
 * [Korzystanie z modelu danych raportowania Azure Backup](backup-azure-reports-data-model.md)

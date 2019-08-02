@@ -1,19 +1,18 @@
 ---
 title: Wdróż Azure File Sync | Microsoft Docs
 description: Dowiedz się, jak wdrożyć Azure File Sync od początku do końca.
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6a41830dcb7f681713db7a7802ab430581dc844f
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 7b9c9a7639ed7a9938052197758e5796fb9fc879
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371144"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699420"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -25,7 +24,7 @@ Zdecydowanie zalecamy zapoznanie się z [planowaniem wdrożenia Azure Files](sto
     - [Dostępność regionu](storage-sync-files-planning.md#region-availability) dla Azure File Sync.
     - [Utwórz udział plików](storage-how-to-create-file-share.md) , aby uzyskać szczegółowy opis sposobu tworzenia udziału plików.
 * Co najmniej jedno obsługiwane wystąpienie klastra systemu Windows Server lub systemu Windows Server do synchronizacji z Azure File Sync. Aby uzyskać więcej informacji o obsługiwanych wersjach systemu Windows Server, zobacz Współdziałanie [z systemem Windows Server](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
-* Moduł AZ PowerShell może być używany z programem PowerShell 5,1 lub PowerShell 6 +. Możesz użyć polecenia AZ PowerShell module dla Azure File Sync w dowolnym obsługiwanym systemie, w tym w systemach innych niż Windows, jednak polecenie cmdlet rejestracji serwera musi być zawsze uruchamiane w zarejestrowanym wystąpieniu systemu Windows Server (można to zrobić bezpośrednio lub za pomocą programu PowerShell. Komunikacja zdalna). W systemie Windows Server 2012 R2 można sprawdzić, czy jest uruchomiony program PowerShell 5,1 lub nowszy. Przeglądając wartość właściwości PSVersion obiektu **$PSVersionTable** :  \*
+* Moduł AZ PowerShell może być używany z programem PowerShell 5,1 lub PowerShell 6 +. Możesz użyć polecenia AZ PowerShell module dla Azure File Sync w dowolnym obsługiwanym systemie, w tym w systemach innych niż Windows, jednak polecenie cmdlet rejestracji serwera musi być zawsze uruchamiane w zarejestrowanym wystąpieniu systemu Windows Server (można to zrobić bezpośrednio lub za pomocą programu PowerShell. Komunikacja zdalna). W systemie Windows Server 2012 R2 można sprawdzić, czy jest uruchomiony program PowerShell 5,1 lub nowszy. Przeglądając wartość właściwości PSVersion obiektu **$PSVersionTable** : \*
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -416,7 +415,7 @@ Aby przeprowadzić migrację wdrożenia systemu plików DFS-R do Azure File Sync
 
 Aby uzyskać więcej informacji, zobacz [Azure File Sync Interop with rozproszony system plików (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Dodawanie lub usuwanie punktu końcowego serwera Azure File Sync](storage-sync-files-server-endpoint.md)
 - [Zarejestruj lub wyrejestruj serwer z Azure File Sync](storage-sync-files-server-registration.md)
 - [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)

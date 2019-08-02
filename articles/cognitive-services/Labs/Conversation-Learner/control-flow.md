@@ -1,7 +1,7 @@
 ---
-title: Przepływ sterowania uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Conversation Learner przepływ sterowania — Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się więcej na temat formantów flow uczeń konwersacji.
+description: Dowiedz się więcej o przepływie sterowania Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,35 +10,36 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 22a2a3472a54188f9298c580a95d53ac681822aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ec839c1a930ffbe73989149360f1b02866a3c50
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385429"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705306"
 ---
 ## <a name="control-flow"></a>Przepływ sterowania
 
-W tym dokumencie opisano przepływ sterowania uczeń konwersacji (CL) w postaci wyświetlanej w poniższym diagramie.
+W tym dokumencie opisano przepływ sterowania Conversation Learner (CL), jak pokazano na poniższym diagramie.
 
 ![](media/controlflow.PNG)
 
-1. Użytkownik wprowadza termin lub frazę w bot, na przykład "co to jest pogody w Seattle?"
-1. CL przekazuje dane wejściowe użytkownika do modelu uczenia maszynowego, która wyodrębnia jednostek
-   - Ten model jest kompilowane przez uczeń konwersacji i hostowanych przez www.luis.ai
-1. Wyodrębnione dowolnej jednostki, a jego dane wprowadzane przez użytkownika tekst, są przekazywane do metody wywołania zwrotnego wykrywania jednostki w kodzie botów.
-    - Ten kod może wartości jednostki manipulowania nimi/set/clear
-1. Sieć neuronowa CL następnie pobiera dane wyjściowe działania funkcji wydobywania podmiotów danych wejściowych użytkownika, i wyniki wszystkich akcji określonych w robota
-   - W tym przykładzie najwyższy akcji prawdopodobieństwo jest zapewnienie prognozę pogody:
+1. Użytkownik wprowadza termin lub frazę w bot, na przykład "co to jest Pogoda w Seattle?".
+1. CL przekazuje dane wejściowe użytkownika do modelu uczenia maszynowego, który wyodrębnia jednostki
+   - Ten model jest kompilowany przez Conversation Learner i hostowany przez www.luis.ai
+1. Wszystkie Wyodrębnione jednostki i tekst wejściowy użytkownika są przesyłane do metody wywołania zwrotnego wykrywania jednostki w kodzie bot.
+    - Ten kod może ustawiać/czyścić wartości jednostek lub nimi manipulować
+1. Sieć CL neuronowych następnie pobiera dane wyjściowe wyodrębniania jednostek oraz dane wejściowe użytkownika i ocenia wszystkie akcje zdefiniowane w bot
+   - W tym przykładzie najwyższa akcja prawdopodobieństwa polega na określeniu prognozy pogody:
 
      ![](media/controlflow_forecast.PNG)
 
-1. Wybranej akcji, w tym przypadku wymaga wywołania interfejsu API, aby pobrać prognozę pogody. 
-1. Ten interfejs API, który został zarejestrowany przy użyciu CL. Następnie wywoływana jest metoda AddCallback.  Wynik tego interfejsu API jest zwracany do użytkownika jako wiadomość — na przykład Sunny z wysokim 67.
-1. Następnie wykonano wywołanie dotyczące sieci neuronowych Aby określić następne działanie w poprzednim kroku.
-1. Sieć neuronowa następnie przewiduje następny zestaw możliwych działań i wybranej akcji są prezentowane użytkownikowi, w tym przypadku "Czymkolwiek?"
+1. Wybrana akcja w tym przypadku wymaga wywołania interfejsu API w celu pobrania prognozy pogody. 
+1. Ten interfejs API, który został zarejestrowany przy użyciu CL. Metoda addwywołania zwrotnego jest następnie wywoływana.  Wynik tego interfejsu API jest następnie zwracany użytkownikowi jako komunikat — na przykład "Sunny z wysoką 67."
+1. Wywołanie jest następnie nawiązywane w sieci neuronowych, aby określić następną akcję na podstawie poprzedniego kroku.
+1. Sieć neuronowych przewiduje następny zestaw możliwych akcji, a wybrana akcja jest prezentowana użytkownikowi, w tym przypadku coś innego? '.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Jak do nauki o uczeń konwersacji](./how-to-teach-cl.md)
+> [Jak uczyć się Conversation Learner](./how-to-teach-cl.md)

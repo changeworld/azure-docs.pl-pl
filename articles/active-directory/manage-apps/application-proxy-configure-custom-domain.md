@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae13de156d502cdd731005d460641ca452448d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108672"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618808"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD
 
@@ -61,7 +61,7 @@ Jeśli masz te trzy wymagania gotowe, wykonaj następujące kroki, aby skonfigur
 6. Przekazywanie certyfikatu PFX, a następnie wprowadź hasło dla certyfikatu. 
 7. Wybierz **Zapisz** Aby zapisać zmiany. 
 8. Dodaj [rekordu DNS](../../dns/dns-operations-recordsets-portal.md) który przekierowuje nowy zewnętrzny adres URL do domeny msappproxy.net.
-9. Sprawdź, czy rekord DNS jest skonfigurowany poprawnie za pomocą [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) polecenie, aby zobaczyć, jeśli zewnętrzny adres URL jest osiągalny i domeny msapproxy.net pojawia się jako alias.
+9. Sprawdź, czy rekord DNS jest prawidłowo skonfigurowany przy użyciu polecenia [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) , aby sprawdzić, czy zewnętrzny adres URL jest osiągalny, a domena msapproxy.NET wyświetlana jako alias.
 
 >[!TIP] 
 >Wystarczy przekazać jeden certyfikat dla domeny niestandardowej. Po przekazaniu certyfikatu, możesz wybrać domeny niestandardowej podczas publikowania nowej aplikacji i nie trzeba wykonać dodatkowe czynności konfiguracyjne z wyjątkiem rekordu DNS. 
@@ -73,7 +73,7 @@ Nie ma żadnych ograniczeń w metodach podpisu certyfikatu. Obsługiwane są wsz
 
 Można użyć certyfikatu symboli wieloznacznych, tak długo, jak symbol wieloznaczny pasuje do żądanego zewnętrznego adresu URL.
 
-Nie można użyć certyfikatu wydanego przez własny infrastruktury kluczy publicznych (PKI) ze względu na zagadnienia związane z zabezpieczeniami.
+W przypadku zainstalowania łańcucha certyfikatów na urządzeniach klienckich można użyć certyfikatów wystawionych przez własną infrastrukturę kluczy publicznych (PKI). Usługi Intune można używać do wdrażania tych certyfikatów na zarządzanych urządzeniach. W przypadku urządzeń niezarządzanych te certyfikaty muszą być instalowane ręcznie.
 
 ### <a name="changing-the-domain"></a>Zmiana domeny
 Wszystkie zweryfikowanych domen są wyświetlane na liście rozwijanej zewnętrzny adres URL aplikacji. Aby zmienić domenę, wystarczy zaktualizować pola dla aplikacji. Jeśli domeny, nie ma na liście [dodać je jako zweryfikowane domeny](../fundamentals/add-custom-domain.md). Po wybraniu domeny, które nie mają certyfikatu skojarzonego jeszcze, wykonaj kroki 5 – 7, aby dodać certyfikat. Następnie upewnij się, że aktualizujesz rekord DNS, aby przekierować z nowego zewnętrznego adresu URL. 
@@ -87,7 +87,7 @@ Obecnie wszystkich zarządzania certyfikatami jest stronach poszczególnych apli
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Włącz logowanie jednokrotne](application-proxy-configure-single-sign-on-with-kcd.md) do aplikacji opublikowanych przy użyciu uwierzytelniania usługi Azure AD.
-* [Włącz dostęp warunkowy](application-proxy-integrate-with-sharepoint-server.md) do opublikowanej aplikacji.
+* [Włącz dostęp warunkowy](application-proxy-integrate-with-sharepoint-server.md) do opublikowanych aplikacji.
 * [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../fundamentals/add-custom-domain.md)
 
 

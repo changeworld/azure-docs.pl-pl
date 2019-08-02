@@ -1,7 +1,7 @@
 ---
-title: Jak używać wielowartościowych jednostek z modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Jak używać jednostek wielowartościowych z modelem Conversation Learner — Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak wielowartościowych jednostek za pomocą modelu uczeń konwersacji.
+description: Dowiedz się, jak używać jednostek wielowartościowych z modelem Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,89 +10,90 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 1f62def5e498f3f744beaed0cda207e1a75bfdf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7911dd561da0f1e7b62b1b457ae5b059d5d54767
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387960"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704082"
 ---
-# <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Jak używać wielowartościowych jednostek z modelu uczeń konwersacji
-Ten samouczek pokazuje właściwości wielu wartości jednostki.
+# <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Jak używać jednostek wielowartościowych z modelem Conversation Learner
+W tym samouczku przedstawiono Właściwość wielowartościowa jednostek.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Samouczek wielowartościowych jednostki (wersja zapoznawcza)](https://aka.ms/cl_Tutorial_v3_MultiValued_Preview)](https://aka.ms/cl_Tutorial_v3_MultiValued)
+[![Samouczek dotyczący jednostek wielowartościowych — wersja zapoznawcza](https://aka.ms/cl_Tutorial_v3_MultiValued_Preview)](https://aka.ms/cl_Tutorial_v3_MultiValued)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga, że ogólne samouczek Bot działa
+Ten samouczek wymaga, aby ogólny samouczek bot był uruchomiony
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
-Jednostki wielowartościowych wzrosnąć wartości listy, zamiast magazynować pojedynczej wartości.  Te jednostki są przydatne, gdy użytkownicy mogą określić więcej niż jedną wartość. Toppings na głosi, na przykład.
+Jednostki wielowartościowe gromadzą wartości na liście zamiast przechowywania pojedynczej wartości.  Te jednostki są przydatne, gdy użytkownicy mogą określić więcej niż jedną wartość. Na przykład toppings na Pizza.
 
-Jednostki oznaczone jako wielowartościowy odniesie każdego rozpoznane wystąpienia jednostki dołączana do listy w pamięci Botów. Rozpoznawanie kolejnych dołącza do jednostki wartości, zamiast zastępowania.
+Jednostki oznaczone jako wielowartościowe będą miały każde rozpoznane wystąpienie jednostki dołączone do listy w pamięci bot. Po dołączeniu kolejnego rozpoznawania do wartości jednostki zamiast zastępowania.
 
 ## <a name="steps"></a>Kroki
 
-Rozpocznij na stronie głównej w Interfejsie użytkownika sieci Web.
+Uruchom stronę główną w interfejsie użytkownika sieci Web.
 
 ### <a name="create-the-model"></a>Tworzenie modelu
 
-1. Wybierz **nowy Model**.
-2. Wprowadź **MultiValueEntities** dla **nazwa**.
+1. Wybierz pozycję **Nowy model**.
+2. Wprowadź **MultiValueEntities** dla **nazwy**.
 3. Wybierz pozycję **Utwórz**.
 
 ### <a name="entity-creation"></a>Tworzenie jednostki
 
-1. Wybierz **jednostek** w lewym panelu, a następnie **Nowa jednostka**.
-2. Wybierz **niestandardowych skonfigurowanych pod kątem** dla **typu jednostki**.
-3. Wprowadź **toppings** dla **nazwa jednostki**.
-4. Sprawdź **wielowartościowe** umożliwiające jednostki są gromadzone co najmniej jedną wartość.
-5. Sprawdź **można negować**.
+1. Wybierz pozycję **jednostki** w lewym panelu, a następnie pozycję **Nowa jednostka**.
+2. Wybierz pozycję niestandardowa przeszkolony dla **typu jednostki**.
+3. Wprowadź **toppings** dla **nazwy jednostki**.
+4. Sprawdź **wiele** wartości, aby umożliwić jednostkom kumulowanie co najmniej jednego elementu.
+5. Sprawdź **negację**.
 6. Wybierz pozycję **Utwórz**.
 
 ![](../media/T07_entity_create.png)
 
-### <a name="create-the-first-action"></a>Tworzenie pierwszej akcji
+### <a name="create-the-first-action"></a>Utwórz pierwszą akcję
 
-1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
-2. Wprowadź **Oto Twoja toppings: $toppings** dla **odpowiedzi Botów...** . Wiodący znak dolara wskazuje odwołanie do jednostki.
+1. W lewym panelu wybierz pozycję **Akcje** , a następnie pozycję **Nowa akcja**.
+2. Wprowadź **tutaj toppings: $toppings** dla **odpowiedzi bot..** . Znak dolara wiodącego wskazuje odwołanie do jednostki.
 3. Wybierz pozycję **Utwórz**.
 
 ![](../media/T07_action_create_1.png)
 
-### <a name="create-the-second-action"></a>Tworzenie drugiej akcji
+### <a name="create-the-second-action"></a>Utwórz drugą akcję
 
-1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
-2. Wprowadź **toppings, które chcesz użyć?** dla **odpowiedzi Botów...** .
-3. Wprowadź **toppings** dla **dyskwalifikacji uprawnia**.
+1. W lewym panelu wybierz pozycję **Akcje** , a następnie pozycję **Nowa akcja**.
+2. Podaj **, jakie toppings chcesz?** dla **odpowiedzi bot...**
+3. Wprowadź **toppings** wcelu odkwalifikowania się.
 4. Wybierz pozycję **Utwórz**.
 
-Masz teraz dwie akcje.
+Teraz masz dwie akcje.
 
 ![](../media/T07_action_create_2.png)
 
 ### <a name="train-the-model"></a>Uczenie modelu
 
-1. Wybierz **okien dialogowych Train** w lewym panelu, a następnie **okno dialogowe Nowy Train**.
-2. Wprowadź **cześć** dla wypowiedź użytkownika w panelu po lewej stronie rozmowy.
-3. Wybierz **wynik akcji**.
-4. Wybierz **toppings, które chcesz użyć?** z listy akcji. Percentyla wynosi 100%, co jedyne prawidłowe działanie na podstawie ograniczeń.
-5. Wprowadź **ser i grzyby** dla wypowiedź użytkownika w panelu po lewej stronie rozmowy.
-6. Wyróżnij **ser** polecenie **+ toppings**.
-7. Wyróżnij **grzyby** polecenie **+ toppings**.
-8. Wybierz **wynik akcji**.
-9. Wybierz **Oto Twoja toppings: $toppings** z listy akcji.
-10. Wprowadź **Dodaj chili** dla użytkownika wypowiedź dalej w panelu po lewej stronie rozmowy.
-11. Wyróżnij **chili** polecenie **+ toppings**.
-12. Wybierz **wynik akcji**.
-13. Wybierz **Oto Twoja toppings: $toppings** z listy akcji.
-14. Wprowadź **Usuń ser** dla wypowiedź trzeciego użytkownika w panelu po lewej stronie rozmowy.
-15. Wyróżnij **ser** polecenie **-toppings**.
-16. Wybierz **wynik akcji**.
-17. Wybierz **Oto Twoja toppings: $toppings** z listy akcji.
+1. Wybierz pozycję **okna dialogowe szkolenia** w lewym panelu, a następnie **okno dialogowe nowe szkolenie**.
+2. Wprowadź wartość " **Witaj** " dla wypowiedź użytkownika w lewym panelu rozmowy.
+3. Wybierz **Akcje oceny**.
+4. Wybierz, **co toppings chcesz?** z listy akcje. Percentyl ma wartość 100%, ponieważ jedyną prawidłową akcją opartą na ograniczeniach.
+5. Wprowadź **sery i grzyby** dla wypowiedź użytkownika w lewym panelu rozmowy.
+6. Wyróżnij **ser** , a następnie wybierz pozycję **+ toppings**.
+7. Zaznacz pozycję grzyby, a następnie wybierz opcję **+ toppings**.
+8. Wybierz **Akcje oceny**.
+9. Wybierz **toppings: $toppings** z listy akcji.
+10. Wprowadź wartość **Dodaj paprykę** dla następnej wypowiedź użytkownika w lewym panelu rozmowy.
+11. Wyróżnij **paprykę** , a następnie wybierz pozycję **+ toppings**.
+12. Wybierz **Akcje oceny**.
+13. Wybierz **toppings: $toppings** z listy akcji.
+14. Wprowadź wartość " **Usuń ser** " dla trzeciego wypowiedź użytkownika w lewym panelu rozmowy.
+15. Wyróżnij **ser** , a następnie wybierz pozycję **-toppings**.
+16. Wybierz **Akcje oceny**.
+17. Wybierz **toppings: $toppings** z listy akcji.
 
 ![](../media/T07_training.png)
 

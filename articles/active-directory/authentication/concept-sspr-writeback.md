@@ -1,6 +1,6 @@
 ---
-title: W środowisku lokalnym integracji funkcji zapisywania zwrotnego haseł przy użyciu usługi Azure AD SSPR — usługi Azure Active Directory
-description: Pobieranie haseł w chmurze zapisywane z powrotem do środowiska lokalnego AD infratstructure
+title: Integracja lokalnego zapisywania zwrotnego haseł z usługą Azure AD SSPR — Azure Active Directory
+description: Uzyskaj hasła w chmurze zapisywane z powrotem do lokalnej usługi AD infratstructure
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,161 +11,161 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dbf27301e738978e7f03d2423a4d23fd63c97b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07069d22d57540c6a16472bc7278821e14f1f18e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113493"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561282"
 ---
-# <a name="what-is-password-writeback"></a>Co to jest funkcja zapisywania zwrotnego haseł?
+# <a name="what-is-password-writeback"></a>Co to jest zapisywanie zwrotne haseł?
 
-Dobrze jest posiadanie narzędzie resetowania haseł oparte na chmurze, ale w większości firm nadal masz katalogu lokalnego, jeśli istnieją użytkownicy. Jak odbywa się przechowywanie pomocy technicznej firmy Microsoft tradycyjne lokalne Active Directory (AD) zsynchronizowany ze zmianami haseł w chmurze? Zapisywanie zwrotne haseł jest funkcją, włączana za [program Azure AD Connect](../hybrid/whatis-hybrid-identity.md) umożliwiająca zmiany haseł w chmurze, aby być zapisywane z powrotem do istniejącego katalogu lokalnego w czasie rzeczywistym.
+Posiadanie narzędzia do resetowania haseł opartego na chmurze jest doskonałe, ale większość firm nadal ma katalog lokalny, w którym istnieją użytkownicy. W jaki sposób firma Microsoft obsługuje tradycyjne Active Directory lokalnych (AD) w synchronizacji ze zmianami haseł w chmurze? Funkcja zapisywania zwrotnego haseł jest funkcją włączoną [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) , która umożliwia zapisywanie zmian haseł w chmurze z powrotem do istniejącego katalogu lokalnego w czasie rzeczywistym.
 
-Zapisywanie zwrotne haseł jest obsługiwane w środowiskach korzystających z:
+Zapisywanie zwrotne haseł jest obsługiwane w środowiskach, w których są używane:
 
 * [Usługi Active Directory Federation Services](../hybrid/how-to-connect-fed-management.md)
 * [Synchronizacja skrótów haseł](../hybrid/how-to-connect-password-hash-synchronization.md)
 * [Uwierzytelnianie przekazywane](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> Zapisywanie zwrotne haseł przestaną działać dla klientów, którzy korzystają z wersji Azure AD Connect 1.0.8641.0 i gdy starsze [Azure Access Control service (ACS) została wycofana w dniu 7 listopada 2018](../develop/active-directory-acs-migration.md). Usługa Azure AD Connect wersje 1.0.8641.0 i starsze nie będzie już umożliwiać funkcji zapisywania zwrotnego haseł w tym czasie, ponieważ są one zależne od usługi ACS do obsługi tej funkcji.
+> Zapisywanie zwrotne haseł przestanie działać dla klientów korzystających z Azure AD Connect wersji 1.0.8641.0 i starszych, gdy [usługa Azure Access Control Service (ACS) zostanie wycofana w dniu 7 listopada, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect wersje 1.0.8641.0 i starsze nie będą już zezwalały na zapisywanie zwrotne haseł, ponieważ zależą one od usług ACS dla tej funkcji.
 >
-> Aby uniknąć przerw w działaniu usługi, uaktualnianie z poprzedniej wersji programu Azure AD Connect do nowszej wersji, zobacz artykuł [program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej](../hybrid/how-to-upgrade-previous-version.md)
+> Aby uniknąć przerw w działaniu usługi, należy uaktualnić poprzednią wersję Azure AD Connect do nowszej wersji, zapoznaj się z artykułem [Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej](../hybrid/how-to-upgrade-previous-version.md)
 >
 
-Oferuje funkcję zapisywania zwrotnego haseł:
+Zapisywanie zwrotne haseł zapewnia następujące informacje:
 
-* **Wymuszanie zasad haseł usługi Active Directory w środowisku lokalnym**: Jeśli użytkownik resetuje hasła, jest sprawdzany w celu upewnij się, że spełnia ono Twoje zasady usługi Active Directory w środowisku lokalnym przed zatwierdzeniem go do tego katalogu. Ten przegląd zawiera sprawdzanie historii, złożoności, wieku, filtry hasła i inne ograniczenia haseł, które zostały zdefiniowane w lokalnej usłudze Active Directory.
-* **Opóźnienie zero opinii**: Zapisywanie zwrotne haseł jest operacja synchroniczna. Użytkownicy są niezwłocznie powiadomiona, czy swoje hasło nie spełnia warunków zasady lub może nie można zresetować zmieniona z jakiegokolwiek powodu.
-* **Hasło obsługuje zmieni się z panelu dostępu i usługi Office 365**: Gdy Sfederowane lub synchronizację skrótów haseł użytkownicy wrócą do zmiany haseł wygasł lub nie wygasły, te hasła są zapisywane z powrotem do środowiska lokalnego usługi Active Directory.
-* **Obsługuje funkcję zapisywania zwrotnego haseł, gdy administrator resetuje je w witrynie Azure portal**: Zawsze, gdy administrator resetuje hasło użytkownika w [witryny Azure portal](https://portal.azure.com), czy ten użytkownik jest Sfederowane synchronizację skrótów haseł, hasło jest zapisywane z powrotem do środowiska lokalnego. Ta funkcja nie jest obecnie obsługiwana w portalu administracyjnym pakietu Office.
-* **Nie wymaga żadnych reguł zapory dla ruchu przychodzącego**: Zapisywanie zwrotne haseł używa usługi Azure Service Bus relay jako podstawowy kanał komunikacyjny. Cała komunikacja jest wychodzących za pośrednictwem portu 443.
+* **Wymuszanie lokalnych zasad haseł Active Directory**: Po zresetowaniu hasła przez użytkownika jest sprawdzane, czy jest ono zgodne z lokalnymi zasadami Active Directory przed przekazaniem ich do tego katalogu. Ten przegląd obejmuje Sprawdzanie historii, złożoności, wieku, filtrów haseł i innych ograniczeń haseł zdefiniowanych w lokalnej Active Directory.
+* **Opinia**o zerowej opóźnieniu: Zapisywanie zwrotne haseł jest operacją synchroniczną. Użytkownicy są powiadamiani natychmiast, jeśli ich hasło nie spełnia zasad lub nie można go zresetować ani zmienić z jakiegokolwiek powodu.
+* **Obsługuje zmiany haseł z panelu dostępu i pakietu Office 365**: Gdy użytkownicy z synchronizacją federacyjnego lub skrótem hasła mają zmienić wygasłe lub niewygasłe hasła, te hasła są zapisywane z powrotem do lokalnego środowiska Active Directory.
+* **Obsługuje funkcję zapisywania zwrotnego haseł, gdy administrator resetuje je z Azure Portal**: Za każdym razem, gdy administrator resetuje hasło użytkownika w [Azure Portal](https://portal.azure.com), jeśli ten użytkownik jest synchronizowany lub skrótem hasła, hasło jest zapisywane z powrotem do lokalnego. Ta funkcja nie jest obecnie obsługiwana w portalu administracyjnym pakietu Office.
+* **Nie wymaga żadnych reguł zapory dla ruchu przychodzącego**: Funkcja zapisywania zwrotnego haseł używa przekaźnika Azure Service Bus jako podstawowego kanału komunikacyjnego. Cała komunikacja jest wychodząca przez port 443.
 
 > [!NOTE]
-> Nie można użyć kont użytkowników, które istnieją w ramach grup ochrony w usłudze Active Directory w środowisku lokalnym za pomocą funkcji zapisywania zwrotnego haseł. Konto administratora, które istnieją w ramach chronione grup w lokalnej usługi AD mogą być używane z zapisywaniem zwrotnym haseł. Aby uzyskać więcej informacji na temat grup ochrony, zobacz [chronione kont i grup w usłudze Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
+> Konta administratorów istniejące w grupach chronionych w lokalnej usłudze AD mogą być używane z funkcją zapisywania zwrotnego haseł. Administratorzy mogą zmienić swoje hasło w chmurze, ale nie mogą zresetować zapomnianego hasła przy użyciu resetowania hasła. Aby uzyskać więcej informacji na temat grup chronionych, zobacz [chronione konta i grupy w Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
 
-## <a name="licensing-requirements-for-password-writeback"></a>Wymagania licencyjne dla funkcji zapisywania zwrotnego haseł
+## <a name="licensing-requirements-for-password-writeback"></a>Wymagania dotyczące licencjonowania dla zapisywania zwrotnego haseł
 
-**Samoobsługowe hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym jest funkcją premium usługi Azure AD**. Aby uzyskać więcej informacji na temat licencjonowania, zobacz [usługi Azure Active Directory ceny witryny](https://azure.microsoft.com/pricing/details/active-directory/).
+**Samoobsługowe resetowanie/zmiana/odblokowanie hasła przy użyciu lokalnego zapisywania zwrotnego to funkcja Premium usługi Azure AD**. Aby uzyskać więcej informacji o licencjonowaniu, zobacz [witrynę Azure Active Directory cenowej](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Aby użyć funkcji zapisywania zwrotnego haseł, musi mieć jeden z następujących licencji, które są przypisane w dzierżawie usługi:
+Aby korzystać z funkcji zapisywania zwrotnego haseł, musisz mieć jedną z następujących licencji przypisanych do dzierżawy:
 
 * Usługa Azure AD — warstwa Premium P1
 * Usługa Azure AD — warstwa Premium P2
-* Pakiet Enterprise Mobility + Security E3 lub A3
-* Pakiet Enterprise Mobility + Security E5 lub A5
-* Rozwiązania Microsoft 365 E3 lub A3
-* Rozwiązania Microsoft 365 E5 lub A5
+* Enterprise Mobility + Security E3 lub A3
+* Enterprise Mobility + Security E5 lub A5
+* Microsoft 365 E3 lub A3
+* Microsoft 365 E5 lub A5
 * Microsoft 365 F1
 * Microsoft 365 Business
 
 > [!WARNING]
-> Licencjonowanie plany usługi Office 365 autonomiczny *nie obsługują "Samoobsługi hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym"* i wymagają jednego z poprzednich planów dla tej funkcji do pracy.
+> Autonomiczne plany licencjonowania pakietu Office 365 *nie obsługują funkcji samoobsługowego resetowania hasła/zmiany/odblokowywania przy użyciu lokalnego zapisywania zwrotnego* i wymagają posiadania jednego z powyższych planów, aby ta funkcja działała.
 
-## <a name="how-password-writeback-works"></a>Sposób działania funkcji zapisywania zwrotnego haseł
+## <a name="how-password-writeback-works"></a>Jak działa zapisywanie zwrotne haseł
 
-Skrót federacyjnego lub hasło są synchronizowane użytkownik próbuje Resetowanie lub zmienianie swoich haseł w chmurze, są wykonywane następujące akcje:
+Gdy użytkownik z synchronizacją federacyjnego lub skrótem hasła próbuje zresetować lub zmienić hasło w chmurze, wystąpią następujące akcje:
 
-1. Sprawdzanie jest wykonywane, aby sprawdzić, jakiego rodzaju hasła użytkownika. Jeśli hasło jest zarządzane lokalnie:
-   * Sprawdzanie jest wykonywane, aby zobaczyć, czy usługa zapisywania zwrotnego jest uruchomiony. Jeśli tak jest, użytkownik może kontynuować.
-   * Jeśli usługa zapisywania zwrotnego nie działa, użytkownik jest informowany, że nie można zresetować swoje hasło teraz.
-1. Następnie przekazuje bramy uwierzytelniania użytkownika i osiągnie **Resetuj hasło** strony.
-1. Użytkownik wybiera nowe hasło i potwierdza go.
-1. Gdy użytkownik wybierze **przesyłania**, przechowywała hasła są szyfrowane przy użyciu klucza symetrycznego tworzone podczas procesu instalacji funkcji zapisywania zwrotnego.
-1. Zaszyfrowane hasło znajduje się w ładunku, które są przesyłane za pośrednictwem kanału protokołu HTTPS do usługi specyficznym dla dzierżawy usługi service bus relay (który jest skonfigurowany dla Ciebie podczas procesu instalacji funkcji zapisywania zwrotnego). To relay są chronione przez losowo wygenerowane hasło, który zna instalacji lokalnych.
-1. Po komunikat dociera do usługi service bus, resetowania haseł punktu końcowego budzi i automatycznie widzi, że ma on oczekujące żądanie resetowania.
-1. Za pomocą atrybutu zakotwiczenia chmury usługi wygląda dla użytkownika. Dla tego obszaru wyszukiwania została wykonana pomyślnie:
+1. Sprawdzanie jest wykonywane, aby zobaczyć, jakiego typu hasła dotyczy użytkownik. Jeśli hasło jest zarządzane lokalnie:
+   * Sprawdzanie jest przeprowadzane w celu sprawdzenia, czy usługa zapisywania zwrotnego jest uruchomiona. W takim przypadku użytkownik może wykonać operację.
+   * Jeśli usługa zapisywania zwrotnego nie działa, użytkownik zostanie poinformowany o tym, że nie można teraz zresetować hasła.
+1. Następnie użytkownik przekazuje odpowiednie bramy uwierzytelniania i osiągnie stronę **resetowania hasła** .
+1. Użytkownik wybierze nowe hasło i potwierdzi je.
+1. Gdy użytkownik wybierze opcję **Prześlij**, hasło w postaci zwykłego tekstu jest szyfrowane przy użyciu klucza symetrycznego utworzonego podczas procesu konfiguracji zapisywania zwrotnego.
+1. Zaszyfrowane hasło jest dołączane do ładunku, który jest wysyłany przez kanał HTTPS do przekaźnika usługi Service Bus określonego dla dzierżawy (który jest skonfigurowany dla Ciebie w procesie konfiguracji zapisywania zwrotnego). Ten przekaźnik jest chroniony przez losowo generowane hasło, które zna tylko instalacji lokalnej.
+1. Gdy komunikat dociera do usługi Service Bus, punkt końcowy resetowania hasła zostanie automatycznie wznowiony i zobaczy, że ma oczekujące żądanie resetowania.
+1. Następnie usługa szuka użytkownika przy użyciu atrybutu zakotwiczenia chmury. Aby to wyszukiwanie powiodło się:
 
-   * Obiekt użytkownika muszą istnieć w przestrzeni łącznika usługi Active Directory.
-   * Obiekt użytkownika muszą być połączone z odpowiedniego obiektu metaverse (MV).
-   * Obiekt użytkownika muszą być połączone z odpowiedni obiekt łącznika usługi Azure Active Directory.
-   * Link z obiektu łącznika usługi Active Directory, aby MV musi mieć reguły synchronizacji `Microsoft.InfromADUserAccountEnabled.xxx` łącze.
+   * Obiekt User musi znajdować się w przestrzeni łącznika Active Directory.
+   * Obiekt użytkownika musi być połączony z odpowiednim obiektem Metaverse (MV).
+   * Obiekt użytkownika musi być połączony z odpowiednim obiektem łącznika Azure Active Directory.
+   * Łącze z obiektu łącznika Active Directory do MV musi mieć regułę `Microsoft.InfromADUserAccountEnabled.xxx` synchronizacji na tym łączu.
    
-   Po wywołaniu pochodzą z chmury, korzysta z aparatu synchronizacji **atrybutu cloudAnchor** atrybutu, aby wyszukać obiektu przestrzeni łącznika usługi Azure Active Directory. Następnie lokalizuje łącze obiektu MV, a następnie lokalizuje łącze obiektu usługi Active Directory. Ponieważ może istnieć wiele obiektów usługi Active Directory (obejmującego wiele lasów) dla tego samego użytkownika, aparat synchronizacji opiera się na `Microsoft.InfromADUserAccountEnabled.xxx` link, aby wybrać właściwy.
+   Gdy wywołanie pochodzi z chmury, aparat synchronizacji używa atrybutu **cloudAnchor** , aby wyszukać obiekt przestrzeni łącznika Azure Active Directory. Następnie następuje po łączu z powrotem do obiektu MV, a następnie następuje po linku z powrotem do obiektu Active Directory. Ponieważ może istnieć wiele obiektów Active Directory (wiele lasów) dla tego samego użytkownika, aparat synchronizacji korzysta `Microsoft.InfromADUserAccountEnabled.xxx` z linku w celu wybrania poprawnego działania.
 
-1. Po użytkownik konta zostanie znaleziony, zostanie podjęta próba resetowania hasła bezpośrednio w odpowiedniej lasu usługi Active Directory.
-1. W przypadku powodzenia operacji Ustaw hasło użytkownika jest informację, że ich hasło zostało zmienione.
+1. Po znalezieniu konta użytkownika następuje próba zresetowania hasła bezpośrednio w odpowiednim lesie Active Directory.
+1. Jeśli operacja ustawiania hasła zakończyła się pomyślnie, użytkownik otrzyma informację, że hasło zostało zmienione.
    > [!NOTE]
-   > Jeśli skrót hasła użytkownika jest zsynchronizowany z usługą Azure AD za pomocą synchronizacji skrótów haseł, istnieje prawdopodobieństwo, że w lokalnych zasadach haseł jest mniejsze niż zasady haseł w chmurze. W tym przypadku są wymuszane w lokalnych zasadach. Te zasady zapewniają, że zasady lokalne jest wymuszone w chmurze, niezależnie od tego w celu zapewnienia logowania jednokrotnego za pomocą synchronizacji skrótów haseł lub federacji.
+   > Jeśli skrót hasła użytkownika jest synchronizowany z usługą Azure AD przy użyciu funkcji synchronizacji skrótów haseł, istnieje możliwość, że lokalne zasady haseł są słabsze niż zasady haseł w chmurze. W takim przypadku zasady lokalne są wymuszane. Te zasady zapewniają, że zasady lokalne są wymuszane w chmurze, niezależnie od tego, czy w celu zapewnienia logowania jednokrotnego używasz synchronizacji skrótów haseł lub Federacji.
 
-1. Jeśli hasło ustawione operacja kończy się niepowodzeniem, błąd monituje użytkownika, aby spróbować ponownie. Operacja może zakończyć się niepowodzeniem, ponieważ:
-    * Usługa nie działał.
-    * Hasło, które są wybrane nie spełniło zasad organizacji.
-    * Nie można odnaleźć użytkownika w lokalnej usłudze Active Directory.
+1. Jeśli operacja ustawiania hasła nie powiedzie się, zostanie wyświetlony komunikat o błędzie, aby spróbować ponownie. Operacja może zakończyć się niepowodzeniem, ponieważ:
+    * Usługa nie działa.
+    * Wybrane hasło nie spełnia zasad organizacji.
+    * Nie można znaleźć użytkownika w lokalnej Active Directory.
 
-      Komunikaty o błędach zawierają wskazówki dla użytkowników, dzięki czemu mogą próbować rozwiązać bez interwencji administratora.
+      Komunikaty o błędach zawierają wskazówki dla użytkowników, dzięki czemu mogą próbować rozwiązać problem bez interwencji administratora.
 
-## <a name="password-writeback-security"></a>Zabezpieczeń funkcji zapisywania zwrotnego haseł
+## <a name="password-writeback-security"></a>Zabezpieczenia zapisywania zwrotnego haseł
 
-Zapisywanie zwrotne haseł jest wysoce bezpieczna usługa. Aby upewnić się, że Twoje informacje są chronione, model zabezpieczeń warstwy 4 jest włączona zgodnie z opisem w następujących czynności:
+Zapisywanie zwrotne haseł jest wysoce bezpieczną usługą. Aby zapewnić ochronę informacji, model zabezpieczeń z czterema warstwami jest włączony w następujący sposób:
 
-* **Specyficznym dla dzierżawy usługi service bus relay**
-   * Po skonfigurowaniu usługi specyficznym dla dzierżawy usługi Service bus relay skonfigurowano chronione przez losowo generowany silne hasło, które firma Microsoft nigdy nie ma dostępu do.
-* **Zablokowane, silną kryptograficznie hasło klucza szyfrowania**
-   * Po utworzeniu usługi Service bus relay silnego klucza symetrycznego jest tworzony, który jest używany do szyfrowania hasła, ponieważ pochodzi przewodowo. Ten klucz znajduje się tylko w firmie magazynu wpisów tajnych w chmurze, co intensywnie jest zablokowana i inspekcji, podobnie jak każde inne hasło w katalogu.
-* **Branżowy standard zabezpieczeń TLS (Transport Layer)**
-   1. Gdy hasło Resetowanie lub zmienianie operacja odbywa się w chmurze, przechowywała hasła jest szyfrowana za pomocą klucza publicznego.
-   1. Zaszyfrowane hasło jest umieszczany w komunikat protokołu HTTPS, który był wysyłany za pośrednictwem szyfrowanego kanału przy użyciu certyfikatów SSL firmy Microsoft do swojej usługi Service bus relay.
-   1. Po odebraniu wiadomości w usłudze Service bus Twojego lokalnego agenta zostanie wznowiona i uwierzytelnia się z usługą service bus przy użyciu silnego hasła, który wcześniej został wygenerowany.
-   1. Agent środowiska lokalnego przejmuje zaszyfrowanego komunikatu i odszyfrowuje ją przy użyciu klucza prywatnego.
-   1. Lokalnego agenta podejmuje próbę ustawienia hasła, za pośrednictwem interfejsu API usługi AD DS SetPassword. Ten krok jest, co umożliwia wymuszanie zasad haseł lokalnej usługi Active Directory (na przykład złożoności, wieku, Historia i filtrów) w chmurze.
-* **Zasady wygasania wiadomości**
-   * Jeśli komunikat znajduje się w usłudze Service bus, ponieważ Twoja usługa lokalna jest wyłączona, upłynie limit czasu i zostanie usunięta po kilku minutach. Zwiększa bezpieczeństwo jeszcze bardziej, limit czasu i usuwanie wiadomości.
+* **Usługa magistrali usług specyficznych dla dzierżawy**
+   * Po skonfigurowaniu usługi przekaźnik usługi Service Bus specyficzny dla dzierżawy jest skonfigurowany do ochrony za pomocą losowo wygenerowanego silnego hasła, do którego firma Microsoft nigdy nie ma dostępu.
+* **Zablokowany, kryptograficznie silnie, klucz szyfrowania hasła**
+   * Po utworzeniu przekaźnika usługi Service Bus zostaje utworzony silny klucz symetryczny, który jest używany do szyfrowania hasła w postaci, w jakiej się znajduje w sieci. Ten klucz znajduje się tylko w magazynie wpisów tajnych firmy w chmurze, który jest silnie zablokowany i objęty inspekcją, podobnie jak każde inne hasło w katalogu.
+* **Standard branżowy Transport Layer Security (TLS)**
+   1. Gdy w chmurze jest wykonywana operacja resetowania lub zmiany hasła, hasło w postaci zwykłego tekstu jest szyfrowane przy użyciu klucza publicznego.
+   1. Szyfrowane hasło jest umieszczane w wiadomości HTTPS wysyłanej przez szyfrowany kanał przy użyciu certyfikatów SSL firmy Microsoft do przekaźnika usługi Service Bus.
+   1. Po nadejściu wiadomości w usłudze Service Bus Agent lokalny wznawia działanie i uwierzytelnia się do usługi Service Bus przy użyciu silnego hasła, które zostało wcześniej wygenerowane.
+   1. Agent lokalny odbiera zaszyfrowany komunikat i odszyfrowuje go przy użyciu klucza prywatnego.
+   1. Agent lokalny próbuje ustawić hasło za pomocą interfejsu API AD DS SetPassword. Ten krok umożliwia wymuszanie Active Directory lokalnych zasad haseł (takich jak złożoność, wiek, historia i filtry) w chmurze.
+* **Zasady wygasania komunikatów**
+   * Jeśli komunikat znajduje się w usłudze Service Bus, ponieważ Usługa lokalna nie działa, przetrwa limit czasu i jest usuwany po kilku minutach. Limit czasu i usunięcie wiadomości zwiększają jeszcze więcej zabezpieczeń.
 
 ### <a name="password-writeback-encryption-details"></a>Szczegóły szyfrowania zapisywania zwrotnego haseł
 
-Po użytkownik prześle resetowania haseł, żądanie zresetowania przechodzi przez kilka kroków szyfrowania przed premierą go w środowisku w środowisku lokalnym. Te kroki szyfrowania upewnij się, usługa maksymalna niezawodności i skutecznych zabezpieczeniach. Zostały one opisane w następujący sposób:
+Po przesłaniu przez użytkownika resetowania hasła żądanie resetowania przechodzi przez kilka kroków szyfrowania przed ich nadejściem do środowiska lokalnego. Te kroki szyfrowania zapewniają maksymalną niezawodność i bezpieczeństwo usługi. Są one opisane w następujący sposób:
 
-* **Krok 1. Szyfrowanie hasła przy użyciu 2048-bitowego klucza RSA**: Po przesłaniu hasła można zapisać zwrotnie w lokalnych przesłane samego hasła są szyfrowane przy użyciu 2048-bitowego klucza RSA.
-* **Krok 2. Poziom pakietu szyfrowania przy użyciu usługi GCM AES**: Cały pakiet, hasło, a także wymagane metadane są szyfrowane przy użyciu usługi AES GCM. Szyfrowanie uniemożliwia każda osoba mająca bezpośredni dostęp do kanału usługi ServiceBus źródłowego wyświetlanie i manipulowanie zawartością.
-* **Krok 3. Cała komunikacja odbywa się za pośrednictwem protokołu TLS/SSL**: Cała komunikacja z magistrali usług odbywa się w kanału SSL/TLS. To szyfrowanie zabezpiecza zawartości nieautoryzowanym innych firm.
-* **Automatycznych kluczy przez co sześć miesięcy**: Wszystkie klucze przejdą przez co sześć miesięcy lub za każdym razem, gdy funkcji zapisywania zwrotnego haseł jest wyłączona, a następnie ponownie włączona usługa Azure AD Connect, do zapewnienia bezpieczeństwa i zabezpieczeń usługi maksymalnej.
+* **Krok 1. Szyfrowanie hasła przy użyciu 2048-bitowego klucza**RSA: Po przesłaniu przez użytkownika hasła do zapisu z powrotem do lokalnego przesłane hasło jest szyfrowane przy użyciu 2048-bitowego klucza RSA.
+* **Krok 2. Szyfrowanie na poziomie pakietu przy użyciu algorytmu AES**-GCM: Cały pakiet, hasło i wymagane metadane są szyfrowane przy użyciu algorytmu AES-GCM. To szyfrowanie uniemożliwia osobie mającej bezpośredni dostęp do bazowego kanału ServiceBus z wyświetlania lub manipulowania zawartością.
+* **Krok 3. Cała komunikacja odbywa się za pośrednictwem**protokołu TLS/SSL: Cała komunikacja z usługą ServiceBus odbywa się w kanale SSL/TLS. To Szyfrowanie zabezpiecza zawartość przed nieautoryzowanymi stronami trzecimi.
+* **Automatyczne wycofywanie kluczy na sześć miesięcy**: Wszystkie klucze są przenoszone co sześć miesięcy lub za każdym razem, gdy funkcja zapisywania zwrotnego haseł jest wyłączona, a następnie ponownie włączona w Azure AD Connect, aby zapewnić maksymalne bezpieczeństwo i bezpieczeństwo usług.
 
-### <a name="password-writeback-bandwidth-usage"></a>Wykorzystanie przepustowości zapisywania zwrotnego haseł
+### <a name="password-writeback-bandwidth-usage"></a>Użycie przepustowości zapisywania zwrotnego haseł
 
-Zapisywanie zwrotne haseł jest usługą o niskiej przepustowości, która tylko wysyła żądania do lokalnego agenta w następujących okolicznościach:
+Zapisywanie zwrotne haseł to usługa o niskiej przepustowości, która wysyła żądania z powrotem do lokalnego agenta w następujących okolicznościach:
 
-* Dwa komunikaty są wysyłane, gdy ta funkcja jest włączone lub wyłączone za pomocą usługi Azure AD Connect.
-* Jeden komunikat jest wysyłany po co pięć minut jako pulsu usługi, aby uzyskać, tak długo, jak usługa jest uruchomiona.
-* Dwa komunikaty są wysyłane w każdym przesłaniu nowego hasła czasu:
-   * Pierwszy komunikat to żądanie do wykonania tej operacji.
-   * Drugi komunikat zawiera wynik operacji i są wysyłane w następujących okolicznościach:
-      * Każdym przesłaniu nowego hasła podczas resetowania hasła użytkownika.
-      * Każdym przesłaniu nowego hasła podczas operacji zmiany hasła użytkownika.
-      * Każdym przesłaniu nowego hasła podczas użytkownika inicjowanych przez administratora resetowania hasła (tylko z portale administracyjne Azure).
+* Po włączeniu lub wyłączeniu tej funkcji za pomocą Azure AD Connect są wysyłane dwa komunikaty.
+* Jeden komunikat jest wysyłany co pięć minut jako puls usługi przez czas, gdy usługa jest uruchomiona.
+* Za każdym razem, gdy zostanie przesłane nowe hasło, wysyłane są dwa komunikaty:
+   * Pierwszy komunikat to żądanie wykonania operacji.
+   * Drugi komunikat zawiera wynik operacji i jest wysyłany w następujących okolicznościach:
+      * Za każdym razem, gdy w trakcie samoobsługowego resetowania hasła użytkownika zostanie przesłane nowe hasło.
+      * Za każdym razem, gdy w trakcie operacji zmiany hasła użytkownika zostanie przesłane nowe hasło.
+      * Za każdym razem, gdy nowe hasło zostanie przesłane podczas resetowania hasła użytkownika zainicjowanego przez administratora (tylko z portali administratora platformy Azure).
 
 #### <a name="message-size-and-bandwidth-considerations"></a>Zagadnienia dotyczące rozmiaru i przepustowości wiadomości
 
-Rozmiar każdego komunikatu opisanych powyżej jest zwykle poniżej 1 KB. Nawet w ekstremalnych obciążeń usługi zapisywania zwrotnego haseł, sama zużywa kilka kilobitów na sekundę przepustowości. Ponieważ każdy komunikat jest wysyłany w czasie rzeczywistym, tylko wtedy, gdy jest to wymagane przez operację aktualizacji hasła, a ponieważ tak mały rozmiar komunikatu przepustowości, funkcji zapisywania zwrotnego jest zbyt mała, aby ma zauważalnego wpływu.
+Każdy opisany wcześniej komunikat ma zwykle mniej niż 1 KB. Nawet w przypadku skrajnych obciążeń sama usługa zapisywania zwrotnego haseł zużywa kilka kilobitów na sekundę przepustowości. Ponieważ każdy komunikat jest wysyłany w czasie rzeczywistym, tylko wtedy, gdy jest to wymagane przez operację aktualizacji hasła, a ponieważ rozmiar komunikatu jest mały, użycie przepustowości przez funkcję zapisywania zwrotnego jest zbyt małe i ma wymierny wpływ.
 
-## <a name="supported-writeback-operations"></a>Operacje obsługiwane zapisywania zwrotnego
+## <a name="supported-writeback-operations"></a>Obsługiwane operacje zapisywania zwrotnego
 
-Hasła są zapisywane z powrotem w następujących sytuacjach:
+Hasła są zapisywane z powrotem we wszystkich następujących sytuacjach:
 
-* **Operacje obsługiwane przez użytkownika końcowego**
-   * Hasło operacji zmiany dowolnego dobrowolnej samoobsługi użytkowników końcowych
-   * Wszelkie życie samoobsługi użytkowników końcowych zmienić operacji hasła, na przykład, datę wygaśnięcia hasła
-   * Wszelkie przez użytkownika końcowego samoobsługowego resetowania haseł pochodzący z [portal resetowania haseł](https://passwordreset.microsoftonline.com)
-* **Operacje obsługiwane administratora**
-   * Hasło operacji zmiany dowolnego dobrowolnej samoobsługi administratora
-   * Wszelkie życie samoobsługi administratora Zmień operacji hasła, na przykład, datę wygaśnięcia hasła
-   * Wszelkie administratora samoobsługowego resetowania haseł pochodzący z [portal resetowania haseł](https://passwordreset.microsoftonline.com)
-   * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła z [witryny Azure portal](https://portal.azure.com)
+* **Obsługiwane operacje wykonywane przez użytkowników końcowych**
+   * Każda operacja dobrowolnej zmiany hasła samoobsługowego użytkownika końcowego
+   * Każda operacja zmiany hasła przez użytkownika końcowego, na przykład wygaśnięcie hasła
+   * Wszelkie Samoobsługowe resetowanie haseł użytkowników końcowych, które pochodzą z [portalu resetowania haseł](https://passwordreset.microsoftonline.com)
+* **Obsługiwane operacje administratora**
+   * Każda operacja automatycznej zmiany hasła samoobsługowego administratora
+   * Każda operacja zmiany hasła przez samoobsługowy administrator, na przykład wygaśnięcie hasła
+   * Wszystkie Samoobsługowe resetowanie haseł administratora, które pochodzą z [portalu resetowania haseł](https://passwordreset.microsoftonline.com)
+   * Wszystkie zainicjowane przez administratora Resetowanie hasła użytkownika końcowego z [Azure Portal](https://portal.azure.com)
 
-## <a name="unsupported-writeback-operations"></a>Operacje zapisywania zwrotnego nieobsługiwany
+## <a name="unsupported-writeback-operations"></a>Nieobsługiwane operacje zapisywania zwrotnego
 
-Hasła są *nie* zapisywane z powrotem w następujących sytuacjach:
+Hasła *nie* są zapisywane z powrotem w żadnej z następujących sytuacji:
 
-* **Operacje nieobsługiwane przez użytkownika końcowego**
-   * Każdy użytkownik końcowy resetowania ich własnych haseł przy użyciu programu PowerShell w wersji 1, wersja 2 lub interfejsu API programu Graph usługi Azure AD
-* **Nieobsługiwana administrator operacji**
-   * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła programu PowerShell w wersji 1, wersja 2 lub interfejsu API programu Graph usługi Azure AD
-   * Wszelkie inicjowanych przez administratorów użytkownik końcowy resetowania hasła z [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com)
+* **Nieobsługiwane operacje użytkownika końcowego**
+   * Każdy użytkownik końcowy resetuje własne hasło przy użyciu programu PowerShell w wersji 1, wersji 2 lub interfejs API programu Graph usługi Azure AD
+* **Nieobsługiwane operacje administratora**
+   * Wszelkie zainicjowane przez administratora hasło użytkownika końcowego z programu PowerShell w wersji 1, wersji 2 lub interfejs API programu Graph usługi Azure AD
+   * Wszystkie zainicjowane przez administratora Resetowanie hasła użytkownika końcowego w [centrum administracyjnym Microsoft 365](https://admin.microsoft.com)
 
 > [!WARNING]
-> Użyj pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w narzędziach administracyjnych lokalnej usługi Active Directory użytkownicy usługi Active Directory i komputerów lub Centrum administracyjne usługi Active Directory nie jest obsługiwana. Podczas zmiany hasła w środowisku lokalnym nie należy zaznaczać tej opcji.
+> Użycie pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w lokalnych Active Directory narzędziach administracyjnych, takich jak Active Directory Użytkownicy i komputery lub Centrum administracyjne usługi Active Directory nie jest obsługiwana. W przypadku zmiany hasła lokalnego nie należy zaznaczać tej opcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Włącz funkcję zapisywania zwrotnego haseł przy użyciu samouczka: [Włączenie funkcji zapisywania zwrotnego haseł](tutorial-enable-writeback.md)
+Włącz funkcję zapisywania zwrotnego haseł przy użyciu samouczka: [Włączanie zapisywania zwrotnego haseł](tutorial-enable-writeback.md)

@@ -1,20 +1,21 @@
 ---
 title: 'Azure Backup: Tworzenie zasad kopii zapasowych przy użyciu interfejsu API REST'
 description: Zarządzanie zasadami tworzenia kopii zapasowych (harmonogram i przechowywanie) przy użyciu interfejsu API REST
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: INTERFEJS API REST; Kopia zapasowa maszyny wirtualnej platformy Azure; Przywracanie maszyny wirtualnej platformy Azure;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: f0729a49c3dc72a28431d711e6783abda96d2ce3
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: d81d8aa299333890de61cf0c8ee75be76ca31bf2
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466813"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688739"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Tworzenie zasad usługi Kopia zapasowa Azure Recovery Services przy użyciu interfejsu API REST
 
@@ -24,7 +25,7 @@ Kroki tworzenia zasad tworzenia kopii zapasowych dla magazynu usługi Azure Reco
 
 - Tworzone są zasady tworzenia kopii zapasowych na magazyn.
 - Zasady tworzenia kopii zapasowych można utworzyć dla tworzenia kopii zapasowych następujących obciążeń
-  - Maszyna wirtualna platformy Azure
+  - Azure VM
   - SQL na maszynie wirtualnej platformy Azure
   - Udział plików platformy Azure
 - Zasady mogą być przypisane do wielu zasobów. Zasady kopii zapasowych maszyny wirtualnej platformy Azure mogą służyć do ochrony wielu maszyn wirtualnych platformy Azure.

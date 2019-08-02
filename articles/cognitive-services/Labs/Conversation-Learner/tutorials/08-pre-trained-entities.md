@@ -1,7 +1,7 @@
 ---
-title: Jak dodać Pre-Trained jednostki do modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Jak dodać wstępnie przeszkolonych jednostek do modelu Conversation Learner — Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak dodać Pre-trained jednostki do modelu uczeń konwersacji.
+description: Dowiedz się, jak dodać wstępnie przeszkolonych jednostek do modelu Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,76 +10,77 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: fb70983c2f9fd20368bb8c6803c9568b27141af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: fceca459b80725e1a9c8b7dbc6a4387ea98dbb7b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389258"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704117"
 ---
-# <a name="how-to-add-pre-trained-entities"></a>Jak dodać Pre-trained jednostek
-W tym samouczku przedstawiono sposób dodawania Pre-Trained jednostki do modelu uczeń konwersacji.
+# <a name="how-to-add-pre-trained-entities"></a>Jak dodać wstępnie przeszkolonych jednostek
+W tym samouczku przedstawiono sposób dodawania wstępnie przeszkolonych jednostek do modelu Conversation Learner.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Samouczek wstępnie przeszkolonych jednostki (wersja zapoznawcza)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities_Preview)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities)
+[![Samouczek dotyczący wstępnie przeszkolonych jednostek — wersja zapoznawcza](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities_Preview)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga, że ogólne samouczek Bot działa
+Ten samouczek wymaga, aby ogólny samouczek bot był uruchomiony
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
 
-Wstępnie przeszkolonych jednostek rozpoznaje typowe rodzaje jednostek, takich jak liczb, dat, kwot pieniężnych i innych.  Działają one "out-of--box," nie wymagają żadnych szkoleń i nie można zmienić ich zachowania w odróżnieniu od jednostek niestandardowych.  Domyślnie Pre-Trained jednostki są wielowartościowy grupowania każdy zidentyfikowany wystąpienia jednostki.
+Wstępnie przeszkolone jednostki rozpoznają typowe typy jednostek, takie jak liczby, daty, kwoty pieniężne i inne.  Działają one jako "wbudowane" — nie wymagają żadnego szkolenia ani nie można zmienić ich zachowania w przeciwieństwie do jednostek niestandardowych.  Domyślnie wstępnie przeszkolonymi jednostkami są wartości wielowartościowe, które gromadzą każde zidentyfikowane wystąpienie jednostki.
 
 ## <a name="steps"></a>Kroki
 
-Rozpocznij na stronie głównej w Interfejsie użytkownika sieci Web.
+Uruchom stronę główną w interfejsie użytkownika sieci Web.
 
 ### <a name="create-the-model"></a>Tworzenie modelu
 
-1. Wybierz **nowy Model**.
-2. Wprowadź **PretrainedEntities** dla **nazwa**.
+1. Wybierz pozycję **Nowy model**.
+2. Wprowadź **PretrainedEntities** dla **nazwy**.
 3. Wybierz pozycję **Utwórz**.
 
 ### <a name="entity-creation"></a>Tworzenie jednostki
 
-1. Wybierz **jednostek** w lewym panelu, a następnie **Nowa jednostka**.
-2. Wybierz **wstępnej Trained/datetimeV2** dla **typu jednostki**.
-3. Sprawdź **wielowartościowe** umożliwiające jednostki są gromadzone co najmniej jedną wartość. Należy pamiętać, że Pre-Trained jednostki nie może być można negować.
+1. Wybierz pozycję **jednostki** w lewym panelu, a następnie pozycję **Nowa jednostka**.
+2. Wybierz opcję **pre-szkolony/datetimeV2** dla **typu jednostki**.
+3. Sprawdź **wiele** wartości, aby umożliwić jednostkom kumulowanie co najmniej jednego elementu. Należy zauważyć, że wstępnie przeszkolone jednostki nie mogą być negacją.
 4. Wybierz pozycję **Utwórz**.
 
 ![](../media/T08_entity_create.png)
 
-1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
-2. Wprowadź **przypada $builtin-datetimev2** dla **odpowiedzi Botów...** .
+1. W lewym panelu wybierz pozycję **Akcje** , a następnie pozycję **Nowa akcja**.
+2. Wprowadź **datę $BUILTIN-datetimev2** dla **odpowiedzi bot...**
 3. Wybierz pozycję **Utwórz**.
 
 ![](../media/T08_action_create_1.png)
 
-### <a name="create-the-second-action"></a>Tworzenie drugiej akcji
+### <a name="create-the-second-action"></a>Utwórz drugą akcję
 
-1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
-2. Wprowadź **jaka jest data?** dla **odpowiedzi Botów...** . Wstępnie przeszkolonych jednostki nie może być **wymaganych jednostek** rozpoznawanym przez domyślne dla wszystkich wypowiedzi.
-3. Wprowadź **builtin datetimev2** dla **dyskwalifikacji jednostek**.
+1. W lewym panelu wybierz pozycję **Akcje** , a następnie pozycję **Nowa akcja**.
+2. Wprowadź **datę?** dla **odpowiedzi bot...** Wstępnie przeszkolonych jednostek nie mogą być **wymagane jednostki** , ponieważ są one rozpoznawane domyślnie dla wszystkich wyrażenia długości.
+3. Wprowadź **wbudowaną datetimev2** dla niekwalifikujących się **jednostek**.
 4. Wybierz pozycję **Utwórz**.
 
 ![](../media/T08_action_create_2.png)
 
 ### <a name="train-the-model"></a>Uczenie modelu
 
-1. Wybierz **okien dialogowych Train** w lewym panelu, a następnie **okno dialogowe Nowy Train**.
-2. Wprowadź **hello** dla wypowiedź użytkownika w panelu po lewej stronie rozmowy.
-3. Wybierz **wynik akcji**.
-4. Wybierz **jaka jest data?** z listy akcji
-5. Wprowadź **już dziś** dla wypowiedź użytkownika w panelu po lewej stronie rozmowy.
-    - **Już dziś** wypowiedź jest automatycznie rozpoznawany przez wstępnie szkolone modele w usługi LUIS.
-    - Kursor wartości jednostki Pre-Trained przedstawia dodatkowe dane udostępniane przez usługi LUIS.
+1. Wybierz pozycję **okna dialogowe szkolenia** w lewym panelu, a następnie **okno dialogowe nowe szkolenie**.
+2. Wprowadź **Hello** dla wypowiedź użytkownika w lewym panelu rozmowy.
+3. Wybierz **Akcje oceny**.
+4. Wybierz **datę?** z listy akcje
+5. Wprowadź **dziś** dla wypowiedź użytkownika w lewym panelu rozmowy.
+    - **Dzisiaj** wypowiedź są automatycznie rozpoznawane przez wstępnie nauczone modele w Luis.
+    - Umieszczenie wskaźnika myszy nad wartościami wstępnie przeszkolonych jednostek pokazuje dodatkowe dane dostarczone przez LUIS.
 
 ![](../media/T08_training.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Mechanizmy rozpoznawania elementów jednostki](./09-entity-resolvers.md)
+> [Rozwiązania jednostek](./09-entity-resolvers.md)

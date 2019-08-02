@@ -9,14 +9,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c086f94a161853cba3a9ed2b98f13ea17b90dd20
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 662594f3ef0e4d5598b52cb07006b513e7f3c35a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478816"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564970"
 ---
  # <a name="application-insights-overriding-default-endpoints"></a>Application Insights Przesłanianie domyślnych punktów końcowych
 
@@ -158,6 +158,14 @@ Obecnie jedyne regiony, które wymagają modyfikacji punktów końcowych, to [Az
 | Azure Government | Kanał telemetrii |`https://dc.applicationinsights.us/v2/track` |
 | Azure Government | QuickPulse (metryki na żywo) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
 | Azure Government | Zapytanie profilu |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+
+Jeśli obecnie używasz [interfejsu API](https://dev.applicationinsights.io/
+) REST Application Insights, do którego zwykle uzyskuje się dostęp za pośrednictwem elementu "API.ApplicationInsights.IO", musisz użyć punktu końcowego, który jest lokalny dla regionu:
+
+|Region |  Nazwa punktu końcowego | Wartość |
+|-----------------|:------------|:-------------|
+| Azure — Chiny | Interfejs API REST | `api.applicationinsights.azure.cn` |
+| Azure Government | Interfejs API REST | `api.applicationinsights.us`|
 
 > [!NOTE]
 > W tych regionach **nie jest obecnie obsługiwane** monitorowanie oparte na agentach i rozszerzeniach w ramach agentów usługi Azure App Services. Po udostępnieniu tej funkcji ten artykuł zostanie zaktualizowany.

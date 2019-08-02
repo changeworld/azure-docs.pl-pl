@@ -4,7 +4,7 @@ description: Dowiedz się więcej o narzędziach i zintegrowanych środowisk pro
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: c4e101e45dc1641c5731e246f7fdeeb37ebc0823
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: 3b8eaae63f0e316d82dd5a1238a802eefd756d9e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864415"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557797"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Narzędzia programistyczne na maszynie wirtualnej do nauki o danych
 
@@ -65,8 +65,8 @@ Maszyna wirtualna do nauki o danych (DSVM) oferuje wydajne środowisko dla rozwo
 | Co to jest?   | Środowisko IDE oparte na sieci Web dla języka R    |
 | Wersje maszyny DSVM obsługiwane      | Linux      |
 | Typowe zastosowania      |  Programowanie w języku R     |
-| Jak używać / ją uruchomić?      | Aktywuj usługę za pomocą _systemctl Włączanie programu rstudio server_, następnie uruchom usługę za pomocą _systemctl start programu rstudio server_. Możesz następnie zalogować się do programu RStudio Server http:\// z-vm-ip:8787.       |
-| Pokrewne narzędzia na maszyny DSVM      |   Visual Studio 2019, Visual Studio Code, RStudio Desktop      |
+| Jak używać / ją uruchomić?      | Aktywuj usługę za pomocą _systemctl Włączanie programu rstudio server_, następnie uruchom usługę za pomocą _systemctl start programu rstudio server_. Następnie możesz zalogować się do serwera RStudio przy użyciu protokołu\/http:/Your-VM-IP: 8787.       |
+| Pokrewne narzędzia na maszyny DSVM      |   Program Visual Studio 2019, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
 

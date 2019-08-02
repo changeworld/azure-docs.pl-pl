@@ -1,49 +1,40 @@
 ---
-title: Odłączanie dysku danych z maszyny Wirtualnej systemu Linux — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się odłączyć dysk danych z maszyny wirtualnej na platformie Azure przy użyciu wiersza polecenia platformy Azure lub w portalu Azure.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Odłączanie dysku danych z maszyny wirtualnej z systemem Linux — Azure | Microsoft Docs
+description: Dowiedz się, jak odłączyć dysk danych z maszyny wirtualnej na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure lub Azure Portal.
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 02cb970b5c70064abbbc71e585fe3dd1540fda90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e026617db4da58c12a454000f6d97f8b6843e95d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696712"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695876"
 ---
-# <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odłączyć dysk z danymi od maszyny wirtualnej systemu Linux
+# <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odłączyć dysk danych z maszyny wirtualnej z systemem Linux
 
-Gdy już nie potrzebujesz dysku danych dołączonego do maszyny wirtualnej, możesz go łatwo odłączyć. Usuwa dysk od maszyny wirtualnej, ale nie spowoduje usunięcia go z magazynu. W tym artykule pracujemy z dystrybucją Ubuntu LTS 16.04. Jeśli używasz różnych dystrybucji instrukcje dotyczące odinstalowywania dysku mogą się różnić.
+Gdy już nie potrzebujesz dysku danych dołączonego do maszyny wirtualnej, możesz go łatwo odłączyć. Spowoduje to usunięcie dysku z maszyny wirtualnej, ale nie powoduje usunięcia go z magazynu. W tym artykule pracujemy z dystrybucją Ubuntu LTS 16,04. Jeśli używasz innej dystrybucji, instrukcje dotyczące odinstalowywania dysku mogą się różnić.
 
 > [!WARNING]
-> Jeśli możesz odłączyć dysku, który nie jest automatycznie usuwana. Jeśli subskrybujesz usługę Premium storage, możesz nadal będziesz ponosić opłaty za magazyn na dysku. Aby uzyskać więcej informacji, zobacz [cen i rozliczeń, korzystając z usługi Premium Storage](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
+> Jeśli dysk zostanie odłączony, nie jest automatycznie usuwany. Jeśli subskrybujesz usługę Premium Storage, nadal będą naliczane opłaty za magazyn dla tego dysku. Aby uzyskać więcej informacji, zobacz [Cennik i rozliczenia w przypadku korzystania z Premium Storage](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
 Jeśli chcesz użyć danych znajdujących się na tym dysku, możesz dołączyć go ponownie do tej samej lub innej maszyny wirtualnej.  
 
 
-## <a name="connect-to-the-vm-to-unmount-the-disk"></a>Łączenie z maszyną Wirtualną, aby odinstalować dysku
+## <a name="connect-to-the-vm-to-unmount-the-disk"></a>Nawiązywanie połączenia z maszyną wirtualną w celu odinstalowania dysku
 
-Przed odłączeniem dysku przy użyciu interfejsu wiersza polecenia lub w portalu, musisz odinstalować dysku i usunąć odwołania do z pliku fstab.
+Przed odłączeniem dysku przy użyciu interfejsu wiersza polecenia lub portalu należy odinstalować dysk i usunąć odwołania do programu, jeśli plik fstab.
 
-Nawiąż połączenie z maszyną wirtualną. W tym przykładzie jest publiczny adres IP maszyny wirtualnej *10.0.1.4* nazwy użytkownika *azureuser*: 
+Nawiąż połączenie z maszyną wirtualną. W tym przykładzie publiczny adres IP maszyny wirtualnej to *10.0.1.4* z nazwą użytkownika *azureuser*: 
 
 ```bash
 ssh azureuser@10.0.1.4
 ```
 
-Po pierwsze Znajdź, którą chcesz odłączyć dysk danych. W poniższym przykładzie użyto dmesg filtrującą dane na dyskach SCSI:
+Najpierw Znajdź dysk danych, który chcesz odłączyć. Poniższy przykład używa dmesg do filtrowania na dyskach SCSI:
 
 ```bash
 dmesg | grep SCSI
@@ -59,7 +50,7 @@ Dane wyjściowe są podobne do poniższego przykładu:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-W tym miejscu *sdc* to dysk, który chcesz odłączyć. Należy również Znajdź identyfikator UUID dysku.
+W tym miejscu *SDC* to dysk, który ma zostać odłączony. Należy również uzyskać identyfikator UUID dysku.
 
 ```bash
 sudo -i blkid
@@ -74,33 +65,33 @@ Dane wyjściowe wyglądają podobnie do poniższego przykładu:
 ```
 
 
-Edytuj */etc/fstab* , aby usunąć odwołania do dysku. 
+Edytuj plik */etc/fstab* , aby usunąć odwołania do tego dysku. 
 
 > [!NOTE]
-> Nieprawidłowo edycji **/etc/fstab** plików nieraz powodowały rozruch systemu. Jeśli nie wiesz, zapoznaj się dokumentacją dystrybucji informacji na temat sposobu prawidłowo edytować ten plik. Zalecane jest również, czy kopia zapasowa pliku/etc/fstab został utworzony przed rozpoczęciem edycji.
+> Niewłaściwe edytowanie pliku **/etc/fstab** może spowodować, że system nie zostanie rozruchowy. W razie wątpliwości zapoznaj się z dokumentacją dystrybucji, aby uzyskać informacje o tym, jak prawidłowo edytować ten plik. Przed rozpoczęciem edycji zaleca się również utworzenie kopii zapasowej pliku/etc/fstab.
 
-Otwórz */etc/fstab* plik w edytorze tekstów w następujący sposób:
+Otwórz plik */etc/fstab* w edytorze tekstów w następujący sposób:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-W tym przykładzie następujący wiersz musi zostać usunięty z */etc/fstab* pliku:
+W tym przykładzie należy usunąć następujący wiersz z pliku */etc/fstab* :
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-Użyj `umount` odinstalował dysk. Poniższy przykład umożliwia odinstalowanie */dev/sdc1* partycji z */datadrive* punktu instalacji:
+Użyj `umount` , aby odinstalować dysk. Poniższy przykład Odinstalowuje partycję */dev/sdc1* z punktu instalacji */datadrive* :
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
 ```
 
 
-## <a name="detach-a-data-disk-using-azure-cli"></a>Odłączanie dysku danych przy użyciu wiersza polecenia platformy Azure 
+## <a name="detach-a-data-disk-using-azure-cli"></a>Odłączanie dysku danych przy użyciu interfejsu wiersza polecenia platformy Azure 
 
-Ten przykład umożliwia odłączenie dysku *myDataDisk* dysk od maszyny Wirtualnej o nazwie *myVM* w *myResourceGroup*.
+Ten przykład powoduje odłączenie dysku *myDataDisk* z maszyny wirtualnej o nazwie *MyVM* w liście *zasobów*.
 
 ```azurecli
 az vm disk detach \
@@ -114,18 +105,18 @@ Dysk pozostaje w magazynie, ale nie jest już dołączony do maszyny wirtualnej.
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Odłączanie dysku danych przy użyciu portalu
 
-1. W menu po lewej stronie wybierz **maszyn wirtualnych**.
-2. Wybierz maszynę wirtualną, która ma dysk danych, które chcesz odłączyć, a następnie kliknij przycisk **zatrzymać** można cofnąć alokacji maszyny Wirtualnej.
-3. W okienku maszyny wirtualnej wybierz **dysków**.
-4. W górnej części **dysków** okienku wybierz **Edytuj**.
-5. W **dysków** okienko po prawej dysku danych, który chcesz odłączyć, kliknij przycisk ![obraz przycisku Odłącz](./media/detach-disk/detach.png) odłączyć przycisku.
-5. Po usunięciu dysku kliknij przycisk Zapisz w górnej części okienka.
-6. W okienku maszyny wirtualnej kliknij **Przegląd** a następnie kliknij przycisk **Start** przycisk u góry okienka, aby ponownie uruchomić maszynę Wirtualną.
+1. W menu po lewej stronie wybierz pozycję **Virtual Machines**.
+2. Wybierz maszynę wirtualną zawierającą dysk danych, który chcesz odłączyć, a następnie kliknij przycisk **Zatrzymaj** , aby cofnąć przydział maszyny wirtualnej.
+3. W okienku maszyna wirtualna wybierz pozycję **dyski**.
+4. W górnej części okienka **dyski** wybierz pozycję **Edytuj**.
+5. W okienku **dyski** z prawej strony dysku z danymi, które chcesz odłączyć, kliknij ![przycisk Odłącz obraz](./media/detach-disk/detach.png) przycisku Odłącz.
+5. Po usunięciu dysku kliknij pozycję Zapisz w górnej części okienka.
+6. W okienku maszyna wirtualna kliknij pozycję **Przegląd** , a następnie kliknij przycisk **Uruchom** w górnej części okienka, aby ponownie uruchomić maszynę wirtualną.
 
 Dysk pozostaje w magazynie, ale nie jest już dołączony do maszyny wirtualnej.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Jeśli chcesz ponownie użyć dysku danych, możesz po prostu [dołączyć go do innej maszyny Wirtualnej](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="next-steps"></a>Następne kroki
+Jeśli chcesz ponownie użyć dysku z danymi, możesz [dołączyć go do innej maszyny wirtualnej](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

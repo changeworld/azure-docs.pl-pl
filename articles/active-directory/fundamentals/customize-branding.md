@@ -2,23 +2,23 @@
 title: Dodawać oznaczenia marki do Twojej organizacji strony logowania — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Instrukcje dotyczące sposobu dodawania organizacji znakowania na stronie logowania w usłudze Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bef3960e5c117a131b59a65196214c51e01bd3c8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 3ae329bd031a2a57ea4fc2eec9cde1e532439bb4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204573"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561712"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Dodawanie znakowania na stronie logowania w usłudze Azure Active Directory w organizacji
 Zapewnienie spójnego wyglądu i działania na stronach logowania w usłudze Azure Active Directory (Azure AD), należy użyć logo organizacji i niestandardowych schematów kolorów. Strony logowania są wyświetlane, gdy użytkownicy logują się do Twojej organizacji opartej na sieci web aplikacji, takich jak Office 365, która używa usługi Azure AD jako dostawcy tożsamości.
@@ -29,7 +29,7 @@ Zapewnienie spójnego wyglądu i działania na stronach logowania w usłudze Azu
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Dostosuj swoją stronę logowania w usłudze Azure AD
 Można dostosować swoje usługi Azure AD logowania stron, które są wyświetlane, gdy użytkownicy logują się do aplikacji specyficznym dla dzierżawy organizacji, takich jak [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), lub przy przekazywaniu zmiennej domeny, takich jak [ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Niestandardowe znakowanie natychmiast pojawiać się w przypadku użytkowników, przejdź do witryny, takie jak www\.office.com. Zamiast tego użytkownik będzie musiał zalogować przed wyświetleniem dostosowanego znakowania.
+Niestandardowa znakowanie nie zostanie natychmiast wyświetlone, gdy użytkownicy przejdą do witryn,\.takich jak Office.com www. Zamiast tego użytkownik będzie musiał zalogować przed wyświetleniem dostosowanego znakowania.
 
 > [!NOTE]
 > Wszystkie elementy znakowania są opcjonalne. Na przykład jeśli określisz Baner logo z Brak obrazu tła strony logowania Pokaż logo przy użyciu domyślnego obrazu tła, z lokacji docelowej (na przykład Office 365).<br><br>Ponadto znakowanie strony logowania nie jest przenoszone do osobistych kont Microsoft. Jeśli użytkowników lub Goście biznesowi logują się przy użyciu osobistego konta Microsoft, strony logowania nie będzie zawierać znakowania organizacji.
@@ -58,7 +58,7 @@ Niestandardowe znakowanie natychmiast pojawiać się w przypadku użytkowników,
 
         - **Logo baneru.** Wybierz wersję .png lub .jpg logo była wyświetlana na stronie logowania, po użytkownik wprowadza nazwę użytkownika i na **Moje aplikacje** strony portalu.
             
-            Obraz nie może być większa niż 60 pikseli lub większa niż 280 pikseli. Zalecamy używanie przezroczystego obrazu, ponieważ w tle mogą być niezgodne z tła logo. Zalecamy również rezygnację z dodawania wypełnienia wokół obrazu lub może być Szukaj małe logo.
+            Rozmiar obrazu nie może być większy niż 60 pikseli lub większy niż 280 pikseli. Zalecamy używanie przezroczystego obrazu, ponieważ w tle mogą być niezgodne z tła logo. Zalecamy również rezygnację z dodawania wypełnienia wokół obrazu lub może być Szukaj małe logo.
 
         - **Wskazówka dotycząca nazwy użytkownika.** Wpisz tekst wskazówki, która jest wyświetlana użytkownikom, gdy zapomną swoją nazwę użytkownika. Ten tekst musi być Unicode, bez łącza lub kodu i nie może przekraczać 64 znaków. Goście zalogować się do aplikacji, zaleca się nie zostaną dodane niej tę wskazówkę.
 
@@ -70,7 +70,7 @@ Niestandardowe znakowanie natychmiast pojawiać się w przypadku użytkowników,
 
         - **Kolor tła strony logowania.** Określanie koloru w formacie szesnastkowym (na przykład białe jest #FFFFFF) wyświetlanego zamiast obrazu tła w sytuacjach połączenia o niskiej przepustowości. Zalecamy używanie podstawowego koloru baneru logo lub koloru organizacji.
 
-        - **Obraz kwadratowego logo.** Wybierz PNG (preferowany) lub jpg obraz logo organizacji, aby były widoczne dla użytkowników podczas procesu instalacji dla nowych urządzeń systemu Windows 10 Enterprise. Ten obraz jest używana tylko na potrzeby uwierzytelniania Windows i pojawia się tylko w przypadku dzierżaw korzystających z [rozwiązania Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) wdrażania lub podczas wprowadzania hasła napotyka stron w innym systemie Windows 10. W niektórych przypadkach go może również zostać wyświetlony w oknie dialogowym wyrażania zgody.
+        - **Obraz kwadratowego logo.** Wybierz PNG (preferowany) lub jpg obraz logo organizacji, aby były widoczne dla użytkowników podczas procesu instalacji dla nowych urządzeń systemu Windows 10 Enterprise. Ten obraz jest używana tylko na potrzeby uwierzytelniania Windows i pojawia się tylko w przypadku dzierżaw korzystających z [rozwiązania Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) wdrażania lub podczas wprowadzania hasła napotyka stron w innym systemie Windows 10. W niektórych przypadkach może również pojawić się w oknie dialogowym zgody.
         
             Obraz nie może być większa niż 240 x 240 pikseli i musi mieć plik o rozmiarze poniżej 10 KB. Zalecamy używanie przezroczystego obrazu, ponieważ w tle mogą być niezgodne z tła logo. Zalecamy również rezygnację z dodawania wypełnienia wokół obrazu lub może być Szukaj małe logo.
     

@@ -1,18 +1,19 @@
 ---
 title: Usługa Azure Backup dla obciążeń SQL Server przy użyciu programu DPM
 description: Wprowadzenie do tworzenia kopii zapasowych baz danych SQL Server przy użyciu usługi Azure Backup
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: kasinh
-ms.openlocfilehash: 60afba5d094d730aab20f2a7d50206c063f390ff
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 744c954c9192f75489911f09a1ef7195c5bbd1fa
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466625"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689368"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Tworzenie kopii zapasowych SQL Server na platformie Azure jako obciążenia programu DPM
 Ten artykuł przeprowadzi Cię przez kroki konfiguracji tworzenia kopii zapasowych baz danych SQL Server przy użyciu Azure Backup.
@@ -133,7 +134,7 @@ Poniższe kroki są wymagane do odzyskania chronionej jednostki (SQL Server Data
 1. Otwórz konsolę zarządzania serwerem programu DPM. Przejdź do obszaru roboczego **odzyskiwania** , w którym można zobaczyć serwery z kopią zapasową programu DPM. Przeglądaj wymaganą bazę danych (w tym przypadku ReportServer $ MSDPM2012). Wybierz **odzyskiwanie od** momentu, w którym kończą się w **trybie online**.
 
     ![Wybierz punkt odzyskiwania](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. Kliknij prawym przyciskiem myszy nazwę bazy danych , a następnie kliknij polecenie Odzyskaj.
+2. Kliknij prawym przyciskiem myszy nazwę bazy danych, a następnie kliknij polecenie Odzyskaj.
 
     ![Odzyskaj z platformy Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
 3. Program DPM wyświetla szczegóły punktu odzyskiwania. Kliknij przycisk **Dalej**. Aby zastąpić bazę danych, wybierz typ odzyskiwania **Odzyskaj do oryginalnego wystąpienia SQL Server**. Kliknij przycisk **Dalej**.
@@ -142,7 +143,7 @@ Poniższe kroki są wymagane do odzyskania chronionej jednostki (SQL Server Data
 
     W tym przykładzie program DPM umożliwia odzyskiwanie bazy danych do innego wystąpienia SQL Server lub do autonomicznego folderu sieciowego.
 4. Na ekranie **Określ opcje odzyskiwania** możesz wybrać opcje odzyskiwania, takie jak ograniczanie przepustowości sieci, aby ograniczyć przepustowość używaną przez funkcję odzyskiwania. Kliknij przycisk **Dalej**.
-5. Na ekranie **Podsumowanie** widoczne są wszystkie konfiguracje odzyskiwania. Kliknij przycisk Odzyskaj.
+5. Na ekranie **Podsumowanie** widoczne są wszystkie konfiguracje odzyskiwania. Kliknijprzycisk Odzyskaj.
 
     Stan odzyskiwania przedstawia odzyskaną bazę danych. Możesz kliknąć przycisk **Zamknij** , aby zamknąć kreatora i wyświetlić postęp w obszarze roboczym **monitorowanie** .
 

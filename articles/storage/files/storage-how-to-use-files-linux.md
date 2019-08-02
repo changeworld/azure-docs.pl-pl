@@ -1,19 +1,18 @@
 ---
 title: Używanie Azure Files z systemem Linux | Microsoft Docs
 description: Dowiedz się, jak zainstalować udział plików platformy Azure za pośrednictwem protokołu SMB w systemie Linux.
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 06df5d403ba10489ea9a36a79a94f4b94782e4ef
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8d0de6c68800b1a37e57aa259fd6884ee91752b5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501325"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699558"
 ---
 # <a name="use-azure-files-with-linux"></a>Używanie usługi Azure Files z systemem Linux
 
@@ -54,7 +53,7 @@ uname -r
 * <a id="install-cifs-utils"></a>**Pakiet CIFS-narzędzia jest zainstalowany.**  
     Pakiet CIFS-narzędzia można zainstalować przy użyciu Menedżera pakietów na wybranej dystrybucji systemu Linux. 
 
-    W  przypadku `apt-get` dystrybucji opartych na Ubuntu i **Debian** należy użyć Menedżera pakietów:
+    W przypadku `apt-get` dystrybucji opartych na Ubuntu i **Debian** należy użyć Menedżera pakietów:
 
     ```bash
     sudo apt-get update
@@ -146,7 +145,7 @@ Użytkownicy systemu Linux chcemy poznać Twoją opinię!
 
 Azure Files dla grupy użytkowników systemu Linux zawiera forum umożliwiające udostępnianie opinii podczas oceny i przyjmowanie magazynu plików w systemie Linux. Aby dołączać do grupy użytkowników, należy wysłać pocztą e-mail [Azure Files użytkowników systemu Linux](mailto:azurefileslinuxusers@microsoft.com) .
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files:
 

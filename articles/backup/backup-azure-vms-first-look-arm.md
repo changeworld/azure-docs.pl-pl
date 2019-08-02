@@ -1,18 +1,18 @@
 ---
 title: Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej za pomocą usługi Azure Backup
 description: Dowiedz się, jak utworzyć kopię zapasową maszyny wirtualnej platformy Azure za pomocą usługi Azure Backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.author: raynew
-ms.openlocfilehash: 994762098027f7051591b8bf89bfa5cb7c380373
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 042fa44b8f24bb729b94c7631db9469de8493ba4
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465270"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639773"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej
 
@@ -94,7 +94,7 @@ Ta grupa zasobów powinna być również wykluczona z dowolnych ograniczeń nazw
 
 Postępuj zgodnie z instrukcjami w tym artykule, aby włączyć tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przez skonfigurowanie magazynu Azure Backup Recovery Services i włączenie tworzenia kopii zapasowych w magazynie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Jeśli masz problemy z dowolnymi procedurami opisanymi w tym artykule, zapoznaj się z [przewodnikiem rozwiązywania problemów](backup-azure-vms-troubleshoot.md).
 - [Dowiedz się więcej na temat](backup-azure-manage-vms.md) zarządzania kopiami zapasowymi.

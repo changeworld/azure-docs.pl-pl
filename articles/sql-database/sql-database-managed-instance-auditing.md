@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure SQL Database managed inspekcji wystąpienia | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozpocząć pracę z usługi Azure SQL Database, zarządzanego wystąpienia inspekcji przy użyciu języka T-SQL
+title: Azure SQL Database inspekcji wystąpienia zarządzanego | Microsoft Docs
+description: Dowiedz się, jak rozpocząć pracę z Azure SQL Database inspekcji wystąpienia zarządzanego przy użyciu języka T-SQL
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,91 +12,90 @@ f1_keywords:
 author: vainolo
 ms.author: arib
 ms.reviewer: vanto
-manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a613a2eb6499538199306872f2e415019552686
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60702868"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567720"
 ---
-# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Rozpoczynanie pracy z inspekcją wystąpienie zarządzane bazy danych SQL Azure
+# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Wprowadzenie do Azure SQL Database inspekcji wystąpienia zarządzanego
 
-[Wystąpienie zarządzane](sql-database-managed-instance.md) inspekcji śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie magazynu platformy Azure. Inspekcja również:
+Inspekcja [wystąpienia zarządzanego](sql-database-managed-instance.md) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie usługi Azure Storage. Inspekcja również:
 
-- Pomaga zachować zgodność z przepisami, analizować aktywność bazy danych i uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać problemy biznesowe lub podejrzane naruszenia zabezpieczeń.
-- Włącza i ułatwia zgodności ze standardami zgodności, ale nie gwarantuje zgodności. Aby uzyskać więcej informacji na temat usługi Azure programy zgodność ze standardami tej pomocy technicznej, zobacz [Centrum zaufania systemu Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
+- Pomaga zachować zgodność z przepisami, zrozumieć aktywność bazy danych oraz uzyskać wgląd w niezgodności i anomalie, które mogą wskazywać na problemy biznesowe lub podejrzane naruszenia zabezpieczeń.
+- Włącza i ułatwia przestrzeganie standardów zgodności, chociaż nie gwarantuje zgodności. Aby uzyskać więcej informacji na temat programów platformy Azure, które obsługują zgodność ze standardami, zobacz [Centrum zaufania Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , gdzie można znaleźć najbardziej aktualną listę certyfikatów zgodności SQL Database.
 
-## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Inspekcja serwera do usługi Azure storage
+## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Skonfiguruj inspekcję serwera w usłudze Azure Storage
 
-W poniższej sekcji opisano konfigurację inspekcji w ramach wystąpienia zarządzanego.
+W poniższej sekcji opisano konfigurację inspekcji wystąpienia zarządzanego.
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-1. Tworzenie usługi Azure Storage **kontenera** przechowywania dzienników inspekcji.
+1. Utwórz **kontener** usługi Azure Storage, w którym są przechowywane dzienniki inspekcji.
 
-   1. Przejdź do usługi Azure Storage, w którym chcesz przechowywać dzienniki inspekcji.
+   1. Przejdź do usługi Azure Storage, w której chcesz przechowywać dzienniki inspekcji.
 
       > [!IMPORTANT]
-      > Użyj konta magazynu w tym samym regionie co zarządzane wystąpienie, aby uniknąć operacji odczytu/zapisu między regionami.
+      > Użyj konta magazynu w tym samym regionie, w którym znajduje się wystąpienie zarządzane, aby uniknąć operacji odczytu/zapisu między regionami.
 
-   1. Na koncie magazynu, przejdź do **Przegląd** i kliknij przycisk **obiektów blob**.
+   1. Na koncie magazynu przejdź do **omówienia** , a następnie kliknij pozycję **obiekty blob**.
 
-      ![Usługa Azure Blob widżetu](./media/sql-managed-instance-auditing/1_blobs_widget.png)
+      ![Element widget obiektów blob platformy Azure](./media/sql-managed-instance-auditing/1_blobs_widget.png)
 
-   1. W górnym menu, kliknij przycisk **+ kontener** do utworzenia nowego kontenera.
+   1. W górnym menu kliknij pozycję **+ kontener** , aby utworzyć nowy kontener.
 
-      ![Tworzenie ikony kontenera obiektów blob](./media/sql-managed-instance-auditing/2_create_container_button.png)
+      ![Ikona tworzenia kontenera obiektów BLOB](./media/sql-managed-instance-auditing/2_create_container_button.png)
 
-   1. Podaj kontener **nazwa**, Ustaw poziom dostępu publicznego **prywatnej**, a następnie kliknij przycisk **OK**.
+   1. Podaj **nazwę**kontenera, ustaw poziom dostępu publicznego na **prywatny**, a następnie kliknij przycisk **OK**.
 
-      ![Utwórz konfigurację kontenera obiektów blob](./media/sql-managed-instance-auditing/3_create_container_config.png)
+      ![Utwórz konfigurację kontenera obiektów BLOB](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
-1. Po utworzeniu kontenera dla inspekcji dzienniki są dwa sposoby konfigurowania go jako element docelowy dla dzienników inspekcji: [przy użyciu języka T-SQL](#blobtsql) lub [przy użyciu programu SQL Server Management Studio (SSMS) interfejsu użytkownika](#blobssms):
+1. Po utworzeniu kontenera dla dzienników inspekcji istnieją dwa sposoby skonfigurowania go jako element docelowy dla dzienników inspekcji: [przy użyciu języka T-SQL](#blobtsql) lub [interfejsu użytkownika SQL Server Management Studio (SSMS)](#blobssms):
 
-   - <a id="blobtsql"></a>Skonfiguruj magazyn obiektów blob dla dzienników inspekcji przy użyciu języka T-SQL:
+   - <a id="blobtsql"></a>Konfigurowanie magazynu blogów dla dzienników inspekcji przy użyciu języka T-SQL:
 
-     1. Na liście kontenerów kliknij nowo utworzony kontener, a następnie kliknij **właściwości kontenera**.
+     1. Na liście kontenery kliknij nowo utworzony kontener, a następnie kliknij pozycję **właściwości kontenera**.
 
-        ![Przycisk Właściwości kontenera obiektów blob](./media/sql-managed-instance-auditing/4_container_properties_button.png)
+        ![Przycisk właściwości kontenera obiektów BLOB](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. Skopiuj adres URL kontenera, klikając ikonę kopiowania i Zapisz adres URL (na przykład w Notatniku), do użytku w przyszłości. Powinna być w formacie adresu URL kontenera `https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. Skopiuj adres URL kontenera, klikając ikonę kopiowania i zapisując adres URL (na przykład w Notatniku) do użytku w przyszłości. Format adresu URL kontenera powinien być`https://<StorageName>.blob.core.windows.net/<ContainerName>`
 
-        ![Adres URL kopiowania kontenera obiektów blob](./media/sql-managed-instance-auditing/5_container_copy_name.png)
+        ![Adres URL kopiowania kontenera obiektów BLOB](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
-     1. Generowanie usługi Azure Storage **tokenu sygnatury dostępu Współdzielonego** udzielenia wystąpienia zarządzanego inspekcji prawa dostępu do konta magazynu:
+     1. Wygeneruj **token SAS** usługi Azure Storage, aby udzielić uprawnień dostępu do inspekcji wystąpienia zarządzanego na koncie magazynu:
 
-        - Przejdź do konta usługi Azure Storage, w której utworzono kontener w poprzednim kroku.
+        - Przejdź do konta usługi Azure Storage, na którym został utworzony kontener w poprzednim kroku.
 
-        - Kliknij pozycję **sygnatury dostępu współdzielonego** w menu Ustawienia magazynu.
+        - Kliknij pozycję **sygnatura dostępu** współdzielonego w menu ustawienia magazynu.
 
-          ![Ikona podpis dostępu w menu Ustawienia magazynu udostępnionego](./media/sql-managed-instance-auditing/6_storage_settings_menu.png)
+          ![Ikona sygnatury dostępu współdzielonego w menu ustawienia magazynu](./media/sql-managed-instance-auditing/6_storage_settings_menu.png)
 
-        - Skonfiguruj sygnatury dostępu Współdzielonego w następujący sposób:
+        - Skonfiguruj sygnaturę dostępu współdzielonego w następujący sposób:
 
-          - **Dozwolone usługi**: Obiekt blob
+          - **Dozwolone usługi**: Blob
 
-          - **Data rozpoczęcia**: Aby uniknąć problemów związanych z strefy czasowej, zaleca się używać Data przeszła
+          - **Data rozpoczęcia**: aby uniknąć problemów dotyczących strefy czasowej, zaleca się użycie wczoraj daty
 
-          - **Data zakończenia**: Wybierz datę, na którym wygaśnięcia tego tokenu sygnatury dostępu Współdzielonego
+          - **Data zakończenia**: Wybierz datę wygaśnięcia tego tokenu sygnatury dostępu współdzielonego
 
             > [!NOTE]
-            > Odnów token po upływie w celu uniknięcia niepowodzeń inspekcji.
+            > Odnów token po wygaśnięciu, aby uniknąć błędów inspekcji.
 
           - Kliknij opcję **Generuj sygnaturę dostępu współdzielonego**.
             
-            ![Konfiguracji sygnatury dostępu Współdzielonego](./media/sql-managed-instance-auditing/7_sas_configure.png)
+            ![Konfiguracja SAS](./media/sql-managed-instance-auditing/7_sas_configure.png)
 
-        - Po kliknięciu przycisku na Generowanie sygnatury dostępu Współdzielonego, tokenu sygnatury dostępu Współdzielonego zostanie wyświetlony u dołu. Skopiuj token, klikając ikonę kopiowania, a następnie zapisz go (na przykład w Notatniku) do użytku w przyszłości.
+        - Po kliknięciu przycisku Generuj sygnaturę dostępu współdzielonego w dolnej części pojawi się token SAS. Skopiuj token, klikając ikonę kopiowania i zapisując ją (na przykład w Notatniku) do użycia w przyszłości.
 
-          ![Skopiuj token sygnatury dostępu Współdzielonego](./media/sql-managed-instance-auditing/8_sas_copy.png)
+          ![Kopiuj token SAS](./media/sql-managed-instance-auditing/8_sas_copy.png)
 
           > [!IMPORTANT]
-          > Usuń znak zapytania ("?") znaku od początku tokenu.
+          > Usuń znak zapytania ("?") od początku tokenu.
 
-     1. Podłącz do wystąpienia zarządzanego przy użyciu programu SQL Server Management Studio (SSMS) lub innemu narzędziu obsługiwane.
+     1. Połącz się z wystąpieniem zarządzanym za pośrednictwem SQL Server Management Studio (SSMS) lub dowolnego innego obsługiwanego narzędzia.
 
-     1. Wykonaj następującą instrukcję języka T-SQL, aby **utworzyć nowe poświadczenie** przy użyciu adresu URL kontenera i tokenu sygnatury dostępu Współdzielonego utworzony w poprzednich krokach:
+     1. Wykonaj następującą instrukcję T-SQL, aby **utworzyć nowe poświadczenie** przy użyciu adresu URL kontenera i tokenu sygnatury dostępu współdzielonego, który został utworzony w poprzednich krokach:
 
         ```SQL
         CREATE CREDENTIAL [<container_url>]
@@ -105,7 +104,7 @@ W poniższej sekcji opisano konfigurację inspekcji w ramach wystąpienia zarzą
         GO
         ```
 
-     1. Wykonaj następującą instrukcję języka T-SQL, aby utworzyć nowy Server Audit (Wybierz nazwę inspekcji, użyj adresu URL kontenera, który został utworzony w poprzednich krokach). Jeśli nie zostanie określony, `RETENTION_DAYS` domyślna to 0 (nieograniczone przechowywanie):
+     1. Wykonaj następującą instrukcję T-SQL, aby utworzyć nową inspekcję serwera (wybierz własną nazwę inspekcji, użyj adresu URL kontenera utworzonego w poprzednich krokach). Jeśli nie zostanie określony `RETENTION_DAYS` , wartością domyślną jest 0 (nieograniczony czas przechowywania):
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
@@ -113,38 +112,38 @@ W poniższej sekcji opisano konfigurację inspekcji w ramach wystąpienia zarzą
         GO
         ```
 
-        1. Kontynuuj, [tworzenie Specyfikacja inspekcji serwera lub specyfikacji inspekcji bazy danych](#createspec)
+        1. Kontynuuj przez [utworzenie specyfikacji inspekcji serwera lub specyfikacji inspekcji bazy danych](#createspec)
 
-   - <a id="blobssms"></a>Konfigurowanie magazynu obiektów blob dla dzienników inspekcji przy użyciu programu SQL Server Management Studio (SSMS) 18 (wersja zapoznawcza):
+   - <a id="blobssms"></a>Konfigurowanie usługi BLOB Storage na potrzeby dzienników inspekcji przy użyciu SQL Server Management Studio (SSMS) 18 (wersja zapoznawcza):
 
-     1. Podłącz do wystąpienia zarządzanego przy użyciu programu SQL Server Management Studio (SSMS) interfejsu użytkownika.
+     1. Połącz się z wystąpieniem zarządzanym przy użyciu interfejsu użytkownika SQL Server Management Studio (SSMS).
 
-     1. Rozwiń węzeł główny Zanotuj Eksplorator obiektów.
+     1. Rozwiń główną uwagę Eksplorator obiektów.
 
-     1. Rozwiń **zabezpieczeń** węzła, kliknij prawym przyciskiem myszy **inspekcje** węzłem, a następnie kliknij przycisk "Nowy inspekcji":
+     1. Rozwiń węzeł **zabezpieczenia** , kliknij prawym przyciskiem myszy węzeł **inspekcje** , a następnie kliknij pozycję "Nowa inspekcja":
 
-        ![Rozwiń pozycję Zabezpieczenia i inspekcja węzła](./media/sql-managed-instance-auditing/10_mi_SSMS_new_audit.png)
+        ![Rozwiń węzeł Zabezpieczenia i inspekcja](./media/sql-managed-instance-auditing/10_mi_SSMS_new_audit.png)
 
-     1. Upewnij się, że "URL" wybrano **docelowego inspekcji** i kliknij pozycję **Przeglądaj**:
+     1. Upewnij się, że wybrano "URL" w **miejscu docelowym inspekcji** , a następnie kliknij przycisk **Przeglądaj**:
 
-        ![Przejdź do usługi Azure Storage](./media/sql-managed-instance-auditing/11_mi_SSMS_audit_browse.png)
+        ![Przeglądaj usługę Azure Storage](./media/sql-managed-instance-auditing/11_mi_SSMS_audit_browse.png)
 
-     1. (Opcjonalnie) Zaloguj się do konta platformy Azure:
+     1. Obowiązkowe Zaloguj się do konta platformy Azure:
 
         ![Logowanie do platformy Azure](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. Wybierz subskrypcję, konto magazynu i kontener obiektów Blob z list rozwijanych, lub utworzyć własnego kontenera, klikając **Utwórz**. Po zakończeniu kliknij przycisk **OK**:
+     1. Wybierz subskrypcję, konto magazynu i kontener obiektów blob z listy rozwijanej lub Utwórz własny kontener, klikając pozycję **Utwórz**. Po zakończeniu kliknij przycisk **OK**:
 
-        ![Wybierz subskrypcję platformy Azure, konta magazynu i kontener obiektów blob](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
+        ![Wybierz subskrypcję platformy Azure, konto magazynu i kontener obiektów BLOB](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
 
-     1. Kliknij przycisk **OK** w oknie dialogowym "Create Audit".
+     1. Kliknij przycisk **OK** w oknie dialogowym "Tworzenie inspekcji".
 
-1. <a id="createspec"></a>Po skonfigurowaniu kontenera obiektów Blob jako cel dla dzienników inspekcji Utwórz Specyfikacja inspekcji serwera lub specyfikacji inspekcji bazy danych, tak jak w przypadku programu SQL Server:
+1. <a id="createspec"></a>Po skonfigurowaniu kontenera obiektów BLOB jako celu dla dzienników inspekcji należy utworzyć specyfikację inspekcji serwera lub specyfikację inspekcji bazy danych tak, jak w przypadku SQL Server:
 
-   - [Utwórz Podręcznik języka T-SQL Specyfikacja inspekcji serwera](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [Utwórz Podręcznik języka T-SQL w specyfikacji inspekcji bazy danych](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [Utwórz Podręcznik T-SQL dla specyfikacji inspekcji serwera](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [Przewodnik tworzenia instrukcji języka T-SQL dla specyfikacji inspekcji bazy danych](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-1. Włączanie inspekcji serwera, który został utworzony w kroku 6:
+1. Włącz inspekcję serwera utworzoną w kroku 6:
 
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>]
@@ -154,95 +153,95 @@ W poniższej sekcji opisano konfigurację inspekcji w ramach wystąpienia zarzą
 
 Dodatkowe informacje:
 
-- [Inspekcja różnice między pojedynczych baz danych, pul elastycznych, s i wystąpienia zarządzanego Azure SQL Database i baz danych programu SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
-- [TWORZENIE INSPEKCJI SERWERA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
-- [INSTRUKCJA ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [Inspekcja różnic między pojedynczymi bazami danych, elastyczną pulą, s i wystąpieniami zarządzanymi w Azure SQL Database i bazach danych w SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [UTWÓRZ INSPEKCJĘ SERWERA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
+- [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>Inspekcja serwera, aby dzienniki Centrum zdarzeń lub usługi Azure Monitor
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>Skonfiguruj inspekcję serwera do centrum zdarzeń lub dzienników Azure Monitor
 
-Dzienniki inspekcji z wystąpienia zarządzanego, mogą być wysyłane do dzienniki usługi Azure Monitor lub nawet koncentratorów. W tej sekcji opisano sposób konfigurowania to:
+Dzienniki inspekcji z wystąpienia zarządzanego mogą być wysyłane do nawet centrów lub dzienników Azure Monitor. W tej sekcji opisano sposób konfigurowania tego programu:
 
-1. Nawigowanie w [witryny Azure Portal](https://portal.azure.com/) do wystąpienia zarządzanego.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com/) do wystąpienia zarządzanego.
 
-2. Kliknij pozycję **ustawień diagnostycznych**.
+2. Kliknij pozycję **Ustawienia diagnostyczne**.
 
-3. Kliknij pozycję **Włącz diagnostykę**. Jeśli już włączono diagnostyki *+ Dodaj ustawienie diagnostyczne* będzie wyświetlana w zamian.
+3. Kliknij pozycję **Włącz diagnostykę**. Jeśli Diagnostyka jest już włączona, zamiast tego zostanie wyświetlone *ustawienie + Dodaj diagnostykę* .
 
-4. Wybierz **SQLSecurityAuditEvents** na liście dzienniki.
+4. Wybierz pozycję **SQLSecurityAuditEvents** na liście dzienników.
 
-5. Wybierz lokalizację docelową dla zdarzeń inspekcji — Centrum zdarzeń i/lub dzienniki usługi Azure Monitor. Skonfiguruj dla każdego obiektu docelowego wymaganych parametrów (np. obszaru roboczego usługi Log Analytics).
+5. Wybierz lokalizację docelową dla zdarzeń inspekcji — centrum zdarzeń, dzienniki Azure Monitor lub oba te elementy. Skonfiguruj dla każdego obiektu docelowego wymagane parametry (np. Log Analytics obszar roboczy).
 
-6. Kliknij pozycję **Zapisz**.
+6. Kliknij polecenie **Zapisz**.
 
     ![Konfigurowanie ustawień diagnostycznych](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
-7. Łączenie do wystąpienia zarządzanego przy użyciu **programu SQL Server Management Studio (SSMS)** lub innych obsługiwanych klientów.
+7. Połącz się z wystąpieniem zarządzanym przy użyciu programu **SQL Server Management Studio (SSMS)** lub dowolnego innego obsługiwanego klienta.
 
-8. Wykonaj następującą instrukcję języka T-SQL, aby utworzyć inspekcji serwera:
+8. Wykonaj następującą instrukcję T-SQL, aby utworzyć inspekcję serwera:
 
     ```SQL
     CREATE SERVER AUDIT [<your_audit_name>] TO EXTERNAL_MONITOR;
     GO
     ```
 
-9. Utwórz Specyfikacja inspekcji serwera lub specyfikacji inspekcji bazy danych, tak jak w przypadku programu SQL Server:
+9. Utwórz specyfikację inspekcji serwera lub specyfikację inspekcji bazy danych, tak jak w przypadku SQL Server:
 
-   - [Utwórz Podręcznik języka T-SQL Specyfikacja inspekcji serwera](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [Utwórz Podręcznik języka T-SQL w specyfikacji inspekcji bazy danych](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [Utwórz Podręcznik T-SQL dla specyfikacji inspekcji serwera](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [Przewodnik tworzenia instrukcji języka T-SQL dla specyfikacji inspekcji bazy danych](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-10. Włączanie inspekcji serwera utworzonego w kroku 8:
+10. Włącz inspekcję serwera utworzoną w kroku 8:
  
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
     GO
     ```
 
-## <a name="consume-audit-logs"></a>Używanie dzienników inspekcji
+## <a name="consume-audit-logs"></a>Korzystanie z dzienników inspekcji
 
 ### <a name="consume-logs-stored-in-azure-storage"></a>Korzystanie z dzienników przechowywanych w usłudze Azure Storage
 
-Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekcji obiektów blob.
+Istnieje kilka metod, których można użyć do wyświetlania dzienników inspekcji obiektów BLOB.
 
-- Użyj funkcji systemowej `sys.fn_get_audit_file` (T-SQL), aby zwrócić dane z dziennika inspekcji w formacie tabelarycznym. Aby uzyskać więcej informacji na temat korzystania z tej funkcji, zobacz [dokumentacji sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
+- Użyj funkcji `sys.fn_get_audit_file` system (T-SQL), aby zwrócić dane dziennika inspekcji w formacie tabelarycznym. Aby uzyskać więcej informacji na temat korzystania z tej funkcji, zobacz [dokumentację sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
-- Możesz zapoznać się z dziennikami inspekcji przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/). W usłudze Azure storage dzienniki inspekcji są zapisywane jako kolekcja plików obiektów blob w kontenerze, który został określony do przechowywania dzienników inspekcji. Aby uzyskać więcej informacji o hierarchii folderu przechowywania konwencji nazewnictwa i format dziennika zobacz [odwołanie Format dziennika inspekcji obiektów Blob](https://go.microsoft.com/fwlink/?linkid=829599).
+- Dzienniki inspekcji można eksplorować przy użyciu narzędzia, takiego jak [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/). W usłudze Azure Storage dzienniki inspekcji są zapisywane jako kolekcja plików obiektów BLOB w kontenerze zdefiniowanym do przechowywania dzienników inspekcji. Aby uzyskać więcej szczegółowych informacji na temat hierarchii folderu magazynu, konwencji nazewnictwa i formatu dziennika, zobacz [dokumentacja formatu dziennika inspekcji obiektów BLOB](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Aby uzyskać pełną listę metod użycie dziennika inspekcji, zobacz [Rozpoczynanie pracy z inspekcją bazy danych SQL](sql-database-auditing.md).
+- Aby zapoznać się z pełną listą metod korzystania z dzienników inspekcji, zapoznaj się z tematem Rozpoczynanie [pracy z inspekcją bazy danych SQL](sql-database-auditing.md).
 
-### <a name="consume-logs-stored-in-event-hub"></a>Korzystanie z dzienników przechowywanych w Centrum zdarzeń
+### <a name="consume-logs-stored-in-event-hub"></a>Korzystanie z dzienników przechowywanych w centrum zdarzeń
 
-Korzystanie z danych dzienników inspekcji z Centrum zdarzeń, należy skonfigurować strumienia na korzystanie ze zdarzeń i zapisywać je do obiektu docelowego. Aby uzyskać więcej informacji zobacz dokumentacja usługi Azure Event Hubs.
+Aby korzystać z danych inspekcji dzienników z centrum zdarzeń, należy skonfigurować strumień, który będzie korzystał z zdarzeń i zapisywać je w celu. Aby uzyskać więcej informacji, zobacz dokumentację usługi Azure Event Hubs.
 
-### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Używanie i analizowanie dzienników przechowywanych w dziennikach w usłudze Azure Monitor
+### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Wykorzystywanie i analizowanie dzienników przechowywanych w dziennikach Azure Monitor
 
-Jeśli dzienniki inspekcji są zapisywane do dzienników usługi Azure Monitor, są one dostępne w obszarze roboczym usługi Log Analytics, gdzie wyszukiwania zaawansowanego można uruchomić na danych inspekcji. Jako punktu wyjścia, przejdź do obszaru roboczego usługi Log Analytics i w obszarze *ogólne* kliknij sekcję *dzienniki* i wprowadzać proste zapytanie, takie jak: `search "SQLSecurityAuditEvents"` Aby wyświetlić inspekcji logowania.  
+Jeśli dzienniki inspekcji są zapisywane w dziennikach Azure Monitor, są one dostępne w obszarze roboczym Log Analytics, gdzie można uruchamiać zaawansowane wyszukiwania na danych inspekcji. Jako punkt początkowy przejdź do obszaru roboczego log Analytics i w obszarze *Ogólne* kliknij pozycję *dzienniki* , a następnie wprowadź proste zapytanie, takie jak: `search "SQLSecurityAuditEvents"` aby wyświetlić dzienniki inspekcji.  
 
-Dzienniki platformy Azure Monitor udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania dzienników usługi Azure Monitor i poleceń, zobacz [usługi Azure Monitor rejestruje dokumentacja wyszukiwania](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Dzienniki Azure Monitor udostępniają usługi operacyjne w czasie rzeczywistym przy użyciu zintegrowanego wyszukiwania i niestandardowych pulpitów nawigacyjnych, które umożliwiają łatwe analizowanie milionów rekordów na wszystkich obciążeniach i serwerach. Aby uzyskać dodatkowe informacje dotyczące Azure Monitor języka i poleceń wyszukiwania dzienników, zobacz artykuł [Azure monitor Logs Search Reference](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Inspekcja różnice między bazami danych w usłudze Azure SQL Database i baz danych programu SQL Server
+## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Inspekcja różnic między bazami danych w Azure SQL Database i bazami danych w SQL Server
 
-Podstawowe różnice między inspekcji w bazach danych Azure SQL Database i baz danych programu SQL Server są:
+Kluczowe różnice między inspekcją w bazach danych w Azure SQL Database i bazach danych w SQL Server są następujące:
 
-- Za pomocą opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database, inspekcja działa na poziomie serwera i magazyny `.xel` pliki dziennika w usłudze Azure Blob storage.
-- Korzystając z pojedynczą bazę danych i pul elastycznych opcji wdrażania w usłudze Azure SQL Database inspekcja działa na poziomie bazy danych.
-- W programie SQL Server w środowisku lokalnym / wirtualnej maszyny, inspekcji działa na serwerze poziomu, ale przechowuje zdarzenia w plikach systemu/dzienniki zdarzeń systemu windows.
+- Przy użyciu opcji wdrożenia wystąpienia zarządzanego w Azure SQL Database Inspekcja działa na poziomie serwera i przechowuje `.xel` pliki dziennika w usłudze Azure Blob Storage.
+- Korzystając z opcji wdrażania pojedynczej bazy danych i elastycznej puli w Azure SQL Database, inspekcja działa na poziomie bazy danych.
+- W SQL Server maszynach lokalnych/wirtualnych Inspekcja działa na poziomie serwera, ale przechowuje zdarzenia dotyczące systemu plików system/dzienniki zdarzeń systemu Windows.
 
-Wystąpienie zarządzane inspekcji systemu XEvent obsługuje cele usługi Azure Blob storage. Dzienniki plików i systemu windows są **nieobsługiwane**.
+Inspekcja systemu XEvent w wystąpieniu zarządzanym obsługuje cele usługi Azure Blob Storage. Dzienniki plików i systemu Windows **nie są obsługiwane**.
 
-Klucz różnice w `CREATE AUDIT` składnia inspekcji w usłudze Azure Blob storage są:
+Kluczowe różnice w `CREATE AUDIT` składni inspekcji usługi Azure Blob Storage są następujące:
 
-- Nowa składnia `TO URL` jest dostarczany i umożliwia określenie adresu URL kontenera magazynu obiektów blob platformy Azure gdzie `.xel` pliki zostaną umieszczone.
-- Nowa składnia `TO EXTERNAL MONITOR` jest dostarczana, aby umożliwić cele dzienniki nawet Centrum i usługi Azure Monitor.
-- Składnia `TO FILE` jest **nieobsługiwane** ponieważ bazy danych SQL nie może uzyskać dostępu do udziałów plików w Windows.
-- Opcja zamknięcie jest **nieobsługiwane**.
-- `queue_delay` 0 jest **nieobsługiwane**.
+- Dostępna jest nowa `TO URL` składnia i umożliwia określenie adresu URL kontenera magazynu obiektów blob platformy Azure, w `.xel` którym umieszczane są pliki.
+- Podano nową `TO EXTERNAL MONITOR` składnię umożliwiającą włączenie elementów docelowych dzienników koncentratora i Azure monitor.
+- Składnia `TO FILE` nie jest **obsługiwana** , ponieważ SQL Database nie może uzyskać dostępu do udziałów plików systemu Windows.
+- Opcja zamykania **nie jest obsługiwana**.
+- `queue_delay`wartość 0 **nie jest obsługiwana**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać pełną listę metod użycie dziennika inspekcji, zobacz [Rozpoczynanie pracy z inspekcją bazy danych SQL](sql-database-auditing.md).
-- Aby uzyskać więcej informacji na temat usługi Azure programy zgodność ze standardami tej pomocy technicznej, zobacz [Centrum zaufania systemu Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) gdzie można znaleźć najbardziej aktualną listą ze zgodnością bazy danych SQL.
+- Aby zapoznać się z pełną listą metod korzystania z dzienników inspekcji, zapoznaj się z tematem Rozpoczynanie [pracy z inspekcją bazy danych SQL](sql-database-auditing.md).
+- Aby uzyskać więcej informacji na temat programów platformy Azure, które obsługują zgodność ze standardami, zobacz [Centrum zaufania Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , gdzie można znaleźć najbardziej aktualną listę certyfikatów zgodności SQL Database.
 
 <!--Image references-->
 

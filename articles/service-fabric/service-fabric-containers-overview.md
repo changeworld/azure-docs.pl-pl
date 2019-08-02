@@ -1,9 +1,9 @@
 ---
-title: Omówienie usługi Service Fabric i kontenery | Dokumentacja firmy Microsoft
-description: Omówienie usługi Service Fabric i sposób korzystania z kontenerów, aby wdrożyć aplikacje mikrousług. Ten artykuł zawiera omówienie sposobu użycia kontenerów i możliwości dostępne w usłudze Service Fabric.
+title: Omówienie Service Fabric i kontenerów | Microsoft Docs
+description: Omówienie Service Fabric i używania kontenerów do wdrażania aplikacji mikrousług. Ten artykuł zawiera omówienie sposobu użycia kontenerów i dostępne możliwości w Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
@@ -13,102 +13,102 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/8/2018
-ms.author: aljo
-ms.openlocfilehash: 5a45f14e5ac1da5152f320bd92b1ebb42be1d214
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 2ed3a9d4b1ec219d22a9e01e7acec5d7e950289b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60881426"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599762"
 ---
-# <a name="service-fabric-and-containers"></a>Usługa Service Fabric i kontenery
+# <a name="service-fabric-and-containers"></a>Service Fabric i kontenery
 
 ## <a name="introduction"></a>Wprowadzenie
 
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług i kontenerów oraz zarządzanie nimi.
 
-Usługa Service Fabric jest firmy Microsoft [orkiestrator kontenerów](service-fabric-cluster-resource-manager-introduction.md) do wdrażania mikrousług w klastrze maszyn. Usługa Service Fabric korzyści ze zdobytego podczas jego lat z usługami w firmie Microsoft na dużą skalę.
+Service Fabric jest koordynatorem [kontenera](service-fabric-cluster-resource-manager-introduction.md) firmy Microsoft do wdrażania mikrousług w klastrze maszyn. Service Fabric korzyści z lekcji zdobytych w trakcie lat, w których działają usługi w firmie Microsoft na ogromną skalę.
 
-Mikrousługi można tworzyć na wiele sposobów, na przykład korzystając z [modeli programowania usługi Service Fabric](service-fabric-choose-framework.md) czy struktury [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) lub wdrażając [dowolnie wybrany kod](service-fabric-guest-executables-introduction.md). Lub, jeśli chcesz, aby [wdrażanie kontenerów i zarządzanie nimi](service-fabric-containers-overview.md), Usługa Service Fabric jest także doskonałym wyborem.
+Mikrousługi można tworzyć na wiele sposobów, na przykład korzystając z [modeli programowania usługi Service Fabric](service-fabric-choose-framework.md) czy struktury [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) lub wdrażając [dowolnie wybrany kod](service-fabric-guest-executables-introduction.md). Jeśli chcesz tylko [wdrożyć kontenery i zarządzać nimi](service-fabric-containers-overview.md), Service Fabric jest również doskonałym wyborem.
 
-Domyślnie Usługa Service Fabric wdraża i aktywuje tych usług, ponieważ procesy. Procesy zapewnia najszybszy aktywacji i największym wykorzystaniu gęstość zasobów w klastrze. Usługa Service Fabric można także wdrożyć usługi w obrazów kontenerów. Można także łączyć usługi w procesach i usługi w kontenerach w tej samej aplikacji.
+Domyślnie program Service Fabric wdraża i aktywuje te usługi jako procesy. Procesy zapewniają największą aktywację i najwyższy poziom użycia zasobów w klastrze. Service Fabric może również wdrażać usługi w obrazach kontenera. Możesz również mieszać usługi w procesach i usługach w kontenerach w tej samej aplikacji.
 
-Aby przejść bezpośrednio i wypróbować kontenerów w usłudze Service Fabric, wypróbuj Szybki Start, samouczek lub próbki:  
+Aby przejść do właściwych i wypróbować kontenery na Service Fabric, wypróbuj Przewodnik Szybki Start, samouczek lub przykład:  
 
-[Szybki start: Wdrażanie aplikacji kontenera systemu Linux w usłudze Service Fabric](service-fabric-quickstart-containers-linux.md)  
-[Szybki start: Wdrażanie aplikacji kontenera Windows w usłudze Service Fabric](service-fabric-quickstart-containers.md)  
+[Szybki start: Wdrażanie aplikacji kontenera systemu Linux w Service Fabric](service-fabric-quickstart-containers-linux.md)  
+[Szybki start: Wdrażanie aplikacji kontenera systemu Windows do Service Fabric](service-fabric-quickstart-containers.md)  
 [Konteneryzowanie istniejącej aplikacji .NET](service-fabric-host-app-in-a-container.md)  
 [Przykłady kontenera usługi Service Fabric](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
 ## <a name="what-are-containers"></a>Co to są kontenery
 
-Kontenery problemu niezawodne uruchamiania aplikacji w różnych środowiskach obliczeniowych, zapewniając niezmienne środowisko do uruchamiania aplikacji. Kontenery opakować aplikację i wszystkie jego zależności, takich jak biblioteki i pliki konfiguracji do własnego izolowanego "pola" zawierający wszystkie elementy potrzebne do uruchamiania oprogramowania w kontenerze. Wszędzie tam, gdzie jest uruchomiony kontener, aplikacja wewnątrz zawsze ma wszystko, czego potrzebuje do uruchomienia, takich jak prawo wersje bibliotek zależnych, wszystkie pliki konfiguracji i wszystko inne, co potrzebne do uruchomienia.
+Kontenery rozwiązują problem z niezawodnymi działami aplikacji w różnych środowiskach obliczeniowych, dostarczając niezmienne środowisko do uruchamiania aplikacji. Kontenery zawijają aplikację i wszystkie jej zależności, takie jak biblioteki i pliki konfiguracji, do własnej izolowanego pola, które zawiera wszystko, co jest potrzebne do uruchamiania oprogramowania wewnątrz kontenera. W każdym przypadku, gdy działa kontener, aplikacja wewnątrz niego zawsze ma wszystko, co jest potrzebne do uruchamiania takich elementów, jak odpowiednie wersje bibliotek zależnych, wszystkie pliki konfiguracji i inne potrzebne do uruchomienia.
 
-Kontenery Uruchom bezpośrednio na jądro i izolowany widok systemu plików i innych zasobów. Aplikacja w kontenerze nie ma informacji o inne aplikacje lub procesy, poza jej kontenerem. Każdej aplikacji i jego bibliotek środowiska uruchomieniowego, zależności i system uruchamiane wewnątrz kontenera pełnej prywatne dostęp z Widok kontenera własnych izolowany system operacyjny. Oprócz dzięki czemu można łatwo zawierać wszystkie zależności aplikacji, musi działać w różnych środowiskach obliczeniowych, zabezpieczenia i izolację zasobów są istotne zalety stosowania kontenerów za pomocą usługi Service Fabric — które w przeciwnym razie uruchomienia usługi programu proces.
+Kontenery są uruchamiane bezpośrednio na poziomie jądra i mają izolowany widok systemu plików i innych zasobów. Aplikacja w kontenerze nie ma informacji o innych aplikacjach ani procesach poza kontenerem. Każda aplikacja i jej środowisko uruchomieniowe, zależności i biblioteki systemowe działają wewnątrz kontenera z pełnym dostępem prywatnym do własnego widoku izolowanego kontenera systemu operacyjnego. Oprócz zapewnienia, że wszystkie zależności aplikacji, które mają być uruchamiane w różnych środowiskach obliczeniowych, są proste, a zabezpieczenia i izolacja zasobów to ważne korzyści wynikające z używania kontenerów z Service Fabric — w przeciwnym razie usługi są uruchamiane w ramach podstawowych.
 
-W porównaniu do maszyn wirtualnych, kontenerach ma następujące zalety:
+W porównaniu z maszynami wirtualnymi kontenery mają następujące zalety:
 
-* **Małe**: Kontenery korzystanie z jednego miejsca i warstwy wersje i aktualizacje, do zwiększania wydajności.
-* **Szybkie**: Kontenery nie trzeba uruchomić cały system operacyjny, aby mogli rozpocząć znacznie szybciej — zwykle w ciągu kilku sekund.
-* **Przenośność**: Obraz konteneryzowanej aplikacji mogą być przenoszone do uruchamiania w chmurze, lokalnie, wewnątrz maszyn wirtualnych lub bezpośrednio na maszynach fizycznych.
-* **Nadzór nad zasobami**: Kontener można ograniczyć zasoby fizyczne, które mogą wykorzystywać sieciową hosta.
+* **Małe**: Kontenery używają pojedynczej przestrzeni dyskowej i wersji warstwy oraz aktualizacji w celu zwiększenia wydajności.
+* **Szybka**: Kontenery nie muszą uruchamiać całego systemu operacyjnego, więc mogą zacząć znacznie szybciej — zwykle w ciągu kilku sekund.
+* **Przenośność**: Obraz aplikacji kontenera można przenieść do uruchamiania w chmurze, lokalnie, wewnątrz maszyn wirtualnych lub bezpośrednio na maszynach fizycznych.
+* **Zarządzanie zasobami**: Kontener może ograniczyć zasoby fizyczne, których może zużywać na jego hoście.
 
-### <a name="container-types-and-supported-environments"></a>Typy kontenera i obsługiwanych środowisk
+### <a name="container-types-and-supported-environments"></a>Typy kontenerów i obsługiwane środowiska
 
-Usługa Service Fabric obsługuje kontenery na systemie Linux i Windows oraz w trybie izolacji funkcji Hyper-V na Windows.
+Service Fabric obsługuje kontenery w systemach Linux i Windows oraz obsługuje tryb izolacji funkcji Hyper-V w systemie Windows.
 
-#### <a name="docker-containers-on-linux"></a>Kontenery platformy docker w systemie Linux
+#### <a name="docker-containers-on-linux"></a>Kontenery platformy Docker w systemie Linux
 
-Środowisko docker zawiera interfejsy API do tworzenia kontenerów i zarządzanie nimi na podstawie kontenerów jądra systemu Linux. Usługi docker Hub stanowi centralne repozytorium do przechowywania i pobierania obrazów kontenerów.
-Samouczek opartych na systemie Linux, zobacz [tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Linux](service-fabric-get-started-containers-linux.md).
+Platforma Docker udostępnia interfejsy API umożliwiające tworzenie kontenerów i zarządzanie nimi na kontenerach jądra systemu Linux. Centrum platformy Docker udostępnia centralne repozytorium do przechowywania i pobierania obrazów kontenerów.
+Aby zapoznać się z samouczkiem opartym na systemie Linux, zobacz [Tworzenie pierwszej Service Fabric aplikacji kontenera w systemie Linux](service-fabric-get-started-containers-linux.md).
 
 #### <a name="windows-server-containers"></a>Kontenery systemu Windows Server
 
-System Windows Server 2016 zapewnia dwa różne typy kontenerów, które różnią się od poziomu izolacji. Kontenery systemu Windows Server i kontenerów platformy Docker są podobne, ponieważ zachowują się przestrzeń nazw i plik izolacji systemu podczas udostępniania jądro z hostem, do których są uruchomione. W systemie Linux ta izolacja tradycyjnie została przekazana przez cgroup i przestrzenie nazw i kontenery systemu Windows Server działają w podobny sposób.
+System Windows Server 2016 oferuje dwa różne typy kontenerów, które różnią się w zależności od poziomu izolacji. Kontenery systemu Windows Server i kontenery platformy Docker są podobne, ponieważ zarówno mają przestrzeń nazw, jak i izolację systemu plików, jednocześnie udostępniając jądro na hoście, na którym są uruchomione. W systemie Linux ta izolacja jest tradycyjnie świadczona przez cgroup i przestrzenie nazw, a kontenery systemu Windows Server zachowują się podobnie.
 
-Kontenery Windows z obsługą funkcji Hyper-V zapewniają więcej izolacji i zabezpieczeń, ponieważ kontener nie udostępnia jądra systemu operacyjnego przy użyciu innego kontenera lub z hostem. Z tego wyższego poziomu izolacji zabezpieczeń kontenery funkcji Hyper-V, włączone są przeznaczone wielodostępnych, potencjalnie szkodliwymi scenariuszy.
-Samouczek z systemem Windows można znaleźć [utworzyć swoją pierwszą aplikację kontenera usługi Service Fabric na Windows](service-fabric-get-started-containers.md).
+Kontenery systemu Windows z obsługą funkcji Hyper-V zapewniają większą izolację i bezpieczeństwo, ponieważ żaden kontener nie udostępnia jądra systemu operacyjnego żadnym innym kontenerem lub hostem. W przypadku wyższego poziomu izolacji zabezpieczeń kontenery z obsługą funkcji Hyper-V są stosowane do potencjalnie nieszkodliwych scenariuszy z wieloma dzierżawcami.
+Aby zapoznać się z samouczkiem opartym na systemie Windows, zobacz [Tworzenie pierwszej Service Fabric aplikacji kontenera w systemie Windows](service-fabric-get-started-containers.md).
 
-Na poniższej ilustracji przedstawiono różne rodzaje dostępnych poziomów wirtualizacji i izolacji.
-![Platformy usługi Service Fabric][Image1]
+Na poniższej ilustracji przedstawiono różne typy wirtualizacji i dostępne poziomy izolacji.
+![Service Fabric platformę][Image1]
 
-## <a name="scenarios-for-using-containers"></a>Scenariusze dotyczące korzystania z kontenerów
+## <a name="scenarios-for-using-containers"></a>Scenariusze korzystania z kontenerów
 
-Poniżej przedstawiono typowe przykłady gdy kontener jest dobrym wyborem:
+Oto typowe przykłady, w których kontener jest dobry wybór:
 
-* **Usługi IIS lift- and -shift**: Możesz umieścić istniejące [platformy ASP.NET MVC](https://www.asp.net/mvc) aplikacji w kontenerze zamiast migrowania go do platformy ASP.NET Core. Te aplikacje platformy ASP.NET MVC zależeć na Internet Information Services (IIS). Można spakować te aplikacje w kontenerze obrazów z precreated obrazu IIS, a następnie wdrażać je z usługą Service Fabric. Zobacz [obrazów kontenerów w systemie Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) uzyskać informacji na temat kontenerów Windows.
+* **Przesunięcia i Shift usług IIS**: Istnieje możliwość umieszczenia istniejącej aplikacji [ASP.NET MVC](https://www.asp.net/mvc) w kontenerze zamiast migrowania jej do ASP.NET Core. Te aplikacje ASP.NET MVC są zależne od Internet Information Services (IIS). Te aplikacje można spakować na obrazy kontenerów ze utworzonego obrazu usług IIS i wdrożyć je za pomocą Service Fabric. Zobacz [obrazy kontenerów w systemie Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) , aby uzyskać informacje o kontenerach systemu Windows.
 
-* **Mieszanie kontenerów oraz mikrousług usługi Service Fabric**: Użyj istniejącego obrazu kontenera dla części aplikacji. Na przykład, można na przykład [kontener NGINX](https://hub.docker.com/_/nginx/) dla frontonu sieci web, aplikacji i usług stanowych bardziej intensywnie korzystających z obliczeń zaplecza.
+* **Kontenery Mix i Service Fabric mikrousługi**: Użyj istniejącego obrazu kontenera dla części aplikacji. Można na przykład użyć [kontenera Nginx](https://hub.docker.com/_/nginx/) dla frontonu sieci Web aplikacji i usług stanowych w celu uzyskania bardziej intensywnych obliczeń zaplecza.
 
-* **Ograniczenia wpływu usługi "hałaśliwym sąsiadów"** : Możliwości zarządzania zasób kontenerów umożliwia ograniczanie zasobów używanych przez usługi na hoście. Jeśli usługi mogą używać wielu zasobów i wpłynąć na wydajność innych osób (na przykład operacji długotrwałych, podobne do zapytania), należy rozważyć umieszczenie tych usług do kontenerów, które mają nadzór nad zasobami.
+* **Ogranicz wpływ usług "sąsiedzi" na "zakłócenia"** : Można użyć funkcji ładu zasobów kontenera, aby ograniczyć zasoby używane przez usługę na hoście. Jeśli usługi mogą zużywać wiele zasobów i wpływać na wydajność innych (takich jak długotrwała operacja przypominających zapytania), należy rozważyć umieszczenie tych usług w kontenerach, które mają zarządzanie zasobami.
 
-## <a name="service-fabric-support-for-containers"></a>Obsługa usługi Service Fabric dla kontenerów
+## <a name="service-fabric-support-for-containers"></a>Service Fabric obsługa kontenerów
 
-Usługa Service Fabric obsługuje wdrażanie kontenerów Docker w systemie Linux i kontenerów systemu Windows Server w systemie Windows Server 2016, wraz z pomocy technicznej w trybie izolacji funkcji Hyper-V. 
+Service Fabric obsługuje wdrażanie kontenerów platformy Docker w systemach Linux i Windows Server w systemie Windows Server 2016 wraz z obsługą trybu izolacji funkcji Hyper-V. 
 
-Usługa Service Fabric udostępnia [model aplikacji](service-fabric-application-model.md) w kontenerze reprezentuje aplikację hosta w wielu usług, w której są umieszczane replik. Usługa Service Fabric obsługuje także [scenariusz pliku wykonywalnego gościa](service-fabric-guest-executables-introduction.md) w którym możesz nie należy używać wbudowanej usługi Service Fabric modeli programowania, ale zamiast tego pakietu istniejącej aplikacji, napisane przy użyciu dowolnego języka lub platformy, wewnątrz kontener. Ten scenariusz jest typowy przypadek użycia dla kontenerów.
+Service Fabric udostępnia [model aplikacji](service-fabric-application-model.md) , w którym kontener reprezentuje hosta aplikacji, w którym umieszczane są wiele replik usługi. Service Fabric obsługuje również [scenariusz wykonywalny gościa](service-fabric-guest-executables-introduction.md) , w którym nie można używać wbudowanych modeli programowania Service Fabric, ale zamiast tego pakuje istniejącą aplikację, korzystając z dowolnego języka lub platformy, wewnątrz kontenera. Ten scenariusz jest typowym przypadkiem użycia dla kontenerów.
 
-Można również uruchomić [usługi Service Fabric w kontenerze](service-fabric-services-inside-containers.md). Obsługa usługi Service Fabric działającej wewnątrz kontenerów jest obecnie ograniczona.
+Możesz również uruchomić [usługi Service Fabric w kontenerze](service-fabric-services-inside-containers.md). Obsługa uruchamiania Service Fabric usług w kontenerach jest obecnie ograniczona.
 
-Usługa Service Fabric udostępnia kilka możliwości kontenerów, które pomagają tworzyć aplikacje, które składają się z konteneryzowanych mikrousług, takich jak:
+Service Fabric oferuje kilka możliwości kontenera, które ułatwiają tworzenie aplikacji składających się z mikrousług obsługiwanych przez kontenery, takich jak:
 
-* Wdrażanie obrazu kontenera i aktywacji.
-* Nadzór nad zasobami wraz z ustawieniem wartości zasobu domyślnie w klastrach platformy Azure.
+* Wdrażanie i aktywacja obrazów kontenerów.
+* Zarządzanie zasobami, w tym Ustawianie wartości zasobów domyślnie w klastrach platformy Azure.
 * Uwierzytelnianie repozytorium.
-* Kontenera typu port do hosta, mapowanie portów.
-* Odnajdywanie na kontenerami i komunikacji.
-* Możliwość Konfigurowanie i Ustawianie zmiennych środowiskowych.
+* Port kontenera do mapowania portów hosta.
+* Odnajdywanie i komunikacja między kontenerami.
+* Możliwość konfigurowania i ustawiania zmiennych środowiskowych.
 * Możliwość ustawienia poświadczeń zabezpieczeń w kontenerze.
-* Wybór różne tryby sieci dla kontenerów.
+* Wybór różnych trybów sieciowych dla kontenerów.
 
-Kompletny przegląd kontenera działu pomocy technicznej na platformie Azure, takie jak sposób tworzenia klastra Kubernetes za pomocą usługi Azure Kubernetes Service, aby utworzyć prywatnego rejestru platformy Docker w usłudze Azure Container Registry i więcej, zobacz [Azure for Containers](https://docs.microsoft.com/azure/containers/).
+Aby zapoznać się z kompleksowym omówieniem obsługi kontenerów na platformie Azure, takich jak tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes, jak utworzyć prywatny rejestr platformy Docker w Azure Container Registry i więcej, zobacz temat [Azure for Containers](https://docs.microsoft.com/azure/containers/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono informacje pomocy technicznej, których Usługa Service Fabric udostępnia uruchamiania kontenerów. Następnie przejdziemy przez przykłady każda z tych funkcji, aby pokazać, jak z nich korzystać.
+W tym artykule przedstawiono informacje o Service Fabric pomocy technicznej dotyczącej uruchomionych kontenerów. Następnie połączymy się z przykładami każdej z tych funkcji, aby zobaczyć, jak ich używać.
 
-[Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Linux](service-fabric-get-started-containers-linux.md)  
-[Tworzenie pierwszej aplikacji kontenera usługi Service Fabric na Windows](service-fabric-get-started-containers.md)  
-[Dowiedz się więcej na temat kontenerów Windows](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[Tworzenie pierwszej aplikacji kontenera Service Fabric w systemie Linux](service-fabric-get-started-containers-linux.md)  
+[Tworzenie pierwszej aplikacji kontenera Service Fabric w systemie Windows](service-fabric-get-started-containers.md)  
+[Dowiedz się więcej o kontenerach systemu Windows](https://docs.microsoft.com/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

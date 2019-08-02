@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio – Azure
-description: Dowiedz się, jak tworzenie i wdrażanie usługi Azure WebJobs w usłudze Azure App Service przy użyciu programu Visual Studio.
+title: Opracowywanie i wdrażanie zadań WebJob przy użyciu programu Visual Studio — Azure
+description: Dowiedz się, jak opracowywać i wdrażać Azure WebJobs, aby Azure App Service przy użyciu programu Visual Studio.
 services: app-service
 documentationcenter: ''
 author: ggailey777
@@ -15,165 +15,162 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: e66a2ffa6578ed0c9eb5eb19659adf9ba253bbeb
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 2695ee2751a2834466c42d224101af246b829aca
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613359"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717619"
 ---
-# <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Tworzenie i wdrażanie zadań Webjob za pomocą programu Visual Studio — usłudze Azure App Service
+# <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Opracowywanie i wdrażanie zadań WebJob za pomocą programu Visual Studio — Azure App Service
 
-W tym artykule wyjaśniono, jak używać programu Visual Studio, aby wdrożyć projekt aplikacji konsoli w aplikacji sieci web w [usługi App Service](overview.md) jako [zadanie Azure WebJob](https://go.microsoft.com/fwlink/?LinkId=390226). Aby uzyskać informacje o tym, jak wdrażać zadania Webjob przy użyciu [witryny Azure portal](https://portal.azure.com), zobacz [zadania w tle uruchom za pomocą zadań Webjob](webjobs-create.md).
+W tym artykule wyjaśniono, jak używać programu Visual Studio do wdrażania projektu aplikacji konsolowej w aplikacji sieci Web w [App Service](overview.md) jako [Zadania WebJob platformy Azure](https://go.microsoft.com/fwlink/?LinkId=390226). Aby uzyskać informacje na temat sposobu wdrażania zadań WebJob przy użyciu [Azure Portal](https://portal.azure.com), zobacz [Uruchamianie zadań w tle za pomocą zadań WebJob](webjobs-create.md).
 
-Wiele zadań Webjob mogą publikować w pojedynczej aplikacji sieci web. Upewnij się, że każdy zadania WebJob w aplikacji sieci web ma unikatową nazwę.
+Można opublikować wiele zadań WebJob w pojedynczej aplikacji sieci Web. Upewnij się, że każde zadanie WebJob w aplikacji sieci Web ma unikatową nazwę.
 
-W wersji 3.x programu [zestawu Azure WebJobs SDK](webjobs-sdk-how-to.md) umożliwia opracowywanie zadań Webjob, który uruchamiany jako aplikacje platformy .NET Core lub .NET Framework aplikacji podczas wersji 2.x obsługuje programu .NET Framework. Sposób wdrażania projektu zadania Webjob różni się dla projektów .NET Core i .NET Framework z nich.
+Wersja 3. x [zestawu SDK Azure WebJobs](webjobs-sdk-how-to.md) umożliwia tworzenie zadań WebJob, które są uruchamiane jako aplikacje .NET Core lub aplikacje .NET Framework, natomiast wersja 2. x obsługuje tylko .NET Framework. Sposób wdrażania projektu zadań WebJob jest różny dla projektów .NET Core, a .NET Framework.
 
-## <a name="webjobs-as-net-core-console-apps"></a>Zadania Webjob jako aplikacji konsoli .NET Core
+## <a name="webjobs-as-net-core-console-apps"></a>Zadania WebJob jako aplikacje konsolowe platformy .NET Core
 
-Podczas używania wersji 3.x zadań webjob, można tworzyć i publikować zadania Webjob jako aplikacji konsoli .NET Core. Aby uzyskać instrukcje krok po kroku tworzenia i publikowania aplikacji konsoli .NET Core na platformie Azure jako zadanie WebJob, zobacz [Rozpoczynanie pracy z usługą Azure WebJobs SDK, przetwarzanie w tle oparte na zdarzeniach](webjobs-sdk-get-started.md).
+W przypadku korzystania z wersji 3. x zadań WebJob można tworzyć i publikować Zadania WebJob jako aplikacje konsolowe platformy .NET Core. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia i publikowania aplikacji konsolowej .NET Core na platformie Azure jako zadania WebJob, zobacz [wprowadzenie do zestawu SDK Azure WebJobs na potrzeby przetwarzania w tle opartego](webjobs-sdk-get-started.md)na zdarzeniach.
 
 > [!NOTE]
-> Zadania Webjob programu .NET core nie mogą być połączone z projektami sieci web. Jeśli zajdzie potrzeba wdrożenia zadania WebJob z aplikacją sieci web, należy [Tworzenie zadania WebJob jako aplikacji konsoli .NET Framework](#webjobs-as-net-framework-console-apps).  
+> Zadań WebJob programu .NET Core nie można łączyć z projektami sieci Web. Jeśli musisz wdrożyć zadanie WebJob za pomocą aplikacji sieci Web, [Utwórz zadanie WebJob jako aplikację konsolową .NET Framework](#webjobs-as-net-framework-console-apps).  
 
 ### <a name="deploy-to-azure-app-service"></a>Wdrażanie w usłudze Azure App Service
 
-Publikowanie zadania WebJob .NET Core w usłudze App Service w programie Visual Studio używa tego samego narzędzia jako publikowania aplikacji platformy ASP.NET Core.
+Publikowanie Zadania WebJob programu .NET Core w celu App Service z programu Visual Studio używa tych samych narzędzi, co publikowanie aplikacji ASP.NET Core.
 
 [!INCLUDE [webjobs-publish-net-core](../../includes/webjobs-publish-net-core.md)] 
 
 ### <a name="webjob-types"></a>Typy zadań WebJob
 
-Domyślnie zadanie WebJob publikowane .NET Core, projekt konsoli działa tylko po ich wyzwoleniu lub na żądanie. Możesz także zaktualizować projekt, aby [uruchamiane zgodnie z harmonogramem](#scheduled-execution) lub w sposób ciągły.
+Domyślnie zadanie WebJob publikowane z poziomu projektu konsoli .NET Core jest uruchamiane tylko w przypadku wyzwolenia lub na żądanie. Możesz również zaktualizować projekt do [uruchamiania zgodnie](#scheduled-execution) z harmonogramem lub działać w sposób ciągły.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 
 #### <a name="scheduled-execution"></a>Zaplanowane wykonanie
 
-Po opublikowaniu aplikacji konsoli .NET Core na platformie Azure, nowy *settings.job* plik zostanie dodany do projektu. Użyj tego pliku, aby ustawić harmonogram wykonywania zadania WebJob. Aby uzyskać więcej informacji, zobacz [planowania wyzwolone zadania WebJob](#scheduling-a-triggered-webjob).
+Po opublikowaniu aplikacji konsolowej .NET Core na platformie Azure nowe *Ustawienia* są dodawane do projektu. Ten plik służy do ustawiania harmonogramu wykonywania zadania WebJob. Aby uzyskać więcej informacji, zobacz [Planowanie wyzwalanego Zadania WebJob](#scheduling-a-triggered-webjob).
 
-#### <a name="continuous-execution"></a>Ciągłego wykonywania
+#### <a name="continuous-execution"></a>Ciągłe wykonywanie
 
-Aby zmienić zadania WebJob do uruchamiania stale, po włączeniu funkcji Always On na platformie Azure, można użyć programu Visual Studio.
+Możesz użyć programu Visual Studio, aby zmienić zadanie WebJob tak, aby działało stale, gdy jest włączone na platformie Azure.
 
-1. Jeśli użytkownik jeszcze tego nie zrobiono, [publikowania projektu na platformie Azure](#deploy-to-azure-app-service).
+1. Jeśli jeszcze tego nie zrobiono, [Opublikuj projekt na platformie Azure](#deploy-to-azure-app-service).
 
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**.
 
-1. W **Publikuj** kartę, wybrać **ustawienia**. 
+1. Na karcie **Publikowanie** wybierz pozycję **Ustawienia**. 
 
-1. W **ustawienia profilu** okno dialogowe, wybierz **ciągłe** dla **typ zadania WebJob**i wybierz polecenie **Zapisz**.
+1. W oknie dialogowym **Ustawienia profilu** wybierz pozycję **ciągłe** dla **typu zadania WebJob**, a następnie wybierz pozycję **Zapisz**.
 
-    ![Publikowanie okno dialogowe Ustawienia dla zadania WebJob](./media/webjobs-dotnet-deploy-vs/publish-settings.png)
+    ![Okno dialogowe ustawień publikowania dla zadania WebJob](./media/webjobs-dotnet-deploy-vs/publish-settings.png)
 
-1. Wybierz **Publikuj** ponownie opublikować zadania WebJob ze zaktualizowanymi ustawieniami.
+1. Wybierz pozycję **Publikuj** , aby ponownie opublikować zadanie WebJob ze zaktualizowanymi ustawieniami.
 
-## <a name="webjobs-as-net-framework-console-apps"></a>Zadania Webjob jako aplikacji konsoli .NET Framework  
+## <a name="webjobs-as-net-framework-console-apps"></a>Zadania WebJob jako .NET Framework aplikacje konsolowe  
 
-Gdy program Visual Studio wdroży projekt zadania Webjob .NET Framework konsoli aplikacji z obsługą, wykonuje dwie czynności:
+Gdy program Visual Studio wdroży projekt aplikacji konsolowej z włączoną obsługą zadań WebJob .NET Framework, kopiuje pliki środowiska uruchomieniowego do odpowiedniego folderu w aplikacji sieci Web (*App_Data/Jobs/Continuous* dla ciągłych zadań WebJob i *App_Data/Jobs/wyzwolone* dla zaplanowane lub na żądanie zadania WebJob).
 
-* Kopiuje pliki środowiska uruchomieniowego do odpowiedniego folderu w aplikacji sieci web (*App_Data/zadania/continuous* dla ciągłych zadań Webjob i *App_Data/zadania/triggered* dla usługi WebJobs, zaplanowane lub na żądanie).
-* Konfiguruje [usługi Azure Scheduler](https://docs.microsoft.com/azure/scheduler/) zadania dla zadań Webjob, które są planowane do uruchomienia w określonym czasie. (To nie jest potrzebna do ciągłych zadań Webjob.)
+Projekt z włączoną obsługą zadań WebJob ma dodane następujące elementy:
 
-Włączone usługi WebJobs projekt ma następujące elementy, które dodano do niego:
+* Pakiet NuGet [Microsoft. Web. WebJobs. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) .
+* Plik [WebJob-Publish-Settings. JSON](#publishsettings) , który zawiera ustawienia wdrażania i harmonogramu. 
 
-* [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) pakietu NuGet.
-* A [zadania webjob — publikowanie settings.json](#publishsettings) pliku zawierającego ustawienia wdrożenia i harmonogramu. 
+![Diagram przedstawiający elementy dodawane do aplikacji konsolowej w celu włączenia wdrożenia jako zadania WebJob](./media/webjobs-dotnet-deploy-vs/convert.png)
 
-![Diagram przedstawiający, co to jest dodawany do aplikacji konsoli, aby umożliwić wdrożenie jako zadanie WebJob](./media/webjobs-dotnet-deploy-vs/convert.png)
+Można dodać te elementy do istniejącego projektu aplikacji konsolowej lub użyć szablonu, aby utworzyć nowy projekt aplikacji konsolowej z włączoną obsługą zadań WebJob. 
 
-Można dodać te elementy do istniejącego projektu aplikacji konsoli lub Utwórz nowy projekt aplikacji konsoli z możliwością zadań Webjob przy użyciu szablonu. 
+Projekt można wdrożyć jako zadanie WebJob lub połączyć go z projektem sieci Web, dzięki czemu zostanie on automatycznie wdrożony po wdrożeniu projektu sieci Web. Aby połączyć projekty, program Visual Studio zawiera nazwę projektu z obsługą zadań WebJob w pliku [WebJobs-list. JSON](#webjobslist) w projekcie sieci Web.
 
-Możesz wdrożyć projekt jako zadanie WebJob przez siebie lub link do projektu sieci web tak, aby automatycznie wdraża zawsze wtedy, gdy wdrażanie projektu sieci web. Aby połączyć projektów, program Visual Studio zawiera nazwę projektu zadań Webjob, włączone w [webjobs list.json](#webjobslist) pliku w projekcie sieci web.
-
-![Diagram przedstawiający projektu zadania WebJob łączenie do projektu sieci web](./media/webjobs-dotnet-deploy-vs/link.png)
+![Diagram przedstawiający łączenie projektu WebJob z projektem sieci Web](./media/webjobs-dotnet-deploy-vs/link.png)
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli używasz programu Visual Studio 2015, zainstaluj [zestawu Azure SDK dla platformy .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/).
+Jeśli używasz programu Visual Studio 2015, zainstaluj [zestaw Azure SDK dla programu .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/).
 
-Jeśli używasz programu Visual Studio 2019 r, należy zainstalować [obciążenie programistyczne platformy Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
+Jeśli używasz programu Visual Studio 2019, zainstaluj [obciążenie Programowanie na platformie Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
 
-### <a id="convert"></a> Włącz wdrożenie zadania Webjob do istniejącego projektu aplikacji konsoli
+### <a id="convert"></a>Włącz wdrażanie zadań WebJob dla istniejącego projektu aplikacji konsolowej
 
 Dostępne są dwie opcje:
 
-* [Włącz automatyczne wdrażanie projektu sieci web](#convertlink).
+* [Włącz automatyczne wdrażanie przy użyciu projektu sieci Web](#convertlink).
 
-  Skonfiguruj istniejący projekt aplikacji konsoli, aby go automatycznie wdraża jako zadanie WebJob podczas wdrażania projektu sieci web. Użyj tej opcji, gdy użytkownik chce uruchomić zadania WebJob w tej samej aplikacji sieci web, w którym są uruchomione aplikacji sieci web powiązanych.
+  Skonfiguruj istniejący projekt aplikacji konsolowej, tak aby był automatycznie wdrażany jako zadanie WebJob podczas wdrażania projektu sieci Web. Użyj tej opcji, jeśli chcesz uruchomić zadanie WebJob w tej samej aplikacji sieci Web, w której uruchomiono powiązaną aplikację sieci Web.
 
-* [Włącz wdrożenie bez projektu sieci web](#convertnolink).
+* [Włącz wdrożenie bez projektu sieci Web](#convertnolink).
 
-  Skonfiguruj istniejący projekt aplikacji konsoli do wdrażania jako zadanie WebJob przez siebie, za pomocą żadnego linku do projektu sieci web. Użyj tej opcji, jeśli chcesz uruchamiać zadanie WebJob w aplikacji sieci web przez siebie, z żadnej aplikacji sieci web, uruchamiany w aplikacji sieci web. Można to zrobić, aby można było skalować swoje zasoby zadań WebJob, niezależnie od zasobów aplikacji sieci web.
+  Skonfiguruj istniejący projekt aplikacji konsolowej do wdrożenia jako zadanie WebJob, bez linku do projektu sieci Web. Użyj tej opcji, jeśli chcesz uruchomić zadanie WebJob w aplikacji sieci Web, korzystając z aplikacji sieci Web działającej w aplikacji sieci Web. Można to zrobić, aby móc skalować zasoby WebJob niezależnie od zasobów aplikacji sieci Web.
 
-#### <a id="convertlink"></a> Włącz automatyczne wdrażanie zadań Webjob za pomocą projektu sieci web
+#### <a id="convertlink"></a>Włącz automatyczne wdrażanie zadań WebJob przy użyciu projektu sieci Web
 
-1. Kliknij prawym przyciskiem myszy projekt sieci web w **Eksploratora rozwiązań**, a następnie kliknij przycisk **Dodaj** > **istniejący projekt jako zadanie Azure WebJob**.
+1. Kliknij prawym przyciskiem myszy projekt sieci Web w **Eksplorator rozwiązań**, a następnie kliknij pozycję **Dodaj** > **istniejący projekt jako zadanie WebJob platformy Azure**.
    
     ![Istniejący projekt jako zadanie WebJob platformy Azure](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
-    [Dodaj zadanie WebJob systemu Azure](#configure) pojawi się okno dialogowe.
-2. W **Nazwa projektu** listy rozwijanej, wybierz projekt aplikacji konsoli, można dodać jako zadanie WebJob.
+    Zostanie wyświetlone okno dialogowe [Dodawanie zadania WebJob platformy Azure](#configure) .
+2. Z listy rozwijanej **Nazwa projektu** wybierz projekt aplikacji konsolowej, który ma zostać dodany jako zadanie WebJob.
    
-    ![Wybieranie projektu w oknie dialogowym Dodaj zadanie WebJob systemu Azure](./media/webjobs-dotnet-deploy-vs/aaw1.png)
-3. Wykonaj [Dodaj zadanie WebJob systemu Azure](#configure) okna dialogowego, a następnie kliknij **OK**. 
+    ![Wybieranie projektu w oknie dialogowym Dodawanie zadania WebJob platformy Azure](./media/webjobs-dotnet-deploy-vs/aaw1.png)
+3. Wypełnij okno dialogowe [Dodawanie zadania WebJob platformy Azure](#configure) , a następnie kliknij przycisk **OK**. 
 
-#### <a id="convertnolink"></a> Włącz wdrożenie usługi WebJobs bez projektu sieci web
-1. Kliknij prawym przyciskiem myszy projekt aplikacji konsoli w **Eksploratora rozwiązań**, a następnie kliknij przycisk **Publikuj jako zadanie Azure WebJob...** . 
+#### <a id="convertnolink"></a>Włącz wdrażanie zadań WebJob bez projektu sieci Web
+1. Kliknij prawym przyciskiem myszy projekt Aplikacja konsolowa w **Eksplorator rozwiązań**, a następnie kliknij pozycję **Opublikuj jako zadanie WebJob platformy Azure.** 
    
     ![Publikuj jako zadanie WebJob platformy Azure](./media/webjobs-dotnet-deploy-vs/paw.png)
    
-    [Dodaj zadanie WebJob systemu Azure](#configure) pojawi się okno dialogowe z projektu wybranego w **Nazwa projektu** pole.
-2. Wykonaj [Dodaj zadanie WebJob systemu Azure](#configure) okno dialogowe, a następnie kliknij przycisk **OK**.
+    Zostanie wyświetlone okno dialogowe [Dodawanie zadania WebJob platformy Azure](#configure) z projektem wybranym w polu **Nazwa projektu** .
+2. Wypełnij okno dialogowe [Dodawanie zadania WebJob platformy Azure](#configure) , a następnie kliknij przycisk **OK**.
    
-   **Publikowanie w sieci Web** pojawi się Kreator.  Jeśli nie chcesz opublikować natychmiast, zamknąć kreatora. Ustawienia, które zostały wprowadzone są zapisywane dla, gdy użytkownik chce [wdrażanie projektu](#deploy).
+   Zostanie wyświetlony Kreator **publikowania w sieci Web** .  Jeśli nie chcesz publikować natychmiast, zamknij kreatora. Wprowadzone ustawienia są zapisywane w przypadku, gdy chcesz [wdrożyć projekt](#deploy).
 
-### <a id="create"></a>Utwórz nowy projekt z obsługą usługi WebJobs
-Aby utworzyć nowy projekt z obsługą usługi WebJobs, można użyć szablonu projektu aplikacji konsoli i włączyć wdrażanie zadań Webjob, jak wyjaśniono w [poprzedniej sekcji](#convert). Alternatywnie można użyć szablonu nowy projekt zadania Webjob:
+### <a id="create"></a>Utwórz nowy projekt z obsługą zadań WebJob
+Aby utworzyć nowy projekt z obsługą zadań WebJob, można użyć szablonu projektu aplikacji konsolowej i włączyć wdrożenie zadań WebJob zgodnie z opisem w [poprzedniej sekcji](#convert). Alternatywnie można użyć szablonu Nowy projekt Zadania WebJob:
 
-* [Użyj szablonu nowego projektu zadań Webjob dla niezależnych zadań WebJob](#createnolink)
+* [Użycie szablonu New-Project nowego projektu dla niezależnego Zadania WebJob](#createnolink)
   
-    Tworzenie projektu i skonfigurowania go do wdrożenia przez siebie jako zadanie WebJob przy użyciu żadnego linku do projektu sieci web. Użyj tej opcji, jeśli chcesz uruchamiać zadanie WebJob w aplikacji sieci web przez siebie, z żadnej aplikacji sieci web, uruchamiany w aplikacji sieci web. Można to zrobić, aby można było skalować swoje zasoby zadań WebJob, niezależnie od zasobów aplikacji sieci web.
-* [Użyj szablonu nowego projektu zadań Webjob dla zadania WebJob połączonej do projektu sieci web](#createlink)
+    Utwórz projekt i skonfiguruj go do wdrożenia jako zadanie WebJob, bez linku do projektu sieci Web. Użyj tej opcji, jeśli chcesz uruchomić zadanie WebJob w aplikacji sieci Web, korzystając z aplikacji sieci Web działającej w aplikacji sieci Web. Można to zrobić, aby móc skalować zasoby WebJob niezależnie od zasobów aplikacji sieci Web.
+* [Użyj szablonu New-Project nowego projektu dla zadania WebJob połączonego z projektem sieci Web](#createlink)
   
-    Utwórz projekt, który jest skonfigurowany do wdrożenia automatycznie jako zadanie WebJob podczas wdrażania projektu sieci web w taki sposób, w tym samym rozwiązaniu. Użyj tej opcji, gdy użytkownik chce uruchomić zadania WebJob w tej samej aplikacji sieci web, w którym są uruchomione aplikacji sieci web powiązanych.
+    Utwórz projekt, który jest skonfigurowany do automatycznego wdrażania jako zadanie WebJob, gdy zostanie wdrożony projekt sieci Web w tym samym rozwiązaniu. Użyj tej opcji, jeśli chcesz uruchomić zadanie WebJob w tej samej aplikacji sieci Web, w której uruchomiono powiązaną aplikację sieci Web.
 
 > [!NOTE]
-> Szablon nowego projektu zadania Webjob automatycznie instaluje pakiety NuGet i zawiera kod w *Program.cs* dla [zestawu SDK usługi WebJobs](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Jeśli nie chcesz używać zestawu SDK usługi WebJobs, usuń lub zmień `host.RunAndBlock` instrukcji w *Program.cs*.
+> Szablon nowy projekt Zadania WebJob automatycznie instaluje pakiety NuGet i zawiera kod w *program.cs* dla [zestawu SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs)usługi WebJobs. Jeśli nie chcesz używać zestawu SDK zadań WebJob, Usuń lub Zmień `host.RunAndBlock` instrukcję w *program.cs*.
 > 
 > 
 
-#### <a id="createnolink"></a> Użyj szablonu nowego projektu zadań Webjob dla niezależnych zadań WebJob
-1. Kliknij przycisk **pliku** > **nowy projekt**, a następnie w polu **nowy projekt** kliknij okno dialogowe **chmury**  >   **Zadanie WebJob platformy Azure (.NET Framework)** .
+#### <a id="createnolink"></a>Użycie szablonu New-Project nowego projektu dla niezależnego Zadania WebJob
+1. Kliknij pozycję **plik** > **Nowy projekt**, a następnie w oknie dialogowym **Nowy projekt** kliknij pozycję**zadanie WebJob platformy Azure w chmurze** > (.NET Framework).
    
-    ![Okno dialogowe nowego projektu przedstawiający szablon zadania WebJob](./media/webjobs-dotnet-deploy-vs/np.png)
-2. Wykonaj instrukcje przedstawione wcześniej do [aplikację konsoli projektu niezależnie od projektu zadania Webjob](#convertnolink).
+    ![Okno dialogowe Nowy projekt przedstawiające Szablon Zadania WebJob](./media/webjobs-dotnet-deploy-vs/np.png)
+2. Postępuj zgodnie ze wskazówkami podanymi wcześniej, aby [uczynić aplikację konsolową projektu niezależnego Zadania WebJob](#convertnolink).
 
-#### <a id="createlink"></a> Użyj szablonu nowego projektu zadań Webjob dla zadania WebJob połączonej do projektu sieci web
-1. Kliknij prawym przyciskiem myszy projekt sieci web w **Eksploratora rozwiązań**, a następnie kliknij przycisk **Dodaj** > **nowy projekt zadania WebJob Azure**.
+#### <a id="createlink"></a>Użyj szablonu New-Project nowego projektu dla zadania WebJob połączonego z projektem sieci Web
+1. Kliknij prawym przyciskiem myszy projekt sieci Web w **Eksplorator rozwiązań**, a następnie kliknij pozycję **Dodaj** > **Nowy projekt Zadania WebJob platformy Azure**.
    
-    ![Nowy wpis menu projektu zadania WebJob platformy Azure](./media/webjobs-dotnet-deploy-vs/nawj.png)
+    ![Nowy wpis menu projektu zadań WebJob platformy Azure](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
-    [Dodaj zadanie WebJob systemu Azure](#configure) pojawi się okno dialogowe.
-2. Wykonaj [Dodaj zadanie WebJob systemu Azure](#configure) okno dialogowe, a następnie kliknij przycisk **OK**.
+    Zostanie wyświetlone okno dialogowe [Dodawanie zadania WebJob platformy Azure](#configure) .
+2. Wypełnij okno dialogowe [Dodawanie zadania WebJob platformy Azure](#configure) , a następnie kliknij przycisk **OK**.
 
-### <a id="configure"></a>Okno dialogowe Dodaj zadanie WebJob systemu Azure
-**Dodaj zadanie WebJob systemu Azure** okno dialogowe pozwala wprowadzić nazwę zadania WebJob, i uruchom tryb zadania WebJob. 
+### <a id="configure"></a>Okno dialogowe Dodawanie zadania WebJob platformy Azure
+W oknie dialogowym **Dodawanie zadania WebJob platformy Azure** można wprowadzić nazwę i tryb uruchamiania zadania WebJob dla zadania WebJob. 
 
-![Dodaj okno dialogowe zadań WebJob platformy Azure](./media/webjobs-dotnet-deploy-vs/aaw2.png)
+![Okno dialogowe Dodawanie zadania WebJob platformy Azure](./media/webjobs-dotnet-deploy-vs/aaw2.png)
 
-Pola w tym oknie dialogowym odpowiadają polom na **Dodaj zadanie WebJob** okna dialogowego w witrynie Azure Portal. Aby uzyskać więcej informacji, zobacz [zadania w tle uruchom za pomocą zadań Webjob](webjobs-create.md).
+Pola w tym oknie dialogowym odpowiadają polom w oknie dialogowym **Dodawanie zadania WebJob** Azure Portal. Aby uzyskać więcej informacji, zobacz [Uruchamianie zadań w tle za pomocą zadań WebJob](webjobs-create.md).
 
 > [!NOTE]
-> * Aby uzyskać informacji o wdrażaniu wiersza polecenia, zobacz [włączenie wiersza polecenia lub ciągłej dostawy Azure WebJobs](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/).
-> * Jeśli wdrażać zadania WebJob, a następnie zdecydować, aby zmienić typ zadania WebJob i ponownie wdróż, musisz usunąć *webjobs — publikowanie settings.json* pliku. To spowoduje, że program Visual Studio pokazuj opcje publikowania, dzięki czemu można zmienić typ zadania WebJob.
-> * Jeśli wdrażać zadania WebJob i późniejszej zmiany w trybie uruchamiania z ciągłego — ciągły lub odwrotnie, Visual Studio tworzy nowe zadanie WebJob na platformie Azure, podczas ponownego wdrażania. Jeśli zmienisz inne ustawienia harmonogramu, ale pozostaw tryb uruchamiania, taka sama lub przełączać się między zaplanowane i na żądanie, Visual Studio aktualizuje istniejące zadanie zamiast Utwórz nową.
+> * Aby uzyskać informacje o wdrażaniu w wierszu polecenia, zobacz [Włączanie wiersza polecenia lub ciągłe dostarczanie Azure WebJobs](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/).
+> * W przypadku wdrażania Zadania WebJob, a następnie podjęcia decyzji o konieczności zmiany typu zadania WebJob i ponownego wdrożenia, należy usunąć plik *WebJobs-Publish-Settings. JSON* . Spowoduje to, że program Visual Studio będzie ponownie wyświetlał opcje publikowania, aby można było zmienić typ zadania WebJob.
+> * W przypadku wdrożenia Zadania WebJob i późniejszego zmiany trybu uruchamiania z ciągłego na non-Continuous lub odwrotnie program Visual Studio utworzy nowy element WebJob na platformie Azure podczas ponownego wdrażania. Jeśli zmienisz inne ustawienia planowania, ale pozostaw tryb uruchamiania tego samego lub przełączasz między harmonogramem i na żądanie, program Visual Studio zaktualizuje istniejące zadanie zamiast tworzyć nowe.
 > 
 > 
 
 ### <a id="publishsettings"></a>webjob-publish-settings.json
-Po skonfigurowaniu aplikacji konsoli dla zadań Webjob, wdrażania, program Visual Studio instaluje [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet pakietu i planowania informacje zawarte w magazynach *zadania webjob — publikowanie settings.json*  pliku w projekcie *właściwości* folderu projektu zadania Webjob. Oto przykład tego pliku:
+Po skonfigurowaniu aplikacji konsolowej do wdrożenia usługi WebJobs program Visual Studio instaluje pakiet NuGet [Microsoft. Web. WebJobs. publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) i zapisuje informacje o planowaniu w pliku *WebJob-Publish-Settings. JSON* w projekcie  *Folder właściwości* projektu WebJobs. Oto przykład tego pliku:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
@@ -185,10 +182,10 @@ Po skonfigurowaniu aplikacji konsoli dla zadań Webjob, wdrażania, program Visu
           "runMode": "Continuous"
         }
 
-Ten plik można edytować bezpośrednio, a program Visual Studio oferuje funkcję IntelliSense. Schemat pliku jest przechowywany w [ https://schemastore.org ](https://schemastore.org/schemas/json/webjob-publish-settings.json) i można je tam.  
+Można edytować ten plik bezpośrednio, a program Visual Studio udostępnia funkcję IntelliSense. Schemat pliku jest przechowywany w lokalizacji [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) i można go tam przeglądać.  
 
 ### <a id="webjobslist"></a>webjobs-list.json
-Gdy łączysz projektu zadań Webjob, włączone do projektu sieci web programu Visual Studio zapisuje Nazwa projektu zadania Webjob w *webjobs list.json* pliku w projekcie sieci web *właściwości* folderu. Lista może zawierać wiele projektów zadań Webjob, jak pokazano w poniższym przykładzie:
+W przypadku łączenia projektu z obsługą zadań WebJob z projektem sieci Web program Visual Studio przechowuje nazwę projektu WebJobs w pliku *WebJobs-list. JSON* w folderze *Właściwości* projektu sieci Web. Lista może zawierać wiele projektów zadań WebJob, jak pokazano w następującym przykładzie:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
@@ -202,20 +199,20 @@ Gdy łączysz projektu zadań Webjob, włączone do projektu sieci web programu 
           ]
         }
 
-Ten plik można edytować bezpośrednio, a program Visual Studio oferuje funkcję IntelliSense. Schemat pliku jest przechowywany w [ https://schemastore.org ](https://schemastore.org/schemas/json/webjobs-list.json) i można je tam.
+Można edytować ten plik bezpośrednio, a program Visual Studio udostępnia funkcję IntelliSense. Schemat pliku jest przechowywany w lokalizacji [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) i można go tam przeglądać.
 
-### <a id="deploy"></a>Wdrażanie projektu zadania Webjob
-Projektu zadania Webjob, powiązane z projektem sieci web automatycznie wdraża się z projektem sieci web. Uzyskać informacje dotyczące wdrażania projektu sieci web, zobacz **prowadzi instrukcje** > **wdrażanie aplikacji** w nawigacji po lewej stronie.
+### <a id="deploy"></a>Wdróż projekt WebJob
+Projekt zadań WebJob, który został połączony z projektem sieci Web, jest wdrażany automatycznie w projekcie sieci Web. Informacje o wdrażaniu projektu sieci Web znajdują się w temacie **przewodniki** > dotyczące**wdrażania aplikacji** na lewym pasku nawigacyjnym.
 
-Aby wdrożyć projekt zadania Webjob przez siebie, kliknij prawym przyciskiem myszy projekt w **Eksploratora rozwiązań** i kliknij przycisk **Publikuj jako zadanie Azure WebJob...** . 
+Aby wdrożyć projekt zadań WebJob, kliknij prawym przyciskiem myszy projekt w **Eksplorator rozwiązań** a następnie kliknij pozycję **Opublikuj jako zadanie WebJob platformy Azure.** 
 
 ![Publikuj jako zadanie WebJob platformy Azure](./media/webjobs-dotnet-deploy-vs/paw.png)
 
-Dla niezależnych zadań WebJob, taka sama **publikowanie w sieci Web** kreatora, który jest używany dla projektów sieci web jest wyświetlana, ale mniej ustawień można zmienić.
+W przypadku niezależnego Zadania WebJob pojawia się ten sam Kreator **publikowania w sieci** Web, który jest używany na potrzeby projektów sieci Web, ale z mniejszą liczbą dostępnych ustawień do zmiany.
 
-## <a name="scheduling-a-triggered-webjob"></a>Planowanie wyzwolone zadania WebJob
+## <a name="scheduling-a-triggered-webjob"></a>Planowanie wyzwalanego Zadania WebJob
 
-Zadania Webjob używa *settings.job* plik, aby określić, gdy jest uruchomione zadanie WebJob. Użyj tego pliku, aby ustawić harmonogram wykonywania zadania WebJob. W poniższym przykładzie uruchamiane co godzinę od 9: 00 do 17:
+Zadania WebJob wykorzystują plik *Settings. job* , aby określić, kiedy ma zostać uruchomione zadanie drukowania. Ten plik służy do ustawiania harmonogramu wykonywania zadania WebJob. Poniższy przykład jest uruchamiany co godzinę z 9 AM do 5 PM:
 
 ```json
 {
@@ -223,28 +220,28 @@ Zadania Webjob używa *settings.job* plik, aby określić, gdy jest uruchomione 
 }
 ```
 
-Ten plik musi znajdować się w katalogu głównym folderu zadań Webjob, wzdłuż strona skryptów Twoje zadania WebJob, takich jak `wwwroot\app_data\jobs\triggered\{job name}` lub `wwwroot\app_data\jobs\continuous\{job name}`. Podczas wdrażania zadanie WebJob z poziomu programu Visual Studio, oznacz swoje `settings.job` właściwości jako pliku **Kopiuj Jeśli nowszy**. 
+Ten plik musi znajdować się w folderze głównym folderu zadań WebJob, po stronie skryptu w tym pliku, na przykład `wwwroot\app_data\jobs\triggered\{job name}` lub. `wwwroot\app_data\jobs\continuous\{job name}` Podczas wdrażania Zadania WebJob z poziomu programu Visual Studio Oznacz `settings.job` właściwości pliku jako Kopiuj, **jeśli nowszy**. 
 
-Gdy użytkownik [Tworzenie zadania WebJob w witrynie Azure portal](webjobs-create.md), zostanie utworzony plik settings.job.
+Po [utworzeniu zadania WebJob na podstawie Azure Portal](webjobs-create.md)zostanie utworzony plik Settings. job.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 
-### <a name="cron-expressions"></a>Wyrażenia CRON
+### <a name="cron-expressions"></a>Wyrażenia firmy CRONUS
 
-Zadania Webjob używa tego samego wyrażenia CRON planowania jako wyzwalacz czasomierza w usłudze Azure Functions. Aby dowiedzieć się więcej na temat obsługi usługi CRON, zobacz [artykule informacyjnym na temat wyzwalaczy czasomierza](../azure-functions/functions-bindings-timer.md#cron-expressions).
+Zadania WebJob używają tych samych wyrażeń firmy CRONUS do planowania jako wyzwalacz czasomierza w Azure Functions. Aby dowiedzieć się więcej na temat pomocy technicznej firmy CRONUS, zobacz [artykuł](../azure-functions/functions-bindings-timer.md#cron-expressions)dotyczący wyzwalacza czasomierza.
 
-### <a name="settingjob-reference"></a>Odwołanie Setting.job
+### <a name="settingjob-reference"></a>Ustawianie. odwołanie do zadania
 
-Następujące ustawienia są obsługiwane przez usługi WebJobs:
+Następujące ustawienia są obsługiwane przez Zadania WebJob:
 
 | **Ustawienie** | **Typ**  | **Opis** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Wszyscy | Umożliwia zadanie zostanie uruchomione w miejscu bez najpierw kopiowane do folderu tymczasowego. Aby dowiedzieć się więcej, zobacz [katalogu roboczego zadań Webjob](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
-| `is_singleton` | Ciągłe | Zadania Webjob można uruchamiać tylko w pojedynczym wystąpieniu, w przypadku skalowania do wewnątrz. Aby dowiedzieć się więcej, zobacz [ciągłe zadanie ustawiono jako pojedyncze](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
-| `schedule` | Wyzwolone | Uruchamianie zadania WebJob, zgodnie z harmonogramem na podstawie CRON. Aby dowiedzieć się więcej, zobacz [artykule informacyjnym na temat wyzwalaczy czasomierza](../azure-functions/functions-bindings-timer.md#cron-expressions). |
-| `stopping_wait_time`| Wszyscy | Zapewnia kontrolę nad zachowaniem zamknięcia. Aby dowiedzieć się więcej, zobacz [łagodne zamykanie](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `is_in_place` | Wszyscy | Zezwala na uruchamianie zadania bez uprzedniego kopiowania do folderu tymczasowego. Aby dowiedzieć się więcej, zobacz [katalog roboczy usługi WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_singleton` | Ciągłe | W przypadku skalowania w poziomie należy uruchamiać tylko zadania WebJob w jednym wystąpieniu. Aby dowiedzieć się więcej, zobacz [Ustawianie ciągłego zadania jako pojedyncze](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
+| `schedule` | Wyzwolone | Uruchom zadanie WebJob na podstawie harmonogramu opartego na języku cronus. Aby dowiedzieć się więcej, zobacz [artykuł](../azure-functions/functions-bindings-timer.md#cron-expressions)dotyczący wyzwalacza czasomierza. |
+| `stopping_wait_time`| Wszyscy | Umożliwia sterowanie zachowaniem zamknięcia. Aby dowiedzieć się więcej, zobacz temat [bezpieczne zamykanie](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat zestawu SDK usługi WebJobs](webjobs-sdk-how-to.md)
+> [Dowiedz się więcej o zestawie SDK zadań WebJob](webjobs-sdk-how-to.md)

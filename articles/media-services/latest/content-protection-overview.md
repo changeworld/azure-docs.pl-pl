@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 174184993e40b60dc89022d360f0c09fb31bc60b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501279"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561478"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Ochrona zawartości przy użyciu Media Services szyfrowania dynamicznego
 
@@ -170,7 +170,7 @@ Można kontrolować, kto ma dostęp do zawartości, konfigurując zasady klucza 
 
 Zasady klucza zawartości z ograniczeniami (Open) mogą być używane do wystawiania licencji osobom bez autoryzacji. Na przykład, jeśli przychód jest oparty na usłudze AD, a nie na podstawie subskrypcji.  
 
-Przy użyciu zasad klucza zawartości z ograniczeniami tokenu klucz zawartości jest wysyłany tylko do klienta, który przedstawia prawidłowy token JWT lub prosty token sieci Web w żądaniu licencji/klucza. Ten token musi zostać wystawiony przez usługę STS. 
+Przy użyciu zasad klucza zawartości z ograniczeniami tokenu klucz zawartości jest wysyłany tylko do klienta, który przedstawia prawidłowy token JWT lub prosty token sieci Web (SWT) w żądaniu licencji/klucza. Ten token musi zostać wystawiony przez usługę STS. 
 
 Możesz użyć usługi Azure AD jako usług STS lub wdrożyć niestandardową usługę STS. Usługa STS musi być skonfigurowany do utworzenia tokenu, który został podpisany przy użyciu określonego klucza i problem oświadczenia określona w konfiguracji ograniczenia tokenu. Media Services licencji/usługi dostarczania kluczy zwraca żądaną licencję lub klucz do klienta w przypadku istnienia obu następujących warunków:
 
@@ -196,8 +196,10 @@ Funkcja *zapobiegania powtarzaniu tokenów* umożliwia Media Services klientom U
 
 Klient może zdecydować się na użycie niestandardowej usługi STS w celu zapewnienia tokenów. Przyczyny:
 
-* Dostawca tożsamości używany przez klienta nie obsługuje usługi STS. W tym przypadku niestandardowej usługi STS może być opcją.
-* Klient może być konieczne bardziej elastyczne większego formantu lub do integracji usługi STS z subskrypcją klienta z systemem rozliczeniowym. Na przykład MVPD operator może być wiele pakietów subskrybenta OTT, takich jak podstawowa, premium i sportu. Operator może być zgodne oświadczenia w tokenie pakietem subskrybenta, aby są udostępniane tylko zawartości określonego pakietu. W tym przypadku niestandardowej usługi STS zapewnia wymagane elastyczność i kontrolę.
+* Dostawca tożsamości (dostawcy tożsamości) używany przez klienta nie obsługuje usługi STS. W tym przypadku niestandardowej usługi STS może być opcją.
+* Klient może być konieczne bardziej elastyczne większego formantu lub do integracji usługi STS z subskrypcją klienta z systemem rozliczeniowym. 
+
+   Na przykład operator usługi [OTT](https://en.wikipedia.org/wiki/Over-the-top_media_services) może oferować wiele pakietów subskrybentów, takich jak Premium, Basic i sport. Operator może być zgodne oświadczenia w tokenie pakietem subskrybenta, aby są udostępniane tylko zawartości określonego pakietu. W tym przypadku niestandardowej usługi STS zapewnia wymagane elastyczność i kontrolę.
 * Aby uwzględnić niestandardowe oświadczenia w tokenie, aby wybrać różne ContentKeyPolicyOptions z różnymi parametrami licencji DRM (Licencja subskrypcyjna w porównaniu z licencją dzierżawy).
 * Aby uwzględnić w nim zastrzeżenie reprezentujące identyfikator klucza zawartości klucza, do którego token przyznaje dostęp.
 

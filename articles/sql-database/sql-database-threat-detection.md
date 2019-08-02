@@ -1,6 +1,6 @@
 ---
-title: Wykrywanie zagrożeń — usługa Azure SQL Database | Dokumentacja firmy Microsoft
-description: Wykrywanie zagrożeń wykrywa nietypowe działania bazy danych wskazują możliwe zagrożenia bezpieczeństwa w bazie danych w jednej bazie danych lub elastycznej puli.
+title: Wykrywanie zagrożeń — Azure SQL Database | Microsoft Docs
+description: Wykrywanie zagrożeń wykrywa nietypowe działania bazy danych wskazujące na potencjalne zagrożenia bezpieczeństwa bazy danych w pojedynczej bazie danych lub puli elastycznej.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,43 +10,42 @@ ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 60839fa06d8436d3d2202d1d97735c42c5768e9e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5549d016978e8bf9491c3745e335e3c4c793212c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331494"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566337"
 ---
-# <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>Wykrywania zagrożeń usługi Azure SQL Database dla jednego lub pulami baz danych
+# <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>Azure SQL Database wykrywanie zagrożeń dla baz danych z pojedynczym lub pulą
 
-[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) dla pojedynczych i puli baz danych wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych. Wykrywanie zagrożeń można zidentyfikować **wstrzyknięcie kodu SQL potencjalne**, **dostęp z nietypowej lokalizacji lub danych Centrum**, **dostępu z nieznanego podmiotu zabezpieczeń lub potencjalnie szkodliwe aplikacji**, i **siłowe poświadczenia SQL** — Zobacz więcej szczegółów w [alerty związane z wykrywaniem zagrożeń](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
+[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) dla baz danych o pojedynczej i puli wykrywa nietypowe działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. Wykrywanie zagrożeń może identyfikować **potencjalne iniekcje SQL**, **uzyskiwać dostęp z nietypowej lokalizacji lub centrum danych**, **uzyskiwać dostęp z nieznanego podmiotu zabezpieczeń lub potencjalnie szkodliwej aplikacji**oraz wymuszać **poświadczenia SQL** — Zobacz więcej szczegółów [alerty dotyczące wykrywania zagrożeń](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
 
-Możesz otrzymywać powiadomienia o wykrytych zagrożeniach, za pośrednictwem [wiadomości e-mail z powiadomieniami](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) lub [witryny Azure portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
+Powiadomienia dotyczące wykrytych zagrożeń można odbierać za pośrednictwem [powiadomień e-mail](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) lub [Azure Portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
 
-[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) jest częścią [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Wykrywanie zagrożeń można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL. Pakiet zabezpieczeń zaawansowanych danych są naliczane opłaty 15$ / miesiąc na każdym serwerze logicznym z pierwszych 30 dni wolne od opłat.
+[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) jest częścią oferty [Advanced Data Security](sql-database-advanced-data-security.md) (ADS), która stanowi ujednolicony pakiet zaawansowanych funkcji zabezpieczeń SQL. Do wykrywania zagrożeń można uzyskiwać dostęp i zarządzać nimi za pośrednictwem centralnego portalu SQL ADS. Pakiet Advanced Data Security jest naliczany 15 USD/miesiąc na serwer logiczny, a pierwsze 30 dni bezpłatnie.
 
-## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Konfigurowanie wykrywania zagrożeń dla bazy danych w witrynie Azure portal
+## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Skonfiguruj wykrywanie zagrożeń dla bazy danych w Azure Portal
 
-1. Uruchamianie witryny Azure portal pod [ https://portal.azure.com ](https://portal.azure.com).
-2. Przejdź do strony konfiguracji serwera usługi Azure SQL Database, które chcesz chronić. W ustawieniach zabezpieczeń wybierz **zaawansowanych danych**.
-3. Na **zaawansowanych danych** strony konfiguracji:
+1. Uruchom Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+2. Przejdź do strony konfiguracji serwera Azure SQL Database, który ma być chroniony. W obszarze Ustawienia zabezpieczeń wybierz pozycję **Zaawansowane zabezpieczenia danych**.
+3. Na stronie Konfiguracja **zabezpieczeń danych zaawansowanych** :
 
-   - Włącz zabezpieczenia zaawansowanych danych na serwerze.
-   - W **ustawień wykrywania zagrożeń**w **Wyślij alerty do** tekstu Podaj listę adresów e-mail, aby otrzymywać alerty zabezpieczeń po wykryciu nietypowych działań bazy danych.
+   - Włącz zaawansowane zabezpieczenia danych na serwerze.
+   - W obszarze **Ustawienia wykrywania zagrożeń**w polu tekstowym **Wyślij alerty do** wprowadź listę wiadomości e-mail, które mają otrzymywać alerty zabezpieczeń po wykryciu nietypowych działań bazy danych.
   
    ![Konfigurowanie wykrywania zagrożeń](./media/sql-database-threat-detection/set_up_threat_detection.png)
 
 ## <a name="set-up-threat-detection-using-powershell"></a>Konfigurowanie wykrywania zagrożeń przy użyciu programu PowerShell
 
-Aby uzyskać przykładowy skrypt, zobacz [skonfigurować inspekcję i wykrywanie zagrożeń za pomocą programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+Aby zapoznać się z przykładem skryptu, zobacz [Konfigurowanie inspekcji i wykrywania zagrożeń przy użyciu programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [wykrywanie zagrożeń](sql-database-threat-detection-overview.md).
-- Dowiedz się więcej o [wykrywanie zagrożeń w wystąpieniu zarządzanym](sql-database-managed-instance-threat-detection.md).  
-- Dowiedz się więcej o [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md).
-- Dowiedz się więcej o [inspekcji](sql-database-auditing.md)
-- Dowiedz się więcej o [Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- Aby uzyskać więcej informacji na temat cen, zobacz [stronę cennika usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/)  
+- Dowiedz się więcej o [wykrywaniu zagrożeń](sql-database-threat-detection-overview.md).
+- Dowiedz się więcej o [wykrywaniu zagrożeń w wystąpieniu zarządzanym](sql-database-managed-instance-threat-detection.md).  
+- Dowiedz się więcej o [zaawansowanych zabezpieczeniach danych](sql-database-advanced-data-security.md).
+- Dowiedz się więcej na temat [inspekcji](sql-database-auditing.md)
+- Dowiedz się więcej o [usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Aby uzyskać więcej informacji na temat cen, zobacz [stronę z cennikiem SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) .  

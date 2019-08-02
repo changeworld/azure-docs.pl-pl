@@ -1,18 +1,19 @@
 ---
 title: Tworzenie kopii zapasowej serwera programu Exchange w celu Azure Backup z Azure Backup Server
 description: Dowiedz się, jak utworzyć kopię zapasową serwera programu Exchange w celu Azure Backup przy użyciu Azure Backup Server
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: kasinh
-ms.openlocfilehash: 0eacd295e279a3b3bcfbdad2c67cac7160f8dcb3
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 89ad5cac462384e8c688ae9ca68c5ae309249a71
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466397"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689279"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Tworzenie kopii zapasowej serwera programu Exchange na platformie Azure za pomocą Azure Backup Server
 W tym artykule opisano sposób konfigurowania serwera Microsoft Azure Backup (serwera usługi MAB) w celu utworzenia kopii zapasowej programu Microsoft Exchange Server na platformie Azure.  
@@ -91,7 +92,7 @@ Aby zainstalować agenta ochrony serwera usługi MAB na serwerze Exchange, wykon
 1. Aby odzyskać bazę danych programu Exchange, kliknij pozycję **odzyskiwanie** w Konsola administratora serwera usługi MAB.
 2. Znajdź bazę danych programu Exchange, którą chcesz odzyskać.
 3. Z listy rozwijanej *godzina odzyskiwania* wybierz punkt odzyskiwania online.
-4. Kliknij  przycisk Odzyskaj, aby uruchomić **Kreatora odzyskiwania**.
+4. Kliknij przycisk Odzyskaj, aby uruchomić **Kreatora odzyskiwania**.
 
 W przypadku punktów odzyskiwania online istnieje pięć typów odzyskiwania:
 
@@ -103,5 +104,5 @@ W przypadku punktów odzyskiwania online istnieje pięć typów odzyskiwania:
 
     ![Wybierz replikację online](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Azure Backup często zadawane pytania](backup-azure-backup-faq.md)

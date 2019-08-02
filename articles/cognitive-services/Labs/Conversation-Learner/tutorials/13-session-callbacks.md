@@ -1,7 +1,7 @@
 ---
-title: Jak używać wywołań zwrotnych sesji z modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Jak używać wywołania zwrotnego sesji z modelem Conversation Learner — Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak używać wywołań zwrotnych sesji przy użyciu modelu uczeń konwersacji.
+description: Dowiedz się, jak używać wywołania zwrotnego sesji z modelem Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,100 +10,101 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: eeed0718a1feb170dbbaa783ec0a840c7829c02e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 656d028082d56b8f094e83363e5189b163581c53
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390016"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703959"
 ---
-# <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>Jak używać wywołań zwrotnych sesji przy użyciu modelu uczeń konwersacji
+# <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>Jak używać wywołania zwrotnego sesji z modelem Conversation Learner
 
-W tym samouczku przedstawiono sesjach informacyjnych, jak są obsługiwane i onSessionStart uczeń konwersacji i wywołania zwrotne onSessionEnd.
+W tym samouczku przedstawiono sesje, sposób ich obsługi oraz Conversation Learner wywołania zwrotne onSessionStart i onSessionEnd.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Sesja wywołania zwrotne samouczka (wersja zapoznawcza)](https://aka.ms/cl_Tutorial_v3_SessionCallbacks_Preview)](https://aka.ms/cl_Tutorial_v3_SessionCallbacks)
+[![Samouczek wywołania zwrotnego sesji — wersja zapoznawcza](https://aka.ms/cl_Tutorial_v3_SessionCallbacks_Preview)](https://aka.ms/cl_Tutorial_v3_SessionCallbacks)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga, że bot "tutorialSessionCallbacks" jest uruchomiona.
+Ten samouczek wymaga, aby tutorialSessionCallbacks "bot" działa.
 
     npm run tutorial-session-callbacks
 
 ## <a name="details"></a>Szczegóły
-W tym samouczku opisano pojęcia sesji obsługi sesji domyślnie i jak można zastąpić to zachowanie.
+Ten samouczek obejmuje koncepcję sesji, sposób obsługi sesji domyślnie, a także sposób przesłonięcia tego zachowania.
 
-W uczeń konwersacji sesję reprezentuje jeden, nieprzerwany interaktywne programu exchange przy użyciu bota. Sesje może mieć wiele włącza, ale można programowo zakończone z powodu braku aktywności, jeśli jest większa niż 30 minut wygasł.  Zobacz stronę pomocy na "Ograniczenia", aby uzyskać informacje o zmienianiu to domyślny czas trwania limit czasu sesji.
+W Conversation Learner sesja reprezentuje jedną, nieprzerwaną interaktywną wymianę z bot. Sesje mogą mieć wiele operacji, ale program programowo zakończył działanie z powodu nieaktywności, jeśli upłynął okres dłuższy niż 30 minut.  Zapoznaj się z tematem "limity", aby uzyskać informacje na temat zmiany tego domyślnego limitu czasu sesji.
 
-Ta dłuższym okresie nieaktywności spowoduje, że bot utworzyć nową sesję i zresetować powtarzającego się sieci neuronowej do stanu początkowego. Domyślnie zostaną wyczyszczone wszystkie wartości jednostki. Wyczyszczenie wartości jednostki to domyślne zachowanie można zmienić, jak pokazano poniżej.
+Ten długi czas braku aktywności spowoduje utworzenie nowej sesji przez bot i zresetowanie sieci neuronowych do stanu początkowego. Domyślnie wszystkie wartości jednostki zostaną wyczyszczone. To domyślne zachowanie czyszczenia wartości jednostek można zmienić, jak pokazano poniżej.
 
-### <a name="load-the-demo-model"></a>Ładowanie modelu pokaz
+### <a name="load-the-demo-model"></a>Załaduj model demonstracyjny
 
-W internetowym interfejsie użytkownika kliknij pozycję "Importuj samouczki" i wybierz model o nazwie "Samouczek-13-SessionCallbacks".
+W interfejsie użytkownika sieci Web kliknij pozycję "Importowanie samouczków" i wybierz model o nazwie "samouczek-13-SessionCallbacks".
 
-### <a name="code-for-the-callbacks"></a>Kod dla wywołania zwrotne
+### <a name="code-for-the-callbacks"></a>Kod wywołań zwrotnych
 
-Przykładowy kod dla tego modelu dwóch wywołań zwrotnych znajdują się w: `c:\<installedpath>\src\demos\tutorialSessionCallbacks.ts`.
+Przykładowy kod dla dwóch wywołań zwrotnych tego modelu można znaleźć w: `c:\<installedpath>\src\demos\tutorialSessionCallbacks.ts`.
 
 ![](../media/tutorial11_code.PNG)
 
 - OnSessionStartCallback: Ta metoda ustawia jednostkę BotName.
-- OnSessionEndCallback: można określić mają zostać zachowane. Spowoduje to wyczyszczenie wszystkich jednostek, z wyjątkiem nazwy użytkownika i telefonu użytkownika.
+- OnSessionEndCallback: można określić, co chcesz zachować. Spowoduje to wyczyszczenie wszystkich jednostek z wyjątkiem nazwy użytkownika i telefonu użytkownika.
 
-Każdego wywołania zwrotnego jest opcjonalne.
+Każde wywołanie zwrotne jest opcjonalne.
 
 ### <a name="actions"></a>Akcje
 
-Cztery akcje są zdefiniowane w modelu. Istniejące akcje są wyświetlane w widoku siatki dla "Akcje"
+Cztery akcje są zdefiniowane w modelu. Istniejące akcje są wyświetlane w widoku siatki dla "akcje"
 
 ![](../media/tutorial11_actions.PNG)
 
-### <a name="creating-an-end-session-action-for-callback-invocation"></a>Tworzenie Zakończ sesję działanie (w przypadku wywołania zwrotnego)
+### <a name="creating-an-end-session-action-for-callback-invocation"></a>Tworzenie akcji kończenia sesji (dla wywołania wywołania zwrotnego)
 
-1. Na lewym panelu kliknij przycisk "Akcje", a następnie przycisku "Nowa akcja".
-2. Wybierz pozycję "ENDSESSION" dla "Typu jednostek".
-3. W polu "Dane..." wpisz "Gotowe"
+1. Na panelu po lewej stronie kliknij pozycję akcje, a następnie przycisk "nowa akcja".
+2. Wybierz pozycję "ENDSESSION" dla "typ jednostki".
+3. W "dane..." Wpisz "gotowe"
 4. Kliknij przycisk "Utwórz".
 
-### <a name="edit-an-existing-action"></a>Edytowanie istniejącej akcji
+### <a name="edit-an-existing-action"></a>Edytuj istniejącą akcję
 
-1. Wybierz pozycję "tak, $UserName, jesteś w $UserLocation" akcji z widoku siatki.
-2. Zaznaczenie pole wyboru "Oczekiwania na odpowiedź".
+1. Wybierz akcję "tak, $UserName, jesteś w $UserLocation" w widoku siatki.
+2. Usuń zaznaczenie pola wyboru "Czekaj na odpowiedź".
 3. Kliknij przycisk "Zapisz".
 
-### <a name="chaining-actions"></a>Tworzenie łańcuchów działań
+### <a name="chaining-actions"></a>Akcje łańcucha
 
-1. W lewym panelu kliknij przycisk "Okien dialogowych Train", a następnie przycisk "Nowy Train Dialog".
-2. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "hi."
-3. Kliknij przycisk "Wynik akcje".
-4. Wybierz odpowiedź, "cześć, jestem Botty. Jak się Nazywasz?"
-5. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Hurtowi"
-6. Wybierz odpowiedź, "Hi hurtowi. Co to jest Twój numer telefonu?"
-7. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "555-555-5555"
-8. Kliknij przycisk "Wynik akcje".
-9. Wybierz odpowiedź "Można stwierdzić, Botty swojej lokalizacji hurtowi?"
-10. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Seattle"
-11. Kliknij przycisk "Wynik akcje".
-12. Wybierz odpowiedź, "Aby hurtowi, są w Seattle"
-13. Wybierz odpowiedź "Gotowe"
+1. Na panelu po lewej stronie kliknij pozycję "szkolenie okna dialogowego", a następnie przycisk "okno dialogowe nowego uczenia".
+2. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Witaj".
+3. Kliknij przycisk "akcje oceny".
+4. Wybierz odpowiedź "Witaj, jestem botty. Co to jest Twoja nazwa? "
+5. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Lars"
+6. Wybierz odpowiedź "Witaj Lars. Jaki jest Twój numer telefonu?
+7. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz w "555-555-5555"
+8. Kliknij przycisk "akcje oceny".
+9. Wybierz odpowiedź "czy możesz powiedzieć, botty lokalizację, Lars?".
+10. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Seattle"
+11. Kliknij przycisk "akcje oceny".
+12. Wybierz odpowiedź "So, Lars, jesteś w Seattle"
+13. Wybierz odpowiedź "gotowe"
 14. Kliknij przycisk "Zapisz".
 
 ### <a name="testing-the-model"></a>Testowanie modelu
 
-1. W lewym panelu kliknij przycisk "Okien dialogowych dziennika", a następnie przycisk "Nowy dziennik Dialog".
-2. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "hi"
-3. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Hurtowi"
-4. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "555-555-5555"
-5. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Seattle"
-    - W tym momencie wszystkie wartości jednostki, z wyjątkiem lokalizacji powinny zostały zachowane.
-6. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "hello"
-7. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Detroit"
-8. Kliknij przycisk "Limit czasu sesji".
-    - Kliknięcie tego przycisku wykonuje odpowiedzi bot długie okresy braku aktywności
+1. Na panelu po lewej stronie kliknij pozycję "dzienniki okien dialogowych", a następnie przycisk "nowe okno dialogowe rejestrowania".
+2. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Witaj"
+3. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Lars"
+4. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz w "555-555-5555"
+5. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Seattle"
+    - W tym momencie wszystkie wartości jednostek, które wykluczają lokalizację, powinny zostać zachowane.
+6. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Hello"
+7. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Detroit"
+8. Kliknij przycisk "limit czasu sesji".
+    - Kliknięcie tego przycisku powoduje wykonanie odpowiedzi Bot na długie okresy braku aktywności
 9. Kliknij przycisk "OK".
-10. Kliknij przycisk "Testowanie gotowe".
+10. Kliknij przycisk "gotowe do testowania".
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wywołania interfejsu API](./14-api-calls.md)

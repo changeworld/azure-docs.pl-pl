@@ -1,6 +1,6 @@
 ---
-title: Jak dodać zestawu danych referencyjnych do środowiska usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób dodawania zestawu danych referencyjnych, aby rozszerzyć dane w danym środowisku usługi Azure Time Series Insights.
+title: Jak dodać zestaw danych referencyjnych do środowiska Azure Time Series Insights | Microsoft Docs
+description: W tym artykule opisano sposób dodawania zestawu danych referencyjnych do rozszerzania danych w środowisku Azure Time Series Insightsu.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -11,24 +11,24 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 99933fa36cc822598ec9c173a470f90264d06d54
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 5b48a41f025ef06c69e6de126e0a64ad359ce09a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461250"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666369"
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Tworzenie zestawu danych referencyjnych dla środowiska usługi Time Series Insights przy użyciu witryny Azure portal
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Utwórz zestaw danych referencyjnych dla środowiska Time Series Insights przy użyciu Azure Portal
 
-W tym artykule opisano sposób dodawania zestawu danych referencyjnych do środowiska usługi Azure Time Series Insights. Dane referencyjne przydaje się do dołączenia do do danych źródłowych, aby rozszerzyć wartości.
+W tym artykule opisano sposób dodawania zestawu danych referencyjnych do środowiska Azure Time Series Insightsowego. Dane referencyjne są przydatne do łączenia się z danymi źródłowymi w celu rozszerzenia wartości.
 
-Zestawu danych referencyjnych jest kolekcją elementów, które polepszają zdarzenia ze źródła zdarzenia. Aparat transferu danych przychodzących Series Insights czasu łączy każde zdarzenie ze źródła zdarzeń z odpowiednich wiersza danych w zestawie danych referencyjnych. To rozszerzone zdarzenie jest następnie dostępne dla zapytania. To połączenie jest oparte na kolumny klucza podstawowego, zdefiniowane w zestawie danych referencyjnych.
+Zestaw danych referencyjnych to kolekcja elementów, które rozszerzają zdarzenia ze źródła zdarzenia. Time Series Insights aparat transferu danych przychodzących łączy każde zdarzenie ze źródła zdarzeń z odpowiednim wierszem danych w zestawie danych referencyjnych. To rozszerzone zdarzenie jest następnie dostępne dla zapytania. To sprzężenie jest oparte na kolumnach kluczy podstawowych zdefiniowanych w zestawie danych referencyjnych.
 
-Dane referencyjne nie jest przyłączona wstecznie. W związku z tym tylko bieżące i przyszłe transferu danych przychodzących danych jest dopasowane i przyłączone do odwołania zestawu daty, po jego skonfigurowaniu i przekazać.
+Dane referencyjne nie są przyłączone wstecz. W takim przypadku tylko bieżące i przyszłe dane przychodzące są dopasowywane i dołączane do zestawu dat odwołania po jego skonfigurowaniu i przekazaniu.
 
 ## <a name="video"></a>Połączenia wideo
 
-### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Więcej informacji na temat modelu danych usługi Time Series Insights odwołania.</br>
+### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Dowiedz się więcej o modelu danych referencyjnych usługi Time Series Insights.</br>
 
 > [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
 
@@ -36,68 +36,68 @@ Dane referencyjne nie jest przyłączona wstecznie. W związku z tym tylko bież
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-1. Znajdź istniejącego środowiska usługi Time Series Insights. Wybierz **wszystkie zasoby** w menu po lewej stronie witryny Azure portal. Wybierz środowisko usługi Time Series Insights.
+1. Znajdź istniejącego środowiska usługi Time Series Insights. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie Azure Portal. Wybierz środowisko usługi Time Series Insights.
 
-1. Wybierz **Przegląd** strony. Znajdź **URL Eksploratora usługi Time Series Insights** i otwórz link.  
+1. Wybierz stronę **Przegląd** . Znajdź **adres URL eksploratora Time Series Insights** i Otwórz link.  
 
-   Wyświetl Eksploratora dla danego środowiska usługi TSI.
+   Wyświetl Eksploratora dla środowiska TSI.
 
-1. Rozwiń selektor środowiska w Eksploratorze TSI. Wybierz aktywnego środowiska. Wybierz ikonę danych odwołania w prawym górnym rogu, na stronie programu explorer.
+1. Rozwiń selektor środowiska w Eksploratorze TSI. Wybierz aktywne środowisko. Wybierz ikonę dane referencyjne w prawym górnym rogu strony Eksploratora.
 
    [![Dodaj dane referencyjne](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
 
-1. Wybierz **+ Dodaj zestaw danych** przycisk, aby rozpocząć dodawanie nowego zestawu danych.
+1. Wybierz przycisk **+ Dodaj zestaw danych** , aby rozpocząć dodawanie nowego zestawu danych.
 
-   [![Dodawanie zestawu danych](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
+   [![Dodaj zestaw danych](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
 
-1. Na **nowy zestaw danych referencyjnych** wybierz format danych:
-   - Wybierz **CSV** danych rozdzielonych przecinkami. Pierwszy wiersz jest traktowana jako wiersz nagłówków.
-   - Wybierz **tablicę JSON** dla języka javascript object notation (JSON) sformatowanych danych.
+1. Na stronie **Nowy zestaw danych referencyjnych** wybierz format danych:
+   - Wybierz opcję **CSV** dla danych rozdzielanych przecinkami. Pierwszy wiersz jest traktowany jako wiersz nagłówka.
+   - Wybierz **tablicę JSON** dla danych sformatowanych w formacie JavaScript Object Notation (JSON).
 
    [![Wybierz format danych.](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox)
 
-1. Zawiera dane przy użyciu jednej z dwóch metod:
-   - Wklej je do edytora tekstu. Następnie wybierz **analizy danych referencyjnych** przycisku.
-   - Wybierz **wybierz plik** przycisk, aby dodać dane z pliku tekstowego lokalnego.
+1. Podaj dane przy użyciu jednej z dwóch metod:
+   - Wklej dane do edytora tekstu. Następnie wybierz przycisk **Analizuj dane referencyjne** .
+   - Wybierz przycisk **Wybierz plik** , aby dodać dane z lokalnego pliku tekstowego.
 
-   Na przykład Wklej dane w formacie CSV: [![Wklejonych danych CSV](media/add-reference-data-set/csv-data-pasted.png)](media/add-reference-data-set/csv-data-pasted.png#lightbox)
+   Na przykład wklej dane CSV: [![Wklejone dane CSV](media/add-reference-data-set/csv-data-pasted.png)](media/add-reference-data-set/csv-data-pasted.png#lightbox)
 
-   Na przykład Wklej dane tablicy JSON: [![Wklej dane JSON](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
+   Na przykład wklej dane tablicy JSON: [![Wklej dane JSON](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
 
-   Jeśli występuje błąd podczas analizowania wartości danych, ten błąd jest wyświetlana na czerwono w dolnej części strony, takich jak `CSV parsing error, no rows extracted`.
+   Jeśli wystąpi błąd podczas analizowania wartości danych, błąd pojawia się na czerwono u dołu strony, `CSV parsing error, no rows extracted`na przykład.
 
-1. Po danych zostanie pomyślnie przetworzona, siatkę danych jest wyświetlany, wyświetlanie kolumnami i wierszami reprezentujący dane.  Przejrzyj siatkę danych, aby sprawdzić ich poprawność.
+1. Po pomyślnym przeanalizowaniu danych zostanie wyświetlona siatka danych wyświetlająca kolumny i wiersze reprezentujące dane.  Przejrzyj siatkę danych, aby upewnić się, że jest to prawidłowa.
 
    [![Dodaj dane referencyjne](media/add-reference-data-set/parse-data.png)](media/add-reference-data-set/parse-data.png#lightbox)
 
-1. Przejrzyj każdej kolumny, aby zobaczyć zakłada, że typ danych, a zmiana typu danych, jeśli to konieczne.  Wybierz symbol typu danych w nagłówku kolumny: **#** dla podwójnej precyzji (dane liczbowe) **T | F** na wartość logiczną, lub **Abc** ciągu.
+1. Przejrzyj każdą kolumnę, aby zobaczyć przyjęty typ danych, a jeśli to konieczne, w razie potrzeby zmień typ danych.  Wybierz symbol typu danych w nagłówku kolumny: **#** dla podwójnej (dane liczbowe), **T | F** dla wartości logicznej lub **ABC** dla ciągu.
 
    [![Wybierz typy danych w nagłówkach kolumn.](media/add-reference-data-set/choose-datatypes.png)](media/add-reference-data-set/choose-datatypes.png#lightbox)
 
-1. Jeśli to konieczne, należy zmienić nazwy nagłówków kolumn. Nazwa kolumny klucza jest niezbędne do przyłączenia do odpowiedniej właściwości w źródle zdarzenia. Upewnij się, że nazwy kolumny klucza danych odwołania pasują dokładnie do nazwy zdarzenia przychodzące dane, w tym uwzględnianie wielkości liter. Nazwy kolumny niebędącej kluczem są używane rozszerzyć dane przychodzące z odpowiednimi wartościami danych odwołania.
+1. W razie konieczności zmień nazwy nagłówków kolumn. Nazwa kolumny klucza jest konieczna do przyłączenia do odpowiedniej właściwości w źródle zdarzenia. Upewnij się, że nazwy kolumn klucza danych referencyjnych są zgodne z nazwą zdarzenia do danych przychodzących, z uwzględnieniem wielkości liter. Nazwy kolumn niebędących kluczami służą do rozszerzania danych przychodzących z odpowiednimi wartościami danych referencyjnych.
 
-1. Wybierz **Dodaj wiersz** lub **Dodaj kolumnę** można dodać więcej wartości danych referencyjnych, zgodnie z potrzebami.
+1. Wybierz pozycję **Dodaj wiersz** lub **Dodaj kolumnę** , aby dodać więcej wartości danych referencyjnych w razie potrzeby.
 
-1. Wpisz wartość w **filtrować wiersze...**  pola, aby przejrzeć określonych wierszy, zgodnie z potrzebami. Filtr jest przydatne podczas przeglądania danych, ale nie została zastosowana podczas przekazywania danych.
+1. Wpisz wartość w polu **Filtruj wiersze...** , aby przejrzeć określone wiersze zgodnie z wymaganiami. Filtr jest przydatny do przeglądania danych, ale nie jest stosowany podczas przekazywania danych.
 
-1. Nazwa zestawu danych, wypełniając **Nazwa zestawu danych** pole powyżej siatki danych.
+1. Nazwij zestaw danych, wypełniając pole **Nazwa zestawu danych** powyżej siatki danych.
 
-    [![Nazwa zestawu danych.](media/add-reference-data-set/name-reference-dataset.png)](media/add-reference-data-set/name-reference-dataset.png#lightbox)
+    [![Nadaj nazwę zestawowi danych.](media/add-reference-data-set/name-reference-dataset.png)](media/add-reference-data-set/name-reference-dataset.png#lightbox)
 
-1. Podaj **klucz podstawowy** kolumn w zestawie danych, wybierając przycisk listy rozwijanej powyżej siatki danych.
+1. Podaj kolumnę **klucza podstawowego** w zestawie danych, wybierając listę rozwijaną powyżej siatki danych.
 
     [![Wybierz kolumny klucza.](media/add-reference-data-set/set-primary-key.png)](media/add-reference-data-set/set-primary-key.png#lightbox)
 
-    Opcjonalnie można zaznaczyć **+** przycisk, aby dodać kolumnę klucza pomocniczego jako złożony klucz podstawowy. Jeśli potrzebujesz cofnąć zaznaczenie, wybierz pustą wartość z listy rozwijanej można usunąć klucza pomocniczego.
+    Opcjonalnie wybierz **+** przycisk, aby dodać kolumnę klucza pomocniczego jako złożony klucz podstawowy. Jeśli musisz cofnąć zaznaczenie, wybierz z listy rozwijanej wartość pustą, aby usunąć klucz pomocniczy.
 
-1. Aby przekazać dane, wybierz **przekazywania wierszy** przycisku.
+1. Aby przekazać dane, wybierz przycisk **Przekaż wiersze** .
 
-    [![Przekazywanie](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
+    [![Przesyłane](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
 
-    Strona potwierdza ukończoną przekazywanie i wyświetli komunikat **pomyślnie przekazano zestaw danych**.
+    Strona potwierdza ukończone przekazywanie i wyświetla komunikat **pomyślnie przekazano zestaw danych**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zarządzanie danymi referencyjnymi](time-series-insights-manage-reference-data-csharp.md) na drodze programowej.
 
-* Aby uzyskać pełną dokumentację interfejsu API, zobacz dokument [Interfejs API danych referencyjnych](/rest/api/time-series-insights/ga-reference-data-api).
+* Aby uzyskać pełną dokumentację interfejsu API, zobacz dokument [Interfejs API danych referencyjnych](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).

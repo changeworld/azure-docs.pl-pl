@@ -1,296 +1,294 @@
 ---
-title: Rozwiązywanie problemów z usługą Azure Files w systemie Linux | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z usługą Azure Files w systemie Linux
-services: storage
+title: Rozwiązywanie problemów z Azure Files w systemie Linux | Microsoft Docs
+description: Rozwiązywanie problemów z Azure Files w systemie Linux
 author: jeffpatt24
-tags: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 232b4ca2ee4f3137069ed155cc82a5c5e3251420
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 5c501e6c2bc1a30273682352a68565ccc897ff50
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807274"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699201"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Linux
+# <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z Azure Files w systemie Linux
 
-W tym artykule wymieniono typowe problemy, które są powiązane z usługą Azure Files, po nawiązaniu połączenia z klientami z systemem Linux. Zapewnia także możliwe przyczyny i rozwiązania tych problemów. 
+W tym artykule wymieniono typowe problemy dotyczące Azure Files podczas łączenia się z klientami z systemem Linux. Zapewnia również możliwe przyczyny i rozwiązania tych problemów. 
 
-Oprócz kroki rozwiązywania problemów, w tym artykule, można użyć [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) aby upewnić się, że klient systemu Linux ma poprawne warunki wstępne. AzFileDiagnostics automatyzuje wykrywania większości objawy wymienionych w tym artykule. Pomaga ono służą do konfigurowania środowiska w celu uzyskania optymalnej wydajności. Można również znaleźć te informacje w [udziałów plików platformy Azure do rozwiązywania problemów z](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Narzędzie do rozwiązywania problemów zawiera instrukcje do udzielenia odpowiedzi na problemy, łączenie, mapowanie i instalowanie udziałów plików platformy Azure.
+Oprócz kroków opisanych w tym artykule można użyć programu [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) , aby upewnić się, że klient systemu Linux ma odpowiednie wymagania wstępne. AzFileDiagnostics automatyzuje wykrywanie większości objawów wymienionych w tym artykule. Pomaga skonfigurować środowisko w celu uzyskania optymalnej wydajności. Te informacje można również znaleźć w oknie [Rozwiązywanie problemów z udziałami Azure Files](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Narzędzie do rozwiązywania problemów zawiera kroki ułatwiające problemy z łączeniem, mapowaniem i instalowaniem udziałów Azure Files.
 
-## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nie można nawiązać lub zainstalować udział plików platformy Azure
+## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nie można nawiązać połączenia z udziałem plików platformy Azure lub instalować go
 
 ### <a name="cause"></a>Przyczyna
 
-Typowe przyczyny tego problemu są:
+Typowe przyczyny tego problemu:
 
-- Używasz niezgodny klient dystrybucji systemu Linux. Zaleca się, że używasz poniższe dystrybucje systemu Linux do łączenia z udziałem plików platformy Azure:
+- Używasz niezgodnego klienta dystrybucji systemu Linux. Zalecamy używanie następujących dystrybucji systemu Linux do nawiązywania połączenia z udziałem plików platformy Azure:
 
-|   | SMB 2.1 <br>(Instaluje na maszynach wirtualnych w tym samym regionie platformy Azure) | SMB 3.0 <br>(Instaluje ze środowiska lokalnego i między regionami) |
+|   | SMB 2.1 <br>(Instalacja na maszynach wirtualnych w tym samym regionie platformy Azure) | SMB 3.0 <br>(Instalacje z poziomu lokalnego i obejmującego wiele regionów) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04+ | 16.04+ |
+| Ubuntu Server | 14.04 + | 16.04 + |
 | RHEL | 7+ | 7.5+ |
 | CentOS | 7+ |  7.5+ |
 | Debian | 8+ |   |
-| openSUSE | 13.2+ | 42.3+ |
+| openSUSE | 13.2 + | 42.3 + |
 | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
-- Narzędzia CIFS (cfs utils) nie są zainstalowane na komputerze klienckim.
-- Minimalna wersja protokołu SMB/CIFS, 2.1, nie jest zainstalowany na komputerze klienckim.
-- Szyfrowanie protokołu SMB 3.0 nie jest obsługiwane na komputerze klienckim. Zgodnie z poprzednią tabelą, zawiera listę dystrybucje systemu Linux tej instalowania pomocy technicznej ze środowiska lokalnego i między regionami przy użyciu szyfrowania. Inne dystrybucje wymagają jądra 4.11 i nowszych wersjach.
-- Próbujesz połączyć się z kontem magazynu za pośrednictwem portu TCP 445, który nie jest obsługiwany.
-- Próbujesz nawiązać połączenie z udziałem plików platformy Azure z maszyny Wirtualnej platformy Azure, a maszyna wirtualna nie znajduje się w tym samym regionie co konto magazynu.
-- Jeśli [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu i usługi Azure Files zezwala tylko na połączenia, które używają protokołu SMB 3.0 za pomocą szyfrowania.
+- Narzędzia CIFS (CFS-Utilities) nie są zainstalowane na kliencie.
+- Minimalna wersja protokołu SMB/CIFS 2,1 nie jest zainstalowana na kliencie.
+- Szyfrowanie SMB 3,0 nie jest obsługiwane przez klienta. Powyższa tabela zawiera listę dystrybucji systemu Linux, które obsługują instalowanie z lokalnego i międzyregionowego przy użyciu szyfrowania. Inne dystrybucje wymagają jądra 4.11 i nowszych wersji.
+- Próbujesz nawiązać połączenie z kontem magazynu za pośrednictwem portu TCP 445, co nie jest obsługiwane.
+- Próbujesz nawiązać połączenie z udziałem plików platformy Azure z maszyny wirtualnej platformy Azure, a maszyna wirtualna nie znajduje się w tym samym regionie co konto magazynu.
+- Jeśli na koncie magazynu jest włączone ustawienie [wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) , Azure Files będzie zezwalać tylko na połączenia korzystające z protokołu SMB 3,0 z szyfrowaniem.
 
 ### <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, należy użyć [narzędzie do rozwiązywania problemów dla usługi Azure Files spowodowanych błędami instalowania w systemie Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). To narzędzie:
+Aby rozwiązać ten problem, użyj [Narzędzia do rozwiązywania problemów w celu Azure Files instalowania błędów w systemie Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). To narzędzie:
 
-* Pomocne podczas walidowania klienta uruchamiania środowiska.
-* Wykrywa konfiguracji niezgodny klienta, spowodowałoby błąd dostępu dla usługi Azure Files.
-* Zawiera wskazówki nad własnym rozwiązaniem problemu.
-* Służy do zbierania danych diagnostycznych śledzenia.
+* Pomaga sprawdzić poprawność działającego środowiska klienta.
+* Wykrywa niezgodną konfigurację klienta, która spowodowałaby niepowodzenie dostępu dla Azure Files.
+* Zapewnia wskazówki dotyczące samoobsługowego rozwiązywania problemów.
+* Zbiera dane śledzenia diagnostyki.
 
 <a id="mounterror13"></a>
-## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>"Instalowanie error(13): Odmowa uprawnień"podczas instalowania udziału plików platformy Azure
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>„Błąd instalacji (13): Odmowa uprawnień” podczas instalowania udziału plików platformy Azure
 
-### <a name="cause-1-unencrypted-communication-channel"></a>Przyczyny 1: Nieszyfrowana komunikacja kanału
+### <a name="cause-1-unencrypted-communication-channel"></a>Przyczyna 1: Nieszyfrowany kanał komunikacyjny
 
-Ze względów bezpieczeństwa połączenia z udziałami plików platformy Azure są blokowane, jeśli nie jest szyfrowany kanał komunikacyjny, a w tym samym centrum danych nie jest podejmowana próba połączenia, gdzie znajdują się udziałów plików platformy Azure. Również może zostać zablokowany nieszyfrowanego połączenia, w tym samym centrum danych, jeśli [Wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu. Kanału komunikacji szyfrowanej znajduje się tylko wtedy, gdy system operacyjny klienta użytkownika obsługuje szyfrowanie protokołu SMB.
+Ze względów bezpieczeństwa połączenia z udziałami plików platformy Azure są blokowane, jeśli kanał komunikacyjny nie jest szyfrowany i jeśli próba połączenia nie pochodzi z tego samego centrum danych, w którym znajdują się udziały plików platformy Azure. Nieszyfrowane połączenia w tym samym centrum danych też mogą być blokowane, jeśli ustawienie [Wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) jest włączone na koncie magazynu. Szyfrowany kanał komunikacyjny jest udostępniany tylko wtedy, gdy system operacyjny klienta użytkownika obsługuje szyfrowanie protokołu SMB.
 
-Aby dowiedzieć się więcej, zobacz [wymagania wstępne dotyczące instalowania pliku Azure Udostępnianie systemu Linux i pakiet cifs utils](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package). 
+Aby dowiedzieć się więcej, zobacz [Wymagania wstępne dotyczące instalowania udziału plików platformy Azure za pomocą systemu Linux i pakietu cifs utils](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package). 
 
-### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
+### <a name="solution-for-cause-1"></a>Rozwiązanie dla przyczyny 1
 
-1. Nawiązywanie połączenia z klienta, który obsługuje szyfrowanie protokołu SMB lub połączyć się z maszyną wirtualną, w tym samym centrum danych jako konta usługi Azure storage, które służy do udziału plików platformy Azure.
-2. Sprawdź [Wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone na koncie magazynu, jeśli klient nie obsługuje szyfrowania protokołu SMB.
+1. Nawiąż połączenie z klientem obsługującym szyfrowanie SMB lub Połącz się z maszyną wirtualną w tym samym centrum danych co konto usługi Azure Storage, które jest używane na potrzeby udziału plików platformy Azure.
+2. Upewnij się, że ustawienie [wymagany bezpieczny transfer](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) jest wyłączone na koncie magazynu, jeśli klient nie obsługuje szyfrowania SMB.
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Przyczyny 2: Wirtualne reguły sieci lub zapory są włączone na koncie magazynu 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Przyczyna 2: Zasady sieci wirtualnej lub zapory są włączone na koncie magazynu 
 
-Jeśli sieć wirtualną (VNET) i reguły zapory są skonfigurowane na koncie magazynu, ruch sieciowy nastąpi odmowa dostępu, chyba, że adres IP klienta lub sieci wirtualnej ma mieć dostęp.
+Jeśli reguły sieci wirtualnej i zapory są skonfigurowane na koncie magazynu, dla ruchu sieciowego będzie następować odmowa dostępu, chyba że dostęp będzie dozwolony dla adresu IP klienta lub sieci wirtualnej.
 
-### <a name="solution-for-cause-2"></a>Rozwiązanie przyczyny 2
+### <a name="solution-for-cause-2"></a>Rozwiązanie dla przyczyny 2
 
-Sprawdź, czy wirtualnej sieci i reguł zapory są poprawnie skonfigurowane na koncie magazynu. Aby sprawdzić, czy wirtualny zasady sieci lub zapory jest przyczyną problemu, tymczasowo zmienić ustawienia na koncie magazynu **zezwolić na dostęp ze wszystkich sieci**. Aby dowiedzieć się więcej, zobacz [zapory Konfigurowanie usługi Azure Storage i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Sprawdź, czy reguły sieci wirtualnej i zapory są skonfigurowane poprawnie na koncie magazynu. W celu przetestowania, czy reguły sieci wirtualnej lub zapory są przyczyną problemu, tymczasowo zmień ustawienie na koncie magazynu, aby **zezwolić na dostęp ze wszystkich sieci**. Aby dowiedzieć się więcej, zobacz [Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="permissiondenied"></a>
-## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"Przekroczono przydział dysku [odmowa uprawnień]" podczas próby otwarcia pliku
+## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>Przekroczono limit przydziału dysku "[odmowa uprawnień] podczas próby otwarcia pliku
 
-W systemie Linux pojawi się komunikat o błędzie podobny do następującego:
+W systemie Linux pojawia się komunikat o błędzie podobny do następującego:
 
-**\<Nazwa pliku > Przekroczono przydział dysku [odmowa uprawnień]**
+**\<Nazwa pliku > [uprawnienie odmowa] Przekroczono limit przydziału dysku**
 
 ### <a name="cause"></a>Przyczyna
 
-Osiągnięto górny limit współbieżnych otwartych dojść, których można używać do pliku.
+Osiągnięto górny limit współbieżnych otwartych dojść, które są dozwolone dla pliku.
 
-Obowiązuje przydział 2000 otwartymi dojściami w jednym pliku. W przypadku 2 000 otwarte dojścia jest wyświetlany komunikat o błędzie stwierdzający, że osiągnięto limit przydziału.
+W pojedynczym pliku występuje limit przydziału liczby otwartych dojścia do 2 000. Jeśli masz otwarte dojścia do 2 000, zostanie wyświetlony komunikat o błędzie informujący o osiągnięciu limitu przydziału.
 
 ### <a name="solution"></a>Rozwiązanie
 
-Zmniejsz liczbę jednoczesnych otwarte dojścia przez zamknięcie niektórych uchwyty, a następnie spróbuj ponownie wykonać operację.
+Zmniejsz liczbę równoczesnych dojść otwartych, zamykając niektóre uchwyty, a następnie spróbuj ponownie wykonać operację.
 
-Aby wyświetlić otwarte dojścia do udziału pliku, katalogu lub pliku, użyj [Get AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) polecenia cmdlet programu PowerShell.  
+Aby wyświetlić otwarte uchwyty dla udziału plików, katalogu lub pliku, należy użyć polecenia cmdlet [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) programu PowerShell.  
 
-Aby zamknąć otwarte dojścia do udziału pliku, katalogu lub pliku, należy użyć [AzStorageFileHandle Zamknij](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) polecenia cmdlet programu PowerShell.
+Aby zamknąć otwarte uchwyty dla udziału plików, katalogu lub pliku, należy użyć polecenia cmdlet programu PowerShell [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) .
 
 > [!Note]  
-> Polecenia cmdlet Get-AzStorageFileHandle i zamknij AzStorageFileHandle znajdują się w Az modułu PowerShell w wersji 2.4 lub nowszej. Aby zainstalować najnowszy moduł programu PowerShell Az, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Polecenia cmdlet Get-AzStorageFileHandle i Close-AzStorageFileHandle są zawarte w programie AZ PowerShell module w wersji 2,4 lub nowszej. Aby zainstalować najnowszy moduł AZ PowerShell module, zobacz [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowfilecopying"></a>
-## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Wolne kopiowania plików do i z usługi Azure Files w systemie Linux
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Kopiowanie plików do i z Azure Files w systemie Linux
 
-- Jeśli nie masz określonych minimalny wymagany rozmiar operacji We/Wy, zalecamy użycie 1 MiB jako rozmiar operacji We/Wy w pod kątem optymalnej wydajności.
-- Użyj metody kopiowania prawa:
-    - Użyj [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) wszelkie transferu między dwoma udziałami plików.
-    - Korzystanie z równoległych cp lub dd może poprawić szybkość kopiowania, liczba wątków zależy od obciążenia i przypadek użycia. W poniższych przykładach używane sześć: 
-    - przykład CP (cp użyje domyślny rozmiar bloku systemu plików jako rozmiar fragmentu): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
-    - przykład dd (polecenie jawnie ustawia rozmiar fragmentu 1 MiB): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
-    - Narzędzia open source innych firm takich jak:
-        - [Równoległe GNU](https://www.gnu.org/software/parallel/).
-        - [Fpart](https://github.com/martymac/fpart) — Sortuje pliki i pakuje je w partycji.
-        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -używa Fpart i narzędzia do kopiowania, uruchomić wiele wystąpień do migracji danych z src_dir do dst_url.
-        - [Obsługa wielu](https://github.com/pkolano/mutil) -cp wielowątkowych i md5sum oparte na GNU coreutils.
-- Ustawianie rozmiaru pliku z wyprzedzeniem, dokonywane co zapisu rozszerzanie zapisu pomaga poprawić szybkość kopiowania w scenariuszach, w których rozmiar pliku jest znana. Rozszerzanie konieczność zapisy można uniknąć, można ustawić rozmiar pliku docelowego, za pomocą `truncate - size <size><file>` polecenia. Po tym `dd if=<source> of=<target> bs=1M conv=notrunc`polecenia skopiuje plik źródłowy bez konieczności aktualizowania wielokrotnie rozmiar pliku docelowego. Na przykład można ustawić rozmiar pliku docelowego dla każdego pliku, które chcesz skopiować (przyjmowane jest udział jest zainstalowany wolumin/mnt/udziale):
+- Jeśli nie masz wymaganego minimalnego rozmiaru operacji we/wy, zalecamy użycie 1 MiB jako rozmiaru we/wy w celu uzyskania optymalnej wydajności.
+- Użyj odpowiedniej metody copy:
+    - Użyj [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) do dowolnego transferu między dwoma udziałami plików.
+    - Użycie opcji CP lub DD z równoległością może zwiększyć szybkość kopiowania, a liczba wątków zależy od przypadku użycia i obciążenia. W poniższych przykładach użyto sześciu: 
+    - przykład CP (CP użyje domyślnego rozmiaru bloku systemu plików jako rozmiaru fragmentu): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - DD przykład (to polecenie jawnie ustawia rozmiar fragmentu na 1 MiB):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
+    - Narzędzia firm trzecich typu open source, takie jak:
+        - [GNU Parallel](https://www.gnu.org/software/parallel/).
+        - [Fpart](https://github.com/martymac/fpart) — sortuje pliki i pakuje je na partycje.
+        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) — używa narzędzi Fpart i Copy do duplikowania wielu wystąpień w celu migrowania danych z src_dir do dst_url.
+        - [Wiele](https://github.com/pkolano/mutil) wielowątkowych CP i md5sum opartych na GNU Coreutils.
+- Ustawienie rozmiaru pliku z wyprzedzeniem, zamiast każdorazowego zapisu rozszerzającego zapis, pomaga zwiększyć szybkość kopiowania w scenariuszach, w których rozmiar pliku jest znany. Jeśli należy unikać rozszerzania zapisów, można ustawić docelowy rozmiar pliku za pomocą `truncate - size <size><file>` polecenia. `dd if=<source> of=<target> bs=1M conv=notrunc`Następnie polecenie skopiuje plik źródłowy bez konieczności wielokrotnego aktualizowania rozmiaru pliku docelowego. Na przykład można ustawić rozmiar pliku docelowego dla każdego pliku, który ma zostać skopiowany (Załóżmy, że udział jest zainstalowany w ramach/mnt/Share):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
-    - a następnie — skopiuj pliki bez rozszerzania zapisów w sposób równoległy: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
+    - a następnie skopiuj pliki bez rozszerzania zapisów równolegle:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Instalowanie error(115): Operacja w toku"podczas instalowania usługi Azure Files przy użyciu protokołu SMB 3.0
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>„Błąd instalacji (115): Operacja jest teraz w toku” podczas instalowania usługi Azure Files przy użyciu protokołu SMB 3.0
 
 ### <a name="cause"></a>Przyczyna
 
-Niektórych dystrybucjach systemu Linux nie obsługują funkcji szyfrowania w protokole SMB 3.0. Użytkowników może zostać wyświetlony komunikat o błędzie "115" w przypadku próby instalacji usługi Azure Files przy użyciu protokołu SMB 3.0 ze względu na Brak funkcji. Protokół SMB 3.0 za pomocą pełnego szyfrowania jest obsługiwane tylko wtedy, gdy używasz Ubuntu 16.04 lub nowszej.
+Niektóre dystrybucje systemu Linux nie obsługują jeszcze funkcji szyfrowania w protokole SMB 3.0. Użytkownicy mogą dostawać komunikat o błędzie „115” w przypadku próby instalacji usługi Azure Files przy użyciu protokołu SMB 3.0 z powodu braku funkcji. Protokół SMB 3.0 z pełnym szyfrowaniem jest obsługiwany tylko wtedy, gdy używasz systemu Ubuntu 16.04 lub nowszego.
 
 ### <a name="solution"></a>Rozwiązanie
 
-Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 4.11 jądra. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub z innego regionu platformy Azure. Ta funkcjonalność jest zawarta w dystrybucje systemu Linux, na liście [minimalna zalecana wersji przy użyciu odpowiedniej funkcji instalacji (protokół SMB w wersji 2.1 vs protokołu SMB w wersji 3.0 lub nowszej)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30). Inne dystrybucje wymagają jądra 4.11 i nowszych wersjach.
+Funkcja szyfrowania dla protokołu SMB 3.0 dla systemu Linux została wprowadzona w jądrze 4.11. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub z innego regionu platformy Azure. Ta funkcja jest zawarta w dystrybucjach systemu Linux wymienionych w artykule [Minimalne zalecane wersje z odpowiednimi możliwościami instalacji (protokół SMB w wersji 2.1 a protokół SMB w wersji 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30). Inne dystrybucje wymagają jądra 4.11 i nowszych wersji.
 
-Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, instalowanie usługi Azure Files przy użyciu protokołu SMB 2.1 maszyny wirtualnej systemu Linux platformy Azure, która znajduje się w tym samym centrum danych jako udziału plików. Upewnij się, że [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest wyłączone na koncie magazynu. 
+Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, zainstaluj usługę Azure Files przy użyciu protokołu SMB 2.1 z maszyny wirtualnej platformy Azure z systemem Linux, która znajduje się w tym samym centrum danych co udział plików. Upewnij się, że ustawienie [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) jest wyłączone na koncie magazynu. 
 
 <a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Błąd "Błąd autoryzacji" podczas przeglądania do udziału plików platformy Azure w portalu
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Błąd "niepowodzenie autoryzacji" podczas przeglądania udziału plików platformy Azure w portalu
 
-Po przejściu do udziału plików platformy Azure w portalu, może zostać wyświetlony następujący błąd:
+Po przejściu do udziału plików platformy Azure w portalu może zostać wyświetlony następujący błąd:
 
 Błąd autoryzacji  
 Nie masz dostępu
 
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Przyczyny 1: Twoje konto użytkownika nie ma dostępu do konta magazynu
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Przyczyna 1: Twoje konto użytkownika nie ma dostępu do konta magazynu
 
-### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
+### <a name="solution-for-cause-1"></a>Rozwiązanie dla przyczyny 1
 
-Przejdź do konta magazynu, w którym zlokalizowany jest udział plików platformy Azure, kliknij przycisk **kontrola dostępu (IAM)** i zweryfikować Twoje konto użytkownika ma dostęp do konta magazynu. Aby dowiedzieć się więcej, zobacz [sposób zabezpieczania konta magazynu przy użyciu kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
+Przejdź do konta magazynu, na którym znajduje się udział plików platformy Azure, kliknij pozycję **Kontrola dostępu (IAM)** i sprawdź, czy konto użytkownika ma dostęp do konta magazynu. Aby dowiedzieć się więcej, zobacz [jak zabezpieczyć konto magazynu za pomocą Access Control opartego na rolach (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Przyczyny 2: Wirtualne reguły sieci lub zapory są włączone na koncie magazynu
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Przyczyna 2: Zasady sieci wirtualnej lub zapory są włączone na koncie magazynu
 
-### <a name="solution-for-cause-2"></a>Rozwiązanie przyczyny 2
+### <a name="solution-for-cause-2"></a>Rozwiązanie dla przyczyny 2
 
-Sprawdź, czy wirtualnej sieci i reguł zapory są poprawnie skonfigurowane na koncie magazynu. Aby sprawdzić, czy wirtualny zasady sieci lub zapory jest przyczyną problemu, tymczasowo zmienić ustawienia na koncie magazynu **zezwolić na dostęp ze wszystkich sieci**. Aby dowiedzieć się więcej, zobacz [zapory Konfigurowanie usługi Azure Storage i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Sprawdź, czy reguły sieci wirtualnej i zapory są skonfigurowane poprawnie na koncie magazynu. W celu przetestowania, czy reguły sieci wirtualnej lub zapory są przyczyną problemu, tymczasowo zmień ustawienie na koncie magazynu, aby **zezwolić na dostęp ze wszystkich sieci**. Aby dowiedzieć się więcej, zobacz [Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nie można usunąć pliku lub katalogu w udziale plików platformy Azure
 
 ### <a name="cause"></a>Przyczyna
-Ten problem zazwyczaj występuje, gdy plik lub katalog ma otwarte dojście. 
+Ten problem występuje zwykle, gdy plik lub katalog ma otwarte dojście. 
 
 ### <a name="solution"></a>Rozwiązanie
 
-Jeśli klienci SMB zostały zamknięte wszystkie otwarte dojścia i ten problem będzie nadal występować, wykonaj następujące czynności:
+Jeśli klienci SMB zamknęli wszystkie otwarte dojścia, a problem nadal wystąpi, wykonaj następujące czynności:
 
-- Użyj [Get AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) polecenia cmdlet programu PowerShell, aby wyświetlić otwartych dojść.
+- Użyj polecenia cmdlet programu PowerShell [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) , aby wyświetlić otwarte dojścia.
 
-- Użyj [AzStorageFileHandle Zamknij](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) polecenia cmdlet programu PowerShell, aby zamknąć otwarte dojścia. 
+- Użyj polecenia cmdlet [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) programu PowerShell, aby zamknąć otwarte dojścia. 
 
 > [!Note]  
-> Polecenia cmdlet Get-AzStorageFileHandle i zamknij AzStorageFileHandle znajdują się w Az modułu PowerShell w wersji 2.4 lub nowszej. Aby zainstalować najnowszy moduł programu PowerShell Az, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Polecenia cmdlet Get-AzStorageFileHandle i Close-AzStorageFileHandle są zawarte w programie AZ PowerShell module w wersji 2,4 lub nowszej. Aby zainstalować najnowszy moduł AZ PowerShell module, zobacz [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowperformance"></a>
-## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Niska wydajność w udziale plików platformy Azure zainstalowany na maszynie Wirtualnej systemu Linux
+## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Niska wydajność udziału plików platformy Azure zainstalowanego na maszynie wirtualnej z systemem Linux
 
-### <a name="cause-1-caching"></a>Przyczyny 1: Buforowanie
+### <a name="cause-1-caching"></a>Przyczyna 1: Buforowanie
 
-Jedną z możliwych przyczyn spadek wydajności jest wyłączone buforowanie. Pamięć podręczna może być przydatne, jeśli regularnie uzyskują dostęp do pliku, w przeciwnym razie może być obciążenie. Sprawdź, czy korzystasz pamięci podręcznej przed wyłączeniem śledzenia zmian.
+Jedną z możliwych przyczyn niskiej wydajności jest wyłączenie buforowania. Buforowanie może być przydatne, Jeśli uzyskujesz dostęp do pliku wielokrotnie, w przeciwnym razie może to być obciążenie. Sprawdź, czy używasz pamięci podręcznej przed jej wyłączeniem.
 
-### <a name="solution-for-cause-1"></a>Rozwiązanie przyczyny 1
+### <a name="solution-for-cause-1"></a>Rozwiązanie dla przyczyny 1
 
-Aby sprawdzić, czy buforowanie jest wyłączone, poszukaj **pamięci podręcznej =** wpisu.
+Aby sprawdzić, czy buforowanie jest wyłączone, poszukaj pozycji **cache =** entry.
 
-**Pamięć podręczna = none** wskazuje, że buforowanie jest wyłączone. Zainstaluj udział, za pomocą polecenia instalacji domyślnej lub przez jawne dodanie **pamięci podręcznej = strict** jest włączona opcja instalacji polecenie, aby zapewnić tej buforowanie domyślne lub "strict" Tryb pamięci podręcznej.
+**Pamięć podręczna = brak** wskazuje, że buforowanie jest wyłączone. Zainstaluj ponownie udział przy użyciu domyślnego polecenia mount lub jawnie dodając **pamięć podręczną = Strict** do polecenia instalacji, aby upewnić się, że jest włączony tryb buforowania domyślny lub "Strict".
 
-W niektórych scenariuszach **serverino** opcji instalacji może spowodować, że **ls** polecenie, aby uruchomić stat — dla każdego wpisu dotyczącego katalogu. To zachowanie powoduje spadek wydajności podczas one wyświetlania dużych katalogu. Opcje instalacji możesz sprawdzić w swojej **/etc/fstab** wpis:
+W niektórych scenariuszach opcja instalacji **serverino** może spowodować, że polecenie **ls** zostanie wykonane względem każdego wpisu katalogu. To zachowanie powoduje spadek wydajności podczas tworzenia listy dużych katalogów. Opcje instalacji można sprawdzić we wpisie **/etc/fstab** :
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-Możesz również sprawdzić, czy prawidłowe opcje są używane przez uruchomienie **instalacji "sudo" | grep cifs** polecenia i sprawdzanie danych wyjściowych. Poniżej przedstawiono przykładowe dane wyjściowe:
+Możesz również sprawdzić, czy poprawne opcje są używane, uruchamiając polecenie **sudo Mount | grep CIFS** i sprawdzając jego dane wyjściowe. Poniżej przedstawiono przykładowe dane wyjściowe:
 
 ```
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
 ```
 
-Jeśli **pamięci podręcznej = strict** lub **serverino** opcja jest obecne, odinstaluj i ponownie zainstaluj usługi Azure Files za pomocą polecenia instalacji z [dokumentacji](../storage-how-to-use-files-linux.md). Następnie sprawdź ponownie, **/etc/fstab** wpis ma prawidłowe opcje.
+Jeśli **pamięć podręczna = Strict** lub **serverino** nie jest obecna, Odinstaluj i Zainstaluj Azure Files ponownie, uruchamiając polecenie instalacji z [dokumentacji](../storage-how-to-use-files-linux.md). Następnie ponownie sprawdź, czy wpis **/etc/fstab** ma poprawne opcje.
 
-### <a name="cause-2-throttling"></a>Przyczyny 2: Ograniczanie przepływności
+### <a name="cause-2-throttling"></a>Przyczyna 2: Ograniczanie przepływności
 
-Istnieje możliwość, występują ograniczenia przepustowości i żądania są wysyłane do kolejki. Można to sprawdzić, wykorzystując [metryk usługi Azure Storage w usłudze Azure Monitor](../common/storage-metrics-in-azure-monitor.md).
+Istnieje możliwość ograniczenia przepustowości, a Twoje żądania są wysyłane do kolejki. Można to sprawdzić, wykorzystując [metryki usługi Azure Storage w Azure monitor](../common/storage-metrics-in-azure-monitor.md).
 
-### <a name="solution-for-cause-2"></a>Rozwiązanie przyczyny 2
+### <a name="solution-for-cause-2"></a>Rozwiązanie dla przyczyny 2
 
-Upewnij się, Twoja aplikacja znajduje się w obrębie [usługi Azure Files skalowanie elementów docelowych](storage-files-scale-targets.md#azure-files-scale-targets).
+Upewnij się, że aplikacja znajduje się w obszarze celu [skalowania Azure Files](storage-files-scale-targets.md#azure-files-scale-targets).
 
 <a id="timestampslost"></a>
-## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>Sygnatury czasowe zostały utracone podczas kopiowania plików z Windows z systemem Linux
+## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>Sygnatury czasowe zostały utracone w kopiowaniu plików z systemu Windows do Linux
 
-Na platformach systemu Linux/Unix **cp -p** polecenie zakończy się niepowodzeniem, jeśli różni użytkownicy właścicielem pliku 1 i 2 pliku.
+W przypadku platform Linux/UNIX polecenie **CP-p** kończy się niepowodzeniem, jeśli inny użytkownik ma plik 1 i plik 2.
 
 ### <a name="cause"></a>Przyczyna
 
-Flagi force **f** w COPYFILE powoduje wykonanie **cp -p -f** w systemach Unix. To polecenie nie powiedzie się także można zachować sygnatury czasowej pliku, który nie jest własnością.
+Flaga Force **f** w COPYFILE powoduje wykonanie **wiersza CP-p-f** w systemie UNIX. To polecenie nie może również zachować sygnatury czasowej nieposiadanego pliku.
 
 ### <a name="workaround"></a>Obejście
 
-Do kopiowania plików przy użyciu poświadczeń użytkownika konta magazynu:
+Użyj użytkownika konta magazynu do kopiowania plików:
 
 - `Useadd : [storage account name]`
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nie można uzyskać dostępu "&lt;ścieżki&gt;": Błąd wejścia/wyjścia
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nie można uzyskać&lt;dostępu&gt;do "Path": Błąd wejścia/wyjścia
 
-Podczas próby wyświetlanie listy plików w udziale plików platformy Azure za pomocą polecenia ls polecenie zawiesza się podczas wyświetlania listy plików. Zostanie wyświetlony następujący błąd:
+Podczas próby wyświetlenia listy plików w udziale plików platformy Azure przy użyciu polecenia ls polecenie zawiesza się podczas tworzenia listy plików. Zostanie wyświetlony następujący błąd:
 
-**ls: nie można uzyskać dostępu "&lt;ścieżki&gt;": Błąd wejścia/wyjścia**
+**ls: nie można uzyskać&lt;dostępu&gt;do "Path": Błąd wejścia/wyjścia**
 
 
 ### <a name="solution"></a>Rozwiązanie
-Uaktualnienie jądrze systemu Linux do następujących wersji, które mają poprawkę rozwiązującą ten problem:
+Uaktualnij jądro systemu Linux do następujących wersji, które mają rozwiązanie tego problemu:
 
 - 4.4.87+
 - 4.9.48+
 - 4.12.11+
-- Wszystkie wersje, które są większe niż lub równa 4.13
+- Wszystkie wersje, które są większe niż lub równe 4,13
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nie można utworzyć łącza symbolicznego - ln: nie można utworzyć łącza symbolicznego, t ": Operacja nie jest obsługiwana
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nie można utworzyć linków symbolicznych — ln: nie można utworzyć linku symbolicznego ": Operacja nie jest obsługiwana
 
 ### <a name="cause"></a>Przyczyna
-Domyślnie instalowanie udziałów plików platformy Azure w systemie Linux przy użyciu CIFS nie umożliwia obsługę łączy symbolicznych (linków symbolicznych). Zostanie wyświetlony błąd taki jak ten:
+Domyślnie instalowanie udziałów plików platformy Azure w systemie Linux przy użyciu protokołu CIFS nie powoduje włączenia obsługi linków symbolicznych (linków symbolicznych). Zobaczysz błąd podobny do tego:
 ```
 ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
 ### <a name="solution"></a>Rozwiązanie
-Klient systemu Linux CIFS nie obsługuje tworzenia linków symbolicznych Windows style za pośrednictwem protokołu SMB 2 lub 3 protokołu. Obecnie klient systemu Linux obsługuje innego stylu linki symboliczne o nazwie [Minshall + francuski łączy symbolicznych](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) zarówno tworzenie i wykonać operacje. Klienci, którzy muszą łącza symbolicznego, można użyć opcji instalacji "mfsymlinks". Firma Microsoft zaleca "mfsymlinks", ponieważ jest on także formatu używanego dla komputerów Mac.
+Klient z systemem Linux CIFS nie obsługuje tworzenia linków symbolicznych w stylu systemu Windows za pośrednictwem protokołu SMB 2 lub 3. Obecnie klient systemu Linux obsługuje inny styl linków symbolicznych o nazwie [Minshall + francuski linków symbolicznych](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) dla operacji tworzenia i obserwowania. Klienci, którzy potrzebują linków symbolicznych, mogą korzystać z opcji instalacji "mfsymlinks". Zalecamy "mfsymlinks", ponieważ jest to również format używany przez komputery Mac.
 
-Aby używać łączy symbolicznych, Dodaj następujący element do końca CIFS polecenia instalacji:
+Aby użyć linków symbolicznych, Dodaj następujący na końcu polecenia instalacji CIFS:
 
 ```
 ,mfsymlinks
 ```
 
-Aby polecenie będzie wyglądać mniej więcej tak:
+Dlatego polecenie wygląda następująco:
 
 ```
 sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsymlinks
 ```
 
-Następnie możesz utworzyć łączy symbolicznych jako sugerowane na [wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers).
+Następnie można utworzyć linków symbolicznych zgodnie z sugestią w witrynie [wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 <a id="error112"></a>
-## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Instalowanie error(112): Host nie działa"z powodu upływu limitu czasu ponownego łączenia
+## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>„Błąd instalacji (112): Host nie działa z powodu przekroczenia limitu czasu ponownego połączenia
 
-Błąd instalacji "112" występuje na komputerze klienckim systemu Linux po przez długi czas klienta. Po dłuższy czas bezczynności klient odłączy się i upłynie limit czasu połączenia.  
+Błąd instalacji „112” występuje na kliencie z systemem Linux, gdy klient był bezczynny przez długi czas. Po dłuższym czasie bezczynności klient rozłączy się i upłynie limit czasu połączenia.  
 
 ### <a name="cause"></a>Przyczyna
 
-Połączenie może być bezczynne, z następujących powodów:
+Połączenie może być bezczynne z następujących przyczyn:
 
--   Problemy z komunikacją sieci, które uniemożliwiają ponowne ustanowienie połączenia TCP z serwerem, gdy jest używana opcja "elastyczne" instalacji domyślnej
--   Najnowsze poprawki ponowne nawiązanie połączenia, które nie są obecne w starszych jądra
+-   Błędy komunikacji sieciowej, które uniemożliwiają ponowne ustanowienie połączenia TCP z serwerem, gdy jest używana domyślna opcja „miękkiej” instalacji
+-   Najnowsze poprawki ponownego nawiązywania połączenia, które nie są obecne w starszych jądrach
 
 ### <a name="solution"></a>Rozwiązanie
 
-Ten problem ponowne nawiązanie połączenia w jądrze systemu Linux jest teraz ustalone jako część następujących zmian:
+Ten problem z ponownym nawiązywaniem połączenia w jądrze systemu Linux jest już poprawiony jako część następujących zmian:
 
-- [Poprawka połączyć odraczaj sesji protokołu smb3 ponownie gdy ponownego połączenia gniazda](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
-- [Wywoływanie usługi echo, natychmiast po zakończeniu ponownego połączenia gniazda](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
-- [CIFS: Naprawić uszkodzenie pamięci możliwe podczas ponownego nawiązania połączenia](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
-- [CIFS: Napraw możliwe double blokowanie mutex podczas ponownego nawiązania połączenia (dla jądra v4.9 i nowszych)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
+- [Poprawka ponownego nawiązywania połączenia w celu nie odraczania ponownego łączenia sesji protokołu smb3 długo po ponownym połączeniu gniazda](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
+- [Wywoływanie usługi echo natychmiast po ponownym połączeniu gniazda](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
+- [CIFS: Naprawienie potencjalnego uszkodzenia pamięci podczas ponownego nawiązywania połączenia](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: Naprawienie możliwego podwójnego blokowanie wzajemnego wykluczania podczas ponownego nawiązywania połączenia (dla jądra w wersji 4.9 i nowszych)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Jednak te zmiany mogą nie być przenoszone jeszcze do wszystkich dystrybucjach systemu Linux. Ta poprawka i inne poprawki ponowne nawiązanie połączenia można znaleźć w [minimalna zalecana wersji przy użyciu odpowiedniej funkcji instalacji (protokół SMB w wersji 2.1 vs protokołu SMB w wersji 3.0 lub nowszej)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) części [użycia usługi Azure Files z systemem Linux](storage-how-to-use-files-linux.md)artykułu. Po uaktualnieniu do wersji jądra zalecane, możesz uzyskać tę poprawkę.
+Te zmiany mogą jednak nie być jeszcze przeniesione do wszystkich dystrybucji systemu Linux. Tę poprawkę i inne poprawki ponownego nawiązywania połączenia można znaleźć w sekcji [Minimalne zalecane wersje z odpowiednimi możliwościami instalacji (protokół SMB w wersji 2.1 a protokół SMB w wersji 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) artykułu [Używanie usługi Azure Files z systemem Linux](storage-how-to-use-files-linux.md). Tę poprawkę można uzyskać, wykonując uaktualnienie do jednej z tych zalecanych wersji jądra.
 
 ### <a name="workaround"></a>Obejście
 
-Ten problem można obejść, określając twarde instalacji. Twarde instalacji wymusza to na kliencie, aby czekać do momentu nawiązaniu połączenia lub jawnie zostało przerwane. Aby zapobiec wystąpieniu błędów z powodu limitów czasu w sieci, można użyć go. Jednak to rozwiązanie może spowodować czeka na czas nieokreślony. Przygotuj się na zatrzymanie połączenia zgodnie z potrzebami.
+Ten problem można obejść, określając twardą instalację. Twarda instalacja wymusza na kliencie oczekiwanie, aż połączenie zostanie nawiązane lub zostanie jawnie przerwane. Można z niego korzystać, aby zapobiegać błędom powodowanym przekroczeniem limitów czasu sieci. To obejście może jednak doprowadzić do niekończących się oczekiwań. Przygotuj się na zatrzymywanie połączeń zgodnie z wymaganiami.
 
-Jeśli nie można uaktualnić do najnowszej wersji jądra, możesz obejść ten problem, przechowując plik w udziale plików platformy Azure, które piszesz co 30 sekund lub mniej. Musi to być operacji zapisu, takie jak ponowne napisanie Data utworzonego lub zmodyfikowanego pliku. W przeciwnym razie możesz otrzymać wyników z pamięci podręcznej, a operacja nie może wyzwalać ponownego łączenia.
+Jeśli nie możesz wykonać uaktualnienia do najnowszych wersji jądra, możesz obejść ten problem, zachowując w udziale plików platformy Azure plik, do którego będziesz zapisywać co 30 sekund lub mniej. Musi to być operacja zapisu, taka jak ponowne zapisanie daty utworzenia lub modyfikacji pliku. W przeciwnym razie możesz otrzymać wyniki z pamięci podręcznej, a Twoja operacja może nie wyzwolić ponownego nawiązywania połączenia.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybko rozwiązać problem.
+Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , aby szybko rozwiązać problem.

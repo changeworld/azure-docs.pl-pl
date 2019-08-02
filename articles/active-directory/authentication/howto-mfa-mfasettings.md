@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6260a619ad3dfda65fcdfc1180cba4002dd23d0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 7011025a1d94a5c99bf2338d9f80c683c2fd7b35
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499900"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514978"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure MFA
 
@@ -35,7 +35,7 @@ Niektóre z tych ustawień mają zastosowanie do serwera MFA, usługi Azure MFA 
 | Blokada konta | Tymczasowe blokowanie kont w usłudze wieloskładnikowe uwierzytelnianie, jeśli w wierszu występuje zbyt wiele nieudanych prób uwierzytelnienia. Ta funkcja ma zastosowanie tylko do użytkowników, którzy wprowadzają kod PIN do uwierzytelnienia. (Serwer MFA) |
 | [Blokuj/Odblokuj użytkowników](#block-and-unblock-users) | Służy do blokowania określonym użytkownikom możliwości otrzymywania żądań uwierzytelniania wieloskładnikowego. Wszystkie próby uwierzytelnienia dla zablokowanych użytkowników są automatycznie odrzucane. Użytkownicy pozostają Zablokowani przez 90 dni od momentu zablokowania. |
 | [Alert o oszustwie](#fraud-alert) | Konfigurowanie ustawień związanych z możliwościami użytkowników w celu zgłaszania fałszywych żądań weryfikacji |
-| Powiadomienia | Włącz powiadomienia zdarzeń z serwera MFA. |
+| [Powiadomienia](#notifications) | Włącz powiadomienia zdarzeń z serwera MFA. |
 | [Tokeny OATH](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Używany w środowiskach Azure MFA opartych na chmurze do zarządzania tokenami OATH dla użytkowników. |
 | [Ustawienia połączenia telefonicznego](#phone-call-settings) | Konfigurowanie ustawień związanych z połączeniami telefonicznymi i powitami w środowiskach chmurowych i lokalnych. |
 | Dostawcy | Spowoduje to wyświetlenie wszystkich istniejących dostawców uwierzytelniania, które mogły zostać skojarzone z Twoim kontem. Nie można utworzyć nowych dostawców uwierzytelniania od 1 września 2018 |
@@ -71,9 +71,9 @@ Użyj funkcji _Blokuj i Odblokuj użytkowników_ , aby uniemożliwić użytkowni
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
 2. Przejdź do **Azure Active Directory** > Zablokuj **/Odblokuj użytkowników**usługi**MFA** > .
-3. Wybierz  opcję Odblokuj w kolumnie **Akcja** obok użytkownika, aby odblokować.
-4. Wprowadź komentarz w przyczynie  odblokowania pola.
-5. Wybierz  opcję Odblokuj, aby zakończyć Odblokowywanie użytkownika.
+3. Wybierz opcję Odblokuj w kolumnie **Akcja** obok użytkownika, aby odblokować.
+4. Wprowadź komentarz w przyczynie odblokowania pola.
+5. Wybierz opcję Odblokuj, aby zakończyć Odblokowywanie użytkownika.
 
 ## <a name="fraud-alert"></a>Alert oszustwa
 
@@ -99,6 +99,12 @@ Skonfiguruj funkcję _alertu oszustwa_ , aby umożliwić użytkownikom zgłaszan
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Azure Active Directory** > **logowania**. Raport oszustwa jest teraz częścią standardowego raportu logowania do usługi Azure AD.
+
+## <a name="notifications"></a>Powiadomienia
+
+Skonfiguruj tutaj adresy e-mail dla użytkowników, którzy będą otrzymywać wiadomości e-mail z alertami o oszustwie.
+
+![Przykład wiadomości e-mail z alertem oszustwa powiadomień](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
 ## <a name="phone-call-settings"></a>Ustawienia połączenia telefonicznego
 
@@ -414,6 +420,6 @@ Funkcja zmniejsza liczbę uwierzytelnień w aplikacjach sieci Web, które zwykle
 
 Po włączeniu funkcji Zapamiętaj uwierzytelnianie wieloskładnikowe użytkownicy mogą oznaczyć urządzenie jako zaufane podczas logowania, wybierając pozycję **nie Monituj ponownie**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Modyfikuj znakowanie strony logowania usługi Azure AD](../fundamentals/customize-branding.md)

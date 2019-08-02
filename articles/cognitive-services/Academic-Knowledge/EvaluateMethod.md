@@ -1,7 +1,7 @@
 ---
-title: Oceń metody — interfejs Academic Knowledge API
+title: Oceń metodę — Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Aby zwrócić zestaw obiektów akademickich oparte na wyrażeniu zapytania, należy użyć metody Evaluate.
+description: Użyj metody szacowania, aby zwrócić zestaw jednostek akademickich opartych na wyrażeniu zapytania.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,16 +10,17 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 69e701d6727e5410b71e6cf8fbe20a1cd038ddb0
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61339100"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705008"
 ---
-# <a name="evaluate-method"></a>Oceń — metoda
+# <a name="evaluate-method"></a>Metoda szacowania
 
-**Oceny** interfejsu API REST służy do zwracania zbiór obiektów akademickich oparte na wyrażeniu zapytania.
+Interfejs API REST **szacowania** służy do zwracania zestawu jednostek akademickich na podstawie wyrażenia zapytania.
 <br>
 
 **Punkt końcowy REST:**  
@@ -30,14 +31,14 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 
 ## <a name="request-parameters"></a>Parametry żądania  
 
-Name (Nazwa)     | Wartość | Wymagana?  | Opis
+Name (Nazwa)     | Value | Wymagane?  | Opis
 -----------|-----------|---------|--------
-**expr**       | Ciąg tekstowy | Tak | Wyrażenie zapytania, które określa jednostki, która ma zostać zwrócony.
-**model**      | Ciąg tekstowy | Nie  | Nazwa modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.        
-**Atrybuty** | Ciąg tekstowy | Nie<br>Wartość domyślna: Identyfikator | Listę rozdzielonych przecinkami, która określa wartości atrybutów, które znajdują się w odpowiedzi. Nazwy atrybutów jest rozróżniana wielkość liter.
-**count**        | Liczba | Nie<br>Wartość domyślna: 10 | Liczba wyników do zwrócenia.
-**offset**     | Liczba |   Nie<br>Wartość domyślna: 0    | Indeks pierwszego wyniku do zwrócenia.
-**orderby** |   Ciąg tekstowy | Nie<br>Wartość domyślna: dzięki skróceniu PRAWDPD | Nazwa atrybutu, który jest używany na potrzeby sortowania jednostki. Opcjonalnie rosnąco/malejąco może być określona. Format to: *name: asc* lub *name: desc*.
+**expr**       | Ciąg tekstowy | Tak | Wyrażenie zapytania określające, które jednostki należy zwrócić.
+**model**      | Ciąg tekstowy | Nie  | Nazwa modelu, który ma być wysyłany do zapytania.  Obecnie wartość domyślna to *Najnowsza*.        
+**Attributes** | Ciąg tekstowy | Nie<br>wartooć Id | Rozdzielana przecinkami lista określająca wartości atrybutów, które są zawarte w odpowiedzi. W nazwach atrybutów jest rozróżniana wielkość liter.
+**count**        | Number | Nie<br>Domyślne: 10 | Liczba wyników do zwrócenia.
+**offset**     | Number |   Nie<br>Domyślne: 0    | Indeks pierwszego wyniku do zwrócenia.
+**orderby** |   Ciąg tekstowy | Nie<br>Domyślne: przez zmniejszenie wyniku | Nazwa atrybutu, który jest używany do sortowania jednostek. Opcjonalnie można określić rosnąco/malejąco. Format to: *name: ASC* lub *name: DESC*.
   
  <br>
 
@@ -45,9 +46,9 @@ Name (Nazwa)     | Wartość | Wymagana?  | Opis
 
 Name (Nazwa) | Opis
 -------|-----   
-**expr** |  *Expr* parametrów z żądania.
-**Jednostki** |  Tablica 0 lub więcej jednostek, które dopasowane wyrażenia zapytania. Każda jednostka zawiera wartość prawdopodobieństwa logarytmu naturalnego i wartości innych wymaganych atrybutów.
-**aborted** | Wartość true, jeśli upłynął limit czasu żądania.
+**expr** |  Parametr *Expr* z żądania.
+**obiekty** |  Tablica zawierająca 0 lub więcej jednostek, które pasują do wyrażenia zapytania. Każda jednostka zawiera naturalną wartość prawdopodobieństwa dziennika oraz wartości innych żądanych atrybutów.
+**aborted** | Ma wartość true, jeśli upłynął limit czasu żądania.
 
 <br>
 
@@ -56,9 +57,9 @@ Name (Nazwa) | Opis
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?expr=
 Composite(AA.AuN=='jaime teevan')&count=2&attributes=Ti,Y,CC,AA.AuN,AA.AuId
 ```
-<br>Zwykle wyrażenia zostaną uzyskane z odpowiedzią **interpretacji** metody.  Można również utworzyć, wyrażenia zapytania samodzielnie, ale (zobacz [składni wyrażeń zapytania](QueryExpressionSyntax.md)).  
+<br>Zwykle wyrażenie zostanie uzyskane z odpowiedzi na metodę **interpretacji** .  Ale można również tworzyć wyrażenia zapytania samodzielnie (patrz [składnia wyrażenia zapytania](QueryExpressionSyntax.md)).  
   
-Za pomocą *liczba* i *przesunięcie* parametrów, dużą liczbę wyników można uzyskać bez wysyłania pojedyncze żądanie odpowiedź wyniki w ogromnych (i potencjalnie wolno).  W tym przykładzie żądania używane wyrażenie interpretacji pierwszy z **interpretacji** odpowiedzi interfejsu API jako *expr* wartość. *Count = 2* parametr określa, są żądane wyniki 2 obiektu. I *atrybuty = Ti, Y, DW, AA. AuN, AA. AuId* parametr wskazuje, są żądane tytuł, rok, liczba cytatu, imię i nazwisko autora i autor identyfikator dla każdego wyniku.  Zobacz [atrybutów jednostki](EntityAttributes.md) listę atrybutów.
+Korzystając z parametrów *Count* i *offset* , można uzyskać dużą liczbę wyników bez wysyłania pojedynczego żądania, które powoduje znaczną (i potencjalnie wolną) odpowiedź.  W tym przykładzie żądanie używało wyrażenia jako pierwszej interpretacji z odpowiedzi interpretuje interfejs API jako wartość *wyrażenia* . Parametr *Count = 2* określa, że żądane są 2 wyniki jednostek. I *atrybuty = TI, Y, CC, AA. AuN, AA. Parametr AuId* wskazuje, że dla każdego wyniku żądano tytułu, roku, liczby cytatów, nazwy autora i identyfikatora autora.  Zobacz [atrybuty jednostki](EntityAttributes.md) dla listy atrybutów.
   
 ```JSON
 {

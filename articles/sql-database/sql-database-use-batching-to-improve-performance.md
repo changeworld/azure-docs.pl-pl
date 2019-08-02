@@ -1,6 +1,6 @@
 ---
-title: Jak zwiększyć wydajność aplikacji usługi Azure SQL Database za pomocą adapterów przetwarzania wsadowego
-description: W temacie przedstawiono dowód, że przetwarzanie wsadowe operacji bazy danych znacznie zwiększa szybkość i skalowalność aplikacji usługi Azure SQL Database. Mimo że techniki te przetwarzania wsadowego działać dla dowolnej bazy danych programu SQL Server, artykuł koncentruje się na platformie Azure.
+title: Jak zwiększyć wydajność Azure SQL Database aplikacji za pomocą tworzenia pakietów wsadowych
+description: Temat zawiera dowody, że przetwarzanie wsadowe operacji bazy danych znacznie zwiększa szybkość i skalowalność aplikacji Azure SQL Database. Chociaż te techniki wsadowe działają dla dowolnej SQL Server bazy danych, fokus artykułu znajduje się na platformie Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,45 +10,44 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e76b5ecd3d6401c317f6500ec376fc25d3fa55b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d18f5b77d08a55bd06656a72cbc02c040b6f127
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331132"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566248"
 ---
-# <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak zwiększyć wydajność aplikacji bazy danych SQL za pomocą adapterów przetwarzania wsadowego
+# <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak zwiększyć wydajność SQL Database aplikacji za pomocą tworzenia pakietów wsadowych
 
-Przetwarzanie wsadowe operacji do usługi Azure SQL Database w znacznie zwiększa wydajność i skalowalność aplikacji. Aby zrozumieć korzyści, w pierwszej części tego artykułu opisano niektóre przykładowe wyniki testów są porównywane wsadowej i sekwencyjny żądań do usługi SQL Database. W dalszej części artykułu pokazuje techniki, scenariusze i zagadnienia pomogą pomyślnie partie w aplikacjach systemu Azure.
+Operacje wsadowe w celu Azure SQL Database znacznie poprawiają wydajność i skalowalność aplikacji. Aby zrozumieć korzyści, pierwsza część tego artykułu dotyczy niektórych przykładowych wyników testów, które porównują sekwencyjne i wsadowe żądania do SQL Database. W pozostałej części artykułu przedstawiono techniki, scenariusze i zagadnienia, które ułatwią pomyślne użycie usługi Batch w aplikacjach platformy Azure.
 
-## <a name="why-is-batching-important-for-sql-database"></a>Dlaczego jest przetwarzanie wsadowe ważne dla bazy danych SQL
+## <a name="why-is-batching-important-for-sql-database"></a>Dlaczego jest ważna partia dla SQL Database
 
-Przetwarzanie wsadowe wywołań usługi zdalnej jest dobrze znanych strategii zwiększenia wydajności i skalowalności. Są to stałe koszty przetwarzania do interakcji z usługą zdalną, takie jak serializacji, transfer sieciowy i deserializacji. Pakowanie wielu oddzielnych transakcji w jednej partii minimalizuje te koszty.
+Tworzenie wsadowe wywołań usługi zdalnej jest dobrze znaną strategią w celu zwiększenia wydajności i skalowalności. Istnieją stałe koszty przetwarzania w przypadku interakcji z usługą zdalną, takie jak Serializacja, transfer sieciowy i deserializacja. Pakowanie wielu oddzielnych transakcji w ramach jednej partii minimalizuje te koszty.
 
-W tym dokumencie chcemy sprawdzić różne bazy danych SQL, przetwarzanie wsadowe omówione strategie i scenariusze. Mimo że strategie te są również ważne w przypadku aplikacji lokalnych, korzystających z programu SQL Server, jest kilka powodów wyróżnianie korzystanie z dzielenia na partie dla bazy danych SQL:
+W tym dokumencie chcemy poznać różne strategie i scenariusze tworzenia partii SQL Database. Chociaż te strategie są również ważne dla aplikacji lokalnych, które używają SQL Server, istnieje kilka powodów, dla których należy wyróżnić użycie partii dla SQL Database:
 
-* Jest potencjalnie większe opóźnienia sieci podczas uzyskiwania dostępu do bazy danych SQL, szczególnie jeśli uzyskują dostęp do bazy danych SQL z poza tym samym centrum danych Microsoft Azure.
-* Wielodostępne właściwości bazy danych SQL oznacza, że wydajność odpowiada warstwy dostępu do danych w ogólnej skalowalności bazy danych. Bazy danych SQL musi zapobiec monopolizowaniu przez zasobów bazy danych szkodę innych dzierżaw dowolnego pojedynczego dzierżawy/użytkownika. W odpowiedzi na użycie przekraczające wstępnie zdefiniowanych limitów przydziału bazy danych SQL można zmniejszyć przepływności lub reagować po zastosowaniu ograniczania wyjątków. Korzyści, takich jak przetwarzanie wsadowe, umożliwiają kontynuować pracę w bazie danych SQL przed osiągnięciem limitów. 
-* Przetwarzanie wsadowe jest również obowiązujące dla architektur korzystających z wielu baz danych (fragmentowanie). Wydajność interakcji w taki sposób, w którym każda jednostka bazy danych nadal jest kluczowym czynnikiem w swojej ogólnej skalowalności. 
+* W celu uzyskania dostępu do SQL Database istnieje potencjalnie większa liczba opóźnień sieci, szczególnie w przypadku uzyskiwania dostępu do SQL Database spoza tego samego centrum danych Microsoft Azure.
+* Wielodostępne właściwości SQL Database oznacza, że wydajność warstwy dostępu do danych jest skorelowane z ogólną skalowalnością bazy danych. SQL Database muszą uniemożliwiać żadnym pojedynczym dzierżawom/użytkownikom z zasobów bazy danych monopolizowaniu, aby nie szkodzić innym dzierżawcom. W odpowiedzi na użycie przekraczające wstępnie zdefiniowane limity przydziały SQL Database mogą zmniejszyć przepływność lub odpowiedzieć na wyjątki ograniczające. Zwiększenie wydajności, takie jak przetwarzanie wsadowe, pozwala wykonywać więcej pracy na SQL Database przed osiągnięciem tych limitów. 
+* Przetwarzanie wsadowe jest również skuteczne dla architektury, które używają wielu baz danych (fragmentowania). Wydajność interakcji z każdą jednostką bazy danych jest nadal kluczowym czynnikiem w ogólnej skalowalności. 
 
-Jest jedną z korzyści z używania bazy danych SQL, że nie trzeba zarządzać serwerami, które hostują bazy danych. Jednak ta zarządzana infrastruktura również oznacza, że inaczej myśleć o optymalizacji bazy danych. Nie jest już zajrzeć do poprawy infrastruktury sprzętu lub sieci bazy danych. Microsoft Azure kontroluje tych środowisk. Główny obszar, który można kontrolować, jest sposób interakcji aplikacji z usługą SQL Database. Przetwarzanie wsadowe jest jednym z tych optymalizacjach. 
+Jedną z zalet korzystania z SQL Database jest to, że nie trzeba zarządzać serwerami, które obsługują bazę danych programu. Jednak ta infrastruktura zarządzana oznacza również, że trzeba myśleć o optymalizacji baz danych. Nie można już wyszukać poprawy jakości sprzętu lub infrastruktury sieciowej. Microsoft Azure kontroluje te środowiska. Głównym obszarem, który można kontrolować, jest sposób interakcji aplikacji z SQL Database. Przetwarzanie wsadowe jest jedną z tych optymalizacji. 
 
-Pierwsza część papieru sprawdza różnych technik przetwarzania wsadowego dla aplikacji platformy .NET, które używają bazy danych SQL. Ostatnie dwie sekcje obejmują, scenariuszy i wytyczne dotyczące przetwarzania wsadowego.
+Pierwsza część dokumentu analizuje różne techniki wsadowe dla aplikacji .NET, które używają SQL Database. W ostatnich dwóch sekcjach omówiono wytyczne i scenariusze dotyczące przetwarzania wsadowego.
 
-## <a name="batching-strategies"></a>Strategii dzielenia na partie
+## <a name="batching-strategies"></a>Strategie przetwarzania wsadowego
 
-### <a name="note-about-timing-results-in-this-article"></a>Należy zwrócić uwagę na wyniki chronometrażu w tym artykule
+### <a name="note-about-timing-results-in-this-article"></a>Uwaga dotycząca chronometrażu wyników w tym artykule
 
 > [!NOTE]
-> Wyniki nie są testy porównawcze, ale są przeznaczone do wyświetlenia **względnej wydajności**. Czasy są oparte na średniej liczbie co najmniej 10 przebiegów testów. Operacje są operacje wstawiania do pustej tabeli. Te testy były mierzonego pre-V12, a ich nie muszą odpowiadać na przepływność, które mogą wystąpić w wersji V12 bazą danych, używając nowego [warstwy usługi jednostki DTU](sql-database-service-tiers-dtu.md) lub [warstwy usługi (rdzeń wirtualny)](sql-database-service-tiers-vcore.md). Względnych zalet technika przetwarzania wsadowego powinny być podobne.
+> Wyniki nie są wzorcem, ale są przeznaczone do wyświetlania **względnej wydajności**. Chronometraż jest oparty na średniej z co najmniej 10 przebiegów testowych. Operacje są wstawiane do pustej tabeli. Te testy zostały zmierzone przed V12 i nie muszą odpowiadać przepływności, które można napotkać w bazie danych V12 przy użyciu nowych [warstw usług DTU](sql-database-service-tiers-dtu.md) lub [rdzeń wirtualny usługi](sql-database-service-tiers-vcore.md). Względne korzyści wynikające z techniki wsadowej powinny być podobne.
 
 ### <a name="transactions"></a>Transakcje
 
-Wydaje się dziwna, aby rozpocząć Przegląd dzielenia na partie od Omawiając transakcji. Ale stosowanie transakcji po stronie klienta ma delikatny przetwarzania wsadowego efekt po stronie serwera, który zapewnia lepszą wydajność. I transakcji można dodać za pomocą tylko kilku wierszy kodu, dzięki czemu zapewniają szybki sposób, aby zwiększyć wydajność operacji sekwencyjnego.
+Wydaje się, że nie można rozpocząć przeglądu partii, omawiając transakcje. Jednak użycie transakcji po stronie klienta ma delikatny efekt wsadowy po stronie serwera, który zwiększa wydajność. I można dodawać transakcje tylko za pomocą kilku wierszy kodu, dzięki czemu zapewniają szybki sposób poprawy wydajności operacji sekwencyjnych.
 
-Należy wziąć pod uwagę następujące C# kod, który zawiera sekwencję INSERT i operacje aktualizacji w prostej tabeli.
+Rozważmy następujący C# kod, który zawiera sekwencję operacji INSERT i Update w prostej tabeli.
 
 ```csharp
 List<string> dbOperations = new List<string>();
@@ -59,7 +58,7 @@ dbOperations.Add("insert MyTable values ('new value',1)");
 dbOperations.Add("insert MyTable values ('new value',2)");
 dbOperations.Add("insert MyTable values ('new value',3)");
 ```
-Poniższy kod ADO.NET sekwencyjnie wykonuje te operacje.
+Poniższy kod ADO.NET wykonuje sekwencyjnie te operacje.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -74,7 +73,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Najlepszym sposobem, aby zoptymalizować ten kod jest zaimplementowanie pewnego rodzaju po stronie klienta przetwarzanie wsadowe tych wywołań. Ale prosty sposób zwiększyć wydajność ten kod po prostu opakowując sekwencję wywołań w ramach transakcji. Oto ten sam kod, który używa transakcji.
+Najlepszym sposobem na optymalizację tego kodu jest zaimplementowanie pewnej postaci wsadowej po stronie klienta tych wywołań. Jednak istnieje prosty sposób zwiększenia wydajności tego kodu przez po prostu zapakowanie sekwencji wywołań w transakcji. Poniżej znajduje się ten sam kod, który używa transakcji.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -92,22 +91,22 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Transakcje są rzeczywiście używane w obu tych przykładów. W pierwszym przykładzie poszczególnych wywołań jest transakcji niejawnej. W drugim przykładzie transakcji jawnej opakowuje wszystkich połączeń. Na dokumentację [dziennika transakcji zapisu z wyprzedzeniem](https://msdn.microsoft.com/library/ms186259.aspx), rekordy dziennika jest opróżniany do dysku, gdy zatwierdzenia transakcji. Tak, tym więcej wywołań w ramach transakcji zapisu w dzienniku transakcji można opóźnienie, dopóki nie transakcja została zatwierdzona. W efekcie jest włączane, przetwarzanie wsadowe do zapisu do dziennika transakcji serwera.
+Transakcje są faktycznie używane w obu tych przykładach. W pierwszym przykładzie każde pojedyncze wywołanie jest niejawną transakcją. W drugim przykładzie transakcja jawna otacza wszystkie wywołania. Zgodnie z dokumentacją [dziennika transakcji zapisu](https://msdn.microsoft.com/library/ms186259.aspx)rekordy dziennika są opróżniane do dysku podczas zatwierdzania transakcji. Tak więc, dołączając więcej wywołań w transakcji, zapis w dzienniku transakcji może opóźnić się do momentu zatwierdzenia transakcji. W efekcie w dzienniku transakcji serwera jest włączana partia operacji zapisu.
 
-W poniższej tabeli przedstawiono niektóre ad-hoc wyniki testów. Testy wykonywane tego samego sekwencyjnego wstawiania i bez transakcji. Dla perspektywy więcej pierwszy zestaw testów został uruchomiony zdalnie z laptopa do bazy danych w systemie Microsoft Azure. Drugi zestaw testów został uruchomiony z usługą w chmurze i bazy danych, zarówno znajdowały się w obrębie tego samego centrum danych Microsoft Azure (zachodnie stany USA). W poniższej tabeli przedstawiono czas trwania w milisekundach sekwencyjnego wstawiania i bez transakcji.
+W poniższej tabeli przedstawiono niektóre wyniki testów ad hoc. Testy przeprowadzono te same sekwencyjne Wstawianie z i bez transakcji. W celu uzyskania większej perspektywy pierwszy zestaw testów działał zdalnie z poziomu laptopa do bazy danych w Microsoft Azure. Drugi zestaw testów został uruchomiony z poziomu usługi w chmurze i bazy danych, która znajduje się w tym samym Microsoft Azure Datacenter (Zachodnie stany USA). W poniższej tabeli przedstawiono czas trwania operacji wstawiania sekwencyjnego z i bez transakcji w milisekundach.
 
-**W środowisku lokalnym na platformie Azure**:
+**Lokalne na platformę Azure**:
 
-| Operacje | Brak transakcji (ms) | W transakcji (ms) |
+| Operacje | Brak transakcji (MS) | Transakcja (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure – Azure (tym samym centrum danych)** :
+**Azure na platformę Azure (to samo centrum danych)** :
 
-| Operacje | Brak transakcji (ms) | W transakcji (ms) |
+| Operacje | Brak transakcji (MS) | Transakcja (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -115,19 +114,19 @@ W poniższej tabeli przedstawiono niektóre ad-hoc wyniki testów. Testy wykonyw
 | 1000 |21479 |2756 |
 
 > [!NOTE]
-> Wyniki nie są testy. Zobacz [należy pamiętać o wynikach chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
+> Wyniki nie są wzorcem. Zobacz [uwagi dotyczące chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
 
-Na podstawie poprzednich wyników testów, zawijanie jednej operacji w transakcji obniża wydajność. Ale miarę zwiększania się liczby operacji w pojedynczą transakcję, poprawę wydajności staje się bardziej oznaczone. Różnicę w wydajności jest lepiej widoczne także w przypadku, gdy wszystkie operacje są wykonywane w ramach centrum danych Microsoft Azure. Większe opóźnienia wykorzystania bazy danych SQL z poza centrum danych Microsoft Azure overshadows przyrost wydajności użycia transakcji.
+W oparciu o poprzednie wyniki testów, otoka pojedynczej operacji w transakcji w rzeczywistości zmniejsza wydajność. Ale w miarę zwiększania liczby operacji w ramach pojedynczej transakcji zwiększenie wydajności zostanie wyróżnione. Różnica wydajności jest również bardziej zauważalna, gdy wszystkie operacje są wykonywane w ramach Microsoft Azure centrum danych. Zwiększony czas oczekiwania na użycie SQL Database spoza centrum danych Microsoft Azure w celu przesłania korzyści z używania transakcji.
 
-Mimo że stosowanie transakcji może zwiększyć wydajność, w dalszym ciągu [obserwować najlepsze rozwiązania dotyczące połączenia i transakcje](https://msdn.microsoft.com/library/ms187484.aspx). Zachowanie transakcji możliwie krótkie, a następnie zamknij połączenie z bazą danych, po zakończeniu pracy. Za pomocą instrukcji w poprzednim przykładzie gwarantuje, że połączenie jest zamknięte po zakończeniu blok kolejnych kodu.
+Chociaż użycie transakcji może zwiększyć wydajność, nadal należy [przestrzegać najlepszych rozwiązań dotyczących transakcji i połączeń](https://msdn.microsoft.com/library/ms187484.aspx). Zachowaj transakcję jak najszybciej i Zamknij połączenie z bazą danych po zakończeniu pracy. Instrukcja Using w poprzednim przykładzie gwarantuje, że połączenie jest zamknięte po zakończeniu kolejnego bloku kodu.
 
-Poprzedni przykład pokazuje, że można dodawać transakcji lokalnej do jakiegokolwiek kodu ADO.NET, z dwoma wierszami. Transakcje oferują szybki sposób, aby poprawić wydajność kodu, który sprawia, że sekwencyjnego wstawiania, aktualizowania i usuwania działań. Jednakże aby zapewnić lepszą wydajność, należy rozważyć zmianę kodu dostosowaną skorzystaj z zalet przetwarzanie wsadowe po stronie klienta, takie jak parametry z wartościami przechowywanymi w tabeli.
+W poprzednim przykładzie pokazano, że można dodać transakcję lokalną do dowolnego kodu ADO.NET z dwoma wierszami. Transakcje oferują szybki sposób na zwiększenie wydajności kodu, który wykonuje sekwencyjne operacje wstawiania, aktualizowania i usuwania. Jednak w celu uzyskania najszybszej wydajności Rozważ zmianę kodu w celu wykorzystania operacji wsadowych po stronie klienta, takich jak parametry z wartościami przechowywanymi w tabeli.
 
-Aby uzyskać więcej informacji na temat transakcji w ADO.NET, zobacz [lokalnej transakcji w ADO.NET](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
+Aby uzyskać więcej informacji o transakcjach w programie ADO.NET, zobacz [lokalne transakcje w ADO.NET](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
 ### <a name="table-valued-parameters"></a>Parametry z wartościami przechowywanymi w tabeli
 
-Parametry z wartościami przechowywanymi w tabeli obsługuje typach tabel zdefiniowanych przez użytkownika jako parametry w instrukcji Transact-SQL, procedury składowane i funkcje. Ta technika przetwarzania wsadowego po stronie klienta umożliwia wysłanie wielu wierszy danych w obrębie parametr z wartościami przechowywanymi w tabeli. Aby użyć parametrów z wartościami przechowywanymi w tabeli, należy najpierw zdefiniować typ tabeli. Poniższa instrukcja języka Transact-SQL umożliwia utworzenie tabeli o nazwie **MyTableType**.
+Parametry z wartościami przechowywanymi w tabeli obsługują typy tabel zdefiniowane przez użytkownika jako parametry w instrukcjach języka Transact-SQL, procedurach składowanych i funkcjach. Ta technika wsadowa po stronie klienta umożliwia wysyłanie wielu wierszy danych w ramach parametru z wartościami przechowywanymi w tabeli. Aby użyć parametrów z wartościami przechowywanymi w tabeli, należy najpierw zdefiniować typ tabeli. Poniższa instrukcja języka Transact-SQL tworzy typ tabeli onazwie webtabletype.
 
 ```sql
     CREATE TYPE MyTableType AS TABLE 
@@ -135,7 +134,7 @@ Parametry z wartościami przechowywanymi w tabeli obsługuje typach tabel zdefin
       num INT );
 ```
 
-W kodzie, Utwórz **DataTable** przy użyciu dokładnie tych samych nazw i typy typ tabeli. Przekazać ten **DataTable** w parametrze zapytania tekstowego lub procedury składowanej wywołania. Tej techniki można znaleźć w poniższym przykładzie:
+W kodzie można utworzyć **DataTable** o dokładnie takiej samej nazwie i typach typu tabeli. Przekaż tę tabelę **DataTable** do parametru w zapytaniu tekstowym lub wywołaniu procedury przechowywanej. W poniższym przykładzie przedstawiono tę technikę:
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -168,9 +167,9 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-W poprzednim przykładzie **SqlCommand** obiektu wstawia wierszy z parametru z wartościami przechowywanymi w tabeli  **\@TestTvp**. Utworzony wcześniej **DataTable** obiekt jest przypisany do tego parametru z **SqlCommand.Parameters.Add** metody. Przetwarzanie wsadowe operacji wstawienia w jednym wywołaniu znacznie zwiększa wydajność przez sekwencyjnego wstawiania.
+W poprzednim przykładzie obiekt SqlCommand wstawia wiersze z parametru z wartościami przechowywanymi w tabeli,  **\@TestTvp**. Wcześniej utworzony obiekt **DataTable** jest przypisany do tego parametru za pomocą metody **SqlCommand. Parameters. Add** . Przetwarzanie wsadowe operacji wstawiania w jednym wywołaniu znacznie zwiększa wydajność nad wstawianiem sekwencyjnym.
 
-Aby poprawić dalsze w poprzednim przykładzie, należy użyć procedury składowanej zamiast polecenia oparte na tekście. Następujące polecenie języka Transact-SQL tworzy procedurę składowaną, która przyjmuje **SimpleTestTableType** parametr z wartościami przechowywanymi w tabeli.
+Aby dodatkowo poprawić poprzedni przykład, użyj procedury składowanej zamiast polecenia tekstowego. Poniższe polecenie języka Transact-SQL tworzy procedurę składowaną, która przyjmuje **SimpleTestTableType** parametr z wartościami przechowywanymi w tabeli.
 
 ```sql
 CREATE PROCEDURE [dbo].[sp_InsertRows] 
@@ -183,18 +182,18 @@ END
 GO
 ```
 
-Następnie zmień **SqlCommand** obiektu deklaracji w poprzednim przykładzie kodu do następującego.
+Następnie zmień deklarację obiektu **SqlCommand** w poprzednim przykładzie kodu do poniższego.
 
 ```csharp
 SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
 cmd.CommandType = CommandType.StoredProcedure;
 ```
 
-W większości przypadków parametry z wartościami przechowywanymi w tabeli ma równoważną lub lepszą wydajność niż innych technik przetwarzania wsadowego. Parametry z wartościami przechowywanymi w tabeli są preferowane, często w przypadku, ponieważ są one bardziej elastyczny niż inne opcje. Na przykład innych technik, takich jak kopiowanie zbiorcze SQL, umożliwić wstawianie nowych wierszy. Ale za pomocą parametrów z wartościami przechowywanymi w tabeli można użyć logiki w procedurze składowanej, aby określić, które wiersze są aktualizacje i służą do wstawia. Typ tabeli można zmodyfikować w taki sposób, aby zawierała kolumnę "Operacja", która wskazuje, czy określony wiersz powinien zostać wstawiony, zaktualizował lub usunął.
+W większości przypadków parametry z wartościami przechowywanymi w tabeli mają równoważną lub lepszą wydajność niż inne techniki przetwarzania wsadowego. Parametry z wartościami przechowywanymi w tabeli są często preferowane, ponieważ są bardziej elastyczne niż inne opcje. Na przykład inne techniki, takie jak kopia Zbiorcza SQL, zezwalają tylko na wstawianie nowych wierszy. Jednak za pomocą parametrów z wartościami przechowywanymi w tabeli można użyć logiki w procedurze składowanej, aby określić, które wiersze są aktualizowane i które są wstawiane. Typ tabeli można także zmodyfikować tak, aby zawierał kolumnę "Operation", która wskazuje, czy określony wiersz powinien zostać wstawiony, zaktualizowany lub usunięty.
 
-W poniższej tabeli przedstawiono wyniki testów ad hoc do użytku z wartościami przechowywanymi w tabeli parametrów w milisekundach.
+W poniższej tabeli przedstawiono wyniki testów ad hoc służące do używania parametrów z wartościami przechowywanymi w tabeli w milisekundach.
 
-| Operacje | W środowisku lokalnym na platformie Azure (ms) | Tym samym centrum danych platformy Azure (ms) |
+| Operacje | Lokalne na platformę Azure (MS) | To samo centrum danych platformy Azure (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -203,17 +202,17 @@ W poniższej tabeli przedstawiono wyniki testów ad hoc do użytku z wartościam
 | 10 000 |23830 |3586 |
 
 > [!NOTE]
-> Wyniki nie są testy. Zobacz [należy pamiętać o wynikach chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
+> Wyniki nie są wzorcem. Zobacz [uwagi dotyczące chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Przyrost wydajności z dzielenia na partie jest oczywista. W poprzednim teście sekwencyjnych, 1000 wykonanie operacji zajęło 129 sekund poza centrum danych i 21 sekund z w obrębie centrum danych. Jednak parametry z wartościami przechowywanymi w tabeli na 1000 operacji wykorzystanie tylko 2,6 sekund poza centrum danych i 0,4 sekund w centrum danych.
+Wzrost wydajności z partii jest natychmiast widoczny. W poprzednim teście sekwencyjnym 1000 operacje wymagały 129 sekund poza centrum danych i 21 sekund od centrum danych. Jednak w przypadku parametrów z wartościami przechowywanymi w tabeli operacje 1000 operacji trwają tylko 2,6 sekund poza centrum danych i 0,4 s w centrum danych.
 
-Aby uzyskać więcej informacji na temat parametrów z wartościami przechowywanymi w tabeli, zobacz [parametry Table-Valued](https://msdn.microsoft.com/library/bb510489.aspx).
+Aby uzyskać więcej informacji na temat parametrów z wartościami przechowywanymi w tabeli, zobacz [Parametry z wartościami przechowywanymi w tabeli](https://msdn.microsoft.com/library/bb510489.aspx).
 
-### <a name="sql-bulk-copy"></a>Kopiowanie masowe programu SQL
+### <a name="sql-bulk-copy"></a>Kopia Zbiorcza SQL
 
-Kopiowanie masowe programu SQL jest inny sposób, aby wstawić dużych ilości danych do docelowej bazy danych. Aplikacje .NET mogą używać **SqlBulkCopy** klasy, aby wykonywać zbiorcze operacje wstawiania. **SqlBulkCopy** jest podobny do narzędzia wiersza polecenia, funkcja **Bcp.exe**, albo instrukcji języka Transact-SQL **BULK INSERT**. Poniższy przykład kodu pokazuje, jak wykonać kopiowania masowego wierszy w źródle **DataTable**, tabeli MyTable do tabeli docelowej w programie SQL Server.
+Kopiowanie masowe SQL to inny sposób wstawiania dużych ilości danych do docelowej bazy danych. Aplikacje platformy .NET mogą używać klasy **SqlBulkCopy** do wykonywania operacji wstawiania zbiorczego. **SqlBulkCopy** jest podobna do narzędzia wiersza polecenia, **bcp. exe**lub instrukcji języka Transact-SQL **BULK INSERT**. Poniższy przykład kodu pokazuje, jak zbiorczo kopiować wiersze w źródłowej tabeli **DataTable**do tabeli docelowej w SQL Server, MyTable.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -230,11 +229,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Istnieją przypadki, gdzie kopiowania masowego jest preferowana względem parametry z wartościami przechowywanymi w tabeli. Zobacz Tabela porównawcza z wartościami przechowywanymi w tabeli parametrów i operacji WSTAWIANIA ZBIORCZEGO w artykule [parametry Table-Valued](https://msdn.microsoft.com/library/bb510489.aspx).
+Istnieją przypadki, w których kopie zbiorcze są preferowane za pośrednictwem parametrów z wartościami przechowywanymi w tabeli. Zobacz tabelę porównawczą parametrów z wartościami przechowywanymi w tabeli, a BULK INSERT operacji w parametrach z [wartościami przechowywanymi w tabeli](https://msdn.microsoft.com/library/bb510489.aspx).
 
-Następujące wyniki testów ad-hoc Pokaż wydajność przetwarzania wsadowego za pomocą **SqlBulkCopy** w milisekundach.
+Poniższe wyniki testu ad hoc przedstawiają wydajność przetwarzania wsadowego za pomocą **SqlBulkCopy** w milisekundach.
 
-| Operacje | W środowisku lokalnym na platformie Azure (ms) | Tym samym centrum danych platformy Azure (ms) |
+| Operacje | Lokalne na platformę Azure (MS) | To samo centrum danych platformy Azure (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -243,17 +242,17 @@ Następujące wyniki testów ad-hoc Pokaż wydajność przetwarzania wsadowego z
 | 10 000 |21605 |2737 |
 
 > [!NOTE]
-> Wyniki nie są testy. Zobacz [należy pamiętać o wynikach chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
+> Wyniki nie są wzorcem. Zobacz [uwagi dotyczące chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
 > 
 > 
 
-W mniejszych rozmiarach usługi batch, użyj parametrów wartościami przechowywanymi w tabeli pokonał usługę **SqlBulkCopy** klasy. Jednak **SqlBulkCopy** wykonywane 12-31% szybsze niż parametrów z wartościami przechowywanymi w tabeli dla testów 1000 i za 10 000 wierszy. Parametry z wartościami przechowywanymi w tabeli, takich jak **SqlBulkCopy** to dobra opcja w przypadku operacji wsadowej operacji wstawiania, szczególnie w porównaniu do wykonywania operacji-przetwarzanej.
+W mniejszych rozmiarach partii Użyj parametrów z wartościami przechowywanymi w tabeli, w których jest wykonywana Klasa **SqlBulkCopy** . Jednak **SqlBulkCopy** wykonał 12-31% szybciej niż parametry z wartościami przechowywanymi w tabeli dla testów 1 000 i 10 000 wierszy. Podobnie jak w przypadku parametrów z wartościami przechowywanymi w tabeli, **SqlBulkCopy** jest dobrą opcją dla wkładów wsadowych, szczególnie w porównaniu z wydajnością operacji niewsadowych.
 
-Aby uzyskać więcej informacji na temat kopiowania masowego w ADO.NET, zobacz [operacje kopiowania masowego w programie SQL Server](https://msdn.microsoft.com/library/7ek5da1a.aspx).
+Aby uzyskać więcej informacji na temat kopiowania masowego w ADO.NET, zobacz [operacje kopiowania zbiorczego w SQL Server](https://msdn.microsoft.com/library/7ek5da1a.aspx).
 
-### <a name="multiple-row-parameterized-insert-statements"></a>Instrukcje sparametryzowane WSTAWIĆ wiele wierszy
+### <a name="multiple-row-parameterized-insert-statements"></a>Instrukcje wstawiania z wieloma wierszami
 
-Jeden alternatywą dla małych partiach jest do konstruowania dużych sparametryzowanych instrukcji INSERT, który wstawia wiele wierszy. W poniższym przykładzie kodu pokazano tej techniki.
+Jedną alternatywą dla małych partii jest konstruowanie dużej sparametryzowanej instrukcji INSERT, która wstawia wiele wierszy. Poniższy przykład kodu demonstruje tę technikę.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -275,58 +274,58 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-W tym przykładzie jest przeznaczona do wyświetlenia podstawowe pojęcia. Zrealizować bardziej realistyczny scenariusz będzie pętli wymaganych jednostek do konstruowania ciągu zapytania oraz parametry polecenia jednocześnie. Są ograniczone do sumy parametrów zapytania 2100, co ogranicza łączną liczbę wierszy, które mogą być przetwarzane w ten sposób.
+Ten przykład jest przeznaczony do wyświetlania koncepcji podstawowej. Bardziej realistyczny scenariusz może przechodzić przez wymagane jednostki w celu utworzenia ciągu zapytania i parametrów polecenia jednocześnie. Maksymalna liczba parametrów zapytania jest równa 2100, dlatego ogranicza łączną liczbę wierszy, które można przetworzyć w ten sposób.
 
-Następujące wyniki testów ad-hoc Pokaż wydajności tego typu instrukcji insert w milisekundach.
+Poniższe wyniki testu ad hoc pokazują wydajność tego typu instrukcji INSERT w milisekundach.
 
-| Operacje | Parametry z wartościami przechowywanymi w tabeli (ms) | Wstaw pojedynczej instrukcji (ms) |
+| Operacje | Parametry z wartościami przechowywanymi w tabeli (MS) | Wstawianie pojedynczej instrukcji (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
 | 100 |33 |51 |
 
 > [!NOTE]
-> Wyniki nie są testy. Zobacz [należy pamiętać o wynikach chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
+> Wyniki nie są wzorcem. Zobacz [uwagi dotyczące chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Takie podejście może być nieznacznie szybsze w partii, które są mniej niż 100 wierszy. Mimo że poprawy jest mała, ta technika jest inne rozwiązanie, które mogą działać dobrze w danym scenariuszu określonej aplikacji.
+Takie podejście może być nieco szybsze dla partii, które są mniejsze niż 100 wierszy. Chociaż poprawa jest mała, ta technika jest kolejną opcją, która może współpracować z konkretnym scenariuszem aplikacji.
 
-### <a name="dataadapter"></a>DataAdapter
+### <a name="dataadapter"></a>Element
 
-**DataAdapter** klas umożliwia modyfikowanie **DataSet** obiektu, a następnie prześlij zmiany jako Operacje INSERT, UPDATE i DELETE. Jeśli używasz **DataAdapter** w ten sposób jest należy pamiętać, że oddzielne wywołań dla każdej operacji distinct. Aby zwiększyć wydajność, należy użyć **UpdateBatchSize** liczbę operacji, które powinny być partii w danym momencie. Aby uzyskać więcej informacji, zobacz [wykonywanie wsadowe operacji za pomocą elementów DataAdapters](https://msdn.microsoft.com/library/aadf8fk2.aspx).
+Klasa **DataAdapter** pozwala modyfikować obiekt **DataSet** , a następnie przesyłać zmiany jako operacje INSERT, Update i DELETE. Jeśli używasz elementu **DataAdapter** w ten sposób, należy pamiętać, że osobne wywołania są wykonywane dla każdej operacji DISTINCT. Aby zwiększyć wydajność, należy użyć właściwości **UpdateBatchSize** do liczby operacji, które powinny być przetwarzane wsadowo w danym momencie. Aby uzyskać więcej informacji, zobacz [wykonywanie operacji wsadowych za pomocą adapterów](https://msdn.microsoft.com/library/aadf8fk2.aspx)danych.
 
-### <a name="entity-framework"></a>Platformy Entity framework
+### <a name="entity-framework"></a>Entity Framework
 
-Entity Framework nie obsługuje obecnie dzielenia na partie. Różnych deweloperów w społeczności podjęto próbę pokaz rozwiązania, takie jak zastąpienie **SaveChanges** metody. Jednak te rozwiązania są zazwyczaj złożone i dostosowane do aplikacji i modelu danych. Projekt codeplex Entity Framework obecnie ma stronę dyskusji na żądanie tej funkcji. Aby wyświetlić tej dyskusji, zobacz [notatek ze spotkań Projekt - 2 sierpień 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
+Entity Framework obecnie nie obsługuje przetwarzania wsadowego. Różni deweloperzy w społeczności próbują przedstawić obejścia, takie jak zastąpienie metody **metody SaveChanges** . Jednak rozwiązania są zwykle złożone i dostosowane do aplikacji i modelu danych. Projekt Entity Framework CodePlex ma obecnie stronę dyskusji na tym żądaniu funkcji. Aby wyświetlić tę dyskusję, zobacz [Design uwagi dotyczące spotkania — 2 sierpnia 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
 ### <a name="xml"></a>XML
 
-Aby informacje były kompletne uważamy, że ważne jest, aby porozmawiać na temat XML jako strategii przetwarzania wsadowego. Jednak użycie XML ma nie zalety w porównaniu z innymi metodami i kilka wady. To podejście jest podobne do parametrów z wartościami przechowywanymi w tabeli, ale plik XML lub ciąg jest przekazywany do procedury składowanej zamiast tabeli zdefiniowane przez użytkownika. Procedura składowana analizuje poleceń w procedurze składowanej.
+W celu zapewnienia kompletności należy zwrócić uwagę na informacje dotyczące XML jako strategię przetwarzania wsadowego. Jednak użycie kodu XML nie ma żadnych korzyści w porównaniu z innymi metodami i kilkoma wadami. Podejście jest podobne do parametrów z wartościami przechowywanymi w tabeli, ale plik XML lub ciąg jest przesyłany do procedury składowanej zamiast tabeli zdefiniowanej przez użytkownika. Procedura składowana analizuje polecenia w procedurze składowanej.
 
-Istnieje kilka wady tego podejścia:
+Istnieje kilka wad tego podejścia:
 
-* Praca z XML może być uciążliwe i podatne.
-* Analizowanie kodu XML w bazie danych może być użycie Procesora CPU.
-* W większości przypadków ta metoda jest mniejsza niż parametrów z wartościami przechowywanymi w tabeli.
+* Praca z XML może być nieposkomplikowana i podatna na błędy.
+* Analizowanie kodu XML w bazie danych może być czasochłonne.
+* W większości przypadków ta metoda jest wolniejsza niż parametry z wartościami przechowywanymi w tabeli.
 
-Z tego względu nie jest zalecane użycie XML dla zapytań wsadowych.
+Z tego względu nie zaleca się stosowania XML dla zapytań wsadowych.
 
-## <a name="batching-considerations"></a>Zagadnienia dotyczące dzielenia na partie
+## <a name="batching-considerations"></a>Zagadnienia związane z przetwarzaniem wsadowym
 
-Poniższe sekcje zawierają więcej wskazówek na korzystanie z dzielenia na partie w aplikacjach baz danych SQL.
+Poniższe sekcje zawierają więcej wskazówek dotyczących używania tworzenia pakietów wsadowych w aplikacjach SQL Database.
 
-### <a name="tradeoffs"></a>Wady i zalety
+### <a name="tradeoffs"></a>Kompromisów
 
-W zależności od architektury przetwarzanie wsadowe może obejmować zależność między wydajnością i zwiększa odporność. Na przykład Rozważmy scenariusz, w którym Twoja rola nieoczekiwanie ulegnie awarii. Jeśli utracisz jeden wiersz danych, wpływ jest mniejszy niż wpływ utraty dużych partii nieprzesłane wierszy. Istnieje większe ryzyko, gdy bufora wierszy przed wysłaniem ich do bazy danych w określonym przedziale czasu.
+W zależności od architektury przetwarzanie wsadowe może stanowić kompromis między wydajnością i odpornością. Rozważmy na przykład scenariusz, w którym nieoczekiwanie wystąpiła rola. Jeśli utracisz jeden wiersz danych, wpływ jest mniejszy niż wpływ utraty dużej partii nieprzesłanych wierszy. Istnieje większe ryzyko związane z buforowaniem wierszy przed wysłaniem ich do bazy danych w określonym przedziale czasu.
 
-Ze względu na to kosztem ocenić typ operacji tego wsadowej. Batch bardziej agresywne (większych partii i dłuższego czasu systemu windows) z danymi, które jest mniej istotny.
+Ze względu na te kompromisy należy oszacować typ operacji wykonywanych przez użytkownika. Przetwarzaj wsadowo bardziej agresywnie (większe partie i dłuższy czas w systemie Windows), które mają mniej krytyczne dane.
 
 ### <a name="batch-size"></a>Rozmiar partii
 
-W naszym testy była zwykle nie posiada zalet dzielenia dużych partii na mniejsze części. W rzeczywistości często tę część pola wyniku wolniej niż przesyłanie pojedynczego dużych partii. Na przykład Rozważmy scenariusz, w którym ma zostać wstawiony 1000 wierszy. W poniższej tabeli przedstawiono, jak długo trwa Użyj parametrów z wartościami przechowywanymi w tabeli, aby wstawić 1000 wierszy w przypadku podzielony na mniejsze segmenty.
+W naszych testach zwykle nie ma możliwości dzielenia dużych partii na mniejsze fragmenty. W rzeczywistości ta częściowa część często spowodowało wolniejszą wydajność niż przesyłanie pojedynczej dużej partii. Rozważmy na przykład scenariusz, w którym chcesz wstawić 1000 wierszy. W poniższej tabeli pokazano, jak długo należy używać parametrów z wartościami przechowywanymi w tabeli do wstawiania wierszy 1000 w przypadku dzielenia na mniejsze partie.
 
-| Rozmiar partii | Liczba iteracji | Parametry z wartościami przechowywanymi w tabeli (ms) |
+| Rozmiar partii | Iteracji | Parametry z wartościami przechowywanymi w tabeli (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |
@@ -334,21 +333,21 @@ W naszym testy była zwykle nie posiada zalet dzielenia dużych partii na mniejs
 | 50 |20 |630 |
 
 > [!NOTE]
-> Wyniki nie są testy. Zobacz [należy pamiętać o wynikach chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
+> Wyniki nie są wzorcem. Zobacz [uwagi dotyczące chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Aby zobaczyć, że najlepszą wydajność za 1000 wierszy jest się przesłać je wszystkie na raz. W innych testach (nie pokazane tutaj) było małe bardziej wydajne przerwać partii wierszy 10000 dwie partie 5000. Ale schematu tabeli dla tych testów jest stosunkowo proste, więc należy wykonywać testy w szczegółowe dane i usługi batch rozmiarów, aby sprawdzić te wyniki.
+Aby zobaczyć, że Najlepsza wydajność dla wierszy 1000, można przesłać wszystkie jednocześnie. W przypadku innych testów (nieprzedstawionych w tym miejscu) nastąpił mały wzrost wydajności, aby przerwać wsadową partie 10000 wierszy w dwóch partiach 5000. Jednak schemat tabeli dla tych testów jest stosunkowo prosty, dlatego należy wykonać testy dotyczące konkretnych rozmiarów danych i partii, aby sprawdzić te wyniki.
 
-Innym czynnikiem do przeanalizowania jest, jeśli łączna liczba partii staje się zbyt duży, bazy danych SQL może ograniczać i odmawiają zatwierdzić partii. Aby uzyskać najlepsze wyniki testu określonego scenariusza, aby ustalić, czy rozmiar partii idealnym rozwiązaniem. Rozmiar partii upewnij można skonfigurować w czasie wykonywania, aby umożliwić szybkie dopasowania na podstawie wydajności lub błędy.
+Innym czynnikiem, który należy wziąć pod uwagę, jest to, że jeśli całkowita partia stanie się zbyt duża, SQL Database może ograniczać i odmawiać zatwierdzić partię. Aby uzyskać najlepsze wyniki, przetestuj konkretny scenariusz, aby określić, czy jest idealnym rozmiarem partii. Wprowadź rozmiar wsadu konfigurowalny w czasie wykonywania, aby włączyć szybkie korekty na podstawie wydajności lub błędów.
 
-Na koniec równoważyć rozmiar partii z ryzyka związanego z dzielenia na partie. Jeśli występują błędy przejściowe lub roli nie powiedzie się, należy rozważyć konsekwencje ponowieniem próby wykonania operacji lub utraty danych w partii.
+Na koniec należy zrównoważyć rozmiar partii przy użyciu ryzyka związanego z przetwarzaniem wsadowym. Jeśli występują błędy przejściowe lub rola się nie powiedzie, należy wziąć pod uwagę konsekwencje ponowienia operacji lub utraty danych w partii.
 
 ### <a name="parallel-processing"></a>Przetwarzanie równoległe
 
-Co zrobić, jeśli trwało podejście zmniejszenie rozmiaru partii, ale umożliwia wykonanie pracy przez wiele wątków? Ponownie Nasze testy wykazały, że kilka mniejszych wielowątkowe instancji najczęściej wykonywane co gorsza niż pojedyncza partia większe. Następujący test próbuje wstawić 1000 wierszy w co najmniej jedna partia równoległych. Ten test pokazuje, jak więcej partie jednoczesnych faktycznie obniżenie wydajności.
+Co zrobić, jeśli zachodzi taka potrzeba zmniejszenia rozmiaru partii, ale użyto wielu wątków do wykonania pracy? Testy te wykazały, że kilka mniejszych partii wielowątkowych zwykle jest mniej więcej niż jedna większa partia. Następujący test próbuje wstawić 1000 wierszy w co najmniej jednej partii równoległej. Ten test pokazuje, jak coraz więcej równoczesnych partii zmniejszyło wydajność.
 
-| Rozmiar partii [iteracje] | Dwoma wątkami (ms) | Cztery wątki (ms) | Sześć wątków (ms) |
+| Rozmiar wsadu [iteracje] | Dwa wątki (MS) | Cztery wątki (MS) | Sześć wątków (MS) |
 | --- | --- | --- | --- |
 | 1000 [1] |277 |315 |266 |
 | 500 [2] |548 |278 |256 |
@@ -356,42 +355,42 @@ Co zrobić, jeśli trwało podejście zmniejszenie rozmiaru partii, ale umożliw
 | 100 [10] |488 |439 |391 |
 
 > [!NOTE]
-> Wyniki nie są testy. Zobacz [należy pamiętać o wynikach chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
+> Wyniki nie są wzorcem. Zobacz [uwagi dotyczące chronometrażu w tym artykule](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Istnieje kilka potencjalnych przyczyn pogorszenie wydajności ze względu na równoległości:
+Istnieje kilka potencjalnych powodów obniżenia wydajności z powodu równoległości:
 
-* Istnieje wiele wywołań sieci zamiast jednego.
-* Wiele operacji względem pojedynczej tabeli może powodować rywalizację i blokowanie.
-* Istnieją koszty ogólne związane z wielowątkowością.
-* Koszt otwarcia wielu połączeń przewyższa korzyści przetwarzania równoległego.
+* Istnieje wiele równoczesnych wywołań sieciowych zamiast jednego.
+* Wiele operacji na pojedynczej tabeli może skutkować rywalizacją i blokowaniem.
+* Istnieją narzuty skojarzone z wielowątkowością.
+* Koszt otwarcia wielu połączeń umożliwia przeważenie zalet przetwarzania równoległego.
 
-Jeśli platformą docelową jest różnych tabelach lub baz danych, istnieje możliwość Zobacz wydajnościowe uzyskać za pomocą tej strategii. Fragmentowanie bazy danych lub Federacji byłoby scenariusz dotyczący tej metody. Dzielenie na fragmenty używa wielu baz danych i kieruje różnych danych do każdej bazy danych. Każda partia małych korzystał z inną bazą danych może być bardziej efektywne następnie wykonanie operacji w sposób równoległy. Przyrost wydajności nie jest jednak istotne wykorzystania jako podstawy do podjęcia decyzji w celu użycia fragmentowania bazy danych w rozwiązaniu.
+W przypadku korzystania z różnych tabel lub baz danych, istnieje możliwość wyświetlenia pewnej wydajności z tą strategią. Fragmentowania bazy danych lub Federacji byłyby scenariuszem dla tego podejścia. Fragmentowania używa wielu baz danych i przekierowuje różne dane do poszczególnych baz danych. Jeśli każda mała partia odbywa się w innej bazie danych, wykonywanie operacji równoległych może być bardziej wydajne. Jednak wzrost wydajności nie jest wystarczająco znaczący, aby mógł zostać użyty jako podstawa do podjęcia decyzji o użyciu fragmentowania bazy danych w rozwiązaniu.
 
-W niektórych projektach równoległe wykonywanie mniejszych partiach może spowodować ulepszoną przepływność żądań w systemie pod obciążeniem. W tym przypadku mimo że jest to szybsza do przetworzenia pojedynczego większych partii przetwarzania wiele instancji w sposób równoległy może być bardziej wydajne.
+W niektórych projektach równoległe wykonywanie mniejszych partii może spowodować zwiększenie przepływności żądań w systemie pod obciążeniem. W takim przypadku, nawet jeśli jest szybszym rozwiązaniem do przetwarzania pojedynczej większej partii, przetwarzanie wielu partii równolegle może być bardziej wydajne.
 
-Jeśli używasz przetwarzania równoległego, należy wziąć pod uwagę kontrolowanie maksymalną liczbę wątków roboczych. Mniejsza liczba może prowadzić do mniej rywalizacji i skrócony czas wykonywania. Ponadto należy wziąć pod uwagę dodatkowego obciążenia, która umieszcza się to do docelowej bazy danych, zarówno w transakcji i połączeń.
+Jeśli używasz wykonywania równoległego, Rozważ możliwość kontrolowania maksymalnej liczby wątków roboczych. Mniejsza liczba może spowodować mniejszą rywalizację i krótszy czas wykonywania. Należy również rozważyć dodatkowe obciążenie, które to miejsce w docelowej bazie danych zarówno w połączeniach, jak i transakcjach.
 
-### <a name="related-performance-factors"></a>Czynniki dotyczące wydajności
+### <a name="related-performance-factors"></a>Powiązane czynniki wydajności
 
-Typowe wskazówki dotyczące wydajności bazy danych wpływa również na partie. Na przykład, Wstaw wydajność jest ograniczona w przypadku tabel, które mają duże klucza podstawowego lub wiele nieklastrowanych indeksów.
+Typowe wskazówki dotyczące wydajności bazy danych wpływają również na przetwarzanie wsadowe. Na przykład wydajność wstawiania jest zmniejszana w przypadku tabel, które mają duży klucz podstawowy lub wiele indeksów nieklastrowanych.
 
-Parametry z wartościami przechowywanymi w tabeli, użyj procedury składowanej, możesz użyć polecenia **SET NOCOUNT ON** na początku procedury. Ta instrukcja pomija zwracana liczba dotyczy wierszy w procedurze. Jednak w naszym testy użytkowania **SET NOCOUNT ON** nie miało wpływu lub obniżenie wydajności. Procedury przechowywane testu był prosty za pomocą jednego **Wstaw** polecenie z wartościami przechowywanymi w tabeli parametru. Istnieje możliwość, bardziej złożonych procedur składowanych używającym tej instrukcji. Ale nie wolno zakładać, że dodanie **SET NOCOUNT ON** do swojej przechowywanej procedurze automatycznie zwiększa wydajność. Aby poznać efekt wywoływany, przetestować procedurę składowaną z lub bez **SET NOCOUNT ON** instrukcji.
+Jeśli parametry z wartościami przechowywanymi w tabeli używają procedury składowanej, można użyć polecenia **SET NOCOUNT ON na** początku procedury. Ta instrukcja pomija zwracaną liczbę wierszy objętych procedurą. Jednak w naszych testach użycie **zestawu NOCOUNT on** nie miało wpływu ani na obniżenie wydajności. Procedura składowana testu była prosta przy użyciu jednego polecenia **INSERT** z parametru z wartościami przechowywanymi w tabeli. Istnieje możliwość, że bardziej złożone procedury składowane byłyby korzystne dla tej zasady. Nie zakłada się jednak, że dodanie **opcji SET NOCOUNT on** do procedury składowanej powoduje automatyczne zwiększenie wydajności. Aby zrozumieć efekt, przetestuj procedurę składowaną z użyciem instrukcji **SET NOCOUNT on** i bez niej.
 
-## <a name="batching-scenarios"></a>Przetwarzanie wsadowe scenariuszy
+## <a name="batching-scenarios"></a>Scenariusze przetwarzania wsadowego
 
-Poniżej opisano sposób użycia parametrów z wartościami przechowywanymi w tabeli w trzech scenariuszy aplikacji. Pierwszy scenariusz pokazuje, jak buforowanie i przetwarzanie wsadowe mogą współdziałać ze sobą. Drugi scenariusz zwiększa wydajność, wykonywanie operacji wzorzec / szczegół za pomocą wywołania jednej procedury składowanej. Końcowe scenariusz pokazuje, jak używać parametrów z wartościami przechowywanymi w tabeli w operacji "UPSERT".
+W poniższych sekcjach opisano sposób używania parametrów z wartościami przechowywanymi w tabeli w trzech scenariuszach aplikacji. Pierwszy scenariusz przedstawia sposób, w jaki buforowanie i przetwarzanie wsadowe mogą współdziałać ze sobą. Drugi scenariusz poprawia wydajność przez wykonywanie operacji głównych i szczegółowych w jednym wywołaniu procedury składowanej. W ostatnim scenariuszu pokazano, jak używać parametrów z wartościami przechowywanymi w tabeli w operacji "UPSERT".
 
-### <a name="buffering"></a>buforowanie
+### <a name="buffering"></a>Buforowania
 
-Mimo że istnieją pewne scenariusze, które są oczywiste Release candidate dla przetwarzania wsadowego, istnieje wiele scenariuszy, które możesz wykorzystać dzielenia na partie opóźnione przetwarzania. Opóźnione przetwarzania obsługuje także większe ryzyko, że dane zostaną utracone w przypadku nieoczekiwanej awarii. Należy zrozumieć ryzyko i należy rozważyć konsekwencje.
+Chociaż istnieją pewne scenariusze, które są oczywistym kandydatem do tworzenia pakietów wsadowych, istnieje wiele scenariuszy, które mogą korzystać z przetwarzania wsadowego przez opóźnione przetwarzanie. Jednak opóźnione przetwarzanie również zwiększa ryzyko utraty danych w przypadku nieoczekiwanego błędu. Ważne jest zrozumienie tego ryzyka i rozważenie konsekwencji.
 
-Rozważmy na przykład aplikacja sieci web, który śledzi historię nawigacji każdego użytkownika. Na każdym żądaniu strony aplikacji można utworzyć bazę danych wywołać, aby rejestrować wyświetlenie strony użytkownika. Ale można osiągnąć wyższą wydajność i skalowalność, buforowanie działania nawigacji użytkowników, a następnie wysyłając te dane do bazy danych w partiach. Możesz wyzwolić aktualizacja bazy danych, czas trwania i/lub rozmiar buforu. Reguły można na przykład określić, czy zadanie wsadowe powinny zostać przetworzone po 20 sekund lub gdy buforu osiągnie 1000 elementów.
+Rozważmy na przykład aplikację sieci Web, która śledzi historię przeglądania poszczególnych użytkowników. Na każdym żądaniu strony aplikacja może nawiązać połączenie z bazą danych, aby zarejestrować widok strony użytkownika. Jednak wyższą wydajność i skalowalność można osiągnąć, buforując działania nawigacyjne użytkowników, a następnie wysyłając je do bazy danych w partiach. Można wyzwolić aktualizację bazy danych według czasu, który upłynął i/lub rozmiar buforu. Na przykład reguła może określić, że partia powinna być przetwarzana po 20 sekundach lub gdy bufor osiągnie 1000 elementów.
 
-Poniższy przykład kodu wykorzystuje [Reactive Extensions - Rx](https://msdn.microsoft.com/data/gg577609) na potrzeby przetwarzania buforowanego zdarzeń zgłaszanych przez klasy monitorowania. Wypełnia buforu lub w osiągnięciu limitu czasu, partii danych użytkownika są wysyłane do bazy danych z parametru z wartościami przechowywanymi w tabeli.
+Poniższy przykład kodu używa reaktywnych [rozszerzeń-RX](https://msdn.microsoft.com/data/gg577609) , aby przetwarzać zdarzenia buforowane wywoływane przez klasę monitorowania. Po osiągnięciu lub przekroczeniu limitu czasu buforu dane użytkownika są wysyłane do bazy danych za pomocą parametru z wartościami przechowywanymi w tabeli.
 
-Następujące klasy NavHistoryData modeli szczegóły nawigacji użytkownika. Zawiera podstawowe informacje, takie jak identyfikator użytkownika, dostęp do adresu URL i czas dostępu.
+Poniższe klasy NavHistoryData modelują szczegóły nawigacji użytkownika. Zawiera podstawowe informacje, takie jak identyfikator użytkownika, dostęp do adresu URL i czas dostępu.
 
 ```csharp
 public class NavHistoryData
@@ -404,7 +403,7 @@ public class NavHistoryData
 }
 ```
 
-Klasa NavHistoryDataMonitor jest odpowiedzialny za buforowania danych nawigacji użytkownika w bazie danych. Zawiera on metodę RecordUserNavigationEntry, który odpowiada, tworząc **OnAdded** zdarzeń. Poniższy kod przedstawia logikę konstruktora, która używa Rx w celu utworzenia kolekcji zauważalne, na podstawie zdarzeń. Go następnie jest podłączone do tej kolekcji zauważalne przy użyciu metody buforu. Przeciążenie Określa, czy bufor powinny być przesyłane co 20 sekund lub 1000 wpisów.
+Klasa NavHistoryDataMonitor jest odpowiedzialna za buforowanie danych nawigacyjnych użytkownika w bazie danych. Zawiera metodę RecordUserNavigationEntry, która reaguje przez podnoszenie zdarzenia dodaniu. Poniższy kod przedstawia logikę konstruktora, która używa RX do tworzenia kolekcji zauważalnej na podstawie zdarzenia. Następnie subskrybuje tę kolekcję dostrzegalną za pomocą metody bufora. Przeciążenie określa, że bufor ma być wysyłany co 20 sekund lub 1000 wpisów.
 
 ```csharp
 public NavHistoryDataMonitor()
@@ -416,7 +415,7 @@ public NavHistoryDataMonitor()
 }
 ```
 
-Program obsługi konwertuje wszystkie buforowane elementy do typu z wartościami przechowywanymi w tabeli, a następnie przekazuje tego typu do procedury składowanej, która przetwarza zadania wsadowego. Poniższy kod pokazuje kompletną definicję zarówno NavHistoryDataEventArgs, jak i klasy NavHistoryDataMonitor.
+Program obsługi konwertuje wszystkie elementy buforowane na typ z wartościami przechowywanymi w tabeli, a następnie przekazuje ten typ do procedury składowanej, która przetwarza partię. Poniższy kod przedstawia pełną definicję klasy NavHistoryDataEventArgs i NavHistoryDataMonitor.
 
 ```csharp
 public class NavHistoryDataEventArgs : System.EventArgs
@@ -438,7 +437,7 @@ public class NavHistoryDataMonitor
     }
 ```
 
-Program obsługi konwertuje wszystkie buforowane elementy do typu z wartościami przechowywanymi w tabeli, a następnie przekazuje tego typu do procedury składowanej, która przetwarza zadania wsadowego. Poniższy kod pokazuje kompletną definicję zarówno NavHistoryDataEventArgs, jak i klasy NavHistoryDataMonitor.
+Program obsługi konwertuje wszystkie elementy buforowane na typ z wartościami przechowywanymi w tabeli, a następnie przekazuje ten typ do procedury składowanej, która przetwarza partię. Poniższy kod przedstawia pełną definicję klasy NavHistoryDataEventArgs i NavHistoryDataMonitor.
 
 ```csharp
     public class NavHistoryDataEventArgs : System.EventArgs
@@ -481,11 +480,11 @@ Program obsługi konwertuje wszystkie buforowane elementy do typu z wartościami
 }
 ```
 
-Aby użyć tej buforowanie klasy, aplikacja tworzy obiekt NavHistoryDataMonitor statyczne. Każdorazowo, użytkownik uzyskuje dostęp do strony, aplikacja wywołuje metodę NavHistoryDataMonitor.RecordUserNavigationEntry. Buforowanie logiki przechodzą do zajmie się wysłać te wpisy w bazie danych w partiach.
+Aby użyć tej klasy buforowania, aplikacja tworzy statyczny obiekt NavHistoryDataMonitor. Za każdym razem, gdy użytkownik uzyskuje dostęp do strony, aplikacja wywołuje metodę NavHistoryDataMonitor. RecordUserNavigationEntry. Logika buforowania pozwala zachować ostrożność wysyłania tych wpisów do bazy danych w partiach.
 
-### <a name="master-detail"></a>Wzorzec szczegół
+### <a name="master-detail"></a>Szczegóły wzorca
 
-Parametry z wartościami przechowywanymi w tabeli są przydatne w przypadku prostych scenariuszy INSERT. Jednak może być trudniejsze do wstawiania partii, obejmujące więcej niż jedną tabelą. Scenariusz "wzorzec/szczegół" jest dobrym przykładem. W głównej tabeli przedstawiono podstawowej jednostki. Co najmniej jedną tabelę szczegółów przechowywać więcej danych dotyczących jednostki. W tym scenariuszu relacje klucza obcego wymuszają relacji szczegóły, aby unikatowe jednostki głównej. Należy wziąć pod uwagę uproszczoną wersję Tabela PurchaseOrder i jego skojarzonej tabeli OrderDetail. Języka Transact-SQL tworzy tabelę PurchaseOrder z czterech kolumn: OrderID OrderDate, CustomerID i stanu.
+Parametry z wartościami przechowywanymi w tabeli są przydatne w przypadku prostych scenariuszy wstawiania. Jednak może być trudniejsze do wstawiania wsadowego obejmujących więcej niż jedną tabelę. Scenariusz "wzorzec/szczegóły" jest dobrym przykładem. Tabela główna identyfikuje jednostkę podstawową. Co najmniej jedna tabela szczegółów przechowuje więcej danych o jednostce. W tym scenariuszu relacje klucza obcego wymuszają związek szczegółów z unikatową jednostką główną. Rozważ uproszczoną wersję tabeli PurchaseOrder i skojarzonej z nią tabeli OrderDetail. Następujące Transact-SQL tworzy tabelę PurchaseOrder z czterema kolumnami: IDZamówienia, DataZamówienia, CustomerID i status.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrder](
@@ -497,7 +496,7 @@ CONSTRAINT [PrimaryKey_PurchaseOrder]
 PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 ```
 
-Każde zamówienie zawiera co najmniej jeden produkt. Te informacje są przechwytywane w tabeli PurchaseOrderDetail. Języka Transact-SQL tworzy tabelę PurchaseOrderDetail z pięciu kolumn: OrderID OrderDetailID, ProductID, UnitPrice i OrderQty.
+Każde zamówienie zawiera jeden lub więcej zakupów produktów. Te informacje są przechwytywane w tabeli PurchaseOrderDetail. Następujące Transact-SQL tworzy tabelę PurchaseOrderDetail z pięcioma kolumnami: IDZamówienia, OrderDetailID, ProductID, CenaJednostkowa i OrderQty.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrderDetail](
@@ -510,7 +509,7 @@ CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED
 ( [OrderID] ASC, [OrderDetailID] ASC ))
 ```
 
-Z tabeli PurchaseOrder OrderID kolumny w tabeli PurchaseOrderDetail musi odwoływać się zamówienia. Poniższą definicję klucza obcego wymusza to ograniczenie.
+Kolumna IDZamówienia w tabeli PurchaseOrderDetail musi odwoływać się do zamówienia z tabeli PurchaseOrder. Następująca definicja klucza obcego wymusza to ograniczenie.
 
 ```sql
 ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
@@ -518,7 +517,7 @@ CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
 REFERENCES [dbo].[PurchaseOrder] ([OrderID])
 ```
 
-Aby można było używać parametrów z wartościami przechowywanymi w tabeli, musi mieć jeden typ tabeli zdefiniowany przez użytkownika dla każdej tabeli docelowej.
+Aby można było używać parametrów z wartościami przechowywanymi w tabeli, dla każdej tabeli docelowej musi istnieć jeden typ tabeli zdefiniowanej przez użytkownika.
 
 ```sql
 CREATE TYPE PurchaseOrderTableType AS TABLE 
@@ -536,7 +535,7 @@ CREATE TYPE PurchaseOrderDetailTableType AS TABLE
 GO
 ```
 
-Następnie zdefiniuj procedury przechowywanej, która akceptuje tabele te typy. Ta procedura umożliwia aplikacji lokalnie partii zestaw zamówień i szczegóły zamówienia w jednym wywołaniu. Języka Transact-SQL zawiera deklarację kompletną procedurą składowaną, w tym przykładzie zamówienia zakupu.
+Następnie zdefiniuj procedurę składowaną, która akceptuje tabele tych typów. Ta procedura pozwala aplikacji na lokalną partię zestawu zamówień i szczegółów zamówienia w jednym wywołaniu. Poniższe instrukcje języka Transact-SQL udostępniają pełną deklarację procedury składowanej dla tego przykładowego zamówienia zakupu.
 
 ```sql
 CREATE PROCEDURE sp_InsertOrdersBatch (
@@ -581,9 +580,9 @@ JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
 GO
 ```
 
-W tym przykładzie zdefiniowane lokalnie @IdentityLink tabeli przechowuje rzeczywiste wartości OrderID z nowo wstawione wiersze. Te identyfikatory kolejności różnią się od wartości OrderID tymczasowe w @orders i @details parametry z wartościami przechowywanymi w tabeli. Z tego powodu @IdentityLink tabeli następnie łączy wartości OrderID z @orders parametr rzeczywiste wartości OrderID dla nowych wierszy w tabeli PurchaseOrder. Po wykonaniu tego kroku @IdentityLink mogą ułatwić tabeli, wstawianie szczegóły zamówienia z OrderID rzeczywista, która spełnia ograniczenie klucza obcego.
+W tym przykładzie w tabeli zdefiniowanej @IdentityLink lokalnie są przechowywane rzeczywiste wartości IDZamówienia z nowo wstawionych wierszy. Te identyfikatory kolejności różnią się od wartości tymczasowych IDZamówienia w parametrach @details i z @orders wartościami przechowywanymi w tabeli. Z @IdentityLink tego powodu tabela łączy wartości IDZamówienia @orders z parametru do rzeczywistych wartości IDZamówienia dla nowych wierszy w tabeli PurchaseOrder. Po wykonaniu tego kroku @IdentityLink tabela może ułatwić Wstawianie szczegółów zamówienia z rzeczywistym identyfikatorem IDZamówienia, który spełnia warunek ograniczenia klucza obcego.
 
-Tę procedurę składowaną można z poziomu kodu lub z innych wywołań języka Transact-SQL. Zobacz sekcję parametrów z wartościami przechowywanymi w tabeli w tym dokumencie dla przykładu kodu. Języka Transact-SQL przedstawiono sposób wywoływania sp_InsertOrdersBatch.
+Ta procedura składowana może być używana z kodu lub z innych wywołań Transact-SQL. Zobacz sekcję parametry z wartościami przechowywanymi w tabeli tego dokumentu dla przykładu kodu. W poniższym języku Transact-SQL pokazano, jak wywołać sp_InsertOrdersBatch.
 
 ```sql
 declare @orders as PurchaseOrderTableType
@@ -605,15 +604,15 @@ VALUES(1, 10, $11.50, 1),
 exec sp_InsertOrdersBatch @orders, @details
 ```
 
-Dzięki temu rozwiązaniu każdej partii do korzystania z zestawu wartości OrderID, które zaczynają się od 1. Te wartości tymczasowe OrderID opisywania relacji w zadaniu wsadowym, ale rzeczywiste wartości OrderID są określane w czasie operacji wstawiania. Można uruchomić te same instrukcje w poprzednim przykładzie wielokrotnie i wygenerować unikatowy zamówienia w bazie danych. Z tego powodu należy rozważyć dodanie więcej logikę kodu lub bazy danych, która zapobiega zduplikowane zamówienia, gdy za pomocą tego, przetwarzanie wsadowe techniki.
+To rozwiązanie umożliwia każdej partii użycie zestawu wartości IDZamówienia, które zaczynają się od 1. Te tymczasowe wartości IDZamówienia opisują relacje w partii, ale rzeczywiste wartości IDZamówienia są określane w czasie operacji wstawiania. W poprzednim przykładzie można wielokrotnie uruchomić te same instrukcje i generować unikatowe zamówienia w bazie danych. Z tego powodu rozważ dodanie większej liczby kodów lub logiki bazy danych, która uniemożliwia duplikowanie zamówień podczas korzystania z tej techniki wsadowej.
 
-W tym przykładzie pokazano, że można zebrać jeszcze bardziej złożonych operacji bazy danych, takie jak operacje wzorzec / szczegół za pomocą parametrów z wartościami przechowywanymi w tabeli.
+Ten przykład pokazuje, że nawet bardziej złożone operacje bazy danych, takie jak operacje wzorca i szczegóły, mogą być przetwarzane wsadowo za pomocą parametrów z wartościami przechowywanymi w tabeli.
 
 ### <a name="upsert"></a>UPSERT
 
-Inny scenariusz przetwarzania wsadowego obejmuje równocześnie aktualizuje istniejące wiersze i wstawianie nowych wierszy. Ta operacja jest czasami określane jako operację "UPSERT" (aktualizacja + insert). Zamiast oddzielnych wywołań do WSTAWIANIA i AKTUALIZOWANIA instrukcji MERGE najlepiej nadaje się dla tego zadania. Instrukcja MERGE można wykonywać zarówno wstawiania i aktualizowania operacji w pojedynczym wywołaniu.
+Inny scenariusz wsadowy obejmuje jednocześnie aktualizowanie istniejących wierszy i wstawianie nowych wierszy. Ta operacja jest czasami nazywana operacją "UPSERT" (Update + INSERT). Zamiast tworzenia oddzielnych wywołań do wstawiania i aktualizowania, instrukcja MERGE najlepiej nadaje się do tego zadania. Instrukcja MERGE umożliwia wykonywanie operacji INSERT i Update w pojedynczym wywołaniu.
 
-Parametry z wartościami przechowywanymi w tabeli można za pomocą instrukcji MERGE wykonywania aktualizacji i operacje wstawiania. Na przykład rozważmy tabelę pracowników uproszczoną, która zawiera następujące kolumny: EmployeeID FirstName, LastName, SocialSecurityNumber:
+Parametrów z wartościami przechowywanymi w tabeli można używać w połączeniu z instrukcją MERGE do wykonywania aktualizacji i wstawiania. Rozważmy na przykład uproszczoną tabelę pracowników, która zawiera następujące kolumny: IDPracownika, FirstName, LastName, SocialSecurityNumber:
 
 ```sql
 CREATE TABLE [dbo].[Employee](
@@ -625,7 +624,7 @@ CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED
 ([EmployeeID] ASC ))
 ```
 
-W tym przykładzie można użyć fakt, że SocialSecurityNumber jest unikatowy do scalania wielu pracowników. Najpierw utwórz typ tabeli zdefiniowany przez użytkownika:
+W tym przykładzie można użyć faktu, że SocialSecurityNumber jest unikatowy, aby wykonać SCALAnie wielu pracowników. Najpierw Utwórz typ tabeli zdefiniowanej przez użytkownika:
 
 ```sql
 CREATE TYPE EmployeeTableType AS TABLE 
@@ -636,7 +635,7 @@ CREATE TYPE EmployeeTableType AS TABLE
 GO
 ```
 
-Następnie utwórz procedurę składowaną lub napisać kod, który używa instrukcji MERGE, aby wykonać aktualizację i wstawiania. W poniższym przykładzie użyto instrukcji MERGE dla parametru z wartościami przechowywanymi w tabeli @employees, typu EmployeeTableType. Zawartość @employees tabeli nie są wyświetlane w tym miejscu.
+Następnie Utwórz procedurę składowaną lub napisz kod, który używa instrukcji MERGE do wykonania aktualizacji i wstawienia. W poniższym przykładzie używa się instrukcji Merge dla parametru @employeesz wartościami przechowywanymi w tabeli, typu EmployeeTableType. Zawartość @employees tabeli nie jest wyświetlana w tym miejscu.
 
 ```sql
 MERGE Employee AS target
@@ -652,30 +651,30 @@ WHEN NOT MATCHED THEN
     VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
 ```
 
-Aby uzyskać więcej informacji zobacz dokumentację i przykłady dla instrukcji MERGE. Mimo że można było wykonać to w przechowywane wielu kroku wywołanie procedury przy użyciu oddzielnych INSERT i operacje aktualizacji, instrukcji MERGE jest bardziej wydajne. Kod bazy danych można także skonstruować wywołań języka Transact-SQL, które używają instrukcji MERGE bezpośrednio, bez konieczności dwa wywołania bazy danych dla INSERT i UPDATE.
+Aby uzyskać więcej informacji, zapoznaj się z dokumentacją i przykładami instrukcji MERGE. Mimo że te same działania można wykonać w wywołaniu procedury składowanej z wieloma krokami z oddzielnymi operacjami INSERT i UPDATE, instrukcja MERGE jest bardziej wydajna. Kod bazy danych może również tworzyć wywołania Transact-SQL, które używają instrukcji MERGE bezpośrednio, bez konieczności wykonywania operacji INSERT i UPDATE przez dwa wywołania bazy danych.
 
-## <a name="recommendation-summary"></a>Zalecenie podsumowania
+## <a name="recommendation-summary"></a>Podsumowanie rekomendacji
 
-Poniższa lista zawiera podsumowanie zaleceń przetwarzania wsadowego omówionych w tym artykule:
+Poniższa lista zawiera podsumowanie zaleceń dotyczących przetwarzania wsadowego omówionych w tym artykule:
 
-* Użyj buforowania i dzielenia na partie, aby zwiększyć wydajność i skalowalność aplikacji usługi SQL Database.
-* Dowiedz się, kompromis między dzielenia na partie/buforowanie i zwiększa odporność. Podczas awarii roli ryzyko utraty partii nieprzetworzone dane krytyczne dla prowadzonej działalności może przeważyć korzyści w zakresie wydajności dla przetwarzania wsadowego.
-* Należy próbować zachować wszystkie wywołania do bazy danych w jednym centrum danych, aby zmniejszyć opóźnienie.
-* Jeśli wybierzesz pojedyncza technika przetwarzania wsadowego, parametry z wartościami przechowywanymi w tabeli oferują najlepszą wydajność i elastyczność.
-* Aby zapewnić lepszą wydajność insert przestrzegać następujących wytycznych ogólne, ale Testuj danego scenariusza:
-  * < 100 wierszy należy użyć pojedynczego polecenia INSERT sparametryzowanych.
-  * W przypadku < 1000 wierszy użyj parametrów z wartościami przechowywanymi w tabeli.
-  * Aby uzyskać > = 1000 wierszy, użyj SqlBulkCopy.
-* Do aktualizacji i Usuń operacje, parametry z wartościami przechowywanymi w tabeli za pomocą logiki procedurę składowaną, która określa poprawne działanie dla każdego wiersza w tabeli parametru.
-* Informacje dotyczące rozmiaru partii:
-  * Użyj największych rozmiarów usługi batch, które mają sens dla aplikacji i wymagań biznesowych.
-  * Saldo przyrost wydajności dużych partii z ryzykiem tymczasowy lub poważnej awarii. Co to jest skutkiem próby lub utraty danych w partii? 
-  * Przetestuj największy rozmiar partii, aby sprawdzić, czy baza danych SQL nie go odrzucić.
-  * Utwórz ustawienia konfiguracji tej partii kontrolki, takie jak rozmiar partii lub buforowania w danym przedziale czasu. Te ustawienia zapewniają elastyczność. Można zmienić zachowanie łączenia we wsady w środowisku produkcyjnym, bez konieczności ponownego wdrażania usługi w chmurze.
-* Należy unikać równoległe wykonywanie partii zadań, które działają na pojedynczej tabeli w jednej bazie danych. Jeśli chcesz podzielić pojedyncza partia przez wiele wątków roboczych, należy uruchomić testy w celu ustalenia idealna liczba wątków. Po nieokreślona wartość progową wątków będzie obniżyć wydajność, a nie powinna ona być.
-* Należy wziąć pod uwagę buforowanie na rozmiar i godziny jako sposób implementowania dzielenia na partie dla dalszych scenariuszach.
+* Korzystaj z buforowania i tworzenia pakietów wsadowych, aby zwiększyć wydajność i skalowalność aplikacji SQL Database.
+* Poznaj kompromisy między przetwarzaniem wsadowym a buforowaniem i odpornością. W trakcie awarii roli ryzyko utraty nieprzetworzonej partii danych o kluczowym znaczeniu dla firmy może być korzystne dla wydajności przetwarzania wsadowego.
+* Staraj się zachować wszystkie wywołania bazy danych w ramach jednego centrum, aby zmniejszyć opóźnienie.
+* W przypadku wybrania pojedynczej techniki wsadowej parametry z wartościami przechowywanymi w tabeli zapewniają najlepszą wydajność i elastyczność.
+* Aby uzyskać najszybszą wydajność wstawiania, postępuj zgodnie z poniższymi ogólnymi wskazówkami, ale Przetestuj swój scenariusz:
+  * W przypadku wierszy < 100 Użyj jednego sparametryzowanego polecenia INSERT.
+  * W przypadku wierszy < 1000 Użyj parametrów z wartościami przechowywanymi w tabeli.
+  * W przypadku > = 1000 wierszy Użyj SqlBulkCopy.
+* W przypadku operacji aktualizowania i usuwania Użyj parametrów z wartościami przechowywanymi w tabeli z logiką procedury składowanej, która określa poprawność operacji dla każdego wiersza w parametrze tabeli.
+* Wytyczne dotyczące rozmiaru partii:
+  * Używaj największych rozmiarów partii, które mają sens dla aplikacji i wymagań firmy.
+  * Równoważyć wzrost wydajności dużych partii z ryzykiem wystąpienia błędów tymczasowych lub katastrofalnych. Jaka jest konsekwencja ponownych prób lub utraty danych w partii? 
+  * Przetestuj największy rozmiar partii, aby sprawdzić, czy SQL Database nie odrzuci go.
+  * Utwórz ustawienia konfiguracji kontrolujące przetwarzanie wsadowe, takie jak rozmiar partii lub przedział czasu buforowania. Te ustawienia zapewniają elastyczność. Można zmienić działanie przetwarzania wsadowego w środowisku produkcyjnym bez ponownego wdrażania usługi w chmurze.
+* Unikaj równoległego wykonywania partii, które działają w pojedynczej tabeli w jednej bazie danych. W przypadku wybrania opcji dzielenia pojedynczej partii między wiele wątków roboczych należy uruchomić testy w celu określenia idealnej liczby wątków. Po nieokreślonym progu większa liczba wątków zmniejszy wydajność, a nie zwiększy go.
+* Należy rozważyć buforowanie według rozmiaru i godziny w celu zaimplementowania przetwarzania wsadowego w celu uzyskania większej liczby scenariuszy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ten artykuł koncentruje się na sposób projektowania baz danych i kodowanie technik związanych z dzielenia na partie może zwiększyć swoje wydajność i skalowalność aplikacji. Ale to tylko jeden składnik w ogólnej strategii. Aby uzyskać więcej sposobów na zwiększenie wydajności i skalowalności, zobacz [wskazówki dotyczące wydajności usługi Azure SQL Database dla pojedynczych baz danych](sql-database-performance-guidance.md) i [zagadnienia dotyczące cen i wydajności dla puli elastycznej](sql-database-elastic-pool-guidance.md).
+Ten artykuł koncentruje się na tym, jak techniki projektowania i kodowania bazy danych związane z przetwarzaniem wsadowym mogą poprawić wydajność i skalowalność aplikacji. Jest to tylko jeden czynnik w ogólnej strategii. Aby uzyskać więcej informacji na temat zwiększania wydajności i skalowalności, zobacz [Azure SQL Database wskazówki dotyczące wydajności dla pojedynczych baz danych](sql-database-performance-guidance.md) oraz zagadnienia dotyczące [cen i wydajności dla puli elastycznej](sql-database-elastic-pool-guidance.md).
 

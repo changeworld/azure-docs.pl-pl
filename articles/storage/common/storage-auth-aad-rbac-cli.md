@@ -1,46 +1,46 @@
 ---
-title: Używanie wiersza polecenia platformy Azure do zarządzania usługi Azure AD praw dostępu do danych obiektów blob i kolejek przy użyciu RBAC — usługi Azure Storage
-description: Przypisz dostęp do kontenerów i kolejki przy użyciu kontroli dostępu opartej na rolach (RBAC) za pomocą wiersza polecenia platformy Azure. Usługa Azure Storage obsługuje niestandardowe i wbudowane role RBAC do uwierzytelniania za pomocą usługi Azure AD.
+title: Korzystanie z interfejsu wiersza polecenia platformy Azure do zarządzania prawami dostępu usługi Azure AD do danych obiektów blob i kolejek z użyciem usługi RBAC
+description: Użyj interfejsu wiersza polecenia platformy Azure, aby przypisać dostęp do kontenerów i kolejek z kontrolą dostępu opartą na rolach (RBAC). Usługa Azure Storage obsługuje wbudowane i niestandardowe role RBAC do uwierzytelniania za pośrednictwem usługi Azure AD.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 07/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 1e29b8e23927ef2ff70416d1adc76e2b2b3f2d8a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8219e795bb9ab4fc0d479b71e6a93fe6300037d0
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443714"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514914"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Udzielanie dostępu do danych platformy Azure obiektów blob i kolejek przy użyciu RBAC przy użyciu wiersza polecenia platformy Azure
+# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki RBAC przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Azure Active Directory (Azure AD) autoryzuje praw dostępu do zabezpieczonych zasobów przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md). Usługa Azure Storage definiuje zestaw wbudowane role kontroli RBAC, które obejmują typowe zestawy uprawnień, które umożliwiają dostęp do danych obiektów blob i kolejki.
+Azure Active Directory (Azure AD) autoryzuje prawa dostępu do zabezpieczonych zasobów za pośrednictwem [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md). Usługa Azure Storage definiuje zestaw wbudowanych ról RBAC, które obejmują typowe zestawy uprawnień używane do uzyskiwania dostępu do danych obiektu BLOB lub kolejki.
 
-Gdy rola RBAC jest przypisywana do podmiotu zabezpieczeń usługi Azure AD, Azure przyznaje dostęp do tych zasobów dla tego podmiotu zabezpieczeń. Może należeć do poziomu subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki zakresu dostępu. Podmiot zabezpieczeń usługi Azure AD może być użytkownikiem, grupą, nazwy głównej usługi aplikacji lub [tożsamości zarządzanej dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+Gdy rola RBAC jest przypisana do podmiotu zabezpieczeń usługi Azure AD, platforma Azure przyznaje dostęp do tych zasobów dla tego podmiotu zabezpieczeń. Dostęp można ograniczyć do poziomu subskrypcji, grupy zasobów, konta magazynu lub pojedynczego kontenera lub kolejki. Podmiot zabezpieczeń usługi Azure AD może być użytkownikiem, grupą, główną usługą aplikacji lub zarządzaną tożsamością [dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-W tym artykule opisano jak listy wbudowane role kontroli RBAC i przypisać je do użytkowników za pomocą wiersza polecenia platformy Azure. Aby uzyskać więcej informacji o korzystaniu z wiersza polecenia platformy Azure, zobacz [interfejsu wiersza polecenia platformy Azure (CLI)](https://docs.microsoft.com/cli/azure).
+W tym artykule opisano, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć listę wbudowanych ról RBAC i przypisać je do użytkowników. Aby uzyskać więcej informacji o korzystaniu z interfejsu wiersza polecenia platformy Azure, zobacz [Azure Command Line Interface (CLI)](https://docs.microsoft.com/cli/azure).
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>Role RBAC dla kolejek i obiektów blob
+## <a name="rbac-roles-for-blobs-and-queues"></a>Role RBAC dla obiektów blob i kolejek
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Określenie zakresu zasobów 
+## <a name="determine-resource-scope"></a>Określ zakres zasobów 
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="list-available-rbac-roles"></a>Listę dostępnych ról RBAC
+## <a name="list-available-rbac-roles"></a>Wyświetl dostępne role RBAC
 
-Aby wyświetlić listę dostępnych wbudowane role kontroli RBAC przy użyciu wiersza polecenia platformy Azure, użyj [Lista definicji roli az](/cli/azure/role/definition#az-role-definition-list) polecenia:
+Aby wyświetlić listę dostępnych wbudowanych ról RBAC przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenie [AZ role Definition list](/cli/azure/role/definition#az-role-definition-list) :
 
 ```azurecli-interactive
 az role definition list --out table
 ```
 
-Zostanie wyświetlony na liście, wraz z innych wbudowanych ról na platformie Azure wbudowane role danych usługi Azure Storage:
+Zostaną wyświetlone wbudowane role danych usługi Azure Storage wraz z innymi wbudowanymi rolami platformy Azure:
 
 ```Example
 Storage Blob Data Contributor             Allows for read, write and delete access to Azure Storage blob containers and data
@@ -52,19 +52,19 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-security-principal"></a>Przypisz rolę RBAC do podmiotu zabezpieczeń
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>Przypisywanie roli RBAC do podmiotu zabezpieczeń
 
-Aby przypisać rolę RBAC do podmiotu zabezpieczeń, należy użyć [utworzenia przypisania roli az](/cli/azure/role/assignment#az-role-assignment-create) polecenia. Format polecenia mogą się różnić w zależności od zakresu przypisania. W poniższych przykładach pokazano, jak przypisać rolę użytkownikowi w różnych zakresach, ale można użyć tego samego polecenia, można przypisać roli do podmiotu zabezpieczeń.
+Aby przypisać rolę RBAC do podmiotu zabezpieczeń, użyj polecenia [AZ role Assign Create](/cli/azure/role/assignment#az-role-assignment-create) . Format polecenia może różnić się w zależności od zakresu przypisania. W poniższych przykładach pokazano, jak przypisać rolę do użytkownika w różnych zakresach, ale można użyć tego samego polecenia, aby przypisać rolę do dowolnego podmiotu zabezpieczeń.
 
 ### <a name="container-scope"></a>Zakres kontenera
 
-Aby przypisać rolę ograniczone do kontenera, należy określić ciąg zawierający zakres kontener dla `--scope` parametru. Zakres dla kontenera ma postać:
+Aby przypisać rolę do zakresu kontenera, Określ ciąg zawierający zakres kontenera dla `--scope` parametru. Zakres dla kontenera ma postać:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-Poniższy przykład przypisuje **Współautor danych obiektu Blob magazynu** roli do użytkownika o określonym zakresie do kontenera o nazwie *przykładowy kontener*. Koniecznie Zastąp przykładowe wartości i wartości zastępcze w nawiasach własnymi wartościami: 
+Poniższy przykład przypisuje rolę **współautor danych obiektów blob magazynu** użytkownikowi w zakresie kontenera o nazwie *Sample-Container*. Pamiętaj o zamianie wartości przykładowych i symboli zastępczych w nawiasach z własnymi wartościami: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -75,13 +75,13 @@ az role assignment create \
 
 ### <a name="queue-scope"></a>Zakres kolejki
 
-Aby przypisać rolę ograniczone do kolejki, należy określić ciąg zawierający zakres kolejki `--scope` parametru. Zakres dla kolejki ma postać:
+Aby przypisać rolę do zakresu kolejki, Określ ciąg zawierający zakres kolejki dla `--scope` parametru. Zakres dla kolejki ma postać:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-Poniższy przykład przypisuje **Współautor danych kolejki magazynu** roli do użytkownika o określonym zakresie do kolejki o nazwie *kolejki przykładowe*. Koniecznie Zastąp przykładowe wartości i wartości zastępcze w nawiasach własnymi wartościami: 
+Poniższy przykład przypisuje rolę **współautor danych kolejki magazynu** użytkownikowi z zakresu kolejki o nazwie *przykład-Queue*. Pamiętaj o zamianie wartości przykładowych i symboli zastępczych w nawiasach z własnymi wartościami: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -92,13 +92,13 @@ az role assignment create \
 
 ### <a name="storage-account-scope"></a>Zakres konta magazynu
 
-Aby przypisać rolę ograniczone do konta magazynu, należy określić zakres zasób konta magazynu dla `--scope` parametru. Zakres dla konta magazynu ma postać:
+Aby przypisać rolę do zakresu konta magazynu, określ zakres zasobów konta magazynu dla `--scope` parametru. Zakres dla konta magazynu ma postać:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-Poniższy przykład pokazuje, jak przypisać **czytnik danych obiektu Blob magazynu** roli do użytkownika na poziomie konta magazynu. Koniecznie Zastąp przykładowe wartości wybranymi samodzielnie wartościami: 
+Poniższy przykład pokazuje, jak przypisać rolę **czytnika danych obiektu blob magazynu** do użytkownika na poziomie konta magazynu. Pamiętaj, aby zastąpić przykładowe wartości własnymi wartościami: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -109,7 +109,7 @@ az role assignment create \
 
 ### <a name="resource-group-scope"></a>Zakres grupy zasobów
 
-Aby przypisać rolę do zakresu grupy zasobów, określ nazwę grupy zasobów lub identyfikator `--resource-group` parametru. Poniższy przykład przypisuje **czytnik danych kolejki magazynu** roli do użytkownika na poziomie grupy zasobów. Koniecznie Zastąp przykładowe wartości i wartości zastępcze w nawiasach własnymi wartościami: 
+Aby przypisać rolę objętą zakresem do grupy zasobów, określ nazwę lub identyfikator grupy zasobów dla `--resource-group` parametru. Poniższy przykład przypisuje rolę **czytnika danych kolejki magazynu** użytkownikowi na poziomie grupy zasobów. Pamiętaj, aby zastąpić przykładowe wartości i wartości symboli zastępczych w nawiasach własnymi wartościami: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -120,13 +120,13 @@ az role assignment create \
 
 ### <a name="subscription-scope"></a>Zakres subskrypcji
 
-Aby przypisać rolę do subskrypcji zakresu, określić zakres dla subskrypcji `--scope` parametru. Zakres subskrypcji ma postać:
+Aby przypisać rolę objętą zakresem subskrypcji, określ zakres subskrypcji dla `--scope` parametru. Zakres subskrypcji ma postać:
 
 ```
 /subscriptions/<subscription>
 ```
 
-Poniższy przykład pokazuje, jak przypisać **czytnik danych obiektu Blob magazynu** roli do użytkownika na poziomie konta magazynu. Koniecznie Zastąp przykładowe wartości wybranymi samodzielnie wartościami: 
+Poniższy przykład pokazuje, jak przypisać rolę **czytnika danych obiektu blob magazynu** do użytkownika na poziomie konta magazynu. Pamiętaj, aby zastąpić przykładowe wartości własnymi wartościami: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -135,8 +135,8 @@ az role assignment create \
     --scope "/subscriptions/<subscription-id>"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-- [Udzielanie dostępu do danych platformy Azure obiektów blob i kolejek przy użyciu RBAC przy użyciu programu Azure PowerShell](storage-auth-aad-rbac-powershell.md)
-- [Udzielanie dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](storage-auth-aad-rbac-portal.md)
+- [Udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki RBAC przy użyciu Azure PowerShell](storage-auth-aad-rbac-powershell.md)
+- [Udzielanie dostępu do danych w obiektach blob i kolejkach na platformie Azure za pomocą kontroli dostępu opartej na rolach w witrynie Azure Portal](storage-auth-aad-rbac-portal.md)

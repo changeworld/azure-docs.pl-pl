@@ -2,23 +2,23 @@
 title: Edytowanie informacji o grupie — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Instrukcje dotyczące edytowania informacji danej grupie za pomocą usługi Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 691f705574050b15869a0ac8b7d128507e5aae10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248820"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561876"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Edytowanie informacji o grupie za pomocą usługi Azure Active Directory
 
@@ -39,7 +39,7 @@ Za pomocą usługi Azure Active Directory (Azure AD), można edytować grupę us
 
 4. Wybierz grupę **zasady zarządzania urządzeniami Przenośnymi — zachód**, a następnie wybierz pozycję **właściwości** z **Zarządzaj** obszaru.
 
-    ![Strona omówienie grupy, z opcją elementu członkowskiego i informacji z wyróżnioną pozycją](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+    ![Strona przeglądu grupy z wyróżnioną opcją elementu członkowskiego i informacjami](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
 5. Aktualizacja **ustawienia ogólne** informacje zgodnie z potrzebami, w tym:
 
@@ -51,7 +51,7 @@ Za pomocą usługi Azure Active Directory (Azure AD), można edytować grupę us
 
     - **Typ grupy.** Typ grupy nie można zmienić po jej utworzeniu. Aby zmienić **typ grupy**, należy usunąć grupę i Utwórz nową.
     
-    - **Typ członkostwa.** Zmień typ członkostwa. Aby uzyskać więcej informacji na temat różnych typów dostępne członkostwa, zobacz [jak: Utworzenie podstawowej grupy i dodawać członków przy użyciu portalu Azure Active Directory](active-directory-groups-create-azure-portal.md).
+    - **Typ członkostwa.** Zmień typ członkostwa. Aby uzyskać więcej informacji na temat różnych dostępnych typów członkostwa, [zobacz How to: Utwórz grupę podstawową i Dodaj członków przy użyciu portalu](active-directory-groups-create-azure-portal.md)Azure Active Directory.
     
     - **Identyfikator obiektu.** Nie można zmienić Identyfikatora obiektu, ale możesz skopiować go do użycia w poleceniach programu PowerShell dla grupy. Aby uzyskać więcej informacji o używaniu poleceń cmdlet programu PowerShell, zobacz [poleceń cmdlet usługi Azure Active Directory, do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-v2-cmdlets.md).
 

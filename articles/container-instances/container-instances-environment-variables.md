@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 9cd62c378270da31079a38f89b040985105a4218
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326032"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Ustawianie zmiennych środowiskowych w wystąpieniach kontenerów
@@ -33,7 +33,7 @@ Jeśli musisz przekazać klucze tajne jako zmienne środowiskowe, Azure Containe
 
 ## <a name="azure-cli-example"></a>Przykład interfejsu wiersza polecenia platformy Azure
 
-Aby wyświetlić domyślne dane wyjściowe polecenia [ACI-WORDCOUNT][aci-wordcount] container, run it first with this [az container create][az-container-create] (nie określono zmiennych środowiskowych):
+Aby wyświetlić domyślne dane wyjściowe kontenera [ACI-WORDCOUNT][aci-wordcount] , uruchom je najpierw za pomocą polecenia [AZ Container Create][az-container-create] (nie określono zmiennych środowiskowych):
 
 ```azurecli-interactive
 az container create \
@@ -54,7 +54,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-Gdy stan obu kontenerów jest wyświetlany jako *zakończony* (Użyj polecenia [AZ Container show][az-container-show] to check state), display their logs with [az container logs][az-container-logs] , aby wyświetlić dane wyjściowe.
+Gdy stan obu kontenerów jest wyświetlany jako *zakończony* (Użyj polecenia [AZ Container show][az-container-show] by Check State), Wyświetl jego dzienniki za pomocą polecenia [AZ Container Logs][az-container-logs] , aby wyświetlić dane wyjściowe.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -88,7 +88,7 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 Ustawianie zmiennych środowiskowych w programie PowerShell jest podobne do interfejsu wiersza polecenia, `-EnvironmentVariable` ale przy użyciu argumentu wiersz poleceń.
 
-Najpierw uruchom polecenie [ACI-WORDCOUNT][aci-wordcount] container in its default configuration with this [New-AzContainerGroup][new-Azcontainergroup] :
+Najpierw uruchom kontener [ACI-WORDCOUNT][aci-wordcount] w konfiguracji domyślnej przy użyciu tego nowego polecenia [-AzContainerGroup][new-Azcontainergroup] :
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
@@ -239,7 +239,7 @@ root@caas-ef3ee231482549629ac8a40c0d3807fd-3881559887-5374l:/# echo $SECRET
 my-secret-value
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Scenariusze oparte na zadaniach, takie jak przetwarzanie wsadowe dużego zestawu danych z kilkoma kontenerami, mogą korzystać ze niestandardowych zmiennych środowiskowych w czasie wykonywania. Aby uzyskać więcej informacji na temat uruchamiania kontenerów opartych na zadaniach, zobacz [Uruchamianie zadań kontenera z zasadami ponownego uruchamiania](container-instances-restart-policy.md).
 

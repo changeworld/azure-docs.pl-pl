@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b6b4cd38ce5f591d43f27f735a48993cc1a1ab63
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 27f0ebab1fd87eb1870c5a8be21c4f80be4132f1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414454"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698585"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizowanie demona zabezpieczeń usługi IoT Edge i środowiska uruchomieniowego
 
@@ -24,14 +24,6 @@ Ponieważ usługa IoT Edge zwalnia nowe wersje, należy zaktualizować urządzen
 Dwa składniki urządzenia usługi IoT Edge należy zaktualizować, jeśli chcesz przejść do nowszej wersji. Pierwszy to demon zabezpieczeń, który działa na urządzeniu i uruchamia moduły środowiska uruchomieniowego, gdy urządzenie zostanie uruchomione. Obecnie usługa demona zabezpieczeń można aktualizować tylko z samego urządzenia. Drugi składnik to środowisko uruchomieniowe składające się z centrów IoT Edge i IoT Edge agentów. W zależności od strukturą wdrożenia środowisko uruchomieniowe może zostać zaktualizowana z urządzenia lub zdalnie. 
 
 Aby uzyskać najnowszą wersję usługi Azure IoT Edge, zobacz [wersje usługi Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
-
->[!IMPORTANT]
->Jeśli używasz Azure IoT Edge na urządzeniu z systemem Windows, nie uaktualniaj do wersji 1.0.5, jeśli jedna z poniższych ma zastosowanie do urządzenia: 
->* Nie uaktualniono urządzenia do kompilacji systemu Windows 17763. IoT Edge wersja 1.0.5 nie obsługuje kompilacji systemu Windows w wersji starszej niż 17763.
->* Uruchamiasz moduły Java lub Node. js na urządzeniu z systemem Windows. Pomiń wersję 1.0.5, nawet jeśli zaktualizowano urządzenie z systemem Windows do najnowszej kompilacji. 
->
->Aby uzyskać więcej informacji na temat IoT Edge wersji 1.0.5, zobacz [1.0.5 informacje o wersji](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Aby uzyskać więcej informacji na temat zapobiegania aktualizacji narzędzi programistycznych do najnowszej wersji, zobacz [blog dla deweloperów IoT](https://devblogs.microsoft.com/iotdev/).
-
 
 ## <a name="update-the-security-daemon"></a>Aktualizacja demona zabezpieczeń
 
@@ -134,7 +126,7 @@ W ramach wersji zapoznawczych wersje Release Candidate nie są uwzględniane w n
 * [Linux](how-to-install-iot-edge-linux.md#install-a-specific-runtime-version)
 * [Windows](how-to-install-iot-edge-windows.md#offline-installation)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wyświetl najnowsze [wersje usługi Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 

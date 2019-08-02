@@ -1,6 +1,6 @@
 ---
-title: Wykonywanie zapytań o dane ze środowiska Azure czas Series Insights w wersji zapoznawczej za pomocą C# kodu | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak wykonywać zapytania o dane ze środowiska usługi Azure Time Series Insights, tworząc niestandardową aplikację w języku C# (C sharp) platformy .NET.
+title: Wykonywanie zapytań dotyczących danych ze środowiska Azure Time Series Insights w C# wersji zapoznawczej przy użyciu kodu | Microsoft Docs
+description: W tym artykule opisano sposób wykonywania zapytań dotyczących danych ze środowiska Azure Time Series Insights przez kodowanie niestandardowej aplikacji zapisaną w C# języku .NET (C-Sharp).
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -12,36 +12,36 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc5f35aedd52e206433afb0f556bc1cde8296232
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fdfd39527ccd298b78ef2c4c895d1f667d8d33b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237474"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677613"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Wykonywanie zapytań dotyczących danych z przy użyciu środowiska Azure czas Series Insights w wersji zapoznawczejC#
+# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Wykonywanie zapytań dotyczących danych ze środowiska Azure Time Series Insights w wersji zapoznawczej przy użyciuC#
 
-To C# przykład pokazuje, jak wykonywać zapytania o dane ze środowiska Azure czas Series Insights w wersji zapoznawczej.
+W C# tym przykładzie pokazano, jak wykonywać zapytania dotyczące danych ze środowiska Azure Time Series Insights wersja zapoznawcza.
 
 Przykładowy kod zawiera kilka podstawowych przykładów użycia interfejsu API zapytań:
 
-1. Jako krok przygotowywania należy uzyskać token dostępu za pośrednictwem interfejsu API usługi Azure Active Directory. Przekazać ten token w `Authorization` nagłówku każdego żądania interfejsu API zapytań. Do konfigurowania nieinterakcyjnych aplikacji, zobacz [uwierzytelnianie i autoryzacja](time-series-insights-authentication-and-authorization.md). Ponadto upewnij się, że wszystkie stałe, które są zdefiniowane na początku próbki są poprawnie ustawione.
-1. Uzyskiwana jest lista środowisk, w których użytkownik ma dostęp. Jedno z tych środowisk zostaje pobrana jako odpowiedniego środowiska, a dodatkowo danych jest wysyłane zapytanie dla tego środowiska.
+1. Jako krok przygotowania Uzyskaj token dostępu za pomocą interfejsu API Azure Active Directory. Przekaż ten token w `Authorization` nagłówku każdego żądania interfejsu API zapytania. Aby skonfigurować aplikacje nieinteraktywne, zobacz [uwierzytelnianie i autoryzacja](time-series-insights-authentication-and-authorization.md). Upewnij się również, że wszystkie stałe zdefiniowane na początku próbki są prawidłowo ustawione.
+1. Zostanie uzyskana lista środowisk, do których użytkownik ma dostęp. Jedno z tych środowisk jest wybierane jako interesujące środowisko i dla tego środowiska są badane dalsze dane.
 1. Przykładem żądania HTTPS może być żądanie danych dostępności dla odpowiedniego środowiska.
 1. Przykładem żądania gniazda sieci Web może być żądanie danych agregowania zdarzeń dla odpowiedniego środowiska. Żądanie danych obejmuje cały zakres czasu dostępności.
 
 > [!NOTE]
-> Ten przykładowy kod jest również dostępna w [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample).
+> Ten przykładowy kod jest również dostępny pod [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)adresem.
 
-## <a name="c-example"></a>Przykład w języku C#
+## <a name="c-example"></a>C#przyklad
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-preview-sample/DataPlaneClientSampleApp/Program.cs)]
 
 > [!NOTE]
-> Powyższym przykładowym kodzie można uruchomić bez zmiany ich wartości domyślne środowisko.
+> Przykładowy kod można uruchomić bez zmiany domyślnych wartości środowiskowych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat wykonywania zapytań, przeczytaj [dokumentację interfejsu API zapytań](/rest/api/time-series-insights/preview-query).
+- Aby dowiedzieć się więcej o wysyłaniu zapytań, Przeczytaj [Informacje o interfejsie API zapytań](https://docs.microsoft.com/rest/api/time-series-insights/preview-query).
 
-- Przeczytaj, jak do [łączenie aplikacji jednostronicowej JavaScript](tutorial-create-tsi-sample-spa.md) do usługi Time Series Insights.
+- Przeczytaj, jak [połączyć aplikację jednostronicową JavaScript](tutorial-create-tsi-sample-spa.md) z Time Series Insights.

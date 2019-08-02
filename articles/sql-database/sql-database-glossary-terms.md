@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure SQL Database słownik terminów związanych z | Dokumentacja firmy Microsoft
-description: Usługa Azure SQL Database słownik pojęć
+title: Azure SQL Database słownik terminów | Microsoft Docs
+description: Azure SQL Database słownik terminów
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,46 +10,45 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: 057c764a46508804bee6aa8f9912fdedc69e811f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d940cfa91890d26a48b682a6eb09410b3b7de045
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762697"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568073"
 ---
-# <a name="azure-sql-database-glossary-of-terms"></a>Usługa Azure SQL Database słownik pojęć
+# <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database słownik terminów
 
 |Kontekst|Termin|Więcej informacji|
 |:---|:---|:---|
-|Nazwa usługi platformy Azure|Usługa Azure SQL Database lub SQL Database|[Usługa Azure SQL Database](sql-database-technical-overview.md)|
-|Warstwa wystąpień obliczeniowych|Aplikacje niewymagające użycia serwera (wersja zapoznawcza)|[Warstwa wystąpień obliczeniowych bez użycia serwera](sql-database-serverless.md)
-||Zaaprowizowane|[Warstwa wystąpień obliczeniowych bez użycia serwera](sql-database-serverless.md)
+|Nazwa usługi platformy Azure|Azure SQL Database lub SQL Database|[Usługa Azure SQL Database](sql-database-technical-overview.md)|
+|Warstwa obliczeniowa|Bezserwerowe (wersja zapoznawcza)|[Warstwa obliczeń bezserwerowych](sql-database-serverless.md)
+||Przeprowadzono aprowizację|[Warstwa obliczeń bezserwerowych](sql-database-serverless.md)
 |Opcje wdrożenia |Pojedyncza baza danych|[Pojedyncze bazy danych](sql-database-single-database.md)|
 ||Pula elastyczna|[Elastyczna pula](sql-database-elastic-pool.md)|
 ||Wystąpienie zarządzane|[Wystąpienie zarządzane](sql-database-managed-instance.md)|
-|Obiekty serwera|Bazy danych programu SQL server lub serwer bazy danych|[Serwer bazy danych](sql-database-servers.md)|
-||Serwer wystąpienia zarządzanego usługi SQL Database, wystąpienia zarządzanego serwera lub wystąpienia serwera|[Wystąpienie zarządzane](sql-database-managed-instance.md)|
-Obiekty bazy danych|Baza danych Azure SQL Database|Wszystkie bazy danych w usłudze Azure SQL Database|
-||Pojedyncza baza danych|Z bazy danych utworzonej przy użyciu opcji wdrożenia pojedynczej bazy danych|
-||Baza danych w puli|Bazy danych utworzone w ramach lub przeniesiona do puli elastycznej|
-||Wystąpienie bazy danych|Z bazy danych utworzonej w ramach wystąpienia zarządzanego|
-||Podstawowej bazy danych|Bazy danych utworzone w ramach lub przeniesiony do warstwy podstawowej usługi do modelu zakupu opartego na jednostkach DTU|
-||Database w warstwie standardowa|Bazy danych utworzone w ramach lub przeniesiony do warstwy standardowa usługi modelu zakupu opartego na jednostkach DTU|
-||Bazy danych Premium|Bazy danych utworzone w ramach lub przeniesiony do warstwy premium modelu zakupu opartego na jednostkach DTU|
-||Bazy danych ogólnego przeznaczenia|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług ogólnego przeznaczenia modelu zakupu opartego na rdzeniach wirtualnych|
-||Bazy danych na dużą skalę|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług na dużą skalę modelu zakupu opartego na rdzeniach wirtualnych|
-||Krytyczne bazy danych firmy|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług krytycznych biznesowej modelu zakupu opartego na rdzeniach wirtualnych|
-||Elastycznie bazy danych|Bazy danych skonfigurowanych w warstwie zainicjowanych zasobów obliczeniowych|
-|[Modelami zakupów i zasoby](sql-database-purchase-models.md)|Model zakupu w oparciu o jednostki DTU|[Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md)|
-||Model zakupów oparty na rdzeniach wirtualnych|[model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md)|
-||Rdzeń wirtualny|Podstawowa dostarczane do systemu operacyjnego gościa przez funkcję hypervisor.|
-||Warstwa usług|Poziom usługi, w ramach modelu zakupu|
-||Obliczenia rozmiaru|Ilość zasobów obliczeniowych dla pojedynczej bazy danych, pul elastycznych lub wystąpienia zarządzanego w ramach warstwy usług|
-||Ilość miejsca w magazynie|Ilość miejsca dostępna dla pojedynczej bazy danych, pul elastycznych lub wystąpienia zarządzanego|
-||Generacja obliczeń|Generowanie procesora w ramach warstwy usług|
-|Reguły zapory bazujące na adresach IP serwera bazy danych|Reguły zapory IP|[Reguły zapory IP](sql-database-firewall-configure.md)|
-||Reguły zapory bazujące na adresach IP na poziomie serwera|[Reguły zapory IP poziomu serwera](sql-database-firewall-configure.md#overview)|
-|| Reguły zapory IP poziomu bazy danych|[Reguły zapory IP poziomu bazy danych](sql-database-firewall-configure.md#overview)|
-||Punkty końcowe sieci wirtualnej i reguł|[Punkty końcowe i reguły sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md)|
+|Obiekty serwera|Serwer SQL Database lub serwer bazy danych|[Serwer bazy danych](sql-database-servers.md)|
+||SQL Database serwer wystąpienia zarządzanego, serwer wystąpienia zarządzanego lub serwer wystąpienia|[Wystąpienie zarządzane](sql-database-managed-instance.md)|
+Obiekty bazy danych|Baza danych Azure SQL Database|Dowolna baza danych w Azure SQL Database|
+||Pojedyncza baza danych|Baza danych utworzona przy użyciu opcji wdrożenia pojedynczej bazy danych|
+||Baza danych w puli|Baza danych utworzona lub przeniesiona do puli elastycznej|
+||Baza danych wystąpienia|Baza danych utworzona w wystąpieniu zarządzanym|
+||Podstawowa baza danych|Baza danych utworzona lub przeniesiona do podstawowej warstwy usług modelu zakupu opartego na jednostkach DTU|
+||Baza danych w warstwie Standardowa|Baza danych utworzona lub przeniesiona do standardowej warstwy usług modelu zakupu opartego na jednostkach DTU|
+||Baza danych w warstwie Premium|Baza danych utworzona lub przeniesiona do warstwy usługi Premium modelu zakupu opartego na jednostkach DTU|
+||Baza danych ogólnego przeznaczenia|Baza danych utworzona lub przeniesiona do warstwy usług ogólnego przeznaczenia modelu zakupu opartego na rdzeń wirtualny|
+||Baza danych w ramach skalowania|Baza danych utworzona lub przeniesiona do warstwy usługi w modelu zakupu opartego na rdzeń wirtualny|
+||Krytyczna baza danych firmy|Baza danych utworzona lub przeniesiona do warstwy usługi krytycznej dla firm modelu zakupu opartego na rdzeń wirtualny|
+||Baza danych z obsługą administracyjną|Baza danych skonfigurowana w warstwie obliczeniowej zainicjowanej|
+|[Kup modele i zasoby](sql-database-purchase-models.md)|Model zakupu oparty na jednostkach DTU|[Model zakupu oparty na jednostkach DTU](sql-database-service-tiers-dtu.md)|
+||Model zakupów oparty na rdzeniach wirtualnych|[Model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md)|
+||rdzeń wirtualny|Rdzeń dostarczany przez funkcję hypervisor dla systemu operacyjnego gościa.|
+||Warstwa usług|Poziom usługi w modelu zakupu|
+||Rozmiar obliczeń|Ilość zasobów obliczeniowych dla pojedynczej bazy danych, puli elastycznej lub wystąpienia zarządzanego w ramach warstwy usług|
+||Ilość miejsca w magazynie|Ilość dostępnego miejsca do magazynowania dla pojedynczej bazy danych, puli elastycznej lub wystąpienia zarządzanego|
+||Generowanie obliczeń|Generowanie procesora w warstwie usług|
+|Reguły zapory bazujące na adresach IP serwera bazy danych|Reguły zapory adresów IP|[Reguły zapory adresów IP](sql-database-firewall-configure.md)|
+||Reguły zapory bazujące na adresach IP na poziomie serwera|[Reguły zapory adresów IP na poziomie serwera](sql-database-firewall-configure.md#overview)|
+|| Reguły zapory adresów IP na poziomie bazy danych|[Reguły zapory adresów IP na poziomie bazy danych](sql-database-firewall-configure.md#overview)|
+||Punkty końcowe i reguły sieci wirtualnej|[Punkty końcowe i reguły sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md)|

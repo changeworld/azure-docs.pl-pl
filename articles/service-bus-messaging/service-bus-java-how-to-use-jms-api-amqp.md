@@ -1,5 +1,5 @@
 ---
-title: Jak używać AMQP 1,0 z interfejsem API JMS Service Bus Java | Microsoft Docs
+title: Korzystanie z programu AMQP 1,0 z interfejsem API usługi komunikatów Java i Azure Service Bus
 description: Jak używać usługi wiadomości Java (JMS) z Azure Service Bus i Advanced Message Queuing Protocol (AMQP) 1,0.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 47b077dbb62088093c60a588660045529678c58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seo-java-july2019
+ms.openlocfilehash: f816a5c84416b7f40e3062bf22dd70cbb356c6f1
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318455"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662878"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak używać interfejsu API usługi wiadomości Java (JMS) z Service Bus i AMQP 1,0
 Advanced Message Queuing Protocol (AMQP) 1,0 to wydajny, niezawodny protokół obsługi komunikatów na poziomie sieci, który umożliwia tworzenie niezawodnych aplikacji do obsługi komunikatów dla wielu platform.
@@ -371,16 +372,17 @@ Ponadto Azure Service Bus dzieli płaszczyznę kontroli z płaszczyzny danych i 
 | createTemporaryTopic        | Utwórz temat za pomocą interfejsu API zarządzania/narzędzia/Portal z *AutoDeleteOnIdle* ustawionym na okres ważności |
 | w temacie                 | Tworzenie tematu za pomocą interfejsu API zarządzania/narzędzia/Portal                                           |
 | Anuluj subskrypcję                 | usuwanie tematu API zarządzania tematami/narzędzia/Portal                                             |
-| Przeglądarka \ przeglądarki               | Ich. Korzystanie z funkcji wglądu () interfejsu API Service Bus                         |
+| Przeglądarka \ przeglądarki               | ich. Korzystanie z funkcji wglądu () interfejsu API Service Bus                         |
 | createQueue                 | Tworzenie kolejki za pomocą interfejsu API zarządzania/narzędzi/portalu                                           | 
 | createTemporaryQueue        | Tworzenie kolejki za pomocą interfejsu API zarządzania/narzędzi/portalu z *AutoDeleteOnIdle* ustawionym na okres ważności |
+| receiveNoWait               | Korzystanie z metody Receive () dostarczonej przez zestaw SDK Service Bus i określanie bardzo niskich lub zerowych limitów czasu |
 
 ## <a name="summary"></a>Podsumowanie
 W tym przewodniku opisano sposób Service Bus korzystania z funkcji komunikatów obsługiwanych przez brokera (w tematach JMS i publikowania/subskrybowania) z poziomu języka Java przy użyciu popularnych interfejsów API i AMQP 1,0.
 
 Możesz również użyć Service Bus AMQP 1,0 z innych języków, w tym .NET, C, Python i PHP. Składniki utworzone przy użyciu tych różnych języków mogą niezawodnie wymieniać komunikaty i z pełną dokładnością dzięki obsłudze AMQP 1,0 w Service Bus.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Obsługa AMQP 1,0 w Azure Service Bus](service-bus-amqp-overview.md)
 * [Jak używać AMQP 1,0 z interfejsem API platformy .NET Service Bus](service-bus-dotnet-advanced-message-queuing.md)
 * [Podręcznik dewelopera Service Bus AMQP 1,0](service-bus-amqp-dotnet.md)

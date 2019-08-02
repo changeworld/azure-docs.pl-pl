@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z szablonów usługi Azure Resource Manager do tworzenia i konfigurowania obszaru roboczego usługi Log Analytics | Dokumentacja firmy Microsoft
-description: Szablony usługi Azure Resource Manager służy do tworzenia i konfigurowania obszarów roboczych usługi Log Analytics.
+title: Użyj szablonów Azure Resource Manager, aby utworzyć i skonfigurować obszar roboczy Log Analytics | Microsoft Docs
+description: Za pomocą szablonów Azure Resource Manager można tworzyć i konfigurować Log Analytics obszary robocze.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: a55a4b2f3045aac8dfe9e46a50074585ab3ef491
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 2acaba4e82f499ce1ca08a0ce17469ccb0a7e541
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827790"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698447"
 ---
-# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Zarządzanie obszaru roboczego usługi Log Analytics przy użyciu szablonów usługi Azure Resource Manager
+# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Zarządzanie obszarem roboczym Log Analytics przy użyciu szablonów Azure Resource Manager
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Możesz użyć [szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) do tworzenia i konfigurowania obszarów roboczych usługi Log Analytics w usłudze Azure Monitor. Przykłady zadań, które można wykonać za pomocą szablonów:
+Za pomocą [szablonów Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) można tworzyć i konfigurować log Analytics obszary robocze w Azure monitor. Przykłady zadań, które można wykonywać za pomocą szablonów, to m.in.:
 
-* Tworzenie obszaru roboczego w tym ustawienia warstwy cenowej 
-* Dodawanie rozwiązania
-* Tworzenie zapisanych wyszukiwań
+* Tworzenie obszaru roboczego, w tym Ustawianie warstwy cenowej 
+* Dodaj rozwiązanie
+* Utwórz zapisane wyszukiwania
 * Utwórz grupę komputerów
 * Włącz zbieranie dzienników usług IIS na komputerach z zainstalowanym agentem Windows
 * Liczniki wydajności są zbierane z komputerów z systemami Linux i Windows
@@ -37,22 +37,22 @@ Możesz użyć [szablonów usługi Azure Resource Manager](../../azure-resource-
 * Dodaj agenta usługi log analytics na maszynie wirtualnej platformy Azure
 * Skonfiguruj usługę log analytics do indeksowania danych zebranych za pomocą diagnostyki Azure
 
-Ten artykuł zawiera przykłady szablonów, które ilustrują niektórych elementów konfiguracji, które można wykonywać za pomocą szablonów.
+W tym artykule przedstawiono przykłady szablonów, które ilustrują część konfiguracji, którą można wykonać za pomocą szablonów.
 
 ## <a name="api-versions"></a>Wersje interfejsu API
 
-Poniższa tabela zawiera listę wersji interfejsu API dla zasobów używanych w tym przykładzie.
+W poniższej tabeli wymieniono wersje interfejsu API dla zasobów używanych w tym przykładzie.
 
 | Resource | Typ zasobu | Wersja interfejsu API |
 |:---|:---|:---|
-| Obszar roboczy   | Obszary robocze    | 2017-03-15-preview |
+| Obszar roboczy   | obszary robocze    | 2017-03-15 — wersja zapoznawcza |
 | Wyszukaj      | savedSearches | 2015-03-20 |
-| Źródło danych | źródła danych   | 2015-11-01-preview |
-| Rozwiązanie    | rozwiązania     | 2015-11-01-preview |
+| Źródło danych | źródła danych   | 2015-11-01 — wersja zapoznawcza |
+| Rozwiązanie    | rozwiązania     | 2015-11-01 — wersja zapoznawcza |
 
-## <a name="create-a-log-analytics-workspace"></a>Utwórz obszar roboczy usługi Log Analytics
+## <a name="create-a-log-analytics-workspace"></a>Tworzenie obszaru roboczego Log Analytics
 
-Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z maszyny lokalnej. Szablon JSON jest skonfigurowany do wymagają tylko nazwę i lokalizację nowego obszaru roboczego (przy użyciu wartości domyślnych dla innych parametrów obszaru roboczego, np. warstwa cenowa i przechowywania).  
+Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z komputera lokalnego. Szablon JSON jest skonfigurowany tak, aby wymagał tylko nazwy i lokalizacji nowego obszaru roboczego (przy użyciu wartości domyślnych dla innych parametrów obszaru roboczego, takich jak warstwa cenowa i przechowywanie).  
 
 ### <a name="create-and-deploy-template"></a>Tworzenie i wdrażanie szablonu
 
@@ -120,15 +120,15 @@ Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z maszyny lokaln
 
 2. Edytuj szablon do własnych wymagań. Przegląd [szablonu Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) odwołania, aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
 3. Zapisz ten plik jako **deploylaworkspacetemplate.json** do folderu lokalnego.
-4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Używasz programu PowerShell lub wiersza polecenia do utworzenia obszaru roboczego, określając nazwę obszaru roboczego i lokalizację jako część polecenia.
+4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Za pomocą programu PowerShell lub wiersza polecenia można utworzyć obszar roboczy, określając nazwę i lokalizację obszaru roboczego w ramach polecenia.
 
-   * Dla programu PowerShell Użyj następujących poleceń z folderu zawierającego szablon:
+   * W przypadku programu PowerShell Użyj następujących poleceń z folderu zawierającego szablon:
    
         ```powershell
         New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json -workspaceName <workspace-name> -location <location>
         ```
 
-   * W wierszu polecenia użyj następujących poleceń z folderu zawierającego szablon:
+   * W wierszu polecenia Użyj następujących poleceń z folderu zawierającego szablon:
 
         ```cmd
         azure config mode arm
@@ -137,19 +137,19 @@ Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z maszyny lokaln
 
 Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego, który zawiera wynik:<br><br> ![Przykład wyniku, gdy wdrożenie jest ukończone](./media/template-workspace-configuration/template-output-01.png)
 
-## <a name="configure-a-log-analytics-workspace"></a>Konfigurowanie obszaru roboczego usługi Log Analytics
+## <a name="configure-a-log-analytics-workspace"></a>Konfigurowanie obszaru roboczego Log Analytics
 
-W poniższym przykładzie szablon przedstawia sposób:
+Poniższy przykładowy szablon ilustruje sposób wykonywania następujących czynności:
 
 1. Dodawanie rozwiązań do obszaru roboczego
-2. Tworzenie zapisanych wyszukiwań
+2. Utwórz zapisane wyszukiwania
 3. Utwórz grupę komputerów
 4. Włącz zbieranie dzienników usług IIS na komputerach z zainstalowanym agentem Windows
 5. Zbieranie liczników wydajności dysku logicznego z komputerów z systemem Linux (% użytych węzłów i; Wolne megabajty; Używany obszar; % Transfery dyskowe/s; Odczyty dysku/s; Zapisy dysku/s)
 6. Zbieranie zdarzeń dziennika systemu z komputerów z systemem Linux
 7. Zbieranie zdarzeń błędu i ostrzeżenia w dzienniku zdarzeń aplikacji z komputerów Windows
 8. Zbieraj dane licznika wydajności dostępna pamięć (MB) z komputerów Windows
-9. Zbieraj dzienniki usług IIS i dzienniki zdarzeń Windows napisanych przez diagnostykę platformy Azure na koncie magazynu
+9. Zbieranie dzienników usług IIS i dzienników zdarzeń systemu Windows, które zostały zapisane przez diagnostykę platformy Azure na koncie magazynu
 
 ```json
 {
@@ -186,7 +186,6 @@ W poniższym przykładzie szablon przedstawia sposób:
         "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
       }
     },
-    {
     "immediatePurgeDataOn30Days": {
       "type": "bool",
       "metadata": {
@@ -539,9 +538,9 @@ W poniższym przykładzie szablon przedstawia sposób:
 
 Aby wdrożyć przykładowy szablon:
 
-1. Zapisz przykładowy dołączone w pliku, na przykład `azuredeploy.json` 
-2. Edytuj szablon konfiguracji, który ma
-3. Użyj programu PowerShell lub wierszu polecenia, aby wdrożyć szablon
+1. Zapisz dołączony przykład w pliku, na przykład`azuredeploy.json` 
+2. Edytuj szablon, aby skonfigurować żądaną konfigurację
+3. Wdrażanie szablonu przy użyciu programu PowerShell lub wiersza polecenia
 
 #### <a name="powershell"></a>PowerShell
 
@@ -556,18 +555,18 @@ azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
 
-## <a name="example-resource-manager-templates"></a>Szablony usługi Resource Manager dla przykładu
+## <a name="example-resource-manager-templates"></a>Przykładowe szablony Menedżer zasobów
 
-Galeria szablonów szybkiego startu platformy Azure zawiera kilka szablonów dla usługi Log Analytics, w tym:
+Galeria szablonów szybkiego startu platformy Azure zawiera kilka szablonów dla Log Analytics, w tym:
 
-* [Wdrażanie maszyny wirtualnej z systemem Windows za pomocą rozszerzenia maszyny Wirtualnej programu Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
-* [Wdrażanie maszyny wirtualnej z systemem Linux przy użyciu rozszerzenia maszyny Wirtualnej programu Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
-* [Monitorowanie usługi Azure Site Recovery przy użyciu istniejącego obszaru roboczego usługi Log Analytics](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
-* [Monitorowanie aplikacji sieci Web platformy Azure przy użyciu istniejącego obszaru roboczego usługi Log Analytics](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [Dodaj istniejące konto magazynu do usługi Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
+* [Wdróż maszynę wirtualną z systemem Windows przy użyciu rozszerzenia maszyny wirtualnej Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
+* [Wdróż maszynę wirtualną z systemem Linux przy użyciu rozszerzenia maszyny wirtualnej Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
+* [Monitorowanie Azure Site Recovery przy użyciu istniejącego obszaru roboczego Log Analytics](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
+* [Monitorowanie Web Apps platformy Azure przy użyciu istniejącego obszaru roboczego Log Analytics](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
+* [Dodaj istniejące konto magazynu do Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Wdrażanie agenta Windows na maszynach wirtualnych platformy Azure przy użyciu szablonu usługi Resource Manager](../../virtual-machines/extensions/oms-windows.md).
+* [Wdróż agenta systemu Windows na maszynach wirtualnych platformy Azure przy użyciu szablonu Menedżer zasobów](../../virtual-machines/extensions/oms-windows.md).
 
-* [Wdrażanie agenta systemu Linux na maszynach wirtualnych platformy Azure przy użyciu szablonu usługi Resource Manager](../../virtual-machines/extensions/oms-linux.md).
+* [Wdróż agenta systemu Linux na maszynach wirtualnych platformy Azure przy użyciu szablonu Menedżer zasobów](../../virtual-machines/extensions/oms-linux.md).

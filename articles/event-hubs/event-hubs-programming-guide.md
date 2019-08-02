@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2af076153725dc91caaf07b710acf21ebc143fb0
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d9a1dff9c44403ad14e58b3fc3cda880cf65a29c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273664"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679107"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Przewodnik programowania dotyczący usługi Azure Event Hubs
 W tym artykule omówiono kilka typowych scenariuszy, w pisaniu kodu za pomocą usługi Azure Event Hubs. Przyjęto założenie, że wstępnie znasz i rozumiesz usługę Event Hubs. Omówienie koncepcji usługi Event Hubs można znaleźć w temacie [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -23,7 +23,7 @@ W tym artykule omówiono kilka typowych scenariuszy, w pisaniu kodu za pomocą u
 
 Wysyła zdarzenia do Centrum zdarzeń za pomocą metody POST protokołu HTTP lub przy użyciu połączenia protokołu AMQP 1.0. Wybór rodzaju używanej i kiedy zależy od konkretnego scenariusza. Połączenia protokołu AMQP 1.0 są mierzone jako połączenia obsługiwane przez brokera w Service Bus i są bardziej odpowiednie w scenariuszach z częstymi większymi ilościami wiadomości oraz wymaganiami dotyczącymi krótszych opóźnień, ponieważ zapewniają trwały kanał obsługi komunikatów.
 
-W przypadku używania zarządzanych interfejsów API platformy .NET głównymi konstrukcjami na potrzeby publikowania danych w usłudze Event Hubs są klasy [EventHubClient][] i [EventData][]. [EventHubClient][] udostępnia kanał komunikacji protokołu AMQP, przez który zdarzenia są wysyłane do Centrum zdarzeń. [EventData][] klasa reprezentuje zdarzenie i jest używana do publikowania komunikatów do Centrum zdarzeń. Ta klasa zawiera treść, niektóre metadane i informacje nagłówka zdarzenia. Inne właściwości są dodawane do [EventData][] przechodzi on przez Centrum zdarzeń.
+W przypadku używania zarządzanych interfejsów API platformy .NET głównymi konstrukcjami na potrzeby publikowania danych w usłudze Event Hubs są klasy [EventHubClient][] i [EventData][]. [EventHubClient][] udostępnia kanał komunikacji protokołu AMQP, przez który zdarzenia są wysyłane do Centrum zdarzeń. [EventData][] klasa reprezentuje zdarzenie i jest używana do publikowania komunikatów do Centrum zdarzeń. Ta klasa obejmuje treść, niektóre metadane (właściwości) i informacje nagłówka (SystemProperties) dotyczące zdarzenia. Inne właściwości są dodawane do [EventData][] przechodzi on przez Centrum zdarzeń.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 .NET klasy, które obsługują usługi Event Hubs znajdują się w [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) pakietu NuGet. Można to zrobić za pomocą Eksploratora rozwiązania Visual Studio lub [Konsola Menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) w programie Visual Studio. Aby to zrobić, należy wydać następujące polecenie w oknie [konsoli menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console):
@@ -72,7 +72,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 ## <a name="partition-key"></a>Klucz partycji
 
 > [!NOTE]
-> Jeśli nie jesteś zaznajomiony z partycjami, zobacz [w tym artykule](event-hubs-features.md#partitions). 
+> Jeśli nie znasz już partycji, zapoznaj się z [tym artykułem](event-hubs-features.md#partitions). 
 
 Podczas wysyłania danych zdarzenia, można określić wartość, która jest przekazywane do utworzenia przypisania partycji. Możesz określić za pomocą partycji [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) właściwości. Jednak zdecydować, czy użyć partycje oznacza wybór między dostępnością a spójnością. 
 
@@ -94,7 +94,7 @@ Aby uzyskać więcej informacji i dyskusji na temat wad i zalet między dostępn
 
 Wysyłanie zdarzeń w partiach może pomóc zwiększyć przepustowość. Możesz użyć [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) interfejsu API w celu tworzenia partii do danych, które obiekty później można dodać [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) wywołania.
 
-Pojedyncza partia nie może przekraczać limit 1 MB zdarzenia. Ponadto każdy komunikat w partii używa tej samej tożsamości wydawcy. Nadawca jest odpowiedzialny za upewnienie się, że partia nie przekracza maksymalnego rozmiaru zdarzenia. Jeśli go przekroczy, zostanie wygenerowany błąd metody **Send** klienta. Można użyć metody pomocniczej [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) aby upewnić się, że partia nie przekracza 1 MB. Pobierz pusty [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) z [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) interfejsu API, a następnie użycie [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) próbę dodania zdarzeń do utworzenia zadania wsadowego. 
+Pojedyncza partia nie może przekroczyć limitu 1 MB zdarzenia. Ponadto każdy komunikat w partii używa tej samej tożsamości wydawcy. Nadawca jest odpowiedzialny za upewnienie się, że partia nie przekracza maksymalnego rozmiaru zdarzenia. Jeśli go przekroczy, zostanie wygenerowany błąd metody **Send** klienta. Możesz użyć metody pomocnika [EventHubClient. Getbatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) , aby upewnić się, że partia nie przekracza 1 MB. Pobierz pusty [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) z [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) interfejsu API, a następnie użycie [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) próbę dodania zdarzeń do utworzenia zadania wsadowego. 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Wysyłanie asynchroniczne i wysyłanie na dużą skalę
 
@@ -113,7 +113,7 @@ Aby używać klasy [EventProcessorHost][], można zaimplementować interfejs [IE
 Aby rozpocząć przetwarzanie zdarzeń, utworzyć [EventProcessorHost][], podając odpowiednie parametry Centrum zdarzeń. Na przykład:
 
 > [!NOTE]
-> EventProcessorHost oraz ich powiązanymi klasami znajdują się w **Microsoft.Azure.EventHubs.Processor** pakietu. Dodaj pakiet do projektu programu Visual Studio, postępując zgodnie z instrukcjami opisanymi w [w tym artykule](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) lub wysyłając następujące polecenie w [Konsola Menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) okna:`Install-Package Microsoft.Azure.EventHubs.Processor`.
+> Klasy eventprocessorhost i powiązane klasy są dostępne w pakiecie **Microsoft. Azure. EventHubs. Processor** . Dodaj pakiet do projektu programu Visual Studio, wykonując instrukcje podane w [tym artykule](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) lub wykonując następujące polecenie w oknie [konsola Menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) :`Install-Package Microsoft.Azure.EventHubs.Processor`.
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

@@ -1,213 +1,213 @@
 ---
-title: Architektura urządzenia usługi Azure Migrate | Dokumentacja firmy Microsoft
-description: Zawiera omówienie usługi Azure Migrate urządzenia
+title: Architektura urządzenia Azure Migrate | Microsoft Docs
+description: Zawiera przegląd urządzenia Azure Migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c2c9ca3082aa9c2067a63f8d6304e8a229dac14a
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6537bfe5df8de298593428fb21448181ad8075fc
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811455"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663459"
 ---
-# <a name="azure-migrate-appliance"></a>Urządzenie Azure Migrate
+# <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 
-W tym artykule opisano urządzenie Azure Migrate. Jeśli używasz narzędzia do oceny migracji platformy Azure i migracji do odnajdywania, oceny i migracji aplikacji, infrastruktury i obciążeń w systemie Microsoft Azure możesz wdrożyć urządzenie. 
+W tym artykule opisano urządzenie Azure Migrate. Urządzenie jest wdrażane w przypadku korzystania z narzędzi do oceny i migracji Azure Migrate w celu odnajdywania, oceniania i migrowania aplikacji, infrastruktury i obciążeń do Microsoft Azure. 
 
-[Usługa Azure Migrate](migrate-services-overview.md) udostępnia centralną Centrum do śledzenia wykrywania, oceny i migracji aplikacji lokalnych i obciążeń i chmury prywatne/publiczne maszyn wirtualnych na platformie Azure. Centrum zapewnia usługa Azure Migrate narzędzia do oceny i migracji, a także oferty Niezależnym dostawcą oprogramowania niezależnie od innych firm.
+[Azure Migrate](migrate-services-overview.md) udostępnia centralne centrum do śledzenia odnajdywania, oceny i migracji lokalnych aplikacji i obciążeń oraz maszyn wirtualnych chmur prywatnych/publicznych na platformie Azure. Centrum udostępnia Azure Migrate narzędzia do oceny i migracji, a także oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
 
 
 ## <a name="appliance-overview"></a>Przegląd urządzenia
 
-Usługa Azure Migrate typy urządzenia i użycia są w następujący sposób.
+Typy i użycie urządzenia Azure Migrate są następujące.
 
-**Wdrożony jako** | **Używane dla** | **Szczegóły**
+**Wdrożone jako** | **Używane dla** | **Szczegóły**
 --- | --- |  ---
-Maszyna wirtualna VMware | Ocena maszyny Wirtualnej VMware za pomocą narzędzia oceny migracji platformy Azure.<br/><br/> Migracja bez wykorzystania agentów maszyny Wirtualnej VMware za pomocą narzędzia migracji serwera migracji platformy Azure | Pobierz szablon OVA i zaimportować do programu vCenter Server, aby utworzyć urządzenie maszyny Wirtualnej.
-Maszyna wirtualna funkcji Hyper-V | Ocena maszyny Wirtualnej funkcji Hyper-V za pomocą narzędzia oceny migracji platformy Azure. | Pobierz zip wirtualnego dysku twardego i zaimportuj do funkcji Hyper-V, aby utworzyć urządzenie maszyny Wirtualnej.
+Maszyna wirtualna VMware | Ocena maszyn wirtualnych VMware za pomocą narzędzia do oceny Azure Migrate.<br/><br/> Migracja bezagentowa maszyn wirtualnych VMware za pomocą narzędzia migracji Azure Migrate Server | Pobierz szablon komórki jajowe i Importuj do vCenter Server, aby utworzyć maszynę wirtualną z urządzeniem.
+Maszyna wirtualna funkcji Hyper-V | Ocena maszyn wirtualnych funkcji Hyper-V za pomocą narzędzia do oceny Azure Migrate. | Pobierz spakowany dysk VHD i zaimportuj go do funkcji Hyper-V, aby utworzyć maszynę wirtualną z urządzeniem.
 
 ## <a name="appliance-access"></a>Dostęp do urządzenia
 
-Po skonfigurowaniu urządzenia można uzyskiwać zdalny dostęp urządzenia maszyny Wirtualnej za pośrednictwem portu TCP 3389. Mogą również zdalnie dostęp do aplikacji sieci web zarządzania dla urządzenia, na porcie 44368 za pomocą adresu URL: ``` https://<appliance-ip-or-name>:44368 ```.
+Po skonfigurowaniu urządzenia można zdalnie uzyskać dostęp do maszyny wirtualnej urządzenia za pośrednictwem portu TCP 3389. Możesz również zdalnie uzyskać dostęp do aplikacji do zarządzania siecią Web dla urządzenia, na porcie 44368 z adresem `https://<appliance-ip-or-name>:44368`URL:.
 
 ## <a name="appliance-license"></a>Licencja urządzenia
-Urządzenie jest powiązana z licencji ewaluacyjnej systemu Windows Server 2016, która jest ważna przez 180 dni. Jeśli okres próbny jest bliski wygaśnięcia, firma Microsoft zaleca, możesz pobrać i wdrożyć nowe urządzenie lub aktywacji licencji systemu operacyjnego urządzenia maszyny Wirtualnej.
+Urządzenie jest dostarczane z licencją ewaluacyjną systemu Windows Server 2016, która jest ważna przez 180 dni. Jeśli okres próbny zbliża się do wygaśnięcia, zalecamy pobranie i wdrożenie nowego urządzenia albo Aktywowanie licencji na maszynę wirtualną urządzenia.
 
-## <a name="appliance-agents"></a>Agenci urządzenia
+## <a name="appliance-agents"></a>Agenci urządzeń
 Urządzenie ma zainstalowanych tych agentów.
 
 **Agent** | **Szczegóły**
 --- | ---
-Agent odnajdowania | Zbiera dane konfiguracyjne z lokalnych maszyn wirtualnych.
-Agenta do oceny | Profile w lokalnym środowisku w celu zbierania danych wydajności maszyny Wirtualnej.
-Karta migracji | Organizuje replikację maszyny Wirtualnej i służy do koordynowania komunikacji między maszynami wirtualnymi i platformy Azure.
-Brama migracji | Wysyła replikowanych danych maszyny Wirtualnej na platformie Azure.
+Agent odnajdywania | Zbiera dane konfiguracyjne z lokalnych maszyn wirtualnych.
+Agent oceny | Profiluje środowisko lokalne w celu zbierania danych wydajności maszyn wirtualnych.
+Adapter migracji | Organizuje replikację maszyny wirtualnej i koordynuje komunikację między maszynami wirtualnymi i platformą Azure.
+Brama migracji | Wysyła zreplikowane dane maszyn wirtualnych do platformy Azure.
 
 
-## <a name="appliance-deployment-requirements"></a>Wymagania dotyczące wdrażania urządzenia
+## <a name="appliance-deployment-requirements"></a>Wymagania dotyczące wdrażania urządzeń
 
-- [Przegląd](migrate-support-matrix-vmware.md#assessment-appliance-requirements) wymagania dotyczące wdrażania dla urządzenia VMware, a także adresy URL, które urządzenie musi mieć dostęp.
-- [Przegląd](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) wymagania dotyczące wdrażania dla urządzenia w funkcji Hyper-V i adresów URL, które urządzenie musi mieć dostęp.
+- [Zapoznaj](migrate-support-matrix-vmware.md#assessment-appliance-requirements) się z wymaganiami dotyczącymi wdrożenia urządzenia VMware i adresami URL, do których urządzenie musi uzyskać dostęp.
+- [Zapoznaj](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) się z wymaganiami dotyczącymi wdrożenia urządzenia funkcji Hyper-V i adresami URL, do których urządzenie musi uzyskać dostęp.
 
 
-## <a name="collected-performance-data-vmware"></a>Dane wydajności zebrane-VMware
+## <a name="collected-performance-data-vmware"></a>Zebrane dane wydajności — VMware
 
-Poniżej przedstawiono dane wydajności maszyn wirtualnych programu VMware, które urządzenie zbiera i wysyła do usługi Azure.
+Oto dane wydajności maszyny wirtualnej VMware, które urządzenie zbiera i wysyła do platformy Azure.
 
-**Dane** | **Counter** | **Ocena wpływu**
+**Dane** | **Counter** | **Wpływ oceny**
 --- | --- | ---
-Użycie procesora CPU | cpu.usage.average | Zalecany rozmiar i kosztów maszyn wirtualnych
-Użycie pamięci przez program | mem.usage.average | Zalecany rozmiar i kosztów maszyn wirtualnych
-Odczyt z dysku przepływność (MB / s) | virtualDisk.read.average | Obliczanie rozmiaru dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-Przepływność zapisu na dysku (MB / s) | virtualDisk.write.average | Obliczanie rozmiaru dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-Operacje na sekundę odczytu z dysku | virtualDisk.numberReadAveraged.average | Obliczanie rozmiaru dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-Dysk zapisu na sekundę | virtualDisk.numberWriteAveraged.average  | Obliczanie rozmiaru dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-Przepływność (MB na sekundę) zapisu karty Sieciowej | net.received.average | Obliczanie rozmiaru maszyny Wirtualnej
-Przepływność zapisu karty Sieciowej (w MB na sekundę) | net.transmitted.average  |Obliczanie rozmiaru maszyny Wirtualnej
+Użycie procesora CPU | cpu.usage.average | Zalecany rozmiar maszyny wirtualnej/koszt
+Użycie pamięci | mem.usage.average | Zalecany rozmiar maszyny wirtualnej/koszt
+Przepływność odczytu dysku (MB na sekundę) | virtualDisk.read.average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
+Przepływność zapisu na dysku (MB na sekundę) | virtualDisk.write.average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
+Operacje odczytu z dysku na sekundę | virtualDisk.numberReadAveraged.average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
+Operacje zapisu na dysku na sekundę | virtualDisk.numberWriteAveraged.average  | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
+Przepływność odczytu karty sieciowej (MB na sekundę) | NET. Receive. Average | Obliczanie rozmiaru maszyny wirtualnej
+Przepływność zapisu karty sieciowej (MB na sekundę) | net.transmitted.average  |Obliczanie rozmiaru maszyny wirtualnej
 
 
-## <a name="collected-metadata-vmware"></a>Zebrane metadane programu VMware
+## <a name="collected-metadata-vmware"></a>Zebrane metadane — VMware
 
-Oto Pełna lista metadanych maszyny Wirtualnej VMware, które urządzenie zbiera i wysyła do usługi Azure.
+Poniżej znajduje się pełna lista metadanych maszyn wirtualnych VMware, które urządzenie zbiera i wysyła do platformy Azure.
 
 **Dane** | **Counter**
 --- | --- 
 **Szczegóły maszyny** | 
 IDENTYFIKATOR MASZYNY WIRTUALNEJ | vm.Config.InstanceUuid 
-Nazwa maszyny wirtualnej | Maszyna wirtualna. Config.Name
-Identyfikator serwera vCenter | VMwareClient.Instance.Uuid
-Opis maszyn wirtualnych | Maszyna wirtualna. Summary.Config.Annotation
+Nazwa maszyny wirtualnej | maszyn. Config.Name
+Identyfikator vCenter Server | VMwareClient. Instance. UUID
+Opis maszyny wirtualnej | maszyn. Summary. config. Annotation
 Nazwa produktu licencji | vm.Client.ServiceContent.About.LicenseProductName
 Typ systemu operacyjnego | vm.SummaryConfig.GuestFullName
 Typ rozruchu | vm.Config.Firmware
-Liczba rdzeni | Maszyna wirtualna. Config.Hardware.NumCPU
-Pamięć (MB) | Maszyna wirtualna. Config.Hardware.MemoryMB
-Liczba dysków | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
-Lista rozmiar dysku | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
-Lista kart sieciowych | Maszyna wirtualna. Config.Hardware.Device.ToList(). FindAll(x => is VirtualEthernet).count
+Liczba rdzeni | maszyn. Config. Hardware. NumCPU
+Pamięć (MB) | maszyn. Config. Hardware. MemoryMB
+Liczba dysków | maszyn. Config. Hardware. Device. ToList — (). FindAll (x = > to VirtualDisk). Count
+Lista rozmiarów dysku | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
+Lista kart sieciowych | maszyn. Config. Hardware. Device. ToList — (). FindAll (x = > to VirtualEthernet). Count
 Użycie procesora CPU | cpu.usage.average
-Użycie pamięci przez program |mem.usage.average
-**Na szczegóły dysku** | 
-Wartość klucza na dysku | disk.Key
-Liczba Dikunit | disk.UnitNumber
-Wartość klucza kontrolera dysku | dysk. ControllerKey.Value
-Gigabajty zainicjowano obsługę administracyjną | virtualDisk.DeviceInfo.Summary
-Nazwa dysku | Wartość wygenerowany za pomocą dysku. UnitNumber, dysku. Dysk klucza. ControllerKey.VAlue
+Użycie pamięci |mem.usage.average
+**Szczegóły dysku** | 
+Wartość klucza dysku | 3,5. Głównych
+Numer Dikunit | 3,5. UnitNumber
+Wartość klucza kontrolera dysku | 3,5. ControllerKey. Value
+Gigabajty inicjowane | virtualDisk. DeviceInfo. Summary
+Nazwa dysku | Wartość wygenerowana przy użyciu dysku. UnitNumber, dysk. Klucz, dysk. ControllerKey. VAlue
 Operacje odczytu na sekundę | virtualDisk.numberReadAveraged.average
-Zapisu na sekundę | virtualDisk.numberWriteAveraged.average
-Przepływność odczytu (w MB na sekundę) | virtualDisk.read.average
-Zapis przepływność (MB / s) | virtualDisk.write.average
-**Na szczegóły karty Sieciowej** | 
-Nazwa karty sieciowej | karty sieciowej. Klucz
-Adres MAC | ((VirtualEthernetCard)nic).MacAddress
+Operacje zapisu na sekundę | virtualDisk.numberWriteAveraged.average
+Przepływność odczytu (MB na sekundę) | virtualDisk.read.average
+Przepływność zapisu (MB na sekundę) | virtualDisk.write.average
+**Na szczegóły karty sieciowej** | 
+Nazwa karty sieciowej | 10/100/1000. Głównych
+Adres MAC | (Karta sieciowa (VirtualEthernetCard)). MacAddress
 Adresy IPv4 | vm.Guest.Net
 Adresy IPv6 | vm.Guest.Net
-Przepływność odczytu (w MB na sekundę) | net.received.average
-Zapis przepływność (MB / s) | net.transmitted.average
-**Szczegóły ścieżki magazynu** | 
+Przepływność odczytu (MB na sekundę) | NET. Receive. Average
+Przepływność zapisu (MB na sekundę) | net.transmitted.average
+**Szczegóły ścieżki spisu** | 
 Name (Nazwa) | container.GetType().Name
-Typ obiektu podrzędnego | container.ChildType
-Szczegóły odwołania | kontener. MoRef
-Szczegóły nadrzędnego | Container.Parent
-Szczegóły folderu na maszynę Wirtualną | ((Folder)container).ChildEntity.Type
-Szczegóły centrum danych na maszynę Wirtualną | ((Datacenter)container).VmFolder
-Szczegóły centrum danych w folderze hosta | ((Datacenter)container).HostFolder
-Szczegóły klastra na hoście | ((ClusterComputeResource)container).Host
-Szczegóły hosta dla maszyny Wirtualnej | ((HostSystem) kontenera). MASZYNA WIRTUALNA
+Typ obiektu podrzędnego | wbudowane. Typ podrzędny
+Szczegóły odwołania | wbudowane. MoRef
+Szczegóły nadrzędne | Kontener. Parent
+Szczegóły folderu na maszynę wirtualną | ((Folder)container).ChildEntity.Type
+Szczegóły centrum danych na maszynę wirtualną | ((Centrum danych) kontener). VmFolder
+Szczegóły centrum danych na folder hosta | ((Centrum danych) kontener). HostFolder
+Szczegóły klastra na hosta | ((ClusterComputeResource)container).Host
+Szczegóły hosta na maszynę wirtualną | ((HostSystem) kontener). MASZYN
 
 
 
-## <a name="collected-performance-data-hyper-v"></a>Wydajności zebranych danych niż Hyper-V
+## <a name="collected-performance-data-hyper-v"></a>Zebrane dane wydajności — funkcja Hyper-V
 
-Poniżej przedstawiono dane wydajności maszyn wirtualnych programu VMware, które urządzenie zbiera i wysyła do usługi Azure.
+Oto dane wydajności maszyny wirtualnej VMware, które urządzenie zbiera i wysyła do platformy Azure.
 
-**Klasa licznika wydajności** | **Counter** | **Ocena wpływu**
+**Klasa licznika wydajności** | **Counter** | **Wpływ oceny**
 --- | --- | ---
-Procesor wirtualny funkcji Hypervisor Hyper-V | Czas działania gościa % | Zalecany rozmiar i kosztów maszyn wirtualnych
-Pamięć dynamiczna funkcji Hyper-V maszyny Wirtualnej | Bieżące wykorzystanie (%)<br/> Widoczna pamięć fizyczną gościa (MB) | Zalecany rozmiar i kosztów maszyn wirtualnych
-Funkcji Hyper-V wirtualne urządzenie magazynujące | Przeczytaj bajtów na sekundę | Obliczanie rozmiaru dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-Funkcji Hyper-V wirtualne urządzenie magazynujące | Zapis bajtów na sekundę | Obliczanie rozmiaru dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-Funkcji Hyper-V wirtualnej karty sieciowej | Bajty odebrane/s | Obliczanie rozmiaru maszyny Wirtualnej
-Funkcji Hyper-V wirtualnej karty sieciowej | Bajty wysłane/s | Obliczanie rozmiaru maszyny Wirtualnej
+Procesor wirtualny funkcji hypervisor funkcji Hyper-V | Czas działania gościa (%) | Zalecany rozmiar maszyny wirtualnej/koszt
+Maszyna wirtualna pamięć dynamiczna funkcji Hyper-V | Bieżące ciśnienie (%)<br/> Ilość pamięci fizycznej widocznej dla gościa (MB) | Zalecany rozmiar maszyny wirtualnej/koszt
+Wirtualne urządzenie magazynujące funkcji Hyper-V | Bajty odczytu/s | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
+Wirtualne urządzenie magazynujące funkcji Hyper-V | Bajty zapisu/s | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
+Karta Virtual Network funkcji Hyper-V | Bajty odebrane/s | Obliczanie rozmiaru maszyny wirtualnej
+Karta Virtual Network funkcji Hyper-V | Bajty wysłane/s | Obliczanie rozmiaru maszyny wirtualnej
 
-- Użycie procesora CPU jest sumą całe użycie dla wszystkich procesorów wirtualnych, dołączony do maszyny Wirtualnej.
-- Wykorzystanie pamięci (bieżące wykorzystanie * widoczna pamięć fizyczną gościa) / 100.
-- Wartości wykorzystania dysku i sieci są zbierane z wymienionych liczniki wydajności funkcji Hyper-V.
+- Użycie procesora CPU jest sumą wszystkich zastosowań dla wszystkich procesorów wirtualnych podłączonych do maszyny wirtualnej.
+- Użycie pamięci to (bieżące ciśnienie * widoczna pamięć fizyczna gościa)/100.
+- Wartości wykorzystania dysku i sieci są zbierane z wymienionych liczników wydajności funkcji Hyper-V.
 
-## <a name="collected-metadata-hyper-v"></a>Zebrane metadane niż Hyper-V
+## <a name="collected-metadata-hyper-v"></a>Zebrane metadane — funkcja Hyper-V
 
-Oto Pełna lista metadanych maszyny Wirtualnej funkcji Hyper-V, które urządzenie zbiera i wysyła do usługi Azure.
+Poniżej znajduje się pełna lista metadanych maszyn wirtualnych funkcji Hyper-V, które urządzenie zbiera i wysyła do platformy Azure.
 
-**Dane** | **Klasy usługi WMI** | **Właściwość klasy usługi WMI**
+**Dane** | **Klasa WMI** | **Właściwość klasy usługi WMI**
 --- | --- | ---
 **Szczegóły maszyny** | 
 Numer seryjny systemu BIOS _ Msvm_BIOSElement | BIOSSerialNumber
-Typ maszyny Wirtualnej (Gen 1 lub 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
-Nazwa wyświetlana maszyny Wirtualnej | Msvm_VirtualSystemSettingData | ElementName
-Wersja maszyny Wirtualnej | Msvm_ProcessorSettingData | VirtualQuantity
+Typ maszyny wirtualnej (Gen 1 lub 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
+Nazwa wyświetlana maszyny wirtualnej | Msvm_VirtualSystemSettingData | ElementName
+Wersja maszyny wirtualnej | Msvm_ProcessorSettingData | VirtualQuantity
 Pamięć (w bajtach) | Msvm_MemorySettingData | VirtualQuantity
-Maksymalna ilość pamięci, które mogą być używane przez maszynę Wirtualną | Msvm_MemorySettingData | Limit
-Pamięci dynamicznej | Msvm_MemorySettingData | DynamicMemoryEnabled
-Nazwa/wersja/nazwę FQDN systemu operacyjnego | Msvm_KvpExchangeComponent | GuestIntrinsciExchangeItems Name Data
-Stan zasilania maszyny Wirtualnej | Msvm_ComputerSystem | Atrybut EnabledState
-**Na szczegóły dysku** | 
+Maksymalna ilość pamięci, która może być używana przez maszynę wirtualną | Msvm_MemorySettingData | Limit
+Włączono pamięć dynamiczną | Msvm_MemorySettingData | DynamicMemoryEnabled
+Nazwa/wersja systemu operacyjnego/nazwa FQDN | Msvm_KvpExchangeComponent | Dane nazwy GuestIntrinsicExchangeItems
+Stan zasilacza maszyny wirtualnej | Msvm_ComputerSystem | EnabledState
+**Szczegóły dysku** | 
 Identyfikator dysku | Msvm_VirtualHardDiskSettingData | VirtualDiskId
 Typ wirtualnego dysku twardego | Msvm_VirtualHardDiskSettingData | Type
 Rozmiar wirtualnego dysku twardego | Msvm_VirtualHardDiskSettingData | MaxInternalSize
-Nadrzędny wirtualny dysk twardy | Msvm_VirtualHardDiskSettingData | ParentPath
-**Na szczegóły karty Sieciowej** | 
-Adresy IP (syntetycznych kart sieciowych) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
-Protokół DHCP włączony (syntetycznych kart sieciowych) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
-Identyfikator karty Sieciowej (syntetycznych kart sieciowych) | Msvm_SyntheticEthernetPortSettingData | Identyfikator wystąpienia
-Adres MAC karty Sieciowej (syntetycznych kart sieciowych) | Msvm_SyntheticEthernetPortSettingData | Adres
-Identyfikator kontrolera interfejsu Sieciowego (NIC starszej wersji) | MsvmEmulatedEthernetPortSetting Data | Identyfikator wystąpienia
-Identyfikator MAC karty Sieciowej (starszych kart sieciowych) | MsvmEmulatedEthernetPortSetting Data | Adres
+Element nadrzędny wirtualnego dysku twardego | Msvm_VirtualHardDiskSettingData | ParentPath
+**Na szczegóły karty sieciowej** | 
+Adresy IP (syntetyczne karty sieciowe) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
+Protokół DHCP włączony (syntetyczne karty sieciowe) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
+Identyfikator karty sieciowej (syntetyczne karty sieciowe) | Msvm_SyntheticEthernetPortSettingData | Identyfikator wystąpienia
+Adres MAC karty sieciowej (syntetyczne karty sieciowe) | Msvm_SyntheticEthernetPortSettingData | Adres
+Identyfikator karty sieciowej (starsze karty sieciowe) | MsvmEmulatedEthernetPortSetting dane | Identyfikator wystąpienia
+Identyfikator MAC karty sieciowej (starsze karty sieciowe) | MsvmEmulatedEthernetPortSetting dane | Adres
 
 
 
 
-## <a name="discovery-and-collection-process"></a>Proces odnajdywania i kolekcji
+## <a name="discovery-and-collection-process"></a>Proces odnajdywania i kolekcjonowania
 
-Urządzenia komunikuje się z serwery vCenter i hosty funkcji Hyper-V/klaster przy użyciu następującego procesu.
+Urządzenie komunikuje się z serwerami vCenter i hostami/klastrami funkcji Hyper-V przy użyciu następującego procesu.
 
 
-1. **Uruchom odnajdowanie**:
-    - Po uruchomieniu odnajdywania na urządzeniu funkcji Hyper-V komunikuje się z hostami funkcji Hyper-V na portów usługi WinRM 5985 (HTTP) i 5986 (HTTPS).
-    - Po uruchomieniu odnajdywania na urządzeniu VMware komunikuje się z oprogramowaniem vCenter server przez port 443 protokołu TCP, domyślnie. Jeśli serwer vCenter nasłuchuje na innym porcie, można skonfigurować go w aplikacji sieci web urządzenia.
-2. **Zbieranie danych wydajności i metadanych**:
-    - Urządzenie używa sesji modelu wspólnych informacji (CIM) w celu zbierania danych funkcji Hyper-V maszyny Wirtualnej z hosta funkcji Hyper-V na portach 5985 i 5986.
-    - Urządzenia komunikuje się z portu 443, aby domyślnie zbierania danych maszyn wirtualnych VMware z programu vCenter Server.
-3. **Wysyłanie danych**: Urządzenie wysyła zebrane dane do usługi Azure migracji serwera oceny i migracji serwera migracji platformy Azure za pośrednictwem portu SSL 443.
-    - Dane dotyczące wydajności urządzenie zbiera dane użycia w czasie rzeczywistym.
-        - Dane wydajności są zbierane, co 20 sekund dla oprogramowania VMware i funkcji Hyper-v, co 30 sekund dla każdego metryki wydajności.
-        - Zebrane dane są rzutowane do utworzenia pojedynczego punktu danych przez dziesięć minut.
-        - Wybrano wartość Użycie szczytowe we wszystkich 20/30 drugie punktów danych i wysyłane do platformy Azure na potrzeby obliczania oceny.
-        - Na podstawie percentyla wartości określonej we właściwościach oceny (50/90/95/99th), punkty 10 minutowe są sortowane w kolejności rosnącej, a wartość odpowiednią jest używana do obliczenia oceny
-    - Podczas migracji serwera urządzenie rozpoczyna zbieranie danych maszyny Wirtualnej i replikuje ją na platformie Azure.
-4. **Ocenianie i Migrowanie**: Teraz można utworzyć ocen z metadanych zebrany przez urządzenia przy użyciu oceny Server migracji platformy Azure. Ponadto możesz także uruchomić migracji maszyn wirtualnych VMware przy użyciu usługi Azure Migration migracji serwera do organizowania replikacji maszyny Wirtualnej bez wykorzystania agentów.
+1. **Rozpocznij odnajdowanie**:
+    - Po rozpoczęciu odnajdywania na urządzeniu funkcji Hyper-V komunikuje się z hostami funkcji Hyper-V na portach usługi WinRM 5985 (HTTP) i 5986 (HTTPS).
+    - Po rozpoczęciu odnajdywania na urządzeniu VMware program domyślnie komunikuje się z serwerem vCenter na porcie TCP 443. Jeśli serwer vCenter nasłuchuje na innym porcie, można go skonfigurować w aplikacji sieci Web urządzenia.
+2. **Zbierz dane dotyczące metadanych i wydajności**:
+    - Urządzenie używa sesji model wspólnych informacji (CIM) do zbierania danych maszyny wirtualnej funkcji Hyper-V z hosta funkcji Hyper-V na portach 5985 i 5986.
+    - Urządzenie domyślnie komunikuje się z portem 443, aby zebrać dane maszyn wirtualnych VMware z vCenter Server.
+3. **Wyślij dane**: Urządzenie wysyła zebrane dane w celu Azure Migrate oceny serwera i migracji serwera Azure Migrate przez Port SSL 443.
+    - W przypadku danych dotyczących wydajności urządzenie zbiera dane użycia w czasie rzeczywistym.
+        - Dane dotyczące wydajności są zbierane co 20 sekund dla programu VMware i co 30 sekund dla funkcji Hyper-V dla każdej metryki wydajności.
+        - Zebrane dane są zestawiane w celu utworzenia jednego punktu danych przez dziesięć minut.
+        - Wartość szczytowego wykorzystania jest wybierana ze wszystkich 20/30 drugiego punktu danych i wysyłanych do platformy Azure w celu obliczenia oceny.
+        - W oparciu o wartość percentylu określoną we właściwościach oceny (pięćdziesiąt/90/używany 95./99), dziesięć minutowe punkty są sortowane w kolejności rosnącej, a odpowiednia wartość percentylu jest używana do obliczania oceny
+    - W przypadku migracji serwera urządzenie uruchamia zbieranie danych maszyny wirtualnej i replikuje je na platformie Azure.
+4. **Ocenianie i migrowanie**: Teraz można tworzyć oceny z metadanych zebranych przez urządzenie przy użyciu funkcji oceny serwera Azure Migrate. Ponadto można rozpocząć Migrowanie maszyn wirtualnych VMware przy użyciu migracji serwera Azure Migrate, aby organizować replikację maszyn wirtualnych bez agentów.
 
 
 ![Architektura](./media/migrate-appliance/architecture.png)
 
 
-## <a name="appliance-upgrades"></a>Uaktualnienia urządzenia
+## <a name="appliance-upgrades"></a>Uaktualnienia urządzeń
 
-Urządzenie jest uaktualniany, jak agentów usługi Azure Migrate uruchomiona na urządzeniu są aktualizowane.
+Urządzenie zostanie uaktualnione w miarę aktualizowania Azure Migrate agentów działających na urządzeniu.
 
-- Zdarza się to automatycznie automatycznej aktualizacji jest domyślnie włączone na urządzeniu.
+- Dzieje się tak automatycznie, ponieważ automatyczna aktualizacja jest domyślnie włączona na urządzeniu.
 - Można zmienić to ustawienie domyślne, aby ręcznie zaktualizować agentów.
-- Aby wyłączyć automatyczne aktualizacje, należy ustawić klucz rejestru Autoaktualizacja urządzenia w HKLM\SOFTWAREMicrosoft\Azure.
+- Aby wyłączyć aktualizacje automatyczne, Ustaw automatyczne aktualizowanie urządzenia klucza rejestru w HKLM\SOFTWAREMicrosoft\Azure.
 
-### <a name="set-agent-updates-to-manual"></a>Aktualizacje agenta zestaw ręczny
+### <a name="set-agent-updates-to-manual"></a>Ustaw aktualizacje agenta na ręczne
 
-Ręczne aktualizacje, pamiętaj o zaktualizowaniu wszystkich agentów na urządzeniu w tym samym czasie za pomocą **aktualizacji** przycisku dla każdego agenta przestarzałe na urządzeniu. Ustawienie aktualizacji Przełącz się do aktualizacji automatycznych w dowolnym momencie.
+W przypadku aktualizacji ręcznych upewnij się, że wszystkie agenci na urządzeniu zostały zaktualizowane w tym samym czasie, przy użyciu przycisku **Aktualizuj** dla każdego nieaktualnego agenta na urządzeniu. Możesz w dowolnym momencie zmienić ustawienie aktualizacji na aktualizacje automatyczne.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się, jak](tutorial-assess-vmware.md#set-up-the-appliance-vm) skonfigurować urządzenie dla oprogramowania VMware.
+[Dowiedz się, jak](tutorial-assess-vmware.md#set-up-the-appliance-vm) skonfigurować urządzenie dla programu VMware.
 [Dowiedz się, jak](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) skonfigurować urządzenie dla funkcji Hyper-V.
 

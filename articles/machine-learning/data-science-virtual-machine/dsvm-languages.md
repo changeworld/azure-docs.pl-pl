@@ -5,7 +5,7 @@ description: Więcej informacji na temat języków programu i pokrewnych narzęd
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 1df3c986132de2a3e7ec9547a996abef60ea04ac
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502255"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558118"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Języki obsługiwane na maszynie wirtualnej do nauki o danych 
 
@@ -193,7 +193,7 @@ Język R jest zainstalowany na DSVM w środowisku globalnym do odczytu dla wszys
 | ------------- | ------------- |
 | Wersje językowe obsługiwane | Update 0.6 |
 | Wersje maszyny DSVM obsługiwane      | Linux, Windows     |
-| Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | W systemie Windows: Zainstalowane w `C:\JuliaPro-VERSION`<br /> W systemie Linux: Zainstalowane w `/opt/JuliaPro-VERSION`    |
+| Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | W systemie Windows: Zainstalowana o`C:\JuliaPro-VERSION`<br /> W systemie Linux: Zainstalowana o`/opt/JuliaPro-VERSION`    |
 | Zawiera linki do przykładów      | Znajdują się przykładowe notesów programu Jupyter dla Julia     |
 | Pokrewne narzędzia na maszyny DSVM      | Python, R      |
 ### <a name="how-to-use--run-it"></a>Jak używać / ją uruchomić?    
@@ -222,7 +222,7 @@ Domyślna lokalizacja Julia jest środowisku globalnym do odczytu dla wszystkich
 Otwórz terminal i po prostu uruchom `julia`. 
 * Za pomocą w środowisku IDE
 
-Użyj `Juno` IDE Julia zainstalowane na maszyny DSVM i dostępne jako skrót menu aplikacji.
+Użyj `Juno` Julia IDE zainstalowanego w DSVM i dostępne jako skrót menu aplikacji.
 
 * Używanie w aplikacji Jupyter
 
@@ -234,12 +234,12 @@ Domyślna lokalizacja Julia jest środowisku globalnym do odczytu dla wszystkich
 
 ## <a name="other-languages"></a>Inne języki
 
-**C#** : Dostępne na Windows i jest dostępny za pomocą programu Visual Studio Community edition lub na `Developer Command Prompt for Visual Studio` gdzie możesz po prostu uruchomić `csc` polecenia. 
+**C#** : Dostępne w systemie Windows i dostępne za pomocą programu Visual Studio Community Edition lub `Developer Command Prompt for Visual Studio` w miejscu, w którym `csc` można po prostu uruchomić polecenie. 
 
-**Java**: OpenJDK jest dostępna w wersji systemu Linux i Windows maszyny wirtualnej DSVM i zestawu w ścieżce. Możesz wpisać `javac` lub `java` polecenia w wierszu polecenia w Windows lub w powłoce bash w systemie Linux, aby użyć platformy Java. 
+**Język Java**: OpenJDK jest dostępna w systemie Linux i Windows w wersji DSVM i ustawiona na ścieżce. Możesz wpisać `javac` lub `java` polecenia w wierszu polecenia w Windows lub w powłoce bash w systemie Linux, aby użyć platformy Java. 
 
 **node.js**: node.js jest dostępna w wersji systemu Linux i Windows maszyny wirtualnej DSVM i zestawu w ścieżce. Możesz wpisać `node` lub `npm` polecenia w wierszu polecenia w Windows lub w powłoce bash w systemie Linux do dostępu do środowiska node.js. Na Windows narzędzia Node.js dla rozszerzenia programu Visual Studio jest zainstalowany na zapewnienie graficznego środowiska IDE do tworzenia aplikacji node.js. 
 
-**F#** : Dostępne na Windows i jest dostępny za pomocą programu Visual Studio Community edition lub na `Developer Command Prompt for Visual Studio` gdzie możesz po prostu uruchomić `fsc` polecenia. 
+**F#** : Dostępne w systemie Windows i dostępne za pomocą programu Visual Studio Community Edition lub `Developer Command Prompt for Visual Studio` w miejscu, w którym `fsc` można po prostu uruchomić polecenie. 
 
 

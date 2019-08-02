@@ -1,49 +1,49 @@
 ---
-title: Wymagania wstępne dotyczące zarządzania kontami w portalu Cloud Partner | Portal Azure Marketplace
-description: Wymagania wstępne dotyczące zarządzania kontami w portalu Azure Marketplace w portalu Cloud Partner.
+title: Wymagania wstępne dotyczące zarządzania kontami w portal Cloud Partner | Portal Azure Marketplace
+description: Wymagania wstępne dotyczące zarządzania kontami w witrynie Azure Marketplace na portal Cloud Partner.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 8c32043d9bf3ca68563ae01d415bdc0e1f6993f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62269490355414a6b75759361cd574ac7e90e162
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258142"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598672"
 ---
-# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Wymagania wstępne dotyczące zarządzania kontami w portalu Cloud Partner 
+# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Wymagania wstępne dotyczące zarządzania kontami w portal Cloud Partner 
 
-Przed użyciem [portalu Cloud Partner](https://cloudpartner.azure.com/) dowolnej funkcji, w tym zarządzania kontami, należy wykonać szereg czynności, aby zarejestrować się i ich organizacja jako wydawców chmury firmy Microsoft.
+Aby można było używać [Portal Cloud partner](https://cloudpartner.azure.com/) dla dowolnej funkcji, w tym zarządzania kontami, należy wykonać serię kroków, aby zarejestrować siebie i ich organizację jako wydawców firmy Microsoft w chmurze.
 
 
-## <a name="account-terms-and-guidelines"></a>Warunki konta i wskazówki
+## <a name="account-terms-and-guidelines"></a>Warunki i wskazówki dotyczące konta
 
-Dokładnie sprawdź swoje prawa i obowiązki w ramach [umowy o świadczenie usług firmy Microsoft](https://www.microsoft.com/servicesagreement) i [Microsoft Terms](https://www.microsoft.com/legal/intellectualproperty/copyright) przed utworzeniem konta usługi.  
+Uważnie Przejrzyj swoje prawa i obowiązki w [Umowa o świadczenie usług firmy Microsoft](https://www.microsoft.com/servicesagreement) i [warunki użytkowania firmy Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx) przed utworzeniem konta.  
 
-Wybierz nazwę swojego konta dokładnie.  Reprezentuje Twojej organizacji, więc nie powinna zawierać żadnych chronionych prawem autorskim lub sporne słów.  Na przykład Microsoft zabrania użycie jej chronionych prawem autorskim warunków, takich jak "Azure" i "Microsoft" w nazwach kont.  Aby uzyskać więcej informacji, zobacz [wytyczne dotyczące witryny Azure Marketplace](https://docs.microsoft.com/azure/marketplace/guidelines)
+Należy uważnie wybrać swoją nazwę konta.  Reprezentuje Twoją organizację, więc nie powinna zawierać żadnych wyrazów z prawami autorskimi ani contentious.  Na przykład firma Microsoft nie zabroni korzystania z postanowień dotyczących praw autorskich, takich jak "Azure" i "Microsoft", w nazwach kont.  Aby uzyskać więcej informacji, zobacz [wytyczne dotyczące portalu Azure Marketplace](https://docs.microsoft.com/azure/marketplace/guidelines)
 
 
 ## <a name="registration-steps"></a>Kroki rejestracji
 
-W poniższej tabeli wymieniono kroki niezbędne do w pełni Zarejestruj się jako wydawca chmury firmy Microsoft.  Aby uzyskać pełne instrukcje, zobacz [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher
-). 
+W poniższej tabeli przedstawiono kroki niezbędne do pełnego zarejestrowania się jako Wydawca w chmurze firmy Microsoft.  Aby uzyskać pełne instrukcje, [Zobacz Zostań wydawcą](https://docs.microsoft.com/azure/marketplace/become-publisher
+)portalu Marketplace w chmurze. 
 
 
-|                   Krok                   |  Wynikowy rejestracji lub zasobów                     |
+|                   Krok                   |  Wynikiem rejestracji lub zasobie                     |
 |                  ------                  |  -----------------------------------                    |
-| 1. Rejestrowanie w sieci Microsoft Partner Network |  Identyfikator programu Microsoft Partner Network dla Twojej organizacji |
-| 2. Utwórz konto Microsoft *           |  Element weryfikacji konta Microsoft, kończy się rozszerzeniem @outlook.com, @live.comitp. |
-| 3. Prześlij formularz rejestracji w portalu marketplace | Konto wydawcy w portalu Cloud Partner      |
-| 4. Zaloguj się do portalu Cloud Partner        | Uprawnienia do tworzenia i publikowania ofert Zarządzanie użytkowników, marketplace zbieranie metryk itp. |
-| 5. Rejestrowanie w programie Microsoft Developer Center * | Zweryfikowano konta Centrum deweloperów; uprawnienia do prowadzenia transakcji witryny marketplace  |
+| 1. Zarejestruj się w Microsoft Partner Network |  Identyfikator Microsoft Partner Network organizacji |
+| 2. Tworzenie konto Microsoft *           |  Zweryfikowane konto Microsoft, kończące @outlook.comsię @live.comna, itd. |
+| 3. Prześlij formularz rejestracji w portalu Marketplace | Konto wydawcy na portal Cloud Partner      |
+| 4. Zaloguj się do portal Cloud Partner        | Aby tworzyć i publikować oferty, zarządzać użytkownikami, zbierać metryki witryny Marketplace itp. |
+| 5. Zarejestruj się w centrum deweloperów firmy Microsoft * | Zweryfikowane konto Centrum deweloperów; Urząd do przeprowadzania transakcji w witrynie Marketplace  |
 |   |   |
 
-\* Te kroki są wymagane do portalu Azure Marketplace transact oferty, ale zdecydowanie zaleca się dla wszystkich ofert.  Po założyć konto Microsoft i zarejestrować się jako Microsoft Developer, można uzyskać dostęp do dodatkowych zasobów klienta i dla deweloperów firmy Microsoft, a także oferty dla partnerów opcjonalne.  
+\*Te kroki są wymagane w przypadku ofert Transact w portalu Azure Marketplace, ale zdecydowanie zaleca się dla wszystkich ofert.  Po ustanowieniu konto Microsoft i zarejestrowaniu jako dewelopera firmy Microsoft możesz uzyskać dostęp do dodatkowych zasobów klienta i deweloperów firmy Microsoft oraz opcjonalnych ofert partnerskich.  
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po wykonaniu kroków rejestracji należy logować się [portalu Cloud Partner](https://cloudpartner.azure.com/).  Za pomocą tego portalu do zarządzania profilami wydawcy i zarządzanie kontami użytkowników.
+Po ukończeniu kroków rejestracji powinno być możliwe zalogowanie się [Portal Cloud partner](https://cloudpartner.azure.com/).  Za pomocą tego portalu możesz zarządzać profilami wydawców, a także nimi zarządzać.

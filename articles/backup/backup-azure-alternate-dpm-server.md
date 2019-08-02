@@ -1,18 +1,19 @@
 ---
 title: Odzyskiwanie danych z Azure Backup Server
 description: Odzyskaj dane chronione do magazynu Recovery Services z dowolnego Azure Backup Server zarejestrowanego w tym magazynie.
-author: kasinh
-manager: vijayts
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: kasinh
-ms.openlocfilehash: aaa2efa706822bee85dc867ad35bc312f4c700a1
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: e3d38e9b5e1b9b9f827476acf7e2e2ecab632424
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466911"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688816"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Odzyskiwanie danych z usługi Azure Backup Server
 Za pomocą Azure Backup Server można odzyskać dane, których kopię zapasową utworzono w magazynie Recovery Services. Ten proces jest zintegrowany z konsolą zarządzania Azure Backup Server i jest podobny do przepływu pracy odzyskiwania dla innych składników Azure Backup.
@@ -44,7 +45,7 @@ Aby odzyskać dane z Azure Backup Server:
     W dolnym okienku zostanie wyświetlona lista plików i folderów, które mogą być przeglądane i odzyskiwane do dowolnej lokalizacji.
 
     ![Punkty odzyskiwania zewnętrznego serwera DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Kliknij prawym przyciskiem myszy odpowiedni element i kliknij polecenie Odzyskaj.
+5. Kliknij prawym przyciskiem myszy odpowiedni elementi kliknij polecenie Odzyskaj.
 
     ![Zewnętrzne odzyskiwanie programu DPM](./media/backup-azure-alternate-dpm-server/recover.png)
 6. Przejrzyj **zaznaczenie opcji Odzyskaj**. Sprawdź dane i czas odzyskiwania kopii zapasowej, a także źródło, z którego została utworzona kopia zapasowa. Jeśli zaznaczenie jest nieprawidłowe, kliknij przycisk **Anuluj** , aby przejść z powrotem do karty odzyskiwanie, aby wybrać odpowiedni punkt odzyskiwania. Jeśli zaznaczenie jest poprawne, kliknij przycisk **dalej**.

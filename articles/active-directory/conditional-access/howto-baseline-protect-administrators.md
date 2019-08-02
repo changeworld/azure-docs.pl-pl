@@ -1,6 +1,6 @@
 ---
-title: Bazowe zasady wymagają uwierzytelniania Wieloskładnikowego dla administratorów — usługi Azure Active Directory
-description: Zasady dostępu warunkowego, aby wymagać uwierzytelniania wieloskładnikowego dla administratorów
+title: Zasady linii bazowej wymagają uwierzytelniania wieloskładnikowego dla administratorów — Azure Active Directory
+description: Zasady dostępu warunkowego wymagające uwierzytelniania wieloskładnikowego dla administratorów
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,60 +11,60 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4474283b9a233e39497cd05f0f04ea0984f02401
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560948"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608163"
 ---
-# <a name="baseline-policy-require-mfa-for-admins-preview"></a>Zasady punktu odniesienia: Wymagać uwierzytelniania Wieloskładnikowego dla administratorów (wersja zapoznawcza)
+# <a name="baseline-policy-require-mfa-for-admins-preview"></a>Zasady linii bazowej: Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)
 
-Użytkownicy z dostępem do kont uprzywilejowanych mają nieograniczony dostęp do danego środowiska. Ze względu na mocy, posiadane przez te konta należy potraktować je za pomocą szczególną uwagę. Jednej wspólnej metody w celu zwiększenia ochrony uprzywilejowanych kont jest wymagają silniejsze formularz weryfikacji konta, gdy są one używane do logowania. W usłudze Azure Active Directory możesz uzyskać silniejsze weryfikacji konta, wymagając uwierzytelniania wieloskładnikowego (MFA).
+Użytkownicy mający dostęp do kont uprzywilejowanych mają nieograniczony dostęp do Twojego środowiska. Ze względu na moc tych kont należy traktować je z uwzględnieniem specjalnych zaopieki. Jedną z typowych metod ulepszania ochrony uprzywilejowanych kont jest wymaganie, aby w przypadku logowania się do nich była wymagana silniejsza weryfikacja konta. W Azure Active Directory można uzyskać silniejszą weryfikację konta przez wymaganie uwierzytelniania wieloskładnikowego (MFA).
 
-**Wymagać uwierzytelniania Wieloskładnikowego dla administratorów (wersja zapoznawcza)**  jest [bazowymi zasadami](concept-baseline-protection.md) wymagającym uwierzytelniania Wieloskładnikowego za każdym razem, gdy jeden z następujących ról uprzywilejowanych administrator loguje:
+**Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)**  to [zasady linii bazowej](concept-baseline-protection.md) , które wymagają uwierzytelniania wieloskładnikowego za każdym razem, gdy jedna z następujących ról uprzywilejowanego administratora:
 
 * Administrator globalny
 * Administrator programu SharePoint
 * Administrator programu Exchange
 * Administrator dostępu warunkowego
 * Administrator zabezpieczeń
-* Administrator pomocy technicznej / administrator haseł
+* Administrator pomocy technicznej/administrator haseł
 * Administrator rozliczeń
-* Administrator użytkowników
+* Administrator użytkownika
 
-Podczas włączania uwierzytelniania wymagają MFA, które Administratorzy zasad, powyżej ról administratora dziewięć będą musieli zarejestrować usługi MFA przy użyciu aplikacji uwierzytelniającej. Po zakończeniu rejestracji usługi MFA, Administratorzy muszą wykonać uwierzytelnianie wieloskładnikowe w każdym pojedynczego logowania.
+Po włączeniu zasad Wymagaj uwierzytelniania wieloskładnikowego dla administratorów w celu zarejestrowania usługi MFA przy użyciu aplikacji uwierzytelniającej wymagane są powyższe dziewięć ról administratora. Po zakończeniu rejestracji usługi MFA administratorzy będą musieli wykonywać uwierzytelnianie wieloskładnikowe przy każdym logowaniu.
 
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
-Ponieważ **Wymagaj uwierzytelniania Wieloskładnikowego dla administratorów (wersja zapoznawcza)** zasady mają zastosowanie do wszystkich administratorów krytycznych, kilka zagadnień, które należy podjąć, aby zapewnić bezproblemowe wdrożenie. Te zagadnienia obejmują identyfikowanie użytkowników i zasad usługi w usłudze Azure AD, która nie może lub nie należy wykonywać uwierzytelnianie wieloskładnikowe, a także aplikacji i używanych przez Twoją organizację klientów, które nie obsługują nowoczesnego uwierzytelniania.
+Ponieważ zasady **Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)** mają zastosowanie do wszystkich administratorów o znaczeniu krytycznym, należy wprowadzić kilka kwestii w celu zapewnienia bezproblemowego wdrożenia. Te zagadnienia obejmują Identyfikowanie użytkowników i zasad usługi w usłudze Azure AD, które nie mogą ani nie powinny wykonywać uwierzytelniania MFA, a także aplikacje i klientów używane przez organizację, które nie obsługują nowoczesnego uwierzytelniania.
 
-### <a name="legacy-protocols"></a>Starszych protokołów
+### <a name="legacy-protocols"></a>Starsze protokoły
 
-Protokoły uwierzytelniania starszej wersji (IMAP, SMTP, POP3, itp.) są używane przez klientów poczty na wysyłanie żądań uwierzytelniania. Te protokoły nie obsługują uwierzytelniania Wieloskładnikowego. Większość naruszeń konta widoczne dla firmy Microsoft są spowodowane przez nieupoważnione osoby przeprowadzania ataków na starszych protokołów próby Pomiń uwierzytelnianie wieloskładnikowe. Aby upewnić się, że usługa MFA jest wymagana podczas logowania się do konta administratora i nieupoważnione osoby nie pozwalają na pomijanie usługi MFA, ta zasada blokuje wszystkie żądania uwierzytelniania do kont administratorów starszych protokołów.
+Starsze protokoły uwierzytelniania (IMAP, SMTP, POP3 itp.) są używane przez klientów poczty do przesyłania żądań uwierzytelniania. Te protokoły nie obsługują usługi MFA. Większość naruszeń kont widzianych przez firmę Microsoft jest spowodowana przez niewłaściwym uczestnikom ataków na starsze protokoły próbujących obejść usługę MFA. Aby zapewnić, że uwierzytelnianie wieloskładnikowe jest wymagane podczas logowania do konta administracyjnego, a niewłaściwe podmioty nie mogą obejść usługi MFA, te zasady blokują wszystkie żądania uwierzytelnienia skierowane do kont administratorów ze starszych protokołów.
 
 > [!WARNING]
-> Przed włączeniem tej zasady, upewnij się, że administratorów nie są używane protokoły uwierzytelniania w starszej wersji. Zapoznaj się z artykułem [jak: Blokuj starsze uwierzytelnianie do usługi Azure AD przy użyciu dostępu warunkowego](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) Aby uzyskać więcej informacji.
+> Przed włączeniem tych zasad upewnij się, że administratorzy nie używają starszych protokołów uwierzytelniania. Zapoznaj się [z artykułem How to: Zablokuj starsze uwierzytelnianie w usłudze Azure AD](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) przy użyciu dostępu warunkowego, aby uzyskać więcej informacji.
 
-## <a name="enable-the-baseline-policy"></a>Włącz zasady linii bazowej
+## <a name="enable-the-baseline-policy"></a>Włączanie zasad linii bazowej
 
-Zasady **bazowymi zasadami: Wymagać uwierzytelniania Wieloskładnikowego dla administratorów (wersja zapoznawcza)** ma wstępnie skonfigurowany i pojawi się u góry po przejściu do bloku dostępu warunkowego w witrynie Azure portal.
+Zasady linii **bazowej zasad: Funkcja Wymagaj uwierzytelniania wieloskładnikowego dla** administratorów (wersja zapoznawcza) jest wstępnie skonfigurowana i zostanie wyświetlona u góry po przejściu do bloku dostęp warunkowy w Azure Portal.
 
 Aby włączyć te zasady i chronić administratorów:
 
-1. Zaloguj się do **witryny Azure portal** jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
-1. Przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**.
-1. Na liście zasad wybierz **bazowymi zasadami: Wymagać uwierzytelniania Wieloskładnikowego dla administratorów (wersja zapoznawcza)** .
-1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
+1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
+1. Na liście zasad wybierz pozycję **zasady linii bazowej: Wymagaj uwierzytelniania wieloskładnikowego dla administratorów**(wersja zapoznawcza).
+1. Ustaw opcję **Włącz zasady** , aby od **razu używać zasad**.
 1. Kliknij przycisk **Zapisz**.
 
 > [!WARNING]
-> Wystąpił opcję **automatycznie Włącz zasady w przyszłości** podczas tej zasady były w wersji zapoznawczej. Firma Microsoft usunęła tę opcję, aby zminimalizować jej wpływ nagłe użytkownika. Jeśli ta opcja jest zaznaczona, gdy był on dostępny, **nie używaj zasad** jest automatycznie wybierane. Jeśli firma chce korzystać z tych zasad linii bazowej, zobacz powyższe kroki, aby ją włączyć.
+> W przyszłości włączono opcję **automatycznego włączania zasad,** gdy te zasady były w wersji zapoznawczej. Firma Microsoft usunęła tę opcję, aby zminimalizować nagły wpływ na użytkowników. W przypadku wybrania tej opcji, gdy była dostępna, nie należy automatycznie wybierać **zasad** . Jeśli chcesz użyć tych zasad linii bazowej, zobacz kroki opisane powyżej, aby je włączyć.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji, zobacz:
 
-* [Zasady ochrony linii bazowej dostępu warunkowego](concept-baseline-protection.md)
-* [Pięć kroków do zabezpieczania infrastruktury tożsamości](../../security/azure-ad-secure-steps.md)
-* [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](overview.md)
+* [Zasady ochrony punktu odniesienia dostępu warunkowego](concept-baseline-protection.md)
+* [Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości](../../security/fundamentals/steps-secure-identity.md)
+* [Co to jest dostęp warunkowy w Azure Active Directory?](overview.md)

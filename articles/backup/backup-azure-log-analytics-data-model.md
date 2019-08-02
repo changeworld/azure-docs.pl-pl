@@ -1,18 +1,19 @@
 ---
 title: Model danych Azure Monitor dzienników dla Azure Backup
 description: Ten artykuł zawiera informacje o Azure Monitor szczegóły modelu danych dla Azure Backup danych.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: adigan
-ms.openlocfilehash: 6563eefffee0ed8d9ce94c3e0a1e24b0d32314f0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 878e4e7508d82f78e82f1fd8bda69079d9468e9f
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466156"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689240"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics model danych dla Azure Backup danych
 
@@ -329,12 +330,12 @@ Ta tabela zawiera podstawowe pola dotyczące serwerów zarządzania kopiami zapa
 
 |Pole  |Typ danych  | Opis  |
 |---------|---------|----------|
-|BackupManagmentServerName_s     |Text         |Nazwa serwera zarządzania kopiami zapasowymi        |
+|BackupManagementServerName_s     |Text         |Nazwa serwera zarządzania kopiami zapasowymi        |
 |AzureBackupAgentVersion_s     |Text         |Wersja agenta Azure Backup na serwerze zarządzania kopiami zapasowymi          |
-|BackupManagmentServerVersion_s     |Text         |Wersja serwera zarządzania kopiami zapasowymi|
-|BackupManagmentServerOSVersion_s     |Text            |Wersja systemu operacyjnego serwera zarządzania kopiami zapasowymi|
+|BackupManagementServerVersion_s     |Text         |Wersja serwera zarządzania kopiami zapasowymi|
+|BackupManagementServerOSVersion_s     |Text            |Wersja systemu operacyjnego serwera zarządzania kopiami zapasowymi|
 |BackupManagementServerType_s     |Text         |Typ serwera zarządzania kopiami zapasowymi, jako serwera usługi MAB, SC DPM|
-|BackupManagmentServerUniqueId_s     |Text         |Pole do unikatowego identyfikowania serwera zarządzania kopiami zapasowymi       |
+|BackupManagementServerUniqueId_s     |Text         |Pole do unikatowego identyfikowania serwera zarządzania kopiami zapasowymi       |
 
 ### <a name="preferredworkloadonvolume"></a>PreferredWorkloadOnVolume
 
@@ -367,6 +368,6 @@ Ta tabela zawiera podstawowe pola związane z punktem odzyskiwania.
 | LatestRecoveryPointTime_s |Text |Data i godzina ostatniego punktu odzyskiwania dla elementu kopii zapasowej|
 | LatestRecoveryPointLocation_s |Text |Lokalizacja najnowszego punktu odzyskiwania dla elementu kopii zapasowej|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po przejrzeniu modelu danych możesz rozpocząć [Tworzenie niestandardowych zapytań](../azure-monitor/learn/tutorial-logs-dashboards.md) w dziennikach Azure monitor, aby utworzyć własny pulpit nawigacyjny.

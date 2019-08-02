@@ -5,13 +5,13 @@ ms.author: rimman
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1bfa7104425b5013f9cdf36ff3c1dd88107d3ec7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 08/01/2019
+ms.openlocfilehash: e80e548ceae2149fe7061da42c71ee8b61f00a72
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467858"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717550"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partycjonowanie w Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Poniżej przedstawiono dobre wskazówki dotyczące wybierania klucza partycji:
 
 * Jedna partycja logiczna ma górny limit 10 GB pamięci masowej.  
 
-* Kontenery usługi Azure Cosmos mają minimalną przepływność wynoszącą 400 jednostek żądań na sekundę (RU/s). Żądania kierowane do tego samego klucza partycji nie mogą przekroczyć przepływności przydzielonego do partycji. Jeśli żądania przekraczają przydzieloną przepływność, żądania są ograniczone proporcjonalnie. Dlatego ważne jest, aby wybrać klucz partycji, który nie powoduje "gorąca" w aplikacji.
+* Kontenery usługi Azure Cosmos mają minimalną przepływność wynoszącą 400 jednostek żądań na sekundę (RU/s). Gdy w bazie danych jest obsługiwana przepływność, minimalna jednostek ru na kontener to 100 jednostek żądań na sekundę (RU/s). Żądania kierowane do tego samego klucza partycji nie mogą przekroczyć przepływności przydzielonego do partycji. Jeśli żądania przekraczają przydzieloną przepływność, żądania są ograniczone proporcjonalnie. Dlatego ważne jest, aby wybrać klucz partycji, który nie powoduje "gorąca" w aplikacji.
 
 * Wybierz klucz partycji, który ma szeroką gamę wartości i wzorców dostępu, które są równomiernie rozłożone na partycje logiczne. Dzięki temu można rozłożyć dane i działanie w kontenerze między zestawem partycji logicznych, aby zasoby na potrzeby przechowywania danych i przepływności mogły być dystrybuowane między partycjami logicznymi.
 
@@ -47,7 +47,7 @@ Poniżej przedstawiono dobre wskazówki dotyczące wybierania klucza partycji:
 
 * Kandydaci dla kluczy partycji mogą zawierać właściwości, które często pojawiają się jako filtr w zapytaniach. Zapytania mogą być efektywnie kierowane przez dołączenie klucza partycji do predykatu filtru.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Informacje o [partycjonowaniu i skalowaniu w poziomie Azure Cosmos DB](partition-data.md).
 * Informacje o [aprowizacji przepływności w Azure Cosmos DB](request-units.md).

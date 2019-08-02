@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: a53a62a7bc7a5c7f8d9bdabdf411588fdf7bd5e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7923ce10912ebb6f09c1c3d8390dd51b4f876bea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257068"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552004"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
 
@@ -30,7 +30,7 @@ Poniższy diagram przedstawia przepływ danych i składniki zaangażowane w rozw
 
 ![Projekt wizualizacji](./media/changefeed-ecommerce-solution/project-visual.png)
  
-1. **Generowanie danych:** Symulator danych służy do generowania danych sprzedaży detalicznej, które reprezentuje zdarzenia, takie jak użytkownikowi wyświetlenie elementu, dodanie elementu do koszyka ich i zakup elementu. Duży zestaw przykładowych danych można wygenerować za pomocą generatora danych. Wygenerowanych przykładowych danych zawiera dokumenty w następującym formacie:
+1. **Generowanie danych:** Symulator danych służy do generowania danych detalicznych, które reprezentują zdarzenia, takie jak Użytkownik przeglądający element, Dodawanie elementu do swojego koszyka i kupowanie elementu. Duży zestaw przykładowych danych można wygenerować za pomocą generatora danych. Wygenerowanych przykładowych danych zawiera dokumenty w następującym formacie:
    
    ```json
    {      
@@ -41,17 +41,17 @@ Poniższy diagram przedstawia przepływ danych i składniki zaangażowane w rozw
    }
    ```
 
-2. **Cosmos DB:** Wygenerowane dane jest sklepów w kolekcji usługi Azure Cosmos DB.  
+2. **Cosmos DB:** Wygenerowane dane są przechowywane w kolekcji Azure Cosmos DB.  
 
-3. **Zmień źródło danych:** Kanał informacyjny zmian w oczekiwaniu na zmiany w kolekcji usługi Azure Cosmos DB. Każdorazowo nowy dokument zostanie dodany do kolekcji (to znaczy po wystąpieniu zdarzenia, od takich użytkowników, wyświetlanie elementu Dodawanie elementu do koszyka ich lub zakupu element), zmiana źródła danych będą wyzwalać [funkcji platformy Azure](../azure-functions/functions-overview.md).  
+3. **Źródło zmian:** Źródło zmian będzie nasłuchiwać zmian w kolekcji Azure Cosmos DB. Każdorazowo nowy dokument zostanie dodany do kolekcji (to znaczy po wystąpieniu zdarzenia, od takich użytkowników, wyświetlanie elementu Dodawanie elementu do koszyka ich lub zakupu element), zmiana źródła danych będą wyzwalać [funkcji platformy Azure](../azure-functions/functions-overview.md).  
 
-4. **Funkcja platformy Azure:** Funkcja Azure przetwarza nowe dane i wysyła je do [usługi Azure Event Hub](../event-hubs/event-hubs-about.md).  
+4. **Funkcja platformy Azure:** Funkcja platformy Azure przetwarza nowe dane i wysyła je do [centrum zdarzeń platformy Azure](../event-hubs/event-hubs-about.md).  
 
-5. **Centrum zdarzeń:** Azure Event Hub przechowuje te zdarzenia i wysyła je do [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) podczas dalszej analizy.  
+5. **Centrum zdarzeń:** Usługa Azure Event Hub przechowuje te zdarzenia i wysyła je do [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) w celu przeprowadzenia dalszej analizy.  
 
-6. **Usługa Azure Stream Analytics:** Usługa Azure Stream Analytics definiuje zapytania, aby przetwarzać zdarzenia i przeprowadzać analizy danych w czasie rzeczywistym. Te dane są następnie wysyłane do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Azure Stream Analytics:** Azure Stream Analytics definiuje zapytania do przetwarzania zdarzeń i wykonywania analizy danych w czasie rzeczywistym. Te dane są następnie wysyłane do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
 
-7. **Power BI:** Usługa Power BI umożliwia wizualizowanie danych wysłanych przez usługę Azure Stream Analytics. Możesz utworzyć pulpit nawigacyjny, aby zobaczyć, jak zmienić metryki w czasie rzeczywistym.  
+7. **Power BI:** Power BI służy do wizualizacji danych wysyłanych przez Azure Stream Analytics. Możesz utworzyć pulpit nawigacyjny, aby zobaczyć, jak zmienić metryki w czasie rzeczywistym.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -165,7 +165,7 @@ Aby wyświetlić kanał informacyjny zmian przetwarzaniu nowe akcje w witrynie h
 
 1. Przejdź z powrotem do repozytorium w Eksploratorze plików, a następnie kliknij prawym przyciskiem myszy **ChangeFeedFunction.sln** ponownie otworzyć nowe okno programu Visual Studio.  
 
-2. Przejdź do **App.config** pliku. W ramach `<appSettings>` zablokować, Dodaj punkt końcowy i unikatowych **klucz podstawowy** z kontem usługi Azure Cosmos DB, który pobranym wcześniej.  
+2. Przejdź do pliku **App. config** . W bloku Dodaj punkt końcowy i unikatowy **klucz podstawowy** , który został wcześniej pobrany z konta Azure Cosmos DB. `<appSettings>`  
 
 3. Dodaj w **kolekcji** i **bazy danych** nazwy. (Te nazwy powinny być **changefeedlabcollection** i **changefeedlabdatabase** dopóki nie zdecydujesz się nazwę należy do Ciebie inaczej.)
 
@@ -316,7 +316,7 @@ Usługa Power BI to pakiet narzędzi do analizy biznesowej do analizowania danyc
 
    ![wizualizacje](./media/changefeed-ecommerce-solution/visualizations.png)
 
-## <a name="optional-visualize-with-an-e-commerce-site"></a>Opcjonalnie: Wizualizowanie przy użyciu witryny handlu elektronicznego
+## <a name="optional-visualize-with-an-e-commerce-site"></a>Opcjonalnie: Wizualizowanie w witrynie handlu elektronicznego
 
 Teraz odbywa się w sposób korzystania z nowego narzędzia analizy danych nawiązać połączenia z lokacją rzeczywistych handlu elektronicznego. Aby można było utworzyć w witrynie handlu elektronicznego, umożliwiają przechowywanie listy Kategorie produktów (dla kobiet, mężczyzn, Brak danych), katalog produktów i listę najpopularniejszych elementów bazą danych Azure Cosmos DB.
 

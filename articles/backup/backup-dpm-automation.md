@@ -1,18 +1,19 @@
 ---
 title: Azure Backup — używanie programu PowerShell do tworzenia kopii zapasowych obciążeń programu DPM
 description: Dowiedz się, jak wdrażać Azure Backup dla Data Protection Manager (DPM) przy użyciu programu PowerShell i zarządzać nimi
-author: kasinh
-manager: vvithal
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/23/2017
-ms.author: adigan
-ms.openlocfilehash: a269db3d97f23c16e848026ce78fc04c7a1182e8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 8e17747e2f1f29243215eac85e4e5fa761e11692
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465133"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688929"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Wdrażanie kopii zapasowych serwerów Data Protection Manager (DPM) na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 
@@ -239,7 +240,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 W tej sekcji dodasz serwer produkcyjny do programu DPM, a następnie włączy się ochronę danych do lokalnego magazynu programu DPM, a następnie do Azure Backup. W przykładach pokazano, jak utworzyć kopię zapasową plików i folderów. Logikę można łatwo rozszerzyć, aby utworzyć kopię zapasową dowolnego źródła danych obsługiwanego przez program DPM. Wszystkie kopie zapasowe programu DPM podlegają grupie ochrony (PG) z czterema częściami:
 
-1. **Członkowie grupy** to lista wszystkich obiektów chronionych (nazywanych również źródłami danych w  programie DPM), które mają być chronione w tej samej grupie ochrony. Na przykład może być konieczne Ochrona maszyn wirtualnych w ramach jednej grupy ochrony i SQL Server baz danych w innej grupie ochrony, ponieważ mogą one mieć różne wymagania dotyczące kopii zapasowych. Aby można było utworzyć kopię zapasową dowolnego źródła danych na serwerze produkcyjnym, należy upewnić się, że Agent programu DPM jest zainstalowany na serwerze i jest zarządzany przez program DPM. Postępuj zgodnie z instrukcjami dotyczącymi [instalowania agenta programu DPM](https://technet.microsoft.com/library/bb870935.aspx) i łączenia go z odpowiednim serwerem programu DPM.
+1. **Członkowie grupy** to lista wszystkich obiektów chronionych (nazywanych również źródłami danych w programie DPM), które mają być chronione w tej samej grupie ochrony. Na przykład może być konieczne Ochrona maszyn wirtualnych w ramach jednej grupy ochrony i SQL Server baz danych w innej grupie ochrony, ponieważ mogą one mieć różne wymagania dotyczące kopii zapasowych. Aby można było utworzyć kopię zapasową dowolnego źródła danych na serwerze produkcyjnym, należy upewnić się, że Agent programu DPM jest zainstalowany na serwerze i jest zarządzany przez program DPM. Postępuj zgodnie z instrukcjami dotyczącymi [instalowania agenta programu DPM](https://technet.microsoft.com/library/bb870935.aspx) i łączenia go z odpowiednim serwerem programu DPM.
 2. **Metoda ochrony danych** określa docelowe lokalizacje kopii zapasowych — taśmę, dysk i chmurę. W naszym przykładzie będziemy chronić dane na dysku lokalnym i w chmurze.
 3. **Harmonogram tworzenia kopii zapasowych** , który określa, kiedy należy wykonać kopie zapasowe, oraz częstotliwość synchronizacji danych między serwerem programu DPM a serwerem produkcyjnym.
 4. **Harmonogram przechowywania** określający, jak długo mają być przechowywane punkty odzyskiwania na platformie Azure.
@@ -252,7 +253,7 @@ Zacznij od utworzenia nowej grupy ochrony przy użyciu polecenia cmdlet [New-DPM
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-Powyższe polecenie cmdlet utworzy grupę ochrony o nazwie *ProtectGroup01*. Istniejącą grupę ochrony można również zmodyfikować później, aby dodać kopię zapasową do chmury platformy Azure. Jednak aby wprowadzić zmiany do grupy ochrony — nowe lub istniejące — musimy uzyskać dojście do modyfikowalnego obiektu za pomocą  polecenia cmdlet [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) .
+Powyższe polecenie cmdlet utworzy grupę ochrony o nazwie *ProtectGroup01*. Istniejącą grupę ochrony można również zmodyfikować później, aby dodać kopię zapasową do chmury platformy Azure. Jednak aby wprowadzić zmiany do grupy ochrony — nowe lub istniejące — musimy uzyskać dojście do modyfikowalnego obiektu za pomocą polecenia cmdlet [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) .
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
@@ -273,7 +274,7 @@ Lista serwerów, na których zainstalowano agenta programu DPM i jest zarządzan
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains “productionserver01”}
 ```
 
-Teraz Pobierz listę źródeł ```$server``` danych przy użyciu polecenia cmdlet [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) . W tym przykładzie stosujemy filtrowanie dla woluminu *D:\\*  , który chcemy skonfigurować do tworzenia kopii zapasowych. To źródło danych jest następnie dodawane do grupy ochrony przy użyciu polecenia cmdlet [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) . Należy pamiętać, aby  użyć obiektu ```$MPG``` grupy ochrony modyfikowalnej w celu dodania.
+Teraz Pobierz listę źródeł ```$server``` danych przy użyciu polecenia cmdlet [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) . W tym przykładzie stosujemy filtrowanie dla woluminu *D:\\*  , który chcemy skonfigurować do tworzenia kopii zapasowych. To źródło danych jest następnie dodawane do grupy ochrony przy użyciu polecenia cmdlet [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) . Należy pamiętać, aby użyć obiektu ```$MPG``` grupy ochrony modyfikowalnej w celu dodania.
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains “D:\” }

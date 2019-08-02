@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 01247dfc0046ef722d70fe48f7ab8ee63f685962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0236491f9ebc8e3ecf7df8b74db4fd5ff441c7f8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153569"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677437"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Tworzenie i aprowizowanie symulowanego urządzenia TPM Edge na Windows
 
@@ -46,7 +46,7 @@ Po utworzeniu rejestracji w usłudze DPS mają okazję do deklarowania **począt
 
 Wybierz język zestawu SDK, który ma używać do tworzenia symulowanego urządzenia, a następnie postępuj zgodnie z instrukcjami, do czasu utworzenia rejestracji indywidualnej.
 
-Podczas tworzenia rejestracji indywidualnej wybrać **Włącz** Aby zadeklarować, że symulowanego urządzenia TPM na komputerze deweloperskim Windows jest **urządzenie usługi IoT Edge**.
+Podczas tworzenia rejestracji indywidualnej wybierz **wartość true** , aby zadeklarować, że symulowane urządzenie TPM na komputerze deweloperskim systemu Windows jest **urządzeniem IoT Edge**.
 
 Symulowane urządzenie i przewodniki dotyczące rejestracji indywidualnej:
 
@@ -66,9 +66,9 @@ Po zakończeniu pracy w poprzedniej sekcji, powinien zostać wyświetlony nowe u
 
 Postępuj zgodnie z instrukcjami, aby zainstalować środowisko uruchomieniowe usługi IoT Edge na urządzeniu z systemem symulowanego modułu TPM z poprzedniej sekcji. Upewnij się, że Konfigurowanie środowiska uruchomieniowego usługi IoT Edge do automatycznego, nie ręcznego inicjowania obsługi.
 
-Znasz usłudze DPS **zakres identyfikatorów** i urządzenia **identyfikator rejestracji** przed zainstalowaniem usługi IoT Edge na urządzeniu.
+Przed zainstalowaniem IoT Edge na urządzeniu należy znać **zakres identyfikatorów** DPS i **Identyfikator rejestracji** urządzenia.
 
-[Instalowanie oraz automatycznie aprowizować usługi IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[Zainstaluj i automatycznie Udostępnij IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>Sprawdź pomyślnej instalacji
 

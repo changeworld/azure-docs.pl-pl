@@ -1,18 +1,19 @@
 ---
 title: Tworzenie kopii zapasowej w trybie offline lub początkowe rozpełnianie przy użyciu usługi Azure Import/Export Azure Backup
 description: Dowiedz się, jak Azure Backup umożliwia wysyłanie danych z sieci przy użyciu usługi Azure Import/Export. W tym artykule opisano umieszczanie w trybie offline początkowych danych kopii zapasowej za pomocą usługi eksportowej platformy Azure.
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: saurse
-ms.openlocfilehash: e852e1595be5b564bd1a6326d41115496284506f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 2c628b94879e54616f294e4c5f349f241fbbb98b
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466786"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689473"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Przepływ pracy tworzenia kopii zapasowych w trybie offline w usłudze Azure Backup
 Azure Backup ma kilka wbudowanych wydajności, które oszczędzają koszty związane z siecią i magazynem podczas wstępnej pełnej kopii zapasowej danych na platformie Azure. Wstępne pełne kopie zapasowe zwykle przesyłają duże ilości danych i wymagają większej przepustowości sieci w porównaniu z kolejnymi kopiami zapasowymi, które przesyłają tylko różnice/przyrosty. W procesie umieszczania w trybie offline, Azure Backup mogą używać dysków do przekazywania danych kopii zapasowej w trybie offline do platformy Azure.

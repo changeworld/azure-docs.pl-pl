@@ -1,6 +1,6 @@
 ---
-title: Aktualizowanie i ponowne uruchomienie węzłów systemu Linux przy użyciu kured w usłudze Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak zaktualizować węzłów systemu Linux i Automatyczny ponowny rozruch je za pomocą kured w usłudze Azure Kubernetes Service (AKS)
+title: Aktualizowanie i ponowne uruchamianie węzłów systemu Linux przy użyciu usługi kured w usłudze Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak aktualizować węzły systemu Linux i automatycznie ponownie uruchamiać je za pomocą kured w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,82 +8,82 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mlearned
 ms.openlocfilehash: 580d1316c2bfc6514a148ed6fba78a8e77bd880e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67614903"
 ---
-# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Stosowanie zabezpieczeń i aktualizacji jądra do węzłów systemu Linux w usłudze Azure Kubernetes Service (AKS)
+# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Stosowanie aktualizacji zabezpieczeń i jądra do węzłów systemu Linux w usłudze Azure Kubernetes Service (AKS)
 
-Aby chronić klastrów, aktualizacje zabezpieczeń są automatycznie stosowane do węzłów systemu Linux w usłudze AKS. Te aktualizacje obejmują poprawki zabezpieczeń systemu operacyjnego lub aktualizacji jądra. Niektóre z tych aktualizacji konieczne jest ponowne uruchomienie węzła, aby ukończyć proces. AKS, nie automatycznie wykonać ponowne uruchomienie tych węzłów systemu Linux, aby zakończyć proces aktualizacji.
+W celu ochrony klastrów aktualizacje zabezpieczeń są automatycznie stosowane do węzłów systemu Linux w programie AKS. Te aktualizacje obejmują poprawki zabezpieczeń systemu operacyjnego lub aktualizacje jądra. Niektóre z tych aktualizacji wymagają ponownego uruchomienia węzła w celu ukończenia procesu. AKS nie uruchamia automatycznie ponownie tych węzłów systemu Linux w celu ukończenia procesu aktualizacji.
 
-Proces aktualizowania węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) jest nieco inny. Węzły systemu Windows Server nie otrzymasz codzienne aktualizacje. Zamiast tego należy wykonać uaktualnienie AKS, która wdraża nowe węzły za pomocą najnowszego podstawowego obrazu Windows Server i poprawki. W przypadku klastrów usługi AKS, które używają węzłów systemu Windows Server, zobacz [uaktualnienia pulę węzłów w usłudze AKS][nodepool-upgrade].
+Proces zachowywania węzłów systemu Windows Server (obecnie w wersji zapoznawczej w programie AKS) jest nieco inny. Węzły systemu Windows Server nie otrzymują codziennych aktualizacji. Zamiast tego wykonywana jest aktualizacja AKS, która wdraża nowe węzły z najnowszym obrazem i poprawkami podstawowego serwera systemu Windows. W przypadku klastrów AKS korzystających z węzłów systemu Windows Server zobacz [uaktualnianie puli węzłów w AKS][nodepool-upgrade].
 
-W tym artykule dowiesz się, jak używać typu open-source [kured (KUbernetes ponownie uruchomić demona)][kured] obejrzeć dla węzłów systemu Linux, które wymagają ponownego uruchomienia, a następnie automatycznie obsługiwać ponowne uruchomienia zasobników i języka node, ponowne uruchomienie procesu.
+W tym artykule opisano sposób użycia [demona ponownego rozruchu kured (KUbernetes)][kured] w celu obejrzenia węzłów systemu Linux, które wymagają ponownego uruchomienia, a następnie automatycznie obsłużyć ponowne planowanie procesów uruchamiania i ponownego uruchamiania węzła.
 
 > [!NOTE]
-> `Kured` to projekt typu open source przez Weaveworks. Pomoc techniczna dla tego projektu w usłudze AKS jest świadczona na zasadzie największej staranności. Dodatkowej pomocy technicznej można znaleźć w kanale usługi slack #weave społeczności instytucji rządowych.
+> `Kured`jest projektem "open source" przez Weaveworks. Pomoc techniczna dla tego projektu w programie AKS jest dostarczana na podstawie najlepszego wysiłku. Dodatkową pomoc techniczną można znaleźć w kanale czasu bez#weaveowego Wspólnoty.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zapoznaj się z przewodnikiem Szybki Start AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub [przy użyciu Azure Portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
+Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-## <a name="understand-the-aks-node-update-experience"></a>Zrozumieć działanie aktualizacji węzłów AKS
+## <a name="understand-the-aks-node-update-experience"></a>Opis środowiska aktualizacji węzła AKS
 
-W klastrze AKS węzły rozwiązania Kubernetes, Uruchom jako maszyn wirtualnych (VM). Te maszyny wirtualne z opartych na systemie Linux Użyj obrazu systemu Ubuntu w systemie operacyjnym skonfigurowany tak, aby automatycznie sprawdzać dostępność aktualizacji każdej nocy. Jeśli są dostępne, zabezpieczeń lub aktualizacji jądra, są one automatyczne pobranie i zainstalowanie.
+W klastrze AKS węzły Kubernetes są uruchamiane jako maszyny wirtualne platformy Azure. Te maszyny wirtualne z systemem Linux używają obrazu Ubuntu z systemem operacyjnym skonfigurowanym do automatycznego sprawdzania dostępności aktualizacji w każdej nocy. Jeśli aktualizacje zabezpieczeń lub jądra są dostępne, zostaną automatycznie pobrane i zainstalowane.
 
-![Węzeł AKS aktualizacji i ponownym uruchomieniu przetwarzanie za pomocą kured](media/node-updates-kured/node-reboot-process.png)
+![Proces aktualizacji i ponownego uruchamiania węzła AKS przy użyciu kured](media/node-updates-kured/node-reboot-process.png)
 
-Niektóre aktualizacje zabezpieczeń, takich jak aktualizacji jądra wymaga ponownego uruchomienia węzła, aby zakończyć proces. Węzeł systemu Linux, który wymaga ponownego uruchomienia, tworzy plik o nazwie */var/run/reboot-required*. Ten proces ponownego rozruchu nie jest realizowane automatycznie.
+Niektóre aktualizacje zabezpieczeń, takie jak aktualizacje jądra, wymagają ponownego uruchomienia węzła w celu sfinalizowania procesu. Węzeł systemu Linux wymagający ponownego uruchomienia tworzy plik o nazwie */var/run/reboot-Required*. Ten proces ponownego uruchamiania nie odbywa się automatycznie.
 
-Można użyć własnych przepływów pracy i procesów do obsługi ponownego uruchomienia węzła, lub użyj `kured` do organizowania procesu. Za pomocą `kured`, [DaemonSet][DaemonSet] wdrożeniu, które jest uruchamiane zasobnik w każdym węźle klastra systemu Linux. Te zasobniki w element DaemonSet poszukaj istnienie */var/run/reboot-required* pliku, a następnie inicjuje proces ponownego uruchomienia w węzłach.
+Możesz użyć własnych przepływów pracy i procesów do obsługi ponownych uruchomień węzłów lub użyć `kured` , aby zorganizować proces. W `kured`programie wdrożono [elementu daemonset][DaemonSet] , który działa pod względem każdego węzła systemu Linux w klastrze. Te zasobniki w elementu daemonset zaobserwują obecność pliku */var/run/reboot-Required* , a następnie inicjuje proces ponownego uruchamiania węzłów.
 
-### <a name="node-upgrades"></a>Uaktualnienia węzła
+### <a name="node-upgrades"></a>Uaktualnienia węzłów
 
-Brak dodatkowych procesów w usłudze AKS, która umożliwia *uaktualnienia* klastra. Uaktualnienie jest zwykle przejść do nowszej wersji platformy Kubernetes, nie tylko zastosować aktualizacje zabezpieczeń węzła. Uaktualnienie AKS wykonuje następujące czynności:
+Istnieje dodatkowy proces w AKS, który umożliwia *uaktualnienie* klastra. Uaktualnienie zazwyczaj jest przenoszone do nowszej wersji programu Kubernetes, a nie tylko w przypadku aktualizacji zabezpieczeń węzła. Uaktualnienie AKS wykonuje następujące akcje:
 
-* Nowy węzeł jest wdrażana przy użyciu najnowszych aktualizacji zabezpieczeń i wersję rozwiązania Kubernetes stosowane.
-* Węzła starego odizolowywane i opróżniane.
-* Zasobniki są planowane w nowym węźle.
-* Węzła starego jest usuwany.
+* Nowy węzeł zostanie wdrożony z najnowszymi aktualizacjami zabezpieczeń i zastosowanymi wersjami Kubernetes.
+* Stary węzeł jest odizolowywane i opróżniany.
+* Na nowym węźle są planowane nowe zasobniki.
+* Stary węzeł zostanie usunięty.
 
-Nie można nadal korzystać z tej samej wersji platformy Kubernetes, podczas uaktualniania zdarzeń. Należy określić nowszą wersję rozwiązania Kubernetes. Aby przeprowadzić uaktualnienie do najnowszej wersji platformy Kubernetes, możesz [Uaktualnianie klastra usługi AKS][aks-upgrade].
+Nie można pozostawać w tej samej wersji Kubernetes podczas zdarzenia uaktualniania. Należy określić nowszą wersję programu Kubernetes. Aby uaktualnić do najnowszej wersji programu Kubernetes, można [uaktualnić klaster AKS][aks-upgrade].
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>Wdrażanie kured w klastrze AKS
 
-Aby wdrożyć `kured` DaemonSet, Zastosuj poniższy przykład kodu YAML manifestu ze strony projektu usługi GitHub. Tego manifestu tworzy rolę i rolę klastra, powiązania i konto usługi, a następnie wdraża przy użyciu DaemonSet `kured` wersji 1.1.0 obsługuje klastry usługi AKS 1.9 lub nowsze.
+Aby wdrożyć `kured` elementu daemonset, zastosuj następujący przykładowy manifest YAML ze strony projektu GitHub. Ten manifest tworzy rolę i rolę klastra, powiązania i konto usługi, a następnie wdraża elementu daemonset przy użyciu `kured` wersji 1.1.0, która obsługuje klastry AKS 1,9 lub nowsze.
 
 ```console
 kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
 ```
 
-Można również skonfigurować dodatkowe parametry `kured`, takich jak integracja z Prometheus lub Slack. Aby uzyskać więcej informacji na temat dodatkowe parametry konfiguracyjne, zobacz [docs instalacji kured][kured-install].
+Możesz również skonfigurować dodatkowe parametry dla `kured`, takie jak integracja z Prometheus lub zapasem czasu. Aby uzyskać więcej informacji na temat dodatkowych parametrów konfiguracji, zobacz dokumentację [instalacji kured][kured-install].
 
 ## <a name="update-cluster-nodes"></a>Aktualizowanie węzłów klastra
 
-Domyślnie węzłów systemu Linux w usłudze AKS sprawdzał dostępność aktualizacji co wieczór. Jeśli nie chcesz czekać, należy ręcznie wykonać aktualizację, aby sprawdzić, czy `kured` działa poprawnie. Najpierw wykonaj kroki, aby [SSH do jednego z węzłów AKS][aks-ssh]. Gdy masz połączenie SSH z węzłem systemu Linux, sprawdź dostępność aktualizacji i zastosować je w następujący sposób:
+Domyślnie węzły systemu Linux w programie AKS sprawdzają dostępność aktualizacji co wieczór. Jeśli nie chcesz czekać, możesz ręcznie wykonać aktualizację, aby sprawdzić, czy `kured` działa poprawnie. Najpierw postępuj zgodnie z instrukcjami protokołu [SSH do jednego z węzłów AKS][aks-ssh]. Po nawiązaniu połączenia SSH z węzłem systemu Linux Sprawdź, czy są dostępne aktualizacje i zastosuj je w następujący sposób:
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
-Jeśli aktualizacje zostały zastosowane, które wymagają ponownego uruchomienia węzła, plik jest zapisywany do */var/run/reboot-required*. `Kured` sprawdza, czy węzły, które wymagają ponownego uruchomienia co 60 minut domyślnie.
+Jeśli zastosowano aktualizacje, które wymagają ponownego uruchomienia węzła, plik jest zapisywana w */var/run/reboot-Required*. `Kured`sprawdza węzły, które domyślnie wymagają ponownego uruchomienia co 60 minut.
 
-## <a name="monitor-and-review-reboot-process"></a>Monitoruj i Przeglądaj ponownego uruchomienia procesu
+## <a name="monitor-and-review-reboot-process"></a>Monitorowanie i przeglądanie procesu ponownego uruchamiania
 
-Po jednej z replik w element DaemonSet wykrył, że wymagany jest ponowny rozruch węzła, blokady jest umieszczany w węźle za pomocą interfejsu API rozwiązania Kubernetes. Ta blokada uniemożliwia dodatkowe zasobniki zaplanowane w węźle. Blokada wskazuje również, że tylko jeden węzeł powinien zostać przeprowadzony ponowny rozruch w danym momencie. Z węzłem odizolowywane zasobników uruchomione są opróżniane z węzła, a węzeł został ponownie uruchomiony.
+Gdy jedna z replik w elementu daemonset wykryła, że wymagane jest ponowne uruchomienie węzła, blokada jest umieszczana w węźle za pomocą interfejsu API Kubernetes. Ta blokada uniemożliwia zaplanowanie dodatkowych magazynów w węźle. Blokada wskazuje również, że tylko jeden węzeł należy uruchomić ponownie w danym momencie. Gdy węzeł odizolowywane off, uruchomione zasobniki są opróżniane z węzła, a węzeł zostanie ponownie uruchomiony.
 
-Możesz monitorować stan węzłów przy użyciu [kubectl get-węzły][kubectl-get-nodes] polecenia. Następujące przykładowe dane wyjściowe pokazuje węzła ze stanem *SchedulingDisabled* jako węzeł przygotowuje się do procesu rozruchu:
+Stan węzłów można monitorować za pomocą polecenia [polecenia kubectl Get nodes][kubectl-get-nodes] . Poniższe przykładowe dane wyjściowe przedstawiają węzeł o stanie *SchedulingDisabled* jako węzeł przygotowuje się do ponownego uruchomienia procesu:
 
 ```
 NAME                       STATUS                     ROLES     AGE       VERSION
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-Po zakończeniu procesu aktualizacji można wyświetlić stan węzłów przy użyciu [kubectl get-węzły][kubectl-get-nodes] polecenia `--output wide` parametru. Te dodatkowe dane wyjściowe pozwala zobaczyć różnicę w *wersja jądra* z jego węzłów podrzędnych, jak pokazano w następujących przykładowych danych wyjściowych. *Aks-nodepool1-28993262-0* został zaktualizowany w poprzednim kroku oraz wersja jądra pokazuje *4.15.0-1039-azure*. Węzeł *aks-nodepool1-28993262-1* który nie został zaktualizowany przedstawiono wersja jądra *4.15.0-1037-azure*.
+Po zakończeniu procesu aktualizacji można wyświetlić stan węzłów za pomocą polecenia [polecenia kubectl Pobierz węzły][kubectl-get-nodes] z `--output wide` parametrem. To dodatkowe wyjście pozwala zobaczyć różnicę w *wersji jądra* węzłów źródłowych, jak pokazano w poniższych przykładowych danych wyjściowych. Element *AKS-nodepool1-28993262-0* został zaktualizowany w poprzednim kroku i zawiera wersję jądra *4.15.0-1039-Azure*. Węzeł *AKS-nodepool1-28993262-1* , który nie został zaktualizowany, zawiera wersję jądra *4.15.0-1037-Azure*.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
@@ -91,11 +91,11 @@ aks-nodepool1-28993262-0   Ready     agent     1h        v1.11.7   10.240.0.4   
 aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5    <none>        Ubuntu 16.04.6 LTS   4.15.0-1037-azure   docker://3.0.4
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule szczegółowo sposób użycia `kured` do węzłów systemu Linux do automatycznego ponownego rozruchu jako część procesu aktualizacji zabezpieczeń. Aby przeprowadzić uaktualnienie do najnowszej wersji platformy Kubernetes, możesz [Uaktualnianie klastra usługi AKS][aks-upgrade].
+W tym artykule szczegółowo opisano `kured` sposób automatycznego ponownego uruchamiania węzłów systemu Linux w ramach procesu aktualizacji zabezpieczeń. Aby uaktualnić do najnowszej wersji programu Kubernetes, można [uaktualnić klaster AKS][aks-upgrade].
 
-W przypadku klastrów usługi AKS, które używają węzłów systemu Windows Server, zobacz [uaktualnienia pulę węzłów w usłudze AKS][nodepool-upgrade].
+W przypadku klastrów AKS korzystających z węzłów systemu Windows Server zobacz [uaktualnianie puli węzłów w AKS][nodepool-upgrade].
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured

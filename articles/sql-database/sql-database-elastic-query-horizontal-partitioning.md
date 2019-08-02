@@ -1,6 +1,6 @@
 ---
-title: Raportowanie w bazach danych skalowanych w poziomie cloud | Dokumentacja firmy Microsoft
-description: jak skonfigurować zapytania elastyczne za pośrednictwem poziomych partycji
+title: Raportowanie w ramach skalowalnych baz danych w chmurze | Microsoft Docs
+description: Jak skonfigurować zapytania elastyczne na partycjach poziomych
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,44 +10,43 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 3b2b472407175df307c569704d4c7611737c4ea1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1416cbdc29d355e2ed83737140b46306de734127
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60694358"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568578"
 ---
-# <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Raportowanie we wszystkich bazach danych w chmurze skalowanych w poziomie (wersja zapoznawcza)
+# <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Raportowanie w skalowanych bazach danych w chmurze (wersja zapoznawcza)
 
-![Zapytanie między fragmentami][1]
+![Zapytanie w fragmentów][1]
 
-Bazy danych podzielonej na fragmenty Rozmieść wiersze danych skalowanych w poziomie warstwy. Schemat jest taka sama dla wszystkich uczestniczących baz danych, nazywana również partycjonowanie poziome. Przy użyciu zapytania elastycznego, można tworzyć raporty, które rozciągają się wszystkie bazy danych w bazie danych podzielonych na fragmenty.
+Bazy danych podzielonej na fragmenty dystrybuują wiersze w warstwie danych skalowanych w poziomie. Schemat jest identyczny we wszystkich uczestniczących bazach danych, nazywany również partycjonowaniem poziomym. Przy użyciu zapytania elastycznego można tworzyć raporty obejmujące wszystkie bazy danych w bazie danych podzielonej na fragmenty.
 
-Aby szybko rozpocząć pracę, zobacz [raportowanie we wszystkich bazach danych w chmurze skalowanych w poziomie](sql-database-elastic-query-getting-started.md).
+Aby zapoznać się z przewodnikiem Szybki Start, zobacz [raportowanie w skalowalnych bazach danych w chmurze](sql-database-elastic-query-getting-started.md).
 
-Dla baz danych innych niż podzielonej na fragmenty, zobacz [zapytań w bazach danych w chmurze z różnymi schematami](sql-database-elastic-query-vertical-partitioning.md).
+W przypadku baz danych innych niż podzielonej na fragmenty zobacz [zapytania w bazach danych w chmurze z różnymi schematami](sql-database-elastic-query-vertical-partitioning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Tworzenie mapy fragmentów za pomocą biblioteki klienckiej elastycznej bazy danych. zobacz [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md). Lub użyj przykładowej aplikacji w [Rozpocznij pracę z narzędziami elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
-* Możesz również zapoznać się [Migrowanie istniejących baz danych do baz danych skalowanych w poziomie](sql-database-elastic-convert-to-use-elastic-tools.md).
-* Użytkownik musi mieć uprawnienie ALTER ANY zewnętrznego źródła danych. To uprawnienie jest dołączony do uprawnienie ALTER DATABASE.
-* Aby odwołać się do bazowego źródła danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.
+* Utwórz mapę fragmentu przy użyciu biblioteki klienta Elastic Database. Zobacz [Zarządzanie mapami fragmentu](sql-database-elastic-scale-shard-map-management.md). Lub użyj przykładowej aplikacji w temacie Rozpoczynanie [pracy z narzędziami Elastic Database](sql-database-elastic-scale-get-started.md).
+* Możesz też zapoznać się z tematem [Migrowanie istniejących baz danych do skalowalnych baz danych](sql-database-elastic-convert-to-use-elastic-tools.md).
+* Użytkownik musi mieć uprawnienie Zmień każde zewnętrzne źródło danych. To uprawnienie jest dołączone do uprawnienia ALTER DATABASE.
+* Aby odwołać się do bazowego źródła danych, należy zmienić wszystkie uprawnienia zewnętrznych źródeł danych.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Te instrukcje utworzysz reprezentację metadanych warstwę danych podzielonych na fragmenty w bazie danych zapytania elastycznego.
+Te instrukcje tworzą reprezentację metadanych warstwy danych podzielonej na fragmenty w bazie danych zapytań elastycznych.
 
-1. [TWORZENIE KLUCZA GŁÓWNEGO](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [TWORZENIE BAZY DANYCH O OKREŚLONYM ZAKRESIE POŚWIADCZEŃ](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [TWORZENIE ZEWNĘTRZNEGO ŹRÓDŁA DANYCH](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [TWORZENIE ZEWNĘTRZNEJ TABELI](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [UTWÓRZ KLUCZ GŁÓWNY](https://msdn.microsoft.com/library/ms174382.aspx)
+2. [UTWÓRZ POŚWIADCZENIA W ZAKRESIE BAZY DANYCH](https://msdn.microsoft.com/library/mt270260.aspx)
+3. [UTWÓRZ ZEWNĘTRZNE ŹRÓDŁO DANYCH](https://msdn.microsoft.com/library/dn935022.aspx)
+4. [TWORZENIE TABELI ZEWNĘTRZNEJ](https://msdn.microsoft.com/library/dn935021.aspx)
 
-## <a name="11-create-database-scoped-master-key-and-credentials"></a>1.1 Tworzenie klucza głównego bazy danych i poświadczeń
+## <a name="11-create-database-scoped-master-key-and-credentials"></a>1,1 Tworzenie klucza głównego i poświadczeń w zakresie bazy danych
 
-Poświadczenie jest używane przez zapytanie elastyczne, aby nawiązać połączenie zdalne bazy danych.  
+To poświadczenie jest używane przez zapytanie elastyczne do łączenia się ze zdalnymi bazami danych.  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
@@ -55,11 +54,11 @@ Poświadczenie jest używane przez zapytanie elastyczne, aby nawiązać połącz
     [;]
 
 > [!NOTE]
-> Upewnij się, że *"\<username\>"* nie zawiera żadnych *"\@servername"* sufiks.
+> Upewnij się, że *"\<username\>"* nie zawiera żadnego sufiksu *\@"ServerName"* .
 
-## <a name="12-create-external-data-sources"></a>1.2 Tworzenie zewnętrznych źródeł danych
+## <a name="12-create-external-data-sources"></a>1,2 Tworzenie zewnętrznych źródeł danych
 
-Składnia:
+Obowiązuje
 
     <External_Data_Source> ::=
     CREATE EXTERNAL DATA SOURCE <data_source_name> WITH
@@ -82,16 +81,16 @@ Składnia:
         SHARD_MAP_NAME='ShardMap'
     );
 
-Pobierz listę bieżących źródeł danych zewnętrznych:
+Pobierz listę bieżących zewnętrznych źródeł danych:
 
     select * from sys.external_data_sources;
 
-Zewnętrzne źródło danych odwołuje się do mapy fragmentów. Elastyczne zapytanie używa następnie zewnętrznego źródła danych i podstawowej mapy fragmentów wyliczyć baz danych, które uczestniczą w warstwie danych.
-Te same poświadczenia są używane, można odczytać mapy fragmentów i dostępu do danych na fragmenty podczas przetwarzania zapytania elastycznego.
+Zewnętrzne źródło danych odwołuje się do mapy fragmentu. Elastyczne zapytanie używa zewnętrznego źródła danych i źródłowej mapy fragmentu do wyliczania baz danych, które uczestniczą w warstwie danych.
+Te same poświadczenia są używane do odczytywania mapy fragmentu i uzyskiwania dostępu do danych w fragmentów podczas przetwarzania zapytania elastycznego.
 
-## <a name="13-create-external-tables"></a>1.3 Tworzenie tabel zewnętrznych
+## <a name="13-create-external-tables"></a>1,3 Tworzenie tabel zewnętrznych
 
-Składnia:  
+Obowiązuje  
 
     CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name  
         ( { <column_definition> } [ ,...n ])
@@ -127,37 +126,37 @@ Składnia:
         DISTRIBUTION=SHARDED(ol_w_id)
     );
 
-Pobieranie listy tabel zewnętrznych w bieżącej bazie danych:
+Pobierz listę tabel zewnętrznych z bieżącej bazy danych:
 
     SELECT * from sys.external_tables;
 
-Aby porzucić tabel zewnętrznych:
+Aby porzucić tabele zewnętrzne:
 
     DROP EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name[;]
 
 ### <a name="remarks"></a>Uwagi
 
-DANE\_klauzuli źródła definiuje zewnętrznego źródła danych (mapowania fragmentów w postaci) używany do tabeli zewnętrznej.  
+Klauzula źródła\_danych definiuje zewnętrzne źródło danych (mapę fragmentu), które jest używane dla tabeli zewnętrznej.  
 
-Schemat\_nazwy i obiekt\_klauzule nazwę mapowania tabeli do innego schematu definicji tabeli zewnętrznej. W przypadku pominięcia schematu obiektu zdalnego zakłada się, że "dbo", a jego nazwa jest zakłada się, że taka sama jak nazwa tabeli zewnętrznej definiowanego. Jest to przydatne, jeśli nazwa tabeli zdalnej jest już zajęta w bazie danych potrzebne do utworzenia tabeli zewnętrznej. Na przykład aby zdefiniować tabeli zewnętrznej można pobrać zagregowany widok widoków wykazu lub dynamicznych widoków zarządzania na podstawie posiadanych danych skalowanych w poziomie warstwy. Ponieważ widoków wykazu i dynamicznych widoków zarządzania już istnieje lokalnie, nie możesz użyć ich nazw, do definicji tabeli zewnętrznej. Zamiast tego należy użyć innej nazwy i użyj widoku wykazu lub DMV nazwy w SCHEMACIE\_nazwę i/lub obiekt\_klauzule nazwy. (Zobacz przykład poniżej).
+Nazwy schematu\_i klauzule\_nazw obiektów mapują definicję tabeli zewnętrznej na tabelę w innym schemacie. W przypadku pominięcia założono, że schemat obiektu zdalnego jest "dbo", a jego nazwa jest taka sama jak zdefiniowana nazwa tabeli zewnętrznej. Jest to przydatne, jeśli nazwa tabeli zdalnej jest już wykonywana w bazie danych, w której ma zostać utworzona tabela zewnętrzna. Na przykład, chcesz zdefiniować tabelę zewnętrzną, aby uzyskać Zagregowany widok widoków wykazu lub widoków DMV w warstwie danych skalowanych w poziomie. Ponieważ widoki wykazu i widoków DMV już istnieją lokalnie, nie można używać ich nazw dla definicji tabeli zewnętrznej. Zamiast tego należy użyć innej nazwy i użyć nazwy widoku wykazu lub DMV w klauzulach nazwa schematu\_i/lub nazwa obiektu.\_ (Zobacz Poniższy przykład).
 
-Klauzula dystrybucji określa dystrybucję danych używane dla tej tabeli. Procesor zapytań korzysta z informacji podanych w klauzuli dystrybucja Tworzenie planów zapytań w najbardziej efektywny sposób.
+Klauzula DISTRIBUTION określa dystrybucję danych używaną dla tej tabeli. Procesor zapytań wykorzystuje informacje podane w klauzuli DISTRIBUTION do tworzenia najbardziej wydajnych planów zapytań.
 
-1. **Podzielonej na FRAGMENTY** oznacza, że dane w poziomie jest podzielona na partycje w bazach danych. Partycjonowania klucza dystrybucji danych **< sharding_column_name >** parametru.
-2. **REPLIKOWANE** oznacza identyczne kopie tabeli w każdej bazie danych. Jest odpowiedzialny za zapewnienie, że repliki są identyczne w bazach danych.
-3. **ROUND\_OKRĘŻNE** oznacza, że tabela jest poziomo podzielona na partycje za pomocą metody dystrybucji zależnych od aplikacji.
+1. **Podzielonej na fragmenty** oznacza, że dane są partycjonowane w poziomie między bazami danych. Kluczem partycjonowania dystrybucji danych jest **< sharding_column_name >** parametr.
+2. **Zreplikowane** oznacza, że identyczne kopie tabeli są obecne w każdej bazie danych. Jest odpowiedzialny za zapewnienie, że repliki są identyczne w bazach danych.
+3. **Round\_Robin** oznacza, że tabela jest w poziomie partycjonowana przy użyciu metody dystrybucji zależnej od aplikacji.
 
-**Warstwa danych odwołania**: Tabela zewnętrzna DDL odnosi się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa mapowania fragmentów, co zapewnia tabeli zewnętrznej informacje niezbędne do zlokalizowania wszystkich baz danych w warstwie danych.
+**Odwołanie do warstwy danych**: KOD DDL tabeli zewnętrznej odwołuje się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa mapę fragmentu, która dostarcza tabelę zewnętrzną z informacjami niezbędnymi do lokalizowania wszystkich baz danych w warstwie danych.
 
 ### <a name="security-considerations"></a>Zagadnienia dotyczące bezpieczeństwa
 
-Użytkownicy z dostępem do tabeli zewnętrznej automatycznie uzyskać dostęp do podstawowych tabel zdalnych, w obszarze poświadczenia podane w definicji zewnętrznego źródła danych. Należy unikać niepożądane podniesienia uprawnień za pomocą poświadczeń z zewnętrznym źródłem danych. Na użytek GRANT lub REVOKE tabeli zewnętrznej po prostu tak, jakby była zwykłą tabelę.  
+Użytkownicy z dostępem do tabeli zewnętrznej automatycznie uzyskują dostęp do podstawowych tabel zdalnych w ramach poświadczeń podanych w definicji zewnętrznego źródła danych. Unikaj niepożądanego podniesienia uprawnień za pomocą poświadczeń zewnętrznego źródła danych. Użyj uprawnienia GRANT lub REVOKE dla tabeli zewnętrznej, tak jakby była to zwykła tabela.  
 
-Po zdefiniowaniu zewnętrznym źródle danych i tabel zewnętrznych teraz umożliwia pełne języka T-SQL za pośrednictwem tabel zewnętrznych.
+Po zdefiniowaniu zewnętrznego źródła danych i tabel zewnętrznych można teraz używać pełnych instrukcji języka T-SQL dla tabel zewnętrznych.
 
-## <a name="example-querying-horizontal-partitioned-databases"></a>Przykład: wykonywanie zapytań poziome podzielone na partycje bazy danych
+## <a name="example-querying-horizontal-partitioned-databases"></a>Przykład: wykonywanie zapytań w poziomie partycjonowanych baz danych
 
-Następujące zapytanie wykonuje trzy kierunkową sprzężenie magazynów, zamówień i kolejności wierszy i korzysta z kilku wartości zagregowanych i selektywne filtru. Przyjęto założenie, partycjonowania (1) poziome (fragmentowanie) i (2) czy magazyny, zamówień i kolejności wierszy są podzielonej na fragmenty według kolumny identyfikatora magazynu i elastyczne zapytanie może kolokuj sprzężeń na fragmenty i przetworzyć kosztowne części zapytania na fragmenty w równoległe.
+Następujące zapytanie wykonuje trójwymiarowe sprzężenie między magazynami, zamówieniami i wierszami zamówienia i używa kilku agregacji i filtru selektywnego. Przyjęto założenie, że (1) skalowanie w poziomie (fragmentowania) i (2) te magazyny, zamówienia i linie zamówień są podzielonej na fragmenty przez kolumnę identyfikator magazynu, a elastyczne zapytanie może współistnieć z fragmentów i przetworzyć kosztowną część zapytania na fragmentów równoległ.
 
 ```sql
     select  
@@ -176,16 +175,16 @@ Następujące zapytanie wykonuje trzy kierunkową sprzężenie magazynów, zamó
     group by w_id, o_c_id
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Przechowywane procedury zdalne wykonywanie kodu T-SQL: sp\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Procedura składowana dla zdalnego wykonywania T-SQL: SP\_execute_remote
 
-Elastyczne zapytanie wprowadza również procedury przechowywanej, która zapewnia bezpośredni dostęp do fragmenty. Jest wywoływana procedura składowana [sp\_wykonania \_zdalnego](https://msdn.microsoft.com/library/mt703714) i może służyć do wykonywania procedur składowanych zdalnego lub kod T-SQL na zdalne bazy danych. Jego przyjmuje następujące parametry:
+Zapytanie elastyczne zawiera również procedurę składowaną, która zapewnia bezpośredni dostęp do fragmentów. Procedura składowana jest nazywana [SP\_Execute \_Remote](https://msdn.microsoft.com/library/mt703714) i może służyć do wykonywania zdalnych procedur składowanych lub kodu T-SQL w zdalnych bazach danych. Przyjmuje następujące parametry:
 
 * Nazwa źródła danych (nvarchar): Nazwa zewnętrznego źródła danych typu RDBMS.
-* Zapytanie (nvarchar): Zapytania T-SQL do wykonania w poszczególnych fragmentach.
-* Deklaracja parametru (nvarchar) — opcjonalne: Ciąg z danymi definicje typów dla parametrów używanych w parametrze zapytania (na przykład sp_executesql).
-* Lista wartości parametrów - opcjonalne: Rozdzielana przecinkami lista wartości parametrów (na przykład sp_executesql).
+* Zapytanie (nvarchar): Zapytanie T-SQL, które ma być wykonywane na każdym fragmentu.
+* Deklaracja parametru (nvarchar) — opcjonalne: Ciąg z definicjami typu danych dla parametrów używanych w parametrze zapytania (na przykład sp_executesql).
+* Lista wartości parametrów — opcjonalne: Rozdzielana przecinkami lista wartości parametrów (na przykład sp_executesql).
 
-PS\_wykonania\_zdalnego używa zewnętrzne źródło danych podane parametrów wywołania do wykonania danej instrukcji języka T-SQL na zdalnym baz danych. Łączenie się z bazy danych Menedżera shardmap i zdalnymi bazami danych używa poświadczeń do zewnętrznego źródła danych.  
+Funkcja Sp\_Execute\_umożliwia zdalne użycie zewnętrznego źródła danych podanego w parametrach wywołania, aby wykonać daną instrukcję T-SQL w zdalnych bazach danych. Używa poświadczeń zewnętrznego źródła danych, aby nawiązać połączenie z bazą danych programu shardmap Manager i zdalnymi bazami danych.  
 
 Przykład:
 
@@ -197,22 +196,22 @@ Przykład:
 
 ## <a name="connectivity-for-tools"></a>Łączność dla narzędzi
 
-Zwykłe ciągi połączeń programu SQL Server umożliwia łączenie aplikacji z narzędzi integracji danych i analizy Biznesowej w bazie danych przy użyciu własnych definicji tabeli zewnętrznej. Upewnij się, że program SQL Server jest obsługiwany jako źródło danych dla swojego narzędzia. Odwołanie do bazy danych zapytania elastycznego, takich jak każdej innej bazy danych programu SQL Server dołączenie do narzędzie i tabel zewnętrznych do użycia z narzędzia lub aplikacji tak, jakby były lokalne tabele.
+Użyj zwykłych parametrów połączenia SQL Server, aby połączyć swoją aplikację, narzędzia integracji danych i analizy biznesowej z bazą danych przy użyciu definicji tabeli zewnętrznej. Upewnij się, że SQL Server jest obsługiwane jako źródło danych dla narzędzia. Następnie odwołują się do bazy danych zapytań elastycznych, takiej jak jakakolwiek inna SQL Server baza danych połączona z narzędziem, i użyj zewnętrznych tabel z narzędzia lub aplikacji tak, jakby znajdowały się one w tabelach lokalnych.
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-* Upewnij się, że baza danych punktu końcowego elastyczne zapytanie ma dostęp w bazie danych shardmap oraz wszystkich fragmentów za pośrednictwem zapór usługi SQL DB.  
-* Sprawdzanie poprawności lub wymusić dystrybucję danych zdefiniowane przez tabeli zewnętrznej. Jeśli danej dystrybucji rzeczywistych danych różni się od dystrybucji określone w definicji tabeli, zapytania może przynieść nieoczekiwane wyniki.
-* Zapytanie elastyczne aktualnie nie wykonuje eliminacji fragmentów podczas predykatów za pośrednictwem klucz fragmentowania pozwala bezpiecznie wyłączenie niektórych fragmentów z przetwarzania.
-* Elastyczne zapytanie działa najlepiej dla zapytań gdzie większość obliczeń może odbywać się na fragmenty. Zazwyczaj można pobrać najlepszą wydajność zapytań za pomocą predykatów selektywne filtru, które mogą być obliczane na fragmenty lub sprzężeń za pośrednictwem partycjonowania kluczy, które mogą być wykonywane w sposób wyrównany do partycji na wszystkich fragmentów. Inne wzorce zapytań może być konieczne ładowanie dużych ilości danych z fragmentami z węzłem głównym i może działać nieprawidłowo
+* Upewnij się, że baza danych punktu końcowego zapytania elastycznego uzyskała dostęp do bazy danych shardmap i wszystkie fragmentów przez zapory SQL DB.  
+* Sprawdzanie poprawności lub wymuszanie dystrybucji danych zdefiniowanej przez tabelę zewnętrzną. Jeśli rzeczywista Dystrybucja danych różni się od dystrybucji określonej w definicji tabeli, zapytania mogą dać nieoczekiwane wyniki.
+* Zapytanie elastyczne obecnie nie wykonuje eliminacji fragmentu, gdy predykaty za pośrednictwem klucza fragmentowania umożliwią mu bezpieczne wykluczenie niektórych fragmentów z przetwarzania.
+* Elastyczne zapytanie działa najlepiej w przypadku zapytań, w których większość obliczeń można wykonać w fragmentów. Zwykle uzyskuje się najlepszą wydajność zapytań z predykatami filtru selektywnego, które mogą być oceniane na fragmentów lub sprzężeń przez klucze partycjonowania, które mogą być wykonywane w sposób wyrównany do partycji na wszystkich fragmentów. Inne wzorce zapytań mogą wymagać załadowania dużych ilości danych z fragmentów do węzła głównego i mogą działać źle
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Omówienie zapytanie elastyczne, zobacz [omówienie zapytania elastycznego](sql-database-elastic-query-overview.md).
-* Pionowe samouczek partycjonowania, zobacz [rozpoczęcie pracy z bazami danych zapytań (partycje pionowe)](sql-database-elastic-query-getting-started-vertical.md).
-* Składnia i przykładowe zapytania dotyczące danych partycjonowanych w pionie, można zobaczyć [zapytań w pionie partycjonowania danych)](sql-database-elastic-query-vertical-partitioning.md)
-* Samouczek partycjonowania poziomego (fragmentowania), zobacz [wprowadzenie do zapytań elastycznych dla partycjonowania poziomego (fragmentowania)](sql-database-elastic-query-getting-started.md).
-* Zobacz [sp\_wykonania \_zdalnego](https://msdn.microsoft.com/library/mt703714) dla procedury przechowywanej, która wykonuje instrukcję Transact-SQL na jednej zdalnej usługi Azure SQL Database lub zestawu baz danych, służąc jako fragmentów w poziomie schematu partycjonowania.
+* Aby zapoznać się z omówieniem zapytania elastycznego, zobacz [Omówienie zapytania elastycznego](sql-database-elastic-query-overview.md).
+* Aby zapoznać się z pionowym samouczkiem partycjonowania, zobacz [Rozpoczynanie pracy z kwerendą między bazami danych (partycjonowanie pionowe)](sql-database-elastic-query-getting-started-vertical.md).
+* Aby poznać składnię i przykładowe zapytania dotyczące danych partycjonowanych pionowo, zobacz [wykonywanie zapytań dotyczących partycjonowanych danych w pionie.](sql-database-elastic-query-vertical-partitioning.md)
+* Aby zapoznać się z samouczkiem dotyczącym partycjonowania poziomego (fragmentowania), zobacz [wprowadzenie do elastycznego zapytania na potrzeby partycjonowania poziomego (fragmentowania)](sql-database-elastic-query-getting-started.md).
+* Zapoznaj się z artykułem [\_Sp Execute \_Remote](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję języka Transact-SQL w ramach jednego zdalnego Azure SQL Database lub zestawu baz danych służących jako fragmentów w poziomym schemacie partycjonowania.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png

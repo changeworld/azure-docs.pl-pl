@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 33a7b27d065fc0383e4693053f7bfb6d56e2d33b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae82c0e72287ee4c89cb3fb2294bf4bd79aec8c3
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61480072"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598648"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Symulacja transakcji o wysokiej częstotliwości za pomocą usługi Stream Analytics
 Usługa Azure Stream Analytics umożliwia korzystanie z funkcji zdefiniowanych przez użytkownika (UDF) i agregatów zdefiniowanych przez użytkownika (UDA) napisanych w języku JavaScript. Połączenie tych możliwości z językiem SQL pozwala użytkownikom przeprowadzać zaawansowane analizy. Mogą one obejmować szkolenie i ocenianie w ramach uczenia maszynowego online oraz symulację procesów stanowych. W tym artykule opisano sposób przeprowadzania regresji liniowej w zadaniu usługi Azure Stream Analytics, które w sposób ciągły przeprowadza ocenianie i szkolenie w ramach scenariusza transakcji o wysokiej częstotliwości.
@@ -65,7 +65,7 @@ Poniżej przedstawiono niektóre wygenerowane przykładowe zdarzenia:
 >Sygnatura czasowa zdarzenia w czasie uniksowym to **lastUpdated**.
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>Model predykcyjny transakcji o wysokiej częstotliwości
-Do celów demonstracyjnych użyjemy modelu liniowego, [opisanego przez Darryla Shena](http://eprints.maths.ox.ac.uk/1895/1/Darryl%20Shen%20%28for%20archive%29.pdf).
+Do celów demonstracyjnych użyjemy modelu liniowego, [opisanego przez Darryla Shena](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html).
 
 Nierównowaga wielkości zleceń (VOI, Volume Order Imbalance) to funkcja bieżącej wielkości i ceny zakupu/sprzedaży oraz wielkości i ceny zakupu/sprzedaży dla ostatniej najmniejszej możliwej zmiany ceny. W opracowaniu zidentyfikowano korelację między wartością VOI i przyszłymi wahaniami cen. Utworzono model liniowy między 5 ostatnimi wartościami VOI i zmianą cen w ramach ostatnich 10 najmniejszych możliwych zmian ceny. Model jest uczony przy użyciu regresji liniowej na danych z poprzedniego dnia. 
 

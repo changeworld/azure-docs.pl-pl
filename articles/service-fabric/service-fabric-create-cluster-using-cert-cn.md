@@ -1,9 +1,9 @@
 ---
-title: Tworzenie klastra usługi Azure Service Fabric przy użyciu nazwy pospolitej certyfikatu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć klaster usługi Service Fabric przy użyciu nazwy pospolitej certyfikatu na podstawie szablonu.
+title: Tworzenie klastra usługi Azure Service Fabric przy użyciu nazwy pospolitej certyfikatu | Microsoft Docs
+description: Dowiedz się, jak utworzyć klaster Service Fabric przy użyciu nazwy pospolitej certyfikatu z szablonu.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,30 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
-ms.author: aljo
-ms.openlocfilehash: fe1adc0aef80066721ce0b80419c787fe25346a9
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.author: atsenthi
+ms.openlocfilehash: 49c733c475f401b0e8c9329e2e5d7b463175f81a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190814"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599745"
 ---
-# <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Wdrażanie klastra usługi Service Fabric, która używa nazwy pospolitej certyfikatu zamiast odcisku palca
-Nie dwóch certyfikatów może mieć ten sam odcisk palca, który sprawia, że Przerzucanie certyfikatów klastra lub zarządzania trudne. Wiele certyfikatów, mogą jednak mieć tę samą nazwę pospolitą lub temat.  Klastra przy użyciu nazwy pospolite certyfikatów sprawia, że certyfikat zarządzania jest znacznie prostsze. W tym artykule opisano, jak wdrożyć klaster usługi Service Fabric do użycia nazwy pospolitej certyfikatu zamiast odcisk palca certyfikatu.
+# <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Wdróż klaster Service Fabric, który używa nazwy pospolitej certyfikatu zamiast odcisku palca
+Dwa certyfikaty nie mogą mieć tego samego odcisku palca, co utrudnia zarzucanie certyfikatów klastra lub zarządzanie nimi. Jednak wiele certyfikatów może mieć taką samą nazwę pospolitą lub podmiot.  Zarządzanie certyfikatami w klastrze przy użyciu nazw pospolitych certyfikatów znacznie prostsze. W tym artykule opisano, jak wdrożyć klaster Service Fabric, aby używał nazwy pospolitej certyfikatu zamiast odcisku palca certyfikatu.
  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-a-certificate"></a>Uzyskaj certyfikat
-Najpierw należy uzyskać certyfikat z [certyfikatu urzędu certyfikacji](https://wikipedia.org/wiki/Certificate_authority).  Nazwa pospolita certyfikatu powinna być się dla domeny niestandardowej aplikacjom i zakupionych u rejestratora domen. Na przykład "azureservicefabricbestpractices.com;" te, których nie są pracownikami firmy Microsoft nie aprowizować certyfikaty dla domen MS, więc nazwy DNS modułu równoważenia obciążenia lub usługi Traffic Manager nie można użyć jako nazwy pospolite dla certyfikatu, a następnie należy aprowizować [strefy DNS platformy Azure](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) Jeśli niestandardowe Domena jako możliwej do rozpoznania na platformie Azure. Należy również zadeklarować domenę niestandardową, pochodzącymi jako Twojego klastra "element"managementEndpoint, jeśli chcesz, aby portal w celu odzwierciedlenia domeny niestandardowej alias dla klastra.
+## <a name="get-a-certificate"></a>Pobierz certyfikat
+Najpierw Pobierz certyfikat z [urzędu certyfikacji (CA)](https://wikipedia.org/wiki/Certificate_authority).  Nazwa pospolita certyfikatu powinna być dla domeny niestandardowej, która jest posiadana, i zakupiona z rejestratora domen. Na przykład "azureservicefabricbestpractices.com"; osoby, które nie są pracownikami firmy Microsoft, nie mogą udostępniać certyfikatów dla domen MS, dlatego nie można używać nazw DNS LB ani Traffic Manager jako wspólnych nazw dla certyfikatu, [Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) a jeśli domena niestandardowa będzie resolvabl e na platformie Azure. Należy również zadeklarować domenę niestandardową jako "element ManagementEndpoint", jeśli chcesz, aby Portal odzwierciedlał niestandardowy alias domeny dla klastra.
 
-Do celów testowych można pobrać certyfikatu podpisanego przez urząd certyfikacji od urzędu certyfikacji bezpłatnej lub otwarte.
+Do celów testowych można uzyskać certyfikat podpisany przez urząd certyfikacji z bezpłatnego lub otwartego urzędu certyfikacji.
 
 > [!NOTE]
-> Certyfikaty z podpisem własnym, włącznie z wygenerowanymi w przypadku wdrażania klastra usługi Service Fabric w witrynie Azure portal nie są obsługiwane. 
+> Certyfikaty z podpisem własnym, w tym wygenerowane podczas wdrażania klastra Service Fabric w Azure Portal, nie są obsługiwane. 
 
 ## <a name="upload-the-certificate-to-a-key-vault"></a>Przekaż certyfikat do magazynu kluczy
-Na platformie Azure klaster usługi Service Fabric jest wdrażany w zestawie skalowania maszyn wirtualnych.  Przekaż certyfikat do magazynu kluczy.  Podczas wdrażania klastra, certyfikat instaluje na zestaw skalowania maszyn wirtualnych, że klaster działa na.
+Na platformie Azure klaster Service Fabric jest wdrażany w zestawie skalowania maszyn wirtualnych.  Przekaż certyfikat do magazynu kluczy.  Po wdrożeniu klastra jest on instalowany na zestawie skalowania maszyn wirtualnych, na którym działa klaster.
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -75,11 +75,11 @@ Write-Host "SourceVault              :"  $SourceVault
 Write-Host "Common Name              :"  $CommName    
 ```
 
-## <a name="download-and-update-a-sample-template"></a>Pobierz i zaktualizuj przykładowy szablon
-W tym artykule wykorzystano [przykład bezpiecznego klastra z 5 węzłami](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) szablon i parametry szablonu. Pobierz *azuredeploy.json* i *azuredeploy.parameters.json* plików do tego komputera.
+## <a name="download-and-update-a-sample-template"></a>Pobieranie i aktualizowanie przykładowego szablonu
+W tym artykule jest stosowany przykładowy szablon i szablon szablonu [bezpiecznego klastra z 5 węzłami](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) . Pobierz pliki *azuredeploy. JSON* i *azuredeploy. Parameters. JSON* na komputer.
 
-### <a name="update-parameters-file"></a>Aktualizowanie pliku parametrów
-Najpierw otwórz *azuredeploy.parameters.json* plik w edytorze tekstów i dodaj następującą wartość parametru:
+### <a name="update-parameters-file"></a>Aktualizuj plik parametrów
+Najpierw Otwórz plik *azuredeploy. Parameters. JSON* w edytorze tekstów i Dodaj następującą wartość parametru:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -89,7 +89,7 @@ Najpierw otwórz *azuredeploy.parameters.json* plik w edytorze tekstów i dodaj 
 },
 ```
 
-Następnym etapem jest skonfigurowanie *certificateCommonName*, *sourceVaultValue*, i *certificateUrlValue* wartości parametrów do wartości zwracanych przez powyższy skrypt:
+Następnie ustaw wartości parametrów *certificateCommonName*, *sourceVaultValue*i *certificateUrlValue* na zwracane przez poprzedni skrypt:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -105,10 +105,10 @@ Następnym etapem jest skonfigurowanie *certificateCommonName*, *sourceVaultValu
 },
 ```
 
-### <a name="update-the-template-file"></a>Zaktualizuj plik szablonu
-Następnie otwórz *azuredeploy.json* plik w edytorze tekstów i trzy aktualizacje do obsługi nazwy pospolitej certyfikatu.
+### <a name="update-the-template-file"></a>Aktualizowanie pliku szablonu
+Następnie otwórz plik *azuredeploy. JSON* w edytorze tekstów i wprowadź trzy aktualizacje, aby obsługiwać wspólną nazwę certyfikatu.
 
-1. W **parametry** Dodaj *certificateCommonName* parametru:
+1. W sekcji **Parametry** Dodaj parametr *certificateCommonName* :
     ```json
     "certificateCommonName": {
       "type": "string",
@@ -124,14 +124,14 @@ Następnie otwórz *azuredeploy.json* plik w edytorze tekstów i trzy aktualizac
     },
     ```
 
-    Należy również rozważyć usunięcie *certificateThumbprint*, może nie będą już potrzebne.
+    Rozważ również usunięcie *certificateThumbprint*, może to nie być już potrzebne.
 
-2. Ustaw wartość *sfrpApiVersion* zmienną "2018-02-01":
+2. Ustaw wartość zmiennej *sfrpApiVersion* na "2018-02-01":
     ```json
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. W **Microsoft.Compute/virtualMachineScaleSets** zasób, zaktualizuj rozszerzenie maszyny wirtualnej do użycia nazwy pospolitej w ustawieniach certyfikatu zamiast odcisku palca.  W **virtualMachineProfile**->**extensionProfile**->**rozszerzenia**->**właściwości** -> **ustawienia**->**certyfikatu**, Dodaj 
+3. W zasobie **Microsoft. COMPUTE/virtualMachineScaleSets** zaktualizuj rozszerzenie maszyny wirtualnej tak, aby używało nazwy pospolitej w ustawieniach certyfikatu zamiast odcisku palca.  We->->**właściwościach**rozszerzeń virtualMachineProfileextensionProfilesCertificates,Add->->-> 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
@@ -173,7 +173,7 @@ Następnie otwórz *azuredeploy.json* plik w edytorze tekstów i trzy aktualizac
           },
     ```
 
-4. W **Microsoft.ServiceFabric/clusters** zasobu wersji aktualizacji interfejsu API "2018-02-01".  Również dodać **certificateCommonNames** ustawienie z **commonNames** właściwości i Usuń **certyfikatu** ustawienie (za pomocą właściwości odcisk palca), w następującej przykład:
+4. W zasobów **Microsoft. servicefabric/klastrów** zaktualizuj wersję interfejsu API do wersji "2018-02-01".  Dodaj również ustawienie **certificateCommonNames** z właściwością **commonNames** i Usuń ustawienie **certyfikatu** (z właściwością odcisku palca), jak w poniższym przykładzie:
    ```json
    {
        "apiVersion": "2018-02-01",
@@ -200,12 +200,12 @@ Następnie otwórz *azuredeploy.json* plik w edytorze tekstów i trzy aktualizac
        ...
    ```
    > [!NOTE]
-   > Pole "certificateIssuerThumbprint" umożliwia określenie oczekiwanego wystawców certyfikatów o nazwie wspólnej dany podmiot. To pole akceptuje rozdzielaną przecinkami wyliczenie odcisków palca SHA1. Należy pamiętać, że to wzmocnienia weryfikację certyfikatu — w przypadku, gdy wystawcy nie została określona lub pusta, certyfikat zostanie zaakceptowany do uwierzytelniania, jeśli mogą być wbudowane w łańcuchu i kończy się się w katalogu głównym zaufany przez moduł weryfikacji. Jeśli wystawca jest określony, certyfikat zostanie zaakceptowane, jeśli odcisk palca jej bezpośredniego wystawcę pasuje do żadnej wartości określonej w tym polu — niezależnie od tego, czy katalog główny jest zaufany, czy nie. Należy pamiętać, że infrastruktura kluczy publicznych może używać różnych urzędów certyfikacji do wystawiania certyfikatów dla tego samego podmiotu, a więc jest ważne określić wszystkie oczekiwanego wystawcy odciski palców dla danego podmiotu.
+   > Pole "certificateIssuerThumbprint" pozwala określić oczekiwanych wystawców certyfikatów z daną wspólną nazwą podmiotu. To pole akceptuje Wyliczenie oddzielone przecinkami odcisków palców SHA1. Należy zauważyć, że jest to wzmocnienie weryfikacji certyfikatu — w przypadku, gdy wystawcy nie określono lub nie jest pusty, certyfikat zostanie zaakceptowany do uwierzytelnienia, jeśli jego łańcuch może zostać skompilowany, a następnie zakończony przez moduł walidacji jako zaufany. Jeśli wystawcy zostanie określony, certyfikat zostanie zaakceptowany, jeśli odcisk palca jego wystawcy bezpośredniego pasuje do którejkolwiek z wartości określonych w tym polu — niezależnie od tego, czy katalog główny jest zaufany, czy nie. Należy pamiętać, że infrastruktura PKI może używać różnych urzędów certyfikacji do wystawiania certyfikatów dla tego samego podmiotu i dlatego ważne jest, aby określić wszystkie oczekiwane odciski palców wystawcy dla danego tematu.
    >
-   > Określanie wystawca jest uznawany za najlepszą praktyką. pomijając go będą nadal działać — certyfikaty łańcucha zaufany główny urząd certyfikacji — to zachowanie ma ograniczenia i może wycofać w niedalekiej przyszłości. Należy także zauważyć klastrach wdrożonych na platformie Azure i zabezpieczony za pomocą X509 certyfikaty wystawione przez prywatne PKI i zadeklarować według tematu może nie dawać możliwości ma zostać zweryfikowana przez usługę Azure Service Fabric (dla komunikacji usługi klastrowania), jeśli zasady dotyczące certyfikatów PKI nie jest dostępne i prostsze do odnalezienia, dostępne. 
+   > Określenie wystawcy jest uznawane za najlepsze rozwiązanie; Pomijanie będzie nadal działać — w przypadku certyfikatów w łańcuchu do zaufanego katalogu głównego — to zachowanie ma ograniczenia i może zostać rozwiązane w najbliższej przyszłości. Należy również zauważyć, że klastry wdrożone na platformie Azure i zabezpieczone certyfikatami x509 wydanymi przez prywatną infrastrukturę PKI, które zostały zgłoszone przez podmiot, mogą nie być w stanie sprawdzić poprawności przez usługę Service Fabric platformy Azure (w przypadku komunikacji między klastrami), jeśli zasady certyfikatu infrastruktury kluczy publicznych nie jest wykrywalny, dostępny i dostępny. 
 
-## <a name="deploy-the-updated-template"></a>Wdrożyć zaktualizowany szablon
-Po wprowadzeniu zmian, należy ponownie wdrożyć zaktualizowany szablon.
+## <a name="deploy-the-updated-template"></a>Wdróż zaktualizowany szablon
+Wdróż ponownie zaktualizowany szablon po wprowadzeniu zmian.
 
 ```powershell
 # Variables.
@@ -223,9 +223,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFi
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [klastra zabezpieczeń](service-fabric-cluster-security.md).
-* Dowiedz się, jak [Przerzucanie certyfikatów klastra](service-fabric-cluster-rollover-cert-cn.md)
-* [Aktualizowanie i zarządzanie certyfikatami klastra](service-fabric-cluster-security-update-certs-azure.md)
-* Uproszczenie zarządzania certyfikatu przez [klastra zmiana z odcisk palca certyfikatu na nazwę pospolitą](service-fabric-cluster-change-cert-thumbprint-to-cn.md)
+* Dowiedz się więcej o [zabezpieczeniach klastra](service-fabric-cluster-security.md).
+* Dowiedz się [, jak przerzucać certyfikat klastra](service-fabric-cluster-rollover-cert-cn.md)
+* [Aktualizowanie certyfikatów klastra i zarządzanie nimi](service-fabric-cluster-security-update-certs-azure.md)
+* Uproszczenie zarządzania certyfikatami przez [zmianę klastra z odcisku palca certyfikatu na nazwę pospolitą](service-fabric-cluster-change-cert-thumbprint-to-cn.md)
 
 [image1]: .\media\service-fabric-cluster-change-cert-thumbprint-to-cn\PortalViewTemplates.png

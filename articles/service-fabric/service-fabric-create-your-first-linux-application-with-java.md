@@ -3,7 +3,7 @@ title: Tworzenie aplikacji Java z interfejsem Reliable Actors usługi Azure Serv
 description: Dowiedz się, jak utworzyć i wdrożyć aplikację Java z elementami Reliable Actors usługi Service Fabric w ciągu pięciu minut.
 services: service-fabric
 documentationcenter: java
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
-ms.author: aljo
-ms.openlocfilehash: 37d9c17ff10922aa524fa2fe3eb8abff92c83052
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394051"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599684"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Tworzenie pierwszej aplikacji Java z interfejsem Reliable Actors usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -50,8 +50,8 @@ Aby rozpocząć pracę z elementami Reliable Actors, musisz tylko poznać kilka 
 * **Interfejs aktora**. Interfejs aktora służy do definiowania jednoznacznie określonego interfejsu publicznego aktora. W terminologii modelu usługi Reliable Actor interfejs aktora definiuje typy komunikatów, które może zrozumieć i przetworzyć aktor. Interfejs aktora jest używany przez innych aktorów i aplikacje klienckie do „wysyłania” (asynchronicznie) komunikatów do aktora. W usługi Reliable Actors można zaimplementować wiele interfejsów.
 * **Klasa ActorProxy**. Klasa ActorProxy jest używana przez aplikacje klienckie do wywołania metod ujawnianych za pośrednictwem interfejsu aktora. Klasa ActorProxy udostępnia dwie ważne funkcje:
   
-  * Rozpoznawanie nazw: Jest w stanie zlokalizować aktora w klastrze (znaleźć węzeł klastra, w którym jest hostowany).
-  * Obsługa błędów: Może ponawiać próby wywołania metody i ponownie rozpoznawać lokalizację aktora, after, na przykład błędu, który wymaga aktora można przenieść do innego węzła w klastrze.
+  * Rozpoznawanie nazw: Można zlokalizować aktora w klastrze (znaleźć węzeł klastra, w którym jest hostowany).
+  * Obsługa niepowodzeń: Można ponowić próbę wywołania metody i ponownie rozwiązać lokalizację aktora po, na przykład, błąd, który wymaga, aby aktor został przeniesiony do innego węzła w klastrze.
 
 Warto wspomnieć o następujących regułach odnoszących się do interfejsów aktora:
 
@@ -219,18 +219,18 @@ Po wdrożeniu aplikacji otwórz przeglądarkę i przejdź do narzędzia [Service
 Następnie rozwiń węzeł **Aplikacje** i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
 
 > [!IMPORTANT]
-> Aby wdrożyć aplikację do zabezpieczonego klastra systemu Linux na platformie Azure, musisz skonfigurować certyfikat na potrzeby weryfikacji aplikacji w środowisku uruchomieniowym usługi Service Fabric. Umożliwi to usługi Reliable Actors do komunikowania się z podstawowego środowiska uruchomieniowego usługi Service Fabric interfejsów API. Aby dowiedzieć się więcej, zobacz [skonfigurować aplikację usług Reliable Services, aby działały w klastrach systemu Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Aby wdrożyć aplikację do bezpiecznego klastra z systemem Linux na platformie Azure, musisz skonfigurować certyfikat w celu weryfikacji aplikacji przy użyciu środowiska uruchomieniowego Service Fabric. Dzięki temu usługi Reliable Actors mogą komunikować się z podstawowymi interfejsami API środowiska uruchomieniowego Service Fabric. Aby dowiedzieć się więcej, zobacz [Konfigurowanie aplikacji Reliable Services do uruchamiania w klastrach systemu Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Uruchamianie klienta testowego i przechodzenie w tryb failover
 Aktorzy nie pełnią samodzielnie żadnej funkcji. Wymagają wysyłania do nich komunikatów przez inną usługę lub innego klienta. Szablon aktora zawiera prosty skrypt testowy, którego można użyć do interakcji z usługą aktora.
 
 > [!Note]
-> Klient testowy korzysta klasa ActorProxy do komunikacji z podmiotów, które należy uruchomić w tym samym klastrze, aby usługa aktora lub udostępnianie tą samą przestrzenią adresów IP.  Możesz uruchomić klienta testowego na komputerze lokalnym klastrze projektowym.  Jednak do komunikacji z aktorów w klastrze zdalnym, należy wdrożyć bramy w klastrze, który obsługuje zewnętrzne komunikację z uczestnikami.
+> Klient testowy używa klasy ActorProxy do komunikacji z aktorami, które muszą być uruchamiane w ramach tego samego klastra, co usługa aktora, lub współużytkować tę samą przestrzeń adresów IP.  Klienta testowego można uruchomić na tym samym komputerze co lokalny klaster projektowy.  Jednak aby komunikować się z aktorami w klastrze zdalnym, należy wdrożyć bramę w klastrze, która obsługuje komunikację zewnętrzną z aktorami.
 
 1. Uruchom skrypt za pomocą narzędzia kontrolnego, aby wyświetlić dane wyjściowe usługi aktora.  Skrypt testowy wywołuje metodę `setCountAsync()` dla aktora w celu zwiększenia wartości licznika, wywołuje metodę `getCountAsync()` dla aktora w celu pobrania nowej wartości licznika i wyświetla tę wartość w konsoli.
 
-   W przypadku systemu MAC OS X należy skopiować HelloWorldTestClient folder w jakimś miejscu wewnątrz kontenera, uruchamiając następujące polecenia dodatkowe.    
+   W przypadku systemu MAC OS X należy skopiować folder HelloWorldTestClient do lokalizacji wewnątrz kontenera, uruchamiając następujące polecenia dodatkowe.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
@@ -243,7 +243,7 @@ Aktorzy nie pełnią samodzielnie żadnej funkcji. Wymagają wysyłania do nich 
     watch -n 1 ./testclient.sh
     ```
 
-2. W narzędziu Service Fabric Explorer zlokalizuj węzeł, w którym znajduje się replika podstawowa usługi aktora. Na poniższym zrzucie ekranu jest to węzeł 3. Replika podstawowa usługi obsługuje operacje odczytu i zapisu.  Zmiany stanu usługi są następnie replikowane się do replik pomocniczych, uruchomione w węzłach 0 i 1 na poniższym zrzucie ekranu.
+2. W narzędziu Service Fabric Explorer zlokalizuj węzeł, w którym znajduje się replika podstawowa usługi aktora. Na poniższym zrzucie ekranu jest to węzeł 3. Replika podstawowa usługi obsługuje operacje odczytu i zapisu.  Zmiany stanu usługi są następnie replikowane do replik pomocniczych, uruchomione w węzłach 0 i 1 na poniższym zrzucie ekranu.
 
     ![Znajdowanie repliki podstawowej w narzędziu Service Fabric Explorer][sfx-primary]
 
@@ -346,7 +346,7 @@ Obsługa na poziomie systemu dla usługi Service Fabric, która komunikuje się 
   }
   ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie pierwszej aplikacji Java usługi Service Fabric w systemie Linux przy użyciu środowiska Eclipse](service-fabric-get-started-eclipse.md)
 * [Dowiedz się więcej o usłudze Reliable Actors](service-fabric-reliable-actors-introduction.md)

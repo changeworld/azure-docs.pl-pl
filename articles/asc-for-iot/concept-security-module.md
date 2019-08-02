@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure Security Center dla modułu zabezpieczeń IoT bliźniaczych reprezentacji (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej na temat koncepcji bliźniaczych reprezentacjach modułów zabezpieczeń i jak są one używane w Centrum zabezpieczeń Azure dla IoT.
+title: Informacje o Azure Security Centerach modułu zabezpieczeń IoT bliźniaczych reprezentacji | Microsoft Docs
+description: Dowiedz się więcej o koncepcji bliźniaczych reprezentacji modułów zabezpieczeń i sposobach ich użycia w Azure Security Center na potrzeby IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,41 +13,38 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 8f964fd2b121c6232081673666f5babb160e1721
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ab3b6e740e644a1ed1495eb776045888be448047
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618308"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596501"
 ---
 # <a name="security-module"></a>Moduł zabezpieczeń
 
-> [!IMPORTANT]
-> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-W tym artykule wyjaśniono, jak usługi Azure Security Center (ASC) dla IoT korzysta z bliźniaczych reprezentacji urządzeń i moduły. 
+W tym artykule wyjaśniono, jak Azure Security Center usługi IoT korzystają z bliźniaczych reprezentacji i modułów urządzeń. 
 
-## <a name="device-twins"></a>Bliźniacze reprezentacje urządzeń
+## <a name="device-twins"></a>Bliźniaczych reprezentacji urządzenia
 
-Dla rozwiązań IoT, zbudowany na platformie Azure bliźniacze reprezentacje urządzeń odgrywają kluczową rolę zarówno w przypadku zarządzania urządzeniami, jak i automatyzację procesów.  
+W przypadku rozwiązań IoT utworzonych na platformie Azure bliźniaczych reprezentacji urządzeń odgrywa kluczową rolę w zarządzaniu urządzeniami i automatyzacją procesów.  
 
-ASC IoT oferuje pełną integrację ze swojej istniejącej IoT platforma do zarządzania urządzeniami, dzięki któremu można zarządzać stanu zabezpieczeń urządzenia oraz upewnij korzystać z istniejących możliwości kontroli urządzenia. Integracja jest osiągane dzięki wykorzystaniu usługi IoT Hub bliźniaczej reprezentacji mechanizm.  
+Azure Security Center dla IoT oferuje pełną integrację z istniejącą platformą zarządzania urządzeniami IoT, umożliwiając zarządzanie stanem zabezpieczeń urządzeń oraz korzystanie z istniejących możliwości sterowania urządzeniami. Integrację uzyskuje się, korzystając z mechanizmu IoT Hubej przędzy.  
 
-Dowiedz się więcej na temat koncepcji [bliźniaczych reprezentacji urządzeń](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) w usłudze Azure IoT Hub. 
+Dowiedz się więcej o koncepcji [bliźniaczych reprezentacji urządzeń](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) na platformie Azure IoT Hub. 
 
-## <a name="security-module-twins"></a>Bliźniaczych reprezentacjach modułów zabezpieczeń
+## <a name="security-module-twins"></a>Bliźniaczych reprezentacji modułu zabezpieczeń
 
-ASC IoT utrzymuje bliźniaczą reprezentację modułu zabezpieczeń dla każdego urządzenia w usłudze.
-Bliźniacza reprezentacja modułu zabezpieczeń przechowuje wszystkie informacje dotyczą zabezpieczeń urządzeń dla każdego określonego urządzenia w rozwiązaniu.
-Właściwości zabezpieczeń urządzenia są obsługiwane w dedykowanym zabezpieczeń bliźniaczą reprezentację modułu komunikacji bezpieczniejsze i włączania aktualizacji i obsługi, które wymagają mniejszej ilości zasobów.  
+Azure Security Center dla IoT utrzymuje dwuosiowy moduł zabezpieczeń dla każdego urządzenia w usłudze.
+Sznury modułowe zabezpieczeń zawiera wszystkie informacje dotyczące zabezpieczeń urządzeń dla każdego konkretnego urządzenia w rozwiązaniu.
+Właściwości zabezpieczeń urządzeń są utrzymywane w dedykowanym module zabezpieczeń, w celu zapewnienia bezpieczniejszej komunikacji oraz do włączania aktualizacji i konserwacji, które wymagają mniejszej ilości zasobów.  
 
-Zobacz [bliźniaczą reprezentację modułu zabezpieczeń Utwórz](quickstart-create-security-twin.md) i [Konfigurowanie agentów zabezpieczeń](how-to-agent-configuration.md) Dowiedz się, jak tworzenie, dostosowywanie i konfigurowanie bliźniaczej reprezentacji. Zobacz [bliźniaczych reprezentacjach modułów opis](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) Aby dowiedzieć się więcej na temat koncepcji bliźniaczych reprezentacjach modułów usługi IoT Hub. 
+Zobacz [Tworzenie sznurka modułu zabezpieczeń](quickstart-create-security-twin.md) i [Konfigurowanie agentów zabezpieczeń](how-to-agent-configuration.md) , aby dowiedzieć się, jak tworzyć, dostosowywać i konfigurować sznurek. Zobacz [Opis modułu bliźniaczych reprezentacji](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) , aby dowiedzieć się więcej o koncepcji modułu bliźniaczych reprezentacji w IoT Hub. 
  
 
 ## <a name="see-also"></a>Zobacz także
-- [ASC IoT (wersja zapoznawcza)](overview.md)
-- [Wdrażanie agentów zabezpieczeń](how-to-deploy-agent.md)
+- [Omówienie Azure Security Center IoT](overview.md)
+- [Wdróż agentów zabezpieczeń](how-to-deploy-agent.md)
 - [Metody uwierzytelniania agenta zabezpieczeń](concept-security-agent-authentication-methods.md)

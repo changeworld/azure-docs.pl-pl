@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/18/2019
+ms.date: 7/26/2019
 ms.author: raiye
-ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 9f796d4fe0edd1b6a944fc96e8045b1434d939f0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405542"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592417"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemu operacyjnego gościa platformy Azure i macierz zgodności zestawu SDK
 Program udostępnia aktualne informacje o najnowszych wersjach systemu operacyjnego gościa platformy Azure dla Cloud Services. Te informacje ułatwiają zaplanowanie ścieżki uaktualnienia przed wyłączeniem systemu operacyjnego gościa. Jeśli skonfigurujesz role do korzystania z *automatycznych* aktualizacji systemu operacyjnego gościa zgodnie z opisem w [ustawieniach aktualizacji systemu operacyjnego gościa platformy Azure][Azure Guest OS Update Settings], nie trzeba przeczytywać tej strony.
@@ -42,6 +42,9 @@ Program udostępnia aktualne informacje o najnowszych wersjach systemu operacyjn
 Nie wiesz, jak zaktualizować system operacyjny gościa? Sprawdź [to][cloud updates] .
 
 ## <a name="news-updates"></a>Aktualizacje wiadomości
+
+###### <a name="july-26-2019"></a>**26 lipca 2019**
+System operacyjny gościa w lipcu został opublikowany.
 
 ###### <a name="july-8-2019"></a>**8 lipca 2019**
 System operacyjny gościa z czerwca został opublikowany.
@@ -98,8 +101,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
+| WA-GOŚĆ-OS-6,9 _201907-01 |26 lipca 2019 |Wpis 6,11 |
 | WA-GUEST-OS-6.8_201906-01 |8 lipca 2019 |Wpis 6,10 |
-| WA-GUEST-OS-6.7_201905-01 |6 czerwca 2019 |Wpis 6,9 |
+|~~WA-GOŚĆ-OS-6.7 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
 |~~WA-GUEST-OS-6.6_201904-01~~ |7 maja 2019 |8 lipca 2019 |
 |~~WA-GUEST-OS-6.5_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
 |~~WA-GUEST-OS-6.4_201902-01~~ |12 marca 2019 |7 maja 2019 |
@@ -119,8 +123,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
+| WA-GOŚĆ-OS-5.33 _201907-01 |26 lipca 2019 |Wpis 5,35 |  
 | WA-GUEST-OS-5.32_201906-01 |8 lipca 2019 |Wpis 5,34 |
-| WA-GUEST-OS-5.31_201905-01 |6 czerwca 2019 |Wpis 5,33 |
+|~~WA-GOŚĆ-OS-5.31 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
 |~~WA-GUEST-OS-5.30_201904-01~~ |7 maja 2019 |8 lipca 2019 |
 |~~WA-GUEST-OS-5.29_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
 |~~WA-GUEST-OS-5.28_201902-01~~ |12 marca 2019 |7 maja 2019 |
@@ -137,8 +142,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
+| WA-GOŚĆ-OS-4.68 _201907-01 | 26 lipca 2019  |Wpis 4,70 |
 | WA-GUEST-OS-4.67_201906-01 |8 lipca 2019 |Wpis 4,69 |
-| WA-GOŚĆ-OS-4.66 _201905-01 |6 czerwca 2019 |Wpis 4,68 |
+|~~WA-GOŚĆ-OS-4.66 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
 |~~WA-GUEST-OS-4.65_201904-01~~ |7 maja 2019 |8 lipca 2019 |
 |~~WA-GUEST-OS-4.64_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
 |~~WA-GUEST-OS-4.63_201902-01~~ |12 marca 2019 |7 maja 2019 |
@@ -155,8 +161,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
+| WA-GOŚĆ-OS-3,75 _201907-01 | 26 lipca 2019 |Wpis 3,77 |
 | WA-GUEST-OS-3.74_201906-01 |8 lipca 2019 |Wpis 3,76 |
-| WA-GOŚĆ-OS-3.73 _201905-01 |6 czerwca 2019 |Wpis 3,75 |
+|~~WA-GOŚĆ-OS-3.73 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
 |~~WA-GUEST-OS-3.72_201904-01~~ |7 maja 2019 |8 lipca 2019 |
 |~~WA-GUEST-OS-3.71_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
 |~~WA-GUEST-OS-3.70_201902-01~~ |12 marca 2019 |7 maja 2019 |
@@ -173,8 +180,9 @@ Wydano system operacyjny gościa w trybie gościnnym.
 
 | Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
+| WA-GOŚĆ-OS-2,88 _201907-01 | 26 lipca 2019 |Wpis 2,90 |
 | WA-GUEST-OS-2.87_201906-01 |8 lipca 2019 |Wpis 2,89 |
-| WA-GOŚĆ-OS-2.86 _201905-01 |6 czerwca 2019 |Wpis 2,88 |
+|~~WA-GOŚĆ-OS-2.86 _201905-01~~ |6 czerwca 2019 |26 lipca 2019 |
 |~~WA-GUEST-OS-2.85_201904-01~~ |7 maja 2019 |8 lipca 2019 |
 |~~WA-GUEST-OS-2.84_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
 |~~WA-GUEST-OS-2.83_201902-01~~ |12 marca 2019 |7 maja 2019 |

@@ -1,6 +1,6 @@
 ---
-title: Przygotowywanie portalu dla rozwiązania StorSimple Virtual Array | Dokumentacja firmy Microsoft
-description: Pierwszy samouczek wdrażania rozwiązania StorSimple virtual array obejmuje przygotowanie witryny Azure portal
+title: Przygotowanie portalu dla macierzy wirtualnej StorSimple | Microsoft Docs
+description: Pierwszy samouczek dotyczący wdrażania macierzy wirtualnej StorSimple obejmuje przygotowanie Azure Portal
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,52 +12,56 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/11/2019
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccdd234f951327aeb5baa6aabcac4314b9de7b34
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127144"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517104"
 ---
-# <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Wdrażanie rozwiązania StorSimple Virtual Array — przygotowanie witryny Azure portal
+# <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Wdróż wirtualną macierz StorSimple — Przygotuj Azure Portal
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
+
+
 ## <a name="overview"></a>Omówienie
 
-Jest to pierwszy artykuł z tej serii samouczków wdrożenia wymagane całkowicie wdrożenie macierz wirtualna jako serwer plików lub serwer iSCSI przy użyciu modelu usługi Resource Manager. W tym artykule opisano przygotowania wymagane do tworzenia i konfigurowania usługi Menedżer urządzeń StorSimple przed aprowizowania macierzy wirtualnej. Ten artykuł zawiera również linki się lista kontrolna konfiguracji wdrażania i konfiguracji wymagań wstępnych.
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-Do ukończenia procesu instalacji i konfiguracji niezbędne są uprawnienia administratora. Firma Microsoft zaleca przejrzenie listy kontrolnej dotyczącej konfiguracji wdrożenia, przed przystąpieniem do wykonywania. Przygotowanie portalu zajmuje mniej niż 10 minut.
+Jest to pierwszy artykuł z serii samouczków wdrażania wymaganych do całkowitego wdrożenia macierzy wirtualnej jako serwera plików lub serwera iSCSI przy użyciu modelu Menedżer zasobów. W tym artykule opisano przygotowania wymagane do utworzenia i skonfigurowania usługi StorSimple Menedżer urządzeń przed zainicjowaniem obsługi wirtualnej macierzy. Ten artykuł zawiera również łącza do listy kontrolnej konfiguracji wdrożenia i wymagań wstępnych dotyczących konfiguracji.
 
-Informacje zawarte w tym artykule dotyczy wdrożenia macierzach wirtualnych StorSimple w witrynie Azure portal i chmury platformy Microsoft Azure dla instytucji rządowych.
+Do ukończenia procesu instalacji i konfiguracji niezbędne są uprawnienia administratora. Zalecamy zapoznanie się z listą kontrolną konfiguracji wdrożenia przed rozpoczęciem. Przygotowanie portalu zajmuje mniej niż 10 minut.
 
-### <a name="get-started"></a>Rozpoczęcie pracy
-Wdrażanie przepływu pracy składa się z przygotowywanie portalu, aprowizacja macierzy wirtualnej w środowisku zwirtualizowanym i kończenie instalacji. Aby rozpocząć pracę z wdrożeniem rozwiązania StorSimple Virtual Array jako serwer plików lub serwer iSCSI, należy można znaleźć w następujących zasobach tabelaryczne.
+Informacje publikowane w tym artykule dotyczą wdrażania tablic wirtualnych StorSimple w chmurze Azure Portal i Microsoft Azure Government.
 
-#### <a name="deployment-articles"></a>Wdrażania
+### <a name="get-started"></a>Wprowadzenie
+Przepływ pracy wdrożenia polega na przygotowaniu portalu, aprowizacji macierzy wirtualnej w środowisku zwirtualizowanym i zakończeniu instalacji. Aby rozpocząć pracę z wdrożeniem macierzy wirtualnej StorSimple jako serwerem plików lub serwerem iSCSI, należy zapoznać się z poniższymi zasobami.
 
-Aby wdrożyć rozwiązania StorSimple Virtual Array, zapoznaj się z następującymi artykułami w zalecanej sekwencji.
+#### <a name="deployment-articles"></a>Artykuły dotyczące wdrażania
 
-| **#** | **W tym kroku** | **Można to zrobić...** | **I korzystać z tych dokumentów.** |
+Aby wdrożyć tablicę wirtualną StorSimple, zapoznaj się z następującymi artykułami w określonej kolejności.
+
+| **#** | **W tym kroku** | **To zrobić...** | **I Użyj tych dokumentów.** |
 | --- | --- | --- | --- |
-| 1. |**Konfigurowanie witryny Azure portal** |Tworzenie i konfigurowanie usługi Menedżer urządzeń StorSimple przed aprowizacji rozwiązania StorSimple Virtual Array. |[Przygotowywanie portalu](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**Aprowizowanie macierzy wirtualnej** |Dla funkcji Hyper-V udostępniania i połącz rozwiązania StorSimple Virtual Array na komputerze hosta z funkcją Hyper-V w systemie Windows Server 2012 R2, Windows Server 2012 lub Windows Server 2008 R2. <br></br> <br></br> Dla oprogramowania VMware udostępniania i połącz rozwiązania StorSimple Virtual Array na komputerze hosta z systemem VMware ESXi 5.0, 5.5, 6.0 lub 6.5.<br></br> |[Aprowizowanie macierzy wirtualnej funkcji Hyper-v](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Aprowizowanie macierzy wirtualnej w środowisku programu VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
-| 3. |**Konfigurowanie macierzy wirtualnej** |Dla swojego serwera plików wykonywania początkowej konfiguracji, zarejestrować swojego serwera plików StorSimple i przeprowadzić konfigurację urządzenia. Następnie można aprowizować udziały SMB. <br></br> <br></br> Dla serwera iSCSI wykonywania początkowej konfiguracji, zarejestrować serwer iSCSI StorSimple i przeprowadzić konfigurację urządzenia. Następnie można alokować woluminy iSCSI. |[Konfigurowanie macierzy wirtualnej jako serwera plików](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Konfigurowanie macierzy wirtualnej jako serwera iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md) |
+| 1. |**Skonfiguruj Azure Portal** |Utwórz i skonfiguruj usługę StorSimple Menedżer urządzeń przed zainicjowaniem obsługi wirtualnej macierzy StorSimple. |[Przygotowywanie portalu](storsimple-virtual-array-deploy1-portal-prep.md) |
+| 2. |**Inicjowanie obsługi administracyjnej macierzy** |W przypadku funkcji Hyper-V należy zainicjować obsługę i nawiązać połączenie z wirtualną tablicą StorSimple w systemie hosta z uruchomioną funkcją Hyper-V w systemie Windows Server 2012 R2, Windows Server 2012 lub Windows Server 2008 R2. <br></br> <br></br> W przypadku oprogramowania VMware Zainicjuj obsługę i Połącz się z wirtualną tablicą StorSimple w systemie hosta z systemem VMware ESXi 5,0, 5,5, 6,0 lub 6,5.<br></br> |[Udostępnianie macierzy wirtualnej w funkcji Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Inicjowanie obsługi administracyjnej macierzy w oprogramowaniu VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 3. |**Konfigurowanie macierzy wirtualnej** |W przypadku serwera plików wykonaj konfigurację początkową, zarejestruj serwer plików StorSimple i Ukończ konfigurację urządzenia. Następnie można aprowizować udziały SMB. <br></br> <br></br> W przypadku serwera iSCSI wykonaj konfigurację początkową, zarejestruj serwer iSCSI StorSimple i Ukończ konfigurację urządzenia. Następnie można zainicjować obsługę woluminów iSCSI. |[Skonfiguruj macierz wirtualną jako serwer plików](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Skonfiguruj macierz wirtualną jako serwer iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 Teraz możesz rozpocząć konfigurowanie witryny Azure Portal.
 
-## <a name="configuration-checklist"></a>Lista kontrolna dotycząca konfiguracji
+## <a name="configuration-checklist"></a>Lista kontrolna konfiguracji
 
-Lista kontrolna dotycząca konfiguracji opisano informacje, które należy zebrać przed rozpoczęciem konfigurowania oprogramowania na rozwiązania StorSimple Virtual Array. Przygotowanie tych informacji usprawnia proces wdrażania urządzenia StorSimple w środowisku użytkownika. W zależności od tego, czy rozwiązania StorSimple Virtual Array jest wdrażany jako serwer plików lub serwer iSCSI, musisz dysponować jedną z poniższych list kontrolnych.
+Lista kontrolna konfiguracji zawiera informacje, które należy zebrać przed skonfigurowaniem oprogramowania w macierzy wirtualnej StorSimple. Wcześniejsze przygotowanie tych informacji ułatwia proces wdrażania urządzenia StorSimple w środowisku użytkownika. W zależności od tego, czy Macierz wirtualna StorSimple jest wdrażana jako serwer plików czy serwer iSCSI, potrzebna jest jedna z poniższych list kontrolnych.
 
-* Pobierz [Lista kontrolna konfiguracji serwera plików macierzy wirtualnej StorSimple](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
-* Pobierz [iSCSI macierzy wirtualnej StorSimple Configuration Server — lista kontrolna](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
+* Pobierz [listę kontrolną konfiguracji serwera plików macierzy wirtualnej StorSimple](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
+* Pobierz [listę kontrolną konfiguracji serwera iSCSI macierzy wirtualnej StorSimple](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym miejscu możesz znaleźć wymagania wstępne dotyczące konfiguracji dla usługi Menedżer urządzeń StorSimple, rozwiązania StorSimple Virtual Array i sieci centrów danych.
+Poniżej znajdziesz wymagania wstępne dotyczące konfiguracji usługi StorSimple Menedżer urządzeń, macierzy wirtualnej StorSimple i sieci centrum danych.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>Usługa Menedżer urządzeń StorSimple
 
@@ -65,34 +69,34 @@ Przed rozpoczęciem upewnij się, że:
 
 * Masz konto Microsoft z poświadczeniami dostępu.
 * Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.
-* Twoja subskrypcja Microsoft Azure powinna być włączona dla usługi Menedżer urządzeń StorSimple.
+* Subskrypcja Microsoft Azure powinna być włączona dla usługi StorSimple Menedżer urządzeń.
 
 ### <a name="for-the-storsimple-virtual-array"></a>Dla macierzy wirtualnej StorSimple
 
-Przed wdrożeniem macierzy wirtualnej, upewnij się, że:
+Przed wdrożeniem macierzy wirtualnej upewnij się, że:
 
-* Masz dostęp do systemu hosta funkcji Hyper-V w systemie Windows Server 2008 R2 lub nowszym lub VMware (ESXi 5.0, 5.5, 6.0 lub 6.5), które mogą być używane do aprowizacji urządzenia.
-* System hosta jest w stanie dedykować następujących zasobów, aby aprowizować macierz wirtualna:
+* Masz dostęp do systemu hosta z uruchomioną funkcją Hyper-V w systemie Windows Server 2008 R2 lub nowszym lub oprogramowaniu VMware (ESXi 5,0, 5,5, 6,0 lub 6,5), którego można użyć do udostępnienia urządzenia.
+* System hosta może przeznaczyć następujące zasoby, aby udostępnić tablicę wirtualną:
   
   * Co najmniej 4 rdzenie.
-  * Co najmniej 8 GB pamięci RAM. Jeśli użytkownik chce skonfigurować macierzy wirtualnej jako serwera plików, 8 GB obsługuje 2 miliony plików. Należy 16 GB pamięci RAM na potrzeby obsługi 2-4 miliony plików.
+  * Co najmniej 8 GB pamięci RAM. Jeśli planujesz skonfigurowanie macierzy wirtualnej jako serwera plików, 8 GB obsługuje pliki 2 000 000. Do obsługi 2-4 milionów plików potrzebna jest 16 GB pamięci RAM.
   * Jeden interfejs sieciowy.
-  * Dysk wirtualny 500 GB danych systemu.
+  * Dysk wirtualny 500 GB dla danych systemu.
 
 ### <a name="for-the-datacenter-network"></a>Sieć centrum danych
 
 Przed rozpoczęciem upewnij się, że:
 
-* Sieć w centrum danych jest skonfigurowany dla wymagań sieciowych dotyczących urządzenia StorSimple. Aby uzyskać więcej informacji, zobacz [wymagania systemowe macierzy wirtualnej StorSimple](storsimple-ova-system-requirements.md).
-* Rozwiązania StorSimple Virtual Array jest dedykowany 5 przepustowości Internetu MB/s (lub więcej) dostępnych przez cały czas. Ta przepustowość nie powinna być współużytkowana z żadną inną aplikacją.
+* Sieć w centrum danych jest skonfigurowana zgodnie z wymaganiami dotyczącymi sieci dla urządzenia StorSimple. Aby uzyskać więcej informacji, zobacz [wymagania systemowe macierzy wirtualnej StorSimple](storsimple-ova-system-requirements.md).
+* Macierz wirtualna StorSimple ma dedykowaną przepustowość internetową 5 MB/s (lub więcej). Ta przepustowość nie powinna być współużytkowana z żadną inną aplikacją.
 
-## <a name="step-by-step-preparation"></a>Instrukcje krok po kroku przygotowania
+## <a name="step-by-step-preparation"></a>Przygotowanie krok po kroku
 
-Poniższe instrukcje krok po kroku umożliwia przygotowanie portalem usługi Menedżer urządzeń StorSimple.
+Wykonaj następujące instrukcje krok po kroku, aby przygotować Portal dla usługi StorSimple Menedżer urządzeń.
 
 ## <a name="step-1-create-a-new-service"></a>Krok 1: Tworzenie nowej usługi
 
-Jedno wystąpienie usługi Menedżer urządzeń StorSimple można zarządzać wieloma macierze wirtualne StorSimple. Wykonaj poniższe kroki, aby utworzyć wystąpienie usługi Menedżer urządzeń StorSimple. Jeśli masz istniejącą usługę Menedżer urządzeń StorSimple do zarządzania z macierzami wirtualnymi, Pomiń ten krok i przejdź do [krok 2: Pobierz klucz rejestracji usługi](#step-2-get-the-service-registration-key).
+Pojedyncze wystąpienie usługi StorSimple Menedżer urządzeń może zarządzać wieloma StorSimple wirtualnymi. Wykonaj poniższe kroki, aby utworzyć wystąpienie usługi Menedżer urządzeń StorSimple. Jeśli masz istniejącą usługę StorSimple Menedżer urządzeń do zarządzania macierzami wirtualnymi, Pomiń ten krok i przejdź do [kroku 2: Pobierz klucz](#step-2-get-the-service-registration-key)rejestracji usługi.
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -100,7 +104,7 @@ Jedno wystąpienie usługi Menedżer urządzeń StorSimple można zarządzać wi
 > Jeśli nie włączono automatycznego tworzenia konta magazynu przy użyciu usługi, po pomyślnym utworzeniu usługi musisz utworzyć co najmniej jedno konto magazynu.
 > 
 > * Jeśli nie utworzono automatycznie konta magazynu, przejdź do kroku [Konfigurowanie nowego konta magazynu dla usługi](#optional-step-configure-a-new-storage-account-for-the-service) w celu uzyskania szczegółowych informacji.
-> * Jeśli włączono automatyczne tworzenie konta magazynu, przejdź do strony [krok 2: Pobierz klucz rejestracji usługi](#step-2-get-the-service-registration-key).
+> * Jeśli włączono automatyczne tworzenie konta magazynu, przejdź do [kroku 2: Pobierz klucz](#step-2-get-the-service-registration-key)rejestracji usługi.
 > 
 > 
 
@@ -113,16 +117,16 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/
 [!INCLUDE [storsimple-virtual-array-get-service-registration-key](../../includes/storsimple-virtual-array-get-service-registration-key.md)]
 
 > [!NOTE]
-> Klucz rejestracji usługi służy do rejestrowania wszystkich urządzeń Menedżer urządzeń StorSimple, które należy zarejestrować w usłudze Menedżer urządzeń StorSimple.
+> Klucz rejestracji usługi służy do rejestrowania wszystkich urządzeń z systemem StorSimple Menedżer urządzeń, które muszą zostać zarejestrowane w usłudze StorSimple Menedżer urządzeń.
 > 
 > 
 
 ## <a name="step-3-download-the-virtual-array-image"></a>Krok 3: Pobierz obraz macierzy wirtualnej
 
-Po umieszczeniu klucza rejestracji usługi, należy pobrać obraz macierzy wirtualnej odpowiedniego do aprowizowania macierzy wirtualnej w systemie hosta. Obrazy macierzy wirtualnej są zależne od systemu operacyjnego i można go pobrać ze strony Szybki Start w witrynie Azure portal.
+Po skonfigurowaniu klucza rejestracji usługi należy pobrać odpowiedni obraz macierzy wirtualnej, aby zainicjować obsługę macierzy wirtualnej w systemie hosta. Obrazy macierzy wirtualnych są specyficzne dla systemu operacyjnego i można je pobrać ze strony Szybki start w Azure Portal.
 
 > [!IMPORTANT]
-> Oprogramowanie działające na macierz wirtualną StorSimple można używać tylko w usłudze Menedżer urządzeń StorSimple.
+> Oprogramowanie uruchomione w macierzy wirtualnej StorSimple może być używane tylko z usługą StorSimple Menedżer urządzeń.
 > 
 > 
 
@@ -131,44 +135,44 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/
 #### <a name="to-get-the-virtual-array-image"></a>Aby uzyskać obraz macierzy wirtualnej
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/). 
-2. W witrynie Azure portal kliknij pozycję **Przeglądaj > Menedżerowie urządzeń StorSimple**.
-3. Wybierz istniejącą usługę Menedżer urządzeń StorSimple. W **Menedżer urządzeń StorSimple** bloku kliknij **— Szybki Start**. 
-4. Kliknij link odpowiadający obraz, który chcesz pobrać z Microsoft Download Center. Pliki obrazów mają rozmiar około 4,8 GB.
+2. W Azure Portal kliknij pozycję **przeglądaj > menedżerów urządzeń StorSimple**.
+3. Wybierz istniejącą usługę StorSimple Menedżer urządzeń. W bloku **StorSimple Menedżer urządzeń** kliknij pozycję **Szybki Start**. 
+4. Kliknij link odpowiadający obrazowi, który chcesz pobrać z centrum pobierania Microsoft. Pliki obrazów mają rozmiar około 4,8 GB.
    
-   * Dysk VHDX dla funkcji Hyper-V w systemie Windows Server 2012 lub nowszy
-   * Wirtualny dysk twardy dla funkcji Hyper-V w systemie Windows Server 2008 R2 lub nowszy
-   * Dysk VMDK dla oprogramowania VMWare ESXi 5.0, 5.5, 6.0 lub 6.5
+   * Plik VHDX dla funkcji Hyper-V w systemie Windows Server 2012 lub nowszym
+   * Wirtualny dysk twardy dla funkcji Hyper-V w systemie Windows Server 2008 R2 lub nowszym
+   * VMDK dla oprogramowania VMWare ESXi 5,0, 5,5, 6,0 lub 6,5
 5. Pobierz i rozpakuj plik na lokalnym dysku. Zanotuj lokalizację rozpakowanego pliku.
 
 ## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Krok opcjonalny: Konfigurowanie nowego konta magazynu dla usługi
 
-Ten krok jest opcjonalny i należy wykonać tylko wtedy, gdy nie włączono automatycznego tworzenia konta magazynu przy użyciu usługi.
+Ten krok jest opcjonalny i należy go wykonać tylko wtedy, gdy nie włączono automatycznego tworzenia konta magazynu przy użyciu usługi.
 
-Jeśli musisz utworzyć konto usługi Azure storage w innym regionie, zobacz [sposób tworzenia konta magazynu](../storage/common/storage-quickstart-create-account.md) instrukcje krok po kroku.
+Jeśli musisz utworzyć konto usługi Azure Storage w innym regionie, zobacz [temat jak utworzyć konto magazynu](../storage/common/storage-quickstart-create-account.md) , aby uzyskać instrukcje krok po kroku.
 
-Wykonaj poniższe kroki w [witryny Azure portal](https://ms.portal.azure.com/) na stronie usługi Menedżer urządzeń StorSimple, aby dodać istniejące konto magazynu Microsoft Azure.
+Aby dodać istniejące konto magazynu Microsoft Azure, wykonaj następujące czynności w [Azure Portal](https://ms.portal.azure.com/) na stronie usługi StorSimple Menedżer urządzeń.
 
-#### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>Aby dodać poświadczeń konta magazynu, który ma tej samej subskrypcji platformy Azure jako usługi Menedżer urządzeń
+#### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>Aby dodać poświadczenia konta magazynu, które ma tę samą subskrypcję platformy Azure co usługa Menedżer urządzeń
 
-1. Przejdź do usługi Menedżer urządzeń, wybierz i kliknij ją dwukrotnie. Spowoduje to otwarcie **Przegląd** bloku.
-2. Wybierz **poświadczeń konta magazynu** w ramach **konfiguracji** sekcji.
-3. Kliknij pozycję **Add** (Dodaj).
-4. W **Dodaj konto magazynu** blok, wykonaj następujące czynności:
+1. Przejdź do usługi Menedżer urządzeń, wybierz i kliknij ją dwukrotnie. Spowoduje to otwarcie bloku **Przegląd** .
+2. Wybierz pozycję **poświadczenia konta magazynu** w sekcji **Konfiguracja** .
+3. Kliknij przycisk **Dodaj**.
+4. W bloku **Dodawanie konta magazynu** wykonaj następujące czynności:
    
-   1. Aby uzyskać **subskrypcji**, wybierz opcję **bieżącego**.
+   1. W obszarze **subskrypcja**wybierz pozycję **bieżące**.
    
-   2. Podaj nazwę konta usługi Azure storage.
+   2. Podaj nazwę konta usługi Azure Storage.
    
-   3. Wybierz **Włącz** tworzy bezpieczny kanał komunikacji sieciowej między chmurą a urządzeniem StorSimple. Wybierz **wyłączyć** tylko wtedy, gdy pracujesz w chmurze prywatnej.
+   3. Wybierz pozycję **Włącz** , aby utworzyć bezpieczny kanał na potrzeby komunikacji sieciowej między urządzeniem StorSimple a chmurą. Wybierz opcję **Wyłącz** tylko wtedy, gdy Pracujesz w chmurze prywatnej.
    
-   4. Kliknij pozycję **Add** (Dodaj). Otrzymasz powiadomienie po pomyślnym utworzeniu konta magazynu.<br></br>
+   4. Kliknij przycisk **Dodaj**. Po pomyślnym utworzeniu konta magazynu otrzymasz powiadomienie.<br></br>
    
-      ![Dodawanie istniejących poświadczeń konta magazynu](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
+      ![Dodawanie istniejącego poświadczenia konta magazynu](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>Następny krok
 
-Następnym krokiem jest do aprowizowania maszyny wirtualnej dla rozwiązania StorSimple Virtual Array. W zależności od systemu operacyjnego hosta szczegółowe instrukcje znajdują się w temacie:
+Następnym krokiem jest zainicjowanie obsługi maszyny wirtualnej dla macierzy wirtualnej StorSimple. W zależności od systemu operacyjnego hosta szczegółowe instrukcje znajdują się w temacie:
 
-* [Aprowizowanie macierzy wirtualnej StorSimple w funkcji Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md)
-* [Aprowizowanie macierzy wirtualnej StorSimple w środowisku programu VMware](storsimple-virtual-array-deploy2-provision-vmware.md)
+* [Obsługa StorSimple macierzy wirtualnej w funkcji Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md)
+* [Inicjowanie obsługi wirtualnej macierzy StorSimple w oprogramowaniu VMware](storsimple-virtual-array-deploy2-provision-vmware.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Bazowe zasady wymagają usługi MFA dla usługi zarządzania (wersja zapoznawcza) — usługi Azure Active Directory
-description: Zasady dostępu warunkowego, aby wymagać uwierzytelniania Wieloskładnikowego dla usługi Azure Resource Manager
+title: Zasady linii bazowej wymagają uwierzytelniania wieloskładnikowego dla zarządzania usługami (wersja zapoznawcza) — Azure Active Directory
+description: Zasady dostępu warunkowego, które wymagają uwierzytelniania wieloskładnikowego dla Azure Resource Manager
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,63 +11,63 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203b752f9da67ebf60e373fe7ce0893b4fd7fcb5
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: aab2aa4415345747a0e87b90ef0a7ee770ef3465
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560959"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608118"
 ---
-# <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Zasady punktu odniesienia: Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami (wersja zapoznawcza)
+# <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Zasady linii bazowej: Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania usługami (wersja zapoznawcza)
 
-Być może używasz różnych usług platformy Azure w Twojej organizacji. Te usługi można zarządzać za pomocą interfejsu API usługi Azure Resource Manager:
+W Twojej organizacji mogą być używane różne usługi platformy Azure. Tymi usługami można zarządzać za poorednictwem Azure Resource Manager interfejsu API:
 
 * Azure Portal
 * Azure PowerShell
 * Interfejs wiersza polecenia platformy Azure
 
-Za pomocą usługi Azure Resource Manager do zarządzania usługami jest wysoce uprzywilejowanych akcji. Usługa Azure Resource Manager można zmienić konfiguracji obowiązujące w dzierżawie, takich jak ustawienia usługi i rozliczeń subskrypcji. Uwierzytelnianie pojedynczy czynnik jest narażony na różne atakami, takimi jak osłony techniki wyłudzania informacji oraz hasło. W związku z tym jest ważne, aby sprawdzić tożsamość użytkowników, którzy chcą mieć dostęp do usługi Azure Resource Manager i aktualizowanie konfiguracji, wymagając uwierzytelniania wieloskładnikowego przed zezwoleniem na dostęp.
+Używanie Azure Resource Manager do zarządzania usługami to wysoce uprzywilejowana akcja. Azure Resource Manager mogą zmieniać konfiguracje dla całej dzierżawy, takie jak ustawienia usługi i rozliczenia subskrypcji. Uwierzytelnianie wieloskładnikowe jest podatne na różne ataki, takie jak phishing i rozpylanie haseł. W związku z tym ważne jest, aby zweryfikować tożsamość użytkowników, którzy chcą uzyskać dostęp do konfiguracji Azure Resource Manager i aktualizacji, przez wymaganie uwierzytelniania wieloskładnikowego przed zezwoleniem na dostęp.
 
-**Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami** jest [bazowymi zasadami](concept-baseline-protection.md) mogą one wymagać uwierzytelniania Wieloskładnikowego dla każdego użytkownika, dostęp do witryny Azure portal, programu Azure PowerShell lub wiersza polecenia platformy Azure. Ta zasada ma zastosowanie do wszystkich użytkowników uzyskujących dostęp do usługi Azure Resource Manager, bez względu na to, gdy są one administrator.
+**Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania usługami** jest [zasadami odniesienia](concept-baseline-protection.md) , które będą wymagały uwierzytelniania wieloskładnikowego dla każdego użytkownika uzyskującego dostęp do Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Te zasady mają zastosowanie do wszystkich użytkowników uzyskujących dostęp do Azure Resource Manager niezależnie od tego, czy są one administratorami.
 
-Po włączeniu tych zasad w dzierżawie wszystkich użytkowników logujących się do zasobów zarządzania platformy Azure zostaną zakwestionowane usługi Multi-Factor authentication. Jeśli użytkownik nie jest zarejestrowany do uwierzytelniania Wieloskładnikowego, użytkownik będą musieli zarejestrować się przy użyciu aplikacji Microsoft Authenticator, aby kontynuować.
+Po włączeniu tych zasad w dzierżawie wszyscy użytkownicy logujący się do zasobów usługi Azure Management będą zarejestrowani przy użyciu uwierzytelniania wieloskładnikowego. Jeśli użytkownik nie jest zarejestrowany na potrzeby uwierzytelniania wieloskładnikowego, użytkownik będzie musiał zarejestrować się przy użyciu aplikacji Microsoft Authenticator, aby można było wykonać tę operację.
 
-Do wykonania, interaktywne logowanie przy użyciu [programu Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps), użyj [Connect AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) polecenia cmdlet.
+Aby przeprowadzić logowanie interaktywne przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps), użyj polecenia cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 
 ```PowerShell
 Connect-AzAccount
 ```
 
-Po uruchomieniu to polecenie cmdlet spowoduje wyświetlenie ciągu tokenu. Aby się zarejestrować, skopiuj następujący ciąg i wklej go w [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)  w przeglądarce. Sesja programu PowerShell zostanie uwierzytelniona na potrzeby połączenia z platformą Azure.
+Po uruchomieniu to polecenie cmdlet spowoduje wyświetlenie ciągu tokenu. Aby się zalogować, Skopiuj ten ciąg i wklej go [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)do  programu w przeglądarce. Sesja programu PowerShell zostanie uwierzytelniona na potrzeby połączenia z platformą Azure.
 
-Do wykonania, interaktywne logowanie przy użyciu [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)Uruchom [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) polecenia.
+Aby przeprowadzić logowanie interaktywne przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest), uruchom polecenie [AZ login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) .
 
 ```azurecli
 az login
 ```
 
-Jeśli interfejs wiersza polecenia może otworzyć Twoją domyślną przeglądarkę, zrobi to i załaduje stronę logowania. W przeciwnym razie trzeba otworzyć stronę przeglądarki i postępuj zgodnie z instrukcjami w wierszu polecenia, aby wprowadzić kod autoryzacji po przejściu do [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin) w przeglądarce. Następnie zaloguj się przy użyciu poświadczeń konta w przeglądarce.
+Jeśli interfejs wiersza polecenia może otworzyć Twoją domyślną przeglądarkę, zrobi to i załaduje stronę logowania. W przeciwnym razie musisz otworzyć stronę przeglądarki i postępować zgodnie z instrukcjami w wierszu polecenia, aby wprowadzić kod autoryzacji po przejściu do [https://aka.ms/devicelogin](https://aka.ms/devicelogin) przeglądarki w przeglądarce. Następnie zaloguj się przy użyciu poświadczeń konta w przeglądarce.
 
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
-Ponieważ **wymagają usługi MFA do zarządzania usługami** zasady mają zastosowanie do wszystkich użytkowników usługi Azure Resource Manager, kilka zagadnień, które należy podjąć, aby zapewnić bezproblemowe wdrożenie. Te zagadnienia obejmują identyfikowanie użytkowników i zasad usługi w usłudze Azure AD, która nie może lub nie należy wykonywać uwierzytelnianie wieloskładnikowe, a także aplikacji i używanych przez Twoją organizację klientów, które nie obsługują nowoczesnego uwierzytelniania.
+Ze względu na to, że zasady **Wymagaj usługi MFA na potrzeby zarządzania usługami** mają zastosowanie do wszystkich Azure Resource Manager użytkowników, należy wprowadzić kilka kwestii w celu zapewnienia bezproblemowego wdrożenia. Te zagadnienia obejmują Identyfikowanie użytkowników i zasad usługi w usłudze Azure AD, które nie mogą ani nie powinny wykonywać uwierzytelniania MFA, a także aplikacje i klientów używane przez organizację, które nie obsługują nowoczesnego uwierzytelniania.
 
-## <a name="enable-the-baseline-policy"></a>Włącz zasady linii bazowej
+## <a name="enable-the-baseline-policy"></a>Włączanie zasad linii bazowej
 
-Zasady **bazowymi zasadami: Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami (wersja zapoznawcza)** ma wstępnie skonfigurowany i pojawi się u góry po przejściu do bloku dostępu warunkowego w witrynie Azure portal.
+Zasady linii **bazowej zasad: Wymagaj, aby usługa MFA dla zarządzania usługami** (wersja zapoznawcza) została wstępnie skonfigurowana i będzie wyświetlana u góry po przejściu do bloku dostęp warunkowy w Azure Portal.
 
 Aby włączyć te zasady i chronić administratorów:
 
-1. Zaloguj się do **witryny Azure portal** jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
-1. Przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**.
-1. Na liście zasad wybierz **bazowymi zasadami: Wymagać uwierzytelniania Wieloskładnikowego do zarządzania usługami (wersja zapoznawcza)** .
-1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
+1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
+1. Na liście zasad wybierz pozycję **zasady linii bazowej: Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania usługami**(wersja zapoznawcza).
+1. Ustaw opcję **Włącz zasady** , aby od **razu używać zasad**.
 1. Kliknij przycisk **Zapisz**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz:
 
-* [Zasady ochrony linii bazowej dostępu warunkowego](concept-baseline-protection.md)
-* [Pięć kroków do zabezpieczania infrastruktury tożsamości](../../security/azure-ad-secure-steps.md)
-* [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](overview.md)
+* [Zasady ochrony punktu odniesienia dostępu warunkowego](concept-baseline-protection.md)
+* [Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości](../../security/fundamentals/steps-secure-identity.md)
+* [Co to jest dostęp warunkowy w Azure Active Directory?](overview.md)

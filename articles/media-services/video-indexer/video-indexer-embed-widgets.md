@@ -1,5 +1,5 @@
 ---
-title: Osadzanie widżetów indeksatora wideo w aplikacjach
+title: Osadź Video Indexer widżety w aplikacjach
 titlesuffix: Azure Media Services
 description: Dowiedz się, jak osadzić widżety usługi Video Indexer w aplikacji.
 services: media-services
@@ -8,20 +8,20 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 06/30/2019
+ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ec3c7379c8c7f28765fbc4396d3e9804a6c127f6
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488688"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663747"
 ---
-# <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
+# <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadź Video Indexer widżety w aplikacjach
 
-W tym artykule wyjaśniono, jak osadzać widżety usługi Video Indexer w aplikacjach. Indeksator wideo obsługuje dwa typy osadzanie widżetów w aplikacji: **Cognitive Insights** i **Player**. 
+W tym artykule wyjaśniono, jak osadzać widżety usługi Video Indexer w aplikacjach. Video Indexer obsługuje osadzanie trzech typów elementów widget w aplikacji: **Szczegółowe informacje**, odtwarzaczei **Edytor**. 
 
-Począwszy od wersji 2, podstawowy adres URL elementu widget zawiera region konta. Na przykład generuje konto w regionie zachodnie stany USA: `https://wus2.videoindexer.ai/embed/insights/...`.
+Począwszy od wersji 2, podstawowy adres URL widżetu zawiera region określonego konta. Na przykład konto w regionie zachodnie stany USA generuje: `https://wus2.videoindexer.ai/embed/insights/...`.
 
 ## <a name="widget-types"></a>Typy widżetów
 
@@ -31,9 +31,9 @@ Widżet **Cognitive Insights** (Szczegółowe informacje) zawiera wszystkie szcz
 
 |Name (Nazwa)|Definicja|Opis|
 |---|---|---|
-|widgets|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji do renderowania. <br/>Przykład: parametr `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` spowoduje wyrenderowanie tylko szczegółowych informacji interfejsu użytkownika na temat ludzi i marek<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Brak obsługi przez adres URL w przypadku parametru version=2<br/><br/>**Uwaga:** Elementy widget param adres URL nie jest obsługiwane w wersji 2. |
-|Ustawienia regionalne|Kod krótki języka|Określa język szczegółowych informacji. Wartość domyślna to `en`. Na przykład: `language=de`.|
-|tabulator|Wybranej karty domyślne|Określa kartę szczegółowych informacji, który jest renderowany domyślnie. `tab=timeline` Wyświetla szczegółowe informacje z wybraną kartą osi czasu.|
+|`widgets`|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji do renderowania. <br/>Przykład: parametr `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` spowoduje wyrenderowanie tylko szczegółowych informacji interfejsu użytkownika na temat ludzi i marek<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Brak obsługi przez adres URL w przypadku parametru version=2<br/><br/>**Uwaga:** Parametr adresu URL widżetów nie jest obsługiwany w wersji 2. |
+|`locale`|Kod w języku krótkim|Steruje językiem usługi Insights. Wartość domyślna to `en`. Na przykład: `language=de`.|
+|`tab`|Domyślna wybrana karta|Kontroluje kartę szczegółowe dane, która jest renderowana domyślnie. `tab=timeline`renderuje szczegółowe informacje z wybraną kartą oś czasu.|
 
 ### <a name="player-widget"></a>Widżet Player
 
@@ -41,12 +41,24 @@ Widżet **Player** (Odtwarzacz) umożliwia przesyłanie strumieniowe wideo z ada
 
 |Name (Nazwa)|Definicja|Opis|
 |---|---|---|
-|t|Sekundy od początku|Sprawia, że odtwarzanie rozpoczyna się od podanego punktu w czasie.<br/>Przykład: `t=60`.|
-|captions|Kod języka|Pobiera napisy w danym języku podczas ładowania widżetu w celu udostępnienia ich w menu napisów.<br/>Przykład: `captions=en-US`.|
-|showCaptions|Wartość logiczna|Powoduje załadowanie już włączonych napisów.<br/>Przykład: `showCaptions=true`.|
-|type||Aktywuje skórkę odtwarzacza audio (część wideo jest usuwana).<br/>Przykład: `type=audio`.|
-|autoplay|Wartość logiczna|Wskazuje, czy należy rozpocząć odtwarzanie po załadowaniu pliku wideo (wartość domyślna to true).<br/>Przykład: `autoplay=false`.|
-|language|Kod języka|Określa język widżetu Player (wartość domyślna to en-US)<br/>Przykład: `language=de-DE`.|
+|`t`|Sekund od początku|Sprawia, że odtwarzanie rozpoczyna się od podanego punktu w czasie.<br/>Przykład: `t=60`.|
+|`captions`|Kod języka|Pobiera napisy w danym języku podczas ładowania widżetu w celu udostępnienia ich w menu napisów.<br/>Przykład: `captions=en-US`.|
+|`showCaptions`|Wartość logiczna|Powoduje załadowanie już włączonych napisów.<br/>Przykład: `showCaptions=true`.|
+|`type`||Aktywuje skórkę odtwarzacza audio (część wideo jest usuwana).<br/>Przykład: `type=audio`.|
+|`autoplay`|Wartość logiczna|Wskazuje, czy należy rozpocząć odtwarzanie po załadowaniu pliku wideo (wartość domyślna to true).<br/>Przykład: `autoplay=false`.|
+|`language`|Kod języka|Określa język widżetu Player (wartość domyślna to en-US)<br/>Przykład: `language=de-DE`.|
+
+### <a name="editor-widget"></a>Widżet edytora 
+
+Widżet **edytora** pozwala tworzyć nowe projekty i zarządzać szczegółowymi informacjami wideo.
+
+|Name (Nazwa)|Definicja|Opis|
+|---|---|---|
+|`accessToken`<sup>*</sup>|String|`accessToken` Parametr jest wymagany w przypadku korzystania z widżetu edytora.<br/>Token dostępu zapewnia dostęp do wideo tylko w ramach konta, które jest używane do osadzenia widżetu. |
+|`language`|Kod języka|Określa język widżetu Player (wartość domyślna to en-US)<br/>Przykład: `language=de-DE`.|
+|`locale`|Kod w języku krótkim|Steruje językiem usługi Insights. Wartość domyślna to `en`. Na przykład: `language=de`.|
+
+<sup>*</sup>Właściciel powinien `accessToken` zachować ostrożność. 
 
 ## <a name="embedding-public-content"></a>Osadzanie zawartości publicznej
 
@@ -57,15 +69,15 @@ Widżet **Player** (Odtwarzacz) umożliwia przesyłanie strumieniowe wideo z ada
     ![Widżet](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
     Po kliknięciu przycisku na ekranie pojawi się okno modalne osadzania, w którym możesz wybrać widżet do osadzenia w aplikacji.
-    Wybranie widżetu (**Player** lub **Cognitive Insights**) spowoduje wygenerowanie kodu osadzania do wklejenia w aplikacji.
+    Wybranie widżetu (**poznawcze informacje**, **odtwarzacz**lub **Edytor**) powoduje wygenerowanie kodu osadzonego do wklejenia w aplikacji.
  
-4. Wybierz typ widżetu (**Cognitive Insights** lub **Player**).
+4. Wybierz odpowiedni typ widżetu (**poznawcze informacje**, **odtwarzacz**lub **Edytor**).
 5. Skopiuj kod osadzania i dodaj go do swojej aplikacji. 
 
     ![Widżet](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
 > [!NOTE]
-> Jeśli masz problemy z udostępnianiem swoje adresy URL wideo, spróbuj dodać parametr "location" do łącza. Parametr powinien być ustawiony na [regiony platformy Azure, w których istnieje Video Indexer](regions.md). Na przykład `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+> Jeśli masz problemy z udostępnianiem adresów URL wideo, spróbuj dodać parametr "Location" do linku. Parametr powinien być ustawiony na [regiony platformy Azure, w których istnieje Video Indexer](regions.md). Na przykład `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 ## <a name="embedding-private-content"></a>Osadzanie zawartości prywatnej
 
@@ -94,7 +106,7 @@ Aby umożliwić widżetom usługi Video Indexer komunikowanie się z innymi skł
 
 Jeśli zdecydujesz się na wdrożenie własnego kodu odtwarzacza i realizację integracji z widżetami **Cognitive Insights**, odpowiadasz za zweryfikowanie źródła komunikatu pochodzącego z VideoIndexer.ai.
 
-### <a name="embed-both-types-of-widgets-in-your-application--blog-recommended"></a>Osadzanie obu typów widżetów w aplikacji/blogu (zalecane) 
+### <a name="embed-widgets-in-your-application--blog-recommended"></a>Osadź widżety w aplikacji/blogu (zalecane) 
 
 W tej sekcji pokazano, jak zrealizować interakcję między dwoma widżetami usługi Video Indexer: gdy użytkownik kliknie kontrolkę szczegółowych informacji w aplikacji, odtwarzacz przeskoczy do odpowiedniego punktu w nagraniu wideo.
 
@@ -178,7 +190,7 @@ W przypadku używania własnego odtwarzacza trzeba samodzielnie zadbać o manipu
         </video>    
 
 2. Osadź widżet Cognitive Insights.
-3. Zaimplementuj komunikację dla odtwarzacza z nasłuchiwaniem w oczekiwaniu na zdarzenie „message”. Na przykład:
+3. Zaimplementuj komunikację dla odtwarzacza z nasłuchiwaniem w oczekiwaniu na zdarzenie „message”. Przykład:
 
         <script>
     
@@ -213,23 +225,23 @@ Aby uzyskać więcej informacji, zobacz [ten pokaz](https://codepen.io/videoinde
 
 ## <a name="adding-subtitles"></a>Dodawanie napisów
 
-Jeśli osadzasz szczegółowe informacje usługi Video Indexer z własnym odtwarzaczem AMP, możesz pobrać napisy (podpisy) za pomocą metody **GetVttUrl**. Możesz również wywołać metodę JavaScript **getSubtitlesUrl** z wtyczki AMP usługi Video Indexer (jak pokazano wcześniej). 
+Jeśli osadzisz Video Indexer Insights przy użyciu własnych [Azure Media Player](https://aka.ms/azuremediaplayer), możesz użyć metody **GetVttUrl** , aby uzyskać napisy (napisy). Możesz również wywołać metodę JavaScript **getSubtitlesUrl** z wtyczki AMP usługi Video Indexer (jak pokazano wcześniej). 
 
 ## <a name="customizing-embeddable-widgets"></a>Dostosowywanie osadzalnych widżetów
 
 ### <a name="cognitive-insights-widget"></a>Widżet Cognitive Insights
 
-Możesz wybrać typy wglądu w szczegółowe dane mają, określając je jako wartość do następującego parametru URL dodawane do kodu osadzania otrzymasz (z interfejsu API lub aplikacji sieci web): `&widgets=<list of wanted widgets>`.
+Możesz wybrać typy szczegółowych informacji, określając je jako wartość następującego parametru adresu URL dodanego do kodu osadzania, który otrzymujesz (z interfejsu API lub z aplikacji sieci Web): `&widgets=<list of wanted widgets>`.
 
 Możliwe wartości: people, keywords, sentiments, transcript, search.
 
-Na przykład jeśli chcesz osadzić elementu widget zawierający tylko insights osób i Wyszukiwanie elementu iframe adres URL osadzania będzie wyglądać następująco:
+Na przykład jeśli chcesz osadzić widżet zawierający tylko osoby i przeszukać szczegółowe informacje, adres URL osadzania elementu iframe będzie wyglądać następująco:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
 
-Można również dostosować tytuł okna elementu iframe, zapewniając `&title=<YourTitle>` do adresu URL elementu iframe. (Spowoduje to dostosowanie wartości \<title> elementu html).
+Tytuł okna elementu IFRAME można również dostosować, podając `&title=<YourTitle>` adres URL elementu iframe. (Spowoduje to dostosowanie wartości \<title> elementu html).
     
-Na przykład jeśli chcesz nadać okna w elemencie iframe tytuł "MyInsights", adres URL będzie wyglądać następująco:
+Na przykład jeśli chcesz nadać polu elementu IFRAME tytuł "MyInsights", adres URL będzie wyglądać następująco:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
 
@@ -239,16 +251,16 @@ Ta opcja ma zastosowanie tylko w przypadkach, gdy trzeba otworzyć szczegółowe
 
 W przypadku osadzania widżetu Player usługi Video Indexer można wybrać rozmiar odtwarzacza, określając rozmiar elementu iframe.
 
-Na przykład:
+Przykład:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
 Domyślnie widżet Player usługi Video Indexer będzie mieć automatycznie generowane napisy oparte na transkrypcji nagrania wideo wyodrębnionego z pliku wideo w języku źródłowym, który został wybrany podczas przekazywania pliku wideo.
 
-Jeśli chcesz osadzanie za pomocą innego języka, można dodać `&captions=< Language | ”all” | “false” >` adres URL odtwarzacza osadzania lub put "all" jako wartość, jeśli chcesz mieć wszystkie dostępne języki podpisów.
-Chcąc podpisów, które mają być wyświetlane domyślnie można przekazać `&showCaptions=true`.
+Jeśli chcesz osadzić przy użyciu innego języka, możesz dodać `&captions=< Language | ”all” | “false” >` do adresu URL odtwarzacza osadzania lub "wszystkie" jako wartość, jeśli chcesz mieć wszystkie dostępne etykiety.
+Jeśli chcesz, aby podpisy były wyświetlane domyślnie, możesz przekazać `&showCaptions=true`.
 
-Adres URL osadzania następnie będzie wyglądać następująco: 
+Adres URL osadzania będzie wyglądać następująco: 
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
 
@@ -260,4 +272,4 @@ Automatyczne odtwarzanie — domyślnie odtwarzacz rozpocznie odtwarzanie pliku 
 
 Aby uzyskać informacje o sposobie wyświetlania i edytowania szczegółowych informacji usługi Video Indexer, zobacz [ten](video-indexer-view-edit.md) artykuł.
 
-Ponadto zapoznaj się z [Video indexer funkcji codepen można](https://codepen.io/videoindexer/pen/eGxebZ).
+Zapoznaj się również z [CodePen indeksatora wideo](https://codepen.io/videoindexer/pen/eGxebZ).

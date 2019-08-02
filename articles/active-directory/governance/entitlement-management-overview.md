@@ -16,14 +16,14 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896cc495d6f369c034171833a9b90aa53e6477b6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234650"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678154"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie prawami w usłudze Azure AD? (Wersja zapoznawcza)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie prawami w usłudze Azure AD? (wersja zapoznawcza)
 
 > [!IMPORTANT]
 > Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
@@ -73,14 +73,14 @@ Poniżej przedstawiono typy zasobów, do których można zarządzać dostępem z
 - Aplikacje dla przedsiębiorstw usługi Azure AD, w tym aplikacja SaaS i aplikacje zintegrowane z niestandardową obsługą Federacji lub aprowizacji
 - Zbiory witryn i witryny usługi SharePoint Online
 
-Można również kontrolować dostęp do innych zasobów, które są zależne od grup zabezpieczeń usługi Azure AD lub grup programu Office 365.  Na przykład:
+Można również kontrolować dostęp do innych zasobów, które są zależne od grup zabezpieczeń usługi Azure AD lub grup programu Office 365.  Przykład:
 
 - Można udzielić użytkownikom licencji na Microsoft Office 365 przy użyciu grupy zabezpieczeń usługi Azure AD w pakiecie dostępu i konfigurowania [licencjonowania opartego na grupach](../users-groups-roles/licensing-groups-assign.md) dla tej grupy.
 - Można udzielić użytkownikom dostępu do zarządzania zasobami platformy Azure za pomocą grupy zabezpieczeń usługi Azure AD w pakiecie dostępu i tworzenia [przypisania roli platformy Azure](../../role-based-access-control/role-assignments-portal.md) dla tej grupy
 
 ## <a name="what-are-access-packages-and-policies"></a>Co to są pakiety i zasady dostępu?
 
-Zarządzanie prawami wprowadza koncepcję *pakietu dostępu*. Pakiet dostępu to pakiet wszystkich zasobów, które użytkownik musi pracować nad projektem lub wykonywać zadania. Zasoby obejmują dostęp do grup, aplikacji lub witryn. Pakiety dostępu są używane do zarządzania dostępem do pracowników wewnętrznych, a także użytkowników spoza organizacji. Pakiety dostępu są definiowane w kontenerach o nazwie wykazów.
+Zarządzanie prawami wprowadza koncepcję *pakietu dostępu*. Pakiet dostępu to pakiet wszystkich zasobów, które użytkownik musi pracować nad projektem lub wykonywać zadania. Zasoby obejmują dostęp do grup, aplikacji lub witryn. Pakiety dostępu są używane do zarządzania dostępem do pracowników wewnętrznych, a także użytkowników spoza organizacji. Pakiety dostępu są definiowane w konteneracho nazwie wykazów.
 
 Pakiety dostępu zawierają również co najmniej jedną *zasadę*. Zasady definiują reguły lub guardrails w celu uzyskania dostępu do pakietu dostępu. Włączenie zasad wymusza, aby tylko Ci użytkownicy mieli dostęp do odpowiednich zasobów i przez właściwy czas.
 
@@ -90,7 +90,7 @@ W przypadku pakietu dostępu i jego zasad Menedżer pakietów dostępu definiuje
 
 - Zasoby
 - Role, których użytkownicy potrzebują dla zasobów
-- Użytkownicy wewnętrzni i zewnętrzni użytkownicy, którzy mają uprawnienia do żądania dostępu
+- Użytkownicy wewnętrzni i partnerzy z użytkownikami zewnętrznymi, którzy mają prawo do żądania dostępu
 - Proces zatwierdzania i użytkownicy, którzy mogą zatwierdzać lub odmówić dostępu
 - Czas trwania dostępu użytkownika
 
@@ -101,7 +101,7 @@ Na poniższym diagramie przedstawiono przykład różnych elementów w usłudze 
 
 ![Omówienie zarządzania uprawnieniami](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="external-users"></a>Użytkownicy zewnętrzni
+## <a name="external-users"></a>Zewnętrzni użytkownicy
 
 W przypadku korzystania z funkcji zapraszania [usługi Azure AD Business-to-Business (B2B)](../b2b/what-is-b2b.md) musisz znać adresy e-mail użytkowników zewnętrznego gościa, którzy mają zostać dołączeni do katalogu zasobów i z którymi pracują. Jest to doskonałe rozwiązanie, gdy pracujesz nad mniejszym lub krótkoterminowym projektem i znasz już wszystkich uczestników, ale jest to trudniejsze do zarządzania, jeśli masz wielu użytkowników, z którymi chcesz pracować, lub jeśli uczestnicy zmieniają się z upływem czasu.  Na przykład użytkownik może pracować z inną organizacją i mieć jeden punkt kontaktu z tą organizacją, ale w miarę upływu czasu dodatkowi użytkownicy z tej organizacji będą musieli również uzyskać dostęp.
 
@@ -120,15 +120,15 @@ Aby lepiej zrozumieć Zarządzanie uprawnieniami i dokumentację, należy zapozn
 | Zarządzanie prawami | Usługa, która przypisuje, odwołuje i zarządza pakietami dostępu. |
 | pakiet dostępu | Kolekcja uprawnień i zasad do zasobów, które użytkownicy mogą żądać. Pakiet dostępu jest zawsze zawarty w wykazie. |
 | żądanie dostępu | Żądanie dostępu do pakietu dostępu. Żądanie zwykle przechodzi przez przepływ pracy. |
-| policy | Zestaw reguł definiujących cykl życia dostępu, takich jak użytkownicy uzyskują dostęp, kto może zatwierdzić i jak długo użytkownicy mają dostęp. Przykładowe zasady obejmują dostęp pracownika i dostęp zewnętrzny. |
+| zasady | Zestaw reguł definiujących cykl życia dostępu, takich jak użytkownicy uzyskują dostęp, kto może zatwierdzić i jak długo użytkownicy mają dostęp. Przykładowe zasady obejmują dostęp pracownika i dostęp zewnętrzny. |
 | catalog | Kontener powiązanych zasobów i pakietów dostępu. |
 | Wykaz ogólny | Wbudowany wykaz, który jest zawsze dostępny. Aby dodać zasoby do wykazu ogólnego, wymagane są pewne uprawnienia. |
-| resource | Zasób lub usługa (na przykład grupa, aplikacja lub lokacja), do której użytkownik może uzyskać uprawnienia. |
-| Typ zasobu | Typ zasobu, który obejmuje grupy, aplikacje i witryny usługi SharePoint Online. |
+| resource | Zasób lub usługa (na przykład grupa Office, Grupa zabezpieczeń, aplikacja lub witryna usługi SharePoint Online), do której użytkownik może uzyskać uprawnienia. |
+| typ zasobu | Typ zasobu, który obejmuje grupy, aplikacje i witryny usługi SharePoint Online. |
 | Rola zasobu | Kolekcja uprawnień skojarzonych z zasobem. |
 | Katalog zasobów | Katalog, który ma co najmniej jeden zasób do udostępnienia. |
-| przypisani użytkownicy | Przypisanie pakietu dostępu do użytkownika lub grupy. |
-| Mogły | Proces tworzenia pakietu dostępu dostępnego dla użytkowników do żądania. |
+| przypisani użytkownicy | Przypisanie pakietu dostępu do użytkownika, tak aby użytkownik miał wszystkie role zasobów tego pakietu. |
+| włącz | Proces tworzenia pakietu dostępu dostępnego dla użytkowników do żądania. |
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
 
@@ -136,7 +136,7 @@ Aby lepiej zrozumieć Zarządzanie uprawnieniami i dokumentację, należy zapozn
 
 Wyspecjalizowane chmury, takie jak Azure Government, Azure (Niemcy) i Azure (Chiny), nie są obecnie dostępne do użycia w tej wersji zapoznawczej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Samouczek: Tworzenie pierwszego pakietu dostępu](entitlement-management-access-package-first.md)
 - [Typowe scenariusze](entitlement-management-scenarios.md)

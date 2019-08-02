@@ -18,10 +18,10 @@ ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479177"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -304,7 +304,7 @@ Aby można było użyć udziału plików skalowalnego w poziomie, system musi sp
 
 * Co najmniej dwa węzły klastra dla udziału plików skalowalnego w poziomie.
 * Każdy węzeł musi mieć co najmniej dwa dyski lokalne.
-* Ze względu na wydajność należy użyć funkcji odporności dublowania:
+* Ze względu na wydajność należy użyćfunkcji odporności dublowania:
     * Dwukierunkowa dublowanie dla udziału plików skalowalnego w poziomie z dwoma węzłami klastra.
     * Trójwymiarowe dublowanie dla udziału plików skalowalnego w poziomie z trzema (lub więcej) węzłami klastra.
 * Zaleca się, aby w udziale plików skalowalnym w poziomie co najmniej trzy węzły klastra z funkcją dublowania.
@@ -312,11 +312,11 @@ Aby można było użyć udziału plików skalowalnego w poziomie, system musi sp
 * Musisz użyć dysków Azure Premium.
 * Zalecamy korzystanie z usługi Azure Managed Disks.
 * Zalecamy formatowanie woluminów przy użyciu systemu plików ReFS.
-    * Aby uzyskać więcej informacji, zobacz temat [SAP Uwaga 1869038 — obsługa SAP dla systemu plików][1869038] and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem] ReFs rozdział w artykule Planowanie woluminów w bezpośrednie miejsca do magazynowania.
+    * Aby uzyskać więcej informacji, zobacz temat [SAP uwaga 1869038 — obsługa SAP dla systemu plików ReFs][1869038] oraz rozdział [plików][planning-volumes-s2d-choosing-filesystem] w artykule Planowanie woluminów w bezpośrednie miejsca do magazynowania.
     * Pamiętaj, aby zainstalować [aktualizację zbiorczą programu Microsoft KB4025334][kb4025334].
 * Możesz użyć rozmiarów maszyn wirtualnych platformy Azure z serii DS lub DSv2.
 * Aby zapewnić dobrą wydajność sieci między maszynami wirtualnymi, które są niezbędne do Bezpośrednie miejsca do magazynowania synchronizacji dysków, użyj typu maszyny wirtualnej z co najmniej przepustowością sieci "High".
-    Aby uzyskać więcej informacji, zobacz specyfikacje [serii][dv2-series] and [DS-Series][ds-series] DSv2.
+    Aby uzyskać więcej informacji, zobacz specyfikacje [serii DSv2][dv2-series] i [ds][ds-series] .
 * Zalecamy zarezerwowanie pewnej nieprzypisanej pojemności w puli magazynów. Pozostawienie nieprzypisanej pojemności w puli magazynów powoduje, że miejsce na woluminy do naprawy "w miejscu" w przypadku awarii dysku. Zwiększa to bezpieczeństwo i wydajność danych.  Aby uzyskać więcej informacji, zobacz [Wybieranie rozmiaru woluminu][choosing-the-size-of-volumes-s2d].
 * Nie trzeba konfigurować wewnętrznego modułu równoważenia obciążenia platformy Azure dla nazwy sieciowej udziału plików skalowalnego w poziomie, na przykład dla \<hosta\>globalnego SAP. Jest to wykonywane dla \<nazwy\> hosta wirtualnego ASCS/SCS wystąpienia SAP ASCS/SCS lub dla systemu DBMS. Udział plików skalowalny w poziomie skaluje obciążenie we wszystkich węzłach klastra. \<Host\> globalny SAP używa lokalnego adresu IP dla wszystkich węzłów klastra.
 

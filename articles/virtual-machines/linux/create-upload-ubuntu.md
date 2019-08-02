@@ -1,6 +1,6 @@
 ---
-title: Utwórz i przekaż dysk VHD systemu Linux Ubuntu na platformie Azure
-description: Dowiedz się utworzyć i przekazać Azure wirtualnego dysku twardego (VHD) z systemem operacyjnym Ubuntu Linux.
+title: Tworzenie i przekazywanie Ubuntu Linux wirtualnego dysku twardego na platformie Azure
+description: Zapoznaj się z tematem tworzenie i przekazywanie wirtualnego dysku twardego (VHD) platformy Azure zawierającego Ubuntu Linux system operacyjny.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: szark
-ms.openlocfilehash: 50651a31cd407da3ce32be3c2ddbbd24e6ca6b69
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 140ad3d65db08d596e6ab3d3d31f5606a7b4dc54
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671567"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696067"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Ubuntu dla platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="official-ubuntu-cloud-images"></a>Oficjalne obrazy w chmurze systemu Ubuntu
-Ubuntu teraz publikuje oficjalne wirtualnych dysków twardych platformy Azure do pobrania na [ https://cloud-images.ubuntu.com/ ](https://cloud-images.ubuntu.com/). Jeśli potrzebujesz do tworzenia własnych wyspecjalizowanego obrazu systemu Ubuntu na platformie Azure, zamiast niż wykonać poniższą procedurę ręcznego, zaleca się rozpoczynać się one znane pracy wirtualne dyski twarde i dostosowywać odpowiednio do potrzeb. Zainstalowane najnowsze wersje obrazu, zawsze można znaleźć w następujących lokalizacjach:
+## <a name="official-ubuntu-cloud-images"></a>Oficjalne obrazy w chmurze Ubuntu
+Ubuntu teraz publikuje oficjalne wirtualne dyski twarde platformy Azure [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)do pobrania w systemie. Jeśli musisz utworzyć własny, wyspecjalizowany obraz Ubuntu dla platformy Azure, zamiast korzystać z procedury ręcznej poniżej, zaleca się rozpoczęcie od tych znanych, działających wirtualnych dysków twardych i dostosowanie ich w razie potrzeby. Najnowsze wersje obrazów można zawsze znaleźć w następujących lokalizacjach:
 
 * Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
-* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/cosmic/current/cosmic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 18.04/Bionic: [Bionic-Server-cloudimg-amd64. VHD. zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 18.10/Cosmic: [Cosmic-Server-cloudimg-amd64. VHD. zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule założono, że już zainstalowano system operacyjny Ubuntu Linux do wirtualnego dysku twardego. Istnieje wiele narzędzi do tworzenia plików VHD, na przykład rozwiązanie wirtualizacji takich jak funkcji Hyper-V. Aby uzyskać instrukcje, zobacz [należy zainstalować rolę funkcji Hyper-V i konfigurowanie maszyny wirtualnej](https://technet.microsoft.com/library/hh846766.aspx).
+W tym artykule założono, że zainstalowano już Ubuntu Linux system operacyjny na wirtualnym dysku twardym. Istnieje wiele narzędzi do tworzenia plików VHD, na przykład rozwiązanie wirtualizacji, takie jak funkcja Hyper-V. Aby uzyskać instrukcje, zobacz [Instalowanie roli funkcji Hyper-V i Konfigurowanie maszyny wirtualnej](https://technet.microsoft.com/library/hh846766.aspx).
 
-**Uwagi dotyczące instalacji systemu Ubuntu**
+**Ubuntu uwagi dotyczące instalacji**
 
-* Zobacz również [ogólne informacje o instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) więcej porad na temat przygotowywania systemu Linux na platformie Azure.
-* VHDX format jest nieobsługiwane na platformie Azure, tylko **stałej wirtualnego dysku twardego**.  Dysk można przekonwertować na format VHD za pomocą Menedżera funkcji Hyper-V lub polecenia cmdlet convert-vhd.
-* Podczas instalowania systemu Linux zalecane jest użycie standardowe partycje, a nie LVM (często domyślnie w przypadku instalacji wielu). Pozwoli to uniknąć LVM wystąpił konflikt między nazwą sklonowany w przypadku maszyn wirtualnych, szczególnie w przypadku, gdy dysk systemu operacyjnego nigdy nie musi być dołączony do innej maszyny Wirtualnej do rozwiązywania problemów. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) może być używana dla dysków z danymi, jeśli preferowane.
-* Nie należy konfigurować partycji wymiany na dysku systemu operacyjnego. Aby utworzyć plik wymiany na dysk tymczasowy zasobów można skonfigurować agenta systemu Linux.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
-* Wszystkie dyski VHD na platformie Azure musi mieć rozmiar wirtualny wyrównane do 1MB. Podczas konwersji z pierwotnych dysku wirtualnego dysku twardego należy się upewnić, że rozmiar dysku surowego jest wielokrotnością 1MB przed dokonaniem konwersji. Zobacz [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) Aby uzyskać więcej informacji.
+* Aby uzyskać więcej porad dotyczących przygotowywania systemu Linux dla platformy Azure, zobacz również [Ogólne informacje o instalacji](create-upload-generic.md#general-linux-installation-notes) w systemie Linux.
+* Format VHDX nie jest obsługiwany na platformie Azure, tylko **stałego dysku VHD**.  Dysk można przekonwertować na format VHD przy użyciu Menedżera funkcji Hyper-V lub polecenia cmdlet Convert-VHD.
+* W przypadku instalowania systemu Linux zaleca się używanie partycji standardowych zamiast LVM (często jest to ustawienie domyślne dla wielu instalacji). Pozwoli to uniknąć konfliktów nazw LVM z klonowanymi maszynami wirtualnymi, szczególnie w przypadku, gdy kiedykolwiek konieczne jest dołączenie dysku systemu operacyjnego do innej maszyny wirtualnej w celu rozwiązywania problemów. Na dyskach danych można używać [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , jeśli są preferowane.
+* Nie należy konfigurować partycji wymiany na dysku systemu operacyjnego. Agenta systemu Linux można skonfigurować tak, aby utworzył plik wymiany na tymczasowym dysku zasobów.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
+* Wszystkie wirtualne dyski twarde na platformie Azure muszą mieć rozmiar wirtualny wyrównany do 1 MB. Podczas konwertowania z dysku surowego na dysk VHD należy upewnić się, że rozmiar dysku surowego jest wielokrotnością 1 MB przed konwersją. Aby uzyskać więcej informacji, zobacz [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) .
 
-## <a name="manual-steps"></a>Wymagane ręczne wykonanie czynności
+## <a name="manual-steps"></a>Kroki ręczne
 > [!NOTE]
-> Przed próbą utworzenia własnego niestandardowego obrazu systemu Ubuntu na platformie Azure, rozważ użycie obrazów wstępnie skompilowane i przetestowane z [ https://cloud-images.ubuntu.com/ ](https://cloud-images.ubuntu.com/) zamiast tego.
+> Przed podjęciem próby utworzenia własnego niestandardowego obrazu Ubuntu na platformie Azure Rozważ użycie wstępnie skompilowanych i przetestowanych obrazów [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) .
 > 
 > 
 
 1. W środkowym okienku Menedżera funkcji Hyper-V wybierz maszynę wirtualną.
 
-2. Kliknij przycisk **Connect** aby otworzyć okno dla maszyny wirtualnej.
+2. Kliknij przycisk **Połącz** , aby otworzyć okno dla maszyny wirtualnej.
 
-3. Zastąp bieżący repozytoriów w obrazu do użycia w systemie Ubuntu repozytoriów platformy Azure. Kroki różnią się nieco w zależności od wersji systemu Ubuntu.
+3. Zastąp bieżące repozytoria w obrazie, aby używać Ubuntu repozytoriów platformy Azure. Kroki różnią się nieco w zależności od wersji Ubuntu.
    
-    Przed rozpoczęciem edycji `/etc/apt/sources.list`, zalecane jest wykonanie kopii zapasowej:
+    Przed rozpoczęciem edycji `/etc/apt/sources.list`zaleca się wykonanie kopii zapasowej:
    
         # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
@@ -76,7 +76,7 @@ W tym artykule założono, że już zainstalowano system operacyjny Ubuntu Linux
         # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
         # sudo apt-get update
 
-4. Teraz następujące obrazy Ubuntu Azure *włączania sprzętu* jądra (HWE). Aktualizacja systemu operacyjnego do najnowszych jądra, uruchamiając następujące polecenia:
+4. Ubuntu obrazy platformy Azure są teraz następujące po jądrze *włączenia sprzętu* (HWE). Aby zaktualizować system operacyjny do najnowszego jądra, należy uruchomić następujące polecenia:
 
     Ubuntu 12.04:
    
@@ -104,39 +104,39 @@ W tym artykule założono, że już zainstalowano system operacyjny Ubuntu Linux
 
         # sudo reboot
 
-    **Zobacz też:**
+    **Zobacz również:**
     - [https://wiki.ubuntu.com/Kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
 
 
-5. Zmodyfikuj wiersza rozruchu jądra dla chodników uwzględnić dodatkowe jądra parametry dla platformy Azure. Aby zrobić to open `/etc/default/grub` w edytorze tekstów, Znajdź zmienną o nazwie `GRUB_CMDLINE_LINUX_DEFAULT` (lub dodać ją w razie potrzeby) i dostosuj go do obejmują następujące parametry:
+5. Zmodyfikuj wiersz rozruchowy jądra dla Grub, aby uwzględnić dodatkowe parametry jądra dla platformy Azure. Aby to zrobić, `/etc/default/grub` Otwórz w edytorze tekstów, znajdź zmienną o nazwie `GRUB_CMDLINE_LINUX_DEFAULT` (lub Dodaj ją w razie potrzeby) i zmodyfikuj ją w celu uwzględnienia następujących parametrów:
    
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
-    Zapisz i zamknij ten plik, a następnie uruchom `sudo update-grub`. Pozwoli to zagwarantować, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego umożliwić udzielenie pomocy technicznej platformy Azure w debugowaniu problemów.
+    Zapisz i Zamknij ten plik, a następnie uruchom `sudo update-grub`polecenie. Dzięki temu wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego, który może pomóc w pomocy technicznej platformy Azure z problemami z debugowaniem.
 
-6. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zazwyczaj jest to opcja domyślna.
+6. Upewnij się, że serwer SSH został zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zwykle jest to ustawienie domyślne.
 
-7. Zainstaluj agenta systemu Linux dla platformy Azure:
+7. Zainstaluj agenta platformy Azure dla systemu Linux:
    
         # sudo apt-get update
         # sudo apt-get install walinuxagent
 
    > [!Note]
-   >  `walinuxagent` Pakietów może spowodować usunięcie `NetworkManager` i `NetworkManager-gnome` pakietów, jeśli są zainstalowane.
+   >  Pakiet może usunąć pakiety `NetworkManager-gnome`i, jeśli są zainstalowane. `NetworkManager` `walinuxagent`
 
 
-1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
+1. Uruchom następujące polecenia, aby anulować obsługę administracyjną maszyny wirtualnej i przygotować ją do aprowizacji na platformie Azure:
    
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
-1. Kliknij przycisk **akcji -> Zamknij dół** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
+1. Kliknij **akcję-> wyłączyć** w Menedżerze funkcji Hyper-V. Wirtualny dysk twardy z systemem Linux jest teraz gotowy do przekazania na platformę Azure.
 
 ## <a name="references"></a>Odwołania
-[Ubuntu sprzętu (HWE) umożliwia jądra](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
+[Ubuntu Włączanie sprzętu (HWE)](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz możesz przystąpić do wirtualnego dysku twardego z systemem Ubuntu Linux umożliwia tworzenie nowych maszyn wirtualnych na platformie Azure. Jeśli po raz pierwszy, w przypadku przekazywania pliku VHD na platformie Azure, zobacz [Utwórz Maszynę wirtualną systemu Linux z niestandardowego dysku](upload-vhd.md#option-1-upload-a-vhd).
+Teraz możesz przystąpić do korzystania z Ubuntu Linux wirtualnego dysku twardego w celu utworzenia nowych maszyn wirtualnych na platformie Azure. Jeśli przekazujesz plik VHD na platformę Azure po raz pierwszy, zobacz [Tworzenie maszyny wirtualnej z systemem Linux z dysku niestandardowego](upload-vhd.md#option-1-upload-a-vhd).
 

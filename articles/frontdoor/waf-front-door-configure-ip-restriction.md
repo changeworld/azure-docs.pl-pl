@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 611a52f43b5b0e076ae37df9df86479ec894c6f4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: a610a2c01a1e935c55942b621e5b3799cb002fc0
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849162"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698642"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Konfigurowanie reguły ograniczeń adresów IP za pomocą zapory aplikacji sieci Web dla usługi platformy Azure front-drzwi
 W tym artykule opisano sposób konfigurowania reguł ograniczeń adresów IP w zaporze aplikacji sieci Web (WAF) dla usługi frontonu platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, Azure PowerShell lub szablonu Azure Resource Manager.
@@ -40,7 +40,7 @@ Utwórz profil usługi frontonu platformy Azure, postępując zgodnie z instrukc
 
 ### <a name="create-a-waf-policy"></a>Tworzenie zasad WAF
 
-Utwórz zasady WAF przy użyciu polecenia [AZ Network WAF-Policy Create](/cli/azure/ext/front-door/network/waf-policy?view=azure-cli-latest#ext-front-door-az-network-waf-policy-create) . W poniższym przykładzie Zastąp nazwę zasad *IPAllowPolicyExampleCLI* unikatową nazwą zasad.
+Utwórz zasady WAF przy użyciu polecenia [AZ Network WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) . W poniższym przykładzie Zastąp nazwę zasad *IPAllowPolicyExampleCLI* unikatową nazwą zasad.
 
 ```azurecli-interactive 
 az network waf-policy create \
@@ -50,7 +50,7 @@ az network waf-policy create \
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>Dodaj niestandardową regułę kontroli dostępu IP
 
-Użyj polecenia [AZ Network WAF-Policy Custom-Rule Create](/cli/azure/ext/front-door/network/waf-policy/custom-rule?view=azure-cli-latest#ext-front-door-az-network-waf-policy-custom-rule-create) , aby dodać niestandardową regułę kontroli dostępu IP dla właśnie utworzonych zasad WAF.
+Użyj polecenia [AZ Network WAF-Policy Custom-Rule Create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-rule-create) , aby dodać niestandardową regułę kontroli dostępu IP dla właśnie utworzonych zasad WAF.
 
 W następujących przykładach:
 -  Zastąp *IPAllowPolicyExampleCLI* własnymi utworzonymi wcześniej zasadami.
@@ -82,7 +82,7 @@ az network waf-policy custom-rule create \
 ```
     
 ### <a name="find-the-id-of-a-waf-policy"></a>Znajdź identyfikator zasad WAF 
-Znajdź identyfikator zasad WAF za pomocą polecenia [AZ Network WAF-Policy show](/cli/azure/ext/front-door/network/waf-policy?view=azure-cli-latest#ext-front-door-az-network-waf-policy-show) . Zastąp *IPAllowPolicyExampleCLI* w poniższym przykładzie z unikatowymi zasadami, które zostały utworzone wcześniej.
+Znajdź identyfikator zasad WAF za pomocą polecenia [AZ Network WAF-Policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) . Zastąp *IPAllowPolicyExampleCLI* w poniższym przykładzie z unikatowymi zasadami, które zostały utworzone wcześniej.
 
    ```azurecli
    az network waf-policy show \
@@ -201,6 +201,6 @@ Połącz obiekt zasad WAF z istniejącym hostem frontonu i zaktualizuj właściw
 Aby wyświetlić szablon służący do tworzenia zasad usługi Azure Front-drzwiczk i zasad WAF z użyciem niestandardowych reguł ograniczeń adresów IP, przejdź do witryny [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [utworzyć profil usługi frontonu platformy Azure](quickstart-create-front-door.md).

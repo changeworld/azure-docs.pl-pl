@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 4ba3109460616be98b5330ec7175f161a6a3b750
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326179"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs w usłudze Azure Blob Storage lub magazynu usługi Azure Data Lake
@@ -73,7 +73,7 @@ Pliki tworzone przez przechwytywania usługi Event Hubs mają następujące sche
 
 ![Schemat Avro][3]
 
-Łatwym sposobem eksplorowania plików Avro jest użycie [narzędzi][Avro Tools] jar from Apache. You can also use [Apache Drill][Apache Drill] Avro do uproszczonego środowiska opartego na języku SQL lub [Apache Spark][Apache Spark] w celu przeprowadzenia złożonego przetwarzania rozproszonego danych. 
+Łatwym sposobem eksplorowania plików Avro jest użycie [Narzędzia Avro][Avro Tools] w postaci jar. Możesz również użyć funkcji [drążenia Apache][Apache Drill] w celu uzyskania uproszczonego środowiska opartego na języku SQL lub [Apache Spark][Apache Spark] , aby wykonać złożone przetwarzanie rozproszone dla pozyskiwanych danych. 
 
 ### <a name="use-apache-drill"></a>Korzystanie z funkcji drążenia Apache
 
@@ -129,7 +129,7 @@ Aby przekonwertować plik do formatu JSON i wykonywać inne procesy przetwarzani
 
 Aby przeprowadzić bardziej zaawansowane przetwarzanie, Pobierz i zainstaluj Avro z dowolnie wybranych platform. W momencie pisania tego dokumentu, istnieją implementacje dla języka C, C++, C\#, Java, NodeJS, Perl, PHP, Python i Ruby.
 
-Oprogramowanie Apache Avro zakończyło się Wprowadzenie przewodników dla [języka Java][Java] and [Python][Python]. Można również przeczytać [rozpoczęcie korzystania z usługi Event Hubs Capture](event-hubs-capture-python.md) artykułu.
+Oprogramowanie Apache Avro zakończyło się Wprowadzenie przewodników dla [języków Java][Java] i [Python][Python]. Można również przeczytać [rozpoczęcie korzystania z usługi Event Hubs Capture](event-hubs-capture-python.md) artykułu.
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Jak opłata przechwytywania usługi Event Hubs
 

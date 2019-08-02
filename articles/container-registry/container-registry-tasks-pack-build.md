@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/22/2019
 ms.author: danlep
 ms.openlocfilehash: 5100418651e24d74ad747e8c436ffce53c899a92
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68500899"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Kompilowanie i wypychanie obrazu z aplikacji przy użyciu natywnej Buildpack w chmurze
@@ -99,7 +99,7 @@ docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 Przejdź do `localhost:8080` ulubionej przeglądarki, aby wyświetlić przykładową aplikację internetową. Naciśnij `[Ctrl]+[C]` klawisz, aby zatrzymać kontener.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po skompilowaniu i wypchnięciu obrazu kontenera `az acr pack build`za pomocą programu można wdrożyć go jak dowolny obraz w wybranym miejscu docelowym. Opcje wdrażania platformy Azure obejmują uruchamianie go w [App Service](../app-service/containers/tutorial-custom-docker-image.md) lub [usługi Azure Kubernetes](../aks/tutorial-kubernetes-deploy-cluster.md).
 

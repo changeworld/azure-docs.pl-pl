@@ -1,7 +1,7 @@
 ---
-title: Zarządzanie danymi użytkowników za pomocą uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Zarządzanie danymi użytkowników przy użyciu Conversation Learner-Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak zarządzać danymi użytkownika przy użyciu uczeń konwersacji.
+description: Dowiedz się, jak zarządzać danymi użytkowników przy użyciu Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,36 +10,37 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 7ea0b246a16ff196a4160d9822b5db15cd39a4a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 857e899764d284e2d78f1172fa8eeac04c57d618
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385202"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705193"
 ---
 # <a name="managing-user-data"></a>Zarządzanie danymi użytkowników
 
-Na tej stronie opisano, co usługa w chmurze uczeń konwersacji dzienniki podczas przeprowadzania okien dialogowych użytkownikom końcowym.  Zawiera również opis sposobu kojarzenia dzienniki uczeń konwersacji z identyfikatorów użytkowników, tak że można pobrać lub usunąć wszystkie dzienniki skojarzony z określonym użytkownikiem.
+Na tej stronie opisano, co Conversation Learner usługa w chmurze rejestruje podczas przeprowadzania okien dialogowych z użytkownikami końcowymi.  Opisano w nim również sposób kojarzenia dzienników Conversation Learner z identyfikatorami użytkowników, dzięki czemu można pobrać lub usunąć wszystkie dzienniki skojarzone z określonym użytkownikiem.
 
-## <a name="overview-of-end-user-data-logging"></a>Omówienie rejestrowania danych przez użytkownika końcowego
+## <a name="overview-of-end-user-data-logging"></a>Omówienie rejestrowania danych użytkowników końcowych
 
-Domyślnie usługa w chmurze uczeń konwersacji rejestruje interakcje między użytkownikami końcowymi a bota.  Te dzienniki są ważne dla poprawy bota, dzięki któremu można zidentyfikować przypadki, gdzie Twój bot wyodrębnione niepoprawne jednostki lub wybrano nieprawidłowe działanie.  Należy poprawić te błędy, przechodząc do strony "Okien dialogowych dziennika" interfejsu użytkownika, wprowadzanie poprawek i przechowywania to poprawione okno dialogowe jako nowe okno dialogowe szkolenie. Aby uzyskać więcej informacji zobacz samouczek dotyczący "Log wyświetlanymi w oknach dialogowych."
+Domyślnie usługa w chmurze Conversation Learner rejestruje interakcje między użytkownikami końcowymi i bot.  Te dzienniki są ważne dla usprawnienia bot, co pozwala identyfikować przypadki, w których bot wyodrębniono niepoprawną jednostkę lub wybrano niepoprawną akcję.  Te błędy można następnie skorygować, przechodząc do strony okna dialogowe logowania w interfejsie użytkownika, wprowadzając poprawki i przechowując to poprawione okno dialogowe jako nowe okno dialogowe szkolenia. Aby uzyskać więcej informacji, zobacz Samouczek dotyczący okna dialogowego dzienników.
 
 ## <a name="how-to-disable-logging"></a>Jak wyłączyć rejestrowanie
 
-Można kontrolować, czy rozmów z użytkownikami końcowymi znajdują się na stronie "Ustawienia" dla modelu uczeń konwersacji.  Brak pola wyboru dla "Log konwersacji."  Przez usunięcie zaznaczenia tego pola, rozmów z użytkownicy końcowi nie będą rejestrowane.
+Możesz kontrolować, czy konwersacje z użytkownikami końcowymi znajdują się na stronie "Ustawienia" dla modelu Conversation Learner.  W przypadku "konwersacji dzienników" istnieje pole wyboru.  Po usunięciu zaznaczenia tego pola konwersacje z użytkownikami końcowymi nie będą rejestrowane.
 
-## <a name="what-is-logged"></a>Co to jest zalogowany 
+## <a name="what-is-logged"></a>Co jest rejestrowane 
 
-W oknach dialogowych dziennika dla każdego Włącz uczeń konwersacji przechowuje dane wejściowe użytkownika, wartości jednostki, wybrane akcje i sygnatury czasowe.  Te dzienniki są przechowywane przez czas, a następnie zostaje odrzucone (patrz strona pomocy na "wartości domyślnej i granice" Aby uzyskać szczegółowe informacje).  
+W oknie dialogowym dzienników Conversation Learner przechowuje dane wejściowe użytkownika, wartości jednostek, wybrane akcje i sygnatury czasowe dla każdego z nich.  Te dzienniki są przechowywane przez pewien czas, a następnie odrzucane (zobacz stronę pomocy na "wartość domyślna i granice", aby uzyskać szczegółowe informacje).  
 
-Uczeń konwersacji tworzy unikatowy identyfikator dla każdego zalogowanego okna dialogowego.  Uczeń konwersacji jest *nie* przechowywanie identyfikator użytkownika przy użyciu okien dialogowych rejestrowane.  
+Conversation Learner tworzy unikatowy identyfikator dla każdego rejestrowanego okna dialogowego.  Conversation Learner nie *przechowuje identyfikatora* użytkownika w zarejestrowanych oknach dialogowych.  
 
-## <a name="associating-logged-dialogs-with-a-user-id"></a>Skojarzenie rejestrowany okien dialogowych za pomocą Identyfikatora użytkownika
+## <a name="associating-logged-dialogs-with-a-user-id"></a>Kojarzenie zalogowanych okien dialogowych z IDENTYFIKATORem użytkownika
 
-Często jest to ważne można było skojarzyć zalogowanego okien dialogowych z Identyfikatorem użytkownika — na przykład, aby można było pobrać lub usunąć zarejestrowane okien dialogowych konkretnego użytkownika.  Ponieważ uczeń konwersacji nie przechowuje identyfikator użytkownika, to skojarzenie musi być utrzymywane przez kod dewelopera.  
+Często ważne jest, aby można było skojarzyć zarejestrowane okna dialogowe z IDENTYFIKATORem użytkownika — na przykład, aby można było pobrać lub usunąć zarejestrowane okna dialogowe z określonego użytkownika.  Ponieważ Conversation Learner nie przechowuje identyfikatora użytkownika, to skojarzenie musi być obsługiwane przez kod dewelopera.  
 
-Aby utworzyć to mapowanie, Uzyskaj identyfikator rejestrowane okna dialogowego w `EntityDetectionCallback`; następnie w magazynie usługi bot zapisać skojarzenie Identyfikatora użytkownika i rejestrowane okna dialogowego.  
+Aby utworzyć to mapowanie, Uzyskaj identyfikator zarejestrowanego okna dialogowego `EntityDetectionCallback`, a następnie w magazynie bot, Zapisz skojarzenie między identyfikatorem użytkownika i tym zarejestrowanym oknem dialogowym.  
 
 ```
 cl.EntityDetectionCallback(async (text: string, memoryManager: ClientMemoryManager): Promise<void> => {
@@ -63,63 +64,63 @@ cl.EntityDetectionCallback(async (text: string, memoryManager: ClientMemoryManag
 })
 ```
 
-## <a name="headers-for-http-calls"></a>Nagłówki dla połączeń HTTP
+## <a name="headers-for-http-calls"></a>Nagłówki wywołań HTTP
 
-W każdym z poniższych połączeń HTTP Dodaj następujący nagłówek:
+W każdym z wywołań HTTP poniżej Dodaj następujący nagłówek:
 
 ```
 Ocp-Apim-Subscription-Key=<LUIS_AUTHORING_KEY>
 ```
 
-gdzie `<LUIS_AUTHORING_KEY>` jest LUIS tworzenia klucz umożliwiający dostęp do aplikacji uczeń konwersacji.
+gdzie `<LUIS_AUTHORING_KEY>` jest używany klucz autorstwa Luis w celu uzyskania dostępu do aplikacji Conversation Learner.
 
-## <a name="how-to-obtain-raw-data-for-a-logged-dialog"></a>Jak uzyskać dane pierwotne dotyczące zarejestrowanych okna dialogowego
+## <a name="how-to-obtain-raw-data-for-a-logged-dialog"></a>Jak uzyskać dane pierwotne dla rejestrowanego okna dialogowego
 
-Aby uzyskać dane pierwotne dotyczące okna dialogowego dziennika, służy to wywołania HTTP:
+Aby uzyskać dane pierwotne dla okna dialogowego dziennika, można użyć tego wywołania HTTP:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-Gdzie `<appId>` to identyfikator GUID dla tego modelu uczeń konwersacji i `<logDialgoId>` to identyfikator okna dialogowego dziennika, które mają zostać pobrane.  
+Gdzie `<appId>` jest identyfikator GUID tego modelu Conversation Learner i `<logDialgoId>` jest identyfikatorem okna dialogowego dziennika, które chcesz pobrać.  
 
 > [!NOTE]
-> Okna dialogowe dziennika może być edytowane przez dewelopera, a następnie zapisywana jak szkolenie w oknach dialogowych.  Po zakończeniu tej operacji uczeń konwersacji przechowuje identyfikator okna dialogowego dziennika "źródło" za pomocą okna dialogowego pociągu.  Dalsze okno dialogowe train może być "zgodnie" w Interfejsie użytkownika; Jeśli okno dialogowe train ma identyfikator okna dialogowego dziennika skojarzone źródło, następnie oddziały z tego okna dialogowego train są oznaczane za pomocą tego samego identyfikatora dziennika okna dialogowego.
+> Okna dialogowe dzienników mogą być edytowane przez dewelopera, a następnie przechowywane jako okna dialogowe szkolenia.  Gdy to zrobisz, Conversation Learner przechowuje identyfikator okna dialogowego dziennika "Źródło" w oknie dialogowym uczenie.  Dodatkowo okno dialogowe szkolenia może być "rozgałęzine" w interfejsie użytkownika; Jeśli okno dialogowe szkolenia ma skojarzony identyfikator okna dialogowego dziennika źródła, rozgałęzienia z tego okna dialogowego pouczenia zostaną oznaczone przy użyciu tego samego identyfikatora okna dialogowego dziennika.
 
-Aby uzyskać wszystkie okna dialogowe train utworzone na podstawie okna dialogowego dziennika, wykonaj następujące kroki.
+Aby uzyskać wszystkie okna dialogowe uczenia, które zostały uzyskane z okna dialogowego dziennika, wykonaj następujące czynności.
 
-Najpierw należy pobrać wszystkie train okna dialogowe:
+Najpierw Pobierz wszystkie okna dialogowe szkolenia:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialogs
 ```
 
-Gdzie `<appId>` to identyfikator GUID dla tego modelu uczeń konwersacji.  
+Gdzie `<appId>` jest identyfikator GUID dla tego Conversation Learnergo modelu.  
 
-Spowoduje to zwrócenie wszystkich train okien dialogowych.  Wyszukaj na tej liście skojarzonych z nim `sourceLogDialogId`i zanotuj skojarzonego `trainDialogId`. 
+Spowoduje to zwrócenie wszystkich okien dialogowych uczenia.  Wyszukaj w tej liście skojarzone `sourceLogDialogId`i zanotuj skojarzone. `trainDialogId` 
 
-Do pojedynczego uczenie okna dialogowego za pomocą Identyfikatora:
+Do okna dialogowego pojedynczego szkolenia według identyfikatora:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-Gdzie `<appId>` to identyfikator GUID dla tego modelu uczeń konwersacji i `<trainDialogId>` to identyfikator okna dialogowego train ma zostać pobrane.  
+Gdzie `<appId>` jest identyfikator GUID tego Conversation Learnergo modelu i `<trainDialogId>` jest identyfikatorem okna dialogowego szkolenia, które chcesz pobrać.  
 
-## <a name="how-to-delete-a-logged-dialog"></a>Jak usunąć zarejestrowane okna dialogowego
+## <a name="how-to-delete-a-logged-dialog"></a>Jak usunąć zarejestrowane okno dialogowe
 
-Jeśli chcesz usunąć dziennik okna dialogowego, biorąc pod uwagę jego Identyfikatora, można użyć tego wywołania HTTP:
+Jeśli chcesz usunąć okno dialogowe dziennika z IDENTYFIKATORem, możesz użyć tego wywołania HTTP:
 
 ```
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-Gdzie `<appId>` to identyfikator GUID dla tego modelu uczeń konwersacji i `<logDialogId>` to identyfikator okna dialogowego dziennika, które chcesz usunąć. 
+Gdzie `<appId>` jest identyfikator GUID tego modelu Conversation Learner i `<logDialogId>` jest identyfikatorem okna dialogowego dziennika, które chcesz usunąć. 
 
-Jeśli chcesz usunąć train okna dialogowego, biorąc pod uwagę jego Identyfikatora, można użyć tego wywołania HTTP:
+Jeśli chcesz usunąć okno dialogowe uczenia z IDENTYFIKATORem, możesz użyć tego wywołania HTTP:
 
 ```
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-Gdzie `<appId>` to identyfikator GUID dla tego modelu uczeń konwersacji i `<trainDialogId>` to identyfikator okna dialogowego train, którą chcesz usunąć. 
+Gdzie `<appId>` jest identyfikator GUID tego Conversation Learnergo modelu i `<trainDialogId>` jest identyfikatorem okna dialogowego szkolenia, które chcesz usunąć. 

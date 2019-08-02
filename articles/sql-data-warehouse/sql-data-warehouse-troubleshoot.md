@@ -1,78 +1,72 @@
 ---
-title: Rozwiązywanie problemów z usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z usługi Azure SQL Data Warehouse.
+title: Rozwiązywanie problemów Azure SQL Data Warehouse | Microsoft Docs
+description: Rozwiązywanie problemów Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 4/26/2019
+ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 02591185914f3b04a70af3b7c5d607f4a2865806
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04d63b2c1583228a274c0ba21c87df08886f5cdb
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154264"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619070"
 ---
-# <a name="troubleshooting-azure-sql-data-warehouse"></a>Rozwiązywanie problemów z usługi Azure SQL Data Warehouse
+# <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse rozwiązywania problemów
 W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
 
 ## <a name="connecting"></a>Łączenie
 | Problem                                                        | Rozwiązanie                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Nie można zalogować użytkownika "NT\LOGOWANIE". (Microsoft SQL Server, Error: 18456) | Ten błąd występuje, gdy użytkownika usługi AAD, próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, należy albo określić magazyn danych SQL, które chcesz połączyć się z chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Przegląd zabezpieczeń][Security overview] artykuł, aby uzyskać więcej informacji. |
-| Serwer nie jest możliwość dostępu do bazy danych "master" w bieżącym kontekście zabezpieczeń podmiotu zabezpieczeń "Moja_nazwa_użytkownika". Nie można otworzyć domyślnej bazy danych użytkownika. Logowanie nie powiodło się. Nie można zalogować użytkownika "Moja_nazwa_użytkownika". (Microsoft SQL Server, Error: 916) | Ten błąd występuje, gdy użytkownika usługi AAD, próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, należy albo określić magazyn danych SQL, które chcesz połączyć się z chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Przegląd zabezpieczeń][Security overview] artykuł, aby uzyskać więcej informacji. |
-| Błąd CTAIP                                                  | Ten błąd może wystąpić po utworzeniu nazwy logowania na główna baza danych SQL, ale nie w bazie danych SQL Data Warehouse.  Jeśli wystąpi ten błąd, Przyjrzyj się [Przegląd zabezpieczeń][Security overview] artykułu.  W tym artykule wyjaśniono, jak utworzyć identyfikator logowania i użytkownika na wzorzec, a następnie utworzyć użytkownika w bazie danych SQL Data Warehouse. |
-| Blokowane przez zaporę                                          | Baz danych SQL Azure są chronione przez zapory poziomu serwera i bazy danych zapewniające tylko znane adresy IP, które mają dostęp do bazy danych. Zapory są zabezpieczone przez domyślne, co oznacza, że musisz jawnie włączyć i adres IP lub zakres adresów, zanim będzie można połączyć.  Aby skonfigurować zaporę w taki sposób, aby uzyskać dostęp, wykonaj kroki opisane w [skonfigurować dostęp do zapory serwera na Twój adres IP klienta][Configure server firewall access for your client IP] w [aprowizacji instrukcje][Provisioning instructions]. |
-| Nie można nawiązać połączenia przy użyciu narzędzia lub sterownika                           | Usługa SQL Data Warehouse zaleca używanie [SSMS][SSMS], [SSDT dla programu Visual Studio][SSDT for Visual Studio], lub [sqlcmd][sqlcmd] wykonywać zapytania o swoje dane. Aby uzyskać więcej informacji na temat sterowników i łączenie z usługą SQL Data Warehouse, zobacz [sterowniki dla usługi Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] i [nawiązywanie połączenia z usługi Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] artykułów. |
+| Logowanie użytkownika "NT AUTHORITY\ANONYMOUS LOGON" nie powiodło się. (Microsoft SQL Server, błąd: 18456) | Ten błąd występuje, gdy użytkownik usługi AAD próbuje nawiązać połączenie z bazą danych Master, ale nie ma użytkownika w głównym.  Aby rozwiązać ten problem, określ SQL Data Warehouse, z którym chcesz nawiązać połączenie, lub Dodaj użytkownika do bazy danych Master.  Aby uzyskać więcej informacji, zobacz artykuł [Omówienie zabezpieczeń][Security overview] . |
+| Podmiot zabezpieczeń serwera "nousername" nie jest w stanie uzyskać dostępu do bazy danych "Master" w bieżącym kontekście zabezpieczenia. Nie można otworzyć domyślnej bazy danych użytkownika. Logowanie nie powiodło się. Logowanie użytkownika "nousername" nie powiodło się. (Microsoft SQL Server, błąd: 916) | Ten błąd występuje, gdy użytkownik usługi AAD próbuje nawiązać połączenie z bazą danych Master, ale nie ma użytkownika w głównym.  Aby rozwiązać ten problem, określ SQL Data Warehouse, z którym chcesz nawiązać połączenie, lub Dodaj użytkownika do bazy danych Master.  Aby uzyskać więcej informacji, zobacz artykuł [Omówienie zabezpieczeń][Security overview] . |
+| Błąd CTAIP                                                  | Ten błąd może wystąpić, gdy została utworzona nazwa logowania w bazie danych Master programu SQL Server, ale nie w bazie danych SQL Data Warehouse.  Jeśli ten błąd wystąpi, zapoznaj się z artykułem [Omówienie zabezpieczeń][Security overview] .  W tym artykule wyjaśniono, jak utworzyć identyfikator logowania i użytkownika w bazie danych Master, a następnie jak utworzyć użytkownika w usłudze SQL Data Warehouse Database. |
+| Zablokowane przez zaporę                                          | Bazy danych SQL platformy Azure są chronione przez zapory na poziomie serwera i bazy danych w celu zapewnienia, że tylko znane adresy IP mają dostęp do bazy danych. Zapory są domyślnie bezpieczne, co oznacza, że musisz jawnie włączyć i adres IP lub zakres adresów, aby można było nawiązać połączenie.  Aby skonfigurować zaporę w celu uzyskania dostępu, wykonaj kroki opisane w sekcji [Konfigurowanie dostępu do zapory serwera dla adresu IP klienta][Configure server firewall access for your client IP] w [instrukcje aprowizacji][Provisioning instructions]. |
+| Nie można nawiązać połączenia z narzędziem lub sterownikiem                           | SQL Data Warehouse zalecamy używanie programu [SSMS][SSMS], [SSDT dla programu Visual Studio][SSDT for Visual Studio]lub [sqlcmd][sqlcmd] do wykonywania zapytań dotyczących danych. Aby uzyskać więcej informacji na temat sterowników i łączenia się z SQL Data Warehouse, zobacz [sterowniki Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] i [Połącz się z][Connect to Azure SQL Data Warehouse] artykułami Azure SQL Data Warehouse. |
 
 ## <a name="tools"></a>Narzędzia
 | Problem                                                        | Rozwiązanie                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Brak użytkowników usługi AAD w Eksploratorze obiektów programu Visual Studio           | Jest to znany problem.  Jako obejście, Wyświetl użytkowników w [sys.database_principals][sys.database_principals].  Zobacz [uwierzytelniania usługi Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] Aby dowiedzieć się więcej o korzystaniu z usługi Azure Active Directory z usługą SQL Data Warehouse. |
-| Podręcznik obsługi skryptów, za pomocą Kreatora skryptów lub łączących się za pomocą programu SSMS jest powolne, nie odpowiada lub produkcji błędy | Upewnij się, że użytkownicy zostały utworzone w bazie danych master. W oknie dialogowym Opcje obsługi skryptów również upewnij się, że wersja silnika jest ustawiana jako "Microsoft Azure SQL Data Warehouse w wersji" i typ aparatu to "Microsoft Azure SQL Database". |
-| Generowanie skryptów zakończy się niepowodzeniem w programie SSMS                             | Generowanie skryptu dla usługi SQL data warehouse zakończy się niepowodzeniem, jeśli opcja "Generuj skrypt dla obiektów zależnych" opcja jest ustawiona na wartość "True". Jako obejście, użytkownicy muszą ręcznie przejdź do pozycji Narzędzia -> Opcje -> Eksplorator obiektów SQL Server -> Generuj skrypt dla opcji zależnych, a wartość false |
+| Brak użytkowników usługi AAD w Eksploratorze obiektów programu Visual Studio           | Jest to znany problem.  Aby obejść ten element, Wyświetl użytkowników w pliku [sys. database_principals][sys.database_principals].  Aby dowiedzieć się więcej o używaniu Azure Active Directory z programem SQL Data Warehouse, zobacz temat [uwierzytelnianie Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] . |
+| Ręczne wykonywanie skryptów, Używanie kreatora skryptów lub Nawiązywanie połączenia za pośrednictwem programu SSMS jest powolne, nie odpowiada ani nie produkuje błędów | Upewnij się, że utworzono użytkowników w bazie danych Master. W obszarze Opcje obsługi skryptów upewnij się również, że wersja aparatu jest ustawiona na wartość "Microsoft Azure SQL Data Warehouse Edition", a typ aparatu to "Microsoft Azure SQL Database". |
+| Generowanie skryptów kończy się niepowodzeniem w programie SSMS                               | Generowanie skryptu dla usługi SQL Data Warehouse kończy się niepowodzeniem, jeśli opcja "Generuj skrypt dla obiektów zależnych" ma wartość "true". Aby obejść ten krok, użytkownicy muszą ręcznie przejść do opcji narzędzia-> Options-> Eksplorator obiektów SQL Server-> generować skrypt dla opcji zależnych i ustawić na wartość false. |
 
 ## <a name="performance"></a>Wydajność
 | Problem                                                        | Rozwiązanie                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Rozwiązywanie problemów z wydajnością zapytań                            | Jeśli próbujesz rozwiązywać określone zapytanie, skorzystaj z [jak monitorować zapytań][Learning how to monitor your queries]. |
-| Zapytanie niską wydajność i plany często są wynikiem ma statystyk | Najczęstszą przyczyną niskiej wydajności jest brak statystyki tabel.  Zobacz [utrzymywanie statystyki tabeli][Statistics] szczegółowe informacje dotyczące sposobu tworzenia statystyk i dlaczego są one mają kluczowe znaczenie dla wydajności. |
-| Niski współbieżności / zapytań w kolejce                             | Opis [Zarządzanie obciążeniami][Workload management] jest ważne, aby zrozumieć, jak zrównoważyć alokacji pamięci za pomocą współbieżności. |
-| Jak wdrożyć najlepsze rozwiązania                              | Najlepszym miejscem do rozpoczęcia informacje dotyczące sposobów, aby poprawić wydajność zapytań jest [najlepsze rozwiązania SQL Data Warehouse][SQL Data Warehouse best practices] artykułu. |
-| Jak poprawić wydajność, ze skalowaniem                      | Czasami rozwiązania do zwiększania wydajności jest po prostu Dodaj coraz większej mocy obliczeniowej możliwości zapytań przez [skalowania usługi SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
-| Zapytania niską wydajność indeksu niskiej jakości     | Sytuacje zapytania może spowolnić z powodu [jakości indeksu magazynu kolumn niską][Poor columnstore index quality].  Ten artykuł, aby uzyskać więcej informacji i sposobie [Odbuduj indeksy, aby poprawić jakość segmentu][Rebuild indexes to improve segment quality]. |
+| Rozwiązywanie problemów z wydajnością zapytań                            | Jeśli próbujesz rozwiązać określone zapytanie, Zacznij od uczenia się, [Jak monitorować zapytania][Learning how to monitor your queries]. |
+| Niska wydajność zapytań i plany często wynikają z brakujących statystyk | Najbardziej typową przyczyną niskiej wydajności jest brak statystyk w tabelach.  Zobacz temat [konserwowanie statystyk tabeli][Statistics] , aby uzyskać szczegółowe informacje na temat tworzenia statystyk oraz tego, dlaczego mają one kluczowe znaczenie dla wydajności. |
+| W kolejce niskie współbieżność/zapytania                             | Zrozumienie [zarządzania obciążeniem][Workload management] jest ważne, aby zrozumieć, jak zrównoważyć alokację pamięci za pomocą współbieżności. |
+| Jak zaimplementować najlepsze rozwiązania                              | Najlepszym miejscem, aby dowiedzieć się, jak zwiększyć wydajność zapytań, jest [SQL Data Warehouse artykule dotyczącym najlepszych][SQL Data Warehouse best practices] rozwiązań. |
+| Jak zwiększyć wydajność dzięki skalowaniu                      | Czasami rozwiązanie zwiększające wydajność to po prostu dodanie większej mocy obliczeniowej do zapytań przez [skalowanie SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
+| Niska wydajność zapytań w wyniku niskiej jakości indeksu     | Czasami zapytania mogą spowalniać działanie z powodu [niskiej jakości indeksu magazynu kolumn][Poor columnstore index quality].  Zapoznaj się z tym artykułem, aby uzyskać więcej informacji oraz jak [ponownie skompilować indeksy w celu zwiększenia jakości segmentu][Rebuild indexes to improve segment quality]. |
 
 ## <a name="system-management"></a>Zarządzanie systemem
 | Problem                                                        | Rozwiązanie                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Msg 40847: Nie można wykonać operacji, ponieważ serwer przekroczyłby dozwolony przydział jednostki transakcji bazy danych wynoszący 45000. | Obniż [DWU][DWU] próby utworzenia bazy danych lub [zażądać zwiększenia limitu przydziału][request a quota increase]. |
-| Badanie wykorzystania miejsca                              | Zobacz [tabeli rozmiary][Table sizes] do zrozumienia wykorzystania miejsca systemu. |
-| Pomoc w zarządzaniu tabel                                    | Zobacz [Omówienie tabel][Overview] artykuł, aby uzyskać pomoc w zarządzaniu tabel.  Ten artykuł zawiera także łącza do bardziej szczegółowych tematów, takich jak [typy danych w tabelach][Data types], [Dystrybucja tabeli][Distribute], [Indeksowania tabeli][Index], [partycjonowania tabeli][Partition], [utrzymywanie statystyki tabeli][Statistics] i [tabele tymczasowe][Temporary]. |
-| Pasek postępu usługi technologii transparent data encryption (TDE) nie aktualizuje się w witrynie Azure Portal | Można wyświetlić stan TDE za pośrednictwem [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
+| Msg 40847: Nie można wykonać operacji, ponieważ serwer przekroczy dozwolony limit przydziału jednostek transakcji bazy danych wynoszący 45000. | Zmniejsz [jednostek dwu][DWU] bazy danych, którą próbujesz utworzyć, lub zażądaj [zwiększenia limitu przydziału][request a quota increase]. |
+| Badanie wykorzystania miejsca                              | Zobacz [rozmiary tabeli][Table sizes] , aby zrozumieć wykorzystanie miejsca w systemie. |
+| Pomoc dotycząca zarządzania tabelami                                    | Zobacz artykuł [Omówienie tabeli][Overview] , aby uzyskać pomoc dotyczącą zarządzania tabelami.  Ten artykuł zawiera również linki do bardziej szczegółowych tematów, takich jak [typy danych tabeli][Data types], [dystrybuowanie tabeli][Distribute], [indeksowanie tabeli][Index], [partycjonowanie][Partition]tabeli, [Obsługa statystyk tabeli][Statistics] i [tabel tymczasowych][Temporary]. |
+| Pasek postępu programu transparent Data Encryption (TDE) nie jest aktualizowany w Azure Portal | Stan TDE można wyświetlić za pomocą [programu PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
 
-## <a name="polybase"></a>Program Polybase
-| Problem                                           | Rozwiązanie                                                   |
-| :---------------------------------------------- | :----------------------------------------------------------- |
-| Eksporty kończy się niepowodzeniem z TINYINT i DATOWE typy             | Dla formatów plików Parquet i ORC, wartości typu DATE musi należeć do zakresu od 01-01-1970 r. 00:00:01 czasu UTC i 2038-01-19 03:14:07. Wartości typu TINYINT musi wynosić od 0 do 127.    |
-| Problem z typu DZIESIĘTNEGO Parquet: zapisywanie z platformy Spark wpisz DecimalType(18,4) i importowanie kolumny typu double lub rzeczywistego zapewnia "Błąd: nie można rzutować java.base/java.lang.Long java.base/java.lang.Float". | Należy zaimportować do bigint i dzielenia na 10000 lub użyj [Usługi Databricks] łącznik SQL data Warehouse. |
-| Problem z Parquet typ daty: zapisu z typu Spark, Data i importowanie do kolumny wpisz datę lub daty/godziny zapewnia "Błąd: nie można rzutować java.base/java.lang.Integer parquet.io.api.Binary". | Musisz użyć innej platformy Spark (int) i obliczeń daty lub użyć [Usługi Databricks] łącznik SQL data Warehouse. |
 
-## <a name="differences-from-sql-database"></a>Różnice z bazy danych SQL
+## <a name="differences-from-sql-database"></a>Różnice między SQL Database
 | Problem                                 | Rozwiązanie                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
-| Nieobsługiwane funkcje bazy danych SQL     | Zobacz [nieobsługiwane funkcje tabeli][Unsupported table features]. |
+| Nieobsługiwane funkcje SQL Database     | Zobacz [Nieobsługiwane funkcje tabeli][Unsupported table features]. |
 | Nieobsługiwane typy danych SQL Database   | Zobacz [nieobsługiwane typy danych][Unsupported data types].        |
-| Usuń i ograniczenia dotyczące aktualizacji         | Zobacz [obejścia aktualizacji][UPDATE workarounds], [obejścia DELETE][DELETE workarounds] i [za pomocą instrukcji CTAS w celu obejścia nieobsługiwany aktualizacji i Usuń składni][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
-| Instrukcja MERGE nie jest obsługiwana.      | Zobacz [obejścia scalania][MERGE workarounds].                  |
-| Ograniczenia dotyczące procedury składowanej          | Zobacz [przechowywane procedury ograniczenia][Stored procedure limitations] Aby poznać niektóre ograniczenia procedur składowanych. |
-| Funkcje zdefiniowane przez użytkownika nie obsługują instrukcji "SELECT" | To aktualne ograniczenie nasze funkcje zdefiniowane przez użytkownika.  Zobacz [CREATE FUNCTION][CREATE FUNCTION] składnię, firma Microsoft obsługuje. |
+| Ograniczenia dotyczące usuwania i aktualizacji         | Aby obejść [nieobsługiwaną aktualizację i składnię usuwania][Using CTAS to work around unsupported UPDATE and DELETE syntax], zobacz sekcję [obejścia aktualizacji][UPDATE workarounds], [usuwanie obejść][DELETE workarounds] i używanie CTAs. |
+| Instrukcja MERGE nie jest obsługiwana      | Zobacz sekcję [scalanie rozwiązań][MERGE workarounds].                  |
+| Ograniczenia procedury składowanej          | Zobacz [ograniczenia procedury składowanej][Stored procedure limitations] , aby poznać niektóre ograniczenia procedur składowanych. |
+| UDF nie obsługują instrukcji SELECT | Jest to bieżące ograniczenie naszych UDF.  Zobacz [Tworzenie funkcji][CREATE FUNCTION] dla składni obsługiwanej przez nas. |
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać pomoc w znalezieniu rozwiązania problemu poniżej przedstawiono niektóre zasoby, które można wypróbować.
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać pomoc w znalezieniu rozwiązania problemu, poniżej przedstawiono inne zasoby, które można wypróbować.
 
 * [Blogi]
 * [Żądania funkcji]
@@ -133,4 +127,4 @@ Aby uzyskać pomoc w znalezieniu rozwiązania problemu poniżej przedstawiono ni
 [Forum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Filmy wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[Usługi Databricks]: https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse
+[Databricks]: https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse

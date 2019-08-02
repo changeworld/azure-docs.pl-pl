@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2019
+ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: fef9fa128d2ebb84fb82579f254735fdb9aa7ee2
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: dad74410562aa54aeb61675e7dc1c0adccc44797
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881064"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679209"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Łączenie rozwiązania zewnętrznego przy użyciu dziennika systemowego
 
@@ -47,6 +47,9 @@ Aby uzyskać więcej informacji, zobacz [źródła danych dziennika systemowego 
 1. W portalu wskaźnikowym platformy Azure wybierz pozycję **Łączniki danych** i wybierz wiersz **dziennika** systemowego w tabeli i w okienku dziennik systemowy po prawej stronie, a następnie kliknij pozycję **Otwórz stronę łącznika**.
 2. Jeśli maszyna z systemem Linux znajduje się na platformie Azure, wybierz pozycję **Pobierz i Zainstaluj agenta na maszynie wirtualnej platformy Azure z systemem Linux**. W oknie maszyny wirtualne wybierz maszyny, na których chcesz zainstalować agenta, a następnie kliknij pozycję **Połącz** w górnej części ekranu.
 1. Jeśli komputer z systemem Linux nie znajduje się na platformie Azure, wybierz pozycję **Pobierz i Zainstaluj agenta na maszynie spoza platformy Azure**. W oknie **agenta bezpośredniego** Skopiuj polecenie w obszarze **Pobierz i Dołącz agenta dla systemu Linux** i uruchom je na komputerze. 
+   > [!NOTE]
+   > Upewnij się, że skonfigurowano zabezpieczenia maszyny zgodnie z zasadami zabezpieczeń organizacji. Można na przykład skonfigurować sieć do dopasowania do zasad zabezpieczeń sieci firmowej i zmienić porty i protokoły w demoum, aby dostosować je do swoich wymagań. 
+
 1. W obszarze **Konfigurowanie dzienników do połączenia** w oknie instalatora łącznika dziennika systemowego postępuj zgodnie z instrukcjami:
     1. Kliknij link, aby **otworzyć konfigurację ustawień zaawansowanych obszaru roboczego**. 
     1. Wybierz pozycję **dane**, a następnie **Dziennik**systemowy.
@@ -55,7 +58,7 @@ Aby uzyskać więcej informacji, zobacz [źródła danych dziennika systemowego 
        > Po zaznaczeniu pola wyboru, aby **zastosować poniższą konfigurację do moich maszyn**, ta konfiguracja będzie miała zastosowanie do wszystkich maszyn z systemem Linux podłączonych do tego obszaru roboczego. Tę konfigurację można zobaczyć na komputerze dziennika systemu w obszarze 
 1. Kliknij przycisk **naciśnij tutaj, aby otworzyć blok konfiguracja**.
 1. Wybierz pozycję **dane** , a następnie **Dziennik**systemowy.
-   - Upewnij się, że każda z funkcji wysyłanych przez dziennik systemowy znajduje się w tabeli. Dla każdej funkcji, która ma być monitorowana, ustaw ważność. Kliknij przycisk **zastosować**.
+   - Upewnij się, że każda z funkcji wysyłanych przez dziennik systemowy znajduje się w tabeli. Dla każdej funkcji należy monitorować, ustawiać ważność. Kliknij przycisk **zastosować**.
 1. Upewnij się, że wysyłasz te obiekty na komputerze dziennika systemowego. 
 
 1. Aby użyć odpowiedniego schematu w Log Analytics dla dzienników dziennika systemowego, Wyszukaj **Dziennik**systemowy.

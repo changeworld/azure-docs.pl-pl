@@ -1,7 +1,7 @@
 ---
-title: Projekt Akustyka — często zadawane pytania
+title: Często zadawane pytania dotyczące akustycznych projektów
 titlesuffix: Azure Cognitive Services
-description: Ta strona zawiera odpowiedzi na pytania często zadawane Akustyka projektu, w tym instrukcje pobierania i tworzenie procesu.
+description: Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące akustycznych projektów, w tym instrukcji pobierania i procesu tworzenie.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,71 +10,72 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: a18f6b57e203c40c0f667f07e8371348cb738c9b
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ROBOTS: NOINDEX
+ms.openlocfilehash: a965fc020c5c534616459ad661b71ac67dbc2425
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827565"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704812"
 ---
-# <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akustyka — często zadawane pytania
+# <a name="project-acoustics-frequently-asked-questions"></a>Często zadawane pytania dotyczące akustycznych projektów
 
 ## <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
 
-Pakiet Akustyka projektu wtyczek to system Akustyka obliczający zachowanie dźwięku przed środowiska uruchomieniowego, podobnie statyczne oświetlenia. Chmura ma skomplikowanymi fali fizyki obliczeń, więc koszt czasu wykonywania procesora CPU jest niska.  
+Pakiet protokołów akustycznych w projekcie to system akustyczny, który oblicza zachowanie dźwięku Wave przed środowiskiem uruchomieniowym, zbliżone do statycznego oświetlenia. Chmura wykonuje intensywną transpozycję obliczeń fizyki Wave, więc koszt procesora CPU w czasie wykonywania jest niski.  
 
 ## <a name="where-can-i-download-the-plugin"></a>Gdzie można pobrać wtyczkę?
 
-Możesz pobrać [wtyczki projektu Akustyka Unity](https://www.microsoft.com/download/details.aspx?id=57346) lub [wtyczki projektu Akustyka Unreal](https://www.microsoft.com/download/details.aspx?id=58090).
+Możesz pobrać wtyczkę [aparatu Unity akustyczną projektu](https://www.microsoft.com/download/details.aspx?id=57346) lub [wtyczkę Unreali projektu](https://www.microsoft.com/download/details.aspx?id=58090).
 
-## <a name="does-project-acoustics-support-ltxgt-platform"></a>Obsługuje Akustyka projektu &lt;x&gt; platformy?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Czy akustyczne projektu obsługuje &lt;platformę x&gt; ?
 
-Obsługa platform Akustyka projektu rozwoju zależnie od potrzeb klienta. Skontaktuj się z nami na [forum problem Akustyka projektu](https://github.com/microsoft/ProjectAcoustics/issues) na uzyskiwanie informacji o obsłudze dotyczącymi dodatkowych platform.
+Obsługa platformy akustycznej w projekcie zmienia się w zależności od potrzeb klientów. Skontaktuj się z nami na [forum problemu akustycznego projektu](https://github.com/microsoft/ProjectAcoustics/issues) , aby dowiedzieć się więcej o obsłudze dodatkowych platform.
 
-## <a name="is-azure-used-at-runtime"></a>Azure jest używana w środowisku uruchomieniowym?
+## <a name="is-azure-used-at-runtime"></a>Czy platforma Azure jest używana w czasie wykonywania?
 
-Nie, integracja z chmurą jest używane tylko na etapie precompute jako część instalacji sceny.
+Nie, integracja z chmurą jest używana tylko podczas etapu wstępnego obliczania w ramach konfiguracji sceny.
  
-## <a name="what-is-simulation-input"></a>Co to jest symulacji dane wejściowe? 
+## <a name="what-is-simulation-input"></a>Co to jest dane wejściowe symulacji? 
 
-Dane wejściowe symulacji są sceny 3D, poziomie grę lub środowisko wirtualne. Projekt Akustyka wykonuje 3D wave pomiarowej symulacje, które modelują fizyki dźwięku ściśle, łącznie z płynnym zamknięcia i rozproszenie.
+Dane wejściowe symulacji to scena 3D, środowisko wirtualne lub poziom gry. Akustyczne projektu wykonują trójwymiarowe symulacje Wave, które są ściśle solidne, w tym płynne zamknięcia i rozpraszanie.
  
-## <a name="what-is-the-runtime-cost"></a>Jaki jest koszt środowiska uruchomieniowego?
+## <a name="what-is-the-runtime-cost"></a>Jaki jest koszt czasu wykonywania?
 
-Akustyka zajmuje około 0,01% procesora CPU na źródło na klatkę. Użycie pamięci RAM zależy od rozmiaru sceny i należą do zakresu od 10 do 100 MB.
+Wartości akustyczne zajmują 0,01% czasu procesora CPU na klatkę. Użycie pamięci RAM zależy od rozmiaru sceny i może należeć do zakresu od 10 do 100 MB.
  
-## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>Czy potrzebuję uprościć poziomu geometrii? Liczba trójkąt kontroli? Oczek, że wodoszczelne?
+## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>Czy muszę uprościć geometrię poziomu? Liczba trójkątów formantów? Czy sprawić, aby siatki były wodoszczelne?
 
-Nie. System będzie pozyskiwać szczegółowe geometrii poziomu bezpośrednio. Będzie ona voxelized dla wewnętrznego przetwarzania.
+Nie. System pozyskuje dane geometryczne na poziomie szczegółowości bezpośrednio. Zostanie voxelized do wewnętrznego przetwarzania.
  
-## <a name="whats-in-the-runtime-lookup-table"></a>Co znajduje się w tabeli odnośników czasu wykonywania?
+## <a name="whats-in-the-runtime-lookup-table"></a>Co znajduje się w tabeli odnośników środowiska uruchomieniowego?
 
-Zawiera plik ACE jest tabelą parametrów akustycznych między wiele źródła i pary lokalizacji odbiornik, jak również geometrii sceny voxelized używane do interpolacji parametru.
+Plik ACE zawiera tabelę parametrów akustycznych między wieloma parami lokalizacji źródła i odbiornika, a także geometrii sceny voxelized używane do interpolacji parametrów.
  
-## <a name="can-project-acoustics-handle-moving-sources"></a>Projekt Akustyka dzienniki może obsłużyć przenoszenia źródeł?
+## <a name="can-project-acoustics-handle-moving-sources"></a>Czy w projekcie mogą być obsługiwane przenoszone źródła?
 
-Tak, Akustyka projektu sprawdza tabelę odnośników i aktualizuje audio DSP na każdy takt, więc może obsługiwać przenoszenia źródeł i odbiornika.
+Tak, akustyczne projektu sprawdza tabelę odnośników i aktualizuje DSP audio na każdym z nich, aby obsługiwały przeniesienie źródeł i odbiornik.
  
-## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Akustyka projektu, może obsługiwać dynamiczne geometrii? Zamyka drzwi? Ściany fascynujące natychmiast?
+## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Czy w projekcie mogą być obsługiwane dynamiczne geometrie? Zamykasz drzwi? Ściany rozwiniętą z dala?
 
-Nie. Parametrów akustycznych są wstępnie obliczone oparte na stanie statyczne poziomu gier. Zalecamy pozostawienie geometrii drzwi poza Akustyka, a następnie zastosowanie dodatkowych zamknięcia na podstawie stanu zniszczalnych i przydzielaj obiektów gry przy użyciu ustalone technik.
+Nie. Parametry akustyczne są wstępnie obliczane w oparciu o stan statyczny poziomu gry. Sugerujemy pozostawienie geometrii drzwi z dźwiękiem, a następnie zastosowanie dodatkowych zamknięcia na podstawie stanu zniszczalnych i ruchomych obiektów gry przy użyciu technik ustanowionych.
  
-## <a name="does-project-acoustics-use-acoustic-materials"></a>Akustyka projekt używa akustyczny materiałów?
+## <a name="does-project-acoustics-use-acoustic-materials"></a>Czy akustyczne projektu wykorzystują Materiały akustyczne?
 
-Tak. Fizyczny nazw materiału w Twoim poziomie nawyki absorptivity pobrane materiały.
+Tak. Materiały są pobierane z nazw materiału fizycznego na poziomie, co absorptivity.
  
-## <a name="what-do-the-probes-represent"></a>Co uwzględnia "sondy"?
+## <a name="what-do-the-probes-represent"></a>Co reprezentuje "sondy"?
 
-Sondy są próbkowania lokalizacji możliwe odtwarzacza. Każdy sondy reprezentuje symulację oddzielne wave sceny pochodzące lokalizacji sondowania. W czasie wykonywania parametrów akustycznych dla lokalizacji odbiornika są interpolowane w pobliżu lokalizacji funkcji badania.
+Sondy to próbkowanie możliwych lokalizacji odtwarzacza. Każda sonda reprezentuje oddzielną symulację fali sceny pochodzącej z lokalizacji sondowania. W czasie wykonywania parametry akustyczne dla lokalizacji odbiornika są interpolowane z lokalizacji sondy w pobliżu.
  
-## <a name="why-spend-so-much-compute-in-the-cloud-what-does-it-buy-me"></a>Dlaczego warto poświęcić tak dużej ilości zasobów obliczeniowych w chmurze? Co to on kupić mnie?
+## <a name="why-spend-so-much-compute-in-the-cloud-what-does-it-buy-me"></a>Dlaczego warto poświęcać wiele obliczeń w chmurze? Co kupuje?
 
-Projekt Akustyka zapewnia dokładnych i wiarygodnych parametrów akustycznych nawet w przypadku niezwykle złożonych środowisk wirtualnych, uwzględniając każdy aspekt architektury. Zapewnia płynne zamknięcia i przeszkody i odmianą dynamiczne pogłosu bez konieczności ręcznej pracy rysowania woluminów. Cały czas pozostały światła CPU podczas wykonywania.
+Funkcja akustyczna projektu zapewnia dokładne i niezawodne parametry akustyczne nawet dla bardzo złożonych środowisk wirtualnych, uwzględniając każdy aspekt architektury. Zapewnia ona płynną zamknięciaę i przeszkodę oraz dynamiczną odmianę Reverb bez ręcznej pracy w zakresie rysowania woluminów. Wszystkie, podczas gdy środowisko uruchomieniowe jest pozostałe.
 
-## <a name="what-exactly-happens-during-baking"></a>Co to dokładnie będzie się działo podczas "pieczenie"?
+## <a name="what-exactly-happens-during-baking"></a>Co dokładnie się dzieje podczas "pieczenie"?
 
-Tworzenie składa się z symulacji fale akustyczne cuboid symulacji regionów, w przypadku każdego sondowania odbiornika a ich tematyka.
+Tworzenie składa się z symulowanych fal akustycznych regionów symulacji Cuboid wyśrodkowanych przez każdą sondę odbiornika.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Spróbuj [Unity Akustyka projektu przykładowej zawartości](unity-quickstart.md) lub [Unreal przykładowej zawartości](unreal-quickstart.md)
+* Wypróbuj [zawartość przykładową Unity](unity-quickstart.md) lub [Unreal przykładowej](unreal-quickstart.md) zawartości
 

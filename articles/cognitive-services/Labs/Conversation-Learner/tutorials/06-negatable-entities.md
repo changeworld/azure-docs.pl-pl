@@ -1,7 +1,7 @@
 ---
-title: Jak można negować jednostek za pomocą modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Jak używać jednostek negacji z modelem Conversation Learner — Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak można negować jednostek za pomocą modelu uczeń konwersacji.
+description: Dowiedz się, jak używać jednostek negacji z modelem Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,91 +10,92 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 2c758d1dd5d4d1e7ab25faccd5280963211181d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4edbfc396d4ab32b991b084a7b738f04b5205418
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388808"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704106"
 ---
-# <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Jak można negować jednostek za pomocą modelu uczeń konwersacji
+# <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Jak używać jednostek negacji z modelem Conversation Learner
 
-Ten samouczek przedstawia "Negatable" właściwość jednostki.
+W tym samouczku przedstawiono Właściwość "Negacja" jednostek.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Samouczek można negować jednostki (wersja zapoznawcza)](https://aka.ms/cl_Tutorial_v3_NegatableEntities_Preview)](https://aka.ms/cl_Tutorial_v3_NegatableEntities)
+[![Samouczek dotyczący jednostek z negacją](https://aka.ms/cl_Tutorial_v3_NegatableEntities_Preview)](https://aka.ms/cl_Tutorial_v3_NegatableEntities)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga, że ogólne samouczek Bot działa
+Ten samouczek wymaga, aby ogólny samouczek bot był uruchomiony
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
-Właściwość "Negatable" jednostki umożliwia etykiety obu normalny (pozytywna) i ujemne wystąpień jednostki, uczyć modele dodatnie i ujemne w oparciu i wyczyszczenie tej wartości istniejącej jednostki. Jednostki z ich ustawioną właściwość "Negatable" nazywane są jednostkami można negować w bardziej oszczędny konwersacji.
+Właściwość "Negacja" jednostki umożliwia etykietowanie zarówno normalnych, jak i ujemnych wystąpień jednostki, uczenie się w oparciu o modele dodatnie i ujemne, a następnie czyści wartość istniejącej jednostki. Jednostki z ustawioną właściwością negacji są nazywane jednostkami negacji w obstawce.
 
 ## <a name="steps"></a>Kroki
 
-Rozpocznij na stronie głównej w Interfejsie użytkownika sieci Web.
+Uruchom stronę główną w interfejsie użytkownika sieci Web.
 
 ### <a name="create-the-model"></a>Tworzenie modelu
 
-1. Wybierz **nowy Model**.
-2. Wprowadź **NegatableEntity** dla **nazwa**.
+1. Wybierz pozycję **Nowy model**.
+2. Wprowadź **NegatableEntity** dla **nazwy**.
 3. Wybierz pozycję **Utwórz**.
 
 ### <a name="entity-creation"></a>Tworzenie jednostki
 
-1. Wybierz **jednostek** w lewym panelu, a następnie **Nowa jednostka**.
-2. Wybierz **niestandardowych skonfigurowanych pod kątem** dla **typu jednostki**.
-3. Wprowadź **nazwa** dla **nazwa jednostki**.
-4. Sprawdź **Negatable** aby użytkownicy mogli podać wartość jednostki lub powiedzieć coś, co jest *nie* jednostki wartości, a tym samym usuwanie pasującej wartości jednostki.
+1. Wybierz pozycję **jednostki** w lewym panelu, a następnie pozycję **Nowa jednostka**.
+2. Wybierz pozycję niestandardowa przeszkolony dla **typu jednostki**.
+3. Wprowadź **nazwę** dla **nazwy jednostki**.
+4. Zaznacz opcję Negacja, aby umożliwić użytkownikom podanie wartości jednostki, lub wymów coś *nie* jest wartością jednostki, usuwając pasującą wartość jednostki.
 5. Wybierz pozycję **Utwórz**.
 
 ![](../media/T06_entity_create.png)
 
-### <a name="create-the-first-action"></a>Tworzenie pierwszej akcji
+### <a name="create-the-first-action"></a>Utwórz pierwszą akcję
 
-1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
-2. Wprowadź **nie wiem, swoją nazwę.** Aby uzyskać **odpowiedzi Botów...** .
-3. Wprowadź **nazwa** dla **dyskwalifikacji uprawnia**.
+1. W lewym panelu wybierz pozycję **Akcje** , a następnie pozycję **Nowa akcja**.
+2. Wprowadź **nieznane nazwy.** na **odpowiedź bot...**
+3. Wprowadź **nazwę** **uprawniającą**do niekwalifikowania.
 4. Wybierz pozycję **Utwórz**.
 
 ![](../media/T06_action_create_1.png)
 
-### <a name="create-the-second-action"></a>Tworzenie drugiej akcji
+### <a name="create-the-second-action"></a>Utwórz drugą akcję
 
-1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
-2. Wprowadź **sprawdzić swoją nazwę. It is $name.** Aby uzyskać **odpowiedzi Botów...** .
+1. W lewym panelu wybierz pozycję **Akcje** , a następnie pozycję **Nowa akcja**.
+2. Podaj **nazwę użytkownika. Jest $name.** na **odpowiedź bot...**
 3. Wybierz pozycję **Utwórz**.
 
 > [!NOTE]
-> **Nazwa** jednostka została automatycznie dodana jako **wymaganych jednostek** poprzez odwołanie w wypowiedź odpowiedzi.
+> Jednostka **nazwy** została automatycznie dodana jako **wymagane jednostki** przez odwołanie w odpowiedzi wypowiedź.
 
-Masz teraz dwie akcje.
+Teraz masz dwie akcje.
 
 ![](../media/T06_action_create_2.png)
 
 ### <a name="train-the-model"></a>Uczenie modelu
 
-1. Wybierz **okien dialogowych Train** w lewym panelu, a następnie **okno dialogowe Nowy Train**.
-2. Wprowadź **hello** dla wypowiedź użytkownika w panelu po lewej stronie rozmowy.
-3. Wybierz **wynik akcji**.
-4. Wybierz **nie wiem, swoją nazwę.** z listy akcji. Percentyla wynosi 100%, co jedyne prawidłowe działanie na podstawie ograniczeń.
-5. Wprowadź **Nazywam się Frank** dla wypowiedź użytkownika w panelu po lewej stronie rozmowy.
-6. Wyróżnij **Frank** polecenie **+ nazwa**. Jednostki można negować mają dwa wystąpienia: (+) oraz dodaje lub zastępuje wartość; (-) znak minus Usuwa wartość.
-7. Wybierz **wynik akcji**. **Nazwa** jednostki jest teraz zdefiniowany jako **Frank** w modelu pamięci, więc **sprawdzić swoją nazwę. Jest $name** akcja jest dostępna.
-8. Wybierz **sprawdzić swoją nazwę. It is $name.** z listy akcji.
-9. Wprowadź **Moja nazwa nie jest Frank.** Aby uzyskać wypowiedź użytkownika w panelu po lewej stronie rozmowy.
-10. Wyróżnij **Frank** następnie wybierz pozycję **— nazwa** wyczyszczenie tej wartości z **nazwa** jednostki.
-11. Wybierz **wynik akcji**.
-12. Wybierz **nie wiem, swoją nazwę.** z listy akcji.
-13. Wprowadź **Nazywam się Susan.** Aby uzyskać wypowiedź trzeciego użytkownika w panelu po lewej stronie rozmowy.
-14. Wyróżnij **Susan** następnie **+ nazwa** 
+1. Wybierz pozycję **okna dialogowe szkolenia** w lewym panelu, a następnie **okno dialogowe nowe szkolenie**.
+2. Wprowadź **Hello** dla wypowiedź użytkownika w lewym panelu rozmowy.
+3. Wybierz **Akcje oceny**.
+4. Wybierz opcję **nie znam nazwy.** z listy akcje. Percentyl ma wartość 100%, ponieważ jedyną prawidłową akcją opartą na ograniczeniach.
+5. Wprowadź **My Name to Piotr** dla wypowiedź użytkownika w lewym panelu rozmowy.
+6. Wyróżnij **Piotr** , a następnie wybierz pozycję **+ Nazwa**. Jednostki negacjowe mają dwa wystąpienia: (+) plus dodaje lub zastępuje wartość; (-) minus usuwa wartość.
+7. Wybierz **Akcje oceny**. Obiekt **name** jest teraz zdefiniowany jako **Piotr** w pamięci modelu **, więc znam swoją nazwę. $Name** akcja jest dostępna.
+8. Wybierz **opcję Znam swoją nazwę. Jest $name.** z listy akcje.
+9. Wprowadź **moją nazwę nie jest Piotrem.** dla wypowiedź użytkownika w lewym panelu rozmowy.
+10. Wyróżnij **Piotr** , a następnie wybierz pozycję **-name** , aby wyczyścić wartość z jednostki **nazwy** .
+11. Wybierz **Akcje oceny**.
+12. Wybierz opcję **nie znam nazwy.** z listy akcje.
+13. Wprowadź **moją nazwę Susan.** w przypadku trzeciego wypowiedź użytkownika w lewym panelu rozmowy.
+14. Wyróżnij **Susan** then **+ name** 
 
 ![](../media/T06_training.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Wartość wielu jednostek](./07-multi-value-entities.md)
+> [Jednostki wielowartościowe](./07-multi-value-entities.md)

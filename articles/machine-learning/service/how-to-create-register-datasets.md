@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: 765ec8291ba873c6b200cf330d82e6e2ab53357d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 473bf87e1961c3c7687b0867885adef40c14d71f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423111"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694326"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Tworzenie zestawów danych i uzyskiwanie do nich dostępu (wersja zapoznawcza) w Azure Machine Learning
 
@@ -48,10 +48,10 @@ Aby tworzyć zestawy danych i korzystać z nich, potrzebne są:
 ## <a name="data-formats"></a>Formaty danych
 
 Zestaw danych Azure Machine Learning można utworzyć przy użyciu następujących formatów:
-+ [Lista](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset#from-delimited-files-path--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-no-rows--0---comment-none--include-path-false--archive-options-none-)
-+ [kodu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false-)
-+ [Excel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true-)
-+ [Parquet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false-)
++ [Lista](/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-delimited-files-path--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-no-rows--0---comment-none--include-path-false--archive-options-none--partition-format-none-)
++ [kodu](/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false--partition-format-none-)
++ [Excel](/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true--partition-format-none-)
++ [Parquet](/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false--partition-format-none-)
 + [Ramka datapandas](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-pandas-dataframe-dataframe--path-none--in-memory-false-)
 + [Zapytanie SQL](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
 + [binarny](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)
@@ -62,7 +62,7 @@ Tworząc zestaw danych, utworzysz odwołanie do lokalizacji źródła danych wra
 
 ### <a name="create-from-local-files"></a>Utwórz z plików lokalnych
 
-Załaduj pliki z komputera lokalnego, określając ścieżkę pliku lub folderu za pomocą [`auto_read_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#auto-read-files-path--include-path-false-) metody `Dataset` z klasy.  Ta metoda wykonuje następujące czynności bez konieczności określania typu pliku lub argumentów analizy:
+Załaduj pliki z komputera lokalnego, określając ścieżkę pliku lub folderu za pomocą [`auto_read_files()`](/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#auto-read-files-path--include-path-false--partition-format-none-) metody `Dataset` z klasy.  Ta metoda wykonuje następujące czynności bez konieczności określania typu pliku lub argumentów analizy:
 
 * Wnioskowanie i ustawienie ogranicznika.
 * Pomijanie pustych rekordów w górnej części pliku.
@@ -144,7 +144,7 @@ dataset = Dataset.get(workspace, 'dataset_crime')
 dataset.to_pandas_dataframe()
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Eksplorowanie i przygotowywanie zestawów danych](how-to-explore-prepare-data.md).
 * Przykład korzystania z zestawów danych można znaleźć w przykładowych [notesach](https://aka.ms/dataset-tutorial).

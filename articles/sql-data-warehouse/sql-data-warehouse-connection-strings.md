@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: afc8dbfa0bc1b1ad37e5f1a0f290c42998ed1e4b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479701"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Parametry połączenia dla Azure SQL Data Warehouse
-Można nawiązać połączenie z SQL Data Warehouse przy użyciu kilku różnych protokołów aplikacji, takich jak [ADO.NET][ADO.NET], [ODBC][ODBC] [, php][i] [JDBC][JDBC]. Poniżej przedstawiono kilka przykładów połączeń ciągów dla każdego protokołu.  Możesz również użyć Azure Portal, aby skompilować parametry połączenia.  Aby skompilować parametry połączenia przy użyciu Azure Portal, przejdź do bloku baza danych, w obszarze *Essentials* kliknij pozycję *Pokaż parametry połączenia bazy danych*.
+Możesz połączyć się z SQL Data Warehouse przy użyciu kilku różnych protokołów aplikacji, takich jak [ADO.NET][ADO.NET], [ODBC][ODBC], [php][PHP] i [JDBC][JDBC]. Poniżej przedstawiono kilka przykładów połączeń ciągów dla każdego protokołu.  Możesz również użyć Azure Portal, aby skompilować parametry połączenia.  Aby skompilować parametry połączenia przy użyciu Azure Portal, przejdź do bloku baza danych, w obszarze *Essentials* kliknij pozycję *Pokaż parametry połączenia bazy danych*.
 
 ## <a name="sample-adonet-connection-string"></a>Przykładowe parametry połączenia ADO.NET
 ```csharp

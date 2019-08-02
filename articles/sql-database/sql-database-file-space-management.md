@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie miejsce plików bazy danych SQL pojedynczego/puli baz danych platformy Azure | Dokumentacja firmy Microsoft
-description: Ta strona zawiera opis sposobu zarządzania przestrzenią plików z jednego i puli baz danych w usłudze Azure SQL Database i zawiera przykłady kodu dotyczące sposobu określenia, czy możesz zmniejszyć jednego środowiska lub do bazy danych w puli także, jak przeprowadzić operację zmniejszania bazy danych.
+title: Azure SQL Database Zarządzanie przestrzenią plików z jednym/pulą baz danych | Microsoft Docs
+description: Na tej stronie opisano sposób zarządzania przestrzenią plików z pojedynczymi bazami danych w puli w Azure SQL Database i przedstawiono przykłady kodu służące do określenia, czy należy zmniejszyć jedną lub bazę danych w puli, oraz jak wykonać operację zmniejszania bazy danych.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -10,29 +10,28 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 96d55da713b8591b20f95ba36f332a340999181e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c92ffb6aa6db9c77a859661115d54ff63ea02401
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242754"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568208"
 ---
-# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku dla pojedynczych i puli baz danych w usłudze Azure SQL Database
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Zarządzanie obszarem plików dla jednej i puli baz danych w Azure SQL Database
 
-W tym artykule opisano różne rodzaje miejsca w magazynie dla pojedynczego i puli baz danych w usłudze Azure SQL Database i czynności, które można podjąć w przypadku przydzielone miejsce plików baz danych i pul elastycznych musi odbywać się jawnie.
+W tym artykule opisano różne typy miejsc do magazynowania dla pojedynczych i w puli baz danych w Azure SQL Database oraz czynności, które można wykonać, gdy przestrzeń plików przydzieloną dla baz danych i pul elastycznych musi być jawnie zarządzana.
 
 > [!NOTE]
-> W tym artykule nie ma zastosowania do opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database.
+> Ten artykuł nie dotyczy opcji wdrożenia wystąpienia zarządzanego w Azure SQL Database.
 
 ## <a name="overview"></a>Omówienie
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
+> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
 
-Z jednej puli baz danych i w usłudze Azure SQL Database są wzorce obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron. Ten stan może wystąpić, gdy ilość używanego miejsca zwiększy się, a następnie dane zostaną usunięte. Przyczyną jest, ponieważ plik miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.
+Dzięki pojedynczym i w puli baz danych w Azure SQL Database istnieją wzorce obciążeń, w których alokacja źródłowych plików danych dla baz danych może być większa niż ilość używanych stron danych. Ten stan może wystąpić, gdy ilość używanego miejsca zwiększy się, a następnie dane zostaną usunięte. Przyczyną jest to, że przydzieloną przestrzeń plików nie jest automatycznie odzyskiwana po usunięciu danych.
 
 Monitorowanie użycia miejsca na pliki i zmniejszania plików danych może być konieczne w następujących scenariuszach:
 
@@ -40,48 +39,48 @@ Monitorowanie użycia miejsca na pliki i zmniejszania plików danych może być 
 - Zezwalanie na zmniejszenie maksymalnego rozmiaru pojedynczej bazy danych lub elastycznej puli.
 - Zezwalanie na zmianę warstwy usługi lub wydajności dla pojedynczej bazy danych lub elastycznej puli na warstwę obsługującą mniejszy rozmiar maksymalny.
 
-### <a name="monitoring-file-space-usage"></a>Monitorowanie użycia miejsca na plik
+### <a name="monitoring-file-space-usage"></a>Monitorowanie użycia przestrzeni plików
 
-Większość metryk miejsce magazynowania wyświetlane w witrynie Azure portal oraz następujące interfejsy API pomiaru tylko rozmiar stron używanych danych:
+Większość metryk miejsca do magazynowania wyświetlana w Azure Portal i następujące interfejsy API mierzą tylko rozmiar użytych stron danych:
 
-- Usługa Azure Resource Manager, na podstawie metryk interfejsów API w tym program PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- Interfejsy API metryk opartych na Azure Resource Managerach, w tym PowerShell [Get-Metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
+- T-SQL: [sys. DM _db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
-Jednak następujące interfejsy API pomiaru rozmiar ilość miejsca przydzielonego dla baz danych i elastyczne pule:
+Jednak poniższe interfejsy API mierzą również rozmiar miejsca przydzieloną dla baz danych i pul elastycznych:
 
-- T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL: [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-### <a name="shrinking-data-files"></a>Zmniejszanie rozmiaru plików danych
+### <a name="shrinking-data-files"></a>Zmniejszanie plików danych
 
-Usługa SQL Database nie zmniejsza automatycznie plików danych, aby odzyskać nieużywane miejsce przydzielone z powodu potencjalnego wpływu na wydajność bazy danych.  Jednak klientów może spowodować zmniejszenie pliki danych za pomocą samoobsługowej w momencie ich wyboru, wykonując kroki opisane w [odzyskać nieużywane miejsce przydzielone](#reclaim-unused-allocated-space).
+Usługa SQL Database nie zmniejsza automatycznie plików danych w celu odzyskiwania nieużywanych przyznanych miejsc ze względu na potencjalny wpływ na wydajność bazy danych.  Jednak klienci mogą zmniejszać pliki danych za pośrednictwem samoobsługowego wyboru, wykonując kroki opisane w artykule Odzyskiwanie nieużywanych przydzielonego [miejsca](#reclaim-unused-allocated-space).
 
 > [!NOTE]
-> W przeciwieństwie do plików danych usługa SQL Database automatycznie zmniejsza pliki dziennika, ponieważ tej operacji nie ma wpływu na wydajność bazy danych. 
+> W przeciwieństwie do plików danych usługa SQL Database automatycznie zmniejsza pliki dziennika, ponieważ ta operacja nie ma wpływu na wydajność bazy danych. 
 
-## <a name="understanding-types-of-storage-space-for-a-database"></a>Opis typów miejsca do magazynowania dla bazy danych
+## <a name="understanding-types-of-storage-space-for-a-database"></a>Informacje o typach miejsca do magazynowania dla bazy danych
 
-Informacje o następujących ilości miejsca magazynu są ważne w przypadku zarządzanie przestrzenią pliku bazy danych.
+Zrozumienie następujących ilości miejsca do magazynowania jest istotne dla zarządzania przestrzenią plików bazy danych.
 
 |Ilość bazy danych|Definicja|Komentarze|
 |---|---|---|
-|**Dane miejsca**|Ilość miejsca, używany do przechowywania danych bazy danych na stronach o rozmiarze 8 KB.|Ogólnie rzecz biorąc miejsce używane zwiększa (zmniejsza) na wstawienia (usuwa). W niektórych przypadkach przestrzeni używanej nie zmienia się na operacje wstawiania lub usuwa w zależności od ilości i wzorzec danych zaangażowanych w operację i wszystkie fragmentacji. Na przykład usuwając jeden wiersz z każdej strony danych nie musi zmniejszyć ilość miejsca używanego.|
-|**Przydzielone miejsce danych**|Ilość sformatowany plik miejsce dostępne do przechowywania danych bazy danych.|Ilość miejsca przydzielonego powiększa się automatycznie, ale nigdy nie zmniejsza po usuwaniu. Takie zachowanie gwarantuje, przyszłe operacje wstawiania są szybsze, ponieważ miejsce nie musi być ponownie sformatowany.|
-|**Przydzielone, ale nieużywana miejsce danych**|Różnica między ilość danych miejsce przydzielone i użyte miejsce danych.|Ta ilość reprezentuje maksymalną ilość wolnego miejsca, które można odzyskać, zmniejszając pliki danych bazy danych.|
-|**Maksymalny rozmiar danych**|Maksymalna ilość miejsca, który może służyć do przechowywania danych w bazie danych.|Ilość danych miejsce przydzielone nie może rosnąć poza maksymalnego rozmiaru danych.|
+|**Używane miejsce na dane**|Ilość miejsca używanego do przechowywania danych bazy danych na stronach 8 KB.|Ogólnie rzecz biorąc, zajęte miejsce zwiększa się (zmniejsza) przy wstawianiu (usuwanie). W niektórych przypadkach używane miejsce nie zmienia się po wstawianiu lub usuwaniu, w zależności od ilości i wzorca danych związanych z operacją i fragmentacją. Na przykład usunięcie jednego wiersza z każdej strony danych nie musi zmniejszać używanej przestrzeni.|
+|**Przydzielono miejsce na danych**|Ilość zajętego miejsca na pliki, które jest dostępne do przechowywania danych bazy danych.|Przydzieloną ilość miejsca powiększa się automatycznie, ale nigdy nie maleje po usunięciu. Takie zachowanie gwarantuje, że przyszłe operacje wstawiania są szybsze, ponieważ nie trzeba ponownie sformatować miejsca.|
+|**Miejsce na dane przydzieloną, ale nieużywane**|Różnica między ilością przydzieloną przestrzenią danych a używanym miejscem na dane.|Ta ilość reprezentuje maksymalną ilość wolnego miejsca, którą można odzyskiwać, zmniejszając pliki danych bazy danych.|
+|**Maksymalny rozmiar danych**|Maksymalna ilość miejsca, która może być używana do przechowywania danych bazy danych.|Ilość przydzieloną przestrzeni danych nie może przekraczać maksymalnego rozmiaru danych.|
 ||||
 
-Na poniższym diagramie przedstawiono relację między różnymi typami miejsca do magazynowania dla bazy danych.
+Na poniższym diagramie przedstawiono relację między różnymi typami miejsc do magazynowania dla bazy danych.
 
-![relacje i typy miejsce magazynowania](./media/sql-database-file-space-management/storage-types.png)
+![typy i relacje przestrzeni dyskowej](./media/sql-database-file-space-management/storage-types.png)
 
-## <a name="query-a-single-database-for-storage-space-information"></a>Zapytanie dotyczące pojedynczej bazy danych informacji miejsce magazynowania
+## <a name="query-a-single-database-for-storage-space-information"></a>Wykonaj zapytanie dotyczące pojedynczej bazy danych w celu uzyskania informacji o miejscu do magazynowania
 
-Następujące zapytania może służyć do określenia ilości miejsca magazynu dla pojedynczej bazy danych.  
+Poniższe zapytania mogą służyć do określenia ilości miejsca do magazynowania dla pojedynczej bazy danych.  
 
-### <a name="database-data-space-used"></a>Używane miejsce danych w bazie danych
+### <a name="database-data-space-used"></a>Używane miejsce na dane bazy danych
 
-Zmodyfikuj następujące zapytanie, aby zwrócić ilość miejsca danych bazy danych.  Jednostki wyniki zapytania są w MB.
+Zmodyfikuj następujące zapytanie, aby zwrócić ilość użytego miejsca na dane bazy danych.  Jednostki wyniku zapytania są w MB.
 
 ```sql
 -- Connect to master
@@ -92,9 +91,9 @@ WHERE database_name = 'db1'
 ORDER BY end_time DESC
 ```
 
-### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Przydzielone miejsce danych w bazie danych i nieużywane miejsce przydzielone
+### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Przestrzeń danych bazy danych przyalokowana i niewykorzystane miejsce
 
-Użyj następującego zapytania, aby zwrócić ilość przydzielonej przestrzeni danych bazy danych i ilość nieużywane miejsce przydzielone.  Jednostki wyniki zapytania są w MB.
+Użyj następującego zapytania, aby zwrócić ilość przydzieloną miejsce na dane bazy danych i ilość niewykorzystanego miejsca.  Jednostki wyniku zapytania są w MB.
 
 ```sql
 -- Connect to database
@@ -108,7 +107,7 @@ HAVING type_desc = 'ROWS'
  
 ### <a name="database-data-max-size"></a>Maksymalny rozmiar danych bazy danych
 
-Zmodyfikuj następujące zapytanie, aby zwrócić maksymalnego rozmiaru bazy danych.  Jednostki wyniki zapytania są w bajtach.
+Zmodyfikuj następujące zapytanie, aby przywrócić maksymalny rozmiar danych bazy danych.  Jednostki wyniku zapytania są w bajtach.
 
 ```sql
 -- Connect to database
@@ -116,25 +115,25 @@ Zmodyfikuj następujące zapytanie, aby zwrócić maksymalnego rozmiaru bazy dan
 SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 ```
 
-## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Opis typów miejsca do magazynowania dla puli elastycznej
+## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Informacje o typach miejsca do magazynowania dla puli elastycznej
 
-Informacje o następujących ilości miejsca magazynu są ważne w przypadku zarządzanie przestrzenią pliku elastycznej puli.
+Zrozumienie następujących ilości miejsca do magazynowania jest istotne dla zarządzania przestrzenią plików puli elastycznej.
 
-|Ilość puli elastycznej|Definicja|Komentarze|
+|Ilość elastycznej puli|Definicja|Komentarze|
 |---|---|---|
-|**Dane miejsca**|Podsumowanie przestrzeni danych używany przez wszystkie bazy danych w puli elastycznej.||
-|**Przydzielone miejsce danych**|Podsumowanie danych miejsce przydzielone przez wszystkie bazy danych w puli elastycznej.||
-|**Przydzielone, ale nieużywana miejsce danych**|Różnica między ilości danych miejsce przydzielone i przestrzeni danych używany przez wszystkie bazy danych w puli elastycznej.|Ta ilość reprezentuje maksymalną ilość miejsca przydzielonego dla puli elastycznej, które można odzyskać, zmniejszając pliki danych bazy danych.|
-|**Maksymalny rozmiar danych**|Maksymalna ilość miejsca na dane, który może służyć w puli elastycznej dla wszystkich baz danych.|Ilość miejsca przydzielonego dla puli elastycznej nie może przekraczać maksymalny rozmiar puli elastycznej.  Jeśli ten stan występuje, miejsce przydzielone, który jest nieużywany można odzyskać, zmniejszając pliki danych bazy danych.|
+|**Używane miejsce na dane**|Suma obszaru danych używanego przez wszystkie bazy danych w puli elastycznej.||
+|**Przydzielono miejsce na danych**|Suma przestrzeni danych przydzielonej przez wszystkie bazy danych w puli elastycznej.||
+|**Miejsce na dane przydzieloną, ale nieużywane**|Różnica między ilością przydzielonego miejsca na dane i miejscem na dane używanym przez wszystkie bazy danych w puli elastycznej.|Ta ilość reprezentuje maksymalną ilość miejsca przydzielonego dla puli elastycznej, którą można odzyskiwać, zmniejszając pliki danych bazy danych.|
+|**Maksymalny rozmiar danych**|Maksymalna ilość miejsca na dane, która może być używana przez pulę elastyczną dla wszystkich swoich baz danych.|Przestrzeń przydzieloną dla puli elastycznej nie powinna przekraczać maksymalnego rozmiaru puli elastycznej.  Jeśli wystąpi ten warunek, przydzielone miejsce, które nie jest używane, może być odzyskiwane przez zmniejszenie plików danych bazy danych.|
 ||||
 
-## <a name="query-an-elastic-pool-for-storage-space-information"></a>Zapytanie elastycznej puli magazynu miejsca informacji
+## <a name="query-an-elastic-pool-for-storage-space-information"></a>Zbadaj pulę elastyczną w celu uzyskania informacji o miejscu do magazynowania
 
-Następujące zapytania może służyć do określenia ilości miejsca magazynu dla puli elastycznej.  
+Poniższe zapytania mogą służyć do określenia ilości miejsca do magazynowania dla puli elastycznej.  
 
-### <a name="elastic-pool-data-space-used"></a>Używać przestrzeni danych puli elastycznej
+### <a name="elastic-pool-data-space-used"></a>Używane miejsce na dane puli elastycznej
 
-Zmodyfikuj następujące zapytanie, aby zwrócić ilość przestrzeni danych puli elastycznej używane.  Jednostki wyniki zapytania są w MB.
+Zmodyfikuj następujące zapytanie, aby zwrócić ilość zajętego miejsca na dane puli elastycznej.  Jednostki wyniku zapytania są w MB.
 
 ```sql
 -- Connect to master
@@ -145,13 +144,13 @@ WHERE elastic_pool_name = 'ep1'
 ORDER BY end_time DESC
 ```
 
-### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Przydzielonej przestrzeni danych puli elastycznej i nieużywane miejsce przydzielone
+### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Miejsce na danych w puli elastycznej przydzielono i niewykorzystane miejsce
 
-Zmodyfikuj następujący skrypt programu PowerShell, aby zwrócić tabelę z listą ilość miejsca przydzielonego i nieużywane miejsce przydzielone dla każdej bazy danych w puli elastycznej. Tabeli orders baz danych z tych baz danych z największą ilością nieużywane przydzielone miejsce na najmniejszą ilością nieużywane przydzielone miejsce.  Jednostki wyniki zapytania są w MB.  
+Zmodyfikuj Poniższy skrypt programu PowerShell, aby zwracał tabelę zawierającą przydzieloną przestrzeń i niewykorzystane miejsce dla każdej bazy danych w puli elastycznej. Tabela porządkuje bazy danych z tych baz danych z największą ilością niewykorzystanego miejsca do najmniejszej ilości niewykorzystanego miejsca.  Jednostki wyniku zapytania są w MB.  
 
-Wyniki zapytania do określania ilość miejsca przydzielonego dla każdej bazy danych w puli można dodać razem do określenia łączne miejsce przydzielone dla puli elastycznej. Przydzielone miejsce puli elastycznej nie może przekraczać maksymalny rozmiar puli elastycznej.  
+Wyniki zapytania dotyczące określania miejsca przydzieloną dla każdej bazy danych w puli można dodać razem, aby określić łączną ilość miejsca przydzieloną dla puli elastycznej. Przydzieloną przestrzeń puli elastycznej nie powinna przekraczać maksymalnego rozmiaru puli elastycznej.  
 
-Skrypt programu PowerShell wymaga modułu programu PowerShell programu SQL Server — zobacz [modułu PowerShell Pobierz](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) do zainstalowania.
+Skrypt programu PowerShell wymaga modułu SQL Server PowerShell — zobacz [Pobieranie modułu PowerShell](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) do instalacji.
 
 ```powershell
 # Resource group name
@@ -200,11 +199,11 @@ Write-Output $databaseStorageMetrics | Sort `
 
 Poniższy zrzut ekranu przedstawia przykład danych wyjściowych skryptu:
 
-![Pula elastyczna przydzielone miejsce i przykład nieużywane miejsce przydzielone](./media/sql-database-file-space-management/elastic-pool-allocated-unused.png)
+![przydzieloną przestrzeń przydziału w puli elastycznej i nieużywaną przydzieloną przestrzeń](./media/sql-database-file-space-management/elastic-pool-allocated-unused.png)
 
-### <a name="elastic-pool-data-max-size"></a>Maksymalnego rozmiaru danych dla puli elastycznej
+### <a name="elastic-pool-data-max-size"></a>Maksymalny rozmiar danych puli elastycznej
 
-Zmodyfikuj następujące zapytanie T-SQL, aby zwrócić maksymalny rozmiar danych w puli elastycznej.  Jednostki wyniki zapytania są w MB.
+Zmodyfikuj następujące zapytanie T-SQL, aby przywrócić maksymalny rozmiar danych puli elastycznej.  Jednostki wyniku zapytania są w MB.
 
 ```sql
 -- Connect to master
@@ -215,28 +214,28 @@ WHERE elastic_pool_name = 'ep1'
 ORDER BY end_time DESC
 ```
 
-## <a name="reclaim-unused-allocated-space"></a>Odzyskać nieużywane miejsce przydzielone
+## <a name="reclaim-unused-allocated-space"></a>Odzyskaj nieużywane przydzieloną przestrzeń
 
 > [!NOTE]
-> To polecenie może wpłynąć na wydajność bazy danych, gdy jest uruchomiona, a jeśli to możliwe powinno być uruchamiane w okresach o niskim użyciu.
+> To polecenie może mieć wpływ na wydajność bazy danych, gdy jest uruchomiona, a jeśli to możliwe, powinno być uruchamiane w okresach o niskim poziomie użycia.
 
-### <a name="dbcc-shrink"></a>Polecenie DBCC zmniejszania
+### <a name="dbcc-shrink"></a>Polecenie DBCC Zmniejsz
 
-Po baz danych zostały zidentyfikowane dla odzyskiwaniu nieużywanych przydzielonego miejsca, należy zmodyfikować nazwę bazy danych w poniższym poleceniu zmniejszanie plików danych dla każdej bazy danych.
+Po zidentyfikowaniu baz danych do odzyskiwania niewykorzystanego miejsca przydzielenia zmodyfikuj nazwę bazy danych w poniższym poleceniu, aby zmniejszyć liczbę plików danych dla każdej bazy danych.
 
 ```sql
 -- Shrink database data space allocated.
 DBCC SHRINKDATABASE (N'db1')
 ```
 
-To polecenie może wpłynąć na wydajność bazy danych, gdy jest uruchomiona, a jeśli to możliwe powinno być uruchamiane w okresach o niskim użyciu.  
+To polecenie może mieć wpływ na wydajność bazy danych, gdy jest uruchomiona, a jeśli to możliwe, powinno być uruchamiane w okresach o niskim poziomie użycia.  
 
 Aby uzyskać więcej informacji na temat tego polecenia, zobacz [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
 
-### <a name="auto-shrink"></a>Automatycznego zmniejszania
+### <a name="auto-shrink"></a>Autozmniejszanie
 
-Alternatywnie można włączyć automatycznego zmniejszania dla bazy danych.  Automatycznego zmniejszania zmniejsza złożoność zarządzania pliku i jest mniej wpływie na wydajność bazy danych niż `SHRINKDATABASE` lub `SHRINKFILE`.  Automatycznego zmniejszania może być szczególnie przydatne w przypadku Zarządzanie elastycznymi pulami za pomocą wielu baz danych.  Jednak automatycznego zmniejszania może być mniej skuteczny w odzyskiwaniu miejsca niż `SHRINKDATABASE` i `SHRINKFILE`.
-Aby włączyć automatyczne zmniejszanie, należy zmodyfikować nazwę bazy danych w poniższym poleceniu.
+Alternatywnie można włączyć funkcję autozmniejszania dla bazy danych.  Funkcja autozmniejszania zmniejsza złożoność zarządzania plikami i mniej wpływa na wydajność bazy `SHRINKDATABASE` danych `SHRINKFILE`niż lub.  Funkcja autozmniejszania może być szczególnie przydatna do zarządzania elastycznymi pulami z wieloma bazami danych.  Jednak funkcja autozmniejszania może być mniej skuteczna podczas odzyskiwania przestrzeni plików niż `SHRINKDATABASE` i `SHRINKFILE`.
+Aby włączyć funkcję autozmniejszania, zmodyfikuj nazwę bazy danych w poniższym poleceniu.
 
 
 ```sql
@@ -244,18 +243,18 @@ Aby włączyć automatyczne zmniejszanie, należy zmodyfikować nazwę bazy dany
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-Aby uzyskać więcej informacji na temat tego polecenia, zobacz [bazy danych ustaw](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) opcje. 
+Aby uzyskać więcej informacji na temat tego polecenia, zobacz Opcje [zestawu baz danych](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) . 
 
-### <a name="rebuild-indexes"></a>Odbuduj indeksy
+### <a name="rebuild-indexes"></a>Ponowne kompilowanie indeksów
 
-Po zmniejszyć są pliki danych bazy danych, indeksów może ulec fragmentacji i utracić ich skuteczność optymalizacji wydajności. Jeśli występuje spadek wydajności, rozważ ponowne tworzenie indeksów bazy danych. Aby uzyskać więcej informacji na temat fragmentacji i ponowne tworzenie indeksów, zobacz [z opcją Reorganize i odbudowy indeksów](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+Po usunięciu plików danych bazy danych indeksy mogą stać się pofragmentowane i utracić skuteczność optymalizacji wydajności. Jeśli wystąpi spadek wydajności, rozważ odbudowanie indeksów bazy danych. Aby uzyskać więcej informacji na temat fragmentacji i odbudowywania indeksów, zobacz [Reorganizowanie i](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)ponowne kompilowanie indeksów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać informacji na temat maksymalny rozmiar bazy danych zobacz:
-  - [Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych](sql-database-vcore-resource-limits-single-databases.md)
-  - [Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-single-databases.md)
-  - [Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)
-  - [Limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-elastic-pools.md)
-- Aby uzyskać więcej informacji na temat `SHRINKDATABASE` polecenia, zobacz [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
-- Aby uzyskać więcej informacji na temat fragmentacji i ponowne tworzenie indeksów, zobacz [z opcją Reorganize i odbudowy indeksów](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+- Aby uzyskać informacje o maksymalnych rozmiarach baz danych, zobacz:
+  - [Azure SQL Database limity modelu zakupu opartego na rdzeń wirtualny dla pojedynczej bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+  - [Limity zasobów dla pojedynczych baz danych korzystających z modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-single-databases.md)
+  - [Azure SQL Database limity modelu zakupu opartego na rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)
+  - [Limity zasobów dla pul elastycznych przy użyciu modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-elastic-pools.md)
+- Aby uzyskać więcej informacji o `SHRINKDATABASE` poleceniu, zobacz [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
+- Aby uzyskać więcej informacji na temat fragmentacji i odbudowywania indeksów, zobacz [Reorganizowanie i](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)ponowne kompilowanie indeksów.

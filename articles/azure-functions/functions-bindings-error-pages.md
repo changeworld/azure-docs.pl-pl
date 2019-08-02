@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Functions dodanymi komentarzami. wskazówki dotyczące | Dokumentacja firmy Microsoft
-description: Zawiera ogólne wskazówki dotyczące obsługi błędów występujących w przypadku wykonywania funkcji oraz łącza do tematów, błędy specyficzne dla powiązania.
+title: Wskazówki dotyczące obsługi błędów Azure Functions | Microsoft Docs
+description: Zawiera ogólne wskazówki dotyczące obsługi błędów występujących w czasie wykonywania funkcji oraz linki do tematów dotyczących błędów specyficznych dla powiązania.
 services: functions
 cloud: ''
 documentationcenter: ''
@@ -12,26 +12,26 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: cshoe
-ms.openlocfilehash: ef8f2d5a63f7924097362f6aa0ebc78cc0f6455f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bc0ffec1bfe55ee81573feffc58e1adb11421eec
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480708"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667444"
 ---
-# <a name="azure-functions-error-handling"></a>Obsługa błędów w usłudze Azure Functions
+# <a name="azure-functions-error-handling"></a>Obsługa błędów Azure Functions
 
-Ten temat zawiera ogólne wskazówki dotyczące obsługi błędów występujących podczas wykonywania funkcji. Umożliwia także łącza do tematów, które opisują powiązania określonych błędów, które mogą wystąpić. 
+Ten temat zawiera ogólne wskazówki dotyczące obsługi błędów występujących podczas wykonywania funkcji. Zawiera również linki do tematów opisujących błędy dotyczące powiązań, które mogą wystąpić. 
 
-## <a name="handing-errors-in-functions"></a>Przekazywanie błędów w funkcjach
+## <a name="handling-errors-in-functions"></a>Obsługa błędów w funkcjach
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
  
 ## <a name="binding-error-codes"></a>Kody błędów powiązania
 
-Podczas integracji z usługami platformy Azure, może być zgłaszane błędy, pochodzących z interfejsów API usług podstawowych. Łącza do błędu kodu dokumentacji dla tych usług można znaleźć w **wyjątków i kody powrotne** części następujący wyzwalacz i powiązania tematy referencyjne:
+W przypadku integracji z usługami platformy Azure mogą wystąpić błędy zgłoszone przez interfejsy API podstawowych usług. Linki do dokumentacji kodu błędu dla tych usług można znaleźć w sekcji **wyjątki i kody powrotne** w następujących tematach:
 
-+ [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
++ [Usługi Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
 + [Blob Storage](functions-bindings-storage-blob.md#exceptions-and-return-codes)
 

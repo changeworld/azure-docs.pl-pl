@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 69ae6ab6caedd9e89d277b92558931685d2ea320
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f2c6b98fd0be2061e9d8cab5c063cafadf71476a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877313"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597455"
 ---
 # <a name="monitor-application-performance-hosted-on-azure-vm-and-azure-virtual-machine-scale-sets"></a>Monitorowanie wydajności aplikacji hostowanej na maszynach wirtualnych platformy Azure i w zestawach skalowania maszyn wirtualnych platformy Azure
 
@@ -27,7 +27,7 @@ W tym artykule opisano Włączanie monitorowania Application Insights przy użyc
 > Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, a niektóre z nich mogą mieć ograniczone możliwości.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
+## <a name="enable-application-insights"></a>Włącz usługę Application Insights
 
 Istnieją dwa sposoby włączania monitorowania aplikacji dla maszyn wirtualnych platformy Azure i hostowanych aplikacji zestawu skalowania maszyn wirtualnych platformy Azure:
 
@@ -42,7 +42,7 @@ Istnieją dwa sposoby włączania monitorowania aplikacji dla maszyn wirtualnych
     * Jeśli konieczne jest wykonywanie niestandardowych wywołań interfejsu API w celu śledzenia zdarzeń/zależności, które nie są przechwytywane domyślnie przy użyciu monitorowania opartego na agentach, należy użyć tej metody. Zapoznaj się z [interfejsem API dla niestandardowych zdarzeń i metryk](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) , aby dowiedzieć się więcej.
 
 > [!NOTE]
-> W przypadku wykrycia zarówno Instrumentacji opartej na agencie, jak i ręcznego zestawu SDK można wykryć tylko ręczne ustawienia Instrumentacji. Ma to na celu uniemożliwienie wysyłania zduplikowanych danych. Aby dowiedzieć się więcej na ten temat, zapoznaj się z [sekcją rozwiązywania problemów](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-apps#troubleshooting) poniżej.
+> W przypadku wykrycia zarówno Instrumentacji opartej na agencie, jak i ręcznego zestawu SDK można wykryć tylko ręczne ustawienia Instrumentacji. Ma to na celu uniemożliwienie wysyłania zduplikowanych danych. Aby dowiedzieć się więcej na ten temat, zapoznaj się z [sekcją rozwiązywania problemów](#troubleshooting) poniżej.
 
 ## <a name="manage-agent-based-monitoring-for-net-applications-on-vm-using-powershell"></a>Zarządzanie monitorowaniem na podstawie agenta dla aplikacji .NET na maszynie wirtualnej przy użyciu programu PowerShell
 
@@ -161,6 +161,6 @@ Dane wyjściowe wykonania rozszerzenia są rejestrowane w plikach znalezionych w
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.ApplicationMonitoringWindows\<version>\
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się, jak [wdrożyć aplikację w zestawie skalowania maszyn wirtualnych platformy Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md).
 * [Skonfiguruj testy sieci Web dostępności](monitor-web-app-availability.md) , aby otrzymywać alerty, jeśli punkt końcowy nie działa.

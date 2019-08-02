@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83eee019ee8530297689b85e6f3300fed4392610
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489175"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678196"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Tworzenie nowego pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
 
@@ -32,7 +32,7 @@ ms.locfileid: "68489175"
 
 Pakiet dostępu umożliwia jednorazowe skonfigurowanie zasobów i zasad, które automatycznie zarządzają dostępem do czasu życia pakietu dostępu. W tym artykule opisano sposób tworzenia nowego pakietu dostępu.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Wszystkie pakiety dostępu muszą być umieszczone w kontenerze o nazwie wykaz. Katalog definiuje zasoby, które można dodać do pakietu dostępu. Jeśli nie określisz katalogu, pakiet dostępu zostanie umieszczony w katalogu ogólnym. Obecnie nie można przenieść istniejącego pakietu dostępu do innego katalogu.
 
@@ -44,7 +44,7 @@ Na poniższym diagramie przedstawiono proces wysokiego poziomu służący do two
 
 ## <a name="start-new-access-package"></a>Uruchom nowy pakiet dostępu
 
-**Rola wymagana wstępnie:** Administrator użytkownika lub właściciel katalogu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika lub właściciel katalogu
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -64,21 +64,20 @@ Na karcie **podstawowe** można nadać pakietowi dostępu nazwę i określić ka
 
 1. Z listy rozwijanej **wykaz** wybierz katalog, w którym chcesz utworzyć pakiet dostępu. Na przykład może istnieć właściciel katalogu, który zarządza wszystkimi zasobami marketingowymi, które mogą być żądane. W takim przypadku można wybrać Katalog Marketing.
 
-    Zostaną wyświetlone tylko wykazy, do których masz uprawnienia do tworzenia pakietów dostępu w programie. Aby utworzyć pakiet dostępu w istniejącym wykazie, musisz mieć co najmniej uprawnienia administratora, właściciela katalogu lub Menedżera pakietów dostępu.
+    Zostaną wyświetlone tylko wykazy, do których masz uprawnienia do tworzenia pakietów dostępu w programie. Aby utworzyć pakiet dostępu w istniejącym wykazie, musisz być administratorem globalnym, administratorem użytkowników, właścicielem katalogu w tym wykazie lub uzyskać dostęp do Menedżera pakietów w tym katalogu.
 
     ![Pakiet dostępu — podstawy](./media/entitlement-management-access-package-create/basics.png)
 
-    Jeśli chcesz utworzyć pakiet dostępu w nowym wykazie, kliknij przycisk **Utwórz nowy**. Wprowadź nazwę wykazu i opis, a następnie kliknij przycisk **Utwórz**.
+    Jeśli jesteś administratorem globalnym lub administratorem użytkownika i chcesz utworzyć pakiet dostępu w nowym wykazie, którego nie ma na liście, kliknij przycisk **Utwórz nowy**. Wprowadź nazwę wykazu i opis, a następnie kliknij przycisk **Utwórz**.
 
-    Tworzony pakiet dostępu i wszystkie zawarte w nim zasoby zostaną dodane do nowego katalogu. Ponadto automatycznie staje się pierwszym właścicielem katalogu. Możesz dodać dodatkowych właścicieli katalogu.
+    Tworzony pakiet dostępu i wszystkie zawarte w nim zasoby zostaną dodane do nowego katalogu. Możesz również później dodać dodatkowych właścicieli katalogu.
 
-    Aby utworzyć nowy katalog, musisz być co najmniej administratorem użytkownika lub członkiem katalogu.
 
 1. Kliknij przycisk **Dalej**.
 
 ## <a name="resource-roles"></a>Role zasobów
 
-Na karcie **role zasobów** Wybierz zasoby do uwzględnienia w pakiecie dostępu.
+Na karcie **role zasobów** Wybierz zasoby do uwzględnienia w pakiecie dostępu.  Użytkownicy, którzy żądają i otrzymują pakiet dostępu, otrzymają wszystkie role zasobów w pakiecie dostępu.
 
 1. Kliknij typ zasobu, który chcesz dodać (**grupy**, **aplikacje**lub **witryny programu SharePoint**).
 
@@ -86,11 +85,11 @@ Na karcie **role zasobów** Wybierz zasoby do uwzględnienia w pakiecie dostępu
 
     ![Dostęp do ról zasobów](./media/entitlement-management-access-package-create/resource-roles.png)
 
-    Jeśli tworzysz pakiet dostępu w wykazie ogólnym lub w nowym katalogu, będziesz mieć możliwość wybrania dowolnego zasobu z katalogu, którego jesteś członkiem. Musisz być co najmniej administratorem użytkownika lub autorem katalogu.
+    Jeśli tworzysz pakiet dostępu w wykazie ogólnym lub w nowym katalogu, będziesz mieć możliwość wybrania dowolnego zasobu z katalogu, którego jesteś członkiem. Musisz być co najmniej administratorem globalnym, administratorem użytkownika lub autorem katalogu.
 
     Jeśli tworzysz pakiet dostępu w istniejącym wykazie, możesz wybrać dowolny zasób, który znajduje się już w katalogu bez jego właściciela.
 
-    Jeśli jesteś administratorem lub właścicielem katalogu, masz dodatkową możliwość wyboru zasobów, których jesteś właścicielem, które nie znajdują się jeszcze w wykazie. W przypadku wybrania zasobów, które nie są obecnie w wybranym wykazie, te zasoby zostaną również dodane do wykazu dla innych administratorów wykazu do tworzenia pakietów dostępu za pomocą programu. Jeśli chcesz tylko wybrać zasoby, które znajdują się obecnie w wybranym wykazie, zaznacz pole wyboru **Zobacz tylko** w górnej części strony wybieranie.
+    Jeśli jesteś administratorem globalnym, administratorem lub właścicielem katalogu, masz dodatkową możliwość wyboru zasobów, których jesteś właścicielem, które nie znajdują się jeszcze w wykazie. W przypadku wybrania zasobów, które nie są obecnie w wybranym wykazie, te zasoby zostaną również dodane do wykazu dla innych administratorów wykazu do tworzenia pakietów dostępu za pomocą programu. Jeśli chcesz tylko wybrać zasoby, które znajdują się obecnie w wybranym wykazie, zaznacz pole wyboru **Zobacz tylko** w górnej części strony wybieranie.
 
 1. Po wybraniu zasobów na liście **rola** wybierz rolę, do której użytkownicy mają być przypisani.
 
@@ -124,7 +123,7 @@ Na karcie **Przegląd i tworzenie** możesz przejrzeć ustawienia i sprawdzić, 
 
     Nowy pakiet dostępu zostanie wyświetlony na liście pakietów dostępu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Edytowanie istniejącego pakietu dostępu i zarządzanie nim](entitlement-management-access-package-edit.md)
 - [Dodawanie właściciela katalogu lub Menedżera pakietów programu Access](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)

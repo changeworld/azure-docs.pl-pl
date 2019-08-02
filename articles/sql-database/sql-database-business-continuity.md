@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 361613c52c00b7a7e468eccbb52bf113b6adb434
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e57427fbb7e0d3c67fc4fcbab1a50f14ef8c9501
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444508"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569343"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -67,10 +66,10 @@ Jeśli maksymalny obsługiwany okres przechowywania kopii zapasowej dla operacji
 | Automatyczna praca awaryjna                           |     Nie          |      Tak         |
 | Równoczesne przełączanie wielu baz danych  |     Nie          |      Tak         |
 | Zaktualizuj parametry połączenia po przejściu w tryb failover      |     Tak         |      Nie          |
-| Obsługiwane wystąpienie zarządzane                   |     Nie          |      Tak         |
+| Obsługiwane wystąpienie zarządzane                   |     Nie          |      Yes         |
 | Może znajdować się w tym samym regionie co podstawowa             |     Yes         |      Nie          |
 | Wiele replik                            |     Tak         |      Nie          |
-| Obsługuje skalę odczytu                          |     Tak         |      Yes         |
+| Obsługuje skalę odczytu                          |     Tak         |      Tak         |
 | &nbsp; | &nbsp; | &nbsp; |
 
 
@@ -153,6 +152,6 @@ Po odzyskaniu za pomocą dowolnego mechanizmu odzyskiwania należy wykonać nast
 
 Czasami aplikacja musi być przełączona w tryb offline z powodu planowanej konserwacji, takiej jak uaktualnienie aplikacji. [Zarządzanie uaktualnieniami aplikacji](sql-database-manage-application-rolling-upgrade.md) zawiera opis sposobu korzystania z funkcji aktywnej replikacji geograficznej w celu zapewnienia stopniowego uaktualniania aplikacji w chmurze w celu zminimalizowania przestojów podczas uaktualniania i zapewnienia ścieżki odzyskiwania, jeśli coś się nie stało.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Omówienie zagadnień dotyczących projektowania aplikacji dla autonomicznych baz danych i pul elastycznych znajdują się w temacie Designing a Cloud and deawaryjne [strategie odzyskiwania](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)po awarii w [chmurze](sql-database-designing-cloud-solutions-for-disaster-recovery.md) .

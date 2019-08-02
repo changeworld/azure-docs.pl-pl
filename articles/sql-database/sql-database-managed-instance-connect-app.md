@@ -1,6 +1,6 @@
 ---
-title: Wystąpienie usługi Azure SQL Database Managed łączenie aplikacji | Dokumentacja firmy Microsoft
-description: W tym artykule omówiono sposób łączenia aplikacji z wystąpienia zarządzanego Azure SQL Database.
+title: Azure SQL Database aplikacji do łączenia wystąpienia zarządzanego | Microsoft Docs
+description: W tym artykule omówiono sposób łączenia aplikacji z Azure SQL Database wystąpieniem zarządzanym.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,105 +10,104 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 5f4a1962f90d54001f315827c1243e929344e3d7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5a09b8e589b0d4ae9daa3bbd32c38f4946d16d0e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274001"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567617"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację do wystąpienia zarządzanego Azure SQL Database
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
 
-Obecnie masz wiele opcji do wyboru podczas podejmowania decyzji o sposób i miejsce hostowania aplikacji.
+Dzisiaj możesz wybrać wiele opcji podczas decydowania, jak i gdzie hostować aplikację.
 
-Istnieje możliwość hostowania aplikacji w chmurze, przy użyciu usługi Azure App Service lub niektórych opcji sieć wirtualną (VNet), zintegrowane platformy Azure, takich jak zestaw skalowania maszyn wirtualnych w usłudze Azure App Service Environment, maszyny wirtualnej. Można również wykonać chmura hybrydowa i zachować swoje aplikacje w środowisku lokalnym.
+Możesz wybrać opcję hostowania aplikacji w chmurze przy użyciu Azure App Service lub niektórych opcji zintegrowanych sieci wirtualnej platformy Azure, takich jak Azure App Service Environment, maszyna wirtualna, zestaw skalowania maszyn wirtualnych. Możesz również zastosować podejście do chmury hybrydowej i utrzymywać swoje aplikacje lokalnie.
 
-Niezależnie od wyboru, które zostały wprowadzone, możesz połączyć ją do wystąpienia zarządzanego.  
+Niezależnie od dokonanego wyboru możesz połączyć go z wystąpieniem zarządzanym.  
 
 ![Wysoka dostępność](./media/sql-database-managed-instance/application-deployment-topologies.png)
 
 ## <a name="connect-an-application-inside-the-same-vnet"></a>Łączenie aplikacji w tej samej sieci wirtualnej
 
-Ten scenariusz jest najprostsza. Maszynami wirtualnymi w sieci wirtualnej można połączyć ze sobą bezpośrednio, nawet jeśli znajdują się w różnych podsieciach. Oznacza to, że wszystko, czego potrzebujesz do łączenia z aplikacji wewnątrz środowiska aplikacji platformy Azure lub maszyny wirtualnej jest odpowiednie ustawienie parametrów połączenia.  
+Ten scenariusz jest najprostszy. Maszyny wirtualne wewnątrz sieci wirtualnej mogą łączyć się ze sobą bezpośrednio nawet wtedy, gdy znajdują się w różnych podfolderach. Oznacza to, że wszystko, co jest potrzebne do połączenia aplikacji w środowisku aplikacji platformy Azure lub na maszynie wirtualnej, ma odpowiednio ustawiać parametry połączenia.  
 
-## <a name="connect-an-application-inside-a-different-vnet"></a>Łączenie aplikacji wewnątrz innej sieci wirtualnej
+## <a name="connect-an-application-inside-a-different-vnet"></a>Łączenie aplikacji w innej sieci wirtualnej
 
-Ten scenariusz jest nieco bardziej skomplikowane, ponieważ wystąpienie zarządzane jest prywatny adres IP we własnej sieci wirtualnej. Nawiązać połączenie, aplikacja musi mieć dostęp do sieci wirtualnej wdrożonym wystąpienia zarządzanego. Dlatego najpierw należy utworzyć połączenie między aplikacją i sieci wirtualnej wystąpienia zarządzanego. Sieci wirtualne nie muszą znajdować się w tej samej subskrypcji, aby zrealizować ten scenariusz.
+Ten scenariusz jest nieco bardziej skomplikowany, ponieważ wystąpienie zarządzane ma prywatny adres IP w własnej sieci wirtualnej. Aby nawiązać połączenie, aplikacja musi mieć dostęp do sieci wirtualnej, w której wdrożono wystąpienie zarządzane. Dlatego najpierw należy nawiązać połączenie między aplikacją i siecią wirtualną wystąpienia zarządzanego. Aby ten scenariusz działał, sieci wirtualnych nie musi znajdować się w tej samej subskrypcji.
 
 Dostępne są dwie opcje łączenia sieci wirtualnych:
 
-- [Komunikacja równorzędna sieci wirtualnych platformy Azure](../virtual-network/virtual-network-peering-overview.md)
-- Brama sieci VPN typu sieć wirtualna-sieć wirtualna ([witryny Azure portal](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [wiersza polecenia platformy Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
+- [Komunikacja równorzędna usługi Azure Virtual Network](../virtual-network/virtual-network-peering-overview.md)
+- Brama sieci VPN typu sieć wirtualna-sieć wirtualna ([Azure Portal](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [interfejs wiersza polecenia platformy Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
-Ta opcja komunikacji równorzędnej jest preferowane jeden, ponieważ komunikację równorzędną używa sieci szkieletowej firmy Microsoft w związku z punktu widzenia łączności, nie ma żadnej różnicy zauważalnego opóźnienia między maszynami wirtualnymi w wirtualnej sieci równorzędnej i w tej samej sieci wirtualnej. Komunikacja równorzędna sieci wirtualnych jest ograniczona do sieci, w tym samym regionie.  
+Opcja komunikacji równorzędnej jest preferowana, ponieważ Komunikacja równorzędna używa sieci szkieletowej firmy Microsoft, w związku z czym nie istnieje zauważalna różnica w opóźnieniu między maszynami wirtualnymi w komunikacji równorzędnej i w tej samej sieci wirtualnej. Wirtualne sieci równorzędne są ograniczone do sieci w tym samym regionie.  
 
 > [!IMPORTANT]
-> Scenariusz komunikacji równorzędnej sieci wirtualnej dla wystąpienia zarządzanego jest ograniczona do sieci, w tym samym regionie, ze względu na [ograniczenia globalne wirtualne sieci równorzędne](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Zobacz też odpowiedniej sekcji [Azure wirtualnych sieci — często zadawane pytania](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) artykuł, aby uzyskać więcej informacji. 
+> Scenariusz wirtualnej komunikacji równorzędnej dla wystąpienia zarządzanego jest ograniczony do sieci w tym samym regionie ze względu na [ograniczenia globalnej Virtual Network komunikacji równorzędnej](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Więcej informacji można znaleźć w sekcji dotyczącej [często zadawanych pytań dotyczących usługi Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
 
-## <a name="connect-an-on-premises-application"></a>Łączenie aplikacji w środowisku lokalnym
+## <a name="connect-an-on-premises-application"></a>Łączenie aplikacji lokalnej
 
-Wystąpienie zarządzane jest możliwy tylko za pośrednictwem prywatnego adresu IP. Aby uzyskać do niego dostęp ze środowiska lokalnego, musisz utworzyć połączenie lokacja-lokacja między aplikacją i sieci wirtualnej wystąpienia zarządzanego.
+Dostęp do wystąpienia zarządzanego można uzyskać tylko za pomocą prywatnego adresu IP. Aby można było uzyskać do niego dostęp z lokalnego, należy nawiązać połączenie lokacja-lokacja między aplikacją i siecią wirtualną wystąpienia zarządzanego.
 
-Jak połączyć lokalnych z siecią wirtualną platformy Azure dostępne są dwie opcje:
+Istnieją dwie opcje łączenia się z siecią lokalną do sieci wirtualnej platformy Azure:
 
-- Połączenie sieci VPN typu lokacja-lokacja ([witryny Azure portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [wiersza polecenia platformy Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
-- [Usługa ExpressRoute](../expressroute/expressroute-introduction.md) połączenia  
+- Połączenie sieci VPN typu lokacja-lokacja ([Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [interfejs wiersza polecenia platformy Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
+- Połączenie [ExpressRoute](../expressroute/expressroute-introduction.md)  
 
-Jeśli nie można ustanowić połączenia do wystąpienia zarządzanego środowiska lokalnego do platformy Azure połączenie zostało ustanowione pomyślnie, sprawdź, czy zapory ma otwarte połączeń wychodzących w SQL porcie 1433, a także 11000 11999 zakres portów dla przekierowania.
+Jeśli lokalne połączenie z platformą Azure zostało pomyślnie ustanowione i nie można nawiązać połączenia z wystąpieniem zarządzanym, sprawdź, czy Zapora ma otwarte połączenie wychodzące na porcie SQL 1433 oraz 11000-11999 zakres portów do przekierowania.
 
-## <a name="connect-an-application-on-the-developers-box"></a>Łączenie aplikacji w usłudze box deweloperów
+## <a name="connect-an-application-on-the-developers-box"></a>Łączenie aplikacji w polu deweloperzy
 
-Wystąpienie zarządzane jest możliwy tylko za pośrednictwem prywatnego adresu IP tak aby można było uzyskać do niego dostęp z Twojego pola dla deweloperów, najpierw musisz utworzyć połączenie między usługami box usługi dla deweloperów i sieci wirtualnej wystąpienia zarządzanego. Aby to zrobić, należy skonfigurować połączenie punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu platformy Azure natywnych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia punkt lokacja, nawiązywanie połączenia z bazą danych wystąpienia zarządzanego Azure SQL z na komputerze lokalnym](sql-database-managed-instance-configure-p2s.md).
+Do wystąpienia zarządzanego można uzyskać dostęp tylko za pośrednictwem prywatnego adresu IP, dlatego w celu uzyskania dostępu do niego z poziomu dewelopera należy najpierw nawiązać połączenie między polem dewelopera i siecią wirtualną wystąpienia zarządzanego. W tym celu należy skonfigurować połączenie typu punkt-lokacja z siecią wirtualną przy użyciu natywnego uwierzytelniania certyfikatu platformy Azure. Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia punkt-lokacja w celu nawiązania połączenia z wystąpieniem zarządzanym Azure SQL Database z komputera lokalnego](sql-database-managed-instance-configure-p2s.md).
 
-## <a name="connect-from-on-premises-with-vnet-peering"></a>Łączenie ze środowiska lokalnego za pomocą komunikacji równorzędnej sieci wirtualnej
+## <a name="connect-from-on-premises-with-vnet-peering"></a>Nawiązywanie połączenia z siecią lokalną za pomocą komunikacji równorzędnej sieci wirtualnych
 
-Inny scenariusz implementowany przez klientów jest zainstalowaną bramę sieci VPN w oddzielnej sieci wirtualnej i subskrypcję z jednego wystąpienia zarządzanego hostingu. Następnie równorzędnym połączeniu dwóch sieci wirtualnych. Następujący przykładowy diagram architektury pokazuje, jak można to zaimplementować.
+Innym scenariuszem wdrożonym przez klientów jest to, że Brama sieci VPN jest zainstalowana w oddzielnej sieci wirtualnej i w ramach subskrypcji z jednego wystąpienia zarządzanego hostingu. Dwie sieci wirtualne są następnie połączone za pomocą komunikacji równorzędnej. Poniższy przykładowy diagram architektury przedstawia, w jaki sposób można go zaimplementować.
 
 ![Komunikacja równorzędna sieci wirtualnych](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
-Po utworzeniu podstawowej infrastruktury, musisz zmodyfikować niektóre ustawienia, aby brama sieci VPN można zobaczyć adresy IP w sieci wirtualnej, który hostuje wystąpienie zarządzane. Aby to zrobić, należy wprowadzić następujące zmiany bardzo szczegółowych w obszarze **ustawienia komunikacji równorzędnej**.
+Po skonfigurowaniu podstawowej infrastruktury należy zmodyfikować niektóre ustawienia, aby VPN Gateway mogli zobaczyć adresy IP w sieci wirtualnej, która hostuje wystąpienie zarządzane. W tym celu wprowadź następujące bardzo szczegółowe zmiany w obszarze **ustawienia komunikacji równorzędnej**.
 
-1. W sieci wirtualnej, który jest hostem bramy sieci VPN, przejdź do **komunikacje równorzędne**, następnie do wystąpienia zarządzanego równorzędne połączenie sieci wirtualnej, a następnie kliknij przycisk **Zezwalaj na tranzyt przez bramę**.
-2. W sieci wirtualnej, który hostuje wystąpienie zarządzane, przejdź do **komunikacje równorzędne**, następnie do bramy sieci VPN równorzędne połączenie sieci wirtualnej, a następnie kliknij przycisk **Użyj bram zdalnych**.
+1. W sieci wirtualnej, która hostuje bramę VPN Gateway, przejdź do **komunikacji równorzędnej**, następnie do połączenia sieci równorzędnej z wystąpieniami zarządzanymi, a następnie kliknij przycisk **Zezwalaj na tranzyt bramy**.
+2. W sieci wirtualnej, która obsługuje wystąpienie zarządzane, przejdź do **komunikacji równorzędnej**, następnie do VPN Gateway połączenia sieci wirtualnej równorzędnej, a następnie kliknij opcję **Użyj bram zdalnych**.
 
-## <a name="connect-an-azure-app-service-hosted-application"></a>Łączenie aplikacji hostowanej usługi Azure App Service
+## <a name="connect-an-azure-app-service-hosted-application"></a>Połącz aplikację hostowaną Azure App Service
 
-Wystąpienia zarządzanego jest możliwy wyłącznie za pośrednictwem prywatnego adresu IP, więc w celu uzyskania dostępu do usługi Azure App Service musisz najpierw utworzyć połączenie między aplikacją i sieci wirtualnej wystąpienia zarządzanego. Zobacz [Integrowanie aplikacji z siecią wirtualną platformy Azure](../app-service/web-sites-integrate-with-vnet.md).  
+Do wystąpienia zarządzanego można uzyskać dostęp tylko za pośrednictwem prywatnego adresu IP, dlatego w celu uzyskania dostępu do niego z Azure App Service należy najpierw nawiązać połączenie między aplikacją a siecią wirtualną wystąpienia zarządzanego. Zobacz [Integrowanie aplikacji z usługą Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md).  
 
-Do rozwiązywania problemów, zobacz [aplikacji i rozwiązywanie problemów z sieciami wirtualnymi](../app-service/web-sites-integrate-with-vnet.md#troubleshooting). Jeśli nie można ustanowić połączenia, spróbuj [synchronizowanie konfiguracji sieci](sql-database-managed-instance-sync-network-configuration.md).
+Aby uzyskać informacje o rozwiązywaniu problemów, zobacz [Rozwiązywanie problemów z sieci wirtualnych i aplikacjami](../app-service/web-sites-integrate-with-vnet.md#troubleshooting) Jeśli nie można nawiązać połączenia, spróbuj [zsynchronizować konfigurację sieci](sql-database-managed-instance-sync-network-configuration.md).
 
-Przypadek specjalny nawiązywania połączenia z usługi Azure App Service do wystąpienia zarządzanego jest po użytkownik zintegrowane usługi Azure App Service, aby sieć połączona z zarządzanych sieci wirtualnej wystąpienia. Ten przypadek wymaga następującej konfiguracji do skonfigurowania:
+Szczególnym przypadkiem łączenia Azure App Service z wystąpieniem zarządzanym jest zintegrowanie Azure App Service z siecią równorzędną do sieci wirtualnej wystąpienia zarządzanego. W takim przypadku wymagane jest skonfigurowanie następującej konfiguracji:
 
-- Zarządzane wystąpienia sieci wirtualnej nie może mieć bramy  
-- Zarządzane wystąpienia sieci wirtualnej musi mieć ustawioną opcję bram zdalnych Użyj
-- Skomunikowanej równorzędnie sieci wirtualnej musi mieć opcję tranzyt bramy Zezwalaj ustawioną
+- Sieć wirtualna wystąpienia zarządzanego nie może mieć bramy  
+- Sieć wirtualna wystąpienia zarządzanego musi mieć ustawioną opcję Użyj bram zdalnych
+- Komunikacja równorzędna sieci wirtualnej musi mieć ustawioną opcję Zezwalaj na tranzyt bramy
 
-W tym scenariuszu przedstawiono na poniższym diagramie:
+Ten scenariusz przedstawiono na poniższym diagramie:
 
-![Komunikacja równorzędna w zintegrowanej aplikacji](./media/sql-database-managed-instance/integrated-app-peering.png)
+![Zintegrowana Komunikacja równorzędna aplikacji](./media/sql-database-managed-instance/integrated-app-peering.png)
 
 >[!NOTE]
->Funkcja integracji sieci wirtualnej nie jest zintegrowana z aplikacji z siecią wirtualną, która ma bramę usługi ExpressRoute. Nawet jeśli brama usługi ExpressRoute jest konfigurowane w trybie współistnienie Integracja sieci wirtualnej nie działa. Jeśli potrzebujesz dostępu do zasobów za pośrednictwem połączenia usługi ExpressRoute, można użyć w środowisku usługi App Service, która działa w sieci wirtualnej.
+>Funkcja integracji sieci wirtualnej nie integruje aplikacji z siecią wirtualną, która ma bramę ExpressRoute. Nawet jeśli Brama ExpressRoute jest skonfigurowana w trybie współistnienia, integracja sieci wirtualnej nie działa. Jeśli musisz uzyskać dostęp do zasobów za pomocą połączenia usługi ExpressRoute, możesz użyć App Service Environment, które działa w sieci wirtualnej.
 
 ## <a name="troubleshooting-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
 
-Aby informacje o rozwiązywaniu problemów z połączeniem, sprawdź następujące kwestie:
+Aby rozwiązać problemy z łącznością, zapoznaj się z następującymi tematami:
 
-- Jeśli nie można nawiązać połączenia z wystąpieniem zarządzanym z maszyny wirtualnej platformy Azure w ramach tej samej sieci wirtualnej, ale inną podsieć, sprawdź, czy ustawić w podsieci maszyny Wirtualnej, który może blokować dostęp do grupy zabezpieczeń sieci. Ponadto należy pamiętać, że trzeba otworzyć połączeń wychodzących na SQL porcie 1433, a także porty z zakresu od 11000 11999, ponieważ te są potrzebne do nawiązywania połączenia za pośrednictwem przekierowanie wewnątrz granic platformy Azure.
-- Upewnij się, że propagacja protokołu BGP jest ustawiona na **włączone** dla tabeli tras skojarzonej z siecią wirtualną.
-- Jeśli przy użyciu sieci VPN typu P2S, sprawdź konfigurację w witrynie Azure portal, aby zobaczyć, jeśli zostanie wyświetlony **ruchem przychodzącym/wychodzącym** liczb. Niezerowa Koniunkcja numery wskazują Azure routing ruchu ze środowiska lokalnego.
+- Jeśli nie można nawiązać połączenia z wystąpieniem zarządzanym z maszyny wirtualnej platformy Azure w tej samej sieci wirtualnej, ale innej podsieci, sprawdź, czy w podsieci maszyny wirtualnej jest ustawiona sieciowa Grupa zabezpieczeń, która może blokować dostęp. Należy również pamiętać, że należy otworzyć połączenie wychodzące na porcie SQL 1433, a także porty z zakresu 11000-11999, ponieważ są one potrzebne do łączenia się w ramach granicy platformy Azure.
+- Upewnij się, że propagacja BGP jest **włączona** dla tabeli tras skojarzonej z siecią wirtualną.
+- W przypadku korzystania z sieci VPN P2S Sprawdź konfigurację w Azure Portal, aby zobaczyć, czy są wyświetlane numery ruchu przychodzącego **/** wychodzącego. Liczby niezerowe wskazują, że platforma Azure będzie kierować ruchem do/z lokalnego.
 
-   ![numery ruchem przychodzącym/wychodzącym](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
+   ![numery ruchu przychodzącego/wychodzącego](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
-- Sprawdź, czy komputer kliencki, (który jest uruchomiony klient sieci VPN) ma wejść dla trasy dla wszystkich sieci wirtualnych, które muszą uzyskać dostęp do. Trasy są przechowywane w `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`.
+- Sprawdź, czy maszyna kliencka (z uruchomionym klientem sieci VPN) ma wpisy trasy dla wszystkich sieci wirtualnych, do których należy uzyskać dostęp. Trasy są przechowywane w `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`.
 
-   ![route.txt](./media/sql-database-managed-instance-connect-app/route-txt.png)
+   ![Route. txt](./media/sql-database-managed-instance-connect-app/route-txt.png)
 
-   Jak pokazano na tej ilustracji, istnieją dwa wpisy dla każdej sieci wirtualnej związane i trzeci wpis dla punktu końcowego sieci VPN, który jest skonfigurowany w portalu.
+   Jak pokazano na tym obrazie, istnieją dwa wpisy dla każdej sieci wirtualnej i trzeci wpis dla punktu końcowego sieci VPN, który jest skonfigurowany w portalu.
 
-   Innym sposobem na sprawdzenie trasy jest za pomocą następującego polecenia. Dane wyjściowe pokazują trasy do różnych podsieci:
+   Innym sposobem sprawdzenia tras jest za pomocą następującego polecenia. Dane wyjściowe pokazują trasy do różnych podsieci:
 
    ```cmd
    C:\ >route print -4
@@ -132,24 +131,24 @@ Aby informacje o rozwiązywaniu problemów z połączeniem, sprawdź następują
    None
    ```
 
-- Jeśli za pomocą komunikacji równorzędnej sieci wirtualnej, upewnij się, czy wykonano instrukcje dotyczące ustawienie [Zezwalaj na tranzyt przez bramę i użyj bram zdalnych](#connect-from-on-premises-with-vnet-peering).
+- W przypadku używania komunikacji równorzędnej sieci wirtualnych upewnij się, że wykonano instrukcje dotyczące ustawienia [Zezwalaj na tranzyt bramy i używanie bram zdalnych](#connect-from-on-premises-with-vnet-peering).
 
 ## <a name="required-versions-of-drivers-and-tools"></a>Wymagane wersje sterowników i narzędzi
 
-Jeśli chcesz nawiązać połączenie z wystąpieniem zarządzanym, zaleca się następujące minimalne wersje narzędzia i sterowniki:
+Następujące minimalne wersje narzędzi i sterowników są zalecane, jeśli chcesz połączyć się z wystąpieniem zarządzanym:
 
-| Narzędzie/sterownika | Version |
+| Sterownik/narzędzie | Version |
 | --- | --- |
-|.NET Framework | 4.6.1 (lub platformy .NET Core) |
+|.NET Framework | 4.6.1 (lub .NET Core) |
 |Sterownik ODBC| v17 |
-|Sterownik języka PHP| 5.2.0 |
+|Sterownik PHP| 5.2.0 |
 |Sterownik JDBC| 6.4.0 |
-|Sterownik node.js| 2.1.1 |
+|Sterownik środowiska Node. js| 2.1.1 |
 |Sterownik OLEDB| 18.0.2.0 |
-|SSMS| wersjach 18.0 lub [wyższy](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) lub nowszej |
+|SSMS| 18,0 lub [więcej](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) lub więcej |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać informacje na temat wystąpienia zarządzanego, zobacz [What is a Managed Instance (Co to jest wystąpienie zarządzane)](sql-database-managed-instance.md).
-- Aby uzyskać samouczek omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [utworzysz wystąpienie zarządzane](sql-database-managed-instance-get-started.md).
+- Samouczek pokazujący, jak utworzyć nowe wystąpienie zarządzane, można znaleźć w temacie [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).

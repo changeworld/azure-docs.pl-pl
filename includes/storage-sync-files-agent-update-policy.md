@@ -4,42 +4,59 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: 9b8812b1fca6a72a69f06a6c0278da8ee4d4c852
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 5be5cf6cd410874d870b351c209517e90fcf3848
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841394"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699342"
 ---
-Agent usługi Azure File Sync jest aktualizowana w regularnych odstępach czasu, aby dodać nowe funkcje i rozwiązania problemów. Firma Microsoft zaleca się skonfigurowanie Microsoft Update, aby pobrać aktualizacje dla agenta usługi Azure File Sync, ponieważ są one dostępne.
+Agent Azure File Sync jest regularnie aktualizowany, aby można było dodać nowe funkcje i rozwiązać problemy. Zalecamy skonfigurowanie Microsoft Update do pobierania aktualizacji dla agenta Azure File Sync, gdy są one dostępne.
 
-#### <a name="major-vs-minor-agent-versions"></a>Główne a wersji pomocniczej agentów
-* Wersje główne agentów często zawierają nowe funkcje i mieć coraz jako pierwsza część numeru wersji. Na przykład: \*2.\*.\*\*
-* Wersje agentów pomocnicze są również nazywane "poprawki" i są wydawane częściej niż wersje główne. Zawierają one często poprawki błędów i ulepszenia mniejszy, ale żadne nowe funkcje. Na przykład: \* \*.3.\*\*
+#### <a name="major-vs-minor-agent-versions"></a>Wersje agenta głównego a pomocniczego
+* Wersje głównych agentów często zawierają nowe funkcje i mają rosnącą liczbę jako pierwszą część numeru wersji. Na przykład: \*2.\*.\*\*
+* Wersje agentów pomocniczych są również nazywane "poprawkami" i są wydawane częściej niż wersje główne. Często zawierają poprawki błędów i mniejsze ulepszenia, ale nie nowe funkcje. Na przykład: \* \*. 3.\*\*
 
-#### <a name="upgrade-paths"></a>Ścieżki uaktualnienia
-Istnieją cztery zatwierdzone i przetestowane sposobów instalowania aktualizacji agenta usługi Azure File Sync. 
-1. **(Preferowane) Skonfiguruj Microsoft Update w celu automatycznego pobierania i instalowania aktualizacji agenta.**  
-    Zawsze zalecamy poświęcenie każdej aktualizacji usługi Azure File Sync, aby upewnić się, że masz dostęp do najnowszych poprawek dla agenta programu server. Microsoft Update sprawia, że ten proces jest bezproblemowe, przez automatyczne pobieranie i instalowanie aktualizacji dla Ciebie.
-2. **Użyj AfsUpdater.exe do pobrania i zainstalowania aktualizacji agenta.**  
-    AfsUpdater.exe znajduje się w katalogu instalacji agenta. Kliknij dwukrotnie plik wykonywalny, aby pobrać i zainstalować aktualizacje agenta. 
-3. **Stosowanie poprawek do istniejącego agenta usługi Azure File Sync za pomocą plik poprawki usługi Microsoft Update lub MSP pliku wykonywalnego. Można pobrać najnowszy pakiet aktualizacji usługi Azure File Sync z [katalogu usługi Microsoft Update](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync).**  
-    Uruchamianie pliku wykonywalnego MSP uaktualni instalacji usługi Azure File Sync za pomocą tej samej metody, które są używane automatycznie przez usługę Microsoft Update w poprzednim ścieżki uaktualnienia. Stosowanie poprawki usługi Microsoft Update przeprowadzi uaktualnienie w miejscu instalacji usługi Azure File Sync.
-4. **Pobierz najnowsze Instalatora agenta usługi Azure File Sync z [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257).**  
-    Aby uaktualnić istniejącą instalację agenta usługi Azure File Sync, odinstaluj starszą wersję, a następnie zainstaluj najnowszą wersję z pobranego Instalatora. Rejestracja serwera, grupy synchronizacji i inne ustawienia są obsługiwane przez Instalatora usługi Azure File Sync.
+#### <a name="upgrade-paths"></a>Ścieżki uaktualniania
+Istnieją cztery zatwierdzone i przetestowane sposoby instalowania aktualizacji agenta Azure File Sync. 
+1. **Wybiera Skonfiguruj Microsoft Update, aby automatycznie pobierać i instalować aktualizacje agentów.**  
+    Zawsze zalecamy pobranie każdej Azure File Sync aktualizacji, aby upewnić się, że masz dostęp do najnowszych poprawek dla agenta serwera. Microsoft Update ten proces bezproblemowo, pobierając i instalując aktualizacje.
+2. **Pobierz i zainstaluj aktualizacje agentów przy użyciu programu AfsUpdater. exe.**  
+    AfsUpdater. exe znajduje się w katalogu instalacyjnym agenta. Kliknij dwukrotnie plik wykonywalny, aby pobrać i zainstalować aktualizacje agenta. 
+3. **Poprawka istniejącego agenta Azure File Sync przy użyciu pliku poprawki Microsoft Update lub plik wykonywalny msp. Najnowszy pakiet aktualizacji Azure File Sync można pobrać z [katalogu Microsoft Update](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync).**  
+    Uruchomienie pliku wykonywalnego. msp spowoduje uaktualnienie instalacji Azure File Sync przy użyciu tej samej metody, która została użyta automatycznie przez Microsoft Update w poprzedniej ścieżce uaktualnienia. Zastosowanie poprawki Microsoft Update spowoduje przeprowadzenie uaktualnienia w miejscu Azure File Sync instalacji.
+4. **Pobierz najnowszą wersję Instalatora agenta Azure File Sync z [Centrum pobierania Microsoft](https://go.microsoft.com/fwlink/?linkid=858257).**  
+    Aby uaktualnić istniejącą instalację agenta Azure File Sync, Odinstaluj starszą wersję, a następnie zainstaluj najnowszą wersję z pobranego instalatora. Rejestracja serwera, grupy synchronizacji i inne ustawienia są obsługiwane przez Instalatora Azure File Sync.
 
-#### <a name="automatic-agent-lifecycle-management"></a>Zarządzanie cyklem życia agentami automatycznymi
-Za pomocą agenta w wersji 6 zespół synchronizacji plików wprowadziła funkcję automatycznej aktualizacji agenta. Można wybrać jedną z dwóch trybów i określ okno obsługi, w którym podjąć próbę uaktualnienia na serwerze. Ta funkcja jest przeznaczony do udzielenia odpowiedzi na zarządzanie cyklem życia agenta, podając barierkami, zapobiegając agenta z wygaśnięcia lub umożliwiającą bezproblemowe, pozostają bieżące ustawienie.
-1. **Domyślne ustawienie** będzie podejmować próby zapobiegania agenta z poziomu ważności. W ciągu 21 dni od daty wygaśnięcia przesłanych agenta agent podejmie próbę własnym uaktualnienia. Rozpocznie się próba uaktualnienia raz w tygodniu w ciągu 21 dni przed wygaśnięciem i okna obsługi wybrane. **Ta opcja nie eliminuje potrzebę wykonywania regularnych poprawki usługi Microsoft Update.**
-2. Opcjonalnie można wybrać, czy agent zostanie automatycznie uaktualniona się zaraz po udostępnieniu nowej wersji agenta (obecnie nieobsługiwane na klastrowanych serwerach). Ta aktualizacja będzie występować podczas okna obsługi wybranego i umożliwiają serwer do korzystania z nowych funkcji i ulepszeń, gdy tylko staną się ogólnie dostępne. Jest to ustawienie zalecane, obaw, zapewniające wersje główne agentów, a także poprawki regularnych aktualizacji na serwerze. Każdego agenta, ogólnie jest w wersji Ogólnodostępnej jakości. Nawet jeśli zostanie wybrana automatycznie aktualizowane, gdy nowa wersja jest dostępna opcja, może nie być oferowana aktualizację natychmiast po wydaniu. Nowych agentów są początkowo dostępne dla niewielkiej liczby serwerów, a następnie oferty firma Microsoft rozwiń stopniowo. Po zakończeniu pilotaż agenta również staną się dostępne w witrynie Microsoft Update i [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257).
+#### <a name="automatic-agent-lifecycle-management"></a>Automatyczne zarządzanie cyklem życia agenta
+W przypadku agenta w wersji 6 zespół synchronizacji plików wprowadził funkcję autouaktualnienia agenta. Można wybrać jeden z dwóch trybów i określić okno obsługi, w którym ma zostać podjęta próba uaktualnienia na serwerze programu. Ta funkcja została zaprojektowana tak, aby pomóc w zarządzaniu cyklem życia agenta przez udostępnienie Guardrail zapobiegające wygaśnięciu lub umożliwieniu bieżącego ustawienia.
+1. **Ustawienie domyślne** podejmie próbę zapobiegania wygaśnięciu agenta. W ciągu 21 dni od opublikowania daty wygaśnięcia agenta Agent podejmie próbę samouaktualnienia. Rozpocznie się próba uaktualnienia raz w tygodniu w ciągu 21 dni przed wygaśnięciem i w wybranym oknie obsługi. **Ta opcja nie eliminuje potrzeby podejmowania zwykłych Microsoft Update poprawek.**
+1. Opcjonalnie możesz wybrać, że agent będzie automatycznie uaktualniany, gdy tylko zostanie udostępniona nowa wersja agenta (obecnie nie dotyczy to serwerów klastrowanych). Ta aktualizacja będzie miała miejsce w wybranym oknie obsługi i pozwala serwerowi korzystać z nowych funkcji i ulepszeń, gdy tylko staną się ogólnie dostępne. Jest to zalecane, nieodpłatne ustawienie, które zapewni główne wersje agenta, a także regularne aktualizacje poprawek do serwera. Każdy wydawany Agent jest w dobrej jakości. Jeśli wybierzesz tę opcję, firma Microsoft będzie przeprowadził inspekcję najnowszej wersji agenta. Serwery klastrowane są wykluczone. Po zakończeniu lotu Agent również stanie się dostępny w [Centrum pobierania Microsoft](https://go.microsoft.com/fwlink/?linkid=858257) aka.MS/AFS/Agent.
 
-#### <a name="agent-lifecycle-and-change-management-guarantees"></a>Gwarantuje agenta cyklu życia i zarządzanie zmianami
-Usługa Azure File Sync to usługa w chmurze, które ciągle wprowadza nowe funkcje i ulepszenia. Oznacza to, że określonej wersji agenta usługi Azure File Sync jest możliwa tylko przez ograniczony czas. Aby ułatwić wdrożenie, następujące reguły gwarantuje, że masz wystarczająco dużo czasu i powiadomienie, aby pomieścić agent aktualizacji bądź uaktualnień w procesie zarządzania zmiany:
+ ##### <a name="changing-the-auto-upgrade-setting"></a>Zmiana ustawienia autouaktualniania
 
-- Dla co najmniej sześciu miesięcy od daty początkowej wersji obsługiwane są wersje główne agenta.
-- Firma Microsoft gwarantuje, że nakładanie się co najmniej trzech miesięcy od obsługi wersji agentów głównych. 
-- Są wyświetlane ostrzeżenia dla zarejestrowanych serwerów przy użyciu agenta wygasłe wkrótce zostaną co najmniej trzy miesiące przed wygaśnięciem. Możesz sprawdzić, czy zarejestrowanego serwera używa starszej wersji agenta w sekcji zarejestrowane serwery usługi synchronizacji magazynu.
-- Okres istnienia wersji pomocniczej agenta jest powiązany z skojarzone wersji głównej. Na przykład po wydaniu wersji agenta 3.0, agenta w wersji 2. \* będzie można ustawić wygaśnięcie ze sobą.
+W poniższych instrukcjach opisano, jak zmienić ustawienia po zakończeniu instalacji, jeśli trzeba wprowadzić zmiany.
+
+Otwórz powłokę i przejdź do katalogu, w którym zainstalowano agenta synchronizacji, a następnie zaimportuj polecenia cmdlet serwera, domyślnie będzie to wyglądać następująco:
+```powershell
+cd C:\Program Files\Azure\StorageSyncAgent
+
+ipmo .\StorageSync.Management.ServerCmdlets.dll
+```
+
+Można uruchomić `Get-StorageSyncAgentAutoUpdatePolicy` , aby sprawdzić bieżące ustawienie zasad i określić, czy chcesz je zmienić.
+
+Aby zmienić bieżące ustawienie zasad na ścieżkę opóźnionej aktualizacji, można użyć:`Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration`
+
+Aby zmienić bieżące ustawienie zasad na ścieżkę natychmiastowej aktualizacji, można użyć:`Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest`
+
+#### <a name="agent-lifecycle-and-change-management-guarantees"></a>Gwarancje dotyczące cyklu życia agenta i zarządzania zmianami
+Azure File Sync to usługa w chmurze, która ciągle wprowadza nowe funkcje i ulepszenia. Oznacza to, że określona wersja agenta Azure File Sync może być obsługiwana tylko przez ograniczony czas. Aby ułatwić wdrożenie, następujące reguły gwarantują, że masz wystarczającą ilość czasu i powiadomienia, aby uwzględnić aktualizacje/uaktualnienia agenta w procesie zarządzania zmianami:
+
+- Wersje głównych agentów są obsługiwane przez co najmniej sześć miesięcy od dnia wydania wersji początkowej.
+- Firma Microsoft gwarantuje, że istnieje nakładanie się co najmniej przez trzy miesiące między wsparciem dla głównych wersji agentów. 
+- Ostrzeżenia są wydawane dla zarejestrowanych serwerów za pomocą wkrótce wygasłego agenta co najmniej trzy miesiące przed wygaśnięciem. Możesz sprawdzić, czy serwer zarejestrowany korzysta ze starszej wersji agenta w sekcji zarejestrowane serwery usługi synchronizacji magazynu.
+- Okres istnienia pomocniczej wersji agenta jest powiązany z skojarzoną wersją główną. Na przykład po udostępnieniu agenta w wersji 3,0 Agent wersji 2. \* wszystkie zostaną skonfigurowane do wygasania razem.
 
 > [!Note]
-> Zainstalowanie wersji agenta z ostrzeżeniem wygaśnięcia wyświetlić ostrzeżenie, ale powiodło się. Próby zainstalowania lub połączyć się z wersją agenta wygasłe nie jest obsługiwane i zostanie zablokowane.
+> Zainstalowanie wersji agenta z ostrzeżeniem o wygaśnięciu spowoduje wyświetlenie ostrzeżenia, ale powiedzie się. Próba zainstalowania lub połączenia z wygasłą wersją agenta nie jest obsługiwana i zostanie zablokowana.

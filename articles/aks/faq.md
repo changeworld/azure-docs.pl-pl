@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
 ms.openlocfilehash: 7aff0fe47d1586b63157d5df7882fc338637f714
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68381961"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
@@ -25,7 +25,7 @@ Aby uzyskać pełną listę dostępnych regionów, zobacz [AKS regiony i dostęp
 
 ## <a name="does-aks-support-node-autoscaling"></a>Czy AKS obsługuje automatyczne skalowanie węzła?
 
-Tak, możliwość automatycznego skalowania węzłów agentów w poziomie w AKS jest obecnie dostępna w wersji zapoznawczej. Zobacz [Automatyczne skalowanie klastra w celu spełnienia wymagań aplikacji w AKS][aks-cluster-autoscaler] for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler].
+Tak, możliwość automatycznego skalowania węzłów agentów w poziomie w AKS jest obecnie dostępna w wersji zapoznawczej. Aby uzyskać instrukcje [, zobacz Automatyczne skalowanie klastra w celu spełnienia wymagań aplikacji w AKS][aks-cluster-autoscaler] . Skalowanie automatyczne AKS opiera się na [automatycznym skalowaniu Kubernetes][auto-scaler].
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Czy mogę wdrożyć AKS w istniejącej sieci wirtualnej?
 
@@ -48,7 +48,7 @@ Tak, możesz użyć różnych rozmiarów maszyn wirtualnych w klastrze AKS, twor
 Platforma Azure automatycznie stosuje poprawki zabezpieczeń do węzłów systemu Linux w klastrze w porze nocnego harmonogramu. Jednak użytkownik jest odpowiedzialny za upewnienie się, że te węzły systemu Linux są ponownie uruchamiane zgodnie z potrzebami. Istnieje kilka opcji ponownego uruchamiania węzłów:
 
 - Ręcznie za pomocą Azure Portal lub interfejsu wiersza polecenia platformy Azure.
-- Uaktualniając klaster AKS. Klaster uaktualnia automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade] [węzły Cordon i Drain][cordon-drain] .
+- Uaktualniając klaster AKS. Klaster uaktualnia [węzły Cordon i opróżniania][cordon-drain] automatycznie, a następnie przeniesie nowy węzeł w tryb online przy użyciu najnowszego obrazu Ubuntu i nowej wersji poprawki lub pomocniczej wersji Kubernetes. Aby uzyskać więcej informacji, zobacz [Uaktualnianie klastra AKS][aks-upgrade].
 - Korzystając z [Kured](https://github.com/weaveworks/kured), demona ponownego uruchomienia Open Source dla Kubernetes. Kured działa jako [elementu daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) i monitoruje każdy węzeł pod kątem obecności pliku, który wskazuje, że wymagane jest ponowne uruchomienie. W klastrach ponowne uruchomienia systemu operacyjnego są zarządzane przez ten sam [proces Cordon i opróżnianie][cordon-drain] w ramach uaktualnienia klastra.
 
 Aby uzyskać więcej informacji na temat korzystania z programu kured, zobacz temat [stosowanie aktualizacji zabezpieczeń i jądra do węzłów w AKS][node-updates-kured].

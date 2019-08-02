@@ -6,14 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 15c74637a2dc42ec44f582878b5505d94637cd7b
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 974243da07a2570e851b7d44eac2556c201c2782
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314215"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678524"
 ---
-# <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Mapowanie Azure Data Factory Wybieranie przepływu danych
+# <a name="mapping-data-flow-select-transformation"></a>Mapowanie wybierania przepływu danych
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 Użyj tej transformacji dla selektywnej kolumny (zmniejszając liczbę kolumn), kolumn aliasów i nazw strumieni oraz Zmień kolejność kolumn.
@@ -27,10 +27,7 @@ Na powyższym diagramie wybór przekształceń znajduje się u góry. Jest to al
 
 Opcji wybierz można także użyć jako sposobu usuwania kolumn z przepływu danych. Jeśli na przykład masz 6 kolumn zdefiniowanych w ujścia, ale chcesz tylko wybrać konkretny 3 do przekształcenia, a następnie przetworzyć przepływ do ujścia, możesz wybrać tylko te 3 przy użyciu opcji Przekształć.
 
-> [!NOTE]
-> Aby wybierać tylko określone kolumny, należy wyłączyć opcję "Zaznacz wszystko"
-
-![Wybierz transformację](media/data-flow/select001.png "Wybierz alias")
+![Wybierz transformację](media/data-flow/newselect1.png "Wybierz alias")
 
 ## <a name="options"></a>Opcje
 * Ustawieniem domyślnym dla opcji "Select" jest uwzględnianie wszystkich kolumn przychodzących i zachowywanie tych oryginalnych nazw. Strumień można aliasować przez ustawienie nazwy przekształcenia SELECT.
@@ -38,6 +35,23 @@ Opcji wybierz można także użyć jako sposobu usuwania kolumn z przepływu dan
 * Wybierz pozycję Pomiń duplikaty, aby wyeliminować zduplikowane kolumny z metadanych wejściowych lub wyjściowych.
 
 ![Pomiń duplikaty](media/data-flow/select-skip-dup.png "Pomiń duplikaty")
+
+> [!NOTE]
+> Aby wyczyścić reguły mapowania, naciśnij przycisk **Resetuj** .
+
+## <a name="mapping"></a>Mapowanie
+Domyślnie wybranie przekształcenia spowoduje automatyczne zamapowanie wszystkich kolumn, które przechodzą przez wszystkie kolumny przychodzące do tej samej nazwy w danych wyjściowych. Nazwa strumienia wyjściowego ustawiona w obszarze Wybierz ustawienia spowoduje zdefiniowanie nowej nazwy aliasu dla strumienia. Jeśli zachowasz pozycję Wybierz dla opcji Automap, możesz odaliasować cały strumień ze wszystkimi kolumnami w ten sam sposób.
+
+![Wybieranie reguł przekształcania](media/data-flow/rule2.png "Mapowanie oparte na regułach")
+
+Jeśli chcesz, aby alias, usuwanie, zmienianie nazwy lub zmiana kolejności kolumn, musisz najpierw wyłączyć "Automap". Domyślnie zostanie wyświetlona domyślna reguła o nazwie "wszystkie kolumny wejściowe". Tę regułę można pozostawić w miejscu, jeśli zamierzasz zawsze zezwolić na mapowanie wszystkich kolumn przychodzących na taką samą nazwę w danych wyjściowych.
+
+Jeśli jednak chcesz dodać reguły niestandardowe, kliknij pozycję "Dodaj mapowanie". Mapowanie pól umożliwi wyświetlenie listy nazw kolumn przychodzących i wychodzących na potrzeby mapowania i aliasowania. Wybierz pozycję "mapowanie oparte na regułach", aby utworzyć reguły dopasowania wzorców.
+
+## <a name="rule-based-mapping"></a>Mapowanie oparte na regułach
+Po wybraniu mapowania opartego na regułach, nastąpi naliczanie PODAJNIKa, aby oszacować pasujące wyrażenie zgodne z regułami przychodzącego wzorca i zdefiniować nazwy pól wychodzących. Możesz dodać dowolną kombinację mapowań pól i reguł. Nazwy pól są następnie generowane w czasie wykonywania przez moduł ADF na podstawie przychodzących metadanych ze źródła. Podczas debugowania można wyświetlać nazwy wygenerowanych pól i korzystać z okienka Podgląd danych.
+
+Więcej szczegółów na temat dopasowywania do wzorca jest dostępnych w [dokumentacji wzorca kolumny](concepts-data-flow-column-pattern.md).
 
 ## <a name="next-steps"></a>Następne kroki
 * Po użyciu opcji wybierz, aby zmienić nazwę, kolejność i aliasowanie kolumn Użyj [transformacji ujścia](data-flow-sink.md) , aby wyrównać dane do magazynu danych.

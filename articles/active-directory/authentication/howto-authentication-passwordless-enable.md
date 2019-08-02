@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad2f25aac7f74c74eb63fd4666c5184ae751ec1f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: cce5de98fe4914e18ee0154d4ac5f1af008d32a6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499928"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561294"
 ---
 # <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>Włącz logowanie bezhasło dla usługi Azure AD (wersja zapoznawcza)
 
@@ -109,7 +109,7 @@ Funkcje rejestracji dla kluczy zabezpieczeń FIDO2 są zależne od połączonej 
 ### <a name="enable-new-passwordless-authentication-methods"></a>Włącz nowe metody uwierzytelniania bezhasło
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
-1. Przejdźdo **Azure Active Directory** > metodamiuwierzytelnianiaMetodauwierzytelniania(wersjazapoznawcza >  **)**
+1. Przejdź do **Azure Active Directory** >  > metoduwierzytelniania > zabezpieczeń**Metoda uwierzytelniania (wersja zapoznawcza)**
 1. W każdej **metodzie**wybierz poniższe opcje.
    1. **Włącz** — tak lub nie
    1. **Cel** — wszyscy użytkownicy lub wybrani użytkownicy

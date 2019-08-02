@@ -1,9 +1,9 @@
 ---
-title: Utwórz szablon klastra usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć szablon usługi Resource Manager dla klastra usługi Service Fabric. Konfigurowanie zabezpieczeń usługi Azure Key Vault i Azure Active Directory (Azure AD) do uwierzytelniania klientów.
+title: Tworzenie szablonu klastra usługi Azure Service Fabric | Microsoft Docs
+description: Dowiedz się, jak utworzyć szablon Menedżer zasobów dla klastra Service Fabric. Skonfiguruj zabezpieczenia, Azure Key Vault i Azure Active Directory (Azure AD) do uwierzytelniania klientów.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
@@ -13,38 +13,38 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
-ms.author: aljo
-ms.openlocfilehash: 2fdea1f088dd6eabdf7d72342c837d976133a1bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 9030a1d9d0b1e3f9b84f6636b0d3d758ab4cfa3b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386899"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599993"
 ---
-# <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Utwórz szablon usługi Resource Manager klastra usługi Service Fabric
+# <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Tworzenie szablonu Menedżer zasobów klastra Service Fabric
 
-[Klastra usługi Azure Service Fabric](service-fabric-deploy-anywhere.md) jest połączonym z siecią zestawem maszyn wirtualnych, w których mikrousługi są wdrażania i zarządzania nimi. Klaster usługi Service Fabric działających na platformie Azure jest zasobem platformy Azure i jest wdrażana, zarządzane i monitorowane, przy użyciu usługi Resource Manager.  W tym artykule opisano sposób tworzenia szablonu usługi Resource Manager dla klastra usługi Service Fabric działających na platformie Azure.  Gdy szablon będzie gotowy, możesz ją [wdrażania klastra na platformie Azure](service-fabric-cluster-creation-via-arm.md).
+[Klaster Service Fabric platformy Azure](service-fabric-deploy-anywhere.md) to połączony z siecią zestaw maszyn wirtualnych, w których są wdrażane i zarządzane mikrousługi. Klaster Service Fabric uruchomiony na platformie Azure to zasób platformy Azure, który jest wdrażany, zarządzany i monitorowany przy użyciu Menedżer zasobów.  W tym artykule opisano sposób tworzenia szablonu Menedżer zasobów dla klastra Service Fabric działającego na platformie Azure.  Po zakończeniu szablonu można [wdrożyć klaster na platformie Azure](service-fabric-cluster-creation-via-arm.md).
 
-Zabezpieczenia klastra jest skonfigurowany, gdy klaster jest najpierw skonfigurować i nie można zmienić później. Przed rozpoczęciem konfigurowania klastra, przeczytaj [scenariusze zabezpieczeń klastra usługi Service Fabric][service-fabric-cluster-security]. Na platformie Azure Usługa Service Fabric używa x509 certyfikatów do zabezpieczenia klastra i jego punkty końcowe, uwierzytelnianie klientów i szyfrowania danych. Usługa Azure Active Directory zaleca się zabezpieczenie dostępu do punktów końcowych zarządzania. Usługa Azure AD dzierżawcy i użytkownicy musi zostać utworzona przed utworzeniem klastra.  Aby uzyskać więcej informacji, przeczytaj [Konfigurowanie usługi Azure AD do uwierzytelniania klientów](service-fabric-cluster-creation-setup-aad.md).
+Zabezpieczenia klastra są konfigurowane podczas pierwszego konfigurowania klastra i nie można ich później zmienić. Przed skonfigurowaniem klastra zapoznaj się z artykułem [scenariusze zabezpieczeń klastra Service Fabric][service-fabric-cluster-security]. Na platformie Azure Service Fabric używa certyfikatu x509 do zabezpieczania klastra i jego punktów końcowych, uwierzytelniania klientów i szyfrowania danych. Azure Active Directory jest również zalecane do zabezpieczenia dostępu do punktów końcowych zarządzania. Przed utworzeniem klastra należy utworzyć dzierżawy i użytkowników usługi Azure AD.  Aby uzyskać więcej informacji, przeczytaj temat [Konfigurowanie usługi Azure AD do uwierzytelniania klientów](service-fabric-cluster-creation-setup-aad.md).
 
-Przed wdrożeniem klastra produkcyjnego do uruchamiania obciążeń produkcji, należy najpierw przeczytać [Lista kontrolna gotowości produkcji](service-fabric-production-readiness-checklist.md).
+Przed wdrożeniem klastra produkcyjnego w celu uruchomienia obciążeń produkcyjnych należy najpierw przeczytać [listę kontrolną gotowości do produkcji](service-fabric-production-readiness-checklist.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-the-resource-manager-template"></a>Tworzenie szablonu usługi Resource Manager
-Menedżer zasobów przykładowe szablony są dostępne w [przykładów dla platformy Azure w serwisie GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). Te szablony może służyć jako punkt wyjścia do szablonu klastra.
+Przykładowe szablony Menedżer zasobów są dostępne w [przykładach platformy Azure w witrynie GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). Te szablony mogą służyć jako punkt początkowy dla szablonu klastra.
 
-W tym artykule wykorzystano [bezpiecznego klastra z pięcioma węzłami] [ service-fabric-secure-cluster-5-node-1-nodetype] przykładowy szablon i parametry szablonu. Pobierz *azuredeploy.json* i *azuredeploy.parameters.json* do komputera, a następnie otwórz oba pliki w swoim ulubionym edytorze tekstów.
+W tym artykule jest stosowany przykładowy szablon i szablon szablonu [bezpiecznego klastra z pięcioma węzłami][service-fabric-secure-cluster-5-node-1-nodetype] . Pobierz *azuredeploy. JSON* i *azuredeploy. Parameters. JSON* na komputer i Otwórz oba pliki w ulubionym edytorze tekstu.
 
 > [!NOTE]
-> Chmur krajowych (Azure Government, Azure (Chiny) platformy Azure w Niemczech), należy również dodać następujące `fabricSettings` do szablonu: `AADLoginEndpoint`, `AADTokenEndpointFormat` i `AADCertEndpointFormat`.
+> W przypadku chmur narodowych (Azure Government platformy Azure, Chin, platformy Azure (Niemcy), należy `fabricSettings` również dodać następujące elementy `AADLoginEndpoint`do szablonu `AADCertEndpointFormat`:, `AADTokenEndpointFormat` i.
 
-## <a name="add-certificates"></a>Dodaj certyfikaty
-Należy dodać certyfikaty do szablonu usługi Resource Manager klastra, odwołując się do magazynu kluczy, która zawiera klucze certyfikatu. Dodaj te parametry magazynu kluczy i wartości w pliku parametrów szablonu usługi Resource Manager (*azuredeploy.parameters.json*).
+## <a name="add-certificates"></a>Dodawanie certyfikatów
+Należy dodać certyfikaty do szablonu Menedżer zasobów klastra, odwołując się do magazynu kluczy, który zawiera klucze certyfikatów. Dodaj te parametry i wartości magazynu kluczy w pliku parametrów szablonu Menedżer zasobów (*azuredeploy. Parameters. JSON*).
 
-### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Dodaj wszystkie certyfikaty do osProfile zestaw skali maszyny wirtualnej
-Każdy certyfikat, który jest zainstalowany w klastrze muszą być skonfigurowane w **osProfile** sekcji skali zestawu zasobów (Microsoft.Compute/virtualMachineScaleSets). Ta akcja powoduje, że dostawca zasobów, aby zainstalować certyfikat na maszynach wirtualnych. Ta instalacja obejmuje zarówno certyfikat klastra, jak i wszelkich certyfikatów zabezpieczeń aplikacji, które będą używane dla aplikacji:
+### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Dodaj wszystkie certyfikaty do zestawu skalowania maszyn wirtualnych osProfile
+Każdy certyfikat zainstalowany w klastrze musi być skonfigurowany w sekcji **osProfile** zasobu zestawu skalowania (Microsoft. COMPUTE/virtualMachineScaleSets). Ta akcja powoduje, że dostawca zasobów instaluje certyfikat na maszynach wirtualnych. Ta instalacja obejmuje zarówno certyfikat klastra, jak i wszystkie certyfikaty zabezpieczeń aplikacji, które zamierzasz używać dla aplikacji:
 
 ```json
 {
@@ -78,11 +78,11 @@ Każdy certyfikat, który jest zainstalowany w klastrze muszą być skonfigurowa
 }
 ```
 
-### <a name="configure-the-service-fabric-cluster-certificate"></a>Konfigurowanie certyfikatu klastra usługi Service Fabric
+### <a name="configure-the-service-fabric-cluster-certificate"></a>Konfigurowanie certyfikatu klastra Service Fabric
 
-Certyfikat uwierzytelniania w klastrze muszą być skonfigurowane w obu usługi Service Fabric zasobu klastra (Microsoft.ServiceFabric/clusters) i rozszerzenia usługi Service Fabric dla skalowania maszyn wirtualnych zestawy w zasobu zestawu skalowania maszyny wirtualnej. To rozwiązanie umożliwia dostawcy zasobów usługi Service Fabric skonfigurować go do użycia do uwierzytelniania w klastrze i uwierzytelnianie serwera dla punktów końcowych zarządzania.
+Certyfikat uwierzytelniania klastra musi być skonfigurowany zarówno w ramach zasobu klastra Service Fabric (Microsoft. servicefabric/klastrów), jak i rozszerzenia Service Fabric dla zestawów skalowania maszyn wirtualnych w ramach zasobu zestawu skalowania maszyn wirtualnych. To rozmieszczenie pozwala dostawcy zasobów Service Fabric skonfigurować go do użycia na potrzeby uwierzytelniania klastra i uwierzytelniania serwera dla punktów końcowych zarządzania.
 
-#### <a name="add-the-certificate-information-the-virtual-machine-scale-set-resource"></a>Dodawanie zasobu zestawu skalowania maszyn wirtualnych informacje o certyfikacie
+#### <a name="add-the-certificate-information-the-virtual-machine-scale-set-resource"></a>Dodawanie informacji o certyfikacie dla zasobu zestawu skalowania maszyn wirtualnych
 
 ```json
 {
@@ -115,7 +115,7 @@ Certyfikat uwierzytelniania w klastrze muszą być skonfigurowane w obu usługi 
 }
 ```
 
-#### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>Dodaj informacje o certyfikacie do zasobu klastra usługi Service Fabric
+#### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>Dodawanie informacji o certyfikacie do zasobu klastra Service Fabric
 
 ```json
 {
@@ -143,10 +143,10 @@ Certyfikat uwierzytelniania w klastrze muszą być skonfigurowane w obu usługi 
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Dodawanie konfiguracji usługi Azure AD do użycia na potrzeby dostępu klientów
 
-Konfiguracji usługi Azure AD jest dodawanie do szablonu usługi Resource Manager klastra, odwołując się do magazynu kluczy, która zawiera klucze certyfikatu. Dodaj te parametry usługi Azure AD i wartości w pliku parametrów szablonu usługi Resource Manager (*azuredeploy.parameters.json*). 
+Konfigurację usługi Azure AD można dodać do szablonu Menedżer zasobów klastra, odwołując się do magazynu kluczy, który zawiera klucze certyfikatów. Dodaj te parametry i wartości usługi Azure AD w pliku parametrów szablonu Menedżer zasobów (*azuredeploy. Parameters. JSON*). 
 
 > [!NOTE]
-> Usługa Azure AD dzierżawcy i użytkownicy musi zostać utworzona przed utworzeniem klastra.  Aby uzyskać więcej informacji, przeczytaj [Konfigurowanie usługi Azure AD do uwierzytelniania klientów](service-fabric-cluster-creation-setup-aad.md).
+> Przed utworzeniem klastra należy utworzyć dzierżawy i użytkowników usługi Azure AD.  Aby uzyskać więcej informacji, przeczytaj temat [Konfigurowanie usługi Azure AD do uwierzytelniania klientów](service-fabric-cluster-creation-setup-aad.md).
 
 ```json
 {
@@ -175,14 +175,14 @@ Konfiguracji usługi Azure AD jest dodawanie do szablonu usługi Resource Manage
 }
 ```
 
-## <a name="populate-the-parameter-file-with-the-values"></a>Wypełnij plik parametrów z wartościami
+## <a name="populate-the-parameter-file-with-the-values"></a>Wypełnij plik parametrów wartościami
 
-Na koniec użyj wartości danych wyjściowych z poleceń programu PowerShell usługi Azure AD i usługi key vault, aby wypełnić plik parametrów.
+Na koniec użyj wartości wyjściowych z poleceń magazynu kluczy i programu PowerShell usługi Azure AD, aby wypełnić plik parametrów.
 
-Jeśli planujesz użyć modułów programu PowerShell usługi Azure Service fabric Menedżera zasobów, nie trzeba wypełnić informacji o certyfikacie klastra. Jeśli chcesz, aby system wygenerował samodzielnie podpisanego certyfikatu do zabezpieczania klastra, wystarczy przechowywać je jako wartości null. 
+Jeśli planujesz używanie modułów usługi Azure Service Fabric w programie PowerShell, nie musisz wypełniać informacji o certyfikacie klastra. Jeśli chcesz, aby system generował certyfikat z podpisem własnym dla zabezpieczeń klastra, po prostu zachowaj je jako wartość null. 
 
 > [!NOTE]
-> Dla modułów RM na odebranie i wypełnić te wartości parametrów empty nazwy parametrów znacznie być zgodne z nazwami poniżej
+> Aby moduły RM mogli pobrać i wypełnić te puste wartości parametrów, nazwy parametrów są bardzo zgodne z poniższymi nazwami
 
 ```json
 "clusterCertificateThumbprint": {
@@ -199,9 +199,9 @@ Jeśli planujesz użyć modułów programu PowerShell usługi Azure Service fabr
 },
 ```
 
-Jeśli używasz certyfikatów aplikacji lub korzystasz z istniejącego klastra, które zostały przekazane do magazynu kluczy, należy uzyskać te informacje i wypełnić je.
+Jeśli używasz certyfikatów aplikacji lub korzystasz z istniejącego klastra, który został przekazany do magazynu kluczy, musisz uzyskać te informacje i wypełnić je.
 
-Moduły Menedżera zasobów nie mają możliwość generowania konfiguracji usługi Azure AD, dlatego jeśli planujesz używać usługi Azure AD dla dostępu klientów, należy go wypełnić.
+Moduły RM nie mają możliwości wygenerowania konfiguracji usługi Azure AD, dlatego jeśli planujesz używać usługi Azure AD do uzyskiwania dostępu do klientów, musisz ją wypełnić.
 
 ```json
 {
@@ -241,31 +241,31 @@ Moduły Menedżera zasobów nie mają możliwość generowania konfiguracji usł
 }
 ```
 
-## <a name="test-your-template"></a>Test szablonu
-Użyj następującego polecenia programu PowerShell na potrzeby testów w pliku parametrów szablonu usługi Resource Manager:
+## <a name="test-your-template"></a>Testowanie szablonu
+Użyj następującego polecenia programu PowerShell, aby przetestować szablon Menedżer zasobów przy użyciu pliku parametrów:
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
-W przypadku napotkania problemów i Pobierz one niezrozumiałe komunikaty, następnie za pomocą "-Debug" jako opcję.
+W przypadku wystawiania problemów i uzyskiwania komunikatów tajemnicze, użyj "-debug" jako opcji.
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
-Na poniższym diagramie przedstawiono, w którym magazyn kluczy i konfiguracji usługi Azure AD mieści się w szablonie usługi Resource Manager.
+Na poniższym diagramie przedstawiono lokalizację magazynu kluczy i konfiguracji usługi Azure AD dopasowanego do szablonu Menedżer zasobów.
 
-![Mapa zależności usługi Resource Manager][cluster-security-arm-dependency-map]
+![Menedżer zasobów mapowanie zależności][cluster-security-arm-dependency-map]
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się teraz, gdy szablon dla klastra, jak [wdrożenia klastra Azure](service-fabric-cluster-creation-via-arm.md).  Jeśli zrobione, zapoznaj się z [Lista kontrolna gotowości produkcji](service-fabric-production-readiness-checklist.md) przed wdrożeniem w warunkach produkcyjnych klastra.
+## <a name="next-steps"></a>Następne kroki
+Teraz, gdy masz szablon klastra, Dowiedz się, jak [wdrożyć klaster na platformie Azure](service-fabric-cluster-creation-via-arm.md).  Jeśli jeszcze tego nie zrobiono, przed wdrożeniem klastra produkcyjnego zapoznaj się z listą kontrolną gotowości do [produkcji](service-fabric-production-readiness-checklist.md) .
 
-Aby dowiedzieć się więcej na temat składni JSON i właściwości zasobów wdrożonych w tym artykule, zobacz:
+Aby dowiedzieć się więcej o składni i właściwościach JSON dla zasobów wdrożonych w tym artykule, zobacz:
 
 * [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
 * [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
 * [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)

@@ -1,6 +1,6 @@
 ---
-title: Połącz dane usługi Azure ATP przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak nawiązać połączenie z danych usługi Azure ATP przez wartownika platformy Azure.
+title: Połącz dane ATP platformy Azure z podglądem platformy Azure — Wersja zapoznawcza | Microsoft Docs
+description: Dowiedz się, jak połączyć dane ATP platformy Azure z platformą Azure — wskaźnikiem.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,44 +13,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 77f745f92133f4f43cd2a65f2b69ded1eff9e8ed
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6f41a5704c783ba8aeab7bc2e82ef731c6a257ac
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620628"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599160"
 ---
-# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Połącz dane z usługi Azure Advanced Threat Protection (ATP)
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Łączenie danych z usługi Azure Advanced Threat Protection (ATP)
 
 > [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
+> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-Można przesyłać strumieniowo dzienniki z [usługi Azure Advanced Threat Protection](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) do platformy Azure przez wartownika za pomocą jednego kliknięcia.
+Dzienniki usługi [Azure Advanced Threat Protection](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) można przesyłać strumieniowo do usługi Azure wskaźnikowej przy użyciu jednego kliknięcia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Użytkownik z administratorem globalnym lub uprawnienia administratora zabezpieczeń
-- Musi być klientem prywatnej wersji zapoznawczej narzędzia Azure ATP
+- Użytkownik z uprawnieniami administratora globalnego lub administratora zabezpieczeń
+- Musisz być klientem wersji zapoznawczej usługi Azure ATP
 
-## <a name="connect-to-azure-atp"></a>Łączenie do usługi Azure ATP
+## <a name="connect-to-azure-atp"></a>Nawiązywanie połączenia z usługą Azure ATP
 
-Upewnij się, wersja prywatnej wersji zapoznawczej usługi Azure ATP jest [włączone w sieci](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1).
-Jeśli wdrożono narzędzia Azure ATP i zbierać dane, podejrzanych alertów można łatwo przesyłane strumieniowo do usługi Azure przez wartownika. Może upłynąć do 24 godzin dla alertów rozpocząć przesyłanie strumieniowe do usługi Azure przez wartownika.
+Upewnij się, że [w sieci jest włączona](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1)wersja zapoznawcza usługi Azure ATP.
+W przypadku wdrożenia usługi Azure ATP i pozyskiwania danych podejrzane alerty mogą być łatwo przesyłane strumieniowo do wskaźnikowego platformy Azure. Rozpoczęcie przesyłania strumieniowego na platformę Azure jest możliwe dopiero po 24 godzinach.
 
 
+1. Aby połączyć usługę Azure ATP z platformą Azure, musisz najpierw włączyć integrację z usługą Azure ATP i Microsoft Cloud App Security. Aby uzyskać informacje o tym, jak to zrobić, zobacz [integracja z usługą Azure Advanced Threat Protection](https://docs.microsoft.com/cloud-app-security/aatp-integration).
 
-1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **narzędzia Azure ATP** kafelka.
+1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych** , a następnie kliknij KAFELEK **Azure ATP** .
 
 2. Kliknij przycisk **Połącz**.
 
-6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów usługi Azure ATP, możesz wyszukać **SecurityAlert**.
+6. Aby użyć odpowiedniego schematu w Log Analytics dla alertów usługi Azure ATP, wyszukaj ciąg " **SecurityAlert**".
 
 ## <a name="next-steps"></a>Następne kroki
-W tym dokumencie przedstawiono sposób łączenia usługi Azure Advanced Threat Protection na platformie Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
-- Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
+W tym dokumencie przedstawiono sposób łączenia zaawansowanej ochrony przed zagrożeniami na platformie Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).
 

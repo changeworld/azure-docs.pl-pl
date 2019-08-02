@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób tworzenia i używania baz danych, ko
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 07/26/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 277564208a5e4a209aecf8f976aca6b35ab17781
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 9c8460380755c6057f7507443d0b564e85c2ff86
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467747"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598487"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Pracuj z bazami danych, kontenerami i elementami w Azure Cosmos DB
 
@@ -89,7 +89,7 @@ Kontener usługi Azure Cosmos ma zestaw właściwości zdefiniowanych przez syst
 |id | Użytkownik — konfigurowalne | Zdefiniowane przez użytkownika unikatową nazwę kontenera | Yes | Yes | Yes | Yes | Yes |
 |indexingPolicy | Użytkownik — konfigurowalne | Zapewnia możliwość zmiany ścieżki indeksu, typu indeksu i trybu indeksowania | Tak | Nie | Nie | Nie | Yes |
 |timeToLive | Użytkownik — konfigurowalne | Zapewnia możliwość automatycznego usuwania elementów z kontenera po upływie określonego czasu. Aby uzyskać szczegółowe informacje, zobacz [Time to Live](time-to-live.md). | Tak | Nie | Nie | Nie | Yes |
-|changeFeedPolicy | Użytkownik — konfigurowalne | Używane do odczytywania zmiany wprowadzone do elementów w kontenerze. Aby uzyskać szczegółowe informacje, zobacz [Zmienianie źródła danych](change-feed.md). | Yes | Nie | Nie | Nie | Yes |
+|changeFeedPolicy | Użytkownik — konfigurowalne | Używane do odczytywania zmiany wprowadzone do elementów w kontenerze. Aby uzyskać szczegółowe informacje, zobacz [Zmienianie źródła danych](change-feed.md). | Tak | Nie | Nie | Nie | Yes |
 |uniqueKeyPolicy | Użytkownik — konfigurowalne | Służy do zapewnienia unikatowości jednej lub więcej wartości w partycji logicznej. Aby uzyskać więcej informacji, zobacz [unikalne ograniczenia klucza](unique-keys.md). | Tak | Nie | Nie | Nie | Yes |
 
 ### <a name="operations-on-an-azure-cosmos-container"></a>Operacji na kontenerze usługi Azure Cosmos
@@ -102,7 +102,7 @@ Kontener usługi Azure Cosmos obsługuje następujące operacje, gdy używasz do
 | Przeczytaj kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 | Utwórz nowy kontener | Tak | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 | Aktualizowanie kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
-| Usuwanie kontenera | Tak | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
+| Usuwanie kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 
 ## <a name="azure-cosmos-items"></a>Usługa Azure Cosmos elementów
 
@@ -118,12 +118,15 @@ Każdy element usługi Azure Cosmos ma następujące właściwości zdefiniowane
 
 | Właściwość zdefiniowana przez system | Generowane przez system lub użytkownik — konfigurowalne| Cel | Interfejs API SQL | Interfejs API rozwiązania Cassandra | Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB | Interfejs API języka Gremlin | Interfejs API tabel |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_#c1 | Generowane przez system | Unikatowy identyfikator elementu | Tak | Nie | Nie | Nie | Nie |
+|\_#c1 | Generowane przez system | Unikatowy identyfikator elementu | Yes | Nie | Nie | Nie | Nie |
 |\_element ETag | Generowane przez system | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
 |\_TS | Generowane przez system | Sygnatura czasowa ostatniej aktualizacji elementu | Tak | Nie | Nie | Nie | Nie |
 |\_automatycznej | Generowane przez system | Mogą być adresowane identyfikator URI elementu | Yes | Nie | Nie | Nie | Nie |
 |id | Albo | Unikatowa nazwa zdefiniowana przez użytkownika w partycji logicznej. Jeśli użytkownik nie określi identyfikatora, system wygeneruje je automatycznie. | Tak | Yes | Yes | Yes | Yes |
-|Dowolne właściwości zdefiniowanych przez użytkownika | Zdefiniowane przez użytkownika | Właściwości zdefiniowane przez użytkownika reprezentowane w reprezentacji natywnej interfejsu API (w tym JSON, BSON i CQL) | Yes | Yes | Yes | Yes | Yes |
+|Dowolne właściwości zdefiniowanych przez użytkownika | Zdefiniowane przez użytkownika | Właściwości zdefiniowane przez użytkownika reprezentowane w reprezentacji natywnej interfejsu API (w tym JSON, BSON i CQL) | Tak | Yes | Yes | Yes | Yes |
+
+> [!NOTE]
+> Unikatowość `id` właściwości jest wymuszana tylko w obrębie każdej partycji logicznej. Wiele dokumentów może mieć taką samą `id` właściwość z różnymi wartościami klucza partycji.
 
 ### <a name="operations-on-items"></a>Operacje na elementach
 
@@ -133,7 +136,7 @@ Elementy usługi Azure Cosmos obsługują następujące operacje. Aby wykonać o
 | --- | --- | --- | --- | --- | --- | --- |
 | Wstaw, Zastąp i usuwanie, Upsert, przeczytaj | Nie | Yes | Yes | Yes | Yes | Yes |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat tych zadań i koncepcji:
 

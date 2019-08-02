@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: f6aed5d2ac1c4672d8d8868fe127ead053512e42
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 974ece9cd035ae29ada38f34b7933d86f682194f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314833"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696232"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Przekształcanie źródła na potrzeby mapowania przepływu danych 
 
@@ -28,8 +28,12 @@ Każdy przepływ danych wymaga co najmniej jednego przekształcenia źródła. D
 
 Skojarz transformację źródła przepływu danych z dokładnie jednym Data Factory zestawem danych. Zestaw danych definiuje kształt i lokalizację danych, które mają być zapisywane lub odczytywane. Możesz użyć symboli wieloznacznych i list plików w źródle, aby współpracować z więcej niż jednym plikiem jednocześnie.
 
-## <a name="data-flow-staging-areas"></a>Obszary tymczasowe przepływu danych
+Użycie opcji **wzorca** wieloznacznego spowoduje, że ADF będzie przełączać pętlę do każdego pasującego folderu i pliku w ramach pojedynczego przekształcenia źródła. Jest to bardzo skuteczny sposób przetwarzania wielu plików w ramach pojedynczego przepływu. Aby śledzić nazwę aktualnie przetwarzanego pliku, należy ustawić nazwę pola "kolumna do przechowywania nazwy pliku" w opcji źródła.
 
+> [!NOTE]
+> Ustaw wiele symboli wieloznacznych ze znakiem + obok istniejącego wzorca symbolu wieloznacznego, aby dodać więcej reguł symboli wieloznacznych.
+
+## <a name="data-flow-staging-areas"></a>Obszary tymczasowe przepływu danych
 Przepływ danych działa z *tymczasowymi* zestawami datadataset, które znajdują się na platformie Azure. Te zestawy danych są używane do przemieszczania podczas przekształcania danych. 
 
 Data Factory ma dostęp do niemal 80 łączników natywnych. Aby dołączyć dane z innych źródeł w przepływie danych, należy użyć narzędzia działania kopiowania do przygotowania tych danych w jednym z obszarów tymczasowych zestawu danych przepływu danych.
@@ -101,13 +105,23 @@ Przykłady symboli wieloznacznych:
 
 Kontener musi być określony w zestawie danych. Ścieżka symbolu wieloznacznego musi zawierać również ścieżkę folderu z folderu głównego.
 
+* **Ścieżka katalogu głównego partycji**: Jeśli masz partycjonowane foldery w źródle ```key=value``` plików w formacie (tj. Year = 2019), możesz zadawać ADF, aby przypisać najwyższy poziom tego drzewa folderów partycji do nazwy kolumny w strumieniu danych przepływu danych.
+
+Najpierw ustaw symbol wieloznaczny, aby uwzględnić wszystkie ścieżki, które są folderami partycjonowanymi oraz pliki liści, które chcesz odczytać.
+
+![Ustawienia pliku źródłowego partycji](media/data-flow/partfile2.png "Ustawienie pliku partycji")
+
+Teraz użyj ustawienia ścieżki katalogu głównego partycji, aby poinformować funkcję ADF o najwyższego poziomu struktury folderów. Teraz, gdy oglądasz zawartość danych, zobaczysz, że na AUTOMATYCZNYm ekranie zostaną dodane rozpoznane partycje znalezione na każdym z poziomów folderów.
+
+![Ścieżka katalogu głównego partycji](media/data-flow/partfile1.png "Podgląd ścieżki katalogu głównego partycji")
+
 * **Lista plików**: To jest zestaw plików. Utwórz plik tekstowy, który zawiera listę plików ścieżek względnych do przetworzenia. Wskaż ten plik tekstowy.
 * **Kolumna do przechowywania nazwy pliku**: Zapisz nazwę pliku źródłowego w kolumnie w danych. Wprowadź tutaj nową nazwę, aby zapisać ciąg nazw plików.
 * **Po zakończeniu**: Wybierz, aby nic nie robić z plikiem źródłowym po uruchomieniu przepływu danych, usuń plik źródłowy lub Przenieś plik źródłowy. Ścieżki do przenoszenia są względne.
 
 Aby przenieść pliki źródłowe do innej lokalizacji po przetworzeniu, najpierw wybierz pozycję "Przenieś" dla operacji na pliku. Następnie ustaw katalog "z". Jeśli nie używasz symboli wieloznacznych dla ścieżki, ustawienie "od" będzie takie samo jak folder źródłowy.
 
-Jeśli masz wieloznaczną ścieżkę źródłową, np.:
+Jeśli masz ścieżkę źródłową z symbolem wieloznacznym, składnia będzie wyglądać następująco:
 
 ```/data/sales/20??/**/*.csv```
 
@@ -119,7 +133,7 @@ I "do" jako
 
 ```/backup/priorSales```
 
-W takim przypadku wszystkie podkatalogi w/Data/Sales, które były źródłem są przenoszone względem/backup/priorSales.
+W takim przypadku wszystkie pliki, które zostały objęte usługą/Data/Sales, są przenoszone do/backup/priorSales.
 
 ### <a name="sql-datasets"></a>Zestawy danych SQL
 
@@ -152,8 +166,7 @@ Można modyfikować typy danych kolumny w późniejszej transformacji pochodnej 
 ![Ustawienia dla domyślnych formatów danych](media/data-flow/source2.png "Formaty domyślne")
 
 ### <a name="add-dynamic-content"></a>Dodaj zawartość dynamiczną
-
-Po kliknięciu wewnątrz pól w panelu ustawień zostanie wyświetlone hiperłącze "Dodaj zawartość dynamiczną". Po kliknięciu tutaj zostanie uruchomiony program Expression Builder. Jest to miejsce, w którym można ustawić wartości ustawień dynamicznie przy użyciu wyrażeń, statycznych wartości literałów lub parametrów.
+Po kliknięciu wewnątrz pól w panelu ustawień zostanie wyświetlone hiperłącze "Dodaj zawartość dynamiczną". Gdy wybierzesz opcję uruchomienia konstruktora wyrażeń, będziesz ustawiać wartości dynamicznie przy użyciu wyrażeń, statycznych wartości literałów lub parametrów.
 
 ![Parametry](media/data-flow/params6.png "Parametry")
 
