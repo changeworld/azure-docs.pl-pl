@@ -4,7 +4,7 @@ description: Dowiedz się, jak używać maszyny wirtualnej do nauki o danych szt
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, Geoprzestrzenna analiza
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: gokuma
-ms.openlocfilehash: 6e6737e928ece820ea9119d8dfe1d7cf22477646
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 9bca7089e6137b3780e3d22f50887e880be29d8e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60406574"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565079"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Za pomocą maszyny wirtualnej analizy danych geograficznych ze sztucznej inteligencji
 
@@ -43,14 +43,14 @@ Mostek R ArcGIS jest instalowany jako biblioteka języka R, o nazwie [arcgisbind
 Oprócz uczenia Maszynowego i oparte na strukturze próbki z podstawowej maszyny Wirtualnej do nauki o danych do uczenia głębokiego udostępniane są również uzyskać zestaw przykładów geoprzestrzenne jako część maszyna wirtualna do nauki o danych sztucznej Inteligencji geograficznie. Te przykłady mogą pomóc szybko Rozpocznij korzystanie z usługi opracowywanie aplikacji sztucznej Inteligencji przy użyciu danych Geoprzestrzennych i oprogramowania ArcGIS. 
 
 
-1. [Wprowadzenie pracę z Geoprzestrzenna analiza przy użyciu języka Python](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Wprowadzające przykład przedstawiający sposób pracy z danymi dane geograficzne za pomocą interfejsu Python do ArcGIS dostarczone przez [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) biblioteki. Pokazano także, jak połączyć tradycyjnych uczenie maszynowe przy użyciu danych geoprzestrzennych oraz wizualizacja wyników na mapie w ArcGIS. 
+1. [Wprowadzenie do analizy geograficznej przy użyciu języka Python](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Przykład wprowadzający pokazujący sposób pracy z danymi geograficznymi przy użyciu interfejsu języka Python do ArcGIS zapewnianego przez bibliotekę [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) . Pokazano także, jak połączyć tradycyjnych uczenie maszynowe przy użyciu danych geoprzestrzennych oraz wizualizacja wyników na mapie w ArcGIS. 
 
-2. [Wprowadzenie pracę z Geoprzestrzenna analiza przy użyciu języka R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Wprowadzający przykład, który pokazuje, jak pracować z danymi dane geograficzne za pomocą interfejsu języka R do ArcGIS dostarczone przez [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) biblioteki. 
+2. [Wprowadzenie do analizy geograficznej przy użyciu języka R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Przykład wprowadzający, który pokazuje, jak korzystać z danych geoprzestrzennych przy użyciu interfejsu języka R do ArcGIS dostarczonych przez bibliotekę [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) . 
 
-3. [Ziemi poziomie pikseli użyć klasyfikacji](https://github.com/Azure/pixel_level_land_classification): Samouczek, który ilustruje sposób tworzenia modelu sieci neuronowej, który akceptuje obrazów z powietrza jako dane wejściowe i zwraca etykietę cover lądzie. Pokrywy gruntów etykiet, które należą do nich "leśnych" lub "water". Model zwraca etykietę dla każdego piksela na obrazie. Model został skompilowany przy użyciu typu open source firmy Microsoft [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) platforma do uczenia głębokiego. 
+3. [Klasyfikacja użycia gruntów na poziomie pikseli](https://github.com/Azure/pixel_level_land_classification): Samouczek, który ilustruje sposób tworzenia modelu sieci głębokiego neuronowych, który akceptuje obraz antenowy jako dane wejściowe i zwraca etykietę okładki gruntowej. Pokrywy gruntów etykiet, które należą do nich "leśnych" lub "water". Model zwraca etykietę dla każdego piksela na obrazie. Model został skompilowany przy użyciu typu open source firmy Microsoft [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) platforma do uczenia głębokiego. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Więcej przykładów, korzystanie z maszyny Wirtualnej do nauki o danych, które są dostępne tutaj:
 

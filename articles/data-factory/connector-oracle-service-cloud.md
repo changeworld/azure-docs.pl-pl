@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: b65bcfa5252a150c8101322eaf6d84ce46eef755
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 33c73bffc6c8ddac3a6465093d1994fcbfe14a9b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60546356"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726067"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Kopiowanie danych z chmury usługi bazy danych Oracle przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -44,10 +44,10 @@ Następujące właściwości są obsługiwane dla usługi w chmurze usługi Orac
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **OracleServiceCloud** | Yes |
+| — typ | Właściwość Type musi mieć ustawioną wartość: **OracleServiceCloud** | Tak |
 | host | Adres URL wystąpienia usługi w chmurze firmy Oracle.  | Yes |
 | username | Nazwa użytkownika, który umożliwia dostęp do serwera usługi w chmurze firmy Oracle.  | Yes |
-| password | Hasło odpowiadający nazwie użytkownika, podane w kluczu nazwy użytkownika. Istnieje możliwość Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i pozwól usłudze ADF kopiowania ściągnięcia działania z tego miejsca, podczas wykonywania kopii danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
+| password | Hasło odpowiadający nazwie użytkownika, podane w kluczu nazwy użytkownika. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
 | useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 | usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
@@ -83,7 +83,7 @@ Aby skopiować dane z usługi w chmurze firmy Oracle, należy ustawić właściw
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **OracleServiceCloudObject** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **OracleServiceCloudObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -93,11 +93,12 @@ Aby skopiować dane z usługi w chmurze firmy Oracle, należy ustawić właściw
     "name": "OracleServiceCloudDataset",
     "properties": {
         "type": "OracleServiceCloudObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<OracleServiceCloud linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 
@@ -113,7 +114,7 @@ Aby skopiować dane z usługi w chmurze firmy Oracle, należy ustawić typ źró
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **OracleServiceCloudSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **OracleServiceCloudSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

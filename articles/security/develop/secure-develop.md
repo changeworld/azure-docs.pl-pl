@@ -1,156 +1,157 @@
 ---
-title: Tworzenie bezpiecznych aplikacji w systemie Microsoft Azure
-description: W tym artykule omówiono najlepsze rozwiązania, należy wziąć pod uwagę podczas fazy implementacji i weryfikacji projektu aplikacji sieci web.
+title: Opracowywanie bezpiecznych aplikacji na Microsoft Azure
+description: W tym artykule opisano najlepsze rozwiązania, które należy wziąć pod uwagę podczas fazy implementacji i weryfikacji projektu aplikacji sieci Web.
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
 ms.date: 06/12/2019
 ms.topic: article
 ms.service: security
+ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f4add4bf07178aa616e86f8a64b313630466824f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: cc0540f74b755e083855721ad62754c70edb88b6
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653262"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728690"
 ---
-# <a name="develop-secure-applications-on-azure"></a>Tworzenie bezpiecznych aplikacji na platformie Azure
-W tym artykule, firma Microsoft przedstawia działania dotyczące zabezpieczeń i kontroli należy wziąć pod uwagę podczas opracowywania aplikacji dla chmury. Pytania zabezpieczające i koncepcji, które należy wziąć pod uwagę podczas fazy implementacji i weryfikacji firmy Microsoft [cykl projektowania zabezpieczeń (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) zostały uwzględnione. Celem jest pomagającym w zdefiniowaniu działań i usług platformy Azure służących do tworzenia bardziej bezpiecznych aplikacji.
+# <a name="develop-secure-applications-on-azure"></a>Opracowywanie bezpiecznych aplikacji na platformie Azure
+W tym artykule opisano działania związane z bezpieczeństwem i kontrolki, które należy wziąć pod uwagę podczas opracowywania aplikacji w chmurze. Pytania zabezpieczające i pojęcia, które należy wziąć pod uwagę podczas fazy wdrażania i weryfikacji [cyklu życia programu Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Celem jest ułatwienie zdefiniowania działań i usług platformy Azure, których można użyć do tworzenia bezpieczniejszej aplikacji.
 
-W tym artykule omówione są następujące fazy SDL:
+Następujące fazy SDL zostały omówione w tym artykule:
 
 - Implementacja
 - Weryfikacja
 
 ## <a name="implementation"></a>Implementacja
-Fokus fazy wdrożenia jest ustanowienie najlepsze rozwiązania dotyczące zapobiegania wczesne i wykryć i usunąć problemy dotyczące zabezpieczeń z kodu.
-Załóżmy, że aplikacja będzie używane w sposób, że przypadkowo może być ona używana. Dzięki temu można zabezpieczyć się przed przypadkowym lub zamierzone niewłaściwe korzystanie z aplikacji.
+Celem fazy implementacji jest ustanowienie najlepszych rozwiązań w zakresie wczesnego zapobiegania oraz wykrywanie i usuwanie problemów z zabezpieczeniami w kodzie.
+Załóżmy, że aplikacja zostanie użyta w sposób, który nie był używany. Pomaga to chronić przed przypadkowym lub zamierzonym nieprawidłowym użyciem aplikacji.
 
-### <a name="perform-code-reviews"></a>Wykonaj przeglądów kodu
+### <a name="perform-code-reviews"></a>Wykonaj przeglądy kodu
 
-Przed zaewidencjonowaniem kodu postępowania [przeglądami kodu](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) do zwiększenia ogólnej jakości kodu i zmniejszenia ryzyka powstawania usterek. Możesz użyć [programu Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) Zarządzanie proces przeglądu kodu.
+Przed zapisaniem kodu Przeprowadź [przeglądy kodu](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) w celu zwiększenia ogólnej jakości kodu i zmniejszenia ryzyka związanego z tworzeniem błędów. Możesz użyć [programu Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) , aby zarządzać procesem przeglądu kodu.
 
-### <a name="perform-static-code-analysis"></a>Wykonywanie analizy kodu statycznego
+### <a name="perform-static-code-analysis"></a>Wykonaj analizę kodu statycznego
 
-[Statyczna analiza kodu](https://www.owasp.org/index.php/Static_Code_Analysis) (znany także jako *źródła analizy kodu*) jest zazwyczaj wykonywane w ramach przeglądu kodu. Statyczna analiza kodu często odnosi się do uruchamiania znajdowanie potencjalnych luk w zabezpieczeniach w kodzie bez uruchamiania przy użyciu technik, takich jak narzędzia do analizy kodu statycznego [skażenia sprawdzanie](https://en.wikipedia.org/wiki/Taint_checking) i [analizy przepływu danych](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statyczna analiza kodu](https://www.owasp.org/index.php/Static_Code_Analysis) (znana także jako *Analiza kodu źródłowego*) jest zwykle wykonywane w ramach przeglądu kodu. Statyczna analiza kodu często dotyczy uruchamiania narzędzi do analizy kodu statycznego, aby znaleźć potencjalne luki w zabezpieczeniach w nieuruchomionym kodzie przy użyciu technik takich jak [Sprawdzanie](https://en.wikipedia.org/wiki/Taint_checking) zmian i [Analiza przepływu danych](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
-Portal Azure Marketplace oferuje [narzędzi deweloperskich](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) , wykonywać analizy kodu statycznego i uzyskanymi przeglądów kodu.
+Portal Azure Marketplace oferuje [Narzędzia programistyczne](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) , które wykonują analizę kodu statycznego i pomagają w przeglądach kodu.
 
-### <a name="validate-and-sanitize-every-input-for-your-application"></a>Sprawdzanie poprawności i oczyszczanie co dane wejściowe dla swojej aplikacji
+### <a name="validate-and-sanitize-every-input-for-your-application"></a>Weryfikuj i oczyszczaj wszystkie dane wejściowe dla aplikacji
 
-Traktuj wszystkie dane wejściowe jako niezaufane, aby ochronić aplikację przed najbardziej powszechnych luk w zabezpieczeniach aplikacji sieci web. Niezaufane dane są pojazdu na ataki przez iniekcję kodu. Dane wejściowe na potrzeby aplikacji zawiera parametry w adresie URL, dane wejściowe użytkownika, dane z bazy danych z interfejsu API i wszystkie elementy, które zostały przekazane, użytkownik może potencjalnie manipulować. Aplikacja powinna [zweryfikować](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs) dane są składniowo i semantycznie prawidłowy, zanim aplikacja wykorzystuje dane w dowolny sposób (łącznie z wyświetleniem go do użytkownika).
+Traktuj wszystkie dane wejściowe jako niezaufane, aby chronić aplikację przed Najczęściej spotykanymi lukami w zabezpieczeniach aplikacji sieci Web. Niezaufane dane to pojazd służący do ataków iniekcji. Dane wejściowe dla aplikacji obejmują parametry w adresie URL, dane wejściowe od użytkownika, danych z bazy danych lub interfejsu API, a także wszystkie elementy, które są przesyłane przez użytkownika, mogą potencjalnie manipulować. Aplikacja powinna [sprawdzać](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs) , czy dane są składniowo i semantycznie prawidłowe, zanim aplikacja korzysta z danych w dowolny sposób (w tym wyświetlanie jej z powrotem do użytkownika).
 
-Sprawdzanie poprawności danych wejściowych w wcześnie przepływu danych, aby upewnić się, że tylko poprawnie sformułowany dane są wprowadzane przepływu pracy. Nie chcesz, aby uszkodzone dane utrwalanie w bazie danych lub wyzwalanie usterek w składniku podrzędnego.
+Sprawdź poprawność danych wejściowych w przepływie danych, aby upewnić się, że przepływ pracy będzie miał tylko prawidłowo uformowane dane. Nie ma potrzeby utrwalania źle sformułowanych danych w bazie danych ani wyzwalania wadliwych składników w składniku podrzędnym.
 
-Blacklisting i umieszczania na białej liście znajdują się dwa ogólne podejścia do wykonywania sprawdzania poprawności danych wejściowych składni:
+Listy zabronionych i listy dozwolonych są dwa ogólne podejścia do wykonywania walidacji składni danych wejściowych:
 
-  - Wpisywanie na czarną listę próbuje sprawdzić, czy dane wejściowe użytkownika danego nie zawiera zawartość "znane jako złośliwe".
+  - Zabronione próby sprawdzenia, czy dane dane wejściowe użytkownika nie zawierają zawartości "znana jako złośliwe".
 
-  - Umieszczania na białej liście próby sprawdź, czy dane wejściowe użytkownika danego zgodny zestaw danych wejściowych "dobrze znanych". Opartego na znakach umieszczania na białej liście jest formą umieszczania na białej liście, gdzie aplikacja sprawdza, czy dane wejściowe użytkownika zawiera znaki tylko "znane dobre" lub że danych wejściowych odpowiada znanego formatu.
-    Na przykład może to obejmować sprawdzenie, czy nazwa użytkownika zawiera tylko znaki alfanumeryczne lub zawiera dokładnie dwie cyfry.
+  - Listy dozwolonych próbuje sprawdzić, czy dane wejściowe użytkownika są zgodne z zestawem danych wejściowych "znane dobre". Listy dozwolonych oparty na znakach to forma listy dozwolonych, w której aplikacja sprawdza, czy dane wejściowe użytkownika zawierają tylko znaki "znane dobre", czy dane wejściowe są zgodne ze znanym formatem.
+    Na przykład może to oznaczać, że nazwa użytkownika zawiera tylko znaki alfanumeryczne lub że zawiera dokładnie dwie liczby.
 
-Umieszczania na białej liście jest preferowanym podejściem do tworzenia bezpiecznego oprogramowania.
-Wpisywanie na czarną listę jest podatne na błędy, ponieważ nie jest możliwe jest myśleć o pełnej listy potencjalnie nieprawidłowe dane wejściowe.
+Listy dozwolonych jest preferowanym podejściem do tworzenia bezpiecznego oprogramowania.
+Zabroniony jest podatny na błędy, ponieważ nie można myśleć o kompletnej liście potencjalnie nieprawidłowych danych wejściowych.
 
-Wykonaj tę pracę na serwerze, nie po stronie klienta (lub na serwerze i po stronie klienta).
+Wykonaj tę czynność na serwerze, a nie po stronie klienta (lub na serwerze i po stronie klienta).
 
-### <a name="verify-your-applications-outputs"></a>Sprawdź dane wyjściowe aplikacji
+### <a name="verify-your-applications-outputs"></a>Weryfikowanie danych wyjściowych aplikacji
 
-Żadnych danych wyjściowych, który przedstawić wizualnie lub w dokumencie zawsze powinien być kodowany i poprzedzone znakiem zmiany znaczenia. [Anulowanie](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29), znane również jako *kodowanie wyjścia*, służy do zapewnienia, że niezaufanych danych nie można przeprowadzić przy użyciu ataku polegającego na iniekcji. Anulowanie w połączeniu z sprawdzania poprawności danych, zawiera warstwowym mechanizmom obronnym, aby zwiększyć bezpieczeństwo systemu jako całości.
+Wszystkie dane wyjściowe, które można przedstawić wizualizację lub w dokumencie, powinny być zawsze kodowane i wyprowadzane. [Ucieczki](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29), znane także jako *kodowanie danych wyjściowych*, służy do zapewnienia, że niezaufane dane nie są pojazdem do ataku polegającego na iniekcji. Ucieczki, w połączeniu z walidacją danych, zapewnia ochronę warstwową, aby zwiększyć bezpieczeństwo systemu jako całości.
 
-Anulowanie sprawia, że się, że wszystko jest wyświetlany jako *danych wyjściowych.* Anulowanie umożliwia również interpreter wiedzieć, że dane nie są przeznaczone do wykonywania i zapobiega atakom pracy. Jest to inny ataku technikę o nazwie *skryptów między witrynami* (XSS).
+Ucieczki upewnia się, że wszystkie elementy są wyświetlane jako *dane wyjściowe.* Ucieczki pozwala również interpreterowi wiedzieć, że dane nie są przeznaczone do wykonania i uniemożliwiają one ataki. Jest to inna typowa technika ataków nazywana *skryptami między lokacjami* (XSS).
 
-Jeśli używasz struktury sieci web, od osób trzecich, można sprawdzić opcje danych wyjściowych kodowania w witrynach sieci Web przy użyciu [ściągawka dotycząca zapobiegania OWASP XSS](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md).
+Jeśli używasz platformy sieci Web od innej firmy, możesz sprawdzić opcje kodowania danych wyjściowych w witrynach sieci Web za pomocą [arkusza OWASP XSS zapobiegania Ściągawka](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md).
 
-### <a name="use-parameterized-queries-when-you-contact-the-database"></a>Użyć sparametryzowanych zapytań, gdy skontaktować się z bazy danych
+### <a name="use-parameterized-queries-when-you-contact-the-database"></a>Używanie sparametryzowanych zapytań podczas kontaktowania się z bazą danych
 
-Nigdy nie twórz wbudowane zapytanie bazy danych "w locie" w kodzie oraz wysyłać je bezpośrednio do bazy danych. Złośliwy kod wstawiać do aplikacji, mogą potencjalnie powodować skradzione, wyczyszczone lub zmodyfikowanie bazy danych. Aplikację można również uruchomić polecenia złośliwego systemu operacyjnego w systemie operacyjnym, który jest hostem bazy danych.
+Nigdy nie twórz wbudowanej kwerendy bazy danych "na bieżąco" w kodzie i wysyłaj ją bezpośrednio do bazy danych. Złośliwy kod wstawiony do aplikacji może potencjalnie spowodować kradzież, wymazania lub zmodyfikowania bazy danych. Aplikacja może również służyć do uruchamiania złośliwych poleceń systemu operacyjnego w systemie operacyjnym, który obsługuje bazę danych.
 
-Zamiast tego należy użyć sparametryzowanych zapytań lub procedur składowanych. Gdy używasz sparametryzowanych zapytań, można bezpiecznie wywołać procedury z kodu i przekazania go ciągu, nie martwiąc się, że będą traktowane jako część instrukcji kwerendy.
+Zamiast tego należy użyć sparametryzowanych zapytań lub procedur składowanych. W przypadku korzystania z zapytań parametrycznych można bezpiecznie wywołać procedurę z kodu i przekazać ją do ciągu bez obaw, że będzie on traktowany jako część instrukcji zapytania.
 
-### <a name="remove-standard-server-headers"></a>Usuwanie nagłówków standardowy serwer
+### <a name="remove-standard-server-headers"></a>Usuń nagłówki serwera standardowego
 
-Nagłówki, takich jak serwer X-obsługiwane — za i X-AspNet-Version ujawnić informacje dotyczące serwera i technologie bazowego. Firma Microsoft zaleca, aby pominąć te nagłówki, aby uniknąć odcisków aplikacji.
-Zobacz [usuwanie nagłówków standardowy serwer w usłudze Azure websites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
+Nagłówki, takie jak Server, X-by i X-AspNet-Version, ujawniają informacje o serwerze i podstawowych technologiach. Zaleca się, aby pominąć te nagłówki, aby uniknąć używania odcisku palca aplikacji.
+Zobacz [usuwanie nagłówków standardowego serwera w usłudze Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)websites.
 
-### <a name="segregate-your-production-data"></a>Oddzielenie czynności związanych z danymi produkcyjnymi
+### <a name="segregate-your-production-data"></a>Segregowanie danych produkcyjnych
 
-Danych produkcyjnych lub danych "członu real", nie powinien używane dla rozwoju, testowania i innych celów niż przeznaczone firmy. Maskowane ([anonimowe](https://en.wikipedia.org/wiki/Data_anonymization)) zestaw danych powinien być używany dla wszystkich programowania i testowania.
+Dane produkcyjne lub dane realowe nie powinny być używane do programowania, testowania ani żadnych innych celów niż to, czego dotyczy firma. Do wszystkich wdrożeń i testowania należy używać zestawu danych z maską ([anonimowe](https://en.wikipedia.org/wiki/Data_anonymization)).
 
-Oznacza to, że mniej osoby mają dostęp do danych rzeczywistych, co zmniejsza ataków. Oznacza to również, że mniejszej liczby pracowników Zobacz osobistych danych, które pozwala wyeliminować potencjalne naruszenia zabezpieczeń w poufności.
+Oznacza to, że mniejsza liczba osób ma dostęp do Twoich prawdziwych danych, co zmniejsza obszar narażony na ataki. Oznacza to również, że mniejsza liczba pracowników widzi dane osobowe, co eliminuje potencjalne naruszenie poufności.
 
-### <a name="implement-a-strong-password-policy"></a>Zaimplementuj silne hasła
+### <a name="implement-a-strong-password-policy"></a>Zaimplementuj zasady silnego hasła
 
-Obrony przed siłowych i oparte na słownik zgadywania, musisz zaimplementować zasady silnych haseł, aby upewnić się, że użytkownicy tworzyć złożone hasło (na przykład 12 znaków minimalnej długości i konieczności znakami alfanumerycznymi i specjalnymi).
+Aby chronić przed rozłożeniem i zgadywaniem na podstawie słownika, należy zaimplementować zasady silnego hasła, aby upewnić się, że użytkownicy tworzą złożone hasło (na przykład 12 znaków i wymagające znaków alfanumerycznych i specjalnych).
 
-Platforma tożsamości umożliwia tworzenie i wymuszanie zasad haseł. Usługa Azure AD B2C umożliwia zarządzanie hasłami, zapewniając [wbudowane zasady](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), [samoobsługowego resetowania haseł](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)i nie tylko.
+Możesz użyć struktury tożsamości do tworzenia i wymuszania zasad haseł. Azure AD B2C ułatwia zarządzanie hasłami, zapewniając [wbudowane zasady](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), samoobsługowe [resetowanie haseł](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)i wiele innych.
 
-Do ochrony przed atakami na domyślnych kontach, sprawdź wszystkich kluczy i haseł są zastąpienia i są one generowane lub zastąpiona po zainstalowaniu zasobów.
+Aby chronić przed atakami na kontach domyślnych, należy sprawdzić, czy wszystkie klucze i hasła są wymienne i czy są one generowane lub zastępowane po zainstalowaniu zasobów.
 
-Jeśli aplikacja musi automatycznego generowania haseł, upewnij się, że wygenerowanego hasła są losowych i mają o wysokiej entropii.
+Jeśli aplikacja musi automatycznie generować hasła, należy się upewnić, że wygenerowane hasła są losowe i mają wysoką entropię.
 
-### <a name="validate-file-uploads"></a>Sprawdź poprawność przekazywania plików
+### <a name="validate-file-uploads"></a>Weryfikuj operacje przekazywania plików
 
-Jeśli aplikacja zezwala [pliku przekazywania](https://www.owasp.org/index.php/Unrestricted_File_Upload), należy wziąć pod uwagę różne środki ostrożności, które można wykonać w przypadku takie ryzykowne działania. Pierwszym etapem wiele ataków jest uzyskanie niektórych złośliwego kodu do systemu, który jest atakowana. Przy użyciu przekazywanie pliku pomaga osoba atakująca to osiągnąć. OWASP oferuje rozwiązania do zweryfikowania pliku do upewnij się, że plik, który jest przekazywany jest bezpieczne.
+Jeśli aplikacja zezwala na [przekazywanie plików](https://www.owasp.org/index.php/Unrestricted_File_Upload), należy wziąć pod uwagę środki ostrożności, które można podjąć w celu zapewnienia ryzykownej aktywności. Pierwszym krokiem w wielu atakach jest uzyskanie złośliwego kodu w systemie, który jest w trakcie ataku. Zastosowanie przekazywania plików pomaga atakującemu. OWASP oferuje rozwiązania do walidacji pliku, aby upewnić się, że przekazywany plik jest bezpieczny.
 
-Ochrona przed złośliwym kodem ułatwia identyfikowanie i usuwanie wirusów, programów szpiegujących oraz innego złośliwego oprogramowania. Możesz zainstalować [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) lub rozwiązanie do ochrony punktu końcowego partnera firmy Microsoft ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Usługi Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10), i [programu System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
+Ochrona przed złośliwym oprogramowaniem pomaga identyfikować i usuwać wirusy, programy szpiegujące oraz inne złośliwe oprogramowanie. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](https://docs.microsoft.com/azure/security/azure-security-antimalware) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)i [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) zawiera funkcje, takie jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowaniem złośliwego oprogramowania, aktualizacji sygnatur, aktualizacje aparatu, przykłady raportowania i zbierania zdarzeń wykluczeń. Można zintegrować z rozwiązania Microsoft Antimalware i partnerów z [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) w celu ułatwienia wdrażania i wbudowane funkcje wykrywania (alerty i zdarzenia).
+[Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft](https://docs.microsoft.com/azure/security/azure-security-antimalware) oferuje takie funkcje jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowanie złośliwego oprogramowania, aktualizacje sygnatur, aktualizacje aparatu, raportowanie przykładów i zbieranie zdarzeń wykluczania. Możesz zintegrować rozwiązania firmy Microsoft chroniące przed złośliwym oprogramowaniem i partnerzy [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) , aby ułatwić wdrażanie i wbudowane wykrywanie (alerty i zdarzenia).
 
-### <a name="dont-cache-sensitive-content"></a>Nie buforuj poufnej zawartości
+### <a name="dont-cache-sensitive-content"></a>Nie Buforuj zawartości poufnej
 
-Nie buforuj poufnej zawartości w przeglądarce. Przeglądarki może przechowywać informacje o pamięci podręcznej i historię. Buforowane pliki są przechowywane w folderze, takich jak folderu tymczasowych plików internetowych, w przypadku programu Internet Explorer. Kiedy te strony są określane ponownie, przeglądarka wyświetla strony z pamięci podręcznej. Jeśli poufnych informacji (adres karty kredytowej, numer ubezpieczenia społecznego, nazwa użytkownika) jest wyświetlany użytkownikowi, informacje mogą być przechowywane w pamięci podręcznej przeglądarki i pobieranie, sprawdzając pamięci podręcznej przeglądarki lub po prostu nacisnąć przeglądarki **Ponownie** przycisku.
+Nie Buforuj poufnej zawartości w przeglądarce. Przeglądarki mogą przechowywać informacje o pamięci podręcznej i historii. Buforowane pliki są przechowywane w folderze, takim jak folder Temporary Internet Files, w przypadku programu Internet Explorer. Gdy te strony są ponownie określane, przeglądarka wyświetla strony z jej pamięci podręcznej. Jeśli użytkownik wyświetli informacje poufne (adres, szczegóły karty kredytowej, numer ubezpieczenia społecznego, nazwa użytkownika), informacje mogą być przechowywane w pamięci podręcznej przeglądarki i można je pobrać, przeglądając pamięć podręczną przeglądarki lub po prostu naciskając pozycję przeglądarki  **Przycisk Wstecz** .
 
 ## <a name="verification"></a>Weryfikacja
-Faza weryfikacji obejmuje kompleksowe nakład pracy, aby upewnić się, że dany kod spełnia założenia bezpieczeństwo i ochrona prywatności, które zostały utworzone w poprzednich faz.
+Faza weryfikacji obejmuje kompleksowe wysiłki w celu upewnienia się, że kod spełnia wymagania w zakresie bezpieczeństwa i ochrony prywatności, które zostały określone w poprzednich fazach.
 
-### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>Znajdowanie i eliminowanie luk w zabezpieczeniach w zależności aplikacji
+### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>Znajdowanie i rozwiązywanie luk w zabezpieczeniach zależności aplikacji
 
-Skanowania aplikacji i jej zależne biblioteki, aby zidentyfikować wszystkie znane składniki na ataki. Obejmują produkty, które są dostępne, aby wykonać to skanowanie [Sprawdzanie zależności OWASP](https://www.owasp.org/index.php/OWASP_Dependency_Check),[Snyk](https://snyk.io/), i [kaczka czarny](https://www.blackducksoftware.com/).
+Przeskanujesz aplikację i jej biblioteki zależne, aby zidentyfikować wszystkie znane składniki zagrożone. Produkty, które są dostępne do wykonania tego skanowania, obejmują [OWASPą kontrolę zależności](https://www.owasp.org/index.php/OWASP_Dependency_Check),[Snyk](https://snyk.io/)i [czarną kaczkę](https://www.blackducksoftware.com/).
 
-Skanowanie luk w zabezpieczeniach działającemu [usługi Tinfoil Security](https://www.tinfoilsecurity.com/) jest dostępna dla usługi Azure App Service Web Apps. [Usługi tinfoil Security skanowanie za pomocą usługi App Service](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) oferuje deweloperom i administratorom szybkie, zintegrowane i ekonomiczne metody odnajdywania i adresowania luk w zabezpieczeniach, zanim złośliwego aktora można z nich skorzystać.
+Skanowanie luk w zabezpieczeniach obsługiwane przez [Usługa TINFOIL Security](https://www.tinfoilsecurity.com/) jest dostępne dla Web Apps Azure App Service. [Usługa TINFOIL skanowania zabezpieczeń dzięki App Service](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) oferuje deweloperom i administratorom szybki, zintegrowany i ekonomiczny sposób odnajdywania i rozwiązywania luk w zabezpieczeniach, zanim złośliwy aktor nie będzie mógł korzystać z nich.
 
 > [!NOTE]
-> Możesz również [integracji usługi Tinfoil Security z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/tinfoil-security-tutorial). Integrowanie usługi Tinfoil Security z usługą Azure AD zapewnia następujące korzyści:
->  - W usłudze Azure AD można kontrolować, kto ma dostęp do usługi Tinfoil Security.
->  - Użytkownicy mogą być automatycznie zalogowany do usługi Tinfoil Security (logowanie jednokrotne) za pomocą ich kont usługi Azure AD.
->  - Możesz zarządzać kont użytkownika w jednym, centralnym miejscu witryny Azure portal.
+> Możesz także [zintegrować zabezpieczenia usługa TINFOIL z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/tinfoil-security-tutorial). Integracja zabezpieczeń usługa TINFOIL z usługą Azure AD zapewnia następujące korzyści:
+>  - W usłudze Azure AD można kontrolować, kto ma dostęp do zabezpieczeń usługa TINFOIL.
+>  - Użytkownicy mogą być automatycznie zarejestrowani w usłudze Usługa TINFOIL Security (Logowanie jednokrotne) za pomocą swoich kont usługi Azure AD.
+>  - Kontami można zarządzać w jednej, centralnej lokalizacji, Azure Portal.
 
-### <a name="test-your-application-in-an-operating-state"></a>Testowanie aplikacji w stanie działania
+### <a name="test-your-application-in-an-operating-state"></a>Testowanie aplikacji w stanie operacyjnym
 
-Aplikacja dynamiczna testowanie zabezpieczeń (DAST) to proces testowania aplikacji w stanie działania, aby znaleźć luki w zabezpieczeniach. Narzędzia DAST analizować programów, podczas, gdy są one wykonywane można znaleźć luki w zabezpieczeniach, takie jak uszkodzenie pamięci, konfiguracja serwera niezabezpieczone, skryptów między witrynami, problemy z uprawnieniami użytkownika, wstrzykiwanie kodu SQL i innych krytycznych bezpieczeństwem.
+Dynamiczne testowanie zabezpieczeń aplikacji (DAST) to proces testowania aplikacji w stanie operacyjnym w celu znalezienia luk w zabezpieczeniach. Narzędzia DAST analizują programy podczas wykonywania, aby znaleźć luki w zabezpieczeniach, takie jak uszkodzenie pamięci, niezabezpieczona konfiguracja serwera, skrypty między lokacjami, problemy z uprawnieniami użytkowników, iniekcja kodu SQL i inne krytyczne problemy z bezpieczeństwem.
 
-DAST różni się od zabezpieczeń aplikacji statyczne testowania (SAST). Narzędzia SAST analizowanie kodu źródłowego lub skompilowane wersje kodu, gdy nie wykonuje kod, aby można było znaleźć luki w zabezpieczeniach.
+DAST różni się od statycznego testowania zabezpieczeń aplikacji (SAST). Narzędzia SAST analizują kod źródłowy lub skompilowane wersje kodu, gdy kod nie jest wykonywany, aby znaleźć wady zabezpieczeń.
 
-Najlepiej wykonać DAST, przy pomocy professional zabezpieczeń ( [tester penetracji](https://docs.microsoft.com/azure/security/azure-security-pen-testing) lub jednostkę zajmującą się oceną luk w zabezpieczeniach). Jeśli professional zabezpieczeń jest niedostępna, możesz wykonać DAST samodzielnie za pomocą skanera serwera proxy sieci web i niektóre szkolenia. Podłącz skaner DAST na wczesnym etapie, aby upewnić się, że w kodzie, nie spowodują problemów bezpieczeństwa. Zobacz [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) witryny, aby uzyskać listę skanery luk w zabezpieczeniach aplikacji sieci web.
+Realizuj DAST, najlepiej z pomocą specjalisty ds. zabezpieczeń ( [testera penetracji](https://docs.microsoft.com/azure/security/azure-security-pen-testing) lub oceniania luk w zabezpieczeniach). Jeśli specjalista ds. zabezpieczeń nie jest dostępny, możesz samodzielnie wykonać DAST z użyciem skanera internetowego serwera proxy i niektórych szkoleń. Przede wszystkim Podłącz skaner DAST, aby upewnić się, że w kodzie nie wprowadzono oczywistych problemów z zabezpieczeniami. Zobacz witrynę [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) , aby uzyskać listę skanerów luk w zabezpieczeniach aplikacji sieci Web.
 
-### <a name="perform-fuzz-testing"></a>Testowanie argumentu rozmycie
+### <a name="perform-fuzz-testing"></a>Wykonaj testy rozmyte
 
-W [argumentu rozmycie testowania](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/), powodować awarię programu celowo wprowadzając źle sformułowane lub losowe dane do aplikacji. Wykonuje awarię programu pozwala ujawnić potencjalne problemy przed udostępnieniem aplikacji.
+W przypadku [testowania rozmytego](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)wywoływanie awarii programu polega na zamierzonym wprowadzeniu nieprawidłowo utworzonych lub losowo danych do aplikacji. Niepowodzenie programu ułatwia ujawnienie potencjalnych problemów z zabezpieczeniami przed wydaniem aplikacji.
 
-[Zagrożenie dla bezpieczeństwa, wykrywanie](https://docs.microsoft.com/security-risk-detection/) jest argumentu rozmycie unikatowy Microsoft testowania usługi służące do znajdowania usterek zabezpieczenia krytyczny w oprogramowaniu.
+[Wykrywanie zagrożeń bezpieczeństwa](https://docs.microsoft.com/security-risk-detection/) to wyjątkowa usługa testowania rozmytego firmy Microsoft do znajdowania usterek krytycznych dla zabezpieczeń w oprogramowaniu.
 
-### <a name="conduct-attack-surface-review"></a>Przeprowadzanie przeglądu powierzchni ataku
+### <a name="conduct-attack-surface-review"></a>Przeprowadź przegląd obszaru ataków
 
-Przeglądanie obszar narażony na ataki, po uzupełnianie kodu pomaga zapewnić, że wszelkie zaprojektowano lub zaimplementowano zmieni się z aplikacją lub uznawane za system. Pomaga upewnić się, że wszelkie nowe wektory ataków, które zostały utworzone w wyniku zmiany, w tym modele zagrożeń zostały przejrzane i uniemożliwione.
+Przeglądanie obszaru ataków po uzupełnianiu kodu pomaga upewnić się, że wszystkie zmiany projektu lub implementacji zostały uwzględnione w aplikacji lub systemie. Pomaga zapewnić, że wszystkie nowe wektory ataków, które zostały utworzone w wyniku zmian, w tym modele zagrożeń, zostały sprawdzone i skorygowane.
 
-Możesz utworzyć obraz obszar narażony na ataki przez skanowanie aplikacji. Firma Microsoft oferuje narzędzia analizy powierzchniowe ataku, o nazwie [analizatora powierzchni ataku](https://www.microsoft.com/download/details.aspx?id=24487). Można wybrać wiele komercyjnych testowania dynamicznej i luk w zabezpieczeniach skanowania narzędzia lub usługi, w tym [OWASP ' c ataku Proxy projektu](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/), i [w3af](http://w3af.sourceforge.net/). Te narzędzia skanowania można przeszukiwać w swojej aplikacji i zamapuj części aplikacji, które są dostępne w sieci web. Można także przeszukać w portalu Azure Marketplace podobne [narzędzi deweloperskich](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
+Możesz utworzyć zdjęcie obszaru ataków, skanując aplikację. Firma Microsoft oferuje narzędzie do analizy podatnej na ataki o nazwie [Analizator obszaru ataków](https://www.microsoft.com/download/details.aspx?id=24487). Możesz wybrać spośród wielu komercyjnych testów dynamicznych i narzędzi do skanowania, w tym [OWASP Zed, serwer proxy ataku](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/)i [w3af](http://w3af.sourceforge.net/). Te narzędzia do skanowania przeszukują aplikację i mapują elementy aplikacji, które są dostępne w sieci Web. Możesz również wyszukać podobne [Narzędzia deweloperskie](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1)w witrynie Azure Marketplace.
 
-### <a name="perform-security-penetration-testing"></a>Przeprowadzanie testów penetracyjnych zabezpieczeń
+### <a name="perform-security-penetration-testing"></a>Przeprowadź testowanie penetracji zabezpieczeń
 
-Zapewnienie, że aplikacja jest bezpieczna jest tak ważna jak testowania innych funkcji. Wprowadź [testów penetracyjnych](https://docs.microsoft.com/azure/security/azure-security-pen-testing) standardowa część procesu kompilacji i wdrażania. Zaplanuj testy regularne zabezpieczeń i wyszukiwaniu luk w zabezpieczeniach na wdrożonych aplikacji i Monitoruj otwartych portów, punktów końcowych i atakami.
+Upewnienie się, że aplikacja jest zabezpieczona, jest tak ważne jak testowanie wszelkich innych funkcji. Przetestowanie [penetracji](https://docs.microsoft.com/azure/security/azure-security-pen-testing) standardowej części procesu kompilowania i wdrażania. Zaplanuj regularne testy zabezpieczeń i skanowania w poszukiwaniu wdrożonych aplikacji oraz monitoruj otwarte porty, punkty końcowe i ataki.
 
-### <a name="run-security-verification-tests"></a>Uruchom testy weryfikacji zabezpieczeń
+### <a name="run-security-verification-tests"></a>Uruchom testy weryfikacyjne zabezpieczeń
 
-[Secure DevOps Kit dla platformy Azure](https://azsk.azurewebsites.net/index.html) (AzSK) zawiera SVTs dla wielu usług platformy Azure. Możesz uruchomić te SVTs okresowo, aby upewnić się, że Twoja subskrypcja platformy Azure i różnymi zasobami, wchodzące w skład aplikacji w stanie bezpiecznym. Testy te można też zautomatyzować przy użyciu funkcji rozszerzenia ciągłej integracji/ciągłego wdrażania (CI/CD) AzSK, co sprawia, że SVTs jest dostępna jako rozszerzenie programu Visual Studio.
+[Secure DevOps Kit dla platformy Azure](https://azsk.azurewebsites.net/index.html) (AzSK) zawiera SVTs dla wielu usług platformy Azure. Te SVTs są uruchamiane okresowo, aby mieć pewność, że Twoja subskrypcja platformy Azure i różne zasoby wchodzące w skład Twojej aplikacji są w stanie bezpiecznym. Możesz również zautomatyzować te testy przy użyciu funkcji rozszerzeń ciągłej integracji/ciągłego wdrażania (CI/CD) AzSK, która sprawia, że SVTs jest dostępna jako rozszerzenie programu Visual Studio.
 
-## <a name="next-steps"></a>Kolejne kroki
-W następujących artykułach firma Microsoft zaleca środki kontroli bezpieczeństwa i działań, które mogą pomóc Ci projektowanie i wdrażanie bezpiecznych aplikacji.
+## <a name="next-steps"></a>Następne kroki
+W poniższych artykułach zalecamy mechanizmy kontroli zabezpieczeń i działania, które mogą pomóc w projektowaniu i wdrażaniu bezpiecznych aplikacji.
 
 - [Projektowanie bezpiecznych aplikacji](secure-design.md)
-- [Wdrażaj bezpieczne aplikacje](secure-deploy.md)
+- [Wdrażanie bezpiecznych aplikacji](secure-deploy.md)

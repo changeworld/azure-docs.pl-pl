@@ -1,26 +1,26 @@
 ---
-title: Łączenie z usługami Azure Analysis Services z usługą Power BI | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak połączyć się z serwerem usług Azure Analysis Services przy użyciu usługi Power BI.
+title: Nawiązywanie połączenia z Azure Analysis Services przy użyciu Power BI | Microsoft Docs
+description: Dowiedz się, jak nawiązać połączenie z serwerem Azure Analysis Services przy użyciu Power BI.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cb93c29ae4cb8d365cd128c52ee726c10c94bc19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eadba5397655809dc4f3e6d5f9d6c79addde68a6
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023578"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619283"
 ---
 # <a name="connect-with-power-bi"></a>Łączenie z usługą Power BI
 
-Po utworzeniu serwera na platformie Azure i wdrożyć model tabelaryczny, użytkownicy w organizacji są gotowe nawiązać połączenie i rozpocząć eksplorowanie danych. 
+Po utworzeniu serwera na platformie Azure i wdrożeniu modelu tabelarycznego użytkownicy w organizacji są gotowi do nawiązywania połączeń i rozpoczęcia eksplorowania danych. 
 
 > [!TIP]
-> Należy używać najnowszej wersji [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+> Upewnij się, że korzystasz z najnowszej wersji [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
 > 
 > 
   
@@ -28,26 +28,26 @@ Po utworzeniu serwera na platformie Azure i wdrożyć model tabelaryczny, użytk
 
 1. W programie Power BI Desktop kliknij pozycję **Pobierz dane** > **Azure** > **Baza danych usług Azure Analysis Services**.
 
-2. W **serwera**, wprowadź nazwę serwera. Należy uwzględnić pełny adres URL; na przykład asazure://westcentralus.asazure.windows.net/advworks.
+2. W polu **serwer**wprowadź nazwę serwera. Pamiętaj, aby uwzględnić pełny adres URL; na przykład asazure://westcentralus.asazure.windows.net/advworks.
 
-3. W **bazy danych**, jeśli znasz nazwę bazy danych modelu tabelarycznego lub perspektywy, aby nawiązać połączenie, wklej go tutaj. W przeciwnym razie można pozostawić to pole puste i później wybierz bazę danych lub perspektywę.
+3. W **bazie danych**, jeśli znasz nazwę bazy danych modelu tabelarycznego lub perspektywę, z którą chcesz nawiązać połączenie, wklej ją w tym miejscu. W przeciwnym razie można pozostawić to pole puste i wybrać bazę danych lub perspektywę później.
 
-4. Wybierz opcję połączenie, a następnie naciśnij klawisz **Connect**. 
+4. Wybierz opcję połączenia, a następnie naciśnij przycisk **Połącz**. 
 
-    Zarówno **Połącz na żywo** i **importu** opcje są obsługiwane. Jednak zaleca się używanie połączenia na żywo, ponieważ tryb importu mają pewne ograniczenia; w szczególności serwera może mieć wpływ na wydajność podczas importowania. Ponadto, jeśli model ma być odświeżane w usłudze Power BI **zezwolić na dostęp z usługi Power BI** ustawienie ma zastosowanie tylko wtedy, gdy wybór **Połącz na żywo**.
+    Obsługiwane są zarówno opcje **Connect Live** , jak i **Import** . Zaleca się jednak korzystanie z połączeń na żywo, ponieważ tryb importu ma pewne ograniczenia; w szczególności może to mieć wpływ na wydajność serwera podczas importowania. Ponadto, jeśli model ma być odświeżany w usługa Power BI, ustawienie Zezwalaj na **dostęp z Power BI** ma zastosowanie tylko w przypadku wybrania opcji **Połącz na żywo**.
 
-5. Po wyświetleniu monitu wprowadź poświadczenia logowania. 
+5. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia logowania. 
 
-6. W **Nawigator**, rozwiń węzeł serwera, a następnie wybierz model lub perspektywy, aby nawiązać połączenie, a następnie kliknij przycisk **Connect**. Kliknij model lub perspektywy, aby wyświetlić wszystkie obiekty dla tego widoku.
+6. W **Nawigatorze**rozwiń serwer, a następnie wybierz model lub perspektywę, z którą chcesz się połączyć, a następnie kliknij przycisk **Połącz**. Kliknij model lub perspektywę, aby wyświetlić wszystkie obiekty dla tego widoku.
 
-    Model zostanie otwarty w programie Power BI Desktop od pustego raportu w widoku raportu. Na liście pola zostaną wyświetlone wszystkie obiekty modelu-ukryte. Stan połączenia jest wyświetlany w prawym dolnym rogu.
+    Model zostanie otwarty w Power BI Desktop z pustym raportem w widoku raportu. Na liście pola są wyświetlane wszystkie nieukryte obiekty modelu. Stan połączenia jest wyświetlany w prawym dolnym rogu.
 
-## <a name="connect-in-power-bi-service"></a>Łączenie w usłudze Power BI (usługa)
+## <a name="connect-in-power-bi-service"></a>Połącz w Power BI (usługa)
 
-1. Utwórz plik programu Power BI Desktop, który ma połączenie na żywo do modelu na serwerze.
-2. W [usługi Power BI](https://powerbi.microsoft.com), kliknij przycisk **Pobierz dane** > **pliki**, a następnie znajdź i wybierz swój plik pbix.
+1. Utwórz plik Power BI Desktop, który ma połączenie na żywo z modelem na serwerze.
+2. W [Power BI](https://powerbi.microsoft.com)kliknij pozycję **Pobierz** > **pliki**danych, a następnie Znajdź i wybierz plik pbix.
 
 ## <a name="see-also"></a>Zobacz także
-[Łączenie z usługami Azure Analysis Services](analysis-services-connect.md)   
+[Połącz z Azure Analysis Services](analysis-services-connect.md)   
 [Biblioteki klienckie](analysis-services-data-providers.md)
 

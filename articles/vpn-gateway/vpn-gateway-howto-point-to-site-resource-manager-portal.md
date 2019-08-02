@@ -1,26 +1,24 @@
 ---
-title: 'Połącz komputer z siecią wirtualną platformy Azure przy użyciu punkt-lokacja i natywnego platformy Azure uwierzytelniania certyfikatu: Azure Portal| Microsoft Docs'
-description: Bezpieczne łączenie klientów Windows, Mac OS X i Linux do sieci wirtualnej platformy Azure przy użyciu P2S i z podpisem własnym lub wystawionych certyfikatów urzędu certyfikacji. W tym artykule jest używana witryna Azure Portal.
+title: 'Połącz komputer z siecią wirtualną platformy Azure przy użyciu połączenia typu punkt-lokacja i natywnego uwierzytelniania certyfikatu platformy Azure: Azure Portal| Microsoft Docs'
+description: Bezpiecznie łącz klientów z systemami Windows, Mac OS X i Linux z siecią wirtualną platformy Azure przy użyciu P2S oraz certyfikatów wystawionych z podpisem własnym lub urzędu certyfikacji. W tym artykule jest używana witryna Azure Portal.
 services: vpn-gateway
 author: cherylmc
-tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 6/18/2019
+ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: 07bcf50a816c090ccef846909dff671486e514c4
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e603eed34aaff4ad7303819a730fea09a332b7a8
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203059"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706768"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu platformy Azure native: Azure Portal
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Skonfiguruj połączenie typu punkt-lokacja z siecią wirtualną przy użyciu natywnego uwierzytelniania certyfikatu platformy Azure: Azure Portal
 
-W tym artykule opisano sposób bezpiecznego łączenia poszczególnych klientów z systemem Windows, Linux lub Mac OS X z siecią wirtualną platformy Azure. Połączenia sieci VPN typu punkt-lokacja przydają się w przypadku, gdy celem użytkownika jest połączenie się z siecią wirtualną z lokalizacji zdalnej, podczas pracy zdalnej z domu lub konferencji. Możesz również użyć połączenia typu punkt-lokacja zamiast połączenia sieci VPN typu lokacja-lokacja w przypadku niewielkiej liczby klientów, którzy muszą się łączyć z siecią wirtualną. Połączenia typu punkt-lokacja nie wymagają urządzenia sieci VPN ani publicznego adresu IP. Połączenie typu punkt-lokacja tworzy połączenie sieci VPN nawiązywane za pośrednictwem protokołu SSTP (Secure Socket Tunneling Protocol) lub IKEv2. Aby uzyskać więcej informacji na temat połączeń sieci VPN typu punkt-lokacja, zobacz [About Point-to-Site VPN (Informacje o sieci VPN typu punkt-lokacja)](point-to-site-about.md).
+W tym artykule opisano sposób bezpiecznego łączenia poszczególnych klientów z systemem Windows, Linux lub Mac OS X w sieci wirtualnej platformy Azure. Połączenia sieci VPN typu punkt-lokacja przydają się w przypadku, gdy celem użytkownika jest połączenie się z siecią wirtualną z lokalizacji zdalnej, podczas pracy zdalnej z domu lub konferencji. Możesz również użyć połączenia typu punkt-lokacja zamiast połączenia sieci VPN typu lokacja-lokacja w przypadku niewielkiej liczby klientów, którzy muszą się łączyć z siecią wirtualną. Połączenia typu punkt-lokacja nie wymagają urządzenia sieci VPN ani publicznego adresu IP. Połączenie typu punkt-lokacja tworzy połączenie sieci VPN nawiązywane za pośrednictwem protokołu SSTP (Secure Socket Tunneling Protocol) lub IKEv2. Aby uzyskać więcej informacji na temat połączeń sieci VPN typu punkt-lokacja, zobacz [About Point-to-Site VPN (Informacje o sieci VPN typu punkt-lokacja)](point-to-site-about.md).
 
 ![Łączenie komputera z siecią wirtualną platformy Azure — diagram połączenie typu punkt-lokacja](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
-
 
 ## <a name="architecture"></a>Architektura
 
@@ -35,18 +33,18 @@ Natywne połączenia uwierzytelniania certyfikatów platformy Azure typu punkt-l
 
 Następujących wartości możesz użyć do tworzenia środowiska testowego lub odwoływać się do tych wartości, aby lepiej zrozumieć przykłady w niniejszym artykule:
 
-* **Nazwa sieci wirtualnej:** VNet1
+* **Nazwa sieci wirtualnej:** Sieć wirtualna 1
 * **Przestrzeń adresowa:** 192.168.0.0/16<br>W tym przykładzie zostanie wykorzystana tylko jedna przestrzeń adresowa. Istnieje możliwość użycia więcej niż jednej przestrzeni adresowej dla sieci wirtualnej.
-* **Nazwa podsieci:** FrontEnd
+* **Nazwa podsieci:** Fronton
 * **Zakres adresów podsieci:** 192.168.1.0/24
-* **Subskrypcja:** Jeśli masz więcej niż jedną subskrypcję, sprawdź, czy używane są poprawne.
+* **Subskrypcja:** Jeśli masz więcej niż jedną subskrypcję, sprawdź, czy używasz odpowiedniej.
 * **Grupa zasobów:** TestRG
-* **Lokalizacja:** Wschodnie stany USA
+* **Lokalizacja:** East US
 * **GatewaySubnet:** 192.168.200.0/24<br>
 * **Serwer DNS:** (opcjonalny) adres IP serwera DNS, który ma być używany do rozpoznawania nazw.
 * **Nazwa bramy sieci wirtualnej:** VNet1GW
-* **Typ bramy:** Sieć VPN
-* **Typ sieci VPN:** Oparte na trasach
+* **Typ bramy:** VPN
+* **Typ sieci VPN:** Oparte na trasie
 * **Nazwa publicznego adresu IP:** VNet1GWpip
 * **Typ połączenia:** Punkt-lokacja
 * **Pula adresów klienta:** 172.16.201.0/24<br>Klienci sieci VPN połączeni z siecią wirtualną, którzy korzystają z tego połączenia punkt-lokacja, otrzymują adresy IP z puli adresów klientów.
@@ -73,7 +71,7 @@ Po utworzeniu sieci wirtualnej możesz dodać adres IP serwera DNS, aby umożliw
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
 >[!NOTE]
->Podstawowa jednostka SKU nie obsługuje uwierzytelniania za pomocą protokołu IKEv2 ani usługi RADIUS. Jeśli planowane jest posiadanie Mac klienci łączą się z siecią wirtualną, nie należy używać podstawowej jednostki SKU.
+>Jednostka SKU bramy podstawowej nie obsługuje uwierzytelniania IKEv2 ani RADIUS. Jeśli planujesz, aby klienci z systemem Mac mogli łączyć się z siecią wirtualną, nie używaj podstawowej jednostki SKU.
 >
 
 ## <a name="generatecert"></a>5. Generowanie certyfikatów
@@ -98,7 +96,7 @@ Pula adresów klienta to określony przez Ciebie zakres prywatnych adresów IP. 
 2. Kliknij pozycję **Skonfiguruj teraz**, aby otworzyć stronę konfiguracji.
 
    ![Skonfiguruj teraz](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. Na stronie konfiguracja połączenia **Punkt-lokacja** w polu **Pula adresów** dodaj zakres prywatnych adresów IP, z którego chcesz korzystać. Klienci sieci VPN dynamicznie otrzymują adres IP z określonego zakresu. Maska podsieci minimalna jest 29 aktywny/pasywny i 28 bit w konfiguracji aktywny/aktywny. Kliknij pozycję **Zapisz**, aby zweryfikować i zapisać ustawienie.
+3. Na stronie konfiguracja połączenia **Punkt-lokacja** w polu **Pula adresów** dodaj zakres prywatnych adresów IP, z którego chcesz korzystać. Klienci sieci VPN dynamicznie otrzymują adres IP z określonego zakresu. Minimalna maska podsieci to 29 bitów dla aktywnych/pasywnych i 28 bitów w przypadku konfiguracji Active/Active. Kliknij pozycję **Zapisz**, aby zweryfikować i zapisać ustawienie.
 
    ![Pula adresów klienta](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
@@ -108,7 +106,7 @@ Pula adresów klienta to określony przez Ciebie zakres prywatnych adresów IP. 
 
 ## <a name="tunneltype"></a>7. Konfigurowanie typu tunelu
 
-Można wybrać typ tunelu. Opcje tuneli to OpenVPN, SSTP i IKEv2. Klient strongSwan w systemach Android i Linux oraz natywny klient sieci VPN IKEv2 w systemach iOS i OSX będą używać do łączenia się tylko tuneli IKEv2. Klienci w systemie Windows będą najpierw próbowali użyć protokołu IKEv2, a jeśli połączenie nie zostanie nawiązane, użyją protokołu SSTP. Klient OpenVPN służy do nawiązywania połączeń typu tunelu OpenVPN.
+Można wybrać typ tunelu. Dostępne są opcje tunelu OpenVPN, SSTP i IKEv2. Klient strongSwan w systemach Android i Linux oraz natywny klient sieci VPN IKEv2 w systemach iOS i OSX będą używać do łączenia się tylko tuneli IKEv2. Klienci w systemie Windows będą najpierw próbowali użyć protokołu IKEv2, a jeśli połączenie nie zostanie nawiązane, użyją protokołu SSTP. Klienta OpenVPN można użyć do nawiązania połączenia z typem tunelu OpenVPN.
 
 ![Typ tunelu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
@@ -172,7 +170,7 @@ Pliki konfiguracji klienta sieci VPN zawierają ustawienia do konfigurowania urz
 
 W oknie dialogowym Sieć znajdź profil klienta, którego chcesz użyć, określ ustawienia z pliku [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac), a następnie kliknij polecenie **Połącz**.
 
-Sprawdź [zainstalować - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) szczegółowe informacje. Jeśli występują problemy z połączeniem, sprawdź, czy brama sieci wirtualnej nie korzysta z podstawowej jednostki SKU. Podstawowa jednostka SKU nie jest obsługiwana dla klientów na komputery Mac.
+Aby uzyskać szczegółowe instrukcje, sprawdź [Install-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) . Jeśli występują problemy z połączeniem, sprawdź, czy Brama sieci wirtualnej nie używa podstawowej jednostki SKU. Podstawowa jednostka SKU nie jest obsługiwana w przypadku klientów na komputery Mac.
 
   ![Połączenie z komputerem Mac](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
@@ -238,7 +236,7 @@ Certyfikat klienta można odwołać przez dodanie odcisku palca do listy odwoła
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po zakończeniu procesu nawiązywania połączenia można dodać do sieci wirtualnych maszyny wirtualne. Aby uzyskać więcej informacji, zobacz [Virtual Machines](https://docs.microsoft.com/azure/) (Maszyny wirtualne). Aby dowiedzieć się więcej o sieci i maszynach wirtualnych, zobacz [Azure and Linux VM network overview](../virtual-machines/linux/azure-vm-network-overview.md) (Omówienie sieci maszyny wirtualnej z systemem Linux i platformy Azure).
 
 Aby uzyskać informacje dotyczące rozwiązywania problemów z połączeniem typu punkt-lokacja, zobacz [Troubleshooting Azure point-to-site connections (Rozwiązywanie problemów z połączeniami typu punkt-lokacja na platformie Azure)](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

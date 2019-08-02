@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e5674ffb4325eb27af8d0673b2d6ad5ba3a6195e
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854339"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592062"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -139,7 +139,7 @@ Wysoka dostępność można osiągnąć przez nawiązanie połączenia z siecią
 
 Musisz zaimplementować lokalny atrybut *preferencji* na routerach, aby upewnić się, że ścieżka z lokalnego do platformy Azure jest zawsze preferowana w obwodach usługi ExpressRoute.
 
-Więcej [szczegółowych informacji](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-of-microsoft-and-public-peerings) znajduje się w sekcji Wybór ścieżki BGP i typowe konfiguracje routera. 
+Więcej [szczegółowych informacji](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings) znajduje się w sekcji Wybór ścieżki BGP i typowe konfiguracje routera. 
 
 ### <a name="onep2plink"></a>Jeśli nie mam wspólnie w ramach wymiany w chmurze i usługodawcą oferuje połączenia punkt-punkt, czy muszę zamówić łączność obejmującą dwóch fizycznych połączeń między Moje między siecią lokalną a firmą Microsoft?
 

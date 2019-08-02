@@ -1,18 +1,19 @@
 ---
 title: Aktualizowanie pakietu zawartości programu Azure Backup Central Reporting
 description: Informacje o aktualizacjach pakietu zawartości Azure Backup w programie Power BI
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: kasinh
-ms.openlocfilehash: 984f87a514aa55fc18a92c6912145bc65cf21f4c
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 4e217148db42e10e8fe2046cbd062f0708011e96
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466601"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689317"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Aktualizowanie pakietu zawartości programu Azure Backup Central Reporting 
 

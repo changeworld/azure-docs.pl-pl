@@ -1,7 +1,7 @@
 ---
-title: Wprowadzenie do uczenia modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Wprowadzenie do szkolenia Conversation Learner model — Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak do nauczenia modelu, w tym gałęzi i szkolenie za pośrednictwem uczeń konwersacji do edycji.
+description: Dowiedz się, jak szkolić model, w tym rozgałęzianie i edytowanie poprzedniego szkolenia za pośrednictwem Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,94 +10,95 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 0bf5b71a4b0f51a586febbdaeaf8caba03c5b25a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: c657025ce588363cf76ce10868d809a9aff69222
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387921"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705628"
 ---
 # <a name="introduction-to-training"></a>Wprowadzenie do szkolenia
 
-W tym samouczku przedstawiono podstawy uczenia modelu, rozgałęzienia, poza nowego szkolenia dotyczącego na podstawie poprzednich szkolenia i edycji odpowiedzi Bot, aby można było je zmienić.
+W tym samouczku przedstawiono podstawowe informacje dotyczące uczenia modelu, rozgałęziania nowego szkolenia na podstawie poprzedniego szkolenia i edytowania odpowiedzi bot w celu ich zmiany.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Wprowadzenie do szkolenia samouczka (wersja zapoznawcza)](https://aka.ms/cl_Tutorial_v3_IntroTraining_Preview)](https://aka.ms/cl_Tutorial_v3_IntroTraining)
+[![Wprowadzenie do szkolenia samouczka w wersji zapoznawczej](https://aka.ms/cl_Tutorial_v3_IntroTraining_Preview)](https://aka.ms/cl_Tutorial_v3_IntroTraining)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa ogólne bot samouczek
+Ten samouczek wymaga, aby ogólny samouczek bot był uruchomiony
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
 
-- Akcje: Bot odpowiedzi na dane wejściowe użytkownika.
-- Train: Sposób możemy nauczyć Bot odpowiedzieć na dane wejściowe użytkownika.
-- Rozgałęzianie: Modyfikacja dane wejściowe użytkownika poziomu zapisane okna dialogowego Train na potrzeby tworzenia nowego okna dialogowego szkolenie, który rozpoczyna się taka sama jak oryginał, ale trwa konwersacji w innym kierunku.
+- Akcje: Odpowiedź Bot na dane wejściowe użytkownika.
+- Train: Sposób, w jaki bot się reagować na dane wejściowe użytkownika.
+- Rozgałęzianie Modyfikacja danych wprowadzonych przez użytkownika w oknie dialogowym zapisanego szkolenia na potrzeby tworzenia nowego okna dialogowego uczenia, które uruchamia się w taki sam sposób, jak oryginalne, ale wykonuje konwersację w innym kierunku.
 
 ## <a name="steps"></a>Kroki
 
 ### <a name="create-a-new-model"></a>Utwórz nowy model
 
-1. W Interfejsie użytkownika sieci Web kliknij przycisk Nowy Model
-2. Aby uzyskać "Name" wpisz "Inspiruj Bot". Następnie kliknij przycisk Utwórz.
+1. W interfejsie użytkownika sieci Web kliknij pozycję Nowy model.
+2. Dla elementu "name" wpisz "" bot ". Następnie kliknij przycisk Utwórz.
 
 ### <a name="create-an-action"></a>Tworzenie akcji
 
-1. Na lewym panelu kliknij przycisk "Akcje", a następnie przycisku "Nowa akcja".
-2. W "response Botów" Wprowadź "cześć! Czy chcesz inspiracja już dzisiaj? ".
-    - Pozostaw inne pola i pola wyboru ich ustawienie domyślne.
+1. Na panelu po lewej stronie kliknij pozycję akcje, a następnie przycisk "nowa akcja".
+2. W polu "odpowiedź bot" wpisz "Witaj! Czy chcesz już dzisiaj zainspirowanić? ".
+    - Pozostaw wszystkie pozostałe pola i pola wyboru w domyślnym ustawieniu.
 3. Kliknij pozycję Utwórz.
 
-### <a name="first-training-and-creating-another-action-while-training"></a>Najpierw szkolenia i Tworzenie kolejnej akcji podczas szkolenia
+### <a name="first-training-and-creating-another-action-while-training"></a>Pierwsze szkolenie i Tworzenie kolejnej akcji podczas szkolenia
 
-1. W lewym panelu kliknij przycisk "Okien dialogowych Train", a następnie przycisk "Nowy Train Dialog".
-2. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "hello". 
-    - Symuluje to użytkownika po stronie konwersacji.
-3. Kliknij przycisk "Wynik akcji".
-4. Wybierz odpowiedź "cześć! Czy chcesz inspiracja już dzisiaj? ".
-5. Jako użytkownik odpowie, "yes".
-6. Kliknij przycisk "Wynik akcji".
-7. Kliknij pozycję "+ akcji" przycisk. 
-    - Spowoduje to przejście do znanego okna dialogowego "Tworzenie Action".
-8. Wpisz odpowiedź Botów jako "Jesteś awesome!"
+1. Na panelu po lewej stronie kliknij pozycję "szkolenie okna dialogowego", a następnie przycisk "okno dialogowe nowego uczenia".
+2. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Hello". 
+    - To symuluje po stronie rozmowy.
+3. Kliknij pozycję "wyniki akcji".
+4. Wybierz odpowiedź "Witaj! Czy chcesz już dzisiaj zainspirowanić? ".
+5. W miarę jak użytkownik reaguje na, "tak".
+6. Kliknij pozycję "wyniki akcji".
+7. Kliknij przycisk "+ Akcja". 
+    - Spowoduje to przejście do znanego okna dialogowego "Tworzenie akcji".
+8. Wpisz odpowiedź bot jako "Jesteś awesome!"
 9. Kliknij pozycję Utwórz.
-10. Zwróć uwagę, natychmiast reaguje robota.
+10. Zwróć uwagę, że bot reaguje natychmiast.
 11. Kliknij przycisk "Zapisz".
 
-### <a name="branch-a-second-training-off-of-the-first-training"></a>Gałąź drugi szkolenia poza pierwszą szkolenia
-1. Kliknij wiersz siatki, który podsumowuje pierwszy szkolenia. 
-    - Dzięki temu można wyświetlać i edytować istniejące szkolenia.
-2. Kliknij pozycję "yes" odpowiedź użytkownika. 
-    - Udostępni to formanty edycji.
-3. Kliknij ikonę gałęzi. 
-    - Pojawi się monit o podanie różnych danych wejściowych użytkownika dla nowego konwersacji.
-4. Typ w "no", wprowadź trafień, lub kliknij przycisk "Utwórz". 
-    - W tym momencie masz nowe wystąpienie klasy okna dialogowego szkolenie, oryginalnego pozostaje bez zmian.
-5. Kliknij przycisk "Wynik akcji".
-6. Polecenie Bot nieprawidłowa odpowiedź, którą właśnie.
-7. Kliknij pozycję "+ akcji" przycisk 
-    - dzięki czemu możemy utworzyć nową akcję dla Bot odpowiadać przy użyciu.
-8. Wpisz odpowiedź Botów jako "nie ma problemu! Masz Miłego dnia!"
+### <a name="branch-a-second-training-off-of-the-first-training"></a>Rozgałęzianie drugiego szkolenia od pierwszego szkolenia
+1. Kliknij wiersz siatki, który podsumowuje pierwsze szkolenie. 
+    - Pozwala to wyświetlać i edytować istniejące szkolenie.
+2. Kliknij odpowiedź użytkownika "tak". 
+    - Spowoduje to udostępnienie kontrolek edycji.
+3. Kliknij ikonę rozgałęzienia. 
+    - Spowoduje to wyświetlenie monitu o inne dane wejściowe użytkownika dla nowej konwersacji.
+4. Wpisz "No", naciśnij klawisz ENTER lub kliknij przycisk "Utwórz". 
+    - W tym momencie będziesz mieć nowe wystąpienie okna dialogowego uczenia, oryginalne pozostanie niezmienione.
+5. Kliknij pozycję "wyniki akcji".
+6. Kliknij nieprawidłową odpowiedź bot.
+7. Kliknij przycisk "+ Akcja" 
+    - Dzięki temu możemy utworzyć nową akcję Bot na odpowiedź.
+8. Wpisz bot odpowiedź jako "nie ma problemu! Masz doskonały dzień! "
 9. Kliknięcie pozycji Utwórz
-10. Zwróć uwagę, natychmiast reaguje robota.
+10. Zwróć uwagę, że bot reaguje natychmiast.
 11. Kliknij przycisk "Zapisz".
 
-### <a name="test-the-trainings"></a>Testowanie szkoleniach
-1. W lewym panelu kliknij przycisk "Okien dialogowych dziennika", a następnie "Okno dialogowe Nowy dziennik".
-2. Wpisz komunikat, "hi". 
-3. Zwróć uwagę, Bot odpowiada automatycznie w taki sposób, szkoliliśmy go.
-4. Wpisz "yes" w odpowiedzi użytkownika.
-5. Zwróć uwagę, odpowiedź Bot pokazuje działa pierwszy szkolenia.
-6. Kliknij przycisk "Limit czasu sesji". Informuje uczeń konwersacji że chcemy ponownie rozpocząć ignorowanie włącza konwersacji, które po prostu miały miejsce.
-7. Wpisz komunikat, "hi". 
-8. Zwróć uwagę, Bot odpowiada automatycznie w taki sposób, szkoliliśmy go.
-9. Wpisz odpowiedź użytkownika "no".
-10. Zwróć uwagę, odpowiedź Bot pokazuje działa drugi szkolenia.
-11. Kliknij przycisk "Testowanie gotowe".
+### <a name="test-the-trainings"></a>Testowanie szkoleń
+1. Na panelu po lewej stronie kliknij pozycję "dzienniki okien dialogowych", a następnie polecenie "nowe okno dialogowe dziennika".
+2. Wpisz komunikat "Hi". 
+3. Zwróć uwagę, że bot reaguje automatycznie w sposób, w jaki został przeszkolony.
+4. Wpisz odpowiedź użytkownika, "tak".
+5. Zwróć uwagę na odpowiedź Botą, że pierwsze szkolenie działa.
+6. Kliknij przycisk "limit czasu sesji". Oznacza to, Conversation Learner chcemy ponownie rozpocząć pracę, ignorując przemieszczenie rozmowy, które miały miejsce.
+7. Wpisz komunikat "Hi". 
+8. Zwróć uwagę, że bot reaguje automatycznie w sposób, w jaki został przeszkolony.
+9. Wpisz odpowiedź użytkownika "nie".
+10. Zwróć uwagę na odpowiedź bot, która pokazuje, że drugie szkolenie działa.
+11. Kliknij przycisk "gotowe do testowania".
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Poczekaj chwilę i akcje-wait](./03-wait-vs-nonwait-actions.md)
+> [Akcje oczekiwania i nieoczekiwanie](./03-wait-vs-nonwait-actions.md)

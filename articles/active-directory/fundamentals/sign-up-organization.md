@@ -1,27 +1,27 @@
 ---
-title: Utwórz konto organizacji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Zarejestruj swoją organizację — Azure Active Directory | Microsoft Docs
 description: Instrukcje dotyczące sposobu logowania Twojej organizacji do używania platformy Azure i usługi Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bec4385b77ce44e87ed1f947a5a7a3e3d0d52fc6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb306e1ecbbdf2142d88b837b9750bbd2166cfda
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60246901"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561618"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Utwórz konto organizacji, aby usługa Azure Active Directory
-Załóż konto usługi Azure Active Directory (Azure AD) lub nowej subskrypcji Microsoft Azure za pomocą:
+Zarejestruj się w usłudze Azure Active Directory (Azure AD) lub nowej subskrypcji Microsoft Azure przy użyciu:
 
 - **Konto Microsoft.** Aby uzyskać dostęp do platformy Azure i wszystkich klientów indywidualnych produktów firmy Microsoft i usługi w chmurze, takich jak Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE lub usługi Office 365, należy użyć osobiste konto Microsoft. Założeniem Skrzynka pocztowa Outlook.com automatycznie tworzy konta Microsoft. Aby uzyskać więcej informacji, zobacz [Przegląd konta Microsoft](https://account.microsoft.com/account).
 

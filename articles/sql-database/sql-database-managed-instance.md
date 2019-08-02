@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: f4dc00623694fa1fd218f43e7bbd19edef48dec4
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 7c10bdf5e4f47f5bb5ac97b610c605132c4b4a00
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348112"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567216"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co to jest Azure SQL Database wystąpienie zarządzane?
 
@@ -58,14 +57,14 @@ W poniższej tabeli przedstawiono najważniejsze funkcje wystąpień zarządzany
 |---|---|
 | Wersja SQL Server/kompilacja | Aparat bazy danych SQL Server (Najnowsza stabilna) |
 | Zarządzane automatyczne kopie zapasowe | Tak |
-| Wbudowane wystąpienie i monitorowanie bazy danych oraz metryki | Tak |
+| Wbudowane wystąpienie i monitorowanie bazy danych oraz metryki | Yes |
 | Automatyczne stosowanie poprawek oprogramowania | Tak |
 | Najnowsze funkcje aparatu bazy danych | Tak |
 | Liczba plików danych (wierszy) na bazę danych | Wiele |
 | Liczba plików dziennika (dzienników) na bazę danych | 1 |
-| Wdrożenie Azure Resource Manager sieci wirtualnej | Yes |
+| Wdrożenie Azure Resource Manager sieci wirtualnej | Tak |
 | Model wdrażania klasycznego sieci wirtualnej | Nie |
-| Obsługa portalu | Yes|
+| Obsługa portalu | Tak|
 | Wbudowana usługa integracji (SSIS) | Nie — SSIS jest częścią [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Wbudowana usługa analizy (SSAS) | Nie — SSAS jest osobnym [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Wbudowana usługa raportowania (SSRS) | Nie używaj Power BI ani usług SSRS IaaS |
@@ -293,7 +292,7 @@ Opcja wdrożenia wystąpienia zarządzanego pozwala administratorowi systemu po�
 
 W poniższej tabeli przedstawiono kilka właściwości, które są dostępne za pomocą języka Transact SQL, za pomocą których można wykryć, że aplikacja pracuje z wystąpieniem zarządzanym i pobrać ważne właściwości.
 
-|Właściwość|Value|Komentarz|
+|Właściwość|Wartość|Komentarz|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) — 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ta wartość jest taka sama jak w SQL Database.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ta wartość jest taka sama jak w SQL Database.|

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 8f5e3958588a597bde04ae1c8e4873006b281458
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c490c9eb23ad62559a6246f1588f80080851014
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405821"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726043"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi QuickBooks Online przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -46,7 +46,7 @@ Następujące właściwości są obsługiwane w przypadku QuickBooks połączone
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Program QuickBooks** | Tak |
+| type | Właściwość Type musi mieć ustawioną wartość: **Programu** | Yes |
 | endpoint | Punkt końcowy serwera usługi QuickBooks Online. (czyli quickbooks.api.intuit.com)  | Yes |
 | companyId | Identyfikator firmy firmy QuickBooks, do autoryzacji. Aby uzyskać informacje o sposobach znajdowania Identyfikatora firmy, zobacz [jak znaleźć swój identyfikator firmy?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Yes |
 | consumerKey | Klucz klienta do uwierzytelniania protokołu OAuth 1.0. | Yes |
@@ -92,7 +92,7 @@ Aby skopiować dane z usługi QuickBooks Online, należy ustawić właściwość
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **QuickBooksObject** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **QuickBooksObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -102,11 +102,12 @@ Aby skopiować dane z usługi QuickBooks Online, należy ustawić właściwość
     "name": "QuickBooksDataset",
     "properties": {
         "type": "QuickBooksObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<QuickBooks linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -121,7 +122,7 @@ Aby skopiować dane z usługi QuickBooks Online, należy ustawić typ źródłow
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **QuickBooksSource** | Tak |
+| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **QuickBooksSource** | Yes |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

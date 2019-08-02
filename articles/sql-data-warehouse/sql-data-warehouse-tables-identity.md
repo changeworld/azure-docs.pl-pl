@@ -1,8 +1,8 @@
 ---
-title: Aby utworzyć klucze zastępczy — Azure SQL Data Warehouse przy użyciu tożsamości | Dokumentacja firmy Microsoft
-description: Zalecenia i przykłady dotyczące tworzenia kluczy zastępczych dla tabel w usłudze Azure SQL Data Warehouse za pomocą właściwości tożsamości.
+title: Używanie tożsamości do tworzenia kluczy zastępczych — Azure SQL Data Warehouse | Microsoft Docs
+description: Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,26 +10,26 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 19a06d0fdff324dc3bee246ef7a5a7011c089872
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c65bf7cc8edfa246508bb22001aed40c34414f3
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851594"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515591"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Aby utworzyć klucze zastępczy w usłudze Azure SQL Data Warehouse przy użyciu tożsamości
+# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Używanie tożsamości do tworzenia kluczy zastępczych w Azure SQL Data Warehouse
 
-Zalecenia i przykłady dotyczące tworzenia kluczy zastępczych dla tabel w usłudze Azure SQL Data Warehouse za pomocą właściwości tożsamości.
+Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w Azure SQL Data Warehouse.
 
 ## <a name="what-is-a-surrogate-key"></a>Co to jest klucz zastępczy
 
-Klucz zastępczy w tabeli jest kolumną o unikatowym identyfikatorze dla każdego wiersza. Klucz nie jest generowana z danych tabeli. Aby utworzyć klucze zastępczy na ich tabel, podczas projektowania modeli magazynu danych, takich jak modelujące dane. Właściwość tożsamości umożliwia osiągnięcie tego celu po prostu i skutecznie bez wpływu na wydajność obciążenia.  
+Klucz zastępczy w tabeli jest kolumną o unikatowym identyfikatorze dla każdego wiersza. Klucz nie jest generowany na podstawie danych tabeli. Modele danych, takie jak tworzenie kluczy zastępczych w tabelach, podczas projektowania modeli magazynu danych. Można użyć właściwości IDENTITY do osiągnięcia tego celu po prostu i efektywnie bez wpływu na wydajność ładowania.  
 
-## <a name="creating-a-table-with-an-identity-column"></a>Tworzenie tabeli z kolumną IDENTITY
+## <a name="creating-a-table-with-an-identity-column"></a>Tworzenie tabeli z kolumną tożsamości
 
-Właściwość IDENTITY jest przeznaczony do skalowania we wszystkich dystrybucjach w magazynie danych bez wpływu na wydajność obciążenia. Dlatego implementacja tożsamości jest opracowane głównie pod kątem osiągnięcie tych celów.
+Właściwość IDENTITY została zaprojektowana w celu skalowania w poziomie między wszystkimi dystrybucjami w hurtowni danych bez wpływu na wydajność ładowania. W związku z tym implementacja tożsamości jest ukierunkowana na osiągnięcie tych celów.
 
-Można zdefiniować tabelę jako mające właściwość tożsamości, podczas tworzenia tabeli za pomocą składni, która jest podobna do następującej instrukcji:
+Można zdefiniować tabelę jako mającą właściwość IDENTITY podczas pierwszej tworzenia tabeli przy użyciu składni podobnej do następującej:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -43,15 +43,15 @@ WITH
 ;
 ```
 
-Następnie można użyć `INSERT..SELECT` do wypełniania tabeli.
+Można następnie użyć `INSERT..SELECT` , aby wypełnić tabelę.
 
-Ta dalszej części tej sekcji wyróżnia wszystkie szczegóły implementacji, aby lepiej zrozumieć je dokładniej.  
+W tym pozostałej części tej sekcji przedstawiono wszystkie szczegóły wdrożenia, aby ułatwić zrozumienie ich w pełni.  
 
 ### <a name="allocation-of-values"></a>Alokacja wartości
 
-Właściwość tożsamości nie gwarantuje kolejności, w którym wartości zastępcze są przydzielane, w której odzwierciedla zachowanie programu SQL Server i usługi Azure SQL Database. Jednak w usłudze Azure SQL Data Warehouse i braku gwarancji jest większa.
+Właściwość IDENTITY nie gwarantuje kolejności, w której są przyliczane wartości zastępcze, co odzwierciedla zachowanie SQL Server i Azure SQL Database. Jednak w Azure SQL Data Warehouse nie ma więcej informacji na temat braku gwarancji.
 
-Poniższy przykład jest ilustrację:
+Poniższy przykład jest ilustracją:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -76,34 +76,34 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-W powyższym przykładzie dwa wiersze otwarta dystrybucji 1. Pierwszy wiersz zawiera wartość zastępcza 1 w kolumnie `C1`, a drugi wiersz zawiera wartość zastępcza 61. Obie te wartości zostały wygenerowane przez właściwość tożsamości. Jednak alokacji wartości nie jest ciągły. To zachowanie jest celowe.
+W poprzednim przykładzie dwa wiersze wyładowywane w dystrybucji 1. Pierwszy wiersz ma wartość zastępczą 1 w kolumnie `C1`, a drugi wiersz ma wartość zastępczą 61. Obie te wartości zostały wygenerowane przez właściwość IDENTITY. Jednak alokacja wartości nie jest ciągła. To zachowanie jest celowe.
 
-### <a name="skewed-data"></a>Niesymetryczne dane
+### <a name="skewed-data"></a>Skośne dane
 
-Zakres wartości dla typu danych zostały rozmieszczone równomiernie między dystrybucjami. Jeśli tabelę z dystrybucją odczuwa niesymetryczne dane, zakres wartości, które są dostępne na typ danych może wyczerpać przedwcześnie. Na przykład jeśli wszystkie dane będą istnieć w jednym dystrybucję, następnie efektywnie tabeli ma dostęp do tylko jednej szóstej wartości o typie danych. Z tego powodu właściwość IDENTITY jest ograniczona do `INT` i `BIGINT` tylko typy danych.
+Zakres wartości dla typu danych jest równomiernie rozłożony przez dystrybucje. Jeśli tabela rozproszona pogorszy się od pochylonych danych, zakres wartości dostępnych dla tego elementu DataType może zostać przedwcześnie wyczerpany. Na przykład, jeśli wszystkie dane kończą się w ramach jednej dystrybucji, efektywnie tabela ma dostęp tylko do jednej sixtieth wartości typu danych. Z tego powodu właściwość Identity jest ograniczona tylko do `INT` `BIGINT` typów danych.
 
-### <a name="selectinto"></a>WYBIERZ... DO
+### <a name="selectinto"></a>WYBIERZ POZYCJĘ.. PRZEKSZTAŁCA
 
-Wybranie istniejącej kolumny tożsamości do nowej tabeli nowej kolumny, która dziedziczy właściwości tożsamości, o ile nie jest spełniony jeden z następujących warunków:
+Po wybraniu istniejącej kolumny tożsamości w nowej tabeli, Nowa kolumna dziedziczy właściwość IDENTITY, chyba że jest spełniony jeden z następujących warunków:
 
-- Instrukcja SELECT zawiera instrukcję join.
-- Wiele instrukcji "SELECT" są sprzęgane przy użyciu Unii.
-- W kolumnie tożsamości znajduje się więcej niż jeden raz na liście wyboru.
+- Instrukcja SELECT zawiera sprzężenie.
+- Wielokrotne instrukcje SELECT są sprzężone przy użyciu UNION.
+- Kolumna tożsamości jest wymieniona więcej niż jeden raz na liście wyboru.
 - Kolumna tożsamości jest częścią wyrażenia.
 
-Jeśli jeden z tych warunków jest spełniony, kolumna jest tworzony NOT NULL zamiast dziedziczy właściwości tożsamości.
+Jeśli którykolwiek z tych warunków ma wartość true, kolumna zostanie utworzona nie NULL zamiast dziedziczyć właściwość IDENTITY.
 
-### <a name="create-table-as-select"></a>UTWÓRZ TABLE AS SELECT
+### <a name="create-table-as-select"></a>CREATE TABLE JAKO WYBRANE
 
-CREATE TABLE AS SELECT (CTAS) jest zgodna takie samo zachowanie programu SQL Server, który opisano w wybierz... DO. Jednak nie można określić właściwość tożsamości w definicji kolumny `CREATE TABLE` element instrukcji. Ponadto nie można używać funkcji IDENTITY w `SELECT` wchodzi w skład CTAS. Aby wypełnić tabelę, należy użyć `CREATE TABLE` do definiowania tabeli, a następnie `INSERT..SELECT` wypełnić.
+CREATE TABLE jako SELECT (CTAS) ma takie samo zachowanie SQL Server, które zostało udokumentowane w przypadku WYBRANia.. Przekształca. Nie można jednak określić właściwości Identity w definicji `CREATE TABLE` kolumny części instrukcji. Nie można również użyć funkcji Identity w `SELECT` części CTAs. Aby wypełnić tabelę, należy użyć `CREATE TABLE` do zdefiniowania tabeli, `INSERT..SELECT` a następnie jej wypełnienia.
 
-## <a name="explicitly-inserting-values-into-an-identity-column"></a>Jawnie wstawiania wartości do kolumny tożsamości
+## <a name="explicitly-inserting-values-into-an-identity-column"></a>Jawne wstawianie wartości do kolumny tożsamości
 
-Usługa SQL Data Warehouse obsługuje `SET IDENTITY_INSERT <your table> ON|OFF` składni. Można użyć tej składni jawnie wstawiania wartości do kolumny tożsamości.
+SQL Data Warehouse obsługuje `SET IDENTITY_INSERT <your table> ON|OFF` składnię. Możesz użyć tej składni, aby jawnie wstawić wartości do kolumny tożsamość.
 
-Wiele modelujące dane, takie jak używać wstępnie zdefiniowanych wartości ujemnych dla niektórych wierszy w wymiarami. Przykładem jest wiersza "Nieznany element członkowski" lub wartość -1.
+Wiele modeli danych, takich jak użycie wstępnie zdefiniowanych wartości ujemnych dla niektórych wierszy w ich wymiarach. Przykładem jest wiersz-1 lub "nieznany element członkowski".
 
-Następny skrypt pokazuje, jak jawnie dodać tego wiersza przy użyciu USTAWIONY atrybut IDENTITY_INSERT:
+Następny skrypt pokazuje, jak jawnie dodać ten wiersz przy użyciu SET IDENTITY_INSERT:
 
 ```sql
 SET IDENTITY_INSERT dbo.T1 ON;
@@ -124,11 +124,11 @@ FROM    dbo.T1
 
 ## <a name="loading-data"></a>Ładowanie danych
 
-Obecność właściwości tożsamości ma pewne skutki dla kodu ładowania danych. W tej sekcji przedstawiono niektóre podstawowe wzorce do ładowania danych do tabel przy użyciu tożsamości.
+Obecność właściwości IDENTITY ma pewne konsekwencje związane z kodem ładowania danych. W tej sekcji przedstawiono podstawowe wzorce dotyczące ładowania danych do tabel przy użyciu tożsamości.
 
-Aby załadować dane do tabeli i wygenerować klucz zastępczy przy użyciu tożsamości, utworzyć tabelę, a następnie użyj INSERT... Wybierz lub Wstaw... WARTOŚCI do wykonywania obciążenia.
+Aby załadować dane do tabeli i wygenerować klucz zastępczy przy użyciu tożsamości, należy utworzyć tabelę, a następnie użyć instrukcji INSERT.. Wybierz lub Wstaw.. WARTOŚCI do wykonania ładowania.
 
-W poniższym przykładzie wyróżniono podstawowy wzorzec:
+Poniższy przykład wyróżnia wzorzec podstawowy:
 
 ```sql
 --CREATE TABLE with IDENTITY
@@ -157,16 +157,16 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> Nie jest możliwe użycie `CREATE TABLE AS SELECT` obecnie, podczas ładowania danych do tabeli z kolumną tożsamości.
+> Obecnie nie jest możliwe użycie `CREATE TABLE AS SELECT` podczas ładowania danych do tabeli z kolumną tożsamości.
 >
 
-Aby uzyskać więcej informacji na temat ładowania danych, zobacz [projektowania wyodrębnianie, ładowania i przekształcania (ELT) dla usługi Azure SQL Data Warehouse](design-elt-data-loading.md) i [najlepsze rozwiązania dotyczące ładowania](guidance-for-loading-data.md).
+Aby uzyskać więcej informacji na temat ładowania danych, zobacz [projektowanie wyodrębniania, ładowania i przekształcania (ELT) w celu Azure SQL Data Warehouse](design-elt-data-loading.md) i [ładowania najlepszych](guidance-for-loading-data.md)rozwiązań.
 
 ## <a name="system-views"></a>Widoki systemowe
 
-Możesz użyć [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) katalogu widoku, aby określić kolumny, która ma właściwość tożsamości.
+Możesz użyć widoku wykazu [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) , aby zidentyfikować kolumnę, która ma właściwość Identity.
 
-Aby pomóc Ci lepiej zrozumieć schemat bazy danych, w tym przykładzie pokazano, jak zintegrować sys.identity_column "z innymi widokami katalog systemu:
+Aby lepiej zrozumieć schemat bazy danych, w tym przykładzie pokazano, jak zintegrować sys. identity_column ' z innymi widokami wykazu systemu:
 
 ```sql
 SELECT  sm.name
@@ -188,15 +188,15 @@ AND     tb.name = 'T1'
 
 ## <a name="limitations"></a>Ograniczenia
 
-Nie można użyć właściwości tożsamości:
+Nie można użyć właściwości IDENTITY:
 
-- Gdy typ danych kolumny nie jest INT lub BIGINT
-- Jeśli kolumna jest również klucza dystrybucji
-- Jeśli tabela jest tabeli zewnętrznej
+- Gdy typem danych kolumny nie jest INT lub BIGINT
+- Gdy kolumna jest również kluczem dystrybucji
+- Gdy tabela jest tabelą zewnętrzną
 
-Następujące funkcje powiązane nie są obsługiwane w usłudze SQL Data Warehouse:
+Następujące powiązane funkcje nie są obsługiwane w SQL Data Warehouse:
 
-- [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
+- [TOŻSAMOŚĆ ()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
 - [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql)
 - [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
@@ -205,22 +205,22 @@ Następujące funkcje powiązane nie są obsługiwane w usłudze SQL Data Wareho
 
 ## <a name="common-tasks"></a>Typowe zadania
 
-W tej sekcji przedstawiono przykładowy kod służących do wykonywania typowych zadań, podczas pracy z kolumn tożsamości.
+Ta sekcja zawiera przykładowy kod, którego można użyć do wykonywania typowych zadań podczas pracy z kolumnami tożsamości.
 
-Kolumna C1 to tożsamość w następujące zadania.
+Kolumna C1 jest TOŻSAMOŚCIą we wszystkich następujących zadaniach.
 
-### <a name="find-the-highest-allocated-value-for-a-table"></a>Znajdź najwyższą wartość przydzielonego dla tabeli
+### <a name="find-the-highest-allocated-value-for-a-table"></a>Znajdź najwyższą przydzieloną wartość dla tabeli
 
-Użyj `MAX()` funkcję, aby określić najwyższą wartość przydzielone dystrybuowanej tabeli:
+Użyj funkcji `MAX()` , aby określić największą wartość przydzieloną dla rozproszonej tabeli:
 
 ```sql
 SELECT MAX(C1)
 FROM dbo.T1
 ```
 
-### <a name="find-the-seed-and-increment-for-the-identity-property"></a>Znajdź początkowej i wartości przyrostu dla właściwości tożsamości
+### <a name="find-the-seed-and-increment-for-the-identity-property"></a>Znajdź inicjator i przyrost dla właściwości IDENTITY
 
-Widoków wykazu służy do odnajdywania inkrementacji i inicjatora konfiguracji wartości tożsamości dla tabeli przy użyciu następującej kwerendy:
+Widoków wykazu można użyć do odnajdywania wartości konfiguracji przyrostu i inicjatora tożsamości dla tabeli przy użyciu następującej kwerendy:
 
 ```sql
 SELECT  sm.name
@@ -238,8 +238,8 @@ AND     tb.name = 'T1'
 ;
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Omówienie tabel](/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)
-- [Tworzenie tożsamości TABLE (Transact-SQL) (właściwość)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)
+- [TOŻSAMOŚĆ CREATE TABLE (Transact-SQL) (Właściwość)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)
 - [POLECENIE DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)

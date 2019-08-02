@@ -1,18 +1,19 @@
 ---
 title: Rozwiązywanie problemów ze składnikiem Azure Backup Server
 description: Rozwiązywanie problemów z instalacją, rejestracją Azure Backup Server oraz wykonywaniem kopii zapasowych i przywracaniem obciążeń aplikacji.
-author: srinathvasireddy
-manager: sivan
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: srinathv
-ms.openlocfilehash: f601901ed0cb90421dbf7254d657ef80e1769541
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: c08acaf65cd42abd9db97fab1267ce5628595b78
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466088"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689267"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Rozwiązywanie problemów ze składnikiem Azure Backup Server
 
@@ -99,7 +100,7 @@ Przed rozpoczęciem rozwiązywania problemów Microsoft Azure Backup Server (ser
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
 | Tworzenie kopii zapasowej | Gdy zadanie było uruchomione, wystąpił nieoczekiwany błąd. Urządzenie nie jest gotowe. | **Jeśli zalecana akcja wyświetlana w produkcie nie działa, wykonaj następujące czynności:** <br> <ul><li>Ustaw w obszarze magazyn kopii w tle opcję nieograniczone na elementy w grupie ochrony, a następnie Uruchom sprawdzanie spójności.<br></li> (OR) <li>Spróbuj usunąć istniejącą grupę ochrony i utworzyć wiele nowych grup. Każda nowa grupa ochrony powinna mieć poszczególne elementy.</li></ul> |
-| Tworzenie kopii zapasowej | Jeśli wykonujesz kopię zapasową tylko stanu systemu, sprawdź, czy na chronionym komputerze jest wystarczająca ilość wolnego miejsca do przechowywania kopii zapasowej stanu systemu. | <ol><li>Sprawdź, czy na chronionej maszynie jest zainstalowany Kopia zapasowa systemu Windows Server.</li><li>Sprawdź, czy na chronionym komputerze jest wystarczająca ilość miejsca na potrzeby stanu systemu. Najprostszym sposobem sprawdzenia, czy jest przejście do komputera chronionego, otwarcie Kopia zapasowa systemu Windows Server, kliknięcie opcji, a następnie wybranie opcji BMR. Interfejs użytkownika wskazuje, ile miejsca jest wymagane. Otwórz  >  > **harmonogram** >  kopii zapasowych lokalnych kopii zapasowych WSB wybierz kolejno pozycje Konfiguracja kopii zapasowej pełny serwer (rozmiar jest wyświetlany). >  Użyj tego rozmiaru do weryfikacji.</li></ol>
+| Tworzenie kopii zapasowej | Jeśli wykonujesz kopię zapasową tylko stanu systemu, sprawdź, czy na chronionym komputerze jest wystarczająca ilość wolnego miejsca do przechowywania kopii zapasowej stanu systemu. | <ol><li>Sprawdź, czy na chronionej maszynie jest zainstalowany Kopia zapasowa systemu Windows Server.</li><li>Sprawdź, czy na chronionym komputerze jest wystarczająca ilość miejsca na potrzeby stanu systemu. Najprostszym sposobem sprawdzenia, czy jest przejście do komputera chronionego, otwarcie Kopia zapasowa systemu Windows Server, kliknięcie opcji, a następnie wybranie opcji BMR. Interfejs użytkownika wskazuje, ile miejsca jest wymagane. Otwórz >  > **harmonogram** > kopii zapasowych lokalnych kopii zapasowych WSB wybierz kolejno pozycje Konfiguracja kopii zapasowej pełny serwer (rozmiar jest wyświetlany). >  Użyj tego rozmiaru do weryfikacji.</li></ol>
 | Tworzenie kopii zapasowej | Niepowodzenie tworzenia kopii zapasowej dla BMR | Jeśli rozmiar BMR jest duży, przenieś niektóre pliki aplikacji na dysk systemu operacyjnego i spróbuj ponownie. |
 | Tworzenie kopii zapasowej | Opcja ponownego włączania ochrony maszyny wirtualnej VMware na nowym serwerze Microsoft Azure Backup nie jest wyświetlana jako dostępna do dodania. | Właściwości VMware są wskazywane w starym, wycofanym wystąpieniu Microsoft Azure Backup Server. Aby rozwiązać ten problem:<br><ol><li>W programie VCenter (odpowiednik w programie SC-VMM) przejdź do karty **Podsumowanie** , a następnie do pozycji **atrybuty niestandardowe**.</li>  <li>Usuń starą nazwę serwera Microsoft Azure Backup z wartości **DPMServer** .</li>  <li>Wróć do nowego serwera Microsoft Azure Backup i zmodyfikuj PG.  Po wybraniu przycisku **Odśwież** , maszyna wirtualna zostanie wyświetlona z polem wyboru, które jest dostępne do dodania do ochrony.</li></ol> |
 | Tworzenie kopii zapasowej | Wystąpił błąd podczas uzyskiwania dostępu do plików/folderów udostępnionych | Spróbuj zmodyfikować ustawienia oprogramowania antywirusowego zgodnie z opisem w artykule w witrynie TechNet [Uruchamianie oprogramowania antywirusowego na serwerze programu DPM](https://technet.microsoft.com/library/hh757911.aspx).|
@@ -147,4 +148,4 @@ Nie można utworzyć migawki woluminu źródłowego z powodu niespójnej repliki
 
 Komunikat o błędzie | Zalecana akcja |
 -- | --
-Tworzenie kopii zapasowej nie powiodło się, ponieważ nie można sklonować repliki kopii zapasowej dysku.| Upewnij się, że wszystkie wcześniejsze pliki repliki kopii zapasowej (VHDX) są odinstalowane i nie są wykonywane żadne kopie zapasowe dysku w trakcie wykonywania kopii zapasowych online
+Próba utworzenia kopii zapasowej nie powiodła się, ponieważ nie można sklonować repliki kopii zapasowej na dysku.| Upewnij się, że wszystkie wcześniejsze pliki repliki kopii zapasowej (VHDX) są odinstalowane i nie są wykonywane żadne kopie zapasowe dysku w trakcie wykonywania kopii zapasowych online

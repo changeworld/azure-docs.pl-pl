@@ -1,6 +1,6 @@
 ---
-title: Wskazówki dotyczące na przykład w aplikacji wielodostępnej bazy danych SQL — SaaS o nazwie Wingtip | Dokumentacja firmy Microsoft
-description: Zawiera wskazówki i kroki umożliwiające instalowanie i uruchamianie przykładowej aplikacji wielodostępnych, która korzysta z usługi Azure SQL Database, w przykładzie SaaS o nazwie Wingtip Tickets.
+title: Wskazówki dotyczące SQL Database przykładu aplikacji z wieloma dzierżawcami — Wingtip SaaS | Microsoft Docs
+description: Zawiera instrukcje i wskazówki dotyczące instalowania i uruchamiania przykładowej aplikacji wielodostępnej, która używa Azure SQL Database, bilety Wingtip SaaS.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -10,63 +10,62 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 758cb47760f4a15e262a4d682089ac7d9fee64e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c14fd69521be85dbda5ec4ceda991dfdff54ae0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326277"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570069"
 ---
-# <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Ogólne wskazówki dotyczące pracy z Wingtip Tickets przykładowe aplikacje SaaS
+# <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Ogólne wskazówki dotyczące pracy z Wingtip bilety przykładowe aplikacje SaaS
 
-Ten artykuł zawiera ogólne wskazówki dotyczące uruchamiania aplikacji SaaS przykładowej aplikacji Wingtip Tickets, korzystających z usługi Azure SQL Database. 
+Ten artykuł zawiera ogólne wskazówki dotyczące uruchamiania Wingtip biletów przykładowych aplikacji SaaS, które używają Azure SQL Database. 
 
-## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Pobierz i odblokować skrypty SaaS o nazwie Wingtip Tickets
+## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Pobieranie i odblokowywanie Wingtip biletów SaaS
 
-Zawartość pliku wykonywalnego (skrypty, biblioteki dll) może być blokowany przez Windows, gdy pliki zip są pobierane z zewnętrznego źródła i wyodrębnić. Podczas wyodrębniania skryptów z pliku zip **wykonaj poniższe kroki, aby odblokować plik zip weryfikowany przed wyodrębnianiem**. Dzięki temu można uruchamiać skrypty.
+Zawartość wykonywalna (skrypty, biblioteki dll) może być blokowana przez system Windows, gdy pliki zip są pobierane ze źródła zewnętrznego i wyodrębniane. Podczas wyodrębniania skryptów z pliku zip **wykonaj poniższe kroki, aby odblokować plik. zip przed wyodrębnieniem**. Zapewnia to możliwość uruchamiania skryptów.
 
-1. Przejdź do repozytorium o nazwie Wingtip Tickets SaaS w usłudze GitHub dla wzorca dzierżawy bazy danych, którą chcesz, aby zapoznać się z: 
+1. Przejdź do repozytorium Wingtip SaaS w witrynie GitHub, aby uzyskać wzorzec dzierżawy bazy danych, który chcesz eksplorować: 
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
-2. Kliknij przycisk **klonowania lub pobierania**.
-3. Kliknij przycisk **Pobierz plik zip** i Zapisz plik.
-4. Kliknij prawym przyciskiem myszy plik zip, a następnie wybierz pozycję **właściwości**. Nazwa pliku zip będzie odpowiadać Nazwa repozytorium. (np.) _WingtipTicketsSaaS-DbPerTenant-master.zip_)
-5. Na **ogólne** zaznacz **odblokowanie**.
+2. Kliknij pozycję **Klonuj lub Pobierz**.
+3. Kliknij pozycję **Pobierz kod pocztowy** i Zapisz plik.
+4. Kliknij prawym przyciskiem myszy plik zip, a następnie wybierz polecenie **Właściwości**. Nazwa pliku zip będzie odpowiadać nazwie repozytorium. uprzedni. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
+5. Na karcie **Ogólne** wybierz opcję Odblokuj.
 6. Kliknij przycisk **OK**.
 7. Wyodrębnij pliki.
 
-Skrypty znajdują się w *... \\Learning Modules* folderu.
+Skrypty znajdują się w *... Folder\\modułów szkoleniowych* .
 
 
-## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Praca ze skryptami PowerShell biletów o nazwie Wingtip
+## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Praca ze skryptami programu PowerShell dla biletów Wingtip
 
-Aby maksymalnie wykorzystać możliwości przykładu należy Poznaj dostarczone skrypty. Używanie punktów przerwania i przechodzenie przez skrypty, wykonywanie i zbadać sposobu implementacji różnych wzorców SaaS. Aby łatwo krok po kroku dostarczone skrypty i moduły, które najlepiej zrozumienie, zaleca się używanie [PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise).
+Aby maksymalnie wykorzystać próbkę, którą należy szczegółowe do dostarczonych skryptów. Używaj punktów przerwania i przechodzenia przez skrypty podczas ich wykonywania i Badaj, jak są implementowane różne wzorce SaaS. Aby łatwo zapoznać się z udostępnionymi skryptami i modułami, zalecamy korzystanie z programu [POWERSHELL ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise).
 
-### <a name="update-the-configuration-file-for-your-deployment"></a>Należy zaktualizować plik konfiguracji wdrożenia
+### <a name="update-the-configuration-file-for-your-deployment"></a>Aktualizowanie pliku konfiguracji dla danego wdrożenia
 
-Edytuj **UserConfig.psm1** pliku zasobów grupy i użytkownika zostanie ustawiona wartość podczas wdrażania:
+Edytuj plik **userconfig. PSM1** przy użyciu grupy zasobów i wartości użytkownika ustawionej podczas wdrażania:
 
-1. Otwórz *PowerShell ISE* i ładowanie... \\Learning Modules\\*UserConfig.psm1* 
-2. Aktualizacja *ResourceGroupName* i *nazwa* z określonymi wartościami dla danego wdrożenia (w wierszach, 10 i 11 tylko).
-3. Zapisać zmiany!
+1. Otwórz *ISE programu PowerShell* i Załaduj... Moduły uczenia*userconfig. PSM1* \\\\ 
+2. Zaktualizuj *ResourceGroupName* i *nadaj nazwę* określonym wartościom dla danego wdrożenia (tylko wiersze 10 i 11).
+3. Zapisz zmiany!
 
-Ustawienia te wartości w tym miejscu po prostu wymaga znajomości zaktualizować te wartości specyficznych dla wdrożenia, wszystkie skrypty.
+Ustawienie tych wartości w tym miejscu po prostu pozwala uniknąć konieczności aktualizowania tych wartości specyficznych dla danego wdrożenia w każdym skrypcie.
 
-### <a name="execute-the-scripts-by-pressing-f5"></a>Wykonywanie skryptów poprzez naciśnięcie klawisza F5
+### <a name="execute-the-scripts-by-pressing-f5"></a>Wykonaj skrypty, naciskając klawisz F5
 
-Szereg skryptów używa *$PSScriptRoot* do przeglądania folderów, a *$PSScriptRoot* jest oceniane tylko, gdy skryptów są wykonywane przez naciśnięcie klawisza **F5**.  Wyróżnianie i uruchomienie go (**F8**) może spowodować błędy, więc naciśnij **F5** podczas uruchamiania skryptów.
+Kilka skryptów używa *$PSScriptRoot* do nawigowania po folderach, a *$PSScriptRoot* jest obliczana tylko wtedy, gdy skrypty są wykonywane przez naciśnięcie klawisza **F5**.  Wyróżnianie i uruchamianie zaznaczenia (**F8**) może powodować błędy, dlatego należy nacisnąć klawisz **F5** w przypadku uruchamiania skryptów.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>Przechodzenie przez skrypty w celu zapoznania się z implementacją
 
-Najlepszym sposobem zrozumienia skryptów polega na przechodzeniu przez ich o pojawieniu się, co robią. Zapoznaj się z dołączonej **Demo -** skrypty, które są dostępne, łatwe naśladowanie ogólny przepływ pracy. **Demo -** skrypty Pokaż kroki wymagane do wykonania poszczególnych zadań, więc ustawić punkty przerwania i przejść głębiej w poszczególne wywołania, aby wyświetlić szczegóły implementacji różnych wzorców SaaS.
+Najlepszym sposobem na zrozumienie skryptów jest przechodzenie przez siebie, aby zobaczyć, co robią. Zapoznaj się z dołączonymi skryptami demonstracyjnymi, które zawierają łatwy do obserwowania przepływ pracy wysokiego poziomu. W skryptach demonstracyjnych wyświetlane są kroki wymagane do wykonania każdego zadania, dlatego należy ustawić punkty przerwania i przegłębić się w poszczególne wywołania, aby zobaczyć szczegóły implementacji różnych wzorców SaaS.
 
-Porady dotyczące eksplorowania i Krokowe przechodzenie przez skrypty programu PowerShell:
+Porady dotyczące eksplorowania i przechodzenia za pośrednictwem skryptów programu PowerShell:
 
-- Otwórz **Demo -** skrypty w środowisku PowerShell ISE.
-- Wykonanie lub kontynuować **F5** (przy użyciu **F8** nie jest zalecane, ponieważ *$PSScriptRoot* nie są sprawdzane podczas uruchamiania skryptu).
+- Otwórz **Pokaz —** skrypty w programie PowerShell ISE.
+- Wykonaj lub Kontynuuj z **F5** (użycie **klawisza F8** nie jest zalecane, ponieważ *$PSScriptRoot* nie jest oceniane podczas uruchamiania wybranych skryptów).
 - Umieść punkty przerwania, klikając lub zaznaczając wiersz i naciskając klawisz **F9**.
 - Pomiń wywołanie funkcji lub skryptu, używając klawisza **F10**.
 - Wejdź do wywoływanej funkcji lub skryptu, używając klawisza **F11**.
@@ -75,48 +74,48 @@ Porady dotyczące eksplorowania i Krokowe przechodzenie przez skrypty programu P
 
 ## <a name="explore-database-schema-and-execute-sql-queries-using-ssms"></a>Badanie schematu bazy danych i wykonywanie zapytań SQL za pomocą aplikacji SSMS
 
-Użyj [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) do nawiązywania połączenia i przeglądania serwerów aplikacji i baz danych.
+Użyj [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) , aby nawiązać połączenie i przeglądać serwery i bazy danych aplikacji.
 
-Wdrożenie ma początkowo dzierżaw i serwerów SQL w bazie danych wykazu, aby nawiązać połączenie. Nadawanie nazw serwerów zależy od wzorca dzierżawy bazy danych (zobacz pod kątem specyfiki). 
+Wdrożenie początkowo ma dzierżawców i wykaz SQL Database serwerów, z którymi można nawiązać połączenie. Nazwy serwerów są zależne od wzorca dzierżawy bazy danych (patrz poniżej). 
 
-   - **Aplikacja autonomiczna:** serwerów dla każdego dzierżawcy (np.) *contosoconcerthall -&lt;użytkownika&gt;*  serwera) i *catalog-sa -&lt;użytkownika&gt;*
-   - **Bazy danych dla każdego dzierżawcy:** *tenants1-dpt -&lt;użytkownika&gt;*  i *katalogu-dpt -&lt;użytkownika&gt;*  serwerów
-   - **Wielodostępną bazą danych:** *tenants1-mt -&lt;użytkownika&gt;*  i *catalog-mt -&lt;użytkownika&gt;*  serwerów
+   - **Aplikacja autonomiczna:** serwery dla każdej dzierżawy (np. *contosoconcerthall-&lt;User&gt;*  Server) i *Catalog-sa-&lt;User&gt;*
+   - **Baza danych na dzierżawcę:** *tenants1-DPT-&lt;User&gt;*  i *Catalog-DPT-&lt;User&gt;*  Servers
+   - **Baza danych z wieloma dzierżawcami:** *tenants1-MT-&lt;User&gt;*  i *Catalog-MT-&lt;User&gt;*  Servers
 
-W celu zapewnienia połączenia pokaz pomyślne, wszystkie serwery mają [reguły zapory](sql-database-firewall-configure.md) zezwolenie na wszystkie adresy IP za pośrednictwem.
+Aby zapewnić pomyślne połączenie demonstracyjne, wszystkie serwery mają [regułę zapory](sql-database-firewall-configure.md) zezwalającą na wszystkie adresy IP w programie.
 
 
-1. Otwórz *SSMS* i nawiąż połączenie z dzierżawcami. Nazwa serwera zależy od wzorca dzierżawy bazy danych, wybranych (patrz pod kątem specyfiki):
-    - **Aplikacja autonomiczna:** serwerów poszczególnych dzierżaw (np.) *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
-    - **Bazy danych dla każdego dzierżawcy:** *tenants1-dpt -&lt;użytkownika&gt;. database.windows.net*
-    - **Wielodostępną bazą danych:** *tenants1-mt -&lt;użytkownika&gt;. database.windows.net* 
+1. Otwórz narzędzie *SSMS* i Połącz się z dzierżawcami. Nazwa serwera zależy od wybranego wzorca dzierżawy bazy danych (patrz poniżej w przypadku określonych):
+    - **Aplikacja autonomiczna:** serwery indywidualnych dzierżawców (np. *contosoconcerthall —&lt;User&gt;. Database.Windows.NET*) 
+    - **Baza danych na dzierżawcę:** *tenants1-DPT-&lt;User&gt;. Database.Windows.NET*
+    - **Baza danych z wieloma dzierżawcami:** *tenants1-MT-&lt;User&gt;. Database.Windows.NET* 
 2. Kliknij kolejno opcje **Połącz** > **Aparat bazy danych...** :
 
    ![serwer wykazu](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Pokaz poświadczenia są: Identyfikator logowania = *developer*, hasło = *P\@ssword1*
+3. Poświadczenia demonstracyjne: Login = *Developer*, Password = *P\@ssword1*
 
-    Na poniższej ilustracji przedstawiono nazwy logowania dla *bazy danych dla każdego dzierżawcy* wzorca. 
+    Na poniższej ilustracji przedstawiono dane logowania dla wzorca *dzierżawy* . 
     ![połączenia](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
     
    
 
-4. Powtórz kroki 2 – 3 i połączyć się z serwerem catalog (poniżej nazw określonych serwerów, na podstawie wzorca dzierżawy bazy danych wybrane)
-    - **Aplikacja autonomiczna:** *catalog-sa -&lt;użytkownika&gt;. database.windows.net*
-    - **Bazy danych dla każdego dzierżawcy:** *catalog-dpt -&lt;użytkownika&gt;. database.windows.net*
-    - **Wielodostępną bazą danych:** *catalog-mt -&lt;użytkownika&gt;. database.windows.net*
+4. Powtórz kroki 2-3 i nawiąż połączenie z serwerem wykazu (zobacz poniżej, aby poznać określone nazwy serwera na podstawie wybranego wzorca dzierżawy bazy danych)
+    - **Aplikacja autonomiczna:** *Catalog-sa-&lt;User&gt;. Database.Windows.NET*
+    - **Baza danych na dzierżawcę:** *Catalog-DPT-&lt;User&gt;. Database.Windows.NET*
+    - **Baza danych z wieloma dzierżawcami:** *katalog — MT-&lt;User&gt;. Database.Windows.NET*
 
 
-Po pomyślnym nawiązaniu połączenia powinny być widoczne wszystkie serwery. Lista baz danych mogą się różnić, w zależności od dzierżawcy, które zostały aprowizowane.
+Po pomyślnym nawiązaniu połączenia powinny być widoczne wszystkie serwery. Lista baz danych może się różnić, w zależności od dzierżawców, których zainicjowano.
 
-Na poniższej ilustracji przedstawiono logowania dla *bazy danych dla każdego dzierżawcy* wzorca.
+Na poniższej ilustracji przedstawiono logowanie do *bazy danych* na wzorzec dzierżawy.
 
 ![eksplorator obiektów](media/saas-tenancy-wingtip-app-guidance-tips/object-explorer.png)
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Wdróż aplikację Wingtip Tickets autonomiczny SaaS](saas-standaloneapp-get-started-deploy.md)
-- [Wdrażanie bazy danych SaaS biletów o nazwie Wingtip każdej dzierżawy aplikacji](saas-dbpertenant-get-started-deploy.md)
-- [Wdrażanie aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych](saas-multitenantdb-get-started-deploy.md)
+- [Wdróż aplikację autonomiczną Wingtip biletów SaaS](saas-standaloneapp-get-started-deploy.md)
+- [Wdróż bazę danych SaaS biletów Wingtip na aplikację dzierżawców](saas-dbpertenant-get-started-deploy.md)
+- [Wdrażanie Wingtip biletów SaaS aplikacji bazy danych z wieloma dzierżawcami](saas-multitenantdb-get-started-deploy.md)
 

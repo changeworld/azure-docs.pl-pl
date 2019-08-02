@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Data Factory — analizy przypadków | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sposobu niektórzy z naszych klientów korzystają usługi Azure Data Factory.
+title: Azure Data Factory — analizy przypadków klientów | Microsoft Docs
+description: Dowiedz się, w jaki sposób niektórzy z naszych klientów używają Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,36 +13,36 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 952a8aa2dbfdabfb7f0df198a7453b847c33f7e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c636032766b90af78e7794b3d515b924fa31d6cd
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486978"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596029"
 ---
-# <a name="azure-data-factory---customer-case-studies"></a>Usługa Azure Data Factory — analizy przypadków klientów
-Data Factory to usługa zarządzania informacje oparte na chmurze, która automatyzuje operacje przenoszenia i przekształcania danych. Klienci w wielu branżach umożliwia fabryki danych i innymi usługami Azure tworzyć potoki ich analiza i rozwiązywanie problemów biznesowych.  Informacje bezpośrednio od naszych klientów, jak i dlaczego korzystają usługi Data Factory.
+# <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory — analizy przypadków klientów
+Data Factory to usługa zarządzania informacjami oparta na chmurze, która automatyzuje przenoszenie i transformację danych. Klienci w wielu branżach wykorzystują Data Factory i inne usługi platformy Azure do tworzenia potoków analizy i rozwiązywania problemów z działalnością biznesową.  Dowiedz się bezpośrednio od naszych klientów, jak i dlaczego są one używane Data Factory.
 
 ## <a name="milliman"></a>Milliman
-[Najważniejsze przedsiębiorstwo Actuarial przekształca branży ubezpieczeniowej](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
+[Pierwsze przedsiębiorstwo aktuarialne przekształca branżę ubezpieczenia](https://customers.microsoft.com/en-us/story/732463-top-actuarial-firm-transforms-the-insurance-industry-w)
 
 ## <a name="rockwell-automation"></a>Rockwell Automation
-[Przemysłowe automatyzacji przedsiębiorstwo obniża koszty nawet o 90 procent z danymi big data rozwiązania](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)
+[Firma zajmująca się automatyzacją przemysłową obniża koszty do 90% dzięki rozwiązaniom danych Big Data](https://customers.microsoft.com/en-us/story/726192-industrial-automation-firm-cuts-costs-up-to-90-percent)
 
 ## <a name="ziosk"></a>Ziosk
-[Jakie gry chcesz przejść za pomocą tego burgera? Ziosk może już znasz.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
+[Którą grę Burger? Ziosk może już wiedzieć.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
 
 ## <a name="alaska-airlines"></a>Alaska Airlines
-[Linie lotnicze używa tabletów, usług Cloud Services oferują bardziej angażujące, śledząc Rozrywka](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
+[Linie lotnicze używają tabletów, Cloud Services, aby zaoferować większą atrakcyjność rozrywki w locie](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
 
-## <a name="tacoma-public-schools"></a>Tacoma publiczne szkoły
-[Prognozowanie ryzyka przerwany uczniów, zwiększając ukończenia stawki za pomocą analizy chmur](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)
+## <a name="tacoma-public-schools"></a>Tacoma szkoły publiczne
+[Przewidywanie ryzyka związanego z uczniami, zwiększanie szybkości szkoły przy użyciu usługi Cloud Analytics](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)
 
 ## <a name="real-madrid-fc"></a>Real Madryt FC
-[Udostępnia Real Madryt przybliża stadion 450 milionom fanów z całego świata dzięki rozwiązaniu Microsoft Cloud](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
+[Rzeczywista Madryte podnosi Stadium do 450 000 000 wentylatorów wokół świata, z Microsoft Cloud](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
 
 ## <a name="pier-1-imports"></a>Pier 1 Imports
-[Znajdowanie lepsze połączenia z klientami za pośrednictwem chmury usługi Machine Learning](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
+[Znajdowanie lepszego połączenia z klientami za pomocą Machine Learning w chmurze](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
 
 ## <a name="microsoft-studio"></a>Microsoft Studio
-[Dostarczanie epików Xbox napotyka, analizując setki miliardów zdarzeń w grach każdego dnia](https://customers.microsoft.com/en-us/story/xboxunlimited)
+[Dostarczanie środowisk epiku Xbox, analizując setki miliardów wydarzeń w grach każdego dnia](https://customers.microsoft.com/en-us/story/xboxunlimited)

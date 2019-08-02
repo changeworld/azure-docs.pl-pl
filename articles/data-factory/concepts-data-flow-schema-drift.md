@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: b5777300f5033569caf3868218e747df3ff83a76
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314821"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640231"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Mapowanie dryfu schematu przepływu danych
 
@@ -65,7 +65,7 @@ Następnie zaokrąglimy i ustawimy wartości dla każdej z tych pasujących kolu
 
 ```round(sum ($$))```
 
-Można to przetestować za pomocą przykładu "Demonstracja Azure Data Factory przepływu danych". Przejdź do sesji debugowania przy użyciu przełącznika debugowania w górnej części powierzchni projektowej przepływu danych, aby zobaczyć wyniki interaktywnie:
+Tę funkcję dryfowania schematu można zobaczyć w pracy z przykładem "Demonstracja Azure Data Factory przepływu danych". Przejdź do sesji debugowania przy użyciu przełącznika debugowania w górnej części powierzchni projektowej przepływu danych, aby zobaczyć wyniki interaktywnie:
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
@@ -76,5 +76,8 @@ W przypadku generowania nowych kolumn za pomocą wzorców kolumn można późnie
 * Użyj "byName", aby identyfikować nowe kolumny według ich nazwy.
 * W obszarze wzorce kolumn Użyj wartości "name", "Stream", "position" lub "Type" albo dowolnej kombinacji tych wartości, aby dopasować nowe kolumny.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="rule-based-mapping"></a>Mapowanie oparte na regułach
+Mechanizm wybierania i przekształcania ujścia obsługują dopasowanie do wzorca za pośrednictwem mapowania opartego na regułach. Dzięki temu można tworzyć reguły, które mogą mapować kolumny z przeznaczeniem na aliasy kolumn i ujścia tych kolumn do miejsca docelowego.
+
+## <a name="next-steps"></a>Kolejne kroki
 W [języku wyrażenia przepływu danych](data-flow-expression-functions.md) można znaleźć dodatkowe funkcje dla wzorców kolumn i dryfowania schematu, w tym "byName" i "byPosition".

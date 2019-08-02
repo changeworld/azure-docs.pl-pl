@@ -1,164 +1,164 @@
 ---
 title: Zasady pomocy technicznej dla usługi Azure Kubernetes Service (AKS)
-description: Więcej informacji na temat zasad pomocy technicznej usługi Azure Kubernetes Service (AKS), wspólnej odpowiedzialności i funkcje, które są w wersji zapoznawczej (beta lub alpha).
+description: Dowiedz się więcej na temat zasad pomocy technicznej usługi Azure Kubernetes Service (AKS), współdzielonej odpowiedzialności oraz funkcji dostępnych w wersji zapoznawczej (lub Alpha lub beta).
 services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 0d2c080be727d2ae13d6d9e5274f17cadffbe640
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf29799bc2aee12a27216ad45f7ed1e3355bab8a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786457"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596128"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zasady pomocy technicznej dla usługi Azure Kubernetes Service
 
-Ten artykuł zawiera szczegółowe informacje o pomocy technicznej zasady i ograniczenia dotyczące usługi Azure Kubernetes Service (AKS). Artykuł szczegółowo opisuje również zarządzania węzłami procesu roboczego, składniki płaszczyzny zarządzanego formantu, składników typu open-source innych firm i zarządzania zabezpieczeniami lub poprawki.
+Ten artykuł zawiera szczegółowe informacje na temat zasad i ograniczeń pomocy technicznej dla usługi Azure Kubernetes Service (AKS). W tym artykule opisano również szczegóły zarządzania węzłami procesu roboczego, zarządzane składniki płaszczyzny kontroli, składniki Open-Source innych firm oraz zarządzanie zabezpieczeniami i poprawkami.
 
-## <a name="service-updates-and-releases"></a>Aktualizacje usług i wersji
+## <a name="service-updates-and-releases"></a>Aktualizacje i wydania usługi
 
-* Aby uzyskać informacje o wersji, zobacz [informacje o wersji usługi AKS](https://github.com/Azure/AKS/releases).
-* Aby uzyskać informacje na temat funkcji w wersji zapoznawczej, zobacz [AKS w wersji zapoznawczej funkcji i powiązanych projektów](https://github.com/Azure/AKS/blob/master/previews.md).
+* Aby uzyskać informacje o wersji, zobacz [AKS informacji o wersji](https://github.com/Azure/AKS/releases).
+* Aby uzyskać informacje na temat funkcji dostępnych w wersji zapoznawczej, zobacz [AKS Preview Features and pokrewne projekty](https://github.com/Azure/AKS/blob/master/previews.md).
 
-## <a name="managed-features-in-aks"></a>Zarządzane funkcji w usłudze AKS
+## <a name="managed-features-in-aks"></a>Funkcje zarządzane w programie AKS
 
-Podstawowej infrastruktury jako części chmury usługi (IaaS), takich jak obliczenia lub składników sieciowych zapewniają użytkownikom dostęp do niskiego poziomu kontroli i opcje dostosowywania. Z kolei AKS zapewnia gotową do użycia wdrożenia rozwiązania Kubernetes, który zapewnia klientom wspólny zbiór konfiguracjami i możliwościami, które są im potrzebne. Klienci usługi AKS mają ograniczoną dostosowywania, wdrażania i innych opcji. Ci klienci nie muszą przejmować się lub bezpośrednie zarządzanie klastrów Kubernetes.
+Podstawowe składniki infrastruktury jako usługi (IaaS), takie jak składniki obliczeniowe lub sieciowe, umożliwiają użytkownikom dostęp do formantów niskiego poziomu i opcji dostosowywania. Z kolei AKS udostępnia wdrożenie gotowe Kubernetes, które zapewnia klientom wspólny zestaw konfiguracji i możliwości, których potrzebują. Klienci AKS mają ograniczoną możliwość dostosowywania, wdrażania i innych opcji. Ci klienci nie muszą bezpośrednio martwić się o klastry Kubernetes ani zarządzać nimi.
 
-Za pomocą usługi AKS, klient pobiera to w pełni zarządzana *płaszczyznę kontroli*. Na płaszczyźnie kontroli zawiera wszystkie składniki i usługi, którą klient musi działać i zapewniać klastrów Kubernetes użytkownikom końcowym. Wszystkie składniki rozwiązania Kubernetes są obsługiwane i świadczona przez firmę Microsoft.
+W przypadku AKS klient otrzymuje w pełni zarządzaną *płaszczyznę kontroli*. Płaszczyzna kontroli zawiera wszystkie składniki i usługi, które klient musi obsługiwać i dostarcza klastry Kubernetes użytkownikom końcowym. Wszystkie składniki Kubernetes są utrzymywane i obsługiwane przez firmę Microsoft.
 
-Firma Microsoft zarządza i monitoruje następujące składniki za pomocą okienka kontrolki:
+Firma Microsoft zarządza następującymi składnikami i monitoruje je za pomocą okienka sterowania:
 
-* Serwery agenta Kubelet lub interfejsu API rozwiązania Kubernetes
-* Etcd lub zgodny parach klucz wartość, zapewnianie jakości usług (QoS), skalowalność i środowiska uruchomieniowego
-* Usługi DNS (na przykład klastra kubernetes w usłudze dns lub CoreDNS)
-* Serwer proxy usługi Kubernetes lub sieć.
+* Serwery interfejsu API Kubelet lub Kubernetes
+* Etcd lub zgodny magazyn wartości klucz-wartość, zapewniający Quality of Service (QoS), skalowalność i środowisko uruchomieniowe
+* Usługi DNS (na przykład polecenia-DNS lub CoreDNS)
+* Kubernetes serwer proxy lub sieci
 
-AKS, nie jest rozwiązaniem w pełni zarządzany klaster. Niektóre składniki, takie jak węzły procesu roboczego ma *odpowiedzialności*, gdzie użytkownicy muszą zachować klaster AKS. Dane wejściowe użytkownika jest wymagane, na przykład, aby zastosować poprawkę zabezpieczeń systemu operacyjnego (OS) węzłów procesu roboczego.
+AKS nie jest rozwiązaniem w pełni zarządzanym klastrem. Niektóre składniki, takie jak węzły procesu roboczego, mają *wspólną odpowiedzialność*, w której użytkownicy muszą pomóc w utrzymaniu klastra AKS. Dane wejściowe użytkownika są wymagane na przykład w celu zastosowania poprawki zabezpieczeń systemu operacyjnego węzła procesu roboczego.
 
-Te usługi są *zarządzane* w tym sensie, że firmę Microsoft oraz zespół AKS wdraża działa i jest odpowiedzialny za dostępność usług i funkcji. Klienci nie można zmienić tych składników zarządzanych. Microsoft ogranicza dostosowania, aby zapewnić spójne i skalowalne interfejsu użytkownika. Aby w pełni dostosowywalnych rozwiązań, zobacz [aparatu AKS](https://github.com/Azure/aks-engine).
+Usługi są *zarządzane* w sensie, że firma Microsoft i zespół AKS wdrażają, działają i są odpowiedzialne za dostępność i funkcjonalność usługi. Klienci nie mogą zmieniać tych składników zarządzanych. Firma Microsoft ogranicza dostosowanie w celu zapewnienia spójnego i skalowalnego środowiska użytkownika. Aby uzyskać w pełni dostosowywalne rozwiązanie, zobacz [aparat AKS](https://github.com/Azure/aks-engine).
 
 > [!NOTE]
-> Węzły procesu roboczego AKS są wyświetlane w witrynie Azure portal jako zwykłych zasobów IaaS platformy Azure. Jednak te maszyny wirtualne są wdrażane w grupie zasobów platformy Azure niestandardowych (prefiksem MC\\*). Istnieje możliwość zmiany węzłów procesu roboczego usługi AKS. Na przykład, można użyć Secure Shell (SSH) Aby zmienić sposób zmiany normalnych maszyn wirtualnych węzłów procesu roboczego AKS (nie można jednak zmienić podstawowy obraz systemu operacyjnego, a zmiany nie utrzymują się za pośrednictwem aktualizacji lub ponowne uruchomienie) i innych zasobów platformy Azure można dołączyć do usługi AKS węzły procesu roboczego. Jednak podczas wprowadzania zmian *Zarządzanie poza pasmem a dostosowywania,* klastra AKS może stać się unsupportable. Należy unikać zmiany węzłów procesu roboczego, chyba że Microsoft Support Określa, że można wprowadzać zmiany.
+> Węzły procesu roboczego AKS są wyświetlane w Azure Portal jako zwykłe zasoby IaaS platformy Azure. Jednak te maszyny wirtualne są wdrażane w niestandardowej grupie zasobów platformy Azure (z prefiksem\\MC *). Istnieje możliwość zmiany węzłów procesu roboczego AKS. Na przykład można użyć Secure Shell (SSH), aby zmienić AKS węzły procesu roboczego w sposób zmieniania normalnych maszyn wirtualnych (nie można jednak zmienić podstawowego obrazu systemu operacyjnego, a zmiany mogą nie zostać zachowane przez aktualizację lub ponowny rozruch), a także dołączyć inne zasoby platformy Azure do usługi AKS węzły procesu roboczego. Jednak po wprowadzeniu zmian w *zarządzaniu poza pasmem i dostosowaniu* klaster AKS może stać się nieobsługiwany. Należy unikać zmiany węzłów procesu roboczego, chyba że pomoc techniczna firmy Microsoft nie kieruje się do wprowadzania zmian.
 
 ## <a name="shared-responsibility"></a>Wspólna odpowiedzialność
 
-Po utworzeniu klastra klienta definiuje węzłów procesu roboczego platformy Kubernetes, tworzonych w usłudze AKS. Obciążeń klientów są wykonywane na tych węzłach. Klienci właścicielem i można wyświetlać lub modyfikować węzłów procesu roboczego.
+Po utworzeniu klastra Klient definiuje Kubernetes węzły procesu roboczego, które tworzy AKS. Obciążenia klientów są wykonywane w tych węzłach. Klienci i mogą wyświetlać lub modyfikować węzły procesu roboczego.
 
-Ponieważ węzłów klastra klienta wykonywanie kodu prywatnego i przechowywanie danych poufnych, Microsoft Support można uzyskiwać do nich dostęp w ograniczony sposób. Microsoft Support nie Zaloguj się do wykonywania poleceń w i przeglądanie dzienników dla tych węzłów bez zgody klienta express lub pomocy.
+Ponieważ węzły klastra klienta wykonują kod prywatny i przechowują dane poufne, pomoc techniczna firmy Microsoft mogą uzyskać do nich dostęp tylko w ograniczony sposób. Pomoc techniczna firmy Microsoft nie może zalogować się do programu, wykonywać poleceń w programie lub wyświetlić dzienników dla tych węzłów bez wyraźnej zgody lub pomocy technicznej.
 
-Ponieważ węzłów procesu roboczego są poufne, firma Microsoft podejmuje szczególną uwagę na ograniczyć zarządzanie nimi w tle. W wielu przypadkach obciążenie będzie kontynuował pracę, nawet w przypadku rozwiązania Kubernetes głównym węzłów, etcd i innych składników zarządzanych przez firmę Microsoft, kończyć się niepowodzeniem. Węzły procesu roboczego zaniedbali zmodyfikowane może spowodować straty danych i obciążeń i może spowodować, że klaster unsupportable.
+Ze względu na to, że węzły procesu roboczego są poufne, firma Microsoft bardzo dobrze jest ograniczyć zarządzanie w tle. W wielu przypadkach obciążenie będzie nadal działać, nawet jeśli Kubernetes główne węzły, etcd i inne składniki zarządzane przez firmę Microsoft zakończą się niepowodzeniem. Carelessly zmodyfikowane węzły procesu roboczego mogą spowodować utratę danych i obciążeń i może renderować klaster nieobsługiwany.
 
-## <a name="aks-support-coverage"></a>Zakres pomocy technicznej usługi AKS
+## <a name="aks-support-coverage"></a>AKS pomocy technicznej
 
-Firma Microsoft oferuje pomoc techniczną dla następujących elementów:
+Firma Microsoft zapewnia pomoc techniczną dla następujących:
 
-* Łączność dla wszystkich składników platformy Kubernetes, które usługa Kubernetes zapewnia obsługuje, np. serwera interfejsu API.
-* Zarządzanie, czasu dostępności, QoS i operacje w kontroli warstwy usług (węzłów głównych Kubernetes, interfejsu API serwera, etcd i klastra kubernetes w usłudze dns, na przykład).
-* Etcd. Obsługa obejmuje automatyczne, przejrzyste kopie zapasowe wszystkich danych etcd co 30 minut do przywrócenia stanu planowania i klaster po awarii. Te kopie zapasowe nie są bezpośrednio dostępne dla klientów lub użytkowników. Zapewniają niezawodność danych i spójność.
-* Wszystkie punkty integracji w sterowniku dostawcy chmury platformy Azure dla platformy Kubernetes. Obejmują one integracji do innych usług platformy Azure, takich jak moduły równoważenia obciążenia, woluminy trwałe lub sieci (Kubernetes i wtyczki Azure CNI).
-* Pytania lub problemy dotyczące dostosowywania elementów płaszczyzna kontroli, takich jak serwera interfejsu API rozwiązania Kubernetes, etcd oraz klastra kubernetes w usłudze dns.
-* Problemy dotyczące sieci, takich jak wtyczki Azure CNI wtyczki kubenet, lub inne dostępu do sieci i funkcjonalność problemów. Problemy mogą obejmować DNS rozdzielczości, utraty pakietów, routingu i tak dalej. Firma Microsoft obsługuje różne scenariusze sieciowe:
-  * Wtyczki Kubenet (basic) i zaawansowany siecią (wtyczki Azure CNI) w klastrze i skojarzone składniki
-  * Łączność z innymi usługami platformy Azure i aplikacjami
-  * Ruch przychodzący kontrolerów i konfiguracji usługi równoważenia ruchu przychodzącego i obciążenia
-  * Wydajność sieci i czas oczekiwania
+* Łączność ze wszystkimi składnikami Kubernetes obsługiwanymi przez usługę Kubernetes, takimi jak serwer interfejsu API.
+* Zarządzanie, czas pracy, QoS i operacje usług Kubernetes kontroli płaszczyzny (na przykład węzły główne Kubernetes, serwery API, etcd i polecenia-DNS).
+* Etcd. Obsługa obejmuje automatyczne i przezroczyste kopie zapasowe wszystkich danych etcd co 30 minut w przypadku planowania awarii i przywracania stanu klastra. Te kopie zapasowe nie są bezpośrednio dostępne dla klientów lub użytkowników. Zapewniają one niezawodność i spójność danych.
+* Wszystkie punkty integracji w sterowniku dostawcy chmury platformy Azure dla Kubernetes. Obejmują one integrację z innymi usługami platformy Azure, takimi jak moduły równoważenia obciążenia, woluminy trwałe lub sieci (Kubernetes i Azure CNI).
+* Pytania lub problemy związane z dostosowywaniem składników płaszczyzny kontroli, takich jak Kubernetes API Server, etcd i polecenia-DNS.
+* Problemy dotyczące sieci, takie jak Azure CNI, korzystającą wtyczki kubenet lub inne problemy z dostępem do sieci i funkcjami. Problemy mogą obejmować rozpoznawanie nazw DNS, utratę pakietów, Routing i tak dalej. Firma Microsoft obsługuje różne scenariusze sieci:
+  * Korzystającą wtyczki kubenet (podstawowa) i zaawansowane sieci (Azure CNI) w klastrze i skojarzonych składnikach
+  * Łączność z innymi usługami i aplikacjami platformy Azure
+  * Konfiguracje usług przychodzących i przychodzących lub modułów równoważenia obciążenia
+  * Wydajność i opóźnienie sieci
 
-Microsoft nie zapewnia pomoc techniczną dla następujących elementów:
+Firma Microsoft nie zapewnia pomocy technicznej w zakresie następujących czynności:
 
-* Pytania dotyczące sposobu używania koordynatora Kubernetes. Na przykład Microsoft Support nie udostępniała informacje na temat jak utworzyć niestandardowe ruch przychodzący kontrolerów, za pomocą obciążenia aplikacji lub stosowanie pakietów oprogramowania innych firm lub typu open source lub narzędzia.
+* Pytania dotyczące korzystania z programu Kubernetes. Na przykład pomoc techniczna firmy Microsoft nie zawiera wskazówek na temat tworzenia niestandardowych kontrolerów transferu danych przychodzących, korzystania z obciążeń aplikacji lub pakietów oprogramowania lub narzędzi innych firm lub Open Source.
   > [!NOTE]
-  > Microsoft Support może poinformować usługi AKS funkcje klastra, dostosowywania i dostrajanie (na przykład problemów dotyczących operacji Kubernetes i procedur).
-* Projektów typu open-source innych firm, które nie są dostarczane jako część rozwiązania Kubernetes płaszczyzna kontroli lub wdrożyć przy użyciu klastrów usługi AKS. Te projekty mogą obejmować Istio, narzędzia Helm, usługa Envoy lub inne osoby.
+  > Pomoc techniczna firmy Microsoft może zalecić działanie klastra AKS, dostosowanie i dostrajanie (na przykład problemy z operacjami Kubernetes i procedurami).
+* Projekty typu "open source" innych firm, które nie są dostarczane jako część płaszczyzny kontroli Kubernetes ani wdrożone z klastrami AKS. Te projekty mogą obejmować Istio, Helm, wysłannika lub inne.
   > [!NOTE]
-  > Firma Microsoft może udostępnić obsługę największej staranności dla projektów typu open-source innych firm, takie jak Helm i Kured. W przypadku, gdy narzędzia typu open source innego producenta integruje się z dostawcą chmury Kubernetes Azure lub inne usterki specyficzne dla usługi AKS, firma Microsoft obsługuje, przykłady i aplikacje z dokumentacji firmy Microsoft.
-* Oprogramowanie zamknięte source innych firm. To oprogramowanie może zawierać narzędzia do skanowania zabezpieczeń sieciowych urządzeń lub oprogramowania.
-* Problemy dotyczące multicloud lub uzyskanymi szczegółowymi kompilacji. Na przykład firma Microsoft nie obsługuje problemy związane z uruchamianiem rozwiązania dostawcy federacyjnego multipublic chmury.
-* Dostosowania innych niż te wymienione w sieci [dokumentację dotyczącą usługi AKS](https://docs.microsoft.com/azure/aks/).
+  > Firma Microsoft może zapewnić najlepszą pomoc techniczną dla projektów typu "open source" innych firm, takich jak Helm i Kured. Jeśli narzędzie Open-Source innej firmy integruje się z dostawcą usług w chmurze Kubernetes systemu Azure lub innymi błędami specyficznymi dla AKS, firma Microsoft obsługuje przykłady i aplikacje z dokumentacji firmy Microsoft.
+* Oprogramowanie dotyczące oprogramowania zamkniętego innej firmy. To oprogramowanie może obejmować narzędzia do skanowania zabezpieczeń i urządzenia sieciowe lub oprogramowanie.
+* Problemy związane z kompilacjami wielochmurowymi lub wielodostawcami. Na przykład firma Microsoft nie obsługuje problemów związanych z uruchamianiem federacyjnego rozwiązania dostawcy chmury z chmurą publiczną.
+* Dostosowania sieci inne niż wymienione w [dokumentacji AKS](https://docs.microsoft.com/azure/aks/).
   > [!NOTE]
-  > Firma Microsoft obsługuje problemy i usterki związane z sieciowymi grupami zabezpieczeń (NSG). Na przykład Microsoft Support może odpowiedzieć na pytania dotyczące wystąpił błąd sieciowej grupy zabezpieczeń, aby zaktualizować lub nieoczekiwane zachowanie sieciowej grupy zabezpieczeń lub obciążenia równoważenia.
+  > Firma Microsoft obsługuje problemy i błędy związane z grupami zabezpieczeń sieci (sieciowych grup zabezpieczeń). Na przykład pomoc techniczna firmy Microsoft może odpowiedzieć na pytania dotyczące błędu sieciowej grupy zabezpieczeń lub nieoczekiwane zachowanie usługi sieciowej grupy zabezpieczeń lub równoważenia obciążenia.
 
-## <a name="aks-support-coverage-for-worker-nodes"></a>Zakres pomocy technicznej usługi AKS dla węzłów procesu roboczego
+## <a name="aks-support-coverage-for-worker-nodes"></a>AKS obsługi dla węzłów procesu roboczego
 
-### <a name="microsoft-responsibilities-for-aks-worker-nodes"></a>Obowiązki firmy Microsoft dla węzłów procesu roboczego usługi AKS
+### <a name="microsoft-responsibilities-for-aks-worker-nodes"></a>Obowiązki firmy Microsoft dla węzłów procesu roboczego AKS
 
-Firma Microsoft i klienci współodpowiedzialne dla węzłów procesu roboczego platformy Kubernetes gdzie:
+Firma Microsoft i klienci mogą korzystać z odpowiedzialności za węzły procesu roboczego Kubernetes, gdzie:
 
-* Podstawowy obraz systemu operacyjnego wymaga dodatki (takich jak monitorowanie i sieć agentów).
-* Węzły procesu roboczego automatycznie otrzymywać poprawek systemu operacyjnego.
-* Problemy związane z rozwiązania Kubernetes kontrolować płaszczyzny, które składniki działające na węzłach procesu roboczego są rozwiązywane automatycznie. Następujące składniki:
+* Podstawowy obraz systemu operacyjnego ma wymagane Dodatki (na przykład monitorowanie i agenci sieci).
+* Węzły procesu roboczego automatycznie otrzymują poprawki systemu operacyjnego.
+* Problemy ze składnikami płaszczyzny kontrolnej Kubernetes, które działają w węzłach procesu roboczego, są automatycznie korygowane. Dostępne są następujące składniki:
   * Kube-proxy
-  * tunele sieci, które jest zapewnienie zaufanych ścieżek komunikacji usługi Kubernetes główne składniki
-  * agenta kubelet
-  * Demon platformy docker lub Moby
+  * Tunele sieciowe dostarczające ścieżki komunikacji do składników głównych Kubernetes
+  * Kubelet
+  * Demon Docker lub Moby
 
 > [!NOTE]
-> W węźle procesu roboczego Jeśli składnika płaszczyzna kontroli nie działa, zespół AKS może być konieczne ponowny rozruch węzła całego procesu roboczego. Ze względu na ich ograniczony dostęp do danych i obciążenia aktywnych klientów przez zespół usługi AKS ponowny rozruch węzła procesu roboczego tylko wtedy, gdy klient Eskalowanie problem. Wszędzie tam, gdzie to możliwe, zespół AKS działa zapobiec wymagane ponowne uruchomienie aplikacji.
+> Jeśli składnik płaszczyzny kontroli nie działa w węźle procesu roboczego, może być konieczne ponowne uruchomienie całego węzła procesu roboczego przez zespół AKS. Ze względu na ograniczony dostęp do aktywnego obciążenia i danych klienta zespół AKS wykonuje ponowny rozruch węzła procesu roboczego tylko wtedy, gdy klient eskalacj problemu. Wszędzie tam, gdzie to możliwe, zespół AKS działa, aby zapobiec wymaganym ponownym uruchomieniu aplikacji.
 
-### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Obowiązki klienta dla węzłów procesu roboczego usługi AKS
+### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Obowiązki klienta dotyczące węzłów procesu roboczego AKS
 
-Microsoft nie automatyczny ponowny rozruch stosowanie poprawek systemu operacyjnego poziom węzłów procesu roboczego. Mimo że poprawek systemu operacyjnego są dostarczane do węzłów procesu roboczego *klienta* jest odpowiedzialny za ponownego uruchomienia węzłów procesu roboczego, aby zastosować zmiany. Biblioteki udostępnione, demonów, takich jak dysk SSD hybrydowe (SSHD) i inne składniki, na poziomie systemu lub system operacyjny automatycznie poprawić.
+Firma Microsoft nie automatycznie ponownie uruchomi węzły procesu roboczego w celu zastosowania poprawek na poziomie systemu operacyjnego. Mimo że poprawki systemu operacyjnego są dostarczane do węzłów procesu roboczego, *Klient* jest odpowiedzialny za ponowne uruchomienie węzłów procesu roboczego w celu zastosowania zmian. Biblioteki udostępnione, demony, takie jak dysk hybrydowy SSD (SSHD) i inne składniki na poziomie systemu lub systemu operacyjnego są automatycznie poprawiane.
 
-Klienci są zobowiązani do wykonywania uaktualnień Kubernetes. One może wykonać uaktualnienia za pomocą Panelu sterowania platformy Azure lub interfejsu wiersza polecenia platformy Azure. Dotyczy to usługi aktualizacji, które zawierają zabezpieczeń lub ulepszenia funkcji rozwiązania Kubernetes.
+Klienci są odpowiedzialni za wykonywanie uaktualnień Kubernetes. Umożliwiają one wykonywanie uaktualnień za pomocą panelu sterowania platformy Azure lub interfejsu wiersza polecenia platformy Azure. Dotyczy to aktualizacji, które zawierają udoskonalenia zabezpieczeń lub funkcjonalności do Kubernetes.
 
 > [!NOTE]
-> Ponieważ AKS *zarządzana usługa*, jego celów końcowego obejmują usuwanie odpowiedzialność za poprawki, aktualizacje i zbierania, aby bardziej kompletny i zdalne zarządzanie usługą dzienników. W miarę zwiększania możliwości usługi zarządzania end-to-end przyszłych wersji może pominąć niektóre funkcje (na przykład ponowny rozruch węzła i automatyczne stosowanie poprawek).
+> Ponieważ AKS jest *usługą zarządzaną*, jej cele końcowe obejmują usunięcie odpowiedzialności za poprawki, aktualizacje i zbieranie dzienników, aby zapewnić pełniejsze i bezobsługowe zarządzanie usługami. W miarę wzrostu pojemności usługi w celu kompleksowego zarządzania przyszłe wersje mogą pominąć niektóre funkcje (na przykład ponowne uruchomienie węzła i automatyczne stosowanie poprawek).
 
 ### <a name="security-issues-and-patching"></a>Problemy z zabezpieczeniami i stosowanie poprawek
 
-Jeśli lukę w zabezpieczeniach znajduje się w jednej lub więcej składników programu AKS, zespół AKS spowoduje wypełnienie wszystkich dotyczy klastrów, aby rozwiązać ten problem. Alternatywnie zespół zapewnia użytkownikom instrukcje dotyczące uaktualniania.
+W przypadku znalezienia usterki dotyczącej zabezpieczeń w jednym lub większej liczbie składników programu AKS zespół AKS będzie mógł zastosować poprawki wszystkich klastrów, których dotyczy problem. Alternatywnie zespół zapewni użytkownikom wskazówki dotyczące uaktualniania.
 
-Dla węzłów procesu roboczego, czy luka wpływa zabezpieczeń, a jeśli poprawki bez jakichkolwiek przestojów jest dostępny zespół AKS zastosowania tej poprawki i powiadamianie użytkowników o zmiany.
+W przypadku węzłów procesu roboczego, których dotyczy luka w zabezpieczeniach, jeśli jest dostępna poprawka bez przestojów, zespół AKS będzie stosował tę poprawkę i powiadomiać użytkowników o zmianie.
 
-Jeśli poprawka zabezpieczeń wymaga ponownego uruchomienia węzła procesu roboczego, firma Microsoft powiadomi klientów to wymaganie. Klient jest odpowiedzialny za ponowne uruchamianie lub aktualizowanie ułatwią poprawka klastra. Jeśli użytkownicy nie mają zastosowania poprawek według wskazówek AKS, ich klastra będzie narażony na problem z zabezpieczeniami.
+Gdy poprawka zabezpieczeń wymaga ponownego uruchomienia węzła procesu roboczego, firma Microsoft powiadomi Klienta o tym wymaganiu. Klient jest odpowiedzialny za ponowne uruchomienie lub aktualizację w celu pobrania poprawki klastra. Jeśli użytkownicy nie zastosują poprawek zgodnie ze wskazówkami AKS, ich klaster będzie nadal narażony na problem z zabezpieczeniami.
 
-### <a name="node-maintenance-and-access"></a>Węzeł konserwacją i dostępem
+### <a name="node-maintenance-and-access"></a>Konserwacja i dostęp do węzła
 
-Węzły procesu roboczego są wspólnej odpowiedzialności i są własnością klientów. W związku z tym klienci mają możliwość Zaloguj się do ich węzłów procesu roboczego i potencjalnie szkodliwe zmiany takich jak aktualizacji jądra i instalowania lub usuwania pakietów.
+Węzły procesu roboczego są wspólną odpowiedzialnością i należą do klientów. W związku z tym klienci mogą zalogować się do swoich węzłów procesów roboczych i wprowadzać potencjalnie szkodliwe zmiany, takie jak aktualizacje jądra i Instalowanie lub usuwanie pakietów.
 
-Jeśli klienci zmiany destrukcyjne lub spowodować, że kontrolka składniki płaszczyzny przejdą w tryb offline lub uniemożliwić, AKS wykryje tego błędu i automatycznym przywróceniem z węzłem procesu roboczego do poprzedniego stanu pracy.
+Jeśli klienci wprowadzają destrukcyjne zmiany lub spowodują, że składniki płaszczyzny kontroli przechodzą w tryb offline lub staną się niefunkcjonalne, AKS wykryje ten błąd i automatycznie przywróci węzeł procesu roboczego do poprzedniego stanu roboczego.
 
-Mimo że klienci mogą zalogować się do i zmienić węzłów procesu roboczego, w ten sposób jest zalecane, ponieważ zmiany klastra unsupportable.
+Mimo że klienci mogą zalogować się do i zmieniać węzły procesu roboczego, nie jest to zalecane, ponieważ zmiany mogą sprawić, że klaster jest nieobsługiwany.
 
-## <a name="network-ports-access-and-nsgs"></a>Porty sieciowe, dostępu i sieciowymi grupami zabezpieczeń
+## <a name="network-ports-access-and-nsgs"></a>Porty sieciowe, dostęp i sieciowych grup zabezpieczeń
 
-Jako usługa zarządzana AKS wiążą się specyficzne wymagania sieci i łączności. Te wymagania są mniej elastyczne niż wymagania normalne składników modelu IaaS. W usłudze AKS operacje, takie jak dostosowywanie reguł sieciowej grupy zabezpieczeń, blokuje określonych portów (np. przy użyciu reguł zapory, które blokują wychodząca przez port 443), i listę dozwolonych adresów URL może klastra unsupportable.
+Jako usługa zarządzana AKS ma określone wymagania dotyczące sieci i łączności. Te wymagania są mniej elastyczne niż wymagania dotyczące normalnych składników IaaS. W AKS, operacje takie jak Dostosowywanie reguł sieciowej grupy zabezpieczeń, blokowanie określonego portu (na przykład przy użyciu reguł zapory blokujących port wychodzący 443), a adresy URL listy dozwolonych mogą sprawić, że klaster jest nieobsługiwany.
 
 > [!NOTE]
-> Obecnie usługa AKS nie zezwala na całkowicie zablokować ruch wychodzący z klastrem (na przykład jawne domeny lub port umieszczania na białej liście). Lista adresów URL i portów jest mogą ulec zmianie bez uprzedzenia. Zaktualizowaną listę można uzyskać, tworząc bilet pomocy technicznej systemu Azure. Lista jest tylko dla klientów, którzy zgadzasz się, ich dostępność klastra może to mieć wpływ *w dowolnym momencie.*
+> Obecnie AKS nie pozwala na całkowite zablokowanie ruchu wyjściowego z klastra. Aby kontrolować listę adresów URL i portów, które mogą być używane przez klaster dla ruchu wychodzącego, zobacz [ograniczanie ruchu ruchowego](limit-egress-traffic.md).
 
-## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Nieobsługiwane funkcje Kubernetes alfa i beta
+## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Nieobsługiwane funkcje Kubernetes Alpha i beta
 
-AKS obsługuje tylko stabilne funkcje w obrębie nadrzędnego projektu Kubernetes. Chyba że inaczej udokumentowane, AKS nie obsługuje funkcji alfa i beta, które są dostępne w projekcie nadrzędnego rozwiązania Kubernetes.
+AKS obsługuje tylko stabilne funkcje w projekcie Kubernetes nadrzędnego. O ile nie określono inaczej, AKS nie obsługuje funkcji alfa i beta, które są dostępne w nadrzędnym projekcie Kubernetes.
 
-W przypadku dwóch scenariuszy funkcje w wersji beta i alfa może etapowo wdrażana, zanim staną się ogólnie dostępne:
+W dwóch scenariuszach funkcje Alpha lub beta mogą zostać wycofane, zanim staną się ogólnie dostępne:
 
-* Klienci są spełnione z produktem AKS, pomocy technicznej lub zespoły inżynierów i zostałeś poproszony o wypróbować te nowe funkcje.
-* Te funkcje zostały [włączane przez flagi funkcji](https://github.com/Azure/AKS/blob/master/previews.md). Klienci muszą jawnie zgoda na korzystanie z tych funkcji.
+* Klienci spełnili AKS produkt, pomoc techniczną lub zespoły inżynieryjne i zostali zaproszeni o wypróbowanie tych nowych funkcji.
+* Te funkcje zostały [włączone przez flagę funkcji](https://github.com/Azure/AKS/blob/master/previews.md). Klienci muszą jawnie korzystać z tych funkcji.
 
-## <a name="preview-features-or-feature-flags"></a>Funkcje w wersji zapoznawczej lub flag funkcji
+## <a name="preview-features-or-feature-flags"></a>Funkcje wersji zapoznawczej lub flagi funkcji
 
-Dla funkcji i funkcji, które wymagają rozszerzonej testowania i opinie użytkowników firma Microsoft udostępnia nowe funkcje w wersji zapoznawczej lub funkcje za flagą funkcji. Jako funkcje wersję wstępną lub beta, należy wziąć pod uwagę te funkcje.
+Aby uzyskać funkcje i funkcje, które wymagają rozszerzonego testowania i opinii użytkowników, firma Microsoft udostępnia nowe funkcje lub funkcje w wersji zapoznawczej za flagą funkcji. Te funkcje należy traktować jako funkcje wersji wstępnej lub wersji beta.
 
-Wersja zapoznawcza funkcji lub flagi funkcji nie są przeznaczone dla środowiska produkcyjnego. Zmiany zachodzące w interfejsów API i zachowanie, poprawki błędów i innych zmian może spowodować klastrów niestabilny i przestoje.
+Funkcje w wersji zapoznawczej lub funkcje flagi funkcji nie są przeznaczone do produkcji. Bieżące zmiany w interfejsach API i zachowania, poprawki błędów i inne zmiany mogą spowodować niestabilne klastry i przestoje.
 
-Funkcje w wersji zapoznawczej są "starań" pomocy technicznej, należą te funkcje są w wersji zapoznawczej i nie przeznaczone dla środowiska produkcyjnego i są obsługiwane przez zespoły pomocy technicznej usługi AKS tylko w godzinach roboczych. Aby uzyskać więcej informacji zobacz:
+Funkcje w publicznej wersji zapoznawczej są objęte wsparciem "najlepsze wysiłki", ponieważ te funkcje są w wersji zapoznawczej i nie są przeznaczone do produkcji i są obsługiwane przez zespoły pomocy technicznej AKS w godzinach pracy. Aby uzyskać dodatkowe informacje, zobacz:
 
 * [Pomoc techniczna platformy Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/)
 
 > [!NOTE]
-> Funkcje w wersji zapoznawczej obowiązywać Azure *subskrypcji* poziom. Nie instaluj funkcji w wersji zapoznawczej w ramach subskrypcji w środowisku produkcyjnym. W przypadku subskrypcji produkcyjnych funkcji w wersji zapoznawczej można zmienić domyślne zachowanie interfejsu API i wpływających na funkcjonowanie regularne.
+> Funkcje w wersji zapoznawczej działają na poziomie *subskrypcji* platformy Azure. Nie instaluj funkcji wersji zapoznawczej w ramach subskrypcji produkcyjnej. W ramach subskrypcji produkcyjnej funkcje w wersji zapoznawczej mogą zmieniać domyślne zachowanie interfejsu API i wpływać na regularne operacje.
 
-## <a name="upstream-bugs-and-issues"></a>Nadrzędne usterki i problemy
+## <a name="upstream-bugs-and-issues"></a>Błędy i problemy z usługą nadrzędnego
 
-W projekcie nadrzędnego rozwiązania Kubernetes, biorąc pod uwagę szybkość rozwoju, błędy niezmiennie pojawiają się. Niektóre z tych błędów nie można zastosować poprawki względem jakiegokolwiek lub przepracowanych wokół systemie AKS. Zamiast tego poprawki wymaga większych poprawki do nadrzędnego projektów (takich jak Kubernetes, węzeł lub proces roboczy systemów operacyjnych i jądra). Dla składników, które należą do firmy Microsoft (takiego jak dostawca chmury platformy Azure) usługi AKS i Azure personel zobowiązujemy się do rozwiązywania problemów nadrzędne w społeczności.
+Mając na względnie prędkość rozwoju w projekcie Kubernetes, usterki niezmiennie powstają. Niektóre z tych usterek nie mogą zostać poprawione lub nie działały w systemie AKS. Zamiast tego poprawki błędów wymagają większych poprawek do projektów nadrzędnych (takich jak Kubernetes, systemy operacyjne węzłów lub procesów roboczych oraz jądra). W przypadku składników należących do firmy Microsoft (takich jak dostawca chmury platformy Azure) AKS i personel platformy Azure są zaangażowane w sposób rozwiązywania problemów w społeczności.
 
-Gdy problem pomoc techniczna jest spowodowane jednym lub kilku błędach nadrzędny głównego, zespoły pomocy technicznej i inżynieria AKS wykonują następujące czynności:
+Gdy problem z pomocą techniczną jest katalogiem głównym spowodowanym przez jedną lub więcej błędów nadrzędnych, zespoły pomocy technicznej AKS i inżynierów inżynieryjnych będą:
 
-* Zidentyfikować i połączyć nadrzędnego usterki przy użyciu dowolnej obsługi szczegółów ułatwia zrozumienie, dlaczego ten problem dotyczy sieci klastra lub obciążenia. Klienci otrzymują łącza do wymaganego repozytoriów, dzięki czemu mogą oglądać problemy i zobacz, gdy nowa wersja zapewni poprawki.
-* Podaj potencjalne rozwiązania i ograniczenia. Jeśli ten problem można zminimalizować, [znany problem](https://github.com/Azure/AKS/issues?q=is%3Aissue+is%3Aopen+label%3Aknown-issue) zostaną zachowane w repozytorium usługi AKS. Wyjaśnia, zgłoszenia znany problem:
-  * Problem, wraz z łączami do nadrzędnego usterek.
-  * Rozwiązania i szczegółowe informacje dotyczące uaktualniania lub innego stanu trwałego rozwiązania.
-  * Przybliżony osi czasu włączenia ten problem, w oparciu o cykl wersji nadrzędnego.
+* Zidentyfikuj i Połącz błędy nadrzędnego z dowolnymi szczegółami pomocniczymi, aby wyjaśnić, dlaczego ten problem wpływa na klaster lub obciążenie. Klienci odbierają linki do wymaganych repozytoriów, aby mogli oglądać problemy i zobaczyć, kiedy nowe wydanie udostępni poprawki.
+* Zapewnij potencjalne obejścia lub środki zaradcze. Jeśli problem może zostać skorygowany, w repozytorium AKS zostanie zgłoszony [znany problem](https://github.com/Azure/AKS/issues?q=is%3Aissue+is%3Aopen+label%3Aknown-issue) . Informacje o znanych problemach są następujące:
+  * Problem, w tym linki do błędów nadrzędnych.
+  * Obejście i szczegółowe informacje o uaktualnieniu lub innej trwałości rozwiązania.
+  * Przybliżone osie czasu na potrzeby dołączenia problemu w oparciu o wersję erze.

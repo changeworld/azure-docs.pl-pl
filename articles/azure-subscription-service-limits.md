@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 1c30d9e70facaf9ab47bd33e5ca1fc1d35c6c979
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405860"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698283"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 Ten dokument zawiera listę najbardziej typowych limitów Microsoft Azure, które są również czasami nazywane przydziałami. Ten dokument nie obejmuje obecnie wszystkich usług platformy Azure. Wraz z upływem czasu lista zostanie rozszerzona i zaktualizowana w celu objęcia dodatkowych usług.
@@ -48,6 +48,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 * [Automatyzacja](#automation-limits)
 * [Azure Cache for Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
+* [Azure Cognitive Services](#azure-cognitive-services-limits)
 * [Usługi Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
@@ -186,7 +187,7 @@ W poniższej tabeli przedstawiono jednostki SKU V1, v2, standard i WAF, chyba ż
 
 Aby uzyskać więcej informacji na temat limitów kont magazynu, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](storage/common/storage-scalability-targets.md).
 
-#### <a name="storage-resource-provider-limits"></a>Limity dostawcy zasobów magazynu 
+#### <a name="storage-resource-provider-limits"></a>Limity dostawcy zasobów magazynu
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -225,6 +226,9 @@ Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](virtual-ma
 
 ### <a name="azure-cloud-services-limits"></a>Limity Cloud Services platformy Azure
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
+
+### <a name="azure-cognitive-services-limits"></a>Limity Cognitive Services platformy Azure
+[!INCLUDE [azure-cloud-services-limits](../includes/azure-cognitive-services-limits.md)]
 
 ### <a name="app-service-limits"></a>Limity App Service
 Poniższe App Service limity obejmują limity dla Web Apps, Mobile Apps i API Apps.

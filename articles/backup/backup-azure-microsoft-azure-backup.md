@@ -1,18 +1,19 @@
 ---
 title: Używanie Azure Backup Server do tworzenia kopii zapasowych obciążeń na platformie Azure
 description: Użyj Azure Backup Server do ochrony lub tworzenia kopii zapasowych obciążeń do Azure Portal.
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: kasinh
-ms.openlocfilehash: bf0e964c46088947fa50d1eadbcc12b78978251f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: f5367e1ca3e950126766e788323cb1d4749e9b0c
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466378"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688399"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie Azure Backup Server
 > [!div class="op_single_selector"]
@@ -137,7 +138,7 @@ Aby edytować ustawienia replikacji magazynu:
     Ze względu na to, że pobieranie wszystkich plików jest > 3G, w łącznym rozmiarze 10 MB/s ukończenie pobierania może zająć do 60 minut.
 
 ### <a name="extracting-the-software-package"></a>Wyodrębnianie pakietu oprogramowania
-Po pobraniu wszystkich plików kliknij przycisk **MicrosoftAzureBackupInstaller. exe**. Spowoduje to uruchomienie **Kreatora instalacji Microsoft Azure Backup** w celu wyodrębnienia plików instalacyjnych do lokalizacji określonej przez użytkownika. Kontynuuj pracę kreatora i kliknij przycisk Wyodrębnij  , aby rozpocząć proces wyodrębniania.
+Po pobraniu wszystkich plików kliknij przycisk **MicrosoftAzureBackupInstaller. exe**. Spowoduje to uruchomienie **Kreatora instalacji Microsoft Azure Backup** w celu wyodrębnienia plików instalacyjnych do lokalizacji określonej przez użytkownika. Kontynuuj pracę kreatora i kliknij przycisk Wyodrębnij , aby rozpocząć proces wyodrębniania.
 
 > [!WARNING]
 > Do wyodrębnienia plików instalacyjnych wymagane jest co najmniej 4 GB wolnego miejsca.
@@ -170,7 +171,7 @@ Po zakończeniu procesu wyodrębniania zaznacz pole wyboru, aby uruchomić świe
 
     **Konfiguracja usługi SSRS w programie SQL 2017**
 
-    W przypadku korzystania z własnego wystąpienia programu SQL 2017 należy ręcznie skonfigurować usługi SSRS. Po skonfigurowaniu usług SSRS upewnij  się, że właściwość IsInitialized usług SSRS ma *wartość true*. Gdy ta wartość jest równa true, serwera usługi MAB zakłada, że usługa SSRS jest już skonfigurowana i pominie konfigurację usług SSRS.
+    W przypadku korzystania z własnego wystąpienia programu SQL 2017 należy ręcznie skonfigurować usługi SSRS. Po skonfigurowaniu usług SSRS upewnij się, że właściwość IsInitialized usług SSRS ma *wartość true*. Gdy ta wartość jest równa true, serwera usługi MAB zakłada, że usługa SSRS jest już skonfigurowana i pominie konfigurację usług SSRS.
 
     W przypadku konfiguracji usług SSRS należy użyć następujących wartości:
 
@@ -294,7 +295,7 @@ Jeśli masz zaporę lub serwer proxy, który uniemożliwia dostęp do platformy 
 Po przywróceniu łączności z platformą Azure do maszyny Azure Backup Server operacje, które można wykonać, są określane przez stan subskrypcji platformy Azure. Powyższa tabela zawiera szczegółowe informacje o operacjach dozwolonych, gdy maszyna jest "połączona".
 
 ### <a name="handling-subscription-states"></a>Obsługa stanów subskrypcji
-Istnieje możliwość podjęcia subskrypcji platformy Azure ze stanu wygasłego  lub *anulowania* aprowizacji do stanu *aktywnego* . Jednak ma to pewne konsekwencje dla zachowania produktu, gdy stan nie jest *aktywny*:
+Istnieje możliwość podjęcia subskrypcji platformy Azure ze stanu wygasłego lub *anulowania* aprowizacji do stanu *aktywnego* . Jednak ma to pewne konsekwencje dla zachowania produktu, gdy stan nie jest *aktywny*:
 
 * Cofnięcie *aprowizacji subskrypcji powoduje* utratę funkcjonalności przez okres anulowania aprowizacji. W przypadku włączania *aktywności*funkcja tworzenia kopii zapasowej/przywracania jest przywracana. Dane kopii zapasowej na dysku lokalnym można również pobrać, jeśli były utrzymywane w wystarczająco dużym okresie przechowywania. Jednak dane kopii zapasowej na platformie Azure są irretrievably utracone po przejściu subskrypcji w stan *anulowania* aprowizacji.
 * *Wygasła* subskrypcja powoduje utratę funkcjonalności, dopóki nie zostanie ponownie *uaktywniona* . Wszystkie kopie zapasowe zaplanowane na okres *ważności* subskrypcji nie zostaną uruchomione.

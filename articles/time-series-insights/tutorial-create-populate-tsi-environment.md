@@ -9,12 +9,12 @@ ms.date: 07/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 921528c50bae03b67800bf3ccab8b5cd9bb704f6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4c81daa1f55167fa868c69f3bff388dbaa4887cd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677750"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725738"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Samouczek: Tworzenie środowiska usługi Azure Time Series Insights
 
@@ -34,7 +34,7 @@ Ten samouczek przeprowadzi Cię przez proces tworzenia środowiska Azure Time Se
 
 * Konto logowania platformy Azure musi być również członkiem roli **właściciela** subskrypcji. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="video"></a>Połączenia wideo
+## <a name="review-video"></a>Przejrzyj wideo
 
 ### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>Dowiedz się, jak generować dane i rozpoczynać pracę z Time Series Insights przy użyciu akceleratora rozwiązań usługi Azure IoT. </br>
 
@@ -116,7 +116,7 @@ Następnie Utwórz środowisko Time Series Insights w ramach subskrypcji platfor
 
    [![Wdrożenie środowiska Time Series Insights powiodło się](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
-## <a name="run-device-simulation-to-stream-data"></a>Uruchamianie symulacji urządzenia w celu przesyłania strumieniowego danych
+## <a name="run-device-simulation"></a>Uruchamianie symulacji urządzenia
 
 Teraz, gdy wdrożenie i początkowa konfiguracja zostały ukończone, Wypełnij środowisko Time Series Insights przy użyciu przykładowych danych z [symulowanych urządzeń utworzonych przez akcelerator](#create-a-device-simulation).
 
@@ -182,7 +182,7 @@ Z menu po lewej stronie w Azure Portal:
 
 1. Wybierz ikonę **grupy zasobów** . Następnie wybierz grupę zasobów, która została utworzona przez Akcelerator rozwiązania do symulacji urządzeń. W górnej części strony wybierz pozycję **Usuń grupę zasobów**, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

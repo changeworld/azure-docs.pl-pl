@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure Security Center dla modułu zabezpieczeń IoT, IoT Edge | Dokumentacja firmy Microsoft
-description: Dowiedz się, architekturę i możliwości usługi Azure Security Center dla modułu zabezpieczeń IoT dla usługi IoT Edge.
+title: Informacje na temat Azure Security Center dla usługi IoT Security module dla IoT Edge Preview | Microsoft Docs
+description: Zapoznaj się z architekturą i możliwościami Azure Security Center dla modułu zabezpieczeń IoT dla IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,59 +13,59 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4581f66a3401764237621bee86228aac724ec0af
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6114fc768ad04ef812f6093d006ec9ad91b17af3
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616454"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596854"
 ---
-# <a name="azure-iot-edge-security-module"></a>Moduł zabezpieczeń w usłudze Azure IoT Edge
+# <a name="azure-iot-edge-security-module"></a>Moduł zabezpieczeń Azure IoT Edge
 
 > [!IMPORTANT]
-> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecana dla produkcyjnego worklo§1ads. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Security Center usługi IoT dla IoT Edge jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Usługa Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) zapewnia zaawansowane możliwości zarządzania i wykonać biznesowe przepływy pracy na urządzeniach brzegowych.
-Kluczowym elementem, IoT Edge jest odtwarzany w środowiskach IoT ułatwiają szczególnie atrakcyjne dla uczestników złośliwych działań.
+[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) zapewnia zaawansowane możliwości zarządzania i wykonywania służbowych przepływów pracy na krawędzi.
+Kluczowa część, która IoT Edge odgrywa w środowiskach IoT, sprawia, że jest szczególnie atrakcyjna dla złośliwych aktorów.
 
-Usługa Azure Security Center (ASC) dla modułu zabezpieczeń IoT zapewnia rozwiązanie kompleksowych funkcji zabezpieczeń dla usługi IoT Edge urządzenia.
-ASC IoT moduł służy do zbierania, agreguje i analizuje dane dotyczące zabezpieczeń pierwotnych z systemu operacyjnego i systemem kontenerów do zaleceń dotyczących zabezpieczeń z możliwością działania i alerty.
+Azure Security Center dla usługi IoT Security to kompleksowe rozwiązanie zabezpieczeń dla IoT Edge urządzeń.
+Azure Security Center dla modułu IoT zbiera, agreguje i analizuje surowe dane zabezpieczeń z systemu operacyjnego i systemu kontenerów w celu podejmowania działań i alertów dotyczących zabezpieczeń.
 
-Podobnie jak ASC agentów zabezpieczeń IoT dla urządzenia IoT, ASC dla modułu usługi IoT Edge jest dużym stopniu dostosowywane za pośrednictwem jego bliźniaczą reprezentację modułu.
-Zobacz [skonfigurować agenta](how-to-agent-configuration.md) Aby dowiedzieć się więcej.
+Podobnie jak w przypadku Azure Security Center dla agentów zabezpieczeń IoT dla urządzeń IoT, Azure Security Center dla modułu IoT Edge jest wysoce dostosowywany za pomocą sznurka modułu.
+Aby dowiedzieć się więcej, zobacz [Configure the Agent](how-to-agent-configuration.md) .
 
-ASC modułu zabezpieczeń IoT, IoT Edge zapewnia następujące funkcje:
+Azure Security Center dla usługi IoT Security module dla IoT Edge oferuje następujące funkcje:
 
-- Zbiera zdarzenia zabezpieczeń pierwotne od zasadniczego systemu operacyjnego (Linux) i systemy IoT Edge kontenera.
+- Zbiera nieprzetworzone zdarzenia zabezpieczeń z bazowego systemu operacyjnego (Linux) i IoT Edge systemów kontenerów.
   
-  Zobacz [ASC konfiguracji agenta IoT](how-to-agent-configuration.md) dowiedzieć się więcej o moduły zbierające dane dostępnych zabezpieczeń.
+  Aby dowiedzieć się więcej na temat dostępnych modułów zbierających dane zabezpieczeń, zobacz [Azure Security Center dla konfiguracji agenta IoT](how-to-agent-configuration.md) .
 
-- Analiza manifesty wdrożenia usługi IoT Edge.
+- Analiza manifestów wdrażania IoT Edge.
 
-- Zdarzenia zabezpieczeń pierwotne są agregowane we wiadomości wysłane za pośrednictwem [usługi IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
+- Agreguje pierwotne zdarzenia zabezpieczeń do komunikatów wysyłanych za poorednictwem [centrum IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
 
-- Usuń konfigurację za pośrednictwem bliźniaczą reprezentację modułu zabezpieczeń.
+- Usuń konfigurację za pomocą sznurka modułu zabezpieczeń.
 
-  Zobacz [skonfigurować ASC agenta IoT](how-to-agent-configuration.md) Aby dowiedzieć się więcej.
+  Aby dowiedzieć się więcej, zobacz [konfigurowanie Azure Security Center dla agenta IoT](how-to-agent-configuration.md) .
 
-ASC modułu zabezpieczeń IoT, IoT Edge jest uruchamiany w trybie uprzywilejowanym w ramach usługi IoT Edge.
-Tryb uprzywilejowany jest wymagany w celu umożliwienia modułu do monitorowania systemu operacyjnego, a inne moduły usługi IoT Edge.
+Azure Security Center dla modułu zabezpieczeń IoT dla IoT Edge jest uruchamiany w trybie uprzywilejowanym w obszarze IoT Edge.
+Tryb uprzywilejowany jest wymagany, aby umożliwić modułowi monitorowanie systemu operacyjnego i innych modułów IoT Edge.
 
-## <a name="agent-supported-platforms"></a>Agent obsługiwany platformy
+## <a name="module-supported-platforms"></a>Platformy obsługiwane przez moduły
 
-ASC modułu zabezpieczeń IoT, IoT Edge jest obecnie dostępna tylko dla systemu Linux.
+Azure Security Center dla usługi IoT Security module dla IoT Edge jest obecnie dostępny tylko dla systemu Linux. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano architekturę i możliwości usługi ASC modułu zabezpieczeń IoT dla usługi IoT Edge.
+Ten artykuł zawiera informacje o architekturze i możliwościach Azure Security Center modułu zabezpieczeń IoT dla IoT Edge.
 
-Aby kontynuować wprowadzenie do usługi ASC dla wdrożenia IoT, skorzystaj z poniższych artykułów:
+Aby kontynuować wprowadzenie do usługi Azure Security Center na potrzeby wdrażania IoT, użyj następujących artykułów:
 
-- Wdrażanie [modułu zabezpieczeń dla usługi IoT Edge](how-to-deploy-edge.md)
-- Dowiedz się, jak [konfigurację modułu zabezpieczeń](how-to-agent-configuration.md)
-- Zapoznaj się z usługą ASC dla IoT [usługi wymagań wstępnych](service-prerequisites.md)
-- Dowiedz się, jak [ASC włączyć dla usługi IoT w usłudze IoT Hub](quickstart-onboard-iot-hub.md)
-- Dowiedz się więcej o usłudze z [ASC IoT — często zadawane pytania](resources-frequently-asked-questions.md)
+- Wdróż [moduł zabezpieczeń dla IoT Edge](how-to-deploy-edge.md)
+- Dowiedz się, jak [skonfigurować moduł zabezpieczeń](how-to-agent-configuration.md)
+- Przejrzyj Azure Security Center [wymagań wstępnych usługi](service-prerequisites.md) IoT
+- Dowiedz się, jak [włączyć usługę Azure Security Center dla usługi IoT w IoT Hub](quickstart-onboard-iot-hub.md)
+- Dowiedz się więcej o usłudze z [Azure Security Center na potrzeby usługi IoT — często zadawane pytania](resources-frequently-asked-questions.md)

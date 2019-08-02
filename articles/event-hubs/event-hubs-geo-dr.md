@@ -14,18 +14,18 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a1dafb8e4c16a59bfed51016ce9ccb0ec3eb7d6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754754"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704376"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Usługa Azure Event Hubs — odzyskiwanie po awarii geograficznie 
 
 Gdy cały regiony platformy Azure lub w centrach danych (Jeśli nie [strefy dostępności](../availability-zones/az-overview.md) są używane) doświadczają przestoju, koniecznie do przetwarzania danych w dalszym ciągu działać w innym regionie lub w centrum danych. W efekcie *odzyskiwania po awarii geograficznie* i *Geografickou replikaci* są ważne funkcje w każdej firmie. Usługa Azure Event Hubs obsługuje zarówno odzyskiwania po awarii geograficzne i replikacja geograficzna, na poziomie przestrzeni nazw. 
 
-Funkcja odzyskiwania po awarii geograficznej jest ogólnie dostępna, zarówno w przypadku centrów Event w warstwie standardowa, jak i w wersji dedykowanej jednostki SKU. Należy pamiętać, można tylko parę geograficznie przestrzenie nazw w tej samej warstwie jednostki SKU. Na przykład w przypadku przestrzeni nazw w klastrze, która jest oferowana tylko w naszych jednostki SKU w wersji dedykowanej, będzie tylko można sparować z przestrzenią nazw w innym klastrze. 
+Funkcja odzyskiwania po awarii geograficznej jest globalnie dostępna dla systemów Event Hubs Standard i dedykowana jednostka SKU. Należy pamiętać, że w tej samej warstwie jednostki SKU można tylko przestrzenie nazw z parą geograficzną. Na przykład jeśli masz przestrzeń nazw w klastrze, który jest oferowany tylko w dedykowanej jednostce SKU, można sparować tylko z przestrzenią nazw w innym klastrze. 
 
 ## <a name="outages-and-disasters"></a>Wyłączeń i awarii
 
@@ -41,13 +41,13 @@ Funkcja odzyskiwania po awarii implementuje odzyskiwanie po awarii metadane i op
 
 W tym artykule są używane następujące terminy:
 
--  *Alias*: Nazwa konfiguracji odzyskiwania po awarii, który został ustawiony. Alias zapewnia pojedynczy ciąg stabilne połączenie w pełni kwalifikowanej domeny nazwę (FQDN). Aplikacje za pomocą te parametry połączenia aliasu połączyć z przestrzeni nazw. 
+-  *Alias*: Nazwa skonfigurowanej konfiguracji odzyskiwania po awarii. Alias zapewnia pojedynczy ciąg stabilne połączenie w pełni kwalifikowanej domeny nazwę (FQDN). Aplikacje za pomocą te parametry połączenia aliasu połączyć z przestrzeni nazw. 
 
--  *Przestrzeń nazw podstawowy/pomocniczy*: Przestrzenie nazw, które odnoszą się do aliasu. Podstawowa przestrzeń nazw jest "aktywny" i odbiera komunikaty (może to być istniejącej lub nowej przestrzeni nazw). Pomocnicza przestrzeń nazw jest "pasywny" i nie otrzymywać wiadomości. Metadanych między obiema jest zsynchronizowany, więc zarówno bezproblemowo może akceptować komunikaty bez wprowadzania żadnych zmian parametry aplikacji, jak połączenie lub kod. Aby upewnić się, że tylko aktywnej przestrzeni nazw odbiera komunikaty, musisz użyć tego aliasu. 
+-  *Podstawowa/pomocnicza przestrzeń nazw*: Przestrzenie nazw, które odnoszą się do aliasu. Podstawowa przestrzeń nazw jest "aktywny" i odbiera komunikaty (może to być istniejącej lub nowej przestrzeni nazw). Pomocnicza przestrzeń nazw jest "pasywny" i nie otrzymywać wiadomości. Metadanych między obiema jest zsynchronizowany, więc zarówno bezproblemowo może akceptować komunikaty bez wprowadzania żadnych zmian parametry aplikacji, jak połączenie lub kod. Aby upewnić się, że tylko aktywnej przestrzeni nazw odbiera komunikaty, musisz użyć tego aliasu. 
 
--  *metadane*: Jednostki, takie jak usługa event hubs i grupy konsumentów; i ich właściwości usługi, które są skojarzone z przestrzenią nazw. Należy pamiętać, że tylko jednostek i ich ustawienia są replikowane automatycznie. Komunikaty i zdarzenia nie są replikowane. 
+-  *Metadane*: Jednostki, takie jak centra zdarzeń i grupy konsumentów; i ich właściwości usługi, które są skojarzone z przestrzenią nazw. Należy pamiętać, że tylko jednostek i ich ustawienia są replikowane automatycznie. Komunikaty i zdarzenia nie są replikowane. 
 
--  *Tryb failover*: Proces aktywowanie pomocniczej przestrzeni nazw.
+-  *Tryb failover*: Proces aktywowania pomocniczej przestrzeni nazw.
 
 ## <a name="setup-and-failover-flow"></a>Przepływ instalacji i trybu failover
 
@@ -84,7 +84,7 @@ Jeśli w przypadku popełnienia; na przykład sparowane regiony problem podczas 
 
 ## <a name="samples"></a>Przykłady
 
-[Próbki w serwisie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) pokazuje, jak skonfigurować i zainicjuj tryb failover. W tym przykładzie przedstawiono następujące pojęcia:
+[Próbki w serwisie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) pokazuje, jak skonfigurować i zainicjuj tryb failover. W tym przykładzie przedstawiono następujące pojęcia:
 
 - Ustawienia wymagane w usłudze Azure Active Directory do usługi Azure Resource Manager za pomocą usługi Event Hubs. 
 - Kroki wymagane do wykonania w przykładowym kodzie. 
@@ -104,10 +104,10 @@ Należy zwrócić uwagę następujące kwestie, które należy uwzględnić w te
 
 ## <a name="availability-zones"></a>Strefy dostępności 
 
-Obsługuje zdarzenie Hubs standardowej jednostki SKU [strefy dostępności](../availability-zones/az-overview.md), zapewniając izolowane od usterek lokalizacje w regionie platformy Azure. 
+Standardowa jednostka SKU Event Hubs obsługuje [strefy dostępności](../availability-zones/az-overview.md), zapewniając lokalizację izolowaną od błędów w regionie świadczenia usługi Azure. 
 
 > [!NOTE]
-> Obsługa stref dostępności platformy Azure Event Hubs w warstwie standardowa jest dostępna tylko w [regionów świadczenia usługi Azure](../availability-zones/az-overview.md#services-support-by-region) gdzie strefy dostępności są obecne.
+> Strefy dostępności pomoc techniczna dla usługi Azure Event Hubs Standard jest dostępna tylko w [regionach świadczenia usługi Azure](../availability-zones/az-overview.md#services-support-by-region) , w których znajdują się strefy dostępności.
 
 Strefy dostępności można włączyć na nowe przestrzenie nazw, przy użyciu witryny Azure portal. Usługa Event Hubs nie obsługuje migracji istniejącej przestrzeni nazw. Nie można wyłączyć nadmiarowości strefy po jej włączeniu, w ramach przestrzeni nazw.
 
@@ -115,7 +115,7 @@ Strefy dostępności można włączyć na nowe przestrzenie nazw, przy użyciu w
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Próbki w serwisie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) przeprowadzi prosty przepływ pracy, który tworzy parowania geograficznego i przełączenia w tryb failover do scenariusza odzyskiwania po awarii.
+* [Próbki w serwisie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) przeprowadzi prosty przepływ pracy, który tworzy parowania geograficznego i przełączenia w tryb failover do scenariusza odzyskiwania po awarii.
 * [Dokumentacja interfejsu API REST](/rest/api/eventhub/disasterrecoveryconfigs) opisuje interfejsy API umożliwiające wykonywanie konfiguracji odzyskiwania po awarii na geograficznie.
 
 Aby uzyskać więcej informacji na temat usługi Event Hubs, skorzystaj z następujących linków:

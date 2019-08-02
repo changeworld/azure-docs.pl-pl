@@ -1,6 +1,6 @@
 ---
-title: Certyfikaty protokołu TLS na użytek ruch przychodzący z klastra Azure Kubernetes Service (AKS)
-description: Informacje o sposobie instalowania i konfigurowania kontrolera danych przychodzących NGINX, który używa własnych certyfikatów w klastrze usługi Azure Kubernetes Service (AKS).
+title: Korzystanie z własnych certyfikatów protokołu TLS na potrzeby ruchu przychodzącego z klastrem usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak zainstalować i skonfigurować kontroler NGINX Ingres, który używa własnych certyfikatów w klastrze usługi Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,42 +8,42 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
 ms.openlocfilehash: 2b30ade9971ede6f9544b618504033553392e9bd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615435"
 ---
-# <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera danych przychodzących HTTPS i używanie certyfikatów protokołu TLS w usłudze Azure Kubernetes Service (AKS)
+# <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera protokołu HTTPS dla ruchu przychodzącego i korzystanie z własnych certyfikatów TLS w usłudze Azure Kubernetes Service (AKS)
 
 Kontroler ruchu przychodzącego to element oprogramowania dostarczający odwrotny serwer proxy, konfigurowalne trasowanie ruchu oraz zakończenie protokołu TLS dla usług Kubernetes. Zasoby ruchu przychodzącego usług Kubernetes są używane do skonfigurowania zasad ruchu przychodzącego oraz tras dla poszczególnych usług Kubernetes. Dzięki korzystaniu z kontrolera ruchu przychodzącego oraz zasad ruchu przychodzącego można użyć jednego adresu IP do trasowania ruchu w wielu usługach w klastrze Kubernetes.
 
-W tym artykule przedstawiono sposób wdrażania [kontrolera danych przychodzących NGINX][nginx-ingress] w klastrze usługi Azure Kubernetes Service (AKS). Generowanie własne certyfikaty i tworzyć rozwiązania Kubernetes wpisu tajnego do użytku z trasą transferu danych przychodzących. Na koniec dwie aplikacje są uruchamiane w klastrze AKS, z których każdy jest dostępny za pośrednictwem pojedynczego adresu IP.
+W tym artykule pokazano, jak wdrożyć [kontroler Nginx][nginx-ingress] Ingress w klastrze usługi Azure Kubernetes Service (AKS). Generowanie własnych certyfikatów i tworzenie wpisu tajnego Kubernetes do użycia z trasą transferu danych przychodzących. Na koniec dwie aplikacje są uruchamiane w klastrze AKS, z których każdy jest dostępny za pośrednictwem jednego adresu IP.
 
 Możesz również wykonać następujące czynności:
 
-- [Tworzenie kontrolera podstawowego transferu danych przychodzących za pomocą połączenia z siecią zewnętrzną][aks-ingress-basic]
-- [Włączyć dodatek routing aplikacji protokołu HTTP][aks-http-app-routing]
-- [Tworzenie kontrolera danych przychodzących, korzystającą z sieci prywatne, wewnętrzne i adres IP][aks-ingress-internal]
-- Utwórz kontroler danych przychodzących, który używa umożliwia szyfrowanie, aby automatycznie wygenerować certyfikaty protokołu TLS [za pomocą dynamicznego publicznego adresu IP][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
+- [Tworzenie podstawowego kontrolera danych wejściowych z łącznością sieci zewnętrznej][aks-ingress-basic]
+- [Włącz dodatek routingu aplikacji protokołu HTTP][aks-http-app-routing]
+- [Utwórz kontroler transferu danych przychodzących, który używa wewnętrznej, prywatnej sieci i adresu IP][aks-ingress-internal]
+- Utwórz kontroler transferu danych przychodzących, który używa szyfrowania, aby automatycznie generować certyfikaty TLS [z dynamicznym publicznym adresem IP][aks-ingress-tls] lub [statycznym publicznym adresem IP][aks-ingress-static-tls]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule używa narzędzia Helm do zainstalowania serwera NGINX kontrolera danych przychodzących i przykładową aplikację sieci web. Musisz mieć narzędzia Helm inicjowane w obrębie klastra usługi AKS i przy użyciu konta usługi dla Tiller. Upewnij się, że używasz najnowszej wersji narzędzia Helm. Aby uzyskać instrukcje uaktualniania, zobacz [Helm zainstalować docs][helm-install]. For more information on configuring and using Helm, see [Install applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
+W tym artykule zainstalowano kontroler NGINX Helm i przykładową aplikację internetową. Konieczne jest zainicjowanie Helm w ramach klastra AKS i użycie konta usługi dla tego elementu. Upewnij się, że korzystasz z najnowszej wersji programu Helm. Instrukcje dotyczące uaktualniania można znaleźć w dokumentacji [Helm Install][helm-install]. Aby uzyskać więcej informacji na temat konfigurowania i używania Helm, zobacz [Install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
 
-W tym artykule wymaga również, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.64 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+Ten artykuł wymaga również uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.64 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
-## <a name="create-an-ingress-controller"></a>Tworzenie kontrolera danych przychodzących
+## <a name="create-an-ingress-controller"></a>Tworzenie kontrolera transferu danych przychodzących
 
-Aby utworzyć kontroler danych przychodzących, użyj `Helm` zainstalował *ruch przychodzący serwera nginx*. Dodano nadmiarowość dwóch replik kontrolerów ruch przychodzący serwera NGINX są wdrażane przy użyciu `--set controller.replicaCount` parametru. Aby w pełni korzystać z systemem replik kontrolera danych przychodzących, upewnij się, że istnieje więcej niż jeden węzeł w klastrze AKS.
+Aby utworzyć kontroler transferu danych przychodzących, użyj `Helm` programu w celu zainstalowania *Nginx — ruch przychodzący*. W celu dodania nadmiarowości dwie repliki kontrolerów Nginx transferów przychodzących są wdrażane przy użyciu `--set controller.replicaCount` parametru. Aby w pełni korzystać z uruchamiania replik kontrolera transferu danych przychodzących, upewnij się, że w klastrze AKS znajduje się więcej niż jeden węzeł.
 
-Kontroler danych przychodzących musi odbywać się w węźle systemu Linux. Węzły systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) nie należy uruchamiać kontrolera danych przychodzących. Selektor węzła jest określony, przy użyciu `--set nodeSelector` parametru, aby poinformować harmonogram Kubernetes, aby uruchomić kontroler danych przychodzących NGINX w węźle opartych na systemie Linux.
-
-> [!TIP]
-> Poniższy przykład obejmuje tworzenie przestrzeni nazw Kubernetes, transferu danych przychodzących zasobów o nazwie *basic ruch przychodzący*. Określ obszar nazw dla Twojego środowiska, zgodnie z potrzebami. Jeśli klaster AKS nie jest włączone RBAC, Dodaj `--set rbac.create=false` polecenia narzędzia Helm.
+Kontroler transferu danych przychodzących należy również zaplanować w węźle systemu Linux. W węzłach systemu Windows Server (obecnie w wersji zapoznawczej w AKS) nie należy uruchamiać kontrolera transferu danych przychodzących. Selektor węzła jest określany za pomocą `--set nodeSelector` parametru, aby poinformować usługę Kubernetes Scheduler o uruchomieniu kontrolera usługi Nginx w węźle opartym na systemie Linux.
 
 > [!TIP]
-> Jeśli chcesz umożliwić [klienta źródłowego adresu IP zachowania][client-source-ip] dla żądań kierowanych do kontenerów w klastrze, należy dodać `--set controller.service.externalTrafficPolicy=Local` do narzędzia Helm polecenie instalacji. Źródło klienta IP znajduje się w nagłówku żądania, w obszarze *X-Forwarded-dla*. Jeśli kontroler danych przychodzących z klienta zachowania IP dla źródła włączona, przekazywanego SSL nie będzie działać.
+> Poniższy przykład tworzy przestrzeń nazw Kubernetes dla zasobów przychodzących o nazwie transfery *-Basic*. W razie potrzeby określ przestrzeń nazw dla własnego środowiska. Jeśli klaster AKS nie jest włączony RBAC, Dodaj `--set rbac.create=false` do poleceń Helm.
+
+> [!TIP]
+> Jeśli chcesz włączyć [zachowywanie źródłowych adresów IP klienta][client-source-ip] dla żądań do kontenerów w klastrze, Dodaj `--set controller.service.externalTrafficPolicy=Local` do polecenia instalacji Helm. Adres IP źródła klienta jest przechowywany w nagłówku żądania w obszarze *X-forwardd-for*. W przypadku korzystania z kontrolera transferu danych przychodzących z włączonym zachowywaniem źródłowych adresów IP klienta przekazywanie protokołu SSL nie będzie działało.
 
 ```console
 # Create a namespace for your ingress resources
@@ -57,9 +57,9 @@ helm install stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Podczas instalacji Azure publiczny adres IP jest tworzona dla kontrolera danych przychodzących. Ten publiczny adres IP to statyczny dla żywotności kontrolera danych przychodzących. Jeśli usuniesz kontrolera danych przychodzących, przypisanie publicznego adresu IP zostanie utracony. Jeśli następnie utworzysz kontroler dodatkowy ruch przychodzący, nowy publiczny adres IP zostanie przypisany. Jeśli chcesz zachować użycie publicznego adresu IP, możesz zamiast tego [utworzyć kontroler danych przychodzących z statyczny publiczny adres IP][aks-ingress-static-tls].
+Podczas instalacji jest tworzony publiczny adres IP platformy Azure dla kontrolera transferu danych przychodzących. Ten publiczny adres IP jest statyczny dla okresu istnienia kontrolera transferu danych przychodzących. Jeśli usuniesz kontroler transferu danych przychodzących, przypisanie publicznego adresu IP zostanie utracone. Jeśli następnie utworzysz dodatkowy kontroler transferu danych przychodzących, zostanie przypisany nowy publiczny adres IP. Jeśli chcesz zachować publiczny adres IP, możesz utworzyć kontroler transferu danych przychodzących [ze statycznym publicznym adresem IP][aks-ingress-static-tls].
 
-Aby uzyskać publiczny adres IP, użyj `kubectl get service` polecenia. Trwa kilka minut, aż adres IP, który można przypisać do usługi.
+Aby uzyskać publiczny adres IP, użyj `kubectl get service` polecenia. Przypisanie adresu IP do usługi może potrwać kilka minut.
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -69,17 +69,17 @@ virulent-seal-nginx-ingress-controller        LoadBalancer   10.0.48.240   40.87
 virulent-seal-nginx-ingress-default-backend   ClusterIP      10.0.50.5     <none>         80/TCP                       7m
 ```
 
-Zanotuj ten publiczny adres IP, ponieważ jest używany w ostatnim kroku do przetestowania wdrożenia.
+Zanotuj ten publiczny adres IP, ponieważ jest on używany w ostatnim kroku do testowania wdrożenia.
 
-Utworzono jeszcze żadnych reguł ruchu przychodzącego. Po przejściu do publicznego adresu IP, zostanie wyświetlona strona 404 domyślna serwera NGINX kontrolera danych przychodzących.
+Nie utworzono jeszcze żadnych reguł dotyczących transferu danych przychodzących. Jeśli przejdziesz do publicznego adresu IP, zostanie wyświetlona domyślna strona 404 kontrolera NGINX transferu danych przychodzących.
 
-## <a name="generate-tls-certificates"></a>Generowanie certyfikatów protokołu TLS
+## <a name="generate-tls-certificates"></a>Generuj certyfikaty TLS
 
-W tym artykule teraz wygenerować certyfikat z podpisem własnym za pomocą `openssl`. Do użytku produkcyjnego należy zażądać certyfikatu zaufanych za pośrednictwem dostawcy lub własnego urzędu certyfikacji (CA). W następnym kroku Generowanie Kubernetes *klucz tajny* przy użyciu certyfikatu TLS i klucz prywatny, generowane przez OpenSSL.
+W tym artykule wygenerujemy certyfikat z podpisem własnym za pomocą `openssl`usługi. Do użycia w środowisku produkcyjnym należy zażądać certyfikatu zaufanego, podpisanego za pomocą dostawcy lub własnego urzędu certyfikacji. W następnym kroku zostanie wygenerowany *wpis tajny* Kubernetes przy użyciu certyfikatu TLS i klucza prywatnego wygenerowanego przez OpenSSL.
 
-Poniższy przykład generuje 2048-bitowy klucz RSA X 509 certyfikatu, odpowiedniego do 365 dni o nazwie *aks — ruch przychodzący tls.crt*. Nosi nazwę pliku klucza prywatnego *aks — ruch przychodzący tls.key*. Klucz tajny protokołu TLS Kubernetes wymaga obu tych plików.
+Poniższy przykład generuje 2048-bitowy certyfikat x509 certyfikatu RSA ważny przez 365 dni o nazwie *AKS-Ingress-TLS. CRT*. Plik klucza prywatnego ma nazwę *AKS-Ingress-TLS. Key*. Wpis tajny Kubernetes TLS wymaga obu tych plików.
 
-W tym artykule w programach *demo.azure.com* nazwa pospolita podmiotu i nie muszą zostać zmienione. Do użytku produkcyjnego określić własne wartości organizacji `-subj` parametru:
+Ten artykuł działa z wspólną nazwą podmiotu *demo.Azure.com* i nie trzeba go zmieniać. Do użycia w środowisku produkcyjnym Określ własne wartości organizacyjne `-subj` dla parametru:
 
 ```console
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -88,11 +88,11 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -subj "/CN=demo.azure.com/O=aks-ingress-tls"
 ```
 
-## <a name="create-kubernetes-secret-for-the-tls-certificate"></a>Tworzenie wpisu tajnego dla certyfikatu TLS rozwiązania Kubernetes
+## <a name="create-kubernetes-secret-for-the-tls-certificate"></a>Utwórz wpis tajny Kubernetes dla certyfikatu TLS
 
-Aby umożliwić Kubernetes, należy użyć protokołu TLS, certyfikat i klucz prywatny dla kontrolera danych przychodzących, utworzyć i używać hasła. Klucz tajny jest zdefiniowana raz i używa certyfikatu i klucza pliku utworzonego w poprzednim kroku. Podczas definiowania ruch przychodzący trasy, następnie odwołać ten klucz tajny.
+Aby zezwolić Kubernetes na korzystanie z certyfikatu TLS i klucza prywatnego dla kontrolera transferu danych przychodzących, utworzysz i używasz klucza tajnego. Wpis tajny jest definiowany jednokrotnie i używa certyfikatu i pliku klucza utworzonego w poprzednim kroku. Następnie należy odwołać się do tego wpisu tajnego podczas definiowania tras przychodzących.
 
-Poniższy przykład tworzy Nazwa wpisu tajnego *aks — ruch przychodzący tls*:
+Poniższy przykład tworzy tajną nazwę *AKS-Ingres-TLS*:
 
 ```console
 kubectl create secret tls aks-ingress-tls \
@@ -101,23 +101,23 @@ kubectl create secret tls aks-ingress-tls \
     --cert aks-ingress-tls.crt
 ```
 
-## <a name="run-demo-applications"></a>Uruchamianie aplikacji demonstracyjnych
+## <a name="run-demo-applications"></a>Uruchom aplikacje demonstracyjne
 
-Skonfigurowano kontroler danych przychodzących i wpisu tajnego za pomocą certyfikatu. Teraz sklonujemy wykonywania dwóch pokaz aplikacji w klastrze AKS. W tym przykładzie Helm służy do wdrażania dwa wystąpienia aplikacji proste "Hello world".
+Skonfigurowano kontroler transferu danych przychodzących i klucz tajny z certyfikatem. Teraz Uruchommy dwie aplikacje demonstracyjne w klastrze AKS. W tym przykładzie Helm jest używany do wdrażania dwóch wystąpień prostej aplikacji "Hello World".
 
-Przed zainstalowaniem wykresów rozwiązania Helm przykładowe Dodaj repozytorium przykładów dla platformy Azure w środowisku Helm w następujący sposób:
+Przed zainstalowaniem przykładowych wykresów Helm należy dodać repozytorium przykładów platformy Azure do środowiska Helm w następujący sposób:
 
 ```console
 helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 ```
 
-Tworzenie pierwszej aplikacji demonstracyjnej z planu narzędzia Helm, za pomocą następującego polecenia:
+Utwórz pierwszą aplikację demonstracyjną z wykresu Helm za pomocą następującego polecenia:
 
 ```console
 helm install azure-samples/aks-helloworld --namespace ingress-basic
 ```
 
-Teraz zainstalować drugie wystąpienie aplikacji pokazowej. Dla drugiego wystąpienia należy określić nowy tytuł, aby wizualnie różniące się od dwóch aplikacji. Możesz również określić unikatową nazwę usługi:
+Teraz Zainstaluj drugie wystąpienie aplikacji demonstracyjnej. Dla drugiego wystąpienia należy określić nowy tytuł, tak aby dwie aplikacje były wizualnie różne. Należy również określić unikatową nazwę usługi:
 
 ```console
 helm install azure-samples/aks-helloworld \
@@ -126,18 +126,18 @@ helm install azure-samples/aks-helloworld \
     --set serviceName="ingress-demo"
 ```
 
-## <a name="create-an-ingress-route"></a>Utwórz trasę w protokole transferu danych przychodzących
+## <a name="create-an-ingress-route"></a>Tworzenie trasy transferu danych przychodzących
 
-Obie aplikacje są uruchomione w klastrze Kubernetes, ale są one konfigurowane przy użyciu usługi typu `ClusterIP`. Jako takie aplikacje nie są dostępne z Internetu. Aby udostępnić je publicznie, utwórz zasób transferu danych przychodzących rozwiązania Kubernetes. Zasób ruch przychodzący konfiguruje zasady, które kierują ruch do jednego z dwóch aplikacji.
+Obie aplikacje są teraz uruchomione w klastrze Kubernetes, ale są skonfigurowane za pomocą usługi typu `ClusterIP`. W związku z tym aplikacje nie są dostępne z Internetu. Aby udostępnić je publicznie, utwórz zasób Kubernetes. Zasób danych przychodzących konfiguruje reguły, które kierują ruch do jednej z dwóch aplikacji.
 
-W poniższym przykładzie ruch do adresu `https://demo.azure.com/` jest kierowany do usługi o nazwie `aks-helloworld`. Ruch do adresu `https://demo.azure.com/hello-world-two` jest kierowany do `ingress-demo` usługi. W tym artykule nie trzeba zmieniać tych nazw hostów pokaz. Do użytku produkcyjnego należy podać nazwy określone jako część procesu żądania i generowania certyfikatów.
+W poniższym przykładzie ruch do adresu `https://demo.azure.com/` jest kierowany do usługi o nazwie. `aks-helloworld` Ruch do adresu `https://demo.azure.com/hello-world-two` jest kierowany `ingress-demo` do usługi. W tym artykule nie trzeba zmieniać tych nazw demonstracyjnych hostów. W celu użycia w środowisku produkcyjnym Podaj nazwy określone jako część procesu żądania certyfikatu i generacji.
 
 > [!TIP]
-> Jeśli nazwa hosta określona w procesie żądania certyfikatu, Nazwa CN nie być dopasowana do hosta, zdefiniowane w trasy ruch przychodzący, możesz transferu danych przychodzących kontroler Wyświetla *certyfikatu fałszywe kontrolera transferu danych przychodzących rozwiązania Kubernetes*. Upewnić się, że certyfikat i ruch przychodzący trasy dopasowania nazwy hosta.
+> Jeśli nazwa hosta określona podczas procesu żądania certyfikatu, Nazwa nazwy POSPOLITej nie jest zgodna z hostem zdefiniowanym w marszrucie transferu danych przychodzących, kontroler usług przychodzących wyświetla *certyfikat Kubernetesego kontrolera*usług przychodzących. Upewnij się, że certyfikat i nazwy hosta trasy wejściowej są zgodne.
 
-*Tls* sekcji informuje trasy ruch przychodzący do użycia klucza tajnego, o nazwie *aks — ruch przychodzący tls* dla hosta *demo.azure.com*. Ponownie w przypadku użycia w środowisku produkcyjnym należy określić adres hosta.
+Sekcja *TLS* informuje trasę transferu danych przychodzących o użyciu wpisu tajnego o nazwie *AKS-* indemo.Azure.comd-TLS dla hosta. W celu użycia w środowisku produkcyjnym Określ własny adres hosta.
 
-Utwórz plik o nazwie `hello-world-ingress.yaml` i skopiuj poniższy przykład kodu YAML.
+Utwórz plik o nazwie `hello-world-ingress.yaml` i skopiuj w poniższym przykładzie YAML.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -167,7 +167,7 @@ spec:
         path: /hello-world-two(/|$)(.*)
 ```
 
-Tworzenie przy użyciu zasobów ruch przychodzący `kubectl apply -f hello-world-ingress.yaml` polecenia.
+Utwórz zasób transferu danych przychodzących przy użyciu `kubectl apply -f hello-world-ingress.yaml` polecenia.
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml
@@ -177,13 +177,13 @@ ingress.extensions/hello-world-ingress created
 
 ## <a name="test-the-ingress-configuration"></a>Testowanie konfiguracji transferu danych przychodzących
 
-Do przetestowania certyfikaty z naszych sfałszowana *demo.azure.com* hosta, użyj `curl` i określ *— rozwiązania* parametru. Ten parametr umożliwia mapowanie *demo.azure.com* nazwa publiczny adres IP kontrolera danych przychodzących. Określ publiczny adres IP swojego własnego kontrolera danych przychodzących, jak pokazano w poniższym przykładzie:
+Aby przetestować certyfikaty przy użyciu naszego *demo.Azure.comego* hosta, użyj `curl` i określ parametr *--Rozwiązuj* . Ten parametr umożliwia zamapowanie nazwy *demo.Azure.com* na publiczny adres IP kontrolera transferu danych przychodzących. Określ publiczny adres IP własnego kontrolera transferu danych przychodzących, jak pokazano w następującym przykładzie:
 
 ```
 curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 ```
 
-Nie dodatkowe ścieżki został podany adres, więc kontrolera danych przychodzących wartość domyślna to */* trasy. Pierwszy aplikacji pokazowej zostaną zwrócone, jak pokazano w następujących danych wyjściowych skróconego przykładu:
+Nie dostarczono żadnej dodatkowej ścieżki z adresem, dlatego kontroler transferu danych przychodzących jest domyślnie */* kierowany do trasy. Zostanie zwrócona pierwsza aplikacja demonstracyjna, jak pokazano w następujących wąskich przykładowych danych wyjściowych:
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
@@ -197,7 +197,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-*- V* parametru w naszym `curl` polecenie wyświetla pełne informacje, w tym certyfikat TLS odebrany. W połowie za pomocą programu curl danych wyjściowych, można sprawdzić, użyto certyfikatu TLS. *-K* parametr nadal ładowania strony, mimo że firma Microsoft korzysta z certyfikatu z podpisem własnym. Poniższy przykład pokazuje, że *wystawcy: CN=Demo.Azure.com; O = aks — ruch przychodzący tls* użyto certyfikatu:
+Parametr *-v* w naszym `curl` poleceniu zapisuje pełne informacje, w tym otrzymany certyfikat TLS. Dane wyjściowe zakupionego, można sprawdzić, czy został użyty własny certyfikat TLS. Parametr *-k* kontynuuje ładowanie strony, mimo że używany jest certyfikat z podpisem własnym. Poniższy przykład pokazuje, że *wystawca: CN = Demonstracja. Azure. com; O = AKS-ruch przychodzący —* użyto certyfikatu TLS:
 
 ```
 [...]
@@ -210,7 +210,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-Teraz Dodaj */hello-world-two* ścieżkę na adres, takie jak `https://demo.azure.com/hello-world-two`. Zwracana jest drugiej aplikacji demonstracyjnej z tytułem niestandardowych, jak pokazano w następujących danych wyjściowych skróconego przykładu:
+Teraz dodaj ścieżkę */Hello-World-Two* do adresu, `https://demo.azure.com/hello-world-two`na przykład. Zostanie zwrócona druga aplikacja demonstracyjna z tytułem niestandardowym, jak pokazano w następujących wąskich przykładowych danych wyjściowych:
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/hello-world-two
@@ -226,25 +226,25 @@ $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/h
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W tym artykule używane narzędzia Helm do zainstalowania składników transferu danych przychodzących i przykładowe aplikacje. Podczas wdrażania wykresu Helm tworzonych wiele zasobów Kubernetes. Te zasoby obejmują zasobników, wdrożenia i usług. Aby wyczyścić te zasoby, albo można usunąć przestrzeni nazw cały przykładowy lub poszczególnych zasobów.
+W tym artykule użyto Helm do zainstalowania składników przychodzących i przykładowych aplikacji. Po wdrożeniu wykresu Helm są tworzone różne zasoby Kubernetes. Do tych zasobów należą między innymi: zasoby, wdrożenia i usługi. Aby wyczyścić te zasoby, można usunąć całą przykładową przestrzeń nazw lub poszczególne zasoby.
 
-### <a name="delete-the-sample-namespace-and-all-resources"></a>Usuń przestrzeń nazw przykładowy i wszystkie zasoby
+### <a name="delete-the-sample-namespace-and-all-resources"></a>Usuń przykładową przestrzeń nazw i wszystkie zasoby
 
-Aby usunąć cały przykładowy przestrzeni nazw, należy użyć `kubectl delete` polecenia i podaj nazwę swojej przestrzeni nazw. Zostaną usunięte wszystkie zasoby w przestrzeni nazw.
+Aby usunąć całą przykładową przestrzeń nazw, użyj `kubectl delete` polecenia i określ nazwę przestrzeni nazw. Wszystkie zasoby w przestrzeni nazw są usuwane.
 
 ```console
 kubectl delete namespace ingress-basic
 ```
 
-Następnie usuń repozytorium narzędzia Helm dla usługi AKS hello world aplikacji:
+Następnie usuń repozytorium Helm dla aplikacji AKS Hello World:
 
 ```console
 helm repo remove azure-samples
 ```
 
-### <a name="delete-resources-individually"></a>Aby usunąć zasoby pojedynczo
+### <a name="delete-resources-individually"></a>Usuń zasoby pojedynczo
 
-Alternatywnie bardziej szczegółowego podejścia polega na usunięciu poszczególnych zasobów, które są tworzone. Lista Helm zwalnia z `helm list` polecenia. Wyszukaj wykresy o nazwie *ruch przychodzący serwera nginx* i *aks-helloworld*, jak pokazano w następujących przykładowych danych wyjściowych:
+Alternatywnie, bardziej szczegółowe podejście polega na usunięciu utworzonych poszczególnych zasobów. Utwórz listę wersji Helm za pomocą `helm list` polecenia. Poszukaj wykresów o nazwie *Nginx-* Ingress i *AKS-HelloWorld*, jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```
 $ helm list
@@ -255,7 +255,7 @@ billowing-guppy 1           Tue Oct 23 16:41:38 2018    DEPLOYED    aks-hellowor
 listless-quokka 1           Tue Oct 23 16:41:30 2018    DEPLOYED    aks-helloworld-0.1.0                default
 ```
 
-Usuń wersjach z `helm delete` polecenia. Poniższy przykład usuwa wdrożenia ruch przychodzący serwera NGINX i dwie przykładowe AKS Witaj świecie aplikacje.
+Usuń wydania za pomocą `helm delete` polecenia. Poniższy przykład usuwa wdrożenie NGINX, a dwa przykładowe aplikacje AKS Hello World.
 
 ```
 $ helm delete virulent-seal billowing-guppy listless-quokka
@@ -265,43 +265,43 @@ release "billowing-guppy" deleted
 release "listless-quokka" deleted
 ```
 
-Następnie usuń repozytorium narzędzia Helm dla usługi AKS hello world aplikacji:
+Następnie usuń repozytorium Helm dla aplikacji AKS Hello World:
 
 ```console
 helm repo remove azure-samples
 ```
 
-Usuwanie trasy transferu danych przychodzących, który kierowany ruch do aplikacji przykładowej:
+Usuń trasę transferu danych przychodzących, która kieruje ruch do aplikacji przykładowych:
 
 ```console
 kubectl delete -f hello-world-ingress.yaml
 ```
 
-Usuń certyfikat klucza tajnego:
+Usuń klucz tajny certyfikatu:
 
 ```console
 kubectl delete secret aks-ingress-tls
 ```
 
-Na koniec można usunąć samego obszaru nazw. Użyj `kubectl delete` polecenia i podaj nazwę swojej przestrzeni nazw:
+Na koniec można usunąć samą przestrzeń nazw. `kubectl delete` Użyj polecenia i określ nazwę przestrzeni nazw:
 
 ```console
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule uwzględnione niektóre składniki zewnętrzne w usłudze AKS. Aby dowiedzieć się więcej na temat tych składników, zobacz następujące strony projektu:
+W tym artykule uwzględniono niektóre składniki zewnętrzne do AKS. Aby dowiedzieć się więcej o tych składnikach, zobacz następujące strony projektu:
 
-- [Interfejs wiersza polecenia narzędzia Helm][helm-cli]
-- [Kontroler danych przychodzących serwera NGINX][nginx-ingress]
+- [Interfejs wiersza polecenia Helm][helm-cli]
+- [Kontroler transferu danych przychodzących NGINX][nginx-ingress]
 
 Możesz również wykonać następujące czynności:
 
-- [Tworzenie kontrolera podstawowego transferu danych przychodzących za pomocą połączenia z siecią zewnętrzną][aks-ingress-basic]
-- [Włączyć dodatek routing aplikacji protokołu HTTP][aks-http-app-routing]
-- [Tworzenie kontrolera danych przychodzących, korzystającą z sieci prywatne, wewnętrzne i adres IP][aks-ingress-internal]
-- Utwórz kontroler danych przychodzących, który używa umożliwia szyfrowanie, aby automatycznie wygenerować certyfikaty protokołu TLS [za pomocą dynamicznego publicznego adresu IP][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
+- [Tworzenie podstawowego kontrolera danych wejściowych z łącznością sieci zewnętrznej][aks-ingress-basic]
+- [Włącz dodatek routingu aplikacji protokołu HTTP][aks-http-app-routing]
+- [Utwórz kontroler transferu danych przychodzących, który używa wewnętrznej, prywatnej sieci i adresu IP][aks-ingress-internal]
+- Utwórz kontroler transferu danych przychodzących, który używa szyfrowania, aby automatycznie generować certyfikaty TLS [z dynamicznym publicznym adresem IP][aks-ingress-tls] lub [statycznym publicznym adresem IP][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm

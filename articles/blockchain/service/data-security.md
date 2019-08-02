@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia usługi Azure Service łańcucha bloków
-description: Azure Blockchain danych dostęp i większe bezpieczeństwo pojęcia dotyczące usługi
+title: Zabezpieczenia usługi Azure łańcucha bloków
+description: Zagadnienia dotyczące dostępu do danych i zabezpieczeń usługi Azure łańcucha bloków
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,59 +10,59 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: dd0a33364ed9395a85478798e47352c533bd47dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028203"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608533"
 ---
-# <a name="azure-blockchain-service-security"></a>Zabezpieczenia usługi Azure Service łańcucha bloków
+# <a name="azure-blockchain-service-security"></a>Zabezpieczenia usługi Azure łańcucha bloków
 
-Usługa Azure Blockchain korzysta kilka funkcji platformy Azure do przechowywania danych, bezpieczne i dostępne. Dane są zabezpieczane przy użyciu izolacji, szyfrowania i uwierzytelniania.
+Usługa Azure łańcucha bloków używa kilku funkcji platformy Azure, aby zapewnić bezpieczeństwo i dostępność danych. Dane są zabezpieczane przy użyciu izolacji, szyfrowania i uwierzytelniania.
 
 ## <a name="isolation"></a>Izolacja
 
-Zasoby platformy Azure usługa łańcucha bloków są izolowane w prywatnej sieci wirtualnej. Każdy węzeł transakcji i sprawdzanie poprawności jest maszynę wirtualną (VM). Maszyny wirtualne w jednej sieci wirtualnej nie może komunikować się bezpośrednio do maszyn wirtualnych w innej sieci wirtualnej. Izolacja zapewnia, że komunikacja pozostanie prywatne w ramach sieci wirtualnej. Aby uzyskać więcej informacji na izolację sieci wirtualnej platformy Azure, zobacz [izolacja w chmurze publicznej platformy Azure](../../security/azure-isolation.md#networking-isolation).
+Zasoby usługi Azure łańcucha bloków są odizolowane w prywatnej sieci wirtualnej. Każda transakcja i węzeł walidacji jest maszyną wirtualną (VM). Maszyny wirtualne w jednej sieci wirtualnej nie mogą komunikować się bezpośrednio z maszynami wirtualnymi w innej sieci wirtualnej. Izolacja gwarantuje, że komunikacja pozostaje prywatna w sieci wirtualnej. Aby uzyskać więcej informacji na temat izolacji sieci wirtualnej platformy Azure, zobacz [izolacja w chmurze publicznej platformy Azure](../../security/fundamentals/isolation-choices.md#networking-isolation).
 
-![Diagram sieci Wirtualnej](./media/data-security/vnet.png)
+![Diagram sieci wirtualnej](./media/data-security/vnet.png)
 
 ## <a name="encryption"></a>Szyfrowanie
 
-Dane użytkownika są przechowywane w usłudze Azure storage. Dane użytkownika są szyfrowane, ruchu i przechowywanych w zakresie zabezpieczeń i poufności. Aby uzyskać więcej informacji, zobacz: [Przewodnik po zabezpieczeniach magazynu Azure](../../storage/common/storage-security-guide.md).
+Dane użytkownika są przechowywane w usłudze Azure Storage. Dane użytkownika są szyfrowane w ruchu i są przechowywane w celu zapewnienia bezpieczeństwa i poufności. Aby uzyskać więcej informacji, zobacz: [Przewodnik po zabezpieczeniach usługi Azure Storage](../../storage/common/storage-security-guide.md).
 
 ## <a name="authentication"></a>Authentication
 
-Transakcje mogą być wysyłane do węzłów łańcucha bloków za pośrednictwem punktu końcowego usługi RPC. Klienci komunikować się z węzłem transakcji przy użyciu zwrotnego serwera proxy to obsługuje uwierzytelnianie użytkowników i szyfruje dane za pośrednictwem protokołu SSL.
+Transakcje można wysyłać do węzłów łańcucha bloków za pośrednictwem punktu końcowego RPC. Klienci komunikują się z węzłem transakcji przy użyciu odwrotnego serwera proxy, który obsługuje uwierzytelnianie użytkowników i szyfruje dane za pośrednictwem protokołu SSL.
 
 ![Diagram uwierzytelniania](./media/data-security/authentication.png)
 
-Istnieją trzy tryby uwierzytelniania dla dostępu zdalnego wywoływania procedur.
+Istnieją trzy tryby uwierzytelniania dostępu do usługi RPC.
 
 ### <a name="basic-authentication"></a>Uwierzytelnianie podstawowe
 
-Podstawowe uwierzytelnianie przy użyciu nagłówka uwierzytelniania HTTP zawierający nazwę użytkownika i hasło. Nazwa użytkownika jest nazwa węzła łańcucha bloków. Hasło jest ustawiany podczas inicjowania obsługi administracyjnej element członkowski lub węzeł. Można zmienić hasło przy użyciu witryny Azure portal lub interfejsu wiersza polecenia.
+Uwierzytelnianie podstawowe używa nagłówka uwierzytelniania HTTP zawierającego nazwę użytkownika i hasło. Nazwa użytkownika jest nazwą węzła łańcucha bloków. Hasło jest ustawiane podczas aprowizacji elementu członkowskiego lub węzła. Hasło można zmienić przy użyciu Azure Portal lub interfejsu wiersza polecenia.
 
 ### <a name="access-keys"></a>Klucze dostępu
 
-Klucze dostępu użyć losowo wygenerowanego ciągu objęte adres URL punktu końcowego. Dwa klucze dostępu wspomagające wymiany kluczy. Klucze można generowane z witryny Azure portal i interfejs wiersza polecenia.
+Klucze dostępu używają losowo generowanego ciągu zawartego w adresie URL punktu końcowego. Dwa klucze dostępu umożliwiają włączenie rotacji kluczy. Klucze można generować ponownie z Azure Portal i interfejsu wiersza polecenia.
 
 ### <a name="azure-active-directory"></a>Usługa Azure Active Directory
 
-Usługa Azure Active Directory (Azure AD) używa oparta na oświadczeniach mechanizm uwierzytelniania, w którym użytkownik jest uwierzytelniany przez usługę Azure AD przy użyciu poświadczeń użytkownika usługi Azure AD. Usługi Azure AD zapewnia zarządzanie tożsamościami oparta na chmurze i umożliwia klientom skorzystanie z jednej tożsamości w całej aplikacji przedsiębiorstwa i dostępem w chmurze. Usługa Azure Blockchain integruje się z usługą Azure AD, włączenie Federacji identyfikator, pojedynczego logowania jednokrotnego oraz uwierzytelnianie wieloskładnikowe. Możesz przypisać użytkownikom, grupom i ról aplikacji w Twojej organizacji, uzyskać dostęp do elementu członkowskiego i języka node łańcucha bloków.
+Azure Active Directory (Azure AD) korzysta z mechanizmu uwierzytelniania opartego na żądaniach, w którym użytkownik jest uwierzytelniany przez usługę Azure AD przy użyciu poświadczeń użytkownika usługi Azure AD. Usługa Azure AD zapewnia oparte na chmurze zarządzanie tożsamościami i umożliwia klientom korzystanie z jednej tożsamości w całym przedsiębiorstwie i dostęp do aplikacji w chmurze. Usługa Azure łańcucha bloków integruje się z usługą Azure AD, włączając w to Federacji identyfikatora, logowania jednokrotnego i uwierzytelniania wieloskładnikowego. W organizacji można przypisywać użytkowników, grupy i role aplikacji w celu uzyskania dostępu do elementu członkowskiego łańcucha bloków i węzła.
 
-Serwer proxy klienta usługi Azure AD jest dostępna w [GitHub](https://github.com/Microsoft/azure-blockchain-connector/releases). Serwer proxy klienta przekierowuje użytkownika do strony logowania usługi Azure AD i uzyskuje token elementu nośnego po pomyślnym uwierzytelnieniu. Następnie użytkownik Ethereum aplikacji klienckiej, takich jak Geth lub Truffle łączy się z punktu końcowego serwera proxy klienta. Na koniec po przesłaniu transakcji, serwer proxy klienta wprowadza tokenu elementu nośnego w nagłówku http i zwrotny serwer proxy sprawdza poprawność tokenu przy użyciu protokołu OAuth.
+Serwer proxy klienta usługi Azure AD jest dostępny w witrynie [GitHub](https://github.com/Microsoft/azure-blockchain-connector/releases). Serwer proxy klienta kieruje użytkownika do strony logowania usługi Azure AD i uzyskuje token okaziciela po pomyślnym uwierzytelnieniu. Następnie użytkownik nawiązuje połączenie z punktem końcowym serwera proxy klienta Ethereumą aplikację kliencką, taką jak Geth lub Truffle. Na koniec po przesłaniu transakcji serwer proxy klienta wprowadza token okaziciela w nagłówku HTTP i zwrotny serwer proxy weryfikuje token przy użyciu protokołu OAuth.
 
-## <a name="keys-and-ethereum-accounts"></a>Klucze i Ethereum kont
+## <a name="keys-and-ethereum-accounts"></a>Klucze i konta Ethereum
 
-Podczas aprowizowania elementu członkowskiego usługi Azure Service łańcucha bloków, generowany jest konto Ethereum i parę kluczy publicznych i prywatnych. Klucz prywatny jest używany do wysyłania transakcji do łańcucha bloków. Konto Ethereum jest ostatnie 20 bajtów skrótu klucza publicznego. Konto Ethereum jest również nazywany portfela.
+Podczas aprowizacji elementu członkowskiego usługi Azure łańcucha bloków jest generowana wartość konta Ethereum i klucza publicznego i prywatnego. Klucz prywatny służy do wysyłania transakcji do łańcucha bloków. Konto Ethereum to ostatnie 20 bajtów skrótu klucza publicznego. Konto Ethereum jest również nazywane portfelem.
 
-Pary kluczy prywatnych i publicznych jest przechowywana keyfile w formacie JSON. Klucz prywatny są szyfrowane przy użyciu hasła wprowadzonego po utworzeniu usługi Rejestr łańcucha bloków.
+Para kluczy prywatnych i publicznych jest przechowywana jako KeyFile w formacie JSON. Klucz prywatny jest szyfrowany przy użyciu hasła wprowadzonego podczas tworzenia usługi księgi łańcucha bloków.
 
-Klucze prywatne są używane do cyfrowego podpisywania transakcji. W łańcuchy prywatnego kontrakt inteligentne podpisane przez klucz prywatny reprezentuje tożsamość osoby podpisującej. Aby sprawdzić poprawność podpisu, odbiornik można porównać klucza publicznego osoby podpisującej przy użyciu adresu obliczane na podstawie podpisu.
+Klucze prywatne są używane do cyfrowego podpisywania transakcji. W prywatnej blockchains kontrakt inteligentny podpisany przez klucz prywatny reprezentuje tożsamość osoby podpisującej. Aby sprawdzić poprawność podpisu, odbiorca może porównać klucz publiczny osoby podpisującej z adresem obliczonym na podstawie podpisu.
 
-Constellation klucze są używane do unikatowego identyfikowania węzłów kworum. Constellation klucze są generowane w czasie inicjowania obsługi administracyjnej węzłów i są określone w parametrze privateFor prywatnej transakcji w kworum.
+Klucze Constellation są używane do unikatowego identyfikowania węzła kworum. Klucze Constellation są generowane w momencie aprowizacji węzła i są określone w parametrze privateFor transakcji prywatnej w kworum.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Konfigurowanie węzłów transakcji usługi Azure Service łańcucha bloków](configure-transaction-nodes.md)
+[Konfigurowanie węzłów transakcji usługi Azure łańcucha bloków Service](configure-transaction-nodes.md)

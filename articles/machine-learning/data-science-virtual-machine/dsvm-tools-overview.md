@@ -4,7 +4,7 @@ description: Więcej informacji na temat narzędzia i programy narzędziowe, wst
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 0a503b82c07da62b5c5c768d8e1c92cb19e75aee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: d48c2b849f875289c89201f20478deebf4c00db9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236480"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565231"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Poznaj maszyny wirtualnej do nauki o danych
 
 Maszyna wirtualna do nauki o danych (DSVM) zawiera obszerną listę do nauki o danych popularne, machine learning/narzędzia sztucznej Inteligencji i platform danych. Konfiguracje narzędzia są rygorystycznie testowane przez analitykom danych i deweloperom w firmie Microsoft oraz przez szerszą społeczność rozwiązań do nauki o danych zapewnienie stabilności i efektywność ogólne.
 
-Maszyny DSVM zawiera również wiele wskazówki i przykłady kodu w formie notesów programu Jupyter, które mogą być wykonywane lokalnie. Istnieje również dokumentacji dla tych przykładów ułatwić zrozumienie. 
+DSVM zawiera również wiele przykładów kodu i instruktaży w postaci notesów Jupyter, które mogą być wykonywane lokalnie. Dostępna jest również dokumentacja tych przykładów w celu uzyskania pomocy. 
 
 > [!NOTE]
-> Możesz użyć [notesów usługi Azure](/azure/notebooks/azure-notebooks-overview) tworzenie, uruchamianie i udostępnianie aplikacji Jupyter notebooks w chmurze. Możesz [dołączyć Maszynę wirtualną do nauki o danych do platformy Azure, notesy](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier) Aby rozszerzyć możliwości obliczeniowych dostępnych.
+> Za pomocą [Azure Notebooks](../../notebooks/azure-notebooks-overview.md) można tworzyć, uruchamiać i udostępniać notesy Jupyter w chmurze. Data Science VM można [dołączyć do Azure Notebooks](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) , aby rozwinąć dostępną moc obliczeniową.
 
 Narzędzi, platform, narzędzi i przykładów, które znajdują się na maszynie Wirtualnej do nauki o danych są podzielone na następujące sekcje:
 

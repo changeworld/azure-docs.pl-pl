@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68500040"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz formułę skalowania automatycznego do skalowania węzłów obliczeniowych w puli usługi Batch
@@ -229,7 +229,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod() |Zwraca okres próbkowania, które zostały wykonane w historycznym zestawie danych przykładowych. |
 | Count () |Zwraca łączną liczbę próbek w historii metryk. |
 | HistoryBeginTime() |Zwraca sygnaturę czasową najstarszego dostępnego przykładu danych dla metryki. |
-| GetSamplePercent() |Zwraca wartość procentową próbek, które są dostępne dla danego interwału czasu. Przykład:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Ponieważ metoda kończy się niepowodzeniem `GetSamplePercent` , jeśli wartość procentowa zwracanych próbek jest `samplePercent` mniejsza niż określona, można użyć metody do sprawdzenia w pierwszej kolejności. `GetSample` Następnie można wykonać alternatywną akcję, jeśli istnieją niewystarczające próbki, bez zatrzymania automatycznej oceny skalowania. |
+| GetSamplePercent() |Zwraca wartość procentową próbek, które są dostępne dla danego interwału czasu. Na przykład:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Ponieważ metoda kończy się niepowodzeniem `GetSamplePercent` , jeśli wartość procentowa zwracanych próbek jest `samplePercent` mniejsza niż określona, można użyć metody do sprawdzenia w pierwszej kolejności. `GetSample` Następnie można wykonać alternatywną akcję, jeśli istnieją niewystarczające próbki, bez zatrzymania automatycznej oceny skalowania. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Przykłady, przykładowa wartość procentowa i Metoda *getsample ()*
 Podstawową operacją formułę skalowania automatycznego jest uzyskanie danych metryk zadania i zasobu, a następnie dopasowanie rozmiaru puli na podstawie tych danych. W związku z tym ważne jest, aby jasno zrozumieć, jak formuły skalowania automatycznego współdziałają z danymi metryk (przykładami).

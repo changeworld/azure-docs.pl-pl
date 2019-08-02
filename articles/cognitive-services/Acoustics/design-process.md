@@ -1,7 +1,7 @@
 ---
 title: Zagadnienia dotyczące projektowania symulacji akustyki
 titlesuffix: Azure Cognitive Services
-description: To omówienie pojęć dotyczących wyjaśnia, jak projekt Akustyka dołącza akustyczny symulację do procesu projektowania dźwięku.
+description: W tym przeglądzie koncepcyjnym wyjaśniono, w jaki sposób akustyczne projektowe obejmuje symulację akustyczną w procesie projektowania dźwięku.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,56 +10,57 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 4a1a0b15da091a1c020eb132f6b14b9ee14d334c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: c7e6f17d3e7b9712dd853bcf309bb73fa10ac156
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61335421"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704833"
 ---
-# <a name="project-acoustics-design-process-concepts"></a>Pojęcia procesu projektowania Akustyka projektu
+# <a name="project-acoustics-design-process-concepts"></a>Pojęcia związane z procesem projektowania akustycznego projektu
 
-To omówienie pojęć dotyczących wyjaśnia, jak projekt Akustyka dołącza fizycznych symulacji akustyczny procesem zaprojektowaniu.
+W tym omówieniu koncepcji wyjaśniono, w jaki sposób akustyczne projektu polega na rozdzieleniu fizycznej symulacji akustycznej na proces projektowania dźwięku.
 
-## <a name="sound-design-with-audio-dsp-parameters"></a>Zaprojektowaniu parametrami DSP audio
+## <a name="sound-design-with-audio-dsp-parameters"></a>Projekt dźwiękowy z parametrami DSP audio
 
-Tytuły interaktywne 3D osiągnąć ich określonego dźwięku, za pomocą cyfrowego sygnału audio przetwarzania bloków (DSP) hostowanych w aparacie audio. Te zakres bloków rozwiązania od prostego mieszania, reverberation, echo, opóźnienie, wyrównywania, kompresji i ograniczania i innych skutków. Wybierając, rozmieszczanie i ustawianie parametrów w tych skutków odpowiada projektanta dźwięk, który tworzy audio programu graph, która osiąga cele estetycznych i gra środowiska.
+interaktywne tytuły 3W osiągają określony dźwięk przy użyciu bloków audio-dźwiękowych (DSP), hostowanych w aparacie audio. Bloki te obejmują złożoność z prostego mieszania, do reverberation, echo, opóźnienia, korektora, kompresji i ograniczania oraz inne efekty. Wybór, porządkowanie i ustawianie parametrów dla tych efektów jest odpowiedzialne za projektanta dźwięku, który kompiluje Graf audio, który osiąga estetyczne i rozgrywkę cele środowiska.
 
-W tytule interaktywne dźwięki i odbiornika przeniesieniu w całej przestrzeni 3D jak te parametry dostosowanie do zmieniających się warunków? Projektant dźwięku często zorganizuje woluminy w całej przestrzeni zaprogramowane do wyzwolenia zmiany parametrów do osiągnięcia zmiany w reverberation skutki, na przykład lub dźwięków kaczka w asortymencie przemieszcza się odbiornika z jednej strony sceny do innego. Systemy Akustyka są również dostępne, można zautomatyzować niektóre z tych skutków.
+W interaktywnym tytule, jak dźwięki i odbiornik poruszają się w przestrzeni trójwymiarowej, jak te parametry dostosowują się do zmieniających się warunków? Projektant dźwięku często rozmieścić woluminy w całym miejscu, które są programowane w celu wyzwolenia zmian parametrów, aby osiągnąć zmiany w efektach reverberation, na przykład lub do kaczia dźwięków w mieszaninie, gdy odbiornik przejdzie z jednej części sceny do innej. Dostępne są również systemy akustyczne, które mogą zautomatyzować niektóre z tych efektów.
 
-Tytuły 3D używać udziału oświetlenia i kinematyczna fizyki systemami są uzasadnione fizyki, ale Projektant dostosowane do różnych celów — szczegółowe informacje i gra osiągnięcia. Projektant wizualny nie zostały ustawione wartości poszczególnych pikseli, ale raczej dostosowuje modele 3D, materiały i światła systemów, które są wszystkie fizycznie oparte na handlu visual wyglądu i koszty procesora CPU. Jaki byłyby równoważne proces dźwięk? Akustyka projektu jest pierwszym etapem eksplorowania to pytanie. Firma Microsoft będzie dotknij najpierw na znaczenia transportu akustyczne energii poprzez spację.
+tytuły 3W wykorzystują oświetlenie i Kinematic systemy fizyki, które są fizyko-uzasadnione, ale dostosowane przez projektanta do osiągnięcia różnych celów związanych z zanurzeniem i rozgrywkę. Projektant wizualny nie ustawia pojedynczych wartości pikseli, ale raczej dostosowuje modele 3W, materiały i systemy transportu lekkich, które są fizycznie oparte na wymianie wizualnej i kosztach procesora. Co to jest równoważny proces audio? Dźwięk jest pierwszym krokiem w eksploracji tego pytania. Najpierw będziemy korzystać z tego, co oznacza, aby transportować energię akustyczną za pośrednictwem miejsca.
 
-![Zrzut ekranu AltSpace sceny nałożony ze strefami pogłosu](media/reverb-zones-altspace.png)
+![Zrzut ekranu przedstawiający scenę AltSpace z Reverb strefami](media/reverb-zones-altspace.png)
 
-## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulsów odpowiedzi: Pod względem akustycznym łączenie dwóch punktów w przestrzeni
+## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulsy odpowiedzi: Akustyczne łączenie dwóch punktów w miejscu
 
-Jeśli znasz audio projektu może być zna akustycznych impulsów odpowiedzi. Odpowiedź akustyczny impulsów modeli transportu dźwięk ze źródła do odbiornika. W związku z tym odpowiedź impulsów można przechwycić co ciekawe efekt Akustyka pomieszczenia, takie jak zamknięcia i reverberation. Odpowiedzi impulsów ma również niektórych zaawansowanych właściwości, które umożliwia efekty dźwiękowe DSP skalowania. Dodanie dwóch sygnałów audio i przetwarzania o odpowiedź impulsów daje ten sam wynik jako stosowanie odpowiedzi impulsów oddzielnie poszczególnych sygnałów i dodanie wyników. Propagacja akustyczne i odpowiedzi impulsów również nie należy polegać na dźwięk przetwarzane tylko na scenie są modelowane i lokalizacja źródłowa i odbiornika. Krótko mówiąc odpowiedź impulsów przetwarza sceny wpływu na propagację dźwięku.
+Jeśli znasz już projekt audio, możesz poznać odpowiedzi na impulsy akustyczne. Odpowiedź impulsu akustycznego modeluje transport dźwięku ze źródła do odbiornika. W związku z tym odpowiedzi impulsów mogą przechwytywać każdy interesujący efekt hałasu z pokoju, takiego jak zamknięcia i reverberation. Odpowiedzi impulsów mają również pewne zaawansowane właściwości, które umożliwiają skalowanie efektów Audio DSP. Dodanie dwóch sygnałów audio razem i przetwarzania z odpowiedzią impulsu daje ten sam wynik, co stosowanie impulsu odpowiedzi dla każdego sygnału i Dodawanie wyników. Propagacja akustyczna i impulsowe odpowiedzi nie zależą również od przetwarzania dźwięku, tylko na modelowanej scenie i lokalizacji źródłowej i odbiornika. W skrócie, impuls odpowiedzi pozostanie efektem sceny dotyczącej propagacji dźwięku.
 
-Odpowiedź impulsów przechwytuje co ciekawe pokoju akustyczny efekt, możemy zastosować go do audio wydajnie za pomocą filtru i uzyskujemy impulsów odpowiedzi z pomiaru lub symulacji. Ale co zrobić, jeśli firma Microsoft nie ma dość Akustyka, aby dokładnie dopasować fizyki, ale raczej mold jej odpowiadający wymaganiom emocjonalnej sceny? Ale znacznie takich jak wartości pikseli odpowiedź impulsów się tylko listami tysięcy liczb znajdujących się, jak firma Microsoft prawdopodobnie je dostosować do potrzeb estetycznych? I co zrobić, jeśli chcemy mieć zamknięcia. / przeszkoda, który jest różny płynnie podczas przekazywania za pomocą drzwi lub za zaporą przeszkód, ile odpowiedzi impulsów chcemy uzyskać efekt smooth? Co zrobić, jeśli źródłowy przenosi się szybko? Jak możemy interpolacji?
+Odpowiedź impulsu przechwytuje każdy interesujący efekt akustyczny pokoju i możemy zastosować ją do wydajnego dźwięku za pomocą filtru, a firma Microsoft może uzyskać odpowiedzi na miarę pomiaru lub symulacji. Ale co zrobić, jeśli nie chcesz, aby akustyczne dokładnie pasowały do fizyki, ale Mold je w celu dopasowania do emocjonalnejych wymagań sceny? Podobnie jak w przypadku wartości pikseli, odpowiedzi impulsów jest tylko lista tysięcy cyfr, jak można dostosować ją do potrzeb estetycznych? I co zrobić, jeśli chcemy mieć zamknięcia/przeszkodę, która zmienia się w sposób płynny i przechodzą przez Doorways lub za przeszkody, ile impulsów potrzebujemy, aby uzyskać gładki efekt? Co zrobić, jeśli źródło jest przenoszone szybko? Jak możemy przeprowadzić interpolację?
 
-Wydaje się to trudne w użyciu symulacji i impulsów odpowiedzi dotyczących niektórych aspektów Akustyka w tytułach interaktywne. Ale możemy ją tworzyć nadal systemem audio transportu, który obsługuje projektanta dopasowania, jeśli połączymy naszych odpowiedzi impuls z symulacji parametrami naszych znanych audio DSP efekt.
+Trudno jest używać symulacji i impulsów odpowiedzi dla niektórych aspektów akustycznych w tytułach interaktywnych. Jednak nadal możemy utworzyć system transportu audio, który obsługuje dostosowania projektanta, jeśli możemy połączyć nasze impulsy z symulacji przy użyciu znanych parametrów efektów Audio DSP.
 
-## <a name="connecting-simulation-to-audio-dsp-with-parameters"></a>Symulacja nawiązywania połączenia z DSP audio z parametrami
+## <a name="connecting-simulation-to-audio-dsp-with-parameters"></a>Łączenie symulacji z procesorem DSP audio z parametrami
 
-Odpowiedź impulsów zawiera każdy interesujące (i każdy postrzegać) akustyczne efekt. Audio DSP bloki, podczas ich parametry są ustawione poprawnie, można renderować akustyczne efekty. Dysk blokiem DSP audio do zautomatyzowania transportu audio w scenie 3D przy użyciu symulacji akustyczne polega tylko na pomiaru audio parametrów DSP z odpowiedzi impulsów. Ten pomiar jest zrozumiały dla niektórych typowych i ważnych skutków akustyczne tym zamknięcia "," przeszkoda "," portalling "i" reverberation.
+Odpowiedź impulsu zawiera każdy interesujący (i każdy nieinteresujący) efekt akustyczny. Bloki DSP audio, gdy ich parametry są ustawione prawidłowo, mogą renderować interesujący efekt akustyczny. Korzystanie z symulacji akustycznej w celu wypróbowania bloku Audio DSP w celu zautomatyzowania transportu audio w scenie 3D jest tylko kwestią mierzenia parametrów Audio DSP z odpowiedzi impulsu. Pomiary te są dobrze zrozumiałe dla niektórych typowych i ważnych efektów akustycznych, takich jak zamknięcia, przeszkoda, portaler i reverberation.
 
-Ale jeśli Symulacja jest podłączony bezpośrednio do audio parametrów DSP, gdzie jest dostosowanie projektanta? Co ich? Dobrze ponownie, odrzucając impulsów odpowiedzi i utrzymywanie kilku parametrów DSP ich znacznej ilości pamięci. I zapewnienie projektanta nieco energii w wyniku końcowego, należy tylko znaleźliśmy sposób wstawiania projektanta między symulacji i dźwięk DSP.
+Ale jeśli Symulacja jest połączona bezpośrednio z parametrami DSP audio, gdzie jest dopasowanie projektanta? Jakie korzyści dodaliśmy? Dodatkowo zyskuje znaczną ilość pamięci dzięki odrzucaniu impulsów i zachowaniu kilku parametrów DSP. I aby dać projektantowi pewną moc w stosunku do końcowego wyniku, musimy tylko znaleźć sposób wstawiania projektanta między symulacją a procesorem DSP audio.
 
-![Wykres z odpowiedzią stylizowane impuls z parametrami nałożony](media/acoustic-parameters.png)
+![Graf z założonym impulsem odpowiedzi z parametrami](media/acoustic-parameters.png)
 
-## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Zaprojektowaniu poprzez przekształcanie audio DSP parametry symulacji
+## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Projektowanie dźwięku przez transformowanie parametrów DSP audio z symulacji
 
-Należy wziąć pod uwagę wpływ posiadane przez użytkownika okularów przeciwsłonecznych w nakierowaniu pomniejszyć widok świata. W dniu jasny okularów może zmniejszyć lśnienia na coś bardziej komfortowo, jednocześnie. W pokoju ciemny może nie mieć możliwość znajdziesz już niczego w ogóle. Okulary nie należy ustawiać poziom jasności we wszystkich sytuacjach; po prostu dokonają wszystko, czego ciemniejszy.
+Weź pod uwagę wpływ efektów ubocznych na Twój widok świata. Na krótkim dzień szklanki mogą zmniejszyć komfort do czegoś bardziej wygodnego. W ciemnym pokoju może nie być możliwe wyświetlenie wszystkiego. Okulary nie ustawiają pewnego poziomu jasności we wszystkich sytuacjach. właśnie sprawiają, że wszystko jest ciemne.
 
-Jeśli używamy symulacji można dostarczać naszym audio DSP przy użyciu parametrów zamknięcia i reverberation możemy dodać filtr po symulator, aby dostosować parametry, które DSP "widzi". Filtr nie wymuszają określony poziom zamknięcia lub pogłosu długość tail podobnie jak okularów przeciwsłonecznych w nakierowaniu nie pomieścić co jasności ten sam. Filtr po prostu wprowadzać co occluder occlude mniejsza. Lub occlude więcej. Przez dodawanie i dostosowywanie filtr parametr zamknięcia. "ściemniające", pokoje dużych, otwórz nadal będzie miał mały do zamknięcia efektu, gdy drzwi wydłuży ze środowiska w celu zamknięcia silne., przy zachowaniu największy obowiązuje przejścia zapewnia symulacji.
+Jeśli korzystamy z symulacji w celu napędu naszego DSP audio przy użyciu parametrów zamknięcia i reverberation, możemy dodać filtr po symulatorze, aby dostosować parametry, które obsługuje procesor DSP ". Filtr nie wymusił określonego poziomu zamknięcia lub Reverb długość ogona, podobnie jak okulary słoneczne nie sprawiają, że każdy pokój ma tę samą jasność. Filtr może po prostu dokonywać occluder occlude. Lub occlude więcej. Dodanie i dostosowanie jednego "przyciemniania" filtru parametrów zamknięcia, duże, otwarte pokoje nadal będzie miało niewielki wpływ na zamknięcia, podczas gdy Doorways zwiększy się od średniego do silnego efektu zamknięcia, zachowując gładkość w przejściach efektu zapewnia symulację.
 
-W tym modelu projektanta zadania zmienia się wybór parametrów akustycznych w każdej sytuacji do wybierania i Dostosowywanie filtrów do zastosowania najważniejsze parametry DSP pochodzące z symulacji. Jego eksponuje projektanta działań z wąskie dotyczy konfigurowania przejścia na wyższy zainteresowania intensywność skutki zamknięcia i reverberation i obecność źródeł w zestawie. Oczywiście gdy wymaga tego sytuacja, jeden filtr zawsze dostępna jest po prostu przejdź wstecz do wybierania parametry DSP dla określonego źródła w konkretnej sytuacji.
+W tym modelu zadania projektanta zmieniają się przed wybraniem parametrów akustycznych dla każdej i każdej sytuacji, aby wybrać i dostosować filtry do zastosowania do najważniejszych parametrów DSP pochodzących z symulacji. Podnosi ona działania projektanta od wąskich obaw związanych z konfigurowaniem płynnych przejść do wyższego wpływu na intensywność efektów zamknięcia i reverberation oraz obecność źródeł w mieszaninie. Oczywiście, gdy zajdzie taka potrzeba, jeden filtr zawsze jest dostępny po prostu z powrotem do wybierania parametrów DSP dla określonego źródła w określonej sytuacji.
 
-## <a name="sound-design-in-project-acoustics"></a>Zaprojektowaniu w Akustyka projektu
+## <a name="sound-design-in-project-acoustics"></a>Projekt dźwięku w przypadku hałasu w projekcie
 
-Pakiet Akustyka projektu integruje poszczególne składniki opisane powyżej: symulatora, kodera, który wyodrębnia parametrów i tworzy zasób Akustyka, procesor DSP audio i wyboru filtrów. Dźwięk projektu z projektu Akustyka pociąga za sobą parametry wybierając filtry, które dostosować parametry zamknięcia i reverberation pochodną symulacji i stosowane do audio DSP, za pomocą kontrolek dynamicznych udostępniane wewnątrz edytora gry i aparat audio.
+Pakiet akustyczny projektu integruje poszczególne składniki opisane powyżej: symulator, koder, który wyodrębnia parametry i kompiluje element zawartości akustycznej, DSP audio i wybór filtrów. Projekt dźwiękowy z Akustycznością projektu obejmuje wybór parametrów filtrów, które dostosowują parametry zamknięcia i reverberation wynikające z symulacji i stosowane do DSP audio, z kontrolkami dynamicznymi widocznymi w edytorze gier i aparacie audio.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Wypróbuj przy użyciu modelu projektu [Akustyka projektu Przewodnik Szybki start dotyczący Unity](unity-quickstart.md) lub [Akustyka projektu Przewodnik Szybki start dotyczący Unreal](unreal-quickstart.md)
-* Zapoznaj się z [Akustyka projektu projektowania formanty programu Unity](unity-workflow.md) lub [Akustyka projektu projektowania formanty Unreal](unreal-workflow.md)
+* Wypróbuj model projektowy, korzystając z [przewodnika Szybki Start dla środowiska Unity](unity-quickstart.md) lub [projektu — Przewodnik Szybki Start dla Unreal](unreal-quickstart.md)
+* Eksploruj kontrolki projektowe akustyczne projektu [dla aparatu Unity](unity-workflow.md) lub [formanty układu akustycznego projektu dla Unreal](unreal-workflow.md)
 

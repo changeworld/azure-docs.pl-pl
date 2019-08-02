@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
-ms.openlocfilehash: 672d446fa8dc27612c7b046cac109bfa4ca5fec5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4585749c83432c19b6e62f57c1d954b3afc5ee33
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309370"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608401"
 ---
 # <a name="health-check-error-reference"></a>Informacje o błędach sprawdzania kondycji
 
@@ -63,7 +63,7 @@ Ten błąd oznacza, że serwer DNS dla danego serwera logowania rejestru został
 
 ## <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Ten błąd oznacza, że punkt końcowy wyzwania dla danego rejestru odpowiedział z niedozwolonym stanem HTTP 403. Ten błąd oznacza, że użytkownicy nie mają dostępu do rejestru, najprawdopodobniej ze względu na konfigurację sieci wirtualnej.
+Ten błąd oznacza, że punkt końcowy wyzwania dla danego rejestru odpowiedział z niedozwolonym stanem HTTP 403. Ten błąd oznacza, że użytkownicy nie mają dostępu do rejestru, najprawdopodobniej ze względu na konfigurację sieci wirtualnej. Aby wyświetlić aktualnie skonfigurowane reguły zapory, uruchom `az acr show --query networkRuleSet --name <registry>`polecenie.
 
 *Potencjalne rozwiązania*: Usuń reguły sieci wirtualnej lub Dodaj bieżący adres IP klienta do listy dozwolonych.
 
@@ -97,7 +97,7 @@ Ten błąd oznacza, że interfejs wiersza polecenia nie może znaleźć serwera 
 
 *Potencjalne rozwiązania*: Sprawdź, czy pisownia jest poprawna i czy rejestr istnieje; Upewnij się, że użytkownik ma odpowiednie uprawnienia do rejestru oraz że chmury rejestru i środowiska interfejsu wiersza polecenia pasują do siebie. Zaktualizuj interfejs wiersza polecenia platformy Azure do najnowszej wersji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby sprawdzić kondycję rejestru, zobacz [Sprawdzanie kondycji usługi Azure Container Registry](container-registry-check-health.md).
 

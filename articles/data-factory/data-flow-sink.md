@@ -1,92 +1,99 @@
 ---
-title: Skonfigurować przekształcenia ujścia w funkcji mapowania przepływu danych usługi Azure Data Factory
-description: Dowiedz się, jak skonfigurować przekształcenie obiektu sink w mapowanie przepływu danych.
+title: Skonfiguruj transformację ujścia w funkcji przepływu danych mapowania Azure Data Factory
+description: Dowiedz się, jak skonfigurować transformację ujścia w przepływie danych mapowania.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 4341cbb0e24330d535f5211c088f0068eab33af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b228dfd92fe389d196a65f7152ef22751842f4bb
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596269"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640283"
 ---
-# <a name="sink-transformation-for-a-data-flow"></a>Obiekt sink przekształcania przepływu danych
+# <a name="sink-transformation-for-a-data-flow"></a>Przekształcanie ujścia dla przepływu danych
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Po Przekształcanie przepływu danych można ujście danych do docelowego zestawu danych. Przekształcenia ujścia wybierz polecenie definicji zestawu danych, miejsce docelowe danych wyjściowych. Może mieć jako ujście wiele przekształceń, jako przepływ danych wymaga.
+Po przekształceniu przepływu danych możesz odujścia dane do docelowego zestawu danych. W transformację ujścia Wybierz definicję zestawu danych dla docelowego danych wyjściowych. Może istnieć tyle transformacji ujścia, ile wymaga przepływ danych.
 
-Do konta w celu dryfu schematu i zmiany w danych przychodzących do folderu bez zdefiniowanego schematu w wyjściowy zestaw danych będący ujściem danych wyjściowych. Można również uwzględnić zmiany kolumn w źródłach, wybierając **Zezwalaj dryfu schematu** w źródle. Następnie automatycznego wszystkich pól w ujściu.
+Aby obsłużyć dryfowanie schematu i zmiany w danych przychodzących, należy ujścia danych wyjściowych do folderu bez zdefiniowanego schematu w wyjściowym zestawie danych. Możesz również uwzględnić zmiany kolumn w źródłach, wybierając opcję **Zezwalaj na dryfowanie schematu** w źródle. Następnie Automap wszystkie pola w zlewie.
 
-![Opcje na karcie ujścia, w tym opcja automatycznego mapy](media/data-flow/sink1.png "ujścia 1")
+![Opcje na karcie zlewka z uwzględnieniem opcji Automap](media/data-flow/sink1.png "ujścia 1")
 
-Aby ujścia wszystkie przychodzące pola, należy włączyć funkcję **mapy automatycznie**. Aby wybrać pola obiektu sink do miejsca docelowego lub zmienić nazwy pól w miejscu docelowym, należy wyłączyć opcję **mapy automatycznie**. Następnie otwórz **mapowanie** kartę, aby zamapować pola danych wyjściowych.
+Aby wyprowadzić wszystkie pola przychodzące,Włącz funkcję Automap. Aby wybrać pola, które mają być ujścia do miejsca docelowego, lub zmienić nazwy pól w miejscu docelowym, wyłącz automapowanie. Następnie otwórz kartę **Mapowanie** , aby zamapować pola wyjściowe.
 
-![Opcje na karcie mapowania](media/data-flow/sink2.png "ujścia 2")
+![Opcje na karcie Mapowanie](media/data-flow/sink2.png "ujścia 2")
 
-## <a name="output"></a>Dane wyjściowe 
-Dla usługi Azure Blob storage lub typach ujścia usługi Data Lake Storage danych wyjściowych przekształconych danych do folderu. Spark generuje pliki danych partycjonowanych danych wyjściowych oparte na wdrożony schemat partycjonowania używa przekształcania ujścia. 
+## <a name="output"></a>Output 
+W przypadku usługi Azure Blob Storage lub Data Lake Storage typów ujścia dane są wyprowadzane w folderze. Platforma Spark generuje partycjonowane pliki danych wyjściowych na podstawie schematu partycjonowania używanego przez transformację ujścia. 
 
-Możesz ustawić schematu partycjonowania z **Optymalizacja** kartę. Jeśli chcesz, aby usługi Data Factory, aby scalić dane wyjściowe do pojedynczego pliku, wybierz opcję **pojedyncza partycja**.
+Schemat partycjonowania można ustawić na karcie **Optymalizacja** . Jeśli chcesz, aby Data Factory scalał dane wyjściowe w jeden plik, wybierz **jedną partycję**.
 
-![Opcje na karcie Optymalizacja](media/data-flow/opt001.png "ujścia opcje")
+![Opcje na karcie Optymalizacja](media/data-flow/opt001.png "Opcje ujścia")
 
 ## <a name="field-mapping"></a>Mapowanie pól
+Na karcie **Mapowanie** przekształcenia ujścia można mapować kolumny przychodzące po lewej stronie do miejsc docelowych po prawej stronie. Gdy ujścia danych są przesyłane do plików, Data Factory będą zawsze zapisywać nowe pliki do folderu. Po zmapowaniu do zestawu danych bazy wiedzy wybierz opcję operacje tabeli bazy danych, która będzie wstawiana, aktualizowana, upsert lub usuwana.
 
-Na **mapowanie** kartę z swoją transformację ujścia przychodzących kolumn po lewej stronie można mapować do miejsc docelowych po prawej stronie. Gdy przepływ danych jest zlew do plików, usługi Data Factory zawsze zapisać nowe pliki w folderze. Podczas mapowania do zestawu danych bazy danych, można wygenerować nową tabelę, która używa tego schematu, ustawiając **Zapisz zasady** do **Zastąp**. Lub wstawianie nowych wierszy w istniejącej tabeli, a następnie mapowania pól do istniejącego schematu. 
+![Karta mapowanie](media/data-flow/sink2.png "Ujścia")
 
-![Na karcie mapowania](media/data-flow/sink2.png "wychwytywanie")
+W tabeli mapowanie można wybrać wiele kolumn, odłączyć wiele kolumn lub zmapować wiele wierszy na tę samą nazwę kolumny.
 
-W tabeli mapowania można multiselect połączyć wiele kolumn, odłącz wiele kolumn lub mapowanie wiele wierszy do tej samej nazwy kolumny.
+Aby zawsze mapować przychodzący zestaw pól na obiekt docelowy, ponieważ są one i w pełni akceptują elastyczne definicje schematu, wybierz opcję **Zezwalaj na dryfowanie schematu**.
 
-Zawsze mapowania przychodzących zestaw pól do obiektu docelowego, i aby w pełni zaakceptować elastycznego schematu definicji, wybierz pozycję **Zezwalaj dryfu schematu**.
+![Karta mapowanie pokazująca pola mapowane na kolumny w zestawie danych](media/data-flow/multi1.png "wiele opcji")
 
-![Na karcie mapowania, wyświetlane pola zamapowane do kolumn w zestawie danych](media/data-flow/multi1.png "wiele opcji")
+Aby zresetować mapowania kolumn, wybierz pozycję **ponownie Mapuj**.
 
-Aby zresetować swoje mapowania kolumn, wybierz **ponownie zamapować**.
+![Karta ujścia](media/data-flow/sink1.png "Ujścia — jeden")
 
-![Karta ujście](media/data-flow/sink1.png "ujścia jeden")
+Wybierz pozycję **Weryfikuj schemat** , aby zakończyć niepowodzeniem ujścia w przypadku zmiany schematu.
 
-Wybierz **sprawdzania poprawności schematu** niepowodzenie ujścia w przypadku zmiany schematu.
+Wybierz pozycję **Wyczyść folder,** aby obciąć zawartość folderu ujścia przed zapisaniem plików docelowych w tym folderze docelowym.
 
-Wybierz **wyczyść folder** obciąć zawartość folderu ujścia przed napisaniem pliki docelowe, w tym folderze docelowym.
+## <a name="rule-based-mapping"></a>Mapowanie oparte na regułach
+Gdy automapowanie jest wyłączone, będzie można dodać mapowanie oparte na kolumnach (stałe mapowanie) lub mapowanie oparte na regułach. Mapowanie oparte na regułach umożliwi pisanie wyrażeń z dopasowywaniem do wzorca. 
+
+![Mapowanie oparte na regułach](media/data-flow/rules4.png "Mapowanie oparte na regułach")
+
+Po wybraniu mapowania opartego na regułach, nastąpi naliczanie PODAJNIKa, aby oszacować pasujące wyrażenie zgodne z regułami przychodzącego wzorca i zdefiniować nazwy pól wychodzących. Możesz dodać dowolną kombinację mapowań pól i reguł. Nazwy pól są następnie generowane w czasie wykonywania przez moduł ADF na podstawie przychodzących metadanych ze źródła. Podczas debugowania można wyświetlać nazwy wygenerowanych pól i korzystać z okienka Podgląd danych.
+
+Szczegóły dopasowania wzorca znajdują się w [dokumentacji wzorca kolumny](concepts-data-flow-column-pattern.md).
 
 ## <a name="file-name-options"></a>Opcje nazwy pliku
 
-Skonfiguruj sposób nazywania plików: 
+Skonfiguruj nazewnictwo plików: 
 
-   * **Domyślne**: Zezwalaj na platformy Spark do nazwy plików na podstawie ustawień domyślnych części.
-   * **Wzorzec**: Wprowadź wzorzec dla plików danych wyjściowych. Na przykład **pożyczek [n]** utworzy loans1.csv, loans2.csv i tak dalej.
-   * **Dla każdej partycji**: Wprowadź jedną nazwę pliku dla każdej partycji.
-   * **Jako dane w kolumnie**: Ustaw plik wyjściowy do wartości kolumny.
-   * **Dane wyjściowe do pojedynczego pliku**: Po wybraniu tej opcji ADF łączy pliki wyjściowe podzielonym na partycje z jedną o nazwie pliku. Aby użyć tej opcji, zestaw danych powinna być rozwiązywana na nazwę folderu. Ponadto należy pamiętać, że ta operacja scalania może prawdopodobnie zakończy się niepowodzeniem na podstawie rozmiaru węzła.
+   * **Domyślne**: Zezwalaj platformie Spark na nazwy plików na podstawie wartości domyślnych części.
+   * **Wzorzec**: Wprowadź wzorzec dla plików wyjściowych. Na przykład **pożyczki [n]** spowodują utworzenie loans1. csv, loans2. csv i tak dalej.
+   * **Na partycję**: Wprowadź jedną nazwę pliku na partycję.
+   * **Jako dane w kolumnie**: Ustaw plik wyjściowy na wartość kolumny.
+   * **Dane wyjściowe do pojedynczego pliku**: Po wybraniu tej opcji ADF będzie łączyć pliki wyjściowe z podziałem na partycje w jeden nazwany plik. Aby można było użyć tej opcji, zestaw danych powinien zostać rozpoznany jako nazwa folderu. Należy również pamiętać, że ta operacja scalania może się nie powieść w zależności od rozmiaru węzła.
 
 > [!NOTE]
-> Plik rozpoczęcia operacji tylko wtedy, gdy używasz działania wykonywania przepływu danych. Nie uruchamiania w trybie debugowania przepływu danych.
+> Operacje na plikach są uruchamiane tylko wtedy, gdy uruchamiasz działanie wykonywania przepływu danych. Nie zaczynają się one w trybie debugowania przepływu danych.
 
 ## <a name="database-options"></a>Opcje bazy danych
 
-Wybierz ustawienia bazy danych:
+Wybierz pozycję Ustawienia bazy danych:
 
-* **Zaktualizuj metodę**: Wartość domyślna to umożliwia operacje wstawiania. Wyczyść **insert Zezwalaj** Jeśli chcesz zatrzymać wstawianie nowych wierszy ze źródła. Można zaktualizować upsert, lub usunąć wiersze, należy najpierw dodać przekształcania wiersza polecenia alter do tagu wierszy dla tych akcji. 
-* **Ponowne utworzenie tabeli**: Porzuć lub utworzenia tabeli docelowej, zanim zostanie zakończone przepływu danych.
-* **TRUNCATE table**: Usunąć wszystkie wiersze z tabeli docelowej, zanim zostanie zakończone przepływu danych.
-* **Wielkość partii**: Wprowadź liczbę do zasobnika zapisy na fragmenty. Użyj tej opcji w przypadku obciążeń dużych ilości danych. 
-* **Włącz tryb przejściowy**: Podczas ładowania usługi Azure Data Warehouse jako zestaw danych ujścia przy użyciu technologii PolyBase.
+* **Metoda aktualizacji**: Wartość domyślna to Zezwalaj na operacje wstawiania. Usuń zaznaczenie pola wyboru **Zezwalaj** , jeśli chcesz przerwać wstawianie nowych wierszy ze źródła. Aby zaktualizować, upsert lub usunąć wiersze, najpierw Dodaj transformację ALTER-Row do wierszy tagów dla tych działań. 
+* **Utwórz ponownie tabelę**: Porzuć lub Utwórz tabelę docelową przed zakończeniem przepływu danych.
+* **Obetnij tabelę**: Usuń wszystkie wiersze z tabeli docelowej przed ukończeniem przepływu danych.
+* **Rozmiar wsadu**: Wprowadź liczbę, aby przetworzyć przedział zapisu do fragmentów. Użyj tej opcji w przypadku dużych obciążeń danych. 
+* **Włącz przemieszczanie**: Użyj podstawy podczas ładowania usługi Azure Data Warehouse jako zestawu danych ujścia.
 
-![Na karcie Ustawienia, przedstawiający SQL ujścia opcje](media/data-flow/alter-row2.png "opcje SQL")
-
-> [!NOTE]
-> W przepływu danych można kierować Data Factory, aby utworzyć nową definicję tabeli w docelowej bazie danych. Aby utworzyć definicję tabeli, należy ustawić zestawu danych podczas przekształcania ujścia, który ma nową nazwę tabeli. Wybierz zestaw danych SQL, pod nazwą tabeli **Edytuj** i wprowadź nową nazwę tabeli. Następnie podczas przekształcania ujścia, Włącz **Zezwalaj dryfu schematu**. Ustaw **Importuj schemat** do **Brak**.
-
-![Ustawienia zestawu danych SQL, przedstawiający miejsce edytować nazwę tabeli](media/data-flow/dataset2.png "schematu SQL")
+![Karta Ustawienia z opcjami UJŚCIA SQL](media/data-flow/alter-row2.png "Opcje SQL")
 
 > [!NOTE]
-> Podczas aktualizacji lub usuwania wierszy w ujściu usługi bazy danych, należy ustawić kolumny klucza. To ustawienie umożliwia przekształcania wiersza polecenia alter określić unikatowy wiersz Biblioteka przenoszenia danych (DML).
+> W przepływie danych można skierować Data Factory, aby utworzyć nową definicję tabeli w docelowej bazie danych. Aby utworzyć definicję tabeli, należy ustawić zestaw danych w transformację ujścia, która ma nową nazwę tabeli. W zestawie danych SQL, pod nazwą tabeli, wybierz opcję **Edytuj** i wprowadź nową nazwę tabeli. Następnie w transformacji ujścia Włącz opcję **Zezwalaj na dryfowanie schematu**. Ustaw dla opcji **Importuj schemat** **wartość Brak**.
 
-## <a name="next-steps"></a>Kolejne kroki
+![Ustawienia zestawu danych SQL, gdzie można edytować nazwę tabeli](media/data-flow/dataset2.png "Schemat SQL")
 
-Teraz, po utworzeniu przepływu danych, Dodaj [działania potoku przepływu danych](concepts-data-flow-overview.md).
+> [!NOTE]
+> W przypadku aktualizowania lub usuwania wierszy w ujścia bazy danych należy ustawić kolumnę klucza. To ustawienie umożliwia przekształcenie zmiany wiersza w celu określenia unikatowego wiersza w bibliotece przenoszenia danych (DML).
+
+## <a name="next-steps"></a>Następne kroki
+Po utworzeniu przepływu danych Dodaj [działanie przepływu danych do potoku](concepts-data-flow-overview.md).

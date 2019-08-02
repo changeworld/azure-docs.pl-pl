@@ -9,25 +9,27 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 7d216a3706c13a5fff312850e244a521ab22ae9e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9e62dd25c3ff16e280eda1ad11053ef520a85e4d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386540"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706522"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Tworzenie Azure Resource Manager szablonów w celu zautomatyzowania wdrożenia Azure Logic Apps
 
 Aby ułatwić automatyzację tworzenia i wdrażania aplikacji logiki, w tym artykule opisano sposoby tworzenia [szablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla aplikacji logiki. Aby zapoznać się z omówieniem struktury i składni szablonu, który zawiera definicję przepływu pracy i inne zasoby niezbędne do wdrożenia, zobacz [Omówienie: Automatyzowanie wdrażania aplikacji logiki za pomocą szablonów](logic-apps-azure-resource-manager-templates-overview.md)Azure Resource Manager.
 
-Azure Logic Apps udostępnia [wstępnie skompilowane aplikacje logiki Azure Resource Manager szablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) , którego można użyć ponownie, nie tylko do tworzenia aplikacji logiki, ale również do definiowania zasobów i parametrów do użycia w ramach wdrożenia. Możesz użyć tego szablonu do własnych scenariuszy firmy lub dostosować szablon w celu spełnienia wymagań. Aby uzyskać więcej informacji na temat szablonów Azure Resource Manager, zobacz następujące tematy:
+Azure Logic Apps udostępnia [wstępnie utworzony szablon Azure Resource Manager aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) , którego można użyć ponownie, nie tylko do tworzenia aplikacji logiki, ale także do definiowania zasobów i parametrów do użycia w ramach wdrożenia. Możesz użyć tego szablonu do własnych scenariuszy firmy lub dostosować szablon w celu spełnienia wymagań.
+
+> [!IMPORTANT]
+> Upewnij się, że połączenia w szablonie używają tej samej grupy zasobów platformy Azure i lokalizacji jako aplikacji logiki.
+
+Aby uzyskać więcej informacji na temat szablonów Azure Resource Manager, zobacz następujące tematy:
 
 * [Struktura i składnia szablonu Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Opracowywanie szablonów usługi Azure Resource Manager pozwalających zachować spójność w chmurze](../azure-resource-manager/templates-cloud-consistency.md)
-
-> [!IMPORTANT]
-> Połączenia w szablonie muszą używać tej samej grupy zasobów platformy Azure i lokalizacji jako aplikacji logiki.
 
 <a name="visual-studio"></a>
 
@@ -47,6 +49,13 @@ Pobierając aplikację logiki, uzyskasz szablon zawierający definicje aplikacji
 Szablony Menedżer zasobów można tworzyć za pomocą Azure PowerShell z modułem [LogicAppTemplate](https://github.com/jeffhollan/LogicAppTemplateCreator). Ten moduł open source najpierw szacuje aplikację logiki i wszystkie połączenia używane przez aplikację logiki. Następnie moduł generuje zasoby szablonu z wymaganymi parametrami dla wdrożenia.
 
 Załóżmy na przykład, że masz aplikację logiki, która odbiera komunikat z kolejki Azure Service Bus i przekazuje dane do bazy danych SQL Azure. Moduł zachowuje wszystkie logiky aranżacji i parameterizes parametry połączenia SQL i Service Bus, aby można było podać i zmienić te wartości w zależności od potrzeb wdrożenia.
+
+W poniższych przykładach pokazano, jak tworzyć i wdrażać aplikacje logiki przy użyciu szablonów Azure Resource Manager, Azure Pipelines w usłudze Azure DevOps i Azure PowerShell:
+
+* [Przykład: Łączenie z kolejkami Azure Service Bus z poziomu Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Przykład: Łączenie z kontami usługi Azure Storage z poziomu Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Przykład: Skonfiguruj akcję aplikacji funkcji dla Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Przykład: Nawiązywanie połączenia z kontem integracji z poziomu usługi Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>Zainstaluj moduły programu PowerShell
 

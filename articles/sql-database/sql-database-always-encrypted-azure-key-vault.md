@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a833c255e7a4e83c003fbef72367c5e271f380c5
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 924ec20b9922d12da7291dc4f44b7413c68728c6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347216"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569579"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Ochrona danych poufnych i przechowywanie kluczy szyfrowania w Azure Key Vault
 
@@ -111,7 +110,7 @@ Jeśli zostanie otwarte okno **Nowa reguła zapory** , zaloguj się do platformy
 W tej sekcji utworzysz tabelę do przechowywania danych pacjenta. Nie jest on początkowo zaszyfrowany — skonfigurujesz szyfrowanie w następnej sekcji.
 
 1. Rozwiń węzeł **bazy danych**.
-2. Kliknij prawym przyciskiem  myszy bazę danych kliniki, a następnie kliknij pozycję **nowe zapytanie**.
+2. Kliknij prawym przyciskiem myszy bazę danych kliniki, a następnie kliknij pozycję **nowe zapytanie**.
 3. Wklej następujący język Transact-SQL (T-SQL) do nowego okna zapytania i **Wykonaj** go.
 
 ```sql
@@ -175,7 +174,7 @@ Po zakończeniu działania kreatora baza danych jest skonfigurowana do Always En
 * Utworzono klucz szyfrowania kolumny i zapisany w Azure Key Vault.
 * Skonfigurowano wybrane kolumny do szyfrowania. Tabela pacjentów nie ma obecnie żadnych danych, ale wszystkie istniejące dane w wybranych kolumnach są teraz szyfrowane.
 
-Aby sprawdzić, jak utworzyć klucze w programie SSMS  > , można zwiększyć**bezpieczeństwo** > **Always Encrypted kluczy**.
+Aby sprawdzić, jak utworzyć klucze w programie SSMS > , można zwiększyć**bezpieczeństwo** > **Always Encrypted kluczy**.
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Tworzenie aplikacji klienckiej, która współpracuje z zaszyfrowanymi danymi
 Teraz, gdy Always Encrypted jest skonfigurowany, można skompilować aplikację, która wykonuje operacje *wstawiania* i *wybiera* w zaszyfrowanej kolumnie.  

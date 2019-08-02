@@ -10,10 +10,10 @@ ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 502f178b66e7ba233552d7db4e095363c8bb8628
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325556"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Wdróż do Azure Container Instances z Azure Container Registry
@@ -50,7 +50,7 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 Musisz teraz utworzyć jednostkę usługi i przechowywać jej poświadczenia w magazynie kluczy.
 
-Następujące polecenie używa polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create-for-rbac] to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] do przechowywania **hasła** jednostki usługi w magazynie.
+Następujące polecenie używa polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create-for-rbac] , aby utworzyć jednostkę usługi, i [AZ klucz tajny Set][az-keyvault-secret-set] do przechowywania **hasła** jednostki usługi w magazynie.
 
 ```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
@@ -141,7 +141,7 @@ Jeśli przechowujesz obrazy kontenerów w usłudze Azure Container Registry, mo�
 
 1. Aby upewnić się, że konto administratora jest włączone, wybierz pozycję **klucze dostępu**, a w obszarze **administrator** wybierz pozycję **Włącz**.
 
-1. Wybierz pozycję repozytoria, a następnie wybierz repozytorium, z którego chcesz wykonać wdrożenie, kliknij prawym przyciskiem myszy tag obrazu kontenera, który chcesz wdrożyć, a następnie wybierz polecenie **Uruchom wystąpienie**.
+1. Wybierzpozycję repozytoria, a następnie wybierz repozytorium, z którego chcesz wykonać wdrożenie, kliknij prawym przyciskiem myszy tag obrazu kontenera, który chcesz wdrożyć, a następnie wybierz polecenie **Uruchom wystąpienie**.
 
     !["Uruchom wystąpienie" w Azure Container Registry w Azure Portal][acr-runinstance-contextmenu]
 

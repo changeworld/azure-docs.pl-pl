@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelnianie i autoryzację do kotwic przestrzenne platformy Azure | Dokumentacja firmy Microsoft
-description: Poznaj różne sposoby usługi lub aplikacji można uwierzytelniać kotwic przestrzenne platformy Azure i poziomy formant, który trzeba bramy dostępu do platformy Azure przestrzenne kotwic.
+title: Uwierzytelnianie i autoryzacja kotwice przestrzenne platformy Azure | Microsoft Docs
+description: Dowiedz się więcej na temat różnych sposobów uwierzytelniania aplikacji lub usługi w kotwicach przestrzennych platformy Azure oraz poziomów kontroli, które mają być bramą dostępu do kotwic przestrzennych platformy Azure.
 author: julianparismorgan
 manager: vriveras
 services: azure-spatial-anchors
@@ -8,42 +8,42 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c7ffa432c9311ba9d4ecf4ba82c375e2dad988d0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 850748462f0273f2dfb1522d900ce9f1b2156d2a
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478542"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517063"
 ---
-# <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Uwierzytelnianie i autoryzację do kotwic przestrzenne platformy Azure
+# <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Uwierzytelnianie i autoryzacja w kotwicach przestrzennych platformy Azure
 
-W tej sekcji omówimy różne sposoby, które można wybrać metodę uwierzytelniania Azure kotwic przestrzennych z aplikacji lub usługi sieci web i sposoby, w którym można użyć kontroli dostępu opartej na rolach w usłudze Azure Directory (Azure AD) możesz kontrolować dostęp do kont przestrzenne zakotwiczenia.  
+W tej sekcji omówiono różne sposoby uwierzytelniania w zakotwiczeniach przestrzennych platformy Azure z poziomu aplikacji lub usługi sieci Web, a także sposoby używania Access Control opartych na rolach w usłudze Azure Directory (Azure AD) w celu kontrolowania dostępu do kont zakotwiczeń przestrzennych.  
 
 ## <a name="overview"></a>Omówienie
 
-![Omówienie uwierzytelniania kotwic przestrzenne platformy Azure](./media/spatial-anchors-authentication-overview.png)
+![Omówienie uwierzytelniania w kotwicach przestrzennych platformy Azure](./media/spatial-anchors-authentication-overview.png)
 
-Aby dostęp do danego konta kotwic przestrzenne platformy Azure, klienci muszą najpierw uzyskać token dostępu z usługi Azure mieszane mogą stać się rzeczywistością Usługa tokenu zabezpieczającego (STS). Tokeny uzyskanymi z STS na żywo przez 24 godziny i zawierają informacje dotyczące usług przestrzenne kotwic do podejmowania decyzji dotyczących autoryzacji na koncie i upewnij się, że tylko autoryzowani podmiotów zabezpieczeń mają dostęp do tego konta. 
+Aby uzyskać dostęp do danego konta zakotwiczeń przestrzennych platformy Azure, klienci muszą najpierw uzyskać token dostępu z usługi Azure Mixed Reality Security Token Service (STS). Tokeny uzyskane z usługi STS Live przez 24 godziny i zawierają informacje dotyczące usług kotwic przestrzennych w celu podejmowania decyzji dotyczących autoryzacji na koncie i zapewniają, że tylko autoryzowane podmioty zabezpieczeń mogą uzyskiwać dostęp do tego konta. 
 
-Tokeny dostępu można uzyskać w programie exchange z obu kluczy konta lub tokeny wystawione przez usługi AD systemu Azure. 
+Tokeny dostępu można uzyskać w programie Exchange z dowolnego klucza konta lub z tokenów wystawionych przez usługę Azure AD. 
 
-Klucze konta pozwalają na szybkie rozpoczęcie pracy nad przy użyciu usługi Azure przestrzenne kotwic; Jednak przed wdrożeniem aplikacji do środowiska produkcyjnego, zaleca się, że aktualizujesz aplikację do używania uwierzytelniania w usłudze AD systemu Azure. 
+Klucze kont umożliwiają szybkie rozpoczynanie pracy przy użyciu usługi zakotwiczeń przestrzennych platformy Azure. Jednak przed wdrożeniem aplikacji w środowisku produkcyjnym zaleca się zaktualizowanie aplikacji w taki sposób, aby korzystała z uwierzytelniania opartego na usłudze Azure AD. 
 
-Tokeny uwierzytelniania w usłudze Azure AD można uzyskać na dwa sposoby:
+Tokeny uwierzytelniania usługi Azure AD można uzyskać na dwa sposoby:
 
-- Jeśli tworzysz aplikację przedsiębiorstwa, a firma korzysta z usługi Azure AD jako jego systemem obsługi tożsamości, można użyć oparte na użytkowniku usługi Azure AD uwierzytelniania w aplikacji i Udziel dostępu do kont przestrzenne kotwic przy użyciu istniejących grup zabezpieczeń usługi Azure AD lub bezpośrednio do użytkowników w Twojej organizacji. 
-- W przeciwnym razie zalecane jest, uzyskiwania tokenów usługi Azure AD z usługi sieci web, do obsługi aplikacji. Korzystając z obsługi usługi sieci web jest zalecaną metodę uwierzytelniania dla aplikacji produkcyjnych, ponieważ takie rozwiązanie pomaga uniknąć osadzenia poświadczeń do uzyskania dostępu do kotwic przestrzenne platformy Azure w aplikacji klienckiej. 
+- Jeśli tworzysz aplikację dla przedsiębiorstw, a Twoja firma korzysta z usługi Azure AD jako systemu tożsamości, możesz użyć uwierzytelniania opartego na użytkownikach usługi Azure AD w aplikacji oraz udzielić dostępu do kont kotwicy przestrzennej przy użyciu istniejących grup zabezpieczeń usługi Azure AD lub bezpośrednio dla użytkowników w organizacji. 
+- W przeciwnym razie zalecane jest uzyskanie tokenów usługi Azure AD z usługi sieci Web obsługującej aplikację. Zalecaną metodą uwierzytelniania aplikacji produkcyjnych jest użycie dodatkowej usługi sieci Web, ponieważ pozwala to uniknąć osadzania poświadczeń w celu uzyskania dostępu do kotwic przestrzennych platformy Azure w aplikacji klienckiej. 
 
-## <a name="account-keys"></a>Klucze konta
+## <a name="account-keys"></a>Klucze kont
 
-Za pomocą kluczy konta dla dostępu do konta Azure przestrzenne kotwic jest najprostszym sposobem na rozpoczęcie pracy. Klucze konta można znaleźć w witrynie Azure portal. Przejdź do swojego konta, a następnie wybierz kartę "Klucze".
+Korzystanie z kluczy konta do uzyskiwania dostępu do konta zakotwiczeń przestrzennych platformy Azure jest najprostszym sposobem na rozpoczęcie pracy. Klucze kont znajdziesz na Azure Portal. Przejdź do swojego konta i wybierz kartę "klucze".
 
-![Omówienie uwierzytelniania kotwic przestrzenne platformy Azure](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
+![Omówienie uwierzytelniania w kotwicach przestrzennych platformy Azure](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
 
 
-Dwa klucze są udostępniane, służą do obu jednocześnie jest nieprawidłowa dla dostępu kontu przestrzenne zakotwiczenia. Zalecane jest, regularnie aktualizować klucz, którego używasz do uzyskania dostępu do konta; dwa oddzielne klucze Włącz takie aktualizacje bez przestojów; Musisz również zaktualizować, klucz podstawowy i klucz pomocniczy. 
+Dostępne są dwa klucze, które jednocześnie są prawidłowe w celu uzyskania dostępu do konta kotwice przestrzenne. Zalecane jest regularne aktualizowanie klucza używanego do uzyskiwania dostępu do konta. posiadanie dwóch oddzielnych prawidłowych kluczy pozwala na takie aktualizacje bez przestojów. musisz tylko zaktualizować klucz podstawowy i klucz pomocniczy. 
 
-Zestaw SDK ma wbudowaną obsługę uwierzytelniania za pomocą kluczy konta; po prostu musisz ustawić właściwość AccountKey na obiekcie cloudSession. 
+Zestaw SDK ma wbudowaną obsługę uwierzytelniania przy użyciu kluczy konta; Wystarczy ustawić właściwość AccountKey obiektu cloudSession. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -69,7 +69,7 @@ _cloudSession!.configuration.accountKey = "MyAccountKey"
 mCloudSession.getConfiguration().setAccountKey("MyAccountKey");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++ZESTAW NDK](#tab/cpp)
+# <a name="c-ndktabcpp"></a>[C++ZGŁOSIŁ](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
@@ -83,35 +83,35 @@ auto configuration = m_cloudSession.Configuration();
 configuration.AccountKey(LR"(MyAccountKey)");
 ```
 
-***
+---
 
-Po zakończeniu tej operacji, zestaw SDK obsłuży wymiany klucza konta, aby uzyskać token dostępu i konieczne buforowanie tokenów dla aplikacji. 
+Gdy to zrobisz, zestaw SDK będzie obsługiwał wymianę klucza konta dla tokenu dostępu i wymagane buforowanie tokenów dla aplikacji. 
 
 > [!WARNING] 
-> Szybkie proces wdrażania, ale podczas tworzenia/prototypy, zalecane jest użycie kluczy konta. Zdecydowanie zaleca się nie dostarczanie aplikacji przy użyciu klucza konta osadzonych w niej w środowisku produkcyjnym i zamiast tego użyć oparte na użytkowniku lub oparta na usłudze Azure uwierzytelnianie w usłudze AD zbliża się dalej na liście.
+> Użycie kluczy konta jest zalecane do szybkiego udostępniania, ale tylko w przypadku tworzenia/prototypowania. Zdecydowanie zaleca się, aby nie dostarczać aplikacji do środowiska produkcyjnego przy użyciu osadzonego klucza konta, a zamiast tego używać metod uwierzytelniania usługi Azure AD opartych na użytkownikach lub usługach, które znajdują się dalej.
 
-## <a name="azure-ad-user-authentication"></a>Uwierzytelnianie użytkownika usługi Azure AD
+## <a name="azure-ad-user-authentication"></a>Uwierzytelnianie użytkowników w usłudze Azure AD
 
-Dla aplikacji przeznaczonych dla użytkowników usługi Azure Active Directory, zalecanym podejściem jest użycie tokenu usługi Azure AD dla użytkownika, który można uzyskać za pomocą biblioteki ADAL, zgodnie z opisem w następującej dokumentacji: [ https://docs.microsoft.com/azure/active-directory/develop/v1-overview ](../../active-directory/develop/v1-overview.md); użytkownik powinny wykonaj następujące kroki w obszarze "Szybkiego uruchamiania", które obejmują:
+W przypadku aplikacji przeznaczonych dla użytkowników Azure Active Directory Zalecanym podejściem jest użycie tokenu usługi Azure AD dla użytkownika, który można uzyskać przy użyciu biblioteki ADAL, zgodnie z opisem w poniższej dokumentacji [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md):; należy postępować zgodnie z instrukcjami wymienionymi poniżej. w obszarze "szybkie uruchamianie" są to m.in.:
 
-1. Konfiguracja w witrynie Azure portal
-    1.  Zarejestruj swoją aplikację w usłudze Azure AD jako **aplikacji natywnej**. W ramach rejestracji należy określić, czy aplikacji powinny być wielodostępne, ani nie zapewniają przekierowania, dozwolone adresy URL aplikacji.  
-    2.  Udziel dostępu aplikacji lub użytkowników do zasobu: 
-        1.  Przejdź do zasobu przestrzenne kotwice w witrynie Azure portal
-        2.  Przełącz się do **kontrola dostępu (IAM)** kartę
-        3.  Trafienia **Dodaj przypisanie roli**
+1. Konfiguracja w Azure Portal
+    1.  Zarejestruj swoją aplikację w usłudze Azure AD jako **aplikację natywną**. W ramach rejestracji należy określić, czy aplikacja powinna mieć dostęp do wielu dzierżawców, a także podać adresy URL przekierowania dozwolone dla aplikacji.  
+    2.  Udziel aplikacji lub użytkownikom dostępu do zasobu: 
+        1.  Przejdź do zasobu zakotwiczenia przestrzennego w Azure Portal
+        2.  Przełącz na kartę **Kontrola dostępu (IAM)**
+        3.  Trafienie **Dodaj przypisanie roli**
             1.  [Wybierz rolę](#role-based-access-control)
-            2.  W **wybierz** wprowadź nazwy użytkowników, grup i aplikacji, do którego ma zostać przypisany dostęp. 
-            3.  Trafienia **Zapisz**.
+            2.  W polu **SELECT (Wybieranie** ) wprowadź nazwę użytkowników, grup i/lub aplikacji, do których chcesz przypisać prawa dostępu. 
+            3.  Naciśnij przycisk **Zapisz**.
 2. W kodzie:
-    1.  Upewnij się, że używasz **identyfikator aplikacji** i **identyfikator Uri przekierowania** własnych aplikacji usługi Azure AD jako **identyfikator klienta** i **RedirectUri** Parametry w bibliotece ADAL
-    2.  Ustawianie informacji o dzierżawie:
-        1.  Jeśli aplikacja obsługuje **tylko Moja organizacja**, Zastąp tę wartość za pomocą usługi **identyfikator dzierżawy** lub **nazwa dzierżawy** (na przykład contoso.microsoft.com)
-        2.  Jeśli aplikacja obsługuje **kont w dowolnym katalogu organizacji**, Zastąp tę wartość za pomocą **organizacji**
-        3.  Jeśli aplikacja obsługuje **użytkowników kont Microsoft wszystkich**, Zastąp tę wartość za pomocą **wspólne**
-    3.  Na żądanie tokenu, ustaw **zasobów** do "https://sts.mixedreality.azure.com". To "Zasób" będą wskazywać do usługi Azure AD, czy aplikacja żąda token dla usługi Azure przestrzenne kotwic.  
+    1.  Upewnij się, że używasz **identyfikatora aplikacji** i identyfikatora **URI przekierowania** własnej aplikacji usługi Azure AD jako **identyfikatora klienta** i parametrów **RedirectUri** w bibliotece ADAL
+    2.  Ustaw informacje o dzierżawie:
+        1.  Jeśli aplikacja obsługuje **tylko moją organizację**, Zastąp tę wartość identyfikatorem **dzierżawy** lub **nazwą dzierżawy** (na przykład contoso.Microsoft.com)
+        2.  Jeśli aplikacja obsługuje **konta w dowolnym katalogu organizacyjnym**, Zastąp tę wartość **organizacją**
+        3.  Jeśli aplikacja obsługuje **wszystkich konto Microsoft użytkowników**, Zastąp tę wartość **wspólną**
+    3.  Na żądanie tokenu Ustaw **zasób** na "https://sts.mixedreality.azure.com". Ten "zasób" wskazuje usłudze Azure AD, że aplikacja żąda tokenu dla usługi zakotwiczeń przestrzennych platformy Azure.  
 
-Dzięki temu aplikacja powinno być możliwe uzyskanie z biblioteki ADAL tokenu usługi Azure AD; można ustawić tokenu usługi Azure AD jako **authenticationToken** na obiekcie konfiguracji sesji chmury. 
+Dzięki temu aplikacja powinna mieć możliwość uzyskania od biblioteki ADAL tokenu usługi Azure AD; Możesz ustawić ten token usługi Azure AD jako **authenticationToken** w obiekcie konfiguracji sesji w chmurze. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -137,7 +137,7 @@ _cloudSession!.configuration.authenticationToken = "MyAuthenticationToken"
 mCloudSession.getConfiguration().setAuthenticationToken("MyAuthenticationToken");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++ZESTAW NDK](#tab/cpp)
+# <a name="c-ndktabcpp"></a>[C++ZGŁOSIŁ](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
@@ -151,37 +151,37 @@ auto configuration = m_cloudSession.Configuration();
 configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
 ```
 
-***
+---
 
-## <a name="azure-ad-service-authentication"></a>Uwierzytelnianie usługi w usłudze Azure AD
+## <a name="azure-ad-service-authentication"></a>Uwierzytelnianie usługi Azure AD
 
-Jest to zalecana opcja, jak wdrażać aplikacje, wykorzystując kotwic przestrzenne platformy Azure do środowiska produkcyjnego można korzystać z usługi zaplecza, która będzie brokera żądań uwierzytelniania. Ogólne schemat powinien być zgodnie z opisem na poniższym diagramie:
+Zalecaną opcją wdrożenia aplikacji wykorzystujących kotwice przestrzenne platformy Azure w środowisku produkcyjnym jest użycie usługi wewnętrznej bazy danych, która będzie brokerem żądań uwierzytelniania. Schemat ogólny powinien być opisany w tym diagramie:
 
-![Omówienie uwierzytelniania kotwic przestrzenne platformy Azure](./media/spatial-anchors-aad-authentication.png)
+![Omówienie uwierzytelniania w kotwicach przestrzennych platformy Azure](./media/spatial-anchors-aad-authentication.png)
 
-W tym miejscu, zakłada się, że aplikacja używa własny mechanizm (na przykład: Konto Microsoft, platformy PlayFab, Facebook, Google identyfikator, niestandardowe nazwy użytkownika/hasła, itp.) Uwierzytelnianie na jej usługą zaplecza. Po uwierzytelnieniu użytkowników do usługi zaplecza service do pobrania tokenu usługi Azure AD wymiany dla tokenu dostępu, for Azure przestrzenne kotwic i zwrócić go do aplikacji klienckiej.
+W tym miejscu zakłada się, że aplikacja korzysta z własnego mechanizmu (na przykład: Konto Microsoft, PlayFab, Facebook, identyfikator Google, niestandardową nazwę użytkownika lub hasło itp.) w celu uwierzytelnienia w usłudze zaplecza. Po uwierzytelnieniu użytkowników w usłudze wewnętrznej bazy danych usługa ta może pobrać token usługi Azure AD, wymienić go na token dostępu dla kotwic przestrzennych platformy Azure i przywrócić go do aplikacji klienckiej.
 
-Token dostępu usługi Azure AD jest pobierany za pomocą biblioteki ADAL, zgodnie z opisem w następującej dokumentacji: [ https://docs.microsoft.com/azure/active-directory/develop/v1-overview ](../../active-directory/develop/v1-overview.md); należy wykonać kroki opisane w obszarze "Szybkiego uruchamiania", które obejmują:
+Token dostępu usługi Azure AD jest pobierany przy użyciu biblioteki ADAL, zgodnie z opisem w następującej [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md)dokumentacji:; należy wykonać czynności opisane w sekcji "szybkie uruchamianie", które obejmują:
 
-1.  Konfiguracja w witrynie Azure portal:
-    1.  Rejestrowanie aplikacji w usłudze Azure AD:
-        1.  W witrynie Azure portal, przejdź do **usługi Azure Active Directory**i wybierz **rejestracje aplikacji**
-        2.  Wybierz **rejestrowanie nowej aplikacji**
-        3.  Wprowadź nazwę aplikacji, wybierz pozycję **aplikacji sieci Web / interfejs API** jako typ aplikacji, a następnie wprowadź adres URL uwierzytelniania dla usługi. Następnie naciśnij klawisz **Utwórz**.
-        4.  Na tę aplikację, trafienia **ustawienia**, a następnie wybierz **klucze** kartę. Wprowadź nazwę klucza, wybierz czas trwania i trafień **Zapisz**. Upewnij się zapisać wartości klucza, który jest wyświetlany w danym momencie, ponieważ będzie potrzebny, które mają zostać objęte kodu usługi sieci web.
-    2.  Udzielanie dostępu do zasobu usługi aplikacji i/lub użytkowników:
-        1.  Przejdź do zasobu przestrzenne kotwice w witrynie Azure portal
-        2.  Przełącz się do **kontrola dostępu (IAM)** kartę
-        3.  Trafienia **Dodaj przypisanie roli**
+1.  Konfiguracja w Azure Portal:
+    1.  Zarejestruj swoją aplikację w usłudze Azure AD:
+        1.  W Azure Portal przejdź do **Azure Active Directory**i wybierz pozycję **rejestracje aplikacji**
+        2.  Wybierz pozycję **rejestracja nowej aplikacji**
+        3.  Wprowadź nazwę aplikacji, wybierz pozycję **Web App/API** jako typ aplikacji, a następnie wprowadź adres URL uwierzytelniania dla usługi. Następnie kliknij przycisk **Utwórz**.
+        4.  W tej aplikacji naciśnij pozycję **Ustawienia**, a następnie wybierz kartę **klucze** . Wprowadź nazwę klucza, wybierz czas trwania i naciśnij przycisk **Zapisz**. Pamiętaj, aby zapisać wartość klucza, która jest wyświetlana w tym czasie, ponieważ należy ją uwzględnić w kodzie usługi sieci Web.
+    2.  Przyznaj aplikacji i/lub użytkownikom dostęp do zasobu:
+        1.  Przejdź do zasobu zakotwiczenia przestrzennego w Azure Portal
+        2.  Przełącz na kartę **Kontrola dostępu (IAM)**
+        3.  Trafienie **Dodaj przypisanie roli**
         1.  [Wybierz rolę](#role-based-access-control)
-        2.  W **wybierz** pole, wprowadź nazwę aplikacji został utworzony i do której ma zostać przypisany dostęp. Aby użytkownicy twojej aplikacji pełnią różne role względem konta kotwic przestrzennych, należy zarejestrować wiele aplikacji w usłudze Azure AD i przypisać do poszczególnych osobnych ról. Następnie można zaimplementować logikę autoryzacji do użycia odpowiednią rolę dla użytkowników.  
-    3.  Trafienia **Zapisz**.
-2.  W kodzie (Uwaga: możesz użyć przykładu usługi uwzględnione w serwisie GitHub):
-    1.  Upewnij się, że należy użyć Identyfikatora aplikacji, klucz tajny aplikacji i identyfikator Uri własną aplikację usługi Azure AD, identyfikatora klienta przekierowania wpisem tajnym i parametry RedirectUri w bibliotece ADAL
-    2.  Ustaw identyfikator dzierżawy własne AAAzure Dodaj identyfikator dzierżawy w parametrze urząd w bibliotece ADAL
-    3.  Na żądanie tokenu, ustaw **zasobów** do "https://sts.mixedreality.azure.com" 
+        2.  W polu **Wybierz** wprowadź nazwę utworzonych aplikacji i, do których chcesz przypisać dostęp. Jeśli chcesz, aby użytkownicy Twojej aplikacji mieli różne role względem konta zakotwiczeń przestrzennych, należy zarejestrować wiele aplikacji w usłudze Azure AD i przypisać je do każdej innej roli. Następnie Zaimplementuj logikę autoryzacji, aby korzystać z odpowiedniej roli dla użytkowników.  
+    3.  Naciśnij przycisk **Zapisz**.
+2.  W kodzie (Uwaga: możesz użyć przykładu usługi dostępnego w witrynie GitHub):
+    1.  Upewnij się, że używasz identyfikatora aplikacji, klucza tajnego aplikacji i identyfikatora URI przekierowania dla własnej aplikacji usługi Azure AD jako parametry identyfikatora klienta, klucza tajnego i RedirectUri w bibliotece ADAL
+    2.  Ustaw identyfikator dzierżawy na własny AAAzure Dodaj identyfikator dzierżawy w parametrze urzędu w bibliotece ADAL
+    3.  Na żądanie tokenu Ustaw **zasób** na "https://sts.mixedreality.azure.com" 
 
-Dzięki temu usługi wewnętrznej bazy danych można pobrać tokenu usługi Azure AD. Go może następnie wymienić dla tokenu MR, to zostanie zwrócona do klienta. Odbywa się przy użyciu tokenu usługi Azure AD do pobrania tokenu MR za pośrednictwem wywołania REST. Oto przykładowe wywołanie:
+Dzięki temu usługa zaplecza może pobrać token usługi Azure AD. Następnie może go wymienić na token MR, który zwróci zwrot do klienta. Użycie tokenu usługi Azure AD w celu pobrania tokenu MR odbywa się za pośrednictwem wywołania REST. Oto przykładowe wywołanie:
 
 ```
 GET https://mrc-auth-prod.trafficmanager.net/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
@@ -198,11 +198,11 @@ MS-CV: 05JLqWeKFkWpbdY944yl7A.0
 {"AccessToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2MzYyMTk5ZTI2NjQxOGU4ZjE3MThlM2IyMThjZTIxIiwidHlwIjoiSldUIn0.eyJqdGkiOiJmMGFiNWIyMy0wMmUxLTQ1MTQtOWEzNC0xNzkzMTA1NTc4NzAiLCJjYWkiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJ0aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJhaWQiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJhYW8iOi0xLCJhcHIiOiJlYXN0dXMyIiwicmlkIjoiL3N1YnNjcmlwdGlvbnMvNzIzOTdlN2EtNzA4NC00ODJhLTg3MzktNjM5Y2RmNTMxNTI0L3Jlc291cmNlR3JvdXBzL3NhbXBsZV9yZXNvdXJjZV9ncm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lk1peGVkUmVhbGl0eS9TcGF0aWFsQW5jaG9yc0FjY291bnRzL2RlbW9fYWNjb3VudCIsIm5iZiI6MTU0NDU0NzkwMywiZXhwIjoxNTQ0NjM0MzAzLCJpYXQiOjE1NDQ1NDc5MDMsImlzcyI6Imh0dHBzOi8vbXJjLWF1dGgtcHJvZC50cmFmZmljbWFuYWdlci5uZXQvIiwiYXVkIjoiaHR0cHM6Ly9tcmMtYW5jaG9yLXByb2QudHJhZmZpY21hbmFnZXIubmV0LyJ9.BFdyCX9UJj0i4W3OudmNUiuaGgVrlPasNM-5VqXdNAExD8acFJnHdvSf6uLiVvPiQwY1atYyPbOnLYhEbIcxNX-YAfZ-xyxCKYb3g_dbxU2w8nX3zDz_X3XqLL8Uha-rkapKbnNgxq4GjM-EBMCill2Svluf9crDmO-SmJbxqIaWzLmlUufQMWg_r8JG7RLseK6ntUDRyDgkF4ex515l2RWqQx7cw874raKgUO4qlx0cpBAB8cRtGHC-3fA7rZPM7UQQpm-BC3suXqRgROTzrKqfn_g-qTW4jAKBIXYG7iDefV2rGMRgem06YH_bDnpkgUa1UgJRRTckkBuLkO2FvA"}
 ```
 
-Jeżeli nagłówek autoryzacji jest sformatowany w następujący sposób: `Bearer <accoundId>:<accountKey>`
+Gdzie nagłówek autoryzacji jest sformatowany w następujący sposób:`Bearer <accoundId>:<accountKey>`
 
-I odpowiedzi zawiera token MR w postaci zwykłego tekstu.
+A odpowiedź zawiera token MR w postaci zwykłego tekstu.
  
-Ten token MR jest zwracana do klienta. Aplikacja klienta można ustawić ją jako jej token dostępu w konfiguracji sesji chmury.
+Token MR jest następnie zwracany do klienta. Aplikacja kliencka może następnie ustawić ją jako token dostępu w konfiguracji sesji w chmurze.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -228,7 +228,7 @@ _cloudSession!.configuration.accessToken = "MyAccessToken"
 mCloudSession.getConfiguration().setAccessToken("MyAccessToken");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++ZESTAW NDK](#tab/cpp)
+# <a name="c-ndktabcpp"></a>[C++ZGŁOSIŁ](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
@@ -242,19 +242,19 @@ auto configuration = m_cloudSession.Configuration();
 configuration.AccessToken(LR"(MyAccessToken)");
 ```
 
-***
+---
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-Które ułatwiają sterowanie tym poziom dostępu przyznane aplikacji, usług lub użytkowników usługi Azure AD, usługi, przypisywanie stosownie do potrzeb dotyczących kont usługi Azure przestrzenne kotwic zostały utworzone następujące role:
+Aby ułatwić kontrolę poziomu dostępu udzielonego aplikacjom, usługom lub użytkownikom usługi Azure AD w usłudze, zostały utworzone następujące role do przypisywania w razie potrzeby do kont zakotwiczeń przestrzennych platformy Azure:
 
-- **Przestrzenne właściciela konta kotwic**: aplikacje lub użytkowników, którzy mają tej roli mogą tworzyć kotwic przestrzennych, zapytania dla niego i je usunąć. Podczas uwierzytelniania Twojego konta za pomocą kluczy konta **przestrzenne właściciela konta kotwic** rola jest przypisywana do uwierzytelniony podmiot zabezpieczeń. 
-- **Współautor konta usługi przestrzenne kotwic**: aplikacje lub użytkowników, którzy mają tej roli będą mogli tworzyć kotwic przestrzennych, zapytanie dla nich, ale nie można ich usuwać. 
-- **Przestrzenne kotwic konta czytnika**: aplikacje lub użytkowników, którzy mają tej roli mogą tylko zakotwiczenia przestrzennych, wykonanie kwerendy, ale nie można utworzyć nowe, usunąć istniejące lub zaktualizować metadanych na przestrzenne kotwic. To jest zwykle używana dla aplikacji gdy niektórzy użytkownicy selekcjonowanie środowiska, a inne tylko przywołanie kotwic wcześniej umieszczone w tym środowisku.
+- **Właściciele konta kotwic przestrzenny**: aplikacje lub Użytkownicy z tą rolą mogą tworzyć kotwice przestrzenne, wysyłać do nich zapytania i usuwać je. W przypadku uwierzytelniania na koncie przy użyciu kluczy konta rola **właściciela konta kotwicy przestrzennej** jest przypisana do uwierzytelnionego podmiotu zabezpieczeń. 
+- **Współautor konta kotwic przestrzenny**: aplikacje lub Użytkownicy, którzy mają tę rolę, mogą tworzyć kotwice przestrzenne, wysyłać do nich zapytania, ale nie mogą ich usuwać. 
+- **Czytnik kont kotwic przestrzenny**: aplikacje lub Użytkownicy, którzy mają tę rolę, mogą wykonywać zapytania dotyczące kotwic przestrzennych, ale nie mogą tworzyć nowych, usuwać istniejących ani aktualizować metadanych w kotwicach przestrzennych. Jest to zwykle używane w przypadku aplikacji, w których niektórzy użytkownicy nadzorują środowisko, a inne mogą odwoływać kotwice wcześniej umieszczone w tym środowisku.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Utwórz swoją pierwszą aplikację przy użyciu Azure przestrzenne kotwic.
+Utwórz swoją pierwszą aplikację z zakotwiczeniami przestrzennymi platformy Azure.
 
 > [!div class="nextstepaction"]
 > [Unity](../unity-overview.yml)

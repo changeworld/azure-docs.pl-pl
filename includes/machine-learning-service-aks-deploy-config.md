@@ -2,14 +2,14 @@
 author: larryfr
 ms.service: machine-learning
 ms.topic: include
-ms.date: 07/19/2019
+ms.date: 07/26/2019
 ms.author: larryfr
-ms.openlocfilehash: 31d20f4824b034230bc941858e8ecb20cc00b6b2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: b8913836baffdad200c198afa11475d617fe5d50
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348511"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68729358"
 ---
 Wpisy w `deploymentconfig.json` dokumencie są mapowane na parametry [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). W poniższej tabeli opisano mapowanie między jednostkami w dokumencie JSON a parametrami metody:
 
@@ -24,7 +24,8 @@ Wpisy w `deploymentconfig.json` dokumencie są mapowane na parametry [AksWebserv
 | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Użycie docelowe (w procentach z 100), które ma być podejmowane przez Autoskalowanie dla tej usługi sieci Web. Wartość domyślna `70`. |
 | `dataCollection` | Nie dotyczy | Zawiera elementy konfiguracji do zbierania danych. |
 | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Określa, czy włączyć zbieranie danych modelu dla usługi sieci Web. Wartość domyślna `False`. |
-| `authEnabled` | `auth_enabled` | Określa, czy włączyć uwierzytelnianie dla usługi sieci Web. Wartość domyślna `True`. |
+| `authEnabled` | `auth_enabled` | Określa, czy należy włączyć uwierzytelnianie klucza dla usługi sieci Web. Oba `tokenAuthEnabled` `True`i `authEnabled` nie mogą być. Wartość domyślna `True`. |
+| `tokenAuthEnabled` | `token_auth_enabled` | Określa, czy włączyć uwierzytelnianie tokenu dla usługi sieci Web. Oba `tokenAuthEnabled` `True`i `authEnabled` nie mogą być. Wartość domyślna `False`. |
 | `containerResourceRequirements` | Nie dotyczy | Kontener dla jednostek procesora i pamięci. |
 | &emsp;&emsp;`cpu` | `cpu_cores` | Liczba rdzeni procesora CPU do przydzielenia dla tej usługi sieci Web. Wartości domyślne`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | Ilość pamięci (w GB) do przydzielenia dla tej usługi sieci Web. Wartooć`0.5` |

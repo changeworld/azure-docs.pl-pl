@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
 ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68381836"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Korzystanie z procesorów GPU na potrzeby obciążeń intensywnie korzystających z obliczeń w usłudze Azure Kubernetes Service (AKS)
@@ -20,7 +20,7 @@ ms.locfileid: "68381836"
 Jednostki procesora graficznego (GPU) są często używane do obciążeń intensywnie korzystających z mocy obliczeniowej, takich jak obciążenia grafiki i wizualizacji. AKS obsługuje tworzenie pul węzłów z obsługą procesora GPU w celu uruchamiania tych obciążeń intensywnie korzystających z obliczeń w Kubernetes. Aby uzyskać więcej informacji na temat dostępnych maszyn wirtualnych z obsługą procesora GPU, zobacz [rozmiary maszyn wirtualnych zoptymalizowane według procesora GPU na platformie Azure][gpu-skus]. W przypadku węzłów AKS zalecamy minimalny rozmiar *Standard_NC6*.
 
 > [!NOTE]
-> Maszyny wirtualne z obsługą procesora GPU zawierają wyspecjalizowany sprzęt, który podlega wyższej cenie i dostępności regionów. Aby uzyskać więcej informacji, zobacz [Cennik][azure-pricing] tool and [region availability][azure-availability].
+> Maszyny wirtualne z obsługą procesora GPU zawierają wyspecjalizowany sprzęt, który podlega wyższej cenie i dostępności regionów. Aby uzyskać więcej informacji, zobacz [Cennik][azure-pricing] narzędzia i [dostępność regionów][azure-availability].
 
 Obecnie użycie pul węzłów z obsługą procesora GPU jest dostępne tylko dla pul węzłów systemu Linux.
 

@@ -1,21 +1,18 @@
 ---
 title: Jak używać magazynu obiektów (BLOB) z systemu iOS — Azure | Microsoft Docs
 description: Przechowuj dane niestrukturalne w chmurze za pomocą Magazynu obiektów blob Azure.
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: objective-c
-ms.topic: article
-ms.date: 11/20/2018
 ms.author: mhopkins
-ms.reviewer: seguler
+ms.date: 11/20/2018
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 2d44dabe68900aa45b076f44cc38ed85d6938afa
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.topic: conceptual
+ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249949"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726406"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Jak korzystać z usługi BLOB Storage z systemu iOS
 
@@ -26,16 +23,19 @@ Aby dowiedzieć się więcej o usłudze BLOB Storage, zobacz [wprowadzenie do us
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="import-the-azure-storage-ios-library-into-your-application"></a>Importowanie biblioteki systemu iOS usługi Azure Storage do aplikacji
+
 Bibliotekę systemu iOS w usłudze Azure Storage można zaimportować do aplikacji przy użyciu [usługi Azure Storage CocoaPod](https://cocoapods.org/pods/AZSClient) lub importując plik **struktury** . CocoaPod jest zalecanym sposobem, w jaki ułatwia integrację biblioteki, jednak Importowanie z pliku struktury jest mniej inwazyjne dla istniejącego projektu.
 
 Aby można było korzystać z tej biblioteki, potrzebne są następujące elementy:
+
 - iOS 8+
 - Xcode 7 +
 
 ## <a name="cocoapod"></a>CocoaPod
+
 1. Jeśli jeszcze tego nie zrobiono, [Zainstaluj program CocoaPods](https://guides.cocoapods.org/using/getting-started.html#toc_3) na komputerze, otwierając okno terminalu i uruchamiając następujące polecenie
-    
-    ```shell   
+
+    ```shell
     sudo gem install cocoapods
     ```
 
@@ -51,13 +51,14 @@ Aby można było korzystać z tej biblioteki, potrzebne są następujące elemen
 
 3. W oknie terminalu przejdź do katalogu projektu i uruchom następujące polecenie
 
-    ```shell    
+    ```shell
     pod install
     ```
 
 4. Jeśli plik. XCODEPROJ jest otwarty w Xcode, zamknij go. W katalogu projektu Otwórz nowo utworzony plik projektu, który będzie miał rozszerzenie. xcworkspace. Jest to plik, od którego będziesz teraz korzystać.
 
 ## <a name="framework"></a>Architektura
+
 Innym sposobem korzystania z biblioteki jest ręczne skompilowanie struktury:
 
 1. Najpierw pobierz lub Sklonuj [repozytorium Azure-Storage-iOS](https://github.com/azure/azure-storage-ios).
@@ -74,7 +75,8 @@ Następnie można zaimportować plik struktury do aplikacji, wykonując następu
 5. W sekcji *połączone struktury i biblioteki* kliknij przycisk Dodaj (+).
 6. Na liście już podanych bibliotek Wyszukaj `libxml2.2.tbd` i Dodaj ją do projektu.
 
-## <a name="import-the-library"></a>Importuj bibliotekę 
+## <a name="import-the-library"></a>Importuj bibliotekę
+
 ```objc
 // Include the following import statement to use blob APIs.
 #import <AZSClient/AZSClient.h>
@@ -91,12 +93,12 @@ Jeśli używasz SWIFT, musisz utworzyć nagłówek mostkowania i zaimportować \
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="asynchronous-operations"></a>Operacje asynchroniczne
+
 > [!NOTE]
 > Wszystkie metody, które wykonują żądanie w odniesieniu do usługi, są operacjami asynchronicznymi. W przykładach kodu znajdziesz, że te metody mają procedurę obsługi uzupełniania. Kod wewnątrz procedury obsługi uzupełniania zostanie uruchomiony **po** zakończeniu żądania. Kod po zakończeniu procedury obsługi zostanie uruchomiony **podczas** wykonywania żądania.
-> 
-> 
 
 ## <a name="create-a-container"></a>Tworzenie kontenera
+
 Każdy obiekt BLOB w usłudze Azure Storage musi znajdować się w kontenerze. Poniższy przykład pokazuje, jak utworzyć kontener o nazwie *newcontainer*w swoim koncie magazynu, jeśli jeszcze nie istnieje. Po wybraniu nazwy kontenera należy zanotować powyższe zasady nazewnictwa.
 
 ```objc
@@ -128,11 +130,12 @@ Każdy obiekt BLOB w usłudze Azure Storage musi znajdować się w kontenerze. P
 Możesz potwierdzić, że to działa, przeglądając [Eksplorator usługi Microsoft Azure Storage](https://storageexplorer.com) i sprawdzając, czy *newcontainer* znajduje się na liście kontenerów dla konta magazynu.
 
 ## <a name="set-container-permissions"></a>Ustawianie uprawnień kontenera
+
 Uprawnienia kontenera są domyślnie skonfigurowane na potrzeby dostępu **prywatnego** . Kontenery zapewniają jednak kilka różnych opcji dostępu do kontenera:
 
-* **Prywatny**: Dane kontenera i obiektu BLOB mogą być odczytane tylko przez właściciela konta.
-* **Obiekt BLOB**: Dane obiektów BLOB w tym kontenerze można odczytać za pośrednictwem żądania anonimowego, ale dane kontenera nie są dostępne. Klienci nie mogą wyliczyć obiektów BLOB w kontenerze za pośrednictwem anonimowego żądania.
-* **Kontener**: Dane kontenera i obiektu BLOB mogą być odczytywane za pośrednictwem anonimowego żądania. Klienci mogą wyliczać obiekty blob w kontenerze za pośrednictwem żądania anonimowego, ale nie mogą wyliczać kontenerów na koncie magazynu.
+- **Prywatny**: Dane kontenera i obiektu BLOB mogą być odczytane tylko przez właściciela konta.
+- **Obiekt BLOB**: Dane obiektów BLOB w tym kontenerze można odczytać za pośrednictwem żądania anonimowego, ale dane kontenera nie są dostępne. Klienci nie mogą wyliczyć obiektów BLOB w kontenerze za pośrednictwem anonimowego żądania.
+- **Kontener**: Dane kontenera i obiektu BLOB mogą być odczytywane za pośrednictwem anonimowego żądania. Klienci mogą wyliczać obiekty blob w kontenerze za pośrednictwem żądania anonimowego, ale nie mogą wyliczać kontenerów na koncie magazynu.
 
 Poniższy przykład pokazuje, jak utworzyć kontener z uprawnieniami dostępu do **kontenera** , które umożliwią publiczny dostęp tylko do odczytu dla wszystkich użytkowników w Internecie:
 
@@ -163,6 +166,7 @@ Poniższy przykład pokazuje, jak utworzyć kontener z uprawnieniami dostępu do
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Przekazywanie obiektu blob do kontenera
+
 Jak wspomniano w sekcji pojęcia Blob service, Blob Storage oferuje trzy różne typy obiektów blob: blokowe obiekty blob, dołączanie obiektów blob i stronicowe obiekty blob. Biblioteka systemu iOS w usłudze Azure Storage obsługuje wszystkie trzy typy obiektów BLOB. W większości przypadków zalecane jest użycie blokowych obiektów blob.
 
 Poniższy przykład pokazuje, jak przekazać blokowy obiekt BLOB z NSString. Jeśli obiekt BLOB o takiej samej nazwie już istnieje w tym kontenerze, zawartość tego obiektu BLOB zostanie zastąpiona.
@@ -206,25 +210,28 @@ Poniższy przykład pokazuje, jak przekazać blokowy obiekt BLOB z NSString. Je�
 
 Można potwierdzić, że to działa, przeglądając [Eksplorator usługi Microsoft Azure Storage](https://storageexplorer.com) i sprawdzając, czy kontener, *containerpublic*, zawiera obiekt BLOB, *sampleblob*. W tym przykładzie użyto publicznego kontenera, więc można także sprawdzić, czy aplikacja działa, przechodząc do identyfikatora URI obiektów blob:
 
-    https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
+```http
+https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
+```
 
 Oprócz przekazywania blokowych obiektów blob z NSString, podobne metody istnieją dla NSData, NSInputStream lub pliku lokalnego.
 
 ## <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
-Poniższy przykład pokazuje, jak wyświetlić listę wszystkich obiektów BLOB w kontenerze. Podczas wykonywania tej operacji należy mieć na uwadze następujące parametry:     
 
-* **continuationToken** — token kontynuacji reprezentuje miejsce, w którym powinna zostać uruchomiona operacja tworzenia listy. Jeśli nie podano żadnego tokenu, wyświetli obiekty blob od początku. Dowolna liczba obiektów BLOB może zostać wyświetlona, od zera do zestawu. Nawet jeśli ta metoda zwróci wynik zero, jeśli `results.continuationToken` nie jest równa Nil, może istnieć więcej obiektów BLOB w usłudze, które nie zostały wymienione na liście.
-* **prefiks** — można określić prefiks, który ma być używany na potrzeby listy obiektów BLOB. Zostaną wyświetlone tylko obiekty blob zaczynające się od tego prefiksu.
-* **useFlatBlobListing** — jak wspomniano w sekcji [nazywanie i kontenery odwołań oraz obiektów blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) , chociaż BLOB Service jest schematem magazynu prostego, można utworzyć hierarchię wirtualną przez nadanie nazw obiektów blob z informacjami o ścieżce. Jednak niepłaska lista nie jest obecnie obsługiwana. Ta funkcja jest dostępna wkrótce. Na razie ta wartość powinna być równa **tak**.
-* **blobListingDetails** — możesz określić, które elementy mają być uwzględniane podczas wyświetlania listy obiektów BLOB
-  * _AZSBlobListingDetailsNone_: Wyświetla listę tylko zatwierdzonych obiektów blob i nie zwracaj metadanych obiektów BLOB.
-  * _AZSBlobListingDetailsSnapshots_: Wyświetl listę zatwierdzonych obiektów blob i migawek obiektów BLOB.
-  * _AZSBlobListingDetailsMetadata_: Pobierz metadane obiektu BLOB dla każdego obiektu BLOB zwróconego na liście.
-  * _AZSBlobListingDetailsUncommittedBlobs_: Lista zatwierdzonych i niezatwierdzonych obiektów BLOB.
-  * _AZSBlobListingDetailsCopy_: Dołącz właściwości kopiowania na liście.
-  * _AZSBlobListingDetailsAll_: Wyświetl listę wszystkich dostępnych zatwierdzono obiektów blob, niezatwierdzonych obiektów blob i migawek, a następnie Zwróć wszystkie metadane i stan kopiowania dla tych obiektów BLOB.
-* **maxResults** — Maksymalna liczba wyników do zwrócenia dla tej operacji. Użyj wartości-1, aby nie ustawić limitu.
-* **completionHandler** — blok kodu do wykonania z wynikami operacji tworzenia listy.
+Poniższy przykład pokazuje, jak wyświetlić listę wszystkich obiektów BLOB w kontenerze. Podczas wykonywania tej operacji należy mieć na uwadze następujące parametry:
+
+- **continuationToken** — token kontynuacji reprezentuje miejsce, w którym powinna zostać uruchomiona operacja tworzenia listy. Jeśli nie podano żadnego tokenu, wyświetli obiekty blob od początku. Dowolna liczba obiektów BLOB może zostać wyświetlona, od zera do zestawu. Nawet jeśli ta metoda zwróci wynik zero, jeśli `results.continuationToken` nie jest równa Nil, może istnieć więcej obiektów BLOB w usłudze, które nie zostały wymienione na liście.
+- **prefiks** — można określić prefiks, który ma być używany na potrzeby listy obiektów BLOB. Zostaną wyświetlone tylko obiekty blob zaczynające się od tego prefiksu.
+- **useFlatBlobListing** — jak wspomniano w sekcji [nazywanie i kontenery odwołań oraz obiektów blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) , chociaż BLOB Service jest schematem magazynu prostego, można utworzyć hierarchię wirtualną przez nadanie nazw obiektów blob z informacjami o ścieżce. Jednak niepłaska lista nie jest obecnie obsługiwana. Ta funkcja jest dostępna wkrótce. Na razie ta wartość powinna być równa **tak**.
+- **blobListingDetails** — możesz określić, które elementy mają być uwzględniane podczas wyświetlania listy obiektów BLOB
+  - _AZSBlobListingDetailsNone_: Wyświetla listę tylko zatwierdzonych obiektów blob i nie zwracaj metadanych obiektów BLOB.
+  - _AZSBlobListingDetailsSnapshots_: Wyświetl listę zatwierdzonych obiektów blob i migawek obiektów BLOB.
+  - _AZSBlobListingDetailsMetadata_: Pobierz metadane obiektu BLOB dla każdego obiektu BLOB zwróconego na liście.
+  - _AZSBlobListingDetailsUncommittedBlobs_: Lista zatwierdzonych i niezatwierdzonych obiektów BLOB.
+  - _AZSBlobListingDetailsCopy_: Dołącz właściwości kopiowania na liście.
+  - _AZSBlobListingDetailsAll_: Wyświetl listę wszystkich dostępnych zatwierdzono obiektów blob, niezatwierdzonych obiektów blob i migawek, a następnie Zwróć wszystkie metadane i stan kopiowania dla tych obiektów BLOB.
+- **maxResults** — Maksymalna liczba wyników do zwrócenia dla tej operacji. Użyj wartości-1, aby nie ustawić limitu.
+- **completionHandler** — blok kodu do wykonania z wynikami operacji tworzenia listy.
 
 W tym przykładzie metoda pomocnika jest używana do rekursywnego wywoływania metody list obiektów BLOB za każdym razem, gdy zwracany jest token kontynuacji.
 
@@ -280,6 +287,7 @@ W tym przykładzie metoda pomocnika jest używana do rekursywnego wywoływania m
 ```
 
 ## <a name="download-a-blob"></a>Pobieranie obiektu blob
+
 Poniższy przykład pokazuje, jak pobrać obiekt BLOB do obiektu NSString.
 
 ```objc
@@ -315,6 +323,7 @@ Poniższy przykład pokazuje, jak pobrać obiekt BLOB do obiektu NSString.
 ```
 
 ## <a name="delete-a-blob"></a>Usuwanie obiektu blob
+
 Poniższy przykład pokazuje, jak usunąć obiekt BLOB.
 
 ```objc
@@ -347,6 +356,7 @@ Poniższy przykład pokazuje, jak usunąć obiekt BLOB.
 ```
 
 ## <a name="delete-a-blob-container"></a>Usuwanie kontenera obiektów BLOB
+
 Poniższy przykład pokazuje, jak usunąć kontener.
 
 ```objc
@@ -376,13 +386,13 @@ Poniższy przykład pokazuje, jak usunąć kontener.
 ```
 
 ## <a name="next-steps"></a>Następne kroki
+
 Teraz, gdy wiesz już, jak korzystać z Blob Storage z systemu iOS, Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat biblioteki systemu iOS i usługi magazynu.
 
-* [Biblioteka klienta usługi Azure Storage dla systemu iOS](https://github.com/azure/azure-storage-ios)
-* [Dokumentacja dotycząca systemu iOS w usłudze Azure Storage](https://azure.github.io/azure-storage-ios/)
-* [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Blog zespołu odpowiedzialnego za usługę Azure Storage](https://blogs.msdn.com/b/windowsazurestorage)
+- [Biblioteka klienta usługi Azure Storage dla systemu iOS](https://github.com/azure/azure-storage-ios)
+- [Dokumentacja dotycząca systemu iOS w usłudze Azure Storage](https://azure.github.io/azure-storage-ios/)
+- [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+- [Blog zespołu odpowiedzialnego za usługę Azure Storage](https://blogs.msdn.com/b/windowsazurestorage)
 
 Jeśli masz pytania dotyczące tej biblioteki, możesz bezpłatnie ogłosić na naszym [forum MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) lub w [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Jeśli masz sugestie dotyczące funkcji usługi Azure Storage, Opublikuj je w usłudze [Azure Storage](https://feedback.azure.com/forums/217298-storage/).
-

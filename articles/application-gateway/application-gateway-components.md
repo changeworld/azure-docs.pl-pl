@@ -1,156 +1,156 @@
 ---
 title: Składniki bramy aplikacji
-description: Ten artykuł zawiera informacje na temat różnych składników w usłudze application gateway
+description: Ten artykuł zawiera informacje dotyczące różnych składników w bramie aplikacji
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 49b6b49d908a7426e7cfd1bae5260ff399d9953b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273219"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597366"
 ---
 # <a name="application-gateway-components"></a>Składniki bramy aplikacji
 
- Bramy aplikacji służy jako pojedynczy punkt kontaktu dla klientów. Je dystrybuuje ruch przychodzący aplikacji dla wielu pul zaplecza, które obejmują maszyny wirtualne platformy Azure, zestawy skalowania maszyn wirtualnych, usługi Azure App Service i w lokalnych/zewnętrznych serwerów. Aby dystrybuować ruch, bramy aplikacji używa kilka składników, które opisano w tym artykule.
+ Brama aplikacji służy jako pojedynczy punkt kontaktu dla klientów. Dystrybuuje ruch aplikacji przychodzących między wieloma pulami zaplecza, takich jak maszyny wirtualne platformy Azure, zestawy skalowania maszyn wirtualnych, Azure App Service i serwery lokalne/zewnętrzne. Aby dystrybuować ruch, Brama aplikacji używa kilku składników opisanych w tym artykule.
 
-![Składniki używane w usłudze application gateway](./media/application-gateway-components/application-gateway-components.png)
+![Składniki używane w bramie aplikacji](./media/application-gateway-components/application-gateway-components.png)
 
 ## <a name="frontend-ip-addresses"></a>Adresy IP frontonu
 
-Adres IP frontonu jest adres IP skojarzony z bramą aplikacji. Można skonfigurować bramę aplikacji do publicznego adresu IP i/lub prywatnego adresu IP. Usługa application gateway obsługuje jedną publiczną lub jeden prywatny adres IP. Sieć wirtualna i publiczny adres IP musi być w tej samej lokalizacji co Twoja brama application gateway. Po jego utworzeniu adresu IP frontonu jest skojarzony z odbiornika.
+Adres IP frontonu to adres IP skojarzony z bramą aplikacji. Bramę aplikacji można skonfigurować tak, aby zawierała publiczny adres IP, prywatny adres IP lub oba te elementy. Brama aplikacji obsługuje jeden publiczny lub jeden prywatny adres IP. Twoja sieć wirtualna i publiczny adres IP muszą znajdować się w tej samej lokalizacji co Brama aplikacji. Po jego utworzeniu adres IP frontonu jest skojarzony z odbiornikiem.
 
-### <a name="static-versus-dynamic-public-ip-address"></a>Statycznej i dynamicznej publiczny adres IP
+### <a name="static-versus-dynamic-public-ip-address"></a>Statyczny i dynamiczny publiczny adres IP
 
-Jednostki SKU usługi Azure Application Gateway w wersji 2 można skonfigurować do obsługi zarówno statycznego adresu IP wewnętrznej i statyczny publiczny adres IP albo tylko statyczny publiczny adres IP. Nie można skonfigurować do obsługi tylko statyczne wewnętrzny adres IP.
+Jednostka SKU platformy Azure Application Gateway v2 można skonfigurować do obsługi zarówno statycznego wewnętrznego adresu IP, jak i statycznego publicznego adresu IP, lub tylko statycznego publicznego adresu IP. Nie można go skonfigurować do obsługi tylko statycznego wewnętrznego adresu IP.
 
-Jednostki SKU V1 można skonfigurować w celu obsługi statycznych wewnętrzny adres IP i dynamicznego publicznego adresu IP tylko statyczne wewnętrzny adres IP lub tylko dynamicznego publicznego adresu IP. Dynamiczny adres IP bramy Application Gateway nie zmienia się na uruchamianie bramy. Można go zmienić tylko wtedy, gdy zatrzymasz lub uruchomisz bramy. Nie powoduje zmiany na awarie systemu, aktualizacji i hosta platformy Azure aktualizacje itp. 
+Jednostka SKU w wersji 1 można skonfigurować do obsługi statycznego wewnętrznego adresu IP i dynamicznego publicznego adresu IP, tylko statycznego wewnętrznego adresu IP lub tylko dynamicznego publicznego adresu IP lub tylko dynamicznego prywatnego adresu IP lub dynamiczny publiczny adres IP oraz dynamiczny prywatny adres IP. Dynamiczny adres IP Application Gateway nie zmienia się na działającej bramie. Można to zmienić tylko wtedy, gdy zatrzymasz lub uruchomisz bramę. Nie zmieniają się na awarie systemu, aktualizacje, aktualizacje hosta platformy Azure itd. 
 
-Nazwa DNS skojarzone z usługą application gateway nie zmienia się z cyklem bramy. W rezultacie należy Użycie aliasów CNAME i wskaż adresu DNS bramy aplikacji.
+Nazwa DNS skojarzona z bramą aplikacji nie zmienia cyklu życia bramy. W związku z tym należy użyć aliasu CNAME i wskazać go adres DNS bramy aplikacji.
 
 ## <a name="listeners"></a>Odbiorniki
 
-Odbiornik jest logicznej jednostki, która sprawdza, czy przychodzące żądania połączenia. Odbiornik akceptuje żądania, jeśli protokół, port, hosta i adres IP skojarzony z żądaniem odpowiadają te same elementy, które są skojarzone z konfiguracji odbiornika.
+Odbiornik jest jednostką logiczną, która sprawdza przychodzące żądania połączenia. Odbiornik akceptuje żądanie, jeśli protokół, port, Host i adres IP skojarzony z żądaniem są zgodne z tymi samymi elementami, które są skojarzone z konfiguracją odbiornika.
 
-Przed skorzystaniem z bramy aplikacji, należy dodać co najmniej jednego odbiornika. Może istnieć wiele odbiorników dołączonego do bramy aplikacji i mogą być używane dla tego samego protokołu.
+Przed użyciem bramy aplikacji należy dodać co najmniej jeden odbiornik. Do bramy aplikacji może być przypisanych wiele odbiorników, które mogą być używane dla tego samego protokołu.
 
-Po odbiornik wykryje żądań przychodzących od klientów, usługa application gateway kieruje żądania do elementów członkowskich w puli zaplecza. Bramy aplikacji przy użyciu reguł routingu żądania zdefiniowane dla odbiornika, który otrzymał żądanie przychodzące.
+Gdy odbiornik wykryje przychodzące żądania od klientów, Brama aplikacji kieruje te żądania do członków w puli zaplecza. Brama aplikacji używa reguł routingu żądań zdefiniowanych dla odbiornika, który odebrał żądanie przychodzące.
 
-Odbiorniki obsługuje następujących portów i protokołów.
+Odbiorniki obsługują następujące porty i protokoły.
 
 ### <a name="ports"></a>Porty
 
-Port jest, gdzie odbiornik nasłuchuje żądań klienta. Można skonfigurować porty z zakresu od 1 do 65502 dla jednostek SKU v1 i 1 do 65199, w ramach jednostki SKU w wersji 2.
+Port jest miejscem, w którym odbiornik nasłuchuje żądania klienta. Można skonfigurować porty z zakresu od 1 do 65502 dla jednostki SKU w wersji 1 i 1 do 65199 dla jednostki SKU w wersji 2.
 
 ### <a name="protocols"></a>Protokoły
 
-Usługa Application Gateway obsługuje cztery Protokoły: HTTP, HTTPS i HTTP/2 oraz WebSocket:
+Application Gateway obsługuje cztery protokoły: HTTP, HTTPS, HTTP/2 i WebSocket:
 
-- Określ wartość HTTP lub HTTPS protokołów w konfiguracji odbiornika.
-- Obsługa [WebSockets i protokołu HTTP/2 protokołów](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) jest udostępnianych w sposób natywny, i [Obsługa protokołu WebSocket](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) jest domyślnie włączona. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket. Za pomocą funkcji WebSockets odbiorników HTTP i HTTPS.
-- Obsługa protokołu HTTP/2 jest dostępna dla klientów łączących się tylko odbiorników bramy aplikacji. Komunikacja do pul serwerów zaplecza jest za pośrednictwem protokołu HTTP/1.1. Domyślnie obsługa protokołu HTTP/2 jest wyłączona. Można ją włączyć.
+- Określ między protokołami HTTP i HTTPS w konfiguracji odbiornika.
+- Obsługa [protokołów WebSockets i http/2](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) jest zapewniana w sposób natywny, a [Obsługa protokołu WebSocket](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) jest domyślnie włączona. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket. Użyj obiektów WebSockets z odbiornikami HTTP i HTTPS.
+- Obsługa protokołu HTTP/2 jest dostępna dla klientów nawiązujących połączenie z odbiornikami bramy aplikacji. Komunikacja z pulami serwerów zaplecza odbywa się za pośrednictwem protokołu HTTP/1.1. Domyślnie obsługa protokołu HTTP/2 jest wyłączona. Możesz włączyć tę opcję.
 
-Odbiornika protokołu HTTPS na użytek kończenia żądań SSL. Odbiornik HTTPS mniejsze szyfrowania i odszyfrowywania pracy Twojej bramy application gateway, więc serwerów sieci web nie są obciążać przez obciążenie. Twoje aplikacje mogą następnie skoncentrować się na logice biznesowej.
+Użyj odbiornika HTTPS do zakończenia protokołu SSL. Odbiornik HTTPS odciąża szyfrowanie i odszyfrowanie do bramy aplikacji, dzięki czemu serwery sieci Web nie są obciążeniem. Aplikacje są następnie bezpłatne, aby skoncentrować się na logice biznesowej.
 
 ### <a name="custom-error-pages"></a>Niestandardowe strony błędów
 
-Usługa Application Gateway umożliwia tworzenie strony błędów niestandardowych zamiast domyślnej strony błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu. Usługa Application Gateway Wyświetla niestandardowej strony błędu, jeśli żądanie nie może nawiązać połączenia wewnętrznej bazy danych.
+Application Gateway umożliwia tworzenie niestandardowych stron błędów zamiast wyświetlania domyślnych stron błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu. Application Gateway wyświetla niestandardową stronę błędu, gdy żądanie nie może nawiązać połączenia z zapleczem.
 
-Aby uzyskać więcej informacji, zobacz [strony błędów niestandardowych dla bramy application gateway](https://docs.microsoft.com/azure/application-gateway/custom-error).
+Aby uzyskać więcej informacji, zobacz [niestandardowe strony błędów dla bramy aplikacji](https://docs.microsoft.com/azure/application-gateway/custom-error).
 
-### <a name="types-of-listeners"></a>Typy obiektów nasłuchujących
+### <a name="types-of-listeners"></a>Typy odbiorników
 
-Istnieją dwa rodzaje odbiorniki:
+Istnieją dwa typy odbiorników:
 
-- **Podstawowe**. Ten typ odbiornik nasłuchuje do lokacji jednej domeny, który ma jedno mapowanie DNS na adres IP bramy aplikacji. Ta konfiguracja odbiornika jest wymagana, gdy hosta jednej witryny za bramą aplikacji.
+- **Podstawowa**. Ten typ odbiornika nasłuchuje w pojedynczej lokacji domeny, gdzie ma pojedyncze mapowanie DNS na adres IP bramy aplikacji. Ta konfiguracja odbiornika jest wymagana w przypadku hostowania pojedynczej lokacji za bramą aplikacji.
 
-- **Połączenia obejmujące wiele lokacji**. Ta konfiguracja odbiornika jest wymagana, gdy konfigurujesz więcej niż jednej aplikacji sieci web na tym samym wystąpieniu bramy aplikacji. Umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie maksymalnie 100 witryn sieci Web do jednej bramy aplikacji. Każdą witrynę sieci Web można skierować do jej puli zaplecza. Na przykład trzech poddomeny, abc.contoso.com, xyz.contoso.com i pqr.contoso.com, wskazywać adres IP bramy aplikacji. Czy utworzyć trzy odbiorników obejmujących wiele lokacji i skonfigurować każdego odbiornika dla odpowiednich portów i ustawienia protokołu.
+- **Wiele witryn**. Ta konfiguracja odbiornika jest wymagana podczas konfigurowania więcej niż jednej aplikacji sieci Web w tym samym wystąpieniu bramy aplikacji. Umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie do 100 witryn sieci Web do jednej bramy aplikacji. Każdą witrynę sieci Web można skierować do jej puli zaplecza. Na przykład trzy poddomeny, abc.contoso.com, xyz.contoso.com i pqr.contoso.com, wskazują adres IP bramy aplikacji. Utworzysz trzy odbiorniki z wieloma lokacjami i skonfigurujesz każdy odbiornik dla odpowiedniego ustawienia portu i protokołu.
 
-    Aby uzyskać więcej informacji, zobacz [hostingu wielu witryn](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview).
+    Aby uzyskać więcej informacji, zobacz [hosting z wieloma lokacjami](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview).
 
-Po utworzeniu odbiornika, należy ją skojarzyć z reguły routingu żądania. Ta zasada ustala, jak żądanie odebrane na odbiorniku powinien kierowane do zaplecza.
+Po utworzeniu odbiornika należy skojarzyć go z regułą routingu żądania. Ta reguła określa, w jaki sposób żądanie otrzymane na odbiorniku powinno być kierowane do zaplecza.
 
-Usługa Application Gateway przetwarza słuchaczy w podanej kolejności. Jeśli podstawowy odbiornik pasuje do przychodzącego żądania, jest przetwarzana najpierw. Aby przekierować ruch na poprawne wewnętrznej bazy danych, należy skonfigurować odbiornika wielu lokacji, przed podstawowego odbiornika.
+Application Gateway przetwarza odbiorniki w pokazanej kolejności. Jeśli podstawowy odbiornik pasuje do przychodzącego żądania, zostanie on przetworzony jako pierwszy. Aby skierować ruch do prawidłowego zaplecza, należy skonfigurować odbiornik z obsługą wiele lokacji przed odbiornikiem podstawowym.
 
-## <a name="request-routing-rules"></a>Żądanie reguły rozsyłania
+## <a name="request-routing-rules"></a>Reguły routingu żądań
 
-Reguła routingu żądania jest kluczowym składnikiem bramy aplikacji, ponieważ określa sposób kierowania ruchu na odbiorniku. Reguła wiąże odbiornik, puli serwerów zaplecza i ustawienia HTTP zaplecza.
+Reguła routingu żądań jest kluczem składnika bramy aplikacji, ponieważ określa sposób kierowania ruchu do odbiornika. Reguła wiąże odbiornik, pulę serwerów zaplecza i ustawienia protokołu HTTP zaplecza.
 
-W przypadku odbiornika akceptuje żądania, reguły routingu żądań przekazuje żądania do zaplecza lub przekierowuje go w innym miejscu. Jeśli żądanie jest przekazywane do zaplecza, reguły routingu żądań definiuje której puli serwerów zaplecza na udostępnianie dalej, aby. Również reguły routingu żądań określa również, czy mają zostać przepisany z nagłówków w żądaniu. Jednego odbiornika można dołączyć do jednej reguły.
+Gdy odbiornik akceptuje żądanie, reguła routingu żądań przekazuje żądanie do zaplecza lub przekierowuje ją w innym miejscu. Jeśli żądanie jest przekazywane do zaplecza, reguła routingu żądań określa, do której puli serwerów zaplecza ma zostać przekazana. Ponadto reguła routingu żądań określa również, czy nagłówki w żądaniu mają być ponownie zapisywane. Jeden odbiornik może być dołączony do jednej reguły.
 
-Istnieją dwa typy reguł rozsyłania żądań:
+Istnieją dwa typy reguł routingu żądań:
 
-- **Podstawowe**. Wszystkie żądania na skojarzony odbiornik (na przykład blog.contoso.com/*) są przekazywane do puli zaplecza skojarzone przy użyciu skojarzone ustawienia protokołu HTTP.
+- **Podstawowa**. Wszystkie żądania na skojarzonym odbiorniku (na przykład blog.contoso.com/*) są przekazywane do skojarzonej puli zaplecza przy użyciu skojarzonego ustawienia protokołu HTTP.
 
-- **Oparty na ścieżkach**. Ta reguła routingu umożliwia kierowanie żądań na skojarzony odbiornik z pulą zaplecza określone na podstawie adresu URL w żądaniu. Jeśli ścieżka adresu URL w żądaniu pasuje wzorzec ścieżki w regule opartego na ścieżkach, reguła kieruje tego żądania. Wzorzec ścieżki dotyczy tylko do ścieżki adresu URL, a nie do jego parametry zapytania. Jeśli ścieżka adresu URL żądania odbiornik nie pasuje do żadnego z reguł opartych na ścieżkach, kieruje żądanie do domyślna pula zaplecza i ustawienia protokołu HTTP.
+- **Oparta na ścieżce**. Ta reguła routingu umożliwia kierowanie żądań na skojarzonym odbiorniku do określonej puli zaplecza na podstawie adresu URL w żądaniu. Jeśli ścieżka adresu URL w żądaniu pasuje do wzorca ścieżki w regule opartej na ścieżce, reguła kieruje to żądanie. Stosuje wzorzec ścieżki tylko do ścieżki URL, a nie do parametrów zapytania. Jeśli ścieżka URL w żądaniu odbiornika nie jest zgodna z żadną regułą opartą na ścieżce, kieruje żądanie do domyślnej puli zaplecza i ustawień protokołu HTTP.
 
-Aby uzyskać więcej informacji, zobacz [routingu opartego na adresach URL](https://docs.microsoft.com/azure/application-gateway/url-route-overview).
+Aby uzyskać więcej informacji, zobacz [routing oparty na adresach URL](https://docs.microsoft.com/azure/application-gateway/url-route-overview).
 
 ### <a name="redirection-support"></a>Obsługa przekierowania
 
-Reguła routingu żądania umożliwia przekierowywanie ruchu w usłudze application gateway. To mechanizm ogólnego przekierowania, dzięki czemu można przekierować do i z dowolnego portu definiowane za pomocą reguł.
+Reguła routingu żądań umożliwia również przekierowywanie ruchu na bramie aplikacji. Jest to mechanizm przekierowania ogólnego, dlatego można przekierować do i z dowolnego portu zdefiniowanego za pomocą reguł.
 
-Możesz wybrać miejsce docelowe przekierowania inny odbiornik, (które mogą pomóc włączyć automatyczne HTTP do przekierowania protokołu HTTPS) lub zewnętrznej witryny. Możesz również wybrać do przekierowania jest tymczasowy lub stały lub dołączyć ciąg identyfikatora URI ścieżkę i zapytanie do adresu URL.
+Możesz wybrać miejsce docelowe przekierowania jako inny odbiornik (co może pomóc włączyć automatyczne przekierowywanie protokołu HTTP do protokołu HTTPS) lub zewnętrznej lokacji. Możesz również wybrać opcję przekierowania na tymczasową lub trwałą lub dołączyć ścieżkę identyfikatora URI i ciąg zapytania do przekierowanego adresu URL.
 
-Aby uzyskać więcej informacji, zobacz [przekierowywanie ruchu na Twojej bramy application gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
+Aby uzyskać więcej informacji, zobacz [przekierowywanie ruchu na bramie aplikacji](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
 
 ### <a name="rewrite-http-headers"></a>Ponowne zapisywanie nagłówków HTTP
 
-Za pomocą reguł routingu żądania, można dodać, usunąć lub zaktualizować żądania HTTP (S) i nagłówki odpowiedzi jako pakiety żądań i odpowiedzi Przenieś między klientem a zapleczem pule za pośrednictwem bramy aplikacji.
+Korzystając z reguł routingu żądań, można dodawać, usuwać lub aktualizować żądania HTTP (S) i nagłówki odpowiedzi jako pakiety żądań i odpowiedzi przenoszone między klientami a pulami zaplecza za pośrednictwem bramy aplikacji.
 
-Nagłówki można ustawić wartości statyczne lub innych nagłówków i zmiennych serwera. Dzięki temu przy użyciu ważnych zastosowań, takich jak wyodrębnianie adresów IP klientów, usunięcie poufnych informacji o wewnętrznej bazy danych, dodając lepsze zabezpieczenia i tak dalej.
+Nagłówki mogą być ustawione na wartości statyczne lub inne nagłówki i zmienne serwera. Pomaga to z ważnymi przypadkami użycia, takimi jak wyodrębnianie adresów IP klientów, usuwanie poufnych informacji o zapleczu, dodawanie dodatkowych zabezpieczeń i tak dalej.
 
-Aby uzyskać więcej informacji, zobacz [nagłówków HTTP ponownego zapisywania w Twojej bramy application gateway](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Aby uzyskać więcej informacji, zobacz [Zapisywanie nagłówków HTTP na bramie aplikacji](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
 
-## <a name="http-settings"></a>Ustawienia HTTP
+## <a name="http-settings"></a>Ustawienia protokołu HTTP
 
-Usługa application gateway kieruje ruch do serwerów wewnętrznej bazy danych (określone w regule routingu żądania, który zawiera ustawienia protokołu HTTP) przy użyciu numeru portu, protokołu i inne ustawienia, które szczegółowo opisane w tej części.
+Brama aplikacji kieruje ruch do serwerów zaplecza (określony w regule routingu żądań, która obejmuje ustawienia protokołu HTTP), używając numeru portu, protokołu i innych ustawień szczegółowych w tym składniku.
 
-Port i protokół używany w ustawieniach protokołu HTTP określają, czy ruch między serwerami bramy i wewnętrznej bazy danych aplikacji są szyfrowane (udostępniane end-to-end SSL) lub bez szyfrowania.
+Port i protokół używany w ustawieniach protokołu HTTP określają, czy ruch między usługą Application Gateway i serwerami zaplecza jest szyfrowany (zapewnianie kompleksowego protokołu SSL) lub nieszyfrowany.
 
-Ten składnik jest również używana do:
+Ten składnik jest również używany do:
 
-- Określić, czy sesja użytkownika jest mają być przechowywane na tym samym serwerze przy użyciu [koligacji sesji na podstawie pliku cookie](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity).
+- Określ, czy sesja użytkownika ma być przechowywana na tym samym serwerze przy użyciu koligacji [sesji opartej na plikach cookie](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity).
 
-- Bezpiecznie usunąć składowych puli zaplecza przy użyciu [opróżniania połączenia](https://docs.microsoft.com/azure/application-gateway/overview#connection-draining).
+- Usuń bezpiecznie członków puli zaplecza przy użyciu [opróżniania połączeń](https://docs.microsoft.com/azure/application-gateway/overview#connection-draining).
 
-- Kojarzenie niestandardowej sondy monitorować kondycję wewnętrznej bazy danych, ustaw interwał limitu czasu żądania, zastąp nazwę hosta i ścieżkę w żądaniu i zapewnia łatwe jednym kliknięciem do określania ustawień dla wewnętrznej bazy danych usługi App Service.
+- Skojarz niestandardową sondę, aby monitorować kondycję zaplecza, ustaw interwał limitu czasu żądania, zastąp nazwę hosta i ścieżkę w żądaniu, a następnie podaj prostotę, aby określić ustawienia dla App Service zaplecza.
 
 ## <a name="backend-pools"></a>Pule zaplecza
 
-Pula zaplecza kieruje żądanie do serwerów wewnętrznej bazy danych, które obsłużyć żądania. Pule zaplecza mogą zawierać:
+Pula zaplecza kieruje żądanie do serwerów zaplecza, które umożliwiają żądanie. Pule zaplecza mogą zawierać:
 
 - Karty interfejsów sieciowych
 - Zestawy skalowania maszyn wirtualnych
 - Publiczne adresy IP
 - Wewnętrzne adresy IP
 - NAZWA FQDN
-- Wielodostępne zaplecza (takich jak usługa App Service)
+- Wielodostępne punkty końcowe (takie jak App Service)
 
-Zestaw dostępności nie są powiązane składowych puli zaplecza bramy aplikacji. Bramy aplikacji może komunikować się z wystąpieniami poza siecią wirtualną, która znajduje się w. W rezultacie członkowie pule zaplecza może być w klastrach, między centrami danych lub spoza platformy Azure, tak długo, jak istnieje łączność IP.
+Elementy członkowskie puli zaplecza Application Gateway nie są powiązane z zestawem dostępności. Brama aplikacji może komunikować się z wystąpieniami poza siecią wirtualną, w której się znajduje. W związku z tym elementy członkowskie pul zaplecza mogą znajdować się w różnych klastrach, w centrach danych lub poza platformą Azure, o ile jest to połączenie IP.
 
-Jeśli używasz wewnętrznych adresów IP jako składowych puli zaplecza, należy użyć [wirtualne sieci równorzędne](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) lub [bramy sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Komunikacja równorzędna sieci wirtualnych jest obsługiwane i korzystne dla ruchu równoważenia obciążenia w innych sieciach wirtualnych.
+Jeśli używasz wewnętrznych adresów IP jako członków puli zaplecza, musisz użyć [komunikacji równorzędnej sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) lub [bramy sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Komunikacja równorzędna sieci wirtualnych jest obsługiwana i korzystna dla ruchu z równoważeniem obciążenia w innych sieciach wirtualnych.
 
-Bramy aplikacji można również przekazać za pomocą lokalnych serwerów gdy są one połączone przez tunele do usługi Azure ExpressRoute lub sieci VPN, jeśli ruch jest dozwolony.
+Brama aplikacji może również komunikować się z serwerami lokalnymi, jeśli są one połączone przez usługę Azure ExpressRoute lub tunele VPN, jeśli jest to dozwolone.
 
-Można tworzyć pule zaplecza różne dla różnych typów żądań. Na przykład utworzyć jedną pulę zaplecza dla ogólnych żądań, a następnie innej puli zaplecza dla żądań kierowanych do mikrousług dla aplikacji.
+Dla różnych typów żądań można utworzyć różne pule zaplecza. Na przykład Utwórz jedną pulę zaplecza dla żądań ogólnych, a następnie inną pulę zaplecza dla żądań kierowanych do mikrousług dla aplikacji.
 
 ## <a name="health-probes"></a>Sondy kondycji
 
-Domyślnie monitoruje kondycję wszystkich zasobów w puli zaplecza bramy aplikacji i automatycznie usuwa te złej kondycji. Następnie monitoruje wystąpienia i dodaje je do puli zaplecza w dobrej kondycji, gdy staną się dostępne i odpowiadać na sondy kondycji.
+Domyślnie Brama aplikacji monitoruje kondycję wszystkich zasobów w puli zaplecza i automatycznie usuwa w złej kondycji. Następnie monitoruje wystąpienia w złej kondycji i dodaje je z powrotem do odpowiedniej puli zaplecza, gdy staną się dostępne i reagują na sondy kondycji.
 
-Oprócz używania, sondowanie kondycji domyślnej funkcji monitorowania, można również dostosować sondę kondycji, aby odpowiadał wymaganiom Twojej aplikacji. Niestandardowe sondy umożliwiają bardziej szczegółową kontrolę nad monitorowanie kondycji. Użycie sond niestandardowych, można skonfigurować interwał sondowania, adres URL i ścieżki do testowania i jak wiele odpowiedzi nie powiodło się, aby zaakceptować wystąpienie puli serwerów zaplecza jest oznaczony jako w złej kondycji. Firma Microsoft zaleca, aby skonfigurować niestandardowe sondy do monitorowania kondycji każdej puli wewnętrznej bazy danych.
+Oprócz domyślnego monitorowania sondy kondycji można także dostosować sondę kondycji do wymagań aplikacji. Niestandardowe sondy umożliwiają dokładniejszą kontrolę nad monitorowaniem kondycji. W przypadku korzystania z sond niestandardowych można skonfigurować interwał sondowania, adres URL i ścieżkę do testowania oraz liczbę niepowodzeń odpowiedzi, które mają być akceptowane, zanim wystąpienie puli zaplecza zostanie oznaczone jako w złej kondycji. Zalecamy skonfigurowanie niestandardowych sond do monitorowania kondycji każdej puli zaplecza.
 
-Aby uzyskać więcej informacji, zobacz [monitorowania kondycji bramy application gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
+Aby uzyskać więcej informacji, zobacz [monitorowanie kondycji bramy aplikacji](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Tworzenie bramy aplikacji:
 
-* [W witrynie Azure portal](quick-create-portal.md)
-* [Za pomocą programu Azure PowerShell](quick-create-powershell.md)
-* [Przy użyciu wiersza polecenia platformy Azure](quick-create-cli.md)
+* [W Azure Portal](quick-create-portal.md)
+* [Za pomocą Azure PowerShell](quick-create-powershell.md)
+* [Za pomocą interfejsu wiersza polecenia platformy Azure](quick-create-cli.md)

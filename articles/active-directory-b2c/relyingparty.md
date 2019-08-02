@@ -1,6 +1,6 @@
 ---
-title: RelyingParty — usługa Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Określ element RelyingParty zasad niestandardowych w usłudze Azure Active Directory B2C.
+title: RelyingParty — Azure Active Directory B2C | Microsoft Docs
+description: Określ element RelyingParty zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2b5e9bfe6eaa9b84e259d941760792635a2994f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf8d4889c277d59d0c42894281a89345fbf90a84
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512853"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716689"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**RelyingParty** element określa podróży użytkownika w celu wymuszenia dla bieżącego żądania do usługi Azure Active Directory (Azure AD) B2C. Określa również lista oświadczeń, których potrzebuje aplikacji jednostki uzależnionej (RP) jako część wystawiony token. Aplikację jednostki Uzależnionej, np. aplikacji sieci web, mobilnych i klasycznych, wywołuje plik zasad jednostki Uzależnionej. Plik zasad RP wykonuje określonych zadań, takich jak logowanie, resetowanie hasła lub edycji profilu. Wiele aplikacji można użyć tych samych zasad RP i pojedynczej aplikacji można użyć wielu zasad. Wszystkich aplikacji jednostki Uzależnionej otrzymują tego samego tokenu przy użyciu oświadczeń i użytkownik przechodzi przez ten sam podróży użytkownika.
+Element **RelyingParty** określa podróż użytkownika do wymuszenia dla bieżącego żądania do Azure Active Directory (Azure AD) B2C. Określa także listę oświadczeń, które są wymagane przez aplikację jednostki uzależnionej (RP) jako część wystawionego tokenu. Aplikacja RP, taka jak aplikacja sieci Web, aplikacji mobilnej lub klasycznej, wywołuje plik zasad RP. Plik zasad RP wykonuje określone zadanie, takie jak logowanie, Resetowanie hasła lub edytowanie profilu. Wiele aplikacji może korzystać z tych samych zasad RP, a pojedyncza aplikacja może korzystać z wielu zasad. Wszystkie aplikacje RP otrzymują ten sam token z oświadczeniami, a użytkownik przechodzi przez tę samą podróż użytkownika.
 
-W poniższym przykładzie przedstawiono **RelyingParty** element *B2C_1A_signup_signin* pliku zasad:
+Poniższy przykład przedstawia element **RelyingParty** w pliku zasad *B2C_1A_signup_signin* :
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -54,7 +54,7 @@ W poniższym przykładzie przedstawiono **RelyingParty** element *B2C_1A_signup_
     </UserJourneyBehaviors>
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
-      <Description>The policy profile</Description> 
+      <Description>The policy profile</Description>
       <Protocol Name="OpenIdConnect" />
       <Metadata>collection of key/value pairs of data</Metadata>
       <OutputClaims>
@@ -72,19 +72,19 @@ W poniższym przykładzie przedstawiono **RelyingParty** element *B2C_1A_signup_
   ...
 ```
 
-Opcjonalny **RelyingParty** element zawiera następujące elementy:
+Opcjonalny element **RelyingParty** zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| DefaultUserJourney | 1:1 | Domyślną podróż użytkownika dla aplikacji jednostki Uzależnionej. |
-| UserJourneyBehaviors | 0:1 | Zakres zachowania podróży użytkownika. |
-| TechnicalProfile | 1:1 | Profil techniczny, który jest obsługiwany przez aplikację jednostki Uzależnionej. Profil techniczny zawiera kontrakt aplikacji jednostki Uzależnionej, skontaktuj się z usługi Azure AD B2C. |
+| DefaultUserJourney | 1:1 | Domyślna podróż użytkownika dla aplikacji RP. |
+| UserJourneyBehaviors | 0:1 | Zakres zachowań podróży użytkownika. |
+| TechnicalProfile | 1:1 | Profil techniczny obsługiwany przez aplikację RP. Profil techniczny zawiera kontrakt dla aplikacji RP do kontaktu Azure AD B2C. |
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-`DefaultUserJourney` Element Określa odwołanie do identyfikatora podróży użytkownika, który zazwyczaj jest definiowany w zasadach Base lub rozszerzenia. W poniższych przykładach pokazano podróży użytkownika rejestracji lub logowania, określone w **RelyingParty** elementu:
+`DefaultUserJourney` Element określa odwołanie do identyfikatora podróży użytkownika, która jest zwykle zdefiniowana w zasadach podstawowych lub zasad rozszerzenia. W poniższych przykładach przedstawiono drogę rejestracji lub logowania użytkownika określoną w elemencie **RelyingParty** :
 
-*B2C_1A_signup_signin* zasad:
+Zasady *B2C_1A_signup_signin* :
 
 ```XML
 <RelyingParty>
@@ -100,124 +100,124 @@ Opcjonalny **RelyingParty** element zawiera następujące elementy:
   ...
 ```
 
-**DefaultUserJourney** element zawiera następujący atrybut:
+Element **DefaultUserJourney** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Tak | Identyfikator podróży użytkownika w ramach zasad. Aby uzyskać więcej informacji, zobacz [podróży użytkownika](userjourneys.md) |
+| ReferenceId | Yes | Identyfikator podróży użytkownika w zasadach. Aby uzyskać więcej informacji, zobacz [podróże użytkownika](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
-**UserJourneyBehaviors** element zawiera następujące elementy:
+Element **UserJourneyBehaviors** zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| SingleSignOn | 0:1 | Zakres pojedynczego logowania jednokrotnego (SSO) zachowanie sesji podróży użytkownika. |
-| SessionExpiryType |0:1 | Zachowanie sesji uwierzytelniania. Możliwe wartości: `Rolling` lub `Absolute`. `Rolling` Wartość (ustawienie domyślne) wskazuje, czy użytkownik pozostaje zalogowany, tak długo, jak użytkownik jest stale aktywny w aplikacji. `Absolute` Wartość wskazuje, czy użytkownik jest zmuszony do ponownego uwierzytelnienia po upływie czasu określonego przez sesję aplikacji okresu istnienia. |
-| SessionExpiryInSeconds | 0:1 | Okres istnienia pliku cookie z sesji usługi Azure AD B2C, określony jako liczba całkowita jest przechowywane w przeglądarce użytkownika po pomyślnym uwierzytelnieniu. |
-| JourneyInsights | 0:1 | Klucz Instrumentacji usługi Azure Application Insights, która ma być używany. |
-| ContentDefinitionParameters | 0:1 | Lista par kluczy i wartości do dołączenia do ładowania definicji zawartości identyfikatora URI. |
+| SingleSignOn | 0:1 | Zakres działania dotyczącego logowania jednokrotnego (SSO) w trakcie podróży użytkownika. |
+| SessionExpiryType |0:1 | Zachowanie podczas uwierzytelniania sesji. Możliwe wartości: `Rolling` lub `Absolute`. `Rolling` Wartość (domyślnie) wskazuje, że użytkownik pozostanie zalogowany, o ile użytkownik jest stale aktywny w aplikacji. `Absolute` Wartość oznacza, że użytkownik jest zmuszony do ponownego uwierzytelnienia po upływie czasu określonego przez okres istnienia sesji aplikacji. |
+| SessionExpiryInSeconds | 0:1 | Okres istnienia pliku cookie sesji B2C's usługi Azure AD został określony jako liczba całkowita przechowywana w przeglądarce użytkownika po pomyślnym uwierzytelnieniu. |
+| JourneyInsights | 0:1 | Klucz Instrumentacji usługi Azure Application Insights, który ma być używany. |
+| ContentDefinitionParameters | 0:1 | Lista par wartości klucza do dołączenia do identyfikatora URI ładowania definicji zawartości. |
 
 ### <a name="singlesignon"></a>SingleSignOn
 
-**SingleSignOn** element zawiera się w następujących atrybutów:
+Element **SingleSignon** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Scope | Yes | Zakres jednego zachowanie logowania jednokrotnego. Możliwe wartości: `Suppressed`, `Tenant`, `Application`, lub `Policy`. `Suppressed` Wartość wskazuje, że zachowanie jest pomijane. Na przykład w przypadku jednej sesji logowania jednokrotnego, sesja nie jest zachowywana na potrzeby użytkownika, a użytkownik zawsze jest monitowany o wyboru dostawcy tożsamości. `TrustFramework` Wartość wskazuje, że zachowanie jest stosowana dla wszystkich zasad w ramach relacji zaufania. Na przykład dwóch kursów zasad dla struktury zaufania w nawigowaniu po użytkownik nie jest monitowany o wyboru dostawcy tożsamości. `Tenant` Wartość wskazuje, że zachowanie jest stosowane do wszystkich zasad w ramach dzierżawy. Na przykład użytkownik w nawigowaniu po dwóch kursów zasad dla dzierżawy nie jest monitowany o wyboru dostawcy tożsamości. `Application` Wartość wskazuje, że zachowanie jest stosowane do wszystkich zasad dla aplikacji, dzięki czemu żądania. Na przykład dwóch kursów zasad dla aplikacji w nawigowaniu po użytkownik nie jest monitowany o wyboru dostawcy tożsamości. `Policy` Wartość wskazuje, że zachowanie ma zastosowanie tylko do zasad. Na przykład dwóch kursów zasad dla struktury zaufania w nawigowaniu po użytkownik jest monitowany o wyboru dostawcy tożsamości podczas przełączania między zasadami. |
-| KeepAliveInDays | Tak | Określa, jak długo użytkownik pozostaje zalogowany. Ustawienie wartości 0 spowoduje wyłączenie funkcji KMSI. Aby uzyskać więcej informacji, zobacz [nie wylogowuj mnie](active-directory-b2c-reference-kmsi-custom.md). |
+| Scope | Yes | Zakres zachowania logowania jednokrotnego. Możliwe wartości: `Suppressed`, `Tenant`, `Application`lub. `Policy` `Suppressed` Wartość wskazuje, że zachowanie jest pomijane. Na przykład w przypadku sesji logowania jednokrotnego dla użytkownika nie jest utrzymywana żadna sesja, a użytkownik jest zawsze monitowany o wybranie dostawcy tożsamości. `TrustFramework` Wartość wskazuje, że zachowanie jest stosowane dla wszystkich zasad w strukturze zaufania. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla struktury zaufania nie jest monitowany o wybranie dostawcy tożsamości. `Tenant` Wartość wskazuje, że zachowanie jest stosowane do wszystkich zasad w dzierżawie. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla dzierżawy nie jest monitowany o wybranie dostawcy tożsamości. `Application` Wartość wskazuje, że zachowanie jest stosowane do wszystkich zasad dla aplikacji zgłaszającej żądanie. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla aplikacji nie jest monitowany o wybranie dostawcy tożsamości. `Policy` Wartość wskazuje, że zachowanie dotyczy tylko zasad. Na przykład użytkownik przechodzący przez dwie przedziały zasad dla struktury zaufania jest monitowany o wybranie dostawcy tożsamości podczas przełączania między zasadami. |
+| KeepAliveInDays | Tak | Określa, jak długo użytkownik jest zalogowany. Ustawienie wartości 0 powoduje wyłączenie funkcji KMSI. Aby uzyskać więcej informacji, zobacz temat nie [wylogowuj mnie](active-directory-b2c-reference-kmsi-custom.md). |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
-**JourneyInsights** element zawiera następujące atrybuty:
+Element **JourneyInsights** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Yes | Wartość musi być `ApplicationInsights`. | 
-| InstrumentationKey | Tak | Ciąg, który zawiera klucz instrumentacji dla elementu szczegółowych informacji w aplikacji. |
-| DeveloperMode | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, Application Insights przyspiesza dane telemetryczne za pośrednictwem potoku przetwarzania. To ustawienie jest dobry do tworzenia aplikacji, ale ograniczone w dużej ilości danych z dzienników aktywności szczegółowe są przeznaczone tylko do pomocy podczas tworzenia zasad niestandardowych. Nie należy używać trybu projektowania w środowisku produkcyjnym. Dzienniki zbierać wszystkie oświadczenia wysyłane do i z dostawcami tożsamości, podczas programowania. Jeśli używane w środowisku produkcyjnym, deweloper przyjmuje odpowiedzialność za dane osobowe (prywatnie osobowe) zebrane w dzienniku usługi App Insights, w której jest właścicielem. Te szczegółowe dzienniki są zbierane tylko wtedy, gdy ta wartość jest równa `true`.|
-| ClientEnabled | Yes | Możliwe wartości: `true` lub `false`. Jeśli `true`, wysyła skrypt po stronie klienta usługi Application Insights do śledzenia błędów po stronie klienta i widoku strony. | 
-| ServerEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, wysyła istniejących JSON UserJourneyRecorder jako zdarzenie niestandardowe do usługi Application Insights. | 
-| TelemetryVersion | Tak | Wartość musi być `1.0.0`. | 
+| TelemetryEngine | Yes | Wartość musi być `ApplicationInsights`. |
+| InstrumentationKey | Tak | Ciąg, który zawiera klucz Instrumentacji dla elementu Application Insights. |
+| Deweloper | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`Application Insights przyspiesza dane telemetryczne za pomocą potoku przetwarzania. To ustawienie jest dobre w przypadku programowania, ale jest ograniczone do dużych woluminów, szczegółowe dzienniki działań są przeznaczone tylko do pomocy w opracowywaniu zasad niestandardowych. Nie używaj trybu deweloperskiego w środowisku produkcyjnym. Dzienniki zbierają wszystkie oświadczenia wysyłane do i od dostawców tożsamości podczas opracowywania. Jeśli jest używany w środowisku produkcyjnym, programista przyjmuje odpowiedzialność za dane OSOBowe (informacje z możliwością zidentyfikowaną prywatnie) zebrane w dzienniku usługi App Insights. Te szczegółowe dzienniki są zbierane tylko wtedy, gdy ta wartość jest `true`ustawiona na.|
+| ClientEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`program wysyła skrypt po stronie klienta Application Insights na potrzeby śledzenia widoku strony i błędów po stronie klienta. |
+| ServerEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, program wysyła istniejący kod JSON UserJourneyRecorder jako zdarzenie niestandardowe do Application Insights. |
+| TelemetryVersion | Tak | Wartość musi być `1.0.0`. |
 
 Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](active-directory-b2c-troubleshoot-custom.md)
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
-Za pomocą zasad niestandardowych w usłudze Azure AD B2C, możesz wysłać parametr ciągu zapytania. Przekazanie parametru do punktu końcowego HTML pozwala na dynamiczną zmianę zawartość strony. Na podstawie parametru przekazywanego z aplikacji internetowej lub aplikacji mobilnej można na przykład zmienić obraz tła na stronie rejestracji lub logowania usługi Azure AD B2C. Usługa Azure AD B2C przekazuje zapytanie parametry dynamiczny plik HTML, takich jak pliku aspx. 
+Korzystając z zasad niestandardowych w Azure AD B2C, można wysłać parametr w ciągu zapytania. Przekazanie parametru do punktu końcowego HTML pozwala na dynamiczną zmianę zawartość strony. Na podstawie parametru przekazywanego z aplikacji internetowej lub aplikacji mobilnej można na przykład zmienić obraz tła na stronie rejestracji lub logowania usługi Azure AD B2C. Azure AD B2C przekazuje parametry ciągu zapytania do dynamicznego pliku HTML, takiego jak plik aspx.
 
-Poniższy przykład przekazuje parametr o nazwie `campaignId` o wartości `hawaii` w ciągu zapytania:
+Poniższy przykład przekazuje parametr o nazwie `campaignId` przy użyciu `hawaii` wartości w ciągu zapytania:
 
 `https://login.microsoft.com/contoso.onmicrosoft.com/oauth2/v2.0/authorize?pB2C_1A_signup_signin&client_id=a415078a-0402-4ce3-a9c6-ec1947fcfb3f&nonce=defaultNonce&redirect_uri=http%3A%2F%2Fjwt.io%2F&scope=openid&response_type=id_token&prompt=login&campaignId=hawaii`
 
-**ContentDefinitionParameters** element zawiera następującego elementu:
+Element **ContentDefinitionParameters** zawiera następujący element:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| ContentDefinitionParameter | 0: n | Ciąg, który zawiera pary wartości klucza, który jest dołączany do ciągu zapytania identyfikatora URI obciążenia definicji zawartości. |
+| ContentDefinitionParameter | 0: n | Ciąg zawierający parę wartości klucza, która jest dołączana do ciągu zapytania w identyfikatorze URI ładowania definicji zawartości. |
 
-**ContentDefinitionParameter** element zawiera następujący atrybut:
+Element **ContentDefinitionParameter** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name | Yes | Nazwa parę klucz-wartość. |
+| Name | Tak | Nazwa pary klucz wartość. |
 
-Aby uzyskać więcej informacji, zobacz [skonfigurować interfejs użytkownika z zawartością dynamiczną za pomocą zasad niestandardowych](active-directory-b2c-ui-customization-custom-dynamic.md)
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie interfejsu użytkownika z zawartością dynamiczną przy użyciu zasad niestandardowych](active-directory-b2c-ui-customization-custom-dynamic.md)
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
-**Profilu technicznego** element zawiera następujący atrybut:
-
-| Atrybut | Wymagane | Opis |
-| --------- | -------- | ----------- | 
-| Identyfikator | Yes | Wartość musi być `PolicyProfile`. |
-
-**Profilu technicznego** zawiera następujące elementy:
-
-| Element | Wystąpienia | Opis |
-| ------- | ----------- | ----------- |
-| Nazwa wyświetlana | 0:1 | Ciąg, który zawiera nazwę profilu technicznego, który jest widoczny dla użytkowników. |
-| Opis | 0:1 | Ciąg, który zawiera opis profilu technicznego, który jest widoczny dla użytkowników. |
-| Protocol | 1:1 | Protokół używany do Federacji. |
-| Metadane | 0:1 | Kolekcja *elementu* par klucz/wartość wykorzystana przez protokół komunikacji z punktem końcowym w toku transakcji można skonfigurować interakcję między jednostkę uzależnioną i innych uczestników społeczności. |
-| OutputClaims | 0:1 | Lista typów oświadczeń, które są wykonywane jako dane wyjściowe w profilu technicznym. Każdy z tych elementów zawiera odwołanie do **oświadczenia** już zdefiniowana w **ClaimsSchema** sekcji lub w zasadach, z której dziedziczy ten plik zasad. |
-| SubjectNamingInfo | 0:1 | Nazwa podmiotu używana w tokenach. |
-
-**Protokołu** element zawiera następujący atrybut:
+Element **profilu technicznym** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name | Tak | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. `OpenIdConnect` Wartość reprezentuje standardowy protokół OpenID Connect 1.0, zgodnie z specyfikacją foundation OpenID. `SAML2` Reprezentuje standardowy protokół SAML 2.0, zgodnie z specyfikacją języka OASIS. Nie należy używać tokenu SAML w środowisku produkcyjnym. |
+| Id | Tak | Wartość musi być `PolicyProfile`. |
+
+**Profilu technicznym** zawiera następujące elementy:
+
+| Element | Wystąpienia | Opis |
+| ------- | ----------- | ----------- |
+| DisplayName | 0:1 | Ciąg, który zawiera nazwę profilu technicznego, który jest wyświetlany użytkownikom. |
+| Opis | 0:1 | Ciąg, który zawiera opis profilu technicznego, który jest wyświetlany użytkownikom. |
+| Protocol | 1:1 | Protokół używany w Federacji. |
+| Metadane | 0:1 | Kolekcja *elementów* par klucz/wartość wykorzystywana przez protokół do komunikowania się z punktem końcowym w trakcie transakcji w celu skonfigurowania interakcji między jednostką uzależnioną i innymi uczestnikami społeczności. |
+| OutputClaims | 0:1 | Lista typów roszczeń, które są pobierane jako dane wyjściowe w profilu technicznym. Każdy z tych elementów zawiera odwołanie do elementu **ClaimType** zdefiniowanego już w sekcji **ClaimsSchema** lub w zasadach, z których dziedziczy ten plik zasad. |
+| SubjectNamingInfo | 0:1 | Nazwa podmiotu używana w tokenach. |
+
+Element **Protocol** zawiera następujący atrybut:
+
+| Atrybut | Wymagane | Opis |
+| --------- | -------- | ----------- |
+| Name | Yes | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. `OpenIdConnect` Wartość reprezentuje standard protokołu OpenID Connect Connect 1,0 zgodnie ze specyfikacją OpenID Connect Foundation. `SAML2` Reprezentuje standard protokołu SAML 2,0 zgodnie ze specyfikacją języka Oasis. Nie używaj tokenu SAML w środowisku produkcyjnym. |
 
 ## <a name="outputclaims"></a>OutputClaims
 
-**OutputClaims** element zawiera następującego elementu:
+Element **OutputClaims** zawiera następujący element:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| oświadczenie outputClaim | 0: n | Nazwa typu oczekiwanego oświadczenia na liście obsługiwanych dla zasad, do którego subskrybuje strony jednostki uzależnionej. To oświadczenie służy jako dane wyjściowe dla profilu technicznego. |
+| Oświadczenie outputclaim | 0: n | Nazwa oczekiwanego typu na liście obsługiwanych zasad, dla których zasubskrybuje się Jednostka uzależniona. To zgłoszenie służy jako dane wyjściowe profilu technicznego. |
 
-**Oświadczenie OutputClaim** element zawiera następujące atrybuty:
+Element **oświadczenie outputclaim** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Yes | Odwołanie do **oświadczenia** już zdefiniowana w **ClaimsSchema** sekcji w pliku zasad. |
-| defaultValue | Nie | Wartość domyślna, który może służyć, jeśli wartość oświadczenia jest pusta. |
-| PartnerClaimType | Nie | Wysyła oświadczenie inną nazwę, zgodnie z konfiguracją w definicji typu oświadczenia. |
+| ClaimTypeReferenceId | Tak | Odwołanie do elementu **ClaimType** zdefiniowanego już w sekcji **ClaimsSchema** w pliku zasad. |
+| DefaultValue | Nie | Wartość domyślna, która może być używana, jeśli wartość jest pusta. |
+| PartnerClaimType | Nie | Wysyła oświadczenia w innej nazwie, zgodnie z konfiguracją w definicji elementu ClaimType. |
 
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
-Za pomocą **SubjectNameingInfo** elementu, można kontrolować wartość tokenu podmiotu:
-- **JWT token** — `sub` oświadczenia. To jest podmiotem zabezpieczeń o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Może służyć do sprawdzania autoryzacji bezpieczne, np. gdy token jest używany do uzyskania dostępu do zasobu. Domyślnie roszczenie podmiotu jest wypełniana identyfikator obiektu użytkownika w katalogu. Aby uzyskać więcej informacji, zobacz [tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md).
-- **SAML token** — `<Subject><NameID>` element, który identyfikuje element podmiotu.
+Element **SubjectNameingInfo** umożliwia kontrolowanie wartości podmiotu tokenu:
+- **Token JWT** — wartość `sub` żądania. Jest to podmiot zabezpieczeń, w którym token potwierdza informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienna i nie można jej ponownie przypisać ani ponownie użyć. Może służyć do wykonywania bezpiecznych kontroli autoryzacji, na przykład gdy token jest używany w celu uzyskania dostępu do zasobu. Domyślnie, zgłoszenie podmiotu jest wypełniane IDENTYFIKATORem obiektu użytkownika w katalogu. Aby uzyskać więcej informacji, zobacz [Konfiguracja tokenu, sesji i logowania](active-directory-b2c-token-session-sso.md)jednokrotnego.
+- **Token SAML** — `<Subject><NameID>` element, który identyfikuje element podmiotu.
 
-**SubjectNamingInfo** element zawiera następujący atrybut:
+Element **SubjectNamingInfo** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Typ oświadczenia | Tak | Odwołanie do oświadczeń wychodzących **PartnerClaimType**. Dane wyjściowe oświadczenia, muszą być zdefiniowane w zasadach jednostki uzależnionej strona **OutputClaims** kolekcji. |
+| Claim | Yes | Odwołanie do **PartnerClaimType**zgłoszenia danych wyjściowych. Oświadczenia wyjściowe muszą być zdefiniowane w kolekcji **OutputClaims** zasad jednostki uzależnionej. |
 
-Poniższy przykład pokazuje jak zdefiniować, OpenId Connect jednostki zależnej. Informacje o nazwie podmiotu jest skonfigurowany jako `objectId`:
+Poniższy przykład pokazuje, jak zdefiniować jednostkę uzależnioną OpenID Connect Connect. Informacje o nazwie podmiotu są skonfigurowane jako `objectId`:
 
 ```XML
 <RelyingParty>
@@ -237,7 +237,7 @@ Poniższy przykład pokazuje jak zdefiniować, OpenId Connect jednostki zależne
   </TechnicalProfile>
 </RelyingParty>
 ```
-Zawiera JWT token `sub` oświadczenie z użytkownika identyfikator obiektu:
+Token JWT zawiera `sub` zgłoszenie z identyfikatorem użytkownika:
 
 ```JSON
 {

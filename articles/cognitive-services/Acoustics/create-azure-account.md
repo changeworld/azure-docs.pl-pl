@@ -1,7 +1,7 @@
 ---
-title: Ustawienia konta usługi Azure Batch Akustyka projektu
+title: Ustawienia akustyczne dla projektu Azure Batch konta
 titlesuffix: Azure Cognitive Services
-description: Niniejszy instruktaż zawiera opis konfigurowania konta usługi Azure Batch do użytku z programem Project Akustyka Unity i Unreal integracji aparatu.
+description: W tym temacie opisano sposób konfigurowania konta Azure Batch do użycia z mechanizmami akustycznymi projektu i integracją aparatu Unreal.
 services: cognitive-services
 author: ashtat
 manager: nitinme
@@ -10,58 +10,59 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: db4f96ff7c355f3582966e4daa945f54a6e5b847
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ROBOTS: NOINDEX
+ms.openlocfilehash: f11dfda62ebb53aba6254f2db4eace7c524141d4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616547"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704894"
 ---
-# <a name="project-acoustics-azure-batch-account-setup"></a>Ustawienia konta usługi Azure Batch Akustyka projektu
-Niniejszy instruktaż zawiera opis konfigurowania konta usługi Azure Batch do użytku z programem Project Akustyka Unity i Unreal integracji aparatu.
+# <a name="project-acoustics-azure-batch-account-setup"></a>Ustawienia akustyczne dla projektu Azure Batch konta
+W tym temacie opisano sposób konfigurowania konta Azure Batch do użycia z mechanizmami akustycznymi projektu i integracją aparatu Unreal.
 
-## <a name="get-an-azure-subscription"></a>Uzyskiwanie subskrypcji platformy Azure
-[Subskrypcji platformy Azure](https://azure.microsoft.com/free/) jest wymagana przed rozpoczęciem konfigurowania kont usług Batch i Storage. Jeśli teraz rejestrujesz po raz pierwszy, platforma Azure udostępnia kilka ograniczonej czasowo bezpłatnymi zasobami i 200 USD środków.
+## <a name="get-an-azure-subscription"></a>Uzyskaj subskrypcję Azure
+[Subskrypcja platformy Azure](https://azure.microsoft.com/free/) jest wymagana przed skonfigurowaniem kont usługi Batch i Storage. Jeśli logujesz się po raz pierwszy, platforma Azure udostępnia kilka bezpłatnych i $200 środków na korzystanie z usług.
 
-## <a name="create-azure-batch-and-storage-accounts"></a>Tworzenie konta usługi Azure Batch i storage
-Następnie postępuj zgodnie z [w instrukcjach](https://docs.microsoft.com/azure/batch/batch-account-create-portal) do konfigurowania usługi Azure Batch i skojarzonych kont usługi Azure Storage.
+## <a name="create-azure-batch-and-storage-accounts"></a>Tworzenie kont Azure Batch i magazynu
+Następnie postępuj zgodnie z poniższymi [instrukcjami](https://docs.microsoft.com/azure/batch/batch-account-create-portal) , aby skonfigurować Azure Batch i powiązane konta usługi Azure Storage.
 
-Wybierz opcje domyślne dla kont usługi Batch i Storage:
+Wybierz opcje domyślne dla konta usługi Batch i magazynu:
   
-  ![Zrzut ekranu usługi Azure Batch nowych kont Wyświetlanie domyślnych ustawień opcji](media/new-batch-account-create.png)
+  ![Zrzut ekranu przedstawiający opcje Azure Batch nowe konta z ustawieniami domyślnymi](media/new-batch-account-create.png)
 
-  ![Zrzut ekranu z usługi Azure Storage nowych kont Wyświetlanie domyślnych ustawień opcji](media/batch-storage-account-create.png)
+  ![Zrzut ekranu przedstawiający opcje nowych kont usługi Azure Storage z ustawieniami domyślnymi](media/batch-storage-account-create.png)
 
-Trwa kilka minut, aż platforma Azure wdrożyła kont. Zwróć uwagę na powiadomienie o ukończeniu w prawym górnym rogu portalu.
+Wdrożenie kont przez platformę Azure może potrwać kilka minut. Wyszukaj powiadomienie o ukończeniu w prawym górnym rogu portalu.
   
-  ![Zrzut ekranu Azure kont wdrożone powiadomień](media/batch-accounts-deploy-notification.png)
+  ![Zrzut ekranu przedstawiający powiadomienie dotyczące wdrożonych kont platformy Azure](media/batch-accounts-deploy-notification.png)
 
-Twoje konta powinno być teraz widoczny na pulpicie nawigacyjnym.
+Twoje konta powinny być teraz widoczne na pulpicie nawigacyjnym.
   
-  ![Portal przedstawiający konto usługi Batch i Storage pulpitu nawigacyjnego w zrzucie ekranu systemu Azure](media/azure-portal-dashboard.png)
+  ![Zrzut ekranu przedstawiający pulpit nawigacyjny Azure Portal, w którym jest wyświetlana partia i konto magazynu](media/azure-portal-dashboard.png)
 
-## <a name="set-up-acoustics-bake-ui-with-azure-credentials"></a>Konfigurowanie Akustyka Tworzenie interfejsu użytkownika przy użyciu poświadczeń platformy Azure
-Kliknij link konta usługi Batch na pulpicie nawigacyjnym, a następnie kliknij pozycję **klucze** łącze na stronie konta usługi Batch, aby Twoje poświadczenia dostępu.
+## <a name="set-up-acoustics-bake-ui-with-azure-credentials"></a>Konfiguracja interfejsu użytkownika tworzenie akustycznego przy użyciu poświadczeń platformy Azure
+Kliknij link konto wsadowe na pulpicie nawigacyjnym, a następnie kliknij link **klucze** na stronie konto w usłudze Batch, aby uzyskać dostęp do poświadczeń.
   
-  ![Zrzut ekranu z platformy Azure konto usługi Batch z linkiem do strony klucze wyróżnioną](media/batch-access-keys.png)
+  ![Zrzut ekranu konta Azure Batch z wyróżnioną stroną link do kluczy](media/batch-access-keys.png)
 
-  ![Strona klucze konta zrzut ekranu usługi Azure Batch przy użyciu kluczy dostępu](media/batch-keys-info.png)
+  ![Zrzut ekranu przedstawiający stronę kluczy konta Azure Batch z kluczami dostępu](media/batch-keys-info.png)
 
-Kliknij pozycję **konta magazynu** łącze na stronie, aby dostęp do poświadczeń konta magazynu platformy Azure.
+Kliknij link **konto magazynu** na stronie, aby uzyskać dostęp do poświadczeń konta usługi Azure Storage.
   
-  ![Strona klucze konta zrzut ekranu usługi Azure Storage za pomocą kluczy dostępu](media/storage-keys-info.png)
+  ![Zrzut ekranu strony kluczy konta usługi Azure Storage z kluczami dostępu](media/storage-keys-info.png)
 
-Wprowadź te poświadczenia w [Unity tworzenie wtyczki](unity-baking.md) lub [Unreal tworzenie wtyczki](unreal-baking.md).
+Wprowadź te poświadczenia w dodatku [Unity tworzenie](unity-baking.md) lub [wtyczki Tworzenie Unreal](unreal-baking.md).
 
-## <a name="node-types-and-region-support"></a>Typy węzłów i pomoc techniczna w regionie
-Akustyka projektu wymaga serii H i Fsv2 obliczenia zoptymalizowane węzły maszyny Wirtualnej platformy Azure, które mogą nie być obsługiwane we wszystkich regionach platformy Azure. Sprawdź, czy [tej tabeli](https://azure.microsoft.com/global-infrastructure/services) aby upewnić się, w przypadku pobrania odpowiedniej lokalizacji dla konta usługi Batch.
-![Zrzut ekranu przedstawiający maszyn wirtualnych platformy Azure według regionów](media/azure-regions.png) 
+## <a name="node-types-and-region-support"></a>Obsługa typów węzłów i regionów
+W przypadku maszyn wirtualnych z systemem Azure, które mogą nie być obsługiwane we wszystkich regionach świadczenia usługi Azure, muszą być zgodne z seriami Fsv2. Sprawdź [tę tabelę](https://azure.microsoft.com/global-infrastructure/services) , aby upewnić się, że wybierasz odpowiednią lokalizację dla konta usługi Batch.
+![Zrzut ekranu przedstawiający Virtual Machines platformy Azure według regionu](media/azure-regions.png) 
 
 ## <a name="upgrading-your-quota"></a>Uaktualnianie limitu przydziału
-Konta usługi Azure Batch są aprowizowane konta tworzenia limit 20 rdzeni obliczeniowych. Warto zwiększyć ten limit, w celu skrócenia czasu na tworzenie, ponieważ można zrównoleglić Akustyka obciążenia na wielu węzłach, maksymalna liczba punktów sondy sceny. Możesz zażądać zwiększenia limitu przydziału, klikając **przydziału** łącze na stronie portalu usługi Azure Batch, a następnie klikając **zwiększyć limit przydziału żądań**:
+Konta Azure Batch są inicjowane przy tworzeniu konta z limitem 20 rdzeni obliczeniowych. Możemy chcieć zwiększyć ten limit w krótszym czasie tworzenie, ponieważ można zrównoleglanie obciążenie akustyczne w wielu węzłach, aż do liczby punktów sondy w scenie. Aby poprosić o zwiększenie limitu przydziału, kliknij link **Limit** przydziału na stronie portalu Azure Batch, a następnie kliknij pozycję **Zwiększ przydział limitu przydziału**:
 
-![Zrzut ekranu przydział Azure strony](media/azure-quotas.png)
+![Zrzut ekranu strony przydziału platformy Azure](media/azure-quotas.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Integrowanie wtyczki Akustyka projektu do Twojej [Unity](unity-integration.md) lub [Unreal](unreal-integration.md) projektu
+* Integruj wtyczkę akustyczną projektu z projektem [Unity](unity-integration.md) lub [Unreal](unreal-integration.md)
 

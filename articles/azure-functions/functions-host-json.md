@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: 4688cf6fb82eb8f726205d54d0c852fd3daf8dfb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371699"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564787"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x  
 
@@ -147,7 +147,10 @@ Lista funkcji uruchomionych przez hosta zadań. Pusta tablica oznacza uruchamian
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Wskazuje czas trwania dla wszystkich funkcji. W planie zużycia bezserwerowego prawidłowy zakres to od 1 sekundy do 10 minut, a wartość domyślna to 5 minut. W planie App Service nie ma żadnego całkowitego limitu i domyślnie zależy od wersji środowiska uruchomieniowego. W wersji 2. x domyślna wartość planu App Service to 30 minut. W wersji 1. x ma *wartość null*, co oznacza brak limitu czasu. Nie można ustawić jako nieskończonej. Jeśli nie ustawimy tej wartości jawnie, będzie ona przyjmować wartość domyślną 30 minut.
+Wskazuje czas trwania dla wszystkich funkcji. Jest on zgodny z formatem ciągu TimeSpan. W planie zużycia bezserwerowego prawidłowy zakres to od 1 sekundy do 10 minut, a wartość domyślna to 5 minut.  
+W przypadku planu dedykowanego (App Service) nie ma żadnego całkowitego limitu i domyślnie zależy od wersji środowiska uruchomieniowego: 
++ Wersja 1. x: wartość domyślna to *null*, co oznacza brak limitu czasu.   
++ Wersja 2. x: wartość domyślna to 30 minut. Wartość `-1` wskazuje nieograniczone wykonanie.
 
 ```json
 {
@@ -294,7 +297,7 @@ Zależność zarządzana to funkcja w wersji zapoznawczej, która jest obecnie o
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Informacje o aktualizowaniu pliku host. JSON](functions-reference.md#fileupdate)

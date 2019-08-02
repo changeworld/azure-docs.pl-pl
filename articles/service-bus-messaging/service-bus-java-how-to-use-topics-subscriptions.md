@@ -1,6 +1,6 @@
 ---
-title: Jak używać tematów usługi Azure Service Bus przy użyciu języka Java | Dokumentacja firmy Microsoft
-description: Użyj subskrypcji i tematów usługi Service Bus na platformie Azure.
+title: Korzystanie z Azure Service Bus tematów i subskrypcji w języku Java
+description: Używaj tematów Service Bus i subskrypcji na platformie Azure.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -14,41 +14,42 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 578fd0caa8986c48b3fd50a7890bb66b14bee2f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-java-july2019
+ms.openlocfilehash: 822fadb661fd9fcdde8ff75fa4f9e60dfa44c97b
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991724"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663418"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus przy użyciu języka Java
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Jak używać tematów Service Bus i subskrypcji w języku Java
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-W tym przewodniku Szybki Start piszesz kod Java, aby wysyłać komunikaty do tematu usługi Service Bus, a następnie odbiera komunikaty z subskrypcji tego tematu. 
+W tym przewodniku szybki start napiszesz kod w języku Java służący do wysyłania komunikatów do Service Bus tematu, a następnie odbierania komunikatów z subskrypcji do tego tematu. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów programu Visual Studio i MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Wykonaj czynności opisane w [Szybki Start: Użyj witryny Azure portal do utworzenia tematu usługi Service Bus i subskrypcji do tematu](service-bus-quickstart-topics-subscriptions-portal.md) do wykonywania następujących zadań:
-    1. Tworzenie usługi Service Bus **przestrzeni nazw**.
-    2. Pobierz **parametry połączenia**.
-    3. Tworzenie **tematu** w przestrzeni nazw.
-    4. Tworzenie **trzema subskrypcjami** do tematu w przestrzeni nazw.
+1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Wykonaj kroki opisane w [przewodniku szybki start: Użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) , aby wykonać następujące zadania:
+    1. Utwórz **przestrzeń nazw**Service Bus.
+    2. Pobierz **Parametry połączenia**.
+    3. Utwórz **temat** w przestrzeni nazw.
+    4. Utwórz **trzy subskrypcje** w temacie w przestrzeni nazw.
 3. [Zestaw Azure SDK dla języka Java][Azure SDK for Java].
 
-## <a name="configure-your-application-to-use-service-bus"></a>Konfigurowanie aplikacji do użycia usługi Service Bus
-Upewnij się, że zainstalowano [zestawu Azure SDK dla języka Java] [ Azure SDK for Java] przed kompilacją w tym przykładzie. Jeśli używasz środowiska Eclipse, możesz zainstalować [Azure Toolkit for Eclipse] [ Azure Toolkit for Eclipse] zawierającego zestaw Azure SDK dla języka Java. Następnie można dodać **biblioteki systemu Microsoft Azure dla języka Java** do projektu:
+## <a name="configure-your-application-to-use-service-bus"></a>Skonfiguruj aplikację do używania Service Bus
+Przed skompilowaniem tego przykładu upewnij się, że zainstalowano [zestaw Azure SDK dla języka Java][Azure SDK for Java] . W przypadku korzystania z programu zaćmienie można zainstalować [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] zawierający zestaw Azure SDK dla języka Java. Następnie można dodać **biblioteki Microsoft Azure dla języka Java** do projektu:
 
-![Biblioteki w ścieżce kompilacji programu Eclipse](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
+![Biblioteki w ścieżce kompilacji w wersji Zaćmieniej](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
 
-Należy również dodać następujące plikach JAR do ścieżka kompilacji języka Java:
+Należy również dodać następujący JARs do ścieżki kompilacji Java:
 
-- gson-2.6.2.jar
+- gson-2.6.2. jar
 - commons-cli-1.4.jar
 - proton-j-0.21.0.jar
 
-Dodaj klasę za pomocą **Main** metody, a następnie dodaj następujący kod `import` instrukcji w górnej części pliku Java:
+Dodaj klasę przy użyciu metody **Main** , a następnie Dodaj następujące `import` instrukcje w górnej części pliku Java:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -65,11 +66,11 @@ import org.apache.commons.cli.DefaultParser;
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Wysyłanie komunikatów do tematu
-Aktualizacja **głównego** metodę w celu utworzenia **TopicClient** obiektu, a następnie wywołaj metodę pomocnika, asynchronicznie wysyła przykładowe komunikaty do tematu usługi Service Bus.
+Zaktualizuj metodę **Main** , aby utworzyć obiekt **TopicClient** i wywołać metodę pomocnika, która asynchronicznie wysyła przykładowe komunikaty do tematu Service Bus.
 
 > [!NOTE] 
-> - Zastąp `<NameOfServiceBusNamespace>` nazwą przestrzeni nazw usługi Service Bus. 
-> - Zastąp `<AccessKey>` przy użyciu klucza dostępu dla swojego obszaru nazw.
+> - Zamień `<NameOfServiceBusNamespace>` na nazwę przestrzeni nazw Service Bus. 
+> - Zamień `<AccessKey>` na klucz dostępu do przestrzeni nazw.
 
 ```java
 public class MyServiceBusTopicClient {
@@ -122,10 +123,10 @@ public class MyServiceBusTopicClient {
 }
 ```
 
-Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w temacie, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez temat. Rozmiar tematu jest definiowany w czasie tworzenia, z górnym limitem 5 GB.
+Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów przechowywanych w temacie, ale istnieje limit całkowitego rozmiaru komunikatów przechowywanych w temacie. Rozmiar tematu jest definiowany w czasie tworzenia, z górnym limitem 5 GB.
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>Jak odbierać komunikaty z subskrypcji
-Aktualizacja **głównego** metodę w celu utworzenia trzech **SubscriptionClient** obiektów dla trzech subskrypcji, a następnie wywołaj metodę pomocnika, asynchronicznie odbiera komunikaty z tematu usługi Service Bus. W przykładowym kodzie założono, że utworzono temat o nazwie **BasicTopic** i trzy subskrypcji o nazwie **Subscription1**, **Subscription2**, i  **Subscription3**. Jeśli użyto innej nazwy dla nich, należy zaktualizować kod przed testowaniem go. 
+Zaktualizuj metodę **Main** , aby utworzyć trzy obiekty **SubscriptionClient** dla trzech subskrypcji, i wywoływać metodę pomocnika, która asynchronicznie odbiera komunikaty z tematu Service Bus. Przykładowy kod założono, że został utworzony temat o nazwie **BasicTopic** i trzy subskrypcje o nazwach **Subscription1**, **Subscription2**i **Subscription3**. Jeśli użyto dla nich różnych nazw, zaktualizuj kod przed jego przetestowaniem. 
 
 ```java
 public class MyServiceBusTopicClient {
@@ -189,7 +190,7 @@ public class MyServiceBusTopicClient {
 ```
 
 ## <a name="run-the-program"></a>Uruchamianie programu
-Uruchom program, aby wyświetlić dane wyjściowe podobne do następujących danych wyjściowych:
+Uruchom program, aby zobaczyć dane wyjściowe podobne do następujących:
 
 ```java
 Message sending: Id = 0
@@ -455,10 +456,10 @@ Message sending: Id = 9
 ```
 
 > [!NOTE]
-> Możesz zarządzać zasobami usługi Service Bus przy użyciu [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus pozwala użytkownikom na łączenie do przestrzeni nazw usługi Service Bus i administrować jednostek obsługi komunikatów w łatwy sposób. To narzędzie zawiera zaawansowane funkcje, takie jak funkcja Importuj/Eksportuj lub możliwość testowania tematu, kolejek, subskrypcji, usługi przekazywania, usługi notification hubs i centrów zdarzeń. 
+> Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji, zobacz [kolejek usługi Service Bus, tematy i subskrypcje][Service Bus queues, topics, and subscriptions].
+Aby uzyskać więcej informacji, zobacz [Service Bus kolejkami, tematami i subskrypcjami][Service Bus queues, topics, and subscriptions].
 
 [Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse

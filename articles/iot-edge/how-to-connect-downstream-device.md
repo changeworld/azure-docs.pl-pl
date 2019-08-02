@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4e13075eabcdb482616f1e500fd739ca58a39003
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: f739bdbd295662006a964f890147ad67c373d7b5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501224"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698633"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Podłącz urządzenie z podrzędnych do bramy usługi Azure IoT Edge
 
@@ -39,7 +39,7 @@ W tym artykule terminy *bramy* i *brama usługi IoT Edge* odnoszą się do urzą
 Podrzędne urządzenie może pozostawać w dowolnej aplikacji lub platformy, który został utworzony za pomocą tożsamości [usługi Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) usługi w chmurze. W wielu przypadkach te aplikacje korzystają [zestaw SDK urządzeń Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Urządzenie podrzędne może nawet być aplikacją działającą na samym urządzeniu bramy IoT Edge. Jednak inne urządzenie IoT Edge nie może być niższe niż Brama IoT Edge. 
 
 >[!NOTE]
->Urządzenia IoT, które mają tożsamości zarejestrowane w IoT Hub mogą używać [modułu bliźniaczych reprezentacji](/iot-hub/iot-hub-devguide-module-twins.md) do izolowania różnych procesów, sprzętu lub funkcji na jednym urządzeniu. Bramy IoT Edge obsługują połączenia modułu podrzędnego przy użyciu uwierzytelniania za pomocą klucza symetrycznego, ale nie uwierzytelniania certyfikatu X. 509. 
+>Urządzenia IoT, które mają tożsamości zarejestrowane w IoT Hub mogą używać [modułu bliźniaczych reprezentacji](../iot-hub/iot-hub-devguide-module-twins.md) do izolowania różnych procesów, sprzętu lub funkcji na jednym urządzeniu. Bramy IoT Edge obsługują połączenia modułu podrzędnego przy użyciu uwierzytelniania za pomocą klucza symetrycznego, ale nie uwierzytelniania certyfikatu X. 509. 
 
 Aby połączyć podrzędny urządzenia bramy usługi IoT Edge, niezbędne są dwa elementy:
 

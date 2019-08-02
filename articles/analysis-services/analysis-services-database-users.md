@@ -1,96 +1,96 @@
 ---
-title: Zarządzanie rolami bazy danych i użytkowników w usługach Azure Analysis Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać ról bazy danych i użytkowników na serwerze usług Analysis Services na platformie Azure.
+title: Zarządzanie rolami bazy danych i użytkownikami w Azure Analysis Services | Microsoft Docs
+description: Dowiedz się, jak zarządzać rolami bazy danych i użytkownikami na serwerze Analysis Services na platformie Azure.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c38b11ceda010c122e17a7fad3df1684e0a1cf42
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023635"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696286"
 ---
-# <a name="manage-database-roles-and-users"></a>Zarządzanie rolami bazy danych i użytkowników
+# <a name="manage-database-roles-and-users"></a>Zarządzanie rolami i użytkownikami bazy danych
 
-Na poziomie bazy danych modelu wszyscy użytkownicy muszą należeć do roli. Role definiują użytkownicy z uprawnieniami określonego dla bazy danych modelu. Dowolny użytkownik lub grupa zabezpieczeń została dodana do roli musi mieć konto w dzierżawie usługi Azure AD w tej samej subskrypcji co serwer. 
+Na poziomie bazy danych modelu wszyscy użytkownicy muszą należeć do roli. Role definiują użytkowników z określonymi uprawnieniami dla bazy danych modelu. Wszyscy użytkownicy lub grupy zabezpieczeń dodani do roli muszą mieć konto w dzierżawie usługi Azure AD w tej samej subskrypcji co serwer programu. 
 
-Jak zdefiniować role różni się w zależności od używanego narzędzia, ale efekt jest taki sam.
+Sposób definiowania ról różni się w zależności od używanego narzędzia, ale efekt jest taki sam.
 
 Uprawnienia roli obejmują:
-*  **Administrator** — użytkownicy mają pełne uprawnienia do bazy danych. Role bazy danych z uprawnieniami administratora różnią się od administratorów serwera.
-*  **Proces** — użytkownicy mogą nawiązać połączenie i wykonywać operacje przetwarzania w bazie danych i analizowanie danych z bazy danych modelu.
-*  **Odczyt** — użytkownicy mogą używać aplikacji klienckiej na łączenie się i analizowanie danych z bazy danych modelu.
+*  **Administratorzy** — użytkownicy mają pełne uprawnienia do bazy danych programu. Role bazy danych z uprawnieniami administratora różnią się od administratorów serwerów.
+*  **Proces** — użytkownicy mogą łączyć się z bazą danych i wykonywać na niej operacje przetwarzania oraz analizować dane modelu bazy danych.
+*  Użytkownicy **odczytu** mogą używać aplikacji klienckiej do nawiązywania połączeń z modelem i analizowania danych z bazy danych.
 
-Podczas tworzenia projektu modelu tabelarycznego, tworzenie ról i dodawanie użytkowników lub grup do tych ról za pomocą menedżera ról w programie SSDT. Zainstalowane na serwerze, za pomocą programu SSMS, [poleceń cmdlet programu PowerShell usługi analizy](/sql/analysis-services/powershell/analysis-services-powershell-reference), lub [języka skryptów modelu tabelarycznego](https://msdn.microsoft.com/library/mt614797.aspx) TMSL () do dodawania lub usuwania ról i elementów członkowskich użytkownika.
+Podczas tworzenia projektu modelu tabelarycznego tworzysz role i Dodaj użytkowników lub grupy do tych ról przy użyciu menedżera ról w SQL Server narzędzia danych (SSDT). Po wdrożeniu na serwerze programu należy używać SQL Server Management Studio (SSMS), [Analysis Services poleceń cmdlet programu PowerShell](/sql/analysis-services/powershell/analysis-services-powershell-reference)lub [języka skryptów tabelarycznych](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) w celu dodawania lub usuwania ról i członków użytkowników.
 
-> [!NOTE]
-> Grupy zabezpieczeń musi mieć `MailEnabled` właściwością `True`.
+**Grupy zabezpieczeń** muszą mieć [włączoną obsługę poczty](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) z `MailEnabled` właściwością ustawioną `True`na. Określanie grupy przy użyciu `obj:groupid@tenantid`adresu e-mail.
 
-## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Aby dodać lub zarządzania rolami i użytkowników w programie SSDT  
+
+## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Aby dodać role i użytkowników w programie SSDT lub zarządzać nimi  
   
-1.  W programie SSDT > **Eksploratorze modeli tabelarycznych**, kliknij prawym przyciskiem myszy **role**.  
+1.  W **Eksploratorze modelu tabelarycznego**SSDT > kliknij prawym przyciskiem myszy pozycję **role**.  
   
 2.  W **Menedżerze ról** kliknij przycisk **Nowa**.  
   
 3.  Wpisz nazwę roli.  
   
-     Domyślnie nazwa domyślna rola przyrostowo ponumerowane dla każdej nowej roli. Zalecane jest, że możesz wpisać nazwę, która jednoznacznie identyfikuje typ elementu członkowskiego, na przykład menedżerów finansowego lub specjaliści ds. zarządzania zasobami ludzkimi.  
+     Domyślnie nazwa roli domyślnej jest przyrostowo numerowany dla każdej nowej roli. Zaleca się wpisanie nazwy, która jasno identyfikuje typ elementu członkowskiego, na przykład kierowników finansów lub specjalistów ds. kadr.  
   
-4.  Wybierz jedną z następujących uprawnień:  
+4.  Wybierz jedno z następujących uprawnień:  
   
     |Uprawnienie|Opis|  
     |----------------|-----------------|  
-    |**Brak**|Elementy członkowskie nie można zmodyfikować schematu modelu i nie można wykonać zapytania na danych.|  
-    |**Odczyt**|Elementy członkowskie wykonywać zapytania na danych (oparte na filtrów wierszy), ale nie można zmodyfikować schematu modelu.|  
-    |**Odczyt i przetwarzanie**|Członkowie mogą wysyłać zapytania na danych (na poziomie wiersza filtrami) i wykonywania operacji przetwarzania i przetwórz wszystko, ale nie można zmodyfikować schematu modelu.|  
-    |**Proces**|Członkowie mogą uruchamiać operacje procesu i przetwórz wszystko. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania na danych.|  
-    |**Administrator**|Elementy członkowskie można zmodyfikować schemat modelu i wyszukiwać wszystkie dane.|   
+    |**Brak**|Członkowie nie mogą modyfikować schematu modelu i nie mogą wykonywać zapytań dotyczących danych.|  
+    |**Odczyt**|Członkowie mogą wykonywać zapytania dotyczące danych (na podstawie filtrów wierszy), ale nie mogą modyfikować schematu modelu.|  
+    |**Odczyt i proces**|Członkowie mogą wykonywać zapytania dotyczące danych (na podstawie filtrów na poziomie wiersza) i uruchamiać proces i przetwarzać wszystkie operacje, ale nie mogą modyfikować schematu modelu.|  
+    |**Podstawowych**|Członkowie mogą uruchamiać proces i przetwarzać wszystkie operacje. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania dotyczącego danych.|  
+    |**Administrator**|Członkowie mogą modyfikować schemat modelu i wykonywać zapytania dotyczące wszystkich danych.|   
   
-5.  Jeśli rola tworzenia ma odczytu lub uprawnienia Odczyt i przetwarzanie, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij przycisk **filtry wierszy** , a następnie wybierz tabelę, a następnie kliknij **Filtr języka DAX** pola, a następnie wpisz formułę języka DAX.
+5.  Jeśli tworzona rola ma uprawnienia Odczyt lub odczyt i przetwarzanie, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij kartę **filtry wierszy** , a następnie wybierz tabelę, a następnie kliknij pole **Filtr języka DAX** , a następnie wpisz formułę języka DAX.
   
-6.  Kliknij przycisk **członków** > **Dodaj zewnętrzny**.  
+6.  Kliknij pozycję **Członkowie** > **Dodaj zewnętrzny**.  
   
-8.  W **Dodawanie zewnętrznego elementu członkowskiego**, wprowadź użytkowników lub grup w Twojej dzierżawie usługi Azure AD przy użyciu adresu e-mail. Po kliknij przycisk OK i zamknij menedżera ról, ról i członkowie roli są wyświetlane w Eksploratorze modeli tabelarycznych. 
+8.  W obszarze **Dodawanie zewnętrznego elementu członkowskiego**wprowadź użytkowników lub grupy w dzierżawie usługi Azure AD według adresu e-mail. Po kliknięciu przycisku OK i zamknięciu menedżera ról, role i członkowie roli są wyświetlane w Eksploratorze modelu tabelarycznego. 
  
-     ![Ról i użytkowników w Eksploratorze modeli tabelarycznych](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
+     ![Role i użytkownicy w Eksploratorze modeli tabelarycznych](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
 
-9. Wdrożenia na serwerze usług Azure Analysis Services.
+9. Wdróż na serwerze Azure Analysis Services.
 
 
-## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Aby dodać lub zarządzania rolami i użytkowników w programie SSMS
+## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Aby dodać role i użytkowników w programie SSMS lub zarządzać nimi
 
-Do dodawania ról i użytkowników, aby wdrożony model bazy danych, możesz muszą być połączone z serwerem jako administrator serwera lub już w roli bazy danych z uprawnieniami administratora.
+Aby dodać role i użytkowników do wdrożonej bazy danych modelu, należy połączyć się z serwerem jako administrator serwera lub już w roli bazy danych z uprawnieniami administratora.
 
-1. W obiekcie Exporer, kliknij prawym przyciskiem myszy **role** > **nową rolę**.
+1. W obiekcie Exporer kliknij prawym przyciskiem myszy pozycję **role** > **Nowa rola**.
 
-2. W **Utwórz rolę**, wprowadź nazwę roli i opis.
+2. W obszarze **Utwórz rolę**wprowadź nazwę i opis roli.
 
 3. Wybierz uprawnienie.
 
    |Uprawnienie|Opis|  
    |----------------|-----------------|  
-   |**Pełna kontrola (Administrator)**|Członkowie mogą modyfikować schematu modelu przetwarzania danych i wykonywać zapytania na wszystkich danych.| 
-   |**Proces bazy danych**|Członkowie mogą uruchamiać operacje procesu i przetwórz wszystko. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania na danych.|  
-   |**Odczyt**|Elementy członkowskie wykonywać zapytania na danych (oparte na filtrów wierszy), ale nie można zmodyfikować schematu modelu.|  
+   |**Pełna kontrola (Administrator)**|Członkowie mogą modyfikować schemat modelu, proces i wykonywać zapytania dotyczące wszystkich danych.| 
+   |**Przetwarzaj bazę danych**|Członkowie mogą uruchamiać proces i przetwarzać wszystkie operacje. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania dotyczącego danych.|  
+   |**Odczyt**|Członkowie mogą wykonywać zapytania dotyczące danych (na podstawie filtrów wierszy), ale nie mogą modyfikować schematu modelu.|  
   
-4. Kliknij przycisk **członkostwa**, a następnie wprowadź użytkownika lub grupy w Twojej dzierżawie usługi Azure AD przy użyciu adresu e-mail.
+4. Kliknij pozycję **członkostwo**, a następnie wprowadź użytkownika lub grupę w dzierżawie usługi Azure AD według adresu e-mail.
 
-     ![Dodawanie użytkownika](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
+     ![Dodaj użytkownika](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
-5. Jeśli rola, którą tworzysz ma uprawnienie do odczytu, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij przycisk **filtry wierszy**, wybierz tabelę, a następnie wpisz formułę języka DAX w **Filtr języka DAX** pola. 
+5. Jeśli tworzona rola ma uprawnienie Odczyt, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij pozycję **filtry wierszy**, zaznacz tabelę, a następnie wpisz formułę języka DAX w polu **Filtr języka DAX** . 
 
-## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Dodawanie ról i użytkowników za pomocą skryptów TMSL
+## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Aby dodać role i użytkowników przy użyciu skryptu TMSL
 
-W oknie XMLA w programie SSMS lub przy użyciu programu PowerShell, można uruchomić skryptów TMSL. Użyj [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) polecenia i [role](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) obiektu.
+Skrypt TMSL można uruchomić w oknie XMLA w programie SSMS lub przy użyciu programu PowerShell. Użyj polecenia [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) i obiektu [Roles](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) .
 
 **Przykładowy skrypt TMSL**
 
-W tym przykładzie użytkownik zewnętrzny B2B i grupy są dodawane do roli analityk z uprawnieniami do odczytu dla bazy danych SalesBI. Zarówno użytkownika zewnętrznego, jak i grupa musi być w tej samej dzierżawie usługi Azure AD.
+W tym przykładzie użytkownik zewnętrzny i Grupa są dodawani do roli analityk z uprawnieniami odczyt dla bazy danych SalesBI. Zarówno użytkownik zewnętrzny, jak i Grupa muszą znajdować się w tej samej dzierżawie usługi Azure AD.
 
 ```
 {
@@ -118,39 +118,39 @@ W tym przykładzie użytkownik zewnętrzny B2B i grupy są dodawane do roli anal
 }
 ```
 
-## <a name="to-add-roles-and-users-by-using-powershell"></a>Do dodawania ról i użytkowników przy użyciu programu PowerShell
+## <a name="to-add-roles-and-users-by-using-powershell"></a>Aby dodać role i użytkowników przy użyciu programu PowerShell
 
-[SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) modułu zawiera polecenia cmdlet do zarządzania bazy danych specyficznych dla zadań i ogólnego przeznaczenia polecenia cmdlet Invoke-ASCmd, które akceptuje zapytanie skryptów języka TMSL (Tabular Model) lub skrypt. Następujące polecenia cmdlet są używane do zarządzania rolami bazy danych i użytkowników.
+Moduł [SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) udostępnia specyficzne dla zadania polecenia cmdlet zarządzania bazami danych i polecenie cmdlet Invoke-ASCmd z parametrem ogólnego przeznaczenia, które akceptuje zapytanie lub skrypt języka skryptów tabelarycznych (TMSL). Następujące polecenia cmdlet służą do zarządzania rolami bazy danych i użytkownikami.
   
-|Polecenie cmdlet|Opis|
+|Polecenia cmdlet|Opis|
 |------------|-----------------| 
 |[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Dodaj członka do roli bazy danych.| 
 |[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Usuń członka z roli bazy danych.|   
-|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Wykonywanie skryptów TMSL.|
+|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Wykonaj skrypt TMSL.|
 
 ## <a name="row-filters"></a>Filtry wierszy  
 
-Filtry wierszy definiują, które wiersze w tabeli mogą być przeszukiwane przez członków określonej roli. Filtry wierszy są zdefiniowane dla każdej tabeli w modelu przy użyciu formuły języka DAX.  
+Filtry wierszy definiują, które wiersze w tabeli mogą być badane przez członków określonej roli. Filtry wierszy są definiowane dla każdej tabeli w modelu przy użyciu formuł języka DAX.  
   
-Można zdefiniować filtry wierszy tylko do odczytu i odczytu ról i uprawnień procesu. Domyślnie jeśli Filtr wierszy nie jest zdefiniowany dla konkretnej tabeli elementy członkowskie można badać wszystkie wiersze w tabeli, chyba że filtrowanie krzyżowe stosuje z innej tabeli.
+Filtry wierszy można definiować tylko dla ról z uprawnieniami odczyt i odczyt i przetwarzanie. Domyślnie jeśli filtr wiersza nie jest zdefiniowany dla określonej tabeli, członkowie mogą wykonywać zapytania dotyczące wszystkich wierszy w tabeli, chyba że filtrowanie krzyżowe jest stosowane z innej tabeli.
   
- Filtry wierszy wymagają formuły języka DAX musi zwrócić wartość PRAWDA/FAŁSZ do definiowania wierszy, które mogą być przeszukiwane przez członków tej określonej roli. Nie można zbadać wierszy nie jest uwzględniona w formule języka DAX. Na przykład tabeli Klienci z następującym wierszem filtry wyrażenie *= klienci [Kraj] = "USA"* , członkowie roli Sprzedaż może zobaczyć tylko klientom w Stanach Zjednoczonych.  
+ Filtry wierszy wymagają Formuły języka DAX, która musi oszacować wartość PRAWDA/FAŁSZ, aby zdefiniować wiersze, do których mogą być wysyłane zapytania przez członków tej konkretnej roli. Nie można zbadać wierszy nieuwzględnionych w formule języka DAX. Na przykład tabela Customers z następującym wyrażeniem filtry wierszy, *= klienci [Country] = "USA"* , członkowie roli Sales mogą widzieć tylko klientów w USA.  
   
-Filtry wierszy mają zastosowanie do określonych wierszy i powiązane wiersze. Jeśli tabela ma wiele relacji, filtry są stosowane zabezpieczenia dla relacji, który jest aktywny. Filtry wierszy są zakończone z innych filtrach wiersza zdefiniowane dla powiązanych tabel, na przykład:  
+Filtry wierszy dotyczą określonych wierszy i powiązanych wierszy. Gdy tabela ma wiele relacji, filtry stosują zabezpieczenia dla aktywnej relacji. Filtry wierszy są przecinane z innymi plikami wierszy zdefiniowanymi dla powiązanych tabel, na przykład:  
   
-|Tabela|Wyrażenie DAX|  
+|Tabela|Wyrażenie języka DAX|  
 |-----------|--------------------|  
 |Region|=Region[Country]="USA"|  
-|ProductCategory|= ProductCategory [Name] = "Rowerów"|  
-|Transakcje|= Transakcje [rok] = 2016|  
+|ProductCategory|= ProductCategory [nazwa] = "rowery"|  
+|Transakcje|= Transakcje [Year] = 2016|  
   
- Efektem sieciowym jest, że członkowie mogą wysyłać zapytania wiersze danych, w którym klient ma miejsce w USA, Kategoria produktu jest rowerów i rok jest 2016. Użytkownicy nie mogą badać transakcji poza USA, transakcje, które nie rowerów lub transakcje nie są w 2016, chyba że należą one do innej roli, która udziela te uprawnienia.
+ Efektem netto jest to, że członkowie mogą wykonywać zapytania dotyczące wierszy danych, w których klient znajduje się w Stanach Zjednoczonych, Kategoria produktu to rowery, a rok to 2016. Użytkownicy nie mogą wykonywać zapytań dotyczących transakcji poza stanem USA, transakcji, które nie są rowery ani transakcji, które nie znajdują się w 2016, chyba że są członkami innej roli, która przyznaje te uprawnienia.
   
- Można użyć filtru, *=FALSE()* , aby odmówić dostępu do wszystkich wierszy dla całej tabeli.
+ Możesz użyć filtru, *= false ()* , aby odmówić dostępu do wszystkich wierszy dla całej tabeli.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-  [Zarządzanie administratorami serwerów](analysis-services-server-admins.md)   
-  [Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell](analysis-services-powershell.md)  
-  [Tabular Model Scripting Skorowidz języka (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
+  [Zarządzanie administratorami serwera](analysis-services-server-admins.md)   
+  [Zarządzanie Azure Analysis Services przy użyciu programu PowerShell](analysis-services-powershell.md)  
+  [Dokumentacja języka skryptów tabelarycznych (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 0f68627e2db3c08049f0273045906057526bd6aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 615a2dedd8a4698bab5eaa237184266e5bef1a1b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61094922"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720786"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>Kopiowanie danych z Google AdWords przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -44,13 +44,13 @@ Następujące właściwości są obsługiwane dla Google AdWords połączoną us
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **GoogleAdWords** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **GoogleAdWords** | Tak |
 | clientCustomerID | Identyfikator klienta klienta konta AdWords, który chcesz pobrać raportować dane.  | Yes |
-| developerToken | Skojarzone z kontem menedżera, których używasz do udzielania dostępu do interfejsu API AdWords token dla deweloperów.  Istnieje możliwość Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i pozwól usłudze ADF kopiowania ściągnięcia działania z tego miejsca, podczas wykonywania kopii danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
-| authenticationType | Mechanizm uwierzytelniania OAuth 2.0 używany do uwierzytelniania. ServiceAuthentication można używać tylko na Self-Hosted IR <br/>Dozwolone wartości to: **ServiceAuthentication**, **UserAuthentication** | Yes |
-| refreshToken | Token odświeżania, uzyskany od firmy Google do autoryzowania dostępu do AdWords dla UserAuthentication. Istnieje możliwość Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i pozwól usłudze ADF kopiowania ściągnięcia działania z tego miejsca, podczas wykonywania kopii danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Nie |
-| clientId | Identyfikator klienta aplikacji google używane w celu uzyskania tokenu odświeżania. Istnieje możliwość Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i pozwól usłudze ADF kopiowania ściągnięcia działania z tego miejsca, podczas wykonywania kopii danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Nie |
-| clientSecret | Klucz tajny klienta aplikacji google używane w celu uzyskania tokenu odświeżania. Istnieje możliwość Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i pozwól usłudze ADF kopiowania ściągnięcia działania z tego miejsca, podczas wykonywania kopii danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Nie |
+| developerToken | Skojarzone z kontem menedżera, których używasz do udzielania dostępu do interfejsu API AdWords token dla deweloperów.  Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Yes |
+| authenticationType | Mechanizm uwierzytelniania OAuth 2.0 używany do uwierzytelniania. ServiceAuthentication można używać tylko na Self-Hosted IR <br/>Dozwolone wartości to: **Serviceauthentication**, **UserAuthentication** | Tak |
+| refreshToken | Token odświeżania, uzyskany od firmy Google do autoryzowania dostępu do AdWords dla UserAuthentication. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Nie |
+| clientId | Identyfikator klienta aplikacji google używane w celu uzyskania tokenu odświeżania. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Nie |
+| clientSecret | Klucz tajny klienta aplikacji google używane w celu uzyskania tokenu odświeżania. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Nie |
 | email | Identyfikator wiadomości e-mail konta usługi, który służy do ServiceAuthentication i można używać tylko na Self-Hosted IR  | Nie |
 | keyFilePath | Pełna ścieżka do pliku klucza p12, który jest używany do uwierzytelniania adres e-mail konta usługi i można używać tylko na Self-Hosted IR  | Nie |
 | trustedCertPath | Pełna ścieżka pliku PEM, zawierająca zaufane certyfikaty urzędu certyfikacji w celu sprawdzenia serwer podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na Self-Hosted IR Wartością domyślną jest instalowany z wewnątrz pliku cacerts.pem  | Nie |
@@ -100,7 +100,7 @@ Aby skopiować dane z Google AdWords, należy ustawić właściwość typu zesta
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **GoogleAdWordsObject** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **GoogleAdWordsObject** | Yes |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -110,11 +110,12 @@ Aby skopiować dane z Google AdWords, należy ustawić właściwość typu zesta
     "name": "GoogleAdWordsDataset",
     "properties": {
         "type": "GoogleAdWordsObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<GoogleAdWords linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 
@@ -130,7 +131,7 @@ Aby skopiować dane z Google AdWords, należy ustawić typ źródła w działani
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **GoogleAdWordsSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **GoogleAdWordsSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

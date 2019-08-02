@@ -1,77 +1,77 @@
 ---
-title: Sposób renderowania niestandardowych danych na mapie rastrowe w usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Renderowanie danych niestandardowych na mapie rastrowe w usługi Azure Maps.
+title: Jak renderować dane niestandardowe na mapie rastrowej w Azure Maps | Microsoft Docs
+description: Renderowanie niestandardowych danych na mapie rastrowej w Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 04/03/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a9fed8464bd19c4b8a32e37c8c97698f0a2d9503
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6343931287ed59363db2715641ca63a814a9c32
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734299"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638795"
 ---
-# <a name="render-custom-data-on-a-raster-map"></a>Renderowanie danych niestandardowych na mapy rastrowej
+# <a name="render-custom-data-on-a-raster-map"></a>Renderowanie niestandardowych danych na mapie rastrowej
 
-W tym artykule wyjaśniono, jak używać [usługi obraz statyczny](https://docs.microsoft.com/rest/api/maps/render/getmapimage) przy użyciu obrazu kompozycji funkcje umożliwiające nakładki na podstawie mapy rastrowej. Kompozycja obraz obejmuje możliwość skorzystania z kafelka rastrowych, wraz z dodatkowymi danymi, takich jak pinezki niestandardowe, etykiety i nakładki geometrii.
+W tym artykule wyjaśniono, jak używać [statycznej usługi obrazu](https://docs.microsoft.com/rest/api/maps/render/getmapimage) z funkcją kompozycji obrazu, aby zezwalać na nakładki na górze mapy rastrowej. Kompozycja obrazów obejmuje możliwość uzyskania kafelka rastrowego, z dodatkowymi danymi, takimi jak niestandardowe pinezki, etykiety i nakładki geometryczne.
 
-Aby renderować pinezki niestandardowe, etykiety i nakładki geometry, można użyć aplikacji Postman. Możesz użyć usługi Azure Maps [interfejsów API usługi danych](https://docs.microsoft.com/rest/api/maps/data) do przechowywania i renderowania nakładki.
+Aby renderować niestandardowe pinezki, etykiety i nakładki geometryczne, można użyć aplikacji programu Poster. Za pomocą [interfejsów API usługi danych](https://docs.microsoft.com/rest/api/maps/data) Azure Maps można przechowywać i renderować nakładki.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="create-an-azure-maps-account"></a>Tworzenie konta usługi Azure Maps
 
-Aby wykonać procedury opisane w tym artykule, należy najpierw [utworzyć konto usługi Azure Maps](how-to-manage-account-keys.md) w warstwę cenową S1.
+Aby wykonać procedury opisane w tym artykule, musisz najpierw [utworzyć konto Azure Maps](how-to-manage-account-keys.md) w warstwie cenowej S1.
 
-## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Renderowanie pinezki z etykietami i obraz niestandardowy
+## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Renderowanie pinezki z etykietami i obrazem niestandardowym
 
 > [!Note]
-> Procedura w tej sekcji wymaga konta usługi Azure Maps w warstwie cenowej S0 lub S1.
+> Procedura opisana w tej sekcji wymaga konta Azure Maps w warstwie cenowej S0 lub S1.
 
-Usługi Azure Maps konta S0 warstwy obsługuje tylko jedno wystąpienie `pins` parametru. Umożliwia renderowanie pinezki do pięciu, określony w żądaniu adresu URL, za pomocą obrazu niestandardowego.
+Warstwa S0 konta Azure Maps obsługuje tylko jedno wystąpienie `pins` parametru. Umożliwia renderowanie do pięciu pinezki, określonych w żądaniu adresu URL, przy użyciu obrazu niestandardowego.
 
-Aby renderować pinezki z etykietami i niestandardowego obrazu, wykonaj następujące kroki:
+Aby renderować pinezki z etykietami i obrazem niestandardowym, wykonaj następujące kroki:
 
-1. Utwórz kolekcję, w którym będzie przechowywany żądania. W aplikacji Postman wybierz **New**. W **Utwórz nowy** wybierz **kolekcji**. Nazwij kolekcję, a następnie wybierz pozycję **Utwórz** przycisku. 
+1. Utwórz kolekcję, w której mają być przechowywane żądania. W aplikacji Poster wybierz pozycję **Nowy**. W oknie **Tworzenie nowego** okna wybierz pozycję **Kolekcja**. Nadaj kolekcji nazwę i wybierz przycisk **Utwórz** . 
 
-2. Aby utworzyć żądanie, wybierz **New** ponownie. W **Utwórz nowy** wybierz **żądania**. Wprowadź **nazwy żądania** pinezki, wybierz kolekcję utworzoną w poprzednim kroku jako lokalizacja, w której chcesz zapisać żądanie, a następnie wybierz **Zapisz**.
+2. Aby utworzyć żądanie, wybierz pozycję **nowe** ponownie. W oknie **Tworzenie nowego** okna wybierz pozycję **Żądaj**. Wprowadź **nazwę żądania** dla pinezki, wybierz kolekcję utworzoną w poprzednim kroku jako lokalizację, w której ma zostać zapisane żądanie, a następnie wybierz pozycję **Zapisz**.
     
-    ![Utwórz żądanie w narzędziu Postman](./media/how-to-render-custom-data/postman-new.png)
+    ![Utwórz żądanie w programie Poster](./media/how-to-render-custom-data/postman-new.png)
 
-3. Wybierz metodę GET HTTP, na karcie konstruktora i wprowadź następujący adres URL, aby utworzyć żądanie GET.
+3. Wybierz metodę GET HTTP na karcie Konstruktor i wprowadź następujący adres URL, aby utworzyć żądanie GET.
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttp%3A%2F%2Fazuremapscodesamples.azurewebsites.net%2FCommon%2Fimages%2Fpushpins%2Fylw-pushpin.png
     ```
-    Oto obraz wynikowy:
+    Oto obraz przedstawiający wyniki:
 
-    ![Niestandardowe pinezki z etykietą](./media/how-to-render-custom-data/render-pins.png)
+    ![Niestandardowa Pinezka z etykietą](./media/how-to-render-custom-data/render-pins.png)
 
 
-## <a name="get-data-from-azure-maps-data-storage"></a>Pobieranie danych z magazynu danych usługi Azure Maps
+## <a name="get-data-from-azure-maps-data-storage"></a>Pobieranie danych z Azure Maps magazynu danych
 
 > [!Note]
-> Procedura w tej sekcji wymaga konta usługi Azure Maps w warstwę cenową S1.
+> Procedura opisana w tej sekcji wymaga konta Azure Maps w warstwie cenowej S1.
 
-Możesz również uzyskać informacje o lokalizacji ścieżki i numer pin przy użyciu [interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). Wykonaj poniższe kroki, aby przekazać dane ścieżki i numerów PIN.
+Możesz również uzyskać informacje o ścieżce i lokalizacji numeru PIN przy użyciu [interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). Wykonaj poniższe kroki, aby przekazać dane ścieżki i pinezki.
 
-1. W aplikacji Postman Otwórz na nowej karcie w kolekcji, który został utworzony w poprzedniej sekcji. Wybierz metodę POST protokołu HTTP, na karcie konstruktora i wprowadź następujący adres URL żądania POST:
+1. W aplikacji Poster Otwórz nową kartę w kolekcji utworzonej w poprzedniej sekcji. Wybierz metodę POST HTTP na karcie Konstruktor i wprowadź następujący adres URL, aby wykonać żądanie POST:
 
     ```HTTP
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-2. Na **Params** wprowadź następujące pary klucz/wartość, które są używane do adresu URL żądania POST. Zastąp `subscription-key` wartość z kluczem subskrypcji usługi Azure Maps.
+2. Na karcie **Parametry** wprowadź następujące pary klucz/wartość, które są używane w adresie URL żądania post. Zastąp `subscription-key` wartość kluczem subskrypcji Azure Maps.
     
-    ![Parametry klucz wartość w narzędziu Postman](./media/how-to-render-custom-data/postman-key-vals.png)
+    ![Parametry klucza/wartości w programie Poster](./media/how-to-render-custom-data/postman-key-vals.png)
 
-3. Na **treści** kartę, zaznacz pierwotne format wejściowy i wybierz JSON jako format wejściowy z listy rozwijanej. Podaj dane JSON jako dane do przekazania:
+3. Na karcie **treść** wybierz format nieprzetworzonych danych wejściowych, a następnie wybierz pozycję JSON jako format danych wejściowych z listy rozwijanej. Podaj ten kod JSON jako dane do przekazania:
     
     ```JSON
     {
@@ -133,66 +133,80 @@ Możesz również uzyskać informacje o lokalizacji ścieżki i numer pin przy u
     }
     ```
 
-4. Wybierz **wysyłania** i przejrzyj nagłówka odpowiedzi. Nagłówek location zawiera identyfikator URI używany do uzyskanie dostępu i pobranie danych do użycia w przyszłości. Zawiera także unikatowy identyfikator `udId` przekazanych danych.  
+4. Wybierz pozycję **Wyślij** i przejrzyj nagłówek odpowiedzi. Po pomyślnym żądaniu nagłówek lokalizacji będzie zawierać identyfikator URI stanu, aby sprawdzić bieżący stan żądania przekazywania. Identyfikator URI stanu będzie mieć następujący format.  
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-5. Użyj `udId` wartość odebrana od API przekazywanie danych do renderowania funkcje na mapie. Aby to zrobić, otwórz nową kartę w kolekcji, który został utworzony w poprzedniej sekcji. Wybierz metodę GET HTTP, na karcie konstruktora, a następnie wprowadź ten adres URL żądania GET:
+5. Skopiuj swój identyfikator URI stanu i Dołącz do niego parametr Key Subscription z wartością klucza subskrypcji konta Azure Maps, który został użyty do przekazania danych. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej:
+
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
+
+6. Aby uzyskać udId, Otwórz nową kartę w aplikacji Poster i wybierz pozycję Pobierz metodę HTTP na karcie Konstruktor i wprowadź żądanie GET w identyfikatorze URI stanu. Jeśli przekazywanie danych zakończyło się pomyślnie, otrzymasz udId w treści odpowiedzi. Skopiuj udId.
+
+   ```JSON
+   {
+      "udid" : "{udId}"
+   }
+   ```
+
+7. `udId` Użyj wartości otrzymanej z interfejsu API przekazywania danych do renderowania funkcji na mapie. Aby to zrobić, Otwórz nową kartę w kolekcji utworzonej w poprzedniej sekcji. Wybierz metodę GET HTTP na karcie Konstruktor i wprowadź ten adres URL w celu uzyskania żądania GET:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
     ```
 
-    Poniżej przedstawiono na ilustracji odpowiedzi:
+    Oto obraz odpowiedzi:
 
-    ![Pobieranie danych z magazynu danych usługi Azure Maps](./media/how-to-render-custom-data/uploaded-path.png)
+    ![Pobieranie danych z Azure Maps magazynu danych](./media/how-to-render-custom-data/uploaded-path.png)
 
-## <a name="render-a-polygon-with-color-and-opacity"></a>Renderowanie Wielokąt przy użyciu koloru i krycia
+## <a name="render-a-polygon-with-color-and-opacity"></a>Renderuj wielokąt z kolorami i nieprzezroczystością
 
 > [!Note]
-> Procedura w tej sekcji wymaga konta usługi Azure Maps w warstwę cenową S1.
+> Procedura opisana w tej sekcji wymaga konta Azure Maps w warstwie cenowej S1.
 
 
-Można zmodyfikować wygląd wielokąta przy użyciu stylu Modyfikatory z [parametr ścieżki](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Możesz zmodyfikować wygląd wielokąta, używając modyfikatorów stylu z [parametrem Path](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
 
-1. W aplikacji Postman Otwórz na nowej karcie w kolekcji, która została utworzona wcześniej. Wybierz metodę GET HTTP, na karcie konstruktora i wprowadź następujący adres URL, aby skonfigurować żądanie GET w celu renderowania Wielokąt przy użyciu koloru i krycia:
+1. W aplikacji Poster Otwórz nową kartę w utworzonej wcześniej kolekcji. Wybierz metodę GET HTTP na karcie Konstruktor i wprowadź następujący adres URL w celu skonfigurowania żądania GET w celu renderowania wielokąta z kolorami i nieprzezroczystością:
     
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&sku=S1&zoom=14&height=500&Width=500&center=-74.040701, 40.698666&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.50||-74.03995513916016 40.70090237454063|-74.04082417488098 40.70028420372218|-74.04113531112671 40.70049568385827|-74.04298067092896 40.69899904076542|-74.04271245002747 40.69879568992435|-74.04367804527283 40.6980961582905|-74.04364585876465 40.698055487620714|-74.04368877410889 40.698022951066996|-74.04168248176573 40.696444909137|-74.03901100158691 40.69837271818651|-74.03824925422668 40.69837271818651|-74.03809905052185 40.69903971085914|-74.03771281242369 40.699340668780984|-74.03940796852112 40.70058515602143|-74.03948307037354 40.70052821920425|-74.03995513916016 40.70090237454063
-    &subscription-key={subscription--key}
+    &subscription-key={subscription-key}
     ```
 
-    Poniżej przedstawiono na ilustracji odpowiedzi:
+    Oto obraz odpowiedzi:
 
-    ![Renderowanie nieprzezroczyste wielokąta](./media/how-to-render-custom-data/opaque-polygon.png)
+    ![Renderuj nieprzezroczysty Wielokąt](./media/how-to-render-custom-data/opaque-polygon.png)
 
 
-## <a name="render-a-circle-and-pushpins-with-custom-labels"></a>Renderowanie okrąg i pinezki z etykietami niestandardowymi
+## <a name="render-a-circle-and-pushpins-with-custom-labels"></a>Renderuj okrąg i pinezki z etykietami niestandardowymi
 
 > [!Note]
-> Procedura w tej sekcji wymaga konta usługi Azure Maps w warstwę cenową S1.
+> Procedura opisana w tej sekcji wymaga konta Azure Maps w warstwie cenowej S1.
 
 
-Aby włączyć pinezki i ich etykiet większy lub mniejszy przy użyciu `sc` modyfikator styl skali. Ten modyfikator przyjmuje wartość, która jest większa niż zero. Wartość 1 jest standardowa skali. Wartości większej niż 1 spowoduje, że numery PIN będzie większa, a wartości mniejszej niż 1 spowoduje, że ich mniejsze. Aby uzyskać więcej informacji na temat Modyfikatory styl zobacz [parametry ścieżki usługi obraz statyczny](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Można sprawić, aby pinezke i ich etykiety były większe lub mniejsze przy `sc` użyciu modyfikatora stylu skali. Ten modyfikator przyjmuje wartość większą od zera. Wartość 1 jest skalą standardową. Wartości większe niż 1 spowodują, że numery PIN będą większe, a wartości mniejsze od 1 staną się mniejsze. Aby uzyskać więcej informacji na temat modyfikatorów stylu, zobacz [Parametry ścieżki usługi obrazu statycznego](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
 
 
-Wykonaj następujące kroki do renderowania okrąg i pinezki z etykiety niestandardowe:
+Wykonaj następujące kroki, aby renderować okrąg i pinezki z etykietami niestandardowymi:
 
-1. W aplikacji Postman Otwórz na nowej karcie w kolekcji, która została utworzona wcześniej. Wybierz metodę GET HTTP, na karcie konstruktora, a następnie wprowadź ten adres URL żądania GET:
+1. W aplikacji Poster Otwórz nową kartę w utworzonej wcześniej kolekcji. Wybierz metodę GET HTTP na karcie Konstruktor i wprowadź ten adres URL w celu uzyskania żądania GET:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co002D62||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
     ```
 
-    Poniżej przedstawiono na ilustracji odpowiedzi:
+    Oto obraz odpowiedzi:
 
-    ![Renderowanie koło z niestandardowych pinezki](./media/how-to-render-custom-data/circle-custom-pins.png)
+    ![Renderuj okrąg z niestandardowymi pinezkami](./media/how-to-render-custom-data/circle-custom-pins.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 
-* Zapoznaj się z [Azure Pobierz mapy obrazu interfejsu API usługi mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage) dokumentacji.
-* Aby dowiedzieć się więcej na temat usługi Azure Maps Data Service, zobacz [dokumentacja usługi](https://docs.microsoft.com/rest/api/maps/data).
+* Zapoznaj się z dokumentacją [interfejsu API pobierania obrazu Azure Maps](https://docs.microsoft.com/rest/api/maps/render/getmapimage) .
+* Aby dowiedzieć się więcej na temat usługi danych Azure Maps, zapoznaj się z [dokumentacją usługi](https://docs.microsoft.com/rest/api/maps/data).
 

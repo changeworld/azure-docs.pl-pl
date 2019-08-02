@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: a85ced787529db7e6d607665d81632ab1c450dfe
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68466972"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Uruchamianie zadań przygotowania i zwolnienia zadań w węzłach obliczeniowych wsadowych
@@ -31,7 +31,7 @@ Przed uruchomieniem zadań zadania, zadanie przygotowania zadania jest uruchamia
 
 Zadania przygotowania i zwolnienia zadań oferują znane funkcje zadań wsadowych, takie jak pobieranie plików ([pliki zasobów][net_job_prep_resourcefiles]), wykonywanie z podwyższonym poziomem uprawnień, niestandardowe zmienne środowiskowe, maksymalny czas trwania wykonywania, liczba ponownych prób i czas przechowywania pliku.
 
-W poniższych sekcjach dowiesz się, jak używać klas [JobPreparationTask][net_job_prep] and [JobReleaseTask][net_job_release] znajdujących się w bibliotece [Batch .NET][api_net] .
+W poniższych sekcjach dowiesz się, jak używać klas [JobPreparationTask][net_job_prep] i [funkcji jobreleasetask][net_job_release] znajdujących się w bibliotece [Batch .NET][api_net] .
 
 > [!TIP]
 > Zadania przygotowania i zwolnienia zadań są szczególnie przydatne w środowiskach "Pula współdzielona", w których Pula węzłów obliczeniowych utrzymuje się między uruchomieniami zadań i jest używana przez wiele zadań.
@@ -64,7 +64,7 @@ Przed wykonaniem zadań zadania wsadowego program Batch wykonuje zadanie przygot
 Zadanie przygotowania zadania jest wykonywane tylko w węzłach, które zaplanowano do uruchomienia zadania. Zapobiega to niepotrzebnemu wykonaniu zadania przygotowania w przypadku, gdy węzeł nie ma przypisanego zadania. Taka sytuacja może wystąpić, gdy liczba zadań dla zadania jest mniejsza niż liczba węzłów w puli. Ma również zastosowanie, gdy włączone jest [współbieżne wykonywanie zadań](batch-parallel-node-tasks.md) , co pozostawia pewne węzły w stanie bezczynności, jeśli liczba zadań jest mniejsza niż łączna możliwa liczba współbieżnych zadań. Nie uruchamiając zadania przygotowania zadania w węzłach bezczynnych, można poświęcać mniej pieniędzy na opłaty za transfer danych.
 
 > [!NOTE]
-> [JobPreparationTask][net_job_prep_cloudjob] differs from [CloudPool.StartTask][pool_starttask] w tym JobPreparationTask jest wykonywane na początku każdego zadania, a StartTask jest wykonywane tylko wtedy, gdy węzeł obliczeniowy najpierw dołączy pulę lub ponownie się uruchamia.
+> [JobPreparationTask][net_job_prep_cloudjob] różni się od [CloudPool. StartTask][pool_starttask] w tym JobPreparationTask jest wykonywane na początku każdego zadania, natomiast StartTask jest wykonywane tylko wtedy, gdy węzeł obliczeniowy najpierw przyłączy pulę lub uruchamia ponownie.
 > 
 > 
 
@@ -79,7 +79,7 @@ Zadania wydania zadań mogą działać przez maksymalnie 15 minut, zanim zostan�
 > 
 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Zadania przygotowania i zwolnienia zadań za pomocą programu Batch .NET
-Aby użyć zadania przygotowania zadania, przypisz Właściwość [JobPreparationTask][net_job_prep] object to your job's [CloudJob.JobPreparationTask][net_job_prep_cloudjob] . Podobnie zainicjuj [funkcji jobreleasetask][net_job_release] i przypisz go do właściwości [CloudJob. funkcji jobreleasetask][net_job_prep_cloudjob] zadania, aby ustawić zadanie zwolnienia zadania.
+Aby użyć zadania przygotowania zadania, przypisz obiekt [JobPreparationTask][net_job_prep] do właściwości [CloudJob. JobPreparationTask][net_job_prep_cloudjob] zadania. Podobnie zainicjuj [funkcji jobreleasetask][net_job_release] i przypisz go do właściwości [CloudJob. funkcji jobreleasetask][net_job_prep_cloudjob] zadania, aby ustawić zadanie zwolnienia zadania.
 
 W tym fragmencie `myBatchClient` kodu jest wystąpienie elementu [BatchClient][net_batch_client]i `myPool` jest istniejącą pulą w ramach konta wsadowego.
 
@@ -107,7 +107,7 @@ myJob.JobReleaseTask =
 await myJob.CommitAsync();
 ```
 
-Jak wspomniano wcześniej, zadanie wydania jest wykonywane, gdy zadanie zostanie zakończone lub usunięte. Przerwij zadanie przy użyciu elementu [JobOperations. TerminateJobAsync][net_job_terminate]. Delete a job with [JobOperations.DeleteJobAsync][net_job_delete]. Zadanie jest zazwyczaj przerywane lub usuwane po zakończeniu jego zadań lub po osiągnięciu limitu czasu zdefiniowanego przez użytkownika.
+Jak wspomniano wcześniej, zadanie wydania jest wykonywane, gdy zadanie zostanie zakończone lub usunięte. Przerwij zadanie przy użyciu elementu [JobOperations. TerminateJobAsync][net_job_terminate]. Usuń zadanie z [JobOperations. DeleteJobAsync][net_job_delete]. Zadanie jest zazwyczaj przerywane lub usuwane po zakończeniu jego zadań lub po osiągnięciu limitu czasu zdefiniowanego przez użytkownika.
 
 ```csharp
 // Terminate the job to mark it as Completed; this will initiate the

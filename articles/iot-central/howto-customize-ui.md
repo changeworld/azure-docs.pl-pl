@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie usługi Azure IoT Central interfejsu użytkownika | Dokumentacja firmy Microsoft
-description: Jak dostosować łącza motywu i pomocy dla aplikacji usługi Azure IoT central
+title: Dostosowywanie interfejsu użytkownika usługi Azure IoT Central | Microsoft Docs
+description: Jak dostosować motyw i linki pomocy dla aplikacji Azure IoT Central
 author: dominicbetts
 ms.author: dobett
 ms.date: 04/25/2019
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d385f1e8c883453b4153ca4c9119d3be0a608bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cef0014fb47aeddcad785fb3f938ab928964a942
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495558"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725703"
 ---
-# <a name="customize-the-azure-iot-central-ui"></a>Dostosowywanie usługi Azure IoT Central interfejsu użytkownika 
+# <a name="customize-the-azure-iot-central-ui"></a>Dostosowywanie interfejsu użytkownika usługi Azure IoT Central 
 
-*Ten artykuł ma zastosowanie do administratorów.*
+W tym artykule opisano, jak administrator może dostosować interfejs użytkownika aplikacji, stosując niestandardowe motywy i modyfikując linki pomocy, aby wskazywały własne niestandardowe zasoby pomocy. 
 
-IoT Central umożliwia dostosowywanie interfejsu użytkownika aplikacji, stosując motywy niestandardowe i modyfikując łącza pomocy, aby wskazywał zasobów Pomocy niestandardowej. Poniższy zrzut ekranu przedstawia stronę za pomocą standardowych motywu:
+Poniższy zrzut ekranu przedstawia stronę korzystającą ze standardowego motywu:
 
-![Standardowa motyw IoT Central](./media/howto-customize-ui/standard-ui.png)
+![Standardowy IoT Central motyw](./media/howto-customize-ui/standard-ui.png)
 
-Poniższy zrzut ekranu przedstawia stronę z niestandardowych elementów interfejsu użytkownika, wyróżniony za pomocą niestandardowych zrzut ekranu:
+Poniższy zrzut ekranu przedstawia stronę korzystającą z niestandardowego zrzutu ekranu z wyróżnionymi elementami interfejsu użytkownika:
 
-![Niestandardowy motyw centralnej IoT](./media/howto-customize-ui/themed-ui.png)
+![Niestandardowy motyw IoT Central](./media/howto-customize-ui/themed-ui.png)
 
 ## <a name="create-theme"></a>Utwórz motyw
 
-Aby utworzyć niestandardowy motyw, przejdź do **dostosować aplikację** strony w **administracji** sekcji:
+Aby utworzyć motyw niestandardowy, przejdź do strony **Dostosowywanie aplikacji** w sekcji **Administracja** :
 
 ![Motywy IoT Central](./media/howto-customize-ui/themes.png)
 
@@ -37,43 +37,43 @@ Na tej stronie można dostosować następujące aspekty aplikacji:
 
 ### <a name="application-logo"></a>Logo aplikacji
 
-Obraz PNG, nie może być większa niż 1 MB z przezroczystym tłem. To są wyświetlane po lewej stronie, na pasku tytułu aplikacji IoT Central.
+Obraz PNG, nie większy niż 1 MB, z przezroczystym tłem. To logo jest wyświetlane w lewym okienku na pasku tytułu aplikacji IoT Central.
 
-Jeśli obraz logo zawiera nazwę aplikacji, można ukryć tekst nazwy aplikacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie ustawieniami aplikacji](./howto-administer.md#manage-application-settings).
+Jeśli obraz logo zawiera nazwę aplikacji, można ukryć tekst nazwy aplikacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie aplikacją](./howto-administer.md#change-application-name-and-url).
 
 ### <a name="browser-icon-favicon"></a>Ikona przeglądarki (favicon)
 
-Obraz PNG, nie może być większa niż 32 x 32 piksele z przezroczystym tłem. Przeglądarki sieci web można użyć tego obrazu w pasku adresu, historii, zakładki i karcie przeglądarki.
+Obraz PNG, nie większy niż 32 x 32 pikseli, z przezroczystym tłem. Przeglądarka sieci Web może korzystać z tego obrazu na pasku adresu, na stronie historia, w zakładkach i na karcie przeglądarki.
 
 ### <a name="browser-colors"></a>Kolory przeglądarki
 
-Możesz zmienić kolor nagłówka strony i kolor accenting przyciski i inne najważniejsze funkcje. Użyj wartości kolor w postaci szesnastkowej sześć znaków w formacie `##ff6347`. Aby uzyskać więcej informacji na temat **wartość SZESNASTKOWA** kolor notacji, zobacz [kolory HTML](https://www.w3schools.com/html/html_colors.asp).
+Można zmienić kolor nagłówka strony i kolor używany do wyróżniania przycisków i innych podświetleń. Użyj sześciu znaków szesnastkowych wartości koloru w formacie `##ff6347`. Aby uzyskać więcej informacji na temat notacji koloru **wartości szesnastkowej** , zobacz [kolory HTML](https://www.w3schools.com/html/html_colors.asp).
 
 > [!NOTE]
-> Zawsze możesz przywrócić na powrót do domyślnych opcji **dostosować aplikację** strony.
+> Zawsze możesz wrócić do opcji domyślnych na stronie **Dostosowywanie aplikacji** .
 
-### <a name="changes-for-operators"></a>Zmiany operatorów
+### <a name="changes-for-operators"></a>Zmiany dla operatorów
 
-Jeśli administrator tworzy niestandardowy motyw, a następnie operatorów i innych użytkowników w aplikacji może już nie umożliwia wybranie motywu w **ustawienia**.
+Jeśli administrator utworzy motyw niestandardowy, operatorzy i inni użytkownicy aplikacji nie będą już mogli wybierać motywu w **ustawieniach**.
 
-## <a name="replace-help-links"></a>Zastąp łącza pomocy
+## <a name="replace-help-links"></a>Zastąp linki pomocy
 
-Do dostarczania informacji Pomocy niestandardowej usługi operatorów i innych użytkowników, można zmodyfikować łącza aplikacji **pomocy** menu.
+Aby zapewnić niestandardowe informacje pomocy dla operatorów i innych użytkowników, można zmodyfikować linki w menu **Pomoc** aplikacji.
 
-Aby zmodyfikować łącza pomocy, przejdź do **dostosować Pomoc** strony w **administracji** sekcji:
+Aby zmodyfikować linki pomocy, przejdź do strony **Dostosowywanie pomocy** w sekcji **Administracja** :
 
-![Dostosowywanie łącza pomocy IoT Central](./media/howto-customize-ui/help-links.png)
+![Dostosuj linki pomocy IoT Central](./media/howto-customize-ui/help-links.png)
 
-Można także dodać nowe wpisy do menu Pomoc i Usuń wpisy domyślne:
+Możesz również dodać nowe wpisy do menu Pomoc i usunąć domyślne wpisy:
 
-![Dostosowane pomocy IoT Central](./media/howto-customize-ui/custom-help.png)
+![Dostosowana IoT Central pomoc](./media/howto-customize-ui/custom-help.png)
 
 > [!NOTE]
-> Zawsze możesz przywrócić na powrót do domyślnej łącza pomocy **dostosować Pomoc** strony.
+> Zawsze możesz wrócić do domyślnych linków pomocy na stronie **Dostosowywanie pomocy** .
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz sposób dostosowywania interfejsu użytkownika w aplikacji IoT Central, poniżej przedstawiono niektóre Sugerowane następne kroki:
+Teraz, gdy już wiesz, jak dostosować interfejs użytkownika w aplikacji IoT Central, Oto kilka sugerowanych następnych kroków:
 
-- [Zarządzać aplikacją](./howto-administer.md)
-- [Konfigurowanie pulpit nawigacyjny aplikacji](./howto-configure-homepage.md)
+- [Administruj swoją aplikacją](./howto-administer.md)
+- [Konfigurowanie pulpitu nawigacyjnego aplikacji](./howto-configure-homepage.md)

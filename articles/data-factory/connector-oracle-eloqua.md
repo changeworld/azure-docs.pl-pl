@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: bb0e146ef32ba24c3911bae86806c84768c005ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b62cbe6be7f48aa05bf3756580df0777aeee8cae
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405957"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726078"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopiowanie danych z bazy danych Oracle Eloqua, za pomocą usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -44,7 +44,7 @@ Następujące właściwości są obsługiwane dla Oracle Eloqua połączone usł
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Eloqua** | Yes |
+| — typ | Właściwość Type musi mieć ustawioną wartość: **Eloqua** | Tak |
 | endpoint | Punkt końcowy serwera Eloqua. Eloqua obsługuje wiele centrów danych w celu określenia punktu końcowego, zaloguj się do https://login.eloqua.com przy użyciu swoich poświadczeń, a następnie skopiuj **bazowy adres URL** części od adresu URL za pomocą wzorca `xxx.xxx.eloqua.com`. | Yes |
 | username | Nazwa lokacji i nazwa użytkownika konta Eloqua w formie: `SiteName\Username` np. `Eloqua\Alice`.  | Yes |
 | password | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
@@ -79,7 +79,7 @@ Aby skopiować dane z bazy danych Oracle Eloqua, należy ustawić właściwość
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **EloquaObject** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **EloquaObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -89,11 +89,12 @@ Aby skopiować dane z bazy danych Oracle Eloqua, należy ustawić właściwość
     "name": "EloquaDataset",
     "properties": {
         "type": "EloquaObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -108,7 +109,7 @@ Aby skopiować dane z bazy danych Oracle Eloqua, należy ustawić typ źródłow
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **EloquaSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **EloquaSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Accounts"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

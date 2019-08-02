@@ -1,7 +1,7 @@
 ---
-title: Interpretowanie metody — interfejs Academic Knowledge API
+title: Interpretacja metody-Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Aby powrócić do interpretacji sformatowane ciągi zapytań użytkowników na podstawie danych Academic Graph i akademickich gramatyki w usługach Microsoft Cognitive Services, należy użyć metody interpretację.
+description: Użyj metody interpretowania, aby zwracać sformatowane interpretacje ciągów zapytań użytkowników na podstawie danych grafu akademickiego i nauki naukowej w Microsoft Cognitive Services.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,18 +10,19 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: d960aff109e0eca70cb87463770620093e563f63
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61338456"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706670"
 ---
-# <a name="interpret-method"></a>Interpretowanie — metoda
+# <a name="interpret-method"></a>Metoda interpretowania
 
-**Interpretacji** interfejsu API REST trwa użytkownik końcowy ciągu zapytania (czyli zapytanie wprowadzany przez użytkownika w aplikacji), i zwraca sformatowany interpretacji intencji użytkownika na podstawie danych Academic Graph i gramatyki akademickich.
+Interfejs API REST interpretera Pobiera ciąg zapytania użytkownika końcowego (tj. zapytanie wprowadzone przez użytkownika aplikacji) i zwraca sformatowaną interpretację zamiaru użytkownika na podstawie danych grafu akademickiego i naukowej gramatyki.
 
-Aby zapewnić środowisko interaktywne, tę metodę można wywołać wielokrotnie, po każdym znaku wprowadzonej przez użytkownika. W takim przypadku należy ustawić **pełną** parametr 1, aby włączyć automatyczne uzupełnianie sugestie. Jeśli aplikacja nie wymaga automatycznego uzupełniania, należy ustawić **pełną** parametru na wartość 0.
+Aby zapewnić interaktywne środowisko, można wywołać tę metodę wielokrotnie po każdym znaku wprowadzonym przez użytkownika. W takim przypadku należy ustawić **pełny** parametr na 1, aby włączyć sugestie Autouzupełniania. Jeśli aplikacja nie wymaga automatycznego uzupełniania, należy ustawić parametr **Complete** na wartość 0.
 
 **Punkt końcowy REST:**
 
@@ -29,14 +30,14 @@ Aby zapewnić środowisko interaktywne, tę metodę można wywołać wielokrotni
 
 ## <a name="request-parameters"></a>Parametry żądania
 
-Name (Nazwa)     | Wartość | Wymagana?  | Opis
+Name (Nazwa)     | Wartość | Wymagane?  | Opis
 ---------|---------|---------|---------
-**Zapytanie**    | Ciąg tekstowy | Tak | Zapytanie wprowadzonej przez użytkownika.  Pełne jest ustawiona na 1, zapytania będą interpretowane jako prefiks dla generowania sugestie automatyczne uzupełnianie zapytań.        
-**model**    | Ciąg tekstowy | Nie  | Nazwa modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.        
-**Wykonaj** | 0 lub 1 | Nie<br>domyślna: 0  | 1 oznacza, że wygenerowany automatycznego uzupełniania, sugestii na podstawie danych gramatyki i graph.         
-**count**    | Liczba | Nie<br>domyślny: 10 | Maksymalna liczba interpretacji do zwrócenia.         
-**offset**   | Liczba | Nie<br>domyślna: 0  | Indeks pierwszego interpretacji do zwrócenia. Na przykład *count = 2 & przesunięcie = 0* zwraca interpretacje 0 i 1. *liczba = 2 & przesunięcie = 2* zwraca interpretacje 2 i 3.       
-**limit czasu**  | Liczba | Nie<br>default:1000 | Przekroczono limit czasu w milisekundach. Zwracane są tylko interpretacji znaleziono przed upływem limitu czasu.
+**query**    | Ciąg tekstowy | Tak | Zapytanie wprowadzone przez użytkownika.  Jeśli ustawiono wartość 1, zapytanie będzie interpretowane jako prefiks do generowania sugestii autouzupełniania zapytań.        
+**model**    | Ciąg tekstowy | Nie  | Nazwa modelu, który ma być wysyłany do zapytania.  Obecnie wartość domyślna to *Najnowsza*.        
+**wykonanie** | 0 lub 1 | Nie<br>wartość domyślna: 0  | 1 oznacza, że sugestie Autouzupełniania są generowane na podstawie danych dotyczących gramatyki i grafów.         
+**count**    | Number | Nie<br>wartość domyślna: 10 | Maksymalna liczba interpretacji do zwrócenia.         
+**offset**   | Number | Nie<br>wartość domyślna: 0  | Indeks pierwszej interpretacji do zwrócenia. Na przykład *Liczba = 2 & przesunięcie = 0* zwraca interpretacje 0 i 1. *Liczba = 2 & przesunięcie = 2* zwraca interpretacje 2 i 3.       
+**limit czasu**  | Number | Nie<br>wartość domyślna: 1000 | Limit czasu (w milisekundach). Zwracane są tylko interpretacje znalezione przed upływem limitu czasu.
 
 <br>
   
@@ -44,16 +45,16 @@ Name (Nazwa)     | Wartość | Wymagana?  | Opis
 
 Name (Nazwa)     | Opis
 ---------|---------
-**Zapytanie** |*Zapytania* parametrów z żądania.
-**interpretacji** |Tablica 0 lub więcej różnych sposobów dopasowywania danych wejściowych użytkownika względem gramatyki.
-**interpretations[x].logprob**  |Prawdopodobieństwo względne logarytmu naturalnego interpretacji. Większe wartości są bardziej prawdopodobne.
-**interpretations[x].parse**  |Ciąg XML, który pokazuje, jak interpretować została każda część zapytania.
-**interpretations[x].rules**  |Tablica co najmniej 1 reguł zdefiniowanych w gramatyce, które były wywoływane podczas interpretacji. Dla interfejsu Academic Knowledge API zawsze będzie 1 regułę.
-**interpretations[x].rules[y].name**  |Nazwa reguły.
-**interpretacji [.output Rules [t] x]**  |Dane wyjściowe reguły.
-**interpretations[x].rules[y].output.type** |Typ danych dane wyjściowe reguły.  Dla interfejsu Academic Knowledge API zawsze będzie to "query".
-**interpretations[x].rules[y].output.value**  |Dane wyjściowe reguły. Interfejs Academic Knowledge API to ciąg wyrażenia zapytania, który może być przekazywany do metody Oceń i calchistogram.
-**aborted** | Wartość true, jeśli upłynął limit czasu żądania.
+**query** |Parametr *zapytania* z żądania.
+**interpretacje** |Tablica wartości 0 lub więcej różnych sposobów dopasowania danych wejściowych użytkownika do gramatyki.
+**interpretations[x].logprob**  |Względne prawdopodobieństwo interpretacji logarytmu naturalnego. Większe wartości są bardziej podobne.
+**interpretations[x].parse**  |Ciąg XML, który pokazuje, jak jest interpretowana każda część zapytania.
+**interpretacje [x]. reguły**  |Tablica z 1 lub większą liczbą reguł zdefiniowanych w gramatyce, które zostały wywołane podczas interpretacji. W przypadku Academic Knowledge API będzie zawsze istnieć 1 reguła.
+**interpretacje [x]. reguły [y]. nazwa**  |Nazwa reguły.
+**interpretacje [x]. reguły [y]. dane wyjściowe**  |Dane wyjściowe reguły.
+**interpretacje [x]. reguły [y]. Output. Type** |Typ danych wyjściowych reguły.  W przypadku Academic Knowledge API będzie to zawsze "zapytanie".
+**interpretacje [x]. reguły [y]. Output. Value**  |Dane wyjściowe reguły. W Academic Knowledge API jest to ciąg wyrażenia zapytania, który może być przesłany do metod szacowania i calchistogram.
+**aborted** | Ma wartość true, jeśli upłynął limit czasu żądania.
 
 <br>
 
@@ -61,7 +62,7 @@ Name (Nazwa)     | Opis
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime&complete=1&count=2
  ```
-<br>Odpowiedź poniżej zawiera dwa pierwsze (ze względu na parametr *count = 2*) najprawdopodobniej interpretacji, kończące danych wejściowych użytkownika częściowe *dokumentach trzyczęściową*: *dokumentach teevan trzyczęściową*  i *dokumentów przez zielony trzyczęściową*.  Uzupełnienia zapytań usługi generowane zamiast biorąc pod uwagę tylko dokładne dopasowania dla autora *trzyczęściową* ponieważ określony w żądaniu *pełną = 1*. Należy pamiętać, że wartość canonical *l "j" zielony* dopasowane za pośrednictwem synonim *zielony Joanna*, zgodnie z analizy.
+<br>Poniższa odpowiedź zawiera dwa pierwsze (z powodu liczby parametrów *= 2*) najprawdopodobniej interpretacje kończące się częściowym papierem danych wejściowych użytkownika *przez Jaime*: *papiery Jaime teevan* i *dokumenty przez Jaime zielony*.  Usługa wygenerowała zapytania uzupełniające, zamiast rozważać tylko dokładne dopasowania dla autora *Jaime* , ponieważ określone żądanie *zostało ukończone = 1*. Należy zauważyć, że wartość kanoniczna *j l zielono* dopasowana za pośrednictwem synonimu *Joanna zieleń*, jak wskazano w polu analiza.
 
 
 ```JSON
@@ -97,7 +98,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers 
   ]
 }
 ```  
-<br>Aby pobrać wyniki obiektu interpretacji, użyj *output.value* z **interpretacji** interfejsu API i przekazać go do **oceny** interfejsu API za pośrednictwem *expr*  parametru. W tym przykładzie zapytanie interpretacji pierwszy wygląda tak: 
+<br>Aby pobrać wyniki jednostki do interpretacji, użyj *wartości Output. Value* z **interpretera** API i przekaż go do interfejsu API **szacowania** za pośrednictwem parametru *Expr* . W tym przykładzie zapytanie dla pierwszej interpretacji jest następujące: 
 ```
 evaluate?expr=Composite(AA.AuN=='jaime teevan')
 ```

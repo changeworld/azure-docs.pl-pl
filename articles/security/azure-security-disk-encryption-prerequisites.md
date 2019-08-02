@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8e01815cee0d6e39f6f773e9838b2a8b60638ab1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 423fad943190232d9e5e674b98b62f4f0dffb8ae
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672300"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728747"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption
 
@@ -21,85 +21,85 @@ W tym artykule, wymagań wstępnych szyfrowania dysków Azure, opisano elementy,
 Przed włączeniem usługi Azure Disk Encryption na maszynach wirtualnych IaaS platformy Azure w przypadku obsługiwanych scenariuszy, które zostały omówione w [Omówienie szyfrowania dysków Azure](azure-security-disk-encryption-overview.md) artykuł, pamiętaj zostały spełnione wymagania wstępne w miejscu. 
 
 > [!WARNING]
-> - Jeśli wcześniej używano [usługi Azure Disk Encryption przy użyciu aplikacji Azure AD](azure-security-disk-encryption-prerequisites-aad.md) do zaszyfrowania tej maszyny Wirtualnej, konieczne będzie kontynuować ta opcja służy do szyfrowania maszyny Wirtualnej. Nie można użyć [usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) na tej zaszyfrowanej maszyny Wirtualnej, ponieważ nie jest to obsługiwany scenariusz znaczenie przełączania się aplikacja usługi AAD dla to zaszyfrowanych maszyn wirtualnych nie jest jeszcze obsługiwane.
+> - Jeśli w celu zaszyfrowania tej maszyny wirtualnej wcześniej była używana [Azure Disk Encryption z aplikacją usługi Azure AD](azure-security-disk-encryption-prerequisites-aad.md) , musisz użyć tej opcji, aby ZAszyfrować maszynę wirtualną. Nie można użyć [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) dla tej zaszyfrowanej maszyny wirtualnej, ponieważ nie jest to obsługiwany scenariusz, co oznacza, że przełączanie z aplikacji usługi AAD dla tej zaszyfrowanej maszyny wirtualnej nie jest jeszcze obsługiwane.
 > - Zastosowanie niektórych zaleceń zamieszczonych może zwiększyć danych, sieci lub użycia zasobów obliczeniowych, wynikiem dodatkowych kosztów licencji lub subskrypcji. Musi mieć prawidłową aktywną subskrypcją platformy Azure do tworzenia zasobów na platformie Azure w obsługiwanych regionach.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-vm-sizes"></a>Obsługiwane rozmiary maszyn wirtualnych
 
-Usługa Azure Disk Encryption jest dostępna na maszynach wirtualnych, które spełniają te wymagania minimalnej ilości pamięci:
+Azure Disk Encryption jest dostępna na maszynach wirtualnych spełniających minimalne wymagania dotyczące pamięci:
 
-| Maszyna wirtualna | Minimalna wymagana ilość pamięci |
+| Maszyna wirtualna | Minimalne wymagania dotyczące pamięci |
 |--|--|
 | Maszyny wirtualne z systemem Windows | 2 GB |
-| Maszyny wirtualne systemu Linux, gdy tylko szyfrowanie woluminów danych| 2 GB |
-| Maszyny wirtualne systemu Linux podczas szyfrowania danych i woluminów systemu operacyjnego, a w przypadku, gdy użycie systemu plików root (/) jest 4GB lub mniej | 8 GB |
-| Maszyny wirtualne systemu Linux podczas szyfrowania danych i woluminów systemu operacyjnego i których użycie systemu plików root (/) jest większa niż 4GB | Użycie systemu plików w katalogu głównego * 2. Na przykład 16 GB użycie systemu plików w katalogu głównego wymaga co najmniej 32GB pamięci RAM |
+| Maszyny wirtualne z systemem Linux, w których są szyfrowane tylko woluminy danych| 2 GB |
+| Maszyny wirtualne z systemem Linux podczas szyfrowania woluminów danych i systemu operacyjnego oraz miejsce użycia systemu plików głównego (/) jest 4 GB lub mniej | 8 GB |
+| Maszyny wirtualne z systemem Linux podczas szyfrowania woluminów danych i systemu operacyjnego oraz miejsce użycia systemu plików głównego (/) o wartości większej niż 4 GB | Użycie głównego systemu plików * 2. Na przykład użycie 16 GB z głównego systemu plików wymaga co najmniej 32 GB pamięci RAM |
 
-Po zakończeniu procesu szyfrowania dysku systemu operacyjnego maszyn wirtualnych systemu Linux maszyny Wirtualnej można skonfigurować do uruchamiania przy użyciu mniejszej ilości pamięci. 
+Po zakończeniu procesu szyfrowania dysku systemu operacyjnego na maszynach wirtualnych z systemem Linux można skonfigurować maszynę wirtualną do uruchamiania z mniejszą ilością pamięci. 
 
 > [!NOTE]
-> Szyfrowanie dysków systemu operacyjnego Linux nie jest dostępna dla [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml).
+> Szyfrowanie dysków systemu operacyjnego Linux nie jest dostępne dla [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml).
 
-Usługa Azure Disk Encryption jest również dostępna dla maszyn wirtualnych dzięki usłudze premium storage. 
+Azure Disk Encryption jest również dostępna dla maszyn wirtualnych z magazynem w warstwie Premium. 
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
 ### <a name="windows"></a>Windows
 
-- Klient Windows: Windows 8 lub nowszy.
-- Windows Server: Windows Server 2008 R2 i nowszych.  
+- Klient systemu Windows: System Windows 8 lub nowszy.
+- System Windows Server: System Windows Server 2008 R2 lub nowszy.  
  
 > [!NOTE]
-> Windows Server 2008 R2 wymaga programu .NET Framework 4.5, które zostaną zainstalowane dla szyfrowania; Zainstaluj go Windows Update z opcjonalną aktualizację programu Microsoft .NET Framework 4.5.2 systemów Windows Server 2008 R2 x64 64 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)).  
+> System Windows Server 2008 R2 wymaga zainstalowania .NET Framework 4,5 do szyfrowania; Zainstaluj go z Windows Update z opcjonalną aktualizacją Microsoft .NET Framework 4.5.2 dla systemów Windows Server 2008 R2 x64 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)).  
 >  
-> Windows Server 2012 R2 Core i Windows Server 2016 Core wymaga składnika bdehdcfg do zainstalowania na maszynie Wirtualnej do szyfrowania.
+> Systemy Windows Server 2012 R2 Core i Windows Server 2016 Core wymagają zainstalowania składnika BdeHdCfg na maszynie wirtualnej w celu szyfrowania.
 
 
 ### <a name="linux"></a>Linux 
 
-Usługa Azure Disk Encryption jest obsługiwana dla podzestawu [dystrybucje zatwierdzone na platformie Azure z systemem Linux](../virtual-machines/linux/endorsed-distros.md), który sam jest podzestawem wszystkich server możliwe są dystrybucje systemu Linux.
+Azure Disk Encryption jest obsługiwane w podzestawie [dystrybucji systemu Linux](../virtual-machines/linux/endorsed-distros.md)z zatwierdzona przez platformę Azure, które jest samym podzbiorem wszystkich możliwych dystrybucji serwerów z systemem Linux.
 
-![Diagram Venna Linux server obsługujących usługi Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
+![Diagram Venna dystrybucji serwerów z systemem Linux, który obsługuje Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
 
-Dystrybucje systemu Linux server, które nie zalecane dla platformy Azure nie obsługują usługi Azure Disk Encryption i tych, które są zalecane, tylko poniższe dystrybucje i wersje obsługują usługi Azure Disk Encryption:
+Dystrybucje serwera z systemem Linux, które nie są zatwierdzone przez platformę Azure, nie obsługują Azure Disk Encryption i, które są zatwierdzone, obsługują tylko następujące dystrybucje i wersje Azure Disk Encryption:
 
 | Dystrybucja systemu Linux | Wersja | Typ woluminu obsługiwany w przypadku szyfrowania|
 | --- | --- |--- |
-| Ubuntu | 18.04| Dysk systemu operacyjnego i danych |
+| Ubuntu | 18,04| Dysk systemu operacyjnego i danych |
 | Ubuntu | 16.04| Dysk systemu operacyjnego i danych |
-| Ubuntu | 14.04.5</br>[za pomocą platformy Azure dostosowanych jądra zaktualizowana w celu 4.15 lub nowszej](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Dysk systemu operacyjnego i danych |
-| RHEL | 7.6 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
-| RHEL | 7.5 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
-| RHEL | 7.4 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
-| RHEL | 7.3 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
-| RHEL | 7.2 | Dysk systemu operacyjnego i danych (zobacz uwaga poniżej) |
-| RHEL | 6.8 | Dysk z danymi (zobacz uwaga poniżej) |
-| RHEL | 6.7 | Dysk z danymi (zobacz uwaga poniżej) |
-| CentOS | 7.6 | Dysk systemu operacyjnego i danych |
+| Ubuntu | 14.04.5</br>[Dzięki dostrojeniu jądra platformy Azure do wersji 4,15 lub nowszej](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Dysk systemu operacyjnego i danych |
+| RHEL | 7,6 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 7.5 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 7.4 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 7.3 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 7.2 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 6.8 | Dysk danych (patrz Uwaga poniżej) |
+| RHEL | 6.7 | Dysk danych (patrz Uwaga poniżej) |
+| CentOS | 7,6 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.5 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.4 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.3 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.2n | Dysk systemu operacyjnego i danych |
 | CentOS | 6.8 | Dysk z danymi |
-| openSUSE | 42.3 | Dysk z danymi |
+| openSUSE | 42,3 | Dysk z danymi |
 | SLES | 12-SP4 | Dysk z danymi |
 | SLES | 12-SP3 | Dysk z danymi |
 
 > [!NOTE]
-> Nowa implementacja ADE jest obsługiwana dla systemu operacyjnego systemu RHEL i dyskiem danych o płatności RHEL7 obrazów. ADE nie jest obecnie obsługiwane dla obrazów systemu RHEL Bring-Your-właścicielem-subskrypcji (BYOS). Zobacz [usługi Azure Disk Encryption dla systemu Linux](azure-security-disk-encryption-linux.md) Aby uzyskać więcej informacji.
+> Nowa implementacja elementu ADE jest obsługiwana w przypadku systemu operacyjnego RHEL i dysku danych dla obrazów z opcją płatność zgodnie z rzeczywistym użyciem. ADE nie jest obecnie obsługiwane w przypadku obrazów RHEL z własnymi subskrypcjami (BYOS). Aby uzyskać więcej informacji, zobacz [Azure Disk Encryption dla systemu Linux](azure-security-disk-encryption-linux.md) .
 
 - Usługa Azure Disk Encryption wymaga, że maszyny wirtualne i usługi key vault, na których znajdują się w tym samym regionie platformy Azure i subskrypcji. Konfigurowanie zasobów w oddzielnych regionach powoduje awarię w włączenie funkcji usługi Azure Disk Encryption.
 
-#### <a name="additional-prerequisites-for-linux-iaas-vms"></a>Dodatkowe wymagania wstępne dotyczące maszyn wirtualnych IaaS z systemem Linux 
+#### <a name="additional-prerequisites-for-linux-iaas-vms"></a>Dodatkowe wymagania wstępne dotyczące maszyn wirtualnych z systemem Linux IaaS 
 
-- Usługa Azure Disk Encryption wymaga dm-crypt i modułów vfat obecne w systemie. Usunięcie lub wyłączenie vfat z domyślnego obrazu uniemożliwi systemu w zakresie odczytywania klucza woluminu i uzyskiwanie klucza chcesz odblokować dysków na kolejnym rozruchu. Kroki zaostrzanie poziomu zabezpieczeń systemu, które usunąć moduł vfat z systemu nie są zgodne z usługi Azure Disk Encryption. 
-- Przed włączeniem szyfrowania, dysków danych do zaszyfrowania muszą właściwie się na liście/etc/fstab. Użyj nazwy urządzenia trwałego blok dla tego wpisu jako nazwy w formacie "/ dev/sdX" nie można polegać ma zostać skojarzony z tym samym dysku między ponownymi uruchomieniami, szczególnie w przypadku, po zastosowaniu szyfrowania urządzenia. Aby uzyskać więcej szczegółowych informacji dotyczących tego zachowania zobacz: [Rozwiązywanie problemów z zmiany nazwy urządzenia maszyny Wirtualnej systemu Linux](../virtual-machines/linux/troubleshoot-device-names-problems.md)
+- Azure Disk Encryption wymaga obecności modułów dm-crypt i vfat w systemie. Usunięcie lub wyłączenie vfat z obrazu domyślnego uniemożliwi systemowi odczytywanie woluminu klucza i Uzyskiwanie klucza wymaganego do odblokowania dysków podczas kolejnych ponownych uruchomień. Kroki ograniczania systemu, które usuwają moduł vfat z systemu, nie są zgodne z Azure Disk Encryption. 
+- Przed włączeniem szyfrowania, dysków danych do zaszyfrowania muszą właściwie się na liście/etc/fstab. Użyj nazwy urządzenia trwałego blok dla tego wpisu jako nazwy w formacie "/ dev/sdX" nie można polegać ma zostać skojarzony z tym samym dysku między ponownymi uruchomieniami, szczególnie w przypadku, po zastosowaniu szyfrowania urządzenia. Aby uzyskać szczegółowe informacje na temat tego zachowania, zobacz: [Rozwiązywanie problemów ze zmianami nazw urządzeń maszyny wirtualnej z systemem Linux](../virtual-machines/linux/troubleshoot-device-names-problems.md)
 - Upewnij się, że poprawnie skonfigurowano ustawienia/etc/fstab potrzeby instalowania. Aby skonfigurować te ustawienia, polecenie instalacji lub ponowne uruchomienie maszyny Wirtualnej i wyzwolić ponowne zainstalowanie w ten sposób. Sprawdź dane wyjściowe polecenia lsblk, aby zweryfikować, że dysk jest nadal zainstalowany, po zakończeniu tej operacji. 
   - Jeśli plik/etc/fstab nie poprawnie zainstalować dysku przed włączeniem szyfrowania, usługa Azure Disk Encryption nie będzie mogła poprawnie go zainstalować.
   - Proces szyfrowania dysków Azure zostanie przesunięty informacji dotyczących instalacji poza/etc/fstab i w jej własnym pliku konfiguracji w ramach procesu szyfrowania. Zostać zignorowany, aby zobaczyć, że kończy zapis brakuje/etc/fstab po szyfrowaniem dysków danych.
-  - Przed rozpoczęciem szyfrowania, upewnij się zatrzymać wszystkie usługi i procesy, które można zapisywać do zainstalowanego dysku z danymi i wyłączyć je, tak aby ich nie uruchamiaj ponownie automatycznie po ponownym uruchomieniu. Te można otwierają pliki na te partycje, zapobiegając procedurę szyfrowania, aby ponownie ich zainstalować, powodując niepowodzenie szyfrowania. 
+  - Przed rozpoczęciem szyfrowania należy zatrzymać wszystkie usługi i procesy, które mogą być zapisywane na zainstalowanych dyskach danych i je wyłączyć, aby nie uruchamiały się automatycznie po ponownym uruchomieniu komputera. Może to spowodować, że pliki będą otwierane na tych partycjach, co uniemożliwia procedurę szyfrowania w celu ich ponownego zainstalowania, powodując niepowodzenie szyfrowania. 
   - Po ponownym uruchomieniu potrwa czas procesu szyfrowania dysków Azure na instalowanie nowo zaszyfrowanych dysków. Nie będzie natychmiast dostępny po ponownym uruchomieniu. Proces wymaga czasu do uruchomienia, odblokowywania i następnie zainstalować zaszyfrowanych dysków przed jest dostępna na potrzeby dostępu do innych procesów. Ten proces może potrwać ponad minutę po ponownym uruchomieniu, w zależności od charakterystyki systemu.
 
 Przykład polecenia, które mogą służyć do zamontowania dysków z danymi oraz tworzenie niezbędne/etc/fstab wpisów można znaleźć w [linii 244-248 tego pliku skryptu](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248). 
@@ -116,9 +116,9 @@ Przykład polecenia, które mogą służyć do zamontowania dysków z danymi ora
 **Zasady grupy:**
  - Rozwiązanie Azure Disk Encryption dla maszyn wirtualnych IaaS Windows korzysta z zewnętrznego ochrony klucza funkcji BitLocker. Dla maszyn wirtualnych przyłączonych do domeny, nie Wypchnij żadnych zasad grupy, które wymuszają modułu TPM funkcje ochrony kluczy. Aby uzyskać informacje o zasadach grupy "Zezwalaj na funkcję BitLocker bez zgodnego modułu TPM", zobacz [dokumentacja zasad grupy funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
--  Zasad funkcji BitLocker na maszynach wirtualnych przyłączonych do domeny za pomocą zasad grupy niestandardowe, należy uwzględnić następujące ustawienia: [Konfigurowanie magazynu użytkownika informacji o odzyskiwaniu -> Zezwalaj na 256-bitowego klucza odzyskiwania funkcji BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Usługa Azure Disk Encryption zakończy się niepowodzeniem, jeśli ustawienia zasad grupy niestandardowe do używania funkcji BitLocker są niezgodne. Na komputerach, które nie mają poprawne ustawienie, należy zastosować nowe zasady, wymusić nowe zasady w celu aktualizacji (/ Force gpupdate.exe) i ponowne uruchomienie, może być wymagane.
+-  Zasady funkcji BitLocker na maszynach wirtualnych przyłączonych do domeny z niestandardowymi zasadami grupy muszą zawierać następujące ustawienie: [Konfigurowanie magazynu użytkownika informacje odzyskiwania funkcji BitLocker — > zezwalać na 256-bitowy klucz odzyskiwania](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption zakończy się niepowodzeniem w przypadku niezgodności niestandardowych ustawień zasad grupy dla funkcji BitLocker. Na komputerach, które nie mają poprawne ustawienie, należy zastosować nowe zasady, wymusić nowe zasady w celu aktualizacji (/ Force gpupdate.exe) i ponowne uruchomienie, może być wymagane.
 
-- Usługa Azure Disk Encryption zakończy się niepowodzeniem, jeśli zasady grupy na poziomie domeny blokuje algorytmu AES-CBC, który jest używany przez funkcję BitLocker.
+- Azure Disk Encryption zakończy się niepowodzeniem, jeśli zasady grupy na poziomie domeny blokują algorytm AES-CBC, który jest używany przez funkcję BitLocker.
 
 
 ## <a name="bkmk_PSH"></a> Program Azure PowerShell
@@ -126,17 +126,17 @@ Przykład polecenia, które mogą służyć do zamontowania dysków z danymi ora
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Instalowanie programu Azure PowerShell do użytku na komputerze lokalnym (opcjonalnie): 
 1. Postępuj zgodnie z instrukcjami w linkach w systemie operacyjnym, następnie Kontynuuj mimo że pozostałe kroki.      
-   - [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-az-ps). 
-     - Zainstaluj moduł PowerShellGet, programu Azure PowerShell, a następnie załadować moduł Az. 
+   - [Zainstaluj i skonfiguruj Azure PowerShell](/powershell/azure/install-az-ps). 
+     - Zainstaluj PowerShellGet, Azure PowerShell i Załaduj polecenie AZ module. 
 
-2. Sprawdź zainstalowane wersje modułu Az. Jeśli to konieczne, [zaktualizuj moduł programu Azure PowerShell](/powershell/azure/install-az-ps#update-the-azure-powershell-module).
-    Zaleca się korzystanie z najnowszej wersji modułu Az.
+2. Sprawdź zainstalowane wersje modułu AZ module. Jeśli to konieczne, [zaktualizuj moduł programu Azure PowerShell](/powershell/azure/install-az-ps#update-the-azure-powershell-module).
+    Zalecane jest użycie najnowszej wersji modułu AZ.
 
      ```powershell
      Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
      ```
 
-3. Zaloguj się do platformy Azure za pomocą [Connect AzAccount](/powershell/module/az.accounts/connect-azaccount) polecenia cmdlet.
+3. Zaloguj się do platformy Azure przy użyciu polecenia cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
      
      ```azurepowershell-interactive
      Connect-AzAccount
@@ -181,7 +181,7 @@ Przykład polecenia, które mogą służyć do zamontowania dysków z danymi ora
 
 
 ## <a name="prerequisite-workflow-for-key-vault"></a>Wymagań wstępnych przepływu pracy dla usługi Key Vault
-Jeśli już znasz z usługi Key Vault i Azure AD wymagania wstępne dotyczące usługi Azure Disk Encryption, możesz użyć [skrypt programu PowerShell wymagania wstępne dotyczące usługi Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Aby uzyskać więcej informacji na temat używania skryptu wymagań wstępnych, zobacz [szyfrowania VM Quickstart](quick-encrypt-vm-powershell.md) i [dodatku szyfrowania dysków Azure](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
+Jeśli już znasz z usługi Key Vault i Azure AD wymagania wstępne dotyczące usługi Azure Disk Encryption, możesz użyć [skrypt programu PowerShell wymagania wstępne dotyczące usługi Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Aby uzyskać więcej informacji na temat używania skryptu wymagań wstępnych, zobacz [szyfrowania VM Quickstart](azure-disk-encryption-linux-powershell-quickstart.md) i [dodatku szyfrowania dysków Azure](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
 
 1. Jeśli to konieczne, Utwórz grupę zasobów.
 2. Tworzenie magazynu kluczy. 
@@ -200,17 +200,17 @@ Usługa Azure Disk Encryption jest zintegrowana z usługą [usługi Azure Key Va
 
 ### <a name="bkmk_KVPSH"></a> Tworzenie magazynu kluczy przy użyciu programu PowerShell
 
-Można utworzyć magazynu kluczy przy użyciu programu Azure PowerShell [New AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) polecenia cmdlet. Aby uzyskać dodatkowe polecenia cmdlet usługi Key Vault, zobacz [Az.KeyVault](/powershell/module/az.keyvault/). 
+Można utworzyć magazyn kluczy z Azure PowerShell przy użyciu polecenia cmdlet [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) . Aby uzyskać dodatkowe polecenia cmdlet dla Key Vault, zobacz [AZ. datamagazyn](/powershell/module/az.keyvault/). 
 
 1. Jeśli to konieczne, [nawiązać połączenie z subskrypcją platformy Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH). 
-2. Utwórz nową grupę zasobów, jeśli to konieczne, za pomocą [New AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup).  Aby wyświetlić lokalizacje centrów danych, użyj [Get AzLocation](/powershell/module/az.resources/get-azlocation). 
+2. Utwórz nową grupę zasobów, w razie konieczności z poleceniem [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup).  Aby wyświetlić listę lokalizacji centrów danych, użyj polecenie [Get-AzLocation](/powershell/module/az.resources/get-azlocation). 
      
      ```azurepowershell-interactive
      # Get-AzLocation 
      New-AzResourceGroup –Name 'MyKeyVaultResourceGroup' –Location 'East US'
      ```
 
-3. Tworzenie nowego magazynu kluczy przy użyciu [New AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault)
+3. Tworzenie nowego magazynu kluczy przy użyciu polecenia [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault)
     
       ```azurepowershell-interactive
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
@@ -250,21 +250,21 @@ Można utworzyć magazynu kluczy przy użyciu [szablonu usługi Resource Manager
 Platforma Azure wymaga dostępu do kluczy szyfrowania i wpisy tajne w magazynie kluczy, aby udostępnić je do maszyny Wirtualnej do rozruchu i odszyfrowywania woluminów. Włącz szyfrowanie dysków w magazynie kluczy lub wdrożenia zakończy się niepowodzeniem.  
 
 ### <a name="bkmk_KVperPSH"></a> Zestaw magazynu kluczy, zaawansowane zasady dostępu przy użyciu programu Azure PowerShell
- Użyj polecenia cmdlet programu PowerShell usługi key vault [AzKeyVaultAccessPolicy zestaw](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) umożliwia szyfrowanie dysków dla magazynu kluczy.
+ Aby włączyć szyfrowanie dysków dla magazynu kluczy, należy użyć polecenia cmdlet programu PowerShell magazynu kluczy [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) .
 
-  - **Włącz magazyn kluczy do szyfrowania dysku:** EnabledForDiskEncryption jest wymagany dla usługi Azure Disk encryption.
+  - **Włącz Key Vault szyfrowania dysku:** Usługa EnabledForDiskEncryption jest wymagana do szyfrowania dysków Azure.
       
      ```azurepowershell-interactive 
      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDiskEncryption
      ```
 
-  - **Włączenie usługi Key Vault w przypadku wdrożenia w razie potrzeby:** Umożliwia dostawcy zasobów Microsoft.Compute można pobrać Wpisy tajne z tego magazynu kluczy, podczas tworzenia zasobu, na przykład podczas tworzenia maszyny wirtualnej odwołuje się do tego magazynu kluczy.
+  - **W razie potrzeby Włącz Key Vault wdrożenia:** Umożliwia dostawcy zasobów Microsoft. COMPUTE pobieranie wpisów tajnych z tego magazynu kluczy, gdy ten magazyn kluczy jest przywoływany podczas tworzenia zasobu, na przykład podczas tworzenia maszyny wirtualnej.
 
      ```azurepowershell-interactive
       Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDeployment
      ```
 
-  - **Włącz usługi Key Vault dla wdrożenia szablonu, w razie potrzeby:** Włącza usługi Azure Resource Manager można pobrać Wpisy tajne z tego magazynu kluczy, podczas wdrażania szablonu odwołuje się ten magazyn kluczy.
+  - **W razie potrzeby Włącz Key Vault wdrożenia szablonów:** Umożliwia Azure Resource Manager pobierania wpisów tajnych z tego magazynu kluczy, gdy do tego magazynu kluczy odwołuje się wdrożenie szablonu.
 
      ```azurepowershell-interactive             
      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForTemplateDeployment
@@ -273,19 +273,19 @@ Platforma Azure wymaga dostępu do kluczy szyfrowania i wpisy tajne w magazynie 
 ### <a name="bkmk_KVperCLI"></a> Zestaw magazynu kluczy, zaawansowane zasady dostępu przy użyciu wiersza polecenia platformy Azure
 Użyj [az keyvault update](/cli/azure/keyvault#az-keyvault-update) umożliwia szyfrowanie dysków dla magazynu kluczy. 
 
- - **Włącz magazyn kluczy do szyfrowania dysku:** Włączone for szyfrowania dysków jest wymagana. 
+ - **Włącz Key Vault szyfrowania dysku:** Szyfrowanie włączone dla dysku jest wymagane. 
 
      ```azurecli-interactive
      az keyvault update --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --enabled-for-disk-encryption "true"
      ```  
 
- - **Włączenie usługi Key Vault w przypadku wdrożenia w razie potrzeby:** Umożliwia dostawcy zasobów Microsoft.Compute można pobrać Wpisy tajne z tego magazynu kluczy, podczas tworzenia zasobu, na przykład podczas tworzenia maszyny wirtualnej odwołuje się do tego magazynu kluczy.
+ - **W razie potrzeby Włącz Key Vault wdrożenia:** Umożliwia dostawcy zasobów Microsoft. COMPUTE pobieranie wpisów tajnych z tego magazynu kluczy, gdy ten magazyn kluczy jest przywoływany podczas tworzenia zasobu, na przykład podczas tworzenia maszyny wirtualnej.
 
      ```azurecli-interactive
      az keyvault update --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --enabled-for-deployment "true"
      ``` 
 
- - **Włącz usługi Key Vault dla wdrożenia szablonu, w razie potrzeby:** Zezwalaj na Menedżera zasobów można pobrać Wpisy tajne z magazynu.
+ - **W razie potrzeby Włącz Key Vault wdrożenia szablonów:** Zezwól Menedżer zasobów na pobieranie wpisów tajnych z magazynu.
      ```azurecli-interactive  
      az keyvault update --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --enabled-for-template-deployment "true"
      ```
@@ -302,9 +302,9 @@ Użyj [az keyvault update](/cli/azure/keyvault#az-keyvault-update) umożliwia sz
 
 
 ## <a name="bkmk_KEK"></a> Konfigurowanie klucza szyfrowania (opcjonalnie)
-Jeśli chcesz użyć klucz szyfrowania klucza (KEK) Aby uzyskać dodatkową warstwę zabezpieczeń dla kluczy szyfrowania, należy dodać KEK do magazynu kluczy. Użyj [AzKeyVaultKey Dodaj](/powershell/module/az.keyvault/add-azkeyvaultkey) polecenia cmdlet, aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Można także zaimportować KEK, z usługi zarządzania kluczami w środowisku lokalnym przez moduł HSM. Aby uzyskać więcej informacji, zobacz [Key Vault dokumentacji](../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault.
+Jeśli chcesz użyć klucz szyfrowania klucza (KEK) Aby uzyskać dodatkową warstwę zabezpieczeń dla kluczy szyfrowania, należy dodać KEK do magazynu kluczy. Użyj polecenia cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) , aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Można także zaimportować KEK, z usługi zarządzania kluczami w środowisku lokalnym przez moduł HSM. Aby uzyskać więcej informacji, zobacz [Key Vault dokumentacji](../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault.
 
-* Podczas generowania kluczy, należy użyć typu klucza RSA. Usługa Azure Disk Encryption nie obsługuje jeszcze przy użyciu kluczy krzywej eliptycznej.
+* Podczas generowania kluczy należy użyć typu klucza RSA. Azure Disk Encryption nie obsługuje jeszcze kluczy krzywej eliptycznej.
 
 * KEK adresy URL i wpisu tajnego usługi key vault, na których musi być poddany kontroli wersji. Azure wymusza to ograniczenie wersji. Nieprawidłowy klucz tajny i adresy URL KEK zobacz następujące przykłady:
 

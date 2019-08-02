@@ -1,6 +1,6 @@
 ---
-title: Kopiuj dane do / z Eksploratora danych Azure przy użyciu usługi Azure Data Factory
-description: Dowiedz się, jak skopiować dane do / z Eksploratora danych platformy Azure za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych do lub z usługi Azure Eksplorator danych przy użyciu Azure Data Factory
+description: Dowiedz się, jak kopiować dane do lub z usługi Azure Eksplorator danych przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,44 +11,44 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/01/2019
 ms.author: orspodek
-ms.openlocfilehash: 438adcd70c1be308c2b5779de0442486b303cfdd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a7ac0bdc2bd5eed802f6959a628dee4c8141dbd1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449645"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720802"
 ---
-# <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopiuj dane do / z Eksploratora danych Azure przy użyciu usługi Azure Data Factory
+# <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopiowanie danych do lub z usługi Azure Eksplorator danych przy użyciu Azure Data Factory
 
-W tym artykule przedstawiono sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych do lub z [Eksploratora danych usługi Azure](../data-explorer/data-explorer-overview.md). Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych do lub z [usługi Azure Eksplorator danych](../data-explorer/data-explorer-overview.md). Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do Eksploratora danych platformy Azure. Można również kopiować dane z Eksploratora danych usługi Azure, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła lub ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md) tabeli.
+Dane można kopiować z dowolnego obsługiwanego źródłowego magazynu danych na platformę Azure Eksplorator danych. Możesz również skopiować dane z usługi Azure Eksplorator danych do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła lub ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md) tabeli.
 
 >[!NOTE]
->Kopiowanie danych z Eksploratora danych platformy Azure z i do na magazyn danych lokalnych przy użyciu środowiskiem Integration Runtime jest obsługiwane od wersji 3,14.
+>Kopiowanie danych do/z usługi Azure Eksplorator danych z/do lokalnego magazynu danych za pomocą samoobsługowego Integration Runtime jest obsługiwane od wersji 3,14.
 
-Łącznik Eksploratora danych usługi Azure można wykonać następujące czynności:
+Łącznik usługi Azure Eksplorator danych umożliwia wykonywanie następujących czynności:
 
-* Kopiowanie danych przy użyciu uwierzytelniania tokenu aplikacji usługi Azure Active Directory (Azure AD) przy użyciu **nazwy głównej usługi**.
-* Jako źródło pobierać dane przy użyciu kwerendy KQL (Kusto).
-* Jako obiekt sink dołączyć dane do tabeli docelowej.
+* Kopiowanie danych za pomocą usługi Azure Active Directory (Azure AD) uwierzytelnianie tokenu aplikacji z jednostką **usług**.
+* Jako źródło Pobierz dane przy użyciu zapytania KQL (Kusto).
+* Jako ujścia Dodaj dane do tabeli docelowej.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 >[!TIP]
->Aby zapoznać się z przewodnikiem za pomocą łącznika Azure Eksploratora danych, zobacz [kopiowanie danych do/z Eksploratora danych Azure przy użyciu usługi Azure Data Factory](../data-explorer/data-factory-load-data.md).
+>Aby zapoznać się z przewodnikiem dotyczącym korzystania z usługi Azure Eksplorator danych Connector, zobacz [Kopiowanie danych do/z platformy azure Eksplorator danych przy użyciu Azure Data Factory](../data-explorer/data-factory-load-data.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi Data Factory określonych do Eksploratora danych usługi Azure łącznika.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania Data Factory jednostek specyficznych dla łącznika usługi Azure Eksplorator danych.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Łącznik Azure Eksplorator danych używa uwierzytelniania jednostki usługi. Wykonaj następujące kroki, aby uzyskać nazwy głównej usługi i udzielanie uprawnień:
+Łącznik usługi Azure Eksplorator danych używa uwierzytelniania jednostki usługi. Wykonaj następujące kroki, aby uzyskać nazwę główną usługi i udzielić uprawnień:
 
 1. Zarejestruj jednostki aplikacji w usłudze Azure Active Directory (Azure AD), postępując zgodnie z [Zarejestruj swoją aplikację z dzierżawy usługi Azure AD](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Zanotuj następujące wartości, które służą do definiowania połączonej usługi:
 
@@ -56,24 +56,24 @@ Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, 
     - Klucz aplikacji
     - Identyfikator dzierżawy
 
-2. Przyznaj usługi głównej odpowiednie uprawnienia w Eksploratorze danych platformy Azure. Zapoznaj się [uprawnienia bazy danych zarządzania Eksploratora usługi Azure Data](../data-explorer/manage-database-permissions.md) ze szczegółowymi informacjami o role i uprawnienia, a także przewodnik dotyczący zarządzania uprawnieniami. Ogólnie rzecz biorąc należy
+2. Przyznaj jednostce usługi odpowiednie uprawnienia w usłudze Azure Eksplorator danych. Zapoznaj się z [uprawnieniami do zarządzania usługą Azure Eksplorator danych Database](../data-explorer/manage-database-permissions.md) , podając szczegółowe informacje na temat ról i uprawnień, a także wskazówki dotyczące zarządzania uprawnieniami. Ogólnie rzecz biorąc, należy
 
-    - **Jako źródło**, co najmniej udzielić **Podgląd bazy danych** roli bazy danych.
-    - **Jako obiekt sink**, co najmniej udzielić **dużych możliwościach skalowania bazy danych** roli bazy danych.
+    - **Jako źródło**nadaj bazie danych co najmniej rolę **przeglądarki baz danych** .
+    - **Jako ujścia**, udziel co najmniej roli pozyskiwania **bazy danych** do bazy danych.
 
 >[!NOTE]
->Tworzenie za pomocą interfejsu użytkownika usługi ADF, operacje listę baz danych na połączonej usługi, lub listę tabel w zestawie danych może wymagać wyższej uprzywilejowanych przyznano uprawnienia do nazwy głównej usługi. Alternatywnie można ręcznie wprowadź nazwę bazy danych i nazwę tabeli. Kopiuj działania wykonywania działań, tak długo, jak nazwa główna usługi jest przyznawana z odpowiednimi uprawnieniami do odczytu/zapisu danych.
+>Korzystając z interfejsu użytkownika usługi ADF do tworzenia, konto użytkownika logowania służy do wyświetlania listy klastrów, baz danych i tabel platformy Azure Eksplorator danych. Ręcznie wprowadź nazwę, jeśli nie masz uprawnień do takiej operacji.
 
-Następujące właściwości są obsługiwane w przypadku Eksploratora danych platformy Azure, połączone usługi:
+Dla połączonej usługi Azure Eksplorator danych są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typu** właściwość musi być równa **AzureDataExplorer** | Yes |
-| endpoint | Adres URL punktu końcowego klastra Eksploratora danych usługi Azure, w tym formacie co `https://<clusterName>.<regionName>.kusto.windows.net`. | Yes |
+| — typ | Właściwość **Type** musi być ustawiona na wartość **AzureDataExplorer** | Tak |
+| endpoint | Adres URL punktu końcowego klastra Eksplorator danych platformy Azure z formatem jako `https://<clusterName>.<regionName>.kusto.windows.net`. | Tak |
 | database | Nazwa bazy danych. | Yes |
-| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Jest to, co zwykle wiedzieć jako "**identyfikator urzędu**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Pobierz ją, umieszczając kursor myszy za pomocą myszy w prawym górnym rogu witryny Azure portal. | Yes |
-| servicePrincipalId | Określ identyfikator klienta aplikacji. Jest to, co zwykle wiedzieć jako "**Identyfikatora klienta aplikacji AAD**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Yes |
-| servicePrincipalKey | Określ klucz aplikacji. Jest to, co zwykle wiedzieć jako "**klucz aplikacji usługi AAD**" w [parametry połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Jest to zazwyczaj znany jako "**Identyfikator urzędu**" w parametrach [połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Pobierz ją przez umieszczenie kursora myszy w prawym górnym rogu Azure Portal. | Tak |
+| servicePrincipalId | Określ identyfikator klienta aplikacji. Jest to zwykle znane jako "**Identyfikator klienta aplikacji usługi AAD**" w [parametrach połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Tak |
+| servicePrincipalKey | Określ klucz aplikacji. Jest to zwykle znane jako "**klucz aplikacji usługi AAD**" w [parametrach połączenia Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Oznacz to pole jako **SecureString** można bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 
 **Przykład właściwości połączonej usługi:**
 
@@ -98,16 +98,16 @@ Następujące właściwości są obsługiwane w przypadku Eksploratora danych pl
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości, które są obsługiwane przez zestaw danych Eksploratora danych usługi Azure.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości, które są obsługiwane przez zestaw danych Eksplorator danych platformy Azure.
 
-Aby skopiować dane do Eksploratora danych platformy Azure, należy ustawić właściwość typu zestawu danych na **AzureDataExplorerTable**.
+Aby skopiować dane do usługi Azure Eksplorator danych, ustaw właściwość Type zestawu danych na **AzureDataExplorerTable**.
 
 Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typu** właściwość musi być równa **AzureDataExplorerTable** | Yes |
-| table | Nazwa tabeli, która jest połączona usługa przywołuje. | Tak w przypadku ujścia; Brak źródła |
+| type | Właściwość **Type** musi być ustawiona na wartość **AzureDataExplorerTable** | Tak |
+| table | Nazwa tabeli, do której odwołuje się połączona usługa. | Tak dla ujścia; Nie dla źródła |
 
 **Przykład właściwości zestawu danych**
 
@@ -116,12 +116,13 @@ Obsługiwane są następujące właściwości:
    "name": "AzureDataExplorerDataset",
     "properties": {
         "type": "AzureDataExplorerTable",
+        "typeProperties": {
+            "table": "<table name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Data Explorer linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "table": "<table name>"
         }
     }
 }
@@ -129,21 +130,21 @@ Obsługiwane są następujące właściwości:
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez Eksploratora usługi Azure danych źródła i ujścia.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez usługę Azure Eksplorator danych Source i ujścia.
 
-### <a name="azure-data-explorer-as-source"></a>Eksplorator danych usługi Azure jako źródło
+### <a name="azure-data-explorer-as-source"></a>Eksplorator danych platformy Azure jako źródło
 
-Aby skopiować dane z Eksploratora danych usługi Azure, należy ustawić **typu** właściwości w źródle działania kopiowania **AzureDataExplorerSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z usługi Azure Eksplorator danych, ustaw właściwość **Type** w źródle działania Copy na **AzureDataExplorerSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typu** musi być równa właściwość źródła działania kopiowania: **AzureDataExplorerSource** | Yes |
-| query | Żądanie tylko do odczytu w [KQL format](/azure/kusto/query/). Zapytanie niestandardowe KQL jest używana jako odwołanie. | Yes |
-| queryTimeout | Czas oczekiwania przed żądaniem zapytania upłynie limit czasu. Wartość domyślna to 10 minut (00: 10:00); dozwolona maksymalna wartość to 1 godzina (01: 00:00). | Nie |
-| noTruncation | Wskazuje, czy obciąć zestaw wyników zwrócony. Domyślnie wynik został obcięty po 500 000 rekordów lub 64MB. Obcięcie zdecydowanie zaleca się do prawidłowego zachowania w zakresie działania. |Nie |
+| type | Właściwość **Type** źródła działania Copy musi mieć ustawioną wartość: **AzureDataExplorerSource** | Tak |
+| query | Żądanie tylko do odczytu podawane w [formacie KQL](/azure/kusto/query/). Użyj niestandardowego zapytania KQL jako odwołania. | Tak |
+| queryTimeout | Czas oczekiwania przed upływem limitu czasu żądania zapytania. Wartość domyślna to 10 min (00:10:00); dozwolona maksymalna wartość to 1 godzina (01:00:00). | Nie |
+| notruncateer | Wskazuje, czy ma zostać obcięta zwracany zestaw wyników. Domyślnie wynik jest obcinany po 500 000 rekordach lub 64 MB. Obcinanie jest zdecydowanie zalecane do prawidłowego zachowania działania. |Nie |
 
 >[!NOTE]
->Usługa Azure źródło Eksploratora danych, domyślnie ma limit rozmiaru wynoszący 500 000 rekordów lub 64 MB. Aby pobrać wszystkie rekordy bez obcinania, można określić `set notruncation;` na początku zapytania. Zapoznaj się [zapytania limity](https://docs.microsoft.com/azure/kusto/concepts/querylimits) na więcej szczegółów.
+>Źródło Eksplorator danych platformy Azure domyślnie ma limit rozmiaru 500 000 rekordów lub 64 MB. Aby pobrać wszystkie rekordy bez obcinania, można określić `set notruncation;` na początku zapytania. Zapoznaj się z [limitami zapytania](https://docs.microsoft.com/azure/kusto/concepts/querylimits) , aby uzyskać więcej szczegółów.
 
 **Przykład:**
 
@@ -178,14 +179,14 @@ Aby skopiować dane z Eksploratora danych usługi Azure, należy ustawić **typu
 ]
 ```
 
-### <a name="azure-data-explorer-as-sink"></a>Eksplorator danych usługi Azure jako obiekt sink
+### <a name="azure-data-explorer-as-sink"></a>Eksplorator danych platformy Azure jako ujścia
 
-Aby skopiować dane do Eksploratora danych platformy Azure, należy ustawić właściwość type w ujścia działania kopiowania **AzureDataExplorerSink**. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
+Aby skopiować dane do usługi Azure Eksplorator danych, ustaw właściwość Type w ujścia działania Copy na **AzureDataExplorerSink**. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typu** musi być równa właściwości ujścia działania kopiowania: **AzureDataExplorerSink** | Yes |
-| ingestionMappingName | Nazwa wstępnie utworzone **[mapowania](/azure/kusto/management/mappings#csv-mapping)** w tabeli Kusto. Mapowania kolumn ze źródła do Eksploratora danych platformy Azure — w dotyczy **[wszystkie obsługiwane magazyny/format źródła](copy-activity-overview.md#supported-data-stores-and-formats)** tym CSV/JSON/Avro formatuje itp., można użyć działania kopiowania [kolumny Mapowanie](copy-activity-schema-and-type-mapping.md) (niejawnie według nazwy lub jawnie, zgodnie z konfiguracją) i/lub mapowania Eksploratora danych usługi Azure. | Nie |
+| type | Właściwość **Type** ujścia działania Copy musi mieć ustawioną wartość: **AzureDataExplorerSink** | Yes |
+| ingestionMappingName | Nazwa wstępnie utworzonego **[mapowania](/azure/kusto/management/mappings#csv-mapping)** dla tabeli Kusto. Aby zmapować kolumny ze źródła na Eksplorator danych platformy Azure, które mają zastosowanie do **[wszystkich obsługiwanych magazynów/formatów źródłowych](copy-activity-overview.md#supported-data-stores-and-formats)** , w tym formatów CSV/JSON/Avro itp., można użyć [mapowania kolumny](copy-activity-schema-and-type-mapping.md) działania kopiowania (niejawnie według nazwy lub jawnie zgodnie z konfiguracją). /or mapowania Eksplorator danych platformy Azure. | Nie |
 
 **Przykład:**
 
@@ -223,4 +224,4 @@ Aby skopiować dane do Eksploratora danych platformy Azure, należy ustawić wł
 
 * Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
 
-* Dowiedz się więcej o [kopiowanie danych z usługi Azure Data Factory do Eksploratora danych usługi Azure](/azure/data-explorer/data-factory-load-data).
+* Dowiedz się więcej o [kopiowaniu danych z Azure Data Factory na platformę Azure Eksplorator danych](/azure/data-explorer/data-factory-load-data).

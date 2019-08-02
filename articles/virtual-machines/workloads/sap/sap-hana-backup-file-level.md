@@ -1,6 +1,6 @@
 ---
-title: SAP HANA usługi Azure Backup na poziomie plików | Dokumentacja firmy Microsoft
-description: Istnieją dwie główne kopii zapasowej możliwości platformy SAP Hana na maszynach wirtualnych platformy Azure, w tym artykule opisano SAP HANA kopia zapasowa Azure na poziomie plików
+title: SAP HANA Azure Backup na poziomie pliku | Microsoft Docs
+description: Istnieją dwie istotne możliwości tworzenia kopii zapasowych SAP HANA na maszynach wirtualnych platformy Azure, w tym artykule omówiono SAP HANA Azure Backup na poziomie pliku
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -13,150 +13,150 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 02ee65020f72fb9c3262db82e035e628f780e2cf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 86a0633a433623c2b43bb26721e5fcee08d4301f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709996"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640813"
 ---
-# <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA usługi Azure Backup na poziomie plików
+# <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup na poziomie pliku
 
 ## <a name="introduction"></a>Wprowadzenie
 
-Jest to część trzyczęściowej serii pokrewnych artykułów dotyczących kopii zapasowych oprogramowania SAP HANA. [Przewodnik tworzenia kopii zapasowych dla oprogramowania SAP HANA na maszynach wirtualnych Azure](./sap-hana-backup-guide.md) zawiera przegląd i informacje na temat rozpoczynania pracy i [kopia zapasowa oprogramowania SAP HANA na podstawie migawek magazynu](./sap-hana-backup-storage-snapshots.md) obejmuje opcję tworzenia kopii zapasowej na podstawie migawki magazynu.
+Jest to część szeregu powiązanych artykułów w SAP HANA kopii zapasowej. [Przewodnik dotyczący tworzenia kopii zapasowych SAP HANA na platformie Azure Virtual Machines](./sap-hana-backup-guide.md) zawiera omówienie i informacje na temat rozpoczynania pracy, a [SAP HANA tworzenia kopii zapasowej na podstawie migawek magazynu](./sap-hana-backup-storage-snapshots.md) obejmują opcję tworzenia kopii zapasowej opartej na migawce magazynu.
 
-Różne typy maszyn wirtualnych na platformie Azure umożliwiają różną liczbę wirtualnych dysków twardych dołączonych. Szczegółowymi informacjami na temat są udokumentowane w artykule [rozmiary maszyn wirtualnych systemu Linux na platformie Azure](../../linux/sizes.md). W przypadku testów określonych w niniejszej dokumentacji użyliśmy maszyny Wirtualnej platformy Azure GS5, co pozwala 64 dołączonych dysków z danymi. Dla większych systemów SAP HANA już być zajęta plików danych i dziennika, prawdopodobnie w połączeniu z rozkładanie oprogramowania dotyczące przepływności operacji We/Wy dysku optymalne znaczącą liczbę dysków. Aby uzyskać więcej informacji na temat konfiguracji dysku sugerowane dla wdrożeń SAP HANA na maszynach wirtualnych Azure, przeczytaj artykuł [platformy SAP HANA w podręczniku obsługi platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations). Zalecenia przedstawione są w tym zalecenia miejsca na dysku dla również lokalne kopie zapasowe.
+Różne typy maszyn wirtualnych na platformie Azure umożliwiają dołączenie innej liczby wirtualnych dysków twardych. Dokładne szczegóły są udokumentowane w [rozmiarach maszyn wirtualnych z systemem Linux na platformie Azure](../../linux/sizes.md). W przypadku testów, do których odwołuje się ta dokumentacja, używana jest maszyna wirtualna platformy Azure GS5, która umożliwia 64 dołączonych dysków danych. W przypadku większych systemów SAP HANA można już wykonać znaczną liczbę dysków dla plików danych i dziennika, prawdopodobnie w połączeniu z rozłożeniem oprogramowania w celu zapewnienia optymalnej przepływności we/wy dysku. Aby uzyskać więcej informacji na temat sugerowanych konfiguracji dysków dla wdrożeń SAP HANA na maszynach wirtualnych platformy Azure, zapoznaj się z artykułem [SAP HANA w Przewodniku obsługi platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations). Zalecenia zawarte w programie obejmują również zalecenia dotyczące miejsca na dysku dla lokalnych kopii zapasowych.
 
-W tej chwili dostępna przy użyciu usługi Azure Backup jest Brak integracji kopii zapasowych oprogramowania SAP HANA. Standardowy sposób zarządzania i przywracania kopii zapasowych na poziomie plików jest oparte na plikach kopii zapasowej za pośrednictwem programu SAP HANA Studio lub za pomocą instrukcji SQL platformy SAP HANA. Zobacz [SQL platformy SAP HANA i odwołanie do widoków systemu](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf) Aby uzyskać więcej informacji.
+W tej chwili usługa Azure Backup nie ma integracji z SAP HANAą kopii zapasowej. Standardową metodą zarządzania wykonywaniem kopii zapasowych/przywracania na poziomie plików jest tworzenie kopii zapasowej opartej na plikach za pośrednictwem SAP HANA Studio lub SAP HANA instrukcji SQL. Więcej informacji można znaleźć w temacie [SAP HANA SQL i informacje o widokach systemu](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf) .
 
-![Poniższy rysunek pokazuje okno dialogowe elementu menu kopii zapasowych w systemie SAP HANA Studio](media/sap-hana-backup-file-level/image022.png)
+![Ten rysunek przedstawia okno dialogowe elementu menu kopia zapasowa w programie SAP HANA Studio](media/sap-hana-backup-file-level/image022.png)
 
-Poniższy rysunek pokazuje okno dialogowe elementu menu kopii zapasowych w systemie SAP HANA Studio. Podczas wybierania typu &quot;pliku&quot; jedna ma należy określić ścieżkę w systemie plików gdzie platformy SAP HANA zapisuje pliki kopii zapasowej. Przywracanie działa tak samo.
+Ten rysunek przedstawia okno dialogowe elementu menu kopia zapasowa w programie SAP HANA Studio. Po wybraniu &quot;typu plik&quot; , jeden musi określać ścieżkę w systemie plików, gdzie SAP HANA zapisuje pliki kopii zapasowej. Przywracanie działa w ten sam sposób.
 
-Gdy ten wybór wydaje się prosta i proste, istnieją pewne zagadnienia. Jak wspomniano wcześniej, Maszynie wirtualnej platformy Azure ma ograniczenie liczby dysków z danymi, które mogą być dołączone. Nie może być przygotowanie wydajności niezbędnej do przechowywania plików kopii zapasowych oprogramowania SAP HANA w systemach plików maszyny wirtualnej, w zależności od rozmiaru bazy danych i dysku przepływności wymagań, które może obejmować oprogramowania rozkładania na wielu dyskach danych. Różne opcje dotyczące przenoszenia tych plików kopii zapasowej i zarządzanie ograniczenia rozmiaru plików i wydajności podczas obsługi terabajty danych, znajdują się w dalszej części tego artykułu.
+Chociaż to rozwiązanie jest proste i proste w przód, istnieją pewne zagadnienia. Jak wspomniano wcześniej, maszyna wirtualna platformy Azure ma ograniczenie liczby dysków z danymi, które można dołączać. Przechowywanie plików SAP HANA kopii zapasowych w systemach plików maszyny wirtualnej może nie być możliwe, w zależności od rozmiaru bazy danych i wymagań dotyczących przepływności dysku, co może wiązać się z rozłożeniem oprogramowania na wielu dyskach danych. W dalszej części tego artykułu są dostępne różne opcje przeniesienia tych plików kopii zapasowej oraz zarządzanie ograniczeniami rozmiaru plików i wydajnością podczas obsługi terabajtów danych.
 
-Innym rozwiązaniem, która zapewnia większą swobodę w sprawie łączna pojemność, jest usługa Azure blob storage. Pojedynczy obiekt blob jest także ograniczona do 1 TB, łączna pojemność jednego kontenera obiektów blob jest obecnie 500 TB. Ponadto go daje klientom możliwość wybierz tak zwane &quot;chłodna&quot; usługi blob storage, która ma obniżenie kosztów. Zobacz [usługi Azure Blob Storage: Gorącego i chłodnego warstw magazynowania](../../../storage/blobs/storage-blob-storage-tiers.md) szczegółowe informacje na temat chłodnego magazynu obiektów blob.
+Kolejną opcją, która oferuje większą swobodę dotyczącą całkowitej pojemności, jest usługa Azure Blob Storage. Chociaż pojedynczy obiekt BLOB jest również ograniczony do 1 TB, całkowita pojemność pojedynczego kontenera obiektów BLOB jest obecnie 500 TB. Dodatkowo umożliwia klientom wybór &quot;tego, czy chłodny&quot; magazyn obiektów blob, który ma korzystny koszt. Zobacz [BLOB Storage platformy Azure: Gorąca i chłodna warstwa](../../../storage/blobs/storage-blob-storage-tiers.md) magazynowania, aby uzyskać szczegółowe informacje na temat magazynu chłodnych obiektów BLOB.
 
-Dla dodatkowego bezpieczeństwa należy użyć konta magazynu z replikacją geograficzną do przechowywania kopii zapasowych oprogramowania SAP HANA. Zobacz [replikacja usługi Azure Storage](../../../storage/common/storage-redundancy.md) szczegółowe informacje na temat replikacji konta magazynu.
+Aby zachować dodatkowe bezpieczeństwo, użyj konta magazynu zreplikowanego geograficznie do przechowywania kopii zapasowych SAP HANA. Aby uzyskać szczegółowe informacje na temat replikacji konta magazynu, zobacz [Replikacja usługi Azure Storage](../../../storage/common/storage-redundancy.md) .
 
-Jeden mógł umieścić dedykowanych dysków VHD dla kopii zapasowych oprogramowania SAP HANA na koncie dedykowanych dla magazynu kopii zapasowych, który jest replikowana geograficznie. W przeciwnym razie jeden można skopiować wirtualne dyski twarde, które przechowywać kopie zapasowe oprogramowania SAP HANA na konto magazynu z replikacją geograficzną lub na koncie magazynu, który znajduje się w innym regionie.
+Jeden z nich może umieścić dedykowane wirtualne dyski twarde dla SAP HANA kopii zapasowych na dedykowanym koncie magazynu kopii zapasowej, które jest replikowane geograficznie. W przeciwnym razie można skopiować wirtualne dyski twarde, które przechowują kopie zapasowe SAP HANA na koncie magazynu z replikacją geograficzną, lub na konto magazynu znajdujące się w innym regionie.
 
-## <a name="azure-backup-agent"></a>Agent usługi Azure backup
+## <a name="azure-backup-agent"></a>Agent usługi Azure Backup
 
-Usługa Azure backup oferuje opcję, aby nie tylko kopie zapasowe pełne maszyn wirtualnych, ale również plików i katalogów przy użyciu agenta kopii zapasowej, które zostały zainstalowane w systemie operacyjnym gościa. Jednak ten agent jest obsługiwany tylko w Windows (zobacz [tworzenie kopii zapasowej systemu Windows Server lub klienta na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager](../../../backup/backup-configure-vault.md)).
+Usługa Azure Backup oferuje opcję nie tylko tworzenia kopii zapasowych kompletnych maszyn wirtualnych, ale także plików i katalogów za pośrednictwem agenta kopii zapasowych, który należy zainstalować w systemie operacyjnym gościa. Jednak ten Agent jest obsługiwany tylko w systemie Windows (zobacz [Tworzenie kopii zapasowej systemu Windows Server lub klienta na platformie Azure przy użyciu modelu wdrażania Menedżer zasobów](../../../backup/backup-configure-vault.md)).
 
-Obejście tego problemu jest najpierw skopiuj pliki kopii zapasowych oprogramowania SAP HANA do maszyny Wirtualnej z systemem Windows na platformie Azure (na przykład za pośrednictwem udziału SAMBA), a następnie użyć agenta usługi Azure backup, w tym miejscu. Chociaż jest technicznie możliwe, go będzie zwiększenia złożoności i spowolnić kopii zapasowej lub przywracania procesu dość nieco ze względu na kopię między systemu Linux i Windows maszyny Wirtualnej. Nie zaleca się zastosowanie tego podejścia.
+Obejście polega na pierwszym skopiowaniu plików SAP HANA kopii zapasowej na maszynę wirtualną z systemem Windows na platformie Azure (na przykład za pośrednictwem usługi SAMBA Share), a następnie za pomocą agenta usługi Azure Backup. Chociaż jest to technicznie możliwe, spowodowałoby to dodanie złożoności i spowolnienie procesu tworzenia kopii zapasowej lub przywracania z powodu kopiowania między maszyną wirtualną systemu Linux i systemem Windows. Nie zaleca się przestrzegania tego podejścia.
 
-## <a name="azure-blobxfer-utility-details"></a>Szczegóły narzędzia blobxfer platformy Azure
+## <a name="azure-blobxfer-utility-details"></a>Szczegóły narzędzia Azure blobxfer
 
-Do przechowywania katalogów i plików w usłudze Azure storage, jeden można użyć programu PowerShell lub interfejsu wiersza polecenia lub Opracuj narzędzie przy użyciu jednej z [zestawami SDK Azure](https://azure.microsoft.com/downloads/). Również to narzędzie gotowych do użycia, AzCopy do kopiowania danych do usługi Azure storage, ale jest on Windows tylko (zobacz [Transfer danych za pomocą narzędzia wiersza polecenia AzCopy](../../../storage/common/storage-use-azcopy.md)).
+Przechowywanie katalogów i plików w usłudze Azure Storage może być możliwe za pomocą interfejsu wiersza polecenia lub programu PowerShell lub opracowywania narzędzia przy użyciu jednego z [zestawów SDK platformy Azure](https://azure.microsoft.com/downloads/). Do kopiowania danych do usługi Azure Storage jest również dostępne gotowe do użycia narzędzie AzCopy. (zobacz [transfer danych za pomocą narzędzia wiersza polecenia AzCopy](../../../storage/common/storage-use-azcopy.md)).
 
-W związku z tym blobxfer użyto kopiowanie plików kopii zapasowych oprogramowania SAP HANA. Jest typu open source, używane przez wielu klientów w środowiskach produkcyjnych i dostępne w [GitHub](https://github.com/Azure/blobxfer). To narzędzie umożliwia jeden skopiować dane bezpośrednio do usługi Azure blob storage lub udziału plików platformy Azure. Oferuje szeroką gamę przydatnych funkcji, takich jak skrót md5 lub automatycznego równoległości podczas kopiowania katalogu z wieloma plikami.
+W związku z tym blobxfer był używany do kopiowania plików kopii zapasowej SAP HANA. Jest to środowisko Open Source używane przez wielu klientów w środowiskach produkcyjnych i dostępne w serwisie [GitHub](https://github.com/Azure/blobxfer). To narzędzie umożliwia jednemu skopiowaniu danych bezpośrednio do usługi Azure Blob Storage lub udziału plików platformy Azure. Oferuje również szereg przydatnych funkcji, takich jak skrót MD5 lub automatyczna równoległość podczas kopiowania katalogu z wieloma plikami.
 
-## <a name="sap-hana-backup-performance"></a>Wydajność tworzenia kopii zapasowych platformy SAP HANA
+## <a name="sap-hana-backup-performance"></a>Wydajność kopii zapasowych SAP HANA
 
-![Ten zrzut ekranu jest konsola kopii zapasowej platformy SAP HANA w systemie SAP HANA Studio](media/sap-hana-backup-file-level/image023.png)
+![Ten zrzut ekranu jest SAP HANA konsoli zapasowej w programie SAP HANA Studio](media/sap-hana-backup-file-level/image023.png)
 
-Ten zrzut ekranu jest konsola kopii zapasowej platformy SAP HANA w systemie SAP HANA Studio. Kopii 230 GB na dysku jednego standardowego magazynu platformy Azure dołączonych do maszyny Wirtualnej platformy HANA przy użyciu systemu plików XFS zajęło to około 42 minuty.
+Ten zrzut ekranu jest SAP HANA konsoli tworzenia kopii zapasowych w programie SAP HANA Studio. Wykonanie kopii zapasowej 230 GB na pojedynczym dysku magazynu platformy Azure w warstwie Standardowa, które zostało dołączone do maszyny wirtualnej HANA przy użyciu systemu plików XFS, zajęło około 42 minut.
 
-![Ten zrzut ekranu jest YaST na testowej maszynie Wirtualnej platformy SAP HANA](media/sap-hana-backup-file-level/image024.png)
+![Ten zrzut ekranu jest YaST SAP HANA na testowej maszynie wirtualnej](media/sap-hana-backup-file-level/image024.png)
 
-Ten zrzut ekranu jest YaST na testowej maszynie Wirtualnej platformy SAP HANA. Jak wspomniano wcześniej, jeden zobacz jeden dysk 1 TB pojemności do tworzenia kopii zapasowych oprogramowania SAP HANA. Do tworzenia kopii zapasowej GB 230 zajęło to około 42 minuty. Ponadto zostały dołączone pięciu dysków 200 GB i md0 macierzy RAID oprogramowania tworzona, gdy rozkładanie na podstawie tych pięciu dysków danych na platformie Azure.
+Ten zrzut ekranu jest YaST SAP HANA na testowej maszynie wirtualnej. Jeden z nich może zobaczyć pojedynczy dysk 1 TB dla SAP HANA kopii zapasowej, jak wspomniano wcześniej. Wykonanie kopii zapasowej 230 GB trwało około 42 minut. Ponadto dyski 5 200-GB zostały dołączone i utworzono oprogramowanie RAID MD0 w systemie, w którym znajduje się na tym pięciu dyskach danych platformy Azure.
 
-![Powtarzanie kopii zapasowej tego samego oprogramowania RAID z Rozkładanie w pięciu dołączonych dysków z danymi usługi Azure standard storage](media/sap-hana-backup-file-level/image025.png)
+![Powtarzanie tej samej kopii zapasowej na platformie RAID oprogramowania z rozłożonymi na pięć dołączonych dysków z danymi usługi Azure Standard Storage](media/sap-hana-backup-file-level/image025.png)
 
-Powtarzanie kopii zapasowej tego samego oprogramowania RAID z Rozkładanie w pięciu dołączonych dysków z danymi usługi Azure standard storage wprowadzony czas wykonywania kopii zapasowych z 42 minuty w dół do 10 minut. Dyski zostały dołączone, bez buforowania do maszyny Wirtualnej. Dlatego jest oczywisty jak ważne przepływność zapisu na dysku jest czas tworzenia kopii zapasowej. Jeden można następnie przełącz się do usługi Azure Premium Storage do dalszego przyspieszyć ten proces, aby uzyskać optymalną wydajność. Ogólnie rzecz biorąc należy używać usługi Azure Premium Storage dla systemów produkcyjnych.
+Powtarzanie tej samej kopii zapasowej na woluminie RAID oprogramowania z rozłożonymi na pięć podłączonych dysków z danymi magazynu w warstwie Standardowa platformy Azure spowodowało czas wykonywania kopii zapasowej od 42 minut do 10 minut. Dyski zostały dołączone bez buforowania do maszyny wirtualnej. Jest to oczywiste, jak ważna przepustowość zapisu na dysku jest dla czasu wykonywania kopii zapasowej. Następnie można przełączyć się na platformę Azure Premium Storage, aby jeszcze bardziej przyspieszyć proces optymalnej wydajności. Ogólnie rzecz biorąc, usługa Azure Premium Storage powinna być używana w systemach produkcyjnych.
 
-## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>Skopiuj pliki kopii zapasowej platformy SAP HANA w usłudze Azure blob storage
+## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>Kopiowanie plików SAP HANA kopii zapasowej do usługi Azure Blob Storage
 
-Inną opcją szybkiego przechowywania plików kopii zapasowych oprogramowania SAP HANA jest usługi Azure blob storage. Jeden kontener obiektów blob pojedynczego obowiązuje limit 500 TB, wystarczająca dla niektórych mniejszych systemów SAP HANA, użycie typów M32ts, M32ls, M64ls i maszyna wirtualna GS5 platformy Azure, aby zapewnić wystarczające kopie zapasowe oprogramowania SAP HANA. Klienci mogą sami między &quot;gorąca&quot; i &quot;zimnych&quot; magazynu obiektów blob (zobacz [usługi Azure Blob Storage: Gorącego i chłodnego warstw magazynowania](../../../storage/blobs/storage-blob-storage-tiers.md)).
+Innym rozwiązaniem jest szybkie przechowywanie SAP HANA plików kopii zapasowej w usłudze Azure Blob Storage. Jeden kontener obiektów BLOB ma limit 500 TB, wystarczający dla niektórych mniejszych SAP HANA systemów, przy użyciu typów maszyn wirtualnych M32ts, M32ls, M64ls i GS5 na platformie Azure, aby zachować wystarczającą SAP HANA kopii zapasowych. Klienci mają możliwość wyboru między &quot;gorącą &quot;&quot; i&quot; zimną magazynem [obiektów BLOB (zobacz BLOB Storage platformy Azure: Gorąca i chłodna warstwa](../../../storage/blobs/storage-blob-storage-tiers.md)magazynu).
 
-Za pomocą narzędzia blobxfer jest łatwe skopiować pliki kopii zapasowych oprogramowania SAP HANA bezpośrednio w usłudze Azure blob storage.
+Za pomocą narzędzia blobxfer można łatwo kopiować pliki kopii zapasowej SAP HANA bezpośrednio do usługi Azure Blob Storage.
 
-![Tutaj widać plików pełnej kopii zapasowej pliku oprogramowania SAP HANA](media/sap-hana-backup-file-level/image026.png)
+![W tym miejscu można zobaczyć pliki pełnej kopii zapasowej pliku SAP HANA](media/sap-hana-backup-file-level/image026.png)
 
-Tutaj widać plików pełnej kopii zapasowej pliku oprogramowania SAP HANA. Istnieją cztery pliki a przez największe około 230 GB.
+W tym miejscu można zobaczyć pliki pełnej kopii zapasowej pliku SAP HANA. Istnieją cztery pliki, a największy z nich ma około 230 GB.
 
-![Zajęło to około 3000 sekund, aby skopiować 230 GB do kontenera obiektów blob konta magazynu platformy Azure w warstwie standardowa](media/sap-hana-backup-file-level/image027.png)
+![Kopiowanie 230 GB do kontenera obiektów BLOB usługi Azure Standard Storage trwało około 3000 sekund](media/sap-hana-backup-file-level/image027.png)
 
-Nie używa skrótu md5 w testu wstępnego, jaki zajęło około 3000 sekund, aby skopiować 230 GB do kontenera obiektów blob konta magazynu platformy Azure w warstwie standardowa.
+Użycie skrótu MD5 w teście wstępnym trwało około 3000 sekund na skopiowanie 230 GB do kontenera obiektów BLOB konta magazynu w warstwie Standardowa Azure.
 
-![W tym zrzucie ekranu widać jak to wygląda w witrynie Azure portal](media/sap-hana-backup-file-level/image028.png)
+![Na tym zrzucie ekranu można zobaczyć, jak wygląda na Azure Portal](media/sap-hana-backup-file-level/image028.png)
 
-W tym zrzucie ekranu widać jak to wygląda w witrynie Azure portal. Kontener obiektów blob o nazwie &quot;sap hana — kopie zapasowe&quot; został utworzony i zawiera cztery obiektów blob, które reprezentują pliki kopii zapasowych oprogramowania SAP HANA. Jeden z nich ma rozmiar około 230 GB.
+Na tym zrzucie ekranu można zobaczyć, jak wygląda na Azure Portal. Kontener obiektów BLOB o &quot;nazwie SAP-HANA —&quot; kopie zapasowe został utworzony i zawiera cztery obiekty blob, które reprezentują SAP HANA pliki kopii zapasowej. Jeden z nich ma rozmiar około 230 GB.
 
-Konsola kopii zapasowej HANA Studio umożliwia jeden ograniczyć maksymalny rozmiar pliku kopii zapasowej plików HANA. W środowisku przykładowe zwiększona wydajność dzięki czemu można mieć kilka mniejszych plików kopii zapasowej, zamiast jednego dużego pliku 230 GB.
+Konsola tworzenia kopii zapasowych HANA Studio pozwala na ograniczenie maksymalnego rozmiaru plików kopii zapasowych HANA. W przykładowym środowisku Ulepszona wydajność, dzięki czemu możliwe jest posiadanie wielu mniejszych plików kopii zapasowej zamiast jednego dużego pliku 230 GB.
 
-![Ustawienie limit rozmiaru pliku kopii zapasowej po stronie platformy HANA&#39;t poprawić czas wykonywania kopii zapasowych](media/sap-hana-backup-file-level/image029.png)
+![Ustawienie limitu rozmiaru pliku kopii zapasowej po stronie&#39;Hana nie wydłuża czasu wykonywania kopii zapasowej](media/sap-hana-backup-file-level/image029.png)
 
-Ustawienie limit rozmiaru pliku kopii zapasowej po stronie platformy HANA&#39;t poprawić czas tworzenia kopii zapasowych, ponieważ pliki są zapisywane sekwencyjnie, jak pokazano na ilustracji. Limit rozmiaru pliku zostało ustawione na 60 GB, dlatego kopia zapasowa tworzona cztery duże pliki danych zamiast 230 GB pojedynczy plik. Użycie wielu plików kopii zapasowej jest konieczność wykonywania kopii zapasowych baz danych HANA, korzystających z pamięci w większych maszyn wirtualnych platformy Azure, takich jak M64s, M64ms, M128s i M128ms.
+Ustawienie limitu rozmiaru pliku kopii zapasowej po stronie&#39;Hana nie wydłuża czasu wykonywania kopii zapasowej, ponieważ pliki są zapisywane sekwencyjnie, jak pokazano na poniższej ilustracji. Limit rozmiaru pliku został ustawiony na 60 GB, więc kopia zapasowa stworzyła cztery duże pliki danych zamiast jednego pliku 230-GB. Korzystanie z wielu plików kopii zapasowej to konieczność tworzenia kopii zapasowych baz danych HANA, które wykorzystują pamięć większych maszyn wirtualnych platformy Azure, takich jak M64s, M64ms, M128s i M128ms.
 
-![Aby przetestować równoległości narzędzie blobxfer, maksymalny rozmiar pliku dla kopii zapasowych HANA następnie została ustawiona do 15 GB](media/sap-hana-backup-file-level/image030.png)
+![Aby przetestować równoległość narzędzia blobxfer, maksymalny rozmiar plików dla kopii zapasowych HANA został następnie ustawiony na 15 GB](media/sap-hana-backup-file-level/image030.png)
 
-Aby przetestować równoległości narzędzie blobxfer, maksymalny rozmiar pliku dla kopii zapasowych HANA następnie została ustawiona do 15 GB, co spowodowało 19 pliki kopii zapasowej. Ta konfiguracja rozstrzygane czas blobxfer do skopiowania 230 GB w usłudze Azure blob storage 3000 sekund do 875 sekund.
+Aby przetestować równoległość narzędzia blobxfer, maksymalny rozmiar plików dla kopii zapasowych HANA został następnie ustawiony na 15 GB, co spowodowało 19 plików kopii zapasowej. Ta konfiguracja umożliwia blobxfer do kopiowania 230 GB do magazynu obiektów blob platformy Azure z 3000 sekund do 875 sekund.
 
-Ten wynik jest z powodu limitu 60 MB na sekundę dla zapisu obiektu blob platformy Azure. Równoległość za pomocą wielu obiektów blob rozwiązuje wąskie gardło, ale ma to pewną wadę: zwiększanie wydajności narzędzie blobxfer, aby skopiować wszystkie pliki kopii zapasowych platformy HANA do usługi Azure blob storage umieszcza obciążenia na maszynie Wirtualnej platformy HANA i sieci. Staje się negatywny wpływ na działanie systemu HANA.
+Wynika to z limitu 60 MB/s podczas pisania obiektu blob platformy Azure. Równoległość za pośrednictwem wielu obiektów BLOB rozwiązuje wąskie gardło, ale istnieje Minusem: zwiększenie wydajności narzędzia blobxfer w celu skopiowania wszystkich plików kopii zapasowych HANA do magazynu obiektów blob platformy Azure powoduje obciążenie zarówno maszyny wirtualnej HANA, jak i sieci. Ma to wpływ na działanie systemu HANA.
 
-## <a name="blob-copy-of-dedicated-azure-data-disks-in-backup-software-raid"></a>Kopiowanie obiektu blob dysków danych na platformie Azure dedykowany w macierzy RAID oprogramowania kopii zapasowej
+## <a name="blob-copy-of-dedicated-azure-data-disks-in-backup-software-raid"></a>Kopia obiektów BLOB dedykowanych dysków danych platformy Azure w oprogramowaniu RAID tworzenia kopii zapasowych
 
-W przeciwieństwie do ręcznego danych dysku kopii zapasowych maszyn wirtualnych w tym podejściu, jeden nie Utwórz kopię zapasową wszystkich dysków danych na maszynie Wirtualnej do zapisania całej instalacji SAP, w tym dane oprogramowania HANA HANA rejestruje pliki i pliki konfiguracji. Zamiast tego chodzi o to, aby są wyposażone w dedykowane macierzy RAID oprogramowania za pomocą rozkładanie danych platformy Azure wiele wirtualnych dysków twardych do przechowywania pełnej kopii zapasowej pliku oprogramowania SAP HANA. Kopiuje jeden tylko te dyski, których kopia zapasowa oprogramowania SAP HANA. One może łatwo być przechowywane w dedykowanego konta magazynu kopii zapasowych HANA lub dołączone do dedykowanej &quot;kopii zapasowej maszyny Wirtualnej zarządzania&quot; do dalszego przetwarzania.
+W przeciwieństwie do kopii zapasowej ręcznego dysku danych maszyny wirtualnej, w tym przypadku nie tworzy kopii zapasowej wszystkich dysków danych na maszynie wirtualnej w celu zapisania całej instalacji SAP, w tym danych platformy HANA, plików dziennika HANA i plików konfiguracji. Zamiast tego pomysłem jest posiadanie dedykowanego oprogramowania RAID z rozłożonymi na wiele wirtualnych dysków twardych danych platformy Azure do przechowywania pełnej kopii zapasowej plików SAP HANA. Jeden kopiuje tylko te dyski, na których jest SAP HANA kopia zapasowa. Mogą one być łatwo przechowywane w dedykowanym koncie magazynu kopii zapasowych Hana lub dołączone do dedykowanej &quot;maszyny wirtualnej&quot; do zarządzania kopiami zapasowymi w celu dalszej obróbki.
 
-![Wszystkie dyski VHD, które są zaangażowane zostały skopiowane, za pomocą ** start-azurestorageblobcopy ** polecenia programu PowerShell](media/sap-hana-backup-file-level/image031.png)
+![Wszystkie objęte dyski VHD zostały skopiowane przy użyciu polecenia * * Start-azurestorageblobcopy * * środowiska PowerShell](media/sap-hana-backup-file-level/image031.png)
 
-Po kopii zapasowej w celu lokalnego macierzy RAID oprogramowania została ukończona, wszystkie dyski VHD, które są zaangażowane zostały skopiowane, za pomocą **start azurestorageblobcopy** polecenia programu PowerShell (zobacz [Start AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy)). Jak dotyczy tylko systemu plików dedykowanych do przechowywania plików kopii zapasowej, nie ma żadnych wątpliwości dotyczących spójności platformy SAP HANA danych lub dziennika plików na dysku. Zaletą tego polecenia jest, że działa, gdy maszyna wirtualna pozostaje w trybie online. Aby upewnić się, że żaden proces nie zapisuje do zestawu kopii zapasowych usługi stripe, należy go odinstalować przed kopii obiektu blob, a następnie zainstalować go ponownie później. Lub jeden wystarczą stosownego sposobu &quot;Zablokuj&quot; systemu plików. Na przykład za pośrednictwem xfs\_Zablokuj XFS systemu plików.
+Po zakończeniu wykonywania kopii zapasowej na lokalnym oprogramowaniu RAID wszystkie środowiska zostały skopiowane za pomocą polecenia programu PowerShell **Start-azurestorageblobcopy** (patrz polecenie [Start-azurestorageblobcopy](/powershell/module/azure.storage/start-azurestorageblobcopy)). Ponieważ ma to wpływ tylko na dedykowany system plików do przechowywania plików kopii zapasowej, nie ma żadnych problemów dotyczących spójności SAP HANA danych lub plików dziennika na dysku. Zaletą tego polecenia jest to, że działa ono, gdy maszyna wirtualna pozostaje w trybie online. Aby upewnić się, że żaden proces nie zapisuje do zestawu pasków kopii zapasowych, należy go odinstalować przed skopiowaniem obiektu BLOB, a następnie zainstalować ponownie. Lub jeden może użyć odpowiedniego sposobu na &quot;zablokowanie&quot; systemu plików. Na przykład za pośrednictwem\_XFS Zablokuj system plików XFS.
 
-![Ten zrzut ekranu przedstawia listę obiektów blob w kontenerze wirtualnych dysków twardych w witrynie Azure portal](media/sap-hana-backup-file-level/image032.png)
+![Ten zrzut ekranu przedstawia listę obiektów BLOB w kontenerze VHD na Azure Portal](media/sap-hana-backup-file-level/image032.png)
 
-Ten zrzut ekranu przedstawia listę obiektów blob w &quot;wirtualne dyski twarde&quot; kontenera w witrynie Azure portal. Zrzut ekranu przedstawia pięć wirtualnych dysków twardych, które zostały dołączone do serwera SAP HANA maszyny Wirtualnej, która będzie służyć jako programowej macierzy RAID, aby zachować pliki kopii zapasowych oprogramowania SAP HANA. Zawiera także pięć kopii, które zostały wykonane za pomocą polecenia kopiowania obiektu blob.
+Ten zrzut ekranu przedstawia listę obiektów BLOB w &quot;kontenerze VHD&quot; na Azure Portal. Zrzut ekranu przedstawia pięć wirtualnych dysków twardych, które zostały dołączone do maszyny wirtualnej serwera SAP HANA, aby obsłużyć oprogramowanie RAID do przechowywania SAP HANA plików kopii zapasowej. Przedstawiono w nim również pięć kopii, które zostały wykonane za pomocą polecenia BLOB Copy.
 
-![Do celów testowych kopie dysków RAID kopii zapasowych oprogramowania SAP HANA zostały dołączone do serwera aplikacji maszyny Wirtualnej](media/sap-hana-backup-file-level/image033.png)
+![W celach testowych kopie SAP HANA dysków RAID z oprogramowaniem kopii zapasowej zostały dołączone do maszyny wirtualnej serwera aplikacji](media/sap-hana-backup-file-level/image033.png)
 
-Do celów testowych kopie dysków RAID kopii zapasowych oprogramowania SAP HANA zostały dołączone do serwera aplikacji maszyny Wirtualnej.
+Do celów testowych kopia SAP HANA dysków RAID z oprogramowaniem do tworzenia kopii zapasowych została dołączona do maszyny wirtualnej serwera aplikacji.
 
-![Kopiuje serwera aplikacji, które maszyna wirtualna została zamknięta można dołączyć dysku](media/sap-hana-backup-file-level/image034.png)
+![Maszyna wirtualna serwera aplikacji została wyłączona w celu dołączenia kopii dysku](media/sap-hana-backup-file-level/image034.png)
 
-Serwer aplikacji maszyny Wirtualnej został zamknięty, aby podłączyć dysk kopiuje. Po uruchomieniu maszyny Wirtualnej, dysków i RAID zostały prawidłowo odnalezione (zainstalowany za pomocą identyfikatora UUID). Tylko brakowało punktu instalacji, która została utworzona za pomocą partycjonera YaST. Później kopiuje plik kopii zapasowej platformy SAP HANA stały się widoczne na poziomie systemu operacyjnego.
+Maszyna wirtualna serwera aplikacji została wyłączona w celu dołączenia kopii dysków. Po uruchomieniu maszyny wirtualnej dyski i wolumin RAID zostały wykryte prawidłowo (są one instalowane za pośrednictwem identyfikatora UUID). Brak tylko punktu instalacji, który został utworzony za pośrednictwem partycji YaST. Następnie SAP HANA kopie zapasowe plików są widoczne na poziomie systemu operacyjnego.
 
-## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>Skopiuj pliki kopii zapasowej platformy SAP HANA do udziału NFS
+## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>Kopiowanie plików kopii zapasowej SAP HANA do udziału NFS
 
-Aby zmniejszyć potencjalnego wpływu na wydajność lub dysku w systemie SAP HANA, jeden rozważyć przechowywanie plików kopii zapasowych oprogramowania SAP HANA w udziale NFS. Z technicznego punktu widzenia działa, ale oznacza to, co host udziału NFS przy użyciu drugiej maszyny Wirtualnej platformy Azure. Nie może być mały rozmiar maszyny Wirtualnej ze względu na przepustowość sieci maszyny Wirtualnej. Sensowne będzie następnie zamknąć ten &quot;kopii zapasowej maszyny Wirtualnej&quot; i tylko przełączyć go do wykonywania kopii zapasowych oprogramowania SAP HANA. Pisanie na systemu plików NFS udostępniania umieszcza obciążenia w sieci i ma wpływ na system SAP HANA, ale jedynie zarządzania pliki kopii zapasowej później na &quot;kopii zapasowej maszyny Wirtualnej&quot; czy wpłynęło na wszystkich systemu SAP HANA.
+Aby zmniejszyć potencjalny wpływ na system SAP HANA z perspektywy wydajności lub miejsca na dysku, jedna z nich może rozważyć przechowywanie SAP HANA plików kopii zapasowej w udziale NFS. Technicznie działa, ale oznacza użycie drugiej maszyny wirtualnej platformy Azure jako hosta udziału NFS. Nie powinna to być mała wielkość maszyny wirtualnej ze względu na przepustowość sieci maszyny wirtualnej. Warto wypróbować tę &quot;maszynę wirtualną&quot; kopii zapasowej i tylko ją utworzyć w celu wykonywania kopii zapasowej SAP HANA. Zapis w udziale NFS powoduje obciążenie sieci i ma wpływ na system SAP HANA, ale tylko zarządzanie plikami kopii zapasowej w późniejszym czasie na &quot;maszynie wirtualnej&quot; kopii zapasowej nie wpłynie na system SAP HANA.
 
-![Udziału NFS z innej maszyny Wirtualnej platformy Azure został zainstalowany serwer SAP HANA maszyny Wirtualnej](media/sap-hana-backup-file-level/image035.png)
+![Udział w systemie plików NFS z innej maszyny wirtualnej platformy Azure został zainstalowany na maszynie wirtualnej serwera SAP HANA](media/sap-hana-backup-file-level/image035.png)
 
-Aby sprawdzić, czy przypadek użycia systemu plików NFS, udziału NFS z innej maszyny Wirtualnej platformy Azure został zainstalowany serwer SAP HANA maszyny Wirtualnej. Nie było żadnych specjalnych systemu plików NFS dostrajania stosowane.
+Aby zweryfikować przypadek użycia systemu plików NFS, udział NFS z innej maszyny wirtualnej platformy Azure został zainstalowany na maszynie wirtualnej serwera SAP HANA. Nie zastosowano specjalnych strojenia systemu plików NFS.
 
-![Zajmowało 1 godzinę i 46 minut wykonaj kopię zapasową bezpośrednio](media/sap-hana-backup-file-level/image036.png)
+![Wykonanie kopii zapasowej trwało 1 godzinę i 46 minut](media/sap-hana-backup-file-level/image036.png)
 
-Udziału NFS była szybka rozłożony, takim jak rejestr na serwerze SAP HANA. Niemniej jednak zajęło to 1 godzina, a 46 minut bezpośrednio na kopii udziału NFS zamiast 10 minut, po ustawieniu zapis do lokalnej usługi stripe.
+Udział NFS był szybkim zestawem, na przykład na serwerze SAP HANA. Niemniej jednak trwało 1 godzinę i 46 minut, aby utworzyć kopię zapasową bezpośrednio w udziale NFS, a nie 10 minut, podczas zapisywania do lokalnego zestawu paskowego.
 
-![Alternatywnie nie został znacznie szybsza, bo w 1 i godz.](media/sap-hana-backup-file-level/image037.png)
+![Alternatywa nie była znacznie szybsza od 1 godziny i 43 minut](media/sap-hana-backup-file-level/image037.png)
 
 Alternatywne o wykonaniu kopii zapasowej do lokalnego rozłożony i kopiowanie do udziału NFS na poziomie systemu operacyjnego (prosty **cp-avr** polecenia) nie została znacznie szybciej. Zajęło 1 i godz.
 
-Tak to działa, ale wydajność nie była dobra dla kopii zapasowych testowania 230 GB. Wyglądałaby jeszcze gorzej dla wielu terabajtów.
+Dlatego działa, ale wydajność nie była dobra dla testu kopii zapasowych 230 GB. Będzie wyglądać nawet gorsze dla wieloterabajtów.
 
-## <a name="copy-sap-hana-backup-files-to-azure-files"></a>Skopiuj pliki kopii zapasowej platformy SAP HANA do usługi Azure Files
+## <a name="copy-sap-hana-backup-files-to-azure-files"></a>Kopiowanie SAP HANA plików kopii zapasowej do Azure Files
 
-Istnieje możliwość zainstalować udział plików platformy Azure w maszynie Wirtualnej systemu Linux platformy Azure. Artykuł [jak używać usługi Azure File storage z systemem Linux](../../../storage/files/storage-how-to-use-files-linux.md) zawiera szczegółowe informacje o tym, jak to zrobić. Należy pamiętać, że jest obecnie limit przydziału o rozmiarze 5 TB jeden udział plików platformy Azure, a limit rozmiaru pliku o rozmiarze 1 TB na plik. Zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](../../../storage/common/storage-scalability-targets.md) informacji o limitach magazynu.
+Możliwe jest zainstalowanie udziału Azure Files w ramach maszyny wirtualnej z systemem Linux na platformie Azure. W tym artykule [opisano sposób korzystania z usługi Azure File Storage z systemem Linux](../../../storage/files/storage-how-to-use-files-linux.md) . Należy pamiętać, że istnieje limit przydziału 5 TB dla jednego udziału plików platformy Azure, a limit rozmiaru pliku wynoszący 1 TB na plik. Aby uzyskać informacje o limitach magazynu [, zobacz cele dotyczące skalowalności i wydajności usługi Azure Storage](../../../storage/common/storage-scalability-targets.md) .
 
-Badania wykazały, jednak bez tworzenia kopii zapasowych oprogramowania SAP HANA&#39;t obecnie pracować bezpośrednio za pomocą tego rodzaju CIFS instalacji. Również jest podany w [1820529 Uwaga SAP](https://launchpad.support.sap.com/#/notes/1820529) , CIFS nie jest zalecane.
+Testy, które wykazały, że SAP HANA Backup&#39;nie działają obecnie bezpośrednio z tym rodzajem instalacji CIFS. Jest również określony w programie [SAP Note 1820529](https://launchpad.support.sap.com/#/notes/1820529) , że CIFS nie jest zalecane.
 
-![Poniższy rysunek pokazuje błąd, w oknie dialogowym tworzenia kopii zapasowych w systemie SAP HANA Studio](media/sap-hana-backup-file-level/image038.png)
+![Ten rysunek przedstawia błąd w oknie dialogowym tworzenia kopii zapasowej w programie SAP HANA Studio](media/sap-hana-backup-file-level/image038.png)
 
-Poniższy rysunek pokazuje błąd w oknie dialogowym tworzenia kopii zapasowych w systemie SAP HANA Studio, podczas próby utworzenia kopii zapasowej bezpośrednio do udziału plików platformy Azure zainstalowany CIFS. Dlatego musi zapasowej standardowe platformy SAP HANA w systemie plików maszyny Wirtualnej najpierw, a następnie skopiuj pliki kopii zapasowej w tym miejscu, usługą Azure file service.
+Ten rysunek przedstawia błąd w oknie dialogowym tworzenia kopii zapasowej w programie SAP HANA Studio podczas próby utworzenia kopii zapasowej bezpośrednio do udziału plików platformy Azure zainstalowanego przy użyciu protokołu CIFS. W związku z tym należy najpierw wykonać SAP HANA kopię zapasową w systemie plików maszyny wirtualnej, a następnie skopiować pliki kopii zapasowej z tego miejsca do usługi plików platformy Azure.
 
-![Poniższy rysunek pokazuje trwało około 929 sekund, aby skopiować 19 pliki kopii zapasowych oprogramowania SAP HANA](media/sap-hana-backup-file-level/image039.png)
+![Na tym rysunku przedstawiono około 929 sekund na skopiowanie 19 SAP HANA plików kopii zapasowej](media/sap-hana-backup-file-level/image039.png)
 
-Poniższy rysunek pokazuje trwało około 929 sekund, aby skopiować 19 pliki kopii zapasowych oprogramowania SAP HANA o całkowitym rozmiarze około 230 GB do udziału plików platformy Azure.
+Na tym rysunku przedstawiono około 929 sekund na kopiowanie 19 SAP HANA plików kopii zapasowej o całkowitym rozmiarze około 230 GB do udziału plików platformy Azure.
 
-![Źródło struktury katalogów na maszynie Wirtualnej SAP HANA zostały skopiowane do udziału plików platformy Azure](media/sap-hana-backup-file-level/image040.png)
+![Źródłowa struktura katalogów na maszynie wirtualnej SAP HANA została skopiowana do udziału plików platformy Azure](media/sap-hana-backup-file-level/image040.png)
 
-W tym zrzucie ekranu widać czy strukturę katalogu źródłowego na maszynie Wirtualnej SAP HANA, zostały skopiowane do udziału plików platformy Azure: jeden katalog (hana\_kopii zapasowej\_fsl\_15 gb) i 19 pojedynczych plików kopii zapasowej.
+Na tym zrzucie ekranu można zobaczyć, że źródłowa struktura katalogów na maszynie wirtualnej SAP HANA została skopiowana do udziału plików platformy Azure: jeden katalog (\_Hana\_Backup\_FSL 15gb) i 19 poszczególnych plików kopii zapasowej.
 
-Przechowywanie plików kopii zapasowych oprogramowania SAP HANA na usługi pliki Azure może być interesujące opcję w przyszłości, gdy kopie zapasowe plików SAP HANA obsługują je bezpośrednio. Lub kiedy możliwe staje się instalacji usługi Azure files za pośrednictwem systemu plików NFS i maksymalny limit przydziału jest znacznie wyższa niż 5 TB.
+Przechowywanie SAP HANA plików kopii zapasowej w usłudze Azure Files może być ciekawą opcją w przyszłości, gdy SAP HANA kopie zapasowe plików są obsługiwane bezpośrednio. Lub kiedy będzie możliwe zainstalowanie usługi Azure Files za pośrednictwem systemu plików NFS, a maksymalny limit przydziału jest znacznie większy niż 5 TB.
 
 ## <a name="next-steps"></a>Następne kroki
-* [Przewodnik tworzenia kopii zapasowych dla oprogramowania SAP HANA na maszynach wirtualnych Azure](sap-hana-backup-guide.md) zawiera omówienie oraz informacje na temat rozpoczynania pracy.
-* [Kopia zapasowa oprogramowania SAP HANA na podstawie migawek magazynu](sap-hana-backup-storage-snapshots.md) opisy opcji kopii zapasowych opartych na migawkach magazynu.
-* Aby dowiedzieć się, jak zadbać o wysokiej dostępności i plan odzyskiwania po awarii oprogramowania SAP Hana na platformie Azure (duże wystąpienia), zobacz [platformy SAP HANA (duże wystąpienia) o wysokiej dostępności i odzyskiwania po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md).
+* [Przewodnik dotyczący tworzenia kopii zapasowych SAP HANA na platformie Azure Virtual Machines](sap-hana-backup-guide.md) zawiera omówienie i informacje na temat rozpoczynania pracy.
+* [SAP HANA kopia zapasowa oparta na migawkach magazynu](sap-hana-backup-storage-snapshots.md) zawiera opis opcji tworzenia kopii zapasowej opartej na migawce magazynu.
+* Aby dowiedzieć się, jak stworzyć wysoką dostępność i zaplanować odzyskiwanie po awarii SAP HANA na platformie Azure (duże wystąpienia), zobacz [SAP HANA (duże wystąpienia) wysoka dostępność i odzyskiwanie po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md).

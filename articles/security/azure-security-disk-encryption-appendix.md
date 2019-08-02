@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2872d106eea56a37c362195e7a3250058336768b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 7cbddc4b7af546396a1a5a4c86d349a96054a6f3
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295057"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726271"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek dla usługi Azure Disk Encryption 
 
@@ -104,7 +104,7 @@ Przed rozpoczęciem należy przejrzeć [wymagania wstępne](azure-security-disk-
      ```
 
 ### <a name="bkmk_prereq-script"></a> Za pomocą skryptu programu PowerShell wymagania wstępne dotyczące usługi Azure Disk Encryption
-Jeśli już znasz wymagania wstępne dotyczące usługi Azure Disk Encryption, możesz użyć [skrypt programu PowerShell wymagania wstępne dotyczące usługi Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Aby uzyskać przykład użycia ten skrypt programu PowerShell, zobacz [szyfrowania VM Quickstart](quick-encrypt-vm-powershell.md). Komentarze można usunąć z części skryptu, zaczynając od wiersza 211, do szyfrowania wszystkich dysków dla istniejących maszyn wirtualnych w istniejącej grupie zasobów. 
+Jeśli już znasz wymagania wstępne dotyczące usługi Azure Disk Encryption, możesz użyć [skrypt programu PowerShell wymagania wstępne dotyczące usługi Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Aby uzyskać przykład użycia ten skrypt programu PowerShell, zobacz [szyfrowania VM Quickstart](azure-disk-encryption-linux-powershell-quickstart.md). Komentarze można usunąć z części skryptu, zaczynając od wiersza 211, do szyfrowania wszystkich dysków dla istniejących maszyn wirtualnych w istniejącej grupie zasobów. 
 
 W poniższej tabeli przedstawiono, w której parametry mogą być używane w skrypcie programu PowerShell: 
 
@@ -133,15 +133,15 @@ W poniższej tabeli przedstawiono, w której parametry mogą być używane w skr
   - [Wyłącz szyfrowanie dla uruchomionej maszyny Wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Wyłączenie szyfrowania jest dozwolona tylko na woluminach danych dla maszyn wirtualnych systemu Linux.  
 
-### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Szyfrowania lub odszyfrowywania zestawów skalowania maszyn wirtualnych
+### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Szyfrowanie lub odszyfrowywanie zestawów skalowania maszyn wirtualnych
 
 - [Włączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
 - [Włączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Wdrażanie maszyny wirtualnej zestawu skalowania maszyn wirtualnych systemu Linux przy użyciu serwera przesiadkowego i włącza szyfrowanie na zestawu skalowania maszyn wirtualnych w systemie Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Wdrażanie zestawu skalowania maszyn wirtualnych z systemem Linux przy użyciu serwera przesiadkowego i Włączanie szyfrowania w systemie Linux VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [Wdrażanie zestawu skalowania maszyn wirtualnych Windows maszyn wirtualnych z serwera przesiadkowego i umożliwia szyfrowanie w usłudze Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Wdrażanie zestawu skalowania maszyn wirtualnych z systemem Windows za pomocą serwera przesiadkowego i Włączanie szyfrowania w systemie Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [Wyłączanie szyfrowania dysków na uruchamianie zestawu skalowania maszyn wirtualnych systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -206,7 +206,7 @@ Użyj [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) pole
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Wymagania wstępne dotyczące szyfrowania dysku systemu operacyjnego
 
-* Maszyna wirtualna musi używać dystrybucji, które są zgodne z szyfrowania dysku systemu operacyjnego zgodnie z zaleceniami z [usługi Azure Disk Encryption obsługiwane systemy operacyjne: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
+* Maszyna wirtualna musi używać dystrybucji zgodnej z szyfrowaniem dysków systemu operacyjnego, która jest [wymieniona w Azure Disk Encryption obsługiwanych systemach operacyjnych: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
 * Maszyna wirtualna musi zostać utworzona z obrazu z witryny Marketplace usługi Azure Resource Manager.
 * Maszyna wirtualna platformy Azure z co najmniej 4 GB pamięci RAM (zalecany rozmiar to 7 GB).
 * (Dla systemu RHEL i CentOS) Wyłącz SELinux. Aby wyłączyć SELinux, zobacz "4.4.2. Wyłączanie SELinux"w [Przewodnik administratora i użytkownika SELinux](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) na maszynie Wirtualnej.
@@ -234,7 +234,7 @@ Użyj [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) pole
 
 5. Okresowo monitorować postęp szyfrowania zgodnie z instrukcjami podanymi w [następnej sekcji](#monitoring-os-encryption-progress).
 
-6. Po Get AzVmDiskEncryptionStatus zawiera "VMRestartPending", należy ponownie uruchomić maszynę Wirtualną, logując się do niego albo za pomocą witryny portal, programu PowerShell lub interfejsu wiersza polecenia.
+6. Gdy polecenie Get-AzVmDiskEncryptionStatus zawiera ciąg "VMRestartPending", uruchom ponownie maszynę wirtualną, logując się do niej lub korzystając z portalu, programu PowerShell lub interfejsu wiersza polecenia.
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -546,7 +546,7 @@ W przypadku szyfrowania przy użyciu aplikacji usługi Azure AD (poprzedniej wer
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Wpis tajny szyfrowania dysku nie jest szyfrowana za pomocą klucza KEK
-Aby skonfigurować wpisu tajnego w magazynie kluczy, użyj [AzKeyVaultSecret zestaw](/powershell/module/az.keyvault/set-azkeyvaultsecret). Jeśli masz maszynę wirtualną Windows, plik klucza szyfrowania bloków jest zakodowany jako ciąg w formacie base64 i następnie przekazywane do usługi key vault przy użyciu `Set-AzKeyVaultSecret` polecenia cmdlet. Dla systemu Linux hasło jest zakodowany jako ciąg w formacie base64, a następnie przekazywane do magazynu kluczy. Ponadto upewnij się, że następujące znaczniki są ustawione podczas tworzenia klucza tajnego w magazynie kluczy.
+Aby skonfigurować wpis tajny w magazynie kluczy, użyj polecenie [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). Jeśli masz maszynę wirtualną Windows, plik klucza szyfrowania bloków jest zakodowany jako ciąg w formacie base64 i następnie przekazywane do usługi key vault przy użyciu `Set-AzKeyVaultSecret` polecenia cmdlet. Dla systemu Linux hasło jest zakodowany jako ciąg w formacie base64, a następnie przekazywane do magazynu kluczy. Ponadto upewnij się, że następujące znaczniki są ustawione podczas tworzenia klucza tajnego w magazynie kluczy.
 
 #### <a name="windows-bek-file"></a>Plik klucza szyfrowania bloków Windows
 ```powershell

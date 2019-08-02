@@ -2,23 +2,23 @@
 title: Omówienie architektury — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jakie dzierżawy usługi Azure Active Directory i jak nią zarządzać za pomocą usługi Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed332f32fa9fdc154c72e45914e642a9dad4993
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b124475b44778ef3bb0dc9eba0c59bb3a277b85a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055701"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562054"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Co to jest architektura usługi Azure Active Directory?
 Usługa Azure Active Directory (Azure AD) umożliwia bezpieczne zarządzanie dostępem do usług i zasobów platformy Azure dla użytkowników. W ramach usługi Azure AD można skorzystać z pełnego zestawu możliwości zarządzania tożsamościami. Aby uzyskać więcej informacji na temat funkcji usługi Azure AD, zobacz [Co to jest usługa Azure Active Directory?](active-directory-whatis.md)
@@ -35,11 +35,11 @@ W tym artykule omówione są następujące elementy architektury:
  *  Centra danych
 
 ### <a name="service-architecture-design"></a>Projekt architektury usługi
-Najczęstszym sposobem tworzenia dostępny i użytecznego, bogate w dane i system jest użycie niezależnych bloków konstrukcyjnych lub jednostek skalowania. W przypadku warstwy danych usługi Azure AD jednostki skalowania są nazywane *partycje*. 
+Najbardziej typowym sposobem na skompilowanie dostępnego i możliwego do użycia systemu danych jest użycie niezależnych bloków konstrukcyjnych lub jednostek skalowania. W przypadku warstwy danych usługi Azure AD jednostki skalowania sąnazywane partycjami. 
 
-Warstwa danych ma kilka usług frontonu, które zapewniają możliwość odczytu i zapisu. Na poniższym diagramie pokazano, w jaki składniki partycji pojedynczego katalogu są dostarczane w całym geograficznie rozproszone centra danych. 
+Warstwa danych ma kilka usług frontonu, które zapewniają możliwość odczytu i zapisu. Na poniższym diagramie przedstawiono sposób, w jaki składniki partycji pojedynczego katalogu są dostarczane w obrębie rozproszonych geograficznie centrów danych. 
 
-  ![Diagram partycji pojedynczego katalogu](./media/active-directory-architecture/active-directory-architecture.png)
+  ![Diagram partycji z jednym katalogiem](./media/active-directory-architecture/active-directory-architecture.png)
 
 Składniki architektury usługi Azure AD obejmują repliki podstawowe i pomocnicze.
 
@@ -49,7 +49,7 @@ Składniki architektury usługi Azure AD obejmują repliki podstawowe i pomocnic
 
 **Repliki pomocnicze**
 
-Wszystkie katalogu *odczytuje* są obsługiwane na podstawie *replik pomocniczych*, w centrach danych, które fizycznie znajdują się w różnych lokalizacjach geograficznych. Istnieje wiele replik pomocniczych, ponieważ dane są replikowane w sposób asynchroniczny. Operacje odczytu z katalogu, takie jak żądania uwierzytelniania są obsługiwane z centrów danych, które znajdują się blisko klientów. Repliki pomocnicze są odpowiedzialne za skalowalność odczytu.
+Wszystkie *odczyty* katalogów są obsługiwane z *replik pomocniczych*, które znajdują się w centrach danych, które fizycznie znajdują się na różnych lokalizacje geograficzne. Istnieje wiele replik pomocniczych, ponieważ dane są replikowane w sposób asynchroniczny. Odczyty katalogów, takie jak żądania uwierzytelniania, są serwisowane z centrów danych, które znajdują się blisko klientów. Repliki pomocnicze są odpowiedzialne za skalowalność odczytu.
 
 ### <a name="scalability"></a>Skalowalność
 
@@ -61,7 +61,7 @@ Aplikacje katalogów nawiązują połączenie z najbliższymi centrami danych. T
 
 ### <a name="continuous-availability"></a>Ciągła dostępność
 
-Dostępność (lub czas dostępności) definiuje możliwość wykonywania przez system nieprzerwanej pracy. Kluczem do wysokiej dostępności usługi Azure AD jest, że usługi możliwość szybkiego przełączania ruchu między wiele rozproszonych geograficznie centrów danych. Każde centrum danych jest niezależne, które umożliwia wystąpienie nieskorelowanych trybów awarii. Przez ten projekt wysokiej dostępności usługi Azure AD nie wymaga przestojów konserwacyjne.
+Dostępność (lub czas dostępności) definiuje możliwość wykonywania przez system nieprzerwanej pracy. Klucz do wysokiej dostępności w usłudze Azure AD polega na tym, że usługi mogą szybko przenoszony ruch na wiele rozproszonych geograficznie centrów danych. Każde centrum danych jest niezależne, co umożliwia usuwanie nieskorelowanych trybów awarii. W tym projekcie o wysokiej dostępności usługa Azure AD nie wymaga żadnych przestojów w przypadku działań konserwacyjnych.
 
 Projekt partycji usługi Azure AD jest uproszczony w porównaniu do organizacyjnego projektu usługi AD, przy użyciu projekt pojedynczego elementu głównego, który obejmuje starannie zorganizowany i deterministyczny replikę podstawową procesu trybu failover.
 
@@ -73,7 +73,7 @@ Operacje odczytu (których liczba jest wiele rzędów wielkości większa od ope
 
 **Trwałość danych**
 
-Zapisu jest trwale zatwierdzana w co najmniej dwóch centrach danych przed potwierdzeniem. Dzieje się to pierwsze zatwierdzenie zapisu na serwerze podstawowym, a następnie natychmiast replikowana do co najmniej jednego innego centrum danych zapisu. Ta akcja zapisu gwarantuje, że potencjalna krytyczna utrata centrum danych hostujące podstawowego nie powoduje utraty danych.
+Zapis jest trwale zatwierdzany do co najmniej dwóch centrów danych przed potwierdzeniem. Jest to wykonywane przez pierwsze zatwierdzenie zapisu na serwerze podstawowym, a następnie natychmiastowe replikowanie zapisu do co najmniej jednego innego centrum danych. Ta akcja zapisu zapewnia, że potencjalna strata centrum danych, w którym znajduje się podstawowy, nie powoduje utraty.
 
 Usługa Azure AD obsługuje zerowy [cel czasu odzyskiwania (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) nie utratę danych w tryb failover. Obejmuje to:
 -  Wystawiania tokenów i operacje odczytu z katalogu
@@ -83,11 +83,11 @@ Usługa Azure AD obsługuje zerowy [cel czasu odzyskiwania (RTO)](https://en.wik
 
 Repliki usługi Azure AD są przechowywane w centrach danych znajdujących się na całym świecie. Aby uzyskać więcej informacji, zobacz [globalna infrastruktura platformy Azure](https://azure.microsoft.com/global-infrastructure/).
 
-Usługa Azure AD działa w centrach danych o następującej charakterystyce:
+Usługa Azure AD działa w centrach danych o następujących cechach:
 
- * Uwierzytelnianie, wykresu i inne usługi AD znajdują się za usługą bramy. Brama zarządza równoważeniem obciążenia tych usług. Zakończy się niepowodzeniem przez automatycznie wszystkie serwery w złej kondycji w przypadku wykrycia użycie sond kondycji transakcyjnych. Oparte na tych sond kondycji, brama dynamicznie kieruje ruch do centrów danych w dobrej kondycji.
- * Aby uzyskać *odczytuje*, katalog posiada repliki pomocnicze i odpowiednie usługi frontonu w konfiguracji aktywne aktywne działające w wielu centrach danych. W razie awarii całego centrum danych ruch zostanie automatycznie skierowany do innego centrum danych.
- *  Dla *zapisuje*, katalog przejdzie w tryb failover repliki podstawowej (głównej) w centrach danych za pośrednictwem planowanych (nowe podstawowa jest synchronizowana ze starego podstawowego) lub procedur awaryjnych trybu failover. Trwałość danych jest zapewniana przez replikowanie każdego zatwierdzenia do co najmniej dwóch centrach danych.
+ * Uwierzytelnianie, wykresu i inne usługi AD znajdują się za usługą bramy. Brama zarządza równoważeniem obciążenia tych usług. Zakończy się niepowodzeniem przez automatycznie wszystkie serwery w złej kondycji w przypadku wykrycia użycie sond kondycji transakcyjnych. W oparciu o te sondy kondycji Brama dynamicznie kieruje ruch do centrów danych w dobrej kondycji.
+ * W przypadku operacji *odczytu*katalog ma repliki pomocnicze i odpowiadające im usługi frontonu w konfiguracji aktywne-aktywne działające w wielu centrach danych. W przypadku awarii całego centrum danych ruch zostanie automatycznie przekierowany do innego centrum.
+ *  W przypadku *operacji zapisu*katalog przejdzie do trybu failover (Master) repliki w centrach danych przez zaplanowaną (Nowa podstawowa jest synchronizowana z poprzednimi podstawowymi) lub awaryjnymi procedurami przełączania awaryjnego. Trwałość danych jest uzyskiwana przez replikację wszelkich zatwierdzeń do co najmniej dwóch centrum danych.
 
 **Spójność danych**
 
@@ -95,7 +95,7 @@ Model katalogu to jeden z ostateczną wyborami. Jednym z typowych problemów z s
 
 Usługa Azure AD zapewnia spójność odczytu i zapisu dla aplikacji działających w ramach repliki pomocniczej, kierując jej operacje zapisu do repliki podstawowej i synchronicznie pobierając operacje zapisu do repliki pomocniczej.
 
-Operacje zapisu aplikacji wykonywane za pomocą interfejsu API programu Graph usługi Azure AD są odseparowane od operacji zapewniania koligacji z repliką katalogu w celu zapewnienia spójności odczytu i zapisu. Usługa Azure AD Graph obsługuje sesję logiczną będącą w koligacji do repliki pomocniczej, używaną do operacji odczytu; koligacja jest przechwytywana w ramach "tokenu repliki", czy usługa programu graph zapisuje w pamięci podręcznej za pomocą rozproszonej pamięci podręcznej w centrum danych repliki pomocniczej. Token ten jest następnie używany na potrzeby kolejnych operacji w ramach tej samej sesji logicznej. Aby nadal korzystać z tej samej sesji logicznej, kolejne żądania muszą być kierowane do tego samego centrum danych usługi Azure AD. Nie jest możliwe kontynuować sesję logiczną, jeśli klient directory żądania są rozsyłane do wielu usługi Azure AD centrach danych; w takim przypadku klient ma wiele sesji logiczne, które mają niezależne wyborami odczytu i zapisu.
+Operacje zapisu aplikacji wykonywane za pomocą interfejsu API programu Graph usługi Azure AD są odseparowane od operacji zapewniania koligacji z repliką katalogu w celu zapewnienia spójności odczytu i zapisu. Usługa Azure AD Graph obsługuje sesję logiczną, która ma koligację z repliką pomocniczą używaną do odczytu; koligacja jest przechwytywana w "token repliki", który usługa grafuje pamięci podręcznej za pomocą rozproszonej pamięci podręcznej w pomocniczym centrum danych repliki. Token ten jest następnie używany na potrzeby kolejnych operacji w ramach tej samej sesji logicznej. Aby nadal używać tej samej sesji logicznej, kolejne żądania muszą być kierowane do tego samego centrum danych usługi Azure AD. Nie można kontynuować sesji logicznej, jeśli żądania klienta katalogu są kierowane do wielu centrów danych usługi Azure AD; w takim przypadku klient ma wiele sesji logicznych, które mają niezależne spójności odczytu i zapisu.
 
  >[!NOTE]
  >Operacje zapisu są natychmiast replikowane do repliki pomocniczej, dla której zostały utworzone operacje odczytu sesji logicznej.

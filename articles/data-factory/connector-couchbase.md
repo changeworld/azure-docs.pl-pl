@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 27f327493fbf3d7856b9488ecd0dd2509976ccfc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3cd734380e2a3e3fbf35439ff807738c549a086
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60533985"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726144"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopiowanie danych z Couchbase przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -44,8 +44,8 @@ Następujące właściwości są obsługiwane w przypadku Couchbase połączone 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Couchbase** | Yes |
-| connectionString | Ciąg połączenia ODBC, aby nawiązać połączenie Couchbase. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również umieścić ciąg poświadczeń w usłudze Azure Key Vault i ściągania `credString` konfiguracji poza parametry połączenia. Zobacz poniższe przykłady i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **Couchbase** | Tak |
+| connectionString | Ciąg połączenia ODBC, aby nawiązać połączenie Couchbase. <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Można również umieścić ciąg poświadczeń w Azure Key Vault i ściągnąć `credString` konfigurację z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
@@ -69,7 +69,7 @@ Następujące właściwości są obsługiwane w przypadku Couchbase połączone 
 }
 ```
 
-**Przykład: przechowywanie ciąg poświadczeń w usłudze Azure Key Vault**
+**Przykład: Przechowuj ciąg poświadczeń w Azure Key Vault**
 
 ```json
 {
@@ -106,7 +106,7 @@ Aby skopiować dane z Couchbase, należy ustawić właściwość typu zestawu da
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **CouchbaseTable** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **CouchbaseTable** | Yes |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 
@@ -117,11 +117,12 @@ Aby skopiować dane z Couchbase, należy ustawić właściwość typu zestawu da
     "name": "CouchbaseDataset",
     "properties": {
         "type": "CouchbaseTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Couchbase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -136,7 +137,7 @@ Aby skopiować dane z Couchbase, należy ustawić typ źródła w działaniu kop
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **CouchbaseSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **CouchbaseSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

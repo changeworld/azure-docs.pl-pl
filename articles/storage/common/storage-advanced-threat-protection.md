@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5d0b41344f4a77f3205799be7c30526e2a150523
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bb2d5733704b0b31dc010cec2a90e99e1be07b56
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479918"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592033"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Usługa Advanced Threat Protection dla usługi Azure Storage
 
@@ -37,7 +37,7 @@ Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage umożliwia po
 2. Przejdź do strony konfiguracji konta usługi Azure Storage, które chcesz chronić. Na stronie **Ustawienia** wybierz pozycję zaawansowana **Ochrona przed zagrożeniami**.
 
 3. W bloku konfiguracja **zaawansowanej ochrony przed zagrożeniami**
-    * Włącz  zaawansowaną *ochronę przed zagrożeniami*
+    * Włącz zaawansowaną *ochronę przed zagrożeniami*
     * Kliknij przycisk **Zapisz** , aby zapisać nowe lub zaktualizowane zasady zaawansowanej ochrony przed zagrożeniami. (Ceny na obrazie są tylko do celów).
 
 ![Włączanie zaawansowanej ochrony przed zagrożeniami w usłudze Azure Storage](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
@@ -46,7 +46,7 @@ Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage umożliwia po
 
 Gdy subskrybujesz warstwę Standardowa w Azure Security Center, zaawansowana ochrona przed zagrożeniami jest automatycznie skonfigurowana na wszystkich kontach magazynu. Możesz włączyć lub wyłączyć zaawansowaną ochronę przed zagrożeniami dla kont magazynu w ramach określonej subskrypcji w następujący sposób:
 
-1. Uruchom **Azure Security Center** w [Azure Portal]([https://portal.azure.com).
+1. Uruchom **Azure Security Center** w [Azure Portal](https://portal.azure.com).
 1. W menu głównym kliknij pozycję **Cennik ustawienia &** .
 1. Kliknij subskrypcję, którą chcesz włączyć lub wyłączyć ochronę przed zagrożeniami dla swoich kont magazynu.
 

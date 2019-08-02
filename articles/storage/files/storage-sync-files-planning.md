@@ -1,81 +1,80 @@
 ---
-title: Planowanie wdrożenia usługi Azure File Sync | Dokumentacja firmy Microsoft
-description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdrożenia usługi Azure Files.
-services: storage
+title: Planowanie wdrożenia Azure File Sync | Microsoft Docs
+description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdrożenia Azure Files.
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e9e790ac8ac67478a0e7b5143a5b2f1fdd9c790c
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: f89e7307d75b159886cb47bde3e1fceb5ed557f5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798665"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699341"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
-Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
+Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
 
-W tym artykule opisano istotne zagadnienia dotyczące wdrożenia usługi Azure File Sync. Firma Microsoft zaleca się również przeczytanie [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md). 
+W tym artykule opisano ważne zagadnienia dotyczące wdrażania Azure File Sync. Zalecamy także zapoznanie się z [planowaniem wdrożenia Azure Files](storage-files-planning.md). 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="azure-file-sync-terminology"></a>Terminologii platformy Azure File Sync
-Przed przejściem do szczegółów Planowanie wdrażania usługi Azure File Sync, koniecznie zapoznaj się z terminologią.
+## <a name="azure-file-sync-terminology"></a>Terminologia Azure File Sync
+Przed zapoznaj się ze szczegółowymi informacjami o planowaniu wdrożenia Azure File Sync, ważne jest zrozumienie terminologii.
 
 ### <a name="storage-sync-service"></a>Usługa synchronizacji magazynu
-Usługa synchronizacji magazynu jest najwyższego poziomu zasobów platformy Azure dla usługi Azure File Sync. Zasób usługi synchronizacji magazynu jest równorzędny zasób konta magazynu i podobnie można wdrożyć dla grup zasobów platformy Azure. Odrębne zasobem najwyższego poziomu z zasobu konta magazynu jest wymagana, ponieważ usługa synchronizacji magazynu można utworzyć relacji synchronizacji z wieloma kontami magazynu przy użyciu wielu grup synchronizacji. Subskrypcja może mieć wiele zasobów Usługa synchronizacji magazynu wdrożone.
+Usługa synchronizacji magazynu jest zasobem platformy Azure najwyższego poziomu dla Azure File Sync. Zasób usługi synchronizacji magazynu jest elementem równorzędnym zasobu konta magazynu i można go również wdrożyć w grupach zasobów platformy Azure. Wymagany jest odrębny zasób najwyższego poziomu z zasobu konta magazynu, ponieważ usługa synchronizacji magazynu może tworzyć relacje synchronizacji z wieloma kontami magazynu za pośrednictwem wielu grup synchronizacji. W subskrypcji może być wdrożonych wiele zasobów usługi synchronizacji magazynu.
 
 ### <a name="sync-group"></a>Grupa synchronizacji
-Grupa synchronizacji definiuje topologię synchronizacji dla zestawu plików. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Jeśli na przykład masz dwa odrębne rodzaje plików, które mają być zarządzane za pomocą usługi Azure File Sync, czy utworzyć dwie grupy synchronizacji i dodać różne punkty końcowe do każdej grupy synchronizacji. Usługa synchronizacji magazynu może obsługiwać dowolną liczbę grup synchronizacji.  
+Grupa synchronizacji definiuje topologię synchronizacji dla zestawu plików. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Jeśli na przykład istnieją dwa odrębne zestawy plików, którymi chcesz zarządzać za pomocą Azure File Sync, utworzysz dwie grupy synchronizacji i dodasz różne punkty końcowe do każdej grupy synchronizacji. Usługa synchronizacji magazynu może hostować dowolną liczbę grup synchronizacji.  
 
 ### <a name="registered-server"></a>Zarejestrowany serwer
-Obiekt zarejestrowanego serwera reprezentuje relację zaufania między serwerem (lub klastra) i usługę synchronizacji magazynu. Możesz zarejestrować dowolną liczbę serwerów do wystąpienia usługi synchronizacji magazynu jak chcesz. Jednak serwer (lub klastrowy) można zarejestrować przy użyciu tylko jednej usługi synchronizacji magazynu w danym momencie.
+Zarejestrowany obiekt serwera reprezentuje relację zaufania między serwerem (lub klastrem) a usługą synchronizacji magazynu. Możesz zarejestrować dowolną liczbę serwerów w wystąpieniu usługi synchronizacji magazynu. Jednak serwer (lub klaster) można zarejestrować tylko w jednej usłudze synchronizacji magazynu jednocześnie.
 
-### <a name="azure-file-sync-agent"></a>Agent usługi Azure File Sync
-Agent usługi Azure File Sync to możliwy do pobrania pakiet, który umożliwia synchronizowanie systemu Windows Server z udziałem plików platformy Azure. Agent usługi Azure File Sync ma trzy główne składniki: 
-- **FileSyncSvc.exe**: Tło, usługa Windows, który jest odpowiedzialny za monitorowanie zmian na punkty końcowe serwera i inicjowania sesji synchronizacji na platformie Azure.
-- **StorageSync.sys**: Filtr systemu plików usługi Azure File Sync, która jest odpowiedzialna za warstw pliki do usługi Azure Files (po chmurze warstw jest włączona).
-- **Polecenia cmdlet programu PowerShell do zarządzania**: Polecenia cmdlet programu PowerShell, który jest używany do interakcji z dostawcy zasobów platformy Microsoft.StorageSync Azure. Dane można znaleźć w następujących lokalizacjach (ustawienie domyślne):
+### <a name="azure-file-sync-agent"></a>Agent Azure File Sync
+Agent usługi Azure File Sync to możliwy do pobrania pakiet, który umożliwia synchronizowanie systemu Windows Server z udziałem plików platformy Azure. Agent Azure File Sync ma trzy główne składniki: 
+- **FileSyncSvc.exe**: Usługa w tle systemu Windows, która jest odpowiedzialna za monitorowanie zmian w punktach końcowych serwera oraz Inicjowanie sesji synchronizacji z platformą Azure.
+- **StorageSync. sys**: Filtr systemu plików Azure File Sync, który jest odpowiedzialny za pliki warstwowe do Azure Files (w przypadku włączenia obsługi warstw w chmurze).
+- **Polecenia cmdlet zarządzania programu PowerShell**: Polecenia cmdlet programu PowerShell, które służą do współpracy z dostawcą zasobów Microsoft. StorageSync. Można je znaleźć w następujących (domyślnych) lokalizacjach:
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>Punkt końcowy serwera
-Punkt końcowy serwera reprezentuje określoną lokalizację na zarejestrowanym serwerze, taką jak folder na woluminie serwera. Wiele punktów końcowych serwera może istnieć na tym samym woluminie, jeśli nie pokrywają się ich przestrzenie nazw (na przykład `F:\sync1` i `F:\sync2`). Można skonfigurować zasad obsługi warstw chmury osobno dla każdego punktu końcowego serwera. 
+Punkt końcowy serwera reprezentuje określoną lokalizację na zarejestrowanym serwerze, taką jak folder na woluminie serwera. Wiele punktów końcowych serwera może istnieć na tym samym woluminie, jeśli ich przestrzenie nazw nie `F:\sync1` nakładają się na siebie (na przykład i `F:\sync2`). Zasady dotyczące warstw chmurowych można skonfigurować osobno dla każdego punktu końcowego serwera. 
 
-Możesz utworzyć punkt końcowy serwera za pośrednictwem punktu instalacji. Należy zauważyć, że punkty instalacji, w ramach punktu końcowego serwera są pomijane.  
+Punkt końcowy serwera można utworzyć za pomocą mountpoint. Należy pamiętać, że mountpoints w punkcie końcowym serwera są pomijane.  
 
-Możesz utworzyć punkt końcowy serwera na woluminie systemowym, ale istnieją dwa ograniczenia, jeśli możesz to zrobić:
-* Chmura nie można włączyć obsługi warstw.
-* Nie jest wykonywane Przywracanie szybkie przestrzeni nazw (gdzie system szybko Przesuwa w dół całej przestrzeni nazw, a następnie uruchamia przywołanie zawartości).
+Można utworzyć punkt końcowy serwera na woluminie systemowym, ale istnieją dwa ograniczenia, jeśli to zrobisz:
+* Nie można włączyć obsługi warstw w chmurze.
+* Szybkie przywracanie przestrzeni nazw (gdzie system szybko wyłącza całą przestrzeń nazw, a następnie rozpoczyna odwoływanie zawartości) nie jest wykonywane.
 
 
 > [!Note]  
-> Obsługiwane są tylko woluminy niewymienne.  Dyski mapowane z udziału zdalnego nie są obsługiwane dla ścieżkę punktu końcowego serwera.  Ponadto punkt końcowy serwera może znajdować się na Windows wolumin systemowy jednak chmury obsługi warstw nie jest obsługiwane na woluminie systemowym.
+> Obsługiwane są tylko woluminy niewymienne.  Dyski mapowane z udziału zdalnego nie są obsługiwane dla ścieżki punktu końcowego serwera.  Ponadto punkt końcowy serwera może znajdować się na woluminie systemu Windows, chociaż Obsługa warstw w chmurze nie jest obsługiwana na woluminie systemowym.
 
-Jeśli dodasz lokalizacji serwera, z istniejącego zestawu plików jako punkt końcowy serwera z grupą synchronizacji, te pliki są scalane z innymi plikami, które już znajdują się na inne punkty końcowe w grupie synchronizacji.
+W przypadku dodania lokalizacji serwera, która ma istniejący zestaw plików jako punkt końcowy serwera do grupy synchronizacji, te pliki są scalane z innymi plikami, które znajdują się już w innych punktach końcowych w grupie synchronizacji.
 
 ### <a name="cloud-endpoint"></a>Punkt końcowy w chmurze
-Punkt końcowy w chmurze jest udział plików platformy Azure, która jest częścią grupy synchronizacji. Synchronizacje udziału plików platformy Azure cały i udziału plików platformy Azure mogą należeć do punktu końcowego tylko jedna chmura. W związku z tym udziału plików platformy Azure mogą należeć do tylko jednej grupy synchronizacji. Jeśli dodasz udział plików platformy Azure z istniejącej grupy plików jako punktu końcowego w chmurze z grupą synchronizacji, istniejące pliki są scalane z innymi plikami, które już znajdują się na inne punkty końcowe w grupie synchronizacji.
+Punkt końcowy w chmurze to udział plików platformy Azure, który jest częścią grupy synchronizacji. Cała synchronizacja udziału plików platformy Azure i udział plików platformy Azure mogą być elementami członkowskimi tylko jednego punktu końcowego w chmurze. W związku z tym udział plików platformy Azure może być członkiem tylko jednej grupy synchronizacji. Jeśli dodasz udział plików platformy Azure, który ma istniejący zestaw plików jako punkt końcowy w chmurze do grupy synchronizacji, istniejące pliki zostaną scalone z innymi plikami, które znajdują się już w innych punktach końcowych w grupie synchronizacji.
 
 > [!Important]  
-> Usługa Azure File Sync nie obsługuje bezpośrednio wprowadzania zmian do udziału plików platformy Azure. Jednak wszelkie zmiany wprowadzone w udziale plików platformy Azure najpierw konieczne ich odnalezienie przez zadanie wykrywania zmian usługi Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego w chmurze tylko raz na 24 godziny. Ponadto zmiany wprowadzone do udziału plików platformy Azure za pośrednictwem protokołu REST nie może zaktualizować SMB godzina ostatniej modyfikacji i nie będą widoczne jako zmiany przez sync. Aby uzyskać więcej informacji, zobacz [usługi Azure Files — często zadawane pytania](storage-files-faq.md#afs-change-detection).
+> Azure File Sync obsługuje wprowadzanie zmian bezpośrednio w udziale plików platformy Azure. Jednak wszelkie zmiany wprowadzone w udziale plików platformy Azure najpierw muszą zostać odnalezione za pomocą zadania wykrywania zmian Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego w chmurze tylko raz na 24 godziny. Ponadto zmiany wprowadzone w udziale plików platformy Azure za pośrednictwem protokołu REST nie będą aktualizować czasu ostatniej modyfikacji SMB i nie będą widoczne jako zmiany przez synchronizację. Aby uzyskać więcej informacji, zobacz [Azure Files często zadawanych pytań](storage-files-faq.md#afs-change-detection).
 
 ### <a name="cloud-tiering"></a>Obsługa warstw w chmurze 
-Chmura warstw to opcjonalna funkcja usługi Azure File Sync, w których często używanych plików są buforowane lokalnie na serwerze, podczas gdy inne pliki są organizowane w warstwy do usługi Azure Files na podstawie ustawień zasad. Aby uzyskać więcej informacji, zobacz [Obsługa poziomów w chmurze opis](storage-sync-cloud-tiering.md).
+Obsługa warstw w chmurze jest opcjonalną funkcją Azure File Sync, w której często używane pliki są buforowane lokalnie na serwerze, podczas gdy wszystkie inne pliki są warstwami do Azure Files na podstawie ustawień zasad. Aby uzyskać więcej informacji, zobacz [Omówienie obsługi warstw w chmurze](storage-sync-cloud-tiering.md).
 
-## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Wymagania systemowe w usłudze Azure File Sync i współdziałanie 
-Tej sekcji omówiono wymagania systemowe agenta usługi Azure File Sync i współdziałanie z funkcji systemu Windows Server oraz role i rozwiązań innych firm.
+## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Azure File Sync wymagania systemowe i współdziałanie 
+W tej części omówiono wymagania systemowe Azure File Sync agenta i współdziałanie z funkcjami i rolami systemu Windows Server oraz rozwiązaniami innych firm.
 
-### <a name="evaluation-cmdlet"></a>Polecenia cmdlet oceny
-Przed wdrożeniem usługi Azure File Sync, należy ocenić, czy jest on zgodny z systemu za pomocą polecenia cmdlet usługi Azure File Sync w wersji ewaluacyjnej. To polecenie cmdlet sprawdza pod kątem potencjalnych problemów za pomocą systemu plików i zestaw danych, takimi jak nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Należy zauważyć, że najbardziej obejmują jego sprawdzanie, ale nie wszystkie funkcje wymienione poniżej; Zalecamy przeczytanie pozostałej części tej sekcji, aby upewnić się, że Twoje wdrożenie zostanie umieszczone sprawnie. 
+### <a name="evaluation-cmdlet"></a>Polecenie cmdlet do oceny
+Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem przy użyciu polecenia cmdlet do oceny Azure File Sync. To polecenie cmdlet sprawdza potencjalne problemy z systemem plików i zestawem danych, na przykład nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Należy zauważyć, że sprawdzenia te obejmują większość funkcji wymienionych poniżej: Zalecamy zapoznanie się z pozostałą częścią tej sekcji, aby upewnić się, że wdrożenie przebiega bezproblemowo. 
 
-Polecenia cmdlet oceny można zainstalować po zainstalowaniu modułu programu Az PowerShell, którą można zainstalować, wykonując instrukcje podane w tym miejscu: [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+Polecenie cmdlet do oceny można zainstalować, instalując moduł AZ PowerShell module, który można zainstalować, postępując zgodnie z poniższymi instrukcjami: [Zainstaluj i skonfiguruj Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
 #### <a name="usage"></a>Użycie  
-Narzędzie oceny można wywołać na kilka różnych sposobów: możesz wykonać testy systemu i/lub sprawdzenia zestawu danych. Aby wykonać testy systemu i zestaw danych: 
+Narzędzie do oceny można wywołać na kilka różnych sposobów: można wykonać testy systemowe, zestawy danych lub oba te elementy. Aby przeprowadzić testy systemu i zestawu danych: 
 
 ```powershell
     Invoke-AzStorageSyncCompatibilityCheck -Path <path>
@@ -102,151 +101,151 @@ Aby wyświetlić wyniki w formacie CSV:
 
     | Version | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
     |---------|----------------|------------------------------|
-    | Windows Server 2019 | Wersja Datacenter i Standard | Pełnej i Core |
-    | Windows Server 2016 | Wersja Datacenter i Standard | Pełnej i Core |
-    | Windows Server 2012 R2 | Wersja Datacenter i Standard | Pełnej i Core |
+    | Windows Server 2019 | Centrum danych i Standard | Pełne i podstawowe |
+    | Windows Server 2016 | Centrum danych i Standard | Pełne i podstawowe |
+    | Windows Server 2012 R2 | Centrum danych i Standard | Pełne i podstawowe |
 
-    Przyszłych wersjach systemu Windows Server zostanie dodana po ich wydaniu.
+    Przyszłe wersje systemu Windows Server zostaną dodane po ich wydaniu.
 
     > [!Important]  
-    > Zaleca się pozostawienie wszystkich serwerów, które używają usługi Azure File Sync na bieżąco z najnowszymi aktualizacjami z witryny Windows Update. 
+    > Zalecamy przechowywanie wszystkich serwerów, które są używane z programem Azure File Sync z najnowszymi aktualizacjami z Windows Update. 
 
 - Serwer z co najmniej 2 GiB pamięci.
 
     > [!Important]  
-    > Jeśli serwer jest uruchomiony na maszynie wirtualnej z obsługą pamięci dynamicznej, minimalna MiB 2048 pamięci należy skonfigurować maszynę Wirtualną.
+    > Jeśli serwer jest uruchomiony na maszynie wirtualnej z włączoną pamięcią dynamiczną, maszyna wirtualna powinna mieć skonfigurowaną minimalną 2048 MiB pamięci.
     
-- Podłączonych lokalnie woluminie sformatowanym w systemie plików NTFS.
+- Lokalnie dołączony wolumin sformatowany przy użyciu systemu plików NTFS.
 
 ### <a name="file-system-features"></a>Funkcje systemu plików
 
-| Cecha | Stan obsługi | Uwagi |
+| Cecha | Stan pomocy technicznej | Uwagi |
 |---------|----------------|-------|
-| Listy kontroli dostępu (ACL) | W pełni obsługiwane | Listy kontroli dostępu Windows są zachowywane przez usługę Azure File Sync i są wymuszane przez system Windows Server w punktach końcowych serwera. Windows list ACL nie są (jeszcze) obsługiwane przez usługi Azure Files, jeśli pliki są dostępne bezpośrednio w chmurze. |
+| Listy kontroli dostępu (ACL) | W pełni obsługiwane | Listy ACL systemu Windows są zachowywane przez Azure File Sync i są wymuszane przez system Windows Server w punktach końcowych serwera. Listy ACL systemu Windows nie są jeszcze obsługiwane przez Azure Files, jeśli pliki są dostępne bezpośrednio w chmurze. |
 | Twarde linki | Pominięte | |
 | Linki symboliczne | Pominięte | |
-| Punkty instalacji | Częściowo obsługiwane | Punkty instalacji może być katalog główny punkt końcowy serwera, ale są one pomijane, jeśli są one w przestrzeni nazw punktu końcowego serwera. |
-| Punktach transferu | Pominięte | Na przykład Distributed pliku System DfrsrPrivate i DFSRoots folderów. |
+| Punkty instalacji | Częściowo obsługiwane | Punkty instalacji mogą być głównym punktem końcowym serwera, ale są pomijane, jeśli są zawarte w przestrzeni nazw punktu końcowego serwera. |
+| Połączenia | Pominięte | Na przykład rozproszony system plików folderów DfrsrPrivate i DFSRoots. |
 | Punkty ponownej analizy | Pominięte | |
 | Kompresja NTFS | W pełni obsługiwane | |
-| Pliki rozrzedzone | W pełni obsługiwane | Synchronizacja plików rozrzedzonych (nie są blokowane), ale synchronizacja z chmurą jako cały plik. Zmiana zawartości pliku w chmurze (lub na innym serwerze), plik nie jest już rozrzedzony, gdy zmiany zostały pobrane. |
-| Alternatywne strumienie danych (AD) | Zachowane, ale nie zsynchronizowano | Na przykład klasyfikacji tagów, utworzonych przez infrastrukturę klasyfikacji plików, nie są synchronizowane. Istniejące tagi klasyfikacji plików na każdym punkty końcowe serwera są lewej bez zmian. |
+| Pliki rozrzedzone | W pełni obsługiwane | Pliki rozrzedzone — synchronizacja (nie są blokowane), ale są synchronizowane z chmurą jako pełny plik. Jeśli zawartość pliku zostanie zmieniona w chmurze (lub na innym serwerze), plik nie jest już rozrzedzony, gdy zmiana zostanie pobrana. |
+| Alternatywne strumienie danych (ADS) | Zachowane, ale nie zsynchronizowane | Na przykład Tagi klasyfikacji utworzone przez infrastrukturę klasyfikacji plików nie są synchronizowane. Istniejące znaczniki klasyfikacji dla plików na każdym z punktów końcowych serwera pozostaną niezmienione. |
 
 > [!Note]  
-> Obsługiwane są tylko woluminy systemu plików NTFS. System plików reFS, FAT, FAT32 i innych systemów plików nie są obsługiwane.
+> Obsługiwane są tylko woluminy NTFS. Systemy plików ReFS, FAT, FAT32 i inne nie są obsługiwane.
 
-### <a name="files-skipped"></a>Zostały pominięte
+### <a name="files-skipped"></a>Pominięte pliki
 
-| Plik lub folder | Uwaga |
+| Plik/folder | Uwaga |
 |-|-|
-| Desktop.ini | Specyficzne dla systemu plików |
+| Desktop.ini | Plik specyficzny dla systemu |
 | ethumbs.db$ | Plik tymczasowy dla miniatur |
 | ~$\*.\* | Plik tymczasowy pakietu Office |
 | \*.tmp | Plik tymczasowy |
-| \*.laccdb | Dostęp do bazy danych, blokowanie pliku|
-| 635D02A9D91C401B97884B82B3BCDAEA.* | Wewnętrzny plik synchronizacji|
-| \\Informacji o woluminie systemowym | Folder specyficzne dla woluminu |
-| $RECYCLE.BIN| Folder |
-| \\SyncShareState | Folder synchronizacji |
+| \*.laccdb | Plik blokowania dostępu do bazy danych|
+| 635D02A9D91C401B97884B82B3BCDAEA.* | Plik synchronizacji wewnętrznej|
+| \\Informacje o woluminie systemowym | Folder określony dla woluminu |
+| $RECYCLE. OKREŚLONEJ| Folder |
+| \\SyncShareState | Folder do synchronizacji |
 
 ### <a name="failover-clustering"></a>Klaster trybu failover
-Windows Server Failover Clustering jest obsługiwany przez usługę Azure File Sync w opcji "Serwer plików do użytku ogólnego". Klaster trybu failover nie jest obsługiwana w "Serwer plików skalowalny w poziomie dla danych aplikacji" (SOFS) lub na udostępnionych woluminów klastra (CSV).
+Usługa Windows Server Failover Clustering jest obsługiwana przez Azure File Sync dla opcji wdrażania "serwer plików do użytku ogólnego". Klaster trybu failover nie jest obsługiwany na serwerze plików skalowalnym w poziomie dla danych aplikacji (SOFS) lub na udostępnionych woluminach klastra (CSV).
 
 > [!Note]  
-> W każdym węźle w klastrze trybu Failover w celu synchronizacji działała prawidłowo, musi być zainstalowany agent usługi Azure File Sync.
+> Aby synchronizacja działała poprawnie, Agent Azure File Sync musi być zainstalowany na każdym węźle w klastrze trybu failover.
 
-### <a name="data-deduplication"></a>Funkcja deduplikacji danych
-**Wersja agenta 5.0.2.0 lub nowszej**   
-Funkcja deduplikacji danych jest obsługiwana w woluminach z obsługi warstw włączone w systemie Windows Server 2016 i Windows Server 2019 w chmurze. Włączanie deduplikacji danych na woluminie z obsługi warstw włączone w chmurze pozwala bez inicjowania obsługi administracyjnej więcej miejsca w pamięci podręcznej więcej plików lokalnych. 
+### <a name="data-deduplication"></a>Deduplikacja danych
+**Agent w wersji 5.0.2.0 lub nowszej**   
+Funkcja deduplikacji danych jest obsługiwana na woluminach z włączoną obsługą warstw w chmurze w systemach Windows Server 2016 i Windows Server 2019. Włączenie deduplikacji danych na woluminie z włączonym obsługą usług Cloud Storage umożliwia przechowywanie w pamięci podręcznej większej liczby plików bez udostępniania większej ilości miejsca w magazynie. 
 
-Po włączeniu deduplikacji danych na woluminie z chmurą warstw włączone deduplikacji zoptymalizowane pliki znajdujące się w lokalizacji punktu końcowego serwera będą umieszczane w podobny do zwykłego pliku oparte na chmurze obsługi warstw na ustawienia zasad. Po deduplikacji zasadami warstwowej zoptymalizowane pliki, zadania odzyskiwania pamięci deduplikacji danych zostanie uruchomiony automatycznie, aby odzyskać miejsce na dysku przez usunięcie niepotrzebnych fragmentów, które nie są już używane przez inne pliki na woluminie.
+Po włączeniu deduplikacji danych na woluminie z włączonym obsługą obsługi warstw w chmurze pliki zoptymalizowane pod kątem deduplikacji w lokalizacji punktu końcowego serwera będą warstwowo podobne do normalnego pliku na podstawie ustawień zasad dotyczących warstw chmurowych. Po przeprowadzeniu warstwowych plików zoptymalizowanych pod kątem deduplikacji zadanie odzyskiwania pamięci deduplikacji danych zostanie automatycznie uruchomione w celu odtworzenia miejsca na dysku przez usunięcie niepotrzebnych fragmentów, do których nie odwołują się już inne pliki w woluminie.
 
-Należy pamiętać, że oszczędności zbiorowego mają zastosowanie tylko do serwera; dane w udziale plików platformy Azure nie będzie można deduplikacją.
+Zwróć uwagę, że oszczędności woluminu dotyczą tylko serwera programu; Twoje dane w udziale plików platformy Azure nie zostaną deduplikowane.
 
-**Windows Server 2012 R2 lub starszych wersji agenta**  
-W przypadku woluminów, które nie mają obsługi warstw włączone w chmurze usługi Azure File Sync obsługuje deduplikacji danych systemu Windows Server z włączane na woluminie.
+**Windows Server 2012 R2 lub starsze wersje agenta**  
+W przypadku woluminów, które nie mają włączonej obsługi warstw w chmurze, Azure File Sync obsługuje funkcję deduplikacji danych systemu Windows Server na woluminie.
 
 **Uwagi**
-- Jeśli Deduplikacja danych jest zainstalowany przed zainstalowaniem agenta usługi Azure File Sync, ponowne uruchomienie jest wymagany do obsługi funkcji deduplikacji danych i obsługi warstw na tym samym woluminie w chmurze.
-- Po włączeniu deduplikacji danych na woluminie po chmurze warstw jest włączona, początkowe zadanie optymalizacji deduplikacji zoptymalizuje plików na woluminie, które nie są już warstwy i będą miały wpływ następujące w chmurze warstw:
-    - Zasady wolnego miejsca będzie warstwy zgodnie z wolnego miejsca na woluminie plików za pomocą mapy cieplnej.
-    - Data zasad pozwoli na pominięcie warstw plików, które mogły być inaczej kwalifikuje się do warstwy z powodu zadań optymalizacji deduplikacji, dostęp do plików.
-- Trwających zadań optymalizacji deduplikacji, obsługi warstw przy użyciu zasad Data w chmurze będzie pobrać opóźnione przez funkcję deduplikacji danych [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) ustawienie, jeśli plik nie jest już warstwowego. 
-    - Przykład: Jeśli ustawienie MinimumFileAgeDays wynosi 7 dni, a zasady Data obsługi warstw w chmurze wynosi 30 dni, Data zasad będzie warstw plików po siedem dni.
-    - Uwaga: Gdy plik jest warstwowa przez usługę Azure File Sync, zadanie optymalizacji deduplikacji pominie ten plik.
-- Jeśli na serwerze z systemem Windows Server 2012 R2 z zainstalowanym agentem usługi Azure File Sync jest uaktualniany do systemu Windows Server 2016 lub Windows Server 2019, poniższe kroki należy wykonać, aby obsługuje deduplikacji danych i obsługi warstw na tym samym woluminie w chmurze:  
-    - Odinstaluj agenta usługi Azure File Sync systemu Windows Server 2012 R2, a następnie uruchom ponownie serwer.
-    - Pobierz agenta usługi Azure File Sync z nową wersją systemu operacyjnego serwera (system Windows Server 2016 lub Windows Server 2019).
-    - Zainstaluj agenta usługi Azure File Sync, a następnie uruchom ponownie serwer.  
+- Jeśli Deduplikacja danych jest zainstalowana przed zainstalowaniem agenta Azure File Sync, ponowne uruchomienie jest wymagane do obsługi deduplikacji danych i warstw w chmurze na tym samym woluminie.
+- Jeśli Deduplikacja danych jest włączona w woluminie po włączeniu obsługi warstw w chmurze, początkowe zadanie optymalizacji deduplikacji zoptymalizuje pliki na woluminie, które nie są jeszcze warstwowe i będą miały następujący wpływ na obsługę warstw w chmurze:
+    - Zasady wolnego miejsca będą nadal korzystać z warstw plików zgodnie z ilością wolnego miejsca na woluminie przy użyciu mapę cieplną.
+    - Zasady dotyczące dat spowodują pominięcie warstw plików, które mogą być w inny sposób kwalifikujące się do obsługi warstw z powodu zadania optymalizacji deduplikacji uzyskującego dostęp do plików.
+- W przypadku trwających zadań optymalizacji deduplikacji Obsługa warstw w chmurze z zasadami daty zostanie opóźniona przez ustawienie [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) deduplikacji danych, jeśli plik nie jest już warstwowy. 
+    - Przykład: Jeśli ustawienie MinimumFileAgeDays to 7 dni, a zasady dotyczące warstw w chmurze to 30 dni, zasady dotyczące dat będą mieć pliki warstwy po 37 dniach.
+    - Uwaga: Gdy plik zostanie objęty warstwą Azure File Sync, zadanie optymalizacji deduplikacji pominie ten plik.
+- Jeśli serwer z systemem Windows Server 2012 R2 z zainstalowanym agentem Azure File Sync został uaktualniony do systemu Windows Server 2016 lub Windows Server 2019, należy wykonać następujące czynności w celu zapewnienia obsługi deduplikacji danych i warstw w chmurze na tym samym woluminie:  
+    - Odinstaluj agenta Azure File Sync dla systemu Windows Server 2012 R2 i ponownie uruchom serwer.
+    - Pobierz agenta Azure File Sync dla nowej wersji systemu operacyjnego serwera (Windows Server 2016 lub Windows Server 2019).
+    - Zainstaluj agenta Azure File Sync i ponownie uruchom serwer.  
     
-    Uwaga: Ustawienia konfiguracji usługi Azure File Sync na serwerze zostaną zachowane po odinstalowaniu i ponownym agenta.
+    Uwaga: Ustawienia konfiguracji Azure File Sync na serwerze są zachowywane po odinstalowaniu i ponownym zainstalowaniu agenta.
 
-### <a name="distributed-file-system-dfs"></a>Rozproszony System plików (DFS)
-Usługa Azure File Sync obsługuje współdziałanie z przestrzeni nazw systemu plików DFS (DFS-N) i replikacja systemu plików DFS (DFS-R).
+### <a name="distributed-file-system-dfs"></a>Rozproszony system plików (system plików DFS)
+Azure File Sync obsługuje międzyoperacyjność z przestrzeniami nazw systemu plików DFS (DFS-N) i Replikacja systemu plików DFS (DFS-R).
 
-**Przestrzenie nazw systemu plików DFS (DFS-N)** : Usługa Azure File Sync jest w pełni obsługiwany na serwerach z systemem plików DFS-N. Na co najmniej jednego członka systemu plików DFS-N, na synchronizowanie danych między punkty końcowe serwera i punkt końcowy w chmurze, można zainstalować agenta usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [Przegląd przestrzeni nazw systemu plików DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**Przestrzenie nazw systemu plików DFS (DFS-N)** : Azure File Sync jest w pełni obsługiwana na serwerach systemu plików DFS-N. Aby synchronizować dane między punktami końcowymi serwera i punktem końcowym w chmurze, można zainstalować agenta Azure File Sync na co najmniej jednym członku systemu plików DFS-N. Aby uzyskać więcej informacji, zobacz [Omówienie przestrzeni nazw systemu plików DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**Replikacja systemu plików DFS (DFS-R)** : Systemu plików DFS-R i usługi Azure File Sync są oba rozwiązania replikacji w większości przypadków zalecamy zastąpienie systemu plików DFS-R z usługi Azure File Sync. Istnieje jednak kilka scenariuszy, w których chcesz korzystać ze sobą systemu plików DFS-R i usługi Azure File Sync:
+**Replikacja systemu plików DFS (DFS-R)** : Ponieważ system plików DFS-R i Azure File Sync są rozwiązaniami replikacji, w większości przypadków zalecamy zastępowanie systemu plików DFS-R z Azure File Sync. Istnieje jednak kilka scenariuszy, w których warto użyć systemu plików DFS-R i Azure File Sync ze sobą:
 
-- W przypadku migracji z wdrożenia systemu plików DFS-R do wdrożenia usługi Azure File Sync. Aby uzyskać więcej informacji, zobacz [migracji wdrożenia replikacji systemu plików DFS (DFS-R) do usługi Azure File Sync](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
-- Nie każdy na lokalnym serwerze, który potrzebuje kopii swoich danych z plików mogą być podłączone bezpośrednio do Internetu.
-- Serwery w oddziale firmy Konsolidowanie danych na jednym serwerem centralnym, dla którego chcesz używać usługi Azure File Sync.
+- Przeprowadzasz migrację z wdrożenia DFS-R do wdrożenia Azure File Sync. Aby uzyskać więcej informacji, zobacz [Migrowanie wdrożenia replikacja systemu plików DFS (DFS-R) do Azure File Sync](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
+- Nie każdy serwer lokalny, który wymaga kopii danych pliku, może być połączony bezpośrednio z Internetem.
+- Serwery gałęzi konsolidują dane na jeden serwer centralny, dla którego chcesz używać Azure File Sync.
 
-W przypadku usługi Azure File Sync i systemu plików DFS-R do pracy side-by-side:
+Aby Azure File Sync i DFS-R działały obok siebie:
 
-1. Usługa Azure File Sync w chmurze warstw musi być wyłączone w woluminach systemu plików DFS-R replikowane foldery.
-2. Punkty końcowe serwera nie powinno być skonfigurowane w folderach tylko do odczytu replikacji systemu plików DFS-R.
+1. Azure File Sync Obsługa warstw w chmurze musi być wyłączona na woluminach z replikowanymi folderami systemu plików DFS-R.
+2. Punktów końcowych serwera nie należy konfigurować w folderach replikacji tylko do odczytu systemu plików DFS.
 
-Aby uzyskać więcej informacji, zobacz [Omówienie replikacji systemu plików DFS](https://technet.microsoft.com/library/jj127250).
+Aby uzyskać więcej informacji, zobacz [Replikacja systemu plików DFS przegląd](https://technet.microsoft.com/library/jj127250).
 
-### <a name="sysprep"></a>Narzędzie Sysprep
-Na serwerze, na którym jest zainstalowany agent usługi Azure File Sync za pomocą programu sysprep nie jest obsługiwana i może prowadzić do nieoczekiwanych wyników. Rejestracja agenta instalacji i serwer powinien występować po wdrażanie obrazu serwera i zakończeniu miniinstalacji programu sysprep.
+### <a name="sysprep"></a>Dzia
+Korzystanie z programu Sysprep na serwerze, na którym zainstalowano agenta Azure File Sync, nie jest obsługiwane i może prowadzić do nieoczekiwanych wyników. Po wdrożeniu obrazu serwera i zakończeniu miniinstalacji programu Sysprep należy przeprowadzić instalację agenta i rejestrację serwera.
 
-### <a name="windows-search"></a>Windows Search
-Jeśli chmura warstw jest włączona w punkcie końcowym serwera, pliki, które są rozmieszczone warstwowo są pominięty i nie są indeksowane przez Windows Search. Pliki warstwowe nie są poprawnie indeksowane.
+### <a name="windows-search"></a>Wyszukiwanie w systemie Windows
+Jeśli Obsługa warstw w chmurze jest włączona w punkcie końcowym serwera, pliki, które są warstwami, są pomijane i nie są indeksowane przez funkcję wyszukiwania systemu Windows. Pliki niewarstwowe są indeksowane prawidłowo.
 
-### <a name="antivirus-solutions"></a>Programy antywirusowe
-Ponieważ oprogramowanie antywirusowe polega na skanowanie plików do znanego złośliwego kodu, antywirusowe może powodować odwołania pliki warstwowe. W wersjach 4.0 i powyżej agenta usługi Azure File Sync pliki warstwowe bezpiecznego zestaw FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS atrybutów Windows. Firma Microsoft zaleca konsultacji z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować swoje rozwiązanie, aby pominąć odczytywanie plików za pomocą tego zestawu atrybutów (wiele zrobiła to automatycznie). 
+### <a name="antivirus-solutions"></a>Rozwiązania antywirusowe
+Ponieważ oprogramowanie antywirusowe działa przez skanowanie plików pod kątem znanego złośliwego kodu, produkt antywirusowy może powodować odwoływanie się do plików warstwowych. W wersji 4,0 i powyżej agenta Azure File Sync pliki warstwowe mają ustawiony atrybut Secure Windows FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS. Firma Microsoft zaleca zapoznanie się z dostawcą oprogramowania, aby dowiedzieć się, jak skonfigurować swoje rozwiązanie, aby pominąć odczytywanie plików z tym zestawem atrybutów (wiele do nich jest automatycznie). 
 
-Rozwiązania firmy Microsoft wewnętrznych oprogramowania antywirusowego, usługa Windows Defender i System Center Endpoint Protection (SCEP), zarówno automatycznie pominięcia odczytu plików, które mają ustawiony ten atrybut. Firma Microsoft zostały one przetestowane i zidentyfikować niewielki problem w jednym: po dodaniu serwera do istniejącej grupy synchronizacji, pliki mniejsze niż 800 bajtów zostaną odwołane (pobieranego) na nowym serwerze. Pliki te pozostaną na nowym serwerze i nie będą umieszczane, ponieważ nie spełniają warstw wymagany rozmiar (> 64kb).
-
-> [!Note]  
-> Dostawców oprogramowania antywirusowego, można sprawdzić zgodności ich produktów i za pomocą usługi Azure File Sync [zestawu testów zgodności programu antywirusowego synchronizacji plików Azure](https://www.microsoft.com/download/details.aspx?id=58322), który jest dostępny do pobrania z Microsoft Download Center.
-
-### <a name="backup-solutions"></a>Rozwiązania tworzenia kopii zapasowych
-Takich jak rozwiązania antywirusowe rozwiązania tworzenia kopii zapasowych może spowodować wycofanie plików warstwowych. Zalecamy używanie rozwiązania tworzenia kopii zapasowych w chmurze do tworzenia kopii zapasowej udziału plików platformy Azure, a nie lokalnie instalowanym produktem kopii zapasowej.
-
-Jeśli używasz rozwiązania tworzenia kopii zapasowych w środowisku lokalnym, należy wykonać kopie zapasowe na serwerze w grupie synchronizacji, która ma obsługi warstw wyłączone w chmurze. Podczas przywracania, użyj opcji przywracania na poziomie woluminu lub poziomie plików. Przywrócić za pomocą opcji przywracania na poziomie pliku pliki będą synchronizowane z wszystkich punktów końcowych w grupie synchronizacji, a istniejące pliki zostaną zastąpione wersją przywróconej z kopii zapasowej.  Przywracanie na poziomie woluminu nie spowoduje zastąpienia nowsze wersje plików w udziale plików platformy Azure lub inne punkty końcowe serwera.
+Wewnętrzne rozwiązania firmy Microsoft dotyczące oprogramowania antywirusowego, Windows Defender i System Center Endpoint Protection (SCEP) automatycznie pomijają odczytywanie plików, które mają ten zestaw atrybutów. Przetestowano i zidentyfikowano jeden drobny problem: po dodaniu serwera do istniejącej grupy synchronizacji pliki o rozmiarze mniejszym niż 800 bajtów są ponownie wywoływane (pobrane) na nowym serwerze. Te pliki pozostaną na nowym serwerze i nie zostaną warstwowe, ponieważ nie spełniają wymagań dotyczących rozmiaru warstwowego (> KB).
 
 > [!Note]  
-> Przywracanie zera (BMR) może spowodować nieoczekiwane rezultaty i nie jest obecnie obsługiwane.
+> Dostawcy oprogramowania antywirusowego mogą sprawdzić zgodność swojego produktu i Azure File Sync przy użyciu [zestawu testów zgodności z programem Azure File Sync Antivirus](https://www.microsoft.com/download/details.aspx?id=58322), który jest dostępny do pobrania w centrum pobierania Microsoft.
+
+### <a name="backup-solutions"></a>Rozwiązania do tworzenia kopii zapasowych
+Podobnie jak rozwiązania antywirusowe, rozwiązania do tworzenia kopii zapasowych mogą powodować odwoływanie się do plików warstwowych. Zalecamy używanie rozwiązania do tworzenia kopii zapasowych w chmurze w celu utworzenia kopii zapasowej udziału plików platformy Azure, a nie lokalnego produktu do tworzenia kopii zapasowych.
+
+Jeśli używasz lokalnego rozwiązania do tworzenia kopii zapasowych, kopie zapasowe powinny być wykonywane na serwerze w grupie synchronizacji z wyłączonymi warstwami chmury. Podczas przywracania należy użyć opcji przywracania na poziomie woluminu lub na poziomie pliku. Pliki przywrócone przy użyciu opcji przywracania na poziomie pliku zostaną zsynchronizowane ze wszystkimi punktami końcowymi w grupie synchronizacji, a istniejące pliki zostaną zastąpione wersją przywróconą z kopii zapasowej.  Przywrócenie na poziomie woluminu nie spowoduje zastąpienia nowszych wersji plików w udziale plików platformy Azure ani w innych punktach końcowych serwera.
 
 > [!Note]  
-> Migawki VSS (w tym karty poprzednie wersje) nie są obecnie obsługiwane w przypadku woluminów, których obsługi warstw włączone w chmurze. Jeśli chmura warstw jest włączona, użyj migawki udziału plików platformy Azure, aby przywrócić plik z kopii zapasowej.
+> Przywracanie bez systemu operacyjnego (BMR) może spowodować nieoczekiwane wyniki i nie jest obecnie obsługiwane.
 
-### <a name="encryption-solutions"></a>Rozwiązań do szyfrowania
-Obsługa rozwiązań do szyfrowania zależy od tego, jak są one wykonywane. Wiadomo, że usługa Azure File Sync pracować:
+> [!Note]  
+> Migawki usługi VSS (w tym poprzednie wersje) nie są obecnie obsługiwane na woluminach, na których włączono obsługę warstw w chmurze. Jeśli włączono obsługę warstw w chmurze, użyj migawek udziałów plików platformy Azure, aby przywrócić plik z kopii zapasowej.
+
+### <a name="encryption-solutions"></a>Rozwiązania do szyfrowania
+Obsługa rozwiązań szyfrowania zależy od sposobu ich implementacji. Azure File Sync jest znana z:
 
 - Szyfrowanie funkcją BitLocker
-- Usługa Azure Information Protection, Azure Rights Management Services (Azure RMS) i usługi Active Directory RMS
+- Azure Information Protection, Azure Rights Management Services (Azure RMS) i Active Directory RMS
 
-Usługa Azure File Sync wiadomo, że nie będą działać przy użyciu:
+Azure File Sync nie działa z:
 
-- Systemu plików NTFS System szyfrowania plików (EFS)
+- System szyfrowania plików NTFS (EFS)
 
-Ogólnie rzecz biorąc usługi Azure File Sync powinien obsługiwać współdziałanie z rozwiązań do szyfrowania, które znajdują się poniżej systemu plików, takich jak funkcja BitLocker, a dzięki rozwiązaniom, które są implementowane w formacie pliku, na przykład usługi Azure Information Protection. Nie współdziałania stało się rozwiązania, które znajdują się powyżej systemu plików (takich jak NTFS EFS).
+Ogólnie rzecz biorąc Azure File Sync powinien obsługiwać współdziałanie z rozwiązaniami szyfrowania, które znajdują się poniżej systemu plików, takich jak funkcja BitLocker, oraz z rozwiązaniami, które są zaimplementowane w formacie pliku, na przykład Azure Information Protection. Nie wprowadzono żadnego specjalnego współdziałania dla rozwiązań znajdujących się powyżej systemu plików (takich jak system plików NTFS).
 
-### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Inne rozwiązania zarządzania magazynu hierarchicznych (HSM)
-Inne rozwiązania sprzętowego modułu zabezpieczeń należy używać usługi Azure File Sync.
+### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Inne rozwiązania do zarządzania magazynem hierarchicznym (HSM)
+W przypadku Azure File Sync nie należy używać innych rozwiązań modułu HSM.
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
-Usługa Azure File Sync jest dostępna tylko w następujących regionach:
+Azure File Sync jest dostępna tylko w następujących regionach:
 
 | Region | Lokalizacja centrum danych |
 |--------|---------------------|
-| Australia Wschodnia | Stan Nowa Południowa Walia |
-| Australia Południowo-Wschodnia | Stan Wiktoria |
-| Brazylia Południowa | Sao Paolo stanu |
+| Australia Wschodnia | Nowa Południowa Walia |
+| Australia Południowo-Wschodnia | Wiktoria |
+| Brazylia Południowa | Stan Paoloi Wyspy Świętego |
 | Kanada Środkowa | Toronto |
 | Kanada Wschodnia | Miasto Quebec |
 | Indie Środkowe | Pune |
@@ -256,7 +255,7 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Wschodnie stany USA 2 | Wirginia |
 | Francja Środkowa | Paryż |
 | Korea Środkowa| Seul |
-| Korea Południowa| Pusan |
+| Korea Południowa| Busan |
 | Japonia Wschodnia | Tokyo, Saitama |
 | Japonia Zachodnia | Osaka |
 | Środkowo-północne stany USA | Illinois |
@@ -274,15 +273,15 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Zachodnie stany USA | Kalifornia |
 | Zachodnie stany USA 2 | Waszyngton |
 
-Usługa Azure File Sync obsługuje synchronizowanie tylko z udziału plików platformy Azure, która znajduje się w tym samym regionie co usługa synchronizacji magazynu.
+Azure File Sync obsługuje synchronizowanie tylko z udziałem plików platformy Azure, który znajduje się w tym samym regionie co usługa synchronizacji magazynu.
 
 ### <a name="azure-disaster-recovery"></a>Odzyskiwanie po awarii platformy Azure
-Aby chronić przed utratą w regionie platformy Azure, usługi Azure File Sync integruje się z [nadmiarowości magazynu geograficznie nadmiarowego](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) opcji (GRS). Magazyn GRS działa przy użyciu replikacji asynchronicznej bloku między magazynu i magazynu w regionie podstawowym, za pomocą którego można normalnie wchodzić w interakcje, w sparowanym regionie pomocniczym. W przypadku awarii, co powoduje, że region platformy Azure tymczasowo lub trwale w trybie offline firma Microsoft będzie magazynu trybu failover do regionu sparowanego. 
+Aby chronić przed utratą w regionie świadczenia usługi Azure, Azure File Sync integruje się z opcją [nadmiarowości magazynu geograficznie](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) nadmiarowego (GRS). Magazyn GRS działa przy użyciu asynchronicznej replikacji bloków między magazynem w regionie podstawowym, z którym zwykle odbywa się praca, i magazynu w sparowanym regionie pomocniczym. W przypadku awarii, która powoduje tymczasowe lub trwałe przejście regionu platformy Azure do trybu offline, firma Microsoft przejdzie w tryb failover do sparowanego regionu. 
 
 > [!Warning]  
-> Korzystając z udziału plików platformy Azure jako punktu końcowego w chmurze w ramach konta magazynu GRS, nie należy zainicjować trybu failover z konta magazynu. Ten sposób synchronizacji Przyczyna zatrzymania pracy i może również spowoduje nieoczekiwanej utraty danych w przypadku plików nowo warstwowych. W przypadku utraty region platformy Azure Microsoft spowodują uruchomienie trybu failover konta magazynu w sposób, który jest zgodny z usługi Azure File Sync.
+> Jeśli używasz udziału plików platformy Azure jako punktu końcowego w chmurze na koncie magazynu GRS, nie należy inicjować trybu failover dla konta magazynu. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych. W przypadku utraty regionu platformy Azure firma Microsoft będzie wyzwalać tryb failover na koncie magazynu w sposób zgodny z Azure File Sync.
 
-Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarowego i usługi Azure File Sync, we wszystkich regionach usługi Azure File Sync są skojarzone z regionu pomocniczego, który pasuje do regionu pomocniczego, używane przez Magazyn. Te pary są następujące:
+Aby zapewnić obsługę integracji trybu failover między magazynem geograficznie nadmiarowym i Azure File Sync, wszystkie regiony Azure File Sync są sparowane z regionu pomocniczego, który jest zgodny z regionem pomocniczym używanym przez magazyn. Te pary są następujące:
 
 | Region podstawowy      | Region sparowany      |
 |---------------------|--------------------|
@@ -320,8 +319,8 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-* [Należy wziąć pod uwagę ustawień zapory i serwera proxy](storage-sync-files-firewall-and-proxy.md)
+* [Rozważ użycie ustawień zapory i serwera proxy](storage-sync-files-firewall-and-proxy.md)
 * [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
-* [Wdrażanie usługi pliki Azure](storage-files-deployment-guide.md)
+* [Wdróż Azure Files](storage-files-deployment-guide.md)
 * [Wdrażanie usługi Azure File Sync](storage-sync-files-deployment-guide.md)
 * [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)

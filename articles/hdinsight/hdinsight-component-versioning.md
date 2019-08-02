@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.openlocfilehash: a9de7c75ef2bd29b2e401ba387ca16a5dfda34fb
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68442049"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie składniki Apache Hadoop i wersje są dostępne w usłudze HDInsight?
@@ -74,7 +74,7 @@ W poniższej tabeli wymieniono wersje usługi HDInsight, które są dostępne w 
 
 | Wersja usługi HDInsight | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wycofania | Wysoka dostępność |  Dostępność Azure Portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Tak |Yes |
+| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Yes |Tak |
 | HDInsight 3,6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 | 30 czerwca 2020 |31 grudnia 2020 |Tak |Tak |
 
 
@@ -88,14 +88,14 @@ W poniższej tabeli wymieniono wersje usługi HDInsight, które **nie** są dost
 
 | Wersja usługi HDInsight | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wycofania | Wysoka dostępność |  Dostępność Azure Portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 <br> (Poza platformą Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 |5 września 2017 |28 czerwca 2018 r. |Yes |Nie |
-| HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 |9 stycznia 2018 r. |Yes |Nie |
-| HDInsight 3,3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2018 r. |Tak |Nie |
-| HDInsight 3,3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2017 |Yes |Nie |
+| HDInsight 3,5 <br> (Poza platformą Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 |5 września 2017 |28 czerwca 2018 r. |Tak |Nie |
+| HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 |9 stycznia 2018 r. |Tak |Nie |
+| HDInsight 3,3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2018 r. |Yes |Nie |
+| HDInsight 3,3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2017 |Tak |Nie |
 | HDInsight 3,2 |HDP 2.2 |Ubuntu 12,04 LTS lub Windows Server 2012 R2 |18 lutego 2015 |1 marca 2016 |1 kwietnia 2017 |Tak |Nie |
 | HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 czerwca 2014 |18 maja 2015 |30 czerwca 2016 r. |Tak |Nie |
 | HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 |17 września 2014 |30 czerwca 2015 |Tak |Nie |
-| HDInsight 2.1 |HDP 1,3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 |31 maja 2015 |Tak |Nie |
+| HDInsight 2.1 |HDP 1,3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 |31 maja 2015 |Yes |Nie |
 | HDInsight 1,6 |HDP 1.1 | |28 października 2013 |26 kwietnia 2014 |31 maja 2015 |Nie |Nie |
 
 > [!NOTE]  
@@ -170,7 +170,7 @@ Sekcja zawiera linki do informacji o wersji dla dystrybucji platform danych Hort
 * Klaster usługi HDInsight w wersji 3,2 korzysta z dystrybucji usługi Hadoop opartej na [platformie Hortonworks Data Platform 2,2][hdp-2-2].
 
   * Informacje o wersji dla określonych składników Apache są dostępne w następujący sposób: [Hive 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [świnie 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [przędzy 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [burz 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)i [Oozie 4.1.0 ](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
-* Klaster usługi HDInsight w wersji 3,1 korzysta z dystrybucji usługi Hadoop opartej na [Hortonworks Data Platform 2.1.7][hdp-2-1-7]. HDInsight 3.1 clusters created before November, 7, 2014, are based on [Hortonworks Data Platform 2.1.1][hdp-2-1-1].
+* Klaster usługi HDInsight w wersji 3,1 korzysta z dystrybucji usługi Hadoop opartej na [Hortonworks Data Platform 2.1.7][hdp-2-1-7]. Klastry usługi HDInsight 3,1 utworzone przed listopadem, 7, 2014, są oparte na [Hortonworks Data Platform 2.1.1][hdp-2-1-1].
 * Klaster usługi HDInsight w wersji 3,0 korzysta z dystrybucji usługi Hadoop opartej na [platformie Hortonworks Data Platform 2,0][hdp-2-0-8].
 * Klaster usługi HDInsight w wersji 2,1 korzysta z dystrybucji usługi Hadoop opartej na [platformie Hortonworks Data Platform 1,3][hdp-1-3-0].
 * Klaster usługi HDInsight w wersji 1,6 korzysta z dystrybucji usługi Hadoop opartej na [platformie Hortonworks Data Platform 1,1][hdp-1-1-0].

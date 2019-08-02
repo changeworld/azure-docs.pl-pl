@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 71f5c8ca56bc188c0664604a78c38a05be3c3b01
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479751"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Nawiązywanie połączenia z usługą Azure SQL Data Warehouse
@@ -31,7 +31,7 @@ W poniższym przykładzie nazwa serwera to samplesvr.database.windows.net. Aby z
     ![Pełna nazwa serwera][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Obsługiwane sterowniki i parametry połączenia
-Azure SQL Data Warehouse obsługuje [ADO.NET][ADO.NET], [ODBC][ODBC], [php][w języku]php i [JDBC][JDBC]. Aby znaleźć najnowszą wersję i dokumentację, kliknij jeden z powyższych sterowników. Aby automatycznie wygenerować parametry połączenia dla sterownika, którego używasz z Azure Portal, kliknij pozycję **Pokaż parametry połączenia bazy danych** w poprzednim przykładzie. Poniżej przedstawiono również przykłady parametrów połączenia dla każdego sterownika.
+Usługa Azure SQL Data Warehouse obsługuje sterowniki [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] i [JDBC][JDBC]. Aby znaleźć najnowszą wersję i dokumentację, kliknij jeden z powyższych sterowników. Aby automatycznie wygenerować parametry połączenia dla sterownika, którego używasz z Azure Portal, kliknij pozycję **Pokaż parametry połączenia bazy danych** w poprzednim przykładzie. Poniżej przedstawiono również przykłady parametrów połączenia dla każdego sterownika.
 
 > [!NOTE]
 > Rozważ ustawienie limitu czasu połączenia na wartość 300 sekund, aby połączenie nie zostało zakończone mimo krótkich okresów niedostępności.
@@ -61,15 +61,15 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ## <a name="connection-settings"></a>Ustawienia połączenia
 Usługa SQL Data Warehouse standaryzuje niektóre ustawienia podczas tworzenia połączenia i obiektu. Tych ustawień nie można zastąpić i obejmują one:
 
-| Ustawienia bazy danych | Value |
+| Ustawienia bazy danych | Wartość |
 |:--- |:--- |
 | [ANSI_NULLS][ANSI_NULLS] |WŁĄCZONE |
 | [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |WŁĄCZONE |
 | [DATEFORMAT][DATEFORMAT] |mdy |
 | [DATEFIRST][DATEFIRST] |7 |
 
-## <a name="next-steps"></a>Następne kroki
-Aby nawiązać połączenie i wykonać zapytanie za pomocą programu Visual Studio, zobacz [Query with Visual Studio][Query with Visual Studio]. To learn more about authentication options, see [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse].
+## <a name="next-steps"></a>Kolejne kroki
+Aby nawiązać połączenie i rozpocząć tworzenie zapytań przy użyciu programu Visual Studio, zobacz artykuł [Query with Visual Studio][Query with Visual Studio] (Wykonywanie zapytań przy użyciu programu Visual Studio). Aby dowiedzieć się więcej na temat opcji uwierzytelniania, zobacz [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] (Uwierzytelnianie w usłudze Azure SQL Data Warehouse).
 
 <!--Articles-->
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md

@@ -1,6 +1,6 @@
 ---
-title: Schemat analizy ruchu platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje o schemacie analiza ruchu w celu analizowania dzienników przepływu grupy zabezpieczeń sieci platformy Azure.
+title: Schemat analizy ruchu na platformie Azure | Microsoft Docs
+description: Informacje o schemacie Analiza ruchu do analizowania dzienników przepływu sieciowych grup zabezpieczeń platformy Azure.
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 9a02a56df85c5c6aa9fd177ad42a2f9bfb303e44
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: efa8a92ca9861c0280237ba07f4304b5c7dbbb88
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491948"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609995"
 ---
-# <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregacja schematu i danych w analizy ruchu
+# <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregacja schematu i danych w Analiza ruchu
 
-Analiza ruchu jest oparta na chmurze rozwiązania, który zapewnia wgląd w aktywność użytkownika i aplikacji w sieciach w chmurze. Analiza ruchu analizuje usługi Network Watcher dzienniki sieciowych grup zabezpieczeń (NSG) przepływu udostępnienie szczegółowych informacji na przepływ ruchu w Twojej chmurze platformy Azure. Za pomocą analizy ruchu możesz wykonywać następujące czynności:
+Analiza ruchu to rozwiązanie oparte na chmurze, które zapewnia wgląd w aktywność użytkowników i aplikacji w sieciach w chmurze. Analiza ruchu analizuje dzienniki przepływu sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) Network Watcher, aby uzyskać wgląd w przepływ ruchu w chmurze platformy Azure. Analiza ruchu umożliwia:
 
-- Wizualizowanie działań sieciowych wszystkich subskrypcji platformy Azure i identyfikacji punktów aktywnych.
-- Identyfikuj zagrożenia bezpieczeństwa dla i zabezpieczyć swoją sieć, za pomocą informacje, takie jak otwierać porty, aplikacji, próba dostępu do Internetu i maszyn wirtualnych (VM) nawiązywania połączenia z sieciami nieautoryzowane.
-- Zrozumieć wzorce przepływu ruchu między regionami platformy Azure a Internetem, aby zoptymalizować wdrożenie sieci, wydajność i pojemność.
-- Wykrywanie błędów konfiguracji sieci, co prowadzi do połączenia zakończone niepowodzeniem w sieci.
-- Wiadomo, użycie sieci, w bajtach, pakietów lub przepływy.
+- Wizualizuj aktywność sieci w ramach subskrypcji platformy Azure i zidentyfikuj punkty aktywne.
+- Zidentyfikuj zagrożenia bezpieczeństwa, a także Zabezpiecz sieć, korzystając z informacji takich jak Open-Ports, Applications próbujących uzyskać dostęp do Internetu oraz maszyn wirtualnych łączących się z nieautoryzowanymi sieciami.
+- Zrozumienie wzorców przepływu ruchu w regionach platformy Azure oraz w Internecie w celu zoptymalizowania wdrożenia sieci pod kątem wydajności i pojemności.
+- Lokalizowanie błędnych konfiguracji sieciowych prowadzących do nieudanych połączeń w sieci.
+- Poznaj użycie sieci w bajtach, pakietach lub przepływach.
 
 ### <a name="data-aggregation"></a>Agregacja danych
 
-1. Wszystkie dzienniki przepływu w lokalizacji sieciowej grupy zabezpieczeń między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t" są przechwytywane w odstępach jednej minuty na koncie magazynu jako obiekty BLOB, mogła zostać przetworzona przez analizę ruchu.
-2. Przetwarzanie analizy ruchu odbywa się domyślnie 60 minut. Oznacza to, że co 60 minut, w których analiza ruchu wybiera obiekty BLOB z magazynu na potrzeby agregacji.
-3. Przepływy, które mają ten sam źródłowy adres IP, docelowy adres IP, port docelowy, nazwa sieciowej grupy zabezpieczeń, reguła sieciowej grupy zabezpieczeń, kierunek przepływu i Transport layer protocol (TCP lub UDP) (Uwaga: Port źródłowy jest wyłączone dla agregacji) jest uwzględniona w jednej usłudze flow za analizę ruchu
-4. Ten pojedynczy rekord jest ozdobione (szczegóły w dalszej części tego artykułu) i odebrane w dzienniku analizy ruchu Analytics.This proces może potrwać maksymalnie 1 godzinę max.
-5. Pole FlowStartTime_t wskazuje pierwszego wystąpienia takich zagregowane przepływu (tego samego czterech podwójny) w dzienniku przepływ przetwarzania interwał między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t".
-6. Dla dowolnego zasobu w TA przepływów wskazane w interfejsie użytkownika są łączna liczba przepływów widzianych przez sieciową grupę zabezpieczeń, ale w dzienniku Anlaytics użytkownik będzie widział tylko jednego, zmniejszone rekord. Aby wyświetlić wszystkie przepływy, użyj pola blob_id, które mogą być przywoływane z magazynu. Ogólny przepływ uznawane za, że rekord będzie odnosić się do poszczególnych przepływów, które występuje w obiekcie blob.
+1. Wszystkie dzienniki przepływów w sieciowej grupy zabezpieczeń między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t" są przechwytywane w ciągu jednej minuty na koncie magazynu jako obiekty blob przed przetworzeniem przez Analiza ruchu. 
+2. Domyślny interwał przetwarzania Analiza ruchu to 60 minut. Oznacza to, że co 60 minut Analiza ruchu wybiera obiekty blob z magazynu do agregacji. Jeśli wybrany interwał przetwarzania wynosi 10 minut, Analiza ruchu będą wybierać obiekty blob z konta magazynu po każdym 10 minutach.
+3. Przepływy mające taki sam źródłowy adres IP, docelowy adres IP, port docelowy, nazwa sieciowej grupy zabezpieczeń, reguła sieciowej grupy zabezpieczeń, kierunek przepływu i protokół TLS (TCP lub UDP) (Uwaga: Port źródłowy jest wykluczony do agregacji) jest uwzględniona do pojedynczego przepływu przez Analiza ruchu
+4. Ten pojedynczy rekord jest dekoracyjny (szczegóły w sekcji poniżej) i pozyskany w Log Analytics przez Analiza ruchu. ten proces może potrwać maksymalnie 1 godzinę.
+5. Pole FlowStartTime_t wskazuje pierwsze wystąpienie tego zagregowanego przepływu (takie same cztery krotki) w czasie przetwarzania dziennika przepływu między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t".
+6. Dla każdego zasobu w tym przepływy wskazane w interfejsie użytkownika są łącznymi przepływami widocznymi przez sieciowej grupy zabezpieczeń, ale w Log Analytics użytkownik zobaczy tylko jeden rekord z ograniczeniami. Aby wyświetlić wszystkie przepływy, należy użyć pola blob_id, które może być przywoływane z magazynu. Całkowita liczba przepływów dla tego rekordu będzie zgodna z pojedynczymi przepływami widocznymi w obiekcie blob.
 
-Poniższe zapytanie, które pomaga wygląda w ogóle przepływu dzienników ze środowiska lokalnego w ciągu ostatnich 30 dni.
+Poniższe zapytanie pomaga w przeszukiwaniu wszystkich dzienników przepływów lokalnych w ciągu ostatnich 30 dni.
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
 | project Subnet_s  
 ```
-Aby wyświetlić ścieżkę obiektu blob dla przepływów w zapytaniu wyżej, należy użyć poniższe zapytanie:
+Aby wyświetlić ścieżkę obiektu BLOB dla przepływów w powyższym zapytaniu, użyj poniższego zapytania:
 
 ```
 let TableWithBlobId =
@@ -77,95 +77,95 @@ TableWithBlobId
 | project Subnet_s , BlobPath
 ```
 
-Powyższym zapytaniu konstruuje adres URL do bezpośredniego dostępu obiektu blob. Adres URL z zastępcze znajduje się poniżej:
+Powyższe zapytanie konstruuje adres URL, aby uzyskać bezpośredni dostęp do obiektu BLOB. Adres URL z symbolami zastępczymi jest poniżej:
 
 ```
 https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroup}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
 ```
 
-### <a name="fields-used-in-traffic-analytics-schema"></a>Pola używane w schemacie analizy ruchu
+### <a name="fields-used-in-traffic-analytics-schema"></a>Pola używane w schemacie Analiza ruchu
 
-Analiza ruchu bazuje na usłudze Log Analytics, aby można było uruchomić niestandardowe zapytania na danych dekorowane za analizę ruchu i Ustawiaj alerty na tym samym.
+Analiza ruchu jest oparta na Log Analytics, dzięki czemu można uruchamiać niestandardowe zapytania dotyczące danych dekoracyjnych przez Analiza ruchu i ustawiać dla nich alerty.
 
-Poniżej wymieniono pól w schemacie i ich oznaczającego
+Poniżej wymieniono pola w schemacie i znaczenie
 
 | Pole | Format | Komentarze |
 |:---   |:---    |:---  |
-| TableName | AzureNetworkAnalytics_CL | Tabela danych Anlaytics ruchu
-| SubType_s | FlowLog | Podtyp dla dzienników przepływów. Użyj tylko "FlowLog", inne wartości SubType_s dotyczą wewnętrzne działanie produktu |
-| FASchemaVersion_s |   1   | Wersja Scehma. Nie będzie odzwierciedlał wersji dzienników przepływu sieciowych grup zabezpieczeń |
-| TimeProcessed_t   | Data i godzina w formacie UTC  | Czas przetwarzania analizy ruchu i dzienników przepływów pierwotnych z konta magazynu |
-| FlowIntervalStartTime_t | Data i godzina w formacie UTC |  Godzina rozpoczęcia interwału przepływ przetwarzania dziennika. Jest to czas, z której jest mierzona interwał przepływu |
-| FlowIntervalEndTime_t | Data i godzina w formacie UTC | Interwał przetwarzania dziennika przepływu godzina zakończenia |
-| FlowStartTime_t | Data i godzina w formacie UTC |  Pierwsze wystąpienie przepływu, (które zostaną Pobierz zagregowane) w zakresie przetwarzania dziennika przepływ między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t". Ten przepływ pobiera agregowane w oparciu o logikę agregacji |
-| FlowEndTime_t | Data i godzina w formacie UTC | Ostatnie wystąpienie przepływu, (które zostaną Pobierz zagregowane) w zakresie przetwarzania dziennika przepływ między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t". Pod względem v2 dziennika przepływu to pole zawiera godzina rozpoczęcia (oznaczone jako "B" w rekordzie pierwotne przepływu) ostatniego przepływu przy użyciu tego samego krotki czterech |
-| FlowType_s |  * IntraVNet <br> * Między sieciami wirtualnymi <br> * S2S <br> * P2S <br> * AzurePublic <br> * ExternalPublic <br> * MaliciousFlow <br> * Nieznany prywatne <br> * Nieznany | Definicja w uwagi pod tabelą |
-| SrcIP_s | Źródłowy adres IP | Jest puste w przypadku AzurePublic i ExternalPublic przepływów |
-| DestIP_s | Docelowy adres IP | Jest puste w przypadku AzurePublic i ExternalPublic przepływów |
-| VMIP_s | Adresu IP maszyny Wirtualnej | Używany do AzurePublic i ExternalPublic przepływów |
-| PublicIP_s | Publiczne adresy IP | Używany do AzurePublic i ExternalPublic przepływów |
-| DestPort_d | Port docelowy | Port ruchu przychodzącego |
-| L4Protocol_s  | * T <br> * U  | Protokół transportu. T = TCP <br> U = UDP |
-| L7Protocol_s  | Nazwa protokołu | Pochodną port docelowy |
-| FlowDirection_s | * I = dla ruchu przychodzącego<br> * O = ruchu wychodzącego | Kierunek przepływu/poza sieciowej grupy zabezpieczeń, zgodnie z dzienników przepływu |
-| FlowStatus_s  | * = Dozwolone przez reguły sieciowej grupy zabezpieczeń <br> * D = odrzucany przez regułę sieciowej grupy zabezpieczeń  | Stan przepływu dozwolone/nblocked przez sieciową grupę zabezpieczeń dla każdego dziennika przepływu |
-| NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Sieciową grupę zabezpieczeń (NSG) skojarzoną z przepływem |
-| NSGRules_s | \<Indeks wartości 0) >< NSG_RULENAME >\<kierunek przepływu >\<stan przepływu >\<FlowCount ProcessedByRule > |  Reguła sieciowej grupy zabezpieczeń, która może wchodzić lub wychodzić ten przepływ |
-| NSGRuleType_s | * Zdefiniowane przez użytkownika * domyślne |   Typ reguły sieciowej grupy zabezpieczeń, używane przez przepływ |
-| MACAddress_s | Adres MAC | Adres MAC karty sieciowej, w którym przepływ został przechwycony |
-| Subscription_s | Subskrypcja sieci wirtualnej platformy Azure / interfejs sieciowy / maszyna wirtualna jest wypełniana w tym polu | Dotyczy tylko dla przepływu = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow i UnknownPrivate typy przepływów (typy przepływów tylko po jednej stronie w przypadku platformy azure) |
-| Subscription1_s | Identyfikator subskrypcji | Identyfikator subskrypcji sieci wirtualnej / interfejs sieciowy / maszyny wirtualnej, do której należy źródłowy adres IP w usłudze flow |
-| Subscription2_s | Identyfikator subskrypcji | Identyfikator subskrypcji sieci wirtualnej / interfejs sieciowy / maszyny wirtualnej, do którego docelowy adres IP w przepływie należy do |
-| Region_s | Region platformy Azure w sieci wirtualnej / interfejs sieciowy / maszyny wirtualnej, do której należy adres IP w przepływie | Dotyczy tylko dla przepływu = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow i UnknownPrivate typy przepływów (typy przepływów tylko po jednej stronie w przypadku platformy azure) |
-| Region1_s | Region Azure | Region platformy Azure w sieci wirtualnej / interfejs sieciowy / maszyny wirtualnej, do której należy źródłowy adres IP w usłudze flow |
-| Region2_s | Region Azure | Sieć wirtualna, do którego docelowy adres IP w przepływie należy do regionu platformy Azure |
-| NIC_s | \<resourcegroup_Name>\/\<NetworkInterfaceName> |  Karta sieciowa skojarzona z maszyną Wirtualną, wysyłania i odbierania ruchu |
-| NIC1_s | <resourcegroup_Name>/\<NetworkInterfaceName> | Karta sieciowa skojarzona źródłowy adres IP w usłudze flow |
-| NIC2_s | <resourcegroup_Name>/\<NetworkInterfaceName> | Karta sieciowa skojarzona docelowy adres IP w usłudze flow |
-| VM_s | <resourcegroup_Name>\/\<NetworkInterfaceName> | Maszyna wirtualna skojarzona z interfejsem sieciowym NIC_s |
-| VM1_s | < resourcegroup_Name > /\<VirtualMachineName > | Maszyna wirtualna skojarzona z źródłowy adres IP w usłudze flow |
-| VM2_s | < resourcegroup_Name > /\<VirtualMachineName > | Maszyna wirtualna skojarzona z docelowy adres IP w usłudze flow |
+| TableName | AzureNetworkAnalytics_CL | Tabela dla danych Analiza ruchu
+| SubType_s | FlowLog | Podtyp dla dzienników przepływów. Używaj tylko "FlowLog", inne wartości SubType_s są przeznaczone dla wewnętrznych pracy produktu |
+| FASchemaVersion_s |   1   | Wersja schematu. Nie odzwierciedla wersji dziennika przepływu sieciowej grupy zabezpieczeń |
+| TimeProcessed_t   | Data i godzina w formacie UTC  | Godzina, o której Analiza ruchu przetworzył dzienniki nieprzetworzonych przepływów z konta magazynu |
+| FlowIntervalStartTime_t | Data i godzina w formacie UTC |  Godzina rozpoczęcia interwału przetwarzania dziennika przepływu. Jest to czas, po jakim mierzony jest interwał przepływu |
+| FlowIntervalEndTime_t | Data i godzina w formacie UTC | Godzina zakończenia interwału przetwarzania dziennika przepływu |
+| FlowStartTime_t | Data i godzina w formacie UTC |  Pierwsze wystąpienie przepływu (które zostanie zagregowane) w przedziale czasu przetwarzania dziennika przepływu między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t". Ten przepływ jest agregowany na podstawie logiki agregacji |
+| FlowEndTime_t | Data i godzina w formacie UTC | Ostatnie wystąpienie przepływu (które zostanie zagregowane) w przedziale czasu przetwarzania dziennika przepływu między "FlowIntervalStartTime_t" i "FlowIntervalEndTime_t". W obszarze Dziennik przepływu w wersji 2, to pole zawiera czas, w którym rozpoczęto ostatni przepływ z taką samą czterema krotką (oznaczono jako "B" w rekordzie nieprzetworzonych przepływów) |
+| FlowType_s |  * IntraVNet <br> * Ramach <br> * S2S <br> * P2S <br> * AzurePublic <br> * ExternalPublic <br> * MaliciousFlow <br> * Nieznany prywatny <br> * Nieznane | Definicja w notatkach poniżej tabeli |
+| SrcIP_s | Źródłowy adres IP | Będzie puste w przypadku przepływów AzurePublic i ExternalPublic |
+| DestIP_s | Docelowy adres IP | Będzie puste w przypadku przepływów AzurePublic i ExternalPublic |
+| VMIP_s | Adres IP maszyny wirtualnej | Używane dla przepływów AzurePublic i ExternalPublic |
+| PublicIP_s | Publiczne adresy IP | Używane dla przepływów AzurePublic i ExternalPublic |
+| DestPort_d | Port docelowy | Port, na którym jest przychodzący ruch |
+| L4Protocol_s  | * T <br> * U  | Protokół transportowy. T = TCP <br> U = UDP |
+| L7Protocol_s  | Nazwa protokołu | Pochodny od portu docelowego |
+| FlowDirection_s | * I = przychodzące<br> * O = wychodzące | Kierunek przepływu do/z sieciowej grupy zabezpieczeń jako dziennik dla przepływu |
+| FlowStatus_s  | * A = dozwolone przez regułę sieciowej grupy zabezpieczeń <br> * D = odmowa przez regułę sieciowej grupy zabezpieczeń  | Stan przepływu dozwolony/nblocked przez sieciowej grupy zabezpieczeń zgodnie z dziennikiem przepływu |
+| NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń) skojarzona z przepływem |
+| NSGRules_s | \<Wartość indeksu 0) > < NSG_RULENAME >\<kierunek przepływu >\<stan przepływu >\<FlowCount ProcessedByRule > |  Reguła sieciowej grupy zabezpieczeń, która zezwala lub nie odrzuciła tego przepływu |
+| NSGRuleType_s | * Zdefiniowane przez użytkownika * domyślne |   Typ reguły sieciowej grupy zabezpieczeń używanej przez przepływ |
+| MACAddress_s | Adres MAC | Adres MAC karty sieciowej, na której przechwycono przepływ |
+| Subscription_s | Subskrypcja sieci wirtualnej platformy Azure/interfejsu sieciowego/maszyny wirtualnej jest wypełniana w tym polu | Dotyczy tylko typów przepływów typu Flow = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow i UnknownPrivate (typy przepływów, w których jest tylko jedna strona Azure) |
+| Subscription1_s | Identyfikator subskrypcji | Identyfikator subskrypcji sieci wirtualnej/interfejsu sieciowego/maszyny wirtualnej, do której należy źródłowy adres IP w przepływie |
+| Subscription2_s | Identyfikator subskrypcji | Identyfikator subskrypcji sieci wirtualnej/interfejsu sieciowego/maszyny wirtualnej, do której należy docelowy adres IP w przepływie |
+| Region_s | Region świadczenia usługi Azure Virtual Network/interfejs sieciowy/maszyna wirtualna, do której należy adres IP w przepływie | Dotyczy tylko typów przepływów typu Flow = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow i UnknownPrivate (typy przepływów, w których jest tylko jedna strona Azure) |
+| Region1_s | Region Azure | Region platformy Azure sieci wirtualnej/interfejsu sieciowego/maszyny wirtualnej, do której należy źródłowy adres IP w przepływie |
+| Region2_s | Region Azure | Region platformy Azure sieci wirtualnej, do którego należy docelowy adres IP w przepływie |
+| NIC_s | \<resourcegroup_Name >\/\<NetworkInterfaceName > |  Karta sieciowa skojarzona z maszyną wirtualną wysyłająca lub odbierający ruch |
+| NIC1_s | < resourcegroup_Name >/\<NetworkInterfaceName > | Karta sieciowa skojarzona ze źródłowym adresem IP w przepływie |
+| NIC2_s | < resourcegroup_Name >/\<NetworkInterfaceName > | Karta sieciowa skojarzona z docelowym adresem IP w przepływie |
+| VM_s | < resourcegroup_Name >\/\<NetworkInterfaceName > | Maszyna wirtualna skojarzona z interfejsem sieciowym NIC_s |
+| VM1_s | < resourcegroup_Name >/\<VirtualMachineName > | Maszyna wirtualna skojarzona ze źródłowym adresem IP w przepływie |
+| VM2_s | < resourcegroup_Name >/\<VirtualMachineName > | Maszyna wirtualna skojarzona z docelowym adresem IP w przepływie |
 | Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Podsieć skojarzona z NIC_s |
-| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Podsieć skojarzona z źródłowy adres IP w usłudze flow |
-| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName>    | Podsieć skojarzona z docelowy adres IP w usłudze flow |
-| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Usługa Application gateway skojarzone z źródłowy adres IP w usłudze flow |
-| ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Usługa Application gateway skojarzone z docelowy adres IP w usłudze flow |
-| LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Źródłowy adres IP w przepływie skojarzonego modułu równoważenia obciążenia |
-| LoadBalancer2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Docelowy adres IP w przepływie skojarzonego modułu równoważenia obciążenia |
-| LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Brama sieci lokalnej, skojarzone z źródłowy adres IP w usłudze flow |
-| LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Brama sieci lokalnej, skojarzone z docelowy adres IP w usłudze flow |
-| ConnectionType_s | Możliwe wartości to VNetPeering, bramy VpnGateway i ExpressRoute |    Typ połączenia |
+| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Podsieć skojarzona ze źródłowym adresem IP w przepływie |
+| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName>    | Podsieć skojarzona z docelowym adresem IP w przepływie |
+| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Brama aplikacji skojarzona ze źródłowym adresem IP w przepływie |
+| ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Brama aplikacji skojarzona z docelowym adresem IP w przepływie |
+| LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Moduł równoważenia obciążenia skojarzony ze źródłowym adresem IP w przepływie |
+| LoadBalancer2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Moduł równoważenia obciążenia skojarzony z docelowym adresem IP w przepływie |
+| LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Brama sieci lokalnej skojarzona ze źródłowym adresem IP w przepływie |
+| LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Brama sieci lokalnej skojarzona z docelowym adresem IP w przepływie |
+| ConnectionType_s | Możliwe wartości to VNetPeering, bramy vpngateway i ExpressRoute |    Typ połączenia |
 | ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | Nazwa połączenia |
-| ConnectingVNets_s | Rozdzieloną spacjami listę nazw sieci wirtualnej | W przypadku topologii gwiazdy sieci wirtualne centrum zostanie wypełniony w tym miejscu |
-| Country_s | Dwuliterowa numer kierunkowy kraju (ISO, alfa 3166-1-2) | Wypełnione dla typu przepływu ExternalPublic. Wszystkie adresy IP w polu PublicIPs_s współużytkują ten sam kod kraju |
-| AzureRegion_s | Lokalizacje w regionie platformy Azure | Wypełnione dla typu przepływu AzurePublic. Wszystkie adresy IP w polu PublicIPs_s współużytkują region platformy Azure |
-| AllowedInFlows_d | | Liczba przepływów ruchu przychodzącego, które były dozwolone. Jest to liczba przepływów, udostępnione w tym samym krotki czterech dla ruchu przychodzącego do interfejsu netweork przechwyconych przepływu |
-| DeniedInFlows_d |  | Liczba przepływów ruchu przychodzącego, które zostały odrzucone. (Przychodzące z interfejsem sieciowym, w którym przepływ został przechwycony) |
-| AllowedOutFlows_d | | Liczba przepływów wychodzących, które były dozwolone (ruchu wychodzącego z interfejsem sieciowym, w którym przepływ został przechwycony) |
-| DeniedOutFlows_d  | | Liczba przepływów ruchu wychodzącego, które zostały odrzucone (ruchu wychodzącego z interfejsem sieciowym, w którym przepływ został przechwycony) |
-| FlowCount_d | Przestarzałe. Łączna liczba przepływów, pasujących do tego samego krotki cztery. W przypadku typów przepływu ExternalPublic i AzurePublic liczba będzie zawierać przepływy z także różne adresy publicznego adresu IP.
-| InboundPackets_d | Odebrane pakiety określonymi w interfejsie sieciowym, w którym została zastosowana reguła sieciowej grupy zabezpieczeń | To jest wypełniana tylko w przypadku schemat dziennika przepływu w wersji 2 z sieciowych grup zabezpieczeń |
-| OutboundPackets_d  | Pakiety wysyłane, gdy przechwyconych w interfejsie sieciowym, w której została zastosowana reguła sieciowej grupy zabezpieczeń | To jest wypełniana tylko w przypadku schemat dziennika przepływu w wersji 2 z sieciowych grup zabezpieczeń |
-| InboundBytes_d |  Bajtów odebranych w trakcie przechwyconych w interfejsie sieciowym, w której została zastosowana reguła sieciowej grupy zabezpieczeń | To jest wypełniana tylko w przypadku schemat dziennika przepływu w wersji 2 z sieciowych grup zabezpieczeń |
-| OutboundBytes_d | Bajty wysłane jako przechwyconych w interfejsie sieciowym, w której została zastosowana reguła sieciowej grupy zabezpieczeń | To jest wypełniana tylko w przypadku schemat dziennika przepływu w wersji 2 z sieciowych grup zabezpieczeń |
-| CompletedFlows_d  |  | Wypełniony wartość różna od zera tylko dla schematu dziennika przepływu w wersji 2 z sieciowych grup zabezpieczeń |
-| PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Wpisy oddzielone paski |
+| ConnectingVNets_s | Rozdzielana spacjami lista nazw sieci wirtualnych | W przypadku topologii gwiazdy i koncentratora sieci wirtualne będą umieszczane w tym miejscu |
+| Country_s | Dwuliterowy kod kraju (ISO 3166-1 Alpha-2) | Wypełniono dla typu przepływu ExternalPublic. Wszystkie adresy IP w polu PublicIPs_s będą współużytkować ten sam kod kraju |
+| AzureRegion_s | Lokalizacje regionów platformy Azure | Wypełniono dla typu przepływu AzurePublic. Wszystkie adresy IP w polu PublicIPs_s będą współużytkować region platformy Azure |
+| AllowedInFlows_d | | Liczba dozwolonych przepływów przychodzących. Przedstawia liczbę przepływów, które współdzielą te same cztery kolekcje przychodzące do interfejsu sieciowego, na którym przechwycono przepływ |
+| DeniedInFlows_d |  | Liczba odrzuconych przepływów przychodzących. (Ruch przychodzący do interfejsu sieciowego, na którym przechwycono przepływ) |
+| AllowedOutFlows_d | | Liczba przepływów wychodzących, które były dozwolone (ruch wychodzący do interfejsu sieciowego, na którym przechwycono przepływ) |
+| DeniedOutFlows_d  | | Liczba odrzuconych przepływów wychodzących (ruch wychodzący do interfejsu sieciowego, na którym przechwycono przepływ) |
+| FlowCount_d | Przestarzałe. Całkowita liczba przepływów, które pasują do tych samych czterech krotek. W przypadku typów przepływów ExternalPublic i AzurePublic liczba będzie zawierać również przepływy z różnych adresów przywołującym element publicip.
+| InboundPackets_d | Pakiety odebrane jako przechwycone w interfejsie sieciowym, w którym została zastosowana reguła sieciowej grupy zabezpieczeń | Jest to wypełniane tylko w wersji 2 schematu dziennika przepływu sieciowej grupy zabezpieczeń |
+| OutboundPackets_d  | Pakiety wysłane jako przechwycone w interfejsie sieciowym, w którym zastosowano regułę sieciowej grupy zabezpieczeń | Jest to wypełniane tylko w wersji 2 schematu dziennika przepływu sieciowej grupy zabezpieczeń |
+| InboundBytes_d |  Bajty odebrane jako przechwycone w interfejsie sieciowym, gdzie została zastosowana reguła sieciowej grupy zabezpieczeń | Jest to wypełniane tylko w wersji 2 schematu dziennika przepływu sieciowej grupy zabezpieczeń |
+| OutboundBytes_d | Bajty wysłane jako przechwycone w interfejsie sieciowym, gdzie została zastosowana reguła sieciowej grupy zabezpieczeń | Jest to wypełniane tylko w wersji 2 schematu dziennika przepływu sieciowej grupy zabezpieczeń |
+| CompletedFlows_d  |  | Ta wartość jest wypełniana wartością różną od zera tylko dla schematu dziennika przepływu sieciowej grupy zabezpieczeń w wersji 2 |
+| PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Wpisy rozdzielone słupkami |
 
 ### <a name="notes"></a>Uwagi
 
-1. W przypadku przepływów AzurePublic i ExternalPublic klient należące do adresów IP maszyn wirtualnych platformy Azure jest wypełniana w polu VMIP_s, gdy trwa wypełnianie listy publicznych adresów IP w polu PublicIPs_s. Dla tych typów dwóch przepływ powinien używamy VMIP_s i PublicIPs_s zamiast pól SrcIP_s i DestIP_s. Dla adresów AzurePublic i ExternalPublicIP firma Microsoft agregacji dodatkowo tak, aby liczba rekordów pozyskane do obszaru roboczego analizy dzienników klienta jest minimalny. (W tym polu wkrótce staną się przestarzałe i powinny być używamy SrcIP_ i DestIP_s w zależności od tego, czy maszyna wirtualna platformy azure był źródło lub miejsce docelowe w przepływie)
-1. Szczegóły typów przepływu: Oparte na adresach IP zaangażowane w przepływ, firma Microsoft kategoryzowanie przepływów w następujących przepływów:
-1. IntraVNet — adresy IP w usłudze flow znajdują się w tej samej sieci wirtualnej platformy Azure.
-1. Między sieciami wirtualnymi — adresy IP w usłudze flow znajdują się w dwóch różnych sieciach wirtualnych platformy Azure.
-1. S2S — (lokacja) jeden z adresów IP należy do sieci wirtualnej platformy Azure, gdy adres IP należy do sieci klienta (witryna) podłączone do sieci wirtualnej platformy Azure za pośrednictwem bramy sieci VPN lub usługi Expressroute.
-1. P2S - (punkt lokacja) jeden z adresów IP należy do usługi Azure Virtual Network, gdy adres IP należy do sieci klienta (witryna) podłączone do sieci wirtualnej platformy Azure za pośrednictwem bramy sieci VPN.
-1. AzurePublic — jeden adresów IP nie należy do sieci wirtualnej platformy Azure podczas, gdy adres IP należy do usługi Azure wewnętrznego publiczne adresy IP należące do firmy Microsoft. Należące do klientów, publiczne adresy IP nie będzie należeć do tego typu przepływu. Na przykład maszyny Wirtualnej, ruch wysyłany do usługi platformy Azure (punkt końcowy magazynu) będzie dzielony na kategorie w ramach tego typu przepływu należące do każdego klienta.
-1. ExternalPublic — jeden z adresów IP nie należy do usługi Azure Virtual Network adres IP jest publiczny adres IP, który nie jest na platformie Azure, nie został zgłoszony jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między " FlowIntervalStartTime_t"i"FlowIntervalEndTime_t".
-1. MaliciousFlow — która jeden z adresów IP należą do sieci wirtualnej platformy azure w adres IP jest publiczny adres IP, który nie znajduje się w usłudze Azure i jest zgłaszana jako złośliwe w kanałach informacyjnych ASC, które Traffic Analytics wykorzystuje interwał przetwarzania między" FlowIntervalStartTime_t"i"FlowIntervalEndTime_t".
-1. UnknownPrivate — która jeden z adresów IP należą do sieci wirtualnej platformy Azure w adres IP należy do zakresu prywatnych adresów IP, zgodnie z definicją w dokumencie RFC 1918 i nie można zamapować za analizę ruchu należących do klienta lokacji lub w usłudze Azure Virtual Network.
-1. Nieznany — nie można zamapować albo adresu IP adresów w przepływy z topologią klienta na platformie Azure oraz w środowisku lokalnym (lokacja).
-1. Niektóre nazwy pól są dołączane za pomocą _s lub _d. Te nie oznaczają, źródłowe i docelowe.
+1. W przypadku przepływów AzurePublic i ExternalPublic adres IP maszyny wirtualnej platformy Azure należący do klienta jest wypełniany w polu VMIP_s, podczas gdy publiczne adresy IP są wypełniane w polu PublicIPs_s. Dla tych dwóch typów przepływów należy używać VMIP_s i PublicIPs_s zamiast pól SrcIP_s i DestIP_s. W przypadku adresów AzurePublic i ExternalPublicIP należy dalej agregować, aby liczba rekordów pozyskanych do obszaru roboczego usługi log Analytics klienta była minimalna. (To pole zostanie wkrótce wycofane i będziemy używać SrcIP_ i DestIP_s w zależności od tego, czy maszyna wirtualna platformy Azure była źródłem lub miejscem docelowym w przepływie)
+1. Szczegóły typów przepływu: W zależności od adresów IP używanych w przepływie klasyfikujemy przepływy w następujący sposób:
+1. IntraVNet — adresy IP znajdujące się w przepływie znajdują się w tym samym Virtual Network platformy Azure.
+1. Ramach — adresy IP w przepływie znajdują się w dwóch różnych sieciach wirtualnych platformy Azure.
+1. S2S — (lokacja z lokacją) jeden z adresów IP należy do usługi Azure Virtual Network, podczas gdy drugi adres IP należy do sieci klienta (lokacja) połączonej z usługą Azure Virtual Network za pośrednictwem bramy sieci VPN lub usługi Express Route.
+1. P2S — (wskaż lokację) jeden z adresów IP należy do platformy Azure Virtual Network podczas gdy drugi adres IP należy do sieci klienta (lokacja) połączonej z usługą Azure Virtual Network za pośrednictwem bramy sieci VPN.
+1. AzurePublic — jeden z adresów IP należy do usługi Azure Virtual Network, podczas gdy drugi adres IP należy do wewnętrznych publicznych adresów IP platformy Azure należących do firmy Microsoft. Publiczne adresy IP należące do klienta nie będą częścią tego typu przepływu. Na przykład każdy klient wysyłający maszynę wirtualną do usługi platformy Azure (punkt końcowy magazynu) zostanie skategoryzowany w ramach tego typu przepływu.
+1. ExternalPublic — jeden z adresów IP należy do platformy Azure Virtual Network podczas gdy drugi adres IP jest publicznym adresem IP, który nie znajduje się na platformie Azure, nie jest raportowany jako złośliwy w źródłach ASC, które Analiza ruchu zużywać dla interwału przetwarzania między " FlowIntervalStartTime_t "i" FlowIntervalEndTime_t ".
+1. MaliciousFlow — jeden z adresów IP należy do usługi Azure Virtual Network, podczas gdy drugi adres IP jest publicznym adresem IP, który nie znajduje się na platformie Azure i jest raportowany jako złośliwy w źródłach ASC, które Analiza ruchu zużywać dla interwału przetwarzania między " FlowIntervalStartTime_t "i" FlowIntervalEndTime_t ".
+1. UnknownPrivate — jeden z adresów IP należy do usługi Azure Virtual Network, podczas gdy drugi adres IP należy do zakresu prywatnych adresów IP zgodnie z definicją w dokumencie RFC 1918 i nie można go zmapować Analiza ruchu do witryny należącej do klienta lub Virtual Network platformy Azure.
+1. Nieznane — nie można zamapować jednego z adresów IP w przepływie na platformę Azure, a także lokalnie (lokacja).
+1. Niektóre nazwy pól są dołączane za pomocą _s lub _D. NIE oznacza to źródła i miejsca docelowego.
 
 ### <a name="next-steps"></a>Następne kroki
-Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [Traffic analytics — często zadawane pytania](traffic-analytics-faq.md) Aby wyświetlić szczegółowe informacje o funkcjach, zobacz [dokumentacji analizy ruchu](traffic-analytics.md)
+Aby uzyskać odpowiedzi na często zadawane pytania, zobacz temat [Analiza ruchu — często zadawane](traffic-analytics-faq.md) pytania, aby zobaczyć szczegóły dotyczące funkcjonalności, zobacz [Dokumentacja usługi Traffic Analytics](traffic-analytics.md)

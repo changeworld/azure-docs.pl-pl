@@ -1,7 +1,7 @@
 ---
-title: Jak używać kart przy użyciu modelu uczeń konwersacji, część 1 — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Jak korzystać z kart z modelem Conversation Learner, część 1 — Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak używać kart przy użyciu modelu uczeń konwersacji.
+description: Dowiedz się, jak używać kart z modelem Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,91 +10,92 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: d0b87597c506aca5c3b4f6f3815f58656203ac3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 426d7c8de29abeb88833e94962a7291a641702ac
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389520"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703742"
 ---
-# <a name="how-to-use-cards-part-1-of-2"></a>Jak używać kart (część 1 z 2)
+# <a name="how-to-use-cards-part-1-of-2"></a>Jak korzystać z kart (część 1 z 2)
 
-W tym samouczku pokazano, jak dodać i korzystać z prostego karty w Twoim czatbocie.
+W tym samouczku pokazano, jak dodać prostą kartę w botie i korzystać z niej.
 
 > [!NOTE]
-> Uczeń konwersacji aktualnie oczekuje, że pliki definicji karty muszą znajdować się w katalogu o nazwie "kart", który znajduje się w katalogu gdzie Bot została uruchomiona.
+> Conversation Learner obecnie oczekuje, że pliki definicji kart mają znajdować się w katalogu o nazwie "karty", który znajduje się w katalogu, w którym uruchomiono bot.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Samouczek kart (wersja zapoznawcza)](https://aka.ms/cl_Tutorial_v3_Cards_Preview)](https://aka.ms/cl_Tutorial_v3_Cards)
+[![Samouczek dotyczący kart](https://aka.ms/cl_Tutorial_v3_Cards_Preview)](https://aka.ms/cl_Tutorial_v3_Cards)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa ogólne bot samouczek
+Ten samouczek wymaga, aby ogólny samouczek bot był uruchomiony
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
 
-Karty są elementy interfejsu użytkownika, które umożliwiają użytkownikom wybrać określoną opcję w konwersacji. 
+Karty to elementy interfejsu użytkownika, które umożliwiają użytkownikowi wybranie opcji w konwersacji. 
 
-### <a name="open-the-demo"></a>Otwórz wersję demonstracyjną
+### <a name="open-the-demo"></a>Otwórz demonstrację
 
-W internetowym interfejsie użytkownika kliknij pozycję "Importuj samouczki", a następnie wybierz modelu o nazwie "Samouczek-15-kart".
+W interfejsie użytkownika sieci Web kliknij pozycję "Importowanie samouczków" i wybierz model o nazwie "samouczek-15-Cards".
 
 ### <a name="the-card"></a>Karta
 
-Definicja karty jest w następującej lokalizacji: C:\<installedpath\>\src\cards\prompt.json.
+Definicja karty znajduje się w następującej lokalizacji: C:\<installedpath\>\src\cards\prompt.json.
 
-System spodziewa się znaleźć Twojej definicji kart w tym katalogu "kart".
+System oczekuje na znalezienie definicji karty w tym katalogu "karty".
 
 ![](../media/tutorial13_prompt.PNG)
 
 > [!NOTE]
-> Zwróć uwagę, treści, w polu tekstowym wpisz "TextBlock" i "{{pytania}}" — symbol zastępczy.
-> Istnieją przedstawia dwa przyciski i tekst, który pobiera złożonych dla każdego.
+> Zwróć uwagę na typ treści "TextBlock" i symbol zastępczy "{{pyta}}" w polu tekstowym.
+> Istnieją dwa przyciski przesyłania i tekst, który jest przesyłany dla każdego z nich.
 
 ### <a name="actions"></a>Akcje
 
-Przygotowaliśmy trzy czynności. Jak widać poniżej pierwszej akcji jest kartą.
+Utworzyliśmy trzy akcje. Jak widać poniżej, pierwsza akcja to karta.
 
 ![](../media/tutorial13_actions.PNG)
 
-Sprawdźmy, tworzenia karty typ akcji:
+Zobaczmy, jak utworzono typ akcji karty:
 
 ![](../media/tutorial13_cardaction.PNG)
 
 > [!NOTE]
-> Karta zawiera trzy różne parametry - Wprowadź pytanie, przyciski 1 i 2. Te elementy są odwołania do szablonu, na karcie, w którym możesz wprowadzić pytanie i odpowiednich odpowiedzi. Można odwoływać się i używać jednostki lub kombinację tekstu i jednostek.
+> Karta zawiera trzy różne parametry — dane wejściowe pytania, przycisk 1 i przycisk 2. Te elementy są odwołaniami do szablonu na karcie, w których wprowadzasz pytanie i odpowiadające im odpowiedzi. Można także odwoływać się do jednostek lub kombinacji tekstu i jednostek.
 
-Ikonę oka pokazuje, jak wygląda karty.
+Ikona oka pokazuje, jak wygląda karta.
 
-### <a name="practicing-creating-card-actions"></a>Ćwiczenia czynności dotyczące tworzenia karty
+### <a name="practicing-creating-card-actions"></a>Praktyczne Tworzenie akcji karty
 
-1. Na lewym panelu kliknij przycisk "Akcje", a następnie przycisku "Nowa akcja".
-2. Wybierz pozycję "Kart", "Typu akcji".
-3. Wybierz pozycję "Monituj" z listy "Szablon".
-4. W polu "zapytania" typu "Przejdź do lewej lub prawej"
-5. W polu "button1" wpisz "po lewej"
-6. W polu "button2" wpisz "po prawej"
+1. Na panelu po lewej stronie kliknij pozycję akcje, a następnie przycisk "nowa akcja".
+2. Wybierz pozycję "Karta" dla "typ akcji".
+3. Wybierz pozycję "Monituj" z listy "template" (szablon).
+4. W polu "pytanie" wpisz "przejdź do lewej lub w prawo"
+5. W polu "Button1" wpisz "Left"
+6. W polu "Button2" wpisz "Right"
 7. Kliknij przycisk "Anuluj".
 
-### <a name="train-dialog-using-an-adaptive-card"></a>Szkolenie z okna dialogowego, używając karta Adaptacyjna
+### <a name="train-dialog-using-an-adaptive-card"></a>Okno dialogowe uczenia przy użyciu karty adaptacyjnej
 
-1. W lewym panelu kliknij przycisk "Okien dialogowych Train", a następnie przycisk "Nowy Train Dialog".
-2. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "hi"
-3. Kliknij przycisk "Wynik akcje".
-4. Wybierz odpowiedź, "wiersz: zapytania: Przejdź do lewej lub prawej?"
-    - Ikonę oka może służyć do karty w wersji zapoznawczej
-5. W panelu rozmowy kliknij przycisk "Left" w wierszu renderowany.
-6. Kliknij przycisk "Wynik akcje".
-7. Wybierz odpowiedź "Po lewej"
+1. Na panelu po lewej stronie kliknij pozycję "szkolenie okna dialogowego", a następnie przycisk "okno dialogowe nowego uczenia".
+2. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Witaj"
+3. Kliknij przycisk "akcje oceny".
+4. Wybierz odpowiedź, "Prompt: pytanie: Przejdź w lewo lub w prawo? "
+    - Ikona oka może służyć do wyświetlania podglądu karty
+5. W panelu rozmowa kliknij przycisk "lewy" w wierszu renderowane.
+6. Kliknij przycisk "akcje oceny".
+7. Wybierz odpowiedź, "z lewej"
 8. Kliknij przycisk "Zapisz".
-9. Wybierz odpowiedź, "wiersz: zapytania: Przejdź do lewej lub prawej?"
-10. W panelu rozmowy kliknij przycisk "Right" w wierszu renderowany.
-11. Kliknij przycisk "Wynik akcje".
+9. Wybierz odpowiedź, "Prompt: pytanie: Przejdź w lewo lub w prawo? "
+10. W panelu rozmowa kliknij przycisk "prawy" w wierszu renderowane.
+11. Kliknij przycisk "akcje oceny".
 12. Wybierz odpowiedź, "Right"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Boty hybrydowe](./16-hybrid-bots.md)
+> [Botów hybrydowe](./16-hybrid-bots.md)

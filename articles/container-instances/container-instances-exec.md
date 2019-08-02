@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: danlep
 ms.openlocfilehash: a8583cf605891631a2bce6914b24525aebd59ea0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325980"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Wykonywanie polecenia w uruchomionym wystąpieniu kontenera platformy Azure
@@ -21,7 +21,7 @@ Azure Container Instances obsługuje wykonywanie polecenia w działającym konte
 
 ## <a name="run-a-command-with-azure-cli"></a>Uruchom polecenie za pomocą interfejsu wiersza polecenia platformy Azure
 
-Wykonaj polecenie w działającym kontenerze przy użyciu polecenia [AZ Container exec][az-container-exec] in the [Azure CLI][azure-cli]:
+Wykonaj polecenie w działającym kontenerze za pomocą polecenia [AZ Container exec][az-container-exec] w [interfejsie wiersza polecenia platformy Azure][azure-cli]:
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4bd0b6f0652f49c16bd67bbca5a89d19e17a8b2c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 150d30085976c89e9053d4715da98e487684e45c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498418"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717258"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -23,7 +23,7 @@ Update Management rozwiązanie w Azure Automation służy do zarządzania aktual
 Update Management dla maszyn wirtualnych można włączyć bezpośrednio z poziomu Azure Automation konta. Aby dowiedzieć się, jak włączyć Update Management dla maszyn wirtualnych na podstawie konta usługi Automation, zobacz [Zarządzanie aktualizacjami dla wielu maszyn wirtualnych](manage-update-multi.md). Update Management dla maszyny wirtualnej można również włączyć na stronie maszyny wirtualnej w Azure Portal. Ten scenariusz jest dostępny dla maszyn wirtualnych z systemem [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) i [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) .
 
 > [!NOTE]
-> Rozwiązanie Update Management wymaga połączenia obszaru roboczego Log Analytics z kontem usługi Automation. Aby uzyskać ostateczną listę obsługiwanych regionów, zobacz [./How-to/region-Mappings.MD]. Mapowania regionów nie mają wpływu na możliwość zarządzania maszynami wirtualnymi w osobnym regionie niż konto usługi Automation.
+> Rozwiązanie Update Management wymaga połączenia obszaru roboczego Log Analytics z kontem usługi Automation. Aby uzyskać ostateczną listę obsługiwanych regionów, zobacz [https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings ]. Mapowania regionów nie mają wpływu na możliwość zarządzania maszynami wirtualnymi w osobnym regionie niż konto usługi Automation.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -99,6 +99,11 @@ W poniższej tabeli wymieniono systemy operacyjne, które nie są obsługiwane:
 #### <a name="windows"></a>Windows
 
 Agenci systemu Windows muszą być skonfigurowani do komunikowania się z serwerem WSUS lub muszą mieć dostęp do Microsoft Update. Możesz użyć Update Management z System Center Configuration Manager. Aby dowiedzieć się więcej na temat scenariuszy integracji, zobacz [integracja System Center Configuration Manager z Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration). Wymagany jest [Agent systemu Windows](../azure-monitor/platform/agent-windows.md) . Agent zostanie zainstalowany automatycznie, jeśli zostanie dołączona maszyna wirtualna platformy Azure.
+
+> [!NOTE]
+> Użytkownik może zmodyfikować zasady grupy tak, aby rozruch maszynowy był wykonywany tylko przez użytkownika, a nie przez system. Maszyny zarządzane mogą zostać zablokowane, jeśli Update Management nie ma uprawnień do ponownego uruchomienia maszyny bez ręcznej interakcji z użytkownikiem.
+>
+> Aby uzyskać więcej informacji, zobacz [Configure zasady grupy Settings for Automatic Updates](https://docs.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates).
 
 #### <a name="linux"></a>Linux
 
@@ -190,9 +195,9 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów systemu Windows, a następnie inicjuje instalację wymaganych aktualizacji. |
+| Agenci dla systemu Windows |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów systemu Windows, a następnie inicjuje instalację wymaganych aktualizacji. |
 | Agenci dla systemu Linux |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów z systemem Linux, a następnie inicjuje instalację wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie z agentem Operations Manager do Azure Monitor dzienników nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/>Bezpośrednie połączenie z agentem Operations Manager do Azure Monitor dzienników nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
@@ -621,7 +626,7 @@ W poniższych sekcjach wyjaśniono potencjalne problemy z poprawkami systemu Lin
 
 W przypadku niektórych wariantów systemu Linux, takich jak Red Hat Enterprise Linux, uaktualnienia na poziomie OS mogą odbywać się za pośrednictwem pakietów. Może to prowadzić do Update Management uruchamiania w przypadku zmiany numeru wersji systemu operacyjnego. Ponieważ Update Management używa tych samych metod do aktualizacji pakietów, których administrator może używać lokalnie na komputerze z systemem Linux, to zachowanie jest zamierzone.
 
-Aby uniknąć aktualizacji wersji systemu operacyjnego za pomocą Update Management uruchamiania, użyj  funkcji wykluczania.
+Aby uniknąć aktualizacji wersji systemu operacyjnego za pomocą Update Management uruchamiania, użyj funkcji wykluczania.
 
 W Red Hat Enterprise Linux nazwa pakietu do wykluczenia to RedHat-Release-Server. x86_64.
 
@@ -644,7 +649,7 @@ Aby usunąć maszynę wirtualną z Update Management:
 * W obszarze roboczym Log Analytics Usuń maszynę wirtualną z zapisanego wyszukiwania konfiguracji `MicrosoftDefaultScopeConfig-Updates`zakresu. Zapisane wyszukiwania można znaleźć **ogólnie** w obszarze roboczym.
 * Usuń [program Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta log Analytics dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Przejdź do samouczka, aby dowiedzieć się, jak zarządzać aktualizacjami dla maszyn wirtualnych z systemem Windows.
 

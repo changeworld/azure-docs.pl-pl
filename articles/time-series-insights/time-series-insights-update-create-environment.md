@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 998471d99a785eeff39ef7c99e60e1d9b49e0d7a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677867"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725831"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Samouczek: Konfigurowanie środowiska wersji zapoznawczej usługi Azure Time Series Insights
 
@@ -62,7 +62,7 @@ W tej sekcji utworzysz trzy symulowane urządzenia, które wysyłają dane do wy
 
     [![Strona tworzenia rozwiązania symulacji urządzenia](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-## <a name="create-a-time-series-insights-preview-payg-environment"></a>Tworzenie środowiska wersji zapoznawczej usługi Time Series Insights dostępnej w modelu PAYG
+## <a name="create-a-preview-payg-environment"></a>Tworzenie środowiska w wersji zapoznawczej PAYG
 
 W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w wersji zapoznawczej i łączenia go z usługą IoT Hub utworzoną przez Akcelerator rozwiązania IoT przy użyciu [Azure Portal](https://portal.azure.com/).
 
@@ -130,7 +130,9 @@ W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w 
 
    Jeśli Twoje poświadczenia nie znajdują się na liście, musisz udzielić sobie uprawnień dostępu do środowiska. Aby dowiedzieć się więcej o ustawianiu uprawnień, zobacz [Grant data access (Przyznawanie dostępu do danych)](./time-series-insights-data-access.md).
 
-## <a name="stream-data-into-your-environment"></a>Przesyłanie strumieniowe danych do środowiska
+## <a name="stream-data"></a>Przesyłanie strumieniowe danych
+
+Teraz, gdy wdrożono środowisko Time Series Insights, przesyłaj strumieniowo dane do analizy.
 
 1. Przejdź z powrotem do [strony akceleratorów rozwiązań usługi Azure IoT](https://www.azureiotsolutions.com/Accelerators). Znajdź swoje rozwiązanie na pulpicie nawigacyjnym akceleratora rozwiązania. Następnie wybierz pozycję **Uruchom**:
 
@@ -158,7 +160,7 @@ W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w 
 
     [![Pulpit nawigacyjny symulacji usługi Azure IoT](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
-## <a name="analyze-data-in-your-environment"></a>Analizowanie danych w środowisku
+## <a name="analyze-data"></a>Analizowanie danych
 
 W tej sekcji przeprowadzimy podstawową analizę danych szeregów czasowych przy użyciu [eksploratora wersji zapoznawczej usługi Azure Time Series Insights](./time-series-insights-update-explorer.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Operacyjne Store zapytania w usłudze Azure SQL Database
-description: Dowiedz się, jak działają Store zapytania w usłudze Azure SQL Database
+title: Magazyn zapytań operacyjnych w Azure SQL Database
+description: Dowiedz się, jak obsługiwać magazyn zapytań w Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,51 +10,50 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 3ceb8569d952f2947870ce7314f869623b2d87f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4f999818fe3b3517ee3fb48c22e616ee50f2d88
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584747"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567147"
 ---
-# <a name="operating-the-query-store-in-azure-sql-database"></a>Operacyjnego Store zapytania w usłudze Azure SQL Database
+# <a name="operating-the-query-store-in-azure-sql-database"></a>Działanie magazynu zapytań w Azure SQL Database
 
-Query Store na platformie Azure jest funkcją w pełni zarządzana baza danych, która stale zbiera i przedstawia szczegółowe informacje historyczne na temat wszystkich zapytań. Należy rozważać Query Store, jak Rejestrator danych samolotowy, znacznie upraszcza zapytania Rozwiązywanie problemów z wydajnością zarówno dla aplikacji w chmurze i lokalnych klientów. W tym artykule opisano specyficzne aspekty operacyjne Query Store na platformie Azure. Za pomocą tego wcześniej zebranych zapytania o dane, możesz szybkie diagnozowanie i rozwiązywanie problemów z wydajnością i związku z tym poświęcić więcej czasu, skupiając się na działalność biznesową. 
+Magazyn zapytań na platformie Azure to funkcja w pełni zarządzanej bazy danych, która ciągle zbiera i przedstawia szczegółowe informacje historyczne o wszystkich zapytaniach. Możesz zastanowić się nad magazynem zapytań podobnym do rejestratora danych lotów samolotu, który znacznie upraszcza Rozwiązywanie problemów z wydajnością zapytań zarówno w przypadku klientów w chmurze, jak i lokalnych. W tym artykule wyjaśniono określone aspekty magazynu zapytań operacyjnych na platformie Azure. Korzystając z tych wstępnie zebranych danych zapytań, można szybko diagnozować i rozwiązywać problemy z wydajnością, a tym samym poświęcać więcej czasu na ich działalność. 
 
-Query Store zostało [dostępnie](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/) w usłudze Azure SQL Database od listopada 2015 r. Query Store jest podstawą dla analizy wydajności oraz funkcji dopasowywania, takich jak [SQL Database Advisor i pulpit nawigacyjny wydajności](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). W momencie publikowania tego artykułu Query Store działa w ponad 200 000 baz danych użytkownika na platformie Azure zbieranie informacji związane z kwerendami, kilka miesięcy, bez przeszkód.
+Magazyn zapytań jest [dostępny globalnie](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/) w Azure SQL Database od listopada 2015. Magazyn zapytań jest podstawą do analizy wydajności i funkcji dostrajania, takich jak [SQL Database Advisor i pulpit nawigacyjny wydajności](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). W momencie publikowania tego artykułu magazyn zapytań działa w ponad 200 000 bazach danych użytkowników na platformie Azure, zbierając informacje dotyczące zapytania przez kilka miesięcy bez przeszkód.
 
 > [!IMPORTANT]
-> Microsoft, Trwa aktywowanie Store zapytania dla wszystkich baz danych Azure SQL (istniejących i nowych). 
+> Firma Microsoft jest w trakcie aktywowania magazynu zapytań dla wszystkich baz danych Azure SQL Database (istniejących i nowych). 
 
-## <a name="optimal-query-store-configuration"></a>Konfiguracja optymalne Query Store
+## <a name="optimal-query-store-configuration"></a>Optymalna Konfiguracja magazynu zapytań
 
-W tej sekcji opisano ustawienia domyślne optymalną konfigurację, które są przeznaczone do zapewnienia niezawodne działanie Query Store i funkcje zależne, takie jak [SQL Database Advisor i pulpit nawigacyjny wydajności](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Konfiguracja domyślna jest zoptymalizowany pod kątem zbierania danych ciągłe, który jest minimalny czas w stanie OFF/READ_ONLY.
+Ta sekcja zawiera opis optymalnych ustawień domyślnych konfiguracji, które zostały zaprojektowane w celu zapewnienia niezawodnej obsługi magazynu zapytań i funkcji zależnych, takich jak [SQL Database Advisor i pulpit nawigacyjny wydajności](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Konfiguracja domyślna jest zoptymalizowana pod kątem ciągłej zbierania danych, czyli minimalnej czasu poświęcanego na Stany wyłączone/READ_ONLY.
 
-| Konfigurowanie | Opis | Domyślne | Komentarz |
+| Konfigurowanie | Opis | Domyślny | Komentarz |
 | --- | --- | --- | --- |
-| MAX_STORAGE_SIZE_MB |Określa limit miejsca na dane, mogący Query Store wewnątrz bazy danych klienta |100 |Wymuszane dla nowych baz danych |
-| INTERVAL_LENGTH_MINUTES |Określa rozmiar przedziału czasu, w którym zagregowane i utrwalane statystyk zebranych środowiska uruchomieniowego dla planów zapytań. Każdy plan zapytanie usługi active ma co najwyżej jeden wiersz w okresie razem zdefiniowane za pomocą tej konfiguracji |60 |Wymuszane dla nowych baz danych |
-| STALE_QUERY_THRESHOLD_DAYS |Zasady oparte na czasie oczyszczania, które określa okres przechowywania statystyki środowiska uruchomieniowego utrwalonego i zapytania nieaktywne |30 |Wymuszane dla nowych baz danych i bazami danych za pomocą wcześniejszy domyślny (367) |
-| SIZE_BASED_CLEANUP_MODE |Określa, czy automatycznego oczyszczania ma miejsce, gdy zbliża się do limitu rozmiaru danych Query Store |AUTOMATYCZNIE |Wymuszone dla wszystkich baz danych |
-| QUERY_CAPTURE_MODE |Określa, czy wszystkie zapytania lub tylko podzbiór zapytania są śledzone |AUTOMATYCZNIE |Wymuszone dla wszystkich baz danych |
-| FLUSH_INTERVAL_SECONDS |Określa, że maksymalny okres, przez który przechwycone środowiska uruchomieniowego, które statystyki są przechowywane w pamięci, przed opróżnianie na dysku |900 |Wymuszane dla nowych baz danych |
+| MAX_STORAGE_SIZE_MB |Określa limit przestrzeni danych, którą magazyn zapytań może wykonać w ramach bazy danych klienta |100 |Wymuszane dla nowych baz danych |
+| INTERVAL_LENGTH_MINUTES |Definiuje rozmiar przedziału czasu, w którym zbierane statystyki środowiska uruchomieniowego dla planów zapytania są agregowane i utrwalane. Każdy aktywny plan zapytania ma co najwyżej jeden wiersz w danym okresie zdefiniowanym przy użyciu tej konfiguracji |60 |Wymuszane dla nowych baz danych |
+| STALE_QUERY_THRESHOLD_DAYS |Zasady oczyszczania oparte na czasie, które sterują okresem przechowywania utrwalonych statystyk środowiska uruchomieniowego i nieaktywnych zapytań |30 |Wymuszone dla nowych baz danych i baz danych z poprzednią wartością domyślną (367) |
+| SIZE_BASED_CLEANUP_MODE |Określa, czy automatyczne czyszczenie danych ma miejsce, gdy rozmiar danych magazynu zapytań zbliża się do limitu |AUTOMATYCZNIE |Wymuszane dla wszystkich baz danych |
+| QUERY_CAPTURE_MODE |Określa, czy są śledzone wszystkie zapytania lub tylko podzbiór zapytań |AUTOMATYCZNIE |Wymuszane dla wszystkich baz danych |
+| FLUSH_INTERVAL_SECONDS |Określa maksymalny okres, w którym przechwycone statystyki środowiska uruchomieniowego są przechowywane w pamięci, przed przeprowadzeniem opróżniania na dysk |900 |Wymuszane dla nowych baz danych |
 |  | | | |
 
 > [!IMPORTANT]
-> Te ustawienia domyślne są automatycznie stosowane w ostatnim etapie aktywacji Query Store we wszystkich bazach danych Azure SQL (zobacz ważna uwaga poprzedzających). Po tym światła się bazy danych SQL Azure nie będzie zmieniać wartości konfiguracji Ustaw przez klientów, o ile nie mogą mieć negatywny wpływ na podstawowe obciążenie lub niezawodne operacje Store zapytania.
+> Te wartości domyślne są automatycznie stosowane w końcowym etapie aktywacji magazynu zapytań we wszystkich bazach danych Azure SQL (patrz Poprzednia ważna Uwaga). Po tym znaczeniu Azure SQL Database nie zmienią wartości konfiguracyjnych ustawionych przez klientów, o ile nie wpłyną one negatywnie na podstawowe obciążenie lub niezawodne operacje magazynu zapytań.
 
-Jeśli chcesz pozostać przy użyciu ustawień użytkownika, użyj [ALTER DATABASE przy użyciu opcji Query Store](https://msdn.microsoft.com/library/bb522682.aspx) można przywrócić konfigurację do poprzedniego stanu. Zapoznaj się z [najlepsze rozwiązania dzięki Store zapytania](https://msdn.microsoft.com/library/mt604821.aspx) Aby dowiedzieć się, jak top wybrać optymalną konfigurację parametrów.
+Jeśli chcesz pozostać w ustawieniach niestandardowych, użyj [opcji ALTER DATABASE with Query Store](https://msdn.microsoft.com/library/bb522682.aspx) , aby przywrócić konfigurację do poprzedniego stanu. Zapoznaj się z najlepszymi rozwiązaniami dotyczącymi [magazynu zapytań,](https://msdn.microsoft.com/library/mt604821.aspx) aby dowiedzieć się, jak najlepiej wybrać optymalne parametry konfiguracji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Szczegółowe informacje o wydajności bazy danych SQL](sql-database-performance.md)
+[SQL Database szczegółowe informacje o wydajności](sql-database-performance.md)
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-Aby uzyskać więcej informacji, odwiedź następujące artykuły:
+Aby uzyskać więcej informacji, zapoznaj się z następującymi artykułami:
 
-- [Rejestrator danych dla bazy danych](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database)
-- [Monitorowanie wydajności za pomocą Store zapytania](https://msdn.microsoft.com/library/dn817826.aspx)
+- [Rejestrator danych lotu dla bazy danych](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database)
+- [Monitorowanie wydajności za pomocą magazynu zapytań](https://msdn.microsoft.com/library/dn817826.aspx)
 - [Scenariusze użycia magazynu zapytań](https://msdn.microsoft.com/library/mt614796.aspx)

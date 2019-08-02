@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: Interfejs API programu .NET zmiany źródła danych procesora, zestawu SDK i zasoby'
-description: Dowiedz się wszystkiego o interfejsu API procesora kanału informacyjnego zmian i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zmiany źródła danych procesora zestawu SDK programu .NET.
+title: 'Azure Cosmos DB: interfejs API procesora kanału zmian platformy .NET, zasoby & zestawu SDK'
+description: Dowiedz się więcej na temat interfejsu API procesora i zestawu SDK, w tym daty wydania, daty wycofania i zmian wprowadzonych między poszczególnymi wersjami zestawu SDK procesora kanału zmian platformy .NET.
 author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 2a4d636ccb03e36f7c495f3c10c90033d7c3c93c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea6de5f42910457efa5ca6c458d7af63faa38e18
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417919"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637754"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Zmiana .NET kanału informacyjnego procesora zestawu SDK: Pobierz i informacje o wersji
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Zestaw SDK procesora kanału informacyjnego platformy .NET: Informacje dotyczące pobierania i zwalniania
 
 > [!div class="op_single_selector"]
 >
@@ -29,140 +29,140 @@ ms.locfileid: "66417919"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulkexecutor — platforma .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulkexecutor — platforma Java](sql-api-sdk-bulk-executor-java.md)
+> * [Wykonawca zbiorczy — .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Moduł wykonawczy zbiorczej — Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
 |**Zestaw SDK do pobrania**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
-|**Dokumentacja interfejsu API**|[Zmień dokumentację referencyjną interfejsu API bibliotece procesora zestawienia](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Wprowadzenie**|[Wprowadzenie zmian źródła danych procesora zestawu .NET SDK](change-feed.md)|
+|**Dokumentacja interfejsu API**|[Dokumentacja referencyjna interfejsu API biblioteki procesora zmian](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
+|**Wprowadzenie**|[Wprowadzenie do zestawu .NET SDK procesora źródła zmian](change-feed.md)|
 |**Bieżącej struktury obsługiwanej**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Informacje o wersji
 
-### <a name="v2-builds"></a>kompilacje w wersji 2
+### <a name="v2-builds"></a>2 kompilacje
 
 ### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
-* Ulepszone równoważenia strategii dla scenariusza podczas pobierania wszystkich dzierżaw trwa dłużej niż interwał wygasania dzierżawy, np. z powodu problemów z siecią:
-  * W tym scenariuszu algorytmu równoważenia obciążenia umożliwia błędnie należy wziąć pod uwagę dzierżawy jako wygasłe co powoduje kradzież dzierżaw od właścicieli active. Może to wywołać niepotrzebnego ponownego równoważenia partii dzierżaw.
-  * Ten problem jest rozwiązany w tej wersji, unikając ponawiania prób w przypadku konfliktu podczas nabywania Dzierżawa wygasła, której właściciel nie zmienił i uzyskiwanie posponing Wygasłe dzierżawy do następnej iteracji równoważenia.
+* Ulepszona strategia równoważenia obciążenia dla scenariusza, w którym wszystkie dzierżawy zajmują czas dłuższy niż interwał wygaśnięcia dzierżawy, na przykład z powodu problemów z siecią:
+  * W tym scenariuszu algorytm równoważenia obciążenia używany do fałszywego traktowania dzierżaw jako wygasłych, co powoduje kradzież dzierżaw od aktywnych właścicieli. Może to spowodować niepotrzebne ponowne zrównoważenie wielu dzierżaw.
+  * Ten problem został rozwiązany w tej wersji przez uniknięcie ponowienia konfliktu podczas uzyskiwania wygasłej dzierżawy, której właściciel nie zmienił i posponing uzyskanie wygasłej dzierżawy do następnej iteracji równoważenia obciążenia.
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
-* Lepsza obsługa wyjątków obserwatora.
-* Więcej informacji na temat błędów obserwatora:
-  * Po zamknięciu obserwatora ze względu na wyjątek generowany przez obserwatora ProcessChangesAsync CloseAsync otrzyma parametr Przyczyna ustawiony ChangeFeedObserverCloseReason.ObserverError.
-  * Dodano informacje śledzenia do identyfikowania błędów w kodzie użytkownika w obserwatora.
+* Ulepszona obsługa wyjątków obserwatorów.
+* Bogatsze informacje dotyczące błędów obserwatora:
+  * Gdy obserwator zostanie zamknięty z powodu wyjątku zgłoszonego przez ProcessChangesAsync obserwatora, CloseAsync otrzyma teraz parametr przyczyny ustawiony na ChangeFeedObserverCloseReason. ObserverError.
+  * Dodano ślady do identyfikowania błędów w kodzie użytkownika w obserwatorze.
 
 ### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
-* Dodano obsługę obsługi podziału w kolekcjach, korzystających z udostępnionej bazy danych przepływności.
-  * W tej wersji rozwiązuje problem, które mogą wystąpić podczas podziału w kolekcji przy użyciu przepływności udostępnionej bazy danych, gdy Podziel wynik na zakres kluczy partycji tylko jeden element podrzędny utworzone zamiast dwóch ponownego równoważenia partycji. W takim przypadku procesora zestawienia zmian może zakończyć się zatrzymaniem usunięcie dzierżawy dla starego zakres kluczy partycji i bez tworzenia nowych dzierżaw. Problem został rozwiązany w tej wersji.
+* Dodano obsługę funkcji Split w kolekcjach, które używają przepływności udostępnionej bazy danych.
+  * W tej wersji rozwiązano problem, który może wystąpić podczas dzielenia w kolekcje przy użyciu przepływności udostępnionej bazy danych w przypadku podzielenia wyniku na ponowne równoważenie partycji z tylko jednym utworzonym zakresem kluczy partycji podrzędnej, a nie dwoma. W takim przypadku procesor źródła zmian może spowodować zatrzymanie usuwania dzierżawy dla starego zakresu kluczy partycji i nie tworzenia nowych dzierżaw. Problem został rozwiązany w tej wersji.
 
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
-* Dodano nową właściwość ChangeFeedProcessorOptions.StartContinuation do obsługi zmian począwszy od źródła danych z żądania token kontynuacji. To jest używana tylko podczas dzierżawy kolekcja jest pusta lub dzierżawa nie ma ContinuationToken zestawu. Dla dzierżaw w kolekcję dzierżaw, które mają ustawiony ContinuationToken token kontynuacji jest używany, i ChangeFeedProcessorOptions.StartContinuation jest ignorowana.
+* Dodano nową właściwość ChangeFeedProcessorOptions. StartContinuation, aby można było obsługiwać uruchamianie źródła zmian z tokenu kontynuacji żądania. Ta wartość jest używana tylko wtedy, gdy kolekcja dzierżawcy jest pusta lub dzierżawa nie ma ustawionego zestawu ContinuationToken. W przypadku dzierżaw w kolekcji dzierżawy, które mają ustawioną ContinuationToken, używany jest ContinuationToken i ChangeFeedProcessorOptions. StartContinuation jest ignorowana.
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
-* Dodano obsługę używania magazyn niestandardowy, aby utrwalić tokenów kontynuacji dla każdej partycji.
-  * Na przykład do przechowywania niestandardowych dzierżawy może być podzielona na partycje w jakikolwiek sposób niestandardowy kolekcję dzierżaw usługi Azure Cosmos DB.
-  * Dzierżawy niestandardowych magazynów za pomocą nowego ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) punktów rozszerzeń i ILeaseStoreManager interfejsu publicznego.
-  * W wielu interfejsach roli, zaprojektowane od nowa interfejs ILeaseManager.
-* Pomocnicza, zmiana powodująca niezgodność: Usunięto rozszerzalności punktu ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager), zamiast tego użyj ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager).
+* Dodano obsługę używania magazynu niestandardowego do utrwalania tokenów kontynuacji na partycję.
+  * Na przykład niestandardowa magazyn dzierżawy może być Azure Cosmos DB kolekcje dzierżawy w dowolny sposób.
+  * Niestandardowe magazyny dzierżaw mogą korzystać z nowej rozszerzalności ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager) i interfejsu publicznego ILeaseStoreManager.
+  * Refaktoryzacja interfejsu ILeaseManager w wielu interfejsach roli.
+* Drobna zmiana podziału: Usunięto punkt rozszerzalności ChangeFeedProcessorBuilder. WithLeaseManager (ILeaseManager), zamiast tego należy użyć ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager).
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
-* W tej wersji rozwiązuje problem występujący podczas przetwarzania podziału w monitorowanej kolekcji i przy użyciu kolekcji partycjonowanej dzierżawy. Podczas przetwarzania dzierżawy dla partycji podziału, dzierżawy odpowiadający tej partycji nie mogą zostać usunięte. Problem został rozwiązany w tej wersji.
+* W tej wersji rozwiązano problem występujący podczas przetwarzania podziału w monitorowanej kolekcji i używania kolekcji dzierżaw z podziałem na partycje. Podczas przetwarzania dzierżawy dla partycji dzielonej nie można usunąć dzierżawy odpowiadającej tej partycji. Problem został rozwiązany w tej wersji.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
-* Naprawiono narzędzie do szacowania obliczenia wzorzec wielu kont i nowy format tokenu sesji.
+* Stałe obliczanie szacowania dla kont z wieloma wzorcami i nowy format tokenu sesji.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
-* Dodano obsługę kolekcje partycjonowane dzierżawy. Klucz partycji musi być zdefiniowany jako/identyfikator.
-* Pomocnicza, zmiana powodująca niezgodność: metody interfejsu IChangeFeedDocumentClient i klasa ChangeFeedDocumentClient zostały zmienione na obejmują parametry RequestOptions i token anulowania. IChangeFeedDocumentClient jest punktem zaawansowanych rozszerzeń, który pozwala na dostarczenie niestandardową implementację klientem dokumentu do korzystania z procesora zestawienia zmian, np. dekoracji DocumentClient i przechwytywać wszystkie wywołania do niego wykonaj dodatkowe śledzenia obsługi błędów , itp. Dzięki tej aktualizacji kodu, który implementuje IChangeFeedDocumentClient należy zostać zmienione w celu uwzględnienia nowych parametrów w implementacji.
-* Diagnostyka drobne ulepszenia.
+* Dodano obsługę partycjonowanych kolekcji dzierżaw. Klucz partycji musi być zdefiniowany jako/ID.
+* Drobna zmiana podziału: metody interfejsu IChangeFeedDocumentClient i klasy ChangeFeedDocumentClient zostały zmienione w taki sposób, aby zawierały parametry RequestOptions i CancellationToken. IChangeFeedDocumentClient to zaawansowany punkt rozszerzalności, który umożliwia udostępnianie niestandardowej implementacji klienta dokumentu do użycia z procesorem kanału informacyjnego zmiany, np. dekorować DocumentClient i przechwycenie wszystkich wywołań do niego w celu dodatkowego śledzenia, obsługi błędów itd. W przypadku tej aktualizacji kod implementujący IChangeFeedDocumentClient należy zmienić, aby uwzględnić nowe parametry w implementacji.
+* Ulepszenia diagnostyki pomocniczej.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Dodano nowy interfejs API, zadanie&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). Może to służyć do pracy szacowany dla każdej partycji.
-* Obsługuje Microsoft.Azure.DocumentDB zestawu SDK w wersji 2.0. Wymaga Microsoft.Azure.DocumentDB 2.0 lub nowszej.
+* Dodano nowy interfejs API,&lt;zadanie&lt;IReadOnlyList&gt; RemainingPartitionWork&gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Może to służyć do uzyskania szacowanej pracy dla każdej partycji.
+* Obsługuje pakiet Microsoft. Azure. DocumentDB SDK 2,0. Wymaga programu Microsoft. Azure. DocumentDB 2,0 lub nowszego.
 
 ### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
-* Dodano ChangeFeedEventHost.HostName właściwość publiczna dla zachowania zgodności z v1.
+* Dodano Właściwość publiczną ChangeFeedEventHost. HostName w celu zapewnienia zgodności z v1.
 
 ### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
-* Naprawiono wyścigu, która występuje podczas dzielenia partycji. Sytuacja wyścigu może prowadzić do Uzyskiwanie dzierżawy i natychmiast utraty go podczas dzielenia partycji i powoduje rywalizacji o zasoby. Wyścig warunek naprawienia w tej wersji.
+* Naprawiono sytuację wyścigu, która występuje podczas dzielenia partycji. Sytuacja wyścigu może prowadzić do uzyskania dzierżawy i natychmiastowej utraty jej podczas dzielenia partycji i powodowania rywalizacji. Problem z warunkiem wyścigu jest rozwiązywany w tej wersji.
 
 ### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
 * ZESTAW SDK W WERSJI OGÓLNIE DOSTĘPNEJ
 
-### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-Prerelease
+### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3 — wydanie wstępne
 * Rozwiązano następujące problemy:
-  * Sytuacji podziału partycji może istnieć zduplikowane przetwarzania dokumentów przed podziału.
-  * Interfejs API GetEstimatedRemainingWork zwrócił wartość 0, gdy dzierżawy nie znajdowały się w kolekcji dzierżawy.
+  * Po rozdzieleniu partycji może istnieć zduplikowane przetwarzanie dokumentów zmodyfikowane przed podziałem.
+  * Interfejs API GetEstimatedRemainingWork zwrócił wartość 0, gdy w kolekcji dzierżawy nie ma żadnych dzierżaw.
 
-* Następujące wyjątki są ujawniane. Rozszerzenia, które implementują IPartitionProcessor może zgłosić tych wyjątków.
+* Następujące wyjątki są udostępniane publicznie. Rozszerzenia implementujące IPartitionProcessor mogą zgłosić te wyjątki.
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
 
-### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-Prerelease
+### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2 — wydanie wstępne
 * Drobne zmiany interfejsu API:
-  * Usunięte ChangeFeedProcessorOptions.IsAutoCheckpointEnabled, który został oznaczony jako przestarzały.
+  * Usunięto ChangeFeedProcessorOptions. IsAutoCheckpointEnabled, który został oznaczony jako przestarzały.
 
-### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-Prerelease
-* Ulepszenia w zakresie stabilności:
-  * Lepszej obsługi inicjowania magazynu dzierżawy. Gdy magazyn dzierżawy jest pusta, tylko jedno wystąpienie procesora można go zainicjować, pozostałe będzie czekać.
-  * Odnawianie dzierżawy stabilny/wydajne więcej/wydania. Odnowienia i zwalniania dzierżawy z jednej partycji jest niezależna od innych odnawiania. W wersji 1, która została wykonana po kolei wszystkich partycji.
-* Nowe interfejsy API w wersji 2:
-  * Wzorzec Konstruktor do tworzenia elastycznych procesora: klasa ChangeFeedProcessorBuilder.
-    * Może być dowolną kombinacją parametrów.
-    * Może to potrwać wystąpienia DocumentClient dla kolekcji monitorowania i/lub dzierżawy (opcja nie jest dostępna w wersji 1).
-  * IChangeFeedObserver.ProcessChangesAsync przyjmuje teraz token anulowania.
-  * IRemainingWorkEstimator — narzędzie do szacowania pracy pozostałej może służyć oddzielnie z procesora.
-  * Nowe punkty rozszerzeń:
-    * IPartitionLoadBalancingStrategy — dla niestandardowych równoważenia obciążenia partycji między wystąpieniami procesora.
-    * ILease, ILeaseManager — do zarządzania niestandardowej dzierżawy.
-    * IPartitionProcessor — niestandardowe przetwarzanie zmian na partycji.
-* Rejestrowanie - używa [LibLog](https://github.com/damianh/LibLog) biblioteki.
-* 100% zgodne z poprzednimi wersjami z interfejsem API w wersji 1.
-* Nowy kod podstawowy.
-* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21.1 lub nowszej.
+### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1 — wersja wstępna
+* Ulepszenia stabilności:
+  * Lepsza obsługa inicjowania magazynu dzierżawy. Gdy magazyn dzierżawy jest pusty, można zainicjować tylko jedno wystąpienie procesora, a pozostałe będą oczekiwać.
+  * Bardziej stabilne/wydajne odnowienie/wydanie dzierżawy. Odnawianie i zwalnianie dzierżawy jedna partycja nie jest zależna od odnawiania innych. W wersji 1, która została wykonana sekwencyjnie dla wszystkich partycji.
+* Nowy interfejs API v2:
+  * Wzorzec konstruktora dla elastycznej konstrukcji procesora: Klasa ChangeFeedProcessorBuilder.
+    * Może przyjmować dowolną kombinację parametrów.
+    * Może przyjmować DocumentClient wystąpienie do monitorowania i/lub zbierania dzierżaw (niedostępne w wersji 1).
+  * IChangeFeedObserver. ProcessChangesAsync teraz trwa CancellationToken.
+  * IRemainingWorkEstimator — pozostała część pracy szacowania może być używana niezależnie od procesora.
+  * Nowe punkty rozszerzalności:
+    * IPartitionLoadBalancingStrategy — w przypadku niestandardowego równoważenia obciążenia partycji między wystąpieniami procesora.
+    * ILease, ILeaseManager — do niestandardowego zarządzania dzierżawą.
+    * IPartitionProcessor — w przypadku zmian przetwarzania niestandardowego na partycji.
+* Rejestrowanie — używa biblioteki [LibLog](https://github.com/damianh/LibLog) .
+* 100% wstecz zgodne z interfejsem API v1.
+* Nowa baza kodu.
+* Zgodne z [zestawami SDK programu SQL .NET](sql-api-sdk-dotnet.md) 1.21.1 i nowszymi wersjami.
 
 ### <a name="v1-builds"></a>kompilacje w wersji 1
 
 ### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
-* Dodano rejestrowanie większej ilości.
-* Naprawiono przeciek DocumentClient podczas wywoływania szacowania pracy oczekujące wiele razy.
+* Dodano więcej rejestrowania.
+* Naprawiono wyciek DocumentClient podczas wywołania szacowanej pracy w toku wiele razy.
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
-* Poprawki w szacowania pracy oczekujące.
+* Poprawki w szacowaniu oczekujących zadań.
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
-* Ulepszenia w zakresie stabilności.
-  * Poprawki dotyczące obsługi problem anulowanych zadań, które mogą prowadzić do zatrzymania obserwatorów na partycji.
-* Pomoc techniczna dla ręcznego tworzenia punktów kontrolnych.
-* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21 i nowsze wersje.
+* Ulepszenia stabilności.
+  * Poprawka dotycząca problemu z zadaniami anulowanymi, które mogą prowadzić do zatrzymania obserwatorów na niektórych partycjach.
+* Obsługa ręcznego tworzenia punktów kontrolnych.
+* Zgodne z [zestawem SDK programu SQL .NET](sql-api-sdk-dotnet.md) w wersji 1,21 lub nowszej.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Dodano obsługę programu .NET Standard 2.0. Obsługuje teraz pakiet `netstandard2.0` i `net451` monikerów framework.
-* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.17.0 lub nowszej.
-* Zgodne z [SQL platformy .NET Core SDK](sql-api-sdk-dotnet-core.md) wersji 1.5.1 lub nowszej.
+* Dodaje obsługę .NET Standard 2,0. Pakiet obsługuje `netstandard2.0` `net451` teraz monikery struktury.
+* Zgodne z [zestawami SDK programu SQL .NET](sql-api-sdk-dotnet.md) 1.17.0 i nowszymi wersjami.
+* Zgodne z programem [SQL zestaw .NET Core SDK](sql-api-sdk-dotnet-core.md) w wersji 1.5.1 i nowszych.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
-* Rozwiązuje problem z wyliczeniem oszacowanie pracy pozostałej, gdy kanału informacyjnego zmian jest pusta lub oczekiwała żadnej pracy.
-* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.13.2 lub nowszej.
+* Rozwiązuje problem z obliczeniem oszacowania liczby pozostałej pracy, gdy źródło zmian jest puste lub nie oczekuje pracy.
+* Zgodne z [zestawami SDK programu SQL .NET](sql-api-sdk-dotnet.md) 1.13.2 i nowszymi wersjami.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Dodaje metodę, aby uzyskać szacunkową ilość pozostałej pracy, które mają być przetwarzane w kanału informacyjnego zmian.
-* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.13.2 lub nowszej.
+* Dodano metodę w celu uzyskania oszacowania pozostałej pracy, która ma zostać przetworzona w źródle zmian.
+* Zgodne z [zestawami SDK programu SQL .NET](sql-api-sdk-dotnet.md) 1.13.2 i nowszymi wersjami.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * ZESTAW SDK W WERSJI OGÓLNIE DOSTĘPNEJ
-* Zgodne z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.14.1 i poniżej.
+* Zgodne z wersjami [zestawu SDK programu SQL .NET](sql-api-sdk-dotnet.md) 1.14.1 i poniżej.
 
-## <a name="release--retirement-dates"></a>Daty wydania i wycofania
+## <a name="release--retirement-dates"></a>Data wycofania &
 
 Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.
 
-Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżącego zestawu SDK, w związku z tym zalecane jest, zawsze uaktualnienie do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
+Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego zestawu SDK, dlatego zaleca się, aby zawsze uaktualnić do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
 
 Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostanie odrzucone przez usługę.
 
@@ -170,20 +170,20 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
-| [2.2.7](#2.2.7) |14 maja 2019 r. |--- |
-| [2.2.6](#2.2.6) |29 stycznia 2019 r. |--- |
-| [2.2.5](#2.2.5) |13 grudnia 2018 r. |--- |
-| [2.2.4](#2.2.4) |29 listopada 2018 r. |--- |
+| [2.2.7](#2.2.7) |14 maja 2019 |--- |
+| [2.2.6](#2.2.6) |29 stycznia 2019 |--- |
+| [2.2.5](#2.2.5) |13 grudnia 2018 |--- |
+| [2.2.4](#2.2.4) |29 listopada 2018 |--- |
 | [2.2.3](#2.2.3) |19 listopada 2018 r. |--- |
-| [2.2.2](#2.2.2) |31 października 2018 r. |--- |
+| [2.2.2](#2.2.2) |31 października 2018 |--- |
 | [2.2.1](#2.2.1) |24 października 2018 r. |--- |
-| [1.3.3](#1.3.3) |08 maja 2018 r. |--- |
+| [1.3.3](#1.3.3) |Maja 08, 2018 |--- |
 | [1.3.2](#1.3.2) |18 kwietnia 2018 r. |--- |
 | [1.3.1](#1.3.1) |13 marca 2018 r. |--- |
 | [1.2.0](#1.2.0) |Do 31 października 2017 r. |--- |
 | [1.1.1](#1.1.1) |29 sierpnia 2017 r. |--- |
-| [1.1.0](#1.1.0) |13 sierpnia 2017 r. |--- |
-| [1.0.0](#1.0.0) |07 lipca 2017 r. |--- |
+| [1.1.0](#1.1.0) |13 sierpnia 2017 |--- |
+| [1.0.0](#1.0.0) |07 lipca 2017 |--- |
 
 ## <a name="faq"></a>Często zadawane pytania
 

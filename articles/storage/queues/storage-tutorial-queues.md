@@ -1,60 +1,59 @@
 ---
-title: Samouczek — Praca z kolejek usługi Azure storage — usługi Azure Storage
-description: Samouczek dotyczący sposobu użycia usługi kolejek platformy Azure do tworzenia kolejek oraz wstawiania, pobieranie i usuwanie wiadomości.
-services: storage
+title: Samouczek — współpraca z kolejkami usługi Azure Storage — Azure Storage
+description: Samouczek dotyczący sposobu używania usługa kolejki platformy Azure do tworzenia kolejek oraz wstawiania, pobierania i usuwania komunikatów.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 04/24/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
-ms.date: 04/24/2019
-ms.openlocfilehash: 08ef140eb860637cc0c09619abe7051cc007e99f
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.reviewer: cbrooks
+ms.openlocfilehash: c8e1d5c1c11c4fdf902c7be7bc03be298e93a8b9
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540297"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721139"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>Samouczek: Praca z kolejkami magazynu platformy Azure
 
-Usługa Azure Queue storage implementuje są oparte na chmurze kolejki, aby umożliwić komunikację między składnikami aplikacji rozproszonej. Każda kolejka utrzymuje listę komunikatów, które mogą być dodawane przez składnik nadawcy lub przetworzone przez składnik odbiorcy. Z kolejki aplikację można skalować od razu do spełnienia określonych wymagań. W tym artykule przedstawiono podstawowe czynności w przypadku pracy z kolejki usługi Azure storage.
+Usługa Azure queue storage implementuje kolejki oparte na chmurze, aby umożliwić komunikację między składnikami aplikacji rozproszonej. Każda kolejka przechowuje listę komunikatów, które mogą zostać dodane przez składnik nadawcy i przetworzone przez składnik odbiornika. W przypadku kolejki aplikacja może skalować się natychmiast w celu spełnienia wymagań. W tym artykule przedstawiono podstawowe kroki umożliwiające pracę z kolejką usługi Azure Storage.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 >
-> - Tworzenie konta usługi Azure Storage
+> - Tworzenie konta usługi Azure storage
 > - Tworzymy aplikację.
-> - Dodano obsługę kodu asynchronicznego
+> - Dodawanie obsługi kodu asynchronicznego
 > - Tworzenie kolejki
 > - Wstawianie komunikatów do kolejki
-> - Usuń z kolejki komunikatów
-> - Usuń pustej kolejce
-> - Sprawdź argumenty wiersza polecenia
+> - Dequeueing messages
+> - Usuń pustą kolejkę
+> - Sprawdzanie argumentów wiersza polecenia
 > - Kompilowanie i uruchamianie aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Pobierz bezpłatną kopię międzyplatformowego [programu Visual Studio Code](https://code.visualstudio.com/download) edytora.
-- Pobierz i zainstaluj [zestawu .NET Core SDK](https://dotnet.microsoft.com/download).
-- Jeśli nie masz bieżącej subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.
+- Pobierz bezpłatną kopię wieloplatformowego edytora [Visual Studio Code](https://code.visualstudio.com/download) .
+- Pobierz i zainstaluj [zestaw .NET Core SDK](https://dotnet.microsoft.com/download).
+- Jeśli nie masz bieżącej subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
 
-## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
+## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure storage
 
-Najpierw utwórz konto magazynu platformy Azure. Przewodnik krok po kroku dotyczący Tworzenie konta magazynu, zobacz [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) Szybki Start.
+Najpierw utwórz konto usługi Azure Storage. Aby zapoznać się z przewodnikiem krok po kroku dotyczącym tworzenia konta magazynu, zobacz [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) — Szybki Start.
 
 ## <a name="create-the-app"></a>Tworzymy aplikację.
 
-Tworzenie aplikacji .NET Core o nazwie **QueueApp**. Dla uproszczenia ta aplikacja będzie wysyłać i odbierać komunikaty w kolejce.
+Utwórz aplikację platformy .NET Core o nazwie **QueueApp**. Dla uproszczenia ta aplikacja wysyła i odbiera wiadomości za pomocą kolejki.
 
-1. W oknie konsoli (np. CMD, PowerShell lub wiersza polecenia platformy Azure), należy użyć `dotnet new` polecenie, aby utworzyć nową aplikację konsoli o nazwie **QueueApp**. To polecenie umożliwia utworzenie prostego "Hello World" C# projektu z jednym pliku źródłowym: **Program.cs**.
+1. W oknie konsoli programu (na przykład cmd, PowerShell lub interfejsu wiersza `dotnet new` polecenia platformy Azure) za pomocą narzędzia Utwórz nową aplikację konsolową o nazwie **QueueApp**. To polecenie tworzy prosty projekt "Hello world" C# z pojedynczym plikiem źródłowym: **Program.cs**.
 
    ```console
    dotnet new console -n QueueApp
    ```
 
-2. Przełącz się do nowo utworzonego **QueueApp** folder i kompilacja aplikacji, aby sprawdzić, czy wszystkie poprawnie.
+2. Przejdź do nowo utworzonego folderu **QueueApp** i skompiluj aplikację, aby sprawdzić, czy wszystko jest prawidłowo.
 
    ```console
    cd QueueApp
@@ -64,7 +63,7 @@ Tworzenie aplikacji .NET Core o nazwie **QueueApp**. Dla uproszczenia ta aplikac
    dotnet build
    ```
 
-   Powinny zostać wyświetlone wyniki podobne do następujących:
+   Powinny być widoczne wyniki podobne do następujących:
 
    ```output
    C:\Tutorials>dotnet new console -n QueueApp
@@ -94,15 +93,15 @@ Tworzenie aplikacji .NET Core o nazwie **QueueApp**. Dla uproszczenia ta aplikac
    C:\Tutorials\QueueApp>_
    ```
 
-## <a name="add-support-for-asynchronous-code"></a>Dodano obsługę kodu asynchronicznego
+## <a name="add-support-for-asynchronous-code"></a>Dodawanie obsługi kodu asynchronicznego
 
-Ponieważ aplikacja korzysta z zasobów w chmurze, kod jest uruchamiany asynchronicznie. Jednak C#firmy **async** i **await** nie były prawidłowe słów kluczowych w **Main** metody do momentu C# 7.1. Można łatwo przełączać przez kompilator za pomocą flagi w **csproj** pliku.
+Ponieważ aplikacja korzysta z zasobów w chmurze, kod jest uruchamiany asynchronicznie. C#Jednak **Async** i **await** nie były Prawidłowymi słowami kluczowymi w C# metodach **głównych** do 7,1. Możesz łatwo przełączyć się na ten kompilator za pomocą flagi w pliku **csproj** .
 
-1. W wierszu polecenia w katalogu projektu wpisz `code .` można otworzyć programu Visual Studio Code w bieżącym katalogu. Nie zamykaj okna wiersza polecenia. Nastąpi kolejne polecenia nie można wykonać później. Jeśli zostanie wyświetlony monit, aby dodać C# zasoby wymagane do tworzenia i debugowania, kliknij przycisk **tak** przycisku.
+1. W wierszu polecenia w katalogu projektu wpisz `code .` , aby otworzyć Visual Studio Code w bieżącym katalogu. Pozostaw otwarte okno wiersza polecenia. Będzie więcej poleceń do wykonania później. Jeśli zostanie wyświetlony monit o dodanie C# zasobów wymaganych do kompilowania i debugowania, kliknij przycisk **tak** .
 
-2. Otwórz **QueueApp.csproj** plik w edytorze.
+2. Otwórz plik **QueueApp. csproj** w edytorze.
 
-3. Dodaj `<LangVersion>7.1</LangVersion>` do pierwszej **PropertyGroup** w pliku kompilacji. Upewnij się, że można dodawać tylko **LangVersion** otaguj jako swojej **TargetFramework** mogą się różnić w zależności od zainstalowanej wersji programu .NET.
+3. Dodaj `<LangVersion>7.1</LangVersion>` do pierwszej **Właściwości** w pliku kompilacji. Upewnij się, że dodajesz tag **LangVersion** tylko wtedy, gdy **TargetFramework** może się różnić w zależności od zainstalowanej wersji platformy .NET.
 
    ```xml
    <Project Sdk="Microsoft.NET.Sdk">
@@ -117,26 +116,26 @@ Ponieważ aplikacja korzysta z zasobów w chmurze, kod jest uruchamiany asynchro
 
    ```
 
-4. Zapisz **QueueApp.csproj** pliku.
+4. Zapisz plik **QueueApp. csproj** .
 
-5. Otwórz **Program.cs** źródło pliku i zaktualizuj **Main** metody, aby go uruchomić asynchronicznie. Zastąp **void** z **asynchroniczne zadanie** zwracają wartość.
+5. Otwórz plik źródłowy **program.cs** i zaktualizuj metodę **Main** , aby działała asynchronicznie. Zastąp wartość **void** wartością zwracaną przez **zadanie asynchroniczne** .
 
    ```csharp
    static async Task Main(string[] args)
    ```
 
-6. Zapisz **Program.cs** pliku.
+6. Zapisz plik **program.cs** .
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
 
-1. Zainstaluj **Microsoft.Azure.Storage.Common** i **Microsoft.Azure.Storage.Queue** pakietów do projektu z `dotnet add package` polecenia. Wykonaj następujące polecenia dotnet z folderu projektu w oknie konsoli.
+1. Zainstaluj pakiety **Microsoft. Azure. Storage. Common** i **Microsoft. Azure. Storage. Queue** w `dotnet add package` projekcie za pomocą polecenia. Wykonaj następujące polecenia dotnet z folderu projektu w oknie konsoli.
 
    ```console
    dotnet add package Microsoft.Azure.Storage.Common
    dotnet add package Microsoft.Azure.Storage.Queue
    ```
 
-2. W górnej części **Program.cs** Dodaj następujące przestrzenie nazw od razu po `using System;` instrukcji. Ta aplikacja używa typów z te obszary nazw, łączenie z usługą Azure Storage i pracy z kolejkami.
+2. W górnej części pliku **program.cs** Dodaj następujące przestrzenie nazw bezpośrednio po `using System;` instrukcji. Ta aplikacja używa typów z tych przestrzeni nazw do nawiązywania połączenia z usługą Azure Storage i pracy z kolejkami.
 
    ```csharp
    using System.Threading.Tasks;
@@ -144,19 +143,19 @@ Ponieważ aplikacja korzysta z zasobów w chmurze, kod jest uruchamiany asynchro
    using Microsoft.Azure.Storage.Queue;
    ```
 
-3. Zapisz **Program.cs** pliku.
+3. Zapisz plik **program.cs** .
 
 ### <a name="get-your-connection-string"></a>Pobieranie parametrów połączenia
 
-Biblioteka klienta używa parametrów połączenia do nawiązania połączenia. Parametry połączenia usługi jest dostępny w **ustawienia** sekcji konta magazynu w witrynie Azure portal.
+Biblioteka klienta używa parametrów połączenia w celu nawiązania połączenia. Parametry połączenia są dostępne w sekcji **Ustawienia** konta magazynu w Azure Portal.
 
-1. W przeglądarce sieci web Zaloguj się do [witryny Azure portal](https://portal.azure.com/).
+1. W przeglądarce internetowej Zaloguj się do [Azure Portal](https://portal.azure.com/).
 
 2. W witrynie Azure Portal przejdź do swojego konta magazynu.
 
-3. Wybierz **klucze dostępu**.
+3. Wybierz pozycję **klucze dostępu**.
 
-4. Kliknij przycisk **kopiowania** przycisk po prawej stronie **parametry połączenia** pola.
+4. Kliknij przycisk **Kopiuj** po prawej stronie pola **Parametry połączenia** .
 
 ![Parametry połączenia](media/storage-tutorial-queues/get-connection-string.png)
 
@@ -168,15 +167,15 @@ Parametry połączenia mają następujący format:
 
 ### <a name="add-the-connection-string-to-the-app"></a>Dodaj parametry połączenia do aplikacji
 
-Dodaj parametry połączenia do aplikacji, aby mogli uzyskiwać dostęp na koncie magazynu.
+Dodaj parametry połączenia do aplikacji, aby mogły uzyskać dostęp do konta magazynu.
 
-1. Przełącz się do programu Visual Studio Code.
+1. Przełącz się z powrotem do Visual Studio Code.
 
-2. W **Program** klasy, Dodaj `private const string connectionString =` elementu członkowskiego, aby pomieścić ciąg połączenia.
+2. W klasie **program** Dodaj `private const string connectionString =` członka do przechowywania parametrów połączenia.
 
-3. Po znaku równości Wklej wartość ciągu, który został skopiowany wcześniej w portalu Azure. **ConnectionString** wartość jest unikatowa dla swojego konta.
+3. Po znaku równości wklej wartość ciągu, która została skopiowana wcześniej w Azure Portal. Wartość **ConnectionString** będzie unikatowa dla Twojego konta.
 
-4. Usuń kod "Hello World" z **Main**. Kod powinien wyglądać podobnie do poniższego, ale wartość parametrów połączenia unikatowy.
+4. Usuń kod "Hello world" z **głównego**. Kod powinien wyglądać podobnie do poniższego, ale z unikatową wartością parametrów połączenia.
 
    ```csharp
    namespace QueueApp
@@ -192,7 +191,7 @@ Dodaj parametry połączenia do aplikacji, aby mogli uzyskiwać dostęp na konci
    }
    ```
 
-5. Aktualizacja **Main** utworzyć **CloudQueue** obiektu, który zostanie później przekazany do wysyłania i odbierania metody.
+5. Zaktualizuj element **Main** , aby utworzyć obiekt **CloudQueue** , który jest później przesyłany do metod Send i Receive.
 
    ```csharp
         static async Task Main(string[] args)
@@ -207,9 +206,9 @@ Dodaj parametry połączenia do aplikacji, aby mogli uzyskiwać dostęp na konci
 
 ## <a name="insert-messages-into-the-queue"></a>Wstawianie komunikatów do kolejki
 
-Utworzenie nowej metody, aby wysłać komunikat do kolejki. Dodaj następującą metodę do swojej **Program** klasy. Ta metoda pobiera odwołanie do kolejki, a następnie tworzy nową kolejkę, jeśli jeszcze nie istnieje, wywołując [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync). Następnie dodaje komunikat do kolejki, wywołując [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+Utwórz nową metodę wysyłania komunikatu do kolejki. Dodaj następującą metodę do klasy **programu** . Ta metoda pobiera odwołanie do kolejki, a następnie tworzy nową kolejkę, jeśli jeszcze nie istnieje, wywołując [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync). Następnie dodaje komunikat do kolejki przez wywołanie [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
 
-1. Dodaj następujący kod **SendMessageAsync** metodę do swojej **Program** klasy.
+1. Dodaj następującą metodę **SendMessageAsync** do klasy **programu** .
 
    ```csharp
    static async Task SendMessageAsync(CloudQueue theQueue, string newMessage)
@@ -228,19 +227,19 @@ Utworzenie nowej metody, aby wysłać komunikat do kolejki. Dodaj następującą
 
 2. Zapisz plik.
 
-Wiadomość musi być w formacie, który można uwzględnić w żądaniu XML z kodowaniem UTF-8, a jego maksymalny rozmiar może wynosić maksymalnie 64 KB. Jeśli wiadomość zawiera dane binarne, zalecamy możesz kodowanie Base64 wiadomości.
+Wiadomość musi być w formacie, który można uwzględnić w żądaniu XML z kodowaniem UTF-8, a jego maksymalny rozmiar może wynosić maksymalnie 64 KB. Jeśli komunikat zawiera dane binarne, zalecamy kodowanie Base64 wiadomości.
 
-Domyślnie maksymalny czas wygaśnięcia komunikatu wynosi 7 dni. Można określić dowolna liczba dodatnia dla komunikatu, time-to-live. Aby dodać wiadomości, które nie wygaśnie, należy użyć `Timespan.FromSeconds(-1)` w wywołania do **AddMessageAsync**.
+Domyślnie maksymalny czas wygaśnięcia komunikatu wynosi 7 dni. Można określić dowolną liczbę dodatnią dla komunikatu czas wygaśnięcia. Aby dodać komunikat, który nie wygasa, użyj `Timespan.FromSeconds(-1)` w wywołaniu metody **AddMessageAsync**.
 
 ```csharp
 await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
-## <a name="dequeue-messages"></a>Usuń z kolejki komunikatów
+## <a name="dequeue-messages"></a>Dequeueing messages
 
-Utwórz nową metodę o nazwie **ReceiveMessageAsync**. Ta metoda otrzymuje komunikat z kolejki, wywołując [GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync). Gdy wiadomość została odebrana pomyślnie, należy usunąć ją z kolejki, więc nie jest przetwarzane więcej niż jeden raz. Po otrzymaniu komunikatu usunąć ją z kolejki, wywołując [DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync).
+Utwórz nową metodę o nazwie **ReceiveMessageAsync**. Ta metoda odbiera komunikat z kolejki przez wywołanie [GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync). Po pomyślnym odebraniu wiadomości należy usunąć ją z kolejki, aby nie została przetworzona więcej niż jeden raz. Po odebraniu wiadomości usuń ją z kolejki, wywołując [DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync).
 
-1. Dodaj następujący kod **ReceiveMessageAsync** metodę do swojej **Program** klasy.
+1. Dodaj następującą metodę **ReceiveMessageAsync** do klasy **programu** .
 
    ```csharp
    static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
@@ -263,11 +262,11 @@ Utwórz nową metodę o nazwie **ReceiveMessageAsync**. Ta metoda otrzymuje komu
 
 2. Zapisz plik.
 
-## <a name="delete-an-empty-queue"></a>Usuń pustej kolejce
+## <a name="delete-an-empty-queue"></a>Usuń pustą kolejkę
 
-Jest najlepszym rozwiązaniem jest na końcu jest projekt, aby ustalić, czy nadal potrzebujesz zasobów, który został utworzony. Po lewej stronie umożliwia uruchamianie zasobów kosztów pieniądze. Jeśli kolejka istnieje, ale jest pusta, należy poprosić użytkownika, czy chce go usunąć.
+Jest to najlepsze rozwiązanie na końcu projektu, aby określić, czy nadal potrzebujesz utworzonych zasobów. Zasoby po lewej stronie mogą być kosztowne. Jeśli kolejka istnieje, ale jest pusta, poproszenie użytkownika o jej usunięcie.
 
-1. Rozwiń **ReceiveMessageAsync** metodę, aby dołączyć wiersza do usunięcia pustej kolejki.
+1. Rozwiń metodę **ReceiveMessageAsync** , aby dołączyć monit o usunięcie pustej kolejki.
 
    ```csharp
    static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
@@ -309,15 +308,15 @@ Jest najlepszym rozwiązaniem jest na końcu jest projekt, aby ustalić, czy nad
 
 2. Zapisz plik.
 
-## <a name="check-for-command-line-arguments"></a>Sprawdź argumenty wiersza polecenia
+## <a name="check-for-command-line-arguments"></a>Sprawdzanie argumentów wiersza polecenia
 
-Jeśli ma żadnych argumentów wiersza polecenia przekazywane do aplikacji, należy założyć, że są one wiadomości, które mają zostać dodane do kolejki. Dołącz do argumentów razem w celu zapewnienia ciągu. Dodaj następujący ciąg do kolejki komunikatów, wywołując **SendMessageAsync** metody, które dodaliśmy wcześniej.
+Jeśli do aplikacji są przekazane wszystkie argumenty wiersza polecenia, założono, że są one komunikatem, który ma zostać dodany do kolejki. Dołącz argumenty ze sobą, aby utworzyć ciąg. Dodaj ten ciąg do kolejki komunikatów, wywołując metodę **SendMessageAsync** , która została dodana wcześniej.
 
-Jeśli nie ma żadnych argumentów wiersza polecenia, można wykonać operacji pobierania. Wywołaj **ReceiveMessageAsync** metodę, aby pobrać pierwszy komunikat w kolejce.
+Jeśli nie ma argumentów wiersza polecenia, wykonaj operację pobierania. Wywołaj metodę **ReceiveMessageAsync** , aby pobrać pierwszą wiadomość w kolejce.
 
-Na koniec poczekaj na dane wejściowe użytkownika przed zakończeniem pracy przez wywołanie metody **Console.ReadLine**.
+Na koniec poczekaj na wprowadzenie danych przez użytkownika przed wyjściem przez wywołanie **konsoli. ReadLine**.
 
-1. Rozwiń **Main** metodę, aby sprawdzić, czy argumenty wiersza polecenia i czeka na dane wejściowe użytkownika.
+1. Rozwiń metodę **Main** w celu sprawdzenia argumentów wiersza polecenia i poczekaj na wprowadzenie danych przez użytkownika.
 
    ```csharp
         static async Task Main(string[] args)
@@ -347,7 +346,7 @@ Na koniec poczekaj na dane wejściowe użytkownika przed zakończeniem pracy prz
 
 ## <a name="complete-code"></a>Kompletny kod
 
-Oto kompletny kod dla tego projektu.
+Oto kompletna lista kodu dla tego projektu.
 
    ```csharp
    using System;
@@ -441,13 +440,13 @@ Oto kompletny kod dla tego projektu.
 
 ## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
 
-1. W wierszu polecenia w katalogu projektu uruchom następujące polecenie dotnet w celu skompilowania projektu.
+1. W wierszu polecenia w katalogu projektu uruchom następujące polecenie dotnet, aby skompilować projekt.
 
    ```console
    dotnet build
    ```
 
-2. Po projekt zostanie skompilowany poprawnie, uruchom następujące polecenie, aby dodać pierwszy komunikat do kolejki.
+2. Po pomyślnym skompilowaniu projektu uruchom następujące polecenie, aby dodać pierwszy komunikat do kolejki.
 
    ```console
    dotnet run First queue message
@@ -462,13 +461,13 @@ Powinny zostać wyświetlone następujące dane wyjściowe:
    Press Enter..._
    ```
 
-3. Uruchom aplikację bez argumentów wiersza polecenia do odbierania i Usuń pierwszy komunikat w kolejce.
+3. Uruchom aplikację bez argumentów wiersza polecenia, aby odebrać i usunąć pierwszą wiadomość w kolejce.
 
    ```console
    dotnet run
    ```
 
-4. Kontynuuj uruchomić aplikację, dopóki nie zostaną usunięte wszystkie komunikaty. Jeśli uruchamiasz go jeszcze raz, otrzymasz komunikat, że kolejka jest pusta i monit o usunięcie kolejki.
+4. Kontynuuj uruchamianie aplikacji, dopóki nie zostaną usunięte wszystkie komunikaty. Jeśli uruchomisz go jeszcze raz, otrzymasz komunikat informujący, że kolejka jest pusta, oraz monit o usunięcie kolejki.
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message
@@ -504,15 +503,15 @@ Powinny zostać wyświetlone następujące dane wyjściowe:
    C:\Tutorials\QueueApp>_
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 1. Tworzenie kolejki
-2. Dodawanie i usuwanie wiadomości z kolejki
-3. Usuwanie kolejki usługi Azure storage
+2. Dodawanie i usuwanie komunikatów z kolejki
+3. Usuwanie kolejki usługi Azure Storage
 
-Zapoznaj się z opcji szybkiego startu kolejek systemu Azure, aby uzyskać więcej informacji.
+Aby uzyskać więcej informacji, zapoznaj się z przewodnikiem Szybki Start dla kolejki platformy Azure.
 
 > [!div class="nextstepaction"]
-> [Przewodnik Szybki Start kolejek](storage-quickstart-queues-portal.md)
+> [Kolejki — Szybki Start](storage-quickstart-queues-portal.md)

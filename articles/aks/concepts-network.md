@@ -1,6 +1,6 @@
 ---
-title: Pojęcia — sieć w usługach Azure Kubernetes (AKS)
-description: Informacje dotyczące sieci w usłudze Azure Kubernetes Service (AKS), m.in. wtyczki kubenet i wtyczki Azure CNI sieci kontrolery transferu danych przychodzących, moduły równoważenia obciążenia i statycznych adresów IP.
+title: Pojęcia — obsługa sieci w usłudze Azure Kubernetes Services (AKS)
+description: Dowiedz się więcej na temat sieci w usłudze Azure Kubernetes Service (AKS), w tym korzystającą wtyczki kubenet i Azure CNI Networking, kontrolerów przychodzących, modułów równoważenia obciążenia i statycznych adresów IP.
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,157 +8,157 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
 ms.openlocfilehash: 459c11448280b63bafdfd54c13a6cad5983ef1b5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615891"
 ---
-# <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepcji sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
+# <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
-W ramach podejścia do tworzenia aplikacji opartych na kontenerach mikrousług składniki aplikacji muszą współpracować do przetwarzania swoich zadań. Usługa Kubernetes zapewnia różnych zasobów, które umożliwiają komunikację z aplikacjami. Można nawiązać połączenie i udostępnianie aplikacji wewnętrznie lub zewnętrznie. Aby tworzyć aplikacje o wysokiej dostępności, można załadować saldo aplikacji. Bardziej złożone aplikacje mogą wymagać konfiguracji ruch przychodzący na kończenie żądań SSL/TLS lub routingu z wielu składników. Ze względów bezpieczeństwa może być również konieczne ograniczanie przepływu ruchu sieciowego do lub między zasobników i węzłów.
+W przypadku mikrousług opartych na kontenerach do tworzenia aplikacji składniki aplikacji muszą współpracować ze sobą, aby przetwarzać swoje zadania. Kubernetes udostępnia różne zasoby, które umożliwiają komunikację z tą aplikacją. Możesz łączyć się z aplikacjami i udostępniać je wewnętrznie lub zewnętrznie. W celu utworzenia aplikacji o wysokiej dostępności można równoważyć obciążenie aplikacji. Bardziej złożone aplikacje mogą wymagać konfiguracji ruchu przychodzącego dla zakończenia protokołu SSL/TLS lub routingu wielu składników. Ze względów bezpieczeństwa może być również konieczne ograniczenie przepływu ruchu sieciowego do lub między nazwami i węzłami.
 
-W tym artykule przedstawiono podstawowe pojęcia, które zapewniają sieci do aplikacji w usłudze AKS:
+W tym artykule przedstawiono podstawowe koncepcje zapewniające obsługę sieci dla aplikacji w programie AKS:
 
 - [Usługi](#services)
 - [Sieci wirtualne platformy Azure](#azure-virtual-networks)
-- [Ruch przychodzący kontrolerów](#ingress-controllers)
+- [Kontrolery transferu danych przychodzących](#ingress-controllers)
 - [Zasady sieciowe](#network-policies)
 
 ## <a name="kubernetes-basics"></a>Podstawy platformy Kubernetes
 
-Aby zezwolić na dostęp do aplikacji lub dla składników aplikacji do komunikowania się ze sobą, usługa Kubernetes zapewnia warstwę abstrakcji sieci wirtualnej. Węzły rozwiązania Kubernetes są podłączone do sieci wirtualnej i może zapewnić łączność ruchu przychodzącego i wychodzącego do zasobników. *Serwera proxy klastra kubernetes w usłudze* składnika, który jest uruchamiany w każdym węźle, aby zapewnić, te funkcje sieciowego.
+Aby zezwolić na dostęp do aplikacji lub do komunikacji między składnikami aplikacji, Kubernetes zapewnia warstwę abstrakcji dla sieci wirtualnych. Węzły Kubernetes są połączone z siecią wirtualną i mogą zapewniać łączność ruchu przychodzącego i wychodzącego w przypadku zasobników. Składnik *polecenia-proxy* działa w każdym węźle, aby udostępnić te funkcje sieciowe.
 
-W usłudze Kubernetes *usług* pogrupowania zasobników, aby zezwolić na potrzeby bezpośredniego dostępu za pośrednictwem adresu IP lub nazwę DNS i na określonym porcie. Możesz też dystrybuować ruch przy użyciu *moduł równoważenia obciążenia*. Bardziej złożonym routingiem ruchu aplikacji, również można osiągnąć za pomocą *kontrolerów ruch przychodzący*. Zabezpieczenia i filtrowanie ruchu sieciowego do zasobników jest możliwe przy użyciu rozwiązania Kubernetes *zasad sieciowych* (w wersji zapoznawczej w usłudze AKS).
+W programie Kubernetes *usługi* logicznie grupują elementy w celu umożliwienia bezpośredniego dostępu za pośrednictwem adresu IP lub nazwy DNS i określonego portu. Ruch można także dystrybuować przy użyciu *modułu równoważenia obciążenia*. Bardziej skomplikowany Routing ruchu aplikacji można również uzyskać za pomocą *kontrolerów*transferu danych przychodzących. Zabezpieczenia i filtrowanie ruchu sieciowego dla każdego z nich jest możliwe przy użyciu *zasad sieciowych* Kubernetes (w wersji zapoznawczej w AKS).
 
-Platforma Azure pomaga uprościć sieci wirtualnych w przypadku klastrów usługi AKS. Podczas tworzenia modułu równoważenia obciążenia rozwiązania Kubernetes bazowego zasobu modułu równoważenia obciążenia platformy Azure zostało utworzone i skonfigurowane. Podczas otwierania portów sieciowych w celu zasobników skonfigurowano odpowiednie zasady grupy zabezpieczeń sieci platformy Azure. Routing aplikacji protokołu HTTP, aby uzyskać Azure można również skonfigurować *zewnętrznego serwera DNS* jako nowy ruch przychodzący trasy są skonfigurowane.
+Platforma Azure pomaga również uprościć sieci wirtualne klastrów AKS. Podczas tworzenia modułu równoważenia obciążenia Kubernetes zostanie utworzony i skonfigurowany źródłowy zasób modułu równoważenia obciążenia platformy Azure. Podczas otwierania portów sieciowych do zasobników, są konfigurowane odpowiednie reguły grupy zabezpieczeń sieci platformy Azure. W przypadku routingu aplikacji HTTP platforma Azure może również skonfigurować *zewnętrzny system DNS* jako nowe trasy transferu danych przychodzących.
 
 ## <a name="services"></a>Usługi
 
-Aby uprościć konfigurację sieci w przypadku obciążeń aplikacji, korzysta z rozwiązania Kubernetes *usług* logicznie pogrupować zestaw zasobników i zapewniają łączność sieciową. Dostępne są następujące typy usługi:
+Aby uprościć konfigurację sieci dla obciążeń aplikacji, Kubernetes używa *usług* do logicznego grupowania zestawu i zapewnienia łączności sieciowej. Dostępne są następujące typy usług:
 
-- **Adres IP klastra** — tworzy wewnętrznego adresu IP do użycia w klastrze AKS. Dobre dla wewnętrznych aplikacji, które obsługują innych obciążeń w klastrze.
+- **IP klastra** — tworzy wewnętrzny adres IP do użycia w klastrze AKS. Dobre dla aplikacji tylko wewnętrznych, które obsługują inne obciążenia w klastrze.
 
     ![Diagram przedstawiający przepływ ruchu IP klastra w klastrze AKS][aks-clusterip]
 
-- **NodePort** — tworzy mapowanie portów na podstawowym węźle, który umożliwia aplikacji są dostępne bezpośrednio z adresu IP węzła i portu.
+- **NodePort** — tworzy mapowanie portów w podstawowym węźle, który umożliwia dostęp do aplikacji bezpośrednio z adresem IP i portem węzła.
 
     ![Diagram przedstawiający przepływ ruchu NodePort w klastrze AKS][aks-nodeport]
 
-- **Moduł równoważenia obciążenia** — tworzy zasób modułu równoważenia obciążenia platformy Azure, konfiguruje zewnętrzny adres IP, a żądane zasobników nawiązanie połączenia z puli zaplecza modułu równoważenia obciążenia. Aby zezwolić na ruch klientów zasięg aplikacji, reguły równoważenia obciążenia są tworzone na żądany ruch na portach. 
+- Moduł **równoważenia** obciążenia — tworzy zasób usługi Azure Load, konfiguruje zewnętrzny adres IP i łączy żądaną pulę zasobów z pulą zaplecza modułu równoważenia obciążenia. Aby umożliwić klientom dostęp do aplikacji, reguły równoważenia obciążenia są tworzone na odpowiednich portach. 
 
-    ![Diagram przedstawiający przepływ ruchu modułu równoważenia obciążenia w klastrze AKS][aks-loadbalancer]
+    ![Diagram przedstawiający przepływ ruchu Load Balancer w klastrze AKS][aks-loadbalancer]
 
-    Dodatkową kontrolę i routingu ruchu przychodzącego, możesz zamiast tego użyć [kontrolera danych przychodzących](#ingress-controllers).
+    W celu uzyskania dodatkowej kontroli i routingu ruchu przychodzącego można użyć [kontrolera](#ingress-controllers)transferu danych przychodzących.
 
-- **ExternalName** — tworzy określonego wpisu DNS w celu ułatwienia dostępu w aplikacji.
+- **Externalname** — tworzy określony wpis DNS w celu ułatwienia dostępu do aplikacji.
 
-Adres IP dla usługi równoważenia obciążenia i usługi mogą być przypisywane dynamicznie, lub można określić istniejący statyczny adres IP do użycia. Wewnętrzne i zewnętrzne statyczne adresy IP można przypisać. Ten istniejący statyczny adres IP jest często powiązane wpis DNS.
+Adres IP dla modułów równoważenia obciążenia i usług może być dynamicznie przypisywany lub można określić istniejący statyczny adres IP do użycia. Można przypisać zarówno wewnętrzne, jak i zewnętrzne statyczne adresy IP. Ten istniejący statyczny adres IP jest często powiązany z wpisem DNS.
 
-Zarówno *wewnętrzny* i *zewnętrznych* modułów równoważenia obciążenia mogą być tworzone. Wewnętrzne moduły równoważenia obciążenia są przypisywane tylko prywatny adres IP, dzięki czemu nie jest dostępny z Internetu.
+Można utworzyć *wewnętrzne* i *zewnętrzne* usługi równoważenia obciążenia. Do wewnętrznych modułów równoważenia obciążenia przypisany jest tylko prywatny adres IP, dlatego nie można uzyskać do niego dostępu z Internetu.
 
 ## <a name="azure-virtual-networks"></a>Sieci wirtualne platformy Azure
 
-W usłudze AKS można wdrożyć klaster, który korzysta z jednego z następujących modeli dwóch sieci:
+W programie AKS można wdrożyć klaster, który używa jednego z następujących dwóch modeli sieci:
 
-- *Wtyczki Kubenet* sieci - sieci zasobów są zazwyczaj tworzone i konfigurowane jako klaster AKS jest wdrażany.
-- *Wtyczki Azure Container Networking interfejsu (CNI)* sieci — klaster AKS jest podłączony do istniejących zasobów sieci wirtualnej i konfiguracji.
+- *Korzystającą wtyczki kubenet* Networking — zasoby sieciowe są zwykle tworzone i konfigurowane jako wdrożony klaster AKS.
+- Sieć *Azure Container Networking Interface (CNI)* — klaster AKS jest połączony z istniejącymi zasobami i konfiguracjami sieci wirtualnej.
 
-### <a name="kubenet-basic-networking"></a>Sieć z wtyczki Kubenet (basic)
+### <a name="kubenet-basic-networking"></a>Sieć korzystającą wtyczki kubenet (podstawowa)
 
-*Wtyczki kubenet* sieci — opcja jest domyślnie skonfigurowany do tworzenia klastra AKS. Za pomocą *wtyczki kubenet*, węzły Uzyskaj adres IP z podsieci sieci wirtualnej platformy Azure. Zasobników otrzymują adres IP z logicznie różnymi przestrzeniami adresowymi w podsieci sieci wirtualnej platformy Azure z węzłów. Translator adresów sieciowych (NAT) jest następnie konfigurowana, tak aby zasobników może dotrzeć do zasobów w sieci wirtualnej platformy Azure. Źródłowy adres IP ruchu jest translatora adresów Sieciowych do podstawowego adresu IP węzła zajmie się.
+Opcja sieci *korzystającą wtyczki kubenet* jest konfiguracją domyślną dla tworzenia klastra AKS. W przypadku *korzystającą wtyczki kubenet*węzły uzyskują adres IP z podsieci sieci wirtualnej platformy Azure. W przypadku odbioru adresów IP od logicznej przestrzeni adresowej do podsieci sieci wirtualnej platformy Azure w węzłach. Następnie można skonfigurować translację adresów sieciowych (NAT), aby umożliwić dostęp do zasobów w sieci wirtualnej platformy Azure. Źródłowy adres IP ruchu to NAT do podstawowego adresu IP węzła.
 
-Węzły używają [wtyczki kubenet][kubenet] wtyczka platformy Kubernetes. Można pozwolić, aby utworzyć i konfigurowanie sieci wirtualnych dla Ciebie lub wybrać wdrożenie klastra usługi AKS na istniejącą podsieć sieci wirtualnej platformy Azure. Ponownie tylko węzły otrzymują routingowi adresu IP i zasobników używać translatora adresów Sieciowych do komunikowania się z innymi zasobami poza klastrem usługi AKS. To podejście znacznie zmniejsza liczbę adresów IP, które należy zarezerwować w przestrzeń sieci dla zasobników do użycia.
+Węzły korzystają z wtyczki [korzystającą wtyczki kubenet][kubenet] Kubernetes. Możesz zezwolić na platformę Azure, aby utworzyć i skonfigurować sieci wirtualne, lub wybrać wdrożenie klastra AKS w istniejącej podsieci sieci wirtualnej. Ponownie tylko węzły odbierają adres IP z obsługą routingu, a w przypadku korzystania z translatora adresów sieciowych w celu komunikowania się z innymi zasobami poza klastrem AKS. Takie podejście znacznie zmniejsza liczbę adresów IP, które należy zarezerwować w przestrzeni sieciowej, aby można było użyć używanych przez nią zasobników.
 
-Aby uzyskać więcej informacji, zobacz [Konfigurowanie sieci dla klastra usługi AKS wtyczki kubenet][aks-configure-kubenet-networking].
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie sieci korzystającą wtyczki kubenet dla klastra AKS][aks-configure-kubenet-networking].
 
-### <a name="azure-cni-advanced-networking"></a>Sieć Azure CNI (zaawansowane)
+### <a name="azure-cni-advanced-networking"></a>Azure CNI (Advanced) — sieć
 
-Za pomocą wtyczki Azure CNI pod każdym pobiera adres IP z podsieci i są dostępne bezpośrednio. Te adresy IP musi być unikatowa w przestrzeń sieci i muszą być planowane z góry. Każdy węzeł ma parametr konfiguracji maksymalna liczba zasobników, które obsługuje. Równoważną liczbę adresów IP w każdym węźle następnie są zarezerwowane na początku dla tego węzła. Takie podejście wymaga planowania, ponieważ w przeciwnym razie może prowadzić do wyczerpania adresu IP lub jest potrzebna ponowna kompilacja klastrów w większej podsieci, w miarę wzrostu wymagań aplikacji.
+W przypadku usługi Azure CNI każdy pod z nich Pobiera adres IP z podsieci i można do niego uzyskać dostęp bezpośrednio. Te adresy IP muszą być unikatowe w przestrzeni sieci i muszą być planowane z wyprzedzeniem. Każdy węzeł ma parametr konfiguracji dla maksymalnej liczby obsługiwanych przez nią zasobników. Równoważna liczba adresów IP na węzeł jest następnie rezerwowana na początku dla tego węzła. Takie podejście wymaga większego planowania, ponieważ w przeciwnym razie może prowadzić do wyczerpania adresów IP lub trzeba ponownie skompilować klastry w większej podsieci, w miarę wzrostu wymagań aplikacji.
 
-Węzły używają [wtyczki Azure Container Networking interfejsu (CNI)][cni-networking] wtyczka platformy Kubernetes.
+W węzłach jest używany dodatek [Azure Container Network Interface (CNI)][cni-networking] Kubernetes.
 
-![Diagram przedstawiający dwa węzły o mostki łączenia każdego do pojedynczej sieci wirtualnej platformy Azure][advanced-networking-diagram]
+![Diagram przedstawiający dwa węzły z mostkami łączącymi każdy z jedną siecią wirtualną platformy Azure][advanced-networking-diagram]
 
-Aby uzyskać więcej informacji, zobacz [wtyczki Azure CNI skonfigurować dla klastra usługi AKS][aks-configure-advanced-networking].
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie platformy Azure CNI dla klastra AKS][aks-configure-advanced-networking].
 
 ### <a name="compare-network-models"></a>Porównanie modeli sieci
 
-Wtyczki kubenet i wtyczki Azure CNI zapewniają łączność z siecią dla klastry usługi AKS. Istnieją zalety i wady każdej. Na wysokim poziomie obowiązują następujące zastrzeżenia:
+Zarówno korzystającą wtyczki kubenet, jak i Azure CNI zapewniają łączność sieciową dla klastrów AKS. Istnieją jednak zalety i wady każdej z nich. Na wysokim poziomie są stosowane następujące zagadnienia:
 
-* **Wtyczki Kubenet**
-    * Oszczędza przestrzeń adresów IP.
-    * Używa modułu równoważenia obciążenia wewnętrznej lub zewnętrznej usługi Kubernetes, aby dotrzeć do zasobników z poza klastrem.
-    * Należy ręcznie zarządzać i zachować trasy zdefiniowane przez użytkownika (Udr).
-    * Maksymalnie 400 węzłów w klastrze.
-* **Wtyczki Azure CNI**
-    * Zasobników Uzyskaj pełną wirtualnej sieci i bezpośrednio osiągalna z poza klastrem.
+* **korzystającą wtyczki kubenet**
+    * Zachowuje przestrzeń adresów IP.
+    * Używa wewnętrznego lub zewnętrznego modułu równoważenia obciążenia Kubernetes w celu uzyskania dostępu do elementów z zewnątrz klastra.
+    * Należy ręcznie zarządzać i obsługiwać trasy zdefiniowane przez użytkownika (UDR).
+    * Maksymalnie 400 węzłów na klaster.
+* **Azure CNI**
+    * W celu uzyskania pełnej łączności z siecią wirtualną i można ją uzyskać bezpośrednio z zewnątrz klastra.
     * Wymaga więcej przestrzeni adresów IP.
 
-Oto zachowanie różnice między wtyczki kubenet i wtyczki Azure CNI:
+Między korzystającą wtyczki kubenet i Azure CNI istnieją następujące różnice dotyczące zachowań:
 
-| Możliwość                                                                                   | Kubenet   | Azure CNI |
+| Możliwość                                                                                   | Korzystającą wtyczki kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| Wdrażanie klastra w istniejącej lub nowej sieci wirtualnej                                            | Obsługiwane — stosowane ręcznie tras zdefiniowanych przez użytkownika | Obsługiwane |
-| Zasobnik zasobnika łączności                                                                         | Obsługiwane | Obsługiwane |
-| Łączność maszyn wirtualnych na zasobnik; Maszyny Wirtualnej w tej samej sieci wirtualnej                                          | Działa, gdy inicjowane przez zasobników | Działa w obu kierunkach |
-| Łączność maszyn wirtualnych na zasobnik; Maszynę Wirtualną w równorzędnej sieci wirtualnej                                            | Działa, gdy inicjowane przez zasobników | Działa w obu kierunkach |
-| Dostęp lokalny przy użyciu sieci VPN lub usługi Express Route                                                | Działa, gdy inicjowane przez zasobników | Działa w obu kierunkach |
+| Wdróż klaster w istniejącej lub nowej sieci wirtualnej                                            | Obsługiwane — UDR ręcznie | Obsługiwane |
+| Łączność pod kątem                                                                         | Obsługiwane | Obsługiwane |
+| Łączność z maszyną wirtualną; Maszyna wirtualna w tej samej sieci wirtualnej                                          | Działa po zainicjowaniu przez | Działa w obu kierunkach |
+| Łączność z maszyną wirtualną; Maszyna wirtualna w równorzędnej sieci wirtualnej                                            | Działa po zainicjowaniu przez | Działa w obu kierunkach |
+| Dostęp lokalny przy użyciu sieci VPN lub usługi Express Route                                                | Działa po zainicjowaniu przez | Działa w obu kierunkach |
 | Dostęp do zasobów zabezpieczonych przez punkty końcowe usługi                                             | Obsługiwane | Obsługiwane |
-| Udostępnianie usługi Kubernetes przy użyciu kontrolera service, App Gateway lub ruch przychodzący modułu równoważenia obciążenia | Obsługiwane | Obsługiwane |
-| Domyślnie usługa Azure DNS i stref prywatnych                                                          | Obsługiwane | Obsługiwane |
+| Uwidacznianie usług Kubernetes Services za pomocą usługi równoważenia obciążenia, bramy aplikacji lub kontrolera transferu danych przychodzących | Obsługiwane | Obsługiwane |
+| Domyślne Azure DNS i strefy prywatne                                                          | Obsługiwane | Obsługiwane |
 
 ### <a name="support-scope-between-network-models"></a>Zakres pomocy technicznej między modelami sieci
 
-Niezależnie od używanego modelu sieci wtyczki kubenet i wtyczki Azure CNI można wdrożyć w jednej z następujących sposobów:
+Niezależnie od modelu sieci, z którego korzystasz, zarówno korzystającą wtyczki kubenet, jak i Azure CNI można wdrożyć w jeden z następujących sposobów:
 
-* Platforma Azure umożliwia automatyczne tworzenie i konfigurowanie zasobów sieci wirtualnej, podczas tworzenia klastra usługi AKS.
-* Można ręcznie utworzyć i skonfigurować zasoby sieci wirtualnej i Dołącz do tych zasobów, podczas tworzenia klastra usługi AKS.
+* Platforma Azure może automatycznie tworzyć i konfigurować zasoby sieci wirtualnej podczas tworzenia klastra AKS.
+* Możesz ręcznie utworzyć i skonfigurować zasoby sieci wirtualnej i dołączyć je do tych zasobów podczas tworzenia klastra AKS.
 
-Funkcje, takie jak punkty końcowe usługi lub tras zdefiniowanych przez użytkownika są obsługiwane zarówno z wtyczki kubenet i wtyczki Azure CNI [obsługuje zasady dla usługi AKS][support-policies] zdefiniować można wprowadzać zmiany. Na przykład:
+Mimo że funkcje, takie jak punkty końcowe usługi lub UDR, są obsługiwane zarówno w korzystającą wtyczki kubenet, jak i na platformie Azure CNI, [zasady pomocy technicznej dla AKS][support-policies] określają, jakie zmiany można wprowadzić. Na przykład:
 
-* Jeśli ręcznie utworzysz zasoby sieci wirtualnej dla klastra usługi AKS, są obsługiwane podczas konfigurowania własnych tras zdefiniowanych przez użytkownika lub punktów końcowych usługi.
-* Jeśli platforma Azure automatycznie utworzy zasoby sieci wirtualnej dla klastra usługi AKS, nie jest obsługiwana ręcznie zmienić tych zasobów zarządzanych w usłudze AKS, aby skonfigurować własne tras zdefiniowanych przez użytkownika lub punktów końcowych usługi.
+* Jeśli ręcznie utworzysz zasoby sieci wirtualnej dla klastra AKS, jest ono obsługiwane podczas konfigurowania własnych UDR lub punktów końcowych usługi.
+* Jeśli platforma Azure automatycznie tworzy zasoby sieci wirtualnej dla klastra AKS, nie jest obsługiwane ręczne zmienianie tych zasobów zarządzanych przez AKS w celu skonfigurowania własnych UDR lub punktów końcowych usługi.
 
-## <a name="ingress-controllers"></a>Ruch przychodzący kontrolerów
+## <a name="ingress-controllers"></a>Kontrolery transferu danych przychodzących
 
-Podczas tworzenia usługi typu usługi równoważenia obciążenia jest tworzony bazowego zasobu modułu równoważenia obciążenia platformy Azure. Moduł równoważenia obciążenia jest skonfigurowany do dystrybucji ruchu do zasobników w usłudze na danym porcie. Moduł równoważenia obciążenia działa tylko w warstwie 4 - usługa nie rozpoznaje rzeczywiste aplikacje i nie może wprowadzać żadnych dodatkowych kwestii dotyczących routingu.
+Podczas tworzenia usługi typu modułu równoważenia obciążenia tworzony jest podstawowy zasób usługi Azure load module. Moduł równoważenia obciążenia jest skonfigurowany do dystrybucji ruchu do zasobników w usłudze na dany port. Moduł równoważenia obciążenia działa tylko w warstwie 4 — usługa nie rozpoznaje rzeczywistych aplikacji i nie może dokonywać żadnych dodatkowych zagadnień związanych z routingiem.
 
-*Ruch przychodzący kontrolerów* działa w warstwie 7, a następnie użyć bardziej inteligentne i reguł w celu dystrybucji ruchu aplikacji. Zazwyczaj kontrolera danych przychodzących jest używane do kierowania ruchu HTTP do różnych aplikacji na podstawie przychodzącego adresu URL.
+*Kontrolery* transferu danych przychodzących działają w warstwie 7 i mogą używać bardziej inteligentnych reguł do dystrybucji ruchu aplikacji. Typowym zastosowaniem kontrolera transferu danych przychodzących jest kierowanie ruchu HTTP do różnych aplikacji na podstawie przychodzącego adresu URL.
 
 ![Diagram przedstawiający przepływ ruchu przychodzącego w klastrze AKS][aks-ingress]
 
-W usłudze AKS możesz utworzyć zasób usługi transferu danych przychodzących przy użyciu polecenia podobnego NGINX lub użyć funkcji routing aplikacji protokołu HTTP w usłudze AKS. Po włączeniu routing aplikacji protokołu HTTP dla klastra usługi AKS, platforma Azure tworzy kontroler danych przychodzących i *DNS zewnętrznego* kontrolera. Podczas tworzenia nowych zasobów ruch przychodzący w usłudze Kubernetes wymagane rekordy A systemu DNS są tworzone w strefie DNS specyficzne dla klastra. Aby uzyskać więcej informacji, zobacz [wdrożenia, routing aplikacji protokołu HTTP][aks-http-routing].
+W programie AKS można utworzyć zasób transferu danych przychodzących przy użyciu elementu like NGINX lub użyć funkcji routingu aplikacji HTTP AKS. Po włączeniu routingu aplikacji protokołu HTTP dla klastra AKS platforma Azure tworzy kontroler transferu danych przychodzących i *zewnętrzny kontroler DNS* . Ponieważ nowe zasoby związane z ruchem przychodzącym są tworzone w Kubernetes, wymagane są rekordy A DNS w strefie DNS. Aby uzyskać więcej informacji, zobacz [wdrażanie aplikacji http Routing][aks-http-routing].
 
-Kolejną funkcją typowych danych przychodzących jest kończenia żądań SSL/TLS. Dla aplikacji sieci web dużych dostępne za pośrednictwem protokołu HTTPS kończenie żądań protokołu TLS mogą być obsługiwane przez zasób danych przychodzących, a nie w samej aplikacji. Aby zapewnić automatyczne generowanie certyfikacji TLS i konfiguracji, można skonfigurować na korzystanie z dostawców takich jak umożliwia szyfrowanie zasobu transferu danych przychodzących. Aby uzyskać więcej informacji na temat konfigurowania kontrolera danych przychodzących NGINX za pomocą umożliwia szyfrowanie, zobacz [ruch przychodzący i protokół TLS][aks-ingress-tls].
+Inną wspólną funkcją transferu danych przychodzących jest protokół SSL/TLS. W przypadku dużych aplikacji sieci Web, do których uzyskuje się dostęp za pośrednictwem protokołu HTTPS, zakończenie protokołu TLS może być obsługiwane przez zasób transferu danych przychodzących, a nie w samej aplikacji. Aby zapewnić automatyczną generację i konfigurację certyfikacji TLS, można skonfigurować zasób transferu danych przychodzących tak, aby korzystał z dostawców, takich jak szyfrowanie. Aby uzyskać więcej informacji na temat konfigurowania kontrolera NGINX ingresing z szyfrowaniem, zobacz artykuł dotyczący [protokołów przychodzących i TLS][aks-ingress-tls].
 
-Można również skonfigurować kontroler danych przychodzących w taki sposób, aby zachować źródłowy adres IP klienta w odpowiedzi na żądania z kontenerami w klastrze AKS. Jeśli żądanie klienta jest kierowany do kontenera w klastrze usługi AKS przy użyciu sieci kontroler danych przychodzących, oryginalnego źródłowego adres ip tego żądania nie będą dostępne do kontenera docelowego. Po włączeniu *klienta źródłowego adresu IP zachowania*, źródłowy adres IP klienta znajduje się w nagłówku żądania, w obszarze *X-Forwarded-dla*. Jeśli używasz klienta źródłowego adresu IP konserwacji na kontrolerze transferu danych przychodzących, nie można użyć przekazywanego protokołu SSL. Zachowywanie adresu IP źródłowego klienta i przekazywanego SSL mogą być używane z innymi usługami, takie jak *modułu równoważenia obciążenia* typu.
+Możesz również skonfigurować kontroler transferu danych przychodzących, aby zachować źródłowy adres IP klienta w przypadku żądań do kontenerów w klastrze AKS. Gdy żądanie klienta jest kierowane do kontenera w klastrze AKS za pośrednictwem kontrolera transferu danych przychodzących, oryginalny źródłowy adres IP tego żądania nie będzie dostępny dla kontenera docelowego. Po włączeniu *zachowywania źródłowego adresu IP klienta*jest dostępny źródłowy adres IP klienta w nagłówku żądania w obszarze *X-forwardd-for*. W przypadku korzystania z funkcji zachowywania źródłowych adresów IP klienta na kontrolerze transferu danych przychodzących nie można używać przekazywania protokołu SSL. Przechowywanie źródłowych adresów IP klienta i przekazywanie protokołu SSL mogą być używane z innymi usługami, takimi jak typ *modułu równoważenia obciążenia* .
 
 ## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 
-Sieciowa grupa zabezpieczeń służy do przefiltrowania ruchu dla maszyn wirtualnych, takich jak węzłów AKS. Podczas tworzenia usług, takich jak usługi równoważenia obciążenia, platforma Azure automatycznie skonfiguruje wszystkie reguły sieciowej grupy zabezpieczeń, które są potrzebne. Nie należy ręcznie konfigurować reguły sieciowej grupy zabezpieczeń do filtrowania ruchu do zasobników w klastrze AKS. Zdefiniuj wszystkie wymagane porty i przekazywanie jako część Twojego manifestów usługi Kubernetes i pozwolić platformie Azure, Utwórz lub zaktualizuj odpowiednie zasady. Umożliwia także zasady sieciowe zgodnie z opisem w następnej sekcji, aby automatycznie zastosować reguły filtrowania ruchu do zasobników.
+Sieciowa Grupa zabezpieczeń filtruje ruch dla maszyn wirtualnych, takich jak węzły AKS. Podczas tworzenia usług, takich jak moduł równoważenia obciążenia, platforma Azure automatycznie konfiguruje wszystkie potrzebne reguły sieciowej grupy zabezpieczeń. Nie należy ręcznie konfigurować zasad sieciowych grup zabezpieczeń w celu filtrowania ruchu dla zasobników w klastrze AKS. Zdefiniuj wszystkie wymagane porty i przekazanie w ramach manifestów usługi Kubernetes, a platforma Azure umożliwia tworzenie i aktualizowanie odpowiednich reguł. Możesz również użyć zasad sieciowych, jak opisano w następnej sekcji, aby automatycznie zastosować reguły filtru ruchu do zasobników.
 
 ## <a name="network-policies"></a>Zasady sieciowe
 
-Domyślnie wszystkie zasobników w klastrze AKS umożliwia wysyłanie oraz odbieranie ruchu bez ograniczeń. Aby zwiększyć bezpieczeństwo można zdefiniować reguły, które kontrolują przepływu ruchu. Aplikacji zaplecza są dostępne często tylko wymagane frontonu usług lub składników bazy danych dostępnych tylko warstwy aplikacji łączących się z nimi.
+Domyślnie wszystkie zasobniki w klastrze AKS mogą wysyłać i odbierać ruch bez ograniczeń. W celu zwiększenia bezpieczeństwa warto zdefiniować reguły sterujące przepływem ruchu. Aplikacje zaplecza często są udostępniane wymaganym usługom frontonu lub składniki bazy danych są dostępne tylko dla warstw aplikacji, które się z nimi łączą.
 
-Zasady sieci jest funkcją Kubernetes dostępne w usłudze AKS, która umożliwia sterowanie przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Sieciowe grupy zabezpieczeń są więcej węzłów AKS, nie zasobników. Użycie zasad sieciowych jest bardziej odpowiedni i natywnych dla chmury sposób kontrolowania przepływu ruchu. Zgodnie z zasobników są tworzone dynamicznie w klastrze AKS, zasady wymagane sieciowe mogą być automatycznie stosowane.
+Zasady sieciowe to funkcja Kubernetes dostępna w AKS, która umożliwia sterowanie przepływem ruchu między zasobnikami. Możesz zezwalać na ruch lub odmawiać go na podstawie ustawień, takich jak przypisane etykiety, przestrzeń nazw lub port ruchu. Sieciowe grupy zabezpieczeń są bardziej przeznaczone dla węzłów AKS, a nie do zasobników. Korzystanie z zasad sieciowych jest bardziej odpowiednim, natywnym sposobem na sterowanie przepływem ruchu. Ponieważ w klastrze AKS są tworzone w sposób dynamiczny, wymagane zasady sieciowe mogą być automatycznie stosowane.
 
-Aby uzyskać więcej informacji, zobacz [bezpieczny ruch między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)][use-network-policies].
+Aby uzyskać więcej informacji, zobacz [bezpieczny ruch między różnymi elementami sieciowymi przy użyciu zasad sieciowych w usłudze Azure Kubernetes Service (AKS)][use-network-policies].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Rozpoczynanie pracy z usługą AKS, sieć, tworzenie i konfigurowanie klastra usługi AKS przy użyciu własnych zakresów adresów IP przy użyciu [wtyczki kubenet][aks-configure-kubenet-networking] or [Azure CNI][aks-configure-advanced-networking].
+Aby rozpocząć pracę z usługą AKS Networking, Utwórz i skonfiguruj klaster AKS z własnymi zakresami adresów IP przy użyciu [korzystającą wtyczki kubenet][aks-configure-kubenet-networking] lub [Azure CNI][aks-configure-advanced-networking].
 
-Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze AKS][operator-best-practices-network].
+W przypadku skojarzonych najlepszych rozwiązań należy zapoznać się [z najlepszymi rozwiązaniami dotyczącymi łączności sieciowej i zabezpieczeń w AKS][operator-best-practices-network].
 
-Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zostały przedstawione z usługi AKS zobacz następujące artykuły:
+Aby uzyskać dodatkowe informacje na temat podstawowych pojęć związanych z Kubernetes i AKS, zobacz następujące artykuły:
 
-- [Kubernetes / klastrów usługi AKS i obciążeń][aks-concepts-clusters-workloads]
-- [Kubernetes dostępu w usłudze AKS i zarządzania tożsamościami][aks-concepts-identity]
-- [Kubernetes / zabezpieczeń usługi AKS][aks-concepts-security]
-- [Kubernetes / magazynu usługi AKS][aks-concepts-storage]
-- [Kubernetes / skalowanie usługi AKS][aks-concepts-scale]
+- [Kubernetes/AKS klastrów i obciążeń][aks-concepts-clusters-workloads]
+- [Kubernetes/AKS, dostęp i tożsamość][aks-concepts-identity]
+- [Zabezpieczenia Kubernetes/AKS][aks-concepts-security]
+- [Magazyn Kubernetes/AKS][aks-concepts-storage]
+- [Skala Kubernetes/AKS][aks-concepts-scale]
 
 <!-- IMAGES -->
 [aks-clusterip]: ./media/concepts-network/aks-clusterip.png

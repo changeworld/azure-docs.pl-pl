@@ -1,145 +1,79 @@
 ---
-title: SSH do węzłów klastra Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak utworzyć połączenie SSH z węzłów klastra Azure Kubernetes Service (AKS) dla zadania rozwiązywania problemów i konserwacji.
+title: Węzły klastra protokołu SSH w usłudze Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak utworzyć połączenie SSH z węzłami klastra usługi Azure Kubernetes Service (AKS) na potrzeby zadań związanych z rozwiązywaniem problemów i konserwacją.
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/24/2019
+ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 6ddd1b160110e7a751f54f89b387a62d94e9308e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 748abc08c432518be4ce8698713b1df95077c3c1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614483"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722466"
 ---
-# <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Połącz przy użyciu protokołu SSH do usługi Azure Kubernetes Service (AKS) węzłów klastra z powodu konserwacji lub rozwiązywania problemów
+# <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Łączenie się z węzłami klastra SSH z usługą Azure Kubernetes Service (AKS) w celu przeprowadzenia konserwacji lub rozwiązywania problemów
 
-W całym cyklu życia klastra Azure Kubernetes Service (AKS) może być konieczne do uzyskania dostępu do węzła usługi AKS. Dostęp może być konserwacji, zbieranie danych dziennika lub inne operacje dotyczące rozwiązywania problemów. Możesz uzyskać dostęp do węzłów AKS przy użyciu protokołu SSH, w tym dla węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS). Możesz również [łączyć się z węzłami systemu Windows Server przy użyciu połączeń protokołu remote desktop protocol (RDP)][aks-windows-rdp]. Ze względów bezpieczeństwa węzłów AKS nie są połączone z Internetem.
+W całym cyklu życia klastra usługi Azure Kubernetes Service (AKS) może być konieczne uzyskanie dostępu do węzła AKS. Ten dostęp może być przeznaczony do konserwacji, zbierania dzienników lub wykonywania innych operacji związanych z rozwiązywaniem problemów. Dostęp do węzłów AKS można uzyskać przy użyciu protokołu SSH, w tym węzłów systemu Windows Server (obecnie w wersji zapoznawczej w programie AKS). Można także [połączyć się z węzłami systemu Windows Server przy użyciu połączeń RDP (Remote Desktop Protocol)][aks-windows-rdp]. Ze względów bezpieczeństwa węzły AKS nie są widoczne dla Internetu. Do węzłów AKS używany jest prywatny adres IP.
 
-W tym artykule pokazano, jak utworzyć połączenie SSH z węzłem AKS za pomocą prywatnych adresów IP.
+W tym artykule opisano sposób tworzenia połączenia SSH z węzłem AKS przy użyciu prywatnych adresów IP.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zapoznaj się z przewodnikiem Szybki Start AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub [przy użyciu Azure Portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.64 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
+Domyślnie klucze SSH są pobierane lub generowane, a następnie dodawane do węzłów podczas tworzenia klastra AKS. W tym artykule pokazano, jak określić różne klucze SSH niż klucze SSH używane podczas tworzenia klastra AKS. W tym artykule pokazano również, jak ustalić prywatny adres IP węzła i połączyć się z nim przy użyciu protokołu SSH. Jeśli nie musisz określać innego klucza SSH, możesz pominąć krok dodawania klucza publicznego SSH do węzła.
 
-## <a name="add-your-public-ssh-key"></a>Dodaj klucz publiczny SSH
+W tym artykule przyjęto również, że masz klucz SSH. Klucz SSH można utworzyć za pomocą [macOS lub Linux][ssh-nix] lub [Windows][ssh-windows]. Jeśli używasz wypełniania generacji do utworzenia pary kluczy, Zapisz parę kluczy w formacie OpenSSH, a nie domyślny format klucza prywatnego (plik PPK).
 
-Domyślnie klucze SSH są uzyskany, lub wygenerowane, a następnie dodane do węzłów, podczas tworzenia klastra usługi AKS. Jeśli potrzebujesz określić różne klucze SSH, niż te używane podczas tworzenia klastra usługi AKS, Dodaj klucz publiczny SSH do węzłów systemu Linux w usłudze AKS. Jeśli to konieczne, można utworzyć usługi SSH klucza za pomocą [z systemem macOS lub Linux][ssh-nix] or [Windows][ssh-windows]. Jeśli używasz programu PuTTY ogólnego do tworzenia pary kluczy, Zapisz pary kluczy w OpenSSH formatu zamiast domyślnego programu PuTTy formatem klucza prywatnego (plik ppk).
+Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0.64 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-> [!NOTE]
-> Może klucze SSH obecnie można dodawać tylko do węzłów systemu Linux przy użyciu wiersza polecenia platformy Azure. Jeśli używasz węzłów systemu Windows Server, używanie kluczy SSH, podane podczas tworzenia klastra AKS, a następnie przejdź do kroku na [jak uzyskać adres węzła AKS](#get-the-aks-node-address). Ewentualnie [łączyć się z węzłami systemu Windows Server przy użyciu połączeń protokołu remote desktop protocol (RDP)][aks-windows-rdp].
+## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>Konfigurowanie klastrów AKS opartych na zestawie skalowania maszyn wirtualnych na potrzeby dostępu SSH
 
-Kroki, aby uzyskać prywatny adres IP węzłów AKS jest inny, na podstawie typu klastra AKS, po uruchomieniu:
+Aby skonfigurować zestaw skalowania maszyn wirtualnych na podstawie dostępu SSH, Znajdź nazwę zestawu skalowania maszyn wirtualnych klastra i Dodaj swój klucz publiczny SSH do tego zestawu skalowania.
 
-* W przypadku większości klastrów usługi AKS, wykonaj kroki, aby [uzyskać adres IP w przypadku regularnego klastrów AKS](#add-ssh-keys-to-regular-aks-clusters).
-* Jeśli używasz funkcji w wersji zapoznawczej w usłudze AKS, używanego przez zestawy skalowania maszyn wirtualnych, takich jak wiele pule węzłów lub obsługa kontenerów systemu Windows Server, [postępuj zgodnie z instrukcjami dla klastrów AKS opartych na zestawie skali maszyny wirtualnej](#add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters).
-
-### <a name="add-ssh-keys-to-regular-aks-clusters"></a>Dodawanie kluczy SSH do regularnego klastrów usługi AKS
-
-Aby dodać klucz SSH do węzłów systemu Linux w usłudze AKS, wykonaj następujące czynności:
-
-1. Pobierz nazwę grupy zasobów dla zasobów klastra usługi AKS przy użyciu [az aks show][az-aks-show]. Nazwa klastra jest przypisany do zmiennej o nazwie *CLUSTER_RESOURCE_GROUP*. Zastąp *myResourceGroup* nazwą grupy zasobów, w której należy klaster AKS znajduje się:
-
-    ```azurecli-interactive
-    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-    ```
-
-1. Listy maszyn wirtualnych za pomocą grupy zasobów klastra usługi AKS [az vm list][az-vm-list] polecenia. Te maszyny wirtualne są węzłów AKS:
-
-    ```azurecli-interactive
-    az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
-    ```
-
-    Następujące przykładowe dane wyjściowe pokazuje węzłów AKS:
-
-    ```
-    Name                      ResourceGroup                                  Location
-    ------------------------  ---------------------------------------------  ----------
-    aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_eastus  eastus
-    ```
-
-1. Aby dodać kluczy SSH z węzłem, użyj [az vm użytkownik aktualizację][az-vm-user-update] polecenia. Podaj nazwę grupy zasobów, a następnie jeden z węzłów AKS uzyskanego w poprzednim kroku. Domyślnie, nazwa użytkownika dla węzłów AKS jest *azureuser*. Podaj lokalizację własne SSH ogólnodostępnej lokalizacji kluczy, takie jak *~/.ssh/id_rsa.pub*, lub Wklej zawartość klucza publicznego SSH:
-
-    ```azurecli-interactive
-    az vm user update \
-      --resource-group $CLUSTER_RESOURCE_GROUP \
-      --name aks-nodepool1-79590246-0 \
-      --username azureuser \
-      --ssh-key-value ~/.ssh/id_rsa.pub
-    ```
-
-### <a name="add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters"></a>Dodawanie kluczy SSH do klastrów usługi AKS opartych na zestawie skali maszyny wirtualnej
-
-Aby dodać klucz SSH do węzła usługi AKS w systemie Linux, który jest częścią zestawu skalowania maszyn wirtualnych, wykonaj następujące czynności:
-
-1. Pobierz nazwę grupy zasobów dla zasobów klastra usługi AKS przy użyciu [az aks show][az-aks-show]. Nazwa klastra jest przypisany do zmiennej o nazwie *CLUSTER_RESOURCE_GROUP*. Zastąp *myResourceGroup* nazwą grupy zasobów, w której należy klaster AKS znajduje się:
-
-    ```azurecli-interactive
-    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-    ```
-
-1. Następnie Pobierz zestawu dla klastra usługi AKS przy użyciu skalowania maszyn wirtualnych [az vmss list][az-vmss-list] polecenia. Nazwa zestawu skalowania maszyn wirtualnych jest przypisany do zmiennej o nazwie *SCALE_SET_NAME*:
-
-    ```azurecli-interactive
-    SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
-    ```
-
-1. Aby dodać kluczy SSH do węzłów w zestawie skalowania maszyn wirtualnych, użyj [az vmss rozszerzenia zestawu][az-vmss-extension-set] polecenia. Grupa zasobów klastra i nazwy zestawu skalowania maszyn wirtualnych są dostarczane przy użyciu poprzednich poleceń. Domyślnie, nazwa użytkownika dla węzłów AKS jest *azureuser*. W razie potrzeby zaktualizuj lokalizację własne SSH ogólnodostępnej lokalizacji kluczy, takich jak *~/.ssh/id_rsa.pub*:
-
-    ```azurecli-interactive
-    az vmss extension set  \
-        --resource-group $CLUSTER_RESOURCE_GROUP \
-        --vmss-name $SCALE_SET_NAME \
-        --name VMAccessForLinux \
-        --publisher Microsoft.OSTCExtensions \
-        --version 1.4 \
-        --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
-    ```
-
-1. Zastosuj klucz SSH do węzłów przy użyciu [az vmss update-instances][az-vmss-update-instances] polecenia:
-
-    ```azurecli-interactive
-    az vmss update-instances --instance-ids '*' \
-        --resource-group $CLUSTER_RESOURCE_GROUP \
-        --name $SCALE_SET_NAME
-    ```
-
-## <a name="get-the-aks-node-address"></a>Uzyskaj adres węzła usługi AKS
-
-Węzłów AKS nie są widoczne publicznie w Internecie. Aby SSH do węzłów AKS należy użyć prywatnego adresu IP. W następnym kroku utworzysz zasobnik pomocnika w klastra usługi AKS, która umożliwia SSH ten prywatny adres IP węzła. Kroki, aby uzyskać prywatny adres IP węzłów AKS jest inny, na podstawie typu klastra AKS, po uruchomieniu:
-
-* W przypadku większości klastrów usługi AKS, wykonaj kroki, aby [uzyskać adres IP w przypadku regularnego klastrów AKS](#ssh-to-regular-aks-clusters).
-* Jeśli używasz funkcji w wersji zapoznawczej w usłudze AKS, używanego przez zestawy skalowania maszyn wirtualnych, takich jak wiele pule węzłów lub obsługa kontenerów systemu Windows Server, [postępuj zgodnie z instrukcjami dla klastrów AKS opartych na zestawie skali maszyny wirtualnej](#ssh-to-virtual-machine-scale-set-based-aks-clusters).
-
-### <a name="ssh-to-regular-aks-clusters"></a>Protokół SSH z regularnych klastrów usługi AKS
-
-Wyświetl prywatny adres IP w usłudze AKS klastra węzła przy użyciu [az vm-— adresy ip][az-vm-list-ip-addresses] command. Provide your own AKS cluster resource group name obtained in a previous [az-aks-show][az-aks-show] krok:
+Użyj polecenia [AZ AKS show][az-aks-show] , aby pobrać nazwę grupy zasobów klastra AKS, a następnie polecenie [AZ VMSS list][az-vmss-list] , aby uzyskać nazwę zestawu skalowania.
 
 ```azurecli-interactive
-az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-Następujące przykładowe dane wyjściowe pokazuje prywatnych adresów IP węzłów AKS:
+Powyższy przykład przypisuje nazwę grupy zasobów klastra dla *myAKSCluster* *w* *CLUSTER_RESOURCE_GROUP*. Przykład następnie używa *CLUSTER_RESOURCE_GROUP* , aby wyświetlić nazwę zestawu skalowania i przypisać go do *SCALE_SET_NAME*.  
 
+> [!NOTE]
+> Klucze SSH można obecnie dodawać do węzłów systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure. Jeśli chcesz nawiązać połączenie z węzłem systemu Windows Server przy użyciu protokołu SSH, użyj kluczy SSH dostarczonych podczas tworzenia klastra AKS i Pomiń następny zestaw poleceń dodawania klucza publicznego SSH. Nadal będzie potrzebny adres IP węzła, który ma zostać rozwiązaniu, który jest wyświetlany w końcowym poleceniu tej sekcji. Alternatywnie można [połączyć się z węzłami systemu Windows Server przy użyciu połączeń RDP (Remote Desktop Protocol)][aks-windows-rdp] , zamiast korzystać z protokołu SSH.
+
+Aby dodać klucze SSH do węzłów w zestawie skalowania maszyn wirtualnych, użyj polecenia [AZ VMSS Extension Set][az-vmss-extension-set] i [AZ VMSS Update-Instances][az-vmss-update-instances] .
+
+```azurecli-interactive
+az vmss extension set  \
+    --resource-group $CLUSTER_RESOURCE_GROUP \
+    --vmss-name $SCALE_SET_NAME \
+    --name VMAccessForLinux \
+    --publisher Microsoft.OSTCExtensions \
+    --version 1.4 \
+    --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
+
+az vmss update-instances --instance-ids '*' \
+    --resource-group $CLUSTER_RESOURCE_GROUP \
+    --name $SCALE_SET_NAME
 ```
-VirtualMachine            PrivateIPAddresses
-------------------------  --------------------
-aks-nodepool1-79590246-0  10.240.0.4
-```
 
-### <a name="ssh-to-virtual-machine-scale-set-based-aks-clusters"></a>Protokół SSH z klastrami AKS opartych na zestawie skali maszyny wirtualnej
+Powyższy przykład używa zmiennych *CLUSTER_RESOURCE_GROUP* i *SCALE_SET_NAME* z poprzednich poleceń. Powyższy przykład używa również *~/.ssh/id_rsa.pub* jako lokalizacji klucza publicznego SSH.
 
-Wewnętrzny adres IP węzłów przy użyciu listy [kubectl get-polecenia][kubectl-get]:
+> [!NOTE]
+> Domyślnie nazwa użytkownika dla węzłów AKS to *azureuser*.
+
+Po dodaniu klucza publicznego SSH do zestawu skalowania można użyć protokołu SSH do maszyny wirtualnej węzła w tym zestawie skalowania przy użyciu jego adresu IP. Wyświetlanie prywatnych adresów IP węzłów klastra AKS za pomocą [polecenia Get polecenia kubectl][kubectl-get].
 
 ```console
 kubectl get nodes -o wide
 ```
 
-Przykładowe dane wyjściowe poniżej pokazuje wewnętrznych adresów IP wszystkich węzłów w klastrze, w tym węzeł systemu Windows Server.
+Poniższe przykładowe dane wyjściowe przedstawiają wewnętrzne adresy IP wszystkich węzłów w klastrze, w tym węzła systemu Windows Server.
 
 ```console
 $ kubectl get nodes -o wide
@@ -149,30 +83,80 @@ aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4 
 aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
 ```
 
-Rekord wewnętrzny adres IP węzła, do którego chcesz rozwiązać. Ten adres zostanie użyty w kolejnym kroku.
+Zapisz wewnętrzny adres IP węzła, którego chcesz rozwiązać.
 
-## <a name="create-the-ssh-connection"></a>Utwórz połączenie SSH
+Aby uzyskać dostęp do węzła przy użyciu protokołu SSH, wykonaj kroki opisane w temacie [Tworzenie połączenia SSH](#create-the-ssh-connection).
 
-Aby utworzyć połączenie SSH z węzłem AKS, uruchamiasz zasobnik pomocnika w klastrze AKS. Pod tym pomocnika zapewnia dostęp protokołu SSH w klastrze i następnie dodatkowy dostęp do węzła SSH. Aby utworzyć i korzystać z tego zasobnika pomocnika, wykonaj następujące czynności:
+## <a name="configure-virtual-machine-availability-set-based-aks-clusters-for-ssh-access"></a>Konfigurowanie klastrów AKS opartych na zestawie dostępności maszyn wirtualnych na potrzeby dostępu SSH
 
-1. Uruchom `debian` kontenera obrazów i do niej dołączyć sesji terminalowej. Ten kontener można utworzyć sesję SSH z dowolnego węzła w klastrze AKS:
+Aby skonfigurować klaster AKS oparty na zestawie dostępności maszyn wirtualnych na potrzeby dostępu SSH, Znajdź nazwę węzła systemu Linux klastra i Dodaj swój klucz publiczny SSH do tego węzła.
+
+Użyj polecenia [AZ AKS show][az-aks-show] , aby pobrać nazwę grupy zasobów klastra AKS, a następnie polecenie [AZ VM list][az-vm-list] , aby wyświetlić listę Nazwa maszyny wirtualnej węzła systemu Linux.
+
+```azurecli-interactive
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
+```
+
+Powyższy przykład przypisuje nazwę grupy zasobów klastra dla *myAKSCluster* *w* *CLUSTER_RESOURCE_GROUP*. W przykładzie zostanie wystawiona Nazwa maszyny wirtualnej przy użyciu *CLUSTER_RESOURCE_GROUP* . Przykładowe dane wyjściowe przedstawiają nazwę maszyny wirtualnej: 
+
+```
+Name                      ResourceGroup                                  Location
+------------------------  ---------------------------------------------  ----------
+aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_eastus  eastus
+```
+
+Aby dodać klucze SSH do węzła, użyj polecenia [AZ VM User Update][az-vm-user-update] .
+
+```azurecli-interactive
+az vm user update \
+    --resource-group $CLUSTER_RESOURCE_GROUP \
+    --name aks-nodepool1-79590246-0 \
+    --username azureuser \
+    --ssh-key-value ~/.ssh/id_rsa.pub
+```
+
+W powyższym przykładzie użyta jest zmienna *CLUSTER_RESOURCE_GROUP* i nazwa maszyny wirtualnej węzła z poprzednich poleceń. Powyższy przykład używa również *~/.ssh/id_rsa.pub* jako lokalizacji klucza publicznego SSH. Możesz również użyć zawartości klucza publicznego SSH zamiast określić ścieżkę.
+
+> [!NOTE]
+> Domyślnie nazwa użytkownika dla węzłów AKS to *azureuser*.
+
+Po dodaniu klucza publicznego SSH do maszyny wirtualnej węzła można użyć protokołu SSH do tej maszyny wirtualnej przy użyciu jego adresu IP. Zapoznaj się z prywatnym adresem IP węzła klastra AKS za pomocą polecenia [AZ VM list-IP-addresss][az-vm-list-ip-addresses] .
+
+```azurecli-interactive
+az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
+```
+
+W powyższym przykładzie jest stosowana zmienna *CLUSTER_RESOURCE_GROUP* ustawiona w poprzednich poleceniach. Następujące przykładowe dane wyjściowe przedstawiają prywatne adresy IP węzłów AKS:
+
+```
+VirtualMachine            PrivateIPAddresses
+------------------------  --------------------
+aks-nodepool1-79590246-0  10.240.0.4
+```
+
+## <a name="create-the-ssh-connection"></a>Tworzenie połączenia SSH
+
+Aby utworzyć połączenie SSH z węzłem AKS, należy uruchomić pomocnika w klastrze AKS. Ten pomocnik w systemie zapewnia dostęp SSH do klastra, a następnie dodatkowy dostęp do węzła SSH. Aby utworzyć i korzystać z tego pomocnika, wykonaj następujące czynności:
+
+1. Uruchom obraz `debian` kontenera i Dołącz do niego sesję terminalu. Tego kontenera można użyć do utworzenia sesji SSH z dowolnym węzłem w klastrze AKS:
 
     ```console
     kubectl run -it --rm aks-ssh --image=debian
     ```
 
     > [!TIP]
-    > Jeśli używasz węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS), należy dodać selektora węzła do polecenia, aby zaplanować Debian kontenera w węźle systemu Linux w następujący sposób:
+    > Jeśli używasz węzłów systemu Windows Server (obecnie w wersji zapoznawczej w AKS), Dodaj selektor węzła do polecenia, aby zaplanować kontener Debian w węźle systemu Linux:
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. Podstawowego obrazu systemu Debian nie zawiera składników protokołu SSH. Po sesji terminalowej jest podłączony do kontenera, należy zainstalować klienta SSH za pomocą `apt-get` w następujący sposób:
+1. Po powiązaniu sesji terminalu z kontenerem Zainstaluj klienta SSH przy użyciu polecenia `apt-get`:
 
     ```console
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. W nowym oknie terminala nie jest podłączony do kontenera, listy zasobników przy użyciu klastra usługi AKS [kubectl get pods-][kubectl-get] polecenia. Zasobnik utworzony w poprzednim kroku, który zaczyna się od nazwy *aks — ssh*, jak pokazano w poniższym przykładzie:
+1. Otwórz nowe okno terminalu, które nie jest połączone z kontenerem, Utwórz listę zasobników w klastrze AKS za pomocą polecenia [polecenia kubectl Get][kubectl-get] . Utworzony w poprzednim kroku rozpoczyna się od nazwy *AKS-SSH*, jak pokazano w następującym przykładzie:
 
     ```
     $ kubectl get pods
@@ -181,21 +165,21 @@ Aby utworzyć połączenie SSH z węzłem AKS, uruchamiasz zasobnik pomocnika w 
     aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
     ```
 
-1. W pierwszym kroku w tym artykule dodano publiczny klucz SSH węzłów AKS. Teraz skopiuj klucz prywatny SSH do zasobników. Ten klucz prywatny jest używany do tworzenia protokołu SSH do węzłów AKS.
+1. W poprzednim kroku dodano publiczny klucz SSH do węzła AKS, którego chcesz rozwiązać problem. Teraz Skopiuj prywatny klucz SSH do pomocnika. Ten klucz prywatny służy do tworzenia protokołu SSH w węźle AKS.
 
-    Podaj własny *aks — ssh* nazwy zasobnika uzyskanego w poprzednim kroku. W razie potrzeby zmień *~/.ssh/id_rsa* lokalizacji klucz prywatny SSH:
+    Podaj własną nazwę *AKS-SSH* pod uzyskaną w poprzednim kroku. W razie potrzeby zmień *~/.ssh/id_rsa* na lokalizację prywatnego klucza SSH:
 
     ```console
     kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
     ```
 
-1. W sesji terminalowej do kontenera, należy zaktualizować uprawnienia na skopiowany `id_rsa` klucza prywatnego SSH, tak, aby użytkownik tylko do odczytu:
+1. Wróć do sesji terminala do kontenera, zaktualizuj uprawnienia do skopiowanego `id_rsa` prywatnego klucza SSH, tak aby był on tylko do odczytu:
 
     ```console
     chmod 0600 id_rsa
     ```
 
-1. Teraz Utwórz połączenie SSH z węzłem usługi AKS. Ponownie jest domyślna nazwa użytkownika dla węzłów AKS *azureuser*. Zaakceptuj monit z połączeniem jest kontynuowane zgodnie z klucza SSH jest pierwszy zaufanych. Następnie otrzymują wierszu polecenia powłoki bash węzła usługi AKS:
+1. Utwórz połączenie SSH z węzłem AKS. Ponownie domyślna nazwa użytkownika dla węzłów AKS to *azureuser*. Zaakceptuj monit, aby kontynuować połączenie, ponieważ klucz SSH jest najpierw zaufany. Następnie zostanie wyświetlony monit bash węzła AKS:
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4
@@ -220,11 +204,11 @@ Aby utworzyć połączenie SSH z węzłem AKS, uruchamiasz zasobnik pomocnika w 
 
 ## <a name="remove-ssh-access"></a>Usuń dostęp SSH
 
-Po zakończeniu `exit` sesji SSH i następnie `exit` sesji interaktywnych kontenera. Po zamknięciu sesji to kontener, zasobnika używane dla dostępu SSH z klastrem AKS został usunięty.
+Po zakończeniu sesja `exit` SSH, a następnie `exit` interaktywna sesja kontenera. Po zamknięciu tej sesji kontenera używany na potrzeby dostępu SSH z klastra AKS zostaje usunięty.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli potrzebne są dodatkowe dane dotyczące rozwiązywania problemów, możesz to zrobić [wyświetlanie dzienników agenta kubelet][view-kubelet-logs] or [view the Kubernetes master node logs][view-master-logs].
+Jeśli potrzebne są dodatkowe dane dotyczące rozwiązywania problemów, można [wyświetlić dzienniki kubelet][view-kubelet-logs] lub [wyświetlić dzienniki głównego węzła Kubernetes][view-master-logs].
 
 <!-- EXTERNAL LINKS -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

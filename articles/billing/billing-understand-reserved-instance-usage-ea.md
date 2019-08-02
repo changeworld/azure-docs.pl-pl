@@ -1,6 +1,6 @@
 ---
-title: Opis zastrzeżenia platformy Azure dla umów Enterprise Agreement
-description: Dowiedz się, jak odczytać Twojego użycia, aby zrozumieć, jak zastosowano Azure zastrzeżenie dla Twojej rejestracji Enterprise.
+title: Informacje na temat użycia zastrzeżeń platformy Azure na potrzeby umów Enterprise Agreement
+description: Dowiedz się, jak odczytać informacje o użyciu, aby zrozumieć, w jaki sposób zastosowana jest rezerwacja platformy Azure dla Twojej rejestracji przedsiębiorstwa.
 author: bandersmsft
 manager: yashar
 tags: billing
@@ -11,154 +11,155 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: b0c7c38ebabfdd142394152f735d40320a98dced
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798158"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598097"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Pobieranie kosztów rezerwacji umowy Enterprise Agreement i danych użycia
+# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Pobierz koszty i użycie Umowa Enterprise rezerwacji
 
-Koszty rezerwacji i dane użycia są dostępne dla klientów z umowami Enterprise Agreement w witrynie Azure portal i interfejsy API REST. Ten artykuł pomoże Ci:
+Koszty rezerwacji i dane użycia są dostępne dla Umowa Enterprise klientów w interfejsach API Azure Portal i REST. Ten artykuł ułatwia:
 
-- Pobieranie danych zakupu rezerwacji
-- Pobieranie danych niepełnego wykorzystania rezerwacji
-- Agencyjnej kosztów rezerwacji
-- Obciążenie zwrotne wykorzystania rezerwacji
+- Pobierz dane zakupu rezerwacji
+- Wiedzieć, która subskrypcja, Grupa zasobów lub zasób użyła rezerwacji
+- Obciążenia zwrotnego na potrzeby użycia rezerwacji
 - Oblicz oszczędności rezerwacji
+- Pobierz rezerwację danych użycia
+- Amortyzowanie kosztów rezerwacji
 
-Opłatach w portalu Marketplace i dalszych są skonsolidowane w danych użycia. Możesz wyświetlić opłat za pierwsze użycie innych firm, użycie witryny marketplace i zakupów od pojedynczego źródła danych.
+Opłaty w witrynie Marketplace są konsolidowane w danych użycia. Opłaty są naliczane za użycie w ramach jednego źródła danych, użycia w witrynie Marketplace i zakupów.
 
-## <a name="reservation-charges-in-azure-usage-data"></a>Opłaty rezerwacji w danych użycia platformy Azure
+## <a name="reservation-charges-in-azure-usage-data"></a>Opłaty za rezerwację w danych użycia platformy Azure
 
-Dane są dzielone na dwa oddzielne zestawy danych: _Rzeczywisty koszt_ i _amortyzowanego kosztu_. Jak różnią się te dwa zestawy danych:
+Dane są podzielone na dwa oddzielne zestawy danych: Koszt _rzeczywisty_ i _amortyzowany koszt_. Różnice między tymi dwoma zestawami danych:
 
-**Rzeczywisty koszt** — dostarcza dane do uzgodnienia z na miesięcznym rachunku. Te dane ma zakup kosztów rezerwacji. Zawiera zero EffectivePrice do użycia, który otrzymał rabat związany z rezerwacją.
+**Koszt rzeczywisty** — zapewnia dane do uzgodnienia z rachunkiem miesięcznym. Te dane zawierają koszty zakupu rezerwacji i szczegóły aplikacji rezerwacji. Za pomocą tych danych możesz wiedzieć, która subskrypcja lub Grupa zasobów lub zasób otrzymały rabat rezerwacji w określonym dniu. EffectivePrice dla użycia, który odbiera rabat rezerwacji, wynosi zero.
 
-**Amortyzowanego kosztu** — zasób EffectiveCost, który pobiera rabat związany z rezerwacją jest proporcjonalny koszt wystąpienia zarezerwowanego. Ma również zestaw danych kosztów nieużywanych rezerwacji. Suma kosztów rezerwacji i nieużywanych rezerwacji zawiera dzienne zamortyzowany koszt rezerwacji.
+**Amortyzowany koszt** — ten zestaw danych jest podobny do rzeczywistego kosztu zestawu danych, z wyjątkiem tego, że wartość EffectivePrice dla użycia, która pobiera rabat rezerwacji, jest proporcjonalnym kosztem rezerwacji (zamiast wartości zero). Pomaga to znać wartość pieniężną użycia rezerwacji w ramach subskrypcji, grupy zasobów lub zasobu, a także może pomóc Ci w rozliczeniu za użycie rezerwacji wewnętrznie. Zestaw danych ma także nieużywane godziny rezerwacji. Zestaw danych nie zawiera rekordów zakupu rezerwacji. 
 
 Porównanie dwóch zestawów danych:
 
-| Data | Zestaw danych w usłudze rzeczywisty koszt | Zestaw danych w usłudze amortyzowany koszt |
+| Data | Rzeczywisty koszt — zestaw danych | Zestawienie danych kosztów amortyzowanych |
 | --- | --- | --- |
-| Zakup rezerwacji | Dostępne w tym widoku.<br><br>  Aby uzyskać ten filtr danych na temat ChargeType = &quot;zakupu&quot;. <br><br> Zajrzyj do ReservationID lub ReservationName, aby dowiedzieć się które rezerwacji, Opłata dotyczy.  | Nie ma zastosowania do tego widoku. <br><br> Koszty zakupu nie są zawarte w amortyzowanym danych. |
-| effectivePrice | Ta wartość wynosi zero, użycia, który pobiera rabat związany z rezerwacją. | Wartość jest naliczana proporcjonalnie do liczby godzin kosztów rezerwacji do użycia, który ma rabat związany z rezerwacją. |
-| Nieużywanych rezerwacji (zapewnia liczbę godzin, przez jaką, rezerwacji nie był używany w ciągu dnia i wartości pieniężnej odpadów) | Nie ma zastosowania w tym widoku. | Dostępne w tym widoku.<br><br> Aby uzyskać te dane, odfiltruj ChargeType = &quot;UnusedReservation&quot;.<br><br>  Zajrzyj do ReservationID lub ReservationName, aby dowiedzieć się, które rezerwacji został wykorzystany. Jest to, ile rezerwacji został zmarnowany w w ciągu dnia.  |
-| Cena jednostkowa (cena za zasób z Arkusz cen) | Dostępne | Dostępne |
+| Rezerwacja zakupów | Dostępne w tym widoku.<br><br>  Aby uzyskać ten filtr &quot;danych, należy kupić.&quot; <br><br> Zapoznaj się z ReservationID lub zastrzeżeńname, aby dowiedzieć się, której rezerwacji dotyczy opłata.  | Nie dotyczy tego widoku. <br><br> Koszty zakupu nie są podawane w danych amortyzowanych. |
+| EffectivePrice | Wartość jest równa zero w przypadku użycia, który pobiera rabat rezerwacji. | Wartość jest naliczana proporcjonalnie do godzinnego kosztu rezerwacji za użycie z rabatem rezerwacji. |
+| Nieużywane zastrzeżenie (zawiera liczbę godzin, przez które rezerwacja nie została użyta w ciągu dnia i wartość pieniężną odpadów) | Nie dotyczy w tym widoku. | Dostępne w tym widoku.<br><br> Aby uzyskać te dane, odfiltruj wartość opłaty &quot;=&quot;UnusedReservation.<br><br>  Zapoznaj się z ReservationID lub zastrzeżeńname, aby dowiedzieć się, która rezerwacja była niedostatecznie wykorzystywana. Jest to ilość zastrzeżeń, która została utracona w ciągu dnia.  |
+| Cena jednostkowa (cena zasobu z arkusza cen) | Dostępne | Dostępne |
 
-Zmienił się inne informacje, które są dostępne w danych użycia platformy Azure:
+Inne informacje dostępne w danych użycia platformy Azure uległy zmianie:
 
-- Produktu i informacje licznika - Azure nie zastąpić pierwotnie użyte miernika ReservationId i ReservationName, tak jak wcześniej.
-- ReservationId i ReservationName — są one własnych pól danych. Wcześniej wyglądał on dostępne tylko w ramach AdditionalInfo.
-- ProductOrderId — identyfikator zamówienia rezerwacji, dodany jako odpowiednie pole.
-- ProductOrderName — nazwę produktu dla zakupionej rezerwacji.
-- Termin - 12 miesięcy lub 36 miesięcy.
-- RINormalizationRatio — dostępne w obszarze AdditionalInfo. Jest to stosunek, gdzie Rezerwacja ma zostać zastosowana do rekordu użycia. Jeśli elastyczność rozmiar wystąpienia jest włączona na dla rezerwacji, a następnie stosować się do innych rozmiarów. Wartość zawiera stosunek, czy rezerwacja została zastosowana do rekordu użycia.
+- Informacje o produkcie i mierniku — platforma Azure nie zastępuje pierwotnie zużytego miernika ReservationId i Reservationname, tak jak wcześniej.
+- ReservationId i Reservationname — są one własnymi polami w danych. Wcześniej były dostępne tylko w ramach AdditionalInfo.
+- ProductOrderId — identyfikator zamówienia rezerwacji, który został dodany jako własny pole.
+- ProductOrderName — Nazwa produktu zakupionej rezerwacji.
+- Termin 12 miesięcy lub 36 miesięcy.
+- RINormalizationRatio — dostępne w AdditionalInfo. Jest to stosunek, w którym rezerwacja jest stosowana do rekordu użycia. Jeśli na potrzeby rezerwacji włączono elastyczność rozmiaru wystąpienia, może ona mieć zastosowanie do innych rozmiarów. Wartość pokazuje stopień zastosowania rezerwacji do rekordu użycia.
 
-## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Pobieranie danych użycia zużycia i rezerwacji platformy Azure przy użyciu interfejsu API
+## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Pobieranie danych użycia platformy Azure i zastrzeżeń przy użyciu interfejsu API
 
-Można uzyskać danych za pomocą interfejsu API lub ją pobrać z witryny Azure portal.
+Możesz pobrać dane przy użyciu interfejsu API lub pobrać je z Azure Portal.
 
-Należy wywołać [interfejs API użycia szczegóły](/rest/api/consumption/usagedetails/list) z wersją interfejsu API &quot;2019-04-01-preview&quot; można pobrać nowych danych. Aby uzyskać szczegółowe informacje dotyczące terminologii, zobacz [warunki korzystania](billing-understand-your-usage.md). Obiekt wywołujący powinien być administratorem przedsiębiorstwa przy użyciu umowy enterprise [portalu EA portal](https://ea.azure.com). Administratorzy przedsiębiorstwa tylko do odczytu można również uzyskać dane.
+Możesz wywołać [interfejs API szczegółów użycia](/rest/api/consumption/usagedetails/list) z interfejsem &quot;API w wersji&quot; 2019-04-01-Preview, aby uzyskać nowe dane. Aby uzyskać szczegółowe informacje na temat terminologii, zobacz [warunki użytkowania](billing-understand-your-usage.md). Obiekt wywołujący powinien być administratorem przedsiębiorstwa dla umowy Enterprise Agreement przy użyciu [portalu EA](https://ea.azure.com). Administratorzy przedsiębiorstwa tylko do odczytu mogą również uzyskać dane.
 
-Dane nie są dostępne w [interfejsy API raportowania usługi dla klientów korporacyjnych — szczegóły użycia](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+Dane nie są dostępne w usłudze [raportowanie interfejsów API dla klientów korporacyjnych — szczegóły użycia](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-Oto przykład wywołanie interfejsu API:
+Oto przykład wywołania interfejsu API:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
 ```
 
-Aby uzyskać więcej informacji na temat {enrollmentId} i {billingPeriodId}, zobacz [szczegóły użycia — lista](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) artykułu interfejsu API.
+Aby uzyskać więcej informacji na temat {enrollmentId} i {billingPeriodId}, zobacz artykuł dotyczący interfejsu API [listy szczegóły użycia](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) .
 
-Informacje w poniższej tabeli przedstawiono metryki i filtr może pomóc w rozwiązywaniu typowych problemów z rezerwacji.
+Informacje przedstawione w poniższej tabeli dotyczące metryk i filtru mogą pomóc w rozwiązywaniu typowych problemów z rezerwacją.
 
-| **Typ danych interfejsu API** | Akcję do wywołania interfejsu API |
+| **Typ danych interfejsu API** | Akcja wywołania interfejsu API |
 | --- | --- |
-| **Wszystkie opłaty (użycia i zakupów)** | Zamień na ActualCost {Metryka} |
-| **Użycie, które stało się rabat związany z rezerwacją** | Zamień na ActualCost {Metryka}<br><br>Zamień {filter}: properties/reservationId%20ne%20 |
-| **Użycie, które nie dotarł rabat związany z rezerwacją** | Zamień na ActualCost {Metryka}<br><br>Zamień {filter}: properties/reservationId%20eq%20 |
-| **Amortyzowany opłaty (użycia i zakupów)** | Zamień na AmortizedCost {Metryka} |
-| **Raport nieużywanych rezerwacji** | Zamień na AmortizedCost {Metryka}<br><br>Zamień {filter}: properties/ChargeType%20eq%20'UnusedReservation " |
-| **Zakup rezerwacji** | Zamień na ActualCost {Metryka}<br><br>Zamień {filter}: properties/ChargeType%20eq%20'Purchase "  |
-| **Zwroty** | Zamień na ActualCost {Metryka}<br><br>Zamień {filter}: properties/ChargeType%20eq%20'Refund " |
+| **Wszystkie opłaty (użycie i zakupy)** | Zastąp wartość {Metric} za pomocą ActualCost |
+| **Użycie, które uzyskało rabat rezerwacji** | Zastąp wartość {Metric} za pomocą ActualCost<br><br>Zastąp ciąg {Filter} z: Properties/reservationId% 20ne% 20 |
+| **Użycie, które nie pobierze rabatu rezerwacji** | Zastąp wartość {Metric} za pomocą ActualCost<br><br>Zastąp ciąg {Filter} z: Properties/reservationId% 20eq% 20 |
+| **Opłaty amortyzowane (użycie i zakupy)** | Zastąp wartość {Metric} za pomocą AmortizedCost |
+| **Nieużywany raport rezerwacji** | Zastąp wartość {Metric} za pomocą AmortizedCost<br><br>Zastąp element {Filter} z: Properties/Opłatatype% 20eq% 20 ' UnusedReservation ' |
+| **Rezerwacja zakupów** | Zastąp wartość {Metric} za pomocą ActualCost<br><br>Zastąp element {Filter} z: Properties/Opłatatype% 20eq% 20 "Purchase"  |
+| **Zwroty** | Zastąp wartość {Metric} za pomocą ActualCost<br><br>Zastąp element {Filter} z: Properties/Opłatatype% 20eq% 20 "refund" |
 
-## <a name="download-the-usage-csv-file-with-new-data"></a>Pobierz plik CSV użycia za pomocą nowych danych
+## <a name="download-the-usage-csv-file-with-new-data"></a>Pobierz plik CSV użycia z nowymi danymi
 
-Jeśli jesteś administratorem umowy EA, możesz pobrać plik CSV, który zawiera nowe dane dotyczące użycia z witryny Azure portal. Te dane nie jest dostępna z [portalu EA portal](https://ea.azure.com).
+Jeśli jesteś administratorem EA, możesz pobrać plik CSV zawierający nowe dane użycia z Azure Portal. Te dane nie są dostępne w [portalu EA](https://ea.azure.com).
 
-W witrynie Azure portal przejdź do [Zarządzanie kosztami i rozliczenia](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
+W Azure Portal przejdź do [kosztów Cost Management + rozliczenia](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
 
-1. Wybierz konto rozliczeniowe.
-2. Kliknij przycisk **użycie i opłaty za**.
+1. Wybierz konto rozliczeń.
+2. Kliknij pozycje **użycie i opłaty**.
 3. Kliknij przycisk **Pobierz**.  
-![Przykład przedstawiający miejsce pobrać plik CSV użycia danych w witrynie Azure portal](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. W **Pobierz dane użycia i opłat** w obszarze **szczegółów użycia w wersji 2** , wybierz opcję **wszystkie opłaty (użycia i zakupów)** , a następnie kliknij przycisk Pobierz. Powtórz tę procedurę dla **amortyzowanego opłaty (użycia i zakupów)** .
+![Przykład pokazujący, gdzie pobrać plik danych użycia woluminów CSV w Azure Portal](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
+4. W obszarze **Pobierz użycie i opłaty** , w obszarze **szczegóły użycia w wersji 2** wybierz pozycję **wszystkie opłaty (użycie i zakupy)** , a następnie kliknij pozycję Pobierz. Powtórz tę czynność dla **amortyzowanych opłat (użycie i zakupy)** .
 
-Pliki CSV, które możesz pobrać zawierają faktyczne koszty i zamortyzowany koszt.
+Pobrane pliki CSV zawierają rzeczywiste koszty i naniesione koszty.
 
-## <a name="common-cost-and-usage-tasks"></a>Typowe zadania dotyczące kosztów i użycia
+## <a name="common-cost-and-usage-tasks"></a>Typowe zadania związane z kosztami i użyciem
 
-Poniższe sekcje zawierają typowych zadań najczęściej używane do wyświetlania danych kosztów i użycia ich rezerwacji.
+Poniższe sekcje to typowe zadania, których większość osób używa do wyświetlania ich kosztów rezerwacji i danych użycia.
 
-### <a name="get-reservation-purchase-costs"></a>Pobierz koszty zakupu rezerwacji
+### <a name="get-reservation-purchase-costs"></a>Pobieranie kosztów zakupu rezerwacji
 
-Koszty zakupu rezerwacji są dostępne w danych rzeczywistego kosztu. Filtruj _ChargeType = zakupu_. Zapoznaj się z ProductOrderID, aby określić, które zamówienie rezerwacji, jest zakup.
+Koszty zakupu rezerwacji są dostępne w rzeczywistych kosztach. Filtr dla _opłaty = zakup_. Zapoznaj się z ProductOrderID, aby określić kolejność rezerwacji zakupu.
 
-### <a name="get-underutilized-reservation-quantity-and-costs"></a>Ilość rezerwacji niedostatecznie używanych i kosztów
+### <a name="get-underutilized-reservation-quantity-and-costs"></a>Uzyskaj nieużywaną ilość i koszty rezerwacji
 
-Pobieranie danych amortyzowanego kosztu i je filtrować _ChargeType_ _= UnusedReservation_. Otrzymujesz dzienny ilość nieużywanych rezerwacji i kosztów. Można filtrować dane dla rezerwacji lub przy użyciu zamówienia rezerwacji _ReservationId_ i _ProductOrderId_ pola, odpowiednio. Jeśli rezerwacja był wykorzystywany w 100%, rekord zawiera ilość 0.
+Pobierz amortyzowane dane kosztów i _Filtr dla elementu_ costtype _= UnusedReservation_. Otrzymujesz dzienną nieużywaną ilość rezerwacji i koszt. Dane dla rezerwacji lub zamówienia rezerwacji można filtrować odpowiednio przy użyciu pól _ReservationId_ i _ProductOrderId_ . W przypadku użycia rezerwacji na 100% rekord ma ilość 0.
 
-### <a name="amortize-reservation-costs"></a>Agencyjnej kosztów rezerwacji
+### <a name="amortize-reservation-costs"></a>Amortyzowanie kosztów rezerwacji
 
-Pobieranie danych amortyzowanego kosztu i filtr dla zamówienia rezerwacji przy użyciu _ProductOrderID_ można uzyskać dziennych kosztów zamortyzowany rezerwacji.
+Pobierz amortyzowane dane kosztów i odfiltruj kolejność rezerwacji przy użyciu _ProductOrderID_ , aby uzyskać dzienne koszty związane z rezerwacją.
 
-### <a name="chargeback-for-a-reservation"></a>Obciążenie zwrotne dla rezerwacji
+### <a name="chargeback-for-a-reservation"></a>Obciążenia zwrotnego dla rezerwacji
 
-Można używać rezerwacji obciążeń zwrotnych do innych organizacji subskrypcji, grupy zasobów lub tagów. Dane zamortyzowany koszt zawiera wartość pieniężną wykorzystania rezerwacji w następujących typów danych:
+Możesz obciążenia zwrotnego użycie rezerwacji innym organizacjom według subskrypcji, grup zasobów lub tagów. Amortyzowane dane kosztów zapewniają wartość pieniężną wykorzystania rezerwacji dla następujących typów danych:
 
-- Zasoby (na przykład maszyny wirtualnej)
+- Zasoby (na przykład maszyna wirtualna)
 - Resource group
 - `Tags`
 - Subscription
 
-### <a name="get-the-blended-rate-for-chargeback"></a>Pobierz mieszanego szybkość do obsługi obciążenia zwrotnego
+### <a name="get-the-blended-rate-for-chargeback"></a>Pobierz szybkość mieszania dla obciążenia zwrotnego
 
-Aby określić współczynnik mieszany, danych zamortyzowany koszt i agregowanie łączny koszt. W przypadku maszyn wirtualnych możesz użyć MeterName lub ServiceType informacje z danych AdditionalInfo JSON. Podziel łącznego kosztu według ilości używane do uzyskania mieszanego stawki.
+Aby określić szybkość mieszania, należy uzyskać dane o amortyzowanych kosztach i agregować łączny koszt. W przypadku maszyn wirtualnych można użyć informacji o mierniku lub wartości z AdditionalInfo JSON. Podziel łączny koszt według ilości użytej do uzyskania stawki mieszanej.
 
-### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Optymalne rezerwacji inspekcji na przykład użyj elastyczność rozmiaru
+### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Inspekcja optymalnego użycia rezerwacji na potrzeby elastyczności rozmiaru wystąpienia
 
-Wiele ilość o _RINormalizationRatio_, z AdditionalInfo. Wyniki wskazują, ile godzin użytkowania rezerwacja została zastosowana do rekordu użycia.
+Wiele z _RINormalizationRatio_z AdditionalInfo. Wyniki wskazują, ile godzin użycia rezerwacji zostało zastosowanych do rekordu użycia.
 
-### <a name="determine-reservation-savings"></a>Określić oszczędności rezerwacji
+### <a name="determine-reservation-savings"></a>Określanie oszczędności rezerwacji
 
-Pobierz dane kosztów Amortized i filtrować dane dotyczące wystąpień zarezerwowanych. Następnie:
+Pobierz dane z amortyzowanych kosztów i przefiltruj dane dla wystąpienia zarezerwowanego. Następnie
 
-1. Uzyskaj szacowane koszty zgodnie z rzeczywistym użyciem. Pomnóż _UnitPrice_ wartością _ilość_ wartości, aby uzyskać szacowane koszty zgodnie z rzeczywistym użyciem, jeśli nie można zastosować rabat związany z rezerwacją do użycia.
-2. Uzyskaj kosztów rezerwacji. Suma _koszt_ wartości, które można pobrać wartości pieniężnej zapłacone za wystąpienie zarezerwowane. Obejmuje to koszty używane i nieużywanych rezerwacji.
-3. Odejmij kosztów rezerwacji z szacowane koszty zgodnie z rzeczywistym użyciem, aby uzyskać Szacowane oszczędności.
+1. Uzyskaj szacowane koszty płatność zgodnie z rzeczywistym użyciem. Pomnóż wartość _CenaJednostkowa_ z wartościami _ilościowymi_ , aby uzyskać szacowane koszty płatność zgodnie z rzeczywistym użyciem, jeśli rabat rezerwacji nie dotyczy użycia.
+2. Pobierz koszty rezerwacji. Należy zsumować wartości _kosztów_ , aby uzyskać wartość pieniężną zapłaconego wystąpienia zarezerwowanego. Obejmuje on używane i niewykorzystane koszty rezerwacji.
+3. Odejmij koszty rezerwacji od szacowanych kosztów płatność zgodnie z rzeczywistym użyciem, aby uzyskać szacowane oszczędności.
 
-## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Zakup rezerwacji i amortyzacji analizy kosztów
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Rezerwacja zakupów i amortyzacji w analizie kosztów
 
-Koszty rezerwacji są dostępne w [analiza kosztów](https://aka.ms/costanalysis). Domyślnie, koszt analizy pokazuje **rzeczywisty koszt**, czyli jak koszty będą wyświetlane na rachunku. Aby wyświetlić zakupy rezerwacji podziale i skojarzone z zasobami, które używane korzyści, przełącz się do **amortyzowanego kosztu**:
+Koszty rezerwacji są dostępne w [analizie kosztów](https://aka.ms/costanalysis). Domyślnie analiza kosztów pokazuje **rzeczywisty koszt**, czyli sposób wyświetlania kosztów na rachunku. Aby wyświetlić zakupy rezerwacji podzielone na przerwane i skojarzone z zasobami, w których wykorzystano korzyść, przełącz się na **amortyzowany koszt**:
 
-![Przykład przedstawiający miejsce wybrać zamortyzowany koszt analizy kosztów](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
+![Przykład pokazujący, gdzie wybierać amortyzowany koszt w analizie kosztów](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Grupuj według typu opłat, aby zobaczyć podział szczegółów użycia, zakupy i zwroty; lub rezerwacji podziale kosztów rezerwacji i na żądanie. Należy pamiętać, że koszty rezerwacji tylko, którą zobaczą podczas przeglądania rzeczywistego kosztu są zakupy, ale kosztów zostaną przydzielone do poszczególnych zasobów, które używane benfit, przeglądając zamortyzowany koszt. Zobaczysz również nową **UnusedReservation** jest opłata w wysokości typu podczas patrząc amortyzowanego kosztu.
+Grupuj według typu opłaty, aby wyświetlić podział użycia, zakupów i refundacji; lub w ramach rezerwacji na podział kosztów rezerwacji i na żądanie. Pamiętaj tylko koszty rezerwacji, które zobaczysz, gdy zaczniesz korzystać z rzeczywistych kosztów, ale koszt zostanie przydzielony do poszczególnych zasobów, które benfit podczas naliczanego kosztu. Zobaczysz również nowy typ kosztu **UnusedReservation** podczas naliczania opłat.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat Azure Reservations, zobacz następujące artykuły:
 
-- [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
+- [Co to są Azure Reservations?](billing-save-compute-costs-reservations.md)
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
 - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
-- [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
-- [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
-- [Koszty oprogramowania Windows nie jest dołączony do rezerwacji](billing-reserved-instance-windows-software-costs.md)
+- [Zapoznaj się z zastosowaniem rabatu rezerwacji](billing-understand-vm-reservation-charges.md)
+- [Informacje na temat użycia rezerwacji dla subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
+- [Koszty oprogramowania systemu Windows, które nie są objęte rezerwacjami](billing-reserved-instance-windows-software-costs.md)

@@ -1,18 +1,19 @@
 ---
 title: Często zadawane pytania dotyczące tworzenia kopii zapasowych baz danych SQL Server na maszynach wirtualnych platformy Azure przy użyciu Azure Backup
 description: Znajdź odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowych baz danych SQL Server na maszynach wirtualnych platformy Azure przy użyciu Azure Backup.
-author: sachdevaswati
-manager: vijayts
+ms.reviewer: vijayts
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: vijayts
-ms.openlocfilehash: 082817899adc6ab9b4d57f7e0d4bc4e7c2f0a2ab
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 23dda22a8350591d5cf87cefc1a2f15fd90f17c7
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464815"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688852"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Często zadawane pytania dotyczące SQL Server baz danych uruchomionych w ramach kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -93,6 +94,6 @@ Baza danych, którą można [dodać do wystąpienia](backup-sql-server-database-
   ![Ręczne odnajdywanie nowo dodanej bazy danych](./media/backup-azure-sql-database/view-newly-added-database.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak [utworzyć kopię zapasową bazy danych SQL Server](backup-azure-sql-database.md) działającej na maszynie wirtualnej platformy Azure.

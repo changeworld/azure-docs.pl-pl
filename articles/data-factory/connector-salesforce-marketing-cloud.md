@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 70ce03834910447e92f0272fc67034caa59c43f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6548f4add8a794276bd4e7f7fa3c0bd7e24a2d5c
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074081"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726012"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopiowanie danych z usług Salesforce: Marketing Cloud przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -30,10 +30,10 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 
 Możesz skopiować dane z usługi Salesforce Marketing Cloud, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-Łącznik Salesforce Marketing Cloud obsługuje uwierzytelnianie za pomocą protokołu OAuth 2. Jest on oparty na [interfejsu API usługi Salesforce Marketing Cloud REST](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
+Łącznik usługi Salesforce Marketing Cloud obsługuje uwierzytelnianie OAuth 2. Jest on oparty na bazie [interfejsu API REST usługi Salesforce Marketing Cloud](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
 
 >[!NOTE]
->Ten łącznik nie obsługuje pobierania obiektów niestandardowych lub niestandardowe rozszerzenia danych.
+>Ten łącznik nie obsługuje pobierania obiektów niestandardowych ani niestandardowych rozszerzeń danych.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -47,9 +47,9 @@ Następujące właściwości są obsługiwane w przypadku usługi Salesforce Mar
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **SalesforceMarketingCloud** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **SalesforceMarketingCloud** | Tak |
 | clientId | Identyfikator klienta skojarzony z aplikacją Salesforce Marketing Cloud.  | Yes |
-| clientSecret | Klucz tajny klienta skojarzonego z aplikacją Salesforce Marketing Cloud. Istnieje możliwość Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i pozwól usłudze ADF kopiowania ściągnięcia działania z tego miejsca, podczas wykonywania kopii danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
+| clientSecret | Klucz tajny klienta skojarzonego z aplikacją Salesforce Marketing Cloud. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
 | useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 | usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
@@ -84,7 +84,7 @@ Aby skopiować dane z usługi Salesforce Marketing Cloud, należy ustawić wła�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **SalesforceMarketingCloudObject** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **SalesforceMarketingCloudObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -94,11 +94,12 @@ Aby skopiować dane z usługi Salesforce Marketing Cloud, należy ustawić wła�
     "name": "SalesforceMarketingCloudDataset",
     "properties": {
         "type": "SalesforceMarketingCloudObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SalesforceMarketingCloud linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -113,7 +114,7 @@ Aby skopiować dane z usługi Salesforce Marketing Cloud, należy ustawić typ �
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **SalesforceMarketingCloudSource** | Tak |
+| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **SalesforceMarketingCloudSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

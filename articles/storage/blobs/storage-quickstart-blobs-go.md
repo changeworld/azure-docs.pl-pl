@@ -1,20 +1,18 @@
 ---
 title: Przewodnik Szybki start platformy Azure — tworzenie obiektu blob w magazynie obiektów przy użyciu języka Go | Microsoft Docs
 description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie przy użyciu biblioteki klienta języka Go przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 5b5d0663166c6889d25c0fdd578aadbac3436931
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152777"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726456"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Go
 
@@ -112,7 +110,7 @@ Po utworzeniu obiektu ContainerURL możesz utworzyć wystąpienie obiektu **Blob
 > [!IMPORTANT]
 > Nazwy kontenerów muszą być zapisane małymi literami. Aby uzyskać dodatkowe informacje o regułach nazewnictwa kontenerów i obiektów blob, zobacz [Nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-W tej sekcji utworzysz nowy kontener. Kontener nosi nazwę **quickstartblobs-[losowy ciąg]**. 
+W tej sekcji utworzysz nowy kontener. Kontener nosi nazwę **quickstartblobs-[losowy ciąg]** . 
 
 ```go 
 // From the Azure portal, get your storage account name and key and set environment variables.
@@ -153,7 +151,7 @@ Aby przekazać plik do obiektu blob, otwórz plik przy użyciu metody **os.Open*
 
 Zestaw SDK udostępnia również [interfejsy API wysokiego poziomu](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go), które bazują na interfejsach API REST niskiego poziomu. Na przykład funkcja ***UploadFileToBlockBlob*** używa operacji StageBlock (PutBlock) w celu współbieżnego przekazania pliku we fragmentach, aby zoptymalizować przepływność. Jeśli plik ma rozmiar mniejszy niż 256 MB, zamiast tej operacji jest używana metoda Upload (PutBlob), która kończy transfer w ramach jednej transakcji.
 
-Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartblobs-[losowy ciąg]**.
+Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartblobs-[losowy ciąg]** .
 
 ```go
 // Create a file to test the upload and download.
@@ -209,7 +207,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>Pobieranie obiektu blob
 
-Pobierz obiekty blob za pomocą funkcji niskiego poziomu **Download** z użyciem obiektu BlobURL. Spowoduje to zwrócenie struktury **DownloadResponse**. Uruchom funkcję **Body** w strukturze, aby uzyskać strumień **RetryReader** związany z odczytem danych. Jeśli połączenie nie powiedzie się podczas odczytu, wprowadzi dodatkowych żądań do ponownego nawiązania połączenia i Czytaj dalej. Określenie opcji RetryReaderOption z elementem MaxRetryRequests ustawionym na 0 (ustawienie domyślne) zwraca treść oryginalnej odpowiedzi, a kolejne próby nie są wykonywane. Można również użyć interfejsów API wysokiego poziomu **DownloadBlobToBuffer** lub **DownloadBlobToFile** w celu uproszczenia kodu.
+Pobierz obiekty blob za pomocą funkcji niskiego poziomu **Download** z użyciem obiektu BlobURL. Spowoduje to zwrócenie struktury **DownloadResponse**. Uruchom funkcję **Body** w strukturze, aby uzyskać strumień **RetryReader** związany z odczytem danych. Jeśli podczas czytania wystąpi błąd połączenia, spowoduje to dodatkowe żądanie ponownego nawiązania połączenia i kontynuowanie odczytywania. Określenie opcji RetryReaderOption z elementem MaxRetryRequests ustawionym na 0 (ustawienie domyślne) zwraca treść oryginalnej odpowiedzi, a kolejne próby nie są wykonywane. Można również użyć interfejsów API wysokiego poziomu **DownloadBlobToBuffer** lub **DownloadBlobToFile** w celu uproszczenia kodu.
 
 Poniższy kod pobiera obiekt blob przy użyciu funkcji **Download**. Zawartość obiektu blob jest zapisywana w buforze i wyświetlana w konsoli.
 

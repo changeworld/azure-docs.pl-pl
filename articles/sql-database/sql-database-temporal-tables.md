@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do tabel danych czasowych w usłudze Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozpocząć pracę z usługi Azure SQL Database przy użyciu tabel danych czasowych.
+title: Wprowadzenie z tabelami czasowymi w Azure SQL Database | Microsoft Docs
+description: Dowiedz się, jak rozpocząć korzystanie z tabel danych czasowych w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,47 +10,46 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: ac57e873a6948e85e78849bd4e22db85491c4bfb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 39c19661a71a8b466aa6ff25be9e895189dfbfb3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441537"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566364"
 ---
-# <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Wprowadzenie do tabel danych czasowych w bazie danych Azure SQL
+# <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Wprowadzenie z tabelami czasowymi w Azure SQL Database
 
-Tabele danych czasowych są nową funkcją programowalności usługi Azure SQL Database, która pozwala śledzić i analizować pełną historię zmian w danych, bez konieczności pisania kodu niestandardowego. Tabele danych czasowych Zachowaj dane ściśle powiązane z kontekstu czasu, tak aby przechowywanych fakty, które mogą być interpretowane w jako prawidłowa tylko w obrębie określonego okresu. Ta właściwość tabele danych czasowych umożliwia wydajne analizy na podstawie czasu i uzyskiwania szczegółowych informacji z ewolucji danych.
+Tabele danych czasowych są nową funkcją programowalności Azure SQL Database, która umożliwia śledzenie i analizowanie pełnej historii zmian danych, bez potrzeby kodowania niestandardowego. Tabele danych czasowych przechowują dane ściśle powiązane z kontekstem czasu, dzięki czemu przechowywane fakty mogą być interpretowane jako prawidłowe tylko w określonym okresie. Ta właściwość tabel danych czasowych pozwala na efektywną analizę opartą na czasie i uzyskiwanie szczegółowych informacji na podstawie ewolucji danych.
 
 ## <a name="temporal-scenario"></a>Scenariusz danych czasowych
 
-W tym artykule przedstawiono kroki umożliwiające korzystanie z tabel danych czasowych w scenariuszu aplikacji. Załóżmy, że chcesz śledzić aktywność użytkowników na nową witrynę sieci Web, która jest obecnie sporządzana od podstaw lub na istniejącej witryny sieci Web, którą chcesz rozszerzyć z analizą aktywności użytkownika. W tym przykładzie uproszczona przyjęto założenie, że liczba odwiedzanych stron sieci web w przedziale czasu jest wskaźnik, który musi być przechwytywane i monitorowane w bazie danych witryny sieci Web, która jest hostowana w usłudze Azure SQL Database. Celem analizy historycznej aktywności użytkownika jest pobrać dane wejściowe do przeprojektowania witryny sieci Web i zapewnić lepsze środowisko dla użytkowników zewnętrznych.
+W tym artykule przedstawiono kroki umożliwiające korzystanie z tabel danych czasowych w scenariuszu aplikacji. Załóżmy, że chcesz śledzić aktywność użytkowników w nowej witrynie sieci Web, która jest opracowywana od podstaw lub w istniejącej witrynie sieci Web, która ma zostać rozszerzona za pomocą analizy aktywności użytkownika. W tym uproszczonym przykładzie zakładamy, że liczba odwiedzonych stron sieci Web w danym okresie jest wskaźnikiem, który musi być przechwytywany i monitorowany w bazie danych witryny sieci Web, która jest hostowana na Azure SQL Database. Celem analitycznej analizy aktywności użytkownika jest uzyskanie danych wejściowych w celu przeprojektowania witryny sieci Web i zapewnienia lepszej funkcjonalności dla odwiedzających.
 
-Model bazy danych dla tego scenariusza jest bardzo proste — pomiar aktywności użytkownika jest reprezentowana z polem pojedyncze liczby całkowite **PageVisited**i są przechwytywane oraz podstawowe informacje na temat profilu użytkownika. Ponadto na potrzeby analiz na podstawie czasu Zachowaj serii wierszy dla każdego użytkownika, gdzie każdy wiersz reprezentuje liczbę stron, dany użytkownik odwiedzi w określonym okresie czasu.
+Model bazy danych dla tego scenariusza to bardzo prosta Metryka aktywności użytkownika, która jest reprezentowana przy użyciu pojedynczego pola liczb całkowitych, **PageVisited**i jest przechwytywana wraz z podstawowymi informacjami w profilu użytkownika. Ponadto w przypadku analizy opartej na czasie można przechowywać serię wierszy dla każdego użytkownika, gdzie każdy wiersz reprezentuje liczbę stron, które użytkownik odwiedzał w określonym czasie.
 
 ![Schemat](./media/sql-database-temporal-tables/AzureTemporal1.png)
 
-Na szczęście nie trzeba umieścić wszelkie nakład pracy w swojej aplikacji, aby zachować informacje o działaniach. Tabele danych czasowych ten proces jest automatycznego — zapewnia pełną elastyczność podczas projektowania witryny sieci Web i więcej czasu na skoncentrowanie się na analizy danych, sam. Jedyną czynnością, należy wykonać, jest zapewnienie, że **WebSiteInfo** tabela została skonfigurowana jako [danych czasowych wersjonowana przez system](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0). Konkretne kroki korzystanie z tabel danych czasowych w tym scenariuszu opisano poniżej.
+Na szczęście nie trzeba umieszczać żadnych nakładów pracy w aplikacji, aby zachować te informacje o działaniach. W przypadku tabel danych czasowych proces ten jest zautomatyzowany — zapewnianie pełnej elastyczności podczas projektowania witryny sieci Web i więcej czasu na skoncentrowanie się na samej analizie. Jedyną czynnością, którą należy wykonać, jest upewnienie się, że tabela **WebSiteInfo** jest skonfigurowana jako czasowa [wersja systemu](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0). Poniżej opisano szczegółowe instrukcje dotyczące korzystania z tabel danych czasowych w tym scenariuszu.
 
-## <a name="step-1-configure-tables-as-temporal"></a>Krok 1: Skonfigurować tabele jako danych czasowych
-W zależności od tego, czy uruchamianie nowych wdrożeń lub uaktualnienie istniejącej aplikacji będzie Tworzenie tabel danych czasowych lub zmodyfikuj istniejące przez dodanie atrybutów danych czasowych. Ogólnie rzecz biorąc przypadku Twojego scenariusza może być kombinacja tych dwóch opcji. Wykonaj te akcję przy użyciu [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS), [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) lub innego narzędzia do programowania języka Transact-SQL.
+## <a name="step-1-configure-tables-as-temporal"></a>Krok 1: Konfigurowanie tabel jako danych czasowych
+W zależności od tego, czy uruchamiasz nowe programowanie, czy uaktualniasz istniejącą aplikację, należy utworzyć tabele danych czasowych lub zmodyfikować istniejące, dodając atrybuty czasowe. Ogólnie rzecz biorąc, Twój scenariusz może być kombinacją tych dwóch opcji. Wykonaj te czynności za pomocą narzędzia [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS), [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) lub dowolnego innego narzędzia programistycznego Transact-SQL.
 
 > [!IMPORTANT]
 > Zalecane jest używanie najnowszej wersji programu Management Studio, aby zachować synchronizację z aktualizacjami platformy Microsoft Azure i usługi SQL Database. [Zaktualizuj program SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 > 
 > 
 
-### <a name="create-new-table"></a>Tworzenie nowej tabeli
-Umożliwia w menu kontekstowym "Nową tabelę systemową" w Eksploratorze obiektów programu SSMS Otwórz Edytor zapytań przy użyciu skryptu szablonu tabeli danych czasowych, a następnie wypełnij szablonu za pomocą "Określ wartości dla parametrów szablonu" (Ctrl + Shift + M):
+### <a name="create-new-table"></a>Utwórz nową tabelę
+Użyj elementu menu kontekstowego "Nowa tabela z systemową obsługą wersji" w programie SSMS Eksplorator obiektów otworzyć Edytor zapytań z skryptowym szablonem tabeli danych czasowych, a następnie użyć opcji "Określ wartości parametrów szablonu" (Ctrl + Shift + M), aby wypełnić szablon:
 
 ![SSMSNewTable](./media/sql-database-temporal-tables/AzureTemporal2.png)
 
-W programie SSDT wybierz szablon "(systemową) tabeli danych czasowych", podczas dodawania nowych elementów do projektu bazy danych. Który będzie Otwórz projektanta tabel i umożliwiają łatwe określenie układu tabeli:
+W SSDT wybierz szablon "dane czasowe (systemowo z systemem)" podczas dodawania nowych elementów do projektu bazy danych. Spowoduje to otwarcie projektanta tabel i umożliwi łatwe Określanie układu tabeli:
 
 ![SSDTNewTable](./media/sql-database-temporal-tables/AzureTemporal3.png)
 
-Można również utworzyć tabeli danych czasowych bezpośrednio, określając instrukcji języka Transact-SQL, jak pokazano w poniższym przykładzie. Należy zauważyć, że obowiązkowe elementy tabeli danych czasowych z każdej klauzuli SYSTEM_VERSIONING z odwołaniem do innej tabeli użytkownika, który będzie przechowywać wersje wierszy historycznych i definicji okresu:
+Możesz również utworzyć tabelę danych czasowych, określając bezpośrednio instrukcje języka Transact-SQL, jak pokazano w poniższym przykładzie. Należy zauważyć, że obowiązkowe elementy każdej tabeli danych CZASowych to definicja okresu i klauzula SYSTEM_VERSIONING z odwołaniem do innej tabeli użytkownika, w której będą przechowywane historyczne wersje wierszy:
 
 ```
 CREATE TABLE WebsiteUserInfo 
@@ -65,15 +64,15 @@ CREATE TABLE WebsiteUserInfo
  WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.WebsiteUserInfoHistory));
 ```
 
-Podczas tworzenia tabeli danych czasowych z systemową obsługą towarzyszący tabeli historii w przypadku domyślnej konfiguracji jest tworzony automatycznie. Tabela historii domyślny zawiera klastrowany indeks B-drzewa, w kolumny okresu (koniec, start) z włączoną kompresją strony. Ta konfiguracja jest optymalna dla większości scenariuszy, w których są używane tabele danych czasowych, szczególnie w przypadku [inspekcji danych](https://msdn.microsoft.com/library/mt631669.aspx#Anchor_0). 
+Podczas tworzenia tabeli danych czasowych z systemową obsługą wersji zostanie automatycznie utworzona załączona tabela historii z domyślną konfiguracją. Domyślna tabela historii zawiera klastrowany indeks drzewa B w kolumnach okresów (end, Start) z włączoną kompresją strony. Ta konfiguracja jest optymalna dla większości scenariuszy, w których używane są tabele danych czasowych, szczególnie w przypadku [inspekcji danych](https://msdn.microsoft.com/library/mt631669.aspx#Anchor_0). 
 
-W tym przypadku możemy mają na celu wykonywania analizy trendu na podstawie czasu dłuższego historii danych i większe zestawy danych, więc opcji magazynu dla tabeli historii jest klastrowany indeks magazynu kolumn. Klastrowanego magazynu kolumn zawiera bardzo dobre kompresji i wydajności zapytań analitycznych. Tabele danych czasowych zapewniają elastyczność konfigurowania indeksów w tabelach bieżące i danych czasowych całkowicie niezależne. 
+W tym konkretnym przypadku chcemy przeprowadzać analizę trendu na podstawie czasu na dłuższej historii danych i z większymi zestawami danych, dlatego wybór magazynu dla tabeli historii jest klastrowanym indeksem magazynu kolumn. Klastrowana magazyn kolumn zapewnia bardzo dobrą kompresję i wydajność zapytań analitycznych. Tabele danych czasowych zapewniają elastyczność konfigurowania indeksów w tabelach bieżących i danych czasowych w całości niezależnie od siebie. 
 
 > [!NOTE]
-> Indeksy magazynu kolumn są dostępne w warstwie Premium i w warstwie standardowa S3 oraz powyżej.
+> Indeksy magazynu kolumn są dostępne w warstwie Premium i w warstwie Standardowa, S3 i wyższych.
 >
 
-Poniższy skrypt pokazuje, jak można zmienić domyślny indeks w tabeli historii klastrowanego magazynu kolumn:
+Poniższy skrypt pokazuje, jak domyślny indeks tabeli historii można zmienić na klastrowaną magazyn kolumn:
 
 ```
 CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory
@@ -81,12 +80,12 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ```
 
-Tabele danych czasowych są reprezentowane w Eksploratorze obiektów przy użyciu określonej ikony w celu łatwiejszej identyfikacji podczas swojej tabeli historii jest wyświetlany jako węzeł podrzędny.
+Tabele danych czasowych są reprezentowane w Eksplorator obiektów z określoną ikoną ułatwiającą identyfikację, a jej tabela historii jest wyświetlana jako węzeł podrzędny.
 
 ![AlterTable](./media/sql-database-temporal-tables/AzureTemporal4.png)
 
-### <a name="alter-existing-table-to-temporal"></a>Instrukcja ALTER istniejącej tabeli danych czasowych
-Teraz obejmować alternatywny scenariusz, w którym tabeli WebsiteUserInfo już istnieje, ale nie jest przeznaczone do przechowywania historii zmian. W takim przypadku możesz po prostu rozszerzyć istniejącej tabeli, aby stać się danych czasowych, jak pokazano w poniższym przykładzie:
+### <a name="alter-existing-table-to-temporal"></a>Zmień istniejącą tabelę na czasowe
+Przyjrzyjmy się alternatywnemu scenariuszowi, w którym tabela WebsiteUserInfo już istnieje, ale nie została zaprojektowana w celu zachowania historii zmian. W takim przypadku można po prostu zwiększyć istniejącą tabelę, aby stała się okresem, jak pokazano w następującym przykładzie:
 
 ```
 ALTER TABLE WebsiteUserInfo 
@@ -106,24 +105,24 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ```
 
-## <a name="step-2-run-your-workload-regularly"></a>Krok 2: Regularnego uruchamiania obciążenia
-Główną zaletą tabele danych czasowych jest, nie trzeba zmienić lub dostosować witryny sieci Web w jakikolwiek sposób przeprowadzić śledzenie zmian. Po utworzeniu tabele danych czasowych przezroczyste zachować poprzednie wersje wiersza za każdym razem, gdy wykonujesz modyfikacji danych w. 
+## <a name="step-2-run-your-workload-regularly"></a>Krok 2: Regularnie uruchamiaj obciążenia
+Główną zaletą tabel danych czasowych jest to, że nie trzeba zmieniać ani dostosowywać witryny sieci Web w taki sposób, aby można było wykonywać śledzenie zmian. Po utworzeniu tabele danych czasowych w sposób przezroczysty zachowują poprzednie wersje wierszy za każdym razem, gdy dokonywane są modyfikacje w przypadku zmian. 
 
-Aby można było korzystać z automatycznego śledzenia zmian dla tego scenariusza, po prostu zaktualizujmy kolumny **PagesVisited** za każdym razem, gdy użytkownik kończy sesję w witrynie internetowej:
+Aby skorzystać z automatycznego śledzenia zmian w tym konkretnym scenariuszu, należy po prostu zaktualizować kolumnę **PagesVisited** za każdym razem, gdy użytkownik skończy swoją sesję w witrynie sieci Web:
 
 ```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 
 WHERE [UserID] = 1;
 ```
 
-Należy zauważyć, zapytanie aktualizujące nie trzeba znać dokładny czas podczas bieżącej operacji wystąpił, ani w jaki sposób dane historyczne zostaną zachowane dla przyszłej analizy. Aspekty obu automatycznie są obsługiwane przez usługę Azure SQL Database. Na poniższym diagramie przedstawiono, jak dane historii jest generowany po każdej aktualizacji.
+Należy zauważyć, że zapytanie Update nie musi znać dokładnego czasu podczas rzeczywistej operacji, ani sposobu, w jaki dane historyczne zostaną zachowane do przyszłej analizy. Oba aspekty są automatycznie obsługiwane przez Azure SQL Database. Na poniższym diagramie przedstawiono sposób generowania danych historii dla każdej aktualizacji.
 
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
-## <a name="step-3-perform-historical-data-analysis"></a>Krok 3: Analizowanie danych historycznych
-Teraz po włączeniu danych czasowych system-versioning analiza danych historycznych jest tylko jedno zapytanie od użytkownika. W tym artykule, firma Microsoft zapewnia kilka przykładów, które dotyczą typowych scenariuszy analizy — Poznaj wszystkie szczegóły, Poznaj różne opcje wprowadzone w programie [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) klauzuli.
+## <a name="step-3-perform-historical-data-analysis"></a>Krok 3: Wykonywanie analizy danych historycznych
+Teraz, gdy jest włączone okresowe wersje systemu, analiza danych historycznych jest tylko jedną kwerendą od użytkownika. W tym artykule przedstawimy kilka przykładów dotyczących typowych scenariuszy analizy — aby poznać wszystkie szczegóły, zapoznaj się z różnymi opcjami wprowadzonymi za pomocą klauzuli [for SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) .
 
-Aby wyświetlić najważniejsze 10 użytkowników, uporządkowane według liczby odwiedzanych witryn sieci web, począwszy od godzinę temu, uruchom to zapytanie:
+Aby zobaczyć 10 najważniejszych użytkowników zamówionych przez liczbę odwiedzonych stron sieci Web w ciągu godziny temu, uruchom następujące zapytanie:
 
 ```
 DECLARE @hourAgo datetime2 = DATEADD(HOUR, -1, SYSUTCDATETIME());
@@ -131,9 +130,9 @@ SELECT TOP 10 * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME AS OF @hourAgo
 ORDER BY PagesVisited DESC
 ```
 
-Można łatwo modyfikować to zapytanie do analizowania odwiedzin witryny, począwszy od wczoraj, miesiąc temu lub w dowolnym momencie w przeszłości chcesz.
+Możesz łatwo zmodyfikować to zapytanie, aby przeanalizować wizyty w witrynie na dzień temu, miesiąc temu lub w dowolnym miejscu w przeszłości.
 
-Aby wykonać podstawowe analizy statystycznej z poprzedniego dnia, skorzystaj z następującego przykładu:
+Aby przeprowadzić podstawową analizę statystyczną dla poprzedniego dnia, użyj poniższego przykładu:
 
 ```
 DECLARE @twoDaysAgo datetime2 = DATEADD(DAY, -2, SYSUTCDATETIME());
@@ -147,7 +146,7 @@ FOR SYSTEM_TIME BETWEEN @twoDaysAgo AND @aDayAgo
 GROUP BY UserId
 ```
 
-Aby wyszukać działania określonego użytkownika w danym okresie czasu, użyj klauzuli zawarte w:
+Aby wyszukać działania określonego użytkownika w danym okresie, użyj klauzuli ZAWARTEj w:
 
 ```
 DECLARE @hourAgo datetime2 = DATEADD(HOUR, -1, SYSUTCDATETIME());
@@ -157,12 +156,12 @@ FOR SYSTEM_TIME CONTAINED IN (@twoHoursAgo, @hourAgo)
 WHERE [UserID] = 1;
 ```
 
-Graficzna wizualizacja jest szczególnie wygodne w przypadku czasowych zapytań, ponieważ można pokazać trendów i wzorców użytkowania w intuicyjny sposób bardzo łatwe:
+Wizualizacja graficzna jest szczególnie przydatna w przypadku zapytań czasowych, ponieważ można łatwo pokazać trendy i wzorce użycia w intuicyjny sposób:
 
 ![TemporalGraph](./media/sql-database-temporal-tables/AzureTemporal6.png)
 
-## <a name="evolving-table-schema"></a>Stale rosnących potrzeb schematu tabeli
-Zazwyczaj należy zmienić schemat tabeli danych czasowych, gdy robią opracowywania aplikacji. W tym wystarczy uruchomić regularne instrukcji ALTER TABLE instrukcji i Azure SQL Database zostaną odpowiednio propagujące zmiany do tabeli historii. Poniższy skrypt pokazuje, jak dodać dodatkowe atrybutu dla śledzenia:
+## <a name="evolving-table-schema"></a>Rozwijanie schematu tabeli
+Zwykle podczas tworzenia aplikacji należy zmienić schemat tabeli danych czasowych. W tym celu po prostu uruchom regularne instrukcje ALTER TABLE, a Azure SQL Database odpowiednio propagują zmiany do tabeli historii. Poniższy skrypt pokazuje, jak dodać dodatkowy atrybut do śledzenia:
 
 ```
 /*Add new column for tracking source IP address*/
@@ -170,7 +169,7 @@ ALTER TABLE dbo.WebsiteUserInfo
 ADD  [IPAddress] varchar(128) NOT NULL CONSTRAINT DF_Address DEFAULT 'N/A';
 ```
 
-Podobnie można zmienić definicji kolumny, gdy obciążenie jest aktywna:
+Analogicznie, można zmienić definicję kolumny, gdy obciążenie jest aktywne:
 
 ```
 /*Increase the length of name column*/
@@ -178,7 +177,7 @@ ALTER TABLE dbo.WebsiteUserInfo
     ALTER COLUMN  UserName nvarchar(256) NOT NULL;
 ```
 
-Na koniec można usunąć kolumny, które nie są już potrzebne.
+Na koniec można usunąć kolumnę, która nie jest już potrzebna.
 
 ```
 /*Drop unnecessary column */
@@ -186,16 +185,16 @@ ALTER TABLE dbo.WebsiteUserInfo
     DROP COLUMN TemporaryColumn; 
 ```
 
-Alternatywnie można użyć najnowszej [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) zmiany schematu tabeli danych czasowych, gdy są połączone z bazą danych (tryb online) lub jako część projektu bazy danych (tryb offline).
+Alternatywnie możesz użyć najnowszej [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) , aby zmienić czasowy schemat tabeli podczas połączenia z bazą danych (tryb online) lub jako część projektu bazy danych (tryb offline).
 
-## <a name="controlling-retention-of-historical-data"></a>Kontrolowanie przechowywaniem danych historycznych
-Za pomocą tabelach danych czasowych z systemową obsługą tabeli historii może zwiększyć rozmiar bazy danych, więcej niż regularne tabel. Tabelę historii duże i nieustannie rosnących zasobów może stać się problemem zarówno ze względu na koszty magazynowania czyste, a także nakładające wydajności podatek od danych czasowych zapytań. W związku z tym tworzenie zasad przechowywania danych do zarządzania danymi w tabeli historii jest istotnym elementem planowania i zarządzania cyklem życia w każdej tabeli danych czasowych. Usługa Azure SQL Database masz następujących podejść do zarządzania danych historycznych w tabeli danych czasowych:
+## <a name="controlling-retention-of-historical-data"></a>Kontrolowanie przechowywania danych historycznych
+W przypadku tabel danych czasowych z systemową obsługą wersji w tabeli historii może być zwiększana wartość rozmiaru większej niż tabele zwykłe. Duża i coraz większa tabela historii może stać się problemem zarówno ze względu na czyste koszty magazynowania, jak i nakładania podatku za wykonywanie zapytań czasowych. Tym samym, opracowywanie zasad przechowywania danych na potrzeby zarządzania danymi w tabeli historii jest ważnym aspektem planowania i zarządzania cyklem życia każdej tabeli danych czasowych. Korzystając z Azure SQL Database, istnieją następujące podejścia do zarządzania danymi historycznymi w tabeli danych czasowych:
 
 * [Partycjonowanie tabel](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_2)
-* [Skrypt czyszczący niestandardowe](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
+* [Niestandardowy skrypt czyszczący](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji o tabelach danych czasowych, zobacz zapoznaj się z [tabele danych czasowych](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables).
-- Można znaleźć w witrynie Channel 9, aby usłyszeć [Historia sukcesu wdrożenia danych czasowych rzeczywiste](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) i obejrzyj [danych czasowych pokaz na żywo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
+- Aby uzyskać więcej informacji o tabelach danych czasowych, zobacz Wyewidencjonowywanie [tabel](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables)danych czasowych.
+- Odwiedź stronę Channel 9, aby poznać [rzeczywistą historię sukcesów wykonywania](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) danych czasowych klienta i Obejrzyj prezentację czasową na [żywo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
 

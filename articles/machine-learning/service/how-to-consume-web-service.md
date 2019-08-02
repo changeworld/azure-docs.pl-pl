@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 070dd07aa6705e97a532bdc5f53a08a9abe0f83d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7799b62b2c330610663e361bbb3930340b1ebdaf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361014"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726286"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
@@ -37,8 +37,10 @@ Ogólny przepływ pracy służący do tworzenia klienta korzystającego z usług
 
 Klasa [Azure. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) zawiera informacje potrzebne do utworzenia klienta. Następujące `Webservice` właściwości są przydatne podczas tworzenia aplikacji klienckiej:
 
-* `auth_enabled` — Jeśli włączono uwierzytelnianie `True`; w przeciwnym razie `False`.
+* `auth_enabled`-Jeśli jest włączone `True`uwierzytelnianie klucza; `False`w przeciwnym razie.
+* `token_auth_enabled`-Jeśli uwierzytelnianie tokenu jest włączone, `True`w przeciwnym razie `False`,.
 * `scoring_uri` Adres interfejsu API REST.
+
 
 Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługami sieci web:
 
@@ -67,7 +69,15 @@ Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługa
     print(service.scoring_uri)
     ```
 
-### <a name="authentication-key"></a>Klucz uwierzytelniania
+### <a name="authentication-for-services"></a>Uwierzytelnianie dla usług
+
+Azure Machine Learning zapewnia dwa sposoby kontroli dostępu do usług sieci Web. 
+
+|Metoda uwierzytelniania|ACI|AKS|
+|---|---|---|
+|Klucz|Domyślnie wyłączone| Włączona domyślnie|
+|Token| Niedostępne| Domyślnie wyłączone |
+#### <a name="authentication-with-keys"></a>Uwierzytelnianie przy użyciu kluczy
 
 Po włączeniu uwierzytelniania dla wdrożenia automatycznie tworzone są klucze uwierzytelniania.
 
@@ -85,6 +95,26 @@ print(primary)
 
 > [!IMPORTANT]
 > Jeśli konieczne jest ponowne wygenerowanie klucza, użyj [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+
+
+#### <a name="authentication-with-tokens"></a>Uwierzytelnianie przy użyciu tokenów
+
+Po włączeniu uwierzytelniania tokenów dla usługi sieci Web użytkownik musi podać Azure Machine Learning token JWT do usługi sieci Web, aby uzyskać do niej dostęp. 
+
+* Uwierzytelnianie tokenu jest domyślnie wyłączone podczas wdrażania w usłudze Azure Kubernetes Service.
+* Uwierzytelnianie tokenu nie jest obsługiwane w przypadku wdrażania do Azure Container Instances.
+
+Aby kontrolować uwierzytelnianie tokenu, użyj `token_auth_enabled` parametru podczas tworzenia lub aktualizowania wdrożenia.
+
+Jeśli jest włączone uwierzytelnianie tokenu, można użyć `get_token` metody, aby pobrać token okaziciela i czas wygaśnięcia tokenów:
+
+```python
+token, refresh_by = service.get_tokens()
+print(token)
+```
+
+> [!IMPORTANT]
+> Po upływie `refresh_by` czasu tokenu trzeba będzie zażądać nowego tokenu. 
 
 ## <a name="request-data"></a>Żądanie danych
 

@@ -10,16 +10,15 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
-manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: 59088ad53e923f1303c0e800df9c25f70e63812f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ddcac56671e145728f02d31bf23c657ea172e4c0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60701929"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567650"
 ---
-# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Szybki start: Konfigurowanie maszyny Wirtualnej platformy Azure, nawiązać połączenia z bazą danych wystąpienia zarządzanego Azure SQL
+# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Szybki start: Konfigurowanie maszyny wirtualnej platformy Azure do nawiązywania połączenia z wystąpieniem zarządzanym Azure SQL Database
 
 Ten przewodnik Szybki Start dowiesz się, jak skonfigurować maszynę wirtualną platformy Azure, nawiązać połączenia z bazą danych wystąpienia zarządzanego Azure SQL przy użyciu programu SQL Server Management Studio (SSMS). Aby uzyskać szybki start przedstawiający sposób nawiązywania połączeń z poziomu komputera klienckiego w środowisku lokalnym za pomocą połączenia punkt lokacja, zobacz [Konfigurowanie połączenia typu punkt lokacja](sql-database-managed-instance-configure-p2s.md)
 
@@ -84,7 +83,7 @@ Najprostszym sposobem utworzenia maszyny wirtualnej klienta za pomocą wszystkie
    |**Hasło**|Dowolne prawidłowe hasło|Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>To hasło jest używane wtedy, gdy [nawiązać połączenie z maszyną Wirtualną](#connect-to-virtual-machine).|
    | **Rozmiar maszyny wirtualnej** | Wszelkie prawidłowy rozmiar | Wartość domyślna, w tym szablonie o **Standard_B2s** jest wystarczająca na potrzeby tego przewodnika Szybki Start. |
    | **Lokalizacja**|[resourceGroup () .location].| Nie zmieniaj tej wartości. |
-   | **Nazwa sieci wirtualnej**|Sieć wirtualna, w którym utworzono wystąpienie zarządzane.|
+   | **Nazwa sieci wirtualnej**|Sieć wirtualna, w której utworzono wystąpienie zarządzane.|
    | **Nazwa podsieci**|Nazwa podsieci, który został utworzony w poprzedniej procedurze| Nie wybieraj podsieci, w której utworzono wystąpienie zarządzane.|
    | **Artefakty lokalizacji** | [.properties.templateLink.uri wdrożenia ()] | Nie zmieniaj tej wartości. |
    | **token sygnatury dostępu współdzielonego lokalizacji artefaktów** | Pozostaw to pole puste | Nie zmieniaj tej wartości. |
@@ -98,7 +97,7 @@ Najprostszym sposobem utworzenia maszyny wirtualnej klienta za pomocą wszystkie
 5. Wybierz ikonę **Powiadomienia**, aby wyświetlić stan wdrożenia.
 
 > [!IMPORTANT]
-> Nie należy przechodzić do około 15 minut po utworzeniu maszyny wirtualnej, aby zapewnić czas na skrypty po utworzeniu zainstalować program SQL Server Management Studio.
+> Nie należy kontynuować do 15 minut po utworzeniu maszyny wirtualnej, aby zapewnić czas na zainstalowanie SQL Server Management Studio skryptów po utworzeniu.
 
 ## <a name="connect-to-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 

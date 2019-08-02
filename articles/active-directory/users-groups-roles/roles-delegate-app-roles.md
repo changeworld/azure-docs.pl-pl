@@ -1,6 +1,6 @@
 ---
-title: Delegowanie ról administratora aplikacji — Azure Active Directory | Dokumentacja firmy Microsoft
-description: Zarządzanie dostępem do aplikacji, delegowanie ról, aby przyznać prawa uprawnień w usłudze Azure Active Directory
+title: Delegowanie uprawnień do tworzenia i zarządzania administratorami aplikacji — Azure Active Directory | Microsoft Docs
+description: Przyznawanie uprawnień do zarządzania dostępem do aplikacji w Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,95 +10,94 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 07/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 896bd7f9af3c319ec4190131036d8aa8ee49bb79
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469132"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705432"
 ---
-# <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Delegowanie ról administratora aplikacji w usłudze Azure Active Directory
+# <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegowanie uprawnień rejestracji aplikacji w Azure Active Directory
 
- Usługa Azure AD umożliwia delegowanie zarządzania dostęp do aplikacji zestaw wbudowanych ról administracyjnych. Oprócz administratora globalnego obciążenie, delegowanie specjalne uprawnienia, aby zarządzać zadaniami dostępu do aplikacji można zwiększyć poziom bezpieczeństwa i zmniejszyć ryzyko uzyskania nieautoryzowanego dostępu. Delegowanie problemy i ogólne wytyczne, które zostały omówione w [delegowanie administracji w usłudze Azure Active Directory](roles-concept-delegation.md).
+W tym artykule opisano sposób korzystania z uprawnień aplikacji w rolach niestandardowych w usłudze Azure Active Directory (Azure AD) w celu rozwiązania potrzeb związanych z zarządzaniem aplikacjami. Azure Active Directory (Azure AD) umożliwia delegowanie uprawnień do tworzenia aplikacji i zarządzania nimi w następujący sposób:
 
-## <a name="delegate-app-administration"></a>Delegowanie administracji w aplikacji
+- [Ograniczenie użytkowników, którzy mogą tworzyć aplikacje](#restrict-who-can-create-applications) i zarządzać tworzonymi przez nie aplikacjami. Domyślnie w usłudze Azure AD wszyscy użytkownicy mogą rejestrować rejestracje aplikacji i zarządzać wszystkimi aspektami tworzonych przez nie aplikacji. Może to być ograniczone tylko do wybranych osób, które mają uprawnienia.
+- [Przypisywanie jednego lub większej liczby właścicieli do aplikacji](#assign-application-owners). Jest to prosty sposób udzielenia komuś możliwości zarządzania wszystkimi aspektami konfiguracji usługi Azure AD dla określonej aplikacji.
+- [Przypisanie wbudowanej roli administracyjnej](#assign-built-in-application-admin-roles) , która przyznaje dostęp do zarządzania konfiguracją w usłudze Azure AD dla wszystkich aplikacji. Jest to zalecany sposób udzielania ekspertom IT dostępu do zarządzania szerokimi uprawnieniami konfiguracji aplikacji bez udzielania dostępu do zarządzania innymi częściami usługi Azure AD niezwiązanych z konfiguracją aplikacji.
+- [Tworzenie roli niestandardowej](#create-and-assign-a-custom-role) Definiowanie bardzo konkretnych uprawnień i przypisywanie jej do zakresu jednej aplikacji jako ograniczonej właściciela lub zakresu katalogu (wszystkie aplikacje) jako ograniczonego administratora.
 
-Następujące role przyznać uprawnienia do zarządzania rejestracje aplikacji, ustawień rejestracji jednokrotnej, użytkownika i przypisania grupy i wyrazić zgodę na delegowane uprawnienia i uprawnienia aplikacji (z wyjątkiem programu Microsoft Graph i Azure AD Graph). Jedyna różnica polega na tym, że roli administratora aplikacji również przyznaje uprawnienia do zarządzania ustawieniami serwera Proxy aplikacji. Żadna rola daje możliwość zarządzania ustawieniami dostępu warunkowego.
-> [!IMPORTANT]
-> Użytkownicy przypisani do tej roli można dodać poświadczeń do aplikacji i spersonifikować tożsamości aplikacji przy użyciu tych poświadczeń. Ta personifikacji tożsamości aplikacji może być podniesienie uprawnień za pośrednictwem co użytkownik może zrobić w obszarze swoje przypisania roli w usłudze Azure AD. Użytkownicy przypisani do tej roli mogą potencjalnie utworzyć lub zaktualizować użytkowników lub innych obiektów podczas personifikacji aplikacji.
+Ważne jest, aby rozważyć udzielenie dostępu przy użyciu jednej z powyższych metod z dwóch przyczyn. Po pierwsze Delegowanie możliwości wykonywania zadań administracyjnych zmniejsza obciążenie administratora globalnego. Po drugie użycie ograniczonych uprawnień usprawnia stan zabezpieczeń i zmniejsza możliwości nieautoryzowanego dostępu. Zagadnienia dotyczące delegowania i ogólne wytyczne zostały omówione w temacie [delegowanie administracji w Azure Active Directory](roles-concept-delegation.md).
 
-Aby udzielić możliwość zarządzania dostęp do aplikacji w witrynie Azure portal:
+## <a name="restrict-who-can-create-applications"></a>Ogranicz, kto może tworzyć aplikacje
 
-1. Zaloguj się do Twojej [dzierżawy usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) przy użyciu konta, który kwalifikuje się do roli administratora globalnego w dzierżawie.
-2. Jeśli masz wystarczające uprawnienia, otwórz [strony role i Administratorzy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators).
-3. Otwórz jeden z następujących ról, aby wyświetlić jej przypisaniami do elementu członkowskiego:
-   * **Administrator aplikacji**
-   * **Administrator aplikacji w chmurze**
-4. Na **członków** strony dla tej roli, wybierz opcję **Dodawanie elementu członkowskiego**.
-5. Wybierz co najmniej jednego członka do dodania do roli. <!--Members can be users or groups.-->
+Domyślnie w usłudze Azure AD wszyscy użytkownicy mogą rejestrować rejestracje aplikacji i zarządzać wszystkimi aspektami tworzonych przez nie aplikacji. Wszyscy mogą również wyrazić zgodę na aplikacje uzyskujące dostęp do danych firmy w ich imieniu. Możesz wybrać opcję selektywnego przydzielenia tych uprawnień przez ustawienie przełączników globalnych na wartość "No" (nie) i dodanie wybranych użytkowników do roli Deweloper aplikacji.
 
-Możesz wyświetlić opis dla tych ról w [dostępnych ról](directory-assign-admin-roles.md#available-roles).
+### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>Aby wyłączyć domyślną możliwość tworzenia rejestracji aplikacji lub wyrażania zgody na aplikacje
 
-## <a name="delegate-app-registration"></a>Delegowanie rejestracji aplikacji
+1. Zaloguj się do swojej organizacji usługi Azure AD przy użyciu konta uprawniającego do roli administratora globalnego w organizacji usługi Azure AD.
+1. Po uzyskaniu wystarczających uprawnień Ustaw jedną lub obie następujące czynności:
 
-Domyślnie wszyscy użytkownicy mogą tworzyć rejestracje aplikacji, ale można selektywnie udzielić uprawnień do tworzenia aplikacji rejestracji lub uprawnień do wyrażenia zgody, aby autoryzować aplikację.
+    - Na [stronie Ustawienia użytkownika organizacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)ustaw opcję **Użytkownicy mogą rejestrować aplikacje** na wartość nie. Spowoduje to wyłączenie domyślnej możliwości tworzenia rejestracji aplikacji przez użytkowników.
+    - Na stronie [Ustawienia użytkownika dla aplikacji dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)ustaw, aby **użytkownicy mogli wyrazić zgodę na aplikacje uzyskujące dostęp do danych firmy w ich imieniu** na wartość nie. Dzięki temu użytkownicy będą mogli wyrazić zgodę na aplikacje uzyskujące dostęp do danych firmy w ich imieniu.
 
-1. Zaloguj się do Twojej [dzierżawy usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) przy użyciu konta, który kwalifikuje się do roli administratora globalnego w dzierżawie.
-2. Po uzyskaniu odpowiednich uprawnień, należy ustawić jeden lub oba z następujących czynności:
-   * Na [strona Ustawienia użytkownika dla Twojej dzierżawy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)ustaw **użytkownicy mogą rejestrować aplikacje** na nie.
-   * Na [ustawienia użytkownika dla aplikacji korporacyjnych](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)ustaw **użytkownicy mogą wyrazić zgodę aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu** na nie.
-3. Następnie Przypisz użytkowników, którzy tego uprawnienia, aby być członkami roli dla deweloperów aplikacji, zgodnie z potrzebami.
+### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>Udzielanie osobnych uprawnień do tworzenia i wyrażania zgody na aplikacje, gdy domyślna możliwość jest wyłączona
 
-Gdy użytkownik rejestruje aplikację, ich są automatycznie dodawane jako pierwszy właściciela aplikacji.
+Przypisz rolę Deweloper aplikacji, aby umożliwić tworzenie rejestracji aplikacji, gdy ustawienie **Użytkownicy mogą rejestrować aplikacje** jest ustawione na wartość nie. Ta rola przyznaje także uprawnienia do wyrażania zgody w imieniu użytkownika, gdy **Użytkownicy będą mogli wyrazić zgodę na aplikacje uzyskujące dostęp do danych firmy w ich imieniu** . Jako zachowanie systemowe, gdy użytkownik tworzy nową rejestrację aplikacji, są one automatycznie dodawane jako pierwszy właściciel. Uprawnienia własności umożliwiają użytkownikowi zarządzanie wszystkimi aspektami rejestracji aplikacji lub aplikacji korporacyjnych.
 
-## <a name="delegate-app-ownership"></a>Delegowanie własności aplikacji
+## <a name="assign-application-owners"></a>Przypisywanie właścicieli aplikacji
 
-Właścicieli aplikacji i rejestracji aplikacji każdego zarządzalnych tylko aplikacje lub rejestracje aplikacji, które są właścicielami. Na przykład po dodaniu właściciel aplikacji Salesforce, tego właściciela i można zarządzać dostęp do konfiguracji dla usług Salesforce, ale nie wszystkie inne aplikacje. Aplikacja może mieć wielu właścicieli, a użytkownik może być właścicielem wiele aplikacji.
+Przypisywanie właścicieli to prosty sposób na umożliwienie zarządzania wszystkimi aspektami konfiguracji usługi Azure AD na potrzeby rejestracji aplikacji lub aplikacji korporacyjnych. Jako zachowanie systemowe, gdy użytkownik tworzy nową rejestrację aplikacji, jest automatycznie dodawana jako pierwszy właściciel. Uprawnienia własności umożliwiają użytkownikowi zarządzanie wszystkimi aspektami rejestracji aplikacji lub aplikacji korporacyjnych. Oryginalny właściciel można usunąć i można dodać dodatkowych właścicieli.
 
-Właściciel aplikacji może:
+### <a name="enterprise-application-owners"></a>Właściciele aplikacji dla przedsiębiorstw
 
-* Zmień właściwości aplikacji, takie jak nazwa i uprawnienia żądań aplikacji
-* Zarządzanie poświadczeniami
-* Konfigurowanie logowania jednokrotnego
-* Przypisywanie dostępu użytkownika
-* Dodawanie lub usuwanie innych właścicieli
-* Edytuj manifest aplikacji
-* Opublikuj aplikację w galerii aplikacji
+Jako właściciel użytkownik może zarządzać konfiguracją aplikacji przedsiębiorstwa, taką jak konfiguracja logowania jednokrotnego, Inicjowanie obsługi administracyjnej i przypisania użytkowników. Właściciel może również dodawać i usuwać innych właścicieli. W przeciwieństwie do administratorów globalnych właściciele mogą zarządzać tylko tymi aplikacjami przedsiębiorstwa.
+
+W niektórych przypadkach aplikacje dla przedsiębiorstw utworzone za pomocą galerii aplikacji obejmują zarówno aplikację przedsiębiorstwa, jak i rejestrację aplikacji. Jeśli ta wartość jest prawdziwa, Dodawanie właściciela do aplikacji przedsiębiorstwa automatycznie dodaje właściciela do odpowiedniej rejestracji aplikacji jako właściciel.
+
+### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Aby przypisać właściciela do aplikacji dla przedsiębiorstw
+
+1. Zaloguj się do [swojej organizacji usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)przy użyciu konta uprawniającego do administratora aplikacji lub administratora aplikacji w chmurze w organizacji.
+1. Na [stronie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) rejestracje aplikacji organizacji wybierz aplikację, aby otworzyć stronę przegląd dla aplikacji.
+1. Wybierz pozycję **właściciele** , aby wyświetlić listę właścicieli aplikacji.
+1. Wybierz pozycję **Dodaj** , aby wybrać co najmniej jednego właściciela, który ma zostać dodany do aplikacji.
 
 > [!IMPORTANT]
-> Użytkownicy przypisani do tej roli można dodać poświadczeń do aplikacji i spersonifikować tożsamości aplikacji przy użyciu tych poświadczeń. Ta personifikacji tożsamości aplikacji może być podniesienie uprawnień za pośrednictwem co użytkownik może zrobić w obszarze swoje przypisania roli w usłudze Azure AD. Użytkownicy przypisani do tej roli mogą potencjalnie utworzyć lub zaktualizować użytkowników lub innych obiektów podczas personifikacji aplikacji.
+> Użytkownicy i podmioty usługi mogą być właścicielami rejestracji aplikacji. Tylko użytkownicy mogą być właścicielami aplikacji przedsiębiorstwa. Grupy nie mogą być przypisane jako właściciele jednego z nich.
+>
+> Właściciele mogą dodawać poświadczenia do aplikacji i używać tych poświadczeń do personifikacji tożsamości aplikacji. Aplikacja może mieć więcej uprawnień niż właściciel i w ten sposób mieć podniesienie uprawnień do tego, co właściciel ma dostęp jako nazwę główną użytkownika lub usługi. Właściciel aplikacji może potencjalnie utworzyć lub zaktualizować użytkowników lub inne obiekty, jednocześnie personifikując aplikację, w zależności od uprawnień aplikacji.
 
-Właściciel rejestracji aplikacji można wyświetlać i edytować rejestracji aplikacji.
+## <a name="assign-built-in-application-admin-roles"></a>Przypisywanie wbudowanych ról administratora aplikacji
 
-<!-- ### To assign an enterprise app ownership role to a user
+Usługa Azure AD ma zestaw wbudowanych ról administracyjnych służących do udzielania dostępu do zarządzania konfiguracją w usłudze Azure AD dla wszystkich aplikacji. Te role są zalecanym sposobem przyznania ekspertom IT dostępu do zarządzania szerokimi uprawnieniami konfiguracji aplikacji bez udzielania dostępu do zarządzania innymi częściami usługi Azure AD niezwiązanych z konfiguracją aplikacji.
 
-1. Sign in to your [Azure AD tenant](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) with an account that is the Global Administrator for the tenant.
-2. On the [Roles and administrators page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators), open one of the following roles to see its member assignments:
-  * **Enterprise Application Owner**
-  * **Application Registration Owner**
-3. On the **Members** page for the role, select **Add member**.
-4. Select one or more members to add to the role. -->
+- Administrator aplikacji: Użytkownicy w tej roli mogą tworzyć wszystkie aspekty aplikacji przedsiębiorstwa, rejestracji aplikacji i ustawień serwera proxy aplikacji oraz zarządzać nimi. Ta rola umożliwia również zgodę na uprawnienia delegowane i uprawnienia aplikacji z wyłączeniem Microsoft Graph i Azure AD Graph. Użytkownicy przypisani do tej roli nie są dodawani jako właściciele podczas tworzenia nowych rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
+- Administrator aplikacji w chmurze: Użytkownicy w tej roli mają takie same uprawnienia jak rola administratora aplikacji, z wyłączeniem możliwości zarządzania serwerem proxy aplikacji. Użytkownicy przypisani do tej roli nie są dodawani jako właściciele podczas tworzenia nowych rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
 
-### <a name="to-assign-an-owner-to-an-application"></a>Aby przypisać właściciela aplikacji
+Aby uzyskać więcej informacji i wyświetlić opis tych ról, zobacz [dostępne role](directory-assign-admin-roles.md#available-roles).
 
-1. Zaloguj się do Twojej [dzierżawy usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) przy użyciu konta, który kwalifikuje się do aplikacji administrator lub administrator aplikacji w chmurze dla dzierżawy.
-2. Na [stronie rejestracji aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) dla dzierżawy, wybierz aplikację, aby otworzyć **Przegląd** strony aplikacji.
-3. Wybierz **właścicieli** Aby wyświetlić listę właścicieli dla aplikacji.
-4. Wybierz **Dodaj** wybrać co najmniej jednego właściciela, aby dodać do aplikacji.
+Postępuj zgodnie z instrukcjami podanymi w temacie [Assign role to users with Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md) przewodnik, aby przypisać rolę administratora aplikacji lub administratora aplikacji w chmurze.
 
-### <a name="to-assign-an-owner-to-an-application-registration"></a>Przypisywanie właściciela do rejestracji aplikacji
+> [!IMPORTANT]
+> Administratorzy aplikacji i Administratorzy aplikacji w chmurze mogą dodawać poświadczenia do aplikacji i używać tych poświadczeń do personifikacji tożsamości aplikacji. Aplikacja może mieć uprawnienia, które są podniesieniem uprawnień za pośrednictwem uprawnień roli administratora. Administrator w tej roli może potencjalnie utworzyć lub zaktualizować użytkowników lub inne obiekty podczas personifikacji aplikacji, w zależności od uprawnień aplikacji.
+> Żadna rola nie przyznaje możliwości zarządzania ustawieniami dostępu warunkowego.
 
-1. Zaloguj się do Twojej [dzierżawy usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) przy użyciu konta, który kwalifikuje się do administratora aplikacji lub roli administratora aplikacji chmury w dzierżawie.
-2. Jeśli masz wystarczające uprawnienia na [strony aplikacji dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) dla dzierżawy, wybierz opcję rejestracji aplikacji, aby go otworzyć.
-3. Wybierz **ustawienia**.
-4. Wybierz **właścicieli** na **ustawienia** strony, aby zapoznać się z listą właścicieli dla aplikacji.
-5. Wybierz **właściciela Dodaj** wybrać co najmniej jednego właściciela, aby dodać do aplikacji.
+## <a name="create-and-assign-a-custom-role"></a>Tworzenie i przypisywanie roli niestandardowej
 
-## <a name="next-steps"></a>Kolejne kroki
+Tworzenie ról niestandardowych i przypisywanie ról niestandardowych są osobnymi krokami:
 
-* [Odwołanie do roli administratora usługi Azure AD](directory-assign-admin-roles.md)
+- [Utwórz niestandardową *definicję roli* ](roles-create-custom.md) i [Dodaj do niej uprawnienia z listy ustawień wstępnych](roles-custom-available-permissions.md). Są to te same uprawnienia, które są używane w rolach wbudowanych.
+- [Utwórz *przypisanie roli* ](roles-assign-graph.md) , aby przypisać rolę niestandardową.
+
+Ta separacja umożliwia utworzenie jednej definicji roli, a następnie przypisanie jej wiele razy w różnych *zakresach*. Rolę niestandardową można przypisać w zakresie całej organizacji lub można ją przypisać do zakresu, jeśli pojedynczy obiekt usługi Azure AD. Przykładem zakresu obiektu jest rejestracja pojedynczej aplikacji. Korzystając z różnych zakresów, można przypisać tę samą definicję roli do Sally przez wszystkie rejestracje aplikacji w organizacji, a następnie Naveen tylko na potrzeby rejestracji aplikacji w raportach wydatków firmy Contoso.
+
+Aby uzyskać więcej informacji na temat podstawowych ról niestandardowych, zobacz [Omówienie ról niestandardowych](roles-custom-overview.md), a także sposób [tworzenia roli niestandardowej](roles-create-custom.md) i sposobu przypisywania [roli](roles-assign-graph.md).
+
+## <a name="next-steps"></a>Następne kroki
+
+- [Podtypy rejestracji aplikacji i uprawnienia](roles-custom-available-permissions.md)
+- [Dokumentacja roli administratora usługi Azure AD](directory-assign-admin-roles.md)

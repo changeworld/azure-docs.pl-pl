@@ -1,20 +1,21 @@
 ---
 title: 'Azure Backup: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu interfejsu API REST'
 description: Zarządzanie operacjami tworzenia kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu interfejsu API REST
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: INTERFEJS API REST; Kopia zapasowa maszyny wirtualnej platformy Azure; Przywracanie maszyny wirtualnej platformy Azure;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: e78c7ca9e5b39beb160aeef96dbbf6bce07613e4
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 7a69fc7c9077fa10ddf808f1cd953f6739eabe20
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466835"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688723"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu Azure Backup za pośrednictwem interfejsu API REST
 
@@ -449,7 +450,7 @@ Zwraca dwie odpowiedzi: 202 (zaakceptowane) po utworzeniu innej operacji, a nast
 |204 NoContent     |         |  NoContent       |
 |202 zaakceptowane     |         |     Zaakceptowany    |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Przywróć dane z kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-arm-userestapi-restoreazurevms.md).
 

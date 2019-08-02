@@ -1,83 +1,83 @@
 ---
-title: Dodaj znacznik HTML do usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Jak dodać znacznik HTML do mapy Javascript
+title: Dodawanie znacznika HTML do Azure Maps | Microsoft Docs
+description: Jak dodać znacznik HTML do mapy JavaScript
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 1c812a77429e13ea39b2f4946043c13e10aaf097
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65777a87cd042a4d8b3b14255dbf99241cd42e18
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769672"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638755"
 ---
-# <a name="add-html-markers-to-the-map"></a>Dodaj znaczniki HTML do mapy
+# <a name="add-html-markers-to-the-map"></a>Dodawanie znaczników HTML do mapy
 
-W tym artykule przedstawiono sposób dodawania niestandardowego kodu HTML, takich jak plik obrazu do mapy jako znacznik HTML.
+W tym artykule opisano sposób dodawania niestandardowego kodu HTML, takiego jak plik obrazu do mapy, jako znacznika HTML.
 
 > [!NOTE]
-> Znaczniki HTML nie Podłączaj się do źródeł danych. Zamiast tego pozycję informacje są dodawane bezpośrednio do znacznika i znacznika jest dodawana do mapy `markers` właściwość, która jest [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest).
+> Znaczniki HTML nie łączą się ze źródłami danych. Zamiast tego informacje o pozycji są dodawane bezpośrednio do znacznika i znacznik jest dodawany do właściwości mapss `markers` , która jest [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest).
 
 > [!IMPORTANT]
-> W przeciwieństwie do większości warstw w kontrolki mapy platformy Azure w sieci Web, które używają WebGL renderowanie znaczniki HTML na użytek tradycyjnych elementów DOM renderowania. W efekcie więcej znaczników HTML dodane stroną więcej elementów modelu DOM, istnieją. Wydajność może się zmniejszyć po dodaniu kilku sto znaczników HTML. Dla większych zestawów danych należy wziąć pod uwagę klastrowanie danych albo za pomocą warstwy symboli lub bąbelka.
+> W przeciwieństwie do większości warstw w Azure Maps formancie sieci Web, który używa WebGL do renderowania, znaczniki HTML używają tradycyjnych elementów DOM do renderowania. W związku z tym więcej znaczników HTML dodano do strony, tym więcej elementów DOM. Wydajność może być gorsza po dodaniu kilku tysięcy znaczników HTML. W przypadku większych zestawów danych należy wziąć pod uwagę klastrowanie danych lub użycie symbolu lub warstwy bąbelkowej.
 
-## <a name="add-an-html-marker"></a>Dodaj znacznik HTML
+## <a name="add-an-html-marker"></a>Dodawanie znacznika HTML
 
-Klasa HtmlMarker ma domyślnego stylu. Możesz dostosować znacznika przez ustawienie opcji koloru i tekstu znacznika. Domyślny styl klasy HtmlMarker jest szablon SVG, który ma kolor i tekst symbolu zastępczego. Ustaw właściwości koloru i tekst w opcjach HtmlMarker szybkiego dostosowywania. 
+Klasa HtmlMarker ma styl domyślny. Znacznik można dostosować, ustawiając opcje koloru i tekstu znacznika. Domyślny styl klasy HtmlMarker to szablon SVG, który ma kolor i symbol zastępczy tekstu. Ustaw właściwości koloru i tekstu w opcjach HtmlMarker na potrzeby szybkiego dostosowywania. 
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Dodaj znacznik HTML do mapy' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>Dodaj znacznik HTML do mapy</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Dodawanie znacznika HTML do mapy' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>Dodaj znacznik HTML do mapy</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
+W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](./map-create.md) .
 
-Dodaje drugi blok kodu [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) na mapie za pomocą [znaczniki](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) właściwość [mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) klasy. HtmlMarker zostanie dodany do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, czy jest wyświetlana po mapy ładuje pełni.
+Drugi blok kodu dodaje [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) do mapy przy użyciu właściwości [znaczniki](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) klasy [map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) . HtmlMarker jest dodawany do mapy w funkcji detektora [zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , aby upewnić się, że jest ona wyświetlana po całkowitym załadowaniu mapy.
 
-## <a name="create-svg-templated-html-marker"></a>Utwórz oparte na szablonach znacznik HTML SVG
+## <a name="create-svg-templated-html-marker"></a>Tworzenie znacznika HTML z szablonem SVG
 
-Wartość domyślna `htmlContent` Html znacznika jest szablonem SVG z folderami miejscu `{color}` i `{text}` w nim. Można tworzyć niestandardowe ciągi SVG i Dodaj te symbole zastępcze w tej samej do użytkownika SVG w taki sposób, że ustawienie `color` i `text` opcje znacznika zaktualizować te symbole zastępcze w swojej SVG.
+Domyślnym `htmlContent` znacznikiem HTML jest szablon SVG z folderami `{color}` umieszczania i `{text}` w nim. Można utworzyć niestandardowe ciągi SVG i dodać te same symbole zastępcze do SVG, takie jak Ustawianie `color` opcji i `text` znacznika aktualizowanie tych symboli zastępczych w formacie SVG.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Znacznik HTML przy użyciu szablonu niestandardowego SVG' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/LXqMWx/'>znaczników HTML za pomocą szablonu niestandardowej SVG</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Znacznik HTML z niestandardowym szablonem SVG' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/LXqMWx/'>znacznik HTML</a> pióra z niestandardowym szablonem SVG<a href='https://codepen.io/azuremaps'>@azuremaps</a>, Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="add-a-css-styled-html-marker"></a>Dodaj arkusz CSS styl znacznika HTML
+## <a name="add-a-css-styled-html-marker"></a>Dodawanie znacznika HTML z stylem CSS
 
-Jedną z zalet znaczniki HTML zakłada, że wiele wspaniałych dostosowania, które można osiągnąć przy użyciu CSS. W tym przykładzie zawartość HtmlMarker składa się z HTML i CSS, Utwórz animowany numer pin, który rozwija się w miejscu i impulsów.
+Jedną z zalet znaczników HTML jest to, że istnieje wiele doskonałych dostosowań, które można osiągnąć przy użyciu CSS. W tym przykładzie zawartość HtmlMarker składa się z kodu HTML i CSS, który tworzy animowany numer PIN, który spadnie w miejscu i pulsie.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Źródło danych w formacie HTML' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/qJVgMx/'>HTML DataSource</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Źródło danych HTML' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/qJVgMx/'>Źródło danych HTML</a> pióra według Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="draggable-html-markers"></a>Przeciąganego znaczniki HTML
+## <a name="draggable-html-markers"></a>Przeciągnięte znaczniki HTML
 
-Niniejszy przykład pokazuje sposób wprowadzania przeciąganego znaczników HTML. Obsługa znaczników HTML `drag`, `dragstart` i `dragend` zdarzenia.
+Ten przykład pokazuje, jak sprawić, aby można było przeciągnąć znacznik HTML. Obsługa `drag` znacznikówHTML`dragend`izdarzeń. `dragstart`
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Przeciąganego znacznik HTML' src='//codepen.io/azuremaps/embed/wQZoEV/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/wQZoEV/'>przeciąganego znacznik HTML</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Przeciągany znacznik HTML' src='//codepen.io/azuremaps/embed/wQZoEV/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/wQZoEV/'>znacznik HTML</a> z przeciągnięciem piórem przez<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="add-mouse-events-to-html-markers"></a>Dodawanie zdarzeń myszy do znaczników HTML
 
-Te przykłady przedstawiają sposób dodawania myszy, a następnie przeciągnij zdarzenia do znacznik HTML.
+Te przykłady pokazują, jak dodać mysz i przeciągnąć zdarzenia do znacznika HTML.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Dodawanie zdarzeń myszy do znaczników HTML' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>Dodawanie zdarzeń myszy do znaczników HTML</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Dodawanie zdarzeń myszy do znaczników HTML' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>Dodawanie zdarzeń myszy do znaczników HTML</a> przez Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule:
+Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
 > [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
@@ -88,10 +88,10 @@ Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 > [!div class="nextstepaction"]
 > [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)
 
-Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły:
+Aby uzyskać więcej przykładów kodu do dodania do usługi Maps, zobacz następujące artykuły:
 
 > [!div class="nextstepaction"]
 > [Dodaj warstwę symboli](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę bąbelkowych](./map-add-bubble-layer.md)
+> [Dodaj warstwę bąbelkową](./map-add-bubble-layer.md)

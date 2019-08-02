@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 07/17/2019
+ms.date: 07/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: cbf642b47e4233cec2e2d860288b3bb35b419cf2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 7bb775184a0d567fedf9da07cee60e5ba5a2097f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304165"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562376"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Załaduj dane z Azure Data Lake Storage do SQL Data Warehouse
 Użyj wielobazowych tabel zewnętrznych do ładowania danych z Azure Data Lake Storage do Azure SQL Data Warehouse. Mimo że można uruchamiać zapytania ad hoc dotyczące danych przechowywanych w Data Lake Storage, zalecamy zaimportowanie danych do SQL Data Warehouse w celu uzyskania najlepszej wydajności.
@@ -32,20 +32,16 @@ Zanim rozpoczniesz ten samouczek, pobierz i zainstaluj najnowszą wersję progra
 
 Aby uruchomić ten samouczek, potrzebne są:
 
-* Azure Active Directory aplikacji, która ma być używana do uwierzytelniania między usługami w przypadku ładowania z Gen1. Aby utworzyć, postępuj zgodnie z [uwierzytelnianiem usługi Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
-
->[!NOTE] 
-> W przypadku ładowania z programu Azure Data Lake Storage Gen1 należy mieć wartość identyfikator klienta, klucz i punkt końcowy tokenu OAuth 2.0 aplikacji Active Directory, aby połączyć się z kontem magazynu z SQL Data Warehouse. Szczegóły dotyczące pobierania tych wartości znajdują się w powyższym połączeniu. Na potrzeby rejestracji aplikacji Azure Active Directory użyj identyfikatora aplikacji jako identyfikatora klienta.
-> 
+* Azure Active Directory aplikacji do użycia na potrzeby uwierzytelniania między usługami. Aby utworzyć, postępuj zgodnie z [uwierzytelnianiem usługi Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 * Azure SQL Data Warehouse. Zobacz [Tworzenie i wykonywanie zapytań oraz Azure SQL Data Warehouse](create-data-warehouse-portal.md).
 
 * Konto Data Lake Storage. Zobacz [wprowadzenie do Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). 
 
 ##  <a name="create-a-credential"></a>Utwórz poświadczenie
-Aby uzyskać dostęp do konta Data Lake Storage, musisz utworzyć klucz główny bazy danych w celu zaszyfrowania klucza tajnego poświadczeń, który został użyty w następnym kroku. Następnie utworzysz poświadczenia w zakresie bazy danych. W przypadku Gen1 poświadczenia w zakresie bazy danych przechowują poświadczenia jednostki usługi skonfigurowane w usłudze AAD. Musisz użyć klucza konta magazynu w poświadczeniu o zakresie bazy danych dla Gen2. 
+Aby uzyskać dostęp do konta Data Lake Storage, musisz utworzyć klucz główny bazy danych w celu zaszyfrowania klucza tajnego poświadczeń, który został użyty w następnym kroku. Następnie utworzysz poświadczenia w zakresie bazy danych. Podczas uwierzytelniania za pomocą nazw głównych usługi poświadczenia bazy danych przechowują poświadczenia jednostki usługi skonfigurowane w usłudze AAD. Możesz również użyć klucza konta magazynu w poświadczeniu o zakresie bazy danych dla Gen2. 
 
-Aby nawiązać połączenie z Data Lake Storage Gen1, musisz **najpierw** utworzyć aplikację Azure Active Directory, utworzyć klucz dostępu i udzielić aplikacji dostępu do zasobu Data Lake Storage Gen1. Aby uzyskać instrukcje, zobacz [uwierzytelnianie w Azure Data Lake Storage Gen1 przy użyciu Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+Aby połączyć się z Data Lake Storage przy użyciu jednostek usługi, należy **najpierw** utworzyć aplikację Azure Active Directory, utworzyć klucz dostępu i udzielić aplikacji dostępu do konta Data Lake Storage. Aby uzyskać instrukcje, zobacz [uwierzytelnianie w Azure Data Lake Storage przy użyciu Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -56,7 +52,7 @@ Aby nawiązać połączenie z Data Lake Storage Gen1, musisz **najpierw** utworz
 CREATE MASTER KEY;
 
 
--- B (for Gen1): Create a database scoped credential
+-- B (for service principal authentication): Create a database scoped credential
 -- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
@@ -67,7 +63,7 @@ WITH
     SECRET = '<key>'
 ;
 
--- B (for Gen2): Create a database scoped credential
+-- B (for Gen2 storage key authentication): Create a database scoped credential
 -- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
 -- SECRET: Provide your Azure storage account key.
 
@@ -77,7 +73,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this for Gen1:
+-- It should look something like this when authenticating using service principals:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -109,7 +105,7 @@ WITH (
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
-    LOCATION='abfss://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
+    LOCATION='abfs[s]://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfss endpoint for when your account has secure transfer enabled
     CREDENTIAL = ADLSCredential
 );
 ```
@@ -213,7 +209,7 @@ Poniższy przykład jest dobrym punktem wyjścia do tworzenia statystyk. Tworzy 
 ## <a name="achievement-unlocked"></a>Nieodblokowane osiągnięcie!
 Dane zostały pomyślnie załadowane do Azure SQL Data Warehouse. Wspaniałe zadanie!
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 W tym samouczku utworzono tabele zewnętrzne w celu zdefiniowania struktury danych przechowywanych w Data Lake Storage Gen1, a następnie użyto CREATE TABLE instrukcji "SELECT Base" w celu załadowania danych do magazynu danych. 
 
 Zostały wykonane następujące zadania:
@@ -221,13 +217,9 @@ Zostały wykonane następujące zadania:
 > * Utworzono obiekty bazy danych wymagane do załadowania z Data Lake Storage Gen1.
 > * Połączono z katalogiem Data Lake Storage Gen1.
 > * Załadowano dane do Azure SQL Data Warehouse.
-> 
+>
 
 Ładowanie danych to pierwszy krok tworzenia rozwiązania magazynu danych przy użyciu SQL Data Warehouse. Zapoznaj się z naszymi zasobami programistycznymi.
 
 > [!div class="nextstepaction"]
->[Dowiedz się, jak opracowywać tabele w SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
-
-
-
-
+> [Dowiedz się, jak opracowywać tabele w SQL Data Warehouse](sql-data-warehouse-tables-overview.md)

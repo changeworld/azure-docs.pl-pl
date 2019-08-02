@@ -1,20 +1,18 @@
 ---
 title: Przewodnik Szybki start platformy Azure — tworzenie obiektu blob w magazynie obiektów przy użyciu języka Ruby | Microsoft Docs
 description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie przy użyciu biblioteki klienta języka Ruby przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 77e8e3dd8c32545b24230512ded00e335108d802
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150427"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726349"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Ruby
 
@@ -115,7 +113,7 @@ blob_client.set_container_acl(container_name, "container")
 
 Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob. Blokowe obiekty blob są używane najczęściej i dlatego zostały użyte w tym przewodniku Szybki start.  
 
-Aby przekazać plik do obiektu blob, uzyskaj pełną ścieżkę pliku, łącząc nazwę katalogu i nazwę pliku na dysku lokalnym. Następnie możesz przekazać plik do określonej ścieżki przy użyciu metody **create\_block\_blob()**. 
+Aby przekazać plik do obiektu blob, uzyskaj pełną ścieżkę pliku, łącząc nazwę katalogu i nazwę pliku na dysku lokalnym. Następnie możesz przekazać plik do określonej ścieżki przy użyciu metody **create\_block\_blob()** . 
 
 Za pomocą przykładowego kodu tworzony jest plik lokalny do zastosowania w przypadku przekazywania i pobierania. Plik do przekazania jest przechowany jako **file\_path\_to\_file**, a nazwa obiektu blob jako **local\_file\_name**. Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartblobs**.
 
@@ -137,11 +135,11 @@ puts "\nUploading to Blob storage as blob" + local_file_name
 blob_client.create_block_blob(container.name, local_file_name, full_path_to_file)
 ```
 
-Aby wykonać częściową aktualizację zawartości blokowego obiektu blob, użyj metody **create\_block\_list()**. Blokowe obiekty blob mogą mieć rozmiar nawet do 4,7 TB i mogą to być dowolne pliki, od arkuszy kalkulacyjnych programu Excel po duże pliki wideo. Stronicowe obiekty blob są używane głównie do tworzenia plików VHD służących do obsługi maszyn wirtualnych IaaS. Uzupełnialne obiekty blob są używane do rejestrowania, na przykład w sytuacji, w której konieczny jest zapis do pliku, a następnie dodawanie kolejnych informacji. Uzupełnianego obiektu blob należy używać w ramach pojedynczego modelu zapisywania. Większość obiektów przechowywanych w usłudze Blob Storage to blokowe obiekty blob.
+Aby wykonać częściową aktualizację zawartości blokowego obiektu blob, użyj metody **create\_block\_list()** . Blokowe obiekty blob mogą mieć rozmiar nawet do 4,7 TB i mogą to być dowolne pliki, od arkuszy kalkulacyjnych programu Excel po duże pliki wideo. Stronicowe obiekty blob są używane głównie do tworzenia plików VHD służących do obsługi maszyn wirtualnych IaaS. Uzupełnialne obiekty blob są używane do rejestrowania, na przykład w sytuacji, w której konieczny jest zapis do pliku, a następnie dodawanie kolejnych informacji. Uzupełnianego obiektu blob należy używać w ramach pojedynczego modelu zapisywania. Większość obiektów przechowywanych w usłudze Blob Storage to blokowe obiekty blob.
 
 ### <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Pobierz listę plików w kontenerze, używając metody **list\_blobs()**. Poniższy kod umożliwia pobranie listy obiektów blob, a następnie przetwarza je w pętli, wyświetlając nazwy obiektów blob odnalezionych w kontenerze.  
+Pobierz listę plików w kontenerze, używając metody **list\_blobs()** . Poniższy kod umożliwia pobranie listy obiektów blob, a następnie przetwarza je w pętli, wyświetlając nazwy obiektów blob odnalezionych w kontenerze.  
 
 ```ruby
 # List the blobs in the container
@@ -158,7 +156,7 @@ end
 
 ### <a name="download-the-blobs"></a>Pobieranie obiektów blob
 
-Pobierz obiekty blob na dysk lokalny, używając metody **get\_blob()**. Poniższy kod pozwala pobrać obiekt blob przekazany w poprzedniej sekcji. Ciąg „_DOWNLOADED” jest dodawany jako sufiks do nazwy obiektu blob, co pozwala zobaczyć oba pliki na dysku lokalnym. 
+Pobierz obiekty blob na dysk lokalny, używając metody **get\_blob()** . Poniższy kod pozwala pobrać obiekt blob przekazany w poprzedniej sekcji. Ciąg „_DOWNLOADED” jest dodawany jako sufiks do nazwy obiektu blob, co pozwala zobaczyć oba pliki na dysku lokalnym. 
 
 ```ruby
 # Download the blob(s).
@@ -171,7 +169,7 @@ File.open(full_path_to_file2,"wb") {|f| f.write(content)}
 ```
 
 ### <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym przewodnikiem Szybki start, możesz usunąć cały kontener, korzystając z metody **delete\_container()**. Jeśli utworzone pliki nie są już potrzebne, możesz użyć metody **delete\_blob()**, aby je usunąć.
+Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym przewodnikiem Szybki start, możesz usunąć cały kontener, korzystając z metody **delete\_container()** . Jeśli utworzone pliki nie są już potrzebne, możesz użyć metody **delete\_blob()** , aby je usunąć.
 
 ```ruby
 # Clean up resources. This includes the container and the temp files
@@ -186,7 +184,7 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji Ruby z magazynem ob
 - W witrynie GitHub wyświetl [kod źródłowy biblioteki klienta Ruby](https://github.com/Azure/azure-storage-ruby) dla usługi Azure Storage i pobierz go.
 - Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=ruby&term=blob) napisanymi przy użyciu biblioteki klienta Ruby.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
  
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Ruby. Aby dowiedzieć się więcej na temat pracy z usługą Blob Storage, przejdź do instrukcji dotyczących magazynu obiektów blob.
 

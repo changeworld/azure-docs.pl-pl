@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 234b78a97c2663121d0d585154695887a58b9522
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9ffd5a173bcfae41e08babbadae1e67047ed452
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203418"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725985"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopiowanie danych z usługi ServiceNow przy użyciu usługi Azure Data Factory
 
@@ -41,9 +41,9 @@ Następujące właściwości są obsługiwane dla usługi ServiceNow, połączon
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **ServiceNow** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **ServiceNow** | Yes |
 | endpoint | Punkt końcowy serwera usługi ServiceNow (`http://<instance>.service-now.com`).  | Yes |
-| authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to: **Podstawowe**, **OAuth2** | Yes |
+| authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to: **Basic**, **OAuth2** | Tak |
 | username | Nazwa użytkownika używana do łączenia się z serwerem usługi ServiceNow dla uwierzytelniania Basic i protokołu OAuth2.  | Yes |
 | password | Hasło odpowiadający nazwie użytkownika dla uwierzytelniania Basic i protokołu OAuth2. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | clientId | Identyfikator klienta do uwierzytelniania protokołu OAuth2.  | Nie |
@@ -80,7 +80,7 @@ Aby skopiować dane z usługi ServiceNow, należy ustawić właściwość typu z
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **ServiceNowObject** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ServiceNowObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -90,11 +90,12 @@ Aby skopiować dane z usługi ServiceNow, należy ustawić właściwość typu z
     "name": "ServiceNowDataset",
     "properties": {
         "type": "ServiceNowObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<ServiceNow linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -109,7 +110,7 @@ Aby skopiować dane z usługi ServiceNow, należy ustawić typ źródła w dzia�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **ServiceNowSource** | Yes |
+| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ServiceNowSource** | Yes |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Actual.alm_asset"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 Należy pamiętać, że podczas określania schematu i kolumn dla usługi ServiceNow w zapytaniu i **dotyczą [porady dotyczące wydajności](#performance-tips) na domniemanie wydajności kopiowania**.
@@ -118,7 +119,7 @@ Należy pamiętać, że podczas określania schematu i kolumn dla usługi Servic
 - **Kolumna:** nazwa kolumny do rzeczywistej wartości w obszarze `Actual` schemat jest `[column name]_value`, natomiast w przypadku wartości wyświetlanej w obszarze `Display` schemat jest `[column name]_display_value`. Uwaga nazwa kolumny musi mapowania do schematu, używany w zapytaniu.
 
 **Przykładowe zapytanie:** 
-`SELECT col_value FROM Actual.alm_asset` OR 
+`SELECT col_value FROM Actual.alm_asset` ORAZ 
 `SELECT col_display_value FROM Display.alm_asset`
 
 **Przykład:**

@@ -1,20 +1,20 @@
 ---
-title: Zbiorcze importowanie i zaktualizować dane w usługi Azure Cosmos DB przy użyciu biblioteki przetwarzania zbiorczego
-description: Wykonywały operacje zbiorcze w usłudze Azure Cosmos DB za pomocą importowania zbiorczego i Zbiorcza aktualizacja interfejsów API oferowane przez bibliotekę przetwarzania zbiorczego.
+title: Zbiorcze importowanie i aktualizowanie danych w Azure Cosmos DB przy użyciu biblioteki programu wykonującego zbiorczo
+description: Wykonywanie operacji zbiorczych w Azure Cosmos DB za pomocą importu zbiorczego i interfejsów API aktualizacji zbiorczych oferowanych przez bibliotekę wykonawców zbiorczych.
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: e4357007ec1cfac2cf6a10d339c6b3aa3ae41488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1716bd64286f1882b9fc224712d227967d78058a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257100"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637777"
 ---
-# <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Omówienie biblioteki wykonawca zbiorczego usługi Azure Cosmos DB
+# <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Omówienie biblioteki wykonawców zbiorczych Azure Cosmos DB
  
 Usługa Azure Cosmos DB to szybka, elastyczna i globalnie rozproszona baza danych zaprojektowana pod kątem elastycznego skalowania w poziomie i obsługi następujących funkcji: 
 
@@ -24,31 +24,31 @@ Usługa Azure Cosmos DB to szybka, elastyczna i globalnie rozproszona baza danyc
 Biblioteka funkcji wykonawczej operacji zbiorczych ułatwia korzystanie z tej ogromnej przepływności i magazynu. Biblioteka funkcji wykonawczej operacji zbiorczych umożliwia wykonywanie operacji zbiorczych w usłudze Azure Cosmos DB za pośrednictwem interfejsów API importu zbiorczego i aktualizacji zbiorczej. Więcej informacji o funkcjach biblioteki funkcji wykonawczej operacji zbiorczych znajdziesz w poniższych sekcjach. 
 
 > [!NOTE] 
-> Obecnie zbiorcze wykonawca biblioteka obsługuje import i operacje aktualizacji i ta biblioteka jest obsługiwana przez tylko konta interfejsu API SQL usługi Azure Cosmos DB i interfejs API Gremlin.
+> Obecnie zbiorcze biblioteki wykonawcze obsługują operacje importu i aktualizacji, a ta biblioteka jest obsługiwana przez Azure Cosmos DB tylko konta interfejsu API SQL i Gremlin.
  
-## <a name="key-features-of-the-bulk-executor-library"></a>Najważniejsze funkcje biblioteki przetwarzania zbiorczego  
+## <a name="key-features-of-the-bulk-executor-library"></a>Najważniejsze funkcje biblioteki wykonawców zbiorczej  
  
-* Zmniejsza to znacznie zasoby obliczeniowe po stronie klienta, potrzebne do saturate przepływności przydzielanych do kontenera. Pojedynczej aplikacji wielowątkowych, która zapisuje dane przy użyciu interfejsu API importu zbiorczego osiąga 10 razy większą przepływność zapisu w porównaniu do aplikacji wielowątkowej, która zapisuje dane w sposób równoległy określanie nasycenia klienta Procesora komputera.  
+* Znacznie zmniejsza zasoby obliczeniowe po stronie klienta, które są niezbędne do nasycenia przepływności przydzieloną do kontenera. Jednowątkowa aplikacja, która zapisuje dane przy użyciu interfejsu API importu zbiorczego, uzyskuje 10 razy większą przepływność zapisu w porównaniu do aplikacji wielowątkowej, która zapisuje dane równolegle, jednocześnie obniżając jednocześnie procesor CPU komputera klienckiego.  
 
-* Jego wagę monotonnych zadań pisania logiki aplikacji w celu obsługi żądania, przekroczenia limitu czasu żądania i inne przejściowych wyjątków ograniczania szybkości dzięki efektywnej obsłudze je w bibliotece.  
+* Determinuje żmudnym zadania tworzenia logiki aplikacji w celu obsłużenia ograniczenia szybkości żądania, przekroczenia limitu czasu żądań i innych przejściowych wyjątków przez wydajne obsługiwanie ich w bibliotece.  
 
-* Zapewnia uproszczoną mechanizm dla aplikacji wykonywania zbiorczych operacji skalowania w poziomie. Wystąpienie funkcji wykonawczej pojedynczej zbiorczej, uruchomione na Maszynie wirtualnej platformy Azure mogą wykorzystywać większy niż 500 KB jednostek RU/s i wyższy poziom przepływności można osiągnąć przez dodanie dodatkowych wystąpień na kliencie poszczególnych maszyn wirtualnych.  
+* Zapewnia uproszczony mechanizm dla aplikacji wykonujących operacje zbiorcze w celu skalowania w poziomie. Pojedyncze wystąpienie programu wykonującego zbiorczo uruchomione na maszynie wirtualnej platformy Azure może zużywać więcej niż 500 000 RU/s i osiągnąć wyższą stawkę przepływności, dodając dodatkowe wystąpienia na poszczególnych maszynach wirtualnych klienta.  
  
-* Jej zbiorcze importowanie ponad terabajta danych w ciągu godziny, przy użyciu architektury skalowalnego w poziomie.  
+* Umożliwia zbiorcze Importowanie ponad terabajtów danych w ciągu godziny przy użyciu architektury skalowalnej w poziomie.  
 
-* Jego zbiorczej aktualizacji istniejących danych w kontenerach usługi Azure Cosmos DB jako poprawki. 
+* Można zbiorczo aktualizować istniejące dane w kontenerach Azure Cosmos DB jako poprawki. 
  
-## <a name="how-does-the-bulk-executor-operate"></a>Jak będzie działać przetwarzania zbiorczego 
+## <a name="how-does-the-bulk-executor-operate"></a>Jak działa moduł wykonujący zbiorczo? 
 
-Po wyzwoleniu operacji zbiorczej do importowania lub aktualizowanie dokumentów z usługą batch jednostek są początkowo przekazanych do zasobników odpowiadający ich zakres kluczy partycji usługi Azure Cosmos DB. W ramach każdego przedziału, który odpowiada zakres kluczy partycji one są podzielone na mini partie i działanie każdego mini usługi batch jako ładunek, która stawia po stronie serwera. Biblioteka przetwarzania zbiorczego ma wbudowane optymalizacje dla wykonania tych mini-partii w obrębie i różnych zakresów kluczy partycji. Poniższy rysunek ilustruje, jak zbiorczo wykonawca partii danych do różnych kluczach partycji:  
+Gdy operacja zbiorcza do importowania lub aktualizowania dokumentów jest wyzwalana przy użyciu partii jednostek, są one początkowo przestają przedziałem, odpowiadające ich zakresowi kluczy partycji Azure Cosmos DB. W każdym zasobniku, który odnosi się do zakresu kluczy partycji, są one podzielone na dane typu mini-Batch, a każda z nich działa jako ładunek, który jest zatwierdzany po stronie serwera. Biblioteka wykonawców zbiorczych została wbudowana w optymalizacje w celu jednoczesnego wykonania tych miniowych partii zarówno w ramach zakresów kluczy partycji, jak i między nimi. Na poniższej ilustracji przedstawiono, jak programowy moduł wykonujący zbiorczo dane wsadowe w różnych kluczach partycji:  
 
-![Architektura przetwarzania zbiorczego](./media/bulk-executor-overview/bulk-executor-architecture.png)
+![Architektura wykonawców zbiorczych](./media/bulk-executor-overview/bulk-executor-architecture.png)
 
-Biblioteka przetwarzania zbiorczego zapewnia, że przechowywany wykorzystanie przepustowości, przydzielone do kolekcji. Używa ona [mechanizmu kontroli przeciążenia AIMD stylu](https://tools.ietf.org/html/rfc5681) dla każdej usługi Azure Cosmos DB partycji zakres kluczy efektywnie obsłużyć ograniczania szybkości i przekroczeń limitu czasu. 
+Biblioteka wykonawców zbiorczych gwarantuje, że Maximally wykorzystać przepływność przydzieloną do kolekcji. Używa [mechanizmu kontroli przeciążenia w stylu AIMD](https://tools.ietf.org/html/rfc5681) dla każdego zakresu kluczy partycji Azure Cosmos DB, aby skutecznie obsłużyć ograniczenie szybkości i przekroczenia limitu czasu. 
 
 ## <a name="next-steps"></a>Następne kroki 
   
-* Dowiedz się więcej, Wypróbowując przykładowych aplikacji, korzystanie z biblioteki przetwarzania zbiorczego w [.NET](bulk-executor-dot-net.md) i [Java](bulk-executor-java.md).  
-* Zapoznaj się z zbiorcze wykonawca SDK informacji i wersji uwagi w [.NET](sql-api-sdk-bulk-executor-dot-net.md) i [Java](sql-api-sdk-bulk-executor-java.md).
-* Biblioteka przetwarzania zbiorczego jest zintegrowana z łącznika Spark bazy danych Cosmos, aby dowiedzieć się więcej, zobacz [łącznika usługi Azure Cosmos DB Spark](spark-connector.md) artykułu.  
-* Biblioteka przetwarzania zbiorczego jest również zintegrowana do nowej wersji [łącznika usługi Azure Cosmos DB](https://aka.ms/bulkexecutor-adf-v2) dla usługi Azure Data Factory do kopiowania danych.
+* Dowiedz się więcej, pobierając przykładowe aplikacje zużywające zbiorczą bibliotekę wykonawczą w programie [.NET i środowisku](bulk-executor-dot-net.md) [Java](bulk-executor-java.md).  
+* Zapoznaj się z informacjami o zestawie SDK programu do wykonywania zbiorczego i informacje o wersji w językach [.NET](sql-api-sdk-bulk-executor-dot-net.md) i [Java](sql-api-sdk-bulk-executor-java.md).
+* Biblioteka wykonawców zbiorczych jest zintegrowana z łącznikiem Cosmos DB Spark, aby dowiedzieć się więcej, zobacz Azure Cosmos DB artykuł dotyczący [łącznika Spark](spark-connector.md) .  
+* Biblioteka wykonawców zbiorczych jest również zintegrowana z nową wersją [łącznika Azure Cosmos DB](https://aka.ms/bulkexecutor-adf-v2) , aby Azure Data Factory do kopiowania danych.

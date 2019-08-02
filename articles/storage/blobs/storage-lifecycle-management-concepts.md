@@ -1,20 +1,19 @@
 ---
 title: Zarządzanie cyklem życia usługi Azure Storage
 description: Dowiedz się, jak utworzyć reguły zasad cyklu życia, aby przenieść dane przedawniania z warstwy gorąca do chłodna i archiwum.
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: conceptual
-ms.date: 05/21/2019
 ms.author: mhopkins
-ms.reviewer: yzheng
+ms.date: 05/21/2019
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 6902bf73707dc749da76cd32fe48911fcc88ba1e
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.topic: conceptual
+ms.reviewer: yzheng
+ms.openlocfilehash: 77ed643afaf5e69f41224af68f5e9f8a93fcace5
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305719"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722095"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia usługi Azure Blob Storage
 
@@ -29,6 +28,8 @@ Zasady zarządzania cyklem życia umożliwiają:
 
 Rozważmy scenariusz, w którym dane są często dostępne podczas wczesnych etapów cyklu życia, ale tylko sporadycznie po dwóch tygodniach. Po upływie pierwszego miesiąca zestaw danych jest rzadko używany. W tym scenariuszu w przypadku wczesnych etapów jest najlepszym miejscem do magazynowania. Chłodny magazyn jest najbardziej odpowiedni dla okazjonalnego dostępu. Magazyn archiwalny to opcja najlepszej warstwy po okresie ważności danych w miesiącu. Przez dostosowanie warstw magazynowania w odniesieniu do wieku danych można zaprojektować najtańsze opcje magazynu dla Twoich potrzeb. W celu osiągnięcia tego przejścia reguły zasad zarządzania cyklem życia są dostępne do przenoszenia danych przedawnienia do warstwy z chłodnicy.
 
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 ## <a name="storage-account-support"></a>Obsługa kont magazynu
 
 Zasady zarządzania cyklem życia są dostępne z kontami Ogólnego przeznaczenia v2 (GPv2), kontami magazynu obiektów blob i blokami Premium BLOB Storage. W Azure Portal można uaktualnić istniejące konto Ogólnego przeznaczenia (GPv1) do konta GPv2. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](../common/storage-account-overview.md) (Omówienie konta usługi Azure Storage).  
@@ -39,7 +40,7 @@ Funkcja zarządzania cyklem życia jest bezpłatna. Klienci są obciążani kosz
 
 ## <a name="regional-availability"></a>Dostępność regionalna
 
-Funkcja zarządzania cyklem życia jest dostępna we wszystkich globalnych regionach platformy Azure i Azure Government.
+Funkcja zarządzania cyklem życia jest dostępna we wszystkich regionach świadczenia usługi Azure.
 
 ## <a name="add-or-remove-a-policy"></a>Dodawanie lub usuwanie zasad
 
@@ -281,9 +282,9 @@ Filtry ograniczają akcje reguły do podzbioru obiektów BLOB w ramach konta mag
 
 Filtry obejmują:
 
-| Nazwa filtru | Typ filtru | Uwagi | Jest wymagana |
+| Nazwa filtru | Typ filtru | Uwagi | Wymagany |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Tablica wstępnie zdefiniowanych wartości wyliczeniowych. | Bieżąca wersja obsługuje `blockBlob`. | Tak |
+| blobTypes   | Tablica wstępnie zdefiniowanych wartości wyliczeniowych. | Bieżąca wersja obsługuje `blockBlob`. | Yes |
 | prefixMatch | Tablica ciągów dla prefiksów, które mają być zgodne. Każda reguła może definiować do 10 prefiksów. Ciąg prefiksu musi rozpoczynać się od nazwy kontenera. Na przykład jeśli chcesz dopasować wszystkie obiekty blob w ramach `https://myaccount.blob.core.windows.net/container1/foo/...` reguły, prefixMatch jest. `container1/foo` | Jeśli nie zdefiniujesz prefixMatch, reguła będzie stosowana do wszystkich obiektów BLOB w ramach konta magazynu.  | Nie |
 
 ### <a name="rule-actions"></a>Akcje reguły
@@ -296,7 +297,7 @@ Zarządzanie cyklem życia obsługuje warstwowe i usuwanie obiektów blob oraz u
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Obsługa obiektów BLOB obecnie w warstwie gorąca         | Nieobsługiwane |
 | tierToArchive | Obsługa obiektów BLOB obecnie w warstwie gorąca lub chłodna | Nieobsługiwane |
-| delete        | Obsługiwane                                   | Obsługiwane     |
+| usuwanie        | Obsługiwane                                   | Obsługiwane     |
 
 >[!NOTE]
 >W przypadku zdefiniowania więcej niż jednej akcji w tym samym obiekcie blob Zarządzanie cyklem życia stosuje najtańszą akcję do obiektu BLOB. Na przykład akcja `delete` jest tańsza niż Akcja `tierToArchive`. Akcja `tierToArchive` jest tańsza niż `tierToCool`akcja.

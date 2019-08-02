@@ -1,7 +1,7 @@
 ---
-title: Tworzenie i eksplorowanie eksperymentów w portalu
+title: Używanie zautomatyzowanej ML do kompilowania i wdrażania modeli uczenia maszynowego
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak tworzyć automatyczne eksperymenty uczenia maszynowego i zarządzać nimi w portalu
+description: Twórz i wdrażaj automatyczne eksperymenty uczenia maszynowego w Azure Portal
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: cgronlun
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/02/2019
-ms.openlocfilehash: 1bfc415b2e4dbc66e2afeae73b78079fb027a60c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 08/02/2019
+ms.openlocfilehash: eb6ae11bb4ffb39d9e9bcc692f17559fa2cde674
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358830"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720234"
 ---
-# <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Twórz i Eksploruj zautomatyzowane eksperymenty uczenia maszynowego w Azure Portal (wersja zapoznawcza)
+# <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Twórz, eksploruj i wdrażaj automatyczne eksperymenty uczenia maszynowego w Azure Portal (wersja zapoznawcza)
 
- W tym artykule dowiesz się, jak tworzyć, uruchamiać i eksplorować automatyczne eksperymenty uczenia maszynowego w Azure Portal bez pojedynczego wiersza kodu. Funkcja automatycznego uczenia maszynowego automatyzuje proces wybierania najlepszego algorytmu dla określonych danych, dzięki czemu można szybko generować model uczenia maszynowego. [Dowiedz się więcej o automatycznym uczeniu maszynowym](concept-automated-ml.md).
+ W tym artykule dowiesz się, jak tworzyć, eksplorować i wdrażać zautomatyzowane eksperymenty uczenia maszynowego w Azure Portal bez pojedynczego wiersza kodu. Funkcja automatycznego uczenia maszynowego automatyzuje proces wybierania najlepszego algorytmu dla określonych danych, dzięki czemu można szybko generować model uczenia maszynowego. [Dowiedz się więcej o automatycznym uczeniu maszynowym](concept-automated-ml.md).
 
  Jeśli wolisz skorzystać z większej ilości kodu, możesz również [skonfigurować automatyczne eksperymenty uczenia maszynowego w języku Python](how-to-configure-auto-train.md) za pomocą [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
@@ -36,27 +36,19 @@ Przejdź do lewego okienka obszaru roboczego. Wybierz pozycję Automatyczne Mach
 
 ![Azure Portal okienku nawigacji](media/how-to-create-portal-experiments/nav-pane.png)
 
- Jeśli po raz pierwszy wykonujesz wszystkie eksperymenty z automatycznym Machine Learning, zobaczysz następujące kwestie:
+ Jeśli po raz pierwszy wykonujesz jakieś eksperymenty, zobaczysz ekran **Zapraszamy do automatycznego Machine Learning** . 
 
-![Azure Portal Strona docelowa eksperymentu](media/how-to-create-portal-experiments/landing-page.png)
-
-W przeciwnym razie zobaczysz automatyczny pulpit nawigacyjny uczenia maszynowego z omówieniem wszystkich zautomatyzowanych eksperymentów z uczeniem maszynowym, łącznie z tymi utworzonymi przy użyciu zestawu SDK. Tutaj można filtrować i eksplorować uruchomienia według daty, nazwy eksperymentu i stanu uruchomienia.
-
-![Pulpit nawigacyjny eksperymentu Azure Portal](media/how-to-create-portal-experiments/dashboard.png)
+W przeciwnym razie zobaczysz pulpit nawigacyjny **automatycznego uczenia maszynowego** z omówieniem wszystkich zautomatyzowanych eksperymentów dotyczących uczenia maszynowego, łącznie z tymi utworzonymi za pomocą zestawu SDK. Tutaj można filtrować i eksplorować uruchomienia według daty, nazwy eksperymentu i stanu uruchomienia.
 
 ## <a name="create-an-experiment"></a>Tworzenie eksperymentu
 
-Wybierz przycisk Utwórz eksperyment, aby wypełnić następującą formę.
+Wybierz pozycję **Utwórz eksperyment** i wypełnij formularz **Utwórz nowy zautomatyzowany eksperyment uczenia maszynowego** .
 
-![Utwórz formularz eksperymentu](media/how-to-create-portal-experiments/create-exp-name-compute.png)
-
-1. Wprowadź nazwę eksperymentu.
+1. Wprowadź unikatową nazwę eksperymentu.
 
 1. Wybierz obliczenia dla zadania profilowania i szkolenia danych. Lista istniejących obliczeń jest dostępna na liście rozwijanej. Aby utworzyć nowe obliczenie, postępuj zgodnie z instrukcjami podanymi w sekcji Krok 3.
 
-1. Wybierz przycisk Utwórz nowy obliczeniowy, aby otworzyć poniższe okienko, i skonfiguruj kontekst obliczeniowy dla tego eksperymentu.
-
-    ![Utwórz nowe obliczenie dla eksperymentu](media/how-to-create-portal-experiments/create-new-compute.png)
+1. Wybierz pozycję **Utwórz nowe obliczenie** , aby skonfigurować kontekst obliczeniowy dla tego eksperymentu.
 
     Pole|Opis
     ---|---
@@ -64,38 +56,35 @@ Wybierz przycisk Utwórz eksperyment, aby wypełnić następującą formę.
     Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia.
     Ustawienia dodatkowe| *Minimalny węzeł*: Wprowadź minimalną liczbę węzłów dla obliczenia. Minimalna liczba węzłów dla AML COMPUTE to 0. Aby włączyć Profilowanie danych, musisz mieć co najmniej jeden węzeł. <br> *Maksymalny węzeł*: Wprowadź maksymalną liczbę węzłów dla obliczeń. Wartość domyślna to 6 węzłów na potrzeby obliczeń AML.
 
-      Aby rozpocząć tworzenie nowego obliczenia, wybierz pozycję **Utwórz**. Może to potrwać kilka minut.
+      Wybierz pozycję **Utwórz**. Tworzenie nowego obliczenia może potrwać kilka minut.
 
       >[!NOTE]
       > Nazwa obliczeniowa wskazuje, czy w przypadku obliczeń, które zostały wybrane/utworzone, *włączono profilowanie*. (Zobacz 7B, aby uzyskać więcej informacji na temat profilowania danych).
 
-1. Wybierz konto magazynu dla swoich danych. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików i konta usługi Azure Blob Storage.
+1. Wybierz konto magazynu dla swoich danych. 
 
 1. Wybierz kontener magazynu.
 
-1. Wybierz plik danych z kontenera magazynu lub Przekaż plik z komputera lokalnego do kontenera.
+1. Wybierz plik danych z kontenera magazynu lub Przekaż plik z komputera lokalnego do kontenera. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików i konta usługi Azure Blob Storage.
 
-    ![Wybierz plik danych do eksperymentu](media/how-to-create-portal-experiments/select-file.png)
+    [![Wybierz plik danych](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
 
 1. Skorzystaj z kart wersja zapoznawcza i profil, aby skonfigurować dane dla tego eksperymentu.
 
-    1. Na karcie Podgląd wskaż, czy dane zawierają nagłówki, a następnie wybierz funkcje (kolumny) do szkolenia przy użyciu przycisków **dołączone** przełącznika w każdej kolumnie funkcji.
+    1. Na karcie **Podgląd** wskaż, czy dane zawierają nagłówki, a następnie wybierz funkcje (kolumny) do szkolenia przy użyciu przycisków **dołączone** przełącznika w każdej kolumnie funkcji.
 
-        ![Podgląd danych](media/how-to-create-portal-experiments/data-preview.png)
-
-    1. Na karcie Profil można wyświetlić pozycję [profil danych](#profile) według funkcji, a także dane statystyczne dystrybucji, typu i podsumowania (średnia, mediana, max/min itd.) każdej z nich.
-
-        ![Karta profil danych](media/how-to-create-portal-experiments/data-profile.png)
+    1. Na karcie **profil** można wyświetlić pozycję [profil danych](#profile) według funkcji, a także dane statystyczne dystrybucji, typu i podsumowania (średnia, mediana, max/min itd.) każdej z nich.
 
         >[!NOTE]
         > Następujący komunikat o błędzie zostanie wyświetlony, jeśli **nie** włączono profilowania dla kontekstu obliczeniowego: *Profilowanie danych jest dostępne tylko dla obiektów docelowych obliczeń, które są już uruchomione*.
 
 1. Wybierz typ zadania szkolenia: Klasyfikacja, regresja lub prognozowanie.
 
-1. Wybierz kolumnę docelową. Kolumna, dla której chcesz wykonać prognozy.
+1. Wybierz kolumnę docelową; jest to kolumna, dla której chcesz przeprowadzić prognozę.
 
 1. W przypadku prognozowania:
     1. Wybierz kolumnę czasu: Ta kolumna zawiera dane czasu, które mają być używane.
+
     1. Wybierz horyzont prognoz: Wskaż, ile jednostek czasu (min/godz./dni/tygodnie/miesięcy/lat) będzie można przewidzieć w przyszłości model. Dalszy model jest wymagany do przewidywania w przyszłości, tym mniej dokładne stanie się. [Dowiedz się więcej o prognozowaniu i prognozowaniu horyzontu](how-to-auto-train-forecast.md).
 
 1. Obowiązkowe Ustawienia zaawansowane: dodatkowe ustawienia, których można użyć w celu lepszego kontrolowania zadania szkoleniowego.
@@ -109,48 +98,35 @@ Wybierz przycisk Utwórz eksperyment, aby wypełnić następującą formę.
     Współbieżność| Wybierz limity wielordzeniowe, które mają być używane podczas korzystania z obliczeń wielordzeniowych.
     Zablokowany algorytm| Wybierz algorytmy, które mają zostać wykluczone z zadania szkoleniowego.
 
-   ![Formularz ustawień zaawansowanych](media/how-to-create-portal-experiments/advanced-settings.png)
-
-> [!NOTE]
-> Aby uzyskać więcej informacji na temat pól, kliknij etykietkę narzędzia informacji.
-
 <a name="profile"></a>
 
-### <a name="data-profiling"></a>Profilowanie danych
+## <a name="data-profiling--summary-stats"></a>Dane statystyczne podsumowania &
 
 Możesz uzyskać szeroką gamę statystyk podsumowujących dla zestawu danych, aby sprawdzić, czy zestaw danych jest gotowy do użycia. W przypadku kolumn nieliczbowych składają się tylko podstawowe dane statystyczne, takie jak minimalna, maksymalna i liczba błędów. W przypadku kolumn liczbowych można także sprawdzić ich statystyczny czas i oszacować quantiles. Profil danych zawiera następujące dane:
 
-* **Funkcja**: Nazwa sumowanej kolumny.
+>[!NOTE]
+> Puste wpisy są wyświetlane dla funkcji o nieistotnych typach.
 
-* **Profil**: wizualizacja w wierszu oparta na wywnioskowanym typie. Na przykład ciągi, wartości logiczne i daty będą mieć liczby wartości, podczas gdy miejsca dziesiętne (liczbowe) mają przybliżone histogramy. Pozwala to na szybkie zrozumienie dystrybucji danych.
-
-* **Dystrybucja typów**: wartość w postaci liczby typów w kolumnie. Wartości null są własnym typem, więc Wizualizacja jest przydatna do wykrywania nieparzystych lub brakujących wartości.
-
-* **Typ**: wnioskowany typ kolumny. Możliwe wartości to: ciągi, wartości logiczne, daty i miejsca dziesiętne.
-
-* **Min**: wartość minimalna kolumny. Puste wpisy są wyświetlane dla funkcji, których typ nie ma własnej kolejności (np. wartości logicznych).
-
-* **Max**: wartość maksymalna kolumny. Podobnie jak "min", puste wpisy są wyświetlane dla funkcji mających nieodpowiednie typy.
-
-* **Liczba**: całkowita liczba brakujących i nieobecnych wpisów w kolumnie.
-
-* **Brak liczby**: liczba wpisów w kolumnie, których nie ma. Należy zauważyć, że puste ciągi i błędy są traktowane jako wartości, więc nie współtworzyją one do "brakujący licznik".
-
-* **Quantiles** (na 0,1, 1, 5, 25, 50, 75, 95, 99 i 99,9% interwałów): przybliżone wartości w każdym quantileym zapewniają sens dystrybucji danych. Puste wpisy są wyświetlane dla funkcji o nieistotnych typach.
-
-* **Średnia**: średnia arytmetyczna kolumny. Puste wpisy są wyświetlane dla funkcji o nieistotnych typach.
-
-* **Odchylenie standardowe**: odchylenie standardowe kolumny. Puste wpisy są wyświetlane dla funkcji o nieistotnych typach.
-
-* **WARIANCJA**: Wariancja kolumny. Puste wpisy są wyświetlane dla funkcji o nieistotnych typach.
-
-* **Skośność**: skośność kolumny. Puste wpisy są wyświetlane dla funkcji o nieistotnych typach.
-
-* **Kurtoza**: kurtoza kolumny. Puste wpisy są wyświetlane dla funkcji o nieistotnych typach.
+Statystyka|Opis
+------|------
+Cecha| Nazwa sumowanej kolumny.
+Profil| Wizualizacja w wierszu oparta na wywnioskowanym typie. Na przykład ciągi, wartości logiczne i daty będą mieć liczby wartości, podczas gdy miejsca dziesiętne (liczbowe) mają przybliżone histogramy. Pozwala to na szybkie zrozumienie dystrybucji danych.
+Dystrybucja typów| Liczba wartości w wierszu dla typów w kolumnie. Wartości null są własnym typem, więc Wizualizacja jest przydatna do wykrywania nieparzystych lub brakujących wartości.
+Type|Wywnioskowany typ kolumny. Możliwe wartości to: ciągi, wartości logiczne, daty i miejsca dziesiętne.
+Min.| Minimalna wartość kolumny. Puste wpisy są wyświetlane dla funkcji, których typ nie ma własnej kolejności (np. wartości logicznych).
+Maks.| Maksymalna wartość kolumny. 
+Count| Łączna liczba brakujących i nieobecnych wpisów w kolumnie.
+Liczba niebrakujących| Liczba wpisów w kolumnie, których nie ma. Puste ciągi i błędy są traktowane jako wartości, więc nie będą wchodzić w skład "niebrakującej liczby".
+Quantiles| Przybliżone wartości dla każdego quantileu, aby zapewnić rozkład danych.
+Średnia| Średnia arytmetyczna kolumny lub jej średnia.
+Odchylenie standardowe| Pomiar wielkości rozproszenia lub zmienności danych tej kolumny.
+Wariancja| Mierzona, jak daleko odłożenie danych z tej kolumny pochodzi z wartości średniej. 
+Skośność| Mierzona, jak różne dane tej kolumny pochodzą z rozkładu normalnego.
+Kurtoza| Mierzona, jak silnie naśladowanie danych tej kolumny jest porównywane z rozkładem normalnym.
 
 <a name="preprocess"></a>
 
-### <a name="advanced-preprocessing"></a>Zaawansowane przetwarzanie wstępne
+## <a name="advanced-preprocessing-options"></a>Zaawansowane opcje przetwarzania wstępnego
 
 Podczas konfigurowania eksperymentów można włączyć ustawienie `Preprocess`zaawansowane. Oznacza to, że następujące czynności związane z przetwarzaniem i cechowaniam danych są wykonywane automatycznie.
 
@@ -168,15 +144,15 @@ Podczas konfigurowania eksperymentów można włączyć ustawienie `Preprocess`z
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
 
-Aby uruchomić eksperyment, kliknij przycisk Uruchom. Proces przygotowywania eksperymentu trwa kilka minut.
+Wybierz pozycję **Rozpocznij** , aby uruchomić eksperyment. Proces przygotowywania eksperymentu trwa kilka minut.
 
 ### <a name="view-experiment-details"></a>Wyświetl szczegóły eksperymentu
 
-Po zakończeniu fazy przygotowania eksperymentu zobaczysz ekran Szczegóły uruchamiania. Zapewnia to pełną listę utworzonych modeli. Domyślnie model, który ocenia najwyższy poziom w oparciu o parametry, znajduje się w górnej części listy. Gdy zadanie szkoleniowe próbuje więcej modeli, są dodawane do listy iteracji i wykresu. Użyj wykresu iteracji, aby szybko porównać metryki dla modeli produkowanych do tej pory.
+Po zakończeniu fazy przygotowania eksperymentu zobaczysz ekran Szczegóły uruchamiania, aby wypełnić. Ten ekran zawiera pełną listę utworzonych modeli. Domyślnie model, który ocenia najwyższy poziom w oparciu o wybraną metrykę, znajduje się w górnej części listy. Gdy zadanie szkoleniowe próbuje więcej modeli, są dodawane do listy iteracji i wykresu. Użyj wykresu iteracji, aby szybko porównać metryki dla modeli produkowanych do tej pory.
 
 Zadania szkoleniowe mogą potrwać trochę czasu dla każdego potoku.
 
-![Pulpit nawigacyjny szczegółów uruchamiania](media/how-to-create-portal-experiments/run-details.png)
+[![Pulpit nawigacyjny szczegółów uruchamiania](media/how-to-create-portal-experiments/run-details.png)](media/how-to-create-portal-experiments/run-details-expanded.png#lightbox)
 
 ### <a name="view-training-run-details"></a>Wyświetl szczegóły przebiegu szkoleniowego
 
@@ -184,64 +160,39 @@ Przejdź do szczegółów dowolnych modeli wyjściowych, aby zobaczyć szczegó�
 
 ![Szczegóły iteracji](media/how-to-create-portal-experiments/iteration-details.png)
 
-## <a name="deploy-model"></a>Wdrażanie modelu
+## <a name="deploy-your-model"></a>Wdrażanie modelu
 
 Gdy optymalny model jest dostępny, można go wdrożyć jako usługę sieci Web, aby przewidzieć nowe dane.
 
 Automatyczna ML pomaga wdrożyć model bez pisania kodu:
 
 1. Istnieje kilka opcji wdrażania. 
-    1. Jeśli chcesz wdrożyć najlepszy model na podstawie kryteriów metryk ustawionych dla eksperymentu, wybierz pozycję **Wdróż najlepszy model** na stronie **szczegółów uruchamiania** .
 
-        ![Przycisk wdrażania modelu](media/how-to-create-portal-experiments/deploy-model-button.png)
+    + Option 1: Aby wdrożyć najlepszy model (zgodnie ze zdefiniowanymi kryteriami metryki), wybierz pozycję Wdróż najlepszy model na stronie szczegółów uruchamiania.
 
-    1. Jeśli chcesz wdrożyć iterację określonego modelu, przejdź do szczegółów modelu, aby otworzyć jego konkretną stronę szczegółów uruchamiania, a następnie wybierz pozycję **Wdróż model**.
+    + Opcja 2: Aby wdrożyć określoną iterację modelu z tego eksperymentu, przejdź do szczegółów modelu, aby otworzyć stronę szczegółów uruchamiania, a następnie wybierz pozycję Wdróż model.
+1. Wypełnij okienko **Wdróż model** ,
 
-        ![Przycisk wdrażania modelu](media/how-to-create-portal-experiments/deploy-model-button2.png)
+    Pole| Wartość
+    ----|----
+    Nazwa wdrożenia| Wprowadź unikatową nazwę wdrożenia.
+    Opis wdrożenia| Wprowadź opis, aby lepiej zidentyfikować to wdrożenie.
+    Skrypt oceniania| Automatycznie Generuj lub Przekaż własny plik oceniania. [Dowiedz się więcej o skrypcie oceniania](how-to-deploy-and-where.md#script)
+    Skrypt środowiska| Automatycznie Generuj lub Przekaż własny plik środowiska.
+    >[!Important]
+    > Nazwy plików muszą mieć długość 32 znaków i muszą zaczynać się i kończyć znakiem alfanumerycznym. Może zawierać łączniki, podkreślenia, kropki i znaki alfanumeryczne między. Spacje są niedozwolone.
 
-1. Pierwszym krokiem jest zarejestrowanie modelu w usłudze. Wybierz pozycję "Zarejestruj model" i poczekaj na zakończenie procesu rejestracji.
+1. Wybierz pozycję **Wdróż**. Wdrożenie może potrwać około 20 minut.
 
-    ![Blok wdrażania modelu](media/how-to-create-portal-experiments/deploy-model-blade.png)
+    Po pomyślnym zakończeniu wdrażania zostanie wyświetlony następujący komunikat.
 
-1. Po zarejestrowaniu modelu będzie można pobrać skrypt oceniania (scoring.py) i skrypt środowiska (condaEnv. yml), który będzie używany podczas wdrażania.
+    ![Wdrażanie ukończone](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png) 
 
-1. Gdy pobierany jest skrypt oceniania i skrypt środowiska, przejdź do bloku **zasoby** okienka nawigacji po lewej stronie i wybierz pozycję **modele**.
+Teraz masz działającą usługę sieci Web do generowania prognoz!
 
-    ![Modele okienka nawigacji](media/how-to-create-portal-experiments/nav-pane-models.png)
+## <a name="next-steps"></a>Następne kroki
 
-1. Wybierz zarejestrowany model i wybierz pozycję "Utwórz obraz".
-
-    Można zidentyfikować model według jego opisu, który będzie zawierać identyfikator przebiegu, numer iteracji, w następującym formacie: *< Run_ID > _ < Iteration_number > _Model*
-
-    ![Modele: Tworzenie obrazu](media/how-to-create-portal-experiments/model-create-image.png)
-
-1. Wprowadź nazwę obrazu. 
-1. Wybierz przycisk **Przeglądaj** znajdujący się obok pola "ocenianie pliku", aby załadować plik oceniania (Scoring.py), który został wcześniej pobrany.
-
-1. Wybierz przycisk **Przeglądaj** obok pola "Conda plik", aby załadować plik środowiska (condaEnv. yml), który został wcześniej pobrany.
-
-    Możesz użyć własnego skryptu oceniania i pliku Conda, a także przekazać dodatkowe pliki. [Dowiedz się więcej o skrypcie oceniania](how-to-deploy-and-where.md#script).
-
-      >[!Important]
-      > Nazwy plików muszą mieć długość 32 znaków i muszą zaczynać się i kończyć znakiem alfanumerycznym. Może zawierać łączniki, podkreślenia, kropki i znaki alfanumeryczne między. Spacje są niedozwolone.
-
-    ![Tworzenie obrazu](media/how-to-create-portal-experiments/create-image.png)
-
-1. Wybierz przycisk "Utwórz", aby rozpocząć tworzenie obrazu. Wykonanie tej czynności może potrwać kilka minut, a po zakończeniu zobaczysz komunikat na górnym pasku.
-1. Przejdź do karty "obrazy", zaznacz pole wyboru obok obrazu, który chcesz wdrożyć, a następnie wybierz polecenie "Utwórz wdrożenie". [Dowiedz się więcej o wdrożeniach](how-to-deploy-and-where.md).
-
-    Dostępne są dwie opcje wdrożenia.
-     + Azure Container Instance (ACI) — Ta funkcja jest używana więcej na potrzeby testowania zamiast wdrażania operacyjnego w odpowiedniej skali. Upewnij się, że wartości dla co najmniej jednego rdzenia _procesora CPU_i co najmniej jeden GIGABAJT (GB) dla _pojemności rezerwy pamięci_
-     + Azure Kubernetes Service (AKS)) — ta opcja jest dla wdrożenia w odpowiedniej skali. Konieczne będzie przygotowanie obliczeń opartych na AKS.
-
-     ![Rastrow Tworzenie wdrożenia](media/how-to-create-portal-experiments/images-create-deployment.png)
-
-1. Po zakończeniu wybierz pozycję **Utwórz**. Wdrożenie modelu może potrwać kilka minut, aby zakończyć działanie każdego potoku.
-
-1. To wszystko! Masz działającą usługę sieci Web do generowania prognoz.
-
-## <a name="next-steps"></a>Kolejne kroki
-
+* Wypróbuj kompleksowy samouczek dotyczący [tworzenia pierwszego zautomatyzowanego eksperymentu ml z Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 * [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md) i Azure Machine Learning.
 * [Zapoznaj](how-to-understand-automated-ml.md)się z automatycznymi wynikami uczenia maszynowego.
 * [Dowiedz się, jak korzystać z usługi sieci Web](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).

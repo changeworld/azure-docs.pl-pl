@@ -4,7 +4,7 @@ description: Wdrażanie pul maszyn wirtualnych do nauki o danych jako zasób udo
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza, zespół danych dla celów naukowych
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
-ms.author: gokuma
-ms.openlocfilehash: 5cce7f691204a0fd116627fadde1076a4505fcb2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 44983de87ce2e774356bf506e3a868da922a3ba3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502286"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558050"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Utwórz współużytkowanej puli maszyn wirtualnych do nauki o danych
 
 W tym artykule omówiono sposób tworzenia współużytkowanej puli z maszynami wirtualnymi analizy danych (maszyny) dla zespołu do użycia. Korzyści z używania współużytkowanej puli są lepsze wykorzystanie zasobów, ułatwianie udostępniania i współpracy i bardziej efektywne zarządzanie zasobami nauki. 
 
-Aby utworzyć pulę maszyny, można użyć wielu metod i technologii. Ten artykuł koncentruje się na pule interaktywne maszyn wirtualnych. Infrastrukturę alternatywnych obliczeniową zarządzanych jest obliczeniowego usługi Azure Machine Learning. Zobacz [Konfigurowanie celów obliczeń](../service/how-to-set-up-training-targets.md#amlcompute) Aby uzyskać więcej informacji.
+Aby utworzyć pulę maszyny, można użyć wielu metod i technologii. Ten artykuł koncentruje się na pulach dla interaktywnych maszyn wirtualnych. Alternatywna zarządzana infrastruktura obliczeniowa to Azure Machine Learning COMPUTE. Aby uzyskać więcej informacji, zobacz [Konfigurowanie obiektów docelowych obliczeń](../service/how-to-set-up-training-targets.md#amlcompute) .
 
 ## <a name="interactive-vm-pool"></a>Interaktywne puli maszyn wirtualnych
 

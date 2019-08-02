@@ -1,55 +1,54 @@
 ---
-title: Dodaj/Usuń punkt końcowy serwera usługi Azure File Sync | Dokumentacja firmy Microsoft
-description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdrożenia usługi Azure Files.
-services: storage
+title: Dodawanie/Usuwanie punktu końcowego serwera Azure File Sync | Microsoft Docs
+description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdrożenia Azure Files.
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 31bb71f016dd7f9dd37c766ece25caf8f300754b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a4a77a9b4cdd30c04de4c4eb9d8731c1ea0616c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686950"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699249"
 ---
-# <a name="addremove-an-azure-file-sync-server-endpoint"></a>Dodaj/Usuń punkt końcowy serwera usługi Azure File Sync
-Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez przekształcenie serwerów Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
+# <a name="addremove-an-azure-file-sync-server-endpoint"></a>Dodawanie/Usuwanie punktu końcowego serwera Azure File Sync
+Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez transformowanie serwerów z systemem Windows do szybkiej pamięci podręcznej udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
 
-A *punkt końcowy serwera* reprezentuje konkretnej lokalizacji na *zarejestrowanego serwera*, takie jak folder na wolumin serwera lub w katalogu głównym woluminu. Wiele punktów końcowych serwera może istnieć na tym samym woluminie, jeśli nakładania ich przestrzenie nazw (na przykład F:\sync1 i F:\sync2). Można skonfigurować zasad obsługi warstw chmury osobno dla każdego punktu końcowego serwera. Jeśli dodasz lokalizacji przy użyciu istniejącego zestawu plików jako punkt końcowy serwera z grupą synchronizacji te pliki zostaną scalone z innymi plikami, znajdujące się na inne punkty końcowe w grupie synchronizacji.
+*Punkt końcowy serwera* reprezentuje konkretną lokalizację na *zarejestrowanym serwerze*, na przykład folder na woluminie serwera lub w katalogu głównym woluminu. Wiele punktów końcowych serwera może istnieć na tym samym woluminie, jeśli ich przestrzenie nazw nie nakładają się na siebie (na przykład F:\sync1 i F:\sync2). Zasady dotyczące warstw chmurowych można skonfigurować osobno dla każdego punktu końcowego serwera. W przypadku dodania lokalizacji serwera z istniejącym zestawem plików jako punktu końcowego serwera do grupy synchronizacji te pliki zostaną scalone z innymi plikami znajdującymi się już w innych punktach końcowych w grupie synchronizacji.
 
-Zobacz [sposób wdrażania usługi Azure File Sync](storage-sync-files-deployment-guide.md) informacji na temat wdrażania usługi Azure File Sync end-to-end.
+Zapoznaj się z artykułem [jak wdrożyć Azure File Sync](storage-sync-files-deployment-guide.md) , aby uzyskać informacje na temat sposobu wdrażania Azure File Sync na końcu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby utworzyć punkt końcowy serwera, najpierw upewnij się, że są spełnione poniższe kryteria: 
-- Serwer został zainstalowany agent usługi Azure File Sync i został zarejestrowany. Instrukcje dotyczące instalowania agenta synchronizacji plików platformy Azure można znaleźć w [zarejestrować/wyrejestrować danego serwera za pomocą usługi Azure File Sync](storage-sync-files-server-registration.md) artykułu. 
-- Upewnij się, że wdrożono usługę synchronizacji magazynu. Zobacz [sposób wdrażania usługi Azure File Sync](storage-sync-files-deployment-guide.md) Aby uzyskać szczegółowe informacje na temat wdrażania usługi synchronizacji magazynu. 
-- Upewnij się, czy grupa synchronizacji został pomyślnie wdrożony. Dowiedz się, jak [Tworzenie grupy synchronizacji](storage-sync-files-deployment-guide.md#create-a sync-group-and-a-cloud-endpoint).
-- Upewnij się, że serwer jest połączony z Internetem i czy Azure jest dostępna. Firma Microsoft korzysta z portu 443 dla całej komunikacji między serwerem a naszej usługi.
+Aby utworzyć punkt końcowy serwera, należy najpierw upewnić się, że spełnione są następujące kryteria: 
+- Na serwerze zainstalowano agenta Azure File Sync i został on zarejestrowany. Instrukcje dotyczące instalowania agenta Azure File Sync można znaleźć w artykule [Rejestrowanie/Wyrejestrowywanie serwera z Azure File Sync](storage-sync-files-server-registration.md) artykułem. 
+- Upewnij się, że została wdrożona usługa synchronizacji magazynu. Zobacz [jak wdrożyć Azure File Sync](storage-sync-files-deployment-guide.md) , aby uzyskać szczegółowe informacje na temat wdrażania usługi synchronizacji magazynu. 
+- Upewnij się, że została wdrożona Grupa synchronizacji. Dowiedz się, jak [utworzyć grupę synchronizacji](storage-sync-files-deployment-guide.md#create-a sync-group-and-a-cloud-endpoint).
+- Upewnij się, że serwer jest połączony z Internetem i że platforma Azure jest dostępna. Na potrzeby komunikacji między serwerem a naszą usługą korzystamy z portu 443.
 
 ## <a name="add-a-server-endpoint"></a>Dodawanie punktu końcowego serwera
-Aby dodać punkt końcowy serwera, przejdź do grupy synchronizacji żądany, a następnie wybierz pozycję "Dodaj punkt końcowy serwera".
+Aby dodać punkt końcowy serwera, przejdź do żądanej grupy synchronizacji, a następnie wybierz pozycję "Dodaj punkt końcowy serwera".
 
 ![Dodawanie nowego punktu końcowego serwera w okienku grupy synchronizacji](media/storage-sync-files-server-endpoint/add-server-endpoint-1.png)
 
-Poniższe informacje są wymagane w ramach **Dodaj punkt końcowy serwera**:
+W obszarze **Dodawanie punktu końcowego serwera**wymagane są następujące informacje:
 
-- **Zarejestrowany serwer**: Nazwa serwera lub klastra, aby utworzyć punkt końcowy serwera na.
-- **Ścieżka**: Ścieżka w systemie Windows Server mają być synchronizowane w ramach grupy synchronizacji.
-- **Obsługa warstw w chmurze**: Przełącznik, aby włączyć lub wyłączyć chmury warstw. Po włączeniu będzie warstw w chmurze *warstwy* pliki do udziałów plików platformy Azure. Spowoduje to konwersję lokalnych udziałów plików do pamięci podręcznej zamiast pełną kopię zestawu danych, ułatwiające zarządzanie wydajności miejsca na serwerze.
-- **Wolne miejsce w woluminie**: ilość wolnego miejsca na dysku zarezerwowane na wolumin, który znajduje się punkt końcowy serwera. Na przykład jeśli wolne miejsce w woluminie wynosi 50% na woluminie z punktem końcowym pojedynczego serwera, około połowie wielkości danych będą umieszczane do usługi Azure Files. Niezależnie od tego, czy w chmurze warstw jest włączona, udziału plików platformy Azure ma zawsze pełne kopii danych w grupie synchronizacji.
+- **Zarejestrowany serwer**: Nazwa serwera lub klastra, na którym ma zostać utworzony punkt końcowy serwera.
+- **Ścieżka**: Ścieżka w systemie Windows Server, która ma zostać zsynchronizowana w ramach grupy synchronizacji.
+- Obsługa **warstw w chmurze**: Przełącznik umożliwiający włączenie lub wyłączenie obsługi warstw w chmurze. Gdy ta *Funkcja jest włączona* , Obsługa warstw w chmurze będzie uwzględniać pliki w udziałach plików platformy Azure. Powoduje to przekonwertowanie lokalnych udziałów plików na pamięć podręczną, a nie pełną kopię zestawu danych, co ułatwia zarządzanie wydajnością miejsca na serwerze.
+- **Wolne miejsce**w woluminie: ilość wolnego miejsca do zarezerwowania na woluminie, na którym znajduje się punkt końcowy serwera. Na przykład, jeśli ilość wolnego miejsca na woluminie jest ustawiona na 50% na woluminie z jednym punktem końcowym serwera, około połowy ilości danych zostanie przydzielona do Azure Files. Bez względu na to, czy włączono obsługę warstw w chmurze, udział plików platformy Azure zawsze ma kompletną kopię danych w grupie synchronizacji.
 
-Wybierz **Utwórz** Dodawanie punktu końcowego serwera. Pliki znajdujące się w przestrzeni nazw grupy synchronizacji będą teraz przechowywane w synchronizacji. 
+Wybierz pozycję **Utwórz** , aby dodać punkt końcowy serwera. Pliki w przestrzeni nazw grupy synchronizacji będą teraz nadal zsynchronizowane. 
 
 ## <a name="remove-a-server-endpoint"></a>Usuwanie punktu końcowego serwera
-Jeśli chcesz zrezygnować z używania usługi Azure File Sync dla punktu końcowego na danym serwerze, można usunąć punktu końcowego serwera. 
+Jeśli chcesz przestać używać Azure File Sync dla danego punktu końcowego serwera, możesz usunąć punkt końcowy serwera. 
 
 > [!Warning]  
-> Nie należy próbować Rozwiązywanie problemów z usługą synchronizacji, obsługi warstw w chmurze lub dowolnego aspektu usługi Azure File Sync przez usunięcie i ponowne utworzenie punktu końcowego serwera, chyba że jawnie zalecił inżynier z firmy Microsoft. Usuwanie punktu końcowego serwera jest operacją destrukcyjną, a pliki warstwowe w ramach punktu końcowego serwera zostanie nie "ponownie połączony" do ich lokalizacji w udziale plików platformy Azure po punkt końcowy serwera są odtwarzane, co spowoduje, że błędy synchronizacji. Należy również zauważyć, pliki warstwowe, które znajdują się poza przestrzeni nazw punktu końcowego serwera może być trwale utracone. Pliki warstwowe mogą istnieć w ramach Twojej serwerze punktu końcowego, nawet jeśli chmury nigdy nie włączono obsługi warstw.
+> Nie należy próbować rozwiązywać problemów z synchronizacją, warstwami chmury ani jakimkolwiek innym aspektem Azure File Sync przez usunięcie i ponowne utworzenie punktu końcowego serwera, chyba że zostanie on jawnie nawiązany przez inżyniera firmy Microsoft. Usunięcie punktu końcowego serwera jest operacją niszczącą, a pliki warstwowe w ramach punktu końcowego serwera nie będą "ponownie połączone" z ich lokalizacjami w udziale plików platformy Azure po ponownym utworzeniu punktu końcowego serwera, co spowoduje błędy synchronizacji. Należy również pamiętać, że pliki warstwowe istniejące poza przestrzenią nazw punktu końcowego serwera mogą zostać trwale utracone. Pliki warstwowe mogą znajdować się w punkcie końcowym serwera, nawet jeśli Obsługa warstw w chmurze nigdy nie została włączona.
 
-Aby upewnić się, że wszystkie pliki warstwowe zostaną odwołane przed usunięciem punktu końcowego serwera, wyłącz obsługi warstw w punkcie końcowym serwera w chmurze, a następnie wykonaj następujące polecenie cmdlet programu PowerShell, aby odwołać wszystkie pliki warstwowe w przestrzeni nazw punktu końcowego serwera:
+Aby upewnić się, że wszystkie pliki warstwowe są ponownie wywoływane przed usunięciem punktu końcowego serwera, Wyłącz obsługę warstw w chmurze w punkcie końcowym serwera, a następnie wykonaj następujące polecenie cmdlet programu PowerShell, aby odwołać wszystkie pliki warstwowe w przestrzeni nazw punktu końcowego serwera:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -57,17 +56,17 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 
 > [!Note]  
-> Jeśli wolumin lokalny, który jest hostem serwera nie ma wystarczającej ilości wolnego miejsca, aby odwołać wszystkie dane warstwowe `Invoke-StorageSyncFileRecall` polecenie cmdlet nie powiedzie się.  
+> Jeśli na lokalnym woluminie hostującym serwer nie ma wystarczającej ilości wolnego miejsca, aby odwołać wszystkie dane warstwowe `Invoke-StorageSyncFileRecall` , polecenie cmdlet kończy się niepowodzeniem.  
 
 Aby usunąć punkt końcowy serwera:
 
-1. Przejdź do usługi synchronizacji magazynu, gdy serwer jest zarejestrowany.
-2. Przejdź do grupy synchronizacji żądaną.
-3. Usuń punkt końcowy serwera, której wymagasz w grupie synchronizacji w usłudze synchronizacji magazynu. Można to zrobić, klikając prawym przyciskiem myszy odpowiedni serwer punktu końcowego w okienku grup synchronizacji.
+1. Przejdź do usługi synchronizacji magazynu, w której zarejestrowano serwer.
+2. Przejdź do żądanej grupy synchronizacji.
+3. Usuń punkt końcowy serwera, który należy do grupy synchronizacji w usłudze synchronizacji magazynu. Można to zrobić, klikając prawym przyciskiem myszy odpowiedni punkt końcowy serwera w okienku Grupa synchronizacji.
 
-    ![Usuwanie punktu końcowego serwera z grupą synchronizacji](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
+    ![Usuwanie punktu końcowego serwera z grupy synchronizacji](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Zarejestrować/wyrejestrować serwer usługi Azure File Sync](storage-sync-files-server-registration.md)
+## <a name="next-steps"></a>Następne kroki
+- [Zarejestruj/Wyrejestruj serwer z Azure File Sync](storage-sync-files-server-registration.md)
 - [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
 - [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)

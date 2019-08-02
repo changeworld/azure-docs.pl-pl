@@ -1,9 +1,9 @@
 ---
-title: Uaktualnianie klastra usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Uaktualnienie usługi Service Fabric kodu i/lub konfiguracji, która działa w klastrze usługi Service Fabric, włącznie z ustawieniem trybu aktualizacji klastra, uaktualnianie certyfikaty, dodawanie portów aplikacji, wykonując poprawek systemu operacyjnego i tak dalej. Czego możesz oczekiwać, gdy wykonywane są uaktualnienia?
+title: Uaktualnianie klastra usługi Azure Service Fabric | Microsoft Docs
+description: Uaktualnij Service Fabric kod i/lub konfigurację, w której działa klaster Service Fabric, w tym Ustawianie trybu aktualizacji klastra, uaktualnianie certyfikatów, Dodawanie portów aplikacji, wykonywanie poprawek systemu operacyjnego i tak dalej. Czego można oczekiwać w przypadku wykonywania uaktualnień?
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
@@ -13,69 +13,69 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
-ms.author: aljo
-ms.openlocfilehash: 234bff5049babf0c4b1d036b40201720b2736228
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 03fd5f2950349f0dc76021d28845e383c0ba6a64
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60714719"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599816"
 ---
-# <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Uaktualnienie wersji usługi Service Fabric w klastrze
+# <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Uaktualnianie Service Fabric wersji klastra
 
-Dla każdego nowoczesnego systemu projektowanie pod kątem możliwość jest kluczem do osiągnięcia długoterminowym sukcesie produktu. Klaster usługi Azure Service Fabric jest zasobem, który właścicielem, ale jest częściowo zarządzany przez firmę Microsoft. W tym artykule opisano sposób uaktualniania wersji usługi Service Fabric działającym w klastrze platformy Azure.
+W przypadku każdego nowoczesnego systemu projektowanie pod kątem wydajności jest kluczem do osiągnięcia długotrwałego sukcesu produktu. Klaster Service Fabric platformy Azure to zasób, którego jesteś członkiem, ale jest częścią zarządzaną przez firmę Microsoft. W tym artykule opisano sposób uaktualniania wersji Service Fabric uruchomionej w klastrze platformy Azure.
 
-Można ustawić do klastra, aby otrzymywać uaktualnienia sieci szkieletowej automatyczne, zgodnie z ich wydaniu przez firmę Microsoft lub możesz wybrać wersję obsługiwanych w sieci szkieletowej, że chcesz użyć do klastra, aby znajdować się na.
+Można ustawić, aby klaster odbierał automatyczne uaktualnienia sieci szkieletowej, gdy zostaną wydane przez firmę Microsoft lub można wybrać obsługiwaną wersję sieci szkieletowej, na której ma być włączony klaster.
 
-Można to zrobić, ustawienia konfiguracji klastra "element upgradeMode" w portalu lub przy użyciu usługi Resource Manager w momencie utworzenia lub nowszych na działającym klastrem 
+W tym celu należy ustawić konfigurację klastra "upgrademode" w portalu lub przy użyciu Menedżer zasobów w momencie tworzenia lub w późniejszym klastrze na żywo. 
 
 > [!NOTE]
-> Upewnij się, że utrzymywania klastra usługi zawsze uruchomiona wersja obsługiwana w sieci szkieletowej. Gdy firma Microsoft ogłaszamy wydanie nowej wersji usługi Service fabric, poprzednia wersja jest oznaczony do zakończenia wsparcia po co najmniej 60 dni od tego dnia. Nowe wersje są anonsowane [na blogu zespołu usługi Service fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Nowa wersja jest dostępna dla wybrany. 
+> Upewnij się, że w klastrze działa zawsze obsługiwana wersja sieci szkieletowej. Po opublikowaniu wydania nowej wersji usługi Service Fabric Poprzednia wersja zostanie oznaczona jako przeznaczona do końca wsparcia po upływie co najmniej 60 dni od tej daty. Nowe wersje są ogłaszane [na blogu zespołu usługi Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Nowe wydanie jest dostępne do wyboru. 
 > 
 > 
 
-14 dni przed wygaśnięciem wersji, którą klaster działa, zdarzenie kondycji jest generowany tak, że przełączenie klastra w wskazuje ostrzegawczy stan kondycji. Klaster będzie pozostawał w stanie ostrzeżenia, dopóki nie można uaktualnić do wersji obsługiwanej sieci szkieletowej.
+14 dni przed wygaśnięciem wydania klastra zostanie wygenerowane zdarzenie kondycji, które powoduje przełączenie klastra w stan kondycji ostrzegawczej. Ten klaster pozostaje w stanie ostrzegawczym do momentu uaktualnienia do obsługiwanej wersji sieci szkieletowej.
 
-## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>Ustaw tryb uaktualniania w witrynie Azure portal
-Podczas tworzenia klastra, można ustawić automatyczne lub ręczne klastra.
+## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>Ustaw tryb uaktualniania w Azure Portal
+Podczas tworzenia klastra można ustawić automatyczny lub ręczny klaster.
 
 ![Create_Manualmode][Create_Manualmode]
 
-Można ustawić klastra automatyczne lub ręczne, gdy w klastrze na żywo, za pomocą środowiska zarządzania. 
+Klaster można ustawić na automatyczny lub ręczny w przypadku klastra na żywo przy użyciu środowiska zarządzania. 
 
-### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal"></a>Uaktualnianie do nowej wersji w klastrze, który jest ustawiany w trybie ręcznej za pośrednictwem portalu.
-Aby przeprowadzić uaktualnienie do nowej wersji, wszystko, co należy zrobić to wybierz dostępnej wersji z listy rozwijanej, a następnie zapisz. Uaktualnienia sieci szkieletowej pobiera rozpoczęła się automatycznie. Zasady dotyczące kondycji klastra (kombinację kondycji węzła i kondycji wszystkich aplikacji uruchomionych w klastrze) są przestrzegane podczas uaktualniania.
+### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal"></a>Uaktualnianie do nowej wersji w klastrze, który jest ustawiony na tryb ręczny za pośrednictwem portalu.
+Aby uaktualnić do nowej wersji, wystarczy wybrać dostępną wersję z listy rozwijanej i zapisać. Uaktualnianie sieci szkieletowej zostanie rozpoczęte automatycznie. Zasady kondycji klastra (połączenie kondycji węzła i kondycji wszystkich aplikacji działających w klastrze) są przestrzegane podczas uaktualniania.
 
-Jeśli zasady dotyczące kondycji klastra nie są spełnione, uaktualnienie zostanie wycofana. Przewiń w dół tego dokumentu, aby dowiedzieć się więcej na temat ustawiania tych zasad niestandardowych kondycji. 
+Jeśli zasady kondycji klastra nie są spełnione, uaktualnienie jest wycofywane. Przewiń w dół ten dokument, aby dowiedzieć się więcej na temat ustawiania tych niestandardowych zasad kondycji. 
 
-Po rozwiązaniu problemów, które spowodowało wycofywania, musisz zainicjować aktualizację ponownie, wykonując te same kroki co wcześniej.
+Po rozwiązaniu problemów, które spowodowały wycofanie, należy ponownie zainicjować uaktualnienie, wykonując te same kroki jak wcześniej.
 
 ![Manage_Automaticmode][Manage_Automaticmode]
 
-## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>Ustaw tryb uaktualniania przy użyciu szablonu usługi Resource Manager
-Dodaj konfigurację "element upgradeMode" w definicji zasobu Microsoft.ServiceFabric/clusters i ustaw opcję "clusterCodeVersion" na jedną z wersji obsługiwanych w sieci szkieletowej, jak pokazano poniżej, a następnie wdrożyć szablon. Prawidłowe wartości dla "element upgradeMode" to "Ręczny" lub "Automatyczny"
+## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>Ustawianie trybu uaktualniania przy użyciu szablonu Menedżer zasobów
+Dodaj konfigurację "upgrademode" do definicji zasobu Microsoft. servicefabric/klastrów i ustaw wartość "clusterCodeVersion" na jedną z obsługiwanych wersji sieci szkieletowej, jak pokazano poniżej, a następnie wdróż szablon. Prawidłowe wartości dla "upgrademode" są "ręczne" lub "Automatyczne"
 
 ![ARMUpgradeMode][ARMUpgradeMode]
 
-### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Uaktualnianie do nowej wersji w klastrze, który jest ustawiany w trybie ręcznie za pomocą szablonu usługi Resource Manager.
-Gdy klaster jest w trybie ręcznej, aby uaktualnić do nowej wersji Zmień "clusterCodeVersion" do obsługiwanej wersji i wdrożyć ją. Wdrożenie szablonu kopnięć uaktualnienia sieci szkieletowej pobiera rozpoczęła się automatycznie. Zasady dotyczące kondycji klastra (kombinację kondycji węzła i kondycji wszystkich aplikacji uruchomionych w klastrze) są przestrzegane podczas uaktualniania.
+### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Uaktualnianie do nowej wersji w klastrze, który jest ustawiony na tryb ręczny za pośrednictwem szablonu Menedżer zasobów.
+Jeśli klaster działa w trybie ręcznym, aby przeprowadzić uaktualnienie do nowej wersji, Zmień wartość "clusterCodeVersion" na obsługiwaną wersję i Wdróż ją. Wdrożenie szablonu, rozpoczęcie uaktualniania sieci szkieletowej zostaje automatycznie wyłączone. Zasady kondycji klastra (połączenie kondycji węzła i kondycji wszystkich aplikacji działających w klastrze) są przestrzegane podczas uaktualniania.
 
-Jeśli zasady dotyczące kondycji klastra nie są spełnione, uaktualnienie zostanie wycofana.  
+Jeśli zasady kondycji klastra nie są spełnione, uaktualnienie jest wycofywane.  
 
-Po rozwiązaniu problemów, które spowodowało wycofywania, musisz zainicjować aktualizację ponownie, wykonując te same kroki co wcześniej.
+Po rozwiązaniu problemów, które spowodowały wycofanie, należy ponownie zainicjować uaktualnienie, wykonując te same kroki jak wcześniej.
 
-## <a name="set-custom-health-polices-for-upgrades"></a>Kondycja niestandardowy zestaw zasad do uaktualnienia
-Można określić, że kondycja niestandardowe zasady dla uaktualnienie sieci szkieletowej. Jeśli ustawisz klastra do uaktualnienia sieci szkieletowej automatyczne, a następnie stosowane te zasady do [fazy 1 uaktualnienia sieci szkieletowej automatyczne](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades).
-Jeśli ustawiono klastra dla sieci szkieletowej ręcznego uaktualnienia, te zasady zastosowana podczas wybierania nowej wersji, wyzwalając systemu, aby uruchamiał uaktualnienia sieci szkieletowej w klastrze. Jeśli nie zastąpisz zasady, są używane wartości domyślne.
+## <a name="set-custom-health-polices-for-upgrades"></a>Ustawianie niestandardowych zasad kondycji dla uaktualnień
+Możesz określić niestandardowe zasady kondycji dla uaktualniania sieci szkieletowej. Jeśli ustawiono klaster na potrzeby automatycznych uaktualnień sieci szkieletowej, te zasady zostaną zastosowane do [fazy 1 uaktualnienia automatycznej sieci szkieletowej](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades).
+Jeśli ustawiono klaster do ręcznego uaktualniania sieci szkieletowej, te zasady zostaną zastosowane przy każdym wybraniu nowej wersji wyzwalającej system w celu uruchomienia uaktualnienia sieci szkieletowej w klastrze. Jeśli nie zastąpisz zasad, zostaną użyte wartości domyślne.
 
-Można określić zasady dotyczące kondycji niestandardowych lub Przejrzyj bieżące ustawienia w bloku "uaktualnienia sieci szkieletowej", wybierając pozycję Zaawansowane ustawienia uaktualniania. Przejrzyj następujący obraz na temat. 
+Możesz określić niestandardowe zasady dotyczące kondycji lub przejrzeć bieżące ustawienia w bloku "Sieć szkieletowa", wybierając zaawansowane ustawienia uaktualnienia. Zapoznaj się z poniższym obrazem. 
 
-![Zarządzanie zasadami kondycji niestandardowe][HealthPolices]
+![Zarządzanie niestandardowymi zasadami kondycji][HealthPolices]
 
-## <a name="list-all-available-versions-for-all-environments-for-a-given-subscription"></a>Lista wszystkich dostępnych wersji dla wszystkich środowisk w ramach danej subskrypcji
-Uruchom następujące polecenie, a powinna pojawić się dane wyjściowe podobne do poniższego.
+## <a name="list-all-available-versions-for-all-environments-for-a-given-subscription"></a>Wyświetl wszystkie dostępne wersje dla wszystkich środowisk dla danej subskrypcji
+Uruchom następujące polecenie, a następnie powinny pojawić się dane wyjściowe podobne do tego.
 
-"supportExpiryUtc" informuje, kiedy Twoja danego wydania wygaśnie lub utracił ważność. Najnowsza wersja ma prawidłową datę — ma wartość "9999-12-31T23:59:59.9999999", po prostu oznacza to, że data wygaśnięcia nie jest jeszcze ustawiony.
+"supportExpiryUtc" informuje o tym, kiedy dana wersja wygaśnie lub wygasła. Najnowsza wersja nie ma poprawnej daty — ma wartość "9999-12-31T23:59:59.9999999", co oznacza, że data wygaśnięcia nie jest jeszcze ustawiona.
 
 ```REST
 GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2016-09-01
@@ -120,9 +120,9 @@ Output:
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak dostosować niektóre [usługi ustawień sieci szkieletowej klastra Service fabric](service-fabric-cluster-fabric-settings.md)
-* Dowiedz się, jak [skalowanie klastra w poziomie i pionie](service-fabric-cluster-scale-up-down.md)
-* Dowiedz się więcej o [uaktualnień aplikacji](service-fabric-application-upgrade.md)
+* Dowiedz się, jak dostosować niektóre [Ustawienia sieci szkieletowej klastra usługi Service Fabric](service-fabric-cluster-fabric-settings.md)
+* Dowiedz się [, jak skalować klaster w i na zewnątrz](service-fabric-cluster-scale-up-down.md)
+* Informacje o [uaktualnieniach aplikacji](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

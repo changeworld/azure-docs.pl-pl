@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b000610b5cba6f768a629ad797500a57597f2569
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 25f8c19ad1c574f6a3d84d50d911b4da6b52cfc3
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335698"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516502"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych z obsługą Azure Disk Encryption w innym regionie platformy Azure
 
@@ -23,9 +23,9 @@ W tym artykule opisano, jak replikować maszyny wirtualne z obsługą Azure Disk
 >Azure Site Recovery obecnie obsługuje tylko maszyny wirtualne platformy Azure z systemem operacyjnym Windows i obsługujące [szyfrowanie za pomocą Azure Active Directory (Azure AD)](https://aka.ms/ade-aad-app).
 
 ## <a id="required-user-permissions"></a>Wymagane uprawnienia użytkownika
-Site Recovery wymaga, aby użytkownik miał uprawnienia do tworzenia magazynu kluczy w regionie docelowym i kopiowania kluczy do regionu.
+Site Recovery wymaga, aby użytkownik miał uprawnienia do tworzenia magazynu kluczy w regionie docelowym i kopiowania kluczy z magazynu kluczy regionów źródłowych do magazynu kluczy regionu docelowego.
 
-Aby włączyć replikację maszyn wirtualnych z włączoną funkcją szyfrowania dysku z Azure Portal, użytkownik musi mieć następujące uprawnienia:
+Aby włączyć replikację maszyn wirtualnych z włączoną funkcją szyfrowania dysku z Azure Portal, użytkownik musi mieć następujące uprawnienia zarówno w **regionie źródłowym, jak i** w magazynach kluczy docelowych.
 
 - Uprawnienia magazynu kluczy
     - List, Create i Get

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: de712d63fa2315a85c6c0eaf392d9c17758e4999
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ce22efd6eccdc067b05697b8389c821c4c01a347
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226178"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638594"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw .NET Core SDK Azure Cosmos DB dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -28,8 +28,8 @@ ms.locfileid: "68226178"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulkexecutor — platforma .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulkexecutor — platforma Java](sql-api-sdk-bulk-executor-java.md)
+> * [Wykonawca zbiorczy — .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Moduł wykonawczy zbiorczej — Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|

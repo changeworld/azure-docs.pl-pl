@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: cd377e78abe328814795bb1f75465b090a13e456
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 551f140c22677bea363ad5d8f43bf9670f783a1d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228362"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725604"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -35,14 +35,14 @@ ms.locfileid: "68228362"
 
 Dostępne są dwie opcje do skonfigurowania klastra program Pacemaker w systemie Azure. Możesz użyć agenta preferowane dba o ponowne uruchomienie węzła nie powiodło się za pośrednictwem interfejsów API platformy Azure, lub można użyć urządzenia interwencja.
 
-Urządzenie interwencja wymaga co najmniej jedną maszynę wirtualną dodatkowe, działa jako serwer obiektów docelowych iSCSI, która zawiera urządzenia z systemem interwencja. Te serwery obiektów docelowych iSCSI może jednak być współużytkowane z innymi klastrami program Pacemaker. Zaletą używania urządzenia z systemem interwencja jest krótszy czas pracy awaryjnej i, jeśli używasz interwencja urządzeniami lokalnymi, nie wymaga żadnych zmian na sposób działania klastra program pacemaker. Aby zezwolić na urządzeniu z systemem interwencja stają się niedostępne, na przykład podczas stosowania poprawek systemu operacyjnego serwera docelowego iSCSI, można użyć maksymalnie trzech urządzeń interwencja klastra program Pacemaker. Jeśli chcesz użyć więcej niż jedno urządzenie interwencja na program Pacemaker, pamiętaj wdrożyć wiele serwerów obiektów docelowych iSCSI i połączyć interwencja jednego z każdego serwera docelowego iSCSI. Zalecamy używanie jednego urządzenia interwencja lub trzy. Program pacemaker nie będzie automatycznie ogrodzenia węzła klastra, jeśli tylko skonfigurować dwa urządzenia interwencja i jeden z nich nie jest dostępny. Jeśli chcesz można było ogrodzenia, gdy jeden serwer obiektów docelowych iSCSI nie działa, należy korzystać z trzech urządzeń interwencja i w związku z tym trzech serwerów obiektów docelowych iSCSI.
+Urządzenie interwencja wymaga co najmniej jedną maszynę wirtualną dodatkowe, działa jako serwer obiektów docelowych iSCSI, która zawiera urządzenia z systemem interwencja. Te serwery obiektów docelowych iSCSI może jednak być współużytkowane z innymi klastrami program Pacemaker. Zaletą korzystania z urządzenia SBD jest szybszy czas pracy awaryjnej i, jeśli używasz urządzeń SBD lokalnie, nie wymaga żadnych zmian dotyczących sposobu działania klastra Pacemaker. Aby zezwolić na urządzeniu z systemem interwencja stają się niedostępne, na przykład podczas stosowania poprawek systemu operacyjnego serwera docelowego iSCSI, można użyć maksymalnie trzech urządzeń interwencja klastra program Pacemaker. Jeśli chcesz użyć więcej niż jedno urządzenie interwencja na program Pacemaker, pamiętaj wdrożyć wiele serwerów obiektów docelowych iSCSI i połączyć interwencja jednego z każdego serwera docelowego iSCSI. Zalecamy używanie jednego urządzenia interwencja lub trzy. Program pacemaker nie będzie automatycznie ogrodzenia węzła klastra, jeśli tylko skonfigurować dwa urządzenia interwencja i jeden z nich nie jest dostępny. Jeśli chcesz można było ogrodzenia, gdy jeden serwer obiektów docelowych iSCSI nie działa, należy korzystać z trzech urządzeń interwencja i w związku z tym trzech serwerów obiektów docelowych iSCSI.
 
-Jeśli nie chcesz inwestować w dodatkowych maszyn wirtualnych, można również użyć agent Odgradzający Azure. Minusem jest to, że przejścia w tryb failover może potrwać od 10 do 15 minut, jeśli stop zasobów ulegnie awarii lub węzłów klastra nie może komunikować się które sobie nawzajem już.
+Jeśli nie chcesz inwestować w jedną dodatkową maszynę wirtualną, możesz również użyć agenta usługi Azure ogrodzenia. Minusem jest to, że przejścia w tryb failover może potrwać od 10 do 15 minut, jeśli stop zasobów ulegnie awarii lub węzłów klastra nie może komunikować się które sobie nawzajem już.
 
 ![Program pacemaker w systemie SLES — omówienie](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Przy planowaniu i wdrażaniu program Pacemaker w systemie Linux w klastrze węzłów i interwencja urządzeń jest niezbędne dla ogólną niezawodność kompletna Konfiguracja klastra zaangażowane routingu między maszynami wirtualnymi i maszyn wirtualnych, obsługi urządzeń interwencja nie przechodzi przez inne urządzenia, takie jak [urządzeń WUS](https://azure.microsoft.com/solutions/network-appliances/). W przeciwnym razie problemy i obsługi zdarzeń za pomocą urządzenia NVA może mieć negatywny wpływ na stabilności i niezawodności ogólnej konfiguracji klastra. Aby uniknąć takich przeszkód, nie definiują reguły routingu urządzeń WUS lub [reguł routingu zdefiniowane użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) tego kierowanie ruchu między węzłami klastra i interwencja za pośrednictwem urządzenia WUS i podobne urządzenia podczas planowania i wdrażania systemu Linux Program pacemaker klastrowane węzły i interwencja urządzeń. 
+> Przy planowaniu i wdrażaniu program Pacemaker w systemie Linux w klastrze węzłów i interwencja urządzeń jest niezbędne dla ogólną niezawodność kompletna Konfiguracja klastra zaangażowane routingu między maszynami wirtualnymi i maszyn wirtualnych, obsługi urządzeń interwencja nie przechodzi przez inne urządzenia, takie jak [urządzeń WUS](https://azure.microsoft.com/solutions/network-appliances/). W przeciwnym razie problemy i obsługi zdarzeń za pomocą urządzenia NVA może mieć negatywny wpływ na stabilności i niezawodności ogólnej konfiguracji klastra. Aby uniknąć takich przeszkód, nie należy definiować reguł routingu urządzeń WUS lub [reguł routingu zdefiniowanych przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) , które kierują ruch między węzłami klastrowanymi i urządzeniami SBD za poorednictwem urządzeń WUS i podobnych urządzeń podczas planowania i wdrażania węzłów klastra Pacemaker systemu Linux i Urządzenia SBD. 
 >
 
 ## <a name="sbd-fencing"></a>Preferowane interwencja
@@ -53,7 +53,7 @@ Wykonaj następujące kroki, aby urządzenia z systemem interwencja na użytek p
 
 Najpierw należy utworzyć iSCSI docelowych maszyn wirtualnych. serwery obiektów docelowych iSCSI może być udostępniane wielu klastrów program Pacemaker.
 
-1. Wdrażanie nowego systemu SLES 12 z dodatkiem SP1 lub nowszej maszyn wirtualnych i połączyć się z nimi za pośrednictwem protokołu ssh. Maszyny nie trzeba dużych. Rozmiar maszyny wirtualnej, takie jak Standard_E2s_v3 lub Standard_D2s_v3 jest wystarczająca. Upewnij się, że używasz usługi Premium storage dysku systemu operacyjnego.
+1. Wdrażanie nowego systemu SLES 12 z dodatkiem SP1 lub nowszej maszyn wirtualnych i połączyć się z nimi za pośrednictwem protokołu ssh. Maszyny nie muszą być duże. Rozmiar maszyny wirtualnej, takie jak Standard_E2s_v3 lub Standard_D2s_v3 jest wystarczająca. Upewnij się, że używasz usługi Premium storage dysku systemu operacyjnego.
 
 Uruchom następujące polecenia na wszystkich **iSCSI docelowych maszyn wirtualnych**.
 
@@ -398,6 +398,28 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
+   >[!IMPORTANT]
+   > W przypadku korzystania z systemu SUSE Linux Enterprise Server for SAP 15 należy pamiętać, że konieczne jest aktywowanie dodatkowego modułu i zainstalowanie dodatkowego składnika, który jest warunkiem wstępnym korzystania z agenta usługi Azure Ogrodzeni. Aby dowiedzieć się więcej na temat modułów i rozszerzeń SUSE, zapoznaj się z [objaśnieniem modułów i rozszerzeń](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html). Postępuj zgodnie z instrukcjami, aby zainstalować zestaw Azure Python SDK. 
+
+   Poniższe instrukcje dotyczące sposobu instalowania zestawu Azure Python SDK dotyczą tylko systemu SUSE Enterprise Server for SAP **15**.  
+
+    - Jeśli używasz funkcji "Przenieś własną subskrypcję", postępuj zgodnie z tymi instrukcjami  
+
+    <pre><code>
+    #Activate module PackageHub/15/x86_64
+    sudo SUSEConnect -p PackageHub/15/x86_64
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
+     - Jeśli używasz subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem, postępuj zgodnie z tymi instrukcjami  
+
+    <pre><code>#Activate module PackageHub/15/x86_64
+    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
 1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
@@ -443,12 +465,12 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Skonfigurować corosync Użyj innego transportu i dodać wstawienia. Klaster nie działa, w przeciwnym razie.
+1. **[A]**  Skonfigurować corosync Użyj innego transportu i dodać wstawienia. Klaster nie działa w inny sposób.
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Dodaj następującą zawartość bold do pliku, jeśli wartości nie są tam lub innej. Upewnij się zmienić token 30000 umożliwia zachowywanie konserwacji pamięci. Aby uzyskać więcej informacji, zobacz [ten artykuł dla systemu Linux][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance]. Upewnij się również usunąć mcastaddr parametru.
+   Dodaj następującą zawartość bold do pliku, jeśli wartości nie są tam lub innej. Upewnij się zmienić token 30000 umożliwia zachowywanie konserwacji pamięci. Aby uzyskać więcej informacji, zobacz [ten artykuł dla systemu Linux][virtual-machines-linux-maintenance] lub [Windows][virtual-machines-windows-maintenance]. Upewnij się również usunąć mcastaddr parametru.
 
    <pre><code>[...]
      <b>token:          30000
@@ -510,7 +532,7 @@ Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacj
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Utworzyć rolę niestandardową dla agenta odgradzania
 
-Nazwa główna usługi nie ma uprawnień do dostępu do zasobów platformy Azure, domyślnie. Musisz nadać uprawnień jednostki usługi, uruchamianie i zatrzymywanie (Cofnij ich przydział) wszystkich maszyn wirtualnych klastra. Jeśli nie utworzono jeszcze niestandardowej roli, można utworzyć za pomocą [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+Nazwa główna usługi nie ma uprawnień dostępu do zasobów platformy Azure domyślnie. Musisz nadać uprawnień jednostki usługi, uruchamianie i zatrzymywanie (Cofnij ich przydział) wszystkich maszyn wirtualnych klastra. Jeśli nie utworzono jeszcze niestandardowej roli, można utworzyć za pomocą [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 
 Użyj zawartości dla pliku wejściowego. Należy dostosować zawartość dla Twojej subskrypcji, Zastąp c276fc76-9cd4-44c9-99a7-4fd71546436e i e91d47c4-76f3-4271-a796-21b4ecfe3624 identyfikatory subskrypcji. Jeśli masz tylko jedną subskrypcję, należy usunąć drugi wpis w AssignableScopes.
 
@@ -536,7 +558,7 @@ Użyj zawartości dla pliku wejściowego. Należy dostosować zawartość dla Tw
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** Przypisz rolę niestandardową do jednostki usługi
 
-Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdziale ostatniego jednostki usługi. Nie używaj roli właściciel już!
+Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdziale ostatniego jednostki usługi. Nie używaj już roli właściciela!
 
 1. Przejdź do[https://portal.azure.com](https://portal.azure.com)
 1. Otwieranie bloku wszystkie zasoby
@@ -607,7 +629,7 @@ sudo crm configure property maintenance-mode=false
      Ostrzeżenie: CIB-Bootstrap-Options: nieznany atrybut "hostName_ <strong>hostname</strong>"  
    > Te komunikaty ostrzegawcze mogą być ignorowane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Planowanie i wdrażanie Virtual Machines platformy Azure dla oprogramowania SAP][planning-guide]
 * [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP][deployment-guide]

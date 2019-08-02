@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 887c27c765855424dbfb9a77f0b452da0f5de647
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 82d3656e0adc03157de57b700f8f0be6bde1f2ee
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868860"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663489"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -126,7 +126,7 @@ Na przykład Uruchom konfiguracje, zobacz [Wybieranie i używanie elementu docel
 
 Zestawy danych udostępniają metody pracy z danymi w popularnych formatach, np. przy `from_delimited_files()` użyciu `to_pandas_dataframe()`lub.
 
-Aby uzyskać więcej informacji, zobacz [Tworzenie i Rejestrowanie zestawów danych Azure Machine Learning](how-to-create-register-datasets.md).  Aby uzyskać więcej przykładów użycia zestawów danych, zobacz [przykładowe notesy](https://aka.ms/dataset-tutorial).
+Aby uzyskać więcej informacji, zobacz [Tworzenie i Rejestrowanie zestawów danych Azure Machine Learning](how-to-create-register-datasets.md).  Aby uzyskać więcej przykładów użycia zestawów danych, zobacz [przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/tree/master/work-with-data/datasets).
 
 **Magazyn** danych to Abstrakcja magazynu przez konto usługi Azure Storage. Magazyn danych może używać kontenera obiektów blob platformy Azure lub udziału plików platformy Azure jako magazynu zaplecza. Każdy obszar roboczy ma domyślny magazyn danych i można zarejestrować dodatkowe magazyny danych. Użyj interfejsu API zestawu SDK języka Python lub wiersza polecenia Azure Machine Learning, aby przechowywać i pobierać pliki z magazynu danych.
 
@@ -142,7 +142,7 @@ Do nauczenia modelu, można określić katalog, który zawiera skrypt szkolenia 
 
 Przykład — patrz [Tutorial: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-### <a name="runs"></a>Uruchomienia
+### <a name="runs"></a>Przebiegi
 
 Przebieg jest rekord, który zawiera następujące informacje:
 
@@ -230,7 +230,7 @@ Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą
 
 Podczas opracowywania rozwiązania Użyj zestawu SDK języka Python Azure Machine Learning w skrypcie języka Python, aby rejestrować arbitralne metryki. Po uruchomieniu Zbadaj metryki, aby określić, czy przebieg został utworzony przez model, który chcesz wdrożyć.
 
-### <a name="next-steps"></a>Następne kroki
+### <a name="next-steps"></a>Kolejne kroki
 
 Aby rozpocząć pracę z usługą Azure Machine Learning, zobacz:
 

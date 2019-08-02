@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3152dead04510078dd475b611afbfc30264e58f7
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: d500f6c74bb62322a5e14ce3c489e8dba11dc2f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297650"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68555770"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Zarządzanie ustawieniami użytkownika przy użyciu uwierzytelniania wieloskładnikowego systemu Azure w chmurze
 
@@ -31,6 +31,10 @@ Jako administrator możesz zarządzać następującymi ustawieniami użytkownika
 Jako administrator z przypisaną rolą Administrator uwierzytelniania można wymagać od użytkowników zresetowania hasła, ponownego zarejestrowania się w usłudze MFA lub odwołania istniejących sesji usługi MFA z obiektu użytkownika.
 
 ![Zarządzanie metodami uwierzytelniania z poziomu Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
+
+1. Resetowanie hasła spowoduje zresetowanie hasła użytkownika i przypisanie tymczasowego hasła, które należy zmienić przy następnym logowaniu.
+2. Wymagaj ponownej rejestracji usługi MFA spowoduje to, że gdy użytkownik zaloguje się w następnym momencie, zostanie poproszony o skonfigurowanie nowej metody uwierzytelniania MFA.
+3. Odwoływanie sesji usługi MFA czyści sesje usługi MFA zalogowanych przez użytkownika i wymaga ich do wykonania uwierzytelniania MFA przy następnym zażądaniu zasad na urządzeniu.
 
 ## <a name="require-users-to-provide-contact-methods-again"></a>Wymagaj od użytkowników ponownego podania metod kontaktu
 
