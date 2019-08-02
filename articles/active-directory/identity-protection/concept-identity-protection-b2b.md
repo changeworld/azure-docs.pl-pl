@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9128a747dcd42ada2feefd72ad8bfebdf7bfb25a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c5d374f4ddac2e4d013bab1c5e88a87af1da2c1f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334047"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667133"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Usługa Identity Protection i użytkownicy B2B
 
@@ -47,9 +47,9 @@ Jeśli ryzykowny użytkownik B2B w katalogu jest blokowany przez zasady oparte n
 
 ### <a name="how-do-i-prevent-b2b-collaboration-users-from-being-impacted-by-risk-based-policies"></a>Jak mogę uniemożliwić użytkownikom współpracy B2B wpływ na zasady oparte na ryzyku?
 
-Wyłączenie użytkowników B2B z zasad dostępu warunkowego opartych na ryzyku organizacji uniemożliwi użytkownikom B2B lub zablokowanie ich oceny ryzyka. Aby wykluczyć tych użytkowników B2B, Utwórz grupę w usłudze Azure AD, która zawiera wszystkich użytkowników-Gości w organizacji. Następnie Dodaj tę grupę jako wykluczenie dla wbudowanego ryzyka użytkownika ochrony tożsamości i zasad dotyczących ryzyka związanego z logowaniem, a także wszelkich zasad dostępu warunkowego, które użytkownik zalogować jako warunek.
+Wyłączenie użytkowników B2B z zasad dostępu warunkowego opartych na ryzyku organizacji uniemożliwi użytkownikom B2B lub zablokowanie ich oceny ryzyka. Aby wykluczyć tych użytkowników B2B, Utwórz grupę w usłudze Azure AD, która zawiera wszystkich użytkowników-Gości w organizacji. Następnie Dodaj tę grupę jako wykluczenie dla wbudowanego ryzyka użytkownika ochrony tożsamości i zasad dotyczących ryzyka związanego z logowaniem, a także wszelkich zasad dostępu warunkowego, które używają ryzyka związanego z logowaniem jako warunku.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z następującymi artykułami dotyczącymi współpracy B2B w usłudze Azure AD:
 

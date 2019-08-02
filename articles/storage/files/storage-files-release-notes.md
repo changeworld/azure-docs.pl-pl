@@ -4,16 +4,16 @@ description: Informacje o wersji dla agenta Azure File Sync.
 services: storage
 author: wmgries
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 7/24/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: de0482f49e919d0cbb500e9ee8b27ccf8287fb99
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: ad0927c551f331a3a6f719797dae7598961d78c1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489563"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721669"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji dla agenta Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -26,7 +26,7 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 | Rozwoju | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
 | 2019 lipca zbiorczych aktualizacji — [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24 lipca 2019 | Obsługiwane — obsługa [lotu](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
-| 2019 lipca zbiorczych aktualizacji — [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12 lipca 2019 | Obsługiwane — obsługa [lotu](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
+| 2019 lipca zbiorczych aktualizacji — [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12 lipca 2019 | Obsługiwane |
 | Wersji 7 wydanie — [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19 czerwca 2019 | Obsługiwane |
 | Czerwiec 2019 — pakiet zbiorczy aktualizacji — [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27 czerwca 2019 | Obsługiwane |
 | Czerwiec 2019 — pakiet zbiorczy aktualizacji — [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13 czerwca 2019 | Obsługiwane |

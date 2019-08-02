@@ -1,18 +1,19 @@
 ---
 title: Tworzenie kopii zapasowych plików na maszynach wirtualnych Azure Stack
 description: Użyj Azure Backup, aby utworzyć kopię zapasową i odzyskać Azure Stack pliki i aplikacje w środowisku Azure Stack.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
-ms.author: adigan
-ms.openlocfilehash: 36e7fceb63e6013ca09e8c2e2db18d6795f61273
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7214cf4c16cc4ee5e76d479d153395085a7e3a6e
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465078"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688940"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Tworzenie kopii zapasowej plików na Azure Stack
 Za pomocą Azure Backup można chronić pliki i aplikacje (lub tworzyć ich kopie zapasowe) w Azure Stack. Aby utworzyć kopię zapasową plików i aplikacji, należy zainstalować program Microsoft Azure Backup Server jako maszynę wirtualną działającą na Azure Stack. Pliki można chronić na dowolnym serwerze Azure Stack w tej samej sieci wirtualnej. Po zainstalowaniu Azure Backup Server Dodaj dyski platformy Azure w celu zwiększenia magazynu lokalnego dostępnego dla krótkoterminowych danych kopii zapasowej. Azure Backup Server używa usługi Azure Storage do długoterminowego przechowywania.

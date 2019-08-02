@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 587d8040039080e15c61292279c5e5637d296b08
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351313"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639095"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Wdrażanie języka Python w celu Azure Functions z Visual Studio Code
 
@@ -94,7 +94,7 @@ Dane wyjściowe, które zaczynają się od logo Azure Functions (należy przewin
 
 1. W następujących monitach:
 
-    | Monit | Wartość | Opis | 
+    | Monit | Value | Opis | 
     | --- | --- | --- |
     | Określ folder dla projektu | Bieżący otwarty folder | Folder, w którym ma zostać utworzony projekt. Możesz chcieć utworzyć projekt w podfolderze. |
     | Wybierz język projektu aplikacji funkcji | **Python** | Język, który ma być używany dla funkcji, która określa szablon użyty dla kodu. |
@@ -253,7 +253,7 @@ W tych krokach użyjesz rozszerzenia Functions, aby utworzyć aplikację funkcji
 1. Rozszerzenie wykonuje następujące akcje, które można obserwować w Visual Studio Code wyskakujących komunikatów i oknie **danych wyjściowych** (proces trwa kilka minut):
 
     - Utwórz grupę zasobów przy użyciu podaną nazwę (usuwając łączniki).
-    - W tej grupie zasobów Utwórz konto magazynu, plan hostingu i aplikację funkcji. Domyślnie tworzony jest [Plan zużycia](functions-scale.md#consumption-plan) . Aby uruchamiać funkcje w ramach dedykowanego planu, należy [włączyć publikowanie z opcjami Zaawansowane tworzenie](functions-develop-vs-code.md#enabled-publishing-with-advanced-create-options).
+    - W tej grupie zasobów Utwórz konto magazynu, plan hostingu i aplikację funkcji. Domyślnie tworzony jest [Plan zużycia](functions-scale.md#consumption-plan) . Aby uruchamiać funkcje w ramach dedykowanego planu, należy [włączyć Publikowanie przy użyciu opcji Zaawansowane tworzenie](functions-develop-vs-code.md).
     - Wdróż swój kod w aplikacji funkcji.
 
     **Platforma Azure: Eksplorator** funkcji pokazuje także postęp:
@@ -493,7 +493,7 @@ W tej sekcji dodasz powiązanie magazynu do funkcji HttpExample utworzonej wcze�
 
 Utworzona aplikacja funkcji obejmuje zasoby, które mogą ponosić minimalne koszty (zobacz [Cennik funkcji](https://azure.microsoft.com/pricing/details/functions/)). Aby wyczyścić zasoby, kliknij prawym przyciskiem myszy aplikacja funkcji na **platformie Azure: Eksplorator** funkcji i wybierz pozycję **Usuń aplikacja funkcji**. Możesz również odwiedzić [Azure Portal](https://portal.azure.com), wybrać **grupy zasobów** w okienku nawigacji po lewej stronie, wybrać grupę zasobów, która została utworzona w procesie tego samouczka, a następnie użyć polecenia **Usuń grupę zasobów** .
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Gratulujemy wykonania tego przewodnika po wdrożeniu kodu w języku Python do Azure Functions! Teraz możesz utworzyć wiele innych funkcji bezserwerowych.
 

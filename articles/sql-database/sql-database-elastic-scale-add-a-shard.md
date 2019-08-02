@@ -1,6 +1,6 @@
 ---
-title: Dodawanie fragmentu, za pomocą narzędzi elastycznych baz danych | Dokumentacja firmy Microsoft
-description: Interfejsy API elastycznego skalowania umożliwiają dodawanie nowych fragmentów do fragmentu zestawu.
+title: Dodawanie fragmentu za pomocą narzędzi elastycznych baz danych | Microsoft Docs
+description: Jak używać interfejsów API skalowania elastycznego do dodawania nowych fragmentów do zestawu fragmentu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,26 +10,25 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: dda3c34dccfdaa041cf9f547244d5529482a3138
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 679c1bea640644cd46c436ec04278558f610ceda
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60585816"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568527"
 ---
-# <a name="adding-a-shard-using-elastic-database-tools"></a>Dodawanie fragmentu, za pomocą narzędzi elastycznych baz danych
+# <a name="adding-a-shard-using-elastic-database-tools"></a>Dodawanie fragmentu przy użyciu narzędzi Elastic Database
 
-## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Aby dodać nowy zakres lub klucz fragmentu
+## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Aby dodać fragmentu dla nowego zakresu lub klucza
 
-Aplikacje często konieczne dodanie nowych fragmentów do obsługi danych, która oczekuje się od nowych kluczy lub kluczy zakresy, mapy fragmentów, która już istnieje. Na przykład może być konieczne aprowizowanie nowych fragmentów dla nowej dzierżawy aplikacji podzielonej na fragmenty według Identyfikatora dzierżawy lub miesięczny podzielonej na fragmenty danych może wymagać nowego fragmentu aprowizowane przed rozpoczęciem każdego nowego miesiąca.
+Aplikacje często muszą dodać nowe fragmentów do obsługi danych, które są oczekiwane z nowych kluczy lub zakresów kluczy, dla mapy fragmentu, która już istnieje. Na przykład aplikacja podzielonej na fragmenty według identyfikatora dzierżawy może potrzebować nowego fragmentu dla nowej dzierżawy, a dane podzielonej na fragmenty miesięcznie mogą potrzebować nowego fragmentu, który został udostępniony przed rozpoczęciem każdego nowego miesiąca.
 
-Jeśli nowy zakres wartości klucza nie jest już częścią istniejącego mapowania, jest prosty do dodawania nowych fragmentów i Skojarz nowy klucz lub zakresu do tego fragmentu.
+Jeśli nowy zakres wartości klucza nie jest już częścią istniejącego mapowania, można łatwo dodać nowy fragmentu i skojarzyć nowy klucz lub zakres z tym fragmentu.
 
-### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Przykład: dodanie fragmentu i jego zakres do istniejącego mapowania fragmentów
+### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Przykład: Dodawanie elementu fragmentu i jego zakresu do istniejącej mapy fragmentu
 
-W tym przykładzie użyto TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.NET](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), CreateRangeMapping ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) metod i tworzy instancję ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) klasy. W przykładzie poniżej bazę danych o nazwie **sample_shard_2** i wszystkie obiekty niezbędne schematu wewnątrz niej zostały utworzone na potrzeby przechowywania zakresu [300, 400).  
+Ten przykład używa TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.NET](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) Methods i tworzy wystąpienie ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) określonej. W poniższym przykładzie baza danych o nazwie **sample_shard_2** i wszystkie niezbędne obiekty schematu wewnątrz niej zostały utworzone w celu przechowania zakresu [300, 400).  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -46,15 +45,15 @@ sm.CreateRangeMapping(new RangeMappingCreationInfo<long>
                             (new Range<long>(300, 400), shard2, MappingStatus.Online));
 ```
 
-Dla wersji platformy .NET umożliwia także środowiska PowerShell jako alternatywę do tworzenia nowego Menedżera mapowań fragmentów. Przykład jest dostępny [tutaj](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+W przypadku wersji .NET można także użyć programu PowerShell jako alternatywy do utworzenia nowego menedżera mapy fragmentu. Przykład jest dostępny [tutaj](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
-## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>Aby dodać fragmentu dla pustej części istniejący zakres
+## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>Aby dodać fragmentu dla pustej części istniejącego zakresu
 
-W niektórych sytuacjach może masz już zamapowana zakres fragmentu i częściowo wypełnione danymi, ale teraz ma nadchodzące dane były kierowane w innym fragmencie. Na przykład możesz fragmentu przez zakres dni zostały już przydzielonym 50 dni do fragmentu, ale w dniu 24 mają przyszłych dane znajdą się w innym fragmencie. Elastyczna baza danych [narzędzie do dzielenia i scalania](sql-database-elastic-scale-overview-split-and-merge.md) mogą wykonać tę operację, ale jeśli przenoszenia danych nie jest konieczne (na przykład dane dotyczące zakresu dni [25, 50), oznacza to, w dniu 25, włącznie z 50 wzajemnie, jeszcze nie istnieje) można przeprowadzić to korzystając wyłącznie z interfejsów API zarządzania dla mapy fragmentów bezpośrednio.
+W pewnych okolicznościach można już zmapować zakres na fragmentu i częściowo wypełnił go danymi, ale teraz chcesz, aby nadchodzące dane były kierowane do innego fragmentu. Na przykład fragmentu według zakresu dni i przydzielono już 50 dni do fragmentu, ale dnia 24, chcesz, aby przyszłe dane były umieszczane w innym fragmentu. [Narzędzie do dzielenia i scalania](sql-database-elastic-scale-overview-split-and-merge.md) Elastic Database może wykonać tę operację, ale jeśli przenoszenie danych nie jest konieczne (na przykład dane dotyczące zakresu dni [25, 50), które jest, dnia 25 włącznie z wyłącznym zakresem 50, jeszcze nie istnieją), można wykonać je w całości przy użyciu Interfejsy API zarządzania mapami fragmentu bezpośrednio.
 
-### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>Przykład: podział zakresu i przypisywanie pusty fragment do nowo dodanego fragmentów
+### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>Przykład: dzielenie zakresu i przypisywanie pustej części do nowo dodanej fragmentu
 
-Utworzono bazę danych o nazwie "sample_shard_2" i wszystkie obiekty niezbędne schematu wewnątrz niej.  
+Utworzono bazę danych o nazwie "sample_shard_2" i wszystkie niezbędne obiekty schematu wewnątrz niej.  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -79,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Ważne**:  Tej techniki należy używać tylko jeśli masz pewność, że zakres zaktualizowano mapowanie jest pusty.  Poprzednich metod nie sprawdzają dane dla zakresu, przeniesione, więc zaleca się obejmują sprawdzenia w kodzie.  Jeśli istnieją wiersze w zakresie przenoszone, dystrybucji rzeczywiste dane nie będą zgodne mapowania fragmentów zaktualizowane. Użyj [narzędzie do dzielenia i scalania](sql-database-elastic-scale-overview-split-and-merge.md) do wykonania tej operacji, zamiast tego w tych przypadkach.  
+**Ważne**:  Tej techniki należy używać tylko wtedy, gdy masz pewność, że zakres zaktualizowanego mapowania jest pusty.  Powyższe metody nie sprawdzają danych dla przenoszonego przedziału, dlatego najlepiej dołączyć sprawdzenia w kodzie.  Jeśli istnieją wiersze w przenoszeniu przedziału, rzeczywista Dystrybucja danych nie będzie zgodna ze zaktualizowaną mapą fragmentu. Użyj [Narzędzia Split-Merge](sql-database-elastic-scale-overview-split-and-merge.md) do wykonania operacji zamiast tego w takich przypadkach.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

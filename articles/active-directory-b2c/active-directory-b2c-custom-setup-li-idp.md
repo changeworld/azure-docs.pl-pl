@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9f854e1771eec1d02fd14e040510688bf33c59c8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9465c1991418c7ebef8c4eed825affc7b1d93492
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442429"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693346"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konta LinkedIn przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób włączania logowania dla użytkowników z konta 
 
 - Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 - Konto LinkedIn — Jeśli jeszcze go nie masz, [Utwórz konto](https://www.linkedin.com/start/join).
-- Strona serwisu LinkedIn — musisz mieć [stronę serwisu LinkedIn](https://www.linkedin.com/company/setup/new/) , aby skojarzyć ją z aplikacją LinkedIn utworzoną w następnej sekcji.
+- Strona serwisu LinkedIn — musisz mieć [stronę serwisu LinkedIn](https://www.linkedin.com/help/linkedin/answer/710/creating-a-linkedin-company-page) , aby skojarzyć ją z aplikacją LinkedIn utworzoną w następnej sekcji.
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
 

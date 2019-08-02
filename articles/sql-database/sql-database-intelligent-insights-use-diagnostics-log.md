@@ -1,6 +1,6 @@
 ---
-title: Intelligent Insights wydajności dziennik diagnostyczny — usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Intelligent Insights zawiera dziennik diagnostyczny w usłudze Azure SQL Database problemów z wydajnością
+title: Dziennik diagnostyki wydajności Intelligent Insights Azure SQL Database | Microsoft Docs
+description: Intelligent Insights zapewnia dziennik diagnostyczny Azure SQL Database problemów z wydajnością
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,24 +10,23 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8180fc4db10019a3183af40cf21d9d92b0102201
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703170"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567890"
 ---
-# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika diagnostyki wydajności Intelligent Insights usługi Azure SQL Database
+# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Korzystanie z dziennika diagnostyki wydajności Azure SQL Database Intelligent Insights
 
-Ta strona zawiera informacje na temat sposobu korzystania z usługi Azure SQL Database dziennika diagnostyki wydajności wygenerowane przez [Intelligent Insights](sql-database-intelligent-insights.md), jego format i danych zawiera potrzeby niestandardowe programowanie. Możesz wysłać ten dziennik diagnostyczny do [dzienniki usługi Azure Monitor](../azure-monitor/insights/azure-sql.md), [usługi Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i raportów możliwości.
+Ta strona zawiera informacje dotyczące sposobu korzystania z dziennika diagnostyki wydajności Azure SQL Database wygenerowanego przez [Intelligent Insights](sql-database-intelligent-insights.md), jego format oraz zawartych w nich danych na potrzeby niestandardowych potrzeb deweloperskich. Ten dziennik diagnostyki można wysłać do [Azure monitor dzienników](../azure-monitor/insights/azure-sql.md), [platformy Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)lub rozwiązania innej firmy w celu uzyskania niestandardowych funkcji alertów DevOps i raportowania.
 
 ## <a name="log-header"></a>Nagłówek dziennika
 
-Dziennik diagnostyczny używa standardowego formatu JSON w danych wyjściowych ustalenia Intelligent Insights. Właściwość dokładnie kategorii do uzyskiwania dostępu do dziennik funkcji Intelligent Insights jest wartością stałą "SQLInsights".
+Dziennik diagnostyczny używa standardowego formatu JSON do danych wyjściowych Intelligent Insights. Właściwość dokładnej kategorii służąca do uzyskiwania dostępu do dziennika Intelligent Insights jest stałą wartością "SQLInsights".
 
-Nagłówek dziennika często i składa się z sygnatura czasowa (TimeGenerated), która pokazuje, kiedy został utworzony wpis. Zawiera on również identyfikator zasobu (identyfikator zasobu), która odwołuje się do wpisu odnosi się do określonej bazy danych SQL. Category (kategoria), poziom (poziom) i nazwa operacji (OperationName) są stałe wartości, których nie należy zmieniać właściwości. Wskazują, że wpis dziennika ma charakter informacyjny i że pochodzi on z Intelligent Insights (SQLInsights).
+Nagłówek dziennika jest typowy i składa się z sygnatury czasowej (TimeGenerated), która pokazuje, kiedy wpis został utworzony. Zawiera również identyfikator zasobu (ResourceId), który odwołuje się do konkretnej SQL Database, do której odnosi się wpis. Kategoria (kategoria), poziom (poziom) i nazwa operacji (OperationName) są stałymi właściwościami, których wartości nie zmieniają się. Wskazują one, że wpis dziennika jest informacyjny i pochodzi z Intelligent Insights (SQLInsights).
 
 ```json
 "TimeGenerated" : "2017-9-25 11:00:00", // time stamp of the log entry
@@ -37,13 +36,13 @@ Nagłówek dziennika często i składa się z sygnatura czasowa (TimeGenerated),
 "OperationName" : "Insight", // fixed property
 ```
 
-## <a name="issue-id-and-database-affected"></a>Identyfikator problemu i bazy danych, których to dotyczy
+## <a name="issue-id-and-database-affected"></a>Identyfikator problemu i baza danych, których to dotyczy
 
-Właściwości identyfikacji problemu (issueId_d) umożliwia jednoznacznie śledzenia do momentu rozwiązania problemów z wydajnością. Wiele rekordów zdarzeń w dzienniku zgłaszające stan ten sam problem współużytkują ten sam identyfikator problemu.
+Właściwość Identyfikacja problemu (issueId_d) umożliwia unikatowe Śledzenie problemów z wydajnością do momentu rozwiązania problemu. Wiele rekordów zdarzeń w stanie raportowania dziennika tego samego problemu będzie mieć ten sam identyfikator problemu.
 
-Wraz z identyfikator problemu dziennik diagnostyczny raporty rozpoczęcia (intervalStartTime_t) i sygnatury czasowe zakończenia (intervalEndTme_t) określonego zdarzenia związane z problemu zgłoszonego w dzienniku diagnostyki.
+Wraz z IDENTYFIKATORem problemu dziennik diagnostyczny zgłasza sygnatury czasowe uruchomienia (intervalStartTime_t) i końca (intervalEndTme_t) określone zdarzenie związane z problemem, który jest raportowany w dzienniku diagnostyki.
 
-Właściwości puli elastycznej (elasticPoolName_s) wskazuje, które puli elastycznej bazy danych z problemem, o których należy. Jeśli baza danych nie jest częścią puli elastycznej, ta właściwość nie ma wartości. Bazy danych, w którym wystąpił problem został wykryty są ujawniane we właściwości nazwy (databaseName_s) bazy danych.
+Właściwość elastycznej puli (elasticPoolName_s) wskazuje pulę elastyczną, do której należy baza danych, do której należy problem. Jeśli baza danych nie jest częścią puli elastycznej, ta właściwość nie ma wartości. Baza danych, w której wykryto problem, jest ujawniana we właściwości Nazwa bazy danych (databaseName_s).
 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
@@ -56,9 +55,9 @@ Właściwości puli elastycznej (elasticPoolName_s) wskazuje, które puli elasty
 
 ## <a name="detected-issues"></a>Wykryte problemy
 
-Następna sekcja dziennik wydajności Intelligent Insights zawiera problemy z wydajnością, które zostały wykryte za pomocą wbudowanej sztucznej inteligencji. Wykrywanie są udostępniane w oknie właściwości w ramach dziennik diagnostyczny JSON. Wykrywane odmiany składają się z kategorii problemu, wpływ ten problem, zapytania, których dotyczy problem i metryki. Właściwości wykrycia może zawierać wiele problemów z wydajnością, które zostały wykryte.
+Następna sekcja dziennika wydajności Intelligent Insights zawiera problemy z wydajnością, które zostały wykryte za pomocą wbudowanej sztucznej analizy. Wykrycia są ujawniane we właściwościach w dzienniku diagnostyki JSON. Te wykrycia obejmują kategorię problemu, wpływ problemu, wpływ na zapytania i metryki. Właściwości wykrywania mogą zawierać wiele wykrytych problemów z wydajnością.
 
-Problemy z wydajnością wykryte są zgłaszane o następującej strukturze właściwości wykrywania:
+Wykryte problemy z wydajnością są raportowane przy użyciu następującej struktury właściwości wykrywania:
 
 ```json
 "detections_s" : [{
@@ -68,41 +67,41 @@ Problemy z wydajnością wykryte są zgłaszane o następującej strukturze wła
 }] 
 ```
 
-Wzorce wydajności wykrywalny i szczegółowe informacje, które są zwrócone do dzienników diagnostycznych znajdują się w poniższej tabeli.
+Możliwe do wykrycia wzorce wydajności i szczegółowe informacje, które zostały wprowadzone do dziennika diagnostycznego, znajdują się w poniższej tabeli.
 
 ### <a name="detection-category"></a>Kategoria wykrywania
 
-Właściwość category (kategoria) zawiera opis kategorii wydajności wykrywalny wzorców. Zobacz poniższą tabelę dla wszystkich możliwych kategorii wydajności wykrywalny wzorców. Aby uzyskać więcej informacji, zobacz [bazy danych Rozwiązywanie problemów z wydajnością dzięki inteligentnej analizie](sql-database-intelligent-insights-troubleshoot-performance.md).
+Właściwość Category (kategoria) opisuje kategorię wykrywalnych wzorców wydajności. W poniższej tabeli przedstawiono wszystkie możliwe kategorie wykrywalnych wzorców wydajności. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z wydajnością bazy danych przy użyciu Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 
-W zależności od problem z wydajnością wykryte, szczegółowe informacje zwrócone w diagnostyce pliku dziennika różnią się odpowiednio.
+W zależności od wykrytego problemu z wydajnością szczegóły, które zostały wygenerowane w pliku dziennika diagnostycznego, różnią się odpowiednio.
 
-| Wzorce wydajności wykrywalny | Szczegółowe informacje zwrócone |
+| Wykrywalne wzorce wydajności | Szczegóły zostały wydane |
 | :------------------- | ------------------- |
-| Osiągnięcia limitów zasobów | <li>Zasoby, których to dotyczy</li><li>Skróty zapytania</li><li>Procent zużycia zasobów</li> |
-| Wzrost obciążenia | <li>Liczba zapytań, których wykonanie wzrosła</li><li>Skróty zapytania zapytań za pomocą największy wkład wzrost obciążenia</li> |
-| Wykorzystanie pamięci | <li>Pracownik pamięci.</li> |
-| Blokowanie | <li>Wpływ na skróty zapytania</li><li>Blokowanie skróty zapytania</li> |
-| Zwiększona MAXDOP | <li>Skróty zapytania</li><li>Czasy oczekiwania CXP</li><li>Czas oczekiwania</li> |
-| Pagelatch rywalizacji o zasoby | <li>Zapytanie skróty zapytań powoduje rywalizacji o zasoby</li> |
-| Brakujący indeks | <li>Skróty zapytania</li> |
-| Nowe zapytanie | <li>Zapytania skrótu nowych zapytań</li> |
-| Statystyka nietypowe oczekiwania | <li>Typy nietypowe oczekiwania</li><li>Skróty zapytania</li><li>Czas oczekiwania zapytania</li> |
-| Bazy danych TempDB rywalizacji o zasoby | <li>Zapytanie skróty zapytań powoduje rywalizacji o zasoby</li><li>Zapytanie: uznanie autorstwa do ogólnej bazy danych pagelatch rywalizacji czasu oczekiwania [%]</li> |
-| Mała liczba jednostek DTU w puli elastycznej | <li>Pula elastyczna</li><li>Najważniejsze korzystające z jednostek DTU bazy danych</li><li>Wartość procentowa puli używane przez konsumentów górną jednostek DTU</li> |
-| Planowanie regresji | <li>Skróty zapytania</li><li>Dobry plan identyfikatorów</li><li>Nieprawidłowy plan identyfikatorów</li> |
-| Zmiana wartości w zakresie bazy danych konfiguracji | <li>Zmiany w zakresie bazy danych konfiguracji w porównaniu do wartości domyślnych</li> |
-| Powolne klienta | <li>Skróty zapytania</li><li>Czas oczekiwania</li> |
+| Osiąganie limitów zasobów | <li>Uwzględnione zasoby</li><li>Skróty zapytań</li><li>Procent użycia zasobów</li> |
+| Wzrost obciążenia | <li>Liczba zapytań, których wykonywanie zostało zwiększone</li><li>Skróty zapytań o największym udziale do wzrostu obciążenia</li> |
+| Wykorzystanie pamięci | <li>Pracownik pamięci</li> |
+| Blokowanie | <li>Zmodyfikowane skróty zapytań</li><li>Blokowanie skrótów zapytań</li> |
+| Zwiększono MAXDOP | <li>Skróty zapytań</li><li>Czas oczekiwania CXP</li><li>Czas oczekiwania</li> |
+| Rywalizacja o PAGELATCH | <li>Skróty zapytań powodujące rywalizację</li> |
+| Brakujący indeks | <li>Skróty zapytań</li> |
+| Nowe zapytanie | <li>Skrót zapytania dla nowych zapytań</li> |
+| Statystyka nietypowych oczekiwań | <li>Nietypowe typy oczekiwania</li><li>Skróty zapytań</li><li>Czasy oczekiwania zapytania</li> |
+| Rywalizacja o bazę danych TempDB | <li>Skróty zapytań powodujące rywalizację</li><li>Wysyłanie zapytań do ogólnej bazy danych PAGELATCH czas oczekiwania [%]</li> |
+| Niedobory jednostek DTU puli elastycznej | <li>Pula elastyczna</li><li>Najpopularniejsza baza danych zużywająca wartość DTU</li><li>Procent jednostek DTU puli używanych przez najwyższego konsumenta</li> |
+| Regresja planu | <li>Skróty zapytań</li><li>Dobre identyfikatory planu</li><li>Złe identyfikatory planu</li> |
+| Zmiana wartości konfiguracji z zakresem bazy danych | <li>Zmiany konfiguracji w zakresie bazy danych w porównaniu z wartościami domyślnymi</li> |
+| Powolne klienta | <li>Skróty zapytań</li><li>Czas oczekiwania</li> |
 | Obniżenie warstwy cenowej | <li>Powiadomienie tekstowe</li> |
 
 ### <a name="impact"></a>Wpływ
 
-Wpływ (wpływ na), że właściwość określa, ile wykryte zachowanie przyczyniły się do problemu, które występują w bazie danych. Wpływ na środowisko w zakresie od 1 do 3, 3 jako największym wkładem pracy, 2, jak Średni i 1 jako udział najniższy. Wartość wpływu można użyć jako danych wejściowych dla alertów Automatyzacja niestandardowa, w zależności od określonych potrzeb. Zapytania dotyczące właściwości których to dotyczy (QueryHashes) zawierają listę zapytanie skróty, które miały wpływ określonego wykrywania.
+Właściwość wpływ (wpływ) opisuje, jak wiele wykrytych zachowań jest przyczyną problemu związanego z bazą danych. Ma wpływ na zakres od 1 do 3 z 3 jako najwyższy udział, 2 jako umiarkowany i 1 jako najniższy udział. Wartość wpływu może być używana jako dane wejściowe dla niestandardowej automatyzacji alertów, w zależności od konkretnych potrzeb. Zapytania dotyczące właściwości, których to dotyczy (QueryHashes), zapewniają listę skrótów zapytań, których dotyczyło określone wykrywanie.
 
-### <a name="impacted-queries"></a>Zapytania objęte wpływem
+### <a name="impacted-queries"></a>Zapytania, na które ma to wpływ
 
-Następna sekcja dziennik Intelligent Insights zawiera informacje dotyczące określonego zapytania, które miały wpływ problemy z wydajnością wykryte. Jako tablica obiektów osadzonych we właściwości impact_s ujawnienia informacji. Właściwość wpływ składa się z jednostek i metryki. Jednostki dotyczą określone zapytanie (typ: Zapytanie). Skrót unikatowy zapytania są ujawniane w obszarze właściwości value (wartość). Ponadto każda kwerenda ujawnione następuje metrykę i wartości, które wskazują problem z wydajnością wykryte.
+Następna sekcja dziennika Intelligent Insights zawiera informacje o konkretnych zapytaniach, na które miały wpływ wykryte problemy z wydajnością. Te informacje są ujawniane jako tablica obiektów osadzonych we właściwości impact_s. Właściwość wpływ zawiera jednostki i metryki. Jednostki odwołują się do określonego zapytania (typ: Zapytanie). Unikatowy skrót zapytania jest ujawniany w obszarze właściwości wartość (wartość). Ponadto każda z tych zapytań zawiera metrykę i wartość, która wskazuje na wykryty problem z wydajnością.
 
-W poniższym przykładzie dziennika wykryto mają większą czas trwania wykonywania zapytania przez łączenie 0x9102EXZ4 wyznaczania wartości skrótu (metryki: DurationIncreaseSeconds). Wartość sekund 110 wskazuje, że to zapytanie określonego zajęło wykonanie już 110 sekund. Ponieważ wykrycia wielu zapytań w tej sekcji określonego dziennika może zawierać wiele wpisów zapytania.
+W poniższym przykładzie dziennika wykryto, że zapytanie z 0x9102EXZ4em skrótu zostało zwiększone przez czas wykonywania (Metryka: DurationIncreaseSeconds). Wartość 110 sekund oznacza, że wykonywanie danego zapytania zajęło 110 sekund dłużej. Ponieważ można wykryć wiele zapytań, ta sekcja dziennika może zawierać wiele wpisów zapytań.
 
 ```json
 "impact" : [{
@@ -116,18 +115,18 @@ W poniższym przykładzie dziennika wykryto mają większą czas trwania wykonyw
 
 ### <a name="metrics"></a>Metryki
 
-Jednostkę miary dla każdego metryki zgłaszane jest udostępniony w ramach właściwości metryki (metryczne) możliwych wartości w ciągu kilku sekund, liczba i procent. Wartość mierzone metryki jest zgłaszany w właściwości value (wartość).
+Jednostka miary dla każdej raportowanej metryki jest podana we właściwości Metryka (Metryka) z możliwymi wartościami sekund, liczba i procent. Wartość zmierzonej metryki jest raportowana we właściwości wartość (wartość).
 
-Właściwość DurationIncreaseSeconds zapewnia jednostka miary w ciągu kilku sekund. CriticalErrorCount jednostka miary jest liczbą, która reprezentuje liczby błędów.
+Właściwość DurationIncreaseSeconds dostarcza jednostkę miary w sekundach. Jednostka miary CriticalErrorCount jest liczbą, która reprezentuje liczbę błędów.
 
 ```json
 "metric" : "DurationIncreaseSeconds", // issue metric type – possible values: DurationIncreaseSeconds, CriticalErrorCount, WaitingSeconds
 "value" : 102 // value of the measured metric (in this case seconds)
 ```
 
-## <a name="root-cause-analysis-and-improvement-recommendations"></a>Zalecenia analizy i poprawy jakości obsługi przyczyny głównej
+## <a name="root-cause-analysis-and-improvement-recommendations"></a>Zalecenia dotyczące analizy głównej przyczyny i ulepszeń
 
-Ostatnia część dziennika wydajności Intelligent Insights odnoszą się do analizy automatycznych głównych przyczyn zidentyfikowanego problemu z wydajnością obniżenie wydajności. Informacje wyświetlane w sposób wyrażania przyjaznego dla człowieka, we właściwości analysis (rootCauseAnalysis_s) przyczyn głównych. Zalecenia dotyczące poprawy znajdują się w dzienniku, jeśli jest to możliwe.
+Ostatnia część dziennika wydajności Intelligent Insights odnosi się do zautomatyzowanej analizy głównej przyczyny problemu z obniżeniem wydajności. Informacje są wyświetlane w otaczające przyjaznym dla ludzi w właściwości głównej przyczyny analizy (rootCauseAnalysis_s). Zalecenia dotyczące ulepszeń są zawarte w dzienniku, jeśli jest to możliwe.
 
 ```json
 // example of reported root cause analysis of the detected performance issue, in a human-readable format
@@ -135,13 +134,13 @@ Ostatnia część dziennika wydajności Intelligent Insights odnoszą się do an
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Można użyć dziennika wydajności Intelligent Insights za pomocą [dzienniki usługi Azure Monitor]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i możliwości raportowania.
+Można użyć dziennika wydajności Intelligent Insights z dziennikami [Azure monitor]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) lub rozwiązania innych firm do obsługi alertów niestandardowych DevOps i funkcji raportowania.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [Intelligent Insights](sql-database-intelligent-insights.md) pojęcia.
-- Dowiedz się, jak [usługi Azure SQL Database Rozwiązywanie problemów z wydajnością dzięki inteligentnej analizie](sql-database-intelligent-insights-troubleshoot-performance.md).
-- Dowiedz się, jak [monitorowania usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Dowiedz się, jak [zbieranie i używanie dane dzienników z zasobów platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej na temat pojęć [Intelligent Insights](sql-database-intelligent-insights.md) .
+- Dowiedz się, jak [rozwiązywać problemy z wydajnością Azure SQL Database przy użyciu Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+- Dowiedz się [, jak monitorować Azure SQL Database przy użyciu Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
+- Dowiedz się [, jak zbierać dane dzienników z zasobów platformy Azure i korzystać z nich](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
 
 

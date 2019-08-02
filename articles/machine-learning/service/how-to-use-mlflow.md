@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2030365cd78480c25e224edfea9e395aafa6661c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 55722c35dddcbf8a20f4f51958170938225e87e5
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227917"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668388"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Śledzenie metryk i wdrażanie modeli za pomocą usług MLflow i Azure Machine Learning (wersja zapoznawcza)
 
@@ -36,8 +36,9 @@ W tym artykule pokazano, jak włączyć śledzenie identyfikatorów URI MLflow i
 
  Śledzenie MLflow oferuje funkcje rejestrowania metryk i magazynu artefaktów, które są dostępne tylko w innym przypadku za pośrednictwem [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
-| | MLflow śledzenie & | Azure Machine Learning <br> Zestaw SDK dla języka Python |  Azure Machine Learning <br> Interfejs wiersza polecenia | Azure Portal|
-|-|-|-|-|-|-|
+
+| | MLflow śledzenie & | Azure Machine Learning Python SDK |  Interfejs wiersza polecenia Azure Machine Learning | Azure Portal|
+|---|---|---|---|---|
 | Zarządzanie obszarem roboczym |   | ✓ | ✓ | ✓ |
 | Korzystanie z magazynów danych  |   | ✓ | ✓ | |
 | Metryki dzienników      | ✓ | ✓ |   | |

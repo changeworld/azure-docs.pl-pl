@@ -1,7 +1,6 @@
 ---
 title: Tworzenie oprogramowania dla usługi Azure Files przy użyciu platformy .NET | Microsoft Docs
 description: Dowiedz się, jak opracować aplikacje platformy .NET i usługi korzystające z usługi Azure Files do przechowywania danych plików.
-services: storage
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 38bafdb4753b41a9c8acd599e6b7215e1777c6cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779462"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699783"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Tworzenie oprogramowania dla usługi Azure Files przy użyciu platformy .NET
 
@@ -37,7 +36,7 @@ Aby dowiedzieć się więcej na temat usługi Azure Files, zobacz [Wprowadzenie 
 
 Usługa Azure Files oferuje dwa obszerne podejścia do aplikacji klienckich: blok komunikatów serwera (SMB) i interfejs REST. W ramach platformy .NET te metody zostały wyabstrahowane przez interfejsy API `System.IO` i `WindowsAzure.Storage`.
 
-Interfejs API | Kiedy stosować | Uwagi
+interfejs API | Kiedy stosować | Uwagi
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Twoja aplikacja: <ul><li>Musi odczytywać/zapisywać pliki za pośrednictwem protokołu SMB</li><li>Działa na urządzeniu, które ma dostęp do konta usługi Azure Files za pośrednictwem portu 445</li><li>Nie musi zarządzać żadnymi ustawieniami administracyjnymi udziału plików</li></ul> | Kodowanie operacji We/Wy pliku usługi Azure Files za pośrednictwem protokołu SMB jest ogólnie takie samo, jak kodowanie operacji We/Wy za pomocą dowolnego sieciowego udziału plików lub lokalnego urządzenia magazynującego. Zobacz [ten samouczek](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter), aby zapoznać się z wprowadzeniem do wielu funkcji platformy .NET, w tym do operacji We/Wy pliku.
 [Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Twoja aplikacja: <ul><li>Nie może uzyskiwać dostępu do usługi Azure Files za pośrednictwem protokołu SMB na porcie 445 z powodu ograniczeń zapory lub usługodawcy internetowego</li><li>Wymaga funkcji administracyjnych, takich jak możliwość ustawiania przydziału udziału plików lub tworzenia sygnatury dostępu współdzielonego</li></ul> | W tym artykule przedstawiono użycie biblioteki `Microsoft.Azure.Storage.File` dla operacji We/Wy pliku przy użyciu interfejsu REST (zamiast protokołu SMB) oraz zarządzania udziałem plików.
@@ -53,13 +52,13 @@ W programie Visual Studio utwórz nową aplikację konsoli dla systemu Windows. 
 
 Wszystkie przykłady kodu w tym samouczku można dodać do metody `Main()` w pliku `Program.cs` aplikacji konsolowej.
 
-Można użyć biblioteki klienta usługi Azure Storage w aplikacji .NET, w tym platformy Azure w chmurze usługi lub aplikacji sieci web, a aplikacje klasyczne i mobilne dowolnego typu. W tym przewodniku dla uproszczenia przedstawiono aplikację konsolową.
+Biblioteka klienta usługi Azure Storage może być używana w dowolnym typie aplikacji platformy .NET, w tym w usłudze w chmurze platformy Azure lub aplikacji sieci Web oraz aplikacji klasycznych i mobilnych. W tym przewodniku dla uproszczenia przedstawiono aplikację konsolową.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Użycie pakietu NuGet w celu zainstalowania wymaganych pakietów
 Istnieją dwa pakiety, które trzeba przywołać w projekcie, aby ukończyć ten samouczek:
 
-* [Wspólna biblioteka usługi Microsoft Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Ten pakiet zapewnia dostęp programistyczny do wspólnych zasobów na koncie magazynu.
-* [Biblioteka Microsoft Azure Storage Blob dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Ten pakiet zapewnia dostęp programowy do zasobów obiektów Blob na koncie magazynu.
+* [Microsoft Azure Storage wspólna biblioteka dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Ten pakiet zapewnia programistyczny dostęp do wspólnych zasobów na koncie magazynu.
+* [Biblioteka obiektów Blob Microsoft Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Ten pakiet zapewnia programistyczny dostęp do zasobów obiektów BLOB na koncie magazynu.
 * [Biblioteka programu Microsoft Azure Configuration Manager dla środowiska .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): ten pakiet zawiera klasę do analizowania parametrów połączenia w pliku konfiguracji, niezależnie od tego, gdzie została uruchomiona aplikacja.
 
 Pakiet NuGet służy do pobrania obu pakietów. Wykonaj następujące kroki:
@@ -221,7 +220,7 @@ if (share.Exists())
 }
 ```
 
-Aby uzyskać więcej informacji na temat tworzenia i używania sygnatur dostępu współdzielonego, zobacz [za pomocą sygnatur dostępu udostępnionego (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Aby uzyskać więcej informacji na temat tworzenia i używania sygnatur dostępu współdzielonego, zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="copy-files"></a>Kopiowanie plików
 Począwszy od wersji 5.x biblioteki klienta usługi Azure Storage, można kopiować pliki do innych plików, pliki do obiektów blob oraz obiekty blob do plików. W kolejnych sekcjach pokażemy, jak programowo wykonywać te operacje kopiowania.
@@ -402,7 +401,7 @@ CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTim
 ## <a name="troubleshooting-azure-files-using-metrics"></a>Rozwiązywanie problemów z usługą Azure Files przy użyciu metryk
 Funkcja analizy usługi Azure Storage obsługuje teraz metryki na potrzeby usługi Azure Files. Dane metryk umożliwiają śledzenie żądań i diagnozowanie problemów.
 
-Należy włączyć metryki dla usługi Azure Files z [witryny Azure portal](https://portal.azure.com). Można też włączyć je programowo przez wywołanie operacji ustawiania właściwości usługi plików za pomocą interfejsu API REST lub przy użyciu jednej z analogicznych operacji w bibliotece klienta usługi Storage.
+Można włączyć metryki dla Azure Files z [Azure Portal](https://portal.azure.com). Można też włączyć je programowo przez wywołanie operacji ustawiania właściwości usługi plików za pomocą interfejsu API REST lub przy użyciu jednej z analogicznych operacji w bibliotece klienta usługi Storage.
 
 Poniższy przykładowy kod pokazuje, jak włączyć metryki dla usługi Azure Files za pomocą biblioteki klienta usługi Storage programu .NET.
 

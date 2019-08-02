@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d2f06b054e433c0320019548c56539d102beaad
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386501"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717380"
 ---
 # <a name="set-up-security-info-to-use-a-security-key-preview"></a>Skonfiguruj informacje zabezpieczające, aby użyć klucza zabezpieczeń (wersja zapoznawcza)
 
@@ -30,26 +30,26 @@ Kluczy zabezpieczeń można używać jako metody logowania bezhasło w organizac
 
 ## <a name="what-is-a-security-key"></a>Co to jest klucz zabezpieczeń?
 
-Obecnie obsługujemy kilka projektów i dostawców kluczy zabezpieczeń przy użyciu metody uwierzytelniania bezhasło w [trybie szybkiej tożsamości online (Fido)](https://fidoalliance.org/fido2/) (FIDO2). Ta metoda umożliwia jednokrotne zalogowanie się do konta służbowego w celu uzyskania dostępu do wszystkich zasobów opartych na chmurze i obsługiwanych przeglądarek.
+Obecnie obsługujemy kilka projektów i dostawców kluczy zabezpieczeń przy użyciu protokołów uwierzytelniania bezhasło [online (Fido)](https://fidoalliance.org/fido2/) (FIDO2). Te klucze umożliwiają zalogowanie się do konta służbowego w celu uzyskania dostępu do zasobów w chmurze w organizacji przy użyciu obsługiwanego urządzenia i przeglądarki sieci Web.
 
 Administrator lub Twoja organizacja dostarczy klucz zabezpieczeń, jeśli będzie potrzebny dla konta służbowego. Istnieją różne typy kluczy zabezpieczeń, których można użyć, na przykład klucz USB, który można podłączyć do urządzenia lub klawisza NFC, który został wybrany w czytniku NFC. Więcej informacji o kluczu zabezpieczeń, w tym o tym, jaki typ jest, można znaleźć w dokumentacji producenta.
 
 > [!Note]
-> Jeśli nie możesz użyć klucza zabezpieczeń FIDO2, istnieją inne metody uwierzytelniania bezhasła, których można użyć, takich jak aplikacja Microsoft Authenticator lub funkcja Windows Hello. Aby uzyskać więcej informacji na temat aplikacji Microsoft Authenticator, zobacz [co to jest aplikacja Microsoft Authenticator?](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview). Aby uzyskać więcej informacji na temat usługi Windows Hello, zobacz [Omówienie funkcji Windows Hello](https://www.microsoft.com/windows/windows-hello).
+> Jeśli nie możesz użyć klucza zabezpieczeń FIDO2, istnieją inne metody uwierzytelniania bezhasła, których można użyć, takich jak aplikacja Microsoft Authenticator lub funkcja Windows Hello. Aby uzyskać więcej informacji na temat aplikacji Microsoft Authenticator, zobacz [co to jest aplikacja Microsoft Authenticator?](user-help-auth-app-overview.md). Aby uzyskać więcej informacji na temat usługi Windows Hello, zobacz [Omówienie funkcji Windows Hello](https://www.microsoft.com/windows/windows-hello).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Przed rozpoczęciem rejestrowania klucza zabezpieczeń należy dokładnie sprawdzić, czy:
+Aby można było zarejestrować klucz zabezpieczeń, należy wykonać następujące czynności:
 
 - Administrator włączył tę funkcję do użycia w organizacji.
 
-- Korzystasz z urządzenia z systemem Windows 10 lub nowszym, wersja 1903 i korzystanie z przeglądarki Microsoft Edge.
+- Korzystasz z urządzenia z systemem Windows 10 w 2019 Update i przy użyciu obsługiwanej przeglądarki.
 
-- Uzyskano fizyczny klucz zabezpieczeń od administratora lub Twojej organizacji. Klucz zabezpieczeń musi być zarówno FIDO2, jak i zgodny z firmą Microsoft. Jeśli masz pytania dotyczące klucza zabezpieczeń i tego, czy jest on zgodny, skontaktuj się z działem pomocy technicznej Twojej organizacji.
+- Dysponujesz fizycznym kluczem zabezpieczeń zatwierdzonym przez administratora lub Twoją organizację. Klucz zabezpieczeń musi być zarówno FIDO2, jak i zgodny z firmą Microsoft. Jeśli masz pytania dotyczące klucza zabezpieczeń i tego, czy jest on zgodny, skontaktuj się z działem pomocy technicznej Twojej organizacji.
 
 ## <a name="register-your-security-key"></a>Rejestrowanie klucza zabezpieczeń
 
-Przed zalogowaniem się do konta służbowego przy użyciu klucza należy przygotować klucz zabezpieczeń do pracy z systemem Windows i unikatowym numerem PIN.
+Przed zalogowaniem się do konta służbowego przy użyciu klucza należy utworzyć klucz zabezpieczeń i nadać mu unikatowy numer PIN. Być może zarejestrowano maksymalnie 10 kluczy na Twoim koncie. 
 
 1. Przejdź do strony **mój profil** w https://myprofile.microsoft.com obszarze i zaloguj się, jeśli jeszcze tego nie zrobiono.
 
@@ -96,7 +96,7 @@ Przed zalogowaniem się do konta służbowego przy użyciu klucza należy przygo
 
 ## <a name="delete-a-security-key-from-your-security-info"></a>Usuwanie klucza zabezpieczeń z informacji zabezpieczających
 
-Jeśli nie chcesz już używać klucza zabezpieczeń, możesz usunąć klucz z informacji zabezpieczających. Ponieważ spowoduje to zatrzymanie klucza zabezpieczeń z użyciem konta służbowego, klucz zabezpieczeń kontynuuje przechowywanie danych i poświadczeń. Aby usunąć dane i poświadczenia z samego klucza zabezpieczeń, należy postępować zgodnie z instrukcjami w sekcji Resetowanie [zabezpieczeń zgodnych z firmą Microsoft](#reset-your-security-key) w tym artykule.
+Jeśli użytkownik nie umieści lub nie chce już korzystać z klucza zabezpieczeń, można usunąć klucz z informacji zabezpieczających. Ponieważ spowoduje to zatrzymanie klucza zabezpieczeń z użyciem konta służbowego, klucz zabezpieczeń kontynuuje przechowywanie danych i poświadczeń. Aby usunąć dane i poświadczenia z samego klucza zabezpieczeń, należy postępować zgodnie z instrukcjami w sekcji Resetowanie [zabezpieczeń zgodnych z firmą Microsoft](#reset-your-security-key) w tym artykule.
 
 1. Wybierz łącze **Usuń** z klucza zabezpieczeń do usunięcia.
 
@@ -105,7 +105,7 @@ Jeśli nie chcesz już używać klucza zabezpieczeń, możesz usunąć klucz z i
     Klucz zabezpieczeń został usunięty i nie będzie już można go używać do logowania się do konta służbowego.
 
 >[!Important]
->Jeśli ten klucz zabezpieczeń został usunięty przez pomyłkę, należy zarejestrować go ponownie, korzystając z instrukcji przedstawionych w sekcji [jak zarejestrować klucz zabezpieczeń](#register-your-security-key) w tym artykule.
+>Jeśli usuniesz klucz zabezpieczeń przez pomyłkę, możesz zarejestrować go ponownie, korzystając z instrukcji przedstawionych w sekcji [jak zarejestrować klucz zabezpieczeń](#register-your-security-key) w tym artykule.
 
 ## <a name="manage-your-security-key-settings-from-windows-settings"></a>Zarządzanie ustawieniami klucza zabezpieczeń z ustawień systemu Windows
 
@@ -138,29 +138,19 @@ Nowy numer PIN klucza zabezpieczeń można utworzyć dla klucza zabezpieczeń.
 
 1. Otwórz aplikację Ustawienia systemu Windows, wybierz pozycję **konta**, wybierz pozycję **Opcje logowania**, wybierz pozycję **klucz zabezpieczeń**, a następnie wybierz pozycję **Zarządzaj**.
 
-2. Włóż klucz zabezpieczeń do portu USB lub naciśnij swój czytnik NFC, aby zweryfikować swoją tożsamość. 5
+2. Wstaw swój klucz zabezpieczeń do portu USB lub naciśnij swój czytnik NFC, aby zweryfikować swoją tożsamość.
 3. Wybierz pozycję **Dodaj** z obszaru **numeru PIN klucza zabezpieczeń** , wpisz i potwierdź nowy numer PIN klucza zabezpieczeń, a następnie wybierz przycisk **OK**.
 
-    Klucz zabezpieczeń jest aktualizowany przy użyciu nowego numeru PIN klucza zabezpieczeń, który będzie używany z kontem służbowym. Jeśli zdecydujesz się ponownie zmienić kod PIN, możesz wybrać przycisk **Zmień** . 6
+     Klucz zabezpieczeń jest aktualizowany przy użyciu nowego numeru PIN klucza zabezpieczeń, który będzie używany z kontem służbowym. Jeśli zdecydujesz się ponownie zmienić kod PIN, możesz wybrać przycisk **Zmień** .
 4. Wybierz pozycję **Zamknij** , aby zamknąć ekran **Zarządzanie** .
 
 ## <a name="additional-security-info-methods"></a>Dodatkowe metody informacji zabezpieczających
 
-Dostępne są dodatkowe opcje dotyczące sposobu, w jaki Twoja organizacja kontaktuje się z Twoją tożsamością, w oparciu o to, co you're próbę wykonania. Dostępne są następujące opcje:
+Aby zarejestrować klucz zabezpieczeń, należy mieć co najmniej jedną zarejestrowaną dodatkową metodę weryfikacji zabezpieczeń. Aby uzyskać więcej informacji, zobacz [sekcję Omówienie](security-info-add-update-methods-overview.md) . 
 
-- **Aplikacja uwierzytelniania.** Pobierz aplikację Authenticator i użyj jej do uzyskania powiadomienia o zatwierdzeniu lub losowo wygenerowanego kodu zatwierdzenia na potrzeby weryfikacji dwuetapowej lub resetowania hasła. Instrukcje krok po kroku dotyczące konfigurowania i używania aplikacji Microsoft Authenticator można znaleźć w temacie [set up Security Info to use the Authenticator App](security-info-setup-auth-app.md).
+## <a name="next-steps"></a>Kolejne kroki
 
-- **Tekst urządzenia przenośnego.** Wprowadź numer urządzenia przenośnego i uzyskaj tekst kodu, który będzie używany do weryfikacji dwuetapowej lub resetowania hasła. Aby uzyskać instrukcje krok po kroku dotyczące weryfikowania tożsamości za pomocą wiadomości tekstowych (SMS), zobacz [Konfigurowanie informacji zabezpieczających do używania wiadomości](security-info-setup-text-msg.md)SMS.
-
-- **Urządzenie przenośne lub połączenie telefoniczne.** Wprowadź numer urządzenia przenośnego i otrzymaj połączenie telefoniczne w celu weryfikacji dwuetapowej lub resetowania hasła. Aby uzyskać instrukcje krok po kroku dotyczące weryfikowania tożsamości przy użyciu numeru telefonu, zobacz [Konfigurowanie informacji zabezpieczających do korzystania z połączeń telefonicznych](security-info-setup-phone-number.md).
-
-- **Adres e-mail.** Wprowadź służbowy adres e-mail, aby uzyskać wiadomość e-mail na potrzeby resetowania hasła. Ta opcja jest niedostępna w przypadku weryfikacji dwuetapowej. Aby uzyskać instrukcje krok po kroku dotyczące konfigurowania poczty e-mail, zobacz [Konfigurowanie informacji zabezpieczających do używania poczty e-mail](security-info-setup-email.md).
-
-- **Pytania zabezpieczające.** Odpowiedz na niektóre pytania zabezpieczające utworzone przez administratora w organizacji. Ta opcja jest dostępna tylko do resetowania haseł, a nie do weryfikacji dwuetapowej. Aby uzyskać instrukcje krok po kroku dotyczące konfigurowania pytań zabezpieczających, zobacz artykuł [Konfigurowanie informacji zabezpieczających do używania pytań zabezpieczających](security-info-setup-questions.md) .
-
-## <a name="next-steps"></a>Następne kroki
-
-- Aby uzyskać więcej informacji na temat metod uwierzytelniania bezhasła, zapoznaj się z tematem " [usługa Azure AD" rozpoczyna publiczną wersję zapoznawczą kluczy zabezpieczeń FIDO2, włączając](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) w to Blog dotyczący logowania bezhasła lub zapoznaj się z [aplikacją Microsoft Authenticator?](https://docs.microsoft.com/azure/active-directory/user-help8user-help-auth-app-overview) [ Artykuły dotyczące omówienia systemu Windows Hello](https://www.microsoft.com/windows/windows-hello) .
+- Aby uzyskać więcej informacji na temat metod uwierzytelniania bezhasła, zapoznaj się z tematem " [usługa Azure AD" rozpoczyna publiczną wersję zapoznawczą kluczy zabezpieczeń FIDO2, włączając](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) w to Blog dotyczący logowania bezhasła lub zapoznaj się z [aplikacją Microsoft Authenticator?](user-help-auth-app-overview.md) [ Artykuły dotyczące omówienia systemu Windows Hello](https://www.microsoft.com/windows/windows-hello) .
 
 - Aby uzyskać bardziej szczegółowe informacje o [kluczach zabezpieczeń zgodnych z firmą Microsoft](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 

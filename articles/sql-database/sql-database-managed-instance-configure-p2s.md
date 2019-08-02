@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
-manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 5fee129e24d38da350589d5bed90123733f148c0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 3ba5190050d45385ad17a87f6dce88ffd601e83d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296055"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567687"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Szybki start: Konfigurowanie połączenia punkt-lokacja z wystąpieniem zarządzanym Azure SQL Database z lokalnego
 
@@ -68,7 +67,7 @@ Ten przewodnik Szybki start:
 2. Otwórz grupę zasobów, w której została utworzona Brama sieci wirtualnej, a następnie otwórz zasób bramy sieci wirtualnej.
 3. Wybierz pozycję **Konfiguracja punktu do lokacji** , a następnie wybierz pozycję **Pobierz klienta sieci VPN**.
 
-    ![Pobierz klienta VPN](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
+    ![Pobieranie klienta VPN](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
 4. Na lokalnym komputerze klienckim Wyodrębnij pliki z pliku zip, a następnie otwórz folder przy użyciu wyodrębnionych plików.
 5. Otwórz folder "**WindowsAmd64** " i Otwórz plik **VpnClientSetupAmd64. exe** .
 6. Jeśli otrzymasz **chroniony komputer z systemem Windows** , kliknij pozycję **więcej informacji** , a następnie kliknij pozycję **Uruchom mimo to**.
@@ -81,17 +80,17 @@ Ten przewodnik Szybki start:
 
 1. Przejdź do sieci **VPN** w **sieci & Internet** na lokalnym komputerze klienckim i wybierz swoją sieć wirtualną wystąpienia zarządzanego, aby nawiązać połączenie z tą wirtualną. Na poniższej ilustracji Sieć wirtualna ma nazwę **MyNewVNet**.
 
-    ![Połączenie VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
+    ![Połączenie sieci VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
 2. Wybierz przycisk **Połącz**.
 3. W oknie dialogowym wybierz pozycję **Połącz**.
 
-    ![Połączenie VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  
+    ![Połączenie sieci VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  
 4. Po wyświetleniu monitu, że Menedżer połączeń potrzebuje podwyższonego poziomu uprawnień do aktualizowania tabeli tras, wybierz pozycję **Kontynuuj**.
 5. Aby kontynuować, wybierz pozycję **tak** w oknie dialogowym Kontrola konta użytkownika.
 
    Nawiązano połączenie sieci VPN z siecią wirtualną wystąpienia zarządzanego.
 
-    ![Połączenie VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
+    ![Połączenie sieci VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
 
 ## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Nawiązywanie połączenia z wystąpieniem zarządzanym za pomocą programu SSMS
 
@@ -103,7 +102,7 @@ Ten przewodnik Szybki start:
 
 Po nawiązaniu połączenia możesz wyświetlić bazy danych systemu i użytkownika w węźle bazy danych. Można również wyświetlać różne obiekty w węzłach zabezpieczenia, obiekty serwera, replikacja, zarządzanie, Agent SQL Server i Profiler systemu XEvent.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby zapoznać się z przewodnikiem Szybki Start pokazujący, jak nawiązać połączenie z maszyny wirtualnej platformy Azure, zobacz [Konfigurowanie połączenia punkt-lokacja](sql-database-managed-instance-configure-p2s.md).
 - Aby uzyskać omówienie opcji połączenia dla aplikacji, zobacz artykuł [Connect your applications to Managed Instance](sql-database-managed-instance-connect-app.md) (Łączenie aplikacji z wystąpieniem zarządzanym).

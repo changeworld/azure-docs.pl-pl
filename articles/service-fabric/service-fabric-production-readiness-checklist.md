@@ -1,9 +1,9 @@
 ---
-title: Lista kontrolna dotycząca usługi Azure Service Fabric produkcji gotowości | Dokumentacja firmy Microsoft
-description: Przygotowanie aplikacji usługi Service Fabric i klastra w środowisku produkcyjnym przez następujące najlepsze rozwiązania.
+title: Lista kontrolna gotowości produkcyjnej platformy Azure Service Fabric | Microsoft Docs
+description: Zapoznaj się z Service Fabric aplikacji i środowiska produkcyjnego klastra, wykonując następujące najlepsze rozwiązania.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chakdan
 editor: ''
 ms.assetid: ''
@@ -13,59 +13,59 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/05/2019
-ms.author: aljo
-ms.openlocfilehash: a75b02b8173507a28204a3ec2030ce7ed9838495
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 9e86f7306ee70bee2e084b967867e2a9be5b66e1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729860"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599358"
 ---
 # <a name="production-readiness-checklist"></a>Lista kontrolna gotowości do produkcji
 
-Jest gotowy do zastąpienia jest przesyłany ruch produkcyjny aplikacji i klastra? Uruchamiając i testując aplikację i klaster nie musi oznaczać, że jest gotowa do użytku w środowisku produkcyjnym. Zachowaj aplikacji i klastra z systemem sprawnie, korzystając z poniższej listy kontrolnej. Zdecydowanie zaleca się te elementy powinny zostać zaznaczone. Oczywiście można użyć alternatywnych rozwiązań dla konkretnego elementu wiersza (na przykład własnych struktur diagnostyki).
+Czy Twoja aplikacja i klaster są gotowe do przetworzenia ruchu produkcyjnego? Uruchamianie i testowanie aplikacji oraz klaster nie musi oznaczać, że jest gotowe do użycia w środowisku produkcyjnym. Utrzymuj bezproblemowe działanie aplikacji i klastra, przechodząc przez następującą listę kontrolną. Zdecydowanie zalecamy, aby wszystkie te elementy były wyszukiwane. Oczywiście można wybrać opcję użycia alternatywnych rozwiązań dla konkretnego elementu wiersza (na przykład własnych struktur diagnostyki).
 
 
-## <a name="prerequisites-for-production"></a>Wymagania wstępne dla środowiska produkcyjnego
-1. Usługa Azure Service Fabric najlepsze rozwiązania: [Projekt aplikacji](./service-fabric-best-practices-applications.md), [zabezpieczeń](./service-fabric-best-practices-security.md), [sieć](./service-fabric-best-practices-networking.md), [do planowania wydajności i skalowania](./service-fabric-best-practices-capacity-scaling.md), [infrastruktura jako kod](./service-fabric-best-practices-infrastructure-as-code.md), i [monitorowania i diagnostyki](./service-fabric-best-practices-monitoring.md). 
-1. Implementuj konfiguracji zabezpieczeń elementów Reliable Actors przy użyciu aktorów model programowania
-1. Dla klastrów liczących więcej niż 20 rdzeni lub 10 węzłów utworzyć typ dedykowanych węzła podstawowego dla usług systemowych. Dodaj [ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) zarezerwować typu węzła podstawowego dla usług systemowych.
-1. Za pomocą D2v2 wyższej wersji jednostki SKU dla typu węzła podstawowego. Zalecane jest pobranie jednostki SKU o co najmniej 50 GB dysk twardy pojemności.
-1. Musi być klastrów produkcyjnych [bezpiecznego](service-fabric-cluster-security.md). Na przykład Konfigurowanie zabezpieczonego klastra zobacz [szablonu klastra](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Użyj nazwy pospolite certyfikatów i certyfikaty z podpisem własnym należy unikać.
-1. Dodaj [ograniczenia zasobów dotyczące kontenerów i usług](service-fabric-resource-governance.md), dzięki czemu nie zajmują więcej niż 75% węzła zasobów. 
-1. Zrozumienie i ustaw [poziom trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Typy węzłów obciążeń stanowych zaleca trwałości Silver lub wyższego poziomu. Podstawowy typ węzła powinny mieć poziom trwałości, ustaw Silver lub wyższej.
-1. Informacje, a następnie wybierz [poziom niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) typu węzła. Zaleca się niezawodność Silver lub wyższego.
-1. Obciążenia i skalowanie Testuj obciążenia w taki sposób, aby zidentyfikować [wymagania dotyczące pojemności](service-fabric-cluster-capacity.md) dla klastra. 
-1. Usługi i aplikacje są monitorowane i dzienniki aplikacji są generowane i przechowywane w usłudze alertów. Na przykład zobacz [Dodawanie rejestrowania aplikacji usługi Service Fabric](service-fabric-how-to-diagnostics-log.md) i [monitorowania kontenerów za pomocą usługi Azure Monitor dzienników](service-fabric-diagnostics-oms-containers.md).
-1. Klaster jest monitorowana przy użyciu alertów (na przykład za pomocą [dzienniki usługi Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)). 
-1. Podstawowa infrastruktura zestawu skalowania maszyn wirtualnych odbywa się za pomocą alertów (na przykład za pomocą [dzienniki usługi Azure Monitor](service-fabric-diagnostics-oms-agent.md).
-1. Klaster ma [głównego i dodatkowego certyfikatu](service-fabric-cluster-security-update-certs-azure.md) zawsze (dzięki czemu można nie uzyskać blokady).
-1. Obsługa osobne klastry do rozwoju, przejściowe i produkcyjne. 
-1. [Uaktualnienia aplikacji](service-fabric-application-upgrade.md) i [klastra uaktualnień](service-fabric-tutorial-upgrade-cluster.md) są testowane w rozwoju i najpierw przemieszczania klastrów. 
-1. Wyłączanie automatycznych uaktualnień w klastrach produkcyjnych i włącz ją dla rozwoju i przemieszczania klastrów (Wycofaj w razie potrzeby). 
-1. Ustanowić cel punktu odzyskiwania (RPO) dla usługi i konfigurowanie [proces odzyskiwania po awarii](service-fabric-disaster-recovery.md) i przetestować działanie.
-1. Planowanie [skalowanie](service-fabric-cluster-scaling.md) klastra ręcznie lub programowo.
-1. Planowanie [poprawek](service-fabric-patch-orchestration-application.md) węzły klastra. 
-1. Tak, aby najnowsze zmiany są testowane stale, należy ustanowić potoku CI/CD. Na przykład za pomocą [DevOps platformy Azure](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) lub [usługi Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
-1. Programowanie i przemieszczania klastrów w ramach obciążenia za pomocą testów [usługa analizy błędów](service-fabric-testability-overview.md) i wywoływać kontrolowanego [chaos](service-fabric-controlled-chaos.md). 
-1. Planowanie [skalowanie](service-fabric-concepts-scalability.md) aplikacji. 
+## <a name="prerequisites-for-production"></a>Wymagania wstępne dotyczące produkcji
+1. Najlepsze rozwiązania dotyczące platformy Azure Service Fabric: [Projektowanie aplikacji](./service-fabric-best-practices-applications.md), [zabezpieczenia](./service-fabric-best-practices-security.md), [Sieć](./service-fabric-best-practices-networking.md), [Planowanie pojemności i skalowanie](./service-fabric-best-practices-capacity-scaling.md), [infrastruktura jako kod](./service-fabric-best-practices-infrastructure-as-code.md)oraz [monitorowanie i Diagnostyka](./service-fabric-best-practices-monitoring.md). 
+1. Zaimplementuj konfigurację zabezpieczeń Reliable Actors w przypadku korzystania z modelu programowania aktorów
+1. W przypadku klastrów mających więcej niż 20 rdzeni lub 10 węzłów Utwórz dedykowany typ węzła podstawowego dla usług systemowych. Dodaj [ograniczenia umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) w celu zarezerwowania typu węzła podstawowego dla usług systemowych.
+1. Użyj jednostki SKU D2v2 lub wyższej dla typu węzła podstawowego. Zalecane jest wybranie jednostki SKU z co najmniej 50 GB miejsca na dysku twardym.
+1. Klastry produkcyjne muszą być [bezpieczne](service-fabric-cluster-security.md). Aby zapoznać się z przykładem konfigurowania bezpiecznego klastra, zapoznaj się z tym [szablonem klastra](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Używaj typowych nazw dla certyfikatów i Unikaj używania certyfikatów z podpisem własnym.
+1. Dodaj [ograniczenia zasobów do kontenerów i usług](service-fabric-resource-governance.md), aby nie korzystały z więcej niż 75% zasobów węzła. 
+1. Zrozumienie i Ustawianie [poziomu trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Zalecany jest poziom trwałości srebra lub wyższej dla typów węzłów uruchamiających obciążenia stanowe. Typ węzła podstawowego powinien mieć ustawioną wartość Silver lub wyższą.
+1. Zrozumienie i wybór [poziomu niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) typu węzła. Zalecana jest niezawodność Silver lub wyższą.
+1. Załaduj i Skaluj swoje obciążenia, aby identyfikować [wymagania dotyczące pojemności](service-fabric-cluster-capacity.md) dla klastra. 
+1. Twoje usługi i aplikacje są monitorowane, a Dzienniki aplikacji są generowane i przechowywane z alertami. Na przykład zobacz [Dodawanie rejestrowania do aplikacji Service Fabric](service-fabric-how-to-diagnostics-log.md) i [monitorowanie kontenerów za pomocą dzienników Azure monitor](service-fabric-diagnostics-oms-containers.md).
+1. Klaster jest monitorowany z alertami (na przykład z [dziennikami Azure monitor](service-fabric-diagnostics-event-analysis-oms.md)). 
+1. Podstawowa infrastruktura zestawu skalowania maszyn wirtualnych jest monitorowana przy użyciu alertów (na przykład z [dziennikami Azure monitor](service-fabric-diagnostics-oms-agent.md).
+1. Klaster ma zawsze [podstawowe i pomocnicze certyfikaty](service-fabric-cluster-security-update-certs-azure.md) (więc nie można go zablokować).
+1. Obsługa oddzielnych klastrów na potrzeby projektowania, przemieszczania i produkcji. 
+1. [Uaktualnienia aplikacji](service-fabric-application-upgrade.md) i [uaktualnienia klastra](service-fabric-tutorial-upgrade-cluster.md) są najpierw testowane w ramach projektowania i przygotowywania klastrów. 
+1. Wyłącz automatyczne uaktualnianie w klastrach produkcyjnych i włącz je dla klastrów programistycznych i przejściowych (Wycofaj w razie potrzeby). 
+1. Ustanów cel punktu odzyskiwania dla usługi i skonfiguruj [proces odzyskiwania po awarii](service-fabric-disaster-recovery.md) i przetestuj go.
+1. Planuj ręcznie lub programowo [skalować](service-fabric-cluster-scaling.md) klaster.
+1. Zaplanuj [stosowanie poprawek](service-fabric-patch-orchestration-application.md) do węzłów klastra. 
+1. Ustanów potok ciągłej integracji/ciągłego dostarczania, aby najnowsze zmiany były stale testowane. Na przykład przy użyciu [usługi Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) lub [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+1. Przetestuj & tworzenia klastrów przejściowych w ramach obciążenia z [usługą analizy błędów](service-fabric-testability-overview.md) i wywołujące kontrolowane [chaos](service-fabric-controlled-chaos.md). 
+1. Zaplanuj [skalowanie](service-fabric-concepts-scalability.md) aplikacji. 
 
 
-Jeśli używasz modelu programowania usług Reliable Services usługi Service Fabric lub elementów Reliable Actors następujące elementy muszą zostać zaznaczone:
-1. Uaktualnianie aplikacji podczas programowania lokalnego, aby sprawdzić, czy kodu usługi jest zapewniane token anulowania w `RunAsync` metody i zamykanie odbiorników komunikacji niestandardowych.
-1. Należy unikać [typowych pułapek](service-fabric-work-with-reliable-collections.md) przy użyciu niezawodnych kolekcji.
-1. Monitorowanie wydajności pamięci środowiska .NET CLR liczników podczas uruchamiania testów obciążenia i sprawdź, czy wysoki stopień wyrzucania elementów bezużytecznych lub wzrost braków sterty.
-1. Obsługa kopia zapasowa offline [usług Reliable Services i Reliable Actors](service-fabric-reliable-services-backup-restore.md) i przetestuj proces przywracania.
-1. Liczba wystąpień usługi podstawowej maszyny wirtualnej NodeType najlepiej powinien być równy co najmniej w warstwie niezawodność klastrów; zawiera warunki, w stosownych przypadkach przekracza minimalne warstwy: tymczasowo po pionowo skalowanie podstawowe elementy NodeType maszyn wirtualnych skalowania Ustaw jednostki SKU.
+W przypadku korzystania z Service Fabric Reliable Services lub modelu programowania Reliable Actors należy wyewidencjonować następujące elementy:
+1. Uaktualnij aplikacje podczas lokalnego tworzenia, aby sprawdzić, czy kod usługi jest uznawany za token anulowania `RunAsync` w metodzie i zamykając niestandardowe odbiorniki komunikacji.
+1. Unikaj [typowych pułapek](service-fabric-work-with-reliable-collections.md) podczas korzystania z niezawodnych kolekcji.
+1. Monitoruj liczniki wydajności pamięci środowiska CLR platformy .NET podczas uruchamiania testów obciążenia i sprawdzaj, czy nie ma wysokiego współczynnika wyrzucania elementów bezużytecznych lub wzrostu sterty.
+1. Zachowaj kopię zapasową offline [Reliable Services i Reliable Actors](service-fabric-reliable-services-backup-restore.md) i przetestuj proces przywracania.
+1. Liczba wystąpień podstawowej maszyny wirtualnej NodeType powinna być taka sama jak minimalna dla warstwy niezawodności klastrów; warunki, które są niezbędne do przekroczenia minimalnej warstwy: tymczasowo podczas skalowania w pionie podstawowej jednostki SKU zestawu skalowania maszyn wirtualnych elementów NodeType.
 
-## <a name="optional-best-practices"></a>Opcjonalne najlepszych rozwiązań
+## <a name="optional-best-practices"></a>Opcjonalne najlepsze rozwiązania
 
-Mimo że powyższe listy warunków wstępnych, aby przejść do środowiska produkcyjnego, należy również rozważyć następujące elementy:
-1. Podłącz do [model kondycji usługi Service Fabric](service-fabric-health-introduction.md) ocenę kondycji wbudowanych i raportowania.
-1. Wdrażanie niestandardowego strażnika, który jest monitorowanie aplikacji i raporty [obciążenia](service-fabric-cluster-resource-manager-metrics.md) dla [równoważenia zasobów](service-fabric-cluster-resource-manager-balancing.md). 
+Chociaż powyższe listy są wymaganiami wstępnymi do przechodzenia do środowiska produkcyjnego, należy wziąć pod uwagę następujące elementy:
+1. Dołącz do [modelu kondycji Service Fabric](service-fabric-health-introduction.md) , aby rozszerzyć wbudowaną ocenę kondycji i raportowanie.
+1. Wdróż niestandardowy licznik alarmowy monitorujący aplikację i raportów [obciążenia](service-fabric-cluster-resource-manager-metrics.md) na potrzeby [równoważenia zasobów](service-fabric-cluster-resource-manager-balancing.md). 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Wdrażanie klastra usługi Service Fabric Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* [Wdrażanie klastra usługi Service Fabric systemu Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+## <a name="next-steps"></a>Następne kroki
+* [Wdrażanie klastra systemu Windows Service Fabric](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+* [Wdrażanie klastra z systemem Service Fabric Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * Uzyskaj informacje o [cyklu życia aplikacji](service-fabric-application-lifecycle.md) usługi Service Fabric.

@@ -1,11 +1,10 @@
 ---
-title: Planowanie wdrażania klastrów usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat planowania i przygotowania do wdrożenia klastra usługi Service Fabric na platformie Azure w środowisku produkcyjnym.
+title: Planowanie wdrożenia klastra Service Fabric platformy Azure | Microsoft Docs
+description: Dowiedz się więcej o planowaniu i przygotowaniu dla środowiska produkcyjnego wdrożenia klastra Service Fabric na platformie Azure.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: aljo
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,66 +12,66 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2019
-ms.author: aljo
-ms.openlocfilehash: 0f3a9010805ec1a18490f6f530f60d7a3c763398
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387863"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600003"
 ---
-# <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planowanie i przygotowanie do wdrożenia klastra
+# <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planowanie i przygotowywanie wdrożenia klastra
 
-Planowanie i przygotowanie do wdrożenia klastra produkcyjnego jest bardzo ważne.  Istnieje wiele czynników, które należy wziąć pod uwagę.  Ten artykuł zawiera opis kroków przygotowania wdrożenia klastra.
+Planowanie i przygotowywanie wdrożenia klastra produkcyjnego jest bardzo ważne.  Istnieje wiele czynników, które należy wziąć pod uwagę.  W tym artykule przedstawiono kroki przygotowywania wdrożenia klastra.
 
-## <a name="read-the-best-practices-information"></a>Odczytywanie informacji o najlepszych rozwiązań
-Aby zarządzać aplikacjami usługi Azure Service Fabric i klastrami pomyślnie, istnieją operacje, zdecydowanie zalecamy należy wykonać, aby zoptymalizować niezawodności w środowisku produkcyjnym.  Aby uzyskać więcej informacji, przeczytaj [najważniejsze wskazówki dotyczące aplikacji usługi Service Fabric i klastra](service-fabric-best-practices-overview.md).
+## <a name="read-the-best-practices-information"></a>Przeczytaj informacje o najlepszych rozwiązaniach
+Aby pomyślnie zarządzać aplikacjami i klastrami platformy Azure Service Fabric, istnieją operacje, dla których zdecydowanie zalecamy przeprowadzenie optymalizacji niezawodności środowiska produkcyjnego.  Aby uzyskać więcej informacji, Przeczytaj [Service Fabric najlepszych rozwiązań dotyczących aplikacji i klastrów](service-fabric-best-practices-overview.md).
 
-## <a name="select-the-os-for-the-cluster"></a>Wybierz system operacyjny klastra
-Usługa Service Fabric umożliwia tworzenie klastrów usługi Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server lub Linux.  Przed wdrożeniem klastra, musisz wybrać system operacyjny:  Windows lub Linux.  Każdy węzeł w klastrze (maszyna wirtualna) działa ten sam system operacyjny, nie można mieszać Windows i maszyn wirtualnych systemu Linux, które znajdują się w tym samym klastrze.
+## <a name="select-the-os-for-the-cluster"></a>Wybierz system operacyjny dla klastra
+Service Fabric umożliwia tworzenie klastrów Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server lub Linux.  Przed wdrożeniem klastra należy wybrać system operacyjny:  System Windows lub Linux.  W każdym węźle (maszynie wirtualnej) w klastrze działa ten sam system operacyjny, nie można mieszać maszyn wirtualnych z systemami Windows i Linux w tym samym klastrze.
 
 ## <a name="capacity-planning"></a>Planowanie pojemności
-Dla wszystkich wdrożeń produkcyjnych planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre zagadnienia, które należy uwzględnić w ramach tego procesu.
+W przypadku każdego wdrożenia produkcyjnego planowanie wydajności jest ważnym krokiem. Poniżej przedstawiono niektóre zagadnienia, które należy uwzględnić w ramach tego procesu.
 
 * Początkowa liczba typów węzłów klastra 
-* Właściwości każdego typu węzła (rozmiar, liczbę wystąpień podstawowy, połączenie z Internetem, liczba maszyn wirtualnych itd.)
+* Właściwości każdego typu węzła (rozmiar, liczba wystąpień, podstawowe, połączenie z Internetem, liczba maszyn wirtualnych itp.)
 * Charakterystyka niezawodności i trwałości klastra
 
-### <a name="select-the-initial-number-of-node-types"></a>Wybierz początkowa liczba typów węzłów
-Najpierw należy ustalić, co się dzieje służący do klastra, którą tworzysz. Jakiego rodzaju aplikacje, które planujesz wdrożyć do tego klastra? Aplikacja ma wiele usług i czy któryś z nich muszą być publiczne lub połączone z Internetem? Usługi (wchodzące w skład aplikacji), czy mają potrzeb różnych infrastruktury, takich jak więcej pamięci RAM lub cykle procesora CPU wyższa? Klaster usługi Service Fabric może zawierać więcej niż jeden typ węzła: typ węzła podstawowego i jeden lub więcej typów węzłów innych niż podstawowe. Każdy typ węzła jest mapowany do zestawu skalowania maszyn wirtualnych. Następnie każdy typ węzła może być niezależnie skalowany w górę lub w dół oraz może mieć różne zestawy otwartych portów i różne metryki pojemności. [Właściwości węzła i ograniczeniami dotyczącymi umieszczania] [ placementconstraints] można skonfigurować, aby ograniczyć określone usługi do typów określonego węzła.  Aby uzyskać więcej informacji, przeczytaj [liczba typów węzłów klastra musi zaczynać](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
+### <a name="select-the-initial-number-of-node-types"></a>Wybierz początkową liczbę typów węzłów
+Najpierw należy ustalić, co tworzony klaster ma być używany dla programu. Jakiego rodzaju aplikacje są planowane do wdrożenia w tym klastrze? Czy Twoja aplikacja ma wiele usług i czy wszystkie z nich muszą być dostępne publicznie czy z Internetu? Czy usługi (które tworzą aplikację) mają różne potrzeby związane z infrastrukturą, takie jak większa ilość pamięci RAM czy więcej cykli procesora CPU? Klaster Service Fabric może składać się z więcej niż jednego typu węzła: podstawowego typu węzła i jednego lub więcej typów węzłów innych niż podstawowe. Każdy typ węzła jest mapowany na zestaw skalowania maszyn wirtualnych. Następnie każdy typ węzła może być niezależnie skalowany w górę lub w dół oraz może mieć różne zestawy otwartych portów i różne metryki pojemności. [Właściwości węzła i ograniczenia umieszczania][placementconstraints] można skonfigurować w celu ograniczenia określonych usług do określonych typów węzłów.  Aby uzyskać więcej informacji, zapoznaj [się z liczbą typów węzłów, których klaster potrzebuje do uruchomienia](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
 
 ### <a name="select-node-properties-for-each-node-type"></a>Wybierz właściwości węzła dla każdego typu węzła
-Typy węzłów definiują jednostki SKU maszyny Wirtualnej, liczbę i właściwości maszyn wirtualnych w zestawie skalowania skojarzone.
+Typy węzłów definiują jednostkę SKU, liczbę i właściwości maszyn wirtualnych w skojarzonym zestawie skalowania.
 
-Minimalny rozmiar maszyn wirtualnych dla każdego typu węzła jest określany przez [warstwa trwałości] [ durability] wybierz dla typu węzła.
+Minimalny rozmiar maszyn wirtualnych dla każdego typu węzła jest określany na podstawie wybranej [warstwy trwałości][durability] dla typu węzła.
 
-Minimalna liczba maszyn wirtualnych dla typu węzła podstawowego zależy od [warstwy niezawodności] [ reliability] wybierzesz.
+Minimalna liczba maszyn wirtualnych dla typu węzła podstawowego jest określana na podstawie wybranej [warstwy niezawodności][reliability] .
 
-Zobacz minimalnych zaleceń dotyczących [typy węzła podstawowego](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [są to obciążenia stanowe na typy węzłów innych niż podstawowe](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads), i [bezstanowych obciążeń w ramach typów węzłów innych niż podstawowe](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
+Zapoznaj się z minimalnymi zaleceniami dotyczącymi [typów węzłów podstawowych](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [obciążeń stanowych dla typów węzłów innych niż podstawowe](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)i bezstanowych [obciążeń dla typów węzłów innych niż podstawowe](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
 
-Żadnych innych niż minimalna liczba węzłów powinna być oparta na liczbie replik aplikacji/usługi, które mają być uruchamiane w tego typu węzła.  [Planowanie wydajności dla aplikacji usługi Service Fabric](service-fabric-capacity-planning.md) pomaga oszacować zasoby, których potrzebujesz do uruchomienia aplikacji. Można zawsze skalowanie klastra w górę lub dół później, aby dopasować do zmiany obciążenia aplikacji. 
+Każda większa niż minimalna liczba węzłów powinna być oparta na liczbie replik aplikacji/usług, które mają być uruchamiane w tym typie węzła.  [Planowanie wydajności aplikacji Service Fabric](service-fabric-capacity-planning.md) ułatwia oszacowanie zasobów potrzebnych do uruchamiania aplikacji. Klaster można zawsze skalować w górę lub w dół w celu dostosowania się do zmieniających się obciążeń aplikacji. 
 
-### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Wybierz poziomy trwałości i niezawodności klastra
-Warstwa trwałości jest używany do wskazania systemowi uprawnienia, których maszyn wirtualnych z podstawową infrastrukturą platformy Azure. W typie podstawowym węzłem to uprawnienie pozwala usłudze Service Fabric wstrzymać wszelkie wyświetlania żądania z poziomu infrastruktury maszyny Wirtualnej (na przykład ponowne uruchomienie maszyny Wirtualnej, odtworzenia z obrazu maszyny Wirtualnej lub migracji maszyny Wirtualnej) mieć wpływ na wymagania dotyczące kworum dla usług systemu i usługi stanowej. Typy węzłów innych niż podstawowe to uprawnienie umożliwia usługi Service Fabric można wstrzymać maszyny Wirtualnej infrastruktury poziomu żądań (na przykład ponowne uruchomienie maszyny Wirtualnej, odtworzenia z obrazu maszyny Wirtualnej i migracji maszyn wirtualnych), które wpływają na wymagania dotyczące kworum dla usług stanowych.  Aby uzyskać korzyści wynikające z różnymi poziomami i zalecenia dotyczące poziomu, który i kiedy, zobacz [charakterystyki trwałości klastra][durability].
+### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Wybierz poziomy trwałości i niezawodności dla klastra
+Warstwa trwałości służy do wskazywania, że system ma uprawnienia do programu z podstawową infrastrukturą platformy Azure. W przypadku typu węzła podstawowego to uprawnienie umożliwia Service Fabric wstrzymanie wszelkich żądań infrastruktury na poziomie maszyny wirtualnej (takich jak ponowne uruchomienie maszyny wirtualnej, odtwarzanie maszyn wirtualnych lub migracja maszyny wirtualnej), które mają wpływ na wymagania dotyczące kworum usług systemowych i usług stanowych. W przypadku typów węzłów innych niż podstawowe to uprawnienie umożliwia Service Fabric wstrzymanie wszelkich żądań infrastruktury na poziomie maszyny wirtualnej (takich jak ponowne uruchomienie maszyny wirtualnej, odtwarzanie maszyn wirtualnych i migracja maszyn wirtualnych), które mają wpływ na wymagania dotyczące kworum dla usług stanowych.  Aby uzyskać zalety różnych poziomów i zaleceń dotyczących poziomu użycia i czasu, zobacz [charakterystyki trwałości klastra][durability].
 
-Aby ustawić liczbę replik usług systemowych, które mają być uruchamiane w tym klastrze na podstawowy typ węzła jest używana warstwa niezawodności. Zwiększenie liczby replik, bardziej niezawodne usługi systemowe znajdują się w klastrze.  Aby uzyskać korzyści wynikające z różnymi poziomami i zalecenia dotyczące poziomu, który i kiedy, zobacz [charakterystyka niezawodności klastra][reliability]. 
+Warstwa niezawodności służy do ustawiania liczby replik usług systemowych, które mają być uruchamiane w tym klastrze w typie węzła podstawowego. Im większa liczba replik, tym bardziej niezawodna usługa systemowa znajduje się w klastrze.  Aby uzyskać zalety różnych poziomów i zaleceń dotyczących poziomu użycia i, zobacz [Charakterystyka niezawodności klastra][reliability]. 
 
-## <a name="enable-reverse-proxy-andor-dns"></a>Włącz zwrotny serwer proxy i/lub DNS
-Łączenie ze sobą ogólnie wewnątrz klastra usługi można uzyskać dostęp do punktów końcowych w innych usługach ponieważ węzłów w klastrze znajdują się w tej samej sieci lokalnej. Aby ułatwić połączenia między usługami, Usługa Service Fabric udostępnia dodatkowe usługi: A [usługi DNS](service-fabric-dnsservice.md) i [odwrotnego serwera proxy usługi](service-fabric-reverseproxy.md).  Obie te usługi można włączyć w przypadku wdrażania klastra.
+## <a name="enable-reverse-proxy-andor-dns"></a>Włączanie zwrotnego serwera proxy i/lub systemu DNS
+Usługi łączące się ze sobą w klastrze zwykle mogą bezpośrednio uzyskiwać dostęp do punktów końcowych innych usług, ponieważ węzły w klastrze znajdują się w tej samej sieci lokalnej. Aby ułatwić łączenie się między usługami, Service Fabric zapewnia dodatkowe usługi: Usługa [DNS](service-fabric-dnsservice.md) i zwrotna [Usługa serwera proxy](service-fabric-reverseproxy.md).  Obie usługi mogą być włączane podczas wdrażania klastra.
 
-Od wielu usług zwłaszcza konteneryzowanych usług może mieć nazwę istniejącego adresu URL, możliwość je rozwiązać przy użyciu standardowego systemu DNS protokołu (zamiast protokołu nazewnictwa Service) jest wygodne, szczególnie w przypadku scenariuszy aplikacji "metodą lift and shift". Jest to dokładnie, jak działa usługa DNS. Umożliwia mapowanie nazw DNS na nazwę usługi i dlatego rozpoznawać adresy IP punktów końcowych.
+Ponieważ wiele usług, szczególnie usługi kontenerowe, może mieć istniejącą nazwę adresu URL, można je rozwiązać przy użyciu standardowego protokołu DNS (zamiast protokołu Usługa nazewnictwa) jest wygodne, szczególnie w scenariuszach aplikacji "Unieś i Shift". Jest to dokładnie działanie usługi DNS. Umożliwia mapowanie nazw DNS na nazwę usługi, a tym samym rozwiązanie adresów IP punktów końcowych.
 
-Zwrotny serwer proxy dotyczy usług w klastrze, które uwidaczniają punkty końcowe HTTP (w tym protokołu HTTPS). Zwrotny serwer proxy znacznie upraszcza wywoływania innych usług, podając w określonym formacie identyfikatora URI.  Zwrotny serwer proxy obsługuje także rozpoznania, łączenie i ponów próbę wykonania kroków wymaganych do jednej usługi do komunikowania się z inną.
+Zwrotny serwer proxy odnosi się do usług w klastrze, które uwidaczniają punkty końcowe HTTP (w tym HTTPS). Zwrotny serwer proxy znacznie upraszcza wywoływanie innych usług przez podanie określonego formatu identyfikatora URI.  Zwrotny serwer proxy obsługuje również kroki rozwiązywania, nawiązywania połączenia i ponawiania próby wymagane dla jednej usługi do komunikacji z inną.
 
 ## <a name="prepare-for-disaster-recovery"></a>Przygotowywanie do odzyskiwania po awarii
-Kluczową częścią dostarczania wysokiej dostępności jest zapewnienie, że usługi mogą przetrwać różne rodzaje błędów. Jest to szczególnie ważne w przypadku awarii, znajdujących się niezaplanowane i poza Twoją kontrolą. [Przygotowywanie do odzyskiwania awaryjnego](service-fabric-disaster-recovery.md) opisano niektóre typowe trybów awarii, które mogłyby zostać awarii, jeśli nie modelowane i zarządzane prawidłowo. Omówiono w nim również środki zaradcze i akcje do wykonania w przypadku awarii mimo to się stało.
+Krytyczna część dostarczania wysokiej dostępności zapewnia, że usługi mogą przetrwać wszystkie różne typy awarii. Jest to szczególnie ważne w przypadku nieplanowanych awarii i poza formantem. [Przygotowanie do odzyskiwania po awarii](service-fabric-disaster-recovery.md) zawiera opis niektórych typowych trybów awarii, które mogą być awariami, jeśli nie są poprawnie modelowane i zarządzane. Omówiono w nim również środki zaradcze i działania podejmowane w przypadku wystąpienia awarii.
 
 ## <a name="production-readiness-checklist"></a>Lista kontrolna gotowości do produkcji
-Jest gotowy do zastąpienia jest przesyłany ruch produkcyjny aplikacji i klastra? Przed wdrożeniem klastra do środowiska produkcyjnego, wykonaj [Lista kontrolna gotowości produkcji](service-fabric-production-readiness-checklist.md). Zachowaj aplikacji i klastra sprawnego dzięki pracy przez elementy na tej liście kontrolnej. Zdecydowanie zaleca się te elementy powinny zostać zaznaczone przed przejściem do środowiska produkcyjnego.
+Czy Twoja aplikacja i klaster są gotowe do przetworzenia ruchu produkcyjnego? Przed wdrożeniem klastra w środowisku produkcyjnym należy wykonać czynności z [listy kontrolnej gotowości produkcyjnej](service-fabric-production-readiness-checklist.md). Utrzymuj bezproblemowe działanie aplikacji i klastra, wykonując czynności wykonywane przez elementy z tej listy kontrolnej. Zdecydowanie zalecamy, aby wszystkie te elementy były wyszukiwane przed przejściem do środowiska produkcyjnego.
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Tworzenie klastra usługi Service Fabric z systemem Windows](service-fabric-best-practices-overview.md)
-* [Tworzenie klastra usługi Service Fabric z systemem Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+## <a name="next-steps"></a>Następne kroki
+* [Tworzenie klastra Service Fabric z systemem Windows](service-fabric-best-practices-overview.md)
+* [Tworzenie klastra Service Fabric z systemem Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster

@@ -1,34 +1,32 @@
 ---
-title: Analiza porównawcza aplikacji przy użyciu usługi Azure Disk Storage - dysków zarządzanych
-description: Dowiedz się więcej o procesie testów porównawczych aplikacji na platformie Azure.
-services: virtual-machines-linux,storage
+title: Testy porównawcze aplikacji na dyskach zarządzanych przez Azure Disk Storage
+description: Poznaj proces tworzenia testów porównawczych aplikacji na platformie Azure.
 author: roygara
 ms.author: rogarana
 ms.date: 01/11/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 21ed4e9a6b1da10d0ae4c276612459506e13d94f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5ac60811eb4fb7735feae6a62ee1b20c8983e0e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474372"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695861"
 ---
-# <a name="benchmarking-a-disk"></a>Analiza porównawcza dysku
+# <a name="benchmarking-a-disk"></a>Przeprowadzenie testu porównawczego dysku
 
-Analiza porównawcza jest proces symulowanie różnych obciążeń w swojej aplikacji i pomiaru wydajności aplikacji dla poszczególnych obciążeń. Korzystając z procedury opisanej w [projektowanie pod kątem wysokiej wydajności artykułu](premium-storage-performance.md). Uruchamiając narzędzi porównawczych dla maszyn wirtualnych hostujących aplikację, należy określić poziomów wydajności, które aplikacja może osiągnąć dzięki usłudze Premium Storage. W tym artykule firma Microsoft udostępnia użytkownikowi przykłady testów porównawczych standardowa DS14 maszyny Wirtualnej z systemem aprowizowane przy użyciu dysków usługi Premium Storage dla platformy Azure.
+Testy porównawcze to proces symulowania różnych obciążeń w aplikacji i mierzenia wydajności aplikacji dla każdego obciążenia. Wykonaj kroki opisane w [artykule projektowanie pod kątem wysokiej wydajności](premium-storage-performance.md). Uruchamiając narzędzia do testów porównawczych na maszynach wirtualnych obsługujących aplikację, można określić poziomy wydajności, które mogą osiągnąć aplikacja Premium Storage. W tym artykule przedstawiono przykłady testów porównawczych standardowej maszyny wirtualnej DS14, która została zainicjowana przy użyciu dysków Premium Storage platformy Azure.
 
-Odpowiednio użyliśmy typowych narzędzi porównawczych Iometer i FIO, Windows i Linux. Te narzędzia zduplikować wiele wątków, symulując produkcji, takich jak obciążenia, a zadaniem jest mierzenie wydajności systemu. Za pomocą narzędzi można również skonfigurować parametry, takie jak głębokość bloku rozmiaru i kolejki, które normalnie nie można zmienić dla aplikacji. Zapewnia większą elastyczność w przypadku dysków maksymalnej wydajności na dużą skalę maszyny Wirtualnej obsługiwane za pomocą dysków w warstwie premium dla różnego rodzaju obciążeń aplikacji. Aby dowiedzieć się więcej na temat każdego z narzędzi porównawczych odwiedź [Iometer](http://www.iometer.org/) i [FIO](http://freecode.com/projects/fio).
+W systemach Windows i Linux użyto odpowiednio wspólnych narzędzi do tworzenia testów porównawczych IOMeter i FIO. Narzędzia te duplikują wiele wątków symulowania produkcji, takich jak obciążenie i pomiar wydajności systemu. Za pomocą narzędzi można także skonfigurować parametry, takie jak rozmiar bloku i głębokość kolejki, które normalnie nie można zmienić dla aplikacji. Zapewnia to większą elastyczność w zakresie zwiększania wydajności maszyny wirtualnej o dużej skali z dyskami w warstwie Premium dla różnych typów obciążeń aplikacji. Aby dowiedzieć się więcej na temat każdego narzędzia testowego, odwiedź stronę [IOMeter](http://www.iometer.org/) i [FIO](http://freecode.com/projects/fio).
 
-Aby skorzystać z poniższych przykładów, Utwórz Maszynę wirtualną standardowa DS14 i Dołącz 11 dysków usługi Premium Storage do maszyny Wirtualnej. 11 dysków skonfiguruj 10 dysków z hostem pamięci podręcznej jako "None" i stripe ich na wolumin o nazwie NoCacheWrites. Skonfiguruj buforowanie jako "Tylko do odczytu" na pozostałe dysku hosta i Utwórz wolumin o nazwie CacheReads z tego dysku. Przy użyciu tej konfiguracji, jesteś w stanie wyświetlić maksymalną wydajność odczytu i zapisu z standardowa DS14 maszyny Wirtualnej. Aby uzyskać szczegółowe instrukcje dotyczące tworzenia maszyny Wirtualnej DS14 z dysków w warstwie premium, przejdź do [projektowanie pod kątem wysokiej wydajności](premium-storage-performance.md).
+Aby postępować zgodnie z poniższymi przykładami, należy utworzyć standardową maszynę wirtualną DS14 i dołączyć do niej 11 Premium Storage dysków. Z 11 dysków należy skonfigurować 10 dysków z buforowaniem hosta jako "none" i umieścić je w woluminie o nazwie NoCacheWrites. Skonfiguruj buforowanie hosta jako "ReadOnly" na pozostałym dysku i Utwórz wolumin o nazwie CacheReads z tym dyskiem. Za pomocą tej konfiguracji można zobaczyć maksymalną wydajność odczytu i zapisu ze standardowej maszyny wirtualnej DS14. Aby uzyskać szczegółowe instrukcje dotyczące tworzenia maszyny wirtualnej DS14 z dyskami Premium, przejdź do [projektowania pod kątem wysokiej wydajności](premium-storage-performance.md).
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../../includes/virtual-machines-managed-disks-benchmarking.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Postępuj zgodnie z instrukcjami naszych projektowania w artykule o wysokiej wydajności. Możesz utworzyć listę kontrolną podobne do istniejących aplikacji prototypu. Za pomocą narzędzi Benchmarking można symulować obciążenia i mierzenie wydajności aplikacji prototypu. W ten sposób można określić, który dysk oferty można dopasować lub przekroczenie wymagań dotyczących wydajności aplikacji. Następnie można zaimplementować te same wytyczne dla aplikacji produkcyjnych.
+Postępuj zgodnie z naszym projektem, aby uzyskać wysoką wydajność artykułu. W tym celu należy utworzyć listę kontrolną podobną do istniejącej aplikacji dla prototypu. Korzystając z narzędzi testowych, można symulować obciążenia i mierzyć wydajność aplikacji prototypowej. Dzięki temu można określić, które oferty dysku mogą być zgodne lub przekraczać wymagania dotyczące wydajności aplikacji. Następnie można zaimplementować te same wytyczne dla aplikacji produkcyjnej.
 
 > [!div class="nextstepaction"]
-> Zobacz artykuł [projektowanie pod kątem wysokiej wydajności](premium-storage-performance.md) rozpocząć.
+> Zapoznaj się z artykułem na temat [projektowania pod kątem wysokiej wydajności](premium-storage-performance.md) .

@@ -1,20 +1,19 @@
 ---
 title: Rozpoczynanie pracy z usługą Azure IoT Hub Device Management (Python) | Microsoft Docs
 description: Jak za pomocą IoT Hub zarządzanie urządzeniami zainicjować zdalne ponowne uruchomienie urządzenia. Zestaw SDK usługi Azure IoT dla języka Python służy do implementowania aplikacji symulowanego urządzenia, która obejmuje metodę bezpośrednią i aplikację usługi, która wywołuje metodę bezpośrednią.
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: c4c8957e8d9b355216e10503d58915977c3b9b1a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 07/30/2019
+ms.author: robinsh
+ms.openlocfilehash: daba6601c0da2bd6d1b76897e7ce1ff75da67b5b
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68403407"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667972"
 ---
 # <a name="get-started-with-device-management-python"></a>Wprowadzenie do zarządzania urządzeniami (Python)
 
@@ -34,17 +33,11 @@ Na końcu tego samouczka masz dwie aplikacje konsolowe języka Python:
 
 * **dmpatterns_getstarted_service. PR**, który wywołuje metodę bezpośrednią w aplikacji symulowanego urządzenia, wyświetla odpowiedź i wyświetla zaktualizowane raportowane właściwości.
 
-Do wykonania kroków tego samouczka niezbędne są następujące elementy:
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-* [Python 2. x lub 3. x](https://www.python.org/downloads/). Upewnij się, że używasz 32-bitowej lub 64-bitowej instalacji zgodnie z wymaganiami konfiguracji. Po wyświetleniu monitu podczas instalacji upewnij się, że język Python został dodany do zmiennej środowiskowej specyficznej dla platformy. Jeśli używasz środowiska Python 2.x, może być konieczne [zainstalowanie lub uaktualnienie systemu zarządzania pakietami języka Python — *pip*](https://pip.pypa.io/en/stable/installing/).
+Poniżej przedstawiono instrukcje instalacji dotyczące wymagań wstępnych.
 
-* Zainstaluj pakiet [Azure-iothub-Device-Client](https://pypi.org/project/azure-iothub-device-client/) przy użyciu polecenia`pip install azure-iothub-device-client`
-
-* Zainstaluj pakiet [Azure-iothub-Service-Client](https://pypi.org/project/azure-iothub-service-client/) , używając polecenia`pip install azure-iothub-service-client`
-
-* Zainstaluj [Pakiet redystrybucyjny języka Visual C++](https://www.microsoft.com/download/confirmation.aspx?id=48145) (jeśli używasz systemu operacyjnego Windows) umożliwiający korzystanie z natywnych bibliotek DLL języka Python.
-
-* Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut).
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 

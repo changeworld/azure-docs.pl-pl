@@ -1,18 +1,19 @@
 ---
 title: Model danych dla Azure Backup
 description: W tym artykule omówiono Power BI szczegóły modelu danych dla Azure Backup raportów.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.author: adigan
-ms.openlocfilehash: 66245a25af000d999ded87c58e3ba225b373b101
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 53051c88d5723f61fa08e431bdf7ab531e88123e
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465598"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689148"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Model danych dla raportów usługi Azure Backup
 W tym artykule opisano Power BI model danych używany do tworzenia raportów Azure Backupowych. Korzystając z tego modelu danych, można filtrować istniejące raporty na podstawie odpowiednich pól i co ważniejsze, tworzyć własne raporty przy użyciu tabel i pól w modelu. 
@@ -29,8 +30,8 @@ Ta tabela zawiera podstawowe pola i agregacje dla różnych pól związanych z a
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | #AlertsCreatedInPeriod |Liczba całkowita |Liczba alertów utworzonych w wybranym okresie |
-| %ActiveAlertsCreatedInPeriod |Wartość procentowa |Procent aktywnych alertów w wybranym okresie |
-| %CriticalAlertsCreatedInPeriod |Wartość procentowa |Procent alertów krytycznych w wybranym okresie |
+| %ActiveAlertsCreatedInPeriod |Procentowy |Procent aktywnych alertów w wybranym okresie |
+| %CriticalAlertsCreatedInPeriod |Procentowy |Procent alertów krytycznych w wybranym okresie |
 | AlertOccurrenceDate |Date |Data utworzenia alertu |
 | AlertSeverity |Text |Ważność alertu, na przykład krytyczne |
 | AlertStatus |Text |Stan alertu na przykład aktywny |
@@ -81,7 +82,7 @@ Ta tabela zawiera podstawowe pola i agregacje dla różnych pól związanych z z
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Liczba całkowita |Liczba zadań utworzonych w wybranym okresie |
-| %FailuresForJobsCreatedInPeriod |Wartość procentowa |Procent ogólnych błędów zadań w wybranym okresie |
+| %FailuresForJobsCreatedInPeriod |Procentowy |Procent ogólnych błędów zadań w wybranym okresie |
 | 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Liczba dziesiętna |wartość percentylu 80th danych transferowanych w MB dla zadań **tworzenia kopii zapasowej** utworzonych w wybranym okresie |
 | AsOnDateTime |Date/Time |Godzina ostatniego odświeżenia wybranego wiersza |
 | AvgBackupDurationInMinsForJobsCreatedInPeriod |Liczba dziesiętna |Średni czas w minutach dla **ukończonych zadań tworzenia kopii zapasowej** utworzonych w wybranym okresie |
@@ -185,7 +186,7 @@ Ta tabela zawiera podstawowe pola i agregacje dla różnych pól związanych z m
 | VaultName |Text |Nazwa magazynu |
 | VaultTags |Text |Tagi skojarzone z magazynem |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po przejrzeniu modelu danych do tworzenia raportów Azure Backup należy zapoznać się z następującymi artykułami, aby uzyskać więcej informacji na temat tworzenia i wyświetlania raportów w programie Power BI.
 
 * [Tworzenie raportów w Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)

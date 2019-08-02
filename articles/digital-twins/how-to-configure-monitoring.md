@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować monitorowanie w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Jak skonfigurować monitorowanie w reprezentacji urządzeń cyfrowych platformy Azure.
+title: Jak skonfigurować monitorowanie w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Jak skonfigurować monitorowanie w usłudze Azure Digital bliźniaczych reprezentacji.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
@@ -9,126 +9,126 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 5dc2587a0c127106d5afb41e20eca43919065f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66a0b98e2cae14c3708cf8a6aa3f8bd498f41c9f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118784"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609636"
 ---
-# <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak skonfigurować monitorowanie w reprezentacji urządzeń cyfrowych platformy Azure
+# <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak skonfigurować monitorowanie w usłudze Azure Digital bliźniaczych reprezentacji
 
-Twins cyfrowych platformy Azure obsługuje niezawodne rejestrowanie, monitorowanie i analizy. Rozwiązania deweloperzy mogą używać usługi Azure Monitor dzienników, dzienniki diagnostyczne, rejestrowanie aktywności i innych usług, do obsługi złożonych potrzeb monitorowania aplikacji IoT. Opcje rejestrowania można łączyć z zapytania lub wyświetla rekordy w kilku usługach oraz zapewniają szczegółowe rejestrowanie pokrycie dla wielu usług.
+Usługa Azure Digital bliźniaczych reprezentacji obsługuje niezawodne rejestrowanie, monitorowanie i analizę. Deweloperzy rozwiązań mogą korzystać z dzienników Azure Monitor, dzienników diagnostycznych, rejestrowania aktywności i innych usług w celu obsługi złożonych potrzeb związanych z monitorowaniem aplikacji IoT. Opcje rejestrowania można łączyć z kwerendą lub wyświetlać rekordy w kilku usługach i zapewnić szczegółowe pokrycie rejestrowania w wielu usługach.
 
-Ten artykuł zawiera podsumowanie, rejestrowania i monitorowania opcje i sposób łączenia ich w sposoby określonych Twins cyfrowych platformy Azure.
+W tym artykule przedstawiono podsumowanie opcji rejestrowania i monitorowania oraz sposób ich łączenia w sposób specyficzny dla usługi Azure Digital bliźniaczych reprezentacji.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="review-activity-logs"></a>Przejrzyj dzienniki aktywności
+## <a name="review-activity-logs"></a>Przegląd dzienników aktywności
 
-Azure [dzienników aktywności](../azure-monitor/platform/activity-logs-overview.md) zapewniają szybki wgląd w poziom subskrypcji zdarzeń i operacji historii dla każdego wystąpienia usług platformy Azure.
+[Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md) platformy Azure zapewniają szybki wgląd w szczegółowe dane historii zdarzeń i operacji na poziomie subskrypcji dla każdego wystąpienia usługi platformy Azure.
 
-Zdarzenia na poziomie subskrypcji, obejmują:
+Zdarzenia na poziomie subskrypcji obejmują:
 
 * Tworzenie zasobów
 * Usuwanie zasobu
-* Tworzenie kluczy tajnych aplikacji
+* Tworzenie wpisów tajnych aplikacji
 * Integrowanie z innymi usługami
 
-Rejestrowanie aktywności bliźniaki cyfrowych platformy Azure jest domyślnie włączona i można znaleźć w witrynie Azure portal przez:
+Rejestrowanie aktywności usługi Azure Digital bliźniaczych reprezentacji jest domyślnie włączone i można je znaleźć w Azure Portal przez:
 
-1. Wybieranie wystąpienia Twins cyfrowych platformy Azure.
-1. Wybieranie **dziennika aktywności** Aby wyświetlić ekran w panelu:
+1. Wybieranie wystąpienia usługi Azure Digital bliźniaczych reprezentacji.
+1. Wybieranie **dziennika aktywności** w celu wyświetlenia panelu wyświetlania:
 
     [![Dziennik aktywności](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
-Aby uzyskać Zaawansowane rejestrowanie aktywności:
+W przypadku zaawansowanego rejestrowania aktywności:
 
-1. Wybierz **dzienniki** opcję, aby wyświetlić **przegląd działań usługi Log Analytics**:
+1. Wybierz opcję **dzienniki** , aby wyświetlić **Activity Log Analytics przegląd**:
 
     [![Wybór](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
-1. **Przegląd działań usługi Log Analytics** podsumowuje dane dzienników aktywności podstawowe:
+1. **Omówienie Activity Log Analytics** podsumowuje podstawowe dane dziennika aktywności:
 
-    [![Przegląd działań usługi log analytics]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
+    [![Analiza dzienników aktywności — Omówienie]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
->Użyj **dzienników aktywności** dla szybki wgląd w zdarzenia na poziomie subskrypcji.
+>Użyj **dzienników aktywności** , aby szybko uzyskać wgląd w zdarzenia na poziomie subskrypcji.
 
 ## <a name="enable-customer-diagnostic-logs"></a>Włączanie dzienników diagnostycznych klienta
 
-Azure [ustawień diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md) można ustawić dla każdego wystąpienia platformy Azure uzupełnić rejestrowania aktywności. Gdy dzienniki aktywności odnoszą się do poziomu subskrypcji zdarzeń, rejestrowanie diagnostyczne zapewnia wgląd w historię operacyjnej samych zasobów.
+[Ustawienia diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md) platformy Azure można ustawić dla każdego wystąpienia platformy Azure w celu uzupełnienia rejestrowania aktywności. Dzienniki aktywności odnoszą się do zdarzeń na poziomie subskrypcji, rejestrowanie diagnostyczne zapewnia wgląd w historię operacyjną samych zasobów.
 
-Przykłady rejestrowania diagnostycznego:
+Przykłady rejestrowania diagnostycznego obejmują:
 
 * Czas wykonywania dla funkcji zdefiniowanej przez użytkownika
-* Kod stanu odpowiedzi pomyślne żądania interfejsu API
+* Kod stanu odpowiedzi dla pomyślnego żądania interfejsu API
 * Pobieranie klucza aplikacji z magazynu
 
-Aby włączyć dzienniki diagnostyczne na potrzeby wystąpienie:
+Aby włączyć dzienniki diagnostyczne dla wystąpienia:
 
-1. Przenieś zasób w witrynie Azure portal.
-1. Wybierz **ustawień diagnostycznych**:
+1. Wywołaj zasób w Azure Portal.
+1. Wybierz pozycję **Ustawienia diagnostyczne**:
 
-    [![Ustawienia diagnostyczne jeden](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
+    [![Ustawienia diagnostyczne — jeden](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. Wybierz **Włącz diagnostykę** do zbierania danych (jeśli wcześniej nie jest włączona).
-1. Wprowadź żądane pola i wybierz, jak i, w którym zostaną zapisane dane:
+1. Wybierz pozycję **Włącz diagnostykę** , aby zbierać dane (jeśli nie zostały wcześniej włączone).
+1. Wypełnij żądane pola i wybierz sposób i miejsce, w którym zostaną zapisane dane:
 
-    [![Ustawienia diagnostyczne dwóch](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
+    [![Ustawienia diagnostyczne — dwa](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
-    Dzienniki diagnostyczne często są zapisywane przy użyciu [usługi Azure File Storage](../storage/files/storage-files-deployment-guide.md) i udostępniane [dzienniki usługi Azure Monitor](../azure-monitor/log-query/get-started-portal.md). Można wybrać obu opcji.
+    Dzienniki diagnostyczne są często zapisywane przy użyciu [usługi Azure File Storage](../storage/files/storage-files-deployment-guide.md) i udostępniane w [dziennikach Azure monitor](../azure-monitor/log-query/get-started-portal.md). Można wybrać obie opcje.
 
 >[!TIP]
->Użyj **dzienniki diagnostyczne** uzyskać wgląd w operacje zasobów.
+>Korzystaj z **dzienników diagnostycznych** w celu uzyskiwania wglądu w operacje na zasobach.
 
-## <a name="azure-monitor-and-log-analytics"></a>Monitorowanie i rejestrowanie funkcja analizy usługi Azure
+## <a name="azure-monitor-and-log-analytics"></a>Azure monitor i log Analytics
 
-Aplikacje IoT łączenia różnych zasobów, urządzenia, lokalizacji i dane w jedną. Szczegółowe rejestrowanie udostępnia szczegółowe informacje na temat każdej konkretne, usługi lub składnik architektury cała aplikacja, ale Przegląd ujednoliconego często jest wymagany do obsługi i debugowania.
+Aplikacje IoT dzielą różne zasoby, urządzenia, lokalizacje i dane w jeden. Szczegółowe informacje o poszczególnych elementach, usługach i składnikach ogólnej architektury aplikacji, ale także ujednolicone Omówienie są często wymagane do konserwacji i debugowania.
 
-Usługa Azure Monitor obejmuje zaawansowane usługi log analytics, która umożliwia rejestrowanie źródeł, aby wyświetlać i analizować w jednej lokalizacji. Usługa Azure Monitor, dlatego jest bardzo przydatna w celu analizowania dzienników w zaawansowanych aplikacji IoT.
+Azure Monitor obejmuje zaawansowane usługi log Analytics, które umożliwiają wyświetlanie i analizowanie źródeł rejestrowania w jednej lokalizacji. W związku z tym Azure Monitor jest wysoce przydatny do analizowania dzienników w zaawansowanych aplikacjach IoT.
 
-Przykłady użycia:
+Przykłady użycia obejmują:
 
-* Zapytania wielu historie dziennik diagnostyczny
+* Wykonywanie zapytania dotyczącego wielu historii dzienników diagnostycznych
 * Wyświetlanie dzienników dla kilku funkcji zdefiniowanych przez użytkownika
-* Wyświetlanie dzienników dla dwóch lub więcej usług w określonym przedziale czasu
+* Wyświetlanie dzienników dla co najmniej dwóch usług w określonym przedziale czasu
 
-Pełny dziennik zapytań jest oferowana w ramach [dzienniki usługi Azure Monitor](../azure-monitor/log-query/log-query-overview.md). Aby skonfigurować te zaawansowane funkcje:
+Pełne zapytania dzienników są udostępniane za poorednictwem [dzienników Azure monitor](../azure-monitor/log-query/log-query-overview.md). Aby skonfigurować te zaawansowane funkcje:
 
-1. Wyszukaj **usługi Log Analytics** w witrynie Azure portal.
-1. Zostanie wyświetlony dostępnych **obszaru roboczego usługi Log Analytics** wystąpień. Wybierz jedną, a następnie wybierz pozycję **dzienniki** zapytania:
+1. Wyszukaj **log Analytics** w Azure Portal.
+1. Zobaczysz dostępne wystąpienia **obszaru roboczego log Analytics** . Wybierz jeden z nich i wybierz pozycję **dzienniki** do zapytania:
 
-    [![Usługa log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
+    [![Analiza dzienników](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. Jeśli nie masz jeszcze **obszaru roboczego usługi Log Analytics** wystąpienia, można utworzyć obszaru roboczego, wybierając **Dodaj** przycisku:
+1. Jeśli nie masz jeszcze wystąpienia **obszaru roboczego log Analytics** , możesz utworzyć obszar roboczy, wybierając przycisk **Dodaj** :
 
     [![Tworzenie pakietu OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
-Raz swoje **obszaru roboczego usługi Log Analytics** aprowizowano wystąpienie, możesz użyć zaawansowanych zapytań, aby odnaleźć wpisów w dziennikach wielokrotności lub wyszukiwanie przy użyciu kryteriów określonych za pomocą **Zarządzanie dziennikami**:
+Po zainicjowaniu wystąpienia **obszaru roboczego log Analytics** można używać zaawansowanych zapytań do znajdowania wpisów w wielu dziennikach lub wyszukiwanie przy użyciu określonych kryteriów przy użyciu funkcji **zarządzania dziennikami**:
 
    [![Zarządzanie dziennikami](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-Aby uzyskać więcej informacji o operacjach zaawansowanych zapytań, zobacz [wprowadzenie do zapytań](../azure-monitor/log-query/get-started-queries.md).
+Aby uzyskać więcej informacji na temat zaawansowanych operacji związanych z zapytaniami, zobacz [Rozpoczynanie pracy z](../azure-monitor/log-query/get-started-queries.md)zapytaniami.
 
 > [!NOTE]
-> Może wystąpić opóźnienie 5 minut, podczas wysyłania zdarzeń do **obszaru roboczego usługi Log Analytics** po raz pierwszy.
+> W przypadku wysyłania zdarzeń do **log Analytics obszaru roboczego** po raz pierwszy może wystąpić 5 minut.
 
-Dzienniki monitora platformy Azure udostępniają zaawansowane błędów i usług powiadomień o alertach, które można wyświetlić, wybierając **diagnozowanie i rozwiązywanie problemów**:
+Dzienniki Azure Monitor zapewniają także zaawansowane usługi błędów i powiadamiania o alertach, które można wyświetlić, wybierając opcję **Diagnozuj i rozwiąż problemy**:
 
-   [![Alert i błąd powiadomienia](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
+   [![Alerty i powiadomienia o błędach](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
->Użyj **obszaru roboczego usługi Log Analytics** do historii dziennika zapytań dla wielu aplikacji funkcji, subskrypcji lub usług.
+>Użyj **log Analytics obszaru roboczego** , aby zbadać historie dziennika dla wielu funkcji, subskrypcji lub usług aplikacji.
 
 ## <a name="other-options"></a>Inne opcje
 
-Twins cyfrowych platformy Azure obsługuje również specyficzne dla aplikacji, rejestrowanie i przeprowadzanie inspekcji bezpieczeństwa. Aby uzyskać szczegółowe omówienie do Twojego wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji wszystkie opcje rejestrowania platformy Azure, zobacz [inspekcji usługi Azure log](../security/azure-log-audit.md) artykułu.
+Usługa Azure Digital bliźniaczych reprezentacji obsługuje również rejestrowanie i inspekcję zabezpieczeń specyficzne dla aplikacji. Szczegółowe omówienie wszystkich opcji rejestrowania platformy Azure dostępnych w wystąpieniu usługi Azure Digital bliźniaczych reprezentacji można znaleźć w artykule dotyczącym [inspekcji dzienników platformy Azure](../security/fundamentals/log-audit.md) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o usłudze Azure [dzienników aktywności](../azure-monitor/platform/activity-logs-overview.md).
+- Dowiedz się więcej o [dziennikach aktywności](../azure-monitor/platform/activity-logs-overview.md)platformy Azure.
 
-- Dowiedz się więcej na konfiguracji ustawień diagnostyki platformy Azure, czytając [Przegląd dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md).
+- Zapoznaj się z [omówieniem dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md), szczegółowe do ustawień diagnostycznych platformy Azure.
 
-- Przeczytaj więcej na temat [dzienniki usługi Azure Monitor](../azure-monitor/log-query/get-started-portal.md).
+- Przeczytaj więcej na temat [dzienników Azure monitor](../azure-monitor/log-query/get-started-portal.md).

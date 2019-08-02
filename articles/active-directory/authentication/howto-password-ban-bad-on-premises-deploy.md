@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01a9cc4ec4788422337b77b285ed8ee440f6acd4
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346892"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666281"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -32,7 +32,13 @@ Na etapie inspekcji w wielu organizacjach jest dowiedzieć się, że:
 * Użytkownicy często używają niezabezpieczonych haseł.
 * Muszą oni informować użytkowników o nadchodzącej zmianie wymuszania zabezpieczeń, możliwym wpływie na nie i sposobach wybierania bezpiecznych haseł.
 
-Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić konfigurację z *inspekcji* w celu wymuszenia, aby  wymagać bardziej bezpiecznych haseł. Ukierunkowane monitorowanie w tym czasie jest dobrym pomysłem.
+Istnieje również możliwość, że sprawdzanie poprawności hasła ma wpływ na istniejące Active Directory Automatyzacja wdrożenia kontrolera domeny. Zaleca się, aby podczas oceny okresu inspekcji zakończyło się co najmniej jedną promocję kontrolera domeny i jedno obniżenie kontrolera domeny w celu ułatwienia odzyskania takich problemów.  Aby uzyskać więcej informacji, zobacz:
+
+* [Narzędzie Ntdsutil. exe nie może ustawić słabego hasła trybu naprawy usług katalogowych](howto-password-ban-bad-on-premises-troubleshoot.md##ntdsutilexe-fails-to-set-a-weak-dsrm-password)
+* [Podwyższanie poziomu repliki kontrolera domeny kończy się niepowodzeniem z powodu słabego hasła trybu naprawy usług katalogowych](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
+* [Obniżanie poziomu kontrolera domeny nie powiodło się z powodu słabego hasła administratora lokalnego](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
+
+Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić konfigurację z *inspekcji* w celu wymuszenia, aby wymagać bardziej bezpiecznych haseł. Ukierunkowane monitorowanie w tym czasie jest dobrym pomysłem.
 
 ## <a name="deployment-requirements"></a>Wymagania dotyczące wdrażania
 
@@ -274,7 +280,7 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
 
    Usługę agenta DC można zainstalować na komputerze, który nie jest jeszcze kontrolerem domeny. W takim przypadku usługa zostanie uruchomiona i uruchomiona, ale pozostanie nieaktywna, dopóki komputer nie zostanie podwyższony do poziomu kontrolera domeny.
 
-   Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Na przykład:
+   Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Przykład:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
 
@@ -297,7 +303,7 @@ Główną kwestią dostępności ochrony hasłem jest dostępność serwerów pr
 
 Projekt oprogramowania agenta kontrolera domeny ogranicza typowe problemy, które są związane z wysoką dostępnością. Agent DC obsługuje lokalną pamięć podręczną ostatnio pobranych zasad haseł. Nawet jeśli wszystkie zarejestrowane serwery proxy staną się niedostępne, agenci kontrolera domeny kontynuują wymuszanie zasad haseł w pamięci podręcznej. Rozsądna częstotliwość aktualizacji zasad haseł w dużych wdrożeniach to zwykle *dni*, nie więcej niż godz. W związku z tym krótkie przestoje serwerów proxy nie wpływają znacząco na ochronę hasłem usługi Azure AD.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po zainstalowaniu usług potrzebnych do ochrony hasłem usługi Azure AD na serwerach lokalnych należy [przeprowadzić konfigurację po instalacji i zebrać informacje o raportowaniu](howto-password-ban-bad-on-premises-operations.md) w celu ukończenia wdrożenia.
 

@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 520e7fe953256e4c489e4c540493d9f74dda3aef
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 06194537a0c0cce3a52510e6f426a9c2904387b2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494353"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694340"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Wdrażanie modelu uczenia głębokiego na potrzeby wnioskowania z procesorem GPU
 
@@ -25,6 +25,9 @@ Wnioskowanie, lub ocenianie modelu, to faza, w której wdrożony model jest uży
 
 > [!TIP]
 > Chociaż fragmenty kodu w tym artykule uSee model TensorFlow, można zastosować informacje do dowolnej platformy uczenia maszynowego, która obsługuje procesory GPU.
+
+> [!NOTE]
+> Informacje przedstawione w tym artykule dotyczą informacji zawartych w artykule [jak wdrożyć w usłudze Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md) . Jeśli ten artykuł ogólnie omawia wdrożenie AKS, ten artykuł obejmuje wdrożenie specyficzne dla procesora GPU.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -87,7 +90,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Na platformie Azure zostanie naliczona wartość, o ile istnieje klaster AKS. Upewnij się, że klaster AKS został usunięty po zakończeniu pracy z nim.
 
-Aby uzyskać więcej informacji na temat korzystania z usługi Azure Kubernetes Service z usługą Azure Machine Learning, zobacz [How to Deploy and WHERE](how-to-deploy-and-where.md#deploy-aks).
+Aby uzyskać więcej informacji na temat korzystania z usługi AKS z usługą Azure Machine Learning, zobacz [jak wdrożyć usługę Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="write-the-entry-script"></a>Napisz skrypt wpisu
 
@@ -162,7 +165,7 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-Aby uzyskać więcej informacji, zobacz dokumentację referencyjną dla [AksService. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none-).
+Aby uzyskać więcej informacji, zobacz dokumentację referencyjną dla [AksService. deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-).
 
 ## <a name="define-the-inference-configuration"></a>Definiowanie konfiguracji wnioskowania
 
@@ -276,7 +279,7 @@ aks_service.delete()
 aks_target.delete()
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Wdróż model na FPGA](../service/how-to-deploy-fpga-web-service.md)
 * [Wdróż model z ONNX](../service/concept-onnx.md#deploy-onnx-models-in-azure)

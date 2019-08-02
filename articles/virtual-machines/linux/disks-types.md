@@ -1,27 +1,25 @@
 ---
-title: Wybierz typ dysku dla maszyn wirtualnych z systemem Linux IaaS platformy Azure — dyski zarządzane
-description: Informacje o typach dostępnego dysku platformy Azure dla maszyn wirtualnych systemu Linux, m.in. największa dysków SSD dyski SSD w warstwie premium, standardowe dyski SSD i standardowych dysków twardych.
-services: virtual-machines-linux,storage
+title: Wybierz typ dysku dla maszyn wirtualnych Azure IaaS Linux — dyski zarządzane
+description: Dowiedz się więcej o dostępnych typach dysków platformy Azure dla maszyn wirtualnych z systemem Linux, w tym Ultra dysków SSD, Premium dysków SSD, standard dysków SSD i Standard HDD.
 author: roygara
 ms.author: rogarana
 ms.date: 05/10/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 2413cfe02dfb3be61ec01518e4fdd7f4b78f5773
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0acd49b6f1545ab6020adf498c683a28850730b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65538377"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695821"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 
-Jeśli chcesz rozpocząć korzystanie z dysków SSD ultra, zobacz artykułem na temat: [Włączanie Azure SSD ultra](disks-enable-ultra-ssd.md).
+Jeśli chcesz zacząć korzystać z usługi Ultra dysków SSD, zapoznaj się z artykułem na temat: [Włączanie usługi Azure Ultra dysków SSD](disks-enable-ultra-ssd.md).
 
 [!INCLUDE [virtual-machines-managed-disks-types-ga](../../../includes/virtual-machines-managed-disks-types-ga.md)]
 
-Aby uzyskać więcej informacji na temat migawek, zobacz sekcję na migawek w [zarządzać dyskami — omówienie](managed-disks-overview.md).
+Aby uzyskać więcej informacji na temat migawek, zobacz sekcję dotyczącą migawek na [dysku zarządzanym — Omówienie](managed-disks-overview.md).
 
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-billing-and-fees.md)]

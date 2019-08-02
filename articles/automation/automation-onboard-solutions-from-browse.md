@@ -1,6 +1,6 @@
 ---
-title: Dowiedz się, jak dodawanie rozwiązań zarządzania aktualizacjami, śledzenie zmian i spisu dla wielu maszyn wirtualnych w usłudze Azure Automation
-description: Dowiedz się, jak dołączyć Azure maszynę wirtualną z rozwiązaniami do zarządzania aktualizacjami, śledzenie zmian i spisu, które są częścią usługi Azure Automation
+title: Dowiedz się, jak dołączyć rozwiązania Update Management, Change Tracking i spisu dla wielu maszyn wirtualnych w Azure Automation
+description: Dowiedz się, jak dołączyć maszynę wirtualną platformy Azure przy użyciu rozwiązań Update Management, Change Tracking i spisu, które są częścią Azure Automation
 services: automation
 ms.service: automation
 author: bobbytreed
@@ -9,16 +9,16 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 11dda62a7d8a92b17eb1d431e61086680f356195
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cf063311e5559ddf5706df397ce744a726610000
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476620"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667340"
 ---
-# <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Włączanie rozwiązania Update Management, śledzenia zmian i spis rozwiązań na wielu maszynach wirtualnych
+# <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Włączanie rozwiązań Update Management, Change Tracking i spisu na wielu maszynach wirtualnych
 
-Usługa Azure Automation oferuje rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i spisu zainstalowanych na komputerach. Istnieje wiele sposobów dołączania maszyn, możesz dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), z Twojej [konta usługi Automation](automation-onboard-solutions-from-automation-account.md), podczas przeglądania maszyny wirtualne lub przez [elementurunbook](automation-onboard-solutions.md). W tym artykule opisano dołączania do tych rozwiązań podczas przeglądania maszyn wirtualnych na platformie Azure.
+Azure Automation udostępnia rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenia zmian i spisu, co jest zainstalowane na komputerach. Istnieje wiele sposobów, aby dołączać maszyny, można dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md)do [konta usługi Automation](automation-onboard-solutions-from-automation-account.md)podczas przeglądania maszyn wirtualnych lub przez [element Runbook](automation-onboard-solutions.md). W tym artykule opisano dołączanie tych rozwiązań podczas przeglądania maszyn wirtualnych na platformie Azure.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -26,136 +26,138 @@ Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 
 ## <a name="enable-solutions"></a>Włączanie rozwiązań
 
-W witrynie Azure portal przejdź do **maszyn wirtualnych**.
+W Azure Portal przejdź do **maszyn wirtualnych**.
 
-Za pomocą pola wyboru, wybierz maszyny wirtualne, które chcesz dołączyć śledzenie zmian i spisu lub rozwiązania Update Management. Dołączania jest dostępna dla maksymalnie trzech różnych grupach zasobów w danym momencie. Maszyny wirtualne platformy Azure może znajdować się w dowolnym regionie, bez względu na to lokalizacja konta usługi Automation.
+Korzystając z pól wyboru, wybierz maszyny wirtualne, które chcesz dołączyć do Change Tracking i spisu lub Update Management. Dołączanie jest dostępne dla maksymalnie trzech różnych grup zasobów jednocześnie. Maszyny wirtualne platformy Azure mogą istnieć w dowolnym regionie, niezależnie od lokalizacji konta usługi Automation.
 
 ![Lista maszyn wirtualnych](media/automation-onboard-solutions-from-browse/vmlist.png)
 > [!TIP]
-> Użyj kontrolki filtrowania modyfikacji listy identyfikatorów maszyn wirtualnych, a następnie kliknij przycisk najważniejsze pole wyboru, aby wszystkie maszyny wirtualne na liście.
+> Użyj kontrolek filtr, aby zmodyfikować listę maszyn wirtualnych, a następnie kliknij górne pole wyboru, aby wybrać wszystkie maszyny wirtualne na liście.
 
-Na pasku poleceń kliknij **usług** i wybierz opcję **śledzenie zmian**, **spisu**, lub **rozwiązania Update Management**.
+Na pasku poleceń kliknij pozycję **usługi** i wybierz opcję **śledzenie zmian**, **spis**lub **Update Management**.
 
 > [!NOTE]
-> **Śledzenie zmian** i **spisu** używać tego samego rozwiązania, gdy jedna jest włączona innych także włączone.
+> **Śledzenie zmian** i **spis** używają tego samego rozwiązania, gdy jest ono włączone, a drugie jest również włączona.
 
-Poniżej zilustrowano w zarządzania aktualizacjami. Śledzenie zmian i spisu mają ten sam układ i zachowanie.
+Na poniższej ilustracji przedstawiono Update Management. Śledzenie zmian i spis mają taki sam układ i zachowanie.
 
-Listę maszyn wirtualnych jest filtrowana, aby pokazać tylko maszyny wirtualne, które znajdują się w tej samej subskrypcji i lokalizacji. Jeśli maszyny wirtualne znajdują się w więcej niż trzy grupy zasobów, są wybierane pierwszej grupy zasobów.
+Lista maszyn wirtualnych jest filtrowana w celu wyświetlania tylko maszyn wirtualnych znajdujących się w tej samej subskrypcji i lokalizacji. Jeśli maszyny wirtualne znajdują się w więcej niż trzech grupach zasobów, wybierane są pierwsze trzy grupy zasobów.
 
-### <a name="resource-group-limit"></a> Ograniczenia dotyczące dołączania
+### <a name="resource-group-limit"></a>Ograniczenia dotyczące dołączania
 
-Liczba grup zasobów, które służy do dołączania jest ograniczona przez [limity wdrażania usługi Resource Manager](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Wdrożeń usługi Resource Manager, nie należy mylić z wdrożeniami aktualizacji mogą zawierać maksymalnie 5 grup zasobów na wdrożenie. Aby zapewnić integralność dołączania, 2 tych grup zasobów są zarezerwowane do skonfigurowania obszaru roboczego usługi Log Analytics, konto usługi Automation i powiązane zasoby. Pozostawia 3 grup zasobów, aby wybrać do wdrożenia.
+Liczba grup zasobów, których można użyć do dołączenia, jest ograniczona przez [Menedżer zasobów limity wdrożenia](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Menedżer zasobów wdrożeń nie należy mylić z wdrożeniami aktualizacji, są ograniczone do 5 grup zasobów na wdrożenie. Aby zapewnić integralność dołączania, 2 z tych grup zasobów są zastrzeżone do konfigurowania obszaru roboczego Log Analytics, konta usługi Automation i powiązanych zasobów. Spowoduje to pozostawienie 3 grup zasobów do wybrania do wdrożenia.
 
-Użyj kontrolki filtrowania, aby wybrać maszyny wirtualne z różnych subskrypcji, lokalizacji i grup zasobów.
+Możesz również użyć elementu Runbook do dołączenia, aby uzyskać więcej informacji, zobacz Dołączanie [rozwiązań aktualizacji i śledzenia zmian do Azure Automation](automation-onboard-solutions.md).
 
-![Dołączanie rozwiązania Update management](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
+Użyj kontrolek filtr, aby wybrać maszyny wirtualne z różnych subskrypcji, lokalizacji i grup zasobów.
 
-Przejrzyj opcje dla obszaru roboczego usługi Log Analytics i konto usługi Automation. Domyślnie wybrany istniejący obszar roboczy i konto usługi Automation. Jeśli chcesz użyć innego obszaru roboczego usługi Log Analytics i konto usługi Automation, kliknij przycisk **niestandardowe** wybierać z **Konfiguracja niestandardowa** strony. Po wybraniu obszaru roboczego usługi Log Analytics, dokonuje do określenia, jeśli jest połączony z kontem usługi Automation. Jeśli połączonego konta usługi Automation zostanie znaleziony, zostanie wyświetlony następujący ekran. Gdy skończysz, kliknij pozycję **OK**.
+![Dołączanie rozwiązania do zarządzania aktualizacjami](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-![Wybierz obszar roboczy i konto](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
+Zapoznaj się z opcjami obszaru roboczego Log Analytics i konta usługi Automation. Istniejący obszar roboczy i konto usługi Automation są domyślnie zaznaczone. Jeśli chcesz użyć innego obszaru roboczego Log Analytics i konta usługi Automation, kliknij pozycję niestandardowa, aby wybrać je ze strony **Konfiguracja** niestandardowa. Po wybraniu obszaru roboczego Log Analytics należy sprawdzić, czy jest on połączony z kontem usługi Automation. Po znalezieniu połączonego konta usługi Automation zobaczysz następujący ekran. Po zakończeniu kliknij przycisk **OK**.
 
-Jeśli wybrany obszar roboczy nie został połączony z kontem usługi Automation, zobaczysz poniższy ekran. Wybierz konto usługi Automation i kliknij przycisk **OK** po zakończeniu.
+![Wybieranie obszaru roboczego i konta](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
+
+Jeśli wybrany obszar roboczy nie jest połączony z kontem usługi Automation, zobaczysz następujący ekran. Wybierz konto usługi Automation, a następnie kliknij przycisk **OK** po zakończeniu.
 
 ![Brak obszaru roboczego](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
 > [!NOTE]
 > W przypadku włączenia rozwiązań tylko w niektórych regionach jest obsługiwane łączenie obszaru roboczego usługi Log Analytics i konta usługi Automation.
 >
-> Aby uzyskać listę par mapowania obsługiwanych, zobacz [mapowania Region dla obszaru roboczego z konta usługi Automation i Log Analytics](how-to/region-mappings.md).
+> Aby uzyskać listę obsługiwanych par mapowania, zobacz [Mapowanie regionów dla konta usługi Automation i obszaru roboczego log Analytics](how-to/region-mappings.md).
 
-Usuń zaznaczenie pola wyboru obok dowolnej maszyny wirtualnej, których nie chcesz, aby włączyć. Maszyny wirtualne, których nie można włączyć są już usunięte.
+Usuń zaznaczenie pola wyboru obok każdej maszyny wirtualnej, która nie ma być włączona. Maszyny wirtualne, których nie można włączyć, są już odwybrane.
 
-Kliknij przycisk **Włącz** Aby włączyć rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
+Kliknij pozycję **Włącz** , aby włączyć rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
 
-## <a name="unlink-workspace"></a>Odłączanie obszaru roboczego
+## <a name="unlink-workspace"></a>Odłącz obszar roboczy
 
-Następujące rozwiązania zależą od obszaru roboczego usługi Log Analytics:
+Następujące rozwiązania zależą od obszaru roboczego Log Analytics:
 
 * [Zarządzanie aktualizacjami](automation-update-management.md)
 * [Śledzenie zmian](automation-change-tracking.md)
-* [Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu](automation-solution-vm-management.md)
+* [Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami pracy](automation-solution-vm-management.md)
 
-Jeśli zdecydujesz, że już nie chcesz zintegrować konta usługi Automation z obszarem roboczym usługi Log Analytics, możesz odłączyć konta bezpośrednio w witrynie Azure portal. Przed kontynuowaniem należy najpierw usunąć rozwiązania, o których wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Zapoznaj się z artykułem dla danego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane do usunięcia go.
+Jeśli zdecydujesz, że nie chcesz już integrować konta usługi Automation z obszarem roboczym Log Analytics, możesz odłączyć swoje konto bezpośrednio od Azure Portal. Przed kontynuowaniem należy najpierw usunąć wymienione wcześniej rozwiązania. w przeciwnym razie proces ten nie zostanie zablokowany. Zapoznaj się z artykułem dotyczącym określonego rozwiązania, które zostało zaimportowane, aby poznać kroki wymagane do jego usunięcia.
 
-Po usunięciu tych rozwiązań, można wykonać poniższe kroki, aby odłączyć konto usługi Automation.
+Po usunięciu tych rozwiązań możesz wykonać następujące czynności, aby odłączyć konto usługi Automation.
 
 > [!NOTE]
-> Niektóre rozwiązania, w tym wcześniejsze wersje rozwiązania do monitorowania usługi Azure SQL zostały utworzone zasoby usługi automation i może również muszą zostać usunięte przed odłączanie obszaru roboczego.
+> Niektóre rozwiązania, w tym wcześniejsze wersje rozwiązania Azure SQL monitoring, mogły utworzyć zasoby automatyzacji i mogą być również musiały zostać usunięte przed odłączeniem obszaru roboczego.
 
-1. W witrynie Azure Portal otwórz konto usługi Automation, a na automatyzację konta wybierz stronę **połączony obszar roboczy** sekcji **powiązane zasoby** po lewej stronie.
+1. W Azure Portal Otwórz konto usługi Automation, a na stronie konto usługi Automation wybierz opcję **połączony obszar roboczy** w sekcji **zasoby powiązane** z pozostałą częścią.
 
-2. Na stronie odłączania obszaru roboczego kliknij **odłączanie obszaru roboczego**.
+2. Na stronie Odłącz obszar roboczy kliknij pozycję **Odłącz obszar roboczy**.
 
-   ![Odłącz strona obszaru roboczego](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
+   ![Odłącz stronę obszaru roboczego](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
 
    Zostanie wyświetlony monit sprawdzający, czy chcesz kontynuować.
 
-3. Gdy usługa Azure Automation usiłuje odłączyć konto obszaru roboczego usługi Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
+3. Mimo że Azure Automation próbuje odłączyć konto do obszaru roboczego Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
 
-Jeśli używane jest rozwiązanie do zarządzania aktualizacjami, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
+Jeśli użyto rozwiązania Update Management, opcjonalnie możesz chcieć usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
-* Zaplanowanie aktualizacji — będzie mieć nazwy zgodne utworzonych wdrożeń aktualizacji)
+* Harmonogramy aktualizacji — każda z nich będzie mieć nazwy zgodne z utworzonymi wdrożeniami aktualizacji)
 
-* Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda będzie miała podobnie do maszyna1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8).
+* Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda z nich będzie podobna do maszyna1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
 
-Jeśli uruchamianie/zatrzymywanie maszyn wirtualnych jest używana podczas szczytu rozwiązania, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
+Jeśli wykorzystano Uruchamianie/zatrzymywanie maszyn wirtualnych w rozwiązaniu off-godzinnym, opcjonalnie możesz chcieć usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
-* Uruchamianie i zatrzymywanie maszyn wirtualnych elementu runbook harmonogramy
-* Uruchamianie i zatrzymywanie elementów runbook maszyny Wirtualnej
+* Uruchamianie i zatrzymywanie harmonogramów elementów Runbook maszyny wirtualnej
+* Uruchamianie i zatrzymywanie elementów Runbook maszyny wirtualnej
 * Zmienne
 
-Alternatywnie można również odłączyć obszaru roboczego z konta usługi Automation z obszaru roboczego usługi Log Analytics. W obszarze roboczym wybierz **konta usługi Automation** w obszarze **powiązane zasoby**. Na stronie konta automatyzacji wybierz **odłączyć konto**.
+Możesz również odłączyć obszar roboczy od konta usługi Automation z poziomu obszaru roboczego Log Analytics. W obszarze roboczym wybierz pozycję **konto usługi Automation** w obszarze **powiązane zasoby**. Na stronie konto usługi Automation wybierz opcję **Odłącz konto**.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Podczas dołączania wielu maszyn, może być maszyn, które są wyświetlane jako **nie można włączyć**. Istnieją różne przyczyny, dlaczego niektóre maszyny nie może być włączone. W poniższych sekcjach opisano możliwe przyczyny **nie można włączyć** stanu na maszynie Wirtualnej, podczas próby dołączyć.
+Podczas dołączania wielu maszyn mogą istnieć maszyny, które są wyświetlane jako **niemożliwe do włączenia**. Istnieją różne przyczyny, dla których niektóre maszyny mogą nie być włączone. W poniższych sekcjach przedstawiono możliwe przyczyny stanu **nie można włączyć** na maszynie wirtualnej podczas próby dołączenia.
 
-### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Maszyna wirtualna raportuje do innego obszaru roboczego: "\<workspaceName\>".  Zmienianie konfiguracji na potrzeby włączania
+### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Raporty maszyny wirtualnej do innego obszaru roboczego:\<"\>WorkspaceName".  Zmień konfigurację, aby była używana do włączania
 
-**Przyczyna**: Ten błąd wskazuje, że maszyna wirtualna, który próbujesz dodać raporty do innego obszaru roboczego.
+**Przyczyna**: Ten błąd pokazuje, że maszyna wirtualna, do której próbujesz dołączyć raporty, do innego obszaru roboczego.
 
-**Rozwiązanie**: Kliknij przycisk **jako konfiguracji** zmiany docelowego obszaru roboczego konto usługi Automation i Log Analytics.
+**Rozwiązanie**: Kliknij pozycję **Użyj jako konfiguracji** , aby zmienić wybrane konto usługi Automation i obszar roboczy log Analytics.
 
-### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Maszyna wirtualna raporty do obszaru roboczego, który nie jest dostępny w ramach tej subskrypcji
+### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Raporty maszyn wirtualnych do obszaru roboczego, który nie jest dostępny w tej subskrypcji
 
-**Przyczyna**: Obszar roboczy, któremu podlega maszyny wirtualnej:
+**Przyczyna**: Obszar roboczy, do którego jest raportowana maszyna wirtualna:
 
 * Znajduje się w innej subskrypcji lub
-* Już nie istnieje, lub
-* Znajduje się w grupie zasobów, której nie masz uprawnień dostępu do
+* Już nie istnieje lub
+* Znajduje się w grupie zasobów, do której nie masz uprawnień dostępu
 
-**Rozwiązanie**: Znajdź konto usługi automation skojarzone z obszarem roboczym, któremu podlega maszyny Wirtualnej i dołączyć maszyny wirtualnej, zmieniając konfigurację zakresu.
+**Rozwiązanie**: Znajdź konto usługi Automation skojarzone z obszarem roboczym, do którego maszyna wirtualna jest zgłaszana, i Dołącz maszynę wirtualną, zmieniając konfigurację zakresu.
 
-### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>Wersja systemu operacyjnego maszyny Wirtualnej lub dystrybucji nie jest obsługiwana.
+### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>Wersja lub dystrybucja systemu operacyjnego maszyny wirtualnej nie jest obsługiwana
 
-**Przyczyna:** Rozwiązanie nie jest obsługiwana dla wszystkich dystrybucje systemu Linux i wszystkich wersji systemu Windows.
+**Może** Rozwiązanie nie jest obsługiwane w przypadku wszystkich dystrybucji systemu Linux lub wszystkich wersji Windows.
 
-**Rozwiązanie:** Zapoznaj się [listę obsługiwanych klientów](automation-update-management.md#clients) dla rozwiązania.
+**Narzędzie** Zapoznaj się z [listą obsługiwanych klientów](automation-update-management.md#clients) rozwiązania.
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Nie można włączyć klasycznych maszyn wirtualnych
 
-**Przyczyna**: Maszyny wirtualne, które używają klasycznego modelu wdrażania nie są obsługiwane.
+**Przyczyna**: Maszyny wirtualne korzystające z klasycznego modelu wdrażania nie są obsługiwane.
 
-**Rozwiązanie**: Migruj maszynę wirtualną, do modelu wdrażania usługi Resource Manager. Aby dowiedzieć się, jak to zrobić, zobacz [migrację zasobów modelu wdrożenia klasycznego](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+**Rozwiązanie**: Przeprowadź migrację maszyny wirtualnej do modelu wdrażania Menedżer zasobów. Aby dowiedzieć się, jak to zrobić, zobacz [Migrowanie zasobów modelu wdrożenia klasycznego](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
-### <a name="vm-is-stopped-deallocated"></a>Maszyna wirtualna jest zatrzymana. (cofnięty przydział)
+### <a name="vm-is-stopped-deallocated"></a>Maszyna wirtualna jest zatrzymana. bez alokacji
 
-**Przyczyna**: Maszynę wirtualną w nie **systemem** stanu.
+**Przyczyna**: Maszyna wirtualna nie jest w stanie **uruchomienia** .
 
-**Rozwiązanie**: W celu dołączenia maszyny Wirtualnej w celu rozwiązania maszyny Wirtualnej musi być uruchomiona. Kliknij przycisk **uruchamianie maszyny Wirtualnej** wbudowany link prowadzący do uruchomienia maszyny Wirtualnej bez konieczności opuszczania strony.
+**Rozwiązanie**: Aby dołączyć maszynę wirtualną do rozwiązania, maszyna wirtualna musi być uruchomiona. Kliknij link **Rozpocznij maszynę wirtualną** , aby uruchomić maszynę wirtualną bez nawigowania na stronie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy rozwiązanie jest włączone dla maszyn wirtualnych, odwiedź stronę artykuł Omówienie zarządzania aktualizacjami, aby dowiedzieć się, jak i wyświetlanie oceny aktualizacji dla maszyn.
+Teraz, gdy rozwiązanie jest włączone dla maszyn wirtualnych, zapoznaj się z artykułem Omówienie Update Management, aby dowiedzieć się, jak wyświetlić ocenę aktualizacji dla maszyn.
 
 > [!div class="nextstepaction"]
-> [Zarządzanie aktualizacjami — wyświetlanie oceny aktualizacji](./automation-update-management.md#viewing-update-assessments)
+> [Update Management-Wyświetlanie oceny aktualizacji](./automation-update-management.md#viewing-update-assessments)
 
-Dodawanie samouczków na temat rozwiązania i jak ich używać:
+Dodatkowe samouczki dotyczące rozwiązań i sposoby ich używania:
 
-* [Samouczek — Zarządzanie aktualizacjami dla maszyny Wirtualnej](automation-tutorial-update-management.md)
+* [Samouczek — zarządzanie aktualizacjami dla maszyny wirtualnej](automation-tutorial-update-management.md)
 
-* [Samouczek — identyfikowanie oprogramowania na maszynie Wirtualnej](automation-tutorial-installed-software.md)
+* [Samouczek — identyfikowanie oprogramowania na maszynie wirtualnej](automation-tutorial-installed-software.md)
 
-* [Samouczek — Rozwiązywanie problemów dotyczących zmian na maszynie Wirtualnej](automation-tutorial-troubleshoot-changes.md)
+* [Samouczek — Rozwiązywanie problemów dotyczących zmian na maszynie wirtualnej](automation-tutorial-troubleshoot-changes.md)

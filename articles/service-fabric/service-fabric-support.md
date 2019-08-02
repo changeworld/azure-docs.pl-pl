@@ -1,6 +1,6 @@
 ---
-title: Dowiedz się więcej o opcjach pomocy technicznej programu Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Bilety obsługi platformy Azure obsługiwane wersje klastra usługi Service Fabric oraz łącza do pliku
+title: Dowiedz się więcej o opcjach pomocy technicznej platformy Azure Service Fabric | Microsoft Docs
+description: Obsługiwane wersje klastra platformy Azure Service Fabric i linki do biletów pomocy technicznej dotyczącej plików
 services: service-fabric
 documentationcenter: .net
 author: pkcsf
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: 667ee6a49238c1ecaabec631cb72804b0c4b2323
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: ac36b1a538d5899613e19f157695d0bc333d9ece
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304255"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679058"
 ---
-# <a name="azure-service-fabric-support-options"></a>Opcje pomocy technicznej usługi Azure Service Fabric
+# <a name="azure-service-fabric-support-options"></a>Opcje pomocy technicznej platformy Azure Service Fabric
 
-Aby zapewnić odpowiednią obsługę klastrów usługi Service Fabric, które są uruchomione Twoje obciążenie pracą aplikacji na, skonfigurowaliśmy różne opcje. W zależności od poziomu pomocy technicznej potrzebnych i wagę problemu, Pobierz i wybierz odpowiednie opcje. 
+Aby zapewnić odpowiednie wsparcie dla klastrów Service Fabric, na których jest uruchomiona aplikacja, załadujemy różne opcje. W zależności od wymaganego poziomu pomocy technicznej i ważności problemu można wybrać odpowiednie opcje. 
 
-## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Zgłosić problemy w środowisku produkcyjnym lub poprosić płatnej pomocy technicznej dla platformy Azure
+## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Zgłoś problemy produkcyjne lub zażądaj płatnej pomocy technicznej dla platformy Azure
 
-Do zgłaszania problemów dotyczących w klastrze usługi Service Fabric wdrożonego na platformie Azure, należy otworzyć bilet pomocy technicznej [w witrynie Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) lub [portalu pomocy technicznej firmy Microsoft](https://support.microsoft.com/oas/default.aspx?prid=16146).
+W przypadku problemów z raportowaniem w klastrze Service Fabric wdrożonym na platformie Azure Otwórz bilet pomocy technicznej [w witrynie Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) lub [portalu pomocy technicznej firmy Microsoft](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
 Dowiedz się więcej o usługach:
  
-- [Pomocy technicznej firmy Microsoft dla platformy Azure](https://azure.microsoft.com/support/plans/?b=16.44).
-- [Firmy Microsoft korzystający z pomocy technicznej](https://support.microsoft.com/en-us/premier).
+- [Pomoc techniczna firmy Microsoft dla platformy Azure](https://azure.microsoft.com/support/plans/?b=16.44).
+- [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
 
 > [!Note]
-> Klastry z systemem w ramach warstwy niezawodności bronze umożliwiają uruchamianie tylko obciążeń testowych. Jeśli występują problemy z klastra działającego w bronze niezawodności, zespół pomocy technicznej firmy Microsoft pomoże Ci korygowanie problemu, ale nie będzie wykonywać analizy głównych przyczyn. Zapoznaj się [charakterystyka niezawodności klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) Aby uzyskać więcej informacji.
+> Klastry działające w ramach warstwy niezawodności Bronów lub klastra z jednym węzłem będą umożliwiały uruchamianie obciążeń testowych. Jeśli występują problemy z klastrem uruchomionym w usłudze Bronze lub klastrze z jednym węzłem, zespół pomocy technicznej firmy Microsoft pomoże Ci uniknąć problemu, ale nie będzie wykonywał analizy głównej przyczyny. Aby uzyskać więcej informacji, zapoznaj się z [charakterystyką niezawodności klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) .
 >
-> Aby uzyskać więcej informacji o tym, co jest wymagane dla produkcyjnego klastra można znaleźć [Lista kontrolna gotowości produkcji](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist).
+> Aby uzyskać więcej informacji o tym, co jest wymagane w przypadku klastra gotowego do produkcji, zapoznaj się z [listą kontrolną gotowości produkcyjnej](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist).
 
 <a id="getlivesitesupportonprem"></a>
 
-## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Zgłosić problemy w środowisku produkcyjnym lub poprosić płatnej pomocy technicznej dla autonomicznych, które klastrów usługi Service Fabric
+## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Zgłoś problemy produkcyjne lub zażądaj płatnej pomocy technicznej dla autonomicznych klastrów Service Fabric
 
-Dla raportowania problemy w klastrze usługi Service Fabric wdrożone lokalnie lub w innych chmurach, otwórz bilet pomocy technicznej professional na [portalu pomocy technicznej firmy Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+W przypadku problemów z raportowaniem w klastrze Service Fabric wdrożonym lokalnie lub w innych chmurach Otwórz bilet dla profesjonalnej pomocy technicznej w [portalu pomocy technicznej firmy Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 Dowiedz się więcej o usługach:
 
-- [Profesjonalnej pomocy technicznej firmy Microsoft dla środowiska lokalnego](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
-- [Firmy Microsoft korzystający z pomocy technicznej](https://support.microsoft.com/en-us/premier).
+- [Profesjonalne wsparcie firmy Microsoft dla firm lokalnych](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
+- [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
 
-## <a name="report-azure-service-fabric-issues"></a>Generuje raport Azure Service Fabric
+## <a name="report-azure-service-fabric-issues"></a>Zgłoś problemy dotyczące Service Fabric platformy Azure
 
-Skonfigurowaliśmy repozytorium GitHub dla zgłaszania problemów dotyczących usługi Service Fabric.  Firma Microsoft są także aktywnie monitoruje następujących forów.
+Skonfigurowano repozytorium GitHub na potrzeby raportowania Service Fabric problemów.  Aktywnie monitorujemy również następujące fora.
 
 ### <a name="github-repo"></a>Repozytorium GitHub 
 
-Zgłosić problemy dotyczące sieci szkieletowej usługi platformy Azure na [repozytorium git problemy dotyczące sieci szkieletowej usługi](https://github.com/Azure/service-fabric-issues). To repozytorium jest przeznaczony dla raportowania i śledzenia problemów z usługą Service Fabric i składania żądań małych funkcji. **Nie używaj to zgłaszanie problemów aktywnej witryny**.
+Zgłoś problemy dotyczące Service Fabric platformy Azure w [usłudze Service-Fabric — problemy z repozytorium git](https://github.com/Azure/service-fabric-issues). To repozytorium jest przeznaczone do raportowania i śledzenia problemów z usługą Azure Service Fabric oraz do tworzenia małych żądań funkcji. **Nie należy używać tej usługi do zgłaszania problemów z witryną**.
 
 ### <a name="stackoverflow-and-msdn-forums"></a>Fora StackOverflow i MSDN
 
-[Tag usługi Service Fabric w witrynie StackOverflow][stackoverflow] and the [Service Fabric forum on MSDN][msdn-forum] najlepsze są używane do zadawania pytań dotyczących sposobu działania platformy i jak można wykonać niektóre zadania z nim.
+[Tag Service Fabric na StackOverflow][stackoverflow] i [forum Service Fabric w witrynie MSDN][msdn-forum] są najlepiej używane do zadawania pytań dotyczących działania platformy i sposobu wykonywania określonych zadań.
 
-### <a name="azure-feedback-forum"></a>Forum opinii platformy Azure
+### <a name="azure-feedback-forum"></a>Forum opinii na platformie Azure
 
-[Forum opinii platformy Azure dla usługi Service Fabric][uservoice-forum] jest najlepszym miejscem, przesyłania, masz produktu, ponieważ omówimy najpopularniejszych żądań pomysły na funkcje big Data są częścią naszego medium do długoterminowego planowania. Firma Microsoft zachęca do rally obsługę Twoje sugestie społeczności.
+[Forum opinii na platformie Azure dla Service Fabric][uservoice-forum] jest najlepszym miejscem do przesyłania pomysłów dotyczących dużych cech dla produktu, podczas gdy przeglądamy najpopularniejsze żądania stanowią część naszego średniego planowania. Zachęcamy do Rally pomocy technicznej dla swoich sugestii w społeczności.
 
-## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Wersji dodatku Service Fabric w wersji zapoznawczej — obsługiwane do użytku produkcyjnego
+## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Wersje zapoznawcze Service Fabric — nieobsługiwane do użycia w środowisku produkcyjnym
 
-Od czasu do czasu wydania wersji, które mają znaczące funkcje żądanej opinii, które są wydawane jako wersje zapoznawcze. Te wersje (wersja zapoznawcza) można używać tylko do celów testowych. Klastrem produkcyjnym zawsze powinna być uruchomiona obsługiwanych, stabilna wersja usługi Service Fabric. Wersja zapoznawcza zawsze zaczyna się od numeru wersji głównych i pomocniczych 255. Na przykład jeśli Usługa Service Fabric w wersji 255.255.5703.949, tej wersji jest tylko wtedy, można użyć w przypadku klastrów testowych i jest w wersji zapoznawczej. Te wersje zapoznawcze również są ogłaszane na [blog zespołu usługi Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric) i będzie zawierał szczegółowe informacje o funkcjach dostępnych.
-Nie ma żadnych opcji płatnej pomocy technicznej dla tych wersji (wersja zapoznawcza). Użyj jednej z opcji wymienionych w obszarze [generuje raport Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) aby zadać pytania lub opinię.
+Od czasu do czasu firma Microsoft udostępnia wersje, które mają znaczące funkcje, dla których chcemy uzyskać opinię, które są udostępniane jako wersje zapoznawcze. Te wersje zapoznawcze powinny być używane tylko do celów testowych. Klaster produkcyjny powinien mieć zawsze uruchomioną obsługiwaną, stabilną wersję Service Fabric. Wersja zapoznawcza zawsze rozpoczyna się od wersji głównej i pomocniczej o numerze 255. Na przykład jeśli zostanie wyświetlona Service Fabric wersja 255.255.5703.949, ta wersja jest używana tylko w przypadku klastrów testowych i jest w wersji zapoznawczej. Te wersje zapoznawcze są również ogłoszone na [blogu zespołu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric) i zawiera szczegółowe informacje dotyczące funkcji uwzględnionych w tym obszarze.
+Brak płatnych opcji pomocy technicznej dla tych wersji zapoznawczych. Skorzystaj z jednej z opcji wymienionych w sekcji [Zgłoś problemy Service Fabric platformy Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) , aby zadać pytania lub przekazać opinię.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Obsługiwane wersje usługi Service Fabric](service-fabric-versions.md)
+[Obsługiwane Service Fabric wersje](service-fabric-versions.md)
 
 <!--references-->
 [msdn-forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric

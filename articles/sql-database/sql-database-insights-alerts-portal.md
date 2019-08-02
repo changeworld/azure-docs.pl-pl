@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie alertów i powiadomień za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
-description: Użyj witryny Azure portal, aby utworzyć alerty bazy danych SQL, które mogą wyzwalać automatyzację lub powiadomienia po spełnieniu warunków, które określisz.
+title: Skonfiguruj alerty i powiadomienia przy użyciu Azure Portal | Microsoft Docs
+description: Użyj Azure Portal, aby utworzyć alerty SQL Database, które mogą wyzwalać powiadomienia lub automatyzację, gdy zostaną spełnione określone warunki.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -10,114 +10,113 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9468dbd71ee8da88cbabc3ca9f76c77d47adc221
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036059"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567921"
 ---
-# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Tworzenie alertów dla usługi Azure SQL Database i Data Warehouse przy użyciu witryny Azure portal
+# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Tworzenie alertów dla Azure SQL Database i magazynu danych przy użyciu Azure Portal
 
 ## <a name="overview"></a>Omówienie
-W tym artykule pokazano, jak skonfigurować alerty usługi Azure SQL Database i Data Warehouse przy użyciu witryny Azure portal. Alerty można wysyłać wiadomości e-mail lub wywołać webhook, gdy niektóre metryki (na przykład rozmiar bazy danych lub użycie procesora CPU) osiąga wartość progową. Ten artykuł zawiera również najlepsze rozwiązania dotyczące ustawienie alertów okresów.    
+W tym artykule opisano sposób konfigurowania Azure SQL Database i alertów magazynu danych przy użyciu Azure Portal. Alerty mogą wysyłać wiadomość e-mail lub wywoływać element webhook, gdy pewna Metryka (na przykład rozmiar bazy danych lub użycie procesora) osiągnie wartość progową. W tym artykule przedstawiono również najlepsze rozwiązania dotyczące ustawiania okresów alertów.    
 
 > [!IMPORTANT]
-> Ta funkcja nie jest jeszcze dostępny w wystąpieniu zarządzanym. Alternatywnie, można użyć agenta programu SQL, wysyłać alerty e-mail dotyczące niektóre metryki na podstawie [dynamicznych widoków zarządzania](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
+> Ta funkcja nie jest jeszcze dostępna w wystąpieniu zarządzanym. Alternatywnie można użyć programu SQL Agent do wysyłania alertów e-mail dotyczących niektórych metryk w oparciu o [dynamiczne widoki zarządzania](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
-Otrzymasz alert na podstawie metryk monitorowania lub zdarzenia na usługi platformy Azure.
+Możesz otrzymywać alerty na podstawie metryk monitorowania dla usługi lub zdarzeń w usłudze Azure.
 
-* **Wartości metryk** — uruchamia alert, gdy wartość metryki określonego ostrzeżenia przekroczy próg przypisać w dowolnym kierunku. Oznacza to, wyzwala zarówno kiedy warunek jest spełniony, najpierw i następnie później podczas warunku nie jest już trwa spełniany.    
-* **Zdarzenia dziennika aktywności** — alert może być wyzwalana przy *co* zdarzenia lub tylko wtedy, gdy występują pewną liczbę zdarzeń.
+* **Wartości metryk** — alert wyzwalany, gdy wartość określonej metryki przekroczy próg przypisany w dowolnym kierunku. Oznacza to, że jest wyzwalane podczas pierwszego spełnienia warunku, a następnie gdy ten warunek nie jest już spełniony.    
+* **Zdarzenia dziennika aktywności** — alert może być wyzwalany dla *każdego* zdarzenia lub tylko wtedy, gdy wystąpi pewna liczba zdarzeń.
 
-Możesz skonfigurować alert, aby po jego wyzwoleniu, wykonaj następujące czynności:
+Można skonfigurować alert, aby wykonać następujące czynności podczas wyzwalania:
 
-* wysyłanie powiadomień e-mail do administratora usługi i współadministratorzy
-* Wyślij wiadomość e-mail do dodatkowe adresy e-mail, które określisz.
-* Wywołaj element webhook
+* Wysyłanie powiadomień e-mail do administratora usługi i współadministratorów
+* Wyślij wiadomość e-mail do dodatkowych wiadomości e-mail, które określisz.
+* Wywoływanie elementu webhook
 
-Można skonfigurować i uzyskać informacje na temat przy użyciu reguł alertów
+Można skonfigurować i uzyskać informacje o regułach alertów za pomocą
 
 * [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [Program PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
 * [Interfejs wiersza polecenia (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
-* [Interfejs API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Interfejs API REST Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Tworzenie reguły alertu na metryki w witrynie Azure portal
-1. W [portal](https://portal.azure.com/)Znajdź zasób interesuje Cię monitorowania i wybierz ją.
-2. Wybierz **alerty (klasyczne)** w sekcji monitorowanie. Tekst i ikona może się nieco różnić dla różnych zasobów.  
+## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Tworzenie reguły alertu w ramach metryki z Azure Portal
+1. W [portalu](https://portal.azure.com/)Znajdź zasób, który chcesz monitorować, i wybierz go.
+2. W sekcji monitorowanie wybierz pozycję **alerty (klasyczne)** . Tekst i ikona mogą się nieco różnić w zależności od różnych zasobów.  
    
      ![Monitorowanie](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **TYLKO USŁUGI SQL DW**: Kliknij przycisk **użycie jednostki DWU** wykresu. Wybierz **wyświetlanie alertów klasycznych**
+   - **TYLKO DW SQL**: Kliknij wykres **użycie jednostek dwu** . Wybierz pozycję **Wyświetl klasyczne alerty**
 
-3. Wybierz **Dodaj alert dotyczący metryki (wersja klasyczna)** przycisk, a następnie wypełnij pola.
+3. Wybierz przycisk **Dodaj alert metryki (klasyczny)** i wypełnij pola.
    
-    ![Dodaj Alert](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
-4. **Nazwa** alert reguły, a następnie wybierz **opis**, który pokazuje także w wiadomości e-mail z powiadomieniem.
-5. Wybierz **metryki** chcesz monitorować, a następnie wybierz **warunek** i **próg** wartość metryki. Również wybrać **okres** czasu, przez jaki reguła metryki muszą być spełnione przed wyzwala alert. Na przykład jeśli używasz okres "PT5M", a alert szuka procesora CPU przekracza 80%, alert wyzwala kiedy **średni** został procesora CPU przekracza 80% przez 5 minut. Gdy wystąpi to pierwszy wyzwalacz, ponownie uaktywnia to, gdy średnie użycie procesora CPU wynosi poniżej 80% przez 5 minut. Pomiar procesora CPU występuje co minutę. Można znaleźć w poniższej tabeli opisano obsługiwane czas systemu windows, a następnie wpisz agregacji, że każdy alert nie używa wszystkich alertów należy użyć wartości średniej.   
-6. Sprawdź **wiadomości E-mail właścicielom...**  chcącym administratorów i współadministratorów, aby otrzymywać pocztą e-mail powiadomienia, gdy zostanie wyzwolony alert.
-7. Dodatkowe wiadomości e-mail, aby otrzymać powiadomienie, gdy zostanie wyzwolony alert, dodać je w **email(s) dodatkowego administratora** pola. Wiele wiadomości e-mail należy rozdzielić średnikami - *e-mail\@contoso.com;email2\@contoso.com*
-8. Umieść w prawidłowym identyfikatorem URI w **elementu Webhook** jeśli ma ona wywoływana, gdy zostanie wyzwolony alert.
-9. Wybierz **OK** po zakończeniu tworzenia alertu.   
+    ![Dodaj alert](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
+4. **Nadaj nazwę** regule alertu i wybierz **Opis**, która również jest wyświetlana w wiadomościach e-mail z powiadomieniami.
+5. Wybierz **metrykę** , którą chcesz monitorować, a następnie wybierz **warunek** i wartość **progową** dla metryki. Należy również wybrać **okres** , przez jaki reguła metryki musi być spełniona przed wyzwalaczem alertu. Jeśli na przykład używasz okresu "PT5M", a alert szuka procesora o wartości powyżej 80%, alert zostanie wyzwolony, gdy **Średni** procesor cpu powyżej 80% przez 5 minut. Po wystąpieniu pierwszego wyzwalacza ponownie wyzwalane, gdy średni procesor CPU będzie niższy od 80% ponad 5 minut. Pomiar procesora CPU występuje co 1 minutę. Zapoznaj się z poniższą tabelą dla obsługiwanych okien czasu i typ agregacji używany przez każdy alert — nie wszystkie alerty używają wartości średniej.   
+6. Sprawdź **właścicieli poczty e-mail...** , jeśli chcesz, aby administratorzy i współadministratorzy mogli otrzymywać pocztą e-mail po uruchomieniu alertu.
+7. Jeśli chcesz, aby dodatkowe wiadomości e-mail otrzymywały powiadomienie po uruchomieniu alertu, Dodaj je w polu **dodatkowe adresy E-mail administratora** . Rozdziel wiele wiadomości e-mail średnikami — *e-mail\@contoso. com\@; email2 contoso.com*
+8. Umieść w prawidłowym identyfikatorze URI w polu **elementu webhook** , jeśli chcesz, gdy zostanie wywołany alert.
+9. Po zakończeniu kliknij **przycisk OK** , aby utworzyć alert.   
 
-W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
+W ciągu kilku minut alert jest aktywny i wyzwalacze opisane wcześniej.
 
 ## <a name="managing-your-alerts"></a>Zarządzanie alertami
-Po utworzeniu alertu możesz wybrać go oraz:
+Po utworzeniu alertu możesz go wybrać i:
 
-* Wyświetl wykres przedstawiający próg metryki i rzeczywiste wartości z poprzedniego dnia.
-* Edytuj lub usuń go.
-* **Wyłącz** lub **Włącz** jej, jeśli chcesz tymczasowo zatrzymać lub wznowić odbieranie powiadomień dla tego alertu.
+* Wyświetl wykres pokazujący próg metryki i rzeczywiste wartości z poprzedniego dnia.
+* Edytuj lub Usuń.
+* **Wyłącz** lub **Włącz** tę opcję, jeśli chcesz tymczasowo zatrzymać lub wznowić otrzymywanie powiadomień dla tego alertu.
 
 
-## <a name="sql-database-alert-values"></a>Wartości alertu bazy danych SQL
+## <a name="sql-database-alert-values"></a>SQL Database wartości alertów
 
-| Typ zasobu | Nazwa metryki | Przyjazna nazwa | Typ agregacji | Minimalny czas alertu okna|
+| Typ zasobu | Nazwa metryki | Przyjazna nazwa | Typ agregacji | Okno minimalnego czasu alertu|
 | --- | --- | --- | --- | --- |
-| Baza danych SQL | cpu_percent | Procent użycia procesora CPU | Średnia | 5 minut |
-| Baza danych SQL | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 5 minut |
-| Baza danych SQL | log_write_percent | Wartość procentowa we/wy dziennika | Średnia | 5 minut |
-| Baza danych SQL | dtu_consumption_percent | Procent użycia jednostek DTU | Średnia | 5 minut |
+| Baza danych SQL | cpu_percent | Procent użycia procesora CPU | Average | 5 minut |
+| Baza danych SQL | physical_data_read_percent | We/wy danych (procent) | Average | 5 minut |
+| Baza danych SQL | log_write_percent | We/wy dziennika (procent) | Average | 5 minut |
+| Baza danych SQL | dtu_consumption_percent | Procent jednostek DTU | Average | 5 minut |
 | Baza danych SQL | magazyn | Łączny rozmiar bazy danych | Maksimum | 30 minut |
-| Baza danych SQL | connection_successful | Pomyślnie nawiązane połączenia | Łącznie | 10 minut |
+| Baza danych SQL | connection_successful | Udane połączenia | Łącznie | 10 minut |
 | Baza danych SQL | connection_failed | Połączenia zakończone niepowodzeniem | Łącznie | 10 minut |
-| Baza danych SQL | blocked_by_firewall | Blokowane przez zaporę | Łącznie | 10 minut |
-| Baza danych SQL | Zakleszczenia | Zakleszczenia | Łącznie | 10 minut |
+| Baza danych SQL | blocked_by_firewall | Zablokowane przez zaporę | Łącznie | 10 minut |
+| Baza danych SQL | stanu | Zakleszczenia | Łącznie | 10 minut |
 | Baza danych SQL | storage_percent | Procent użycia rozmiaru bazy danych | Maksimum | 30 minut |
-| Baza danych SQL | xtp_storage_percent | Percent(Preview) magazynu OLTP w pamięci | Średnia | 5 minut |
-| Baza danych SQL | workers_percent | Procent pracowników | Średnia | 5 minut |
-| Baza danych SQL | sessions_percent | Procent sesji | Średnia | 5 minut |
-| Baza danych SQL | dtu_limit | DTU limit | Średnia | 5 minut |
-| Baza danych SQL | dtu_used | Używane jednostki DTU | Średnia | 5 minut |
+| Baza danych SQL | xtp_storage_percent | Procent magazynu OLTP w pamięci (wersja zapoznawcza) | Average | 5 minut |
+| Baza danych SQL | workers_percent | Procent procesów roboczych | Average | 5 minut |
+| Baza danych SQL | sessions_percent | Procent sesji | Average | 5 minut |
+| Baza danych SQL | dtu_limit | Limit jednostek DTU | Average | 5 minut |
+| Baza danych SQL | dtu_used | Używane jednostki DTU | Average | 5 minut |
 ||||||
-| Pula elastyczna | cpu_percent | Procent użycia procesora CPU | Średnia | 10 minut |
-| Pula elastyczna | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 10 minut |
-| Pula elastyczna | log_write_percent | Wartość procentowa we/wy dziennika | Średnia | 10 minut |
-| Pula elastyczna | dtu_consumption_percent | Procent użycia jednostek DTU | Średnia | 10 minut |
-| Pula elastyczna | storage_percent | Procent użycia magazynu | Średnia | 10 minut |
-| Pula elastyczna | workers_percent | Procent pracowników | Średnia | 10 minut |
-| Pula elastyczna | eDTU_limit | eDTU limit | Średnia | 10 minut |
-| Pula elastyczna | storage_limit | Limit magazynu | Średnia | 10 minut |
-| Pula elastyczna | eDTU_used | używane jednostki eDTU | Średnia | 10 minut |
-| Pula elastyczna | storage_used | Użyty magazyn | Średnia | 10 minut |
+| Pula elastyczna | cpu_percent | Procent użycia procesora CPU | Average | 10 minut |
+| Pula elastyczna | physical_data_read_percent | We/wy danych (procent) | Average | 10 minut |
+| Pula elastyczna | log_write_percent | We/wy dziennika (procent) | Average | 10 minut |
+| Pula elastyczna | dtu_consumption_percent | Procent jednostek DTU | Average | 10 minut |
+| Pula elastyczna | storage_percent | Procent miejsca do magazynowania | Average | 10 minut |
+| Pula elastyczna | workers_percent | Procent procesów roboczych | Average | 10 minut |
+| Pula elastyczna | eDTU_limit | limit liczby jednostek eDTU | Average | 10 minut |
+| Pula elastyczna | storage_limit | Limit magazynu | Average | 10 minut |
+| Pula elastyczna | eDTU_used | użyta wartość eDTU | Average | 10 minut |
+| Pula elastyczna | storage_used | Używane miejsce | Average | 10 minut |
 ||||||               
-| Usługa SQL data warehouse | cpu_percent | Procent użycia procesora CPU | Średnia | 10 minut |
-| Usługa SQL data warehouse | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 10 minut |
-| Usługa SQL data warehouse | connection_successful | Pomyślnie nawiązane połączenia | Łącznie | 10 minut |
-| Usługa SQL data warehouse | connection_failed | Połączenia zakończone niepowodzeniem | Łącznie | 10 minut |
-| Usługa SQL data warehouse | blocked_by_firewall | Blokowane przez zaporę | Łącznie | 10 minut |
-| Usługa SQL data warehouse | service_level_objective | Warstwy usługi bazy danych | Łącznie | 10 minut |
-| Usługa SQL data warehouse | dwu_limit | limit jednostek dwu | Maksimum | 10 minut |
-| Usługa SQL data warehouse | dwu_consumption_percent | Procent jednostek DWU | Średnia | 10 minut |
-| Usługa SQL data warehouse | dwu_used | Używane jednostki DWU | Średnia | 10 minut |
+| magazyn danych SQL | cpu_percent | Procent użycia procesora CPU | Average | 10 minut |
+| magazyn danych SQL | physical_data_read_percent | We/wy danych (procent) | Average | 10 minut |
+| magazyn danych SQL | connection_successful | Udane połączenia | Łącznie | 10 minut |
+| magazyn danych SQL | connection_failed | Połączenia zakończone niepowodzeniem | Łącznie | 10 minut |
+| magazyn danych SQL | blocked_by_firewall | Zablokowane przez zaporę | Łącznie | 10 minut |
+| magazyn danych SQL | service_level_objective | Warstwa usługi bazy danych | Łącznie | 10 minut |
+| magazyn danych SQL | dwu_limit | limit jednostek dwu | Maksimum | 10 minut |
+| magazyn danych SQL | dwu_consumption_percent | JEDNOSTEK dwu procent | Average | 10 minut |
+| magazyn danych SQL | dwu_used | JEDNOSTEK dwu używane | Average | 10 minut |
 ||||||
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Zapoznaj się z omówieniem usługi Azure monitoring](../monitoring-and-diagnostics/monitoring-overview.md) w tym typy informacji, można zbierać i monitorowania.
-* Dowiedz się więcej o [konfigurowania elementów webhook w alertach](../azure-monitor/platform/alerts-webhooks.md).
-* Pobierz [Przegląd dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md) i Zbieraj szczegółowe metryki o wysokiej częstotliwości w Twojej usłudze.
-* Pobierz [omówienie zbierania metryk](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) się upewnić, że usługa jest dostępna i działa prawidłowo.
+* [Zapoznaj się z omówieniem monitorowania platformy Azure](../monitoring-and-diagnostics/monitoring-overview.md) , w tym typy informacji, które można zbierać i monitorować.
+* Dowiedz się więcej o konfigurowaniu elementów [webhook w alertach](../azure-monitor/platform/alerts-webhooks.md).
+* Zapoznaj się [z omówieniem dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md) i zbierz szczegółowe metryki o wysokiej częstotliwości dotyczące usługi.
+* Zapoznaj się z [omówieniem kolekcji metryk](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , aby upewnić się, że usługa jest dostępna i odpowiada.

@@ -9,36 +9,34 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3738ffe8b3faedc328bde01173400289403652f4
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 45b28b4d88c670a8b2ec34b93a342f06b80e02d7
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297932"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668482"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
-W tym artykule dowiesz się, jak skonfigurować środowisko deweloperskie do pracy z usługą Azure Machine Learning. Usługa Machine Learning jest platformą niezależny od.
+W tym artykule dowiesz się, jak skonfigurować środowisko deweloperskie do pracy z usługą Azure Machine Learning. Usługa Azure Machine Learning jest platformą niezależny od. Jedynym wymaganiem twardym dla środowiska programistycznego jest Python 3. Zalecane jest również środowisko izolowane, takie jak Anaconda lub virtualenv.
 
-Jedyne wymagania dotyczące środowiska programistycznego to Python 3, Anaconda (dla środowisk izolowanych) i plik konfiguracji, który zawiera informacje o obszarze roboczym Azure Machine Learning.
+W poniższej tabeli przedstawiono wszystkie środowiska deweloperskie omówione w tym artykule wraz z specjalistami i wadami.
 
-Ten artykuł koncentruje się na następujących środowiskach i narzędziach:
+| Środowisko | Specjaliści | Wady |
+| --- | --- | --- |
+| [Maszyna wirtualna w notesie oparta na chmurze](#notebookvm) | Najprostszym sposobem na rozpoczęcie pracy. Cały zestaw SDK jest już zainstalowany na maszynie wirtualnej obszaru roboczego, a samouczki notesu są wstępnie sklonowane i gotowe do uruchomienia. | Brak kontroli nad środowiskiem deweloperskim i zależnościami. Dodatkowe koszty związane z maszyną wirtualną z systemem Linux (maszyna wirtualna może zostać zatrzymana, gdy nie jest używana, aby uniknąć opłat). Zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Środowisko lokalne](#local) | Pełna kontrola nad środowiskiem deweloperskim i zależnościami. Uruchamiaj przy użyciu dowolnego narzędzia kompilacji, środowiska lub IDE. | Rozpoczęcie pracy trwa dłużej. Wymagane pakiety SDK muszą być zainstalowane, a także należy zainstalować środowisko, jeśli jeszcze go nie masz. |
+| [Azure Databricks](#aml-databricks) | Idealne rozwiązanie do uruchamiania przepływów pracy uczenia maszynowego dużej skali na skalowalnej platformie Apache Spark. | Zbyt obszerne eksperymentalne Uczenie maszynowe, a także na mniejsze eksperymenty i przepływy pracy. Dodatkowe koszty poniesione przez Azure Databricks. Zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/databricks/). |
+| [Data Science Virtual Machine (DSVM)](#dsvm) | Podobnie jak w przypadku maszyn wirtualnych opartych na chmurze (Python i SDK są wstępnie zainstalowane), ale przy użyciu dodatkowych popularnych narzędzi do nauki o danych i uczenia maszynowego. Łatwe skalowanie i łączenie z innymi niestandardowymi narzędziami i przepływami pracy. | Wolniejsze środowisko uruchamiania w porównaniu z maszyną wirtualną w notesie opartym na chmurze. |
+| [Azure Notebooks](#aznotebooks) | Bezpłatne i jasne środowisko pracy z wprowadzeniem, przy użyciu języka Python i wstępnie zainstalowanego zestawu SDK. | Mniej wydajna maszyna wirtualna jest dostępna w porównaniu z maszyną wirtualną notesu w chmurze. Izolowany od obszaru roboczego i innych zasobów. |
 
-* Twoja [maszyna wirtualna notesu w chmurze](#notebookvm): Użyj zasobu obliczeniowego na stacji roboczej, aby uruchomić notesy Jupyter. Jest to najprostszy sposób na rozpoczęcie pracy, ponieważ zestaw Azure Machine Learning SDK jest już zainstalowany.
-
-* [Data Science Virtual Machine (DSVM)](#dsvm): Wstępnie skonfigurowane środowisko programistyczne lub eksperymentalne w chmurze platformy Azure, które jest przeznaczone do pracy z nauką danych i mogą być wdrażane tylko dla wystąpień maszyn wirtualnych lub wystąpień procesora GPU. Python 3, Conda, notesy Jupyter i zestawu SDK usługi Azure Machine Learning są już zainstalowane. Maszyna wirtualna zawiera popularne platformy uczenia maszynowego, narzędzia i edytory do tworzenia rozwiązań uczenia maszynowego. Najprawdopodobniej jest to najbardziej kompletne środowisko programistyczne dla uczenia maszynowego na platformie Azure.
+Ten artykuł zawiera również dodatkowe wskazówki dotyczące użycia następujących narzędzi:
 
 * [Notesy Jupyter](#jupyter): Jeśli korzystasz już z Jupyter Notebook, zestaw SDK zawiera pewne dodatki, które należy zainstalować.
 
 * [Visual Studio Code](#vscode): Jeśli używasz Visual Studio Code, ma on przydatne rozszerzenia, które można zainstalować.
-
-* [Azure Databricks](#aml-databricks): Popularna platforma analizy danych oparta na Apache Spark. Dowiedz się, jak uzyskać zestaw SDK Azure Machine Learning w klastrze, dzięki czemu można wdrażać modele.
-
-* [Azure Notebooks](#aznotebooks): Usługa notesów Jupyter hostowana w chmurze platformy Azure. Możesz również łatwo rozpocząć pracę, ponieważ zestaw Azure Machine Learning SDK jest już zainstalowany.  
-
-Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczące instalowania zestawu SDK, zobacz [komputera lokalnego](#local) sekcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -57,9 +55,9 @@ Aby zainstalować środowisko zestawu SDK dla [komputera lokalnego](#local), [Ju
 
 ## <a id="notebookvm"></a>Twoja maszyna wirtualna notesu w chmurze
 
-Maszyna wirtualna w notesie (wersja zapoznawcza) to bezpieczna, oparta na chmurze stacja robocza platformy Azure, która dostarcza analityków danych z serwerem Jupyter notesu, JupyterLab i w pełni przygotowanym środowiskiem ML. 
+Maszyna wirtualna w notesie (wersja zapoznawcza) to bezpieczna, oparta na chmurze stacja robocza platformy Azure, która dostarcza analityków danych z serwerem Jupyter notesu, JupyterLab i w pełni przygotowanym środowiskiem ML.
 
-Maszyna wirtualna notesu to: 
+Maszyna wirtualna notesu to:
 
 + **Zabezpiecz**. Ponieważ maszyny wirtualne i dostęp do notesu są chronione za pomocą protokołu HTTPS i Azure Active Directory domyślnie specjaliści IT mogą łatwo wymusić Logowanie jednokrotne i inne funkcje zabezpieczeń, takie jak uwierzytelnianie wieloskładnikowe.
 
@@ -68,17 +66,17 @@ Maszyna wirtualna notesu to:
   + Automatyczna konfiguracja do pracy z Twoim obszarem roboczym
   + Serwer notesu Jupyter
   + JupyterLab Notebook IDE
-  + Wstępnie skonfigurowane sterowniki procesora GPU 
+  + Wstępnie skonfigurowane sterowniki procesora GPU
   + Wybór platform uczenia głębokiego
- 
 
-  Jeśli używasz kodu, maszyna wirtualna zawiera samouczki i przykłady ułatwiające eksplorowanie i Dowiedz się, jak korzystać z usługi Azure Machine Learning. Przykładowe notesy są przechowywane na koncie usługi Azure Blob Storage obszaru roboczego, dzięki czemu są one możliwe do udostępnienia między maszynami wirtualnymi. Po uruchomieniu mają również dostęp do magazynów danych i zasobów obliczeniowych obszaru roboczego. 
+
+  Jeśli używasz kodu, maszyna wirtualna zawiera samouczki i przykłady ułatwiające eksplorowanie i Dowiedz się, jak korzystać z usługi Azure Machine Learning. Przykładowe notesy są przechowywane na koncie usługi Azure Blob Storage obszaru roboczego, dzięki czemu są one możliwe do udostępnienia między maszynami wirtualnymi. Po uruchomieniu mają również dostęp do magazynów danych i zasobów obliczeniowych obszaru roboczego.
 
 + **Prosta konfiguracja**: Utwórz ją w dowolnym momencie w obszarze roboczym Azure Machine Learning. Podaj tylko nazwę i określ typ maszyny wirtualnej platformy Azure. Wypróbuj teraz, korzystając z [tego przewodnika Szybki Start: Aby rozpocząć pracę z Azure Machine Learning](quickstart-run-cloud-notebook.md), Użyj serwera notesu opartego na chmurze.
 
 + Możliwość **dostosowania**. Podczas zarządzanej i bezpiecznej oferty maszyn wirtualnych można zachować pełen dostęp do możliwości sprzętu i dostosować go do potrzeb serca. Na przykład szybko Utwórz najnowszą maszynę wirtualną NVidia V100, aby wykonać debugowanie krok po kroku nowej architektury sieci neuronowych.
 
-Aby zatrzymać naliczanie opłat za maszynę wirtualną dla notesu, [Zatrzymaj maszynę wirtualną notesu](quickstart-run-cloud-notebook.md#stop-the-notebook-vm). 
+Aby zatrzymać naliczanie opłat za maszynę wirtualną dla notesu, [Zatrzymaj maszynę wirtualną notesu](quickstart-run-cloud-notebook.md#stop-the-notebook-vm).
 
 ## <a id="dsvm"></a>Maszyna wirtualna do nauki o danych
 
@@ -285,9 +283,9 @@ Aby użyć Visual Studio Code do opracowania, wykonaj następujące czynności:
 Azure Databricks jest środowiskiem opartym na Apache Spark w chmurze platformy Azure. Zapewnia środowisko współpracy oparte na notesie z procesorem CPU lub procesorem GPU.
 
 Jak Azure Databricks współpracuje z usługą Azure Machine Learning:
-+ Możesz nauczyć model przy użyciu platformy Spark MLlib i wdrożyć model do ACI/AKS z poziomu Azure Databricks. 
++ Możesz nauczyć model przy użyciu platformy Spark MLlib i wdrożyć model do ACI/AKS z poziomu Azure Databricks.
 + Możesz również użyć funkcji [automatycznego uczenia maszynowego](concept-automated-ml.md) w specjalnym zestawie SDK usługi Azure ML z Azure Databricks.
-+ Azure Databricks jako obiekt docelowy obliczeń można użyć z potoku [Azure Machine Learning](concept-ml-pipelines.md). 
++ Azure Databricks jako obiekt docelowy obliczeń można użyć z potoku [Azure Machine Learning](concept-ml-pipelines.md).
 
 ### <a name="set-up-your-databricks-cluster"></a>Konfigurowanie klastra datakostks
 
@@ -298,17 +296,17 @@ Użyj tych ustawień:
 
 | Ustawienie |Stosuje się do| Value |
 |----|---|---|
-| Nazwa klastra |stałego| yourclustername |
-| Środowisko uruchomieniowe usługi Databricks |stałego| Dowolne środowisko uruchomieniowe inne niż ML (nie ML 4. x, 5. x) |
-| Wersja języka Python |stałego| 3 |
-| Ochotnik |stałego| 2 lub nowszy |
+| Nazwa klastra |zawsze| yourclustername |
+| Środowisko uruchomieniowe usługi Databricks |zawsze| Dowolne środowisko uruchomieniowe inne niż ML (nie ML 4. x, 5. x) |
+| Wersja języka Python |zawsze| 3 |
+| Procesy robocze |zawsze| 2 lub nowszy |
 | Typy maszyn wirtualnych węzła procesu roboczego <br>(określa maksymalną liczbę współbieżnych iteracji) |Zautomatyzowane uczenie maszynowe<br>jedyn| Preferowana maszyna wirtualna zoptymalizowana pod kątem pamięci |
 | Włączanie skalowania automatycznego |Zautomatyzowane uczenie maszynowe<br>jedyn| Usuń zaznaczenie |
 
 Przed kontynuowaniem Zaczekaj, aż klaster zostanie uruchomiony.
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Zainstaluj poprawny zestaw SDK w bibliotece datakostks
-Po uruchomieniu klastra [Utwórz bibliotekę](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , aby dołączyć odpowiedni pakiet Azure Machine Learning SDK do klastra. 
+Po uruchomieniu klastra [Utwórz bibliotekę](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , aby dołączyć odpowiedni pakiet Azure Machine Learning SDK do klastra.
 
 1. Wybierz **tylko jedną** opcję (nie jest obsługiwana żadna inna instalacja zestawu SDK)
 
@@ -323,21 +321,21 @@ Po uruchomieniu klastra [Utwórz bibliotekę](https://docs.databricks.com/user-g
    * Nie wybieraj opcji **Dołącz automatycznie do wszystkich klastrów**.
    * Wybierz pozycję **Dołącz** obok nazwy klastra.
 
-1. Monitoruj błędy do momentu zmiany stanu **dołączone**, co może potrwać kilka minut.  Jeśli ten krok zakończy się niepowodzeniem, sprawdź następujące kwestie: 
+1. Monitoruj błędy do momentu zmiany stanu **dołączone**, co może potrwać kilka minut.  Jeśli ten krok zakończy się niepowodzeniem, sprawdź następujące kwestie:
 
    Spróbuj ponownie uruchomić klaster przez:
    1. W lewym okienku wybierz pozycję **klastry**.
    1. W tabeli wybierz nazwę klastra.
    1. Na karcie **biblioteki** wybierz pozycję **Uruchom ponownie**.
-      
+
    Rozważ również:
    + W konfiguracji Automl podczas korzystania z Azure Databricks Dodaj następujące parametry:
-       1. ```max_concurrent_iterations```jest oparty na liczbie węzłów procesu roboczego w klastrze. 
-        2. ```spark_context=sc```jest oparty na domyślnym kontekście Spark. 
+       1. ```max_concurrent_iterations```jest oparty na liczbie węzłów procesu roboczego w klastrze.
+        2. ```spark_context=sc```jest oparty na domyślnym kontekście Spark.
    + Lub, jeśli masz starą wersję zestawu SDK, usuń zaznaczenie jej z zainstalowanego libs klastra i Przenieś do kosza. Zainstaluj nową wersję zestawu SDK i ponownie uruchom klaster. Jeśli wystąpi problem, odłącz i ponownie Dołącz klaster.
 
 Jeśli instalacja zakończyła się pomyślnie, zaimportowana biblioteka powinna wyglądać następująco:
-   
+
 Zestaw SDK dla datakostek **_bez_** zautomatyzowanego zestawu ![SDK usługi Machine Learning Azure Machine Learning dla datakostki](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
 Zestaw SDK dla zestawów datakostks **z** automatycznym zestawem SDK usługi Machine Learning ![z automatyczną nauką maszynową zainstalowaną w kostkach](./media/how-to-configure-environment/automlonadb.jpg)
@@ -345,9 +343,9 @@ Zestaw SDK dla zestawów datakostks **z** automatycznym zestawem SDK usługi Mac
 ### <a name="start-exploring"></a>Zacznij Eksplorowanie
 
 Wypróbuj:
-+ Pobierz [plik archiwum notesu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) dla Azure Databricks/Azure Machine Learning SDK i [Zaimportuj plik archiwum](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do klastra datakostks.  
++ Pobierz [plik archiwum notesu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) dla Azure Databricks/Azure Machine Learning SDK i [Zaimportuj plik archiwum](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do klastra datakostks.
   Chociaż dostępnych jest wiele przykładowych notesów, **tylko [te przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) współpracują z Azure Databricks.**
-  
+
 + Dowiedz się [, jak tworzyć potoki z kostkami w ramach obliczeń szkoleniowych](how-to-create-your-first-pipeline.md).
 
 ## <a id="aznotebooks"></a>Notesy platformy Azure
@@ -405,7 +403,7 @@ Plik konfiguracji można utworzyć na trzy sposoby:
     Ten kod zapisuje plik konfiguracyjny w pliku *.*
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Uczenie modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning z zestawem danych mnist ręcznie
 - Wyświetl informacje o [zestawie Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk)

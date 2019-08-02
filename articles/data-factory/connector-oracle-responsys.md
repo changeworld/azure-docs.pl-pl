@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 7440a08bd8ceb85cc569e1bb6d7c4ee1e52178a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6a9e31b6b1869496e499cb7d6f02b55f495adfb
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405906"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720665"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>Kopiowanie danych z bazy danych Oracle Responsys przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -44,10 +44,10 @@ Następujące właściwości są obsługiwane w przypadku Responsys Oracle poł�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Responsys** | Yes |
+| — typ | Właściwość Type musi mieć ustawioną wartość: **Responsys** | Yes |
 | endpoint | Punkt końcowy serwera Respopnsys  | Yes |
 | clientId | Identyfikator klienta skojarzony z aplikacją Responsys.  | Yes |
-| clientSecret | Klucz tajny klienta, powiązane z daną aplikacją Responsys. Istnieje możliwość Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i pozwól usłudze ADF kopiowania ściągnięcia działania z tego miejsca, podczas wykonywania kopii danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
+| clientSecret | Klucz tajny klienta, powiązane z daną aplikacją Responsys. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
 | useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 | usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
@@ -83,7 +83,7 @@ Aby skopiować dane z bazy danych Oracle Responsys, należy ustawić właściwo�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **ResponsysObject** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ResponsysObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -93,11 +93,12 @@ Aby skopiować dane z bazy danych Oracle Responsys, należy ustawić właściwo�
     "name": "OracleResponsysDataset",
     "properties": {
         "type": "ResponsysObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Oracle Responsys linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 
@@ -113,7 +114,7 @@ Aby skopiować dane z bazy danych Oracle Responsys, należy ustawić typ źród�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **ResponsysSource** | Tak |
+| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ResponsysSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

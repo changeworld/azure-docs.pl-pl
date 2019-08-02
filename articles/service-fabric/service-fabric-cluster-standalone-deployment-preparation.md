@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: e5fa46930a3be3c85cd76e655fac3164cc45d957
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 78db25fed7c284b31491bdc9e5498493da4c7479
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544742"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618849"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planowanie i przygotowanie wdrożenia klastra usługi Service Fabric autonomiczny
 
-<a id="preparemachines"></a>Przed przystąpieniem do tworzenia klastra, wykonaj następujące kroki.
+<a id="preparemachines"></a>Przed utworzeniem klastra wykonaj poniższe czynności.
 
 ## <a name="plan-your-cluster-infrastructure"></a>Planowanie infrastruktury klastra
 Masz zamiar utworzyć klaster usługi Service Fabric na maszynach, gdy jesteś "właścicielem", można zdecydować, jakiego rodzaju błędów ma klaster umożliwiającą przetrwanie. Na przykład czy potrzebujesz oddzielnych, linie zasilania lub połączenia przez Internet do tych maszyn? Ponadto należy wziąć pod uwagę zabezpieczenia fizyczne maszyn. Maszyny lokalizację i który musi mieć dostęp do nich? Po wprowadzeniu tych decyzji, komputery można mapować logicznie do różnych domen błędów (patrz następny krok). W przypadku klastrów produkcyjnych z planowaniem infrastruktury jest bardziej skomplikowane niż w przypadku klastrów testowych.
@@ -45,7 +45,7 @@ Po określeniu domenami aktualizacji w ClusterConfig.json można wybrać nazwę 
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
 * "upgradeDomain": "DomainRed"
-* "upgradeDomain": "Blue"
+* "upgradeDomain": Świetlon
 
 Aby uzyskać szczegółowe informacje na temat błędów i domenami aktualizacji, zobacz [opisujące klaster usługi Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md).
 
@@ -65,7 +65,7 @@ Poniżej przedstawiono niektóre specyfikacje zalecane dla każdego komputera, k
 * Co najmniej 40 GB dostępnego miejsca na dysku
 * 4 rdzenie lub większa procesora CPU
 * Łączność z bezpiecznej sieci lub sieci dla wszystkich maszyn
-* System operacyjny Windows Server zainstalowana (prawidłowych wersji: 2012 R2, 2016, 1709 lub 1803)
+* Zainstalowany system operacyjny Windows Server (prawidłowe wersje: 2012 R2, 2016, 1709, 1803 lub 2019)
 * [.NET framework 4.5.1 lub nowszej](https://www.microsoft.com/download/details.aspx?id=40773), pełna instalacja
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * [Usługi RemoteRegistry](https://technet.microsoft.com/library/cc754820) powinna być uruchomiona na wszystkich komputerach
@@ -103,13 +103,13 @@ Gdy administrator klastra umożliwia skonfigurowanie klastra autonomicznego usł
    * Czy włączono usługę Rejestr zdalny (Rejestr zdalny)
    * Plik włączenia udostępniania serwera (SMB)
    * Masz wymagane porty otwarte, oparta na portach konfiguracji klastra
-   * Mają wymagane porty otworzyć dla usługi Windows SMB i Rejestr zdalny: 135, 137, 138, 139 i 445
+   * Należy otworzyć wymagane porty dla usługi Windows SMB i rejestru zdalnego: 135, 137, 138, 139 i 445
    * Mieć łączność sieciową ze sobą
 3. Żadna z maszyn węzeł klastra powinien być kontrolerem domeny.
 4. Jeśli można wdrożyć klaster jest zabezpieczony klaster, sprawdź poprawność niezbędne wymagania wstępne znajdują się w miejscu i są poprawnie skonfigurowane dla konfiguracji zabezpieczeń.
 5. Jeśli na komputerach klastra nie są dostępne za pośrednictwem Internetu, należy ustawić następującą w konfiguracji klastra:
-   * Wyłączanie telemetrii: W obszarze *właściwości* ustaw *"enableTelemetry": false*
-   * Wyłącz automatyczne pobieranie wersja sieci szkieletowej i powiadomienia, że bieżąca wersja klastra zbliża się koniec obsługi: W obszarze *właściwości* ustaw *"fabricClusterAutoupgradeEnabled": false*
+   * Wyłącz telemetrię: W obszarze *Właściwości* ustaw wartość *"enableTelemetry": false*
+   * Wyłącz pobieranie automatycznej wersji sieci szkieletowej & powiadomienia, że aktualna wersja klastra zbliża się do końca wsparcia: W obszarze *Właściwości* ustaw wartość *"fabricClusterAutoupgradeEnabled": false*
    * Alternatywnie dostęp do sieci internet jest ograniczona do biały na liście domen, domen poniżej są wymagane dla automatyczne uaktualnianie: witrynie download.microsoft.com go.microsoft.com
 
 6. Ustaw odpowiednie wyjątki programu antywirusowego usługi Service Fabric:

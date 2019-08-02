@@ -1,6 +1,6 @@
 ---
-title: Skalowanie elastycznej puli zasobów — Azure SQL Database | Dokumentacja firmy Microsoft
-description: Ta strona zawiera opis skalowanie zasobów dla pul elastycznych usługi Azure SQL Database.
+title: Skalowanie zasobów puli elastycznej — Azure SQL Database | Microsoft Docs
+description: Na tej stronie opisano skalowanie zasobów dla pul elastycznych w Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -10,91 +10,90 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 3/14/2019
-ms.openlocfilehash: f73fc58abfa6cde4133bd56858b7f26bf0c3d4a3
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c96be7930a33185077134d051b49cba0695327e3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204811"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568646"
 ---
-# <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skalowanie elastycznej puli zasobów w usłudze Azure SQL Database
+# <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skalowanie zasobów puli elastycznej w Azure SQL Database
 
-W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe, które muszą być dostępne dla elastycznych pul i baz danych w puli usługi Azure SQL Database.
+W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe dostępne dla pul elastycznych i baz danych w puli w Azure SQL Database.
 
-## <a name="change-compute-resources-vcores-or-dtus"></a>Zasoby obliczeniowe zmiany (rdzeni wirtualnych lub jednostek Dtu)
+## <a name="change-compute-resources-vcores-or-dtus"></a>Zmień zasoby obliczeniowe (rdzeni wirtualnych lub DTU)
 
-Po początkowym wybraniu liczbę rdzeni wirtualnych lub jednostek Edtu, należy można elastycznej puli w górę lub dół dynamicznie skalować na podstawie rzeczywistego użycia za pomocą [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [wiersza polecenia platformy Azure ](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+Po początkowym wybraniu liczby rdzeni wirtualnych lub jednostek eDTU można dynamicznie skalować pulę elastyczną w górę lub w dół na podstawie rzeczywistego środowiska przy użyciu [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [programu PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [interfejsu wiersza polecenia platformy Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Wpływ zmiany rozmiaru obliczeń warstwy lub ponowne skalowanie usługi
+### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Wpływ zmiany warstwy usług lub skalowanie w poziomie
 
-Zmiana usługi warstwy lub obliczenia rozmiaru puli elastycznej jest zgodna ze wzorcem podobnie jak w przypadku pojedynczych baz danych i głównie wiąże się usługi, wykonując następujące czynności:
+Zmiana warstwy usług lub rozmiaru obliczeniowego puli elastycznej odbywa się zgodnie z podobnym wzorcem, co w przypadku pojedynczych baz danych, a głównie obejmuje usługę wykonującą następujące czynności:
 
-1. Tworzenie nowego wystąpienia obliczeniowe dla puli elastycznej  
+1. Utwórz nowe wystąpienie obliczeniowe dla elastycznej puli  
 
-    Nowe wystąpienie obliczeniowe dla puli elastycznej jest tworzony z warstwy żądanej usługi a rozmiar obliczeń. Dla niektórych kombinacji warstwę usługi i zmiany rozmiaru obliczeń replik każdej bazy danych należy utworzyć nowe wystąpienie obliczeniowe, które polega na kopiowaniu danych i zdecydowanie mogą mieć wpływ na ogólny czas oczekiwania. Niezależnie od tego baz danych pozostanie w trybie online w tym kroku i połączeń w dalszym ciągu nastąpi przekierowanie do baz danych w oryginalnym wystąpieniu obliczeń.
+    Nowe wystąpienie obliczeniowe puli elastycznej jest tworzone z żądaną warstwą usług i rozmiarem obliczeniowym. W przypadku niektórych kombinacji warstwy usług i rozmiaru obliczeń replika każdej bazy danych musi zostać utworzona w nowym wystąpieniu obliczeniowym, które obejmuje kopiowanie danych i może mieć silny wpływ na ogólne opóźnienie. Bez względu na to, że bazy danych pozostaną w trybie online w tym kroku, a połączenia będą nadal kierowane do baz danych w oryginalnym wystąpieniu obliczeniowym.
 
 2. Przełącz routing połączeń do nowego wystąpienia obliczeniowego
 
-    Istniejące połączenia z bazami danych w oryginalnym wystąpieniu obliczeniowych są porzucane. Wszystkie nowe połączenia są określane w bazach danych w nowe wystąpienie obliczeniowe. Niektóre kombinacje warstwy usług i zmiany rozmiaru obliczeń pliki bazy danych są odłączone i ponownie dołączyć podczas przełączania.  Niezależnie od tego przełącznik może spowodować przerwa w świadczeniu usługi krótki, jeśli bazy danych nie są dostępne, zazwyczaj mniej niż 30 sekund i często tylko kilka sekund. W przypadku długotrwałych transakcji uruchomiony podczas połączenia zostaną przerwane, czas trwania tego kroku może trwać dłużej, w celu odzyskania przerwane transakcje. [Przyspieszone odzyskiwanie bazy danych](sql-database-accelerated-database-recovery.md) zmniejszyć wpływ w przerywania długotrwałych transakcji.
+    Istniejące połączenia z bazami danych w oryginalnym wystąpieniu obliczeniowym są usuwane. Wszystkie nowe połączenia są ustanawiane do baz danych w nowym wystąpieniu obliczeniowym. W przypadku niektórych kombinacji warstwy usług i rozmiaru obliczeń pliki bazy danych są odłączone i ponownie dołączone podczas przełączania.  Bez względu na to, że przełączenie może spowodować, że usługa bazy danych jest niedostępna na ogół przez mniej niż 30 sekund i często tylko przez kilka sekund. W przypadku długotrwałych transakcji uruchomionych w przypadku porzucenia połączeń czas trwania tego kroku może trwać dłużej w celu odzyskania przerwanych transakcji. [Szybsze odzyskiwanie bazy danych](sql-database-accelerated-database-recovery.md) może zmniejszyć wpływ przerwań długotrwałych transakcji.
 
 > [!IMPORTANT]
-> Żadne dane nie zostaną utracone podczas dowolny krok w przepływie pracy.
+> W żadnym kroku przepływu pracy nie są tracone żadne dane.
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Opóźnienie zmiany rozmiaru obliczeń warstwy lub ponowne skalowanie usługi
+### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Opóźnienie zmiany warstwy usług lub ponowne skalowanie rozmiaru obliczeń
 
-Szacowany czas oczekiwania, aby zmienić warstwę usługi lub zmienić rozmiar obliczeń pojedynczą bazę danych lub elastycznej puli jest sparametryzowane w następujący sposób:
+Szacowane opóźnienie zmiany warstwy usług lub ponowne skalowanie wielkości obliczeniowej pojedynczej bazy danych lub puli elastycznej jest opisane w następujący sposób:
 
-|Warstwa usług|Podstawowe pojedynczej bazy danych</br>Standardowa (S0 — S1)|Elastyczna pula podstawowa</br>Standard (S2-S12) </br>W Hiperskali </br>Ogólne pojedynczą bazę danych przeznaczenia lub puli elastycznej|Premium lub krytyczne dla działania firmy pojedynczą bazę danych lub puli elastycznej|
+|Warstwa usług|Podstawowa pojedyncza baza danych,</br>Standard (S0-S1)|Podstawowa Pula elastyczna,</br>Standardowa (S2-S12), </br>Hiperskali </br>Ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej|Premium lub Krytyczne dla działania firmy pojedynczą bazę danych lub pulę elastyczną|
 |:---|:---|:---|:---|
-|**Podstawowe pojedynczej bazy danych,</br> standardowa (S0 — S1)**|&bull; &nbsp;Niezależnie od miejsca używanego w stałym czasie opóźnienia</br>&bull; &nbsp;Zwykle, mniej niż 5 minut|&bull; &nbsp;Opóźnienie proporcjonalne do miejsca w bazie danych stosowany ze względu na kopiowanie danych</br>&bull; &nbsp;Zwykle, mniej niż minutę za GB miejsca|&bull; &nbsp;Opóźnienie proporcjonalne do miejsca w bazie danych stosowany ze względu na kopiowanie danych</br>&bull; &nbsp;Zwykle, mniej niż minutę za GB miejsca|
-|**Podstawowych pul elastycznych, </br>Standard (S2 S12), </br>w Hiperskali </br>ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej**|&bull; &nbsp;Opóźnienie proporcjonalne do miejsca w bazie danych stosowany ze względu na kopiowanie danych</br>&bull; &nbsp;Zwykle, mniej niż minutę za GB miejsca|&bull; &nbsp;Niezależnie od miejsca używanego w stałym czasie opóźnienia</br>&bull; &nbsp;Zwykle, mniej niż 5 minut|&bull; &nbsp;Opóźnienie proporcjonalne do miejsca w bazie danych stosowany ze względu na kopiowanie danych</br>&bull; &nbsp;Zwykle, mniej niż minutę za GB miejsca|
-|**Premium lub krytyczne dla działania firmy pojedynczą bazę danych lub puli elastycznej**|&bull; &nbsp;Opóźnienie proporcjonalne do miejsca w bazie danych stosowany ze względu na kopiowanie danych</br>&bull; &nbsp;Zwykle, mniej niż minutę za GB miejsca|&bull; &nbsp;Opóźnienie proporcjonalne do miejsca w bazie danych stosowany ze względu na kopiowanie danych</br>&bull; &nbsp;Zwykle, mniej niż minutę za GB miejsca|&bull; &nbsp;Opóźnienie proporcjonalne do miejsca w bazie danych stosowany ze względu na kopiowanie danych</br>&bull; &nbsp;Zwykle, mniej niż minutę za GB miejsca|
+|**Podstawowa pojedyncza baza</br> danych, Standard (S0-S1)**|&bull;&nbsp;Stałe opóźnienie czasu niezależne od użytego miejsca</br>&bull;&nbsp;Zwykle, mniej niż 5 minut|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|
+|**Podstawowa Pula elastyczna </br>, standardowa (S2-S12) </br>, skalowanie </br>ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej**|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|&bull;&nbsp;Stałe opóźnienie czasu niezależne od użytego miejsca</br>&bull;&nbsp;Zwykle, mniej niż 5 minut|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|
+|**Premium lub Krytyczne dla działania firmy pojedynczą bazę danych lub pulę elastyczną**|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|
 
 > [!NOTE]
 >
-> - W przypadku zmiana warstwy usługi lub ponowne skalowanie obliczeń dla puli elastycznej, suma miejsca używanego we wszystkich bazach danych w puli powinno być używane do obliczania szacowania.
-> - W przypadku przenoszenia bazy danych z puli elastycznej, tylko przestrzeni używanej przez bazy danych ma wpływ na opóźnienia, a nie miejsca z puli elastycznej.
+> - W przypadku zmiany warstwy usług lub ponownego skalowania obliczeń dla puli elastycznej w celu obliczenia oszacowania należy użyć podsumowania miejsca używanego dla wszystkich baz danych w puli.
+> - W przypadku przeniesienia bazy danych do/z puli elastycznej tylko miejsce używane przez bazę danych wpływa na opóźnienie, a nie miejsce używane przez pulę elastyczną.
 >
 > [!TIP]
-> Aby monitorować działania w toku, zobacz: [Zarządzanie operacjami za pomocą interfejsu API REST programu SQL](https://docs.microsoft.com/rest/api/sql/operations/list), [zarządzania operacjami usługi przy użyciu interfejsu wiersza polecenia](/cli/azure/sql/db/op), [monitorowanie operacji przy użyciu języka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) i te dwa polecenia programu PowerShell: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) i [Stop AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Aby monitorować operacje w toku, zobacz: [Zarządzanie operacjami przy użyciu interfejsu API REST usługi SQL](https://docs.microsoft.com/rest/api/sql/operations/list), [Zarządzanie operacjami przy użyciu interfejsu wiersza](/cli/azure/sql/db/op)polecenia, [monitorowanie operacji przy użyciu języka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) i tych dwóch poleceń programu PowerShell: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) i [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Dodatkowe zagadnienia podczas zmiany usługi warstwy lub podczas ponownego skalowania rozmiaru obliczeń
+### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Dodatkowe zagadnienia dotyczące zmiany warstwy usług lub skalowanie zmian rozmiaru
 
-- Gdy zmniejszenie rozmiaru rdzeni wirtualnych lub jednostek Edtu dla puli elastycznej, miejsca puli musi być mniejszy niż maksymalny dozwolony rozmiar docelowej usługi warstwy i puli jednostek Edtu.
-- Gdy podczas ponownego skalowania rdzeni wirtualnych lub jednostek Edtu dla puli elastycznej, koszty dodatkowego magazynu w przypadku (1) maksymalny rozmiar magazynu puli jest obsługiwana przez docelową pulę, a (2) maksymalny rozmiar magazynu przekracza wielkość magazynu w pakiecie docelową pulę. Na przykład, jeśli 100 jednostek eDTU puli standardowej, maksymalny rozmiar 100 GB, jest downsized do 50 jednostek eDTU puli standardowej, następnie magazyn dodatkowy koszt dotyczy ponieważ puli docelowej obsługuje maksymalny rozmiar 100 GB, a jego dostępnej ilości magazynu jest tylko 50 GB. Więc wielkość dodatkowego magazynu to 100 GB – 50 GB = 50 GB. Cennik dodatkowego magazynu, zobacz [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywistą ilość miejsca jest mniejsza niż wielkość magazynu w pakiecie, następnie to dodatkowych kosztów można uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględnioną kwotę.
+- Gdy downsizing rdzeni wirtualnych lub jednostek eDTU dla puli elastycznej, zajęte miejsce w puli musi być mniejsze niż maksymalny dozwolony rozmiar docelowej warstwy usług i puli jednostek eDTU.
+- Podczas ponownego skalowania rdzeni wirtualnych lub jednostek eDTU dla puli elastycznej jest stosowany dodatkowy koszt magazynu, jeśli (1) maksymalny rozmiar magazynu puli jest obsługiwany przez pulę docelową, a (2) maksymalny rozmiar magazynu przekracza dołączoną ilość miejsca w puli docelowej. Jeśli na przykład liczba 100 jednostek eDTU w warstwie Standardowa o maksymalnym rozmiarze 100 GB jest downsized do 50 puli jednostek eDTU w warstwie Standardowa, wówczas obowiązuje dodatkowy koszt magazynu, ponieważ docelowa Pula obsługuje maksymalny rozmiar wynoszący 100 GB, a uwzględniona ilość miejsca w magazynie wynosi tylko 50 GB. W związku z tym dodatkowa kwota magazynu wynosi 100 GB – 50 GB = 50 GB. Aby uzyskać cennik dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywista ilość użytego miejsca jest mniejsza niż uwzględniona ilość miejsca w magazynie, można uniknąć tego dodatkowego kosztu, zmniejszając maksymalną wielkość bazy danych do uwzględnionej kwoty.
 
-### <a name="billing-during-rescaling"></a>Rozliczenia podczas podczas ponownego skalowania
+### <a name="billing-during-rescaling"></a>Rozliczanie podczas ponownego skalowania
 
-Opłaty naliczane są za każdą godzinę istnienia bazy danych przy użyciu najwyższej warstwy usługi i obliczenia rozmiaru zastosowany w ciągu tej godziny, niezależnie od użycia lub tego, czy baza danych była Aktywna krócej niż godzinę. Po utworzeniu pojedynczej bazy danych i usuniesz ją 5 minut później rachunku odzwierciedla za godzinę korzystania z jednej bazy danych.
+Opłaty są naliczane za każdą godzinę, gdy baza danych istnieje przy użyciu najwyższej wartości warstwy usług + rozmiaru obliczeń, która została zastosowana w tej godzinie, niezależnie od użycia lub od tego, czy baza danych była aktywna przez czas krótszy niż godzina. Jeśli na przykład utworzysz pojedynczą bazę danych i usuniesz ją 5 minut później, opłata zostanie naliczona za jedną godzinę bazy danych.
 
-## <a name="change-elastic-pool-storage-size"></a>Zmień rozmiar magazynu puli elastycznej
+## <a name="change-elastic-pool-storage-size"></a>Zmień rozmiar magazynu elastycznej puli
 
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
-- Magazyn można aprowizować maksymalnie limit maksymalnego rozmiaru:
+- Obsługa magazynu może należeć do maksymalnego limitu rozmiaru:
 
-  - W przypadku usługi storage w warstwach usług standardowa lub ogólnego przeznaczenia należy zwiększyć lub zmniejszyć rozmiar w przyrostach co 10 GB
-  - Dla magazynu w warstwie premium lub krytyczne dla warstwy usług, zwiększania lub zmniejszania rozmiaru w partiach po 250 GB
-- Magazyn dla elastycznej puli mogą być udostępniane przez zwiększenie lub zmniejszenie jego rozmiar maksymalny.
-- Cena przestrzeni dyskowej dla puli elastycznej jest wielkość magazynu, oraz przez cenę jednostkową magazynu w warstwie usług. Szczegółowe informacje na temat cena magazynu dodatkowego, [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
-
-> [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
-
-### <a name="dtu-based-purchasing-model"></a>Model zakupu w oparciu o jednostki DTU
-
-- Cena jednostki eDTU dla puli elastycznej obejmuje określoną ilość pamięci masowej bez ponoszenia dodatkowych kosztów. Dodatkowego magazynu ponad uwzględnioną kwotę można zaaprowizować za dodatkową opłatą maksymalnie limit maksymalnego rozmiaru, w przyrostach o rozmiarze 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB ponad 1 TB. Magazyn w pakiecie kwoty i limity maksymalnego rozmiaru, zobacz [puli elastycznej: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
-- Dodatkowy magazyn dla elastycznej puli mogą być udostępniane przez odpowiednie zwiększenie jego maksymalnego rozmiaru za pomocą [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [wiersza polecenia platformy Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), lub [interfejsu API REST ](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
-- Cena dodatkowego magazynu dla puli elastycznej jest mnożony przez cena jednostkowa dodatkowego magazynu w warstwie usług wielkość dodatkowego magazynu. Szczegółowe informacje na temat cena magazynu dodatkowego, [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
+  - W przypadku magazynu w warstwach usługi w warstwie Standardowa lub ogólnego przeznaczenia Zwiększ lub Zmniejsz rozmiar w przyrostach 10 GB
+  - W przypadku magazynu w warstwach usługi krytycznej w wersji Premium lub biznesowej Zwiększ lub Zmniejsz rozmiar w przyrostach 250 GB
+- Aby można było zainicjować magazyn dla puli elastycznej, można zwiększyć lub zmniejszyć jej maksymalny rozmiar.
+- Cena magazynu dla puli elastycznej to wielkość magazynu pomnożona przez cenę jednostkową magazynu warstwy usług. Aby uzyskać szczegółowe informacje na temat ceny dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="dtu-based-purchasing-model"></a>Model zakupu oparty na jednostkach DTU
 
-Ogólne limity zasobów, zobacz [limitów zasobów opartych na rdzeniach wirtualnych bazy danych SQL — pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md) i [limity zasobów na podstawie jednostek DTU bazy danych SQL — pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md).
+- Cena jednostek eDTU dla puli elastycznej obejmuje pewną ilość miejsca w magazynie bez dodatkowych kosztów. Dodatkowy magazyn poza uwzględnioną ilością można zainicjować w celu uzyskania dodatkowego kosztu do maksymalnego limitu rozmiaru w przyrostach wynoszących 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB poza 1 TB. W przypadku uwzględnionych kwot magazynu i maksymalnych limitów rozmiaru zobacz [Pula elastyczna: rozmiary magazynu i rozmiary obliczeń](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
+- Dodatkowy magazyn dla puli elastycznej można zainicjować przez zwiększenie jego maksymalnego rozmiaru przy użyciu [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [programu PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [interfejsu wiersza polecenia platformy Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+- Cena dodatkowego magazynu dla puli elastycznej to dodatkowa kwota magazynu pomnożona przez dodatkową cenę jednostkową magazynu warstwy usług. Aby uzyskać szczegółowe informacje na temat ceny dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
+
+> [!IMPORTANT]
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
+
+## <a name="next-steps"></a>Następne kroki
+
+Ogólne limity zasobów można znaleźć w temacie [SQL Database limity zasobów opartych na rdzeń wirtualny — pule elastyczne](sql-database-vcore-resource-limits-elastic-pools.md) i [SQL Database limitów zasobów opartych na jednostkach DTU —](sql-database-dtu-resource-limits-elastic-pools.md)w przypadku pul elastycznych.
