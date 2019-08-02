@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37634a76b0c8e08d7a4688a7ba3fd913391cd408
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400461"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726131"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Marketo za pomocą usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ Możesz skopiować dane z usługi Marketo, do dowolnego obsługiwanego magazynu 
 Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
 
 >[!NOTE]
->Ten łącznik usługi Marketo jest oparty na interfejsie API REST usługi Marketo. Należy pamiętać, że usługa Marketo udostępnia [limit współbieżnych żądań](https://developers.marketo.com/rest-api/) po stronie usługi. Jeśli napotkasz błędy informujący o tym, "Wystąpił błąd podczas próby użycia interfejsu API REST: Maksymalny limit "100" w "20" Przekroczono z częstotliwość w sekundach (606) "lub" Wystąpił błąd podczas próby użycia interfejsu API REST: Równoczesny dostęp ograniczenie "10" osiągnięto (615) ", należy wziąć pod uwagę, aby zmniejszyć uruchomienia działania współbieżnych kopii, aby zmniejszyć liczbę żądań do usługi.
+>Ten łącznik usługi Marketo jest oparty na interfejsie API REST usługi Marketo. Należy pamiętać, że usługa Marketo udostępnia [limit współbieżnych żądań](https://developers.marketo.com/rest-api/) po stronie usługi. W przypadku wystąpienia błędów "błąd" podczas próby użycia interfejsu API REST: Przekroczono limit szybkości "100" w "20" s (606) "lub" błąd podczas próby użycia interfejsu API REST: Osiągnięto limit współbieżnych dostępu "10" (615) "Rozważ zmniejszenie współbieżnych uruchomień działania kopiowania, aby zmniejszyć liczbę żądań do usługi.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -47,7 +47,7 @@ Następujące właściwości są obsługiwane w przypadku programu Marketo, poł
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Marketo** | Tak |
+| type | Właściwość Type musi mieć ustawioną wartość: **Marketo** | Tak |
 | endpoint | Punkt końcowy serwera programu Marketo. (i.e. 123-ABC-321.mktorest.com)  | Yes |
 | clientId | Identyfikator klienta programu usługi Marketo.  | Yes |
 | clientSecret | Klucz tajny klienta usługi Marketo. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
@@ -82,7 +82,7 @@ Aby skopiować dane z programu Marketo, należy ustawić właściwość typu zes
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **MarketoObject** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **MarketoObject** | Yes |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -92,11 +92,12 @@ Aby skopiować dane z programu Marketo, należy ustawić właściwość typu zes
     "name": "MarketoDataset",
     "properties": {
         "type": "MarketoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Marketo linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -111,7 +112,7 @@ Aby skopiować dane z programu Marketo, należy ustawić typ źródła w działa
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **MarketoSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **MarketoSource** | Yes |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Activitiy_Types"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39ec27c75ff5ba9164b44b0524f90a4e28ab20f1
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 420a7079a7961868277a2d78ffbac4adba240d9f
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488975"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678081"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Rozwiązywanie problemów z zarządzaniem prawami w usłudze Azure AD
 
@@ -41,7 +41,7 @@ W tym artykule opisano niektóre elementy, które należy zaznaczyć, aby pomóc
 
 * Aby aplikacja była zasobem w pakiecie dostępu, musi mieć co najmniej jedną rolę zasobu, którą można przypisać. Role są definiowane przez samą aplikację i są zarządzane w usłudze Azure AD. Należy zauważyć, że Azure Portal mogą również wyświetlać jednostki usługi dla usług, których nie można wybrać jako aplikacji.  W szczególności usługi **Exchange Online** i **SharePoint Online** są usługami, a nie aplikacjami, które mają role zasobów w katalogu, więc nie mogą być uwzględnione w pakiecie dostępu.  Zamiast tego należy użyć licencjonowania opartego na grupach w celu nawiązania odpowiedniej licencji dla użytkownika, który potrzebuje dostępu do tych usług.
 
-* Aby grupa była zasobem w pakiecie dostępu, musi być w stanie zmodyfikować ją w usłudze Azure AD.  Grup, które pochodzą z lokalnego Active Directory nie można przypisać jako zasobów, ponieważ nie można zmienić ich właściciela ani atrybutów składowych w usłudze Azure AD.  
+* Aby grupa była zasobem w pakiecie dostępu, musi być w stanie zmodyfikować ją w usłudze Azure AD.  Grup, które pochodzą z lokalnego Active Directory nie można przypisać jako zasobów, ponieważ nie można zmienić ich właściciela ani atrybutów składowych w usłudze Azure AD.   Grupy, które pochodzą z usługi Exchange Online jako grupy dystrybucji, nie mogą być modyfikowane w usłudze Azure AD. 
 
 * Biblioteki dokumentów usługi SharePoint Online i pojedyncze dokumenty nie mogą być dodawane jako zasoby.  Zamiast tego należy utworzyć grupę zabezpieczeń usługi Azure AD, dołączyć tę grupę i rolę lokacji w pakiecie dostępu, a w usłudze SharePoint Online używać tej grupy do kontrolowania dostępu do biblioteki dokumentów lub dokumentu.
 
@@ -55,9 +55,9 @@ W tym artykule opisano niektóre elementy, które należy zaznaczyć, aby pomóc
 
 ## <a name="checklist-for-request-issues"></a>Lista kontrolna dotycząca problemów z żądaniami
 
-* Gdy użytkownik chce zażądać dostępu do pakietu dostępu, należy się upewnić, że korzysta on z **linku my Access Portal** dla pakietu dostępu. Aby uzyskać więcej informacji, zobacz [łącze Kopiuj mój dostęp do portalu](entitlement-management-access-package-edit.md#copy-my-access-portal-link).
+* Gdy użytkownik chce zażądać dostępu do pakietu dostępu, należy się upewnić, że korzysta on z **linku my Access Portal** dla pakietu dostępu. Aby uzyskać więcej informacji, zobacz [łącze Kopiuj mój dostęp do portalu](entitlement-management-access-package-edit.md#copy-my-access-portal-link).  Jeśli użytkownik zewnętrzny odwiedzi **myaccess.Microsoft.com**, zobaczy dostępne dla nich pakiety dostępu w swojej organizacji.
 
-* Gdy użytkownik loguje się do portalu dostępu w celu zażądania pakietu dostępu, należy się upewnić, że uwierzytelnia się przy użyciu konta organizacyjnego. Konto organizacyjne może być kontem w katalogu zasobów lub w katalogu, który znajduje się w jednej z zasad pakietu dostępu. Jeśli konto użytkownika nie jest kontem organizacyjnym lub katalog nie jest uwzględniony w zasadach, użytkownik nie będzie widział pakietu dostępu. Aby uzyskać więcej informacji, zobacz [żądanie dostępu do pakietu dostępu](entitlement-management-request-access.md).
+* Gdy użytkownik, który nie znajduje się jeszcze w katalogu, loguje się do portalu dostępu w celu zażądania pakietu dostępu, upewnij się, że uwierzytelnia się przy użyciu konta organizacyjnego. Konto organizacyjne może być kontem w katalogu zasobów lub w katalogu, który znajduje się w jednej z zasad pakietu dostępu. Jeśli konto użytkownika nie jest kontem organizacyjnym lub katalog, w którym są uwierzytelniane, nie jest uwzględniony w zasadach, wówczas użytkownik nie będzie widział pakietu dostępu. Aby uzyskać więcej informacji, zobacz [żądanie dostępu do pakietu dostępu](entitlement-management-request-access.md).
 
 * Jeśli użytkownik nie może się zalogować do katalogu zasobów, nie będzie w stanie żądać dostępu w portalu My Access. Aby użytkownik mógł zażądać dostępu, należy usunąć blok logowania z profilu użytkownika. Aby usunąć blok logowania, w Azure Portal kliknij pozycję **Azure Active Directory**, kliknij pozycję **Użytkownicy**, kliknij użytkownika, a następnie kliknij pozycję **profil**. Edytuj sekcję **Ustawienia** i Zmień **blok Zaloguj** się na **nie**. Aby uzyskać więcej informacji, zobacz [Dodawanie lub aktualizowanie informacji o profilu użytkownika przy użyciu Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Możesz również sprawdzić, czy użytkownik został zablokowany ze względu na [Zasady ochrony tożsamości](../identity-protection/howto-unblock-user.md).
 
@@ -65,6 +65,6 @@ W tym artykule opisano niektóre elementy, które należy zaznaczyć, aby pomóc
 
 * Jeśli nowy użytkownik zewnętrzny, który nie został wcześniej podpisany w Twoim katalogu, odbierze pakiet dostępu zawierający witrynę usługi SharePoint Online, jego pakiet dostępu będzie wyświetlany jako nie w pełni dostarczone do momentu aprowizacji konta w usłudze SharePoint Online.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Wyświetlanie raportów dotyczących sposobu, w jaki użytkownicy uzyskują dostęp w usłudze zarządzania uprawnieniami](entitlement-management-reports.md)

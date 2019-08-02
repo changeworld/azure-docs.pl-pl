@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
 ms.openlocfilehash: 232468d9b3466759d7af2b7be68a1f553ced6e6d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68348644"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
@@ -125,7 +125,7 @@ Aby wdrożyć konfigurację programu IBM DB2, należy wykonać następujące czy
   + Wdróż maszyny wirtualne.
   + Aktualizacja RHEL Linux i konfigurowanie systemów plików.
   + Zainstaluj i skonfiguruj Pacemaker.
-  + Skonfiguruj [klaster glusterfs][glusterfs] or [Azure NetApp Files][anf-rhel]
+  + Skonfiguruj [klaster glusterfs][glusterfs] lub [Azure NetApp Files][anf-rhel]
   + Zainstaluj [ASCS/wykres wywołujących w oddzielnym klastrze][ascs-ha-rhel].
   + Zainstaluj bazę danych IBM DB2 z opcją Distributed/wysoka dostępność (SWPM).
   + Zainstaluj i Utwórz pomocniczy węzeł i wystąpienie bazy danych, a następnie skonfiguruj HADR Cluster.
@@ -241,7 +241,7 @@ Zalecamy stosowanie powyższych parametrów na podstawie wstępnego testowania t
 
 Aby skonfigurować serwer bazy danych w stanie gotowości przy użyciu procedury kopiowania jednorodnego systemu SAP, wykonaj następujące kroki:
 
-1. Wybierz opcję **kopiowania systemu** > wystąpienia  > **rozproszonej** > **bazy danych**w systemie docelowym.
+1. Wybierz opcję **kopiowania systemu** > wystąpienia > **rozproszonej** > **bazy danych**w systemie docelowym.
 1. Jako metodę kopiowania wybierz jednorodny **system** , aby można było użyć kopii zapasowej do przywrócenia kopii zapasowej w wystąpieniu serwera w stanie gotowości.
 1. Po dojściu do kroku zakończenia, aby przywrócić bazę danych jednorodnej kopii systemu, zamknij Instalatora. Przywróć bazę danych z kopii zapasowej hosta podstawowego. Wszystkie kolejne etapy instalacji zostały już wykonane na podstawowym serwerze bazy danych.
 

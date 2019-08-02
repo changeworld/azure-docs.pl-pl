@@ -2,26 +2,26 @@
 title: Dodaj domenę niestandardową — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Instrukcje dotyczące sposobu dodawania domeny niestandardowej za pomocą usługi Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb29fb5ef2e755ff456ad177b66349792b2fa21c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3f90e594e69c58364b699299964273ce371e525
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248418"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561733"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Dodawanie niestandardowej nazwy domeny za pomocą portalu Azure Active Directory
-Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen, ułatwia utworzenie nazwy użytkownika, które są znane użytkownikom, takie jak *alain\@contoso.com*.
+Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen ułatwia tworzenie nazw użytkowników, które są znane użytkownikom, takich jak *Alain\@contoso.com*.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Przed dodaniem niestandardowej nazwy domeny, należy utworzyć nazwy domeny za pomocą rejestratora domen. Aby rejestratora domen akredytowanych, zobacz [rejestratorów ICANN-Accredited](https://www.icann.org/registrar-reports/accredited-list.html).
@@ -31,7 +31,7 @@ Po otrzymaniu nazwy domeny, można utworzyć pierwszy katalog usługi Azure AD.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) dla katalogu, przy użyciu konta z **właściciela** roli dla subskrypcji, a następnie wybierz **usługi Azure Active Directory**. Aby uzyskać więcej informacji na temat ról subskrypcji, zobacz [ról administratora subskrypcji klasyczne, ról RBAC platformy Azure i role administratora usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
 
-    ![Azure portal przedstawiający ekran opcji usługi Azure AD](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    ![Ekran Azure Portal, przedstawiający opcję usługi Azure AD](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
     >[!TIP]
     > Jeśli zamierzasz sfederować lokalną usługę AD systemu Windows Server z usługą Azure AD, zaznacz pole wyboru **Planuję skonfigurować tę domenę do logowania jednokrotnego przy użyciu lokalnej usługi Active Directory** podczas uruchamiania narzędzia Azure AD Connect, aby zsynchronizować katalogi. Należy również zarejestrować tę samą nazwę domeny, która została wybrana do sfederowania z katalogiem lokalnym w kroku **Domena usługi Azure AD** w kreatorze. Wygląd tego kroku w Kreatorze można zobaczyć w [tych instrukcjach](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation). Jeśli nie masz narzędzia Azure AD Connect, możesz [pobrać jej tutaj](https://go.microsoft.com/fwlink/?LinkId=615771).
@@ -46,7 +46,7 @@ Po utworzeniu katalogu, możesz dodać niestandardową nazwę domeny.
 
 1. Wybierz **niestandardowe nazwy domen**, a następnie wybierz pozycję **Dodaj domenę niestandardową**.
 
-    ![Strona nazwy domeny niestandardowej, za pomocą Dodaj domenę niestandardową pokazano](media/add-custom-domain/add-custom-domain.png)
+    ![Strona niestandardowe nazwy domen z pokazaną opcją Dodaj domenę niestandardową](media/add-custom-domain/add-custom-domain.png)
 
 2. Wpisz nową nazwę domeny w organizacji do **niestandardowej nazwy domeny** pole (na przykład _contoso.com_), a następnie wybierz pozycję **Dodaj domenę**.
 
@@ -55,7 +55,7 @@ Po utworzeniu katalogu, możesz dodać niestandardową nazwę domeny.
     >[!Important]
     >Musi zawierać rozszerzenie .com, .net lub inne rozszerzenie najwyższego poziomu dla tego, aby zapewnić prawidłowe działanie.
 
-    ![Strona nazwy domeny niestandardowej, za pomocą Dodaj domenę niestandardową stronę](media/add-custom-domain/add-custom-domain-blade.png)
+    ![Strona niestandardowe nazwy domen, z dodawaniem strony domeny niestandardowej](media/add-custom-domain/add-custom-domain-blade.png)
 
 4. Kopiuj informacje DNS z **Contoso** strony. Na przykład MS = ms64983159.
 
@@ -64,7 +64,7 @@ Po utworzeniu katalogu, możesz dodać niestandardową nazwę domeny.
 ## <a name="add-your-dns-information-to-the-domain-registrar"></a>Dodaj informacje DNS do rejestratora domen
 Po dodaniu niestandardowej nazwy domeny do usługi Azure AD, musisz powrócić do rejestratora domen i Dodaj informacje o usłudze Azure AD DNS z skopiowany plik TXT. Tworzenie tego TXT rekordu dla domeny "sprawdza" własności nazwy domeny.
 
--  Wróć do rejestratora domen, Utwórz nowy rekord TXT dla domeny na podstawie informacji DNS skopiowany, ustaw **TTL** (czas wygaśnięcia) do 3600 sekund (60 minut), a następnie zapisz informacje.
+-  Wróć do rejestratora domen, Utwórz nowy rekord TXT dla domeny na podstawie skopiowanych informacji DNS, ustaw wartość **TTL** (czas wygaśnięcia) na 3600 sekund (60 minut), a następnie Zapisz informacje.
 
     >[!Important]
     >Możesz zarejestrować dowolną liczbę nazw domeny. Jednak każda domena pobiera swój własny rekord TXT z usługi Azure AD. Należy zachować ostrożność podczas wprowadzania danych pliku TXT u rejestratora domen. Jeśli wprowadź nieprawidłowa lub zduplikowana informacji przez pomyłkę, należy poczekać, aż wartość TTL upłynie limit czasu (60 minut), aby spróbować ponownie.
@@ -85,7 +85,7 @@ Po zarejestrowaniu niestandardową nazwę domeny, należy upewnić się, że jes
 
     ![Strona firmy Contoso z informacji wpis DNS i przycisku Weryfikuj](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 
-Po zweryfikowaniu niestandardową nazwę domeny, można usunąć pliku TXT lub MX weryfikacji.
+Po zweryfikowaniu nazwy domeny niestandardowej można usunąć plik TXT lub MX weryfikacji.
 
 ## <a name="common-verification-issues"></a>Typowe problemy weryfikacji
 - Jeśli usługa Azure AD nie można zweryfikować niestandardowej nazwy domeny, należy spróbować wykonać następujące czynności:
@@ -101,9 +101,9 @@ Po zweryfikowaniu niestandardową nazwę domeny, można usunąć pliku TXT lub M
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dodawanie innego administratora globalnego do katalogu. Aby uzyskać więcej informacji, zobacz [jak przypisać role i Administratorzy](active-directory-users-assign-role-azure-portal.md).
+- Dodawanie innego administratora globalnego do katalogu. Aby uzyskać więcej informacji, zobacz [Jak przypisać role i administratorów](active-directory-users-assign-role-azure-portal.md).
 
-- Dodawanie użytkowników do domeny, zobacz [jak dodać lub usunąć użytkowników](add-users-azure-active-directory.md).
+- Dodaj użytkowników do domeny, zobacz [jak dodawać i usuwać użytkowników](add-users-azure-active-directory.md).
 
 - Zarządzanie z informacjami dotyczącymi nazwy domeny w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [Zarządzanie niestandardowymi nazwami domen](../users-groups-roles/domains-manage.md).
 

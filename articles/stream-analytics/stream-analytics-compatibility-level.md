@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: a6e5cd69a0655bf8235bf5755ab596ca2bde0387
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68003912"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716160"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Poziom zgodności dla zadań usługi Azure Stream Analytics
 
@@ -91,6 +91,12 @@ Zachowanie upsert jest *wstawiane lub zastępowane*.
 
 **poziom 1,2:** Wartości, które nie mieszczą się w typie docelowym, są obsługiwane zgodnie z zasadami błędu wyjściowego.
 
+### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>Nagrywanie i Serializacja tablic podczas zapisywania do danych wyjściowych SQL
+
+**Poprzednie poziomy:** Rekordy zostały zapisane w postaci "Record", a tablice zostały zapisane jako "Array".
+
+**poziom 1,2:** Rekordy i tablice są serializowane w formacie JSON.
+
 ### <a name="strict-validation-of-prefix-of-functions"></a>Ścisła weryfikacja prefiksu funkcji
 
 **Poprzednie poziomy:** Nie istnieje ścisła weryfikacja prefiksów funkcji.
@@ -113,7 +119,7 @@ Następujące istotne zmiany są wprowadzane przy poziomie zgodności 1.1:
 
 ### <a name="service-bus-xml-format"></a>Service Bus format XML
 
-**poziom 1,0:** Azure Stream Analytics użyciu DataContractSerializer, więc zawartość komunikatów zawiera tagi XML. Na przykład:
+**poziom 1,0:** Azure Stream Analytics użyciu DataContractSerializer, więc zawartość komunikatów zawiera tagi XML. Przykład:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

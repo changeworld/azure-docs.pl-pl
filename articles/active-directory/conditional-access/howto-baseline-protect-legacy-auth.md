@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a313240685e539b613dee1c7ff8bd56bb24eb2ba
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227321"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608077"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Zasady linii bazowej: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
 
@@ -117,5 +117,5 @@ Aby włączyć te zasady i chronić organizację:
 Aby uzyskać więcej informacji, zobacz:
 
 * [Zasady ochrony punktu odniesienia dostępu warunkowego](concept-baseline-protection.md)
-* [Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości](../../security/azure-ad-secure-steps.md)
+* [Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości](../../security/fundamentals/steps-secure-identity.md)
 * [Co to jest dostęp warunkowy w Azure Active Directory?](overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Skryptu interfejsu wiersza polecenia platformy Azure — skalowanie bazy danych Azure Database for PostgreSQL
+title: Azure Database for PostgreSQL skalowanie i monitorowanie skryptów interfejsu wiersza polecenia platformy Azure
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — skalowanie serwera usługi Azure Database for PostgreSQL na inny poziom wydajności po wykonaniu zapytania względem metryk.
 author: rachel-msft
 ms.author: raagyema
@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.custom: mvc
 ms.topic: sample
-ms.date: 04/05/2018
-ms.openlocfilehash: 65958eb1e2d7cc4492e0437b24db77f00ebc7eba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/01/2019
+ms.openlocfilehash: 6e1b6e5b09a3b9f3da5760fc50c531ee524dc8d4
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154521"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728776"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Monitorowanie i skalowanie pojedynczego serwera PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure
-Ten przykładowy skrypt interfejsu wiersza polecenia służy do skalowania pojedynczego serwera usługi Azure Database for PostgreSQL na inny poziom wydajności po wykonaniu zapytania względem metryk. 
+Ten przykładowy skrypt interfejsu wiersza polecenia skaluje zasoby obliczeniowe i magazyn dla jednego serwera Azure Database for PostgreSQL po wykonaniu zapytania o metryki. 
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,11 +36,12 @@ Ten skrypt używa poleceń opisanych w poniższej tabeli:
 | **Polecenie** | **Uwagi** |
 |---|---|
 | [az group create](/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az postgres server create](/cli/azure/postgres/server) | Tworzy serwer PostgreSQL hostujący bazy danych. |
+| [az postgres server create](/cli/azure/postgres/server#az-postgres-server-create) | Tworzy serwer PostgreSQL hostujący bazy danych. |
+| [AZ Postgres Server Update](/cli/azure/postgres/server#az-postgres-server-update) | Aktualizuje właściwości serwera PostgreSQL. |
 | [az monitor metrics list](/cli/azure/monitor/metrics) | Zwraca wartość metryki dla zasobów. |
 | [az group delete](/cli/azure/group) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej na temat interfejsu wiersza polecenia platformy Azure: [Dokumentacja interfejsu wiersza polecenia platformy Azure](/cli/azure)
+- Dowiedz się więcej na temat [Azure Database for PostgreSQL zasobów obliczeniowych i magazynu](../concepts-pricing-tiers.md)
 - Wypróbuj dodatkowe skrypty: [Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for PostgreSQL](../sample-scripts-azure-cli.md)
-- Dowiedz się więcej na temat skalowania: [warstwy usług](../concepts-service-tiers.md) oraz [jednostki obliczeniowe i jednostki magazynowe](../concepts-compute-unit-and-storage.md)
+- Dowiedz się więcej o [interfejsie wiersza polecenia platformy Azure](/cli/azure)

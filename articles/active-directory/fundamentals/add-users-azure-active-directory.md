@@ -2,32 +2,32 @@
 title: Dodawanie lub usuwanie użytkowników — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Instrukcje dotyczące sposobu dodawania nowych użytkowników lub usunąć istniejących użytkowników przy użyciu usługi Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1bac4d2c0f236b8fca611c7391846abdb782796
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8b436fbdb0d70318e6820d3f59f1e198c639e5a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60247749"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561699"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Dodawanie lub usuwanie użytkowników za pomocą usługi Azure Active Directory
-Dodawanie nowych użytkowników lub usuń istniejący użytkownicy z organizacji usługi Azure Active Directory (Azure AD).
+Dodaj nowych użytkowników lub Usuń istniejących użytkowników z organizacji usługi Azure Active Directory (Azure AD).
 
 ## <a name="add-a-new-user"></a>Dodawanie nowego użytkownika
 Można utworzyć nowego użytkownika przy użyciu portalu Azure Active Directory.
 
 ### <a name="to-add-a-new-user"></a>Aby dodać nowego użytkownika
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) Administrator użytkowników w organizacji.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako administrator użytkownika w organizacji.
 
 2. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **nowego użytkownika**.
 
@@ -47,7 +47,7 @@ Można utworzyć nowego użytkownika przy użyciu portalu Azure Active Directory
 
    - **Grupy.** Opcjonalnie można dodać użytkownika do co najmniej jeden z istniejących grup. Można również dodać użytkownika do grup w późniejszym czasie. Aby uzyskać więcej informacji na temat dodawania użytkowników do grup, zobacz [jak utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md).
 
-   - **Rola katalogu.** Opcjonalnie można dodać użytkownika do roli administratora usługi Azure AD. Możesz przypisać użytkownika jako administrator globalny, jeden lub więcej ról ograniczony administrator w usłudze Azure AD. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [jak przypisać role do użytkowników](active-directory-users-assign-role-azure-portal.md).
+   - **Rola katalogu.** Opcjonalnie możesz dodać użytkownika do roli administratora usługi Azure AD. Użytkownika można przypisać do administratora globalnego lub co najmniej jednej z ograniczonych ról administratora w usłudze Azure AD. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [jak przypisać role do użytkowników](active-directory-users-assign-role-azure-portal.md).
 
 4. Skopiuj wygenerowany automatycznie hasło, podane we **hasło** pole. Należy podać to hasło użytkownikowi początkowego procesu logowania.
 
@@ -62,7 +62,7 @@ Jeśli masz środowisko z usługi Azure Active Directory (w chmurze) i Active Di
 Można usunąć istniejącego użytkownika przy użyciu portalu Azure Active Directory.
 
 ### <a name="to-delete-a-user"></a>Aby usunąć użytkownika
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta użytkownika administratora w organizacji.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora użytkownika w organizacji.
 
 2. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wyszukaj i wybierz użytkownika, aby usunąć z dzierżawą usługi Azure AD. Na przykład _Mary Parker_.
 
@@ -70,7 +70,7 @@ Można usunąć istniejącego użytkownika przy użyciu portalu Azure Active Dir
 
     ![Użytkownicy — Wszyscy użytkownicy strony usunięcie użytkownika z wyróżnioną pozycją](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-    Użytkownik został usunięty i nie będzie już wyświetlany na **Użytkownicy — Wszyscy użytkownicy** strony. Użytkownik będą widoczne na **usuniętych użytkowników** stronie przez 30 dni i mogą zostać przywrócone w tym samym czasie. Aby uzyskać więcej informacji o przywracaniu użytkownika, zobacz [jak przywrócić lub usunąć trwale ostatnio usuniętego użytkownika](active-directory-users-restore.md). Gdy użytkownik zostanie usunięty, wszystkie licencje używane przez użytkownika są udostępniane dla innych użytkowników do użycia.
+    Użytkownik został usunięty i nie będzie już wyświetlany na **Użytkownicy — Wszyscy użytkownicy** strony. Użytkownik będą widoczne na **usuniętych użytkowników** stronie przez 30 dni i mogą zostać przywrócone w tym samym czasie. Aby uzyskać więcej informacji o przywracaniu użytkownika, zobacz [jak przywrócić lub usunąć trwale ostatnio usuniętego użytkownika](active-directory-users-restore.md). Po usunięciu użytkownika wszystkie licencje używane przez użytkownika są udostępniane innym użytkownikom do użycia.
 
     >[!Note]
     >Aby zaktualizować tożsamości, informacje kontaktowe i informacje o zadaniu dla użytkowników, którego źródłem urzędu jest Windows Server Active Directory, należy użyć usługi Active Directory systemu Windows Server. Po ukończeniu aktualizacji należy poczekać na następny cykl synchronizacji zakończyć, zanim zmiany będą widoczne.

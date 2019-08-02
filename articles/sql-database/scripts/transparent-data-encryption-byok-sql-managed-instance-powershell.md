@@ -1,6 +1,6 @@
 ---
-title: 'Program PowerShell: Włączyć funkcję TDE BYOK - wystąpienie zarządzane usługi Azure SQL Database | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować wystąpienia zarządzanego Azure SQL Aby rozpocząć korzystanie z funkcji BYOK przezroczystego szyfrowania danych (TDE) do szyfrowania podczas spoczynku przy użyciu programu PowerShell.
+title: 'Program PowerShell: Włącz BYOK TDE-Azure SQL Database wystąpienia zarządzanego | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować wystąpienie zarządzane usługi Azure SQL, aby rozpocząć korzystanie z BYOK Transparent Data Encryption (TDE) na potrzeby szyfrowania w środowisku REST przy użyciu programu PowerShell.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,28 +10,27 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: c2c4bd7bffd923430d0817cb6ea975f4c1596623
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8f0f4a8e603a9040d166b00682077cff23abd8d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729168"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569697"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Zarządzanie przezroczyste szyfrowanie danych w wystąpieniu zarządzanym przy użyciu własnego klucza z usługi Azure Key Vault (wersja zapoznawcza)
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Zarządzanie Transparent Data Encryption w wystąpieniu zarządzanym przy użyciu własnego klucza z poziomu Azure Key Vault (wersja zapoznawcza)
 
-Ten przykładowy skrypt programu PowerShell konfiguruje przezroczystego szyfrowania danych (TDE) w scenariuszu Bring Your Own Key (wersja zapoznawcza) dla wystąpienia zarządzanego Azure SQL, używając klucza z usługi Azure Key Vault. Aby dowiedzieć się więcej na temat funkcji TDE z obsługą Bring Your Own Key (BYOK), zobacz [TDE własnego klucza do bazy danych SQL Azure](../transparent-data-encryption-byok-azure-sql.md).
+Ten przykład skryptu programu PowerShell służy do konfigurowania Transparent Data Encryption (TDE) w scenariuszu Bring Your Own Key (wersja zapoznawcza) dla wystąpienia zarządzanego usługi Azure SQL przy użyciu klucza z Azure Key Vault. Aby dowiedzieć się więcej na temat obsługi TDE z Bring Your Own Key (BYOK), zobacz [TDE Bring Your Own Key do usługi Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Istniejące wystąpienie zarządzane. Zobacz [Użyj programu PowerShell do utworzenia usługi Azure SQL Database, wystąpienia zarządzanego](sql-database-create-configure-managed-instance-powershell.md).
+- Istniejące wystąpienie zarządzane. Zobacz [Używanie programu PowerShell do tworzenia Azure SQL Database wystąpienia zarządzanego](sql-database-create-configure-managed-instance-powershell.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Przy użyciu zarówno programu PowerShell lokalnie lub za pomocą usługi Azure Cloud Shell wymaga 1.1.1-preview AZ programu PowerShell lub nowszej wersji (wersja zapoznawcza). Jeśli musisz uaktualnić, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps), lub uruchomić poniżej przykładowy skrypt, aby zainstalować moduł.
+Korzystanie z programu PowerShell lokalnie lub przy użyciu Azure Cloud Shell wymaga AZ PowerShell 1.1.1-Preview lub nowszej wersji zapoznawczej. Jeśli musisz przeprowadzić uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps)lub uruchamianie poniższego przykładowego skryptu w celu zainstalowania modułu.
 
 `Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease -Force`
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: dd2fb0c9ef157e3706ca3d902f7feebaf4c2f279
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b2670ec844df192bb73e8b1e76b1ebf611b2539e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478907"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619377"
 ---
 # <a name="supported-languages"></a>Obsługiwane języki
 
@@ -39,7 +39,6 @@ ms.locfileid: "68478907"
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
@@ -57,6 +56,5 @@ ms.locfileid: "68478907"
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Stream Analytics](../../azure-monitor/app/export-power-bi.md)
 
-## <a name="unsupported-community-sdks"></a>Nieobsługiwane zestawy SDK społeczności
-
-Istnieje wiele zestawów SDK dla społeczności Application Insights. Zestawy SDK Wspólnoty nie są oficjalnie obsługiwane/utrzymywane przez firmę Microsoft. Nie możemy zapewnić wsparcia dla żadnego zestawu SDK, który nie znajduje się na liście oficjalnie obsługiwanych. 
+## <a name="unsupported-sdks"></a>Nieobsługiwane zestawy SDK
+Mamy świadomość, że istnieją różne zestawy SDK obsługiwane przez społeczność i nawet te, które zostały przez nas współtworzone. Jednak Azure Monitor zapewnia pomoc techniczną tylko w przypadku korzystania z obsługiwanych zestawów SDK wymienionych na tej stronie. Nieustannie oceniamy możliwości rozszerzania pomocy technicznej dla innych języków. Aby uzyskać najnowsze informacje o zestawie SDK, postępuj zgodnie z naszą stroną anonsów usługi [GitHub](https://github.com/microsoft/ApplicationInsights-Announcements/issues) .

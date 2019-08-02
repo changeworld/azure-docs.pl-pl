@@ -1,21 +1,21 @@
 ---
-title: Omówienie protokołu BGP i sieci VPN platformy Azure bram | Dokumentacja firmy Microsoft
+title: Omówienie usług BGP i Azure VPN Gateways | Microsoft Docs
 description: Ten artykuł zawiera omówienie użycia protokołu BGP z bramami sieci VPN na platformie Azure.
 services: vpn-gateway
 author: yushwang
 manager: rossort
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 07/25/2019
 ms.author: yushwang
-ms.openlocfilehash: 91e9fe1eb6b3df0b64d05f2b1e300403a9e01db9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e85eb756e416f1170a0cb2b19ab68888b5a9422f
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60762285"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516438"
 ---
-# <a name="about-bgp-with-azure-vpn-gateway"></a>Temat protokołu BGP z bramą sieci VPN platformy Azure
+# <a name="about-bgp-with-azure-vpn-gateway"></a>Informacje o protokole BGP z platformą Azure VPN Gateway
 Ten artykuł zawiera omówienie obsługi protokołu BGP (Border Gateway Protocol) w usłudze Azure VPN Gateway.
 
 BGP to standardowy protokół routingu używany często w Internecie do wymiany informacji o routingu i osiągalności między dwiema lub wieloma sieciami. W przypadku jego użycia w kontekście sieci wirtualnych Azure, protokół BGP umożliwia bramom sieci VPN na platformie Azure i lokalnym urządzeniom sieci VPN (nazywanym elementami równorzędnymi lub sąsiednimi BGP), przeprowadzaną za pośrednictwem bram lub routerów wymianę „tras” zawierających przeznaczone dla obu bram informacje na temat dostępności i osiągalności tych prefiksów. Protokół BGP umożliwia również włączenie routingu tranzytowego między wieloma sieciami poprzez propagowanie tras, których brama BGP uczy się od jednego elementu równorzędnego BGP, we wszystkich innych elementach równorzędnych BGP. 
@@ -26,18 +26,18 @@ Protokół BGP stanowi funkcję opcjonalną, której można używać z bramami s
 Protokół BGP oferuje kilka zalet i nowych możliwości:
 
 ### <a name="prefix"></a>Obsługa automatycznych i elastycznych aktualizacji prefiksów
-Za pomocą protokołu BGP wystarczy zadeklarować minimalny prefiks do określonego elementu równorzędnego protokołu BGP przez tunel VPN S2S protokołu IPsec. Może to być nawet sam prefiks hosta (/32) adresu IP elementu równorzędnego BGP dla lokalnego urządzenia sieci VPN. Można określić, które prefiksy sieci lokalnej mają być ogłaszane na platformie Azure w celu umożliwienia dostępu sieci wirtualnej Azure.
+W przypadku protokołu BGP należy tylko zadeklarować minimalny prefiks do określonego elementu równorzędnego BGP za pośrednictwem tunelu sieci VPN S2S IPsec. Może to być nawet sam prefiks hosta (/32) adresu IP elementu równorzędnego BGP dla lokalnego urządzenia sieci VPN. Można określić, które prefiksy sieci lokalnej mają być ogłaszane na platformie Azure w celu umożliwienia dostępu sieci wirtualnej Azure.
 
-Można również ogłaszać dłuższe prefiksy, które mogą obejmować niektóre spośród prefiksy adresów sieci wirtualnej, takie jak duża przestrzeń prywatnych IP adresu (np. 10.0.0.0/8). Należy pamiętać, że prefiksy nie może być identyczny z jednym z prefiksy sieci wirtualnej. Trasy identyczne z prefiksami w sieci wirtualnej zostaną odrzucone.
+Można również anonsować większe prefiksy, które mogą obejmować niektóre prefiksy adresów sieci wirtualnej, takie jak duża przestrzeń prywatnych adresów IP (np. 10.0.0.0/8). Należy zauważyć, że prefiksy nie mogą być identyczne z żadnymi prefiksami sieci wirtualnej. Trasy identyczne z prefiksami w sieci wirtualnej zostaną odrzucone.
 
-### <a name="multitunnel"></a>Obsługa wielu tuneli między siecią wirtualną i lokacją lokalną za pomocą automatycznej pracy awaryjnej, w oparciu o Protokół BGP
-Można utworzyć wiele połączeń między swoją siecią wirtualną na platformie Azure i lokalnymi urządzeniami sieci VPN w tej samej lokalizacji. Ta funkcja pozwala korzystać z wielu tuneli (ścieżek) między dwiema sieciami w konfiguracji aktywne/aktywne. Jeśli jeden z tuneli jest rozłączony, odpowiednie trasy zostaną wycofane za pośrednictwem protokołu BGP, a ruch jest kierowany do pozostałych tuneli.
+### <a name="multitunnel"></a>Obsługa wielu tuneli między siecią wirtualną a lokacją lokalną z automatycznym trybem failover na podstawie protokołu BGP
+Można utworzyć wiele połączeń między swoją siecią wirtualną na platformie Azure i lokalnymi urządzeniami sieci VPN w tej samej lokalizacji. Ta funkcja pozwala korzystać z wielu tuneli (ścieżek) między dwiema sieciami w konfiguracji aktywne/aktywne. Jeśli jeden z tuneli zostanie odłączony, odpowiednie trasy zostaną wycofane za pośrednictwem protokołu BGP, a ruch zostanie automatycznie przesunięty do pozostałych tuneli.
 
 Na poniższym diagramie przedstawiono prosty przykład tej konfiguracji charakteryzującej się wysoką dostępnością:
 
 ![Wiele aktywnych ścieżek](./media/vpn-gateway-bgp-overview/multiple-active-tunnels.png)
 
-### <a name="transitrouting"></a>Obsługa routingu tranzytowego między sieciami w środowisku lokalnym i wieloma sieciami wirtualnymi platformy Azure
+### <a name="transitrouting"></a>Obsługa routingu tranzytowego między sieciami lokalnymi i wieloma sieci wirtualnychami platformy Azure
 Protokół BGP umożliwia uzyskiwanie i propagowanie przez wiele bram prefiksów z różnych sieci, bez względu na to, czy są połączone bezpośrednio lub pośrednio. Umożliwia to realizowany przy użyciu bram sieci VPN na platformie Azure routing tranzytowy między lokalnymi lokacjami lub w obrębie wielu sieci wirtualnych Azure.
 
 Na poniższym diagramie przedstawiono przykład topologii z wieloma przeskokami z wielu ścieżek, która umożliwia przesyłanie ruchu między dwiema sieciami lokalnymi za pośrednictwem bram sieci VPN na platformie Azure w ramach usługi Microsoft Networks:
@@ -47,6 +47,6 @@ Na poniższym diagramie przedstawiono przykład topologii z wieloma przeskokami 
 ## <a name="faq"></a>PROTOKÓŁ BGP — CZĘSTO ZADAWANE PYTANIA
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Opis procedury konfigurowania protokołu BGP pod kątem połączeń obejmujących wiele lokalizacji i połączeń między sieciami wirtualnymi zawiera artykuł [Getting started with BGP on Azure VPN gateways](vpn-gateway-bgp-resource-manager-ps.md) (Rozpoczęcie pracy z protokołem BGP dla bram sieci VPN na platformie Azure).
 

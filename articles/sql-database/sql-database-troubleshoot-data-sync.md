@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z usługi Azure SQL Data Sync | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z usługą Azure SQL Data Sync | Microsoft Docs
 description: Dowiedz się, jak rozwiązywać typowe problemy z usługą Azure SQL Data Sync.
 services: sql-database
 ms.service: sql-database
@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1345c7de3ef56473b8ebd16cea20cfe76f0380e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331200"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566271"
 ---
-# <a name="troubleshoot-issues-with-sql-data-sync"></a>Rozwiązywanie problemów z usługą SQL Data Sync
+# <a name="troubleshoot-issues-with-sql-data-sync"></a>Rozwiązywanie problemów z SQL Data Sync
 
-W tym artykule opisano, jak rozwiązywać problemy z znanych problemów z usługą Azure SQL Data Sync. W przypadku rozwiązywania problemu, jest ona udostępniana w tym miejscu.
+W tym artykule opisano sposób rozwiązywania znanych problemów z usługą Azure SQL Data Sync. Jeśli istnieje rozwiązanie problemu, jest on dostępny tutaj.
 
 Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](sql-database-sync-data.md).
 
@@ -30,217 +29,217 @@ Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud 
 
 ## <a name="sync-issues"></a>Problemy z synchronizacją
 
-- [Synchronizacja nie powiedzie się w portalu interfejsu użytkownika dla lokalnych baz danych, które są skojarzone z agenta klienta](#sync-fails)
+- [Synchronizacja w interfejsie użytkownika portalu dla lokalnych baz danych skojarzonych z agentem klienta nie powiodła się](#sync-fails)
 
-- [Moje grupy synchronizacji jest zablokowany w stanie przetwarzania](#sync-stuck)
+- [Moja grupa synchronizacji jest zablokowana w stanie przetwarzania](#sync-stuck)
 
-- [Widzę błędnych danych w tabeli](#sync-baddata)
+- [Widzę błędne dane w moich tabelach](#sync-baddata)
 
-- [Widzę niespójność danych klucza podstawowego po pomyślnej synchronizacji](#sync-pkdata)
+- [Po pomyślnym zsynchronizowaniu widzę niespójne dane klucza podstawowego](#sync-pkdata)
 
-- [Czy mogę zobaczyć znaczne pogorszenie wydajności](#sync-perf)
+- [Widzę znaczącą spadek wydajności](#sync-perf)
 
-- [Pojawia się następujący komunikat: "Nie można wstawić wartości NULL w kolumnie \<kolumny >. Kolumna nie dopuszcza wartości null." Co to znaczy, i jak to naprawić?](#sync-nulls)
+- [Zobaczym następujący komunikat: "Nie można wstawić wartości null do kolumny Column \<>. Kolumna nie zezwala na wartości nulls. " Co to znaczy i jak można rozwiązać ten problem?](#sync-nulls)
 
-- [Jak synchronizacja danych obsługuje odwołania cykliczne? Oznacza to, kiedy te same dane jest synchronizowana w wielu grupach synchronizacji i ulega ciągłym zmianom w wyniku?](#sync-circ)
+- [Jak synchronizacja danych obsługuje odwołania cykliczne? Oznacza to, że gdy te same dane są synchronizowane w wielu grupach synchronizacji i ciągle nie zmieniają się w wyniku?](#sync-circ)
 
-### <a name="sync-fails"></a> Synchronizacja nie powiedzie się w portalu interfejsu użytkownika dla lokalnych baz danych, które są skojarzone z agenta klienta
+### <a name="sync-fails"></a>Synchronizacja w interfejsie użytkownika portalu dla lokalnych baz danych skojarzonych z agentem klienta nie powiodła się
 
-Synchronizacja nie powiedzie się w portalu SQL Data Sync interfejsu użytkownika dla lokalnych baz danych, które są skojarzone z agenta klienta. Na komputerze lokalnym, w którym jest uruchomiony agent zostaną wyświetlone błędy System.IO.IOException w dzienniku zdarzeń. Błędy Załóżmy, że na dysku jest za mało miejsca.
+Synchronizacja w interfejsie użytkownika portalu SQL Data Sync dla lokalnych baz danych skojarzonych z agentem klienta nie powiodła się. Na komputerze lokalnym, na którym jest uruchomiony Agent programu, w dzienniku zdarzeń są widoczne błędy System. IO. IOException. Błędy mówią, że na dysku jest za mało miejsca.
 
-- **Przyczyna**. Na dysku jest za mało miejsca.
+- **Przyczyna**. Na dysku nie ma wystarczającej ilości miejsca.
 
-- **Rozpoznawanie**. Utwórz więcej miejsca na dysku, na którym znajduje się katalogu % TEMP %.
+- **Rozwiązanie**. Utwórz więcej miejsca na dysku, na którym znajduje się katalog% TEMP%.
 
-### <a name="sync-stuck"></a> Moje grupy synchronizacji jest zablokowany w stanie przetwarzania
+### <a name="sync-stuck"></a>Moja grupa synchronizacji jest zablokowana w stanie przetwarzania
 
-Grupą synchronizacji w SQL Data Sync był w stanie przetwarzania przez długi czas. Nie odpowiada na **zatrzymać** polecenia i dzienniki przedstawiają żadnych nowych wpisów.
+Grupa synchronizacji w SQL Data Sync była w stanie przetwarzania przez długi czas. Nie odpowiada na polecenie **zatrzymania** , a w dziennikach nie są wyświetlane żadne nowe wpisy.
 
-Dowolne z następujących warunków może prowadzić do grupy synchronizacji jest zablokowana w stanie przetwarzania:
+Jeden z następujących warunków może spowodować zablokowanie grupy synchronizacji w stanie przetwarzania:
 
 - **Przyczyna**. Agent klienta jest w trybie offline
 
-- **Rozpoznawanie**. Upewnij się, że agent klienta jest w trybie online, a następnie spróbuj ponownie.
+- **Rozwiązanie**. Upewnij się, że agent klienta jest w trybie online, a następnie spróbuj ponownie.
 
 - **Przyczyna**. Brak agenta klienta lub został on odinstalowany.
 
-- **Rozpoznawanie**. Jeśli agent klienta został odinstalowany lub brakuje go z innego powodu:
+- **Rozwiązanie**. Jeśli agent klienta został odinstalowany lub brakuje go z innego powodu:
 
     1. Usuń plik XML agenta z folderu instalacji usługi SQL Data Sync, jeśli plik istnieje.
     1. Zainstaluj agenta na komputerze lokalnym (może to być ten sam lub inny komputer). Następnie prześlij klucz agenta wygenerowany w portalu dla agenta, który jest widoczny jako będący w trybie offline.
 
 - **Przyczyna**. Usługa SQL Data Sync jest zatrzymana.
 
-- **Rozpoznawanie**. Uruchom ponownie usługę SQL Data Sync.
+- **Rozwiązanie**. Uruchom ponownie usługę SQL Data Sync.
 
-    1. W **Start** menu, wyszukaj **usług**.
-    1. W wynikach wyszukiwania wybierz **usług**.
-    1. Znajdź **SQL Data Sync** usługi.
-    1. Jeśli stan usługi **zatrzymane**, kliknij prawym przyciskiem myszy nazwę usługi, a następnie wybierz **Start**.
+    1. W menu **Start** Wyszukaj pozycję **usługi**.
+    1. W wynikach wyszukiwania wybierz pozycję **usługi**.
+    1. Znajdź usługę **SQL Data Sync** .
+    1. Jeśli stan usługi jest **zatrzymany**, kliknij prawym przyciskiem myszy nazwę usługi, a następnie wybierz polecenie **Uruchom**.
 
 > [!NOTE]
-> Jeśli powyższych informacji nie wychodzenia grupy synchronizacji stan przetwarzania, Microsoft Support zresetować stan grupy synchronizacji. Aby mieć swój status grupy synchronizacji resetowania, w [forum usługi Azure SQL Database](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted), Utwórz wpis. We wpisie obejmują identyfikator subskrypcji i identyfikator grupy synchronizacji dla grupy, która powinna zostać zresetowana. Inżynier firmy Microsoft Support odpowie na ogłoszenie i powiadomi Cię o tym, kiedy stan został zresetowany.
+> Jeśli poprzednie informacje nie przeniesieją grupy synchronizacji poza stan przetwarzania, pomoc techniczna firmy Microsoft może zresetować stan grupy synchronizacji. Aby zresetować stan grupy synchronizacji, na [forum Azure SQL Database](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)Utwórz wpis. W wpisie Uwzględnij Identyfikator subskrypcji i identyfikator grupy synchronizacji dla grupy, które muszą zostać zresetowane. Inżynier pomoc techniczna firmy Microsoft będzie odpowiadał na Twoje ogłoszenie i informuje o tym, kiedy stan zostanie zresetowany.
 
-### <a name="sync-baddata"></a> Widzę błędnych danych w tabeli
+### <a name="sync-baddata"></a>Widzę błędne dane w moich tabelach
 
-Jeśli tabele mają taką samą nazwę, ale które są ze schematów innej bazy danych są uwzględnione w synchronizacji, zostanie wyświetlony błędne dane w tabelach po synchronizacji.
+Jeśli w synchronizacji są uwzględniane tabele o tej samej nazwie, ale które pochodzą z różnych schematów bazy danych, podczas synchronizacji są widoczne błędne dane w tabelach.
 
-- **Przyczyna**. SQL Data Sync procesie inicjowania obsługi używa tych samych tabelach śledzenia dla tabel, które mają taką samą nazwę, ale które są w różnych schematach. W związku z tym zmiany z obu tabel są uwzględniane w tej samej tabeli śledzenia. Powoduje to zmiany błędne dane podczas synchronizacji.
+- **Przyczyna**. Proces aprowizacji SQL Data Sync używa tych samych tabel śledzenia dla tabel o tej samej nazwie, które znajdują się w różnych schematach. Z tego powodu zmiany z obu tabel zostaną odzwierciedlone w tej samej tabeli śledzenia. Powoduje to błędne zmiany danych podczas synchronizacji.
 
-- **Rozpoznawanie**. Upewnij się, że nazwy tabel, które są zaangażowane w synchronizacji są różne, nawet jeśli tabele należą do różnych schematów w bazie danych.
+- **Rozwiązanie**. Upewnij się, że nazwy tabel, które są objęte synchronizacją, są inne, nawet jeśli tabele należą do różnych schematów w bazie danych.
 
-### <a name="sync-pkdata"></a> Widzę niespójność danych klucza podstawowego po pomyślnej synchronizacji
+### <a name="sync-pkdata"></a>Po pomyślnym zsynchronizowaniu widzę niespójne dane klucza podstawowego
 
-Synchronizacji zostanie zgłoszone jako operacja się powiedzie i dziennik nie zawiera żadnych wierszy nie powiodło się lub pominięta, ale można zaobserwować, że danymi klucza podstawowego jest niespójny między bazami danych w grupie synchronizacji.
+Synchronizacja jest raportowana jako pomyślna, a dziennik nie zawiera żadnych elementów zakończonych niepowodzeniem lub pominiętych, ale należy zauważyć, że dane klucza podstawowego są niespójne wśród baz danych w grupie synchronizacji.
 
-- **Przyczyna**. Ten wynik jest celowe. Zmiany w dowolnej kolumny klucza podstawowego spowodować niespójność danych w wierszach, w którym klucz podstawowy został zmieniony.
+- **Przyczyna**. Wynika to z projektu. Zmiany w kolumnie klucza podstawowego powodują niespójne dane w wierszach, w których zmieniono klucz podstawowy.
 
-- **Rozpoznawanie**. Aby uniknąć tego problemu, upewnij się, że żadne dane w kolumnie klucza podstawowego jest zmieniany. Aby rozwiązać ten problem, po zdarzeniu, należy usunąć wiersza, który ma niespójne dane ze wszystkich punktów końcowych w grupie synchronizacji. Następnie można ponownie wstawić wiersza.
+- **Rozwiązanie**. Aby uniknąć tego problemu, upewnij się, że nie zmieniono danych w kolumnie klucza podstawowego. Aby rozwiązać ten problem po jego wystąpieniu, Usuń wiersz, który zawiera niespójne dane ze wszystkich punktów końcowych w grupie synchronizacji. Następnie ponownie Wstaw wiersz.
 
-### <a name="sync-perf"></a> Czy mogę zobaczyć znaczne pogorszenie wydajności
+### <a name="sync-perf"></a>Widzę znaczącą spadek wydajności
 
-Wydajność ulega znacznej degradacji, prawdopodobnie w punkcie, gdzie jeszcze nie można otworzyć Interfejs użytkownika usługi Data Sync.
+Wydajność jest znacznie istotna, prawdopodobnie do momentu, w którym nie można nawet otworzyć interfejsu użytkownika synchronizacji danych.
 
-- **Przyczyna**. Najbardziej prawdopodobną przyczyną jest pętlą synchronizacji. Pętla synchronizacji występuje po grupie synchronizacji przy synchronizacji A wyzwala grupy synchronizacji przez synchronizacji B, który następnie wyzwala A. grupy synchronizacji przy synchronizacji Rzeczywistych sytuacji może być bardziej skomplikowane i może obejmować więcej niż dwie grupy synchronizacji w pętli. Problem polega na to cykliczne wyzwolenie synchronizacji, która jest spowodowany przez grupy synchronizacji nakładających się wzajemnie.
+- **Przyczyna**. Najbardziej prawdopodobną przyczyną jest pętla synchronizacji. Pętla synchronizacji występuje, gdy grupa synchronizacji przez synchronizację wyzwala synchronizację według grupy synchronizacji B, która następnie wyzwala synchronizację według grupy synchronizacji A. Rzeczywista sytuacja może być bardziej złożona i może zawierać więcej niż dwie grupy synchronizacji w pętli. Problem polega na tym, że istnieje cykliczne wyzwalanie synchronizacji spowodowane przez grupy synchronizacji nakładające się na siebie nawzajem.
 
-- **Rozpoznawanie**. Najlepsze poprawka jest zapobieganie. Upewnij się, że nie masz odwołania cykliczne w grupach synchronizacji. Nie można zsynchronizować wszystkie wiersze, która jest synchronizowana według jedną grupę synchronizacji przez inną grupę synchronizacji.
+- **Rozwiązanie**. Najlepszym rozwiązaniem jest zapobieganie. Upewnij się, że w grupach synchronizacji nie ma odwołań cyklicznych. Żaden wiersz synchronizowany przez jedną grupę synchronizacji nie może zostać zsynchronizowany przez inną grupę synchronizacji.
 
-### <a name="sync-nulls"></a> Pojawia się następujący komunikat: "Nie można wstawić wartości NULL w kolumnie \<kolumny >. Kolumna nie dopuszcza wartości null." Co to znaczy, i jak to naprawić? 
+### <a name="sync-nulls"></a>Zobaczym następujący komunikat: "Nie można wstawić wartości null do kolumny Column \<>. Kolumna nie zezwala na wartości nulls. " Co to znaczy i jak można rozwiązać ten problem? 
 Ten komunikat o błędzie wskazuje, że wystąpił jeden z dwóch następujących problemów:
--  Tabela nie ma klucza podstawowego. Aby rozwiązać ten problem, należy dodać klucz podstawowy do wszystkich tabel, które synchronizowania.
--  Brak klauzuli WHERE w instrukcji CREATE INDEX. Synchronizacja danych nie obsługuje tego warunku. Aby rozwiązać ten problem, usuń klauzulę WHERE, lub ręcznie wprowadzić zmiany do wszystkich baz danych. 
+-  Tabela nie ma klucza podstawowego. Aby rozwiązać ten problem, należy dodać klucz podstawowy do wszystkich tabel, które są synchronizowane.
+-  W instrukcji CREATE INDEX znajduje się klauzula WHERE. Synchronizacja danych nie obsługuje tego warunku. Aby rozwiązać ten problem, Usuń klauzulę WHERE lub ręcznie wprowadź zmiany we wszystkich bazach danych. 
  
-### <a name="sync-circ"></a> Jak synchronizacja danych obsługuje odwołania cykliczne? Oznacza to, kiedy te same dane jest synchronizowana w wielu grupach synchronizacji i ulega ciągłym zmianom w wyniku?
-Synchronizacja danych nie obsługuje odwołań cyklicznych. Należy ich unikać. 
+### <a name="sync-circ"></a>Jak synchronizacja danych obsługuje odwołania cykliczne? Oznacza to, że gdy te same dane są synchronizowane w wielu grupach synchronizacji i ciągle nie zmieniają się w wyniku?
+Synchronizacja danych nie obsługuje odwołań cyklicznych. Pamiętaj, aby je uniknąć. 
 
-## <a name="client-agent-issues"></a>Problemy dotyczące agenta klienta
+## <a name="client-agent-issues"></a>Problemy z agentem klienta
 
-Aby rozwiązać problemy z agenta klienta, zobacz [wystawia Rozwiązywanie problemów z agenta synchronizacji danych](sql-database-data-sync-agent.md#agent-tshoot).
+Aby rozwiązać problemy z agentem klienta, zobacz [Rozwiązywanie problemów z agentem synchronizacji danych](sql-database-data-sync-agent.md#agent-tshoot).
 
-## <a name="setup-and-maintenance-issues"></a>Problemy dotyczące instalacji i konserwacji
+## <a name="setup-and-maintenance-issues"></a>Problemy z instalacją i konserwacją
 
-- [Otrzymuję komunikat "dysk mało miejsca na"](#setup-space)
+- [Otrzymuję komunikat "Brak miejsca na dysku"](#setup-space)
 
-- [Nie można usunąć Moja grupa synchronizacji](#setup-delete)
+- [Nie można usunąć grupy synchronizacji](#setup-delete)
 
-- [I nie można wyrejestrować z lokalnej bazy danych programu SQL Server](#setup-unreg)
+- [Nie można wyrejestrować lokalnej bazy danych SQL Server](#setup-unreg)
 
-- [I nie ma wystarczających uprawnień do uruchamiania usług systemowych](#setup-perms)
+- [Nie mam wystarczających uprawnień do uruchamiania usług systemowych](#setup-perms)
 
-- [Bazy danych ma stan "Przestarzałe"](#setup-date)
+- [Stan bazy danych jest nieaktualny.](#setup-date)
 
-- [Grupa synchronizacji ma stan "Przestarzałe"](#setup-date2)
+- [Stan grupy synchronizacji to "nieaktualna"](#setup-date2)
 
-- [Nie można usunąć grupy synchronizacji w ciągu trzech minut odinstalowanie lub zatrzymanie agenta](#setup-delete2)
+- [Nie można usunąć grupy synchronizacji w ciągu trzech minut od odinstalowania lub zatrzymywania agenta](#setup-delete2)
 
-- [Co się stanie, gdy przywrócić utracony lub uszkodzony bazy danych?](#setup-restore)
+- [Co się stanie w przypadku przywrócenia utraconej lub uszkodzonej bazy danych?](#setup-restore)
 
-### <a name="setup-space"></a> Otrzymuję komunikat "dysk mało miejsca na"
+### <a name="setup-space"></a>Otrzymuję komunikat "Brak miejsca na dysku"
 
-- **Przyczyna**. Może zostać wyświetlony komunikat "dysk wolne miejsce", jeśli pozostawieniu plików, które muszą zostać usunięte. Może to być spowodowane przez oprogramowanie antywirusowe lub pliki są otwarte w przypadku usunięcia próbą wykonania operacji.
+- **Przyczyna**. Komunikat "Brak miejsca na dysku" może pojawić się, gdy należy usunąć pozostałościowe pliki. Może to być spowodowane przez oprogramowanie antywirusowe lub pliki są otwarte w przypadku próby usunięcia operacji usuwania.
 
-- **Rozpoznawanie**. Ręcznie usuń synchronizować pliki, które znajdują się w folderze % temp % (`del \*sync\* /s`). Następnie można usunąć podkatalogi w folderze % temp %.
+- **Rozwiązanie**. Ręcznie usuń pliki synchronizacji, które znajdują się w folderze% temp%`del \*sync\* /s`(). Następnie usuń podkatalogi w folderze% temp%.
 
 > [!IMPORTANT]
-> Nie usuwaj żadnych plików, w trakcie synchronizacji.
+> Nie usuwaj plików, gdy synchronizacja jest w toku.
 
-### <a name="setup-delete"></a> Nie można usunąć Moja grupa synchronizacji
+### <a name="setup-delete"></a>Nie można usunąć grupy synchronizacji
 
-Próba usunięcia grupy synchronizacji kończy się niepowodzeniem. Dowolne z poniższych scenariuszy może spowodować awarię, aby usunąć grupę synchronizacji:
+Próba usunięcia grupy synchronizacji nie powiedzie się. Niektóre z następujących scenariuszy mogą spowodować niepowodzenie usunięcia grupy synchronizacji:
 
 - **Przyczyna**. Agent klienta jest w trybie offline.
 
-- **Rozpoznawanie**. Upewnij się, że agent klienta jest w trybie online, a następnie spróbuj ponownie.
+- **Rozwiązanie**. Upewnij się, że agent klienta jest w trybie online, a następnie spróbuj ponownie.
 
 - **Przyczyna**. Brak agenta klienta lub został on odinstalowany.
 
-- **Rozpoznawanie**. Jeśli agent klienta został odinstalowany lub brakuje go z innego powodu:  
+- **Rozwiązanie**. Jeśli agent klienta został odinstalowany lub brakuje go z innego powodu:  
     a. Usuń plik XML agenta z folderu instalacji usługi SQL Data Sync, jeśli plik istnieje.  
     b. Zainstaluj agenta na komputerze lokalnym (może to być ten sam lub inny komputer). Następnie prześlij klucz agenta wygenerowany w portalu dla agenta, który jest widoczny jako będący w trybie offline.
 
 - **Przyczyna**. Baza danych jest w trybie offline.
 
-- **Rozpoznawanie**. Upewnij się, że baz danych SQL i baz danych programu SQL Server wszystkie online.
+- **Rozwiązanie**. Upewnij się, że bazy danych SQL i bazy danych SQL Server są wszystkie w trybie online.
 
-- **Przyczyna**. Grupy synchronizacji jest aprowizowania lub synchronizowanie.
+- **Przyczyna**. Grupa synchronizacji jest inicjowana lub synchronizowana.
 
-- **Rozpoznawanie**. Poczekaj na zakończenie procesu aprowizacji lub synchronizacji, a następnie ponów próbę usuwania grupy synchronizacji.
+- **Rozwiązanie**. Poczekaj, aż zakończy się proces aprowizacji lub synchronizacji, a następnie ponów próbę usunięcia grupy synchronizacji.
 
-### <a name="setup-unreg"></a> I nie można wyrejestrować z lokalnej bazy danych programu SQL Server
+### <a name="setup-unreg"></a>Nie można wyrejestrować lokalnej bazy danych SQL Server
 
-- **Przyczyna**. Najprawdopodobniej chcesz wyrejestrować bazy danych, która została już usunięta.
+- **Przyczyna**. Najprawdopodobniej próbujesz wyrejestrować bazę danych, która została już usunięta.
 
-- **Rozpoznawanie**. Aby wyrejestrować lokalnej bazy danych programu SQL Server, wybierz bazę danych, a następnie wybierz pozycję **wymusić usunięcie**.
+- **Rozwiązanie**. Aby wyrejestrować lokalną bazę danych SQL Server, wybierz bazę danych, a następnie wybierz pozycję **Wymuś usunięcie**.
 
-  Jeśli ta operacja nie powiedzie się usunąć bazę danych z grupy synchronizacji:
+  Jeśli ta operacja nie spowoduje usunięcia bazy danych z grupy synchronizacji:
 
-  1. Zatrzymaj i ponownie uruchom usługę hosta agenta klienta:  
-    a. Wybierz **Start** menu.  
-    b. W polu wyszukiwania wprowadź **services.msc**.  
-    c. W **programy** sekcji wyszukiwanie wyników okienku kliknij dwukrotnie **usług**.  
-    d. Kliknij prawym przyciskiem myszy **SQL Data Sync** usługi.  
-    e. Jeśli usługa jest uruchomiona, zatrzymaj ją.  
-    f. Kliknij prawym przyciskiem myszy usługę, a następnie wybierz **Start**.  
-    g. Sprawdź, czy baza danych jest nadal zarejestrowany. Jeśli nie jest już zarejestrowany, wszystko będzie gotowe. W przeciwnym razie przejdź do następnego kroku.
-  1. Otwórz aplikację agenta klienta (SqlAzureDataSyncAgent).
-  1. Wybierz **edytowanie poświadczeń**, a następnie wprowadź poświadczenia dla bazy danych.
-  1. Przejdź do wyrejestrowania.
+  1. Zatrzymaj, a następnie ponownie uruchom usługę hosta agenta klienta:  
+    a. Wybierz menu **Start** .  
+    b. W polu wyszukiwania wpisz polecenie **Services. msc**.  
+    c. W sekcji **programy** okienka wyników wyszukiwania kliknij dwukrotnie pozycję **usługi**.  
+    d. Kliknij prawym przyciskiem myszy usługę **SQL Data Sync** .  
+    e. Jeśli usługa jest uruchomiona, Zatrzymaj ją.  
+    f. Kliknij prawym przyciskiem myszy usługę, a następnie wybierz polecenie **Uruchom**.  
+    g. Sprawdź, czy baza danych jest nadal zarejestrowana. Jeśli nie jest już zarejestrowany, oznacza to, że wszystko jest gotowe. W przeciwnym razie przejdź do następnego kroku.
+  1. Otwórz aplikację agent klienta (SqlAzureDataSyncAgent).
+  1. Wybierz pozycję **Edytuj poświadczenia**, a następnie wprowadź poświadczenia dla bazy danych.
+  1. Kontynuuj wyrejestrowywanie.
 
-### <a name="setup-perms"></a> I nie ma wystarczających uprawnień do uruchamiania usług systemowych
+### <a name="setup-perms"></a>Nie mam wystarczających uprawnień do uruchamiania usług systemowych
 
 - **Przyczyna**. Ten błąd występuje w dwóch sytuacjach:
   -   Nazwa użytkownika i/lub hasło są niepoprawne.
-  -   Określone konto użytkownika nie ma wystarczających uprawnień, aby zalogować się jako usługa.
+  -   Określone konto użytkownika nie ma wystarczających uprawnień do logowania się jako usługa.
 
-- **Rozpoznawanie**. Przyznanie poświadczeń log na as-a-service, aby konto użytkownika:
+- **Rozwiązanie**. Przyznaj do konta użytkownika poświadczenia logowania jako usługa:
 
-  1. Przejdź do **Start** > **Panel sterowania** > **narzędzia administracyjne** > **zasady zabezpieczeń lokalnych**  >  **Zasady lokalne** > **użytkownika usługi Rights Management**.
-  1. Wybierz **Zaloguj się jako usługa**.
-  1. W **właściwości** okna dialogowego Dodaj konto użytkownika.
+  1. Wybierzkolejno pozycje **Start** > **panel** > sterowania**Narzędzia** > administracyjne**lokalne zasady zabezpieczeń** > użytkownika Rights Management. > 
+  1. Wybierz pozycję **Zaloguj się jako usługa**.
+  1. W oknie dialogowym **Właściwości** Dodaj konto użytkownika.
   1. Wybierz **Zastosuj**, a następnie wybierz pozycję **OK**.
   1. Zamknij wszystkie okna.
 
-### <a name="setup-date"></a> Bazy danych ma stan "Przestarzałe"
+### <a name="setup-date"></a>Stan bazy danych jest nieaktualny.
 
-- **Przyczyna**. SQL Data Sync spowoduje usunięcie bazy danych, które są w trybie offline z usługi w ciągu 45 dni lub więcej (zliczane od chwili, gdy baza danych przeszedł do trybu offline). Jeśli bazy danych jest w trybie offline, przez co najmniej 45 dni, a następnie powróci do trybu online, jego stan to **nieaktualne**.
+- **Przyczyna**. SQL Data Sync usuwa bazy danych, które były w trybie offline z usługi przez 45 dni lub więcej (zliczane od czasu przekroczenia bazy danych w trybie offline). Jeśli baza danych jest w trybie offline przez 45 dni lub więcej, a następnie wróci do trybu online, jego **stan jest**nieaktualny.
 
-- **Rozpoznawanie**. Możesz uniknąć **nieaktualne** stanu, zapewniając, że żadna z baz danych do trybu offline co najmniej 45 dni.
+- **Rozwiązanie**. Można uniknąć nieaktualnego stanu, upewniając się, że żadna z baz danych nie przejdzie do trybu offline przez 45 dni lub dłużej.
 
-  Jeśli stan bazy danych jest **nieaktualne**:
+  Jeśli stan bazy danych jest nieaktualny **:**
 
-  1. Usuń bazę danych, która ma **nieaktualne** stan z grupy synchronizacji.
-  1. Dodawanie bazy danych ponownie do grupy synchronizacji.
+  1. Usuń bazę danych z nieaktualnego stanu z grupy synchronizacji.
+  1. Dodaj bazę danych z powrotem do grupy synchronizacji.
 
   > [!WARNING]
-  > Utracisz wszystkie zmiany wprowadzone do tej bazy danych, podczas gdy była w trybie offline.
+  > Utracisz wszystkie zmiany wprowadzone do tej bazy danych, gdy była ona w trybie offline.
 
-### <a name="setup-date2"></a> Grupa synchronizacji ma stan "Przestarzałe"
+### <a name="setup-date2"></a>Stan grupy synchronizacji to "nieaktualna"
 
-- **Przyczyna**. Jeśli co najmniej jedną zmianę nie dotyczą okres przechowywania całej 45 dni, grupą synchronizacji może stać się nieaktualne.
+- **Przyczyna**. Jeśli co najmniej jedna zmiana nie zostanie zastosowana w całym okresie przechowywania wynoszącym 45 dni, Grupa synchronizacji może stać się nieaktualna.
 
-- **Rozpoznawanie**. Aby uniknąć **nieaktualne** stan grupy synchronizacji, sprawdź wyniki zadań synchronizacji w podglądzie historii w regularnych odstępach czasu. Zbadać i rozwiązać wszelkie zmiany, których nie można zastosować.
+- **Rozwiązanie**. Aby uniknąć nieaktualnego stanu grupy synchronizacji, należy regularnie przeanalizować wyniki zadań synchronizacji w podglądzie historii. Zbadaj i rozwiąż wszelkie zmiany, które nie zostały zastosowane.
 
-  Jeśli stan grupą synchronizacji **nieaktualne**, Usuń grupę synchronizacji, a następnie utwórz je ponownie.
+  Jeśli stan grupy synchronizacji jest nieaktualny, Usuń grupę synchronizacji, a następnie utwórz ją ponownie.
 
-### <a name="setup-delete2"></a> Nie można usunąć grupy synchronizacji w ciągu trzech minut odinstalowanie lub zatrzymanie agenta
+### <a name="setup-delete2"></a>Nie można usunąć grupy synchronizacji w ciągu trzech minut od odinstalowania lub zatrzymywania agenta
 
-Nie można usunąć grupy synchronizacji, w ciągu trzech minut odinstalowanie lub zatrzymanie skojarzone agenta klienta SQL Data Sync.
+Nie można usunąć grupy synchronizacji w ciągu trzech minut od odinstalowania lub zatrzymywania skojarzonego SQL Data Sync agenta klienta.
 
-- **Rozpoznawanie**.
+- **Rozwiązanie**.
 
-  1. Usuń grupy synchronizacji, gdy agenci synchronizacji skojarzone są w trybie online (zalecane).
-  1. Jeśli agent jest w trybie offline, ale jest zainstalowany, przenieś ją w trybie online na komputerze lokalnym. Poczekaj, aż stan agenta, aby pojawiało się jako **Online** w portalu usługi SQL Data Sync. Następnie można usunąć grupy synchronizacji.
-  1. Jeśli agent jest w trybie offline, ponieważ zostało odinstalowane:  
+  1. Usuń grupę synchronizacji, gdy skojarzone agenci synchronizacji są w trybie online (zalecane).
+  1. Jeśli Agent jest w trybie offline, ale jest zainstalowany, przełącz go w tryb online na komputerze lokalnym. Poczekaj na wyświetlenie stanu agenta jako **online** w portalu SQL Data Sync. Następnie Usuń grupę synchronizacji.
+  1. Jeśli Agent jest w trybie offline, ponieważ został odinstalowany:  
     a.  Usuń plik XML agenta z folderu instalacji usługi SQL Data Sync, jeśli plik istnieje.  
     b.  Zainstaluj agenta na komputerze lokalnym (może to być ten sam lub inny komputer). Następnie prześlij klucz agenta wygenerowany w portalu dla agenta, który jest widoczny jako będący w trybie offline.  
     c. Spróbuj usunąć grupę synchronizacji.
 
-### <a name="setup-restore"></a> Co się stanie, gdy przywrócić utracony lub uszkodzony bazy danych?
+### <a name="setup-restore"></a>Co się stanie w przypadku przywrócenia utraconej lub uszkodzonej bazy danych?
 
-W przypadku utraty lub uszkodzenia bazy danych jest przywrócenie z kopii zapasowej, może to być rozbieżności danych w grupy synchronizacji, do których należy bazy danych.
+W przypadku przywrócenia utraconej lub uszkodzonej bazy danych z kopii zapasowej może istnieć niezbieżność danych w grupach synchronizacji, do których należy baza danych.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat SQL Data Sync zobacz:
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat SQL Data Sync, zobacz:
 
 -   Omówienie — [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](sql-database-sync-data.md) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)
 -   Konfigurowanie synchronizacji danych
@@ -250,12 +249,12 @@ Aby uzyskać więcej informacji na temat SQL Data Sync zobacz:
         -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Agent synchronizacji danych — [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md) (Agent synchronizacji danych dla usługi Azure SQL Data Sync)
 -   Najlepsze rozwiązania — [Best practices for Azure SQL Data Sync](sql-database-best-practices-data-sync.md) (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)
--   Monitor — [dzienniki monitora SQL Data Sync za pomocą usługi Azure Monitor](sql-database-sync-monitor-oms.md)
+-   Monitor- [monitor SQL Data Sync z dziennikami Azure monitor](sql-database-sync-monitor-oms.md)
 -   Aktualizowanie schematu synchronizacji
     -   Za pomocą języka Transact-SQL — [Automate the replication of schema changes in Azure SQL Data Sync](sql-database-update-sync-schema.md) (Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync)
     -   Używanie programu PowerShell — [Używanie programu PowerShell do zaktualizowania schematu synchronizacji w istniejącej grupie synchronizacji](scripts/sql-database-sync-update-schema.md)
 
-Aby uzyskać więcej informacji o usłudze SQL Database zobacz:
+Aby uzyskać więcej informacji na temat SQL Database, zobacz:
 
 -   [Omówienie usługi SQL Database](sql-database-technical-overview.md)
 -   [Database Lifecycle Management (Zarządzanie cyklem życia bazy danych)](https://msdn.microsoft.com/library/jj907294.aspx)

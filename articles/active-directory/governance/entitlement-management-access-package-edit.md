@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489207"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618370"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Edytuj istniejący pakiet dostępu i Zarządzaj nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
 
@@ -38,7 +38,7 @@ W tym artykule opisano sposób edytowania istniejących pakietów dostępu i zar
 
 Rola zasobu to kolekcja uprawnień skojarzonych z zasobem. Aby udostępnić zasoby użytkownikom do żądania, należy dodać role zasobów do pakietu dostępu. Można dodawać role zasobów dla grup, aplikacji i witryn programu SharePoint.
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -62,7 +62,7 @@ Zarządzanie prawami może automatycznie dodawać użytkowników do grupy, gdy p
 Możesz wybrać dowolną grupę Office 365 lub grupę zabezpieczeń usługi Azure AD.  Administratorzy mogą dodać dowolną grupę do wykazu; Właściciele wykazu mogą dodać dowolną grupę do wykazu, jeśli są właścicielami grupy. Podczas wybierania grupy należy pamiętać o następujących ograniczeniach usługi Azure AD:
 
 - Gdy użytkownik, łącznie z gościem, jest dodawany jako członek do grupy, zobaczy wszystkie pozostałe elementy członkowskie tej grupy.
-- Usługa Azure AD nie może zmienić członkostwa w grupie, która została zsynchronizowana z systemem Windows Server Active Directory przy użyciu Azure AD Connect.  
+- Usługa Azure AD nie może zmienić członkostwa w grupie, która została zsynchronizowana z systemem Windows Server Active Directory przy użyciu Azure AD Connect lub która została utworzona w usłudze Exchange Online jako grupa dystrybucyjna.  
 - Członkostwa w grupach dynamicznych nie można zaktualizować przez dodanie lub usunięcie elementu członkowskiego, więc członkostwa w grupie dynamicznej nie są odpowiednie do użytku z zarządzaniem prawami.
 
 1. Na stronie **Dodaj rolę zasobów do pakietu dostępu** kliknij pozycję **grupy** , aby otworzyć okienko Wybieranie grup.
@@ -136,7 +136,7 @@ Usługa Azure AD może automatycznie przypisywać użytkownikom dostęp do witry
 
 ## <a name="remove-resource-roles"></a>Usuń role zasobów
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -158,7 +158,7 @@ Na poniższym diagramie przedstawiono proces wysokiego poziomu służący do two
 
 ![Tworzenie procesu zasad](./media/entitlement-management-access-package-edit/policy-process.png)
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -178,7 +178,7 @@ Na poniższym diagramie przedstawiono proces wysokiego poziomu służący do two
 
 Zasady można edytować w dowolnym momencie. Jeśli zmienisz datę wygaśnięcia zasad, Data wygaśnięcia żądań, które już oczekują na zatwierdzenie lub zatwierdzonego stanu, nie ulegnie zmianie.
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -200,7 +200,7 @@ Zasady można edytować w dowolnym momencie. Jeśli zmienisz datę wygaśnięcia
 
 W niektórych przypadkach może być konieczne bezpośrednie przypisanie określonych użytkowników do pakietu dostępu, dzięki czemu użytkownicy nie muszą przechodzić przez proces żądania pakietu dostępu. Aby bezpośrednio przypisywać użytkowników, pakiet dostępu musi mieć zasady umożliwiające bezpośrednie przypisania administratora.
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -228,7 +228,7 @@ W niektórych przypadkach może być konieczne bezpośrednie przypisanie określ
 
 ## <a name="view-who-has-an-assignment"></a>Wyświetl, kto ma przypisanie
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -242,13 +242,13 @@ W niektórych przypadkach może być konieczne bezpośrednie przypisanie określ
 
     Aby wyświetlić dodatkowe szczegóły dotyczące błędów dostarczania, można zlokalizować odpowiednie żądanie użytkownika na stronie **żądania** .
 
-1. Aby wyświetlić wygasłe przypisania, kliknij stan filtru i wybierz pozycję wygasłe.
+1. Aby wyświetlić wygasłe przypisania, kliknij stan filtru i wybierzpozycję wygasłe.
 
 1. Aby pobrać plik CSV z filtrowanej listy, kliknij przycisk **Pobierz**.
 
 ## <a name="view-requests"></a>Wyświetl żądania
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -260,7 +260,7 @@ W niektórych przypadkach może być konieczne bezpośrednie przypisanie określ
 
 ## <a name="view-a-requests-delivery-errors"></a>Wyświetl błędy dostarczania żądania
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -270,7 +270,7 @@ W niektórych przypadkach może być konieczne bezpośrednie przypisanie określ
 
 1. Wybierz żądanie, które chcesz wyświetlić.
 
-    Jeśli żądanie zawiera błędy dostarczania, stan żądania zostanie wystawiony,  a podstan zostanie **częściowo dostarczony**.
+    Jeśli żądanie zawiera błędy dostarczania, stan żądania zostanie wystawiony, a podstan zostanie **częściowo dostarczony**.
 
     Jeśli występują błędy dostarczania, w okienku szczegółów żądania zostanie wyliczona liczba błędów dostarczania.
 
@@ -280,7 +280,7 @@ W niektórych przypadkach może być konieczne bezpośrednie przypisanie określ
 
 Można anulować tylko oczekujące żądanie, które nie zostało jeszcze dostarczone.
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -296,7 +296,7 @@ Można anulować tylko oczekujące żądanie, które nie zostało jeszcze dostar
 
 Większość użytkowników w katalogu może zalogować się do portalu My Access i automatycznie wyświetlić listę pakietów dostępu, których mogą żądać. Jednak w przypadku użytkowników zewnętrznego partnera biznesowego, którzy nie znajdują się jeszcze w Twoim katalogu, należy wysłać im link umożliwiający zażądanie pakietu dostępu. O ile pakiet dostępu jest włączony dla użytkowników zewnętrznych i masz zasady dla katalogu użytkownika zewnętrznego, użytkownik zewnętrzny może użyć linku Portal dostępu do aplikacji, aby zażądać pakietu dostępu.
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -312,7 +312,7 @@ Większość użytkowników w katalogu może zalogować się do portalu My Acces
 
 Pakiety dostępu są domyślnie odnajdywane. Oznacza to, że jeśli zasady zezwalają użytkownikowi na żądanie pakietu dostępu, automatycznie zobaczą pakiet dostępu wymieniony w portalu mojego dostępu.
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -330,7 +330,7 @@ Pakiety dostępu są domyślnie odnajdywane. Oznacza to, że jeśli zasady zezwa
 
 Pakiet dostępu można usunąć tylko wtedy, gdy nie ma aktywnych przypisań użytkownika.
 
-**Rola wymagana wstępnie:** Administrator użytkowników, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -346,7 +346,7 @@ Pakiet dostępu można usunąć tylko wtedy, gdy nie ma aktywnych przypisań uż
 
 W obszarze Zarządzanie prawami usługa Azure AD będzie przetwarzać zmiany zbiorcze dotyczące przypisywania i zasobów w pakietach dostępu kilka razy dziennie. Dlatego w przypadku przypisania lub zmiany ról zasobów pakietu dostępu może upłynąć nawet 24 godziny, gdy zmiana zostanie wprowadzona w usłudze Azure AD, a także czas, w którym konieczne jest propagowanie tych zmian do innych usług online firmy Microsoft lub połączonej aplikacji SaaS wolumin. Jeśli zmiana ma wpływ tylko na kilka obiektów, zmiana będzie prawdopodobnie trwać tylko kilka minut w usłudze Azure AD, po której inne składniki usługi Azure AD będą wykrywać zmiany i aktualizować aplikacje SaaS. Jeśli zmiana wpłynie na tysiące obiektów, zmiana będzie trwać dłużej. Jeśli na przykład masz pakiet dostępu z 2 aplikacjami i przypisaniami użytkowników 100 i zdecydujesz się dodać rolę witryny programu SharePoint do pakietu dostępu, może się zdarzyć, że wszyscy użytkownicy będą częścią tej roli witryny programu SharePoint. Postęp można monitorować w dzienniku inspekcji usługi Azure AD, dzienniku aprowizacji usługi Azure AD oraz w dziennikach inspekcji witryny programu SharePoint.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Dodawanie właściciela katalogu lub Menedżera pakietów programu Access](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Proces żądania i powiadomienia e-mail](entitlement-management-process.md)

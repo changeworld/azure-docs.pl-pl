@@ -1,9 +1,9 @@
 ---
-title: Konfigurowanie tryby sieci dla usługi kontenerów Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować różne tryby sieci, które są obsługiwane przez usługę Azure Service Fabric.
+title: Konfigurowanie trybów sieciowych dla usług Azure Service Fabric Container Services | Microsoft Docs
+description: Dowiedz się, jak skonfigurować różne tryby sieci obsługiwane przez usługę Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 2dcb678e8350ae0de3317db3682f0e51e27ab6f5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d749e1355e69ad93c8c211474043f88127ec76f0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621933"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599387"
 ---
-# <a name="service-fabric-container-networking-modes"></a>Tryby sieci kontenera usługi Service Fabric
+# <a name="service-fabric-container-networking-modes"></a>Service Fabric tryby sieci kontenera
 
-Klaster usługi Azure Service Fabric dla kontenera usługi używa **translatora adresów sieciowych** tryb sieci domyślnie. Gdy więcej niż jedna usługa kontener nasłuchuje na ten sam port jest używany tryb translatora adresów sieciowych, mogą wystąpić błędy wdrażania. Aby zapewnić obsługę wielu usług kontener nasłuchuje na tym samym porcie, Usługa Service Fabric oferuje **Otwórz** tryb sieci (w wersji 5.7 lub nowszej). W trybie otwartego każda usługa kontenera ma wewnętrzny dynamicznie przypisany adres IP, który obsługuje wiele usług, które nasłuchuje na tym samym porcie.  
+Klaster Service Fabric platformy Azure dla usług kontenerów domyślnie używa trybu sieci **NAT** . Gdy więcej niż jedna usługa kontenera nasłuchuje na tym samym porcie, a tryb NAT jest używany, mogą wystąpić błędy wdrażania. Aby obsługiwać wiele usług kontenerów nasłuchujących na tym samym porcie, Service Fabric oferuje tryb otwartej sieci (wersje 5,7 i nowsze). W trybie otwartym każda usługa kontenera ma wewnętrzny, dynamicznie przypisany adres IP, który obsługuje wiele usług nasłuchujących na tym samym porcie.  
 
-Jeśli masz jedną usługę kontenera przy użyciu statycznego punktu końcowego w manifeście usługi można utworzysz i usuniesz nowe usługi przy użyciu Otwórz tryb bez błędy związane z wdrażaniem. Tego samego pliku docker-compose.yml można również za pomocą mapowania portu statycznego do utworzenia wielu usług.
+Jeśli masz jedną usługę kontenera ze statycznym punktem końcowym w manifeście usługi, możesz tworzyć i usuwać nowe usługi przy użyciu trybu otwartego bez błędów wdrażania. Ten sam plik Docker-Compose. yml może być również używany z mapowaniami portów statycznych do tworzenia wielu usług.
 
-Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do innego węzła w klastrze, adres IP zmienia się. Z tego powodu nie zaleca się przy użyciu przydzielony dynamicznie adres IP usługi kontenerów. Dla potrzeb odnajdowania usługi należy używać tylko Usługa nazewnictwa usługi Service Fabric lub usługi DNS. 
+Po ponownym uruchomieniu lub przeniesieniu usługi kontenera do innego węzła w klastrze adres IP ulega zmianie. Z tego powodu nie zaleca się używania dynamicznie przypisanego adresu IP do odnajdowania usług kontenerów. Do odnajdowania usług należy używać tylko Usługa nazewnictwa Service Fabric lub usługi DNS. 
 
 >[!WARNING]
->Platforma Azure zezwoli daje w sumie 65 356 adresy IP na sieć wirtualną. Suma liczba węzłów i liczbę wystąpień usługi kontenera, (które korzystają z Otwórz tryb) nie może przekraczać 65 356 adresów IP w sieci wirtualnej. W przypadku scenariuszy o wysokiej gęstości, firma Microsoft zaleca tryb sieci translatora adresów sieciowych. Ponadto inne zależności, np. moduł równoważenia obciążenia będzie mieć inne [ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits) wziąć pod uwagę. Obecnie maksymalnie 50 adresy IP na węzeł zostały sprawdzone i sprawdzone stabilne. 
+>System Azure umożliwia łączną liczbę adresów IP 65 356 dla każdej sieci wirtualnej. Suma liczby węzłów i liczby wystąpień usługi kontenera (używających trybu otwierania) nie może przekraczać 65 356 adresów IP w ramach sieci wirtualnej. W przypadku scenariuszy o dużej gęstości zalecamy użycie trybu sieci NAT. Ponadto inne zależności, takie jak moduł równoważenia obciążenia, będą miały inne [ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits) , które należy wziąć pod uwagę. Obecnie testy do 50 adresów IP na węzeł zostały przetestowane i sprawdzone jako stabilne. 
 >
 
-## <a name="set-up-open-networking-mode"></a>Konfigurowanie Otwórz tryb sieci
+## <a name="set-up-open-networking-mode"></a>Konfigurowanie trybu otwierania sieci
 
-1. Konfigurowanie szablonu usługi Azure Resource Manager. W **element fabricSettings** sekcji zasobów klastra, Włącz usługi DNS i adresów IP dostawcy: 
+1. Skonfiguruj szablon Azure Resource Manager. W sekcji **fabricSettings** zasobu klastra Włącz usługę DNS i dostawcę IP: 
 
     ```json
     "fabricSettings": [
@@ -69,9 +69,9 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
             ],
     ```
     
-2. Skonfiguruj profil sieci części zasobu zestawu skalowania maszyn wirtualnych. Dzięki temu wiele adresów IP, należy skonfigurować na każdym węźle klastra. Poniższy przykład ustawia pięciu adresów IP w każdym węźle klastra systemu Windows/Linux usługi Service Fabric. Masz pięć wystąpień usługi nasłuchuje na porcie w każdym węźle. Aby pięć adresów IP, być dostępny z usługi Azure Load Balancer, należy zarejestrować pięć adresów IP w puli adresów zaplecza modułu równoważenia obciążenia platformy Azure, jak pokazano poniżej.  Należy również dodać zmienne na początku w sekcji zmiennych szablonu.
+2. Skonfiguruj sekcję profil sieciowy zasobu zestawu skalowania maszyn wirtualnych. Dzięki temu można skonfigurować wiele adresów IP w każdym węźle klastra. W poniższym przykładzie ustawiono pięć adresów IP na węzeł dla klastra Service Fabric systemu Windows/Linux. W każdym węźle można nasłuchiwać pięciu wystąpień usługi. Aby można było uzyskać dostęp do pięciu adresów IP z Azure Load Balancer, należy zarejestrować pięć adresów IP w puli adresów zaplecza Azure Load Balancer, jak pokazano poniżej.  Należy również dodać zmienne na początku szablonu w sekcji zmienne.
 
-    Tę sekcję należy dodać do zmiennych:
+    Dodaj tę sekcję do zmiennych:
 
     ```json
     "variables": {
@@ -92,7 +92,7 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
     }
     ```
     
-    Tę sekcję należy dodać do zasobu zestawu skalowania maszyn wirtualnych:
+    Dodaj tę sekcję do zasobu zestawu skalowania maszyn wirtualnych:
 
     ```json   
     "networkProfile": {
@@ -198,11 +198,11 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
               }
    ```
  
-3. Tylko Windows klastrów Skonfiguruj regułę sieciowej grupy zabezpieczeń (NSG) platformy Azure, która otwiera port UDP/53 dla sieci wirtualnej, z następującymi wartościami:
+3. W przypadku klastrów systemu Windows należy skonfigurować regułę sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) platformy Azure otwierającą port UDP/53 dla sieci wirtualnej przy użyciu następujących wartości:
 
-   |Ustawienie |Wartość | |
+   |Ustawienie |Value | |
    | --- | --- | --- |
-   |Priorytet |2000 | |
+   |Priority |2000 | |
    |Name (Nazwa) |Custom_Dns  | |
    |Source |VirtualNetwork | |
    |Miejsce docelowe | VirtualNetwork | |
@@ -210,7 +210,7 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
    |Action | Allow  | |
    | | |
 
-4. Określ tryb sieci w manifeście aplikacji dla każdej usługi: `<NetworkConfig NetworkType="Open">`. **Otwórz** sieć trybu wyników w usłudze wprowadzenie dedykowany adres IP. Jeśli tryb nie jest określona, domyślnie Usługa **translatora adresów sieciowych** trybu. W poniższym przykładzie manifest `NodeContainerServicePackage1` i `NodeContainerServicePackage2` usług można każdego nasłuchiwania na tym samym porcie (obie te usługi nasłuchują na `Endpoint1`). Jeśli nie określono tryb otwarcia sieci, `PortBinding` konfiguracji nie może być określony.
+4. Określ tryb sieci w manifeście aplikacji dla każdej usługi: `<NetworkConfig NetworkType="Open">`. **Otwórz** tryb sieci wyniki w usłudze przy użyciu dedykowanego adresu IP. Jeśli tryb nie jest określony, domyślnie jest używany tryb **translatora adresów sieciowych** . W poniższym przykładzie `NodeContainerServicePackage1` manifestu usługi i `NodeContainerServicePackage2` mogą nasłuchiwać każdego nasłuchiwania na tym samym porcie (obie usługi nasłuchują `Endpoint1`na). W przypadku określenia trybu otwierania sieci należy `PortBinding` określić konfiguracje.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -239,13 +239,13 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
     </ApplicationManifest>
     ```
 
-    Możesz mieszać i dopasowywać różne tryby sieci w usługach w ramach aplikacji w przypadku klastra Windows. Niektóre usługi mogą używać Otwórz tryb, podczas gdy inne osoby w trybie translatora adresów sieciowych. Gdy usługa jest skonfigurowana do używania trybu translatora adresów sieciowych, numer portu, którego nasłuchuje usługa musi być unikatowa.
+    Można mieszać i dopasowywać różne tryby sieci między usługami w aplikacji dla klastra systemu Windows. Niektóre usługi mogą korzystać z trybu otwartego, podczas gdy inne korzystają z trybu translatora adresów sieciowych. Gdy usługa jest skonfigurowana do korzystania z trybu NAT, port, na którym nasłuchuje usługa, musi być unikatowa.
 
     >[!NOTE]
-    >W klastrach systemu Linux mieszanie tryby sieci dla różnych usług nie jest obsługiwane. 
+    >W klastrach systemu Linux Mieszanie trybów sieciowych dla różnych usług nie jest obsługiwane. 
     >
 
-5. Gdy **Otwórz** wybrania trybu **punktu końcowego** definicji w manifeście usługi jawnie powinien wskazywać pakietu kodu odpowiadający punktu końcowego, nawet jeśli pakiet usługi ma tylko jeden kod pakiet w nim. 
+5. Po wybraniu trybu **otwartego** definicja **punktu końcowego** w manifeście usługi powinna jawnie wskazywać pakiet kodu odpowiadający punktowi końcowemu, nawet jeśli pakiet usługi zawiera tylko jeden pakiet kodu. 
    
    ```xml
    <Resources>
@@ -255,7 +255,7 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
    </Resources>
    ```
    
-6. Dla Windows ponowne uruchomienie maszyny Wirtualnej spowoduje, że otwartej sieci do odtworzenia. Ma to rozwiązać problemu bazowego w stos sieciowy. Domyślnym zachowaniem jest ponownie utworzyć w sieci. Jeśli to zachowanie musi być wyłączona, następującą konfigurację można następuje uaktualnienie konfiguracji.
+6. W przypadku systemu Windows ponowne uruchomienie maszyny wirtualnej spowoduje odtworzenie otwartej sieci. Jest to ograniczenie podstawowego problemu w stosie sieci. Domyślnym zachowaniem jest ponowne utworzenie sieci. Jeśli takie zachowanie musi zostać wyłączone, można użyć poniższej konfiguracji, a następnie uaktualnić konfigurację.
 
 ```json
 "fabricSettings": [
@@ -273,6 +273,6 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
  
 ## <a name="next-steps"></a>Następne kroki
 * [Informacje o modelu aplikacji usługi Service Fabric](service-fabric-application-model.md)
-* [Dowiedz się więcej o zasoby manifestu usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
-* [Wdrażanie kontenera Windows w usłudze Service Fabric w systemie Windows Server 2016](service-fabric-get-started-containers.md)
-* [Wdrażanie kontenera platformy Docker w usłudze Service Fabric w systemie Linux](service-fabric-get-started-containers-linux.md)
+* [Dowiedz się więcej o zasobach manifestu usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
+* [Wdrażanie kontenera systemu Windows w celu Service Fabric w systemie Windows Server 2016](service-fabric-get-started-containers.md)
+* [Wdrażanie kontenera platformy Docker w celu Service Fabric w systemie Linux](service-fabric-get-started-containers-linux.md)

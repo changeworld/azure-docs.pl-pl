@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych do indeksu wyszukiwania przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sposobu wypychania lub skopiować dane do indeksu usługi Azure search za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych do indeksu wyszukiwania przy użyciu Azure Data Factory | Microsoft Docs
+description: Informacje o sposobie wypychania lub kopiowania danych do indeksu usługi Azure Search przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,46 +10,46 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: faf0cab55ec0cef034638d218f2172f3676ff39b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: edf475ac11168c33a6b11ccda3482ac44579e8d8
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245107"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726218"
 ---
-# <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopiowanie danych do indeksu usługi Azure Search przy użyciu usługi Azure Data Factory
+# <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopiowanie danych do indeksu Azure Search przy użyciu Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-azure-search-connector.md)
 > * [Bieżąca wersja](connector-azure-search.md)
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory, aby skopiować dane do indeksu usługi Azure Search. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych do indeksu Azure Search. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do indeksu usługi Azure Search. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane można kopiować z dowolnego obsługiwanego źródłowego magazynu danych do indeksu Azure Search. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika usługi Azure Search.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania Data Factory jednostek specyficznych dla łącznika Azure Search.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Następujące właściwości są obsługiwane przez usługę Azure Search połączone:
+Następujące właściwości są obsługiwane dla Azure Search połączonej usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **AzureSearch** | Yes |
-| url | Adres URL dla usługi Azure Search. | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **AzureSearch** | Yes |
+| url | Adres URL usługi Azure Search. | Tak |
 | key | Klucz administratora dla usługi Azure Search. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 > [!IMPORTANT]
-> Podczas kopiowania danych z magazynem danych w chmurze w usłudze Azure Search indeks w usłudze Azure Search połączoną usługę, należy można znaleźć środowiska Azure Integration Runtime za pomocą jawnego regionu w connactVia. Ustaw region, który znajduje się usługi Azure Search. Dowiedz się więcej z [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
+> Podczas kopiowania danych z magazynu danych w chmurze do Azure Search index, w Azure Search połączonej usłudze należy odwołać się do Azure Integration Runtime z jawnym regionem w connactVia. Ustaw region jako ten, w którym znajduje się Azure Search. Dowiedz się więcej z [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
 
 **Przykład:**
 
@@ -75,14 +75,14 @@ Następujące właściwości są obsługiwane przez usługę Azure Search połą
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Azure Search.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Azure Search.
 
-Aby skopiować dane do usługi Azure Search, obsługiwane są następujące właściwości:
+Aby skopiować dane do Azure Search, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **AzureSearchIndex** | Yes |
-| indexName | Nazwa indeksu usługi Azure Search. Fabryki danych nie powoduje utworzenia indeksu. Indeks musi istnieć w usłudze Azure Search. | Yes |
+| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **AzureSearchIndex** | Tak |
+| indexName | Nazwa indeksu Azure Search. Data Factory nie tworzy indeksu. Indeks musi istnieć w Azure Search. | Yes |
 
 **Przykład:**
 
@@ -91,12 +91,13 @@ Aby skopiować dane do usługi Azure Search, obsługiwane są następujące wła
     "name": "AzureSearchIndexDataset",
     "properties": {
         "type": "AzureSearchIndex",
+        "typeProperties" : {
+            "indexName": "products"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Search linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties" : {
-            "indexName": "products"
         }
    }
 }
@@ -104,32 +105,32 @@ Aby skopiować dane do usługi Azure Search, obsługiwane są następujące wła
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwane przez usługę Azure Search źródło.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez Azure Search źródło.
 
-### <a name="azure-search-as-sink"></a>Usługa Azure Search jako ujście
+### <a name="azure-search-as-sink"></a>Azure Search jako ujścia
 
-Aby skopiować dane do usługi Azure Search, należy ustawić typ źródłowego w działaniu kopiowania, aby **AzureSearchIndexSink**. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
+Aby skopiować dane do Azure Search, ustaw typ źródła w działaniu Copy na **AzureSearchIndexSink**. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **AzureSearchIndexSink** | Yes |
-| writeBehavior | Określa, czy należy scalić lub Zastąp, jeśli istnieje już dokument w indeksie. Zobacz [właściwość WriteBehavior](#writebehavior-property).<br/><br/>Dozwolone wartości to: **Scal** (ustawienie domyślne) i **przekazywanie**. | Nie |
-| writeBatchSize | Przekazywanie danych do indeksu usługi Azure Search, gdy writeBatchSize osiągnie rozmiar buforu. Zobacz [właściwość WriteBatchSize](#writebatchsize-property) Aby uzyskać szczegółowe informacje.<br/><br/>Dozwolone wartości to: liczba całkowita od 1 do 1000; domyślna to 1000. | Nie |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **AzureSearchIndexSink** | Yes |
+| writeBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. Zobacz [Właściwość WriteBehavior](#writebehavior-property).<br/><br/>Dozwolone wartości to: **Scal** (ustawienie domyślne) i **przekazywanie**. | Nie |
+| writeBatchSize | Przekazuje dane do indeksu Azure Search, gdy rozmiar buforu osiągnie writeBatchSize. Aby uzyskać szczegółowe informacje, zobacz [Właściwość WriteBatchSize](#writebatchsize-property) .<br/><br/>Dozwolone wartości to: integer od 1 do 1 000; wartość domyślna to 1000. | Nie |
 
 ### <a name="writebehavior-property"></a>Właściwość WriteBehavior
 
-AzureSearchSink wykonuje operację UPSERT podczas zapisywania danych. Innymi słowy podczas zapisywania dokumentu, jeśli klucz dokumentu już istnieje w indeksie usługi Azure Search, usługa Azure Search aktualizuje istniejący dokument, a nie zostanie zgłoszony wyjątek konflikt.
+AzureSearchSink upserts podczas zapisywania danych. Innymi słowy podczas pisania dokumentu, jeśli klucz dokumentu istnieje już w indeksie Azure Search, Azure Search aktualizuje istniejący dokument zamiast zgłaszania wyjątku konfliktu.
 
-AzureSearchSink zawiera następujące dwa zachowania upsert (przy użyciu zestawu SDK AzureSearch):
+AzureSearchSink udostępnia następujące dwa zachowania upsert (przy użyciu zestawu SDK AzureSearch):
 
-- **Scal**: łączenie wszystkich kolumn w nowym dokumencie z istniejącymi. Dla kolumn o wartości null w nowy dokument wartość w istniejącym są zachowywane.
-- **Przekaż**: Nowy dokument zastąpi istniejącą. Dla kolumn nie jest określona w nowy dokument wartość jest równa null, czy ma wartość inną niż null w istniejący dokument, lub nie.
+- **Scalanie**: Połącz wszystkie kolumny w nowym dokumencie z istniejącym elementem. W przypadku kolumn o wartości null w nowym dokumencie jest zachowywana wartość w istniejącej.
+- **Przekaż**: Nowy dokument zastępuje istniejący. W przypadku kolumn nieokreślonych w nowym dokumencie wartość jest ustawiana na wartość null niezależnie od tego, czy w istniejącym dokumencie istnieje wartość inna niż null.
 
-Domyślnym zachowaniem jest **scalania**.
+Zachowanie domyślne jest **scalane**.
 
 ### <a name="writebatchsize-property"></a>Właściwość WriteBatchSize
 
-Usługa Azure Search obsługuje pisanie dokumentów jako zadania wsadowego. Partii może zawierać od 1 do 1000 akcji. Akcja obsługuje jeden dokument do wykonania tej operacji przekazywania/merge.
+Usługa Azure Search obsługuje pisanie dokumentów jako partii. Zadanie wsadowe może zawierać od 1 do 1 000 akcji. Akcja obsługuje jeden dokument, aby wykonać operację przekazywania/scalania.
 
 **Przykład:**
 
@@ -165,18 +166,18 @@ Usługa Azure Search obsługuje pisanie dokumentów jako zadania wsadowego. Part
 
 ### <a name="data-type-support"></a>Obsługa typu danych
 
-W poniższej tabeli określono, czy typ danych usługi Azure Search jest obsługiwany, czy nie.
+W poniższej tabeli określono, czy Azure Search typ danych jest obsługiwany.
 
-| Typ danych w usłudze Azure Search | Obsługiwane w ujściu usługi Azure Search |
+| Typ danych Azure Search | Obsługiwane w ujściach Azure Search |
 | ---------------------- | ------------------------------ |
-| String | Tak |
-| Int32 | Tak |
-| Int64 | Tak |
-| Double | Tak |
-| Boolean | Tak |
-| DataTimeOffset | Tak |
+| String | T |
+| Int32 | T |
+| Int64 | T |
+| Double | T |
+| Boolean | T |
+| DataTimeOffset | T |
 | String Array | Nie |
-| GeographyPoint | Nie |
+| GeographyPoint względem | Nie |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

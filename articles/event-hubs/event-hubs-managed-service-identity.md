@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/20/2019
 ms.author: shvija
-ms.openlocfilehash: 4e6f16a15547583baab63f452504d36eb2e43b85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dbef1db94d7835bd9326102bd62921c6b3d88d74
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978466"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707064"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Zarządzanych tożsamości dla zasobów platformy Azure z usługą Event Hubs
 
@@ -27,28 +27,28 @@ Za pomocą tożsamości zarządzanych platformy Azure zarządza tą tożsamości
 Gdy jest on skojarzony z tożsamości zarządzanej, klienta usługi Event Hubs można wykonywać operacje wszystkim uprawnionym. Upoważnienia skojarzenie tożsamości zarządzanej przy użyciu ról usługi Event Hubs. 
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role i uprawnienia
-Możesz dodać zarządzanych tożsamości w celu **Event Hubs danych właściciela** roli przestrzeń nazw usługi Event Hubs. Ta rola przyznaje tożsamości, pełną kontrolę nad (Zarządzanie i operacje na danych) na wszystkich jednostek w przestrzeni nazw.
+Można dodać tożsamość zarządzaną do roli **właściciela danych Event Hubs** Event Hubs przestrzeni nazw. Ta rola przyznaje tożsamość, pełną kontrolę (dla operacji zarządzania i danych) we wszystkich jednostkach w przestrzeni nazw.
 
 >[!IMPORTANT]
-> Wcześniej obsługiwane dodawanie zarządzanych tożsamości w celu **właściciela** lub **Współautor** roli. Jednak uprawnienia dostępu do danych **właściciela** i **Współautor** roli nie są już uznawane. Jeśli używasz **właściciela** lub **Współautor** roli, przełącz się do przy użyciu **Event Hubs danych właściciela** roli.
+> Wcześniej obsługujemy Dodawanie tożsamości zarządzanej do roli **właściciela** lub współautora. Jednak uprawnienia dostępu do danych dla roli **właściciela** i współautora nie są już honorowane. Jeśli używasz roli **właściciela** lub współautora, przełącz się do korzystania z roli **właściciela danych Event Hubs** .
 
-Aby użyć nowej wbudowanej roli, wykonaj następujące kroki: 
+Aby użyć nowej wbudowanej roli, wykonaj następujące czynności: 
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2. Przejdź do przestrzeni nazw usługi Event Hubs.
-3. Na **Event Hubs Namespace** wybierz opcję **Control(IAM) dostępu** menu po lewej stronie.
-4. Na **kontrola dostępu (IAM)** wybierz opcję **Dodaj** w **Dodaj przypisanie roli** sekcji. 
+2. Przejdź do przestrzeni nazw Event Hubs.
+3. Na stronie **obszar nazw Event Hubs** wybierz pozycję **Access Control (IAM)** z menu po lewej stronie.
+4. Na stronie **Access Control (IAM)** wybierz pozycję **Dodaj** w sekcji **Dodawanie przypisania roli** . 
 
-    ![Dodawanie przycisku przypisania roli](./media/event-hubs-managed-service-identity/add-role-assignment-button.png)
-5. Na **Dodaj przypisanie roli** wykonaj następujące czynności: 
-    1. Aby uzyskać **roli**, wybierz opcję **właścicielem danych centra zdarzeń Azure**. 
-    2. Wybierz **tożsamości** mają zostać dodane do roli.
+    ![Przycisk Dodaj przypisanie roli](./media/event-hubs-managed-service-identity/add-role-assignment-button.png)
+5. Na stronie **Dodawanie przypisania roli** wykonaj następujące czynności: 
+    1. W obszarze **rola**wybierz pozycję **Azure Event Hubs dane właściciela**. 
+    2. Wybierz **tożsamość** , która ma zostać dodana do roli.
     3. Wybierz pozycję **Zapisz**. 
 
-        ![Rola właściciela danych centra zdarzeń](./media/event-hubs-managed-service-identity/add-role-assignment-dialog.png)
-6. Przełącz się do **przypisań ról** strony i upewnij się, że użytkownik został dodany do **właścicielem danych centra zdarzeń Azure** roli. 
+        ![Rola właściciela danych Event Hubs](./media/event-hubs-managed-service-identity/add-role-assignment-dialog.png)
+6. Przejdź do strony **przypisania ról** i upewnij się, że użytkownik jest dodawany do roli **właściciela danych Event Hubs platformy Azure** . 
 
-    ![Upewnij się, że użytkownik zostanie dodany do roli](./media/event-hubs-managed-service-identity/role-assignments.png)
+    ![Potwierdź, że użytkownik został dodany do roli](./media/event-hubs-managed-service-identity/role-assignments.png)
  
 ## <a name="use-event-hubs-with-managed-identities-for-azure-resources"></a>Usługa Event Hubs z zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -74,13 +74,13 @@ Po włączeniu funkcji nową tożsamość usługi jest tworzone w usłudze Azure
 
 ### <a name="create-a-new-event-hubs-namespace"></a>Utwórz nową przestrzeń nazw usługi Event Hubs
 
-Następnie [tworzenie przestrzeni nazw usługi Event Hubs](event-hubs-create.md). 
+Następnie [Utwórz przestrzeń nazw Event Hubs](event-hubs-create.md). 
 
 Przejdź do obszaru nazw **kontrola dostępu (IAM)** strony w portalu, a następnie kliknij przycisk **Dodaj przypisanie roli** tożsamości zarządzanej, aby dodać **właściciela** roli. Aby to zrobić, wyszukaj nazwę aplikacji sieci web w **Dodaj uprawnienia** panelu **wybierz** pola, a następnie kliknij pozycję. Następnie kliknij przycisk **Save** (Zapisz). Tożsamość zarządzaną w aplikacji internetowej ma dostęp do przestrzeni nazw usługi Event Hubs i Centrum zdarzeń została wcześniej utworzona. 
 
 ### <a name="run-the-app"></a>Uruchamianie aplikacji
 
-Teraz można zmodyfikować domyślnej strony utworzonej aplikacji ASP.NET. Można również użyć kodu aplikacji sieci web z [to repozytorium serwisu GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp). 
+Teraz można zmodyfikować domyślnej strony utworzonej aplikacji ASP.NET. Można również użyć kodu aplikacji sieci web z [to repozytorium serwisu GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp). 
 
 Po uruchomieniu aplikacji, wskazać EventHubsMSIDemo.aspx w przeglądarce. Można również ustawić jako swoją stronę początkową. Kod można znaleźć w pliku EventHubsMSIDemo.aspx.cs. Wynik to aplikacja minimalne sieci web z kilku pól wejścia i **wysyłania** i **otrzymywać** przycisków, które usługi Event hubs do wysyłania lub odbierania zdarzeń. 
 

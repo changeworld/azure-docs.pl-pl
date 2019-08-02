@@ -9,70 +9,70 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4f3e5c1566271573b43e24a1749b42daa7530555
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4a46128d3b0e77ff7921e1f4875c318a95309769
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051953"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598607"
 ---
-# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Zrozumienie rozszerzone możliwości w trybie offline dla urządzeń, moduły i podrzędny urządzenia usługi IoT Edge
+# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Informacje o rozszerzonych możliwościach trybu offline dla urządzeń IoT Edge, modułów i urządzeń podrzędnych
 
-Usługa Azure IoT Edge obsługuje rozszerzonych operacji w trybie offline na urządzeniach usługi IoT Edge i zbyt umożliwia operacje trybu offline na urządzeniach podrzędne — IoT Edge. Tak długo, jak urządzenia usługi IoT Edge miał jedną szansę nawiązać połączenie z Centrum IoT Hub, go i wszystkie podrzędne urządzenia można nadal funkcji z tymczasowymi lub brak połączenia internetowego. 
+Azure IoT Edge obsługuje rozszerzone operacje offline na urządzeniach IoT Edge, a także włącza operacje w trybie offline na nieIoT Edgeych urządzeniach podrzędnych. Tak długo, jak urządzenia usługi IoT Edge miał jedną szansę nawiązać połączenie z Centrum IoT Hub, go i wszystkie podrzędne urządzenia można nadal funkcji z tymczasowymi lub brak połączenia internetowego. 
 
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Gdy urządzenia usługi IoT Edge przechodzi do trybu offline, Centrum usługi IoT Edge przenosi się na trzech ról. Po pierwsze są przechowywane komunikaty, które przejdzie nadrzędnego, a następnie zapisuje te elementy, aż urządzenie połączy się ponownie. Po drugie działa w imieniu usługi IoT Hub do uwierzytelniania modułów i podrzędny urządzeń, dzięki czemu będą one działać. Po trzecie umożliwia komunikację między urządzeniami podrzędne, które normalnie musieli przejść za pomocą usługi IoT Hub. 
+Gdy urządzenie IoT Edge przejdzie w tryb offline, centrum IoT Edge przyjmuje trzy role. Po pierwsze są przechowywane komunikaty, które przejdzie nadrzędnego, a następnie zapisuje te elementy, aż urządzenie połączy się ponownie. Po drugie działa w imieniu usługi IoT Hub do uwierzytelniania modułów i podrzędny urządzeń, dzięki czemu będą one działać. Po trzecie umożliwia komunikację między urządzeniami podrzędne, które normalnie musieli przejść za pomocą usługi IoT Hub. 
 
 Poniższy przykład pokazuje, jak scenariusza użycia usługi IoT Edge działa w trybie offline:
 
 1. **Konfigurowanie urządzeń**
 
-   Urządzenia usługi IoT Edge mają automatycznie możliwości w trybie offline. Aby rozszerzyć tej możliwości do innych urządzeń IoT, należy zadeklarować relacji nadrzędny podrzędny między urządzeniami w usłudze IoT Hub. Następnie możesz skonfigurować urządzenia podrzędnych zaufania urządzenia przypisane nadrzędnego do kierowania komunikacją urządzenia do chmury przez nadrzędne jako brama. 
+   Urządzenia usługi IoT Edge mają automatycznie możliwości w trybie offline. Aby rozszerzyć tej możliwości do innych urządzeń IoT, należy zadeklarować relacji nadrzędny podrzędny między urządzeniami w usłudze IoT Hub. Następnie należy skonfigurować urządzenia podrzędne do ufania przypisanym urządzeniu nadrzędnym i skierowanie komunikacji między urządzeniem a chmurą za pośrednictwem elementu nadrzędnego jako bramy. 
 
-2. **Synchronizacja z usługą IoT Hub**
+2. **Synchronizuj z IoT Hub**
 
    Co najmniej raz po zakończeniu instalacji środowiska uruchomieniowego usługi IoT Edge, urządzenia usługi IoT Edge musi być w trybie online w celu synchronizacji z usługą IoT Hub. W tym synchronizacji urządzenia usługi IoT Edge pobierania szczegółowych informacji o żadnych urządzeń podrzędnych do niej przypisany. Urządzenia usługi IoT Edge jednocześnie możliwość bezpiecznego aktualizuje lokalnej pamięci podręcznej umożliwia operacje trybu offline i umożliwia pobranie ustawień dla lokalnego magazynu danych telemetrycznych wiadomości. 
 
 3. **Przejdź do trybu offline**
 
-   Przy braku połączenia z usługi IoT Hub, urządzenia usługi IoT Edge, jego wdrożone moduły i dowolnego urządzenia IoT elementy podrzędne mogą działać na czas nieokreślony. Moduły i urządzeń podrzędnych można uruchomić i uruchom ponownie, korzystając z uwierzytelniania za pomocą usługi IoT Edge hub podczas w trybie offline. Dane telemetryczne powiązany nadrzędne do usługi IoT Hub są przechowywane lokalnie. Komunikacji między modułami, czy między urządzeniami IoT podrzędne są obsługiwane za pośrednictwem metod bezpośrednich lub wiadomości. 
+   Przy braku połączenia z usługi IoT Hub, urządzenia usługi IoT Edge, jego wdrożone moduły i dowolnego urządzenia IoT elementy podrzędne mogą działać na czas nieokreślony. Moduły i urządzenia podrzędne można uruchomić i uruchomić ponownie, uwierzytelniając się przy użyciu Centrum IoT Edge w trybie offline. Dane telemetryczne powiązany nadrzędne do usługi IoT Hub są przechowywane lokalnie. Komunikacji między modułami, czy między urządzeniami IoT podrzędne są obsługiwane za pośrednictwem metod bezpośrednich lub wiadomości. 
 
-4. **Połącz się ponownie i ponowna synchronizacja z usługą IoT Hub**
+4. **Ponowne łączenie i ponowne synchronizowanie za pomocą IoT Hub**
 
    Po przywróceniu połączenia z usługą IoT Hub ponownej synchronizacji urządzenia usługi IoT Edge. Lokalnie przechowywane komunikaty były dostarczane w tej samej kolejności, w którym zostały zapisane. Wszelkie różnice między żądaną i zgłaszanych właściwości modułów i urządzenia są uzgodnione. Urządzenia usługi IoT Edge aktualizuje wszystkie zmiany do jego zestawu urządzeń IoT przypisane podrzędnych.
 
 ## <a name="restrictions-and-limits"></a>Limity i ograniczenia
 
-Rozszerzone możliwości w trybie offline, opisane w tym artykule są dostępne w [usługi IoT Edge wersji 1.0.4 lub nowszej](https://github.com/Azure/azure-iotedge/releases). Wcześniejszych wersjach mają jakiś podzestaw funkcji w trybie offline. Istniejące usługi IoT Edge urządzenia, które nie mają rozszerzone możliwości w trybie offline nie może zostać uaktualniona, zmieniając wersję środowiska uruchomieniowego, ale musi zostać ponownie skonfigurowany z nową tożsamość urządzenia usługi IoT Edge w celu uzyskania tych funkcji. 
+Rozszerzone możliwości trybu offline opisane w tym artykule są dostępne w [IoT Edge w wersji 1.0.7 lub nowszej](https://github.com/Azure/azure-iotedge/releases). Wcześniejszych wersjach mają jakiś podzestaw funkcji w trybie offline. Istniejące usługi IoT Edge urządzenia, które nie mają rozszerzone możliwości w trybie offline nie może zostać uaktualniona, zmieniając wersję środowiska uruchomieniowego, ale musi zostać ponownie skonfigurowany z nową tożsamość urządzenia usługi IoT Edge w celu uzyskania tych funkcji. 
 
 Rozszerzona pomoc techniczna w trybie offline jest dostępna we wszystkich regionach, w których usługi IoT Hub jest dostępna, **z wyjątkiem** wschodnie stany USA.
 
-Tylko urządzenia — IoT Edge można dodać jako urządzenia podrzędnych. 
+Tylko urządzenia inne niż IoT Edge mogą być dodawane jako urządzenia podrzędne. 
 
 Urządzenia usługi IoT Edge i ich urządzeń przypisanych podrzędne może działać na czas nieokreślony w trybie offline, po zakończeniu synchronizacji początkowej, jednorazowe. Przechowywanie komunikatów zależy jednak od tego, jaki czas wygaśnięcia (TTL), ustawienia i dostępnego miejsca na dysku do przechowywania komunikatów. 
 
-## <a name="set-up-parent-and-child-devices"></a>Konfigurowanie urządzeń nadrzędne i podrzędne
+## <a name="set-up-parent-and-child-devices"></a>Konfigurowanie urządzeń nadrzędnych i podrzędnych
 
-Urządzenia usługi IoT Edge rozszerzyć jej rozszerzone możliwości w trybie offline na urządzeniach IoT podrzędnych należy wykonać dwie czynności. Najpierw należy zadeklarować nadrzędny podrzędny relacje w witrynie Azure portal. Po drugie utworzyć relację zaufania między urządzeniem nadrzędnego i podrzędnego żadnych urządzeń z, a następnie skonfigurować komunikację urządzenia do chmury przechodzić przez nadrzędne jako brama. 
+Aby urządzenie IoT Edge rozszerać swoje rozszerzone możliwości trybu offline na podrzędne urządzenia IoT, należy wykonać dwa kroki. Najpierw Zadeklaruj relacje nadrzędny-podrzędny w Azure Portal. Następnie należy utworzyć relację zaufania między urządzeniem nadrzędnym i wszystkimi urządzeniami podrzędnymi, a następnie skonfigurować komunikację między urządzeniem a chmurą, aby przejść przez element nadrzędny jako bramę. 
 
 ### <a name="assign-child-devices"></a>Przypisz urządzenia podrzędne
 
-Urządzeń podrzędnych może być dowolnym urządzeniu — IoT Edge zarejestrowany w tym samym Centrum IoT Hub. Nadrzędny urządzenia mogą mieć wiele urządzeń podrzędnych, ale urządzenie podrzędny może mieć tylko jedną jednostkę nadrzędną. Dostępne są trzy opcje, aby ustawić podrzędnych urządzenia na urządzeniu usługi edge: za pośrednictwem witryny Azure portal przy użyciu wiersza polecenia platformy Azure lub przy użyciu zestawu SDK usługi IoT Hub. 
+Urządzenia podrzędne mogą być dowolnym urządzeniem innym niż IoT Edge zarejestrowanym w tej samej IoT Hub. Urządzenia nadrzędne mogą mieć wiele urządzeń podrzędnych, ale urządzenie podrzędne ma tylko jeden element nadrzędny. Istnieją trzy opcje ustawiania urządzeń podrzędnych na urządzeniu brzegowym: za pośrednictwem Azure Portal przy użyciu interfejsu wiersza polecenia platformy Azure lub zestawu SDK usługi IoT Hub. 
 
-Poniższe sekcje zawierają przykłady sposobu można zadeklarować relacji nadrzędny/podrzędny w usłudze IoT Hub dla istniejących urządzeń IoT. Jeśli tworzysz nowych tożsamości urządzeń dla dziecka urządzeń, zobacz [uwierzytelnienia podrzędnym urządzenia do usługi Azure IoT Hub](how-to-authenticate-downstream-device.md) Aby uzyskać więcej informacji.
+Poniższe sekcje zawierają przykłady sposobu deklarowania relacji nadrzędny/podrzędny w IoT Hub istniejących urządzeń IoT. Jeśli tworzysz nowe tożsamości urządzeń dla urządzeń podrzędnych, zobacz temat [uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md) , aby uzyskać więcej informacji.
 
-#### <a name="option-1-iot-hub-portal"></a>Opcja 1: Portal usługi IoT Hub
+#### <a name="option-1-iot-hub-portal"></a>Option 1: Portal IoT Hub
 
-Można zadeklarować relacji nadrzędny podrzędny, podczas tworzenia nowego urządzenia. Lub w przypadku istniejących urządzeń można zadeklarować relację ze strony szczegółów urządzenia macierzyste urządzenie usługi IoT Edge lub urządzenia IoT podrzędnego. 
+Można zadeklarować relację nadrzędny-podrzędny podczas tworzenia nowego urządzenia. Lub w przypadku istniejących urządzeń można zadeklarować relację ze strony Szczegóły urządzenia na nadrzędnym urządzeniu IoT Edge lub podrzędnym urządzeniu IoT. 
 
    ![Zarządzanie urządzeniami podrzędnych z poziomu strony szczegółów urządzenia usługi IoT Edge](./media/offline-capabilities/manage-child-devices.png)
 
 
-#### <a name="option-2-use-the-az-command-line-tool"></a>Opcja 2: Użyj `az` narzędzie wiersza polecenia
+#### <a name="option-2-use-the-az-command-line-tool"></a>Opcja 2: Korzystanie z `az` narzędzia wiersza polecenia
 
-Za pomocą [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) z [rozszerzenia IoT](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 lub nowszej), można zarządzać nadrzędny podrzędny relacji z [tożsamości urządzenia](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) podpoleceń polecenia. W poniższym przykładzie użyto zapytania, można przypisać wszystkich urządzeń — IoT Edge w piaście aby ądzenia podrzędnych urządzenia usługi IoT Edge. 
+Korzystając z [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) z [rozszerzeniem IoT](https://github.com/azure/azure-iot-cli-extension) (v 0.7.0 lub nowszy), można zarządzać relacjami nadrzędnych obiektów podrzędnych za pomocą podpoleceń [tożsamości urządzenia](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) . W poniższym przykładzie używa się zapytania do przypisywania wszystkich urządzeń, które nie są IoT Edge w koncentratorze, jako urządzeń podrzędnych urządzenia IoT Edge. 
 
 ```shell
 # Set IoT Edge parent device
@@ -95,35 +95,35 @@ az iot hub device-identity add-children \
   --subscription replace-with-sub-name 
 ```
 
-Możesz zmodyfikować [zapytania](../iot-hub/iot-hub-devguide-query-language.md) można wybrać podzestaw różnych urządzeń. Wykonanie polecenia może potrwać kilka sekund, jeśli określisz duży zbiór urządzeń.
+Możesz zmodyfikować [zapytanie](../iot-hub/iot-hub-devguide-query-language.md) , aby wybrać inny podzbiór urządzeń. Wykonanie polecenia może potrwać kilka sekund w przypadku określenia dużego zestawu urządzeń.
 
-#### <a name="option-3-use-iot-hub-service-sdk"></a>Opcja 3: Użyj zestawu SDK usługi IoT Hub 
+#### <a name="option-3-use-iot-hub-service-sdk"></a>Opcja 3: Korzystanie z zestawu SDK usługi IoT Hub 
 
-Na koniec można zarządzać relacji nadrzędny podrzędny, programowo przy użyciu C#, Java lub Node.js zestawu SDK usługi IoT Hub. Oto [przykład przypisywania urządzenia podrzędnego](https://aka.ms/set-child-iot-device-c-sharp) przy użyciu C# zestawu SDK.
+Można na koniec zarządzać relacjami nadrzędnymi podrzędnymi przy C#użyciu zestawu SDK usługi IoT Hub Java lub Node. js. Oto [przykład przypisywania urządzenia podrzędnego](https://aka.ms/set-child-iot-device-c-sharp) przy użyciu C# zestawu SDK.
 
-### <a name="set-up-the-parent-device-as-a-gateway"></a>Konfigurowanie urządzenia nadrzędnego jako bramy
+### <a name="set-up-the-parent-device-as-a-gateway"></a>Skonfiguruj urządzenie nadrzędne jako bramę
 
-Można potraktować relacji nadrzędny/podrzędny rolę przezroczystej bramy, w którym urządzenie podrzędnych ma własną tożsamość w usłudze IoT Hub, ale komunikuje się za pośrednictwem chmury, za pośrednictwem jego obiektu nadrzędnego. Do bezpiecznej komunikacji urządzenia podrzędnego musi mieć możliwość weryfikacji, że urządzenie nadrzędne pochodzi z zaufanego źródła. W przeciwnym razie innych firm, można skonfigurować złośliwego urządzeń w celu personifikacji rodziców i przechwycić komunikacji. 
+Relację nadrzędny/podrzędny można traktować jako nieprzezroczystą bramę, w której urządzenie podrzędne ma własną tożsamość w IoT Hub ale komunikuje się za pośrednictwem chmury za pośrednictwem jego elementu nadrzędnego. W celu zapewnienia bezpiecznej komunikacji urządzenie podrzędne musi mieć możliwość sprawdzenia, czy urządzenie nadrzędne pochodzi z zaufanego źródła. W przeciwnym razie inne firmy mogą skonfigurować złośliwe urządzenia w celu personifikacji rodziców i przechwycenia komunikacji. 
 
-Jednym ze sposobów tworzenia tej relacji zaufania jest szczegółowo opisane w następujących artykułach: 
+Jednym ze sposobów tworzenia tej relacji zaufania jest szczegółowo opisany w następujących artykułach: 
 * [Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy](how-to-create-transparent-gateway.md)
-* [Podłącz urządzenie podrzędne (podrzędne) do bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md)
+* [Łączenie podrzędnego urządzenia (podrzędnego) z bramą Azure IoT Edge](how-to-connect-downstream-device.md)
 
-## <a name="specify-dns-servers"></a>Określ serwer DNS 
+## <a name="specify-dns-servers"></a>Określ serwery DNS 
 
-W celu poprawy niezawodności, zdecydowanie zaleca się określić adresy serwera DNS, które są używane w danym środowisku. Zobacz dwie opcje [Ustaw serwer DNS w artykuł dotyczący rozwiązywania problemów](troubleshoot.md#resolution-7).
+W celu zwiększenia niezawodności należy określić adresy serwerów DNS używane w danym środowisku. Aby [ustawić serwer DNS w artykule dotyczącym rozwiązywania problemów,](troubleshoot.md#resolution-7)Zobacz dwie opcje.
 
 ## <a name="optional-offline-settings"></a>Opcjonalne ustawienia w trybie offline
 
-Jeśli urządzenie przejdą w tryb offline, urządzenia usługi IoT Edge nadrzędne są przechowywane wszystkie komunikaty z urządzenia do chmury, przed ponownym ustanowieniu połączenia. Moduł usługi IoT Edge hub zarządza przechowywaniem i przesyłanie dalej wiadomości w trybie offline. W przypadku urządzeń, które może przejść do trybu offline przez dłuższy czas należy zoptymalizować wydajność, konfigurując dwa ustawienia Centrum IoT Edge. 
+Jeśli urządzenia przechodzą w tryb offline, urządzenie nadrzędne IoT Edge przechowuje wszystkie komunikaty z urządzenia do chmury do momentu ponownego nawiązania połączenia. Moduł IoT Edge Hub zarządza przechowywaniem i przekazywaniem komunikatów w trybie offline. W przypadku urządzeń, które mogą przechodzić w tryb offline przez dłuższy czas, należy zoptymalizować wydajność, konfigurując dwa IoT Edge ustawienia centrum. 
 
-Po pierwsze wydłużenie czasu na żywo ustawienie, aby Centrum usługi IoT Edge zostanie zachowana, aby komunikaty wystarczająco długi, dla Twojego urządzenia w celu ponownego nawiązania połączenia. Następnie należy dodać dodatkowe miejsce na dysku dla magazynu komunikatów. 
+Najpierw Zwiększ ustawienie czasu wygaśnięcia, aby zapewnić, że usługa IoT Edge Hub będzie utrzymywać wystarczająco dużo pamięci, aby umożliwić ponowne nawiązanie połączenia przez urządzenie. Następnie Dodaj dodatkowe miejsce na dysku do przechowywania komunikatów. 
 
 ### <a name="time-to-live"></a>Czas wygaśnięcia
 
-Czas wygaśnięcia ustawienie to ilość czasu (w sekundach) oczekiwania przez komunikat do dostarczenia przed jego wygaśnięciem. Wartość domyślna to 7200 sekund (2 godziny). Wartość maksymalna jest ograniczona tylko przez wartość maksymalna zmienną całkowitoliczbową, czyli około 2 mld. 
+Czas wygaśnięcia ustawienie to ilość czasu (w sekundach) oczekiwania przez komunikat do dostarczenia przed jego wygaśnięciem. Wartość domyślna to 7200 sekund (2 godziny). Wartość maksymalna jest ograniczona tylko przez maksymalną wartość zmiennej liczb całkowitych, która jest około 2 000 000 000. 
 
-To ustawienie jest żądaną właściwość Centrum IoT Edge, który jest przechowywany w bliźniaczej reprezentacji modułu. Można go skonfigurować w witrynie Azure portal lub bezpośrednio w pliku manifestu wdrożenia. 
+To ustawienie jest odpowiednią właściwością Centrum IoT Edge, które jest przechowywane w postaci dwuosiowego modułu. Można ją skonfigurować w Azure Portal lub bezpośrednio w manifeście wdrożenia. 
 
 ```json
 "$edgeHub": {
@@ -139,9 +139,9 @@ To ustawienie jest żądaną właściwość Centrum IoT Edge, który jest przech
 
 ### <a name="additional-offline-storage"></a>Dodatkowy magazyn w trybie offline
 
-Wiadomości są domyślnie przechowywane w kontenerze Centrum IoT Edge w systemie plików. Jeśli tego ilość miejsca jest niewystarczająca do potrzeb w trybie offline, można przypisać magazyn lokalny na urządzeniu usługi IoT Edge. Utwórz zmienną środowiskową dla Centrum IoT Edge, który wskazuje na folder przechowywania w kontenerze. Następnie użyj opcji tworzenia, aby powiązać ten folder storage do folderu na komputerze hosta. 
+Komunikaty są domyślnie przechowywane w systemie plików kontenerów IoT Edge centrum. Jeśli tego ilość miejsca jest niewystarczająca do potrzeb w trybie offline, można przypisać magazyn lokalny na urządzeniu usługi IoT Edge. Utwórz zmienną środowiskową dla Centrum IoT Edge, która wskazuje folder magazynu w kontenerze. Następnie użyj opcji tworzenia, aby powiązać ten folder storage do folderu na komputerze hosta. 
 
-Można skonfigurować w witrynie Azure portal w zmiennych środowiskowych i opcji tworzenia dla modułu usługi IoT Edge hub **skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge** sekcji. Ewentualnie można skonfigurować go bezpośrednio w pliku manifestu wdrożenia. 
+Zmienne środowiskowe i opcje tworzenia dla modułu IoT Edge Hub można skonfigurować w Azure Portal w sekcji **Konfigurowanie ustawień zaawansowanego środowiska uruchomieniowego Edge** . Ewentualnie można skonfigurować go bezpośrednio w pliku manifestu wdrożenia. 
 
 ```json
 "edgeHub": {
@@ -169,16 +169,16 @@ Można skonfigurować w witrynie Azure portal w zmiennych środowiskowych i opcj
 }
 ```
 
-Zastąp `<HostStoragePath>` i `<ModuleStoragePath>` z hosta i modułu magazynu ścieżka magazynu ścieżki; hosta i moduł musi być ścieżką bezwzględną. Za pomocą opcji tworzenia powiązania ścieżki magazynu hosta i modułów ze sobą. Następnie Utwórz zmienną środowiskową, wskazujący ścieżka magazynu modułu.  
+Zastąp `<HostStoragePath>` i `<ModuleStoragePath>` z hosta i modułu magazynu ścieżka magazynu ścieżki; hosta i moduł musi być ścieżką bezwzględną. W opcjach tworzenia Powiąż wszystkie ścieżki magazynu hosta i modułu. Następnie utwórz zmienną środowiskową, która wskazuje ścieżkę magazynu modułów.  
 
-Na przykład `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` oznacza, że katalog **/etc/iotedge/storage** na hoście systemu jest zamapowany na katalog **/iotedge/storage/** w kontenerze. Lub inny przykład dla systemów Windows, `"Binds":["C:\\temp:C:\\contemp"]` oznacza, że katalog **C:\\temp** na hoście systemu jest zamapowany na katalog **C:\\contemp** w kontenerze. 
+Na przykład oznacza `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` , że katalog **/etc/iotedge/Storage** w systemie hosta jest mapowany do katalogu **/iotedge/Storage/** w kontenerze. Inny przykład dla systemów Windows oznacza, `"Binds":["C:\\temp:C:\\contemp"]` że katalog **c:\\temp** w systemie hosta jest mapowany do katalogu **c\\:** na tymczasowej sekcji kontenera. 
 
-Można także znaleźć więcej szczegółów na temat tworzenia opcje [dokumentacja platformy docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+Więcej informacji na temat opcji tworzenia można znaleźć w dokumentacji [platformy Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat sposobu konfigurowania przezroczystej bramy dla połączeń urządzeń nadrzędne/podrzędne: 
+Dowiedz się więcej o konfigurowaniu przezroczystej bramy dla połączeń urządzeń nadrzędnych/podrzędnych: 
 
 * [Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy](how-to-create-transparent-gateway.md)
-* [Uwierzytelnienia podrzędnym urządzenia do usługi Azure IoT Hub](how-to-authenticate-downstream-device.md)
-* [Podłącz urządzenie z podrzędnych do bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md)
+* [Uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md)
+* [Łączenie urządzenia podrzędnego z bramą Azure IoT Edge](how-to-connect-downstream-device.md)

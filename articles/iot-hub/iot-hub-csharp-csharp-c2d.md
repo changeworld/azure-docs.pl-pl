@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 5a7cb4ecde599a76b2d42cf874420d9cbcfda3d5
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: f8ba9508bdbb7fd436d3b693e638f29bac5065bf
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402645"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618661"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Wysyłanie komunikatów z chmury do urządzenia przy użyciu IoT Hub (.NET)
 
@@ -43,7 +43,7 @@ Na końcu tego samouczka uruchamiasz dwie aplikacje konsolowe programu .NET.
 * **SendCloudToDevice**, który wysyła komunikat z chmury do urządzenia do aplikacji urządzenia za pomocą IoT Hub, a następnie otrzymuje potwierdzenie dostarczenia.
 
 > [!NOTE]
-> IoT Hub obsługuje zestaw SDK dla wielu platform i języków urządzeń (w tym C, Java i JavaScript) za pomocą [zestawów SDK urządzeń usługi Azure IoT](iot-hub-devguide-sdks.md). Instrukcje krok po kroku dotyczące sposobu łączenia urządzenia z tym kodem samouczka i ogólnie do usługi Azure IoT Hub można znaleźć w [przewodniku dewelopera IoT Hub](iot-hub-devguide.md).
+> IoT Hub obsługuje zestaw SDK dla wielu platform i języków urządzeń (w tym C, Java, Python i JavaScript) za pomocą [zestawów SDK urządzeń usługi Azure IoT](iot-hub-devguide-sdks.md). Instrukcje krok po kroku dotyczące sposobu łączenia urządzenia z tym kodem samouczka i ogólnie do usługi Azure IoT Hub można znaleźć w [przewodniku dewelopera IoT Hub](iot-hub-devguide.md).
 >
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:

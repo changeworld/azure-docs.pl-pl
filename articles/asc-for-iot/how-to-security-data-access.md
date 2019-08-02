@@ -1,6 +1,6 @@
 ---
-title: Uzyskiwanie dostępu do danych przy użyciu Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o tym, jak uzyskać dostęp do danych alertów i zalecenia zabezpieczeń po przy użyciu Centrum zabezpieczeń Azure dla IoT.
+title: Uzyskiwanie dostępu do danych za pomocą Azure Security Center dla usługi IoT | Microsoft Docs
+description: Dowiedz się więcej na temat sposobu uzyskiwania dostępu do alertów zabezpieczeń i danych rekomendacji w przypadku korzystania z Azure Security Center dla usługi IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,45 +13,41 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 2d3f3c6ad194ff8c9582f0c9e71a29b37ba5d967
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ddd9b2c8373746a65cd78f0a81b60d097cd9f38
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616751"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597184"
 ---
 # <a name="access-your-security-data"></a>Dostęp do danych zabezpieczeń 
 
-> [!IMPORTANT]
-> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Usługa Azure Security Center (ASC) dla IoT przechowuje alertów zabezpieczeń, zaleceń i danych pierwotnych zabezpieczeń (Jeśli użytkownik chce zapisać ją) w obszarze roboczym usługi Log Analytics.
+Azure Security Center dla usługi IoT przechowuje alerty zabezpieczeń, zalecenia i pierwotne dane zabezpieczeń (Jeśli użytkownik zdecyduje się je zapisać) w obszarze roboczym Log Analytics.
 
 ## <a name="log-analytics"></a>Log Analytics
 
-Aby skonfigurować, który obszar roboczy usługi Log Analytics jest używany:
+Aby skonfigurować, który obszar roboczy Log Analytics jest używany:
 
-1. Otwórz Centrum IoT hub.
-1. Kliknij przycisk **zabezpieczeń**
-2. Kliknij przycisk **ustawienia**i zmień konfigurację obszaru roboczego usługi Log Analytics.
+1. Otwórz Centrum IoT Hub.
+1. Kliknij blok **Przegląd** w sekcji **zabezpieczenia** .
+2. Kliknij pozycję **Ustawienia**, a następnie Zmień konfigurację obszaru roboczego log Analytics.
 
-Dostęp do obszaru roboczego usługi Log Analytics po konfiguracji:
+Aby uzyskać dostęp do alertów i rekomendacji w obszarze roboczym Log Analytics po zakończeniu konfiguracji:
 
-1. Wybierz alert lub zalecenia w ASC dla IoT. 
-2. Kliknij przycisk **dalsze badanie**, następnie kliknij przycisk **urządzeń, które mają ten alert, kliknij tutaj, aby wyświetlić kolumnę DeviceId**.
+1. Wybierz Alert lub zalecenie w Azure Security Center dla IoT. 
+2. Kliknij pozycję **dalsze badanie**, a następnie kliknij, **Aby zobaczyć, które urządzenia mają ten alert kliknij tutaj i Wyświetl kolumnę DeviceID**.
 
-Aby uzyskać więcej informacji o wysyłaniu zapytań do danych z usługi Log Analytics, zobacz [wprowadzenie do zapytań w usłudze Log Analytics](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries).
+Aby uzyskać szczegółowe informacje na temat wykonywania zapytań dotyczących danych z Log Analytics, zobacz [Rozpoczynanie pracy z zapytaniami w log Analytics](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries).
 
 ## <a name="security-alerts"></a>Alerty zabezpieczeń
 
-Alerty zabezpieczeń są przechowywane w _AzureSecurityOfThings.SecurityAlert_ tabeli w obszarze roboczym usługi Log Analytics skonfigurowane dla usługi ASC dla rozwiązania IoT.
+Alerty zabezpieczeń są przechowywane w tabeli _AzureSecurityOfThings. SecurityAlert_ w obszarze roboczym log Analytics skonfigurowanym dla Azure Security Center rozwiązania IoT.
 
-Podana liczba przydatne zapytania, aby pomóc Ci rozpocząć pracę, eksplorowanie alerty zabezpieczeń zostały wykonane następujące kroki.
+Udostępniamy kilka przydatnych zapytań, które ułatwiają rozpoczęcie eksplorowania alertów zabezpieczeń.
 
-### <a name="sample-records"></a>Przykładowe rekordów
+### <a name="sample-records"></a>Przykładowe rekordy
 
 Wybierz kilka losowych rekordów
 
@@ -70,18 +66,18 @@ SecurityAlert
 | take 3
 ```
 
-| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Opis                                             | ExtendedProperties                                                                                                                                                             |
+| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Opis                                             | Właściwości ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-11-18T18:10:29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Atak siłowy powiodło się.           | Atak metodą ataku siłowego Wymuś na urządzeniu zakończyło się powodzeniem        |    {"Pełną Address": "[\"10.165.12.18:\"]", "Nazwy użytkownika": "[\"\"]", "DeviceId": "IoT urządzenia — Linux"}                                                                       |
-| 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Pomyślne logowanie lokalne na urządzeniu      | Wykryto pomyślne lokalne logowanie do urządzenia     | {"Zdalnego Address": "?", "Port zdalny": "", "Portu lokalnego": "", "Login powłoka": "/ bin/su", "Identyfikator procesu logowania": "28207", "Nazwa użytkownika": "osoba atakująca", "DeviceId": "IoT urządzenia — Linux"} |
-| 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Próba logowania lokalnego na urządzeniu nie powiodła się  | Została wykryta próba logowania lokalnego nie powiodło się z urządzeniem |  {"Zdalnego Address": "?", "Port zdalny": "", "Portu lokalnego": "", "Login powłoka": "/ bin/su", "Identyfikator procesu logowania": "22644", "Nazwa użytkownika": "osoba atakująca", "DeviceId": "IoT urządzenia — Linux"} |
+| 2018 R-11-18T18:10:29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Wysoka          | Atak typu "odprowadzenie" zakończył się pomyślnie           | Atak z przeprowadzeniem pełnego wymuszenia na urządzeniu zakończył się pomyślnie        |    {"Pełny adres źródłowy": "[\"10.165.12.18:\"]", "nazwy użytkowników": "[\"\"]", "DeviceID": "IoT-Device-Linux"}                                                                       |
+| 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Wysoka          | Pomyślne logowanie lokalne na urządzeniu      | Wykryto Pomyślne logowanie lokalne na urządzeniu     | {"Adres zdalny": "?", "Port zdalny": "", "Port lokalny": "", "Shell logowania": "/bin/Su", "Identyfikator procesu logowania": "28207", "Nazwa użytkownika": "osoba atakująca", "DeviceId": "IoT-Device-Linux"} |
+| 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Wysoka          | Nieudana próba logowania lokalnego na urządzeniu  | Wykryto nieudaną próbę zalogowania lokalnego do urządzenia |  {"Adres zdalny": "?", "Port zdalny": "", "Port lokalny": "", "Shell logowania": "/bin/Su", "Identyfikator procesu logowania": "22644", "Nazwa użytkownika": "osoba atakująca", "DeviceId": "IoT-Device-Linux"} |
 
-### <a name="device-summary"></a>Podsumowania urządzenia
+### <a name="device-summary"></a>Podsumowanie urządzenia
 
-Wybierz liczbę alertów zabezpieczeń distinct wykryty ostatni tydzień przez Centrum IoT Hub, urządzenia, ważność alertu, typu alertu.
+Pobierz liczbę unikatowych alertów zabezpieczeń wykrytych w ostatnim tygodniu, pogrupowanych według IoT Hub, urządzenia, ważności alertu, typu alertu.
 
 ```
-// Select number of distinct security alerts detected last week by 
+// Get the number of distinct security alerts detected in the last week, grouped by 
 //   IoT hub, device, alert severity, alert type
 //
 SecurityAlert
@@ -95,14 +91,14 @@ SecurityAlert
 
 | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Atak siłowy powiodło się.           | 9   |   
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni        | Próba logowania lokalnego na urządzeniu nie powiodła się  | 242 |    
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | Pomyślne logowanie lokalne na urządzeniu      | 31  |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni        | Crypto Coin Miner                     | 4   |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Wysoka          | Atak typu "odprowadzenie" zakończył się pomyślnie           | 9   |   
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Średni        | Nieudana próba logowania lokalnego na urządzeniu  | 242 |    
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Wysoka          | Pomyślne logowanie lokalne na urządzeniu      | 31  |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Średni        | Miner monety kryptograficznej                     | 4   |
 
-### <a name="iot-hub-summary"></a>Podsumowanie usługi IoT hub
+### <a name="iot-hub-summary"></a>Podsumowanie Centrum IoT
 
-Wybierz liczbę różnych urządzeń, które miały alertów w ostatnim tygodniu, przez Centrum IoT Hub, ważność alertu, typ alertu
+Wybierz wiele różnych urządzeń z alertami w ciągu ostatniego tygodnia według IoT Hub, ważności alertu, typu alertu
 
 ```
 // Select number of distinct devices which had alerts in the last week, by 
@@ -119,18 +115,18 @@ SecurityAlert
 
 | IoTHubId                                                                                                       | AlertSeverity | DisplayName                           | CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Wysoka          | Atak siłowy powiodło się.           | 1          |    
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Średni        | Próba logowania lokalnego na urządzeniu nie powiodła się  | 1          | 
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Wysoka          | Atak typu "odprowadzenie" zakończył się pomyślnie           | 1          |    
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Średni        | Nieudana próba logowania lokalnego na urządzeniu  | 1          | 
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Wysoka          | Pomyślne logowanie lokalne na urządzeniu      | 1          |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Średni        | Crypto Coin Miner                     | 1          |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Średni        | Miner monety kryptograficznej                     | 1          |
 
 ## <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
 
-Zalecenia dotyczące zabezpieczeń są przechowywane w _AzureSecurityOfThings.SecurityRecommendation_ tabeli w obszarze roboczym usługi Log Analytics skonfigurowane dla usługi ASC dla rozwiązania IoT.
+Zalecenia dotyczące zabezpieczeń są przechowywane w tabeli _AzureSecurityOfThings. SecurityRecommendation_ w obszarze roboczym log Analytics skonfigurowanym dla Azure Security Center rozwiązania IoT.
 
-Udostępniliśmy szereg przydatne zapytania, aby ułatwić rozpoczęcie eksplorowania zaleceń dotyczących zabezpieczeń.
+Udostępniamy kilka przydatnych zapytań, które ułatwiają rozpoczęcie eksplorowania zaleceń dotyczących zabezpieczeń.
 
-### <a name="sample-records"></a>Przykładowe rekordów
+### <a name="sample-records"></a>Przykładowe rekordy
 
 Wybierz kilka losowych rekordów
 
@@ -152,15 +148,15 @@ SecurityRecommendation
     
 | TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Opis | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10:21:06.060 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni | Aktywne | Znaleziono reguły zapory ograniczające w łańcuchu danych wejściowych | Reguła zapory znaleziono zawierający warunki dotyczące wzorca dla szerokiego zakresu adresów IP i portów | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
-| 2019-03-22T10:50:27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni | Aktywne | Znaleziono reguły zapory ograniczające w łańcuchu danych wejściowych | Reguła zapory znaleziono zawierający warunki dotyczące wzorca dla szerokiego zakresu adresów IP i portów | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:21:06.060 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Średni | Aktywne | Znaleziono ograniczającą regułę zapory w łańcuchu wejściowym | Znaleziono regułę zapory, która zawiera liberalny wzorzec dla szerokiego zakresu adresów IP lub portów | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:50:27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Średni | Aktywne | Znaleziono ograniczającą regułę zapory w łańcuchu wejściowym | Znaleziono regułę zapory, która zawiera liberalny wzorzec dla szerokiego zakresu adresów IP lub portów | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
 
-### <a name="device-summary"></a>Podsumowania urządzenia
+### <a name="device-summary"></a>Podsumowanie urządzenia
 
-Wybierz liczbę zalecenia dotyczące zabezpieczeń active distinct przez Centrum IoT Hub, urządzenia, zalecenie ważności i typu.
+Uzyskaj liczbę odrębnych zaleceń dotyczących zabezpieczeń, pogrupowanych według IoT Hub, urządzeń, ważności i rodzaju zalecenia.
 
 ```
-// Select number of distinct active security recommendations by 
+// Get the number of distinct active security recommendations, grouped by by 
 //   IoT hub, device, recommendation severity and type
 //
 SecurityRecommendation
@@ -172,15 +168,15 @@ SecurityRecommendation
 
 | IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | 2   |    
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni        | 1 |  
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Wysoka          | 1  |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Średni        | 4   |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Wysoka          | 2   |    
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Średni        | 1 |  
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Wysoka          | 1  |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | < device_name > | Średni        | 4   |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj ASC, aby uzyskać IoT [— omówienie](overview.md)
-- Dowiedz się więcej o ASC IoT [architektury](architecture.md)
-- Poznawanie i eksplorowanie [ASC alertów IoT](concept-security-alerts.md)
-- Poznawanie i eksplorowanie [ASC zalecenie IoT](concept-recommendations.md)
+- Przeczytaj Azure Security Center dla usługi IoT [— Omówienie](overview.md)
+- Dowiedz się więcej o Azure Security Center [architektury](architecture.md) IoT
+- Poznawanie i eksplorowanie [Azure Security Center alertów IoT](concept-security-alerts.md)
+- Poznaj i Eksploruj [Azure Security Center na potrzeby rekomendacji IoT](concept-recommendations.md)

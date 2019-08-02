@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: fd502a308d6298dc2941461632a2832ac336c45c
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: fe24ab21a9a7d227d58e50c58f9aff2bd91e767f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849866"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598557"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>PRZESTARZAŁE Pełny potok ciągłej integracji/ciągłego wdrażania, aby wdrożyć wielokontenerową aplikację na Azure Container Service z aparatem ACS i trybem Docker Swarm przy użyciu usługi Azure DevOps
 
@@ -24,7 +24,7 @@ ms.locfileid: "67849866"
 
 Obecnie, jednym z największych wyzwań podczas tworzenia nowoczesnych aplikacji dla chmury jest możliwość ciągłego dostarczania tych aplikacji. W tym artykule dowiesz się, jak zaimplementować potok ciągłej integracji i ciągłego wdrażania (CI/CD) przy użyciu: 
 * Aparat Azure Container Service z trybem Docker Swarm
-* Azure Container Registry
+* Rejestr kontenerów platformy Azure
 * Azure DevOps
 
 Ten artykuł jest oparty na prostej aplikacji, dostępnej w serwisie [GitHub](https://github.com/jcorioland/MyShop/tree/docker-linux), opracowanej z ASP.NET Core. Aplikacja składa się z czterech różnych usług: trzy internetowe interfejsy API i jeden fronton sieci Web:
@@ -112,7 +112,7 @@ W tym kroku należy skonfigurować potok kompilacji dla projektu usługi Azure D
 
     ![Azure DevOps — konfiguracja zmiennych kompilacji](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 
-5. Na stronie **definicje kompilacji** Otwórz kartę Wyzwalacze  i skonfiguruj kompilację do korzystania z ciągłej integracji z rozwidleniem projektu dla elementu WebShop utworzonego w sekcji wymagania wstępne. Następnie wybierz pozycję **zmiany**w usłudze Batch. Upewnij się, że wybrano opcję *Docker-Linux* jako **specyfikację gałęzi**.
+5. Na stronie **definicje kompilacji** Otwórz kartę Wyzwalacze i skonfiguruj kompilację do korzystania z ciągłej integracji z rozwidleniem projektu dla elementu WebShop utworzonego w sekcji wymagania wstępne. Następnie wybierz pozycję **zmiany**w usłudze Batch. Upewnij się, że wybrano opcję *Docker-Linux* jako **specyfikację gałęzi**.
 
     ![Azure DevOps — konfiguracja repozytorium kompilacji](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github-repo-conf.PNG)
 
@@ -136,7 +136,7 @@ Istnieje pięć obrazów kontenerów do skompilowania dla aplikacji dla *sklepu*
 
 Wymagane są dwa kroki platformy Docker dla każdego obrazu, jeden do skompilowania obrazu, a drugi do wypychania obrazu w usłudze Azure Container Registry. 
 
-1. Aby dodać krok w przepływie pracy kompilacji, kliknij pozycję **+ Dodaj krok kompilacji** i wybierz pozycję Docker.
+1. Aby dodać krok w przepływie pracy kompilacji, kliknij pozycję **+ Dodaj krok kompilacji** iwybierz pozycję Docker.
 
     ![Azure DevOps — Dodawanie kroków kompilacji](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-add-task.png)
 
@@ -199,7 +199,7 @@ Usługa Azure DevOps umożliwia [Zarządzanie wersjami w różnych środowiskach
 
 1. Aby utworzyć potok wersji, kliknij pozycje **wersje** >  **+ wydanie** .
 
-2. Aby skonfigurować źródło artefaktów, kliknij  > pozycję artefakty**Połącz Źródło artefaktu**. W tym miejscu Połącz ten nowy potok wydania z kompilacją zdefiniowaną w poprzednim kroku. Po tym pliku Docker-Compose. yml jest dostępny w procesie zwalniania.
+2. Aby skonfigurować źródło artefaktów, kliknij > pozycję artefakty**Połącz Źródło artefaktu**. W tym miejscu Połącz ten nowy potok wydania z kompilacją zdefiniowaną w poprzednim kroku. Po tym pliku Docker-Compose. yml jest dostępny w procesie zwalniania.
 
     ![Azure DevOps — artefakty wersji](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-artefacts.png) 
 
@@ -212,7 +212,7 @@ Usługa Azure DevOps umożliwia [Zarządzanie wersjami w różnych środowiskach
     ![Azure DevOps — konfiguracja repozytorium kompilacji](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-variables.png)
 
     >[!IMPORTANT]
-    > Jak pokazano na poprzednim ekranie, kliknij pole wyboru  Zablokuj w polu Docker. Password. To ustawienie jest ważne, aby ograniczyć hasło.
+    > Jak pokazano na poprzednim ekranie, kliknij pole wyboru Zablokuj w polu Docker. Password. To ustawienie jest ważne, aby ograniczyć hasło.
     >
 
 ### <a name="define-the-release-workflow"></a>Definiowanie przepływu pracy wydania
@@ -251,6 +251,6 @@ Teraz, po zakończeniu konfiguracji, czas na przetestowanie nowego potoku ciąg�
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać więcej informacji na temat ciągłej integracji/ciągłego wdrażania za pomocą usługi Azure DevOps, zobacz [Omówienie usługi Azure DevOps Build](https://www.visualstudio.com/docs/build/overview).
+* Aby uzyskać więcej informacji na temat ciągłej integracji/ciągłego wdrażania za pomocą usługi Azure DevOps, zobacz artykuł z [dokumentacją Azure Pipelines](/azure/devops/pipelines/?view=azure-devops) .
 * Aby uzyskać więcej informacji o aparacie usługi ACS, zobacz [repozytorium usługi ACS Engine](https://github.com/Azure/acs-engine)w witrynie GitHub.
 * Aby uzyskać więcej informacji o trybie Docker Swarm, zobacz [Omówienie trybu Docker Swarm](https://docs.docker.com/engine/swarm/).

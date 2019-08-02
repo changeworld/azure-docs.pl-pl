@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 7cde18f2da764a055443900e7daf160f72e2eeb5
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68301653"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598950"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Konfigurowanie wizualizacji zależności dla oceny
 
-W tym artykule opisano sposób konfigurowania mapowania zależności w Azure Migrate: Ocena serwera.
+W tym artykule opisano sposób konfigurowania mapowania zależności w Azure Migrate: Server Assessment.
 
 Mapowanie zależności ułatwia wizualizację zależności między maszynami, które mają zostać poddane ocenie i przeprowadzeniem migracji.
 
@@ -31,7 +31,7 @@ Mapowanie zależności ułatwia wizualizację zależności między maszynami, kt
 
 - Upewnij się, że [utworzono](how-to-add-tool-first-time.md) projekt Azure Migrate.
 - Jeśli projekt został już utworzony, upewnij się, że [dodano](how-to-assess.md) Azure Migrate: Narzędzie do oceny serwera.
-- Upewnij się, że maszyny zostały odnalezione w Azure Migrate; w tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Ocena serwera. [Dowiedz się więcej](migrate-appliance.md).
+- Upewnij się, że maszyny zostały odnalezione w Azure Migrate; w tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Server Assessment. [Dowiedz się więcej](migrate-appliance.md).
 
 
 **Funkcje** | **Uwaga**
@@ -39,7 +39,7 @@ Mapowanie zależności ułatwia wizualizację zależności między maszynami, kt
 Dostępność | Wizualizacja zależności nie jest dostępna w Azure Government.
 Mapa usługi | Wizualizacja zależności używa rozwiązania Service Map w dziennikach Azure Monitor. [Service map](../azure-monitor/insights/service-map-configure.md) automatycznie wykrywa i pokazuje połączenia między serwerami.
 Agenci | Aby użyć wizualizacji zależności, Zainstaluj kilka agentów na maszynach, które chcesz zmapować:<br/> - Agent [usługi Azure log Analytics](../azure-monitor/platform/log-analytics-agent.md) (wcześniej określany jako Microsoft Monitoring Agent (MMA).<br/> -Service Map Agent zależności.<br/><br/> Aby zautomatyzować instalację agenta, można użyć narzędzia do wdrażania, takiego jak System Center Configuration Manager lub narzędzia partnerskiego, takiego jak [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), które ma rozwiązanie do wdrażania agenta dla Azure Migrate.
-Agent zależności | Przegląd obsługi agentów zależności dla [systemów Windows](/azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) i [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems).<br/><br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) o używaniu skryptów w celu zainstalowania agenta zależności.
+Agent zależności | Przegląd obsługi agentów zależności dla [systemów Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) i [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems).<br/><br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) o używaniu skryptów w celu zainstalowania agenta zależności.
 Agent Log Analytics (MMA) | [Dowiedz się więcej](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) o metodach instalacji MMA.<br/><br/> W przypadku maszyn monitorowanych przez System Center Operations Manager 2012 R2 lub nowsze nie trzeba instalować agenta MMA. Service Map integruje się z Operations Manager. Integrację można włączyć, korzystając z wskazówek przedstawionych [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Należy jednak pamiętać, że Agent zależności musi być zainstalowany na tych komputerach.<br/><br/> [Zapoznaj](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) się z systemami operacyjnymi Linux obsługiwanymi przez agenta log Analytics.
 Grupy oceny | Grupy, dla których chcesz wizualizować zależności, nie mogą zawierać więcej niż 10 maszyn. Jeśli masz więcej niż 10 maszyn, Podziel je na mniejsze grupy w celu wizualizacji zależności.
 
@@ -50,7 +50,7 @@ Aby można było użyć wizualizacji zależności, należy skojarzyć [obszar ro
 - Możesz dołączyć obszar roboczy tylko w ramach subskrypcji projektu Azure Migrate.
 - Możesz dołączyć istniejący obszar roboczy lub utworzyć nowy.
 - Podczas pierwszego konfigurowania wizualizacji zależności dla komputera należy dołączyć obszar roboczy.
-- Obszar roboczy można dołączyć dopiero po odnalezieniu maszyn w projekcie Azure Migrate. W tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Ocena serwera. [Dowiedz się więcej](migrate-appliance.md).
+- Obszar roboczy można dołączyć dopiero po odnalezieniu maszyn w projekcie Azure Migrate. W tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Server Assessment. [Dowiedz się więcej](migrate-appliance.md).
 
 Dołącz obszar roboczy w następujący sposób:
 
@@ -194,6 +194,6 @@ VMConnection
 | summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Utwórz ocenę](how-to-create-assessment.md) dla grupy.

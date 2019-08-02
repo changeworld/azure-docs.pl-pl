@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie wtyczki kubenet sieci w usłudze Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak skonfigurować wtyczki kubenet (podstawowe) sieci w usłudze Azure Kubernetes Service (AKS) do wdrożenia klastra usługi AKS w istniejącej sieci wirtualnej i podsieci.
+title: Konfigurowanie sieci korzystającą wtyczki kubenet w usłudze Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak skonfigurować sieć korzystającą wtyczki kubenet (podstawowa) w usłudze Azure Kubernetes Service (AKS) w celu wdrożenia klastra AKS w istniejącej sieci wirtualnej i podsieci.
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -9,92 +9,92 @@ ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
 ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615760"
 ---
-# <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Użyj wtyczki kubenet sieci przy użyciu własnych zakresów adresów IP w usłudze Azure Kubernetes Service (AKS)
+# <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Korzystanie z sieci korzystającą wtyczki kubenet z własnymi zakresami adresów IP w usłudze Azure Kubernetes Service (AKS)
 
-Domyślnie AKS klastrów użyj [wtyczki kubenet][kubenet], a siecią wirtualną platformy Azure i podsieć są tworzone dla Ciebie. Za pomocą *wtyczki kubenet*, węzły Uzyskaj adres IP z podsieci sieci wirtualnej platformy Azure. Zasobników otrzymują adres IP z logicznie różnymi przestrzeniami adresowymi w podsieci sieci wirtualnej platformy Azure z węzłów. Translator adresów sieciowych (NAT) jest następnie konfigurowana, tak aby zasobników może dotrzeć do zasobów w sieci wirtualnej platformy Azure. Źródłowy adres IP ruchu jest translatora adresów Sieciowych do podstawowego adresu IP węzła zajmie się. To podejście znacznie zmniejsza liczbę adresów IP, które należy zarezerwować w przestrzeń sieci dla zasobników do użycia.
+Domyślnie klastry AKS korzystają z [korzystającą wtyczki kubenet][kubenet], a sieć wirtualna platformy Azure jest tworzona dla Ciebie. W przypadku *korzystającą wtyczki kubenet*węzły uzyskują adres IP z podsieci sieci wirtualnej platformy Azure. W przypadku odbioru adresów IP od logicznej przestrzeni adresowej do podsieci sieci wirtualnej platformy Azure w węzłach. Następnie można skonfigurować translację adresów sieciowych (NAT), aby umożliwić dostęp do zasobów w sieci wirtualnej platformy Azure. Źródłowy adres IP ruchu to NAT do podstawowego adresu IP węzła. Takie podejście znacznie zmniejsza liczbę adresów IP, które należy zarezerwować w przestrzeni sieciowej, aby można było użyć używanych przez nią zasobników.
 
-Za pomocą [wtyczki Azure Container Networking interfejsu (CNI)][cni-networking], co zasobnika pobiera adres IP z podsieci i są dostępne bezpośrednio. Te adresy IP musi być unikatowa w przestrzeń sieci i muszą być planowane z góry. Każdy węzeł ma parametr konfiguracji maksymalna liczba zasobników, które obsługuje. Równoważną liczbę adresów IP w każdym węźle następnie są zarezerwowane na początku dla tego węzła. Takie podejście wymaga więcej planowania i często prowadzi do wyczerpania adresu IP lub jest potrzebna ponowna kompilacja klastrów w większej podsieci, w miarę wzrostu wymagań aplikacji.
+[Usługa Azure Container Network Interface (CNI)][cni-networking]w każdym przypadku Pobiera adres IP z podsieci i jest dostępny bezpośrednio. Te adresy IP muszą być unikatowe w przestrzeni sieci i muszą być planowane z wyprzedzeniem. Każdy węzeł ma parametr konfiguracji dla maksymalnej liczby obsługiwanych przez nią zasobników. Równoważna liczba adresów IP na węzeł jest następnie rezerwowana na początku dla tego węzła. Takie podejście wymaga większego planowania i często prowadzi do wyczerpania adresów IP lub trzeba ponownie skompilować klastry w większej podsieci, w miarę wzrostu wymagań aplikacji.
 
-W tym artykule dowiesz się, jak używać *wtyczki kubenet* sieci w celu tworzenia i używania podsieci sieci wirtualnej dla klastra usługi AKS. Aby uzyskać więcej informacji na temat opcji sieci i zagadnienia, zobacz [sieci pojęcia dla platformy Kubernetes i AKS][aks-network-concepts].
+W tym artykule pokazano, jak za pomocą sieci *korzystającą wtyczki kubenet* utworzyć i używać podsieci sieci wirtualnej dla klastra AKS. Aby uzyskać więcej informacji o opcjach sieciowych i zagadnieniach, zobacz [pojęcia sieci dotyczące Kubernetes i AKS][aks-network-concepts].
 
 > [!WARNING]
-> Aby użyć pule węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS), należy użyć wtyczki Azure CNI. Korzystanie z wtyczki kubenet jako model sieci nie jest dostępna dla kontenerów systemu Windows Server.
+> Aby korzystać z pul węzłów systemu Windows Server (obecnie w wersji zapoznawczej w AKS), musisz użyć usługi Azure CNI. Użycie korzystającą wtyczki kubenet jako modelu sieci nie jest dostępne w przypadku kontenerów systemu Windows Server.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.65 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
+Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Omówienie wtyczki kubenet sieci przy użyciu swojej własnej podsieci
+## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Omówienie sieci korzystającą wtyczki kubenet z własną podsiecią
 
-W wielu środowiskach zdefiniowano sieci wirtualne i podsieci z przydzielone zakresy adresów IP. Te zasoby sieci wirtualnej są używane do obsługi wielu usług i aplikacji. Zapewnienie łączności sieciowej, można użyć klastrów AKS *wtyczki kubenet* (podstawowe operacje sieciowe) lub wtyczki Azure CNI (*zaawansowany siecią*).
+W wielu środowiskach zdefiniowano sieci wirtualne i podsieci z przydzielonymi zakresami adresów IP. Te zasoby sieci wirtualnej są używane do obsługi wielu usług i aplikacji. Aby zapewnić łączność sieciową, klastry AKS mogą korzystać z *korzystającą wtyczki kubenet* (Basic Network) lub Azure CNI (*Advanced Network*).
 
-Za pomocą *wtyczki kubenet*tylko węzły, otrzymują adresy IP w podsieci sieci wirtualnej. Zasobników nie mogą komunikować się ze sobą bezpośrednio. Zamiast tego przekazywania zdefiniowaną przez użytkownika routingu (UDR) i adres IP jest używany dla połączenia między zasobników w węzłach. Można także wdrożyć zasobników za to usługa, która otrzymuje przypisany adres IP i równoważy obciążenie dla aplikacji. Na poniższym diagramie przedstawiono, jak węzłów AKS, otrzymują adresy IP w podsieci sieci wirtualnej, ale nie zasobników:
+W przypadku *korzystającą wtyczki kubenet*tylko węzły otrzymują adres IP w podsieci sieci wirtualnej. Nie mogą komunikować się ze sobą bezpośrednio. Zamiast tego, zdefiniowane przez użytkownika Routing (UDR) i przekazywanie adresów IP są używane do łączności między różnymi węzłami. Można również wdrożyć moduły równoważenia obciążenia za usługą, która odbiera przypisany adres IP i równoważy obciążenie dla aplikacji. Na poniższym diagramie przedstawiono sposób, w jaki węzły AKS odbierają adres IP w podsieci sieci wirtualnej, ale nie są to:
 
-![Model sieciowych wtyczki Kubenet z klastrem usługi AKS](media/use-kubenet/kubenet-overview.png)
+![Model sieci korzystającą wtyczki kubenet z klastrem AKS](media/use-kubenet/kubenet-overview.png)
 
-Platforma Azure obsługuje maksymalnie 400 tras przez użytkownika, więc nie może być większa niż 400 węzły klastra usługi AKS. AKS funkcje, takie jak [wirtualnych węzłów][virtual-nodes] lub zasady sieciowe nie są obsługiwane za pomocą *wtyczki kubenet*.
+Platforma Azure obsługuje maksymalnie 400 tras w UDR, więc nie można mieć klastra AKS większego niż 400 węzłów. Funkcje AKS, takie jak [węzły wirtualne][virtual-nodes] lub zasady sieciowe, nie są obsługiwane w programie *korzystającą wtyczki kubenet*.
 
-Za pomocą *wtyczki Azure CNI*, pod każdym otrzymuje adres IP w podsieci IP i może komunikować się bezpośrednio z innymi zasobników i usługami. Klastry usługi może być większy niż zakres adresów IP, które określisz. Jednak zakres adresów IP, które muszą być planowane z góry, a wszystkie adresy IP są używane przez węzłów AKS na podstawie maksymalnej liczby zasobników, które obsługują one. Zaawansowane funkcje sieciowe i scenariuszy, takich jak [wirtualnych węzłów][virtual-nodes] lub zasady sieciowe są obsługiwane za pomocą *wtyczki Azure CNI*.
+W przypadku *usługi Azure CNI*każdy z nich otrzymuje adres IP w podsieci IP i może komunikować się bezpośrednio z innymi identyfikatorami i usługami. Klastry mogą być tak duże jak zakres adresów IP, który określisz. Jednak zakres adresów IP musi być planowany z wyprzedzeniem, a wszystkie adresy IP są używane przez węzły AKS na podstawie maksymalnej liczby jednostek, które mogą obsługiwać. Zaawansowane funkcje sieciowe i scenariusze, takie jak [węzły wirtualne][virtual-nodes] lub zasady sieciowe, są obsługiwane przez *usługę Azure CNI*.
 
-### <a name="ip-address-availability-and-exhaustion"></a>Dostępność adresu IP i wyczerpania
+### <a name="ip-address-availability-and-exhaustion"></a>Dostępność i wyczerpanie adresów IP
 
-Za pomocą *wtyczki Azure CNI*, typowym problemem jest przypisany zakres adresów IP jest zbyt mała, aby następnie dodać dodatkowe węzły, podczas uaktualniania klastra lub skalowania. Sieci zespół może również nie będzie w stanie do wystawiania wystarczająco duży zakres adresów IP do obsługi wymagań oczekiwanego aplikacji.
+W przypadku *usługi Azure CNI*typowym problemem jest zbyt mały zakres adresów IP, aby dodać dodatkowe węzły podczas skalowania lub uaktualniania klastra. Zespół sieci może również nie być w stanie wydać dużego zakresu adresów IP, aby obsługiwał oczekiwane wymagania aplikacji.
 
-Jako naruszenia zabezpieczeń, można utworzyć klaster AKS, która używa *wtyczki kubenet* i nawiąż połączenie z istniejącą podsieć sieci wirtualnej. Takie podejście umożliwia węzłów odbieranie określonych adresów IP, bez konieczności rezerwowania dużej liczby adresów IP na początku wszystkich potencjalnych zasobników, które mogą być uruchamiane w klastrze.
+Ze względu na kompromis można utworzyć klaster AKS, który używa *korzystającą wtyczki kubenet* i nawiązać połączenie z istniejącą podsiecią sieci wirtualnej. Takie podejście pozwala węzłom odbierać zdefiniowane adresy IP bez konieczności zastrzegania dużej liczby adresów IP na początku dla wszystkich potencjalnych zasobników, które można uruchomić w klastrze.
 
-Za pomocą *wtyczki kubenet*, możesz użyć znacznie mniejszy zakres adresów IP i mieć możliwość obsługi dużych klastrach i wymagań aplikacji. Na przykład, nawet w przypadku */27* zakresu adresów IP, może uruchomić klaster z węzłami 20 – 25 z wystarczająco dużo miejsca do skalowania lub uaktualnienia. Ten rozmiar klastra będzie obsługiwać maksymalnie *2,200 2750* zasobników (przy użyciu domyślnej maksymalnej 110 zasobniki w każdym węźle). Maksymalna liczba zasobników na węzeł, który można skonfigurować za pomocą *wtyczki kubenet* w usłudze AKS wynosi 110.
+Za pomocą *korzystającą wtyczki kubenet*można użyć znacznie mniejszego zakresu adresów IP i zapewnić obsługę dużych klastrów i wymagań aplikacji. Na przykład nawet z zakresem adresów IP */27* można uruchomić klaster węzłów 20-25 z wystarczającą ilością miejsca do skalowania lub uaktualnienia. Ten rozmiar klastra będzie obsługiwał do *2200-2750owych* zasobników (z domyślną maksymalną równą 110 zasobników na węzeł). Maksymalna liczba zasobników na węzeł, który można skonfigurować za pomocą *korzystającą wtyczki kubenet* w AKS, to 110.
 
-Następujące podstawowe obliczenia porównania różnic w modelach sieci:
+Poniższe podstawowe obliczenia porównują różnicę w modelach sieci:
 
-- **wtyczki kubenet** — prosty */24* zakres adresów IP może obsługiwać maksymalnie *251* węzłów w klastrze (każdej podsieci sieci wirtualnej platformy Azure rezerwuje pierwszych trzech adresów IP dla operacji zarządzania)
-  - Ta liczba węzłów może obsługiwać maksymalnie *27,610* zasobników (przy użyciu domyślnej maksymalnej liczby zasobników 110 za węzeł za pomocą *wtyczki kubenet*)
-- **Wtyczki Azure CNI** — tej samej basic */24* zakres podsieci tylko może obsługiwać maksymalnie *8* węzłów w klastrze
-  - Ta liczba węzłów może obsługiwać tylko do *240* zasobników (przy użyciu domyślnej maksymalnej liczby zasobników 30 za węzeł za pomocą *wtyczki Azure CNI*)
-
-> [!NOTE]
-> Te maksymalne wartości nie uwzględniać uaktualnienie konta lub operacje skalowania. W praktyce nie można uruchomić maksymalną liczbę węzłów, które obsługuje zakresu adresów IP podsieci. Podczas skalowania operacji uaktualnienia, należy pozostawić pewnych adresów IP dostępne do użycia.
-
-### <a name="virtual-network-peering-and-expressroute-connections"></a>Komunikacja równorzędna sieci wirtualnej i połączeń usługi ExpressRoute
-
-Aby zapewnić łączność lokalna zarówno *wtyczki kubenet* i *wtyczki Azure CNI* podejścia sieci można użyć [komunikacji równorzędnej sieci wirtualnej platformy Azure][vnet-peering] or [ExpressRoute connections][express-route]. Planowanie zakresów adresów IP, aby uniknąć nakładania się i routing ruchu na nieprawidłowy. Na przykład użyć wieloma sieciami lokalnymi *10.0.0.0/8* adresów zakresu, która jest anonsowany za pośrednictwem połączenia usługi ExpressRoute. Zaleca się tworzenie klastrów usługi AKS w podsieciach sieci wirtualnej platformy Azure poza ten zakres adresów, takich jak *172.16.0.0/16*.
-
-### <a name="choose-a-network-model-to-use"></a>Wybierz model sieci do użycia
-
-Wybór, których wtyczka sieci na potrzeby usługi AKS klastra jest zwykle równowagi między elastycznością i potrzeb zaawansowanej konfiguracji. Następujące zagadnienia dotyczące pomóc konspektu, podczas każdego modelu sieci może być najbardziej odpowiednie.
-
-Użyj *wtyczki kubenet* po:
-
-- Masz ograniczone przestrzeń adresów IP.
-- W większości komunikacji zasobnika jest w klastrze.
-- Zaawansowane funkcje, takie jak wirtualne węzły lub zasad sieci nie jest konieczne.
-
-Użyj *wtyczki Azure CNI* po:
-
-- Masz dostępne przestrzeń adresów IP.
-- W większości komunikacji zasobnika jest do zasobów spoza klastra.
-- Nie chcesz zarządzać tras zdefiniowanych przez użytkownika.
-- Należy zaawansowane funkcje, takie jak wirtualne węzły lub zasad sieciowych.
-
-Aby uzyskać więcej informacji na ułatwią podjęcie decyzji o modelu sieci do użycia, zobacz [Porównaj modele sieciowych i ich zakres pomocy technicznej][network-comparisons].
+- **korzystającą wtyczki kubenet** — prosty */24* zakres adresów IP może obsługiwać do *251* węzłów w klastrze (Każda podsieć sieci wirtualnej platformy Azure rezerwuje trzy pierwsze adresy IP dla operacji zarządzania)
+  - Ta liczba węzłów może obsługiwać do *27 610* zasobników (z domyślną maksymalnie 110 zasobników na węzeł z *korzystającą wtyczki kubenet*)
+- **Azure CNI** — ten sam zakres podsieci w warstwie Podstawowa */24* może obsługiwać maksymalnie *8* węzłów w klastrze.
+  - Ta liczba węzłów może obsługiwać maksymalnie *240* zasobników (z domyślną maksymalnie 30 zasobników na węzeł przy użyciu *usługi Azure CNI*)
 
 > [!NOTE]
-> Kuberouter sprawia, że można włączyć zasady sieci w przypadku korzystania z wtyczki kubenet i mogą być instalowane jako daemonset w klastrze AKS. Należy pamiętać, router rozwiązania kubernetes jest nadal w wersji beta i nie jest oferowana przez firmę Microsoft dla projektu.
+> Te wartości maksymalne nie uwzględniają operacji uaktualniania ani skalowania. W tej chwili nie można uruchomić maksymalnej liczby węzłów obsługiwanej przez zakres adresów IP podsieci. Należy pozostawić niektóre adresy IP dostępne do użycia podczas skalowania operacji uaktualniania.
+
+### <a name="virtual-network-peering-and-expressroute-connections"></a>Wirtualne sieci równorzędne i połączenia ExpressRoute
+
+Aby zapewnić łączność lokalną, podejścia do sieci *korzystającą wtyczki kubenet* i *Azure-CNI* mogą korzystać z połączeń [równorzędnych sieci wirtualnych platformy Azure][vnet-peering] lub [ExpressRoute][express-route]. Należy uważnie zaplanować zakresy adresów IP, aby zapobiec nakładaniu się i niepoprawnym kierowaniu ruchu sieciowego. Na przykład wiele sieci lokalnych używa zakresu adresów *10.0.0.0/8* , który jest anonsowany za pośrednictwem połączenia usługi ExpressRoute. Zaleca się utworzenie klastrów AKS w podsieciach sieci wirtualnej platformy Azure spoza tego zakresu adresów, takich jak *172.16.0.0/16*.
+
+### <a name="choose-a-network-model-to-use"></a>Wybierz model sieciowy do użycia
+
+Wybór wtyczki sieciowej używanej przez klaster AKS jest zwykle kompromisem między elastycznością i zaawansowaną konfiguracją. Poniższe zagadnienia ułatwiają tworzenie konspektu, gdy każdy model sieci może być najbardziej odpowiedni.
+
+Użyj *korzystającą wtyczki kubenet* , gdy:
+
+- Masz ograniczoną przestrzeń adresów IP.
+- Większość komunikacji pod kątem jest w klastrze.
+- Nie są potrzebne zaawansowane funkcje, takie jak węzły wirtualne lub zasady sieciowe.
+
+Użyj *usługi Azure CNI* , gdy:
+
+- Dostępna jest przestrzeń adresów IP.
+- Większość komunikacji pod względem źródła jest zasobami spoza klastra.
+- Nie chcesz zarządzać UDR.
+- Potrzebne są zaawansowane funkcje, takie jak węzły wirtualne lub zasady sieciowe.
+
+Aby uzyskać więcej informacji ułatwiających decydowanie o modelu sieci, który ma być używany, zobacz [porównanie modeli sieci i ich zakresu obsługi][network-comparisons].
+
+> [!NOTE]
+> Kuberouter umożliwia włączenie zasad sieciowych w przypadku używania korzystającą wtyczki kubenet i może być instalowany jako elementu daemonset w klastrze AKS. Należy pamiętać, że polecenia — router jest nadal w wersji beta, a firma Microsoft nie oferuje pomocy technicznej dla projektu.
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Tworzenie sieci wirtualnej i podsieci
 
-Aby rozpocząć korzystanie z *wtyczki kubenet* i własnych podsieci sieci wirtualnej, najpierw utwórz grupę zasobów za pomocą [Tworzenie grupy az][az-group-create] polecenia. W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Aby rozpocząć korzystanie z usługi *korzystającą wtyczki kubenet* i własnej podsieci sieci wirtualnej, najpierw utwórz grupę zasobów za pomocą polecenia [AZ Group Create][az-group-create] . W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Jeśli nie masz istniejącej sieci wirtualnej i podsieci, aby użyć tworzenia tych zasobów sieciowych przy użyciu [tworzenie sieci wirtualnej sieci az][az-network-vnet-create] polecenia. W poniższym przykładzie sieć wirtualną o nazwie *myVnet* z prefiksem adresu *192.168.0.0/16*. Podsieć jest tworzony o nazwie *myAKSSubnet* z prefiksem adresu *192.168.1.0/24*.
+Jeśli nie masz istniejącej sieci wirtualnej i podsieci do użycia, Utwórz te zasoby sieciowe za pomocą polecenia [AZ Network VNET Create][az-network-vnet-create] . W poniższym przykładzie Sieć wirtualna nosi nazwę *myVnet* z prefiksem adresu *192.168.0.0/16*. Zostanie utworzona podsieć o nazwie *myAKSSubnet* z prefiksem adresu *192.168.1.0/24*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -107,13 +107,13 @@ az network vnet create \
 
 ## <a name="create-a-service-principal-and-assign-permissions"></a>Tworzenie nazwy głównej usługi i przypisywanie uprawnień
 
-Jednostka usługi Azure Active Directory zezwala klastrowi usługi AKS na interakcje z innymi zasobami platformy Azure. Jednostka usługi musi mieć uprawnienia do zarządzania sieć wirtualną i podsieć, używanego przez węzłów AKS. Aby utworzyć nazwę główną usługi, użyj [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] polecenia:
+Jednostka usługi Azure Active Directory zezwala klastrowi usługi AKS na interakcje z innymi zasobami platformy Azure. Nazwa główna usługi musi mieć uprawnienia do zarządzania siecią wirtualną i podsiecią używaną przez węzły AKS. Aby utworzyć nazwę główną usługi, użyj polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create-for-rbac] :
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
 ```
 
-Następujące przykładowe dane wyjściowe zawiera identyfikator aplikacji i hasło dla jednostki usługi. Te wartości są używane dodatkowe czynności obejmują przypisywanie roli do jednostki usługi, a następnie utworzyć klaster AKS:
+Poniższe przykładowe dane wyjściowe przedstawiają identyfikator aplikacji i hasło dla nazwy głównej usługi. Te wartości są używane w dodatkowych krokach, aby przypisać rolę do jednostki usługi, a następnie utworzyć klaster AKS:
 
 ```console
 $ az ad sp create-for-rbac --skip-assignment
@@ -127,14 +127,14 @@ $ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-Aby przypisać poprawne delegacji w kolejnych krokach, użyj [az sieci vnet show][az-network-vnet-show] and [az network vnet subnet show][az-network-vnet-subnet-show] poleceń, aby uzyskać wymagane identyfikatorów zasobów. Tych identyfikatorów zasobów są przechowywane jako zmienne i do których odwołuje się w kolejnych krokach:
+Aby przypisać poprawne delegowania w pozostałych krokach, użyj polecenia [AZ Network VNET show][az-network-vnet-show] i [AZ Network VNET Subnet show][az-network-vnet-subnet-show] , aby uzyskać wymagane identyfikatory zasobów. Te identyfikatory zasobów są przechowywane jako zmienne i przywoływane w pozostałych krokach:
 
 ```azurecli-interactive
 VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet --query id -o tsv)
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Teraz przypisać nazwę główną usługi dla klastra usługi AKS *Współautor* uprawnień w sieci wirtualnej przy użyciu [utworzenia przypisania roli az][az-role-assignment-create] polecenia. Podaj własny  *\<appId >* jak pokazano w danych wyjściowych poprzedniego polecenia, aby utworzyć nazwę główną usługi:
+Teraz Przypisz jednostkę usługi do uprawnień współautora klastra AKS w sieci wirtualnej za pomocą polecenia [AZ role Assign Create][az-role-assignment-create] . Podaj własny  *\<identyfikator appid >* jak pokazano w danych wyjściowych poprzedniego polecenia, aby utworzyć jednostkę usługi:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -142,20 +142,20 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Tworzenie klastra AKS w sieci wirtualnej
 
-Możesz teraz utworzyć sieć wirtualną i podsieć i utworzeniu i przypisane uprawnienia dla jednostki usługi, aby korzystać z tych zasobów sieciowych. Teraz tworzenie klastra AKS w sieci wirtualnej i podsieci przy użyciu [tworzenie az aks][az-aks-create] polecenia. Zdefiniuj jednostki usługi  *\<appId >* i  *\<hasło >* , jak pokazano w danych wyjściowych poprzedniego polecenia, aby utworzyć jednostkę usługi.
+Utworzono sieć wirtualną i podsieć, a następnie utworzono i przypisano uprawnienia do jednostki usługi w celu używania tych zasobów sieciowych. Teraz Utwórz klaster AKS w sieci wirtualnej i podsieci przy użyciu polecenia [AZ AKS Create][az-aks-create] . Zdefiniuj własną nazwę aplikacji głównej  *\<usługi >* i  *\<hasło >* , jak pokazano w danych wyjściowych poprzedniego polecenia, aby utworzyć nazwę główną usługi.
 
-Poniższe zakresy adresów IP są również określone jako część klastra tworzenia procesu:
+Następujące zakresy adresów IP są również zdefiniowane jako część procesu tworzenia klastra:
 
-* *— Cidr usługi* jest używany do przypisywania adresów IP wewnętrznych usług w klastrze AKS. Ten zakres adresów IP powinna być przestrzeń adresową, która nie jest używana w innym miejscu w danym środowisku sieciowym. Ten zakres obejmuje wszystkie zakresy sieci lokalnej, łączenie, czy zamierzasz połączyć sieci wirtualne platformy Azure przy użyciu Expressroute lub połączenie sieci VPN typu lokacja-lokacja.
+* *--Service-CIDR* służy do przypisywania wewnętrznych usług w klastrze AKS jako adres IP. Ten zakres adresów IP powinien być przestrzenią adresową, która nie jest używana w innym miejscu w środowisku sieciowym. Ten zakres obejmuje wszystkie lokalne zakresy sieci w przypadku nawiązania połączenia lub zaplanowania połączenia z sieciami wirtualnymi platformy Azure przy użyciu trasy Express lub połączenia sieci VPN typu lokacja-lokacja.
 
-* *Adres ip usługi dns —* adres powinien być *.10* adres zakres adresów IP usługi.
+* Wartość *--DNS-Service-IP* musi być adresem *.10* zakresu adresów IP usługi.
 
-* *— Cidr zasobnika* powinny być dużych adresowa, która nie jest używana w innym miejscu w danym środowisku sieciowym. Ten zakres obejmuje wszystkie zakresy sieci lokalnej, łączenie, czy zamierzasz połączyć sieci wirtualne platformy Azure przy użyciu Expressroute lub połączenie sieci VPN typu lokacja-lokacja.
-    * Ten zakres adresów musi być wystarczająco duży, aby uwzględnić liczbę węzłów, które oczekują skalować do. Nie można zmienić tego zakresu adresów, po wdrożeniu klastra, jeśli potrzebujesz większej liczby adresów dla kolejnych węzłów.
-    * Zakres adresów IP zasobnika jest używany do przypisywania */24* przestrzeń adresowa do każdego węzła w klastrze. W poniższym przykładzie *— cidr zasobnika* z *10.244.0.0/16* przypisuje pierwszego węzła *10.244.0.0/24*, drugi węzeł *10.244.1.0/24*, a trzeci węzła *10.244.2.0/24*.
-    * Skaluje klaster lub uaktualnień platforma Azure w dalszym ciągu Przypisz zakres adresów IP zasobnika do każdego nowego węzła.
+* Wartość *--pod-CIDR* powinna być dużą przestrzenią adresową, która nie jest używana w innym miejscu w środowisku sieciowym. Ten zakres obejmuje wszystkie lokalne zakresy sieci w przypadku nawiązania połączenia lub zaplanowania połączenia z sieciami wirtualnymi platformy Azure przy użyciu trasy Express lub połączenia sieci VPN typu lokacja-lokacja.
+    * Ten zakres adresów musi być wystarczająco duży, aby pomieścić liczbę węzłów, do których można skalować w górę. Nie można zmienić tego zakresu adresów, gdy klaster zostanie wdrożony, jeśli potrzebujesz więcej adresów dla dodatkowych węzłów.
+    * Zakres adresów IP pod jest używany do przypisywania przestrzeni adresowej */24* do każdego węzła w klastrze. W poniższym przykładzie, *--pod-CIDR* *10.244.0.0/16* przypisuje pierwszy węzeł *10.244.0.0/24*, drugi węzeł *10.244.1.0/24*i trzeci węzeł *10.244.2.0/24*.
+    * W miarę skalowania lub uaktualniania klastra platforma Azure nadal przypisuje zakres adresów IP pod każdym nowym węzłem.
     
-* *— Adres w przypadku mostka platformy docker* zezwala węzłów AKS komunikowanie się z podstawowej platformy zarządzania. Ten adres IP nie może być w zakresie adresów IP sieci wirtualnej klastra, a nie mogą nakładać się na inne zakresy adresów, używany w sieci.
+* Wartość *--Docker-Bridge-Address* umożliwia węzłom AKS komunikowanie się z podstawową platformą zarządzania. Ten adres IP nie może należeć do zakresu adresów IP sieci wirtualnej w klastrze i nie powinien nakładać się na inne zakresy adresów używane w sieci.
 
 ```azurecli-interactive
 az aks create \
@@ -172,11 +172,11 @@ az aks create \
     --client-secret <password>
 ```
 
-Podczas tworzenia klastra usługi AKS tabeli sieci zabezpieczeń grupy i wyznaczać trasy są tworzone. Te zasoby sieciowe są zarządzane przez na płaszczyźnie kontroli usługi AKS. Sieciowa grupa zabezpieczeń jest automatycznie kojarzony z wirtualnymi kartami sieciowymi na węzłów. Tabela tras jest automatycznie kojarzony z podsieci sieci wirtualnej. Reguły sieciowych grup zabezpieczeń i tabel tras i są automatycznie aktualizowane, jak utworzyć i udostępnić usługi.
+Podczas tworzenia klastra AKS są tworzone sieciowe grupy zabezpieczeń i trasy. Te zasoby sieciowe są zarządzane przez płaszczyznę kontroli AKS. Sieciowa Grupa zabezpieczeń jest automatycznie skojarzona z wirtualnymi kartami sieciowymi w węzłach. Tabela tras jest automatycznie skojarzona z podsiecią sieci wirtualnej. Reguły sieciowej grupy zabezpieczeń i tabele tras i są automatycznie aktualizowane podczas tworzenia i uwidaczniania usług.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Z klastrem usługi AKS wdrażane w istniejącej podsieci sieci wirtualnej można teraz używać klastra zwykły. Rozpoczynanie pracy z usługą [tworzenia aplikacji przy użyciu usługi Azure Dev miejsca do magazynowania][dev-spaces] or [using Draft][use-draft], lub [wdrażać aplikacje za pomocą narzędzia Helm][helm użyj].
+W przypadku klastra AKS wdrożonego w istniejącej podsieci sieci wirtualnej można teraz używać klastra jako normalnego. Rozpocznij pracę z [tworzeniem aplikacji przy użyciu Azure dev Spaces][dev-spaces] lub [z użyciem wersji roboczej][use-draft]lub [Wdróż aplikacje za pomocą Helm][use-helm].
 
 <!-- LINKS - External -->
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/

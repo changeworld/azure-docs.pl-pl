@@ -1,9 +1,9 @@
 ---
-title: Zaimportuj certyfikaty w kontenerze uruchomiona w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się teraz zaimportować plik certyfikatu do kontenera usługi Service Fabric.
+title: Importuj certyfikaty do kontenera działającego na platformie Azure Service Fabric | Microsoft Docs
+description: Zapoznaj się teraz z zaimportowaniem plików certyfikatów do usługi kontenera Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3a6ea5e2776ae5e016426ba0ddaf288f1476e932
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 80ac20fd2dc7bfe3fea6a58a6df94e3f7b99a700
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612784"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599223"
 ---
-# <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Zaimportuj plik certyfikatu w kontenerze uruchomiona w usłudze Service Fabric
+# <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Zaimportuj plik certyfikatu do kontenera działającego na Service Fabric
 
-Można zabezpieczyć usługi kontenera, określając certyfikatu. Usługa Service Fabric udostępnia mechanizm dla usług w kontenerze na dostęp do certyfikatu, który jest zainstalowany na węzłach w klastrze Windows lub Linux (w wersji 5.7 lub nowszej). Certyfikat musi być zainstalowany w magazynie certyfikatów w obszarze LocalMachine we wszystkich węzłach klastra. Klucza prywatnego odpowiadająca certyfikatu musi być dostępny, dostępny i - Windows - eksportowalny. Informacje o certyfikacie znajduje się w manifeście aplikacji, w obszarze `ContainerHostPolicies` tag, co ilustruje poniższy fragment kodu:
+Usługi kontenera można zabezpieczyć, określając certyfikat. Service Fabric udostępnia mechanizm dla usług wewnątrz kontenera w celu uzyskania dostępu do certyfikatu zainstalowanego na węzłach w klastrze z systemem Windows lub Linux (wersja 5,7 lub nowsza). Certyfikat należy zainstalować w magazynie certyfikatów w obszarze LocalMachine na wszystkich węzłach klastra. Klucz prywatny odpowiadający certyfikatowi musi być dostępny, dostępny i włączony do eksportu systemu Windows. Informacje o certyfikacie znajdują się w manifeście aplikacji pod `ContainerHostPolicies` tagiem, jak pokazano w poniższym fragmencie kodu:
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -31,24 +31,24 @@ Można zabezpieczyć usługi kontenera, określając certyfikatu. Usługa Servic
     <CertificateRef Name="MyCert2" X509FindValue="[Thumbprint2]"/>
  ```
 
-W przypadku klastrów Windows, podczas uruchamiania aplikacji środowisko uruchomieniowe eksportuje każdego odwołania certyfikatu i odpowiedniego klucza prywatnego do pliku PFX zabezpieczony hasłem generowany losowo. Pliki PFX oraz hasła, odpowiednio, są dostępne w kontenerze za pomocą następujące zmienne środowiskowe: 
+W przypadku klastrów systemu Windows, podczas uruchamiania aplikacji, środowisko uruchomieniowe eksportuje każdy przywoływany certyfikat i jego klucz prywatny do pliku PFX zabezpieczony przy użyciu losowo wygenerowanego hasła. Pliki PFX i Password odpowiednio są dostępne wewnątrz kontenera przy użyciu następujących zmiennych środowiskowych: 
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PFX
 * Certificates_ServicePackageName_CodePackageName_CertName_Password
 
-W przypadku klastrów systemu Linux certyfikaty (PEM) są kopiowane z magazynu określonego przez X509StoreName do kontenera. To odpowiednie zmienne środowiskowe w systemie Linux:
+W przypadku klastrów systemu Linux certyfikaty (PEM) są kopiowane z magazynu określonego przez X509StoreName do kontenera. Odpowiednie zmienne środowiskowe w systemie Linux to:
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
 
-Alternatywnie, jeśli już mają certyfikaty w formularzu wymaganych, aby uzyskać do niego dostęp w kontenerze można tworzyć pakiet danych wewnątrz pakietu aplikacji i podaj następujące informacje w manifeście aplikacji:
+Alternatywnie, jeśli masz już certyfikaty w wymaganym formularzu i chcesz uzyskać do nich dostęp wewnątrz kontenera, możesz utworzyć pakiet danych wewnątrz pakietu aplikacji i określić następujący element wewnątrz manifestu aplikacji:
 
 ```xml
 <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
  ```
 
-Usługa kontenera lub proces jest odpowiedzialny za importowanie plików certyfikatów do kontenera. Aby zaimportować certyfikat, możesz użyć `setupentrypoint.sh` skrypty lub wykonania niestandardowego kodu w ramach procesu kontenera. Poniżej przedstawiono przykładowy kod w C# importowania pliku PFX:
+Usługa kontenera lub proces jest odpowiedzialny za Importowanie plików certyfikatów do kontenera. Aby zaimportować certyfikat, można użyć `setupentrypoint.sh` skryptów lub wykonać niestandardowy kod w procesie kontenera. Oto przykładowy kod C# dotyczący importowania pliku PFX:
 
 ```csharp
 string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
@@ -61,9 +61,9 @@ store.Open(OpenFlags.ReadWrite);
 store.Add(cert);
 store.Close();
 ```
-Ten certyfikat PFX może służyć do uwierzytelniania aplikacji lub usługi albo bezpiecznej komunikacji z innymi usługami. Domyślnie pliki są ACLed tylko do systemu. Możesz listy ACL je do innych kont, zgodnie z wymaganiami przez usługę.
+Ten certyfikat PFX może służyć do uwierzytelniania aplikacji lub usługi lub bezpiecznej komunikacji z innymi usługami. Domyślnie pliki są ACLed tylko do systemu. Listę ACL można na inne konta, zgodnie z wymaganiami usługi.
 
-Kolejnym krokiem przeczytaj następujące artykuły:
+Następnym krokiem jest zapoznanie się z następującymi artykułami:
 
-* [Wdrażanie kontenera Windows w usłudze Service Fabric w systemie Windows Server 2016](service-fabric-get-started-containers.md)
-* [Wdrażanie kontenera platformy Docker w usłudze Service Fabric w systemie Linux](service-fabric-get-started-containers-linux.md)
+* [Wdrażanie kontenera systemu Windows w celu Service Fabric w systemie Windows Server 2016](service-fabric-get-started-containers.md)
+* [Wdrażanie kontenera platformy Docker w celu Service Fabric w systemie Linux](service-fabric-get-started-containers-linux.md)

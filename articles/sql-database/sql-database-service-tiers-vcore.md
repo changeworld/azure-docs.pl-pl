@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure SQL Database — rdzeń wirtualny | Dokumentacja firmy Microsoft
-description: Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie skalować zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny.
+title: Azure SQL Database Service-rdzeń wirtualny | Microsoft Docs
+description: Model zakupu oparty na rdzeń wirtualny umożliwia niezależne skalowanie zasobów obliczeniowych i magazynu, dopasowanie wydajności lokalnej i optymalizację cen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,133 +10,132 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: e9d1ce3bcd3bf958be0a7837e8416300af03f5a2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e5af3803ebb4cb0a88a082d3c85d0df68da8d1b8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449750"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566612"
 ---
-# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Można wybrać jedną z warstwy usługi (rdzeń wirtualny), a następnie przeprowadzenie migracji z warstwy usługi jednostki DTU
+# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Wybierz spośród warstw usług rdzeń wirtualny i Przeprowadź migrację z warstw usług DTU
 
-Rdzeń wirtualny (rdzeń wirtualny) — model zakupu w oparciu o pozwala niezależnie skalować zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny. Dzięki temu można także wybrać generację sprzętu:
+Model zakupu oparty na wirtualnym rdzeniu (rdzeń wirtualny) umożliwia niezależne skalowanie zasobów obliczeniowych i magazynu, dopasowanie wydajności lokalnej i optymalizację cen. Umożliwia również wybranie generacji sprzętu:
 
-- **4. generacji**: Maksymalnie 24 logiczne procesory CPU oparte na Intel E5-2673 v3 2,4 GHz (Haswell), procesory, — rdzeń wirtualny = 1 PP (rdzeni fizycznych), 7 GB na rdzeń procesora, dołączonych dysków SSD
-- **5. generacji**: Maksymalnie 80 logiczne procesory CPU oparte na Intel E5-2673 v4 (broadwell z zegarem) 2.3 GHz procesorów, pamięci rdzeń wirtualny = LP 1 (funkcja hyper wątek), 5.1 GB na rdzeń procesora, szybkie eNVM dysków SSD
+- **Obliczenia**: Do 24 procesorów logicznych opartych na procesorze Intel E5-2673 v3 (Haswell) 2,4 GHz, rdzeń wirtualny = 1 PP (rdzeń fizyczny), 7 GB na rdzeń, podłączony dysk SSD
+- **5 rdzeń**: Do 80 procesorów logicznych opartych na procesorach Intel E5-2673 v4 (Broadwell) 2,3 GHz, rdzeń wirtualny = 1 LP (Hyper-Thread), 5,1 GB na rdzeń, Fast eNVM SSD
 
-4\. generacji sprzętu oferuje znacznie więcej pamięci na rdzeń wirtualny. 5\. generacji sprzętu pozwala jednak skalować zasoby obliczeniowe, które znacznie wyższa.
+Sprzęt obliczenia zapewnia znacznie większą ilość pamięci na rdzeń wirtualny. Jednak sprzęt 5 rdzeń umożliwia skalowanie zasobów obliczeniowych znacznie więcej.
 
 > [!IMPORTANT]
-> Nowe bazy danych z 4. generacji nie są już obsługiwane w regionie AustraliaEast.
+> Nowe bazy danych obliczenia nie są już obsługiwane w regionie AustraliaEast.
 > [!NOTE]
-> Aby uzyskać informacji na temat warstwy usług oparte na jednostkach DTU, zobacz [warstwy modelu zakupu opartego na jednostkach DTU usług](sql-database-service-tiers-dtu.md). Aby uzyskać informacje o różnicach między warstwy usług dla opartego na jednostkach DTU, jak i w modelu zakupu opartego na rdzeniach wirtualnych, zobacz [usługi Azure SQL Database, zakup modeli](sql-database-purchase-models.md).
+> Aby uzyskać informacje o warstwach usług opartych na jednostkach DTU, zobacz [warstwy usług dla modelu zakupu opartego na](sql-database-service-tiers-dtu.md)jednostkach DTU. Aby uzyskać informacje o różnicach między warstwami usług dla modeli zakupów opartych na jednostkach DTU i rdzeń wirtualny, zobacz [Azure SQL Database modele zakupu](sql-database-purchase-models.md).
 
-## <a name="service-tier-characteristics"></a>Właściwości warstwy usług
+## <a name="service-tier-characteristics"></a>Charakterystyki warstwy usług
 
-Model zakupu opartego na rdzeniach wirtualnych zapewnia trzech warstwach usługi: ogólnego przeznaczenia, w hiperskali i krytyczne dla działania. Te warstwy usługi są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych, projekty o wysokiej dostępności, izolację awarii metody, typy i rozmiary magazynów i zakresy operacji We/Wy.
+Model zakupu oparty na rdzeń wirtualny oferuje trzy warstwy usług: ogólnego przeznaczenia, skalowania i działania krytyczne dla działania firmy. Te warstwy usług są zróżnicowane przez różne rozmiary obliczeń, projekty o wysokiej dostępności, metody izolacji błędów, typy i rozmiary magazynu oraz zakresy operacji we/wy.
 
-Musisz oddzielnie skonfigurować wymagane okres przechowywania i przechowywania kopii zapasowych. Aby ustawić okres przechowywania kopii zapasowych, otwórz witrynę Azure portal, przejdź do serwera (bez bazy danych), a następnie przejdź do **Zarządzanie kopiami zapasowymi** > **Konfiguruj zasady**  >   **Punkt w czasie przywracania konfiguracji** > **7 – 35 dni**.
+Należy oddzielnie skonfigurować wymagane przechowywanie i okres przechowywania kopii zapasowych. Aby ustawić okres przechowywania kopii zapasowych, Otwórz Azure Portal, przejdź do serwera (nie bazy danych), a następnie przejdź do pozycji **Zarządzanie kopiami zapasowymi** > **Konfiguracja** > **przywracania punktu w czasie w programie Configuration** > **7 — 35 dni**.
 
-W poniższej tabeli przedstawiono różnice w trzech warstwach:
+W poniższej tabeli opisano różnice między tymi trzema warstwami:
 
-||**Zastosowania ogólne**|**Krytyczne dla działania**|**Na dużą skalę**|
+||**Zastosowania ogólne**|**Krytyczne dla działania firmy**|**Hiperskali**|
 |---|---|---|---|
-|Najlepsze dla|Większości obciążeń biznesowych. Oferty ograniczonym budżetem, zrównoważonych oraz skalowalnych opcji obliczeniowych i magazynu.|Aplikacje biznesowe za pomocą wysokie wymagania dotyczące operacji We/Wy. Oferuje najwyższą odporność na awarie, korzystając z kilku izolowanych replik.|Większości obciążeń biznesowych za pomocą wysoce skalowalny magazyn i wymagań skali odczytu.|
-|Wystąpienia obliczeniowe|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 rdzenie wirtualne<br/>5\. generacji: 2-80 rdzeni wirtualnych<br/>**Bezserwerowe środowisko obliczeniowe**:<br/>5\. generacji: 0.5 — 4 rdzenie wirtualne|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 rdzenie wirtualne<br/>5\. generacji: 2-80 rdzeni wirtualnych|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 1-24 rdzenie wirtualne<br/>5\. generacji: 2-80 rdzeni wirtualnych|
-|Memory (Pamięć)|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5\. generacji: 5.1 GB na rdzeń wirtualny<br/>**Bezserwerowe środowisko obliczeniowe**:<br/>5\. generacji: 3 GB na rdzeń wirtualny|**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5\. generacji: 5.1 GB na rdzeń wirtualny |**Zainicjowano obsługę administracyjną obliczeń**:<br/>Gen4: 7 GB na rdzeń wirtualny<br/>5\. generacji: 5.1 GB na rdzeń wirtualny|
-|Magazyn|Używa zdalnego magazynu.<br/>**Pojedynczą bazę danych aprowizowane obliczeń**:<br/>5 GB – 4 TB<br/>**Pojedynczą bazę danych bezserwerowe środowisko obliczeniowe**:<br/>5 GB - 1 TB<br/>**Wystąpienie zarządzane**: 32 GB - 8 TB |Używa lokalny magazyn SSD.<br/>**Pojedynczą bazę danych aprowizowane obliczeń**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB - 4 TB |Elastyczne automatyczne zwiększanie magazynu zgodnie z potrzebami. Obsługuje maksymalnie 100 TB pamięci. Używa lokalny magazyn SSD w puli buforów w lokalnej pamięci podręcznej i lokalne przechowywanie danych. Używa usługi Azure storage zdalnego końcowego długoterminowego przechowywania danych. |
-|Przepustowość operacji We/Wy (w przybliżeniu)|**Pojedynczą bazę danych**: 500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS.<br/>**Wystąpienie zarządzane**: Zależy od [rozmiar pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji We/Wy na rdzeń z 200 000 maksymalna liczba IOPS|W Hiperskali to architektura wielowarstwowa z buforowaniem na różnych poziomach. Skuteczne operacje We/Wy zależy od obciążenia.|
-|Dostępność|1 repliki, nie skali odczytu replik|3 repliki, 1 [skali odczytu replik](sql-database-read-scale-out.md),<br/>strefowo nadmiarowe wysokiej dostępności (HA)|1 repliki do odczytu i zapisu oraz 0 – 4 [skali odczytu replik](sql-database-read-scale-out.md)|
-|Tworzenie kopii zapasowych|[Dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|Na podstawie migawki kopii zapasowych w usłudze Azure storage zdalnego. Przywracanie na użytek migawek Szybkie odzyskiwanie. Kopie zapasowe są natychmiastowe i nie wpływać na wydajność operacji We/Wy obliczeń. Operacje przywracania są szybkie i nie są to operacja danych o rozmiarze (biorąc minuty, a nie godziny lub dni).|
+|Najlepsza dla|Większość obciążeń firmowych. Oferuje zorientowane na budżety, zrównoważone i skalowalne Opcje obliczeniowe i magazynowe.|Aplikacje biznesowe o wysokich wymaganiach we/wy. Oferuje największą odporność na błędy przy użyciu kilku izolowanych replik.|Większość obciążeń firmowych z wysoce skalowalnym magazynem i wymaganiami dotyczącymi skali odczytu.|
+|Wystąpienia obliczeniowe|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych<br/>**Obliczenia**bezserwerowe:<br/>5 rdzeń 0,5 – 4 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych|
+|Memory (Pamięć)|**Zainicjowane obliczenie**:<br/>Obliczenia 7 GB na rdzeń wirtualny<br/>5 rdzeń 5,1 GB na rdzeń wirtualny<br/>**Obliczenia**bezserwerowe:<br/>5 rdzeń 3 GB na rdzeń wirtualny|**Zainicjowane obliczenie**:<br/>Obliczenia 7 GB na rdzeń wirtualny<br/>5 rdzeń 5,1 GB na rdzeń wirtualny |**Zainicjowane obliczenie**:<br/>Obliczenia 7 GB na rdzeń wirtualny<br/>5 rdzeń 5,1 GB na rdzeń wirtualny|
+|Magazyn|Używa magazynu zdalnego.<br/>**Obsługiwane obliczenia pojedynczej bazy danych**:<br/>5 GB – 4 TB<br/>**Obliczenia bezserwerowe z pojedynczą bazą danych**:<br/>5 GB — 1 TB<br/>**Wystąpienie zarządzane**: 32 GB — 8 TB |Używa lokalnego magazynu SSD.<br/>**Obsługiwane obliczenia pojedynczej bazy danych**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
+|Przepływność we/wy (przybliżona)|**Pojedyncza baza danych**: 500 operacji we/wy na sekundę rdzeń wirtualny z 7000 maksymalną liczbą IOPS.<br/>**Wystąpienie zarządzane**: Zależy od [rozmiaru pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji we/wy na rdzeń z maksymalną liczbą IOPS 200 000|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia.|
+|Dostępność|1 replika, brak replik w skali odczytu|3 repliki, 1 replika w [skali odczytu](sql-database-read-scale-out.md),<br/>Strefa — nadmiarowa wysoka dostępność (HA)|1 replika odczytu i zapisu oraz 0-4 [replik w skali odczytu](sql-database-read-scale-out.md)|
+|Tworzenie kopii zapasowych|[Magazyn Geograficznie nadmiarowy do odczytu (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|Tworzenie kopii zapasowych opartych na migawce w magazynie zdalnym platformy Azure. Przywraca używanie tych migawek do szybkiego odzyskiwania. Kopie zapasowe są natychmiast i nie wpływają na wydajność obliczeń we/wy. Przywracanie odbywa się szybko i nie jest operacją o rozmiarze danych (w minutach, a nie w godzinach lub dniach).|
 |W pamięci|Nieobsługiwane|Obsługiwane|Nieobsługiwane|
 |||
 
 > [!NOTE]
-> Możesz uzyskać bezpłatne bazy danych Azure SQL w warstwie podstawowa w połączeniu z bezpłatnego konta platformy Azure. Aby uzyskać więcej informacji, zobacz [utworzyć bazę danych zarządzana usługa w chmurze przy użyciu bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/services/sql-database/).
+> Możesz uzyskać bezpłatną bazę danych SQL Azure w warstwie Podstawowa usługi w połączeniu z bezpłatnym kontem platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie zarządzanej bazy danych w chmurze przy użyciu bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/services/sql-database/).
 
-- Aby uzyskać więcej informacji na temat limitów zasobów (rdzeń wirtualny) zobacz [limity zasobów — rdzeń wirtualny w pojedynczej bazy danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów — rdzeń wirtualny w wystąpieniu zarządzanym](sql-database-managed-instance.md#vcore-based-purchasing-model).
-- Aby uzyskać więcej informacji na temat warstwy krytyczne usługi biznesowe i ogólnego przeznaczenia, zobacz [ogólnego przeznaczenia i krytyczne dla warstwy usług](sql-database-service-tiers-general-purpose-business-critical.md).
-- Aby uzyskać więcej informacji na temat warstwy usług na dużą skalę w modelu zakupu opartego na rdzeniach wirtualnych, zobacz [warstwy usługi w Hiperskali](sql-database-service-tier-hyperscale.md).  
+- Aby uzyskać więcej informacji na temat limitów zasobów rdzeń wirtualny, zobacz [limity zasobów rdzeń wirtualny w ramach jednej bazy danych](sql-database-vcore-resource-limits-single-databases.md) i [limitów zasobów rdzeń wirtualny w wystąpieniu zarządzanym](sql-database-managed-instance.md#vcore-based-purchasing-model).
+- Aby uzyskać więcej informacji o warstwach usług ogólnego przeznaczenia i krytycznych dla firmy, zobacz [Ogólne zastosowania i najważniejsze usługi dla działalności biznesowej](sql-database-service-tiers-general-purpose-business-critical.md).
+- Aby uzyskać więcej informacji na temat warstwy usługi na potrzeby skalowania w modelu zakupu opartego na rdzeń wirtualny, zobacz podskalowanie [warstwy usług](sql-database-service-tier-hyperscale.md).  
 
-## <a name="azure-hybrid-benefit"></a>Korzyść użycia hybrydowego platformy Azure
+## <a name="azure-hybrid-benefit"></a>Korzyści użycia hybrydowego platformy Azure
 
-W modelu zakupu opartego na rdzeniach wirtualnych w warstwie zainicjowanych zasobów obliczeniowych mogą wymieniać swoich istniejących licencji do korzystania z taryf rabatowych w bazie danych SQL przy użyciu [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Ta korzyść platformy Azure umożliwia zapisanie do 30 procent w usłudze Azure SQL Database przy użyciu licencji programu SQL Server w środowisku lokalnym z pakietem Software Assurance.
+W warstwie obliczeniowej z zainicjowaną obsługą modelu zakupu opartego na rdzeń wirtualny można wymienić istniejące licencje dla obniżonych stawek na SQL Database przy użyciu [korzyść użycia hybrydowego platformy Azure do SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Ta korzyść platformy Azure umożliwia oszczędzanie do 30 procent na Azure SQL Database przy użyciu lokalnych licencji SQL Server z programem Software Assurance.
 
 ![cennik](./media/sql-database-service-tiers/pricing.png)
 
-Dzięki korzyści użycia hybrydowego platformy Azure można wybrać tylko płacisz podstawową infrastrukturą platformy Azure przy użyciu istniejących licencji programu SQL Server dla aparatu bazy danych SQL, sama (cena podstawowa obliczeniowa) lub płacisz podstawową infrastrukturą i programu SQL Server Licencja (cena oferowała objęte licencją).
+Za pomocą Korzyść użycia hybrydowego platformy Azure Możesz wybrać opcję płacenia wyłącznie za podstawową infrastrukturę platformy Azure, korzystając z istniejącej licencji SQL Server dla aparatu bazy danych SQL (podstawowa cena obliczeniowa) lub płacisz za podstawową infrastrukturę i SQL Server Licencja (cena uwzględniona w licencji).
 
-Można wybrać, lub zmień model licencjonowania, za pomocą witryny Azure portal lub przy użyciu jednej z poniższych interfejsów API:
+Możesz wybrać lub zmienić model licencjonowania przy użyciu Azure Portal lub przy użyciu jednego z następujących interfejsów API:
 
-- Aby ustawić lub zaktualizowania typu licencji przy użyciu programu PowerShell:
+- Aby ustawić lub zaktualizować typ licencji przy użyciu programu PowerShell:
 
   - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
   - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
   - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
   - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
 
-- Aby ustawić lub zaktualizowania typu licencji przy użyciu wiersza polecenia platformy Azure:
+- Aby ustawić lub zaktualizować typ licencji przy użyciu interfejsu wiersza polecenia platformy Azure:
 
   - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
   - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [Tworzenie wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [Aktualizacja wystąpienia zarządzanego sql az](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+  - [AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
+  - [AZ SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
-- Aby ustawić lub zaktualizowania typu licencji przy użyciu interfejsu API REST:
+- Aby ustawić lub zaktualizować typ licencji przy użyciu interfejsu API REST:
 
   - [Bazy danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
   - [Bazy danych — aktualizacja](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [Zarządzane wystąpienia — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
+  - [Wystąpienia zarządzane — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
   - [Wystąpienia zarządzane — aktualizacja](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 
-## <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migracja z modelu opartego na jednostkach DTU do modelu opartego na rdzeniach wirtualnych
+## <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrowanie z modelu opartego na jednostkach DTU do modelu opartego na rdzeń wirtualny
 
 ### <a name="migrate-a-database"></a>Migrowanie bazy danych
 
-Migrowanie bazy danych z modelu zakupu opartego na jednostkach DTU do modelu zakupu opartego na rdzeniach wirtualnych jest podobny do uaktualnienia lub zmiany na starszą wersję między warstwami standardowa i premium usługi w modelu zakupu opartego na jednostkach DTU.
+Migrowanie bazy danych z modelu zakupu opartego na jednostkach DTU do modelu zakupu opartego na rdzeń wirtualny jest podobne do uaktualnienia lub obniżenia poziomu warstwy usług standardowa i Premium w modelu zakupu opartego na jednostkach DTU.
 
-### <a name="migrate-databases-with-geo-replication-links"></a>Migrowanie baz danych za pomocą łącza replikacji geograficznej
+### <a name="migrate-databases-with-geo-replication-links"></a>Migrowanie baz danych za pomocą linków replikacji geograficznej
 
-Migracja z modelu opartego na jednostkach DTU do modelu zakupu opartego na rdzeniach wirtualnych jest podobny do uaktualnienia lub zmiany na starszą wersję relacje replikacji geograficznej między bazami danych w warstwach standardowa i premium. Podczas migracji nie musisz zatrzymać replikację geograficzną, ale muszą wykonać następujące czynności sekwencji:
+Migracja z modelu opartego na jednostkach DTU do modelu zakupu opartego na rdzeń wirtualny jest podobna do uaktualnienia lub obniżenia poziomu relacji replikacji geograficznej między bazami danych w warstwach usług standardowa i Premium. Podczas migracji nie trzeba zatrzymać replikacji geograficznej, ale należy przestrzegać następujących reguł sekwencjonowania:
 
-- Podczas uaktualniania, należy najpierw uaktualnić pomocnicze bazy danych, a następnie Uaktualnij podstawowy.
-- Przed obniżeniem, odwrócić kolejność: należy najpierw obniżyć podstawowej bazy danych, a następnie obniżenia poziomu pomocniczej.
+- Podczas uaktualniania należy najpierw uaktualnić pomocniczą bazę danych, a następnie uaktualnić podstawową.
+- W przypadku zmiany wersji na starszą należy odwrócić kolejność: najpierw należy zmienić podstawową bazę danych, a następnie ponownie obniżyć poziom pomocniczy.
 
-Podczas korzystania z replikacją geograficzną między dwie pule elastyczne, zaleca się wyznaczenie jednej puli jako podstawowy, a drugi jako pomocniczy. W takim przypadku podczas migrowania pul elastycznych należy użyć te same wskazówki sekwencjonowania. Jednak w przypadku pul elastycznych, które zawierają podstawowych i pomocniczych baz danych traktować puli z lepszego wykorzystania jako podstawowy i postępuj zgodnie z zasadami sekwencjonowania.  
+W przypadku korzystania z replikacji geograficznej między dwoma elastycznymi pulami zalecamy wyznaczanie jednej puli jako głównej, a drugiej jako pomocniczej. W takim przypadku podczas migrowania pul elastycznych należy stosować te same wskazówki dotyczące sekwencjonowania. Jeśli jednak istnieją pule elastyczne zawierające podstawowe i pomocnicze bazy danych, należy traktować pulę przy użyciu wyższego użycia jako podstawowego i odpowiednio przestrzegać reguł sekwencjonowania.  
 
-W poniższej tabeli przedstawiono wskazówki dotyczące scenariuszy migracji:
+W poniższej tabeli przedstawiono wskazówki dotyczące określonych scenariuszy migracji:
 
-|Bieżąca warstwa usługi|Docelowej warstwy usług|Typ migracji|Akcje użytkownika|
+|Bieżąca warstwa usługi|Docelowa warstwa usługi|Typ migracji|Akcje użytkownika|
 |---|---|---|---|
-|Standardowa (Standard)|Zastosowania ogólne|Boczna|Można migrować w dowolnej kolejności, ale musisz upewnić się, ustalanie rozmiaru odpowiedniego — rdzeń wirtualny *|
-|Premium|Krytyczne dla działania firmy|Boczna|Można migrować w dowolnej kolejności, ale musisz upewnić się, ustalanie rozmiaru odpowiedniego — rdzeń wirtualny *|
-|Standardowa (Standard)|Krytyczne dla działania firmy|Uaktualnienie|Należy przeprowadzić migrację pomocniczego najpierw|
-|Krytyczne dla działania firmy|Standardowa (Standard)|Zmiana na starszą lub mniej zaawansowaną wersję|Należy przeprowadzić migrację podstawowej najpierw|
-|Premium|Zastosowania ogólne|Zmiana na starszą lub mniej zaawansowaną wersję|Należy przeprowadzić migrację podstawowej najpierw|
-|Zastosowania ogólne|Premium|Uaktualnienie|Należy przeprowadzić migrację pomocniczego najpierw|
-|Krytyczne dla działania firmy|Zastosowania ogólne|Zmiana na starszą lub mniej zaawansowaną wersję|Należy przeprowadzić migrację podstawowej najpierw|
-|Zastosowania ogólne|Krytyczne dla działania firmy|Uaktualnienie|Należy przeprowadzić migrację pomocniczego najpierw|
+|Standardowa (Standard)|Ogólnego przeznaczenia|Linię|Można migrować w dowolnej kolejności, ale trzeba zapewnić odpowiednie rozmiary rdzeń wirtualny *|
+|Premium|Krytyczne dla działania firmy|Linię|Można migrować w dowolnej kolejności, ale trzeba zapewnić odpowiednie rozmiary rdzeń wirtualny *|
+|Standardowa (Standard)|Krytyczne dla działania firmy|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
+|Krytyczne dla działania firmy|Standardowa (Standard)|Zmień na starszą wersję|Najpierw należy zmigrować podstawowe|
+|Premium|Ogólnego przeznaczenia|Zmień na starszą wersję|Najpierw należy zmigrować podstawowe|
+|Ogólnego przeznaczenia|Premium|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
+|Krytyczne dla działania firmy|Ogólnego przeznaczenia|Zmień na starszą wersję|Najpierw należy zmigrować podstawowe|
+|Ogólnego przeznaczenia|Krytyczne dla działania firmy|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
 ||||
 
-\* Co 100 jednostek Dtu w warstwie standardowa wymaga co najmniej 1 rdzeń wirtualny, a każdy 125 jednostek Dtu w warstwie premium wymagają co najmniej 1 rdzeń wirtualny.
+\*Co 100 DTU w warstwie Standardowa wymaga co najmniej 1 rdzeń wirtualny, a każdy 125 DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny.
 
-### <a name="migrate-failover-groups"></a>Przeprowadź migrację grupy trybu failover
+### <a name="migrate-failover-groups"></a>Migrowanie grup trybu failover
 
-Migracja grup trybu failover z wieloma bazami danych wymaga migracji poszczególnych baz danych podstawowych i pomocniczych. Podczas tego procesu rozważenia tych samych czynników i sekwencjonowania zasady są stosowane. Po przekonwertowaniu baz danych do modelu zakupu opartego na rdzeniach wirtualnych, grupy trybu failover będzie obowiązywać z tymi samymi ustawieniami zasad.
+Migracja grup trybu failover z wieloma bazami danych wymaga pojedynczej migracji podstawowych i pomocniczych baz danych. W tym procesie obowiązują te same zagadnienia i reguły sekwencjonowania. Po konwersji baz danych do modelu zakupu opartego na rdzeń wirtualny Grupa trybu failover będzie obowiązywać z tymi samymi ustawieniami zasad.
 
 ### <a name="create-a-geo-replication-secondary-database"></a>Tworzenie pomocniczej bazy danych replikacji geograficznej
 
-Tylko przy użyciu tej samej warstwie usługi, jak używane do podstawowej bazy danych, można utworzyć pomocniczą bazę danych replikacji geograficznej (pomocnicza geograficzna). W przypadku baz danych z szybkością wysokiej Generowanie dziennika, zaleca się utworzenie pomocniczej geograficznej przy użyciu tego samego rozmiaru obliczeń jako podstawowy.
+Pomocniczą bazę danych replikacji geograficznej (geograficzną) można utworzyć tylko przy użyciu tej samej warstwy usług, która została użyta dla podstawowej bazy danych. W przypadku baz danych o wysokim współczynniku generowania dzienników zalecamy utworzenie pomocniczej lokalizacji geograficznej z tym samym rozmiarem obliczeniowym co podstawowy.
 
-Jeśli tworzysz pomocniczej geograficznej w puli elastycznej dla pojedynczej podstawowej bazy danych, upewnij się, `maxVCore` ustawienie rozmiaru obliczeń podstawowej bazy danych jest zgodna z puli. Jeśli tworzysz pomocniczej geograficznej dla lokacji podstawowej w innej puli elastycznej, firma Microsoft zaleca pule mają taką samą `maxVCore` ustawienia.
+Jeśli tworzysz geograficzną lokację w puli elastycznej dla pojedynczej podstawowej bazy danych, upewnij się, że `maxVCore` ustawienie dla puli odpowiada rozmiarowi obliczeniowemu podstawowej bazy danych. Jeśli tworzysz geograficzną lokację główną w innej puli elastycznej, zalecamy, aby pule miały te same `maxVCore` ustawienia.
 
-### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Konwertowanie bazy danych oparty na jednostkach DTU na bazę danych oparty na rdzeniach wirtualnych za pomocą kopii bazy danych
+### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Użycie kopii bazy danych w celu przekonwertowania bazy danych opartej na jednostkach DTU na bazę danych opartą na rdzeń wirtualny
 
-Można skopiować dowolną bazę danych o rozmiarze mocą obliczeniową opartą na jednostkach DTU do bazy danych o rozmiarze oparty na rdzeniach wirtualnych obliczeń bez ograniczeń lub specjalne sekwencjonowania, tak długo, jak rozmiar obliczeń docelowej obsługuje maksymalny rozmiar bazy danych źródłowej bazy danych. Kopiowanie bazy danych tworzy migawkę danych od godziny rozpoczęcia operacji kopiowania i nie synchronizować dane między źródłowym a docelowym.
+Możesz skopiować dowolną bazę danych z rozmiarem obliczeń opartym na jednostkach DTU do bazy danych o rozmiarze obliczeń opartym na rdzeń wirtualny bez ograniczeń lub specjalnej sekwencjonowania, o ile docelowy rozmiar obliczeń obsługuje maksymalny rozmiar bazy danych źródłowej bazy danych. Kopia bazy danych tworzy migawkę danych w czasie rozpoczęcia operacji kopiowania i nie synchronizuje danych między źródłem a obiektem docelowym.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Rozmiarów określonych wystąpień obliczeniowych i opcje rozmiaru magazynu jest dostępne dla pojedynczych baz danych, zobacz [limity zasobów opartych na rdzeniach wirtualnych bazy danych SQL Database dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md).
-- Rozmiarów określonych wystąpień obliczeniowych i magazynu rozmiar dostępnych dla pul elastycznych, zobacz [bazy danych SQL Database oparty na rdzeniach wirtualnych zasobów limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Dla określonych rozmiarów obliczeń i opcji rozmiaru magazynu dostępnych dla pojedynczych baz danych zobacz [SQL Database limity zasobów opartych na rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md).
+- W przypadku określonych rozmiarów obliczeń i opcji rozmiaru magazynu dla pul elastycznych zobacz [SQL Database limity zasobów opartych na rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

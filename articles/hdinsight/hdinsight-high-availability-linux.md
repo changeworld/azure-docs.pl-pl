@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
 ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68405996"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w usłudze HDInsight
@@ -175,7 +175,7 @@ Aby sprawdzić stan usługi za pomocą interfejsu API REST Ambari, można użyć
 * Zamień ciąg **CLUSTERNAME** na nazwę klastra.
 * Zastąp wartość **ServiceName** nazwą usługi, dla której chcesz sprawdzić stan.
 
-Na przykład aby sprawdzić stan usługi **HDFS** w klastrze o nazwie Moje klastry z hasłem **hasła**, użyj następującego polecenia:
+Na przykład aby sprawdzić stan usługi **HDFS** w klastrze o nazwie Moje klastry zhasłem **hasła**, użyj następującego polecenia:
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
@@ -247,7 +247,7 @@ W interfejsie użytkownika sieci Web Ambari wybierz usługę, dla której chcesz
 
 Rozmiar węzła można wybrać tylko podczas tworzenia klastra. Listę różnych rozmiarów maszyn wirtualnych dostępnych dla usługi HDInsight można znaleźć na stronie z cennikiem usługi [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Podczas tworzenia klastra można określić rozmiar węzłów. Poniższe informacje zawierają wskazówki dotyczące sposobu określania rozmiaru przy użyciu [Azure Portal][preview-portal], [Azure PowerShell module Az][azure-powershell]i [interfejsu wiersza polecenia]platformy Azure Azure[-CLI]:
+Podczas tworzenia klastra można określić rozmiar węzłów. Poniższe informacje zawierają wskazówki dotyczące sposobu określania rozmiaru przy użyciu [Azure Portal][preview-portal], [Azure PowerShell module AZ][azure-powershell]i [interfejsu wiersza polecenia platformy Azure][azure-cli]:
 
 * **Azure Portal**: Podczas tworzenia klastra można ustawić rozmiar węzłów używanych przez klaster:
 

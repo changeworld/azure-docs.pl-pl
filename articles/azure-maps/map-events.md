@@ -1,57 +1,57 @@
 ---
-title: Obsługa zdarzeń myszy przy użyciu usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Jak utworzyć mapę interaktywną Javascript za pomocą mapy zdarzeń
+title: Obsługa zdarzeń myszy przy użyciu Azure Maps | Microsoft Docs
+description: Jak utworzyć interaktywną mapę JavaScript ze zdarzeniami mapy
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/29/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 4fce8eae25942d098bb3f3277938bfaa3dafa00b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da6b183155de0fbc370751254a6842343d280874
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60770452"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638969"
 ---
-# <a name="interact-with-the-map---mouse-events"></a>Interakcja z mapą — zdarzenia myszy
+# <a name="interact-with-the-map---mouse-events"></a>Korzystanie z zdarzeń dotyczących mapy — myszy
 
-W tym artykule dowiesz się, jak używać [map — klasa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [zdarzenia](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) właściwości w celu wyróżnienia zdarzeń na mapie i na różnych warstw mapy. On również pokazano, jak wyróżnienia zdarzeń podczas interakcji z znaczników HTML za pomocą właściwości zdarzeń klasy mapy.
+W tym artykule pokazano, jak używać właściwości [zdarzenia](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [klasy mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) do wyróżniania zdarzeń na mapie i na różnych warstwach mapy. Pokazano w nim także, jak używać właściwości zdarzenia klasy mapy do wyróżniania zdarzeń podczas korzystania z znacznika HTML.
 
-## <a name="interact-with-the-map"></a>Interakcja z mapą
+## <a name="interact-with-the-map"></a>Korzystanie z mapy
 
-<iframe height='600' scrolling='no' title='Interakcja z mapą — zdarzenia myszy' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>interakcja z mapą — zdarzenia myszy</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='600' scrolling='no' title='Korzystanie z mapy — zdarzenia myszy' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zapoznaj się z piórem, korzystając <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>z zdarzeń dotyczących mapy — wskaźnik myszy</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Poeksperymentuj z powyższych mapy i zobacz pokrewnych zdarzeń myszy wyróżnione po prawej stronie. Możesz kliknąć **kartę JS** do wyświetlania i edytowania kodu JavaScript. Możesz również kliknąć **edytować na funkcji codepen można** znajdujący się i edytowanie kodu w funkcji codepen można.
+Odtwórz przy użyciu powyższej mapy i zobacz odpowiednie zdarzenia myszy wyróżnione po prawej stronie. Możesz kliknąć **kartę js** , aby wyświetlić i edytować kod JavaScript. Możesz również kliknąć przycisk **Edytuj na CodePen** i edytować kod w CodePen.
 
-## <a name="interact-with-map-layers"></a>Korzystać z warstwy mapy
+## <a name="interact-with-map-layers"></a>Korzystanie z warstw mapy
 
-<iframe height='600' scrolling='no' title='Interakcja z mapą — warstwa zdarzeń' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>interakcja z mapą — warstwa zdarzeń</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='600' scrolling='no' title='Korzystanie z zdarzeń mapy — zdarzenia warstwy' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zapoznaj się z piórem, korzystając <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>z zdarzeń mapy — zdarzenia warstwy</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Powyższy kod wyróżnia nazwę zdarzenia, które Pobierz uruchamiane, podczas wchodzenia w interakcje z warstwą symboli. Symbol, bąbelkowy, wiersza i wielokąta warstwy wszystkich obsługują ten sam zestaw zdarzeń. Warstwa kafelków nie obsługuje dowolne z tych zdarzeń.
+Powyższy kod wyróżnia nazwę zdarzeń, które są wyzwalane podczas korzystania z warstwy symboli. Warstwa symbol, bąbelki, linia i Wielokąt obsługują ten sam zestaw zdarzeń. Warstwa kafelków nie obsługuje żadnego z tych zdarzeń.
 
-## <a name="interact-with-html-marker"></a>Interakcja z znacznik HTML
+## <a name="interact-with-html-marker"></a>Korzystanie z znacznika HTML
 
-<iframe height='500' scrolling='no' title='Interakcja z mapą - zdarzeń znaczników HTML' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>interakcja z mapą - zdarzeń znaczników HTML</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Korzystanie z zdarzeń mapy — znaczniki HTML' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz, jak <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>korzystać z pióra z zdarzeniami znacznika mapy kodu HTML</a> według<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Powyższy kod dodaje zdarzenia mapy Javascript do znaczników HTML. To również wyodrębnić nazwę zdarzenia, które Pobierz uruchamiane, podczas wchodzenia w interakcje przy użyciu znaczników HTML.
+Powyższy kod dodaje zdarzenia mapy JavaScript do znacznika HTML. Wyróżnia także nazwę zdarzeń, które są wyzwalane podczas korzystania z znacznika HTML.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule:
+Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
-Zobacz następujące artykuły, aby uzyskać przykłady pełnego kodu:
-
-> [!div class="nextstepaction"]
-> [Za pomocą modułu usług mapy platformy Azure](./how-to-use-services-module.md)
+Zobacz następujące artykuły, aby zapoznać się z pełnymi przykładami kodu:
 
 > [!div class="nextstepaction"]
-> [Strona przykładowy kod](https://aka.ms/AzureMapsSamples)
+> [Korzystanie z modułu Azure Maps Services](./how-to-use-services-module.md)
+
+> [!div class="nextstepaction"]
+> [Przykładowa strona kodowa](https://aka.ms/AzureMapsSamples)

@@ -1,6 +1,6 @@
 ---
-title: Bazowymi zasadami ochrony użytkownika końcowego (wersja zapoznawcza) — usługi Azure Active Directory
-description: Zasady dostępu warunkowego, aby wymagać uwierzytelniania wieloskładnikowego dla użytkowników
+title: Zasady linii bazowej ochrona użytkowników końcowych (wersja zapoznawcza) — Azure Active Directory
+description: Zasady dostępu warunkowego wymagające uwierzytelniania wieloskładnikowego dla użytkowników
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,69 +11,69 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2644e0e35139ac470b89f6af1b95cf510f60a0a
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561017"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608135"
 ---
-# <a name="baseline-policy-end-user-protection-preview"></a>Zasady punktu odniesienia: Ochrona użytkowników końcowych (wersja zapoznawcza)
+# <a name="baseline-policy-end-user-protection-preview"></a>Zasady linii bazowej: Ochrona użytkowników końcowych (wersja zapoznawcza)
 
-Firma Microsoft zwykle myśleć, że konta administratora, są to jedyne konta, które wymagają ochrony z uwierzytelnianiem wieloskładnikowym (MFA). Administratorzy mają szeroki dostęp do poufnych informacji i wprowadzać zmiany do ustawień na poziomie subskrypcji. Jednakże nieupoważnione osoby zwykle użytkownikom końcowym docelowego. Po uzyskaniu dostępu, nieupoważnione osoby te mogą żądać dostępu do uprzywilejowanych informacje w imieniu oryginalnego właściciela konta lub pobrać cały katalog do wykonania ataku w całej organizacji. Jednej wspólnej metody w celu zwiększenia ochrony dla wszystkich użytkowników jest wymagane mocniejsze formularz weryfikacji konta, takie jak multi factor authentication (MFA).
+Chcemy myśleć, że konta administratorów są jedynymi kontami, które wymagają ochrony przy użyciu uwierzytelniania wieloskładnikowego (MFA). Administratorzy mają szeroki dostęp do poufnych informacji i mogą wprowadzać zmiany w ustawieniach całej subskrypcji. Niemniej jednak w przypadku nieprawidłowych uczestników chcemy kierować użytkowników końcowych. Po uzyskaniu dostępu te złe osoby mogą zażądać dostępu do informacji uprzywilejowanych w imieniu oryginalnego właściciela konta lub pobrać cały katalog w celu przeprowadzenia ataku phishingowego w całej organizacji. Jedną z typowych metod ulepszania ochrony dla wszystkich użytkowników jest wymaganie silniejszej weryfikacji konta, takiej jak uwierzytelnianie wieloskładnikowe (MFA).
 
-Do uzyskania odpowiedniej równowagi zabezpieczeń i użyteczności, użytkownicy nie powinien wyświetlony monit o każdym pojedynczego logowania. Żądania uwierzytelniania, które odzwierciedlają zachowanie zwykłego użytkownika, np. z tego samego urządzenia z tej samej lokalizacji ma niskie ryzyko naruszenia zabezpieczeń. Tylko operacje logowania, które zostaną uznane za ryzykowne i Wyświetl właściwości nieuprawnione powinien monit za pomocą usługi MFA wyzwania.
+Aby zapewnić rozsądną równowagę w zakresie bezpieczeństwa i użyteczności, użytkownicy nie powinni otrzymywać monitów za każdym razem, gdy zalogują się. Żądania uwierzytelniania odzwierciedlające normalne zachowanie użytkowników, takie jak logowanie z tego samego urządzenia z tej samej lokalizacji, mają niewielki kompromis. Tylko logowania uznawane za ryzykowne i pokazujące właściwości niewłaściwego aktora powinny być monitowani z wyzwaniami MFA.
 
-Ochrona użytkowników końcowych jest uwierzytelnianie wieloskładnikowe na podstawie ryzyka [bazowymi zasadami](concept-baseline-protection.md) , która chroni wszyscy użytkownicy w katalogu, w tym wszystkich ról administratora. Włączenie tych zasad wymaga od wszystkich użytkowników do rejestracji usługi MFA przy użyciu aplikacji uwierzytelniającej. Użytkownikom można zignorować wiersz rejestracji uwierzytelniania Wieloskładnikowego przez 14 dni, po upływie których będą blokowani logowanie do momentu rejestracji usługi MFA. Po zarejestrowaniu usługi MFA użytkownicy otrzymują monit dla usługi MFA tylko podczas prób ryzykowne logowania. Naruszenia bezpieczeństwa kont użytkowników są blokowane, aż do resetowania jego hasła i zwinięciu sekcji zdarzeń o podwyższonym ryzyku.
+Ochrona użytkowników końcowych jest [zasadami odniesienia](concept-baseline-protection.md) MFA opartymi na ryzyku, które chronią wszystkich użytkowników w katalogu, w tym wszystkich ról administratorów. Włączenie tych zasad wymaga, aby wszyscy użytkownicy rejestrowali się w usłudze MFA przy użyciu aplikacji Authenticator. Użytkownicy mogą zignorować monit rejestracji usługi MFA przez 14 dni, po upływie którego nie będzie można zalogować się do momentu zarejestrowania się w usłudze MFA. Po zarejestrowaniu usługi MFA zostanie wyświetlony monit dotyczący uwierzytelniania wieloskładnikowego tylko podczas ryzykownych prób logowania. Naruszone konta użytkowników są blokowane do momentu zresetowania hasła i odrzucenia zdarzeń o podwyższonym ryzyku.
 
 > [!NOTE]
-> Ta zasada ma zastosowanie do wszystkich użytkowników, w tym konta gościa i będą oceniane podczas logowania się do wszystkich aplikacji.
+> Te zasady mają zastosowanie do wszystkich użytkowników, w tym kont gościa, i zostaną ocenione podczas logowania do wszystkich aplikacji.
 
-## <a name="recovering-compromised-accounts"></a>Odzyskiwanie naruszenia zabezpieczeń kont
+## <a name="recovering-compromised-accounts"></a>Odzyskiwanie naruszonych kont
 
-Aby lepiej chronić naszych klientów, usługa ujawnione poświadczenia firmy Microsoft znajduje pary publicznie dostępne nazwy użytkownika i hasła. Jeśli są zgodne z jednego z naszych użytkowników zabezpieczamy tego konta natychmiast. Użytkownicy określone jako mające ujawnione poświadczenia zostały potwierdzone naruszenia zabezpieczeń. Ci użytkownicy będą mieć logowanie, dopóki nie zostanie zresetowane swoje hasło.
+Aby pomóc w ochronie naszych klientów, usługa nieujawniona poświadczeń firmy Microsoft znajduje publicznie dostępną parę nazw i haseł. Jeśli są one zgodne z jednym z naszych użytkowników, możemy bezpiecznie zabezpieczyć to konto. Użytkownicy zidentyfikowani jako mający ujawnione poświadczenia są potwierdzane. Użytkownicy będą mogli logować się do momentu zresetowania hasła.
 
-Użytkownicy z przypisaną licencję usługi Azure AD Premium można przywrócić dostęp za pośrednictwem samoobsługowego resetowania haseł (SSPR), jeśli ta funkcja jest włączona w ich katalogu. Użytkownicy bez licencji premium, które stają się zablokowane, musisz skontaktować się z administratorem, aby przeprowadzić resetowanie ręczne hasła i zamknąć zdarzenie o podwyższonym ryzyku użytkownik z flagą.
+Użytkownicy, którym przypisano licencję Azure AD — wersja Premium, mogą przywrócić dostęp za pomocą funkcji samoobsługowego resetowania hasła (SSPR), jeśli ta funkcja jest włączona w swoim katalogu. Użytkownicy bez licencji Premium, która stanie się zablokowana, muszą skontaktować się z administratorem w celu przeprowadzenia ręcznego resetowania hasła i odrzucić zdarzenie o podwyższonym ryzyku użytkownika.
 
-### <a name="steps-to-unblock-a-user"></a>Kroki, aby odblokować użytkownika
+### <a name="steps-to-unblock-a-user"></a>Procedura odblokowywania użytkownika
 
-Upewnij się, że użytkownik został zablokowany przez zasady, sprawdzając dzienniki logowania użytkownika.
+Sprawdź, czy użytkownik został zablokowany przez zasady, sprawdzając dzienniki logowania użytkownika.
 
-1. Administrator musi zalogować się do **witryny Azure portal** i przejdź do **usługi Azure Active Directory** > **użytkowników** > kliknij nazwę użytkownika i nawigowanie do logowania.
-1. Aby zainicjować resetowania haseł na zablokowany użytkownik, administrator musi przejść do **usługi Azure Active Directory** > **użytkownicy oflagowani w związku z ryzykiem**
-1. Kliknij użytkownika, którego konto jest zablokowane, aby wyświetlić informacje o najnowszych rejestrowania aktywności użytkownika.
+1. Administrator musi zalogować się do **Azure Portal** i przejść do **Azure Active Directory** > **użytkowników** > kliknij nazwę użytkownika i przejdź do logowania.
+1. Aby można było inicjować Resetowanie hasła na zablokowanym użytkowniku, administrator musi przejść do **Azure Active Directory** > **użytkowników oflagowanych w celu ryzyka**
+1. Kliknij użytkownika, którego konto zostało zablokowane, aby wyświetlić informacje o ostatnim działaniu logowania użytkownika.
 1. Kliknij przycisk Resetuj hasło, aby przypisać hasło tymczasowe, które należy zmienić przy następnym logowaniu.
-1. Kliknij przycisk Odrzuć wszystkie zdarzenia można zresetować ocenę ryzyka użytkownika.
+1. Kliknij pozycję Odrzuć wszystkie zdarzenia, aby zresetować ocenę ryzyka użytkownika.
 
-Użytkownik może teraz logować, zresetować hasło i uzyskać dostęp do aplikacji.
+Użytkownik może teraz zalogować się, zresetować swoje hasło i uzyskać dostęp do aplikacji.
 
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
-Ponieważ **ochrony użytkownik końcowy** zasady mają zastosowanie do wszystkich użytkowników w katalogu, kilka zagadnień, które należy podjąć, aby zapewnić bezproblemowe wdrożenie. Te zagadnienia obejmują identyfikowanie użytkowników i zasad usługi w usłudze Azure AD, która nie może lub nie należy wykonywać uwierzytelnianie wieloskładnikowe, a także aplikacji i używanych przez Twoją organizację klientów, które nie obsługują nowoczesnego uwierzytelniania.
+Ponieważ zasady **ochrony użytkowników końcowych** mają zastosowanie do wszystkich użytkowników w katalogu, należy wprowadzić kilka kwestii w celu zapewnienia bezproblemowego wdrożenia. Te zagadnienia obejmują Identyfikowanie użytkowników i zasad usługi w usłudze Azure AD, które nie mogą ani nie powinny wykonywać uwierzytelniania MFA, a także aplikacje i klientów używane przez organizację, które nie obsługują nowoczesnego uwierzytelniania.
 
-### <a name="legacy-protocols"></a>Starszych protokołów
+### <a name="legacy-protocols"></a>Starsze protokoły
 
-Protokoły uwierzytelniania starszej wersji (IMAP, SMTP, POP3, itp.) są używane przez klientów poczty na wysyłanie żądań uwierzytelniania. Te protokoły nie obsługują uwierzytelniania Wieloskładnikowego.  Większość naruszeń konta widoczne dla firmy Microsoft są spowodowane przez nieupoważnione osoby przeprowadzania ataków na starszych protokołów próby Pomiń uwierzytelnianie wieloskładnikowe. Aby upewnić się, że usługa MFA jest wymagana podczas logowania się do konta usługi i nieupoważnione osoby nie pozwalają na pomijanie usługi MFA, ta zasada blokuje wszystkie żądania uwierzytelniania do kont administratorów starszych protokołów.
+Starsze protokoły uwierzytelniania (IMAP, SMTP, POP3 itp.) są używane przez klientów poczty do przesyłania żądań uwierzytelniania. Te protokoły nie obsługują usługi MFA.  Większość naruszeń kont widzianych przez firmę Microsoft jest spowodowana przez niewłaściwym uczestnikom ataków na starsze protokoły próbujących obejść usługę MFA. Aby zapewnić, że uwierzytelnianie wieloskładnikowe jest wymagane w przypadku logowania się do konta, a niewłaściwe podmioty nie mogą obejść usługi MFA, te zasady blokują wszystkie żądania uwierzytelniania skierowane do kont administratorów ze starszych protokołów.
 
 > [!WARNING]
-> Przed włączeniem tej zasady, upewnij się, że użytkownicy nie są za pomocą protokołów uwierzytelniania starszej wersji. Zapoznaj się z artykułem [jak: Blokuj starsze uwierzytelnianie do usługi Azure AD przy użyciu dostępu warunkowego](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) Aby uzyskać więcej informacji.
+> Przed włączeniem tych zasad upewnij się, że użytkownicy nie używają starszych protokołów uwierzytelniania. Zapoznaj się [z artykułem How to: Zablokuj starsze uwierzytelnianie w usłudze Azure AD](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) przy użyciu dostępu warunkowego, aby uzyskać więcej informacji.
 
-## <a name="enable-the-baseline-policy"></a>Włącz zasady linii bazowej
+## <a name="enable-the-baseline-policy"></a>Włączanie zasad linii bazowej
 
-Zasady **bazowymi zasadami: Ochrona użytkowników końcowych (wersja zapoznawcza)** ma wstępnie skonfigurowany i pojawi się u góry po przejściu do bloku dostępu warunkowego w witrynie Azure portal.
+Zasady linii **bazowej zasad: Ochrona użytkowników końcowych (wersja** zapoznawcza) jest wstępnie skonfigurowana i zostanie wyświetlona u góry po przejściu do bloku dostęp warunkowy w Azure Portal.
 
 Aby włączyć te zasady i chronić użytkowników:
 
-1. Zaloguj się do **witryny Azure portal** jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
-1. Przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**.
-1. Na liście zasad wybierz **bazowymi zasadami: Ochrona użytkowników końcowych (wersja zapoznawcza)** .
-1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
+1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
+1. Na liście zasad wybierz pozycję **zasady linii bazowej: Ochrona użytkowników końcowych (wersja**zapoznawcza).
+1. Ustaw opcję **Włącz zasady** , aby od **razu używać zasad**.
 1. Kliknij przycisk **Zapisz**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz:
 
-* [Zasady ochrony linii bazowej dostępu warunkowego](concept-baseline-protection.md)
-* [Pięć kroków do zabezpieczania infrastruktury tożsamości](../../security/azure-ad-secure-steps.md)
-* [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](overview.md)
+* [Zasady ochrony punktu odniesienia dostępu warunkowego](concept-baseline-protection.md)
+* [Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości](../../security/fundamentals/steps-secure-identity.md)
+* [Co to jest dostęp warunkowy w Azure Active Directory?](overview.md)

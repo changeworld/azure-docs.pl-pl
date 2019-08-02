@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: cbb18212f70343d8b9933bd2c787ce6aae8b145d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61cdcb98fc5c0947a25954161676c55ebf902688
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401001"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720728"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Kopiowanie danych z programu Jira przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -44,7 +44,7 @@ Następujące właściwości są obsługiwane w przypadku programu Jira połącz
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Jira** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **Jira** | Tak |
 | host | Adres IP lub hosta nazwę usługi programu Jira. (na przykład jira.example.com)  | Yes |
 | port | Port TCP używany przez serwer programu Jira do nasłuchiwania połączeń klientów. Wartością domyślną jest 443, jeśli połączenie za pośrednictwem protokołu HTTPS lub 8080, jeśli połączenie nawiązywane za pośrednictwem protokołu HTTP.  | Nie |
 | username | Nazwa użytkownika, który umożliwia dostęp do usługi Jira.  | Yes |
@@ -81,7 +81,7 @@ Aby skopiować dane z programu Jira, należy ustawić właściwość typu zestaw
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **JiraObject** | Yes |
+| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **JiraObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -91,11 +91,12 @@ Aby skopiować dane z programu Jira, należy ustawić właściwość typu zestaw
     "name": "JiraDataset",
     "properties": {
         "type": "JiraObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Jira linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -110,7 +111,7 @@ Aby skopiować dane z programu Jira, należy ustawić typ źródła w działaniu
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **JiraSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **JiraSource** | Yes |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

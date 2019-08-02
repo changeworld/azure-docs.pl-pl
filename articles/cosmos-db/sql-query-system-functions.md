@@ -1,17 +1,17 @@
 ---
 title: Funkcje systemowe
-description: Więcej informacji na temat funkcji systemu SQL w usłudze Azure Cosmos DB.
+description: Dowiedz się więcej o funkcjach systemu SQL w Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 11a6fdad187670bcb5af4c56198fd7343680690d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b0e9c751d46f805af75196da464a39783c95ae6a
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342437"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619979"
 ---
 # <a name="system-functions"></a>Funkcje systemowe
 
@@ -23,35 +23,35 @@ ms.locfileid: "67342437"
 |[Typ funkcji sprawdzania](#type-checking-functions)|Funkcje kontroli typów pozwalają sprawdzić typ wyrażenia w zapytaniach języka SQL.|  
 |[Funkcje ciągów](#string-functions)|Funkcje ciągów wykonania operacji na wartość ciągu wejściowego i zwraca ciąg, wartość liczbowa lub Boolean.|  
 |[Funkcje tablicy](#array-functions)|Funkcje tablicy w trakcie operacji na tablicy wartości wejściowej i liczbowa zwracana, atrybut typu wartość logiczna lub wartości tablicy.|
-|[Funkcje daty i godziny](#date-time-functions)|Funkcje date i time umożliwiają uzyskanie bieżąca data i Godzina UTC w dwóch formach; sygnaturę czasową liczbowe, którego wartością jest epoki systemu Unix (w milisekundach) lub jako ciąg, który jest zgodny z formatu ISO 8601.|
+|[Funkcje daty i godziny](#date-time-functions)|Funkcje daty i godziny umożliwiają uzyskanie bieżącej daty i godziny UTC w dwóch formach; liczbowa sygnatura czasowa, której wartość to epoka systemu UNIX w milisekundach lub ciąg, który jest zgodny z formatem ISO 8601.|
 |[Funkcje przestrzenne](#spatial-functions)|Funkcje przestrzenne wykonania operacji na podstawie wartości wejściowe obiektu przestrzennego i zwracają wartość liczbowa lub Boolean.|  
 
-Poniżej przedstawiono listę funkcji, w ramach każdej kategorii:
+Poniżej znajduje się lista funkcji w ramach każdej kategorii:
 
 | Grupa funkcji | Operacje |
 |---------|----------|
-| Funkcje matematyczne | ABS, CEILING, EXP, FLOOR, LOG, LOG10, POWER, ROUND, SIGN, SQRT, SQUARE, TRUNC, ACOS, ASIN, ATAN, ATN2, COS, COT, DEGREES, PI, RADIANS, SIN, TAN |
-| Sprawdzanie typu funkcji | IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED, IS_PRIMITIVE |
+| Funkcje matematyczne | ABS, SUFIT, EXP, FLOOR, LOG, LOG10 —, MOC, UDZIEC, SIGN, SQRT, KWADRAT, TRUNC —, ACOS, ASIN, ATAN, ATN2, COS, COT, STOPNIE, PI, RADIANS, RAND, SIN, TAN |
+| Funkcje sprawdzania typu | IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED, IS_PRIMITIVE |
 | Funkcje ciągów | CONCAT, CONTAINS, ENDSWITH, INDEX_OF, LEFT, LENGTH, LOWER, LTRIM, REPLACE, REPLICATE, REVERSE, RIGHT, RTRIM, STARTSWITH, SUBSTRING, UPPER |
 | Funkcje tablicy | ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH, ARRAY_SLICE |
 | Funkcje daty i godziny | GETCURRENTDATETIME, GETCURRENTTIMESTAMP,  |
 | Funkcje przestrzenne | ST_DISTANCE, ST_WITHIN, ST_INTERSECTS, ST_ISVALID, ST_ISVALIDDETAILED |
 
-Jeśli aktualnie używasz funkcji zdefiniowanej przez użytkownika (UDF) dla której wbudowanej funkcji jest teraz dostępna, odpowiednie wbudowanej funkcji będzie szybsze uruchamianie i bardziej wydajne.
+Jeśli obecnie używasz funkcji zdefiniowanej przez użytkownika (UDF), dla której funkcja wbudowana jest teraz dostępna, odpowiednia Wbudowana funkcja będzie szybsza i wydajniejsza.
 
-Główna różnica między ANSI SQL i funkcje usługi Cosmos DB jest, funkcje usługi Cosmos DB są zaprojektowane do dobrze pracować ze schematów i mieszanego schematu danych. Na przykład, jeśli właściwość jest nieobecna lub ma wartość nieliczbowych, takich jak `unknown`, element jest pomijany, zamiast zwracać błąd.
+Główna różnica między funkcjami Cosmos DB i funkcjami SQL ANSI polega na tym, że funkcje Cosmos DB są zaprojektowane tak, aby działały ze schematami i danymi mieszanymi w schemacie. Na przykład jeśli brakuje właściwości lub ma wartość nieliczbową, taką jak `unknown`, element jest pomijany, a nie zwraca błędu.
 
 ##  <a name="mathematical-functions"></a> Funkcje matematyczne  
 
 Każda z funkcji matematycznych wykonuje obliczenie na podstawie wartości wejściowych, które są podawane jako argumenty, i zwraca wartość liczbową.
 
-Można uruchomić zapytania, podobnie jak w poniższym przykładzie:
+Można uruchamiać zapytania takie jak Poniższy przykład:
 
 ```sql
     SELECT VALUE ABS(-4)
 ```
 
-Wynik jest:
+Wynik:
 
 ```json
     [4]
@@ -66,9 +66,9 @@ Poniżej znajduje się tabela zawierająca obsługiwane wbudowane funkcje matema
 |[COS](#bk_cos)|[COT](#bk_cot)|[STOPNI](#bk_degrees)|  
 |[EXP](#bk_exp)|[FLOOR](#bk_floor)|[DZIENNIK](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[ZASILANIA](#bk_power)|  
-|[RADIANS](#bk_radians)|[ROUND](#bk_round)|[SIN](#bk_sin)|  
-|[SQRT](#bk_sqrt)|[KWADRAT](#bk_square)|[LOGOWANIE](#bk_sign)|  
-|[TAN](#bk_tan)|[TRUNC —](#bk_trunc)||  
+|[RADIANS](#bk_radians)|[ROUND](#bk_round)|[RAND](#bk_rand)|
+|[SIN](#bk_sin)|[SQRT](#bk_sqrt)|[KWADRAT](#bk_square)|
+|[LOGOWANIE](#bk_sign)|[TAN](#bk_tan)|[TRUNC —](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
  Zwraca wartość bezwzględną (dodatnią) podanego wyrażenia liczbowego.  
@@ -425,7 +425,7 @@ EXP (<numeric_expression>)
   
   Wykładnik potęgi liczby jest stałą **e** podniesioną do potęgi liczby. Na przykład EXP(1.0) = e ^ 1.0 = 2.71828182845905 i EXP(10) = e ^ 10 = 22026.4657948067.  
   
-  Jest to liczba wykładniczą logarytm naturalny liczby sam: EXP (dziennik (n)) = n. A logarytm naturalny wykładniczą liczby jest liczbą sam: Dziennik (EXP (n)) = n.  
+  Wartość wykładnicza logarytmu naturalnego liczby jest samą liczbą: EXP (LOG (n)) = n. A logarytm naturalny liczby wykładniczej jest liczbą: Dziennik (EXP (n)) = n.  
   
   **Przykłady**  
   
@@ -482,7 +482,7 @@ LOG (<numeric_expression> [, <base>])
   
   Logarytm naturalny to logarytm o podstawie **e**, gdzie **e** jest stałą nieracjonalnej w przybliżeniu równa 2.718281828.  
   
-  Logarytm naturalny wykładniczą liczby jest to liczba sam: Dziennik (EXP (n)) = n. I wykładniczą logarytm naturalny liczby jest to liczba sam: EXP (dziennik (n)) = n.  
+  Logarytm naturalny liczby wykładniczej jest tylko numerem: Dziennik (EXP (n)) = n. I wykładnicza logarytmu naturalnego liczby jest samą liczbą: EXP (LOG (n)) = n.  
   
   **Przykłady**  
   
@@ -555,13 +555,7 @@ SELECT LOG10(100) AS log10
 ```  
 PI ()  
 ```  
-  
- **Argumenty**  
-  
-- `numeric_expression`  
-  
-   To wyrażenie liczbowe.  
-  
+   
   **Typy zwracane**  
   
   Zwraca wartość wyrażenia liczbowego.  
@@ -677,14 +671,14 @@ ROUND(<numeric_expression>)
   
   **Uwagi**
   
-  Operację zaokrąglania, wykonywana jest zgodna punkt środkowy zaokrąglanie od zera. Jeśli dane wejściowe są wyrażenia liczbowego, który mieści się między dwoma liczbami całkowitymi wynik będzie najbliższej wartości liczby całkowitej w kierunku od zera.  
+  Operacja zaokrąglania jest wykonywana po zaokrągleniu punktu środkowego od zera. Jeśli dane wejściowe to wyrażenie liczbowe, które jest równe dokładnie dwóch liczb całkowitych, wynik będzie najbliższej wartości całkowitej z przedziału od zera.  
   
   |<numeric_expression>|Zaokrąglone|
   |-|-|
-  |-6.5000|-7|
-  |-0.5|-1|
+  |-6,5000|-7|
+  |-0,5|-1|
   |0,5|1|
-  |6.5000|7||
+  |6,5000|7||
   
   **Przykłady**  
   
@@ -699,7 +693,34 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 ```  
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
+
+#### <a name="bk_rand"></a>RAND
+ Zwraca losowo wygenerowaną wartość liczbową z [0, 1).
+ 
+ **Składnia**  
   
+```  
+RAND ()  
+```  
+
+  **Typy zwracane**  
+  
+  Zwraca wartość wyrażenia liczbowego.  
+  
+  **Przykłady**  
+  
+  Poniższy przykład zwraca losowo wygenerowaną wartość liczbową.  
+  
+```  
+SELECT RAND() AS rand 
+```  
+  
+ W tym miejscu znajduje się zestaw wyników.  
+  
+```  
+[{"rand": 0.87860053195618093}]  
+``` 
+
 ####  <a name="bk_sign"></a> LOGOWANIE  
  Zwraca wynik dodatni (+ 1), wartość zero (0) lub minus (-1) z określonego wyrażenia liczbowego.  
   
@@ -898,9 +919,9 @@ SELECT TRUNC(2.4) AS t1, TRUNC(2.6) AS t2, TRUNC(2.5) AS t3, TRUNC(-2.4) AS t4, 
 [{t1: 2, t2: 2, t3: 2, t4: -2, t5: -2}]  
 ```
 
-## <a id="type-checking-functions"></a>Typ funkcji sprawdzania
+## <a id="type-checking-functions"></a>Funkcje sprawdzania typu
 
-Funkcje sprawdzania typu pozwalają sprawdzić typ wyrażenia w ramach zapytania SQL. Kontrola typów w funkcji służy do określania typów właściwości elementów na bieżąco, kiedy są one zmienna lub nieznany. W tym miejscu znajduje się tabela obsługiwanych wbudowanych funkcji sprawdzania typów:
+Funkcje sprawdzania typu umożliwiają sprawdzanie typu wyrażenia w zapytaniu SQL. Za pomocą funkcji sprawdzania typu można określić typy właściwości w obrębie elementów na bieżąco, gdy są one zmienne lub nieznane. Oto tabela obsługiwanych wbudowanych funkcji sprawdzania typów:
 
 Następujące funkcje obsługuje typ sprawdzania względem wartości wejściowych, a każda zwraca wartość logiczną.  
   
@@ -1225,7 +1246,7 @@ SELECT
 
 ## <a id="string-functions"></a>Funkcje ciągów
 
-Następujące funkcje skalarne wykonania operacji na wartość ciągu wejściowego i zwraca ciąg, wartość liczbowa lub Boolean:
+Następujące funkcje skalarne wykonują operacje na wartościach wejściowych ciągu i zwracają ciąg, wartość liczbową lub logiczną:
   
 ||||  
 |-|-|-|  
@@ -1557,10 +1578,10 @@ REPLICATE(<str_expr>, <num_expr>)
   
 - `num_expr`  
   
-   Jest dowolne prawidłowe wyrażenie liczbowe. W przypadku ujemny lub nieskończona num_expr wynik jest niezdefiniowany.
+   Jest dowolne prawidłowe wyrażenie liczbowe. Jeśli num_expr jest ujemna lub nieograniczona, wynik jest niezdefiniowany.
 
   > [!NOTE]
-  > Maksymalna długość wyniku jest 10 000 znaków, czyli (length(str_expr) * num_expr) < = 10 000.
+  > Maksymalna długość wyniku to 10 000 znaków (długość (str_expr) * num_expr) < = 10 000.
   
   **Typy zwracane**  
   
@@ -1716,8 +1737,8 @@ SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2
 [{"s1": false, "s2": true}]  
 ```  
 
-  ####  <a name="bk_stringtoarray"></a> StringToArray  
- Zwraca wyrażenie przetłumaczone na tablicę. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
+  ####  <a name="bk_stringtoarray"></a>StringToArray  
+ Zwraca wyrażenie tłumaczone na tablicę. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
   
  **Składnia**  
   
@@ -1729,17 +1750,17 @@ StringToArray(<expr>)
   
 - `expr`  
   
-   Jest dowolne prawidłowe wyrażenie skalarne, mogło zostać ocenione jako wyrażenie tablicy JSON. Należy pamiętać o tym, czy wartości ciągu zagnieżdżonych musi być napisana przy użyciu podwójnych cudzysłowów był prawidłowy. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)
+   Jest dowolnym prawidłowym wyrażeniem skalarnym, które ma zostać obliczone jako wyrażenie tablicy JSON. Należy zauważyć, że zagnieżdżone wartości ciągu muszą być zapisywane z podwójnymi cudzysłowami, aby były prawidłowe. Aby uzyskać szczegółowe informacje o formacie JSON, zobacz [JSON.org](https://json.org/)
   
   **Typy zwracane**  
   
-  Zwraca wyrażenie tablicy lub jest niezdefiniowana.  
+  Zwraca wyrażenie tablicy lub niezdefiniowane.  
   
   **Przykłady**  
   
-  Poniższy przykład pokazuje, jak StringToArray zachowuje się na różnych urządzeniach. 
+  Poniższy przykład pokazuje, jak StringToArray działa w różnych typach. 
   
- Poniżej przedstawiono przykłady prawidłowych danych wejściowych.
+ Poniżej przedstawiono przykłady z prawidłowymi danymi wejściowymi.
 
 ```
 SELECT 
@@ -1756,10 +1777,10 @@ W tym miejscu znajduje się zestaw wyników.
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
-Oto przykład nieprawidłowe dane wejściowe. 
+Poniżej przedstawiono przykład nieprawidłowych danych wejściowych. 
    
- Apostrofy w tablicy nie jest prawidłowym plikiem JSON.
-Mimo że są one prawidłowe w obrębie zapytania, ich nie można przeanalizować prawidłowe tablic. Ciągi znaków w ciągu tablicy należy albo użyć znaków ucieczki "[\\"\\"]" lub otaczającego oferty muszą być pojedynczego "[" "]".
+ Pojedyncze cudzysłowy w tablicy nie są prawidłowymi formatami JSON.
+Mimo że są one prawidłowe w ramach zapytania, nie będą analizowane do prawidłowych tablic. Ciągi w ciągu tablicy muszą mieć wartość ucieczki "[\\"\\"]" lub otaczające cudzysłowy muszą być pojedynczym znakiem "[" "]".
 
 ```
 SELECT
@@ -1772,9 +1793,9 @@ W tym miejscu znajduje się zestaw wyników.
 [{}]
 ```
 
-Poniżej przedstawiono przykłady nieprawidłowe dane wejściowe.
+Poniżej przedstawiono przykłady nieprawidłowych danych wejściowych.
    
- Będzie można przeanalizować wyrażenia przekazanego jako tablicę JSON; następujące nie oceniają do typu tablicy i dlatego zwraca niezdefiniowane.
+ Przesłane wyrażenie zostanie przeanalizowane jako tablica JSON; następujące elementy nie są oceniane do typu Array i w ten sposób zwracają wartość undefined.
    
 ```
 SELECT
@@ -1791,8 +1812,8 @@ W tym miejscu znajduje się zestaw wyników.
 [{}]
 ```
 
-####  <a name="bk_stringtoboolean"></a> StringToBoolean  
- Zwraca wyrażenie przetłumaczone na wartość logiczną. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
+####  <a name="bk_stringtoboolean"></a>StringToBoolean  
+ Zwraca wyrażenie tłumaczone na wartość logiczną. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
   
  **Składnia**  
   
@@ -1804,19 +1825,19 @@ StringToBoolean(<expr>)
   
 - `expr`  
   
-   Jest dowolne prawidłowe wyrażenie skalarne, mogło zostać ocenione jako wyrażenie logiczne.  
+   Jest dowolnym prawidłowym wyrażeniem skalarnym, które ma zostać obliczone jako wyrażenie logiczne.  
   
   **Typy zwracane**  
   
-  Zwraca wartość wyrażenia logicznego lub jest niezdefiniowana.  
+  Zwraca wyrażenie logiczne lub niezdefiniowane.  
   
   **Przykłady**  
   
-  Poniższy przykład pokazuje, jak StringToBoolean zachowuje się na różnych urządzeniach. 
+  Poniższy przykład pokazuje, jak StringToBoolean działa w różnych typach. 
  
- Poniżej przedstawiono przykłady prawidłowych danych wejściowych.
+ Poniżej przedstawiono przykłady z prawidłowymi danymi wejściowymi.
 
-Odstęp jest dozwolona tylko przed lub po nim "true"/ "false".
+Biały znak jest dozwolony tylko przed lub po "prawda"/"fałsz".
 
 ```  
 SELECT 
@@ -1831,9 +1852,9 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
-Poniżej przedstawiono przykłady nieprawidłowe dane wejściowe.
+Poniżej przedstawiono przykłady z nieprawidłowymi danymi wejściowymi.
 
- Wartości logiczne jest uwzględniana wielkość liter i musi być napisana przy użyciu małych liter to "true" i "false".
+ Wartości logiczne uwzględniają wielkość liter i muszą być zapisywane ze wszystkimi małymi literami, np. "true" i "false".
 
 ```  
 SELECT 
@@ -1847,7 +1868,7 @@ W tym miejscu znajduje się zestaw wyników.
 [{}]
 ``` 
 
-Będzie można przeanalizować wyrażenia przekazanego jako wyrażenie logiczne; te dane wejściowe nie oceniają typu Boolean i dlatego zwraca niezdefiniowane.
+Wyrażenie przesłane zostanie przeanalizowane jako wyrażenie logiczne; te dane wejściowe nie są obliczane do typu Boolean i w ten sposób zwracają niezdefiniowane.
 
 ```  
 SELECT 
@@ -1864,8 +1885,8 @@ W tym miejscu znajduje się zestaw wyników.
 [{}]
 ```  
 
-####  <a name="bk_stringtonull"></a> StringToNull  
- Zwraca wyrażenie przekonwertowana na wartość null. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
+####  <a name="bk_stringtonull"></a>StringToNull  
+ Zwraca wyrażenie przetłumaczone na wartość null. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
   
  **Składnia**  
   
@@ -1877,19 +1898,19 @@ StringToNull(<expr>)
   
 - `expr`  
   
-   Jest dowolne prawidłowe wyrażenie skalarne, mogło zostać ocenione jako wyrażenie o wartości null.
+   Jest dowolnym prawidłowym wyrażeniem skalarnym, które ma zostać obliczone jako wyrażenie o wartości null.
   
   **Typy zwracane**  
   
-  Zwraca wyrażenie o wartości null lub jest niezdefiniowana.  
+  Zwraca wyrażenie o wartości null lub niezdefiniowane.  
   
   **Przykłady**  
   
-  Poniższy przykład pokazuje, jak StringToNull zachowuje się na różnych urządzeniach. 
+  Poniższy przykład pokazuje, jak StringToNull działa w różnych typach. 
 
-Poniżej przedstawiono przykłady prawidłowych danych wejściowych.
+Poniżej przedstawiono przykłady z prawidłowymi danymi wejściowymi.
 
- Odstęp jest dozwolona tylko przed lub po nim wartości "null".
+ Odstęp jest dozwolony tylko przed lub po "null".
 
 ```  
 SELECT 
@@ -1904,9 +1925,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
-Poniżej przedstawiono przykłady nieprawidłowe dane wejściowe.
+Poniżej przedstawiono przykłady z nieprawidłowymi danymi wejściowymi.
 
-Wartość null jest uwzględniana wielkość liter i musi być napisana przy użyciu wszystkie małe litery, czyli "null".
+Wartość null uwzględnia wielkość liter i musi być zapisana ze wszystkimi małymi literami, np. "null".
 
 ```  
 SELECT    
@@ -1920,7 +1941,7 @@ SELECT
 [{}]
 ```  
 
-Będzie można przeanalizować wyrażenia przekazanego jako wyrażenie o wartości null; te dane wejściowe nie oceniają do typu o wartości null i dlatego zwraca niezdefiniowane.
+Wyrażenie przesłane zostanie przeanalizowane jako wyrażenie o wartości null; te dane wejściowe nie są oceniane do typu null i w rezultacie zwracają niezdefiniowane.
 
 ```  
 SELECT    
@@ -1936,8 +1957,8 @@ SELECT
 [{}]
 ```  
 
-####  <a name="bk_stringtonumber"></a> StringToNumber  
- Zwraca wyrażenie przetłumaczone na liczbę. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
+####  <a name="bk_stringtonumber"></a>StringToNumber  
+ Zwraca wyrażenie tłumaczone na liczbę. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
   
  **Składnia**  
   
@@ -1949,17 +1970,17 @@ StringToNumber(<expr>)
   
 - `expr`  
   
-   Jest dowolne prawidłowe wyrażenie skalarne, mogło zostać ocenione jako wyrażenie numer JSON. Liczby w formacie JSON musi być liczbą całkowitą lub zmiennoprzecinkowej. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)  
+   Jest dowolnym prawidłowym wyrażeniem skalarnym, które ma zostać obliczone jako wyrażenie liczbowe JSON. Liczby w formacie JSON muszą być liczbami całkowitymi lub liczbą zmiennoprzecinkową. Aby uzyskać szczegółowe informacje o formacie JSON, zobacz [JSON.org](https://json.org/)  
   
   **Typy zwracane**  
   
-  Zwraca wyrażenie lub jest niezdefiniowana.  
+  Zwraca wyrażenie liczbowe lub niezdefiniowane.  
   
   **Przykłady**  
   
-  Poniższy przykład pokazuje, jak StringToNumber zachowuje się na różnych urządzeniach. 
+  Poniższy przykład pokazuje, jak StringToNumber działa w różnych typach. 
 
-Odstęp jest dozwolona tylko przed lub po nim numer.
+Odstęp jest dozwolony tylko przed lub po liczbie.
 
 ```  
 SELECT 
@@ -1975,7 +1996,7 @@ SELECT
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
-W formacie JSON, prawidłowy numer musi być albo być liczbą całkowitą lub zmiennoprzecinkowy numer punktu.
+W formacie JSON prawidłowa liczba musi być liczbą całkowitą lub liczbą zmiennoprzecinkową.
 
 ```  
 SELECT   
@@ -1988,7 +2009,7 @@ SELECT
 {{}}
 ```  
 
-Będzie można przeanalizować wyrażenia przekazanego jako wyrażenie; te dane wejściowe nie oceniają wpisz numer i dlatego zwraca niezdefiniowane. 
+Przesłane wyrażenie zostanie przeanalizowane jako wyrażenie liczbowe; te dane wejściowe nie są obliczane do typu Number i w ten sposób zwracają niezdefiniowane. 
 
 ```  
 SELECT 
@@ -2006,8 +2027,8 @@ SELECT
 {{}}
 ```  
 
-####  <a name="bk_stringtoobject"></a> StringToObject  
- Zwraca wyrażenie tłumaczone na obiekt. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
+####  <a name="bk_stringtoobject"></a>StringToObject  
+ Zwraca wyrażenie przetłumaczone na obiekt. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
   
  **Składnia**  
   
@@ -2019,17 +2040,17 @@ StringToObject(<expr>)
   
 - `expr`  
   
-   Jest dowolne prawidłowe wyrażenie skalarne, mogło zostać ocenione jako wyrażenie obiektu JSON. Należy pamiętać o tym, czy wartości ciągu zagnieżdżonych musi być napisana przy użyciu podwójnych cudzysłowów był prawidłowy. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)  
+   Jest dowolnym prawidłowym wyrażeniem skalarnym, które ma zostać obliczone jako wyrażenie obiektu JSON. Należy zauważyć, że zagnieżdżone wartości ciągu muszą być zapisywane z podwójnymi cudzysłowami, aby były prawidłowe. Aby uzyskać szczegółowe informacje o formacie JSON, zobacz [JSON.org](https://json.org/)  
   
   **Typy zwracane**  
   
-  Zwraca wyrażenie obiektu lub jest niezdefiniowana.  
+  Zwraca wyrażenie obiektu lub niezdefiniowane.  
   
   **Przykłady**  
   
-  Poniższy przykład pokazuje, jak StringToObject zachowuje się na różnych urządzeniach. 
+  Poniższy przykład pokazuje, jak StringToObject działa w różnych typach. 
   
- Poniżej przedstawiono przykłady prawidłowych danych wejściowych.
+ Poniżej przedstawiono przykłady z prawidłowymi danymi wejściowymi.
 
 ``` 
 SELECT 
@@ -2048,10 +2069,10 @@ W tym miejscu znajduje się zestaw wyników.
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
 
- Poniżej przedstawiono przykłady nieprawidłowe dane wejściowe.
-Mimo że są one prawidłowe w obrębie zapytania, ich nie można przeanalizować do prawidłowych obiektów. Ciągi znaków w ciągu obiektu należy albo użyć znaków ucieczki "{\\"\\":\\" str\\"}" lub otaczającego oferty muszą być pojedynczy "{"":"str"}".
+ Poniżej przedstawiono przykłady z nieprawidłowymi danymi wejściowymi.
+Mimo że są one prawidłowe w ramach zapytania, nie będą analizowane pod kątem prawidłowych obiektów. Ciągi w ciągu obiektu muszą\\mieć wartość ucieczki "{" a\\":\\" str\\"}" lub otaczające cudzysłowy muszą być pojedynczym ciągiem "{" a ":" str "}".
 
-Apostrofy wokół nazwy właściwości nie jest prawidłowym plikiem JSON.
+Pojedyncze cudzysłowy otaczające nazwy właściwości nie są prawidłowymi formatami JSON.
 
 ``` 
 SELECT 
@@ -2064,7 +2085,7 @@ W tym miejscu znajduje się zestaw wyników.
 [{}]
 ```  
 
-Nazwy właściwości bez znaków cudzysłowu otaczające nie są prawidłowym kodem JSON.
+Nazwy właściwości bez otaczających cudzysłowów nie są prawidłowymi formatami JSON.
 
 ``` 
 SELECT 
@@ -2077,9 +2098,9 @@ W tym miejscu znajduje się zestaw wyników.
 [{}]
 ``` 
 
-Poniżej przedstawiono przykłady nieprawidłowe dane wejściowe.
+Poniżej przedstawiono przykłady z nieprawidłowymi danymi wejściowymi.
 
- Będzie można przeanalizować wyrażenia przekazanego jako obiekt JSON; te dane wejściowe nie oceniają do typu obiektu i dlatego zwraca niezdefiniowane.
+ Przesłane wyrażenie zostanie przeanalizowane jako obiekt JSON; te dane wejściowe nie są oceniane do typu Object i w rezultacie zwracają niezdefiniowane.
 
 ``` 
 SELECT 
@@ -2114,7 +2135,7 @@ SUBSTRING(<str_expr>, <num_expr>, <num_expr>)
   
 - `num_expr`  
   
-   Jest dowolne prawidłowe wyrażenie liczbowe do oznaczania znakiem początkowym i końcowym.    
+   Jest dowolnym prawidłowym wyrażeniem liczbowym w celu określenia znaku początkowego i końcowego.    
   
   **Typy zwracane**  
   
@@ -2282,7 +2303,7 @@ SELECT UPPER("Abc") AS upper
 
 ## <a id="array-functions"></a>Funkcje tablicy
 
-Następujące funkcje skalarne wykonania operacji na wartości wejściowej tablicy i zwrócenia numeryczne, wartości tablicy lub atrybut typu wartość logiczna:
+Następujące funkcje skalarne wykonują operacje na wartości wejściowej tablicy i zwracają wartości liczbowe, logiczne lub tablicowe:
   
 ||||  
 |-|-|-|  
@@ -2323,7 +2344,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-Zwraca wartość logiczną wskazującą, czy tablica zawiera określoną wartość. Możesz sprawdzić pod kątem dopasowania częściowego lub pełnego obiektu za pomocą wyrażenia logicznego w ramach polecenia. 
+Zwraca wartość logiczną wskazującą, czy tablica zawiera określoną wartość. Można wyszukać częściowe lub pełne dopasowanie obiektu za pomocą wyrażenia logicznego w poleceniu. 
 
 **Składnia**  
   
@@ -2343,7 +2364,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 
 - `bool_expr`  
   
-   Jest dowolne wyrażenie logiczne. Jeśli jest ustawiona "true'and, jeśli wartość wyszukiwania jest obiektem, polecenie sprawdza, czy dopasowanie częściowe (obiekt wyszukiwania jest jednym z obiektów podzbiór). Jeśli jest ustawiona na "false", polecenie sprawdza pełne dopasowanie wszystkich obiektów w tablicy. Wartość domyślna, jeśli nie zostanie określony, to false. 
+   Jest dowolne wyrażenie logiczne. Jeśli jest ustawiona na wartość "true'and", jeśli określona wartością wyszukiwania jest obiektem, polecenie sprawdza obecność częściowego dopasowania (obiekt wyszukiwania jest podzbiorem jednego z obiektów). Jeśli jest ustawiona na wartość "false", polecenie sprawdza pełne dopasowanie wszystkich obiektów w tablicy. Wartość domyślna, jeśli nie zostanie określona, jest równa false. 
   
   **Typy zwracane**  
   
@@ -2473,16 +2494,16 @@ SELECT
            "s7": [] 
 }]  
 ```  
-## <a id="date-time-functions"></a>Data i godzina — funkcja
+## <a id="date-time-functions"></a>Funkcja daty i godziny
 
-Następujące funkcje skalarne umożliwiają uzyskanie bieżąca data i Godzina UTC w dwóch formach; sygnaturę czasową liczbowe, którego wartością jest epoki systemu Unix (w milisekundach) lub jako ciąg, który jest zgodny z formatu ISO 8601. 
+Poniższe funkcje skalarne umożliwiają uzyskanie bieżącej daty i godziny UTC w dwóch formach; liczbowa sygnatura czasowa, której wartość to epoka systemu UNIX w milisekundach lub ciąg, który jest zgodny z formatem ISO 8601. 
 
 |||
 |-|-|
 |[GETCURRENTDATETIME](#bk_get_current_date_time)|[GETCURRENTTIMESTAMP](#bk_get_current_timestamp)||
 
-####  <a name="bk_get_current_date_time"></a> GETCURRENTDATETIME
- Zwraca bieżące Data i Godzina UTC jako ciąg ISO 8601.
+####  <a name="bk_get_current_date_time"></a>GETCURRENTDATETIME
+ Zwraca bieżącą datę i godzinę UTC jako ciąg ISO 8601.
   
  **Składnia**
   
@@ -2492,39 +2513,39 @@ GETCURRENTDATETIME ()
   
   **Typy zwracane**
   
-  Zwraca bieżący UTC daty i godziny ISO 8601 wartość ciągu. 
+  Zwraca bieżącą datę i godzinę UTC ISO 8601 wartości ciągu. 
 
-  To wymaganie jest wyrażone w formacie RRRR-MM-DDThh:mm:ss.sssZ gdzie:
+  Jest to wyrażone w formacie RRRR-MM-DDTgg: mm: SS. sssZ, gdzie:
   
   |||
   |-|-|
-  |RRRR|Czterocyfrowy rok|
-  |MM|dwucyfrowy miesiąc (01 = stycznia, itp.)|
-  |DD|dwucyfrowy dzień miesiąca (01 do 31)|
-  |T|signifier z początkiem elementów czasu|
-  |hh|Godzina dwóch cyfr (od 00 do 23)|
-  |mm|dwie minuty cyfry (od 00 do 59)|
-  |ss|dwie cyfry sekund (od 00 do 59)|
-  |.sss|trzy cyfry dziesiętne ułamków sekund|
-  |Z|Oznaczenie UTC (Coordinated Universal Time)||
+  |YYYY|rok czterocyfrowy|
+  |MM|dwucyfrowy miesiąc (01 = styczeń itd.)|
+  |DODAJ|dwucyfrowy dzień miesiąca (od 01 do 31)|
+  |T|Oznaczanie na początku elementów czasu|
+  |formacie|dwie godziny cyfry (od 00 do 23)|
+  |mm|dwie cyfry minut (od 00 do 59)|
+  |RR|dwie cyfry sekund (od 00 do 59)|
+  |.sss|trzy cyfry dziesiętnych części sekundy|
+  |Z|Oznaczenie UTC (skoordynowany czas uniwersalny)||
   
-  Aby uzyskać szczegółowe informacje na temat formatu ISO 8601, zobacz [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
+  Aby uzyskać więcej informacji na temat formatu ISO 8601, zobacz [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
   **Uwagi**
 
-  GETCURRENTDATETIME to niedeterministyczna funkcja. 
+  GETCURRENTDATETIME jest funkcją niedeterministyczną. 
   
-  Wynik zwracany jest UTC (Coordinated Universal Time).
+  Zwrócony wynik to UTC (uniwersalny czas koordynowany).
 
   **Przykłady**  
   
-  Poniższy przykład pokazuje, jak można pobrać bieżącego czasu daty UTC przy użyciu wbudowanej funkcji GetCurrentDateTime.
+  Poniższy przykład pokazuje, jak uzyskać bieżącą datę czasu UTC przy użyciu wbudowanej funkcji GetCurrentDateTime.
   
 ```  
 SELECT GETCURRENTDATETIME() AS currentUtcDateTime
 ```  
   
- Oto z przykładowego zestawu wyników.
+ Oto przykładowy zestaw wyników.
   
 ```  
 [{
@@ -2532,8 +2553,8 @@ SELECT GETCURRENTDATETIME() AS currentUtcDateTime
 }]  
 ```  
 
-####  <a name="bk_get_current_timestamp"></a> GETCURRENTTIMESTAMP
- Zwraca liczbę milisekund, które upłynęły od czwartek, 1 stycznia 1970 r. 00:00:00. 
+####  <a name="bk_get_current_timestamp"></a>GETCURRENTTIMESTAMP
+ Zwraca liczbę milisekund, które upłynęły od 00:00:00 czwartek, 1 stycznia 1970. 
   
  **Składnia**  
   
@@ -2543,23 +2564,23 @@ GETCURRENTTIMESTAMP ()
   
   **Typy zwracane**  
   
-  Zwraca wartość liczbową bieżącą liczbę milisekund, które upłynęły od początku epoki Unix czyli liczbę milisekund, które upłynęły od czwartek, 1 stycznia 1970 r. 00:00:00.
+  Zwraca wartość liczbową, bieżącą liczbę milisekund, które upłynęły od epoki systemu UNIX, czyli liczbę milisekund, które upłynęły od 00:00:00 czwartek, 1 stycznia 1970.
 
   **Uwagi**
 
-  GETCURRENTTIMESTAMP to niedeterministyczna funkcja.
+  GETCURRENTTIMESTAMP jest funkcją niedeterministyczną.
   
-  Wynik zwracany jest UTC (Coordinated Universal Time).
+  Zwrócony wynik to UTC (uniwersalny czas koordynowany).
 
   **Przykłady**  
   
-  Poniższy przykład pokazuje, jak uzyskać bieżącą sygnaturę czasową, za pomocą wbudowanych funkcji GetCurrentTimestamp.
+  Poniższy przykład pokazuje, jak uzyskać bieżącą sygnaturę czasową przy użyciu wbudowanej funkcji GetCurrentTimestamp.
   
 ```  
 SELECT GETCURRENTTIMESTAMP() AS currentUtcTimestamp
 ```  
   
- Oto z przykładowego zestawu wyników.
+ Oto przykładowy zestaw wyników.
   
 ```  
 [{
@@ -2775,8 +2796,8 @@ SELECT ST_ISVALIDDETAILED({
 }]  
 ```  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)
-- [UDFs](sql-query-udfs.md)
-- [agregacje](sql-query-aggregates.md)
+- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [UDF](sql-query-udfs.md)
+- [Agreguje](sql-query-aggregates.md)

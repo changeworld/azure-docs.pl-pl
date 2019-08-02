@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z bazy danych MongoDB przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z Mongo DB do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych z MongoDB za pomocą Azure Data Factory | Microsoft Docs
+description: Informacje o kopiowaniu danych z usługi Mongo DB do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,47 +10,47 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: ca6040bb74839f30a2f1b13297f6037f05240c67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03ad098b2f83341150a59247f47b9a4abaa1b9d2
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400444"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726107"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z bazy danych MongoDB przy użyciu usługi Azure Data Factory
+# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z MongoDB za pomocą Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory, aby skopiować dane z bazy danych MongoDB. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych MongoDB. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 >[!IMPORTANT]
->ADF wersji tej nowej wersji łącznika MongoDB, która zapewnia lepsze macierzystą obsługę bazy danych MongoDB. Jeśli używasz poprzedniej łącznika MongoDB w Twoim rozwiązaniu, które jest obsługiwane jako — jest zgodności z poprzednimi wersjami można znaleźć [łącznika MongoDB (starsza wersja)](connector-mongodb-legacy.md) artykułu.
+>W usłudze ADF należy wydać nową wersję łącznika MongoDB, która zapewnia lepszą obsługę natywnych MongoDB. Jeśli używasz poprzedniego łącznika MongoDB w rozwiązaniu, które jest obsługiwane w przypadku zgodności z poprzednimi wersjami, zapoznaj się z artykułem [łącznika MongoDB (starsza wersja)](connector-mongodb-legacy.md) .
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z bazy danych MongoDB, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z bazy danych MongoDB można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-W szczególności ten łącznik bazy danych MongoDB obsługuje **wersje maksymalnie 3.4**.
+Ten łącznik MongoDB obsługuje wyłącznie **wersje do 3,4**.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skopiować dane z bazy danych MongoDB, który nie jest dostępny publicznie, musisz skonfigurować środowiskiem Integration Runtime. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby poznać szczegóły.
+Aby skopiować dane z bazy danych MongoDB, która nie jest publicznie dostępna, należy skonfigurować samoobsługowy Integration Runtime. Aby uzyskać szczegółowe informacje, zobacz artykuł [Integration Runtime](create-self-hosted-integration-runtime.md) samodzielny.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika usługi MongoDB.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika MongoDB.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Następujące właściwości są obsługiwane dla bazy danych MongoDB, połączone usługi:
+Dla połączonej usługi MongoDB są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type |Właściwość type musi być równa: **MongoDbV2** |Yes |
-| connectionString |Określ parametry połączenia bazy danych MongoDB, np. `mongodb://[username:password@]host[:port][/[database][?options]]`. Zapoznaj się [Podręcznik bazy danych MongoDB na parametry połączenia](https://docs.mongodb.com/manual/reference/connection-string/) Aby uzyskać więcej informacji. <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| database | Nazwa bazy danych, który chcesz uzyskać dostęp. | Yes |
+| type |Właściwość Type musi mieć ustawioną wartość: **MongoDbV2** |Yes |
+| connectionString |Określ parametry połączenia MongoDB, np. `mongodb://[username:password@]host[:port][/[database][?options]]`. Więcej informacji można znaleźć w [podręczniku MongoDB w parametrach połączenia](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
+| database | Nazwa bazy danych, do której chcesz uzyskać dostęp. | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
@@ -77,12 +77,12 @@ Następujące właściwości są obsługiwane dla bazy danych MongoDB, połączo
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). Następujące właściwości są obsługiwane dla zestawu danych z bazy danych MongoDB:
+Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). Dla zestawu danych MongoDB są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **MongoDbV2Collection** | Yes |
-| collectionName |Nazwa kolekcji w bazie danych MongoDB. |Yes |
+| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **MongoDbV2Collection** | Tak |
+| collectionName |Nazwa kolekcji w bazie danych MongoDB. |Tak |
 
 **Przykład:**
 
@@ -91,12 +91,13 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
     "name": "MongoDbDataset",
     "properties": {
         "type": "MongoDbV2Collection",
+        "typeProperties": {
+            "collectionName": "<Collection name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<MongoDB linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "collectionName": "<Collection name>"
         }
     }
 }
@@ -104,24 +105,24 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło bazy danych MongoDB.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło MongoDB.
 
-### <a name="mongodb-as-source"></a>Bazy danych MongoDB jako źródło
+### <a name="mongodb-as-source"></a>MongoDB jako źródło
 
 Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **MongoDbV2Source** | Tak |
-| filter | Określa filtr wyboru przy użyciu operatorów zapytań. Aby zwrócić wszystkie dokumenty w kolekcji, pominięcie tego parametru lub przekazać pusty dokument ({}). | Nie |
-| cursorMethods.project | Określa pól do zwrócenia w dokumentach projekcji. Aby zwrócić wszystkie pola w pasujących dokumentów, Pomiń ten parametr. | Nie |
-| cursorMethods.sort | Określa kolejność, w którym zapytanie zwraca pasujących dokumentów. Zapoznaj się [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nie |
-| cursorMethods.limit | Określa maksymalną liczbę dokumentów zwracanych przez serwer. Zapoznaj się [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nie |
-| cursorMethods.skip | Określa liczbę dokumentów, aby przejść do i z której rozpoczyna się bazy danych MongoDB do zwracania wyników. Zapoznaj się [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nie |
-| batchSize | Określa liczbę dokumentów, aby wrócić w każdej z partii odpowiedzi z wystąpieniem bazy danych MongoDB. W większości przypadków modyfikowanie rozmiar partii nie wpłynie na użytkownika lub aplikacji. Limity usługi cosmos DB, w każdej partii nie może przekraczać 40MB rozmiar, który jest sumą liczby batchSize rozmiar dokumentów, więc Zmniejsz tę wartość, jeśli rozmiar dokumentu jest duży. | Nie<br/>(wartość domyślna to **100**) |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **MongoDbV2Source** | Tak |
+| filter | Określa filtr wyboru przy użyciu operatorów zapytań. Aby zwrócić wszystkie dokumenty w kolekcji, Pomiń ten parametr lub Przekaż pusty dokument ({}). | Nie |
+| cursorMethods. Project | Określa pola do zwrócenia w dokumentach dla projekcji. Aby zwrócić wszystkie pola w pasujących dokumentach, Pomiń ten parametr. | Nie |
+| cursorMethods. Sort | Określa kolejność, w której zapytanie zwraca pasujące dokumenty. Zapoznaj się z [kursorem. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nie |
+| cursorMethods.limit | Określa maksymalną liczbę dokumentów zwracanych przez serwer. Zapoznaj się z [kursorem. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nie |
+| cursorMethods.skip | Określa liczbę dokumentów do pominięcia oraz miejsce, z którego MongoDB zaczyna zwracać wyniki. Zapoznaj się z [kursorem. Skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nie |
+| batchSize | Określa liczbę dokumentów do zwrócenia w każdej partii odpowiedzi z wystąpienia MongoDB. W większości przypadków modyfikacja rozmiaru partii nie wpłynie na użytkownika ani aplikację. Cosmos DB ogranicza każda partia zadań nie może przekroczyć 40MB rozmiaru, która jest sumą rozmiaru batchSize dokumentów, dlatego Zmniejsz tę wartość, jeśli rozmiar dokumentu jest duży. | Nie<br/>(wartość domyślna to **100**) |
 
 >[!TIP]
->Obsługa ADF korzystanie z formatu BSON dokumentu w **trybie z ograniczeniami**. Upewnij się, że zapytanie filtru jest w trybie z ograniczeniami zamiast trybu powłoki. Więcej opis znajduje się w temacie [ręczne bazy danych MongoDB](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
+>ADF obsługuje dokument BSON w **trybie Strict**. Upewnij się, że zapytanie filtru jest w trybie Strict zamiast w trybie powłoki. Więcej opisu można znaleźć w [podręczniku MongoDB](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
 **Przykład:**
 
@@ -161,13 +162,13 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **źródł
 ]
 ```
 
-## <a name="export-json-documents-as-is"></a>Eksportowanie dokumentów JSON jako — jest
+## <a name="export-json-documents-as-is"></a>Eksportowanie dokumentów JSON jako-is
 
-Ten łącznik bazy danych MongoDB umożliwia eksportowanie dokumentów JSON jako-pochodzi z kolekcji bazy danych MongoDB do różnych magazynów opartych na plikach lub do usługi Azure Cosmos DB. Uzyskanie kopii takich niezależny od schematów, Pomiń "strukturę" (nazywane również *schematu*) sekcji zestaw danych i mapowanie schematu w działaniu kopiowania.
+Tego łącznika MongoDB można użyć do eksportowania dokumentów JSON jako-pochodzi z kolekcji MongoDB do różnych magazynów opartych na plikach lub do Azure Cosmos DB. Aby uzyskać taką kopię schematu niezależny od, Pomiń sekcję "struktura" (nazywanąrównież schematem) w temacie zestaw danych i schemat w działaniu kopiowania.
 
-## <a name="schema-mapping"></a>mapowanie schematu
+## <a name="schema-mapping"></a>Mapowanie schematu
 
-Aby skopiować dane z bazy danych MongoDB do ujścia tabelarycznych, zapoznaj się [mapowanie schematu](copy-activity-schema-and-type-mapping.md#schema-mapping).
+Aby skopiować dane z MongoDB do tabelarycznego ujścia, zapoznaj się z [mapowaniem schematu](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z błędami dołączanie rozwiązania Update Management, śledzenia zmian i spisu
-description: Dowiedz się, jak rozwiązywać problemy z błędami dołączania przy użyciu rozwiązania Update Management, śledzenia zmian i spis rozwiązań
+title: Rozwiązywanie problemów związanych z dołączaniem Update Management, Change Tracking i spisu
+description: Dowiedz się, jak rozwiązywać problemy z dołączaniem za pomocą rozwiązań Update Management, Change Tracking i spisu
 services: automation
 author: bobbytreed
 ms.author: robreed
@@ -8,24 +8,55 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 3687a2fdcba9c2078bbbd9344089b5a22467682c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8b4ee999bb23abdcea3411720bde244b2da4e89f
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477485"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516396"
 ---
-# <a name="troubleshoot-errors-when-onboarding-solutions"></a>Rozwiązywanie problemów z błędami podczas dołączania do rozwiązania
+# <a name="troubleshoot-errors-when-onboarding-solutions"></a>Rozwiązywanie problemów podczas dołączania rozwiązań
 
-Mogą wystąpić błędy podczas dołączania rozwiązań, takich jak zarządzanie aktualizacjami lub śledzenia zmian i spisu. W tym artykule opisano różne błędy, które mogą występować i ich rozwiązania.
+Mogą wystąpić błędy podczas dołączania rozwiązań, takich jak Update Management lub Change Tracking i spisu. W tym artykule opisano różne błędy, które mogą wystąpić i sposoby ich rozwiązywania.
 
-## <a name="general-errors"></a>Ogólne błędy
+## <a name="known-issues"></a>Znane problemy
 
-### <a name="missing-write-permissions"></a>Scenariusz: Dołączanie zakończy się niepowodzeniem z komunikatem — nie można włączyć rozwiązania
+### <a name="node-rename"></a>Scenariusz Zmiana nazwy zarejestrowanego węzła wymaga ponownego zarejestrowania/rejestracji
 
 #### <a name="issue"></a>Problem
 
-Podczas próby dołączenia maszyny wirtualnej do rozwiązania wyświetlany jest jeden z następujących komunikatów:
+Węzeł jest zarejestrowany w Azure Automation a następnie zmieniany jest system operacyjny ComputerName.  Raporty z węzła nadal pojawiają się z oryginalną nazwą.
+
+#### <a name="cause"></a>Przyczyna
+
+Zmiana nazwy zarejestrowanych węzłów nie aktualizuje nazwy węzła w Azure Automation.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Wyrejestruj węzeł z konfiguracji stanu Azure Automation, a następnie zarejestruj go ponownie.  Raporty publikowane w usłudze przed upływem tego czasu nie będą już dostępne.
+
+
+### <a name="resigning-cert"></a>Scenariusz Certyfikaty ponownego podpisywania za pośrednictwem serwera proxy HTTPS nie są obsługiwane
+
+#### <a name="issue"></a>Problem
+
+Klienci zgłosili, że podczas łączenia się za pośrednictwem rozwiązania serwera proxy, które przerywa ruch https, a następnie ponownie szyfruje ruch przy użyciu nowego certyfikatu, usługa nie zezwala na połączenie.
+
+#### <a name="cause"></a>Przyczyna
+
+Azure Automation nie obsługuje certyfikatów ponownego podpisywania używanych do szyfrowania ruchu.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Nie istnieje obejście tego problemu.
+
+## <a name="general-errors"></a>Błędy ogólne
+
+### <a name="missing-write-permissions"></a>Scenariusz Nie można włączyć dołączania z komunikatem — rozwiązanie nie jest możliwe.
+
+#### <a name="issue"></a>Problem
+
+Podczas próby dołączenia maszyny wirtualnej do rozwiązania zostanie wyświetlony jeden z następujących komunikatów:
 
 ```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
@@ -37,17 +68,17 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="cause"></a>Przyczyna
 
-Ten błąd jest spowodowany przez niepoprawne lub brakujące uprawnienia na maszynie wirtualnej w obszarze roboczym, czy dla użytkownika.
+Ten błąd jest spowodowany przez nieprawidłowe lub brakujące uprawnienia do maszyny wirtualnej, obszaru roboczego lub dla użytkownika.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Upewnij się, że masz odpowiednie uprawnienia do dołączenia maszyny wirtualnej. Przegląd [uprawnienia wymagane do dołączania maszyn](../automation-role-based-access-control.md#onboarding) , a następnie spróbuj dołączyć rozwiązanie ponownie. Jeśli zostanie wyświetlony błąd `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, upewnij się, że `Microsoft.OperationalInsights/workspaces/read` uprawnień, aby można było znaleźć, jeśli maszyna wirtualna jest dołączona do obszaru roboczego.
+Upewnij się, że masz odpowiednie uprawnienia do dołączania maszyny wirtualnej. Przejrzyj [uprawnienia konieczne do](../automation-role-based-access-control.md#onboarding) dołączenia maszyn i spróbuj ponownie dołączyć rozwiązanie. Jeśli wystąpi błąd `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, upewnij się, że `Microsoft.OperationalInsights/workspaces/read` masz uprawnienia do sprawdzenia, czy maszyna wirtualna została dołączona do obszaru roboczego.
 
-### <a name="diagnostic-logging"></a>Scenariusz: Dołączanie kończy się niepowodzeniem z komunikatem — nie można skonfigurować konto automatyzacji dla rejestrowania diagnostycznego
+### <a name="diagnostic-logging"></a>Scenariusz Nie można wykonać dołączania, ponieważ nie powiodło się skonfigurowanie konta usługi Automation na potrzeby rejestrowania diagnostycznego
 
 #### <a name="issue"></a>Problem
 
-Pojawi się następujący komunikat o błędzie podczas próby dołączenia maszyny wirtualnej do rozwiązania:
+Podczas próby dołączenia maszyny wirtualnej do rozwiązania zostanie wyświetlony następujący komunikat:
 
 ```error
 Failed to configure automation account for diagnostic logging
@@ -55,53 +86,53 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Przyczyna
 
-Ten błąd może być spowodowany, jeśli warstwa cenowa nie jest zgodny model rozliczeń dla subskrypcji. Aby uzyskać więcej informacji, zobacz [monitorowanie użycia i szacowanych kosztów w usłudze Azure Monitor](https://aka.ms/PricingTierWarning).
+Ten błąd może być spowodowany tym, że warstwa cenowa nie jest zgodna z modelem rozliczania subskrypcji. Aby uzyskać więcej informacji, zobacz [monitorowanie użycia i szacowane koszty w Azure monitor](https://aka.ms/PricingTierWarning).
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Ręczne tworzenie obszaru roboczego usługi Log Analytics i powtórz proces dołączania, aby wybrać obszar roboczy utworzony.
+Utwórz ręcznie obszar roboczy Log Analytics i powtórz proces dołączania w celu wybrania utworzonego obszaru roboczego.
 
-### <a name="computer-group-query-format-error"></a>Scenariusz: ComputerGroupQueryFormatError
+### <a name="computer-group-query-format-error"></a>Scenariusz ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Problem
 
-Tego kodu błędu oznacza, że zapytanie grupy komputera zapisanego kryterium wyszukiwania używane pod kątem rozwiązania został nieprawidłowo sformatowany. 
+Ten kod błędu oznacza, że zapisane zapytanie grupy komputerów wyszukiwania używane jako docelowe rozwiązania nie zostało prawidłowo sformatowane. 
 
 #### <a name="cause"></a>Przyczyna
 
-Zmienić kwerendę lub zostały zmienione przez system.
+Użytkownik mógł zmienić zapytanie lub mógł zostać zmodyfikowany przez system.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Można usunąć zapytania dla tego rozwiązania, a reonboard rozwiązanie, polegające na zapytanie. Zapytanie znajduje się w obszarze roboczym, w obszarze **zapisane wyszukiwania**. Nazwa zapytania jest **MicrosoftDefaultComputerGroup**, a kategorię zapytanie to nazwa rozwiązania skojarzoną z tym zapytaniem. Jeśli wiele rozwiązań są włączone, **MicrosoftDefaultComputerGroup** zawiera wiele razy w obszarze **zapisane wyszukiwania**.
+Można usunąć zapytanie dla tego rozwiązania i reonboard rozwiązanie, które ponownie tworzy zapytanie. Zapytanie można znaleźć w obszarze roboczym, w obszarze **zapisane wyszukiwania**. Nazwa zapytania to **MicrosoftDefaultComputerGroup**, a kategoria zapytania to nazwa rozwiązania skojarzonego z tym zapytaniem. Jeśli włączono wiele rozwiązań, **MicrosoftDefaultComputerGroup** wyświetla wiele razy w obszarze **zapisane wyszukiwania**.
 
-### <a name="policy-violation"></a>Scenariusz: PolicyViolation
+### <a name="policy-violation"></a>Scenariusz PolicyViolation
 
 #### <a name="issue"></a>Problem
 
-Ten kod błędu oznacza, że wdrożenie nie powiodło się z powodu naruszenia co najmniej jedne zasady.
+Ten kod błędu oznacza, że wdrożenie nie powiodło się z powodu naruszenia co najmniej jednej zasady.
 
 #### <a name="cause"></a>Przyczyna 
 
-Zasady zostaną spełnione, która blokuje ukończenie operacji.
+Istnieją zasady blokujące wykonywanie operacji.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Aby pomyślnie wdrożyć to rozwiązanie, należy wziąć pod uwagę zmianę wskazanych zasad. Jak wiele różnych typów zasad, które mogą być definiowane, zmian wymagane są zależne od zasady, które zostanie naruszona. Na przykład zdefiniowano zasad z grupy zasobów, której odmówiono uprawnień do zmiany zawartości niektórych rodzajów zasobów w tej grupie zasobów, można na przykład wykonaniu dowolnej z następujących czynności:
+Aby można było pomyślnie wdrożyć rozwiązanie, należy rozważyć zmianę wskazanych zasad. Istnieje wiele różnych typów zasad, które można zdefiniować, ale określone zmiany są zależne od zasad, które zostały naruszone. Na przykład jeśli zasady zostały zdefiniowane w grupie zasobów, która odmówiła uprawnienia do zmiany zawartości niektórych typów zasobów w ramach tej grupy zasobów, można na przykład wykonać dowolną z następujących czynności:
 
-* Całkowicie usunąć zasady.
-* Spróbuj przejść do innej grupy zasobów.
+* Usuń zasady całkowicie.
+* Spróbuj dołączyć do innej grupy zasobów.
 * Popraw zasady, na przykład:
-  * Ponownie celem zasad do określonego zasobu (np. na określonym koncie usługi Automation).
-  * Zmiana zestawu zasobów tej zasady został skonfigurowany do odmowy.
+  * Ponowne kierowanie zasad do określonego zasobu (na przykład do określonego konta usługi Automation).
+  * Poprawianie zestawu zasobów, dla których zasady zostały skonfigurowane do odmowy.
 
-Sprawdź powiadomienia w prawym górnym rogu witryny Azure Portal lub przejdź do grupy zasobów, który zawiera Twoje konto usługi automation i wybierz **wdrożeń** w obszarze **ustawienia** wyświetlić nieudane wdrożenie. Aby dowiedzieć się więcej o zasadach usługi Azure, odwiedź stronę: [Omówienie usługi Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+Sprawdź powiadomienia w prawym górnym rogu Azure Portal lub przejdź do grupy zasobów zawierającej konto usługi Automation, a następnie wybierz pozycję **wdrożenia** w obszarze **Ustawienia** , aby wyświetlić niepowodzenie wdrożenia. Aby dowiedzieć się więcej na temat Azure Policy odwiedzenia: [Przegląd Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
-### <a name="unlink"></a>Scenariusz: Błędy podczas próby odłączanie obszaru roboczego
+### <a name="unlink"></a>Scenariusz Błędy podczas próby odłączenia obszaru roboczego
 
 #### <a name="issue"></a>Problem
 
-Pojawi się następujący błąd podczas próby odłączanie obszaru roboczego:
+Podczas próby odłączenia obszaru roboczego pojawia się następujący błąd:
 
 ```error
 The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
@@ -109,41 +140,41 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Przyczyna
 
-Ten błąd występuje, gdy nadal masz rozwiązania active w obszarze roboczym usługi Log Analytics, które są zależne od obszaru roboczego konto usługi Automation i analizy dzienników jest połączona.
+Ten błąd występuje, gdy w obszarze roboczym Log Analytics nadal są aktywne rozwiązania, które są zależne od konta usługi Automation i połączonego obszaru roboczego Analytics.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, musisz usunąć następujące rozwiązania z obszaru roboczego, korzystając z nich:
+Aby rozwiązać ten problem, należy usunąć następujące rozwiązania z obszaru roboczego, jeśli są używane:
 
 * Zarządzanie aktualizacjami
 * Śledzenie zmian
 * Uruchamianie lub zatrzymywanie maszyn wirtualnych po godzinach pracy
 
-Po usunięciu rozwiązania można odłączyć obszaru roboczego. Jest ważne oczyścić wszelkie istniejące artefakty z tych rozwiązań także z poziomu obszaru roboczego i konta usługi Automation.  
+Po usunięciu rozwiązań możesz odłączyć obszar roboczy. Ważne jest, aby wyczyścić wszystkie istniejące artefakty z tych rozwiązań z obszaru roboczego i konta usługi Automation.  
 
 * Zarządzanie aktualizacjami
-  * Usuwanie wdrożenia aktualizacji (harmonogramy) na koncie usługi Automation
+  * Usuń wdrożenia aktualizacji (harmonogramy) z konta usługi Automation
 * Uruchamianie lub zatrzymywanie maszyn wirtualnych po godzinach pracy
-  * Usuń wszystkie blokady na składniki rozwiązania na koncie usługi Automation w ramach **ustawienia** > **blokad**.
-  * Aby uzyskać dodatkowe kroki w celu usunięcia uruchamianie/zatrzymywanie maszyn wirtualnych podczas szczytu rozwiązania znajduje się [Usuń uruchamianie/zatrzymywanie maszyny Wirtualnej podczas szczytu rozwiązania](../automation-solution-vm-management.md##remove-the-solution).
+  * Usuń wszystkie blokady składników rozwiązania na koncie usługi Automation w obszarze **Ustawienia** > **blokady**.
+  * Aby uzyskać dodatkowe kroki usuwania maszyn wirtualnych lub zatrzymywania z rozwiązania w ciągu kilku godzin, zobacz sekcję [Uruchamianie/zatrzymywanie maszyny wirtualnej w rozwiązaniu off-godzinnym](../automation-solution-vm-management.md##remove-the-solution).
 
-## <a name="mma-extension-failures"></a>Błędy rozszerzenia programu MMA
+## <a name="mma-extension-failures"></a>Błędy rozszerzenia MMA
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-W przypadku wdrażania rozwiązania, szereg powiązane zasoby są wdrażane. Jednym z tych zasobów jest agenta Microsoft Monitoring Agent rozszerzenia lub usługi Log Analytics dla systemu Linux. Są one zainstalowanych przez agenta gościa maszyny wirtualnej, który jest odpowiedzialny za podczas komunikowania się z skonfigurowany obszar roboczy usługi Log Analytics, na potrzeby koordynacji nowsze pobierania plików binarnych rozszerzeń maszyny wirtualnej i inne pliki rozwiązanie jesteś dołączania są zależne od po jej rozpoczęciu wykonywania.
-Użytkownik zwykle najpierw zostaną powiadomieni o agenta MMA lub usługi Log Analytics dla systemu Linux błędy instalacji dla powiadomienia w Centrum powiadomień. Kliknięcie powiadomienia zawiera dalsze informacje na temat określonego błędu. Nawigacja do zasobów grupy zasobów, a następnie do elementu wdrożenia w niej również zawiera szczegółowe informacje dotyczące niepowodzeń wdrażania, które wystąpiły.
-Instalacja agenta MMA lub usługi Log Analytics dla systemu Linux może się nie powieść z różnych powodów i kroki do wykonania, aby rozwiązać te błędy różnią się, w zależności od problemu. Postępuj zgodnie z określonym kroki rozwiązywania problemów.
+Podczas wdrażania rozwiązania wdrożone są różne powiązane zasoby. Jeden z tych zasobów jest rozszerzeniem Microsoft Monitoring Agent lub agentem Log Analytics dla systemu Linux. Są to rozszerzenia maszyny wirtualnej zainstalowane przez agenta gościa maszyny wirtualnej, który jest odpowiedzialny za komunikowanie się ze skonfigurowanym obszarem roboczym Log Analytics, na potrzeby późniejszej koordynacji pobierania plików binarnych i innych plików, które rozwiązanie, które dołączasz, jest zależne od tego, kiedy rozpoczyna wykonywanie.
+Zazwyczaj należy zwrócić uwagę na to, że w przypadku niepowodzenia instalacji systemu Linux Log Analytics MMA się z powiadomieniem o błędach instalacyjnych w centrum powiadomień. Kliknięcie tego powiadomienia powoduje uzyskanie dalszych informacji o konkretnym błędzie. Przechodzenie do zasobu grupy zasobów, a następnie do elementu wdrożenia w ramach niego również zawiera szczegółowe informacje o błędach wdrożenia, które wystąpiły.
+Instalacja agenta MMA lub Log Analytics dla systemu Linux może zakończyć się niepowodzeniem z różnych powodów, a kroki, które należy podjąć w celu rozwiązania tych błędów, różnią się w zależności od problemu. Poniżej opisano kroki rozwiązywania problemów.
 
-W poniższej sekcji opisano różne problemy, które mogą pochodzić między podczas dołączania, spowodować awarię we wdrożeniu rozszerzenia programu MMA.
+W poniższej sekcji opisano różne problemy, które można napotkać podczas dołączania, które powodują awarię wdrożenia rozszerzenia MMA.
 
-### <a name="webclient-exception"></a>Scenariusz: Wystąpił wyjątek podczas wykonywania żądania WebClient
+### <a name="webclient-exception"></a>Scenariusz Wystąpił wyjątek podczas żądania klienta WebClient
 
-Rozszerzenie programu MMA na maszynie wirtualnej nie może komunikować się z zasobami zewnętrznymi i wdrożenie kończy się niepowodzeniem.
+Rozszerzenie MMA na maszynie wirtualnej nie może komunikować się z zasobami zewnętrznymi i wdrożenie kończy się niepowodzeniem.
 
 #### <a name="issue"></a>Problem
 
-Poniżej przedstawiono przykłady komunikaty o błędach, które są zwracane:
+Poniżej przedstawiono przykłady komunikatów o błędach, które są zwracane:
 
 ```error
 Please verify the VM has a running VM agent, and can establish outbound connections to Azure storage.
@@ -155,23 +186,23 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 #### <a name="cause"></a>Przyczyna
 
-Niektóre z możliwych przyczyn tego błędu to:
+Niektóre potencjalne przyczyny tego błędu to:
 
-* Jest skonfigurowane na maszynie Wirtualnej, która pozwala tylko na określone porty serwera proxy.
+* Na maszynie wirtualnej skonfigurowano serwer proxy, który zezwala tylko na określone porty.
 
-* Ustawienie zapory został zablokowany dostęp do wymaganych portów i adresów.
+* Ustawienie zapory blokuje dostęp do wymaganych portów i adresów.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Upewnij się, że masz odpowiednie porty i adresy otworzyć dla komunikacji. Aby uzyskać listę portów i adresów, zobacz [planowania sieci](../automation-hybrid-runbook-worker.md#network-planning).
+Upewnij się, że masz odpowiednie porty i adresy otwarte do komunikacji. Lista portów i adresów znajduje się w temacie [Planning The Network](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="transient-environment-issue"></a>Scenariusz: Instalacja nie powiodła się z powodu problemów środowiska przejściowe
+### <a name="transient-environment-issue"></a>Scenariusz Instalacja nie powiodła się z powodu przejściowych problemów ze środowiskiem
 
-Instalacja rozszerzenia Microsoft Monitoring Agent nie powiodło się podczas wdrażania, ponieważ inna instalacja lub Akcja blokowania instalacji
+Instalacja rozszerzenia Microsoft Monitoring Agent nie powiodła się podczas wdrażania, ponieważ inna instalacja lub akcja blokująca instalację
 
 #### <a name="issue"></a>Problem
 
-Poniżej przedstawiono przykłady komunikaty o błędach, które mogą być zwrócone:
+Poniżej przedstawiono przykłady komunikatów o błędach, które mogą zostać zwrócone:
 
 ```error
 The Microsoft Monitoring Agent failed to install on this machine. Please try to uninstall and reinstall the extension. If the issue persists, please contact support.
@@ -187,22 +218,22 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 
 #### <a name="cause"></a>Przyczyna
 
-Niektóre z możliwych przyczyn tego błędu to:
+Niektóre potencjalne przyczyny tego błędu to:
 
 * Inna instalacja jest w toku
-* System jest wyzwalany, ponowne uruchomienie podczas wdrażania szablonu
+* System jest wyzwalany w celu ponownego uruchomienia podczas wdrażania szablonu
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Ten błąd jest przejściowy błąd charakter. Ponów próbę wdrożenia, aby zainstalować rozszerzenie.
+Ten błąd jest przejściowym błędem. Ponów wdrożenie, aby zainstalować rozszerzenie.
 
-### <a name="installation-timeout"></a>Scenariusz: Limit czasu instalacji
+### <a name="installation-timeout"></a>Scenariusz Limit czasu instalacji
 
 Instalacja rozszerzenia MMA nie została ukończona z powodu przekroczenia limitu czasu.
 
 #### <a name="issue"></a>Problem
 
-Poniższy przykład jest komunikat o błędzie mogą być zwrócone:
+Poniższy przykład zawiera komunikat o błędzie, który może zostać zwrócony:
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -210,16 +241,16 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>Przyczyna
 
-Ten błąd występuje, ponieważ maszyna wirtualna jest mocno obciążony podczas instalacji.
+Ten błąd występuje, ponieważ maszyna wirtualna jest w dużym obciążeniu podczas instalacji.
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Podjęto próbę można zainstalować rozszerzenia programu MMA, gdy maszyna wirtualna ma pod obciążeniem niższe.
+Spróbuj zainstalować rozszerzenie MMA, gdy maszyna wirtualna jest w niższym obciążeniu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli nie był widoczny problemu lub są w stanie rozwiązać problemu, odwiedź jedną z następujących kanałów obsługi więcej:
+Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 
 * Uzyskaj odpowiedzi od ekspertów w zakresie platformy Azure na [forach dotyczących platformy Azure](https://azure.microsoft.com/support/forums/)
 * Połącz się z kontem [@AzureSupport](https://twitter.com/azuresupport) — oficjalnym kontem platformy Microsoft Azure utworzonym w celu podniesienia jakości obsługi klientów przez połączenie społeczności platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
-* Jeśli potrzebujesz więcej pomocy, mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz **uzyskiwanie pomocy technicznej**.
+* Jeśli potrzebujesz więcej pomocy, możesz obsłużyć zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**.

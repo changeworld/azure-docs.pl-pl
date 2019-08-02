@@ -1,6 +1,6 @@
 ---
-title: Jak zaplanować wdrożenie przyłączanie do usługi Azure Active Directory (Azure AD) | Dokumentacja firmy Microsoft
-description: Wyjaśniono, że urządzenia przyłączone do kroków, które są wymagane do wdrożenia usługi Azure AD w środowisku.
+title: Planowanie implementacji dołączania Azure Active Directory (Azure AD) | Microsoft Docs
+description: Wyjaśnia kroki, które są wymagane do zaimplementowania urządzeń przyłączonych do usługi Azure AD w danym środowisku.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,283 +11,283 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4332c921af770cb47e9a9a779d0bd148153fcd31
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6e58762bd5bf4342804767a200c94b432dd152a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666143"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562212"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
-Przyłączanie do usługi Azure AD można dołączać urządzenia bezpośrednio do usługi Azure AD bez konieczności dołączania do usługi Active Directory w środowisku lokalnym przy jednoczesnym zachowaniu użytkownikom w wydajnej i bezpiecznej pracy. Azure AD join jest gotowa do użycia w przedsiębiorstwie zarówno na dużą skalę, jak i wdrożeń o określonym zakresie.   
+Usługa Azure AD Join umożliwia dołączanie urządzeń bezpośrednio do usługi Azure AD bez konieczności przyłączania do Active Directory lokalnych, zapewniając jednocześnie produktywność i bezpieczeństwo użytkowników. Usługa Azure AD Join jest gotowa do wdrożenia w przedsiębiorstwie zarówno w przypadku wdrożeń w skali, jak i w zakresie.   
 
-Ten artykuł zawiera informacje potrzebne do planowania implementacji usługi Azure AD join.
+Ten artykuł zawiera informacje potrzebne do zaplanowania wdrożenia usługi Azure AD Join.
  
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym artykule założono, że czytelnik zna [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../device-management-introduction.md).
+W tym artykule założono, że znasz już [wprowadzenie do zarządzania urządzeniami w Azure Active Directory](../device-management-introduction.md).
 
 ## <a name="plan-your-implementation"></a>Planowanie implementacji
 
-Aby zaplanować wdrożenie usługi Azure AD join, należy się zapoznać z:
+Aby zaplanować wdrożenie usługi Azure AD join, zapoznaj się z tematem:
 
 |   |   |
 |---|---|
-|![Sprawdź][1]|Przegląd scenariuszy|
-|![Sprawdź][1]|Przejrzyj swoją infrastrukturę tożsamości|
-|![Sprawdź][1]|Ocena zarządzania urządzeniami|
-|![Sprawdź][1]|Omówienie zagadnień dotyczących aplikacji i zasobów|
-|![Sprawdź][1]|Opis opcji inicjowania obsługi administracyjnej|
-|![Sprawdź][1]|Konfigurowanie roaming stanu dla przedsiębiorstw|
+|![Sprawdź][1]|Przejrzyj scenariusze|
+|![Sprawdź][1]|Przegląd infrastruktury tożsamości|
+|![Sprawdź][1]|Ocenianie zarządzania urządzeniami|
+|![Sprawdź][1]|Zrozumienie zagadnień dotyczących aplikacji i zasobów|
+|![Sprawdź][1]|Zapoznaj się z opcjami aprowizacji|
+|![Sprawdź][1]|Konfigurowanie roamingu stanu przedsiębiorstwa|
 |![Sprawdź][1]|Konfigurowanie dostępu warunkowego|
 
-## <a name="review-your-scenarios"></a>Przegląd scenariuszy 
+## <a name="review-your-scenarios"></a>Przejrzyj scenariusze 
 
-Gdy hybrydowe przyłączanie do usługi Azure AD może być preferowane w przypadku niektórych scenariuszy, dołączania do usługi Azure AD umożliwia przejście do modelu chmury z Windows. Jeśli planowane jest modernizuj zarządzania urządzeniami i koszty związane z urządzeniami, dołączania do usługi Azure AD zapewnia doskonałą podstawę na osiągnięcie tych celów.  
+Chociaż hybrydowe dołączenie usługi Azure AD może być preferowane w niektórych scenariuszach, usługa Azure AD Join umożliwia przejście do modelu w chmurze z systemem Windows. Jeśli planujesz modernizację zarządzania urządzeniami i obniżasz koszty IT związane z urządzeniami, usługa Azure AD Join zapewnia doskonałą podstawę do osiągnięcia tych celów.  
  
-Należy wziąć pod uwagę dołączania do usługi Azure AD, jeśli Twoje cele wyrównane z następującymi kryteriami:
+Jeśli cele są zgodne z następującymi kryteriami, należy wziąć pod uwagę usługę Azure AD Join:
 
-- Microsoft 365 jako pakiet do zarządzania produktywnością adaptują dla użytkowników.
-- Chcesz zarządzać urządzeniami za pomocą rozwiązania do zarządzania urządzeniami chmury.
-- Chcesz uprościć Inicjowanie obsługi administracyjnej urządzeń dla użytkowników geograficznie rozproszonych.
-- Zaplanuj modernizowanie infrastruktury aplikacji.
+- Przyjmujesz Microsoft 365 jako pakiet produktywności dla użytkowników.
+- Chcesz zarządzać urządzeniami za pomocą rozwiązania do zarządzania urządzeniami w chmurze.
+- Chcesz uprościć Inicjowanie obsługi urządzeń dla użytkowników rozproszonych geograficznie.
+- Planujesz modernizację infrastruktury aplikacji.
 
-## <a name="review-your-identity-infrastructure"></a>Przejrzyj swoją infrastrukturę tożsamości  
+## <a name="review-your-identity-infrastructure"></a>Przegląd infrastruktury tożsamości  
 
-Przyłączanie do usługi Azure AD działa w środowiskach, zarządzane i federacyjnego.  
+Usługa Azure AD Join współpracuje z obydwoma środowiskami, zarządzanymi i federacyjnymi.  
 
-### <a name="managed-environment"></a>Zarządzane środowisko
+### <a name="managed-environment"></a>Środowisko zarządzane
 
-Zarządzane środowisko może być wdrożone za pośrednictwem [synchronizacji skrótów haseł](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) lub [przekazać za pośrednictwem uwierzytelniania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) za pomocą bezproblemowego logowania jednokrotnego.
+Środowisko zarządzane można wdrożyć za pomocą [synchronizacji skrótów haseł](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) lub [przekazywania uwierzytelniania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) przy użyciu bezproblemowego logowania jednokrotnego.
 
-Te scenariusze nie wymagają skonfigurowania serwera federacyjnego uwierzytelniania.
+Te scenariusze nie wymagają konfigurowania serwera federacyjnego na potrzeby uwierzytelniania.
 
-### <a name="federated-environment"></a>Środowisku federacyjnym
+### <a name="federated-environment"></a>Środowisko federacyjne
 
-Środowisku federacyjnym powinna mieć dostawcę tożsamości, który obsługuje zarówno protokołu WS-Trust i WS-Fed:
+Środowisko federacyjne powinno mieć dostawcę tożsamości, który obsługuje protokoły WS-Trust i WS-karmione:
 
-- **WS-Fed:** Ten protokół jest wymagany do przyłączania urządzenia do usługi Azure AD.
-- **WS-Trust:** Ten protokół jest wymagana do logowania się na urządzeniu dołączonym do usługi Azure AD. 
+- **Usługa WS-karmione:** Ten protokół jest wymagany do przyłączania urządzenia do usługi Azure AD.
+- **Usługa WS-Trust:** Ten protokół jest wymagany do zalogowania się do urządzenia dołączonego do usługi Azure AD. 
 
-Jeśli dostawca tożsamości nie obsługuje tych protokołów, dołączania do usługi Azure AD nie działa natywnie. Począwszy od systemu Windows 10 1809 użytkownicy zalogować się do urządzenia połączonego z usługi Azure AD za pomocą dostawcy tożsamości opartej na SAML za pośrednictwem [sieci web logowania w systemie Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Obecnie logowanie w sieci web jest w wersji zapoznawczej i nie jest zalecane w przypadku wdrożeń produkcyjnych.
+Jeśli dostawca tożsamości nie obsługuje tych protokołów, usługa Azure AD Join nie działa w sposób natywny. Począwszy od systemu Windows 10 1809, użytkownicy mogą logować się do urządzenia dołączonego do usługi Azure AD przy użyciu dostawcy tożsamości opartego na protokole SAML za pośrednictwem [logowania w sieci Web w systemie Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Obecnie logowanie w sieci Web jest funkcją w wersji zapoznawczej i nie jest zalecane w przypadku wdrożeń produkcyjnych.
 
-### <a name="smartcards-and-certificate-based-authentication"></a>Karty inteligentne i uwierzytelniania opartego na certyfikatach
+### <a name="smartcards-and-certificate-based-authentication"></a>Karty inteligentne i uwierzytelnianie oparte na certyfikatach
 
-Nie można używać kart inteligentnych lub uwierzytelniania opartego na certyfikatach, dołączać urządzenia do usługi Azure AD. Jednak kart inteligentnych może służyć do logowania się na urządzeniach przyłączonych do usługi Azure AD, w przypadku usług AD FS skonfigurowane.
+Do dołączania urządzeń do usługi Azure AD nie można używać kart inteligentnych ani uwierzytelniania opartego na certyfikatach. Można jednak użyć kart inteligentnych do logowania się do urządzeń przyłączonych do usługi Azure AD, jeśli skonfigurowano AD FS.
 
-**Zalecenie:** Implementowanie Windows Hello dla firm dla uwierzytelniania silne, bez hasła na urządzeniach z systemem Windows 10.
+**Zaleca** Zaimplementuj usługi Windows Hello dla firm, aby zapewnić silne uwierzytelnianie bez hasła na urządzeniach z systemem Windows 10.
 
 ### <a name="user-configuration"></a>Konfiguracja użytkownika
 
-Jeśli tworzysz użytkowników w sieci:
+Jeśli tworzysz użytkowników w:
 
-- **Lokalnej usługi Active Directory**, należy zsynchronizować je z usługą Azure AD przy użyciu [program Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis). 
-- **Usługa Azure AD**, żadna dodatkowa konfiguracja jest wymagana.
+- **Active Directory lokalnych**, należy zsynchronizować je z usługą Azure AD przy użyciu [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis). 
+- **Azure AD**, nie jest wymagana żadna dodatkowa konfiguracja.
 
-Lokalnej nazwy UPN, które różnią się od usługi Azure AD nazwy UPN nie są obsługiwane na urządzeniach przyłączonych do usługi Azure AD. Jeśli użytkownicy korzystają lokalnymi nazwami UPN, należy zaplanować przełączyć się do korzystania z adresu podstawowego nazwy UPN w usłudze Azure AD.
+Lokalne nazwy UPN, które różnią się od nazw UPN usługi Azure AD, nie są obsługiwane na urządzeniach przyłączonych do usługi Azure AD. Jeśli użytkownicy korzystają z lokalnej nazwy UPN, należy zaplanować przełączenie do korzystania z podstawowej nazwy UPN w usłudze Azure AD.
 
-## <a name="assess-your-device-management"></a>Ocena zarządzania urządzeniami
+## <a name="assess-your-device-management"></a>Ocenianie zarządzania urządzeniami
 
 ### <a name="supported-devices"></a>Obsługiwane urządzenia
 
-Funkcja Azure AD join:
+Azure AD Join:
 
 - Dotyczy tylko urządzeń z systemem Windows 10. 
-- Nie ma zastosowania do poprzednich wersji systemu Windows lub innych systemów operacyjnych. Jeśli masz urządzenia z systemem Windows 7/8.1, należy uaktualnić do systemu Windows 10 do wdrożenia usługi Azure AD join.
-- Nie jest obsługiwana na urządzeniach przy użyciu modułu TPM w trybie FIPS.
+- Nie ma zastosowania do poprzednich wersji systemu Windows lub innych systemów operacyjnych. W przypadku urządzeń z systemem Windows 7/8.1 należy przeprowadzić uaktualnienie do systemu Windows 10 w celu wdrożenia usługi Azure AD Join.
+- Program nie jest obsługiwany na urządzeniach z modułem TPM w trybie FIPS.
  
-**Zalecenie:** Zawsze używaj najnowszej wersji systemu Windows 10, aby korzystać ze zaktualizowanych funkcji.
+**Zaleca** Zawsze używaj najnowszej wersji systemu Windows 10, aby korzystać z zaktualizowanych funkcji.
 
 ### <a name="management-platform"></a>Platforma zarządzania
 
-Zarządzanie urządzeniami dla urządzeń przyłączonych do usługi Azure AD opiera się na platformie zarządzania urządzeniami Przenośnymi, takich jak usługa Intune i zarządzania urządzeniami Przenośnymi dostawców usług kryptograficznych. Windows 10 ma wbudowanego agenta MDM, który działa we wszystkich rozwiązaniach MDM zgodne.
+Zarządzanie urządzeniami dla urządzeń przyłączonych do usługi Azure AD jest oparte na platformie MDM, takiej jak usługa Intune, oraz dostawcy usług MDM. System Windows 10 ma wbudowanego agenta MDM, który współpracuje ze wszystkimi zgodnymi rozwiązaniami MDM.
 
 > [!NOTE]
-> Zasady grupy nie są obsługiwane na urządzeniach przyłączonych do usługi Azure AD, ponieważ nie są one połączone z usługi Active Directory w środowisku lokalnym. Zarządzanie urządzeniami dołączonymi do usługi Azure AD jest możliwe tylko w za pomocą oprogramowania MDM
+> Zasady grupy nie są obsługiwane na urządzeniach przyłączonych do usługi Azure AD, ponieważ nie są połączone z lokalnymi Active Directory. Zarządzanie urządzeniami przyłączonymi do usługi Azure AD jest możliwe tylko za pomocą rozwiązania MDM
 
-Na urządzeniach przyłączonych do zarządzania usługą Azure AD, dostępne są dwie opcje:
+Istnieją dwa podejścia do zarządzania urządzeniami przyłączonymi do usługi Azure AD:
 
-- **Tylko do zarządzania urządzeniami Przenośnymi** — urządzenie wyłącznie jest zarządzana przez dostawcę zarządzania urządzeniami Przenośnymi, takiej jak Intune. Wszystkie zasady są dostarczane jako część procesu rejestracji zarządzania urządzeniami Przenośnymi. W przypadku klientów usługi Azure AD Premium lub pakietu EMS rejestracji w rozwiązaniu MDM jest zautomatyzowane krok, który jest częścią usługi Azure AD join.
-- **Współzarządzanie** — urządzenie jest zarządzane przez dostawcy usług MDM i SCCM. W tym podejściu na urządzenia zarządzane przez system MDM do administrowania niektóre aspekty zainstalowano agenta programu SCCM.
+- **Tylko MDM** — urządzenie jest zarządzane wyłącznie przez dostawcę zarządzania urządzeniami przenośnymi, takie jak usługa Intune. Wszystkie zasady są dostarczane w ramach procesu rejestracji MDM. W przypadku klientów Azure AD — wersja Premium lub pakietu EMS Rejestracja w usłudze MDM to zautomatyzowany krok, który jest częścią funkcji dołączania do usługi Azure AD.
+- **Współzarządzanie** — urządzenie jest zarządzane przez dostawcę zarządzania urządzeniami przenośnymi i program SCCM. W tym podejściu Agent SCCM jest instalowany na urządzeniu zarządzanym przez rozwiązanie MDM w celu administrowania określonymi aspektami.
 
-Jeśli używasz zasad grupy, ocenić z parzystością zasad zarządzania urządzeniami Przenośnymi za pomocą [MDM migracji analizy narzędzie (MMAT)](https://github.com/WindowsDeviceManagement/MMAT). 
+Jeśli używasz zasad grupy, Oceń parzystość zasad MDM przy użyciu [Narzędzia do analizy migracji MDM (MMAT)](https://github.com/WindowsDeviceManagement/MMAT). 
 
-Przejrzyj obsługiwane i nieobsługiwane zasady, aby ustalić, czy rozwiązanie do zarządzania urządzeniami Przenośnymi można użyć zamiast zasad grupy. Nieobsługiwana zasad należy rozważyć następujące kwestie:
+Przejrzyj obsługiwane i nieobsługiwane zasady, aby określić, czy można użyć rozwiązania MDM zamiast zasad grupy. W przypadku nieobsługiwanych zasad należy wziąć pod uwagę następujące kwestie:
 
-- Nieobsługiwana zasad są niezbędne, dla dołączonych do usługi Azure AD, urządzeń lub użytkowników?
-- Nieobsługiwana zasady mają zastosowanie w chmurze oparte na wdrożenia?
+- Czy są to nieobsługiwane zasady niezbędne dla urządzeń lub użytkowników przyłączonych do usługi Azure AD?
+- Czy nieobsługiwane zasady mają zastosowanie w przypadku wdrożenia opartego na chmurze?
 
-Jeśli rozwiązania MDM nie jest dostępna za pośrednictwem galerii aplikacji Azure AD, możesz dodać go zgodnie z procedurą opisaną w [integracji usługi Azure Active Directory z zarządzaniem urządzeniami Przenośnymi](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm). 
+Jeśli rozwiązanie MDM nie jest dostępne za pomocą galerii aplikacji usługi Azure AD, możesz je dodać zgodnie z procesem opisanym w [Azure Active Directory integracji z urządzeniami przenośnymi](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm). 
 
-Za pomocą współzarządzania programu SCCM służy również do zarządzania niektórymi aspektami urządzeń, podczas gdy zasady są dostarczane za pośrednictwem platformy zarządzania urządzeniami Przenośnymi. Microsoft Intune umożliwia wspólne zarządzanie za pomocą programu SCCM. Aby uzyskać więcej informacji, zobacz [współzarządzania dla systemu Windows 10 urządzenia](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Jeśli używasz produktu zarządzania urządzeniami Przenośnymi innego niż usługi Intune, skontaktuj się z dostawcą zarządzania urządzeniami Przenośnymi na scenariuszach stosowanych współzarządzania.
+Za pomocą współzarządzania można zarządzać pewnymi aspektami urządzeń za pomocą programu SCCM, a zasady są dostarczane za pomocą platformy MDM. Microsoft Intune umożliwia współzarządzanie z programem SCCM. Aby uzyskać więcej informacji, zobacz [współzarządzanie urządzeniami z systemem Windows 10](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Jeśli używasz produktu MDM innego niż usługa Intune, skontaktuj się z dostawcą MDM w sprawie odpowiednich scenariuszy współzarządzania.
 
-**Zalecenie:** Tylko urządzenia przyłączone do zarządzania dla usługi Azure AD, należy wziąć pod uwagę zarządzania urządzeniami Przenośnymi.
+**Zaleca** Rozważ zarządzanie tylko urządzeniami PRZENOŚNYmi dla urządzeń przyłączonych do usługi Azure AD.
 
-## <a name="understand-considerations-for-applications-and-resources"></a>Omówienie zagadnień dotyczących aplikacji i zasobów
+## <a name="understand-considerations-for-applications-and-resources"></a>Zrozumienie zagadnień dotyczących aplikacji i zasobów
 
-Zalecamy przeprowadzenie migracji aplikacji ze środowiska lokalnego do chmury dla użytkownika lepsze środowiska i kontroli dostępu. Jednak do usługi Azure AD urządzenia bezproblemowo można zapewnić dostęp do, zarówno w lokalnych, jak i w chmurze aplikacji. Aby uzyskać więcej informacji, zobacz [jak logowanie Jednokrotne do lokalnych zasobów działa w usłudze Azure AD urządzenia przyłączone do](azuread-join-sso.md).
+Zalecamy Migrowanie aplikacji ze środowiska lokalnego do chmury w celu lepszego działania użytkowników i kontroli dostępu. Jednak urządzenia przyłączone do usługi Azure AD mogą bezproblemowo zapewnić dostęp do aplikacji lokalnych i w chmurze. Aby uzyskać więcej informacji, zobacz [jak działa logowanie JEDNOkrotne do zasobów lokalnych na urządzeniach dołączonych do usługi Azure AD](azuread-join-sso.md).
 
-Poniższe sekcje zawierają informacje dotyczące różnych typów aplikacji i zasobów.
+W poniższych sekcjach przedstawiono zagadnienia dotyczące różnych typów aplikacji i zasobów.
 
 ### <a name="cloud-based-applications"></a>Aplikacje oparte na chmurze
 
-Jeśli aplikacja zostanie dodany do galerii aplikacji Azure AD, użytkownicy otrzymują logowania jednokrotnego za pośrednictwem urządzeń przyłączonych do usługi Azure AD. Dodatkowa konfiguracja nie jest wymagana. Użytkownicy otrzymują logowania jednokrotnego w, Microsoft Edge i przeglądarki Chrome. Dla programu Chrome, musisz wdrożyć [rozszerzenie systemu Windows 10 kont](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). 
+Jeśli aplikacja zostanie dodana do galerii aplikacji usługi Azure AD, użytkownicy otrzymają Logowanie jednokrotne za pomocą urządzeń przyłączonych do usługi Azure AD. Żadna dodatkowa konfiguracja nie jest wymagana. Użytkownicy odbierają Logowanie jednokrotne w przeglądarkach Microsoft Edge i Chrome. Dla programu Chrome należy wdrożyć [rozszerzenie konta systemu Windows 10](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). 
 
-Wszystkie aplikacje Win32 który:
+Wszystkie aplikacje Win32, które:
 
-- Dla żądania tokenu również uzyskać logowanie Jednokrotne na urządzeniach przyłączonych do usługi Azure AD są oparte na sieci Web Menedżera konta (WAM). 
-- Nie należy polegać na WAM może monitować użytkowników na potrzeby uwierzytelniania. 
+- Zapoznaj się z menedżerem kont w sieci Web (WAM) dla żądań tokenów, które również mają rejestrację jednokrotną na urządzeniach dołączonych 
+- Nie należy polegać na tym, że użytkownik może monitować użytkowników o uwierzytelnienie. 
 
-### <a name="on-premises-web-applications"></a>Aplikacje sieci web w środowisku lokalnym
+### <a name="on-premises-web-applications"></a>Lokalne aplikacje sieci Web
 
-Jeśli Twoje aplikacje są niestandardowe skompilowane i/lub hostowanych lokalnie, należy dodać je do zaufanych witryn w przeglądarce do:
+Jeśli Twoje aplikacje są niestandardowymi kompilacjami i/lub hostowanymi lokalnie, należy dodać je do zaufanych witryn w przeglądarce, aby:
 
-- Włącz zintegrowane uwierzytelnianie Windows do pracy 
-- Udostępnia środowisko logowania jednokrotnego nie wiersza dla użytkowników. 
+- Włączenie zintegrowanego uwierzytelniania systemu Windows 
+- Zapewnij użytkownikom bezpłatne środowisko logowania jednokrotnego. 
 
-Jeśli używasz usług AD FS, zobacz [Sprawdź i zarządzanie nimi logowanie jednokrotne za pomocą usług AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
+Jeśli używasz AD FS, zobacz [weryfikacja i zarządzanie logowaniem jednokrotnym przy użyciu AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
-**Zalecenie:** Należy wziąć pod uwagę hostingu w chmurze (na przykład Azure) oraz integracji z usługą Azure AD, aby uzyskać lepsze efekty.
+**Zaleca** Weź pod uwagę hosting w chmurze (na przykład Azure) i integrację z usługą Azure AD w celu lepszego środowiska.
 
-### <a name="on-premises-applications-relying-on-legacy-protocols"></a>Opierając się na starszych protokołów aplikacji lokalnych
+### <a name="on-premises-applications-relying-on-legacy-protocols"></a>Aplikacje lokalne korzystające ze starszych protokołów
 
-Użytkownicy pobierają logowania jednokrotnego z usługi Azure AD przyłączone do urządzenia, jeśli urządzenie ma dostęp do kontrolera domeny. 
+Użytkownicy odbierają Logowanie jednokrotne z urządzeń przyłączonych do usługi Azure AD, jeśli urządzenie ma dostęp do kontrolera domeny. 
 
-**Zalecenie:** Wdrażanie [serwera proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) Aby włączyć bezpieczny dostęp do tych aplikacji.
+**Zaleca** Wdróż [aplikacja usługi Azure AD serwer proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) , aby zapewnić bezpieczny dostęp do tych aplikacji.
 
-### <a name="on-premises-network-shares"></a>Udziały sieciowe w środowisku lokalnym
+### <a name="on-premises-network-shares"></a>Lokalne udziały sieciowe
 
-Użytkownicy mają rejestracji Jednokrotnej z urządzeń przyłączonych do usługi Azure AD, jeśli urządzenie ma dostęp do kontrolera domeny w środowisku lokalnym.
+Użytkownicy mają Logowanie jednokrotne z urządzeń przyłączonych do usługi Azure AD, gdy urządzenie ma dostęp do lokalnego kontrolera domeny.
 
-### <a name="printers"></a>Drukarki
+### <a name="printers"></a>Drukarz
 
-W przypadku drukarek, zajdzie potrzeba wdrożenia [chmura hybrydowa wydruku](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) na urządzeniach przyłączonych do wykrywania drukarek w usłudze Azure AD. 
+W przypadku drukarek należy wdrożyć drukowanie w [chmurze hybrydowej](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) w celu odnajdywania drukarek na urządzeniach dołączonych do usługi Azure AD. 
 
-Gdy drukarki nie może automatycznie odnalezione w środowisku tylko na chmurze, użytkownicy umożliwia również ścieżkę UNC drukarki dodać bezpośrednio. 
+Mimo że drukarki nie mogą być automatycznie odnajdywane w środowisku tylko w chmurze, użytkownicy mogą również użyć ścieżki UNC drukarki, aby dodać je bezpośrednio. 
 
-### <a name="on-premises-applications-relying-on-machine-authentication"></a>Aplikacje lokalne, opierając się na uwierzytelnianie komputera
+### <a name="on-premises-applications-relying-on-machine-authentication"></a>Aplikacje lokalne polegające na uwierzytelnianiu komputera
 
-Urządzenia usługi Azure AD przyłączone nie obsługują aplikacje lokalne, opierając się na uwierzytelnianie komputera. 
+Urządzenia przyłączone do usługi Azure AD nie obsługują aplikacji lokalnych korzystających z uwierzytelniania maszynowego. 
 
-**Zalecenie:** Należy wziąć pod uwagę wycofania tych aplikacji i przeniesienie do ich nowoczesnych rozwiązań alternatywnych.
+**Zaleca** Rozważ wycofanie tych aplikacji i przechodzenie do ich nowoczesnych wariantów.
 
 ### <a name="remote-desktop-services"></a>Usługi pulpitu zdalnego
 
-Podłączanie pulpitu zdalnego na urządzeniach przyłączonych do usługi Azure AD wymaga komputer hosta musi być albo dołączone do usługi Azure AD lub hybrydowe przyłączone do usługi Azure AD. Pulpit zdalny z urządzenia z systemem odłączony lub inne niż Windows nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [komputera przyłączonego do Connect do zdalnej usługi Azure AD](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)
+Podłączanie pulpitu zdalnego do urządzeń przyłączonych do usługi Azure AD wymaga, aby maszyna hosta była przyłączona do usługi Azure AD lub dołączona do hybrydowej usługi Azure AD. Pulpit zdalny z przyłączonych lub nienależących do systemu Windows urządzeń nie jest obsługiwany. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z zdalnym komputerem przyłączonym do usługi Azure AD](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)
 
-## <a name="understand-your-provisioning-options"></a>Opis opcji inicjowania obsługi administracyjnej
+## <a name="understand-your-provisioning-options"></a>Zapoznaj się z opcjami aprowizacji
 
-Możesz aprowizować usługi Azure AD join, korzystając z następujących metod:
+Usługę Azure AD Join można zainicjować przy użyciu następujących metod:
 
-- **Samoobsługowe w trybie OOBE/ustawienia** — w trybie samoobsługi użytkowników z rzeczywistym użyciem za pośrednictwem usługi Azure AD join albo w ramach Windows poza pole środowiska (OOBE) lub z Windows ustawienia procesów. Aby uzyskać więcej informacji, zobacz [Dołączanie urządzenia pracy z siecią organizacji](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network). 
-- **Rozwiązania Windows Autopilot** — rozwiązania Windows Autopilot umożliwia wstępnej konfiguracji urządzeń płynne w OOBE do wykonania sprzężenia Azure AD. Aby uzyskać więcej informacji, zobacz [Przegląd rozwiązania Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot). 
-- **Rejestracja zbiorcza** — rejestracja zbiorcza umożliwia sprzężenie administratora oparte na usłudze Azure AD za pomocą zbiorczego inicjowania obsługi administracyjnej narzędzia do konfigurowania urządzeń. Aby uzyskać więcej informacji, zobacz [rejestracji zbiorczej dla urządzeń Windows](https://docs.microsoft.com/intune/windows-bulk-enroll).
+- Samoobsługowe środowisko **OOBE/Settings** — w trybie samoobsługowym użytkownicy przechodzą przez proces dołączania usługi Azure AD podczas pracy z systemem Windows (OOBE) lub z ustawień systemu Windows. Aby uzyskać więcej informacji, zobacz Dołączanie [urządzenia służbowego do sieci organizacji](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network). 
+- **Windows autopilotaż** — system Windows autopilotaż umożliwia wstępne konfigurowanie urządzeń w celu zapewnienia sprawnego działania w języku OOBE w celu wykonania sprzężenia usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Omówienie funkcji autopilotażu systemu Windows](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot). 
+- **Rejestracja Zbiorcza** — Rejestracja Zbiorcza umożliwia przełączenie usługi Azure AD sterowanej przez administratora przy użyciu narzędzia udostępniania zbiorczego w celu skonfigurowania urządzeń. Aby uzyskać więcej informacji, zobacz [Rejestrowanie zbiorcze dla urządzeń z systemem Windows](https://docs.microsoft.com/intune/windows-bulk-enroll).
  
-Poniżej znajduje się porównanie tych trzech metod. 
+Poniżej przedstawiono porównanie tych trzech metod 
  
-|   | Instalator samoobsługi | Rozwiązania Windows Autopilot | Rejestrowanie zbiorcze |
+|   | Konfiguracja samoobsługowa | Autopilotaż systemu Windows | Rejestracja Zbiorcza |
 | --- | --- | --- | --- |
-| Wymagaj interakcji użytkownika, aby skonfigurować | Tak | Yes | Nie |
-| Wymaga IT | Nie | Yes | Tak |
-| Zastosowanie przepływów | Ustawienia & OOBE | Tylko w trybie OOBE | Tylko w trybie OOBE |
-| Prawa administratora lokalnego do podstawowego użytkownika | Tak, domyślnie | Można konfigurować | Nie |
-| Wymagana jest obsługa urządzeń OEM | Nie | Yes | Nie |
+| Wymagaj interakcji z użytkownikiem w celu skonfigurowania | Tak | Yes | Nie |
+| Wymaganie nakładu pracy IT | Nie | Yes | Tak |
+| Odpowiednie przepływy | Ustawienia & OOBE | Tylko OOBE | Tylko OOBE |
+| Prawa administratora lokalnego do użytkownika podstawowego | Tak, domyślnie | Skonfigurować | Nie |
+| Wymagaj obsługi OEM urządzenia | Nie | Yes | Nie |
 | Obsługiwane wersje | 1511+ | 1709+ | 1703+ |
  
-Wybierz swoje metody wdrożenia lub metody recenzowania powyższej tabeli i przeglądając następujące zagadnienia dotyczące wdrażania każda z tych metod:  
+Wybierz podejście do wdrożenia lub podejścia, przeglądając powyższą tabelę i zapoznaj się z poniższymi uwagami dotyczącymi przyjęcia obu rozwiązań:  
 
-- Twoje tech użytkownicy są pomysłowy przechodzić przez Instalatora samodzielnie? 
-   - Samoobsługa można najlepszej metody dla tych użytkowników. Należy wziąć pod uwagę rozwiązania Windows Autopilot, aby ulepszyć środowisko użytkownika.  
-- Czy użytkownicy zdalnego lub w ramach lokalnej firmy? 
-   - Samoobsługa lub najlepszym rozwiązaniem dla użytkowników zdalnych, w przypadku instalacji Bezproblemowa praca rozwiązania Autopilot. 
-- Wolisz konfiguracji usługi zarządzane przez administratora lub użytkownika na podstawie? 
-   - Rejestracja zbiorcza sprawdzi się najlepiej w administratora oparte na wdrożenia, aby skonfigurować urządzenia przed przekazaniem użytkowników.     
-- Czy kupują urządzenia od producentów OEM 1-2, czy masz szeroką dystrybucję OEM urządzenia?  
-   - Zakup od producentów OEM ograniczone, którzy obsługują także rozwiązania Autopilot, możesz korzystać z ściślejszą integrację z rozwiązaniem Autopilot. 
+- Czy użytkownicy świadomeą się nad instalacją? 
+   - Samoobsługowe działania mogą być najlepszym rozwiązaniem dla tych użytkowników. Aby ulepszyć środowisko użytkownika, należy rozważyć użycie funkcji autopilotażu systemu Windows.  
+- Czy użytkownicy są zdalni lub w środowisku firmowym? 
+   - Funkcja samoobsługowa lub automatyczna pilotażowa najlepiej jest Najlepsza dla użytkowników zdalnych w celu nieodpłatnej instalacji. 
+- Czy preferujesz konfigurację zarządzaną przez użytkownika, czy przez administratora? 
+   - Rejestracja Zbiorcza działa lepiej w przypadku wdrożenia sterowanego przez administratora w celu skonfigurowania urządzeń przed przekazaniem ich użytkownikom.     
+- Czy kupujesz urządzenia od 1-2 producentów OEM czy masz szeroką dystrybucję urządzeń OEM?  
+   - Jeśli kupujesz od ograniczonych producentów OEM, którzy obsługują również program autopilotaż, możesz skorzystać z ściślejszej integracji z programem autopilotaż. 
 
-## <a name="configure-your-device-settings"></a>Skonfiguruj ustawienia urządzenia
+## <a name="configure-your-device-settings"></a>Konfigurowanie ustawień urządzenia
 
-Witryna Azure portal umożliwia kontrolę wdrożenia usługi Azure AD urządzenia przyłączone do Twojej organizacji. Aby skonfigurować powiązane ustawienia na **strony usługi Azure Active Directory**, wybierz opcję `Devices > Device settings`.
+Azure Portal pozwala kontrolować wdrażanie urządzeń przyłączonych do usługi Azure AD w organizacji. Aby skonfigurować ustawienia pokrewne, na **stronie Azure Active Directory**wybierz opcję `Devices > Device settings`.
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>Użytkownicy mogą dołączać urządzania do usługi Azure AD
 
-Ustaw tę opcję na **wszystkich** lub **wybrane** na podstawie zakresu wdrożenia i który ma otrzymać zezwolenie na konfigurowanie usługi Azure AD połączonych urządzeń. 
+Ustaw tę opcję na wartość **wszystkie** lub **wybraną** na podstawie zakresu wdrożenia oraz tego, kto ma zezwalać na Konfigurowanie urządzenia dołączonego do usługi Azure AD. 
 
 ![Użytkownicy mogą dołączać urządzania do usługi Azure AD](./media/azureadjoin-plan/01.png)
 
-### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Urządzenia przyłączone do dodatkowych administratorów lokalnych w usłudze Azure AD
+### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Dodatkowi administratorzy lokalni na urządzeniach dołączonych do usługi Azure AD
 
-Wybierz **wybrane** i wybiera użytkowników, które chcesz dodać do grupy Administratorzy lokalni na urządzeniach przyłączonych do wszystkich Azure AD. 
+Wybierz pozycję **wybrane** i wybierz użytkowników, których chcesz dodać do grupy Administratorzy lokalni na wszystkich urządzeniach dołączonych do usługi Azure AD. 
 
-![Urządzenia przyłączone do dodatkowych administratorów lokalnych w usłudze Azure AD](./media/azureadjoin-plan/02.png)
+![Dodatkowi administratorzy lokalni na urządzeniach dołączonych do usługi Azure AD](./media/azureadjoin-plan/02.png)
 
-### <a name="require-multi-factor-auth-to-join-devices"></a>Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń
+### <a name="require-multi-factor-auth-to-join-devices"></a>Wymagaj uwierzytelniania wieloskładnikowego w celu dołączania urządzeń
 
-Wybierz **"tak** w razie potrzeby użytkowników do wykonywania uwierzytelniania Wieloskładnikowego podczas przyłączania urządzenia do usługi Azure AD. Dla użytkowników urządzeń łączących się z usługą Azure AD przy użyciu usługi MFA samo urządzenie staje się 2nd factor.
+Wybierz pozycję **"tak"** , jeśli chcesz, aby użytkownicy korzystali z uwierzytelniania MFA podczas dołączania urządzeń do usługi Azure AD. Aby użytkownicy mogli przyłączać urządzenia do usługi Azure AD przy użyciu uwierzytelniania wieloskładnikowego, samo urządzenie będzie miało drugi czynnik.
 
-![Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń](./media/azureadjoin-plan/03.png)
+![Wymagaj uwierzytelniania wieloskładnikowego w celu dołączania urządzeń](./media/azureadjoin-plan/03.png)
 
-## <a name="configure-your-mobility-settings"></a>Konfiguruj ustawienia usługi mobilności
+## <a name="configure-your-mobility-settings"></a>Skonfiguruj ustawienia mobilności
 
-Aby można było skonfigurować ustawienia usługi mobilności, może być konieczne najpierw Dodaj dostawcę zarządzania urządzeniami Przenośnymi.
+Aby można było skonfigurować ustawienia mobilności, można najpierw dodać dostawcę MDM.
 
-**Aby dodać dostawcę zarządzania urządzeniami Przenośnymi**:
+**Aby dodać dostawcę zarządzania urządzeniami przenośnymi**:
 
-1. Na **strony usługi Azure Active Directory**w **Zarządzaj** kliknij `Mobility (MDM and MAM)`. 
-1. Kliknij przycisk **Dodaj aplikację**.
-1. Wybierz dostawcę zarządzania urządzeniami Przenośnymi z listy.
+1. Na **stronie Azure Active Directory**w sekcji **Zarządzanie** kliknij pozycję `Mobility (MDM and MAM)`. 
+1. Kliknij pozycję **Dodaj aplikację**.
+1. Wybierz z listy dostawcę MDM.
 
    ![Dodawanie aplikacji](./media/azureadjoin-plan/04.png)
 
-Wybierz dostawcę zarządzania urządzeniami Przenośnymi, skonfigurować powiązane ustawienia. 
+Wybierz dostawcę MDM, aby skonfigurować powiązane ustawienia. 
 
 ### <a name="mdm-user-scope"></a>Zakres użytkownika oprogramowania MDM
 
-Wybierz **niektóre** lub **wszystkich** na podstawie zakresu wdrożenia. 
+Wybierz **niektóre** lub **wszystkie** w zależności od zakresu wdrożenia. 
 
 ![Zakres użytkownika oprogramowania MDM](./media/azureadjoin-plan/05.png)
 
-Oparte na zakresie Twoich obowiązków, jedną z następujących sytuacji: 
+Na podstawie Twojego zakresu występuje jedna z następujących sytuacji: 
 
-- **Użytkownik, który znajduje się w zakresie zarządzania urządzeniami Przenośnymi**: Jeśli masz subskrypcję usługi Azure AD Premium, rejestracji w rozwiązaniu MDM jest zautomatyzowany wraz z usługi Azure AD join. Wszyscy użytkownicy o określonym zakresie muszą mieć odpowiednią licencję dla usługi zarządzania urządzeniami przenośnymi. W przypadku niepowodzenia rejestracji w rozwiązaniu MDM w tym scenariuszu dołączania do usługi Azure AD zostanie również wycofana.
-- **Użytkownik nie jest w zakresie zarządzania urządzeniami Przenośnymi**: Jeśli użytkownicy nie są w zakresie zarządzania urządzeniami Przenośnymi, usługi Azure AD join kończy się bez rejestracji w rozwiązaniu MDM. Skutkuje to niezarządzanego urządzenia.
+- **Użytkownik znajduje się w zakresie zarządzania urządzeniami przenośnymi**: Jeśli masz subskrypcję Azure AD — wersja Premium, rejestracja w usłudze MDM jest zautomatyzowana wraz z funkcją Azure AD Join. Wszyscy użytkownicy z zakresem muszą mieć odpowiednią licencję na zarządzanie urządzeniami przenośnymi. Jeśli w tym scenariuszu Rejestracja w usłudze MDM nie powiedzie się, usługa Azure AD Join również zostanie wycofana.
+- **Użytkownik nie znajduje się w zakresie zarządzania urządzeniami przenośnymi**: Jeśli użytkownicy nie znajdują się w zakresie zarządzania urządzeniami przenośnymi, usługa Azure AD Join zakończy działanie bez rejestracji MDM. Powoduje to niezarządzane urządzenie.
 
-### <a name="mdm-urls"></a>Adresy URL zarządzania urządzeniami Przenośnymi
+### <a name="mdm-urls"></a>Adresy URL zarządzania urządzeniami przenośnymi
 
-Istnieją trzy adresy URL, które są powiązane z konfiguracji zarządzania urządzeniami Przenośnymi:
+Istnieją trzy adresy URL powiązane z konfiguracją rozwiązania MDM:
 
-- Zarządzania urządzeniami Przenośnymi adres URL warunków użytkowania
-- Adres URL odnajdywania zarządzania urządzeniami Przenośnymi 
+- Adres URL warunków użytkowania oprogramowania MDM
+- Adres URL odnajdywania zarządzania urządzeniami przenośnymi 
 - Adres URL zgodności oprogramowania MDM
 
 ![Dodawanie aplikacji](./media/azureadjoin-plan/06.png)
 
-Każdy adres URL ma wartość domyślną wstępnie zdefiniowane. Jeśli te pola są puste, skontaktuj się z dostawcą zarządzania urządzeniami Przenośnymi, aby uzyskać więcej informacji.
+Każdy adres URL ma wstępnie zdefiniowaną wartość domyślną. Jeśli te pola są puste, skontaktuj się z dostawcą MDM, aby uzyskać więcej informacji.
 
-### <a name="mam-settings"></a>Ustawienia zarządzania aplikacjami Mobilnymi
+### <a name="mam-settings"></a>Ustawienia MAM
 
-Zarządzanie aplikacjami Mobilnymi nie ma zastosowania do dołączania do usługi Azure AD. 
+MAM nie ma zastosowania do usługi Azure AD Join. 
 
-## <a name="configure-enterprise-state-roaming"></a>Konfigurowanie roaming stanu dla przedsiębiorstw
+## <a name="configure-enterprise-state-roaming"></a>Konfigurowanie roamingu stanu przedsiębiorstwa
 
-Jeśli chcesz włączyć roaming stanu do usługi Azure AD, dzięki czemu użytkownicy mogą synchronizować swoje ustawienia między urządzeniami, zobacz [Włącz Enterprise stanu mobilnych w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/enterprise-state-roaming-enable). 
+Jeśli chcesz włączyć roaming stanu do usługi Azure AD, aby użytkownicy mogli synchronizować swoje ustawienia na różnych urządzeniach, zobacz [włączanie Enterprise State roaming w Azure Active Directory](enterprise-state-roaming-enable.md). 
 
-**Zalecenie**: Włącz to ustawienie, nawet w przypadku urządzeń przyłączonych do usługi Azure AD hybrydowych.
+**Zalecenie**: Włącz to ustawienie nawet dla urządzeń przyłączonych do hybrydowej usługi Azure AD.
 
 ## <a name="configure-conditional-access"></a>Konfigurowanie dostępu warunkowego
 
-W przypadku urządzeń przyłączonych do dostawcy usług MDM skonfigurowany dla usługi Azure AD, dostawca flagi urządzenie jako zgodne, jak urządzenie znajduje się w obszarze Zarządzanie. 
+Jeśli masz skonfigurowanego dostawcę MDM dla urządzeń przyłączonych do usługi Azure AD, dostawca flaguje urządzenie jako zgodne, gdy tylko urządzenie jest objęte zarządzaniem. 
 
 ![Zgodne urządzenie](./media/azureadjoin-plan/46.png)
 
-Można użyć tej implementacji, aby [wymagają zarządzanych urządzeń do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](../conditional-access/require-managed-devices.md).
+Za pomocą tej implementacji można wymagać, aby [zarządzane urządzenia dla dostępu do aplikacji w chmurze miały dostęp warunkowy](../conditional-access/require-managed-devices.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dołączanie urządzenia z systemem Windows 10 nowe za pomocą usługi Azure AD podczas pierwszego uruchomienia](azuread-joined-devices-frx.md)
-> [Dołącz swoje urządzenie pracy do sieci organizacji](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)
+> [Dołącz nowe urządzenie z systemem Windows 10 przy użyciu usługi Azure AD podczas pierwszego uruchomienia](azuread-joined-devices-frx.md)
+> [Dołącz do urządzenia służbowego do sieci organizacji](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

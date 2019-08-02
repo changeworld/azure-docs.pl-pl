@@ -1,71 +1,71 @@
 ---
-title: Dodaj warstwę obrazu do usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Jak dodać warstwę obrazu do mapy Javascript
+title: Dodawanie warstwy obrazu do Azure Maps | Microsoft Docs
+description: Jak dodać warstwę obrazu do mapy JavaScript
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/3/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5396fefca3a60dea7a503f8b4e84cc575753ea30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ea0f37e307196af4b27fd3f8fb1aa0d42443dfa
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769570"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638736"
 ---
-# <a name="add-an-image-layer-to-a-map"></a>Dodaj warstwę obrazu do mapy
+# <a name="add-an-image-layer-to-a-map"></a>Dodawanie warstwy obrazu do mapy
 
-W tym artykule pokazano, jak można nakładki obraz stały zestaw współrzędnych na mapie. Istnieje wiele scenariuszy, w których odbywa się nałożenie obrazu na mapie. Poniżej przedstawiono kilka przykładów typów obrazów często nałożony na mapach;
+W tym artykule pokazano, jak można nałożyć obraz na stały zestaw współrzędnych na mapie. Istnieje wiele scenariuszy, w których zostanie wykonany nałożenie obrazu na mapie. Poniżej przedstawiono kilka przykładów typu obrazów, które często są nałożone na mapy;
 
-* Obrazy przechwycone dronom.
-* Tworzenie floorplans.
-* Historyczne lub innych obrazów wyspecjalizowanych mapy.
-* Schematy placach.
-* Obrazy radarowy o pogodzie.
+* Obrazy przechwycone z dronom.
+* Kompilowanie Floorplans.
+* Historyczne i inne wyspecjalizowane obrazy map.
+* Plany dotyczące lokacji zadań.
+* Obrazy radarowe.
 
 > [!TIP]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) jest szybkie, łatwe nakładki obrazów na mapie. Jednak jeśli obraz jest duży, przeglądarka może mieć trudności z go załadować. W takim przypadku należy wziąć pod uwagę podzielenie obrazu na kafelkach i ładuje je do mapy jako [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
+> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) to prosty sposób na rozłożenie obrazu na mapie. Jeśli jednak obraz jest duży, przeglądarka może ulec załadowaniu. W takim przypadku Rozważ przerwanie obrazu do kafelków i załadowanie ich do mapy jako [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
 
 ## <a name="add-an-image-layer"></a>Dodawanie warstwy obrazów
 
-W tym przykładzie pokazano, jak nakładki obraz [mapy Newark New Jersey z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapie.
+Ten przykład pokazuje, jak nałożyć obraz [mapy Newark nowej Jersey z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapie.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Warstwa obrazu prostego' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/eQodRo/'>warstwy obrazu prostego</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Prosta warstwa obrazu' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zapoznaj się z <a href='https://codepen.io/azuremaps/pen/eQodRo/'>prostą warstwą obrazu</a> piórem Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
+W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy. Aby uzyskać instrukcje, zobacz [Tworzenie mapy](./map-create.md) .
 
-W drugim bloku kodu [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) jest tworzony przez przekazanie adresu URL do obrazu i współrzędne dowiedzą w formacie `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
+W drugim bloku kodu [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) jest tworzony przez przekazanie adresu URL do obrazu i współrzędne dla czterech rogów w formacie `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
 
-## <a name="import-a-kml-ground-overlay"></a>Importowanie w nakładce podstaw KML
+## <a name="import-a-kml-ground-overlay"></a>Importowanie nakładki uziemienia KML
 
-W tym przykładzie przedstawiono sposób nakładki nakładki podstaw KML informacji jako warstwa obrazu na mapie. Nakładki podstaw KML zapewniają północ, południe, Wschód i współrzędne Zachodnia i obrót przeciwnie do ruchu wskazówek zegara, gdzie jako obraz warstwy oczekuje współrzędnych dla każdego rogu obrazu. Nakładka podstaw KML, w tym przykładzie jest Chartres cathedral i pochodzące z wyszukiwania z [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+Ten przykład pokazuje, jak nałożyć KMLe informacje o nakładki naziemnej jako warstwę obrazu na mapie. Nakładki naziemne KML zapewniają współrzędne północne, Południowe, wschodnie i zachodnie oraz obrót z ruchem wskazówek zegara, gdzie warstwa obrazu oczekuje współrzędnych dla każdego rogu obrazu. KML nakładki naziemnej w tym przykładzie jest Chartres Cathedral i pochodzący z [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Nakładka podstaw KML jako warstwa obrazu' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML prowadzić nakładki jako warstwa obrazu</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='KML nakładki jako warstwa obrazu' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zapoznaj się z KML piórem, <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>jak warstwa obrazu</a> według<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Powyższy kod używa statycznego `getCoordinatesFromEdges` funkcji [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) klasy do obliczania dowiedzą o obraz z północ, południe, wschód zachód i wymiany informacji z KML prowadzić nakładki.
+Powyższy kod używa funkcji statycznej `getCoordinatesFromEdges` klasy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) , aby obliczyć cztery rogi obrazu na podstawie informacji o północy, południe, wschód, zachód i rotacji z nakładki naziemnej KML.
 
 
-## <a name="customize-an-image-layer"></a>Dostosowywanie warstwa obrazu
+## <a name="customize-an-image-layer"></a>Dostosowywanie warstwy obrazu
 
-Warstwa obrazu ma wiele opcji stylów. W tym miejscu to narzędzie ich wypróbowanie.
+Warstwa obrazu ma wiele opcji stylów. Oto narzędzie do wypróbowania.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Opcje warstw obrazu' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>opcji warstwy obrazu</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='700' scrolling='no' title='Opcje warstwy obrazu' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>Opcje warstwy obrazu</a> pióra według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule:
+Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
 > [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
@@ -73,7 +73,7 @@ Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 > [!div class="nextstepaction"]
 > [ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest)
 
-Zobacz następujące artykuły, aby uzyskać więcej przykładów kodu dodać do map:
+Zapoznaj się z następującymi artykułami, aby uzyskać więcej przykładów kodu do dodania do Twoich map:
 
 > [!div class="nextstepaction"]
 > [Dodaj warstwę kafelków](./map-add-tile-layer.md)

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 86c38818ee1632bf2d2f3fb1e1240954f3267887
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce9a1d0fb9a5e8b242db26c433a08c2426df39d9
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123707"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720750"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopiowanie danych z HubSpot przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -44,7 +44,7 @@ Następujące właściwości są obsługiwane w przypadku HubSpot połączone us
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Hubspot** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **Hubspot** | Yes |
 | clientId | Identyfikator klienta skojarzony z aplikacją Hubspot.  | Yes |
 | clientSecret | Klucz tajny klienta skojarzone z aplikacją Hubspot. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | accessToken | Token dostępu uzyskany podczas uwierzytelniania początkowo integracji usługi uwierzytelniania OAuth. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
@@ -87,7 +87,7 @@ Aby skopiować dane z HubSpot, należy ustawić właściwość typu zestawu dany
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **HubspotObject** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **HubspotObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -97,11 +97,12 @@ Aby skopiować dane z HubSpot, należy ustawić właściwość typu zestawu dany
     "name": "HubspotDataset",
     "properties": {
         "type": "HubspotObject",
+        "typeProperties": {},
+        "schema": [],        
         "linkedServiceName": {
             "referenceName": "<Hubspot linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -116,7 +117,7 @@ Aby skopiować dane z HubSpot, należy ustawić typ źródła w działaniu kopio
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **HubspotSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **HubspotSource** | Yes |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Companies where Company_Id = xxx"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

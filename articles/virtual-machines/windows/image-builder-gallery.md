@@ -1,33 +1,33 @@
 ---
-title: Użyj Kreatora obrazów platformy Azure z galerii obrazów maszyn wirtualnych Windows (wersja zapoznawcza)
-description: Tworzenie obrazów Windows za pomocą Kreatora obrazów platformy Azure i udostępnione galerii obrazów.
+title: Korzystanie z programu Azure Image Builder z galerią obrazów dla maszyn wirtualnych z systemem Windows (wersja zapoznawcza)
+description: Twórz obrazy systemu Windows za pomocą programu Azure Image Builder i udostępnionej galerii obrazów.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 164fc4d8ad567c75ed5029aaf26af260398f80ba
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722697"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698683"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Wersja zapoznawcza: Tworzenie obrazu Windows i rozpowszechnienie go do galerii obrazów udostępnione 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Wersja zapoznawcza: Tworzenie obrazu systemu Windows i dystrybuowanie go do galerii obrazów udostępnionych 
 
-W tym artykule jest pokazanie, jak można użyć Kreatora obrazów platformy Azure do utworzenia wersji obrazu w [galerii obrazów współdzielona](shared-image-galleries.md), następnie globalnie dystrybuować obraz.
+W tym artykule przedstawiono sposób użycia programu Azure Image Builder do tworzenia wersji obrazu w [galerii obrazów udostępnionych](shared-image-galleries.md), a następnie dystrybuowania obrazu globalnie.
 
-Firma Microsoft będzie używany szablon JSON do obrazu. Użyto pliku JSON jest tutaj: [helloImageTemplateforWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json). 
+Aby skonfigurować obraz, będziemy używać szablonu JSON. Używany plik JSON jest tutaj: [helloImageTemplateforWinSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json). 
 
-Aby rozesłać obraz do galerii obrazów udostępnione, szablon używa [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) jako wartość pozycji `distribute` części szablonu.
+W celu rozesłania obrazu do galerii obrazów udostępnionych szablon używa [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) jako wartości `distribute` sekcji szablonu.
 
 > [!IMPORTANT]
-> Kreator obrazów platformy Azure jest obecnie w publicznej wersji zapoznawczej.
+> Usługa Azure Image Builder jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Rejestrowanie funkcji
-Aby użyć Kreatora obrazów platformy Azure w wersji zapoznawczej, musisz zarejestrować nową funkcję.
+Aby korzystać z usługi Azure Image Builder w wersji zapoznawczej, należy zarejestrować nową funkcję.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -47,7 +47,7 @@ az provider show -n Microsoft.Storage | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
 ```
 
-Jeśli nie mówią zarejestrowanych, uruchom następujące polecenie:
+Jeśli nie powiedzie się, uruchom następujące polecenie:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -55,9 +55,9 @@ az provider register -n Microsoft.Storage
 az provider register -n Microsoft.Compute
 ```
 
-## <a name="set-variables-and-permissions"></a>Uprawnienia i Ustawianie zmiennych 
+## <a name="set-variables-and-permissions"></a>Ustawianie zmiennych i uprawnień 
 
-Firma Microsoft będzie używać niektórych rodzajów informacji wielokrotnie, dlatego utworzymy pewne zmienne do przechowywania tych informacji. Zastąp wartości dla zmiennych, takie jak `username` i `vmpassword`, podając własne informacje.
+Będziemy wielokrotnie używać niektórych informacji, więc utworzymy pewne zmienne do przechowywania tych informacji. Zastąp wartości dla zmiennych, takich jak `username` i `vmpassword`, z własnymi informacjami.
 
 ```azurecli-interactive
 # Resource group name - we are using ibsigRG in this example
@@ -77,7 +77,7 @@ username="azureuser"
 vmpassword="passwordfortheVM"
 ```
 
-Utwórz zmienną dla Twojego identyfikatora subskrypcji. Można uzyskać, to przy użyciu `az account show | grep id`.
+Utwórz zmienną dla identyfikatora subskrypcji. Można to zrobić za pomocą `az account show | grep id`polecenia.
 
 ```azurecli-interactive
 subscriptionID="Subscription ID"
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Nadaj uprawnienia kreatora obrazów platformy Azure do tworzenia zasobów w danej grupie zasobów. `--assignee` Wartość Identyfikatora rejestracji aplikacji dla usługi kreatora obrazów. 
+Przyznaj usłudze Azure Image Builder uprawnienia do tworzenia zasobów w tej grupie zasobów. `--assignee` Wartość to identyfikator rejestracji aplikacji dla usługi Image Builder. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -100,12 +100,11 @@ az role assignment create \
 ```
 
 
+## <a name="create-an-image-definition-and-gallery"></a>Tworzenie definicji obrazu i galerii
 
+Aby użyć konstruktora obrazów z udostępnioną galerią obrazów, musisz mieć istniejącą galerię obrazów i definicję obrazu. Konstruktor obrazów nie utworzy galerii obrazów i definicji obrazu.
 
-
-## <a name="create-an-image-definition-and-gallery"></a>Utwórz definicję obrazu i galerii
-
-Tworzenie galerii obrazów. 
+Jeśli nie masz jeszcze galerii i definicji obrazu do użycia, Zacznij od utworzenia ich. Najpierw utwórz galerię obrazów.
 
 ```azurecli-interactive
 az sig create \
@@ -113,7 +112,7 @@ az sig create \
     --gallery-name $sigName
 ```
 
-Utwórz definicję obrazu.
+Następnie Utwórz definicję obrazu.
 
 ```azurecli-interactive
 az sig image-definition create \
@@ -127,9 +126,9 @@ az sig image-definition create \
 ```
 
 
-## <a name="download-and-configure-the-json"></a>Pobierz i skonfiguruj .json
+## <a name="download-and-configure-the-json"></a>Pobierz i Skonfiguruj plik JSON
 
-Pobierz szablon JSON i skonfigurować ją za pomocą zmiennych.
+Pobierz szablon JSON i skonfiguruj go przy użyciu zmiennych.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json -o helloImageTemplateforWinSIG.json
@@ -144,9 +143,9 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforWinSIG.json
 
 ## <a name="create-the-image-version"></a>Utwórz wersję obrazu
 
-Ta część dalej utworzy wersję obrazu w galerii. 
+Ta Następna część spowoduje utworzenie wersji obrazu w galerii. 
 
-Prześlij konfigurację obrazu, aby usługa kreatora obrazów platformy Azure.
+Prześlij konfigurację obrazu do usługi Azure Image Builder.
 
 ```azurecli-interactive
 az resource create \
@@ -167,12 +166,12 @@ az resource invoke-action \
      --action Run 
 ```
 
-Tworzenie obrazu i zreplikowanie ich obu regionów może wymagać trochę czasu. Poczekaj, aż do ukończenia tej części przed przejściem do tworzenia maszyny Wirtualnej.
+Tworzenie obrazu i replikowanie go do obu regionów może chwilę potrwać. Przed przejściem do tworzenia maszyny wirtualnej Zaczekaj, aż ta część zostanie zakończona.
 
 
 ## <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej
 
-Utwórz Maszynę wirtualną z wersji obrazu, który został utworzony przez kreatora obrazów platformy Azure.
+Utwórz maszynę wirtualną na podstawie wersji obrazu, która została utworzona przez usługę Azure Image Builder.
 
 ```azurecli-interactive
 az vm create \
@@ -185,25 +184,25 @@ az vm create \
 ```
 
 
-## <a name="verify-the-customization"></a>Sprawdź dostosowania
-Utwórz połączenie pulpitu zdalnego z maszyną wirtualną przy użyciu nazwy użytkownika i hasło, którego jest ustawiany podczas tworzenia maszyny Wirtualnej. Wewnątrz maszyny Wirtualnej Otwórz wiersz polecenia i wpisz:
+## <a name="verify-the-customization"></a>Sprawdzanie dostosowania
+Utwórz połączenie Pulpit zdalny z maszyną wirtualną przy użyciu nazwy użytkownika i hasła ustawione podczas tworzenia maszyny wirtualnej. Na maszynie wirtualnej Otwórz wiersz polecenia i wpisz:
 
 ```console
 dir c:\
 ```
 
-Powinien zostać wyświetlony katalog o nazwie `buildActions` utworzonej podczas dostosowywania obrazu.
+Powinien zostać wyświetlony katalog o nazwie `buildActions` , który został utworzony podczas dostosowywania obrazu.
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Jeśli chcesz teraz Wypróbuj ponownie dostosowanie wersję obrazu, aby utworzyć nową wersję tego samego obrazu **Pomiń ten krok** i przejdź do [kreatora obrazów platformy Azure Użyj, aby utworzyć inną wersję obrazu](image-builder-gallery-update-image-version.md).
+Jeśli chcesz teraz spróbować ponownie dostosować wersję obrazu, aby utworzyć nową wersję tego samego obrazu, **Pomiń ten krok** i przejdź do, aby [użyć usługi Azure Image Builder do utworzenia innej wersji obrazu](image-builder-gallery-update-image-version.md).
 
 
-Spowoduje to usunięcie obrazu, który został utworzony, oraz wszystkie inne pliki zasobów. Upewnij się, że po zakończeniu z tym wdrożeniem przed usunięciem zasobów.
+Spowoduje to usunięcie utworzonego obrazu wraz ze wszystkimi innymi plikami zasobów. Przed usunięciem zasobów upewnij się, że to wdrożenie zostało zakończone.
 
-Podczas usuwania zasoby galerii pakietu obrazu, należy usunąć wszystkie wersje obrazów przed usunięciem definicji obrazów użytych do ich utworzenia. Aby usunąć galerii, należy najpierw usunięto wszystkie definicje obraz w galerii.
+W przypadku usuwania zasobów galerii obrazów należy usunąć wszystkie wersje obrazu, aby można było usunąć definicję obrazu używaną do ich tworzenia. Aby usunąć galerię, należy najpierw usunąć wszystkie definicje obrazu z galerii.
 
-Usuń szablon konstruktora obrazu.
+Usuń szablon Konstruktor obrazów.
 
 ```azurecli-interactive
 az resource delete \
@@ -212,7 +211,7 @@ az resource delete \
     -n helloImageTemplateforWinSIG01
 ```
 
-Pobierz wersję obrazu, utworzone przez kreatora obrazów, tym zawsze zaczyna się od `0.`, a następnie usuń wersję obrazu
+Pobierz wersję obrazu utworzoną przez konstruktora obrazów, która zawsze zaczyna `0.`się od, a następnie Usuń wersję obrazu
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \
@@ -239,7 +238,7 @@ az sig image-definition delete \
    --subscription $subscriptionID
 ```
 
-Usuń galerii.
+Usuń galerię.
 
 ```azurecli-interactive
 az sig delete -r $sigName -g $sigResourceGroup
@@ -253,4 +252,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak zaktualizować wersję obrazu, został utworzony, zobacz [kreatora obrazów platformy Azure Użyj, aby utworzyć inną wersję obrazu](image-builder-gallery-update-image-version.md).
+Aby dowiedzieć się, jak zaktualizować utworzoną wersję obrazu, zobacz [Korzystanie z programu Azure Image Builder w celu utworzenia innej wersji obrazu](image-builder-gallery-update-image-version.md).

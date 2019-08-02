@@ -1,18 +1,19 @@
 ---
 title: Używanie programu PowerShell do tworzenia kopii zapasowych systemu Windows Server na platformie Azure
 description: Dowiedz się, jak wdrażać Azure Backup i zarządzać nimi przy użyciu programu PowerShell
-author: pvrk
-manager: shivamg
+ms.reviewer: shivamg
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
-ms.author: shivamg
-ms.openlocfilehash: 5533b52ab984510b0e860f7fdfded8ac9005e5a8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: bb488db036b99d3826a3060a7f4143bec7aea3e5
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465239"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688573"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Wdrażanie kopii zapasowych systemu Windows Server/Windows Client na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 
@@ -755,7 +756,7 @@ $Session = New-PSSession -ComputerName REMOTESERVER01
 Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath $D $A -Wait } -ArgumentList $Agent, $Args
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat Azure Backup dla systemu Windows Server/klienta, zobacz
 

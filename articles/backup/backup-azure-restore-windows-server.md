@@ -1,18 +1,19 @@
 ---
 title: Przywracanie danych na platformie Azure na komputerze z systemem Windows Server lub Windows
 description: Dowiedz się, jak przywrócić dane przechowywane na platformie Azure na komputerze z systemem Windows Server lub Windows.
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
-ms.author: saurse
-ms.openlocfilehash: e22db587c698594170c3b08ea04ff6699b6a61c8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: c8e0ddb788d5e155bfaa511b1012cc8d8e62aab5
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465681"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689105"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Przywracanie plików do systemu Windows przy użyciu modelu wdrażania Azure Resource Manager
 
@@ -58,7 +59,7 @@ Jeśli przypadkowo usunięto plik i chcesz przywrócić go na tym samym komputer
 
 5. Na stronie **Wybierz wolumin i datę** Wybierz wolumin zawierający pliki i foldery, które chcesz przywrócić.
 
-    W kalendarzu wybierz punkt odzyskiwania. Pogrubione  daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Jeśli w jednej dacie jest dostępnych wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
+    W kalendarzu wybierz punkt odzyskiwania. Pogrubione daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Jeśli w jednej dacie jest dostępnych wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
 
     ![Zrzut ekranu przedstawiający Kreatora odzyskiwania danych Wybieranie woluminu i strony daty](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
@@ -127,7 +128,7 @@ Te kroki obejmują następującą terminologię:
 
 8. Na stronie **Wybierz wolumin i datę** Wybierz wolumin zawierający pliki i foldery, które chcesz przywrócić.
 
-    W kalendarzu wybierz punkt odzyskiwania. Pogrubione  daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Jeśli w jednej dacie jest dostępnych wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
+    W kalendarzu wybierz punkt odzyskiwania. Pogrubione daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Jeśli w jednej dacie jest dostępnych wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
 
     ![Zrzut ekranu przedstawiający Kreatora odzyskiwania danych Wybieranie woluminu i strony daty](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 

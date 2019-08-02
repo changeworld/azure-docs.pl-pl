@@ -1,18 +1,18 @@
 ---
 title: Instalacja dyskretna Azure Backup Server v2
 description: Użyj skryptu programu PowerShell, aby zainstalować w trybie dyskretnym Azure Backup Server v2. Ten rodzaj instalacji jest również nazywany instalacją nienadzorowaną.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: raynew
-ms.openlocfilehash: add1f4057b5b52310f53553dcd23e3357fb1ee29
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 4bce7aeebee729ed253d39720ef520880c261a22
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465024"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639646"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Uruchom instalację nienadzorowaną Azure Backup Server
 
@@ -59,7 +59,7 @@ Możesz użyć tych flag do instalacji:</br>
 **/i**: Ścieżka instalacji</br>
 **/x**: Ścieżka odinstalowania</br>
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po zainstalowaniu serwera kopii zapasowej należy dowiedzieć się, jak przygotować serwer lub rozpocząć ochronę obciążeń.
 
 - [Przygotowywanie obciążeń serwera kopii zapasowej](backup-azure-microsoft-azure-backup.md)

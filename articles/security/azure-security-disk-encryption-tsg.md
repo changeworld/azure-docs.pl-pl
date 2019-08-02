@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 35d494702673d59290a0073c55135138f533b8bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2464332727b0ef1e616c04a975df5ac475a7b19
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956696"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610292"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Usługa Azure Disk Encryption przewodnik rozwiązywania problemów
 
@@ -34,9 +34,9 @@ Ten błąd może wystąpić, gdy wypróbowuje szyfrowania dysku systemu operacyj
 - Dyski danych są rekursywnie zainstalowane w katalogu /mnt/ lub każdego innego (na przykład /mnt/data1, /mnt/data2, /data3 + /data3/data4).
 - Inne usługi Azure Disk Encryption [wymagania wstępne](azure-security-disk-encryption-prerequisites.md) dla systemu Linux nie są spełnione.
 
-## <a name="bkmk_Ubuntu14"></a> Ubuntu 14.04 LTS aktualizacji jądra domyślne
+## <a name="bkmk_Ubuntu14"></a>Zaktualizuj domyślne jądro dla Ubuntu 14,04 LTS
 
-Obraz Ubuntu 14.04 LTS jest dostarczany z domyślną wersję jądra 4.4. Ta wersja jądra jest to znany problem, w którym poza identyfikatory pamięci nieprawidłowo kończy działanie polecenia dd w procesie szyfrowania systemu operacyjnego. Ten błąd został naprawiony w ostatnim Azure dostrojone jądra systemu Linux. Aby uniknąć tego błędu, przed włączeniem szyfrowania na obrazie, należy zaktualizować do [Azure dostrojone jądra 4.15](https://packages.ubuntu.com/trusty/linux-azure) lub później za pomocą następujących poleceń:
+Obraz Ubuntu 14,04 LTS jest dostarczany z domyślną wersją jądra 4,4. W tej wersji jądra występuje znany problem polegający na tym, że zbyt mało pamięci, aby nie przerywać polecenia DD w trakcie procesu szyfrowania systemu operacyjnego. Ten błąd został rozwiązany w najnowszej jądrze systemu Linux z systemem Azure. Aby uniknąć tego błędu, przed włączeniem szyfrowania obrazu należy zaktualizować do [systemu Azure dostrojone jądro 4,15](https://packages.ubuntu.com/trusty/linux-azure) lub nowsze przy użyciu następujących poleceń:
 
 ```
 sudo apt-get update
@@ -44,27 +44,27 @@ sudo apt-get install linux-azure
 sudo reboot
 ```
 
-Po ponownym uruchomieniu maszyny Wirtualnej do nowego jądra nowa wersja jądra można potwierdzić, przy użyciu:
+Po ponownym uruchomieniu maszyny wirtualnej w nowym jądrze można potwierdzić nową wersję jądra przy użyciu:
 
 ```
 uname -a
 ```
 
-## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Zaktualizuj agenta maszyny wirtualnej platformy Azure i wersje rozszerzenia
+## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Aktualizuj agenta maszyny wirtualnej platformy Azure i wersje rozszerzeń
 
-Operacji na platformie Azure Disk Encryption może zakończyć się niepowodzeniem w obrazach maszyn wirtualnych przy użyciu nieobsługiwane wersje agenta maszyny wirtualnej platformy Azure. Obrazy systemu Linux przy użyciu agenta w wersji wcześniejszej niż 2.2.38 powinien zostać zaktualizowany przed włączeniem szyfrowania. Aby uzyskać więcej informacji, zobacz [jak zaktualizować agenta systemu Linux dla platformy Azure na maszynie Wirtualnej](../virtual-machines/extensions/update-linux-agent.md) i [minimalna obsługiwana wersja dla agentów maszyny wirtualnej na platformie Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+Operacje Azure Disk Encryption mogą kończyć się niepowodzeniem w obrazach maszyn wirtualnych przy użyciu nieobsługiwanych wersji agenta maszyny wirtualnej platformy Azure. Obrazy systemu Linux z wersjami agenta wcześniejszą niż 2.2.38 należy zaktualizować przed włączeniem szyfrowania. Aby uzyskać więcej informacji, zobacz [jak zaktualizować agenta systemu Linux na maszynie wirtualnej](../virtual-machines/extensions/update-linux-agent.md) i [minimalną wersję dla agentów maszyny wirtualnej na platformie Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
-Poprawną wersję rozszerzenia Microsoft.Azure.Security.AzureDiskEncryption lub Microsoft.Azure.Security.AzureDiskEncryptionForLinux agenta gościa jest również wymagany. Wersje rozszerzenia są obsługiwane i są automatycznie aktualizowane przez platformę, gdy są spełnione wymagania wstępne dotyczące agenta w maszynie wirtualnej platformy Azure i służy obsługiwaną wersję agenta maszyny wirtualnej.
+Wymagana jest również prawidłowa wersja rozszerzenia agenta gościa Microsoft. Azure. Security. AzureDiskEncryption lub Microsoft. Azure. Security. AzureDiskEncryptionForLinux. Wersje rozszerzeń są obsługiwane i aktualizowane automatycznie przez platformę, gdy spełnione są wymagania wstępne agenta maszyny wirtualnej platformy Azure i jest używana obsługiwana wersja agenta maszyny wirtualnej.
 
-Rozszerzenie Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux jest przestarzała i nie jest już obsługiwana.  
+Rozszerzenie Microsoft. OSTCExtensions. AzureDiskEncryptionForLinux jest przestarzałe i nie jest już obsługiwane.  
 
-## <a name="unable-to-encrypt-linux-disks"></a>Nie można zaszyfrować dyski w systemie Linux
+## <a name="unable-to-encrypt-linux-disks"></a>Nie można zaszyfrować dysków systemu Linux
 
 W niektórych przypadkach Linux, szyfrowanie dysków prawdopodobnie nie reaguje na "Do szyfrowania dysku systemu operacyjnego" i ustawieniami SSH jest wyłączona. Szyfrowanie może potrwać od 3 – 16 godzin dla obrazu podstawowego galerii. Jeśli zostaną dodane dyski danych o rozmiarze terabajt multi, proces może potrwać dni.
 
 Sekwencja szyfrowania dysku systemu operacyjnego Linux tymczasowo umożliwia odinstalowanie dysku systemu operacyjnego. Następnie wykonuje blok po bloku szyfrowanie całego dysku systemu operacyjnego, przed jej ponownie instaluje on w stanie zaszyfrowane. W przeciwieństwie do usługi Azure Disk Encryption na Windows szyfrowania dysku systemu Linux nie pozwala na współbieżne używanie obiektu maszyny Wirtualnej, gdy szyfrowanie jest w toku. Charakterystyki wydajności maszyny wirtualnej można wprowadzać znaczące różnice w czas wymagany do ukończenia szyfrowania. Te właściwości obejmują rozmiar dysku i czy jest standardowe konto magazynu lub magazynu w warstwie premium (SSD).
 
-Aby sprawdzić stan szyfrowania, sondowanie **komunikat dotyczący postępu** pola zwróciło [Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) polecenia. Podczas szyfrowania dysku systemu operacyjnego maszyny Wirtualnej przechodzi do stanu obsługi i wyłączenie protokołu SSH w celu uniknięcia zakłóceń w celu ciągły proces. **EncryptionInProgress** komunikatu raportów dla większości przypadków, gdy szyfrowanie jest w toku. Kilka godzin później, **VMRestartPending** monit o ponowne uruchomienie maszyny Wirtualnej. Na przykład:
+Aby sprawdzić stan szyfrowania, należy wykonać sondowanie pola **komunikat dotyczący postępu** zwróconego za pomocą polecenia [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) . Podczas szyfrowania dysku systemu operacyjnego maszyny Wirtualnej przechodzi do stanu obsługi i wyłączenie protokołu SSH w celu uniknięcia zakłóceń w celu ciągły proces. **EncryptionInProgress** komunikatu raportów dla większości przypadków, gdy szyfrowanie jest w toku. Kilka godzin później, **VMRestartPending** monit o ponowne uruchomienie maszyny Wirtualnej. Na przykład:
 
 
 ```azurepowershell
@@ -97,10 +97,10 @@ Wszelkie ustawienia sieciowej grupy zabezpieczeń, które są stosowane nadal mu
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Usługa Azure Key Vault za zaporą
 
-Jeśli szyfrowanie jest włączone za pomocą [poświadczeń usługi Azure AD](azure-security-disk-encryption-prerequisites-aad.md), docelowa maszyna wirtualna musi zezwalać na łączność z punktami końcowymi usługi Azure Active Directory i punkty końcowe usługi Key Vault. Bieżące punkty końcowe uwierzytelniania usługi Azure Active Directory znajdują się w sekcji 56 i 59 z [URL usługi Office 365 i zakresy adresów IP](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentacji. Usługa Key Vault instrukcje znajdują się w dokumentacji na temat sposobu [dostępu do usługi Azure Key Vault za zaporą](../key-vault/key-vault-access-behind-firewall.md).
+Gdy szyfrowanie jest włączane przy użyciu [poświadczeń usługi Azure AD](azure-security-disk-encryption-prerequisites-aad.md), docelowa maszyna wirtualna musi zezwalać na połączenie z punktami końcowymi Azure Active Directory i Key Vault punktów końcowych. Bieżące punkty końcowe uwierzytelniania Azure Active Directory są obsługiwane w sekcjach 56 i 59 w dokumentacji [pakietu Office 365 adresy URL i zakresy adresów IP](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) . Instrukcje Key Vault są dostępne w dokumentacji dotyczącej sposobu [uzyskiwania dostępu Azure Key Vault za zaporą](../key-vault/key-vault-access-behind-firewall.md).
 
-### <a name="azure-instance-metadata-service"></a>Wystąpienie usługi Azure Metadata Service 
-Maszyna wirtualna musi być w stanie uzyskać dostęp do [Azure Instance Metadata service](../virtual-machines/windows/instance-metadata-service.md) punktu końcowego, który używa dobrze znanego adresu IP bez obsługi routingu (`169.254.169.254`), są dostępne tylko z poziomu maszyny Wirtualnej.  Konfiguracja serwera proxy, zmienić lokalne ruchu HTTP na ten adres (np. Dodawanie nagłówka X-Forwarded-uzyskać) nie są obsługiwane.
+### <a name="azure-instance-metadata-service"></a>Instance Metadata Service platformy Azure 
+Maszyna wirtualna musi mieć dostęp do punktu końcowego [usługi metadanych wystąpienia platformy Azure](../virtual-machines/windows/instance-metadata-service.md) , w którym jest używany dobrze znany adres IP bez obsługi routingu`169.254.169.254`(), do którego można uzyskać dostęp tylko z poziomu maszyny wirtualnej.  Konfiguracje serwera proxy, które modyfikują lokalny ruch HTTP na ten adres (na przykład dodanie nagłówka X-forwardd-for) nie są obsługiwane.
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Zarządzanie pakietami systemu Linux za zaporą
 
@@ -146,17 +146,17 @@ DISKPART> list vol
 If the expected encryption state does not match what is being reported in the portal, see the following support article:
 [Encryption status is displayed incorrectly on the Azure Management Portal](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por) --> 
 
-## <a name="troubleshooting-encryption-status"></a>Rozwiązywanie problemów z stanu szyfrowania 
+## <a name="troubleshooting-encryption-status"></a>Rozwiązywanie problemów ze stanem szyfrowania 
 
-Portalu może wyświetlać dysku formie zaszyfrowanej, nawet po jego niezaszyfrowane na maszynie wirtualnej.  Taka sytuacja może wystąpić, gdy polecenia niskiego poziomu są używane bezpośrednio odszyfrować dysk z poziomu maszyny Wirtualnej, zamiast korzystać z wyższym poziomie polecenia zarządzania usługi Azure Disk Encryption.  Wyższy poziom polecenia nie tylko odszyfrowanie dysku z poziomu maszyny Wirtualnej, ale poza maszyną Wirtualną są również zaktualizować ustawienia szyfrowania na poziomie platformy ważne i rozszerzenie skojarzone z maszyną Wirtualną.  Jeśli nie są one przechowywane w wyrównanie, platforma nie będzie można zgłosić stan szyfrowania lub prawidłowo aprowizowania maszyny Wirtualnej.   
+W portalu może być wyświetlany dysk zaszyfrowany nawet po zaszyfrowaniu go w ramach maszyny wirtualnej.  Taka sytuacja może wystąpić, gdy polecenia niskiego poziomu są używane do bezpośredniego wyszyfrowania dysku z poziomu maszyny wirtualnej, a nie przy użyciu Azure Disk Encryption polecenia zarządzania wyższego poziomu.  Polecenia wyższego poziomu nie tylko deszyfrują dysk z maszyny wirtualnej, ale poza maszyną wirtualną również aktualizują ważne ustawienia szyfrowania na poziomie platformy i ustawienia rozszerzenia skojarzone z maszyną wirtualną.  Jeśli nie są one zachowane, platforma nie będzie mogła zgłosić stanu szyfrowania ani zainicjować obsługi maszyny wirtualnej.   
 
-Aby wyłączyć usługi Azure Disk Encryption przy użyciu programu PowerShell, użyj [AzVMDiskEncryption Wyłącz](/powershell/module/az.compute/disable-azvmdiskencryption) następuje [AzVMDiskEncryptionExtension Usuń](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Uruchamianie AzVMDiskEncryptionExtension Usuń przed wyłączeniem szyfrowania zakończy się niepowodzeniem.
+Aby wyłączyć Azure Disk Encryption za pomocą programu PowerShell, użyj polecenia [disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) , a następnie polecenie [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Uruchomienie Remove-AzVMDiskEncryptionExtension przed wyłączeniem szyfrowania zakończy się niepowodzeniem.
 
-Aby wyłączyć usługi Azure Disk Encryption przy użyciu interfejsu wiersza polecenia, użyj [az vm encryption, wyłącz](/cli/azure/vm/encryption). 
+Aby wyłączyć Azure Disk Encryption przy użyciu interfejsu wiersza polecenia, użyj polecenie [AZ VM Encryption Disable](/cli/azure/vm/encryption). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym dokumencie przedstawiono więcej informacji na temat niektórych typowych problemów dotyczących usługi Azure Disk Encryption i rozwiązywania tych problemów. Aby uzyskać więcej informacji na temat tej usługi i jego możliwości zobacz następujące artykuły:
 
 - [Zastosuj szyfrowanie dysków w usłudze Azure Security Center](../security-center/security-center-apply-disk-encryption.md)
-- [Funkcja szyfrowania nieaktywnych danych platformy Azure](azure-security-encryption-atrest.md)
+- [Funkcja szyfrowania nieaktywnych danych platformy Azure](fundamentals/encryption-atrest.md)

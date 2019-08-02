@@ -1,6 +1,6 @@
 ---
-title: Metody uwierzytelniania dla usługi Azure Security Center w wersji zapoznawczej IoT | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o różnych dostępnych metod uwierzytelniania w przypadku używania usługi Azure Security Center dla usługi IoT.
+title: Metody uwierzytelniania dla Azure Security Center IoT | Microsoft Docs
+description: Poznaj różne metody uwierzytelniania dostępne w przypadku korzystania z Azure Security Center dla usługi IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,79 +13,74 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d5701ae37d64e25fba981cd85deed2c4e4d87a15
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 16f7f91e02d118d9f9a295ebb79a6cd0187dd9fd
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618335"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596471"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody uwierzytelniania agenta zabezpieczeń 
 
-> [!IMPORTANT]
-> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+W tym artykule opisano różne metody uwierzytelniania, których można użyć z agentem AzureIoTSecurity do uwierzytelniania za pomocą IoT Hub.
 
-W tym artykule opisano różnych metod uwierzytelniania służących z agentem AzureIoTSecurity do uwierzytelniania za pomocą usługi IoT Hub.
-
-Dla każdego urządzenia dołączone do usługi Azure Security Center (ASC) dotyczące IoT w usłudze IoT Hub modułu zabezpieczeń jest wymagany. W celu uwierzytelnienia urządzenia ASC IoT można użyć jednej z dwóch metod. Wybierz metodę, która jest najlepsza dla istniejącego rozwiązania IoT. 
+Dla każdego urządzenia dołączonego do Azure Security Center IoT w IoT Hub jest wymagany moduł zabezpieczeń. Aby można było uwierzytelnić urządzenie, Azure Security Center dla IoT mogą korzystać z jednej z dwóch metod. Wybierz metodę, która najlepiej sprawdza się w przypadku istniejącego rozwiązania IoT. 
 
 > [!div class="checklist"]
-> * Opcja modułu zabezpieczeń
+> * SecurityModule — opcja
 > * Opcja urządzenia
 
 ## <a name="authentication-methods"></a>Metody uwierzytelniania
 
-Te dwie metody dla agenta AzureIoTSecurity w celu przeprowadzenia uwierzytelniania:
+Dwie metody agenta AzureIoTSecurity do wykonania uwierzytelniania:
 
- - **Moduł** tryb uwierzytelniania<br>
-   Moduł jest uwierzytelniany niezależnie od bliźniaczej reprezentacji urządzenia.
-   Użyj tego typu uwierzytelniania, jeśli chcesz, aby agent zabezpieczeń przy użyciu metody uwierzytelniania dedykowane, za pośrednictwem modułu zabezpieczeń (tylko w przypadku klucza symetrycznego).
+ - Tryb uwierzytelniania **SecurityModule**<br>
+   Agent jest uwierzytelniany przy użyciu tożsamości modułu zabezpieczeń niezależnie od tożsamości urządzenia.
+   Tego typu uwierzytelniania należy użyć, jeśli chcesz, aby Agent zabezpieczeń używał dedykowanej metody uwierzytelniania za pomocą modułu zabezpieczeń (tylko klucz symetryczny).
         
- - **Urządzenie** tryb uwierzytelniania<br>
-    W przypadku tej metody agent zabezpieczeń najpierw uwierzytelnia się za pomocą tożsamości urządzenia. Po uwierzytelnieniu początkowej wykonuje ASC agenta IoT **REST** wywołania do Centrum IoT przy użyciu interfejsu API REST przy użyciu danych uwierzytelniania urządzenia. ASC agenta IoT następnie żąda metody uwierzytelniania modułu zabezpieczeń oraz danych z usługi IoT Hub. W ostatnim kroku ASC IoT agenta wykonuje uwierzytelnianie w usłudze ASC moduł IoT.
+ - Tryb uwierzytelniania **urządzenia**<br>
+    W tej metodzie Agent zabezpieczeń najpierw uwierzytelnia się przy użyciu tożsamości urządzenia. Po początkowym uwierzytelnianiu Azure Security Center dla agenta IoT wykonuje wywołanie **rest** do IoT Hub przy użyciu interfejsu API REST z danymi uwierzytelniania urządzenia. Azure Security Center agenta IoT następnie żąda metody uwierzytelniania modułu zabezpieczeń i danych z IoT Hub. W ostatnim kroku Azure Security Center dla agenta IoT wykonuje uwierzytelnianie względem Azure Security Center modułu IoT.
     
-    Użyj tego typu uwierzytelniania, jeśli chcesz, aby agent zabezpieczeń, aby ponownie wykorzystać istniejącą metodę uwierzytelniania urządzeń (z podpisem własnym certyfikatu lub klucza symetrycznego). 
+    Użyj tego typu uwierzytelniania, jeśli chcesz, aby Agent zabezpieczeń ponownie używał istniejącej metody uwierzytelniania urządzenia (certyfikat z podpisem własnym lub klucz symetryczny). 
 
-Zobacz [parametry instalacji agenta zabezpieczeń](#security-agent-installation-parameters) dowiesz się, jak skonfigurować.
+Zobacz [parametry instalacji agenta zabezpieczeń](#security-agent-installation-parameters) , aby dowiedzieć się, jak skonfigurować.
                                 
-## <a name="authentication-methods-known-limitations"></a>Metody uwierzytelniania, znane ograniczenia
+## <a name="authentication-methods-known-limitations"></a>Znane ograniczenia metod uwierzytelniania
 
-- **Moduł** tryb uwierzytelniania obsługuje tylko uwierzytelnianie za pomocą klucza symetrycznego.
-- Certyfikatu podpisanego przez urząd certyfikacji nie jest obsługiwana przez **urządzenia** tryb uwierzytelniania.  
+- Tryb uwierzytelniania **SecurityModule** obsługuje tylko uwierzytelnianie klucza symetrycznego.
+- Certyfikat podpisany przez urząd certyfikacji nie jest obsługiwany przez tryb uwierzytelniania **urządzenia** .  
 
 ## <a name="security-agent-installation-parameters"></a>Parametry instalacji agenta zabezpieczeń
 
-Gdy [wdrażanie agenta zabezpieczeń](how-to-deploy-agent.md), szczegółów uwierzytelniania musi zostać podana jako argumenty.
-W poniższej tabeli opisano te argumenty.
+W przypadku [wdrażania agenta zabezpieczeń](how-to-deploy-agent.md)należy podać szczegóły uwierzytelniania jako argumenty.
+Te argumenty są udokumentowane w poniższej tabeli.
 
 
-|Parametr|Opis|Opcje|
-|---------|---------------|---------------|
-|**Tożsamość**|Tryb uwierzytelniania| **Moduł** lub **urządzenia**|
-|**type**|Typ uwierzytelniania|**SymmetricKey** lub **SelfSignedCertificate**|
-|**filePath**|Pełne ścieżki bezwzględnej do pliku zawierającego certyfikat i klucz symetryczny| |
-|**gatewayHostname**|Nazwa FQDN usługi IoT Hub|Przykład: ContosoIotHub.azure-devices.net|
-|**deviceId**|Identyfikator urządzenia|Przykład: MyDevice1|
-|**certificateLocationKind**|Lokalizacja magazynu certyfikatów|**Plik_lokalny** lub **Store**|
+|Nazwa parametru systemu Linux | Nazwa parametru systemu Windows | Parametr skrócony |Opis|Opcje|
+|---------------------|---------------|---------|---------------|---------------|
+|Uwierzytelnianie — tożsamość|AuthenticationIdentity|aui|Tożsamość uwierzytelniania| **SecurityModule** lub **urządzenie**|
+|Uwierzytelnianie — Metoda|AuthenticationMethod|aum|Metoda uwierzytelniania|**SymmetricKey** lub **SelfSignedCertificate**|
+|ścieżka pliku|FilePath|f|Bezwzględna pełna ścieżka pliku zawierającego certyfikat lub klucz symetryczny| |
+|Nazwa hosta|Nazwa hosta|HN|Nazwa FQDN IoT Hub|Przykład: ContosoIotHub.azure-devices.net|
+|Identyfikator urządzenia|DeviceId|fosforan|Identyfikator urządzenia|Przykład: MyDevice1|
+|Typ lokalizacji certyfikatu|CertificateLocationKind|CL|Lokalizacja przechowywania certyfikatów|**Plik_lokalny** lub **Store**|
+|
 
 
-Korzystając z skrypt instalacji agenta zabezpieczeń, następującą konfigurację odbywa się automatycznie.
-
-Aby ręcznie edytować uwierzytelnienia agenta zabezpieczeń, przeprowadź edycję pliku konfiguracji. 
+W przypadku korzystania ze skryptu Zainstaluj agenta zabezpieczeń następująca konfiguracja jest wykonywana automatycznie. Aby ręcznie edytować uwierzytelnianie agenta zabezpieczeń, edytuj plik konfiguracji. 
 
 ## <a name="change-authentication-method-after-deployment"></a>Zmień metodę uwierzytelniania po wdrożeniu
 
-Podczas wdrażania agenta zabezpieczeń, za pomocą skryptu instalacji, automatycznie tworzony jest plik konfiguracji.
+Podczas wdrażania agenta zabezpieczeń przy użyciu skryptu instalacji automatycznie tworzony jest plik konfiguracji.
 
-Aby zmienić metodę uwierzytelniania, po wdrożeniu, ręczne edytowanie pliku konfiguracji jest wymagana.
+Aby zmienić metody uwierzytelniania po wdrożeniu, wymagane jest ręczne edytowanie pliku konfiguracji.
 
 
-### <a name="c-based-security-agent"></a>C#-agent zabezpieczenia oparty na
+### <a name="c-based-security-agent"></a>C#Agent zabezpieczeń oparty na usłudze
 
-Edytuj _Authentication.config_ z następującymi parametrami:
+Edytuj _plik Authentication. config_ przy użyciu następujących parametrów:
 
 ```xml
 <Authentication>
@@ -98,9 +93,9 @@ Edytuj _Authentication.config_ z następującymi parametrami:
 </Authentication>
 ```
 
-### <a name="c-based-security-agent"></a>Agent zabezpieczenia oparty na C
+### <a name="c-based-security-agent"></a>Agent zabezpieczeń oparty na języku C
 
-Edytuj _LocalConfiguration.json_ z następującymi parametrami:
+Edytuj plik _LocalConfiguration. JSON_ przy użyciu następujących parametrów:
 
 ```json
 "Authentication" : {
@@ -113,6 +108,6 @@ Edytuj _LocalConfiguration.json_ z następującymi parametrami:
 ```
 
 ## <a name="see-also"></a>Zobacz także
-- [Omówienie czynników zabezpieczeń](security-agent-architecture.md)
+- [Omówienie agentów zabezpieczeń](security-agent-architecture.md)
 - [Wdróż agenta zabezpieczeń](how-to-deploy-agent.md)
-- [Dostęp do danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
+- [Uzyskiwanie dostępu do danych pierwotnych zabezpieczeń](how-to-security-data-access.md)

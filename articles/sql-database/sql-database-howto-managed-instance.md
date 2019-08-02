@@ -1,6 +1,6 @@
 ---
-title: Wystąpienie zarządzane w sposób konfigurowania usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować i zarządzać nimi wystąpienia zarządzanego usługi Azure SQL Database.
+title: Jak skonfigurować Azure SQL Database wystąpienie zarządzane | Microsoft Docs
+description: Informacje o konfigurowaniu Azure SQL Database wystąpienia zarządzanego i zarządzania nim.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,41 +10,40 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
-manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 886f06e8640891ac09d1e4624335a7bfebcd3def
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8c05ab05630e92e64a4885d5e6cdc6f5471dff2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60340795"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568056"
 ---
-# <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Jak używać wystąpienia zarządzanego usługi Azure SQL Database
+# <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Jak używać wystąpienia zarządzanego w Azure SQL Database
 
-W tym artykule można znaleźć różne przewodniki, skrypty i wyjaśnienia, które mogą ułatwić zarządzanie i konfigurowanie usługi wystąpienia zarządzanego.
+W tym artykule znajdują się różne przewodniki, skrypty i wyjaśnienia, które mogą pomóc w zarządzaniu i konfigurowaniu wystąpienia zarządzanego.
 
 ## <a name="migration"></a>Migracja
 
-- [Migrowanie do wystąpienia zarządzanego](sql-database-managed-instance-migrate.md) — Dowiedz się więcej na temat procesu zalecane migracji i narzędzia do migracji do wystąpienia zarządzanego.
+- [Migrowanie do wystąpienia zarządzanego](sql-database-managed-instance-migrate.md) — informacje na temat zalecanego procesu migracji i narzędzi do migracji do wystąpienia zarządzanego.
 
-- [Migrowanie funkcji TDE certyfikatu do wystąpienia zarządzanego](sql-database-managed-instance-migrate-tde-certificate.md) — Jeśli bazy danych programu SQL Server jest chroniony za pomocą technologii transparent data encryption (TDE), należy przeprowadzić migrację certyfikatu, który wystąpienia zarządzanego, można użyć do odszyfrowania kopii zapasowej, który chcesz przywrócić na platformie Azure.
+- [Migruj certyfikat TDE do wystąpienia zarządzanego](sql-database-managed-instance-migrate-tde-certificate.md) — Jeśli baza danych SQL Server jest chroniona za pomocą funkcji transparent Data Encryption (TDE), należy przeprowadzić migrację certyfikatu, którego wystąpienie zarządzane może użyć do odszyfrowania kopii zapasowej, która ma zostać przywrócona na platformie Azure.
 
 ## <a name="network-configuration"></a>Konfiguracja sieci
 
-- [Należy określić rozmiar podsieci wystąpienia zarządzanego](sql-database-managed-instance-determine-size-vnet-subnet.md) — wystąpienie zarządzane jest umieszczany w przeznacza podsieci, której nie można zmienić rozmiaru po dodaniu zasobów w obrębie. W związku z tym należy obliczyć, zakres adresów IP adresów jest wymagana dla tej podsieci, w zależności od liczby i typów wystąpień, które mają zostać wdrożone w podsieci.
-- [Tworzenie nowej sieci wirtualnej i podsieci dla wystąpienia zarządzanego](sql-database-managed-instance-create-vnet-subnet.md) — sieci wirtualnej platformy Azure i podsieć, w której chcesz wdrożyć wystąpień zarządzanych muszą być skonfigurowane zgodnie z opisem w [wymagania opisane w tym miejscu sieciowego](sql-database-managed-instance-connectivity-architecture.md#network-requirements). W tym przewodniku można znaleźć Najprostszym sposobem tworzenia nowej sieci wirtualnej i podsieci, poprawnie skonfigurowany na potrzeby wystąpienia zarządzanego.
-- [Konfigurowanie istniejącej sieci wirtualnej i podsieci dla wystąpienia zarządzanego](sql-database-managed-instance-configure-vnet-subnet.md) — Jeśli chcesz skonfigurować wdrażanie wystąpień zarządzanych w istniejącej sieci wirtualnej i podsieci, w tym miejscu można znaleźć skryptu, który sprawdza, czy [wymagania dotyczące sieciowej](sql-database-managed-instance-connectivity-architecture.md#network-requirements) i Utwórz konfiguruje podsieci zgodnie z wymaganiami.
-- [Konfigurowanie niestandardowych pozycji DNS](sql-database-managed-instance-custom-dns.md) — należy skonfigurować niestandardowe DNS, jeśli chcesz uzyskać dostęp do zasobów zewnętrznych dla domen niestandardowych z wystąpienia zarządzanego za pośrednictwem połączonego serwera profilów poczty bazy danych.
-- [Synchronizacja konfiguracji sieci](sql-database-managed-instance-sync-network-configuration.md) — może się zdarzyć, że chociaż możesz [zintegrować aplikację z usługą Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md), możesz&#39;t nawiązać połączenie z wystąpieniem zarządzanym. Jest jedyną operacją, której możesz spróbować odświeżyć konfiguracji sieci dla planu usługi.
-- [Znajdź adres IP punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md) — wystąpienie zarządzane używa publicznego punktu końcowego dla celów zarządzania. Można określić adres IP punktu końcowego zarządzania za pomocą skryptu, opisane w tym miejscu.
-- [Sprawdzanie ochrony wbudowanej zapory](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) — wystąpienie zarządzane jest chroniony za pomocą wbudowanej zapory zezwalającą na ruch tylko na wymagane porty. Można sprawdzić i sprawdź reguły zapory wbudowanych, za pomocą skryptu, opisane w tym przewodniku.
-- [Łączenie aplikacji](sql-database-managed-instance-connect-app.md) — wystąpienie zarządzane jest umieszczany w własnej prywatnej sieci wirtualnej platformy Azure za pomocą prywatnego adresu IP. Więcej informacji na temat różnych wzorców do łączenia aplikacji z Twojego wystąpienia zarządzanego.
+- [Określanie rozmiaru podsieci wystąpienia zarządzanego](sql-database-managed-instance-determine-size-vnet-subnet.md) — wystąpienie zarządzane jest umieszczane w podsieci dedykowanych, których rozmiar nie może zostać zmieniony po dodaniu zasobów wewnątrz. W związku z tym należy obliczyć zakres adresów IP, który będzie wymagany dla podsieci, w zależności od liczby i typów wystąpień, które mają zostać wdrożone w podsieci.
+- [Tworzenie nowej sieci wirtualnej i podsieci dla wystąpienia zarządzanego](sql-database-managed-instance-create-vnet-subnet.md) — sieci wirtualnej platformy Azure i podsieci, w której chcesz wdrożyć zarządzane wystąpienia, muszą być skonfigurowane zgodnie z [wymaganiami sieci opisanymi tutaj](sql-database-managed-instance-connectivity-architecture.md#network-requirements). W tym przewodniku można znaleźć najprostszy sposób tworzenia nowej sieci wirtualnej i podsieci prawidłowo skonfigurowanej dla wystąpień zarządzanych.
+- [Konfigurowanie istniejącej sieci wirtualnej i podsieci dla wystąpienia zarządzanego](sql-database-managed-instance-configure-vnet-subnet.md) — w celu skonfigurowania istniejącej sieci wirtualnej i podsieci w celu wdrożenia zarządzanych wystąpień wewnątrz programu można znaleźć skrypt sprawdzający [wymagania sieci](sql-database-managed-instance-connectivity-architecture.md#network-requirements) i skonfigurować podsieć zgodnie z wymaganiami.
+- [Konfigurowanie niestandardowego systemu DNS](sql-database-managed-instance-custom-dns.md) — Jeśli chcesz uzyskać dostęp do zasobów zewnętrznych w domenach niestandardowych z wystąpienia zarządzanego za pośrednictwem połączonego serwera profilów poczty bazy danych, musisz skonfigurować niestandardowy serwer DNS.
+- [Synchronizacja konfiguracji sieci](sql-database-managed-instance-sync-network-configuration.md) — może się zdarzyć, że mimo że [aplikacja została zintegrowana z usługą Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md),&#39;można nawiązać połączenie z wystąpieniem zarządzanym. Jednym z nich może być próba odświeżenia konfiguracji sieci dla planu usługi.
+- [Znajdź adres IP punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md) — wystąpienie zarządzane używa publicznego punktu końcowego do celów zarządzania. Adres IP punktu końcowego zarządzania można określić przy użyciu skryptu opisanego tutaj.
+- [Weryfikowanie wbudowanej ochrony zapory](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) — wystąpienie zarządzane jest chronione za pomocą wbudowanej zapory, która zezwala na ruch tylko na niezbędnych portach. Możesz sprawdzić i sprawdzić wbudowane reguły zapory za pomocą skryptu opisanego w tym przewodniku.
+- [Łączenie aplikacji](sql-database-managed-instance-connect-app.md) — wystąpienie zarządzane jest umieszczane w prywatnej sieci wirtualnej platformy Azure z prywatnym adresem IP. Poznaj różne wzorce łączenia aplikacji z wystąpieniem zarządzanym.
 
 ## <a name="feature-configuration"></a>Konfiguracja funkcji
 
-- [Replikacja transakcyjna](replication-with-sql-database-managed-instance.md) umożliwia replikowanie danych między wystąpieniami zarządzanych lub z lokalnego programu SQL Server do wystąpienia zarządzanego i na odwrót. Więcej informacji można znaleźć sposób używania i konfigurowania replikacji transakcji, w tym przewodniku.
-- [Konfigurowanie wykrywania zagrożeń](sql-database-managed-instance-threat-detection.md) — [wykrywanie zagrożeń](sql-database-threat-detection-overview.md) to wbudowana funkcja usługi Azure SQL Database, który wykryje różne wypadek potencjalnych ataków, takich jak wstrzykiwanie kodu SQL lub dostępu z podejrzanych lokalizacji. W tym przewodniku możesz dowiedzieć się, jak włączyć i skonfigurować [wykrywanie zagrożeń](sql-database-threat-detection-overview.md) dla wystąpienia zarządzanego.
+- [Replikacja transakcyjna](replication-with-sql-database-managed-instance.md) umożliwia replikowanie danych między wystąpieniami zarządzanymi lub z SQL Server lokalnych do wystąpienia zarządzanego i na odwrót. Więcej informacji o sposobie używania i konfigurowania replikacji transakcji w tym przewodniku.
+- [Konfigurowanie wykrywania zagrożeń](sql-database-managed-instance-threat-detection.md) — [wykrywanie zagrożeń](sql-database-threat-detection-overview.md) to wbudowana funkcja Azure SQL Database, która wykrywa różne potencjalne ataki, takie jak iniekcja SQL lub dostęp z podejrzanych lokalizacji. W tym przewodniku można dowiedzieć się, jak włączyć i skonfigurować [wykrywanie zagrożeń](sql-database-threat-detection-overview.md) dla wystąpienia zarządzanego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [instrukcje prowadzi dla pojedynczych baz danych](sql-database-howto-single-database.md)
+- Dowiedz się więcej [na temat przewodników dla pojedynczych baz danych](sql-database-howto-single-database.md)

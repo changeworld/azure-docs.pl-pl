@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.openlocfilehash: 2135a3a5a8f14cf6c2e7fd2984d9b221e2445c1d
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309510"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Używanie Azure Container Registry jako repozytorium Helm dla wykresów aplikacji
@@ -31,7 +31,7 @@ W tym artykule pokazano, jak używać repozytorium wykresu Helm przechowywanego 
 Aby wykonać kroki opisane w tym artykule, należy spełnić następujące wymagania wstępne:
 
 - **Azure Container Registry** — Utwórz rejestr kontenerów w ramach subskrypcji platformy Azure. Na przykład użyj [Azure Portal](container-registry-get-started-portal.md) lub [interfejsu wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md).
-- **Helm Client Version 2.11.0 (nie wersję RC) lub nowszą** — Uruchom `helm version` , aby znaleźć bieżącą wersję. Wymagany jest również serwer Helm (er) zainicjowany w klastrze Kubernetes. W razie konieczności można. For more information on how to install and upgrade Helm, see [Installing Helm][helm-install] [utworzyć klaster usługi Azure Kubernetes][aks-quickstart].
+- **Helm Client Version 2.11.0 (nie wersję RC) lub nowszą** — Uruchom `helm version` , aby znaleźć bieżącą wersję. Wymagany jest również serwer Helm (er) zainicjowany w klastrze Kubernetes. W razie konieczności można [utworzyć klaster usługi Azure Kubernetes][aks-quickstart]. Aby uzyskać więcej informacji na temat instalowania i uaktualniania Helm, zobacz [Instalowanie Helm][helm-install].
 - **Interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej** — Uruchom `az --version` , aby znaleźć wersję. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="add-a-repository-to-helm-client"></a>Dodawanie repozytorium do klienta Helm
@@ -60,7 +60,7 @@ az acr helm repo add
 
 ## <a name="add-a-chart-to-the-repository"></a>Dodawanie wykresu do repozytorium
 
-Na potrzeby tego artykułu Przyjrzyjmy się istniejącemu wykresowi Helm z poziomu  publicznego repozytorium Helme. *Stałe* repozytorium jest nadzorowanym, publicznym repozytorium zawierającym popularne wykresy aplikacji. Obsłużenia pakietów mogą przesyłać swoje wykresy do *stabilnego* repozytorium, tak samo, jak w przypadku usługi Docker Hub udostępniono Publiczny rejestr dla popularnych obrazów kontenerów. Wykres pobrany z publicznego trwałego  repozytorium można następnie wypchnąć do prywatnego repozytorium Azure Container Registry. W większości scenariuszy utworzysz i przekażesz własne wykresy dla aplikacji, które tworzysz. Aby uzyskać więcej informacji na temat tworzenia własnych wykresów Helm, zobacz [Tworzenie wykresów Helm][develop-helm-charts].
+Na potrzeby tego artykułu Przyjrzyjmy się istniejącemu wykresowi Helm z poziomu *publicznego repozytorium* Helme. *Stałe* repozytorium jest nadzorowanym, publicznym repozytorium zawierającym popularne wykresy aplikacji. Obsłużenia pakietów mogą przesyłać swoje wykresy do *stabilnego* repozytorium, tak samo, jak w przypadku usługi Docker Hub udostępniono Publiczny rejestr dla popularnych obrazów kontenerów. Wykres pobrany z publicznego trwałego repozytorium można następnie wypchnąć do prywatnego repozytorium Azure Container Registry. W większości scenariuszy utworzysz i przekażesz własne wykresy dla aplikacji, które tworzysz. Aby uzyskać więcej informacji na temat tworzenia własnych wykresów Helm, zobacz [Tworzenie wykresów Helm][develop-helm-charts].
 
 Najpierw Utwórz katalog w lokalizacji *~/ACR-Helm*, a następnie Pobierz istniejący wykres *stabilny/WordPress* :
 
@@ -69,7 +69,7 @@ mkdir ~/acr-helm && cd ~/acr-helm
 helm fetch stable/wordpress
 ```
 
-Wyświetl listę pobranego wykresu i zanotuj wersję WordPress zawartą w nazwie pliku. Polecenie nie określiło określonej wersji, więc została pobrana najnowsza wersja.  `helm fetch stable/wordpress` Wszystkie wykresy Helm zawierają numer wersji w pliku, który jest zgodny ze standardem [SemVer 2][semver2] . W poniższym przykładzie danych wyjściowych wykres WordPress jest w wersji *2.1.10*:
+Wyświetl listę pobranego wykresu i zanotuj wersję WordPress zawartą w nazwie pliku. Polecenie nie określiło określonej wersji, więc została pobrana najnowsza wersja. `helm fetch stable/wordpress` Wszystkie wykresy Helm zawierają numer wersji w pliku, który jest zgodny ze standardem [SemVer 2][semver2] . W poniższym przykładzie danych wyjściowych wykres WordPress jest w wersji *2.1.10*:
 
 ```
 $ ls
@@ -217,7 +217,7 @@ az acr helm repo add
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule użyto istniejącego wykresu Helm z poziomu publicznego  repozytorium stabilne. Aby uzyskać więcej informacji na temat tworzenia i wdrażania wykresów Helm, zobacz [Tworzenie wykresów Helm][develop-helm-charts].
+W tym artykule użyto istniejącego wykresu Helm z poziomu publicznego repozytorium stabilne. Aby uzyskać więcej informacji na temat tworzenia i wdrażania wykresów Helm, zobacz [Tworzenie wykresów Helm][develop-helm-charts].
 
 Wykresy Helm mogą być używane jako część procesu tworzenia kontenera. Aby uzyskać więcej informacji, zobacz [używanie Azure Container Registry zadań][acr-tasks].
 

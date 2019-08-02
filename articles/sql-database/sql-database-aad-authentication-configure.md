@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: eb96b60593dc660682c6376c0e0133be8f371176
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348681"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569675"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i Zarządzanie uwierzytelnianiem Azure Active Directory przy użyciu programu SQL
 
@@ -168,7 +167,7 @@ W poniższych dwóch procedurach pokazano, jak zainicjować obsługę administra
     ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)
 
     >[!NOTE]
-    > Na tej stronie przed wybraniem opcji **serwery SQL**możesz wybrać gwiazdkę obok  nazwy, aby dodać do *ulubionych* kategorię, i Dodaj **serwery SQL** na lewym pasku nawigacyjnym.
+    > Na tej stronie przed wybraniem opcji **serwery SQL**możesz wybrać gwiazdkę obok nazwy, aby dodać do *ulubionych* kategorię, i Dodaj **serwery SQL** na lewym pasku nawigacyjnym.
 
 3. Na stronie **SQL Server** wybierz pozycję **administrator Active Directory**.
 4. Na stronie **administrator Active Directory** wybierz pozycję **Ustaw administratora**.  ![wybierz pozycję Active Directory](./media/sql-database-aad-authentication/select-active-directory.png)  

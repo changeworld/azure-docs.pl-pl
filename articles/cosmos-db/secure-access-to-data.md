@@ -1,54 +1,54 @@
 ---
-title: Dowiedz się, jak zabezpieczyć dostęp do danych w usłudze Azure Cosmos DB
-description: Więcej informacji na temat pojęć dotyczących kontroli dostępu w usłudze Azure Cosmos DB, m.in. klucze główne klucze tylko do odczytu, użytkowników i uprawnień.
+title: Dowiedz się, jak zabezpieczyć dostęp do danych w Azure Cosmos DB
+description: Poznaj koncepcje kontroli dostępu w Azure Cosmos DB, w tym klucze główne, klucze tylko do odczytu, użytkowników i uprawnienia.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 6ccb9afb528edf67b29c781217ca1de97b81e017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e321091f2abcff4c385b442ac6474c0592845e2e
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969207"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602034"
 ---
-# <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpieczanie dostępu do danych w usłudze Azure Cosmos DB
+# <a name="secure-access-to-data-in-azure-cosmos-db"></a>Bezpieczny dostęp do danych w Azure Cosmos DB
 
 Ten artykuł zawiera omówienie zabezpieczania dostępu do danych przechowywanych w [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
-Usługa Azure Cosmos DB wykorzystuje dwa typy kluczy do uwierzytelniania użytkowników oraz zapewniają dostęp do swoich danych i zasobów. 
+Azure Cosmos DB używa dwóch typów kluczy do uwierzytelniania użytkowników i zapewnienia dostępu do jego danych i zasobów. 
 
 |Typ klucza|Zasoby|
 |---|---|
-|[Klucze główne](#master-keys) |Używany do zasobów administracyjnych: bazy danych, kont, baz danych, użytkowników i uprawnień|
-|[Tokenów zasobów](#resource-tokens)|Używane dla zasobów aplikacji: kontenerów, dokumenty, załączniki, procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika|
+|[Klucze główne](#master-keys) |Używany do zasobów administracyjnych: konta bazy danych, bazy danych, użytkownicy i uprawnienia|
+|[Tokeny zasobów](#resource-tokens)|Używany do zasobów aplikacji: kontenery, dokumenty, załączniki, procedury składowane, wyzwalacze i UDF|
 
 <a id="master-keys"></a>
 
 ## <a name="master-keys"></a>Klucze główne 
 
 Klucze główne zapewniają dostęp do wszystkich zasobów administracyjnych dla konta bazy danych. Klucze główne:  
-- Zapewniają dostęp do konta, bazy danych, użytkowników i uprawnienia. 
-- Nie może służyć do zapewnienia szczegółowej dostęp do kontenerów i dokumentów.
+- Zapewnianie dostępu do kont, baz danych, użytkowników i uprawnień. 
+- Nie można użyć, aby zapewnić szczegółowy dostęp do kontenerów i dokumentów.
 - Są tworzone podczas tworzenia konta.
-- Można ponownie wygenerować w dowolnym momencie.
+- Można ją wygenerować w dowolnym momencie.
 
-Każde konto obejmuje dwa klucze główne: klucz podstawowy i klucz pomocniczy. Celem dwa klucze jest tak, aby wygenerować lub przywracanie kluczy, zapewniając ciągły dostęp do danych i konta. 
+Każde konto składa się z dwóch kluczy głównych: klucza podstawowego i klucza pomocniczego. Dwa klucze polega na tym, że można generować lub przetwarzać klucze, zapewniając ciągły dostęp do konta i danych. 
 
-Oprócz dwa klucze główne konto usługi Cosmos DB istnieją dwa klucze tylko do odczytu. Klucze tylko do odczytu Zezwalaj tylko na operacje odczytu dla konta. Klucze tylko do odczytu nie zapewnia dostępu do odczytu zasobów uprawnień.
+Oprócz dwóch kluczy głównych dla konta Cosmos DB istnieją dwa klucze tylko do odczytu. Te klucze tylko do odczytu zezwalają na operacje odczytu tylko na tym koncie. Klucze tylko do odczytu nie zapewniają dostępu do uprawnień do odczytu zasobów.
 
-Podstawowa, pomocnicza, tylko do odczytu, a klucze główne odczytu i zapisu mogą być pobierane i ponownie wygenerowane za pomocą witryny Azure portal. Aby uzyskać instrukcje, zobacz [wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu](manage-with-cli.md#regenerate-account-key).
+Klucze główne, pomocnicze, tylko do odczytu i odczyt-zapis można pobrać i ponownie wygenerować przy użyciu Azure Portal. Aby uzyskać instrukcje, zobacz [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu](manage-with-cli.md#regenerate-account-key).
 
-![Kontrola dostępu (IAM) w witrynie Azure portal — prezentacja zabezpieczeń bazy danych NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+![Kontrola dostępu (IAM) w Azure Portal-demonstrowanie zabezpieczeń bazy danych NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
-Proces rotacji Twój klucz główny jest proste. Przejdź do portalu Azure w celu pobrania klucza pomocniczego, a następnie zastąp klucz podstawowy klucz pomocniczy w aplikacji, a następnie wymienić główny klucz podstawowy w witrynie Azure portal.
+Proces obracania klucza głównego jest prosty. Przejdź do Azure Portal, aby pobrać klucz pomocniczy, a następnie zastąp klucz podstawowy kluczem pomocniczym w aplikacji, a następnie obróć klucz podstawowy w Azure Portal.
 
-![Obrót klucz główny w witrynie Azure portal — prezentacja zabezpieczeń bazy danych NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
+![Rotacja klucza głównego w Azure Portal-demonstrowanie zabezpieczeń bazy danych NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
 
-### <a name="code-sample-to-use-a-master-key"></a>Przykładowy kod, aby użyć klucza głównego
+### <a name="code-sample-to-use-a-master-key"></a>Przykład kodu, aby użyć klucza głównego
 
-Poniższy przykład kodu ilustruje sposób używania punkt końcowy konta usługi Cosmos DB i klucz główny można utworzyć wystąpienia DocumentClient i utworzyć bazę danych. 
+Poniższy przykład kodu ilustruje, jak używać punktu końcowego konta Cosmos DB i klucza głównego do tworzenia wystąpienia DocumentClient i utworzenia bazy danych. 
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -70,42 +70,42 @@ Database database = await client.CreateDatabaseAsync(
 
 <a id="resource-tokens"></a>
 
-## <a name="resource-tokens"></a>Tokenów zasobów
+## <a name="resource-tokens"></a>Tokeny zasobów
 
-Tokeny zasobów zapewniają dostęp do zasobów aplikacji w bazie danych. Tokeny zasobów:
-- Zapewniają dostęp do określonych kontenerów, klucze partycji, dokumentów, załączniki, procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika.
-- Są tworzone, gdy [użytkownika](#users) otrzymuje [uprawnienia](#permissions) do określonego zasobu.
-- Podczas zasobów uprawnienie jest reagować na przez wywołanie POST, GET lub PUT zostaną odtworzone.
-- Używają specjalnie skonstruowane dla użytkowników, zasobów i uprawnienia tokenu zasobów wyznaczania wartości skrótu.
-- Jest powiązany z okresem ważności można dostosowywać. Prawidłowy przedział czasu domyślny to jedna godzina. Okres istnienia tokenu, jednak może być jawnie określone, maksymalnie pięć godzin.
-- Podaj bezpieczne alternatywa ujawnianiem klucza głównego. 
-- Włącz klientów do odczytu, zapisu i usuwania zasobów w ramach konta usługi Cosmos DB, zgodnie z uprawnieniami, które zostały przyznane.
+Tokeny zasobów zapewniają dostęp do zasobów aplikacji w ramach bazy danych. Tokeny zasobów:
+- Zapewnianie dostępu do określonych kontenerów, kluczy partycji, dokumentów, załączników, procedur składowanych, wyzwalaczy i UDF.
+- Są tworzone, gdy [użytkownik](#users) uzyskuje [uprawnienia](#permissions) do określonego zasobu.
+- Są ponownie tworzone, gdy zasób uprawnień jest podejmowany podczas działania przez POST, GET lub PUT.
+- Użyj tokenu zasobu skrótu przeznaczonego dla użytkownika, zasobu i uprawnienia.
+- Są powiązane z dostosowywanym okresem ważności. Domyślny prawidłowy przedział czasu to jedna godzina. Okres istnienia tokenu można jednak określić jawnie, maksymalnie pięć godzin.
+- Podaj bezpieczną alternatywę do wydawania klucza głównego. 
+- Umożliwianie klientom odczytywania, zapisywania i usuwania zasobów na koncie Cosmos DB zgodnie z przyznanymi uprawnieniami.
 
-Aby użyć tokenu zasobu (tworzenia użytkowników usługi Cosmos DB i uprawnienia) kiedy chcesz zapewnić dostęp do zasobów w ramach konta usługi Cosmos DB do klienta, który nie jest zaufany za pomocą klucza głównego.  
+Możesz użyć tokenu zasobu (przez utworzenie Cosmos DB użytkowników i uprawnień), jeśli chcesz zapewnić dostęp do zasobów na koncie Cosmos DB do klienta, którego nie można zaufać z kluczem głównym.  
 
-Tokenów zasobów usługi cosmos DB zapewniają bezpieczne alternatywę umożliwiająca klientom odczytu, zapisu i usuwania zasobów konta usługi Cosmos DB, zgodnie z uprawnieniami, które zostały przyznane i bez konieczności korzystania z wzorca lub odczytu tylko klucza.
+Tokeny zasobów Cosmos DB zapewniają bezpieczną alternatywę, która umożliwia klientom odczytywanie, zapisywanie i usuwanie zasobów na koncie Cosmos DB zgodnie z przyznanymi uprawnieniami i bez potrzeby dla klucza głównego lub tylko do odczytu.
 
-Poniżej przedstawiono wzorzec projektowania typowe zgodnie z którą tokenów zasobów mogą być wymagane, wygenerowane i dostarczeniem do klientów:
+Poniżej przedstawiono typowy Wzorzec projektowy, w którym tokeny zasobów mogą być żądane, generowane i dostarczane do klientów:
 
-1. Skonfigurowano usługi w warstwie pośredniej do obsługi mobilnej aplikacji do udostępniania zdjęć użytkownika. 
-2. Usługi w warstwie pośredniej ma klucz główny konta usługi Cosmos DB.
-3. Aplikacja zdjęcia jest zainstalowana na urządzeniach przenośnych użytkowników końcowych. 
-4. Podczas logowania aplikacji photo ustanawia tożsamości użytkowników z usługą w warstwie pośredniej. Ten mechanizm ustanowienie tożsamości jest wyłącznie do aplikacji.
-5. Po ustanowieniu tożsamości usługi w warstwie pośredniej żąda uprawnień na podstawie tożsamości.
-6. Usługi w warstwie pośredniej wysyła token zasobu z powrotem do aplikacji telefonu.
-7. Aplikację można w dalszym ciągu używać tokenu zasobu bezpośrednio dostępu do zasobów usługi Cosmos DB przy użyciu na uprawnienia zdefiniowane przez token zasobu i interwał dozwolone przez tokenu zasobów. 
-8. Po wygaśnięciu ważności tokenu zasobów kolejne żądania otrzymują 401 nieautoryzowane wyjątek.  W tym momencie aplikację ponownie ustala tożsamość i żąda nowego tokenu zasobów.
+1. Usługa warstwy środkowej jest skonfigurowana do obsługi aplikacji mobilnej w celu udostępniania zdjęć użytkowników. 
+2. Usługa warstwy środkowej dysponuje kluczem głównym konta Cosmos DB.
+3. Aplikacja Photo jest instalowana na urządzeniach przenośnych użytkowników końcowych. 
+4. W przypadku logowania Aplikacja Photo nawiązuje tożsamość użytkownika z usługą warstwy środkowej. Mechanizm tworzenia tożsamości jest całkowicie do aplikacji.
+5. Po nawiązaniu tożsamości usługa warstwy średniej żąda uprawnień na podstawie tożsamości.
+6. Usługa warstwy średniej wysyła token zasobu z powrotem do aplikacji na telefon.
+7. Aplikacja na telefon może nadal używać tokenu zasobu do bezpośredniego dostępu do zasobów Cosmos DB z uprawnieniami zdefiniowanymi przez token zasobu i dla interwału dozwolonego przez token zasobu. 
+8. Po wygaśnięciu tokenu zasobu kolejne żądania otrzymują nieautoryzowany wyjątek 401.  W tym momencie Aplikacja telefoniczna przetworzy tożsamość i zażąda nowego tokenu zasobu.
 
-    ![Tokeny zasobów usługi Azure Cosmos DB przepływu pracy](./media/secure-access-to-data/resourcekeyworkflow.png)
+    ![Przepływ pracy tokenów zasobów Azure Cosmos DB](./media/secure-access-to-data/resourcekeyworkflow.png)
 
-Generowania tokenów zasobów i zarządzanie odbywa się przez natywnych bibliotek klienta Cosmos DB; Jednak korzystanie z interfejsu REST należy tworzyć nagłówki żądania i uwierzytelniania. Aby uzyskać więcej informacji na temat tworzenia nagłówków uwierzytelniania dla REST, zobacz [kontrolę dostępu do zasobów usługi Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) lub [kod źródłowy dla naszych zestawów SDK](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
+Generowanie tokenów zasobów i zarządzanie nimi jest obsługiwane przez natywne biblioteki klienckie Cosmos DB. Jeśli jednak używasz REST, musisz utworzyć nagłówki żądania/uwierzytelniania. Aby uzyskać więcej informacji na temat tworzenia nagłówków uwierzytelniania dla usługi REST, zobacz [Access Control Cosmos DB zasobów](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) lub [kodu źródłowego dla naszych zestawów SDK](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
 
-Na przykład usługi warstwy środkowej, używany do generowania lub brokera tokenów zasobów zobacz [aplikacji ResourceTokenBroker](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
+Przykład usługi warstwy środkowej używanej do generowania lub brokera tokenów zasobów można znaleźć w [aplikacji ResourceTokenBroker](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
 <a id="users"></a>
 
 ## <a name="users"></a>Użytkownicy
-Cosmos DB użytkowników są skojarzone z bazą danych Cosmos DB.  Każda baza danych może zawierać zero lub więcej użytkowników usługi Cosmos DB.  Poniższy przykład kodu pokazuje, jak utworzyć zasób użytkownika usługi Cosmos DB.
+Użytkownicy Cosmos DB są skojarzeni z bazą danych Cosmos DB.  Każda baza danych może zawierać co najmniej zero Cosmos DB użytkowników.  Poniższy przykład kodu pokazuje, jak utworzyć zasób użytkownika Cosmos DB.
 
 ```csharp
 //Create a user.
@@ -118,27 +118,27 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 ```
 
 > [!NOTE]
-> Każdy użytkownik usługi Cosmos DB ma właściwość PermissionsLink, który może służyć do pobierania listy [uprawnienia](#permissions) skojarzonych z użytkownikiem.
+> Każdy użytkownik Cosmos DB ma właściwość PermissionsLink, która może służyć do pobierania listy [uprawnień](#permissions) skojarzonych z użytkownikiem.
 > 
 > 
 
 <a id="permissions"></a>
 
 ## <a name="permissions"></a>Uprawnienia
-Zasób uprawnienia usługi Cosmos DB jest skojarzone z użytkownikami usługi Cosmos DB.  Każdy użytkownik może zawierać zero lub więcej uprawnień usługi Cosmos DB.  Zasób uprawnienia zapewnia dostęp do token zabezpieczający, który użytkownik musi podczas próby uzyskania dostępu do zasobu z określonej aplikacji.
-Istnieją dwa poziomy dostępu, które mogą być udostępniane przez zasób uprawnień:
+Zasób uprawnienia Cosmos DB jest skojarzony z Cosmos DB użytkownikiem.  Każdy użytkownik może zawierać co najmniej zero uprawnień Cosmos DB.  Zasób uprawnienia zapewnia dostęp do tokenu zabezpieczającego wymaganego przez użytkownika podczas próby dostępu do określonego zasobu aplikacji.
+Dostępne są dwa poziomy dostępu, które mogą być udostępniane przez zasób uprawnienia:
 
-* Wszystkie: Użytkownik ma pełne uprawnienia w zasobie.
-* Odczyt: Użytkownik może jedynie odczytywać zawartość zasobu, ale nie można wykonać zapisu, aktualizacji lub usuń operacje na zasobie.
+* Całą Użytkownik ma pełne uprawnienia do zasobu.
+* Przeczytaj Użytkownik może odczytać tylko zawartość zasobu, ale nie może wykonywać operacji zapisu, aktualizowania ani usuwania dla zasobu.
 
 > [!NOTE]
-> Aby można było uruchomić usługi Cosmos DB procedury składowane użytkownik musi mieć uprawnienie All w kontenerze, w którym będzie uruchamiany procedury składowanej.
+> Aby można było uruchomić Cosmos DB procedury składowane, użytkownik musi mieć uprawnienie wszystkie do kontenera, w którym zostanie uruchomiona procedura składowana.
 > 
 > 
 
-### <a name="code-sample-to-create-permission"></a>Przykładowy kod, aby utworzyć uprawnienie
+### <a name="code-sample-to-create-permission"></a>Przykład kodu do utworzenia uprawnienia
 
-Poniższy przykład kodu pokazuje, jak utworzyć zasób uprawnień, token zasobu zasobu uprawnienia odczytu i skojarz uprawnień za pomocą [użytkownika](#users) utworzonego powyżej.
+Poniższy przykładowy kod przedstawia sposób tworzenia zasobu uprawnienia, odczytywania tokenu zasobu zasobu uprawnienia i kojarzenia uprawnień z utworzonym powyżej [użytkownikiem](#users) .
 
 ```csharp
 // Create a permission.
@@ -153,11 +153,11 @@ docPermission = await client.CreatePermissionAsync(UriFactory.CreateUserUri("db"
 Console.WriteLine(docPermission.Id + " has token of: " + docPermission.Token);
 ```
 
-Jeśli podano klucza partycji dla kolekcji w uprawnienia dla kolekcji, dokumentów i załączników zasobów należy również uwzględnić ResourcePartitionKey oprócz ResourceLink.
+Jeśli określono klucz partycji dla kolekcji, wówczas uprawnienie do kolekcji, dokumentów i zasobów załączników również musi zawierać ResourcePartitionKey oprócz ResourceLink.
 
-### <a name="code-sample-to-read-permissions-for-user"></a>Przykładowy kod, aby uprawnienia do odczytu dla użytkownika
+### <a name="code-sample-to-read-permissions-for-user"></a>Przykład kodu do odczytu uprawnień użytkownika
 
-Aby łatwo uzyskać uprawnienie all zasoby skojarzone z określonym użytkownikiem, Cosmos DB udostępnia uprawnienia kanału informacyjnego dla każdego obiektu użytkownika.  Poniższy fragment kodu przedstawia sposób pobierania uprawnień skojarzonych z użytkownikiem, utworzony w poprzednim przykładzie, utworzenia listy uprawnień i utworzenia wystąpienia nowego wystąpienia klasy DocumentClient w imieniu użytkownika.
+Aby łatwo uzyskać wszystkie uprawnienia skojarzone z określonym użytkownikiem, Cosmos DB udostępnia źródło uprawnień dla każdego obiektu użytkownika.  Poniższy fragment kodu przedstawia sposób pobierania uprawnienia skojarzonego z użytkownikiem utworzonym powyżej, konstruowania listy uprawnień i tworzenia wystąpienia nowego DocumentClient w imieniu użytkownika.
 
 ```csharp
 //Read a permission feed.
@@ -173,25 +173,25 @@ foreach (Permission perm in permFeed)
 DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
 
-## <a name="add-users-and-assign-roles"></a>Dodawanie użytkowników i przypisywania ról
+## <a name="add-users-and-assign-roles"></a>Dodawanie użytkowników i przypisywanie ról
 
-Aby dodać dostęp czytelnika konta usługi Azure Cosmos DB z Twoim kontem użytkownika, należy mieć właścicielem subskrypcji, wykonaj następujące kroki w witrynie Azure portal.
+Aby dodać do konta użytkownika dostęp do czytnika konta Azure Cosmos DB, należy wykonać następujące czynności w Azure Portal.
 
-1. Otwórz witrynę Azure portal, a następnie wybierz swoje konto usługi Azure Cosmos DB.
-2. Kliknij przycisk **kontrola dostępu (IAM)** kartę, a następnie kliknij przycisk **+ Dodaj przypisanie roli**.
-3. W **Dodaj przypisanie roli** okienku w obszarze **roli** wybierz opcję **Rola czytelnika konta bazy danych Cosmos**.
-4. W **przypisywanie dostępu do usługi box**, wybierz opcję **użytkownika usługi Azure AD, grupa lub aplikacja**.
-5. Wybierz użytkownika, grupę lub aplikację w katalogu, do którego chcesz udzielić dostępu.  Możesz przeszukiwać katalog według nazwy wyświetlanej, adresu e-mail lub identyfikatorów obiektów.
-    Wybranego użytkownika, grupy lub aplikacji zostanie wyświetlony na liście wybranych członków.
-6. Kliknij pozycję **Zapisz**.
+1. Otwórz Azure Portal i wybierz swoje konto Azure Cosmos DB.
+2. Kliknij kartę **Kontrola dostępu (IAM)** , a następnie kliknij pozycję **+ Dodaj przypisanie roli**.
+3. W okienku **Dodaj przypisanie roli** w polu **rola** wybierz pozycję **Cosmos DB rolę czytelnika konta**.
+4. W **polu Przypisz dostęp do**wybierz pozycję **użytkownik, Grupa lub aplikacja usługi Azure AD**.
+5. Wybierz użytkownika, grupę lub aplikację w katalogu, do którego chcesz udzielić dostępu.  Katalog można wyszukać według nazwy wyświetlanej, adresu e-mail lub identyfikatorów obiektów.
+    Wybrany użytkownik, Grupa lub aplikacja pojawi się na liście wybranych członków.
+6. Kliknij polecenie **Zapisz**.
 
-Jednostka może teraz odczytywać zasoby usługi Azure Cosmos DB.
+Jednostka może teraz odczytywać Azure Cosmos DB zasoby.
 
-## <a name="delete-or-export-user-data"></a>Usuń lub eksportowanie danych użytkownika
-Usługa Azure Cosmos DB umożliwia wyszukiwanie, wybierz, modyfikować i usuwać wszystkie dane osobowe znajdujące się w bazie danych lub kolekcji. Usługa Azure Cosmos DB udostępnia interfejsy API, aby znaleźć i usunąć dane osobowe, jednak, jest odpowiedzialny za przy użyciu interfejsów API i zdefiniuj logikę wymaganą do usunięcia danych osobowych. Każdego wielomodelowa interfejsu API (SQL, MongoDB, Gremlin, Cassandra, tabeli) zapewnia inny pakiet zestawów SDK, które zawierają metody, aby wyszukać i usunąć dane osobowe. Można również włączyć [czas wygaśnięcia (TTL)](time-to-live.md) funkcję, aby usunąć dane automatycznie po upływie określonego czasu, bez ponoszenia żadnych dodatkowych kosztów.
+## <a name="delete-or-export-user-data"></a>Usuwanie lub eksportowanie danych użytkownika
+Azure Cosmos DB pozwala wyszukiwać, wybierać, modyfikować i usuwać dane osobowe znajdujące się w bazie danych lub kolekcjach. Azure Cosmos DB udostępnia interfejsy API do znajdowania i usuwania danych osobowych, jednak odpowiedzialność za korzystanie z interfejsów API i Definiowanie logiki wymaganej do wymazania danych osobowych. Każdy interfejs API z obsługą wielu modeli (SQL, MongoDB, Gremlin, Cassandra, tabela) oferuje różne zestawy SDK języka, które zawierają metody do wyszukiwania i usuwania danych osobowych. Możesz również włączyć funkcję [Time to Live (TTL)](time-to-live.md) , aby automatycznie usuwać dane po upływie określonego czasu, bez ponoszenia dodatkowych kosztów.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej na temat zabezpieczeń bazy danych Cosmos DB, zobacz [Cosmos DB: Bazy danych zabezpieczeń](database-security.md).
-* Aby dowiedzieć się, jak skonstruować tokenach autoryzacji usługi Azure Cosmos DB, zobacz [kontrolę dostępu do zasobów usługi Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).
+* Aby dowiedzieć się więcej na temat Cosmos DB zabezpieczeń [bazy danych, zobacz Cosmos DB: Zabezpieczenia](database-security.md)bazy danych.
+* Aby dowiedzieć się, jak utworzyć tokeny autoryzacji Azure Cosmos DB, zobacz [Access Control dotyczące zasobów Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

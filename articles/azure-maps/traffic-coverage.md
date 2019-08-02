@@ -1,6 +1,6 @@
 ---
-title: Ruch pokrycia w usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o pokrycie ruchem w usługi Azure Maps
+title: Pokrycie ruchu w Azure Maps | Microsoft Docs
+description: Informacje o pokryciu ruchu w Azure Maps
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/22/2018
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ad7d4dceefcaa06effa6b2974b0a8a03ad641372
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9a3c4875f01c650485034fe46f53bb5aa1fd75b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60794037"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722654"
 ---
-# <a name="azure-maps-traffic-coverage"></a>Pokrycie ruchem w usłudze Azure Maps
+# <a name="azure-maps-traffic-coverage"></a>Azure Maps pokrycie ruchu
 
-Usługa Azure Maps udostępnia informacje o zaawansowanych ruchu w formie ruchu **przepływ** i **zdarzenia**. Te dane można zwizualizować na mapach lub używane do generowania inteligentniejsze tras, które wziąć pod uwagę w rzeczywistym warunki jazdy.
+Azure Maps zapewnia rozbudowane informacje o ruchu w postaci **przepływu** ruchu i **zdarzeń**. Te dane można wizualizować w usłudze Maps lub wykorzystać do generowania inteligentniejszych tras, które są czynnikiem rzeczywistym w rzeczywistych warunkach.
 
-Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystkich regionach. Poniższa tabela zawiera informacje o jakiego rodzaju informacje o ruchu mogą żądać z każdego regionu: 
+Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystkich regionów. Poniższa tabela zawiera informacje o rodzaju informacji o ruchu, które można zażądać od poszczególnych regionów: 
 
 ## <a name="americas"></a>Ameryki
 
@@ -62,14 +62,16 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 |---------|:---------:|:---------:|
 |Andora   |✓         |✓         |
 |Austria     |✓         |✓         |
+|Białoruś    |✓         |✓         |
 |Belgia     |✓         |✓         |
+|Bośnia i Hercegowina    |✓         |✓         |
 |Bułgaria     |✓         |✓         |
 |Chorwacja     |✓         |✓         |
 |Czechy     |✓         |✓         |
 |Dania     |✓         |✓         |
 |Estonia     |         | ✓        |
 |Finlandia     |✓         |✓         |
-|\+ Wyspy Alandzkie      |✓         |✓         |
+|\+ Wyspy Åland      |✓         |✓         |
 |Francja     |✓         |✓         |
 |Monaco     |✓         |✓         |
 |Niemcy     |✓         |✓         |
@@ -78,8 +80,9 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 |Islandia     |✓         |✓         |
 |Irlandia     |✓         |✓         |
 |Włochy     |✓         |✓        |
+|Kazakhstan    |✓         |✓        |
 |Łotwa     |✓         |✓         |
-|Lesotho     |✓         |✓         |
+|Lesoto     |✓         |✓         |
 |Liechtenstein      |✓         |✓         |
 |Litwa     |✓         |✓         |
 |Luksemburg     |✓         |✓         |
@@ -89,15 +92,16 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 |Norwegia     |✓         |✓         |
 |Polska     |✓         |✓         |
 |Portugalia     |✓         |✓         |
-|\+ Azory i Madera     |✓         |✓         |
+|\+ Azory i Maderę     |✓         |✓         |
 |Rumunia     |✓         |✓         |
 |Federacja Rosyjska     |✓         |✓         |
 |San Marino    |✓         |✓         |
+|Serbia   |✓         |✓         |
 |Słowacja     |✓         |✓         |
 |Słowenia     |✓         |✓         |
 |Hiszpania     |✓         |✓         |
-|+Andorra     |✓         |✓         |
-|\+ Baleary     |✓         |✓         |
+|\+ Andora     |✓         |✓         |
+|\+ Wyspy Balearic     |✓         |✓         |
 |\+ Wyspy Kanaryjskie     |✓         |✓         |
 |Szwecja     |✓         |✓         |
 |Szwajcaria     |✓         |✓        |
@@ -125,9 +129,9 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 |Oman     |✓         |✓         |
 |Katar     |✓         |✓         |
 |Arabia Saudyjska     |✓         |✓         |
-|Republika Południowej Afryki     |✓         |✓         |
+|RPA     |✓         |✓         |
 |Zjednoczone Emiraty Arabskie  |✓         |✓         |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat usługi Azure Maps ruch danych zobacz [ruchu](https://docs.microsoft.com/rest/api/maps/traffic) odwoływać się do strony.
+Aby uzyskać więcej informacji na temat Azure Maps danych o ruchu, zobacz strony referencyjne [ruchu](https://docs.microsoft.com/rest/api/maps/traffic) .

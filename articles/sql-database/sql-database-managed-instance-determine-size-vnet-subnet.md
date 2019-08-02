@@ -1,6 +1,6 @@
 ---
-title: Wystąpienie usługi Azure SQL Database Managed Określanie rozmiaru sieci wirtualnej/podsieci | Dokumentacja firmy Microsoft
-description: W tym temacie opisano sposób obliczania rozmiar podsieci, w której zostaną wdrożone usługi Azure SQL wystąpieniach zarządzanych bazy danych.
+title: Azure SQL Database wystąpienia zarządzanego określają rozmiar sieci wirtualnej/podsieci | Microsoft Docs
+description: W tym temacie opisano sposób obliczania rozmiaru podsieci, w której zostaną wdrożone Azure SQL Database wystąpienia zarządzane.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,44 +10,43 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 02/22/2019
-ms.openlocfilehash: 2a10876bc3c9558de29caf9fee2ae0b06ee87f28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b627b13fb79cd5105a95d9161d9239f28f2e062
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405345"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567507"
 ---
-# <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Określ rozmiar podsieci sieci wirtualnej dla wystąpienia zarządzanego Azure SQL Database
+# <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Określ rozmiar podsieci sieci wirtualnej dla Azure SQL Database wystąpienia zarządzanego
 
-Wystąpienie usługi Azure SQL Database Managed musi zostać wdrożony w ramach platformy Azure [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md).
+Azure SQL Database wystąpienie zarządzane musi być wdrożone w ramach [sieci wirtualnej](../virtual-network/virtual-networks-overview.md)platformy Azure.
 
-Liczba wystąpień zarządzanych, które mogą być wdrażane w podsieci sieci wirtualnej zależy od rozmiaru podsieci (zakres podsieci).
+Liczba wystąpień zarządzanych, które można wdrożyć w podsieci sieci wirtualnej, zależy od rozmiaru podsieci (zakresu podsieci).
 
-Podczas tworzenia wystąpienia zarządzanego Azure przydziela liczbę maszyn wirtualnych, w zależności od warstwy wybranej podczas inicjowania obsługi. Ponieważ te maszyny wirtualne są skojarzone z podsieci, wymagają one adresów IP. Aby zapewnić wysoką dostępność podczas regularnych operacjach i obsłudze usługi, platformy Azure może przydzielić dodatkowe maszyny wirtualne. W wyniku liczbę wymaganych adresów IP w podsieci jest większa niż liczba wystąpień zarządzanych w tej podsieci.
+Podczas tworzenia wystąpienia zarządzanego platforma Azure przydziela wiele maszyn wirtualnych w zależności od wybranej warstwy podczas aprowizacji. Ponieważ te maszyny wirtualne są skojarzone z podsiecią, wymagają one adresów IP. Aby zapewnić wysoką dostępność podczas regularnych operacji i konserwacji usług, platforma Azure może przydzielić dodatkowe maszyny wirtualne. W związku z tym liczba wymaganych adresów IP w podsieci jest większa niż liczba wystąpień zarządzanych w tej podsieci.
 
-Zgodnie z projektem wystąpienie zarządzane wymaga co najmniej 16 adresów IP w podsieci i może używać maksymalnie 256 adresów IP. W rezultacie można użyć maski podsieci, między /28 i prefiksie/24, podczas definiowania zakresów IP podsieci. Bit maski sieci/28 (14 hostów) jest dobry rozmiar dla jednego ogólnego przeznaczenia lub krytyczne dla prowadzonej działalności wdrożenia. Bit maski/27 (30 hostów) są idealne dla wielu wdrożeń do wystąpienia zarządzanego, w ramach tej samej sieci wirtualnej. Maska bitowa ustawienia /26 (62 hostów) i prefiksie/24 (254 hostów) umożliwia dalsze skalowanie spoza sieci wirtualnej, która obsługuje dodatkowe wystąpienia zarządzanego.
-
-> [!IMPORTANT]
-> Rozmiar podsieci, z 16 adresów IP jest absolutnego minimum przy użyciu ograniczonych możliwości dalsze skalowanie wystąpienia zarządzanego w poziomie. Zdecydowanie zaleca się wybranie pozycji podsieci z prefiksem wartość/27 lub poniżej.
-
-## <a name="determine-subnet-size"></a>Należy określić rozmiar podsieci
-
-Jeśli planujesz wdrożyć wiele wystąpień zarządzanych w tej podsieci i należy zoptymalizować rozmiar podsieci, użyj tych parametrów w celu utworzenia obliczeń:
-
-- Platforma Azure używa pięciu adresów IP w podsieci dla własnych potrzeb
-- Każde wystąpienie ogólnego przeznaczenia należy dwa adresy
-- Każde wystąpienie krytyczne dla działania firmy wymaga czterech adresów
-
-**Przykład**: Ma trzy ogólnego przeznaczenia i dwa biznesowe krytyczne wystąpienia zarządzane przez usługę. Czy potrzebujesz 5 + 3 * 2 + 2 * 4 = 19 oznacza, że adresy IP. Zakresy adresów IP określonych w potęgą liczby 2 należy zakresu adresów IP 32 (2 ^ 5) adresy IP. W związku z tym należy zarezerwować podsieć z maską podsieci/27.
+Zgodnie z projektem wystąpienie zarządzane musi mieć co najmniej 16 adresów IP w podsieci i może korzystać z maksymalnie 256 adresów IP. W związku z tym podczas definiowania zakresów adresów IP podsieci można użyć masek podsieci między/28 i/24. Bit maski sieci wynoszący/28 (14 hostów na sieć) to dobry rozmiar jednego ogólnego celu lub krytycznego dla firmy. Bit maski z/27 (30 hostów na sieć) jest idealnym rozwiązaniem dla wielu wdrożeń wystąpienia zarządzanego w ramach tej samej sieci wirtualnej. Ustawienia bitów maski/26 (62 hosty) i/24 (hosty 254) umożliwiają dalsze skalowanie w sieci wirtualnej w celu obsługi dodatkowych wystąpień zarządzanych.
 
 > [!IMPORTANT]
-> Obliczenie wyświetlane powyżej staną się nieaktualne z dalsze ulepszenia.
+> Rozmiar podsieci z 16 adresami IP jest minimalny od zera z ograniczoną możliwością dla dalszej skali wystąpienia zarządzanego. Wybór podsieci z prefiksem/27 lub poniżej jest zdecydowanie zalecane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="determine-subnet-size"></a>Określanie rozmiaru podsieci
 
-- Aby uzyskać przegląd, zobacz [co to jest wystąpienie zarządzane](sql-database-managed-instance.md).
-- Dowiedz się więcej o [architektura łączności dla wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md).
-- Zobacz jak [Utwórz sieć wirtualną, w którym będą wdrażane wystąpienia zarządzane przez usługę](sql-database-managed-instance-create-vnet-subnet.md)
-- W przypadku problemów DNS, zobacz [Konfigurowanie niestandardowych serwerów DNS](sql-database-managed-instance-custom-dns.md)
+Jeśli planujesz wdrożyć wiele wystąpień zarządzanych wewnątrz podsieci i chcesz zoptymalizować rozmiar podsieci, Użyj tych parametrów do tworzenia obliczeń:
+
+- Platforma Azure używa pięciu adresów IP w podsieci do własnych potrzeb
+- Każde wystąpienie Ogólnego przeznaczenia wymaga dwóch adresów
+- Każde wystąpienie Krytyczne dla działania firmy potrzebuje czterech adresów
+
+**Przykład**: Planujesz trzy Ogólnego przeznaczenia i dwa Krytyczne dla działania firmy wystąpienia zarządzane. Oznacza to, że potrzebujesz 5 + 3 * 2 + 2 * 4 = 19 adresów IP. Ponieważ zakresy adresów IP są zdefiniowane w mocy 2, wymagany jest zakres adresów IP 32 (2 ^ 5). W związku z tym należy zarezerwować podsieć z maską podsieci/27.
+
+> [!IMPORTANT]
+> Obliczenia wyświetlane powyżej staną się przestarzałe z dalszych ulepszeń.
+
+## <a name="next-steps"></a>Następne kroki
+
+- Aby zapoznać się z omówieniem, zobacz [co to jest wystąpienie zarządzane](sql-database-managed-instance.md).
+- Dowiedz się więcej o [architekturze łączności dla wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md).
+- Zobacz jak [utworzyć sieć wirtualną, w której będą wdrażane wystąpienia zarządzane](sql-database-managed-instance-create-vnet-subnet.md)
+- W przypadku problemów z usługą DNS zobacz [Konfigurowanie niestandardowego systemu DNS](sql-database-managed-instance-custom-dns.md)

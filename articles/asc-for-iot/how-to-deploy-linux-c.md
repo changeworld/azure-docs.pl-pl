@@ -1,6 +1,6 @@
 ---
-title: Przewodnik instalacji i wdrażania agenta systemu Linux C usługi Azure Security Center dla agenta IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować Centrum zabezpieczeń Azure dla IoT agenta w systemie Linux zarówno 32-bitowych i 64-bitowych.
+title: Przewodnik dotyczący instalowania i wdrażania agenta systemu Linux C Azure Security Center dla agenta IoT | Microsoft Docs
+description: Dowiedz się, jak zainstalować Azure Security Center dla agenta IoT zarówno na 32-bitowym, jak i 64-bitowym systemie Linux.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,90 +13,86 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 7f5b98060486e6c55bb1702386cd5438f558254b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3fd4287c6dd1cc42f419cfa6b252c1d276d1d5a5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616846"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597228"
 ---
-# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Wdrażanie usługi Azure Security Center dla zabezpieczenia oparty na IoT C agenta dla systemu Linux
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Wdrażanie Azure Security Center dla agenta zabezpieczeń usługi IoT C dla systemu Linux
 
-> [!IMPORTANT]
-> Centrum zabezpieczeń Azure dla IoT jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ten przewodnik wyjaśnia, jak zainstalować i wdrożyć usługi Azure Security Center (ASC) zabezpieczenia oparty na IoT C agenta w systemie Linux.
+W tym przewodniku wyjaśniono, jak zainstalować i wdrożyć Azure Security Center dla agenta zabezpieczeń usługi IoT C na komputerze z systemem Linux.
 
 Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności: 
 > [!div class="checklist"]
 > * Instalowanie
 > * Weryfikowanie wdrożenia
-> * Odinstaluj agenta
+> * Odinstalowywanie agenta
 > * Rozwiązywanie problemów 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dla innych platform i odmian agenta, zobacz [wybierz agenta prawa zabezpieczeń](how-to-deploy-agent.md).
+W przypadku innych platform i rodzajów agentów zobacz [Wybieranie odpowiedniego agenta zabezpieczeń](how-to-deploy-agent.md).
 
-1. Aby wdrożyć agenta zabezpieczeń, na maszynie którą chcesz zainstalować ("sudo") są wymagane uprawnienia administratora lokalnego.
+1. W celu wdrożenia agenta zabezpieczeń wymagane są uprawnienia administratora lokalnego na komputerze, na którym ma zostać zainstalowana (sudo).
 
-1. [Utwórz moduł zabezpieczeń](quickstart-create-security-twin.md) dla tego urządzenia.
+1. [Utwórz moduł zabezpieczeń](quickstart-create-security-twin.md) dla urządzenia.
 
 ## <a name="installation"></a>Instalacja 
 
-Aby zainstalować i wdrożyć agenta zabezpieczeń, wykonaj następujące czynności:
+Aby zainstalować i wdrożyć agenta zabezpieczeń, użyj następującego przepływu pracy:
 
 
-1. Pobierz najnowszą wersją na swoim komputerze z poziomu [Github](https://aka.ms/iot-security-github-c).
+1. Pobierz najnowszą wersję na swoją maszynę z usługi [GitHub](https://aka.ms/iot-security-github-c).
 
-1. Wyodrębnij zawartość pakietu, a następnie przejdź do _/Install_ folderu.
+1. Wyodrębnij zawartość pakietu i przejdź do folderu _/Install_ .
 
-1. Dodaj uruchomionej uprawnienia do **skryptu InstallSecurityAgent** wykonując następujące czynności:
+1. Dodaj uruchomione uprawnienia do **skryptu InstallSecurityAgent** , uruchamiając następujące polecenie:
     
    ```
    chmod +x InstallSecurityAgent.sh
    ```
 
-1. Następnie uruchom: 
+1. Następnie uruchom polecenie: 
 
    ```
    ./InstallSecurityAgent.sh -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -i
    ```
    
-   Zobacz [jak skonfigurować uwierzytelnianie](concept-security-agent-authentication-methods.md) Aby uzyskać więcej informacji na temat parametrów uwierzytelniania.
+   Zobacz [jak skonfigurować uwierzytelnianie](concept-security-agent-authentication-methods.md) , aby uzyskać więcej informacji na temat parametrów uwierzytelniania.
 
-Ten skrypt wykonuje następujące czynności:
+Ten skrypt wykonuje następującą funkcję:
 
-1. Instaluje wstępnie wymagane składniki.
+1. Instaluje wymagania wstępne.
 
-2. Dodaje użytkownika usługi (za pomocą logowania interaktywnego wyłączone).
+2. Dodaje użytkownika usługi (z wyłączonym logowaniem interakcyjnym).
 
-3. Instaluje agenta jako **demona** -przyjęto założenie, urządzenie używa **systemd** do zarządzania usługami.
+3. Instaluje agenta jako **demon** — zakłada, że urządzenie używa **systemu** do zarządzania usługami.
 
-4. Konfiguruje agenta z podanymi parametrami uwierzytelniania. 
+4. Konfiguruje agenta przy użyciu podanych parametrów uwierzytelniania. 
 
-Aby uzyskać dodatkową pomoc, uruchom skrypt przy użyciu parametru – pomocy: 
+Aby uzyskać dodatkową pomoc, uruchom skrypt za pomocą parametru – help: 
     
     ./InstallSecurityAgent.sh --help
 
-### <a name="uninstall-the-agent"></a>Odinstaluj agenta
+### <a name="uninstall-the-agent"></a>Odinstalowywanie agenta
 
-Aby odinstalować agenta, uruchom skrypt za pomocą — Odinstaluj parametru:
+Aby odinstalować agenta, uruchom skrypt za pomocą parametru –-Uninstall:
 
     ./InstallSecurityAgent.sh -–uninstall
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Sprawdź stan wdrożenia, uruchamiając:
+Sprawdź stan wdrożenia, uruchamiając następujące:
 
     systemctl status ASCIoTAgent.service
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Przeczytaj ASC dla usługi IoT [— omówienie](overview.md)
-- Dowiedz się więcej o ASC IoT [architektury](architecture.md)
-- Włącz [usługi](quickstart-onboard-iot-hub.md)
-- Odczyt [— często zadawane pytania](resources-frequently-asked-questions.md)
-- Zrozumienie [alerty zabezpieczeń](concept-security-alerts.md)
+## <a name="next-steps"></a>Następne kroki
+- Przeczytaj Azure Security Center dla usługi IoT [— Omówienie](overview.md)
+- Dowiedz się więcej o [architekturze](architecture.md) Azure Security Center dla usługi IoT
+- Włącz [usługę](quickstart-onboard-iot-hub.md)
+- Przeczytaj [często zadawane pytania](resources-frequently-asked-questions.md)
+- Informacje o [alertach zabezpieczeń](concept-security-alerts.md)

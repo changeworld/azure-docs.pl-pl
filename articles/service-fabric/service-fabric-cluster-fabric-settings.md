@@ -3,7 +3,7 @@ title: Zmień ustawienia klastra usługi Azure Service Fabric | Microsoft Docs
 description: W tym artykule opisano ustawienia sieci szkieletowej oraz zasady uaktualniania sieci szkieletowej, które można dostosować.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 7ced36bf-bd3f-474f-a03a-6ebdbc9677e2
@@ -13,13 +13,13 @@ ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
-ms.author: aljo
-ms.openlocfilehash: 951c244d7f7d037c8d2ae117f36c18acd902436f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.author: atsenthi
+ms.openlocfilehash: c20e782423c60985adb9e18e275fde59e57e00a2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850051"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599887"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosuj ustawienia klastra Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej dla klastra Service Fabric, które można dostosować. W przypadku klastrów hostowanych na platformie Azure można dostosować ustawienia za pomocą [Azure Portal](https://portal.azure.com) lub szablonu Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra platformy Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych można dostosować ustawienia, aktualizując plik *ClusterConfig. JSON* i wykonując uaktualnienie konfiguracji w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -132,8 +132,8 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |ApplicationLogsFormatVersion |Int, wartość domyślna to 0 | Dynamiczne |Wersja formatu dzienników aplikacji. Obsługiwane wartości to 0 i 1. Wersja 1 zawiera więcej pól z rekordu zdarzenia ETW niż wersja 0. |
 |AuditHttpRequests |Bool, wartość domyślna to false | Dynamiczne | Włącz lub Wyłącz inspekcję HTTP. Celem inspekcji jest wyświetlenie działań, które zostały wykonane względem klastra; dołączenie do osoby, która zainicjowała żądanie. Należy zauważyć, że jest to Najlepsza próba zarejestrowania; mogą wystąpić utracone wyniki. Żądania HTTP z uwierzytelnianiem użytkownika nie są rejestrowane. |
 |CaptureHttpTelemetry|Bool, wartość domyślna to false | Dynamiczne | Włączać lub wyłączać dane telemetryczne protokołu HTTP. Celem telemetrii jest umożliwienie Service Fabric przechwycenia danych telemetrycznych w celu zaplanowania przyszłej pracy i zidentyfikowania obszarów problemów. Telemetrię nie rejestruje żadnych danych osobowych ani treści żądania. Dane telemetryczne przechwytują wszystkie żądania HTTP, o ile nie zostały skonfigurowane inaczej |
-|ClusterId |String | Dynamiczne |Unikatowy identyfikator klastra. Ta wartość jest generowana podczas tworzenia klastra. |
-|ConsumerInstances |Ciąg | Dynamiczne |Lista wystąpień konsumentów DCA. |
+|ClusterId |Ciąg | Dynamiczne |Unikatowy identyfikator klastra. Ta wartość jest generowana podczas tworzenia klastra. |
+|ConsumerInstances |String | Dynamiczne |Lista wystąpień konsumentów DCA. |
 |DiskFullSafetySpaceInMB |Int, wartość domyślna to 1024 | Dynamiczne |Pozostała ilość miejsca na dysku (w MB) do ochrony przed użyciem przez DCA. |
 |EnableCircularTraceSession |Bool, wartość domyślna to false | Static |Flaga wskazuje, czy należy używać cyklicznych sesji śledzenia. |
 |EnablePlatformEventsFileSink |Bool, wartość domyślna to false | Static |Włączanie/wyłączanie zdarzeń platformy zapisywanych na dysku |
@@ -141,7 +141,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |FailuresOnlyHttpTelemetry | Bool, wartość domyślna to true | Dynamiczne | Jeśli funkcja przechwytywania telemetrii HTTP jest włączona; Przechwyć tylko Nieudane żądania. Jest to pomocne w zmniejszeniu liczby zdarzeń wygenerowanych na potrzeby telemetrii. |
 |HttpTelemetryCapturePercentage | int, wartość domyślna to 50 | Dynamiczne | Jeśli funkcja przechwytywania telemetrii HTTP jest włączona; Przechwyć tylko losową wartość procentową żądań. Jest to pomocne w zmniejszeniu liczby zdarzeń wygenerowanych na potrzeby telemetrii. |
 |MaxDiskQuotaInMB |Int, wartość domyślna to 65536 | Dynamiczne |Przydział dysku w MB dla plików dziennika Windows Fabric. |
-|ProducerInstances |String | Dynamiczne |Lista wystąpień producentów DCA. |
+|ProducerInstances |Ciąg | Dynamiczne |Lista wystąpień producentów DCA. |
 
 ## <a name="dnsservice"></a>DnsService
 | **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub Krótki opis** |
@@ -200,12 +200,12 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |ClusterX509FindValue |ciąg, wartość domyślna to "" |Dynamiczne|Wartość filtru wyszukiwania używana do lokalizowania certyfikatu klastra. |
 |ClusterX509FindValueSecondary |ciąg, wartość domyślna to "" |Dynamiczne|Wartość filtru wyszukiwania używana do lokalizowania certyfikatu klastra. |
 |ClusterX509StoreName |ciąg, wartość domyślna to "my" |Dynamiczne|Nazwa magazynu certyfikatów X. 509 zawierającego certyfikat klastra służący do zabezpieczania komunikacji wewnątrz klastra. |
-|EndApplicationPortRange |int, wartość domyślna to 0 |Static|Zakończenie (nie włącznie) portów aplikacji zarządzanych przez podsystem hostingu. Wymagane, jeśli EndpointFilteringEnabled ma wartość true w hostingu. |
+|EndApplicationPortRange |Int, wartość domyślna to 0 |Static|Zakończenie (nie włącznie) portów aplikacji zarządzanych przez podsystem hostingu. Wymagane, jeśli EndpointFilteringEnabled ma wartość true w hostingu. |
 |ServerAuthX509FindType |ciąg, wartość domyślna to "FindByThumbprint" |Dynamiczne|Wskazuje, w jaki sposób wyszukiwać certyfikat serwera w magazynie określonym przez ServerAuthX509StoreName obsługiwaną wartość: FindByThumbprint; FindBySubjectName. |
 |ServerAuthX509FindValue |ciąg, wartość domyślna to "" |Dynamiczne|Wartość filtru wyszukiwania używana do lokalizowania certyfikatu serwera. |
 |ServerAuthX509FindValueSecondary |ciąg, wartość domyślna to "" |Dynamiczne|Wartość filtru wyszukiwania używana do lokalizowania certyfikatu serwera. |
 |ServerAuthX509StoreName |ciąg, wartość domyślna to "my" |Dynamiczne|Nazwa magazynu certyfikatów X. 509 zawierającego certyfikat serwera dla usługi bezboleśnie. |
-|StartApplicationPortRange |int, wartość domyślna to 0 |Static|Początek portów aplikacji zarządzanych przez podsystem hostingu. Wymagane, jeśli EndpointFilteringEnabled ma wartość true w hostingu. |
+|StartApplicationPortRange |Int, wartość domyślna to 0 |Static|Początek portów aplikacji zarządzanych przez podsystem hostingu. Wymagane, jeśli EndpointFilteringEnabled ma wartość true w hostingu. |
 |StateTraceInterval |Czas w sekundach, wartość domyślna to 300 |Static|Określ wartość TimeSpan w sekundach. Interwał śledzenia stanu węzła w każdym węźle i w górę w węzłach FM/FMM. |
 |UserRoleClientX509FindType |ciąg, wartość domyślna to "FindByThumbprint" |Dynamiczne|Wskazuje, w jaki sposób wyszukiwać certyfikat w magazynie określonym przez UserRoleClientX509StoreName obsługiwaną wartość: FindByThumbprint; FindBySubjectName. |
 |UserRoleClientX509FindValue |ciąg, wartość domyślna to "" |Dynamiczne|Wartość filtru wyszukiwania używana do lokalizowania certyfikatu dla domyślnej roli użytkownika FabricClient. |
@@ -216,7 +216,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
-|AllowNodeStateRemovedForSeedNode|bool, wartość domyślna to FALSE |Dynamiczne|Flaga wskazująca, czy można usunąć stan węzła dla węzła inicjatora |
+|AllowNodeStateRemovedForSeedNode|Bool, wartość domyślna to FALSE |Dynamiczne|Flaga wskazująca, czy można usunąć stan węzła dla węzła inicjatora |
 |BuildReplicaTimeLimit|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (3600)|Dynamiczne|Określ wartość TimeSpan w sekundach. Limit czasu tworzenia repliki stanowej; po upływie którego zostanie zainicjowany Raport kondycji ostrzegawczej |
 |ClusterPauseThreshold|int, wartość domyślna to 1|Dynamiczne|Jeśli liczba węzłów w systemie znajduje się poniżej tej wartości, rozmieszczenie; Równoważenie obciążenia; i tryb failover jest zatrzymany. |
 |CreateInstanceTimeLimit|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (300)|Dynamiczne|Określ wartość TimeSpan w sekundach. Limit czasu tworzenia wystąpienia bezstanowego; po upływie którego zostanie zainicjowany Raport kondycji ostrzegawczej |
@@ -225,14 +225,14 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |ExpectedNodeFabricUpgradeDuration|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds ( \* 60.0 30)|Dynamiczne|Określ wartość TimeSpan w sekundach. Jest to oczekiwany czas, który ma zostać uaktualniony przez węzeł podczas uaktualnienia Windows Fabric. |
 |ExpectedReplicaUpgradeDuration|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds ( \* 60.0 30)|Dynamiczne|Określ wartość TimeSpan w sekundach. Jest to oczekiwany czas trwania uaktualnienia wszystkich replik w węźle podczas uaktualniania aplikacji. |
 |IsSingletonReplicaMoveAllowedDuringUpgrade|bool, wartość domyślna to TRUE|Dynamiczne|Jeśli wartość jest równa true; repliki z docelowym zestawem replik o rozmiarze 1 będą dozwolone podczas uaktualniania. |
-|MinReplicaSetSize|Int, wartość domyślna to 3|Niedozwolone|Jest to minimalny rozmiar zestawu replik dla FM. Jeśli liczba aktywnych replik FM spadnie poniżej tej wartości; FM spowoduje odrzucenie zmian w klastrze do momentu odzyskania co najmniej minimalnej liczby replik |
+|MinReplicaSetSize|int, wartość domyślna to 3|Niedozwolone|Jest to minimalny rozmiar zestawu replik dla FM. Jeśli liczba aktywnych replik FM spadnie poniżej tej wartości; FM spowoduje odrzucenie zmian w klastrze do momentu odzyskania co najmniej minimalnej liczby replik |
 |PlacementConstraints|ciąg, wartość domyślna to ""|Niedozwolone|Wszystkie ograniczenia umieszczania dla replik Menedżera trybu failover |
 |PlacementTimeLimit|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (600)|Dynamiczne|Określ wartość TimeSpan w sekundach. Limit czasu osiągnięcia docelowej liczby replik. po upływie którego zostanie zainicjowany Raport kondycji ostrzegawczej |
 |QuorumLossWaitDuration |Czas w sekundach, wartość domyślna to MaxValue |Dynamiczne|Określ wartość TimeSpan w sekundach. Jest to maksymalny czas trwania obowiązywania partycji w stanie utraty kworum. Jeśli partycja nadal znajduje się w utracie kworum po tym czasie trwania; partycja jest odzyskiwana po utracie kworum, rozważając repliki w dół jako utracone. Należy pamiętać, że może to spowodować utratę danych. |
 |ReconfigurationTimeLimit|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (300)|Dynamiczne|Określ wartość TimeSpan w sekundach. Limit czasu dla ponownej konfiguracji; po upływie którego zostanie zainicjowany Raport kondycji ostrzegawczej |
 |ReplicaRestartWaitDuration|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds ( \* 60.0 30)|Niedozwolone|Określ wartość TimeSpan w sekundach. Jest to ReplicaRestartWaitDuration dla FMService |
 |StandByReplicaKeepDuration|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds ( \* 3600.0 \* 24 7)|Niedozwolone|Określ wartość TimeSpan w sekundach. Jest to StandByReplicaKeepDuration dla FMService |
-|Wartość targetreplicasetsize|Int, wartość domyślna to 7|Niedozwolone|Jest to docelowa liczba replik FM, które będą obsługiwane przez Windows Fabric. Wyższa liczba powoduje wyższą niezawodność danych FM; z małą wadą wydajności. |
+|Wartość targetreplicasetsize|int, wartość domyślna to 7|Niedozwolone|Jest to docelowa liczba replik FM, które będą obsługiwane przez Windows Fabric. Wyższa liczba powoduje wyższą niezawodność danych FM; z małą wadą wydajności. |
 |UserMaxStandByReplicaCount |Int, wartość domyślna to 1 |Dynamiczne|Domyślna maksymalna liczba replik rezerwowych zachowywanych przez system dla usług użytkownika. |
 |UserReplicaRestartWaitDuration |Czas w sekundach, wartość domyślna to \* 60,0 30 |Dynamiczne|Określ wartość TimeSpan w sekundach. Gdy trwała replika ulegnie awarii; Windows Fabric czeka na ten czas trwania repliki, aby utworzyć kopię zapasową przed utworzeniem nowych replik zamiennych (co wymagałoby kopii stanu). |
 |UserStandByReplicaKeepDuration |Czas w sekundach, wartość domyślna to \* 3600,0 \* 24 7 |Dynamiczne|Określ wartość TimeSpan w sekundach. Gdy utrwalona replika wraca ze stanu Down; być może został już zastąpiony. Ten czasomierz określa, jak długo Radio będzie utrzymywać replikę rezerwową przed odpisaniem. |
@@ -244,7 +244,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |CompletedActionKeepDurationInSeconds | Int, wartość domyślna to 604800 |Static| To przybliżenie, jak długo mają być przechowywane akcje w stanie terminalu. Jest to również zależne od StoredActionCleanupIntervalInSeconds; ponieważ zadania do oczyszczenia są wykonywane tylko w tym interwale. 604800 wynosi 7 dni. |
 |DataLossCheckPollIntervalInSeconds|int, wartość domyślna to 5|Static|Jest to czas między sprawdzeniami wykonywanym przez system podczas oczekiwania na utratę danych. Liczba przypadków, gdy liczba utraconych danych zostanie sprawdzona na iterację wewnętrzną, to DataLossCheckWaitDurationInSeconds/this. |
 |DataLossCheckWaitDurationInSeconds|int, wartość domyślna to 25|Static|Łączny czas; w sekundach; że system będzie oczekiwał na utratę danych. Jest on używany wewnętrznie podczas wywoływania interfejsu API StartPartitionDataLossAsync (). |
-|MinReplicaSetSize |int, wartość domyślna to 0 |Static|MinReplicaSetSize dla FaultAnalysisService. |
+|MinReplicaSetSize |Int, wartość domyślna to 0 |Static|MinReplicaSetSize dla FaultAnalysisService. |
 |PlacementConstraints | ciąg, wartość domyślna to ""|Static| PlacementConstraints dla FaultAnalysisService. |
 |QuorumLossWaitDuration | Czas w sekundach, wartość domyślna to MaxValue |Static|Określ wartość TimeSpan w sekundach. QuorumLossWaitDuration dla FaultAnalysisService. |
 |ReplicaDropWaitDurationInSeconds|int, wartość domyślna to 600|Static|Ten parametr jest używany, gdy wywoływany jest interfejs API utraty danych. Określa, jak długo system będzie oczekiwał na porzucenie przez replikę po wywołaniu wewnętrznie usuwania repliki. |
@@ -252,7 +252,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |StandByReplicaKeepDuration| Czas w sekundach, wartość domyślna to (60*24*7) min |Static|Określ wartość TimeSpan w sekundach. StandByReplicaKeepDuration dla FaultAnalysisService. |
 |StoredActionCleanupIntervalInSeconds | Int, wartość domyślna to 3600 |Static|Dzieje się tak, jak często trwa czyszczenie magazynu. Tylko akcje w stanie terminalu; i zakończone co najmniej CompletedActionKeepDurationInSeconds temu zostaną usunięte. |
 |StoredChaosEventCleanupIntervalInSeconds | Int, wartość domyślna to 3600 |Static|Tak, jak często magazyn będzie monitorowany do czyszczenia; Jeśli liczba zdarzeń przekracza 30000; Czyszczenie zostanie rozpoczęte w programie. |
-|Wartość targetreplicasetsize |int, wartość domyślna to 0 |Static|NOT_PLATFORM_UNIX_START wartość targetreplicasetsize dla FaultAnalysisService. |
+|Wartość targetreplicasetsize |Int, wartość domyślna to 0 |Static|NOT_PLATFORM_UNIX_START wartość targetreplicasetsize dla FaultAnalysisService. |
 
 ## <a name="federation"></a>Federacja
 
@@ -265,7 +265,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
-|AcceptChunkUpload|bool, wartość domyślna to TRUE|Dynamiczne|Konfiguracja w celu określenia, czy usługa Magazyn plików akceptuje przekazywanie plików na podstawie fragmentów, czy nie podczas kopiowania pakietu aplikacji. |
+|AcceptChunkUpload|Bool, wartość domyślna to TRUE|Dynamiczne|Konfiguracja w celu określenia, czy usługa Magazyn plików akceptuje przekazywanie plików na podstawie fragmentów, czy nie podczas kopiowania pakietu aplikacji. |
 |AnonymousAccessEnabled | Bool, wartość domyślna to true |Static|Włącz/Wyłącz dostęp anonimowy do udziałów FileStoreService. |
 |CommonName1Ntlmx509CommonName|ciąg, wartość domyślna to ""|Static| Nazwa pospolita certyfikatu x509 używanego do generowania HMAC na CommonName1NtlmPasswordSecret w przypadku korzystania z uwierzytelniania NTLM |
 |CommonName1Ntlmx509StoreLocation|ciąg, wartość domyślna to "LocalMachine"|Static|Lokalizacja magazynu certyfikatu x509 użyta do wygenerowania algorytmu HMAC na CommonName1NtlmPasswordSecret w przypadku korzystania z uwierzytelniania NTLM |
@@ -316,14 +316,14 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
 |ConsiderWarningAsError |Bool, wartość domyślna to false |Static|Zasady oceny kondycji klastra: ostrzeżenia są traktowane jako błędy. |
-|MaxPercentUnhealthyApplications | int, wartość domyślna to 0 |Static|Zasady oceny kondycji klastra: maksymalny procent aplikacji w złej kondycji, które mogą być w stanie dobrać klaster. |
-|MaxPercentUnhealthyNodes | int, wartość domyślna to 0 |Static|Zasady oceny kondycji klastra: maksymalny procent węzłów w złej kondycji, które mogą być prawidłowe w przypadku kondycji klastra. |
+|MaxPercentUnhealthyApplications | Int, wartość domyślna to 0 |Static|Zasady oceny kondycji klastra: maksymalny procent aplikacji w złej kondycji, które mogą być w stanie dobrać klaster. |
+|MaxPercentUnhealthyNodes | Int, wartość domyślna to 0 |Static|Zasady oceny kondycji klastra: maksymalny procent węzłów w złej kondycji, które mogą być prawidłowe w przypadku kondycji klastra. |
 
 ## <a name="healthmanagerclusterupgradehealthpolicy"></a>HealthManager/ClusterUpgradeHealthPolicy
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
-|MaxPercentDeltaUnhealthyNodes|Int, wartość domyślna to 10|Static|Zasady oceny kondycji uaktualniania klastra: maksymalna wartość procentowa różnic węzłów w złej kondycji dozwolona w przypadku kondycji klastra |
+|MaxPercentDeltaUnhealthyNodes|int, wartość domyślna to 10|Static|Zasady oceny kondycji uaktualniania klastra: maksymalna wartość procentowa różnic węzłów w złej kondycji dozwolona w przypadku kondycji klastra |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, wartość domyślna to 15|Static|Zasady oceny kondycji uaktualniania klastra: maksymalny procent różnicy węzłów w złej kondycji w domenie uaktualnienia dozwolony przez klaster w dobrej kondycji |
 
 ## <a name="hosting"></a>Hosting
@@ -340,12 +340,12 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |ContainerImageDownloadTimeout|int, liczba sekund, wartość domyślna to 1200 (20 minut)|Dynamiczne|Liczba sekund przed upływem limitu czasu pobierania obrazu.|
 |ContainerImagesToSkip|ciąg znaków, nazwy obrazów oddzielone znakami pionowymi, wartość domyślna to ""|Static|Nazwa co najmniej jednego obrazu kontenera, który nie powinien zostać usunięty.  Używane z parametrem PruneContainerImages.|
 |ContainerServiceLogFileNamePrefix|ciąg, wartość domyślna to "sfcontainerlogs"|Static|Prefiks nazwy pliku dla plików dziennika generowanych przez kontenery platformy Docker.  Tylko system Windows.|
-|ContainerServiceLogFileRetentionCount|Int, wartość domyślna to 10|Static|Liczba plików dziennika wygenerowanych przez kontenery platformy Docker przed zastąpieniem plików dziennika.  Tylko system Windows.|
+|ContainerServiceLogFileRetentionCount|int, wartość domyślna to 10|Static|Liczba plików dziennika wygenerowanych przez kontenery platformy Docker przed zastąpieniem plików dziennika.  Tylko system Windows.|
 |CreateFabricRuntimeTimeout|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (120)|Dynamiczne| Określ wartość TimeSpan w sekundach. Wartość limitu czasu dla wywołania synchronizacji FabricCreateRuntime |
 |DefaultContainerRepositoryAccountName|ciąg, wartość domyślna to ""|Static|Poświadczenia domyślne używane zamiast poświadczeń określonych w ApplicationManifest. XML |
 |DefaultContainerRepositoryPassword|ciąg, wartość domyślna to ""|Static|Domyślne poświadczenia hasła używane zamiast poświadczeń określonych w ApplicationManifest. XML|
 |DefaultContainerRepositoryPasswordType|ciąg, wartość domyślna to ""|Static|W przypadku braku pustego ciągu wartość może być "zaszyfrowana" lub "SecretsStoreRef".|
-|DeploymentMaxFailureCount|Int, wartość domyślna to 20| Dynamiczne|Ponowna próba wdrożenia aplikacji zostanie ponowiona dla DeploymentMaxFailureCount czasów przed niepowodzeniem wdrożenia tej aplikacji w węźle.| 
+|DeploymentMaxFailureCount|int, wartość domyślna to 20| Dynamiczne|Ponowna próba wdrożenia aplikacji zostanie ponowiona dla DeploymentMaxFailureCount czasów przed niepowodzeniem wdrożenia tej aplikacji w węźle.| 
 |DeploymentMaxRetryInterval| TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (3600)|Dynamiczne| Określ wartość TimeSpan w sekundach. Maksymalny interwał ponawiania prób dla wdrożenia. W przypadku każdego ciągłego błędu interwał ponawiania jest obliczany jako minimum (DeploymentMaxRetryInterval; Liczba błędów ciągłych * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (10)|Dynamiczne|Określ wartość TimeSpan w sekundach. Interwał wycofywania dla błędu wdrożenia. Na każdym ciągłym błędzie wdrożenia system podejmie ponowną próbę wdrożenia do MaxDeploymentFailureCount. Interwał ponawiania prób to iloczyn ciągłego niepowodzeń wdrażania oraz interwału wycofywania wdrożenia. |
 |DisableContainers|bool, wartość domyślna to FALSE|Static|Konfiguracja do wyłączania kontenerów — używana zamiast DisableContainerServiceStartOnContainerActivatorOpen, która jest przestarzałą konfiguracją |
@@ -403,12 +403,12 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
 |AutomaticMemoryConfiguration |Int, wartość domyślna to 1 |Dynamiczne|Flaga wskazująca, czy ustawienia pamięci mają być automatycznie i konfigurowane dynamicznie. Jeśli wartość jest równa zero, ustawienia konfiguracji pamięci są używane bezpośrednio i nie są zmieniane w oparciu o warunki systemowe. Jeśli jedna następnie ustawienia pamięci zostaną skonfigurowane automatycznie i mogą ulec zmianie w zależności od warunków systemu. |
-|MaximumDestagingWriteOutstandingInKB | int, wartość domyślna to 0 |Dynamiczne|Liczba KB umożliwiająca przejściu dziennika udostępnionego z wyprzedzeniem dedykowanego dziennika. Wartość 0 oznacza brak limitu.
+|MaximumDestagingWriteOutstandingInKB | Int, wartość domyślna to 0 |Dynamiczne|Liczba KB umożliwiająca przejściu dziennika udostępnionego z wyprzedzeniem dedykowanego dziennika. Wartość 0 oznacza brak limitu.
 |SharedLogId |ciąg, wartość domyślna to "" |Static|Unikatowy identyfikator GUID dla udostępnionego kontenera dzienników. Użyj "", jeśli ścieżka domyślna zostanie użyta w obszarze Katalog główny danych sieci szkieletowej. |
 |SharedLogPath |ciąg, wartość domyślna to "" |Static|Ścieżka i nazwa pliku do lokalizacji, w której ma zostać umieszczony kontener udostępnionego dziennika. Użyj "", aby użyć domyślnej ścieżki w obszarze Katalog główny danych sieci szkieletowej. |
 |SharedLogSizeInMB |Int, wartość domyślna to 8192 |Static|Liczba MB do przydzielenia w kontenerze dzienników udostępnionych. |
 |SharedLogThrottleLimitInPercentUsed|int, wartość domyślna to 0 | Static | Procent użycia udostępnionego dziennika, który będzie powodować ograniczenie przepustowości. Wartość musi należeć do zakresu od 0 do 100. Wartość 0 oznacza użycie domyślnej wartości procentowej. Wartość 100 oznacza brak ograniczenia. Wartość z zakresu od 1 do 99 określa procent użycia dziennika, powyżej którego nastąpi ograniczenie przepustowości; Jeśli na przykład dziennik udostępniony to 10 GB, a wartość to 90, ograniczenie zostanie wykonane, gdy 9 GB jest w użyciu. Zalecane jest użycie wartości domyślnej.|
-|WriteBufferMemoryPoolMaximumInKB | int, wartość domyślna to 0 |Dynamiczne|Liczba KB zezwalająca na zwiększenie puli pamięci buforu zapisu. Wartość 0 oznacza brak limitu. |
+|WriteBufferMemoryPoolMaximumInKB | Int, wartość domyślna to 0 |Dynamiczne|Liczba KB zezwalająca na zwiększenie puli pamięci buforu zapisu. Wartość 0 oznacza brak limitu. |
 |WriteBufferMemoryPoolMinimumInKB |Int, wartość domyślna to 8388608 |Dynamiczne|Liczba KB do wstępnego przydzielenia dla puli pamięci buforu zapisu. Wartość 0 oznacza, że wartość domyślna nie powinna być zgodna z SharedLogSizeInMB poniżej. |
 
 ## <a name="management"></a>Zarządzanie
@@ -417,10 +417,10 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | --- | --- | --- | --- |
 |AutomaticUnprovisionInterval|TimeSpan, wartość domyślna to common:: TimeSpan:: FromMinutes (5)|Dynamiczne|Określ wartość TimeSpan w sekundach. Interwał oczyszczania dozwolony dla wyrejestrowania typu aplikacji podczas automatycznego czyszczenia typu aplikacji.|
 |AzureStorageMaxConnections | Int, wartość domyślna to 5000 |Dynamiczne|Maksymalna liczba jednoczesnych połączeń z usługą Azure Storage. |
-|AzureStorageMaxWorkerThreads | int, wartość domyślna to 25 |Dynamiczne|Jednocześnie Maksymalna liczba wątków roboczych. |
+|AzureStorageMaxWorkerThreads | Int, wartość domyślna to 25 |Dynamiczne|Jednocześnie Maksymalna liczba wątków roboczych. |
 |AzureStorageOperationTimeout | Czas w sekundach, wartość domyślna to 6000 |Dynamiczne|Określ wartość TimeSpan w sekundach. Przekroczono limit czasu na zakończenie operacji xstore. |
 |CleanupApplicationPackageOnProvisionSuccess|bool, wartość domyślna to FALSE |Dynamiczne|Włącza lub wyłącza automatyczne czyszczenie pakietu aplikacji po pomyślnym zainicjowaniu obsługi administracyjnej. |
-|CleanupUnusedApplicationTypes|bool, wartość domyślna to FALSE |Dynamiczne|Ta konfiguracja umożliwia automatyczne Wyrejestrowanie nieużywanych wersji typu aplikacji z pominięciem najnowszych trzech nieużywanych wersji, a tym samym przycinanie miejsca na dysku zajmowanego przez magazyn obrazów. Automatyczne czyszczenie zostanie wyzwolone po zakończeniu pomyślnego zainicjowania obsługi dla tego określonego typu aplikacji, a także będzie uruchamiane okresowo raz dziennie dla wszystkich typów aplikacji. Liczba nieużywanych wersji do pominięcia jest konfigurowalna przy użyciu parametru "MaxUnusedAppTypeVersionsToKeep". |
+|CleanupUnusedApplicationTypes|Bool, wartość domyślna to FALSE |Dynamiczne|Ta konfiguracja umożliwia automatyczne Wyrejestrowanie nieużywanych wersji typu aplikacji z pominięciem najnowszych trzech nieużywanych wersji, a tym samym przycinanie miejsca na dysku zajmowanego przez magazyn obrazów. Automatyczne czyszczenie zostanie wyzwolone po zakończeniu pomyślnego zainicjowania obsługi dla tego określonego typu aplikacji, a także będzie uruchamiane okresowo raz dziennie dla wszystkich typów aplikacji. Liczba nieużywanych wersji do pominięcia jest konfigurowalna przy użyciu parametru "MaxUnusedAppTypeVersionsToKeep". |
 |DisableChecksumValidation | Bool, wartość domyślna to false |Static| Ta konfiguracja umożliwia włączenie lub wyłączenie walidacji sumy kontrolnej podczas aprowizacji aplikacji. |
 |DisableServerSideCopy | Bool, wartość domyślna to false |Static|Ta konfiguracja włącza lub wyłącza kopie pakietu aplikacji po stronie serwera na magazynu ImageStore podczas aprowizacji aplikacji. |
 |ImageCachingEnabled | Bool, wartość domyślna to true |Static|Ta konfiguracja umożliwia włączenie lub wyłączenie buforowania. |
@@ -448,7 +448,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
-|GatewayServiceDescriptionCacheLimit |int, wartość domyślna to 0 |Static|Maksymalna liczba wpisów przechowywanych w pamięci podręcznej Opis usługi LRU w ramach bramy nazewnictwa (wartość 0 powoduje brak limitu). |
+|GatewayServiceDescriptionCacheLimit |Int, wartość domyślna to 0 |Static|Maksymalna liczba wpisów przechowywanych w pamięci podręcznej Opis usługi LRU w ramach bramy nazewnictwa (wartość 0 powoduje brak limitu). |
 |MaxClientConnections |Int, wartość domyślna to 1000 |Dynamiczne|Maksymalna dozwolona liczba połączeń klienta na bramę. |
 |MaxFileOperationTimeout |Czas w sekundach, wartość domyślna to 30 |Dynamiczne|Określ wartość TimeSpan w sekundach. Maksymalny limit czasu dozwolony dla operacji usługi magazynu plików. Żądania określające większy limit czasu zostaną odrzucone. |
 |MaxIndexedEmptyPartitions |Int, wartość domyślna to 1000 |Dynamiczne|Maksymalna liczba pustych partycji, które pozostaną indeksowane w pamięci podręcznej powiadomień w celu synchronizowania ponownie połączonych klientów. Wszystkie puste partycje powyżej tej liczby zostaną usunięte z indeksu w kolejności wersji wyszukiwania rosnącego. Ponowne łączenie klientów nadal może synchronizować i odbierać brakujące aktualizacje pustej partycji; jednak protokół synchronizacji jest droższy. |
@@ -462,7 +462,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |QuorumLossWaitDuration | Czas w sekundach, wartość domyślna to MaxValue |Niedozwolone| Określ wartość TimeSpan w sekundach. Gdy Usługa nazewnictwa do utracie kworum; ten czasomierz rozpocznie się. Gdy wygaśnie, Radio będzie traktować repliki w dół jako utracone; i podjęto próbę odzyskania kworum. Nie oznacza to, że może to spowodować utratę danych. |
 |RepairInterval | Czas w sekundach, wartość domyślna to 5 |Static| Określ wartość TimeSpan w sekundach. Interwał, w którym rozpocznie się naprawianie niespójności nazw między właścicielem urzędu i właścicielem nazwy. |
 |ReplicaRestartWaitDuration | Czas w sekundach, wartość domyślna to (60,0 * 30)|Niedozwolone| Określ wartość TimeSpan w sekundach. Gdy replika Usługa nazewnictwa ulegnie awarii; ten czasomierz rozpocznie się. Po wygaśnięciu FM rozpocznie się zamiana replik, które nie są jeszcze uwzględniane. |
-|ServiceDescriptionCacheLimit | int, wartość domyślna to 0 |Static| Maksymalna liczba wpisów przechowywanych w pamięci podręcznej Opis usługi LRU w usłudze Magazyn nazewnictwa (wartość 0 nie ma limitu). |
+|ServiceDescriptionCacheLimit | Int, wartość domyślna to 0 |Static| Maksymalna liczba wpisów przechowywanych w pamięci podręcznej Opis usługi LRU w usłudze Magazyn nazewnictwa (wartość 0 nie ma limitu). |
 |ServiceNotificationTimeout |Czas w sekundach, wartość domyślna to 30 |Dynamiczne|Określ wartość TimeSpan w sekundach. Limit czasu używany podczas dostarczania powiadomień usługi do klienta. |
 |StandByReplicaKeepDuration | Czas w sekundach, wartość domyślna to 3600,0 * 2 |Niedozwolone| Określ wartość TimeSpan w sekundach. Gdy Usługa nazewnictwa replika wraca ze stanu Down; być może został już zastąpiony. Ten czasomierz określa, jak długo Radio będzie utrzymywać replikę rezerwową przed odpisaniem. |
 |Wartość targetreplicasetsize |Int, wartość domyślna to 7 |Niedozwolone|Liczba zestawów replik dla każdej partycji magazynu Usługa nazewnictwa. Zwiększenie liczby zestawów replik zwiększa poziom niezawodności informacji w magazynie Usługa nazewnictwa. zmniejszenie zmiany, że informacje zostaną utracone w wyniku awarii węzła; koszt zwiększonego obciążenia Windows Fabric i czas potrzebny do wykonania aktualizacji danych nazewnictwa.|
@@ -511,23 +511,23 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
-|AffinityConstraintPriority | int, wartość domyślna to 0 | Dynamiczne|Określa priorytet ograniczenia koligacji: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
-|ApplicationCapacityConstraintPriority | int, wartość domyślna to 0 | Dynamiczne|Określa priorytet ograniczenia pojemności: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
+|AffinityConstraintPriority | Int, wartość domyślna to 0 | Dynamiczne|Określa priorytet ograniczenia koligacji: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
+|ApplicationCapacityConstraintPriority | Int, wartość domyślna to 0 | Dynamiczne|Określa priorytet ograniczenia pojemności: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
 |AutoDetectAvailableResources|bool, wartość domyślna to TRUE|Static|Ta konfiguracja spowoduje wyzwolenie automatycznego wykrywania dostępnych zasobów w węźle (procesor i pamięć), gdy ta konfiguracja zostanie ustawiona na true — będziemy odczytywać rzeczywiste pojemności i poprawiać je, jeśli użytkownik określił nieprawidłowe pojemności węzłów lub nie zdefiniowano ich w ogóle, jeśli ta konfiguracja jest ustawiona na wartość FAŁSZ — zostanie  Śledź ostrzeżenie, że użytkownik określił nieprawidłowe pojemności węzła; ale nie zostaną one poprawione. oznacza to, że użytkownik chce mieć pojemności określone jako > niż w rzeczywistości czy w przypadku niezdefiniowania pojemności; przyjmie ona nieograniczoną pojemność |
 |BalancingDelayAfterNewNode | Czas w sekundach, wartość domyślna to 120 |Dynamiczne|Określ wartość TimeSpan w sekundach. Nie uruchamiaj działań równoważenia obciążenia w tym okresie po dodaniu nowego węzła. |
 |BalancingDelayAfterNodeDown | Czas w sekundach, wartość domyślna to 120 |Dynamiczne|Określ wartość TimeSpan w sekundach. Nie uruchamiaj działań równoważenia obciążenia w tym okresie po zdarzeniu w dół węzła. |
-|CapacityConstraintPriority | int, wartość domyślna to 0 | Dynamiczne|Określa priorytet ograniczenia pojemności: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
+|CapacityConstraintPriority | Int, wartość domyślna to 0 | Dynamiczne|Określa priorytet ograniczenia pojemności: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, wartość domyślna to 20 | Dynamiczne|Określa liczbę kolejnych porzuconych przesunięć ResourceBalancer przed wykonaniem diagnostyki i wyemitowaniu ostrzeżeń dotyczących kondycji. Poziomem W tym stanie nie są emitowane żadne ostrzeżenia. |
 |ConstraintFixPartialDelayAfterNewNode | Czas w sekundach, wartość domyślna to 120 |Dynamiczne| Określ wartość TimeSpan w sekundach. DDo nie naprawiaj naruszeń ograniczenia FaultDomain i UpgradeDomain w tym okresie po dodaniu nowego węzła. |
 |ConstraintFixPartialDelayAfterNodeDown | Czas w sekundach, wartość domyślna to 120 |Dynamiczne| Określ wartość TimeSpan w sekundach. Nie należy usuwać naruszeń ograniczenia FaultDomain i UpgradeDomain w tym okresie po zdarzeniu w dół węzła. |
-|ConstraintViolationHealthReportLimit | int, wartość domyślna to 50 |Dynamiczne| Określa, ile razy ograniczenie repliki ma być trwale nienaprawione przed przeprowadzeniem diagnostyki i Emituj raporty kondycji. |
+|ConstraintViolationHealthReportLimit | Int, wartość domyślna to 50 |Dynamiczne| Określa, ile razy ograniczenie repliki ma być trwale nienaprawione przed przeprowadzeniem diagnostyki i Emituj raporty kondycji. |
 |DetailedConstraintViolationHealthReportLimit | Int, wartość domyślna to 200 |Dynamiczne| Określa, ile razy naruszenie repliki ma być trwałe nienaprawione przed przeprowadzeniem diagnostyki, a szczegółowe raporty kondycji są emitowane. |
-|DetailedDiagnosticsInfoListLimit | int, wartość domyślna to 15 |Dynamiczne| Definiuje liczbę wpisów diagnostycznych (ze szczegółowymi informacjami) na ograniczenie do uwzględnienia przed obcinaniem w diagnostyce.|
-|DetailedNodeListLimit | int, wartość domyślna to 15 |Dynamiczne| Definiuje liczbę węzłów na ograniczenie do uwzględnienia przed obcinaniem w raportach nieumieszczonych replik. |
-|DetailedPartitionListLimit | int, wartość domyślna to 15 |Dynamiczne| Definiuje liczbę partycji na wpis diagnostyczny dla ograniczenia, które mają zostać uwzględnione przed obcinaniem w diagnostyce. |
+|DetailedDiagnosticsInfoListLimit | Int, wartość domyślna to 15 |Dynamiczne| Definiuje liczbę wpisów diagnostycznych (ze szczegółowymi informacjami) na ograniczenie do uwzględnienia przed obcinaniem w diagnostyce.|
+|DetailedNodeListLimit | Int, wartość domyślna to 15 |Dynamiczne| Definiuje liczbę węzłów na ograniczenie do uwzględnienia przed obcinaniem w raportach nieumieszczonych replik. |
+|DetailedPartitionListLimit | Int, wartość domyślna to 15 |Dynamiczne| Definiuje liczbę partycji na wpis diagnostyczny dla ograniczenia, które mają zostać uwzględnione przed obcinaniem w diagnostyce. |
 |DetailedVerboseHealthReportLimit | Int, wartość domyślna to 200 | Dynamiczne|Określa, ile razy ma być trwała nieumieszczona replika, zanim szczegółowe raporty kondycji zostaną wyemitowane. |
 |EnforceUserServiceMetricCapacities|bool, wartość domyślna to FALSE | Static |Włącza ochronę usług sieci szkieletowej, wszystkie usługi użytkowników są w ramach jednego obiektu zadania/cgroup i są ograniczone do określonej ilości zasobów, musi to być statyczne (wymaga ponownego uruchomienia elemencie fabrichost określono) jako tworzenia/usuwania obiektu zadania użytkownika i limitów ustawień wykonywanych podczas otwierania Hosta sieci szkieletowej |
-|FaultDomainConstraintPriority | int, wartość domyślna to 0 |Dynamiczne| Określa priorytet ograniczenia domeny błędów: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
+|FaultDomainConstraintPriority | Int, wartość domyślna to 0 |Dynamiczne| Określa priorytet ograniczenia domeny błędów: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
 |GlobalMovementThrottleCountingInterval | Czas w sekundach, wartość domyślna to 600 |Static| Określ wartość TimeSpan w sekundach. Wskazuje długość przeszłego interwału, dla którego ma być śledzone przesunięcia repliki domeny (używane razem z GlobalMovementThrottleThreshold). Można ustawić na 0, aby całkowicie zignorować globalne ograniczenie przepustowości. |
 |GlobalMovementThrottleThreshold | Uint, wartość domyślna to 1000 |Dynamiczne| Maksymalna liczba przesunięć dozwolona w fazie równoważenia w poprzednim interwale wskazywanym przez GlobalMovementThrottleCountingInterval. |
 |GlobalMovementThrottleThresholdForBalancing | Uint, wartość domyślna to 0 | Dynamiczne|Maksymalna liczba przesunięć dozwolona w fazie równoważenia w przeszłości interwał wskazany przez GlobalMovementThrottleCountingInterval. wartość 0 oznacza brak limitu. |
@@ -536,7 +536,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |GlobalMovementThrottleThresholdPercentageForBalancing|Double, wartość domyślna to 0|Dynamiczne|Maksymalna liczba przesunięć dozwolona w fazie równoważenia (wyrażona jako procent całkowitej liczby replik w PLB) w przeszłości interwał wskazywany przez GlobalMovementThrottleCountingInterval. wartość 0 oznacza brak limitu. Jeśli określono oba te i GlobalMovementThrottleThresholdForBalancing; następnie zostanie użyty bardziej ostrożny limit.|
 |InBuildThrottlingAssociatedMetric | ciąg, wartość domyślna to "" |Static| Skojarzona Nazwa metryki dla tego ograniczenia. |
 |InBuildThrottlingEnabled | Bool, wartość domyślna to false |Dynamiczne| Ustal, czy włączono ograniczenie w kompilacji. |
-|InBuildThrottlingGlobalMaxValue | int, wartość domyślna to 0 |Dynamiczne|Maksymalna liczba replik w kompilacji, które są dozwolone globalnie. |
+|InBuildThrottlingGlobalMaxValue | Int, wartość domyślna to 0 |Dynamiczne|Maksymalna liczba replik w kompilacji, które są dozwolone globalnie. |
 |InterruptBalancingForAllFailoverUnitUpdates | Bool, wartość domyślna to false | Dynamiczne|Określa, czy dowolny typ aktualizacji jednostki trybu failover powinien przerwać szybkie lub wolne równoważenie. Po podaniu określonego "false" przebiegu równoważenia zostanie przerwany, jeśli jednostka failover Unit: zostanie utworzony/usunięty; Brak replik; Zmieniono lokalizację podstawowej repliki lub zmieniono liczbę replik. Przebieg równoważenia nie zostanie przerwany w innych przypadkach — Jeśli jednostka failover Unit: ma dodatkowe repliki; Zmieniono jakąkolwiek flagę repliki; Zmieniono tylko wersję partycji lub dowolną inną wielkość liter. |
 |MinConstraintCheckInterval | Czas w sekundach, wartość domyślna to 1 |Dynamiczne| Określ wartość TimeSpan w sekundach. Określa minimalną ilość czasu, który musi upłynąć przed upływem dwóch kolejnych kontroli ograniczeń. |
 |MinLoadBalancingInterval | Czas w sekundach, wartość domyślna to 5 |Dynamiczne| Określ wartość TimeSpan w sekundach. Określa minimalny czas, który musi upłynąć przed upływem dwóch kolejnych operacji równoważenia obciążenia. |
@@ -547,23 +547,23 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |MoveParentToFixAffinityViolation | Bool, wartość domyślna to false |Dynamiczne| Ustawienie określające, czy można przenosić repliki nadrzędne w celu naprawy ograniczeń koligacji.|
 |PartiallyPlaceServices | Bool, wartość domyślna to true |Dynamiczne| Określa, czy wszystkie repliki usługi w klastrze mają być umieszczone "wszystkie, czy nie", w odniesieniu do nich są ograniczone odpowiednie węzły.|
 |PlaceChildWithoutParent | Bool, wartość domyślna to true | Dynamiczne|Ustawienie określające, czy można umieścić replikę podrzędną usługi w przypadku braku repliki nadrzędnej. |
-|PlacementConstraintPriority | int, wartość domyślna to 0 | Dynamiczne|Określa priorytet ograniczenia położenia: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
+|PlacementConstraintPriority | Int, wartość domyślna to 0 | Dynamiczne|Określa priorytet ograniczenia położenia: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
 |PlacementConstraintValidationCacheSize | Int, wartość domyślna to 10000 |Dynamiczne| Ogranicza rozmiar tabeli używanej do szybkiej walidacji i buforowania wyrażeń ograniczeń umieszczania. |
 |PlacementSearchTimeout | Czas w sekundach, wartość domyślna to 0,5 |Dynamiczne| Określ wartość TimeSpan w sekundach. Podczas umieszczania usług; Wyszukaj o największej długości przed zwróceniem wyniku. |
 |PLBRefreshGap | Czas w sekundach, wartość domyślna to 1 |Dynamiczne| Określ wartość TimeSpan w sekundach. Określa minimalny czas, który musi upłynąć przed ponownym odświeżaniem PLB. |
 |PreferredLocationConstraintPriority | Int, wartość domyślna to 2| Dynamiczne|Określa priorytet ograniczenia preferowanej lokalizacji: 0: Fizycznych 1: Rezerwacje 2: Optymalizacja poziomem Zignoruj |
 |PreferUpgradedUDs|bool, wartość domyślna to TRUE|Dynamiczne|Włącza i wyłącza logikę, która preferuje przeniesienie do już uaktualnionej wersji.|
 |PreventTransientOvercommit | Bool, wartość domyślna to false | Dynamiczne|Określa, czy PLB od razu liczą zasoby, które zostaną zwolnione przez zainicjowane przeniesienia. Domyślnie; PLB może inicjować przenoszenie i poruszać się w tym samym węźle, który może tworzyć przejściowe nadmiarowe. Ustawienie tego parametru na wartość true uniemożliwi wyłączenie tych rodzajów zatwierdzeń i defragmentacji na żądanie (placementWithMove). |
-|ScaleoutCountConstraintPriority | int, wartość domyślna to 0 |Dynamiczne| Określa priorytet ograniczenia liczby skalowania: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
+|ScaleoutCountConstraintPriority | Int, wartość domyślna to 0 |Dynamiczne| Określa priorytet ograniczenia liczby skalowania: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
 |SwapPrimaryThrottlingAssociatedMetric | ciąg, wartość domyślna to ""|Static| Skojarzona Nazwa metryki dla tego ograniczenia. |
 |SwapPrimaryThrottlingEnabled | Bool, wartość domyślna to false|Dynamiczne| Ustal, czy jest włączone ograniczenie wymiany. |
-|SwapPrimaryThrottlingGlobalMaxValue | int, wartość domyślna to 0 |Dynamiczne| Maksymalna liczba replik podstawowych, które są dozwolone globalnie. |
+|SwapPrimaryThrottlingGlobalMaxValue | Int, wartość domyślna to 0 |Dynamiczne| Maksymalna liczba replik podstawowych, które są dozwolone globalnie. |
 |TraceCRMReasons |Bool, wartość domyślna to true |Dynamiczne|Określa, czy mają być śledzone przyczyny przesunięć przez programu CRM do kanału zdarzeń operacyjnych. |
 |UpgradeDomainConstraintPriority | Int, wartość domyślna to 1| Dynamiczne|Określa priorytet ograniczenia domeny uaktualnienia: 0: Fizycznych 1: Rezerwacje poziomem Ignoruj. |
 |UseMoveCostReports | Bool, wartość domyślna to false | Dynamiczne|Instruuje LB, aby zignorować element Cost funkcji oceniania; to, że potencjalnie duża liczba przeniesień do lepszego zrównoważonego umieszczania. |
 |UseSeparateSecondaryLoad | Bool, wartość domyślna to true | Dynamiczne|Ustawienie określające, czy ma być używane inne obciążenie pomocnicze. |
 |ValidatePlacementConstraint | Bool, wartość domyślna to true |Dynamiczne| Określa, czy wyrażenie PlacementConstraint dla usługi jest sprawdzane podczas aktualizowania ServiceDescription usługi. |
-|ValidatePrimaryPlacementConstraintOnPromote| bool, wartość domyślna to TRUE |Dynamiczne|Określa, czy wyrażenie PlacementConstraint dla usługi jest oceniane dla preferencji głównych w trybie failover. |
+|ValidatePrimaryPlacementConstraintOnPromote| Bool, wartość domyślna to TRUE |Dynamiczne|Określa, czy wyrażenie PlacementConstraint dla usługi jest oceniane dla preferencji głównych w trybie failover. |
 |VerboseHealthReportLimit | Int, wartość domyślna to 20 | Dynamiczne|Określa, ile razy należy umieścić replikę, zanim zostanie zgłoszone ostrzeżenie o kondycji (jeśli jest włączone pełne Raportowanie kondycji). |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
@@ -575,7 +575,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |GracefulReplicaShutdownMaxDuration|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (120)|Dynamiczne|Określ wartość TimeSpan w sekundach. Czas oczekiwania systemu przed przerwaniem hostów usługi, które mają repliki, które są zablokowane. Jeśli ta wartość jest równa 0, repliki nie będą nakazuje zamknięcia.|
 |NodeDeactivationMaxReplicaCloseDuration | Czas w sekundach, wartość domyślna to 900 |Dynamiczne|Określ wartość TimeSpan w sekundach. Czas oczekiwania systemu przed przerwaniem hostów usługi, które mają repliki, które są zamykane podczas dezaktywacji węzła. |
 |PeriodicApiSlowTraceInterval | Czas w sekundach, wartość domyślna to 5 minut. |Dynamiczne| Określ wartość TimeSpan w sekundach. PeriodicApiSlowTraceInterval definiuje interwał, w jakim wolne wywołania interfejsu API zostaną prześledzone przez Monitor interfejsu API. |
-|ReplicaChangeRoleFailureRestartThreshold|Int, wartość domyślna to 10|Dynamiczne| Całkowitą. Określ liczbę błędów interfejsu API podczas podwyższania poziomu, po których zostanie zastosowana akcja autołagodzenia (ponowne uruchomienie repliki). |
+|ReplicaChangeRoleFailureRestartThreshold|int, wartość domyślna to 10|Dynamiczne| Całkowitą. Określ liczbę błędów interfejsu API podczas podwyższania poziomu, po których zostanie zastosowana akcja autołagodzenia (ponowne uruchomienie repliki). |
 |ReplicaChangeRoleFailureWarningReportThreshold|int, wartość domyślna to 2147483647|Dynamiczne| Całkowitą. Określ liczbę błędów interfejsu API podczas podwyższania poziomu, po których zostanie zgłoszony Raport kondycji ostrzeżenia.|
 |ServiceApiHealthDuration | Czas w sekundach, wartość domyślna to 30 minut. |Dynamiczne| Określ wartość TimeSpan w sekundach. ServiceApiHealthDuration definiuje, jak długo czekamy na uruchomienie interfejsu API usługi przed zgłoszeniem nieprawidłowej kondycji. |
 |ServiceReconfigurationApiHealthDuration | Czas w sekundach, wartość domyślna to 30 |Dynamiczne| Określ wartość TimeSpan w sekundach. ServiceReconfigurationApiHealthDuration określa, jak długo czekamy na uruchomienie interfejsu API usługi przed zgłoszeniem złej kondycji. Dotyczy to wywołań interfejsu API, które mają wpływ na dostępność.|
@@ -585,10 +585,10 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval|TimeSpan, wartość domyślna to common:: TimeSpan:: FromMilliseconds (15)|Static|Określ wartość TimeSpan w sekundach. Określa czas oczekiwania przez replikatora po odebraniu operacji przed wysłaniem potwierdzenia do końca. Inne operacje odebrane w tym okresie będą musiały zostać przesłane z powrotem w jednej wiadomości — > zmniejszenie ruchu sieciowego, ale może to zmniejszyć przepływność replikatora.|
 |MaxCopyQueueSize|uint, wartość domyślna to 1024|Static|Jest to maksymalna wartość definiująca początkowy rozmiar kolejki, która zachowuje operacje replikacji. Należy pamiętać, że musi być potęgą liczby 2. Jeśli w czasie wykonywania Kolejka powiększa się do tej operacji, ta operacja zostanie ograniczona między replikacją podstawową i pomocniczą.|
-|MaxPrimaryReplicationQueueMemorySize|Uint, wartość domyślna to 0|Static|Jest to maksymalna wartość głównej kolejki replikacji w bajtach.|
+|MaxPrimaryReplicationQueueMemorySize|uint, wartość domyślna to 0|Static|Jest to maksymalna wartość głównej kolejki replikacji w bajtach.|
 |MaxPrimaryReplicationQueueSize|uint, wartość domyślna to 1024|Static|Jest to maksymalna liczba operacji, które mogą istnieć w podstawowej kolejce replikacji. Należy pamiętać, że musi być potęgą liczby 2.|
 |MaxReplicationMessageSize|uint, wartość domyślna to 52428800|Static|Maksymalny rozmiar komunikatu operacji replikacji. Wartość domyślna to 50 MB.|
-|MaxSecondaryReplicationQueueMemorySize|Uint, wartość domyślna to 0|Static|Jest to maksymalna wartość kolejki replikacji pomocniczej w bajtach.|
+|MaxSecondaryReplicationQueueMemorySize|uint, wartość domyślna to 0|Static|Jest to maksymalna wartość kolejki replikacji pomocniczej w bajtach.|
 |MaxSecondaryReplicationQueueSize|uint, wartość domyślna to 2048|Static|Jest to maksymalna liczba operacji, które mogą istnieć w pomocniczej kolejce replikacji. Należy pamiętać, że musi być potęgą liczby 2.|
 |QueueHealthMonitoringInterval|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (30)|Static|Określ wartość TimeSpan w sekundach. Ta wartość określa czas używany przez Replikator do monitorowania wszystkich zdarzeń kondycji ostrzeżeń/błędów w kolejkach operacji replikacji. Wartość "0" powoduje wyłączenie monitorowania kondycji |
 |QueueHealthWarningAtUsagePercent|uint, wartość domyślna to 80|Static|Ta wartość określa użycie kolejki replikacji (w procentach), po której raportowane jest ostrzeżenie o wysokim użyciu kolejki. Należy to zrobić po upływie interwału prolongaty QueueHealthMonitoringInterval. Jeśli użycie kolejki spadnie poniżej tego procentu w interwale prolongaty|
@@ -737,7 +737,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |NameExists |ciąg, wartość domyślna to "\|administrator\|użytkownika" | Dynamiczne|Konfiguracja zabezpieczeń dla sprawdzania istnienia identyfikatorów URI. |
 |NodeControl |ciąg, wartość domyślna to "Administrator" |Dynamiczne| Konfiguracja zabezpieczeń do uruchomienia; zatrzymanie i ponownie uruchamiając węzły. |
 |NodeStateRemoved |ciąg, wartość domyślna to "Administrator" |Dynamiczne| Usunięto konfigurację zabezpieczeń dla stanu węzła raportowania. |
-|Ping |ciąg, wartość domyślna to "\|administrator\|użytkownika" |Dynamiczne| Konfiguracja zabezpieczeń dla poleceń ping klienta. |
+|Polecenie ping |ciąg, wartość domyślna to "\|administrator\|użytkownika" |Dynamiczne| Konfiguracja zabezpieczeń dla poleceń ping klienta. |
 |PredeployPackageToNode |ciąg, wartość domyślna to "Administrator" |Dynamiczne| Interfejs API preinstalacji. |
 |PrefixResolveService |ciąg, wartość domyślna to "\|administrator\|użytkownika" |Dynamiczne| Konfiguracja zabezpieczeń dla rozpoznawania prefiksów usługi opartej na skargach. |
 |PropertyReadBatch |ciąg, wartość domyślna to "\|administrator\|użytkownika" |Dynamiczne| Konfiguracja zabezpieczeń dla operacji odczytu właściwości. |
@@ -825,7 +825,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |ContainerNetworkName|ciąg, wartość domyślna to ""| Static |Nazwa sieci do użycia podczas konfigurowania sieci kontenera.|
 |ContainerNetworkSetup|bool, wartość domyślna to FALSE| Static |Określa, czy należy skonfigurować sieć kontenera.|
 |FabricDataRoot |String | Niedozwolone |Katalog główny danych Service Fabric. Wartość domyślna dla platformy Azure to d:\svcfab |
-|FabricLogRoot |Ciąg | Niedozwolone |Katalog główny dziennika usługi Service Fabric. Jest to miejsce, w którym są umieszczane dzienniki i ślady SF. |
+|FabricLogRoot |String | Niedozwolone |Katalog główny dziennika usługi Service Fabric. Jest to miejsce, w którym są umieszczane dzienniki i ślady SF. |
 |NodesToBeRemoved|ciąg, wartość domyślna to ""| Dynamiczne |Węzły, które powinny zostać usunięte w ramach uaktualnienia konfiguracji. (Tylko w przypadku wdrożeń autonomicznych)|
 |ServiceRunAsAccountName |String | Niedozwolone |Nazwa konta, pod którym zostanie uruchomiona usługa hosta sieci szkieletowej. |
 |SkipContainerNetworkResetOnReboot|bool, wartość domyślna to FALSE|NotAllowed|Czy pominąć Resetowanie sieci kontenera przy ponownym uruchomieniu.|
@@ -851,7 +851,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |MaxCopyQueueSize |Uint, wartość domyślna to 16384 | Static |Jest to maksymalna wartość definiująca początkowy rozmiar kolejki, która zachowuje operacje replikacji. Należy pamiętać, że musi być potęgą liczby 2. Jeśli w czasie wykonywania Kolejka powiększa się do tej operacji, ta operacja zostanie ograniczona między replikacją podstawową i pomocniczą. |
 |MaxPrimaryReplicationQueueMemorySize |Uint, wartość domyślna to 0 | Static |Jest to maksymalna wartość głównej kolejki replikacji w bajtach. |
 |MaxPrimaryReplicationQueueSize |Uint, wartość domyślna to 8192 | Static |Jest to maksymalna liczba operacji, które mogą istnieć w podstawowej kolejce replikacji. Należy pamiętać, że musi być potęgą liczby 2. |
-|MaxReplicationMessageSize |uint, wartość domyślna to 52428800 | Static | Maksymalny rozmiar komunikatu operacji replikacji. Wartość domyślna to 50 MB. |
+|MaxReplicationMessageSize |Uint, wartość domyślna to 52428800 | Static | Maksymalny rozmiar komunikatu operacji replikacji. Wartość domyślna to 50 MB. |
 |MaxSecondaryReplicationQueueMemorySize |Uint, wartość domyślna to 0 | Static |Jest to maksymalna wartość kolejki replikacji pomocniczej w bajtach. |
 |MaxSecondaryReplicationQueueSize |Uint, wartość domyślna to 16384 | Static |Jest to maksymalna liczba operacji, które mogą istnieć w pomocniczej kolejce replikacji. Należy pamiętać, że musi być potęgą liczby 2. |
 |ReplicatorAddress |ciąg, wartość domyślna to "localhost: 0" | Static | Punkt końcowy w formie ciągu "IP: Port", który jest używany przez Replikator Windows Fabric do nawiązywania połączeń z innymi replikami w celu wysyłania/odbierania operacji. |
@@ -870,14 +870,14 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
 |AutoupgradeEnabled | Bool, wartość domyślna to true |Static| Automatyczna akcja sondowania i uaktualniania oparta na pliku stanu celu. |
-|AutoupgradeInstallEnabled|bool, wartość domyślna to FALSE|Static|Automatyczne sondowanie, Inicjowanie obsługi administracyjnej i Instalowanie akcji uaktualniania kodu na podstawie pliku stanu celu.|
+|AutoupgradeInstallEnabled|Bool, wartość domyślna to FALSE|Static|Automatyczne sondowanie, Inicjowanie obsługi administracyjnej i Instalowanie akcji uaktualniania kodu na podstawie pliku stanu celu.|
 |GoalStateExpirationReminderInDays|int, wartość domyślna to 30|Static|Ustawia liczbę pozostałych dni, po których ma być wyświetlane przypomnienie o stanie celu.|
-|MinReplicaSetSize |int, wartość domyślna to 0 |Static |MinReplicaSetSize dla UpgradeOrchestrationService.|
+|MinReplicaSetSize |Int, wartość domyślna to 0 |Static |MinReplicaSetSize dla UpgradeOrchestrationService.|
 |PlacementConstraints | ciąg, wartość domyślna to "" |Static| PlacementConstraints dla UpgradeOrchestrationService. |
 |QuorumLossWaitDuration | Czas w sekundach, wartość domyślna to MaxValue |Static| Określ wartość TimeSpan w sekundach. QuorumLossWaitDuration dla UpgradeOrchestrationService. |
 |ReplicaRestartWaitDuration | Czas w sekundach, wartość domyślna to 60 minut|Static| Określ wartość TimeSpan w sekundach. ReplicaRestartWaitDuration dla UpgradeOrchestrationService. |
 |StandByReplicaKeepDuration | Czas w sekundach, wartość domyślna to 60*24*7 minut |Static| Określ wartość TimeSpan w sekundach. StandByReplicaKeepDuration dla UpgradeOrchestrationService. |
-|Wartość targetreplicasetsize |int, wartość domyślna to 0 |Static |Wartość targetreplicasetsize dla UpgradeOrchestrationService. |
+|Wartość targetreplicasetsize |Int, wartość domyślna to 0 |Static |Wartość targetreplicasetsize dla UpgradeOrchestrationService. |
 |UpgradeApprovalRequired | Bool, wartość domyślna to false | Static|Ustawienie do wykonania uaktualnienia kodu wymaga zatwierdzenia przez administratora przed kontynuowaniem. |
 
 ## <a name="upgradeservice"></a>UpgradeService

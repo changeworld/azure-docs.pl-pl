@@ -1,6 +1,6 @@
 ---
-title: Link konta platformy Azure, z Identyfikatorem partnera | Dokumentacja firmy Microsoft
-description: Śledź interakcje z klientami platformy Azure, tworząc konto użytkownika, którego używasz do zarządzania zasobami przez klienta identyfikator partnera.
+title: Połącz konto platformy Azure z IDENTYFIKATORem partnera | Microsoft Docs
+description: Śledź zaangażowanie z klientami platformy Azure, łącząc identyfikator partnera z kontem użytkownika używanym do zarządzania zasobami klienta.
 services: billing
 author: dhirajgandhi
 manager: dhgandhi
@@ -11,150 +11,150 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 0448ffbccddc913bd6359f5f6bbf42988239afb4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502679"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706400"
 ---
-# <a name="link-a-partner-id-to-your-azure-accounts"></a>Połącz z Identyfikatorem partnera do kont systemu Azure
+# <a name="link-a-partner-id-to-your-azure-accounts"></a>Łączenie identyfikatora partnera z kontami platformy Azure
 
-Partnerzy firmy Microsoft zapewniają usług, które pomagają klientom osiągnąć biznesowych i zadania z produktami firmy Microsoft. Działań w imieniu klienta zarządzania, konfigurowania i obsługi usług platformy Azure, użytkowników z firm partnerskich wymaga dostępu do oprogramowania w środowisku klienta. Przy użyciu Linku administrator partnera, partnerzy można skojarzyć ich Partnerem firmy Microsoft w sieci przy użyciu poświadczeń używanych dla świadczenia usług.
+Partnerzy firmy Microsoft oferują usługi, które pomagają klientom osiągnąć cele biznesowe i służbowe za pomocą produktów firmy Microsoft. Podczas działania w imieniu klienta zarządzającego, konfigurowaniem i obsługą usług platformy Azure, użytkownicy będą musieli uzyskać dostęp do środowiska klienta. Przy użyciu linku administratora partnera partnerzy mogą skojarzyć identyfikator sieci partnera z poświadczeniami używanymi do dostarczania usług.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-access-from-your-customer"></a>Uzyskiwanie dostępu do klienta
+## <a name="get-access-from-your-customer"></a>Uzyskaj dostęp od klienta
 
-Aby połączyć się z Partnerem, klient musi udzielić Ci dostępu do swoich zasobów platformy Azure przy użyciu jednej z następujących opcji:
+Przed połączeniem identyfikatora partnera Klient musi zapewnić dostęp do swoich zasobów platformy Azure, korzystając z jednej z następujących opcji:
 
-- **Użytkownik-Gość**: Klienta można dodał Cię jako użytkownika-gościa i przypisywania ról (RBAC) kontroli dostępu opartej na rolach. Aby uzyskać więcej informacji, zobacz [dodać użytkowników-gości z innego katalogu](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Użytkownik-Gość**: Klient może dodać Cię jako użytkownika-gościa i przypisać role kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji, zobacz [Dodawanie użytkowników-Gości z innego katalogu](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Konto Directory**: Klienta można utworzyć konto użytkownika dla Ciebie w ich własnych katalogu i przyznawać żadnej roli RBAC.
+- **Konto katalogu**: Klient może utworzyć konto użytkownika w swoim własnym katalogu i przypisać dowolną rolę RBAC.
 
-- **Nazwa główna usługi**: Klienta można dodać aplikację lub skrypt z Twojej organizacji w jego katalogu i przyznawać żadnej roli RBAC. Tożsamość aplikacji lub skryptu jest określany jako nazwy głównej usługi.
+- Nazwa **główna usługi**: Klient może dodać aplikację lub skrypt z organizacji w swoim katalogu i przypisać dowolną rolę RBAC. Tożsamość aplikacji lub skryptu jest znana jako nazwa główna usługi.
 
-## <a name="link-to-a-partner-id"></a>Połącz z Identyfikatorem partnera
+## <a name="link-to-a-partner-id"></a>Łączenie z identyfikatorem partnera
 
-Jeśli masz dostęp do zasobów przez klienta, użyć witryny Azure portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby połączyć identyfikator sieci Microsoft Partner (identyfikator MPN) do Identyfikatora użytkownika lub nazwy głównej usługi. Połącz z Identyfikatorem partnera w każdej dzierżawy klienta.
+Jeśli masz dostęp do zasobów klienta, użyj Azure Portal, PowerShell lub interfejsu wiersza polecenia platformy Azure, aby połączyć identyfikator Microsoft Partner Network (MPN ID) z IDENTYFIKATORem użytkownika lub jednostką usługi. Połącz identyfikator partnera w każdej dzierżawie klienta.
 
-### <a name="use-the-azure-portal-to-link-to-a-new-partner-id"></a>Użyj witryny Azure portal, aby połączyć nowy identyfikator partnera
+### <a name="use-the-azure-portal-to-link-to-a-new-partner-id"></a>Użyj Azure Portal, aby połączyć się z nowym IDENTYFIKATORem partnera
 
-1. Przejdź do [Połącz z Identyfikatorem partnera](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade) w witrynie Azure portal.
+1. Przejdź do [linku do identyfikatora partnera](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade) w Azure Portal.
 
 2. Zaloguj się do Portalu Azure.
 
-3. Wprowadź identyfikator partnera firmy Microsoft Partner ten identyfikator jest [sieci Microsoft Partner Network](https://partner.microsoft.com/) identyfikator dla Twojej organizacji.
+3. Wprowadź identyfikator partnera firmy Microsoft. Identyfikator partnera to identyfikator [Microsoft Partner Network](https://partner.microsoft.com/) organizacji.
 
-   ![Zrzut ekranu przedstawiający Link do Identyfikatora partnera](./media/billing-link-partner-id/link-partner-ID.PNG)
+   ![Zrzut ekranu przedstawiający link do identyfikatora partnera](./media/billing-link-partner-id/link-partner-ID.PNG)
 
-4. Aby połączyć Identyfikatora partnera do innego klienta, należy przełączyć katalog. W obszarze **Przełącz katalog**, wybierz swój katalog.
+4. Aby połączyć identyfikator partnera dla innego klienta, przełącz katalog. W obszarze **Przełącz katalog**wybierz swój katalog.
 
-   ![Zrzut ekranu pokazujący Przełącz katalog](./media/billing-link-partner-id/directory-switcher.png)
+   ![Zrzut ekranu przedstawiający katalog przełączników](./media/billing-link-partner-id/directory-switcher.png)
 
-### <a name="use-powershell-to-link-to-a-new-partner-id"></a>Aby połączyć nowy identyfikator partnera przy użyciu programu PowerShell
+### <a name="use-powershell-to-link-to-a-new-partner-id"></a>Używanie programu PowerShell do łączenia z nowym IDENTYFIKATORem partnera
 
-1. Zainstaluj [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) modułu programu PowerShell.
+1. Zainstaluj moduł programu PowerShell [AZ. ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/) .
 
-2. Zaloguj się do dzierżawy klienta przy użyciu konta użytkownika lub nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz [Zaloguj się przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+2. Zaloguj się do dzierżawy klienta przy użyciu konta użytkownika lub nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz [Logowanie przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. Link do nowego identyfikatora partnera. Partner ten identyfikator jest [sieci Microsoft Partner Network](https://partner.microsoft.com/) identyfikator dla Twojej organizacji.
+3. Połącz się z nowym IDENTYFIKATORem partnera. Identyfikator partnera to identyfikator [Microsoft Partner Network](https://partner.microsoft.com/) organizacji.
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
     ```
 
-#### <a name="get-the-linked-partner-id"></a>Pobierz identyfikator połączonej, partnera
+#### <a name="get-the-linked-partner-id"></a>Pobierz identyfikator połączonego partnera
 ```azurepowershell-interactive
 C:\> get-AzManagementPartner
 ```
 
-#### <a name="update-the-linked-partner-id"></a>Aktualizacja Identyfikatora połączonej, partnera
+#### <a name="update-the-linked-partner-id"></a>Zaktualizuj identyfikator połączonego partnera
 ```azurepowershell-interactive
 C:\> Update-AzManagementPartner -PartnerId 12345
 ```
-#### <a name="delete-the-linked-partner-id"></a>Usuń identyfikator połączonej, partnera
+#### <a name="delete-the-linked-partner-id"></a>Usuń połączony identyfikator partnera
 ```azurepowershell-interactive
 C:\> remove-AzManagementPartner -PartnerId 12345
 ```
 
-### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Użyj wiersza polecenia platformy Azure, aby połączyć nowy identyfikator partnera
+### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Używanie interfejsu wiersza polecenia platformy Azure do łączenia z nowym IDENTYFIKATORem partnera
 1. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure.
 
     ```azurecli-interactive
     C:\ az extension add --name managementpartner
     ```
 
-2. Zaloguj się do dzierżawy klienta przy użyciu konta użytkownika lub nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz [Zaloguj się przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+2. Zaloguj się do dzierżawy klienta przy użyciu konta użytkownika lub nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz [Logowanie za pomocą interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
     ```
 
-3. Link do nowego identyfikatora partnera. Partner ten identyfikator jest [sieci Microsoft Partner Network](https://partner.microsoft.com/) identyfikator dla Twojej organizacji.
+3. Połącz się z nowym IDENTYFIKATORem partnera. Identyfikator partnera to identyfikator [Microsoft Partner Network](https://partner.microsoft.com/) organizacji.
 
      ```azurecli-interactive
      C:\ az managementpartner create --partner-id 12345
       ```  
 
-#### <a name="get-the-linked-partner-id"></a>Pobierz identyfikator połączonej, partnera
+#### <a name="get-the-linked-partner-id"></a>Pobierz identyfikator połączonego partnera
 ```azurecli-interactive
 C:\ az managementpartner show
 ```
 
-#### <a name="update-the-linked-partner-id"></a>Aktualizacja Identyfikatora połączonej, partnera
+#### <a name="update-the-linked-partner-id"></a>Zaktualizuj identyfikator połączonego partnera
 ```azurecli-interactive
 C:\ az managementpartner update --partner-id 12345
 ```
 
-#### <a name="delete-the-linked-partner-id"></a>Usuń identyfikator połączonej, partnera
+#### <a name="delete-the-linked-partner-id"></a>Usuń połączony identyfikator partnera
 ```azurecli-interactive
 C:\ az managementpartner delete --partner-id 12345
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dołącz do dyskusji w [społeczności partnerów firmy Microsoft](https://aka.ms/PALdiscussion) odbierać aktualizacje lub wysłać opinię.
+Dołącz do dyskusji w [społeczności partnerów firmy Microsoft](https://aka.ms/PALdiscussion) , aby otrzymywać aktualizacje lub wysłać opinię.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Kto może połączyć Identyfikatora partnera?**
+**Kto może połączyć identyfikator partnera?**
 
-Każdy użytkownik z organizacji partnerskiej, użytkowników, którzy zarządzają zasobami platformy Azure klienta można połączyć Identyfikatora partnera na koncie.
+Każdy użytkownik z organizacji partnerskiej, który zarządza zasobami platformy Azure klienta, może połączyć identyfikator partnera z kontem.
 
-**Identyfikator partnera można zmienić po prowadzi?**
+**Czy identyfikator partnera można zmienić po jego połączeniu?**
 
-Tak. Identyfikator partnera połączonego można można zmienić, dodać ani usunąć.
+Tak. Identyfikator połączonego partnera można zmienić, dodać lub usunąć.
 
-**Co zrobić, jeśli użytkownik ma konto w więcej niż jedną dzierżawę klienta?**
+**Co zrobić, jeśli użytkownik ma konto w więcej niż jednej dzierżawie klienta?**
 
-Łącze między identyfikator partnera, a kontem odbywa się dla każdej dzierżawy klienta. Połącz z Identyfikatorem partnera w każdej dzierżawy klienta.
+Łącze między IDENTYFIKATORem partnera i kontem jest wykonywane dla każdej dzierżawy klienta. Połącz identyfikator partnera w każdej dzierżawie klienta.
 
-**Innych partnerów lub klientów edytować lub usunąć łącze, aby identyfikator partnera?**
+**Czy inni partnerzy lub klienci mogą edytować lub usunąć link do identyfikatora partnera?**
 
-Łącze jest skojarzone na poziomie konta użytkownika. Tylko Edytuj lub Usuń łącze do identyfikatora partnera. Klienta i innymi partnerami, nie można zmienić link do identyfikatora partnera.
+Łącze jest skojarzone na poziomie konta użytkownika. Tylko ty można edytować lub usunąć łącze do identyfikatora partnera. Klient i inni partnerzy nie mogą zmienić linku do identyfikatora partnera.
 
 
-**Identyfikator MPN, z którym należy użyć, jeśli Moja firma ma wiele?**
+**Którego identyfikatora MPN należy użyć, jeśli moja firma ma wiele?**
 
-Konta lokalizacji partnera i skojarzonych identyfikatorach MPN, które powinny być używane do łączenia z identyfikatorem partnera.  Dowiedz się więcej o [konta partnera](https://docs.microsoft.com/partner-center/account-structure)
+Do łączenia się z IDENTYFIKATORem partnera należy używać kont lokalizacji partnera i skojarzonych identyfikatorów MPN.  Dowiedz się więcej o [kontach partnerów](https://docs.microsoft.com/partner-center/account-structure)
 
-**Gdzie można znaleźć ich przychód raportowanie dla połączonych Partnerem?**
+**Gdzie można znaleźć wpływ na raportowanie przychodów dla połączonego identyfikatora partnera?**
 
-Raporty o chmurze wydajności produktu jest dostępny dla partnerów w Centrum partnerskim pod [Insights Mój pulpit nawigacyjny](https://partner.microsoft.com/membership/reports/myinsights). Należy wybrać łącze administrator partnera jako typ skojarzenia partnera.
+Raportowanie wydajności produktu w chmurze jest dostępne dla partnerów w centrum partnerskim na [pulpicie nawigacyjnym my Insights](https://partner.microsoft.com/membership/reports/myinsights). Należy wybrać łącze administratora partnera jako typ powiązania partnera.
 
-**Dlaczego nie widzę mojego klienta w raportach**
+**Dlaczego nie widzę mojego klienta w raportach?**
 
-Nie widzisz klienta w raportach z następujących przyczyn
+Klient nie jest widoczny w raportach z następujących powodów
 
-1. Konto połączonego użytkownika nie ma [dostępu na podstawie roli](https://docs.microsoft.com/azure/role-based-access-control/overview) dowolnego klienta subskrypcji platformy Azure lub zasobów.
+1. Połączone konto użytkownika nie ma [dostępu opartego na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview) w żadnej subskrypcji lub zasobie klienta platformy Azure.
 
-2. Subskrypcja platformy Azure, w której użytkownik ma [dostępu na podstawie roli](https://docs.microsoft.com/azure/role-based-access-control/overview) dostęp nie ma każde miesięczne użycie.
+2. Subskrypcja platformy Azure, w której użytkownik ma dostęp [oparty na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview) , nie ma żadnego użycia.
 
-**Połączenie z partnerem, identyfikator działa z usługą Azure Stack?**
+**Czy identyfikator partnera linku współdziała z Azure Stack?**
 
-Tak, można połączyć z Partnerem usługi Azure Stack.
+Tak, możesz połączyć identyfikator partnera, aby uzyskać Azure Stack.

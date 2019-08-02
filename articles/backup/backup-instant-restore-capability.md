@@ -1,18 +1,19 @@
 ---
 title: Możliwość natychmiastowego przywrócenia platformy Azure
 description: Funkcja błyskawicznego przywracania platformy Azure i często zadawane pytania dotyczące stosu kopii zapasowych maszyny wirtualnej, Menedżer zasobów model wdrażania
-author: sogup
-manager: vijayts
+ms.reviewer: sogup
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: sogup
-ms.openlocfilehash: 8bbf24fdd05fa0d70bcadae4f21e599dc8bef3a5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 0f31320a638dd4741d940d0b459575b66149b829
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465110"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698405"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskiwanie ulepszonej wydajności tworzenia kopii zapasowych i przywracania dzięki funkcji Azure Backup natychmiastowego przywracania
 
@@ -25,7 +26,8 @@ Nowy model do natychmiastowego przywracania zapewnia następujące udoskonalenia
 * Skraca czas wykonywania kopii zapasowej i przywracania przez zachowywanie migawek lokalnie, domyślnie przez dwa dni. Domyślna wartość przechowywania migawek jest konfigurowalna dla dowolnej wartości z zakresu od 1 do 5 dni.
 * Obsługuje rozmiary dysków do 4 TB. Nie zaleca się zmiany rozmiarów dysku Azure Backup.
 * Program obsługuje dyski SSD w warstwie Standardowa razem z dyskami HDD w warstwie Standardowa i dyskami SSD w warstwie Premium.
-*   Możliwość używania oryginalnych kont magazynu maszyny wirtualnej (na dysku) podczas przywracania. Ta możliwość istnieje nawet wtedy, gdy maszyna wirtualna zawiera dyski rozproszone na kontach magazynu. Przyspiesza operacje przywracania w różnych konfiguracjach maszyn wirtualnych.
+* Możliwość korzystania z niezarządzanych maszyn wirtualnych (na dysku) podczas przywracania. Ta możliwość istnieje nawet wtedy, gdy maszyna wirtualna zawiera dyski rozproszone na kontach magazynu. Przyspiesza operacje przywracania w różnych konfiguracjach maszyn wirtualnych.
+* W przypadku tworzenia kopii zapasowych maszyn wirtualnych korzystających z usługi Premium Storage z natychmiastowym przywróceniem zaleca się alokowanie *50%* wolnego miejsca w łącznym przydzielonym miejscu do magazynowania, które jest wymagane **tylko** dla pierwszej kopii zapasowej. Ilość wolnego miejsca na 50% nie jest wymagana w przypadku kopii zapasowych po wykonaniu pierwszej kopii zapasowej.
 
 
 ## <a name="whats-new-in-this-feature"></a>Co nowego w tej funkcji
@@ -103,4 +105,4 @@ Jeśli typ odzyskiwania to "migawka i magazyn", przywracanie zostanie automatycz
 Nowy model nie zezwala na usuwanie punktu przywracania (SVR), chyba że migawka (Pomoc) jest usuwana. Zalecamy przeprowadzenie planowania okresu przechowywania punktu przywracania (SVR) większego niż okres przechowywania migawki.
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Dlaczego moja migawka jest istniejąca, nawet po upływie ustawionego okresu przechowywania w zasadach tworzenia kopii zapasowych?
-Jeśli punkt odzyskiwania zawiera migawkę i jest to najnowsza dostępna jednostka UZALEŻNIONa, jest zachowywany do momentu utworzenia kolejnej kopii zapasowej. Jest to zgodne z zaprojektowanymi zasadami GC, że w celu zapewnienia, że co najmniej jedna Najnowsza jednostka UZALEŻNIONa będzie zawsze obecna w przypadku niepowodzenia wszystkich kopii zapasowych z powodu problemu z maszyną wirtualną. W normalnych scenariuszach RPS pliku są czyszczone w ciągu maksymalnie 24 godzin po ich wygaśnięciu.
+Jeśli punkt odzyskiwania zawiera migawkę i jest to najnowsza dostępna jednostka UZALEŻNIONa, jest zachowywany do momentu utworzenia kolejnej kopii zapasowej. Jest to zgodne z zaprojektowanymi zasadami "wyrzucania elementów bezużytecznych" (GC), ponieważ w przypadku wystąpienia problemu z maszyną wirtualną wszystkie kopie zapasowe mogą być zawsze obecne w przypadku wystąpienia błędu. W normalnych scenariuszach RPS pliku są czyszczone w ciągu maksymalnie 24 godzin po ich wygaśnięciu.

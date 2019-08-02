@@ -1,6 +1,6 @@
 ---
-title: Zastosuj szyfrowanie dysków w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: W tym dokumencie przedstawiono sposób realizacji zalecenia w usłudze Azure Security Center **Zastosuj szyfrowanie dysków**.
+title: Zastosuj szyfrowanie dysków w Azure Security Center | Microsoft Docs
+description: W tym dokumencie przedstawiono sposób implementacji zaleceń Azure Security Center **zastosowania szyfrowania dysków**.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d285461aef1e56dfd08a162e51ada0340d6eeae4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1abb0a5f5523032440086932eb9a1621d4cef455
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62095425"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726235"
 ---
-# <a name="apply-disk-encryption-in-azure-security-center"></a>Zastosuj szyfrowanie dysków w usłudze Azure Security Center
-Usługa Azure Security Center zaleca zastosowanie szyfrowania dysków, jeśli masz dyski Windows lub maszyny Wirtualnej systemu Linux, które nie są szyfrowane przy użyciu usługi Azure Disk Encryption. Disk Encryption umożliwia szyfrowanie dysków Windows i maszyn wirtualnych IaaS z systemem Linux.  Szyfrowanie jest zalecane zarówno w przypadku woluminów z systemem operacyjnym, jak i z danymi maszyny wirtualnej.
+# <a name="apply-disk-encryption-in-azure-security-center"></a>Zastosuj szyfrowanie dysków w Azure Security Center
+Azure Security Center zaleca zastosowanie szyfrowania dysków, jeśli masz dyski maszyn wirtualnych z systemem Windows lub Linux, które nie są zaszyfrowane przy użyciu Azure Disk Encryption. Szyfrowanie dysków umożliwia szyfrowanie dysków maszyn wirtualnych z systemami Windows i Linux IaaS.  Szyfrowanie jest zalecane zarówno w przypadku woluminów z systemem operacyjnym, jak i z danymi maszyny wirtualnej.
 
-Disk Encryption korzysta z branżowymi [funkcji BitLocker](https://technet.microsoft.com/library/cc732774.aspx) funkcja systemu Windows i [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkcji systemu Linux. Te funkcje umożliwiają szyfrowanie systemu operacyjnego i danych, aby chronić i ochronie danych i spełniać zabezpieczeń i zgodności obowiązującymi w organizacji. Szyfrowanie dysków jest zintegrowana z usługą [usługi Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ułatwiają kontrolowanie i zarządzaniu wpisami tajnymi w ramach subskrypcji usługi Key Vault i kluczami szyfrowania dysku, podczas gdy zapewnienie, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane, gdy w Twojej [Usługi azure Storage](https://azure.microsoft.com/documentation/services/storage/).
+Szyfrowanie dysków używa standardowej funkcji [funkcji BitLocker](https://technet.microsoft.com/library/cc732774.aspx) systemu Windows i funkcji [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) w systemie Linux. Te funkcje zapewniają system operacyjny i szyfrowanie danych, które pomagają chronić i zabezpieczać dane oraz spełniać zobowiązania dotyczące zabezpieczeń i zgodności organizacji. Szyfrowanie dysków jest zintegrowane z [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) , które ułatwiają kontrolowanie kluczy szyfrowania dysków i wpisów tajnych oraz zarządzanie nimi w subskrypcji Key Vault, dzięki czemu wszystkie dane na dyskach maszyn wirtualnych są szyfrowane w usłudze [Azure Storage](https://azure.microsoft.com/documentation/services/storage/).
 
 > [!NOTE]
-> Usługa Azure Disk Encryption jest obsługiwane na następujących Windows systemy operacyjne serwerów — Windows Server 2008 R2, Windows Server 2012 i Windows Server 2012 R2. Szyfrowanie dysku jest obsługiwane w następujących systemów operacyjnych Linux serwera — Ubuntu, CentOS, SUSE i systemem SUSE Linux Enterprise Server (SLES).
+> Azure Disk Encryption jest obsługiwana w następujących systemach operacyjnych Windows Server — Windows Server 2008 R2, Windows Server 2012 i Windows Server 2012 R2. Szyfrowanie dysków jest obsługiwane w następujących systemach operacyjnych serwera Linux — Ubuntu, CentOS, SUSE i SUSE Linux Enterprise Server (SLES).
 >
 >
 
-## <a name="implement-the-recommendation"></a>Zaimplementuj zalecenia
-1. W **zalecenia** bloku wybierz **Zastosuj szyfrowanie dysków**.
-2. W **Zastosuj szyfrowanie dysków** bloku zobaczysz listę maszyn wirtualnych, dla których zaleca się szyfrowanie dysków.
-3. Postępuj zgodnie z instrukcjami, aby zastosować szyfrowanie tych maszyn wirtualnych.
+## <a name="implement-the-recommendation"></a>Implementowanie zalecenia
+1. W bloku **zalecenia** wybierz pozycję **Zastosuj szyfrowanie dysków**.
+2. W bloku **Zastosuj szyfrowanie dysku** zostanie wyświetlona lista maszyn wirtualnych, dla których zalecane jest szyfrowanie dysków.
+3. Postępuj zgodnie z instrukcjami, aby zastosować szyfrowanie do tych maszyn wirtualnych.
 
 ![][1]
 
-Aby zaszyfrować maszyny wirtualne platformy Azure, które zostały zidentyfikowane przez usługę Security Center jako wymagające szyfrowania, zalecamy następujące czynności:
+Aby zaszyfrować Virtual Machines platformy Azure, które zostały zidentyfikowane przez Security Center jako wymagające szyfrowania, zalecamy wykonanie następujących czynności:
 
-* Zainstaluj i skonfiguruj program Azure PowerShell. Umożliwia to uruchamianie poleceń programu PowerShell, wymagane do skonfigurowania wymagań wstępnych dotyczących szyfrowania maszyn wirtualnych platformy Azure.
-* Uzyskaj i uruchom skrypt programu Azure PowerShell Azure dysku szyfrowanie wymagań wstępnych.
+* Zainstaluj i skonfiguruj program Azure PowerShell. Umożliwia to uruchomienie poleceń programu PowerShell wymaganych do skonfigurowania wymagań wstępnych dotyczących szyfrowania Virtual Machines platformy Azure.
+* Uzyskaj i uruchom Azure Disk Encryption wymagania wstępne Azure PowerShell skrypt.
 * Zaszyfruj maszyny wirtualne.
 
-[Szyfrowanie maszyny Wirtualnej IaaS Windows przy użyciu programu Azure PowerShell](../security/quick-encrypt-vm-powershell.md) przeprowadzi Cię przez następujące kroki. W tym temacie założono, że używasz komputera klienta Windows, w którym można skonfigurować szyfrowanie dysków.
+[Szyfrowanie maszyny wirtualnej z systemem Windows IaaS z Azure PowerShell](../security/azure-disk-encryption-linux-powershell-quickstart.md) przeprowadzi Cię przez te kroki. W tym temacie przyjęto założenie, że używasz komputera klienckiego z systemem Windows, z którego można skonfigurować szyfrowanie dysków.
 
-Istnieje wiele metod, których można użyć usługi Azure Virtual Machines. Jeśli użytkownik ma dużą wiedzę na temat programu Azure PowerShell lub interfejsu wiersza polecenia Azure, może wybrać inne rozwiązania. Aby dowiedzieć się więcej o tych innych metod, zobacz [usługa Azure disk encryption](../security/azure-security-disk-encryption.md).
+Istnieje wiele metod, których można użyć w przypadku usługi Azure Virtual Machines. Jeśli użytkownik ma dużą wiedzę na temat programu Azure PowerShell lub interfejsu wiersza polecenia Azure, może wybrać inne rozwiązania. Aby dowiedzieć się więcej na temat tych innych metod, zobacz [Azure Disk Encryption](../security/azure-security-disk-encryption.md).
 
 ## <a name="see-also"></a>Zobacz także
-W tym dokumencie pokazano sposób implementacji zalecenia usługi Security Center "Zastosuj szyfrowanie dysków". Aby dowiedzieć się więcej o szyfrowaniu dysku, zobacz następujące tematy:
+W tym dokumencie przedstawiono sposób implementacji zalecenia Security Center "Zastosuj szyfrowanie dysków". Aby dowiedzieć się więcej na temat szyfrowania dysków, zobacz następujące tematy:
 
-* [Szyfrowanie i zarządzanie kluczami za pomocą usługi Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (wideo, 36 min 39 sek.) — Dowiedz się, jak chronić i chronić swoje dane za pomocą przystawki Zarządzanie dyskami szyfrowania maszyn wirtualnych IaaS oraz usługi Azure Key Vault.
-* [Usługa Azure disk encryption](../security/azure-security-disk-encryption-overview.md) (dokumenty) — Dowiedz się, jak włączyć szyfrowanie dysku dla Windows i maszyn wirtualnych systemu Linux.
+* [Szyfrowanie i zarządzanie kluczami za pomocą Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (wideo, 36 min 39 s) — Dowiedz się, jak używać funkcji zarządzania szyfrowaniem dysków dla maszyn wirtualnych IaaS i Azure Key Vault, aby pomóc w ochronie i ochronie danych.
+* [Szyfrowanie dysków Azure](../security/azure-security-disk-encryption-overview.md) (dokument) — informacje o sposobie włączania szyfrowania dysków dla maszyn wirtualnych z systemami Windows i Linux.
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje o sposobie konfigurowania zasad zabezpieczeń.
-* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
+* [Ustawianie zasad zabezpieczeń w Azure Security Center](tutorial-security-policy.md) --Dowiedz się, jak skonfigurować zasady zabezpieczeń.
+* [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
-* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
+* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md) — Dowiedz się, jak zalecenia ułatwiają ochronę zasobów platformy Azure.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności.
+* [Blog dotyczący zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/) — zawiera wpisy w blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png

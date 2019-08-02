@@ -4,51 +4,51 @@ ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 72ccad94301e053d8103ca949d41202e58d9f5bb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: eef073f5f4d1eb39fd5ccd8dafacd7074158fa37
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183338"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667843"
 ---
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
-> * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-getstarted.md)
+> * [.NET](../articles/iot-hub/iot-hub-csharp-csharp-twin-getstarted.md)
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-twin-getstarted.md)
 
-Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). Usługa IoT Hub utrzymuje bliźniaczą reprezentację urządzenia dla każdego urządzenia, który nawiązuje z nim połączenie.
+Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). IoT Hub utrzymuje sznurki urządzenia dla każdego urządzenia, które nawiązuje z nim połączenie.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-Używają bliźniaczych reprezentacji urządzeń do:
+Użyj bliźniaczych reprezentacji urządzenia, aby:
 
-* Store metadanych urządzenia z zapleczem rozwiązania.
+* Przechowuj metadane urządzenia z zaplecza rozwiązania.
 
-* Raport bieżące informacje o stanie, takie jak dostępne możliwości i warunki (na przykład łączności metodę) z aplikacji urządzenia.
+* Zgłoś bieżące informacje o stanie, takie jak dostępne możliwości i warunki (na przykład używana metoda łączności) z aplikacji urządzenia.
 
-* Synchronizuj stan długotrwałe przepływy pracy (takich jak aktualizacje oprogramowania układowego i konfiguracji), między aplikacją urządzenia i aplikacji zaplecza.
+* Zsynchronizuj stan długotrwałych przepływów pracy (takich jak oprogramowanie układowe i aktualizacje konfiguracji) między aplikacją urządzenia i aplikacją zaplecza.
 
-* Zapytanie z metadanych urządzeń, konfiguracji lub stanu.
+* Wykonaj zapytanie dotyczące metadanych, konfiguracji lub stanu urządzenia.
 
-Bliźniacze reprezentacje urządzeń są przeznaczone dla synchronizacji i wysyłanie zapytań dotyczących konfiguracji urządzenia i warunki. Więcej informacji o tym, kiedy należy używać bliźniaczych reprezentacji urządzeń można znaleźć w [opis bliźniaczych reprezentacji urządzeń](../articles/iot-hub/iot-hub-devguide-device-twins.md).
+Urządzenia bliźniaczych reprezentacji są przeznaczone do synchronizacji oraz do wykonywania zapytań dotyczących konfiguracji i warunków urządzeń. Więcej informacji o tym, kiedy używać bliźniaczych reprezentacji urządzeń, można znaleźć w temacie [Omówienie urządzenia bliźniaczych reprezentacji](../articles/iot-hub/iot-hub-devguide-device-twins.md).
 
-Bliźniacze reprezentacje urządzeń są przechowywane w usłudze IoT hub i zawierać:
+Urządzenia bliźniaczych reprezentacji są przechowywane w centrum IoT Hub i obejmują:
 
-* *tagi*, metadane urządzenia dostępne tylko dla zaplecza rozwiązania;
+* *Tagi*, metadane urządzenia dostępne tylko dla zaplecza rozwiązania;
 
-* *żądane właściwości*, obiekty JSON, które można modyfikować przez rozwiązanie zapleczem a obserwowalnymi przez aplikację urządzenia; oraz
+* *żądane właściwości*, obiekty JSON modyfikowane przez zaplecze rozwiązania i zauważalne przez aplikację urządzenia; lub
 
-* *zgłaszane właściwości*, obiekty JSON argumentami modyfikowalnymi przez aplikację urządzenia i odczytywane w zapleczu rozwiązania. Tagów i właściwości nie mogą zawierać tablic, ale obiekty mogą być zagnieżdżone.
+* *raportowane właściwości*, obiekty JSON modyfikowane przez aplikację urządzenia i odczytywane przez zaplecze rozwiązania. Tagi i właściwości nie mogą zawierać tablic, ale obiekty mogą być zagnieżdżane.
 
-![Funkcję pokazywanie obrazów bliźniaczej reprezentacji urządzenia](./media/iot-hub-selector-twin-get-started/twin.png)
+![Obraz przedstawiający sznurki urządzenia z możliwością](./media/iot-hub-selector-twin-get-started/twin.png)
 
-Ponadto zaplecze rozwiązania może zapytania bliźniaczych reprezentacji urządzeń na podstawie wszystkich powyższych danych.
-Zapoznaj się [opis bliźniaczych reprezentacji urządzeń](../articles/iot-hub/iot-hub-devguide-device-twins.md) Aby uzyskać więcej informacji dotyczących bliźniaczych reprezentacji urządzeń i [język zapytań usługi IoT Hub](../articles/iot-hub/iot-hub-devguide-query-language.md) odwołanie do wykonywania zapytań.
+Zaplecze rozwiązania może dodatkowo wykonywać zapytania dotyczące bliźniaczych reprezentacji urządzenia w oparciu o wszystkie powyższe dane.
+Zapoznaj się z tematem [bliźniaczych reprezentacji urządzenia](../articles/iot-hub/iot-hub-devguide-device-twins.md) , aby uzyskać więcej informacji na temat bliźniaczych reprezentacji urządzeń oraz informacje dotyczące [języka zapytań IoT Hub](../articles/iot-hub/iot-hub-devguide-query-language.md) na potrzeby wykonywania zapytań.
 
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
-* Tworzenie aplikacji zaplecza, która dodaje *tagi* bliźniaczej reprezentacji urządzenia i aplikacji symulowanego urządzenia, który zgłasza kanału łączności jako *zgłaszane właściwości* w bliźniaczej reprezentacji urządzenia.
+* Utwórz aplikację zaplecza, która dodaje *Tagi* do sznurka urządzenia, oraz aplikację symulowanego urządzenia, która zgłasza swój kanał łączności jako raportowaną *Właściwość* na sznurze urządzeń.
 
-* Wyślij zapytanie do urządzeń z poziomu aplikacji zaplecza przy użyciu filtrów na temat tagów i właściwości utworzone wcześniej.
+* Twórz zapytania dotyczące urządzeń z aplikacji zaplecza przy użyciu filtrów dla utworzonych wcześniej tagów i właściwości.

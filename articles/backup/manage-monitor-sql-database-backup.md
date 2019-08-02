@@ -1,18 +1,18 @@
 ---
 title: Zarządzanie i monitorowanie SQL Server baz danych na maszynie wirtualnej platformy Azure, której kopia zapasowa jest wykonywana przez Azure Backup | Microsoft Docs
 description: W tym artykule opisano sposób zarządzania i monitorowania SQL Server baz danych, które są uruchomione na maszynie wirtualnej platformy Azure.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
-ms.author: raynew
-ms.openlocfilehash: 0a864382e54f5c8641aa6da2369eb914011c712c
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464865"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639590"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Zarządzanie kopiami zapasowymi baz danych SQL Server i ich monitorowanie
 
@@ -137,7 +137,7 @@ Wyrejestruj wystąpienie SQL Server po wyłączeniu ochrony, ale przed usunięci
 
 3. W obszarze **serwery chronione**wybierz serwer do wyrejestrowania. Aby usunąć magazyn, musisz wyrejestrować wszystkie serwery.
 
-4. Kliknij prawym przyciskiem myszy serwer chroniony, a następnie wybierz polecenie Wyrejestruj.
+4. Kliknij prawym przyciskiem myszy serwer chroniony, anastępnie wybierz polecenie Wyrejestruj.
 
    ![Wybieranie pozycji Usuń](./media/backup-azure-sql-database/delete-protected-server.jpg)
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f22311af277f860c1501287b5be0f5dc149880b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a88c58bd52ea816aaef1c628913ccbd7fcf1cd35
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462364"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720633"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopiowanie danych z kwadrat przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -44,11 +44,11 @@ Następujące właściwości są obsługiwane w przypadku kwadratowy połączone
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Kwadrat** | Tak |
+| type | Właściwość Type musi mieć ustawioną wartość: **Kwadratowe** | Tak |
 | host | Adres URL wystąpienia kwadrat. (i.e. mystore.mysquare.com)  | Yes |
 | clientId | Identyfikator klienta skojarzony z aplikacją w kształcie kwadratu.  | Yes |
 | clientSecret | Klucz tajny klienta skojarzonego z aplikacją w kształcie kwadratu. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| redirectUri | Adres URL przekierowania przypisane na pulpicie nawigacyjnym aplikacji w kształcie kwadratu. (i.e. http:\//localhost:2500)  | Tak |
+| redirectUri | Adres URL przekierowania przypisane na pulpicie nawigacyjnym aplikacji w kształcie kwadratu. (np. http:\//localhost: 2500)  | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
 | useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 | usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
@@ -81,7 +81,7 @@ Aby skopiować dane z kwadratowych, należy ustawić właściwość typu zestawu
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **SquareObject** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Kwadratowa** | Yes |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 **Przykład**
@@ -91,11 +91,12 @@ Aby skopiować dane z kwadratowych, należy ustawić właściwość typu zestawu
     "name": "SquareDataset",
     "properties": {
         "type": "SquareObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Square linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -110,7 +111,7 @@ Aby skopiować dane z kwadratowych, należy ustawić typ źródła w działaniu 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **SquareSource** | Tak |
+| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **SquareSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Business"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

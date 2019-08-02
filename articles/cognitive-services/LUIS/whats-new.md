@@ -9,20 +9,31 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 07/22/2019
 ms.author: diberry
-ms.openlocfilehash: 63a898bd807b168ae17ec90e442c6ee6c001c715
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ab30e201dc5e4e9a226e23a37e8dbd63f17dd742
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559890"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717433"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co nowego w Language Understanding
 
 Dowiedz się, co nowego w usłudze. Te elementy mogą wydawania informacji, wideo, wpisów w blogu i innych typów. Oznacz Tę stronę zakładką, aby zapewnić aktualność usługi.  
 
 ## <a name="release-notes"></a>Informacje o wersji 
+
+### <a name="july-23-2019"></a>23 lipca 2019
+
+* Aktualizowanie [aparatów rozpoznawania tekstu](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3) do 1.2.3
+    * Aparaty rozpoznawania wieku, temperatury, wymiaru i waluty w języku włoskim.
+    * Poprawa rozpoznawania dni w języku angielskim w celu poprawnego obliczenia dat opartych na świętach.
+    * Ulepszenia w francuskim elemencie DateTime, aby zmniejszyć liczbę fałszywych wartości niebędących nieaktualnymi i niebędącymi jednostkami czasu.
+    * Obsługa kalendarza/szkoły/roku obrachunkowego i akronimów w języku angielskim DateRange.
+    * Ulepszone rozpoznawanie telefonu w języku chińskim i japońskim.
+    * Ulepszona obsługa NumberRange w języku angielskim.
+    * Ulepszenia wydajności.
 
 ### <a name="june-24-2019"></a>24 czerwca 2019
 

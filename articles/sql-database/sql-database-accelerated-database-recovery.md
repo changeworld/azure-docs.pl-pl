@@ -1,6 +1,6 @@
 ---
-title: Przyspieszone odzyskiwanie bazy danych — usługa Azure SQL Database | Dokumentacja firmy Microsoft
-description: Usługi Azure SQL Database zawiera nową funkcję, która zapewnia szybki i spójny bazy danych odzyskiwania, cofnięcie transakcji natychmiastowe i obcinanie dziennika agresywne dla pojedynczych baz danych, bazy danych w puli usługi Azure SQL Database i baz danych w usłudze Azure SQL Data Magazyn.
+title: Szybsze odzyskiwanie bazy danych — Azure SQL Database | Microsoft Docs
+description: Azure SQL Database ma nową funkcję, która zapewnia szybkie i spójne odzyskiwanie bazy danych, natychmiastowe wycofywanie transakcji oraz agresywne obcinanie dzienników dla pojedynczych baz danych i baz danych w puli w Azure SQL Database i bazach danych w usłudze Azure SQL Data Hurtowni.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: ''
@@ -9,122 +9,121 @@ ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1d556c82f47868f4ee06694e23092f10029d619d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: d516dc51a25cbef92ff9fa22012773507b528a99
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839853"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569631"
 ---
-# <a name="accelerated-database-recovery"></a>Odzyskiwanie bazy danych jej jako przyspieszonej
+# <a name="accelerated-database-recovery"></a>Szybsze odzyskiwanie bazy danych
 
-**Przyspieszone odzyskiwanie bazy danych (ADR)** nową funkcję do aparatu bazy danych SQL, która znacznie zwiększa dostępność bazy danych, szczególnie obecności długo działa transakcji, przeprojektowanie proces odzyskiwania aparatu bazy danych SQL. Reguły ADR jest obecnie dostępna dla pojedynczych baz danych i baz danych w puli usługi Azure SQL Database i baz danych w usłudze Azure SQL Data Warehouse (obecnie dostępna w publicznej wersji zapoznawczej). Najważniejsze korzyści reguły ADR są:
+**Szybsze odzyskiwanie bazy danych (ADR)** to nowa funkcja aparatu bazy danych SQL, która znacznie zwiększa dostępność bazy danych, szczególnie w przypadku długotrwałych transakcji, przez przeprojektowanie procesu odzyskiwania aparatu bazy danych SQL. Reguły ADR są obecnie dostępne dla pojedynczych baz danych i baz danych w puli w Azure SQL Database, a bazy danych w Azure SQL Data Warehouse (obecnie w publicznej wersji zapoznawczej). Podstawowe korzyści wynikające z ADR są następujące:
 
-- **Odzyskiwanie bazy danych szybkie i spójne**
+- **Szybkie i spójne odzyskiwanie bazy danych**
 
-  Przy użyciu reguły ADR długotrwałej transakcji nie wpływa na ogólny czas odzyskiwania, włączenie odzyskiwania szybkie i spójne bazy danych niezależnie od tego, liczba aktywnych transakcji w systemie lub ich rozmiary.
+  W przypadku opcji ADR długotrwałe transakcje nie wpływają na ogólny czas odzyskiwania, umożliwiając szybkie i spójne odzyskiwanie bazy danych niezależnie od liczby aktywnych transakcji w systemie lub ich rozmiarów.
 
-- **Cofnięcie transakcji natychmiastowe**
+- **Natychmiastowe wycofywanie transakcji**
 
-  Przy użyciu reguły ADR natychmiastowe, niezależnie od tego, czy czas transakcji była aktywna lub liczbę aktualizacji, który wykonał jest cofnięcie transakcji.
+  Za pomocą reguły ADR wycofywanie transakcji jest chwilowo, niezależnie od czasu aktywności transakcji lub liczby wykonanych aktualizacji.
 
-- **Obcinanie dziennika agresywne**
+- **Agresywne obcinanie dziennika**
 
-  Przy użyciu reguły ADR dziennik transakcji jest agresywnie przycięty, nawet w obecności aktywne transakcje długo działające, co uniemożliwia nieograniczonemu z kontroli.
+  W przypadku korzystania z reguły ADR dziennik transakcji jest agresywnie obcinany, nawet w obecności aktywnych transakcji długotrwałych, które uniemożliwiają przeprowadzenie kontroli.
 
 ## <a name="the-current-database-recovery-process"></a>Bieżący proces odzyskiwania bazy danych
 
-Odzyskiwanie bazy danych w programie SQL Server jest zgodna [ARIES](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) model odzyskiwania składa się z trzech etapów, które są przedstawione na poniższym diagramie i omówione bardziej szczegółowo, zgodnie z diagramem.
+Odzyskiwanie bazy danych w SQL Server jest zgodne z modelem odzyskiwania [Aries](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) i składa się z trzech faz, które przedstawiono na poniższym diagramie i wyjaśniono bardziej szczegółowo po diagramie.
 
 ![bieżący proces odzyskiwania](./media/sql-database-accelerated-database-recovery/current-recovery-process.png)
 
 - **Faza analizy**
 
-  Skanowanie w poszukiwaniu dziennika transakcji w przód od początku ostatniego pomyślnego punktu kontrolnego (lub najstarsze strony zanieczyszczeniu numer LSN) aż do zakończenia, aby określić stan każdej transakcji w chwili zatrzymania serwera SQL.
+  Przeprowadź skanowanie dziennika transakcji od początku ostatniego pomyślnego punktu kontrolnego (lub najstarszej wersji LSN strony) aż do zakończenia, aby określić stan każdej transakcji w chwili SQL Server zatrzymania.
 
-- **Wykonaj ponownie fazy**
+- **Wykonaj ponownie fazę**
 
-  Skanowanie w poszukiwaniu dziennika transakcji w przód od najstarszych transakcji niezatwierdzonych aż do zakończenia, aby przełączyć tę bazę danych do stanu, w jakim był w momencie pojawienia się awarii przez ponawianie wszystkie zatwierdzone operacje.
+  Przeprowadź skanowanie dziennika transakcji od najstarszej niezatwierdzonej transakcji do końca, aby przenieść bazę danych do stanu, który był w chwili awarii, wykonując ponownie wszystkie operacje zatwierdzone.
 
-- **Cofnij fazy**
+- **Faza cofania**
 
-  W przypadku każdej transakcji, który był aktywny od chwili pojawienia się awarii przechodzi przez dziennik Wstecz, cofanie operacji wykonanych w tej transakcji.
+  W przypadku każdej transakcji, która była aktywna jako czas awarii, przejdzie do tyłu dziennika, cofając operacje wykonywane przez tę transakcję.
 
-Na podstawie tego projektu, czas, jaki zajmuje aparatu bazy danych SQL, aby odzyskać sprawność nieoczekiwane ponowne uruchomienie jest (w przybliżeniu) proporcjonalny do rozmiaru najdłuższy aktywnej transakcji w systemie w momencie pojawienia się awarii. Odzyskiwanie wymaga wycofanie wszystkich transakcji niekompletne. Czas wymagany jest proporcjonalna do pracy, który wykonał transakcji, a czas był aktywny. W związku z tym proces odzyskiwania programu SQL Server może długo trwać w obecności długotrwałej transakcji (takich jak duże zbiorczo wstawić operacji lub operacji kompilacji indeksu dla tabeli dużych).
+W oparciu o ten projekt czas odzyskiwania aparatu bazy danych SQL po nieoczekiwanym ponownym uruchomieniu jest (w przybliżeniu) proporcjonalny do rozmiaru najdłuższej aktywnej transakcji w systemie w chwili awarii. Odzyskiwanie wymaga wycofania wszystkich nieukończonych transakcji. Czas wymagany jest proporcjonalny do pracy wykonanej przez transakcję i czasu, gdy był aktywny. W związku z tym proces odzyskiwania SQL Server może zająć dużo czasu w obecności długotrwałych transakcji (takich jak duże operacje wstawiania zbiorczego lub operacje kompilowania indeksów względem dużej tabeli).
 
-Ponadto anulowanie/wycofywania dużych transakcji na podstawie tego projektu mogą także zająć dużo czasu, ponieważ korzysta ona z tego samego fazy cofania odzyskiwania zgodnie z powyższym opisem.
+Ponadto anulowanie i wycofywanie dużej transakcji na podstawie tego projektu może być również czasochłonne, ponieważ używa tej samej fazy odzyskiwania cofania, jak opisano powyżej.
 
-Ponadto, aparatu bazy danych SQL nie można obciąć dziennika transakcji, w przypadku długich uruchomionych transakcji, ponieważ ich odpowiednich rekordów dziennika są wymagane dla procesów odzyskiwania i wycofywania. W wyniku ten projekt aparatu bazy danych SQL niektórzy klienci stoją w obliczu problemów, że rozmiaru dziennika transakcji rośnie bardzo duży i zużywa ogromne ilości miejsca na dysku.
+Ponadto aparat bazy danych SQL nie może obciąć dziennika transakcji, jeśli istnieją długotrwałe transakcje, ponieważ odpowiednie rekordy dzienników są zbędne dla procesów odzyskiwania i wycofywania. W wyniku tego projektu aparatu bazy danych SQL niektórzy klienci napotykają problem polegający na tym, że rozmiar dziennika transakcji jest zbyt duży i zużywa ogromną ilość miejsca na dysku.
 
-## <a name="the-accelerated-database-recovery-process"></a>Proces przyspieszone odzyskiwanie bazy danych
+## <a name="the-accelerated-database-recovery-process"></a>Proces odzyskiwania przyspieszonej bazy danych
 
-Reguły ADR rozwiązuje powyższe problemy, całkowicie przeprojektowanie procesu odzyskiwania aparatu bazy danych SQL do:
+ADR eliminuje powyższe problemy poprzez całkowite przeprojektowanie procesu odzyskiwania aparatu bazy danych SQL do:
 
-- Ułatwiają stałą czasu/natychmiastowe przez uniknięcie konieczności skanowania dziennika z/do stanu sprzed najstarsza aktywna transakcja. Przy użyciu reguły ADR dziennik transakcji jest przetwarzany tylko z ostatniego pomyślnego punktu kontrolnego (lub najstarsze strony zanieczyszczeniu numer sekwencyjny dziennika (LSN)). W rezultacie czas odzyskiwania nie ma wpływu długich uruchomione transakcje.
-- Minimalizować ilość miejsca w dzienniku transakcji wymagane, ponieważ nie będzie już trzeba przetworzyć dziennika dla całego transakcji. W rezultacie dziennik transakcji może być obcinana agresywnie jako punkty kontrolne i kopie zapasowe są wykonywane.
+- Zwiększ czas/natychmiast, unikając konieczności skanowania dziennika z/do początku najstarszej aktywnej transakcji. Za pomocą reguły ADR dziennik transakcji jest przetwarzany tylko z ostatniego pomyślnego punktu kontrolnego (lub najstarszego nieprawidłowego numeru sekwencyjnego dziennika strony (LSN)). W związku z tym czas odzyskiwania nie ma wpływu na długotrwałe transakcje.
+- Zminimalizuj wymaganą ilość miejsca w dzienniku transakcji, ponieważ nie ma już potrzeby przetwarzania dziennika dla całej transakcji. W związku z tym dziennik transakcji można skrócić w sposób agresywny jako punkty kontrolne i kopie zapasowe.
 
-Na wysokim poziomie ADR realizuje odzyskiwanie szybkie bazy danych przez przechowywanie wersji, wszystkie modyfikacje fizycznej bazy danych i tylko cofanie operacji logicznych, które są ograniczone i może być cofnięte niemal natychmiast. Każdej transakcji, który był aktywny od czasu awarii są oznaczone jako zostało przerwane, i w związku z tym, można zignorować wszelkie wersje generowanych przez te transakcje w zapytaniach jednoczesnych użytkowników.
+Na wysokim poziomie funkcja ADR umożliwia szybkie odzyskiwanie bazy danych przez przechowywanie wersji wszystkich modyfikacji fizycznych baz danych i wykonywanie tylko operacji logicznych, które są ograniczone i mogą być cofnięte niemal natychmiastowo. Wszystkie transakcje, które były aktywne jako czas awarii, są oznaczane jako przerwane i w związku z tym wszystkie wersje wygenerowane przez te transakcje mogą być ignorowane przez współbieżne zapytania użytkownika.
 
-Proces odzyskiwania ADR ma ten sam trzy fazy jako bieżący proces odzyskiwania. Sposób działania tych faz przy użyciu reguły ADR zilustrowane na poniższym diagramie i opisano szczegółowo następujące na diagramie.
+Proces odzyskiwania ADR ma te same trzy fazy jak bieżący proces odzyskiwania. Sposób działania tych faz z użyciem reguły ADR przedstawiono na poniższym diagramie i wyjaśniono bardziej szczegółowo po diagramie.
 
-![Proces odzyskiwania reguły ADR](./media/sql-database-accelerated-database-recovery/adr-recovery-process.png)
+![Proces odzyskiwania ADR](./media/sql-database-accelerated-database-recovery/adr-recovery-process.png)
 
 - **Faza analizy**
 
-  Proces pozostaje taka sama jak dzisiaj dodając Rekonstruowanie sLog oraz kopiowania rekordów dziennika operacji bez numerów wersji.
+  Proces pozostaje taki sam, jak dzisiaj z dodaniem rekonstrukcji sLog i skopiowaniem rekordów dziennika dla operacji niezwiązanych z wersjami.
   
-- **Wykonaj ponownie** fazy
+- **Wykonaj ponownie** fazę
 
-  Podzielony na dwie fazy (P)
+  Podzielone na dwie fazy (P)
   - Faza 1
 
-      Wykonaj ponownie z sLog (najstarsze niezatwierdzonych transakcji do ostatniego punktu kontrolnego). Powtórz to szybka operacja, gdy tylko musi przetworzyć kilka rekordów z sLog.
+      Wykonaj ponownie z sLog (najstarszej niezatwierdzonej transakcji do ostatniego punktu kontrolnego). Wykonaj ponownie szybką operację, ponieważ wymaga tylko przetworzenia kilku rekordów z sLog.
       
   - Faza 2
 
-     Powtórz z dziennika transakcji, który rozpoczyna się od ostatniego punktu kontrolnego (zamiast najstarsze niezatwierdzonych transakcji)
+     Ponowne wykonywanie z dziennika transakcji zaczyna się od ostatniego punktu kontrolnego (zamiast najstarszej niezatwierdzonej transakcji)
      
-- **Cofnij fazy**
+- **Faza cofania**
 
-   Fazy cofania przy użyciu reguły ADR niemal natychmiast kończy się za pomocą sLog do cofania operacji niewersjonowanych i utrwalone wersji Store (Odwiedziny) przy użyciu logicznych Przywróć do wykonania wiersza poziomu na podstawie wersji cofania.
+   Faza cofania z ADR kończy niemal natychmiastowo za pomocą sLog do cofania operacji niezwiązanych z wersjami i trwałego magazynu wersji (PVS) z przywróceniem logicznym do wykonywania operacji cofania opartej na poziomie wiersza.
 
-## <a name="adr-recovery-components"></a>Składniki recovery reguły ADR
+## <a name="adr-recovery-components"></a>Składniki odzyskiwania ADR
 
-Czterech kluczowych składników ADR są:
+Cztery kluczowe składniki reguły ADR są następujące:
 
-- **Utrwalonych wersji Store (Odwiedziny)**
+- **Magazyn trwałych wersji (PVS)**
 
-  Magazyn wersji utrwalonych jest nowy mechanizm aparatu bazy danych SQL na potrzeby utrwalania wersji wierszy w bazie danych sam zamiast tradycyjnych generowane `tempdb` magazynu wersji. Odwiedziny umożliwia izolację zasobów oraz zwiększa dostępność do odczytu pomocniczych baz danych.
+  Utrwalony magazyn wersji to nowy mechanizm aparatu usługi SQL Database służący do utrwalania wersji wiersza generowanych w bazie danych zamiast tradycyjnego `tempdb` magazynu wersji. PVS umożliwia izolację zasobów, a także zwiększa dostępność czytelnych serwerów pomocniczych.
 
-- **Logiczne przywrócić**
+- **Przywrócenie logiczne**
 
-  Przywróć logiczne jest odpowiedzialny za wykonywanie Cofnij wersja oparta na poziomie wiersza — podając wycofywania transakcji błyskawiczne i cofania dla wszystkich operacji wersjonowany procesu asynchronicznego.
+  Przywrócenie logiczne to proces asynchroniczny odpowiedzialny za wykonywanie operacji cofania opartego na poziomie wiersza, która umożliwia wycofywanie transakcji i cofanie dla wszystkich operacji związanych z wersjami.
 
-  - Przechowuje informacje o wszystkich przerwane transakcje
-  - Wykonuje wycofywania przy użyciu Odwiedziny dla wszystkich transakcji użytkownika
-  - Przerwij wszystkie blokady natychmiast po transakcji wydań
+  - Śledzi wszystkie przerwane transakcje
+  - Wykonuje wycofywanie przy użyciu PVS dla wszystkich transakcji użytkownika
+  - Zwalnia wszystkie blokady natychmiast po przerwaniu transakcji
 
 - **sLog**
 
-  sLog jest strumień dodatkowej dziennika w pamięci, że magazyny rejestrowania rekordów niewersjonowanych operacje (takie jak unieważniania pamięci podręcznej metadanych, pozyskanie blokady i tak dalej). SLog jest:
+  sLog to pomocniczy strumień dziennika w pamięci, który przechowuje rekordy dziennika dla operacji niezwiązanych z wersjami (takich jak unieważnienie pamięci podręcznej metadanych, blokady pozyskiwania itd.). SLog:
 
-  - Niskim poziomie i w pamięci
-  - Utrzymywana na dysku przez serializowanego w procesie punktu kontrolnego
-  - Okresowo są obcinane jako zatwierdzenie transakcji
-  - Przyspiesza wykonaj ponownie i cofnąć tylko niewersjonowanych operacji przetwarzania  
-  - Włącza obcinanie dziennika transakcji agresywne przy zachowaniu tylko rekordy dziennika wymagane
+  - Niski wolumin i w pamięci
+  - Utrwalone na dysku przez jego serializację podczas procesu Checkpoint
+  - Okresowo obcinaj jako zatwierdzenie transakcji
+  - Przyspiesza ponowne wykonywanie i cofanie przez przetwarzanie tylko operacji niezwiązanych z wersjami  
+  - Umożliwia agresywne obcinanie dziennika transakcji przez zachowanie tylko wymaganych rekordów dziennika
 
-- **Czyszczenia**
+- **Kontur**
 
-  Oczyszczarkę jest proces asynchroniczny, który budzi okresowo i czyści wersje stron, które nie są wymagane.
+  Oczyszczarka to proces asynchroniczny, który okresowo wznawia i czyści niewymagane wersje stron.
 
 ## <a name="who-should-consider-accelerated-database-recovery"></a>Kto powinien rozważyć przyspieszone odzyskiwanie bazy danych
 
-Następujące typy klientów, należy rozważyć włączenie ADR:
+Następujące typy klientów powinny rozważyć włączenie reguły ADR:
 
-- Klienci, którzy mają obciążeń przy użyciu długie uruchomione transakcje.
-- Klienci, którzy przejrzane przypadki, w którym aktywne transakcje powodują dziennika transakcji i znacznie wzrośnie.  
-- Klienci, którzy wystąpił długie okresy niedostępność bazy danych z powodu programu SQL Server, długie wykonywanie odzyskiwania (np. nieoczekiwany programu SQL Server lub ręczne ponowne uruchomienie wycofywania transakcji).
+- Klienci, którzy mają obciążenia z długotrwałymi transakcjami.
+- Klienci, którzy widziją przypadki, w których aktywne transakcje powodują znaczne zwiększenie rozmiaru dziennika transakcji.  
+- Klienci, którzy mieli długotrwałe okresy niedostępności bazy danych z powodu SQL Server długotrwałego odzyskiwania (na przykład nieoczekiwanego SQL Server ponownego uruchomienia lub ręcznego wycofania transakcji).
 

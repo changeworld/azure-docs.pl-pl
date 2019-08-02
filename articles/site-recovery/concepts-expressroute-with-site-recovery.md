@@ -1,6 +1,6 @@
 ---
-title: Za pomocą usługi Azure ExpressRoute za pomocą usługi Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji — informacje | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak używać usługi Azure ExpressRoute za pomocą usługi Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji.
+title: Informacje o korzystaniu z usługi Azure ExpressRoute z Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji | Microsoft Docs
+description: Opisuje sposób korzystania z usługi Azure ExpressRoute z usługą Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -8,58 +8,58 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: mayg
-ms.openlocfilehash: 35fa26112a6026ab05bd59b38621de7ee802c715
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: eb29f8280ac1da3cd366b0c54cc6e2ce92b06286
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491896"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726471"
 ---
-# <a name="azure-expressroute-with-azure-site-recovery"></a>Usługa ExpressRoute systemu Azure za pomocą usługi Azure Site Recovery
+# <a name="azure-expressroute-with-azure-site-recovery"></a>Usługa Azure ExpressRoute z Azure Site Recovery
 
 Usługa Microsoft Azure ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft za pośrednictwem połączenia prywatnego obsługiwanego przez dostawcę połączenia. Dzięki usłudze ExpressRoute można ustanowić połączenia z usługami Microsoft w chmurze, np. Microsoft Azure, Office 365 i Dynamics 365.
 
-W tym artykule opisano, jak używać usługi Azure ExpressRoute z usługi Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji.
+W tym artykule opisano, jak można użyć usługi Azure ExpressRoute z Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji.
 
 ## <a name="expressroute-circuits"></a>Obwody usługi ExpressRoute
 
-Obwód usługi ExpressRoute reprezentuje połączenie logiczne między lokalną infrastrukturą i usługami chmurowymi firmy Microsoft za pośrednictwem dostawcy łączności. Może zamówić łączność obejmującą wiele obwodów usługi ExpressRoute. Każdy obwód może znajdować się w tej samej lub różnych regionach i mogą być połączone z lokalnym za pośrednictwem połączenia różnych dostawców. Dowiedz się więcej o obwodów usługi ExpressRoute [tutaj](../expressroute/expressroute-circuit-peerings.md).
+Obwód usługi ExpressRoute reprezentuje połączenie logiczne między lokalną infrastrukturą i usługami chmurowymi firmy Microsoft za pośrednictwem dostawcy łączności. Może zamówić łączność obejmującą wiele obwodów usługi ExpressRoute. Każdy obwód może znajdować się w tej samej lub różnych regionach i mogą być połączone z lokalnym za pośrednictwem połączenia różnych dostawców. Więcej informacji na temat obwodów usługi ExpressRoute znajduje się [tutaj](../expressroute/expressroute-circuit-peerings.md).
 
-Obwód usługi ExpressRoute ma wiele domen routingu skojarzonych z nim. Dowiedz się więcej o i porównaj domeny routingu usługi ExpressRoute [tutaj](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
+Obwód usługi ExpressRoute ma skojarzone wiele domen routingu. Dowiedz się więcej o domenach routingu ExpressRoute i porównaj je [tutaj](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 
-## <a name="on-premises-to-azure-replication-with-expressroute"></a>Środowiska lokalnego do platformy Azure replikacji przy użyciu usługi ExpressRoute
+## <a name="on-premises-to-azure-replication-with-expressroute"></a>Replikacja lokalna do platformy Azure za pomocą ExpressRoute
 
-Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii i migracji na platformę Azure dla lokalnych [maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-architecture.md), [maszyn wirtualnych VMware](vmware-azure-architecture.md), i [serwerów fizycznych](physical-azure-architecture.md). Dla całego środowiska lokalnego do platformy Azure scenariuszy dane replikacji są wysyłane do i przechowywane na koncie usługi Azure Storage. Podczas replikacji nie płać opłatami związanymi z maszyny wirtualnej. Po uruchomieniu trybu failover na platformie Azure Site Recovery automatycznie tworzy maszyny wirtualne IaaS platformy Azure.
+Azure Site Recovery umożliwia odzyskiwanie po awarii i migrację na platformę Azure dla lokalnych [maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-architecture.md), [maszyn wirtualnych VMware](vmware-azure-architecture.md)i [serwerów fizycznych](physical-azure-architecture.md). W przypadku wszystkich scenariuszy lokalnych z platformą Azure dane replikacji są wysyłane do konta usługi Azure Storage i przechowywane na nim. Podczas replikacji nie są naliczane żadne opłaty za maszyny wirtualne. Po uruchomieniu trybu failover na platformie Azure Site Recovery automatycznie tworzy maszyny wirtualne IaaS platformy Azure.
 
-Usługa Site Recovery replikuje dane do konta usługi Azure Storage lub repliki z dysków zarządzanych dla elementu docelowego regionu platformy Azure za pośrednictwem publicznego punktu końcowego. Za pomocą usługi ExpressRoute dla ruchu replikacji usługa Site Recovery, możesz użyć [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) lub istniejącej [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) (uznane za przestarzałe w utworzenie nowych kont). Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji. Należy pamiętać, że replikacja nie jest obsługiwana za pośrednictwem prywatnej komunikacji równorzędnej.
+Site Recovery replikuje dane do konta usługi Azure Storage lub dysku zarządzanego repliki w docelowym regionie platformy Azure za pośrednictwem publicznego punktu końcowego. Aby użyć ExpressRoute Site Recovery na potrzeby ruchu związanego z replikacją, można wykorzystać [komunikację równorzędną firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) lub istniejącą [publiczną komunikację równorzędną](../expressroute/expressroute-circuit-peerings.md#publicpeering) (przestarzałą dla nowych operacji tworzenia). Komunikacja równorzędna firmy Microsoft jest zalecaną domeną routingu na potrzeby replikacji. Należy zauważyć, że replikacja nie jest obsługiwana w trybie prywatnej komunikacji równorzędnej.
 
-Upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) również są spełnione dla serwera konfiguracji. Łączność z określonych adresów URL jest wymagane przez serwer konfiguracji do organizowania replikacji usługi Site Recovery. Nie można użyć usługi ExpressRoute dla tego połączenia. 
+Upewnij się, że zostały spełnione także [wymagania dotyczące sieci](vmware-azure-configuration-server-requirements.md#network-requirements) dla serwera konfiguracji. Serwer konfiguracji wymaga połączenia z określonymi adresami URL w celu aranżacji replikacji Site Recovery. Nie można użyć ExpressRoute dla tej łączności. 
 
-W przypadku używania serwera proxy w lokalnych i chcesz korzystać z usługi ExpressRoute dla ruchu związanego z replikacją, musisz skonfigurować listę obejścia serwera Proxy na serwerze konfiguracji i serwerów przetwarzania. Wykonaj poniższe kroki:
+W przypadku korzystania z serwera proxy lokalnie i chcą korzystać z ExpressRoute na potrzeby ruchu związanego z replikacją należy skonfigurować listę pomijania proxy na serwerze konfiguracji i serwerach przetwarzania. Wykonaj poniższe kroki:
 
-- Pobierz narzędzie PsExec z [tutaj](https://aka.ms/PsExec) do dostępu do kontekstu użytkownika systemu.
-- Otwórz program Internet Explorer w kontekście użytkownika w systemie, uruchamiając następujące wiersza polecenia programu psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
-- Dodaj ustawienia serwera proxy w programie Internet Explorer
-- Na liście obejścia, Dodaj adres URL usługi Azure storage *. blob.core.windows.net
+- Pobierz narzędzie PsExec z tego [miejsca](https://aka.ms/PsExec) , aby uzyskać dostęp do kontekstu użytkownika systemu.
+- Otwórz program Internet Explorer w kontekście użytkownika systemu, uruchamiając następujący wiersz polecenia PsExec-s-i "użycie ścieżki%ProgramFiles%\Internet Explorer\iexplore.exe"
+- Dodawanie ustawień serwera proxy w programie IE
+- Na liście obejście Dodaj adres URL usługi Azure Storage *. blob.core.windows.net
 
-Pozwoli to zagwarantować, że tylko ruch związany z replikacją przepływy za pośrednictwem usługi ExpressRoute podczas przejść komunikację za pośrednictwem serwera proxy.
+Zapewni to, że ruch związany z replikacją odbywa się za pomocą ExpressRoute, podczas gdy komunikacja będzie możliwa przez serwer proxy.
 
-Po maszyn wirtualnych lub serwerach pracy awaryjnej z siecią wirtualną platformy Azure, można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
+Gdy maszyny wirtualne lub serwery zostaną przełączone w tryb failover do sieci wirtualnej platformy Azure, możesz uzyskać do nich dostęp przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
 
-Połączone scenariusz jest reprezentowane na poniższym diagramie: ![W lokalnym — z platformą Azure przy użyciu usługi ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
+Połączony scenariusz jest przedstawiony na poniższym diagramie: ![Lokalne na platformę Azure z usługą ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
-## <a name="azure-to-azure-replication-with-expressroute"></a>Replikacji Azure – Azure przy użyciu usługi ExpressRoute
+## <a name="azure-to-azure-replication-with-expressroute"></a>Replikacja z platformy Azure do platformy Azure za pomocą ExpressRoute
 
-Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii [maszyn wirtualnych platformy Azure](azure-to-azure-architecture.md). W zależności od tego, czy maszyn, sieci wirtualnej platformy Azure użyj [usługi Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md), dane replikacji są wysyłane do konta usługi Azure Storage lub repliki z dysków zarządzanych w elemencie docelowym regionem świadczenia usługi Azure. Mimo że punkty końcowe replikacji są publiczne, ruch związany z replikacją dla replikacji maszyny Wirtualnej platformy Azure, domyślnie nie przechodzi przez Internet, niezależnie od tego, który region świadczenia usługi Azure źródłowa sieć wirtualna istnieje w. Można zastąpić domyślną trasę systemową platformy Azure dla prefiksu adresu 0.0.0.0/0 za pomocą [trasy niestandardowej](../virtual-network/virtual-networks-udr-overview.md#custom-routes) przekierowywać ruch maszyny Wirtualnej do środowiska lokalnego wirtualnego urządzenia sieciowego (WUS), ale ta konfiguracja nie jest zalecana dla usługi Site Recovery Replikacja. Jeśli używasz niestandardowych tras, wykonaj następujące czynności [Tworzenie punktu końcowego usługi sieci wirtualnej](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) w wirtualnej sieci dla "Magazyn", aby ruch związany z replikacją nie opuszczają platformy Azure.
+Azure Site Recovery włącza odzyskiwanie po awarii [maszyn wirtualnych platformy Azure](azure-to-azure-architecture.md). W zależności od tego, czy maszyny wirtualne platformy Azure korzystają z [usługi azure Managed disks](../virtual-machines/windows/managed-disks-overview.md), dane replikacji są wysyłane do konta usługi Azure Storage lub dysku zarządzanego repliki w docelowym regionie platformy Azure. Mimo że punkty końcowe replikacji są publiczne, ruch związany z replikacją na potrzeby replikacji maszyny wirtualnej platformy Azure, domyślnie nie przechodzi przez Internet, niezależnie od regionu platformy Azure, w którym znajduje się źródłowa sieć wirtualna. Można zastąpić domyślną trasę systemową platformy Azure dla prefiksu adresu 0.0.0.0/0 z [trasą](../virtual-network/virtual-networks-udr-overview.md#custom-routes) niestandardową i przekierować ruch maszyny wirtualnej do lokalnego urządzenia sieciowego (urządzenie WUS), ale ta konfiguracja nie jest zalecana w przypadku replikacji Site Recovery. Jeśli używasz tras niestandardowych, należy [utworzyć punkt końcowy usługi sieci wirtualnej](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) w sieci wirtualnej dla elementu "Storage", aby ruch związany z replikacją nie opuszcza granicy platformy Azure.
 
-Do odzyskiwania po awarii maszyny Wirtualnej platformy Azure Domyślnie usługi ExpressRoute nie jest wymagana na potrzeby replikacji. Po maszyny wirtualne awaryjnie do obiektu docelowego regionu świadczenia usługi Azure, można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering).
+W przypadku odzyskiwania po awarii maszyny wirtualnej platformy Azure domyślnie ExpressRoute nie jest wymagana do replikacji. Gdy maszyny wirtualne zostaną przełączone w tryb failover do docelowego regionu platformy Azure, możesz uzyskać do nich dostęp przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
-Jeśli usługa ExpressRoute jest już używany do łączenia z lokalnym centrum danych z maszyn wirtualnych platformy Azure w regionie źródłowym, można zaplanować dla kolejnego ustanawiania połączenia usługi ExpressRoute w regionie docelowym w tryb failover. Można użyć tego samego obwodu usługi ExpressRoute do łączenia region docelowy za pomocą nowego połączenia sieci wirtualnej lub korzystanie z oddzielnych obwód usługi ExpressRoute i połączeń na potrzeby odzyskiwania po awarii. Opisano różne możliwe scenariusze [tutaj](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute).
+Jeśli używasz już ExpressRoute do nawiązywania połączenia z lokalnego centrum danych z maszynami wirtualnymi platformy Azure w regionie źródłowym, możesz zaplanować ponowne ustanowienie połączenia ExpressRoute w regionie docelowym trybu failover. Można użyć tego samego obwodu usługi ExpressRoute, aby połączyć się z regionem docelowym za pomocą nowego połączenia sieci wirtualnej lub użyć oddzielnego obwodu usługi ExpressRoute i połączenia na potrzeby odzyskiwania po awarii. W [tym miejscu](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute)opisano różne możliwe scenariusze.
 
-Można replikować maszyny wirtualne platformy Azure do dowolnego regionu systemu Azure, w tym samym klastrze geograficznej zgodnie z opisem [tutaj](../site-recovery/azure-to-azure-support-matrix.md#region-support). Wybrany element docelowy region platformy Azure nie mieści się w tym samym regionie geograficznymi jako źródło, może być konieczne Włączanie ExpressRoute Premium. Aby uzyskać więcej informacji, sprawdź [lokalizacji usługi ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) i [ExpressRoute — cennik](https://azure.microsoft.com/pricing/details/expressroute/).
+Maszyny wirtualne platformy Azure można replikować do dowolnego regionu świadczenia usługi Azure w tym samym klastrze geograficznym, co [opisano tutaj](../site-recovery/azure-to-azure-support-matrix.md#region-support). Jeśli wybrany docelowy region platformy Azure nie znajduje się w tym samym regionie geopolitycznym co źródło, może być konieczne włączenie opcji ExpressRoute Premium. Aby uzyskać więcej informacji, sprawdź [lokalizacje ExpressRoute](../expressroute/expressroute-locations.md) i [Cennik ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [obwodów usługi ExpressRoute](../expressroute/expressroute-circuit-peerings.md).
-- Dowiedz się więcej o [domeny routingu usługi ExpressRoute](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
-- Dowiedz się więcej o [lokalizacji usługi ExpressRoute](../expressroute/expressroute-locations.md).
+- Dowiedz się więcej na temat obwodów usługi [ExpressRoute](../expressroute/expressroute-circuit-peerings.md).
+- Dowiedz się więcej o [domenach routingu ExpressRoute](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
+- Dowiedz się więcej o [lokalizacjach ExpressRoute](../expressroute/expressroute-locations.md).
 - Dowiedz się więcej na temat odzyskiwania po awarii [maszyn wirtualnych platformy Azure przy użyciu usługi ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md).

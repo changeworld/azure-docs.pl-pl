@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Dodawanie dostawcy tożsamości do aplikacji — Azure Active Directory B2C
-description: Dowiedz się, jak dodać dostawców tożsamości do aplikacji w usłudze Azure Active Directory B2C w witrynie Azure portal.
+title: Samouczek — Dodawanie dostawców tożsamości do aplikacji — Azure Active Directory B2C
+description: Dowiedz się, jak dodać dostawców tożsamości do aplikacji w Azure Active Directory B2C przy użyciu Azure Portal.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,47 +10,47 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33f595dd36ac9448cc1276647f9943326b0b74c1
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 5710ccfe5d6450714e029827a795b484b1bcd2b4
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655222"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716663"
 ---
-# <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dodawanie dostawcy tożsamości do aplikacji w usłudze Azure Active Directory B2C
+# <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dodawanie dostawców tożsamości do aplikacji w Azure Active Directory B2C
 
-W swoich aplikacjach możesz umożliwić użytkownikom logowanie się za pomocą różnych dostawców tożsamości. *Dostawca tożsamości* tworzy, i przechowuje informacje dotyczące tożsamości oraz zarządza nimi, zapewniając jednocześnie aplikacjom usługi uwierzytelniania. Możesz dodać dostawców tożsamości, które są obsługiwane przez usługi Azure Active Directory (Azure AD) B2C, aby Twoje [przepływy użytkownika](active-directory-b2c-reference-policies.md) przy użyciu witryny Azure portal.
+W swoich aplikacjach możesz umożliwić użytkownikom logowanie się za pomocą różnych dostawców tożsamości. *Dostawca tożsamości* tworzy, i przechowuje informacje dotyczące tożsamości oraz zarządza nimi, zapewniając jednocześnie aplikacjom usługi uwierzytelniania. Można dodać dostawców tożsamości, które są obsługiwane przez Azure Active Directory (Azure AD) B2C do [przepływów użytkownika](active-directory-b2c-reference-policies.md) przy użyciu Azure Portal.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie aplikacji dostawcy tożsamości
-> * Dodaj dostawców tożsamości dla Twojej dzierżawy
-> * Dodawanie dostawcy tożsamości do przepływu użytkownika
+> * Dodawanie dostawców tożsamości do dzierżawy
+> * Dodawanie dostawców tożsamości do przepływu użytkownika
 
-Zazwyczaj używa się tylko jednego dostawcę tożsamości w swoich aplikacjach, ale istnieje możliwość, aby dodać więcej. W tym samouczku przedstawiono sposób dodawania do aplikacji dostawcy tożsamości usługi Azure AD i dostawcy tożsamości usługi Facebook. Dodanie obu tych dostawców tożsamości do aplikacji jest opcjonalne. Możesz również dodać innych dostawców tożsamości, takich jak [Amazon](active-directory-b2c-setup-amzn-app.md), [GitHub](active-directory-b2c-setup-github-app.md), [Google](active-directory-b2c-setup-goog-app.md), [LinkedIn](active-directory-b2c-setup-li-app.md), [firmyMicrosoft](active-directory-b2c-setup-msa-app.md), lub [Twitter](active-directory-b2c-setup-twitter-app.md).
+W aplikacjach zwykle używany jest tylko jeden dostawca tożsamości, ale można dodać więcej. W tym samouczku przedstawiono sposób dodawania dostawcy tożsamości usługi Azure AD i dostawcy tożsamości Facebook do aplikacji. Dodawanie obu tych dostawców tożsamości do aplikacji jest opcjonalne. Możesz również dodać innych dostawców tożsamości, takich jak [Amazon](active-directory-b2c-setup-amzn-app.md), [GitHub](active-directory-b2c-setup-github-app.md), [Google](active-directory-b2c-setup-goog-app.md), [LinkedIn](active-directory-b2c-setup-li-app.md), [Microsoft](active-directory-b2c-setup-msa-app.md)lub [Twitter](active-directory-b2c-setup-twitter-app.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Utwórz przepływ użytkownika](tutorial-create-user-flows.md) aby użytkownicy mogli zarejestrować się i zaloguj się do aplikacji.
+[Utwórz przepływ użytkownika](tutorial-create-user-flows.md) , aby umożliwić użytkownikom rejestrowanie się w aplikacji i logowanie się do niej.
 
 ## <a name="create-applications"></a>Tworzenie aplikacji
 
-Aplikacje dostawcy tożsamości, podaj identyfikator i klucz w celu umożliwienia komunikacji z dzierżawy usługi Azure AD B2C. W tej części samouczka utworzysz aplikację usługi Azure AD i aplikacji usługi Facebook, z których możesz korzystać z identyfikatory i klucze, aby dodać dostawców tożsamości do dzierżawy. W przypadku dodawania tylko jednego z dostawców tożsamości, wystarczy utworzyć aplikację dla tego dostawcy.
+Aplikacje dostawcy tożsamości dostarczają identyfikator i klucz, aby umożliwić komunikację z dzierżawą Azure AD B2C. W tej części samouczka utworzysz aplikację usługi Azure AD i aplikację Facebook, z której są uzyskiwane identyfikatory i klucze umożliwiające dodawanie dostawców tożsamości do dzierżawy. Jeśli dodajesz tylko jednego z dostawców tożsamości, wystarczy utworzyć aplikację dla tego dostawcy.
 
-### <a name="create-an-azure-active-directory-application"></a>Tworzenie aplikacji usługi Azure Active Directory
+### <a name="create-an-azure-active-directory-application"></a>Tworzenie aplikacji Azure Active Directory
 
-Aby włączyć logowania dla użytkowników z usługi Azure AD, musisz zarejestrować aplikację w dzierżawie usługi Azure AD. Dzierżawy usługi Azure AD nie jest taka sama jak dzierżawy usługi Azure AD B2C.
+Aby włączyć Logowanie użytkowników z usługi Azure AD, musisz zarejestrować aplikację w dzierżawie usługi Azure AD. Dzierżawa usługi Azure AD nie jest taka sama jak dzierżawa Azure AD B2C.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera dzierżawy usługi Azure AD.
-1. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **rejestracje aplikacji**.
-1. Wybierz **nowej rejestracji**.
+1. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD, klikając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawę usługi Azure AD.
+1. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **rejestracje aplikacji**.
+1. Wybierz pozycję **Nowa rejestracja**.
 1. Wprowadź nazwę aplikacji. Na przykład `Azure AD B2C App`.
-1. Zaakceptuj wybór **kont w tym katalogu organizacji tylko** dla tej aplikacji.
-1. Aby uzyskać **identyfikator URI przekierowania**, zaakceptuj wartość **sieci Web** i wprowadź następujący adres URL małymi literami, zastępując `your-B2C-tenant-name` nazwą dzierżawy usługi Azure AD B2C.
+1. Zaakceptuj wybór **kont w tym katalogu organizacyjnym tylko** dla tej aplikacji.
+1. W polu **Identyfikator URI przekierowania**Zaakceptuj wartość **sieci Web** i wprowadź następujący adres URL w postaci małych liter, zastępując `your-B2C-tenant-name` nazwę dzierżawy Azure AD B2C.
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -58,49 +58,49 @@ Aby włączyć logowania dla użytkowników z usługi Azure AD, musisz zarejestr
 
     Na przykład `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 
-    Wszystkie adresy URL powinny teraz być za pomocą [z usługi b2clogin.com](b2clogin.md).
+    Wszystkie adresy URL powinny teraz używać [b2clogin.com](b2clogin.md).
 
-1. Wybierz **zarejestrować**, następnie rekord **identyfikator aplikacji (klienta)** używane w kolejnym kroku.
-1. W obszarze **Zarządzaj** w menu aplikacji wybierz **certyfikaty i klucze tajne**, a następnie wybierz **nowy wpis tajny klienta**.
-1. Wprowadź **opis** jako klucz tajny klienta. Na przykład `Azure AD B2C App Secret`.
-1. Wybierz okres ważności. Dla tej aplikacji, Zaakceptuj wybór **w 1 rok**.
-1. Wybierz **Dodaj**, następnie zapisz wartość nowy wpis tajny klienta, którego można użyć w późniejszym kroku.
+1. Wybierz pozycję **zarejestruj**, a następnie zarejestruj **Identyfikator aplikacji (klienta)** , którego używasz w późniejszym kroku.
+1. W obszarze **Zarządzaj** w menu aplikacji wybierz pozycję **Certyfikaty &** wpisy tajne, a następnie wybierz pozycję **nowy klucz tajny klienta**.
+1. Wprowadź **Opis** wpisu tajnego klienta. Na przykład `Azure AD B2C App Secret`.
+1. Wybierz okres ważności. W przypadku tej aplikacji zaakceptuj wybór **w ciągu 1 roku**.
+1. Wybierz pozycję **Dodaj**, a następnie Zapisz wartość nowego klucza tajnego klienta, którego używasz w późniejszym kroku.
 
-### <a name="create-a-facebook-application"></a>Tworzenie aplikacji usługi Facebook
+### <a name="create-a-facebook-application"></a>Tworzenie aplikacji w usłudze Facebook
 
-Aby użyć konta w serwisie Facebook jako dostawcy tożsamości w usłudze Azure AD B2C, musisz utworzyć aplikację w usłudze Facebook. Jeśli nie masz jeszcze konta w serwisie Facebook, możesz pobrać na stronie [ https://www.facebook.com/ ](https://www.facebook.com/).
+Aby użyć konta w serwisie Facebook jako dostawcy tożsamości w Azure AD B2C, musisz utworzyć aplikację w serwisie Facebook. Jeśli nie masz jeszcze konta w serwisie Facebook, możesz je uzyskać pod [https://www.facebook.com/](https://www.facebook.com/)adresem.
 
-1. Zaloguj się do [serwisu Facebook dla deweloperów](https://developers.facebook.com/) przy użyciu poświadczeń konta serwisu Facebook.
-1. Jeśli jeszcze tego nie zrobiono, należy zarejestrować się jako deweloper usługi Facebook. Aby to zrobić, wybierz **wprowadzenie** w prawym górnym rogu strony, Zaakceptuj zasady w serwisie Facebook, a kroki rejestracji.
-1. Wybierz **Moje aplikacje** i następnie **tworzenie aplikacji**.
-1. Wprowadź **nazwę wyświetlaną** i prawidłową **E-mail kontaktowy**.
-1. Kliknij przycisk **utworzyć identyfikator aplikacji**. Może to wymagać zaakceptować zasady platformy usługi Facebook i ukończyć sprawdzania zabezpieczeń w trybie online.
-1. Wybierz **ustawienia** > **podstawowe**.
-1. Wybierz **kategorii**, na przykład `Business and Pages`. Ta wartość jest wymagana przez usługi Facebook, ale nie jest używany przez usługę Azure AD B2C.
-1. W dolnej części strony wybierz **Dodaj platformy**, a następnie wybierz pozycję **witryny sieci Web**.
-1. W **adres URL witryny**, wprowadź `https://your-tenant-name.b2clogin.com/` zastępowanie `your-tenant-name` nazwą Twojej dzierżawy.
-1. Wprowadź adres URL dla **adres URL zasad zachowania poufności**, na przykład `http://www.contoso.com/`. Adres URL zasad ochrony prywatności to strona, których obsługa zapewniające informacje o ochronie prywatności dla aplikacji.
+1. Zaloguj się do usługi [Facebook dla deweloperów](https://developers.facebook.com/) przy użyciu poświadczeń konta w serwisie Facebook.
+1. Jeśli jeszcze tego nie zrobiono, należy zarejestrować się jako deweloper w serwisie Facebook. W tym celu wybierz pozycję **Rozpocznij** w prawym górnym rogu strony, zaakceptuj zasady serwisu Facebook i wykonaj kroki rejestracji.
+1. Wybierz pozycję **Moje aplikacje** , a następnie **Utwórz aplikację**.
+1. Wprowadź **nazwę wyświetlaną** i prawidłowy **kontaktowy adres e-mail**.
+1. Kliknij pozycję **Utwórz identyfikator aplikacji**. Może to wymagać zaakceptowania zasad platformy Facebook i ukończenia kontroli zabezpieczeń w trybie online.
+1. Wybierz pozycję **Ustawienia** > **podstawowe**.
+1. Wybierz **kategorię**, na przykład `Business and Pages`. Ta wartość jest wymagana przez serwis Facebook, ale nie jest używana przez Azure AD B2C.
+1. W dolnej części strony wybierz pozycję **Dodaj platformę**, a następnie wybierz pozycję **Witryna sieci Web**.
+1. W polu **adres URL witryny** `https://your-tenant-name.b2clogin.com/` wprowadź `your-tenant-name` zamianę na nazwę dzierżawy.
+1. Wprowadź adres URL **zasad zachowania poufności informacji**, na przykład `http://www.contoso.com/`. Adres URL zasad zachowania poufności informacji to strona, którą przechowujesz, aby zapewnić informacje o ochronie prywatności dla aplikacji.
 1. Wybierz pozycję **Zapisz zmiany**.
-1. W górnej części strony, należy rejestrować wartości **Identyfikatora aplikacji**.
-1. Obok pozycji **klucz tajny aplikacji**, wybierz opcję **Pokaż** i zapisz jego wartość. Aby skonfigurować usługi Facebook jako dostawcy tożsamości w dzierżawie używasz Identyfikatora aplikacji i klucz tajny aplikacji. **Klucz tajny aplikacji** jest ważnym poświadczeniem zabezpieczeń, które należy przechowywać bezpiecznie.
-1. Wybierz znak plus obok pozycji **produktów**, a następnie w obszarze **logowania do usługi Facebook**, wybierz opcję **Konfigurowanie**.
-1. W obszarze **logowania do usługi Facebook** w menu po lewej stronie wybierz **ustawienia**.
-1. W **identyfikatory URI przekierowania OAuth prawidłowe**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Zastąp `your-tenant-name` nazwą Twojej dzierżawy. Wybierz **Zapisz zmiany** w dolnej części strony.
-1. Aby udostępnić aplikację usługi Facebook do usługi Azure AD B2C, kliknij przycisk **stan** selektora w prawym górnym rogu strony i przekształcać je **na** upublicznić aplikacji, a następnie kliknij przycisk **Potwierdź** . W tym momencie stan powinien zmienić z **rozwoju** do **Live**.
+1. W górnej części strony Zapisz wartość **identyfikatora aplikacji**.
+1. Obok pozycji **klucz tajny aplikacji**wybierz pozycję **Pokaż** i Zapisz jej wartość. W celu skonfigurowania usługi Facebook jako dostawcy tożsamości w dzierżawie należy użyć identyfikatora aplikacji i klucza tajnego aplikacji. **Klucz tajny aplikacji** to ważne poświadczenie zabezpieczeń, które należy przechowywać w bezpiecznym miejscu.
+1. Wybierz znak plus obok pozycji **produkty**, a następnie w obszarze **Logowanie do serwisu Facebook**wybierz pozycję **Konfiguruj**.
+1. W obszarze **Logowanie do serwisu Facebook** w menu po lewej stronie wybierz pozycję **Ustawienia**.
+1. W prawidłowych identyfikatorach **URI przekierowania OAuth**wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Zamień `your-tenant-name` na nazwę dzierżawy. Wybierz pozycję **Zapisz zmiany** w dolnej części strony.
+1. Aby udostępnić aplikację Facebook Azure AD B2C, kliknij selektor **stanu** w prawym górnym rogu strony i **Włącz go,** aby udostępnić aplikację, a następnie kliknij przycisk **Potwierdź**. W tym momencie stan powinien ulec zmianie z **opracowywania** na na **żywo**.
 
-## <a name="add-the-identity-providers"></a>Dodawanie dostawcy tożsamości
+## <a name="add-the-identity-providers"></a>Dodawanie dostawców tożsamości
 
-Po utworzeniu aplikacji dostawcy tożsamości, który chcesz dodać, możesz dodać dostawcy tożsamości do dzierżawy.
+Po utworzeniu aplikacji dla dostawcy tożsamości, który chcesz dodać, należy dodać dostawcę tożsamości do dzierżawy.
 
-### <a name="add-the-azure-active-directory-identity-provider"></a>Dostawca tożsamości usługi Azure Active Directory
+### <a name="add-the-azure-active-directory-identity-provider"></a>Dodawanie dostawcy tożsamości Azure Active Directory
 
-1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera dzierżawy usługi Azure AD B2C.
+1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, klikając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę Azure AD B2C.
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 1. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
-1. Wprowadź **nazwa**. Na przykład, wprowadź *firmy Contoso w usłudze Azure AD*.
-1. Wybierz **typ dostawcy tożsamości**, wybierz opcję **Open ID Connect (wersja zapoznawcza)** , a następnie kliknij przycisk **OK**.
-1. Kliknij przycisk **skonfiguruj tego dostawcę tożsamości**
-1. Aby uzyskać **adres url metadanych**, wprowadź następujący adres URL, zastępując `your-AD-tenant-domain` z nazwą domeny dzierżawy usługi Azure AD.
+1. Wprowadź **nazwę**. Na przykład wprowadź nazwę *contoso Azure AD*.
+1. Wybierz **Typ dostawcy tożsamości**, wybierz pozycję **OpenID Connect Connect (wersja zapoznawcza)** , a następnie kliknij przycisk **OK**.
+1. Kliknij pozycję **Skonfiguruj tego dostawcę tożsamości**
+1. W polu **adres URL metadanych**wprowadź następujący adres URL, `your-AD-tenant-domain` zastępując nazwę domeny dzierżawy usługi Azure AD.
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -108,45 +108,45 @@ Po utworzeniu aplikacji dostawcy tożsamości, który chcesz dodać, możesz dod
 
     Na przykład `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-1. Aby uzyskać **identyfikator klienta**, wprowadź *identyfikator aplikacji (klienta)* wcześniej zapisane.
-1. Aby uzyskać **klucz tajny klienta**, wprowadź *klucz tajny klienta* wartość, która wcześniej zapisaną.
-1. Opcjonalnie wprowadź wartość dla **Domain_hint**. Na przykład `ContosoAD`. [Wskazówki dotyczące domeny](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) są dyrektyw, które są częścią żądania uwierzytelniania z aplikacji. Mogą one używane, aby przyspieszyć użytkownika do ich federacyjnych dostawca tożsamości strony logowania. Lub mogą być używane przez aplikację wielodostępną aby przyspieszyć użytkownika bezpośrednio na marki usługi Azure AD strony logowania dla swojej dzierżawy.
+1. W polu **Identyfikator klienta**wprowadź wcześniej zarejestrowany *Identyfikator aplikacji (klienta)* .
+1. W polu **klucz tajny klienta**wprowadź wcześniej nagraną wartość *klucza tajnego klienta* .
+1. Opcjonalnie wprowadź wartość dla **Domain_hint**. Na przykład `ContosoAD`. [Wskazówki dotyczące domen](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) to dyrektywy, które są zawarte w żądaniu uwierzytelniania z aplikacji. Mogą one służyć do przyspieszenia użytkownika do swojej strony logowania dostawcy tożsamości. Mogą też być używane przez aplikację wielodostępną, aby przyspieszyć użytkownika bezpośrednio do strony logowania do usługi Azure AD dla swojej dzierżawy.
 1. Kliknij przycisk **OK**.
-1. Wybierz **Mapowanie oświadczeń tego dostawcy tożsamości** i ustaw następujące oświadczeń:
+1. Wybierz pozycję **Mapuj oświadczenia tego dostawcy tożsamości** i ustaw następujące oświadczenia:
 
-    - Aby uzyskać **identyfikator użytkownika**, wprowadź `oid`.
-    - Aby uzyskać **nazwę wyświetlaną**, wprowadź `name`.
-    - Aby uzyskać **imię**, wprowadź `given_name`.
-    - Aby uzyskać **nazwisko**, wprowadź `family_name`.
-    - Aby uzyskać **E-mail**, wprowadź `unique_name`.
+    - W obszarze **Identyfikator użytkownika**wprowadź `oid`.
+    - W obszarze **Nazwa wyświetlana**wprowadź `name`.
+    - Dla **danej nazwy**wprowadź `given_name`.
+    - W obszarze **nazwisko**wprowadź `family_name`.
+    - W obszarze **poczta e-mail**wprowadź `unique_name`polecenie.
 
-1. Wybierz **OK**, a następnie wybierz **Utwórz** Aby zapisać konfigurację.
+1. Wybierz pozycję **OK**, a następnie wybierz pozycję **Utwórz** , aby zapisać konfigurację.
 
-### <a name="add-the-facebook-identity-provider"></a>Dostawca tożsamości aplikacji usługi Facebook
+### <a name="add-the-facebook-identity-provider"></a>Dodawanie dostawcy tożsamości w usłudze Facebook
 
 1. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
-1. Wprowadź **nazwa**. Na przykład, wprowadź *Facebook*.
-1. Wybierz **typ dostawcy tożsamości**, wybierz opcję **Facebook**, a następnie wybierz **OK**.
-1. Wybierz **skonfiguruj tego dostawcę tożsamości** i wprowadź *Identyfikatora aplikacji* wcześniej zarejestrowany jako **identyfikator klienta**.
-1. Wprowadź *klucz tajny aplikacji* zapisane jako **klucz tajny klienta**.
-1. Wybierz **OK** , a następnie wybierz **Utwórz** Aby zapisać konfigurację usługi Facebook.
+1. Wprowadź **nazwę**. Na przykład wprowadź w *serwisie Facebook*.
+1. Wybierz **Typ dostawcy tożsamości**, wybierz pozycję **Facebook**, a następnie wybierz przycisk **OK**.
+1. Wybierz opcję **Skonfiguruj tego dostawcę tożsamości** i wprowadź *Identyfikator aplikacji* , który został zarejestrowany wcześniej jako **Identyfikator klienta**.
+1. Wprowadź *wpis tajny aplikacji* , który został zarejestrowany jako **klucz tajny klienta**.
+1. Wybierz przycisk **OK** , a następnie wybierz pozycję **Utwórz** , aby zapisać konfigurację w serwisie Facebook.
 
-## <a name="update-the-user-flow"></a>Aktualizacja przepływu użytkownika
+## <a name="update-the-user-flow"></a>Aktualizowanie przepływu użytkownika
 
-W tym samouczku ukończono jako część wymagań wstępnych utworzono przepływ użytkownika dla rejestracji i logowania o nazwie *B2C_1_signupsignin1*. W tej sekcji dodasz dostawców tożsamości do *B2C_1_signupsignin1* przepływu użytkownika.
+W samouczku, który został ukończony w ramach wymagań wstępnych, został utworzony przepływ użytkownika na potrzeby rejestracji i logowania o nazwie *B2C_1_signupsignin1*. W tej sekcji dodasz dostawców tożsamości do przepływu użytkownika *B2C_1_signupsignin1* .
 
-1. Wybierz **przepływy użytkownika (zasady)** , a następnie wybierz pozycję *B2C_1_signupsignin1* przepływu użytkownika.
-2. Wybierz **dostawców tożsamości**, wybierz opcję **Facebook** i **firmy Contoso w usłudze Azure AD** dostawców tożsamości, które zostały dodane.
+1. Wybierz pozycję **przepływy użytkownika (zasady)** , a następnie wybierz pozycję przepływ użytkownika *B2C_1_signupsignin1* .
+2. Wybierz pozycję **dostawcy tożsamości**, wybierz dostawców tożsamości w usłudze **Facebook** i **contoso usługi Azure AD** .
 3. Wybierz pozycję **Zapisz**.
 
 ## <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
-1. Na stronie Przegląd przepływ użytkownika, który został utworzony, wybierz **uruchomić przepływ użytkownika**.
-1. Aby uzyskać **aplikacji**, wybierz aplikację sieci web o nazwie *webapp1* który został wcześniej zarejestrowany. **Adres URL odpowiedzi** powinien być wyświetlony `https://jwt.ms`.
-1. Wybierz **uruchomić przepływ użytkownika**, a następnie zaloguj się przy użyciu dostawcy tożsamości, które zostały wcześniej dodane.
+1. Na stronie Przegląd utworzonego przepływu użytkownika wybierz pozycję **Uruchom przepływ użytkownika**.
+1. W przypadku **aplikacji**wybierz aplikację sieci Web o nazwie *webapp1* , która została wcześniej zarejestrowana. Powinien być pokazywany `https://jwt.ms` **adres URL odpowiedzi** .
+1. Wybierz pozycję **Uruchom przepływ użytkownika**, a następnie zaloguj się przy użyciu wcześniej dodanego dostawcy tożsamości.
 1. Powtórz kroki od 1 do 3 dla innych dostawców tożsamości, które zostały dodane.
 
-Jeśli logowanie operacja się powiedzie, użytkownik jest przekierowany do `https://jwt.ms` powoduje wyświetlenie zdekodowany tokenu, podobnie do:
+Jeśli operacja logowania zakończy się pomyślnie, nastąpi przekierowanie `https://jwt.ms` do, który wyświetla zdekodowany token, podobny do:
 
 ```json
 {
@@ -176,10 +176,10 @@ W tym artykule zawarto informacje na temat wykonywania następujących czynnośc
 
 > [!div class="checklist"]
 > * Tworzenie aplikacji dostawcy tożsamości
-> * Dodaj dostawców tożsamości dla Twojej dzierżawy
-> * Dodawanie dostawcy tożsamości do przepływu użytkownika
+> * Dodawanie dostawców tożsamości do dzierżawy
+> * Dodawanie dostawców tożsamości do przepływu użytkownika
 
-Dowiedz się, jak dostosować interfejsu użytkownika strony widocznym dla użytkowników w ramach środowiska obsługi tożsamości w swoich aplikacjach:
+Następnie Dowiedz się, jak dostosować interfejs użytkownika stron widocznych dla użytkowników w ramach obsługi tożsamości w aplikacjach:
 
 > [!div class="nextstepaction"]
-> [Dostosowywanie interfejsu użytkownika aplikacji w usłudze Azure Active Directory B2C](tutorial-customize-ui.md)
+> [Dostosuj interfejs użytkownika aplikacji w Azure Active Directory B2C](tutorial-customize-ui.md)

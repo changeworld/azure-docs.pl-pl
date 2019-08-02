@@ -1,11 +1,10 @@
 ---
-title: Przerzucanie certyfikatów klastra usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak na Przerzucanie certyfikatów klastra usługi Service Fabric identyfikowane przez nazwy pospolitej certyfikatu.
+title: Przerzucanie certyfikatu klastra usługi Azure Service Fabric | Microsoft Docs
+description: Dowiedz się, jak przerzucać Service Fabric certyfikat klastra identyfikowany przy użyciu nazwy pospolitej certyfikatu.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: aljo
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,20 +12,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
-ms.author: aljo
-ms.openlocfilehash: dd4b6026772a20c522532e1ba65c6846addfa161
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 5d11054ca8eb684f1f25a25ddeac1b53e82b3775
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66159896"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599919"
 ---
-# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ręcznie przechodzą certyfikatu klastra usługi Service Fabric
-Gdy certyfikat klastra usługi Service Fabric jest bliski wygaśnięcia, musisz zaktualizować certyfikat.  Przerzucanie certyfikatów jest proste, jeśli klaster został [do Użyj certyfikatów na podstawie nazwy wspólnej](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (zamiast odcisk palca).  Uzyskaj nowy certyfikat z urzędu certyfikacji z nową datę wygaśnięcia.  Certyfikaty z podpisem własnym nie są obsługiwane w środowisku produkcyjnym klastrów usługi Service Fabric, aby uwzględnić certyfikaty generowane podczas Azure portal klastra przepływ pracy tworzenia. Nowy certyfikat musi mieć tę samą nazwę pospolitą jako starszych certyfikatów. 
+# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ręczne przewinięcie certyfikatu klastra Service Fabric
+Gdy certyfikat klastra Service Fabric jest bliski wygaśnięcia, należy zaktualizować certyfikat.  Przerzucanie certyfikatów jest proste, Jeśli klaster został [skonfigurowany do używania certyfikatów na podstawie nazwy pospolitej](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (zamiast odcisku palca).  Pobierz nowy certyfikat z urzędu certyfikacji z nową datą wygaśnięcia.  Certyfikaty z podpisem własnym nie obsługują klastrów Service Fabric produkcyjnych w celu uwzględnienia certyfikatów wygenerowanych podczas przepływu pracy tworzenia klastra Azure Portal. Nowy certyfikat musi mieć taką samą nazwę pospolitą jak certyfikat starszej wersji. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Klaster usługi Service Fabric będzie automatycznie używać certyfikatu zadeklarowane z następnych na przyszłą datę wygaśnięcia; podczas sprawdzania poprawności więcej niż jeden certyfikat jest zainstalowany na hoście. Najlepszym rozwiązaniem jest użycie szablonu usługi Resource Manager do aprowizacji zasobów platformy Azure. W środowisku nieprodukcyjnym poniższy skrypt może służyć do przekazania nowego certyfikatu do magazynu kluczy, a następnie instaluje certyfikat na zestaw skalowania maszyn wirtualnych: 
+Klaster Service Fabric automatycznie będzie używać zadeklarowanego certyfikatu z dalszą datą wygaśnięcia w przyszłości. Jeśli na hoście jest zainstalowany więcej niż jeden certyfikat weryfikacji. Najlepszym rozwiązaniem jest użycie szablonu Menedżer zasobów w celu udostępnienia zasobów platformy Azure. W przypadku środowiska nieprodukcyjnego można użyć następującego skryptu do przekazania nowego certyfikatu do magazynu kluczy, a następnie zainstalowania certyfikatu na zestawie skalowania maszyn wirtualnych: 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -82,9 +81,9 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 ```
 
 >[!NOTE]
-> Oblicza hasła zestawu skali maszyny wirtualnej nie obsługują ten sam identyfikator zasobu dla dwóch osobnych wpisów tajnych oraz ich każdego wpisu tajnego jest wersjonowany unikatowy zasób. 
+> Oblicza wpisy tajne zestawu skalowania maszyn wirtualnych nie obsługują tego samego identyfikatora zasobu dla dwóch oddzielnych wpisów tajnych, ponieważ każdy klucz tajny jest unikatowym zasobem w wersji. 
 
-Aby dowiedzieć się więcej, przeczytaj następujące czynności:
-* Dowiedz się więcej o [klastra zabezpieczeń](service-fabric-cluster-security.md).
-* [Aktualizowanie i zarządzanie certyfikatami klastra](service-fabric-cluster-security-update-certs-azure.md)
+Aby dowiedzieć się więcej, przeczytaj następujące tematy:
+* Dowiedz się więcej o [zabezpieczeniach klastra](service-fabric-cluster-security.md).
+* [Aktualizowanie certyfikatów klastra i zarządzanie nimi](service-fabric-cluster-security-update-certs-azure.md)
 

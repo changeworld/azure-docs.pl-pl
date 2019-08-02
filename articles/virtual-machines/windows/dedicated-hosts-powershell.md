@@ -1,0 +1,222 @@
+---
+title: Wdróż dedykowane hosty platformy Azure przy użyciu Azure PowerShell | Microsoft Docs
+description: Wdróż maszyny wirtualne na dedykowanych hostach przy użyciu Azure PowerShell.
+services: virtual-machines-windows
+author: cynthn
+manager: gwallace
+editor: tysonn
+tags: azure-resource-manager
+ms.service: virtual-machines-windows
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
+ms.date: 08/01/2019
+ms.author: cynthn
+ms.openlocfilehash: 2482fb4ab74a3c1e032a32890c3dc2c3920b5e6b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725623"
+---
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Wersja zapoznawcza: Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu Azure PowerShell
+
+W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md) platformy Azure do hostowania maszyn wirtualnych. 
+
+Upewnij się, że zainstalowano Azure PowerShell w wersji 2.4.2 lub nowszej, i zalogujesz się do konta platformy Azure w `Connect-AzAccount`usłudze. Aby zainstalować wersję 2.4.2, Otwórz wiersz polecenia programu PowerShell i wpisz:
+
+```powershell
+Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrelease
+```
+
+Aby włączyć funkcję modułu podglądu w programie PowerShell, potrzebna jest co najmniej wersja 1.6.0 modułu PowerShellGet. Najnowsze wersje programu PowerShell Core mają to automatycznie wbudowaną wersję, ale w przypadku starszych wersji programu PowerShell można uruchomić następujące polecenie, aby zaktualizować do najnowszej wersji:
+
+```powershell
+Install-Module -Name PowerShellGet -Repository PSGallery -Force
+```
+
+
+> [!IMPORTANT]
+> Dedykowane hosty platformy Azure są obecnie dostępne w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> **Ograniczenia znanej wersji zapoznawczej**
+> - Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
+> - Początkowa wersja zapoznawcza obsługuje następującą serię maszyn wirtualnych: DSv3 i ESv3. 
+
+
+
+## <a name="create-a-host-group"></a>Tworzenie grupy hostów
+
+**Grupa hostów** jest zasobem, który reprezentuje kolekcję dedykowanych hostów. Można utworzyć grupę hostów w regionie i strefie dostępności, a następnie dodać do niej hosty. W przypadku planowania wysokiej dostępności dostępne są dodatkowe opcje. W przypadku dedykowanych hostów można użyć jednej lub obu następujących opcji: 
+- Obejmuje wiele stref dostępności. W takim przypadku konieczne jest posiadanie grupy hostów w każdej ze stref, które mają być używane.
+- Obejmuje wiele domen błędów, które są mapowane na stojaki fizyczne. 
+ 
+W obu przypadkach należy podać liczbę domen błędów dla grupy hostów. Jeśli nie chcesz obejmować domen błędów w grupie, użyj liczby domen błędów wynoszącej 1. 
+
+Możesz również zdecydować się na korzystanie ze stref dostępności i domen błędów. Ten przykład umożliwia utworzenie grupy hostów w strefie 1 z 2 domenami błędów. 
+
+
+```powershell
+$rgName = "myDHResourceGroup"
+$location = "East US"
+
+New-AzResourceGroup -Location $location -Name $rgName
+$hostGroup = New-AzHostGroup `
+   -Location $location `
+   -Name myHostGroup `
+   -PlatformFaultDomain 2 `
+   -ResourceGroupName $rgName `
+   -Zone 1
+```
+
+## <a name="create-a-host"></a>Tworzenie hosta
+
+Teraz Utwórzmy dedykowanego hosta w grupie hostów. Oprócz nazwy hosta, należy podać jednostkę SKU dla hosta. Jednostka SKU hosta przechwytuje obsługiwaną serię maszyn wirtualnych oraz generowanie sprzętu dla dedykowanego hosta.  W trakcie okresu zapoznawczego będzie obsługiwana następująca wartość jednostki SKU hosta: DSv3_Type1 i ESv3_Type1.
+
+
+Aby uzyskać więcej informacji o jednostkach SKU i cenach hosta, zobacz [Cennik dedykowanego hosta platformy Azure](https://aka.ms/ADHPricing).
+
+Jeśli ustawisz liczbę domen błędów dla grupy hostów, zostanie wyświetlony monit o określenie domeny błędów dla hosta. W tym przykładzie ustawimy domenę błędów dla hosta na 1.
+
+
+```powershell
+$dHost = New-AzHost `
+   -HostGroupName $hostGroup.Name `
+   -Location $location -Name myHost `
+   -ResourceGroupName $rgName `
+   -Sku DSv3-Type1 `
+   -AutoReplaceOnFailure 1 `
+   -PlatformFaultDomain 1
+```
+
+## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
+
+Utwórz maszynę wirtualną na dedykowanym hoście. 
+
+Jeśli podczas tworzenia grupy hostów została określona strefa dostępności, należy użyć tej samej strefy podczas tworzenia maszyny wirtualnej. W tym przykładzie, ponieważ nasza grupa hostów znajduje się w strefie 1, musimy utworzyć maszynę wirtualną w strefie 1.  
+
+
+```powershell
+$cred = Get-Credential
+New-AzVM `
+   -Credential $cred `
+   -ResourceGroupName $rgName `
+   -Location $location `
+   -Name myVM `
+   -HostId $dhost.Id `
+   -Image Win2016Datacenter `
+   -Zone 1 `
+   -Size Standard_D4s_v3
+```
+
+> [!WARNING]
+> Jeśli utworzono maszynę wirtualną na hoście, który nie ma wystarczającej ilości zasobów, maszyna wirtualna zostanie utworzona w stanie niepowodzenia. 
+
+## <a name="check-the-status-of-the-host"></a>Sprawdź stan hosta
+
+Można sprawdzić stan kondycji hosta oraz liczbę maszyn wirtualnych, które można wdrożyć na hoście przy użyciu [GetAzHost](/powershell/module/az.compute/get-azhost) z `-InstanceView` parametrem.
+
+```
+Get-AzHost `
+   -ResourceGroupName $rgName `
+   -Name myHost `
+   -HostGroupName $hostGroup.Name `
+   -InstanceView
+```
+
+Dane wyjściowe będą wyglądać podobnie do tego:
+
+```
+ResourceGroupName      : myDHResourceGroup
+PlatformFaultDomain    : 1
+AutoReplaceOnFailure   : True
+HostId                 : 12345678-1234-1234-abcd-abc123456789
+ProvisioningTime       : 7/28/2019 5:31:01 PM
+ProvisioningState      : Succeeded
+InstanceView           : 
+  AssetId              : abc45678-abcd-1234-abcd-123456789abc
+  AvailableCapacity    : 
+    AllocatableVMs[0]  : 
+      VmSize           : Standard_D2s_v3
+      Count            : 32
+    AllocatableVMs[1]  : 
+      VmSize           : Standard_D4s_v3
+      Count            : 16
+    AllocatableVMs[2]  : 
+      VmSize           : Standard_D8s_v3
+      Count            : 8
+    AllocatableVMs[3]  : 
+      VmSize           : Standard_D16s_v3
+      Count            : 4
+    AllocatableVMs[4]  : 
+      VmSize           : Standard_D32-8s_v3
+      Count            : 2
+    AllocatableVMs[5]  : 
+      VmSize           : Standard_D32-16s_v3
+      Count            : 2
+    AllocatableVMs[6]  : 
+      VmSize           : Standard_D32s_v3
+      Count            : 2
+    AllocatableVMs[7]  : 
+      VmSize           : Standard_D64-16s_v3
+      Count            : 1
+    AllocatableVMs[8]  : 
+      VmSize           : Standard_D64-32s_v3
+      Count            : 1
+    AllocatableVMs[9]  : 
+      VmSize           : Standard_D64s_v3
+      Count            : 1
+  Statuses[0]          : 
+    Code               : ProvisioningState/succeeded
+    Level              : Info
+    DisplayStatus      : Provisioning succeeded
+    Time               : 7/28/2019 5:31:01 PM
+  Statuses[1]          : 
+    Code               : HealthState/available
+    Level              : Info
+    DisplayStatus      : Host available
+Sku                    : 
+  Name                 : DSv3-Type1
+Id                     : /subscriptions/10101010-1010-1010-1010-101010101010/re
+sourceGroups/myDHResourceGroup/providers/Microsoft.Compute/hostGroups/myHostGroup/hosts
+/myHost
+Name                   : myHost
+Location               : eastus
+Tags                   : {}
+```
+
+## <a name="clean-up"></a>Czyszczenie
+
+Opłaty są naliczane za dedykowane hosty nawet wtedy, gdy nie wdrożono żadnych maszyn wirtualnych. Należy usunąć wszystkie hosty, których obecnie nie używasz, aby zaoszczędzić koszty.  
+
+Hosta można usunąć tylko wtedy, gdy nie ma dłużej używanych maszyn wirtualnych. Usuń maszyny wirtualne za pomocą polecenia [Remove-AzVM](/powershell/module/az.compute/remove-azvm).
+
+```powershell
+Remove-AzVM -ResourceGroupName $rgName -Name myVM
+```
+
+Po usunięciu maszyn wirtualnych można usunąć hosta za pomocą polecenia [Remove-AzHost](/powershell/module/az.compute/remove-azhost).
+
+```powershell
+Remove-AzHost -ResourceGroupName $rgName -Name myHost
+```
+
+Po usunięciu wszystkich hostów można usunąć grupę hostów za pomocą polecenia [Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup). 
+
+```powershell
+Remove-AzHost -ResourceGroupName $rgName -Name myHost
+```
+
+Możesz również usunąć całą grupę zasobów w pojedynczym poleceniu za pomocą polecenia [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Spowoduje to usunięcie wszystkich zasobów utworzonych w grupie, w tym wszystkich maszyn wirtualnych, hostów i grup hostów.
+ 
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name $rgName
+```
+
+
+## <a name="next-steps"></a>Następne kroki
+
+- Istnieje przykładowy szablon, który znajduje się w [tym miejscu](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md), który używa stref i domen błędów w celu uzyskania maksymalnej odporności w regionie.
+
+- Możesz również wdrożyć dedykowane hosty przy użyciu [Azure Portal](dedicated-hosts-portal.md).

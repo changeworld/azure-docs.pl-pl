@@ -1,9 +1,9 @@
 ---
 title: Skalowanie klastra usługi Service Fabric wewnątrz lub na zewnątrz | Dokumentacja firmy Microsoft
-description: Klaster usługi Service Fabric wewnątrz lub na zewnątrz można skalować w celu dopasowania żądanie przez ustawienie reguł skalowania automatycznego dla zestawu skalowania maszyn typu/wirtualnego każdego węzła. Dodawanie lub usuwanie węzłów w klastrze usługi Service Fabric
+description: Skalowanie klastra Service Fabric w celu dopasowania do zapotrzebowania przez ustawienie reguł automatycznego skalowania dla każdego typu węzła/zestawu skalowania maszyn wirtualnych. Dodawanie lub usuwanie węzłów w klastrze usługi Service Fabric
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: aeb76f63-7303-4753-9c64-46146340b83d
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/12/2019
-ms.author: aljo
-ms.openlocfilehash: 400e4653800d445506d4854e70034a707dcc4629
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: b1b3c0e6440212474bf356d4204c0dd91c1491fa
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161805"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599900"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Skalowanie klastra w poziomie lub w pionie
 
 > [!WARNING]
-> Przeczytaj tę sekcję przed przystąpieniem do skalowania
+> Przeczytaj tę sekcję przed skalowaniem
 
 Skalowanie zasobów obliczeniowych do źródła obciążenia robocze aplikacji wymaga planowania zamierzone, prawie zawsze będzie trwać dłużej niż godzinę w środowisku produkcyjnym i wymagają zrozumieć swoje obciążenia i kontekst biznesowy; w rzeczywistości Jeśli to działanie przed nigdy nie zostały wykonane, zaleca się uruchamiania, odczytując i interpretując kolejne [zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric](service-fabric-cluster-capacity.md), przed kontynuowaniem pozostałej części tego dokumentu. To zalecenie jest uniknięcie niezamierzone problemy LiveSite i zalecane jest również, że testujesz operacje, które użytkownik chce wykonać w środowisku nieprodukcyjnym. W dowolnym momencie możesz [zgłosić problemy w środowisku produkcyjnym lub poprosić płatnej pomocy technicznej dla platformy Azure](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure). Dla inżynierów przydzielone do wykonywania tych operacji, które posiadają odpowiedniego kontekstu w tym artykule opisano operacje skalowania, ale należy zdecydować i zrozumieć, jakie operacje są odpowiednie dla danego przypadku użycia; jakie zasoby do skali (procesor CPU, Magazyn, pamięć), np. jakie kierunek skalowania (w pionie lub poziomie) i jakie operacje do wykonania (wdrożenie szablonu zasobów, Portal, programu PowerShell/interfejsu wiersza polecenia).
 
@@ -32,7 +32,7 @@ Skalowanie zasobów obliczeniowych do źródła obciążenia robocze aplikacji w
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Skalowanie klastra usługi Service Fabric wewnątrz lub na zewnątrz przy użyciu reguł skalowania automatycznego lub ręcznego
-Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze usługi Service Fabric zostanie określony jako oddzielne maszyny wirtualnej zestawu skalowania. Każdy typ węzła może następnie być skalowana w lub się niezależnie od siebie, mają różne zestawy otwartych portów i może mieć różne metryki pojemności. Dowiedz się więcej o go w [typy węzłów usługi Service Fabric](service-fabric-cluster-nodetypes.md) dokumentu. Ponieważ typy węzłów usługi Service Fabric w klastrze składają się z zestawami skalowania maszyn wirtualnych na zapleczu, należy skonfigurować reguły automatycznego skalowania dla zestawu skalowania maszyn typu/wirtualnego każdego węzła.
+Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze usługi Service Fabric zostanie określony jako oddzielne maszyny wirtualnej zestawu skalowania. Każdy typ węzła może następnie być skalowana w lub się niezależnie od siebie, mają różne zestawy otwartych portów i może mieć różne metryki pojemności. Więcej informacji na ten temat znajduje się w dokumencie [Service Fabric typów węzłów](service-fabric-cluster-nodetypes.md) . Ponieważ typy węzłów Service Fabric w klastrze składają się z zestawów skalowania maszyn wirtualnych w zapleczu, należy skonfigurować reguły automatycznego skalowania dla każdego typu węzła/zestawu skalowania maszyn wirtualnych.
 
 > [!NOTE]
 > Twoja subskrypcja musi mieć wystarczającej liczby rdzeni, aby dodać nowe maszyny wirtualne, które tworzą ten klaster. Nie ma nie nastąpi sprawdzanie poprawności modelu, dzięki czemu uzyskujesz czas niepowodzenie wdrożenia, jeśli dowolny z limitów przydziału są osiągane. Typ jednego węzła nie można także po prostu przekracza 100 węzłów na zestawu skalowania maszyn wirtualnych. Użytkownik może być konieczne dodanie zestawu skalowania maszyn wirtualnych w celu osiągnięcia skali docelowej i automatyczne skalowanie nie może automagically Dodaj VMSS firmy. Dodawanie firmy VMSS w miejscu do klastra na żywo to trudne zadanie i często skutkuje to użytkownikom inicjowanie obsługi administracyjnej nowych klastrów z typami odpowiedniego węzła, aprowizowane w czasie tworzenia; [Planowanie pojemności klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) odpowiednio. 
@@ -50,8 +50,8 @@ Get-AzResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/Virtu
 Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale set name>
 ```
 
-## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Zestaw reguł skalowania automatycznego dla zestawu skalowania maszyny wirtualne/typ węzła
-Jeśli klaster zawiera wiele typów węzłów, a następnie powtórz to dla każdej skali maszyny typy/wirtualnego węzła ustawia chcesz skalować (przychodzący lub wychodzący). Przed skonfigurowaniem skalowania automatycznego należy wziąć pod uwagę potrzebną liczbę węzłów. Minimalna liczba węzłów wymagana dla typu węzła podstawowego zależy od wybranego poziomu niezawodności. Przeczytaj więcej na temat [poziomów niezawodności](service-fabric-cluster-capacity.md).
+## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Ustawianie reguł automatycznego skalowania dla typu węzła/zestawu skalowania maszyn wirtualnych
+Jeśli klaster ma wiele typów węzłów, Powtórz te czynności dla każdego typu węzła/zestawu skalowania maszyn wirtualnych, które mają być skalowane (w lub na zewnątrz). Przed skonfigurowaniem skalowania automatycznego należy wziąć pod uwagę potrzebną liczbę węzłów. Minimalna liczba węzłów wymagana dla typu węzła podstawowego zależy od wybranego poziomu niezawodności. Przeczytaj więcej na temat [poziomów niezawodności](service-fabric-cluster-capacity.md).
 
 > [!NOTE]
 > Skalowanie w dół węzła podstawowego typu aby była ona mniejsza niż minimalna liczba wykonującego niestabilne klastra lub obniżyć jej. Może to spowodować utratę danych dla aplikacji i usług systemowych.
@@ -60,25 +60,25 @@ Jeśli klaster zawiera wiele typów węzłów, a następnie powtórz to dla każ
 
 Obecnie funkcja automatycznego skalowania nie jest wymuszany przez obciążeń, które aplikacje mogą raportowania w usłudze Service Fabric. Dlatego w tym momencie, w których Skalowanie automatyczne Ci czysto jest wymuszany przez liczniki wydajności, które są emitowane przez każdą maszynę wirtualną wystąpienia zestawu skalowania.  
 
-Wykonaj te instrukcje [do skonfigurowania automatycznego skalowania dla każdego zestawu skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
+Postępuj zgodnie [z tymi instrukcjami, aby skonfigurować automatyczne skalowanie dla każdego zestawu skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 > [!NOTE]
-> W dół scenariusza chyba że ma typu węzła [poziom trwałości] [ durability] Gold i Silver potrzebne do wywoływania [polecenia cmdlet Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) z Nazwa odpowiedniego węzła. Dla trwałości brązowy nie zaleca się skalować w dół więcej niż jeden węzeł w danym momencie.
+> W scenariuszu w dół skalowania, jeśli typ węzła nie ma [poziomu trwałości][durability] Gold lub Silver, należy wywołać [polecenie cmdlet Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) z odpowiednią nazwą węzła. W przypadku trwałości Bronze nie jest zalecane skalowanie w dół więcej niż jeden węzeł jednocześnie.
 > 
 > 
 
-## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Ręcznie Dodaj maszyny wirtualne do zestawu skalowania maszyny wirtualne/typ węzła
+## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Ręcznie Dodaj maszyny wirtualne do typu węzła/zestawu skalowania maszyn wirtualnych
 
 Skalowanie w poziomie polega na dodawaniu wystąpień maszyn wirtualnych do zestawu skalowania. Wystąpienia te stają się węzłami używanymi przez usługę Service Fabric. Usługa Service Fabric wykrywa zwiększenie liczby wystąpień (efekt skalowania w poziomie) i reaguje automatycznie. 
 
 > [!NOTE]
-> Dodawanie maszyn wirtualnych trwa pewien czas, dlatego nie powinna mieć dodatki do było natychmiastowe. Dlatego należy zaplanować dodanie pojemności oraz z wyprzedzeniem, umożliwiające ponad 10 minut, zanim pojemności maszyn wirtualnych jest dostępna dla wystąpień replik/usługi, Pobierz umieszczone.
+> Dodawanie maszyn wirtualnych zabiera trochę czasu, dlatego nie oczekuje się, że dodatki będą chwilowo. Dlatego Zaplanuj odpowiednie zwiększenie pojemności, aby zezwolić na ponad 10 minut, zanim pojemność maszyny wirtualnej będzie dostępna dla replik/wystąpień usługi, które mają zostać umieszczone.
 > 
 
 ### <a name="add-vms-using-a-template"></a>Dodawanie maszyn wirtualnych przy użyciu szablonu
-Wykonaj przykładowe/zgodnie z instrukcjami w [galerii szablonów szybkiego startu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Aby zmienić liczbę maszyn wirtualnych w każdy typ węzła. 
+Postępuj zgodnie z instrukcjami wyświetlanymi w [galerii szablonów szybkiego startu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) , aby zmienić liczbę maszyn wirtualnych w każdym typie węzła. 
 
-### <a name="add-vms-using-powershell-or-cli-commands"></a>Dodawanie maszyn wirtualnych za pomocą poleceń programu PowerShell lub interfejsu wiersza polecenia
+### <a name="add-vms-using-powershell-or-cli-commands"></a>Dodawanie maszyn wirtualnych przy użyciu programu PowerShell lub poleceń interfejsu wiersza polecenia
 Poniższy kod pobiera nazwę zestawu skalowania i zwiększa jego **pojemność** o 1.
 
 ```powershell
@@ -98,16 +98,16 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 ```
 
-## <a name="manually-remove-vms-from-a-node-typevirtual-machine-scale-set"></a>Ręcznie usuń maszyny wirtualne z zestawu skalowania maszyny wirtualne/typ węzła
-Skalowanie w typ węzła, można usunąć wystąpień maszyn wirtualnych z zestawu skalowania. Jeśli typ węzła jest poziom trwałości brązowy, usługi Service Fabric jest niebranie pod uwagę, co się stało i zgłasza, że węzeł zostanie zgubione. Powoduje to zgłoszenie stanu złej kondycji klastra. Aby uniknąć tego nieprawidłowego stanu, możesz jawnie usunąć węzeł z klastra i usuwać stan węzła.
+## <a name="manually-remove-vms-from-a-node-typevirtual-machine-scale-set"></a>Ręcznie usuń maszyny wirtualne z typu węzła/zestawu skalowania maszyn wirtualnych
+Skalowanie w typ węzła powoduje usunięcie wystąpień maszyn wirtualnych z zestawu skalowania. Jeśli typ węzła to poziom trwałości Bronze, Service Fabric jest nieświadomy, co się stało, i raporty, że brakuje węzła. Powoduje to zgłoszenie stanu złej kondycji klastra. Aby uniknąć tego nieprawidłowego stanu, należy jawnie usunąć węzeł z klastra i usunąć stan węzła.
 
-Uruchom usługi systemowe service fabric w typie podstawowym węzłem w klastrze. Podczas skalowania w dół typu węzła podstawowego nigdy nie skalowania w zależności od liczby wystąpień na wartość mniejszą niż co [warstwy niezawodności](service-fabric-cluster-capacity.md) gwarantuje. 
+Usługi systemowe usługi Service Fabric działają w typie węzła podstawowego w klastrze. Skalowanie w dół typu węzła podstawowego nigdy nie powoduje skalowania liczby wystąpień do mniejszej niż to, co gwarantuje [warstwa niezawodności](service-fabric-cluster-capacity.md) . 
  
 Usługa stanowa wymaga określonej liczby węzłów można zawsze do zapewnienia dostępności i zachować stan usługi. W bardzo minimalne należy liczbę węzłów równa docelowej liczbę zestawu replik partycji/usługi.
 
 ### <a name="remove-the-service-fabric-node"></a>Usuwanie węzła usługi Service Fabric
 
-Kroki ręczne usunięcie stanu węzła zastosować tylko do typów węzłów o *brązowa* warstwa trwałości.  Aby uzyskać *Silver* i *Gold* warstwa trwałości te kroki są wykonywane automatycznie przez platformę. Aby uzyskać więcej informacji o trwałości, zobacz [Planowanie pojemności klastra usługi Service Fabric][durability].
+Procedura ręcznego usuwania stanu węzła ma zastosowanie tylko do typów węzłów z warstwą trwałości Bronze.  W przypadku warstwy trwałości *Silver* i *Gold* te kroki są wykonywane automatycznie przez platformę. Aby uzyskać więcej informacji na temat trwałości, zobacz [Service Fabric planowanie pojemności klastra][durability].
 
 Aby zachować równe rozłożenie węzłów klastra w domenach uaktualniania i błędów, a tym samym umożliwić ich równomierne wykorzystywanie, najpierw należy usunąć ostatnio utworzony węzeł. Innymi słowy węzły należy usuwać w kolejności odwrotnej niż były tworzone. Ostatnio utworzony węzeł to ten, który ma największą wartość właściwości `virtual machine scale set InstanceId`. Poniższe przykłady kodu zwracają ostatnio utworzony węzeł.
 
@@ -133,7 +133,7 @@ sfctl: `sfctl node transition --node-transition-type Stop`
 PowerShell: `Remove-ServiceFabricNodeState`  
 sfctl: `sfctl node remove-state`
 
-Po wykonaniu powyższych kroków węzeł może zostać usunięty z zestawu skalowania. Jeśli korzystasz z innej warstwy trwałości niż [brązowa][durability], kroki te są wykonywane automatycznie w przypadku usunięcia wystąpienia zestawu skalowania.
+Po wykonaniu powyższych kroków węzeł może zostać usunięty z zestawu skalowania. Jeśli używasz dowolnej warstwy trwałości poza [brąz][durability], te kroki są wykonywane po usunięciu wystąpienia zestawu skalowania.
 
 Poniższy blok kodu obejmuje pobranie ostatnio utworzonego węzła oraz jego wyłączenie, zatrzymanie i usunięcie z klastra.
 

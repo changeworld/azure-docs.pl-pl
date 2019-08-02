@@ -1,137 +1,137 @@
 ---
-title: Tworzenie, wyświetlanie i zarządzanie dziennika alertów za pomocą usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Usługi Azure Monitor umożliwia tworzenie, wyświetlanie i zarządzanie reguł alertów dzienników na platformie Azure.
+title: Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi za pomocą Azure Monitor | Microsoft Docs
+description: Użyj Azure Monitor, aby tworzyć, wyświetlać i zarządzać regułami alertów dziennika na platformie Azure.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 07/29/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: f758007a0fa0d7fb619873d94d762e7019077e05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6dc8fcc32d7f05063da15eb6ca6bf7a7d69baebb
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427452"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663121"
 ---
-# <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor
+# <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi za pomocą Azure Monitor
 
 ## <a name="overview"></a>Omówienie
-W tym artykule pokazano, jak skonfigurować alerty dzienników przy użyciu interfejsu alertów w witrynie Azure portal. Definicja reguły alertu znajduje się w trzech części:
-- Cel: Określony zasób platformy Azure, która ma być monitorowane
-- Kryteria: Określony warunek lub Logic Apps, gdy widoczne w sygnał, powinny wyzwalać akcję
-- Akcja: Wywołań wysyłanych do odbiorcy powiadomienia — Wyślij wiadomość e-mail, wiadomość SMS, element webhook itp.
+W tym artykule opisano sposób konfigurowania alertów dziennika przy użyciu interfejsu alertów w programie Azure Portal. Definicja reguły alertu składa się z trzech części:
+- Obiekt docelowy: Określony zasób platformy Azure, który ma być monitorowany
+- Kryteria: Określony warunek lub logika, która pojawia się w sygnale, powinna wyzwalać akcję
+- Akcja: Określone wywołanie wysyłane do odbiorcy powiadomienia, wiadomości e-mail, elementu webhook itp.
 
-Termin **alertów dzienników** do opisania alerty, gdy sygnał jest zapytanie dziennika w [obszaru roboczego usługi Log Analytics](../learn/tutorial-viewdata.md) lub [usługi Application Insights](../app/analytics.md). Dowiedz się więcej o funkcji, terminologii i typów z [rejestrowania alertów — omówienie](alerts-unified-log.md).
+Termin **alerty dziennika** do opisywania alertów, w których sygnał jest wysyłany zapytanie dziennika w [obszarze roboczym log Analytics](../learn/tutorial-viewdata.md) lub [Application Insights](../app/analytics.md). Dowiedz się więcej o funkcjach, terminologii i typach z [alertów dziennika — przegląd](alerts-unified-log.md).
 
 > [!NOTE]
-> Dane dzienników popularnych z [obszar roboczy usługi Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](alerts-metric-logs.md)
+> Popularne dane dziennika z [obszaru roboczego log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) są teraz również dostępne na platformie metryk w Azure monitor. Aby wyświetlić szczegóły, [alert dotyczący metryk dzienników](alerts-metric-logs.md)
 
-## <a name="managing-log-alerts-from-the-azure-portal"></a>Zarządzanie alertami dzienników w witrynie Azure portal
+## <a name="managing-log-alerts-from-the-azure-portal"></a>Zarządzanie alertami dziennika z Azure Portal
 
-Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dzienników przy użyciu interfejsu portalu platformy Azure.
+Szczegółowe instrukcje zawiera przewodnik krok po kroku dotyczący używania alertów dziennika przy użyciu interfejsu Azure Portal.
 
-### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Tworzenie reguł alertów dzienników w witrynie Azure portal
-1. W [portal](https://portal.azure.com/), wybierz opcję **Monitor** i w sekcji monitorowanie — wybierz **alerty**.
+### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Tworzenie reguły alertu dziennika przy użyciu Azure Portal
+
+1. W [portalu](https://portal.azure.com/)wybierz pozycję **monitorowanie** i w sekcji Monitor wybierz pozycję **alerty**.
 
     ![Monitorowanie](media/alerts-log/AlertsPreviewMenu.png)
 
-1. Wybierz **nową regułę alertu** przycisk, aby utworzyć nowego alertu na platformie Azure.
+1. Wybierz przycisk **Nowa reguła alertu** , aby utworzyć nowy Alert na platformie Azure.
 
-    ![Dodaj Alert](media/alerts-log/AlertsPreviewOption.png)
+    ![Dodaj alert](media/alerts-log/AlertsPreviewOption.png)
 
-1. W sekcji Tworzenie alertów jest wyświetlany z trzech części, składający się z: *Zdefiniuj warunek alertu*, *Zdefiniuj szczegóły alertu*, i *zdefiniuj grupę akcji*.
+1. Sekcja Tworzenie alertu jest pokazywana z trzema częściami składającymi się z: *Zdefiniuj warunek alertu*, *Zdefiniuj szczegóły alertu*i *Zdefiniuj grupę akcji*.
 
     ![Utwórz regułę](media/alerts-log/AlertsPreviewAdd.png)
 
-1. Zdefiniuj warunek alertu przy użyciu **wybierz zasób** łącze i określenie docelowej wybierz zasób. Filtr, wybierając _subskrypcji_, _typ zasobu_oraz wymagane _zasobów_.
+1. Zdefiniuj warunek alertu za pomocą linku **Wybierz zasób** i określając element docelowy, wybierając zasób. Filtruj, wybierając opcję _subskrypcja_, _Typ zasobu_i wymagany _zasób_.
 
    > [!NOTE]
-   > 
-   > Do tworzenia dziennika alertów — weryfikowanie **dziennika** sygnał jest dostępna dla wybranego zasobu, przed kontynuowaniem.
+   > W celu utworzenia alertu dziennika — przed kontynuowaniem sprawdź, czy jest dostępny sygnał **dziennika** dla wybranego zasobu.
    >  ![Wybierz zasób](media/alerts-log/Alert-SelectResourceLog.png)
 
-1. *Alerty dzienników*: Upewnij się, **typ zasobu** jest źródłem analizy, takie jak *usługi Log Analytics* lub *usługi Application Insights* i sygnałów typ jako **dziennika**, niż raz odpowiednie **zasobów** jest wybrana, kliknij przycisk *gotowe*. Dalej używać **Dodaj kryteria** przycisk, aby wyświetlić listę sygnałów dostępnymi dla zasobu, a z listy sygnału **przeszukiwania dzienników niestandardowych** opcję dla wybranego dziennika usługi monitor, takich jak *dziennika Analiza* lub *usługi Application Insights*.
+1. *Alerty dziennika*: Upewnij się, że **Typ zasobu** to źródło analityczne, takie jak *log Analytics* lub *Application Insights* i typ sygnału jako **Dziennik**, po wybraniu odpowiedniego **zasobu** kliknij przycisk *gotowe*. Następnie użyj przycisku **Dodaj kryteria** , aby wyświetlić listę opcji sygnałów dostępnych dla zasobu oraz z opcji **wyszukiwania niestandardowego dziennika** listy sygnałów dla wybranej usługi monitora dzienników, takiej jak *log Analytics* lub *Application Insights*.
 
-   ![Wybierz zasób — wyszukiwanie dzienników niestandardowych](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
+   ![Wybierz zasób — wyszukiwanie w dzienniku niestandardowym](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
    > 
-   > Listy można zaimportować zapytania usługi analytics jako typ sygnału — alerty **dziennika (zapisane zapytanie)** , jak pokazano powyżej ilustracji. Dzięki temu użytkownicy może zapytania w usłudze Analytics udoskonalania i zapisać je do użytku w przyszłości w alertach — więcej szczegółowych informacji na temat korzystania z Zapisywanie zapytań dostępne pod adresem [przy użyciu zapytań dzienników w usłudze Azure Monitor](../log-query/log-query-overview.md) lub [udostępnione zapytanie w analizy usługi application insights ](../log-query/log-query-overview.md).
+   > Listy alertów mogą zaimportować zapytanie analityczne jako typ sygnału **log (zapisane zapytanie)** , jak pokazano na powyższej ilustracji. Dzięki temu użytkownicy mogą uzyskać doskonałe wyniki zapytania w analizie, a następnie zapisać je do użycia w przyszłości w alertach — więcej szczegółowych informacji na temat używania zapytania w [dzienniku w Azure monitor](../log-query/log-query-overview.md) lub [udostępnione zapytanie w usłudze Application Insights Analytics](../log-query/log-query-overview.md).
 
-1. *Alerty dzienników*: Po wybraniu zapytania dotyczące alertów może być wyrażona w **zapytania wyszukiwania** pola; Jeśli składnia zapytania jest nieprawidłowa, pola są wyświetlane w kolorze CZERWONYM błędu. Jeśli składnia zapytania jest poprawna, — do użytku w danych historycznych w określonej kwerendy jest wyświetlany jako wykres z opcją, aby dostosować okno czasowe z ostatnich sześciu godzin do ostatniego tygodnia.
+1. *Alerty dziennika*: Po wybraniu zapytania dla alertów można podać w polu **zapytania wyszukiwania** . Jeśli Składnia zapytania jest niepoprawna, w polu czerwony zostanie wyświetlony komunikat o błędzie. Jeśli Składnia zapytania jest poprawna — w przypadku referencyjnych danych historycznych zapytania jest wyświetlany jako wykres z opcją dostosowywania przedziału czasu z ostatnich sześciu godzin do ostatniego tygodnia.
 
     ![Konfigurowanie reguły alertu](media/alerts-log/AlertsPreviewAlertLog.png)
 
    > [!NOTE]
    > 
-   > Wizualizacja danych historycznych mogą być wyświetlane tylko jeśli wyniki zapytania mają szczegóły godziny. Jeśli zapytanie powoduje podsumowane dane lub wartości określonej kolumny — sama jest wyświetlany jako pojedynczej powierzchni.
-   > Pomiar metryki typu alertów dzienników za pomocą usługi Application Insights lub [przełączona do nowego interfejsu API](alerts-log-api-switch.md), można określić, które określonej zmiennej, aby pogrupować dane przy użyciu **agregowane na** opcji; zgodnie z opisami w poniżej:
+   > Wizualizację danych historycznych można wyświetlić tylko wtedy, gdy wyniki zapytania zawierają szczegóły czasu. Jeśli zapytanie prowadzi do podsumowania danych lub określonych wartości kolumn — ta sama wartość jest pokazywana jako pojedyncze Kreślenie.
+   > Aby uzyskać informacje o typie pomiaru metryki alertów dziennika przy użyciu Application Insights lub przełączeć [do nowego interfejsu API](alerts-log-api-switch.md), można określić, która zmienna ma grupować dane przy użyciu opcji **Agreguj na** ; jak pokazano poniżej:
    > 
-   > ![Agreguj według opcji](media/alerts-log/aggregate-on.png)
+   > ![Agreguj dla opcji](media/alerts-log/aggregate-on.png)
 
-1. *Alerty dzienników*: Za pomocą wizualizacji w miejscu **Alert Logic** można wybrać opcje pokazano warunku, agregacji i na koniec próg. Wskaż w logice, czas oceny pod kątem określonego warunku, przy użyciu **okres** opcji. Wraz z częstotliwość uruchamiania alertu, wybierając **częstotliwość**. **Alerty dzienników** może opierać się na:
-    - [Liczba rekordów](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Alert jest tworzony, jeśli liczba rekordów zwróconych przez zapytanie jest większa lub mniejsza niż podana wartość.
-    - [Pomiar metryki](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): Alert jest tworzony, jeśli każdy *agregować wartości* w wynikach przekracza wartość progową, pod warunkiem, i jest *pogrupowane według* wybrana wartość. Liczba naruszeń alertu jest liczba przypadków, gdy próg został przekroczony w wybranym okresie. Łączna liczba naruszeń w jakiejkolwiek kombinacji naruszeń można określić przez zestaw wyników lub kolejne naruszenia, aby wymagać, że naruszeń musi wystąpić w kolejnych próbek.
+1. *Alerty dziennika*: W przypadku wizualizacji można wybrać **logikę alertów** spośród pokazywanych opcji warunku, agregacji i wartości progowej finally. Na koniec Określ w logice, czas do oceny dla określonego warunku, przy użyciu opcji **okres** . Niezależnie od tego, jak często ma być uruchamiany alert, wybierając pozycję **częstotliwość**. **Alerty dzienników** mogą opierać się na:
+    - [Liczba rekordów](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Tworzony jest alert, jeśli liczba rekordów zwróconych przez zapytanie jest większa lub równa podanej wartości.
+    - [Pomiar metryki](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): Tworzony jest alert, jeśli każda *wartość zagregowana* w wynikach przekroczy podaną wartość progową i zostanie *pogrupowana według* wybranej wartości. Liczba naruszeń alertu to liczba przypadków przekroczenia progu w wybranym okresie. Możesz określić całkowite naruszenia dla każdej kombinacji naruszeń w zestawie wyników lub kolejne naruszenia, aby wymagać, aby naruszenia mogły wystąpić w kolejnych próbkach.
 
 
-1. W drugim kroku należy zdefiniować nazwę alertu w **Nazwa reguły alertu** pola wraz z **opis** szczegółowych informacji na temat specyfiki alertu i **ważność** z wartości Opcje przekazane. Te informacje są używane ponownie w wiadomości e-mail alertów, powiadomień lub wypychania wykonywane przez usługi Azure Monitor. Ponadto użytkownik może wybrać od razu aktywować regułę alertu przy tworzeniu odpowiednio przełączając **Włącz regułę po utworzeniu** opcji.
+1. W drugim kroku Zdefiniuj nazwę alertu w polu **Nazwa reguły alertu** wraz z **opisem** szczegółowym dotyczącym alertu i wartości **ważności** z dostępnych opcji. Te szczegóły są ponownie używane we wszystkich wiadomościach e-mail z alertami, powiadomieniami lub wypychaniu wykonywanym przez Azure Monitor. Ponadto użytkownik może zdecydować się na natychmiastowe aktywowanie reguły alertu przy tworzeniu przez odpowiednie przełączenie **reguły włączania przy tworzeniu** .
 
-    Aby uzyskać **alertów dzienników** tylko kilka dodatkowych funkcji jest dostępna w szczegółach alertu:
+    Tylko w przypadku **alertów dziennika** niektóre dodatkowe funkcje są dostępne w szczegółach alertu:
 
-    - **Pomiń alerty**: Po włączeniu funkcji pomijania reguła alertu akcje dla reguły są wyłączone dla określona długość czasu, po utworzeniu nowego alertu. Reguła jest nadal uruchomione i tworzy rekordy alertów, pod warunkiem spełnienia kryteriów. Umożliwiając czasu, należy rozwiązać problem bez konieczności uruchamiania zduplikowane akcji.
+    - **Pomijaj alerty**: Po włączeniu pomijania dla reguły alertu akcje dla reguły są wyłączone przez zdefiniowany czas po utworzeniu nowego alertu. Zasada jest nadal uruchomiona i tworzy rekordy alertów z warunkiem spełnienia kryteriów. Umożliwienie poprawienia problemu bez uruchamiania zduplikowanych akcji.
 
-        ![Pomiń alerty dla dziennika alertów](media/alerts-log/AlertsPreviewSuppress.png)
+        ![Pomijaj alerty dla alertów dziennika](media/alerts-log/AlertsPreviewSuppress.png)
 
         > [!TIP]
-        > Określ wartość alertu Pomiń większe niż częstotliwość alertu, aby upewnić się, że powiadomienia zostały zatrzymane bez nakładania się
+        > Określ wartość pomijania alertu większą niż częstotliwość alertu, aby powiadomienia zostały zatrzymane bez nakładania się
 
-1. W trzeciej i ostatniej kroku określ ewentualne **grupy akcji** musi być wyzwalane dla reguły alertu, gdy zostanie spełniony warunek alertu. Można wybrać wszystkie istniejące grupy akcji z alertem lub Utwórz nową grupę akcji. Zgodnie z opisem w wybrane grupy akcji, gdy alert jest wyzwalacza Azure będzie: wysyłanie email(s), Wyślij SMS(s), wywoływać elementy webhook, korygowanie za pomocą elementów Runbook usługi Azure, wypychania narzędziem ITSM, itp. Dowiedz się więcej o [grup akcji](action-groups.md).
+1. Jako trzeci i ostatni krok Określ, czy w przypadku spełnienia warunku alertu ma być wyzwalana jakakolwiek **Grupa akcji** dla reguły alertu. Możesz wybrać dowolną istniejącą grupę akcji z alertem lub utworzyć nową grupę akcji. Zgodnie z wybraną grupą akcji, gdy wyzwalany jest alert Azure: Wysyłaj wiadomości e-mail, wysyłaj wiadomości SMS, wywołaj elementy webhook, Koryguj przy użyciu elementów Runbook platformy Azure, wypchnij do narzędzia Narzędzia ITSM itp. Dowiedz się więcej na temat [grup akcji](action-groups.md).
 
     > [!NOTE]
-    > Zapoznaj się [limity usług subskrypcji platformy Azure](../../azure-subscription-service-limits.md) limity ładunków Runbook wyzwolone dla dziennika alertów za pośrednictwem grup akcji platformy Azure
+    > Zapoznaj się z [limitami usługi subskrypcji platformy Azure](../../azure-subscription-service-limits.md) , aby uzyskać limity dla ładunków elementów Runbook wyzwalanych dla alertów dziennika za pośrednictwem grup akcji platformy Azure
 
-    Aby uzyskać **alertów dzienników** kilka dodatkowych funkcji jest dostępny zastąpić domyślne akcje:
+    W przypadku alertów dotyczących **dziennika** niektóre dodatkowe funkcje są dostępne w celu zastąpienia domyślnych akcji:
 
-    - **Powiadomienia e-mail**: Zastępuje *temat wiadomości e-mail* w wiadomości e-mail wysyłane za pośrednictwem grupy akcji, jeśli istnieje co najmniej jednej akcji poczty e-mail, wspomnianych grupy akcji. Nie można zmodyfikować treść wiadomości e-mail i to pole jest **nie** adresu e-mail.
-    - **Uwzględnij niestandardowy ładunek Json**: Zastępuje element webhook JSON używany przez grupy akcji; Jeśli istnieje co najmniej jednej akcji elementu webhook w wymienionej grupy akcji. Użytkownik może określić format JSON ma być używany dla wszystkich elementów webhook skonfigurowane w skojarzonej grupy akcji; Aby uzyskać więcej informacji dotyczących formatów elementu webhook, zobacz [Akcja elementu webhook dla dziennika alertów](../../azure-monitor/platform/alerts-log-webhook.md). Opcja Widok do elementu Webhook jest udostępniane na Sprawdź format przy użyciu przykładowych danych JSON.
+    - **Powiadomienie e-mail**: Przesłania *wiadomość e-mail podmiotu* w wiadomości e-mail, która jest wysyłana za pośrednictwem grupy akcji; Jeśli co najmniej jedna akcja poczty e-mail istnieje w tej grupie akcji. Nie można zmodyfikować treści poczty, a to pole **nie** jest przeznaczone dla adresu e-mail.
+    - **Uwzględnij niestandardowy ładunek JSON**: Przesłania kod JSON elementu webhook używany przez grupy akcji; Jeśli co najmniej jedno działanie elementu webhook istnieje w tej grupie akcji. Użytkownik może określić format JSON, który ma być używany dla wszystkich elementów webhook skonfigurowanych w skojarzonej grupie akcji; Aby uzyskać więcej informacji na temat formatów elementu webhook, zobacz [Akcja elementu webhook dla alertów dziennika](../../azure-monitor/platform/alerts-log-webhook.md). Wyświetl opcję elementu webhook w celu sprawdzenia formatu przy użyciu przykładowych danych JSON.
 
-        ![Akcja zastąpienia dla dziennika alertów](media/alerts-log/AlertsPreviewOverrideLog.png)
+        ![Zastąpienia akcji dla alertów dziennika](media/alerts-log/AlertsPreviewOverrideLog.png)
 
 
-1. Jeśli wszystkie pola są prawidłowe i za pomocą znaczników zielony **Utwórz regułę alertu** kliknięcie przycisku, a alert jest tworzony w usłudze Azure Monitor — alerty. Wszystkie alerty mogą być wyświetlane z alerty pulpitu nawigacyjnego.
+1. Jeśli wszystkie pola są prawidłowe i z zielonym znacznikiem, można kliknąć przycisk **Utwórz regułę alertu** i utworzyć alert w Azure monitor-alertach. Wszystkie alerty można wyświetlić na pulpicie nawigacyjnym alertów.
 
-     ![Tworzenie reguł](media/alerts-log/AlertsPreviewCreate.png)
+     ![Tworzenie reguły](media/alerts-log/AlertsPreviewCreate.png)
 
-     W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
+     W ciągu kilku minut alert jest aktywny i wyzwalacze opisane wcześniej.
 
-Użytkownicy mogą również zakończona ich zapytania usługi analytics w [dziennika analizy](../log-query/portals.md) i Wypchnij go do utworzenia alertu, klikając przycisk "Ustaw Alert" - następnie postępując zgodnie z instrukcjami krok 6 lub nowszym w tym samouczku powyżej.
+Użytkownicy mogą również sfinalizować swoje zapytanie analityczne w usłudze [log Analytics](../log-query/portals.md) , a następnie wypchnąć je, aby utworzyć alert za pośrednictwem przycisku "Ustaw Alert", a następnie wykonać instrukcje opisane w kroku 6 lub nowszym w powyższym samouczku.
 
- ![Log Analytics — Ustawianie alertu](media/alerts-log/AlertsAnalyticsCreate.png)
+ ![Alert Log Analytics — Ustawianie](media/alerts-log/AlertsAnalyticsCreate.png)
 
-### <a name="view--manage-log-alerts-in-azure-portal"></a>Wyświetlanie i zarządzanie alertów dzienników w witrynie Azure portal
+### <a name="view--manage-log-alerts-in-azure-portal"></a>Wyświetlanie & Zarządzanie alertami dzienników w programie Azure Portal
 
-1. W [portal](https://portal.azure.com/), wybierz opcję **Monitor** i w sekcji monitorowanie — wybierz **alerty**.
+1. W [portalu](https://portal.azure.com/)wybierz pozycję **monitorowanie** i w sekcji Monitor wybierz pozycję **alerty**.
 
-1. **Pulpit nawigacyjny alertów** jest wyświetlany - polegającego wszystkie alerty platformy Azure (w tym alertów dzienników) są wyświetlane w pojedynczej tablicy; w tym gdy reguła alertu dziennika każde wystąpienie zostało uruchomione. Aby dowiedzieć się więcej, zobacz [zarządzania alertami](https://aka.ms/managealertinstances).
+1. Zostanie wyświetlony **pulpit nawigacyjny alerty** — wszystkie alerty platformy Azure (w tym alerty dzienników) są wyświetlane na pojedynczej tablicy; Dołączanie każdego wystąpienia, gdy reguła alertu dziennika została uruchomiona. Aby dowiedzieć się więcej, zobacz [alert Management](https://aka.ms/managealertinstances).
     > [!NOTE]
-    > Reguł alertów dzienników składają się z niestandardowej logiki oparte na zapytaniach Użytkownicy podali i dlatego bez stanie rozwiązanym. Z powodu której za każdym razem, gdy są spełnione warunki określone w reguł alertów dzienników, jej wyzwoleniu.
+    > Reguły alertów dziennika składają się z niestandardowej logiki opartej na zapytaniach, która jest dostarczana przez użytkowników, a tym samym bez rozwiązanego stanu. Z tego powodu, gdy spełnione są warunki określone w regule alertu dziennika, jest on uruchamiany.
 
-1. Wybierz **zarządzanie regułami** znajdujący się na górnym pasku, aby przejść do sekcji Zarządzanie reguły — gdzie znajduje się lista wszystkich reguł alertów utworzone; w tym alerty, które zostały wyłączone.
-    ![ Zarządzaj regułami alertów](media/alerts-log/manage-alert-rules.png)
+1. Wybierz przycisk **Zarządzaj regułami** na górnym pasku, aby przejść do sekcji Zarządzanie regułami, gdzie są wymienione wszystkie reguły alertów. uwzględnienie alertów, które zostały wyłączone.
+    ![Zarządzaj regułami alertów](media/alerts-log/manage-alert-rules.png)
 
-## <a name="managing-log-alerts-using-azure-resource-template"></a>Zarządzanie alertami dziennika przy użyciu szablonu usługi Azure Resource
+## <a name="managing-log-alerts-using-azure-resource-template"></a>Zarządzanie alertami dzienników przy użyciu szablonu zasobów platformy Azure
 
-Alerty dzienników w usłudze Azure Monitor są skojarzone z typem zasobu `Microsoft.Insights/scheduledQueryRules/`. Aby uzyskać więcej informacji na temat tego typu zasobu, zobacz [usługi Azure Monitor — zaplanowane reguły dokumentację interfejsu API zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Alerty dzienników dla usługi Application Insights ani Log Analytics, mogą być tworzone za pomocą [zaplanowane zasady interfejsu API zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+Alerty dzienników w Azure Monitor są skojarzone z typem `Microsoft.Insights/scheduledQueryRules/`zasobu. Aby uzyskać więcej informacji na temat tego typu zasobu, zobacz temat zaplanowano informacje o [interfejsie API reguł zapytań Azure monitor](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Alerty dzienników dla Application Insights lub Log Analytics można utworzyć za pomocą [interfejsu API harmonogramu zaplanowanych zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
 > [!NOTE]
-> Alerty dzienników usługi Log Analytics mogą być także zarządzane przy użyciu starszej wersji [interfejsu API Log Analytics alertu](api-alerts.md) i starszej wersji szablony z [usługi Log Analytics zapisane wyszukiwania i alerty](../insights/solutions-resources-searches-alerts.md) także. Aby uzyskać więcej informacji na temat korzystania z nowego interfejsu API ScheduledQueryRules przedstawione w tym miejscu domyślnie, zobacz [przełączyć się do nowego interfejsu API dla alertów usługi Log Analytics](alerts-log-api-switch.md).
+> Alerty dzienników dla Log Analytics mogą być również zarządzane przy użyciu starszego [interfejsu API alertów log Analytics](api-alerts.md) i starszych szablonów [log Analytics zapisanych wyszukiwań i alertów](../insights/solutions-resources-searches-alerts.md) . Aby uzyskać więcej informacji na temat domyślnego użycia nowego interfejsu API ScheduledQueryRules, zobacz [przełączanie do nowego interfejsu API na potrzeby alertów log Analytics](alerts-log-api-switch.md).
 
 
-### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Przykładowy dziennik tworzenia alertu za pomocą szablonu usługi Azure Resource
+### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Przykładowy dziennik tworzenia alertów przy użyciu szablonu zasobów platformy Azure
 
-Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie szablonu zasobów przy użyciu zapytania wyszukiwania standardowym dzienniku [liczba alertu dziennika typu wyników](alerts-unified-log.md#number-of-results-alert-rules), przy użyciu Przykładowy zestaw danych jako zmienne.
+Poniżej znajduje się Struktura szablonu zasobów opartego na [tworzeniu reguł zaplanowanych zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) przy użyciu standardowego zapytania wyszukiwania w dziennikach o [liczbie alertów](alerts-unified-log.md#number-of-results-alert-rules), z przykładowymi danymi ustawionymi jako zmienne.
 
 ```json
 {
@@ -142,7 +142,6 @@ Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](ht
     "variables": {
         "alertLocation": "southcentralus",
         "alertName": "samplelogalert",
-        "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
         "alertDescription": "Sample log search alert",
         "alertStatus": "true",
         "alertSource":{
@@ -172,7 +171,6 @@ Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](ht
         "type":"Microsoft.Insights/scheduledQueryRules",
         "apiVersion": "2018-04-16",
         "location": "[variables('alertLocation')]",
-        "tags":{"[variables('alertTag')]": "Resource"},
         "properties":{
             "description": "[variables('alertDescription')]",
             "enabled": "[variables('alertStatus')]",
@@ -204,15 +202,12 @@ Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](ht
 
 ```
 
-> [!IMPORTANT]
-> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API.
-
-Przykładowy kod json powyżej, można zapisać jako (np.) sampleScheduledQueryRule.json na potrzeby ten przewodnik i można wdrożyć przy użyciu [usługi Azure Resource Manager w witrynie Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Przykładowy plik JSON powyżej można zapisać jako plik (powiedzieć) sampleScheduledQueryRule. JSON na potrzeby tego przewodnika i można go wdrożyć przy użyciu [Azure Resource Manager w Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
 
-### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Alert dziennika przy użyciu zapytania obejmujące wiele zasobów przy użyciu szablonu usługi Azure Resource
+### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Rejestruj alert za pomocą zapytania między zasobami przy użyciu szablonu zasobów platformy Azure
 
-Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie przy użyciu szablonu zasobów [zapytanie wyszukiwania w dzienniku obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) z [alertu dziennika typu pomiaru metryki](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules), przy użyciu Przykładowy zestaw danych jako zmienne.
+Poniżej znajduje się struktura szablonów zasobów opartych na [tworzeniu zaplanowanych reguł zapytania](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) przy użyciu [kwerendy przeszukiwania dzienników wielu zasobów](../../azure-monitor/log-query/cross-workspace-query.md) [, z](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)przykładowymi danymi ustawionymi jako zmienne.
 
 ```json
 
@@ -226,7 +221,6 @@ Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](ht
         "alertName": "sample log alert",
         "alertDescr": "Sample log search alert",
         "alertStatus": "true",
-        "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
         "alertSource":{
             "Query":"union workspace(\"servicews\").Update, app('serviceapp').requests | summarize AggregatedValue = count() by bin(TimeGenerated,1h), Classification",
             "Resource1": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
@@ -263,7 +257,6 @@ Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](ht
         "type":"Microsoft.Insights/scheduledQueryRules",
         "apiVersion": "2018-04-16",
         "location": "[variables('alertLocation')]",
-        "tags":{"[variables('alertTag')]": "Resource"},
         "properties":{
             "description": "[variables('alertDescr')]",
             "enabled": "[variables('alertStatus')]",
@@ -304,50 +297,67 @@ Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](ht
 ```
 
 > [!IMPORTANT]
-> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API. Podczas korzystania z zapytania obejmujące wiele zasobów w dzienniku alertów, użycie [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) jest obowiązkowy i użytkownik musi mieć dostęp do listy zasobów, o których wspomniano
+> W przypadku korzystania z zapytania między zasobami w alercie dziennika użycie [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) jest obowiązkowe, a użytkownik musi mieć dostęp do listy podanych zasobów
 
-Przykładowy kod json powyżej, można zapisać jako (np.) sampleScheduledQueryRule.json na potrzeby ten przewodnik i można wdrożyć przy użyciu [usługi Azure Resource Manager w witrynie Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Przykładowy plik JSON powyżej można zapisać jako plik (powiedzieć) sampleScheduledQueryRule. JSON na potrzeby tego przewodnika i można go wdrożyć przy użyciu [Azure Resource Manager w Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="managing-log-alerts-using-powershell"></a>Zarządzanie alertami dziennika przy użyciu programu PowerShell
+## <a name="managing-log-alerts-using-powershell"></a>Zarządzanie alertami dzienników przy użyciu programu PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Usługa Azure Monitor — [interfejs API reguły zapytania zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) jest w pełni zgodna z usługą Azure Resource Manager REST API i interfejs API REST. I poniżej poleceń cmdlet programu PowerShell są dostępne na wykorzystanie [zaplanowane zasady interfejsu API zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+Azure Monitor — [interfejs API reguł zaplanowanych zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) jest interfejsem API REST i w pełni zgodny z interfejsem api REST Azure Resource Manager. Polecenia cmdlet programu PowerShell wymienione poniżej są dostępne do korzystania z [interfejsu API zaplanowanych reguł zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
-1. [Nowe AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) : Polecenia cmdlet programu PowerShell do tworzenia nowych reguł alertów dzienników.
-1. [Zestaw AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) : Polecenia cmdlet programu PowerShell do zaktualizowania istniejących reguł alertów dzienników.
-1. [Nowe AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : Polecenia cmdlet programu PowerShell do utworzenia lub zaktualizowania obiektu określania parametrów źródła alertu dziennika. Używane jako dane wejściowe przez [New AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) i [AzScheduledQueryRule zestaw](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) polecenia cmdlet.
-1. [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): Polecenia cmdlet programu PowerShell do utworzenia lub zaktualizowania obiektu Określanie parametrami harmonogramu dla alertu dziennika. Używane jako dane wejściowe przez [New AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) i [AzScheduledQueryRule zestaw](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) polecenia cmdlet.
-1. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) : Polecenia cmdlet programu PowerShell do utworzenia lub zaktualizowania obiektu, określając parametry akcji dla alertu dziennika. Używane jako dane wejściowe przez [New AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) i [AzScheduledQueryRule zestaw](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) polecenia cmdlet.
-1. [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : Polecenia cmdlet programu PowerShell do utworzenia lub zaktualizowania obiektu akcję określania grup parametry alertu dziennika. Używane jako dane wejściowe przez [New AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) polecenia cmdlet.
-1. [Nowe AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : Polecenia cmdlet programu PowerShell do utworzenia lub zaktualizowania obiektu Określanie parametrów warunku wyzwalania alertu dziennika. Używane jako dane wejściowe przez [New AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) polecenia cmdlet.
-1. [Nowe AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : Polecenia cmdlet programu PowerShell do utworzenia lub zaktualizowania obiektu Określanie parametrów warunku wyzwalania metryki dla [alertu dziennika typu pomiaru metryki](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules). Używane jako dane wejściowe przez [New AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) polecenia cmdlet.
-1. [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : Polecenia cmdlet programu PowerShell do istniejącej listy logowania reguł alertów lub regułę alertu w określonym dzienniku
-1. [Aktualizacja AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : Polecenia cmdlet programu PowerShell, aby włączyć lub wyłączyć reguł alertów dzienników
-1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): Polecenia cmdlet programu PowerShell, aby usunąć istniejącą regułę alertu dziennika
-
-> [!NOTE]
-> Polecenia cmdlet programu ScheduledQueryRules PowerShell można zarządzać tylko polecenia cmdlet reguł utworzonych, sama lub za pomocą usługi Azure Monitor — [zaplanowane zasady interfejsu API zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Zaloguj się reguły alertów utworzone przy użyciu starszej wersji [interfejsu API usługi Log Analytics alertu](api-alerts.md) i starszej wersji szablony [usługi Log Analytics zapisane wyszukiwania i alerty](../insights/solutions-resources-searches-alerts.md) mogą być zarządzane przy użyciu poleceń cmdlet programu ScheduledQueryRules PowerShell tylko po Użytkownik [zmienia preferencje interfejsu API dla alertów usługi Log Analytics](alerts-log-api-switch.md).
-
-## <a name="managing-log-alerts-using-cli-or-api"></a>Zarządzanie alertami dziennika przy użyciu interfejsu wiersza polecenia lub interfejsu API
-
-Usługa Azure Monitor — [interfejs API reguły zapytania zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) jest w pełni zgodna z usługą Azure Resource Manager REST API i interfejs API REST. Dlatego można używać za pośrednictwem programu Powershell przy użyciu poleceń usługi Resource Manager dla wiersza polecenia platformy Azure.
-
+1. [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) : Polecenie cmdlet programu PowerShell służące do tworzenia nowej reguły alertu dziennika.
+1. [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) : Polecenie cmdlet programu PowerShell służące do aktualizowania istniejącej reguły alertu dziennika.
+1. [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : Polecenie cmdlet programu PowerShell służące do tworzenia lub aktualizowania obiektu określającego parametry źródłowe alertu dziennika. Używane jako dane wejściowe za pomocą polecenia cmdlet [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) i [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
+1. [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): Polecenie cmdlet programu PowerShell służące do tworzenia lub aktualizowania obiektu określającego parametry harmonogramu dla alertu dziennika. Używane jako dane wejściowe za pomocą polecenia cmdlet [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) i [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
+1. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) : Polecenie cmdlet programu PowerShell służące do tworzenia lub aktualizowania obiektu określającego parametry akcji dla alertu dziennika. Używane jako dane wejściowe za pomocą polecenia cmdlet [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) i [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
+1. [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : Polecenie cmdlet programu PowerShell służące do tworzenia lub aktualizowania obiektu określającego parametry grup akcji dla alertu dziennika. Używane jako dane wejściowe przez polecenie cmdlet [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
+1. [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : Polecenie cmdlet programu PowerShell służące do tworzenia lub aktualizowania obiektu określającego parametry warunku wyzwalacza dla alertu dziennika. Używane jako dane wejściowe przez polecenie cmdlet [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
+1. [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : Polecenie cmdlet programu PowerShell do tworzenia lub aktualizowania obiektu określającego parametry warunku wyzwalacza metryki dla [alertu dziennika typu pomiaru metryki](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules). Używane jako dane wejściowe przez polecenie cmdlet [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
+1. [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : Polecenie cmdlet programu PowerShell do wyświetlania listy istniejących reguł alertów dziennika lub konkretnej reguły alertu dziennika
+1. [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : Polecenie cmdlet programu PowerShell do włączania lub wyłączania reguły alertów dziennika
+1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): Polecenie cmdlet programu PowerShell służące do usuwania istniejącej reguły alertu dziennika
 
 > [!NOTE]
-> Alerty dzienników usługi Log Analytics mogą być także zarządzane przy użyciu starszej wersji [interfejsu API Log Analytics alertu](api-alerts.md) i starszej wersji szablony z [usługi Log Analytics zapisane wyszukiwania i alerty](../insights/solutions-resources-searches-alerts.md) także. Aby uzyskać więcej informacji na temat korzystania z nowego interfejsu API ScheduledQueryRules przedstawione w tym miejscu domyślnie, zobacz [przełączyć się do nowego interfejsu API dla alertów usługi Log Analytics](alerts-log-api-switch.md).
+> Polecenia cmdlet programu PowerShell w programie ScheduledQueryRules mogą zarządzać tylko tymi regułami, które zostały utworzone za pomocą [interfejsu API reguł zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)zaplanowanych Azure monitor. Reguły alertów dziennika utworzone przy użyciu starszego [interfejsu API alertów log Analytics](api-alerts.md) i starsze szablony [log Analytics zapisane wyszukiwania i alerty](../insights/solutions-resources-searches-alerts.md) mogą być zarządzane za pomocą poleceń cmdlet programu PowerShell ScheduledQueryRules tylko po ustawieniu [preferencji interfejsu API dla dziennika Alerty analityczne](alerts-log-api-switch.md).
 
-Alerty dzienników obecnie nie masz dedykowane poleceń interfejsu wiersza polecenia obecnie; ale jak przedstawiono poniżej może służyć za pomocą polecenia interfejsu wiersza polecenia usługi Azure Resource Manager w przykładzie przedstawionym wcześniej szablon zasobu (sampleScheduledQueryRule.json) w sekcji zasobów szablonu:
+Poniżej przedstawiono procedurę tworzenia przykładowej reguły alertu dziennika przy użyciu poleceń cmdlet programu PowerShell scheduledQueryRules.
+```powershell
+$source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews"
+
+$schedule = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes 15 -TimeWindowInMinutes 30
+
+$metricTrigger = New-AzScheduledQueryRuleLogMetricTrigger -ThresholdOperator "GreaterThan" -Threshold 2 -MetricTriggerType "Consecutive" -MetricColumn "_ResourceId"
+
+$triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator "LessThan" -Threshold 5 -MetricTrigger $metricTrigger
+
+$aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG" -EmailSubject "Custom email subject" -CustomWebhookPayload "{ \"alert\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+
+$alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity "3" -Trigger $triggerCondition
+
+New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name"
+```
+
+## <a name="managing-log-alerts-using-cli-or-api"></a>Zarządzanie alertami dzienników przy użyciu interfejsu wiersza polecenia lub API
+
+Azure Monitor — [interfejs API reguł zaplanowanych zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) jest interfejsem API REST i w pełni zgodny z interfejsem api REST Azure Resource Manager. W związku z tym można go używać za pośrednictwem programu PowerShell przy użyciu poleceń Menedżer zasobów dla interfejsu wiersza polecenia platformy Azure.
+
+
+> [!NOTE]
+> Alerty dzienników dla Log Analytics mogą być również zarządzane przy użyciu starszego [interfejsu API alertów log Analytics](api-alerts.md) i starszych szablonów [log Analytics zapisanych wyszukiwań i alertów](../insights/solutions-resources-searches-alerts.md) . Aby uzyskać więcej informacji na temat domyślnego użycia nowego interfejsu API ScheduledQueryRules, zobacz [przełączanie do nowego interfejsu API na potrzeby alertów log Analytics](alerts-log-api-switch.md).
+
+Alerty dzienników nie mają obecnie dedykowanych poleceń interfejsu wiersza polecenia. ale jak pokazano poniżej, można użyć polecenia Azure Resource Manager CLI dla przykładowego szablonu zasobu pokazanego wcześniej (sampleScheduledQueryRule. JSON) w sekcji szablonu zasobu:
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
 ```
 
-Na powodzenie operacji 201 zostanie przywrócony do stanu nowych Tworzenie reguły alertu lub 200 zostanie zwrócona, jeśli istniejącą regułę alertu został zmodyfikowany.
+Po pomyślnym wykonaniu operacji 201 zostanie zwrócona wartość stanu Nowa reguła alertu, a w przypadku zmodyfikowania istniejącej reguły alertu zostanie zwrócona wartość 200.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [alerty dzienników w alertów platformy Azure](../../azure-monitor/platform/alerts-unified-log.md)
-* Zrozumienie [Akcje elementu Webhook dla alertów dzienników](../../azure-monitor/platform/alerts-log-webhook.md)
-* Dowiedz się więcej o [usługi Application Insights](../../azure-monitor/app/analytics.md)
-* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md).
+* Informacje o [alertach dzienników w usłudze Azure alertach](../../azure-monitor/platform/alerts-unified-log.md)
+* Informacje [o akcjach elementu webhook dla alertów dziennika](../../azure-monitor/platform/alerts-log-webhook.md)
+* Dowiedz się więcej o [Application Insights](../../azure-monitor/app/analytics.md)
+* Dowiedz się więcej o zapytaniach [dziennika](../log-query/log-query-overview.md).

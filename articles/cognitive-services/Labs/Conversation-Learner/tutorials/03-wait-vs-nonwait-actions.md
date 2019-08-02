@@ -1,7 +1,7 @@
 ---
-title: Jak używać oczekiwania i -wait akcji z modelem uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Jak używać akcji oczekiwania i nieoczekiwania z modelem Conversation Learner — Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak używać oczekiwania i -wait akcji z modelem uczeń konwersacji.
+description: Dowiedz się, jak używać akcji oczekiwania i nieczekania z modelem Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,79 +10,80 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 57a58b008792130c82a86ff4a5801f4bb39aabad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d9a67f0b413b624baec369a219547cf18e9dbd2
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387907"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705598"
 ---
-# <a name="wait-and-non-wait-actions"></a>Poczekaj chwilę i akcje-wait
+# <a name="wait-and-non-wait-actions"></a>Akcje oczekiwania i nieoczekiwanie
 
-W tym samouczku przedstawiono różnice między oczekiwania działania i działania-wait w uczeń konwersacji.
+W tym samouczku przedstawiono różnicę między akcjami oczekiwania i akcjami braku oczekiwania w Conversation Learner.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Oczekiwania a Non-Wait samouczek w wersji zapoznawczej](https://aka.ms/cl_Tutorial_v3_WaitnonWait_Preview)](https://aka.ms/cl_Tutorial_v3_WaitnonWait)
+[![Zaczekaj na podgląd samouczka bez oczekiwania](https://aka.ms/cl_Tutorial_v3_WaitnonWait_Preview)](https://aka.ms/cl_Tutorial_v3_WaitnonWait)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa ogólne bot samouczek
+Ten samouczek wymaga, aby ogólny samouczek bot był uruchomiony
 
     npm run tutorial-general
 
 ## <a name="details"></a>Szczegóły
 
-- Oczekiwania akcji: Po jaki zajmuje akcji "wait", spowoduje to zatrzymanie podejmowanie działań i czeka na dane wejściowe użytkownika.
-- Akcja non-wait: Po jaki zajmuje akcji "bez oczekiwania", jego natychmiast wybierze inną akcję (bez oczekiwania na dane wejściowe użytkownika).
+- Akcja oczekiwania: Gdy system przyjmuje akcję "Czekaj", spowoduje to zatrzymanie akcji i oczekiwanie na dane wejściowe użytkownika.
+- Akcja bez oczekiwania: Gdy system przyjmuje akcję "bez oczekiwania", natychmiast wybierze inną akcję (bez czekania na dane wejściowe użytkownika).
 
 ## <a name="steps"></a>Kroki
 
 ### <a name="create-a-new-model"></a>Utwórz nowy model
 
-1. W Interfejsie użytkownika sieci Web kliknij przycisk Nowy Model
-2. W polu "Name" wpisz "oczekiwania Non-Wait", wprowadź trafień, lub kliknij przycisk "Utwórz".
+1. W interfejsie użytkownika sieci Web kliknij pozycję Nowy model.
+2. W polu "nazwa" wpisz "Czekaj, nie czekaj", naciśnij klawisz ENTER lub kliknij przycisk "Utwórz".
 
-### <a name="create-the-first-two-wait-actions"></a>Utwórz pierwsze dwa działania oczekiwania
+### <a name="create-the-first-two-wait-actions"></a>Utwórz pierwsze dwie akcje oczekiwania
 
-1. Na lewym panelu kliknij przycisk "Akcje", a następnie przycisku "Nowa akcja".
-2. Pole "Botów odpowiedzi...", wpisz "głosi, które chcesz użyć?".
-    - Jest to akcja oczekiwania, więc pozostaw zaznaczone pole "Oczekiwania na odpowiedź".
+1. Na panelu po lewej stronie kliknij pozycję akcje, a następnie przycisk "nowa akcja".
+2. W odpowiedzi "bot"... " Wpisz "jakie Pizza chcesz?".
+    - Jest to akcja oczekiwania, dlatego pozostaw zaznaczone pole "Czekaj na odpowiedź".
 3. Kliknij przycisk "Utwórz".
-4. Powtórzenie tych kroków, Utwórz kolejną akcję za pomocą "Głosi sposobu!" jak Bot odpowiedzi.
+4. Powtórz te kroki, Utwórz kolejną akcję z "Pizza w sposób". jako odpowiedź bot.
 
-### <a name="train-using-those-wait-actions"></a>Szkolenie przy użyciu tych operacji oczekiwania
+### <a name="train-using-those-wait-actions"></a>Uczenie przy użyciu tych akcji oczekiwania
 
-1. W lewym panelu kliknij przycisk "Okien dialogowych Train", a następnie przycisk "Nowy Train Dialog".
-2. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Hi". 
-    - Symuluje to użytkownika po stronie konwersacji.
-3. Kliknij przycisk "Wynik akcje".
-4. Wybierz odpowiedź "głosi, jakiego potrzebujesz?".
-5. Jako użytkownik odpowiada za pomocą "Margherita".
-6. Kliknij przycisk "Wynik akcje".
-7. Wybierz odpowiedź "Głosi sposobu!".
+1. Na panelu po lewej stronie kliknij pozycję "szkolenie okna dialogowego", a następnie przycisk "okno dialogowe nowego uczenia".
+2. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Witaj". 
+    - To symuluje po stronie rozmowy.
+3. Kliknij przycisk "akcje oceny".
+4. Wybierz odpowiedź "jakie Pizza chcesz?".
+5. W miarę jak użytkownik reaguje na "Margherita".
+6. Kliknij przycisk "akcje oceny".
+7. Wybierz odpowiedź "Pizza w drodze!".
 8. Kliknij przycisk "Zapisz".
 
-### <a name="create-a-non-wait-action-while-training"></a>Utwórz akcję-Wait, podczas szkolenia
-Chociaż można utworzyć akcji Non-Wait, tak jak miało to miejsce wcześniej, można również utworzyć go z sesji szkoleniowych.
-1. Kliknij przycisk "Nowy Train Dialog".
-2. Typ użytkownika w "Hello".
-3. Kliknij przycisk "Wynik akcje".
-4. Kliknij pozycję "+ akcji" przycisk. 
-    - Spowoduje to przejście do znanego okna dialogowego "Tworzenie Action".
-5. Wpisz w odpowiedzi Bot jako "Witaj Pizza Bot!"
-6. Zaznaczenie pole wyboru "Oczekiwania na odpowiedź".
+### <a name="create-a-non-wait-action-while-training"></a>Tworzenie akcji, która nie jest oczekiwana podczas szkolenia
+Mimo że można utworzyć akcję nieoczekiwaną tak jak wcześniej, można ją również utworzyć z poziomu sesji szkoleniowej.
+1. Kliknij przycisk "okno dialogowe nowego uczenia".
+2. Jako typ użytkownika, "Hello".
+3. Kliknij przycisk "akcje oceny".
+4. Kliknij przycisk "+ Akcja". 
+    - Spowoduje to przejście do znanego okna dialogowego "Tworzenie akcji".
+5. Wpisz odpowiedź bot jako "Witamy w Pizza bot!"
+6. Usuń zaznaczenie pola wyboru "Czekaj na odpowiedź".
 7. Kliknij przycisk "Utwórz".
-    - Należy zauważyć, że odpowiada Bot bezpośrednio z "Witamy Pizza Bot!" i zostaną ponownie monitowany o podanie kolejną reakcją Botów. Jest to spowodowane odpowiedzi Bot akcji Non-Wait, którą właśnie utworzyliśmy.
-9. Wybierz odpowiedź "głosi, jakiego potrzebujesz?".
-10. Jako użytkownik odpowiada za pomocą "Margherita".
-11. Kliknij przycisk "Wynik akcje".
-12. Wybierz odpowiedź "Głosi sposobu!".
+    - Zwróć uwagę, że bot natychmiast reaguje na "Witamy w Pizza bot!" i ponownie zostanie wyświetlony monit o podanie innej odpowiedzi bot. Wynika to z faktu, że odpowiedź bot była akcją bez oczekiwania, która została właśnie utworzona.
+9. Wybierz odpowiedź "jakie Pizza chcesz?".
+10. W miarę jak użytkownik reaguje na "Margherita".
+11. Kliknij przycisk "akcje oceny".
+12. Wybierz odpowiedź "Pizza w drodze!".
 13. Kliknij przycisk "Zapisz".
 
 > [!NOTE]
-> Sekwencja odpowiedzi bot w odniesieniu do oczekiwania i akcje bez oczekiwania.
+> Sekwencja odpowiedzi bot w odniesieniu do akcji oczekiwania i braku oczekiwania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wprowadzenie do jednostek](./04-introduction-to-entities.md)

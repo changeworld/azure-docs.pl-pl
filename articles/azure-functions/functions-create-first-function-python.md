@@ -1,5 +1,5 @@
 ---
-title: Tworzenie funkcji wyzwalanej przez protokół HTTP w systemie Azure
+title: Tworzenie funkcji wyzwalanej przez protokół HTTP na platformie Azure
 description: Dowiedz się, jak utworzyć pierwszą funkcję języka Python na platformie Azure przy użyciu narzędzi Azure Functions Core Tools i interfejsu wiersza polecenia platformy Azure.
 services: functions
 keywords: ''
@@ -11,30 +11,30 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 5ef30fbf647492f79c64508d8306868aa1f6b278
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 58f5cfd3718720cafc922bbd7b974a353e0d9d02
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444578"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722797"
 ---
-# <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP w systemie Azure
+# <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP na platformie Azure
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
-W tym artykule pokazano, jak używać narzędzi wiersza polecenia do tworzenia projektu języka Python, który jest uruchamiany w usłudze Azure Functions. Funkcja, tworzonych jest wyzwalana przez żądania HTTP. Na koniec opublikować projekt w taki sposób, aby był uruchamiany jako [funkcję niewymagającą użycia serwera](functions-scale.md#consumption-plan) na platformie Azure.
+W tym artykule pokazano, jak za pomocą narzędzi wiersza polecenia utworzyć projekt w języku Python, który działa w Azure Functions. Utworzona funkcja jest wyzwalana przez żądania HTTP. Na koniec opublikujesz projekt do uruchamiania jako [Funkcja](functions-scale.md#consumption-plan) bezserwerowa na platformie Azure.
 
-Ten artykuł jest to pierwsza z dwóch przewodnikom Szybki Start dla usługi Azure Functions. Po ukończeniu tego artykułu możesz [Dodawanie usługi Azure Storage powiązania danych wyjściowych kolejki](functions-add-output-binding-storage-queue-python.md) do funkcji.
+Ten artykuł jest pierwszym z dwóch przewodników szybki start dla Azure Functions. Po wykonaniu tego artykułu należy [dodać powiązanie danych wyjściowych kolejki usługi Azure Storage](functions-add-output-binding-storage-queue-python.md) do funkcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem wykonywania tej procedury, musisz mieć następujące czynności:
+Przed rozpoczęciem należy wykonać następujące czynności:
 
 + Zainstaluj język [Python 3.6](https://www.python.org/downloads/).
 
-+ Zainstaluj [podstawowych narzędzi usługi Azure Functions](./functions-run-local.md#v2) wersji 2.6.1071 lub nowszej.
++ Zainstaluj program [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.1071 lub nowszej.
 
-+ Zainstaluj [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) wersji 2.x lub nowszej wersji.
++ Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) w wersji 2. x lub nowszej.
 
 + Aktywna subskrypcja platformy Azure.
 
@@ -42,16 +42,16 @@ Przed rozpoczęciem wykonywania tej procedury, musisz mieć następujące czynno
 
 ## <a name="create-and-activate-a-virtual-environment"></a>Tworzenie i aktywowanie środowiska wirtualnego
 
-Aby lokalnie rozwijać i przetestować funkcje języka Python, możesz pracować w środowisku Python 3.6. Uruchom następujące polecenia, aby utworzyć i aktywować środowisko wirtualne o nazwie `.env`.
+Aby lokalnie opracowywać i testować funkcje języka Python, musisz pracować w środowisku Python 3,6. Uruchom następujące polecenia, aby utworzyć i aktywować środowisko wirtualne o nazwie `.venv`.
 
-### <a name="bash"></a>Bash:
+### <a name="bash"></a>Bash
 
 ```bash
 python3.6 -m venv .venv
 source .venv/bin/activate
 ```
 
-### <a name="powershell-or-a-windows-command-prompt"></a>Lub wiersza polecenia Windows PowerShell:
+### <a name="powershell-or-a-windows-command-prompt"></a>Program PowerShell lub wiersz polecenia systemu Windows:
 
 ```powershell
 py -3.6 -m venv .venv
@@ -62,19 +62,19 @@ Pozostałe polecenia są uruchamiane w środowisku wirtualnym.
 
 ## <a name="create-a-local-functions-project"></a>Tworzenie lokalnego projektu usługi Functions
 
-Projekt funkcji jest odpowiednikiem aplikacji funkcji na platformie Azure. Może mieć wiele funkcji, mających takie same konfiguracje lokalnych i hostingu.
+Projekt funkcji jest odpowiednikiem aplikacji funkcji na platformie Azure. Może mieć wiele funkcji, które współużytkują te same konfiguracje lokalne i hostingowe.
 
-W środowisku wirtualnym, uruchom następujące polecenia, wybierając **python** jako środowisko uruchomieniowe usługi procesu roboczego.
+W środowisku wirtualnym Uruchom następujące polecenie, wybierając język **Python** jako środowisko uruchomieniowe procesu roboczego.
 
 ```console
 func init MyFunctionProj
 ```
 
-Folder o nazwie _MyFunctionProj_ zostanie utworzony, który zawiera trzy następujące pliki:
+Zostanie utworzony folder o nazwie _MyFunctionProj_ , który zawiera następujące trzy pliki:
 
-* `local.settings.json` Służy do przechowywania ustawień aplikacji i parametry połączenia podczas uruchamiania lokalnego. Ten plik nie uzyskać opublikowanej na platformie Azure.
-* `requirements.txt` zawiera listę pakietów, należy zainstalować na publikowanie na platformie Azure.
-* `host.json` zawiera opcje konfiguracji globalnej, które wpływają na wszystkie funkcje w aplikacji funkcji. Ten plik, Pobierz opublikowanej na platformie Azure.
+* `local.settings.json`służy do przechowywania ustawień aplikacji i parametrów połączenia podczas lokalnego uruchamiania. Ten plik nie jest publikowany na platformie Azure.
+* `requirements.txt`zawiera listę pakietów do zainstalowania podczas publikowania na platformie Azure.
+* `host.json`zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje w aplikacji funkcji. Ten plik jest publikowany na platformie Azure.
 
 Przejdź do nowego folderu MyFunctionProj:
 
@@ -82,9 +82,9 @@ Przejdź do nowego folderu MyFunctionProj:
 cd MyFunctionProj
 ```
 
-Następnie należy zaktualizować pliku host.json, aby umożliwić rozszerzenie pakiety.  
+Następnie należy zaktualizować plik host. JSON, aby włączyć zbiory rozszerzeń.  
 
-## <a name="create-a-function"></a>Tworzenie funkcji
+## <a name="create-a-function"></a>Utwórz funkcję
 
 Aby dodać funkcję do projektu, uruchom następujące polecenie:
 
@@ -92,27 +92,27 @@ Aby dodać funkcję do projektu, uruchom następujące polecenie:
 func new
 ```
 
-Wybierz **wyzwalacza HTTP** szablonu, należy wpisać `HttpTrigger` jako nazwy funkcji, naciśnij klawisz Enter.
+Wybierz szablon **wyzwalacza http** , wpisz `HttpTrigger` jako nazwę funkcji, a następnie naciśnij klawisz ENTER.
 
-Podfolder o nazwie _HttpTrigger_ zostanie utworzony, który zawiera następujące pliki:
+Zostanie utworzony podfolder o nazwie _HttpTrigger_ , który zawiera następujące pliki:
 
-* **Function.JSON**: plik konfiguracji, który definiuje funkcja, wyzwalacz i innych powiązań. Ten plik i zobacz, że wartość `scriptFile` wskazuje plik zawierający funkcję, podczas gdy wywołania wyzwalaczy i powiązań, które są zdefiniowane w `bindings` tablicy.
+* **Function. JSON**: plik konfiguracji, który definiuje funkcję, wyzwalacz i inne powiązania. Przejrzyj ten plik i sprawdź, czy wartość `scriptFile` wskazuje plik zawierający funkcję, podczas gdy wyzwalacz wywołania i powiązania są zdefiniowane `bindings` w tablicy.
 
-  Każde powiązanie wymaga kierunku, typ i unikatową nazwę. Wyzwalacz HTTP ma powiązanie danych wejściowych typu [ `httpTrigger` ](functions-bindings-http-webhook.md#trigger) i powiązania typu danych wyjściowych [ `http` ](functions-bindings-http-webhook.md#output).
+  Każde powiązanie wymaga kierunku, typu i unikatowej nazwy. Wyzwalacz http ma powiązanie wejściowe typu [`httpTrigger`](functions-bindings-http-webhook.md#trigger) i powiązania danych wyjściowych typu. [`http`](functions-bindings-http-webhook.md#output)
 
-* **\_\_init\_\_.py**: funkcja wyzwalana przez plik skryptu, który jest przez protokół HTTP. Przejrzyj ten skrypt i zobacz, czy zawiera on domyślnie `main()`. Dane HTTP z wyzwalacza jest przekazywany do tej funkcji za pomocą `req` o nazwie parametru wiązania. Zdefiniowane w function.json, `req` jest wystąpieniem [klasy azure.functions.HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
+* **init.PR\_: plik skryptu, który jest funkcją wyzwalaną przez protokół http.\_ \_ \_** Przejrzyj ten skrypt i sprawdź, czy zawiera on domyślny `main()`. Dane http z wyzwalacza są przesyłane do tej funkcji przy użyciu `req` nazwanego parametru powiązania. Zdefiniowane w funkcji Function. JSON `req` jest wystąpieniem [klasy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
 
-    Return, zdefiniowanego obiektu jako `$return` w function.json, jest wystąpieniem [klasy azure.functions.HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Aby dowiedzieć się więcej, zobacz [usługi Azure Functions HTTP wyzwalaczy i powiązań](functions-bindings-http-webhook.md).
+    Obiekt zwracany, zdefiniowany jako `$return` w funkcji Function. JSON, jest wystąpieniem [klasy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Aby dowiedzieć się więcej, zobacz [Azure Functions wyzwalacze i powiązania HTTP](functions-bindings-http-webhook.md).
 
 ## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
 
-Następujące polecenie uruchamia aplikację funkcji, który jest uruchamiany lokalnie przy użyciu tego samego środowiska usługi Azure Functions runtime, która znajduje się w usłudze Azure.
+Następujące polecenie uruchamia aplikację funkcji, która jest uruchamiana lokalnie przy użyciu tego samego Azure Functions środowiska uruchomieniowego, które znajduje się na platformie Azure.
 
 ```bash
 func host start
 ```
 
-Po uruchomieniu hosta funkcji zapisuje podobną do następujących danych wyjściowych, który został skrócony tak, aby zwiększyć czytelność:
+Po uruchomieniu hosta usługi Functions zapisuje informacje podobne do następujących, które zostały obcięte pod kątem czytelności:
 
 ```output
 
@@ -167,9 +167,9 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 ```
 
 > [!NOTE]
-> Usługa Azure Functions planu zużycie dla systemu Linux jest obecnie w wersji zapoznawczej i jest dostępna tylko w następujących regionach: Zachodnie stany USA, wschodnie stany USA, Europa Zachodnia, Azja Wschodnia. Ponadto aplikacje dla systemu Linux i Windows, nie mogą być hostowane w tej samej grupie zasobów. Jeśli masz istniejącą grupę zasobów o nazwie `myResourceGroup` za pomocą aplikacji funkcji Windows lub aplikacji sieci web, należy użyć innej grupy zasobów.
+> Azure Functions plan zużycia dla systemu Linux jest obecnie w wersji zapoznawczej i dostępny tylko w następujących regionach: Zachodnie stany USA, Wschodnie stany USA, Europa Zachodnia, Azja Wschodnia. Ponadto aplikacje dla systemów Linux i Windows nie mogą być hostowane w tej samej grupie zasobów. Jeśli masz istniejącą grupę zasobów o nazwie `myResourceGroup` przy użyciu aplikacji funkcji systemu Windows lub aplikacji sieci Web, musisz użyć innej grupy zasobów.
 
-Teraz możesz przystąpić do opublikowania projektu funkcji lokalnych do aplikacji funkcji na platformie Azure.
+Teraz możesz przystąpić do publikowania projektu funkcji lokalnych w aplikacji funkcji na platformie Azure.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
@@ -177,7 +177,7 @@ Teraz możesz przystąpić do opublikowania projektu funkcji lokalnych do aplika
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po utworzeniu projektu funkcji języka Python za pomocą funkcji wyzwalanej przez protokół HTTP, uruchom go na komputerze lokalnym i wdrażać je na platformie Azure. Teraz można rozszerzyć przez funkcję...
+Utworzono projekt funkcji języka Python z funkcją wyzwalaną przez protokół HTTP, uruchom go na komputerze lokalnym i wdrożony na platformie Azure. Teraz możesz rozłożyć funkcję przez...
 
 > [!div class="nextstepaction"]
-> [Dodawanie usługi Azure Storage powiązania danych wyjściowych kolejki](functions-add-output-binding-storage-queue-python.md)
+> [Dodawanie powiązania danych wyjściowych kolejki usługi Azure Storage](functions-add-output-binding-storage-queue-python.md)

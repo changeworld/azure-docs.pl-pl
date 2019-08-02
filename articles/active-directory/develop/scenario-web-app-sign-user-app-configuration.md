@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c962e95b3d213c4089b51f58139cab17a3332cbd
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: a96d17ae7fbe94877032e7b4b2aacb63f6e070ca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853067"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562260"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Aplikacja internetowa, która loguje się do użytkowników — konfiguracja kodu
 
@@ -110,7 +110,7 @@ W ten sam sposób identyfikator URI wylogowania zostanie ustawiony na `https://l
 
 ### <a name="initialization-code"></a>Kod inicjalizacji
 
-W ASP.NET Core Web Apps (i interfejsy API sieci Web) kod inicjujący aplikację znajduje się w `Startup.cs` pliku, a aby dodać uwierzytelnianie za pomocą platformy tożsamości firmy Microsoft (dawniej usługa Azure AD) v 2.0, należy dodać następujący kod. Komentarze w kodzie nie powinny mieć wyjaśnień.
+W ASP.NET Core Web Apps (i interfejsy API sieci Web) kod inicjujący aplikację znajduje się w `Startup.cs` pliku, a aby dodać uwierzytelnianie za pomocą platformy tożsamości firmy Microsoft (dawniej usługi Azure AD v 2.0), należy dodać następujący kod. Komentarze w kodzie nie powinny mieć wyjaśnień.
 
   > [!NOTE]
   > Po rozpoczęciu projektu przy użyciu domyślnego projektu sieci Web ASP.NET Core w programie Visual `dotnet new mvc` Studio lub `AddAzureAD` użycia metody jest domyślnie dostępne, ponieważ pakiety powiązane są ładowane automatycznie. Jeśli jednak tworzysz projekt od podstaw i próbujesz użyć poniższego kodu, sugerujemy dodanie pakietu NuGet **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** do projektu, aby udostępnić `AddAzureAD` metodę.
@@ -122,7 +122,7 @@ W ASP.NET Core Web Apps (i interfejsy API sieci Web) kod inicjujący aplikację 
  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
  {
   // The ASP.NET core templates are currently using Azure AD v1.0, and compute
-  // the authority (as {Instance}/{TenantID}). We want to use the Microsoft Identity Platform v2.0 endpoint
+  // the authority (as {Instance}/{TenantID}). We want to use the Microsoft identity platform endpoint
   options.Authority = options.Authority + "/v2.0/";
 
   // If you want to restrict the users that can sign-in to specific organizations
@@ -133,7 +133,7 @@ W ASP.NET Core Web Apps (i interfejsy API sieci Web) kod inicjujący aplikację 
 
   // Set the nameClaimType to be preferred_username.
   // This change is needed because certain token claims from Azure AD v1.0 endpoint
-  // (on which the original .NET core template is based) are different in Azure AD v2.0 endpoint.
+  // (on which the original .NET core template is based) are different in Microsoft identity platform endpoint.
   // For more details see [ID Tokens](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)
   // and [Access Tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
   options.TokenValidationParameters.NameClaimType = "preferred_username";
@@ -176,7 +176,7 @@ Kod związany z uwierzytelnianiem w programie ASP.NET Web App/interfejsy API sie
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+     // The `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0
      // The `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
      ClientId = clientId,
@@ -188,7 +188,7 @@ Kod związany z uwierzytelnianiem w programie ASP.NET Web App/interfejsy API sie
  }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Logowanie i wylogowywanie](scenario-web-app-sign-user-sign-in.md)

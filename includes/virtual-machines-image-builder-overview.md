@@ -5,36 +5,36 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 55d73b2602a9a862375ca3e72dee4597c1d6f1d6
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: fa34baa7569b0552708cd1a9b57d79186e5acd57
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659875"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669777"
 ---
-Obrazy standardowych maszyn wirtualnych (VM) umożliwiają organizacjom migrację do chmury i zapewnia spójność we wdrożeniach. Obrazy obejmują zazwyczaj wstępnie zdefiniowanych ustawień zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Konfigurowanie potoku przetwarzania obrazów wymaga czasu, infrastruktury i konfiguracji, ale za pomocą Kreatora obrazów maszyn wirtualnych platformy Azure, po prostu podać prostej konfiguracji opisujące obrazu, Prześlij go do usługi i wbudowany obraz i rozproszone.
+Standardowe obrazy maszyn wirtualnych (VM) umożliwiają organizacjom Migrowanie do chmury i zapewnianie spójności we wdrożeniach. Obrazy zwykle obejmują wstępnie zdefiniowane ustawienia zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Skonfigurowanie własnego potoku obrazu wymaga czasu, infrastruktury i konfiguracji, ale za pomocą konstruktora obrazów maszyn wirtualnych platformy Azure wystarczy utworzyć prostą konfigurację opisującą obraz, przesłać ją do usługi, a obraz został skompilowany i rozdystrybuowany.
  
-Kreator obrazów maszyn wirtualnych platformy Azure (Kreatora obrazów platformy Azure) umożliwia rozpoczynać Windows lub obraz opartych na systemie Linux z portalu Azure Marketplace, istniejących obrazów niestandardowych lub Red Hat Enterprise Linux (RHEL) ISO i zacząć dodawać własne dostosowania. Ponieważ Kreator obrazów jest oparta na [HashiCorp Packer](https://packer.io/), można również zaimportować istniejące skrypty administracyjnej powłoki usługi Packer. Można również określić, gdzie chcesz obrazów hostowanych w [galerii obrazów systemu Azure Shared](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), jako obrazu zarządzanego lub wirtualnego dysku twardego.
+Konstruktor obrazów maszyn wirtualnych platformy Azure (Azure Image Builder) umożliwia rozpoczęcie pracy z obrazem platformy Azure Marketplace opartym na systemie Windows lub Linux, istniejącymi obrazami niestandardowymi lub Red Hat Enterprise Linux (RHEL) ISO i rozpoczęciem dodawania własnych dostosowań. Ponieważ Konstruktor obrazów jest oparty na programie [HashiCorp Packer](https://packer.io/), można także zaimportować istniejące skrypty aprowizacji powłoki programu Packer. Możesz również określić, gdzie mają być hostowane obrazy, w [galerii udostępnionych obrazów systemu Azure](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)jako obraz zarządzany lub dysk VHD.
 
 > [!IMPORTANT]
-> Kreator obrazów platformy Azure jest obecnie w publicznej wersji zapoznawczej.
+> Usługa Azure Image Builder jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkcje w wersji zapoznawczej
+## <a name="preview-features"></a>Funkcje wersji zapoznawczej
 
-Dla wersji zapoznawczej te funkcje są obsługiwane:
+W przypadku wersji zapoznawczej te funkcje są obsługiwane:
 
-- Tworzenie obrazów złoty plan bazowy, który zawiera minimalne bezpieczeństwo i konfiguracje firmowe i umożliwiają działów zgodnie z własnymi dalsze odpowiadające ich potrzebom.
-- Stosowanie poprawek dla istniejących obrazów, Kreator obrazów umożliwi stale stosowanie poprawek do istniejących obrazów niestandardowych.
-- Dzięki integracji z galerii obrazów platformy Azure udostępnione, można do dystrybucji i wersji, i skalowania obrazy globalnie i pozwala na to system zarządzania obrazu.
-- Integracja z istniejącym obrazie tworzyć potoki, po prostu wywołać Kreatora obrazów z potokiem lub korzystając z prostych (wersja zapoznawcza) obraz konstruktora Azure DevOps zadania.
-- Migrowanie istniejących potoku dostosowywania obrazu na platformę Azure. Dostosowywanie obrazów przy użyciu istniejących skryptów, poleceń i procesów.
-- Korzystać z pomocy technicznej Red Hat przenieść Twojej własnej subskrypcji. Tworzenie obrazów Red Hat Enterprise, do użytku z swoje subskrypcje Red Hat uprawnionych, nieużywane.
+- Tworzenie złota obrazów bazowych, które obejmują minimalne zabezpieczenia i konfiguracje firmowe, oraz pozwalające wydziałom dostosować je do swoich potrzeb.
+- Stosowanie poprawek istniejących obrazów, Konstruktor obrazów umożliwi ciągłe poprawianie istniejących obrazów niestandardowych.
+- Integracja z galerią udostępnionych obrazów systemu Azure pozwala na globalne dystrybuowanie, wersję i skalowanie obrazów oraz zapewnia system zarządzania obrazami.
+- Integracja z istniejącymi potokami kompilacji obrazu, po prostu Wywołaj konstruktora obrazu z potoku lub Użyj prostego zadania programu Image Builder dla systemu Azure DevOps.
+- Migruj istniejący potok dostosowywania obrazu do platformy Azure. Aby dostosować obrazy, Użyj istniejących skryptów, poleceń i procesów.
+- Korzystanie z rozwiązania Red Hat zapewnia obsługę subskrypcji. Twórz obrazy w systemie Red Hat Enterprise do użycia z uprawnionymi, nieużywanymi subskrypcjami Red Hat.
 - Tworzenie obrazów w formacie VHD.
  
 
 ## <a name="regions"></a>Regions
-Usługa Konstruktora obrazów platformy Azure będzie dostępna w wersji zapoznawczej w tych regionach. Obrazy mogą być dystrybuowane spoza tych regionów.
+Usługa Azure Image Builder będzie dostępna w wersji zapoznawczej w tych regionach. Obrazy można rozpowszechniać poza tymi regionami.
 - East US
 - Wschodnie stany USA 2
 - Środkowo-zachodnie stany USA
@@ -42,47 +42,48 @@ Usługa Konstruktora obrazów platformy Azure będzie dostępna w wersji zapozna
 - Zachodnie stany USA 2
 
 ## <a name="os-support"></a>Obsługa systemu operacyjnego
-AIB będzie obsługiwać portalu Azure Marketplace podstawowe obrazy systemu operacyjnego:
+Program AIB obsługuje obrazy podstawowej systemu operacyjnego Azure Marketplace:
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7.6
+- RHEL 7,6
 - CentOS 7.6
+- Windows 10 RS5 Enterprize/Professional/Enterprise for Virtual Desktop (EVD) 
 - Windows 2016
 - Windows 2019
 
-AIB będzie obsługiwać RHEL obrazu ISO firmy jako źródło dla:
-- RHEL 7.3
-- RHEL 7.4
+AIB będzie obsługiwał RHEL ISO jako źródło dla:
+- RHEL 7,3
+- RHEL 7,4
 - RHEL W WERSJI 7.5
 
-Obrazy systemu RHEL 7.6 ISO nie są obsługiwane, ale są testowane.
+RHEL 7,6 obrazów ISO nie są obsługiwane, ale są testowane.
 
 ## <a name="how-it-works"></a>Jak to działa
 
 
-![Rysunek koncepcyjny przedstawiający kreatora obrazów platformy Azure](./media/virtual-machines-image-builder-overview/image-builder.png)
+![Koncepcyjne rysowanie programu Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)
 
-Kreator obrazów platformy Azure jest w pełni zarządzana usługa platformy Azure, który jest dostępny przez dostawcę zasobów platformy Azure. Procesu Kreatora obrazów platformy Azure ma trzy główne części: źródła, dostosowywanie i dystrybucji, są one reprezentowane w szablonie. Na poniższym diagramie przedstawiono składniki, wraz z ich właściwości. 
+Konstruktor obrazów platformy Azure to w pełni zarządzana usługa platformy Azure, która jest dostępna dla dostawcy zasobów platformy Azure. Proces programu Azure Image Builder zawiera trzy główne części: Źródło, dostosowywanie i dystrybucję. są one reprezentowane w szablonie. Na poniższym diagramie przedstawiono składniki wraz z niektórymi właściwościami. 
  
 
 
-**Procesu Kreatora obrazów** 
+**Proces konstruktora obrazów** 
 
-![Rysunek koncepcyjny przedstawiający procesu Kreatora obrazów platformy Azure](./media/virtual-machines-image-builder-overview/image-builder-process.png)
+![Koncepcyjne rysowanie procesu usługi Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
-1. Utwórz szablon obrazu w formacie JSON. Ten plik JSON zawiera informacje dotyczące źródła obrazu, dostosowania i dystrybucji. Istnieje wiele przykładów w [repozytorium GitHub konstruktora obraz Azure](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
-1. Prześlij go do usługi, spowoduje to utworzenie artefakt obrazu szablonu w grupie zasobów, które określisz. W tle Kreator obrazów pobierze obraz źródłowy lub obrazu ISO i skrypty, zgodnie z potrzebami. Są one przechowywane w oddzielnej grupie zasobów, jest automatycznie tworzony w ramach subskrypcji, w formacie: IT_\<DestinationResourceGroup>_\<TemplateName>. 
-1. Po utworzeniu szablonu obrazu może następnie utworzyć obraz. Kreator obrazów w tle używa szablon i pliki źródłowe do tworzenia maszyn wirtualnych, sieci i magazynu w IT_\<DestinationResourceGroup > _\<TemplateName > grupy zasobów.
-1. W ramach tworzenia obrazów, Kreator obrazów dystrybuuje obraz zgodnie z szablonem, następnie usuwa dodatkowe zasoby w IT_\<DestinationResourceGroup > _\<TemplateName > grupy zasobów, dla którego utworzono proces.
+1. Utwórz szablon obrazu jako plik JSON. Ten plik JSON zawiera informacje o źródle, dostosowywaniu i dystrybucji obrazu. Istnieje wiele przykładów w [repozytorium GitHub usługi Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
+1. Prześlij go do usługi, spowoduje to utworzenie artefaktu szablonu obrazu w określonej grupie zasobów. W tle program Image Builder pobierze obraz źródłowy lub plik ISO oraz skrypty zgodnie z wymaganiami. Są one przechowywane w oddzielnej grupie zasobów, która jest tworzona automatycznie w ramach subskrypcji, w formacie: IT_\<DestinationResourceGroup>_\<TemplateName>. 
+1. Po utworzeniu szablonu obrazu można utworzyć obraz. W konstruktorze obrazu w tle program używa szablonu i plików źródłowych do tworzenia maszyny wirtualnej, sieci i magazynu w IT_\<DestinationResourceGroup > _\<templateName > grupy zasobów.
+1. W ramach tworzenia obrazu Konstruktor obrazów dystrybuuje obraz zgodnie z szablonem, a następnie usuwa dodatkowe zasoby z IT_\<DestinationResourceGroup > _\<templateName > grupę zasobów, która została utworzona dla proces.
 
 
 ## <a name="permissions"></a>Uprawnienia
 
-Aby umożliwić kreatora obrazów maszyn wirtualnych platformy Azure do dystrybucji obrazów zarządzanych obrazów lub do galerii obrazów udostępnione, konieczne będzie zapewnienie uprawnienia "Współautor" usługi "Kreatora obrazów maszyn wirtualnych platformy Azure" (identyfikator aplikacji: cf32a0cc-373c-47c9-9156-0db11f6a6dfc ) na temat grup zasobów. 
+Aby umożliwić programowi Azure VM Image Builder dystrybuowanie obrazów do obrazów zarządzanych lub do galerii obrazów udostępnionych, należy podać uprawnienia współautora dla usługi "Konstruktor obrazów maszyn wirtualnych platformy Azure" (Identyfikator aplikacji: cf32a0cc-373c-47c9-9156-0db11f6a6dfc ) w grupie zasobów. 
 
-Jeśli używasz istniejącego niestandardowego obrazu zarządzanego lub wersję obrazu Kreatora obrazów platformy Azure będzie musiało przypadać "Reader" dostęp do tych grup zasobów.
+Jeśli używasz istniejącej niestandardowej obrazu zarządzanego lub wersji obrazu, Konstruktor obrazów platformy Azure będzie potrzebować co najmniej dostępu czytelnika do tych grup zasobów.
 
-Możesz przypisywać dostęp przy użyciu wiersza polecenia platformy Azure:
+Dostęp można przypisywać przy użyciu interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli-interactive
 az role assignment create \
@@ -91,20 +92,20 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
 
-Jeśli konto usługi nie zostanie znaleziony, który oznacza, że subskrypcji, w którym dodajesz przypisania roli nie ma jeszcze zarejestrowana dla dostawcy zasobów.
+Jeśli nie można znaleźć konta usługi, może to oznaczać, że subskrypcja, do której dodawane jest przypisanie roli, nie została jeszcze zarejestrowana dla dostawcy zasobów.
 
 
 ## <a name="costs"></a>Koszty
-Zostaną naliczone niektórych obliczeń, sieci i koszty magazynowania podczas tworzenia, kompilowania i przechowywanie obrazów za pomocą Kreatora obrazów platformy Azure. Te koszty są podobne do kosztów poniesionych przez ręcznego tworzenia obrazów niestandardowych. Dla zasobów opłata wyniesie stawki platformy Azure. 
+Podczas tworzenia, kompilowania i przechowywania obrazów przy użyciu usługi Azure Image Builder naliczane są koszty obliczeń, sieci i magazynu. Koszty te są podobne do kosztów ponoszonych w ramach ręcznego tworzenia obrazów niestandardowych. W przypadku zasobów opłata zostanie naliczona zgodnie z stawką za platformę Azure. 
 
-W trakcie procesu tworzenia obrazu pliki są pobierane i przechowywane w `IT_<DestinationResourceGroup>_<TemplateName>` grupę zasobów, co spowoduje naliczenie opłaty za koszty magazynu małe. f, czy chcesz zachować te, usunąć szablon obrazu po kompilacji obrazu.
+Podczas procesu tworzenia obrazu pliki są pobierane i przechowywane w `IT_<DestinationResourceGroup>_<TemplateName>` grupie zasobów, co spowoduje powstanie małych kosztów magazynowania. f nie chcesz ich zachować, Usuń szablon obrazu po skompilowaniu obrazu.
  
-Kreator obrazów maszyna wirtualna jest tworzona przy użyciu rozmiaru D1v2 maszyny Wirtualnej i magazynu i sieci wymagane dla maszyny Wirtualnej. Te zasoby będą trwać przez czas trwania procesu kompilacji, a także zostaną usunięte po zakończeniu Kreatora obrazów podczas tworzenia obrazu. 
+Konstruktor obrazów tworzy maszynę wirtualną przy użyciu D1v2 rozmiaru maszyny wirtualnej oraz magazynu i sieci potrzebnych dla maszyny wirtualnej. Te zasoby będą trwać na czas trwania procesu kompilacji i zostaną usunięte po zakończeniu tworzenia obrazu przez konstruktora obrazu. 
  
-Kreator obrazów platformy Azure będzie dystrybuować obraz wybrany regiony, które mogą zostać naliczone opłaty za ruch wychodzący w sieci.
+Program Azure Image Builder dystrybuuje obraz do wybranych regionów, co może spowodować naliczenie opłat za ruch wychodzący z sieci.
  
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
  
-Aby wypróbować kreatora obrazów platformy Azure, zobacz artykuły dotyczące tworzenia [Linux](../articles/virtual-machines/linux/image-builder.md) lub [Windows](../articles/virtual-machines/windows/image-builder.md) obrazów.
+Aby wypróbować Konstruktor obrazów platformy Azure, zapoznaj się z artykułami dotyczącymi tworzenia obrazów systemu [Linux](../articles/virtual-machines/linux/image-builder.md) lub [Windows](../articles/virtual-machines/windows/image-builder.md) .
  
  

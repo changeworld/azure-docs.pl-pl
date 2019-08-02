@@ -1,20 +1,18 @@
 ---
 title: Przewodnik Szybki start platformy Azure — tworzenie obiektu blob w magazynie obiektów przy użyciu języka PHP | Microsoft Docs
 description: Skrócona instrukcja transferowania obiektów do i z usługi Azure Blob Storage za pomocą języka PHP
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: php
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 790c6a372021542daa1098e94209c91b7bcecfd5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149459"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726389"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Transferowanie obiektów do i z usługi Azure Blob Storage za pomocą języka PHP
 Dzięki tej skróconej instrukcji dowiesz się, w jaki sposób za pomocą języka PHP przekazywać, pobierać i wyświetlać listę blokowych obiektów blob w kontenerze usługi Azure Blob Storage. 
@@ -124,7 +122,7 @@ Ta sekcja poświęcona jest konfigurowaniu wystąpienia klienta usługi Azure St
 
 Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob. Blokowe obiekty blob są używane najczęściej i dlatego zostały użyte w tym przewodniku Szybki start.  
 
-Aby przekazać plik do obiektu blob, uzyskaj pełną ścieżkę pliku, łącząc nazwę katalogu i nazwę pliku na dysku lokalnym. Następnie możesz przekazać plik do określonej ścieżki przy użyciu metody **createBlockBlob()**. 
+Aby przekazać plik do obiektu blob, uzyskaj pełną ścieżkę pliku, łącząc nazwę katalogu i nazwę pliku na dysku lokalnym. Następnie możesz przekazać plik do określonej ścieżki przy użyciu metody **createBlockBlob()** . 
 
 Przykładowy kod pobiera lokalny plik i przekazuje go do platformy Azure. W tym kodzie plik jest przechowywany pod nazwą **myfile**, a nazwa obiektu blob to **fileToUpload**. Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartblobs**.
 
@@ -143,11 +141,11 @@ Przykładowy kod pobiera lokalny plik i przekazuje go do platformy Azure. W tym 
     $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 ```
 
-Aby wykonać częściową aktualizację zawartości blokowego obiektu blob, użyj metody **createblocklist()**. Blokowe obiekty blob mogą mieć rozmiar nawet do 4,7 TB i mogą to być dowolne pliki, od arkuszy kalkulacyjnych programu Excel po duże pliki wideo. Stronicowe obiekty blob są używane głównie do tworzenia plików VHD służących do obsługi maszyn wirtualnych IaaS. Uzupełnialne obiekty blob są używane do rejestrowania, na przykład w sytuacji, w której konieczny jest zapis do pliku, a następnie dodawanie kolejnych informacji. Uzupełnianego obiektu blob należy używać w ramach pojedynczego modelu zapisywania. Większość obiektów przechowywanych w usłudze Blob Storage to blokowe obiekty blob.
+Aby wykonać częściową aktualizację zawartości blokowego obiektu blob, użyj metody **createblocklist()** . Blokowe obiekty blob mogą mieć rozmiar nawet do 4,7 TB i mogą to być dowolne pliki, od arkuszy kalkulacyjnych programu Excel po duże pliki wideo. Stronicowe obiekty blob są używane głównie do tworzenia plików VHD służących do obsługi maszyn wirtualnych IaaS. Uzupełnialne obiekty blob są używane do rejestrowania, na przykład w sytuacji, w której konieczny jest zapis do pliku, a następnie dodawanie kolejnych informacji. Uzupełnianego obiektu blob należy używać w ramach pojedynczego modelu zapisywania. Większość obiektów przechowywanych w usłudze Blob Storage to blokowe obiekty blob.
 
 ### <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Pobierz listę plików w kontenerze, używając metody **listBlobs()**. Poniższy kod umożliwia pobranie listy obiektów blob, a następnie przetwarza je w pętli, wyświetlając nazwy obiektów blob odnalezionych w kontenerze.  
+Pobierz listę plików w kontenerze, używając metody **listBlobs()** . Poniższy kod umożliwia pobranie listy obiektów blob, a następnie przetwarza je w pętli, wyświetlając nazwy obiektów blob odnalezionych w kontenerze.  
 
 ```PHP
     $listBlobsOptions = new ListBlobsOptions();
@@ -176,7 +174,7 @@ Metoda **getBlob()** umożliwia pobranie zawartości obiektów blob. Poniższy k
 ```
 
 ### <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym przewodnikiem Szybki start, możesz usunąć cały kontener, korzystając z metody **deleteContainer()**. Jeśli utworzone pliki nie są już potrzebne, możesz użyć metody **deleteBlob()**, aby je usunąć.
+Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym przewodnikiem Szybki start, możesz usunąć cały kontener, korzystając z metody **deleteContainer()** . Jeśli utworzone pliki nie są już potrzebne, możesz użyć metody **deleteBlob()** , aby je usunąć.
 
 ```PHP
     // Delete blob.
@@ -204,7 +202,7 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji PHP z magazynem obi
 - W witrynie GitHub wyświetl [kod źródłowy biblioteki klienta PHP](https://github.com/Azure/azure-storage-php) dla usługi Azure Storage, a następnie pobierz i zainstaluj go.
 - Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob) napisanymi przy użyciu biblioteki klienta PHP.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
  
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka PHP. Aby dowiedzieć się więcej o pracy z językiem PHP, przejdź do naszego Centrum deweloperów języka PHP.
 

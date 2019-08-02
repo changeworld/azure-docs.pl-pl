@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 13ae1b74acbcab8d623c24d6a7b8d7e1355b80e8
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: bbce41271914df4bb8a75804bc66ae538fe766fa
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227151"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716765"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informacje o dostosowywaniu interfejsu użytkownika w programie Azure Active Directory B2C
 
@@ -124,7 +124,7 @@ W poniższej tabeli wymieniono fragmenty kodu HTML, które Azure AD B2C scalane 
 
 ## <a name="how-do-i-localize-content"></a>Jak mogę lokalizować zawartości?
 
-Zawartość HTML można zlokalizować, włączając [Dostosowywanie języka](active-directory-b2c-reference-language-customization.md) w dzierżawie Azure AD B2C. Włączenie tej funkcji zezwala Azure AD B2C na przekazywanie do punktu końcowego parametru `ui-locales` Open ID Connect. Twój serwer zawartości może użyć tego parametru, aby udostępnić strony HTML specyficzne dla języka.
+Zawartość HTML można zlokalizować, włączając [Dostosowywanie języka](active-directory-b2c-reference-language-customization.md) w dzierżawie Azure AD B2C. Włączenie tej funkcji umożliwia Azure AD B2C przekazanie parametru `ui-locales` OpenID Connect Connect do punktu końcowego. Twój serwer zawartości może użyć tego parametru, aby udostępnić strony HTML specyficzne dla języka.
 
 Zawartość można ściągnąć z różnych miejsc w oparciu o używane ustawienia regionalne. W punkcie końcowym z obsługą mechanizmu CORS można skonfigurować strukturę folderów, aby hostować zawartość dla określonych języków. Jeśli używasz wartości wieloznacznej {Culture: RFC5646}, nastąpi wywołanie tego samego. Na przykład identyfikator URI strony niestandardowej może wyglądać następująco `https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html`. Możesz załadować stronę w języku francuskim, pobierając zawartość z`https://contoso.blob.core.windows.net/fr/myHTML/unified.html`
 
@@ -132,7 +132,7 @@ Zawartość można ściągnąć z różnych miejsc w oparciu o używane ustawien
 
 Przykłady dostosowywania można pobrać i przejrzeć te [przykładowe pliki szablonów](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Jeśli używasz przepływów użytkowników, możesz rozpocząć Dostosowywanie interfejsu użytkownika przy użyciu samouczka: [Dostosuj interfejs użytkownika aplikacji w Azure Active Directory B2C](tutorial-customize-ui.md).
 - Jeśli używasz zasad niestandardowych, możesz rozpocząć Dostosowywanie interfejsu użytkownika przy użyciu artykułu: [Dostosuj interfejs użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).

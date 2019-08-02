@@ -1,18 +1,18 @@
 ---
 title: Informacje o kopii zapasowej maszyny wirtualnej platformy Azure
 description: Dowiedz się więcej o usłudze Kopia zapasowa maszyny wirtualnej platformy Azure i zanotuj niektóre najlepsze rozwiązania.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: raynew
-ms.openlocfilehash: bf6aa07319b8029744a5c8898a4104d330fbb1d1
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7a470674fa9ccdde2b33bb33bfb52bead1822895
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465215"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639732"
 ---
 # <a name="about-azure-vm-backup"></a>Informacje o kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -111,8 +111,8 @@ Te typowe scenariusze mogą mieć wpływ na łączny czas wykonywania kopii zapa
 Podczas konfigurowania kopii zapasowych maszyn wirtualnych Sugerujemy następujące rozwiązania:
 
 - Zmodyfikuj domyślne czasy harmonogramu, które są ustawiane w ramach zasad. Na przykład jeśli domyślny czas w zasadach wynosi 12:00, Zwiększ czas trwania o kilka minut, aby zasoby były optymalnie używane.
-- W przypadku tworzenia kopii zapasowych maszyn wirtualnych korzystających z usługi Premium Storage zalecamy uruchomienie najnowszej wersji Azure Backup ([natychmiastowego przywracania](backup-instant-restore-capability.md)). Jeśli nie korzystasz z najnowszej wersji, kopia zapasowa przydzieli około 50% całkowitego miejsca do magazynowania. Usługa tworzenia kopii zapasowych wymaga tego miejsca do skopiowania migawki na to samo konto magazynu i przeniesienia jej do magazynu.
 - Jeśli przywracasz maszyny wirtualne z jednego magazynu, zdecydowanie zalecamy użycie różnych [kont magazynu ogólnego przeznaczenia w wersji 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) , aby upewnić się, że docelowe konto magazynu nie zostanie ograniczone. Na przykład każda maszyna wirtualna musi mieć inne konto magazynu. Na przykład jeśli zostaną przywrócone 10 maszyn wirtualnych, użyj 10 różnych kont magazynu.
+- W przypadku tworzenia kopii zapasowych maszyn wirtualnych korzystających z usługi Premium Storage z natychmiastowym przywróceniem zaleca się alokowanie *50%* wolnego miejsca w łącznym przydzielonym miejscu do magazynowania, które jest wymagane **tylko** dla pierwszej kopii zapasowej. Ilość wolnego miejsca na 50% nie jest wymagana w przypadku kopii zapasowych po wykonaniu pierwszej kopii zapasowej
 - Przywracanie z warstwy magazynowania ogólnego przeznaczenia V1 (migawka) zostanie ukończone w ciągu kilku minut, ponieważ migawka znajduje się na tym samym koncie magazynu. Przywrócenie z warstwy magazynu ogólnego przeznaczenia w wersji 2 (magazyn) może zająć kilka godzin. W przypadkach, gdy dane są dostępne w magazynie ogólnego przeznaczenia w wersji 1, zalecamy użycie funkcji natychmiastowego [przywracania](backup-instant-restore-capability.md) , aby przyspieszyć przywracanie. (Jeśli dane muszą zostać przywrócone z magazynu, zajmie więcej czasu).
 - Limit liczby dysków na konto magazynu jest określany względem tego, w jakim stopniu uzyskuje się dostęp do dysków przez aplikacje działające na maszynie wirtualnej infrastruktura jako usługa (IaaS). Ogólnie rzecz biorąc, jeśli na jednym koncie magazynu znajdują się od 5 do 10 dysków lub więcej, należy zrównoważyć obciążenie przez przeniesienie niektórych dysków do oddzielnych kont magazynu.
 
@@ -139,6 +139,6 @@ Dysk danych 2 | 4095 GB | 0 GB
 
 Rzeczywistą wielkością maszyny wirtualnej w tym przypadku jest 17 GB + 30 GB + 0 GB = 47 GB. Ten rozmiar chronionego wystąpienia (47 GB) stanowi podstawę dla rachunku miesięcznego. Wraz ze wzrostem ilości danych w maszynie wirtualnej rozmiar chronionego wystąpienia używany do zmiany rozliczeń jest zgodny.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz [Przygotuj się do utworzenia kopii zapasowej maszyny wirtualnej platformy Azure](backup-azure-arm-vms-prepare.md).

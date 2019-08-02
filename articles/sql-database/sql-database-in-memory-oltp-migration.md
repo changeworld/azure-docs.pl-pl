@@ -1,6 +1,6 @@
 ---
-title: Przetwarzanie OLTP danych w pamięci zwiększa wydajności transakcji SQL | Dokumentacja firmy Microsoft
-description: Przyjąć OLTP w pamięci, aby zwiększyć wydajność transakcji w istniejącej bazy danych SQL.
+title: Przetwarzanie OLTP w pamięci zwiększa wydajność programu SQL transakcja | Microsoft Docs
+description: Wdrażaj OLTP w pamięci, aby zwiększyć wydajność transakcyjną w istniejącej bazie danych SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,56 +10,55 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
-manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 03e5540e34cd99d2b201bc763f13b42c7fa20bf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e869b2bba3bd64b58d9063e9445889ef709efdc3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785314"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567937"
 ---
-# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Użyj OLTP w pamięci, aby poprawić wydajność aplikacji w usłudze SQL Database
+# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Użycie OLTP w pamięci w celu poprawy wydajności aplikacji w SQL Database
 
-[Przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) pozwala zwiększyć wydajność przetwarzania transakcji, pozyskiwania danych i scenariuszy danych przejściowych w [w warstwie Premium i krytyczne dla działania firmy](sql-database-service-tiers-vcore.md) baz danych bez zwiększania warstwę cenową. 
+[OLTP w pamięci](sql-database-in-memory.md) może służyć do ulepszania wydajności przetwarzania transakcji, pozyskiwania danych i przejściowych scenariuszy danych w [warstwach Premium i krytyczne dla działania firmy](sql-database-service-tiers-vcore.md) baz danych bez zwiększania warstwy cenowej. 
 
 > [!NOTE] 
-> Dowiedz się, jak [kworum rozwiązanie quorum zwiększa dwukrotnie obciążenie klucza bazy danych podczas obniżania jednostek DTU o 70% z usługą SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> Dowiedz się [, jak kworum podwaja obciążenie bazy danych przy jednoczesnym obniżeniu liczby jednostek DTU o 70% z SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 
-Wykonaj następujące kroki, aby wdrażanie przetwarzania OLTP w pamięci w istniejącej bazy danych.
+Wykonaj następujące kroki, aby wdrożyć OLTP w pamięci w istniejącej bazie danych.
 
-## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Krok 1: Upewnij się, że używasz bazę danych warstwy Premium i krytyczne dla działania firmy
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Krok 1: Upewnij się, że korzystasz z bazy danych w warstwie Premium i Krytyczne dla działania firmy
 
-Przetwarzanie OLTP danych w pamięci jest obsługiwana tylko w przypadku baz danych w warstwie Premium i krytyczne dla działania firmy. W pamięci jest obsługiwany, jeśli zwrócony wynik wyniesie 1 (nie 0):
+Przetwarzanie OLTP w pamięci jest obsługiwane tylko w bazach danych w warstwach Premium i Krytyczne dla działania firmy. W pamięci jest obsługiwana, jeśli zwrócony wynik wynosi 1 (nie 0):
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 ```
 
-*XTP* oznacza *Extreme przetwarzanie transakcji*
+*XTP* oznacza *Przetwarzanie transakcji Extreme*
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Krok 2: Zidentyfikować obiekty do migracji do OLTP w pamięci
-SSMS obejmuje **przegląd analizy wydajności transakcji** raport, który możesz uruchomić względem bazy danych z aktywnego obciążenia. Raport identyfikuje tabel i procedur składowanych, które nadają się do migracji do OLTP w pamięci.
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Krok 2: Identyfikowanie obiektów do migracji do przetwarzania OLTP w pamięci
+Program SSMS zawiera raport z **omówieniem analizy wydajności transakcji** , który można uruchomić względem bazy danych z aktywnym obciążeniem. Raport identyfikuje tabele i procedury składowane, które są kandydatami do migracji do przetwarzania OLTP w pamięci.
 
-W programie SSMS podczas generowania raportu:
+W programie SSMS w celu wygenerowania raportu:
 
-* W **Eksplorator obiektów**, kliknij prawym przyciskiem myszy węzeł bazy danych.
-* Kliknij przycisk **raporty** > **raportów standardowych** > **przegląd analizy wydajności transakcji**.
+* W **Eksplorator obiektów**kliknij prawym przyciskiem myszy węzeł bazy danych.
+* Kliknij kolejno pozycje **raporty** > **standardowe raporty** > **Analiza wydajności — Omówienie**.
 
-Aby uzyskać więcej informacji, zobacz [Określanie, czy tabela przechowywane procedury powinno być przenoszone do OLTP w pamięci](https://msdn.microsoft.com/library/dn205133.aspx).
+Aby uzyskać więcej informacji, zobacz [Określanie, czy tabela lub procedura składowana powinna być przypisana do OLTP w pamięci](https://msdn.microsoft.com/library/dn205133.aspx).
 
-## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: Utwórz bazę danych porównywalne testu
-Załóżmy, że raport wskazuje, że baza danych zawiera tabelę, która używającym konwertowane do tabeli zoptymalizowanej pod kątem pamięci. Firma Microsoft zaleca, należy najpierw przetestować potwierdzenia wskazanie przez testowanie.
+## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: Tworzenie porównywalnej bazy danych testowych
+Załóżmy, że raport wskazuje, że baza danych ma tabelę, która mogłaby skorzystać z konwersji na tabelę zoptymalizowaną pod kątem pamięci. Zalecamy, aby najpierw przeprowadzić test w celu potwierdzenia wskazywania przez testowanie.
 
-Należy kopię produkcyjnej bazy danych. Bazy danych testu powinien być na tym samym poziomie warstwy usługi jako produkcyjnej bazy danych.
+Potrzebna jest testowa kopia produkcyjnej bazy danych. Testowa baza danych powinna znajdować się na tym samym poziomie warstwy usług, co w produkcyjnej bazie danych.
 
-Aby ułatwić testowanie, dostosować test bazy danych w następujący sposób:
+Aby ułatwić testowanie, Dostosuj bazę danych testowych w następujący sposób:
 
-1. Łączenie z bazą danych testów przy użyciu programu SSMS.
-2. Aby uniknąć konieczności opcji WITH (SNAPSHOT) w zapytaniach, należy ustawić opcji bazy danych, jak pokazano w następującej instrukcji języka T-SQL:
+1. Połącz się z testową bazą danych za pomocą programu SSMS.
+2. Aby uniknąć potrzeby opcji WITH (migawka) w zapytaniach, należy ustawić opcję bazy danych, jak pokazano w następującej instrukcji języka T-SQL:
    
    ```
    ALTER DATABASE CURRENT
@@ -68,38 +67,38 @@ Aby ułatwić testowanie, dostosować test bazy danych w następujący sposób:
    ```
 
 ## <a name="step-4-migrate-tables"></a>Krok 4: Migrowanie tabel
-Należy utworzyć i wypełnić kopię zoptymalizowane pod kątem pamięci tabeli, którą chcesz przetestować. Można go utworzyć przy użyciu:
+Należy utworzyć i wypełnić kopię zoptymalizowaną pod kątem pamięci tabeli, która ma zostać przetestowana. Można go utworzyć przy użyciu jednej z:
 
-* Przydatny Kreator optymalizacji pamięci w programie SSMS.
-* Ręczne języka T-SQL.
+* Kreator przydatnej optymalizacji pamięci w programie SSMS.
+* Ręczna instrukcja T-SQL.
 
 #### <a name="memory-optimization-wizard-in-ssms"></a>Kreator optymalizacji pamięci w programie SSMS
 Aby użyć tej opcji migracji:
 
-1. Połącz z bazą danych testów za pomocą programu SSMS.
-2. W **Eksplorator obiektów**, kliknij prawym przyciskiem myszy w tabeli, a następnie kliknij **Advisor optymalizacji pamięci**.
+1. Połącz się z testową bazą danych za pomocą programu SSMS.
+2. W **Eksplorator obiektów**kliknij prawym przyciskiem myszy tabelę, a następnie kliknij pozycję **Doradca optymalizacji pamięci**.
    
-   * **Tabeli pamięci Optymalizator Advisor** zostanie wyświetlony Kreator.
-3. W kreatorze kliknij pozycję **weryfikacji migracji** (lub **dalej** przycisk) aby zobaczyć, czy tabela zawiera nieobsługiwane funkcje, które nie są obsługiwane w tabelach zoptymalizowanych pod kątem pamięci. Aby uzyskać więcej informacji, zobacz:
+   * Zostanie wyświetlony Kreator **doradcy pamięci tabeli** .
+3. W Kreatorze kliknij pozycję **Walidacja migracji** (lub przycisk **dalej** ), aby sprawdzić, czy tabela zawiera jakiekolwiek Nieobsługiwane funkcje, które nie są obsługiwane w tabelach zoptymalizowanych pod kątem pamięci. Aby uzyskać więcej informacji, zobacz:
    
-   * *Lista kontrolna optymalizacji pamięci* w [Advisor optymalizacji pamięci](https://msdn.microsoft.com/library/dn284308.aspx).
-   * [Konstrukcji języka Transact-SQL, które nie są obsługiwane przez OLTP w pamięci](https://msdn.microsoft.com/library/dn246937.aspx).
-   * [Migrowanie do OLTP w pamięci](https://msdn.microsoft.com/library/dn247639.aspx).
-4. Jeśli tabela nie ma żadnych nieobsługiwanych funkcji, doradcy przeprowadzać rzeczywiste schematu i migracji danych dla Ciebie.
+   * *Lista kontrolna optymalizacji pamięci* w [klasyfikatorze optymalizacji pamięci](https://msdn.microsoft.com/library/dn284308.aspx).
+   * [Konstrukcje języka Transact-SQL nie są obsługiwane przez OLTP w pamięci](https://msdn.microsoft.com/library/dn246937.aspx).
+   * [Migrowanie do przetwarzania OLTP w pamięci](https://msdn.microsoft.com/library/dn247639.aspx).
+4. Jeśli tabela nie zawiera żadnych nieobsługiwanych funkcji, Klasyfikator może wykonać rzeczywiste migracje schematu i danych.
 
-#### <a name="manual-t-sql"></a>Ręczne języka T-SQL
+#### <a name="manual-t-sql"></a>Ręczna instrukcja T-SQL
 Aby użyć tej opcji migracji:
 
-1. Połączenia z bazą danych testów przy użyciu programu SSMS (lub podobnej użyteczności).
-2. Uzyskaj kompletny skrypt języka T-SQL w tabeli i jej indeksów.
+1. Połącz się z testową bazą danych za pomocą programu SSMS (lub podobnego narzędzia).
+2. Uzyskaj kompletny skrypt T-SQL dla tabeli i jej indeksów.
    
    * W programie SSMS kliknij prawym przyciskiem myszy węzeł tabeli.
-   * Kliknij przycisk **skrypt tabeli jako** > **utworzyć** > **okno nowego zapytania**.
-3. W oknie skryptu Dodaj WITH (MEMORY_OPTIMIZED = ON) do instrukcji CREATE TABLE.
-4. W przypadku indeksu CLUSTERED, można go zmienić na NONCLUSTERED.
-5. Za pomocą SP_RENAME, Zmień nazwę istniejącej tabeli.
-6. Utwórz nowa kopia zoptymalizowane pod kątem pamięci tabeli poprzez uruchomienie skryptu CREATE TABLE edytowany.
-7. Kopiuj dane do tabeli zoptymalizowanej pod kątem pamięci przy użyciu INSERT... WYBIERZ POZYCJĘ * DO:
+   * Kliknij pozycję **tabela skryptów,**  > **Aby** > utworzyć**nowe okno zapytania**.
+3. W oknie Skrypt Dodaj wyrażenie WITH (MEMORY_OPTIMIZED = ON) do instrukcji CREATE TABLE.
+4. Jeśli istnieje indeks KLASTROWANY, zmień go na nieklastrowany.
+5. Zmień nazwę istniejącej tabeli przy użyciu SP_RENAME.
+6. Utwórz nową, zoptymalizowaną pod kątem pamięci kopię tabeli, uruchamiając edytowany skrypt CREATE TABLE.
+7. Skopiuj dane do tabeli zoptymalizowanej pod kątem pamięci za pomocą instrukcji INSERT... WYBIERZ * W:
 
 ```
 INSERT INTO <new_memory_optimized_table>
@@ -107,19 +106,19 @@ INSERT INTO <new_memory_optimized_table>
 ```
 
 
-## <a name="step-5-optional-migrate-stored-procedures"></a>Krok 5 (opcjonalnie): Migrowanie procedur składowanych
-Funkcja w pamięci, można również zmodyfikować procedury składowanej w celu zwiększenia wydajności.
+## <a name="step-5-optional-migrate-stored-procedures"></a>Krok 5 (opcjonalny): Migruj procedury składowane
+Funkcja w pamięci może również zmodyfikować procedurę przechowywaną w celu zwiększenia wydajności.
 
-### <a name="considerations-with-natively-compiled-stored-procedures"></a>Zagadnienia dotyczące za pomocą procedur składowanych skompilowanych w sposób macierzysty
-Procedury składowanej skompilowanej w sposób macierzysty musi mieć następujące opcje w jej klauzula języka T-SQL przy użyciu:
+### <a name="considerations-with-natively-compiled-stored-procedures"></a>Zagadnienia dotyczące procedur składowanych skompilowanych w sposób macierzysty
+Procedura składowana skompilowana w sposób macierzysty musi mieć następujące opcje w klauzuli T-SQL WITH:
 
-* OPCJĘ WITH NATIVE_COMPILATION
-* SCHEMABINDING: co oznacza, tabel, które procedury składowanej nie może mieć ich definicje kolumn, zmienić w dowolny sposób, które będą wpływać na procedury składowanej, chyba że usuniesz procedury składowanej.
+* NATIVE_COMPILATION
+* SCHEMAbinding: oznacza tabele, których definicje kolumn w procedurze składowanej nie mogą zostać zmienione w jakikolwiek sposób, który mógłby mieć wpływ na procedurę składowaną, chyba że porzucasz procedurę składowaną.
 
-Moduł macierzysty muszą używać jednej big [bloków ATOMIC](https://msdn.microsoft.com/library/dn452281.aspx) zarządzania transakcji. Nie ma żadnej roli, rozpocząć transakcji jawnej lub ROLLBACK TRANSACTION. Jeśli kod wykryje naruszenie reguły biznesowej, może zostać przerwany atomic bloku [THROW](https://msdn.microsoft.com/library/ee677615.aspx) instrukcji.
+Moduł macierzysty musi używać jednego dużego [bloku](https://msdn.microsoft.com/library/dn452281.aspx) do zarządzania transakcjami. Brak roli dla jawnej BEGIN TRANSACTION lub dla transakcji WYCOFYWANia. Jeśli kod wykrywa naruszenie reguły biznesowej, może przerwać blok niepodzielny za pomocą instrukcji [throw](https://msdn.microsoft.com/library/ee677615.aspx) .
 
-### <a name="typical-create-procedure-for-natively-compiled"></a>Typowa procedura tworzenia dla skompilowanych w sposób macierzysty
-Zazwyczaj języka T-SQL, aby utworzyć procedury składowanej skompilowanej w sposób macierzysty są podobne do następującego szablonu:
+### <a name="typical-create-procedure-for-natively-compiled"></a>Typowa procedura tworzenia dla skompilowanej natywnie
+Zazwyczaj T-SQL do utworzenia procedury składowanej skompilowanej w sposób macierzysty jest podobny do następującego szablonu:
 
 ```
 CREATE PROCEDURE schemaname.procedurename
@@ -134,43 +133,43 @@ CREATE PROCEDURE schemaname.procedurename
         END;
 ```
 
-* Dla TRANSACTION_ISOLATION_LEVEL MIGAWKA jest najbardziej typowych wartości dla procedury składowanej skompilowanej w sposób macierzysty. Jednak podzbiór inne wartości są również obsługiwane:
+* W przypadku TRANSACTION_ISOLATION_LEVEL migawka jest najbardziej powszechną wartością dla procedury składowanej skompilowanej w sposób macierzysty. Jednak obsługiwane są również podzbiór innych wartości:
   
   * ODCZYT POWTARZALNY
   * SERIALIZABLE
-* Wartość języka musi być obecny w widoku sys.languages.
+* Wartość języka musi być obecna w widoku sys. Languages.
 
 ### <a name="how-to-migrate-a-stored-procedure"></a>Jak przeprowadzić migrację procedury składowanej
-Procedura migracji jest następująca:
+Kroki migracji są następujące:
 
-1. Uzyskaj skryptu CREATE PROCEDURE regularne interpretowane procedury składowanej.
-2. Należy zmodyfikować jego nagłówka do dopasowywania poprzedni szablon.
-3. Należy upewnić się, czy procedura składowana kod T-SQL korzysta z żadnych funkcji, które nie są obsługiwane dla procedur składowanych skompilowanych w sposób macierzysty. Jeśli to konieczne, należy zaimplementować rozwiązania problemu.
+1. Uzyskaj skrypt procedury tworzenia do zwykłej interpretacji procedury składowanej.
+2. Napisz ponownie nagłówek, aby dopasować poprzedni szablon.
+3. Należy upewnić się, czy kod T-SQL procedury składowanej korzysta z funkcji, które nie są obsługiwane przez procedury składowane skompilowane w sposób macierzysty. Zaimplementuj obejścia w razie potrzeby.
    
-   * Aby uzyskać szczegółowe informacje, zobacz [problemy z migracją natywnie kompilowane składowane](https://msdn.microsoft.com/library/dn296678.aspx).
-4. Zmień nazwę starego procedury składowanej przy użyciu SP_RENAME. Lub po prostu usunąć ją.
-5. Uruchom skrypt edytowanych Tworzenie procedury języka T-SQL.
+   * Aby uzyskać szczegółowe informacje, zobacz [problemy z migracją dla procedur składowanych skompilowanych w](https://msdn.microsoft.com/library/dn296678.aspx)sposób macierzysty.
+4. Zmień nazwę starej procedury składowanej przy użyciu SP_RENAME. Lub po prostu upuść go.
+5. Uruchom edytowaną procedurę tworzenia skryptu T-SQL.
 
 ## <a name="step-6-run-your-workload-in-test"></a>Krok 6: Uruchamianie obciążenia w teście
-Uruchamianie obciążenia w bazie danych testowych podobne do obciążenia, które jest uruchamiane w produkcyjnej bazie danych. To powinno ujawnić, przyrost wydajności realizowane za korzystanie z funkcji w pamięci dla tabel i procedur składowanych.
+Uruchom obciążenie w testowej bazie danych, która jest podobna do obciążenia działającego w produkcyjnej bazie danych. Powinno to ujawnić wzrost wydajności osiągnięty przez użycie funkcji w pamięci dla tabel i procedur składowanych.
 
-Atrybuty głównych obciążenia to:
+Główne atrybuty obciążenia są następujące:
 
-* Liczba równoczesnych połączeń.
-* Współczynnik odczyt/zapis.
+* Liczba jednoczesnych połączeń.
+* Współczynnik odczytu i zapisu.
 
-Aby dostosować i uruchomić test obciążenia, należy wziąć pod uwagę przy użyciu narzędzia przydatne ostress.exe przedstawionych [tutaj](sql-database-in-memory.md).
+W celu dopasowania i uruchomienia obciążenia testowego należy rozważyć użycie narzędzia ostress. exe, które zostało przedstawione w [tym miejscu](sql-database-in-memory.md).
 
-Aby zminimalizować opóźnienie sieci, należy uruchomić test w tym samym regionie platformy Azure geograficznym, gdy baza danych istnieje.
+Aby zminimalizować opóźnienie sieci, należy uruchomić test w tym samym regionie geograficznym platformy Azure, w którym znajduje się baza danych.
 
-## <a name="step-7-post-implementation-monitoring"></a>Krok 7: Po wdrożeniu monitorowania
-Należy rozważyć monitorowanie wydajności efekty swojej implementacji w pamięci w środowisku produkcyjnym:
+## <a name="step-7-post-implementation-monitoring"></a>Krok 7: Monitorowanie po implementacji
+Rozważ monitorowanie efektów wydajności implementacji w pamięci w środowisku produkcyjnym:
 
-* [Monitorowanie magazynu w pamięci](sql-database-in-memory-oltp-monitoring.md).
+* [Monitoruj magazyn w pamięci](sql-database-in-memory-oltp-monitoring.md).
 * [Monitorowanie usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania](sql-database-monitoring-with-dmvs.md)
 
-## <a name="related-links"></a>Powiązane linki
-* [(Optymalizacja w pamięci) OLTP w pamięci](https://msdn.microsoft.com/library/dn133186.aspx)
+## <a name="related-links"></a>Linki pokrewne
+* [Przetwarzanie OLTP w pamięci (Optymalizacja w pamięci)](https://msdn.microsoft.com/library/dn133186.aspx)
 * [Wprowadzenie do procedur składowanych skompilowanych w sposób macierzysty](https://msdn.microsoft.com/library/dn133184.aspx)
 * [Klasyfikator optymalizacji pamięci](https://msdn.microsoft.com/library/dn284308.aspx)
 

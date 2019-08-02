@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 15fd8593f950e0f553d1b7ca34ee785692043cad
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: cfdc28486cf254c4dd808824ab167489818376ab
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304358"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619598"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -77,7 +77,7 @@ Z [włączoną integracją Application Insights](#enable-application-insights-in
 
 Można zobaczyć, że obie strony mają **uruchomioną Application Insights** link do zapytania Application Insights Analytics pobierającego dane.
 
-![Uruchom w Application Insights](media/functions-monitoring/run-in-ai.png)
+![Uruchom w usłudze Application Insights](media/functions-monitoring/run-in-ai.png)
 
 Zostanie wyświetlone następujące zapytanie. Można zobaczyć, że lista wywołań jest ograniczona do 30 ostatnich dni. Lista pokazuje nie więcej niż 20 wierszy (`where timestamp > ago(30d) | take 20`). Lista szczegóły wywołania jest w ciągu ostatnich 30 dni bez limitu.
 
@@ -152,9 +152,9 @@ Application Insights można używać bez żadnej konfiguracji niestandardowej. K
 
 Rejestrator Azure Functions obejmuje *kategorię* dla każdego dziennika. Kategoria wskazuje, która część kodu środowiska uruchomieniowego lub kod funkcji zapisał dziennik. 
 
-Środowisko uruchomieniowe funkcji tworzy dzienniki z kategorią rozpoczynającą się od "host". Dzienniki "funkcja uruchomiona," "funkcja" i "ukończona funkcja" mają kategorię "host. wykonawca". 
+Środowisko uruchomieniowe funkcji tworzy dzienniki z kategorią rozpoczynającą się od "host". W wersji `function started`1. x, `function executed`, i `function completed` dzienniki mają kategorię `Host.Executor`. Począwszy od wersji 2. x, te dzienniki mają kategorię `Function.<YOUR_FUNCTION_NAME>`.
 
-W przypadku pisania dzienników w kodzie funkcji ich kategoria jest "Function".
+W przypadku pisania dzienników w kodzie funkcji kategoria jest `Function` w wersji 1. x środowiska uruchomieniowego funkcji. W wersji 2. x kategoria to `Function.<YOUR_FUNCTION_NAME>.User`.
 
 ### <a name="log-levels"></a>Poziomy dziennika
 
@@ -278,7 +278,7 @@ Wszystkie te dzienniki są zapisywane na `Information` poziomie. W przypadku fil
 
 ### <a name="other-categories"></a>Inne kategorie
 
-Wszystkie dzienniki dla kategorii innych niż te, które są już wymienione, są  dostępne w tabeli TRACES w Application Insights.
+Wszystkie dzienniki dla kategorii innych niż te, które są już wymienione, są dostępne w tabeli TRACES w Application Insights.
 
 ![zapytanie śledzenia](media/functions-monitoring/analytics-traces.png)
 
@@ -656,7 +656,7 @@ Po włączeniu Application Insights Wyłącz wbudowane rejestrowanie korzystają
 
 Aby wyłączyć wbudowane rejestrowanie, Usuń `AzureWebJobsDashboard` ustawienie aplikacji. Aby uzyskać informacje dotyczące sposobu usuwania ustawień aplikacji w Azure Portal, zobacz sekcję **Ustawienia aplikacji** w temacie [jak zarządzać aplikacją funkcji](functions-how-to-use-azure-function-app-settings.md#settings). Przed usunięciem ustawienia aplikacji upewnij się, że żadne funkcje w tej samej aplikacji funkcji nie używają ustawienia dla wyzwalaczy lub powiązań usługi Azure Storage.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji, zobacz następujące zasoby:
 

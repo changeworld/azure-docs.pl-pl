@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 707f7f47b050d22d0bd225cf412181902ae84f50
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ce6fc5d32fc9e17499a56cec7f4db2849370a1ec
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67974460"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566721"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Skalowanie warstwy usług dla maksymalnie 100 TB
 
@@ -170,7 +169,7 @@ Warstwa skalowania Azure SQL Database jest obecnie dostępna w następujących r
 - Korea Południowa
 - Środkowo-północne stany USA
 - Europa Północna
-- Republika Południowej Afryki (północ)
+- Północna Republika Południowej Afryki
 - Środkowo-południowe stany USA
 - Azja Południowo-Wschodnia
 - Południowe Zjednoczone Królestwo
@@ -205,7 +204,7 @@ Aby poprosić o możliwość tworzenia baz danych w regionach, których nie ma n
 
 9. Wypełnij następujący szablon:
 
-    ![Szczegóły przydziału](media/sql-database-service-tier-hyperscale/whitelist-request-screen-3.png)
+    ![Szczegóły limitu przydziału](media/sql-database-service-tier-hyperscale/whitelist-request-screen-3.png)
 
     Podaj następujące informacje w szablonie
 
@@ -230,7 +229,7 @@ Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na p
 | Przywracanie bazy danych bez skalowania do Hypserscale i na odwrót | Nie można przywrócić bazy danych w ramach skalowania do bazy danych bez skalowania ani przywracania bazy danych bez skalowania do bazy danych w skali.|
 | Jeśli plik bazy danych powiększa się podczas migracji ze względu na aktywne obciążenie i przekroczy 1 TB na granicę pliku, migracja kończy się niepowodzeniem | Środki zaradcze <br> — Jeśli to możliwe, należy przeprowadzić migrację bazy danych, gdy nie ma uruchomionego obciążenia aktualizacji.<br> -Spróbuj ponownie przeprowadzić migrację, dopóki nie zostanie przekroczona granica 1 TB podczas migracji.|
 | Wystąpienie zarządzane | Azure SQL Database wystąpienie zarządzane nie jest obecnie obsługiwane w bazach danych. |
-| Pule elastyczne |  Pule elastyczne nie są obecnie obsługiwane z użyciem funkcji wieloskalowania SQL Database.|
+| Elastyczne pule |  Pule elastyczne nie są obecnie obsługiwane z użyciem funkcji wieloskalowania SQL Database.|
 | Migracja do funkcji Moje skalowanie jest obecnie operacją jednokierunkową | Po przeprowadzeniu migracji bazy danych do warstwy usługi nie można migrować jej bezpośrednio na warstwę usług, która nie jest w skali. W obecnym czasie jedynym sposobem migrowania bazy danych z funkcji ze skalowaniem do nieze skalowania jest eksportowanie/importowanie przy użyciu pliku BACPAC.|
 | Migracja baz danych z trwałymi obiektami w pamięci | Funkcja przeskalowania obsługuje tylko nietrwałe obiekty w pamięci (typy tabel, natywne SPs i funkcje).  Trwałe tabele w pamięci i inne obiekty muszą zostać porzucone i odtworzone jako obiekty nieznajdujące się w pamięci przed migracją bazy danych do warstwy usługi.|
 | Zmień śledzenie danych | Nie będzie można używać funkcji śledzenia zmian danych z bazami danych z możliwością skalowania. |

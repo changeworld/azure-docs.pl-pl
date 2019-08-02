@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: ef9c46c0b55f97b8931f16d751f1b1e6099e6c9d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8b25d2395811a2197aff6d653c5038a4380021e9
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328629"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669778"
 ---
 Do maszyny wirtualnej platformy Azure można dołączyć wiele dysków z danymi. Na podstawie celów skalowalności i wydajności dla dysków danych maszyny wirtualnej można określić liczbę i typ dysku, który trzeba spełnić wymagania dotyczące wydajności i pojemności.
 
@@ -18,12 +18,12 @@ Do maszyny wirtualnej platformy Azure można dołączyć wiele dysków z danymi.
 
 **W przypadku usługi Azure Managed disks:**
 
-W poniższej tabeli przedstawiono domyślne i maksymalne limity liczby zasobów na region na subskrypcję
+W poniższej tabeli przedstawiono domyślne i maksymalne limity liczby zasobów na region na subskrypcję. Nie ma żadnego limitu liczby Managed Disks, migawek i obrazów na grupę zasobów.  
 
 > | Resource | Limit domyślny  | Limit maksymalny |
 > | --- | --- | --- |
 > | Dyski zarządzane w warstwie Standardowa | 50,000 | 50,000 |
-> | SSD w warstwie Standardowa Managed disks | 50,000 | 50,000 |
+> | Zarządzane dyski SSD w warstwie Standardowa | 50,000 | 50,000 |
 > | Dyski zarządzane w warstwie Premium | 50,000 | 50,000 |
 > | Migawki Standard_LRS | 50,000 | 50,000 |
 > | Migawki Standard_ZRS | 50,000 | 50,000 |

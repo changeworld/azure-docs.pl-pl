@@ -1,28 +1,26 @@
 ---
 title: Jak używać magazynu kolejek w języku Python — Azure Storage
 description: Dowiedz się, w jaki sposób używać usługa kolejki platformy Azure z poziomu języka Python do tworzenia i usuwania kolejek oraz wstawiania, pobierania i usuwania komunikatów.
-services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.devlang: python
-ms.topic: article
-ms.date: 12/14/2018
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 12/14/2018
 ms.subservice: queues
-ms.openlocfilehash: 141999f4119ac92e2b8846477c50edf8fba027d0
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: 1ed084bfa0cf6879983e38ac6a8c5ab57e8948a8
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360028"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721352"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Jak używać Magazynu kolejek w języku Python
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym przewodniku pokazano, jak wykonywać typowe scenariusze za pomocą usługi Azure queue storage. Przykłady są zapisywane w języku Python i używają [Zestaw SDK Microsoft Azure Storage dla języka Python]. Omówione scenariusze obejmują **Wstawianie**, **wgląd**, **pobieranie**i **usuwanie** komunikatów w kolejce, a także **Tworzenie i usuwanie kolejek**. Aby uzyskać więcej informacji o kolejkach, zapoznaj się z sekcją [następne kroki].
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: Omówienie tworzenia interfejsu użytkownika aplikacji zarządzanych definicji dla platformy Azure | Dokumentacja firmy Microsoft
-description: Zawiera opis sposobu tworzenia definicji interfejsu użytkownika usługi Azure Managed Applications
+title: CreateUiDefitinion. JSON dla środowiska tworzenia aplikacji zarządzanej platformy Azure | Microsoft Docs
+description: Opisuje sposób tworzenia definicji interfejsu użytkownika dla Azure Managed Applications
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,20 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3d0a6d97440404904c041369a4631fdd3fb618b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50bbaf740a67d3830df2d0447b9522153cb8c93c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257565"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619084"
 ---
-# <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Tworzenie interfejsu użytkownika witryny Azure portal dla aplikacji zarządzanej
-Ten dokument wprowadza podstawowe pojęcia dotyczące pliku createUiDefinition.json. Azure portal używa tego pliku do generowania interfejsu użytkownika do tworzenia aplikacji zarządzanej.
+# <a name="createuidefitinionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefitinion. JSON dla środowiska tworzenia aplikacji zarządzanej przez platformę Azure
+W tym dokumencie przedstawiono podstawowe pojęcia dotyczące pliku **createUiDefinition. JSON** , który Azure Portal używany do definiowania interfejsu użytkownika podczas tworzenia zarządzanej aplikacji.
+
+Szablon jest następujący:
 
 ```json
 {
    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-   "handler": "Microsoft.Compute.MultiVm",
+   "handler": "Microsoft.Azure.CreateUIDef",
    "version": "0.1.2-preview",
    "parameters": {
       "basics": [ ],
@@ -38,30 +40,30 @@ Ten dokument wprowadza podstawowe pojęcia dotyczące pliku createUiDefinition.j
 
 CreateUiDefinition zawsze zawiera trzy właściwości: 
 
-* Program obsługi
+* jścia
 * version
 * parameters
 
-Dla zarządzanych aplikacji, procedura obsługi powinna zawsze być `Microsoft.Compute.MultiVm`, a najnowszą obsługiwaną wersję `0.1.2-preview`.
+Program obsługi powinien zawsze mieć `Microsoft.Azure.CreateUIDef`wartość, a Najnowsza obsługiwana wersja to `0.1.2-preview`.
 
-Schemat właściwości parametrów zależy od kombinacji obsługi i wersji. Dla zarządzanych aplikacji, są obsługiwane właściwości `basics`, `steps`, i `outputs`. Właściwości podstawy i kroki zawierają _elementy_ — takich jak pola tekstowe i list rozwijanych - mają być wyświetlane w witrynie Azure portal. Dane wyjściowe jest używana do mapowania wartości danych wyjściowych o określonych elementów do parametrów szablonu wdrożenia usługi Azure Resource Manager.
+Schemat właściwości Parameters zależy od kombinacji określonej procedury obsługi i wersji. W przypadku aplikacji zarządzanych obsługiwane właściwości to `basics`, `steps`i `outputs`. Właściwości podstawowe i kroki zawierają [elementy](create-uidefinition-elements.md) , takie jak pola tekstowe i listy rozwijane, do wyświetlenia w Azure Portal. Właściwość Outputs służy do mapowania wartości wyjściowych określonych elementów na parametry szablonu wdrażania Azure Resource Manager.
 
-W tym `$schema` jest zalecane, ale opcjonalne. Jeśli zostanie określony, wartość `version` musi odpowiadać wersji w ramach `$schema` identyfikatora URI.
+Włączenie `$schema` jest zalecane, ale opcjonalne. Jeśli jest określona, wartość `version` musi być zgodna z wersją `$schema` w identyfikatorze URI.
 
-Można użyć edytora JSON do tworzenia definicji interfejsu użytkownika lub piaskownicy definicji interfejsu użytkownika można użyć do tworzenia i definicji interfejsu użytkownika w wersji zapoznawczej. Aby uzyskać więcej informacji na temat piaskownicy, zobacz [testowania interfejsu portalu usługi Azure Managed Applications](test-createuidefinition.md).
+Możesz użyć edytora JSON, aby utworzyć definicję interfejsu użytkownika, a następnie przetestować ją w [piaskownicy definicji interfejsu użytkownika](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) , aby wyświetlić jej podgląd. Aby uzyskać więcej informacji na temat piaskownicy, zobacz [testowanie interfejsu portalu dla Azure Managed Applications](test-createuidefinition.md).
 
-## <a name="basics"></a>Podstawy
-Krok podstawy zawsze stanowi pierwszy krok kreatora generowane, gdy w witrynie Azure portal analizuje plik. Oprócz wyświetlania elementów wymienionych w `basics`, portalu wprowadza elementy użytkownikom na wybór subskrypcji, grupy zasobów i lokalizacji wdrożenia. Ogólnie rzecz biorąc elementy, które zapytania dla parametrów całe wdrożenie, takie jak nazwa poświadczenia klastra lub administrator powinien przeprowadzić w tym kroku.
+## <a name="basics"></a>Ustawienia podstawowe
+Podstawowe to pierwszy krok generowany, gdy Azure Portal przeanalizuje plik. Oprócz wyświetlania elementów określonych w programie `basics`Portal wprowadza elementy dla użytkowników, aby wybrać subskrypcję, grupę zasobów i lokalizację wdrożenia. Jeśli to możliwe, elementy, które wykonują zapytania dotyczące parametrów obejmujących całe wdrożenie, takie jak nazwa klastra lub poświadczenia administratora, powinny przejść w tym kroku.
 
-Jeśli zachowanie zależy od subskrypcji użytkownika, grupy zasobów lub lokalizacji, ten element, nie można użyć w podstawy. Na przykład **Microsoft.Compute.SizeSelector** zależy od użytkownika subskrypcji i lokalizacji, aby określić listę dostępnych rozmiarów. W związku z tym **Microsoft.Compute.SizeSelector** należy używać tylko w krokach. Ogólnie rzecz biorąc, tylko elementy w **Microsoft.Common** przestrzeni nazw mogą być używane w podstawy. Mimo że niektóre elementy w innych przestrzeniach nazw (takich jak **Microsoft.Compute.Credentials**), nie należy polegać na kontekście użytkownika, są nadal dozwolone.
+Jeśli zachowanie elementu zależy od subskrypcji użytkownika, grupy zasobów lub lokalizacji, ten element nie może być używany w podstawowe. Na przykład **firma Microsoft. COMPUTE. SizeSelector** zależy od subskrypcji i lokalizacji użytkownika w celu określenia listy dostępnych rozmiarów. W związku z tym **firma Microsoft. COMPUTE. SizeSelector** może być używana tylko w krokach. Ogólnie rzecz biorąc, można używać tylko elementów w przestrzeni nazw **Microsoft. Common** . Mimo że niektóre elementy w innych przestrzeniach nazw (na przykład **Microsoft. COMPUTE. Credentials**), które nie są zależne od kontekstu użytkownika, są nadal dozwolone.
 
 ## <a name="steps"></a>Kroki
-Właściwość kroków może zawierać zero lub więcej dodatkowych czynności w celu wyświetlenia od podstaw, z których każdy zawiera jeden lub więcej elementów. Rozważ dodanie czynności dla roli lub warstwy wdrażana aplikacja. Na przykład dodać krok dla danych wejściowych dla węzłów głównych i krok dla węzłów procesu roboczego w klastrze.
+Właściwość kroków może zawierać zero lub więcej dodatkowych kroków, które mają być wyświetlane po podstawach, z których każdy zawiera jeden lub więcej elementów. Rozważ dodanie kroków na rolę lub warstwę wdrażanej aplikacji. Na przykład Dodaj krok dla danych wejściowych węzła głównego i krok dla węzłów procesu roboczego w klastrze.
 
-## <a name="outputs"></a>Dane wyjściowe
-Korzysta z witryny Azure portal `outputs` właściwość elementy z mapy `basics` i `steps` parametry szablonu wdrożenia usługi Azure Resource Manager. Klucze tego słownika są nazwy parametrów szablonu, a wartości są właściwości obiektów danych wyjściowych z elementów.
+## <a name="outputs"></a>outputs
+Azure Portal używa `outputs` właściwości do mapowania elementów z `basics` i `steps` do parametrów szablonu wdrożenia Azure Resource Manager. Klucze tego słownika są nazwami parametrów szablonu, a wartości są właściwościami obiektów wyjściowych z elementów, do których się odwołuje.
 
-Aby ustawić nazwę zasobu aplikacji zarządzanej, musi zawierać wartość o nazwie `applicationResourceName` we właściwości danych wyjściowych. Jeśli ta wartość nie jest ustawiona, aplikacji przypisuje identyfikator GUID dla nazwy. Pole tekstowe można uwzględnić w interfejsie użytkownika, który żąda nazwę użytkownika.
+Aby ustawić nazwę zasobu aplikacji zarządzanej, należy uwzględnić wartość o nazwie `applicationResourceName` we właściwości Outputs. Jeśli ta wartość nie zostanie ustawiona, aplikacja przypisze identyfikator GUID dla nazwy. W interfejsie użytkownika można uwzględnić pole tekstowe, które żąda nazwy od użytkownika.
 
 ```json
 "outputs": {
@@ -74,14 +76,14 @@ Aby ustawić nazwę zasobu aplikacji zarządzanej, musi zawierać wartość o na
 ```
 
 ## <a name="functions"></a>Funkcje
-Podobnie jak funkcje szablonu w usłudze Azure Resource Manager (zarówno w składni i funkcji), CreateUiDefinition udostępnia funkcje do pracy z danymi wejściowymi elementów i danych wyjściowych i funkcji, takich jak warunkowych.
+CreateUiDefinition udostępnia [funkcje](create-uidefinition-functions.md) do pracy z danymi wejściowymi i wyjściowymi elementów oraz funkcjami, takimi jak Conditional. Te funkcje są podobne zarówno do składni, jak i funkcji do Azure Resource Manager funkcji szablonu.
 
-## <a name="next-steps"></a>Kolejne kroki
-Sam plik createUiDefinition.json ma prosty schemat. Rzeczywiste głębokość pochodzi z wszystkie obsługiwane elementy i funkcje. Te elementy są opisane bardziej szczegółowo na:
+## <a name="next-steps"></a>Następne kroki
+Sam plik createUiDefinition. JSON ma prosty schemat. Rzeczywista głębokość jest powiązana ze wszystkimi obsługiwanymi elementami i funkcjami. Te elementy są szczegółowo opisane w:
 
-- [Elementy](create-uidefinition-elements.md)
+- [Części](create-uidefinition-elements.md)
 - [Funkcje](create-uidefinition-functions.md)
 
 Bieżący schemat JSON dla createUiDefinition jest dostępny tutaj: https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json.
 
-Aby uzyskać przykładowy plik interfejsu użytkownika, zobacz [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json).
+Przykładowy plik interfejsu użytkownika można znaleźć w pliku [createUiDefinition. JSON](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json).

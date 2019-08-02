@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Cosmos DB Interfejs API SQL języka Java, zestaw SDK i zasoby
+title: Usługa Azure Cosmos DB Interfejs API Java języka SQL, zasoby & SDK
 description: Poznaj interfejs API SQL języka Java i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zestawu SDK usługi Azure Cosmos DB SQL języka Java.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 7af43d24b03a4c548925bdca4189fd0524c701a4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: bf89d419bcd97c276df35701bc4fd808f599094a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341633"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637691"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -27,8 +27,8 @@ ms.locfileid: "67341633"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulkexecutor — platforma .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulkexecutor — platforma Java](sql-api-sdk-bulk-executor-java.md)
+> * [Wykonawca zbiorczy — .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Moduł wykonawczy zbiorczej — Java](sql-api-sdk-bulk-executor-java.md)
 
 Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne. Użyj asynchronicznej obsługi [zestawu Java SDK SQL API Async](sql-api-sdk-async-java.md). 
 
@@ -44,22 +44,22 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
-* Usunięto usterkę występującą podczas PartitionKey wyznaczania wartości skrótu w wersji 2.
+* Naprawiono usterkę w PartitionKey dla skrótu v2.
 
 ### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
-* Dodano obsługę złożone indeksów.
-* Usunięto usterkę występującą w Menedżerze globalny punkt końcowy, aby wymusić odświeżenie.
-* Usunięto usterkę występującą dla wykonuje operację UPSERT z warunków wstępnych w trybie bezpośredniego.
+* Dodano obsługę indeksów złożonych.
+* Naprawiono usterkę w programie Global Endpoint Manager, aby wymusić odświeżanie.
+* Stała usterka dla upserts z warunkiem wstępnym w trybie bezpośrednim.
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
-* Usunięto usterkę występującą w pamięci podręcznej adres bramy.
+* Naprawiono usterkę w pamięci podręcznej adresów bramy.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Obsługa wielu regionów zapisu dodawane w trybie bezpośredniego.
 * Dodano obsługę obsługi IOExceptions zgłoszony jako wyjątki ServiceUnavailable z serwera proxy.
 * Usunięto usterkę w zasadach ponawiania odnajdywania punktów końcowych.
 * Naprawiono usterkę w celu zapewnienia wskaźnika o wartości null, które nie są zgłaszane wyjątki w BaseDatabaseAccountConfigurationProvider.
-* Naprawiono usterkę, aby upewnić się, że QueryIterator nie może zwracać wartości null.
+* Rozwiązano błąd, aby upewnić się, że QueryIterator nie zwraca wartości null.
 * Usunięto usterkę w celu zapewnienia, że duże PartitionKey jest dozwolone
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
@@ -127,7 +127,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 * Dodano obsługę zestawienia zmian.
 * Dodano obsługę za pomocą RequestOptions.setPopulateQuotaInfo, informacje o limitach przydziału kolekcji.
 * Dodano obsługę rejestrowanie skryptu procedury składowanej za pośrednictwem RequestOptions.setScriptLoggingEnabled.
-* Usunięto usterkę, w którym zapytania w trybie DirectHttps może przestać odpowiadać, gdy wystąpią błędy ograniczania.
+* Naprawiono usterkę polegającą na tym, że zapytanie w trybie DirectHttps może przestać odpowiadać, gdy wystąpią błędy ograniczania.
 * Usunięto usterkę w trybie spójność sesji.
 * Naprawiono usterkę, która może spowodować obiektu NullReferenceException w HttpContext, gdy liczba żądań jest wysoka.
 * Zwiększono wydajność DirectHttps trybu.
@@ -142,7 +142,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
 * Usunięto usterkę z zarządzaniem połączeniami, aby zapobiec przeciekom połączenia w trybie bezpośredniego połączenia.
-* Usunięto usterkę zapytania dotyczącego POCZĄTKOWYCH, w którym może zgłaszać wyjątek NullReference.
+* Rozwiązano usterkę w zapytaniu TOP, w której może zgłosić wyjątek NullReference.
 * Zwiększono wydajność dzięki zmniejszeniu liczby wywołań sieci dla wewnętrznych pamięci podręcznych.
 * Dodano został zwrócony kod stanu ActivityID i żądań z identyfikatora URI w DocumentClientException w celu ułatwienia rozwiązywania problemów.
 
@@ -198,7 +198,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Obsługa danych Geoprzestrzennych indeksu
-* Sprawdza poprawność właściwość Identyfikatora dla wszystkich zasobów. Identyfikatory zasobów nie może zawierać?, /, #, \, znaków ani kończyć się spacją.
+* Weryfikuje Właściwość identyfikatora dla wszystkich zasobów. Identyfikatory zasobów nie może zawierać?, /, #, \, znaków ani kończyć się spacją.
 * Dodaje nowy nagłówek "indeks przekształcania progress" ResourceResponse.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
@@ -215,7 +215,7 @@ Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżąceg
 Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostanie odrzucone przez usługę.
 
 > [!WARNING]
-> Wszystkie wersje **1.x** SQL zestawu SDK dla języka Java zostaną wycofane z dniem **30 maja 2020**.
+> Wszystkie wersje **1. x** zestawu SQL SDK dla języka Java zostaną wycofane z **30 maja 2020**.
 > 
 >
 
@@ -228,42 +228,42 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
-| [2.1.3](#2.1.3) |13 marca 2018 r. |--- |
-| [2.1.2](#2.1.2) |09 marca 2018 r. |--- |
-| [2.1.1](#2.1.1) |13 grudnia 2018 r. |--- |
-| [2.1.0](#2.1.0) |20 listopada 2018 r. |--- |
+| [2.1.3](#2.1.3) |Mar 13, 2018 |--- |
+| [2.1.2](#2.1.2) |Mar 09, 2018 |--- |
+| [2.1.1](#2.1.1) |13 grudnia 2018 |--- |
+| [2.1.0](#2.1.0) |20 listopada 2018 |--- |
 | [2.0.0](#2.0.0) |21 września 2018 r. |--- |
-| [1.16.4](#1.16.4) |10 września 2018 r. |30 maja 2020 r. |
-| [1.16.3](#1.16.3) |09 września 2018 r. |30 maja 2020 r. |
-| [1.16.2](#1.16.2) |29 czerwca 2018 r. |30 maja 2020 r. |
-| [1.16.1](#1.16.1) |16 maja 2018 r. |30 maja 2020 r. |
-| [1.16.0](#1.16.0) |15 marca 2018 r. |30 maja 2020 r. |
-| [1.15.0](#1.15.0) |14 listopada 2017 r. |30 maja 2020 r. |
-| [1.14.0](#1.14.0) |28 października 2017 r. |30 maja 2020 r. |
-| [1.13.0](#1.13.0) |25 sierpnia 2017 r. |30 maja 2020 r. |
-| [1.12.0](#1.12.0) |11 lipca 2017 r. |30 maja 2020 r. |
-| [1.11.0](#1.11.0) |10 maja 2017 |30 maja 2020 r. |
-| [1.10.0](#1.10.0) |11 marca 2017 r. |30 maja 2020 r. |
-| [1.9.6](#1.9.6) |21 lutego 2017 r. |30 maja 2020 r. |
-| [1.9.5](#1.9.5) |31 stycznia 2017 r. |30 maja 2020 r. |
-| [1.9.4](#1.9.4) |24 listopada 2016 r. |30 maja 2020 r. |
-| [1.9.3](#1.9.3) |30 października 2016 r. |30 maja 2020 r. |
-| [1.9.2](#1.9.2) |28 października 2016 r. |30 maja 2020 r. |
-| [1.9.1](#1.9.1) |26 października 2016 r. |30 maja 2020 r. |
-| [1.9.0](#1.9.0) |03 października 2016 r. |30 maja 2020 r. |
-| [1.8.1](#1.8.1) |30 czerwca 2016 r. |30 maja 2020 r. |
-| [1.8.0](#1.8.0) |14 czerwca 2016 r. |30 maja 2020 r. |
-| [1.7.1](#1.7.1) |30 kwietnia 2016 r. |30 maja 2020 r. |
-| [1.7.0](#1.7.0) |27 kwietnia 2016 r. |30 maja 2020 r. |
-| [1.6.0](#1.6.0) |29 marca 2016 r. |30 maja 2020 r. |
-| [1.5.1](#1.5.1) |Do 31 grudnia 2015 r. |30 maja 2020 r. |
-| [1.5.0](#1.5.0) |04 grudnia 2015 r. |30 maja 2020 r. |
-| [1.4.0](#1.4.0) |05 października 2015 r. |30 maja 2020 r. |
-| [1.3.0](#1.3.0) |05 października 2015 r. |30 maja 2020 r. |
-| [1.2.0](#1.2.0) |05 sierpnia 2015 r. |30 maja 2020 r. |
-| [1.1.0](#1.1.0) |09 lipca 2015 r. |30 maja 2020 r. |
-| 1.0.1 |12 maja 2015 r. |30 maja 2020 r. |
-| [1.0.0](#1.0.0) |07 kwietnia 2015 r. |30 maja 2020 r. |
+| [1.16.4](#1.16.4) |10 września 2018 r. |30 maja 2020 |
+| [1.16.3](#1.16.3) |09 września 2018 r. |30 maja 2020 |
+| [1.16.2](#1.16.2) |29 czerwca 2018 r. |30 maja 2020 |
+| [1.16.1](#1.16.1) |16 maja 2018 r. |30 maja 2020 |
+| [1.16.0](#1.16.0) |15 marca 2018 r. |30 maja 2020 |
+| [1.15.0](#1.15.0) |14 listopada 2017 r. |30 maja 2020 |
+| [1.14.0](#1.14.0) |28 października 2017 r. |30 maja 2020 |
+| [1.13.0](#1.13.0) |25 sierpnia 2017 r. |30 maja 2020 |
+| [1.12.0](#1.12.0) |11 lipca 2017 r. |30 maja 2020 |
+| [1.11.0](#1.11.0) |10 maja 2017 |30 maja 2020 |
+| [1.10.0](#1.10.0) |11 marca 2017 r. |30 maja 2020 |
+| [1.9.6](#1.9.6) |21 lutego 2017 r. |30 maja 2020 |
+| [1.9.5](#1.9.5) |31 stycznia 2017 r. |30 maja 2020 |
+| [1.9.4](#1.9.4) |24 listopada 2016 r. |30 maja 2020 |
+| [1.9.3](#1.9.3) |30 października 2016 r. |30 maja 2020 |
+| [1.9.2](#1.9.2) |28 października 2016 r. |30 maja 2020 |
+| [1.9.1](#1.9.1) |26 października 2016 r. |30 maja 2020 |
+| [1.9.0](#1.9.0) |03 października 2016 r. |30 maja 2020 |
+| [1.8.1](#1.8.1) |30 czerwca 2016 r. |30 maja 2020 |
+| [1.8.0](#1.8.0) |14 czerwca 2016 r. |30 maja 2020 |
+| [1.7.1](#1.7.1) |30 kwietnia 2016 r. |30 maja 2020 |
+| [1.7.0](#1.7.0) |27 kwietnia 2016 r. |30 maja 2020 |
+| [1.6.0](#1.6.0) |29 marca 2016 r. |30 maja 2020 |
+| [1.5.1](#1.5.1) |Do 31 grudnia 2015 r. |30 maja 2020 |
+| [1.5.0](#1.5.0) |04 grudnia 2015 r. |30 maja 2020 |
+| [1.4.0](#1.4.0) |05 października 2015 r. |30 maja 2020 |
+| [1.3.0](#1.3.0) |05 października 2015 r. |30 maja 2020 |
+| [1.2.0](#1.2.0) |05 sierpnia 2015 r. |30 maja 2020 |
+| [1.1.0](#1.1.0) |09 lipca 2015 r. |30 maja 2020 |
+| 1.0.1 |12 maja 2015 r. |30 maja 2020 |
+| [1.0.0](#1.0.0) |07 kwietnia 2015 r. |30 maja 2020 |
 | 0.9.5-prelease |09 marca 2015 r. |29 lutego 2016 r. |
 | 0.9.4-prelease |17 lutego 2015 r. |29 lutego 2016 r. |
 | 0.9.3-prelease |13 stycznia 2015 r. |29 lutego 2016 r. |

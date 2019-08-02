@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
 ms.openlocfilehash: cef2eb2cde2a26239b774729fa72b4f3ba367df7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67183042"
 ---
 > [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania używane do tworzenia i pracy z zasobami: [Usługa Azure Resource Manager i Model Klasyczny](../articles/azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano użycie modelu wdrażania usługi Resource Manager. Firma Microsoft zaleca modelu wdrażania usługi Resource Manager w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania, których można użyć do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczny](../articles/azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano sposób korzystania z Menedżer zasobówgo modelu wdrażania. Zalecamy model wdrażania Menedżer zasobów dla nowych wdrożeń zamiast klasycznego modelu wdrażania.

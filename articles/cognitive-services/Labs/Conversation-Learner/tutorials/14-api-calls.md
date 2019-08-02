@@ -1,7 +1,7 @@
 ---
-title: Jak używać interfejsu API wywołań za pomocą modelu uczeń konwersacji — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Jak używać wywołań interfejsu API z modelem Conversation Learner — Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak używać interfejsu API przy użyciu modelu uczeń konwersacji.
+description: Dowiedz się, jak używać wywołań interfejsu API z modelem Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,94 +10,95 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 1f7c7c72703d7c3134dd2acdcc466fc0182fa38a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 261536932cc82a28ad4ee3ffc3575ea41fe9ec5b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389935"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703928"
 ---
-# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>Jak dodać wywołań interfejsu API modelu uczeń konwersacji
+# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>Jak dodać wywołania interfejsu API do modelu Conversation Learner
 
-W tym samouczku przedstawiono sposób dodawania wywołań interfejsu API do modelu. Wywołania interfejsu API są funkcje, które zdefiniować i zapisać w Twoim Czatbocie oraz tych, które można wywołać uczeń konwersacji.
+W tym samouczku pokazano, jak dodać wywołania interfejsu API do modelu. Wywołania interfejsu API to funkcje, które można definiować i zapisywać w bot, a które Conversation Learner mogą być wywoływane.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Wersja zapoznawcza samouczek wywołań interfejsu API](https://aka.ms/cl_Tutorial_v3_APICalls_Preview)](https://aka.ms/cl_Tutorial_v3_APICalls)
+[![Samouczek wywołań interfejsu API — wersja zapoznawcza](https://aka.ms/cl_Tutorial_v3_APICalls_Preview)](https://aka.ms/cl_Tutorial_v3_APICalls)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga, że bot "tutorialAPICalls.ts" jest uruchomiona.
+Ten samouczek wymaga, aby "tutorialAPICalls. TS" bot działa.
 
     npm run tutorial-api-calls
 
 ## <a name="details"></a>Szczegóły
 
-- Wywołania interfejsu API może odczytywać i modyfikować jednostek.
-- Wywołania interfejsów API mają dostęp do obiektu Menedżera pamięci.
-- Wywołania interfejsu API może potrwać argumentów.
+- Wywołania interfejsu API mogą odczytywać jednostki i manipulować nimi.
+- Wywołania interfejsu API mają dostęp do obiektu Menedżera pamięci.
+- Wywołania interfejsu API mogą przyjmować argumenty.
 
-### <a name="open-the-demo"></a>Otwórz wersję demonstracyjną
+### <a name="open-the-demo"></a>Otwórz demonstrację
 
-W internetowym interfejsie użytkownika kliknij pozycję "Importuj samouczki" i wybierz model o nazwie "Samouczek-14-APICalls".
+W interfejsie użytkownika sieci Web kliknij pozycję "Importowanie samouczków" i wybierz model o nazwie "samouczek-14-APICalls".
 
 ### <a name="entities"></a>Jednostki
 
-Zdefiniowaliśmy jednej jednostki w modelu o nazwie `number`.
+Zdefiniowano jedną jednostkę w modelu o nazwie `number`.
 
 ![](../media/tutorial12_entities.PNG)
 
 ### <a name="api-calls"></a>Wywołania interfejsu API
-Kod dla wywołań interfejsu API jest zdefiniowany w tym pliku: `C:\<installedpath>\src\demos\tutorialAPICalls.ts`.
+Kod wywołań interfejsu API jest zdefiniowany w tym pliku: `C:\<installedpath>\src\demos\tutorialAPICalls.ts`.
 
 ![](../media/tutorial12_apicalls.PNG)
 
-- `RandomGreeting` Wywołania zwrotnego zwraca losowe pozdrowienia zdefiniowane w `greeting` tablicy.
-- `Multiply` Wywołania zwrotnego zostanie mnożenia dwóch liczb przekazanego przez akcję, która wywołuje ona i zwraca wynik, który może być renderowany w interfejsie użytkownika.
-    - Zwróć uwagę, że ten Menedżer pamięci jest pierwszym argumentem. 
-    - Należy zauważyć, że wywołania zwrotne interfejsu API może stać się wielu danych wejściowych, w tym przypadku `num1string` i `num2string`.
-- `ClearEntities` Wywołania zwrotnego wyczyszczone, liczba jednostek co użytkownik może wprowadzić inny numer. 
-    - Ilustruje sposób wywołania interfejsu API można manipulować jednostek.
+- Wywołanie zwrotne zwraca losowe powitanie zdefiniowane `greeting` w tablicy. `RandomGreeting`
+- `Multiply` Wywołanie zwrotne będzie mnożyć dwie liczby przesłane przez akcję wywołującą ją i zwraca wynik, który może być renderowany w interfejsie użytkownika.
+    - Zauważ, że Menedżer pamięci jest pierwszym argumentem. 
+    - Zwróć uwagę, że wywołania zwrotne interfejsu API mogą przyjmować wiele danych `num1string` wejściowych `num2string`, w tym przypadku i.
+- `ClearEntities` Wywołanie zwrotne czyści jednostkę Number, aby użytkownik mógł wprowadzić kolejną liczbę. 
+    - Ilustruje sposób, w jaki wywołania interfejsu API mogą manipulować obiektami.
 
 ### <a name="actions"></a>Akcje
-Utworzyliśmy cztery akcje. Trzy z nich to operacje interfejsu API "Non-Wait", z czwarty jest akcja "Text", która prosi użytkownika pytania podobne do Zaobserwowaliśmy w innych samouczkach. Aby zobaczyć, jak każdy został utworzony, wykonaj następujące czynności:
-1. W lewym panelu kliknij przycisk "Akcje", a następnie kliknij jedną z czterech akcji wymienionych w siatce.
-2. Zwróć uwagę na wartości każdego pola w formularzu, które się pojawi.
-3. Zwróć uwagę `Refresh` przycisk obok pola interfejsu API.
-    - Gdybyśmy wybrali zatrzymać Bot i zmienić do interfejsów API, gdy działa na stronie interfejsu użytkownika, a następnie kliknięcie `Refresh` przycisk, aby wczytać najnowsze zmiany.
+Utworzyliśmy cztery akcje. Trzy z nich to akcje interfejsu API "bez oczekiwania" z czwartą to akcja "tekst", która prosi użytkownika o pytanie podobne do tego, co zostało zaobserwowane w innych samouczkach. Aby zobaczyć, jak każdy został utworzony, wykonaj następujące czynności:
+1. Na panelu po lewej stronie kliknij pozycję akcje, a następnie kliknij jedną z czterech akcji wymienionych w siatce.
+2. Zwróć uwagę na wartości każdego pola w formularzu, który pojawia się.
+3. Zwróć uwagę `Refresh` na przycisk obok pola interfejsu API.
+    - Jeśli zatrzymasz bot i wprowadzisz zmiany w interfejsach API, gdy strona interfejsu użytkownika jest w stanie up, możesz kliknąć `Refresh` ten przycisk, aby pobrać najnowsze zmiany.
 
 ![](../media/tutorial12_actions.PNG)
 
-#### <a name="clearentities-multiply-and-randomgreeting"></a>ClearEntities, należy pomnożyć i RandomGreeting
-Wszystkie trzy te akcje są typem interfejsu API. Każdy korzystają z interfejsu API funkcji wywołania zwrotnego do wykonania pewnej pracy i być może zwracać wartości będą prezentowane użytkownikowi.
+#### <a name="clearentities-multiply-and-randomgreeting"></a>ClearEntities, pomnóż i RandomGreeting
+Wszystkie trzy z tych akcji są typu interfejsu API. Każdy z nich bazuje na funkcjach wywołania zwrotnego interfejsu API w celu wykonania pewnej pracy i prawdopodobnie zwraca wartość, która zostanie wyświetlona dla użytkownika.
 
-#### <a name="what-number-do-you-want-to-multiply-by-12"></a>"Typ numeru chcesz pomnożyć przez 12"
-Jest to akcja "Text" i po prostu zadaje pytanie użytkownika. Podczas tej akcji nie faktycznie wchodzić w interakcję z jednym z wywołań zwrotnych interfejsu API, monituje użytkowników na odpowiedź z numerem, które zostaną umieszczone w pamięci jednostki, która może być następnie używane przez "Mnożenia" akcję, która użyj jednej z wywołań zwrotnych interfejsu API.
+#### <a name="what-number-do-you-want-to-multiply-by-12"></a>"Jaką liczbę chcesz pomnożyć przez 12"
+Jest to akcja "tekst" i po prostu prosi o pytanie użytkownika. Mimo że ta akcja nie działa w rzeczywistości z jednym z wywołań zwrotnych interfejsu API, monituje użytkownika o odpowiedź przy użyciu numeru, który będzie przekroczyć pamięć jednostki, która może być następnie używana przez akcję "pomnóż", która używa jednego z wywołań wywołania interfejsu API.
 
 
-### <a name="train-dialog"></a>Okno dialogowe szkolenie
+### <a name="train-dialog"></a>Okno dialogowe uczenia
 
-Przejdźmy teraz przez "Szkolenia Dialog".
+Przejdźmy do "okna dialogowego szkolenia".
 
-1. Na lewym panelu kliknij `Train Dialogs`, a następnie `New Train Dialog` przycisku.
-2. Wpisz "hello".
+1. W lewym panelu kliknij `Train Dialogs`przycisk, `New Train Dialog` a następnie przycisk.
+2. Wpisz "Hello".
 3. Kliknij przycisk `Score Actions`.
 4. Wybierz pozycję `RandomGreeting`. 
-    - Spowoduje to wykonanie wywołania losowe pozdrowienia interfejsu API.
-    - To nie będzie czekać na odpowiedź użytkownika.
+    - Spowoduje to wykonanie losowego wywołania interfejsu API powitania.
+    - NIE czeka na odpowiedź użytkownika.
 5. Wybierz pozycję `What number to do you want to multiply by 12?`
-6. Wpisz liczbę i dowolną liczbę tylko liczbę.
-    - Należy zauważyć, że Twój numer została automatycznie oznaczona jako `number` jednostki.
+6. Wpisz numer, dowolną liczbę i tylko liczbę.
+    - Zwróć uwagę, że liczba została automatycznie oznaczona jako `number` jednostka.
 7. Kliknij przycisk `Score Actions`.
-8. Wybierz `Multiply` akcji.
-    - Zwróć uwagę, wynik mnożenia przez 12.
-    - Zwróć uwagę że pamięć jest nadal zawiera wartość wprowadzona dla `number`
-9. Wybierz `ClearEntities` akcji.
-    - Należy zauważyć, że wartość jednostki `number` został wyczyszczony z pamięci.
+8. `Multiply` Wybierz akcję.
+    - Zwróć uwagę na wynik mnożenia przez 12.
+    - Zauważ, że pamięć nadal zawiera wprowadzoną wartość`number`
+9. `ClearEntities` Wybierz akcję.
+    - Zwróć uwagę, że wartość jednostki `number` dla została wyczyszczona z pamięci.
 10. Kliknij przycisk `Save`.
 
-Teraz wiesz już sposób rejestrowania wywołań zwrotnych interfejsu API, ich typowych wzorców i jak definiować argumenty i skojarzyć wartości i jednostki w nich.
+Zobaczysz, jak zarejestrować wywołania zwrotne interfejsu API, ich wspólne wzorce oraz jak definiować argumenty i kojarzyć z nimi wartości.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Karty, część 1](./15-cards.md)
+> [Karty — część 1](./15-cards.md)

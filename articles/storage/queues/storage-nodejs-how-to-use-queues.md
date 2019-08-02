@@ -1,21 +1,19 @@
 ---
-title: Jak używać magazynu kolejek w języku Node.js — Azure Storage
-description: Dowiedz się, jak używać usługi kolejek platformy Azure do tworzenia i usuwania kolejki oraz wstawiania, pobieranie i usuwanie wiadomości. Przykłady napisany w języku Node.js.
-services: storage
+title: Jak używać magazynu kolejek w programie Node. js — Azure Storage
+description: Dowiedz się, jak używać usługa kolejki platformy Azure do tworzenia i usuwania kolejek oraz wstawiania, pobierania i usuwania komunikatów. Przykłady zapisywane w języku Node. js.
 author: mhopkins-msft
 ms.service: storage
-ms.devlang: nodejs
-ms.topic: article
-ms.date: 12/08/2016
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 12/08/2016
 ms.subservice: queues
-ms.openlocfilehash: 01afe1ab7b9028f3f77d52f7d6f8ced27f6a79c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: 13da3adc1a3f95f9fdb29eb181eb9759e175cffe
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142708"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721286"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Jak używać Magazynu kolejek w oprogramowaniu Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -23,20 +21,20 @@ ms.locfileid: "65142708"
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>Omówienie
-Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą usługi Microsoft Azure Queue. Przykłady są napisane przy użyciu interfejsu API środowiska Node.js. Omówione scenariusze obejmują **wstawianie**, **wgląd do**, **wprowadzenie**, i **usuwanie** kolejki komunikatów, a także  **Tworzenie i usuwanie kolejek**.
+W tym przewodniku pokazano, jak wykonywać typowe scenariusze przy użyciu usługa kolejki Microsoft Azure. Przykłady są zapisywane przy użyciu interfejsu API środowiska Node. js. Omówione scenariusze obejmują **Wstawianie**, **wgląd**, **pobieranie**i **usuwanie** komunikatów w kolejce, a także **Tworzenie i usuwanie kolejek**.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-nodejs-application"></a>Tworzenie aplikacji Node.js
-Tworzenie pustej aplikacji Node.js. Aby uzyskać instrukcje tworzenia aplikacji w technologii Node.js, zobacz [tworzenie aplikacji sieci web Node.js w usłudze Azure App Service](../../app-service/app-service-web-get-started-nodejs.md), [kompilowanie i wdrażanie aplikacji Node.js w usłudze w chmurze Azure](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) przy użyciu programu Windows PowerShell lub [ Program Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
+## <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node. js
+Utwórz pustą aplikację Node. js. Aby uzyskać instrukcje dotyczące tworzenia aplikacji node. js, zobacz [Tworzenie aplikacji sieci Web Node. js w Azure App Service](../../app-service/app-service-web-get-started-nodejs.md), [Kompilowanie i wdrażanie aplikacji node. js w usłudze w chmurze platformy Azure](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) przy użyciu programu Windows PowerShell lub [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
 
-## <a name="configure-your-application-to-access-storage"></a>Umożliwia skonfigurowanie aplikacji dostęp do magazynu
-Aby użyć usługi Azure storage, konieczne jest zestaw SDK usługi Azure Storage dla środowiska Node.js, która zawiera zbiór bibliotek wygody, które komunikują się z usług REST magazynu.
+## <a name="configure-your-application-to-access-storage"></a>Konfigurowanie aplikacji w celu uzyskania dostępu do magazynu
+Aby można było korzystać z usługi Azure Storage, wymagany jest zestaw SDK usługi Azure Storage dla środowiska Node. js, który obejmuje zestaw wygodnych bibliotek, które komunikują się z usługami REST usługi Storage.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Uzyskiwanie pakietu przy użyciu Node Package Manager (NPM)
-1. Korzystanie z interfejsu wiersza polecenia takich jak **PowerShell** (Windows), **terminalu** (Mac), lub **Bash** (Unix), przejdź do folderu, w której utworzono aplikację przykładową.
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Korzystanie z programu Node Package Manager (NPM) w celu uzyskania pakietu
+1. Użyj interfejsu wiersza polecenia, takiego jak program **PowerShell** (Windows), **Terminal** (Mac,) lub **bash** (UNIX), przejdź do folderu, w którym została utworzona Przykładowa aplikacja.
 2. Wpisz ciąg **npm install azure-storage** w oknie polecenia. Dane wyjściowe polecenia są podobne do poniższego przykładu.
  
     ```bash
@@ -52,26 +50,26 @@ Aby użyć usługi Azure storage, konieczne jest zestaw SDK usługi Azure Storag
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
     ```
 
-3. Można ręcznie uruchomić **ls** polecenie, aby sprawdzić, czy **węzła\_modułów** folder został utworzony. Wewnątrz tego folderu znajduje się pakiet **azure-storage** zawierający biblioteki wymagane do uzyskiwania dostępu do magazynu.
+3. Można ręcznie uruchomić **ls** polecenie, aby sprawdzić, czy folder **modułów\_węzła** został utworzony. Wewnątrz tego folderu znajduje się pakiet **azure-storage** zawierający biblioteki wymagane do uzyskiwania dostępu do magazynu.
 
 ### <a name="import-the-package"></a>Importowanie pakietu
-Za pomocą Notatnika lub innego edytora tekstu, Dodaj następujący kod do górnej **server.js** pliku aplikacji, których zamierzasz używać magazynu:
+Za pomocą Notatnika lub innego edytora tekstów Dodaj następujący tekst do pliku **Server. js** aplikacji, w której zamierzasz używać magazynu:
 
 ```javascript
 var azure = require('azure-storage');
 ```
 
-## <a name="setup-an-azure-storage-connection"></a>Skonfigurować połączenie usługi Azure Storage
-Moduł azure odczyta zmiennych środowiskowych platformy AZURE\_MAGAZYNU\_konta i AZURE\_MAGAZYNU\_dostępu\_klucza lub AZURE\_MAGAZYNU\_połączenia\_ CIĄG, aby uzyskać informacje wymagane do połączenia z kontem usługi Azure storage. Jeśli te zmienne środowiskowe nie są ustawione, należy określić informacje o koncie podczas wywoływania **createQueueService**.
+## <a name="setup-an-azure-storage-connection"></a>Konfigurowanie połączenia usługi Azure Storage
+Moduł Azure odczyta zmienne środowiskowe konta usługi Azure\_Storage\_i klucza dostępu\_do\_\_usługi Azure Storage lub usługi\_Azure\_Storage.\_ CIĄG dla informacji wymaganych do nawiązania połączenia z kontem usługi Azure Storage. Jeśli te zmienne środowiskowe nie są ustawione, należy określić informacje o koncie podczas wywoływania **createQueueService**.
 
 ## <a name="how-to-create-a-queue"></a>Instrukcje: Tworzenie kolejki
-Poniższy kod tworzy **QueueService** obiektu, który umożliwia pracę z kolejkami.
+Poniższy kod tworzy obiekt **QueueService** , który umożliwia współpracę z kolejkami.
 
 ```javascript
 var queueSvc = azure.createQueueService();
 ```
 
-Użyj **createQueueIfNotExists** metody, która zwraca określoną kolejkę, jeśli już istnieje, lub tworzy nową kolejkę o określonej nazwie, jeśli jeszcze nie istnieje.
+Użyj metody **createQueueIfNotExists** , która zwraca określoną kolejkę, jeśli już istnieje, lub tworzy nową kolejkę o określonej nazwie, jeśli jeszcze nie istnieje.
 
 ```javascript
 queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
@@ -81,24 +79,24 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 });
 ```
 
-Jeśli kolejka została utworzona, `result.created` ma wartość true. Jeśli istnieje kolejka, `result.created` ma wartość false.
+Jeśli kolejka została utworzona, `result.created` ma wartość true. Jeśli kolejka istnieje, `result.created` ma wartość false.
 
 ### <a name="filters"></a>Filtry
-Opcjonalne filtrowania operacje mogą być stosowane do operacji wykonywanych przy użyciu **QueueService**. Filtrowanie operacji mogą obejmować rejestrowanie automatyczne ponawianie, itp. Filtry to obiekty, które implementują metodę o następującej sygnaturze:
+Do operacji wykonywanych za pomocą **QueueService**można zastosować opcjonalne operacje filtrowania. Operacje filtrowania mogą obejmować rejestrowanie, automatyczne ponawianie próby itd. Filtry to obiekty, które implementują metodę o następującej sygnaturze:
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-Po wykonaniu tej przetwarzania wstępnego na temat opcji żądania, metoda musi wywołać "dalej" przekazywanie wywołanie zwrotne z następującą sygnaturą:
+Po wykonaniu wstępnego przetwarzania w opcjach żądania Metoda musi wywołać polecenie "Next", przekazując wywołanie zwrotne z następującym podpisem:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-W tym wywołaniu zwrotnym i po przetworzeniu returnObject (odpowiedź z żądania do serwera) wywołanie zwrotne musi wywołać następne istnienia kontynuować przetwarzanie inne filtry lub po prostu wywołać finalCallback w przeciwnym razie skończyć z usługi wywołania.
+W przypadku tego wywołania zwrotnego i po przetworzeniu elementu returnobject (odpowiedź z żądania do serwera) wywołanie zwrotne musi zostać wywołane dalej, jeśli istnieje, aby kontynuować przetwarzanie innych filtrów, lub po prostu wywołaj finalCallback w przeciwnym razie, aby zakończyć usługę wywołania.
 
-Dwa filtry, które implementują logikę ponawiania prób, wchodzą w skład zestawu Azure SDK dla platformy Node.js: **ExponentialRetryPolicyFilter** i **LinearRetryPolicyFilter**. Tworzy następujące **QueueService** obiektu, który używa **ExponentialRetryPolicyFilter**:
+Dwa filtry, które implementują logikę ponawiania prób, wchodzą w skład zestawu Azure SDK dla platformy Node.js: **ExponentialRetryPolicyFilter** i **LinearRetryPolicyFilter**. Poniższy element tworzy obiekt **QueueService** , który używa **ExponentialRetryPolicyFilter**:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -106,7 +104,7 @@ var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Instrukcje: Wstawianie komunikatu do kolejki
-Aby wstawić komunikat do kolejki, należy użyć **createMessage** metodę, aby utworzyć nową wiadomość i dodać go do kolejki.
+Aby wstawić komunikat do kolejki, użyj metody OnMessage , aby utworzyć nową wiadomość i dodać ją do kolejki.
 
 ```javascript
 queueSvc.createMessage('myqueue', "Hello world!", function(error, results, response){
@@ -116,8 +114,8 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 });
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Instrukcje: Podgląd kolejnego komunikatu
-Użytkownik może wglądu do wiadomości uzyskać kolejki bez jego usuwania z kolejki, wywołując **peekMessages** metody. Domyślnie **peekMessages** wglądu w pojedynczym komunikacie.
+## <a name="how-to-peek-at-the-next-message"></a>Instrukcje: Wgląd w następny komunikat
+Możesz uzyskać wgląd w komunikat z przodu kolejki bez usuwania go z kolejki, wywołując metodę **peekMessages** . Domyślnie **peekMessages** wgląd w jeden komunikat.
 
 ```javascript
 queueSvc.peekMessages('myqueue', function(error, results, response){
@@ -130,17 +128,17 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 `result` Zawiera komunikat.
 
 > [!NOTE]
-> Za pomocą **peekMessages** gdy nie ma żadnych komunikatów w kolejce nie zwróci błąd, jednak zostaną zwrócone żadne komunikaty.
+> Przy użyciu **peekMessages** , gdy nie ma żadnych komunikatów w kolejce nie zwróci błędu, ale nie zostaną zwrócone żadne komunikaty.
 > 
 > 
 
-## <a name="how-to-dequeue-the-next-message"></a>Instrukcje: Usuń następny komunikat z kolejki
-Przetwarza komunikat jest procesem dwuetapowym:
+## <a name="how-to-dequeue-the-next-message"></a>Instrukcje: Usuwa następny komunikat
+Przetwarzanie wiadomości jest procesem dwuetapowym:
 
-1. Usuń komunikat z kolejki.
-2. Usuń komunikat.
+1. Usuwa komunikat z kolejki.
+2. Usuń wiadomość.
 
-Komunikatu z kolejki, użyj **getMessages**. To sprawia, że komunikaty niewidoczne w kolejce, dzięki czemu można je przetworzyć żadnych innych klientów. Po przetworzeniu komunikatu aplikacji wywołać **deleteMessage** usunąć go z kolejki. Poniższy przykład pobiera komunikat, a następnie usuwa je:
+Aby usunąć z kolejki komunikat, użyjelementu GetMessages. Powoduje to, że komunikaty są niewidoczne w kolejce, więc żaden inny klient nie będzie mógł ich przetworzyć. Gdy aplikacja przetworzy komunikat, wywołaj **deleteMessage** , aby usunąć go z kolejki. Poniższy przykład pobiera komunikat, a następnie usuwa:
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, results, response){
@@ -157,15 +155,15 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 ```
 
 > [!NOTE]
-> Domyślnie wiadomość została ukryta 30 sekund, po których jest widoczny dla innych klientów. Można określić inną wartość przy użyciu `options.visibilityTimeout` z **getMessages**.
+> Domyślnie komunikat jest ukryty przez 30 sekund, po upływie którego jest widoczny dla innych klientów. Możesz określić inną wartość za pomocą polecenia `options.visibilityTimeout` GetMessages.
 > 
 > [!NOTE]
-> Za pomocą **getMessages** gdy nie ma żadnych komunikatów w kolejce nie zwróci błąd, jednak zostaną zwrócone żadne komunikaty.
+> Przy użyciu funkcji GetMessages, gdy nie ma komunikatów w kolejce, nie zwróci błędu, ale nie zostaną zwrócone żadne komunikaty.
 > 
 > 
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Instrukcje: Zmień zawartość komunikatu w kolejce
-Możesz zmienić zawartość komunikatu w miejscu w kolejce przy użyciu **updateMessage**. Poniższy przykład aktualizuje tekst wiadomości:
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Instrukcje: Zmiana zawartości komunikatu w kolejce
+Można zmienić zawartość wiadomości w miejscu w kolejce przy użyciu **updateMessage**. Poniższy przykład aktualizuje tekst komunikatu:
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -181,13 +179,13 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Instrukcje: Dodatkowe opcje usuwania z kolejki komunikatów
-Istnieją dwa sposoby, które można dostosować odebrania komunikatu z kolejki:
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>Instrukcje: Dodatkowe opcje związane z dekolejką komunikatów
+Istnieją dwa sposoby dostosowywania pobierania komunikatów z kolejki:
 
-* `options.numOfMessages` -Pobrać partię komunikatów (maksymalnie 32).
-* `options.visibilityTimeout` -Ustawienia limitu czasu niewidoczności dłuższy lub krótszy.
+* `options.numOfMessages`— Pobierz partię komunikatów (do 32).
+* `options.visibilityTimeout`-Ustaw dłuższy lub krótszy limit czasu niewidoczności.
 
-W poniższym przykładzie użyto **getMessages** metodę, aby uzyskać 15 komunikatów w jednym wywołaniu. Następnie przetwarza każdy komunikat przy użyciu pętli for. Ustawia również limitu czasu niewidoczności na pięć minut dla wszystkich komunikatów zwracanego przez tę metodę.
+W poniższym przykładzie zastosowano metodę GetMessages, aby pobrać 15 komunikatów w jednym wywołaniu. Następnie przetwarza każdy komunikat przy użyciu pętli for. Ustawia również limit czasu niewidoczności na pięć minut dla wszystkich komunikatów zwracanych przez tę metodę.
 
 ```javascript
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, results, getResponse){
@@ -207,7 +205,7 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>Instrukcje: Pobieranie długości kolejki
-**GetQueueMetadata** zwraca metadane dotyczące kolejki, łącznie z przybliżona liczba komunikatów oczekujących w kolejce.
+**GetQueueMetadata** zwraca metadane dotyczące kolejki, w tym przybliżoną liczbę komunikatów oczekujących w kolejce.
 
 ```javascript
 queueSvc.getQueueMetadata('myqueue', function(error, results, response){
@@ -217,8 +215,8 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 });
 ```
 
-## <a name="how-to-list-queues"></a>Instrukcje: Wyświetl listę kolejek
-Aby pobrać listę kolejek, użyj **listQueuesSegmented**. Aby pobrać listy filtrowane według określonego prefiksu, użyj **listQueuesSegmentedWithPrefix**.
+## <a name="how-to-list-queues"></a>Instrukcje: Wyświetl kolejki
+Aby pobrać listę kolejek, użyj **listQueuesSegmented**. Aby pobrać listę przefiltrowanych według określonego prefiksu, użyj **listQueuesSegmentedWithPrefix**.
 
 ```javascript
 queueSvc.listQueuesSegmented(null, function(error, results, response){
@@ -228,10 +226,10 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 });
 ```
 
-Jeśli nie można zwrócić wszystkich kolejkach, `result.continuationToken` mogą być używane jako pierwszy parametr **listQueuesSegmented** lub drugi parametr **listQueuesSegmentedWithPrefix** można pobrać więcej wyników.
+Jeśli nie można zwrócić wszystkich kolejek `result.continuationToken` , można użyć jako pierwszego parametru **listQueuesSegmented** lub drugiego parametru **listQueuesSegmentedWithPrefix** , aby uzyskać więcej wyników.
 
 ## <a name="how-to-delete-a-queue"></a>Instrukcje: Usuwanie kolejki
-Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj **deleteQueue** metody na obiekcie kolejki.
+Aby usunąć kolejkę i wszystkie znajdujące się w niej komunikaty, wywołaj metodę **deleteQueue** w obiekcie Queue.
 
 ```javascript
 queueSvc.deleteQueue(queueName, function(error, response){
@@ -241,14 +239,14 @@ queueSvc.deleteQueue(queueName, function(error, response){
 });
 ```
 
-Aby wyczyścić wszystkie komunikaty z kolejki bez jego usuwania, należy użyć **clearMessages**.
+Aby wyczyścić wszystkie komunikaty z kolejki bez usuwania, użyj **clearMessages**.
 
 ## <a name="how-to-work-with-shared-access-signatures"></a>Instrukcje: Praca z sygnaturami dostępu współdzielonego
-Udostępnione sygnatur dostępu (SAS) to bezpieczny sposób zapewnienia szczegółowej dostępu do kolejek bez podawania swojej nazwy konta magazynu lub klucze. Sygnatury dostępu Współdzielonego są często używane do udzielany ograniczony dostęp do kolejek, na przykład zezwalając aplikacji mobilnej w celu przesyłania wiadomości.
+Sygnatury dostępu współdzielonego (SAS) są bezpiecznym sposobem zapewnienia szczegółowego dostępu do kolejek bez podawania nazwy lub kluczy konta magazynu. Sygnatury dostępu współdzielonego są często używane, aby zapewnić ograniczony dostęp do kolejek, takich jak umożliwienie aplikacji mobilnej przesyłanie komunikatów.
 
-Generuje zaufanych aplikacji, takich jak usługi oparte na chmurze, przy użyciu sygnatury dostępu Współdzielonego **generateSharedAccessSignature** z **QueueService**i przekazuje go do niezaufanych lub na wpół zaufanych aplikacji. Na przykład, aplikacja mobilna. Sygnatura dostępu współdzielonego jest generowana przy użyciu zasad opisujących daty rozpoczęcia i zakończenia okresu, w którym ta sygnatura obowiązuje, a także poziom dostępu przyznany właścicielowi sygnatury dostępu współdzielonego.
+Zaufana aplikacja, taka jak usługa oparta na chmurze, generuje sygnaturę dostępu współdzielonego przy użyciu **GenerateSharedAccessSignature** **QueueService**i udostępnia ją niezaufanej lub częściowo zaufanej aplikacji. Na przykład aplikacja mobilna. Sygnatura dostępu współdzielonego jest generowana przy użyciu zasad opisujących daty rozpoczęcia i zakończenia okresu, w którym ta sygnatura obowiązuje, a także poziom dostępu przyznany właścicielowi sygnatury dostępu współdzielonego.
 
-Poniższy przykład generuje nowej zasady dostępu współdzielonego, która umożliwi posiadacza sygnatury dostępu Współdzielonego do dodawania komunikatów do kolejki i wygasa 100 minut od czasu, w którym zostały utworzone.
+Poniższy przykład generuje nowe zasady dostępu współdzielonego, które umożliwi posiadaczowi SAS Dodawanie komunikatów do kolejki i wygasa 100 minut po chwili utworzenia.
 
 ```javascript
 var startDate = new Date();
@@ -268,9 +266,9 @@ var queueSAS = queueSvc.generateSharedAccessSignature('myqueue', sharedAccessPol
 var host = queueSvc.host;
 ```
 
-Należy pamiętać, że informacji o hoście należy podać również, jak jest to wymagane, gdy właściciel sygnatury dostępu Współdzielonego podejmuje próbę dostępu do kolejki.
+Należy pamiętać, że informacje o hoście muszą być również podane, ponieważ są wymagane, gdy posiadacz SAS próbuje uzyskać dostęp do kolejki.
 
-Następnie aplikacja kliencka korzysta z sygnatury dostępu Współdzielonego za pomocą **QueueServiceWithSAS** wykonywania operacji dotyczących kolejki. Poniższy przykład łączy do kolejki i tworzy komunikat.
+Aplikacja kliencka następnie używa sygnatury dostępu współdzielonego z **QueueServiceWithSAS** do wykonywania operacji względem kolejki. Poniższy przykład nawiązuje połączenie z kolejką i tworzy komunikat.
 
 ```javascript
 var sharedQueueService = azure.createQueueServiceWithSas(host, queueSAS);
@@ -281,12 +279,12 @@ sharedQueueService.createMessage('myqueue', 'Hello world from SAS!', function(er
 });
 ```
 
-Ponieważ sygnatury dostępu Współdzielonego zostały wygenerowane z Dodawanie dostępu, jeśli zostanie podjęta próba zostały wprowadzone do odczytywania, aktualizowania lub usuwania wiadomości, czy zwracany błąd.
+Ze względu na to, że sygnatura dostępu współdzielonego została wygenerowana przy użyciu elementu Dodaj, Jeśli podjęto próbę odczytu, aktualizacji lub usunięcia komunikatów, zwracany jest błąd.
 
 ### <a name="access-control-lists"></a>Listy kontroli dostępu
-Do ustawienia zasad dostępu powiązanych z sygnaturą dostępu współdzielonego można również użyć listy kontroli dostępu (ACL, Access Control List). Jest to przydatne, jeśli chcesz umożliwić wielu klientom dostęp do kolejki, ale zapewnia różne zasady dostępu dla każdego klienta.
+Do ustawienia zasad dostępu powiązanych z sygnaturą dostępu współdzielonego można również użyć listy kontroli dostępu (ACL, Access Control List). Jest to przydatne, jeśli chcesz zezwolić wielu klientom na dostęp do kolejki, ale podać różne zasady dostępu dla każdego klienta.
 
-Lista ACL jest implementowana przy użyciu tablicy zasad dostępu z identyfikatorem skojarzonym z poszczególnymi zasadami. W poniższym przykładzie zdefiniowano dwie zasady; jeden dla "Użytkownik1" i jeden dla "Użytkownik2":
+Lista ACL jest implementowana przy użyciu tablicy zasad dostępu z identyfikatorem skojarzonym z poszczególnymi zasadami. W poniższym przykładzie zdefiniowano dwie zasady: jeden dla "Użytkownik1" i jeden dla "=":
 
 ```javascript
 var sharedAccessPolicy = {
@@ -303,7 +301,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-Poniższy przykład pobiera bieżące listy ACL dla **myqueue**, następnie dodaje nowe zasady przy użyciu **setQueueAcl**. W przypadku takiego podejścia:
+Poniższy przykład pobiera bieżącą listę ACL dla elementu **webqueue**, a następnie dodaje nowe zasady przy użyciu **setQueueAcl**. W przypadku takiego podejścia:
 
 ```javascript
 var extend = require('extend');
@@ -319,17 +317,17 @@ queueSvc.getQueueAcl('myqueue', function(error, result, response) {
 });
 ```
 
-Po ustawieniu listy ACL następnie można utworzyć na podstawie Identyfikatora zasad sygnatury dostępu Współdzielonego. W poniższym przykładzie jest tworzona nowa sygnatura dostępu współdzielonego dla użytkownika „user2”:
+Po ustawieniu listy ACL można utworzyć sygnaturę dostępu współdzielonego na podstawie identyfikatora zasad. W poniższym przykładzie jest tworzona nowa sygnatura dostępu współdzielonego dla użytkownika „user2”:
 
 ```javascript
 queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, kiedy znasz już podstawy usługi queue storage, skorzystaj z poniższych linków, aby dowiedzieć się więcej o bardziej skomplikowanych zadaniach magazynu.
+Teraz, gdy znasz już podstawy magazynu kolejek, Skorzystaj z poniższych linków, aby dowiedzieć się więcej o bardziej skomplikowanych zadaniach magazynu.
 
-* Odwiedź stronę [Blog zespołu usługi Azure Storage][Azure Storage Team Blog].
-* Odwiedź stronę [zestawu SDK usługi Azure Storage dla węzła] [ Azure Storage SDK for Node] repozytorium w witrynie GitHub.
+* Odwiedź [Blog zespołu odpowiedzialnego za usługę Azure Storage][Azure Storage Team Blog].
+* Odwiedź witrynę [Azure Storage SDK dla repozytorium węzłów][Azure Storage SDK for Node] w serwisie GitHub.
 
 
 
@@ -339,9 +337,9 @@ Teraz, kiedy znasz już podstawy usługi queue storage, skorzystaj z poniższych
 
 [Azure Portal]: https://portal.azure.com
 
-[Tworzenie aplikacji sieci web Node.js w usłudze Azure App Service](../../app-service/app-service-web-get-started-nodejs.md)
+[Tworzenie aplikacji sieci Web w języku Node. js w Azure App Service](../../app-service/app-service-web-get-started-nodejs.md)
 
-[Tworzenie i wdrażanie aplikacji Node.js w usłudze w chmurze platformy Azure](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
+[Kompilowanie i wdrażanie aplikacji node. js w usłudze w chmurze platformy Azure](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
 
 [Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
 

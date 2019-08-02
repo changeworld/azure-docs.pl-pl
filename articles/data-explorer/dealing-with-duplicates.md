@@ -1,30 +1,30 @@
 ---
-title: Obsługa zduplikowanych danych w Eksploratorze danych platformy Azure
-description: W tym temacie opisano różne podejścia do przeciwdziałania zduplikowanych danych, korzystając z Eksploratora danych usługi Azure.
+title: Obsługa zduplikowanych danych na platformie Azure Eksplorator danych
+description: W tym temacie przedstawiono różne podejścia do obsługi zduplikowanych danych w przypadku korzystania z usługi Azure Eksplorator danych.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60ec2b86e0205060f907f1fe39d084dca3aac1cd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445774"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608232"
 ---
-# <a name="handle-duplicate-data-in-azure-data-explorer"></a>Obsługa zduplikowanych danych w Eksploratorze danych platformy Azure
+# <a name="handle-duplicate-data-in-azure-data-explorer"></a>Obsługa zduplikowanych danych na platformie Azure Eksplorator danych
 
-Wysyłanie danych do chmury urządzeń Obsługa lokalnej pamięci podręcznej danych. W zależności od rozmiaru danych lokalnej pamięci podręcznej może być przechowywanie danych w celu dni lub nawet miesięcy. Chcesz chronić baz danych analitycznych z nieprawidłowo urządzeń, które ponownie wysłać dane w pamięci podręcznej i powodować duplikacji danych w bazie danych analitycznych. W tym temacie opisano najlepsze praktyki dotyczące obsługi zduplikowanych danych dla tego rodzaju scenariuszy.
+Urządzenia wysyłające dane do chmury utrzymują lokalną pamięć podręczną danych. W zależności od rozmiaru danych lokalna pamięć podręczna może przechowywać dane przez dni lub nawet miesiące. Chcesz chronić analityczne bazy danych przed nieprawidłowymi urządzeniami, które wysyłają ponownie dane z pamięci podręcznej i powodują duplikowanie danych w analitycznej bazie danych. W tym temacie opisano najlepsze rozwiązania dotyczące obsługi zduplikowanych danych dla tego typu scenariuszy.
 
-Najlepsze rozwiązanie w zakresie duplikacji danych uniemożliwia dublowania. Jeśli to możliwe należy rozwiązać ten problem wcześniej w potoku danych, zapisuje koszty związane z przenoszenie danych do potoku danych, co pozwala uniknąć zasobów podstawą przedstawiają analizę wydatków radzić sobie z zduplikowane dane pozyskane do systemu. W sytuacjach, w których nie można zmodyfikować w systemie źródłowym, istnieją różne sposoby radzenia sobie z tego scenariusza.
+Najlepszym rozwiązaniem dla duplikowania danych jest uniemożliwianie duplikowania. Jeśli to możliwe, należy rozwiązać problem wcześniej w potoku danych, co powoduje zaoszczędzenie kosztów związanych z przenoszeniem danych i potoku danych oraz uniknięcie wysyłania zasobów przy użyciu polecenia ping z duplikowanymi danymi pozyskanymi w systemie. Jednak w sytuacjach, w których nie można zmodyfikować systemu źródłowego, istnieją różne sposoby postępowania z tym scenariuszem.
 
 ## <a name="understand-the-impact-of-duplicate-data"></a>Zrozumienie wpływu zduplikowanych danych
 
-Monitoruj procent zduplikowanych danych. Po odnalezieniu procent zduplikowane dane można analizować zakres problemu i wpływu na działalność i wybrać odpowiednie rozwiązanie.
+Monitoruj procent zduplikowanych danych. Po odnalezieniu wartości procentowej zduplikowanych danych można analizować zakres problemu i wpływu na działalność biznesową oraz wybrać odpowiednie rozwiązanie.
 
-Przykładowe zapytanie, aby zidentyfikować procent zduplikowane rekordy:
+Przykładowe zapytanie umożliwiające zidentyfikowanie wartości procentowej zduplikowanych rekordów:
 
 ```kusto
 let _sample = 0.01; // 1% sampling
@@ -39,17 +39,17 @@ _data
 | extend duplicate_percentage = (duplicateRecords / _sample) / _totalRecords  
 ```
 
-## <a name="solutions-for-handling-duplicate-data"></a>Rozwiązania do obsługi zduplikowanych danych
+## <a name="solutions-for-handling-duplicate-data"></a>Rozwiązania obsługujące zduplikowane dane
 
-### <a name="solution-1-dont-remove-duplicate-data"></a>Rozwiązanie #1: Nie usuwaj zduplikowanych danych
+### <a name="solution-1-dont-remove-duplicate-data"></a>#1 rozwiązania: Nie usuwaj zduplikowanych danych
 
-Dowiedz się, Twoje wymagania biznesowe i tolerancję zduplikowanych danych. Niektóre zestawy danych można zarządzać za pomocą określonego procentu zduplikowanych danych. Jeśli zduplikowane dane nie ma duży wpływ, możesz zignorować swojej obecności. Zaletą nie usuwa zduplikowane dane to bez dodatkowych nakładów na wydajności procesu lub zapytanie wprowadzania.
+Zapoznaj się z wymaganiami biznesowymi i odpornością na zduplikowane dane. Niektóre zestawy danych mogą zarządzać określoną wartością procentową zduplikowanych danych. Jeśli zduplikowane dane nie mają istotnego wpływu, można zignorować jego obecność. Zaletą nieusuwania zduplikowanych danych jest brak dodatkowych nakładów na proces pozyskiwania lub wydajność zapytań.
 
-### <a name="solution-2-handle-duplicate-rows-during-query"></a>Rozwiązanie #2: Obsługa zduplikowane wiersze w zapytaniu
+### <a name="solution-2-handle-duplicate-rows-during-query"></a>#2 rozwiązania: Obsługuj zduplikowane wiersze podczas zapytania
 
-Innym rozwiązaniem jest, aby odfiltrować zduplikowane wiersze danych podczas zapytania. [ `arg_max()` ](/azure/kusto/query/arg-max-aggfunction) Zagregowane funkcja może służyć do filtrowania zduplikowanych rekordów i zwraca ostatni rekord na podstawie sygnatura czasowa (lub inną kolumnę). Zaletą tej metody jest szybsze przetwarzanie, ponieważ deduplikacja występuje podczas przeszukiwania. Ponadto wszystkie rekordy (także zduplikowanych) są dostępne do inspekcji i rozwiązywania problemów. Wadą korzystania `arg_max` funkcji jest dodatkowe przeszukiwania i obciążenie procesora CPU, za każdym razem, gdy dane są badane. W zależności od ilości danych, którego dotyczy kwerenda to rozwiązanie może stać się nie działa lub korzystanie z pamięci i będzie wymagać przełączanie na inne opcje.
+Kolejną opcją jest odfiltrowanie zduplikowanych wierszy w danych podczas zapytania. Funkcja [`arg_max()`](/azure/kusto/query/arg-max-aggfunction) agregująca może służyć do filtrowania duplikatów rekordów i zwracania ostatniego rekordu na podstawie sygnatury czasowej (lub innej kolumny). Zaletą korzystania z tej metody jest szybsze pozyskiwanie, ponieważ podczas wykonywania zapytania występuje nieduplikowanie. Ponadto wszystkie rekordy (w tym duplikaty) są dostępne do inspekcji i rozwiązywania problemów. Wadą korzystania `arg_max` z funkcji jest dodatkowy czas zapytania i obciążenie procesora za każdym razem, gdy są wykonywane zapytania dotyczące danych. W zależności od ilości danych, które są badane, to rozwiązanie może stać się niefunkcjonalne lub zużywać pamięć i będzie wymagało przełączenia na inne opcje.
 
-W poniższym przykładzie możemy wykonać zapytanie o ostatni rekord pozyskiwanych dla zestawu kolumn, które określają unikatowe rekordy:
+W poniższym przykładzie wysyłamy zapytanie do ostatniego rekordu pozyskanego dla zestawu kolumn, który określa unikatowe rekordy:
 
 ```kusto
 DeviceEventsAll
@@ -57,7 +57,7 @@ DeviceEventsAll
 | summarize hint.strategy=shuffle arg_max(EventDateTime, *) by DeviceId, EventId, StationId
 ```
 
-To zapytanie można także umieścić wewnątrz funkcji zamiast wysyła zapytanie bezpośrednio w tabeli:
+To zapytanie można także umieścić wewnątrz funkcji, zamiast bezpośrednio wysyłać zapytania do tabeli:
 
 ```kusto
 .create function DeviceEventsView
@@ -68,19 +68,19 @@ DeviceEventsAll
 }
 ```
 
-### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>Rozwiązanie #3: Filtrowanie duplikatów w procesie pozyskiwania
+### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>#3 rozwiązania: Filtruj duplikaty w procesie pozyskiwania
 
-Innym rozwiązaniem jest filtrowanie duplikatów w procesie pozyskiwania. System zignoruje zduplikowanych danych, podczas wprowadzania do tabel Kusto. Dane są pozyskiwane do tabeli przejściowej i skopiowany do innej tabeli po usunięciu zduplikowanych wierszy. Zaletą tego rozwiązania jest to znacznie zwiększa wydajność zapytań w porównaniu do poprzedniego rozwiązania. Wady obejmują czas zwiększenia pozyskiwania i koszty przechowywania dodatkowych danych.
+Innym rozwiązaniem jest filtrowanie duplikatów w procesie pozyskiwania. System ignoruje zduplikowane dane podczas pozyskiwania w tabelach Kusto. Dane są pozyskiwane w tabeli przemieszczania i kopiowane do innej tabeli po usunięciu zduplikowanych wierszy. Zaletą tego rozwiązania jest to, że wydajność zapytań znacznie się zwiększa w porównaniu do poprzedniego rozwiązania. Wady obejmują zwiększony czas pozyskiwania i dodatkowe koszty magazynowania danych. Dodatkowe rozwiązanie działa tylko wtedy, gdy duplikowanie nie jest jednocześnie pozyskiwane. Jeśli istnieje wiele współbieżnych operacji pozyskiwania zawierających zduplikowane rekordy, wszystkie mogą zostać pozyskane, ponieważ proces deduplikacji nie odnajdzie żadnych istniejących pasujących rekordów w tabeli.    
 
-Poniższy przykład przedstawia tę metodę:
+Poniższy przykład ilustruje tę metodę:
 
-1. Tworzenie innej tabeli za pomocą tego samego schematu:
+1. Utwórz kolejną tabelę z tym samym schematem:
 
     ```kusto
     .create table DeviceEventsUnique (EventDateTime: datetime, DeviceId: int, EventId: int, StationId: int)
     ```
 
-1. Tworzenie funkcji, aby odfiltrować zduplikowane rekordy, zapobiegających przyłączany nowych rekordów z nich, które wcześniej odebrane.
+1. Utwórz funkcję, aby odfiltrować zduplikowane rekordy przez odłączenie nowych rekordów z wcześniej pozyskanymi.
 
     ```kusto
     .create function RemoveDuplicateDeviceEvents()
@@ -97,9 +97,9 @@ Poniższy przykład przedstawia tę metodę:
     ```
 
     > [!NOTE]
-    > Sprzężeń są zależne od Procesora CPU, operacje i dodać dodatkowe obciążenia w systemie.
+    > Sprzężenia są operacjami związanymi z PROCESORem i Dodawanie dodatkowego obciążenia w systemie.
 
-1. Ustaw [zasad aktualizacji](/azure/kusto/management/update-policy) na `DeviceEventsUnique` tabeli. Zasady aktualizacji jest aktywowany, gdy nowe dane są umieszczane w `DeviceEventsAll` tabeli. Aparat Kusto automatycznie powoduje uruchomienie funkcji jako nowe [zakresów](/azure/kusto/management/extents-overview) są tworzone. Obejmuje przetwarzanie danych nowo utworzone. Polecenie odwzorowywały tabeli źródłowej (`DeviceEventsAll`), tabela docelowa (`DeviceEventsUnique`), a funkcja `RemoveDuplicatesDeviceEvents` ze sobą, aby utworzyć zasady aktualizacji.
+1. Ustaw [zasady aktualizacji](/azure/kusto/management/update-policy) w `DeviceEventsUnique` tabeli. Zasady aktualizacji są aktywowane, gdy nowe dane przechodzą do `DeviceEventsAll` tabeli. Aparat Kusto będzie automatycznie wykonywał funkcję w miarę tworzenia nowych [zakresów](/azure/kusto/management/extents-overview) . Przetwarzanie jest ograniczone do nowo utworzonych danych. Następujące polecenie powiąże tabelę źródłową (`DeviceEventsAll`), tabelę docelową (`DeviceEventsUnique`) i funkcję `RemoveDuplicatesDeviceEvents` w celu utworzenia zasad aktualizacji.
 
     ```kusto
     .alter table DeviceEventsUnique policy update
@@ -107,9 +107,9 @@ Poniższy przykład przedstawia tę metodę:
     ```
 
     > [!NOTE]
-    > Zasady aktualizacji rozszerza czas trwania pozyskiwania, ponieważ dane są filtrowane podczas pozyskiwania, a następnie dwa razy pozyskane (Aby `DeviceEventsAll` tabeli i `DeviceEventsUnique` tabeli).
+    > Zasady aktualizacji rozszerzają czas pozyskiwania, ponieważ dane są filtrowane podczas pozyskiwania, a następnie pozyskane dwukrotnie (do `DeviceEventsAll` tabeli i `DeviceEventsUnique` tabeli).
 
-1. (Opcjonalnie) Ustaw niższy przechowywanie danych na `DeviceEventsAll` tabeli, aby uniknąć przechowywania kopii danych. Wybierz liczbę dni, w zależności od ilości danych i czas, aby zachować dane dotyczące rozwiązywania problemów. Możesz ustawić na `0d` dni przechowywania, aby zapisać KWS i zwiększyć wydajność, ponieważ dane nie przekazywane do magazynu.
+1. Obowiązkowe Ustaw niższe przechowywanie danych w `DeviceEventsAll` tabeli, aby uniknąć przechowywania kopii danych. Wybierz liczbę dni w zależności od ilości danych i czas przechowywania danych na potrzeby rozwiązywania problemów. Możesz ustawić tę wartość na `0d` dni przechowywania, aby zaoszczędzić KWS i zwiększyć wydajność, ponieważ dane nie są przekazywane do magazynu.
 
     ```kusto
     .alter-merge table DeviceEventsAll policy retention softdelete = 1d
@@ -117,9 +117,9 @@ Poniższy przykład przedstawia tę metodę:
 
 ## <a name="summary"></a>Podsumowanie
 
-Duplikacji danych mogą być obsługiwane na wiele sposobów. Ocenę opcji dokładnie, biorąc pod uwagę ceny do wydajności, aby określić poprawną metodę dla Twojej firmy.
+Duplikowanie danych może być obsługiwane na wiele sposobów. Dokładnie Oceń opcje, uwzględniając ceny i wydajność, aby określić poprawną metodę dla firmy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)

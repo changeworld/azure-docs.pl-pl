@@ -1,19 +1,18 @@
 ---
 title: Planowanie wdrożenia Azure Files | Microsoft Docs
 description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdrożenia Azure Files.
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6282ce426b08c4ad9c44bead0bd4ec3d259f65fe
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 93c36ccb244931c12d8b038f448fbda4eff77f16
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501432"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721709"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -98,7 +97,7 @@ Obecnie nie można bezpośrednio konwertować między standardowym udziałem pli
 > [!IMPORTANT]
 > Udziały plików w warstwie Premium są dostępne tylko w programie LRS i są dostępne w większości regionów, które oferują konta magazynu. Aby dowiedzieć się, czy w Twoim regionie są obecnie dostępne udziały plików w warstwie Premium, zobacz stronę [dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=storage) na platformie Azure.
 
-### <a name="provisioned-shares"></a>Udostępnione udziały
+#### <a name="provisioned-shares"></a>Udostępnione udziały
 
 Udziały plików w warstwie Premium są udostępniane na podstawie stałego współczynnika GiB/IOPS/przepływności. Dla każdego zainicjowanej GiB udział zostanie wystawiony przez wiele operacji we/wy i 0,1 MiB/s do maksymalnej liczby limitów na udział. Minimalną dozwoloną alokacją jest 100 GiB z minimalnymi operacjami IOPS/przepływności.
 
@@ -135,9 +134,9 @@ W poniższej tabeli przedstawiono kilka przykładów tych wzorów dla rozmiarów
 > [!NOTE]
 > Wydajność udziałów plików zależy od ograniczeń sieci maszynowych, dostępnej przepustowości sieci, rozmiarów we/wy, równoległości, między wieloma innymi czynnikami. Aby osiągnąć maksymalną skalę wydajności, należy rozłożyć obciążenie na wiele maszyn wirtualnych. Zapoznaj się [z przewodnikiem rozwiązywania problemów](storage-troubleshooting-files-performance.md) w przypadku niektórych typowych problemów z wydajnością i obejść.
 
-### <a name="bursting"></a>Rozszerzanie możliwości
+#### <a name="bursting"></a>Rozszerzanie możliwości
 
-Udziały plików w warstwie Premium mogą zwiększać liczbę operacji we/wy na sekundę. Rozliczanie jest zautomatyzowane i działa na podstawie systemu kredytowego. Przeszukiwanie odbywa się na podstawie najlepszego nakładu pracy, a limit graniczny nie jest gwarancją, udziały  plików mogą przekroczyć limit.
+Udziały plików w warstwie Premium mogą zwiększać liczbę operacji we/wy na sekundę. Rozliczanie jest zautomatyzowane i działa na podstawie systemu kredytowego. Przeszukiwanie odbywa się na podstawie najlepszego nakładu pracy, a limit graniczny nie jest gwarancją, udziały plików mogą przekroczyć limit.
 
 Kredyty są gromadzone w zasobniku, gdy ruch dla udziału plików jest poniżej liczby operacji wejścia/wyjścia na sekundę. Na przykład udział GiB 100 ma 100 liczby operacji wejścia/wyjścia na sekundę. Jeśli rzeczywisty ruch w udziale był 40 operacji we/wy dla określonego interwału 1 sekund, wówczas liczba nieużywanych operacji 60 we/wy na sekundę jest księgowana w zasobniku serii. Te kredyty zostaną następnie użyte później, gdy operacje przekroczą liczbę IOPs linii bazowej.
 
@@ -206,11 +205,15 @@ Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie u
 
 Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W niektórych regionach jest dostępny z limitem 100 TiB, te regiony są wymienione w poniższej tabeli:
 
-|Region  |Obsługiwana nadmiarowość  |Obsługuje istniejące konta magazynu  |
-|---------|---------|---------|
-|Azja Południowo-Wschodnia     |LRS|Nie         |
-|Europa Zachodnia     |LRS, ZRS|Nie         |
-|Zachodnie stany USA 2     |LRS, ZRS|Nie         |
+|Region |Obsługiwana nadmiarowość |Obsługuje istniejące konta magazynu |Obsługa portalu *   |
+|-------|---------|---------|---------|
+|Australia Wschodnia  |LRS|Nie         |Tak|
+|Francja Środkowa  |LRS|Nie         |Jeszcze nie|
+|Azja Południowo-Wschodnia  |LRS, ZRS|Nie         |Tylko LRS, ZRS — jeszcze nie|
+|Europa Zachodnia     |LRS, ZRS|Nie       |Tak|
+|Zachodnie stany USA 2       |LRS, ZRS|Nie         |Tak|
+
+\* W przypadku regionów bez obsługi portalu można nadal używać programu PowerShell lub interfejsu wiersza polecenia platformy Azure do tworzenia większych udziałów TiB. Altenatively, Utwórz nowy udział za pośrednictwem portalu bez określania limitu przydziału. Spowoduje to utworzenie udziału o domyślnym rozmiarze 100 TiB, który można później zaktualizować za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 Aby pomóc nam określić priorytety nowych regionów i funkcji, Wypełnij tę [ankietę](https://aka.ms/azurefilesatscalesurvey).
 
@@ -239,7 +242,7 @@ Aby sprawdzić stan rejestracji, możesz uruchomić następujące polecenie:
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Zaktualizowanie stanu do zarejestrowanego może potrwać do 15 minut. Po zarejestrowaniu stanu powinno być możliwe korzystanie z tej funkcji.
+Zaktualizowanie stanu do zarejestrowanego może potrwać do 15minut. Po zarejestrowaniustanu powinno być możliwe korzystanie z tej funkcji.
 
 ### <a name="use-larger-file-shares"></a>Użyj większych udziałów plików
 
@@ -260,7 +263,7 @@ Istnieje wiele łatwych opcji przesyłania zbiorczego danych z istniejącego udz
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy to dobrze znane narzędzie do kopiowania, które jest dostarczane z systemami Windows i Windows Server. Robocopy może służyć do transferowania danych do Azure Files przez zainstalowanie udziału plików lokalnie, a następnie użycie zainstalowanej lokalizacji jako miejsca docelowego w poleceniu Robocopy.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych do i z Azure Files, a także do usługi Azure Blob Storage przy użyciu prostych poleceń z optymalną wydajnością.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md)
 * [Wdrażanie Azure Files](storage-files-deployment-guide.md)
 * [Wdrażanie Azure File Sync](storage-sync-files-deployment-guide.md)

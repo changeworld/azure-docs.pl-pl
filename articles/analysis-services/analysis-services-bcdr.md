@@ -1,39 +1,39 @@
 ---
-title: Usługa Azure Analysis Services, wysokiej dostępności | Dokumentacja firmy Microsoft
-description: Zapewnienie wysokiej dostępności usług Azure Analysis Services.
+title: Azure Analysis Services wysoka dostępność | Microsoft Docs
+description: Zapewnienie, Azure Analysis Services wysoka dostępność.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 51a0f560a0e4b6ff791d5ed3f9f221eb2eeb9b4d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9947ab24262c6b92457bcd858bbf03d21eb317a2
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036048"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619313"
 ---
-# <a name="analysis-services-high-availability"></a>Analiza usługi wysokiej dostępności
+# <a name="analysis-services-high-availability"></a>Analysis Services wysoka dostępność
 
-W tym artykule opisano, zapewniając wysoką dostępność dla serwerów usług Azure Analysis Services. 
+W tym artykule opisano sposób zapewnienia wysokiej dostępności dla serwerów Azure Analysis Services. 
 
 ## <a name="assuring-high-availability-during-a-service-disruption"></a>Zapewnienie wysokiej dostępności podczas przerw w działaniu usługi
 
-Chociaż rzadko, w centrum danych platformy Azure może mieć awarię. Taka awaria powoduje zakłócenia działania firmy, która może trwać kilka minut lub może trwać wiele godzin. Wysoka dostępność w większości przypadków odbywa się przy użyciu nadmiarowość serwera. Za pomocą usług Azure Analysis Services można osiągnąć nadmiarowość, tworząc dodatkowe, pomocnicze serwery w jednym lub kilku regionach. Podczas tworzenia nadmiarowych serwerów, aby mieć pewność, danych i metadanych na tych serwerach są zsynchronizowane z serwerem w regionie, który przeszedł do trybu offline, możesz:
+Czasami centrum danych platformy Azure może mieć awarię. Gdy wystąpi awaria, powoduje to zakłócenia działania firmy, które może trwać kilka minut, lub może trwać w godzinach. Wysoka dostępność jest najczęściej osiągana z nadmiarowością serwera. Za pomocą Azure Analysis Services można uzyskać nadmiarowość, tworząc dodatkowe, pomocnicze serwery w jednym lub kilku regionach. Podczas tworzenia nadmiarowych serwerów, aby zapewnić, że dane i metadane na tych serwerach są zsynchronizowane z serwerem w regionie, który został przełączony w tryb offline, można:
 
-* Wdrażaj modele na serwerach nadmiarowych w innych regionach. Ta metoda wymaga przetwarzania danych na serwerze podstawowym i serwerach nadmiarowych w równoległych, zapewniając wszystkie serwery są zsynchronizowane.
+* Wdrażaj modele w nadmiarowych serwerach w innych regionach. Ta metoda wymaga przetwarzania danych zarówno na serwerze podstawowym, jak i w sposób nadmiarowy, co zapewnia, że wszystkie serwery są zsynchronizowane.
 
-* [Kopia zapasowa](analysis-services-backup.md) baz danych z serwera podstawowego i przywracania na serwerach nadmiarowych. Na przykład można zautomatyzować kopii zapasowych w nocy do usługi Azure storage i przywracania na innych serwerach nadmiarowych w innych regionach. 
+* [Utwórz kopię zapasową](analysis-services-backup.md) baz danych z serwera podstawowego i przywróć je na serwerach nadmiarowych. Na przykład można zautomatyzować kopie zapasowe nocne do usługi Azure Storage, a następnie przywrócić inne nadmiarowe serwery w innych regionach. 
 
-W obu przypadkach Jeśli serwer podstawowy ulegnie awarii, należy zmienić parametry połączenia w raportowania klientom na łączenie się z serwerem w różnych regionalnych centrów danych. Tej zmiany należy rozważyć tylko w ostateczności i występuje tylko w przypadku poważnej awarii regionalnego centrum danych. Jest bardziej prawdopodobne, awarii centrum danych podstawowego serwera hostingu przybyły wróci do trybu online przed uaktualnieniem połączeń na wszystkich klientach. 
+W obu przypadkach, jeśli serwer podstawowy ulegnie awarii, należy zmienić parametry połączenia w klientach raportowania, aby połączyć się z serwerem w innym regionalnym centrum danych. Ta zmiana powinna być traktowana jako Ostatnia i tylko wtedy, gdy wystąpi awaria regionalnego centrum danych. Prawdopodobnie awaria centrum danych, w którym serwer podstawowy zostałby powracał do trybu online, zanim będzie można zaktualizować połączenia na wszystkich klientach. 
 
-Aby uniknąć konieczności zmiany parametrów połączenia na klientach raportowania, należy utworzyć serwer [alias](analysis-services-server-alias.md) dla podstawowego serwera. Jeśli serwer podstawowy ulegnie awarii, możesz zmienić aliasu, aby wskazać nadmiarowe serwer w innym regionie. Można zautomatyzować alias na nazwę serwera, tworząc sprawdzenie kondycji punktu końcowego na serwerze podstawowym. W przypadku niepowodzenia sprawdzania kondycji tego samego punktu końcowego można nakazać serwerowi nadmiarowy w innym regionie. 
+Aby uniknąć konieczności zmiany parametrów połączenia na klientach raportowania, można utworzyć [alias](analysis-services-server-alias.md) serwera dla serwera podstawowego. Jeśli serwer podstawowy ulegnie awarii, można zmienić alias tak, aby wskazywał serwer nadmiarowy w innym regionie. Można zautomatyzować alias do nazwy serwera przez kodowanie kontroli kondycji punktu końcowego na serwerze podstawowym. Jeśli sprawdzanie kondycji nie powiedzie się, ten sam punkt końcowy może kierować do nadmiarowego serwera w innym regionie. 
 
 ## <a name="related-information"></a>Informacje pokrewne
 
-[Kopia zapasowa i przywracanie](analysis-services-backup.md)   
-[Zarządzanie usług Azure Analysis Services](analysis-services-manage.md)   
-[Alias serwera nazw](analysis-services-server-alias.md) 
+[Tworzenie kopii zapasowej i przywracanie](analysis-services-backup.md)   
+[Zarządzaj Azure Analysis Services](analysis-services-manage.md)   
+[Nazwy serwerów aliasów](analysis-services-server-alias.md) 
 

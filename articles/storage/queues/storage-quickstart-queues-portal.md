@@ -1,20 +1,19 @@
 ---
 title: Przewodnik Szybki start platformy Azure — tworzenie kolejki w usłudze Azure Storage przy użyciu witryny Azure Portal | Microsoft Docs
-description: W tym przewodniku Szybki start utworzysz kolejkę przy użyciu witryny Azure Portal. Następnie przy użyciu witryny Azure portal, aby dodać wiadomość, wyświetlanie właściwości komunikatu i Usuń komunikat z kolejki.
-services: storage
+description: W tym przewodniku Szybki start utworzysz kolejkę przy użyciu witryny Azure Portal. Następnie użyj Azure Portal, aby dodać komunikat, wyświetlić właściwości komunikatu i usunąć z kolejki komunikat.
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 03/06/2019
 ms.author: mhopkins
+ms.date: 03/06/2019
+ms.service: storage
+ms.subservice: queues
+ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: 3b355aa2f3fd5e381ca922ada1444dd281fe74ec
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d2f7b01c03b877a3dede496fc02f0d0cc9525cef
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138273"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721332"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Szybki start: Tworzenie kolejki i dodawanie komunikatu w witrynie Azure Portal
 

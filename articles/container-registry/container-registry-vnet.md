@@ -8,22 +8,25 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310387"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619884"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Ograniczanie dostępu do usługi Azure Container Registry przy użyciu sieci wirtualnej platformy Azure lub reguł zapory
 
 [Usługa azure Virtual Network](../virtual-network/virtual-networks-overview.md) zapewnia bezpieczną i prywatną sieć dla zasobów platformy Azure i lokalnych. Ograniczając dostęp do prywatnego rejestru kontenerów platformy Azure z sieci wirtualnej platformy Azure, upewnij się, że tylko zasoby w sieci wirtualnej mają dostęp do rejestru. W przypadku scenariuszy obejmujących wiele lokalizacji można także skonfigurować reguły zapory w taki sposób, aby zezwalały na dostęp do rejestru tylko z określonych adresów IP.
 
-W tym artykule przedstawiono dwa scenariusze tworzenia reguł dostępu do sieci w celu ograniczenia dostępu do usługi Azure Container Registry: z maszyny wirtualnej wdrożonej w sieci wirtualnej lub z publicznego adresu IP maszyny wirtualnej.
+W tym artykule przedstawiono dwa scenariusze konfigurowania zasad dostępu do sieci dla ruchu przychodzącego w rejestrze kontenerów: z maszyny wirtualnej wdrożonej w sieci wirtualnej lub z publicznego adresu IP maszyny wirtualnej.
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej, a niektóre [ograniczenia mają zastosowanie](#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 >
+
+Jeśli zamiast tego musisz skonfigurować reguły dostępu dla zasobów, aby uzyskać dostęp do rejestru kontenerów za zaporą, zobacz [Konfigurowanie reguł dostępu do usługi Azure Container Registry za zaporą](container-registry-firewall-access-rules.md).
+
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
@@ -39,7 +42,7 @@ W tym artykule przedstawiono dwa scenariusze tworzenia reguł dostępu do sieci 
 
 * Aby skorzystać z kroków interfejsu wiersza polecenia platformy Azure w tym artykule, wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.58 lub nowszej. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
-* Jeśli nie masz jeszcze rejestru kontenerów, utwórz go (wymagana jednostka SKU Premium) i wypchnij przykładowy obraz, taki `hello-world` jak z usługi Docker Hub. Na przykład użyj [Azure Portal][quickstart-portal] or the [Azure CLI][quickstart-cli] do utworzenia rejestru. 
+* Jeśli nie masz jeszcze rejestru kontenerów, utwórz go (wymagana jednostka SKU Premium) i wypchnij przykładowy obraz, taki `hello-world` jak z usługi Docker Hub. Na przykład użyj [Azure Portal][quickstart-portal] lub [interfejsu wiersza polecenia platformy Azure][quickstart-cli] , aby utworzyć rejestr. 
 
 * Jeśli chcesz ograniczyć dostęp do rejestru przy użyciu sieci wirtualnej w innej subskrypcji platformy Azure, musisz zarejestrować dostawcę zasobów dla Azure Container Registry w tej subskrypcji. Przykład:
 
@@ -335,7 +338,7 @@ Aby wyświetlić listę reguł sieci skonfigurowanych dla rejestru, uruchom nast
 az acr network-rule list--name mycontainerregistry 
 ```
 
-Dla każdej skonfigurowanej reguły Uruchom polecenie [AZ ACR Network-Rule Remove][az-acr-network-rule-remove] , aby je usunąć. Przykład:
+Dla każdej skonfigurowanej reguły Uruchom polecenie [AZ ACR Network-Rule Remove][az-acr-network-rule-remove] , aby je usunąć. Na przykład:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.
@@ -352,7 +355,7 @@ az acr network-rule remove \
   --ip-address 23.45.1.0/24
 ```
 
-#### <a name="allow-access"></a>Zezwalaj na dostęp
+#### <a name="allow-access"></a>Zezwól na dostęp
 
 Zastąp nazwę rejestru następującym poleceniem [AZ ACR Update][az-acr-update] :
 ```azurecli

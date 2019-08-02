@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
 ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68311870"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatyzowanie kompilacji i konserwacji obrazów kontenerów za pomocą zadań ACR
@@ -50,7 +50,7 @@ W poniższej tabeli przedstawiono kilka przykładów obsługiwanych lokalizacji 
 | Podfolder usługi GitHub | Pliki znajdujące się w podfolderze repozytorium GitHub. Przykład przedstawia kombinację specyfikacji gałęzi i podfolderu. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | Plik tar zdalnego | Pliki skompresowanego Archiwum na zdalnym serwerze WebServer. | `http://remoteserver/myapp.tar.gz` |
 
-Zadania ACR są zaprojektowane jako pierwotny cykl życia kontenera. Na przykład Zintegruj zadania ACR w rozwiązaniu CI/CD. Wykonując polecenie [AZ login][az-login] with a [service principal][az-login-service-principal], rozwiązanie Ci/CD może następnie wydać polecenia [AZ ACR Build][AZ-ACR-Build] , aby uruchomić kompilacje obrazu.
+Zadania ACR są zaprojektowane jako pierwotny cykl życia kontenera. Na przykład Zintegruj zadania ACR w rozwiązaniu CI/CD. Wykonanie polecenia [AZ login][az-login] z jednostką [usługi][az-login-service-principal]powoduje, że rozwiązanie Ci/CD może wydać polecenie [AZ ACR Build][az-acr-build] , aby uruchomić kompilacje obrazu.
 
 Dowiedz się, jak używać szybkich zadań w pierwszym samouczku ACR Tasks, [tworzyć obrazy kontenerów w chmurze za pomocą zadań Azure Container Registry](container-registry-tutorial-quick-task.md).
 
@@ -67,7 +67,7 @@ Dowiedz się, jak wyzwolić kompilacje w ramach zatwierdzenia kodu źródłowego
 
 Możliwości ACR zadania, aby naprawdę ulepszyć przepływ pracy kompilacji kontenera, pochodzą z możliwości wykrywania aktualizacji obrazu podstawowego. Po wypchnięciu zaktualizowanego obrazu podstawowego do rejestru lub zaktualizowaniu obrazu podstawowego w repozytorium publicznym, takim jak w usłudze Docker Hub, ACR zadania mogą automatycznie kompilować wszystkie obrazy aplikacji na ich podstawie.
 
-Obrazy kontenerów można w szerokim zakresie klasyfikować do obrazów *podstawowych* i obrazów *aplikacji* . Obrazy podstawowe zazwyczaj obejmują system operacyjny i platformy aplikacji, na których jest skompilowana aplikacja, oraz inne dostosowania. Te obrazy podstawowe są zwykle oparte na publicznych obrazach nadrzędnych, na przykład: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][Base-dotnet]lub [Node. js][base-node]. Kilka obrazów aplikacji może współużytkować wspólny obraz podstawowy.
+Obrazy kontenerów można w szerokim zakresie klasyfikować do obrazów *podstawowych* i obrazów *aplikacji* . Obrazy podstawowe zazwyczaj obejmują system operacyjny i platformy aplikacji, na których jest skompilowana aplikacja, oraz inne dostosowania. Te obrazy podstawowe są zwykle oparte na publicznych obrazach nadrzędnych, na przykład: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet]lub [Node. js][base-node]. Kilka obrazów aplikacji może współużytkować wspólny obraz podstawowy.
 
 W przypadku aktualizowania obrazu systemu operacyjnego lub aplikacji w ramach utrzymującego się elementu przez funkcję, na przykład z krytyczną poprawką zabezpieczeń systemu operacyjnego, należy również zaktualizować obrazy podstawowe w celu uwzględnienia poprawki krytycznej. Każdy obraz aplikacji należy również ponownie skompilować, aby uwzględnić te prefiksy nadrzędne teraz zawarte w obrazie podstawowym.
 

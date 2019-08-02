@@ -1,7 +1,7 @@
 ---
-title: Interfejs Academic Graph atrybutów jednostki - interfejsu Academic Knowledge API
+title: Parametry jednostki grafu akademickiego — Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Więcej informacji na temat atrybutów jednostki, których można używać z Academic Graph w interfejsu Academic Knowledge API.
+description: Dowiedz się więcej na temat atrybutów jednostki, których można użyć z wykresem akademickim w Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,31 +10,32 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 485775660ecfdf2291365ab98c9188295ea2cbde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 596ce35a0d744691edd75d6071d4758691e0031b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61340183"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705030"
 ---
-# <a name="entity-attributes"></a>Atrybuty obiektu:
+# <a name="entity-attributes"></a>Atrybuty jednostki
 
-Interfejs academic graph składa się z 7 typów jednostek. Wszystkie jednostki mają Identyfikatora jednostki i typ jednostki.
+Wykres akademicki składa się z 7 typów jednostek. Wszystkie jednostki będą mieć identyfikator jednostki i typ jednostki.
 
-## <a name="common-entity-attributes"></a>Wspólne atrybuty jednostki
-Name (Nazwa)    |Opis                |Typ       | Operacje
+## <a name="common-entity-attributes"></a>Typowe atrybuty jednostki
+Name (Nazwa)    |Opis                |Type       | Operacje
 ------- | ------------------------- | --------- | ----------------------------
-Identyfikator      |Identyfikator jednostki                  |Int64      |Równa się
-Ty      |Typ jednostki                |Wyliczenia   |Równa się
+Id      |Identyfikator jednostki                  |Int64      |Równa się
+Br      |Typ jednostki                |Wyliczenia   |Równa się
 
-## <a name="entity-type-enum"></a>Jednostka typu enum
+## <a name="entity-type-enum"></a>Wyliczenie typu jednostki
 Name (Nazwa)                                                            |value
 ----------------------------------------------------------------|-----
 [Dokument](PaperEntityAttributes.md)                               |0
 [Autor](AuthorEntityAttributes.md)                             |1
 [Dziennik](JournalEntityAttributes.md)                           |2
-[Seria konferencji](JournalEntityAttributes.md)                 |3
+[Seria konferencyjna](JournalEntityAttributes.md)                 |3
 [Wystąpienie konferencji](ConferenceInstanceEntityAttributes.md)    |4
 [Przynależność](AffiliationEntityAttributes.md)                   |5
-[Zakres badań](FieldsOfStudyEntityAttributes.md)                      |6
+[Pole analizy](FieldsOfStudyEntityAttributes.md)                      |6
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: fdc130a7ac13e1cc551c50a7ab284ff640ecbbe4
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: c52b41c4e6d0618b4df9b2aed985bbd22d89f419
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305774"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567190"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -99,7 +98,7 @@ Istnieje kilka obejść, które służą do ograniczania tych problemów, z któ
 - Użyj [opcji zapytania (Optymalizacja dla...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) , aby zastąpić rzeczywistą wartość parametru wartością typowego parametru, która tworzy dobry plan dla większości możliwości wartości parametrów.   Ta opcja wymaga dobrego poznania optymalnych wartości parametrów i skojarzonych cech planu.
 - Użyj [opcji (Optymalizuj dla nieznane)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) warunek zapytania, aby zastąpić rzeczywistą wartość parametru w wymianie przy użyciu średniej gęstości wektora. Innym sposobem jest przechwycenie przychodzących wartości parametrów do zmiennych lokalnych, a następnie użycie zmiennych lokalnych w predykatach zamiast używania samych parametrów. Średnia gęstość musi być *wystarczająca* dla tej konkretnej poprawki.
 - Wyłącz wykrywanie parametrów całkowicie za pomocą wskazówki zapytania [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .
-- Użyj wskazówki zapytania [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) , aby zapobiec ponownym kompilacjom w pamięci podręcznej. W tym obejść  założono, że jest to ten sam plan wspólny, który jest już w pamięci podręcznej. Możesz również wyłączyć automatyczne aktualizacje w ramach statystyk, aby zmniejszyć prawdopodobieństwo wykluczenia dobrego planu i nowego nieprawidłowego planu.
+- Użyj wskazówki zapytania [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) , aby zapobiec ponownym kompilacjom w pamięci podręcznej. W tym obejść założono, że jest to *ten sam plan* wspólny, który jest już w pamięci podręcznej. Możesz również wyłączyć automatyczne aktualizacje w ramach statystyk, aby zmniejszyć prawdopodobieństwo wykluczenia dobrego planu i nowego nieprawidłowego planu.
 - Wymuś plan jawnie za pomocą wskazówki zapytania [use plan](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) (jawnie określając, przez ustawienie określonego planu przy użyciu magazynu zapytań lub przez włączenie [dostrajania automatycznego](sql-database-automatic-tuning.md).
 - Zastąp pojedynczą procedurę z zagnieżdżonym zestawem procedur, które mogą być używane na podstawie logiki warunkowej i skojarzonych wartości parametrów.
 - Utwórz alternatywny sposób wykonywania ciągów dynamicznych do definicji procedury statycznej.
@@ -234,7 +233,7 @@ Na koniec Jeśli nie ma elementów, które mogą zwiększyć wydajność bazy da
 
 Można zmienić kod aplikacji, aby bardziej optymalnie korzystać z bazy danych, zmienić indeksy, zaplanować plany lub użyć wskazówek, aby ręcznie dostosować bazę danych do obciążenia. Znajdź wskazówki i porady dotyczące dostrajania ręcznego i ponownego zapisywania kodu w [temacie Wskazówki dotyczące wydajności](sql-database-performance-guidance.md) .
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby włączyć dostrajanie automatyczne w Azure SQL Database i zezwolić funkcji dostrajania automatycznego w pełni zarządzać obciążeniem, zobacz [Włączanie dostrajania automatycznego](sql-database-automatic-tuning-enable.md).
 - Aby skorzystać z dostrajania ręcznego, możesz przejrzeć [zalecenia dotyczące dostrajania w Azure Portal](sql-database-advisor-portal.md) i ręcznie zastosować te, które zwiększają wydajność zapytań.

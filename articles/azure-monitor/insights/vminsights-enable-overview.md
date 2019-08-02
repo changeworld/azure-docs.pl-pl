@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 07/30/2019
 ms.author: magoedte
-ms.openlocfilehash: f2c6c872abf7525a80856cd37c1bb9358cf91217
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 039a4db11adf66e0c28826106df5845b42fedef5
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489422"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688248"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — Omówienie
 
@@ -84,7 +84,11 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux obsługiwane p
 |Windows Server 2016 | X | X | X |
 |Windows Server 2012 R2 | X | X | X |
 |Windows Server 2012 | X | X | |
-|Windows Server 2008 R2 | X | X| |
+|Windows Server 2008 R2 | X | X|  |
+|Windows 10 w wersji 1803 | X | X | |
+|Windows 8.1 | X | X | |
+|Windows 8 | X | X | |
+|Windows 7 z dodatkiem SP1 | X | X | |
 |Red Hat Enterprise Linux (RHEL) 6, 7| X | X| X |
 |Ubuntu 14,04, 16,04, 18,04 | X | X | X |
 |CentOS Linux 6, 7 | X | X | X |
@@ -156,7 +160,7 @@ W poniższej tabeli opisano połączone źródła obsługiwanych przez funkcję 
 | Połączone źródło | Obsługiwane | Opis |
 |:--|:--|:--|
 | Agenci dla systemu Windows | Tak | Wraz z [agentem log Analytics dla systemu Windows](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Windows potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
-| Agenci dla systemu Linux | Yes | Wraz z [agentem log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Linux potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
+| Agenci dla systemu Linux | Tak | Wraz z [agentem log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Linux potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
 | Grupa zarządzania programu System Center Operations Manager | Nie | |
 
 Agenta zależności można pobrać z następujących lokalizacji:
@@ -242,6 +246,6 @@ Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zob
 
 Teraz, gdy włączono monitorowanie dla maszyny wirtualnej, informacje o monitorowaniu są dostępne do analizy w Azure Monitor dla maszyn wirtualnych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się, jak korzystać z funkcji Health, zobacz [widok usługi Azure Monitor kondycji maszyn wirtualnych](vminsights-health.md). Aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych mapy](vminsights-maps.md).

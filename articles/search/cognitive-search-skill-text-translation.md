@@ -1,6 +1,6 @@
 ---
 title: Umiejętność wyszukiwania w tłumaczeniach tekstu — Azure Search
-description: Oblicza tekst, a dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy w potoku wzbogacenia Azure Search.
+description: Oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy w potoku wzbogacenia Azure Search.
 services: search
 manager: briansmi
 author: careyjmac
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cmacdo
 ms.custom: seodec2018
-ms.openlocfilehash: 0268a16ecc07d578e1e3dc2b15ad9208509c2a8c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c267d6b2b5a8606c8caaba15c9316a8dbcb989b9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351371"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698833"
 ---
-#   <a name="text-translation-cognitive-skill-preview"></a>Umiejętność tłumaczenia tekstu (wersja zapoznawcza)
+#   <a name="text-translation-cognitive-skill"></a>Umiejętność tłumaczenia tekstu
 
-Umiejętność **tłumaczenia tekstu** oblicza tekst, a dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy. Ta umiejętność używa [interfejs API tłumaczenia tekstu w usłudze translator v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) dostępnych w Cognitive Services.  Obecnie dostępne w najnowszej Azure Search ogólnie dostępnej wersji interfejsu API, jest uważane za dostępne w wersji zapoznawczej i powinny być traktowane jako takie do momentu, gdy ogłoszono ogólnie.
+Umiejętność **tłumaczenia tekstu** oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy. Ta umiejętność używa [interfejs API tłumaczenia tekstu w usłudze translator v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) dostępnych w Cognitive Services.
 
 Ta funkcja jest przydatna, jeśli oczekujesz, że dokumenty mogą nie być w jednym języku, a w takim przypadku można znormalizować tekst do jednego języka przed indeksowaniem wyszukiwania, przetłumacząc go.  Jest on również przydatny w przypadku przypadków użycia lokalizacji, w których można chcieć mieć kopie tego samego tekstu w wielu językach.
 

@@ -1,7 +1,7 @@
 ---
-title: Jak używać uczeń konwersacji z innymi bot tworzenie technologii — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Jak używać Conversation Learner z innymi technologiami kompilowania bot — Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak używać uczeń konwersacji z botem, inne technologie do tworzenia.
+description: Dowiedz się, jak używać Conversation Learner z innymi technologiami kompilowania bot.
 services: cognitive-services
 author: mattm
 manager: larsliden
@@ -10,126 +10,127 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: nitinme
-ms.openlocfilehash: d6af927e395532e43c7cc51c39665e2e42ac6781
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: c964c62c34f952a547d077e93e7bb4d0eb7b192d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389973"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703678"
 ---
-# <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>Jak używać uczeń konwersacji z botem, inne technologie do tworzenia
+# <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>Jak używać Conversation Learner z innymi technologiami tworzenia bot
 
-W tym samouczku opisano, jak używać uczeń konwersacji z botem, inne technologie do tworzenia i jak pamięci (lub stan) mogą być współużytkowane między tych technologii. 
+W tym samouczku opisano, jak używać Conversation Learner z innymi technologiami tworzenia bot oraz jak pamięć (lub stan) mogą być współużytkowane przez te technologie. 
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Hybrydowe Boty samouczka (wersja zapoznawcza)](https://aka.ms/cl_Tutorial_v3_Hybrid_Applications_Preview)](https://aka.ms/cl_Tutorial_v3_Hybrid_Applications)
+[![Samouczek hybrydowej botów w wersji zapoznawczej](https://aka.ms/cl_Tutorial_v3_Hybrid_Applications_Preview)](https://aka.ms/cl_Tutorial_v3_Hybrid_Applications)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga przy użyciu emulatora usługi bot do utworzenia okien dialogowych dziennika, nie dziennika okna dialogowego internetowego interfejsu użytkownika. Więcej informacji na temat konfigurowania Bot Framework Emulator jest dostępna [tutaj](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0). 
+Ten samouczek wymaga użycia emulatora Bot do tworzenia okien dialogowych dziennika, a nie interfejsu użytkownika sieci Web okna dialogowego. Więcej informacji na temat konfigurowania emulatora platformy bot Framework można znaleźć [tutaj](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0). 
 
-Ten samouczek wymaga, że bot samouczek hybrydowego jest uruchomiona:
+Ten samouczek wymaga, aby bot samouczka hybrydowego był uruchomiony:
 
     npm run tutorial-hybrid
 
 ## <a name="details"></a>Szczegóły
 
-Uczeń konwersacji jest w formancie, stan wszystkich względem sesji uczeń konwersacji muszą być przechowywane w Menedżerze pamięci uczeń konwersacji. Jest to konieczne, ponieważ uczenie maszynowe wykorzystuje stan, aby określić, jak można dostarczać konwersacji. Stan zewnętrzne mogą być przekazywane do uczeń konwersacji w OnSessionStartCallback, która jest wywoływana po rozpoczęciu sesji. Stan wewnętrzny mogą być zwrócone przez OnSessionEndCallback się, gdy kończy się sesja.
+Gdy Conversation Learner jest w formancie, wszystkie Stany względem sesji Conversation Learner muszą być przechowywane w Menedżerze pamięci Conversation Learner. Jest to konieczne, ponieważ uczenie maszynowe używa stanu, aby określić sposób tworzenia konwersacji. Stan zewnętrzny można przesłać do Conversation Learner w OnSessionStartCallback, który jest wywoływany, gdy rozpoczyna się sesja. Stan wewnętrzny może być zwracany przez OnSessionEndCallback po zakończeniu sesji.
 
-Uczeń konwersacji można traktować prawie jako wywołanie funkcji, która przyjmuje pewne stanu początkowego i zwraca wartości.
+Można prawie traktować Conversation Learner jako wywołanie funkcji, które pobiera stan początkowy i zwraca wartości.
 
-W tym przykładzie utworzysz robota hybrydowych przy użyciu dwóch różnych systemów:
-1. Model uczeń konwersacji <br/>
-    Używa modelu uczeń konwersacji do określenia akcji następnym bot, w oparciu o bieżącą sesję. Ta część bot przyjmuje jeden fragment początkowy stan `isOpen` (wskazuje, czy magazyn jest otwarte lub zamknięte) i zwraca inny element stanu `purchaseItem` (nazwa elementu użytkownika zakupów).
+W tym przykładzie utworzysz bot hybrydowe przy użyciu dwóch różnych systemów:
+1. Model Conversation Learner <br/>
+    Używa modelu uczenia rozmowy, aby określić następną akcję bot w oparciu o bieżącą sesję. Ta część bot przyjmuje jeden z Stanów `isOpen` początkowych (który wskazuje, czy magazyn jest otwarty czy zamknięty) i zwraca inną część stanu `purchaseItem` (nazwę elementu zakupionego przez użytkownika).
 
-2. Dopasowywanie tekstu <br />
-    Po prostu analizuje przychodzące tekstu dla określonych parametrów i odpowiada. Ta część bot zarządza Botów innych mechanizmów magazynu i odpowiada za uruchamianie sesji CL. W szczególności zarządza trzech zmiennych: `usingConversationLearner`, `storeIsOpen`, i `purchaseItem`.
+2. Dopasowanie tekstu <br />
+    Po prostu wyszukuje przychodzący tekst dla określonych ciągów i reaguje na nie. Ta część bota zarządza mechanizmem innych magazynów botów i jest odpowiedzialna za rozpoczęcie sesji CL. W tym celu zarządza trzema `usingConversationLearner`zmiennymi: `purchaseItem`, `storeIsOpen`i.
 
-Zacznijmy od przeglądając model używany w tej wersji demonstracyjnej.
+Zacznijmy od zastosowania modelu użytego w tym pokazie.
 
-### <a name="open-the-demo"></a>Otwórz wersję demonstracyjną
+### <a name="open-the-demo"></a>Otwórz demonstrację
 
-W internetowym interfejsie użytkownika kliknij pozycję "Importuj samouczki" i wybierz model o nazwie "Samouczek-16-HybridBot".
+W interfejsie użytkownika sieci Web kliknij pozycję "Importowanie samouczków" i wybierz model o nazwie "samouczek-16-HybridBot".
 
 ## <a name="entities"></a>Jednostki
 
-Otwórz stronę jednostki i zwróć uwagę, dwie jednostki: `isOpen` i `purchaseItem`
+Otwórz stronę jednostki i zwróć uwagę na dwie jednostki `isOpen` : i`purchaseItem`
 
-Aby dowiedzieć się, jak te jednostki są używane, otwórz plik: `C:\<installedpath>\src\demos\tutorialHybrid.ts` spojrzeć na wywołania zwrotne.
+Aby zrozumieć, w jaki sposób są używane te jednostki, Otwórz `C:\<installedpath>\src\demos\tutorialHybrid.ts` plik: Aby sprawdzić wywołania zwrotne.
 
-Należy zauważyć, że kod w `OnSessionStartCallback` kopiuje wartość `storeIsOpen` z magazynu konwersacji BotBuilder jako wartość `isOpen` jednostki, dzięki czemu są one dostępne dla uczeń konwersacji. Zobacz poniższy kod:
+Zwróć uwagę, że kod `OnSessionStartCallback` w programie kopiuje `storeIsOpen` wartość z BotBuilder do magazynu konwersacji `isOpen` jako wartość jednostki, aby była dostępna do Conversation Learner. Zobacz następujący kod:
 
 ![](../media/tutorial17_sessionstart.PNG)
 
-Podobnie, kod w `OnSessionEndCallback` (Jeśli sesja została zakończona z powodu nauczony działanie i nie tylko limitu czasu) kopiuje wartość jednostki `purchaseItem` poza usługą BotBuilder storage `purchaseItem`. Zobacz poniższy kod:
+Podobnie, kod w `OnSessionEndCallback` (Jeśli sesja została zakończona ze względu na działanie, które nie jest tylko limitem czasu) kopiuje wartość Entity `purchaseItem` do magazynu `purchaseItem`BotBuilder. Zobacz następujący kod:
 
 ![](../media/tutorial17_sessionend.PNG)
 
-Teraz Przyjrzyjmy się akcje.
+Teraz przyjrzyjmy się akcjom.
 
 ## <a name="actions"></a>Akcje
 
-Należy zauważyć, że model ma cztery akcje.
+Zwróć uwagę na to, że model ma cztery akcje.
 
-Zamierzone zasady działania są następujące:
+Zamierzone reguły dla akcji są następujące:
 
-- Jeśli `isOpen` zestaw jednostek, Bot zostanie wyświetlone pytanie "Co chcesz kupić?" i przechowywać w `puchaseItem` miejsca.
-- Jeśli `isOpen` nie jest ustawiony, Bot będzie wyświetlany tekst "Niestety mamy teraz zamknięte".
-- Inne akcje są typu `END_SESSION`.
-- Akcja END_SESSION wskazuje ConversationLearner, że Konwersacja została zakończona.
+- `isOpen` Jeśli jednostka jest ustawiona, bot będzie pytał "co chcesz kupić?" i przechowywać je `puchaseItem` w gnieździe.
+- Jeśli `isOpen` nie jest ustawiona, bot będzie powiedzieć "jestem zamykany".
+- Pozostałe dwie akcje są typu `END_SESSION`.
+- Akcja END_SESSION wskazuje na ConversationLearner, że konwersacja została ukończona.
 
-### <a name="overall-bot-logic"></a>Ogólny logiki Bot
+### <a name="overall-bot-logic"></a>Ogólna logika bot
 
-Najpierw zobaczysz że jeśli stan Bot `usingConversationLearner` została ustawiona flaga, możemy przekazać sterowanie do uczeń konwersacji. Jeśli nie, możemy przekazać sterowanie do innego elementu.  W tym przykładzie są wyświetlane, dopasowania zwykłego tekstu, ale może to być inne technologie Bot, LUIS, w tym usługi QnA maker i jeszcze inne wystąpienie uczeń konwersacji.
+Najpierw zobaczysz, że jeśli `usingConversationLearner` Flaga stanu bot została ustawiona, przejdziemy do Conversation Learner. Jeśli nie, przejdziemy do innej kontrolki.  W tym przykładzie przedstawiono proste dopasowanie tekstu, ale może to być jakakolwiek inna technologia bot, w tym LUIS, QnA Maker, a nawet inne wystąpienie Conversation Learner.
 
-Potrzebujemy sposobu dla użytkownika otworzyć i zamknij magazynu, dzięki czemu możemy zrobić ciąg porównania "open store" i "close store" i ustaw flagę "storeIsOpen".
+Potrzebujemy, aby użytkownik mógł otworzyć i zamknąć sklep, więc porównujemy ciąg z "otwartym magazynem" i "Zamknij magazyn" i ustawić flagę "storeIsOpen".
 
-Następnie należy sposób wyzwalacz obsługi kontroli nad tak, aby nasz Model uczeń konwersacji. Gdy firma Microsoft pasuje do ciągu "module" możemy wykonać następujące czynności:
-- Ustaw `usingConversationLearner` flagi w pamięci Botów.
-- Na nasz Model uczeń konwersacji, należy wywołać metodę "StartSession".  Spowoduje to wyzwolenie "onSessionStartCallback", który będzie inicjował `isOpen` wartości jednostki
+Następnie potrzebujemy metody wyzwalania kontroli nad naszym modelem Conversation Learner. W przypadku dopasowania do ciągu "Shop" wykonaj następujące czynności:
+- `usingConversationLearner` Ustaw flagę w pamięci bot.
+- Wywołaj metodę "StartSession" w naszym modelu Conversation Learner.  Spowoduje to wyzwolenie elementu "onSessionStartCallback", który `isOpen` spowoduje zainicjowanie wartości jednostki
 
-Poniżej znajduje się:
+Zobacz poniżej:
 
 ![](../media/tutorial17_useConversationLearner.PNG)
 
-Możemy również wykonać dopasowania tekstu do "Historia", co spowoduje wyświetlenie tego ostatniego elementu zakupu.
-Ponadto jeśli czymkolwiek wpisze wyświetlamy polecenia dostępne użytkownika
+Wprowadzamy również dopasowanie tekstu do "historii", co spowoduje wyświetlenie tego ostatniego elementu zakupu.
+Na koniec, jeśli zostanie wpisana jakakolwiek inna wartość, zostaną wyświetlone dostępne polecenia użytkownika
 
-## <a name="train-dialog"></a>Okno dialogowe szkolenie
+## <a name="train-dialog"></a>Okno dialogowe uczenia
 
-Na potrzeby tego samouczka model jest już wstępnie przeszkolonych.  Testujemy pełną bot, aby zobaczyć efekt rozpoczęcia i zakończenia sesji wywołań zwrotnych, w praktyce.
+Na potrzeby tego samouczka model jest już wstępnie przeszkolony.  Będziemy testować pełną bot, aby zobaczyć efekt wywołania zwrotnego sesji startowej i końcowej w praktyce.
 
-## <a name="testing-the-bot"></a>Testowanie robota
+## <a name="testing-the-bot"></a>Testowanie bot
 
-W przeciwieństwie do pojedynczego botów modelu Odchudzony konwersacji nie będzie mógł testować jej w Interfejsie użytkownika uczeń konwersacji, jak można tylko wyświetlić, co jest obsługiwane przez Model uczeń konwersacji.
+W przeciwieństwie do modelu Lean Manufacturing botów, nie będzie możliwe przetestowanie go w interfejsie użytkownika Conversation Learner, ponieważ może on tylko zobaczyć, co jest obsługiwane przez model Conversation Learner.
 
-### <a name="install-the-bot-framework-emulator"></a>Zainstaluj Bot framework emulator
+### <a name="install-the-bot-framework-emulator"></a>Instalowanie emulatora struktury bot Framework
 
 - Przejdź do obszaru [https://github.com/Microsoft/BotFramework-Emulator](https://github.com/Microsoft/BotFramework-Emulator) (Ustawienia — Integracje i usługi).
 - Pobierz i zainstaluj emulator.
 
-### <a name="configure-the-emulator"></a>Konfigurowanie emulator
+### <a name="configure-the-emulator"></a>Konfigurowanie emulatora
 
-- Otwórz emulatora i upewnij się, że adres URL jest przeznaczony dla tego samego portu, bota na którym uruchomiona jest. Prawdopodobnie: `http://localhost:3978/api/messages`
+- Otwórz emulator i upewnij się, że adres URL jest przeznaczony dla tego samego portu, na którym uruchomiono bot. Możliwe`http://localhost:3978/api/messages`
 
 ### <a name="test"></a>Testowanie 
 
-#### <a name="scenario-1-store-is-closed"></a>Scenariusz 1: Zamknięto Store
-1. Wprowadź "module". Odbywa się przez dopasowanie tekstu i umożliwia uzyskanie kontroli do modelu uczeń konwersacji.
-2. Wpisz "hello".  Ponieważ `isOpen` wartość nie jest ustawiona, bot będzie wyświetlany tekst "Niestety firma Microsoft jest zamknięty" i kończenia sesji.
+#### <a name="scenario-1-store-is-closed"></a>Scenariusz 1: Magazyn jest zamknięty
+1. Wprowadź "Shop". Jest to obsługiwane przez dopasowanie tekstu i nadaje formantowi Conversation Learner model.
+2. Wprowadź "Hello".  Ponieważ `isOpen` wartość nie jest ustawiona, bot będzie powiedzieć "jestem zamykany" i zakończyć sesję.
 
-#### <a name="scenario-2-store-is-open"></a>Scenariusz 2: Store jest otwarty
-1. Wprowadź "Otwórz Sklep".  To ustawienie ustawi `isOpen` na wartość true.
-1. Wprowadź "module".
-1. Wpisz "hello".  Ponieważ `isOpen` wartość jest ustawiona na wartość true, bot będzie wyświetlany tekst "Co chcesz kupić?"
-1. Wprowadź "przewodniczenia". "krzesło" zostaną zapisane do CL pamięci jako jednostka `purchaseItem`. Wywołanie zwrotne zakończenia sesji jest wywoływana, która kopiuje ta wartość w magazynie konwersacji.
-1. Wprowadź "Historia".  Bot będzie wyświetlany tekst "Zakupiono krzesło", ponieważ było to przeczytanie `purchaseItem`.
+#### <a name="scenario-2-store-is-open"></a>Scenariusz 2: Magazyn jest otwarty
+1. Wprowadź "Otwórz sklep".  Spowoduje to ustawienie `isOpen` wartości true.
+1. Wprowadź "Shop".
+1. Wprowadź "Hello".  Ponieważ `isOpen` wartość jest równa true, bot będzie powiedzieć "co chcesz kupić?"
+1. Wprowadź "krzesło". "krzesło" zostanie zapisane w pamięci CL jako jednostka `purchaseItem`. Wywołanie zwrotne sesji końcowej jest wywoływane, która kopiuje tę wartość do magazynu konwersacji.
+1. Wprowadź "History".  Bot będzie powiedzieć "krzesło zakupione" jako ostatnie `purchaseItem`.
 
-## <a name="conclusion"></a>Podsumowanie
+## <a name="conclusion"></a>Wniosek
 
-Za pomocą mają poznanych wyżej można połączyć uczeń konwersacji z innymi Bot tworzenie technologii.
+Korzystając z informacji podanych powyżej, powinno być możliwe łączenie Conversation Learner z dowolną inną technologią tworzenia bot.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Rozgałęzianie działań i cofania](./17-branch-undo.md)
+> [Rozgałęzianie i cofanie](./17-branch-undo.md)

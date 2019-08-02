@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: mlearned
 ms.openlocfilehash: b42cdae634a6c2d8d994225d4cb6b440a99918e5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67614590"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze Azure Kubernetes Service (AKS)
@@ -37,7 +37,7 @@ W poniższej tabeli przedstawiono typy dostępnego magazynu i ich funkcji:
 | Przypadek użycia | Wtyczka woluminu | Odczyt/zapis raz | Wiele tylko do odczytu | Odczyt/zapis wielu | Obsługa kontenerów systemu Windows Server |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Konfiguracja udostępniona       | Azure Files   | Yes | Yes | Yes | Yes |
-| Dane ze strukturą aplikacji        | Azure Disks   | Yes | Nie  | Nie  | Yes |
+| Dane ze strukturą aplikacji        | Azure Disks   | Yes | Nie  | Nie  | Tak |
 | Dane bez określonej struktury, operacje systemu plików | [BlobFuse (wersja zapoznawcza)][blobfuse] | Yes | Yes | Yes | Nie |
 
 Dwa podstawowe typy magazynu określone woluminy w usłudze AKS są wspierane przez dyski platformy Azure lub usługi Azure Files. Aby zwiększyć bezpieczeństwo, oba typy magazynu, należy użyć szyfrowanie usługi Storage (SSE) Azure domyślnie, który szyfruje dane magazynowane. Obecnie nie można zaszyfrować dyski za pomocą usługi Azure Disk Encryption na poziomie węzłów AKS.
@@ -47,11 +47,11 @@ Usługa pliki systemu Azure są obecnie dostępne w warstwie standardowa wydajno
 - *Premium* dyski są wspierane przez wysoce wydajnych dyskach półprzewodnikowych (SSD). Dyski w warstwie Premium są zalecane w przypadku wszystkich obciążeń produkcyjnych.
 - *Standardowa* dyski są oparte na zwykłych dyskach obrotowych (HDD), są odpowiednie dla archiwizacji lub rzadko używanych danych.
 
-Zrozumienie potrzeb dotyczących wydajności aplikacji i wzorców wyboru warstwy magazynowania odpowiedniego dostępu. Aby uzyskać więcej informacji na temat rozmiarów dysków Managed Disks i warstwy wydajności, zobacz [Omówienie usługi Azure Managed Disks][managed-disks]
+Zrozumienie potrzeb dotyczących wydajności aplikacji i wzorców wyboru warstwy magazynowania odpowiedniego dostępu. Aby uzyskać więcej informacji na temat rozmiarów Managed Disks i warstw wydajności, zobacz [Omówienie usługi Azure Managed disks][managed-disks]
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Tworzenie i używanie klas magazynu do definiowania aplikacji potrzebom
 
-Typ magazynu jest zdefiniowana za pomocą platformy Kubernetes *klasy magazynu*. Klasa magazynu następnie jest przywoływany w specyfikacji zasobnika lub wdrożenia. Te definicje współpracują w celu tworzenia odpowiedniego magazynu i podłącz go do zasobników. Aby uzyskać więcej informacji, zobacz [klasy magazynu w usłudze AKS][aks-concepts-storage-classes].
+Typ magazynu jest zdefiniowana za pomocą platformy Kubernetes *klasy magazynu*. Klasa magazynu następnie jest przywoływany w specyfikacji zasobnika lub wdrożenia. Te definicje współpracują w celu tworzenia odpowiedniego magazynu i podłącz go do zasobników. Aby uzyskać więcej informacji, zobacz [klasy magazynu w AKS][aks-concepts-storage-classes].
 
 ## <a name="size-the-nodes-for-storage-needs"></a>Rozmiar węzłów potrzeb dotyczących magazynowania
 
@@ -68,7 +68,7 @@ Jeśli aplikacje wymagają usługi Azure Disks jako rozwiązanie do magazynowani
 
 W tym miejscu *Standard_DS2_v2* umożliwia podwoić liczbę dołączonych dysków i udostępnia trzy lub cztery razy większą przepustowość operacji We/Wy i dysku. Jeśli tylko przyjrzano podstawowych zasobów obliczeniowych i koszty w porównaniu możesz *Standard_B2ms* maszyny Wirtualnej, a rozmiar słabej wydajności i ograniczenia. Praca z zespołem deweloperów aplikacji, aby zrozumieć ich potrzeb pojemność i wydajność magazynu. Wybierz odpowiedni rozmiar maszyny Wirtualnej dla węzłów AKS spełniają lub przekraczają najbardziej ich potrzeb dotyczących wydajności. Regularnie linii bazowej aplikacje, aby dostosować rozmiar maszyny Wirtualnej, zgodnie z potrzebami.
 
-Aby uzyskać więcej informacji na temat dostępnych rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych systemu Linux na platformie Azure][vm-sizes].
+Aby uzyskać więcej informacji na temat dostępnych rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych z systemem Linux na platformie Azure][vm-sizes].
 
 ## <a name="dynamically-provision-volumes"></a>Dynamicznie zainicjowania woluminów
 
@@ -80,25 +80,25 @@ Gdy zachodzi potrzeba Dołącz magazyn do zasobników, należy użyć woluminy t
 
 Oświadczenie trwały wolumin (PVC) umożliwia dynamiczne tworzenie magazynu zgodnie z potrzebami. Odpowiednie dyski platformy Azure są tworzone zgodnie z ich zażądać zasobników. W definicji zasobnika żądania woluminu na utworzone i dołączone do ścieżki instalacji zaprojektowane
 
-Pojęcia dotyczące dynamiczne tworzenie i korzysta z woluminów, można zobaczyć [trwałego oświadczeń woluminów][aks-concepts-storage-pvcs].
+Aby uzyskać informacje na temat sposobu dynamicznego tworzenia i używania woluminów, zobacz [oświadczenia dotyczące woluminów trwałych][aks-concepts-storage-pvcs].
 
-Aby wyświetlić te woluminy w akcji, zobacz, jak dynamiczne tworzenie i używanie trwały wolumin z [Azure Disks][dynamic-disks] or [Azure Files][dynamic-files].
+Aby wyświetlić te woluminy, zobacz sposób dynamicznego tworzenia i używania woluminu trwałego z dyskami lub [Azure Files][dynamic-files] [platformy Azure][dynamic-disks] .
 
 W ramach definicji klasy magazynu, ustaw odpowiedni *reclaimPolicy*. Ten reclaimPolicy steruje zachowaniem bazowego zasobu usługi Azure storage, gdy Zasobnik zostanie usunięty i trwały wolumin przestaną być potrzebne. Bazowego zasobu magazynu można usunąć lub przechowywane do użytku z programem przyszłych zasobników. Można ustawić reclaimPolicy *zachować* lub *Usuń*. Zrozumienie wymagań aplikacji i zaimplementować regularnych kontroli magazynu, które są przechowywane, aby zminimalizować ilość miejsca w magazynie nie jest używany, która jest używana i rozliczane.
 
-Aby uzyskać więcej informacji na temat opcji klasy magazynu, zobacz [magazynu odzyskać zasady][reclaim-policy].
+Aby uzyskać więcej informacji o opcjach klasy magazynu, zobacz [zasady odzyskiwania magazynu][reclaim-policy].
 
 ## <a name="secure-and-back-up-your-data"></a>Zabezpieczanie i kopii zapasowej danych
 
-**Najważniejsze wskazówki** — wykonywanie kopii zapasowych danych przy użyciu odpowiedniego narzędzia dla danego typu magazynu, takich jak Velero lub usługi Azure Site Recovery. Sprawdź integralność i bezpieczeństwo tych kopii zapasowych.
+**Wskazówki dotyczące najlepszych** rozwiązań — tworzenie kopii zapasowych danych przy użyciu odpowiedniego narzędzia dla typu magazynu, takiego jak Velero lub Azure Site Recovery. Sprawdź integralność i bezpieczeństwo tych kopii zapasowych.
 
-Gdy Twoje aplikacje przechowują i zużywać dane utrwalone na dyskach lub w plikach, należy wykonać, regularnie Twórz kopie zapasowe lub migawki danych. Dyski platformy Azure można użyć technologii wbudowanych migawek. Może być konieczne podłączania do aplikacji, aby opróżnić zapisuje na dysku przed wykonaniem operacji migawki. [Velero][velero] can back up persistent volumes along with additional cluster resources and configurations. If you can't [remove state from your applications][remove-state], wykonaj kopię zapasową danych z woluminów trwałe i regularnie Testuj operacje przywracania, aby sprawdzić integralność danych i procesów wymaganych.
+Gdy Twoje aplikacje przechowują i zużywać dane utrwalone na dyskach lub w plikach, należy wykonać, regularnie Twórz kopie zapasowe lub migawki danych. Dyski platformy Azure można użyć technologii wbudowanych migawek. Może być konieczne podłączania do aplikacji, aby opróżnić zapisuje na dysku przed wykonaniem operacji migawki. [Velero][velero] może tworzyć kopie zapasowe woluminów trwałych wraz z dodatkowymi zasobami i konfiguracjami klastra. Jeśli nie możesz [usunąć stanu z aplikacji][remove-state], Utwórz kopię zapasową danych z woluminów trwałych i regularnie Przetestuj operacje przywracania, aby zweryfikować integralność danych i wymagane procesy.
 
-Omówienie ograniczeń różne podejścia do tworzenia kopii zapasowych danych i jeśli musisz przełączyć w stan spoczynku dane przed migawki. Kopie zapasowe danych nie zawsze pozwalają na przywrócenie środowiska aplikacji, wdrażania klastra. Aby uzyskać więcej informacji na temat tych scenariuszy, zobacz [najlepszych rozwiązań biznesowych ciągłość działalności biznesowej i odzyskiwanie po awarii w usłudze AKS][best-practices-multi-region].
+Omówienie ograniczeń różne podejścia do tworzenia kopii zapasowych danych i jeśli musisz przełączyć w stan spoczynku dane przed migawki. Kopie zapasowe danych nie zawsze pozwalają na przywrócenie środowiska aplikacji, wdrażania klastra. Aby uzyskać więcej informacji na temat tych scenariuszy, zobacz [najlepsze rozwiązania dotyczące ciągłości działania i odzyskiwania po awarii w programie AKS][best-practices-multi-region].
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Ten artykuł koncentruje się na magazyn najlepsze rozwiązania w usłudze AKS. Aby uzyskać więcej informacji na temat podstawy magazynu na platformie Kubernetes, zobacz [kwestie dotyczące magazynu dla aplikacji w usłudze AKS][aks-concepts-storage].
+Ten artykuł koncentruje się na magazyn najlepsze rozwiązania w usłudze AKS. Aby uzyskać więcej informacji na temat podstawy magazynu w programie Kubernetes, zobacz [pojęcia dotyczące magazynu dla aplikacji w AKS][aks-concepts-storage].
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero

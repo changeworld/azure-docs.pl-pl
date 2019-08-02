@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2fc552211ed55239259ce84d84584c451733d70
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499859"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608171"
 ---
 # <a name="what-are-baseline-policies"></a>Co to są zasady podstawowe?
 
@@ -93,11 +93,11 @@ Aby włączyć zasadę bazową:
 1. Ustaw opcję **Włącz zasady** na **włączone**.
 1. Kliknij przycisk Zapisz.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz:
 
-* [Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości](../../security/azure-ad-secure-steps.md)
+* [Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości](../../security/fundamentals/steps-secure-identity.md)
 * [Co to jest dostęp warunkowy w Azure Active Directory?](overview.md)
 * [Wymagaj uwierzytelniania wieloskładnikowego dla administratorów (wersja zapoznawcza)](howto-baseline-protect-administrators.md)
 * [Ochrona użytkowników końcowych (wersja zapoznawcza)](howto-baseline-protect-end-users.md)

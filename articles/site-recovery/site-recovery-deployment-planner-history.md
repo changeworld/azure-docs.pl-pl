@@ -1,145 +1,154 @@
 ---
-title: Historia wersji narzędzia planista wdrażania odzyskiwania lokacji platformy Azure
-description: Znane różne wersje Planisty wdrażania odzyskiwania lokacji poprawek i znanych ograniczeń polecenia wraz z ich daty wydania.
+title: Historia wersji Planista wdrażania usługi Azure Site Recovery
+description: Znane różne Site Recovery wersje Planista wdrażania i znane ograniczenia wraz z ich datami wydania.
 services: site-recovery
 author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 04/24/2019
+ms.date: 07/29/2019
 ms.author: dapatil
-ms.openlocfilehash: 2edf7ce3be1402a497ceab5b826a89ee43c5c39b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64927375"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620098"
 ---
-# <a name="azure-site-recovery-deployment-planner-version-history"></a>Historia wersji narzędzia planista wdrażania odzyskiwania lokacji platformy Azure
+# <a name="azure-site-recovery-deployment-planner-version-history"></a>Historia wersji Planista wdrażania usługi Azure Site Recovery
 
-Ten artykuł zawiera historię wszystkich wersji Planisty wdrożenia usługi Azure Site Recovery wraz z poprawek, znane ograniczenia w każdym i ich daty wydania.
+W tym artykule przedstawiono historię wszystkich wersji Planista wdrażania usługi Azure Site Recovery wraz z poprawkami, znanymi ograniczeniami w każdej i ich datach wydania.
 
-## <a name="version-24"></a>Wersja 2.4
+## <a name="version-25"></a>Wersja 2,5
 
-**Data wydania: 17 kwietnia 2019 r.**
+**Data wydania: 29 lipca 2019**
 
-**Poprawki:**
+**Prefix**
 
-- Zwiększona zgodność systemu operacyjnego, w szczególności obsługi błędów na podstawie lokalizacji.
-- Dodano maszyny wirtualne z maksymalnie 20 MB/s danych zmień współczynnik zmian na liście kontrolnej zgodności.
+- W przypadku maszyn wirtualnych VMware i maszyn fizycznych zalecenie jest aktualizowane w oparciu o replikację do Managed Disks.
+- Dodano obsługę systemu Windows 10 (x64), Windows 8.1 (x64), Windows 8 (x64), Windows 7 (x64) z dodatkiem SP1 lub nowszym
+
+## <a name="version-24"></a>Wersja 2,4
+
+**Data wydania: 17 kwietnia 2019**
+
+**Prefix**
+
+- Ulepszona zgodność systemu operacyjnego, w przypadku obsługi błędów na podstawie lokalizacji.
+- Dodano maszyny wirtualne z maksymalnie 20 MB/s szybkości zmian danych (zmiany) do listy kontrolnej zgodności.
 - Ulepszone komunikaty o błędach
-  - Dodano obsługę vCenter 6.7.
-  - Dodano obsługę dla stacji roboczej systemu Windows Server 2019 i Red Hat Enterprise Linux (RHEL).
+- Dodano obsługę programu vCenter 6,7.
+- Dodano obsługę stacji roboczej z systemem Windows Server 2019 i Red Hat Enterprise Linux (RHEL).
 
 
 
-## <a name="version-23"></a>Wersja 2.3
+## <a name="version-23"></a>Wersja 2,3
 
-**Data wydania: 3 grudnia 2018 r.**
+**Data wydania: 3 grudnia 2018**
 
-**Poprawki:**
+**Prefix**
 
-- Rozwiązano problem, który uniemożliwił planista wdrażania na Generowanie raportu przy użyciu lokalizacji docelowej i subskrypcji.
+- Rozwiązano problem uniemożliwiający Planista wdrażania wygenerowania raportu z podaną lokalizacją docelową i subskrypcją.
 
-## <a name="version-22"></a>W wersji 2.2 
+## <a name="version-22"></a>Wersja 2,2 
 
-**Data wydania: 25 kwietnia 2018 r.**
+**Data wydania: 25 kwietnia 2018**
 
-**Poprawki:**
+**Prefix**
 
 - Operacje GetVMList:
-  - Rozwiązano problem powodujący GetVMList się niepowodzeniem, jeśli określony folder nie istnieje. Go teraz tworzy katalog domyślny albo tworzy katalog określony w parametrze plik wyjściowy.
-  - Dodano bardziej szczegółowe przyczyny niepowodzenia GetVMList.
-- Dodano informacje typu maszyny Wirtualnej jako kolumny w arkuszu zgodnych maszyn wirtualnych raportu planisty wdrożenia usługi.
-- Funkcji Hyper-V do odzyskiwania po awarii platformy Azure:
-  - Dyski wykluczone maszyn wirtualnych przy użyciu udostępnionych wirtualnych dysków twardych i przekazywanie z profilowania. Operacja Startprofiling pokazuje listę wykluczonych maszyn wirtualnych w konsoli.
-  - Dodano maszyn wirtualnych przy użyciu więcej niż 64 dyski do listy niezgodnych maszyn wirtualnych.
-  - Zaktualizowano replikacji początkowej (IR) i współczynnik kompresji replikacji (DR) delta.
+  - Rozwiązano problem, który spowodował niepowodzenie GetVMList, jeśli określony folder nie istnieje. Teraz tworzy katalog domyślny lub tworzy katalog określony w parametrze plik_wyjściowy.
+  - Dodano bardziej szczegółowe przyczyny niepowodzenia dla GetVMList.
+- Dodano informacje o typie maszyny wirtualnej jako kolumnę w arkuszu zgodnych maszyn wirtualnych raportu Planista wdrażania.
+- Odzyskiwanie po awarii funkcji Hyper-V do platformy Azure:
+  - Wykluczone maszyny wirtualne z udostępnionymi dyskami VHD i przekazywaniem dysków z profilowania. Operacja Startprofiling wyświetla listę wykluczonych maszyn wirtualnych w konsoli programu.
+  - Dodano maszyny wirtualne z więcej niż 64 dyskami do listy niezgodnych maszyn wirtualnych.
+  - Zaktualizowano współczynnik kompresji replikacji początkowej (IR) i replikacji różnicowej (DR).
   - Dodano ograniczoną obsługę magazynu SMB.
 
-## <a name="version-21"></a>W wersji 2.1
+## <a name="version-21"></a>Wersja 2,1
 
-**Data wydania: 3 stycznia 2018 r.**
+**Data wydania: 3 stycznia 2018**
 
-**Poprawki:**
+**Prefix**
 
-- Zaktualizowany raport programu Excel.
-- Usunięte usterki w operacji GetThroughput.
-- Dodano opcję, aby ograniczyć liczbę maszyn wirtualnych do profilowania i generowania raportu. Domyślny limit wynosi 1000 maszyn wirtualnych.
-- Program VMware do odzyskiwania po awarii platformy Azure:
-  - Rozwiązano problem z systemu Windows Server 2016 maszyny wirtualnej przesyłane do tabeli niezgodne. 
-  - Zaktualizowano komunikaty o zgodności maszyn wirtualnych Windows interfejsu EFI (Extensible Firmware Interface).
-- Zaktualizowano replikacji z oprogramowania VMware na platformę Azure oraz funkcji Hyper-V do platformy Azure, współczynnika zmian danych maszyny Wirtualnej limit dla maszyny Wirtualnej. 
-- Ulepszone niezawodność podczas analizowania pliku listy maszyn wirtualnych.
+- Zaktualizowano raport programu Excel.
+- Rozwiązano błędy w operacji getprzepływności.
+- Dodano opcję, aby ograniczyć liczbę maszyn wirtualnych do profilowania lub wygenerowania raportu. Domyślny limit to 1 000 maszyn wirtualnych.
+- Odzyskiwanie po awarii programu VMware do platformy Azure:
+  - Rozwiązano problem z maszyną wirtualną z systemem Windows Server 2016 do niezgodnej tabeli. 
+  - Zaktualizowane komunikaty zgodności dla maszyn wirtualnych z systemem operacyjnym Windows (Extensible Firmware Interface EFI).
+- Zaktualizowano oprogramowanie VMware na platformę Azure i funkcję Hyper-V do platformy Azure, ograniczenie liczby zmian danych maszyny wirtualnej na maszynę wirtualną. 
+- Ulepszona niezawodność analizy pliku listy maszyn wirtualnych.
 
 ## <a name="version-201"></a>Wersja 2.0.1
 
-**Data wydania: 7 grudnia 2017 r.**
+**Data wydania: 7 grudnia 2017**
 
-**Poprawki:**
+**Prefix**
 
-- Dodano zalecenie w celu zoptymalizowania przepustowości sieci.
+- Dodano rekomendacje w celu zoptymalizowania przepustowości sieci.
 
-## <a name="version-20"></a>W wersji 2.0
+## <a name="version-20"></a>Wersja 2,0
 
-**Data wydania: 28 listopada 2017 r.**
+**Data wydania: 28 listopada 2017**
 
-**Poprawki:**
+**Prefix**
 
 - Dodano obsługę funkcji Hyper-V do odzyskiwania po awarii platformy Azure.
-- Kalkulator ponoszenia dodatkowych kosztów.
-- Dodano sprawdzenia wersji oprogramowania VMware do odzyskiwania po awarii platformy Azure w celu ustalenia, czy maszyna wirtualna jest zgodna lub niezgodna z funkcją ochrony. Narzędzie wykorzystuje ciąg wersji systemu operacyjnego, który jest zwracany przez serwer vCenter dla tej maszyny Wirtualnej. Jest to wersja systemu operacyjnego gościa ten użytkownik został wybrany podczas tworzenia maszyny Wirtualnej w środowisku VMware.
+- Dodano Kalkulator kosztów.
+- Dodano sprawdzenie wersji systemu operacyjnego dotyczącego odzyskiwania po awarii programu VMware do platformy Azure w celu ustalenia, czy maszyna wirtualna jest zgodna, czy niezgodna z ochroną. Narzędzie używa ciągu wersji systemu operacyjnego, który jest zwracany przez serwer vCenter dla tej maszyny wirtualnej. Jest to wersja systemu operacyjnego gościa wybrana przez użytkownika podczas tworzenia maszyny wirtualnej w oprogramowaniu VMware.
 
 **Znane ograniczenia:**
 
-- Dla funkcji Hyper-V do odzyskiwania po awarii platformy Azure, maszyny Wirtualnej przy użyciu nazwy zawierające znaki, takie jak: `,`, `"`, `[`, `]`, i ``` ` ``` nie są obsługiwane. Jeśli profilowania, generowania raportu zakończy się niepowodzeniem lub będą mieć nieprawidłowe wyniki.
-- Dla oprogramowania VMware do odzyskiwania po awarii platformy Azure maszyna wirtualna o nazwie zawierający przecinkami nie jest obsługiwane. Jeśli profilowane, zgłosić generowania kończy się niepowodzeniem, lub mają niepoprawny wynik.
+- W przypadku odzyskiwania po awarii funkcji Hyper-V do platformy Azure maszyna wirtualna o nazwie zawierającej `"`znaki `[`takie `]`jak: ``` ` ``` `,`,,, i nie jest obsługiwana. Jeśli profilowana, generowanie raportu zakończy się niepowodzeniem lub będzie mieć niepoprawny wynik.
+- W przypadku odzyskiwania po awarii programu VMware do platformy Azure maszyna wirtualna o nazwie zawierającej przecinek nie jest obsługiwana. Po profilowaniu generowanie raportu kończy się niepowodzeniem lub będzie miało niepoprawny wynik.
 
-## <a name="version-131"></a>Wersji 1.3.1
+## <a name="version-131"></a>Wersja 1.3.1
 
-**Data wydania: 19 lipca 2017 r.** 
+**Data wydania: 19 lipca 2017** 
 
-**Poprawki:**
+**Prefix**
 
-- Dodano obsługę dużych dysków (> 1 TB) na potrzeby generowania raportów. Teraz możesz użyć Planisty wdrażania, aby zaplanować replikację maszyn wirtualnych z dyskami o rozmiarze większym niż 1 TB (maksymalnie 4095 GB).
+- Dodano obsługę dużych dysków (> 1 TB) podczas generowania raportu. Teraz można użyć Planista wdrażania do zaplanowania replikacji dla maszyn wirtualnych, które mają rozmiar dysku większy niż 1 TB (do 4095 GB).
 Dowiedz się więcej na temat [obsługi dużych dysków w usłudze Azure Site Recovery](https://azure.microsoft.com/blog/azure-site-recovery-large-disks/)
 
-## <a name="version-13"></a>W wersji 1.3
+## <a name="version-13"></a>Wersja 1,3
 
-**Data wydania: 9 maja 2017 r.**
+**Data wydania: 9 maja 2017**
 
-**Poprawki:**
+**Prefix**
 
-- Dodano obsługę dysku zarządzanego na potrzeby generowania raportów. Liczba maszyn wirtualnych, które można umieścić na koncie magazynu jednego jest obliczana na podstawie, jeśli wybrano dysk zarządzany tryb Failover/testu pracy w trybie Failover.
+- Dodano obsługę dysku zarządzanego podczas generowania raportu. Liczba maszyn wirtualnych, które można umieścić na jednym koncie magazynu, jest obliczana na podstawie tego, czy dysk zarządzany jest wybrany do pracy w trybie failover/testu pracy w trybie failover.
 
-## <a name="version-12"></a>w wersji 1.2
+## <a name="version-12"></a>Wersja 1,2
 
-**Data wydania: 7 kwietnia 2017 r.**
+**Data wydania: 7 kwietnia 2017**
 
-**Poprawki:**
+**Prefix**
 
-- Dodano rozruchu (BIOS lub EFI) sprawdzania typu dla każdej maszyny Wirtualnej w celu ustalenia, czy maszyna wirtualna jest zgodna lub niezgodna z funkcją ochrony.
-- Dodano systemu operacyjnego wpisz informacje dotyczące poszczególnych maszyn wirtualnych zgodnych maszyn wirtualnych i niezgodnych maszyn wirtualnych z arkuszy.
-- Dodano obsługę operację GetThroughput w regionach US Government i platformy Microsoft Azure (Chiny).
+- Dodano typ rozruchu (BIOS lub EFI) sprawdzanie dla każdej maszyny wirtualnej w celu ustalenia, czy maszyna wirtualna jest zgodna, czy niezgodna z ochroną.
+- Dodano informacje o typie systemu operacyjnego dla każdej maszyny wirtualnej w arkuszach zgodnych maszyn wirtualnych i niezgodnych maszyn wirtualnych.
+- Dodano obsługę operacji getprzepływności dla regionów rządowych Stanów Zjednoczonych i Chin Microsoft Azure.
 - Dodano kilka testów wymagań wstępnych dla serwerów vCenter i ESXi.
-- Rozwiązano problem nieprawidłowy raport wprowadzenie generowane, gdy ustawienia regionalne są ustawione na innej niż angielska.
+- Rozwiązano problem dotyczący błędnego raportu, który jest generowany, gdy ustawienia regionalne są ustawione na inne niż angielski.
 
-## <a name="version-11"></a>W wersji 1.1
+## <a name="version-11"></a>Wersja 1,1
 
-**Data wydania: 9 marca 2017 r.**
+**Data wydania: 9 marca 2017**
 
-**Poprawki:**
+**Prefix**
 
-- Rozwiązano problem, który uniemożliwił profilowania maszyn wirtualnych, gdy istnieją co najmniej dwie maszyny wirtualne o takiej samej nazwie lub adresie IP na różnych hostach ESXi vCenter.
-- Rozwiązano problem powodujący, kopiowanie i wyszukiwanie wyłączona dla zgodnych maszyn wirtualnych i niezgodnych maszyn wirtualnych z arkuszy.
+- Rozwiązano problem, który uniemożliwił maszynom wirtualnym profilowania, gdy co najmniej dwie maszyny wirtualne o tej samej nazwie lub adresie IP znajdują się na różnych hostach vCenter ESXi.
+- Rozwiązano problem, który spowodował wyłączenie kopiowania i wyszukiwania dla zgodnych maszyn wirtualnych i arkuszy maszyn wirtualnych niezgodnych.
 
-## <a name="version-10"></a>W wersji 1.0
+## <a name="version-10"></a>Wersja 1,0
 
-**Data wydania: 23 lutego 2017 r.**
+**Data wydania: 23 lutego 2017**
 
 **Znane ograniczenia:**
 
-- Obsługuje tylko dla replikacji VMware – scenariuszy odzyskiwania po awarii platformy Azure. W przypadku funkcji Hyper-V do platformy Azure po awarii scenariuszy odzyskiwania, użyj [narzędzia planisty wydajności funkcji Hyper-V](./site-recovery-capacity-planning-for-hyper-v-replication.md).
-- Nie obsługuje operację GetThroughput w regionach US Government i platformy Microsoft Azure (Chiny).
-- Profil defincji narzędzia maszyn wirtualnych, jeśli serwer vCenter ma co najmniej dwie maszyny wirtualne o takiej samej nazwie lub adresie IP na różnych hostach ESXi.
-W tej wersji narzędzie pomija profilowanie w przypadku zduplikowanych nazw lub adresów IP w parametrze VMListFile. Obejście polega na profilowaniu maszyn wirtualnych przy użyciu hosta ESXi zamiast serwera vCenter. Upewnij się, aby uruchomić jedno wystąpienie każdego hosta ESXi.
+- Obsługuje tylko scenariusze odzyskiwania po awarii programu VMware do platformy Azure. W przypadku scenariuszy odzyskiwania po awarii funkcji Hyper-V na platformie Azure Użyj [Narzędzia planisty wydajności funkcji Hyper-v](./site-recovery-capacity-planning-for-hyper-v-replication.md).
+- Nie obsługuje operacji getprzepływności dla rządów USA i Chin Microsoft Azure regionów.
+- Narzędzie cann't profiluje maszyny wirtualne, jeśli serwer vCenter ma co najmniej dwie maszyny wirtualne o tej samej nazwie lub adresie IP na różnych hostach ESXi.
+W tej wersji narzędzie pomija profilowanie w przypadku zduplikowanych nazw lub adresów IP w parametrze VMListFile. Obejście polega na profilowaniu maszyn wirtualnych przy użyciu hosta ESXi zamiast serwera vCenter. Upewnij się, że uruchomiono jedno wystąpienie dla każdego hosta ESXi.

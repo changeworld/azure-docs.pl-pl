@@ -4,7 +4,7 @@ description: Informacje na temat narzędzia do wprowadzania danych i narzędzia 
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: 92ff5d21fc30d8fcafe97a2b452ff157a2cd5f86
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: ffc6071206236bc25d3c02576225c1de935f722a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502226"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557713"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Narzędzia do wprowadzania danych maszyny wirtualnej do nauki o danych
 
-Jest jedną z pierwszych kroków pomoc do nauki o danych lub projektu sztucznej Inteligencji do identyfikowania zestawów danych, można użyć do dostosowania ich do środowiska usługi analytics. Maszyna wirtualna do nauki o danych (DSVM) udostępnia narzędzia i biblioteki, aby wyświetlić dane z różnych źródeł w magazynie danych analitycznych lokalnie na maszyny DSVM lub na platformie danych w chmurze lub lokalnie. 
+Jest jedną z pierwszych kroków pomoc do nauki o danych lub projektu sztucznej Inteligencji do identyfikowania zestawów danych, można użyć do dostosowania ich do środowiska usługi analytics. Data Science Virtual Machine (DSVM) udostępnia narzędzia i biblioteki do przenoszenia danych z różnych źródeł do magazynu danych analitycznych lokalnie na DSVM lub na platformie danych w chmurze lub lokalnie. 
 
 Poniżej przedstawiono niektóre narzędzia przenoszenia danych, które udostępniliśmy maszyny DSVM. 
 

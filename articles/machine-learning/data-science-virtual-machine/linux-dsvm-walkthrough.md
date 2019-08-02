@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: Jak przeprowadzić kilka typowych zadań do nauki o danych z maszyny Wirtualnej do nauki o danych systemu Linux.
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 editor: cgronlun
 ms.custom: seodec18
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516856"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557348"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
 W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.
@@ -37,7 +37,7 @@ Przed użyciem systemu Linux maszyny wirtualnej do nauki o danych, musisz mieć 
 * **Subskrypcji platformy Azure**. Jeśli nie masz już jeden, zobacz [Utwórz bezpłatne konto platformy Azure już dziś](https://azure.microsoft.com/free/).
 * A [ **Linux maszyny Wirtualnej do analizy danych**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Aby uzyskać informacje o inicjowaniu obsługi tej maszyny Wirtualnej, zobacz [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md).
 * [X2Go](https://wiki.x2go.org/doku.php) zainstalowana na danym komputerze i otworzyć sesję XFCE. Aby uzyskać informacje dotyczące instalowania i konfigurowania **klienta X2Go**, zobacz [Instalowanie i konfigurowanie klienta X2Go](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
-* Dla płynne przewijanie, Przełącz flagę gfx.xrender.enabled o: config w przeglądarce FireFox maszyn wirtualnych. [Zobacz więcej informacji znajdziesz tutaj. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Należy również rozważyć przełączanie *mousewheel.enable_pixel_scrolling* na wartość False. [Instrukcje w tym miejscu.](https://support.mozilla.org/en-US/questions/981140)
+* Dla płynne przewijanie, Przełącz flagę gfx.xrender.enabled o: config w przeglądarce FireFox maszyn wirtualnych. [Zobacz więcej informacji znajdziesz tutaj. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Należy również rozważyć przełączanie *mousewheel.enable_pixel_scrolling* na wartość False. [Instrukcje w tym miejscu.](https://support.mozilla.org/questions/981140)
 * **Konta usługi Azure ml**. Jeśli nie masz jeszcze jeden Załóż nowe na [strony głównej usługi Azure ml](https://studio.azureml.net/). Brak warstwę bezpłatnego użycia, aby pomóc Ci rozpocząć pracę.
 
 ## <a name="download-the-spambase-dataset"></a>Pobierz zestaw danych spambase
@@ -180,10 +180,10 @@ Spróbujmy również model lasu losowych. Losowe lasach wiele algorytmów uczeni
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Wdrażanie modelu w usłudze Azure Machine Learning studio
-[Usługa Azure Machine Learning Studio](https://studio.azureml.net/) to usługa w chmurze, która ułatwia tworzenie i wdrażanie modeli analizy predykcyjnej. Jedną z nieuprzywilejowany funkcji usługi Azure Machine Learning studio polega na publikowanie żadnych funkcji języka R jako usługi sieci web. Pakiet Azure Machine Learning studio R ułatwia wdrożenie bezpośrednio z naszym sesji języka R na maszyny DSVM.
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Wdrażanie modelu w programie Azure Machine Learning Studio
+[Azure Machine Learning Studio](https://studio.azureml.net/) to usługa w chmurze, która ułatwia tworzenie i wdrażanie modeli analizy predykcyjnej. Jedną z świetnych funkcji programu Azure Machine Learning Studio jest możliwość publikowania dowolnej funkcji języka R jako usługi sieci Web. Pakiet Azure Machine Learning Studio R sprawia, że wdrożenie jest łatwe do wykonania bezpośrednio z naszej sesji języka R na DSVM.
 
-Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, musisz zalogować się do usługi Azure Machine Learning Studio. Potrzebujesz Identyfikatora obszaru roboczego i token autoryzacji, aby zalogować się. Aby znaleźć te wartości i zainicjować zmienne usługi Azure Machine Learning z nimi:
+Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, musisz zalogować się do usługi Azure Machine Learning Studio. Potrzebujesz Identyfikatora obszaru roboczego i token autoryzacji, aby zalogować się. Aby znaleźć te wartości i zainicjować zmienne Azure Machine Learning z nimi:
 
 Wybierz **ustawienia** w menu po lewej stronie. Uwaga swoje **identyfikator obszaru roboczego**. ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -344,7 +344,7 @@ Kilka notesów próbki są już zainstalowane na maszynie Wirtualnej:
 >
 
 ## <a name="rattle"></a>Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R analitycznych narzędzie do Dowiedz się, łatwo) jest graficznego narzędzia języka R do wyszukiwania danych. Posiada intuicyjny interfejs, który można łatwo załadować, eksplorować, przekształcania danych i tworzyć i oceniać modele.  Artykuł [Rattle: Data Mining graficznego interfejsu użytkownika dla języka R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) zawiera przewodnik, który demonstruje jego funkcji.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R analitycznych narzędzie do Dowiedz się, łatwo) jest graficznego narzędzia języka R do wyszukiwania danych. Posiada intuicyjny interfejs, który można łatwo załadować, eksplorować, przekształcania danych i tworzyć i oceniać modele.  Rattle artykułu [: Graficzny interfejs użytkownika wyszukiwania danych dla](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) języka R zawiera Instruktaż pokazujący jego funkcje.
 
 Zainstaluj i uruchom Rattle za pomocą następujących poleceń:
 
@@ -423,7 +423,7 @@ Jedna z funkcji nieuprzywilejowany Rattle polega na ich szybkie oceny i uruchomi
 Po zakończeniu procesu tworzenia modeli wybierz **dziennika** kartę, aby wyświetlić kod R, uruchamiając Rattle podczas sesji. Możesz wybrać **wyeksportować** przycisk, aby go zapisać.
 
 > [!NOTE]
-> W bieżącej wersji Rattle znajduje się błąd. Aby zmodyfikować skrypt, lub użyć go do nowszej Powtórz kroki, należy wstawić znak # przed *eksportowanie tego dziennika...*  w tekście dziennika.
+> W bieżącej wersji Rattle znajduje się błąd. Aby zmodyfikować skrypt lub użyć go do powtórzenia kroków później, należy wstawić znak # przed poleceniem *Eksportuj ten dziennik...* w tekście dziennika.
 >
 >
 

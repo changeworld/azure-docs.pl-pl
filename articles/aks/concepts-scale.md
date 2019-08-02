@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3230d85dfcf57bfd4e2e1684f4f5620600ec4e3a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424201"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561554"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje skalowania dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -45,9 +45,9 @@ Aby rozpocząć pracę z skalowaniem w poziomie, w AKS, zobacz [Skalowanie autom
 
 Ponieważ funkcja automatycznego skalowania w poziomie nie sprawdza interfejsu API metryk co 30 sekund, poprzednie zdarzenia skalowania mogą nie zostać pomyślnie zakończone przed innym sprawdzaniem. Takie zachowanie może spowodować, że automatyczne skalowanie w poziomie na zmianę liczby replik przed upływem wcześniejszego zdarzenia skalowania było w stanie odebrać obciążenie aplikacji, a wymagania dotyczące zasobów odpowiednio dostosować.
 
-Aby zminimalizować te zdarzenia wyścigu, można ustawić wartości cooldown lub opóźnienia. Te wartości definiują, jak długo skalowanie w poziomie może czekać po zdarzeniu skalowania, zanim będzie możliwe wyzwolenie innego zdarzenia skalowania. Takie zachowanie umożliwia uwzględnienie nowej liczby replik, a interfejs API metryk odzwierciedla rozproszone obciążenie. Domyślnie opóźnienie zdarzeń skalowania w górę wynosi 3 minuty, a opóźnienie dla zdarzeń skalowania w dół wynosi 5 minut.
+Aby zminimalizować te zdarzenia wyścigu, ustawiane są wartości cooldown lub opóźnienia. Te wartości definiują, jak długo skalowanie w poziomie może czekać po zdarzeniu skalowania, zanim będzie możliwe wyzwolenie innego zdarzenia skalowania. Takie zachowanie umożliwia uwzględnienie nowej liczby replik, a interfejs API metryk odzwierciedla rozproszone obciążenie. Domyślnie opóźnienie zdarzeń skalowania w górę wynosi 3 minuty, a opóźnienie dla zdarzeń skalowania w dół wynosi 5 minut.
 
-Może być konieczne dostrojenie tych wartości cooldown. Domyślne wartości cooldown mogą dać wrażenie, że skalowanie w poziomie nie jest skalowane szybko. Na przykład, aby szybciej zwiększyć liczbę używanych replik, Zmniejsz, `--horizontal-pod-autoscaler-upscale-delay` Kiedy utworzysz definicje automatycznego skalowania w poziomie przy użyciu. `kubectl`
+Obecnie nie można dostosowywać tych wartości cooldown z domyślnego.
 
 ## <a name="cluster-autoscaler"></a>Automatyczne skalowanie klastra
 
@@ -89,11 +89,11 @@ Aplikacja nie wymaga modyfikacji, aby używać węzłów wirtualnych. Wdrożenia
 
 Węzły wirtualne są wdrażane w dodatkowej podsieci w tej samej sieci wirtualnej co klaster AKS. Ta konfiguracja sieci wirtualnej umożliwia zabezpieczenie ruchu między ACI i AKS. Podobnie jak w przypadku klastra AKS wystąpienie usługi ACI jest bezpiecznym, logicznym zasobem obliczeniowym odizolowanym od innych użytkowników.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć skalowanie aplikacji, najpierw postępuj zgodnie z [przewodnikiem Szybki Start, aby utworzyć klaster AKS przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart]. Następnie można rozpocząć ręczne lub automatyczne skalowanie aplikacji w klastrze AKS:
 
-- Ręczne [skalowanie][aks-manually-scale-pods] or [nodes][aks-manually-scale-nodes]
+- Ręczne [skalowanie][aks-manually-scale-pods] z podziałów lub [węzłów][aks-manually-scale-nodes]
 - Korzystanie z [automatycznego skalowania w poziomie][aks-hpa]
 - Korzystanie z [automatycznego skalowania klastra][aks-cluster-autoscaler]
 

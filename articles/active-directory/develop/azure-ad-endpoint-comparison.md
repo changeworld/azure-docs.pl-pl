@@ -1,6 +1,6 @@
 ---
-title: Dlaczego aktualizacji do platforma tożsamości firmy Microsoft (w wersji 2.0) | Azure
-description: Znasz różnice między punktem końcowym platformy (w wersji 2.0) tożsamości firmy Microsoft i punktu końcowego usługi Azure Active Directory (Azure AD) w wersji 1.0, a informacje o zaletach usługi aktualizacji do wersji 2.0.
+title: Dlaczego warto aktualizować oprogramowanie Microsoft Identity platform (v 2.0) | Azure
+description: Poznaj różnice między punktem końcowym programu Microsoft Identity platform (v 2.0) i punktem końcowym Azure Active Directory (Azure AD) v 1.0, aby poznać zalety aktualizacji do wersji 2.0.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -10,66 +10,66 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/07/2019
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f3e4cde892a70ec331523524508a50008a4073
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: df12b0db397656f639275f6a3f9697109985ea35
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483002"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722169"
 ---
-# <a name="why-update-to-microsoft-identity-platform-v20"></a>Dlaczego należy zaktualizować na platformie tożsamości firmy Microsoft (w wersji 2.0)?
+# <a name="why-update-to-microsoft-identity-platform-v20"></a>Dlaczego warto aktualizować oprogramowanie Microsoft Identity platform (v 2.0)?
 
-Podczas tworzenia nowej aplikacji, należy znać różnice między platformą Microsoft identity (w wersji 2.0) i punkty końcowe usługi Azure Active Directory (w wersji 1.0). W tym artykule opisano główne różnice między punktami końcowymi, a niektóre istniejące ograniczenia dotyczące platformy tożsamości firmy Microsoft.
+Podczas tworzenia nowej aplikacji ważne jest, aby znać różnice między punktami końcowymi Microsoft Identity platform (v 2.0) i Azure Active Directory (v 1.0). W tym artykule opisano główne różnice między punktami końcowymi i niektóre istniejące ograniczenia dotyczące platformy tożsamości firmy Microsoft.
 
 > [!NOTE]
-> Punkt końcowy platforma tożsamości firmy Microsoft nie obsługuje wszystkich scenariuszy usługi Azure AD i funkcji. Aby ustalić, należy użyć programu Microsoft platformy tożsamości z punktu końcowego, przeczytaj temat [ograniczenia dotyczące programu Microsoft identity platformy](#limitations).
+> Punkt końcowy platformy tożsamości firmy Microsoft nie obsługuje wszystkich scenariuszy i funkcji usługi Azure AD. Aby określić, czy należy używać punktu końcowego platformy tożsamości firmy Microsoft, przeczytaj artykuł [ograniczenia dotyczące platformy tożsamości firmy Microsoft](#limitations).
 
-## <a name="who-can-sign-in"></a>Kto może się zarejestrować
+## <a name="who-can-sign-in"></a>Kto może się zalogować
 
-![Kto może zalogować się przy użyciu punktów końcowych w wersji 1.0 i 2.0](media/azure-ad-endpoint-comparison/who-can-sign-in.svg)
+![Kto może logować się za pomocą punktów końcowych 1.0 i v 2.0](media/azure-ad-endpoint-comparison/who-can-sign-in.svg)
 
-* Punkt końcowy v1.0 pozwala tylko kont służbowych zalogować się do aplikacji (Azure AD)
-* Punkt końcowy platforma tożsamości firmy Microsoft umożliwia roboczych i kont służbowych z usługi Azure AD i osobistych kont Microsoft (MSA), np. hotmail.com, outlook.com i msn.com, aby zalogować się.
-* Oba punkty końcowe także zaakceptować logowania z *[użytkowników-gości](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* katalogu usługi Azure AD dla aplikacji skonfigurowanych jako *[pojedynczej dzierżawy](single-and-multi-tenant-apps.md)* lub *wielodostępnych* aplikacji skonfigurowanych do punktu z punktem końcowym specyficznym dla dzierżawy (`https://login.microsoftonline.com/{TenantId_or_Name}`).
+* Punkt końcowy v 1.0 zezwala tylko na konta służbowe do logowania się do aplikacji (Azure AD)
+* Punkt końcowy platformy tożsamości firmy Microsoft umożliwia logowanie się przy użyciu kont służbowych z usługi Azure AD i osobistych kont Microsoft (MSA), takich jak hotmail.com, outlook.com i msn.com.
+* Oba punkty końcowe również akceptują logowania *[użytkowników-Gości](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* w katalogu usługi Azure AD dla aplikacji skonfigurowanych jako *[pojedyncze dzierżawy](single-and-multi-tenant-apps.md)* lub dla aplikacji wielodostępnych skonfigurowanych tak, aby wskazywały punkt końcowy specyficzny dla dzierżawy ( `https://login.microsoftonline.com/{TenantId_or_Name}`).
 
-Punkt końcowy platforma tożsamości firmy Microsoft umożliwia pisanie aplikacji, które akceptują logowania z osobistych kont Microsoft i kont służbowych. Zapewnia możliwość pisania całkowicie konta niezależny od aplikacji. Na przykład, jeśli aplikacja odwołuje się [programu Microsoft Graph](https://graph.microsoft.io), niektóre dodatkowe funkcje i dane będą dostępne dla konta, takie jak ich witryny programu SharePoint lub dane katalogu. Jednak wiele akcji takich jak [czytanie poczty użytkownika](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages), ten sam kod mogą uzyskiwać dostęp do poczty e-mail dla zarówno osobistych i kont służbowych.
+Punkt końcowy platformy tożsamości firmy Microsoft umożliwia pisanie aplikacji akceptujących logowania z osobistych kont Microsoft oraz kont służbowych. Dzięki temu można napisać aplikację całkowicie Account-niezależny od. Na przykład jeśli aplikacja wywołuje [Microsoft Graph](https://graph.microsoft.io), niektóre dodatkowe funkcje i dane będą dostępne dla kont służbowych, takich jak witryny programu SharePoint lub dane katalogu. Jednak w przypadku wielu akcji, takich jak [odczytywanie wiadomości e-mail](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages), ten sam kod może uzyskać dostęp do poczty e-mail zarówno dla kont osobistych, jak i służbowych.
 
-Dla punktu końcowego platformy tożsamości firmy Microsoft Microsoft Authentication Library (MSAL) służy do uzyskania dostępu do konsumentów, edukacji i środowiska przedsiębiorstwa. Punkt końcowy usługi Azure AD w wersji 1.0 akceptuje logowania z tylko kont służbowych.
+W przypadku punktu końcowego platformy tożsamości firmy Microsoft można korzystać z biblioteki Microsoft Authentication Library (MSAL) w celu uzyskania dostępu do przedsiębiorstw, programów edukacyjnych i korporacyjnych. Punkt końcowy usługi Azure AD v 1.0 akceptuje logowania tylko z kont służbowych.
 
-## <a name="incremental-and-dynamic-consent"></a>Przyrostowe i dynamiczne zgody
+## <a name="incremental-and-dynamic-consent"></a>Poprzednia i dynamiczna zgoda
 
-Aplikacji przy użyciu punktu końcowego usługi Azure AD w wersji 1.0 są wymagane, aby określić ich wymaganych uprawnień OAuth 2.0 z wyprzedzeniem, na przykład:
+Aplikacje korzystające z punktu końcowego usługi Azure AD v 1.0 są wymagane do wcześniejszego określenia wymaganych uprawnień uwierzytelniania OAuth 2,0 na przykład:
 
-![Przykład przedstawiający interfejs użytkownika uprawnień rejestracji](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
+![Przykład przedstawiający interfejs użytkownika rejestracji uprawnień](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
 
-Uprawnienia ustawione bezpośrednio na rejestrowanie aplikacji są **statyczne**. Podczas statycznej uprawnienia aplikacji zdefiniowane w witrynie Azure portal zachować zgodność kodu nieuprzywilejowany i proste, przedstawia niektóre potencjalne problemy dla deweloperów:
+Uprawnienia ustawione bezpośrednio w rejestracji aplikacji są **statyczne**. Podczas gdy uprawnienia statyczne aplikacji zdefiniowanej w Azure Portal zachować kod całkiem i prostoty, przedstawiamy pewne możliwe problemy dla deweloperów:
 
-* Aplikacja musi zażądać uprawnień, które nigdy nie będą potrzebne po użytkownik pierwsze logowanie. Może to prowadzić do długą listę uprawnień, które zniechęcać użytkowników końcowych do zatwierdzania aplikacji dostęp do początkowego logowania.
+* Aplikacja musi zażądać wszystkich wymaganych uprawnień przy pierwszym logowaniu użytkownika. Może to prowadzić do długiej listy uprawnień, które nie odradzają użytkownikom końcowym zatwierdzania dostępu do aplikacji podczas początkowego logowania.
 
-* Aplikacja musi wiedzieć, wszystkie zasoby, które nigdy nie dostęp do wcześniej. Trudno było je tworzyć aplikacje, które można uzyskać dostępu dowolną liczbę zasobów.
+* Aplikacja musi znać wszystkie zasoby, do których kiedykolwiek wcześniej uzyskują dostęp. Tworzenie aplikacji, które mogą uzyskać dostęp do dowolnej liczby zasobów, było trudne.
 
-Z punktem końcowym platforma tożsamości firmy Microsoft możesz zignorować statyczne uprawnienia zdefiniowane w informacje o rejestracji aplikacji w portalu i żądania uprawnień platformy Azure przyrostowo zamiast tego, co oznacza, pytanie o bez minimalny zestaw uprawnień z wyprzedzeniem i coraz więcej w czasie, gdy klient korzysta z funkcji dodatkowych aplikacji. Aby to zrobić, można określić zakresy, Twoja aplikacja wymaga w dowolnym momencie przez nowe zakresy, w tym `scope` parametru podczas żądania tokenu dostępu — bez konieczności wstępnego definiowania ich informacji o rejestracji aplikacji. Jeśli użytkownik jeszcze nie wyrażono zgodę nowe zakresy dodawana do żądania, monitowani będzie zgody tylko do nowych uprawnień. Aby dowiedzieć się więcej, zobacz [uprawnienia, wyrażania zgody i zakresy](v2-permissions-and-consent.md).
+Za pomocą punktu końcowego platformy tożsamości firmy Microsoft można zignorować uprawnienia statyczne zdefiniowane w informacjach rejestracyjnych aplikacji w Azure Portal i zażądać uprawnień przyrostowo, co oznacza, że z góry nie jest wyświetlany minimalny zestaw uprawnień. coraz więcej w czasie, gdy klient korzysta z dodatkowych funkcji aplikacji. W tym celu można określić zakresy wymagane przez aplikację w dowolnym momencie, dołączając nowe zakresy w `scope` parametrze podczas żądania tokenu dostępu — bez konieczności wstępnego definiowania ich w informacjach rejestracyjnych aplikacji. Jeśli użytkownik nie wyraził zgody na nowe zakresy dodane do żądania, zostanie wyświetlony monit o zgodę tylko na nowe uprawnienia. Aby dowiedzieć się więcej, zobacz [uprawnienia, wyrażanie zgody i zakresy](v2-permissions-and-consent.md).
 
-Zezwolenie aplikacji, aby zażądać uprawnień dynamicznie za pomocą `scope` parametru daje deweloperom pełną kontrolę nad środowiskiem użytkownika. Można również frontonu obciążenia swoją zgodę środowisko i poproś o wszystkie uprawnienia w jednym żądaniu początkowej autoryzacji. Jeśli aplikacja wymaga dużej liczby uprawnień, można gromadzić te uprawnienia od użytkownika przyrostowo kiedy będą próbowali określonych funkcji aplikacji wraz z upływem czasu.
+Zezwolenie aplikacji na dynamiczne żądanie uprawnień za pośrednictwem `scope` parametru daje deweloperom pełną kontrolę nad doświadczeniem użytkownika. Możesz również załadować swoje środowisko zgody i poprosić o wszystkie uprawnienia w jednym początkowym żądaniu autoryzacji. Jeśli aplikacja wymaga dużej liczby uprawnień, można zebrać te uprawnienia od użytkownika przyrostowo, ponieważ próbują użyć pewnych funkcji aplikacji w czasie.
 
-Zgoda administratora wykonywane w imieniu organizacji nadal wymaga statycznego uprawnień zarejestrowany dla aplikacji, więc należy ustawić te uprawnienia dla aplikacji w portalu rejestracji aplikacji, jeśli administrator musisz wyrazić zgodę w imieniu całej organizacji. Zmniejsza to cykle wymaganego przez administratora organizacji, aby skonfigurować aplikację.
+Zgoda administratora w imieniu organizacji nadal wymaga uprawnień statycznych zarejestrowanych dla aplikacji, dlatego należy ustawić te uprawnienia dla aplikacji w portalu rejestracji aplikacji, jeśli potrzebujesz uprawnień administratora, aby wyrazić zgodę w imieniu całej organizacji. Pozwala to zmniejszyć liczbę cykli wymaganych przez administratora organizacji w celu skonfigurowania aplikacji.
 
-## <a name="scopes-not-resources"></a>Zakresy, nie zasobów
+## <a name="scopes-not-resources"></a>Zakresy, a nie zasoby
 
-W przypadku aplikacji przy użyciu punktu końcowego v1.0 aplikacji mogą zachowywać się jak **zasobów**, lub odbiorcy tokenów. Zasób można zdefiniować wiele **zakresy** lub **oAuth2Permissions** siebie, dzięki czemu klienta aplikacji, aby żądać tokenów z zasobu na potrzeby określone zakresy. Należy wziąć pod uwagę interfejsu API programu Graph usługi Azure AD, na przykład zasób:
+W przypadku aplikacji korzystających z punktu końcowego v 1.0 Aplikacja może zachowywać się jako **zasób**lub odbiorca tokenów. Zasób może definiować wiele **zakresów** lub **oAuth2Permissions** , które rozumie, dzięki czemu aplikacje klienckie mogą żądać tokenów z tego zasobu dla określonego zestawu zakresów. Rozważmy interfejs API programu Graph usługi Azure AD jako przykładu zasobu:
 
-* Identyfikator zasobu lub `AppID URI`: `https://graph.windows.net/`
-* Zakresy, lub `oAuth2Permissions`: `Directory.Read`, `Directory.Write`i tak dalej.
+* Identyfikator zasobu lub `AppID URI`:`https://graph.windows.net/`
+* Zakresy lub `oAuth2Permissions`: `Directory.Read`, `Directory.Write`i tak dalej.
 
-Prawdziwe dla punktu końcowego platformy tożsamości firmy Microsoft. Aplikacja, nadal może zachowywać się jako zasób, Definiowanie zakresów i być identyfikowany przez identyfikator URI. Aplikacje klienckie nadal może zażądać dostępu do tych zakresów. Jednak sposób, że klient żąda uprawnienia zostały zmienione.
+Ta wartość dotyczy punktu końcowego platformy tożsamości firmy Microsoft. Aplikacja może nadal działać jako zasób, definiować zakresy i być identyfikowane za pomocą identyfikatora URI. Aplikacje klienckie nadal mogą żądać dostępu do tych zakresów. Jednak sposób, w jaki klient żąda tych uprawnień, został zmieniony.
 
-Dla punktu końcowego w wersji 1.0, OAuth 2.0 autoryzować żądania do usługi Azure AD może być sprawdzono, takich jak:
+W przypadku punktu końcowego v 1.0 żądanie autoryzacji uwierzytelniania OAuth 2,0 do usługi Azure AD mogło wyglądać następująco:
 
 ```text
 GET https://login.microsoftonline.com/common/oauth2/authorize?
@@ -78,9 +78,9 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-W tym miejscu **zasobów** parametru wskazane zasobu, który aplikacja kliencka żąda autoryzacji. Usługa Azure AD obliczane uprawnień wymaganych przez aplikację na podstawie konfiguracji statycznej w witrynie Azure portal i w związku z tym wystawionych tokenów.
+W tym miejscu parametr **zasobu** wskazuje, który zasób aplikacja kliencka żąda autoryzacji. Usługa Azure AD oblicza uprawnienia wymagane przez aplikację na podstawie konfiguracji statycznej w Azure Portal i wystawionych tokenów.
 
-W przypadku aplikacji przy użyciu Microsoft platformy tożsamości z punktu końcowego tego samego protokołu OAuth 2.0 zezwalają na żądanie wygląda:
+W przypadku aplikacji korzystających z punktu końcowego platformy tożsamości firmy Microsoft to samo żądanie autoryzacji OAuth 2,0 będzie wyglądać następująco:
 
 ```text
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -89,109 +89,112 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-W tym miejscu **zakres** parametr wskazuje, które zasobu i uprawnień aplikacja żąda autoryzacji. Żądany zasób jest nadal znajdują się na żądanie — on ujęty w każdej wartości parametru zakresu. Za pomocą parametru zakresu w ten sposób umożliwia punktu końcowego platformy tożsamości firmy Microsoft to bardziej zgodny ze specyfikacją protokołu OAuth 2.0 i lepiej wyrównane typowe rozwiązania w branży. Umożliwia aplikacjom wykonywanie różnych [przyrostowe zgody](#incremental-and-dynamic-consent) — tylko żądające uprawnień, gdy aplikacja wymaga ich w przeciwieństwie do góry.
+W tym miejscu parametr **SCOPE** wskazuje, który zasób i uprawnienia aplikacja żąda autoryzacji. Żądany zasób nadal występuje w żądaniu — obejmuje on każdą z wartości parametru scope. Użycie parametru scope w ten sposób umożliwia określenie, że punkt końcowy platformy tożsamości firmy Microsoft będzie bardziej zgodny ze specyfikacją OAuth 2,0 i bardziej ścisłe dostosowanie się do typowych praktyk branżowych. Umożliwia także aplikacjom przeprowadzenie [przyrostowej zgody](#incremental-and-dynamic-consent) na żądania tylko wtedy, gdy aplikacja wymaga ich, a nie do przodu.
 
-## <a name="well-known-scopes"></a>Dobrze znane zakresów
+## <a name="well-known-scopes"></a>Dobrze znane zakresy
 
 ### <a name="offline-access"></a>Dostęp w trybie offline
 
-Aplikacje przy użyciu punktu końcowego platformy tożsamości firmy Microsoft może wymagać korzystanie z nowego uprawnienia dobrze znanych dla aplikacji — `offline_access` zakresu. Wszystkie aplikacje, należy zażądać tego uprawnienia, gdy potrzebują dostępu do zasobów w imieniu użytkownika przez dłuższy okres czasu, nawet wtedy, gdy użytkownik może nie być aktywnie przy użyciu aplikacji. `offline_access` Użytkownikowi w oknach dialogowych wyrażania zgody, jak będzie wyglądać zakres **uzyskiwać dostęp do danych w dowolnym momencie**, które użytkownik musi wyrazić zgodę na. Żądanie `offline_access` uprawnień spowoduje włączenie aplikacji sieci web otrzymać refresh_tokens OAuth 2.0 z punktu końcowego platformy tożsamości firmy Microsoft. Odśwież tokeny są długotrwałe i mogły być wymieniane przez dłuższy czas dostępu dla nowych tokenów dostępu protokołu OAuth 2.0.
+Aplikacje korzystające z punktu końcowego platformy tożsamości firmy Microsoft mogą wymagać użycia nowego dobrze znanego uprawnienia dla aplikacji — `offline_access` zakres. Wszystkie aplikacje będą musieli zażądać tego uprawnienia, jeśli potrzebują dostępu do zasobów w imieniu użytkownika przez długi czas, nawet jeśli użytkownik nie może aktywnie korzystać z aplikacji. Zakres będzie widoczny dla użytkownika w oknach dialogowych wyrażania zgody na **dostęp do danych w dowolnym momencie**, które użytkownik musi wyrazić zgodę. `offline_access` Żądanie uprawnienia spowoduje `offline_access` , że aplikacja sieci Web będzie odbierać refresh_tokens OAuth 2,0 z punktu końcowego platformy tożsamości firmy Microsoft. Tokeny odświeżania są długotrwałe i mogą być wymieniane z nowymi tokenami dostępu OAuth 2,0 dla rozszerzonych okresów dostępu.
 
-Jeśli aplikacja nie żądania `offline_access` zakresu, nie będzie ona otrzymywać tokenów odświeżania. Oznacza to, że po wprowadzeniu kodu autoryzacji w przepływ kodu autoryzacji OAuth 2.0, tylko otrzymasz ponownie tokenu dostępu z `/token` punktu końcowego. Który dostęp do tokenu pozostaje prawidłowy krótki czas (zazwyczaj jedna godzina), ale wygaśnie po pewnym czasie. W tym punktu w czasie Twojej aplikacji będą musieli przekieruje użytkownika z powrotem do `/authorize` punktu końcowego, aby pobrać nowy kod autoryzacji. Podczas tego przekierowania użytkownik może lub nie trzeba ponownie wprowadzić swoje poświadczenia lub reconsent uprawnień, w zależności od typu aplikacji.
+Jeśli aplikacja nie zażąda `offline_access` zakresu, nie otrzyma tokenów odświeżania. Oznacza to, że po zrealizowaniu kodu autoryzacji w przepływie kodu autoryzacji OAuth 2,0 otrzymasz tylko token dostępu z `/token` punktu końcowego. Ten token dostępu pozostaje ważny przez krótki czas (zwykle godzinę), ale wkrótce wygaśnie. W tym momencie aplikacja będzie musiała przekierować użytkownika z powrotem do `/authorize` punktu końcowego, aby pobrać nowy kod autoryzacji. W trakcie tego przekierowania użytkownik może lub nie musi wprowadzać ponownie poświadczeń lub zgodzić się na uprawnienia, w zależności od typu aplikacji.
 
-Aby dowiedzieć się więcej na temat protokołu OAuth 2.0 `refresh_tokens`, i `access_tokens`, zapoznaj się z [referencyjne protokołu platforma tożsamości firmy Microsoft](active-directory-v2-protocols.md).
+Aby dowiedzieć się więcej na temat `refresh_tokens`uwierzytelniania OAuth `access_tokens`2,0, i zapoznaj się z informacjami dotyczącymi [protokołu Microsoft Identity platform](active-directory-v2-protocols.md).
 
-### <a name="openid-profile-and-email"></a>OpenID, profilu i wiadomości e-mail
+### <a name="openid-profile-and-email"></a>OpenID Connect, profile i wiadomości e-mail
 
-W przeszłości, najbardziej podstawowa przepływ protokołu OpenID Connect logowania z platformą tożsamości Microsoft będzie dostarczali mnóstwa informacji o użytkowniku w wynikowym *id_token*. Oświadczenia w id_token mogą obejmować nazwy, preferowany nazwy użytkownika, adres e-mail, identyfikator obiektu i więcej.
+Historycznie, najbardziej podstawowy przepływ logowania za pomocą programu OpenID Connect z platformą tożsamości firmy Microsoft zapewnia wiele informacji o użytkowniku w wynikającym *id_token*. Oświadczenia w id_token mogą zawierać nazwę użytkownika, preferowaną nazwę użytkownika, adres e-mail, identyfikator obiektu i wiele innych.
 
-Informacje, `openid` zakresu daje aplikacji dostęp do jest teraz ograniczone. `openid` Zakresu zezwala tylko Twojej aplikacji logują użytkownika i odbieranie identyfikator specyficzny dla aplikacji dla użytkownika. Jeśli chcesz pobrać dane osobowe o użytkowniku w swojej aplikacji, Twoja aplikacja powinna uzyskać dodatkowe uprawnienia od użytkownika. Dwa nowe zakresy, `email` i `profile`, będzie można uzyskać dodatkowe uprawnienia.
+Informacje, do których `openid` zakres zapewnia dostęp do aplikacji, są teraz ograniczone. `openid` Zakres będzie zezwalać aplikacji na logowanie użytkownika i odbieranie identyfikatora specyficznego dla aplikacji dla użytkownika. Jeśli chcesz uzyskać dane osobowe dotyczące użytkownika w aplikacji, aplikacja musi zażądać dodatkowych uprawnień od użytkownika. Dwa nowe zakresy `email` i `profile`, umożliwiają zażądanie dodatkowych uprawnień.
 
-* `email` Zakresu umożliwia aplikacji dostęp do adres podstawowy adres e-mail użytkownika za pośrednictwem `email` oświadczenia w id_token, zakładając, że użytkownik ma adres adresy e-mail.
-* `profile` Zakresu daje aplikacji dostęp do wszystkich innych podstawowe informacje o użytkowniku, takie jak nazwy username preferowaną, obiektu, identyfikator i tak dalej, id_token.
+* Zakres umożliwia aplikacji dostęp do podstawowego adresu e-mail użytkownika `email` za pośrednictwem roszczeń w id_token, przy założeniu, że użytkownik ma adres e-mail z adresami. `email`
+* `profile` Zakres zapewnia aplikacji dostęp do wszystkich innych podstawowych informacji o użytkowniku, takich jak nazwa, preferowana nazwa użytkownika, identyfikator obiektu itd., w id_token.
 
-Te zakresy umożliwiają kodu aplikacji w sposób minimalny ujawnienie, dzięki czemu można tylko prosisz użytkownika o zestaw informacji, że aplikacja potrzebuje do wykonywania swojej pracy. Aby uzyskać więcej informacji na temat tych zakresów, zobacz [odwołanie do zakresu platform Microsoft identity](v2-permissions-and-consent.md).
+Te zakresy umożliwiają zakodowanie aplikacji w sposób minimalny, dzięki czemu użytkownik może uzyskać dostęp tylko do zestawu informacji wymaganych przez aplikację. Aby uzyskać więcej informacji na temat tych zakresów, zobacz [Dokumentacja zakresu platformy tożsamości firmy Microsoft](v2-permissions-and-consent.md).
 
-## <a name="token-claims"></a>Token oświadczeń
+## <a name="token-claims"></a>Oświadczenia tokenu
 
-Microsoft platformy tożsamości z punktu końcowego wystawia mniejszy zestaw oświadczenia w tokenach jego domyślnie zachowywanie małych ładunków. Jeśli masz aplikacje i usługi, które mają zależności w szczególności oświadczenia w tokenie 1.0, który nie jest już oferowana domyślnie w tokenie platforma tożsamości firmy Microsoft, należy wziąć pod uwagę przy użyciu [opcjonalnych oświadczeń](active-directory-optional-claims.md) funkcję, aby uwzględnić to roszczenie.
+Punkt końcowy platformy tożsamości firmy Microsoft domyślnie wystawia mniejszą liczbę oświadczeń w tokenach, aby zachować małe ładunki. Jeśli masz aplikacje i usługi, które mają zależność od konkretnego oświadczenia w tokenie w wersji 1.0, która nie jest już świadczona domyślnie w tokenie platformy tożsamości firmy Microsoft, rozważ użycie funkcji [oświadczeń opcjonalnych](active-directory-optional-claims.md) w celu uwzględnienia tego oświadczenia.
+
+> [!IMPORTANT]
+> tokeny v 1.0 i v 2.0 mogą być wystawiane przez punkty końcowe w wersji 1.0 i 2.0. id_tokens *zawsze* pasuje do punktu końcowego, z którego żądają, a tokeny dostępu są *zawsze* zgodne z formatem OCZEKIWANYM przez internetowy interfejs API, który klient będzie wywoływał przy użyciu tego tokenu.  Dlatego jeśli aplikacja używa punkt końcowy v 2.0 do uzyskania tokenu do wywołania Microsoft Graph, która oczekuje tokenów dostępu do formatu v 1.0, aplikacja otrzyma token w formacie v 1.0.  
 
 ## <a name="limitations"></a>Ograniczenia
 
-Istnieje kilka ograniczeń pod uwagę podczas korzystania z platformą Microsoft identity.
+Istnieje kilka ograniczeń, które należy wziąć pod uwagę podczas korzystania z platformy tożsamości firmy Microsoft.
 
-Podczas tworzenia aplikacji, które integrują się z platformą Microsoft identity należy zdecydować, czy program Microsoft identity platformy punktu końcowego protokołów uwierzytelniania i własnych potrzeb. Punkt końcowy w wersji 1.0 i platformy jest nadal w pełni obsługiwana i pod pewnymi względami jest więcej wyposażonym niż platforma tożsamości usługi Microsoft. Jednak platforma tożsamości usługi Microsoft [wprowadzono znaczące korzyści związane](azure-ad-endpoint-comparison.md) dla deweloperów.
+Podczas kompilowania aplikacji, które integrują się z platformą tożsamości firmy Microsoft, należy zdecydować, czy punkt końcowy platformy tożsamości firmy Microsoft i protokoły uwierzytelniania zaspokajają Twoje potrzeby. Punkt końcowy i platforma v 1.0 są nadal w pełni obsługiwane i, w niektórych przypadkach, są bardziej bogate w funkcje platformy tożsamości firmy Microsoft. Jednak platforma tożsamości firmy Microsoft [wprowadza znaczące korzyści](azure-ad-endpoint-comparison.md) dla deweloperów.
 
-Oto uproszczony zalecenia dla deweloperów teraz:
+Poniżej przedstawiono uproszczone rekomendacje dla deweloperów:
 
-* Jeśli lub chcesz obsługiwać osobistych kont Microsoft do aplikacji lub pisania nowych aplikacji, należy użyć platforma tożsamości firmy Microsoft. Jednak zanim to zrobisz, upewnij się, że rozumiesz ograniczenia omówionych w tym artykule.
-* Jeśli jesteś migracji lub aktualizowanie aplikacji korzystającej z protokołu SAML, nie można użyć platformą Microsoft identity. Zamiast tego należy odwoływać się do [usługi Azure AD w wersji 1.0 przewodnik](v1-overview.md).
+* Jeśli potrzebujesz lub potrzebujesz obsłużyć osobiste konta Microsoft w aplikacji lub napisać nową aplikację, użyj platformy tożsamości firmy Microsoft. Jednak przed rozpoczęciem upewnij się, że rozumiesz ograniczenia omówione w tym artykule.
+* Jeśli migrujesz lub aktualizujesz aplikację, która opiera się na protokole SAML, nie możesz używać platformy tożsamości firmy Microsoft. Zamiast tego zapoznaj się z przewodnikiem dotyczącym [usługi Azure AD v 1.0](v1-overview.md).
 
-Aby wyeliminować ograniczenia wymienione w tym miejscu, tak aby tylko nigdy nie należy używać punktu końcowego platformy tożsamości firmy Microsoft ewoluuje wraz z punktem końcowym platforma tożsamości firmy Microsoft. W międzyczasie Użyj w tym artykule, aby określić, czy Microsoft platformy tożsamości z punktu końcowego jest odpowiedni dla Ciebie. Będziemy dalej do aktualizacji w tym artykule, aby odzwierciedlić bieżący stan punktu końcowego platformy tożsamości firmy Microsoft. Sprawdź ponownie oceń wymagań względem platformy tożsamościami firmy Microsoft.
+Punkt końcowy platformy tożsamości firmy Microsoft zostanie rozmieszczony, aby wyeliminować ograniczenia wymienione w tym miejscu, dzięki czemu będziesz musiał tylko korzystać z punktu końcowego platformy tożsamości firmy Microsoft. W międzyczasie Skorzystaj z tego artykułu, aby określić, czy punkt końcowy platformy tożsamości firmy Microsoft jest odpowiedni dla Ciebie. Będziemy nadal aktualizować ten artykuł, aby odzwierciedlał bieżący stan punktu końcowego platformy tożsamości firmy Microsoft. Zapoznaj się z powrotem, aby ponownie oszacować wymagania dotyczące możliwości platformy tożsamości firmy Microsoft.
 
-### <a name="restrictions-on-app-registrations"></a>Ograniczenia dotyczące rejestracje aplikacji
+### <a name="restrictions-on-app-registrations"></a>Ograniczenia dotyczące rejestracji aplikacji
 
-Dla każdej aplikacji, którą chcesz zintegrować z punktem końcowym platforma tożsamości firmy Microsoft, można utworzyć rejestracji aplikacji w nowym [ **rejestracje aplikacji** środowisko](https://aka.ms/appregistrations) w witrynie Azure portal. Istniejących aplikacji konta Microsoft nie są zgodne z portalu, ale są wszystkie aplikacje usługi Azure AD, niezależnie od tego, gdzie i kiedy zostały one zarejestrowane.
+Dla każdej aplikacji, którą chcesz zintegrować z punktem końcowym platformy tożsamości firmy Microsoft, możesz utworzyć rejestrację aplikacji w nowym [środowisku **Rejestracje aplikacji** ](https://aka.ms/appregistrations) w Azure Portal. Istniejące konto Microsoft aplikacje nie są zgodne z portalem, ale wszystkie aplikacje usługi Azure AD są, niezależnie od lokalizacji lub czasu ich rejestracji.
 
-Rejestracje aplikacji, które obsługują służbowych i kont służbowych i osobistych kont mają następujące zastrzeżenia:
+Rejestracje aplikacji, które obsługują konta służbowe i konta osobiste, mają następujące zastrzeżenia:
 
-* Tylko dwa wpisy tajne aplikacji są dozwolone na identyfikator aplikacji.
-* Aplikacja, która nie została zarejestrowana w dzierżawie mogą zarządzać tylko konta, na którym jest on zarejestrowany. Nie może być współużytkowane z innymi deweloperami. Jest to w przypadku większości aplikacji, które zostały zarejestrowane przy użyciu osobistego konta Microsoft, w portalu rejestracji aplikacji. Jeśli chcesz udostępnić swoją rejestrację aplikacji za pomocą wielu deweloperów, należy zarejestrować aplikację w dzierżawie za pomocą nowego **rejestracje aplikacji** części witryny Azure portal.
-* Istnieje kilka ograniczeń dotyczących formatu adres URL przekierowania, który jest dozwolony. Aby uzyskać więcej informacji na temat adres URL przekierowania zobacz następną sekcję.
+* Dla identyfikatora aplikacji dozwolone są tylko dwa wpisy tajne aplikacji.
+* Aplikacja, która nie została zarejestrowana w dzierżawie, może być zarządzana tylko przez konto, które je zarejestrowało. Nie może być współużytkowana z innymi deweloperami. W tym przypadku większość aplikacji, które zostały zarejestrowane przy użyciu osobistego konto Microsoft w portalu rejestracji aplikacji. Jeśli chcesz podzielić swoją rejestrację aplikacji na wielu deweloperów, zarejestruj aplikację w dzierżawie przy użyciu nowej sekcji **rejestracje aplikacji** w Azure Portal.
+* Istnieje kilka ograniczeń dotyczących formatu dozwolonego adresu URL przekierowania. Aby uzyskać więcej informacji o adresie URL przekierowania, zobacz następną sekcję.
 
-### <a name="restrictions-on-redirect-urls"></a>Ograniczenia dotyczące przekierowania adresów URL
+### <a name="restrictions-on-redirect-urls"></a>Ograniczenia dotyczące adresów URL przekierowania
 
-Aplikacje, które są zarejestrowane dla platformy tożsamości firmy Microsoft są ograniczone do ograniczonego zestawu wartości adresu URL przekierowania. Przekierowywanie adresu URL dla aplikacji i usług internetowych musi zaczynać się od systemu `https`, a wszystkie wartości adresu URL przekierowania muszą współużytkować jedną domenę DNS.  System rejestracji porównuje całą nazwę DNS istniejącego adresu URL przekierowania na nazwę DNS adresu URL przekierowania, który dodajesz. `http://localhost` obsługiwane jest również jako adres URL przekierowania.  
+Aplikacje zarejestrowane dla platformy tożsamości firmy Microsoft są ograniczone do ograniczonego zestawu wartości adresu URL przekierowania. Adres URL przekierowania dla usługi Web Apps i usług musi rozpoczynać `https`się od schematu, a wszystkie wartości adresu URL przekierowania muszą współdzielić pojedynczą domenę DNS.  System rejestracji porównuje pełną nazwę DNS istniejącego adresu URL przekierowania z nazwą DNS adresu URL przekierowania, który jest dodawany. `http://localhost`jest również obsługiwany jako adres URL przekierowania.  
 
 Żądanie dodania nazwy DNS zakończy się niepowodzeniem, jeśli będzie spełniony jeden z następujących warunków:  
 
-* Cała nazwa DNS nowego adresu URL przekierowania nie odpowiada nazwę DNS istniejącego adresu URL przekierowania.
+* Cała nazwa DNS nowego adresu URL przekierowania nie jest zgodna z nazwą DNS istniejącego adresu URL przekierowania.
 * Cała nazwa DNS nowego adresu URL przekierowania nie jest poddomeną istniejącego adresu URL przekierowania.
 
 #### <a name="example-1"></a>Przykład 1
 
-Jeśli aplikacja ma adres URL przekierowania `https://login.contoso.com`, można dodać adresu URL przekierowania, w którym nazwa DNS jest dopasowuje dokładnie tak, jak pokazano w poniższym przykładzie:
+Jeśli aplikacja ma adres URL `https://login.contoso.com`przekierowania, można dodać adres URL przekierowania, gdzie nazwa DNS pasuje dokładnie, jak pokazano w następującym przykładzie:
 
 `https://login.contoso.com/new`
 
-Lub możesz zapoznać się z przywoływana jest poddomena DNS domeny Login.contoso.com, jak pokazano w poniższym przykładzie:
+Lub można odwołać się do domeny podrzędnej DNS login.contoso.com, jak pokazano w następującym przykładzie:
 
 `https://new.login.contoso.com`
 
 #### <a name="example-2"></a>Przykład 2
 
-Jeśli chcesz mieć aplikację, która ma `login-east.contoso.com` i `login-west.contoso.com` jako przekierowania adresów URL, należy dodać te przekierowania adresów URL w następującej kolejności:
+Jeśli chcesz mieć aplikację, która ma `login-east.contoso.com` `login-west.contoso.com` adresy URL przekierowania, należy dodać te adresy URL przekierowania w następującej kolejności:
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-Dwa ostatnie adresy można dodać, ponieważ są poddomenami pierwszego adresu URL przekierowania contoso.com.
+Można dodać dwa ostatnie z nich, ponieważ są poddomenami pierwszego adresu URL przekierowania, contoso.com.
 
-Może mieć tylko 20 adresów URL odpowiedzi dla określonej aplikacji — ten limit ma zastosowanie w przypadku wszystkich typów aplikacji, że rejestracji obsługuje (aplikacja jednostronicowa (SPA), klient natywny, aplikacji sieci web i usługi).  
+Można mieć tylko 20 adresów URL odpowiedzi dla określonej aplikacji — ten limit dotyczy wszystkich typów aplikacji obsługiwanych przez rejestrację (jednostronicowej aplikacji (SPA), natywnego klienta, aplikacji sieci Web i usługi).  
 
-Aby dowiedzieć się, jak zarejestrować aplikację do użytku z platformą tożsamości Microsoft, zobacz [zarejestrować aplikację za pomocą nowego środowiska rejestracji aplikacji](quickstart-register-app.md).
+Aby dowiedzieć się, jak zarejestrować aplikację do użycia z platformą tożsamości firmy Microsoft, zobacz [Rejestrowanie aplikacji przy użyciu nowego środowiska rejestracje aplikacji](quickstart-register-app.md).
 
 ### <a name="restrictions-on-libraries-and-sdks"></a>Ograniczenia dotyczące bibliotek i zestawów SDK
 
-Obecnie Obsługa bibliotek dla punktu końcowego platformy tożsamości firmy Microsoft jest ograniczona. Jeśli chcesz używać punktu końcowego platformy tożsamości firmy Microsoft w aplikacji produkcyjnej, mają są następujące opcje:
+Obecnie obsługa biblioteki dla punktu końcowego platformy tożsamości firmy Microsoft jest ograniczona. Jeśli chcesz używać punktu końcowego platformy tożsamości firmy Microsoft w aplikacji produkcyjnej, możesz skorzystać z następujących opcji:
 
-* Jeśli tworzysz aplikację sieci web bezpiecznie służy ogólnie dostępne oprogramowanie pośredniczące po stronie serwera do logowania i tokenu weryfikacji. Obejmują one oprogramowania pośredniczącego OWIN OpenID Connect dla platformy ASP.NET i Node.js Passport wtyczki. Aby uzyskać przykłady kodu, które używają oprogramowania pośredniczącego Microsoft, zobacz [platforma tożsamości usługi Microsoft wprowadzenie](v2-overview.md#getting-started) sekcji.
-* Jeśli tworzysz aplikację na komputerze lub urządzeniu przenośnym, można użyć jednej z bibliotek uwierzytelniania firmy Microsoft (MSAL). Biblioteki te są ogólnie dostępne, lub w preview obsługiwana w środowisku produkcyjnym, dlatego jest bezpieczne z nich korzystać w aplikacjach produkcyjnych. Możesz dowiedzieć się więcej o warunkach korzystania z wersji zapoznawczej i dostępnych bibliotek w [dokumentacja bibliotek uwierzytelniania](reference-v2-libraries.md).
-* W przypadku platform nie są objęte biblioteki Microsoft można zintegrować z punktem końcowym platforma tożsamości firmy Microsoft przez bezpośrednie wysyłanie i odbieranie wiadomości protokołu w kodzie aplikacji. Protokoły OpenID Connect i OAuth [są udokumentowane](active-directory-v2-protocols.md) ułatwia wykonywanie takich integracji.
-* Na koniec można użyć bibliotek typu open-source OpenID Connect i OAuth do integracji z punktem końcowym platforma tożsamości firmy Microsoft. Microsoft platformy tożsamości z punktu końcowego powinna być zgodna z wielu bibliotek typu open-source protokołu bez zmian. Dostępność tych rodzajów bibliotek zależy od języka i platformy. [OpenID Connect](https://openid.net/connect/) i [OAuth 2.0](https://oauth.net/2/) witryn sieci Web utrzymywać listę popularnych implementacji. Aby uzyskać więcej informacji, zobacz [platformy i uwierzytelnianie bibliotek usługi Microsoft identity](reference-v2-libraries.md)i listy, biblioteki klienckie typu open source i przykładów, które zostały przetestowane z punktem końcowym platforma tożsamości firmy Microsoft.
-* Odwołanie `.well-known` punkt końcowy dla punktu końcowego z typowych platformy Microsoft identity jest `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`. Zastąp `common` identyfikatorem dzierżawy można pobrać danych określonego dla Twojej dzierżawy.  
+* Jeśli tworzysz aplikację sieci Web, możesz bezpiecznie używać powszechnie dostępnego oprogramowania pośredniczącego po stronie serwera do logowania się i weryfikacji tokenu. Obejmują one oprogramowanie OWIN OpenID Connect Connect Middle dla ASP.NET oraz wtyczkę typu Node. js usługi Passport. Przykłady kodu używające oprogramowania pośredniczącego firmy Microsoft można znaleźć w sekcji [wprowadzenie do platformy tożsamości firmy Microsoft](v2-overview.md#getting-started) .
+* W przypadku kompilowania aplikacji klasycznej lub przenośnej można użyć jednej z bibliotek uwierzytelniania firmy Microsoft (MSAL). Te biblioteki są ogólnie dostępne lub w wersji zapoznawczej obsługiwanej w środowisku produkcyjnym, dzięki czemu można bezpiecznie używać ich w aplikacjach produkcyjnych. Więcej informacji na temat warunków wersji zapoznawczej i dostępnych bibliotek można znaleźć w [dokumentacji dotyczącej bibliotek uwierzytelniania](reference-v2-libraries.md).
+* W przypadku platform, które nie są objęte bibliotekami firmy Microsoft, można zintegrować z punktem końcowym platformy tożsamości firmy Microsoft przez bezpośrednie wysyłanie i otrzymywanie komunikatów protokołu w kodzie aplikacji. Protokoły OpenID Connect Connect i OAuth [zostały jawnie udokumentowane](active-directory-v2-protocols.md) w celu ułatwienia takiej integracji.
+* Na koniec możesz zintegrować z punktem końcowym platformy tożsamości firmy Microsoft, korzystając z bibliotek OpenID Connect Connect i OAuth programu Open Source. Punkt końcowy platformy tożsamości firmy Microsoft powinien być zgodny z wieloma bibliotekami protokołów open source bez zmian. Dostępność tych rodzajów bibliotek zależy od języka i platformy. Witryny sieci Web [OpenID Connect Connect](https://openid.net/connect/) i [OAuth 2,0](https://oauth.net/2/) obsługują listę popularnych implementacji. Aby uzyskać więcej informacji, zobacz [biblioteki Microsoft Identity platform i Authentication](reference-v2-libraries.md)librarys oraz listę bibliotek i przykładów klienta typu open source, które zostały przetestowane za pomocą punktu końcowego platformy tożsamości firmy Microsoft.
+* Aby uzyskać odwołanie, `.well-known` punkt końcowy dla wspólnego punktu końcowego platformy tożsamości firmy `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`Microsoft to. Zastąp `common` ciąg identyfikatorem dzierżawy, aby uzyskać dane specyficzne dla dzierżawy.  
 
-### <a name="protocol-changes"></a>Protokół zmian
+### <a name="protocol-changes"></a>Zmiany protokołu
 
-Punkt końcowy platforma tożsamości firmy Microsoft nie obsługuje protokołu SAML lub WS-Federation; obsługuje tylko OpenID Connect i OAuth 2.0.  Istotne zmiany w protokoły OAuth 2.0 z punktu końcowego w wersji 1.0 są: 
+Punkt końcowy platformy tożsamości firmy Microsoft nie obsługuje protokołu SAML ani usługi WS-Federation. obsługuje tylko OpenID Connect Connect i OAuth 2,0.  Istotne zmiany w protokołach OAuth 2,0 z punktu końcowego v 1.0 są następujące: 
 
-* `email` Oświadczeń jest zwracany, jeśli skonfigurowano opcjonalnego roszczenia **lub** zakres = wiadomość e-mail została określona w żądaniu. 
-* `scope` Parametr jest teraz obsługiwany zamiast `resource` parametru.  
-* Wiele odpowiedzi zostały zmodyfikowane w celu były bardziej zgodny ze specyfikacją protokołu OAuth 2.0, na przykład poprawnie zwracanie `expires_in` jako int zamiast ciągu.  
+* To żądanie jest zwracane w przypadku skonfigurowania opcjonalnego lub zakresu = adres e-mail w żądaniu. `email` 
+* Parametr jest teraz obsługiwany zamiast `resource` parametru. `scope`  
+* Wiele odpowiedzi zostało zmodyfikowanych tak, aby były bardziej zgodne ze specyfikacją OAuth 2,0, na przykład prawidłowo zwracając `expires_in` jako int zamiast ciągu.  
 
-Aby lepiej zrozumieć zakres protokołu funkcje obsługiwane w punkcie końcowym platforma tożsamości firmy Microsoft, zobacz [referencyjne protokołu OpenID Connect i OAuth 2.0](active-directory-v2-protocols.md).
+Aby lepiej zrozumieć zakres funkcji protokołu obsługiwanych w punkcie końcowym platformy tożsamości firmy Microsoft, zobacz [informacje dotyczące protokołu OpenID Connect Connect i OAuth 2,0](active-directory-v2-protocols.md).
 
-#### <a name="saml-restrictions"></a>Ograniczenia dotyczące języka SAML
+#### <a name="saml-restrictions"></a>Ograniczenia SAML
 
-Jeśli używano Active Directory Authentication Library (ADAL) w aplikacjach Windows, należy wprowadzić jakieś zalet Windows zintegrowanego uwierzytelniania, które używa grant asercji zabezpieczeń Assertion Markup Language (SAML). Z tym przydziałem użytkowników federacyjnych usługi Azure AD mogą dyskretnie uwierzytelnianie dzierżaw za pomocą swojego wystąpienia usługi Active Directory w środowisku lokalnym bez konieczności wprowadzania poświadczeń. Udziel potwierdzenie SAML nie jest obsługiwana w punkcie końcowym platforma tożsamości firmy Microsoft.
+Jeśli użyto Active Directory Authentication Library (ADAL) w aplikacjach systemu Windows, być może korzystasz z uwierzytelniania zintegrowanego systemu Windows, które korzysta z metody udzielenia potwierdzenia SAML (SAML). Dzięki temu przydzieleniu użytkownicy federacyjnych dzierżawców usługi Azure AD mogą w trybie dyskretnym uwierzytelniać się przy użyciu lokalnego wystąpienia Active Directory bez wprowadzania poświadczeń. Przyznanie potwierdzenia SAML nie jest obsługiwane w punkcie końcowym platformy tożsamości firmy Microsoft.

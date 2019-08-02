@@ -1,7 +1,7 @@
 ---
-title: Zdarzenie grupy zabezpieczeń sieci i regułę licznika dzienniki diagnostyczne platformy Azure
+title: Zdarzenia sieciowej grupy zabezpieczeń i licznik reguły dzienników diagnostycznych platformy Azure
 titlesuffix: Azure Virtual Network
-description: Dowiedz się, jak włączyć regułę i zdarzeń licznika dzienniki diagnostyczne na potrzeby grupę zabezpieczeń sieci platformy Azure.
+description: Dowiedz się, jak włączyć dzienniki diagnostyki zdarzeń i reguł dla sieciowej grupy zabezpieczeń platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,55 +13,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: b3225d8d2f9eb7ccd0f4087d93cd9c1d940783d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 667d725653e9b668b18644e7d0c6d8f437e833ed
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714682"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570649"
 ---
-# <a name="diagnostic-logging-for-a-network-security-group"></a>Rejestrowanie diagnostyczne dla grupy zabezpieczeń sieci
+# <a name="diagnostic-logging-for-a-network-security-group"></a>Rejestrowanie diagnostyczne dla sieciowej grupy zabezpieczeń
 
-Sieciowa grupa zabezpieczeń (NSG) zawiera reguły, które blokują lub zezwalają na ruch do podsieci sieci wirtualnej i/lub interfejs sieciowy. Po włączeniu diagnostyczne dla sieciowych grup zabezpieczeń, możesz zalogować się następujące kategorie informacji:
+Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń) zawiera reguły zezwalające lub odmawiające ruchu do podsieci sieci wirtualnej, interfejsu sieciowego lub obu tych metod. Po włączeniu rejestrowania diagnostycznego dla sieciowej grupy zabezpieczeń można rejestrować następujące kategorie informacji:
 
-* **Zdarzenie:** Zapisy są rejestrowane, dla których sieciowej grupy zabezpieczeń reguły są stosowane do maszyn wirtualnych, na podstawie adresu MAC. Stan reguły te są gromadzone co 60 sekund.
-* **Licznik reguły:** Zawiera wpisy dla tyle razy, każda reguła sieciowej grupy zabezpieczeń są stosowane do odmowy lub zezwolić na ruch.
+* **Wydarzen** Wpisy są rejestrowane, dla których reguły sieciowej grupy zabezpieczeń są stosowane do maszyn wirtualnych na podstawie adresu MAC. Stan tych reguł jest zbierany co 60 sekund.
+* **Licznik reguł:** Zawiera wpisy dotyczące liczby przypadków zastosowania każdej reguły sieciowej grupy zabezpieczeń do odmowy lub zezwolenia na ruch.
 
-Dzienniki diagnostyczne są dostępne tylko dla sieciowych grup zabezpieczeń, wdrożone za pośrednictwem modelu wdrażania usługi Azure Resource Manager. Nie można włączyć rejestrowanie diagnostyczne dla sieciowych grup zabezpieczeń, wdrożone za pośrednictwem klasycznego modelu wdrażania. W celu lepszego zrozumienia dwóch modeli, zobacz [informacje o platformie Azure, modelami wdrażania](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Dzienniki diagnostyczne są dostępne tylko dla sieciowych grup zabezpieczeń wdrożonych za pomocą modelu wdrażania Azure Resource Manager. Nie można włączyć rejestrowania diagnostycznego dla sieciowych grup zabezpieczeń wdrożonego za pomocą klasycznego modelu wdrażania. Aby lepiej zrozumieć te dwa modele, zobacz [Omówienie modeli wdrażania platformy Azure](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Rejestrowanie diagnostyczne włączono oddzielnie *każdego* mają być zbierane dane diagnostyczne dla sieciowych grup zabezpieczeń. Jeśli interesuje Cię operacyjne, lub dzienniki aktywności, zamiast niego, zobacz Azure [rejestrowania aktywności](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Rejestrowanie diagnostyczne jest włączane osobno dla *każdego* sieciowej grupy zabezpieczeńu, dla którego chcesz zbierać dane diagnostyczne. Jeśli interesuje Cię operacyjne lub działające dzienniki, zobacz [Rejestrowanie aktywności](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)platformy Azure.
 
 ## <a name="enable-logging"></a>Włącz rejestrowanie
 
-Możesz użyć [witryny Azure Portal](#azure-portal), [PowerShell](#powershell), lub [wiersza polecenia platformy Azure](#azure-cli) Aby włączyć rejestrowanie diagnostyczne.
+Aby włączyć rejestrowanie diagnostyczne, można użyć witryny [Azure Portal](#azure-portal), [programu PowerShell](#powershell)lub [interfejsu wiersza polecenia platformy Azure](#azure-cli) .
 
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Zaloguj się do [portalu](https://portal.azure.com).
-2. Wybierz **wszystkich usług**, a następnie wpisz *sieciowe grupy zabezpieczeń*. Gdy **sieciowe grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz ją.
-3. Zaznacz, aby włączyć rejestrowanie dla sieciowej grupy zabezpieczeń.
-4. W obszarze **monitorowanie**, wybierz opcję **dzienniki diagnostyczne**, a następnie wybierz pozycję **Włącz diagnostykę**, jak pokazano na poniższej ilustracji:
+2. Wybierz pozycję **wszystkie usługi**, a następnie wpisz *Network Security Groups*. Gdy **sieciowe grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz je.
+3. Wybierz sieciowej grupy zabezpieczeń, dla których chcesz włączyć rejestrowanie.
+4. W obszarze **monitorowanie**wybierz pozycję **dzienniki diagnostyczne**, a następnie wybierz pozycję **Włącz diagnostykę**, jak pokazano na poniższej ilustracji:
 
-   ![Włączanie diagnostyki](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
+   ![Włącz diagnostykę](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
 
-5. W obszarze **ustawień diagnostycznych**wprowadź lub wybierz poniższe informacje, a następnie wybierz **Zapisz**:
+5. W obszarze **Ustawienia diagnostyki**wprowadź lub wybierz poniższe informacje, a następnie wybierz pozycję **Zapisz**:
 
     | Ustawienie                                                                                     | Wartość                                                          |
     | ---------                                                                                   |---------                                                       |
-    | Name (Nazwa)                                                                                        | Nazwa wybranej.  Na przykład: *myNsgDiagnostics*      |
-    | **Zarchiwizuj na koncie magazynu**, **Stream do usługi event hub**, i **wysyłanie do usługi Log Analytics** | Możesz wybrać dowolną liczbę miejsc docelowych, zgodnie z wybraniu. Aby dowiedzieć się więcej na temat, zobacz [dziennika miejsc docelowych](#log-destinations).                                                                                                                                           |
-    | LOG                                                                                         | Wybierz jednego lub obu tych kategorii dziennika. Aby dowiedzieć się więcej na temat dane rejestrowane dla każdej kategorii, zobacz [dziennika kategorie](#log-categories).                                                                                                                                             |
-6. Wyświetlanie i analizowanie dzienników. Aby uzyskać więcej informacji, zobacz [wyświetlanie i analizowanie dzienników](#view-and-analyze-logs).
+    | Name (Nazwa)                                                                                        | Wybrana nazwa.  Na przykład: *myNsgDiagnostics*      |
+    | **Archiwizuj na koncie magazynu**, **przesyła strumieniowo do centrum zdarzeń**i **wysyła do log Analytics** | Możesz wybrać dowolną liczbę miejsc docelowych. Aby dowiedzieć się więcej na temat każdego z nich, zobacz [miejsca docelowe dzienników](#log-destinations).                                                                                                                                           |
+    | REJESTROWANE                                                                                         | Wybierz jedną lub obie kategorie dzienników. Aby dowiedzieć się więcej na temat danych zarejestrowanych dla każdej kategorii, zobacz [kategorie dzienników](#log-categories).                                                                                                                                             |
+6. Wyświetlanie i analizowanie dzienników. Aby uzyskać więcej informacji, zobacz [przeglądanie i analizowanie dzienników](#view-and-analyze-logs).
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy modułu Azure PowerShell w wersji 1.0.0 lub nowszym. Uruchom `Get-Module -ListAvailable Az` na komputerze, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Connect-AzAccount` zalogować się do platformy Azure za pomocą konta mającego [niezbędne uprawnienia](virtual-network-network-interface.md#permissions).
+Można uruchomić następujące polecenia w [Azure Cloud Shell](https://shell.azure.com/powershell)lub przez uruchomienie programu PowerShell z komputera. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. W przypadku uruchomienia programu PowerShell z komputera potrzebny jest moduł Azure PowerShell w wersji 1.0.0 lub nowszej. Uruchom `Get-Module -ListAvailable Az` polecenie na komputerze, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić `Connect-AzAccount` polecenie, aby zalogować się do platformy Azure przy użyciu konta, które ma [wymagane uprawnienia](virtual-network-network-interface.md#permissions).
 
-Aby włączyć rejestrowanie diagnostyczne, musisz mieć identyfikator istniejącej sieciowej grupie zabezpieczeń. Jeśli nie masz istniejącej sieciowej grupie zabezpieczeń, możesz utworzyć jedno z [New AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
+Aby włączyć rejestrowanie diagnostyczne, wymagany jest identyfikator istniejącej sieciowej grupy zabezpieczeń. Jeśli nie masz istniejącego sieciowej grupy zabezpieczeń, możesz go utworzyć za pomocą polecenie [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
 
-Pobierz sieciową grupę zabezpieczeń, który chcesz włączyć diagnostyki rejestrowanie dla za pomocą [Get AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup). Na przykład można pobrać sieciową grupę zabezpieczeń o nazwie *myNsg* znajdujące się w grupie zasobów o nazwie *myResourceGroup*, wprowadź następujące polecenie:
+Pobierz sieciową grupę zabezpieczeń, dla której chcesz włączyć rejestrowanie diagnostyczne dla programu w programie [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup). Aby na przykład pobrać sieciowej grupy zabezpieczeń o nazwie *myNsg* , który istnieje w grupie zasobów o nazwie Moja *zasobów*, wprowadź następujące polecenie:
 
 ```azurepowershell-interactive
 $Nsg=Get-AzNetworkSecurityGroup `
@@ -69,7 +69,7 @@ $Nsg=Get-AzNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-Można napisać dzienniki diagnostyczne na trzy typy docelowego. Aby uzyskać więcej informacji, zobacz [dziennika miejsc docelowych](#log-destinations). W tym artykule, dzienniki są wysyłane do *usługi Log Analytics* miejsca docelowego, na przykład. Pobieranie istniejącego obszaru roboczego usługi Log Analytics za pomocą [Get AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace). Na przykład, aby pobrać istniejący obszar roboczy o nazwie *myWorkspace* w grupie zasobów o nazwie *myWorkspaces*, wprowadź następujące polecenie:
+Dzienniki diagnostyczne można zapisywać na trzech typach docelowych. Aby uzyskać więcej informacji, zobacz [miejsca docelowe dzienników](#log-destinations). W tym artykule dzienniki są wysyłane do lokalizacji docelowej *log Analytics* , na przykład. Pobierz istniejący obszar roboczy Log Analytics przy użyciu elementu [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace). Na przykład aby pobrać istniejący obszar roboczy o nazwie mój *obszar* roboczy w grupie zasobów o nazwie Moje *obszary robocze*, wprowadź następujące polecenie:
 
 ```azurepowershell-interactive
 $Oms=Get-AzOperationalInsightsWorkspace `
@@ -77,9 +77,9 @@ $Oms=Get-AzOperationalInsightsWorkspace `
   -Name myWorkspace
 ```
 
-Jeśli nie masz istniejącego obszaru roboczego, możesz utworzyć jeden z [New AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace).
+Jeśli nie masz istniejącego obszaru roboczego, możesz go utworzyć za pomocą polecenie [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace).
 
-Istnieją dwie kategorie rejestrowania, który można włączyć dzienniki. Aby uzyskać więcej informacji, zobacz [dziennika kategorie](#log-categories). Włącz rejestrowanie diagnostyczne dla sieciowych grup zabezpieczeń przy użyciu [AzDiagnosticSetting zestaw](/powershell/module/az.monitor/set-azdiagnosticsetting). Poniższy przykład dzienniki zdarzeń i liczników dane kategorii do obszaru roboczego dla sieciowej grupy zabezpieczeń, za pomocą identyfikatorów dla sieciowej grupy zabezpieczeń i obszar roboczy, którego wcześniej pobrano:
+Istnieją dwie kategorie rejestrowania, w których można włączyć dzienniki. Aby uzyskać więcej informacji, zobacz temat [kategorie dzienników](#log-categories). Włącz rejestrowanie diagnostyczne dla sieciowej grupy zabezpieczeń za pomocą [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting). Poniższy przykład rejestruje dane dotyczące zdarzenia i kategorii licznika w obszarze roboczym dla elementu sieciowej grupy zabezpieczeń, używając identyfikatorów dla sieciowej grupy zabezpieczeń i obszaru roboczego, który został wcześniej pobrany:
 
 ```azurepowershell-interactive
 Set-AzDiagnosticSetting `
@@ -88,17 +88,17 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-Jeśli chcesz rejestrować dane dotyczące jednej kategorii lub innych, a nie oba, Dodaj `-Categories` możliwość poprzednie polecenie, a następnie *NetworkSecurityGroupEvent* lub *NetworkSecurityGroupRuleCounter*. Jeśli chcesz się zalogować na inne [docelowy](#log-destinations) niż obszar roboczy usługi Log Analytics, należy użyć odpowiednich parametrów dla platformy Azure [konta magazynu](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Centrum zdarzeń](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Jeśli chcesz tylko rejestrować dane dla jednej kategorii, a nie obu, Dodaj `-Categories` opcję do poprzedniego polecenia, a następnie *NetworkSecurityGroupEvent* lub *NetworkSecurityGroupRuleCounter*. Jeśli chcesz zarejestrować się w innym [miejscu docelowym](#log-destinations) niż obszar roboczy log Analytics, użyj odpowiednich parametrów dla konta usługi Azure [Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [centrum zdarzeń](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Wyświetlanie i analizowanie dzienników. Aby uzyskać więcej informacji, zobacz [wyświetlanie i analizowanie dzienników](#view-and-analyze-logs).
+Wyświetlanie i analizowanie dzienników. Aby uzyskać więcej informacji, zobacz [przeglądanie i analizowanie dzienników](#view-and-analyze-logs).
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/bash), albo w wyniku uruchomienia wiersza polecenia platformy Azure z Twojego komputera. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Jeśli uruchamiasz interfejs wiersza polecenia z komputera, potrzebujesz wersji 2.0.38 lub nowszej. Uruchom `az --version` na komputerze, aby znaleźć zainstalowaną wersję. Jeśli musisz uaktualnić, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](/cli/azure/install-azure-cli?view=azure-cli-latest). Jeśli używasz interfejsu wiersza polecenia lokalnie, trzeba będzie również uruchomić `az login` zalogować się do platformy Azure za pomocą konta mającego [niezbędne uprawnienia](virtual-network-network-interface.md#permissions).
+Możesz uruchomić poniższe polecenia w [Azure Cloud Shell](https://shell.azure.com/bash)lub przez uruchomienie interfejsu wiersza polecenia platformy Azure na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Jeśli interfejs wiersza polecenia zostanie uruchomiony z komputera, musisz mieć wersję 2.0.38 lub nowszą. Uruchom `az --version` polecenie na komputerze, aby znaleźć zainstalowaną wersję. Jeśli musisz przeprowadzić uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Jeśli używasz interfejsu wiersza polecenia lokalnie, musisz też uruchomić `az login` polecenie, aby zalogować się do platformy Azure przy użyciu konta, które ma [wymagane uprawnienia](virtual-network-network-interface.md#permissions).
 
-Aby włączyć rejestrowanie diagnostyczne, musisz mieć identyfikator istniejącej sieciowej grupie zabezpieczeń. Jeśli nie masz istniejącej sieciowej grupie zabezpieczeń, możesz utworzyć jedno z [tworzenie az sieciowej](/cli/azure/network/nsg#az-network-nsg-create).
+Aby włączyć rejestrowanie diagnostyczne, wymagany jest identyfikator istniejącej sieciowej grupy zabezpieczeń. Jeśli nie masz istniejącej sieciowej grupy zabezpieczeń, możesz ją utworzyć za pomocą [AZ Network sieciowej grupy zabezpieczeń Create](/cli/azure/network/nsg#az-network-nsg-create).
 
-Pobierz sieciową grupę zabezpieczeń, który chcesz włączyć diagnostyki rejestrowanie dla za pomocą [Pokaż sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg#az-network-nsg-show). Na przykład można pobrać sieciową grupę zabezpieczeń o nazwie *myNsg* znajdujące się w grupie zasobów o nazwie *myResourceGroup*, wprowadź następujące polecenie:
+Pobierz sieciową grupę zabezpieczeń, dla której chcesz włączyć rejestrowanie diagnostyczne dla za pomocą [AZ Network sieciowej grupy zabezpieczeń show](/cli/azure/network/nsg#az-network-nsg-show). Aby na przykład pobrać sieciowej grupy zabezpieczeń o nazwie *myNsg* , który istnieje w grupie zasobów o nazwie Moja *zasobów*, wprowadź następujące polecenie:
 
 ```azurecli-interactive
 nsgId=$(az network nsg show \
@@ -108,9 +108,9 @@ nsgId=$(az network nsg show \
   --output tsv)
 ```
 
-Można napisać dzienniki diagnostyczne na trzy typy docelowego. Aby uzyskać więcej informacji, zobacz [dziennika miejsc docelowych](#log-destinations). W tym artykule, dzienniki są wysyłane do *usługi Log Analytics* miejsca docelowego, na przykład. Aby uzyskać więcej informacji, zobacz [dziennika kategorie](#log-categories).
+Dzienniki diagnostyczne można zapisywać na trzech typach docelowych. Aby uzyskać więcej informacji, zobacz [miejsca docelowe dzienników](#log-destinations). W tym artykule dzienniki są wysyłane do lokalizacji docelowej *log Analytics* , na przykład. Aby uzyskać więcej informacji, zobacz temat [kategorie dzienników](#log-categories).
 
-Włącz rejestrowanie diagnostyczne dla sieciowych grup zabezpieczeń przy użyciu [tworzenie az monitor diagnostic-settings](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create). Poniższy przykład dzienniki zdarzeń i liczników dane kategorii do istniejącego obszaru roboczego o nazwie *myWorkspace*, który istnieje w grupie zasobów o nazwie *myWorkspaces*oraz identyfikator sieciowej grupy zabezpieczeń, możesz pobrać wcześniej:
+Włącz rejestrowanie diagnostyczne dla sieciowej grupy zabezpieczeń za pomocą [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create). Poniższy przykład rejestruje dane kategorii zdarzenia i licznika w istniejącym obszarze roboczym onazwie webworkspace, który istnieje w grupie zasobów o nazwie Moje *obszary robocze*i identyfikator sieciowej grupy zabezpieczeń, który został wcześniej pobrany:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \
@@ -121,26 +121,26 @@ az monitor diagnostic-settings create \
   --resource-group myWorkspaces
 ```
 
-Jeśli nie masz istniejącego obszaru roboczego, możesz utworzyć ją przy użyciu [witryny Azure portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace). Istnieją dwie kategorie rejestrowania, który można włączyć dzienniki.
+Jeśli nie masz istniejącego obszaru roboczego, możesz go utworzyć przy użyciu [Azure Portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [programu PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace). Istnieją dwie kategorie rejestrowania, w których można włączyć dzienniki.
 
-Jeśli chcesz rejestrować dane dotyczące jednej kategorii lub innych, Usuń kategorii nie chcesz rejestrować dane dotyczące w poprzednim poleceniu. Jeśli chcesz się zalogować na inne [docelowy](#log-destinations) niż obszar roboczy usługi Log Analytics, należy użyć odpowiednich parametrów dla platformy Azure [konta magazynu](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Centrum zdarzeń](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Jeśli chcesz tylko rejestrować dane dla jednej kategorii lub drugiej, Usuń kategorię, dla której chcesz rejestrować dane w poprzednim poleceniu. Jeśli chcesz zarejestrować się w innym [miejscu docelowym](#log-destinations) niż obszar roboczy log Analytics, użyj odpowiednich parametrów dla konta usługi Azure [Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [centrum zdarzeń](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Wyświetlanie i analizowanie dzienników. Aby uzyskać więcej informacji, zobacz [wyświetlanie i analizowanie dzienników](#view-and-analyze-logs).
+Wyświetlanie i analizowanie dzienników. Aby uzyskać więcej informacji, zobacz [przeglądanie i analizowanie dzienników](#view-and-analyze-logs).
 
 ## <a name="log-destinations"></a>Miejsca docelowe dziennika
 
-Dane diagnostyczne mogą być:
-- [Zapisane na koncie usługi Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), do wglądu, inspekcji czy ręcznie. Można określić czas przechowywania (w dniach), za pomocą ustawień diagnostycznych zasobu.
-- [Przesyłane strumieniowo do Centrum zdarzeń](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowe, takie jak usługi Power BI.
-- [Zapisywane do dzienników usługi Azure Monitor](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics).
+Dane diagnostyczne mogą być następujące:
+- [Zapisywane na koncie usługi Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)w celu przeprowadzania inspekcji lub inspekcji ręcznej. Możesz określić czas przechowywania (w dniach) przy użyciu ustawień diagnostycznych zasobu.
+- [Przesyłane strumieniowo do centrum zdarzeń](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) w celu pozyskiwania przez usługę innej firmy lub niestandardowe rozwiązanie do analizy, takie jak usługa PowerBI.
+- [Zapisane w dziennikach Azure monitor](../azure-monitor/platform/diagnostic-logs-stream-log-store.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="log-categories"></a>Rejestruj kategorie
+## <a name="log-categories"></a>Kategorie dzienników
 
-Dane w formacie JSON jest przeznaczony dla następujących kategorii dziennika:
+Dane w formacie JSON są zapisywane dla następujących kategorii dzienników:
 
 ### <a name="event"></a>Wydarzenie
 
-Dziennik zdarzeń zawiera informacje o tym, jakie reguły sieciowej grupy zabezpieczeń są stosowane do maszyn wirtualnych, na podstawie adresu MAC. Dla każdego zdarzenia rejestrowane są następujące dane. W poniższym przykładzie dane są rejestrowane dla maszyny wirtualnej przy użyciu adresu IP 192.168.1.4 i adres MAC 00-0D-3A-92-6A-7C:
+Dziennik zdarzeń zawiera informacje o tym, które reguły sieciowej grupy zabezpieczeń są stosowane do maszyn wirtualnych na podstawie adresu MAC. Dla każdego zdarzenia rejestrowane są następujące dane. W poniższym przykładzie dane są rejestrowane dla maszyny wirtualnej z adresem IP 192.168.1.4 i adresem MAC 00-0D-3A-92-6A-7C:
 
 ```json
 {
@@ -169,9 +169,9 @@ Dziennik zdarzeń zawiera informacje o tym, jakie reguły sieciowej grupy zabezp
 }
 ```
 
-### <a name="rule-counter"></a>Regułę licznika
+### <a name="rule-counter"></a>Licznik reguł
 
-Dziennik licznika reguła zawiera informacje o każdej reguły stosowane do zasobów. Następujące przykładowe dane jest rejestrowane za każdym razem, gdy reguła jest stosowana. W poniższym przykładzie dane są rejestrowane dla maszyny wirtualnej przy użyciu adresu IP 192.168.1.4 i adres MAC 00-0D-3A-92-6A-7C:
+Dziennik liczników reguł zawiera informacje dotyczące każdej reguły stosowanej do zasobów. Następujące przykładowe dane są rejestrowane za każdym razem, gdy reguła zostanie zastosowana. W poniższym przykładzie dane są rejestrowane dla maszyny wirtualnej z adresem IP 192.168.1.4 i adresem MAC 00-0D-3A-92-6A-7C:
 
 ```json
 {
@@ -194,22 +194,22 @@ Dziennik licznika reguła zawiera informacje o każdej reguły stosowane do zaso
 ```
 
 > [!NOTE]
-> Źródłowy adres IP do komunikacji nie jest zalogowany. Aby umożliwić [rejestrowanie przepływu sieciowych grup zabezpieczeń](../network-watcher/network-watcher-nsg-flow-logging-portal.md) dla sieciowej grupy zabezpieczeń, która rejestruje wszystkie informacje o liczniku reguły, a także źródłowy adres IP, który zainicjował komunikacji. Dane dziennika przepływu sieciowej grupy zabezpieczeń są zapisywane na koncie usługi Azure Storage. Można analizować dane przy użyciu [traffic analytics](../network-watcher/traffic-analytics.md) możliwości usługi Azure Network Watcher.
+> Źródłowy adres IP dla komunikacji nie jest zarejestrowany. Możesz włączyć [Rejestrowanie przepływu sieciowej grupy zabezpieczeń](../network-watcher/network-watcher-nsg-flow-logging-portal.md) dla sieciowej grupy zabezpieczeń, które rejestruje wszystkie informacje o liczniku reguł, a także źródłowy adres IP, który zainicjował komunikację. Dane dziennika przepływu sieciowej grupy zabezpieczeń są zapisywane na koncie usługi Azure Storage. Dane można analizować za pomocą funkcji [analizy ruchu](../network-watcher/traffic-analytics.md) Network Watcher platformy Azure.
 
 ## <a name="view-and-analyze-logs"></a>Wyświetlanie i analizowanie dzienników
 
-Aby dowiedzieć się, jak wyświetlać dane dzienników diagnostycznych, zobacz [dzienniki diagnostyczne platformy Azure — omówienie](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). W przypadku wysłania danych diagnostycznych:
-- **Dzienniki platformy Azure Monitor**: Możesz użyć [analizy grupy zabezpieczeń sieci](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
-) rozwiązania do lepszego wglądu w dane. Rozwiązanie udostępnia wizualizacje dla reguły sieciowej grupy zabezpieczeń, które blokują lub zezwalają na ruch na adres MAC interfejsu sieciowego w maszynie wirtualnej.
-- **Konto usługi Azure Storage**: Dane są zapisywane do pliku PT1H.json. Możesz znaleźć:
-  - Dziennik zdarzeń w następującej ścieżce: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-  - Reguła dziennika liczników w następującej ścieżce: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+Aby dowiedzieć się, jak wyświetlać dane dzienników diagnostycznych, zobacz [Omówienie dzienników diagnostycznych platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). W przypadku wysyłania danych diagnostycznych do:
+- **Azure monitor dzienników**: Aby uzyskać szczegółowe informacje [, możesz użyć rozwiązania](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
+) do analizy grup zabezpieczeń sieci. Rozwiązanie udostępnia wizualizacje dla reguł sieciowej grupy zabezpieczeń, które zezwalają na ruch lub odmawiają go na adres MAC w maszynie wirtualnej.
+- **Konto usługi Azure Storage**: Dane są zapisywane w pliku PT1H. JSON. Można znaleźć następujące informacje:
+  - Dziennik zdarzeń w następującej ścieżce:`insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Dziennik licznika reguł w następującej ścieżce:`insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [rejestrowania aktywności](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), wcześniej znane jako inspekcji lub dzienniki operacyjne. Rejestrowanie aktywności jest domyślnie włączona, dla grup zabezpieczeń sieci utworzonych za pomocą dowolnego modelu wdrażania na platformie Azure. Aby ustalić, jakie operacje zostały zakończone na sieciowych grup zabezpieczeń w dzienniku aktywności, Wyszukaj wpisy, które zawierają następujące typy zasobów:
+- Dowiedz się więcej na temat [rejestrowania aktywności](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), wcześniej znanego jako Inspekcja lub dzienniki operacyjne. Rejestrowanie aktywności jest domyślnie włączone dla sieciowych grup zabezpieczeń utworzonych za pomocą modelu wdrażania platformy Azure. Aby określić, które operacje zostały wykonane w sieciowych grup zabezpieczeń w dzienniku aktywności, poszukaj wpisów zawierających następujące typy zasobów:
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups
   - Microsoft.Network/networkSecurityGroups/securityRules
-- Aby dowiedzieć się, jak rejestrować informacje diagnostyczne, aby uwzględnić źródłowy adres IP dla każdego przepływu, zobacz [rejestrowanie przepływu sieciowych grup zabezpieczeń](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Aby dowiedzieć się, jak rejestrować informacje diagnostyczne w celu uwzględnienia źródłowego adresu IP dla każdego przepływu, zobacz [Rejestrowanie przepływu sieciowej grupy zabezpieczeń](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

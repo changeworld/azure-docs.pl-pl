@@ -1,7 +1,7 @@
 ---
-title: Podgląd adresu URL odwołania do projektu
+title: Dokumentacja wersji zapoznawczej adresu URL projektu
 titlesuffix: Azure Cognitive Services
-description: Odwołanie do projektu Podgląd adresu URL punktu końcowego.
+description: Odwołanie do punktu końcowego wersji zapoznawczej adresu URL projektu.
 services: cognitive-services
 author: mikedodaro
 manager: nitinme
@@ -10,137 +10,138 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: f92c0faaaa3aa0cd2af16a031f3bed4c6b41fc22
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60462592"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706848"
 ---
-# <a name="project-url-preview-v7-reference"></a>Odwołanie do projektu Podgląd adresu URL w wersji 7
+# <a name="project-url-preview-v7-reference"></a>Odwołanie wersji 7 do podglądu adresu URL projektu
 
-Podgląd adresu URL obsługuje krótkie opisy zasobów sieci Web dla wpisów w blogu, dyskusjach prowadzonych na forach, stron podglądu itp. Adres URL może być dowolnego typu zasobu internetowego: Strony sieci Web, grup dyskusyjnych, obrazu lub filmu wideo. Zapytanie musi być bezwzględnym adresem URL za pomocą protokołu http lub https schematu; względnych adresów URL lub innych systemów, takich jak ftp: / / nie są obsługiwane.
+Wersja zapoznawcza URL obsługuje krótkie opisy zasobów sieci Web dla wpisów w blogu, dyskusji na forach, stron podglądu itp. Adres URL może być dowolnym typem zasobu internetowego: Strona sieci Web, wiadomości, obrazy lub wideo. Zapytanie musi być bezwzględnym adresem URL ze schematem http lub https; względne adresy URL lub inne schematy, takie jak ftp://, nie są obsługiwane.
 
-Aplikacje, które używają adresu URL w wersji zapoznawczej wysyłania żądań sieci Web do punktu końcowego przy użyciu adresu URL, aby wyświetlić podgląd w parametrze zapytania. Żądanie musi zawierać *Ocp-Apim-Subscription-Key* nagłówka.
+Aplikacje korzystające z adresu URL w wersji zapoznawczej wysyłają żądania sieci Web do punktu końcowego z adresem URL, aby wyświetlić podgląd w parametrze zapytania. Żądanie musi zawierać nagłówek *OCP-APIM-Subscription-Key* .
 
-Odpowiedź w formacie JSON może być analizowana pod kątem informacji o wersji zapoznawczej: nazwa, opis zasobu, *isFamilyFriendly*i łączy, które zapewniają dostęp do reprezentatywny obraz i pełny zasób w tryb online.
+Odpowiedź JSON można przeanalizować w celu uzyskania informacji o wersji zapoznawczej: nazwa, opis zasobu, *isFamilyFriendly*i linki zapewniające dostęp do reprezentatywnego obrazu oraz do kompletnego zasobu w trybie online.
 
-Do wyświetlania fragmentów (wersja zapoznawcza) i obrazy miniatur hiperłącza ich lokacji źródłowych w adresie URL inicjowane przez użytkownika końcowego, udostępnianie w mediach społecznościowych, czatbot lub podobne ofert, należy użyć tylko dane z adresu URL w wersji zapoznawczej. Należy nie kopiowania, przechowywania lub wszelkie dane, otrzymanymi od Podgląd adresu URL projektu z pamięci podręcznej. Należy uwzględnić wszystkie żądania, aby wyłączyć wersji zapoznawczych, które użytkownik może otrzymywać z witryny sieci Web lub właściciele zawartości.
+Musisz użyć tylko danych z podglądu adresów URL, aby wyświetlić fragmenty podglądu i miniaturowe obrazy połączone ze swoimi lokacjami źródłowymi, w polu udostępnianie adresów URL zainicjowanym przez użytkownika na nośniku społecznościowym, bot rozmowy lub podobne oferty. Nie trzeba kopiować, przechowywać ani buforować żadnych danych otrzymywanych z wersji zapoznawczej adresu URL projektu. Aby wyłączyć podglądy, które mogą się pojawić z witryny sieci Web lub właścicieli zawartości, należy przestrzegać wszelkich żądań.
 
 ## <a name="endpoint"></a>Endpoint
-Aby zażądać Podgląd adresu URL wyników, należy wysłać żądanie do następujący punkt końcowy. Umożliwia dalsze Definiowanie specyfikacji w nagłówki i parametry adresu URL.
+Aby zażądać wyników podglądu adresu URL, Wyślij żądanie do poniższego punktu końcowego. Użyj nagłówków i parametrów adresu URL, aby zdefiniować dalsze specyfikacje.
 
-Pobierz punkt końcowy:
+Pobieranie punktu końcowego:
 ```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
 ```
 
-Żądanie musi używać protokołu HTTPS i obejmują następujące parametru zapytania:
+Żądanie musi korzystać z protokołu HTTPS i zawierać następujący parametr zapytania:
 
-q - kwerendę, która określa adres URL, aby wyświetlić podgląd
+pytania i odpowiedzi, które identyfikują adres URL do podglądu
 
-Poniższe sekcje zawierają szczegółowe informacje techniczne dotyczące obiektów odpowiedzi, parametry zapytania i nagłówków, które mają wpływ na wyniki wyszukiwania.
+W poniższych sekcjach znajdują się szczegółowe informacje techniczne na temat obiektów odpowiedzi, parametrów zapytania i nagłówków, które mają wpływ na wyniki wyszukiwania.
 
-Aby dowiedzieć się, nagłówki, które powinny zawierać żądań, zobacz [nagłówki](#headers).
+Aby uzyskać informacje o nagłówkach, które powinny obejmować żądania, zobacz [nagłówki](#headers).
 
-Aby uzyskać informacji na temat parametrów zapytania, które powinny zawierać żądań, zobacz [parametry zapytania](#query-parameters).
+Aby uzyskać informacje na temat parametrów zapytania, które powinny zawierać żądania, zobacz [parametry zapytania](#query-parameters).
 
-Aby uzyskać informacje o formacie JSON obiektów, że odpowiedź zawiera, zobacz [obiekty odpowiedzi](#response-objects).
+Aby uzyskać informacje na temat obiektów JSON, które zawiera odpowiedź, zobacz [obiekty odpowiedzi](#response-objects).
 
-Zapytanie maksymalna długość adresu URL to 2048 znaków. Aby upewnić się, że Twoje długość adresu URL nie przekracza limit, maksymalna długość parametry zapytania powinny być mniejszy niż 1500 znaków. Jeśli adres URL przekracza 2048 znaków, serwer zwraca błąd 404 — Nie odnaleziono.
+Maksymalna długość adresu URL zapytania to 2 048 znaków. Aby zapewnić, że długość adresu URL nie przekracza limitu, Maksymalna długość parametrów zapytania powinna być krótsza niż 1 500 znaków. Jeśli adres URL przekracza 2 048 znaków, serwer zwraca 404 nie znaleziono.
 
-Aby uzyskać informacji o dozwolone użycie i wyświetlania wyników, zobacz [użycia i wyświetlają wymagania dotyczące](use-display-requirements.md).
+Aby uzyskać informacje na temat dozwolonych użycia i wyświetlania wyników, zobacz [użycie i wyświetlanie wymagań](use-display-requirements.md).
 
 > [!NOTE]
-> Niektóre nagłówki żądania, które mają znaczenie dla innych interfejsów API wyszukiwania nie mają wpływu na adres URL (wersja zapoznawcza)
-> - Pragma — obiekt wywołujący nie ma kontroli nad tego, czy adres URL w wersji zapoznawczej używa pamięci podręcznej
-> - Agent użytkownika — teraz adresu Url interfejsu API (wersja zapoznawcza) nie zapewnia różne odpowiedzi na wywołania pochodzące z komputera, Laptop lub Mobile.
+> Niektóre nagłówki żądań mające znaczenie dla innych interfejsów API wyszukiwania nie wpływają na Podgląd adresu URL
+> - Pragma — obiekt wywołujący nie ma kontroli nad tym, czy adres URL podglądu używa pamięci podręcznej
+> - User-Agent — teraz interfejs API podglądu adresów URL nie udostępnia różnych odpowiedzi na wywołania pochodzące z komputerów, laptopów lub urządzeń przenośnych.
 > 
-> Ponadto niektóre parametry nie są obecnie istotnych dla adresu URL interfejsu API (wersja zapoznawcza), ale mogą być używane w przyszłości dla globalizacji ulepszone.
+> Ponadto niektóre parametry nie są obecnie zrozumiałe dla interfejsu API w wersji zapoznawczej, ale mogą być używane w przyszłości na potrzeby ulepszonego globalizacji.
 
 ## <a name="headers"></a>Nagłówki
-Dostępne są następujące nagłówki, które mogą obejmować żądania i odpowiedzi.
+Poniżej znajdują się nagłówki, których może dotyczyć żądanie i odpowiedź.
 
 |nagłówek|Opis|
 |------------|-----------------|
 |<a name="market" />BingAPIs-Market|Nagłówek odpowiedzi.<br /><br /> Rynek używany przez żądanie. Format jest następujący \<kod_języka\>-\<kod_kraju\>. Na przykład en-US.|
 |<a name="traceid" />BingAPIs-TraceId|Nagłówek odpowiedzi.<br /><br /> Identyfikator wpisu dziennika, który zawiera szczegółowe informacje o żądaniu. Gdy wystąpi błąd, przechwyć ten identyfikator. Jeśli nie możesz określić i rozwiązać problemu, dołącz ten identyfikator wraz z innymi informacjami, które podasz zespołowi pomocy technicznej.|
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Wymagany nagłówek żądania.<br /><br /> Klucz subskrypcji otrzymany podczas tworzenia konta dla tej usługi w usługach [Cognitive Services](https://www.microsoft.com/cognitive-services/).|
-|<a name="clientid" />X-MSEdge-ClientID|Opcjonalny nagłówek żądania i odpowiedzi.<br /><br /> Usługa Bing używa tego nagłówka, aby zapewnić użytkownikom spójne zachowanie dla wywołań interfejsu API usługi Bing. Usługa Bing często testuje nowe funkcje i ulepszenia i używa identyfikatora klienta jako klucza do przypisywania ruchu dla różnych pakietów testowych. Jeśli nie będziesz używać tego samego identyfikatora klienta dla użytkownika w wielu żądaniach, usługa Bing może przypisać użytkownika do różnych, konfliktowych pakietów testowych. Przypisanie do wielu konfliktowych pakietów testowych może prowadzić do niespójnego środowiska użytkownika. Jeśli na przykład drugie żądanie ma przypisany inny pakiet testowy, niż pierwsze, środowisko obsługi może być nieoczekiwane. Ponadto usługa Bing może używać identyfikatora klienta, aby dopasować wyniki internetowe do historii wyszukiwania tego identyfikatora, zapewniając użytkownikowi bogatsze środowisko obsługi.<br /><br /> Usługa Bing używa także tego nagłówka, aby ulepszyć pozycjonowanie wyników, analizując aktywność generowaną przez identyfikator klienta. Ulepszenia istotności pomagają zwiększyć jakość wyników dostarczanych przez interfejsy API usługi Bing, co w rezultacie daje wyższą częstotliwość kliknięć dla użytkownika interfejsu API.<br /><br />Poniżej przedstawiono podstawowe reguły użycia, które mają zastosowanie do tego nagłówka.<br /><ul><li>Każdy użytkownik, który korzysta z Twojej aplikacji na urządzeniu, musi mieć unikatowy identyfikator klienta wygenerowany przez usługę Bing.<br /><br/>Jeśli nie uwzględnisz tego nagłówka w żądaniu, usługa Bing wygeneruje identyfikator i zwróci go w nagłówku odpowiedzi X-MSEdge-ClientID. Jedyną sytuacją, w której NIE należy uwzględniać tego nagłówka w żądaniu, jest pierwsze użycie Twojej aplikacji przez danego użytkownika na danym urządzeniu.<br /><br/></li><li>Używaj identyfikatora klienta dla każdego żądania interfejsu API usługi Bing, które Twoja aplikacja wykonuje dla tego użytkownika na danym urządzeniu.<br /><br/></li><li>**UWAGI:** Należy się upewnić, że tego Identyfikatora klienta nie jest możliwym do żadnych informacji o koncie użytkownika poświadczalne.</li><br/><li>Utrwal identyfikator klienta. Aby utrwalić identyfikator w aplikacji przeglądarki, użyj trwałego pliku cookie HTTP, aby mieć pewność, że dany identyfikator będzie używany we wszystkich sesjach. Nie należy używać plików cookie sesji. W przypadku innych aplikacji, takich jak aplikacje mobilne, użyj magazynu trwałego urządzenia, aby utrwalić identyfikator.<br /><br/>Następnym razem, gdy użytkownik będzie używać Twojej aplikacji na tym urządzeniu, uzyskaj utrwalony identyfikator klienta.</li></ul><br /> **UWAGA:** Odpowiedzi Bing może lub nie może zawierać tego nagłówka. Jeśli odpowiedź zawiera ten nagłówek, przechwyć identyfikator klienta i używaj go dla wszystkich kolejnych żądań usługi Bing dla tego użytkownika na tym urządzeniu.<br /><br /> **UWAGA:** Jeśli dodasz X MSEdge ClientID, nie może zawierać pliki cookie w żądaniu.|
+|<a name="clientid" />X-MSEdge-ClientID|Opcjonalny nagłówek żądania i odpowiedzi.<br /><br /> Usługa Bing używa tego nagłówka, aby zapewnić użytkownikom spójne zachowanie dla wywołań interfejsu API usługi Bing. Usługa Bing często testuje nowe funkcje i ulepszenia i używa identyfikatora klienta jako klucza do przypisywania ruchu dla różnych pakietów testowych. Jeśli nie będziesz używać tego samego identyfikatora klienta dla użytkownika w wielu żądaniach, usługa Bing może przypisać użytkownika do różnych, konfliktowych pakietów testowych. Przypisanie do wielu konfliktowych pakietów testowych może prowadzić do niespójnego środowiska użytkownika. Jeśli na przykład drugie żądanie ma przypisany inny pakiet testowy, niż pierwsze, środowisko obsługi może być nieoczekiwane. Ponadto usługa Bing może używać identyfikatora klienta, aby dopasować wyniki internetowe do historii wyszukiwania tego identyfikatora, zapewniając użytkownikowi bogatsze środowisko obsługi.<br /><br /> Usługa Bing używa także tego nagłówka, aby ulepszyć pozycjonowanie wyników, analizując aktywność generowaną przez identyfikator klienta. Ulepszenia istotności pomagają zwiększyć jakość wyników dostarczanych przez interfejsy API usługi Bing, co w rezultacie daje wyższą częstotliwość kliknięć dla użytkownika interfejsu API.<br /><br />Poniżej przedstawiono podstawowe reguły użycia, które mają zastosowanie do tego nagłówka.<br /><ul><li>Każdy użytkownik, który korzysta z Twojej aplikacji na urządzeniu, musi mieć unikatowy identyfikator klienta wygenerowany przez usługę Bing.<br /><br/>Jeśli nie uwzględnisz tego nagłówka w żądaniu, usługa Bing wygeneruje identyfikator i zwróci go w nagłówku odpowiedzi X-MSEdge-ClientID. Jedyną sytuacją, w której NIE należy uwzględniać tego nagłówka w żądaniu, jest pierwsze użycie Twojej aplikacji przez danego użytkownika na danym urządzeniu.<br /><br/></li><li>Używaj identyfikatora klienta dla każdego żądania interfejsu API usługi Bing, które Twoja aplikacja wykonuje dla tego użytkownika na danym urządzeniu.<br /><br/></li><li>**UWAGA** Należy upewnić się, że ten identyfikator klienta nie jest połączony z żadnym z uwierzytelnianymi informacjami o koncie użytkownika.</li><br/><li>Utrwal identyfikator klienta. Aby utrwalić identyfikator w aplikacji przeglądarki, użyj trwałego pliku cookie HTTP, aby mieć pewność, że dany identyfikator będzie używany we wszystkich sesjach. Nie należy używać plików cookie sesji. W przypadku innych aplikacji, takich jak aplikacje mobilne, użyj magazynu trwałego urządzenia, aby utrwalić identyfikator.<br /><br/>Następnym razem, gdy użytkownik będzie używać Twojej aplikacji na tym urządzeniu, uzyskaj utrwalony identyfikator klienta.</li></ul><br /> **UWAGA:** Odpowiedzi Bing mogą być nieuwzględnione w tym nagłówku lub nie. Jeśli odpowiedź zawiera ten nagłówek, przechwyć identyfikator klienta i używaj go dla wszystkich kolejnych żądań usługi Bing dla tego użytkownika na tym urządzeniu.<br /><br /> **UWAGA:** Jeśli dołączysz symbol X-MSEdge-ClientID, nie musisz zawierać plików cookie w żądaniu.|
 |<a name="clientip" />X-MSEdge-ClientIP|Opcjonalny nagłówek żądania.<br /><br /> Adres IPv4 lub IPv6 na urządzeniu klienckim. Adres IP jest używany w celu odnalezienia lokalizacji użytkownika. Usługa Bing używa informacji o lokalizacji, aby określić sposób bezpiecznego wyszukiwania.<br /><br /> Nie należy zaciemniać adres (na przykład zamieniając ostatni oktet na 0). Zaciemnianie adresu powoduje, że ustalona lokalizacja nie jest nawet przybliżona do rzeczywistej lokalizacji urządzenia, przez co usługa Bing może zwracać błędne wyniki.|
 
 ## <a name="query-parameters"></a>Parametry zapytania
-Żądanie może obejmować następujące parametry zapytania. Zobacz wymaganej kolumny dla wymaganych parametrów. Należy najpierw, adres URL zakodować parametry zapytania. Zapytanie musi być bezwzględnym adresem URL za pomocą protokołu http lub https schematu; Firma Microsoft nie obsługuje względnych adresów URL lub innych systemów, takich jak ftp: / /
+Żądanie może zawierać następujące parametry zapytania. Sprawdź wymaganą kolumnę dla wymaganych parametrów. Należy zakodować parametry zapytania w adresie URL. Zapytanie musi być bezwzględnym adresem URL ze schematem http lub https; nie obsługujemy względnych adresów URL ani innych schematów, takich jak ftp://
 
-|Name (Nazwa)|Wartość|Typ|Wymagane|
+|Name (Nazwa)|Value|Type|Wymagane|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku Zobacz kodów na rynku.<br /><br /> **UWAGA:** Adres URL interfejsu API w wersji zapoznawczej aktualnie obsługuje tylko język angielski i położenia geograficznego w Stanach Zjednoczonych.<br /><br />|String|Tak|
-|<a name="query" />q|Adres URL, aby wyświetlić podgląd|String|Tak|
-|<a name="responseformat" />responseFormat|Typ multimediów do użycia dla odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje o formacie JSON obiektów, że odpowiedź zawiera, zobacz [obiekty odpowiedzi](#response-objects).<br /><br />Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, zawierające wyniki wyszukiwania. Aby uzyskać informacji na temat JSON LD, zobacz [JSON-LD](https://json-ld.org/).|String|Nie|
-|<a name="safesearch"/>safeSearch|Nielegalnych treści dla dorosłych lub pirackich zawartości jest zablokowany kod błędu: 400 i *isFamilyFriendly* flaga nie jest zwracana. <p>Treści dla dorosłych prawnych poniżej jest to zachowanie. Zwraca wartość Kod stanu 200, a *isFamilyFriendly* flaga jest ustawiona na wartość false.<ul><li>bezpieczne wyszukiwanie = ograniczeniami: Tytuł i opis, adres URL obrazu nie zostaną zwrócone.</li><li>bezpieczne wyszukiwanie = średni; Uzyskaj tytuł, adres URL i opis, ale nie opisowy obraz.</li><li>bezpieczne wyszukiwanie = wyłączone; Pobierz wszystkie odpowiedzi obiektów/elementy — tytuł, adres URL, opis i obraz.</li></ul> |String|Nie jest wymagane. </br> Wartość domyślna to bezpieczne wyszukiwanie = strict.|
+|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości rynkowych, zobacz Kody rynku.<br /><br /> **UWAGA:** Interfejs API wersji zapoznawczej dla adresu URL obsługuje obecnie tylko stany USA i języki angielskie.<br /><br />|String|Tak|
+|<a name="query" />pytania|Adres URL do podglądu|Ciąg|Tak|
+|<a name="responseformat" />responseFormat|Typ nośnika, który ma być używany na potrzeby odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje na temat obiektów JSON zawartych w odpowiedzi, zobacz temat [obiekty odpowiedzi](#response-objects).<br /><br />Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, które zawierają wyniki wyszukiwania. Aby uzyskać informacje na temat JSON-LD, zobacz [JSON-LD](https://json-ld.org/).|String|Nie|
+|<a name="safesearch"/>safeSearch|Niedozwolona zawartość dla dorosłych lub zawartość pirackia jest blokowana z kodem błędu 400 i flaga *isFamilyFriendly* nie jest zwracana. <p>W przypadku legalnej zawartości dla dorosłych poniżej przedstawiono zachowanie. Kod stanu zwraca 200, a flaga *isFamilyFriendly* jest ustawiona na false.<ul><li>Bezpieczne wyszukiwanie = Strict: Tytuł, opis, adres URL i obraz nie zostaną zwrócone.</li><li>Bezpieczne wyszukiwanie = umiarkowany; Pobierz tytuł, adres URL i opis, ale nie obraz opisowy.</li><li>Bezpieczne wyszukiwanie = wyłączone; Pobierz wszystkie obiekty/elementy odpowiedzi — tytuł, adres URL, opis i obraz.</li></ul> |String|Nie jest wymagane. </br> Wartość domyślna to bezpieczne wyszukiwanie = Strict.|
 
 ## <a name="response-objects"></a>Obiekty odpowiedzi
-Schemat odpowiedzi to albo [Strona internetowa] lub ErrorResponse, tak jak API wyszukiwania w Internecie. Jeśli żądanie zakończy się niepowodzeniem, jest obiektem najwyższego poziomu [ErrorResponse](#errorresponse) obiektu.
+Schemat odpowiedzi to [Strona sieci Web] lub zwrócono, jak w interfejsie API wyszukiwanie w sieci Web. Jeśli żądanie nie powiedzie się, obiekt najwyższego poziomu jest obiektem [zwrócono](#errorresponse) .
 
 |Object|Opis|
 |------------|-----------------|
-|[WebPage](#webpage)|Najwyższego poziomu obiekt JSON, który zawiera atrybuty (wersja zapoznawcza).|
+|[Stron](#webpage)|Obiekt JSON najwyższego poziomu, który zawiera atrybuty wersji zapoznawczej.|
 
 ### <a name="error"></a>Błąd
-Definiuje błąd, który wystąpił.
+Określa błąd, który wystąpił.
 
-|Element|Opis|Typ|
+|Element|Opis|Type|
 |-------------|-----------------|----------|
-|<a name="error-code" />Kod|Kod błędu, który identyfikuje kategorii błędów. Aby uzyskać listę możliwych kodów, zobacz [kody błędów](#error-codes).|String|
+|<a name="error-code" />kodu|Kod błędu, który identyfikuje kategorię błędu. Listę możliwych kodów można znaleźć w temacie [kody błędów](#error-codes).|Ciąg|
 |<a name="error-message" />Komunikat|Opis błędu.|String|
-|<a name="error-moredetails" />moreDetails|Opis, który zawiera dodatkowe informacje o tym błędzie.|String|
-|<a name="error-parameter" />Parametr|Parametr zapytania w żądaniu, które spowodowały błąd.|String|
-|<a name="error-subcode" />subCode|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może być ParameterInvalid lub ParameterInvalidValue. |String|
-|<a name="error-value" />Wartość|Wartość parametru zapytania, która nie jest prawidłowa.|String|
+|<a name="error-moredetails" />moreDetails|Opis, który zawiera dodatkowe informacje o błędzie.|String|
+|<a name="error-parameter" />konstruktora|Parametr zapytania w żądaniu, który spowodował błąd.|String|
+|<a name="error-subcode" />podkod|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może to być ParameterInvalid lub ParameterInvalidValue. |String|
+|<a name="error-value" />wartościami|Wartość parametru zapytania, która jest nieprawidłowa.|String|
 
-### <a name="errorresponse"></a>ErrorResponse
-Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy się niepowodzeniem.
+### <a name="errorresponse"></a>Zwrócono
+Obiekt najwyższego poziomu, który odpowiedź zawiera, gdy żądanie nie powiedzie się.
 
-|Name (Nazwa)|Wartość|Typ|
+|Name (Nazwa)|Wartość|Type|
 |----------|-----------|----------|
-|_type|Wskazówka typu.|String|
-|<a name="errors" />Błędy|Lista błędów, które opisują przyczyny niepowodzenia żądania.|[Błąd](#error)]|
+|_type|Wskazówka dotycząca typu.|Ciąg|
+|<a name="errors" />Błędy|Lista błędów opisujących przyczyny niepowodzenia żądania.|[Błąd](#error) []|
 
-### <a name="webpage"></a>Strony sieci Web
-Określa informacje o stronie sieci Web w wersji zapoznawczej.
+### <a name="webpage"></a>Stron
+Definiuje informacje o stronie sieci Web w wersji zapoznawczej.
 
-|Name (Nazwa)|Wartość|Typ|
+|Name (Nazwa)|Wartość|Type|
 |----------|-----------|----------|
 |name|Tytuł strony, niekoniecznie tytuł HTML|String|
-|url|Adres URL, który faktycznie został przeszukane (żądanie może wykonano przekierowania)|String|
+|url|Adres URL, który był w rzeczywistości przeszukiwany (żądanie mogło być wykonane przekierowania)|Ciąg|
 |description|Krótki opis strony i zawartości|String|
-|isFamilyFriendly|Najdokładniejszych dla elementów w indeksie sieci web; Odczyty w czasie rzeczywistym, czy to wykrywanie wyłącznie na podstawie adresu URL i nie zawartości strony|wartość logiczna|
-|primaryImageOfPage/contentUrl|Adres URL, który jest reprezentatywny obraz do uwzględnienia w wersji zapoznawczej|String|
+|isFamilyFriendly|Najdokładniejsze dla elementów w indeksie sieci Web; Pobieranie w czasie rzeczywistym umożliwia wykrycie wyłącznie na podstawie adresu URL, a nie zawartości strony|boolean|
+|primaryImageOfPage/contentUrl|Adres URL reprezentatywnego obrazu do uwzględnienia w wersji zapoznawczej|String|
 
-### <a name="identifiable"></a>Do zidentyfikowania
-|Name (Nazwa)|Wartość|Typ|
+### <a name="identifiable"></a>Identyfikowan
+|Name (Nazwa)|Value|Type|
 |-------------|-----------------|----------|
 |id|Identyfikator zasobu|String|
 
 ## <a name="error-codes"></a>Kody błędów
 
-Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
+Oto możliwe kody stanu HTTP zwracane przez żądanie.
 
-|Kod stanu:|Opis|
+|Kod stanu|Opis|
 |-----------------|-----------------|
 |200|Powodzenie.|
-|400|To jeden z parametrów zapytania, lub jest on nieprawidłowy.|
-|400|Błąd ServerError, kodów podrzędnych ResourceError: Nie można połączyć się z żądanego adresu URL|
-|400|Błąd ServerError, kodów podrzędnych ResourceError: Żądany adres URL nie zwrócił kod powodzenia (w tym przypadku zwrócony HTTP 404)|
-|400|InvalidRequest, kodów podrzędnych zablokowane: Żądany adres URL może zawierać treści dla dorosłych i zostało zablokowane|
-|401|Klucz subskrypcji nie istnieje lub jest nieprawidłowy.|
-|403|Użytkownik jest uwierzytelniany (na przykład są używane klucz ważnej subskrypcji), ale nie mają uprawnień do żądanego zasobu.<br /><br /> Bing może również zwracać taki stan, obiekt wywołujący przekroczeniu ich zapytań na miesięcznego limitu przydziału.|
-|410|Żądania HTTP są używane zamiast protokołu HTTPS. Protokół HTTPS jest jedynym protokołem obsługiwane.|
-|429|Obiekt wywołujący przekracza ich zapytań na drugi limit przydziału.|
-|500|Nieoczekiwanego błędu serwera.|
+|400|Brakuje jednego z parametrów zapytania lub jest on nieprawidłowy.|
+|400|Błąd servererror, ResourceError podkodu: Nie można skontaktować się z żądanym adresem URL|
+|400|Błąd servererror, ResourceError podkodu: Żądany adres URL nie zwrócił kodu sukcesu (w tym, czy zwrócił on HTTP 404).|
+|400|InvalidRequest, zablokowano kod w kodzie: Żądany adres URL może zawierać zawartość dla dorosłych i został zablokowany|
+|401|Brak klucza subskrypcji lub jest on nieprawidłowy.|
+|403|Użytkownik jest uwierzytelniany (na przykład użył prawidłowego klucza subskrypcji), ale nie ma uprawnień do żądanego zasobu.<br /><br /> Jeśli obiekt wywołujący przekroczył limit przydziału zapytań na miesiąc, może również zwrócić ten stan.|
+|410|Żądanie używało protokołu HTTP zamiast protokołu HTTPS. Jedynym obsługiwanym protokołem jest protokół HTTPS.|
+|429|Obiekt wywołujący przekroczył liczbę zapytań na sekundę.|
+|500|Nieoczekiwany błąd serwera.|
 
-Jeśli żądanie zakończy się niepowodzeniem, odpowiedź zawiera [ErrorResponse](#errorresponse) obiekt, który zawiera listę [błąd](#error) obiekty, które opisują, co było przyczyną błędu. Jeśli ten błąd jest związany z parametrem, `parameter` pole określa parametr, który jest problem. A jeśli błąd jest związany z wartością parametru `value` pole określa wartość, która jest nieprawidłowa.
+Jeśli żądanie nie powiedzie się, odpowiedź zawiera obiekt [zwrócono](#errorresponse) , który zawiera listę obiektów [błędów](#error) , które opisują przyczynę błędu. Jeśli błąd jest związany z parametrem, `parameter` pole Identyfikuje parametr, który jest problemem. A jeśli błąd jest związany z wartością parametru, `value` pole określa nieprawidłową wartość.
 
 ```json
 {
@@ -168,17 +169,17 @@ Jeśli żądanie zakończy się niepowodzeniem, odpowiedź zawiera [ErrorRespons
 }
 ```
 
-Poniżej przedstawiono wartości możliwy błąd kodu i podrzędnego błędu kodu.
+Poniżej przedstawiono możliwy kod błędu i wartości kodu błędu podrzędnego.
 
-|Kod|Podrzędnego|Opis
+|Kod|Podkod|Opis
 |-|-|-
-|Błąd ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Kod stanu HTTP to 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowane|Wyszukiwarka Bing zwróci InvalidRequest zawsze wtedy, gdy dowolnej części żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>W przypadku ParameterMissing lub ParameterInvalidValue błędu 400 jest kod stanu HTTP.<br/><br/>Jeśli używasz protokołu HTTP zamiast HTTPS, Wyszukiwarka Bing zwróci HttpNotAllowed i jest kod stanu HTTP 410.
-|RateLimitExceeded|Nie kodów podrzędnych|Wyszukiwarka Bing zwróci RateLimitExceeded zawsze wtedy, gdy przekracza z zapytań na sekundę (QPS) lub zapytania na miesiąc (QPM) limitu przydziału.<br/><br/>Po przekroczeniu liczby zapytań na Sekundę, Wyszukiwarka Bing zwróci kod stanu HTTP 429, a Jeśli przekroczysz QPM, Wyszukiwarka Bing zwróci 403.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Wyszukiwarka Bing zwróci InvalidAuthorization, kiedy Bing nie może uwierzytelnić obiektu wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje w przypadku określenia więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli ten błąd jest InvalidAuthorization, kod stanu HTTP jest 401.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Wyszukiwarka Bing zwróci InsufficientAuthorization, gdy obiekt wywołujący nie ma uprawnień dostępu do zasobu. Może to wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli ten błąd jest InsufficientAuthorization, kod stanu HTTP jest 403.
+|Błąd servererror|UnexpectedError<br/>ResourceError<br/>NotImplemented|Kod stanu HTTP to 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowany|Bing zwraca InvalidRequest, gdy jakakolwiek część żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>Jeśli błąd to ParameterMissing lub ParameterInvalidValue, kod stanu HTTP to 400.<br/><br/>Jeśli używasz protokołu HTTP zamiast HTTPS, Bing zwraca HttpNotAllowed, a kod stanu HTTP to 410.
+|RateLimitExceeded|Brak kodów podrzędnych|Bing zwraca RateLimitExceeded za każdym razem, gdy przekroczą limit przydziału zapytań na sekundę (zapytań) lub zapytania miesięcznie (QPM).<br/><br/>W przypadku przekroczenia zapytań, Bing zwraca kod stanu HTTP 429 i w przypadku przekroczenia QPM, Bing zwróci 403.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing zwraca InvalidAuthorization, gdy Bing nie może uwierzytelnić obiektu wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje, jeśli określono więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli błąd to InvalidAuthorization, kod stanu HTTP to 401.
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Usługa Bing zwraca InsufficientAuthorization, gdy obiekt wywołujący nie ma uprawnień dostępu do zasobu. Taka sytuacja może wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli błąd to InsufficientAuthorization, kod stanu HTTP to 403.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Przewodnik Szybki start dla języka C#](csharp.md)
 - [Przewodnik Szybki start dla języka Java](java-quickstart.md)
 - [Przewodnik Szybki start dla języka JavaScript](javascript.md)

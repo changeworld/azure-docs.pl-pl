@@ -3,7 +3,7 @@ title: Szybkie wdrażanie istniejącej aplikacji do klastra usługi Azure Servic
 description: Użyj klastra usługi Azure Service Fabric do hostowania istniejącej aplikacji w technologii Node.js za pomocą programu Visual Studio.
 services: service-fabric
 documentationcenter: nodejs
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: bd19aba68f8b847e8f4800d348197f9c2b1c1289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428237"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592451"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostowanie aplikacji w technologii Node.js w usłudze Azure Service Fabric
 
@@ -27,9 +27,9 @@ Przewodnik Szybki start ułatwia wdrożenie istniejącej aplikacji (w tym przyk�
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że masz [skonfigurowane środowisko programowania](service-fabric-get-started.md). W tym zainstalowanie zestawu SDK usługi Service Fabric i programu Visual Studio 2019 lub 2015.
+Przed rozpoczęciem upewnij się, że masz [skonfigurowane środowisko programowania](service-fabric-get-started.md). Obejmuje to zainstalowanie zestawu SDK Service Fabric i programu Visual Studio 2019 lub 2015.
 
-Niezbędna jest również aplikacja Node.js do wdrożenia. Przewodnik Szybki Start używa prostej witryny sieci Web w technologii Node.js, którą można pobrać [stąd][download-sample]. W następnym kroku po utworzeniu projektu wyodrębnij ten plik do swojego folderu `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\`.
+Niezbędna jest również aplikacja Node.js do wdrożenia. Ten przewodnik Szybki Start używa prostej witryny sieci Web Node. js, którą można pobrać [tutaj][download-sample]. W następnym kroku po utworzeniu projektu wyodrębnij ten plik do swojego folderu `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\`.
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto][create-account].
 
@@ -52,7 +52,7 @@ W następnym oknie dialogowym można utworzyć usługę Service Fabric dowolnego
 
 Nazwij usługę **MyGuestService** i ustaw opcje po prawej stronie na następujące wartości:
 
-| Ustawienie                   | Wartość |
+| Ustawienie                   | Value |
 | ------------------------- | ------ |
 | Folder pakietu kodu       | _&lt;folder z aplikacją w technologii Node.js&gt;_ |
 | Zachowanie pakietu kodu     | Skopiuj zawartość folderu do projektu |
@@ -83,7 +83,7 @@ Aby zapoznać się z omówieniem zawartości projektu usługi, zobacz [Pierwsze 
 
 Wdrażana przykładowa aplikacja w technologii Node.js korzysta z portu **80** i dlatego trzeba poinformować usługę Service Fabric, że ten port musi być widoczny.
 
-Otwórz plik **ServiceManifest.xml** w projekcie. W dolnej części manifestu Brak `<Resources> \ <Endpoints>` z już zdefiniowanym wpisem. Zmodyfikuj ten wpis, aby dodać parametry `Port`, `Protocol`, i `Type`. 
+Otwórz plik **ServiceManifest.xml** w projekcie. W dolnej części manifestu istnieje `<Resources> \ <Endpoints>` już zdefiniowany wpis. Zmodyfikuj ten wpis, aby dodać parametry `Port`, `Protocol`, i `Type`. 
 
 ```xml
   <Resources>
@@ -98,7 +98,7 @@ Otwórz plik **ServiceManifest.xml** w projekcie. W dolnej części manifestu Br
 
 ## <a name="deploy-to-azure"></a>Wdrażanie na platformie Azure
 
-Jeśli użytkownik naciśnie klawisz **F5** i uruchomić projekt, jest wdrażana w klastrze lokalnym. Zamiast tego wdrożymy go jednak na platformie Azure.
+Jeśli naciśniesz klawisz **F5** i uruchomisz projekt, zostanie on wdrożony w klastrze lokalnym. Zamiast tego wdrożymy go jednak na platformie Azure.
 
 Kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Publikuj...** . Zostanie otwarte okno dialogowe publikowania na platformie Azure.
 
@@ -106,9 +106,9 @@ Kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Publikuj...** . Z
 
 Wybierz docelowy profil **PublishProfiles\Cloud.xml**.
 
-Jeśli nie zostało to wykonane wcześniej, wybierz konto platformy Azure, na którym ma się odbyć wdrożenie. Jeśli nie masz jeszcze konta, [utwórz je][create-account].
+Jeśli nie zostało to wykonane wcześniej, wybierz konto platformy Azure, na którym ma się odbyć wdrożenie. Jeśli jeszcze tego nie masz, [Utwórz konto][create-account].
 
-W obszarze **Punkt końcowy połączenia** wybierz klaster usługi Service Fabric do wdrożenia. Jeśli nie masz, wybierz opcję **&lt;Utwórz nowy klaster... &gt;** spowoduje to otwarcie okna przeglądarki sieci web do witryny Azure portal. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [tworzenia klastra w portalu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+W obszarze **Punkt końcowy połączenia** wybierz klaster usługi Service Fabric do wdrożenia. Jeśli go nie masz, wybierz pozycję **&lt;Utwórz nowy klaster... otwiera&gt;** okno przeglądarki sieci Web do Azure Portal. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [tworzenia klastra w portalu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 Podczas tworzenia klastra usługi Service Fabric upewnij się, że ustawienie **Niestandardowe punkty końcowe** ma wartość **80**.
 
@@ -130,13 +130,13 @@ Sprawdź adres bloku omówienia usługi. Użyj nazwy domeny z właściwości _Pu
 
 ![Blok omówienia usługi sieci szkieletowej w witrynie Azure Portal][overview]
 
-Przejdź do tego adresu, gdzie zobaczysz `HELLO WORLD` odpowiedzi.
+Przejdź do tego adresu, gdzie `HELLO WORLD` zobaczysz odpowiedź.
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
 
-Należy pamiętać usunąć wszystkie zasoby utworzone w tym przewodniku Szybki Start, ponieważ opłaty są naliczane dla tych zasobów.
+Nie zapomnij usunąć wszystkich zasobów, które zostały utworzone w ramach tego przewodnika Szybki Start, ponieważ opłaty są naliczone za te zasoby.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Przeczytaj więcej na temat [plików wykonywalnych gościa](service-fabric-guest-executables-introduction.md).
 
 <!-- Image References -->

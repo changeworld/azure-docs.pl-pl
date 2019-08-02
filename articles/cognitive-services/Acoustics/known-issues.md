@@ -10,12 +10,13 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kylsto
-ms.openlocfilehash: 53df981564eb177da66b86022ecfc80b25f1c763
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ROBOTS: NOINDEX
+ms.openlocfilehash: df5a4ce62af0405ffab8f711fb40b3d92083a3a4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296536"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706658"
 ---
 # <a name="project-acoustics-known-issues"></a>Znane problemy akustyczne projektu
 W przypadku korzystania z wersji zapoznawczej projektanta w celu wystawiania problemów z projektem mogą wystąpić następujące znane problemy.
@@ -43,6 +44,6 @@ Sprawdź, czy użyto poprawnych poświadczeń dla Twojego konta platformy Azure,
 ## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>Anulowanie tworzenie pozostawia kartę tworzenie w stanie "Usuwanie"
 Akustyczne projektu spowoduje oczyszczenie wszystkich zasobów platformy Azure dla zadania po pomyślnym zakończeniu lub anulowaniu. Może to potrwać do 5 minut.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Wypróbuj zawartość przykładową [aparatu Unity](unity-quickstart.md) lub [Unreal](unreal-quickstart.md)
 

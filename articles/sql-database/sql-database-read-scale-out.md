@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-manager: craigg
 ms.date: 06/03/2019
-ms.openlocfilehash: 3d9da312f86128dc738b367371016d03da2c1629
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: aefd3da1908b2be879b5ba500746fab48e43d5bd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228236"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566954"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Korzystanie z replik tylko do odczytu w celu równoważenia obciążenia obciążeń zapytań tylko do odczytu
 

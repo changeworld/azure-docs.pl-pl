@@ -1,7 +1,7 @@
 ---
-title: Eksperymentowanie w usłudze — Custom Decision Service
+title: Eksperymentowanie — Custom Decision Service
 titlesuffix: Azure Cognitive Services
-description: Ten artykuł to podręcznik eksperymentów przy użyciu usługi Custom Decision Service.
+description: Ten artykuł zawiera Przewodnik dotyczący eksperymentów z Custom Decision Service.
 services: cognitive-services
 author: marco-rossi29
 manager: nitinme
@@ -10,58 +10,59 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: b5f8c853218a1db53f4dd23e7254b35990a7132b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: e6e8e7d0d5b969464ba9183ccae9080f58f786a0
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829178"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707283"
 ---
 # <a name="experimentation"></a>Eksperymentowanie
 
-Po teorii [kontekstowych bandits (CB)](https://www.microsoft.com/en-us/research/blog/contextual-bandit-breakthrough-enables-deeper-personalization/), Custom Decision Service wielokrotnie przestrzega kontekst, wykonują akcję i przestrzega nagradzania dla wybranej akcji. Przykładem jest personalizacja zawartości możliwej do: kontekst w tym artykule opisano użytkownika akcje są scenariusze Release candidate i nagrody mierzy użytkownikami zbędne zalecane wątku.
+Po teorii [Bandits kontekstowych (CB)](https://www.microsoft.com/en-us/research/blog/contextual-bandit-breakthrough-enables-deeper-personalization/)Custom Decision Service wielokrotnie obserwuje kontekst, podejmuje akcję i obserwuje wynagrodzenie dla wybranej akcji. Przykładem jest Personalizacja zawartości: kontekst opisuje użytkownika, akcje są wątkiem kandydata, a nagroda wskazuje, jak dużo użytkownik polubił ten scenariusz.
 
-Usługa Custom Decision Service tworzy zasady, ponieważ jest on mapowany w kontekstach akcji. Za pomocą zasad określony element docelowy chcesz wiedzieć jego oczekiwanego nagrody. Jednym ze sposobów, aby oszacować nagrody jest online przy użyciu zasad i pozwól mu wybierz akcje (na przykład, zaleca się wątków dla użytkowników). Jednak takie online oceny może być kosztowne, dwóch powodów:
+Custom Decision Service tworzy zasady, ponieważ mapuje z kontekstów do akcji. Z określonymi zasadami docelowymi chcesz znać oczekiwane wynagrodzenie. Jednym ze sposobów oszacowania nagrody jest użycie zasad online i wybranie akcji (na przykład zalecane historie dla użytkowników). Jednak Ocena w trybie online może być kosztowna z dwóch powodów:
 
-* Udostępnia ona użytkownikom nieprzetestowanych zasad eksperymentalne.
-* Go nie przeprowadzać skalowanie do obliczenia wielu zasad docelowej.
+* Udostępnia ona użytkownikom nietestowe, eksperymentalne zasady.
+* Nie skaluje się do oceny wielu zasad docelowych.
 
-Wyłącz zasady oceny jest paradygmat alternatywne. W przypadku dzienników z istniejącego systemu online, które obowiązują zasady rejestrowania oceny wyłączanie zasad można oszacować oczekiwane korzyści wynikające z nowych zasad docelowej.
+Obliczanie poza zasadami jest alternatywnym modelem. Jeśli masz dzienniki z istniejącego systemu online, który przestrzega zasad rejestrowania, szacowanie zasad może oszacować oczekiwane korzyści wynikające z nowych zasad docelowych.
 
-Za pomocą pliku dziennika, eksperymentowanie ma na celu znaleźć zasady korzystając z najwyższej nagradzania szacowany, oczekiwano. Określać zasady są sparametryzowany przez [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) argumentów. W domyślnym trybie skryptu testów przez dołączenie do różnych argumenty Vowpal Wabbit `--base_command`. Skrypt wykonuje następujące czynności:
+Korzystając z pliku dziennika, eksperymentowanie szuka zasad o najwyższej szacowanej, oczekiwanym stopniu. Zasady docelowe są sparametryzowane przez argumenty [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) . W trybie domyślnym skrypt testuje różne argumenty Vowpal Wabbit przez dołączenie do `--base_command`. Skrypt wykonuje następujące czynności:
 
-* Automatycznie wykryje, funkcje przestrzeni nazw z pierwszego `--auto_lines` wiersze z pliku wejściowego.
-* Wykonuje pierwszy czyszczenia hiperparametrów (`learning rate`, `L1 regularization`, i `power_t`).
-* Testuje oceny zasad `--cb_type` (odwrotność tendencje wynik (`ips`) lub podwójnie niezawodne (`dr`). Aby uzyskać więcej informacji, zobacz [przykład kontekstowych Bandit](https://github.com/JohnLangford/vowpal_wabbit/wiki/Contextual-Bandit-Example).
-* Testy notatek.
-* Funkcje interakcji drugiego stopnia testów:
-   * **Faza atak metodą siłową**: Sprawdza wszystkie kombinacje z `--q_bruteforce_terms` pary lub mniej.
-   * **Faza zachłanne**: Dodaje parę najlepsze, dopóki nie istnieje żadne improvement dla `--q_greedy_stop` zaokrągla.
-* Wykonuje drugi czyszczenia hiperparametrów (`learning rate`, `L1 regularization`, i `power_t`).
+* Funkcja autowykrywania przestrzeni nazw funkcji z pierwszego `--auto_lines` wiersza pliku wejściowego.
+* Wykonuje pierwsze odchylenia przez parametry funkcji Hyper-`learning rate`Parameters `L1 regularization`(, `power_t`i).
+* Testuje ocenę `--cb_type` zasad (odwrotny wynik (`ips`) lub podwójnie niezawodny (`dr`). Aby uzyskać więcej informacji, zobacz [przykład kontekstowy Bandit](https://github.com/JohnLangford/vowpal_wabbit/wiki/Contextual-Bandit-Example).
+* Testuje marginesy.
+* Testuje funkcje interakcji kwadratowej:
+   * **faza**wymuszania rozłożenia: Testuje wszystkie kombinacje z `--q_bruteforce_terms` parami lub mniej.
+   * **faza zachłanne**: Dodaje najlepszą parę do momentu, gdy nie będzie `--q_greedy_stop` żadnych ulepszeń w przypadku zaokrąglania.
+* Wykonuje drugie wyczyszczenie parametrów funkcji Hyper-Parameters`learning rate`( `L1 regularization`, i `power_t`).
 
-Parametry sterujące te kroki obejmują niektóre argumenty Vowpal Wabbit:
-- Przykład manipulowania opcje:
-  - przestrzenie nazw udostępnionych
-  - przestrzenie nazw akcji
-  - przestrzenie nazw brzegowych
-  - Funkcje drugiego stopnia
-- Opcje regułę aktualizacji
-  - tempo uczenia
-  - Uregulowania L1
-  - wartość typu t. zasilania
+Parametry kontrolujące te kroki zawierają kilka argumentów Vowpal Wabbit:
+- Przykładowe opcje manipulowania:
+  - udostępnione przestrzenie nazw
+  - obszary nazw akcji
+  - marginalne przestrzenie nazw
+  - Funkcje kwadratowe
+- Aktualizowanie opcji reguł
+  - stawka szkoleniowa
+  - Uregulowanie L1
+  - wartość t
 
-Szczegółowe objaśnienia dotyczące powyższych argumentów, zobacz [argumenty wiersza polecenia Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments).
+Szczegółowe wyjaśnienie powyższych argumentów można znaleźć w temacie [Vowpal Wabbit argumenty wiersza polecenia](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Vowpal Wabbit: Zainstalowana i w zmiennej path.
-  - W systemie Windows: [Użyj `.msi` Instalatora](https://github.com/eisber/vowpal_wabbit/releases).
-  - Inne platformy: [Uzyskaj kod źródłowy](https://github.com/JohnLangford/vowpal_wabbit/releases).
-- Python 3: Zainstalowana i w zmiennej path.
-- NumPy: Użyj Menedżera pakietów wybranych przez użytkownika.
-- *O Microsoft-ds* repozytorium: [Sklonuj repozytorium](https://github.com/Microsoft/mwt-ds).
-- Plik dziennika JSON usługi decyzji: Domyślnie polecenie podstawowy zawiera `--dsjson`, które umożliwia analizowanie JSON usługi decyzji w pliku danych wejściowych. [Pobierz przykład ten format](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
+- Vowpal Wabbit: Zainstalowane i na ścieżce.
+  - W systemie Windows: [Użyj Instalatora`.msi` ](https://github.com/eisber/vowpal_wabbit/releases).
+  - Inne platformy: [Pobierz kod źródłowy](https://github.com/JohnLangford/vowpal_wabbit/releases).
+- Python 3: Zainstalowane i na ścieżce.
+- NumPy: Użyj wybranego Menedżera pakietów.
+- Repozytorium *Microsoft/MWT-ds* : [Klonowanie repozytorium](https://github.com/Microsoft/mwt-ds).
+- Plik dziennika JSON usługi decyzyjnej: Domyślnie polecenie podstawowe obejmuje `--dsjson`, co umożliwia analizę JSON usługi decyzyjnej pliku danych wejściowych. [Zapoznaj się z przykładem tego formatu](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
 
-## <a name="usage"></a>Sposób użycia
+## <a name="usage"></a>Użycie
 Przejdź do `mwt-ds/DataScience` i uruchom `Experimentation.py` z odpowiednimi argumentami, zgodnie z opisem w poniższym kodzie:
 
 ```cmd
@@ -74,38 +75,38 @@ python Experimentation.py [-h] -f FILE_PATH [-b BASE_COMMAND] [-p N_PROC]
                           [--q_greedy_stop Q_GREEDY_STOP]
 ```
 
-Dziennik wyników jest dołączana do *mwt-ds/DataScience/experiments.csv* pliku.
+Dziennik wyników jest dołączany do pliku *CSV MWT-ds/datascience/eksperymenty.*
 
 ### <a name="parameters"></a>Parametry
-| Dane wejściowe | Opis | Domyślne |
+| Dane wejściowe | Opis | Domyślny |
 | --- | --- | --- |
-| `-h`, `--help` | Pokaż komunikat pomocy i zakończenia. | |
-| `-f FILE_PATH`, `--file_path FILE_PATH` | Ścieżka pliku danych (`.json` lub `.json.gz` format — każdy wiersz jest `dsjson`). | Wymagane |  
-| `-b BASE_COMMAND`, `--base_command BASE_COMMAND` | Podstawowy polecenie Vowpal Wabbit.  | `vw --cb_adf --dsjson -c` |  
-| `-p N_PROC`, `--n_proc N_PROC` | Liczba równoległych procesów do użycia. | Procesory logiczne |  
-| `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | Udostępnione funkcji w przestrzeni nazw (na przykład `abc` oznacza, że przestrzenie nazw `a`, `b`, i `c`).  | Automatyczne wykrywanie z pliku danych |  
+| `-h`, `--help` | Pokaż komunikat pomocy i Zakończ. | |
+| `-f FILE_PATH`, `--file_path FILE_PATH` | Ścieżka pliku danych (`.json` lub `.json.gz` format — każdy wiersz to a `dsjson`). | Wymagane |  
+| `-b BASE_COMMAND`, `--base_command BASE_COMMAND` | Podstawowe polecenie Vowpal Wabbit.  | `vw --cb_adf --dsjson -c` |  
+| `-p N_PROC`, `--n_proc N_PROC` | Liczba procesów równoległych do użycia. | Procesory logiczne |  
+| `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | Przestrzenie nazw funkcji udostępnionych (na `abc` przykład, `a`oznacza przestrzenie `c`nazw, `b`i).  | Automatyczne wykrywanie z pliku danych |  
 | `-a ACTION_NAMESPACES, --action_namespaces ACTION_NAMESPACES` | Przestrzenie nazw funkcji akcji. | Automatyczne wykrywanie z pliku danych |  
-| `-m MARGINAL_NAMESPACES, --marginal_namespaces MARGINAL_NAMESPACES` | Przestrzenie nazw funkcji brzegowych. | Automatyczne wykrywanie z pliku danych |  
-| `--auto_lines AUTO_LINES` | Liczba wierszy pliku danych można przeskanować Autowykrywanie funkcje przestrzeni nazw. | `100` |  
-| `--only_hp` | Odchylenia tylko za pośrednictwem hiper parametrami (`learning rate`, `L1 regularization`, i `power_t`). | `False` |  
-| `-l LR_MIN_MAX_STEPS`, `--lr_min_max_steps LR_MIN_MAX_STEPS` | Learning współczynnik zakresu jako wartości dodatnich `min,max,steps`. | `1e-5,0.5,4` |  
-| `-r REG_MIN_MAX_STEPS`, `--reg_min_max_steps REG_MIN_MAX_STEPS` | Zakres uregulowania L1 jako wartości dodatnich `min,max,steps`. | `1e-9,0.1,5` |  
-| `-t PT_MIN_MAX_STEPS`, `--pt_min_max_steps PT_MIN_MAX_STEPS` | Zakres Power_t jako wartości dodatnich `min,max,step`. | `1e-9,0.5,5` |  
-| `--q_bruteforce_terms Q_BRUTEFORCE_TERMS` | Liczba par drugiego stopnia do testowania w fazie atak metodą siłową. | `2` |  
-| `--q_greedy_stop Q_GREEDY_STOP` | Zaokrągla liczbę bez ulepszenia, po upływie których fazy drugiego stopnia zachłanne wyszukiwania jest zatrzymywana. | `3` |  
+| `-m MARGINAL_NAMESPACES, --marginal_namespaces MARGINAL_NAMESPACES` | Obszary nazw funkcji krańcowej. | Automatyczne wykrywanie z pliku danych |  
+| `--auto_lines AUTO_LINES` | Liczba wierszy plików danych do skanowania w przestrzeni nazw funkcji automatycznego wykrywania. | `100` |  
+| `--only_hp` | Odchylenia tylko za pośrednictwem parametrów`learning rate`funkcji `L1 regularization`Hyper- `power_t`Parameters (, i). | `False` |  
+| `-l LR_MIN_MAX_STEPS`, `--lr_min_max_steps LR_MIN_MAX_STEPS` | Zakres uczenia jako wartości `min,max,steps`dodatnie. | `1e-5,0.5,4` |  
+| `-r REG_MIN_MAX_STEPS`, `--reg_min_max_steps REG_MIN_MAX_STEPS` | Zakres uregulowania L1 jako wartości `min,max,steps`dodatnie. | `1e-9,0.1,5` |  
+| `-t PT_MIN_MAX_STEPS`, `--pt_min_max_steps PT_MIN_MAX_STEPS` | Power_t zakres jako wartości `min,max,step`dodatnie. | `1e-9,0.5,5` |  
+| `--q_bruteforce_terms Q_BRUTEFORCE_TERMS` | Liczba par kwadratów do przetestowania w fazie w ramach siły częściowej. | `2` |  
+| `--q_greedy_stop Q_GREEDY_STOP` | Zaokrągla bez ulepszeń, po zatrzymaniu fazy wyszukiwania zachłanne kwadratów. | `3` |  
 
 ### <a name="examples"></a>Przykłady
-Aby użyć wartości domyślnych wstępnie zdefiniowane:
+Aby użyć wstępnie ustawionych wartości domyślnych:
 ```cmd
 python Experimentation.py -f D:\multiworld\data.json
 ```
 
-Ekwiwalentnie Vowpal Wabbit może również obsługiwać `.json.gz` plików:
+Podobnie, Vowpal Wabbit może również `.json.gz` przyjmować pliki:
 ```cmd
 python Experimentation.py -f D:\multiworld\data.json.gz
 ```
 
-Aby odchylenia tylko za pośrednictwem hiper parametrami (`learning rate`, `L1 regularization`, i `power_t`, zatrzymywanie po wykonaniu kroku 2):
+Aby wyrównać tylko parametry funkcji Hyper`learning rate`- `L1 regularization`Parameters ( `power_t`,, i, zatrzymywanie po kroku 2):
 ```cmd
 python Experimentation.py -f D:\multiworld\data.json --only_hp
 ```

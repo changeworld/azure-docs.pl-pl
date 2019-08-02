@@ -1,6 +1,6 @@
 ---
-title: Umiejętności wyszukiwania kognitywnego shaper — usługa Azure Search
-description: Wyodrębnianie metadanych i ustrukturyzowanych informacji z danych bez struktury i kształtować je jako typ złożony w usłudze Azure Search wzbogacony potok.
+title: Umiejętność wyszukiwania poznawczego kształtu — Azure Search
+description: Wyodrębnij metadane i informacje strukturalne z danych bez struktury i kształtj je jako typ złożony w potoku wzbogacenia Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,41 +11,34 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 058b6c979346d9dcce36940432d0e222e919dba9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a970bb2c33db1ad78dca088b7d9b2430984df96
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540829"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698867"
 ---
-#   <a name="shaper-cognitive-skill"></a>Shaper umiejętności cognitive
+#   <a name="shaper-cognitive-skill"></a>Umiejętności poznawcze kształtu
 
-**Shaper** umiejętności konsoliduje kilku wejść do [typu złożonego](search-howto-complex-data-types.md) mogą być przywoływane w dalszej części wzbogacony potok. **Shaper** umiejętności umożliwia zasadniczo tworzenia struktury definiuje nazwy elementów członkowskich tej struktury i przypisania wartości do każdego elementu członkowskiego. Skonsolidowane pola przydatne w scenariuszach wyszukiwania przykładami łączenie imię i nazwisko w struktura single, miasta i stanu do pojedynczego struktury lub nazwa i Data urodzenia w jednym strukturę nawiązać unikatową tożsamość.
+Umiejętność **kształtu** konsoliduje kilka wejść do [typu złożonego](search-howto-complex-data-types.md) , do którego można przystąpić później w potoku wzbogacania. Umiejętność **kształtu** pozwala na zasadniczo utworzyć strukturę, zdefiniować nazwę elementów członkowskich tej struktury i przypisać wartości do każdego elementu członkowskiego. Przykłady skonsolidowanych pól przydatnych w scenariuszach wyszukiwania obejmują łączenie imion i nazwisk w jedną strukturę, miasto i stan w jedną strukturę, a także nazwę i DataUrodzenia w jednej strukturze w celu ustanowienia unikatowej tożsamości.
 
-Wersja interfejsu API Określa głębokość kształtowania można osiągnąć. 
+Ponadto umiejętność **kształtowania** zilustrowana w [scenariuszu 3](#nested-complex-types) dodaje opcjonalną Właściwość *sourceContext* do danych wejściowych. Właściwości *Source* i *sourceContext* wzajemnie się wykluczają. Jeśli dane wejściowe są w kontekście umiejętności, wystarczy użyć *źródła*. Jeśli dane wejściowe są w *innym* kontekście niż kontekst umiejętności, użyj *sourceContext*. *SourceContext* wymaga zdefiniowania zagnieżdżonych danych wejściowych z określonym elementem, który jest adresowany jako źródło. 
 
-| Wersja interfejsu API | Kształtowanie zachowania | 
-|-------------|-------------------|
-| 2019-05-06-preview wersję interfejsu API REST (zestaw SDK platformy .NET nie jest obsługiwany) | Złożone obiekty, wiele poziomy głębokich, w jednym **Shaper** definicji umiejętności. |
-| 2019-05-06 ** 2017-11-11-Preview (dostępne ogólnie)| Złożone obiekty głębokości jeden poziom. Wielopoziomowe kształt wymaga podjęcia kilku czynności shaper Łączenie łańcuchowe.|
-
-Zgodnie z informacjami od `api-version=2019-05-06-Preview`, **Shaper** przedstawionych umiejętności [Scenariusz 3](#nested-complex-types) dodaje nowy opcjonalne *sourceContext* właściwości do danych wejściowych. *Źródła* i *sourceContext* właściwości wzajemnie się wykluczają. W przypadku danych wejściowych w kontekście umiejętności, po prostu użyć *źródła*. Jeśli dane wejściowe znajduje się na *różnych* kontekście niż kontekst umiejętności, użyj *sourceContext*. *SourceContext* wymaga zdefiniowania zagnieżdżone dane wejściowe z określonego elementu traktowane jako źródło. 
-
-W odpowiedzi dla wszystkich wersji interfejsu API Nazwa wyjściowego jest zawsze "output". Wewnętrznie potoku można mapować innej nazwy, takie jak "analyzedText", jak pokazano w poniższych przykładach, ale **Shaper** umiejętności, sama zwraca "Wyjście" w odpowiedzi. Może to być ważne debugowania wzbogaconego dokumentów i zwróć uwagę, niezgodność nazw lub jeśli Tworzenie niestandardowych umiejętności i struktury odpowiedzi samodzielnie.
+Nazwa wyjściowa jest zawsze "output". Wewnętrznie potok może mapować inną nazwę, taką jak "analyzedText", jak pokazano w poniższych przykładach, ale umiejętność **kształtowania** zwraca wartość "output" w odpowiedzi. Taka sytuacja może być ważna, jeśli debugujesz wzbogacone dokumenty i zauważysz rozbieżność nazewnictwa, lub jeśli tworzysz umiejętność niestandardową i utworzysz swoją samą strukturę.
 
 > [!NOTE]
-> **Shaper** umiejętności nie jest powiązany z interfejsu API usług Cognitive Services i nie są naliczane dotyczące korzystania z niego. Powinna nadal [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md), jednak aby zastąpić **bezpłatna** resource — Opcja ograniczająca na niewielką liczbę dziennych wzbogacenia dziennie.
+> Umiejętność **kształtu** nie jest powiązana z interfejsem API Cognitive Services i nie jest naliczana opłata za korzystanie z niego. Mimo to należy [dołączyć zasób Cognitive Services](cognitive-search-attach-cognitive-services.md), aby zastąpić opcję bezpłatnych zasobów , która ogranicza liczbę codziennych wzbogacań dziennie.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>Scenariusz 1: typy złożone
 
-Rozważmy scenariusz, w którym chcesz utworzyć strukturę o nazwie *analyzedText* zawierający dwa elementy członkowskie: *tekstu* i *tonacji*odpowiednio. W ramach indeksu usługi Azure Search jest wywoływana wieloczęściowy polu możliwym do przeszukania *typu złożonego* i często jest tworzony, gdy źródło danych ma odpowiedniej struktury złożone, która mapuje do niego.
+Rozważmy scenariusz, w którym chcesz utworzyć strukturę o nazwie *analyzedText* , która ma dwa elementy członkowskie: odpowiednio *tekst* i *tonacji*. W indeksie Azure Search pole z możliwością wyszukiwania wieloczęściowego nosi nazwę *typu złożonego* i często jest tworzone, gdy dane źródłowe mają odpowiednią strukturę złożoną, która jest mapowana na ten element.
 
-Innym podejściem do tworzenia złożonych typów jest jednak za pomocą **Shaper** umiejętności. Przez dołączenie tej umiejętności do zestawu umiejętności, operacje w pamięci podczas przetwarzania zestawu umiejętności mogą przesyłać dane wyjściowe dane kształty zagnieżdżonych struktur, które następnie mogą zostać zmapowane do typu złożonego w indeksie. 
+Jednak inne podejście do tworzenia typów złożonych polega na użyciu umiejętności **kształtu** . Uwzględniając te umiejętności w zestawu umiejętności, operacje w pamięci podczas przetwarzania zestawu umiejętności mogą wyprowadzać kształty danych z zagnieżdżonymi strukturami, które następnie można mapować na typ złożony w indeksie. 
 
-Następująca definicja umiejętności przykład zawiera element członkowski nazw jako dane wejściowe. 
+Poniższa przykładowa definicja umiejętności zawiera nazwy elementów członkowskich jako dane wejściowe. 
 
 
 ```json
@@ -73,7 +66,7 @@ Następująca definicja umiejętności przykład zawiera element członkowski na
 
 ### <a name="sample-index"></a>Przykładowy indeks
 
-Zestawu umiejętności jest wywoływany przez indeksator i indeksatora wymaga indeksu. Reprezentacja złożonych pola w indeksie może wyglądać jak w poniższym przykładzie. 
+Element zestawu umiejętności jest wywoływany przez indeksator, a indeksator wymaga indeksu. Złożona reprezentacja pola w indeksie może wyglądać podobnie do poniższego przykładu. 
 
 ```json
 
@@ -98,9 +91,9 @@ Zestawu umiejętności jest wywoływany przez indeksator i indeksatora wymaga in
                 },
 ```
 
-### <a name="skill-input"></a>Dane wejściowe umiejętności
+### <a name="skill-input"></a>Dane wejściowe kwalifikacji
 
-Podanie można używać danych wejściowych dla tego dokumentu JSON przychodzącego **Shaper** umiejętności mogą być:
+Dokument przychodzącego JSON udostępniający użyteczne dane wejściowe dla tej umiejętności **kształtu** może być następujący:
 
 ```json
 {
@@ -117,9 +110,9 @@ Podanie można używać danych wejściowych dla tego dokumentu JSON przychodząc
 ```
 
 
-### <a name="skill-output"></a>Dane wyjściowe umiejętności
+### <a name="skill-output"></a>Dane wyjściowe kwalifikacji
 
-**Shaper** umiejętności generuje nowy element o nazwie *analyzedText* z elementami połączone *tekstu* i *tonacji*. Te dane wyjściowe jest zgodny ze schematem indeksu. Jego zostaną zaimportowane i indeksowane w indeksie usługi Azure Search.
+Umiejętność **kształtu** generuje nowy element o nazwie *analyzedText* z połączonymi elementami *tekstu* i *tonacji*. Dane wyjściowe są zgodne ze schematem indeksu. Zostanie ona zaimportowana i zindeksowana w indeksie Azure Search.
 
 ```json
 {
@@ -139,11 +132,11 @@ Podanie można używać danych wejściowych dla tego dokumentu JSON przychodząc
 }
 ```
 
-## <a name="scenario-2-input-consolidation"></a>Scenariusz 2: konsolidacji danych wejściowych
+## <a name="scenario-2-input-consolidation"></a>Scenariusz 2: Konsolidacja danych wejściowych
 
-W kolejnym przykładzie załóżmy, że na różnych etapach cyklu przetwarzania potokowego w programie, zostały wyodrębnione tytuł książki i oddzielenia na różnych stronach w książce. Można teraz utworzyć struktura single składa się z różnych danych wejściowych.
+W innym przykładzie Załóżmy, że na różnych etapach przetwarzania potoku wyodrębniono tytuł książki oraz tytuły rozdziałów na różnych stronach książki. Teraz można utworzyć pojedynczą strukturę składającą się z tych różnych danych wejściowych.
 
-**Shaper** definicji umiejętności, w tym scenariuszu może wyglądać następująco:
+Definicja umiejętności **kształtu** w tym scenariuszu może wyglądać podobnie do poniższego przykładu:
 
 ```json
 {
@@ -168,8 +161,8 @@ W kolejnym przykładzie załóżmy, że na różnych etapach cyklu przetwarzania
 }
 ```
 
-### <a name="skill-output"></a>Dane wyjściowe umiejętności
-W tym przypadku **Shaper** Spłaszcza wszystkie tytuły rozdział, aby utworzyć pojedynczą tablicę. 
+### <a name="skill-output"></a>Dane wyjściowe kwalifikacji
+W takim przypadku **kształt** Spłaszcza wszystkie tytuły rozdziałów, aby utworzyć pojedynczą tablicę. 
 
 ```json
 {
@@ -193,14 +186,11 @@ W tym przypadku **Shaper** Spłaszcza wszystkie tytuły rozdział, aby utworzyć
 
 <a name="nested-complex-types"></a>
 
-## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Scenariusz 3: konsolidacji danych wejściowych z kontekstów zagnieżdżonych
+## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Scenariusz 3: wprowadzanie konsolidacji z zagnieżdżonych kontekstów
 
-> [!NOTE]
-> Zagnieżdżone konstrukcje obsługiwane w [wersji interfejsu API REST 2019-05-06-Preview](search-api-preview.md) mogą być używane w [magazynu wiedzy](knowledge-store-concept-intro.md) lub w ramach indeksu usługi Azure Search.
+Załóżmy, że masz tytuł, rozdziały i zawartość książki oraz uruchomiono rozpoznawanie jednostek i kluczowe frazy dla zawartości, a teraz trzeba agregować wyniki z różnych umiejętności w jednym kształcie z nazwą rozdziału, jednostkami i frazami kluczowymi.
 
-Wyobraź sobie, tytuł, rozdziały i zawartość książki i uruchomiono jednostki wyrażeń rozpoznawanie i klucz zawartości i konieczność agregowanie wyników z różnych umiejętności do pojedynczego kształtu z nazwą działu, jednostek i fraz kluczowych.
-
-**Shaper** definicji umiejętności, w tym scenariuszu może wyglądać następująco:
+Definicja umiejętności **kształtu** w tym scenariuszu może wyglądać podobnie do poniższego przykładu:
 
 ```json
 {
@@ -236,8 +226,8 @@ Wyobraź sobie, tytuł, rozdziały i zawartość książki i uruchomiono jednost
 }
 ```
 
-### <a name="skill-output"></a>Dane wyjściowe umiejętności
-W tym przypadku **Shaper** tworzy typu złożonego. Ta struktura istnieje w pamięci. Jeśli chcesz go zapisać w magazynie wiedzy, należy utworzyć projekcji w swojej zestawu umiejętności, która definiuje właściwości magazynu.
+### <a name="skill-output"></a>Dane wyjściowe kwalifikacji
+W takim przypadku **kształt** tworzy typ złożony. Ta struktura istnieje w pamięci. Jeśli chcesz zapisać go w [sklepie](knowledge-store-concept-intro.md)z bazami danych, należy utworzyć projekcję w zestawu umiejętności, która definiuje charakterystykę magazynu.
 
 ```json
 {
@@ -262,7 +252,7 @@ W tym przypadku **Shaper** tworzy typu złożonego. Ta struktura istnieje w pami
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Jak używać typów złożonych](search-howto-complex-data-types.md)
-+ [Omówienie magazynu wiedzy](knowledge-store-concept-intro.md)
-+ [Jak rozpocząć pracę z magazynem wiedzy](knowledge-store-howto.md)
++ [Przegląd sklepu merytorycznego](knowledge-store-concept-intro.md)
++ [Jak rozpocząć pracę ze sklepem merytorycznym](knowledge-store-howto.md)

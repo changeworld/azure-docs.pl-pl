@@ -1,9 +1,9 @@
 ---
-title: Usuń typ węzła w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak usunąć typ węzła z klastra usługi Service Fabric działających na platformie Azure.
+title: Usuwanie typu węzła w usłudze Azure Service Fabric | Microsoft Docs
+description: Dowiedz się, jak usunąć typ węzła z klastra Service Fabric działającego na platformie Azure.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chakdan
 editor: vturecek
 ms.assetid: ''
@@ -13,44 +13,44 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: aljo
-ms.openlocfilehash: 779051135a994574cb2bed7bfc4879270ec1d8fa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: atsenthi
+ms.openlocfilehash: 44f25adf4168f4339a31e9270c2b23a8466a8889
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443038"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599493"
 ---
-# <a name="remove-a-service-fabric-node-type"></a>Usuń typ węzła usługi Service Fabric
-W tym artykule opisano sposób skalowanie klastra usługi Azure Service Fabric, usuwając istniejący typ węzła z klastra. Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem. Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze platformy Azure jest [konfigurowany jako zestaw skalowania oddzielnych](service-fabric-cluster-nodetypes.md). Każdy typ węzła może następnie być zarządzany oddzielnie. Po utworzeniu klastra usługi Service Fabric klaster można skalować w poziomie, usuwając typ węzła (zestaw skalowania maszyn wirtualnych) i wszystkich jego węzłów.  Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze.  Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.
+# <a name="remove-a-service-fabric-node-type"></a>Usuwanie Service Fabric typu węzła
+W tym artykule opisano sposób skalowania klastra Service Fabric platformy Azure przez usunięcie istniejącego typu węzła z klastra. Klaster Service Fabric jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym są wdrażane i zarządzane mikrousługi. Maszyna lub maszyna wirtualna będąca częścią klastra nazywa się węzłem. Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy platformy Azure, który służy do wdrażania kolekcji maszyn wirtualnych jako zestawu i zarządzania nią. Każdy typ węzła, który jest zdefiniowany w klastrze platformy Azure [, jest ustawiany jako oddzielny zestaw skalowania](service-fabric-cluster-nodetypes.md). Każdy typ węzła może być następnie zarządzany osobno. Po utworzeniu klastra Service Fabric można skalować klaster w poziomie, usuwając typ węzła (zestaw skalowania maszyn wirtualnych) i wszystkie jego węzły.  Klaster można skalować w dowolnym momencie, nawet w przypadku uruchamiania obciążeń w klastrze.  W miarę skalowania klastra aplikacje są automatycznie skalowane.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Użyj [AzServiceFabricNodeType Usuń](https://docs.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricnodetype) można usunąć typu węzła usługi Service Fabric.
+Użyj [Remove-AzServiceFabricNodeType](https://docs.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricnodetype) , aby usunąć typ węzła Service Fabric.
 
-Są trzy operacje, które występują, gdy nosi nazwę usuwania AzServiceFabricNodeType:
-1.  Maszyna wirtualna zestawie skalowania za modułem typ węzła jest usuwany.
-2.  Typ węzła jest usuwany z klastra.
-3.  Dla każdego węzła w ramach tego typu węzła całego stanu dla tego węzła jest usuwany z systemu. W przypadku usług w tym węźle, następnie usług są najpierw przenieść do innego węzła. Jeśli Menedżer klastra nie można odnaleźć węzła dla repliki/usługi, operacja jest opóźnione zablokowane.
+Trzy operacje występujące po wywołaniu metody Remove-AzServiceFabricNodeType są następujące:
+1.  Zestaw skalowania maszyn wirtualnych za typem węzła jest usuwany.
+2.  Typ węzła zostanie usunięty z klastra.
+3.  Dla każdego węzła w ramach tego typu węzła, cały stan dla tego węzła zostanie usunięty z systemu. Jeśli w tym węźle znajdują się usługi, usługi są najpierw przenoszone do innego węzła. Jeśli Menedżer klastra nie może znaleźć węzła dla repliki/usługi, operacja zostanie opóźniona/zablokowana.
 
 > [!WARNING]
-> Przy użyciu AzServiceFabricNodeType Usuń, aby usunąć typ węzła z klastra produkcyjnego nie jest zalecane do użycia na częste. Jest to niebezpieczne polecenie jak usuwa zasobu zestawu skalowania maszyny wirtualnej za typ węzła. 
+> Nie zaleca się używania polecenia Remove-AzServiceFabricNodeType w celu usunięcia typu węzła z klastra produkcyjnego. Jest to niebezpieczne polecenie, ponieważ usuwa zasób zestawu skalowania maszyn wirtualnych za typem węzła. 
 
-## <a name="durability-characteristics"></a>Charakterystyka niezawodności
-Bezpieczeństwo ma priorytet nad szybkość, korzystając z Remove AzServiceFabricNodeType. Typ węzła musi być na poziomie Silver lub Gold [poziom trwałości](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster), ponieważ:
-- Brązowy daje żadnej gwarancji, zapisywanie informacji o stanie.
-- Silver i Gold trwałości pułapki wszelkie zmiany w zestawie skalowania.
-- Złoty oferuje również kontrolę nad Azure aktualizuje poniżej zestawu skalowania.
+## <a name="durability-characteristics"></a>Charakterystyki trwałości
+W przypadku korzystania z polecenia Remove-AzServiceFabricNodeType zabezpieczenia są ustalane jako priorytetowe. Typ węzła musi być [poziomem trwałości](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)Silver lub Gold, ponieważ:
+- Pakiet Bronze nie zapewnia żadnych gwarancji dotyczących zapisywania informacji o stanie.
+- Pułapki srebrne i złota są dowolnymi zmianami w zestawie skalowania.
+- Gold oferuje również kontrolę nad aktualizacjami platformy Azure w zestawie skalowania.
 
-Usługi Service Fabric "służy do aranżacji" podstawowej zmiany i aktualizacje, aby dane nie zostaną utracone. Jednak po usunięciu węzła durability brązowa może utracić informacje o stanie. Jeśli usuwasz typu węzła podstawowego, a aplikacja jest bezstanowy, brązowy jest dopuszczalne. Po uruchomieniu obciążeń stanowych w środowisku produkcyjnym, minimalna konfiguracja powinna być Silver. Podobnie na potrzeby scenariuszy produkcyjnych typu węzła podstawowego powinny zawsze być na poziomie Silver lub Gold.
+Service Fabric "organizuje" podstawowe zmiany i aktualizacje, aby dane nie zostały utracone. Jednak po usunięciu węzła z trwałością Bronze można utracić informacje o stanie. Jeśli usuniesz typ węzła podstawowego, a aplikacja jest bezstanowa, akceptowalny jest brązowy. W przypadku uruchamiania obciążeń stanowych w środowisku produkcyjnym minimalna konfiguracja powinna być Silver. Podobnie w przypadku scenariuszy produkcyjnych typ węzła podstawowego powinien zawsze mieć wartość Silver lub Gold.
 
-### <a name="more-about-bronze-durability"></a>Więcej informacji na temat brązowa trwałości
+### <a name="more-about-bronze-durability"></a>Więcej informacji na temat trwałości Bronze
 
-Podczas usuwania typ węzła, który jest brązowy, wszystkie węzły w typ węzła są wyłączane natychmiast. Usługi Service Fabric nie przechwytywania wszystkich aktualizacji zestawu skalowania węzłów brązowy, dlatego wszystkie maszyny wirtualne są wyłączane natychmiast. Jeśli masz nic stanowych w ramach tych węzłów, dane zostaną utracone. Teraz, nawet gdyby bezstanowym, wszystkie węzły w usłudze Service Fabric należą pierścienia, więc całe otoczenie mogą zostać utracone, który zdestabilizować samego klastra.
+W przypadku usuwania typu węzła, który jest brązowy, wszystkie węzły w typie węzła zostaną natychmiast umieszczone w dół. Service Fabric nie jest Zalewka żadnych aktualizacji zestawu skalowania, a więc wszystkie maszyny wirtualne natychmiast przechodzą w dół. Jeśli w tych węzłach istniały stanowe elementy, dane są tracone. Teraz, nawet jeśli nie są bezstanowe, wszystkie węzły w Service Fabric biorą udział w pierścieniu, dzięki czemu cała klub może zostać utracona, co może spowodować utratę samego klastra.
 
-## <a name="recommended-node-type-removal-process"></a>Zalecane przez proces usuwania typu węzła
+## <a name="recommended-node-type-removal-process"></a>Zalecany proces usuwania typu węzła
 
-Aby usunąć typ węzła, uruchom [AzServiceFabricNodeType Usuń](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) polecenia cmdlet.  Polecenie cmdlet pobiera trochę czasu.  Gdy wszystkie maszyny wirtualne zostaną usunięte (reprezentowana jako "W dół") sieci szkieletowej: / System/InfrastructureService / [nazwa elementu nodetype] pojawi się stan błędu.
+Aby usunąć typ węzła, uruchom polecenie cmdlet [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) .  Wykonanie polecenia cmdlet zajmuje trochę czasu.  Gdy wszystkie maszyny wirtualne zostaną usunięte (reprezentowane jako "w dół"), w obszarze Sieć szkieletowa:/system/InfrastructureService/[nazwa NodeType] zostanie wyświetlony stan błędu.
 
 ```powershell
 $groupname = "mynodetype"
@@ -66,9 +66,9 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mytestcluster.eastus.cloudapp.a
           -StoreLocation CurrentUser -StoreName My
 ```
 
-Następnie można zaktualizować zasobu klastra, aby usunąć typ węzła. Możesz użyć wdrażanie szablonu ARM, lub Edytuj zasób klastra za pośrednictwem [usługi Azure resource manager](https://resources.azure.com). Spowoduje to uruchomienie uaktualniania klastra, co spowoduje usunięcie sieci szkieletowej: / System/InfrastructureService / [nazwa elementu nodetype] usługi, który jest w stanie błędu.
+Następnie można zaktualizować zasób klastra, aby usunąć typ węzła. Możesz użyć wdrożenia szablonu ARM lub edytować zasób klastra za pomocą [usługi Azure Resource Manager](https://resources.azure.com). Spowoduje to uruchomienie uaktualnienia klastra, co spowoduje usunięcie usługi sieci szkieletowej:/system/InfrastructureService/[nazwa NodeType], która jest w stanie błędu.
 
-Będą również widzieć, że węzły są "Nie działa" w narzędziu Service Fabric Explorer. Uruchom [ServiceFabricNodeState Usuń](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) na każdym z węzłów, które mają być usuwane.
+W Service Fabric Explorer nadal będą widoczne węzły "w dół". Uruchom [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) na każdym z węzłów, które chcesz usunąć.
 
 
 ```powershell
@@ -80,7 +80,7 @@ Foreach($node in $nodes)
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o klastrze [charakterystyka niezawodności](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
-- Dowiedz się więcej o [typy węzłów i usługa Virtual Machine Scale Sets](service-fabric-cluster-nodetypes.md).
-- Dowiedz się więcej o [skalowanie klastra usługi Service Fabric](service-fabric-cluster-scaling.md).
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [charakterystyce trwałości](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)klastra.
+- Dowiedz się więcej na temat [typów węzłów i Virtual Machine Scale Sets](service-fabric-cluster-nodetypes.md).
+- Dowiedz się więcej na temat [skalowania klastra Service Fabric](service-fabric-cluster-scaling.md).

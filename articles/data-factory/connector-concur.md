@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f57a83fb83152055692e6f614b7958d099b6c70d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48ebdca1b6abf57a84927e25bca1f85b023fa208
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808918"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726173"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopiowanie danych z Concur przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -47,7 +47,7 @@ Następujące właściwości są obsługiwane w przypadku Concur połączone us�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Concur** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **Concur** | Tak |
 | clientId | Dostarczony przez Zarządzanie aplikacjami Concur client_id aplikacji.  | Yes |
 | username | Nazwa użytkownika, który umożliwia dostęp do usługi Concur.  | Yes |
 | password | Hasło odpowiadający nazwie użytkownika, podanym w polu Nazwa użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
@@ -82,7 +82,7 @@ Aby skopiować dane z Concur, należy ustawić właściwość typu zestawu danyc
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **ConcurObject** | Yes |
+| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **ConcurObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
 
 
@@ -93,11 +93,12 @@ Aby skopiować dane z Concur, należy ustawić właściwość typu zestawu danyc
     "name": "ConcurDataset",
     "properties": {
         "type": "ConcurObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Concur linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -112,7 +113,7 @@ Aby skopiować dane z Concur, należy ustawić typ źródła w działaniu kopiow
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **ConcurSource** | Yes |
+| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ConcurSource** | Yes |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Opportunities where Id = xxx "`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

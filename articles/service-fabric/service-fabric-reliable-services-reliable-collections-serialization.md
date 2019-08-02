@@ -1,9 +1,9 @@
 ---
-title: Serializacja elementu Reliable Collection obiektu w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Azure Service Fabric elementy Reliable Collections odpowiedzialność za serializację obiektu
+title: Serializacja niezawodnych obiektów kolekcji na platformie Azure Service Fabric | Microsoft Docs
+description: Serializacja obiektu niezawodnych kolekcji Service Fabric platformy Azure
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: masnider,rajak
 ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
@@ -13,34 +13,34 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
-ms.author: aljo
-ms.openlocfilehash: 2445b37e8152d8f55dad6eff057d273851dc2209
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.author: atsenthi
+ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340693"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599309"
 ---
-# <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Serializacja elementu Reliable Collection obiektu w usłudze Azure Service Fabric
-Elementy Reliable Collections Replikuj i utrzymują się ich elementów, aby upewnić się, że są one trwałych maszyny błędów i awarii zasilania.
-Do replikowania i utrwalanie elementów, elementów Reliable Collections konieczne serializacji je.
+# <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Serializacja niezawodnych obiektów kolekcji na platformie Azure Service Fabric
+Niezawodne kolekcje "Replikuj i utrwalają swoje elementy", aby upewnić się, że są one trwałe przez awarie maszyn i przestoje.
+Zarówno do replikowania, jak i utrwalania elementów, niezawodne kolekcje muszą być serializowane.
 
-Elementy Reliable Collections serializatora odpowiednie dla danego typu z Reliable State Manager.
-Elementy Reliable State Manager zawiera wbudowane serializatory i umożliwia serializatory niestandardowych do zarejestrowania dla danego typu.
+Niezawodne kolekcje "pobierają odpowiedni serializator dla danego typu z Menedżera niezawodnego stanu.
+Niezawodny Menedżer stanu zawiera wbudowane serializatory i umożliwia zarejestrowanie niestandardowych serializatorów dla danego typu.
 
-## <a name="built-in-serializers"></a>Serializatory wbudowane
+## <a name="built-in-serializers"></a>Wbudowane serializatory
 
-Elementy Reliable State Manager zawiera wbudowane serializatora dla niektóre typowe typy, tak, aby serializować efektywnie domyślnie. Dla innych typów Reliable State Manager powraca do użycia [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx).
-Serializatory wbudowane są bardziej wydajne, ponieważ wiedzieli, nie można zmienić ich typów i nie muszą zawierać informacje o typie, takie jak nazwa jej typu.
+Niezawodny Menedżer stanu zawiera wbudowany serializator dla niektórych typów wspólnych, dzięki czemu mogą one być efektywnie serializowane domyślnie. W przypadku innych typów niezawodny Menedżer stanu powraca do korzystania z [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx).
+Wbudowane serializatory są bardziej wydajne, ponieważ wiedzą, że ich typy nie mogą ulec zmianie i nie muszą zawierać informacji o typie, takim jak nazwa jego typu.
 
-Elementy Reliable State Manager ma wbudowane serializatora dla następujących typów: 
+Niezawodny Menedżer stanu ma wbudowany serializator dla następujących typów: 
 - Guid
 - bool
 - byte
-- sbyte —
+- SByte
 - byte[]
 - char
-- string
+- ciąg
 - decimal
 - double
 - float
@@ -48,14 +48,14 @@ Elementy Reliable State Manager ma wbudowane serializatora dla następujących t
 - uint
 - long
 - ulong
-- Krótka
-- ushort
+- wybierak
+- UShort
 
-## <a name="custom-serialization"></a>Niestandardowej serializacji
+## <a name="custom-serialization"></a>Serializacja niestandardowa
 
-Serializatory niestandardowe są często używane, co pozwoli zwiększyć wydajność, lub do szyfrowania danych przez sieć oraz na dysku. Wśród innych powodów serializatory niestandardowe są często bardziej efektywne niż ogólny serializator, ponieważ nie potrzebują do wykonywania serializacji informacje o typie. 
+Niestandardowe serializatory są często używane do zwiększania wydajności lub szyfrowania danych za pośrednictwem sieci i na dysku. Z tego względu niestandardowe serializatory są zwykle bardziej wydajne niż serializator ogólny, ponieważ nie muszą serializować informacji o typie. 
 
-[IReliableStateManager.TryAddStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) służy do rejestrowania niestandardowego serializatora dla danego typu T. Rejestracja powinno mieć miejsce w konstrukcji StatefulServiceBase, aby upewnić się, że przed rozpoczęciem odzyskiwania wszystkich elementów Reliable Collections mają dostęp do odpowiednich serializator na odczytywanie utrwalonych danych.
+[IReliableStateManager. TryAddStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) służy do rejestrowania niestandardowego serializatora dla danego typu T. Ta rejestracja powinna wystąpić w przygotowaniu StatefulServiceBase, aby upewnić się, że przed rozpoczęciem odzyskiwania wszystkie niezawodne kolekcje mają dostęp do odpowiedniego serializatora w celu odczytania danych utrwalonych.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -69,16 +69,16 @@ public StatefulBackendService(StatefulServiceContext context)
 ```
 
 > [!NOTE]
-> Serializatory niestandardowe mają pierwszeństwo serializatory wbudowanych. Na przykład po zarejestrowaniu niestandardowego serializatora int, służy do serializacji liczb całkowitych zamiast wbudowanego serializatora dla wewnętrznej
+> Serializatory niestandardowe mają pierwszeństwo przed wbudowanymi serializatorami. Na przykład po zarejestrowaniu niestandardowego serializatora dla elementu int jest on używany do serializacji liczb całkowitych zamiast wbudowanego serializatora dla int.
 
-### <a name="how-to-implement-a-custom-serializer"></a>Jak zaimplementować niestandardowy serializator
+### <a name="how-to-implement-a-custom-serializer"></a>Jak zaimplementować serializator niestandardowy
 
-Należy zaimplementować niestandardowy serializator [IStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) interfejsu.
+Serializator niestandardowy musi implementować interfejs [\<IStateSerializer T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) .
 
 > [!NOTE]
-> IStateSerializer\<T > obejmuje przeciążenia dla zapisu i odczytu, która przyjmuje dodatkowych T o nazwie wartości bazowej. Ten interfejs API jest różnicowej serializacji. Obecnie nie jest uwidaczniana funkcji różnicowej serializacji. Z tego powodu te dwa przeciążenia nie są wywoływane, dopóki serializacji różnicowa jest widoczne i włączone.
+> IStateSerializer\<T > zawiera Przeciążenie do zapisu i odczytu, który przyjmuje dodatkową wartość T o nazwie bazowej. Ten interfejs API jest przeznaczony do serializacji różnicowej. Obecnie funkcja serializacji różnicowej nie jest udostępniona. W związku z tym te dwa przeciążenia nie są wywoływane, dopóki Serializacja różnicowa nie zostanie udostępniona i włączona.
 
-Oto przykład niestandardowego typu, o nazwie OrderKey, który zawiera cztery właściwości
+Poniżej znajduje się przykładowy typ niestandardowy o nazwie OrderKey, który zawiera cztery właściwości
 
 ```csharp
 public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
@@ -96,8 +96,8 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-Poniżej przedstawiono przykład stosowania IStateSerializer\<OrderKey >.
-Należy zauważyć, że odczytywanie i zapisywanie przeciążeń, które przyjmują w baseValue, wywołania ich odpowiednich przeciążenia dla zgodności wyszukiwanie do przodu.
+Poniżej znajduje się Przykładowa implementacja IStateSerializer\<OrderKey >.
+Należy pamiętać, że przeciążenia odczytu i zapisu, które są wykonywane w baseValue, wywołują odpowiednie przeciążenia w celu zapewnienia zgodności.
 
 ```csharp
 public class OrderKeySerializer : IStateSerializer<OrderKey>
@@ -135,24 +135,24 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 }
 ```
 
-## <a name="upgradability"></a>Możliwość
-W [stopniowego uaktualnienia aplikacji](service-fabric-application-upgrade.md), uaktualnienie jest stosowany do podzbioru węzłów, jedną domenę uaktualnienia w danym momencie. W trakcie tego procesu będzie niektórych domen uaktualnienia na nowszą wersję aplikacji, a niektórych domen uaktualnienia będzie znajdować się na starszą wersję aplikacji. W miarę wprowadzania aktualizacji nowa wersja aplikacji musi mieć możliwość odczytu stara wersja usługi danych, a stara wersja aplikacji musi mieć możliwość odczytu nową wersję usługi danych. Jeśli format danych jest niezgodny ze starszymi i nowszymi, uaktualnienie może zakończyć się niepowodzeniem lub co gorsza, może być utraty lub uszkodzenia danych.
+## <a name="upgradability"></a>Możliwość przeklasyfikowania
+Podczas [stopniowego uaktualniania aplikacji](service-fabric-application-upgrade.md)uaktualnienie jest stosowane do podzbioru węzłów, jednej domeny uaktualnienia w danym momencie. W trakcie tego procesu niektóre domeny uaktualnienia będą znajdować się w nowszej wersji aplikacji, a niektóre domeny uaktualnienia będą znajdować się w starszej wersji aplikacji. Podczas wdrażania Nowa wersja aplikacji musi mieć możliwość odczytywania starej wersji danych, a stara wersja aplikacji musi mieć możliwość odczytywania nowej wersji danych. Jeśli format danych nie jest zgodny z poprzednimi wersjami, uaktualnienie może się nie powieść lub gorszenie może spowodować utratę lub uszkodzenie danych.
 
-Jeśli używasz wbudowanych Serializator nie masz już martwić się o zgodności.
-Jednak jeśli używasz niestandardowego serializatora lub elementu DataContractSerializer, dane muszą być nieskończenie przodu i do tyłu zgodne.
-Innymi słowy każda wersja serializator musi mieć możliwość serializacji i deserializacji dowolną wersję typu.
+Jeśli używasz wbudowanego serializatora, nie musisz martwić się o zgodność.
+Jeśli jednak używasz niestandardowego serializatora lub DataContractSerializer, dane muszą być w nieskończony wstecz i przekazywać zgodne.
+Innymi słowy, każda wersja serializatora musi mieć możliwość serializacji i deserializacji dowolnej wersji typu.
 
-Użytkownicy kontraktu danych powinien być zgodny reguły dobrze zdefiniowanych kontroli wersji, dodawanie, usuwanie i zmienianie pól. Kontrakt danych ma również obsługę rozwiązywania problemów związanych z polami nieznany, przechwytywanie procesem serializacji i deserializacji i rozwiązywania problemów związanych z dziedziczenia klasy. Aby uzyskać więcej informacji, zobacz [kontraktu danych za pomocą](https://msdn.microsoft.com/library/ms733127.aspx).
+Użytkownicy kontraktów danych powinni przestrzegać dobrze zdefiniowanych zasad przechowywania wersji, aby dodawać, usuwać i zmieniać pola. Umowa o dane ma również obsługę w przypadku nieznanych pól, podłączania do procesu serializacji i deserializacji oraz w przypadku dziedziczenia klas. Aby uzyskać więcej informacji, zobacz [Korzystanie z kontraktu danych](https://msdn.microsoft.com/library/ms733127.aspx).
 
-Niestandardowy serializator użytkowników powinien spełniać wytycznych serializator, którego używają zapewnienie jest Wstecz i przekazuje zgodne.
-Typowy sposób obsługiwać wszystkie wersje jest dodanie informacje o rozmiarze na początku i tylko dodanie właściwości opcjonalne.
-W ten sposób każda wersja może odczytywać podobnie można i przejść przez pozostałe części strumienia.
+Użytkownicy korzystający z serializatorów niestandardowych powinni przestrzegać wytycznych dotyczących serializatora, które są używane w celu upewnienia się, że są zgodne i przenoszone dalej.
+Typowym sposobem obsługi wszystkich wersji jest dodanie informacji o rozmiarze na początku i dodanie tylko właściwości opcjonalnych.
+W ten sposób każda wersja może odczytywać tyle, ile może i przeskoczyć do pozostałej części strumienia.
 
-## <a name="next-steps"></a>Kolejne kroki
-  * [Serializacja i uaktualnienia](service-fabric-application-upgrade-data-serialization.md)
-  * [Dokumentacja dla deweloperów dla elementów Reliable Collections](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-  * [Uaktualnienie z aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu Visual Studio.
-  * [Uaktualnienie z aplikacji przy użyciu programu Powershell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu PowerShell.
-  * Kontrolować, jak uaktualnić aplikację przy użyciu [parametry uaktualniania](service-fabric-application-upgrade-parameters.md).
-  * Dowiedz się, jak korzystać z zaawansowanych funkcji podczas uaktualniania aplikacji, odwołując się do [Tematy zaawansowane](service-fabric-application-upgrade-advanced.md).
-  * Rozwiązywanie typowych problemów podczas uaktualniania aplikacji korzystając z procedury opisanej w [Rozwiązywanie problemów z uaktualnieniami aplikacji](service-fabric-application-upgrade-troubleshooting.md).
+## <a name="next-steps"></a>Następne kroki
+  * [Serializacja i uaktualnienie](service-fabric-application-upgrade-data-serialization.md)
+  * [Dokumentacja dla deweloperów dla niezawodnych kolekcji](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Uaktualnianie aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi Cię przez proces uaktualniania aplikacji przy użyciu programu Visual Studio.
+  * [Uaktualnianie aplikacji przy użyciu programu PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi Cię przez proces uaktualniania aplikacji przy użyciu programu PowerShell.
+  * Kontroluj sposób uaktualniania aplikacji przy użyciu [parametrów uaktualnienia](service-fabric-application-upgrade-parameters.md).
+  * Dowiedz się, jak korzystać z zaawansowanych funkcji podczas uaktualniania aplikacji, odwołując się do [zaawansowanych tematów](service-fabric-application-upgrade-advanced.md).
+  * Rozwiązywanie typowych problemów dotyczących uaktualnień aplikacji, w odniesieniu do kroków w [temacie Troubleshooting Upgrades Applications](service-fabric-application-upgrade-troubleshooting.md).

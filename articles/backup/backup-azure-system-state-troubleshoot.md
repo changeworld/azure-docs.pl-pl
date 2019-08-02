@@ -1,19 +1,20 @@
 ---
 title: Rozwiązywanie problemów z tworzeniem kopii zapasowej stanu systemu za pomocą Azure Backup
 description: Rozwiązywanie problemów z kopiami zapasowymi stanu systemu.
-author: srinathvasireddy
-manager: sivan
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 keywords: Jak utworzyć kopię zapasową; stan systemu kopii zapasowej
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: srinathv
-ms.openlocfilehash: 8996270acb1525697f29b4251bf4e11d2db62fdf
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 55af6d17f18efd11fe2d6f89b9b87ca9f407ec25
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465358"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688654"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rozwiązywanie problemów z kopią zapasową stanu systemu
 
@@ -150,6 +151,6 @@ Jeśli zadanie nie powiedzie się, wskazuje to na problem z WSB, co spowoduje ni
 | Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: "Wykonywanie kopii zapasowej stanu systemu nie powiodło się, ponieważ partycja systemowa EFI jest zablokowana. Może to być spowodowane dostępem do partycji systemowej przez zabezpieczenia innej firmy lub oprogramowanie do tworzenia kopii zapasowych. | — Jeśli problem jest spowodowany przez oprogramowanie zabezpieczeń innej firmy, należy skontaktować się z dostawcą oprogramowania antywirusowego, aby umożliwić mu agenta MARS <br/><br/> — Jeśli działa oprogramowanie do tworzenia kopii zapasowych innej firmy, zaczekaj na jego zakończenie, a następnie ponów próbę wykonania kopii zapasowej
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji na temat stanu systemu Windows w ramach wdrażania Menedżer zasobów, zobacz [Tworzenie kopii zapasowej stanu systemu Windows Server](backup-azure-system-state.md) .

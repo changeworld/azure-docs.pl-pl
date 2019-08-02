@@ -2,9 +2,9 @@
 title: Przechowywanie danych tożsamości na potrzeby klientów w Europie — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, o której przechowuje dane dotyczące tożsamości usługi Azure Active Directory dla swoich klientów w Europie.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
-ms.author: lizross
+ms.author: ajburnle
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
@@ -12,44 +12,46 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93ac5ef5f03f800a8f90259db3e382b3bc5c5e2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33704c3392726ccd12ca0fd74f26465a54697e11
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235163"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722144"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Przechowywanie danych tożsamości na potrzeby klientów w Europie w usłudze Azure Active Directory
-Dane tożsamości jest przechowywane przez usługę Azure AD w lokalizacji geograficznej, na podstawie adresu udostępnioną przez Twoją organizację, podczas subskrybowania usługi Online firmy Microsoft, takich jak Office 365 i Azure. W przypadku informacji na temat przechowywania danych tożsamości, można użyć [gdzie są Twoje dane znajdujące się?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) sekcji Microsoft Trust Center.
+Dane tożsamości są przechowywane w usłudze Azure AD w lokalizacji geograficznej na podstawie adresu dostarczonego przez organizację w przypadku subskrybowania usługi online firmy Microsoft, takiej jak Office 365 i Azure. Aby uzyskać informacje o tym, gdzie są przechowywane dane tożsamości, możesz użyć sekcji [gdzie znajdują się Twoje dane?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) Centrum zaufania Microsoft.
 
-W przypadku klientów, którzy podany adres w Europie usługi Azure AD przechowuje większość danych tożsamości w europejskich centrach danych. Ten dokument zawiera informacje dotyczące wszelkie dane, które są przechowywane poza Europa przy użyciu usługi Azure AD.
+W przypadku klientów, którzy podały adres w Europie, usługa Azure AD przechowuje większość danych tożsamości w obrębie europejskich centrów Datacenter. Ten dokument zawiera informacje dotyczące wszelkich danych przechowywanych poza Europą przez usługi Azure AD.
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure Multi-Factor authentication (MFA)
+## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure uwierzytelnianie wieloskładnikowe (MFA)
     
-- Wszystkie procedury uwierzytelniania dwuskładnikowego przy użyciu połączenia telefoniczne lub wiadomości SMS pochodzą z centrów danych w Stanach Zjednoczonych i również są kierowane przez dostawców globalnego.
-- Wypychać powiadomienia przy użyciu aplikacji pochodzących od nas centrów danych w programie Microsoft Authenticator. Ponadto określonych usług dostawcy urządzeń mogą należą do odtwarzania i tych usług może być poza Europa.
+- Wszystkie uwierzytelnianie dwuskładnikowe korzystające z połączeń telefonicznych i wiadomości SMS pochodzą z centrów danych USA i są również kierowane przez dostawców globalnych.
+- Powiadomienia wypychane przy użyciu aplikacji Microsoft Authenticator pochodzą z centrów danych US. Ponadto usługi specyficzne dla dostawcy urządzeń mogą również być odtwarzane, a te usługi są dostępne poza Europą.
 - Kody OATH są zawsze weryfikowane w Stanach Zjednoczonych. 
+
+Aby uzyskać więcej informacji o tym, jakie informacje o użytkowniku są zbierane przez serwer usługi Azure MFA (serwer MFA) i opartą na chmurze chmurę Azure, zobacz [zbieranie danych użytkownika w usłudze Azure Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
-Usługi Azure AD B2C zasady konfiguracji danych i kontenery kluczy są przechowywane w Stanach Zjednoczonych w centrach danych. Te nie zawierają żadnych danych osobowych użytkownika. Aby uzyskać więcej informacji na temat konfiguracji zasad, zobacz [usługi Azure Active Directory B2C: Wbudowane zasady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) artykułu.
+Dane konfiguracji zasad Azure AD B2C i kontenery kluczy są przechowywane w stanowych centrach danych. Nie zawierają one żadnych danych osobowych użytkownika. Aby uzyskać więcej informacji na temat konfiguracji zasad, [Zobacz Azure Active Directory B2C: Artykuł zasady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) wbudowane.
 
 ## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
-Azure AD B2B magazynów zaproszeń z realizacji link i przekierowywanie adresu URL informacji w centrach danych w Stanach Zjednoczonych. Ponadto adres e-mail użytkowników, którzy zrezygnować z otrzymywania zaproszeń B2B są także przechowywane w Stanach Zjednoczonych w centrach danych.
+Usługa Azure AD B2B zapisuje zaproszenia przy użyciu linku Zrealizuj i przekierowuje informacje o adresie URL w centrach danych US. Ponadto adresy e-mail użytkowników, którzy nie subskrybują otrzymywania zaproszeń B2B, również są przechowywane w stanach USA.
 
-## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory Domain Services (Azure AD DS)
+## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory usługi domenowe (Azure AD DS)
 
 Usługa Azure AD DS przechowuje dane użytkowników w tej samej lokalizacji, co wybrana przez klienta sieć wirtualna Azure. Dlatego jeśli sieć znajduje się poza Europą, dane są replikowane i przechowywane poza kontynentem europejskim.
 
 ## <a name="other-considerations"></a>Inne zagadnienia
 
-Usługi i aplikacje, które integrują się z usługą Azure AD mają dostęp do danych tożsamości. Oceń wszystkie usługi i aplikacje, które można określić, jak dane tożsamości są przetwarzane przez ten określonej usługi i aplikacji oraz tego, czy spełniają one wymagania dotyczące magazynu danych firmy.
+Usługi i aplikacje, które integrują się z usługą Azure AD, mają dostęp do danych tożsamości. Oceń poszczególne usługi i aplikacje, których używasz, aby określić, jak dane tożsamości są przetwarzane przez daną usługę i aplikację oraz czy spełniają wymagania dotyczące magazynu danych w firmie.
 
 Aby uzyskać więcej informacji na temat przechowywania danych usług firmy Microsoft, zobacz sekcję [Gdzie przechowywane są Twoje dane?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) w Centrum zaufania Microsoft.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji o tych funkcji i możliwości opisanych powyżej zobacz następujące artykuły:
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat funkcji i funkcji opisanych powyżej, zobacz następujące artykuły:
 - [Co to jest uwierzytelnianie wieloskładnikowe?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
 
 - [Samoobsługowe resetowanie haseł w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-overview)

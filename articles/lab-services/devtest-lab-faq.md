@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f38502cc543f19855dbca32c4724a5651b1a3f2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318120"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565336"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące Azure DevTest Labs.
 
-## <a name="blog-post"></a>Wpis w blogu
+## <a name="blog-post"></a>Wpis na blogu
 Nasz blog zespołu DevTest Labs został wycofany z 20 marca 2019. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Gdzie mogę teraz śledzić aktualizacje funkcji?
@@ -46,7 +46,7 @@ Nasz uchwyt usługi Twitter:[@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli w tym miejscu nie udzielono odpowiedzi na moje pytanie?
 Jeśli pytania nie ma na liście, daj nam znać, aby pomóc Ci znaleźć odpowiedź.
 
-- Opublikuj pytanie na końcu tego często zadawanych pytań. Zapoznaj się z zespołem usługi Azure cache i innymi członkami społeczności w tym artykule.
+- Opublikuj pytanie na końcu tego często zadawanych pytań. 
 - Aby dotrzeć do szerszego grona użytkowników, Opublikuj pytanie na [forum Azure DEVTEST Labs MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Zaangażuj się z zespołem Azure DevTest Labs i innymi członkami społeczności.
 - W przypadku żądań funkcji Prześlij swoje żądania i pomysły dotyczące [Azure DevTest Labs głosu użytkownika](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 

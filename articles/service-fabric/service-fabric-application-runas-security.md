@@ -1,9 +1,9 @@
 ---
-title: Uruchom usługę Azure Service Fabric w ramach kont zabezpieczeń lokalnych i systemu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uruchomić aplikację usługi Service Fabric w ramach kont zabezpieczeń lokalnych i systemu.  Utwórz podmiotów zabezpieczeń i Zastosuj zasady Uruchom jako do bezpiecznego uruchamiania usługi.
+title: Uruchom usługę Service Fabric platformy Azure w obszarze System i konta zabezpieczeń lokalnych | Microsoft Docs
+description: Dowiedz się, jak uruchomić aplikację Service Fabricową w ramach systemu i kont zabezpieczeń lokalnych.  Utwórz podmioty zabezpieczeń i Zastosuj zasady Uruchom jako, aby bezpiecznie uruchamiać usługi.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
@@ -13,29 +13,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/29/2018
-ms.author: aljo
-ms.openlocfilehash: 28cd1162d7cae2b3a16062bdf18a2971e1f05aad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 8b0ddc619a7e840b0379a790bd21e7beae812109
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621177"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600048"
 ---
-# <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Uruchamianie usługi jako konto użytkownika lokalnego lub konta system lokalny
-Za pomocą usługi Azure Service Fabric, można zabezpieczyć aplikacje, które są uruchomione w klastrze, w ramach różnych kont użytkowników. Domyślnie aplikacje usługi Service Fabric uruchamiana na koncie, zgodną z procesu Fabric.exe. Usługa Service Fabric udostępnia także możliwości uruchamiania aplikacji przy użyciu lokalnego konta użytkownika lub systemu. Typy kont obsługiwany system lokalny to **LocalUser**, **NetworkService**, **LocalService**, i **LocalSystem**.  Jeśli korzystasz z usługi Service Fabric w klastrze autonomicznego Windows, można uruchomić usługi w ramach [kont domeny usługi Active Directory](service-fabric-run-service-as-ad-user-or-group.md) lub [konta usług zarządzane przez grupę](service-fabric-run-service-as-gmsa.md).
+# <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Uruchamianie usługi jako konta użytkownika lokalnego lub lokalnego konta systemowego
+Za pomocą usługi Azure Service Fabric można zabezpieczyć aplikacje działające w klastrze pod różnymi kontami użytkowników. Domyślnie aplikacje Service Fabric są uruchamiane w ramach konta, w ramach którego działa proces Fabric. exe. Service Fabric oferuje również możliwość uruchamiania aplikacji na koncie użytkownika lokalnego lub systemu. Obsługiwane typy kont systemu lokalnego to **LocalUser**, **NetworkService**, **LocalService**i **LocalSystem**.  Jeśli używasz Service Fabric w klastrze autonomicznym systemu Windows, możesz uruchomić usługę w obszarze [Active Directory konta domeny](service-fabric-run-service-as-ad-user-or-group.md) lub [konta usług zarządzane przez grupę](service-fabric-run-service-as-gmsa.md).
 
-W manifeście aplikacji należy zdefiniować konta użytkowników wymagane do uruchamiania usług lub bezpiecznych zasobów w **podmiotów** sekcji. Można również zdefiniować i utworzyć grupy użytkowników, tak aby co najmniej jeden użytkownik może zarządzać razem. Jest to przydatne, gdy jest wielu użytkowników do innej usługi, punkty wejścia i potrzebują typowych uprawnień, które są dostępne na poziomie grupy.  Użytkownicy są następnie odwoływać w zasadach RunAs, która jest stosowana do określonej usługi lub wszystkich usług w aplikacji. 
+W manifeście aplikacji należy zdefiniować konta użytkowników wymagane do uruchamiania usług lub zabezpieczania zasobów w sekcji **podmiotów zabezpieczeń** . Można również zdefiniować i utworzyć grupy użytkowników, aby umożliwić zarządzanie jednym lub większą liczbą użytkowników. Jest to przydatne, jeśli istnieje wielu użytkowników dla różnych punktów wejścia usługi i potrzebne są typowe uprawnienia, które są dostępne na poziomie grupy.  Następnie użytkownicy odwołują się do zasad RunAs, które są stosowane do określonej usługi lub wszystkich usług w aplikacji. 
 
-Domyślnie zasady RunAs są stosowane do główny punkt wejścia.  Ją również zastosować zasady RunAs do punktu wejścia instalacji, jeśli musisz [uruchamiania niektórych operacji ustawienia wysokiego poziomu przy użyciu konta system](service-fabric-run-script-at-service-startup.md), lub obu main i skonfigurować punkty wejścia.  
+Domyślnie zasady RunAs są stosowane do głównego punktu wejścia.  Można również zastosować zasady RunAs do punktu wejścia Instalatora, jeśli konieczne jest [uruchomienie pewnych operacji konfiguracji z wysokim poziomem uprawnień w ramach konta systemowego](service-fabric-run-script-at-service-startup.md)lub głównego i instalacyjnego punktu wejścia.  
 
 > [!NOTE] 
-> Jeśli zastosujesz zasady RunAs do usługi i manifestu usługi deklaruje zasobów punktu końcowego przy użyciu protokołu HTTP, należy określić **SecurityAccessPolicy**.  Aby uzyskać więcej informacji, zobacz [przypisywanie zasad dostępu zabezpieczeń dla punktów końcowych HTTP i HTTPS](service-fabric-assign-policy-to-endpoint.md). 
+> Jeśli zastosujesz zasady RunAs do usługi, a manifest usługi deklaruje zasoby punktów końcowych przy użyciu protokołu HTTP, należy określić **SecurityAccessPolicy**.  Aby uzyskać więcej informacji, zobacz [przypisywanie zasad dostępu zabezpieczeń dla punktów końcowych http i https](service-fabric-assign-policy-to-endpoint.md). 
 >
 
-## <a name="run-a-service-as-a-local-user"></a>Uruchamianie usługi za użytkownika lokalnego
-Można utworzyć użytkownika lokalnego, który może służyć do zabezpieczania usług w ramach aplikacji. Gdy **LocalUser** typ konta jest określone w sekcji jednostki manifestu aplikacji usługi Service Fabric tworzy konta użytkownika lokalnego na komputerach, na którym aplikacja jest wdrażana. Domyślnie te konta nie mają takie same nazwy, jak te określone w manifeście aplikacji (na przykład *Customer3* w poniższym przykładzie manifest aplikacji). Zamiast tego są generowane dynamicznie i losowych haseł.
+## <a name="run-a-service-as-a-local-user"></a>Uruchamianie usługi jako użytkownik lokalny
+Można utworzyć użytkownika lokalnego, którego można użyć do zabezpieczenia usługi w aplikacji. W przypadku określenia typu konta **LocalUser** w sekcji Principals manifestu aplikacji Service Fabric tworzy konta użytkowników lokalnych na maszynach, na których wdrożono aplikację. Domyślnie te konta nie mają tych samych nazw jak określone w manifeście aplikacji (na przykład *Customer3* w poniższym przykładzie manifestu aplikacji). Zamiast tego są one dynamicznie generowane i mają losowe hasła.
 
-W **RunAsPolicy** sekcji **ServiceManifestImport**, określ konto użytkownika z **podmiotów** , aby uruchomić pakietu kodu usługi.  Poniższy przykład pokazuje, jak utworzyć użytkownika lokalnego i stosować zasady funkcji RunAs do główny punkt wejścia:
+W sekcji **RunAsPolicy** dla **ServiceManifestImport**Określ konto użytkownika z sekcji **podmioty zabezpieczeń** , aby uruchomić pakiet kodu usługi.  Poniższy przykład pokazuje, jak utworzyć użytkownika lokalnego i zastosować zasady RunAs do głównego punktu wejścia:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -66,7 +66,7 @@ W **RunAsPolicy** sekcji **ServiceManifestImport**, określ konto użytkownika z
 ```
 
 ## <a name="create-a-local-user-group"></a>Utwórz lokalną grupę użytkowników
-Można utworzyć grupy użytkowników i dodać co najmniej jednego użytkownika do grupy. Jest to przydatne, jeśli jest wielu użytkowników do innej usługi, punkty wejścia, a także muszą mieć pewne typowe uprawnienia, które są dostępne na poziomie grupy. W poniższym przykładzie manifest aplikacji zawiera grupy lokalnej o nazwie *LocalAdminGroup* , ma uprawnienia administratora. Dwóch użytkowników *serwer Customer1* i *Customer2*, zostają członkami tej grupy lokalnej. W **ServiceManifestImport** sekcji RunAs, zasady są stosowane do uruchomienia *Stateful1Pkg* pakietu kodu jako *Customer2*.  Inne zasady RunAs zastosowano do uruchomienia *Web1Pkg* pakietu kodu jako *serwer Customer1*.
+Można utworzyć grupy użytkowników i dodać jednego lub kilku użytkowników do grupy. Jest to przydatne, jeśli istnieje wielu użytkowników dla różnych punktów wejścia usługi i że muszą mieć pewne typowe uprawnienia, które są dostępne na poziomie grupy. Poniższy przykład manifestu aplikacji przedstawia grupę lokalną o nazwie *LocalAdminGroup* , która ma uprawnienia administratora. Dwóch użytkowników, *Customer1* i *Customer2*, są członkami tej grupy lokalnej. W sekcji **ServiceManifestImport** zasady runas są stosowane do uruchamiania pakietu kodu *Stateful1Pkg* jako *Customer2*.  Do uruchamiania pakietu kodu *Web1Pkg* jako *Customer1*są stosowane inne zasady runas.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -127,8 +127,8 @@ Można utworzyć grupy użytkowników i dodać co najmniej jednego użytkownika 
 </ApplicationManifest>
 ```
 
-## <a name="apply-a-default-policy-to-all-service-code-packages"></a>Zastosuj zasady domyślne do wszystkie pakiety kodu usługi
-Możesz użyć **DefaultRunAsPolicy** sekcji, aby określić domyślne konto użytkownika dla całego kodu pakiety, które nie mają określonego **RunAsPolicy** zdefiniowane. Jeśli większość pakiety kodu, które są określone w manifeście usługi używane przez aplikację muszą działać w ramach tego samego użytkownika, aplikacja właśnie można zdefiniować domyślne zasady Uruchom jako przy użyciu tego konta użytkownika. Poniższy przykład określa, że jeśli nie ma pakietu kodu **RunAsPolicy** określony, pakiet kodu powinna być uruchamiana **MyDefaultAccount** użytkownika określonego w sekcji podmiotów zabezpieczeń.  Typy obsługiwanych kont są LocalUser, Usługa sieciowa, system lokalny i Usługa lokalna.  Jeśli używasz użytkownika lokalnego lub usługi, również określić nazwę konta i hasło.
+## <a name="apply-a-default-policy-to-all-service-code-packages"></a>Zastosuj zasady domyślne do wszystkich pakietów kodu usługi
+Sekcja **DefaultRunAsPolicy** służy do określania domyślnego konta użytkownika dla wszystkich pakietów kodu, które nie mają zdefiniowanego określonego **RunAsPolicy** . Jeśli większość pakietów kodu, które są określone w manifeście usługi używanym przez aplikację, musi być uruchomiona w ramach tego samego użytkownika, aplikacja może po prostu zdefiniować domyślne zasady RunAs przy użyciu tego konta użytkownika. W poniższym przykładzie określono, że jeśli pakiet kodu nie ma określonego **RunAsPolicy** , pakiet kodu powinien działać w ramach użytkownika **MyDefaultAccount** określonego w sekcji podmioty zabezpieczeń.  Obsługiwane typy kont to LocalUser, NetworkService, LocalSystem i LocalService.  W przypadku korzystania z lokalnego użytkownika lub usługi należy również określić nazwę konta i hasło.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -159,15 +159,15 @@ Możesz użyć **DefaultRunAsPolicy** sekcji, aby określić domyślne konto uż
 </ApplicationManifest>
 ```
 
-## <a name="debug-a-code-package-locally-using-console-redirection"></a>Debuguj lokalnie przy użyciu konsoli przekierowania pakietu kodu
-Od czasu do czasu jest to przydatne do celów debugowania wyświetlić dane wyjściowe konsoli z uruchomionej usługi. Możesz ustawić zasady przekierowywania konsoli w punkcie wejścia w manifeście usługi, która zapisuje dane wyjściowe do pliku. Plik wyjściowy plik zostanie zapisany do folderu aplikacji o nazwie **dziennika** w węźle klastra, w którym aplikacja jest wdrażany i uruchamiany. 
+## <a name="debug-a-code-package-locally-using-console-redirection"></a>Lokalne debugowanie pakietu kodu przy użyciu przekierowania konsoli
+Czasami jest to przydatne do debugowania w celu wyświetlenia danych wyjściowych konsoli z działającej usługi. Zasady przekierowywania konsoli można ustawić w punkcie wejścia w manifeście usługi, który zapisuje dane wyjściowe do pliku. Plik wyjściowy jest zapisywana w folderze aplikacji o nazwie **log** w węźle klastra, w którym aplikacja została wdrożona i uruchomiona. 
 
 > [!WARNING]
-> Nigdy nie używaj zasad przekierowania konsoli w aplikacji, która jest wdrażana w środowisku produkcyjnym, ponieważ może to wpłynąć na pracę awaryjną aplikacji. *Tylko* używane dla rozwoju lokalnych i celów debugowania.  
+> Nigdy nie należy używać zasad przekierowania konsoli w aplikacji wdrożonej w środowisku produkcyjnym, ponieważ może to mieć wpływ na tryb failover aplikacji. Służy on *tylko* do lokalnego projektowania i debugowania.  
 > 
 > 
 
-Następująca usługa manifestu Włączanie przekierowywanie konsoli z wartością FileRetentionCount pokazano w przykładzie:
+Poniższy przykład manifestu usługi pokazuje, jak włączyć przekierowywanie konsoli za pomocą wartości FileRetentionCount:
 
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
@@ -184,7 +184,7 @@ Następująca usługa manifestu Włączanie przekierowywanie konsoli z wartości
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Kolejne kroki
-* [Informacje o modelu aplikacji](service-fabric-application-model.md)
+* [Omówienie modelu aplikacji](service-fabric-application-model.md)
 * [Określanie zasobów w manifeście usługi](service-fabric-service-manifest-resources.md)
 * [Wdrażanie aplikacji](service-fabric-deploy-remove-applications.md)
 

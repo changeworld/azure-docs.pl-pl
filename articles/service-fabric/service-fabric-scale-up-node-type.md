@@ -1,9 +1,9 @@
 ---
-title: Skalowanie w górę typ węzła usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skalować klaster usługi Service Fabric przez dodanie zestawu skalowania maszyn wirtualnych.
+title: Skalowanie w górę typu węzła Service Fabric platformy Azure | Microsoft Docs
+description: Dowiedz się, jak skalować klaster Service Fabric przez dodanie zestawu skalowania maszyn wirtualnych.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
@@ -13,44 +13,44 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/13/2019
-ms.author: aljo
-ms.openlocfilehash: e6b429189491af71f6215f1c7660be5965741bf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 272bc571a0ea71fd6e7bd45a426460d2e0faf1d7
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154870"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599284"
 ---
-# <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Skalowanie w górę typu węzła podstawowego klaster usługi Service Fabric
-W tym artykule opisano, jak skalować typu węzła podstawowego klaster usługi Service Fabric, zwiększając w zasobach maszyny wirtualnej. Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem. Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrażanie i zarządzanie kolekcją maszyn wirtualnych jako zestawu. Każdy typ węzła, który jest zdefiniowany w klastrze platformy Azure jest [konfigurowany jako zestaw skalowania oddzielnych](service-fabric-cluster-nodetypes.md). Każdy typ węzła może następnie być zarządzany oddzielnie. Po utworzeniu klastra usługi Service Fabric można skalować do typu węzła klastra w pionie (zmienić zasoby węzłów) lub Uaktualnij system operacyjny węzła typu maszyn wirtualnych.  Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze.  Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.
+# <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Skalowanie w górę podstawowego typu węzła klastra Service Fabric
+W tym artykule opisano sposób skalowania w górę typu węzła podstawowego klastra Service Fabric przez zwiększenie zasobów maszyny wirtualnej. Klaster Service Fabric jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym są wdrażane i zarządzane mikrousługi. Maszyna lub maszyna wirtualna będąca częścią klastra nazywa się węzłem. Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy platformy Azure, który służy do wdrażania kolekcji maszyn wirtualnych jako zestawu i zarządzania nią. Każdy typ węzła, który jest zdefiniowany w klastrze platformy Azure [, jest ustawiany jako oddzielny zestaw skalowania](service-fabric-cluster-nodetypes.md). Każdy typ węzła może być następnie zarządzany osobno. Po utworzeniu klastra Service Fabric można skalować typ węzła klastra w pionie (zmienić zasoby węzłów) lub uaktualnić system operacyjny maszyn wirtualnych typu węzła.  Klaster można skalować w dowolnym momencie, nawet w przypadku uruchamiania obciążeń w klastrze.  W miarę skalowania klastra aplikacje są automatycznie skalowane.
 
 > [!WARNING]
-> Nie uruchamiaj można zmienić podstawowego elementu nodetype jednostki SKU maszyny Wirtualnej, jeśli kondycja klastra jest w złej kondycji. Jeśli kondycja klastra jest w złej kondycji, będzie tylko zdestabilizować sprawy, klastra, Jeśli spróbujesz zmienić jednostki SKU maszyny Wirtualnej.
+> Nie rozpoczynaj zmiany podstawowej jednostki SKU maszyny wirtualnej NodeType, jeśli kondycja klastra jest zła. Jeśli kondycja klastra jest zła, w przypadku próby zmiany jednostki SKU maszyny wirtualnej będzie można jeszcze bardziej zawęzić ten klaster.
 >
-> Firma Microsoft zaleca, aby nie zmieniać jednostki SKU maszyny Wirtualnej typu węzeł/zestaw skalowania, chyba że jest uruchomiona na [srebrny trwałości lub nowszej](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Zmiana rozmiaru jednostki SKU maszyny Wirtualnej jest operacją destrukcyjne danych w miejscu infrastruktury. Bez niektóre możliwość opóźnienia lub monitora, ta zmiana jest możliwe, że operacja może spowodować utratę danych w przypadku usług stanowych lub powodować inne nieprzewidziane problemy operacyjne, nawet w przypadku obciążeń bezstanowych. Oznacza to, typu węzła podstawowego, w którym jest uruchomiony system usługi stanowej usługi Service fabric, lub dowolny typ węzła, który jest uruchomiony na pracę aplikacji stanowych ładuje.
+> Zalecamy, aby nie zmieniać jednostki SKU maszyny wirtualnej zestawu skalowania/typu węzła, chyba że jest on uruchomiony w wersji [Silver lub nowszej](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Zmiana rozmiaru jednostki SKU maszyny wirtualnej jest operacją infrastruktury służącej do wypróbowania danych. Bez możliwości opóźniania lub monitorowania tej zmiany możliwe jest, że operacja może spowodować utratę danych dla usług stanowych lub spowodować inne nieprzewidziane problemy z działaniem, nawet w przypadku obciążeń bezstanowych. Oznacza to, że typ węzła podstawowego, w którym działa usługi systemowej usługi Service Fabric, lub dowolny typ węzła, który uruchamia aplikację stanową.
 >
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Uaktualnij rozmiar i systemu operacyjnego typu węzła podstawowego maszyn wirtualnych
-Oto proces aktualizowania rozmiaru maszyny Wirtualnej i systemu operacyjnego typu węzła podstawowego maszyn wirtualnych.  Po uaktualnieniu podstawowy typ węzła maszyny wirtualne są rozmiar Standard D4_V2 i uruchamianie systemu Windows Server 2016 Datacenter z kontenerami.
+## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Uaktualnij rozmiar i system operacyjny z maszyn wirtualnych typu węzła podstawowego
+Oto proces aktualizowania rozmiaru maszyny wirtualnej i systemu operacyjnego dla maszyn wirtualnych typu węzła podstawowego.  Po uaktualnieniu maszyny wirtualne typu węzła podstawowego są w standardowym rozmiarze D4_V2 i uruchomiono system Windows Server 2016 Datacenter z kontenerami.
 
 > [!WARNING]
-> Przed podjęciem próby wykonania tej procedury w klastrze produkcyjnym, zalecamy zapoznają się z przykładowych szablonów, a następnie sprawdź procesu względem klastra testowego. Klaster również jest niedostępny w czasie. Nie można wprowadzać zmian, o których VMSS do wielu zadeklarowane jako ten sam element NodeType równolegle; konieczne będzie wykonywać operacje rozdzielonych wdrożenia, aby zastosować zmiany do każdego elementu NodeType zestawu skalowania maszyn wirtualnych pojedynczo.
+> Przed podjęciem próby wykonania tej procedury w klastrze produkcyjnym zalecamy zbadanie przykładowych szablonów i zweryfikowanie procesu względem klastra testowego. Klaster jest również niedostępny przez czas. NIE można wprowadzać zmian w wielu VMSS zadeklarowanych jako te same NodeType równolegle; należy wykonać rozdzielone operacje wdrażania, aby zastosować zmiany do poszczególnych NodeType VMSS indywidualnie.
 
-1. Wdrożenie klastra początkowej za pomocą dwa typy węzłów i dwa scale sets (jeden skalowania na typ węzła) przy użyciu tych przykładowych [szablonu](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) i [parametry](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) plików.  Oba zestawy skalowania są rozmiar standardowa D2_V2 i uruchamianie systemu Windows Server 2012 R2 Datacenter.  Poczekaj, aż klaster, aby ukończyć uaktualnienie punktu odniesienia.   
-2. Opcjonalne — wdrażanie próbkę stanowych w klastrze.
-3. Po podjęciu decyzji uaktualnić podstawowy typ węzła maszyn wirtualnych, należy dodać nowego zestawu typu węzła podstawowego, przy użyciu tych przykładowych skalowania [szablonu](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.json) i [parametry](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.parameters.json) plików, dzięki czemu typu węzła podstawowego ma teraz dwa zestawy skalowania.  System usługi i aplikacje użytkownika są możliwe Migrowanie między maszynami wirtualnymi w dwóch zestawach skalowania innego.  Nowy zestaw skalowania maszyn wirtualnych są rozmiar Standard D4_V2 i uruchamianie systemu Windows Server 2016 Datacenter z kontenerami.  Nowy moduł równoważenia obciążenia i publicznego adresu IP są również dodawane za pomocą nowego zestawu skalowania.  
-    Aby znaleźć nowy zestaw skalowania w szablonie, wyszukaj "Microsoft.Compute/virtualMachineScaleSets" zasób o nazwie określonej przez *vmNodeType2Name* parametru.  Nowy zestaw skalowania jest dodawany do przy użyciu typu węzła podstawowego -> właściwości virtualMachineProfile - > extensionProfile -> Rozszerzenia -> Właściwości -> Ustawienia -> Ustawienia elementu nodeTypeRef.
-4. Sprawdzanie kondycji klastra i sprawdź, czy wszystkie węzły są w dobrej kondycji.
-5. Wyłącz węzłów w zestawie skalowania starego typu węzła podstawowego z zamiarem Usuń węzeł. Możesz wyłączyć wszystkie na raz, a operacje są umieszczane w kolejce. Poczekaj, aż wszystkie węzły są wyłączone, co może zająć trochę czasu.  Jako starszy węzłów typu węzła są wyłączone, system węzłów usługi i inicjatora Przeprowadź migrację do maszyn wirtualnych w nowy zestaw skalowania w typu węzła podstawowego.
-6. Usuń starsze zestawu skalowania na podstawie typu węzła podstawowego.
-7. Usuwanie modułu równoważenia obciążenia, skojarzone z stary zestaw skalowania. Klaster jest niedostępna, gdy nowy publicznego adresu IP adres i Załaduj moduł równoważenia są skonfigurowane dla nowego zestawu skalowania.  
-8. Ustawienia DNS Store publicznego adresu IP skojarzone z węzła podstawowego starego typu zestawu skalowania w zmiennej i Usuń ten publiczny adres IP.
-9. Zastąp ustawienia DNS dla publicznego adresu IP skojarzone z nowego węzła podstawowego typu zestawu skalowania przy użyciu ustawień DNS usunięto publiczny adres IP.  Klaster będzie teraz znowu dostępne.
-10. Usuń stan węzła, węzeł z klastra.  Jeśli poziom trwałości stare zestawu skalowania na poziomie silver lub gold, w tym kroku są wykonywane automatycznie przez system.
-11. Jeśli wdrożono stanowych aplikacji w poprzednim kroku, sprawdź, czy aplikacja działa.
+1. Wdróż początkowy klaster z dwoma typami węzłów i dwoma zestawami skalowania (jeden zestaw skalowania na typ węzła) przy użyciu tych przykładowych plików [szablonów](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) i [parametrów](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) .  Oba zestawy skalowania są w standardowym rozmiarze D2_V2 i uruchomiono system Windows Server 2012 R2 Datacenter.  Poczekaj, aż klaster ukończy uaktualnienie punktu odniesienia.   
+2. Opcjonalne — Wdróż stanowy przykład w klastrze.
+3. Po podjęciu decyzji o uaktualnieniu podstawowego typu węzła maszyny wirtualne Dodaj nowy zestaw skalowania do typu węzła podstawowego przy użyciu tych przykładowych plików [szablonów](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.json) i [parametrów](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.parameters.json) , tak aby typ węzła podstawowego miał teraz dwa zestawy skalowania.  Usługi systemowe i aplikacje użytkownika mogą migrować między maszynami wirtualnymi w dwóch różnych zestawach skalowania.  Nowe maszyny wirtualne zestawu skalowania są w standardowym rozmiarze D4_V2 i działają w systemie Windows Server 2016 Datacenter z kontenerami.  Nowy zestaw skalowania jest również dodawany do nowego modułu równoważenia obciążenia i publicznego adresu IP.  
+    Aby znaleźć nowy zestaw skalowania w szablonie, wyszukaj zasób "Microsoft. COMPUTE/virtualMachineScaleSets" o nazwie odpowiadającej parametrowi *vmNodeType2Name* .  Nowy zestaw skalowania jest dodawany do typu węzła podstawowego przy użyciu właściwości-> virtualMachineProfile-> extensionProfile-> Extensions-> Properties-> Settings-> nodeTypeRef.
+4. Sprawdź kondycję klastra i sprawdź, czy wszystkie węzły są w dobrej kondycji.
+5. Wyłącz węzły w starym zestawie skalowania typu węzła podstawowego z zamiarem usunięcia węzła. Można wyłączyć wszystkie jednocześnie, a operacje są umieszczane w kolejce. Poczekaj, aż wszystkie węzły zostaną wyłączone, co może chwilę potrwać.  Ponieważ starsze węzły w typie węzła są wyłączone, usługi systemowe i węzły inicjatora są migrowane do maszyn wirtualnych nowego zestawu skalowania w podstawowym typie węzła.
+6. Usuń starszy zestaw skalowania z typu węzła podstawowego.
+7. Usuń moduł równoważenia obciążenia skojarzony ze starym zestawem skalowania. Klaster jest niedostępny, gdy nowy publiczny adres IP i moduł równoważenia obciążenia są skonfigurowane dla nowego zestawu skalowania.  
+8. Zapisz ustawienia DNS publicznego adresu IP skojarzonego z starym zestawem skalowania typu węzła podstawowego w zmiennej i Usuń ten publiczny adres IP.
+9. Zastąp ustawienia DNS publicznego adresu IP skojarzonego z nowym zestawem skalowania typu węzła podstawowego za pomocą ustawień DNS usuniętego publicznego adresu IP.  Klaster jest teraz ponownie dostępny.
+10. Usuń stan węzła z klastra.  Jeśli poziom trwałości starego zestawu skalowania to Silver lub Gold, ten krok jest wykonywany automatycznie przez system.
+11. Jeśli aplikacja stanowa została wdrożona w poprzednim kroku, sprawdź, czy aplikacja działa.
 
 ```powershell
 # Variables.
@@ -163,7 +163,7 @@ foreach($name in $nodeNames){
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się, jak [dodać typ węzła do klastra](virtual-machine-scale-set-scale-node-type-scale-out.md)
 * Dowiedz się więcej o [skalowalności aplikacji](service-fabric-concepts-scalability.md).
-* [Skalowanie klastra usługi Azure wewnątrz lub na zewnątrz](service-fabric-tutorial-scale-cluster.md).
-* [Skalowanie klastra usługi Azure programowo](service-fabric-cluster-programmatic-scaling.md) przy użyciu fluent Azure compute zestawu SDK.
-* [Skalowanie klastra autonomicznego wewnątrz lub na zewnątrz](service-fabric-cluster-windows-server-add-remove-nodes.md).
+* [Skalowanie klastra platformy Azure w poziomie lub na zewnątrz](service-fabric-tutorial-scale-cluster.md).
+* [Programowo Skaluj klaster platformy Azure](service-fabric-cluster-programmatic-scaling.md) przy użyciu zestawu Azure COMPUTE SDK.
+* [Skalowanie klastra autonomicznego w poziomie lub na zewnątrz](service-fabric-cluster-windows-server-add-remove-nodes.md).
 

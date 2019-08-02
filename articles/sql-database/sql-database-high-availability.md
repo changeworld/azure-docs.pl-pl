@@ -1,6 +1,6 @@
 ---
-title: Wysoka dostępność — usługa Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o tych funkcji i możliwości wysokiej dostępności usługi Azure SQL Database
+title: Wysoka dostępność — usługa Azure SQL Database | Microsoft Docs
+description: Dowiedz się więcej o możliwościach i funkcjach wysokiej dostępności usługi Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,75 +10,74 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-manager: craigg
 ms.date: 06/10/2019
-ms.openlocfilehash: a88842802759a5c3ae7af7334bbe125344c978ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 226b0c1cb11fc872cb7759e0d0e49275b9c2d9bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066919"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568152"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
-Celem architektura wysokiej dostępności w usłudze Azure SQL Database jest gwarancji, że baza danych znajduje się i uruchomione działanie przez 99,99% czasu, nie martwiąc się o wpływ operacji konserwacji i awarie. Azure automatycznie obsługuje krytyczne zadania obsługi, takie jak stosowanie poprawek, tworzenie kopii zapasowych, uaktualnienia Windows i programu SQL, a także nieplanowanych zdarzeń, takich jak podstawowe błędy sprzętu, oprogramowania lub sieci.  Gdy podstawowe wystąpienie SQL jest zastosowana poprawka lub w trybie Failover, przestój jest niezauważalne Jeśli możesz [stosować logikę ponawiania próby](sql-database-develop-overview.md#resiliency) w swojej aplikacji. Usługa Azure SQL Database można szybko odzyskać nawet w najbardziej krytycznych okoliczności, zapewniając, że Twoje dane są zawsze dostępne.
+Celem architektury wysokiej dostępności w Azure SQL Database jest zagwarantowanie, że baza danych działa i działa 99,99% czasu, bez zakłócania wpływu operacji konserwacji i przestojów. Platforma Azure automatycznie obsługuje krytyczne zadania obsługi, takie jak stosowanie poprawek, kopii zapasowych, uaktualnień systemu Windows i programu SQL, a także niezaplanowanych zdarzeń, takich jak sprzęt, oprogramowanie lub awarie sieci.  Gdy bazowe wystąpienie programu SQL Server jest poprawione lub działa w trybie failover, przestoje nie jest zauważalne, jeśli w aplikacji jest stosowana [logika ponawiania](sql-database-develop-overview.md#resiliency) . Azure SQL Database można szybko odzyskać nawet w najbardziej krytycznych okolicznościach, dzięki czemu dane są zawsze dostępne.
 
-Rozwiązanie o wysokiej dostępności jest zapewnienie, zatwierdzone dane nigdy nie jest utracone z powodu błędów operacji konserwacji nie wpływają na obciążenia i bazy danych nie będzie pojedynczym punktem awarii w architekturze oprogramowania. Nie istnieją żadne okna konserwacyjne ani przestoje, wymagające należy zatrzymać obciążenia, gdy baza danych jest uaktualniony lub utrzymane. 
+Rozwiązanie wysokiej dostępności zostało zaprojektowane z myślą o zapewnieniu, że przekazane dane nigdy nie zostaną utracone z powodu niepowodzeń, że operacje konserwacji nie wpłyną na obciążenie, a baza danych nie będzie single point of failure w architekturze oprogramowania. Nie ma okien obsługi ani przestojów, które powinny wymagać zatrzymania obciążenia, gdy baza danych jest uaktualniana lub utrzymywana. 
 
-Istnieją dwa modele architektury wysokiej dostępności, które są używane w usłudze Azure SQL Database:
+Istnieją dwa modele architektoniczne wysokiej dostępności, które są używane w Azure SQL Database:
 
-- Model standardowy dostępności, który opiera się na oddzielenie zasobów obliczeniowych i magazynowych.  Opiera się na wysoką dostępność i niezawodność warstwy magazynu zdalnego. Ta architektura jest przeznaczona dla aplikacji biznesowych z ograniczonym budżetem, które mogą tolerować zmniejszenie wydajności podczas czynności konserwacyjnych.
-- Model dostępności — wersja Premium, który jest oparty na klastrze procesy aparatu bazy danych. Opiera się na fakcie, że jest zawsze kworum węzłów aparatu bazy danych dostępności. Ta architektura jest przeznaczony dla krytycznych aplikacji z wysoką wydajnością we/wy, dużo transakcji i gwarancje niewielkimi wpływu na obciążenie podczas czynności konserwacyjnych.
+- Standardowy model dostępności oparty na rozdzieleniu zasobów obliczeniowych i magazynu.  Zależy to od wysokiej dostępności i niezawodności zdalnej warstwy magazynowania. Ta architektura ukierunkowana na aplikacje biznesowe zorientowane na budżet, które mogą tolerować spadek wydajności podczas aktywności konserwacyjnej.
+- Model dostępności Premium oparty na klastrze procesów aparatu bazy danych. Opiera się to na faktach, że zawsze jest kworum dostępnych węzłów aparatu bazy danych. Ta architektura ukierunkowana na aplikacje o znaczeniu strategicznym o wysokiej wydajności operacji we/wy, wysoka liczba transakcji i gwarantuje minimalny wpływ na wydajność podczas aktywności konserwacyjnej.
 
-Usługa Azure SQL Database działa na najnowsza stabilna wersja aparatu bazy danych programu SQL Server i system operacyjny Windows, a większość użytkowników będzie nie należy zauważyć, że aktualizacje są wykonywane stale.
+Azure SQL Database jest uruchamiany w najnowszej stabilnej wersji aparatu bazy danych SQL Server i systemu operacyjnego Windows, a większość użytkowników nie zauważy, że uaktualnienia są wykonywane w sposób ciągły.
 
-## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Podstawowa, standardowa i ogólnego przeznaczenia warstwy dostępność usług
+## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Dostępność warstwy usługi Basic, standard i Ogólnego przeznaczenia
 
-Te warstwy usługi wykorzystują architekturę standardowa dostępności. Na poniższej ilustracji przedstawiono cztery różne węzły z rozdzielonych warstwy obliczeń i magazynu.
+Te warstwy usług wykorzystują standardową architekturę dostępności. Poniższy rysunek przedstawia cztery różne węzły z oddzielnymi warstwami obliczeniowymi i magazynowymi.
 
-![Oddzielenie zasobów obliczeniowych i magazynu](media/sql-database-high-availability/general-purpose-service-tier.png)
+![Rozdzielenie zasobów obliczeniowych i magazynu](media/sql-database-high-availability/general-purpose-service-tier.png)
 
-Model standardowy dostępności zawiera dwie warstwy:
+Standardowy model dostępności obejmuje dwie warstwy:
 
-- Warstwy obliczeniowej bezstanowe uruchomionym `sqlserver.exe` przetwarzania i zawiera tylko błędy przejściowe i pamięci podręcznej danych na dołączone dyski SSD, takie jak bazy danych TempDB, model bazy danych, pamięci podręcznej planu, Pula buforów i kolumny magazynu puli. Ten węzeł bezstanowe jest obsługiwany przez usługi Azure Service Fabric, która inicjuje `sqlserver.exe`kontroluje kondycji węzła oraz przeprowadza trybu failover do innego węzła, jeśli to konieczne.
-- Warstwy danych stanowych z plikami bazy danych (.mdf/.ldf), które są przechowywane w usłudze Azure Blob storage. Usługa Azure blob storage ma danych wbudowane, dostępność i nadmiarowość funkcji. Gwarantuje on, że każdy rekord w pliku dziennika lub strony w pliku danych zostaną zachowane, nawet, jeśli wystąpiła awaria procesu programu SQL Server.
+- Warstwa obliczeń bezstanowych, która `sqlserver.exe` uruchamia proces i zawiera tylko dane przejściowe i buforowane na podłączonym SSD, takie jak tempdb, model bazy danych, pamięć podręczna planu, pula buforów i pula magazynu kolumn. Ten bezstanowy węzeł jest obsługiwany przez usługę Azure `sqlserver.exe`Service Fabric, która inicjuje, steruje kondycją węzła i przeprowadza przejście w tryb failover do innego węzła w razie potrzeby.
+- Warstwa danych stanowych z plikami bazy danych (. mdf/. ldf), które są przechowywane w usłudze Azure Blob Storage. Usługa Azure Blob Storage ma wbudowaną funkcję dostępności i nadmiarowości danych. Gwarantuje, że każdy rekord w pliku dziennika lub stronie w pliku danych zostanie zachowany nawet w przypadku awarii procesu SQL Server.
 
-Zawsze, gdy aparat bazy danych lub system operacyjny zostanie uaktualniony lub zostanie wykryta awaria, bezstanowe procesu programu SQL Server do innego węzła obliczeniowego o bezstanowa zostanie przesunięty w usługi Azure Service Fabric z wystarczającą pojemnością bezpłatne. Dane w usłudze Azure Blob storage nie podlega przenoszenia i pliki danych/dziennika są dołączone do nowo utworzonym procesu programu SQL Server. Ten proces zapewnia gwarancję dostępności 99,99% czasu, ale duże obciążenie może spowodować zmniejszenie wydajności podczas przejścia, ponieważ w nowym wystąpieniu programu SQL Server, który rozpoczyna się od zimnych pamięci podręcznej.
+Za każdym razem, gdy aparat bazy danych lub system operacyjny zostanie uaktualniony lub zostanie wykryta awaria, usługa Azure Service Fabric przeniesie bezstanowy proces SQL Server do innego bezstanowego węzła obliczeniowego z wystarczającą ilością wolnego miejsca. Przeniesienie nie ma wpływ na dane w usłudze Azure Blob Storage, a pliki danych/dziennika są dołączone do nowo zainicjowanego procesu SQL Server. Ten proces gwarantuje dostępność na 99,99%, ale duże obciążenie może napotkać spadek wydajności podczas przejścia, ponieważ nowe wystąpienie SQL Server rozpoczyna się od zimnej pamięci podręcznej.
 
-## <a name="premium-and-business-critical-service-tier-availability"></a>Dostępność warstwy Premium i krytyczne dla działania firmy usługi
+## <a name="premium-and-business-critical-service-tier-availability"></a>Dostępność warstwy usług premium i Krytyczne dla działania firmy
 
-Premium i krytyczne dla działania firmy używają warstw usługi modelu dostępności — wersja Premium, który integruje się zasoby obliczeniowe (proces aparatu bazy danych programu SQL Server) i pamięci masowej (SSD podłączonych lokalnie) w jednym węźle. Wysoka dostępność jest osiągana przez replikowanie Obliczanie i magazynowanie do dodatkowych węzłów Tworzenie trzy do czterech - węzła klastra. 
+Warstwy usług premium i Krytyczne dla działania firmy korzystają z modelu dostępności Premium, który integruje zasoby obliczeniowe (proces SQL Server Database Engine) i magazyn (lokalnie dołączony dysk SSD) w jednym węźle. Wysoka dostępność jest osiągana przez replikowanie zarówno zasobów obliczeniowych, jak i magazynu do dodatkowych węzłów tworzących klaster z trzema czterema węzłami. 
 
-![Klastra węzłów aparatu bazy danych](media/sql-database-high-availability/business-critical-service-tier.png)
+![Klaster węzłów aparatu bazy danych](media/sql-database-high-availability/business-critical-service-tier.png)
 
-Podstawowe pliki bazy danych (.mdf/.ldf) są umieszczane w dołączonego magazynu SSD w celu zapewnienia bardzo małych opóźnień operacji We/Wy do obciążenia. Wysoka dostępność jest implementowany przy użyciu technologii, które są podobne do programu SQL Server [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Klaster zawiera gdzie pojedyncza replika podstawowa (procesu programu SQL Server) dostępnej dla obciążeń klientów odczytu / zapisu i maksymalnie trzech replik pomocniczych (obliczanie i magazynowanie) zawierającego kopie danych. Węzeł podstawowy stale wypychanie zmian do dodatkowych węzłów w kolejności i gwarantuje, że dane są synchronizowane co najmniej jedna replika pomocnicza, przed wykonaniem każdej transakcji. Ten proces zapewnia, że jeśli z jakiegokolwiek powodu ulegnie awarii węzła podstawowego, zawsze jest w pełni zsynchronizowane węzła do trybu failover. Przełączenie w tryb failover jest inicjowane przez usługi Azure Service Fabric. Gdy replika pomocnicza staje się nowy węzeł podstawowy, tworzony jest inna replika pomocnicza upewnij się, że klaster ma wystarczającej liczby węzłów (zestaw kworum). Po zakończeniu trybu failover połączeń z serwerem SQL są automatycznie przekierowywane do nowego węzła podstawowego.
+Bazowe pliki bazy danych (. mdf/. ldf) są umieszczane w podłączonym magazynie SSD w celu zapewnienia bardzo małych opóźnień we/wy dla obciążenia. Wysoka dostępność jest implementowana przy użyciu technologii podobnego do SQL Server [zawsze włączonymi grupami dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Klaster zawiera pojedynczą replikę podstawową (proces SQL Server), która jest dostępna do obsługi obciążeń klientów odczytu i zapisu, a także do trzech replik pomocniczych (obliczeniowych i magazynowych) zawierających kopie danych. Węzeł podstawowy ciągle przekazuje zmiany do węzłów pomocniczych w kolejności i gwarantuje, że dane są synchronizowane z co najmniej jedną repliką pomocniczą przed zatwierdzeniem każdej transakcji. Ten proces gwarantuje, że jeśli węzeł podstawowy ulegnie awarii z jakiegokolwiek powodu, zawsze jest w pełni zsynchronizowany węzeł w celu przełączenia w tryb failover. Przełączenie w tryb failover jest inicjowane przez Service Fabric platformy Azure. Gdy replika pomocnicza zostanie nowym węzłem podstawowym, zostanie utworzona inna replika pomocnicza, aby upewnić się, że klaster ma wystarczającą liczbę węzłów (zestaw kworum). Po zakończeniu pracy w trybie failover połączenia SQL są automatycznie przekierowywane do nowego węzła podstawowego.
 
-Dodatkowa korzyść model dostępności premium obejmuje możliwość przekierowywania połączeń z serwerem SQL tylko do odczytu do jednej z replik pomocniczych. Ta funkcja jest nazywana [odczytu skalowalnego w poziomie](sql-database-read-scale-out.md). Zapewnia ona 100% dodatkowe obliczenia pojemności bez dodatkowych opłat do kolejkowego operacji tylko do odczytu, takich jak obciążeń analitycznych, z repliki podstawowej.
+Dodatkowo model dostępności Premium umożliwia przekierowywanie połączeń SQL tylko do odczytu do jednej z replik pomocniczych. Ta funkcja jest nazywana [skalowaniem do odczytu](sql-database-read-scale-out.md). Zapewnia 100% dodatkowej pojemności obliczeniowej bez dodatkowej opłaty za magazyn operacji tylko do odczytu, na przykład obciążenia analityczne, z repliki podstawowej.
 
-## <a name="zone-redundant-configuration"></a>Nadmiarowe konfiguracji strefy
+## <a name="zone-redundant-configuration"></a>Konfiguracja nadmiarowa stref
 
-Domyślnie klastra węzłów dla modelu dostępności — wersja premium jest tworzony w tym samym centrum danych. Wraz z wprowadzeniem [strefy dostępności platformy Azure](../availability-zones/az-overview.md), umieścić różnych replik bazy danych SQL w klastrze w różnych strefach dostępności w tym samym regionie. Aby wyeliminować pojedynczy punkt awarii, pierścień kontroli również występuje w wielu strefach jako trzy pierścienie bramy (GW). Routing do pierścienia daną bramę jest kontrolowana przez [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Ponieważ nadmiarowy konfiguracji strefy w warstwach Premium lub krytyczne dla działania firmy nie powoduje utworzenia nadmiarowości dodatkowa baza danych, możesz je włączyć, bez dodatkowych kosztów. Wybierając nadmiarowe konfiguracji strefy, umożliwia bazach danych Premium lub krytyczne dla działania firmy odporne na błędy znacznie większy zbiór awarii, w tym awarii krytycznego centrum danych bez wprowadzania żadnych zmian do logiki aplikacji. Możesz również przeprowadzić konwersję wszystkie istniejące bazy danych Premium lub krytyczne dla działania firmy lub pule nadmiarowe konfiguracji strefy.
+Domyślnie klaster węzłów dla modelu dostępności Premium jest tworzony w tym samym centrum danych. Wprowadzając [strefy dostępności platformy Azure](../availability-zones/az-overview.md), SQL Database mogą umieścić różne repliki w klastrze z różnymi strefami dostępności w tym samym regionie. Aby wyeliminować single point of failure, pierścień kontrolny jest również duplikowany w wielu strefach jako trzy pierścienie bramy (GW). Routing do określonego pierścienia bramy jest kontrolowany przez [usługę Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Ponieważ konfiguracja nadmiarowa strefy w warstwach usług premium lub Krytyczne dla działania firmy nie powoduje utworzenia dodatkowej nadmiarowości bazy danych, możesz ją włączyć bez dodatkowych kosztów. Wybierając strefowo nadmiarową konfigurację, można sprawić, aby bazy danych Premium lub Krytyczne dla działania firmy odporne na znacznie większy zestaw błędów, w tym katastrofalne przerwy w działaniu, bez wprowadzania żadnych zmian w logice aplikacji. Istnieje również możliwość przekonwertowania wszelkich istniejących baz danych lub pul w warstwie Premium lub Krytyczne dla działania firmy na strefę nadmiarową.
 
-Ponieważ nadmiarowych baz danych strefy mają replik w różnych centrach danych z niektórych odległość między nimi, opóźnienie sieci zwiększone może zwiększyć czas zatwierdzenia i dlatego ma wpływ na wydajność niektórych obciążeń OLTP. Zawsze możesz wrócić do konfiguracji pojedynczej strefy, wyłączając ustawienie nadmiarowości strefy. Ten proces jest podobny do uaktualniania warstwy usługi regularnych operacji w trybie online. Po zakończeniu procesu bazy danych lub puli jest migrowane z nadmiarowych pierścień strefy do pierścienia jedną strefę lub na odwrót.
+Ze względu na to, że nadmiarowe bazy danych strefy mają repliki w różnych centrach, z odległości między nimi, zwiększone opóźnienie sieci może wydłużyć czas zatwierdzania i w ten sposób mieć wpływ na wydajność niektórych obciążeń OLTP. Zawsze możesz wrócić do konfiguracji pojedynczej strefy, wyłączając ustawienie nadmiarowości strefy. Ten proces jest operacją online podobną do zwykłego uaktualnienia warstwy usług. Na końcu procesu baza danych lub Pula jest migrowana ze strefy nadmiarowego pierścień do pojedynczego pierścienia strefy lub odwrotnie.
 
 > [!IMPORTANT]
-> Strefa nadmiarowych baz danych i pule elastyczne są obecnie obsługiwane tylko w warstwach Premium i krytyczne dla działania firmy w wybranych regionach. Korzystając z warstwy krytyczne dla działalności, nadmiarowe konfiguracji strefy jest dostępna tylko wtedy, po wybraniu sprzętu obliczeniowe 5. generacji. Aby uzyskać aktualne informacje na temat regionów, które obsługują strefy nadmiarowych baz danych zobacz [Services obsługują według regionu](../availability-zones/az-overview.md#services-support-by-region).  
+> Nadmiarowe bazy danych stref i pule elastyczne są obecnie obsługiwane tylko w warstwach usług premium i Krytyczne dla działania firmy w wybranych regionach. W przypadku korzystania z warstwy Krytyczne dla działania firmy konfiguracja nadmiarowa strefy jest dostępna tylko po wybraniu sprzętu obliczeniowego 5 rdzeń. Aby uzyskać aktualne informacje o regionach, które obsługują nadmiarowe bazy danych strefy, zobacz temat [Obsługa usług według regionów](../availability-zones/az-overview.md#services-support-by-region).  
 
-Poniższy diagram przedstawia nadmiarowe strefy wersję architektura wysokiej dostępności:
+Strefa o wysokiej dostępności nadmiarowa jest zilustrowana na poniższym diagramie:
 
-![Wysoka dostępność architektury strefowo nadmiarowe](./media/sql-database-high-availability/zone-redundant-business-critical-service-tier.png)
+![Strefa architektury wysokiej dostępności nadmiarowa](./media/sql-database-high-availability/zone-redundant-business-critical-service-tier.png)
 
-## <a name="accelerated-database-recovery-adr"></a>Odzyskiwanie bazy danych jej jako przyspieszonej (ADR)
+## <a name="accelerated-database-recovery-adr"></a>Szybsze odzyskiwanie bazy danych (ADR)
 
-[Przyspieszone odzyskiwanie bazy danych (ADR)](sql-database-accelerated-database-recovery.md) nową funkcję do aparatu bazy danych SQL, która znacznie zwiększa dostępność bazy danych, szczególnie obecności długo działa transakcji. Reguły ADR jest obecnie dostępna dla pojedynczych baz danych, pul elastycznych i Azure SQL Data Warehouse.
+[Szybsze odzyskiwanie bazy danych (ADR)](sql-database-accelerated-database-recovery.md) to nowa funkcja aparatu bazy danych SQL, która znacznie zwiększa dostępność bazy danych, szczególnie w przypadku długotrwałych transakcji. Reguły ADR są obecnie dostępne dla pojedynczych baz danych, pul elastycznych i Azure SQL Data Warehouse.
 
-## <a name="conclusion"></a>Podsumowanie
+## <a name="conclusion"></a>Wniosek
 
-Usługa Azure SQL Database oferuje rozwiązania wbudowaną wysoką dostępność, który jest ściśle zintegrowana z platformą Azure. Jest on zależny, w usłudze Service Fabric do wykrywania awarii i odzyskiwania, usługi Azure Blob storage w celu ochrony danych i strefy dostępności wyższych odporności na uszkodzenia. Ponadto bazy danych Azure SQL korzysta z technologii zawsze włączonej grupy dostępności programu SQL Server podczas replikacji i trybu failover. Kombinacja tych technologii umożliwia aplikacjom pełnym wykorzystaniu zalet mieszane magazyn modelu i obsługuje najbardziej wymagające umowy SLA.
+Azure SQL Database funkcje wbudowanego rozwiązania wysokiej dostępności, które jest głęboko zintegrowane z platformą Azure. Jest ona zależna od Service Fabric do wykrywania awarii i odzyskiwania, w usłudze Azure Blob Storage na potrzeby ochrony danych, a na Strefy dostępności w celu uzyskania większej odporności na uszkodzenia. Ponadto usługa Azure SQL Database korzysta z technologii Always On Availability Group w SQL Server na potrzeby replikacji i przełączania do trybu failover. Połączenie tych technologii pozwala aplikacjom w pełni wykorzystać zalety modelu magazynu mieszanego i obsługiwać najbardziej wymaganą umowy SLA.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [strefy dostępności platformy Azure](../availability-zones/az-overview.md)
-- Dowiedz się więcej o [usługi Service Fabric](../service-fabric/service-fabric-overview.md)
-- Dowiedz się więcej o [usługa Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
-- Aby uzyskać więcej opcji wysokiej dostępności i odzyskiwania po awarii, zobacz [ciągłość prowadzenia działalności biznesowej](sql-database-business-continuity.md)
+- Dowiedz się więcej o [Service Fabric](../service-fabric/service-fabric-overview.md)
+- Dowiedz się więcej o [usłudze Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
+- Aby uzyskać więcej opcji dotyczących wysokiej dostępności i odzyskiwania po awarii, zobacz ciągłość działania [firmy](sql-database-business-continuity.md)

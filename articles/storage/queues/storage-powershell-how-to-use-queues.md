@@ -1,37 +1,36 @@
 ---
-title: Wykonywanie operacji na Azure Queue storage przy użyciu programu PowerShell — usługi Azure Storage
-description: Jak wykonywać operacje na Azure Queue storage przy użyciu programu PowerShell
-services: storage
+title: Wykonywanie operacji w usłudze Azure queue storage przy użyciu programu PowerShell dla usługi Azure Storage
+description: Wykonywanie operacji w usłudze Azure queue storage przy użyciu programu PowerShell
 author: mhopkins-msft
-ms.service: storage
-ms.topic: conceptual
-ms.date: 05/15/2019
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 05/15/2019
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 6e8640b136c52f500de010f842ab73678acdce4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: bf5cf668620eb08e0d808c2052eac59b15af740c
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991355"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721225"
 ---
-# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonaj operacjami usługi Azure Queue storage przy użyciu programu Azure PowerShell
+# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonywanie operacji usługi Azure queue storage przy użyciu Azure PowerShell
 
-Usługa Azure Queue storage jest usługą służącą do przechowywania dużej liczby wiadomości, które są dostępne z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do kolejek usługi Azure](storage-queues-introduction.md). W tym artykule omówiono typowe operacjami usługi Queue storage. Omawiane kwestie:
+Azure queue storage to usługa służąca do przechowywania dużej liczby komunikatów, do których można uzyskać dostęp z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do kolejek platformy Azure](storage-queues-introduction.md). Ten artykuł zawiera instrukcje dotyczące typowych operacji magazynu kolejki. Omawiane kwestie:
 
 > [!div class="checklist"]
 >
 > * Tworzenie kolejki
 > * Pobieranie kolejki
 > * Dodawanie komunikatu
-> * Przeczytaj komunikat
-> * Usuwanie wiadomości e-mail
+> * Odczytaj wiadomość
+> * Usuń komunikat
 > * Usuwanie kolejki
 
-Niniejszy instruktaż wymaga modułu Azure PowerShell Az wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
+Ta procedura wymaga, aby moduł Azure PowerShell AZ w wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
 
-Nie ma żadnych poleceń cmdlet programu PowerShell dla płaszczyzny danych dla kolejek. Do wykonania danych operacji płaszczyzny takich jak dodawanie wiadomości, przeczytaj komunikat i usuwanie wiadomości e-mail, należy użyć biblioteki klienta .NET magazynu, ponieważ jest widoczna w programie PowerShell. Utwórz obiekt wiadomości, a następnie można użyć poleceń, takich jak AddMessage do wykonywania operacji na tę wiadomość. W tym artykule pokazano, jak to zrobić.
+Brak poleceń cmdlet programu PowerShell dla płaszczyzny danych dla kolejek. Aby wykonywać operacje płaszczyzny danych, takie jak dodawanie komunikatu, odczytywanie wiadomości i usuwanie komunikatu, należy użyć biblioteki klienta programu .NET Storage, która jest dostępna w programie PowerShell. Tworzysz obiekt komunikatu, a następnie możesz użyć poleceń, takich jak AddMessage, do wykonywania operacji na tym komunikacie. W tym artykule opisano, jak to zrobić.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -43,9 +42,9 @@ Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAcco
 Connect-AzAccount
 ```
 
-## <a name="retrieve-list-of-locations"></a>Pobieranie listy lokalizacji
+## <a name="retrieve-list-of-locations"></a>Pobierz listę lokalizacji
 
-Jeśli nie wiesz, której lokalizacji użyć, możesz wyświetlić listę dostępnych lokalizacji. Po wyświetleniu listy znajdź lokalizację, której chcesz użyć. Użyje tego ćwiczenia **eastus**. Store to w zmiennej **lokalizacji** do użytku w przyszłości.
+Jeśli nie wiesz, której lokalizacji użyć, możesz wyświetlić listę dostępnych lokalizacji. Po wyświetleniu listy znajdź lokalizację, której chcesz użyć. W tym ćwiczeniu zostanie użyta **Wschodnia**. Zapisz ją w **lokalizacji** zmiennej do użycia w przyszłości.
 
 ```powershell
 Get-AzLocation | select Location
@@ -56,7 +55,7 @@ $location = "eastus"
 
 Utwórz grupę zasobów za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
 
-Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Store nazwę grupy zasobów w zmiennej, do użytku w przyszłości. W tym przykładzie grupa zasobów o nazwie *howtoqueuesrg* jest tworzony w *eastus* regionu.
+Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Zapisz nazwę grupy zasobów w zmiennej do użycia w przyszłości. W tym przykładzie grupa zasobów o nazwie *howtoqueuesrg* jest tworzona w regionie *wschodnim* .
 
 ```powershell
 $resourceGroup = "howtoqueuesrg"
@@ -65,7 +64,7 @@ New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>Tworzenie konta magazynu
 
-Utwórz konto magazynu ogólnego przeznaczenia w warstwie standardowa przy użyciu magazynu lokalnie nadmiarowego (LRS) [New AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Pobierz kontekst konta magazynu, który definiuje konto magazynu ma być używany. Wykonując działania względem konta magazynu, możesz odwoływać się do kontekstu, zamiast wielokrotnie podawać poświadczenia.
+Utwórz standardowe konto magazynu ogólnego przeznaczenia z magazynem lokalnie nadmiarowy (LRS) przy użyciu polecenia [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Pobierz kontekst konta magazynu, który definiuje konto magazynu do użycia. Wykonując działania względem konta magazynu, możesz odwoływać się do kontekstu, zamiast wielokrotnie podawać poświadczenia.
 
 ```powershell
 $storageAccountName = "howtoqueuestorage"
@@ -79,18 +78,18 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
 
-Poniższy przykład najpierw ustanawia połączenie do usługi Azure Storage przy użyciu kontekst konta magazynu, który zawiera nazwę konta magazynu i klucza dostępu. Następnie wywołuje [New AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) polecenia cmdlet, aby utworzyć kolejkę o nazwie "queuename".
+Poniższy przykład najpierw nawiązuje połączenie z usługą Azure Storage przy użyciu kontekstu konta magazynu, który obejmuje nazwę konta magazynu i jego klucz dostępu. Następnie wywołuje polecenie cmdlet [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) , aby utworzyć kolejkę o nazwie "QueueName".
 
 ```powershell
 $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-Aby uzyskać informacji na temat konwencji nazewnictwa dla usługi Azure Queue Service, zobacz [nazewnictwo kolejek i metadanych](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+Aby uzyskać informacje dotyczące konwencji nazewnictwa usługi Azure Queue Service, zobacz [nazywanie kolejek i metadanych](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 
 ## <a name="retrieve-a-queue"></a>Pobieranie kolejki
 
-Można wykonywać zapytania i pobierać listę wszystkich kolejek na koncie magazynu lub określonej kolejki. Poniższe przykłady pokazują, jak można pobrać wszystkich kolejek na koncie magazynu i w odpowiedniej kolejce; Oba polecenia, użyj [Get AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue) polecenia cmdlet.
+Można wykonywać zapytania i pobierać określoną kolejkę lub listę wszystkich kolejek na koncie magazynu. W poniższych przykładach pokazano, jak pobrać wszystkie kolejki z konta magazynu i określoną kolejkę; Oba polecenia korzystają z polecenia cmdlet [Get-AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue) .
 
 ```powershell
 # Retrieve a specific queue
@@ -104,7 +103,7 @@ Get-AzStorageQueue -Context $ctx | select Name
 
 ## <a name="add-a-message-to-a-queue"></a>Dodawanie komunikatu do kolejki
 
-Operacje, które mają wpływ na rzeczywistych wiadomości w kolejce za pomocą biblioteki klienta .NET magazynu jako dostępne w programie PowerShell. Aby dodać komunikat do kolejki, Utwórz nowe wystąpienie obiektu komunikat [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) klasy. Następnie wywołaj metodę [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage). CloudQueueMessage mogą być tworzone z ciągu (w formacie UTF-8) lub tablicą bajtów.
+Operacje, które mają wpływ na rzeczywiste komunikaty w kolejce, korzystają z biblioteki klienta programu .NET Storage jako uwidocznionej w programie PowerShell. Aby dodać komunikat do kolejki, Utwórz nowe wystąpienie obiektu Message, [Microsoft. Azure. Storage. Queue. CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) . Następnie wywołaj metodę [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage). CloudQueueMessage można utworzyć na podstawie ciągu (w formacie UTF-8) lub tablicy bajtowej.
 
 Poniższy przykład pokazuje, jak dodać komunikat do kolejki.
 
@@ -124,17 +123,17 @@ $queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMe
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
-Jeśli używasz [Eksploratora usługi Azure Storage](https://storageexplorer.com), nawiąż połączenie z kontem platformy Azure i wyświetlić kolejek na koncie magazynu oraz przechodzenie do kolejki, aby wyświetlić komunikaty w kolejce.
+Jeśli używasz [Eksplorator usługi Azure Storage](https://storageexplorer.com), możesz nawiązać połączenie z kontem platformy Azure i wyświetlić kolejki na koncie magazynu, a następnie przejść do kolejki, aby wyświetlić komunikaty w kolejce.
 
-## <a name="read-a-message-from-the-queue-then-delete-it"></a>Następnie usuń odczytu komunikatów z kolejki
+## <a name="read-a-message-from-the-queue-then-delete-it"></a>Odczytaj komunikat z kolejki, a następnie usuń go
 
-Komunikaty są odczytywane w kolejności pierwszy wejściu — pierwszy na wyjściu najlepiej spróbuj. Nie jest gwarantowana. Podczas odczytywania komunikatów z kolejki, staje się niewidoczne dla innych procesów w kolejce. Gwarantuje to, że jeśli kod nie może przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu można uzyskać ten sam komunikat i spróbuj ponownie.  
+Komunikaty są odczytywane w najlepszym przypadku, gdy jest to pierwsze zamówienie. Nie jest to gwarantowane. Po odczytaniu komunikatu z kolejki jest on niewidoczny dla wszystkich innych procesów, które przeglądają kolejkę. Pozwala to zagwarantować, że jeśli kod nie przetworzy komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu może uzyskać ten sam komunikat i spróbować ponownie.  
 
-To **limitu czasu niewidoczności** definiuje, jak długo komunikat pozostaje niewidoczna, zanim stanie się znów dostępne do przetwarzania. Wartość domyślna to 30 sekund.
+Ten **limit czasu niewidoczności** określa, jak długo komunikat pozostaje niewidoczny przed ponownym udostępnieniem do przetworzenia. Wartość domyślna to 30 sekund.
 
-Kod odczytuje komunikat z kolejki w dwóch etapach. Gdy wywołujesz [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) metody, uzyskasz następny komunikat w kolejce. Komunikat zwrócony z funkcji **GetMessage** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Aby zakończyć usuwanie komunikatu z kolejki, należy wywołać [Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) metody.
+Kod odczytuje komunikat z kolejki w dwóch krokach. Po wywołaniu metody [Microsoft. Azure. Storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) zostanie wyświetlony następny komunikat w kolejce. Komunikat zwrócony z funkcji **GetMessage** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Aby zakończyć usuwanie komunikatu z kolejki, należy wywołać metodę [Microsoft. Azure. Storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) .
 
-W poniższym przykładzie możesz zapoznaj się z trzech kolejka komunikatów, a następnie poczekaj 10 sekund (limit czasu niewidoczności). A następnie przeczytaj ponownie trzy komunikaty usuwanie komunikatów po ich przeczytaniu przez wywołanie metody **DeleteMessage**. Jeśli zostanie podjęta próba odczytu kolejki po usunięciu komunikaty, $queueMessage zostaną zwrócone jako wartości NULL.
+W poniższym przykładzie przeczytasz trzy komunikaty w kolejce, a następnie zaczekaj 10 sekund (limit czasu niewglądu). Następnie należy ponownie przeczytać trzy komunikaty, usuwając komunikaty po ich przeczytaniu przez wywołanie **DeleteMessage**. Jeśli spróbujesz odczytać kolejkę po usunięciu wiadomości, $queueMessage zostanie zwrócona jako wartość NULL.
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue
@@ -165,7 +164,7 @@ $queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Resul
 
 ## <a name="delete-a-queue"></a>Usuwanie kolejki
 
-Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj polecenie cmdlet Remove-AzStorageQueue. Poniższy przykład pokazuje, jak można usunąć określonej kolejki używane w tym ćwiczeniu za pomocą polecenia cmdlet Remove-AzStorageQueue.
+Aby usunąć kolejkę i wszystkie znajdujące się w niej komunikaty, wywołaj polecenie cmdlet Remove-AzStorageQueue. Poniższy przykład pokazuje, jak usunąć określoną kolejkę używaną w tym ćwiczeniu przy użyciu polecenia cmdlet Remove-AzStorageQueue.
 
 ```powershell
 # Delete the queue
@@ -174,26 +173,26 @@ Remove-AzStorageQueue –Name $queueName –Context $ctx
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby usunąć wszystkie zasoby utworzone w tym ćwiczeniu, Usuń grupę zasobów. Spowoduje to również usunięcie wszystkich zasobów znajdujących się w grupie. W tym przypadku powoduje usunięcie konta magazynu i samej grupy zasobów.
+Aby usunąć wszystkie zasoby utworzone w tym ćwiczeniu, Usuń grupę zasobów. Spowoduje to również usunięcie wszystkich zasobów znajdujących się w grupie. W tym przypadku usuwa utworzone konto magazynu i grupę zasobów.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule omówiono podstawowe zarządzanie magazynem kolejki przy użyciu programu PowerShell, np.:
+W tym artykule poznasz informacje o zarządzaniu podstawowym magazynem kolejek przy użyciu programu PowerShell, w tym:
 
 > [!div class="checklist"]
 >
 > * Tworzenie kolejki
 > * Pobieranie kolejki
 > * Dodawanie komunikatu
-> * Przeczytaj następny komunikat
-> * Usuwanie wiadomości e-mail
+> * Przeczytaj następną wiadomość
+> * Usuń komunikat
 > * Usuwanie kolejki
 
-### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Polecenia cmdlet programu PowerShell dla programu Microsoft Azure Storage
+### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Polecenia cmdlet Microsoft Azure PowerShell Storage
 
 * [Polecenia cmdlet programu PowerShell usługi Storage](/powershell/module/az.storage)
 

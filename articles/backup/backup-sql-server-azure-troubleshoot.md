@@ -1,18 +1,19 @@
 ---
 title: Rozwiązywanie problemów z kopią zapasową bazy danych SQL Server przy użyciu Azure Backup | Microsoft Docs
 description: Informacje dotyczące rozwiązywania problemów dotyczących tworzenia kopii zapasowych SQL Server baz danych działających na maszynach wirtualnych platformy Azure z Azure Backup.
-author: anuragm
-manager: sivan
+ms.reviewer: anuragm
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
-ms.author: anuragm
-ms.openlocfilehash: c601ecb6997834aa216de094e2809670833dd9cb
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 849065460acda36426f8a594a984ad1cc8590c34
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464914"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688833"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi SQL Server Database przy użyciu Azure Backup
 
@@ -124,7 +125,7 @@ Aby skonfigurować ochronę bazy danych SQL Server na maszynie wirtualnej, nale�
 Przed wyzwoleniem operacji ponownego rejestrowania Sprawdź co najmniej jeden z następujących objawów:
 
 * Wszystkie operacje (takie jak tworzenie kopii zapasowej, przywracanie i konfigurowanie kopii zapasowej) kończą się niepowodzeniem na maszynie wirtualnej z jednym z następujących kodów błędów: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
-* Obszar **stanu kopii** zapasowej dla elementu kopii zapasowej jest nieosiągalny. Wykorzystaj wszystkie inne przyczyny, które mogą spowodować wystąpienie tego samego stanu:
+* Obszar **stanu kopii** zapasowej dla elementu kopii zapasowejjest nieosiągalny. Wykorzystaj wszystkie inne przyczyny, które mogą spowodować wystąpienie tego samego stanu:
 
   * Brak uprawnień do wykonywania operacji związanych z kopiami zapasowymi na maszynie wirtualnej  
   * Zamykanie maszyny wirtualnej, dlatego nie można wykonać kopii zapasowych

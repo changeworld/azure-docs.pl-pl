@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6f6dc7745a47c61cf28a0e860a68af677dae8010
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67869112"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver
@@ -198,7 +198,7 @@ W tej serii artykułów omówiono następujące zagadnienia:
     >
 * Wysoka dostępność oprogramowania SAP w systemie:
   * ![Windows, korzystanie z systemu Windows **Server Failover Clustering (WSFC)** ][Logo_Windows]
-  * ![Linux Linux, korzystanie z **struktury klastra systemu Linux** ][Logo_Linux]
+  * ![Linux Linux, korzystanie z **struktury klastra systemu Linux**][Logo_Linux]
 
 W tych artykułach dowiesz się, jak pomóc chronić składniki single point of failure (SPOF), takie jak usługi SAP Central Services (ASCS/SCS) i systemy zarządzania bazami danych (DBMS). Zapoznaj się również z nadmiarowymi składnikami na platformie Azure, takimi jak serwer aplikacji SAP.
 
@@ -210,7 +210,7 @@ W tych artykułach dowiesz się, jak pomóc chronić składniki single point of 
 
 * [Architektura i scenariusze dotyczące wysokiej dostępności Virtual Machines platformy Azure dla oprogramowania SAP NetWeaver][sap-high-availability-architecture-scenarios]
 
-Artykuł ![dotyczy systemów **Windows** ![ i Linux Linux.][Logo_Windows] ][Logo_Linux]
+Artykuł ![dotyczy systemów **Windows** ![i Linux Linux.][Logo_Windows] ][Logo_Linux]
 
 
 ## <a name="azure-infrastructure-preparation-for-sap-netweaver-high-availability-deployment"></a>Przygotowanie infrastruktury platformy Azure na potrzeby wdrożenia oprogramowania SAP NetWeaver o wysokiej dostępności

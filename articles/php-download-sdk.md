@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: yaya
 ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67873896"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>Pobierz zestaw Azure SDK dla języka PHP
@@ -45,7 +45,7 @@ Instrukcje w tym temacie zakładają, że zainstalowano język [php][install-php
 
 Biblioteki klienckie PHP dla systemu Azure udostępniają interfejs do uzyskiwania dostępu do funkcji platformy Azure, takich jak usługi zarządzania danymi i usługi w chmurze, z dowolnego systemu operacyjnego. Te biblioteki można instalować za pośrednictwem programu Composer.
 
-Aby uzyskać informacje o sposobach korzystania z bibliotek klienta php dla platformy Azure, zobacz [jak używać usługi BLOB Service][blob-service] , [How to Use the Table Service][table-service] i [jak używać]usługi Queue Queue[Service.]
+Aby uzyskać informacje o sposobach korzystania z bibliotek klienta PHP dla platformy Azure, zobacz [jak używać usługi BLOB Service][blob-service], [jak korzystać][table-service] z usługi Table Service oraz [jak korzystać z usługi Queue Service][queue-service].
 
 ### <a name="install-via-composer"></a>Instalowanie przez układacz
 
@@ -77,7 +77,7 @@ Aby uzyskać informacje o sposobach korzystania z Azure PowerShell, zobacz [tema
 
 Interfejs wiersza polecenia platformy Azure to zestaw poleceń umożliwiających wdrażanie usług platformy Azure, takich jak Azure Websites i Azure Virtual Machines, oraz zarządzanie nimi. Aby uzyskać informacje na temat instalowania interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](cli-install-nodejs.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz [Centrum deweloperów języka PHP](https://azure.microsoft.com/develop/php/).
 

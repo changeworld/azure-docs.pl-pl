@@ -1,18 +1,19 @@
 ---
 title: Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
 description: Dowiedz się, jak utworzyć kopię zapasową serwera programu Exchange w celu Azure Backup przy użyciu programu System Center 2012 R2 DPM
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: kasinh
-ms.openlocfilehash: 2d3670e2120e7c203e40d39ba9d82537da877ee5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 0c8975aed79e78b4bb66ce1516b85ceeb78628e8
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466740"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689421"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
 W tym artykule opisano sposób konfigurowania serwera programu System Center 2012 R2 Data Protection Manager (DPM) do tworzenia kopii zapasowej serwera programu Microsoft Exchange w celu Azure Backup.  
@@ -105,7 +106,7 @@ Aby zainstalować agenta ochrony programu DPM na serwerze Exchange, wykonaj nast
 1. Aby odzyskać bazę danych programu Exchange, kliknij pozycję **odzyskiwanie** w Konsola administratora programu DPM.
 2. Znajdź bazę danych programu Exchange, którą chcesz odzyskać.
 3. Z listy rozwijanej *godzina odzyskiwania* wybierz punkt odzyskiwania online.
-4. Kliknij  przycisk Odzyskaj, aby uruchomić **Kreatora odzyskiwania**.
+4. Kliknij przycisk Odzyskaj, aby uruchomić **Kreatora odzyskiwania**.
 
 W przypadku punktów odzyskiwania online istnieje pięć typów odzyskiwania:
 

@@ -1,6 +1,6 @@
 ---
-title: Przestarzałe umiejętności poznawcze — usługa Azure Search
-description: Ta strona zawiera listę wyszukiwania kognitywnego umiejętności, które są traktowane jako przestarzałe i nie będą obsługiwane w najbliższej przyszłości.
+title: Przestarzałe umiejętności poznawcze — Azure Search
+description: Ta strona zawiera listę umiejętności wyszukiwania poznawczego, które są uważane za przestarzałe i nie będzie obsługiwana w najbliższej przyszłości.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a73c7e381cb6001b773251a1812466b3c82373f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd49cdf1bd6a49e8f89f8b805cbaa50276527de3
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65541728"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698877"
 ---
-# <a name="deprecated-cognitive-search-skills"></a>Umiejętności przestarzałe wyszukiwania kognitywnego
+# <a name="deprecated-cognitive-search-skills"></a>Przestarzałe umiejętności wyszukiwania poznawczego
 
-W tym dokumencie opisano umiejętności poznawcze, które są uznawane za przestarzałe. Użyj następującymi wskazówkami dla zawartości:
+W tym dokumencie opisano umiejętności poznawcze, które są uważane za przestarzałe. Skorzystaj z poniższej wskazówki dotyczącej zawartości:
 
-* Nazwa umiejętności: Nazwa umiejętności, które zostaną wycofane, jest on mapowany @odata.type atrybutu.
-* Ostatnie dostępna wersja interfejsu api: Najnowszej wersji platformy Azure, wyszukaj publicznego interfejsu API za pomocą których dokładniejsze zawierającego odpowiednie umiejętności przestarzałe można utworzone/zaktualizowane.
-* Zakończenie pomocy technicznej: Ostatni dzień po upływie którego jest uznawany za odpowiednie umiejętności nieobsługiwany. Utworzone wcześniej dokładniejsze powinny nadal działać, ale zaleca się użytkownicy, aby uniknąć przestarzałe umiejętności.
-* Zalecenia: Ścieżki migracji do przodu do użycia w obsługiwanych umiejętności. Aby postępować zgodnie z zaleceniami, aby kontynuować do otrzymania pomocy technicznej doradza się użytkownicy.
+* Nazwa umiejętności: Nazwa umiejętności, która będzie przestarzała, jest mapowana na @odata.type atrybut.
+* Ostatnia dostępna wersja interfejsu API: Ostatnia wersja publicznego interfejsu API usługi Azure Search, za pomocą którego można tworzyć/aktualizować umiejętności zawierające odpowiednie przestarzałe umiejętności.
+* Koniec wsparcia: Ostatni dzień, po którym odpowiednie kwalifikacje są uznawane za nieobsługiwane. Wcześniej utworzona umiejętności powinna nadal działać, ale użytkownicy są zalecani do migracji od przestarzałej umiejętności.
+* Rekomendacje: Ścieżka migracji do przodu w celu korzystania z obsługiwanej umiejętności. Użytkownicy powinni postępować zgodnie z zaleceniami, aby nadal otrzymywać pomoc techniczną.
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
-### <a name="last-available-api-version"></a>Ostatnie dostępna wersja interfejsu api
+### <a name="last-available-api-version"></a>Ostatnia dostępna wersja interfejsu API
 
-2019-05-06-preview
+2017-11-11-Preview
 
-### <a name="end-of-support"></a>Zakończenie obsługi
+### <a name="end-of-support"></a>Koniec wsparcia
 
-15 lutego 2019 r.
+15 lutego 2019
 
 ### <a name="recommendations"></a>Zalecenia 
 
-Use [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) instead. Zapewnia większość funkcjonalności NamedEntityRecognitionSkill wyższej jakości. Zawiera również bogatsze informacje w jej pola złożone dane wyjściowe.
+Zamiast tego użyj [Microsoft. umiejętności. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) . Zapewnia większość funkcji NamedEntityRecognitionSkill o wyższej jakości. Zawiera także bogatsze informacje w złożonych polach danych wyjściowych.
 
-Aby przeprowadzić migrację do [umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md), trzeba będzie wykonać co najmniej jedną z następujących zmian do definicji umiejętności. Można zaktualizować przy użyciu definicji umiejętności [aktualizacji interfejsu API zestawu umiejętności](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
+Aby przeprowadzić migrację do [umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md), należy wykonać co najmniej jedną z następujących zmian w definicji umiejętności. Definicję umiejętności można zaktualizować za pomocą [interfejsu API aktualizacji zestawu umiejętności](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
 
 > [!NOTE]
-> Obecnie współczynnik ufności jako koncepcja jest nieobsługiwana. `minimumPrecision` Parametr istnieje w `EntityRecognitionSkill` do użytku w przyszłości, jak i dla zapewnienia zgodności.
+> Obecnie wynik zaufania nie jest obsługiwany. Ten `minimumPrecision` parametr istnieje `EntityRecognitionSkill` do użytku w przyszłości i w celu zapewnienia zgodności z poprzednimi wersjami.
 
-1. *(Wymagane)*  Zmiany `@odata.type` z `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` do `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
+1. *(Wymagane)* Zmień wartość `@odata.type` z `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` na `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
 
-2. *(Opcjonalnie)*  Jeśli wykonujesz użytkowania `entities` danych wyjściowych, należy użyć `namedEntities` złożonych kolekcji danych wyjściowych `EntityRecognitionSkill` zamiast tego. Możesz użyć `targetName` w umiejętnościach definicji w celu zamapowania go do adnotacji o nazwie `entities`.
+2. *(Opcjonalnie)* Jeśli używasz `namedEntities` `EntityRecognitionSkill` danych wyjściowych, użyj złożonego danych wyjściowych kolekcji z zamiast tego. `entities` Można użyć `targetName` w definicji umiejętności, aby zamapować ją na adnotację o nazwie `entities`.
 
-3. *(Opcjonalnie)*  , Jeśli nie zostanie jawnie określony `categories`, `EntityRecognitionSkill` może zwrócić inny rodzaj kategorii, oprócz tych, które były obsługiwane przez `NamedEntityRecognitionSkill`. Jeśli to zachowanie jest niepożądany, upewnij się, że jawnie ustawić `categories` parametr `["Person", "Location", "Organization"]`.
+3. *(Opcjonalnie)* Jeśli nie określisz `categories`jawnie `EntityRecognitionSkill` , może zwracać różne typy kategorii poza tymi, `NamedEntityRecognitionSkill`które były obsługiwane przez. Jeśli takie zachowanie jest niepożądane, upewnij się, że `categories` parametr został jawnie ustawiony na. `["Person", "Location", "Organization"]`
 
-    _Definicje migracji_
+    _Przykładowe definicje migracji_
 
-    * Proste migracji
+    * Prosta migracja
 
-        _(Przed) Definicja umiejętności NamedEntityRecognition_
+        _Umożliwić Definicja umiejętności NamedEntityRecognition_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
@@ -76,7 +76,7 @@ Aby przeprowadzić migrację do [umiejętności rozpoznawania jednostek](cogniti
             ]
         }
         ```
-        _(Po) Definicja umiejętności EntityRecognition_
+        _Otrzyma Definicja umiejętności EntityRecognition_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
@@ -97,9 +97,9 @@ Aby przeprowadzić migrację do [umiejętności rozpoznawania jednostek](cogniti
         }
         ```
     
-    * Nieco skomplikowane migracji
+    * Nieznacznie skomplikowana migracja
 
-        _(Przed) Definicja umiejętności NamedEntityRecognition_
+        _Umożliwić Definicja umiejętności NamedEntityRecognition_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
@@ -122,7 +122,7 @@ Aby przeprowadzić migrację do [umiejętności rozpoznawania jednostek](cogniti
             ]
         }
         ```
-        _(Po) Definicja umiejętności EntityRecognition_
+        _Otrzyma Definicja umiejętności EntityRecognition_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
@@ -151,5 +151,5 @@ Aby przeprowadzić migrację do [umiejętności rozpoznawania jednostek](cogniti
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
-+ [Umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md)
++ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Umiejętność rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md)

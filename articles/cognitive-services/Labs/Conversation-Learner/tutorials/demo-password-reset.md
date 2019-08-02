@@ -1,7 +1,7 @@
 ---
-title: Pokaz uczeń konwersacji modelu resetowania haseł — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+title: Demonstracja Conversation Learner model, Resetowanie hasła Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Dowiedz się, jak utworzyć model uczeń konwersacji pokaz.
+description: Dowiedz się, jak utworzyć model Conversation Learner demonstracyjnej.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,75 +10,76 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 15aa3a8346087908cf77f1f68db916cc2c184448
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 51eab34f32a20a86445da0ac44d94a31d6694b40
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389870"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703389"
 ---
 # <a name="demo-password-reset"></a>Pokaz: Resetowanie hasła
-W tym samouczku przedstawiono bot proste pomocy technicznej, pomagające w operacji resetowania hasła, obsługiwane przez uczeń konwersacji. Model bot znajdziesz przepływy nietrywialnymi okna dialogowego i Włącz wielu sekwencji, w tym klasy poza domeną. Zadanie można wykonać bez kodu lub jednostki.
+W tym samouczku przedstawiono prostą pomoc techniczną bot, która może ułatwić resetowanie haseł obsługiwane przez Conversation Learner. Model bot może poznać nieuproszczone przepływy okien dialogowych i sekwencje wielostopniowe, w tym klasy spoza domeny. Zadanie można wykonać bez kodu lub jednostek.
 
 ## <a name="video"></a>Połączenia wideo
 
-[![Pokaz hasła w wersji zapoznawczej](https://aka.ms/cl_Tutorial_v3_DemoPassword_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPassword)
+[![Podgląd hasła demonstracyjnego](https://aka.ms/cl_Tutorial_v3_DemoPassword_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPassword)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga, że bot resetowania hasła jest uruchomiony
+Ten samouczek wymaga uruchomienia bot resetowania hasła
 
     npm run demo-password
 
-### <a name="open-the-demo"></a>Otwórz wersję demonstracyjną
+### <a name="open-the-demo"></a>Otwórz demonstrację
 
-Na liście modelu interfejsu użytkownika sieci web kliknij resetowania hasła pokaz samouczka. 
+Na liście model interfejsu użytkownika sieci Web kliknij pozycję samouczek wersja przykładowa resetowania hasła. 
 
 ### <a name="actions"></a>Akcje
 
-Model zawiera zestaw działania mające na celu pomóc użytkownikom w rozwiązywaniu typowych problemów związanych z hasłami.
+Model zawiera zestaw akcji zaprojektowanych w celu ułatwienia użytkownikom rozwiązywania typowych problemów z hasłem.
 
 ![](../media/tutorial_pw_reset_actions.PNG)
 
-### <a name="training-dialogs"></a>Szkolenie w oknach dialogowych
+### <a name="training-dialogs"></a>Okna dialogowe szkoleń
 
-Model zawiera także kilka Train okien dialogowych, łącznie z niektórych funkcji, które pokazują poza szkolenia klasy domeny. Na przykład użytkownicy, którzy mogą zażądać, takich jak dojazdu. Bot przykładowe wyszkoliła został na kilka dla celów demonstracyjnych i po prostu współpracuje poprzez podanie jego "nie może pomóc korzystając z niego." Lista istniejących okien dialogowych Train znajduje się w folderze "Okien dialogowych Train" w panelu po lewej stronie.
+Model zawiera również kilka okien dialogowych uczenia, w tym niektóre z nich, które pokazują, że wystąpiło szkolenie z klasy domeny. Na przykład użytkownicy, którzy mogą zażądać takich wskazówek. Przykładowa bota została przeszkolony na kilka w celach demonstracyjnych, a po prostu odpowiada. Lista istniejących okien dialogowych uczenia znajduje się w obszarze "okna dialogowe szkolenia" w lewym panelu.
 
 ![](../media/tutorial_pw_reset_entities.PNG)
 
-1. W lewym panelu kliknij przycisk "Okien dialogowych Train", a następnie przycisk "Nowy Train Dialog".
-2. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "i utraty hasła".
-3. Kliknij przycisk "Wynik akcje".
-4. Wybierz odpowiedź "Jest to, że dla konta lokalnego lub konta Microsoft?"
-5. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "lokalne konto."
-6. Kliknij przycisk "Wynik akcje".
-7. Wybierz odpowiedź "wersji systemu Windows masz?"
-8. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "windows xp"
-9. Kliknij przycisk "Wynik akcje".
-10. Kliknij przycisk "+ akcji" przycisk.
-11. W "Botów odpowiedzi...", wpisz "rozwiązania: Jak zresetować hasło w systemie Windows XP..."
+1. Na panelu po lewej stronie kliknij pozycję "szkolenie okna dialogowego", a następnie przycisk "okno dialogowe nowego uczenia".
+2. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "hasło" zostało utracone.
+3. Kliknij przycisk "akcje oceny".
+4. Wybierz odpowiedź "czy jest to konto lokalne czy konto Microsoft?".
+5. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "konto lokalne"
+6. Kliknij przycisk "akcje oceny".
+7. Wybierz odpowiedź ("która wersja systemu Windows jest dostępna?")
+8. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz w "Windows XP"
+9. Kliknij przycisk "akcje oceny".
+10. Kliknij przycisk "+ Akcja".
+11. W odpowiedzi "bot"... " Wpisz "Rozwiązanie: Jak zresetować hasło w systemie Windows XP...
 12. Kliknij przycisk "Utwórz".
 
-### <a name="training-dialogs-for-out-of-domain-scenarios"></a>Okna dialogowe szkolenia w scenariuszach poza domeną
+### <a name="training-dialogs-for-out-of-domain-scenarios"></a>Okna dialogowe szkoleń dla scenariuszy niezwiązanych z domeną
 
-1. Na lewym panelu, kliknij przycisk "Okien dialogowych Train", a następnie istniejących "zabawkami magazynów" Train okna dialogowego.
-2. W panelu rozmowy kliknij wypowiedź "zabawki stores".
-3. W polu "Dodaj alternatywne dane wejściowe..." typu "Wyszukiwanie w sieci web" i naciśnij klawisz należy wprowadzić.
-4. W polu "Dodaj alternatywne dane wejściowe..." typu "rezerwacji lotów" i naciśnij klawisz należy wprowadzić.
+1. Na panelu po lewej stronie kliknij pozycję "szkolenie" okna dialogowego, a następnie w oknie dialogowym uczenie "zabawki sklepy".
+2. W panelu rozmowa kliknij pozycję "zabawki sklepy" wypowiedź.
+3. W polu "Dodaj alternatywne dane wejściowe..." Wpisz ciąg "wyszukiwanie w sieci Web" i naciśnij klawisz ENTER.
+4. W polu "Dodaj alternatywne dane wejściowe..." Wpisz "rezerwacja na samolot" i naciśnij klawisz ENTER.
 5. Kliknij przycisk "Zapisz zmiany".
-6. Kliknij przycisk "Edit Zapisz".
-7. W lewym panelu kliknij przycisk "Okien dialogowych dziennika", a następnie przycisk "Nowy dziennik Dialog".
-8. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "i nie można odnaleźć moje hasło"
-9. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Konto Microsoft"
-10. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Dziękujemy"
-11. Kliknij przycisk "Testowanie gotowe".
-12. Kliknij okno Dziennik "i nie można odnaleźć hasła" z widoku siatki.
-13. W panelu rozmowy kliknij niepoprawnie renderowany "rozwiązania: Jak zresetować hasło do konta Microsoft"odpowiedzi.
-14. Kliknij przycisk "+ akcji" przycisk.
-15. W "Botów odpowiedzi..." pola, wpisz "Zachęcamy"
+6. Kliknij przycisk "Zapisz Edytuj".
+7. Na panelu po lewej stronie kliknij pozycję "dzienniki okien dialogowych", a następnie przycisk "nowe okno dialogowe rejestrowania".
+8. W panelu rozmowy, gdzie mówi "wpisz wiadomość...", wpisz "nie mogę znaleźć mojego hasła"
+9. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "konto Microsoft"
+10. W panelu rozmowa, gdzie mówi "wpisz wiadomość...", wpisz "Dziękujemy"
+11. Kliknij przycisk "gotowe do testowania".
+12. Kliknij okno dialogowe "nie mogę znaleźć mojego hasła" w widoku siatki.
+13. W panelu rozmowa kliknij niepoprawnie renderowane rozwiązanie: Jak zresetować odpowiedź na koncie Microsoft.
+14. Kliknij przycisk "+ Akcja".
+15. W odpowiedzi "bot"... " Wpisz "Jesteś Witaj"
 16. Kliknij przycisk "Utwórz".
-17. Kliknij przycisk "Zapisz jako Train Dialog".
+17. Kliknij przycisk "Zapisz jako okno dialogowe".
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Demonstracja — kolejność pizza](./demo-pizza-order.md)
+> [Demonstracja — zamówienie Pizza](./demo-pizza-order.md)

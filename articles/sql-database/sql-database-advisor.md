@@ -1,6 +1,6 @@
 ---
-title: Zalecenia dotyczące wydajności — usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Usługa Azure SQL Database zawiera zalecenia dotyczące baz danych SQL, które może poprawić wydajność zapytań bieżącego.
+title: Zalecenia dotyczące wydajności — Azure SQL Database | Microsoft Docs
+description: Azure SQL Database zawiera zalecenia dotyczące baz danych SQL, które mogą poprawić bieżącą wydajność zapytań.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -10,92 +10,91 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: d09adbfa7cb2782d710ef3116cbd7bc68ee247b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08def3ac2fd94f01586bc690d867c04758b8856b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61417587"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569518"
 ---
-# <a name="performance-recommendations-for-sql-database"></a>Zalecenia dotyczące wydajności usługi SQL Database
+# <a name="performance-recommendations-for-sql-database"></a>Zalecenia dotyczące wydajności SQL Database
 
-Usługa Azure SQL Database uczy się i dostosowuje się ze swoją aplikacją. Zapewnia dostosowane zalecenia, które pozwalają zmaksymalizować wydajność bazy danych SQL. SQL Database stale ocenia i analizuje historię użycia bazy danych SQL. Zalecenia, które są dostarczane są oparte na wzorcach obciążenia bazy danych jest unikatowa i zwiększyć wydajność.
+Azure SQL Database uczy się i dostosowuje do aplikacji. Zawiera niestandardowe zalecenia, które umożliwiają zmaksymalizowanie wydajności baz danych SQL. SQL Database stale ocenia i analizuje historię użycia baz danych SQL. Podane zalecenia są oparte na wzorcach obciążeń bazy danych unikatowych i zwiększają wydajność.
 
 > [!TIP]
-> [Automatyczne dostrajanie](sql-database-automatic-tuning.md) jest zalecaną metodą automatyczne dostosowywanie niektóre typowe problemy z wydajnością bazy danych. [Szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) jest zalecaną metodą podstawową wydajność usługi Azure SQL Database, na potrzeby w zakresie monitorowania. [Usługa Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) jest zalecaną metodą zaawansowane monitorowanie wydajności bazy danych na dużą skalę, dzięki wbudowanym funkcjom analizy dla Rozwiązywanie problemów z wydajnością automatycznych.
+> [Dostrajanie automatyczne](sql-database-automatic-tuning.md) jest zalecaną metodą automatycznego dostrajania niektórych najbardziej typowych problemów z wydajnością bazy danych. [Szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) to zalecana metoda dla podstawowych potrzeb związanych z monitorowaniem wydajności Azure SQL Database. [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) jest zalecaną metodą zaawansowanego monitorowania wydajności bazy danych na dużą skalę z wbudowaną inteligencją w celu automatycznego rozwiązywania problemów z wydajnością.
 >
 
-## <a name="create-index-recommendations"></a>Utwórz zalecenia dotyczące indeksu
-SQL Database stale monitoruje zapytań, które są uruchomione i identyfikuje indeksy, które może zwiększyć wydajność. Po za mało pewność, że niektóre indeksu brakuje, nowy **Utwórz indeks** zalecenie jest tworzone.
+## <a name="create-index-recommendations"></a>Tworzenie zaleceń dotyczących indeksów
+SQL Database stale monitoruje uruchomione zapytania i identyfikuje indeksy, które mogą poprawić wydajność. Po upływie wystarczającej pewności od braku określonego indeksu zostanie utworzony nowy zalecenie **tworzenia indeksu** .
 
- Usługa Azure SQL Database tworzy ufności poprzez oszacowanie przyrost wydajności, które niosą indeksu w czasie. W zależności od szacowane są bardziej wydajne zalecenia są podzielone na wysoki, średni lub niski. 
+ Azure SQL Database kompilacja jest niedostępna, co szacuje wzrost wydajności, indeks przekroczy czas. W zależności od szacowanego wzmocnienia wydajności zalecenia są klasyfikowane jako wysokie, średnie lub niskie. 
 
-Indeksy, które są tworzone za pomocą zalecenia zawsze są oznaczane jako indeksy utworzony automatycznie. Możesz zobaczyć, której indeksy są tworzone automatycznie, analizując widoku sys.indexes. Utworzony automatycznie indeksów nie blokują polecenia ALTER/zmiany nazwy. 
+Indeksy tworzone przy użyciu rekomendacji są zawsze oflagowane jako indeksy tworzone przez Autostart. Możesz zobaczyć, które indeksy są tworzone w sposób tworzony, przeglądając widok sys. Indexs. Tworzone indeksy nie blokują poleceń ALTER/RENAME. 
 
-Jeśli zostanie podjęta próba porzucić tę kolumnę, która ma indeks utworzony automatycznie nad nim, przekazuje polecenia. Indeks utworzony automatycznie zostało porzucone za pomocą polecenia, a także. Zwykłych indeksów blokować polecenia ALTER/zmiany nazwy kolumn, które są indeksowane.
+W przypadku próby porzucenia kolumny, która ma utworzony przez niego indeks, polecenie kończy się powodzeniem. Tworzony przez siebie indeks został również usunięty przy użyciu polecenia. Indeksy regularne blokują polecenie Zmień/Zmień nazwę dla kolumn, które są indeksowane.
 
-Po zastosowaniu zalecenie dotyczące indeksu Tworzenie usługi Azure SQL Database porównuje wydajność zapytań o punkt odniesienia wydajności. Jeśli nowy indeks zwiększona wydajność, zalecenie jest oznaczony jako pomyślne i jest dostępny raport wpływ. Jeśli indeks nie poprawić wydajność, automatycznie przywrócono. Aby upewnić się, że zalecenia dotyczące poprawy wydajności bazy danych SQL Database przy użyciu tego procesu.
+Po zastosowaniu zalecenia tworzenia indeksu Azure SQL Database porównuje wydajność zapytań z wydajnością bazową. Jeśli nowy indeks poprawił wydajność, zalecenie jest oflagowane jako pomyślne, a raport wpływ jest dostępny. Jeśli indeks nie poprawi wydajności, jest automatycznie przywracany. SQL Database korzysta z tego procesu, aby upewnić się, że zalecenia zwiększają wydajność bazy danych.
 
-Wszelkie **Utwórz indeks** zalecenie obejmuje zasadę wycofywania, która nie zezwala na stosowanie zalecenia, jeśli użycie zasobów bazy danych lub puli jest wysokie. Zasady wycofywania bierze pod uwagę procesora CPU, we/wy danych, we/wy dziennika i dostępna pamięć. 
+Wszelkie zalecenia dotyczące **tworzenia indeksu** mają zasady wycofywania, które nie zezwalają na stosowanie zalecenia, jeśli użycie zasobów bazy danych lub puli jest wysokie. Zasady wycofywania uwzględniają użycie procesora CPU, danych we/wy, operacji we/wy, dziennika i dostępnego magazynu. 
 
-Jeśli procesor CPU, we/wy danych lub we/wy dziennika jest wyższa niż 80% w poprzednim 30 minut, zalecenie dotyczące indeksu Utwórz zostanie wstrzymane. Jeśli dostępna pamięć będzie poniżej 10% po utworzeniu indeksu, zalecenie przechodzi w stan błędu. Jeśli po paru dniach, dostrajania automatycznego nadal uważa, że indeksu będzie korzystne, proces jest uruchamiany ponownie. 
+Jeśli procesor CPU, we/wy danych lub dziennik operacji we/wy są większe niż 80% w ciągu ostatnich 30 minut, zalecenie tworzenia indeksu zostanie odroczone. Jeśli dostępny magazyn będzie niższy niż 10% po utworzeniu indeksu, zalecenie przechodzi do stanu błędu. Jeśli po kilku dniach funkcja automatycznego dostrajania nadal uważa, że indeks będzie korzystny, proces zostanie uruchomiony ponownie. 
 
-Ten proces jest powtarzany, dopóki jest wystarczająco dużo dostępnego magazynu, aby utworzyć indeks lub dopóki indeks nie jest już widoczna jako korzystne.
+Ten proces jest powtarzany do momentu, gdy jest wystarczająco dużo dostępnego miejsca w magazynie, aby można było utworzyć indeks lub dopóki indeks nie będzie już widoczny.
 
-## <a name="drop-index-recommendations"></a>Upuść zalecenia dotyczące indeksu
-Oprócz wykrywania brakujące indeksy, bazy danych SQL w sposób ciągły analizuje wydajność istniejące indeksy. Jeśli indeks nie jest używany, usługi Azure SQL Database zaleca porzuceniem jej. Zaleca się usunięcie indeksu, w dwóch przypadkach:
-* Indeks jest duplikatem innego indeksu (takie same indeksowane i uwzględnione kolumny, schemat partycji i filtrów).
-* Indeks nie został użyty przez dłuższy okres (w dniach 93).
+## <a name="drop-index-recommendations"></a>Porzuć zalecenia dotyczące indeksów
+Oprócz wykrywania brakujących indeksów SQL Database stale analizuje wydajność istniejących indeksów. Jeśli indeks nie jest używany, Azure SQL Database zaleca porzucenie go. Usuwanie indeksu jest zalecane w dwóch przypadkach:
+* Indeks jest duplikatem innego indeksu (ta sama kolumna indeksowana i uwzględniona, schemat partycji i filtry).
+* Indeks nie był używany przez dłuższy czas (93 dni).
 
-Zalecenia dotyczące indeksu listy także przejść za pośrednictwem weryfikacji po implementacji. Jeśli zwiększa wydajność, raport wpływ jest dostępny. W przypadku spadku wydajności, zalecenie zostało wycofane.
+Zalecenia dotyczące usuwania indeksów również przechodzą przez weryfikację po wdrożeniu. W przypadku zwiększenia wydajności jest dostępny raport o wpływie. W przypadku obniżenia wydajności zaleca się przywrócenie zalecenia.
 
 
-## <a name="parameterize-queries-recommendations"></a>Parametryzacja zapytań zalecenia
-*Sparametryzuj zapytania* zalecenia są wyświetlane, gdy masz jeden lub więcej zapytań, które są stale są ponownie kompilowane, ale zakończenia się przy użyciu tego samego planu wykonania zapytania. Ten warunek tworzy możliwość zastosowanie wymuszona parametryzacji. Wymuszone parametryzacji z kolei umożliwia planów zapytań do pamięci podręcznej i ponowne użycie w przyszłości, który zapewnia lepszą wydajność i zmniejsza obciążenie zasobów. 
+## <a name="parameterize-queries-recommendations"></a>Zalecenia dotyczące zapytań Sparametryzuj
+Zalecenia dotyczące *zapytań Sparametryzuj* pojawiają się, gdy istnieje co najmniej jedno zapytanie, które jest stale ponownie kompilowane, ale kończy się na tym samym planie wykonywania zapytań. Ten warunek umożliwia utworzenie możliwości zastosowania wymuszonych parametryzacja. Wymuszone parametryzacja, z kolei, umożliwia zalogowanie się i ponowne użycie planów zapytania w przyszłości, co zwiększa wydajność i zmniejsza wykorzystanie zasobów. 
 
-Każdego zapytania, które jest początkowo wystawiony na podstawie programu SQL Server musi zostać skompilowana do wygenerowania planu wykonywania. Każdy plan wygenerowany jest dodawana do pamięci podręcznej planu. Kolejne wykonania tego samego zapytania można ponownie użyć tego planu z pamięci podręcznej, która eliminuje potrzebę stosowania dodatkowych kompilacji. 
+Każde zapytanie, które zostało wystawione dla SQL Server początkowo musi zostać skompilowane w celu wygenerowania planu wykonania. Każdy wygenerowany plan zostanie dodany do pamięci podręcznej planu. Kolejne wykonania tego samego zapytania mogą ponownie wykorzystać ten plan z pamięci podręcznej, co eliminuje konieczność tworzenia dodatkowej kompilacji. 
 
-Zapytania z wartości zdefiniowanych może prowadzić do zmniejszenie wydajności, ponieważ plan wykonania są ponownie kompilowane, każdym razem, gdy zdefiniowanych wartości są różne. W wielu przypadkach tego samego zapytania z wartościami różnych parametrów wygenerować tej samej plany wykonywania. Te plany jednak nadal oddzielnie zostaną dodane do pamięci podręcznej planu. 
+Zapytania z wartościami nieparametrycznymi mogą prowadzić do narzutu wydajności, ponieważ plan wykonywania jest ponownie kompilowany, za każdym razem, gdy wartości niesparametryzowane są różne. W wielu przypadkach te same zapytania z różnymi wartościami parametrów generują te same plany wykonania. Te plany są jednak nadal osobno dodawane do pamięci podręcznej planu. 
 
-Proces ponownej kompilacji plany wykonywania korzysta z zasobów bazy danych, zwiększa czasu trwania zapytania i przepełnienie pamięci podręcznej planu. Te zdarzenia z kolei powodować plany można wykluczyć z pamięci podręcznej. To zachowanie programu SQL Server może być zmienione przez ustawienie opcji wymuszonego parametryzacji w bazie danych. 
+Proces ponownego kompilowania planów wykonywania używa zasobów bazy danych, wydłużenia czasu trwania zapytania i przepełnienie pamięci podręcznej planu. Z kolei te zdarzenia powodują, że plany mają być wykluczone z pamięci podręcznej. To zachowanie SQL Server można zmienić, ustawiając opcję wymuszone parametryzacja w bazie danych. 
 
-Aby ułatwić szacunkowa ocena wpływu tego zalecenia, możesz są dostarczane z porównanie rzeczywiste użycie procesora CPU i przewidywane użycie procesora CPU (tak, jakby zalecenia zostały zastosowane). To zalecenie ułatwia uzyskanie oszczędności użycia Procesora. Może również pomóc skrócić czas trwania zapytania i obciążenie dla pamięci podręcznej planu, co oznacza więcej planów mogą pozostawać w pamięci podręcznej i można użyć ponownie. Można zastosować zalecenie to szybkie, wybierając **Zastosuj** polecenia. 
+Aby ułatwić oszacowanie wpływu tego zalecenia, należy uzyskać porównanie między rzeczywistym użyciem procesora CPU a przewidywanym użyciem procesora CPU (jak w przypadku zastosowania zalecenia). To zalecenie może pomóc w uzyskaniu oszczędności procesora. Może również pomóc w zmniejszeniu czasu trwania zapytania i nakładu pracy w pamięci podręcznej planu, co oznacza, że więcej planów może pozostać w pamięci podręcznej i być ponownie używane. To zalecenie można szybko zastosować, wybierając polecenie **Zastosuj** . 
 
-Po zastosowaniu tej rekomendacji umożliwia wymuszenie parametryzacji w ciągu kilku minut w bazie danych. Uruchamia proces monitorowania trwa około 24 godziny. Po upływie tego czasu możesz zobaczyć raport weryfikacji. Ten raport przedstawia użycie procesora CPU bazy danych, 24 godziny przed i po zastosowaniu rekomendacji. SQL Database Advisor zawiera mechanizm bezpieczeństwa, który zostanie automatycznie przywrócona zastosowane zalecenie Jeśli wykryto regresji wydajności.
+Po zastosowaniu tego zalecenia włącza wymuszone parametryzacja w ciągu kilku minut w bazie danych. Uruchamia proces monitorowania, który trwa około 24 godzin. Po upływie tego czasu zobaczysz raport z walidacji. Ten raport przedstawia użycie procesora przez bazę danych przez 24 godziny przed zastosowaniem zalecenia i po nim. SQL Database Advisor ma mechanizm bezpieczeństwa, który automatycznie przywraca zastosowane zalecenie w przypadku wykrycia regresji wydajności.
 
-## <a name="fix-schema-issues-recommendations-preview"></a>Usuń schemat problemów zaleceń (wersja zapoznawcza)
+## <a name="fix-schema-issues-recommendations-preview"></a>Rozwiąż zalecenia dotyczące problemów ze schematem (wersja zapoznawcza)
 
 > [!IMPORTANT]
-> Obecnie wycofano "Naprawić problem ze schematem" zalecenia firmy Microsoft. Firma Microsoft zaleca użycie [Intelligent Insights](sql-database-intelligent-insights.md) do monitorowania usługi bazy danych problemy z wydajnością, problemy ze schematem, w których zalecenia "Naprawić problem ze schematem" wcześniej w tym.
+> Firma Microsoft jest obecnie przestarzała zalecenia "Napraw problem ze schematem". Zalecamy używanie [Intelligent Insights](sql-database-intelligent-insights.md) do monitorowania problemów z wydajnością bazy danych, w tym problemów ze schematami, które zostały wcześniej omówione w zaleceniach dotyczących problemu ze schematem.
 > 
 
-**Napraw problemy ze schematem** zalecenia są wyświetlane, gdy usługa SQL Database uwagi dotyczące anomalii w liczbę błędów dotyczące schematu SQL, w które są wykonywane w bazie danych SQL. To zalecenie jest zwykle wyświetlany, gdy bazy danych wystąpi wiele błędów związanych z schematu (Nieprawidłowa nazwa kolumny, nieprawidłowa nazwa obiektu itd.) w ciągu godziny.
+**Usuń zalecenia dotyczące problemów ze schematami** , gdy usługa SQL Database wykryje anomalię w liczbie błędów SQL związanych ze schematami, które są wykonywane w bazie danych SQL. To zalecenie zazwyczaj pojawia się, gdy baza danych napotyka wiele błędów związanych ze schematem (Nieprawidłowa nazwa kolumny, Nieprawidłowa nazwa obiektu itd.) w ciągu godziny.
 
-"Problemy ze schematem" jest klasą błędy składniowe w programie SQL Server. Mogą wystąpić, gdy definicja zapytania SQL, jak i definicja schematu bazy danych nie są wyrównane. Na przykład jedna z kolumn, których oczekuje się przez zapytanie może brakować w tabeli docelowej lub na odwrót. 
+"Problemy ze schematami" to Klasa błędów składni w SQL Server. Są one wykonywane, gdy definicja zapytania SQL i definicja schematu bazy danych nie są wyrównane. Na przykład jedna z kolumn oczekiwanych przez zapytanie może nie być w tabeli docelowej lub na odwrót. 
 
-Zalecenie "Naprawić problem ze schematem" jest wyświetlany, gdy usługa Azure SQL Database uwagi dotyczące anomalii w liczbę błędów dotyczące schematu SQL, w które są wykonywane w bazie danych SQL. W poniższej tabeli przedstawiono błędów, które są powiązane z problemy ze schematem:
+Zalecenie "Rozwiąż problem ze schematem" pojawia się, gdy usługa Azure SQL Database wykryje anomalię w liczbie błędów SQL związanych ze schematami, które są wykonywane w bazie danych SQL. W poniższej tabeli przedstawiono błędy związane z problemami ze schematem:
 
 | Kod błędu SQL | Message |
 | --- | --- |
-| 201 |Procedura lub funkcja " *"oczekuje parametru"* ", który nie został dostarczony. |
+| 201 |Procedura lub funkcja " *" oczekuje parametru "* ", który nie został podany. |
 | 207 |Nieprawidłowa nazwa kolumny "*". |
 | 208 |Nieprawidłowa nazwa obiektu "*". |
-| 213 |Nazwa kolumny lub liczba podanych wartości nie jest zgodna definicję tabeli. |
-| 2812 |Nie można odnaleźć procedury składowanej "*". |
-| 8144 |Procedura lub funkcja * ma określono zbyt wiele argumentów. |
+| 213 |Nazwa kolumny lub liczba podanych wartości nie pasują do definicji tabeli. |
+| 2812 |Nie można znaleźć procedury składowanej "*". |
+| 8144 |Określono za dużo argumentów procedury lub funkcji *. |
 
 ## <a name="custom-applications"></a>Aplikacje niestandardowe
 
-Deweloperzy mogą należy wziąć pod uwagę tworzenia niestandardowych aplikacji przy użyciu zalecenia dotyczące wydajności usługi Azure SQL Database. Wszystkie zalecenia na liście w portalu dla bazy danych jest możliwy za pośrednictwem [Get AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) interfejsu API.
+Deweloperzy mogą rozważyć tworzenie niestandardowych aplikacji przy użyciu zaleceń dotyczących wydajności Azure SQL Database. Do wszystkich zaleceń wymienionych w portalu dla bazy danych można uzyskać dostęp za pomocą interfejsu API [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) .
 
-## <a name="next-steps"></a>Kolejne kroki
-Monitoruj zalecenia i stosować je do uściślić wydajności w dalszym ciągu. Różnych obciążeń bazy danych są dynamiczne i zmiany w sposób ciągły. SQL Database Advisor w dalszym ciągu monitorować i przedstawić zalecenia w zakresie, które może potencjalnie podnieść wydajność bazy danych. 
+## <a name="next-steps"></a>Następne kroki
+Monitoruj swoje rekomendacje i Kontynuuj ich stosowanie w celu udoskonalenia wydajności. Obciążenia baz danych są dynamiczne i zmieniają się w sposób ciągły. SQL Database Advisor kontynuuje monitorowanie i udostępnianie zaleceń, które mogą poprawić wydajność bazy danych. 
 
-* Aby uzyskać więcej informacji na temat dostrajania automatycznego indeksy bazy danych i plany wykonywania zapytań, zobacz [dostrajania automatycznego usługi Azure SQL Database](sql-database-automatic-tuning.md).
-* Aby uzyskać więcej informacji na temat Automatyczne monitorowanie wydajności bazy danych za pomocą automatycznych diagnostyki i analizy głównych przyczyn problemów z wydajnością, zobacz [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md).
-*  Aby uzyskać więcej informacji o sposobie używania zalecenia dotyczące wydajności w witrynie Azure portal, zobacz [zalecenia dotyczące wydajności w witrynie Azure portal](sql-database-advisor-portal.md).
-* Zobacz [szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) poznać i wyświetlić wpływ na wydajność najczęściej używane zapytania.
+* Aby uzyskać więcej informacji na temat automatycznego dostrajania indeksów bazy danych i planów wykonywania zapytań, zobacz [Azure SQL Database dostrajania automatycznego](sql-database-automatic-tuning.md).
+* Aby uzyskać więcej informacji o automatycznym monitorowaniu wydajności bazy danych za pomocą zautomatyzowanej diagnostyki i głównej przyczyny problemów z wydajnością, zobacz [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md).
+*  Aby uzyskać więcej informacji na temat sposobu korzystania z zaleceń dotyczących wydajności w Azure Portal, zobacz [zalecenia dotyczące wydajności w Azure Portal](sql-database-advisor-portal.md).
+* Zobacz [szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) , aby dowiedzieć się więcej o wydajności najważniejszych zapytań.
 
 
