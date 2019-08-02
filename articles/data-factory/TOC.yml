@@ -584,6 +584,12 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Rozwiązywanie problemów z wykonywaniem pakietów w środowisku Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
+- name: Scenariusze
+  items:
+    - name: Migracja danych dla magazynu typy data lake i EDW
+      items:
+        - name: Dlaczego warto wybrać usługę Azure Data Factory
+          href: data-migration-guidance-overview.md
 - name: Dokumentacja
   items:
     - name: .NET

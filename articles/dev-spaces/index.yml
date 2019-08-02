@@ -12,45 +12,46 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
 abstract:
-  description: 'Usługa Azure Dev Spaces umożliwia testowanie i iteracyjne tworzenie całych aplikacji mikrousług dla usługi Azure Kubernetes Service (AKS) bez konieczności replikacji lub testowania zależności. Usługa Azure Dev Spaces zmniejsza obciążenie i złożoność współpracy z zespołem w udostępnionym klastrze usługi Azure Kubernetes Service (AKS) oraz uruchamiania i debugowania kontenerów bezpośrednio w usłudze AKS. Z tych przewodników Szybki start dowiesz się, jak używać usługi Azure Dev Spaces.'
+  description: 'Usługa Azure Dev Spaces umożliwia testowanie i iteracyjne tworzenie całych aplikacji mikrousług przez działanie w ramach usługi Azure Kubernetes Service (AKS) bez konieczności replikacji lub testowania zależności. Usługa Azure Dev Spaces zmniejsza obciążenie i złożoność współpracy z zespołem w udostępnionym klastrze usługi Azure Kubernetes Service (AKS) także dzięki możliwości uruchamiania i debugowania kontenerów bezpośrednio w usłudze AKS. Z tych przewodników Szybki start dowiesz się, jak używać usługi Azure Dev Spaces.'
 sections:
   - title: 5-minutowe przewodniki Szybki start
     items:
       - type: paragraph
-        text: 'Dowiedz się, jak używać usługi Azure Dev Spaces w usłudze AKS:'
+        text: 'Dowiedz się, jak współpracować nad mikrousługami w usłudze AKS za pomocą usługi Azure Dev Spaces:'
       - type: list
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: tworzenie w zespole
+              src: 'https://docs.microsoft.com/media/common/i_configure-teams.svg'
+            text: Tworzenie mikrousług w ramach zespołu
             href: quickstart-team-development.md
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Uruchamianie aplikacji
-            href: quickstart-cli.md
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Uruchamianie aplikacji za pomocą pliku Dockerfile
-            href: quickstart-cli-dockerfile.md
       - type: paragraph
-        text: 'Dowiedz się, jak iteracyjnie tworzyć i debugować bezpośrednio w usłudze AKS za pomocą usługi Azure Dev Spaces:'
+        text: 'Dowiedz się, jak szybko iterować i debugować, aby uzyskać środowisko tworzenia kodu w kręgu wewnętrznym, korzystając z usługi Azure Dev Spaces:'
       - type: list
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-            text: Programowanie przy użyciu platformy Java
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Korzystanie z programu Visual Studio Code i języka Java
             href: quickstart-java.md
           - image:
               src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Programowanie przy użyciu platformy .NET i programu VS Code
+            text: Korzystanie z programu Visual Studio Code i platformy .NET Core
             href: quickstart-netcore.md
           - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Programowanie przy użyciu platformy .NET i programu Visual Studio
-            href: quickstart-netcore-visualstudio.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-            text: Programowanie przy użyciu platformy Node.js
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Korzystanie z programu Visual Studio Code i platformy Node.js
             href: quickstart-nodejs.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: Korzystanie z programu Visual Studio i platformy .NET Core
+            href: quickstart-netcore-visualstudio.md
+      - type: paragraph
+        text: 'Dowiedz się, jak tworzyć mikrousługi dla niemal dowolnego języka, używając interfejsu wiersza polecenia platformy Azure i usługi Azure Dev Spaces:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Opracowywanie przy użyciu interfejsu wiersza polecenia platformy Azure
+            href: quickstart-cli.md

@@ -17,11 +17,11 @@
           href: time-series-insights-update-quickstart.md
 - name: Samouczki
   items:
-    - name: Poznawanie biblioteki klienta języka JavaScript dla usługi Time Series Insights
+    - name: Biblioteka klienta języka JavaScript dla usługi Time Series Insights
       href: tutorial-explore-js-client-lib.md
-    - name: Tworzenie jednostronicowej aplikacji internetowej usługi Time Series Insights
+    - name: Tworzenie jednostronicowej aplikacji internetowej
       href: tutorial-create-tsi-sample-spa.md
-    - name: Ogólnie dostępna usługa Azure Time Series Insights
+    - name: Azure Time Series Insights (ogólna dostępność)
       items:
         - name: Tworzenie środowiska usługi Time Series Insights
           href: tutorial-create-populate-tsi-environment.md

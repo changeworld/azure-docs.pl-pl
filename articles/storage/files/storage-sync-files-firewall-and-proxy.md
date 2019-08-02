@@ -1,26 +1,25 @@
 ---
 title: Azure File Sync lokalne ustawienia zapory i serwera proxy | Microsoft Docs
 description: Azure File Sync konfigurację sieci lokalnej
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 33d5be20682c8341932a2a0021ccda27583775bd
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 69f4c767b9fc1da90db021ffb3eb8704983ca69b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335973"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699304"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Azure File Sync nawiązuje połączenie z serwerami lokalnymi w celu Azure Files, włączając synchronizację z obsługą wielolokacją i funkcjami obsługi warstw w chmurze. W związku z tym serwer lokalny musi być połączony z Internetem. Administrator IT musi zdecydować najlepszą ścieżkę serwera, aby uzyskać dostęp do usług Azure Cloud Services.
 
 W tym artykule zawarto szczegółowe informacje o określonych wymaganiach i opcjach dostępnych w celu pomyślnego i bezpiecznego połączenia Twojego serwera z Azure File Sync.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Azure File Sync pełni rolę usługi aranżacji między serwerem systemu Windows, udziałem plików platformy Azure i kilkoma innymi usługami platformy Azure, aby synchronizować dane zgodnie z opisem w grupie synchronizacji. Aby program Azure File Sync działał prawidłowo, należy skonfigurować serwery do komunikowania się z następującymi usługami platformy Azure:
 
 - Azure Storage
@@ -151,7 +150,7 @@ Listy znajdujące się wcześniej w tym dokumencie zawierają adresy URL, Azure 
 
 Skonfigurowanie ograniczania dostępu do domeny reguły zapory może być miarą w celu zwiększenia bezpieczeństwa. Jeśli są używane te konfiguracje zapory, należy pamiętać, że adresy URL zostaną dodane i nawet mogą ulec zmianie w czasie. Sprawdzaj okresowo ten artykuł.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
 - [Wdrażanie usługi Azure File Sync](storage-sync-files-deployment-guide.md)
 - [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)

@@ -99,16 +99,20 @@
           href: howto-build-iotc-device-bridge.md
     - name: Administracja
       items:
-        - name: Administrowanie aplikacją
+        - name: Zarządzanie aplikacją
           href: howto-administer.md
+        - name: Zarządzanie użytkownikami i rolami
+          href: howto-manage-users-roles.md
+        - name: Wyświetlanie rachunku
+          href: howto-view-bill.md
+        - name: Dostosowywanie interfejsu użytkownika aplikacji
+          href: howto-customize-ui.md
         - name: Przygotowywanie i przekazywanie obrazu
           href: howto-prepare-images.md
         - name: Konfigurowanie pulpitu nawigacyjnego aplikacji
           href: howto-configure-homepage.md
         - name: Korzystanie z kafelków pulpitu nawigacyjnego
           href: howto-use-tiles.md
-        - name: Dostosowywanie interfejsu użytkownika aplikacji
-          href: howto-customize-ui.md
         - name: Używanie szablonów aplikacji
           href: howto-use-app-templates.md
         - name: Zarządzanie z poziomu witryny Azure Portal

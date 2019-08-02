@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mbullwin
 ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67876434"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentacja aplikacji sieci Web w środowisku uruchomieniowym z dołączaniem bez kodu Application Insights
@@ -49,7 +49,7 @@ Poniżej przedstawiono podsumowanie tego, co można uzyskać, korzystając z dan
 | [Bardziej szczegółowe wyjątki](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
 | [Diagnostyka zależności](../../azure-monitor/app/asp-net-dependencies.md) |Na platformie .NET 4.6 +, ale mniej szczegółów |Tak, kompletne szczegóły: kody wyników, tekst polecenia SQL, czasownik HTTP|
 | [Liczniki wydajności sytemu](../../azure-monitor/app/performance-counters.md) |Yes |Tak |
-| [Interfejs API dla telemetrii niestandardowej][api] |Tak |Nie |
+| [Interfejs API dla telemetrii niestandardowej][api] |Yes |Nie |
 | [Integracja dziennika śledzenia](../../azure-monitor/app/asp-net-trace-logs.md) |Yes |Nie |
 | [Widok strony i dane użytkownika](../../azure-monitor/app/javascript.md) |Yes |Nie |
 | Konieczność ponownej kompilacji kodu |Yes | Nie |
@@ -64,7 +64,7 @@ Jeśli aplikacja jest hostowana na serwerze usług IIS, włącz usługę Applica
 2. Jeśli monitor stanu usługi Application Insights nie został jeszcze zainstalowany, [pobierz i uruchom instalatora](#download).
 3. W monitorze stanu wybierz zainstalowaną aplikację internetową lub witrynę internetową, którą chcesz monitorować. Zaloguj się przy użyciu poświadczeń platformy Azure.
 
-    Skonfiguruj zasób, w którym mają być wyświetlane wyniki w portalu usługi Application Insights. (Zazwyczaj najlepiej jest utworzyć nowy zasób. Wybierz istniejący zasób, jeśli masz już or [client monitoring][client] [testy sieci Web][availability] dla tej aplikacji. 
+    Skonfiguruj zasób, w którym mają być wyświetlane wyniki w portalu usługi Application Insights. (Zazwyczaj najlepiej jest utworzyć nowy zasób. Wybierz istniejący zasób, jeśli masz już [testy sieci Web][availability] lub [monitorowanie klienta][client] dla tej aplikacji. 
 
     ![Wybór aplikacji i zasobu.](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 

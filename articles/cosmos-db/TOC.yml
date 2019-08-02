@@ -579,6 +579,9 @@
         - name: Aprowizowanie przepływności w bazie danych
           displayName: 'request units, RUs, RU, shared throughput, database level'
           href: how-to-provision-database-throughput.md
+        - name: Szacowanie liczby jednostek żądania na sekundę za pomocą narzędzia do planowania wydajności rozwiązania Cosmos
+          displayName: 'request units, RUs, RU, capacity'
+          href: estimate-ru-with-capacity-planner.md
         - name: Znajdowanie opłaty za jednostkę żądania
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md

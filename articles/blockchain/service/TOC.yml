@@ -21,7 +21,7 @@
           href: connect-truffle.md
 - name: Samouczki
   items:
-    - name: Wysyłanie transakcji
+    - name: Używanie kontraktów inteligentnych
       href: send-transaction.md
 - name: Pojęcia
   items:

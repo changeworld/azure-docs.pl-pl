@@ -21,6 +21,12 @@
       href: tutorial-process-mailing-list-subscriptions-workflow.md
     - name: Przetwarzanie załączników wiadomości e-mail
       href: tutorial-process-email-attachments-workflow.md
+- name: Przykłady
+  items:
+    - name: Przykłady kodu platformy Azure
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
+    - name: Resource Manager — szablony szybkiego startu
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: Pojęcia
   items:
     - name: Łączniki dla usługi Logic Apps
@@ -349,15 +355,15 @@
           href: /azure/architecture/reference-architectures/enterprise-integration/queues-events
     - name: Łączniki — pełne szczegóły
       href: 'https://docs.microsoft.com/connectors/'
-    - name: Limity i konfiguracja
+    - name: Konfiguracja i limity usługi
       href: logic-apps-limits-and-config.md
-    - name: Pomiary użycia
+    - name: Model cen i mierzenie użycia
       href: logic-apps-pricing.md
     - name: Azure PowerShell
       href: /powershell/module/az.logicapp
     - name: Interfejs API REST
       href: /rest/api/logic/
-    - name: Szablon usługi Resource Manager
+    - name: Dokumentacja szablonu usługi Resource Manager
       href: /azure/templates/microsoft.logic/allversions
     - name: Schemat języka definicji przepływów pracy
       href: logic-apps-workflow-definition-language.md
@@ -378,23 +384,27 @@
           href: logic-apps-track-integration-account-custom-tracking-schema.md
 - name: Zasoby
   items:
+    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+      href: 'https://docs.microsoft.com/learn/browse/?products=azure-logic-apps'
     - name: Harmonogram działania dla usługi Azure Logic Apps
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Historie klientów
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest'
     - name: Forum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelogicapps'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter
       href: 'https://twitter.com/logicappsio'
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
-    - name: Kalkulator cen
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Przekazywanie opinii dotyczących produktów
+      href: 'https://feedback.azure.com/forums/287593-logic-apps'
     - name: Aktualizacje usług
       href: 'https://azure.microsoft.com/updates/?product=logic-apps'
-    - name: Historie klientów
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc'
-    - name: Filmy wideo
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest'

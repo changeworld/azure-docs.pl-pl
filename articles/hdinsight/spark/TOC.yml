@@ -60,6 +60,12 @@
               href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
             - name: Nie można uruchomić serwera Livy
               href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+        - name: Zadanie platformy Apache Spark kończy się niepowodzeniem — NoClassDefFoundError
+          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+        - name: Zadanie platformy Apache Spark kończy się niepowodzeniem — InvalidClassException
+          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
+        - name: Powolne zadania platformy Apache Spark — listStatus
+          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Powolne zadania platformy Apache Spark — kontener magazynu
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: Wyjątek IllegalArgumentException
@@ -72,6 +78,8 @@
           href: ./apache-spark-troubleshoot-blocking-cross-origin.md
         - name: Serializacja Kryo nie powiodła się
           href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+        - name: Dziennik zdarzeń platformy Apache Spark — RequestBodyTooLarge
+          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: Instrukcje
   items:
     - name: Korzystanie z magazynu klastra

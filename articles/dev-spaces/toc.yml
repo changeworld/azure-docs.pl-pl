@@ -9,18 +9,18 @@
       items:
         - name: Programowanie zespołowe
           href: quickstart-team-development.md
-        - name: Uruchamianie aplikacji
+        - name: Debugowanie i iterowanie
+          items:
+            - name: Korzystanie z programu Visual Studio Code i języka Java
+              href: quickstart-java.md
+            - name: Korzystanie z programu Visual Studio Code i platformy .NET Core
+              href: quickstart-netcore.md
+            - name: Korzystanie z programu Visual Studio Code i platformy Node.js
+              href: quickstart-nodejs.md
+            - name: Korzystanie z programu Visual Studio i platformy .NET Core
+              href: quickstart-netcore-visualstudio.md
+        - name: Opracowywanie za pomocą interfejsu wiersza polecenia
           href: quickstart-cli.md
-        - name: Uruchamianie aplikacji za pomocą pliku Dockerfile
-          href: quickstart-cli-dockerfile.md
-        - name: Uruchamianie i debugowanie kodu Java za pomocą programu VS Code
-          href: quickstart-java.md
-        - name: Uruchamianie i debugowanie platformy .NET Core za pomocą programu VS Code
-          href: quickstart-netcore.md
-        - name: Uruchamianie i debugowanie środowiska Node.js za pomocą programu VS Code
-          href: quickstart-nodejs.md
-        - name: Uruchamianie i debugowanie platformy .NET Core za pomocą programu Visual Studio
-          href: quickstart-netcore-visualstudio.md
     - name: Samouczki
       items:
         - name: Java (VS Code i interfejs wiersza polecenia)

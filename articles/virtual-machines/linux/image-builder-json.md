@@ -3,16 +3,16 @@ title: Tworzenie szablonu programu Azure Image Builder (wersja zapoznawcza)
 description: Dowiedz się, jak utworzyć szablon do użycia z programem Azure Image Builder.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/10/2019
+ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 065962614d0b85c4c50f86bef0b610c9b3577e07
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248152"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695405"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Wersja zapoznawcza: Tworzenie szablonu usługi Azure Image Builder 
 
@@ -185,6 +185,19 @@ Ustawia obraz źródłowy jako istniejącą wersję obrazu w galerii obrazów ud
 
 `imageVersionId` Powinien być identyfikator ResourceID wersji obrazu. Użyj [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) , aby wyświetlić listę wersji obrazu.
 
+## <a name="properties-buildtimeoutinminutes"></a>Właściwości: buildTimeoutInMinutes
+Domyślnie Konstruktor obrazów będzie uruchamiany przez 240 minut. Po tym czasie zostanie przekroczony limit czasu i zostanie zatrzymany, niezależnie od tego, czy kompilacja obrazu została ukończona. Jeśli zostanie osiągnięty limit czasu, zobaczysz błąd podobny do tego:
+
+```text
+[ERROR] Failed while waiting for packerizer: Timeout waiting for microservice to
+[ERROR] complete: 'context deadline exceeded'
+```
+
+Jeśli nie określisz wartości buildTimeoutInMinutes lub ustawisz ją na 0, zostanie użyta wartość domyślna. Można zwiększyć lub zmniejszyć wartość, maksymalnie 960mins (16hrs). W przypadku systemu Windows nie zalecamy ustawienia tej opcji poniżej 60 minut. Jeśli okaże się, że upłynie limit czasu, przejrzyj [dzienniki](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs), aby sprawdzić, czy krok dostosowania oczekuje na dane wejściowe użytkownika. 
+
+Jeśli okaże się, że potrzebujesz więcej czasu na ukończenie dostosowanych dostosowań, ustaw na to, czego potrzebujesz, przy niewielkim obciążeniu. Ale nie ustawiaj go zbyt wysokie, ponieważ może być konieczne poczekanie na przekroczenie limitu czasu przed wyświetleniem błędu. 
+
+
 ## <a name="properties-customize"></a>Właściwości: Dostosowywanie
 
 
@@ -194,7 +207,6 @@ W przypadku `customize`korzystania z:
 - Można użyć wielu dostosowań, ale muszą one mieć unikatowy `name`.
 - Dostosowania są wykonywane w kolejności określonej w szablonie.
 - Jeśli jeden z ustawień nie powiedzie się, cały składnik dostosowywania zakończy się niepowodzeniem, a raport zostanie zwrócony z powrotem.
-- Zastanów się, ile czasu będzie wymagała kompilacja obrazu, i Dostosuj Właściwość "buildTimeoutInMinutes", aby zezwolić na ukończenie pracy konstruktora obrazu.
 - Zdecydowanie zaleca się dokładne przetestowanie skryptu przed użyciem go w szablonie. Debugowanie skryptu na własnej maszynie wirtualnej będzie łatwiejsze.
 - Nie należy umieszczać poufnych danych w skryptach. 
 - Lokalizacje skryptów muszą być publicznie dostępne, chyba że używany jest plik [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
@@ -481,7 +493,7 @@ az resource show \
 > [!NOTE]
 > Po utworzeniu dysku VHD skopiuj go do innej lokalizacji tak szybko, jak to możliwe. Wirtualny dysk twardy jest przechowywany na koncie magazynu w tymczasowej grupie zasobów utworzonej podczas przesyłania szablonu obrazu do usługi Azure Image Builder. Usunięcie szablonu obrazu spowoduje utratę wirtualnego dysku twardego. 
  
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Istnieją przykładowe pliki JSON dla różnych scenariuszy w witrynie [GitHub usługi Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder).
  

@@ -221,6 +221,8 @@
           items:
             - name: Aprowizacja użytkowników dla aplikacji z galerii
               href: application-provisioning-config-how-to.md
+            - name: Włączanie automatycznej aprowizacji użytkowników dla aplikacji wielodostępnych
+              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: Konfigurowanie automatycznej aprowizacji użytkowników
               href: configure-automatic-user-provisioning-portal.md
             - name: Dostosowywanie aplikacji atrybutów
