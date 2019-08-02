@@ -5,14 +5,14 @@ author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 24ed03cde967f0fef7abdc4c2df1f8e5d6bdb6ab
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327123"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668343"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Utwórz komercyjne konto witryny Marketplace w centrum partnerskim
 
@@ -52,7 +52,7 @@ Aby można było połączyć domenę służbowej poczty e-mail z firmą z nowym 
 
 #### <a name="agree-to-terms-and-conditions"></a>Wyrażanie zgody na warunki i postanowienia
 
-Musisz wyrazić zgodę na dwa zestawy warunków i postanowień, w tym [Umowa subskrypcyjna dotycząca usług online firmy Microsoft](https://go.microsoft.com/fwlink/?LinkId=870457)i [umowę wydawcy Microsoft Marketplace](https://go.microsoft.com/fwlink/?linkid=843476).
+Musisz wyrazić zgodę na warunki i postanowienia w [Umowie wydawcy Microsoft Marketplace](http://go.microsoft.com/fwlink/?LinkID=699560).
 
 #### <a name="provide-your-publisher-profile"></a>Podaj swój profil wydawcy
 

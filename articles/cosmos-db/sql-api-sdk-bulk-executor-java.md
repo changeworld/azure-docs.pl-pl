@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: zbiorczo wykonawca interfejsu API języka Java, zestaw SDK i zasoby'
-description: Dowiedz się wszystkiego o funkcji wykonawczej zbiorcze, interfejsu API języka Java i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami wykonawca zbiorczego zestawu SDK Java usługi Azure Cosmos DB.
+title: Usługa Azure Cosmos DB Zbiorczy interfejs API języka Java, zasoby & SDK
+description: Poznaj wszystkie informacje o interfejsie API i zestawie SDK środowiska wykonawczego zbiorczego, w tym o datach wydania, datach wycofania i zmianach między każdą wersją Azure Cosmos DB zbiorczego modułu wykonawczego Java SDK.
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: 51499b86aa44b89442f84a345cba6e9093f8c274
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 134a4e42b779c199b7846dabd1f5158c86c5a146
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62129489"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638622"
 ---
-# <a name="java-bulk-executor-library-download-information"></a>Biblioteka przetwarzania zbiorczego języka Java: Pobieranie informacji
+# <a name="java-bulk-executor-library-download-information"></a>Biblioteka wykonawcza zbiorczej Java: Informacje o pobieraniu
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -28,15 +28,15 @@ ms.locfileid: "62129489"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [zbiorcze wykonawcy — .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [zbiorcze wykonawcy — Java](sql-api-sdk-bulk-executor-java.md)
+> * [Wykonawca zbiorczy — .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Moduł wykonawczy zbiorczej — Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-|**Opis**|Biblioteka przetwarzania zbiorczego pozwala aplikacji klienckich wykonywały operacje zbiorcze na kontach usługi Azure Cosmos DB. Biblioteka przetwarzania zbiorczego zawiera elementów BulkImport i BulkUpdate przestrzeni nazw. Elementów BulkImport, który zbiorczo moduł pozyskiwania dokumenty w sposób zoptymalizowany taki sposób, że przepływnością aprowizowaną dla kolekcji jest używane do jego najszerszym. BulkUpdate, który zbiorczo modułu zaktualizować istniejące dane w kontenerach usługi Azure Cosmos DB jako poprawki.|
+|**Opis**|Biblioteka wykonawców zbiorczych umożliwia aplikacjom klienckim wykonywanie operacji zbiorczych w ramach kont Azure Cosmos DB. Biblioteka wykonawców zbiorczych udostępnia przestrzenie nazw BulkImport i BulkUpdate. Moduł BulkImport umożliwia zbiorcze pozyskiwanie dokumentów w sposób zoptymalizowany w taki sposób, że przepływność obsługiwana dla kolekcji jest używana w maksymalnym zakresie. Moduł BulkUpdate można zbiorczo aktualizować istniejące dane w kontenerach Azure Cosmos DB jako poprawki.|
 |**Zestaw SDK do pobrania**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**Biblioteka BulkExecutor w usłudze GitHub**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **Dokumentacja interfejsu API**| [Dokumentacja interfejsu API platformy .NET](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
-|**Wprowadzenie**|[Wprowadzenie do biblioteki przetwarzania zbiorczego zestawu Java SDK](bulk-executor-java.md)|
+|**Wprowadzenie**|[Wprowadzenie do zestawu SDK języka Java dla biblioteki wykonawczej](bulk-executor-java.md)|
 |**Minimalne obsługiwane środowisko uruchomieniowe**|[Zestaw Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 

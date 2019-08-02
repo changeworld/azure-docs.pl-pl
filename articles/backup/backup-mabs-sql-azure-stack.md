@@ -1,18 +1,19 @@
 ---
 title: Tworzenie kopii zapasowych obciążeń SQL Server na Azure Stack
 description: Użyj Azure Backup Server, aby chronić SQL Server obciążenie w Azure Stack.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: adigan
-ms.openlocfilehash: 11d03a9c5cc81b915f48bc66f5a0e5ab034662ed
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 3b116e25635873429dd164288c2764fd76c8f7a7
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465154"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688996"
 ---
 # <a name="back-up-sql-server-on-stack"></a>Tworzenie kopii zapasowej SQL Server na stosie
 Ten artykuł służy do konfigurowania Microsoft Azure Backup Server (serwera usługi MAB) w celu ochrony SQL Server baz danych w Azure Stack.
@@ -132,7 +133,7 @@ Poniższe kroki są wymagane do odzyskania chronionej jednostki (SQL Server Data
 1. Otwórz konsolę zarządzania Azure Backup Server. Przejdź do obszaru roboczego **odzyskiwania** , w którym można zobaczyć chronione serwery. Przeglądaj wymaganą bazę danych (w tym przypadku ReportServer $ MSDPM2012). Wybierz **odzyskiwanie z** czasu określonego jako punkt **online** .
 
     ![Wybierz punkt odzyskiwania](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. Kliknij prawym przyciskiem myszy nazwę bazy danych , a następnie kliknij polecenie Odzyskaj.
+2. Kliknij prawym przyciskiem myszy nazwę bazy danych, a następnie kliknij polecenie Odzyskaj.
 
     ![Odzyskaj z platformy Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
 3. SERWERA usługi MAB wyświetla szczegóły punktu odzyskiwania. Kliknij przycisk **Dalej**. Aby zastąpić bazę danych, wybierz typ odzyskiwania **Odzyskaj do oryginalnego wystąpienia SQL Server**. Kliknij przycisk **Dalej**.
@@ -143,7 +144,7 @@ Poniższe kroki są wymagane do odzyskania chronionej jednostki (SQL Server Data
 
 4. Na ekranie **Określ opcje odzyskiwania** możesz wybrać opcje odzyskiwania, takie jak ograniczanie przepustowości sieci, aby ograniczyć przepustowość używaną przez funkcję odzyskiwania. Kliknij przycisk **Dalej**.
 
-5. Na ekranie **Podsumowanie** widoczne są wszystkie konfiguracje odzyskiwania. Kliknij przycisk Odzyskaj.
+5. Na ekranie **Podsumowanie** widoczne są wszystkie konfiguracje odzyskiwania. Kliknijprzycisk Odzyskaj.
 
     Stan odzyskiwania przedstawia odzyskaną bazę danych. Możesz kliknąć przycisk **Zamknij** , aby zamknąć kreatora i wyświetlić postęp w obszarze roboczym **monitorowanie** .
 

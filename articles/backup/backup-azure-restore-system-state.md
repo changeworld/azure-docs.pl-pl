@@ -1,18 +1,19 @@
 ---
 title: 'Azure Backup: Przywracanie stanu systemu do systemu Windows Server'
 description: Objaśnienie krok po kroku dotyczące przywracania stanu systemu Windows Server z kopii zapasowej na platformie Azure.
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
-ms.author: saurse
-ms.openlocfilehash: 48eb9fce7b9863c84518546270a6566bb0cec711
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 6dc478f569b94450921e56c05b148bae357fef8e
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465647"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689129"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Przywróć stan systemu do systemu Windows Server
 
@@ -46,7 +47,7 @@ Poniższe kroki wyjaśniają, jak wycofać konfigurację systemu Windows Server 
 
 5. W kalendarzu w oknie **Wybieranie woluminu i daty** wybierz punkt odzyskiwania.
 
-    Można przywrócić z dowolnego punktu odzyskiwania w czasie. Pogrubione  daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Po wybraniu daty, jeśli dostępne są wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
+    Można przywrócić z dowolnego punktu odzyskiwania w czasie. Pogrubione daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Po wybraniu daty, jeśli dostępne są wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
 
     ![Wolumin i Data](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -58,7 +59,7 @@ Poniższe kroki wyjaśniają, jak wycofać konfigurację systemu Windows Server 
 
     ![Opcje odzyskiwania](./media/backup-azure-restore-system-state/recover-as-files.png)
 
-8. Sprawdź szczegóły odzyskiwania w okienku **potwierdzenia** i kliknij przycisk Odzyskaj .
+8. Sprawdź szczegóły odzyskiwania w okienku **potwierdzenia** i kliknij przycisk Odzyskaj.
 
    ![Kliknij przycisk Odzyskaj, aby potwierdzić akcję odzyskania](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
@@ -94,7 +95,7 @@ Terminologia użyta w tych krokach obejmuje:
 
     ![Wyszukaj](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. W kalendarzu w okienku **Wybierz wolumin i datę** wybierz punkt odzyskiwania. Można przywrócić z dowolnego punktu odzyskiwania w czasie. Pogrubione  daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Po wybraniu daty, jeśli dostępne są wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
+8. W kalendarzu w okienku **Wybierz wolumin i datę** wybierz punkt odzyskiwania. Można przywrócić z dowolnego punktu odzyskiwania w czasie. Pogrubione daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Po wybraniu daty, jeśli dostępne są wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
 
     ![Wyszukaj elementy](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -156,7 +157,7 @@ Po odzyskaniu stanu systemu jako plików przy użyciu usługi Azure Recovery Ser
 
 10. W polu Lokalizacja odzyskiwania stanu systemu wybierz opcję **Oryginalna lokalizacja**, a następnie kliknij przycisk **dalej**.
 
-11. Przejrzyj szczegóły potwierdzenia, sprawdź ustawienia ponownego rozruchu, a następnie kliknij  przycisk Odzyskaj, aby zastosować przywrócone pliki stanu systemu.
+11. Przejrzyj szczegóły potwierdzenia, sprawdź ustawienia ponownego rozruchu, a następnie kliknij przycisk Odzyskaj, aby zastosować przywrócone pliki stanu systemu.
 
     ![Uruchom pliki stanu systemu przywracania](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 

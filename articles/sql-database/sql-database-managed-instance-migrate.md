@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
-manager: craigg
 ms.date: 11/07/2019
-ms.openlocfilehash: 0fa65454702c67d4b0baeedc7f412ccec402ea46
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 19a7f749ffb1af4f712d23abcd52d91653ad4544
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302307"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567389"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>SQL Server migracji wystąpień do Azure SQL Database wystąpienia zarządzanego
 
@@ -110,7 +109,7 @@ Wystąpienie zarządzane obsługuje następujące opcje migracji bazy danych (ob
 - Azure Database Migration Service — migracja z niezerowym przestojem,
 - Natywne `RESTORE DATABASE FROM URL` — używa natywnych kopii zapasowych z SQL Server i wymaga pewnego przestoju.
 
-### <a name="azure-database-migration-service"></a>Azure Database Migration Service
+### <a name="azure-database-migration-service"></a>Usługa Azure Database Migration
 
 [Azure Database Migration Service (DMS)](../dms/dms-overview.md) to w pełni zarządzana usługa, która umożliwia bezproblemowe Migrowanie z wielu źródeł baz danych do platform danych platformy Azure z minimalnym czasem przestoju. Ta usługa usprawnia zadania wymagane do przeniesienia istniejących stron trzecich i SQL Server baz danych na platformę Azure. Opcje wdrażania w publicznej wersji zapoznawczej obejmują bazy danych Azure SQL Database i SQL Server baz danych na maszynie wirtualnej platformy Azure. DMS jest zalecaną metodą migracji obciążeń przedsiębiorstwa.
 
@@ -197,7 +196,7 @@ Aby zwiększyć bezpieczeństwo, należy rozważyć użycie [uwierzytelniania Az
 
 Oprócz zaawansowanych funkcji zarządzania i zabezpieczeń, wystąpienie zarządzane udostępnia zestaw zaawansowanych narzędzi, które mogą ułatwić [monitorowanie i dostrajanie obciążenia](sql-database-monitor-tune-overview.md). [Usługa Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) umożliwia monitorowanie dużego zestawu wystąpień zarządzanych i scentralizowanie monitorowania dużej liczby wystąpień i baz danych. [Dostrajanie automatyczne](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) w wystąpieniu zarządzanym stale monitoruje wydajność statystyk wykonywania planu SQL i automatycznie naprawia zidentyfikowane problemy z wydajnością.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać informacje o wystąpieniach zarządzanych, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
 - Aby zapoznać się z samouczkiem zawierającym przywracanie z kopii zapasowej, zobacz [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).

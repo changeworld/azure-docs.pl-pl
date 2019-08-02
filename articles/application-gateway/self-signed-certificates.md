@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0b97f2f6df87255e10faaf58c40ea9136354bff6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9966164ec1b6a37538a24d2ef8cb80007e6f6d29
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386306"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698226"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generowanie certyfikatu z podpisem własnym na platformie Azure Application Gateway przy użyciu niestandardowego głównego urzędu certyfikacji
 
@@ -161,7 +161,7 @@ Następująca konfiguracja jest przykładowym [blokiem serwera Nginx](http://ngi
    ![Zaufane certyfikaty główne](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > Przyjęto założenie, że usługa DNS została skonfigurowana w taki sposób, aby wskazywała nazwę serwera sieci Web (w tym przykładzie www.fabrikam.com) na adres IP serwera sieci Web. W przeciwnym razie można edytować [plik hosts](https://answers.microsoft.com/windows/forum/windows_10-other_settings-winpc/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) w celu rozpoznania nazwy.
+   > Przyjęto założenie, że usługa DNS została skonfigurowana w taki sposób, aby wskazywała nazwę serwera sieci Web (w tym przykładzie www.fabrikam.com) na adres IP serwera sieci Web. W przeciwnym razie można edytować [plik hosts](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) w celu rozpoznania nazwy.
 1. Przejdź do witryny sieci Web, a następnie kliknij ikonę kłódki w polu adres przeglądarki, aby zweryfikować informacje o lokacji i certyfikacie.
 
 ## <a name="verify-the-configuration-with-openssl"></a>Weryfikowanie konfiguracji za pomocą OpenSSL

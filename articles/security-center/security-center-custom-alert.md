@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 984bd4d5db210679884655721be0cbcdac8c1705
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8845cb0a91edefa0350558f35488519ec37d064d
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485279"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663584"
 ---
-# <a name="custom-alert-rules-in-azure-security-center-preview"></a>Niestandardowe reguły alertów w usłudze Azure Security Center (wersja zapoznawcza)
-Ten dokument zawiera informacje pomocne podczas konfigurowania niestandardowych reguł alertów w usłudze Azure Security Center.
+# <a name="custom-alert-rules-in-azure-security-center-retired"></a>Niestandardowe reguły alertów w Azure Security Center (wycofane)
+Ten dokument pomaga utworzyć niestandardowe reguły alertów (wersja zapoznawcza) w Azure Security Center.
 
 > [!NOTE]
-> Niestandardowe alerty został wycofany z usługi Security Center. 
+> Alerty niestandardowe zostały wycofane z Azure Security Center 30 czerwca 2019. 
 
-## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Wycofanie alertu na niestandardowe reguły w usłudze Azure Security Center
+## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Wycofanie niestandardowych reguł alertów w Azure Security Center
 
-Środowisko niestandardowe alerty został wycofany na 30 czerwca 2019 r ze względu na wycofanie opiera się na podstawowej infrastruktury. niestandardowe alerty zdefiniowane przed retriement nie działają, a nie są generowane alerty zabezpieczeń, w oparciu o te reguły niestandardowe alerty. Nadal można wyświetlać zapytań Twojej niestandardowe reguły alertów w usłudze Security Center, aby ponownie utworzyć je w alternatywy wymienionych poniżej:
+Środowisko alertów niestandardowych zostało wycofane 30 czerwca 2019 z powodu wycofania podstawowej infrastruktury, na której opiera się. Wszystkie alerty niestandardowe zdefiniowane przed retriementem nie są brane pod uwagę, a alerty zabezpieczeń oparte na tych niestandardowych regułach alertów nie są generowane. Nadal można wyświetlać zapytania dotyczące niestandardowych reguł alertów w Security Center, aby utworzyć je ponownie w ramach alternatyw wymienionych poniżej:
 
-Użytkownicy zalecana jest albo:
-- Włącz [Azure przez wartownika](https://azure.microsoft.com/services/azure-sentinel/) i używać wbudowanych [analytics](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) funkcji ponownego tworzenia własnych reguł alertów
-- Ponownie Utwórz alerty za pomocą alertów dzienników usługi Azure Monitor
+Użytkownicy są informowani:
+- Włącz [platformę Azure](https://azure.microsoft.com/services/azure-sentinel/) i korzystaj z wbudowanych funkcji [analizy](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) , aby ponownie tworzyć reguły alertów
+- Ponowne tworzenie alertów za pomocą alertów dziennika Azure Monitor
                                      
-Aby zachować istniejące alerty i ponownie utworzyć je w platformie Azure przez wartownika, [uruchamianie platformy Azure przez wartownika](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako pierwszy krok wybierz obszar roboczy, w którym przechowywane są Twoje niestandardowe alerty, a następnie wybierz element menu "Analytics", aby skonfigurować reguły niestandardowe alerty. Odwiedź stronę [dokumentacji](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) Aby uzyskać dodatkowe informacje.
+Aby zachować istniejące alerty i utworzyć je ponownie na platformie Azure, [Uruchom wskaźnik na platformie Azure](https://portal.azure.com/#create/Microsoft.ASI/preview). Najpierw wybierz obszar roboczy, w którym są przechowywane niestandardowe alerty, a następnie wybierz element menu "Analiza", aby skonfigurować niestandardowe reguły alertów. Zapoznaj się z [dokumentacją](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) , aby uzyskać dodatkowe informacje.
 
 > [!NOTE]
-> Niestandardowe alerty przy użyciu [wyszukiwania](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) lub [złożenia](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) instrukcji zapytania nie są obsługiwane w przez wartownika platformy Azure. Edytuj te alerty, przed przeprowadzeniem migracji.
+> Alerty niestandardowe przy użyciu zapytań [wyszukiwania](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) lub instrukcji [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) nie są obsługiwane w przypadku platformy Azure. Przed przeprowadzeniem migracji należy edytować te alerty.
 
-Aby ponownie utworzyć alerty za pomocą alertów dzienników usługi Azure Monitor, zobacz: [Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) instrukcje dotyczące sposobu tworzenia alertów dzienników. Aby uzyskać ogólne omówienie alertów dzienników w usłudze Azure Monitor, kliknij [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
+Aby dowiedzieć się, jak ponownie utworzyć alerty przy użyciu alertów dziennika Azure Monitor, zobacz [Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi przy użyciu Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log). Aby zapoznać się z ogólnym omówieniem, zobacz [alerty dzienników w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>Co to są niestandardowe reguły alertów w usłudze Security Center?
 
@@ -49,7 +49,7 @@ Usługa Security Center oferuje zestaw wstępnie zdefiniowanych [alertów zabezp
 Niestandardowe reguły alertów w usłudze Security Center umożliwiają definiowanie nowych alertów zabezpieczeń na podstawie danych, które zostały już zebrane ze środowiska. Możesz tworzyć zapytania, a ich wynik może być używany jako kryteria dla reguły niestandardowej. Reguła będzie wykonywana po dopasowaniu tych kryteriów. Do tworzenia zapytań niestandardowych możesz używać zdarzeń związanych z zabezpieczeniami komputerów, dzienników rozwiązań związanych z zabezpieczeniami partnera lub danych pozyskanych za pomocą interfejsów API.
 
 > [!NOTE]
-> Niestandardowe alerty nie są obsługiwane w usłudze Security Center [funkcji badania](security-center-investigation.md).
+> Alerty niestandardowe nie są obsługiwane w [funkcji badania](security-center-investigation.md)Security Center.
 >
 >
 
@@ -64,16 +64,16 @@ Otwórz pulpit nawigacyjny usługi **Security Center** i wykonaj poniższe kroki
 
 3.  Zostanie wyświetlona strona tworzenia niestandardowej reguły alertu z następującymi opcjami:
 
-    ![Przycisk Utwórz](./media/security-center-custom-alert/security-center-custom-alert-fig2.png)
+    ![Create](./media/security-center-custom-alert/security-center-custom-alert-fig2.png)
 
 4.  W polu **Nazwa** wpisz nazwę reguły niestandardowej.
 5.  Wpisz krótki opis, który odzwierciedla cel tej reguły, w polu **Opis**.
 6.  W polu **Ważność** wybierz poziom ważności (wysoki, średni, niski) zgodnie z potrzebami.
 7.  W polu **Subskrypcja** wybierz subskrypcję, w której ta reguła ma zastosowanie.
-8.  Wybierz obszar roboczy, który chcesz monitorować za pomocą tej reguły w **obszaru roboczego** pola, a następnie w **zapytania wyszukiwania** pola zapytania, które chcesz użyć w celu uzyskania wyników.
+8.  Wybierz obszar roboczy, który ma być monitorowany przy użyciu tej reguły w polu **obszar roboczy** , a następnie w polu **zapytanie wyszukiwania** wykonaj zapytanie, którego chcesz użyć w celu uzyskania wyników.
 
     > [!NOTE]
-    > Musisz mieć uprawnienia zapisu w obszarze roboczym, do przechowywania niestandardowych alertu.
+    > Wymagane jest uprawnienie do zapisu w obszarze roboczym, który został wybrany do przechowywania niestandardowego alertu.
     >
     >
 

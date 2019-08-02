@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: dd4efcd2f1d4cbf497ad1fde6936088513cb5fd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 407aaf15808d1d1420fd1a3804651d29a407d4b3
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759952"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68606671"
 ---
 # <a name="log-analytics-data-security"></a>Bezpieczeństwo danych analizy dziennika
-Ten dokument jest przeznaczony do dostarczają informacje charakterystyczne do usługi Log Analytics, która jest funkcją usługi Azure monitor, aby uzupełnić informacje na [Centrum zaufania systemu Azure](../../security/security-microsoft-trust-center.md).  
+Ten dokument jest przeznaczony do dostarczają informacje charakterystyczne do usługi Log Analytics, która jest funkcją usługi Azure monitor, aby uzupełnić informacje na [Centrum zaufania systemu Azure](../../security/fundamentals/trust-center.md).  
 
 W tym artykule wyjaśniono, jak dane są zbierane, przetwarzane i zabezpieczane przez usługę Log Analytics. Korzystania z agentów, aby nawiązać połączenie z usługą sieci web, użyć programu System Center Operations Manager do zbierania danych operacyjnych lub pobierać dane z usługi Diagnostyka Azure do użycia przez usługę Log Analytics. 
 
@@ -77,7 +77,7 @@ W poniższej tabeli przedstawiono przykłady typów danych:
 | --- | --- |
 | Alerty |Zgłoś alert, nazwa, opis alertu, BaseManagedEntityId, identyfikator problemu, IsMonitorAlert, RuleId, stanu rozpoznania, priorytetu, ważności, kategorii, właściciel, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, RepeatCount TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, |
 | Konfigurowanie |CustomerID, identyfikator agenta, EntityID, ManagedTypeID ManagedTypePropertyID, CurrentValue, ChangeDate |
-| Wydarzenie |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Uwaga:** Podczas zapisywania zdarzenia z polami niestandardowymi w dzienniku zdarzeń Windows, usługi Log Analytics gromadzi informacje o ich. |
+| Wydarzenie |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Uwaga:** Gdy zapisujesz zdarzenia z polami niestandardowymi w dzienniku zdarzeń systemu Windows, Log Analytics je gromadzić. |
 | Metadane |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Address, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Wydajność |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
 | Stan |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
@@ -173,7 +173,7 @@ Zgodnie z powyższym opisem z serwera zarządzania lub agenci połączone bezpo�
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Usługa Log Analytics odbiera i przetwarza dane
 Usługa Log Analytics zapewnia dane przychodzące z zaufanego źródła, sprawdzając poprawność certyfikatów i integralności danych za pomocą uwierzytelniania platformy Azure. Nieprzetworzone dane pierwotne, następnie znajduje się w Centrum zdarzeń platformy Azure w regionie, dane będą przechowywane po pewnym czasie w stanie spoczynku. Typ danych przechowywanych zależy od typów rozwiązań, które zostały zaimportowane, a następnie używane do zbierania danych. Następnie usługi Log Analytics usługi procesy nieprzetworzone dane i pozyskuje go do bazy danych.
 
-Okres przechowywania zebranych danych przechowywanych w bazie danych, zależy od wybranego planu cenowego. Aby uzyskać *bezpłatna* warstwy, zebrane dane są dostępne przez siedem dni. Aby uzyskać *płatnych* warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 730 dni. Dane są przechowywane, szyfrowane, gdy w usłudze Azure storage, aby zapewnić poufność danych, a dane są replikowane w regionie lokalnym przy użyciu magazynu lokalnie nadmiarowego (LRS). Dane z ostatnich dwóch tygodni, również są przechowywane w pamięci podręcznej oparte na dyskach SSD, a ta pamięć podręczna jest zaszyfrowany.
+Okres przechowywania zebranych danych przechowywanych w bazie danych, zależy od wybranego planu cenowego. Aby uzyskać *bezpłatna* warstwy, zebrane dane są dostępne przez siedem dni. Aby uzyskać *płatnych* warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 730 dni. Dane są przechowywane, szyfrowane, gdy w usłudze Azure storage, aby zapewnić poufność danych, a dane są replikowane w regionie lokalnym przy użyciu magazynu lokalnie nadmiarowego (LRS). Ostatnie dwa tygodnie danych również są przechowywane w pamięci podręcznej opartej na dyskach SSD, a ta pamięć podręczna jest zaszyfrowana.
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Usługa Log Analytics umożliwia dostęp do danych
 Aby uzyskać dostęp do obszaru roboczego usługi Log Analytics, możesz zarejestrować się do witryny Azure portal przy użyciu konta organizacji lub konta Microsoft, które wcześniej. Cały ruch między portalem i usługą Log Analytics są wysyłane za pośrednictwem bezpiecznego kanału protokołu HTTPS. Korzystając z portalu, identyfikator sesji jest generowany na kliencie użytkownika (przeglądarka sieci web), a dane są przechowywane w lokalnej pamięci podręcznej, dopóki sesja zostanie zakończona. Gdy zakończone, pamięci podręcznej zostaną usunięte. Pliki cookie po stronie klienta, które nie zawierają danych osobowych, nie są automatycznie usuwane. Pliki cookie dotyczące sesji są oznaczane HTTPOnly i są chronione. Po upływie wstępnie ustaloną bezczynności sesji portalu platformy Azure zostanie zakończony.

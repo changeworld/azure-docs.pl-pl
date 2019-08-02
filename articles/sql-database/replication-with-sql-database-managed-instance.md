@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie replikacji w bazie danych wystąpienia zarządzanego usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Informacje na temat konfigurowania replikacji transakcyjnej w bazie danych wystąpienia zarządzanego usługi Azure SQL Database
+title: Skonfiguruj replikację w bazie danych wystąpienia zarządzanego Azure SQL Database | Microsoft Docs
+description: Dowiedz się więcej o konfigurowaniu replikacji transakcyjnej w Azure SQL Database bazie danych wystąpienia zarządzanego
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -10,84 +10,83 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e4d056aacf8f3969b645747e2303574f3fea3bda
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 96571b55158733f8189ddf87402fb634330ca80d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357122"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570453"
 ---
-# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurowanie replikacji w bazie danych wystąpienia zarządzanego usługi Azure SQL Database
+# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurowanie replikacji w Azure SQL Database bazie danych wystąpienia zarządzanego
 
-Replikacja transakcyjna umożliwia replikowanie danych do wystąpienia zarządzanego usługi Azure SQL Database bazy danych z bazy danych programu SQL Server lub innego wystąpienia bazy danych. 
+Replikacja transakcyjna umożliwia replikowanie danych do bazy danych wystąpienia zarządzanego Azure SQL Database z bazy danych SQL Server lub innej bazy danych wystąpienia. 
 
-Replikacja transakcyjna umożliwia również wypchnąć zmiany wprowadzone w wystąpieniu bazy danych w wystąpieniu zarządzanym usługi Azure SQL Database do:
+Replikację transakcyjną można także użyć do wypychania zmian wprowadzonych w bazie danych wystąpienia w Azure SQL Database wystąpieniu zarządzanym, aby:
 
-- W przypadku bazy danych programu SQL Server.
-- Pojedynczej bazy danych w usłudze Azure SQL Database.
-- Bazy danych w puli w puli elastycznej bazy danych SQL Azure.
+- Baza danych SQL Server.
+- Pojedyncza baza danych w Azure SQL Database.
+- Baza danych w puli w puli elastycznej Azure SQL Database.
  
-Replikacja transakcyjna jest w publicznej wersji zapoznawczej na [wystąpienie zarządzane usługi Azure SQL Database](sql-database-managed-instance.md). Wystąpienie zarządzane umożliwia hostowanie bazy danych wydawcy dystrybutora i subskrybenta. Zobacz [konfiguracji replikacji transakcyjnej](sql-database-managed-instance-transactional-replication.md#common-configurations) dla dostępnymi konfiguracjami.
+Replikacja transakcyjna jest w publicznej wersji zapoznawczej na [Azure SQL Database wystąpienia zarządzanego](sql-database-managed-instance.md). Wystąpienie zarządzane może hostować bazy danych wydawcy, dystrybutora i subskrybentów. Zobacz [konfiguracje replikacji transakcyjnej](sql-database-managed-instance-transactional-replication.md#common-configurations) dla dostępnych konfiguracji.
 
   > [!NOTE]
-  > Ten artykuł jest przeznaczony do przewodnika użytkownika podczas konfigurowania replikacji za pomocą usługi Azure Database wystąpienie zarządzane od końca do końca, począwszy od tworzenia grupy zasobów. Jeśli już zarządzany wystąpieniach wdrożonych, przejdź do sekcji [kroku 4](#4---create-a-publisher-database) do utworzenia bazy danych wydawcy lub [kroku 6](#6---configure-distribution) Jeśli już masz bazę danych wydawcą a transakcyjnym subskrybentem, a gotowe do rozpoczęcia Konfigurowanie replikacji.  
+  > Ten artykuł ma na celu umożliwienie użytkownikowi konfigurowania replikacji z wystąpieniem zarządzanym usługi Azure Database od końca do końca, rozpoczynając od tworzenia grupy zasobów. Jeśli masz już wdrożone wystąpienia zarządzane, przejdź do [kroku 4](#4---create-a-publisher-database) , aby utworzyć bazę danych wydawcy, lub [krok 6](#6---configure-distribution) , jeśli masz już wydawcę i bazę danych subskrybentów i są gotowe do rozpoczęcia konfigurowania replikacji.  
 
 ## <a name="requirements"></a>Wymagania
 
-Konfigurowanie wystąpienia zarządzanego do działania jako wydawca i/lub dystrybutora wymaga:
+Skonfigurowanie wystąpienia zarządzanego do działania w ramach wydawcy i/lub dystrybutora wymaga:
 
-- Czy wystąpienia zarządzanego jest aktualnie nie uczestniczy w relacji replikacji geograficznej.
-- Wystąpienie zarządzane wydawcy znajduje się w tej samej sieci wirtualnej jako dystrybutora i subskrybenta lub [komunikacja równorzędna sieci wirtualnych](../virtual-network/tutorial-connect-virtual-networks-powershell.md) została ustanowiona między sieciami wirtualnymi wszystkich trzech jednostek. 
+- Że wystąpienie zarządzane nie uczestniczy obecnie w relacji replikacji geograficznej.
+- Że wystąpienie zarządzane wydawcy znajduje się w tej samej sieci wirtualnej co dystrybutora i subskrybenta, lub ustanowiono [komunikację równorzędną](../virtual-network/tutorial-connect-virtual-networks-powershell.md) sieci wirtualnych w ramach wszystkich trzech jednostek. 
 - Połączenie korzysta z uwierzytelniania SQL między uczestnikami replikacji.
-- Udział konta usługi Azure Storage dla replikacji katalogu roboczego.
-- Port 445 (ruch wychodzący protokołu TCP) jest otwarty w reguły zabezpieczeń sieciowej grupy zabezpieczeń dla wystąpienia zarządzanego dostępu do udziału plików platformy Azure. 
+- Udział konta usługi Azure Storage dla katalogu roboczego replikacji.
+- Port 445 (ruch wychodzący TCP) jest otwarty w regułach zabezpieczeń sieciowej grupy zabezpieczeń dla wystąpień zarządzanych, aby uzyskać dostęp do udziału plików platformy Azure. 
 
 
  > [!NOTE]
- > Pojedynczych baz danych i baz danych w puli usługi Azure SQL Database może być tylko subskrybentów. 
+ > Pojedynczymi bazami danych i bazami danych w puli w Azure SQL Database mogą być tylko subskrybenci. 
 
 
 ## <a name="features"></a>Funkcje
 
 Obsługuje:
 
-- Replikacji transakcyjnej i migawki różnych lokalnego programu SQL Server i wystąpienia zarządzanego usługi Azure SQL Database.
-- Subskrybenci mogą znajdować się w lokalnych baz danych programu SQL Server, pojedynczej bazy danych/wystąpienia zarządzane przez usługę Azure SQL Database lub bazy danych w puli w elastycznych pulach usługi Azure SQL Database.
-- Jednokierunkowa lub replikację dwukierunkową.
+- Mieszanie transakcji transakcyjnych i migawek dla SQL Server lokalnych i zarządzanych wystąpień w Azure SQL Database.
+- Subskrybenci mogą znajdować się w lokalnych bazach danych SQL Server, pojedynczych bazach danych/wystąpieniach zarządzanych w Azure SQL Database lub w puli baz danych w Azure SQL Database pul elastycznych.
+- Replikacja jednokierunkowa lub dwukierunkowa.
 
-Następujące funkcje nie są obsługiwane w wystąpieniu zarządzanym usługi Azure SQL Database:
+Następujące funkcje nie są obsługiwane w wystąpieniu zarządzanym w Azure SQL Database:
 
 - [Aktualizowalne subskrypcje](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication).
-- [Replikacji dla aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) i [automatyczny tryb failover grupy](sql-database-auto-failover-group.md) nie powinny być używane, jeśli skonfigurowano replikacji transakcyjnej.
+- Jeśli skonfigurowano replikację transakcyjną, nie należy używać grup [aktywnej replikacji](sql-database-active-geo-replication.md) geograficznej i [autotrybu failover](sql-database-auto-failover-group.md) .
  
 ## <a name="1---create-a-resource-group"></a>1 — Tworzenie grupy zasobów
 
-Użyj [witryny Azure portal](https://portal.azure.com) do utworzenia grupy zasobów o nazwie `SQLMI-Repl`.  
+Użyj [Azure Portal](https://portal.azure.com) , aby utworzyć grupę zasobów o nazwie `SQLMI-Repl`.  
 
-## <a name="2---create-managed-instances"></a>2 — Tworzenie wystąpienia zarządzanego
+## <a name="2---create-managed-instances"></a>2 — Tworzenie wystąpień zarządzanych
 
-Użyj [witryny Azure portal](https://portal.azure.com) utworzyć dwa [wystąpienia zarządzane](sql-database-managed-instance-create-tutorial-portal.md) na tej samej sieci wirtualnej i podsieci. Powinno się nazywać na dwa wystąpienia zarządzanego:
+Użyj [Azure Portal](https://portal.azure.com) , aby utworzyć dwa [wystąpienia zarządzane](sql-database-managed-instance-create-tutorial-portal.md) w tej samej sieci wirtualnej i podsieci. Dwa zarządzane wystąpienia powinny mieć nazwę:
 
 - `sql-mi-pub`
 - `sql-mi-sub`
 
-Będzie trzeba będzie również [skonfigurować Maszynę wirtualną platformy Azure do łączenia z](sql-database-managed-instance-configure-vm.md) wystąpienia zarządzane usługi Azure SQL Database. 
+Należy również [skonfigurować maszynę wirtualną platformy Azure do łączenia](sql-database-managed-instance-configure-vm.md) się z wystąpieniami zarządzanymi Azure SQL Database. 
 
 ## <a name="3---create-azure-storage-account"></a>3 — Tworzenie konta usługi Azure Storage
 
-[Tworzenie konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) dla katalogu roboczego, a następnie utwórz [udziału plików](../storage/files/storage-how-to-create-file-share.md) w ramach konta magazynu. 
+[Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) dla katalogu roboczego, a następnie Utwórz [udział plików](../storage/files/storage-how-to-create-file-share.md) na koncie magazynu. 
 
-Skopiuj ścieżkę udziału pliku w formacie: `\\storage-account-name.file.core.windows.net\file-share-name`
+Skopiuj ścieżkę udziału plików w formacie:`\\storage-account-name.file.core.windows.net\file-share-name`
 
-Kopiowanie kluczy dostępu do magazynu w formacie: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Skopiuj klucze dostępu do magazynu w formacie:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
  Aby uzyskać więcej informacji, zobacz temat [View and copy storage access keys](../storage/common/storage-account-manage.md#access-keys) (Wyświetlanie i kopiowanie kluczy dostępu kopiowania). 
 
-## <a name="4---create-a-publisher-database"></a>4 — tworzenie bazy danych wydawcy
+## <a name="4---create-a-publisher-database"></a>4 — Tworzenie bazy danych wydawcy
 
-Połączyć się z Twojego `sql-mi-pub` zarządzane wystąpienia przy użyciu programu SQL Server Management Studio i uruchom następujący kod języka Transact-SQL (T-SQL), aby utworzyć bazę danych wydawcy:
+Połącz się z `sql-mi-pub` wystąpieniem zarządzanym przy użyciu SQL Server Management Studio i uruchom następujący kod języka Transact-SQL (T-SQL), aby utworzyć bazę danych wydawcy:
 
 ```sql
 USE [master]
@@ -121,7 +120,7 @@ GO
 
 ## <a name="5---create-a-subscriber-database"></a>5 — Tworzenie bazy danych subskrybenta
 
-Połączyć się z Twojego `sql-mi-sub` zarządzane wystąpienia przy użyciu programu SQL Server Management Studio i uruchom następujący kod T-SQL, aby utworzyć bazę danych subskrybenta pusta:
+Połącz się z `sql-mi-sub` wystąpieniem zarządzanym przy użyciu SQL Server Management Studio i uruchom następujący kod T-SQL, aby utworzyć pustą bazę danych subskrybenta:
 
 ```sql
 USE [master]
@@ -142,7 +141,7 @@ GO
 
 ## <a name="6---configure-distribution"></a>6 — Konfigurowanie dystrybucji
 
-Połączyć się z Twojego `sql-mi-pub` zarządzane wystąpienia przy użyciu programu SQL Server Management Studio i uruchom poniższy kod T-SQL, aby skonfigurować bazę danych dystrybucji. 
+Połącz się z `sql-mi-pub` wystąpieniem zarządzanym przy użyciu SQL Server Management Studio i uruchom następujący kod T-SQL w celu skonfigurowania bazy danych dystrybucji. 
 
 ```sql
 USE [master]
@@ -153,9 +152,9 @@ EXEC sp_adddistributiondb @database = N'distribution';
 GO
 ```
 
-## <a name="7---configure-publisher-to-use-distributor"></a>7 — Konfigurowanie wydawcy dystrybutora używać 
+## <a name="7---configure-publisher-to-use-distributor"></a>7 — Konfigurowanie wydawcy do korzystania z dystrybutora 
 
-Wystąpienie zarządzane wydawcy `sql-mi-pub`, wykonanie zapytania, aby zmienić [SQLCMD](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) trybie i uruchomieniu następujący kod, aby zarejestrować nowe dystrybutorze z wydawcy. 
+W wystąpieniu `sql-mi-pub`zarządzanym wydawcy Zmień wykonanie zapytania na tryb [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) i uruchom następujący kod w celu zarejestrowania nowego dystrybutora z wydawcą. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -175,11 +174,11 @@ EXEC sp_adddistpublisher
   @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
 
-Ten skrypt umożliwia skonfigurowanie lokalnego wydawcy na wystąpieniu zarządzanym, dodaje połączonego serwera i tworzy zbiór zadań dla programu SQL Server Agent. 
+Ten skrypt konfiguruje lokalnego wydawcę na zarządzanym wystąpieniu, dodaje połączony serwer i tworzy zestaw zadań dla agenta SQL Server. 
 
-## <a name="8---create-publication-and-subscriber"></a>8 — Tworzenie publikacji i subskrybenta
+## <a name="8---create-publication-and-subscriber"></a>8 — Tworzenie publikacji i subskrybentów
 
-Za pomocą [SQLCMD](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) trybu, uruchom następujący skrypt języka T-SQL, aby włączyć replikację dla bazy danych i skonfigurować replikację między wydawcy, dystrybutora i subskrybenta. 
+Korzystając z trybu [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) , uruchom następujący skrypt T-SQL, aby włączyć replikację bazy danych i skonfigurować replikację między wydawcą, dystrybutorem i subskrybentem. 
 
 ```sql
 -- Set variables
@@ -258,9 +257,9 @@ EXEC sp_startpublication_snapshot
 
 ## <a name="9---modify-agent-parameters"></a>9 — modyfikowanie parametrów agenta
 
-Wystąpienie zarządzane usługi Azure SQL Database jest obecnie problemy niektóre wewnętrznej bazy danych z łącznością z agentów replikacji. Chociaż ten problem nie zostanie skierowane opisany, obejście, aby zwiększyć wartość limitu czasu logowania dla agentów replikacji. 
+W Azure SQL Database wystąpieniu zarządzanym obecnie występują pewne problemy z zapleczem dotyczące łączności z agentami replikacji. Podczas rozwiązywania tego problemu należy zastosować obejście, aby zwiększyć wartość limitu czasu logowania dla agentów replikacji. 
 
-Uruchom następujące polecenie języka T-SQL na wydawcy, aby zwiększyć limit czasu logowania: 
+Uruchom następujące polecenie T-SQL na wydawcy, aby zwiększyć limit czasu logowania: 
 
 ```sql
 -- Increase login timeout to 150s
@@ -268,7 +267,7 @@ update msdb..sysjobsteps set command = command + N' -LoginTimeout 150'
 where subsystem in ('Distribution','LogReader','Snapshot') and command not like '%-LoginTimeout %'
 ```
 
-Uruchom następujące polecenie języka T-SQL ponownie, aby ustawić limit czasu logowania powrót do wartości domyślnej, należy należy to zrobić:
+Uruchom ponownie następujące polecenie T-SQL, aby ustawić limit czasu logowania z powrotem do wartości domyślnej. należy to zrobić:
 
 ```sql
 -- Increase login timeout to 30
@@ -276,19 +275,19 @@ update msdb..sysjobsteps set command = command + N' -LoginTimeout 30'
 where subsystem in ('Distribution','LogReader','Snapshot') and command not like '%-LoginTimeout %'
 ```
 
-Ponowne uruchomienie wszystkich trzech agentów, aby zastosować te zmiany. 
+Uruchom ponownie wszystkich trzech agentów, aby zastosować te zmiany. 
 
-## <a name="10---test-replication"></a>10 — Testuj replikację
+## <a name="10---test-replication"></a>10-testowa replikacja
 
-Po skonfigurowaniu replikacji można ją przetestować, wstawianie nowych elementów na wydawcy i obejrzeć zmiany są propagowane do subskrybenta. 
+Po skonfigurowaniu replikacji można testować ją, wstawiając nowe elementy na wydawcy i obserwując zmiany propagowane do subskrybenta. 
 
-Uruchom poniższy fragment kodu języka T-SQL, aby wyświetlić wiersze na subskrybencie:
+Uruchom Poniższy fragment kodu T-SQL, aby wyświetlić wiersze na subskrybencie:
 
 ```sql
 select * from dbo.ReplTest
 ```
 
-Uruchom poniższy fragment kodu języka T-SQL, aby wstawić dodatkowe wiersze na wydawcy, a następnie sprawdź wiersze na subskrybencie. 
+Uruchom Poniższy fragment kodu T-SQL, aby wstawić dodatkowe wiersze na wydawcy, a następnie ponownie sprawdzić wiersze na subskrybencie. 
 
 ```sql
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
@@ -296,7 +295,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby porzucić publikację, uruchom następujące polecenie języka T-SQL:
+Aby usunąć publikację, uruchom następujące polecenie T-SQL:
 
 ```sql
 -- Drops the publication
@@ -305,7 +304,7 @@ EXEC sp_droppublication @publication = N'PublishData'
 GO
 ```
 
-Aby usunąć opcji replikacji z bazy danych, uruchom następujące polecenie języka T-SQL:
+Aby usunąć opcję replikacji z bazy danych, uruchom następujące polecenie T-SQL:
 
 ```sql
 -- Disables publishing of the database
@@ -314,7 +313,7 @@ EXEC sp_removedbreplication
 GO
 ```
 
-Aby wyłączyć publikowanie i dystrybucję, uruchom następujące polecenie języka T-SQL:
+Aby wyłączyć publikowanie i dystrybucję, uruchom następujące polecenie T-SQL:
 
 ```sql
 -- Drops the distributor
@@ -323,7 +322,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Możesz wyczyścić zasoby platformy Azure przez [usuwanie zasobów wystąpienia zarządzanego z grupy zasobów](../azure-resource-manager/manage-resources-portal.md#delete-resources) , a następnie usunięcie grupy zasobów `SQLMI-Repl`. 
+Możesz wyczyścić zasoby platformy Azure, [usuwając zasoby wystąpienia zarządzanego z grupy zasobów](../azure-resource-manager/manage-resources-portal.md#delete-resources) , a następnie usuwając grupę `SQLMI-Repl`zasobów. 
 
    
 ## <a name="see-also"></a>Zobacz też

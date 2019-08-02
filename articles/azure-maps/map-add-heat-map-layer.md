@@ -1,88 +1,88 @@
 ---
-title: Dodaj warstwę mapy cieplnej do usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Jak dodać warstwę mapy cieplnej do mapy Javascript
+title: Dodaj warstwę mapy cieplnej do Azure Maps | Microsoft Docs
+description: Jak dodać warstwę mapy cieplnej do mapy JavaScript
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/2/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 82a6d6b2af7df91696844b09fb7650c547cb6bd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85f184603cdcadce6bf750db5765f32a0735453d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62108638"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639023"
 ---
 # <a name="add-a-heat-map-layer"></a>Dodawanie warstwy mapy cieplnej
 
-Mapy cieplnej, znany także jako punktu mapy gęstości, rodzaj wizualizacji danych używany do reprezentowania gęstość danych przy użyciu zakresu kolorów. One często są używane do wyświetlania danych "aktywne" na mapie i to świetny sposób renderowania dużych punktu zestawów danych.  Na przykład renderowania dziesiątki tysięcy punktów w widoku mapy jako symbole, zajmuje większość obszaru mapy i mogłoby spowodować wiele symboli nakładających się siebie, co utrudnia dużo wgląd w dane. Jednak ten sam zestaw danych jako mapa cieplna wizualizacji ułatwia Zobacz, gdzie dane punktu rozmiarów i gęstości względnej do innych obszarów. Istnieje wiele scenariuszy, w których ciepła mapy, są używane. Poniżej przedstawiono kilka przykładów;
+Mapy cieplne, znane także jako mapy gęstości punktów, są typem wizualizacji danych używanym do reprezentowania gęstości danych przy użyciu różnych kolorów. Są one często używane do wyświetlania danych "gorąca" na mapie i są doskonałym sposobem renderowania zestawów danych z dużymi punktami.  Na przykład, renderowanie dziesiątek tysięcy punktów w widoku mapy jako symboli, obejmuje większość obszaru mapy i spowoduje, że wiele symboli nakłada się na siebie, utrudniając uzyskanie wielu szczegółowych informacji. Wizualizacja tego samego zestawu danych jako mapy cieplnej ułatwia jednak sprawdzenie, gdzie dane punktu są najgęste i względną gęstość do innych obszarów. Istnieje wiele scenariuszy, w których są używane mapy cieplne. Oto kilka przykładów:
 
-* Dane dotyczące temperatury jest często renderowane jako mapa cieplna, ponieważ oferuje przybliżenia dla jakich temperatury między punktami danych dwa.
-* Renderowanie danych czujników szumu jako mapa cieplna nie tylko pokazuje intensywność hałas, gdzie jest czujnik, ale zapewnia także szczegółowe informacje dotyczące rozproszenia na odległości. Poziomu hałasu w jednej lokacji może nie być wysoka, jednak w przypadku nakłada szumu pokrycia obszaru, od kilku czujników, mogą wystąpić wyższe poziomy szumu ten obszar nakładające się, a zatem będą widoczne na mapie cieplnej.
-* Wizualizacja GPS śledzenia, obejmującą szybkości jako mapę ważona wysokość, gdzie intensywność każdego punktu danych jest na podstawie szybkości jest doskonały sposób, aby zobaczyć, gdzie został skracając pojazdu.
+* Dane temperatury są zwykle renderowane jako mapa cieplna, ponieważ zapewnia przybliżenie temperatury między dwoma punktami danych.
+* Renderowanie danych dla czujników szumów jako mapy cieplnej nie tylko pokazuje intensywność szumu, w którym czujnik jest, ale również może zapewnić wgląd w rozproszenie na odległość. Poziom szumu w jednej lokacji może być niewysoki, jednak jeśli obszar pokrycia szumów z wielu czujników nakłada się na siebie, istnieje możliwość, że ten nakładający się obszar może mieć wyższy poziom szumu i dlatego będzie widoczny na mapie cieplnej.
+* Wizualizacja śledzenia GPS, która obejmuje prędkość jako mapę ważonej wysokości, w której intensywność każdego punktu danych zależy od szybkości, jest doskonałym sposobem, aby zobaczyć, gdzie nastąpiło przyspieszenie pojazdu.
 
 > [!TIP]
-> Warstwy mapy cieplnej domyślnie będą renderowane współrzędne wszystkich geometrii w źródle danych. Ograniczenie warstwy tak, aby go tylko renderuje punktu funkcji geometrii `filter` właściwości warstwy, aby `['==', ['geometry-type'], 'Point']` lub `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` aby obejmują również funkcje MultiPoint.
+> Warstwy mapy cieplnej domyślnie będą renderować współrzędne wszystkich geometrie w źródle danych. Aby ograniczyć warstwę tak, aby była renderowana tylko funkcja geometrii punktu, należy `filter` ustawić właściwość warstwy na `['==', ['geometry-type'], 'Point']` lub `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` , jeśli chcesz również uwzględnić funkcje MultiPoint.
 
 ## <a name="add-a-heat-map-layer"></a>Dodawanie warstwy mapy cieplnej
 
-Aby renderować źródła danych z punktów jako mapa cieplna, należy przekazać źródła danych do wystąpienia `HeatMapLayer` klasy i dodać do mapy, jak pokazano poniżej.
+Aby renderować źródło danych punktów jako mapę cieplną, Przekaż źródło danych do wystąpienia `HeatMapLayer` klasy i Dodaj je do mapy, jak pokazano poniżej.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Warstwy mapy cieplnej prosty' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>warstwy mapy cieplnej proste</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='500' scrolling='no' title='Prosta warstwa mapy cieplnej' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zapoznaj się z <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>warstwą prostej mapy ciepła</a> piórem Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-W tym przykładzie każdy punkt ciepła ma promień 10 pikseli na wszystkich poziomy powiększenia. Podczas dodawania warstwy mapy cieplnej do mapy, w tym przykładzie wstawia poniżej warstwy etykiety, aby tworzyć lepsze efekty etykiety są wyraźnie widoczne powyżej mapy cieplnej. Dane w tym przykładzie pochodzi z [agencji usgs jest Pobierany trzęsienie ziemi zagrożenia Program](https://earthquake.usgs.gov/) i stanowi znaczące trzęsienia ziemi, które miały miejsce w ciągu ostatnich 30 dni.
+W tym przykładzie każdy punkt ciepła ma promień 10 pikseli na wszystkich poziomach powiększenia. Podczas dodawania warstwy mapy cieplnej do mapy, ten przykład wstawia ją poniżej warstwy etykiet, aby utworzyć lepszy interfejs użytkownika, ponieważ etykiety są wyraźnie widoczne powyżej mapy cieplnej. Dane w tym przykładzie pochodzą z [programu agencji usgse zagrożenia ziemią](https://earthquake.usgs.gov/) i przedstawiają znaczne trzęsienia, które wystąpiły w ciągu ostatnich 30 dni.
 
 ## <a name="customizing-the-heat-map-layer"></a>Dostosowywanie warstwy mapy cieplnej
 
-Poprzedni przykład dostosowane Mapa cieplna przez ustawienie opcji usługi radius i przezroczystość. Warstwy mapy cieplnej oferuje kilka opcji dostosowywania;
+Poprzedni przykład dostosowany do mapy cieplnej przez ustawienie opcji promień i nieprzezroczystość. Warstwa mapy cieplnej zawiera kilka opcji dostosowywania;
 
-* `radius`: Określa promień piksela, w której ma zostać renderowania każdego punktu danych. Promień można ustawić jako stałą liczbą lub wyrażenie. Za pomocą wyrażenia, istnieje możliwość skalowania usługi radius na podstawie poziomu powiększenia, w wyświetlonym do reprezentowania spójny obszar przestrzennych, na mapie (na przykład radius ogniw w łańcuchu 5).
-* `color`: Określa, jak jest w trybie kolorowym mapy cieplnej. Gradient kolorów jest często używana do mapy cieplnej i można osiągnąć za pomocą `interpolate` wyrażenia. Za pomocą `step` wyrażenie kolorowanie Mapa cieplna dzielony gęstość wizualnie do zakresów, bardziej podobny mapę Styl konturu lub radarowego. Te palety kolorów definiowanie kolorów od wartości minimalnej, wartość maksymalna gęstość. Wartości kolorów dla mapy cieplnej są określone jako wyrażenie na `heatmap-density` wartość. Kolor pod indeksem 0 w wyrażeniu interpolacji lub domyślny kolor wyrażenia krokowego definiuje kolor obszaru w przypadku, gdy nie ma żadnych danych i może służyć do definiowania kolor tła. Wiele chcesz ustawić tę wartość na przezroczyste lub częściowo przezroczysty czarny. Poniżej przedstawiono przykłady wyrażeń kolor;
+* `radius`: Definiuje promień w pikselach, w którym ma być renderowany każdy punkt danych. Promień można ustawić jako stałą liczbę lub jako wyrażenie. Korzystając z wyrażenia, można skalować promień na podstawie poziomu powiększenia, który wydaje się przedstawiać spójny obszar przestrzenny mapy (na przykład promień 5-milowej).
+* `color`: Określa sposób kolorowania mapy cieplnej. Gradient koloru jest często używany w przypadku map cieplnych i można go osiągnąć przy `interpolate` użyciu wyrażenia. `step` Użycie wyrażenia do kolorowania mapy cieplnej dzieli się na wizualizację w coraz większym zakresie, podobnie jak mapa stylu konturu lub wykresu radarowego. Te palety kolorów definiują kolory z minimum do wartości maksymalnej gęstości. Wartości koloru dla map cieplnych są określone jako wyrażenie w `heatmap-density` wartości. Kolor pod indeksem 0 w wyrażeniu interpolacji lub domyślnym kolorem wyrażenia kroku definiuje kolor obszaru, w którym nie ma danych i może służyć do definiowania koloru tła. Wiele woli ustawić tę wartość na przezroczystą lub częściowo przezroczystą czerń. Oto przykłady wyrażeń koloru;
 
-| Interpolation Color Expression | Stepped Color Expression | 
+| Wyrażenie koloru interpolacji | Wyrażenie koloru z możliwością | 
 |--------------------------------|--------------------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;interpolacji,<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["liniowej"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["mapy cieplnej gęstość"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "przezroczyste",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "purpurowy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"krok"<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["mapy cieplnej gęstość"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"przezroczyste"<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "granatowym",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "zieloną",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "żółty",<br/>&nbsp;&nbsp;&nbsp;&nbsp;wartość 0,75 "red"<br/>\] | 
+| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Interpolacja",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["liniowe\]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["mapę cieplną-gęstość"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "przezroczyste",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "purpurowe",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, "#fb00fb",<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, "#00c3ff"<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"krok",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["mapę cieplną-gęstość"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transparent",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "Granat",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "zielony",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "żółty",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, czerwony<br/>\] | 
 
-* `opacity`: Określa, jak nieprzezroczyste lub przezroczyste ciepło jest warstwy mapy.
-* `intensity`: Dotyczy mnożnik wagę każdego punktu danych w celu zwiększenia ogólnej intensywności cieplnej i pomaga zapewnić niewielkie różnice w wagi punktów danych, stają się łatwiejsze do wizualizacji.
-* `weight`: Domyślnie wszystkie punkty danych ma wagę 1, w związku z tym wszystkie punkty danych są liczone tak samo. Opcja wagi działa jako mnożnik i może być ustawiona jako liczbą ani wyrażeniem. Jeśli numer jest ustawiony jako wagi, załóżmy, że 2 byłoby wielokrotność wprowadzania do każdego punktu danych na mapie, dwa razy, dlatego podwojenie gęstość. Ustawienie dla opcji wagi liczbą powoduje wyświetlenie na mapie cieplnej w podobny sposób można za pomocą opcji Intensywność. Jednak jeśli wyrażenie jest używany, waga każdego punktu danych może opierać się na właściwości każdego punktu danych. Wypełnij trzęsienie ziemi dane, na przykład każdy punkt danych reprezentują trzęsienie ziemi. Ważną metryką każdego punktu danych trzęsienie ziemi, to wartość wielkości. Przez cały czas się zdarzyć, trzęsienia ziemi, ale większość ma niski wielkości i nie są jeszcze uznało. Przy użyciu wartości wielkości w wyrażeniu, aby przypisać wagę do poszczególnych danych będą punktu umożliwia bardziej znaczące trzęsienia ziemi lepiej jest reprezentowana w ciągu na mapie cieplnej.
-* Oprócz korzystania z opcji warstwy podstawowej; min/max powiększyć, widoczne i filtrowanie, dostępna jest również `source` opcję, jeśli chcesz zaktualizować źródło danych i `source-layer` opcję, jeśli źródło danych znajduje się źródło kafelka wektora.
+* `opacity`: Określa sposób nieprzezroczystości lub przezroczystości warstwy mapy cieplnej.
+* `intensity`: Stosuje mnożnik do wagi każdego punktu danych, aby zwiększyć całkowite intensywność mapę cieplną i pomaga uprościć nieznaczne różnice w wadze punktów danych.
+* `weight`: Domyślnie wszystkie punkty danych mają wagę 1, więc wszystkie punkty danych są ważone równomiernie. Opcja wagi pełni rolę mnożnika i można ją ustawić jako liczbę lub wyrażenie. Jeśli liczba jest ustawiona jako waga, powiedzmy 2, będzie odpowiednikiem umieszczania każdego punktu danych na mapie dwa razy, a tym samym podwaja gęstość. Ustawienie opcji wagi na liczbę renderuje mapę cieplną w podobny sposób, aby użyć opcji intensywność. Jeśli jednak wyrażenie jest używane, waga każdego punktu danych może opierać się na właściwościach poszczególnych punktów danych. Na przykład należy wziąć pod sobą dane z ziemi, każdy punkt danych reprezentuje trzęsienie ziemi. Ważną metryką każdego punktu danych trzęsienia ziemi jest wartość wielkości. Zdarza się cały czas, ale większość z nich ma niską wartość i jeszcze nie odczuwa. Użycie wartości wielkości w wyrażeniu w celu przypisania wagi do każdego punktu danych umożliwi lepsze przedstawienie bardziej znaczących ziemi w ramach mapy cieplnej.
+* Oprócz opcji warstwy podstawowej; minimalne/maksymalne powiększenie, widoczne i filtru, istnieje również `source` opcja, jeśli chcesz zaktualizować źródło danych i `source-layer` opcję, jeśli źródło danych jest źródłem kafelka wektorowego.
 
-W tym miejscu jest narzędziem do przetestowania opcje warstwy mapy cieplnej różne.
+Oto narzędzie do testowania różnych opcji warstwy mapy cieplnej.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Opcje warstwy mapy cieplnej' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>opcje warstwy mapy cieplnej</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height='700' scrolling='no' title='Opcje warstwy mapy cieplnej' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Opcje warstwy mapy ciepła</a> pióra według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="consistent-zoomable-heat-map"></a>Mapa cieplna którą można powiększać spójne
+## <a name="consistent-zoomable-heat-map"></a>Spójna Mapa cieplna z powiększaniem
 
-Domyślnie promienia punktów danych, renderowane przy użyciu warstwy mapy cieplnej mieć promień stały pikseli na wszystkich poziomach powiększenia. Jak mapy jest powiększony razem agregacji danych i warstwy mapy cieplnej wygląda inaczej. A `zoom` wyrażenia można skalować usługi radius dla każdego poziomu powiększenia w taki sposób, że każdy punkt danych obejmuje ten sam fizyczny obszar mapy. Dzięki temu warstwy mapy cieplnej Szukaj bardziej statycznych i spójne. Każdy poziom powiększenia mapy ma dwa razy wiele pikseli w pionie i w poziomie jako poprzedniego poziomu powiększenia. Skalowanie promień w taki sposób, że podwaja się przy użyciu każdego poziomu powiększenia utworzy mapę cieplną, która będzie spójny na wszystkich poziomach powiększenia. Można to zrobić za pomocą `zoom` przy podstawie 2 `exponential interpolation` wyrażenia, jak pokazano w poniższym przykładzie. Powiększenie mapy, aby zobaczyć, jak mapa cieplna jest skalowana w miarę poziom powiększenia.
+Domyślnie promienie punktów danych renderowane w warstwie mapy cieplnej mają stały promień pikseli dla wszystkich poziomów powiększenia. Ponieważ mapa jest powiększona, zagregowane dane są sumowane i wygląda inaczej niż warstwa mapy cieplnej. `zoom` Wyrażenie może służyć do skalowania promienia dla każdego poziomu powiększenia, tak że każdy punkt danych obejmuje ten sam obszar fizyczny mapy. Spowoduje to, że warstwa mapy cieplnej będzie wyglądać bardziej statyczna i spójna. Każdy poziom powiększenia mapy ma dwa piksele w pionie i poziomie jako poprzedni poziom powiększenia. Skalowanie promienia w taki sposób, że podwaja z każdym poziomem powiększenia, spowoduje utworzenie mapy cieplnej, która będzie wyglądać spójnie na wszystkich poziomach powiększenia. Można to osiągnąć przy użyciu `zoom` wyrażenia z podstawą 2 `exponential interpolation` , jak pokazano w poniższym przykładzie. Powiększ mapę, aby zobaczyć, jak mapa cieplna jest skalowana z poziomem powiększenia.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Mapa cieplna którą można powiększać spójne" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=light&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz pióra <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>Mapa cieplna którą można powiększać spójne</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Spójna Mapa cieplna z powiększaniem" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=light&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobacz spójną <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>mapę termiczną</a> o powiększeniu powiększenia<a href='https://codepen.io/azuremaps'>@azuremaps</a>przez Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Po włączeniu klastrowania w źródle danych punkty, które znajdują się blisko siebie nawzajem są grupowane jako punkt klastra. Liczba punktów każdego klastra może służyć jako wyrażenie wagi Mapa cieplna i znacznie zmniejszyć liczbę punktów, które mają być renderowane. Liczba punktów w klastrze są przechowywane w `point_count` właściwości funkcji punktów, jak pokazano poniżej. 
+> Po włączeniu klastrowania w źródle danych, punkty, które są blisko siebie, są pogrupowane jako punkt klastrowany. Liczba punktów każdego klastra może służyć jako wyrażenie wagi dla mapy cieplnej i znacząco zmniejszyć liczbę punktów, które muszą być renderowane. Liczba punktów klastra jest przechowywana we `point_count` właściwości funkcji Point, jak pokazano poniżej. 
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-> Jeśli klastrowania radius jest tylko kilka z powyższych pikseli będzie można nieco visual różnica renderowania. Większe radius będzie grupować większej liczby punktów w każdym klastrze i poprawić wydajność cieplnej, ale mają lepiej widoczne będą różnice.
+> Jeśli promień klastrowania to tylko kilka pikseli, renderowanie będzie miało niewielkie różnice wizualne. Większy promień będzie grupować więcej punktów w każdym klastrze i zwiększyć wydajność mapę cieplną, ale ma bardziej zauważalne różnice.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule:
+Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
 > [HeatMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
@@ -90,10 +90,10 @@ Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 > [!div class="nextstepaction"]
 > [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
 
-Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły:
+Aby uzyskać więcej przykładów kodu do dodania do usługi Maps, zobacz następujące artykuły:
 
 > [!div class="nextstepaction"]
 > [Dodaj warstwę symboli](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Za pomocą wyrażeń opartych na danych stylu](data-driven-style-expressions-web-sdk.md)
+> [Używanie wyrażeń stylów opartych na danych](data-driven-style-expressions-web-sdk.md)

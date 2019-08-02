@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie — przewodnik dla deweloperów na platformie Azure | Dokumentacja firmy Microsoft
-description: Ten temat zawiera podstawowe informacje dla deweloperów chcących zacząć przy użyciu platformy Microsoft Azure dla swoich potrzeb deweloperskich.
+title: Wprowadzenie — Przewodnik dla deweloperów na platformie Azure | Microsoft Docs
+description: Ten temat zawiera podstawowe informacje dla deweloperów, którzy chcą rozpocząć korzystanie z platformy Microsoft Azure na potrzeby projektowania.
 services: ''
 cloud: ''
 documentationcenter: ''
@@ -14,224 +14,224 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 665eeb60012d5cec08b8a3ad919d7ddfdadc2d23
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64570555"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609581"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
 ## <a name="what-is-azure"></a>Co to jest platforma Azure?
 
-Platforma Azure to kompletnej platformie chmury można hostowanie istniejących aplikacji, Usprawnij tworzenie nowych aplikacji, a nawet udoskonalaj aplikacje w środowisku lokalnym. Azure integruje się usług w chmurze, które trzeba programowanie, testowanie, wdrażanie i zarządzanie aplikacjami — przy wykorzystaniu możliwości efektywność chmury obliczeniowej.
+Azure to kompletna platforma w chmurze, która może obsługiwać istniejące aplikacje, usprawnia rozwój nowych aplikacji, a nawet ulepsza aplikacje lokalne. Platforma Azure integruje się z usługami w chmurze, które są potrzebne do tworzenia, testowania i wdrażania aplikacji oraz zarządzania nimi, przy jednoczesnym wykorzystaniu wydajności chmury obliczeniowej.
 
-Hostowanie aplikacji na platformie Azure, możesz zacząć od małej i łatwo skalować swoją aplikację wraz ze wzrostem natężenia oczekiwanym przez klientów. Platforma Azure oferuje również niezawodności, które ma potrzebne dla aplikacji o wysokiej dostępności, nawet w tym tryb failover między różnymi regionami. [Witryny Azure portal](https://portal.azure.com) umożliwia łatwe zarządzanie wszystkich usług platformy Azure. Usługi można również zarządzać programowo przy użyciu interfejsów API i szablony specyficzne dla usługi.
+Hostowanie aplikacji na platformie Azure pozwala na szybkie i łatwe skalowanie aplikacji wraz ze wzrostem zapotrzebowania klientów. Platforma Azure oferuje również niezawodność, która jest wymagana w przypadku aplikacji o wysokiej dostępności, nawet w tym tryb failover między różnymi regionami. [Azure Portal](https://portal.azure.com) pozwala łatwo zarządzać wszystkimi usługami platformy Azure. Usługami można także zarządzać programowo przy użyciu interfejsów API i szablonów specyficznych dla usługi.
 
-**Kto powinien przeczytać**: Ten przewodnik stanowi wprowadzenie do platformy Azure dla deweloperów aplikacji. Zawiera również wskazówki i kierunku, w którym chcesz zacząć od tworzenia nowych aplikacji na platformie Azure, czy migrujesz istniejące aplikacje na platformie Azure.
+**Kto powinien przeczytać ten element**: Ten przewodnik zawiera wprowadzenie do platformy Azure dla deweloperów aplikacji. Zawiera ona wskazówki i kierunek, które należy zacząć tworzyć nowe aplikacje na platformie Azure lub migrować istniejące aplikacje na platformę Azure.
 
 ## <a name="where-do-i-start"></a>Od czego zacząć?
 
-W przypadku wszystkich usług, które są oferowane na platformie Azure może być czasochłonnym zadaniem, aby ustalić usługi, które muszą być obsługiwane architektury rozwiązania. W tej sekcji przedstawiono usług platformy Azure, które często używany przez deweloperów. Aby uzyskać listę wszystkich usług platformy Azure, zobacz [dokumentacji platformy Azure](../../index.md).
+Dzięki wszystkim usługom oferowanym przez platformę Azure może być zniechęcające zadanie pozwalające ustalić, które usługi są potrzebne do obsługi architektury rozwiązania. W tej sekcji przedstawiono usługi platformy Azure powszechnie używane przez deweloperów. Aby zapoznać się z listą wszystkich usług platformy Azure, zobacz [dokumentację platformy Azure](../../index.md).
 
-Najpierw należy zdecydować się na temat sposobu hostowania aplikacji na platformie Azure. Trzeba zarządzać całą infrastrukturą jako maszynę wirtualną (VM). Można użyć funkcji zarządzania platformy udostępnianych przez platformę Azure? Być może należy platforma bez użycia serwera na hoście tylko wykonanie kodu?
+Najpierw należy zdecydować, jak hostować aplikację na platformie Azure. Czy musisz zarządzać całą infrastrukturą jako maszyną wirtualną. Czy można korzystać z funkcji zarządzania platformą udostępnianych przez platformę Azure? Być może potrzebujesz platformy bezserwerowej tylko do hostowania wykonywania kodu?
 
-Twoja aplikacja potrzebuje magazynu w chmurze, które platforma Azure oferuje kilka opcji. Możesz korzystać z zalet platformy Azure uwierzytelnianie w przedsiębiorstwie. Dostępne są również narzędzia do programowania w chmurze oraz monitorowania i większość usług hostingu oferują integracja metodyki DevOps.
+Twoja aplikacja wymaga magazynu w chmurze, w którym platforma Azure oferuje kilka opcji. Możesz skorzystać z zalet uwierzytelniania przedsiębiorstwa na platformie Azure. Istnieją także narzędzia do programowania i monitorowania w chmurze, a większość usług hostingu oferuje integrację DevOps.
 
-Teraz Spójrzmy na niektóre z określonych usług, które firma Microsoft zaleca badania dla aplikacji.
+Teraz przyjrzyjmy się niektórym konkretnym usługom, które zalecamy badanie aplikacji.
 
 ### <a name="application-hosting"></a>Hosting aplikacji
 
-Platforma Azure udostępnia kilka oparte na chmurze obliczeniowej ofert, aby uruchomić aplikację, dzięki czemu nie trzeba się martwić o szczegóły infrastruktury. Możesz łatwo skalować w górę lub skalować swoje zasoby wzrostem użycia aplikacji.
+Platforma Azure udostępnia kilka opartych na chmurze ofert obliczeniowych do uruchamiania aplikacji, dzięki czemu nie trzeba martwić się o szczegóły infrastruktury. Zasoby można łatwo skalować w górę lub w poziomie w miarę wzrostu użycia aplikacji.
 
-Platforma Azure oferuje usługi, które obsługują do tworzenia aplikacji i potrzeb hostowania. System Azure stanowi infrastrukturę jako usługę (IaaS), aby zapewnić pełną kontrolę nad hosting aplikacji. Platforma Azure jako oferty usługi (PaaS), podaj w pełni zarządzane usługi potrzebne do zwiększanie możliwości aplikacji. Ma wartość true, nawet hosting bezserwerowy na platformie Azure wszystko, co należy zrobić w przypadku pisania kodu.
+Platforma Azure oferuje usługi obsługujące potrzeby projektowania aplikacji i hostingu. Platforma Azure udostępnia infrastrukturę jako usługę (IaaS) w celu zapewnienia pełnej kontroli nad hostingiem aplikacji. Oferty platformy Azure jako usługi (PaaS) zapewniają w pełni zarządzane usługi, które są używane do włączania aplikacji. Istnieje nawet prawdziwe hosting bez serwera na platformie Azure, gdzie wszystko, co trzeba zrobić, napisanie kodu.
 
-![Opcje hostowania aplikacji platformy Azure](./media/azure-developer-guide/azure-developer-hosting-options.png)
+![Opcje hostingu aplikacji platformy Azure](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
 
 #### <a name="azure-app-service"></a>Usługa Azure App Service 
 
-Najszybszą metodą publikowanie projektów sieci web, należy wziąć pod uwagę usługi Azure App Service. App Service umożliwia łatwe rozszerzenie aplikacji sieci web do obsługi klientów mobilnych i publikować łatwo użyte interfejsów API REST. Ta platforma udostępnia uwierzytelniania przy użyciu dostawców sieci społecznościowych, na podstawie ruchu skalowania automatycznego testowania w produkcji i wdrożenia ciągłej i opartych na kontenerach.
+Aby uzyskać najszybszą ścieżkę publikowania projektów opartych na sieci Web, należy rozważyć Azure App Service. App Service ułatwia rozbudowanie aplikacji sieci Web w celu obsługi klientów mobilnych i publikowanie łatwo używanych interfejsów API REST. Ta platforma zapewnia uwierzytelnianie przy użyciu dostawców społecznościowych, automatycznego skalowania opartego na ruchu, testowania w środowisku produkcyjnym oraz wdrożeń ciągłych i opartych na kontenerach.
 
-Można utworzyć aplikacji sieci web, zaplecza aplikacji mobilnych i aplikacji API apps.
+Możesz tworzyć aplikacje sieci Web, zaplecza aplikacji mobilnych i aplikacje interfejsu API.
 
-Ponieważ wszystkie trzema typami aplikacji używają środowiska uruchomieniowego usługi App Service, można hostować witrynę sieci Web, obsługę klientów mobilnych i udostępnianie interfejsów API na platformie Azure wszystko z tego samego projektu lub rozwiązania. Aby dowiedzieć się więcej na temat usługi App Service, zobacz [co to jest Azure Web Apps](../../app-service/overview.md).
+Ponieważ wszystkie trzy typy aplikacji współdzielą środowisko uruchomieniowe App Service, można hostować witrynę sieci Web, obsługiwać klientów mobilnych i udostępniać interfejsy API na platformie Azure, a wszystko to w tym samym projekcie lub w tym samym rozwiązaniu. Aby dowiedzieć się więcej na temat App Service, zobacz [co to jest usługa Azure Web Apps](../../app-service/overview.md).
 
-Usługa App Service został zaprojektowany przy użyciu infrastruktury DevOps na uwadze. Obsługuje ona różne narzędzia wdrożeń publikowania i ciągłej integracji, takich jak GitHub elementów webhook, Jenkins, DevOps platformy Azure, TeamCity i inne.
+App Service został zaprojektowany z myślą o DevOps. Obsługuje on różne narzędzia do publikowania i ciągłej integracji wdrożeń, w tym elementy webhook usługi GitHub, Jenkins, Azure DevOps, TeamCity i inne.
 
-Można migrować istniejące aplikacje do usługi App Service przy użyciu [narzędzia do migracji online](https://www.migratetoazure.net/).
+Istniejące aplikacje można migrować do App Service za pomocą [Narzędzia migracji online](https://www.migratetoazure.net/).
 
-> **Kiedy należy używać**: Usługa App Service podczas migrowania istniejących aplikacji sieci web na platformie Azure i gdy jest potrzebna w pełni zarządzana platforma hostingu dla aplikacji sieci web. Usługi App Service można użyć również, gdy potrzebujesz do obsługi klientów mobilnych lub udostępnianie interfejsów API REST wraz z aplikacją.
+> **Kiedy używać**: Użyj App Service podczas migrowania istniejących aplikacji sieci Web na platformę Azure, gdy potrzebna jest w pełni zarządzana platforma hostingu dla aplikacji sieci Web. Możesz również użyć App Service, gdy musisz obsługiwać klientów mobilnych lub udostępniać interfejsy API REST w aplikacji.
 > 
-> **Rozpoczynanie pracy**: Usługa App Service ułatwia tworzenie i wdrażanie pierwszej [aplikacji sieci web](../../app-service/app-service-web-get-started-dotnet.md), [aplikacji mobilnej](../../app-service-mobile/app-service-mobile-ios-get-started.md), lub [aplikacji interfejsu API](../../app-service/app-service-web-tutorial-rest-api.md).
+> **Rozpocznij**: App Service ułatwia tworzenie i wdrażanie pierwszej [aplikacji sieci Web](../../app-service/app-service-web-get-started-dotnet.md), [aplikacji mobilnej](../../app-service-mobile/app-service-mobile-ios-get-started.md)lub [aplikacji interfejsu API](../../app-service/app-service-web-tutorial-rest-api.md).
 > 
-> **Wypróbuj teraz usługę**: Usługa App Service umożliwia inicjowanie obsługi administracyjnej krótkotrwałe aplikacji, aby wypróbować platformę bez konieczności Załóż konto platformy Azure. Wypróbuj platformę i [utworzyć aplikację usługi Azure App Service](https://tryappservice.azure.com/).
+> **Wypróbuj teraz**: App Service umożliwia obsługę krótkoterminowej aplikacji do wypróbowania platformy bez konieczności rejestrowania się w celu utworzenia konta platformy Azure. Wypróbuj platformę i [Utwórz aplikację Azure App Service](https://tryappservice.azure.com/).
 
 #### <a name="azure-virtual-machines"></a>Usługa Azure Virtual Machines
 
-Jako infrastrukturę jako dostawca usługi (IaaS), platforma Azure umożliwia wdrażanie lub migracji aplikacji wirtualnych z systemem Linux lub Windows. Wraz z usługi Azure Virtual Network Azure Virtual Machines obsługuje wdrażanie systemu Windows lub maszyny wirtualne systemu Linux na platformie Azure. Z maszynami wirtualnymi masz całkowitej kontroli nad konfiguracji komputera. Korzystając z maszyn wirtualnych, jesteś odpowiedzialny za serwera instalacji, konfiguracji, konserwacja i systemu operacyjnego poprawek oprogramowania.
+Jako dostawca infrastruktury jako usługi (IaaS), platforma Azure umożliwia wdrażanie aplikacji lub Migrowanie jej na maszyny wirtualne z systemem Windows lub Linux. Wraz z usługą Azure Virtual Network platforma Azure Virtual Machines obsługuje wdrażanie maszyn wirtualnych z systemem Windows lub Linux na platformie Azure. W przypadku maszyn wirtualnych masz całkowitą kontrolę nad konfiguracją maszyny. W przypadku korzystania z maszyn wirtualnych użytkownik jest odpowiedzialny za wszystkie instalacje oprogramowania serwera, konfigurację, konserwację i poprawki systemu operacyjnego.
 
-Ze względu na poziom kontroli, który maszyn wirtualnych możesz uruchomić szeroką gamę obciążeń serwera na platformie Azure, który nie mieści się w modelu PaaS. Te obciążenia obejmują serwery baz danych, usługi Active Directory systemu Windows Server i Microsoft SharePoint. Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą maszyn wirtualnych dla dowolnego [Linux](/azure/virtual-machines/linux/) lub [Windows](/azure/virtual-machines/windows/).
+Ze względu na poziom kontroli z maszynami wirtualnymi można uruchamiać szeroką gamę obciążeń serwera na platformie Azure, które nie mieszczą się w modelu PaaS. Te obciążenia obejmują serwery baz danych, Active Directory systemu Windows Server i program Microsoft SharePoint. Aby uzyskać więcej informacji, zobacz dokumentację Virtual Machines dla systemu [Linux](/azure/virtual-machines/linux/) lub [Windows](/azure/virtual-machines/windows/).
 
-> **Kiedy należy używać**: Użyj maszyn wirtualnych, gdy mają pełną kontrolę nad infrastruktury aplikacji lub migrować obciążenia aplikacji lokalnych na platformę Azure bez konieczności wprowadzania zmian.
+> **Kiedy używać**: Użyj Virtual Machines, gdy chcesz mieć pełną kontrolę nad infrastrukturą aplikacji lub przeprowadzić migrację lokalnych obciążeń aplikacji na platformę Azure bez konieczności wprowadzania zmian.
 > 
-> **Rozpoczynanie pracy**: Tworzenie [maszyny Wirtualnej systemu Linux](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) lub [Windows VM](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) w witrynie Azure portal.
+> **Rozpocznij**: Tworzenie [maszyny wirtualnej systemu Linux](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) lub [maszyny wirtualnej z systemem Windows](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) na podstawie Azure Portal.
 
-#### <a name="azure-functions-serverless"></a>Usługa Azure Functions (bez użycia serwera)
+#### <a name="azure-functions-serverless"></a>Azure Functions (bezserwerowo)
 
-A nie o kompilowania i zarządzanie całą aplikację ani infrastrukturę do uruchomienia kodu. Co zrobić, jeśli można po prostu pisanie kodu i jest uruchamiany w odpowiedzi na zdarzenia lub zgodnie z harmonogramem?  [Usługa Azure Functions](../../azure-functions/functions-overview.md) jest a "bezserwerowych"-oferty styl, który pozwala napisać tylko kod należy. Za pomocą funkcji wykonywanie kodu jest wyzwalana przez żądania HTTP, elementy webhook, zdarzeń usługi w chmurze lub zgodnie z harmonogramem. Możesz programować w języku programowania wyboru, takich jak C\#, F\#, Node.js, Python lub PHP. Za pomocą opartej na użyciu rozliczeń, płacisz tylko za czas, który wykonuje kodu i platformy Azure jest skalowana zgodnie z potrzebami.
+Nie trzeba martwić się o tworzenie całej aplikacji lub infrastruktury do uruchamiania kodu i zarządzania nią. Co zrobić, jeśli udało Ci się napisać kod i uruchomić go w odpowiedzi na zdarzenia lub zgodnie z harmonogramem?  [Azure Functions](../../azure-functions/functions-overview.md) to oferta w stylu "bezserwerowa", która pozwala pisać tylko kod, którego potrzebujesz. Dzięki funkcjom wykonywanie kodu jest wyzwalane przez żądania HTTP, elementy webhook, zdarzenia usługi w chmurze lub zgodnie z harmonogramem. Możesz zakodować w wybranym języku programistycznym, takim jak C\#, F\#, Node. js, Python lub php. Korzystając z rozliczeń, płacisz tylko za czas wykonywania kodu, a platforma Azure skaluje się w razie potrzeby.
 
-> **Kiedy należy używać**: Użyj usługi Azure Functions, gdy masz kod, który jest wyzwalany przez inne usługi platformy Azure przez zdarzenia oparte na sieci web lub zgodnie z harmonogramem. Umożliwia także funkcje Jeśli nie potrzebujesz obciążenie kompletnego projektu hostowanej lub gdy chcesz zapłacić za czas, jaki kod jest wykonywany. Aby dowiedzieć się więcej, zobacz [Azure Functions — omówienie](../../azure-functions/functions-overview.md).
+> **Kiedy używać**: Użyj Azure Functions, gdy masz kod, który jest wyzwalany przez inne usługi platformy Azure, za pośrednictwem zdarzeń opartych na sieci Web lub zgodnie z harmonogramem. Możesz również użyć funkcji, jeśli nie potrzebujesz nakładu pracy kompletnego hostowanego projektu lub jeśli chcesz zanieść tylko za czas działania kodu. Aby dowiedzieć się więcej, zobacz [Azure Functions Omówienie](../../azure-functions/functions-overview.md).
 > 
-> **Rozpoczynanie pracy**: Postępuj zgodnie z samouczkiem Szybki Start funkcje do [tworzenie pierwszej funkcji](../../azure-functions/functions-create-first-azure-function.md) z poziomu portalu.
+> **Rozpocznij**: Postępuj zgodnie z samouczkiem Szybki Start, aby [utworzyć pierwszą funkcję](../../azure-functions/functions-create-first-azure-function.md) z portalu.
 > 
-> **Wypróbuj teraz usługę**: Usługa Azure Functions umożliwia uruchamianie kodu bez konieczności Załóż konto platformy Azure. Wypróbuj teraz na i [tworzenie pierwszej funkcji platformy Azure](https://tryappservice.azure.com/).
+> **Wypróbuj teraz**: Azure Functions umożliwia uruchamianie kodu bez konieczności rejestrowania się w celu uzyskania konta platformy Azure. Wypróbuj teraz i [Utwórz pierwszą funkcję platformy Azure](https://tryappservice.azure.com/).
 
 #### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-Usługa Azure Service Fabric to platforma systemów rozproszonych, która ułatwia tworzenie, pakowanie, wdrażanie i zarządzanie skalowalnych i niezawodnych mikrousług. Zapewnia również kompleksowe funkcje zarządzania aplikacjami dla inicjowania obsługi, wdrażanie, monitorowanie, uaktualnianie/poprawianie i usuwanie wdrożonych aplikacji. Wdrożenie aplikacji działających w ramach współużytkowanej puli maszyn, można zacząć od małej i skalowania do setek lub tysięcy maszyn, zgodnie z potrzebami.
+Azure Service Fabric to platforma systemów rozproszonych, która ułatwia tworzenie, pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi. Zapewnia również kompleksowe funkcje zarządzania aplikacjami do aprowizacji, wdrażania, monitorowania, uaktualniania/stosowania poprawek i usuwania wdrożonych aplikacji. Aplikacje, które są uruchamiane w udostępnionej puli maszyn, mogą być uruchamiane w miarę potrzeby na setkach lub tysiącach maszyn.
 
-Usługa Service Fabric obsługuje interfejs WebAPI z Open Web Interface for .NET (OWIN) i ASP.NET Core. Udostępnia zestawy SDK do tworzenie usług w systemie Linux w języku Java i .NET Core. Aby dowiedzieć się więcej na temat usługi Service Fabric, zobacz [dokumentacja usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/).
+Service Fabric obsługuje WebAPI z otwartym interfejsem sieci Web dla platformy .NET (OWIN) i ASP.NET Core. Udostępnia zestawy SDK do kompilowania usług w systemie Linux w oprogramowaniu .NET Core i Java. Aby dowiedzieć się więcej na temat Service Fabric, zapoznaj się z [dokumentacją Service Fabric](https://docs.microsoft.com/azure/service-fabric/).
 
-> **Kiedy stosować:** Service Fabric to dobry wybór, podczas tworzenia aplikacji lub ponownego tworzenia istniejącej aplikacji do opartych na architekturze mikrousług. Jeśli potrzebujesz więcej kontroli nad lub bezpośredni dostęp do podstawowej infrastruktury za pomocą usługi Service Fabric.
+> **Kiedy używać:** Service Fabric jest dobrym wyborem podczas tworzenia aplikacji lub zapisywania istniejącej aplikacji w celu użycia architektury mikrousług. Należy używać Service Fabric, gdy potrzebna jest większa kontrola nad podstawową infrastrukturą lub bezpośredni dostęp do niej.
 > 
-> **Wprowadzenie:** [Tworzenie pierwszej aplikacji usługi Azure Service Fabric](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md).
+> **Wprowadzenie:** [Utwórz swoją pierwszą aplikację usługi Azure Service Fabric](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md).
 
-### <a name="enhance-your-applications-with-azure-services"></a>Udoskonalaj swoje aplikacje z usługami platformy Azure
+### <a name="enhance-your-applications-with-azure-services"></a>Ulepszanie aplikacji dzięki usługom platformy Azure
 
-Oprócz hostowania aplikacji, system Azure oferuje ofert usług, zwiększające funkcjonalność, tworzenia i konserwacji aplikacji, zarówno w chmurze i lokalnych.
+Oprócz hostingu aplikacji platforma Azure oferuje oferty usług, które mogą zwiększyć funkcjonalność, rozwój i konserwację aplikacji, zarówno w chmurze, jak i lokalnie.
 
-#### <a name="hosted-storage-and-data-access"></a>Hostowanej storage i dostęp do danych
+#### <a name="hosted-storage-and-data-access"></a>Hostowany magazyn i dostęp do danych
 
-Większość aplikacji muszą przechowywać dane, więc niezależnie od tego, jak użytkownik zdecyduje się hostowanie aplikacji na platformie Azure, należy wziąć pod uwagę co najmniej jedną z następujących usług magazynu i danych.
+Większość aplikacji musi przechowywać dane, dlatego niezależnie od sposobu, w jaki użytkownik zdecyduje się na hostowanie aplikacji na platformie Azure, należy wziąć pod uwagę co najmniej jedną z następujących usług magazynu i danych.
 
-- **Azure Cosmos DB**: Usługa globalnie dystrybuowanej, wielomodelowej bazy danych, która umożliwia elastycznie Skaluj przepływność oraz Magazyn w dowolnej liczbie regionów geograficznych dzięki kompleksowym umowy SLA. 
-  > **Kiedy stosować:** Gdy Twoja aplikacja potrzebuje dokumentów, tabela lub baz danych programu graph, w tym bazami danych MongoDB, o wiele dokładnie zdefiniowanych modeli spójności. 
+- **Azure Cosmos DB**: Globalnie dystrybuowana, wielomodelowa usługa bazy danych, która pozwala elastycznie skalować przepływność i magazyn w dowolnej liczbie regionów geograficznych z kompleksową umową SLA. 
+  > **Kiedy używać:** Gdy aplikacja wymaga baz danych dokumentów, tabel lub grafów, w tym baz danych MongoDB, z wieloma dobrze zdefiniowanymi modelami spójności. 
   > 
-  > **Rozpoczynanie pracy**: [Tworzenie aplikacji sieci web usługi Azure Cosmos DB](../../cosmos-db/create-sql-api-dotnet.md). Jeśli jesteś deweloperem bazy danych MongoDB, zobacz [tworzenie aplikacji internetowej bazy danych MongoDB w usłudze Azure Cosmos DB](../../cosmos-db/create-mongodb-dotnet.md).
+  > **Rozpocznij**: [Tworzenie aplikacji sieci web Azure Cosmos DB](../../cosmos-db/create-sql-api-dotnet.md). Jeśli jesteś deweloperem programu MongoDB, zobacz [Tworzenie aplikacji sieci Web MongoDB za pomocą Azure Cosmos DB](../../cosmos-db/create-mongodb-dotnet.md).
 
-- **Azure Storage**: Udostępnia magazyn odporne i o wysokiej dostępności dla obiektów blob, kolejek, plików i innych rodzajów danych nierelacyjnych. Storage stanowi podstawę magazynu dla maszyn wirtualnych.
+- **Azure Storage**: Oferuje trwały magazyn o wysokiej dostępności dla obiektów blob, kolejek, plików i innych rodzajów danych nierelacyjnych. Magazyn udostępnia podstawę magazynu dla maszyn wirtualnych.
 
-  > **Kiedy należy używać**: Kiedy aplikacja przechowuje danych nierelacyjnych, takich jak pary klucz wartość (tabele), blob, udziałów plików lub komunikatów (kolejki).
+  > **Kiedy używać**: Gdy aplikacja przechowuje dane nierelacyjne, takie jak pary klucz-wartość (tabele), obiekty blob, udziały plików lub komunikaty (kolejki).
   > 
-  > **Rozpoczynanie pracy**: Wybierz jedną z tych typów pamięci masowej: [obiektów blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [tabel](../../cosmos-db/table-storage-how-to-use-dotnet.md), [kolejek](../../storage/queues/storage-dotnet-how-to-use-queues.md), lub [pliki](../../storage/files/storage-dotnet-how-to-use-files.md).
+  > **Rozpocznij**: Wybierz jeden z następujących typów magazynów: [obiekty blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [tabele](../../cosmos-db/table-storage-how-to-use-dotnet.md), [kolejki](../../storage/queues/storage-dotnet-how-to-use-queues.md)lub [pliki](../../storage/files/storage-dotnet-how-to-use-files.md).
 
-- **Azure SQL Database**: Oparte na platformie Azure w wersji aparatu Microsoft SQL Server do przechowywania danych relacyjnych tabelarycznych w chmurze. SQL Database oferuje przewidywalną wydajność, skalowalność bez przestojów, ciągłość prowadzenia działalności biznesowej i ochrony danych.
+- **Azure SQL Database**: Oparta na platformie Azure wersja aparatu Microsoft SQL Server do przechowywania relacyjnych danych tabelarycznych w chmurze. SQL Database zapewnia przewidywalną wydajność, skalowalność bez przestojów, ciągłość działania i ochronę danych.
 
-  > **Kiedy należy używać**: Jeśli aplikacja wymaga magazyn danych przy użyciu więzów integralności transakcyjnej pomocy technicznej i Obsługa zapytania TSQL.
+  > **Kiedy używać**: Gdy aplikacja wymaga magazynu danych z integralnością referencyjną, obsługą transakcyjną i obsługą zapytań TSQL.
   > 
-  > **Rozpoczynanie pracy**: [Tworzenie bazy danych SQL w ciągu kilku minut przy użyciu witryny Azure portal](../../sql-database/sql-database-get-started.md).
+  > **Rozpocznij**: [Utwórz bazę danych SQL w ciągu kilku minut, używając Azure Portal](../../sql-database/sql-database-get-started.md).
 
 
-Możesz użyć [usługi Azure Data Factory](../../data-factory/introduction.md) przenoszenia istniejących lokalnych danych na platformie Azure. Jeśli nie jesteś gotowy do przenoszenia danych do chmury, [połączeń hybrydowych](../../biztalk-services/integration-hybrid-connection-overview.md) w usługi BizTalk Services umożliwia łączenie usługi App Service hostowanej aplikacji do zasobów lokalnych. Można również łączysz się dane platformy Azure i magazyn usługi z poziomu aplikacji w środowisku lokalnym.
+Za pomocą [Azure Data Factory](../../data-factory/introduction.md) można przenieść istniejące dane lokalne na platformę Azure. Jeśli nie jesteś gotowy do przenoszenia danych do chmury, [połączenia hybrydowe](../../biztalk-services/integration-hybrid-connection-overview.md) w BizTalk Services umożliwia połączenie App Service hostowanej aplikacji z zasobami lokalnymi. Możesz również nawiązać połączenie z usługami Azure Data and Storage z aplikacji lokalnych.
 
-#### <a name="docker-support"></a>Obsługę platformy docker
+#### <a name="docker-support"></a>Obsługa platformy Docker
 
-Kontenery platformy docker, formularz wirtualizacji systemu operacyjnego, pozwalają na wdrażanie aplikacji w sposób bardziej efektywne i przewidywalne. Konteneryzowanej aplikacji działa w środowisku produkcyjnym, taki sam sposób jak w systemów tworzenia i testowania. Za Zarządzanie kontenerami przy użyciu standardowych narzędzi platformy Docker. Twoje umiejętności i popularnych narzędzi typu open-source umożliwia wdrażanie aplikacji i zarządzanie nimi opartych na kontenerach na platformie Azure.
+Kontenery platformy Docker, forma wirtualizacji systemu operacyjnego, umożliwiają wdrażanie aplikacji w bardziej wydajny i przewidywalny sposób. Aplikacja kontenera działa w taki sam sposób jak w systemach deweloperskich i testowych. Kontenerami można zarządzać za pomocą standardowych narzędzi platformy Docker. Korzystając z posiadanych umiejętności i popularnych narzędzi open source, można wdrażać aplikacje oparte na kontenerach i zarządzać nimi na platformie Azure.
 
-System Azure oferuje kilka sposobów na korzystanie z kontenerów w swoich aplikacjach.
+Platforma Azure oferuje kilka sposobów korzystania z kontenerów w aplikacjach.
 
-- **Rozszerzenie maszyny Wirtualnej Docker Azure**: Umożliwia skonfigurowanie maszyny Wirtualnej za pomocą narzędzi platformy Docker, aby pełnić rolę hosta platformy Docker.
+- **Rozszerzenie maszyny wirtualnej platformy Azure Docker**: Umożliwia skonfigurowanie maszyny wirtualnej za pomocą narzędzi platformy Docker do działania jako host platformy Docker.
 
-  > **Kiedy należy używać**: Gdy chcesz wygenerować wdrożeń kontenerów spójny dla aplikacji na maszynie Wirtualnej lub gdy chcesz używać [narzędzia Docker Compose](https://docs.docker.com/compose/overview/).
+  > **Kiedy używać**: Gdy chcesz generować spójne wdrożenia kontenerów dla aplikacji na maszynie wirtualnej lub gdy chcesz używać [Docker Compose](https://docs.docker.com/compose/overview/).
   > 
-  > **Rozpoczynanie pracy**: [Tworzenie w środowisku platformy Docker na platformie Azure przy użyciu rozszerzenia maszyny Wirtualnej Docker](../../virtual-machines/virtual-machines-linux-dockerextension.md).
+  > **Rozpocznij**: [Utwórz środowisko platformy Docker na platformie Azure przy użyciu rozszerzenia maszyny wirtualnej](../../virtual-machines/virtual-machines-linux-dockerextension.md)platformy Docker.
 
-- **Usługa Azure Container Service**: Umożliwia tworzenie, konfigurowanie i Zarządzanie klastrem maszyn wirtualnych, które są wstępnie skonfigurowane do uruchamiania konteneryzowanych aplikacji. Aby dowiedzieć się więcej na temat usługi kontenera, zobacz [wprowadzenie do usługi Azure Container Service](../../container-service/container-service-intro.md).
+- **Azure Container Service**: Umożliwia tworzenie i Konfigurowanie klastra maszyn wirtualnych, które są wstępnie skonfigurowane do uruchamiania aplikacji kontenera, oraz zarządzanie nim. Aby dowiedzieć się więcej o usłudze Container Service, zobacz [wprowadzenie Azure Container Service](../../container-service/container-service-intro.md).
 
-  > **Kiedy należy używać**: Kiedy należy do narzędzia do zarządzania i środowisk gotowe do produkcji, skalowalne kompilacji, które zapewniają dodatkowe planowanie lub podczas wdrażania klastra Docker Swarm.
+  > **Kiedy używać**: Gdy trzeba utworzyć gotowe do użycia środowisko produkcyjne, które zapewnia dodatkowe narzędzia do planowania i zarządzania, lub gdy wdrażasz klaster Docker Swarm.
   > 
-  > **Rozpoczynanie pracy**: [Wdrażanie klastra usługi kontenera](../../container-service/dcos-swarm/container-service-deployment.md).
+  > **Rozpocznij**: [Wdróż klaster usługi kontenera](../../container-service/dcos-swarm/container-service-deployment.md).
 
-- **Maszyny platformy docker**: Pozwala zainstalować i zarządzać aparat platformy Docker na hostów wirtualnych za pomocą poleceń maszyny platformy docker.
+- **Maszyna platformy Docker**: Umożliwia zainstalowanie aparatu platformy Docker na hostach wirtualnych i zarządzanie nim przy użyciu poleceń platformy Docker-Machine.
 
-  >**Kiedy należy używać**: Gdy zachodzi potrzeba szybko prototypu aplikacji, tworząc jeden host platformy Docker.
+  >**Kiedy używać**: Gdy musisz szybko utworzyć prototyp aplikacji, tworząc pojedynczy Host platformy Docker.
 
-- **Niestandardowy obraz platformy Docker dla usługi App Service**: Umożliwia korzystanie z kontenerów platformy Docker z rejestru kontenerów lub kontener klienta podczas wdrażania aplikacji sieci web w systemie Linux.
+- **Niestandardowy obraz platformy Docker dla App Service**: Umożliwia korzystanie z kontenerów platformy Docker z rejestru kontenerów lub kontenera klienta podczas wdrażania aplikacji sieci Web w systemie Linux.
 
-  > **Kiedy należy używać**: W przypadku wdrażania aplikacji sieci web w systemie Linux w obrazie platformy Docker.
+  > **Kiedy używać**: Podczas wdrażania aplikacji sieci Web w systemie Linux do obrazu platformy Docker.
   > 
-  > **Rozpoczynanie pracy**: [Używanie niestandardowego obrazu platformy Docker dla usługi App Service w systemie Linux](../../app-service/containers/quickstart-docker-go.md).
+  > **Rozpocznij**: [Użyj niestandardowego obrazu platformy Docker dla App Service w systemie Linux](../../app-service/containers/quickstart-docker-go.md).
 
 ### <a name="authentication"></a>Authentication
 
-Bezwzględnie nie tylko wiedzieć, kto korzysta z aplikacji, ale także w celu uniemożliwienia nieupoważnionego dostępu do zasobów. System Azure oferuje kilka sposobów uwierzytelniania klientów aplikacji.
+Niezwykle ważne jest, aby nie tylko wiedzieć, kto korzysta z aplikacji, ale również aby uniemożliwić nieautoryzowany dostęp do zasobów. Platforma Azure oferuje kilka metod uwierzytelniania klientów aplikacji.
 
-- **Azure Active Directory (Azure AD)** : Microsoft wielodostępna, oparta na chmurze tożsamościami i dostępem usługi management. Dzięki integracji z usługą Azure AD, można dodać logowania jednokrotnego (SSO) do aplikacji. Możesz uzyskać dostęp właściwości katalogu przy użyciu interfejsu API programu Graph usługi Azure AD, bezpośrednio lub interfejsu API programu Microsoft Graph. Możesz wprowadzić integrację z obsługą usługi Azure AD ramy autoryzacji OAuth 2.0 i Open ID Connect, przy użyciu bibliotek uwierzytelniania dla wielu platform w usłudze Azure AD i natywne punkty końcowe REST protokołu HTTP.
+- **Azure Active Directory (Azure AD)** : Wielodostępna usługa zarządzania tożsamościami i dostępem w chmurze firmy Microsoft. Możesz dodać Logowanie jednokrotne (SSO) do aplikacji przez integrację z usługą Azure AD. Dostęp do właściwości katalogu można uzyskać za pomocą interfejs API programu Graph usługi Azure AD bezpośrednio lub Microsoft Graph interfejsu API. Program można zintegrować z obsługą usługi Azure AD w ramach platformy autoryzacji OAuth 2.0 oraz z usługą Open ID Connect przy użyciu natywnych punktów końcowych HTTP/REST i wieloplatformowych bibliotek uwierzytelniania usługi Azure AD.
 
-  > **Kiedy należy używać**: Jeśli chcesz zapewnić środowisko logowania jednokrotnego, pracować z danymi opartej na wykresach lub uwierzytelnianie oparte na domenie użytkowników.
+  > **Kiedy używać**: Aby zapewnić obsługę logowania jednokrotnego, należy korzystać z danych opartych na grafach lub uwierzytelniać użytkowników opartych na domenie.
   > 
-  > **Rozpoczynanie pracy**: Aby dowiedzieć się więcej, zobacz [przewodnik dewelopera usługi Azure Active Directory](../../active-directory/develop/v1-overview.md).
+  > **Rozpocznij**: Aby dowiedzieć się więcej, zobacz [przewodnik dewelopera Azure Active Directory](../../active-directory/develop/v1-overview.md).
 
-- **Uwierzytelnianie usługi App Service**: W przypadku wybrania usługi App Service do hostowania aplikacji, możesz także uzyskać wbudowanego uwierzytelniania za pomocą techniczną dla usługi Azure AD wraz z dostawców tożsamości społecznościowych — w tym usługi Facebook, Google, Microsoft i Twitter.
+- **Uwierzytelnianie App Service**: W przypadku wybrania App Service do hostowania aplikacji uzyskasz również wbudowaną obsługę uwierzytelniania dla usługi Azure AD oraz dostawców tożsamości społecznościowych, takich jak Facebook, Google, Microsoft i Twitter.
 
-  > **Kiedy należy używać**: Jeśli chcesz włączyć uwierzytelnianie w aplikacji usługi App Service przy użyciu usługi Azure AD, dostawców tożsamości społecznościowych i / lub.
+  > **Kiedy używać**: Jeśli chcesz włączyć uwierzytelnianie w aplikacji App Service przy użyciu usługi Azure AD, dostawców tożsamości społecznościowych lub obu tych programów.
   > 
-  > **Rozpoczynanie pracy**: Aby dowiedzieć się więcej o uwierzytelnianiu w usłudze App Service, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../../app-service/overview-authentication-authorization.md).
+  > **Rozpocznij**: Aby dowiedzieć się więcej o uwierzytelnianiu w App Service, zobacz [uwierzytelnianie i autoryzacja w Azure App Service](../../app-service/overview-authentication-authorization.md).
 
-Aby dowiedzieć się więcej o najlepszych rozwiązaniach zabezpieczeń platformy Azure, zobacz [zabezpieczeń platformy Azure najlepsze rozwiązania i wzorce](../../security/security-best-practices-and-patterns.md).
+Aby dowiedzieć się więcej o najlepszych rozwiązaniach dotyczących zabezpieczeń na platformie Azure, zobacz [najlepsze rozwiązania i wzorce dotyczące zabezpieczeń platformy Azure](../../security/fundamentals/best-practices-and-patterns.md).
 
 ### <a name="monitoring"></a>Monitorowanie
 
-Swoją aplikację wzwyż i działających na platformie Azure muszą mieć możliwość monitorowania wydajności, obejrzyj problemów i zobacz, jak klienci korzystają z aplikacji. System Azure oferuje kilka opcji monitorowania.
+Gdy aplikacja działa na platformie Azure, musisz mieć możliwość monitorowania wydajności, śledzenia problemów i sprawdzenia, jak klienci korzystają z aplikacji. Platforma Azure oferuje kilka opcji monitorowania.
 
--   **Visual Studio Application Insights**: Hostowanymi na platformie Azure rozszerzalną usługą analizy integrującej się z programem Visual Studio do monitorowania aplikacji sieci web na żywo. Udostępnia dane, które należy ciągłym udoskonalaniu wydajności i użyteczności aplikacji, czy jest hostowany na platformie Azure lub nie.
+-   **Application Insights programu Visual Studio**: Hostowana na platformie Azure usługa analizy rozszerzalnej zintegrowana z programem Visual Studio do monitorowania aktywnych aplikacji sieci Web. Zapewnia to dane, które są potrzebne do ciągłego ulepszania wydajności i użyteczności aplikacji, niezależnie od tego, czy są one hostowane na platformie Azure, czy nie.
 
-    >**Rozpoczynanie pracy**: Postępuj zgodnie z [samouczka usługi Application Insights](../../azure-monitor/app/app-insights-overview.md).
+    >**Rozpocznij**: Postępuj zgodnie z [samouczkiem Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
--   **Azure Monitor**: Usługa, która pomaga w wizualizacji, zapytania, trasy, archiwizować i działania dotyczące metryk i dzienników generowanych przez usługi infrastruktury platformy Azure i zasobów. Monitor zapewnia widoki danych, zobacz temat w witrynie Azure portal, a następnie jest jedno źródło monitorowania zasobów platformy Azure.
+-   **Azure monitor**: Usługa, która ułatwia wizualizowanie, wykonywanie zapytań, kierowanie i archiwizowanie metryk i dzienników generowanych przez infrastrukturę i zasoby platformy Azure. Monitor udostępnia widoki danych widoczne w Azure Portal i jest jednym źródłem do monitorowania zasobów platformy Azure.
  
-    >**Rozpoczynanie pracy**: [Rozpoczynanie pracy z usługą Azure Monitor](../../monitoring-and-diagnostics/monitoring-get-started.md).
+    >**Rozpocznij**: [Rozpocznij pracę z Azure monitor](../../monitoring-and-diagnostics/monitoring-get-started.md).
 
 ### <a name="devops-integration"></a>Integracja metodyki DevOps
 
-Czy jest on aprowizowanie maszyn wirtualnych lub publikowania aplikacji sieci web dzięki ciągłej integracji, Azure integruje się z najbardziej popularnych narzędzi DevOps. Obsługa narzędzi, takich jak Jenkins, GitHub, Puppet, Chef, TeamCity, Ansible, DevOps platformy Azure i innych użytkowników możesz pracować z narzędziami, które już masz i optymalnie wykorzystać istniejące.
+Niezależnie od tego, czy udostępniasz maszyny wirtualne, czy publikujesz aplikacje sieci Web z ciągłą integracją, platforma Azure integruje się z większością popularnych narzędzi DevOps. Dzięki obsłudze narzędzi takich jak Jenkins, GitHub, Puppet, Chef, TeamCity, rozwiązania ansible, Azure DevOps i innych, możesz korzystać z narzędzi, które już masz i maksymalizują istniejące środowisko.
 
-> **Wypróbuj je teraz:** [Wypróbuj niektóre z integracji metodyki DevOps](https://azure.microsoft.com/try/devops/).
+> **Wypróbuj teraz:** [Wypróbuj kilka integracji DevOps](https://azure.microsoft.com/try/devops/).
 > 
-> **Rozpoczynanie pracy**: Aby wyświetlić opcje DevOps dla aplikacji usługi App Service, zobacz [ciągłe wdrażanie w usłudze Azure App Service](../../app-service/deploy-continuous-deployment.md).
+> **Rozpocznij**: Aby wyświetlić opcje DevOps aplikacji App Service, zobacz [ciągłe wdrażanie do Azure App Service](../../app-service/deploy-continuous-deployment.md).
 
 
-## <a name="azure-regions"></a>Regiony świadczenia usługi Azure
+## <a name="azure-regions"></a>Regiony platformy Azure
 
-Azure to platforma chmury globalnej, która jest ogólnie dostępna w wielu regionach na całym świecie. Podczas aprowizowania usługi, aplikacji lub maszyny Wirtualnej na platformie Azure, zostanie wyświetlony monit wybierz region, który reprezentuje określonego centrum danych, której działa Twoja aplikacja lub gdy dane są przechowywane. Te regiony odpowiadają określonych lokalizacjach, które są publikowane w [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/) strony.
+Azure to globalna platforma w chmurze, która jest ogólnie dostępna w wielu regionach na całym świecie. Podczas aprowizacji usługi, aplikacji lub maszyny wirtualnej na platformie Azure zostanie wyświetlony monit o wybranie regionu, który reprezentuje konkretne centrum danych, w którym jest uruchomiona aplikacja lub gdzie przechowywane są dane. Regiony te odpowiadają konkretnym lokalizacjom publikowanym na stronie [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/) .
 
-### <a name="choose-the-best-region-for-your-application-and-data"></a>Wybierz region najlepsze dla aplikacji i danych
+### <a name="choose-the-best-region-for-your-application-and-data"></a>Wybieranie najlepszego regionu dla aplikacji i danych
 
-Jedną z zalet korzystania z systemu Azure jest wdrożenie aplikacji w różnych centrach danych na całym świecie. Region, który wybierzesz może mieć wpływ na wydajność aplikacji. Na przykład jest lepszym rozwiązaniem wybierz region, który jest bliżej większość klientami w celu zmniejszenia opóźnień w żądaniach sieci. Można również wybrać swój region, aby spełnić wymagania prawne dystrybucji aplikacji w niektórych krajach/regionach. Zawsze jest najlepszym rozwiązaniem do przechowywania danych aplikacji, w tym samym centrum danych lub w centrum danych jako niemal jako możliwe do centrum danych, który jest hostem aplikacji.
+Jedną z zalet korzystania z platformy Azure jest możliwość wdrażania aplikacji w różnych centrach danych na całym świecie. Wybrany region może mieć wpływ na wydajność aplikacji. Na przykład lepiej jest wybrać region, który jest bliżej większości klientów, aby zmniejszyć opóźnienia w żądaniach sieci. Możesz również wybrać region spełniający wymagania prawne dotyczące dystrybucji aplikacji w określonych krajach/regionach. Najlepszym rozwiązaniem jest przechowywanie w tym samym centrum danych aplikacji, które znajdują się na tym samym serwerze, w tym samym, jak to możliwe, w tym samym obszarze, w którym znajduje się aplikacja.
 
-### <a name="multi-region-apps"></a>Aplikacje dla wielu regionów
+### <a name="multi-region-apps"></a>Aplikacje wieloregionowe
 
-Mimo że jest to mało prawdopodobne, nie jest możliwe dla całego centrum danych przejść do trybu offline z powodu zdarzenia, takiego jak klęski żywiołowe lub błąd z Internetem. Jest to najlepsze rozwiązanie do hostowania aplikacji ważnych w więcej niż jednym centrum danych w celu zapewnienia maksymalnej dostępności. Używanie wielu regionów również zmniejszenie opóźnień dla użytkowników globalnych i zapewnia dodatkowe możliwości, aby zapewnić elastyczność podczas aktualizowania aplikacji.
+Chociaż jest to mało prawdopodobne, nie jest możliwe, aby całe centrum danych przeszedł do trybu offline z powodu zdarzenia, takiego jak klęska żywiołowa lub błąd internetowy. Najlepszym rozwiązaniem jest hostowanie ważnych aplikacji firmowych w więcej niż jednym centrum danych w celu zapewnienia maksymalnej dostępności. Korzystanie z wielu regionów może również ograniczyć opóźnienia dla użytkowników globalnych i zapewnić dodatkowe możliwości w zakresie elastyczności podczas aktualizowania aplikacji.
 
-Niektóre usługi, takie jak maszyny wirtualne i usługi dla aplikacji używać [usługi Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) można włączyć obsługę wielu regionów za pomocą trybu failover między regionami, aby obsługiwać aplikacje dla przedsiębiorstw o wysokiej dostępności. Aby uzyskać przykład, zobacz [architektura referencyjna platformy Azure: Uruchamianie aplikacji sieci web w wielu regionach](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
+W przypadku niektórych usług, takich jak maszyna wirtualna i App Services, użyj [usługi Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) , aby umożliwić obsługę wieloregionowej pracy w trybie failover między regionami w celu obsługi aplikacji dla przedsiębiorstw o wysokiej dostępności. Aby zapoznać się z przykładem, zobacz [architektura referencyjna platformy Azure: Uruchom aplikację sieci Web w wielu regionach](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
 
->**Kiedy należy używać**: Jeśli masz przedsiębiorstwa i aplikacji o wysokiej dostępności, które korzystają z trybu failover i replikacji.
+>**Kiedy używać**: Jeśli masz aplikacje korporacyjne i o wysokiej dostępności, które korzystają z trybu failover i replikacji.
 
-## <a name="how-do-i-manage-my-applications-and-projects"></a>Jak zarządzać własnymi aplikacjami i projektami?
+## <a name="how-do-i-manage-my-applications-and-projects"></a>Jak mogę zarządzać moimi aplikacjami i projektami?
 
-System Azure oferuje bogaty zestaw funkcji służących do tworzenia i zarządzania zasobami platformy Azure, aplikacji i projektów — zarówno programowo i [witryny Azure portal](https://portal.azure.com/).
+Platforma Azure oferuje bogaty zestaw środowisk umożliwiających tworzenie zasobów platformy Azure, aplikacji i projektów oraz zarządzanie nimi — zarówno programowo, jak i w [Azure Portal](https://portal.azure.com/).
 
-### <a name="command-line-interfaces-and-powershell"></a>Interfejsów z wierszem polecenia i programu PowerShell
+### <a name="command-line-interfaces-and-powershell"></a>Interfejsy wiersza polecenia i program PowerShell
 
-Platforma Azure udostępnia dwa sposoby zarządzania swoje aplikacje i usługi z poziomu wiersza polecenia przy użyciu powłoki Bash, program Terminal, wiersza polecenia lub Twoje narzędzie wiersza polecenia, wyboru. Zazwyczaj te same zadania można wykonać z poziomu wiersza polecenia, tak jak w witrynie Azure portal — takie jak tworzenie i konfigurowanie maszyn wirtualnych, sieci wirtualne, aplikacje sieci web i innych usług.
+Platforma Azure oferuje dwa sposoby zarządzania aplikacjami i usługami z poziomu wiersza polecenia przy użyciu bash, terminalu, wiersza polecenia lub narzędzia wiersza polecenia. Zazwyczaj można wykonać te same zadania z poziomu wiersza polecenia, tak jak w Azure Portal, takich jak tworzenie i Konfigurowanie maszyn wirtualnych, sieci wirtualnych, aplikacji sieci Web i innych usług.
 
--   [Interfejs wiersza polecenia platformy Azure (CLI)](../../xplat-cli-install.md): Umożliwia łączenie się z subskrypcją platformy Azure i program w różnych zadań w odniesieniu do zasobów platformy Azure z poziomu wiersza polecenia.
+-   [Interfejs wiersza polecenia platformy Azure (CLI)](../../xplat-cli-install.md): Pozwala połączyć się z subskrypcją platformy Azure i programować różnymi zadaniami z zasobami platformy Azure z wiersza polecenia.
 
 -   [Azure PowerShell](../../powershell-install-configure.md): Zawiera zestaw modułów z poleceniami cmdlet, które umożliwiają zarządzanie zasobami platformy Azure przy użyciu programu Windows PowerShell.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Azure portal to aplikacji sieci web, która służy do tworzenia, zarządzania i usuwać zasoby platformy Azure i usługi. Witryna Azure portal znajduje się w <https://portal.azure.com>. Obejmuje dostosowywany pulpit nawigacyjny, narzędzia do zarządzania zasobami platformy Azure i uzyskać dostęp do ustawień subskrypcji oraz informacji dotyczących rozliczeń. Aby uzyskać więcej informacji, zobacz [Omówienie witryny Azure portal](../../azure-portal-overview.md).
+Azure Portal to aplikacja oparta na sieci Web, za pomocą której można tworzyć i usuwać zasoby i usługi platformy Azure oraz zarządzać nimi. Azure Portal znajduje się w lokalizacji <https://portal.azure.com>. Obejmuje to dostosowywalny pulpit nawigacyjny, narzędzia do zarządzania zasobami platformy Azure oraz dostęp do ustawień subskrypcji i informacji dotyczących rozliczeń. Aby uzyskać więcej informacji, zobacz [omówienie Azure Portal](../../azure-portal-overview.md).
 
 ### <a name="rest-apis"></a>Interfejsy API REST
 
-Jest ona oparta na zestaw interfejsów API REST, która obsługuje interfejs użytkownika witryny Azure portal. Większość tych interfejsów API REST są również obsługiwane umożliwia programowe obsługi administracyjnej i zarządzanie zasobami platformy Azure i aplikacji z dowolnego urządzenia z włączoną funkcją łączności internetowej. Aby uzyskać pełny zestaw dokumentacji interfejsu API REST, zobacz [odwołanie do zestawu SDK REST platformy Azure](https://docs.microsoft.com/rest/api/).
+Platforma Azure jest oparta na zestawie interfejsów API REST, które obsługują interfejs użytkownika Azure Portal. Większość z tych interfejsów API REST jest również obsługiwana, aby umożliwić programistyczne Inicjowanie obsługi zasobów i aplikacji platformy Azure oraz zarządzanie nimi z dowolnego urządzenia z obsługą Internetu. Aby zapoznać się z kompletnym zestawem dokumentacji interfejsu API REST, zobacz Dokumentacja [zestawu SDK REST platformy Azure](https://docs.microsoft.com/rest/api/).
 
 ### <a name="apis"></a>interfejsy API
 
-Oprócz interfejsów API REST wielu usług platformy Azure pozwalają również programowe zarządzanie zasobami z poziomu aplikacji przy użyciu zestawów SDK platformy Azure specyficzne dla platformy, m.in. zestawy SDK dla następujących platform programowania:
+Oprócz interfejsów API REST wiele usług platformy Azure umożliwia również programistyczne zarządzanie zasobami z aplikacji przy użyciu zestawów SDK platformy Azure specyficznych dla platformy, w tym zestawów SDK dla następujących platform deweloperskich:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
 -   [Node.js](https://docs.microsoft.com/javascript/azure)
@@ -241,72 +241,72 @@ Oprócz interfejsów API REST wielu usług platformy Azure pozwalają również 
 -   [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
 -   [Go](https://docs.microsoft.com/go/azure)
 
-Usługi takie jak [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) i [usługi Azure Media Services](../../media-services/previous/media-services-dotnet-how-to-use.md) zestawy SDK po stronie klienta, co pozwala zapewnić dostęp do usług sieci web i aplikacje klienta mobilnego.
+Usługi, takie jak [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) i [Azure Media Services](../../media-services/previous/media-services-dotnet-how-to-use.md) udostępniają zestawy SDK po stronie klienta, aby umożliwić dostęp do usług z aplikacji klienckich dla sieci Web i urządzeń przenośnych.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
-Uruchamianie aplikacji na platformie Azure, prawdopodobnie wiąże się z pracą z wieloma usługami platformy Azure, z których wszystkie postępuj zgodnie z takim samym cyklem życia i można traktować jako jednostki logicznej. Na przykład aplikacji sieci web może użyć aplikacji sieci Web i bazy danych SQL Database, Storage, pamięć podręczna systemu Azure dla usługi Redis i usługi Azure Content Delivery Network. [Usługa Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) umożliwia pracę z zasobami w aplikacji jako grupą. Można wdrożyć, zaktualizować lub usunąć wszystkie zasoby w jednej, skoordynowanej operacji.
+Uruchomienie aplikacji na platformie Azure może wymagać pracy z wieloma usługami platformy Azure, z których wszystkie są zgodne z tym samym cyklem życia i mogą być traktowane jako jednostki logiczne. Na przykład aplikacja sieci Web może używać Web Apps, SQL Database, magazynu, pamięci podręcznej platformy Azure dla Redis i usług Azure Content Delivery Network. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) pozwala na współpracę z zasobami w aplikacji jako grupą. Można wdrożyć, zaktualizować lub usunąć wszystkie zasoby w jednej, skoordynowanej operacji.
 
-Oprócz logicznego grupowania i zarządzania zasobami powiązane, usługi Azure Resource Manager obejmuje możliwości wdrażania, które umożliwiają dostosowanie wdrażania i konfigurowania powiązane zasoby. Na przykład za pomocą usługi Resource Manager, możesz wdrożyć i skonfigurować aplikację, która składa się z wielu maszyn wirtualnych, moduł równoważenia obciążenia i usługi Azure SQL database jako pojedyncza jednostka.
+Oprócz logicznego grupowania i zarządzania powiązanymi zasobami Azure Resource Manager obejmuje możliwości wdrażania umożliwiające dostosowanie wdrożenia i konfiguracji powiązanych zasobów. Na przykład za pomocą Menedżer zasobów można wdrożyć i skonfigurować aplikację, która składa się z wielu maszyn wirtualnych, modułu równoważenia obciążenia i bazy danych SQL Azure jako pojedynczej jednostki.
 
-Możesz tworzyć te wdrożenia przy użyciu szablonu usługi Azure Resource Manager, czyli dokumentu w formacie JSON. Szablony umożliwiają definiowanie wdrożenia aplikacje i zarządzaj nimi przy użyciu szablonów deklaratywnych zamiast skryptów. Szablony można następnie używać w różnych środowiskach, takich jak testowania, przemieszczania i produkcji. Na przykład za pomocą szablonów, można dodać przycisk do repozytorium GitHub, który wdraża kod w repozytorium zestawu usług platformy Azure za pomocą jednego kliknięcia.
+Te wdrożenia są opracowywane przy użyciu szablonu Azure Resource Manager, który jest dokumentem w formacie JSON. Szablony umożliwiają zdefiniowanie wdrożenia i zarządzanie aplikacjami przy użyciu szablonów deklaratywnych zamiast skryptów. Szablony mogą współpracować z różnymi środowiskami, takimi jak testowanie, przemieszczanie i produkcja. Na przykład za pomocą szablonów można dodać przycisk do repozytorium GitHub, które wdraża kod w repozytorium w ramach zestawu usług platformy Azure za pomocą jednego kliknięcia.
 
-> **Kiedy należy używać**: Użyj szablonów usługi Resource Manager, wdrożenia oparte na szablonach dla twojej aplikacji, w którym można zarządzać programowo przy użyciu interfejsów API REST, wiersza polecenia platformy Azure i programu Azure PowerShell.
+> **Kiedy używać**: Użyj szablonów Menedżer zasobów, jeśli chcesz, aby wdrożenie oparte na szablonie dla aplikacji było zarządzane programowo przy użyciu interfejsów API REST, interfejsu wiersza polecenia platformy Azure i Azure PowerShell.
 > 
-> **Rozpoczynanie pracy**: Aby rozpocząć pracę, przy użyciu szablonów, zobacz [tworzenia usługi Azure Resource Manager](../../resource-group-authoring-templates.md).
+> **Rozpocznij**: Aby rozpocząć korzystanie z szablonów, zobacz [Tworzenie szablonów Azure Resource Manager](../../resource-group-authoring-templates.md).
 
-## <a name="understanding-accounts-subscriptions-and-billing"></a>Omówienie kont, subskrypcji i rozliczeń
+## <a name="understanding-accounts-subscriptions-and-billing"></a>Informacje na temat kont, subskrypcji i rozliczeń
 
-Jako programiści chcemy rzucić się na głęboką do kodu, a następnie spróbuj zacząć tak szybko, jak to możliwe w tworzeniu naszych działają aplikacje. Na pewno chcesz zachęcamy do rozpoczęcia pracy na platformie Azure równie łatwo, jak to możliwe. Aby sprawić, że jej łatwy w użyciu i platformy Azure oferuje [bezpłatna wersja próbna](https://azure.microsoft.com/free/). Niektóre usługi nawet mieć "Wypróbuj ją bezpłatnie" funkcje, takie jak [usługi Azure App Service](https://tryappservice.azure.com/), które nie wymagają nawet utworzyć konto. Zabawa ponieważ jest od razu do programowania i wdrażania aplikacji na platformie Azure, jest również ważne, aby zająć trochę czasu, aby zrozumieć, jak platforma Azure współpracuje z punktu widzenia użytkownika kont, subskrypcji i rozliczeń.
+Jako deweloperzy chcemy szczegółowe bezpośrednio do kodu i próbować szybko rozpocząć pracę, jak to możliwe dzięki uruchomieniu naszych aplikacji. Mamy na pewno zachęcamy do rozpoczęcia pracy na platformie Azure tak szybko, jak to możliwe. Aby ułatwić korzystanie z tej funkcji, platforma Azure oferuje [bezpłatną wersję próbną](https://azure.microsoft.com/free/). Niektóre usługi mają nawet funkcje "Wypróbuj bezpłatnie", takie jak [Azure App Service](https://tryappservice.azure.com/), które nie wymagają nawet utworzenia konta. Tak długo, jak szczegółowe się na kodowanie i wdrażanie aplikacji na platformie Azure, ważne jest również, aby zrozumieć, jak platforma Azure współpracuje z punktu widzenia kont użytkowników, subskrypcji i rozliczeń.
 
 ### <a name="what-is-an-azure-account"></a>Co to jest konto platformy Azure?
 
-Aby można było utworzyć lub pracy z subskrypcją platformy Azure, musi mieć konto platformy Azure. Konto platformy Azure jest po prostu tożsamości w usłudze Azure AD, lub w katalogu, np. firmowego lub szkolnego organizacji, który jest zaufany przez usługę Azure AD. Jeśli nie należysz do tej organizacji, możesz zawsze utworzyć subskrypcję, za pomocą Account firmy Microsoft, co jest zaufany przez usługę Azure AD. Aby dowiedzieć się więcej na temat integracji usługi Active Directory lokalnego systemu Windows Server z usługą Azure AD, zobacz [integrowanie tożsamości lokalnych z usługą Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md).
+Aby można było utworzyć subskrypcję platformy Azure lub korzystać z niej, musisz mieć konto platformy Azure. Konto platformy Azure jest po prostu tożsamością w usłudze Azure AD lub w katalogu, takim jak organizacja służbowa, która jest zaufana przez usługę Azure AD. Jeśli nie należysz do takiej organizacji, możesz zawsze utworzyć subskrypcję za pomocą konta Microsoft, które jest zaufane przez usługę Azure AD. Aby dowiedzieć się więcej o integrowaniu lokalnych Active Directory systemu Windows Server z usługą Azure AD, zobacz [integrowanie tożsamości lokalnych z Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md).
 
-Każda subskrypcja platformy Azure jest połączona relacją zaufania z wystąpieniem usługi Azure AD. Oznacza to, że subskrypcja ufa katalogowi na potrzeby uwierzytelniania użytkowników, usług i urządzeń. Wiele subskrypcji może ufać temu samemu katalogowi, ale dana subskrypcja może ufać tylko jednemu katalogowi. Aby dowiedzieć się więcej, zobacz [jak subskrypcje platformy Azure są skojarzone z usługą Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+Każda subskrypcja platformy Azure jest połączona relacją zaufania z wystąpieniem usługi Azure AD. Oznacza to, że subskrypcja ufa katalogowi na potrzeby uwierzytelniania użytkowników, usług i urządzeń. Wiele subskrypcji może ufać temu samemu katalogowi, ale dana subskrypcja może ufać tylko jednemu katalogowi. Aby dowiedzieć się więcej, zobacz [jak subskrypcje platformy Azure są skojarzone z Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Oprócz definiowania Azure indywidualne konta tożsamości, nazywany również *użytkowników*, można również definiować *grup* w usłudze Azure AD. Tworzenie grupy użytkowników jest dobrym sposobem na zarządzanie dostępem do zasobów w subskrypcji przy użyciu kontroli dostępu opartej na rolach (RBAC). Aby dowiedzieć się, jak tworzyć grupy, zobacz [utworzyć grupę w usłudze Azure Active Directory w wersji zapoznawczej](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Można również tworzyć i zarządzać grupami przez [przy użyciu programu PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+Oprócz definiowania pojedynczych tożsamości kont platformy Azure, nazywanych również *użytkownikami*, można także definiować *grupy* w usłudze Azure AD. Tworzenie grup użytkowników jest dobrym sposobem na zarządzanie dostępem do zasobów w ramach subskrypcji przy użyciu kontroli dostępu opartej na rolach (RBAC). Aby dowiedzieć się, jak tworzyć grupy, zobacz [Tworzenie grupy w programie Azure Active Directory Preview](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Można także tworzyć grupy i zarządzać nimi za [pomocą programu PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
 
-### <a name="manage-your-subscriptions"></a>Zarządzanie subskrypcjami
+### <a name="manage-your-subscriptions"></a>Zarządzaj subskrypcjami
 
-Subskrypcji to logiczna grupa usług platformy Azure, która jest połączona z kontem platformy Azure. Jedno konto platformy Azure może zawierać wiele subskrypcji. Opłaty za usługi platformy Azure odbywa się na podstawie każdej subskrypcji. Aby uzyskać listę ofert dostępnych subskrypcji według typu, zobacz [szczegółach oferty Azure Microsoft](https://azure.microsoft.com/support/legal/offer-details/). Subskrypcje platformy Azure ma Administrator konta, który ma pełną kontrolę nad subskrypcją, a Administrator usługi, kto ma kontrolę nad wszystkich usług w ramach subskrypcji. Aby uzyskać informacji na temat klasyczni Administratorzy, zobacz [Administratorzy subskrypcji platformy Azure Dodaj lub zmień](../../billing/billing-add-change-azure-subscription-administrator.md). Oprócz Administratorzy, mogą być udzielane indywidualnych kont szczegółową kontrolę zasobów platformy Azure przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md).
+Subskrypcja to logiczna Grupa usług platformy Azure, która jest połączona z kontem platformy Azure. Pojedyncze konto platformy Azure może zawierać wiele subskrypcji. Rozliczanie usług platformy Azure odbywa się na podstawie subskrypcji. Aby uzyskać listę dostępnych ofert subskrypcji według typu, zobacz [Microsoft Azure Szczegóły oferty](https://azure.microsoft.com/support/legal/offer-details/). Subskrypcje platformy Azure mają administratora konta, który ma pełną kontrolę nad subskrypcją, oraz administratora usługi, który ma kontrolę nad wszystkimi usługami w ramach subskrypcji. Aby uzyskać informacje na temat klasycznych administratorów subskrypcji, zobacz [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../../billing/billing-add-change-azure-subscription-administrator.md). Oprócz administratorów do poszczególnych kont można udzielić szczegółowej kontroli nad zasobami platformy Azure przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md).
 
 #### <a name="resource-groups"></a>Grupy zasobów
 
-Podczas aprowizowania nowych usług platformy Azure, możesz to zrobić w ramach danej subskrypcji. Poszczególnych usług platformy Azure, które są również nazywane zasoby są tworzone w ramach grupy zasobów. Grupy zasobów ułatwiają wdrażanie i zarządzanie zasobami aplikacji. Grupa zasobów może zawierać wszystkie zasoby dla aplikacji, którą chcesz pracować jako jednostka. Zasoby można przenosić między grupami zasobów, a nawet różnych subskrypcjach. Aby uzyskać informacje dotyczące przenoszenia zasobów, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../resource-group-move-resources.md).
+W przypadku inicjowania obsługi administracyjnej nowych usług platformy Azure należy to zrobić w ramach danej subskrypcji. Poszczególne usługi platformy Azure, które są nazywane również zasobami, są tworzone w kontekście grupy zasobów. Grupy zasobów ułatwiają wdrażanie zasobów aplikacji i zarządzanie nimi. Grupa zasobów powinna zawierać wszystkie zasoby dla aplikacji, które mają być używane jako jednostka. Zasoby można przenosić między grupami zasobów, a nawet w różnych subskrypcjach. Aby dowiedzieć się więcej o przenoszeniu zasobów, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../resource-group-move-resources.md).
 
-Usługi Azure Resource Explorer to doskonałe narzędzie do wizualizacji zasoby, które zostały utworzone w ramach subskrypcji. Aby dowiedzieć się więcej, zobacz [użycia usługi Azure Resource Explorer do wyświetlania i modyfikowania zasobów](../../resource-manager-resource-explorer.md).
+Azure Resource Explorer to doskonałe narzędzie do wizualizacji zasobów, które zostały już utworzone w ramach subskrypcji. Aby dowiedzieć się więcej, zobacz [używanie Azure Resource Explorer do wyświetlania i modyfikowania zasobów](../../resource-manager-resource-explorer.md).
 
 #### <a name="grant-access-to-resources"></a>Udzielanie dostępu do zasobów
 
-Jeśli zezwolisz na dostęp do zasobów platformy Azure, zawsze jest najlepszym rozwiązaniem, aby zapewnić użytkownikom najniższych uprawnień, które są wymagane do wykonywania danego zadania.
+Gdy zezwolisz na dostęp do zasobów platformy Azure, zawsze najlepszym rozwiązaniem jest zapewnienie użytkownikom najniższych uprawnień, które są wymagane do wykonania danego zadania.
 
-- **Kontrola dostępu oparta na rolach (RBAC)** : Na platformie Azure, możesz udzielić dostępu do kont użytkowników (jednostki) w określonym zakresie: subskrypcji, grupy zasobów lub poszczególnych zasobów. Kontrola RBAC umożliwia wdrażanie zestaw zasobów w grupie zasobów i przyznawanie uprawnień do określonego użytkownika lub grupy. Umożliwia on również ograniczanie dostępu do zasobów, które należą do docelowej grupy zasobów. Można również przyznać dostęp do jednego zasobu, np. maszyny wirtualnej lub sieci wirtualnej. Aby udzielić dostępu, przypisywanie roli do użytkownika, grupy lub jednostki usługi. Istnieje wiele wstępnie zdefiniowanych ról, a można również definiować własne niestandardowe role. Aby dowiedzieć się więcej, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md).
+- **Kontrola dostępu oparta na rolach (RBAC)** : Na platformie Azure można udzielić dostępu do kont użytkowników (podmiotów zabezpieczeń) w określonym zakresie: subskrypcji, grupy zasobów lub poszczególnych zasobów. RBAC pozwala wdrożyć zestaw zasobów w grupie zasobów i przyznać uprawnienia do określonego użytkownika lub grupy. Pozwala również ograniczyć dostęp tylko do zasobów należących do docelowej grupy zasobów. Możesz również udzielić dostępu do pojedynczego zasobu, na przykład maszyny wirtualnej lub sieci wirtualnej. Aby udzielić dostępu, należy przypisać rolę do użytkownika, grupy lub nazwy głównej usługi. Istnieje wiele wstępnie zdefiniowanych ról i można także definiować własne role niestandardowe. Aby dowiedzieć się więcej, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md)
 
-  > **Kiedy należy używać**: Kiedy należy precyzyjne zarządzanie dostępem dla użytkowników i grup lub należy ustawić użytkownika jako właściciela, subskrypcji.
+  > **Kiedy używać**: Jeśli potrzebujesz szczegółowego zarządzania dostępem dla użytkowników i grup lub chcesz, aby użytkownik był właścicielem subskrypcji.
   > 
-  > **Rozpoczynanie pracy**: Aby dowiedzieć się więcej, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
+  > **Rozpocznij**: Aby dowiedzieć się więcej, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
-- **Usługa obiekty główne**: Oprócz zapewniania dostępu do podmiotów zabezpieczeń użytkowników i grup, można przyznać taki sam dostęp do jednostki usługi.
+- **Obiekty główne usługi**: Oprócz zapewniania dostępu do podmiotów zabezpieczeń i grup użytkowników można przyznać ten sam dostęp do jednostki usługi.
 
-  > **Kiedy należy używać**: Jeśli one programowo zarządzania zasobami platformy Azure lub udzielania dostępu do aplikacji. Aby uzyskać więcej informacji, zobacz [aplikacji Utwórz usługi Active Directory i jednostki usługi](../../active-directory/develop/howto-create-service-principal-portal.md).
+  > **Kiedy używać**: W przypadku programistycznego zarządzania zasobami platformy Azure lub przyznawania dostępu do aplikacji. Aby uzyskać więcej informacji, zobacz [tworzenie Active Directory aplikacji i nazwy głównej usługi](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 #### <a name="tags"></a>`Tags`
 
-Usługa Azure Resource Manager pozwala przypisać znaczniki niestandardowe do poszczególnych zasobów. Tagi, które są pary klucz wartość, może być przydatne, gdy trzeba zorganizować zasoby dotyczące rozliczeń lub monitorowania. Tagi umożliwiają możesz śledzić zasoby w wielu grupach zasobów. Można przypisać tagi w portalu, w szablonie usługi Azure Resource Manager lub programowo, za pomocą interfejsu API REST, wiersza polecenia platformy Azure lub programu PowerShell. Wiele tagów można przypisać do każdego zasobu. Aby dowiedzieć się więcej, zobacz [porządkowanie zasobów na platformie Azure za pomocą tagów](../../resource-group-using-tags.md).
+Azure Resource Manager pozwala przypisywać niestandardowe znaczniki do poszczególnych zasobów. Tagi, które są parami klucz-wartość, mogą być przydatne, gdy trzeba zorganizować zasoby na potrzeby rozliczeń lub monitorowania. Tagi umożliwiają śledzenie zasobów między wieloma grupami zasobów. Możesz przypisywać Tagi w portalu, w szablonie Azure Resource Manager lub programowo przy użyciu interfejsu API REST, interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Do każdego zasobu można przypisać wiele tagów. Aby dowiedzieć się więcej, zobacz [Używanie tagów do organizowania zasobów platformy Azure](../../resource-group-using-tags.md).
 
 ### <a name="billing"></a>Rozliczenia
 
-W przeniesienie ze środowiska lokalnego w środowisku usług hostowanych w chmurze śledzenia i Szacowanie usługi użycia i kosztów związanych są istotne kwestie. Jest ważne można było oszacować nowe zasoby kosztów do uruchamiania co miesiąc. Należy także być w stanie projektu, jak wygląda rozliczeń w danym miesiącu, w oparciu o bieżących wydatków.
+W przypadku przenoszenia z zasobów lokalnych do usług hostowanych w chmurze śledzenie i ocenianie użycia usługi oraz kosztów pokrewnych ma duże znaczenie. Ważne jest, aby można było oszacować, jakie nowe zasoby są uruchamiane co miesiąc. Musisz również mieć możliwość projektu, w jaki sposób rozliczenia są sprawdzane w danym miesiącu, na podstawie bieżących wydatków.
 
-#### <a name="get-resource-usage-data"></a>Pobieranie danych użycia zasobów
+#### <a name="get-resource-usage-data"></a>Pobierz dane użycia zasobów
 
-System Azure oferuje zestaw rozliczeń interfejsów API REST, które udzielić dostępu do zużycia zasobów i informacji o metadanych dla subskrypcji platformy Azure. Te interfejsy API rozliczeń zapewniają możliwość lepiej przewiduj i zarządzania kosztami platformy Azure. Można śledzić i analizować wydatków z podziałem na godziny, tworzyć alerty wydatków i przewidywania przyszłych rozliczeń na podstawie bieżącego trendów użycia.
+Platforma Azure udostępnia zestaw interfejsów API REST rozliczeń, które zapewniają dostęp do zasobów i informacji o metadanych dla subskrypcji platformy Azure. Te interfejsy API rozliczeń zapewniają możliwość lepszego przewidywania kosztów platformy Azure i zarządzania nimi. Możesz śledzić i analizować wydatki w przyrostach godzinowych, tworzyć alerty wydatków i przewidywania przyszłych rozliczeń na podstawie bieżących trendów użycia.
 
->**Rozpoczynanie pracy**: Aby dowiedzieć się więcej na temat korzystania z interfejsów API rozliczeń, zobacz [API RateCard i użycie rozliczeń platformy Azure — omówienie](../../billing-usage-rate-card-overview.md).
+>**Rozpocznij**: Aby dowiedzieć się więcej o korzystaniu z interfejsy API rozliczeń, zobacz [Omówienie interfejsów API usługi Azure rozliczeń i RateCard](../../billing-usage-rate-card-overview.md).
 
 #### <a name="predict-future-costs"></a>Przewidywanie przyszłych kosztów
 
-Mimo że jest trudne do szacowania kosztów wcześniej, platforma Azure ma [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) czy można używać podczas szacowania kosztów wdrożone zasoby. Blok rozliczeń w portalu i interfejsów API REST rozliczeń umożliwia również oszacować przyszłości oszczędność kosztów, w zależności od bieżącego użycia.
+Chociaż jest trudne do oszacowania kosztów z wyprzedzeniem, platforma Azure ma [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) , którego można użyć w przypadku oszacowania kosztów wdrożonych zasobów. Możesz również użyć bloku rozliczenia w portalu i interfejsów API REST rozliczeń, aby oszacować przyszłe koszty na podstawie bieżącego zużycia.
 
->**Rozpoczynanie pracy**: Zobacz [API RateCard i użycie rozliczeń platformy Azure — omówienie](../../billing-usage-rate-card-overview.md).
+>**Rozpocznij**: Zobacz [Omówienie użycia rozliczeń platformy Azure i interfejsów API RateCard](../../billing-usage-rate-card-overview.md).

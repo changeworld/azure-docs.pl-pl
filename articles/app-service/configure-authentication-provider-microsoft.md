@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie uwierzytelniania Account Microsoft — usłudze Azure App Service
-description: Dowiedz się, jak skonfigurować uwierzytelnianie Account Microsoft dla aplikacji usługi App Services.
+title: Konfigurowanie uwierzytelniania konta Microsoft — Azure App Service
+description: Dowiedz się, jak skonfigurować uwierzytelnianie konta Microsoft dla aplikacji App Services.
 author: mattchenderson
 services: app-service
 documentationcenter: ''
@@ -15,49 +15,49 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e3da856efd7d44f15f9de27c9e38375d40dc211d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10b661f0c4b7dc45284b907e83df3c0372f97cab
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60850959"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561542"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Jak skonfigurować aplikację App Service, aby używała Microsoft Account login
+# <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Jak skonfigurować aplikację App Service do korzystania z logowania do konta Microsoft
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-W tym temacie przedstawiono sposób konfigurowania usługi Azure App Service, aby użyć Account Microsoft jako dostawcy uwierzytelniania. 
+W tym temacie opisano sposób konfigurowania Azure App Service do korzystania z konta Microsoft jako dostawcy uwierzytelniania. 
 
-## <a name="register-microsoft-account"> </a>Zarejestruj swoją aplikację przy użyciu konta Microsoft
-1. Zaloguj się do [Azure Portal], a następnie przejdź do aplikacji. Kopiuj usługi **adresu URL**, umożliwiający później skonfigurować aplikację za pomocą Account Microsoft.
-2. Przejdź do [Moje aplikacje] strony w programie Microsoft Account Developer Center, a następnie zaloguj się przy użyciu konta Microsoft, jeśli jest to wymagane.
-3. Kliknij przycisk **Dodaj aplikację**, a następnie wpisz nazwę aplikacji i kliknij przycisk **Utwórz**.
-4. Zwróć uwagę na **identyfikator aplikacji**, ponieważ będzie on potrzebny później. 
-5. W obszarze "Platforms", kliknij **Dodaj platformy** i wybierz pozycję "Web".
-6. W obszarze "Identyfikatory URI przekierowań" podać punktu końcowego dla aplikacji, a następnie kliknij przycisk **Zapisz**. 
+## <a name="register-microsoft-account"> </a>Zarejestruj aplikację na koncie Microsoft
+1. Zaloguj się do [Azure Portal]i przejdź do swojej aplikacji. Skopiuj **adres URL**, który później zostanie użyty do skonfigurowania aplikacji przy użyciu konta Microsoft.
+2. Po zażądaniu przejdź do [**rejestracje aplikacji**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)i zaloguj się przy użyciu konto Microsoft.
+3. Kliknij pozycję **Dodaj aplikację**, a następnie wpisz nazwę aplikacji, a następnie kliknij pozycję **Utwórz**.
+4. Zanotuj **Identyfikator aplikacji**, ponieważ będzie on potrzebny później. 
+5. W obszarze "platformy" kliknij pozycję **Dodaj platformę** i wybierz pozycję "Web".
+6. W obszarze "Przekieruj identyfikatory URI" Podaj punkt końcowy dla aplikacji, a następnie kliknij przycisk **Zapisz**. 
    
    > [!NOTE]
-   > Twojego przekierowania URI jest adres URL aplikacji dołączany ścieżki, */.auth/login/microsoftaccount/callback*. Na przykład `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`.   
-   > Upewnij się, że będą używać schematu HTTPS.
+   > Identyfikator URI przekierowania to adres URL aplikacji dołączonej ze ścieżką */.auth/login/MicrosoftAccount/callback*. Na przykład `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`.   
+   > Upewnij się, że używasz schematu HTTPS.
    
-7. W obszarze "Wpisów tajnych aplikacji," kliknij **wygenerować nowe hasło**. Zanotuj wartość, która jest wyświetlana. Gdy zechcesz opuścić stronę, go nie pojawi się ponownie.
+7. W obszarze "wpisy tajne aplikacji" kliknij pozycję **Generuj nowe hasło**. Zanotuj wartość, która zostanie wyświetlona. Po opuszczeniu strony nie zostanie ona wyświetlona ponownie.
 
     > [!IMPORTANT]
-    > Hasło jest ważnym poświadczeniem zabezpieczeń. Nie udostępnić innym osobom hasło i rozpowszechnić ją w aplikacji klienckiej.
+    > Hasło jest ważnym poświadczeniem zabezpieczeń. Nie udostępniaj nikomu hasła ani nie rozpowszechniaj go w aplikacji klienckiej.
     
 8. Kliknij polecenie **Zapisz**.
 
-## <a name="secrets"> </a>Dodaj informacje o Account firmy Microsoft do aplikacji usługi App Service
-1. Ponownie [Azure Portal], przejdź do aplikacji, kliknij przycisk **ustawienia** > **uwierzytelniania / autoryzacji**.
-2. Jeśli uwierzytelnianie / autoryzacja funkcja nie jest włączona, przełącz go **na**.
-3. Kliknij przycisk **konta Microsoft**. Wklej wartości Identyfikatora aplikacji i hasło, które uzyskany wcześniej, a opcjonalnie włączyć wszystkie zakresy, wymaganych przez aplikację. Następnie kliknij przycisk **OK**.
+## <a name="secrets"> </a>Dodawanie informacji o koncie Microsoft do aplikacji App Service
+1. Wróć do [Azure Portal], przejdź do aplikacji, kliknij pozycję **Ustawienia** > **uwierzytelnianie/autoryzacja**.
+2. Jeśli funkcja uwierzytelniania/autoryzacji nie jest włączona, **Włącz ją.**
+3. Kliknij pozycję **konto Microsoft**. Wklej wartości identyfikatora aplikacji i hasła, które zostały uzyskane wcześniej, i opcjonalnie Włącz wszystkie zakresy wymagane przez aplikację. Następnie kliknij przycisk **OK**.
    
     ![][1]
    
-    Domyślnie usługa App Service zapewnia uwierzytelnianie, ale nie ogranicza autoryzowanego dostępu do zawartości witryny i interfejsów API. W kodzie aplikacji musi autoryzować użytkowników.
-4. (Opcjonalnie) Aby ograniczyć dostęp do witryny użytkownikom tylko uwierzytelnione przez konto Microsoft, należy ustawić **akcji do wykonania w przypadku nieuwierzytelnionego żądania** do **Account Microsoft**. Wymaga to, że wszystkie żądania uwierzytelnienia, a wszystkie nieuwierzytelnione żądania są przekierowywane do konta Microsoft w celu uwierzytelniania.
-5. Kliknij pozycję **Zapisz**.
+    Domyślnie usługa App Service zapewnia uwierzytelnianie, ale nie ogranicza uprawnień dostępu do zawartości i interfejsów API witryny. Musisz autoryzować użytkowników w kodzie aplikacji.
+4. Obowiązkowe Aby ograniczyć dostęp do witryny tylko do użytkowników uwierzytelnionych przez konto Microsoft, należy ustawić **akcję podejmowaną, gdy żądanie nie zostanie uwierzytelnione** do **konta Microsoft**. Wymaga to uwierzytelnienia wszystkich żądań, a wszystkie nieuwierzytelnione żądania są przekierowywane do konto Microsoft na potrzeby uwierzytelniania.
+5. Kliknij polecenie **Zapisz**.
 
-Teraz można przystąpić do Account Microsoft uwierzytelniania w aplikacji.
+Teraz możesz przystąpić do uwierzytelniania w aplikacji za pomocą konta Microsoft.
 
 ## <a name="related-content"> </a>Powiązana zawartość
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
@@ -69,5 +69,5 @@ Teraz można przystąpić do Account Microsoft uwierzytelniania w aplikacji.
 
 <!-- URLs. -->
 
-[Moje aplikacje]: https://go.microsoft.com/fwlink/p/?LinkId=262039
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure Portal]: https://portal.azure.com/

@@ -1,6 +1,6 @@
 ---
-title: Migracja do nowego zadania Elastic Database | Dokumentacja firmy Microsoft
-description: Przeprowadź migrację do nowego zadania Elastic Database.
+title: Migrowanie do nowych zadań Elastic Database | Microsoft Docs
+description: Przeprowadź migrację do nowych zadań Elastic Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,31 +10,30 @@ ms.topic: conceptual
 author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
-manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 627b29018afff2adb57b3b8b5c816bea9c421f68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9fa3444244cbd51c3f14abcfef5212a366cadbd2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236858"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68550552"
 ---
-# <a name="migrate-to-the-new-elastic-database-jobs"></a>Migracja do nowego zadania elastycznych baz danych
+# <a name="migrate-to-the-new-elastic-database-jobs"></a>Migruj do nowego zadania Elastic Database
 
-Uaktualnionej wersji [zadania Elastic Database](elastic-jobs-overview.md) jest dostępna.
+Dostępna jest uaktualniona wersja [Elastic Database zadań](elastic-jobs-overview.md) .
 
-Jeśli masz istniejący klient hostowanej wersji zadania Elastic Database, poleceń cmdlet migracji i skryptów są dostarczane w prosty sposób migracji do najnowszej wersji.
+Jeśli masz istniejącą obsługiwaną przez klienta wersję programu Elastic Database zadania, w celu ułatwienia migracji do najnowszej wersji są udostępniane polecenia cmdlet i skrypty migracji.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Uaktualnioną wersją zadania elastycznych baz danych ma nowy zestaw poleceń cmdlet programu PowerShell do użycia podczas migracji. Te nowe polecenia cmdlet przenieść wszystkie poświadczenia istniejącego zadania jest przeznaczony dla (w tym baz danych, serwery, kolekcje niestandardowe), wyzwalaczy zadań, harmonogramów zadań, zawartość zadania i zadań za pośrednictwem nowego agenta elastycznych zadań.
+Uaktualniona wersja zadania Elastic Database ma nowy zestaw poleceń cmdlet programu PowerShell do użycia podczas migracji. Te nowe polecenia cmdlet przenoszą wszystkie istniejące poświadczenia zadania, cele (w tym bazy danych, serwery, kolekcje niestandardowe), Wyzwalacze zadań, harmonogramy zadań, zawartość zadania i zadania do nowego agenta zadań elastycznych.
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Zainstaluj najnowsze polecenia cmdlet zadań elastycznych
 
-Jeśli nie masz jeszcze subskrypcji platformy Azure, [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.
+Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) .
 
-Zainstaluj **Az.Sql** 1.1.1-preview modułu, aby uzyskać najnowsze polecenia cmdlet zadania elastycznego. Uruchom następujące polecenia w programie PowerShell z dostępem administracyjnym.
+Zainstaluj moduł **AZ. SQL** 1.1.1-Preview, aby uzyskać najnowsze polecenia cmdlet Elastic Job. Uruchom następujące polecenia w programie PowerShell z dostępem administracyjnym.
 
 ```powershell
 # Installs the latest PackageManagement powershell package which PowerShellGet v1.6.5 is dependent on
@@ -55,9 +54,9 @@ Import-Module Az.Sql -RequiredVersion 1.1.1
 Get-Module Az.Sql
 ```
 
-### <a name="create-a-new-elastic-job-agent"></a>Utwórz nowego agenta elastycznych zadań
+### <a name="create-a-new-elastic-job-agent"></a>Utwórz nowego agenta zadań elastycznych
 
-Po zainstalowaniu nowych poleceń cmdlet, należy utworzyć nowy agent elastycznych zadań.
+Po zainstalowaniu nowych poleceń cmdlet Utwórz nowego agenta zadań elastycznych.
 
 ```powershell
 # Register your subscription for the for the Elastic Jobs public preview feature
@@ -69,9 +68,9 @@ $db = Get-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serv
 $agent = $db | New-AzSqlElasticJobAgent -Name <agentName>
 ```
 
-### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>Zainstaluj polecenia cmdlet programu stare zadania Elastic Database
+### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>Instalowanie starych poleceń cmdlet programu Elastic Database Jobs
 
-Migracja musi korzystać z niektórych *stare* zadania elastycznego poleceń cmdlet, więc uruchom następujące polecenia, jeśli nie masz już je zainstalowane.
+Migracja musi używać niektórych *starych* poleceń cmdlet zadań elastycznych, dlatego Uruchom następujące polecenia, jeśli nie zostały jeszcze zainstalowane.
 
 ```powershell
 # Install the old elastic job cmdlets if necessary and initialize the old jobs cmdlets
@@ -91,7 +90,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 ## <a name="migration"></a>Migracja
 
-Skoro zarówno stare i nowe zadania elastyczne polecenia cmdlet są inicjowane, migrować swoje poświadczenia zadania, obiektów docelowych i zadań, do nowego *bazy danych zadania*.
+Po zainicjowaniu zarówno starych, jak i nowych poleceń cmdlet zadań elastycznych można migrować poświadczenia zadania, cele i zadania do nowej *bazy danych zadań*.
 
 ### <a name="setup"></a>Konfiguracja
 
@@ -111,7 +110,7 @@ function Log-ChildOutput ($output) {
 
 
 
-### <a name="migrate-credentials"></a>Migracja poświadczenia
+### <a name="migrate-credentials"></a>Migrowanie poświadczeń
 
 ```powershell
 function Migrate-Credentials ($agent) {
@@ -139,7 +138,7 @@ function Migrate-Credentials ($agent) {
 }
 ```
 
-Aby migrować swoje poświadczenia, wykonaj następujące polecenie, przekazując `$agent` obiekt programu PowerShell z wcześniej.
+Aby przeprowadzić migrację poświadczeń, wykonaj następujące polecenie, przechodząc `$agent` od wcześniejszego obiektu programu PowerShell.
 
 ```powershell
 Migrate-Credentials $agent
@@ -367,10 +366,10 @@ function Setup-TargetGroup ($tgName, $agent) {
 }
 ```
 
-Aby przeprowadzić migrację z elementów docelowych (serwerów, baz danych i kolekcji niestandardowych) do nowej bazy danych zadania, należy wykonać **grupy docelowe migracji** polecenia cmdlet, aby wykonać następujące czynności:
+Aby przeprowadzić migrację obiektów docelowych (serwerów, baz danych i kolekcji niestandardowych) do nowej bazy danych zadań, wykonaj polecenie cmdlet **migracji-TargetGroups** , aby wykonać następujące czynności:
 
-- Obiekty docelowe do poziomu głównego, które są serwerami i bazami danych zostaną zmigrowane do nowej grupy docelowej, o nazwie "(\<serverName\>, \<databaseName\>)" zawierające tylko docelową poziomu głównego.
-- Kolekcję niestandardową zostaną zmigrowane do nowej grupy docelowej, zawierający wszystkie podrzędne elementy docelowe.
+- Elementy docelowe poziomu głównego, które są serwerami i bazami danych, zostaną zmigrowane do nowej grupy docelowej\<o nazwie\>" \<(\>ServerName, DatabaseName)" zawierającej tylko element docelowy poziomu głównego.
+- Kolekcja niestandardowa zostanie zmigrowana do nowej grupy docelowej zawierającej wszystkie elementy docelowe elementów podrzędnych.
 
 ```powershell
 Migrate-TargetGroups $agent
@@ -400,7 +399,7 @@ Przykładowe dane wyjściowe:
 
 
 
-### <a name="migrate-jobs"></a>Zadania migracji
+### <a name="migrate-jobs"></a>Migrowanie zadań
 
 ```powershell
 function Migrate-Jobs ($agent)
@@ -563,11 +562,11 @@ function Setup-JobStep ($newJob, $job) {
 }
 ```
 
-Aby przeprowadzić migrację zadania, zawartość zadania, wyzwalacze zadania i harmonogramy zadań za pośrednictwem Twojego nowego agenta elastycznych zadań w bazie danych, wykonaj **zadania migracji** polecenia cmdlet, przekazując agenta.
+Aby migrować zadania, zawartość zadania, Wyzwalacze zadań i harmonogramy zadań do nowej bazy danych agenta zadań elastycznych, wykonaj polecenie cmdlet **migrowania zadań** w ramach agenta.
 
-- Zadania przy użyciu wielu wyzwalaczy z użyciem różnych harmonogramów są rozdzielone na wiele zadań ze schematem nazewnictwa: "\<jobName\> (\<scheduleName\>)".
-- Zawartość zadania są migrowane do zadania, dodając domyślne krok zadania o nazwie JobStep tekst polecenia skojarzone.
-- Zadania są domyślnie wyłączone, dzięki czemu można go zweryfikować przed ich włączeniem.
+- Zadania z wieloma wyzwalaczami z różnymi harmonogramami są rozdzielone na wiele zadań przy użyciu\<schematu\> nazewnictwa:\>"jobName (\<ScheduleName)".
+- Zawartość zadania jest migrowana do zadania przez dodanie domyślnego kroku zadania o nazwie JobStep z skojarzonym tekstem polecenia.
+- Zadania są domyślnie wyłączone, aby można było je sprawdzić przed ich włączeniem.
 
 ```powershell
 Migrate-Jobs $agent
@@ -603,11 +602,11 @@ Job job4
 
 
 
-## <a name="migration-complete"></a>Migracja została ukończona
+## <a name="migration-complete"></a>Migracja zakończona
 
-*Bazy danych zadania* teraz powinny mieć wszystkie poświadczenia zadania, celów, wyzwalaczy zadań, harmonogramów zadań, zawartość zadania i zadania poddane migracji.
+*Baza danych zadań* powinna mieć teraz wszystkie poświadczenia zadania, cele, Wyzwalacze zadań, harmonogramy zadań, zawartość zadania i zadania migrowane przez program.
 
-Aby upewnić się, że wszystkie elementy zostały poprawnie zmigrowane, należy użyć następujących skryptów:
+Aby upewnić się, że wszystko jest poprawnie migrowane, użyj następujących skryptów:
 
 ```powershell
 $creds = $agent | Get-AzSqlElasticJobCredential
@@ -616,19 +615,19 @@ $jobs = $agent | Get-AzSqlElasticJob
 $steps = $jobs | Get-AzSqlElasticJobStep
 ```
 
-Aby sprawdzić, czy zadania są wykonywane prawidłowo, uruchom je:
+Aby sprawdzić, czy zadania są wykonywane prawidłowo, należy je uruchomić:
 
 ```powershell
 $jobs | Start-AzSqlElasticJob
 ```
 
-Dla zadań, które zostały uruchomione zgodnie z harmonogramem Pamiętaj, aby je włączyć, dzięki czemu mogą być uruchamiane w tle:
+W przypadku wszystkich zadań, które zostały uruchomione zgodnie z harmonogramem, należy je włączyć, aby mogły być uruchamiane w tle:
 
 ```powershell
 $jobs | Set-AzSqlElasticJob -Enable
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Tworzenie zadań elastycznych i zarządzanie nimi za pomocą programu PowerShell](elastic-jobs-powershell.md)
 - [Tworzenie zadań elastycznych i zarządzanie nimi za pomocą języka Transact-SQL (T-SQL)](elastic-jobs-tsql.md)

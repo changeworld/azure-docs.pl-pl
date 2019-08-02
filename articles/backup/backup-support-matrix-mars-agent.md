@@ -1,18 +1,18 @@
 ---
 title: Macierz obsługi dla tworzenia kopii zapasowych maszyn z uruchomionym agentem Microsoft Azure Recovery Services (MARS) z Azure Backup
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
-author: rayne-wiselman
+author: dcurwin
 ms.service: backup
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.author: raynew
+ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: d9f3c9b94a093df539a6ca4660383837becf1709
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 46863b2eed8e5c5c4074a713b50739820a1e5bc9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464843"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639533"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -78,10 +78,10 @@ Windows 10 (Enterprise, Pro, Home) | Tak | Nie
 Windows 8.1 (Enterprise, Pro)| Tak |Nie
 Windows 8 (Enterprise, Pro) | Yes | Nie
 Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Tak | Nie
-Windows Server 2016 (wersje Standard, Datacenter, Essentials) | Tak | Yes
+Windows Server 2016 (wersje Standard, Datacenter, Essentials) | Tak | Tak
 Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Tak | Tak
-Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Yes | Tak
-Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Tak | Tak
+Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Tak | Tak
+Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Yes | Tak
 Windows Server 2008 z dodatkiem SP2 (wersje Standard, Datacenter, Foundation) | Tak | Nie
 Windows Storage Server 2016/2012 R2/2012 (standard, Grupa robocza) | Tak | Nie
 
@@ -124,7 +124,7 @@ Woluminy offline | Nieobsługiwane |   Usługa VSS działa tylko wtedy, gdy wolu
 Udział sieciowy   | Nieobsługiwane |   Wolumin musi być lokalny na serwerze.
 Woluminy chronione przez funkcję BitLocker | Nieobsługiwane |   Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
 Identyfikacja systemu plików  | Nieobsługiwane |   Obsługiwany jest tylko system plików NTFS.
-Nośnik wymienny | Nieobsługiwane |   Wszystkie źródła elementów kopii zapasowej muszą  mieć ustalony stan.
+Nośnik wymienny | Nieobsługiwane |   Wszystkie źródła elementów kopii zapasowej muszą mieć ustalony stan.
 Deduplikowane dyski | Obsługiwane | Azure Backup konwertuje deduplikowane dane na normalne dane. Optymalizuje, szyfruje, przechowuje i wysyła dane do magazynu.
 
 ## <a name="support-for-initial-offline-backup"></a>Obsługa początkowej kopii zapasowej offline
@@ -142,6 +142,6 @@ Za pomocą funkcji [natychmiastowego przywracania](backup-instant-restore-capabi
 
 Kopie zapasowe nie mogą zostać przywrócone na komputerze docelowym, na którym działa Starsza wersja systemu operacyjnego. Na przykład kopie zapasowe wykonane z komputera z systemem Windows 7 można przywrócić w systemie Windows 8 lub nowszym. Ale nie można przywrócić kopii zapasowej wykonanej z komputera z systemem Windows 8 na komputerze z systemem Windows 7.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [architekturze tworzenia kopii zapasowych korzystającej z agenta Mars](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Dowiedz się, co jest obsługiwane podczas [uruchamiania agenta Mars na serwera usługi MAB lub serwerze DPM](backup-support-matrix-mabs-dpm.md).

@@ -1,57 +1,57 @@
 ---
-title: Routing zdarzeń i komunikatów za pomocą Twins cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Omówienie routingu zdarzeń i komunikatów z punktami końcowymi usługi za pomocą Twins cyfrowych platformy Azure
+title: Routing zdarzeń i komunikatów za pomocą usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Omówienie zdarzeń routingu i komunikatów do punktów końcowych usługi przy użyciu usługi Azure Digital bliźniaczych reprezentacji
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: 7dfda00aca403f7f95f0c56d1db28c3c609bebd2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a013525109fe85ad70e5aaa5895da20f5abc3237
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080654"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638536"
 ---
 # <a name="routing-events-and-messages"></a>Routing zdarzeń i komunikatów
 
-Rozwiązania IoT często łączą kilka zaawansowanych usług, które obejmują magazyn, analizy i inne. W tym artykule opisano sposób łączenia aplikacji Twins cyfrowych platformy Azure do usług platformy Azure analytics, sztucznej Inteligencji i magazynu ciągowych lepszy wgląd i funkcje.
+Rozwiązania IoT często łączą kilka zaawansowanych usług, które obejmują magazyn, analizę i wiele innych. W tym artykule opisano sposób łączenia aplikacji usługi Azure Digital bliźniaczych reprezentacji z usługami Azure Analytics, AI i Storage w celu uzyskania bardziej szczegółowych informacji i funkcji.
 
-## <a name="route-types"></a>Typy trasy  
+## <a name="route-types"></a>Typy tras  
 
-Twins cyfrowych platformy Azure oferuje dwa sposoby podłączenia zdarzeń IoT z innymi usługami platformy Azure lub aplikacje biznesowe:
+Usługa Azure Digital bliźniaczych reprezentacji oferuje dwa sposoby łączenia zdarzeń IoT z innymi usługami platformy Azure lub aplikacjami biznesowymi:
 
-* **Zdarzenia routingu Twins cyfrowych platformy Azure**: Obiekt w przestrzenne programu graph tej zmiany, dane telemetryczne, które zostanie odebrana, lub funkcji zdefiniowanej przez użytkownika, który tworzy powiadomienia na podstawie wstępnie zdefiniowanych warunków można wyzwalać zdarzenia Twins cyfrowych platformy Azure. Użytkownicy mogą wysyłać te zdarzenia w celu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [tematów usługi Azure Service Bus](https://azure.microsoft.com/services/service-bus/), lub [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do dalszego przetwarzania.
+* **Routing zdarzeń usługi Azure Digital bliźniaczych reprezentacji**: Obiekt w grafie przestrzennym, który zmienia, odebrane dane telemetryczne lub funkcja zdefiniowana przez użytkownika, która tworzy powiadomienie na podstawie wstępnie zdefiniowanych warunków, może wyzwalać zdarzenia usługi Azure Digital bliźniaczych reprezentacji. Użytkownicy mogą wysyłać te zdarzenia do [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [tematów Azure Service Bus](https://azure.microsoft.com/services/service-bus/)lub [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do dalszej obróbki.
 
-* **Routing danych telemetrycznych z urządzenia**: Oprócz routingu zdarzeń Twins cyfrowych platformy Azure również komunikaty można kierować do urządzenie niesformatowane telemetrii do usługi Event Hubs do dalszych informacji i analiz. Tego rodzaju komunikaty nie są przetwarzane przez Twins cyfrowych platformy Azure. I tylko są one przekazywane do Centrum zdarzeń.
+* **Telemetrię urządzenia routingu**: Oprócz zdarzeń routingu usługa Azure Digital bliźniaczych reprezentacji może również kierować komunikaty telemetryczne z nieprzetworzonych urządzeń do Event Hubs w celu uzyskania dalszych szczegółowych informacji i analizy. Te typy komunikatów nie są przetwarzane przez usługę Azure Digital bliźniaczych reprezentacji. Są one przekazywane tylko do centrum zdarzeń.
 
-Użytkownicy mogą określić jeden lub więcej punktów końcowych ruch wychodzący do wysyłania zdarzeń lub do przekazywania wiadomości. Zdarzenia i komunikaty będą wysyłane do punktów końcowych, zgodnie z tych wstępnie zdefiniowanych preferencji routingu. Innymi słowy użytkownicy mogą określić niektórych punkt końcowy do odbierania zdarzeń z operacji programu graph, innej, aby odbierać zdarzenia telemetrii urządzenia i tak dalej.
+Użytkownicy mogą określać jeden lub więcej punktów końcowych ruchu wychodzącego w celu wysyłania zdarzeń lub przesyłania dalej komunikatów. Zdarzenia i komunikaty będą wysyłane do punktów końcowych zgodnie z tymi wstępnie zdefiniowanymi preferencjami routingu. Innymi słowy użytkownicy mogą określić określony punkt końcowy do odbierania zdarzeń operacji wykresu, drugi do odbierania zdarzeń telemetrii urządzenia itd.
 
-![Azure — wydarzenia cyfrowego Twins routingu][1]
+![Routing zdarzeń usługi Azure Digital bliźniaczych reprezentacji][1]
 
-Routing do usługi Event Hubs zachowuje kolejności, w której są wysyłane komunikaty telemetryczne. Dlatego przychodzących w punkcie końcowym w takiej samej kolejności jak początkowo zostały odebrane. Event Grid i Service Bus nie gwarantuje punktów końcowych zostaną odebrane zdarzenia w tej samej kolejności ich wystąpienia. Jednak schematu zdarzeń zawiera sygnaturę czasową, który może służyć do identyfikowania kolejności po przyjeździe zdarzenia do punktu końcowego.
+Routing do Event Hubs zachowuje kolejność, w której wysyłane są komunikaty telemetryczne. Tak więc docierają do punktu końcowego w tej samej kolejności, w jakiej zostały pierwotnie odebrane. Event Grid i Service Bus nie gwarantuje, że punkty końcowe będą odbierać zdarzenia w takiej samej kolejności, w jakiej wystąpiły. Jednak schemat zdarzenia zawiera sygnaturę czasową, która może służyć do identyfikowania kolejności po nadejściu zdarzeń w punkcie końcowym.
 
 ## <a name="route-implementation"></a>Implementacja trasy
 
-Usługa Azure cyfrowego bliźniaczych reprezentacji obecnie obsługuje następujące **EndpointTypes**:
+Usługa Azure Digital bliźniaczych reprezentacji obecnie obsługuje następujące **EndpointTypes**:
 
-* **Centrum EventHub** jest punktem końcowym parametry połączenia usługi Event Hubs.
-* **Usługi ServiceBus** jest punktem końcowym parametry połączenia usługi Service Bus.
-* **EventGrid** jest punktem końcowym parametry połączenia usługi Event Grid.
+* **EventHub** jest punktem końcowym parametrów połączenia Event Hubs.
+* **ServiceBus** jest punktem końcowym parametrów połączenia Service Bus.
+* **EventGrid** jest punktem końcowym parametrów połączenia Event Grid.
 
-Twins cyfrowych platformy Azure obsługuje obecnie następujące **EventTypes** który będą wysyłane do wybranego punktu końcowego:
+Usługa Azure Digital bliźniaczych reprezentacji obecnie obsługuje następujące elementy **EventType** , które zostaną wysłane do wybranego punktu końcowego:
 
-* **DeviceMessages** są komunikaty telemetryczne wysyłane z urządzeń użytkowników i przekazywane przez system.
-* **TopologyOperation** jest operacją, która zmienia się wykres lub metadanych wykresu. Przykładem jest dodanie lub usunięcie jednostki, takie jak spacja.
-* **SpaceChange** powoduje zmianę miejsca obliczona wartość, która wynika z komunikaty telemetryczne urządzenia.
-* **SensorChange** powoduje zmianę czujnik obliczona wartość, która wynika z komunikaty telemetryczne urządzenia.
-* **UdfCustom** niestandardowe powiadomienie z funkcji zdefiniowanych przez użytkownika.
+* **DeviceMessages** to komunikaty telemetryczne wysyłane z urządzeń użytkowników i przekazywane przez system.
+* **TopologyOperation** jest operacją, która zmienia wykres lub metadane grafu. Przykładem jest dodanie lub usunięcie jednostki, na przykład spacja.
+* **SpaceChange** to zmiana obliczonej wartości miejsca, która wynika z komunikatu telemetrii urządzenia.
+* **SensorChange** to zmiana obliczonej wartości czujnika, która wynika z komunikatów telemetrycznych urządzenia.
+* **UdfCustom** to niestandardowe powiadomienie z funkcji zdefiniowanej przez użytkownika.
 
 > [!IMPORTANT]  
-> Nie wszystkie **EndpointTypes** obsługują wszystkie **EventTypes**.
-> Zobacz w poniższej tabeli **EventTypes** dozwolone dla każdego **EndpointType**.
+> Nie wszystkie **EndpointTypes** obsługują wszystkie **zdarzenia**.
+> Zapoznaj się z poniższą tabelą dla elementu **EventType** , które są dozwolone dla każdego elementu **EndpointType**.
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
@@ -60,13 +60,13 @@ Twins cyfrowych platformy Azure obsługuje obecnie następujące **EventTypes** 
 | EventGrid|               |         X         |     X       |      X       |   X       |
 
 >[!NOTE]  
->Aby uzyskać więcej informacji na temat tworzenia punktów końcowych i przykłady schematu zdarzeń, zobacz [wychodzących oraz punktów końcowych](how-to-egress-endpoints.md).
+>Aby uzyskać więcej informacji na temat tworzenia punktów końcowych i przykładów schematu zdarzeń, zobacz [wyjście i punkty końcowe](how-to-egress-endpoints.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Informacje na temat Twins cyfrowych platformy Azure w wersji zapoznawczej limity, zobacz [limity usługi publicznej wersji zapoznawczej](concepts-service-limits.md).
+- Aby dowiedzieć się więcej o ograniczeniach [usługi](concepts-service-limits.md)Azure Digital bliźniaczych reprezentacji w wersji zapoznawczej, zapoznaj się z limitami
 
-- Aby wypróbować przykładowe Twins cyfrowych platformy Azure, zobacz [szybkiego startu, aby znaleźć dostępne pokoje](quickstart-view-occupancy-dotnet.md).
+- Aby wypróbować próbkę Digital bliźniaczych reprezentacji na platformie Azure, zapoznaj się z [przewodnikiem Szybki Start, aby znaleźć dostępne pokoje](quickstart-view-occupancy-dotnet.md).
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-events-routing.png

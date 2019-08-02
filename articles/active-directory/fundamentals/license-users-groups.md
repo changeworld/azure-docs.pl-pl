@@ -2,7 +2,7 @@
 title: Przypisywanie lub usuwanie licencji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Instrukcje dotyczące sposobu przypisywania i usuwania licencji usługi Azure Active Directory użytkowników lub grup.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
@@ -10,16 +10,16 @@ ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f76e766d0aedae88eb11dd244f71f130f77c57e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60247648"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561663"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory
 Wiele usług Azure Active Directory (Azure AD) wymagają aktywacji produktu usługi Azure AD i wszystkich użytkowników lub grup (i skojarzone elementy członkowskie) licencji dla tego produktu. Tylko użytkownicy z liczby aktywnych licencji będą mogli uzyskać dostęp do licencjonowanych usługi Azure AD.
@@ -47,7 +47,7 @@ Możesz wyświetlić dostępne produkty, w poszczególnych licencji, w tym spraw
 
     **Licencji** zostanie wyświetlona strona.
 
-    ![Strona licencji, o liczbie zakupionych produktów i przypisanych licencji](media/license-users-groups/license-details-blade.png)
+    ![Strona licencje, z liczbą zakupionych produktów i przypisanymi licencjami](media/license-users-groups/license-details-blade.png)
     
 3. Wybierz **zakupionych produktów** link, aby wyświetlić **produktów** strony i zobaczyć **przypisane**, **dostępne**, i  **Wkrótce wygaśnie** szczegółów dla każdej wersji określonego produktu.
 
@@ -59,7 +59,7 @@ Możesz wyświetlić dostępne produkty, w poszczególnych licencji, w tym spraw
 Upewnij się, że każdy konieczności korzystania z licencjonowanego usługi Azure AD dysponuje odpowiednią licencją. Jest do Ciebie czy chcesz dodać prawa licencyjne do poszczególnych użytkowników lub całych grup.
 
 >[!Note]
->Licencjonowanie na podstawie grupy jest funkcją publicznej wersji zapoznawczej usługi Azure AD i jest dostępna z dowolnej płatnych planu licencjonowania usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Aby uzyskać szczegółowe informacje o tym, jak dodać użytkowników, zobacz [jak dodawanie lub usuwanie użytkowników w usłudze Azure Active Directory](add-users-azure-active-directory.md). Aby uzyskać szczegółowe informacje o tym, jak tworzyć grupy i dodawać członków, zobacz [utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md).
+>Licencjonowanie oparte na grupach jest publiczną funkcją w wersji zapoznawczej usługi Azure AD i jest dostępne z dowolnym płatnym planem licencjonowania usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Aby uzyskać szczegółowe informacje o tym, jak dodać użytkowników, zobacz [jak dodawanie lub usuwanie użytkowników w usłudze Azure Active Directory](add-users-azure-active-directory.md). Aby uzyskać szczegółowe informacje o tym, jak tworzyć grupy i dodawać członków, zobacz [utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md).
 
 ### <a name="to-assign-a-license-to-a-specific-user"></a>Aby przypisać licencję do określonego użytkownika
 1. Na **produktów** stronie, wybierz nazwę wersji, którą chcesz przypisać do użytkownika. Na przykład _Azure Active Directory — wersja Premium (Plan 2)_ .
@@ -76,7 +76,7 @@ Upewnij się, że każdy konieczności korzystania z licencjonowanego usługi Az
 
 4. Wybierz **opcje przydziału**, upewnij się, że masz odpowiednią licencję opcje włączona, a następnie wybierz **OK**.
 
-    ![Strona opcji licencji, wszystkie opcje dostępne w wersji](media/license-users-groups/license-option-blade-assignments.png)
+    ![Strona opcji licencji z wszystkimi opcjami dostępnymi w wersji](media/license-users-groups/license-option-blade-assignments.png)
 
     **Przypisywanie licencji** aktualizacji, aby pokazać, że użytkownik jest zaznaczone, a przydziały są skonfigurowane stron.
 
@@ -102,7 +102,7 @@ Upewnij się, że każdy konieczności korzystania z licencjonowanego usługi Az
 
 4. Wybierz **opcje przydziału**, upewnij się, że masz odpowiednią licencję opcje włączona, a następnie wybierz **OK**.
 
-    ![Strona opcji licencji, wszystkie opcje dostępne w wersji](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Strona opcji licencji z wszystkimi opcjami dostępnymi w wersji](media/license-users-groups/license-option-blade-group-assignments.png)
 
     **Przypisywanie licencji** aktualizacji, aby pokazać, że użytkownik jest zaznaczone, a przydziały są skonfigurowane stron.
 

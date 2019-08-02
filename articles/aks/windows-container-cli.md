@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
 ms.openlocfilehash: 305901007180cfb197cf5c0dfb338800449560a1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68382031"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Wersja zapoznawcza — Tworzenie kontenera systemu Windows Server w klastrze usługi Azure Kubernetes Service (AKS) przy użyciu interfejsu wiersza polecenia platformy Azure
@@ -42,7 +42,7 @@ Po utworzeniu klastra, który może uruchamiać kontenery systemu Windows Server
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
 
-Aby można było korzystać z kontenerów systemu Windows Server, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej AKS* , wykorzystując polecenie [AZ Extension Add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] ::
+Aby można było korzystać z kontenerów systemu Windows Server, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji* zapoznawczej przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] ::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -120,7 +120,7 @@ Następujące przykładowe dane wyjściowe przedstawiają pomyślnie utworzoną 
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
-Aby można było uruchomić klaster AKS, który obsługuje pule węzłów dla kontenerów systemu Windows Server, klaster musi używać zasad sieciowych, które korzystają z [usługi Azure CNI][azure-cni-about] (advanced) network plugin. For more detailed information to help plan out the required subnet ranges and network considerations, see [configure Azure CNI networking][use-advanced-networking]. Użyj polecenia [AZ AKS Create][AZ-AKS-Create] , aby utworzyć klaster AKS o nazwie *myAKSCluster*. To polecenie spowoduje utworzenie niezbędnych zasobów sieciowych, jeśli nie istnieją.
+Aby można było uruchomić klaster AKS, który obsługuje pule węzłów dla kontenerów systemu Windows Server, klaster musi używać zasad sieciowych, które korzystają z wtyczki sieciowej [Azure CNI][azure-cni-about] (Advanced). Aby uzyskać bardziej szczegółowe informacje ułatwiające planowanie wymaganych zakresów podsieci i zagadnień dotyczących sieci, zobacz [Konfigurowanie usługi Azure CNI Networking][use-advanced-networking]. Użyj polecenia [AZ AKS Create][az-aks-create] , aby utworzyć klaster AKS o nazwie *myAKSCluster*. To polecenie spowoduje utworzenie niezbędnych zasobów sieciowych, jeśli nie istnieją.
   * Klaster jest skonfigurowany z jednym węzłem
   * Parametry *Windows-Admin-Password* i *Windows-admin-username* ustawiają poświadczenia administratora dla wszystkich kontenerów systemu Windows Server utworzonych w klastrze.
 
@@ -194,7 +194,7 @@ aksnpwin987654                      Ready    agent   108s   v1.14.1
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Plik manifestu platformy Kubernetes definiuje żądany stan klastra, w tym informacje o obrazach kontenera do uruchomienia. W tym artykule manifest służy do tworzenia wszystkich obiektów wymaganych do uruchomienia przykładowej aplikacji ASP.NET w kontenerze systemu Windows Server. Ten manifest zawiera [wdrożenie][kubernetes-deployment] for the ASP.NET sample application and an external [Kubernetes service][kubernetes-service] Kubernetes w celu uzyskania dostępu do aplikacji z Internetu.
+Plik manifestu platformy Kubernetes definiuje żądany stan klastra, w tym informacje o obrazach kontenera do uruchomienia. W tym artykule manifest służy do tworzenia wszystkich obiektów wymaganych do uruchomienia przykładowej aplikacji ASP.NET w kontenerze systemu Windows Server. Ten manifest obejmuje [wdrożenie Kubernetes][kubernetes-deployment] dla przykładowej aplikacji ASP.NET i zewnętrznej [usługi Kubernetes][kubernetes-service] , aby uzyskać dostęp do aplikacji z Internetu.
 
 Przykładowa aplikacja ASP.NET jest dostarczana jako część [przykładów .NET Framework][dotnet-samples] i uruchamiana w kontenerze systemu Windows Server. AKS wymaga, aby kontenery systemu Windows Server były oparte na obrazach *systemu Windows server 2019* lub nowszego. Plik manifestu Kubernetes musi także definiować [Selektor węzła][node-selector] , aby poinformować klaster AKS o konieczności uruchomienia ASP.NET przykładowej aplikacji na węźle, który może uruchamiać kontenery systemu Windows Server.
 
@@ -269,7 +269,7 @@ Aby monitorować postęp, użyj polecenia [kubectl get-service][kubectl-get] z a
 kubectl get service sample --watch
 ```
 
-Początkowo *adres IP* dla przykładowej usługi  jest pokazywany jako *oczekujący*.
+Początkowo *adres IP* dla przykładowej usługi jest pokazywany jako *oczekujący*.
 
 ```
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -297,7 +297,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > Po usunięciu klastra jednostka usługi Azure Active Directory używana przez klaster usługi AKS nie jest usuwana. Aby zapoznać się z instrukcjami dotyczącymi usuwania jednostki usługi, zobacz temat [zagadnienia i usuwanie głównej usługi AKS][sp-delete].
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule został wdrożony klaster Kubernetes i wdrożono przykładową aplikację ASP.NET w kontenerze systemu Windows Server. [Uzyskaj dostęp do pulpitu nawigacyjnego sieci Web Kubernetes][kubernetes-dashboard] dla właśnie utworzonego klastra.
 

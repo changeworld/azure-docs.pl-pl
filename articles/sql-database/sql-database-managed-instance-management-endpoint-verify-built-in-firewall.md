@@ -1,6 +1,6 @@
 ---
-title: Odkryj wbudowanej zapory wystąpienia zarządzanego Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak sprawdzić ochronę za pomocą wbudowanych zapory w wystąpieniu zarządzanym usługi Azure SQL Database.
+title: Odkryj Azure SQL Database wbudowanej zapory wystąpienia zarządzanego | Microsoft Docs
+description: Dowiedz się, jak sprawdzić wbudowaną ochronę zapory w Azure SQL Database wystąpienia zarządzanego.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,25 +10,24 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 774455a2901782ef52b213c6a13c17636e28b1a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c98b0fd5669140559b4840e157394c2e8c6086ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699654"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567439"
 ---
 # <a name="verifying-the-managed-instance-built-in-firewall"></a>Weryfikowanie wbudowanej zapory wystąpienia zarządzanego
 
-Wystąpienie zarządzane [reguły zabezpieczeń ruchu przychodzącego obowiązkowe](sql-database-managed-instance-connectivity-architecture.md#mandatory-inbound-security-rules) wymaga portów zarządzania 9000, 9003, 1438, 1440, 1452 być otwarte z **dowolnego źródła** na grupy zabezpieczeń sieci (NSG), chroniące zarządzane Wystąpienie. Mimo że te porty zostały otwarte na poziomie sieciowych grup zabezpieczeń, są chronione na poziomie sieci przez zapory wbudowanych.
+[Reguły zabezpieczeń ruchu przychodzącego](sql-database-managed-instance-connectivity-architecture.md#mandatory-inbound-security-rules) dla wystąpień zarządzanych wymagają portów zarządzania 9000, 9003, 1438, 1440, 1452, aby można było otworzyć z **dowolnego źródła** w sieciowej grupie zabezpieczeń (sieciowej grupy zabezpieczeń), która chroni wystąpienie zarządzane. Chociaż te porty są otwarte na poziomie sieciowej grupy zabezpieczeń, są one chronione na poziomie sieci przez wbudowaną zaporę.
 
-## <a name="verify-firewall"></a>Sprawdź zapory
+## <a name="verify-firewall"></a>Weryfikuj zaporę
 
-Aby sprawdzić, czy te porty, należy użyć dowolnego narzędzia skanera zabezpieczeń do przetestowania tych portów. Poniższy zrzut ekranu pokazuje, jak użyć jednej z tych narzędzi.
+Aby sprawdzić te porty, użyj dowolnego narzędzia skanera zabezpieczeń do przetestowania tych portów. Poniższy zrzut ekranu pokazuje, jak używać jednego z tych narzędzi.
 
 ![Weryfikowanie wbudowanej zapory](./media/sql-database-managed-instance-management-endpoint/03_verify_firewall.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat wystąpienia zarządzane przez usługę i łączność, zobacz [architektura łączności usługi Azure SQL bazy danych zarządzane wystąpienia](sql-database-managed-instance-connectivity-architecture.md).
+Aby uzyskać więcej informacji na temat zarządzanych wystąpień i połączeń, zobacz [Azure SQL Database architektury łączności wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md).

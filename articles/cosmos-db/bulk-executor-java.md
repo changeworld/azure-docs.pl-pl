@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 68c83809cba0585d99751760c0e4f51893806170
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257200"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619817"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Wykonywały operacje zbiorcze na danych usługi Azure Cosmos DB za pomocą biblioteki języka Java przetwarzania zbiorczego
 
 Ten samouczek zawiera instrukcje na temat korzystania z usługi Azure Cosmos DB zbiorcze wykonawca Java biblioteki do zaimportowania, a następnie zaktualizować dokumenty usługi Azure Cosmos DB. Aby dowiedzieć się o biblioteki wykonawca zbiorcze oraz jak pomaga w ogromnej przepustowości i magazynu, zobacz [zbiorczo Przegląd biblioteki wykonawca](bulk-executor-overview.md) artykułu. W tym samouczku tworzenie aplikacji w języku Java, która generuje losowe dokumentów i są zbiorcze zaimportowane do kontenera usługi Azure Cosmos DB. Po zaimportowaniu będą zbiorczo zaktualizować niektóre właściwości dokumentu. 
 
-Obecnie zbiorcze wykonawca biblioteka jest obsługiwana przez interfejsu API SQL usługi Azure Cosmos DB i tylko konta interfejsu API języka Gremlin. W tym artykule opisano, jak biblioteka .NET wykonawca zbiorcze za pomocą konta interfejsu API SQL. Aby dowiedzieć się więcej o korzystaniu z biblioteki .NET wykonawca zbiorcze za pomocą interfejsu API języka Gremlin, zobacz [wykonywały operacje zbiorcze w usłudze Azure Cosmos DB — interfejs API Gremlin](bulk-executor-graph-dotnet.md).
+Obecnie Biblioteka wykonawców zbiorczych jest obsługiwana tylko przez Azure Cosmos DB z INTERFEJSem API SQL i kontami interfejsu API Gremlin. W tym artykule opisano sposób użycia zbiorczej procedury tworzenia biblioteki Java z kontami interfejsu API SQL. Aby dowiedzieć się więcej o korzystaniu z biblioteki .NET wykonawca zbiorcze za pomocą interfejsu API języka Gremlin, zobacz [wykonywały operacje zbiorcze w usłudze Azure Cosmos DB — interfejs API Gremlin](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).  
 
-* Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań. Alternatywnie można użyć [emulatora usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z `https://localhost:8081` punktu końcowego. Klucz podstawowy został podany w sekcji [Uwierzytelnianie żądań](local-emulator.md#authenticating-requests).  
+* Możesz bezpłatnie [wypróbować Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure. Można też użyć [emulatora Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z `https://localhost:8081` punktem końcowym. Klucz podstawowy został podany w sekcji [Uwierzytelnianie żądań](local-emulator.md#authenticating-requests).  
 
 * [Zestaw Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)  
   - W systemie Ubuntu uruchom polecenie `apt-get install default-jdk`, aby zainstalować zestaw JDK.  
@@ -37,7 +37,7 @@ Obecnie zbiorcze wykonawca biblioteka jest obsługiwana przez interfejsu API SQL
   
   - W systemie Ubuntu możesz uruchomić polecenie `apt-get install maven`, aby zainstalować narzędzie Maven.
 
-* Tworzenie konta interfejsu API SQL usługi Azure Cosmos DB przy użyciu kroków opisanych w [Tworzenie konta bazy danych](create-sql-api-java.md#create-a-database-account) sekcji z artykułem Szybki Start języka Java.
+* Utwórz konto Azure Cosmos DB interfejsu API SQL, korzystając z procedury opisanej w sekcji [Tworzenie konta bazy danych](create-sql-api-java.md#create-a-database-account) artykułu przewodnika Szybki Start w języku Java.
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 
@@ -118,8 +118,8 @@ Sklonowanego repozytorium zawiera dwa przykłady "elementów bulkimport" i "bulk
    |int getNumberOfDocumentsImported()  |   Całkowita liczba dokumentów, które zostały pomyślnie zaimportowane z dostarczonych do zbiorczego dokumentów zaimportować wywołania interfejsu API.      |
    |Podwójna getTotalRequestUnitsConsumed()   |  Łączna liczba jednostek żądania (RU) używane przez większość zaimportować wywołania interfejsu API.       |
    |Czas trwania getTotalTimeTaken()   |    Łączny czas za pomocą importowania zbiorczego do ukończenia wykonywania wywołań interfejsu API.     |
-   |Lista\<wyjątku > getErrors() |  Pobiera listę błędów, jeśli niektóre dokumenty z usługi batch do zbiorczego zaimportować wywołania interfejsu API nie można pobrać wstawiony.       |
-   |Lista\<obiektu > getBadInputDocuments()  |    Lista dokumentów nieprawidłowego formatu, które nie zostały pomyślnie zaimportowane zbiorczo zaimportować wywołania interfejsu API. Użytkownik powinien rozwiązać zwróconych dokumentów i ponów próbę importowania. Sformatowana niewłaściwe dokumenty zawierają dokumentów, których wartość Identyfikatora jest ciąg (wartość null lub jakikolwiek inny typ danych jest uznawane za nieprawidłowe).     |
+   |Wyjątek\<listy > GetErrors () |  Pobiera listę błędów, jeśli niektóre dokumenty z usługi batch do zbiorczego zaimportować wywołania interfejsu API nie można pobrać wstawiony.       |
+   |Lista\<obiektów > getBadInputDocuments ()  |    Lista dokumentów nieprawidłowego formatu, które nie zostały pomyślnie zaimportowane zbiorczo zaimportować wywołania interfejsu API. Użytkownik powinien rozwiązać zwróconych dokumentów i ponów próbę importowania. Sformatowana niewłaściwe dokumenty zawierają dokumentów, których wartość Identyfikatora jest ciąg (wartość null lub jakikolwiek inny typ danych jest uznawane za nieprawidłowe).     |
 
 5. Po umieszczeniu zbiorcze importowanie gotowych aplikacji kompilacji narzędzia wiersza polecenia ze źródła przy użyciu polecenia "mvn czyste pakiet". To polecenie spowoduje wygenerowanie pliku jar w folderze docelowym:  
 
@@ -182,7 +182,7 @@ Należy zaktualizować istniejące dokumenty przy użyciu interfejsu API BulkUpd
    |int getNumberOfDocumentsUpdated()  |   Całkowita liczba dokumentów, które zostały pomyślnie zaktualizowane poza dokumentów dostarczonych wywołania interfejsu API pakietu zbiorczego aktualizacji.      |
    |Podwójna getTotalRequestUnitsConsumed() |  Jednostki łączna liczba żądań (RU) używane przez aktualizacja zbiorcza wywołania interfejsu API.       |
    |Czas trwania getTotalTimeTaken()  |   Łączny czas zbiorczego aktualizacji do ukończenia wykonywania wywołań interfejsu API.      |
-   |Lista\<wyjątku > getErrors()   |    Pobiera listę błędów, jeśli niektóre dokumenty, poza partii dostarczane do wywołania interfejsu API zbiorcze aktualizacji nie można pobrać wstawiony.      |
+   |Wyjątek\<listy > GetErrors ()   |    Pobiera listę błędów, jeśli niektóre dokumenty, poza partii dostarczane do wywołania interfejsu API zbiorcze aktualizacji nie można pobrać wstawiony.      |
 
 3. Po umieszczeniu zbiorczej aktualizacji gotowych aplikacji kompilacji narzędzia wiersza polecenia ze źródła przy użyciu polecenia "mvn czyste pakiet". To polecenie spowoduje wygenerowanie pliku jar w folderze docelowym:  
 
