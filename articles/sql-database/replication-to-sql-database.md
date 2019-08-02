@@ -1,6 +1,6 @@
 ---
-title: Replikacja usługi Azure SQL Database | Dokumentacja firmy Microsoft"
-description: Dowiedz się więcej o za pomocą replikacji programu SQL Server za pomocą usługi Azure SQL Database pojedynczych baz danych i baz danych w elastycznej puli
+title: Replikacja do Azure SQL Database | Microsoft Docs "
+description: Informacje o korzystaniu z SQL Server replikacji z Azure SQL Database pojedynczymi bazami danych i bazami danych w pulach elastycznych
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -10,50 +10,49 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b9d6569504b5352c6187afe12d903c986019c517
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eab8f4809742b69e92cb835801493722d28afe49
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646816"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570481"
 ---
-# <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikacja bazy danych SQL pojedynczych i puli baz danych
+# <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikacja do SQL Database jednej i puli baz danych
 
-Można skonfigurować replikacji programu SQL Server do pojedynczych i puli baz danych na [bazy danych programu SQL server](sql-database-servers.md) w usłudze Azure SQL Database.  
+Replikację SQL Server można skonfigurować na pojedynczej i w puli bazach danych na [serwerze SQL Database](sql-database-servers.md) w Azure SQL Database.  
 
 ## <a name="supported-configurations"></a>**Obsługiwane konfiguracje:**
   
-- Program SQL Server może być wystąpienie programu SQL Server działającego w środowisku lokalnym lub wystąpienie serwera SQL uruchomionego na maszynie wirtualnej platformy Azure w chmurze. Aby uzyskać więcej informacji, zobacz [programu SQL Server na maszynach wirtualnych platformy Azure — omówienie](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/).  
-- Bazy danych Azure SQL musi być subskrybentem wypychania wydawcy z programem SQL Server.  
-- Baza danych dystrybucji i agentów replikacji nie można umieścić na bazę danych Azure SQL database.  
-- Migawki i replikacja jednokierunkowa transakcyjne są obsługiwane. Peer-to-peer replikacji transakcyjnej i replikacji scalającej nie są obsługiwane.
-- Replikacja jest dostępna w publicznej wersji zapoznawczej na wystąpieniu zarządzanym bazy danych SQL Azure. Wystąpienie zarządzane umożliwia hostowanie bazy danych wydawcy dystrybutora i subskrybenta. Aby uzyskać więcej informacji, zobacz [replikację za pomocą wystąpienia zarządzanego usługi SQL Database](replication-with-sql-database-managed-instance.md).
+- SQL Server może być wystąpieniem SQL Server działającego lokalnie lub wystąpieniem SQL Server uruchomionego na maszynie wirtualnej platformy Azure w chmurze. Aby uzyskać więcej informacji, zobacz [SQL Server na platformie Azure — omówienie Virtual Machines](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/).  
+- Baza danych SQL Azure musi być subskrybentem wypychania wydawcy SQL Server.  
+- Bazy danych dystrybucji i agentów replikacji nie można umieścić w usłudze Azure SQL Database.  
+- Migawki i jednokierunkowa replikacja transakcyjna są obsługiwane. Replikacja transakcyjna równorzędna i replikacja scalająca nie są obsługiwane.
+- Replikacja jest dostępna dla publicznej wersji zapoznawczej Azure SQL Database wystąpienia zarządzanego. Wystąpienie zarządzane może hostować bazy danych wydawcy, dystrybutora i subskrybentów. Aby uzyskać więcej informacji, zobacz [replikacja z wystąpieniem zarządzanym SQL Database](replication-with-sql-database-managed-instance.md).
 
 ## <a name="versions"></a>Wersje  
 
-- Wydawcy i dystrybutora musi wynosić co najmniej jednej z następujących wersji:  
-- SQL Server 2017 (14.x)
-- SQL Server 2016 (13.x)
-- SQL Server 2014 (12.x) z dodatkiem SP1 CU3
-- CU10 RTM programu SQL Server 2014 (12.x)
-- SQL Server 2012 (11.x) z dodatkiem SP2 CU8 lub z dodatkiem SP3
-- Próba skonfigurowania replikacji za pomocą starszej wersji może spowodować błąd, numer MSSQL_REPL20084 (ten proces nie może połączyć się subskrybenta.) i MSSQL_REPL40532 (nie można otworzyć serwera \<name > żądanego podczas logowania. Logowanie powiodło się.).  
-- Aby korzystać ze wszystkich funkcji usługi Azure SQL Database, należy używać najnowszej wersji [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
+- Wydawca i dystrybutor muszą mieć co najmniej jedną z następujących wersji:  
+- SQL Server 2017 (14. x)
+- SQL Server 2016 (13. x)
+- SQL Server 2014 (12. x) CU3 SP1
+- SQL Server 2014 (12. x) RTM CU10
+- SQL Server 2012 (11. x) SP2 CU8 lub SP3
+- Próba skonfigurowania replikacji przy użyciu starszej wersji może spowodować wystąpienie błędu MSSQL_REPL20084 (proces nie mógł nawiązać połączenia z subskrybentem) i MSSQL_REPL40532 (nie można otworzyć \<nazwy serwera > żądanej przez login. Logowanie nie powiodło się.  
+- Aby korzystać ze wszystkich funkcji Azure SQL Database, musisz używać najnowszych wersji narzędzi [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
   
 ## <a name="remarks"></a>Uwagi
 
-- Można skonfigurować replikacji przy użyciu [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub przez wykonanie instrukcji języka Transact-SQL na wydawcy. Nie można skonfigurować replikacji przy użyciu witryny Azure portal.  
-- Aby nawiązać połączenie z bazą danych Azure SQL database replikacji można używać tylko logowania uwierzytelniania programu SQL Server.
-- Zreplikowane tabele musi mieć klucz podstawowy.  
-- Masz istniejącą subskrypcję platformy Azure.  
-- Subskrybent bazy danych SQL platformy Azure można w dowolnym regionie.  
-- Jedna publikacja w programie SQL Server może obsługiwać zarówno usługi Azure SQL Database, jak i subskrybentów programu SQL Server (w środowisku lokalnym i programu SQL Server na maszynie wirtualnej platformy Azure).  
-- Zarządzanie replikacją, monitorowania i rozwiązywania problemów, należy wykonać z lokalnym serwerem SQL.  
-- Obsługiwane są wyłącznie Subskrypcje wypychane do usługi Azure SQL Database.  
-- Tylko `@subscriber_type = 0` jest obsługiwana w **procedury składowanej sp_addsubscription** dla bazy danych SQL.  
-- Usługa Azure SQL Database nie obsługuje replikację dwukierunkową, natychmiastowe, nadaje się do aktualizacji lub równorzędnych.
+- Replikację można skonfigurować za pomocą [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub przez wykonanie instrukcji języka Transact-SQL na wydawcy. Nie można skonfigurować replikacji przy użyciu Azure Portal.  
+- Replikacja może być SQL Server używana tylko do nawiązywania połączeń z bazą danych Azure SQL.
+- Zreplikowane tabele muszą mieć klucz podstawowy.  
+- Musisz mieć istniejącą subskrypcję platformy Azure.  
+- Subskrybent usługi Azure SQL Database może znajdować się w dowolnym regionie.  
+- Jedna publikacja na SQL Server może obsługiwać zarówno Azure SQL Database, jak i SQL Server (lokalnie i SQL Server w ramach maszyn wirtualnych platformy Azure).  
+- Zarządzanie replikacją, monitorowanie i rozwiązywanie problemów należy wykonać z SQL Server lokalnych.  
+- Obsługiwane są tylko subskrypcje wypychane do Azure SQL Database.  
+- Obsługiwane `@subscriber_type = 0` tylko w programie **sp_addsubscription** dla SQL Database.  
+- Azure SQL Database nie obsługuje dwukierunkowej, natychmiastowej lub aktualizowalnej replikacji równorzędnej.
 
 ## <a name="replication-architecture"></a>Architektura replikacji  
 
@@ -61,53 +60,53 @@ Można skonfigurować replikacji programu SQL Server do pojedynczych i puli baz 
 
 ## <a name="scenarios"></a>Scenariusze  
 
-### <a name="typical-replication-scenario"></a>Scenariusz typowe replikacji  
+### <a name="typical-replication-scenario"></a>Typowy scenariusz replikacji  
 
-1. Utwórz publikację Replikacja transakcyjna bazy danych programu SQL Server w środowisku lokalnym.  
-2. W programie SQL Server w środowisku lokalnym, użyj **Kreatora nowej subskrypcji** lub instrukcji Transact-SQL, aby utworzyć powiadomienie wypychane do subskrypcji usługi Azure SQL Database.  
-3. Z jednej puli baz danych i w usłudze Azure SQL Database początkowy zestaw danych jest migawką, tworzonego przez agenta migawek i rozproszonych i stosowane przez agenta dystrybucji. Wystąpienie zarządzane bazy danych również użyć kopii zapasowej bazy danych Aby zapełnić bazę danych subskrybenta.
+1. Utwórz publikację z replikacją transakcyjną w lokalnej bazie danych SQL Server.  
+2. Na SQL Server lokalnym Użyj **Kreatora nowej subskrypcji** lub instrukcji języka Transact-SQL, aby utworzyć wypychanie do subskrypcji Azure SQL Database.  
+3. W przypadku baz danych o pojedynczej i puli w Azure SQL Database początkowy zestaw danych jest migawką utworzoną przez agenta migawek i dystrybuowaną i stosowaną przez agenta dystrybucji. W przypadku bazy danych wystąpienia zarządzanego można także użyć kopii zapasowej bazy danych do wypełniania bazy danych subskrybenta.
 
 ### <a name="data-migration-scenario"></a>Scenariusz migracji danych  
 
-1. Korzystanie z replikacji transakcyjnej do replikowania danych z lokalnej bazy danych programu SQL Server do usługi Azure SQL Database.  
-2. Przekierowania klienta lub aplikacji warstwy środkowej, aby zaktualizować kopię bazy danych Azure SQL.  
-3. Zatrzymaj aktualizowanie wersji programu SQL Server w tabeli i usuwanie publikacji.  
+1. Replikacja transakcyjna umożliwia replikowanie danych z lokalnej bazy danych SQL Server do Azure SQL Database.  
+2. Przekieruj klienta lub aplikacje warstwy środkowej, aby zaktualizować kopię bazy danych Azure SQL Database.  
+3. Zatrzymaj aktualizację wersji SQL Server tabeli i Usuń publikację.  
 
 ## <a name="limitations"></a>Ograniczenia
 
-Następujące opcje nie są obsługiwane w przypadku subskrypcji usługi Azure SQL Database:
+Następujące opcje nie są obsługiwane w przypadku subskrypcji Azure SQL Database:
 
-- Skopiuj skojarzenia grup plików  
-- Kopiuj tabelę schematy partycjonowania  
-- Skopiuj schematy partycjonowania indeksu  
-- Skopiuj dane statystyczne zdefiniowane przez użytkownika  
-- Skopiuj domyślne powiązania  
-- Kopiuj regułę powiązania  
-- Skopiuj pełnotekstowy indeksów  
-- Skopiuj XML XSD  
-- Skopiuj indeksów XML  
-- Skopiuj uprawnienia  
-- Skopiuj indeksów przestrzennych  
-- Skopiuj Filtrowane indeksy  
-- Skopiuj atrybut kompresji danych  
-- Skopiuj atrybut zestawu kolumn rozrzedzonych  
-- Konwertuj filestream do typów danych maksymalna  
-- Konwertuj hierarchyid maksymalna liczba typów danych  
-- Konwertuj przestrzenne maksymalna liczba typów danych  
-- Kopiowanie właściwości rozszerzone  
-- Skopiuj uprawnienia  
+- Kopiuj skojarzenie grup plików  
+- Kopiuj schematy partycjonowania tabel  
+- Kopiuj schematy partycjonowania indeksów  
+- Kopiowanie statystyk zdefiniowanych przez użytkownika  
+- Kopiuj domyślne powiązania  
+- Kopiuj powiązania reguły  
+- Kopiuj indeksy pełnotekstowy  
+- Kopiuj plik XSD XML  
+- Kopiuj indeksy XML  
+- Uprawnienia do kopiowania  
+- Kopiuj indeksy przestrzenne  
+- Kopiuj filtrowane indeksy  
+- Kopiuj atrybut kompresji danych  
+- Kopiuj atrybut kolumny rozrzedzonej  
+- Konwertuj dane FILESTREAM na maksymalne typy danych  
+- Konwertuj hierarchyid na maksymalną liczbę typów danych  
+- Konwertuj dane przestrzenne na wartości typu MAX  
+- Kopiuj właściwości rozszerzone  
+- Uprawnienia do kopiowania  
 
-### <a name="limitations-to-be-determined"></a>Ograniczenia ustalonym
+### <a name="limitations-to-be-determined"></a>Ograniczenia do określenia
 
-- Kopiowanie sortowania  
-- Wykonywanie w ramach transakcji serializacji PS  
+- Kopiuj sortowanie  
+- Wykonywanie w serializowanej transakcji programu SP  
 
 ## <a name="examples"></a>Przykłady
 
-Tworzenie publikacji i subskrypcji wypychanej. Aby uzyskać więcej informacji, zobacz:
+Utwórz publikację i subskrypcję wypychaną. Aby uzyskać więcej informacji, zobacz:
   
 - [Tworzenie publikacji](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Tworzenie subskrypcji wypychanych](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) przy użyciu nazwy serwera Azure SQL Database jako subskrybenta (na przykład **N'azuresqldbdns.database.windows.net "** ) i nazwę bazy danych Azure SQL jako docelowej bazy danych (w przypadku przykład **AdventureWorks**).  
+- [Utwórz subskrypcję wypychaną](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) przy użyciu nazwy serwera Azure SQL Database jako subskrybenta (na przykład **N'azuresqldbdns. Database. Windows. NET**) i nazwy bazy danych SQL Azure jako docelowej bazy danych (na przykład **AdventureWorks** ).  
 
 ## <a name="see-also"></a>Zobacz też  
 

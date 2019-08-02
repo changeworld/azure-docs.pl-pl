@@ -1,6 +1,6 @@
 ---
-title: Definiowanie profilu technicznego OpenId Connect w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Definiowanie profilu technicznego OpenId Connect w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C.
+title: Zdefiniuj profil techniczny OpenID Connect Connect w zasadach niestandardowych w Azure Active Directory B2C | Microsoft Docs
+description: Zdefiniuj profil techniczny OpenID Connect Connect w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,33 +10,33 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6d16415aa5111388ec2d2a1009ff477574ae42c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e8f03b17c5e8ea68affa9fe83875382fd5d8512
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512916"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716716"
 ---
-# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego OpenId Connect w zasadach niestandardowych usługi Azure Active Directory B2C
+# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny OpenID Connect Connect w zasadach niestandardowych Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Usługa Azure Active Directory (Azure AD) B2C zapewnia obsługę [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokół dostawcy tożsamości. Reprezentuje stan wiedzy w protokołach nowoczesnego uwierzytelniania OpenID Connect 1.0 i definiuje warstwę tożsamości na podstawie protokołu OAuth 2.0. Za pomocą protokołu OpenId Connect profilu technicznego może tworzyć federacje ze dostawcy OpenId Connect na podstawie tożsamości, takiego jak Azure AD. Federowanie za pomocą dostawcy tożsamości umożliwia użytkownikom Zaloguj się przy użyciu istniejącej społecznościowych lub tożsamościami w przedsiębiorstwie.
+Azure Active Directory (Azure AD) B2C zapewnia obsługę dostawcy tożsamości protokołu [OpenID Connect Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) . OpenID Connect Connect 1,0 definiuje warstwę tożsamości na serwerze OAuth 2,0 i reprezentuje stan grafiki w nowoczesnych protokołach uwierzytelniania. Za pomocą profilu technicznego OpenID Connect Connect można sfederować przy użyciu dostawcy tożsamości usługi OpenID Connect Connect, takiego jak Azure AD. Federowanie z dostawcą tożsamości umożliwia użytkownikom logowanie się przy użyciu istniejących tożsamości społecznościowych lub firmowych.
 
 ## <a name="protocol"></a>Protocol
 
-**Nazwa** atrybutu **protokołu** element musi być równa `OpenIdConnect`. Na przykład protokół **MSA OIDC** profilu technicznego jest `OpenIdConnect`:
+Atrybut **name** elementu **Protocol** musi być ustawiony na `OpenIdConnect`. Na przykład protokół dla profilu `OpenIdConnect`technicznego **MSA-OIDC** :
 
 ```XML
 <TechnicalProfile Id="MSA-OIDC">
   <DisplayName>Microsoft Account</DisplayName>
   <Protocol Name="OpenIdConnect" />
-  ...    
+  ...
 ```
 
-## <a name="input-claims"></a>Oświadczeń wejściowych
+## <a name="input-claims"></a>Oświadczenia wejściowe
 
-**InputClaims** i **InputClaimsTransformations** elementy nie są wymagane. Ale możesz chcieć wysłać dodatkowe parametry do dostawcy tożsamości. W poniższym przykładzie dodano **domain_hint** parametr ciągu z wartością zapytania `contoso.com` żądania autoryzacji.
+Elementy **InputClaims** i **InputClaimsTransformations** nie są wymagane. Ale możesz chcieć wysłać dodatkowe parametry do dostawcy tożsamości. Poniższy przykład dodaje parametr ciągu zapytania **domain_hint** z wartością `contoso.com` do żądania autoryzacji.
 
 ```XML
 <InputClaims>
@@ -44,22 +44,22 @@ Usługa Azure Active Directory (Azure AD) B2C zapewnia obsługę [OpenId Connect
 </InputClaims>
 ```
 
-## <a name="output-claims"></a>Oświadczeń danych wyjściowych
+## <a name="output-claims"></a>Oświadczenia wyjściowe
 
-**OutputClaims** element zawiera listę oświadczeń zwrócona przez dostawcę tożsamości OpenId Connect. Może być konieczne mapowania nazwy oświadczenia, zdefiniowane w zasadach do nazwy zdefiniowane w dostawcy tożsamości. Możesz również uwzględnić oświadczenia, które nie są zwracane przez dostawcę tożsamości, tak długo, jak można ustawić `DefaultValue` atrybutu.
+Element **OutputClaims** zawiera listę oświadczeń zwracanych przez dostawcę tożsamości programu OpenID Connect Connect. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w dostawcy tożsamości. Można również uwzględnić oświadczenia, które nie są zwracane przez dostawcę tożsamości, o ile `DefaultValue` atrybut ten jest ustawiony.
 
-**OutputClaimsTransformations** element może zawierać zbiór **OutputClaimsTransformation** elementy, które są używane do modyfikowania oświadczeń danych wyjściowych lub wygenerować nowe.
+Element **OutputClaimsTransformations** może zawierać kolekcję elementów **OutputClaimsTransformation** , które są używane do modyfikowania oświadczeń wyjściowych lub generowania nowych.
 
-Oświadczenia zwrócone przez dostawcę tożsamości Account Microsoft można znaleźć w poniższym przykładzie:
+W poniższym przykładzie przedstawiono oświadczenia zwrócone przez dostawcę tożsamości konta Microsoft:
 
-- **Sub** oświadczenia, który jest zamapowany **issuerUserId** oświadczenia.
-- **Nazwa** oświadczenia, który jest zamapowany **displayName** oświadczenia.
-- **E-mail** bez mapowania nazw.
+- Zastrzeżenie **podrzędne** , które jest mapowane na **issuerUserId** .
+- **Nazwa** , która jest mapowana do żądania **DisplayName** .
+- **Adres e-mail** bez mapowania nazwy.
 
-Profil techniczny zwraca również wartość oświadczenia, które nie są zwracane przez dostawcę tożsamości:
+Profil techniczny zwraca również oświadczenia, które nie są zwracane przez dostawcę tożsamości:
 
-- **IdentityProvider** oświadczenia, który zawiera nazwę dostawcy tożsamości.
-- **AuthenticationSource** oświadczenie z wartością domyślną **socialIdpAuthentication**.
+- **IdentityProvider** , który zawiera nazwę dostawcy tożsamości.
+- **AuthenticationSource** z wartością domyślną **socialIdpAuthentication**.
 
 ```xml
 <OutputClaims>
@@ -75,38 +75,38 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| client_id | Yes | Identyfikator aplikacji dostawcy tożsamości. |
-| IdTokenAudience | Nie | Odbiorcy id_token. Jeśli zostanie określony, usługi Azure AD B2C sprawdza, czy token jest oświadczenie zwrócona przez dostawcę tożsamości i jest taki sam, jak określona. |
-| METADANE | Yes | Adres URL wskazujący dokument konfiguracji JSON formatowana zgodnie ze specyfikacją odnajdywania protokołu OpenID Connect, która jest także znana jako punkt końcowy konfiguracji openid dobrze znane. |
+| client_id | Tak | Identyfikator aplikacji dostawcy tożsamości. |
+| IdTokenAudience | Nie | Odbiorcy id_token. Jeśli ta wartość jest określona, Azure AD B2C sprawdza, czy token znajduje się w ramach żądania zwróconego przez dostawcę tożsamości i jest równy określonemu. |
+| METADANE | Tak | Adres URL wskazujący na dokument konfiguracji JSON sformatowany zgodnie ze specyfikacją odnajdywania OpenID Connect Connect, który jest również znany jako dobrze znany punkt końcowy konfiguracji OpenID Connect. |
 | ProviderName | Nie | Nazwa dostawcy tożsamości. |
-| response_types | Nie | Typ odpowiedzi zgodnie ze specyfikacją protokołu OpenID Connect 1.0 Core. Możliwe wartości: `id_token`, `code`, lub `token`. |
-| response_mode | Nie | Metody, która używa dostawcy tożsamości w celu wysłania wynik z powrotem do usługi Azure AD B2C. Możliwe wartości: `query`, `form_post` (ustawienie domyślne) lub `fragment`. |
-| scope | Nie | Zakres żądania, który jest zdefiniowany zgodnie ze specyfikacją protokołu OpenID Connect 1.0 Core. Takie jak `openid`, `profile`, i `email`. |
-| HttpBinding | Nie | Oczekiwano powiązanie HTTP do tokenów i oświadczeń tokenu punkty końcowe dostępu. Możliwe wartości: `GET` lub `POST`.  |
-| ValidTokenIssuerPrefixes | Nie | Klucz, który może służyć do logowania się do każdego dzierżawcy, podczas korzystania z dostawcy tożsamości wielu dzierżawców, takich jak Azure Active Directory. |
-| UsePolicyInRedirectUri | Nie | Wskazuje, czy należy użyć zasad, podczas tworzenia identyfikatora URI przekierowania. Po skonfigurowaniu aplikacji w dostawcy tożsamości, należy określić identyfikator URI przekierowania. Wskazuje identyfikator URI przekierowania usługi Azure AD B2C `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` (login.microsoftonline.com może zmienić za pomocą usługi name.b2clogin.com dzierżawy).  Jeśli określisz `false`, należy dodać identyfikator URI przekierowania dla każdej zasady, możesz użyć. Na przykład: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |
-| MarkAsFailureOnStatusCode5xx | Nie | Wskazuje, czy żądanie do usługi zewnętrznej powinien być oznaczony jako błąd, jeśli kod stanu Http jest z zakresu 5xx. Wartość domyślna to `false`. |
-| DiscoverMetadataByTokenIssuer | Nie | Wskazuje, czy metadane OIDC powinny zostać wykryte przy użyciu Wystawca tokenu JWT. |
+| response_types | Nie | Typ odpowiedzi zgodnie z specyfikacją OpenID Connect Connect Core 1,0. Możliwe wartości: `id_token`, `code`, lub `token`. |
+| response_mode | Nie | Metoda wykorzystywana przez dostawcę tożsamości do wysyłania wyniku z powrotem do Azure AD B2C. Możliwe wartości: `query`, `form_post` (wartość domyślna), `fragment`lub. |
+| scope | Nie | Zakres żądania, który jest zdefiniowany zgodnie z specyfikacją OpenID Connect Connect Core 1,0. Takie jak `openid`, `profile`i. `email` |
+| HttpBinding | Nie | Oczekiwano powiązania HTTP z punktami końcowymi tokenu dostępu i tokenów oświadczeń. Możliwe wartości: `GET` lub `POST`.  |
+| ValidTokenIssuerPrefixes | Nie | Klucz, którego można użyć do zalogowania się do poszczególnych dzierżawców w przypadku korzystania z dostawcy tożsamości z wieloma dzierżawcami, takiego jak Azure Active Directory. |
+| UsePolicyInRedirectUri | Nie | Wskazuje, czy należy używać zasad podczas konstruowania identyfikatora URI przekierowania. Podczas konfigurowania aplikacji w dostawcy tożsamości należy określić identyfikator URI przekierowania. Identyfikator URI przekierowania wskazuje na Azure AD B2C `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` , (login.microsoftonline.com może ulec zmianie z Your-tenant-Name.b2clogin.com).  W przypadku określenia `false`tego elementu należy dodać identyfikator URI przekierowania dla każdej używanej zasady. Na przykład: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |
+| MarkAsFailureOnStatusCode5xx | Nie | Wskazuje, czy żądanie do usługi zewnętrznej powinno być oznaczone jako błąd, jeśli kod stanu HTTP znajduje się w zakresie 5xx. Wartość domyślna to `false`. |
+| DiscoverMetadataByTokenIssuer | Nie | Wskazuje, czy metadane OIDC powinny być odnajdywane przy użyciu wystawcy w tokenie JWT. |
 
 ## <a name="cryptographic-keys"></a>Klucze kryptograficzne
 
-**CryptographicKeys** element zawiera następujący atrybut:
+Element **CryptographicKeys** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| client_secret | Tak | Klucz tajny klienta aplikacji dostawcy tożsamości. Klucz szyfrowania jest wymagany tylko wtedy, gdy **response_types** metadanych jest ustawiona na `code`. W tym przypadku usługi Azure AD B2C sprawia, że inne wywołanie wymienić kod autoryzacji do tokena dostępu. Jeśli ustawiono metadanych `id_token` można pominąć klucz kryptograficzny.  |  
+| client_secret | Tak | Klucz tajny klienta aplikacji dostawcy tożsamości. Klucz kryptograficzny jest wymagany tylko wtedy, gdy metadane **response_types** są ustawione na `code`. W takim przypadku Azure AD B2C wykonuje inne wywołanie wymiany kodu autoryzacji dla tokenu dostępu. Jeśli metadane są ustawione na `id_token` wartość można pominąć klucz kryptograficzny.  |
 
-## <a name="redirect-uri"></a>Identyfikator Uri przekierowania
- 
-Po skonfigurowaniu przekierowania URI dostawcy tożsamości, wprowadź `https://login.microsoftonline.com/te/tenant/oauth2/authresp`. Upewnij się zastąpić **dzierżawy** przy użyciu nazwy dzierżawy (na przykład contosob2c.onmicrosoft.com) lub identyfikator dzierżawy. Identyfikator URI przekierowania musi być zapisana w same małe litery.
+## <a name="redirect-uri"></a>Identyfikator URI przekierowania
 
-Jeśli używasz **z usługi b2clogin.com** domeny zamiast **login.microsoftonline.com** upewnij się korzystać z usługi b2clogin.com zamiast login.microsoftonline.com.
+Podczas konfigurowania identyfikatora URI przekierowania dostawcy tożsamości wprowadź `https://login.microsoftonline.com/te/tenant/oauth2/authresp`wartość. Pamiętaj o zamianie **dzierżawy** na nazwę dzierżawy (na przykład contosob2c.onmicrosoft.com) lub identyfikator dzierżawy. Identyfikator URI przekierowania musi zawierać tylko małe litery.
+
+Jeśli używasz domeny **b2clogin.com** zamiast **login.microsoftonline.com** upewnij się, że używasz b2clogin.com zamiast login.microsoftonline.com.
 
 Przykłady:
 
-- [Dodaj konto Microsoft (MSA) jako dostawcy tożsamości za pomocą zasad niestandardowych](active-directory-b2c-custom-setup-msa-idp.md)
-- [Zaloguj się przy użyciu konta usługi Azure AD](active-directory-b2c-setup-aad-custom.md)
-- [Zezwalaj użytkownikom na logowanie się do dostawcy tożsamości wielu dzierżaw usługi Azure AD za pomocą zasad niestandardowych](active-directory-b2c-setup-commonaad-custom.md)
+- [Dodawanie konta Microsoft (MSA) jako dostawcy tożsamości przy użyciu zasad niestandardowych](active-directory-b2c-custom-setup-msa-idp.md)
+- [Logowanie przy użyciu kont usługi Azure AD](active-directory-b2c-setup-aad-custom.md)
+- [Zezwalaj użytkownikom na logowanie się do wielodostępnego dostawcy tożsamości usługi Azure AD przy użyciu zasad niestandardowych](active-directory-b2c-setup-commonaad-custom.md)
 
  
 

@@ -11,14 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbba3f1b753738de57aa311387e522bae1b7b523
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499793"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706310"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory często zadawane pytania dotyczące zarządzania urządzeniami
+
+## <a name="general-faq"></a>Ogólne często zadawane pytania
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Pyt.: Urządzenie zostało ostatnio zarejestrowane. Dlaczego nie widzę urządzenia w obszarze Moje informacje o użytkowniku w Azure Portal? Lub dlaczego właściciel urządzenia jest oznaczony jako N/A dla urządzeń, które są dołączone do hybrydowego Azure Active Directory (Azure AD)?
 
@@ -39,6 +41,11 @@ W obszarze **urządzenia użytkowników**są wyświetlane tylko następujące ur
 
 - W przypadku urządzeń z systemem Windows 10 i Windows Server 2016 lub `dsregcmd.exe /status`nowszym Uruchom polecenie.
 - W przypadku wcześniejszych wersji systemu operacyjnego Uruchom `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`polecenie.
+
+**Odp.:** Informacje dotyczące rozwiązywania problemów można znaleźć w następujących artykułach:
+- [Rozwiązywanie problemów z urządzeniami za pomocą polecenia dsregcmd](troubleshoot-device-dsregcmd.md)
+- [Rozwiązywanie problemów z Azure Active Directory hybrydowych dołączonych do urządzeń z systemami Windows 10 i Windows Server 2016](troubleshoot-hybrid-join-windows-current.md)
+- [Rozwiązywanie problemów z Azure Active Directory hybrydowymi podłączonymi do urządzeń niższego poziomu](troubleshoot-hybrid-join-windows-legacy.md)
 
 ---
 
@@ -65,6 +72,8 @@ Poniżej znajdują się informacje o tym, jak można skorygować te akcje.
 **Odp.:** Ta operacja jest zaprojektowana. W takim przypadku urządzenie nie ma dostępu do zasobów w chmurze. Administratorzy mogą wykonać tę akcję w przypadku starych, zagubionych lub skradzionych urządzeń, aby zapobiec nieautoryzowanemu dostępowi. Jeśli ta akcja została wykonana przypadkowo, należy ponownie włączyć lub ponownie zarejestrować urządzenie zgodnie z poniższym opisem
 
 - Jeśli urządzenie zostało wyłączone w usłudze Azure AD, administrator z odpowiednimi uprawnieniami może je włączyć z poziomu portalu usługi Azure AD.  
+  > [!NOTE]
+  > W przypadku synchronizowania urządzeń przy użyciu Azure AD Connect urządzenia dołączone do hybrydowej usługi Azure AD zostaną automatycznie ponownie włączone w następnym cyklu synchronizacji. Jeśli więc musisz wyłączyć urządzenie dołączone do hybrydowej usługi Azure AD, musisz wyłączyć je z lokalnej usługi AD
 
  - Jeśli urządzenie zostało usunięte w usłudze Azure AD, należy ponownie zarejestrować urządzenie. Aby ponownie zarejestrować, musisz wykonać akcję ręczną na urządzeniu. Poniżej znajdują się instrukcje dotyczące ponownej rejestracji w zależności od stanu urządzenia. 
 
@@ -114,20 +123,30 @@ Poniżej znajdują się informacje o tym, jak można skorygować te akcje.
 
 **Pyt.: Dlaczego użytkownik może nadal uzyskiwać dostęp do zasobów z urządzenia, które zostało wyłączone w Azure Portal?**
 
-**Odp.:** Zastosowanie odwołania może zająć do godziny.
+**Odp.:** Aby można było zastosować odwołanie od momentu, gdy urządzenie usługi Azure AD zostanie oznaczone jako wyłączone, zajmie do godziny.
 
 >[!NOTE] 
 >W przypadku zarejestrowanych urządzeń zalecamy wyczyszczenie urządzenia, aby upewnić się, że użytkownicy nie będą mogli uzyskać dostępu do zasobów. Aby uzyskać więcej informacji, zobacz [co to jest rejestracja urządzenia?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 ---
 
+### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>Pyt.: Dlaczego istnieją urządzenia oznaczone jako "oczekujące" w zarejestrowanej kolumnie w Azure Portal?
+
+**Odp.:**  Oczekiwanie wskazuje, że urządzenie nie jest zarejestrowane. Ten stan oznacza, że urządzenie zostało zsynchronizowane przy użyciu programu Azure AD Connect z lokalnej usługi AD i jest gotowe do rejestracji urządzeń. Na tych urządzeniach ustawiono typ SPRZĘŻENIa "hybrydowa usługa Azure AD". Dowiedz się więcej na [temat planowania implementacji dołączania hybrydowego Azure Active Directory](hybrid-azuread-join-plan.md).
+
+>[!NOTE]
+>Urządzenie może także ulec zmianie z stanu zarejestrowanego na "oczekiwanie"
+>* Jeśli urządzenie zostanie usunięte i z usługi Azure AD najpierw zsynchronizowane z lokalnej usługi AD.
+>* Jeśli urządzenie zostanie usunięte z zakresu synchronizacji w Azure AD Connect i dodane z powrotem.
+>
+>W obu przypadkach należy ponownie zarejestrować urządzenie ręcznie na każdym z tych urządzeń. Aby sprawdzić, czy urządzenie zostało wcześniej zarejestrowane, możesz [rozwiązać problemy z urządzeniami za pomocą polecenia dsregcmd](troubleshoot-device-dsregcmd.md).
+
+---
 ## <a name="azure-ad-join-faq"></a>Usługa Azure AD Join — często zadawane pytania
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>Pyt.: Jak mogę odłączania urządzenia dołączonego do usługi Azure AD lokalnie na urządzeniu?
 
-**Odp.:** 
-- W przypadku urządzeń przyłączonych do hybrydowej usługi Azure AD upewnij się, że funkcja automatycznej rejestracji została wyłączona. Następnie zaplanowane zadanie nie będzie ponownie rejestrować urządzenia. Następnie otwórz wiersz polecenia jako administrator i wprowadź `dsregcmd.exe /debug /leave`. Lub Uruchom to polecenie jako skrypt na kilku urządzeniach, aby rozłączyć zbiorczo.
-- W przypadku urządzeń z czystym usługą Azure AD upewnij się, że masz konto administratora lokalnego w trybie offline lub utwórz je. Nie można zalogować się przy użyciu żadnych poświadczeń użytkownika usługi Azure AD. Następnie przejdź do pozycji **Ustawienia** > **konta** > **dostęp do**zasobów służbowych. Wybierz swoje konto i wybierz pozycję Rozłącz. Po wyświetleniu monitu postępuj zgodnie z monitami i podaj poświadczenia administratora lokalnego. Uruchom ponownie urządzenie, aby zakończyć proces rozłączania.
+**Odp.:** W przypadku urządzeń z czystym usługą Azure AD upewnij się, że masz konto administratora lokalnego w trybie offline lub utwórz je. Nie można zalogować się przy użyciu żadnych poświadczeń użytkownika usługi Azure AD. Następnie przejdź do pozycji **Ustawienia** > **konta** > **dostęp do**zasobów służbowych. Wybierz swoje konto i wybierzpozycję Rozłącz. Po wyświetleniu monitu postępuj zgodnie z monitami i podaj poświadczenia administratora lokalnego. Uruchom ponownie urządzenie, aby zakończyć proces rozłączania.
 
 ---
 
@@ -223,6 +242,10 @@ Takie zachowanie:
 
 ## <a name="hybrid-azure-ad-join-faq"></a>Sprzężenie hybrydowe usługi Azure AD — często zadawane pytania
 
+### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>Pyt.: Jak mogę odłączania hybrydowego urządzenia dołączonego do usługi Azure AD lokalnie na urządzeniu?
+
+**Odp.:** W przypadku urządzeń przyłączonych do hybrydowej usługi Azure AD upewnij się, że funkcja automatycznej rejestracji została wyłączona. Następnie zaplanowane zadanie nie będzie ponownie rejestrować urządzenia. Następnie otwórz wiersz polecenia jako administrator i wprowadź `dsregcmd.exe /debug /leave`. Lub Uruchom to polecenie jako skrypt na kilku urządzeniach, aby rozłączyć zbiorczo.
+
 ### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>Pyt.: Gdzie mogę znaleźć informacje dotyczące rozwiązywania problemów w celu zdiagnozowania niepowodzeń dołączania hybrydowej usługi Azure AD?
 
 **Odp.:** Informacje dotyczące rozwiązywania problemów można znaleźć w następujących artykułach:
@@ -234,7 +257,7 @@ Takie zachowanie:
 
 **Odp.:** Gdy użytkownicy dodają swoje konta do aplikacji na urządzeniu przyłączonym do domeny, może zostać wyświetlony monit o **dodanie konta do systemu Windows?** Jeśli w monicie wprowadzisz **wartość tak** , urządzenie zostanie zarejestrowane w usłudze Azure AD. Typ zaufania jest oznaczony jako zarejestrowany w usłudze Azure AD. Po włączeniu hybrydowego sprzężenia usługi Azure AD w organizacji urządzenie uzyskuje także przyłączoną do hybrydowej usługi Azure AD. Następnie dwa Stany urządzeń są wyświetlane dla tego samego urządzenia. 
 
-Dołączanie hybrydowej usługi Azure AD ma pierwszeństwo przed zarejestrowanym stanem usługi Azure AD. Dlatego Twoje urządzenie jest uznawane za dołączoną hybrydową usługę Azure AD na potrzeby oceny uwierzytelniania i dostępu warunkowego. Możesz bezpiecznie usunąć zarejestrowany rekord urządzenia usługi Azure AD z portalu usługi Azure AD. Zapoznaj się z tym, aby [uniknąć tego podwójnego stanu na komputerze z systemem Windows 10](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know). 
+Dołączanie hybrydowej usługi Azure AD ma pierwszeństwo przed zarejestrowanym stanem usługi Azure AD. Dlatego Twoje urządzenie jest uznawane za dołączoną hybrydową usługę Azure AD na potrzeby oceny uwierzytelniania i dostępu warunkowego. Możesz bezpiecznie usunąć zarejestrowany rekord urządzenia usługi Azure AD z portalu usługi Azure AD. Zapoznaj się z tym, aby [uniknąć tego podwójnego stanu na komputerze z systemem Windows 10](hybrid-azuread-join-plan.md#review-things-you-should-know). 
 
 ---
 
@@ -258,10 +281,19 @@ Dołączanie hybrydowej usługi Azure AD ma pierwszeństwo przed zarejestrowanym
 
 ## <a name="azure-ad-register-faq"></a>Rejestracja w usłudze Azure AD — często zadawane pytania
 
+### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>Pyt.: Jak mogę usunąć zarejestrowane urządzenie usługi Azure AD lokalnie na urządzeniu?
+
+**Odp.:** 
+- W przypadku zarejestrowanych urządzeń z systemem Windows 10 w usłudze Azure AD przejdź do pozycji **Ustawienia** > **konta** > **dostęp do**zasobów służbowych. Wybierz swoje konto i wybierzpozycję Rozłącz. Rejestracja urządzenia dotyczy profilu użytkownika w systemie Windows 10.
+- W przypadku systemów iOS i Android można użyć Microsoft Authenticator**rejestracji urządzeń** **ustawień** > aplikacji i wybrać pozycję **Wyrejestruj urządzenie**.
+- W przypadku usługi macOS można użyć aplikacji Portal firmy Microsoft Intune, aby wyrejestrować urządzenie z zarządzania i usunąć wszelkie rejestracje. 
+
+---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>Pyt.: Czy można rejestrować urządzenia z systemem Android lub iOS BYOD?
 
 **Odp.:** Tak, ale tylko w przypadku usługi rejestracji urządzeń platformy Azure i klientów hybrydowych. Usługa rejestracji urządzeń lokalnych w Active Directory Federation Services (AD FS) nie jest obsługiwana.
 
+---
 ### <a name="q-how-can-i-register-a-macos-device"></a>Pyt.: Jak zarejestrować urządzenie macOS?
 
 **Odp.:** Wykonaj następujące kroki:
@@ -274,6 +306,7 @@ Dołączanie hybrydowej usługi Azure AD ma pierwszeństwo przed zarejestrowanym
 - Użytkownicy włączeni do zasad dostępu warunkowego potrzebują obsługiwanej [wersji pakietu Office dla programu macOS](../conditional-access/technical-reference.md#client-apps-condition) w celu uzyskania dostępu do zasobów. 
 - Podczas pierwszego dostępu spróbuj użyć monitu o zarejestrowanie urządzenia przy użyciu portalu firmy.
 
+---
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [zarejestrowanych urządzeniach usługi Azure AD](concept-azure-ad-register.md)

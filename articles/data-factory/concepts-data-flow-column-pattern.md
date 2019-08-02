@@ -6,21 +6,24 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 076c3318a68a50e6bd1b4f9f2a4a4b9a034533c6
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 8f1fa6f7823c643278e52ffd0faa1c0ce4972ef8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346573"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640239"
 ---
-# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Wzorce kolumn przepływów danych mapowania usługi Azure Data Factory
+# <a name="mapping-data-flows-column-patterns"></a>Mapowanie wzorców kolumn przepływów danych
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 Niektóre przekształcenia przepływu danych Azure Data Factory obsługują koncepcję "wzorców kolumn", dzięki czemu można tworzyć kolumny szablonów na podstawie wzorców zamiast zakodowanych nazw kolumn. Za pomocą tej funkcji w Konstruktorze wyrażeń można definiować wzorce w celu dopasowania do kolumn na potrzeby transformacji zamiast konieczności dokładnej, konkretnych nazw pól. Wzorce są przydatne, jeśli przychodzące pola źródłowe zmieniają się często, szczególnie w przypadku zmiany kolumn w plikach tekstowych lub bazach danych NoSQL. Ten stan jest czasami określany jako "dryfowanie schematu".
 
+Ta "elastyczna obsługa schematu" znajduje się obecnie w kolumnie pochodnej i przekształceniach agregacji, a także w transformacjach wybranych i ujścia jako "mapowanie oparte na regułach".
+
 ![wzorce kolumn](media/data-flow/columnpattern2.png "Wzorce kolumn")
 
+## <a name="column-patterns"></a>Wzorce kolumn
 Wzorce kolumn są przydatne do obsługi zarówno scenariuszy dryfowania schematu, jak i ogólnych scenariuszy. Jest to dobre w przypadku warunków, w których nie można w pełni znać nazw kolumn. Można dopasować wzorzec do nazwy kolumny i typu danych kolumny i utworzyć wyrażenie do przekształcenia, które wykona tę operację względem dowolnego pola w strumieniu danych, który jest zgodny ze `name`  &  `type` wzorcem.
 
 Dodając wyrażenie do przekształcenia, które akceptuje wzorce, wybierz pozycję "Dodaj wzorzec kolumny". Wzorce kolumn umożliwiają wzorce dopasowywania do kolumn dryfu schematu.
@@ -38,5 +41,11 @@ Aby kompilować wzorce na podstawie kolumn, można dopasować nazwę kolumny, ty
 
 ![położenie kolumny](media/data-flow/position.png "Położenie kolumny")
 
+## <a name="rule-based-mapping"></a>Mapowanie oparte na regułach
+Podczas mapowania kolumn w źródle i wybierania przekształceń będzie dostępna opcja wyboru "stałe mapowanie" lub "mapowanie oparte na regułach". Gdy znasz schemat danych i oczekujesz określonych kolumn ze źródłowego zestawu danych, który zawsze pasuje do określonych nazw statycznych, możesz użyć stałego mapowania. Ale podczas pracy z elastycznymi schematami Użyj mapowania opartego na regułach. Można utworzyć dopasowanie wzorca przy użyciu reguł opisanych powyżej.
+
+![Mapowanie oparte na regułach](media/data-flow/rule2.png "Mapowanie oparte na regułach")
+
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o [języku wyrażeń](https://aka.ms/dataflowexpressions) przepływu danych mapowania ADF na potrzeby transformacji danych
+* Dowiedz się więcej o [języku wyrażeń](http://aka.ms/dataflowexpressions) przepływu danych mapowania ADF na potrzeby transformacji danych
+* Używanie wzorców kolumn w [transformację ujścia](data-flow-sink.md) i [Wybieranie transformacji](data-flow-select.md) z mapowaniem opartym na regułach

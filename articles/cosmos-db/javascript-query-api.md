@@ -1,22 +1,22 @@
 ---
-title: Praca z JavaScript zapytanie o języku zintegrowanym interfejsu API w usłudze Azure Cosmos DB
-description: Ten artykuł wprowadza pojęcia dla języka JavaScript zapytanie o języku zintegrowanym interfejsu API do tworzenia procedur składowanych i wyzwalaczy w usłudze Azure Cosmos DB.
+title: Praca z interfejsem API zapytań zintegrowanym z językiem JavaScript w Azure Cosmos DB
+description: W tym artykule przedstawiono koncepcje dotyczące interfejsu API zapytań zintegrowanych z językiem JavaScript do tworzenia procedur składowanych i wyzwalaczy w Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cc1815ce4a7a9ed40848e4a67a7fd9e032c1daa1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01e5e95da3c19c03d07c7f3c1d716f5f1e97de98
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66226194"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717587"
 ---
-# <a name="javascript-query-api-in-azure-cosmos-db"></a>Zapytanie JavaScript API w usłudze Azure Cosmos DB
+# <a name="javascript-query-api-in-azure-cosmos-db"></a>Interfejs API zapytań JavaScript w Azure Cosmos DB
 
-Oprócz wysyłania zapytań przy użyciu interfejsu API SQL w usłudze Azure Cosmos DB, [SDK po stronie serwera usługi Cosmos DB](https://azure.github.io/azure-cosmosdb-js-server/) umożliwia wykonywanie zoptymalizowane zapytania przy użyciu interfejsu języka JavaScript. Nie trzeba znać języka SQL, aby użyć tego interfejsu języka JavaScript. Zapytanie języka JavaScript, które interfejs API umożliwia programowe tworzenie zapytań, przekazując funkcji predykatu sekwencję funkcja wywołuje składnią znane elementy tablicy wbudowane i popularne biblioteki JavaScript, takich jak Lodash ECMAScript5 firmy. Zapytania są analizowane przez środowisko uruchomieniowe JavaScript i efektywnie posługując się indeksów usługi Azure Cosmos DB.
+Oprócz wydawania zapytań przy użyciu interfejsu API SQL w Azure Cosmos DB, [zestaw SDK po stronie serwera Cosmos DB](https://azure.github.io/azure-cosmosdb-js-server/) umożliwia wykonywanie zoptymalizowanych zapytań przy użyciu interfejsu JavaScript. Nie trzeba znać języka SQL, aby używać tego interfejsu JavaScript. Interfejs API zapytań języka JavaScript umożliwia Programistyczne tworzenie zapytań przez przekazywanie funkcji predykatów do sekwencji wywołań funkcji, z składnią ECMAScript5's wbudowane i popularne biblioteki języka JavaScript, takie jak Lodash. Zapytania są analizowane przez środowisko uruchomieniowe JavaScript i efektywnie wykonywane przy użyciu Azure Cosmos DB indeksów.
 
 ## <a name="supported-javascript-functions"></a>Obsługiwane funkcje języka JavaScript
 
@@ -24,16 +24,16 @@ Oprócz wysyłania zapytań przy użyciu interfejsu API SQL w usłudze Azure Cos
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|Łańcuchowe wywołanie, które musi być zakończona zaczyna się od value().|
 |`filter(predicateFunction [, options] [, callback])`|Służy do przefiltrowania przy użyciu funkcji predykatu, który zwraca wartość PRAWDA/FAŁSZ, aby przefiltrować wchodzącym/wychodzącym dokumentów wejściowych do Wynikowy zestaw danych wejściowych. Ta funkcja działa podobnie do klauzuli WHERE w języku SQL.|
-|`flatten([isShallow] [, options] [, callback])`|Łączy i spłaszcza magazynowymi pochodzącymi od każdego elementu wejściowego w jedną. Ta funkcja działa podobnie jak SelectMany w składniku LINQ.|
+|`flatten([isShallow] [, options] [, callback])`|Łączy i spłaszcza tablice z każdego elementu wejściowego w jedną tablicę. Ta funkcja działa podobnie jak SelectMany w składniku LINQ.|
 |`map(transformationFunction [, options] [, callback])`|Stosuje projekcji, biorąc pod uwagę funkcja transformacji, która mapuje każdego elementu wejściowego obiektu JavaScript lub wartość. Ta funkcja działa podobnie do klauzuli SELECT w tabeli SQL.|
 |`pluck([propertyName] [, options] [, callback])`|Ta funkcja jest skrót mapę, która wyodrębnia wartość właściwości jednego z każdego elementu wejściowego.|
-|`sortBy([predicate] [, options] [, callback])`|Tworzy nowy zestaw dokumentów, sortując dokumentów w usłudze stream dokument wejściowy w kolejności rosnącej, korzystając z określonym predykatem. Ta funkcja działa podobnie do klauzuli ORDER BY w języku SQL.|
-|`sortByDescending([predicate] [, options] [, callback])`|Tworzy nowy zestaw dokumentów, sortując dokumentów w usłudze stream dokument wejściowy w porządku malejącym przy użyciu podanego predykatu. Ta funkcja działa podobnie do klauzuli ORDER BY x DESC w języku SQL.|
-|`unwind(collectionSelector, [resultSelector], [options], [callback])`|Wykonuje samosprzężenie wewnętrzny tablicę i dodaje wyniki z obu stron jako krotki do projekcji wynik. Na przykład dołączenie dokumentu osoby z person.pets dałby w efekcie [osoby pet] krotek. Jest to podobne do SelectMany linku .NET.|
+|`sortBy([predicate] [, options] [, callback])`|Tworzy nowy zestaw dokumentów, sortując dokumenty w strumieniu dokumentu wejściowego w kolejności rosnącej przy użyciu danego predykatu. Ta funkcja działa podobnie do klauzuli ORDER BY w języku SQL.|
+|`sortByDescending([predicate] [, options] [, callback])`|Tworzy nowy zestaw dokumentów, sortując dokumenty w strumieniu dokumentu wejściowego w kolejności malejącej przy użyciu podanego predykatu. Ta funkcja działa podobnie do klauzuli ORDER BY x DESC w języku SQL.|
+|`unwind(collectionSelector, [resultSelector], [options], [callback])`|Wykonuje samosprzężenie z tablicą wewnętrzną i dodaje wyniki z obu stron jako krotki do rzutowania wyników. Na przykład przyłączenie do dokumentu osoby. zwierzęta domowe spowodują utworzenie krotek [Person, PET]. Jest to podobne do SelectMany w ŁĄCZu .NET.|
 
 Gdy się wewnątrz predykatu lub selektora funkcje, następujące konstrukcje JavaScript Pobierz automatycznie zoptymalizowane pod kątem uruchamiania bezpośrednio na indeksów usługi Azure Cosmos DB:
 
-- Proste operatory: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!` `~`
+- Operatory proste: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
 - Literały, literał obiektu w tym: {}
 - var zwrotu
 
@@ -42,30 +42,30 @@ Następujące elementy języka JavaScript nie uzyskać zoptymalizowane pod kąte
 - Przepływ sterowania (na przykład, jeśli, podczas gdy)
 - Wywołania funkcji
 
-Aby uzyskać więcej informacji, zobacz [dokumentacja po stronie serwera usługi Cosmos DB w JavaScript](https://azure.github.io/azure-cosmosdb-js-server/).
+Aby uzyskać więcej informacji, zobacz [dokumentację języka JavaScript po stronie serwera Cosmos DB](https://azure.github.io/azure-cosmosdb-js-server/).
 
-## <a name="sql-to-javascript-cheat-sheet"></a>SQL do ściągawka dotycząca języka JavaScript
+## <a name="sql-to-javascript-cheat-sheet"></a>Arkusz Ściągawka SQL do JavaScript
 
-W poniższej tabeli przedstawiono różne zapytania SQL i odpowiednie zapytania języka JavaScript. Podobnie jak w przypadku zapytań SQL właściwości (na przykład item.id) jest rozróżniana wielkość liter.
+W poniższej tabeli przedstawiono różne zapytania SQL i odpowiednie zapytania języka JavaScript. Podobnie jak w przypadku zapytań SQL, właściwości (na przykład item.id) uwzględniają wielkość liter.
 
 > [!NOTE]
 > `__` (podwójne podkreślenie) jest aliasem funkcji `getContext().getCollection()` podczas korzystania z interfejsu API zapytań języka JavaScript.
 
-|**SQL**|**Zapytanie JavaScript API**|**Opis**|
+|**SQL**|**Interfejs API zapytań JavaScript**|**Opis**|
 |---|---|---|
 |WYBIERZ POZYCJĘ *<br>DOKUMENTACH| __.map(Function(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;Zwróć doc;<br>});|To powoduje wszystkie dokumenty (z podziałem na strony za pomocą tokenu kontynuacji) jako.|
-|SELECT <br>&nbsp;&nbsp;&nbsp;docs.ID,<br>&nbsp;&nbsp;&nbsp;docs.Message jako msg,<br>&nbsp;&nbsp;&nbsp;docs.Actions <br>DOKUMENTACH|__.map(Function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Zwróć {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;komunikat: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projekty identyfikator, komunikat (alias do msg) i akcji z wszystkich dokumentów.|
+|WYBIERZ <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako MSG,<br>&nbsp;&nbsp;&nbsp;docs. Actions <br>DOKUMENTACH|__.map(Function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Zwróć {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;komunikat: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projekty identyfikator, komunikat (alias do msg) i akcji z wszystkich dokumentów.|
 |WYBIERZ POZYCJĘ *<br>DOKUMENTACH<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>});|Zapytania dotyczące dokumentów za pomocą predykat: identyfikator = "X998_Y998".|
-|WYBIERZ POZYCJĘ *<br>DOKUMENTACH<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS(docs.Tags, 123)|__.filter(function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return x.Tags && x.Tags.indexOf(123) > -1;<br>});|Zapytania dotyczące dokumentów, które mają tagi i właściwość Tags jest tablicą, zawierającego wartość 123.|
-|SELECT<br>&nbsp;&nbsp;&nbsp;docs.ID,<br>&nbsp;&nbsp;&nbsp;docs.Message jako msg<br>DOKUMENTACH<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;komunikat: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|Zapytania dotyczące dokumentów z predykatem, id = "X998_Y998", a następnie projekty identyfikatora i komunikatu (alias do komunikatu).|
+|WYBIERZ POZYCJĘ *<br>DOKUMENTACH<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (dokumentacja. Tagi, 123)|__.filter(function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return x.Tags && x.Tags.indexOf(123) > -1;<br>});|Zapytania dotyczące dokumentów, które mają tagi i właściwość Tags jest tablicą, zawierającego wartość 123.|
+|WYBIERZ<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako komunikat<br>DOKUMENTACH<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;komunikat: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|Zapytania dotyczące dokumentów z predykatem, id = "X998_Y998", a następnie projekty identyfikatora i komunikatu (alias do komunikatu).|
 |Wybierz wartość tagu<br>DOKUMENTACH<br>Dołącz do dokumentów w tagu. Tagi<br>Klauzula ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć dokumentu. Tagi & & Array.isArray (doc. Znaczniki);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.value()|Filtry dla dokumentów, których właściwości tablicy, tagi, i sortuje wynikowy dokumenty _ts sygnatura czasowa systemu właściwości, a następnie projekty + spłaszcza tablica tagów.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej pojęcia i porad zapisu, a następnie użyj procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika w usłudze Azure Cosmos DB:
+Dowiedz się więcej o pojęciach i sposobie pisania i używania procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika w programie Azure Cosmos DB:
 
-- [Jak napisać procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka Javascript](how-to-write-javascript-query-api.md)
-- [Pracę z usługą Azure Cosmos DB procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika](stored-procedures-triggers-udfs.md)
-- [Sposób użycia procedury składowane, wyzwalacze, funkcje zdefiniowane przez użytkownika w usłudze Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
+- [Jak napisać procedury składowane i wyzwalacze przy użyciu interfejsu API zapytań języka JavaScript](how-to-write-javascript-query-api.md)
+- [Praca z Azure Cosmos DB procedurami składowanymi, wyzwalaczami i funkcjami zdefiniowanymi przez użytkownika](stored-procedures-triggers-udfs.md)
+- [Jak używać procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika w Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
 - [Dokumentacja interfejsu API po stronie serwera w usłudze Azure Cosmos DB JavaScript](https://azure.github.io/azure-cosmosdb-js-server)
 - [JavaScript ES6 (ECMA 2015)](https://www.ecma-international.org/ecma-262/6.0/)

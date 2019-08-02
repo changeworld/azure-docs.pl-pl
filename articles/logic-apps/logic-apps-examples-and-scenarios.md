@@ -1,5 +1,5 @@
 ---
-title: Przykłady & typowych scenariuszach — Azure Logic Apps | Microsoft Docs
+title: Przykłady & typowych scenariuszach — Azure Logic Apps
 description: Przykłady, scenariusze, samouczki i wskazówki dotyczące Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -9,19 +9,19 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
-ms.date: 01/31/2018
-ms.openlocfilehash: 95eca4c7f3e8170f6559799fc4c706e95df70e9e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.date: 07/31/2019
+ms.openlocfilehash: 000de22105615c3f6aa015b07e13bf8a47955b52
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385508"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706799"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Typowe scenariusze, przykłady, samouczki i przewodniki dotyczące Azure Logic Apps
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ułatwia organizację i integrację różnych usług, zapewniając [setki gotowych do użycia łączników](../connectors/apis-list.md), od lokalnych SQL Server lub SAP do platformy Azure Cognitive Services. Usługa Logic Apps jest "bezserwerowa", więc nie trzeba martwić się o skalowanie ani wystąpienia. Wystarczy zdefiniować przepływ pracy z wyzwalaczem i akcjami wykonywanymi przez przepływ pracy. Bazowa Platforma obsługuje skalowanie, dostępność i wydajność. Logic Apps jest szczególnie przydatna w przypadku przypadków użycia i scenariuszy, w których należy koordynować wiele akcji w wielu systemach.
 
-Aby uzyskać więcej informacji na temat wielu wzorców i możliwości obsługiwanych przez [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , poniżej przedstawiono typowe przykłady i scenariusze.
+Aby uzyskać więcej informacji na temat wielu wzorców i możliwości obsługiwanych przez Azure Logic Apps, poniżej przedstawiono typowe przykłady i scenariusze.
 
 ## <a name="popular-starting-points-for-logic-app-workflows"></a>Popularne punkty wyjścia dla przepływów pracy aplikacji logiki
 
@@ -33,23 +33,31 @@ Każda aplikacja logiki rozpoczyna się od [*wyzwalacza*](../logic-apps/logic-ap
 
 Oto kilka popularnych przykładów wyzwalacza:
 
-* Sondowania 
+* Sondowania
 
-  * [Wyzwalacz **harmonogram-cykl** ](../connectors/connectors-native-recurrence.md) pozwala ustawić datę i godzinę rozpoczęcia oraz cykl uruchamiania aplikacji logiki. 
-  Na przykład możesz wybrać dni tygodnia i godziny, w których ma być wyzwalana aplikacja logiki.
+  * [Wyzwalacz **cyklu** ](../connectors/connectors-native-recurrence.md) pozwala ustawić datę i godzinę rozpoczęcia oraz cykl uruchamiania aplikacji logiki. Na przykład możesz wybrać dni tygodnia i godziny, w których ma być wyzwalana aplikacja logiki. Aby uzyskać więcej informacji zobacz następujące tematy:
 
-  * Wyzwalacz "po odebraniu wiadomości e-mail" umożliwia aplikacji logiki Sprawdzanie nowej wiadomości e-mail od dowolnego dostawcy poczty obsługiwanego przez Logic Apps, na przykład [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/)i tak dalej.
+    * [Planowanie i uruchamianie cyklicznych zautomatyzowanych zadań, procesów i przepływów pracy przy użyciu Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
+    * [Samouczek: Sprawdzaj ruch zgodnie z harmonogramem za pomocą Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+
+  * Wyzwalacz "po odebraniu wiadomości e-mail" umożliwia aplikacji logiki Sprawdzanie nowej wiadomości e-mail od dowolnego dostawcy poczty obsługiwanego przez Logic Apps, na przykład [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/)i tak dalej. Aby uzyskać więcej informacji zobacz następujące tematy: 
+
+    * [Samouczek: Zarządzanie żądaniami listy adresowej za pomocą Azure Logic Apps](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
+    * [Samouczek: Automatyzowanie obsługi wiadomości e-mail i załączników za pomocą Azure Logic Apps](../logic-apps/tutorial-process-email-attachments-workflow.md)
 
   * Wyzwalacz [ **http** ](../connectors/connectors-native-http.md) umożliwia aplikacji logiki sprawdzanie określonego punktu końcowego usługi przez komunikację za pośrednictwem protokołu HTTP.
   
 * Wydajności
 
-  * Wyzwalacz [ **żądania/odpowiedzi-żądanie** ](../connectors/connectors-native-reqres.md) umożliwia aplikacji logiki odbieranie żądań HTTP i reagowanie w czasie rzeczywistym na zdarzenia w jakiś sposób.
+  * Wyzwalacz [ **żądania** ](../connectors/connectors-native-reqres.md) umożliwia aplikacji logiki odbieranie żądań HTTP i reagowanie w czasie rzeczywistym na zdarzenia w jakiś sposób.
 
-  * Wyzwalacz [ **elementu webhook protokołu HTTP** ](../connectors/connectors-native-webhook.md) subskrybuje punkt końcowy usługi przez zarejestrowanie *adresu URL wywołania zwrotnego* przy użyciu tej usługi. 
-  Dzięki temu usługa może po prostu powiadomić wyzwalacz, gdy wystąpi określone zdarzenie, aby wyzwalacz nie musiał sondować usługi.
+  * Wyzwalacz [ **elementu webhook protokołu HTTP** ](../connectors/connectors-native-webhook.md) subskrybuje punkt końcowy usługi przez zarejestrowanie *adresu URL wywołania zwrotnego* przy użyciu tej usługi. Dzięki temu usługa może po prostu powiadomić wyzwalacz, gdy wystąpi określone zdarzenie, aby wyzwalacz nie musiał sondować usługi.
 
-Po odebraniu powiadomienia o nowych danych lub zdarzeniu wyzwalany jest wyzwalacz, tworzy nowe wystąpienie przepływu pracy aplikacji logiki i uruchamia akcje w przepływie pracy. Możesz uzyskać dostęp do dowolnych danych z wyzwalacza w przepływie pracy. Na przykład wyzwalacz "w nowym tweetie" przekazuje zawartość tweetu do przebiegu aplikacji logiki. 
+Po odebraniu powiadomienia o nowych danych lub zdarzeniu wyzwalany jest wyzwalacz, tworzy nowe wystąpienie przepływu pracy aplikacji logiki i uruchamia akcje w przepływie pracy. Możesz uzyskać dostęp do dowolnych danych z wyzwalacza w przepływie pracy. Na przykład wyzwalacz "w nowym tweetie" przekazuje zawartość tweetu do przebiegu aplikacji logiki. Aby rozpocząć pracę z Azure Logic Apps, wypróbuj następujące tematy szybkiego startu:
+
+* [Szybki start: Tworzenie pierwszego zautomatyzowanego przepływu pracy przy użyciu Azure Logic Apps w Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [Szybki start: Tworzenie zautomatyzowanych zadań, procesów i przepływów pracy za pomocą Azure Logic Apps przy użyciu programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+* [Szybki start: Twórz zautomatyzowane przepływy pracy aplikacji logiki i zarządzaj nimi za pomocą Visual Studio Code](../logic-apps/quickstart-create-logic-apps-visual-studio-code.md)
 
 ## <a name="respond-to-triggers-and-extend-actions"></a>Odpowiedz na wyzwalacze i rozwiń akcje
 
@@ -81,6 +89,10 @@ Możesz w pełni opracowywać i wdrażać aplikacje logiki za pomocą programu V
 * [Tworzenie i wdrażanie aplikacji logiki za pomocą programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Włączanie monitorowania, rejestrowania i alertów dla istniejących aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [Automatyzowanie wdrożenia aplikacji logiki](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Przykład: Nawiązywanie połączenia z kolejkami Azure Service Bus z poziomu Azure Logic Apps i wdrażanie za pomocą Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Przykład: Nawiązywanie połączenia z kontami usługi Azure Storage z poziomu Azure Logic Apps i wdrażanie za pomocą Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Przykład: Skonfiguruj akcję aplikacji funkcji dla Azure Logic Apps i Wdróż ją za pomocą Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Przykład: Nawiązywanie połączenia z kontem integracji z Azure Logic Apps i wdrażanie za pomocą usługi Azure Pipelines w usłudze Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>Typy zawartości, konwersje i przekształcenia w ramach przebiegu
 
@@ -110,8 +122,7 @@ Usługa Logic Apps oferuje także integrację z wieloma usługami, takimi jak Az
 
 Dowiedz się, w jaki sposób Azure Logic Apps, wraz z innymi usługami platformy Azure i produktami firmy Microsoft, które [pomogły zwiększyć](https://aka.ms/logic-apps-customer-stories) elastyczność i skupić się na podstawowych firmach dzięki uproszczeniu, organizowaniu, automatyzowaniu i organizowania złożonych procesów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Kompiluj w definicjach aplikacji logiki za pomocą formatu JSON](../logic-apps/logic-apps-author-definitions.md)
-* [Obsługa błędów i wyjątków w usłudze Logic Apps](../logic-apps/logic-apps-exception-handling.md)
-* [Prześlij swoje komentarze, pytania, opinie lub sugestie, aby usprawnić Azure Logic Apps](https://feedback.azure.com/forums/287593-logic-apps)
+* Więcej informacji [na temat łączników dla Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej [na temat scenariuszy integracji B2B Enterprise z Azure Logic Apps](../logic-apps/logic-apps-enterprise-integration-overview.md)

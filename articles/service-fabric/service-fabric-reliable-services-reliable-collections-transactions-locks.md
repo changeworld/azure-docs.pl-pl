@@ -1,9 +1,9 @@
 ---
-title: Transakcje i tryby blokowania na platformie Azure usługi Service Fabric elementy Reliable Collections | Dokumentacja firmy Microsoft
-description: Usługi Azure Service Fabric Reliable Menedżer stanu i elementów Reliable Collections transakcji i blokowania.
+title: Transakcje i tryby blokowania w usłudze Azure Service Fabric niezawodne Kolekcje | Microsoft Docs
+description: Usługa Azure Service Fabric niezawodny Menedżer stanu i niezawodne transakcje kolekcji oraz blokowanie.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: masnider,rajak
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,85 +13,85 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: aljo
-ms.openlocfilehash: 9785a09a3ac3e119507b4ac28075d887c7edc619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 8e77e488a3c0a40a714a0e8efffba0a2947454bf
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60774067"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599318"
 ---
-# <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakcje i blokady tryby w elementach Reliable Collections usługi Azure Service Fabric
+# <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakcje i tryby blokowania w usłudze Azure Service Fabric niezawodne Kolekcje
 
 ## <a name="transaction"></a>Transakcji
-Transakcja jest sekwencją operacje wykonywane jako pojedyncza jednostka logiczna pracy.
-Transakcji musi mieć następujące właściwości ACID. (zobacz: https://technet.microsoft.com/library/ms190612)
-* **Niepodzielność**: Transakcji musi być pojedynczej Atomowej jednostki pracy. Innymi słowy wszystkie zmiany danych są wykonywane albo żadna z nich jest wykonywane.
-* **Spójność**: Po zakończeniu transakcji, należy pozostawić wszystkie dane w spójnym stanie. Wszystkich wewnętrznych struktur danych musi być poprawna, na końcu transakcji.
-* **Izolacja**: Zmiany dokonane przez jednoczesnych transakcji musi być odizolowany od zmiany dokonane przez innych równoczesnych transakcji. Poziom izolacji, używana na potrzeby operacji w ramach ITransaction jest określany przez IReliableState wykonującego operację.
-* **Trwałość**: Po zakończeniu transakcji jej efekty są trwałe w miejscu w systemie. Modyfikacje są zachowywane nawet w przypadku awarii systemu.
+Transakcja to sekwencja operacji wykonywanych w ramach pojedynczej jednostki logicznej pracy.
+Transakcja musi mieć następujące właściwości KWASów. wyświetlania https://technet.microsoft.com/library/ms190612)
+* Niepodzielność: Transakcja musi być niepodzielną jednostką pracy. Innymi słowy, wszystkie modyfikacje danych są wykonywane lub żadne z nich nie są wykonywane.
+* **Spójność**: Po zakończeniu transakcji należy pozostawić wszystkie dane w spójnym stanie. Wszystkie wewnętrzne struktury danych muszą być poprawne na końcu transakcji.
+* **Izolacja**: Modyfikacje dokonane przez współbieżne transakcje muszą być odizolowane od zmian wprowadzonych przez inne współbieżne transakcje. Poziom izolacji użyty dla operacji w ramach metody ITransaction jest określany przez IReliableState wykonujący operację.
+* **Trwałość**: Po zakończeniu transakcji jego skutki są stale stosowane w systemie. Modyfikacje są zachowywane nawet w przypadku awarii systemu.
 
 ### <a name="isolation-levels"></a>Poziomy izolacji
-Poziom izolacji definiuje żądany stopień, w którym transakcji muszą zostać odizolowane od zmian wprowadzonych przez inne transakcje.
-Istnieją dwa poziomy izolacji, które są obsługiwane w elementach Reliable Collections:
+Poziom izolacji definiuje stopień odizolowania transakcji od modyfikacji dokonanych przez inne transakcje.
+Istnieją dwa poziomy izolacji, które są obsługiwane w niezawodnych kolekcjach:
 
-* **Odczyt powtarzalny**: Określa, że instrukcji nie można odczytać danych, które zostały zmodyfikowane, ale nie zostały jeszcze zatwierdzone przez inne transakcje oraz że żadne inne transakcje może zmodyfikować dane odczytane przez bieżącą transakcję, aż do zakończenia bieżącej transakcji. Aby uzyskać więcej informacji, zobacz [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
-* **Migawka**: Określa, że dane odczytywane w programie żadnej instrukcji w transakcji jest transakcyjnie spójne wersję danych, które istniały na początku transakcji.
-  Transakcja może rozpoznawać tylko modyfikacji danych, które zostały zatwierdzone przed rozpoczęciem transakcji.
-  Modyfikacje danych wprowadzonych przez inne transakcje po rozpoczęciu bieżącej transakcji nie są widoczne dla instrukcje wykonywania w bieżącej transakcji.
-  Efekt jest tak, jakby instrukcji w ramach transakcji migawki danych zatwierdzone znajdowały się na początku transakcji.
-  Migawki są spójne we wszystkich kolekcjach niezawodne.
-  Aby uzyskać więcej informacji, zobacz [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
+* **Powtórzony odczyt**: Określa, że instrukcje nie mogą odczytywać danych, które zostały zmodyfikowane, ale jeszcze nie zostały zatwierdzone przez inne transakcje i że żadne inne transakcje nie mogą modyfikować danych odczytanych przez bieżącą transakcję do momentu zakończenia bieżącej transakcji. Aby uzyskać więcej informacji, [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)Zobacz.
+* **Migawka**: Określa, że dane odczytane przez żadną instrukcję w transakcji są spójną transakcyjnie wersją danych, które istniały na początku transakcji.
+  Transakcja może rozpoznać tylko modyfikacje danych, które zostały zatwierdzone przed rozpoczęciem transakcji.
+  Modyfikacje danych wprowadzone przez inne transakcje po rozpoczęciu bieżącej transakcji nie są widoczne dla instrukcji wykonywanych w bieżącej transakcji.
+  Jest to efekt, tak jakby instrukcje w transakcji uzyskują migawkę zatwierdzonych danych, które istniały na początku transakcji.
+  Migawki są spójne dla niezawodnych kolekcji.
+  Aby uzyskać więcej informacji, [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)Zobacz.
 
-Elementy Reliable Collections automatycznie wybiera poziom izolacji dla danej operacji odczytu, w zależności od operacji i Rola repliki w czasie tworzenia transakcji.
-Poniżej przedstawiono tabeli, który przedstawia wartości domyślnych poziomu izolacji dla operacji niezawodnego słownika i kolejki.
+Niezawodne kolekcje automatycznie wybierają poziom izolacji, który ma być używany dla danej operacji odczytu, w zależności od operacji i roli repliki w momencie tworzenia transakcji.
+Poniżej znajduje się tabela, która przedstawia ustawienia domyślne na poziomie izolacji dla niezawodnych operacji słownika i kolejki.
 
-| Operacja \ roli | Podstawowy | Pomocniczy |
+| Operacja \ rola | Podstawowy | Pomocnicza |
 | --- |:--- |:--- |
-| Jeden podmiot Odczyt |Odczyt powtarzalny |Snapshot |
+| Odczyt pojedynczej jednostki |Odczyt powtarzalny |Snapshot |
 | Wyliczenie, liczba |Snapshot |Snapshot |
 
 > [!NOTE]
-> Typowe przykłady dla pojedynczej operacji jednostki to `IReliableDictionary.TryGetValueAsync`, `IReliableQueue.TryPeekAsync`.
+> Typowe przykłady operacji pojedynczych jednostek to `IReliableDictionary.TryGetValueAsync`,. `IReliableQueue.TryPeekAsync`
 > 
 
-Zarówno w niezawodnym słowniku, jak i niezawodna kolejka obsługuje Your zapisuje odczytu.
-Innymi słowy dowolnej zapisu w obrębie transakcji będą widoczne dla następujących odczytu, który należy do tej samej transakcji.
+Zarówno niezawodny słownik, jak i niezawodna Kolejka obsługują odczytywanie zapisów.
+Innymi słowy, każdy zapis w ramach transakcji będzie widoczny dla następującego odczytu, który należy do tej samej transakcji.
 
 ## <a name="locks"></a>Blokady
-W elementach Reliable Collections wszystkie transakcje Implementowanie rygorystyczne dwie fazy blokowania: transakcji nie spowoduje zwolnienia blokady uzyskała aż do zakończenia transakcji przy użyciu przerwania lub zatwierdzenia.
+W niezawodnych kolekcjach wszystkie transakcje implementują rygorystyczne dwie fazy blokowania: transakcja nie zwalnia blokad, które uzyskały do momentu zakończenia transakcji z przerwaniem lub zatwierdzeniem.
 
-Niezawodnego słownika używa blokowania dla wszystkich operacji w pojedynczą jednostkę na poziomie wiersza.
-Niezawodna kolejka zamienia wyłączanie współbieżności dla strict właściwości FIFO transakcyjnych.
-Niezawodna kolejka używa operacji blokadami poziomu umożliwiające utworzenie jednej transakcji `TryPeekAsync` i/lub `TryDequeueAsync` i transakcja o `EnqueueAsync` w danym momencie.
-Pamiętaj, że aby zachować FIFO, jeśli `TryPeekAsync` lub `TryDequeueAsync` nigdy nie przestrzega, że niezawodna kolejka jest pusta, również spowoduje to zablokowanie `EnqueueAsync`.
+Niezawodny słownik używa blokowania na poziomie wiersza dla wszystkich operacji pojedynczych jednostek.
+Niezawodna wymiana transakcji w ramach współbieżności dla rygorystycznej transakcyjnej właściwości FIFO.
+Niezawodna Kolejka używa blokad poziomu operacji, `TryPeekAsync` umożliwiając jedną transakcję z i/ `EnqueueAsync` lub `TryDequeueAsync` i jedną transakcję jednocześnie.
+Należy pamiętać, że w celu zachowania FIFO `TryPeekAsync` , `TryDequeueAsync` Jeśli lub kiedykolwiek obserwuje, że niezawodna kolejka jest pusta `EnqueueAsync`, również zostanie zablokowana.
 
-Zapis operacji zawsze pobierają blokady na wyłączność.
-Dla operacji odczytu blokowania zależy od kilku czynników.
-Wszystkie operacje odczytu wykonywane przy użyciu izolacji migawki jest wolne od blokady.
-Każdej operacji Odczyt powtarzalny domyślnie przyjmuje współdzielona blokad.
-Jednak dla każdej operacji odczytu, która obsługuje Odczyt powtarzalny, użytkownika można uzyskać blokady aktualizacji zamiast blokady udostępnione.
-Blokada aktualizacji to asymetryczny blokady używany w celu zapobiegania wspólnej formy zakleszczenia, który występuje, gdy wiele transakcji blokowania zasobów potencjalnych aktualizacji w późniejszym czasie.
+Operacje zapisu zawsze pobierają blokady na wyłączność.
+W przypadku operacji odczytu blokowanie zależy od kilku czynników.
+Wszystkie operacje odczytu wykonane przy użyciu izolacji migawki są wolne od blokady.
+Wszystkie powtarzalne operacje odczytu domyślnie pobierają blokady udostępnione.
+Jednak dla każdej operacji odczytu, która obsługuje powtarzanie odczytu, użytkownik może poprosił o blokadę aktualizacji zamiast blokady udostępnionej.
+Blokada aktualizacji jest asymetryczną blokadą używaną do zapobiegania wspólnej formie zakleszczenia, która występuje, gdy wiele transakcji blokuje zasoby na potrzeby potencjalnych aktualizacji w późniejszym czasie.
 
-Macierz zgodności blokady na ten temat można znaleźć w poniższej tabeli:
+Macierz zgodności blokad można znaleźć w poniższej tabeli:
 
-| Żądanie \ przyznane | Brak | Udostępnione | Aktualizacja | Wyłączne |
+| Żądanie \ przyznane | Brak | Udostępnione | Aktualizacja | Klucz |
 | --- |:--- |:--- |:--- |:--- |
-| Udostępnione |Nie konfliktów |Nie konfliktów |Konflikt |Konflikt |
-| Aktualizacja |Nie konfliktów |Nie konfliktów |Konflikt |Konflikt |
-| Wyłączne |Nie konfliktów |Konflikt |Konflikt |Konflikt |
+| Udostępnione |Brak konfliktu |Brak konfliktu |Konflikt |Konflikt |
+| Aktualizacja |Brak konfliktu |Brak konfliktu |Konflikt |Konflikt |
+| Klucz |Brak konfliktu |Konflikt |Konflikt |Konflikt |
 
-Argument limitu czasu w niezawodnej kolekcji interfejsów API jest używane do wykrywania zakleszczeń.
-Na przykład dwie transakcje (T1 i T2) próbuje odczytywać i aktualizować K1.
-Jest możliwość ich zakleszczenie, ponieważ oba znajdą się o blokady udostępnione.
-W tym przypadku co najmniej jeden z operacji przekroczy limit czasu.
+Argument limitu czasu w interfejsach API niezawodnych kolekcji służy do wykrywania zakleszczenia.
+Na przykład dwie transakcje (T1 i T2) próbują odczytywać i aktualizować K1.
+Istnieje możliwość zakleszczenia, ponieważ oba te elementy kończą się z blokadą udostępnioną.
+W takim przypadku jedna lub obie operacje przekroczą limit czasu.
 
-W tym scenariuszu zakleszczeń jest doskonałym przykładem jak zapobiec zakleszczenia blokady aktualizacji.
+Ten scenariusz zakleszczenia to doskonały przykład, jak blokada aktualizacji może uniemożliwić zakleszczenie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Praca z elementami Reliable Collections](service-fabric-work-with-reliable-collections.md)
-* [Niezawodne usługi powiadomień](service-fabric-reliable-services-notifications.md)
-* [Niezawodne usługi Kopia zapasowa i przywracanie (odzyskiwanie po awarii)](service-fabric-reliable-services-backup-restore.md)
-* [Elementy Reliable State Manager konfiguracji](service-fabric-reliable-services-configuration.md)
-* [Dokumentacja dla deweloperów dla elementów Reliable Collections](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Powiadomienia Reliable Services](service-fabric-reliable-services-notifications.md)
+* [Reliable Services kopii zapasowej i przywracania (odzyskiwanie po awarii)](service-fabric-reliable-services-backup-restore.md)
+* [Konfiguracja niezawodnego menedżera stanu](service-fabric-reliable-services-configuration.md)
+* [Dokumentacja dla deweloperów dla niezawodnych kolekcji](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 

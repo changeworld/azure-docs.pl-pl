@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 55def52d248babd439227cdcd4170c0a3ca91bb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 476bdd50a56b953585a8a4e9cea05975c9922e0f
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569828"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662950"
 ---
-# <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Badanie zdarzeń i alertów w usłudze Azure Security Center (wersja zapoznawcza)
-Ten dokument ułatwia korzystanie z funkcji badania zdarzeń zabezpieczeń i alertów w usłudze Azure Security Center.
+# <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Badanie zdarzeń i alertów w Azure Security Center (wycofane)
+Ten dokument ułatwia korzystanie z funkcji badania (wersja zapoznawcza) w Azure Security Center w celu zbadania zdarzeń zabezpieczeń i alertów.
 
 > [!NOTE]
-> Badać alerty i zdarzenia zostaną wycofane z dniem 31 lipca 2019 r. Aby uzyskać więcej informacji i alternatywne usług zobacz [wycofywania Centrum zabezpieczeń funkcji (2019 lipca)](security-center-features-retirement-july2019.md#menu_investigate).
+> Środowisko badania alertów i incydentów (wersja zapoznawcza) zostało wycofane 31 lipca 2019. Aby uzyskać więcej informacji i alternatywnych usług, zobacz wycofywanie [funkcji Security Center (lipiec 2019)](security-center-features-retirement-july2019.md#menu_investigate).
 
 ## <a name="what-is-investigation-in-security-center"></a>Czym jest badanie w usłudze Security Center?
 Funkcja Badanie w usłudze Security Center umożliwia klasyfikowanie, określanie zakresu i śledzenie głównej przyczyny potencjalnego [zdarzenia zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-incident).
@@ -34,8 +34,8 @@ Celem jest ułatwienie procesu badania dzięki połączeniu wszystkich jednostek
 
 
 > [!NOTE]
-> * [Niestandardowe alerty](security-center-custom-alert.md) nie są obsługiwane w funkcji badania Centrum zabezpieczeń.
-> * Badanie jest obsługiwana tylko dla alertów na podstawie danych zebranych z serwerów Windows.
+> * [Alerty niestandardowe](security-center-custom-alert.md) nie są obsługiwane w funkcji badania Security Center.
+> * Badanie jest obsługiwane tylko w przypadku alertów opartych na danych zebranych z serwerów z systemem Windows.
 
 
 ## <a name="how-investigation-works"></a>Jak działa funkcja Badanie?
@@ -65,11 +65,11 @@ Na karcie **Jednostki** są wyświetlane wszystkie powiązane jednostki pogrupow
 
 ![Jednostki](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>Wyszukiwanie
+### <a name="search"></a>Wyszukaj
 
 Karta **Wyszukiwanie** przedstawia wszystkie typy dzienników dostępne dla danej jednostki. W przypadku każdego typu dziennika można wyświetlić liczbę dostępnych rekordów. Kliknięcie każdego typu dziennika powoduje przejście do ekranu wyszukiwania. Na ekranie wyszukiwania można uściślić wyszukiwanie i skorzystać z różnych funkcji wyszukiwania, takich jak alerty ustawień. W bieżącej wersji karta Wyszukiwanie jest dostępna tylko w przypadku jednostek użytkownicy i komputery.
 
-![Wyszukiwanie](./media/security-center-investigation/security-center-investigation-fig5.png)
+![Wyszukaj](./media/security-center-investigation/security-center-investigation-fig5.png)
 
 ### <a name="exploration"></a>Eksploracja
 
@@ -99,7 +99,7 @@ Następujące elementy będą prezentowane niezależnie od wybranego zakresu cza
 
 ## <a name="how-to-perform-an-investigation"></a>Jak przeprowadzić badanie?
 
-Badanie można rozpocząć z poziomu zdarzenia zabezpieczeń lub alertu. Wybrana opcja zależy od Twoich potrzeb. Poniższa procedura umożliwia rozpoczęcie badania z poziomu alertu:
+Badanie można rozpocząć z poziomu zdarzenia zabezpieczeń lub alertu. Wybrana opcja zależy od Twoich potrzeb. Poniższe kroki służą do rozpoczęcia badania od alertu:
 
 1.  Otwórz pulpit nawigacyjny usługi **Security Center**.
 2.  Kliknij pozycję **Alerty zabezpieczeń** i wybierz zdarzenie, które chcesz zbadać.

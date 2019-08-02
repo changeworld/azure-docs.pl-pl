@@ -1,9 +1,9 @@
 ---
-title: Uaktualnianie klastra usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat uaktualniania wersji lub konfiguracji klastra usługi Azure Service Fabric.  W tym artykule opisano ustawienia klastra tryb aktualizacji uaktualnianie certyfikaty, dodawanie portów aplikacji, wykonując poprawek systemu operacyjnego i czego mogą oczekiwać podczas uaktualnienia są wykonywane
+title: Uaktualnianie klastra usługi Azure Service Fabric | Microsoft Docs
+description: Dowiedz się więcej na temat uaktualniania wersji lub konfiguracji klastra Service Fabric platformy Azure.  W tym artykule opisano konfigurowanie trybu aktualizacji klastra, uaktualnianie certyfikatów, Dodawanie portów aplikacji, tworzenie poprawek systemu operacyjnego i ich oczekiwanie podczas przeprowadzania uaktualnień
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
@@ -13,99 +13,99 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
-ms.author: aljo
-ms.openlocfilehash: 8fa461d8c3a70d4b0d2d9973a840ffc7d1ff6470
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 2c8465a3aba4a21efaa20a118807d739dd501b09
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472763"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599785"
 ---
-# <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Uaktualnianie i aktualizowanie klastra usługi Azure Service Fabric
+# <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Uaktualnianie i aktualizowanie klastra Service Fabric platformy Azure
 
-Dla każdego nowoczesnego systemu projektowanie pod kątem możliwość jest kluczem do osiągnięcia długoterminowym sukcesie produktu. Klaster usługi Azure Service Fabric jest zasobem, który właścicielem, ale jest częściowo zarządzany przez firmę Microsoft. W tym artykule opisano, co jest zarządzana automatycznie i samodzielnie skonfigurować.
+W przypadku każdego nowoczesnego systemu projektowanie pod kątem wydajności jest kluczem do osiągnięcia długotrwałego sukcesu produktu. Klaster Service Fabric platformy Azure to zasób, którego jesteś członkiem, ale jest częścią zarządzaną przez firmę Microsoft. W tym artykule opisano, co jest zarządzane automatycznie i jakie elementy można skonfigurować samodzielnie.
 
-## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Kontrolowanie wersja sieci szkieletowej, która działa w klastrze
+## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Kontrolowanie wersji sieci szkieletowej działającej w klastrze
 
-Upewnij się zachować klaster [obsługiwana wersja sieci szkieletowej](service-fabric-versions.md) zawsze. Gdy firma Microsoft ogłaszamy wydanie nowej wersji usługi Service fabric, poprzednia wersja jest oznaczony do zakończenia wsparcia po co najmniej 60 dni od tego dnia. Nowe wersje są ogłaszane na blogu zespołu usługi Service fabric. Nowa wersja jest dostępna dla wybrany.
+Upewnij się, że w klastrze działa zawsze [obsługiwana wersja sieci szkieletowej](service-fabric-versions.md) . Po opublikowaniu wydania nowej wersji usługi Service Fabric Poprzednia wersja zostanie oznaczona jako przeznaczona do końca wsparcia po upływie co najmniej 60 dni od tej daty. Nowe wersje są ogłaszane na blogu zespołu usługi Service Fabric. Nowe wydanie jest dostępne do wyboru.
 
-14 dni przed wygaśnięciem wersji, którą klaster działa, zdarzenie kondycji jest generowany tak, że przełączenie klastra w wskazuje ostrzegawczy stan kondycji. Klaster będzie pozostawał w stanie ostrzeżenia, dopóki nie można uaktualnić do wersji obsługiwanej sieci szkieletowej.
+14 dni przed wygaśnięciem wydania klastra zostanie wygenerowane zdarzenie kondycji, które powoduje przełączenie klastra w stan kondycji ostrzegawczej. Ten klaster pozostaje w stanie ostrzegawczym do momentu uaktualnienia do obsługiwanej wersji sieci szkieletowej.
 
-Można ustawić do klastra, aby otrzymywać uaktualnienia sieci szkieletowej automatyczne, zgodnie z ich wydaniu przez firmę Microsoft lub możesz wybrać wersję obsługiwanych w sieci szkieletowej, że chcesz użyć do klastra, aby znajdować się na.  Aby dowiedzieć się więcej, przeczytaj [uaktualniania wersji usługi Service Fabric klastra](service-fabric-cluster-upgrade-version-azure.md).
+Można ustawić, aby klaster odbierał automatyczne uaktualnienia sieci szkieletowej, gdy zostaną wydane przez firmę Microsoft lub można wybrać obsługiwaną wersję sieci szkieletowej, na której ma być włączony klaster.  Aby dowiedzieć się więcej, przeczytaj artykuł [Uaktualnij wersję Service Fabric klastra](service-fabric-cluster-upgrade-version-azure.md).
 
-## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Sieć szkieletowa uaktualniać zachowanie podczas automatycznych uaktualnień
-Firma Microsoft udostępnia kodu sieci szkieletowej i konfiguracji, która działa w klastrze platformy Azure. Wykonamy automatycznych uaktualnień monitorowanych oprogramowania na zgodnie z potrzebami. Te uaktualnienia może być kod i/lub konfiguracji. Aby upewnić się, że aplikacja niska bez wpływu i minimalne wpływu na te uaktualnienia, możemy przeprowadzić uaktualnienia w następujących faz:
+## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Zachowanie podczas uaktualniania sieci szkieletowej podczas automatycznych uaktualnień
+Firma Microsoft utrzymuje kod sieci szkieletowej i konfigurację, która działa w klastrze platformy Azure. Przeprowadzamy automatyczne monitorowanie uaktualnień do oprogramowania zgodnie z wymaganiami. Mogą to być kod, konfiguracja lub oba te uaktualnienia. Aby upewnić się, że aplikacja nie ma wpływu ani nie ma minimalnych skutków wynikających z tych uaktualnień, przeprowadzamy uaktualnienia w następujących fazach:
 
-### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Faza 1: Uaktualnianie jest przeprowadzane przy użyciu wszystkich zasad dotyczących kondycji klastra
-W tej fazie uaktualnienia Przejdź jedną domenę uaktualnienia w danym momencie, a aplikacje, które były uruchomione w klastrze nadal działać bez żadnych przestojów. Zasady dotyczące kondycji klastra (kombinację kondycji węzła i kondycji wszystkich aplikacji uruchomionych w klastrze) są przestrzegane podczas uaktualniania.
+### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Faza 1: Uaktualnienie jest wykonywane przy użyciu wszystkich zasad dotyczących kondycji klastra
+W tej fazie uaktualnienia są kontynuowane w jednej domenie uaktualnienia, a aplikacje, które działały w klastrze, nadal działają bez żadnych przestojów. Zasady kondycji klastra (połączenie kondycji węzła i kondycji wszystkich aplikacji działających w klastrze) są przestrzegane podczas uaktualniania.
 
-Jeśli zasady dotyczące kondycji klastra nie są spełnione, uaktualnienie zostanie wycofana. Następnie zostanie wysłana wiadomość e-mail do właściciela subskrypcji. Wiadomość e-mail zawiera następujące informacje:
+Jeśli zasady kondycji klastra nie są spełnione, uaktualnienie jest wycofywane. Następnie do właściciela subskrypcji jest wysyłana wiadomość e-mail. Wiadomość e-mail zawiera następujące informacje:
 
-* Powiadomienie o Musieliśmy wycofać uaktualniania klastra.
-* Zalecane czynności zaradczych, jeśli istnieje.
-* Liczba dni (n), dopóki nie możemy wykonać fazy 2.
+* Powiadomienie o wycofaniu uaktualnienia klastra.
+* Sugerowane akcje naprawcze (jeśli istnieją).
+* Liczba dni (n) do momentu wykonania fazy 2.
 
-Będziemy próbować wykonać uaktualnienie samej kilka razy w przypadku uaktualnienia nie powiodła się ze względów infrastruktury. Po n dni od daty wysłania wiadomości e-mail możemy przejść do sekcji Faza 2.
+Podjęto próbę wykonania tego samego uaktualnienia na wypadek niepowodzenia uaktualnienia z przyczyn związanych z infrastrukturą. Po n dniach od daty wysłania wiadomości e-mail przejdziemy do fazy 2.
 
-Jeśli zasady dotyczące kondycji klastra są spełnione, uaktualnienie jest uznawany za pomyślny i oznaczone jako ukończone. Może to nastąpić podczas uaktualniania początkowej lub dowolne powtórkami uaktualniania na tym etapie. Nie ma żadnych e-mail z potwierdzeniem pomyślnego przebiegu. To jest unikać wysyłania, że możesz zbyt dużo żądań wiadomości e-mail — otrzymania wiadomości e-mail powinno być postrzegane jako wyjątek do normalnego. Oczekujemy, że większość Uaktualnianie klastra została wykonana pomyślnie, bez wywierania wpływu na dostępność Twojej aplikacji.
+Jeśli zasady kondycji klastra są spełnione, uaktualnienie jest uznawane za pomyślne i oznaczone jako ukończone. Taka sytuacja może wystąpić podczas wstępnego uaktualniania lub dowolnego uruchomienia procesu uaktualniania w tej fazie. Nie ma potwierdzenia pomyślnego uruchomienia wiadomości e-mail. Ma to na celu uniknięcie wysyłania zbyt wielu wiadomości e-mail — otrzymanie wiadomości e-mail powinna być traktowana jako wyjątek normalny. Oczekujemy, że większość uaktualnień klastra zakończy się pomyślnie bez wpływu na dostępność aplikacji.
 
-### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Faza 2: Uaktualnianie jest przeprowadzane przy użyciu tylko zasady dotyczące kondycji domyślne
-Zasady dotyczące kondycji, w tej fazie są ustawiane w taki sposób, aby wiele aplikacji, będące w dobrej kondycji na początku uaktualnienia pozostała taka sama na czas trwania procesu uaktualniania. Tak jak w fazie 1 uaktualnień fazy 2 Przejdź jedną domenę uaktualnienia w danym momencie, a aplikacje, które były uruchomione w klastrze nadal działać bez żadnych przestojów. Zasady dotyczące kondycji klastra (kombinację kondycji węzła i kondycji wszystkich aplikacji uruchomionych w klastrze) są przestrzegane na czas trwania uaktualniania.
+### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Faza 2: Uaktualnienie jest wykonywane tylko przy użyciu domyślnych zasad dotyczących kondycji
+Zasady dotyczące kondycji w tej fazie są ustawiane w taki sposób, że liczba aplikacji, które były w dobrej kondycji na początku uaktualnienia, pozostaje taka sama dla czasu trwania procesu uaktualniania. Podobnie jak w przypadku fazy 1, uaktualnienia fazy 2 są kontynuowane w jednej domenie uaktualnienia, a aplikacje, które były uruchomione w klastrze, nadal działają bez żadnych przestojów. Zasady kondycji klastra (połączenie kondycji węzła i kondycji wszystkich aplikacji działających w klastrze) są zgodne z czasem trwania uaktualnienia.
 
-Jeśli zasady dotyczące kondycji klastra w praktyce nie są spełnione, uaktualnienie zostanie wycofana. Następnie zostanie wysłana wiadomość e-mail do właściciela subskrypcji. Wiadomość e-mail zawiera następujące informacje:
+Jeśli zasady kondycji klastra nie są spełnione, uaktualnienie jest wycofywane. Następnie do właściciela subskrypcji jest wysyłana wiadomość e-mail. Wiadomość e-mail zawiera następujące informacje:
 
-* Powiadomienie o Musieliśmy wycofać uaktualniania klastra.
-* Zalecane czynności zaradczych, jeśli istnieje.
-* Liczba dni (n), dopóki nie możemy wykonać fazy 3.
+* Powiadomienie o wycofaniu uaktualnienia klastra.
+* Sugerowane akcje naprawcze (jeśli istnieją).
+* Liczba dni (n) do momentu wykonania fazy 3.
 
-Będziemy próbować wykonać uaktualnienie samej kilka razy w przypadku uaktualnienia nie powiodła się ze względów infrastruktury. Wiadomość e-mail z przypomnieniem są wysyłane na kilka dni, po którym n dni są włączone. Po n dni od daty wysłania wiadomości e-mail możemy przejść do fazy 3. Wiadomości e-mail, które możemy wysłać w sekcji Faza 2, które muszą zostać podjęte naszych użytkowników bardzo poważnie i należy podjąć akcje naprawcze.
+Podjęto próbę wykonania tego samego uaktualnienia na wypadek niepowodzenia uaktualnienia z przyczyn związanych z infrastrukturą. Wiadomość e-mail z przypomnieniem jest wysyłana kilka dni przed n dni. Po n dniach od daty wysłania wiadomości e-mail przejdziemy do fazy 3. Wiadomości e-mail, które wysyłamy w fazie 2, muszą być podejmowane poważnie i należy podjąć działania naprawcze.
 
-Jeśli zasady dotyczące kondycji klastra są spełnione, uaktualnienie jest uznawany za pomyślny i oznaczone jako ukończone. Może to nastąpić podczas uaktualniania początkowej lub dowolne powtórkami uaktualniania na tym etapie. Nie ma żadnych e-mail z potwierdzeniem pomyślnego przebiegu.
+Jeśli zasady kondycji klastra są spełnione, uaktualnienie jest uznawane za pomyślne i oznaczone jako ukończone. Taka sytuacja może wystąpić podczas wstępnego uaktualniania lub dowolnego uruchomienia procesu uaktualniania w tej fazie. Nie ma potwierdzenia pomyślnego uruchomienia wiadomości e-mail.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Faza 3: Uaktualnianie jest przeprowadzane przy użyciu zasady dotyczące kondycji agresywne
-Te zasady dotyczące kondycji, w tej fazie są przeznaczone dla ukończenie uaktualnienia, a nie kondycji aplikacji. Uaktualnianie klastra kilka znajdą się w tej fazie. Jeśli na tym etapie klaster, istnieje duże prawdopodobieństwo, że aplikacja staje się nieprawidłowy, i/lub utratę dostępności.
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Faza 3: Uaktualnienie jest wykonywane przy użyciu agresywnych zasad dotyczących kondycji
+Te zasady kondycji w tej fazie są ukierunkowane na zakończenie uaktualniania, a nie na kondycję aplikacji. Niektóre uaktualnienia klastra kończą się w tej fazie. Jeśli klaster przechodzi do tej fazy, istnieje dobry szansa, że aplikacja stanie się zła i/lub utraci dostęp.
 
-Podobnie jak w pozostałych faz, fazy 3 uaktualnienia Przejdź jedną domenę uaktualnienia w danym momencie.
+Podobnie jak w przypadku innych dwóch faz, uaktualnienia fazy 3 przechodzą w jedną domenę uaktualnienia jednocześnie.
 
-Jeśli zasady dotyczące kondycji klastra nie są spełnione, uaktualnienie zostanie wycofana. Będziemy próbować wykonać uaktualnienie samej kilka razy w przypadku uaktualnienia nie powiodła się ze względów infrastruktury. Po utworzeniu tego klastra jest przypięty, aby go nie będziesz już otrzymywać pomocy technicznej i/lub uaktualnienia.
+Jeśli zasady kondycji klastra nie są spełnione, uaktualnienie jest wycofywane. Podjęto próbę wykonania tego samego uaktualnienia na wypadek niepowodzenia uaktualnienia z przyczyn związanych z infrastrukturą. Następnie klaster jest przypięty, dzięki czemu nie będzie już otrzymywać pomocy technicznej i/lub uaktualnień.
 
-Wiadomość e-mail z te informacje są wysyłane do właściciela subskrypcji, oraz czynności zaradczych. Nie oczekujemy, że wszystkie klastry, aby znaleźć się w stanie, w którym fazy 3 nie powiodło się.
+Wiadomość e-mail zawierająca te informacje jest wysyłana do właściciela subskrypcji wraz z działaniami naprawczymi. Nie oczekuje się, że żaden klaster nie przejdzie do stanu, w którym faza 3 nie powiodła się.
 
-Jeśli zasady dotyczące kondycji klastra są spełnione, uaktualnienie jest uznawany za pomyślny i oznaczone jako ukończone. Może to nastąpić podczas uaktualniania początkowej lub dowolne powtórkami uaktualniania na tym etapie. Nie ma żadnych e-mail z potwierdzeniem pomyślnego przebiegu.
+Jeśli zasady kondycji klastra są spełnione, uaktualnienie jest uznawane za pomyślne i oznaczone jako ukończone. Taka sytuacja może wystąpić podczas wstępnego uaktualniania lub dowolnego uruchomienia procesu uaktualniania w tej fazie. Nie ma potwierdzenia pomyślnego uruchomienia wiadomości e-mail.
 
 ## <a name="manage-certificates"></a>Zarządzanie certyfikatami
-Usługa Service Fabric używa [serwera certyfikatu x.509](service-fabric-cluster-security.md) określić podczas tworzenia klastra do zabezpieczania komunikacji między węzłami klastra i uwierzytelniania klientów. Dodawanie, aktualizowanie lub usuwanie certyfikatów klastra i klienta w [witryny Azure portal](https://portal.azure.com) lub przy użyciu interfejsu wiersza polecenia programu PowerShell/Azure.  Aby dowiedzieć się więcej, przeczytaj [Dodawanie lub usuwanie certyfikatów](service-fabric-cluster-security-update-certs-azure.md)
+Service Fabric używa [certyfikatów serwera X. 509](service-fabric-cluster-security.md) , które należy określić podczas tworzenia klastra w celu zabezpieczenia komunikacji między węzłami klastra i uwierzytelniania klientów. Można dodawać, aktualizować i usuwać certyfikaty klastra i klienta w [Azure Portal](https://portal.azure.com) lub przy użyciu interfejsu wiersza polecenia platformy Azure.  Aby dowiedzieć się więcej, przeczytaj artykuł [Dodawanie lub usuwanie certyfikatów](service-fabric-cluster-security-update-certs-azure.md)
 
-## <a name="open-application-ports"></a>Porty otwartych aplikacji
-Porty aplikacji można zmienić, zmieniając właściwości zasobu modułu równoważenia obciążenia, które są skojarzone z typem węzła. Można użyć witryny Azure portal, lub można użyć interfejsu wiersza polecenia programu PowerShell/Azure. Aby uzyskać więcej informacji, przeczytaj [Otwórz porty aplikacji dla klastra](create-load-balancer-rule.md).
+## <a name="open-application-ports"></a>Otwórz porty aplikacji
+Porty aplikacji można zmienić, zmieniając właściwości zasobów Load Balancer skojarzonych z typem węzła. Możesz użyć Azure Portal lub użyć interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, przeczytaj artykuł [otwieranie portów aplikacji dla klastra](create-load-balancer-rule.md).
 
-## <a name="define-node-properties"></a>Zdefiniuj właściwości węzła
-Czasami możesz chcieć upewnij się, że niektóre obciążenia uruchamiane tylko na niektóre rodzaje węzłów w klastrze. Na przykład niektóre obciążenia mogą wymagać procesorów GPU lub dyski SSD, podczas gdy inne nie. Dla każdego z typów węzłów w klastrze można dodać właściwości niestandardowe węzła do węzłów klastra. Ograniczeniami dotyczącymi umieszczania są instrukcje dołączone do poszczególnych usług, które wybierz co najmniej jedną właściwość węzła. Ograniczeniami dotyczącymi umieszczania definiują, gdzie należy uruchamiać usług.
+## <a name="define-node-properties"></a>Definiowanie właściwości węzła
+Czasami warto upewnić się, że pewne obciążenia są uruchamiane tylko na niektórych typach węzłów w klastrze. Na przykład niektóre obciążenia mogą wymagać procesora GPU lub dysków SSD, a inne mogą nie być. Dla każdego z typów węzłów w klastrze można dodać niestandardowe właściwości węzła do węzłów klastra. Ograniczenia umieszczania to instrukcje dołączone do poszczególnych usług, które wybierają jedną lub więcej właściwości węzła. Ograniczenia umieszczania definiują, gdzie mają być uruchamiane usługi.
 
-Szczegółowe informacje dotyczące korzystania z ograniczeniami dotyczącymi umieszczania, właściwości węzła i sposób definiowania ich można odczytać [— właściwości węzła i ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
+Aby uzyskać szczegółowe informacje na temat używania ograniczeń umieszczania, właściwości węzła i sposobu ich definiowania, Odczytaj [właściwości węzła i ograniczenia umieszczania](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
-## <a name="add-capacity-metrics"></a>Dodawanie metryki pojemności
-Dla każdego typu węzła możesz dodać niestandardowe metryki pojemności, którą chcesz używać w aplikacjach w celu raportowania obciążenia. Szczegółowe informacje dotyczące użycia metryki pojemności w celu raportowania obciążenia można odwoływać się do dokumentów, Menedżer zasobów klastra usługi w sieci szkieletowej na [opisujący Twój klaster](service-fabric-cluster-resource-manager-cluster-description.md) i [metryki i obciążenia](service-fabric-cluster-resource-manager-metrics.md).
+## <a name="add-capacity-metrics"></a>Dodawanie metryk pojemności
+Dla każdego typu węzła można dodać niestandardowe metryki pojemności, które mają być używane w aplikacjach do raportowania obciążenia. Aby uzyskać szczegółowe informacje na temat używania metryk pojemności do raportowania obciążenia, zapoznaj się z klastrem Service Fabric Menedżer zasobów dokumenty dotyczące [opisywania klastra](service-fabric-cluster-resource-manager-cluster-description.md) i [metryk i obciążenia](service-fabric-cluster-resource-manager-metrics.md).
 
-## <a name="set-health-policies-for-automatic-upgrades"></a>Ustaw zasady dotyczące kondycji automatycznych uaktualnień
-Można określić zasady dotyczące kondycji niestandardowych do uaktualnienia sieci szkieletowej. Jeśli ustawisz klastra do sieci szkieletowej automatycznych uaktualnień, następnie te zasady stosowane do fazy 1 uaktualnienia automatyczne sieci szkieletowej.
-Jeśli ustawiono klastra dla sieci szkieletowej ręcznego uaktualnienia, te zasady zastosowana podczas wybierania nowej wersji, wyzwalając systemu, aby uruchamiał uaktualnienia sieci szkieletowej w klastrze. Jeśli nie zastąpisz zasady, są używane wartości domyślne.
+## <a name="set-health-policies-for-automatic-upgrades"></a>Ustawianie zasad kondycji dla automatycznych uaktualnień
+Możesz określić niestandardowe zasady kondycji dla uaktualnienia sieci szkieletowej. Jeśli ustawiono klaster na potrzeby automatycznych uaktualnień sieci szkieletowej, te zasady zostaną zastosowane do fazy 1 uaktualnienia automatycznej sieci szkieletowej.
+Jeśli ustawiono klaster do ręcznego uaktualniania sieci szkieletowej, te zasady zostaną zastosowane przy każdym wybraniu nowej wersji wyzwalającej system w celu uruchomienia uaktualnienia sieci szkieletowej w klastrze. Jeśli nie zastąpisz zasad, zostaną użyte wartości domyślne.
 
-Można określić zasady dotyczące kondycji niestandardowych lub Przejrzyj bieżące ustawienia w bloku "uaktualnienia sieci szkieletowej", wybierając pozycję Zaawansowane ustawienia uaktualniania. Przejrzyj następujący obraz na temat. 
+Możesz określić niestandardowe zasady dotyczące kondycji lub przejrzeć bieżące ustawienia w bloku "Sieć szkieletowa", wybierając zaawansowane ustawienia uaktualnienia. Zapoznaj się z poniższym obrazem. 
 
-![Zarządzanie zasadami kondycji niestandardowe][HealthPolices]
+![Zarządzanie niestandardowymi zasadami kondycji][HealthPolices]
 
 ## <a name="customize-fabric-settings-for-your-cluster"></a>Dostosowywanie ustawień sieci szkieletowej dla klastra
-Wiele różnych ustawień konfiguracji można dostosować w taki sposób, w klastrze, takich jak poziom niezawodności właściwości klastra i węzła. Aby uzyskać więcej informacji, przeczytaj [ustawień sieci szkieletowej klastra usługi Service Fabric](service-fabric-cluster-fabric-settings.md).
+Wiele różnych ustawień konfiguracji można dostosować w klastrze, na przykład na poziomie niezawodności właściwości klastra i węzła. Aby uzyskać więcej informacji, Przeczytaj [Service Fabric ustawienia sieci szkieletowej klastra](service-fabric-cluster-fabric-settings.md).
 
-## <a name="patch-the-os-in-the-cluster-nodes"></a>Stosowanie poprawek systemu operacyjnego w węzłach klastra
-Aplikacja orchestration patch (POA) jest aplikacja usługi Service Fabric, który automatyzuje systemu operacyjnego poprawek w klastrze usługi Service Fabric, bez przestojów. [Patch Orchestration Application dla Windows](service-fabric-patch-orchestration-application.md) można wdrożyć w klastrze do instalowania poprawek w zorganizowany sposób przy jednoczesnym zachowaniu usług dostępnych przez cały czas.
+## <a name="patch-the-os-in-the-cluster-nodes"></a>Poprawianie systemu operacyjnego w węzłach klastra
+Aplikacja aranżacji patch (POA) jest aplikacją Service Fabric, która automatyzuje stosowanie poprawek systemu operacyjnego w klastrze Service Fabric bez przestojów. [Aplikacja aranżacji poprawek dla systemu Windows](service-fabric-patch-orchestration-application.md) może zostać wdrożona w klastrze w celu zainstalowania poprawek w zorganizowany sposób, dzięki czemu usługi są dostępne przez cały czas.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak dostosować niektóre [usługi ustawień sieci szkieletowej klastra Service fabric](service-fabric-cluster-fabric-settings.md)
-* Dowiedz się, jak [skalowanie klastra w poziomie i pionie](service-fabric-cluster-scale-up-down.md)
-* Dowiedz się więcej o [uaktualnień aplikacji](service-fabric-application-upgrade.md)
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak dostosować niektóre [Ustawienia sieci szkieletowej klastra usługi Service Fabric](service-fabric-cluster-fabric-settings.md)
+* Dowiedz się [, jak skalować klaster w i na zewnątrz](service-fabric-cluster-scale-up-down.md)
+* Informacje o [uaktualnieniach aplikacji](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

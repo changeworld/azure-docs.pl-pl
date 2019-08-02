@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: yagup
-ms.openlocfilehash: ca3174ad69185da88bf89c843f641dd2b20d9ac5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 03c0106d793fc7b77ccc8a9176f158a9928ab291
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872485"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620128"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -55,7 +55,7 @@ Analiza ruchu analizuje dzienniki nieprzetworzonych przepływów sieciowej grupy
 
 ![Przepływ danych dla przetwarzania dzienników przepływu sieciowej grupy zabezpieczeń](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
-## <a name="supported-regions"></a>Obsługiwane regiony
+## <a name="supported-regions-nsg"></a>Obsługiwane regiony: Sieciowa grupa zabezpieczeń 
 
 Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
 
@@ -84,6 +84,8 @@ Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następ
 * Japonia Wschodnia 
 * Japonia Zachodnia
 * Administracja USA — Wirginia
+
+## <a name="supported-regions-log-analytics-workspaces"></a>Obsługiwane regiony: Log Analytics obszary robocze
 
 Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 * Kanada Środkowa
@@ -137,7 +139,7 @@ Aby uzyskać informacje na temat sprawdzania uprawnień dostępu użytkownika, z
 
 ### <a name="enable-network-watcher"></a>Włączanie usługi Network Watcher
 
-Aby analizować ruch, musisz mieć istniejący obserwator sieci lub [włączyć obserwatora sieci](network-watcher-create.md) w każdym regionie, w którym sieciowych grup zabezpieczeń chcesz analizować ruch. Analiza ruchu może być włączona dla usługi sieciowych grup zabezpieczeń hostowanej w dowolnym z [obsługiwanych regionów](#supported-regions).
+Aby analizować ruch, musisz mieć istniejący obserwator sieci lub [włączyć obserwatora sieci](network-watcher-create.md) w każdym regionie, w którym sieciowych grup zabezpieczeń chcesz analizować ruch. Analiza ruchu może być włączona dla usługi sieciowych grup zabezpieczeń hostowanej w dowolnym z [obsługiwanych regionów](#supported-regions-nsg).
 
 ### <a name="select-a-network-security-group"></a>Wybierz sieciową grupę zabezpieczeń
 
@@ -147,7 +149,7 @@ Po lewej stronie Azure Portal wybierz pozycję **monitor**, a następnie **obser
 
 ![Wybór sieciowych grup zabezpieczeń, które wymagają włączenia dziennika przepływu sieciowej grupy zabezpieczeń](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
-Jeśli spróbujesz włączyć analizę ruchu dla sieciowej grupy zabezpieczeń, który jest hostowany w dowolnym regionie innym niż [Obsługiwane regiony](#supported-regions), zostanie wyświetlony komunikat o błędzie "nie znaleziono".
+Jeśli spróbujesz włączyć analizę ruchu dla sieciowej grupy zabezpieczeń, który jest hostowany w dowolnym regionie innym niż [Obsługiwane regiony](#supported-regions-nsg), zostanie wyświetlony komunikat o błędzie "nie znaleziono".
 
 ## <a name="enable-flow-log-settings"></a>Włącz ustawienia dziennika przepływu
 
@@ -174,17 +176,18 @@ Wybierz poniższe opcje, jak pokazano na ilustracji:
 
 1. Wybierz pozycję *włączone* dla **stanu**
 2. Wybierz *wersję 2* dla **wersji dzienników przepływów**. Wersja 2 zawiera statystykę przepływu/sesji (bajty i pakiety)
-3. Wybierz istniejące konto magazynu, w którym mają być przechowywane dzienniki przepływów. Jeśli chcesz przechowywać dane w nieskończoność, ustaw wartość na *0*. Opłaty za usługę Azure Storage są naliczane za konto magazynu.
+3. Wybierz istniejące konto magazynu, w którym mają być przechowywane dzienniki przepływów. Jeśli chcesz przechowywać dane w nieskończoność, ustaw wartość na *0*. Opłaty za usługę Azure Storage są naliczane za konto magazynu. Upewnij się, że magazyn nie ma ustawionej wartości "Data Lake Storage Gen2 hierarchiczny obszar nazw". Ponadto dzienniki przepływu sieciowej grupy zabezpieczeń nie mogą być przechowywane na koncie magazynu za pomocą zapory. 
 4. Ustaw wartość **przechowywanie** na liczbę dni, przez którą mają być przechowywane dane.
 5. Wybierz pozycję *włączone* , aby uzyskać **stan Analiza ruchu**.
-6. Wybierz istniejący obszar roboczy usługi Log Analytics (OMS) lub wybierz pozycję **Utwórz nowy obszar roboczy** , aby utworzyć nowy. Obszar roboczy Log Analytics jest używany przez Analiza ruchu do przechowywania zagregowanych i indeksowanych danych, które są następnie używane do generowania analizy. Jeśli wybierzesz istniejący obszar roboczy, musi on znajdować się w jednym z [obsługiwanych regionów](#supported-regions) i został uaktualniony do nowego języka zapytań. Jeśli nie chcesz uaktualnić istniejącego obszaru roboczego lub nie masz obszaru roboczego w obsługiwanym regionie, Utwórz nowy. Aby uzyskać więcej informacji na temat języków zapytań, zobacz [Azure log Analytics Upgrade to New Search log](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+6. Wybierz interwał przetwarzania. W zależności od wybranych dzienników przepływów będą zbierane z konta magazynu i przetwarzane przez Analiza ruchu. Można wybrać interwał przetwarzania co 1 godzinę lub co 10 minut.
+7. Wybierz istniejący obszar roboczy usługi Log Analytics (OMS) lub wybierz pozycję **Utwórz nowy obszar roboczy** , aby utworzyć nowy. Obszar roboczy Log Analytics jest używany przez Analiza ruchu do przechowywania zagregowanych i indeksowanych danych, które są następnie używane do generowania analizy. Jeśli wybierzesz istniejący obszar roboczy, musi on znajdować się w jednym z [obsługiwanych regionów](#supported-regions-log-analytics-workspaces) i został uaktualniony do nowego języka zapytań. Jeśli nie chcesz uaktualnić istniejącego obszaru roboczego lub nie masz obszaru roboczego w obsługiwanym regionie, Utwórz nowy. Aby uzyskać więcej informacji na temat języków zapytań, zobacz [Azure log Analytics Upgrade to New Search log](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Obszar roboczy usługi log Analytics obsługujący rozwiązanie do analizy ruchu i sieciowych grup zabezpieczeń nie muszą znajdować się w tym samym regionie. Na przykład możesz mieć dostęp do analizy ruchu w obszarze roboczym w regionie Europa Zachodnia, a ty możesz mieć sieciowych grup zabezpieczeń w regionach Wschodnie stany USA i zachodnie stany USA. W tym samym obszarze roboczym można skonfigurować wiele sieciowych grup zabezpieczeń.
-7. Wybierz pozycję **Zapisz**.
+8. Wybierz pozycję **Zapisz**.
 
-    ![Wybór konta magazynu, obszaru roboczego Log Analytics i włączenia Analiza ruchu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
+    ![Wybór konta magazynu, obszaru roboczego Log Analytics i włączenia Analiza ruchu](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-Powtórz poprzednie kroki dla wszystkich innych sieciowych grup zabezpieczeń, dla których chcesz włączyć funkcję analizy ruchu dla programu. Dane z dzienników przepływów są wysyłane do obszaru roboczego, dlatego należy się upewnić, że lokalne prawa i regulacje w Twoim kraju/regionie zezwalają na przechowywanie danych w regionie, w którym znajduje się obszar roboczy.
+Powtórz poprzednie kroki dla wszystkich innych sieciowych grup zabezpieczeń, dla których chcesz włączyć funkcję analizy ruchu dla programu. Dane z dzienników przepływów są wysyłane do obszaru roboczego, dlatego należy się upewnić, że lokalne przepisy i regulacje w Twoim kraju zezwalają na przechowywanie danych w regionie, w którym znajduje się obszar roboczy. Jeśli ustawiono różne interwały przetwarzania dla różnych sieciowych grup zabezpieczeń, dane będą zbierane w różnych interwałach. Na przykład: Można włączyć interwał przetwarzania 10 minut dla sieci wirtualnych krytycznych i 1 godzinę dla niekrytycznego sieci wirtualnychu.
 
 Analiza ruchu można również skonfigurować za pomocą polecenia cmdlet [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) środowiska PowerShell w Azure PowerShell. Uruchom `Get-Module -ListAvailable Az` , aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
 
@@ -370,7 +373,7 @@ Czy masz złośliwy ruch w Twoim środowisku? Skąd pochodzi? Gdzie jest on prze
 
 Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [Analiza ruchu — często zadawane](traffic-analytics-faq.md)pytania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się, jak włączyć dzienniki przepływów, zobacz [Włączanie rejestrowania przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-portal.md).
 - Aby zrozumieć schemat i informacje o przetwarzaniu Analiza ruchu, zobacz [schemat analizy ruchu](traffic-analytics-schema.md).

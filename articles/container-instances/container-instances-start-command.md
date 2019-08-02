@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 99440e22eb736522a25c2ee56bb07ef1d9967e66
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 40d946db48a65452d2da529098c07d0d0c60d472
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325667"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619665"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Ustaw wiersz polecenia w wystąpieniu kontenera w celu zastąpienia domyślnej operacji wiersza polecenia
 
@@ -23,7 +23,7 @@ Podobnie jak w przypadku ustawiania [zmiennych środowiskowych](container-instan
 
 ## <a name="command-line-guidelines"></a>Wskazówki dotyczące wiersza polecenia
 
-* Domyślnie wiersz polecenia określa *pojedynczy proces, który jest uruchamiany bez powłoki* w kontenerze. Na przykład wiersz polecenia może uruchomić skrypt w języku Python lub plik wykonywalny. 
+* Domyślnie wiersz polecenia określa *pojedynczy proces, który jest uruchamiany bez powłoki* w kontenerze. Na przykład wiersz polecenia może uruchomić skrypt w języku Python lub plik wykonywalny. Proces może określać dodatkowe parametry lub argumenty.
 
 * Aby wykonać wiele poleceń, należy rozpocząć pracę z wierszem polecenia przez ustawienie środowiska powłoki obsługiwanego w systemie operacyjnym kontenera. Przykłady:
 
@@ -66,7 +66,7 @@ Składnia wiersza polecenia różni się w zależności od interfejsu API platfo
 
 Na przykład zmodyfikuj zachowanie obrazu kontenera [Microsoft/ACI-WORDCOUNT][aci-wordcount] , który analizuje tekst w *Hamlet* Szekspira w celu znalezienia najczęściej występujących wyrazów. Zamiast analizować *Hamlet*, można ustawić wiersz polecenia, który wskazuje na inne źródło tekstu.
 
-Aby wyświetlić dane wyjściowe polecenia [Microsoft/ACI-WORDCOUNT][aci-wordcount] container when it analyzes the default text, run it with the following [az container create][az-container-create] . Nie określono wiersza polecenia Start, więc zostanie uruchomione domyślne polecenie kontenera. W celach ilustracyjnych ten przykład ustawia [zmienne środowiskowe](container-instances-environment-variables.md) , aby znaleźć 3 pierwsze wyrazy o długości co najmniej pięciu znaków:
+Aby wyświetlić dane wyjściowe kontenera [Microsoft/ACI-WORDCOUNT][aci-wordcount] podczas analizowania domyślnego tekstu, uruchom je za pomocą następującego polecenia [AZ Container Create][az-container-create] . Nie określono wiersza polecenia Start, więc zostanie uruchomione domyślne polecenie kontenera. W celach ilustracyjnych ten przykład ustawia [zmienne środowiskowe](container-instances-environment-variables.md) , aby znaleźć 3 pierwsze wyrazy o długości co najmniej pięciu znaków:
 
 ```azurecli-interactive
 az container create \
@@ -77,7 +77,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Gdy stan kontenera jest pokazywany jako *zakończony* (Użyj polecenia [AZ Container show][az-container-show] to check state), display the log with [az container logs][az-container-logs] , aby wyświetlić dane wyjściowe.
+Gdy stan kontenera jest pokazywany jako *zakończony* (Użyj polecenia [AZ Container show][az-container-show] by Check State), Wyświetl dziennik przy użyciu polecenia [AZ Container Logs][az-container-logs] , aby wyświetlić dane wyjściowe.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -103,7 +103,7 @@ az container create \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
 ```
 
-Po zakończeniu kontenera Wyświetl dane wyjściowe , wyświetlając dzienniki kontenera:
+Po zakończeniu kontenera Wyświetl dane wyjściowe, wyświetlając dzienniki kontenera:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer2
@@ -115,7 +115,7 @@ Dane wyjściowe:
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Scenariusze oparte na zadaniach, takie jak przetwarzanie wsadowe dużego zestawu danych z kilkoma kontenerami, mogą korzystać z niestandardowych wierszy poleceń w czasie wykonywania. Aby uzyskać więcej informacji na temat uruchamiania kontenerów opartych na zadaniach, zobacz [Uruchamianie zadań kontenera z zasadami ponownego uruchamiania](container-instances-restart-policy.md).
 
