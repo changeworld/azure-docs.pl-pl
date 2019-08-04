@@ -4,8 +4,6 @@ description: Dowiedz się, jak wdrożyć rozszerzenia maszyny wirtualnej przy u�
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
@@ -13,12 +11,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5657ebb2a5b29e4ec5360480c1fef6cb92dad9c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6d0c3e9daba6f4f37778fabde161751944e174a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388548"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774874"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Samouczek: Wdrażanie rozszerzeń maszyny wirtualnej przy użyciu szablonów usługi Azure Resource Manager
 
@@ -108,7 +106,7 @@ Dodaj zasób rozszerzenia maszyny wirtualnej do istniejącego szablonu o następ
 
 Zobacz [informacje szczegółowe o rozszerzeniu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions), jeśli potrzebujesz więcej informacji na temat tej definicji zasobu. Poniżej przedstawiono niektóre ważne elementy:
 
-* **name**: ponieważ zasób rozszerzenia jest zasobem podrzędnym obiektu maszyny wirtualnej, nazwa musi mieć prefiks nazwy maszyny wirtualnej. Zobacz [Zasoby podrzędne](./resource-group-authoring-templates.md#child-resources).
+* **name**: ponieważ zasób rozszerzenia jest zasobem podrzędnym obiektu maszyny wirtualnej, nazwa musi mieć prefiks nazwy maszyny wirtualnej. Zobacz [Set Name i Type dla zasobów podrzędnych](child-resource-name-type.md).
 * **dependsOn**: powoduje utworzenie zasobu rozszerzenia po utworzeniu maszyny wirtualnej.
 * **fileUris**: lokalizacje, w których są przechowywane pliki skryptów. Jeśli nie chcesz używać podanej lokalizacji, musisz zaktualizować wartości.
 * **commandToExecute**: to polecenie uruchamia skrypt.  
@@ -135,7 +133,7 @@ Jeśli nie potrzebujesz już zasobów platformy Azure wdrożonych przez Ciebie, 
     W grupie zasobów jest wyświetlanych sześć zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** w górnym menu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wdrożono maszynę wirtualną i rozszerzenie maszyny wirtualnej. Rozszerzenie zainstalowało serwer internetowy usług IIS na maszynie wirtualnej. Aby dowiedzieć się, jak zaimportować plik BACPAC za pomocą rozszerzenia usługi Azure SQL Database, zobacz:
 

@@ -10,12 +10,12 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3087f0ac69126c6d509eee77abe15cc35319dfb
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693917"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774177"
 ---
 # <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory?
 
@@ -33,7 +33,7 @@ Usługa Azure AD jest przeznaczona dla następujących użytkowników:
 
 - **Administratorzy IT.** Jako administrator IT możesz używać usługi Azure AD, aby kontrolować dostęp do aplikacji i ich zasobów, zależnie od wymagań biznesowych. Możesz na przykład użyć usługi Azure AD, aby wymagać uwierzytelniania wieloskładnikowego podczas uzyskiwania dostępu do ważnych zasobów organizacji. Usługa Azure AD pozwala też zautomatyzować aprowizację użytkowników między istniejącą usługą AD systemu Windows Server i aplikacjami w chmurze, włącznie z usługą Office 365. Ponadto usługa Azure AD zapewnia zaawansowane narzędzia, które automatycznie ułatwiają ochronę tożsamości użytkowników i poświadczeń zgodnie z wymaganiami nadzoru nad dostępem. Aby rozpocząć, utwórz konto [bezpłatnej 30-dniowej wersji próbnej usługi Azure Active Directory w wersji Premium](https://azure.microsoft.com/trial/get-started-active-directory/).
 
-- **Deweloperzy aplikacji.** Dla deweloperów aplikacji usługa Azure AD oferuje opartą na standardach metodę dodawania logowania jednokrotnego (SSO) do aplikacji, umożliwiając posługiwanie się istniejącymi poświadczeniami użytkowników. Usługa Azure AD udostępnia również interfejsy API, które mogą pomóc w tworzeniu spersonalizowanych środowisk aplikacji przy użyciu istniejących danych organizacji. Aby rozpocząć, utwórz konto [bezpłatnej 30-dniowej wersji próbnej usługi Azure Active Directory w wersji Premium](https://azure.microsoft.com/trial/get-started-active-directory/). Aby uzyskać więcej informacji, możesz też przejść do strony [Usługa Azure Active Directory dla deweloperów](../develop/index.yml).
+- **Deweloperzy aplikacji.** Jako deweloper aplikacji możesz użyć usługi Azure AD jako podejścia opartego na standardach do dodawania logowania jednokrotnego do aplikacji, co pozwala na współdziałanie z istniejącymi poświadczeniami użytkownika. Usługa Azure AD udostępnia również interfejsy API, które mogą pomóc w tworzeniu spersonalizowanych środowisk aplikacji przy użyciu istniejących danych organizacji. Aby rozpocząć, utwórz konto [bezpłatnej 30-dniowej wersji próbnej usługi Azure Active Directory w wersji Premium](https://azure.microsoft.com/trial/get-started-active-directory/). Aby uzyskać więcej informacji, możesz też przejść do strony [Usługa Azure Active Directory dla deweloperów](../develop/index.yml).
 
 - **Subskrybenci produktów Microsoft 365, Office 365, Azure lub Dynamics CRM Online.** Jako subskrybent korzystasz już z usługi Azure AD. Każda dzierżawa produktów Microsoft 365, Office 365, Azure i Dynamics CRM Online staje się automatycznie dzierżawą usługi Azure AD. Możesz od razu zacząć zarządzać dostępem do zintegrowanych aplikacji w chmurze.
 

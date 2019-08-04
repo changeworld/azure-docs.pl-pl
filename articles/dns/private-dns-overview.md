@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 35a4c7410b36e9716d2ee9625ed98fcc34043e58
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 0921a1ac7aa1192fae78f168c2eb51ee3e74e24a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742459"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774621"
 ---
 # <a name="what-is-azure-private-dns"></a>Co to jest prywatna strefa DNS platformy Azure?
 
@@ -71,10 +71,11 @@ Następujące elementy są znanymi usterkami i problemami w wersji zapoznawczej:
 
 Azure DNS ma następujące ograniczenia:
 
-* Określona Sieć wirtualna może być połączona tylko z jedną prywatną strefą, tak jakby była włączona automatyczna rejestracja rekordów DNS maszyn wirtualnych. Można jednak połączyć wiele sieci wirtualnych z pojedynczą strefą DNS.
+* Określona Sieć wirtualna może być połączona tylko z jedną strefą prywatną, jeśli jest włączona automatyczna rejestracja rekordów DNS maszyn wirtualnych. Można jednak połączyć wiele sieci wirtualnych z pojedynczą strefą DNS.
 * Odwrotny serwer DNS działa tylko w przypadku prywatnych przestrzeni adresów IP w połączonej sieci wirtualnej
 * Zwrotny serwer DNS dla prywatnego adresu IP dla połączonej sieci wirtualnej zwraca wartość "internal.cloudapp.net" jako domyślny sufiks dla maszyny wirtualnej. W przypadku sieci wirtualnych, które są połączone ze strefą prywatną z włączoną funkcją autorejestracji, odwrotny serwer DNS dla prywatnego adresu IP zwraca 2 nazwy FQDN, jeden z sufiksem domyślnym *Internal.cloudapp.NET* i drugi z sufiksem strefy prywatnej.
-* Warunkowe przekazywanie nie jest w tej chwili obsługiwane w sposób natywny. Aby umożliwić rozwiązanie problemu między sieciami Azure i lokalnymi. Zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień ról](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* Warunkowe przekazywanie nie jest w tej chwili obsługiwane w sposób natywny. Aby włączyć rozwiązanie między platformą Azure i sieciami lokalnymi, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień ról](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+
  
 ## <a name="pricing"></a>Cennik
 

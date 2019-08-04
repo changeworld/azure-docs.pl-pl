@@ -11,182 +11,193 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 738b4f47054081f0fb1b1a530bdf21cbf07a7726
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 05c81b5cde9e9c64d2d69bea1d14a18394f31e2a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204696"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774596"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen federacyjnych
 
-Podobnie jak użytkownik w organizacji urządzenie jest tożsamości podstawowej, który chcesz chronić. Tożsamość urządzenia można użyć do ochrony zasobów, w dowolnym momencie i z dowolnego miejsca. Ten cel można osiągnąć przez wprowadzenie tożsamości urządzeń i zarządzania nimi w usłudze Azure Active Directory (Azure AD) przy użyciu jednej z następujących metod:
+Podobnie jak w przypadku użytkownika w organizacji, urządzenie to podstawowa tożsamość, która ma być chroniona. Możesz użyć tożsamości urządzenia do ochrony zasobów w dowolnym momencie i z dowolnej lokalizacji. Ten cel można osiągnąć przez umieszczenie tożsamości urządzeń i zarządzanie nimi w Azure Active Directory (Azure AD) za pomocą jednej z następujących metod:
 
 - Dołączenie do usługi Azure AD
 - Dołączenie hybrydowe do usługi Azure AD
 - Rejestracja w usłudze Azure AD
 
-Urządzenia do usługi Azure AD pozwala zwiększyć produktywność użytkowników za pomocą logowania jednokrotnego (SSO) w chmurze i zasobów lokalnych. Można zabezpieczyć dostęp do zasobów w chmurze i lokalnych przy użyciu [dostępu warunkowego](../active-directory-conditional-access-azure-portal.md) w tym samym czasie.
+Przełączenie urządzeń do usługi Azure AD maksymalizuje produktywność użytkowników dzięki logowaniem jednokrotnym (SSO) w chmurze i zasobach lokalnych. Jednocześnie można zabezpieczyć dostęp do zasobów w chmurze i lokalnych przy użyciu [dostępu warunkowego](../active-directory-conditional-access-azure-portal.md) .
 
-W tym samouczku dowiesz się, jak skonfigurować hybrydowych usługi Azure AD join dla urządzeń z komputerów przyłączonych do domeny usługi Active Directory w środowisku federacyjnym przy użyciu usługi Active Directory Federation Services (AD FS).
+Środowisko federacyjne powinno mieć dostawcę tożsamości, który obsługuje poniższe wymagania. Jeśli masz środowisko federacyjne wykorzystujące Active Directory Federation Services (AD FS), poniższe wymagania są już obsługiwane.
 
-> [!NOTE]
-> Jeśli w środowisku federacyjnym używa dostawcy tożsamości innych niż usługi AD FS, upewnij się, że dostawca tożsamości obsługuje protokół WS-Trust. WS-Trust jest wymagany do uwierzytelniania bieżącego hybrydowe usługi Azure AD Windows przyłączone do urządzenia z usługą Azure AD. Jeśli masz urządzenia niskiego poziomu Windows, które mają być dołączenie do hybrydowej usługi Azure AD, dostawcy tożsamości musi obsługiwać oświadczenia WIAORMULTIAUTHN. 
+- **WIAORMULTIAUTHN:** To żądanie jest wymagane do hybrydowego przyłączenia do usługi Azure AD dla urządzeń niższego poziomu systemu Windows.
+- **Protokół WS-Trust:** Ten protokół jest wymagany do uwierzytelniania bieżących urządzeń przyłączonych hybrydowo usługi Azure AD za pomocą usługi Azure AD.
+  W przypadku korzystania z AD FS należy włączyć następujące punkty końcowe protokołu WS-Trust:`/adfs/services/trust/2005/windowstransport`
+   `/adfs/services/trust/13/windowstransport`
+   `/adfs/services/trust/2005/usernamemixed`
+   `/adfs/services/trust/13/usernamemixed`
+   `/adfs/services/trust/2005/certificatemixed`
+   `/adfs/services/trust/13/certificatemixed` 
+
+> [!WARNING] 
+> **Usługi ADFS/Services/Trust/2005/windowstransport** lub **ADFS/Services/Trust/13/windowstransport** powinny być włączone tylko jako punkty końcowe dostępne dla intranetu i nie mogą być udostępniane jako punkty końcowe dla ekstranetu za pośrednictwem serwera proxy aplikacji sieci Web. Aby dowiedzieć się więcej na temat wyłączania punktów końcowych usługi WS-Trust systemu WIndows, zobacz temat [wyłączanie punktów końcowych systemu Windows WS-Trust na serwerze proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Możesz zobaczyć, jakie punkty końcowe są włączone, za pomocą konsoli zarządzania usług AD FS w obszarze **Usługi** > **Punkty końcowe**.
+
+W tym samouczku dowiesz się, jak skonfigurować sprzężenie hybrydowe usługi Azure AD dla Active Directory urządzeń przyłączonych do domeny w środowisku federacyjnym przy użyciu AD FS.
 
 Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Konfigurowanie dołączenia hybrydowego do usługi Azure AD
-> * Włączanie na urządzeniach Windows niższego poziomu
+> * Włącz urządzenia niskiego poziomu systemu Windows
 > * Weryfikacja rejestracji
 > * Rozwiązywanie problemów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku przyjęto założenie, że you'e zapoznać się z tych artykułów:
+W tym samouczku założono, że you'e zna następujące artykuły:
 
 - [Co to jest tożsamość urządzenia?](overview.md)
-- [Jak planowanie implementacji hybrydowej usługi Azure AD join](hybrid-azuread-join-plan.md)
-- [Jak przeprowadzić kontrolowana Walidacja dołączenie do hybrydowej usługi Azure AD](hybrid-azuread-join-control.md)
+- [Jak zaplanować implementację hybrydowej funkcji dołączania do usługi Azure AD](hybrid-azuread-join-plan.md)
+- [Jak sprawdzać poprawność funkcji dołączania hybrydowego usługi Azure AD](hybrid-azuread-join-control.md)
 
 Aby skonfigurować scenariusz zaprezentowany w tym samouczku, potrzebujesz:
 
 - Windows Server 2012 R2 z usługami AD FS
-- [Program Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) wersji 1.1.819.0 lub nowszej
+- [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) w wersji 1.1.819.0 lub nowszej
 
-Począwszy od wersji 1.1.819.0, program Azure AD Connect zawiera kreatora, który służy do konfigurowania dołączenie do hybrydowej usługi Azure AD. Kreator znacznie upraszcza proces konfiguracji. Powiązany kreator:
+Począwszy od wersji 1.1.819.0, Azure AD Connect zawiera kreatora, którego można użyć do skonfigurowania hybrydowego sprzężenia usługi Azure AD. Kreator znacznie upraszcza proces konfiguracji. Powiązany kreator:
 
-- Konfiguruje punktów połączenia usługi (SCP) dla rejestracji urządzeń
+- Konfiguruje punkty połączenia usługi (punktu SCP) na potrzeby rejestracji urządzeń
 - Tworzy kopię zapasową istniejącej relacji zaufania dla jednostki zależnej usługi Azure AD.
 - Aktualizuje reguły dotyczące oświadczeń w relacji zaufania usługi Azure AD.
 
-Kroki konfiguracji, w tym artykule są oparte na temat korzystania z Kreatora programu Azure AD Connect. Jeśli masz wcześniejszej wersji programu Azure AD Connect, należy uaktualnić 1.1.819 lub później za pomocą kreatora. Jeśli zainstalowanie najnowszej wersji programu Azure AD Connect nie jest dostępną opcją w, zobacz [jak ręcznie skonfigurować dołączenie do hybrydowej usługi Azure AD](hybrid-azuread-join-manual.md).
+Kroki konfiguracji opisane w tym artykule opierają się na użyciu kreatora Azure AD Connect. Jeśli masz zainstalowaną wcześniejszą wersję programu Azure AD Connect, musisz uaktualnić ją do wersji 1.1.819 lub nowszej, aby użyć kreatora. Jeśli nie jest zainstalowana najnowsza wersja Azure AD Connect nie jest to opcja, zobacz [Ręczne konfigurowanie hybrydowego dołączania do usługi Azure AD](hybrid-azuread-join-manual.md).
 
-Dołączenie do hybrydowej usługi Azure AD wymaga, aby urządzenia mają mieć dostęp do następujących zasobów firmy Microsoft z wewnątrz sieci organizacji:  
+Hybrydowe dołączenie usługi Azure AD wymaga, aby urządzenia miały dostęp do następujących zasobów firmy Microsoft z sieci organizacji:  
 
 - `https://enterpriseregistration.windows.net`
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
-- Twoja organizacja Usługa tokenu zabezpieczającego (STS) (w przypadku domen federacyjnych)
-- `https://autologon.microsoftazuread-sso.com` (Jeśli jest używany, lub planowane jest użycie bezproblemowe logowanie Jednokrotne)
+- Usługa tokenu zabezpieczającego (STS) organizacji (dla domen federacyjnych)
+- `https://autologon.microsoftazuread-sso.com`(Jeśli używasz lub planujesz korzystanie z bezproblemowego logowania jednokrotnego)
 
-Począwszy od z systemem Windows 10 1803, jeśli natychmiastowe hybrydowego sprzężenia usługi Azure AD w środowisku federacyjnym za pomocą usług AD FS nie powiedzie się, możemy polegać na program Azure AD Connect do synchronizowania obiektu komputera w usłudze Azure AD, która jest następnie używane do ukończenia rejestracji urządzenia do hybrydowej usługi Azure Dołączania do usługi AD. Sprawdź, czy program Azure AD Connect ma zsynchronizowane obiekty komputerów, urządzeń, które mają być hybrydowe do usługi Azure AD do usługi Azure AD. Jeśli obiekty komputerów należy do określonej jednostki organizacyjne (OU), należy także skonfigurować jednostek organizacyjnych do synchronizacji w programie Azure AD Connect. Aby dowiedzieć się więcej na temat synchronizowania obiektów komputerów przy użyciu usługi Azure AD Connect, zobacz [skonfiguruj filtrowanie przy użyciu usługi Azure AD Connect](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
+Począwszy od systemu Windows 10 1803, jeśli natychmiastowe dołączenie hybrydowej usługi Azure AD dla środowiska federacyjnego przy użyciu AD FS nie powiedzie się, korzystamy Azure AD Connect do synchronizowania obiektu komputera w usłudze Azure AD, który jest następnie używany do ukończenia rejestracji urządzenia dla hybrydowej platformy Azure Sprzężenie AD. Sprawdź, czy Azure AD Connect synchronizuje obiekty komputerów urządzeń, które mają być przyłączone do usługi Azure AD jako hybrydowe. Jeśli obiekty komputera należą do określonych jednostek organizacyjnych (OU), należy również skonfigurować jednostki organizacyjne do synchronizacji w Azure AD Connect. Aby dowiedzieć się więcej o synchronizowaniu obiektów komputerów za pomocą Azure AD Connect, zobacz [Konfigurowanie filtrowania przy użyciu Azure AD Connect](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
 
-Jeśli Twoja organizacja wymaga dostępu do Internetu za pośrednictwem serwera proxy ruchu wychodzącego, firma Microsoft zaleca [Implementowanie autowykrywania serwera Proxy sieci Web (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) aby umożliwić komputerom z systemem Windows 10 rejestracji urządzeń w usłudze Azure AD. Jeśli wystąpią problemy, konfigurowanie i zarządzanie nimi WPAD, zobacz [Rozwiązywanie problemów z automatycznego wykrywania](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)). 
+Jeśli Twoja organizacja wymaga dostępu do Internetu za pośrednictwem serwera proxy wychodzącego, firma Microsoft zaleca zaimplementowanie funkcji [autowykrywania serwera proxy sieci Web (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) w celu umożliwienia komputerom z systemem Windows 10 rejestracji urządzeń w usłudze Azure AD. Jeśli wystąpią problemy podczas konfigurowania usługi WPAD i zarządzania nią, zobacz [Rozwiązywanie problemów z automatycznym](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))wykryciem. 
 
-Jeśli nie używasz WPAD i chcesz skonfigurować ustawienia serwera proxy na komputerze, należy więc począwszy od systemu Windows 10 1709. Aby uzyskać więcej informacji, zobacz [WinHTTP skonfigurować ustawienia za pomocą obiektu zasad grupy (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+Jeśli nie korzystasz z usługi WPAD i chcesz skonfigurować ustawienia serwera proxy na komputerze, możesz to zrobić, rozpoczynając od systemu Windows 10 1709. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień WinHTTP przy użyciu obiektu zasad grupy (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
 
 > [!NOTE]
-> Jeśli konfigurujesz ustawienia serwera proxy na komputerze przy użyciu ustawień WinHTTP wszystkie komputery, których nie można nawiązać połączenia z skonfigurowany serwer proxy zakończy się niepowodzeniem nawiązać połączenie z Internetem.
+> W przypadku skonfigurowania ustawień serwera proxy na komputerze przy użyciu ustawień usługi WinHTTP wszystkie komputery, które nie mogą nawiązać połączenia ze skonfigurowanym serwerem proxy, nie będą mogły połączyć się z Internetem.
 
-Jeśli Twoja organizacja wymaga dostępu do Internetu za pośrednictwem uwierzytelnionego serwera proxy ruchu wychodzącego, upewnij się, że komputery z systemem Windows 10 może pomyślnie uwierzytelnić się serwera proxy ruchu wychodzącego. Ponieważ komputery z systemem Windows 10 są uruchamiane rejestracji urządzenia przy użyciu kontekstu komputera, należy skonfigurować uwierzytelnianie serwera proxy ruchu wychodzącego, za pomocą kontekstu maszyny. Skontaktuj się z dostawcą serwera proxy ruchu wychodzącego, aby uzyskać informacje na temat wymagań dotyczących konfiguracji.
+Jeśli Twoja organizacja wymaga dostępu do Internetu za pośrednictwem uwierzytelnionego wychodzącego serwera proxy, musisz upewnić się, że komputery z systemem Windows 10 mogą pomyślnie uwierzytelniać się na wychodzącym serwerze proxy. Ponieważ komputery z systemem Windows 10 uruchamiają rejestrację urządzeń przy użyciu kontekstu komputera, należy skonfigurować uwierzytelnianie serwera proxy wychodzące przy użyciu kontekstu komputera. Skontaktuj się z dostawcą serwera proxy ruchu wychodzącego, aby uzyskać informacje na temat wymagań dotyczących konfiguracji.
 
 ## <a name="configure-hybrid-azure-ad-join"></a>Konfigurowanie dołączenia hybrydowego do usługi Azure AD
 
-Aby skonfigurować dołączenie do hybrydowej usługi Azure AD przy użyciu usługi Azure AD Connect, należy:
+Aby skonfigurować hybrydowe dołączanie do usługi Azure AD przy użyciu Azure AD Connect, potrzebne są:
 
 - Poświadczenia administratora globalnego dla dzierżawy usługi Azure AD  
-- Poświadczenia administratora przedsiębiorstwa dla każdego lasu
-- Poświadczenia administratora usług AD FS
+- Poświadczenia administratora przedsiębiorstwa dla każdego z lasów
+- Poświadczenia administratora AD FS
 
-**Aby skonfigurować dołączenie do hybrydowej usługi Azure AD przy użyciu usługi Azure AD Connect**:
+**Aby skonfigurować sprzężenie hybrydowe usługi Azure AD przy użyciu Azure AD Connect**:
 
-1. Uruchom program Azure AD Connect, a następnie wybierz pozycję **Konfiguruj**.
+1. Uruchom Azure AD Connect, a następnie wybierz pozycję **Konfiguruj**.
 
    ![Witaj](./media/hybrid-azuread-join-federated-domains/11.png)
 
-1. Na **dodatkowe zadania** wybierz opcję **Konfiguruj opcje urządzenia**, a następnie wybierz pozycję **dalej**.
+1. Na stronie **dodatkowe zadania** wybierz pozycję **Konfiguruj opcje urządzenia**, a następnie wybierz przycisk **dalej**.
 
    ![Dodatkowe zadania](./media/hybrid-azuread-join-federated-domains/12.png)
 
-1. Na **Przegląd** wybierz opcję **dalej**.
+1. Na stronie **Przegląd** wybierz pozycję **dalej**.
 
    ![Omówienie](./media/hybrid-azuread-join-federated-domains/13.png)
 
-1. Na **nawiązywanie połączenia z usługi Azure AD** strony, wprowadź poświadczenia administratora globalnego dla dzierżawy usługi Azure AD, a następnie wybierz pozycję **dalej**.
+1. Na stronie **Połącz z usługą Azure AD** wprowadź poświadczenia administratora globalnego dla dzierżawy usługi Azure AD, a następnie wybierz przycisk **dalej**.
 
    ![Łączenie z usługą Azure AD](./media/hybrid-azuread-join-federated-domains/14.png)
 
-1. Na **opcje urządzenia** wybierz opcję **Konfigurowanie hybrydowej usługi Azure AD join**, a następnie wybierz pozycję **dalej**.
+1. Na stronie **Opcje urządzenia** wybierz pozycję **Konfiguruj sprzężenie hybrydowe usługi Azure AD**, a następnie wybierz przycisk **dalej**.
 
    ![Opcje urządzenia](./media/hybrid-azuread-join-federated-domains/15.png)
 
-1. Na **SCP** strony, wykonaj następujące czynności, a następnie wybierz pozycję **dalej**:
+1. Na stronie **SCP** wykonaj następujące czynności, a następnie wybierz przycisk **dalej**:
 
    ![Punkt połączenia z usługą](./media/hybrid-azuread-join-federated-domains/16.png)
 
    1. Wybierz las.
-   1. Wybierz usługę uwierzytelniania. Musisz wybrać **serwera usług AD FS** chyba, że Twoja organizacja ma wyłącznie klientów z systemem Windows 10 i skonfigurowaniu synchronizacji komputera/urządzenia lub Twoja organizacja korzysta z bezproblemowe logowanie Jednokrotne.
-   1. Wybierz **Dodaj** wprowadzić poświadczenia administratora przedsiębiorstwa.
+   1. Wybierz usługę uwierzytelniania. Należy wybrać opcję **AD FS Server** , chyba że organizacja ma wyłącznie klientów z systemem Windows 10 i skonfigurowano synchronizację komputerów/urządzeń lub organizacja używa bezproblemowego logowania jednokrotnego.
+   1. Wybierz pozycję **Dodaj** , aby wprowadzić poświadczenia administratora przedsiębiorstwa.
 
-1. Na **systemów operacyjnych urządzeń** wybierz systemy operacyjne, korzystających z urządzeń w środowisku usługi Active Directory, a następnie wybierz pozycję **dalej**.
+1. Na stronie **systemy operacyjne urządzeń** wybierz systemy operacyjne używane przez urządzenia w środowisku Active Directory, a następnie wybierz przycisk **dalej**.
 
    ![System operacyjny urządzenia](./media/hybrid-azuread-join-federated-domains/17.png)
 
-1. Na **Konfiguracja Federacji** strony, wprowadź poświadczenia administratora usług AD FS, a następnie wybierz pozycję **dalej**.
+1. Na stronie **Konfiguracja Federacji** wprowadź poświadczenia administratora AD FS, a następnie wybierz przycisk **dalej**.
 
    ![Konfiguracja federacji](./media/hybrid-azuread-join-federated-domains/18.png)
 
-1. Na **wszystko gotowe do skonfigurowania** wybierz opcję **Konfiguruj**.
+1. Na stronie **gotowy do skonfigurowania** wybierz pozycję **Konfiguruj**.
 
    ![Wszystko gotowe do skonfigurowania](./media/hybrid-azuread-join-federated-domains/19.png)
 
-1. Na **ukończyć konfiguracji** wybierz opcję **zakończenia**.
+1. Na stronie **Konfiguracja ukończona** wybierz pozycję **Zakończ**.
 
    ![Ukończono konfigurację](./media/hybrid-azuread-join-federated-domains/20.png)
 
-## <a name="enable-windows-downlevel-devices"></a>Włączanie na urządzeniach Windows niższego poziomu
+## <a name="enable-windows-downlevel-devices"></a>Włącz urządzenia niskiego poziomu systemu Windows
 
-W przypadku niektórych urządzeń przyłączonych do domeny urządzenia niskiego poziomu Windows, musisz mieć:
+Jeśli niektóre urządzenia dołączone do domeny są urządzeniami niskiego poziomu systemu Windows, musisz:
 
 - Konfigurowanie ustawień lokalnego intranetu na potrzeby rejestracji urządzeń
-- Zainstaluj Microsoft pracy Join dla Windows niższego poziomu komputerów
+- Zainstaluj program Microsoft Workplace Join dla komputerów niskiego poziomu systemu Windows
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>Konfigurowanie ustawień lokalnego intranetu na potrzeby rejestracji urządzeń
 
-Aby pomyślnie zakończyć hybrydowych usługi Azure AD join urządzeń Windows niższego poziomu, a aby monity certyfikatu podczas uwierzytelniania urządzeń do usługi Azure AD, możesz wypchnąć zasad na urządzeniach przyłączonych do domeny można dodać następujące adresy URL do strefy Lokalny intranet w programie Internet Explorer:
+Aby pomyślnie zakończyć dołączanie hybrydowej usługi Azure AD do urządzeń niskiego poziomu systemu Windows i uniknąć wyświetlania wierszy przez certyfikat podczas uwierzytelniania urządzeń w usłudze Azure AD, można wypchnąć zasady do urządzeń przyłączonych do domeny w celu dodania następujących adresów URL do strefy Lokalny intranet w Internecie Programie
 
 - `https://device.login.microsoftonline.com`
-- Twoja organizacja STS (w przypadku domen federacyjnych)
-- `https://autologon.microsoftazuread-sso.com` (W przypadku bezproblemowe logowanie Jednokrotne)
+- Usługa STS w organizacji (dla domen federacyjnych)
+- `https://autologon.microsoftazuread-sso.com`(W celu bezproblemowego logowania jednokrotnego)
 
-Należy również włączyć **zezwala na aktualizacje na pasku stanu za pomocą skryptu** w strefie Lokalny intranet użytkownika.
+Należy również włączyć opcję **Zezwalaj na aktualizacje na pasku stanu za pomocą skryptu** w strefie Lokalny intranet użytkownika.
 
-### <a name="install-microsoft-workplace-join-for-windows-downlevel-computers"></a>Zainstaluj Microsoft pracy Join dla Windows niższego poziomu komputerów
+### <a name="install-microsoft-workplace-join-for-windows-downlevel-computers"></a>Zainstaluj program Microsoft Workplace Join dla komputerów niskiego poziomu systemu Windows
 
-Aby zarejestrować urządzenia niskiego poziomu Windows, należy zainstalować organizacje [Microsoft dołączania komputerów do systemu Windows 10](https://www.microsoft.com/download/details.aspx?id=53554). Microsoft Workplace Join na komputerach bez systemu Windows 10 jest dostępna w programie Microsoft Download Center.
+Aby zarejestrować urządzenia niskiego poziomu systemu Windows, organizacje muszą zainstalować [Workplace Join firmy Microsoft dla komputerów z systemem innym niż Windows 10](https://www.microsoft.com/download/details.aspx?id=53554). Program Microsoft Workplace Join dla komputerów z systemem innym niż Windows 10 jest dostępny w centrum pobierania Microsoft.
 
-Pakiet można wdrożyć za pomocą to system dystrybucji oprogramowania, takie jak [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Pakiet obsługuje opcje standardowej instalacji dyskretnej przy użyciu `quiet` parametru. Current branch programu Configuration Manager zapewnia korzyści w porównaniu ze starszymi wersjami, takich jak możliwość śledzenia rejestracji zakończonych.
+Pakiet można wdrożyć przy użyciu systemu dystrybucji oprogramowania, takiego jak [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Pakiet obsługuje standardowe opcje instalacji dyskretnej z `quiet` parametrem. Bieżąca gałąź Configuration Manager oferuje korzyści w porównaniu z wcześniejszymi wersjami, takie jak możliwość śledzenia zakończonych rejestracji.
 
-Instalator jest utworzenie zaplanowanego zadania w systemie, który jest uruchamiany w kontekście użytkownika. Zadanie jest wyzwalane, gdy użytkownik loguje się do Windows. Zadanie dyskretnie łączy urządzenie z usługą Azure AD przy użyciu poświadczeń użytkownika, po uwierzytelnia się za pomocą usługi Azure AD.
+Instalator tworzy zaplanowane zadanie w systemie, który działa w kontekście użytkownika. Zadanie jest wyzwalane, gdy użytkownik loguje się do systemu Windows. Zadanie dyskretnie dołącza urządzenie do usługi Azure AD przy użyciu poświadczeń użytkownika po uwierzytelnieniu w usłudze Azure AD.
 
 ## <a name="verify-the-registration"></a>Weryfikacja rejestracji
 
-Aby sprawdzić stanu rejestracji urządzenia w dzierżawie platformy Azure, możesz użyć **[Get MsolDevice](/powershell/msonline/v1/get-msoldevice)** polecenia cmdlet w [modułu programu PowerShell usługi Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+Aby sprawdzić stan rejestracji urządzenia w dzierżawie platformy Azure, możesz użyć polecenia cmdlet **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** w [module Azure Active Directory PowerShell](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
 
-Kiedy używasz **Get MSolDevice** polecenia cmdlet, aby sprawdzić szczegóły usługi:
+Korzystając z polecenia cmdlet **Get-MSolDevice** , można sprawdzić szczegóły usługi:
 
-- Obiekt o **identyfikator urządzenia** odpowiadającej Identyfikatora w Windows, klient musi istnieć.
-- Wartością atrybutu **DeviceTrustType** musi być **Dołączone do domeny**. To ustawienie jest odpowiednikiem **przyłączone do hybrydowej usługi Azure AD** stanu w obszarze **urządzeń** w portalu usługi Azure AD.
-- Dla urządzeń, które są używane w funkcji dostępu warunkowego, wartość **włączone** musi być **True** i **DeviceTrustLevel** musi być **zarządzane**.
+- Obiekt z IDENTYFIKATORem **urządzenia** , który jest zgodny z identyfikatorem na kliencie systemu Windows, musi istnieć.
+- Wartością atrybutu **DeviceTrustType** musi być **Dołączone do domeny**. To ustawienie jest równoważne ze stanem przyłączonym do hybrydowej usługi **Azure AD** w obszarze **urządzenia** w portalu usługi Azure AD.
+- W przypadku urządzeń, które są używane w dostęp warunkowy, wartość **włączone** musi mieć wartość **true** , a **DeviceTrustLevel** musi być **zarządzany**.
 
 **Aby sprawdzić szczegóły usługi**:
 
 1. Otwórz program Windows PowerShell jako administrator.
-1. Wprowadź `Connect-MsolService` połączyć z dzierżawą platformy Azure.  
+1. Wprowadź `Connect-MsolService` , aby nawiązać połączenie z dzierżawcą platformy Azure.  
 1. Wprowadź polecenie `get-msoldevice -deviceId <deviceId>`.
 1. Upewnij się, że opcja **Włączone** ma wartość **Prawda**.
 
 ## <a name="troubleshoot-your-implementation"></a>Rozwiązywanie problemów z implementacją
 
-Jeśli występują problemy z wykonaniem dołączenie do hybrydowej usługi Azure AD dla urządzeń Windows przyłączone do domeny, zobacz:
+Jeśli wystąpią problemy z ukończeniem hybrydowego przyłączania do usługi Azure AD dla przyłączonych do domeny urządzeń z systemem Windows, zobacz:
 
-- [Rozwiązywanie problemów z hybrydowych usługi Azure AD join dla bieżącego urządzeń Windows](troubleshoot-hybrid-join-windows-current.md)
-- [Rozwiązywanie problemów z hybrydowych usługi Azure AD join dla systemu Windows niższego poziomu urządzeń](troubleshoot-hybrid-join-windows-legacy.md)
+- [Rozwiązywanie problemów z funkcją hybrydowego przyłączania do usługi Azure AD](troubleshoot-hybrid-join-windows-current.md)
+- [Rozwiązywanie problemów z funkcją hybrydowego przyłączania do usługi Azure AD](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [Zarządzanie tożsamościami urządzeń przy użyciu witryny Azure portal](device-management-azure-portal.md).
+Dowiedz się [, jak zarządzać tożsamościami urządzeń za pomocą Azure Portal](device-management-azure-portal.md).
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access-automatic-device-registration-setup/12.png

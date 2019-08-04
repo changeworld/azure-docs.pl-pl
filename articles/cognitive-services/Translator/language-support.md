@@ -1,7 +1,7 @@
 ---
-title: Obsługa języków — interfejs API tekstu usługi Translator
+title: Obsługa języka — interfejs API tłumaczenia tekstu w usłudze Translator
 titleSuffix: Azure Cognitive Services
-description: Lista języków naturalnych obsługiwanych przez interfejs API tekstu usługi Translator.
+description: Lista języków naturalnych obsługiwanych przez interfejs API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,133 +10,133 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 14ab1988f28de214036fa80fa36a4006a3359f30
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6ab500fe6a7f288bcfbdc9168ada8bdad5bdb6ea
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435879"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772946"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
+# <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejs API tłumaczenia tekstu w usłudze Translator
 
-Interfejs API tekstu usługi Translator obsługuje następujące języki do tłumaczenia tekstu na tekst. Tłumaczenie neuronowe (NMT) stanowi nowy standard w poszukiwaniu tłumaczeń maszyny bazujących na sztucznej Inteligencji wysokiej jakości i jest dostępny jako domyślne za pomocą interfejsu API tekstu usługi Translator w wersji 3, gdy neuronowych system będzie dostępny.
+Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie tekstu na tekst przy użyciu następujących języków. Neuronowych Machine Translation (NMT) to nowy standard dla wysokiej jakości tłumaczeń maszyn opartych na formacie AI i jest dostępny jako domyślny przy użyciu wersji 3 interfejs API tłumaczenia tekstu w usłudze Translator, gdy jest dostępny system neuronowych.
 
-[Dowiedz się więcej o tym, jak działa tłumaczenia maszynowego](https://www.microsoft.com/translator/mt.aspx)
+[Dowiedz się więcej o tym, jak działa tłumaczenie maszynowe](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>{1&gt;Translacja&lt;1}
 
-**W wersji 2 Translator interfejsu API**
+**Interfejs API usługi Translator w wersji 2**
 
 > [!NOTE]
-> W wersji 2 została zakończona na 30 kwietnia 2018 r. Przeprowadź migrację aplikacji do wersji 3, aby można było korzystać z zalet nowych funkcji dostępnych wyłącznie w wersji 3.
+> Wersja V2 została zaniechana 30 kwietnia 2018. Przeprowadź migrację aplikacji do wersji v3, aby korzystać z nowych funkcji dostępnych wyłącznie w wersji 3.
 
-* Statystyczne tylko: System neuronowej, nie jest dostępna dla tego języka.
-* Neuronowych dostępne: Neuronowych system jest niedostępny. Użyj parametru `category=generalnn` dostęp do tego systemu neuronowych.
-* Domyślnie neuronowej: Neuronowych jest domyślny system tłumaczeń. Użyj parametru `category=smt` dostęp do tego systemu statystycznych do użycia z usługą Microsoft Translator Hub.
-* Neuronowych tylko: Tylko tłumaczenie neuronowe jest dostępna.
+* Tylko statystyczne: Dla tego języka nie jest dostępny żaden system neuronowych.
+* Neuronowych dostępne: Dostępny jest system neuronowych. Użyj parametru `category=generalnn` , aby uzyskać dostęp do systemu neuronowych.
+* Neuronowych domyślne: Neuronowych to domyślny system tłumaczenia. Użyj parametru `category=smt` , aby uzyskać dostęp do systemu statystycznego do użycia z centrum usługi Microsoft Translator.
+* Tylko neuronowych: Dostępne są tylko tłumaczenia neuronowych.
 
-**Interfejs API usługi Translator w wersji 3** interfejs API usługi Translator w wersji 3 jest neuronowych domyślnie i systemy statystyczne są dostępne tylko, gdy nie istnieje żaden system neuronowych.
+**Interfejs API usługi Translator v3** Interfejs API usługi Translator V3 jest neuronowych domyślnie, a systemy statystyczne są dostępne tylko wtedy, gdy nie istnieje system neuronowych.
 
 > [!NOTE]
-> Obecnie podzbioru języków neuronowych są dostępne w niestandardowych w usłudze Translator i stopniowo dodajemy także dodatkowe. [Wyświetl języków jest obecnie dostępna w niestandardowych w usłudze Translator](#customization).
+> Obecnie podzestaw języków neuronowych jest dostępny w usłudze translator niestandardowym i stopniowo dodajemy dodatkowe. [Języki widoku dostępne obecnie w usłudze translator](#customization)niestandardowym.
 
-|Język|  Kod języka|  V2 API| V3 API|
+|Język|  Kod języka|  INTERFEJS API V2| INTERFEJS API V3|
 |:-----|:-----:|:-----|:-----|
 |Afrikaans| `af`    |Tylko statystyczne|  Neuronowa|
 |Arabski|    `ar`    |Neuronowych dostępne|  Neuronowa|
 |Bengalski|    `bn`    |Neuronowych dostępne|  Neuronowa|
 |Bośniacki (łaciński)|   `bs`    |Neuronowych dostępne|  Neuronowa|
 |Bułgarski| `bg`    |Neuronowych dostępne|  Neuronowa|
-|Kantoński (tradycyjny)|   `yue`   |Tylko statystyczne|  Statystyczne|
-|Kataloński|   `ca`    |Tylko statystyczne|  Statystyczne|
-|Chiński uproszczony|    `zh-Hans`   |Domyślne neuronowych |Neuronowa|
-|Chiński tradycyjny|   `zh-Hant`   |Domyślne neuronowych |Neuronowa|
+|Kantoński (tradycyjny)|   `yue`   |Tylko statystyczne|  Statystyczn|
+|Kataloński|   `ca`    |Tylko statystyczne|  Statystyczn|
+|Chiński uproszczony|    `zh-Hans`   |Neuronowych domyślne |Neuronowa|
+|Chiński tradycyjny|   `zh-Hant`   |Neuronowych domyślne |Neuronowa|
 |Chorwacki|  `hr`    |Neuronowych dostępne|  Neuronowa|
 |Czeski| `cs`    |Neuronowych dostępne|  Neuronowa|
 |Duński|    `da`    |Neuronowych dostępne   |Neuronowa|
 |Holenderski| `nl`    |Neuronowych dostępne|  Neuronowa|
-|Polski|   `en`    |Neuronowych dostępne|  Neuronowa|
+|Angielski|   `en`    |Neuronowych dostępne|  Neuronowa|
 |Estoński|  `et`    |Neuronowych dostępne|  Neuronowa|
-|Fidżi|    `fj`    |Tylko statystyczne|  Statystyczne|
-|Filipino|  `fil`   |Tylko statystyczne|  Statystyczne|
+|Fidżi|    `fj`    |Tylko statystyczne|  Statystyczn|
+|Filipino|  `fil`   |Tylko statystyczne|  Statystyczn|
 |Fiński|   `fi`    |Neuronowych dostępne|  Neuronowa|
 |Francuski|    `fr`    |Neuronowych dostępne|  Neuronowa|
-|Niemiecki|    `de`    |Neuronowych dostępne|  Neuronowa|
+|niemiecki|    `de`    |Neuronowych dostępne|  Neuronowa|
 |Grecki| `el`    |Neuronowych dostępne|  Neuronowa|
-|Haitański|    `ht`    |Tylko statystyczne   |Statystyczne|
+|Haitański|    `ht`    |Tylko statystyczne   |Statystyczn|
 |Hebrajski |`he`   |Neuronowych dostępne   |Neuronowa|
-|Hindi| `hi`    |Domyślne neuronowych|    Neuronowa|
-|Hmong Daw| `mww`   |Tylko statystyczne|  Statystyczne|
+|Hindi| `hi`    |Neuronowych domyślne|    Neuronowa|
+|Hmong Daw| `mww`   |Tylko statystyczne|  Statystyczn|
 |Węgierski| `hu`    |Neuronowych dostępne|  Neuronowa|
 |Islandzki| `is`    |Tylko neuronowych|   Neuronowa|
-|Indonezyjski|    `id`    |Tylko statystyczne|  Statystyczne|
+|Indonezyjski|    `id`    |Tylko statystyczne|  Statystyczn|
 |Włoski|   `it`    |Neuronowych dostępne|  Neuronowa|
 |Japoński|  `ja`    |Neuronowych dostępne|  Neuronowa|
-|Suahili| `sw`    |Tylko statystyczne|  Statystyczne|
-|Klingon|   `tlh`   |Tylko statystyczne|  Statystyczne|
-|Klingon (plqaD)|   `tlh-Qaak`  |Tylko statystyczne|  Statystyczne|
+|Suahili| `sw`    |Tylko statystyczne|  Statystyczn|
+|Klingon|   `tlh`   |Tylko statystyczne|  Statystyczn|
+|Klingon (plqaD)|   `tlh-Qaak`  |Tylko statystyczne|  Statystyczn|
 |Koreański |`ko`   |Neuronowych dostępne|  Neuronowa|
 |Łotewski|   `lv`    |Neuronowych dostępne|  Neuronowa|
 |Litewski|    `lt`    |Neuronowych dostępne|  Neuronowa|
-|Malgaski|  `mg`    |Tylko statystyczne|  Statystyczne|
-|Malajski| `ms`    |Tylko statystyczne   |Statystyczne|
-|Maltański|   `mt`    |Tylko statystyczne|  Statystyczne|
+|Malgaski|  `mg`    |Tylko statystyczne|  Statystyczn|
+|Malajski| `ms`    |Tylko statystyczne   |Statystyczn|
+|Maltański|   `mt`    |Tylko statystyczne|  Statystyczn|
 |Norweski| `nb`    |Neuronowych dostępne|  Neuronowa|
-|Perski|   `fa`    |Tylko statystyczne|  Statystyczne|
+|Perski|   `fa`    |Neuronowych dostępne|  Neuronowa|
 |Polski|    `pl`    |Neuronowych dostępne|  Neuronowa|
 |Portugalski|    `pt`    |Neuronowych dostępne|  Neuronowa|
-|Queretaro Otomi|   `otq`   |Tylko statystyczne|  Statystyczne|
+|Queretaro Otomi|   `otq`   |Tylko statystyczne|  Statystyczn|
 |Rumuński|  `ro`    |Neuronowych dostępne|  Neuronowa|
 |Rosyjski|   `ru`    |Neuronowych dostępne|  Neuronowa|
-|(Samoa Zachodnie)|    `sm`    |Tylko statystyczne|  Statystyczne|
-|Serbski (Cyrylica)|    `sr-Cyrl`   |Tylko statystyczne|  Statystyczne|
-|Serbski (łaciński)|   `sr-Latn`   |Tylko statystyczne   |Statystyczne|
+|(Samoa Zachodnie)|    `sm`    |Tylko statystyczne|  Statystyczn|
+|Serbski (Cyrylica)|    `sr-Cyrl`   |Tylko statystyczne|  Statystyczn|
+|Serbski (łaciński)|   `sr-Latn`   |Tylko statystyczne   |Statystyczn|
 |Słowacki|    `sk`    |Neuronowych dostępne|  Neuronowa|
 |Słoweński| `sl`    |Neuronowych dostępne|  Neuronowa|
 |Hiszpański|   `es`    |Neuronowych dostępne|  Neuronowa|
 |Szwedzki|   `sv`    |Neuronowych dostępne   |Neuronowa|
-|Tahitian|  `ty`    |Tylko statystyczne|  Statystyczne|
-|Tamilski| `ta`    |Tylko statystyczne|  Statystyczne|
+|Tahitian|  `ty`    |Tylko statystyczne|  Statystyczn|
+|Tamilski| `ta`    |Tylko statystyczne|  Statystyczn|
 |Telugu|    `te`    |Tylko neuronowych|   Neuronowa|
 |Tajlandzki|  `th`    |Neuronowych dostępne|  Neuronowa|
-|Pa'anga|    `to`    |Tylko statystyczne|  Statystyczne|
+|Pa'anga|    `to`    |Tylko statystyczne|  Statystyczn|
 |Turecki|   `tr`    |Neuronowych dostępne   |Neuronowa|
 |Ukraiński| `uk`    |Neuronowych dostępne|  Neuronowa|
-|Urdu|  `ur`    |Tylko statystyczne|  Statystyczne|
+|Urdu|  `ur`    |Tylko statystyczne|  Statystyczn|
 |Wietnamski|    `vi`    |Neuronowych dostępne|  Neuronowa|
 |Walijski| `cy`    |Neuronowych dostępne|  Neuronowa|
-|Yucatec Maya|  `yua`   |Tylko statystyczne|  Statystyczne|
+|Yucatec Maya|  `yua`   |Tylko statystyczne|  Statystyczn|
 
 ## <a name="transliteration"></a>Transliteracja
 
-Metoda Transliterate obsługuje następujące języki. W "do/z" "<> -" oznacza, że język może transliteracja, z lub do jednej z skryptach wymienionych. "-->" Wskazuje, że język może tylko można transliteracja z jednego skryptu do drugiego.
+Metoda transliteracji obsługuje następujące języki. W polu "do/z" <--> "wskazuje, że język można zatransliteracjć z lub do jednego z wymienionych skryptów. "-->" Wskazuje, że język może być zatransliteracji tylko z jednego skryptu do drugiego.
 
-| Język    | Kod języka | Skrypt | Do i z niej | Skrypt|
+| Język    | Kod języka | Skrypt | Do/z | Skrypt|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arabski | `ar` | Arabski `Arab` | <--> | Łaciński `Latn` |
-|Bengalski  | `bn` | Bengalski `Beng` | <--> | Łaciński `Latn` |
-| Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Łaciński `Latn` |
-| Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Chiński tradycyjny `Hant`|
-| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Łaciński `Latn` |
-| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Chiński uproszczony `Hans` |
-| Gudżarati | `gu`  | Gudżarati `Gujr` | --> | Łaciński `Latn` |
-| Hebrajski | `he` | Hebrajski `Hebr` | <--> | Łaciński `Latn` |
-| Hindi | `hi` | Dewanagari `Deva` | <--> | Łaciński `Latn` |
-| Japoński | `ja` | Japoński `Jpan` | <--> | Łaciński `Latn` |
-| Kannada | `kn` | Kannada `Knda` | --> | Łaciński `Latn` |
-| Malajalam | `ml` | Malayalam `Mlym` | --> | Łaciński `Latn` |
-| Marathi | `mr` | Dewanagari `Deva` | --> | Łaciński `Latn` |
-| Orija | `or` | Oriya `Orya` | <--> | Łaciński `Latn` |
-| Pendżabski | `pa` | Gurmukhi `Guru`  | <--> | Łaciński `Latn`  |
-| Serbski (Cyrylica) | `sr-Cyrl` | Cyrylica `Cyrl`  | --> | Łaciński `Latn` |
-| Serbski (łaciński) | `sr-Latn` | Łaciński `Latn` | --> | Cyrylica `Cyrl`|
-| Tamilski | `ta` | Tamilski `Taml` | --> | Łaciński `Latn` |
-| Telugu | `te` | Telugu `Telu` | --> | Łaciński `Latn` |
-| Tajlandzki | `th` | Tajski `Thai` | <--> | Łaciński `Latn` |
+| Arabski | `ar` | Arabski`Arab` | <--> | Wielka`Latn` |
+|Bengalski  | `bn` | Bengalski`Beng` | <--> | Wielka`Latn` |
+| Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony`Hans`| <--> | Wielka`Latn` |
+| Chiński (uproszczony) | `zh-Hans` | Chiński uproszczony`Hans`| <--> | Chiński tradycyjny`Hant`|
+| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny`Hant`| <--> | Wielka`Latn` |
+| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny`Hant`| <--> | Chiński uproszczony`Hans` |
+| Gudżarati | `gu`  | Gudżarati`Gujr` | --> | Wielka`Latn` |
+| Hebrajski | `he` | Hebrajski`Hebr` | <--> | Wielka`Latn` |
+| Hindi | `hi` | Devanagari`Deva` | <--> | Wielka`Latn` |
+| Japoński | `ja` | Japoński`Jpan` | <--> | Wielka`Latn` |
+| Kannada | `kn` | Kannada`Knda` | --> | Wielka`Latn` |
+| Malajalam | `ml` | Malayalam`Mlym` | --> | Wielka`Latn` |
+| Marathi | `mr` | Devanagari`Deva` | --> | Wielka`Latn` |
+| Orija | `or` | Orija`Orya` | <--> | Wielka`Latn` |
+| Pendżabski | `pa` | Gurmukhi`Guru`  | <--> | Wielka`Latn`  |
+| Serbski (Cyrylica) | `sr-Cyrl` | Pisanych`Cyrl`  | --> | Wielka`Latn` |
+| Serbski (łaciński) | `sr-Latn` | Wielka`Latn` | --> | Pisanych`Cyrl`|
+| Tamilski | `ta` | Tamilski`Taml` | --> | Wielka`Latn` |
+| Telugu | `te` | Telugu`Telu` | --> | Wielka`Latn` |
+| Tajlandzki | `th` | Tajski`Thai` | <--> | Wielka`Latn` |
 
 ## <a name="dictionary"></a>Słownik
 
-Słownik obsługuje następujące języki do lub z języka angielskiego, za pomocą metodom Lookup i Examples.
+Słownik obsługuje następujące języki w języku angielskim lub z niego przy użyciu metod wyszukiwania i przykładów.
 
 | Język    | Kod języka |
 |:----------- |:-------------:|
@@ -193,18 +193,18 @@ Słownik obsługuje następujące języki do lub z języka angielskiego, za pomo
 
 ## <a name="detect"></a>Detect
 
-Interfejs API tekstu usługi Translator wykrywa wszystkie języki dostępne dla tłumaczenia i transliterację.
+Interfejs API tłumaczenia tekstu w usłudze Translator wykrywa wszystkie języki dostępne do tłumaczenia i przekształcenie.
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programowy dostęp Lista języków interfejsu API tłumaczenia tekstu
+## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programowe uzyskiwanie dostępu do interfejs API tłumaczenia tekstu w usłudze Translatorej listy języków
 
-Możesz pobrać listę obsługiwanych języków dla interfejsu API tłumaczenia tekstu w wersji 3.0, przy użyciu metody języków. Możesz wyświetlić listę funkcji, kod języka, a także nazwę języka, w językach angielskim i innych obsługiwanych języków. Ta lista jest automatycznie aktualizowana przez usługę Microsoft Translator jako nowe języki są udostępniane.
+Listę obsługiwanych języków dla interfejs API tłumaczenia tekstu w usłudze Translator v 3.0 można pobrać przy użyciu metody Languages. Możesz wyświetlić listę według funkcji, kod języka, a także nazwę języka w języku angielskim lub innym obsługiwanym języku. Ta lista jest automatycznie aktualizowana przez usługę Microsoft Translator w miarę udostępniania nowych języków.
 
-[Przejrzyj dokumentację referencyjną operacji języków](reference/v3-0-languages.md)
+[Dokumentacja dotycząca operacji wyświetlania języków](reference/v3-0-languages.md)
 
 ## <a name="customization"></a>Dostosowywanie
 
-Następujące języki są możliwe do dostosowania do lub z angielskiego przy użyciu [niestandardowe w usłudze Translator](https://aka.ms/CustomTranslator).
+Następujące języki są dostępne do dostosowania do języka angielskiego lub z niego w języku angielskim przy użyciu [translatora niestandardowego](https://aka.ms/CustomTranslator).
 
 | Język    | Kod języka |
 |:----------- |:-------------:|
@@ -253,8 +253,8 @@ Następujące języki są możliwe do dostosowania do lub z angielskiego przy u�
 | Wietnamski      | `vi`          |
 | Walijski | `cy` |
 
-## <a name="access-the-list-on-the-microsoft-translator-website"></a>Dostęp do listy w witrynie internetowej Microsoft Translator
+## <a name="access-the-list-on-the-microsoft-translator-website"></a>Dostęp do listy w witrynie sieci Web usługi Microsoft Translator
 
-Dla rzut oka na językach usługa Microsoft Translator witryny sieci Web pokazuje wszystkie języki obsługiwane przez tekstu usługi Translator i interfejsy API rozpoznawania mowy. Ta lista nie zawiera informacje specyficzne dla deweloperów, takie jak kodów języków.
+Aby uzyskać szybki przegląd języków, w witrynie sieci Web usługi Microsoft Translator są wyświetlane wszystkie języki obsługiwane przez tłumaczenie tekstu w usłudze Translator i interfejsy API rozpoznawania mowy. Ta lista nie zawiera informacji specyficznych dla deweloperów, takich jak kody języka.
 
-[Zobacz listy języków](https://www.microsoft.com/translator/languages.aspx)
+[Zobacz listę języków](https://www.microsoft.com/translator/languages.aspx)

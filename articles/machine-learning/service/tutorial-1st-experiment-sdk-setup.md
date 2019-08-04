@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: Zainstaluj środowisko i obszar roboczy.'
 titleSuffix: Azure Machine Learning service
-description: W tym samouczku przedstawiono kompleksowe kroki umożliwiające rozpoczęcie pracy z zestawem SDK języka Python Azure Machine Learning w notesach Jupyter.
+description: W tej serii samouczków ukończono kompleksowe kroki umożliwiające rozpoczęcie pracy z zestawem SDK języka Python Azure Machine Learning w notesach Jupyter.  Część jednej z nich obejmuje tworzenie środowiska serwera notesu w chmurze oraz tworzenie obszaru roboczego do zarządzania eksperymentami i modelami uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: e17d9286453aeb5c7eac688555177c2c42faad21
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: baeb175c57573e557d298ff3197394ab619434ff
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668630"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772648"
 ---
 # <a name="tutorial-setup-environment-and-workspace"></a>Samouczek: Zainstaluj środowisko i obszar roboczy
 
@@ -25,7 +25,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Utwórz obszar roboczy uczenia maszynowego do użycia w następnym samouczku.
-> * Utwórz środowisko serwera notesu w chmurze.
+> * Tworzenie maszyny wirtualnej notesu, opartej na chmurze serwera Notatnika Jupyter Azure Machine Learning z wstępnie zainstalowanym i wstępnie skonfigurowanym zestawem SDK języka Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -101,7 +101,7 @@ Jeśli używasz serwera notesu w chmurze, Zatrzymaj maszynę wirtualną, gdy nie
 
 Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświetl właściwości obszaru roboczego i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zostały wykonane następujące zadania:
 

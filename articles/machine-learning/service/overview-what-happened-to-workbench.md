@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: a164276d41d182c5b439efc691d80693f1ac831e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2bc036fcde7ac541dbf7d8511f82080e52135777
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360130"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772619"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co się stało z aplikacją Azure Machine Learning Workbench?
 
@@ -76,7 +76,7 @@ W [tym samouczku](tutorial-data-prep.md) dowiesz się więcej na temat używania
 
 Nie stracisz żadnego kodu ani wykonanej pracy. W starszej wersji projekty są jednostkami chmury z katalogiem lokalnym. W najnowszej wersji można dołączać katalogi lokalne do aplikacji Azure Machine Learning Service Workspace przy użyciu lokalnego pliku konfiguracji. Zobacz [diagram przedstawiający najnowszą architekturę](concept-azure-machine-learning-architecture.md).
 
-Większa część zawartości projektu znajduje się już na komputerze lokalnym. Wystarczy utworzyć w odpowiednim katalogu plik konfiguracji i odwołać się do niego w kodzie, aby nawiązać połączenie z obszarem roboczym. Aby nadal korzystać z lokalnego katalogu zawierającego pliki i skrypty, należy określić nazwę katalogu w poleceniu ["eksperyment. Submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) języka Python lub przy użyciu `az ml project attach` interfejsu wiersza polecenia.  Przykład:
+Większa część zawartości projektu znajduje się już na komputerze lokalnym. Wystarczy utworzyć w odpowiednim katalogu plik konfiguracji i odwołać się do niego w kodzie, aby nawiązać połączenie z obszarem roboczym. Aby nadal korzystać z lokalnego katalogu zawierającego pliki i skrypty, należy określić nazwę katalogu w poleceniu ["eksperyment. Submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) języka Python lub przy użyciu `az ml project attach` interfejsu wiersza polecenia.  Na przykład:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
@@ -120,8 +120,8 @@ Pakietów domen funkcji przetwarzania obrazów, analizy tekstu i prognozowania n
 
 Dowiedz się więcej o [najnowszej architekturze usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md). 
 
-Aby zapoznać się z omówieniem usługi, przeczytaj temat [What is Azure Machine Learning service? (Co to jest usługa Azure Machine Learning?)](overview-what-is-azure-ml.md)
+Aby zapoznać się z omówieniem usługi, przeczytaj artykuł [co to jest usługa Azure Machine Learning?](overview-what-is-azure-ml.md).
 
-Aby zapoznać się z przewodnikiem Szybki Start zawierającym informacje o uruchamianiu skryptu i eksplorowaniu historii uruchamiania skryptu przy użyciu najnowszej wersji usługi Azure Machine Learning, spróbuj rozpocząć pracę [z usługą Azure Machine Learning Service](quickstart-run-cloud-notebook.md).
+Utwórz pierwszy eksperyment z dwuczęściowym samouczkiem, aby [skonfigurować środowisko i obszar roboczy](tutorial-1st-experiment-sdk-setup.md) oraz [szkolić swój pierwszy model](tutorial-1st-experiment-sdk-train.md)
 
 Aby uzyskać więcej informacji na temat środowiska tego przepływu pracy, wykonaj czynności opisane w [kompleksowym samouczku](tutorial-train-models-with-aml.md), który zawiera szczegółowy opis kroków uczenia i wdrażania modeli przy użyciu usługi Azure Machine Learning. 

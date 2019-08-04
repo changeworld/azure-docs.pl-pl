@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 4350cc215c776317d3bde24c7561c317a31fb4c3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 53f8742df0a03327069da083e6cb46a7c03118c1
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321868"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68773076"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: Uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API środowiska .NET
 
@@ -175,7 +175,7 @@ Następnie pliki są przekazywane do kontenera wejściowego z lokalnego folderu 
 
 Podczas przekazywania plików używane są dwie metody w pliku `Program.cs`:
 
-* `UploadResourceFilesToContainerAsync`: Zwraca kolekcję obiektów ResourceFile i wywołuje wewnętrznie element `UploadResourceFileToContainerAsync` w celu przekazania wszystkich plików przekazanych w parametrze `inputFilePaths`.
+* `UploadFilesToContainerAsync`: Zwraca kolekcję obiektów ResourceFile i wywołuje wewnętrznie element `UploadResourceFileToContainerAsync` w celu przekazania wszystkich plików przekazanych w parametrze `inputFilePaths`.
 * `UploadResourceFileToContainerAsync`: Przekazuje poszczególne pliki jako obiekty blob do kontenera wejściowego. Po przekazaniu pliku uzyskuje sygnaturę dostępu współdzielonego (SAS) dla obiektu blob i zwraca obiekt ResourceFile, który go reprezentuje.
 
 ```csharp
@@ -184,7 +184,7 @@ string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
     SearchOption.TopDirectoryOnly));
 
-List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
   blobClient,
   inputContainerName,
   inputFilePaths);
@@ -230,7 +230,7 @@ pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await pool.CommitAsync();  
 ```
 
-### <a name="create-a-job"></a>Tworzenie zadania
+### <a name="create-a-job"></a>Utwórz zadanie
 
 Zadanie usługi Batch określa pulę, w której będą uruchamiane zadania podrzędne, wraz z ustawieniami opcjonalnymi, takimi jak priorytet i harmonogram pracy. Przykładowa aplikacja tworzy zadanie z wywołaniem `CreateJobAsync`. W tej zdefiniowanej metodzie zadanie jest tworzone w puli za pomocą metody [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob).
 
