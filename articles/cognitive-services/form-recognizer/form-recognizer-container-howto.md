@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: d03abee7c7a4adb65e1d6146501ee5b7d9e1534c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 3db63be8856b5bd57323ecd0be767d09032404e9
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348664"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741883"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalowanie i uruchamianie kontenerów aparatów rozpoznawania formularzy
 
@@ -97,14 +97,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recogn
 
 Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj następującego procesu, aby współpracować z kontenerem.
 
-1. [Uruchom kontener](#run-the-container-by-using-the-docker-run-command)z ustawieniami rozliczania wymagane, ale nie używane. Więcej [przykładów](form-recognizer-container-configuration.md#example-docker-run-commands) `docker run` polecenia jest dostępnych.
+1. [Uruchom kontener](#run-the-container-by-using-the-docker-run-command)z wymaganymi ustawieniami rozliczania. Więcej [przykładów](form-recognizer-container-configuration.md#example-docker-run-commands) `docker run` polecenia jest dostępnych.
 1. [Zbadaj punkt końcowy przewidywania kontenera](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-by-using-the-docker-run-command"></a>Uruchamianie kontenera przy użyciu polecenia Docker Run
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić jeden z trzech kontenerów. Polecenie używa następujących parametrów:
 
-| Symbol zastępczy | Wartość |
+| Symbol zastępczy | Value |
 |-------------|-------|
 |{FORM_RECOGNIZER_API_KEY} | Ten klucz jest używany do uruchamiania kontenera. Jest ona dostępna na stronie **klucze aparatu rozpoznawania Azure Portal formularza** .  |
 |{FORM_RECOGNIZER_ENDPOINT_URI} | Wartość identyfikatora URI punktu końcowego rozliczenia jest dostępna na stronie **Omówienie aparatu rozpoznawania Azure Portal formularza** .|
