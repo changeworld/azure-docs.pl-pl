@@ -209,10 +209,6 @@
           href: /azure/active-directory/saas-apps/
     - name: Pojęcia
       items:
-        - name: Początkowa synchronizacja aprowizacji
-          href: user-provisioning.md
-        - name: Przyrostowa synchronizacja aprowizacji
-          href: user-provisioning.md
         - name: Automatyczna aprowizacja w aplikacjach obsługujących standard SCIM
           href: use-scim-to-provision-users-and-groups.md
     - name: Przewodniki z instrukcjami

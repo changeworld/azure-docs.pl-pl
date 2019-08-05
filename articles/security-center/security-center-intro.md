@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 28e85f2e9caacc0cc30dcc1a073414c34bc2ab0e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0ee4a1129246cedd7899056359144cab75f9475
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064329"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782432"
 ---
 # <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 
@@ -34,7 +34,7 @@ Azure Security Center rozwiązuje trzy najbardziej pilne problemy związane z za
 
 -   **Coraz bardzie zaawansowane ataki** — wszędzie tam, gdzie pracujesz, ataki stają się coraz bardziej wyrafinowane. Trzeba zabezpieczyć pracę w chmurze publicznej, która jest połączona z Internetem, co sprawia, że jest jeszcze bardziej narażona na ataki w przypadku braku zastosowania najlepszych zabezpieczeń.
 
--   **Trudno jest znaleźć pracowników mających odpowiednie umiejętności w zakresie zabezpieczeń** — liczba alertów bezpieczeństwa i systemów zgłaszania alertów przewyższa znacznie liczbę administratorów z umiejętnościami i doświadczeniem koniecznymi do zapewniania bezpieczeństwa takiemu środowisku. Bycie na bieżąco z najnowszymi atakami jest dużym wyzwaniem. Nie można stać w miejscu, gdy sytuacja w zakresie zabezpieczeń ciągle się zmienia.
+-   **Umiejętność zabezpieczeń jest w krótkim dostawie** — liczba alertów zabezpieczeń i systemów zgłaszających alerty pozwala uzyskać pewność, że Twoje środowiska są chronione. Bycie na bieżąco z najnowszymi atakami jest dużym wyzwaniem. Nie można stać w miejscu, gdy sytuacja w zakresie zabezpieczeń ciągle się zmienia.
 
 Aby sprostać tym wyzwaniom, Security Center oferuje narzędzia umożliwiające:
 
@@ -126,13 +126,13 @@ Usługa Security Center pomaga ograniczyć narażenie na ataki siłowe. Ogranicz
 
 Usługa Security Center obejmuje funkcje, które ułatwiają wykonywanie automatycznej klasyfikacji danych w Azure SQL. Możesz także uzyskać oceny potencjalnych luk w zabezpieczeniach w usługach Azure SQL i Storage oraz zalecenia dotyczące sposobu rozwiązania tych problemów.
 
-### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>Ochrona obciążeń chmury hybrydowej i IoT (wersja zapoznawcza)
+### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>Ochrona obciążeń związanych z chmurą IoT i hybrydową (wersja zapoznawcza)
 
-Centrum zabezpieczeń Azure dla IoT (Internet of Things) ułatwia ochronę obciążeń hybrydowych, zapewniając ujednoliconego widoczności i kontroli, zapobiegania adaptacyjne zagrożeń i Inteligentne wykrywanie zagrożeń i odpowiedzi w różnych obciążeń działających na urządzeniach brzegowych, w środowisku lokalnym, Azure i w innych chmurach. Aby uzyskać więcej informacji, zobacz [Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza)](https://docs.microsoft.com/azure/asc-for-iot/).
+Azure Security Center IoT (Internet rzeczy) upraszczają hybrydową ochronę obciążenia, zapewniając ujednoliconą widoczność i kontrolę, adaptacyjne zapobieganie zagrożeniom oraz Inteligentne wykrywanie zagrożeń oraz reagowanie na nie w ramach obciążeń działających na urządzeniach brzegowych, lokalnych, w Azure i w innych chmurach. Aby uzyskać więcej informacji, zobacz [Azure Security Center for IoT (wersja zapoznawcza)](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Szybsze osiągnięcie bezpieczeństwa
 
-Natywna Integracja usługi Azure (w tym dzienniki usługi Azure Policy i usługi Azure Monitor) połączone z bezproblemową integrację z innymi rozwiązaniami zabezpieczeń firmy Microsoft, takich jak Microsoft Cloud App Security i zaawansowanej ochrony przed zagrożeniami programu Windows Defender upewnić się, Twoje rozwiązanie w zakresie zabezpieczeń jest kompleksowy, jak również łatwe dodawanie i wdrażanie.
+Natywna integracja platformy Azure (w tym Azure Policy i dzienników Azure Monitor) z bezproblemową integracją z innymi rozwiązaniami zabezpieczeń firmy Microsoft, takimi jak Microsoft Cloud App Security i usługa Windows Defender Advanced Threat Protection, należy się upewnić, że Rozwiązanie zabezpieczeń jest kompleksowe, a także proste do dołączenia i wdrożenia.
 
 Ponadto można rozszerzyć pełne rozwiązanie poza platformę Azure na obciążenia działające w innych chmurach, jak i w lokalnych centrach danych.
 

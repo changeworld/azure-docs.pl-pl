@@ -6,26 +6,26 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5602298ffe60ad15d3daf52587c50357c310200c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 6987c6f1191b0dfc7b78b14e77a5d6a0ab369f57
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480116"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782601"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do realizacji strategii odzyskiwania po awarii przez zarządzanie replikacją, przełączaniem do trybu failover i powrotem po awarii maszyn lokalnych oraz maszyn wirtualnych platformy Azure, a także orkiestrację tych procesów.
 
-Ten samouczek pokazuje, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure, replikując je między regionami platformy Azure do innego. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przez replikowanie ich z jednego regionu świadczenia usługi Azure do innego. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie magazynu usługi Recovery Services
 > * Sprawdzanie ustawień zasobów docelowych
-> * Konfigurowanie połączenia sieciowego ruchu wychodzącego dla maszyn wirtualnych
+> * Konfigurowanie wychodzącej łączności sieciowej dla maszyn wirtualnych
 > * Włączanie replikacji maszyny wirtualnej
 
 > [!NOTE]
@@ -36,7 +36,7 @@ Ten samouczek pokazuje, jak skonfigurować odzyskiwanie po awarii dla maszyn wir
 W celu ukończenia tego samouczka:
 
 - Zapoznaj się ze [składnikami i architekturą scenariusza](concepts-azure-to-azure-architecture.md).
-- Przegląd [obsługi wymagań związanych z](site-recovery-support-matrix-azure-to-azure.md) przed rozpoczęciem.
+- Zapoznaj się z wymaganiami dotyczącymi [obsługi](site-recovery-support-matrix-azure-to-azure.md) przed rozpoczęciem.
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
@@ -57,7 +57,7 @@ Magazyn można utworzyć w dowolnym regionie, z wyjątkiem regionu źródłowego
 1. Sprawdź, czy Twoja subskrypcja platformy Azure umożliwia tworzenie maszyn wirtualnych w regionie docelowym. Skontaktuj się z pomocą techniczną, aby włączyć wymagany limit przydziału.
 2. Upewnij się, że zasoby subskrypcji są wystarczające do obsługi maszyn wirtualnych o rozmiarach odpowiadających źródłowym maszynom wirtualnym. Usługa Site Recovery wybiera ten sam lub najbardziej zbliżony rozmiar dla docelowej maszyny wirtualnej.
 
-## <a name="set-up-outbound-network-connectivity-for-vms"></a>Konfigurowanie połączenia sieciowego ruchu wychodzącego dla maszyn wirtualnych
+## <a name="set-up-outbound-network-connectivity-for-vms"></a>Konfigurowanie wychodzącej łączności sieciowej dla maszyn wirtualnych
 
 Aby zapewnić zgodne z oczekiwaniami działanie usługi Site Recovery, musisz zmodyfikować łączność sieciową wychodzącą z maszyn wirtualnych, które mają być replikowane.
 
@@ -86,7 +86,7 @@ Jeśli chcesz kontrolować łączność wychodzącą przy użyciu adresów IP, a
   - [Zakresy adresów URL i IP dla usługi Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Adresy IP punktów końcowych usługi Site Recovery](https://aka.ms/site-recovery-public-ips)
 
-Jeśli używasz sieciowej grupy zabezpieczeń można utworzyć tagu usługi storage reguły sieciowej grupy zabezpieczeń dla regionu źródłowego. [Dowiedz się więcej](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
+Jeśli używasz programu sieciowej grupy zabezpieczeń, możesz utworzyć reguły sieciowej grupy zabezpieczeń tagów usługi magazynu dla regionu źródłowego. [Dowiedz się więcej](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
 
 ## <a name="verify-azure-vm-certificates"></a>Weryfikowanie certyfikatów maszyn wirtualnych platformy Azure
 
@@ -105,7 +105,7 @@ Usługa Azure Site Recovery udostępnia trzy role wbudowane, umożliwiające kon
 
 - **Czytelnik usługi Site Recovery** — ta rola ma uprawnienia do wyświetlania wszystkich operacji zarządzania usługą Site Recovery. Ta rola jest najbardziej odpowiednia dla członka kadry zarządzającej, który zajmuje się monitorowaniem infrastruktury IT i bieżącego stanu jej ochrony oraz może wysyłać zgłoszenia do pomocy technicznej.
 
-Dowiedz się więcej o [wbudowane role RBAC na platformie Azure](../role-based-access-control/built-in-roles.md).
+Dowiedz się więcej o [rolach wbudowanych funkcji RBAC platformy Azure](../role-based-access-control/built-in-roles.md).
 
 ## <a name="enable-replication-for-a-vm"></a>Włączanie replikacji maszyny wirtualnej
 
@@ -115,7 +115,7 @@ Dowiedz się więcej o [wbudowane role RBAC na platformie Azure](../role-based-a
 2. W obszarze **Źródło** wybierz pozycję **Azure**.
 3. W obszarze **Lokalizacja źródłowa** wybierz źródłowy region świadczenia usługi Azure, w którym są uruchomione maszyny wirtualne.
 4. Wybierz **Subskrypcję źródłową**, w której działają maszyny wirtualne. Może to być dowolna subskrypcja w obrębie tej samej dzierżawy usługi Azure Active Directory, w której znajduje się magazyn usługi Recovery Services.
-5. Wybierz **źródłowa grupa zasobów**i kliknij przycisk **OK** Aby zapisać ustawienia.
+5. Wybierz **źródłową grupę zasobów**, a następnie kliknij przycisk **OK** , aby zapisać ustawienia.
 
     ![Konfiguracja źródła](./media/azure-to-azure-tutorial-enable-replication/source.png)
 
@@ -126,7 +126,7 @@ Usługa Site Recovery pobiera listę maszyn wirtualnych skojarzonych z subskrypc
 1. W obszarze **Maszyny wirtualne** wybierz maszyny wirtualne, które mają być replikowane.
 2. Kliknij przycisk **OK**.
 
-### <a name="configure-replication-settings"></a>Konfigurowanie ustawień replikacji
+### <a name="configure-replication-settings"></a>Konfiguruj ustawienia replikacji
 
 Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie docelowym. Ustawienia możesz zmienić zgodnie z potrzebami.
 
@@ -136,47 +136,47 @@ Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie
    ![Konfigurowanie ustawień](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
-3. Dostosuj ustawienia docelowe, zgodnie z opisem w tabeli.
+3. Dostosuj ustawienia docelowe zgodnie z podsumowaniem w tabeli.
 
     **Ustawienie** | **Szczegóły**
     --- | ---
-    **Subskrypcja docelowa** | Domyślnie subskrypcja docelowa jest taka sama jak subskrypcja źródłowa. Kliknij pozycję Dostosuj, aby wybrać inną subskrypcję docelową w ramach tej samej dzierżawy usługi Azure Active Directory.
+    **Subskrypcja docelowa** | Domyślnie subskrypcja docelowa jest taka sama jak w przypadku subskrypcji źródłowej. Kliknij pozycję Dostosuj, aby wybrać inną subskrypcję docelową w ramach tej samej dzierżawy usługi Azure Active Directory.
     **Lokalizacja docelowa** | Region docelowy używany na potrzeby odzyskiwania po awarii.<br/><br/> Zaleca się, aby lokalizacja docelowa odpowiadała lokalizacji magazynu usługi Site Recovery.
-    **Docelowa grupa zasobów** | Grupa zasobów w regionie docelowym, w której są przechowywane maszyny wirtualne platformy Azure po przejściu w tryb failover.<br/><br/> Domyślnie usługa Site Recovery dodaje sufiks „asr” do grupy zasobów utworzonej w regionie docelowym. Lokalizacja docelowa grupa zasobów może być dowolny region, z wyjątkiem regionu, w którym znajdują się maszyny wirtualne źródła.
+    **Docelowa Grupa zasobów** | Grupa zasobów w regionie docelowym, w której są przechowywane maszyny wirtualne platformy Azure po przejściu w tryb failover.<br/><br/> Domyślnie usługa Site Recovery dodaje sufiks „asr” do grupy zasobów utworzonej w regionie docelowym. Lokalizacją docelowej grupy zasobów może być dowolny region, z wyjątkiem regionu, w którym są hostowane źródłowe maszyny wirtualne.
     **Docelowa sieć wirtualna** | Sieć w regionie docelowym, w której znajdują się maszyny wirtualne po przejściu w tryb failover.<br/><br/> Domyślnie usługa Site Recovery dodaje sufiks „asr” do sieci wirtualnej (i podsieci) utworzonej w regionie docelowym.
-    **Konta magazynu pamięci podręcznej** | Usługa Site Recovery używa konta magazynu w regionie źródłowym. Do tego konta są wysyłane zmiany źródłowych maszyn wirtualnych przed uruchomieniem replikacji do lokalizacji docelowej.<br/><br/> Jeśli używasz konta magazynu pamięci podręcznej z włączona zapora, upewnij się, Włączyłeś **dozwolonych zaufanych usług firmy Microsoft**. [Dowiedz się więcej.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
-    **Docelowe konta magazynu (źródłowa maszyna wirtualna używa dysków niezarządzanych)** | Domyślnie usługa Site Recovery tworzy w regionie docelowym nowe konto magazynu, które jest duplikatem źródłowego konta magazynu maszyn wirtualnych.<br/><br/> Włącz **dozwolonych zaufanych usług firmy Microsoft** Jeśli używasz konta magazynu z obsługą zapory pamięci podręcznej.
-    **Dyski zarządzane repliki (Jeśli źródło, które maszyna wirtualna używa dysków zarządzanych)** | Domyślnie usługa Site Recovery tworzy dyski zarządzane repliki w regionie docelowym w celu zdublowania dysków zarządzanych źródłowej maszyny wirtualnej przy użyciu tego samego typu magazynu (w warstwie Standardowa lub Premium) co typ magazynu dysku zarządzanego źródłowej maszyny wirtualnej. Można dostosować tylko typ dysku 
+    **Konta magazynu pamięci podręcznej** | Usługa Site Recovery używa konta magazynu w regionie źródłowym. Do tego konta są wysyłane zmiany źródłowych maszyn wirtualnych przed uruchomieniem replikacji do lokalizacji docelowej.<br/><br/> Jeśli używasz konta magazynu pamięci podręcznej z włączoną obsługą zapory, upewnij się, że włączono opcję **Zezwalaj na zaufane usługi firmy Microsoft**. [Dowiedz się więcej.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+    **Docelowe konta magazynu (źródłowa maszyna wirtualna używa dysków innych niż zarządzane)** | Domyślnie usługa Site Recovery tworzy w regionie docelowym nowe konto magazynu, które jest duplikatem źródłowego konta magazynu maszyn wirtualnych.<br/><br/> Włącz opcję **Zezwalaj na zaufane usługi firmy Microsoft** , jeśli używasz konta magazynu pamięci podręcznej z włączoną obsługą zapory.
+    **Dyski zarządzane repliki (jeśli źródłowa maszyna wirtualna korzysta z dysków zarządzanych)** | Domyślnie usługa Site Recovery tworzy dyski zarządzane repliki w regionie docelowym w celu zdublowania dysków zarządzanych źródłowej maszyny wirtualnej przy użyciu tego samego typu magazynu (w warstwie Standardowa lub Premium) co typ magazynu dysku zarządzanego źródłowej maszyny wirtualnej. Można dostosować tylko typ dysku 
     **Docelowe zestawy dostępności** | Domyślnie usługa Azure Site Recovery tworzy w regionie docelowym nowy zestaw dostępności o nazwie z sufiksem „asr” dla części maszyny wirtualnej w zestawie dostępności w regionie źródłowym. Jeśli zestaw dostępności utworzony przez usługę Azure Site Recovery już istnieje, zostanie ponownie użyty.
-    **Strefy dostępności docelowego** | Domyślnie usługa Site Recovery przypisuje w regionie docelowym ten sam numer strefy co regionu źródłowego, jeśli region docelowy obsługuje strefy dostępności.<br/><br/> Jeśli region docelowy nie obsługuje stref dostępności, docelowej maszyny wirtualne są konfigurowane domyślnie jako pojedynczych wystąpień.<br/><br/> Kliknij przycisk **Dostosuj** do konfiguracji maszyn wirtualnych w ramach zestaw dostępności w regionie docelowym.<br/><br/> Nie można zmienić typ dostępności (SIS, zestaw lub dostępności w strefie dostępności) po włączeniu replikacji. W celu zmiany typu dostępności należy wyłączyć i włączyć replikację.
+    **Docelowe strefy dostępności** | Domyślnie usługa Site Recovery przypisuje w regionie docelowym ten sam numer strefy co regionu źródłowego, jeśli region docelowy obsługuje strefy dostępności.<br/><br/> Jeśli region docelowy nie obsługuje stref dostępności, docelowe maszyny wirtualne są domyślnie konfigurowane jako pojedyncze wystąpienia.<br/><br/> Kliknij przycisk **Dostosuj** , aby skonfigurować maszyny wirtualne jako część zestawu dostępności w regionie docelowym.<br/><br/> Po włączeniu replikacji nie można zmienić typu dostępności (pojedyncze wystąpienie, zestaw dostępności lub strefa dostępności). W celu zmiany typu dostępności należy wyłączyć i włączyć replikację.
 
-4. Aby dostosować ustawienia zasad replikacji, kliknij przycisk **Dostosuj** obok **zasad replikacji**i zmodyfikuj ustawienia zgodnie z potrzebami.
+4. Aby dostosować ustawienia zasad replikacji, kliknij przycisk **Dostosuj** obok **zasad replikacji**, a następnie zmodyfikuj ustawienia zgodnie z wymaganiami.
 
     **Ustawienie** | **Szczegóły**
     --- | ---
     **Nazwa zasad replikacji** | Nazwa zasad.
-    **Czas przechowywania punktu odzyskiwania** | Domyślnie usługa Site Recovery przechowuje punkty odzyskiwania przez 24 godziny. Można skonfigurować wartość z zakresu od 1 do 72 godzin.
-    **Częstotliwość migawek spójności aplikacji** | Domyślnie usługa Site Recovery wykonuje migawki na poziomie aplikacji co 4 godziny. Można skonfigurować wartość z zakresu od 1 do 12 godzin.<br/><br/> Migawka spójności aplikacji jest w momencie migawkę danych aplikacji wewnątrz maszyny Wirtualnej. Usługa kopiowania woluminów w tle (VSS) zapewnia stan spójności aplikacji podczas wykonywania migawki.
-    **Grupy replikacji** | Jeśli aplikacja wymaga spójności obejmującej wiele maszyn wirtualnych, można utworzyć grupę replikacji dla tych maszyn wirtualnych. Domyślnie wybrane maszyny wirtualne nie są częścią żadnej grupy replikacji.
+    **Przechowywanie punktów odzyskiwania** | Domyślnie usługa Site Recovery przechowuje punkty odzyskiwania przez 24 godziny. Można skonfigurować wartość z zakresu od 1 do 72 godzin.
+    **Częstotliwość migawek spójnych na poziomie aplikacji** | Domyślnie usługa Site Recovery wykonuje migawki na poziomie aplikacji co 4 godziny. Można skonfigurować wartość z zakresu od 1 do 12 godzin.<br/><br/> Migawka spójna na poziomie aplikacji to migawka danych aplikacji znajdujących się w danym momencie w ramach maszyny wirtualnej. Usługa kopiowania woluminów w tle (VSS) zapewnia stan spójności aplikacji podczas wykonywania migawki.
+    **Grupa replikacji** | Jeśli aplikacja wymaga spójności obejmującej wiele maszyn wirtualnych, można utworzyć grupę replikacji dla tych maszyn wirtualnych. Domyślnie wybrane maszyny wirtualne nie są częścią żadnej grupy replikacji.
 
 5. W obszarze **Dostosowywanie** wybierz opcję **Tak**, aby zachować spójność wielu maszyn wirtualnych, jeśli chcesz dodać maszyny wirtualne do nowej lub istniejącej grupy replikacji. Następnie kliknij przycisk **OK**. 
 
     >[!NOTE]
-    >- Udostępnione punkty odzyskiwania spójnego na poziomie aplikacji i awarii, gdy przełączone w tryb failover wszystkich maszyn w grupie replikacji.
-    >- Włączenie spójności wielu maszyn wirtualnych może wpłynąć na wydajność obciążeń (jest intensywnie z Procesora). Należy używać tylko wtedy, gdy maszyn są to samo obciążenie i jest wymagana spójność między wieloma maszynami.
-    >- Użytkownik nie może przekraczać 16 maszyn wirtualnych w grupie replikacji.
-    >- Jeśli włączono spójność między wieloma maszynami wirtualnymi, maszyny z grupy replikacji komunikują się między sobą przez port 20004. Upewnij się, że Zapora nie blokuje wewnętrznej komunikacji między maszynami wirtualnymi za pośrednictwem tego portu.
-    >- Dla maszyn wirtualnych systemu Linux w grupie replikacji upewnij się, że ruch wychodzący na porcie 20004 musisz ręcznie otworzyć zgodnie ze wskazówkami dla wersji systemu Linux.
+    >- W przypadku przełączenia w tryb failover wszystkie maszyny w grupie replikacji mają wspólne punkty odzyskiwania spójne ze spójnością.
+    >- Włączenie spójności wielu maszyn wirtualnych może wpłynąć na wydajność obciążeń (intensywnie procesora CPU). Powinna być używana tylko wtedy, gdy na maszynach działa to samo obciążenie, a dla wielu maszyn jest wymagana spójność.
+    >- Grupa replikacji może zawierać maksymalnie 16 maszyn wirtualnych.
+    >- Jeśli włączono spójność między wieloma maszynami wirtualnymi, maszyny z grupy replikacji komunikują się między sobą przez port 20004. Upewnij się, że Zapora nie blokuje komunikacji wewnętrznej między maszynami wirtualnymi za pośrednictwem tego portu.
+    >- W przypadku maszyn wirtualnych z systemem Linux w grupie replikacji upewnij się, że ruch wychodzący na porcie 20004 został ręcznie otwarty zgodnie ze wskazówkami dotyczącymi wersji systemu Linux.
 
 
 
 ### <a name="configure-encryption-settings"></a>Konfigurowanie ustawień szyfrowania
 
-Jeśli źródłowa maszyna wirtualna ma usługa Azure disk encryption (ADE) włączone, przejrzyj ustawienia.
+Jeśli źródłowa maszyna wirtualna ma włączoną usługę Azure Disk Encryption (ADE), przejrzyj ustawienia.
 
 1. Sprawdź ustawienia:
-    - **Magazyny kluczy szyfrowania dysków**: Domyślnie usługa Site Recovery tworzy nowy magazyn kluczy na kluczy szyfrowania dysków maszyn wirtualnych na źródło, sufiks "asr". Jeśli magazyn kluczy już istnieje, zostanie on użyty ponownie.
-    - **Magazyny kluczy szyfrowania kluczy**: Domyślnie usługa Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Nazwa ma sufiks "asr" i jest oparte na kluczach szyfrowania maszyny Wirtualnej źródłowego. Jeśli magazyn kluczy utworzonych przez usługę Site Recovery jest już istnieje, zostanie on użyty ponownie.
+    - **Magazyny kluczy szyfrowania dysków**: Domyślnie program Site Recovery tworzy nowy magazyn kluczy dla źródłowych kluczy szyfrowania dysku maszyny wirtualnej z sufiksem "ASR". Jeśli magazyn kluczy już istnieje, jest ponownie używany.
+    - **Magazyny kluczy szyfrowania kluczy**: Domyślnie Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Nazwa ma sufiks "ASR" i opiera się na kluczach szyfrowania źródłowych maszyn wirtualnych. Jeśli magazyn kluczy utworzony przez Site Recovery już istnieje, jest ponownie używany.
 
 2. Kliknij pozycję **Dostosuj**, aby wybrać niestandardowe magazyny kluczy.
 
@@ -191,7 +191,7 @@ Jeśli źródłowa maszyna wirtualna ma usługa Azure disk encryption (ADE) wł�
     - Postęp zadania **Włącz ochronę** możesz śledzić w obszarze **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**.
     - W obszarze **Ustawienia** > **Zreplikowane elementy** możesz wyświetlić stan maszyn wirtualnych i początkowy postęp replikacji. Kliknij maszynę wirtualną, aby przejść do jej ustawień.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku skonfigurowano odzyskiwanie po awarii dla maszyny wirtualnej platformy Azure. Teraz możesz zainicjować próbne odzyskiwanie po awarii w celu sprawdzenia, czy tryb failover działa zgodnie z oczekiwaniami.
 

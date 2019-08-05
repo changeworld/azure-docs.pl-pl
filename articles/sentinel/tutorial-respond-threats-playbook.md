@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/25/2019
 ms.author: rkarlin
-ms.openlocfilehash: cdfe22b67585221e2d7e17f47c6a09ba929d68ef
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cd3288e308308729cf9b97e3c699d489857840a8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599020"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780370"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Samouczek: Konfigurowanie zautomatyzowanych odpowiedzi na zagrożenia w wersji zapoznawczej platformy Azure wskaźnikowej
 
@@ -90,7 +90,7 @@ Można uruchomić element PlayBook na żądanie.
 
 Aby uruchomić element PlayBook na żądanie:
 
-1. Na stronie **przypadki** wybierz wielkość liter i kliknij pozycję **Wyświetl pełne szczegóły**.
+1. Na stronie **incydenty** wybierz zdarzenie i kliknij pozycję **Wyświetl pełne szczegóły**.
 
 2. Na karcie **alerty** Kliknij alert, na którym chcesz uruchomić element PlayBook, a następnie przewiń w prawo, a następnie kliknij pozycję **Wyświetl elementy PlayBook** i wybierz element PlayBook do **uruchomienia** z listy dostępnych elementy PlayBook w subskrypcji. 
 
@@ -117,7 +117,7 @@ Aby zautomatyzować odpowiedzi:
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób uruchamiania element PlayBook na platformie Azure. Przejdź do strony z [możliwością aktywnego wyszukiwania w poszukiwaniu zagrożeń](hunting.md) przy użyciu platformy Azure.
 

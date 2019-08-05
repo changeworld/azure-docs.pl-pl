@@ -18,11 +18,10 @@
           href: secure-develop.md
         - name: Wdrażanie bezpiecznych aplikacji
           href: secure-deploy.md
-- name: Rozwiązania
+- name: Zasoby
   expanded: true
   items:
     - name: Microsoft Security Code Analysis
-      expanded: true
       items:
         - name: Omówienie
           href: security-code-analysis-overview.md
@@ -32,3 +31,49 @@
           href: security-code-analysis-customize.md
         - name: Często zadawane pytania
           href: security-code-analysis-faq.md
+    - name: Narzędzie do modelowania zagrożeń firmy Microsoft
+      displayName: stride
+      href: threat-modeling-tool.md
+      items:
+        - name: Wprowadzenie
+          href: threat-modeling-tool-getting-started.md
+        - name: Omówienie funkcji
+          href: threat-modeling-tool-feature-overview.md
+        - name: Zagrożenia
+          href: threat-modeling-tool-threats.md
+        - name: Wydania
+          href: threat-modeling-tool-releases.md
+          items:
+            - name: 'Threat Modeling Tool, wersja ogólnodostępna 7.1.5091.2 — 12 wrzesień 2018'
+              href: threat-modeling-tool-releases-71509112.md
+            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.51023.1 — 1 listopad 2018'
+              href: threat-modeling-tool-releases-71510231.md
+            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.60126.1 — 29 styczeń 2019'
+              href: threat-modeling-tool-releases-71601261.md
+            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.60408.1 — 9 kwiecień 2019'
+              href: threat-modeling-tool-releases-71604081.md
+            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.60702.1 — 2019-07-02'
+              href: threat-modeling-tool-releases-71607021.md
+        - name: Środki zaradcze
+          href: threat-modeling-tool-mitigations.md
+          items:
+            - name: Inspekcja i rejestrowanie
+              href: threat-modeling-tool-auditing-and-logging.md
+            - name: Authentication
+              href: threat-modeling-tool-authentication.md
+            - name: Autoryzacja
+              href: threat-modeling-tool-authorization.md
+            - name: Bezpieczeństwo komunikacji
+              href: threat-modeling-tool-communication-security.md
+            - name: Zarządzanie konfiguracją
+              href: threat-modeling-tool-configuration-management.md
+            - name: Kryptografia
+              href: threat-modeling-tool-cryptography.md
+            - name: Zarządzanie wyjątkami
+              href: threat-modeling-tool-exception-management.md
+            - name: Walidacja danych wejściowych
+              href: threat-modeling-tool-input-validation.md
+            - name: Dane poufne
+              href: threat-modeling-tool-sensitive-data.md
+            - name: Zarządzanie sesjami
+              href: threat-modeling-tool-session-management.md

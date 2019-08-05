@@ -1,6 +1,6 @@
 ---
-title: Co to jest Azure przez wartownika w wersji zapoznawczej? | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat platformy Azure przez wartownika, jego kluczowych możliwości i jak to działa.
+title: Co to jest wersja zapoznawcza usługi Azure wskaźnikowej? | Microsoft Docs
+description: Dowiedz się więcej na temat platformy Azure, jej najważniejszych możliwości i sposobu działania.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -16,94 +16,94 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2c730c240ed5ff68a1d48ef17d15de1aaa73ab1e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 15cf770a372c9a1386dd0293abeac01fd3cacf63
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619900"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779742"
 ---
-# <a name="what-is-azure-sentinel-preview"></a>Co to jest Azure przez wartownika w wersji zapoznawczej?
+# <a name="what-is-azure-sentinel-preview"></a>Co to jest wersja zapoznawcza usługi Azure wskaźnikowej?
 
 > [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
+> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Wskaźnikowe systemu Microsoft Azure to skalowalne, natywnych dla chmury, **zarządzania zdarzeniami informacje zabezpieczeń (SIEM)** i **aranżacji zabezpieczeń automatycznych odpowiedzi (WZRASTAĆ)** rozwiązania. Wartownik platformy Azure oferuje usługę intelligent security analizę zagrożeń całe przedsiębiorstwo, przewidujące jednego rozwiązania alertu wykrywania, widoczność zagrożeń, myślistwo aktywnego i reagowania na zagrożenia. 
+Microsoft Azure wskaźnikiem wydajności jest skalowalne i natywne rozwiązanie do **zarządzania zdarzeniami zabezpieczeń (Siem)** i **o (Security Orchestration)** . Platforma Azure — wskaźnik przedstawia inteligentne rozwiązania w zakresie zabezpieczeń i analizy zagrożeń w całym przedsiębiorstwie, zapewniając jedno rozwiązanie do wykrywania alertów, widoczności zagrożeń, aktywnego polowania i reagowania na zagrożenia. 
 
-Wartownik platformy Azure jest widok ptaka w całym przedsiębiorstwie złagodzenia wpływem coraz bardziej zaawansowanymi atakami, zwiększenie ilości alertów i czas rozpoznawania harmonogramów.
+Azure — wskaźnikowy to Twój Widok z oczami w całym przedsiębiorstwie, zmniejszający nacisk coraz bardziej zaawansowanych ataków, zwiększając liczbę alertów i długotrwałe przedziały czasu rozwiązania.
 
-- **Zbieranie danych w skali chmury** we wszystkich użytkowników, urządzeń, aplikacji i infrastruktury, zarówno lokalnie, jak i w wielu chmur. 
+- **Zbieraj dane w skali chmury** między wszystkimi użytkownikami, urządzeniami, aplikacjami i infrastrukturą, zarówno lokalnie, jak i w wielu chmurach. 
 
-- **Wykrywanie zagrożeń którego wcześniej nie wykryto**i minimalizacji fałszywych alarmów przy użyciu analizy i analizy zagrożeń niezrównaną firmy Microsoft. 
+- **Wykrywaj wcześniej niewykryte zagrożenia**i Minimalizuj fałszywie dodatnie, korzystając z analizy i niezrównanej analizy zagrożeń firmy Microsoft. 
 
-- **Badanie zagrożeń dzięki sztucznej inteligencji**i możliwe dla podejrzanych działań na dużą skalę, korzystając lat. cybernetycznymi zabezpieczeń w firmie Microsoft. 
+- **Zbadaj zagrożenia przy użyciu sztucznej analizy**i Wyszukaj podejrzane działania na dużą skalę, wybierając kolejno lata cybernetycznymi zabezpieczenia w firmie Microsoft. 
 
-- **Szybko reagować na zdarzenia związane z** za pomocą wbudowanych aranżacji i automatyzacji typowych zadań.
+- **Szybko reaguj na zdarzenia** dzięki wbudowanej aranżacji i automatyzacji typowych zadań.
 
 
-![Usługa Azure wartownik podstawowe możliwości](./media/overview/core-capabilities.png)
+![Podstawowe możliwości platformy Azure wskaźnikowego](./media/overview/core-capabilities.png)
 
-Korzystając z pełnego zakresu istniejące usługi platformy Azure, Azure przez wartownika natywnie zawiera podstawy sprawdzone, takich jak usługa Log Analytics i Logic Apps. Wartownik Azure wzbogaca Twoje badania i wykrywanie ze sztuczną Inteligencją i zapewnia strumienia analizy zagrożeń firmy Microsoft i umożliwia zebranie własne analizy zagrożeń. 
+Kompilowanie w całym zakresie istniejących usług platformy Azure obejmuje natywne, udokumentowane fundacje, takie jak Log Analytics i Logic Apps. Platforma Azure wskaźnikowa wzbogaca badanie i wykrywanie przy użyciu AI oraz zapewnia strumień analizy zagrożeń firmy Microsoft i umożliwia korzystanie z własnej analizy zagrożeń. 
 
  
-## <a name="connect-to-all-your-data"></a>Łączenie do Twoich danych
+## <a name="connect-to-all-your-data"></a>Połącz ze wszystkimi danymi
 
-Aby dołączyć przez wartownika platformy Azure, najpierw musisz [łączenie ze źródłami zabezpieczeń](connect-data-sources.md). Azure wartownik dołączono wiele łączników dla rozwiązań firmy Microsoft, dostępne poza pole, a także w czasie rzeczywistym integracji, w tym rozwiązań do ochrony przed zagrożeniami firmy Microsoft i Microsoft 365 źródeł, takich jak usługi Office 365, Azure AD, Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto ma wbudowanych łączników szerszy ekosystemem zabezpieczenia dla rozwiązań firmy Microsoft. Można również użyć typowego formatu zdarzeń dziennika systemu lub interfejsu API REST, nawiązywanie połączeń ze źródłami danych z platformy Azure przez wartownika także.  
+Aby przejść do tablicy wskaźnikowej platformy Azure, musisz najpierw [nawiązać połączenie ze źródłami zabezpieczeń](connect-data-sources.md). Wskaźnik platformy Azure obejmuje wiele łączników dla rozwiązań firmy Microsoft, dostępnych poza platformą i zapewniania integracji w czasie rzeczywistym, w tym rozwiązań firmy Microsoft do ochrony przed zagrożeniami, a także źródeł Microsoft 365, takich jak Office 365, Azure AD, Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto istnieją wbudowane łączniki do szerszego ekosystemu zabezpieczeń dla rozwiązań firm innych niż Microsoft. Możesz również użyć typowego formatu zdarzeń, dziennika systemowego lub REST-API, aby połączyć źródła danych z systemem Azure.  
 
 ![Moduły zbierające dane](./media/collect-data/collect-data-page.png)
 
 ## <a name="dashboards"></a>Pulpity nawigacyjne
 
-Po nawiązaniu połączenia źródła danych mogą wybierać z galerii [profesjonalnego utworzone pulpity nawigacyjne](quickstart-get-visibility.md#dashboards) , Prezentuj wnioski ze swoich źródeł danych. Każdy pulpit nawigacyjny jest w pełni dostosowywalnych — można dodać własną logiką lub modyfikować zapytania lub pulpitu nawigacyjnego można utworzyć od podstaw.
+Po nawiązaniu połączenia ze źródłami danych można wybierać z galerii [ekspertów](quickstart-get-visibility.md#dashboards) , którzy utworzyli szczegółowe informacje ze źródeł danych. Każdy pulpit nawigacyjny jest w pełni dostosowywany — możesz dodać własne logiki lub zmodyfikować zapytania lub utworzyć pulpit nawigacyjny od podstaw.
 
-Pulpity nawigacyjne zapewniają interaktywnej wizualizacji za pomocą zaawansowanych analiz ułatwiających Twojej analityków zabezpieczeń, która pozwoli lepiej zrozumieć co się dzieje podczas ataku. Narzędzia do badania pozwalają na szczegółowe informacje dotyczące dowolne pole, wszelkie dane, do szybkiego tworzenia kontekstu zagrożeń. 
+Pulpity nawigacyjne zapewniają interaktywną wizualizację dzięki zaawansowanej analizie, która pomaga analitykom zabezpieczeń lepiej zrozumieć, co się dzieje podczas ataku. Narzędzia do badania umożliwiają Głębokie szczegółowe na dowolnym polu, z jakichkolwiek danych, do szybkiego tworzenia kontekstu zagrożeń. 
 
 ![Pulpity nawigacyjne](./media/overview/dashboards.png)
 
 ## <a name="analytics"></a>Analiza
 
-Ułatwiające zmniejszenia szumu i zminimalizować liczbę alertów, które należy przejrzeć i zbadać, korzysta z platformy Azure przez wartownika [analytics w celu skorelowania alerty w przypadkach](tutorial-detect-threats.md). **Przypadków** grup powiązanych alertów, tworzonych możliwością wykonywania akcji możliwych zagrożenie, którą można zbadać i rozwiązać. Użyj reguł korelacji wbudowanych jako — jest lub używać ich jako punktu wyjścia do tworzenia własnych. Wartownik platformy Azure zapewnia również maszyny uczenia reguły, aby zmapować swoje zachowanie sieci, a następnie poszukaj anomalie między zasobami. Te dane analityczne połączyć z kropek, przez połączenie o niskiej wierności alertów dotyczących różnych obiektów w potencjalne o dużej wierności związane z bezpieczeństwem.
+Aby ułatwić zredukowanie szumu i zminimalizować liczbę alertów, które należy przejrzeć i zbadać, wskaźnik platformy Azure używa [analizy do skorelowania alertów](tutorial-detect-threats.md)z zdarzeniami. **Zdarzenia** to grupy powiązanych alertów, które wspólnie tworzą możliwe do podjęcia działania, które można zbadać i rozwiązać. Użyj wbudowanych reguł korelacji jako-lub użyj ich jako punktu wyjścia do tworzenia własnych. Usługa Azure Learning udostępnia także reguły uczenia maszynowego, które umożliwiają mapowanie zachowania sieci, a następnie poszukiwanie anomalii w zasobach. Te analizy łączą kropki, łącząc alerty o niskiej wierności dotyczące różnych jednostek w potencjalnych zdarzeniach związanych z zabezpieczeniami o wysokiej wierności.
 
-![Przypadków](./media/overview/cases.png)
+![Padkach](./media/overview/cases.png)
 
 ## <a name="user-analytics"></a>Analiza użytkowników
 
-Dzięki integracji z funkcjami macierzystymi (ML), uczenia maszynowego i [analizy użytkowników](user-analytics.md), przez wartownika Azure może pomóc szybko wykryć zagrożenia. Wartownik Azure bezproblemowo integrują się z usługą Azure Advanced Threat Protection do analizy zachowania użytkowników i priorytety użytkowników, którzy należy badać w pierwszym, na podstawie ich alerty i wzorców podejrzanej aktywności na platformie Azure przez wartownika i Microsoft 365.
+Dzięki natywnej integracji uczenia maszynowego (ML) i [analizie użytkownika](user-analytics.md)usługa Azure wskaźnikowa może pomóc szybko wykrywać zagrożenia. Na platformie Azure wskaźnikiem wiedzy można bezproblemowo zintegrować usługę Azure Advanced Threat Protection, aby analizować zachowanie użytkowników i określić priorytety użytkowników, którzy powinni najpierw badać, na podstawie ich alertów oraz podejrzanych wzorców aktywności na platformie Azure i Microsoft 365.
 
 ![Analiza użytkowników](./media/overview/user-analytics.png)
 
 
-## <a name="security-automation--orchestration"></a>Zabezpieczenia automatyzacji i aranżacji
+## <a name="security-automation--orchestration"></a>& Aranżacji usługi Security Automation
 
-Automatyzuj typowe i [uprościć aranżacji zabezpieczeń z elementów playbook](tutorial-respond-threats-playbook.md) integrowane z usługami platformy Azure, a także z istniejących narzędzi. Zbudowany na fundamencie usługi Azure Logic Apps, wskaźnikowe Azure automatyzacji i aranżacji rozwiązanie zapewnia wysoce rozszerzalną architekturą, która umożliwia automatyzację skalowalne jako nowych technologii i że zagrożenia. Tworzenie elementów playbook w usłudze Azure Logic Apps, możesz wybrać spośród rosnącą z galerii wbudowane elementy playbook. Obejmują one [ponad 200 łączników](https://docs.microsoft.com/azure/connectors/apis-list) dla usług, takich jak usługa Azure functions. Łączniki umożliwiają zastosowanie dowolnej logiki niestandardowej kodu, ServiceNow, Jira, Zendesk, HTTP żądania, Microsoft Teams, Slack, usługi Windows Defender ATP i usługa Cloud App Security.
+Automatyzuj typowe zadania i [Uprość aranżację zabezpieczeń dzięki usłudze elementy PlayBook](tutorial-respond-threats-playbook.md) , która integruje się z usługami platformy Azure, a także istniejącymi narzędziami. W oparciu o podstawę Azure Logic Apps rozwiązanie do automatyzacji i organizowania wskaźnikowego platformy Azure zapewnia wysoce rozszerzalną architekturę, która umożliwia skalowalną automatyzację w miarę pojawiania się nowych technologii i zagrożeń. Aby kompilować elementy PlayBook z Azure Logic Apps, możesz wybrać pozycję z galerii wbudowanych elementy PlayBook. Obejmują one [200 łączników](https://docs.microsoft.com/azure/connectors/apis-list) dla usług takich jak Azure Functions. Łączniki umożliwiają zastosowanie dowolnej logiki niestandardowej w kodzie, usługi ServiceNow, JIRA, systemu Zendesk, żądaniach HTTP, Microsoft Teams, zapasowych, Windows Defender ATP i Cloud App Security.
 
-Na przykład jeśli używasz systemu obsługi biletów usługi ServiceNow, można użyć narzędzi dostarczanych za pomocą usługi Azure Logic Apps Automatyzowanie przepływów pracy i otwórz bilet w każdym wykryciu konkretnego zdarzenia usługi ServiceNow.
+Na przykład w przypadku korzystania z systemu biletów usługi ServiceNow można użyć narzędzi dostępnych Azure Logic Apps do automatyzacji przepływów pracy i otworzyć bilet w usługi ServiceNow za każdym razem, gdy zostanie wykryte określone zdarzenie.
 
-![Elementy playbook](./media/tutorial-respond-threats-playbook/logic-app.png)
+![Podręczniki](./media/tutorial-respond-threats-playbook/logic-app.png)
 
 
 
 ## <a name="investigation"></a>Badanie
 
-Azure wartownik [szczegółowe badanie](tutorial-investigate-cases.md) narzędzia ułatwiają zrozumieć zakres i znalezienia głównej przyczyny, potencjalnym zagrożeniem dla bezpieczeństwa. Możesz wybrać jednostkę na wykresie interaktywnego, aby zadawać pytania interesujące dla określonej jednostki i przejść do tej jednostki i jego połączenia, aby przejść do głównej przyczyny zagrożenia. 
+Zaawansowane narzędzia do [badania](tutorial-investigate-cases.md) wskaźnikowego platformy Azure ułatwiają zrozumienie zakresu i znalezienie głównej przyczyny potencjalnego zagrożenia bezpieczeństwa. Możesz wybrać jednostkę na interaktywnym wykresie, aby zadać interesujące pytania dotyczące określonej jednostki, i przejść do tej jednostki i jej połączeń, aby uzyskać dostęp do głównej przyczyny zagrożenia. 
 
 ![Badanie](./media/overview/investigation.png)
 
 
 ## <a name="hunting"></a>Wyszukiwanie zagrożeń
 
-Użyj wskaźnikowe Azure [myślistwo zaawansowane narzędzia do wyszukiwania i zapytania](hunting.md), zależnie od struktury MITRE, która umożliwia proaktywne możliwe pod kątem zagrożeń bezpieczeństwa w źródłach danych Twojej organizacji, zanim alert zostanie wywołany. Po odkryć, którym zapytaniu myślistwo informują o wysokiej wartości możliwych ataków, możesz również tworzyć reguły niestandardowe wykrywania oparte na kwerendzie i prezentuj takie wnioski jako alerty do usługi obiektów odpowiadających w zdarzenia zabezpieczeń. Podczas myślistwo, możesz utworzyć zakładki dla interesujących zdarzeń, dzięki któremu można wrócić do nich później, udostępnić je innym osobom i zgrupować je z innymi zdarzeniami korelację do tworzenia atrakcyjnych przypadku badania.
+Korzystaj z [zaawansowanych narzędzi do wyszukiwania i wykonywania zapytań](hunting.md)na platformie Azure, opartych na strukturze Mitre, która umożliwia proaktywne wyszukiwanie zagrożeń bezpieczeństwa w źródłach danych organizacji przed wyzwoleniem alertu. Po ustaleniu, które zapytanie polowania zawiera szczegółowe informacje na temat możliwych ataków, można także utworzyć niestandardowe reguły wykrywania na podstawie zapytania, a następnie przedstawić te informacje jako alerty w odniesieniu do odpowiedzi na zdarzenia zabezpieczeń. Podczas polowania można tworzyć zakładki dla interesujących zdarzeń, co pozwala na powrót do nich później, udostępnianie ich innym osobom oraz grupowanie ich przy użyciu innych zdarzeń skorelowanych w celu utworzenia atrakcyjnych przypadków na potrzeby badania.
 
 ![Wyszukiwanie zagrożeń](./media/overview/hunting.png)
 
 ## <a name="community"></a>Społeczność
 
-Społeczność platformy Azure przez wartownika jest potężnym zasobem dla wykrywania zagrożeń i automatyzacji. Nasze analityków zabezpieczeń firmy Microsoft stale tworzenie i dodawać nowe pulpity nawigacyjne, elementy playbook, myślistwo zapytań i uzyskać więcej informacji, publikując je społeczności do użycia w danym środowisku. Możesz pobrać przykładowej zawartości z prywatnej społeczności usługi GitHub [repozytorium](https://aka.ms/asicommunity) Tworzenie niestandardowych pulpitów nawigacyjnych, zapytań myślistwo, notesy i elementy playbook dla platformy Azure przez wartownika. 
+Społeczność wskaźnikowa Azure jest zaawansowanym zasobem do wykrywania zagrożeń i automatyzacji. Nasi analitycy zabezpieczeń firmy Microsoft stale tworzą i dodają nowe pulpity nawigacyjne, elementy PlayBook, zapytania łowieckie i inne elementy, które mogą być używane w danym środowisku. Możesz pobrać przykładową zawartość z [repozytorium](https://aka.ms/asicommunity) prywatnej społeczności GitHub, aby utworzyć niestandardowe pulpity nawigacyjne, zapytania polowające, Notesy i elementy PlayBook dla platformy Azure. 
 
 ![Społeczność](./media/overview/community.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby rozpocząć korzystanie z platformy Azure przez wartownika, musisz mieć subskrypcji platformy Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
-- Dowiedz się, jak [dołączyć dane do platformy Azure przez wartownika](quickstart-onboard.md), i [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
+- Aby rozpocząć pracę z systemem Azure — wskaźnikiem, potrzebna jest subskrypcja do Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
+- Dowiedz się, jak dołączać [dane do usługi Azure wskaźnikowej](quickstart-onboard.md)i [uzyskiwać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).

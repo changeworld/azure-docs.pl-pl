@@ -1,6 +1,6 @@
 ---
-title: Szybki Start Azure wartownik — wprowadzenie do platformy Azure przez wartownika w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Szybki Start Azure wartownik — wprowadzenie do platformy Azure przez wartownika
+title: Przewodnik Szybki Start dotyczący platformy Azure — wprowadzenie do wersji zapoznawczej platformy Azure Microsoft Docs
+description: Przewodnik Szybki Start platformy Azure — wprowadzenie do platformy Azure
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -16,88 +16,88 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 75bfdce02313ab7e799f6535f247407c239653b8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c6434b4f5808c349d5e0ab04dafc5233f6ec63ac
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619804"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780484"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Szybki start: Rozpoczynanie pracy z usługą Azure przez wartownika w wersji zapoznawczej
+# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Szybki start: Wprowadzenie do wersji zapoznawczej platformy Azure — Wersja zapoznawcza
 
 > [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
+> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-W tym przewodniku Szybki Start dowiesz się, jak szybko można wyświetlać i monitorować, co się dzieje w całym środowisku przy użyciu platformy Azure przez wartownika. Po połączeniu swoich źródeł danych na platformie Azure przez wartownika uzyskasz natychmiastowy wizualizacji i analizy danych, dzięki czemu będzie wiadomo, co dzieje się we wszystkich źródłach danych połączonych. Wartownik platformy Azure udostępnia pulpity nawigacyjne, które udostępniają pełnych możliwości narzędzi dostępnych w programie Azure, jak również tabele i wykresy, które są wbudowane w platformę umożliwiają analizy dzienników i zapytań. Możesz użyć wbudowanych pulpitów nawigacyjnych lub utworzyć nowy pulpit nawigacyjny, od początku lub w oparciu o istniejący pulpit nawigacyjny. 
+W tym przewodniku szybki start dowiesz się, jak szybko przeglądać i monitorować działania wykonywane w danym środowisku za pomocą platformy Azure. Po nawiązaniu połączenia ze źródłami danych na platformie Azure wskażesz błyskawiczną wizualizację i analizę danych, aby dowiedzieć się, co się dzieje między wszystkimi połączonymi źródłami danych. Wskaźnik na platformie Azure to pulpity nawigacyjne zapewniające pełną moc narzędzi już dostępnych na platformie Azure, a także tabele i wykresy, które są wbudowane w celu zapewnienia analiz dla dzienników i zapytań. Możesz użyć wbudowanych pulpitów nawigacyjnych lub łatwo utworzyć nowy pulpit nawigacyjny, od podstaw lub na podstawie istniejącego pulpitu nawigacyjnego. 
 
-## <a name="get-visualization"></a>Pobieranie wizualizacji
+## <a name="get-visualization"></a>Pobierz wizualizację
 
-Wizualizowanie i analizę, co się dzieje w środowisku, najpierw Przyjrzyj się pulpit nawigacyjny przeglądu, aby poznać stan zabezpieczeń swojej organizacji. Kliknięcie każdego elementu z tych kafelków, aby przejść do szczegółów danych pierwotnych, z którego są tworzone. Ułatwiające zmniejszenia szumu i zminimalizować liczbę alertów, które należy przejrzeć i zbadać, Azure przez wartownika stosowana jest metoda fusion służące do skorelowania alerty w przypadkach. **Przypadków** grup powiązanych alertów, tworzone zdarzenie informacje z możliwością działania, które można zbadać i rozwiązać.
+Aby wizualizować i uzyskać analizę tego, co dzieje się w środowisku, najpierw zapoznaj się z omówieniem pulpitu nawigacyjnego, aby uzyskać pomysł dotyczący zabezpieczeń stan organizacji. Możesz kliknąć każdy element tych kafelków, aby przejść do danych pierwotnych, z których zostały utworzone. Aby ułatwić zredukowanie szumu i zminimalizować liczbę alertów, które należy przejrzeć i zbadać, wskaźnik platformy Azure używa techniki Fusion do skorelowania alertów w zdarzenia. **zdarzenia** to grupy powiązanych alertów, które razem tworzą incydent do działania, który można zbadać i rozwiązać.
 
-- W witrynie Azure portal wybierz pozycję Azure przez wartownika, a następnie wybierz obszar roboczy, który chcesz monitorować.
+- W Azure Portal wybierz pozycję wskaźnik kontroli platformy Azure, a następnie wybierz obszar roboczy, który chcesz monitorować.
 
-  ![Omówienie usługi Azure wartownik](./media/qs-get-visibility/overview.png)
+  ![Przegląd wskaźnikowego platformy Azure](./media/qs-get-visibility/overview.png)
 
-- Pasek narzędzi w górnej części informujący o tym ile zdarzeń stało się w przedziale czasu wybrany i porównuje go do poprzednich 24 godzin. Pasek narzędzi informujący o tym z tych zdarzeń, alertów, które zostały wyzwolone (mała liczba reprezentuje zmiany w ciągu ostatnich 24 godzin), a następnie określa dla tych zdarzeń, ile jest otwarty, w toku i zakończonych. Zaznacz, aby zobaczyć, że nie ma znacznemu zwiększeniu lub drop w liczbie zdarzeń. W przypadku zrzutu, może to być, że połączenie raportowanie zatrzymane do platformy Azure przez wartownika. W przypadku zwiększenia podejrzane może mieć wystąpił problem. Sprawdź, czy masz nowe alerty.
+- Pasek narzędzi na górze informuje o liczbie zdarzeń w wybranym okresie i porównuje go z poprzednimi 24 godzinami. Pasek narzędzi informuje o tych zdarzeniach, które zostały wyzwolone (niewielka liczba reprezentuje zmianę w ciągu ostatnich 24 godzin), a następnie informuje o tych zdarzeniach, o liczbie otwartych, w toku i zamknięciu. Sprawdź, czy liczba zdarzeń nie ma znaczącego wzrostu ani porzucenia. Jeśli jest to możliwe, może to oznaczać, że połączenie zostało zatrzymane na potrzeby raportowania na platformie Azure. Jeśli wystąpi wzrost, wystąpił problem podejrzany. Sprawdź, czy masz nowe alerty.
 
-   ![Usługa Azure lejka wartownik](./media/qs-get-visibility/funnel.png)
+   ![Lejki wskaźnikowe platformy Azure](./media/qs-get-visibility/funnel.png)
 
-Głównej części strony Przegląd w skrócie zapewnia wgląd w stan zabezpieczeń obszaru roboczego:
+Główna treść strony Przegląd zapewnia wgląd w informacje o stanie zabezpieczeń obszaru roboczego:
 
-- **Zdarzenia i alerty w czasie**: Wyświetla liczbę zdarzeń i ile alertów zostało utworzonych z tych zdarzeń. Jeśli widzisz kolekcji, będącego nietypowe, powinien zostać wyświetlony alerty dla niego — jeśli coś nietypowego gdy istnieje skok w zdarzeniach, ale nie widać alerty, może być zaniepokoić.
+- **Zdarzenia i alerty w czasie**: Wyświetla listę liczby zdarzeń oraz liczbę alertów, które zostały utworzone na podstawie tych zdarzeń. Jeśli widzisz, że najprawdopodobniej wystąpił nietypowy sposób, zobaczysz dla niego alerty — Jeśli coś się nie dzieje w przypadku wystąpienia w zdarzeniach, ale nie widzisz alertów, może to być przyczyną problemu.
 
-- **Potencjalnie złośliwy zdarzeń**: Po wykryciu ze źródeł, które są znane jako złośliwego ruchu przez wartownika Azure ostrzega użytkownika, na mapie. Jeśli widzisz pomarańczowy, jest ruch przychodzący: ktoś próbuje uzyskać dostęp do Twojej organizacji z znanego złośliwego adresu IP. Jeśli widzisz wychodzącego działania (czerwony), oznacza to, czy strumieniowego przesyłania danych z sieci użytkownika spoza Twojej organizacji do znanego złośliwego adresu IP.
+- **Potencjalne złośliwe zdarzenia**: W przypadku wykrycia ruchu ze źródeł, które są znane jako złośliwe, wskaźnik platformy Azure będzie ostrzegał o mapie. Jeśli widzisz kolor pomarańczowy, jest to ruch przychodzący: ktoś próbuje uzyskać dostęp do organizacji przy użyciu znanego złośliwego adresu IP. Jeśli zostanie wyświetlone działanie wychodzące (czerwone), oznacza to, że dane z sieci są przesyłane strumieniowo z organizacji do znanego złośliwego adresu IP.
 
-   ![Mapy wartownik platformy Azure](./media/qs-get-visibility/map.png)
-
-
-- **Ostatnie sprawy**: Aby wyświetlić swoje ostatnio przypadki, ich ważność i liczbę alertów skojarzonych z przypadkiem. Jeśli zostanie wyświetlony jako nagłe szczytowe w określonym typie alertu, może to oznaczać, że istnieje aktywny atak aktualnie uruchomione. Na przykład w przypadku nagłego szczytu 20 zdarzeń typu Pass--hash z narzędzia Azure ATP jest możliwe, czy inna obecnie próbuje ataków można.
-
-- **Źródła danych anomalie**: Analitycy danych firmy Microsoft utworzone modele, które stale wyszukiwać dane ze swoich źródeł danych w poszukiwaniu anomalii. Jeśli nie ma żadnych anomalie, będą wyświetlane żadne informacje. W przypadku wykrycia anomalii, wykonaj następujące czynności głębokiego omówi je, aby zobaczyć, co się stało. Na przykład kliknij wzrost aktywności platformy Azure. Możesz kliknąć **wykresu** Aby wyświetlić podczas się stało z kolekcji, a następnie przefiltruj pod kątem działań, które wystąpiły w tym okresie czasu, aby zobaczyć, co spowodowało kolekcji.
-
-   ![Mapy wartownik platformy Azure](./media/qs-get-visibility/anomolies.png)
-
-## Używaj wbudowanych pulpitów nawigacyjnych<a name="dashboards"></a>
-
-Wbudowane pulpity nawigacyjne zawierają zintegrowane dane z połączonych źródeł danych pozwala głębokiego Poznaj zdarzenia wygenerowane w tych usługach. Wbudowane pulpity nawigacyjne zawierają identyfikator platformy Azure, zdarzenia aktywności platformy Azure i środowisko lokalne, które mogą zawierać dane ze zdarzeń Windows z serwerów z pierwszym alertów innych firm, z żadnym podmiotom trzecim, w tym dzienniki ruchu zapory, usługi Office 365 i niezabezpieczonych protokołów oparte na Windows zdarzenia.
-
-1. W obszarze **ustawienia**, wybierz opcję **pulpity nawigacyjne**. W obszarze **zainstalowane**, możesz zobaczyć wszystkie pulpity nawigacyjne zainstalowane. W obszarze **wszystkich** widać całą galerię wbudowane pulpity nawigacyjne, które są dostępne do zainstalowania. 
-2. Wyszukiwanie określonego pulpitu nawigacyjnego wyświetlić całą listę i opisy co każdej oferty. 
-3. Zakładając, że możesz używać usługi Azure AD, aby rozpocząć pracę i uruchamiana za pomocą platformy Azure przez wartownika, zaleca się zainstalowanie co najmniej poniższe pulpity nawigacyjne:
-   - **Usługa Azure AD**: Użyj jednego lub obu z następujących czynności:
-       - **Usługa Azure AD operacji logowania** analizuje logowania wraz z upływem czasu, aby zobaczyć, czy istnieją anomalii. Ten pulpit nawigacyjny zawiera Nieudane logowania przez aplikacje, urządzenia i lokalizacji, dzięki czemu można okaże się, w skrócie, jeśli się coś nietypowego dzieje. Należy zwrócić uwagę na wielu nieudanych logowań. 
-       - **Dzienniki inspekcji usługi Azure AD** analizuje działania administracyjne, takie jak zmiany w obszarze Użytkownicy (Dodawanie, usuwanie, itp.), tworzenie grupy i modyfikacji.  
-
-   - Dodaj pulpit nawigacyjny dla zapory. Na przykład dodać pulpit nawigacyjny Palo Alto. Pulpit nawigacyjny analizuje ruch sieciowy zapory, zapewniając korelacji między swoje dane i zagrożeniami zdarzenia zapory i wyróżnienie podejrzanych zdarzeń między jednostkami. Pulpity nawigacyjne dostarcza informacji na temat trendów w ruchu i pozwala przejść do szczegółów i wyfiltrować wyniki. 
-
-      ![Pulpit nawigacyjny Alto PAL](./media/qs-get-visibility/palo-alto-week-query.png)
+   ![Mapa wskaźnikowa platformy Azure](./media/qs-get-visibility/map.png)
 
 
-Pulpity nawigacyjne można dostosować przez edycję główne zapytanie ![przycisk](./media/qs-get-visibility/edit-query-button.png). Możesz kliknąć przycisk ![przycisk](./media/qs-get-visibility/go-to-la-button.png) można przejść do [Log Analytics, aby edytować zapytanie ma](../azure-monitor/log-query/get-started-portal.md), i można wybrać wielokropek (...) i wybierz **Dostosuj dane kafelka**, co pozwala Aby edytować filtr czasu głównego lub usuń określone Kafelki na pulpicie nawigacyjnym.
+- **Ostatnie zdarzenia**: Wyświetlanie ostatnich zdarzeń, ich ważności i liczby alertów skojarzonych ze zdarzeniem. Jeśli widzisz jako nagły szczyt w określonym typie alertu, może to oznaczać, że jest aktualnie uruchomiony aktywny atak. Na przykład w przypadku nagłego szczytu 20 zdarzeń typu Pass-the-hash z usługi Azure ATP istnieje możliwość, że ktoś aktualnie próbuje się zaatakować.
 
-Aby uzyskać więcej informacji na temat pracy z zapytaniami, zobacz [samouczka: Danych wizualnych w usłudze Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+- **Anomalie źródła danych**: Analitycy danych firmy Microsoft tworzą modele, które stale przeszukają dane ze źródeł danych pod kątem anomalii. Jeśli nie ma żadnych anomalii, nic nie zostanie wyświetlone. W przypadku wykrycia anomalii należy szczegółowo szczegółowe je, aby zobaczyć, co się stało. Na przykład kliknij pozycję skok w działaniu platformy Azure. Możesz kliknąć **Wykres** , aby zobaczyć, kiedy nastąpiło przekroczenie, a następnie odfiltrować działania, które wystąpiły w tym okresie, aby zobaczyć, co spowodowało skok.
 
-### <a name="add-a-new-tile"></a>Dodaj nowy Kafelek
+   ![Mapa wskaźnikowa platformy Azure](./media/qs-get-visibility/anomolies.png)
 
-Jeśli chcesz dodać nowy Kafelek, możesz dodać go do istniejącego pulpitu nawigacyjnego, taki, który tworzysz lub przez wartownika Azure wbudowany pulpit nawigacyjny. 
-1. W usłudze Log Analytics należy utworzyć Kafelek za pomocą instrukcji zawartych w [samouczka: Danych wizualnych w usłudze Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
-2. Gdy Kafelek zostanie utworzona, w obszarze **numeru Pin**, wybierz pulpit nawigacyjny, w którym chcesz Kafelek, aby są wyświetlane.
+## Korzystanie z wbudowanych pulpitów nawigacyjnych<a name="dashboards"></a>
+
+Wbudowane pulpity nawigacyjne zapewniają zintegrowane dane z połączonych źródeł danych, aby umożliwić głębokie szczegółowe zdarzeń generowanych w ramach tych usług. Wbudowane pulpity nawigacyjne obejmują identyfikator platformy Azure, zdarzenia aktywności platformy Azure i lokalne, które mogą być danymi ze zdarzeń systemu Windows z serwerów, od alertów z pierwszej strony, w tym dzienników ruchu zapory, pakietu Office 365 i niezabezpieczonych protokołów opartych na systemie Windows wydarzeniach.
+
+1. W obszarze **Ustawienia**wybierz pozycję **pulpity nawigacyjne**. W obszarze **zainstalowane**są widoczne wszystkie zainstalowane pulpity nawigacyjne. W obszarze **wszystko** można zobaczyć całą galerię wbudowanych pulpitów nawigacyjnych, które są dostępne do zainstalowania. 
+2. Wyszukaj konkretny pulpit nawigacyjny, aby wyświetlić całą listę i opis każdej oferty. 
+3. Przy założeniu, że używasz usługi Azure AD, aby rozpocząć korzystanie z platformy Azure, zalecamy zainstalowanie co najmniej następujących pulpitów nawigacyjnych:
+   - **Usługa Azure AD**: Użyj jednego lub obu następujących elementów:
+       - **Logowania za pomocą usługi Azure AD** analizują logowania w czasie, aby sprawdzić, czy występują anomalie. Ten pulpit nawigacyjny zawiera nieudane logowania w aplikacjach, urządzeniach i lokalizacjach, dzięki czemu można natychmiast zauważyć, jeśli coś się nie zdarza. Zwróć uwagę na wiele nieudanych logowań. 
+       - **Dzienniki inspekcji usługi Azure AD** analizują działania administracyjne, takie jak zmiany użytkowników (Dodawanie, usuwanie itp.), tworzenie grup i modyfikacje.  
+
+   - Dodaj pulpit nawigacyjny dla zapory. Na przykład Dodaj pulpit nawigacyjny Palo Alto. Pulpit nawigacyjny analizuje ruch związany z zaporą, zapewniając korelacje między danymi zapory i zdarzeniami zagrożeń oraz wyróżnia podejrzane zdarzenia w różnych jednostkach. Pulpity nawigacyjne zapewniają informacje o trendach w ruchu i umożliwiają przechodzenie do szczegółów i filtrowanie wyników. 
+
+      ![PAL Alto Dashboard](./media/qs-get-visibility/palo-alto-week-query.png)
+
+
+Możesz dostosować pulpity nawigacyjne, edytując przycisk ![](./media/qs-get-visibility/edit-query-button.png)głównej kwerendy. Możesz ![kliknąć przycisk](./media/qs-get-visibility/go-to-la-button.png) przycisk, aby przejść do log Analytics, [Aby edytować zapytanie](../azure-monitor/log-query/get-started-portal.md)w tym miejscu i można wybrać wielokropek (...) i wybrać opcję **Dostosuj dane kafelka**, co umożliwia edytowanie filtru czasu głównego lub usuwanie określone kafelki z pulpitu nawigacyjnego.
+
+Aby uzyskać więcej informacji na temat pracy z zapytaniami, zobacz [samouczek: Dane wizualne w Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+
+### <a name="add-a-new-tile"></a>Dodawanie nowego kafelka
+
+Jeśli chcesz dodać nowy kafelek, możesz dodać go do istniejącego pulpitu nawigacyjnego, jednego z nich lub wbudowanego pulpitu nawigacyjnego platformy Azure. 
+1. W log Analytics Utwórz kafelek przy użyciu instrukcji znalezionych w [samouczku: Dane wizualne w Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
+2. Po utworzeniu kafelka w obszarze **Przypnij**wybierz Pulpit nawigacyjny, w którym ma być wyświetlany kafelek.
 
 ## <a name="create-new-dashboards"></a>Utwórz nowe pulpity nawigacyjne
-Można utworzyć nowy pulpit nawigacyjny od podstaw lub użyć wbudowany pulpit nawigacyjny jako podstawy dla nowego pulpitu nawigacyjnego.
+Możesz utworzyć nowy pulpit nawigacyjny od podstaw lub użyć wbudowanego pulpitu nawigacyjnego jako podstawy dla nowego pulpitu nawigacyjnego.
 
-1. Aby utworzyć nowy pulpit nawigacyjny od podstaw, wybierz **pulpity nawigacyjne** i następnie **+ nowy pulpit nawigacyjny**.
-2. Wybierz subskrypcję, której pulpit nawigacyjny jest tworzony i nadaj mu nazwę opisową. Każdy pulpit nawigacyjny jest zasobem platformy Azure, takich jak każdy inny, i umożliwi jej przypisanie ról (RBAC), aby zdefiniować i Ogranicz, kto może uzyskiwać dostęp do. 
-3. Aby włączyć, aby pojawiło się w celu przypinania wizualizacji do pulpitów nawigacyjnych, należy go udostępniać. Kliknij przycisk **udziału** i następnie **Zarządzanie użytkownikami**. 
+1. Aby utworzyć nowy pulpit nawigacyjny od podstaw, wybierz pulpity nawigacyjne, a następnie pozycję **+ nowy pulpit nawigacyjny**.
+2. Wybierz subskrypcję, w której jest tworzony pulpit nawigacyjny, i nadaj jej nazwę opisową. Każdy pulpit nawigacyjny jest zasobem platformy Azure, podobnie jak inne, i można przypisać role IT (RBAC) w celu zdefiniowania i ograniczenia dostępu do nich. 
+3. Aby umożliwić jej wyświetlanie na pulpitach nawigacyjnych w celu przypinania wizualizacji do, należy ją udostępnić. Kliknij przycisk **Udostępnij** , a następnie **Zarządzaj użytkownikami**. 
  
-1. Użyj **Sprawdź dostęp** i **przypisań ról** podobnie jak w przypadku innych zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [pulpitów nawigacyjnych platformy Azure udziału, przy użyciu RBAC](../azure-portal/azure-portal-dashboard-share-access.md).
+1. Użyj **uprawnień Sprawdź dostęp** i **rola** , tak jak w przypadku innych zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [udostępnianie pulpitów nawigacyjnych platformy Azure przy użyciu RBAC](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
-## <a name="new-dashboard-examples"></a>Nowe przykłady pulpitu nawigacyjnego
+## <a name="new-dashboard-examples"></a>Przykłady nowych pulpitów nawigacyjnych
 
-Następujące przykładowe zapytanie można porównać trendy ruchu między tygodni. Można łatwo przełączać, które urządzenia dostawcy i źródła danych, uruchom zapytanie w. W tym przykładzie użyto SecurityEvent z Windows, możesz przełączyć go w AzureActivity lub CommonSecurityLog inne zapory.
+Poniższe przykładowe zapytanie umożliwia porównanie trendów ruchu w tygodniach. Można łatwo przełączać dostawcę urządzenia i źródło danych, na których uruchomiono zapytanie. W tym przykładzie używamy SecurityEvent z systemu Windows, możesz przełączyć go do uruchamiania w usłudze Azure lub CommonSecurityLog na dowolnej innej zaporze.
 
      |where DeviceVendor = = "Palo Alto Networks":
       // week over week query
@@ -107,7 +107,7 @@ Następujące przykładowe zapytanie można porównać trendy ruchu między tygo
       | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
 
 
-Można utworzyć kwerendę, która zawiera dane ze źródeł wielokrotności. Można utworzyć kwerendę, która analizuje dzienniki inspekcji usługi Azure Active Directory dla nowych użytkowników, które właśnie zostały utworzone, a następnie sprawdza dzienniki subskrypcji platformy Azure, aby zobaczyć, jeśli użytkownik rozpoczął wprowadzania zmiany przypisania roli w ciągu 24 godzin tworzenia. Podejrzane działania będą wyświetlane na tym pulpicie nawigacyjnym:
+Możesz chcieć utworzyć zapytanie, które zawiera dane z wielu źródeł. Można utworzyć zapytanie, które przeszukuje Azure Active Directory dzienniki inspekcji dla nowo utworzonych użytkowników, a następnie sprawdza dzienniki platformy Azure, aby sprawdzić, czy użytkownik rozpoczął wprowadzanie zmian przypisań ról w ciągu 24 godzin od utworzenia. Podejrzane działanie będzie widoczne na tym pulpicie nawigacyjnym:
 
     AuditLogs
     | where OperationName == "Add user"
@@ -117,26 +117,26 @@ Można utworzyć kwerendę, która zawiera dane ze źródeł wielokrotności. Mo
     | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
     | project-away user1
 
-Można utworzyć różnych pulpitów nawigacyjnych na podstawie roli osoby spojrzenie na dane i ich wyszukiwanie. Na przykład można utworzyć pulpit nawigacyjny administratorowi sieci, zawierająca dane zapory. Można również tworzyć pulpity nawigacyjne oparte na jak często chcesz przyjrzeć się im, czy istnieją czynności, które chcesz przejrzeć codziennie i inne elementy, które chcesz sprawdzić godzinę, na przykład możesz chcieć Przyjrzyj się logowań usługi Azure AD co godzinę do wyszukania anomali ES. 
+Możesz tworzyć różne pulpity nawigacyjne w oparciu o rolę osoby, która przegląda dane i czego szukają. Na przykład możesz utworzyć pulpit nawigacyjny dla administratora sieci, który zawiera dane zapory. Możesz również tworzyć pulpity nawigacyjne w zależności od tego, jak często chcesz je przeglądać, czy istnieją jakieś rzeczy, które chcesz przejrzeć codziennie, i inne elementy, które chcesz sprawdzić po godzinie, na przykład możesz chcieć zajrzeć na logowanie do usługi Azure AD co godzinę, aby wyszukać anomali AK. 
 
-## <a name="create-new-detections"></a>Utwórz nowe funkcje wykrywania
+## <a name="create-new-detections"></a>Utwórz nowe wykrycia
 
-Generowanie wykrywania na [źródeł danych, które są podłączone do platformy Azure przez wartownika](connect-data-sources.md) do badanie zagrożeń w Twojej organizacji.
+Generuj wykrycia dla [źródeł danych połączonych z platformą Azure wskaźnikiem,](connect-data-sources.md) aby zbadać zagrożenia w organizacji.
 
-Kiedy tworzysz nowe wykrycie, wykorzystaj wbudowane funkcje wykrywania specjalnie przez badaczy zabezpieczeń firmy Microsoft, dostosowanych do źródeł danych, z którym nawiązano.
+Podczas tworzenia nowego wykrywania należy skorzystać z wbudowanych wykryć spreparowanych przez badaczy zabezpieczeń firmy Microsoft, które są dostosowane do połączonych źródeł danych.
 
-1. [W społeczności usługi GitHub](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) przejdź do **wykrywania** folder, a następnie wybierz odpowiednie foldery.
+1. [W społeczności usługi GitHub](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) przejdź do folderu **Detects** , a następnie wybierz odpowiednie foldery.
    ![odpowiednie foldery](./media/qs-get-visibility/detection-folders.png)
  
-3.  Przejdź do **Analytics** kartę, a następnie wybierz pozycję **Dodaj**.
-   ![Tworzenie reguły w usłudze Log Analytics](./media/qs-get-visibility/query-params.png)
+3.  Przejdź do karty **Analiza** i wybierz pozycję **Dodaj**.
+   ![Utwórz regułę w Log Analytics](./media/qs-get-visibility/query-params.png)
 
-3.  Skopiuj wszystkie parametry reguły, a następnie kliknij przycisk **Utwórz**.
+3.  Skopiuj wszystkie parametry do reguły, a następnie kliknij przycisk **Utwórz**.
    ![Utwórz regułę alertu](./media/qs-get-visibility/create-alert-rule.png)
 
  
 ## <a name="next-steps"></a>Następne kroki
-W tym przewodniku Szybki Start przedstawiono sposób rozpocząć korzystanie z platformy Azure przez wartownika. Przejdź do samouczka dotyczącego [jak wykrywać zagrożenia](tutorial-detect-threats.md).
+W tym przewodniku szybki start pokazano, jak rozpocząć korzystanie z platformy Azure. Przejdź do samouczka dotyczącego [sposobu wykrywania zagrożeń](tutorial-detect-threats.md).
 > [!div class="nextstepaction"]
-> [Wykrywanie zagrożeń](tutorial-detect-threats.md) do automatyzowania odpowiedzi na zagrożenia.
+> [Wykrywaj zagrożenia](tutorial-detect-threats.md) , aby zautomatyzować swoje odpowiedzi na zagrożenia.
 

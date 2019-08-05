@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie platformy Apache Kafka w HDInsight przy użyciu programu Azure PowerShell — Szybki Start
+title: Konfigurowanie Apache Kafka w usłudze HDInsight przy użyciu Azure PowerShell — Szybki Start
 description: W tym przewodniku Szybki start dowiesz się, jak utworzyć klaster platformy Apache Kafka w usłudze Azure HDInsight przy użyciu programu Azure PowerShell. Zdobędziesz także informacje o tematach, subskrybentach i odbiorcach platformy Kafka.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: a1ccfd23338e2ee18c335fe8bd9869ecdf9c2f08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c47df581edafbb2a378e7c5e75516a44fafcab71
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67120816"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779507"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Szybki start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu programu PowerShell
 
@@ -29,13 +29,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* PowerShell [modułu Az](https://docs.microsoft.com/powershell/azure/overview) zainstalowane.
+* Program PowerShell [AZ module](https://docs.microsoft.com/powershell/azure/overview) został zainstalowany.
 
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do subskrypcji platformy Azure za pomocą `Connect-AzAccount` polecenia cmdlet i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami.
+Zaloguj się do subskrypcji platformy Azure za pomocą `Connect-AzAccount` polecenia cmdlet i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
 ```azurepowershell-interactive
 # Login to your Azure subscription
@@ -62,10 +62,10 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Platforma Kafka w usłudze HDInsight używa funkcji Dyski zarządzane platformy Azure do przechowywania danych platformy Kafka, natomiast klaster używa też usługi Azure Storage do przechowywania informacji, takich jak dzienniki. Użyj [New AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) do utworzenia nowego konta magazynu.
+Platforma Kafka w usłudze HDInsight używa funkcji Dyski zarządzane platformy Azure do przechowywania danych platformy Kafka, natomiast klaster używa też usługi Azure Storage do przechowywania informacji, takich jak dzienniki. Użyj [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) , aby utworzyć nowe konto magazynu.
 
 > [!IMPORTANT]  
-> Rodzaj konta magazynu `BlobStorage` należy używać tylko jako pomocniczego magazynu dla klastrów HDInsight.
+> Rodzaj `BlobStorage` konta magazynu może być używany tylko jako magazyn pomocniczy dla klastrów usługi HDInsight.
 
 ```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"
@@ -79,7 +79,7 @@ New-AzStorageAccount `
     -EnableHttpsTrafficOnly 1
 ```
 
-Usługa HDInsight przechowuje dane na koncie magazynu w kontenerze obiektów blob. Użyj [New AzStorageContainer](/powershell/module/Az.Storage/New-AzStorageContainer) do utworzenia nowego kontenera.
+Usługa HDInsight przechowuje dane na koncie magazynu w kontenerze obiektów blob. Użyj [New-AzStorageContainer](/powershell/module/Az.Storage/New-AzStorageContainer) , aby utworzyć nowy kontener.
 
 ```azurepowershell-interactive
 $containerName = Read-Host -Prompt "Enter the container name"
@@ -96,7 +96,7 @@ New-AzStorageContainer -Name $containerName -Context $storageContext
 
 ## <a name="create-an-apache-kafka-cluster"></a>Tworzenie klastra platformy Apache Kafka
 
-Tworzenie klastra Apache Kafka w klastrze HDInsight z [New AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
+Utwórz Apache Kafka w klastrze usługi HDInsight przy użyciu elementu [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
 
 ```azurepowershell-interactive
 # Create a Kafka 1.1 cluster
@@ -133,7 +133,7 @@ Tworzenie klastra usługi HDInsight może potrwać do 20 minut.
 
 Parametr `-DisksPerWorkerNode` konfiguruje skalowalność platformy Kafka w usłudze HDInsight. Do przechowywania danych platforma Kafka w usłudze HDInsight używa dysku lokalnego maszyn wirtualnych w klastrze. Ze względu na duże obciążenie we/wy platformy Kafka używana jest funkcja [Dyski zarządzane platformy Azure](../../virtual-machines/windows/managed-disks-overview.md), która zapewnia wysoką przepływność i więcej miejsca do magazynowania w każdym węźle.
 
-Można wybrać typ dysku zarządzanego __Standardowy__ (HDD) lub __Premium__ (SSD). Typ dysku zależy od rozmiaru maszyny wirtualnej używanej przez węzły procesu roboczego (brokery platformy Kafka). Dyski w warstwie Premium są używane automatycznie przez maszyny wirtualne serii DS i GS. Wszystkie pozostałe typy maszyn wirtualnych korzystają z dysków standardowych. Typ maszyny wirtualnej możesz ustawić przy użyciu parametru `-WorkerNodeSize`. Aby uzyskać więcej informacji na temat parametrów, zobacz [New AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) dokumentacji.
+Można wybrać typ dysku zarządzanego __Standardowy__ (HDD) lub __Premium__ (SSD). Typ dysku zależy od rozmiaru maszyny wirtualnej używanej przez węzły procesu roboczego (brokery platformy Kafka). Dyski w warstwie Premium są używane automatycznie przez maszyny wirtualne serii DS i GS. Wszystkie pozostałe typy maszyn wirtualnych korzystają z dysków standardowych. Typ maszyny wirtualnej możesz ustawić przy użyciu parametru `-WorkerNodeSize`. Aby uzyskać więcej informacji o parametrach, zobacz dokumentację [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) .
 
 Jeśli planujesz użyć więcej niż 32 węzłów procesów roboczych (podczas tworzenia klastra albo skalując klaster po utworzeniu), musisz użyć parametru `-HeadNodeSize`, aby określić rozmiar maszyny wirtualnej z co najmniej 8 rdzeniami i 14 GB pamięci RAM. Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -151,7 +151,7 @@ Jeśli planujesz użyć więcej niż 32 węzłów procesów roboczych (podczas t
 
 Po nawiązaniu połączenia zostanie wyświetlona informacja podobna do następującej:
 
-```text
+```output
 Authorized uses only. All activity may be monitored and reported.
 Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
 
@@ -170,7 +170,6 @@ Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
 Welcome to Kafka on HDInsight.
 
 Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-ssuhuser@hn0-mykafk:~$
 ```
 
 ## <a id="getkafkainfo"></a>Pobierz informacje dotyczących hostów Apache Zookeeper i Broker
@@ -193,7 +192,7 @@ W tej sekcji uzyskasz informacje o hoście z interfejsu API REST Apache Ambari w
 
     Po wyświetleniu monitu wprowadź nazwę klastra platformy Kafka.
 
-3. Aby ustawić zmienną środowiskową na informacje hosta Zookeeper, użyj poniższego polecenia. To polecenie umożliwia pobranie wszystkich hostach dozorcy, a następnie zwraca tylko pierwsze dwa wpisy. Taka nadmiarowość jest wymagana, jeśli jeden z hostów będzie nieosiągalny.
+3. Aby ustawić zmienną środowiskową z informacjami o hoście dozorcy, użyj poniższego polecenia. Polecenie pobiera wszystkie hosty dozorcy, a następnie zwraca tylko pierwsze dwa wpisy. Taka nadmiarowość jest wymagana, jeśli jeden z hostów będzie nieosiągalny.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -318,7 +317,7 @@ Producentów i odbiorców można również utworzyć programowo. Przykład korzy
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie będą już potrzebne, możesz użyć [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) polecenia, aby usunąć grupę zasobów, HDInsight, i wszystkie pokrewne zasoby.
+Gdy grupa zasobów, Usługa HDInsight i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
@@ -329,7 +328,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 > 
 > Usunięcie platformy Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Używanie systemu Apache Spark z platformą Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

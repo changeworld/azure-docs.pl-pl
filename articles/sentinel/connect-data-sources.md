@@ -1,6 +1,6 @@
 ---
-title: Połącz źródła danych do platformy Azure przez wartownika w wersji zapoznawczej? | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak połączyć źródeł danych z platformy Azure przez wartownika.
+title: Połączyć źródła danych z wersją zapoznawczą platformy Azure Microsoft Docs
+description: Dowiedz się, jak łączyć źródła danych z danymi wskaźnikowymi platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -16,83 +16,83 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9f64497cdf27729cebc243deca1def9ff1e5c680
-ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
+ms.openlocfilehash: 4928657aa9052b50faf1f326cc09797c5aaf69bb
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673870"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780513"
 ---
 # <a name="connect-data-sources"></a>Łączenie ze źródłami danych
 
 > [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
+> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 
-Aby dołączyć przez wartownika platformy Azure należy najpierw połączyć się ze źródłami danych. Azure wartownik dołączono wiele łączników dla rozwiązań firmy Microsoft, dostępne poza pole, a także w czasie rzeczywistym integracji, w tym rozwiązań do ochrony przed zagrożeniami firmy Microsoft i Microsoft 365 źródeł, takich jak usługi Office 365, Azure AD, Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto ma wbudowanych łączników szerszy ekosystemem zabezpieczenia dla rozwiązań firmy Microsoft. Można również użyć typowego formatu zdarzeń dziennika systemu lub interfejsu API REST, nawiązywanie połączeń ze źródłami danych z platformy Azure przez wartownika także.  
+Aby przejść do tablicy wskaźnikowej platformy Azure, musisz najpierw nawiązać połączenie ze źródłami danych. Wskaźnik platformy Azure obejmuje wiele łączników dla rozwiązań firmy Microsoft, dostępnych poza platformą i zapewniania integracji w czasie rzeczywistym, w tym rozwiązań firmy Microsoft do ochrony przed zagrożeniami, a także źródeł Microsoft 365, takich jak Office 365, Azure AD, Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto istnieją wbudowane łączniki do szerszego ekosystemu zabezpieczeń dla rozwiązań firm innych niż Microsoft. Możesz również użyć typowego formatu zdarzeń, dziennika systemowego lub REST-API, aby połączyć źródła danych z systemem Azure.  
 
-1. W menu, wybierz **łączników danych**. Ta strona pozwala zobaczyć pełną listę łączników, udostępnianych przez usługę Azure przez wartownika wraz z ich stanami. Wybierz łącznik, aby połączyć, a następnie wybierz pozycję **łącznika Otwórz stronę**. 
+1. Z menu wybierz pozycję **Łączniki danych**. Ta strona umożliwia wyświetlenie pełnej listy łączników udostępnianych przez wskaźnik platformy Azure oraz ich stan. Wybierz łącznik, który chcesz połączyć, a następnie wybierz pozycję **Otwórz stronę łącznika**. 
 
    ![Moduły zbierające dane](./media/collect-data/collect-data-page.png)
 
-1. Upewnij się, zostały spełnione wszystkie wymagania wstępne i postępuj zgodnie z instrukcjami, aby nawiązać połączenie z danych usługi Azure przez wartownika na stronie określonego łącznika. Może upłynąć trochę czasu, dzienniki Aby uruchomić synchronizację za pomocą platformy Azure przez wartownika. Po nawiązaniu połączenia, zobacz podsumowanie danych w **odebrane dane** wykresu i stanu łączności typów danych.
+1. Na określonej stronie łącznika upewnij się, że spełniono wszystkie wymagania wstępne, i postępuj zgodnie z instrukcjami, aby połączyć dane z platformą Azure wskaźnikiem. Synchronizowanie dzienników z platformą Azure jest możliwe dopiero po pewnym czasie. Po nawiązaniu połączenia zobaczysz podsumowanie danych w grafie **otrzymane dane** oraz stan łączności typów danych.
 
-   ![Łączenie modułów zbierających dzienniki](./media/collect-data/opened-connector-page.png)
+   ![Połącz moduły zbierające](./media/collect-data/opened-connector-page.png)
   
-1. Kliknij przycisk **następne kroki** kartę, aby uzyskać listę zawartości poza pole przez wartownika Azure udostępnia dla typu danych specyficznych dla.
+1. Kliknij kartę **następne kroki** , aby uzyskać listę zawartości wbudowanej platformy Azure, która zapewnia dla określonego typu danych.
 
    ![Moduły zbierające dane](./media/collect-data/data-insights.png)
  
 
 ## <a name="data-connection-methods"></a>Metody połączenia danych
 
-Następujące metody połączenia danych są obsługiwane przez usługi Azure przez wartownika:
+Następujące metody łączenia danych są obsługiwane przez wskaźnik na platformie Azure:
 
-- **Usługi firmy Microsoft**:<br> Usługi firmy Microsoft są połączone w sposób macierzysty, korzystanie z platformy Azure podstawa out-gotową integrację, następujące rozwiązania mogą być połączone za pomocą kilku kliknięć:
+- **Usługi firmy Microsoft**:<br> Usługi firmy Microsoft są połączone natywnie, wykorzystując platformę Azure Foundation do zintegrowanej integracji, następujące rozwiązania mogą być połączone za pomocą kilku kliknięć:
     - [Office 365](connect-office-365.md)
-    - [Usługa Azure AD inspekcji, dzienniki i logowania](connect-azure-active-directory.md)
-    - [Aktywności platformy Azure](connect-azure-activity.md)
+    - [Dzienniki inspekcji usługi Azure AD i logowania](connect-azure-active-directory.md)
+    - [Aktywność platformy Azure](connect-azure-activity.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Usługa Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Zaawansowana ochrona przed zagrożeniami na platformie Azure](connect-azure-atp.md)
     - [Cloud App Security](connect-cloud-app-security.md)
-    - [Zdarzenia zabezpieczeń Windows](connect-windows-security-events.md) 
-    - [Zapora Windows](connect-windows-firewall.md)
+    - [Zdarzenia zabezpieczeń systemu Windows](connect-windows-security-events.md) 
+    - [Zapora systemu Windows](connect-windows-firewall.md)
 
-- **Zewnętrzny rozwiązań za pośrednictwem interfejsu API**: Niektóre źródła danych są połączone za pomocą interfejsów API, które zostały udostępnione przez połączonego źródła danych. Zazwyczaj większość technologii zabezpieczeń zawierają zestaw interfejsów API za pomocą którego można pobrać dzienników zdarzeń. Interfejsy API nawiązać połączenie z platformy Azure przez wartownika i zbieranie danych z konkretnych typów i wysyłać je do usługi Azure Log Analytics. Urządzenia połączone za pośrednictwem interfejsu API to:
+- **Rozwiązania zewnętrzne za pośrednictwem interfejsu API**: Niektóre źródła danych są połączone przy użyciu interfejsów API, które są udostępniane przez połączone źródło danych. Zazwyczaj większość technologii zabezpieczeń zapewnia zestaw interfejsów API, za pomocą których można pobrać dzienniki zdarzeń. Interfejsy API nawiązują połączenie z platformą Azure, a następnie zbierają określone typy danych i wysyłają je do Log Analytics platformy Azure. Urządzenia połączone za pośrednictwem interfejsu API obejmują:
     - [Barracuda](connect-barracuda.md)
     - [Symantec](connect-symantec.md)
-- **Zewnętrzny rozwiązań za pośrednictwem agenta**: Wartownik platformy Azure mogą być połączone do wszystkich innych źródeł danych, które mogą wykonywać, przesyłanie strumieniowe dzienników w czasie rzeczywistym, za pomocą przy użyciu protokołu Syslog, za pośrednictwem agenta. <br>Większość urządzeń Użyj protokołu Syslog, aby wysyłać komunikaty o zdarzeniach, które zawierają dziennik, sam, jak i dane dotyczące dziennika. Format dzienniki różni się jednak większość urządzeń obsługuje standard Common Event Format (CEF). <br>Agent platformy Azure przez wartownika, który jest oparty na programie Microsoft Monitoring Agent, konwertuje dzienniki w formacie CEF do formatu, który może być pozyskiwane przez usługę Log Analytics. W zależności od typu urządzenia agent jest zainstalowany bezpośrednio na urządzeniu lub na dedykowanych serwerach Linux. Agent dla systemu Linux odbiera zdarzenia z demona usługi Syslog za pośrednictwem protokołu UDP, ale w przypadkach, gdzie maszynę z systemem Linux oczekuje się, aby zebrać dużą liczbę zdarzeń dziennika systemu, te są wysyłane za pośrednictwem protokołu TCP z demona usługi Syslog do agenta, a do usługi Log Analytics.
-    - Zapór, proxy i punktów końcowych:
+- **Rozwiązania zewnętrzne przez agenta**: Punkt kontrolny platformy Azure może być połączony ze wszystkimi innymi źródłami danych, które mogą wykonywać przesyłanie strumieniowe w czasie rzeczywistym przy użyciu protokołu dziennika systemowego za pośrednictwem agenta. <br>Większość urządzeń używa protokołu dziennika systemowego do wysyłania komunikatów zdarzeń, które obejmują sam dziennik i dane dotyczące dziennika. Format dzienników jest różny, ale większość urządzeń obsługuje standard CEF (Common Event format). <br>Agent wskaźnikowy platformy Azure, który jest oparty na Microsoft Monitoring Agent, konwertuje CEF sformatowane dzienniki do formatu, który może zostać pozyskany przez Log Analytics. W zależności od typu urządzenia Agent jest instalowany bezpośrednio na urządzeniu lub na dedykowanym serwerze z systemem Linux. Agent dla systemu Linux odbiera zdarzenia z demona dziennika systemu za pośrednictwem protokołu UDP, ale jeśli oczekuje się, że maszyna z systemem Linux będzie zbierać duże ilości zdarzeń dziennika systemowego, są one wysyłane za pośrednictwem protokołu TCP z demona dziennika systemowego do agenta i z tego miejsca do Log Analytics.
+    - Zapory, proxy i punkty końcowe:
         - [F5](connect-f5.md)
-        - [Check Point](connect-checkpoint.md)
+        - [Punkt kontrolny](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Fortinet](connect-fortinet.md)
         - [Palo Alto](connect-paloalto.md)
         - [Inne urządzenia CEF](connect-common-event-format.md)
-        - [Inne urządzenia usługi Syslog](connect-syslog.md)
+        - [Inne urządzenia dziennika systemu](connect-syslog.md)
     - Rozwiązania DLP
-    - [Dostawców analizy zagrożeń](connect-threat-intelligence.md)
-    - [DNS maszyn](connect-dns.md) -agent jest zainstalowany bezpośrednio na maszynie DNS
+    - [Dostawcy analizy zagrożeń](connect-threat-intelligence.md)
+    - [Maszyny DNS](connect-dns.md) — Agent zainstalowany bezpośrednio na komputerze DNS
     - Serwery z systemem Linux
     - Inne chmury
     
-## Opcje połączenia agenta<a name="agent-options"></a>
+## Opcje połączenia z agentem<a name="agent-options"></a>
 
-Nawiązać połączenia zewnętrzne urządzenie przez wartownika platformy Azure, należy wdrożyć agenta na dedykowanym komputerze (maszyny Wirtualnej lub lokalnie) na potrzeby obsługi komunikacji między urządzeniem i przez wartownika Azure. Agenta można wdrożyć automatycznie lub ręcznie. Automatyczne wdrażanie jest dostępna tylko w przypadku dedykowanej maszynie nową maszynę Wirtualną, tworzysz na platformie Azure. 
+Aby połączyć urządzenie zewnętrzne z centrum danych platformy Azure, należy wdrożyć agenta na dedykowanym komputerze (maszynie wirtualnej lub lokalnie), aby umożliwić obsługę komunikacji między urządzeniem i wskaźnikiem kontrolnym platformy Azure. Agenta można wdrożyć automatycznie lub ręcznie. Automatyczne wdrażanie jest dostępne tylko wtedy, gdy dedykowany komputer jest nową maszyną wirtualną, którą tworzysz na platformie Azure. 
 
 
 ![CEF na platformie Azure](./media/connect-cef/cef-syslog-azure.png)
 
-Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualnej platformy Azure, na maszynie Wirtualnej w innej chmurze lub na maszynie lokalnej.
+Alternatywnie można wdrożyć agenta ręcznie na istniejącej maszynie wirtualnej platformy Azure, na maszynie wirtualnej w innej chmurze lub na maszynie lokalnej.
 
-![CEF w środowisku lokalnym](./media/connect-cef/cef-syslog-onprem.png)
+![CEF lokalnie](./media/connect-cef/cef-syslog-onprem.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- Aby rozpocząć korzystanie z platformy Azure przez wartownika, musisz mieć subskrypcji platformy Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
-- Dowiedz się, jak [dołączyć dane do platformy Azure przez wartownika](quickstart-onboard.md), i [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
+- Aby rozpocząć pracę z systemem Azure — wskaźnikiem, potrzebna jest subskrypcja do Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
+- Dowiedz się, jak dołączać [dane do usługi Azure wskaźnikowej](quickstart-onboard.md)i [uzyskiwać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).

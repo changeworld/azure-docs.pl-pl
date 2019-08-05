@@ -54,8 +54,6 @@
           href: cloudsimple-faq.md
     - name: Samouczki
       items:
-        - name: Włączanie dostawcy zasobów
-          href: enable-cloudsimple-service.md
         - name: Tworzenie usługi CloudSimple
           href: create-cloudsimple-service.md
         - name: Uzyskiwanie dostępu do portalu CloudSimple

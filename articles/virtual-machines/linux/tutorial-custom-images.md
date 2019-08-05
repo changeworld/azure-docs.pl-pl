@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 080d1d68c2f2fb757bb51471b91a807b2f00fa2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7fade5e73d7c571cea46c91cb952b590aca4b3c2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709524"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780312"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Samouczek: Tworzenie niestandardowego obrazu maszyny wirtualnej na platformie Azure za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -51,6 +51,9 @@ Aby utworzyć obraz maszyny wirtualnej, należy przygotować maszynę wirtualną
 ### <a name="deprovision-the-vm"></a>Anulowanie aprowizacji maszyny wirtualnej 
 
 Anulowanie aprowizacji powoduje uogólnienie maszyny wirtualnej przez usunięcie informacji charakterystycznych dla danego komputera. To uogólnienie sprawia, że można wdrożyć wiele maszyn wirtualnych za pomocą pojedynczego obrazu. Podczas anulowania aprowizacji nazwa hosta jest resetowana do *localhost.localdomain*. Usuwane są również klucze hosta SSH, konfiguracje „nameserver”, hasło administratora (root) i buforowane dzierżawy DHCP.
+
+> [!WARNING]
+> Cofnięcie aprowizacji i oznaczenie maszyny wirtualnej jako uogólnionej spowoduje, że źródłowa maszyna wirtualna stanie się bezużyteczny i nie będzie można jej ponownie uruchomić. 
 
 Aby anulować aprowizację maszyny wirtualnej, użyj agenta maszyny wirtualnej platformy Azure (waagent). Agent maszyny wirtualnej platformy Azure jest zainstalowany na maszynie wirtualnej i zarządza aprowizowaniem oraz interakcjami z kontrolerem sieci szkieletowej Azure. Aby uzyskać więcej informacji, zobacz [Przewodnik użytkownika Agenta platformy Azure dla systemu Linux](../extensions/agent-linux.md).
 

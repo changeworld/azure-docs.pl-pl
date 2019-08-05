@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie platformy Apache Kafka w HDInsight przy użyciu witryny Azure portal — Szybki Start
+title: Konfigurowanie Apache Kafka w usłudze HDInsight przy użyciu Azure Portal — Szybki Start
 description: W tym przewodniku Szybki start dowiesz się, jak utworzyć klaster platformy Apache Kafka w usłudze Azure HDInsight przy użyciu witryny Azure Portal. Zdobędziesz także informacje o tematach, subskrybentach i odbiorcach platformy Kafka.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 61ae6cdf7c31c9a6e40860eb1dc4628bb2d37496
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150905"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779524"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Szybki start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu witryny Azure portal
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Szybki start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu Azure Portal
 
 Apache Kafka to rozproszona platforma przesyłania strumieniowego typu open source. Jest ona często używana jako broker komunikatów, ponieważ oferuje funkcje podobne do kolejki komunikatów dotyczących publikowania i subskrybowania. 
 
@@ -36,7 +36,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. W menu po lewej stronie przejdź do **+ Utwórz zasób** > **Analytics** > **HDInsight**.
+2. W menu po lewej stronie przejdź do **+ Tworzenie** > usługi**HDInsight** **analizy** > zasobów.
    
     ![Tworzenie klastra usługi HDInsight](./media/apache-kafka-get-started/create-hdinsight.png)
 
@@ -51,16 +51,16 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
    
    ![Konfiguracja podstawowa klastra platformy Apache Kafka w usłudze HDInsight](./media/apache-kafka-get-started/custom-basics-kafka.png)
 
-4. Z __konfiguracji klastra__, wybierz następujące wartości:
+4. W obszarze __Konfiguracja klastra__wybierz następujące wartości:
 
     | Ustawienie | Wartość |
     | --- | --- |
     | Typ klastra | Kafka |
-    | Wersja | Kafka 1.1.0 (HDI 3.6) |
+    | Version | Kafka 1.1.0 (HDI 3.6) |
 
-    Wybierz **wybierz** można zapisać ustawień typu klastra i powrócić do __podstawy__.
+    Wybierz pozycję **Wybierz** , aby zapisać ustawienia typu klastra i wrócić do __podstaw__.
 
-    ![Wybieranie typu klastra](./media/apache-kafka-get-started/kafka-cluster-type.png)
+    ![Wybierz typ klastra](./media/apache-kafka-get-started/kafka-cluster-type.png)
 
 5. W bloku __Podstawowe__ wprowadź lub wybierz następujące informacje:
 
@@ -78,7 +78,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
    ![Wybieranie subskrypcji](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
-    Wybierz __dalej__ Zakończ konfigurację podstawową.
+    Wybierz pozycję __dalej__ , aby zakończyć konfigurację podstawową.
 
 6. Na potrzeby tego przewodnika Szybki start pozostaw domyślne ustawienia zabezpieczeń. Aby dowiedzieć się więcej o pakiecie Enterprise Security, odwiedź stronę [Configure a HDInsight cluster with Enterprise Security Package by using Azure Active Directory Domain Services (Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services)](../domain-joined/apache-domain-joined-configure-using-azure-adds.md). Aby dowiedzieć się, jak używać własnego klucza do szyfrowania dysków Apache Kafka, odwiedź stronę [Bring your own key for Apache Kafka on Azure HDInsight (Używanie własnego klucza dla platformy Apache Kafka w usłudze Azure HDInsight)](apache-kafka-byok.md)
 
@@ -102,7 +102,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
 10. W bloku __Ustawienia zaawansowane__ wybierz przycisk __Dalej__, aby kontynuować z ustawieniami domyślnymi.
 
-11. W bloku **Podsumowanie** przejrzyj konfigurację klastra. Zmień niepoprawne ustawienia przy użyciu linków __Edytuj__. Na koniec wybierz pozycję **Utwórz** do utworzenia klastra.
+11. W bloku **Podsumowanie** przejrzyj konfigurację klastra. Zmień niepoprawne ustawienia przy użyciu linków __Edytuj__. Na koniec wybierz pozycję **Utwórz** , aby utworzyć klaster.
 
     ![Podsumowanie konfiguracji klastra](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
@@ -122,7 +122,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
     Po nawiązaniu połączenia zostanie wyświetlona informacja podobna do następującej:
     
-    ```text
+    ```output
     Authorized uses only. All activity may be monitored and reported.
     Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
     
@@ -140,7 +140,6 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
     Welcome to Apache Kafka on HDInsight.
     
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-    ssuhuser@hn0-mykafk:~$
     ```
 
 ## <a id="getkafkainfo"></a>Pobierz informacje dotyczących hostów Apache Zookeeper i Broker
@@ -149,33 +148,33 @@ Podczas pracy z platformą Kafka musisz znać hosty *Apache Zookeeper* i *Broker
 
 W tej sekcji uzyskasz informacje o hoście z interfejsu API REST Apache Ambari w klastrze.
 
-1. Zainstaluj [jq](https://stedolan.github.io/jq/), wiersza polecenia procesora w formacie JSON. To narzędzie służy do analizowania dokumentów JSON i jest przydatne podczas analizowania informacji o hoście. Z otwartego połączenia SSH, wprowadź następujące polecenie, aby zainstalować `jq`:
+1. Zainstaluj [JQ](https://stedolan.github.io/jq/), procesor JSON w wierszu polecenia. To narzędzie służy do analizy dokumentów JSON i jest przydatne podczas analizowania informacji o hoście. Z otwartego połączenia SSH wprowadź następujące polecenie, aby zainstalować `jq`:
    
     ```bash
     sudo apt -y install jq
     ```
 
-2. Konfigurowanie zmiennych środowiskowych. Zastąp `PASSWORD` i `CLUSTERNAME` hasło logowania klastra i klastra odpowiednio nazwę, a następnie wpisz polecenie:
+2. Skonfiguruj zmienne środowiskowe. Zastąp `PASSWORD` odpowiednio hasło logowania klastra i nazwę klastra, a następnie wprowadź polecenie: `CLUSTERNAME`
 
     ```bash
     export password='PASSWORD'
     export clusterNameA='CLUSTERNAME'
     ```
 
-3. Wyodrębnij nazwy klastra poprawnie z uwzględnieniem wielkości liter. Rzeczywiste wielkość liter w wyrazie nazwy klastra mogą być inne, niż jest to oczekiwane, w zależności od sposobu utworzenia klastra. To polecenie uzyskać rzeczywiste wielkość liter w wyrazie, zapisz go w zmiennej i następnie poprawnie cased nazwę wyświetlaną i nazwę, którą podano wcześniej. Wprowadź następujące polecenie:
+3. Wyodrębnij poprawnie wielkość liter w nazwach klastra. Rzeczywista wielkość liter nazwy klastra może być inna niż oczekiwano, w zależności od sposobu utworzenia klastra. To polecenie uzyskuje rzeczywistą wielkość liter, zapisuje je w zmiennej, a następnie wyświetla poprawną wielkość liter i nazwę podaną wcześniej. Wprowadź następujące polecenie:
 
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     echo $clusterName, $clusterNameA
     ```
 
-4. Aby ustawić zmienną środowiskową na informacje hosta Zookeeper, użyj poniższego polecenia. To polecenie umożliwia pobranie wszystkich hostach dozorcy, a następnie zwraca tylko pierwsze dwa wpisy. Taka nadmiarowość jest wymagana, jeśli jeden z hostów będzie nieosiągalny.
+4. Aby ustawić zmienną środowiskową z informacjami o hoście dozorcy, użyj poniższego polecenia. Polecenie pobiera wszystkie hosty dozorcy, a następnie zwraca tylko pierwsze dwa wpisy. Taka nadmiarowość jest wymagana, jeśli jeden z hostów będzie nieosiągalny.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin:$password -G http://headnodehost:8080/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
 
-    To polecenie bezpośrednio wykonuje zapytanie dotyczące usługi Ambari w węźle głównym klastra. Można także przejść do narzędzia Ambari, przy użyciu adresu publicznego `https://$CLUSTERNAME.azurehdinsight.net:80/`. Niektóre konfiguracje sieci mogą uniemożliwić dostęp do adresu publicznego. Na przykład można użyć sieciowych grup zabezpieczeń, aby ograniczyć dostęp do usługi HDInsight w sieci wirtualnej.
+    To polecenie bezpośrednio wykonuje zapytanie dotyczące usługi Ambari w węźle głównym klastra. Dostęp do usługi Ambari można również uzyskać przy użyciu adresu `https://$CLUSTERNAME.azurehdinsight.net:80/`publicznego. Niektóre konfiguracje sieci mogą uniemożliwić dostęp do adresu publicznego. Na przykład można użyć sieciowych grup zabezpieczeń, aby ograniczyć dostęp do usługi HDInsight w sieci wirtualnej.
 
 5. Aby sprawdzić, czy zmienna środowiskowa jest poprawnie ustawiona, użyj następującego polecenia:
 
