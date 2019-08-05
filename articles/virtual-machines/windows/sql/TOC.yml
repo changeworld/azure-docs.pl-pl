@@ -68,6 +68,8 @@
       items:
         - name: Migracja bazy danych SQL Server
           href: virtual-machines-windows-migrate-sql.md
+        - name: Przenoszenie maszyny wirtualnej do nowego regionu
+          href: virtual-machines-windows-sql-move-different-region.md
     - name: Konfigurowanie wysokiej dostępności
       items:
         - name: Tworzenie kopii zapasowej i przywracanie za pomocą usługi Azure Storage

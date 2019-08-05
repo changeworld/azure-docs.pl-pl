@@ -43,6 +43,9 @@ sections:
       - type: list
         style: unordered
         items:
+          - html: 'Wprowadzenie: <a href="tutorial-first-experiment-automated-ml">Trenowanie i wdrażanie</a> pierwszego zautomatyzowanego modelu uczenia maszynowego w witrynie Azure Portal.'
+          - html: 'Wprowadzenie: <a href="tutorial-1st-experiment-sdk-setup">Konfigurowanie środowiska deweloperskiego</a> i <a href="tutorial-1st-experiment-sdk-train">trenowanie pierwszego modelu uczenia maszynowego</a> za pomocą notesu Jupyter (<b>seria dwuczęściowa</b>).'
+          - html: 'Wprowadzenie: <a href="ui-tutorial-automobile-price-train-score">Trenowanie</a> i <a href="ui-tutorial-automobile-price-deploy">wdrażanie</a> pierwszego eksperymentu uczenia maszynowego za pomocą interfejsu wizualnego umożliwiającego przeciąganie i upuszczanie (<b>seria dwuczęściowa</b>).'
           - html: <a href="tutorial-train-models-with-aml">Trenowanie</a> i <a href="tutorial-deploy-models-with-aml">wdrażanie</a> modeli klasyfikacji obrazów (<b>dwuczęściowa seria</b>).
           - html: <a href="tutorial-data-prep">Przygotowywanie danych</a> i <a href="tutorial-auto-train-models">stosowanie zautomatyzowanego uczenia maszynowego</a> do trenowania i dostrajania modeli regresji (<b>dwuczęściowa seria</b>).
           - html: <a href="ui-tutorial-automobile-price-train-score">Przewidywanie ceny samochodu</a> za pomocą interfejsu wizualnego i <a href="ui-tutorial-automobile-price-deploy">wdrażanie</a> modelu regresji.

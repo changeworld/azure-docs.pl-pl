@@ -87,6 +87,8 @@
       items:
         - name: Tworzenie szablonu
           href: how-to-create-template.md
+        - name: Nazwa i typ zasobu podrzędnego
+          href: child-resource-name-type.md
         - name: Tworzenie grup zasobów i zasobów w subskrypcji
           displayName: subscription level deployment
           href: deploy-to-subscription.md

@@ -43,6 +43,8 @@
       href: security-center-incident.md
     - name: Reagowanie na zdarzenia
       href: security-center-incident-response.md
+    - name: Zarządzanie wieloma dzierżawami
+      href: security-center-cross-tenant-management.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Poprawianie oceny bezpieczeństwa
@@ -81,6 +83,8 @@
       items:
         - name: Co to są zalecenia dotyczące zabezpieczeń
           href: security-center-recommendations.md
+        - name: Zalecenia dotyczące działań naprawczych
+          href: security-center-remediate-recommendations.md
         - name: Zwiększanie poziomu bezpieczeństwa
           href: security-center-monitoring.md
         - name: Ochrona maszyn i aplikacji

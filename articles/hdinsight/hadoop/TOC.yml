@@ -56,6 +56,8 @@
       maintainContext: true
     - name: Rozwiązywanie problemów
       items:
+        - name: Nie można zalogować się do klastra usługi HDInsight
+          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: Nie można dodać węzłów do klastra usługi HDInsight
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
         - name: InvalidNetworkSecurityGroupSecurityRules — tworzenie klastra kończy się niepowodzeniem

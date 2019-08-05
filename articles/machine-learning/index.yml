@@ -36,6 +36,26 @@ sections:
           - html: <a href="service/quickstart-run-local-notebook">Przeprowadzanie eksperymentu przy użyciu lokalnego serwera notesów</a> (instalacja lokalna zestawu SDK)
         style: unordered
         type: list
+      - text: '<b>Samouczek: Trenowanie i wdrażanie pierwszego zautomatyzowanego modelu uczenia maszynowego w witrynie Azure Portal:</b>'
+        type: paragraph
+      - items:
+          - html: <a href="service/tutorial-first-experiment-automated-ml">Trenowanie i wdrażanie pierwszego modelu klasyfikacji za pomocą zautomatyzowanego uczenia maszynowego</a>
+        style: unordered
+        type: list
+      - text: '<b>Samouczek: Trenowanie pierwszego modelu uczenia maszynowego za pomocą zestawu SDK:</b>'
+        type: paragraph
+      - items:
+          - html: 'Część 1: <a href="service/tutorial-1st-experiment-sdk-setup">Konfigurowanie środowiska i obszaru roboczego</a>'
+          - html: 'Część 2: <a href="service/tutorial-1st-experiment-sdk-train">Trenowanie pierwszego modelu</a>'
+        style: unordered
+        type: list
+      - text: '<b>Samouczek: Trenowanie i wdrażanie pierwszego eksperymentu za pomocą interfejsu wizualnego:</b>'
+        type: paragraph
+      - items:
+          - html: 'Część 1: <a href="service/ui-tutorial-automobile-price-train-score">Trenowanie modelu regresji</a>'
+          - html: 'Część 2: <a href="service/ui-tutorial-automobile-price-deploy">Wdrażanie modelu</a>'
+        style: unordered
+        type: list
       - text: '<b>Samouczek: Klasyfikacja obrazów (dane MNIST) za pomocą zestawu SDK:</b>'
         type: paragraph
       - items:
