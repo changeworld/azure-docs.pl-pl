@@ -44,7 +44,7 @@ Następujące właściwości są obsługiwane w przypadku gałęzi połączone u
 | type | Właściwość type musi być równa: **Hive** | Yes |
 | host | Adres IP lub hosta nazwę serwera programu Hive, rozdzielone znakiem ";" na wielu hostach, (tylko wtedy, gdy serviceDiscoveryMode jest włączona).  | Yes |
 | port | Port TCP używany przez serwer programu Hive do nasłuchiwania połączeń klientów. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Yes |
-| serverType servertype ustawioną | Typ serwera Hive. <br/>Dozwolone wartości to: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nie |
+| serverType | Typ serwera Hive. <br/>Dozwolone wartości to: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nie |
 | thriftTransportProtocol | Protokół transportu do użycia w warstwie Thrift. <br/>Dozwolone wartości to: **Binary**, **SASL**, **HTTP** | Nie |
 | authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera programu Hive. <br/>Dozwolone wartości to: **Anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
 | serviceDiscoveryMode | wartość true, aby wskazać, za pomocą usługi ZooKeeper false nie.  | Nie |
