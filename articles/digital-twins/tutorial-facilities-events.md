@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 08/05/2019
 ms.author: alinast
-ms.openlocfilehash: 2b84fa2fd8053ca4dc7ef0ad246d29b2bba3dae5
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 30d43831b73edc52b461512faecac369f6bf00b0
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484711"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827818"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Samouczek: otrzymywanie powiadomień z przestrzeni usługi Azure Digital Twins przy użyciu usługi Logic Apps
 
@@ -85,7 +85,7 @@ W tej sekcji skonfigurujesz usługę [Event Grid](../event-grid/overview.md), kt
 
 1. Zastąp symbol zastępczy `<Secondary connection string for your Event Grid>` wartością **TWÓJ_KLUCZ_2**.
 
-1. Zastąp symbol zastępczy dla **ścieżki** ze ścieżką tematu usługi event grid. Aby uzyskać tę ścieżkę, usuń ciąg **https://** i końcowe ścieżki zasobów z adresu URL **punktu końcowego tematu**. Powinna mieć ona mniej więcej taki format:*nazwa_usługi_Event_Grid.lokalizacja.eventgrid.azure.net*.
+1. Zastąp symbol zastępczy **ścieżki ścieżką** i ścieżką do tematu usługi Event Grid. Aby uzyskać tę ścieżkę, usuń ciąg **https://** i końcowe ścieżki zasobów z adresu URL **punktu końcowego tematu**. Powinna mieć ona mniej więcej taki format:*nazwa_usługi_Event_Grid.lokalizacja.eventgrid.azure.net*.
 
     > [!IMPORTANT]
     > Wprowadź wszystkie wartości bez żadnych cudzysłowów. Upewnij się, że po dwukropkach w pliku YAML znajduje się co najmniej jeden znak spacji. Możesz także sprawdzić poprawność zawartości pliku YAML online przy użyciu dowolnego modułu sprawdzania poprawności YAML, na przykład [tego narzędzia](https://onlineyamltools.com/validate-yaml).
@@ -114,7 +114,7 @@ Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umożliwia twor
 
 1. Otwórz zasób usługi Logic Apps, a następnie otwórz okienko **Projektant aplikacji logiki**. 
 
-1. Wybierz **występuje, gdy zdarzenie usługi Event Grid zasobów** wyzwalacza. Po wyświetleniu monitu zaloguj się w dzierżawie za pomocą konta platformy Azure. Wybierz **zezwolić na dostęp** dla zasobu usługi Event Grid, jeśli zostanie wyświetlony monit. Wybierz **nadal**.
+1. Wybierz wyzwalacz **gdy wystąpi zdarzenie zasobów Event Grid** . Po wyświetleniu monitu zaloguj się w dzierżawie za pomocą konta platformy Azure. Jeśli zostanie wyświetlony monit, wybierz opcję **Zezwalaj na dostęp** do zasobu Event Grid. Wybierz **nadal**.
 
 1. W oknie **Gdy następuje zdarzenie usługi Event Grid (wersja zapoznawcza)** : 
    
@@ -174,7 +174,7 @@ Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umożliwia twor
 
    a. Wybierz kolejno pozycje **Dodaj akcję** i  **Office 365 Outlook**.
 
-   b. Na liście **Akcje** wybierz pozycję **Wyślij wiadomość e-mail**. Wybierz pozycję **Zaloguj** i wprowadź poświadczenia konta e-mail. Wybierz **zezwolić na dostęp** Jeśli zostanie wyświetlony monit.
+   b. Na liście **Akcje** wybierz pozycję **Wyślij wiadomość e-mail**. Wybierz pozycję **Zaloguj** i wprowadź poświadczenia konta e-mail. Jeśli zostanie wyświetlony monit, wybierz opcję **Zezwalaj na dostęp** .
 
    c. W oknie **Do** wprowadź swój identyfikator poczty e-mail, aby otrzymywać powiadomienia. W polu **Temat** wprowadź tekst **Powiadomienie usługi Digital Twins dotyczące niskiej jakości powietrza**. Następnie wybierz pozycję **TopologyObjectId** na liście **Zawartość dynamiczna** pozycji **Przeanalizuj dane JSON**.
 

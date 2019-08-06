@@ -1,6 +1,6 @@
 ---
-title: Przykład programu PowerShell — inspekcja i wykrywanie zagrożeń w bazie danych Azure SQL Database | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell umożliwiający skonfigurowanie inspekcji i wykrywania zagrożeń w bazie danych Azure SQL Database
+title: Przykład inspekcji i zaawansowanej ochrony przed zagrożeniami w programie PowerShell — Azure SQL Database | Microsoft Docs
+description: Azure PowerShell przykładowy skrypt, aby skonfigurować inspekcję i zaawansowaną ochronę przed zagrożeniami w Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,18 +9,18 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: ronitr
 ms.author: ronitr
-ms.reviewer: carlrab
-ms.date: 03/12/2019
-ms.openlocfilehash: c0293cd8f06a1988d89e9a88d9b03f71f1181765
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.reviewer: carlrab, vanto
+ms.date: 08/05/2019
+ms.openlocfilehash: f9ef894f4c4d1d0ad0ab43b538c984f9cf5b2d01
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570037"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816694"
 ---
-# <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>Konfigurowanie inspekcji i wykrywania zagrożeń w bazie danych SQL Database przy użyciu programu PowerShell
+# <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>Konfigurowanie inspekcji SQL Database i zaawansowanej ochrony przed zagrożeniami przy użyciu programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell konfiguruje inspekcję i wykrywanie zagrożeń w bazie danych SQL Database.
+Ten przykładowy skrypt programu PowerShell konfiguruje inspekcję SQL Database i zaawansowaną ochronę przed zagrożeniami.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -51,11 +51,11 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Tworzy pojedynczą bazę danych lub elastyczną pulę. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Tworzy konto magazynu. |
 | [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | Ustawia zasady inspekcji dla bazy danych. |
-| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Ustawia zasady wykrywania zagrożeń w bazie danych. |
+| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Ustawia zasady zaawansowanej ochrony przed zagrożeniami w bazie danych. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

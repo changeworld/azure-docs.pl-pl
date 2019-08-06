@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do sklepu wiedzy i Omówienie (wersja zapoznawcza) — Azure Search
+title: Wprowadzenie do sklepu merytorycznego (wersja zapoznawcza) — Azure Search
 description: Wysyłaj wzbogacone dokumenty do usługi Azure Storage, w której można wyświetlać i przekształcać wzbogacone dokumenty oraz korzystać z nich w Azure Search i innych aplikacjach.
 manager: cgronlun
 author: HeidiSteen
@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 6cbf8dfe51e8b553fd84e9eb81a2ea37a65c387e
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 21530ca309a18c95e947a265b951fe78044aec93
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668279"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828491"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Co to jest sklep merytoryczny w Azure Search?
 

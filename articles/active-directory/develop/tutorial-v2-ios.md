@@ -3,7 +3,7 @@ title: Wprowadzenie do systemu iOS — platforma tożsamości firmy Microsoft | 
 description: Jak aplikacje dla systemu iOS (SWIFT) mogą wywołać interfejs API, który wymaga tokenów dostępu przy użyciu platformy tożsamości firmy Microsoft
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: tylermsft
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f22cf95fcf13f0038525b2cac282f01959fa7eb6
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 2432d35964134f240904060d2e3c9212905e0394
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335532"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823827"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>Logowanie użytkowników i wywoływanie Microsoft Graph z aplikacji dla systemu iOS
 
@@ -58,7 +58,7 @@ Ten samouczek spowoduje utworzenie nowego projektu. Jeśli chcesz zamiast tego p
 4. Ustaw **Język** na **SWIFT** i wybierz pozycję **dalej**.
 5. Wybierz folder, w którym chcesz utworzyć aplikację, a następnie kliknij przycisk **Utwórz**.
 
-## <a name="register-your-application"></a>Rejestrowanie aplikacji
+## <a name="register-your-application"></a>Zarejestruj swoją aplikację
 
 1. Przejdź do witryny [Azure Portal](https://aka.ms/MobileAppReg).
 2. Otwórz [blok rejestracje aplikacji](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) i kliknij pozycję **+ Nowa rejestracja**.
@@ -96,7 +96,7 @@ Jeśli używasz [Carthage](https://github.com/Carthage/Carthage), zainstaluj `MS
 github "AzureAD/microsoft-authentication-library-for-objc" "master"
 ```
 
-### <a name="manually"></a>Ręczne
+### <a name="manually"></a>Ręcznie
 
 Możesz również użyć modułu podrzędnego Git lub zapoznaj się z najnowszą wersją, aby użyć jej jako platformy w aplikacji.
 

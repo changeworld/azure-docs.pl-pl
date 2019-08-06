@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 8b89f5572ae94986590fe76096daeb0ad088fe59
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668616"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828560"
 ---
-# <a name="tutorial-train-your-first-model"></a>Samouczek: Uczenie swojego pierwszego modelu
+# <a name="tutorial-train-your-first-model"></a>Samouczek: Trenowanie pierwszego modelu
 
 Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W poprzednim samouczku [utworzono obszar roboczy i wybrano środowisko programistyczne](tutorial-1st-experiment-sdk-setup.md). W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w usłudze Azure Machine Learning i nauczysz prosty model uczenia scikit na podstawie zestawu danych cukrzycą. Po ukończeniu tego samouczka będziesz mieć praktyczną wiedzę na temat zestawu SDK w celu skalowania w górę w celu opracowywania bardziej złożonych eksperymentów i przepływów pracy.
 
@@ -111,7 +111,7 @@ Po zakończeniu szkolenia Wywołaj `experiment` zmienną, aby pobrać link do ek
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Nazwa)</th><th>Obszar roboczy</th><th>Strona raportu</th><th>Strona docs</th></tr><tr><td>cukrzycą — eksperyment</td><td>Nazwa Twojego obszaru roboczego</td><td><a href="" target="_blank" rel="noopener">Link do witryny Azure Portal</a></td><td><a href="" target="_blank" rel="noopener">Link do dokumentacji</a></td></tr></table>
+<table style="width:100%"><tr><th>Name (Nazwa)</th><th>Obszar roboczy</th><th>Strona raportu</th><th>Strona docs</th></tr><tr><td>cukrzycą — eksperyment</td><td>Nazwa Twojego obszaru roboczego</td><td>Link do witryny Azure Portal</td><td>Link do dokumentacji</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Wyświetlanie wyników szkolenia w portalu
 
@@ -121,7 +121,7 @@ Gdy szkolenia modeli są przeprowadzane na dużą skalę i tysiące różnych ur
 
 ![Strona głównej eksperymentu w portalu](./media/tutorial-quickstart/experiment-main.png)
 
-Kliknięcie linku z numerem uruchomienia w `RUN NUMBER` kolumnie spowoduje przejście do strony dla każdego pojedynczego uruchomienia. Na **karcie domyślne** znajdują się szczegółowe informacje dotyczące poszczególnych przebiegów. Przejdź do karty dane **wyjściowe** i zobaczysz `.pkl` plik dla modelu, który został przekazany do przebiegu podczas każdej iteracji szkoleniowej. W tym miejscu możesz pobrać plik modelu, zamiast konieczności ręcznego ponownego uczenia go.
+Kliknięcie linku z numerem uruchomienia w `RUN NUMBER` kolumnie spowoduje przejście do strony dla każdego pojedynczego uruchomienia. Na karcie domyślne znajdują się szczegółowe informacje dotyczące poszczególnych przebiegów. Przejdź do karty dane **wyjściowe** i zobaczysz `.pkl` plik dla modelu, który został przekazany do przebiegu podczas każdej iteracji szkoleniowej. W tym miejscu możesz pobrać plik modelu, zamiast konieczności ręcznego ponownego uczenia go.
 
 ![Strona szczegóły uruchamiania w portalu](./media/tutorial-quickstart/model-download.png)
 
@@ -181,7 +181,7 @@ Jeśli używasz serwera notesu w chmurze, Zatrzymaj maszynę wirtualną, gdy nie
 
 1. W obszarze roboczym wybierz pozycję **maszyny wirtualne Notes**.
 
-   ![Zatrzymaj serwer maszyn wirtualnych](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![Zatrzymaj serwer maszyn wirtualnych](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. Z listy wybierz maszynę wirtualną.
 

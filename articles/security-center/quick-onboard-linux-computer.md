@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 110dcb1531390b207ae741af07fe0ad18964aae1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910621"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816126"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Szybki start: Dołączanie komputerów z systemem Linux do usługi Azure Security Center
-Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center dla zasobów z systemem Linux uruchomionych poza platformą Azure, np. lokalnych lub znajdujących się w innych chmurach, aprowizując agenta systemu Linux.
+Po dodaniu subskrypcji platformy Azure możesz włączyć Security Center dla zasobów systemu Linux działających poza platformą Azure, na przykład lokalnie lub w innych chmurach, udostępniając agenta. Agent jest nazywany Microsoft Monitoring Agent (MMA), ale jest również znany jako agent pakietu OMS.
 
-Ten przewodnik Szybki start przedstawia sposób instalacji agenta systemu Linux na komputerze z systemem Linux.
+Ten przewodnik Szybki Start przedstawia sposób instalowania agenta na komputerze z systemem Linux.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do rozpoczęcia korzystania z usługi Security Center wymagana jest subskrypcja usługi Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
@@ -57,7 +57,7 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 
    ![Instalowanie agenta][5]
 
-Dzienniki agenta Centrum zabezpieczeń dla systemu Linux można znaleźć na: */var/opt/microsoft/omsagent/\<identyfikator obszaru roboczego > /log/*
+Dzienniki dla agenta można znaleźć na stronie: *Identyfikator obszaru roboczego\</var/opt/Microsoft/omsagent/>/log/*
 
   ![Dzienniki agenta][6]
 

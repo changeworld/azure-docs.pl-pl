@@ -1,24 +1,24 @@
 ---
-title: 'Szybki start: wykonywanie zapytań o dane przy użyciu biblioteki języka Python w usłudze Azure Data Explorer'
-description: Z tego przewodnika Szybki start dowiesz się, jak wykonywać zapytania o dane w usłudze Azure Data Explorer przy użyciu biblioteki języka Python.
+title: wykonywanie zapytań o dane przy użyciu biblioteki języka Python w usłudze Azure Data Explorer
+description: W tym artykule dowiesz się, jak wykonywać zapytania dotyczące danych z platformy Azure Eksplorator danych przy użyciu języka Python.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/16/2018
-ms.openlocfilehash: 253629bab6b0985ab8f540c653f3671c49e6d278
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.topic: conceptual
+ms.date: 08/05/2019
+ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360239"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827533"
 ---
-# <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>Szybki start: wykonywanie zapytań o dane przy użyciu biblioteki języka Python w usłudze Azure Data Explorer
+# <a name="query-data-using-the-azure-data-explorer-python-library"></a>wykonywanie zapytań o dane przy użyciu biblioteki języka Python w usłudze Azure Data Explorer
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer udostępnia [bibliotekę danych klienta dla języka Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ta biblioteka umożliwia wykonywanie zapytań o dane z poziomu kodu. W tym przewodniku Szybki start nawiążesz połączenie z tabelą w *klastrze help*, który skonfigurowaliśmy, aby ułatwić naukę. Następnie możesz wykonać zapytanie względem tabeli w tym klastrze i zwrócić wyniki.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer udostępnia [bibliotekę danych klienta dla języka Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ta biblioteka umożliwia wykonywanie zapytań o dane z poziomu kodu. Ten artykuł zawiera instrukcje łączenia się z tabelą w *klastrze pomocy* , który został skonfigurowany do uczenia się. Następnie możesz wykonać zapytanie względem tabeli w tym klastrze i zwrócić wyniki.
 
-Ten przewodnik Szybki start jest również dostępny w formie [notesu platformy Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb).
+Ten artykuł jest również dostępny jako [Notes platformy Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -95,7 +95,7 @@ df
 
 Powinno zostać wyświetlonych dziesięć najlepszych wyników z tabeli StormEvents.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Szybki start: pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer](python-ingest-data.md)
+> [Pozyskiwanie danych przy użyciu biblioteki języka Python Eksplorator danych platformy Azure](python-ingest-data.md)

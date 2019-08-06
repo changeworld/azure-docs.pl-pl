@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą SD Elements | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i SD Elements.
+title: 'Samouczek: Azure Active Directory integrację z elementami SD | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i elementami SD.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e6deb8b31559b8c5add06f1771cd69df0c1f136
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0272de238055151e73c13687f25745c3f402eb4
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091351"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826143"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Samouczek: Integracja usługi Azure Active Directory z elementami SD
+# <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Samouczek: Integracja Azure Active Directory z elementami SD
 
-W tym samouczku dowiesz się, jak zintegrować SD Elements w usłudze Azure Active Directory (Azure AD).
-Integrowanie SD Elements z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować elementy SD z usługą Azure Active Directory (Azure AD).
+Integracja elementów SD z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do SD Elements.
-* Użytkownikom można automatycznie zalogowany do SD Elements (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do elementów SD.
+* Możesz umożliwić użytkownikom automatyczne logowanie do elementów SD (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -39,19 +39,19 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 Aby skonfigurować integrację usługi Azure AD z elementami SD, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* SD Elements pojedynczego logowania jednokrotnego włączonych subskrypcji
+* Subskrypcja z włączonym logowaniem jednokrotnym dla elementów SD
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* SD Elements obsługuje **tożsamości** jednokrotne logowanie inicjowane przez
+* Elementy SD obsługują zainicjowane Logowanie jednokrotne w usłudze **dostawcy tożsamości**
 
-## <a name="adding-sd-elements-from-the-gallery"></a>Dodawanie SD elementów z galerii
+## <a name="adding-sd-elements-from-the-gallery"></a>Dodawanie elementów SD z galerii
 
-Aby skonfigurować integrację SD Elements w usłudze Azure AD, należy dodać SD Elements z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację elementów SD z usługą Azure AD, należy dodać elementy SD z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać SD Elements z galerii, wykonaj następujące czynności:**
+**Aby dodać elementy SD z galerii, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -65,31 +65,31 @@ Aby skonfigurować integrację SD Elements w usłudze Azure AD, należy dodać S
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **SD Elements**, wybierz opcję **SD Elements** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **elementy SD**, wybierz pozycję **elementy SD** z panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-    ![SD Elements na liście wyników](common/search-new-app.png)
+    ![Elementy SD na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą SD Elements w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w SD Elements musi zostać ustanowione.
+W tej sekcji należy skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu elementów SD na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w elementach SD.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z elementami SD, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą elementów SD, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie SD elementy logowania jednokrotnego](#configure-sd-elements-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Konfigurowanie logowania](#configure-sd-elements-single-sign-on)** jednokrotnego elementów SD — w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego SD Elements](#create-sd-elements-test-user)**  — aby odpowiednikiem Britta Simon w SD Elements, połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Tworzenie elementów SD test użytkownika](#create-sd-elements-test-user)** — Aby uzyskać odpowiednik Britta Simon w elementach SD, które są połączone z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z SD Elements, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą elementów SD, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **SD Elements** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracji aplikacji **elementów SD** wybierz pozycję **Logowanie**jednokrotne.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -103,16 +103,16 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SD Elements, wykona
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** wykonaj następujące kroki:
 
-    ![SD elementy domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![Informacje o rejestracji jednokrotnej w adresach URL i domenach elementów SD](common/idp-intiated.png)
 
     a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<tenantname>.sdelements.com/sso/saml2/metadata`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<tenantname>.sdelements.com/sso/saml2/acs/`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta elementy SD](mailto:support@sdelements.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem obsługi klienta elementów SD](mailto:support@sdelements.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. SD Elements aplikacja oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
+5. Aplikacja elementów SD oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć okno dialogowe **atrybuty użytkownika** .
 
     ![image](common/edit-attribute.png)
 
@@ -146,7 +146,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SD Elements, wykona
 
     ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-8. Na **Konfigurowanie SD Elements** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+8. W sekcji **Konfigurowanie elementów SD** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -156,27 +156,27 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z SD Elements, wykona
 
     c. Adres URL wylogowywania
 
-### <a name="configure-sd-elements-single-sign-on"></a>Konfigurowanie SD elementy logowania jednokrotnego
+### <a name="configure-sd-elements-single-sign-on"></a>Konfigurowanie logowania jednokrotnego elementów SD
 
-1. Aby uzyskać logowanie jednokrotne włączone, skontaktuj się z Twojego [zespołu pomocy technicznej SD Elements](mailto:support@sdelements.com) i udostępnia je z pliku pobranego certyfikatu.
+1. Aby włączyć logowanie jednokrotne, skontaktuj się z [zespołem pomocy technicznej dla elementów SD](mailto:support@sdelements.com) i podaj plik certyfikatu pobrane.
 
-1. W oknie innej przeglądarki logowanie jednokrotne do swojej dzierżawy SD Elements jako administrator.
+1. W innym oknie przeglądarki Zaloguj się do dzierżawy elementów SD jako administrator.
 
-1. W menu u góry kliknij **systemu**, a następnie **logowania jednokrotnego**.
+1. W menu u góry kliknij pozycję **system**, a następnie opcję **Logowanie**jednokrotne.
 
     ![Konfigurowanie logowania jednokrotnego](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
-1. Na **ustawienia rejestracji jednokrotnej** okno dialogowe, należy wykonać następujące czynności:
+1. W oknie dialogowym **Ustawienia logowania** jednokrotnego wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
 
-    a. Jako **typu logowania jednokrotnego**, wybierz opcję **SAML**.
+    a. Jako **Typ logowania**jednokrotnego wybierz pozycję **SAML**.
 
-    b. W **Identyfikatora jednostki dostawcy tożsamości** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator**, który skopiowano z witryny Azure portal.
+    b. W polu tekstowym **Identyfikator jednostki dostawcy tożsamości** wklej wartość **identyfikatora usługi Azure AD**, który został skopiowany z Azure Portal.
 
-    c. W **usłudze dostawcy tożsamości pojedynczego logowania jednokrotnego** pola tekstowego, Wklej wartość **adres URL logowania**, który skopiowano z witryny Azure portal.
+    c. W polu tekstowym usługa rejestracji jednokrotnej **dostawcy tożsamości** wklej wartość **adresu URL logowania**, która została skopiowana z Azure Portal.
 
-    d. Kliknij pozycję **Zapisz**.
+    d. Kliknij polecenie **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -205,15 +205,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do SD Elements.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do elementów SD.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **SD Elements**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **elementy SD**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **SD Elements**.
+2. Na liście Aplikacje wybierz pozycję **elementy SD**.
 
-    ![SD Elements łącze na liście aplikacji](common/all-applications.png)
+    ![Link elementów SD na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -229,33 +229,33 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-sd-elements-test-user"></a>Tworzenie użytkownika testowego SD Elements
+### <a name="create-sd-elements-test-user"></a>Tworzenie użytkownika testowego elementów SD
 
-Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w SD Elements. W przypadku SD Elements tworzenia użytkowników SD Elements jest zadanie ręczne.
+Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w elementach SD. W przypadku elementów SD tworzenie użytkowników elementów SD jest zadaniem ręcznym.
 
 **Aby utworzyć Britta Simon w elementach SD, wykonaj następujące czynności:**
 
-1. W oknie przeglądarki sieci web Zaloguj się do witryny firmy SD Elements jako administrator.
+1. W oknie przeglądarki sieci Web Zaloguj się do witryny firmy elementów SD jako administrator.
 
-1. W menu u góry kliknij **Zarządzanie użytkownikami**, a następnie **użytkowników**.
+1. W menu u góry kliknij pozycje **Zarządzanie**użytkownikami, a następnie **Użytkownicy**.
 
-    ![Tworzenie użytkownika testowego SD Elements](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
+    ![Tworzenie użytkownika testowego elementów SD](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
 1. Kliknij pozycję **Dodaj nowego użytkownika**.
 
-    ![Tworzenie użytkownika testowego SD Elements](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
+    ![Tworzenie użytkownika testowego elementów SD](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
-1. Na **Dodaj nowego użytkownika** okno dialogowe, należy wykonać następujące czynności:
+1. W oknie dialogowym **Dodawanie nowego użytkownika** wykonaj następujące czynności:
 
-    ![Tworzenie użytkownika testowego SD Elements](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
+    ![Tworzenie użytkownika testowego elementów SD](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
 
-    a. W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com** .
+    a. W polu tekstowym **adres e-mail** wprowadź adres e-mail użytkownika, np **brittasimon@contoso.com** .
 
     b. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, na przykład **Britta**.
 
-    c. W **nazwisko** polu tekstowym Wprowadź nazwisko użytkownika, takich jak **Simon**.
+    c. W polu tekstowym nazwisko wpisz nazwisko użytkownika, np. **Simon**.
 
-    d. Jako **roli**, wybierz opcję **użytkownika**.
+    d. Jako **rola**wybierz pozycję **użytkownik**.
 
     e. Kliknij pozycję **Create User** (Utwórz użytkownika).
 
@@ -263,7 +263,7 @@ Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w SD Elements
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka SD Elements w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze SD Elements, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka elementy SD w panelu dostępu należy automatycznie zalogować się do elementów SD, dla których skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -271,4 +271,4 @@ Po kliknięciu kafelka SD Elements w panelu dostępu, powinien zostać automatyc
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

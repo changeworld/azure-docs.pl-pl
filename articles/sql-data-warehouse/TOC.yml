@@ -287,8 +287,6 @@
       items:
         - name: Uaktualnianie do wersji Gen2
           href: upgrade-to-latest-generation.md
-        - name: Przywracanie magazynu danych
-          href: sql-data-warehouse-restore.md
         - name: Monitorowanie obciążenia — portal
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: Monitorowanie obciążenia — widoki DMV

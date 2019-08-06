@@ -1,5 +1,5 @@
 ---
-title: Platforma ASP.NET Core z usługą SQL Database — usłudze Azure App Service | Dokumentacja firmy Microsoft
+title: ASP.NET Core z SQL Database Azure App Service | Microsoft Docs
 description: Dowiedz się, jak uruchomić aplikację .NET Core w usłudze Azure App Service z użyciem połączenia z usługą SQL Database.
 services: app-service\web
 documentationcenter: dotnet
@@ -11,17 +11,17 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 01/31/2019
+ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ad211eef673731a856c4db99fe0b4712217b23e5
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 800454c3a8037d4562ae80d1093519733472c89c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808486"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824619"
 ---
-# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Samouczek: Tworzenie aplikacji platformy ASP.NET Core i SQL Database w usłudze Azure App Service
+# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Samouczek: Tworzenie aplikacji ASP.NET Core i SQL Database w Azure App Service
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć usługę App Service w systemie _Linux_, zobacz [Tworzenie aplikacji platformy .NET Core i usługi SQL Database w usłudze Azure App Service w systemie Linux](./containers/tutorial-dotnetcore-sqldb-app.md).
@@ -131,7 +131,7 @@ Po utworzeniu serwera logicznego SQL Database w interfejsie wiersza polecenia pl
 Utwórz [regułę zapory na poziomie serwera usługi Azure SQL Database](../sql-database/sql-database-firewall-configure.md) za pomocą polecenia [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create). Po ustawieniu początkowego i końcowego adresu IP na 0.0.0.0 zapora będzie otwierana tylko dla innych zasobów platformy Azure. 
 
 ```azurecli-interactive
-az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP] 
@@ -168,11 +168,11 @@ W tym kroku wdrożysz aplikację .NET Core połączoną z bazą danych SQL Datab
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+### <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
-### <a name="configure-an-environment-variable"></a>Konfigurowanie zmiennej środowiskowej
+### <a name="configure-connection-string"></a>Konfigurowanie parametrów połączenia
 
 Aby ustawić parametry połączenia dla aplikacji platformy Azure, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell. W poniższym poleceniu zastąp parametry *\<nazwa_aplikacji>* i *\<parametry_połączenia>* utworzonymi wcześniej parametrami połączenia.
 
@@ -180,13 +180,21 @@ Aby ustawić parametry połączenia dla aplikacji platformy Azure, użyj polecen
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
 ```
 
-Następnie wybierz dla ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` wartość _Produkcja_. To ustawienie umożliwia sprawdzenie, czy pracujesz na platformie Azure, ponieważ używasz języka SQLite w lokalnym środowisku programowania i bazy danych SQL Database w środowisku platformy Azure.
+W ASP.NET Core można użyć tego nazwanego ciągu połączenia (`MyDbConnection`) przy użyciu wzorca standardowego, takiego jak wszystkie parametry połączenia określone w pliku *appSettings. JSON*. W tym przypadku `MyDbConnection` jest również zdefiniowane w pliku *appSettings. JSON*. W przypadku uruchamiania w App Service parametry połączenia zdefiniowane w App Service mają pierwszeństwo przed parametrami połączenia zdefiniowanymi w pliku *appSettings. JSON*. Kod używa wartości *appSettings. JSON* podczas tworzenia lokalnego i ten sam kod używa wartości App Service po wdrożeniu.
+
+Aby zobaczyć, w jaki sposób w kodzie występuje odwołanie do parametrów połączenia, zobacz [łączenie z SQL Database w środowisku produkcyjnym](#connect-to-sql-database-in-production).
+
+### <a name="configure-environment-variable"></a>Konfiguruj zmienną środowiskową
+
+Następnie wybierz dla ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` wartość _Produkcja_. To ustawienie pozwala sprawdzić, czy korzystasz z platformy Azure, ponieważ korzystasz z oprogramowania SQLite dla lokalnego środowiska deweloperskiego i SQL Database dla środowiska platformy Azure.
 
 W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `ASPNETCORE_ENVIRONMENT` w aplikacji platformy Azure. Zastąp symbol zastępczy *\<nazwa_aplikacji>* .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
 ```
+
+Aby zobaczyć, w jaki sposób zmienna środowiskowa jest przywoływana w kodzie, zobacz [Connect to SQL Database in Production](#connect-to-sql-database-in-production).
 
 ### <a name="connect-to-sql-database-in-production"></a>Łączenie z bazą danych SQL Database w środowisku produkcyjnym
 
@@ -212,9 +220,9 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-Jeśli kod wykryje, że został uruchomiony w środowisku produkcyjnym (co wskazuje na środowisko platformy Azure), używa skonfigurowanych parametrów połączenia w celu połączenia z bazą danych SQL Database.
+Jeśli ten kod wykryje, że jest uruchomiony w środowisku produkcyjnym (który wskazuje środowisko platformy Azure), następnie używa parametrów połączenia skonfigurowanych do łączenia się z SQL Database.
 
-Wywołanie `Database.Migrate()` jest pomocne, gdy działa na platformie Azure, ponieważ automatycznie tworzy bazy danych, których potrzebuje aplikacja .NET Core, w oparciu o konfigurację migracji. 
+`Database.Migrate()` Wywołanie jest pomocne, gdy zostanie uruchomione na platformie Azure, ponieważ automatycznie tworzy bazy danych, których potrzebuje aplikacja .NET Core, na podstawie konfiguracji migracji. 
 
 > [!IMPORTANT]
 > W przypadku aplikacji produkcyjnych wymagających skalowania w poziomie postępuj zgodnie z najlepszymi rozwiązaniami opisanymi w rozdziale [Stosowanie migracji w środowisku produkcyjnym](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production).
@@ -361,11 +369,11 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Po ukończeniu `git push` przejdź do aplikacji usługi App Service i wypróbuj nowe funkcje.
+Po zakończeniu przejdź do aplikacji App Service i spróbuj dodać element do wykonania i zaznacz opcję **gotowe.** `git push`
 
 ![Aplikacja platformy Azure po zakończeniu migracji Code First](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
-Nadal wyświetlane są wszystkie istniejące elementy do wykonania. Po ponownym opublikowaniu aplikacji .NET Core dane istniejące w bazie danych SQL Database nie zostaną utracone. Ponadto migracje Entity Framework Core zmieniają tylko schemat danych i pozostawiają istniejące dane bez zmian.
+Nadal wyświetlane są wszystkie istniejące elementy do wykonania. Po ponownym opublikowaniu aplikacji .NET Core istniejące dane w SQL Database nie zostaną utracone. Ponadto migracje Entity Framework Core zmieniają tylko schemat danych i pozostawiają istniejące dane bez zmian.
 
 ## <a name="stream-diagnostic-logs"></a>Przesyłanie strumieniowe dzienników diagnostycznych
 
@@ -374,9 +382,9 @@ Gdy aplikacja ASP.NET Core działa w usłudze Azure App Service, dzienniki konso
 Przykładowy projekt jest już zgodny ze wskazówkami dostępnymi w [opisie rejestrowania platformy ASP.NET Core na platformie Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) z dwiema zmianami konfiguracji:
 
 - Zawiera odwołanie do `Microsoft.Extensions.Logging.AzureAppServices` w pliku *DotNetCoreSqlDb.csproj*.
-- Wywołuje `loggerFactory.AddAzureWebAppDiagnostics()` w pliku *Startup.cs*.
+- Wywołania `loggerFactory.AddAzureWebAppDiagnostics()` w *program.cs*.
 
-Aby zmienić domyślny [poziom rejestrowania](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) platformy ASP.NET Core `Warning` w usłudze App Service na poziom `Information`, użyj w usłudze Cloud Shell polecenia [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config).
+Aby zmienić domyślny [poziom rejestrowania](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) platformy ASP.NET Core `Error` w usłudze App Service na poziom `Information`, użyj w usłudze Cloud Shell polecenia [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config).
 
 ```azurecli-interactive
 az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information
@@ -394,7 +402,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 Po rozpoczęciu przesyłania strumieniowego dzienników odśwież aplikację platformy Azure w przeglądarce, aby wywołać pewien ruch w Internecie. Teraz można zobaczyć dzienniki konsoli przesłane potokiem do terminala. Jeśli nie widzisz dzienników konsoli, sprawdź ponownie w ciągu 30 sekund.
 
-Aby w dowolnym momencie zatrzymać przesyłanie strumieniowe dzienników, wpisz `Ctrl`+`C`.
+Aby zatrzymać przesyłanie strumieniowe dzienników w dowolnym momencie `Ctrl`, wpisz + `C`polecenie.
 
 Aby uzyskać więcej informacji na temat dostosowywania dzienników platformy ASP.NET Core, zobacz [Logging in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging) (Rejestrowanie na platformie ASP.NET Core).
 

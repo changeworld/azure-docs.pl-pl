@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Indeks z wieloma źródłami danych — usługa Azure Search'
-description: Dowiedz się, jak importować dane z wielu źródeł danych do jednego indeksu usługi Azure Search.
+title: 'Samouczek: Indeksowanie wielu źródeł danych — Azure Search'
+description: Dowiedz się, jak importować dane z wielu źródeł danych do jednego indeksu Azure Search.
 author: RobDixon22
 manager: HeidiSteen
 services: search
@@ -8,108 +8,107 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: v-rodixo
-ms.custom: seodec2018
-ms.openlocfilehash: 8ce3c66432f3d2d0cb973886498aa46e7820698c
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: dcc4a7f267d1e852fcd50050f6683baa0e736199
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485269"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827207"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Samouczek: Połącz dane z wielu źródeł danych w jednym indeksie usługi Azure Search
+# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Ręczny Łączenie danych z wielu źródeł danych w jednym indeksie Azure Search
 
-Usługa Azure Search można zaimportować, analizowania i indeksowanie danych z wielu źródeł danych w jeden połączone indeks wyszukiwania. Obejmuje to obsługę w sytuacjach, gdzie strukturalne dane są agregowane z danymi ze strukturą mniej, a nawet zwykły tekst z innych źródeł, takich jak tekst, HTML, lub dokumenty JSON.
+Azure Search umożliwia importowanie, analizowanie i indeksowanie danych z wielu źródeł danych w jednym połączonym indeksie wyszukiwania. Obsługuje to sytuacje, w których dane strukturalne są agregowane przy użyciu mniej strukturalnych lub nawet danych zwykłego tekstu z innych źródeł, takich jak tekst, HTML lub dokumenty JSON.
 
-W tym samouczku opisano sposób indeksowanie hotelu danych ze źródła danych usługi Azure Cosmos DB i scalania, ze szczegółami pokoju hotelu otrzymane dokumentacji usługi Azure Blob Storage. Wynik będzie indeksu wyszukiwania połączone hotelu zawierający złożonych typów danych.
+W tym samouczku opisano sposób indeksowania danych hotelu ze źródła danych Azure Cosmos DB i scalania z informacjami o pokoju hotelowym pobranymi z dokumentów Blob Storage platformy Azure. Wynik będzie połączonym indeksem wyszukiwania hotelowego zawierającym złożone typy danych.
 
-W tym samouczku C#, zestawu SDK .NET dla usługi Azure Search i witryny Azure portal wykonać następujące zadania:
+Ten samouczek używa C#programu, zestawu .NET SDK dla Azure Search i Azure Portal do wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Przekazywanie przykładowych danych i tworzenia źródeł danych
-> * Zidentyfikuj klucz dokumentu
+> * Przekazywanie przykładowych danych i tworzenie źródeł danych
+> * Identyfikowanie klucza dokumentu
 > * Definiowanie i tworzenie indeksu
-> * Indeks hotelu dane z usługi Azure Cosmos DB
-> * Scal dane pokoju w hotelu z magazynu obiektów blob
+> * Indeksuj dane hotelu z Azure Cosmos DB
+> * Scalanie danych pokoju hotelowego z magazynu obiektów BLOB
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Następujących usług, narzędzi i danych są używane w tym przewodniku Szybki Start. 
+W tym przewodniku Szybki Start są używane następujące usługi, narzędzia i dane. 
 
-- [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku.
+- [Utwórz usługę Azure Search](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi.
 
-- [Tworzenie konta usługi Azure Cosmos DB](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych hotelu.
+- [Utwórz konto Azure Cosmos DB](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych hotelowych.
 
-- [Tworzenie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) przykładowym danym JSON do przechowywania danych obiektu blob.
+- [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) na potrzeby przechowywania danych przykładowych obiektów BLOB JSON.
 
-- [Zainstaluj program Visual Studio](https://visualstudio.microsoft.com/) do użycia jako IDE.
+- [Zainstaluj program Visual Studio](https://visualstudio.microsoft.com/) , aby użyć go jako środowiska IDE.
 
 ### <a name="install-the-project-from-github"></a>Instalowanie projektu z usługi GitHub
 
-1. Znajdź przykładowe repozytorium w witrynie GitHub: [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
-1. Wybierz **klonowania lub pobierania** i prywatne lokalnej kopii repozytorium.
-1. Otwórz program Visual Studio i zainstaluj pakiet NuGet platformy Microsoft Azure Search, jeśli nie jest jeszcze zainstalowana. W **narzędzia** menu, wybierz opcję **Menedżera pakietów NuGet** i następnie **Zarządzaj pakietami NuGet dla rozwiązania...** . Wybierz **Przeglądaj** kartę, a następnie w polu wyszukiwania wpisz "Usługi Azure Search". Zainstaluj **Microsoft.Azure.Search** , gdy pojawia się na liście (w wersji 9.0.1, lub nowszej). Trzeba będzie przejść przez wyświetlanie dodatkowych okien dialogowych, aby ukończyć instalację.
+1. Znajdź przykładowe repozytorium w usłudze GitHub: [Azure-Search-dotnet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+1. Wybierz pozycję **Klonuj lub Pobierz** , aby utworzyć prywatną kopię lokalną repozytorium.
+1. Otwórz program Visual Studio i zainstaluj pakiet NuGet wyszukiwania Microsoft Azure, jeśli nie został jeszcze zainstalowany. W menu **Narzędzia** wybierz pozycję **Menedżer pakietów NuGet** , a następnie **Zarządzaj pakietami NuGet dla rozwiązania..** .. Wybierz kartę **Przeglądaj** , a następnie wpisz ciąg "Azure Search" w polu wyszukiwania. Zainstaluj **program Microsoft. Azure. Search** , gdy zostanie wyświetlony na liście (w wersji 9.0.1 lub nowszej). Aby ukończyć instalację, trzeba będzie kliknąć dodatkowe okna dialogowe.
 
-    ![Aby dodać bibliotek platformy Azure za pomocą narzędzia NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    ![Dodawanie bibliotek platformy Azure przy użyciu narzędzia NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
-1. Za pomocą programu Visual Studio, przejdź do repozytorium lokalnego i Otwórz plik rozwiązania **AzureSearchMultipleDataSources.sln**.
+1. Korzystając z programu Visual Studio, przejdź do lokalnego repozytorium i Otwórz plik rozwiązania **AzureSearchMultipleDataSources. sln**.
 
 ## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
 
-Do interakcji z usługi Azure Search, konieczne jest adres URL usługi i klucza dostępu. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+Aby można było korzystać z usługi Azure Search, wymagany jest adres URL usługi i klucz dostępu. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
-1. [Zaloguj się do witryny Azure portal](https://portal.azure.com/)i w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
+1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Uzyskaj adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
-1. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
+1. W obszarze **Ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
 
-![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-get-started-postman/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
+![Pobieranie punktu końcowego http i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego http i klucza dostępu")
 
-Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania, na podstawie danego żądania między aplikacją wysyłającą żądanie i usługi, która je obsługuje.
+Wszystkie żądania wymagają klucza API dla każdego żądania wysyłanego do usługi. Prawidłowy klucz ustanawia zaufanie dla każdego żądania, między aplikacją wysyłającą żądanie a usługą, która go obsługuje.
 
-## <a name="prepare-sample-azure-cosmos-db-data"></a>Przygotowanie przykładowych danych usługi Azure Cosmos DB
+## <a name="prepare-sample-azure-cosmos-db-data"></a>Przygotowywanie przykładowych danych Azure Cosmos DB
 
-W przykładzie użyto dwa zestawy małych dane, które opisują siedem fikcyjnej hotels. Jeden zestaw opisuje hotele, samodzielnie i zostaną załadowane do bazy danych Azure Cosmos DB. Drugi zestaw zawiera szczegóły pokoju w hotelu i jest dostarczana jako siedmiu osobnych plikach JSON do przekazania do usługi Azure Blob Storage.
+Ten przykład używa dwóch małych zestawów danych, które opisują siedem fikcyjnych hoteli. Jeden zestaw opisuje same hotele i zostanie załadowany do bazy danych Azure Cosmos DB. Drugi zestaw zawiera szczegółowe informacje o pokoju hotelowym i jest dostarczany jako siedem oddzielnych plików JSON do przekazania do Blob Storage platformy Azure.
 
-1. [Zaloguj się do witryny Azure portal](https://portal.azure.com), a następnie przejdź strony Przegląd konta usługi Azure Cosmos DB.
+1. [Zaloguj się do Azure Portal](https://portal.azure.com), a następnie przejdź do strony przegląd konta Azure Cosmos DB.
 
-1. Na pasku menu kliknij pozycję Dodaj kontener. Określ "Utwórz nową bazę danych", a następnie użyj nazwy **hotelu pokojów db**. Wprowadź **pokojach hotelowych** nazwy kolekcji i **/HotelId** dla klucza partycji. Kliknij przycisk **OK** do utworzenia bazy danych i kontenera.
+1. Na pasku menu kliknij pozycję Dodaj kontener. Określ wartość "Utwórz nową bazę danych" i użyj nazwy " **pokoje hotelowe-DB**". Wprowadź **pokoje hotelowe** dla nazwy kolekcji i **/HotelId** dla klucza partycji. Kliknij przycisk **OK** , aby utworzyć bazę danych i kontener.
 
-   ![Kontener usługi Azure Cosmos DB Dodaj](media/tutorial-multiple-data-sources/cosmos-add-container.png "Dodaj kontener usługi Azure Cosmos DB")
+   ![Dodaj kontener Azure Cosmos DB](media/tutorial-multiple-data-sources/cosmos-add-container.png "Dodawanie kontenera Azure Cosmos DB")
 
-1. Przejdź do Eksploratora danych Cosmos DB i wybierz pozycję **elementów** pod **hotele** kontener w ramach **hotelu pokojów db** bazy danych. Następnie kliknij przycisk **element Przekaż** na pasku poleceń.
+1. Przejdź do Eksplorator danych Cosmos DB i wybierz element **Items** w kontenerze **Hotele** w bazie danych **pokojów hotelowych** . Następnie kliknij przycisk **Przekaż element** na pasku poleceń.
 
-   ![Przekaż do kolekcji usługi Azure Cosmos DB](media/tutorial-multiple-data-sources/cosmos-upload.png "przekazać do kolekcji usługi Cosmos DB")
+   ![Przekaż do kolekcji Azure Cosmos DB](media/tutorial-multiple-data-sources/cosmos-upload.png "Przekaż do kolekcji Cosmos DB")
 
-1. W panelu przekazywania, kliknij przycisk folder, a następnie przejdź do pliku **cosmosdb/HotelsDataSubset_CosmosDb.json** w folderze projektu. Kliknij przycisk **OK** aby rozpocząć przekazywanie.
+1. W panelu przekazywania kliknij przycisk folder, a następnie przejdź do pliku **cosmosdb/HotelsDataSubset_CosmosDb. JSON** w folderze projektu. Kliknij przycisk **OK** , aby rozpocząć przekazywanie.
 
-   ![Wybierz plik do przekazania](media/tutorial-multiple-data-sources/cosmos-upload2.png "wybierz plik do przekazania")
+   ![Wybierz plik do przekazania](media/tutorial-multiple-data-sources/cosmos-upload2.png "Wybierz plik do przekazania")
 
-1. Użyj przycisku Odśwież, aby odświeżyć widoku elementów w kolekcji hotels. Powinien zostać wyświetlony na liście siedem nowych dokumentów bazy danych.
+1. Użyj przycisku Odśwież, aby odświeżyć widok elementów w kolekcji hoteli. Powinien być widoczny na liście siedem nowych dokumentów bazy danych.
 
-## <a name="prepare-sample-blob-data"></a>Przygotowanie przykładowych danych obiektów blob
+## <a name="prepare-sample-blob-data"></a>Przygotowywanie przykładowych danych obiektów BLOB
 
-1. [Zaloguj się do witryny Azure portal](https://portal.azure.com), przejdź do swojego konta usługi Azure storage, kliknij przycisk **obiektów blob**, a następnie kliknij przycisk **+ kontener**.
+1. [Zaloguj się do Azure Portal](https://portal.azure.com), przejdź do konta usługi Azure Storage, kliknij pozycję **obiekty blob**, a następnie kliknij pozycję **+ kontener**.
 
-1. [Utwórz kontener obiektów blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) o nazwie **pokojach hotelowych** do przechowywania plików JSON pokoju w hotelu przykładowe. Można ustawić poziom dostępu publicznego do dowolnego z jego prawidłowe wartości.
+1. [Utwórz kontener obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) o nazwie **pokoje hotelowe** , aby zapisać przykładowe pliki JSON pokoju hotelowego. Można ustawić poziom dostępu publicznego na dowolną z jego prawidłowych wartości.
 
-   ![Utwórz kontener obiektów blob](media/tutorial-multiple-data-sources/blob-add-container.png "Utwórz kontener obiektów blob")
+   ![Tworzenie kontenera obiektów BLOB](media/tutorial-multiple-data-sources/blob-add-container.png "Tworzenie kontenera obiektów BLOB")
 
-1. Po utworzeniu kontenera otwórz go i wybierz **przekazywanie** na pasku poleceń.
+1. Po utworzeniu kontenera Otwórz go i wybierz pozycję **Przekaż** na pasku poleceń.
 
-   ![Przekaż na pasku poleceń](media/search-semi-structured-data/upload-command-bar.png "przekazywania na pasku poleceń")
+   ![Przekaż na pasku poleceń](media/search-semi-structured-data/upload-command-bar.png "Przekaż na pasku poleceń")
 
-1. Przejdź do folderu zawierającego pliki przykładowe. Zaznacz wszystkie z nich, a następnie kliknij przycisk **przekazywanie**.
+1. Przejdź do folderu zawierającego pliki przykładowe. Zaznacz wszystkie z nich, a następnie kliknij przycisk **Przekaż**.
 
-   ![Przekazywanie plików](media/tutorial-multiple-data-sources/blob-upload.png "przekazywanie plików")
+   ![Przekaż pliki](media/tutorial-multiple-data-sources/blob-upload.png "Przekaż pliki")
 
-Po zakończeniu przekazywania pliki powinny pojawić się na liście dla kontenera danych.
+Po zakończeniu przekazywania pliki powinny pojawić się na liście kontenera danych.
 
 ## <a name="set-up-connections"></a>Konfigurowanie połączeń
 
-Informacje o połączeniu dla usługi wyszukiwania i źródła danych jest określona w **appsettings.json** plików w rozwiązaniu. 
+Informacje o połączeniu dla usługi wyszukiwania i źródeł danych są określone w pliku **appSettings. JSON** w rozwiązaniu. 
 
-1. W programie Visual Studio, otwórz **AzureSearchMultipleDataSources.sln** pliku.
+1. W programie Visual Studio Otwórz plik **AzureSearchMultipleDataSources. sln** .
 
-1. W Eksploratorze rozwiązań, Edytuj **appsettings.json** pliku.  
+1. W Eksplorator rozwiązań Edytuj plik **appSettings. JSON** .  
 
 ```json
 {
@@ -122,46 +121,46 @@ Informacje o połączeniu dla usługi wyszukiwania i źródła danych jest okre�
 }
 ```
 
-Pierwsze dwie pozycje klawisze administrator i adres URL dla usługi Azure Search. Podany punkt końcowy `https://mydemo.search.windows.net`, na przykład to nazwa usługi w celu zapewnienia `mydemo`.
+Pierwsze dwa wpisy używają adresu URL i kluczy administracyjnych dla usługi Azure Search. Załóżmy na przykład, że nazwa usługi jest `mydemo`określona. `https://mydemo.search.windows.net`
 
-Następnej pozycji określić nazwy konta i informacje o parametrach połączenia dla usługi Azure Blob Storage i źródeł danych usługi Azure Cosmos DB.
+Następne wpisy określają nazwy kont i informacje o parametrach połączenia dla Blob Storage platformy Azure i Azure Cosmos DB źródeł danych.
 
-### <a name="identify-the-document-key"></a>Zidentyfikuj klucz dokumentu
+### <a name="identify-the-document-key"></a>Identyfikowanie klucza dokumentu
 
-W usłudze Azure Search pola klucza jednoznacznie identyfikuje każdy dokument w indeksie. Każdy indeks wyszukiwania musi mieć dokładnie jedno pole klucza typu `Edm.String`. Pole klucza musi być obecny dla każdego dokumentu w źródle danych, który jest dodawany do indeksu. (W rzeczywistości to jedyne wymagane pole.)
+W Azure Search pole klucza jednoznacznie identyfikuje każdy dokument w indeksie. Każdy indeks wyszukiwania musi mieć dokładnie jedno pole klucza typu `Edm.String`. Pole klucza musi być obecne dla każdego dokumentu w źródle danych, które jest dodawane do indeksu. (W rzeczywistości jest to jedyne pole wymagane).
 
-Gdy indeksowanie danych z wielu źródeł danych, wszystkie wartości klucza źródła danych musi być mapowane do tego samego pola klucza w indeksie połączone. Wymaga często, niektóre z góry planowania zidentyfikować klucz dokumentu istotnych dla indeksu i upewnij się, że znajduje się w każdym źródle danych.
+Podczas indeksowania danych z wielu źródeł danych każda wartość klucza źródła danych musi być mapowana na to samo pole klucza w połączonym indeksie. Często wymaga to pewnej planowania z góry, aby zidentyfikować istotny klucz dokumentu dla indeksu, i upewnić się, że istnieje w każdym źródle danych.
 
-Indeksatorów usługi Azure Search służy do zmiany nazwy, a nawet formatowania pól danych w trakcie indeksowania mapowań pól, tak, że źródło danych może zostać skierowany do pola prawidłowy indeks.
+Azure Search indeksatorów mogą używać mapowań pól do zmiany nazw i nawet ponownego formatowania pól danych podczas procesu indeksowania, dzięki czemu dane źródłowe mogą być kierowane do poprawnego pola indeksu.
 
-Na przykład w nasze przykładowe dane usługi Azure Cosmos DB, identyfikator hotelu nosi nazwę **HotelId**. Ale w plikach obiektów blob JSON pokojów hotelu, nosi nazwę identyfikatora hotelu **identyfikator**. Program obsługuje to przez mapowanie **identyfikator** pola z obiektów blob do **HotelId** pola klucza w indeksie.
+Na przykład w naszym przykładzie Azure Cosmos DB dane, identyfikator hotelu ma nazwę **HotelId**. Jednak w plikach obiektów BLOB JSON dla pokojów hotelowych identyfikator hotelu ma nazwę **ID**. Program obsługuje to przez mapowanie pola **identyfikatora** z obiektów BLOB do pola klucza **HotelId** w indeksie.
 
 > [!NOTE]
-> W większości przypadków klucze generowane automatycznie dokumentu, takich jak te utworzone domyślnie przez niektóre indeksatory nie należy wprowadzać klucze dokumentu dobre dla indeksów połączone. Ogólnie rzecz biorąc chcesz użyć zrozumiałe, unikatowych wartości klucza, który już istnieje w, lub można łatwo dodać do źródła danych.
+> W większości przypadków klucze dokumentu generowane automatycznie, takie jak te utworzone domyślnie przez niektórych indeksatorów, nie należy tworzyć prawidłowych kluczy dokumentów dla połączonych indeksów. Ogólnie rzecz biorąc, należy użyć znaczącej, unikatowej wartości klucza, która już istnieje w programie, lub można ją łatwo dodać do źródła danych.
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-Po danych i ustawień konfiguracji znajdują się w miejscu, próbki programu **AzureSearchMultipleDataSources.sln** powinno być gotowe do kompilowania i uruchamiania.
+Po wprowadzeniu ustawień danych i konfiguracji, przykładowy program w **AzureSearchMultipleDataSources. sln** powinien być gotowy do kompilowania i uruchamiania.
 
-Prosty C#/Aplikacja konsoli .NET wykonuje następujące zadania:
-* Tworzy indeks usługi Azure Search oparty na strukturze danych C# klasy hotelu, (który również odwołuje się do klas adres i miejsca).
-* Tworzy źródła danych usługi Azure Cosmos DB i działanie indeksatora, który mapuje dane usługi Azure Cosmos DB na pola indeksu.
-* Jest uruchamiany indeksator usługi Azure Cosmos DB można załadować danych hotelu.
-* Tworzy źródła danych usługi Azure Blob Storage i działanie indeksatora, który mapuje dane obiektów blob JSON na pola indeksu.
-* Jest uruchamiany indeksator usługi Azure blob storage do ładowania danych pokoje.
+Ta prosta C#Aplikacja konsolowa/.NET wykonuje następujące zadania:
+* Tworzy nowy indeks Azure Search na podstawie struktury danych klasy C# hotelu (która odwołuje się również do klas adresów i pokojów).
+* Tworzy Azure Cosmos DB źródło danych i indeksator, który mapuje Azure Cosmos DB dane na pola indeksu.
+* Uruchamia indeksator Azure Cosmos DB w celu załadowania danych hotelu.
+* Tworzy źródło danych usługi Azure Blob Storage i indeksator, który mapuje dane obiektów BLOB JSON do pól indeksu.
+* Uruchamia indeksator usługi Azure Blob Storage w celu załadowania danych pokojów.
 
- Przed uruchomieniem programu należy poświęcić chwilę na zapoznają się z kodem i definicjami indeksu i indeksatora dla tego przykładu. Odpowiedni kod znajduje się w dwóch plikach:
+ Przed uruchomieniem programu Poświęć minutę na przeanalizowanie kodu i definicji indeksu i indeksatora dla tego przykładu. Odpowiedni kod znajduje się w dwóch plikach:
 
   + **Hotel.cs** zawiera schemat definiujący indeks
-  + **Plik program.cs** zawiera funkcje, które utworzyć indeks usługi Azure Search, źródła danych i indeksatorów i załadować łączne wyniki do indeksu.
+  + **Program.cs** zawiera funkcje, które tworzą indeks Azure Search, źródła danych i indeksatory, a następnie Ładuj połączone wyniki do indeksu.
 
 ### <a name="define-the-index"></a>Definiowanie indeksu
 
-Ten przykładowy program używa zestawu .NET SDK do definiowania i tworzenie indeksu usługi Azure Search. Wykorzystuje ona [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) klasy do generowania struktury indeksu z C# klasy modelu danych.
+Ten przykładowy program używa zestawu .NET SDK do definiowania i tworzenia indeksu Azure Search. Wykorzystuje klasę [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) , aby wygenerować strukturę indeksu z klasy modelu C# danych.
 
-Model danych jest definiowany przez klasę hotelu, która również zawiera odwołania do klasy adres i miejsca. FieldBuilder rozwija przez wiele definicji klasy do generowania strukturę złożoną danych dla indeksu. Tagi metadanych są używane do definiowania atrybuty każdego pola, na przykład tego, czy jest wyszukiwanie i sortowanie.
+Model danych jest definiowany przez klasę hotelu, która również zawiera odwołania do klas Address i Room. FieldBuilder przechodzi przez wiele definicji klas w celu wygenerowania złożonej struktury danych dla indeksu. Tagi metadanych są używane do definiowania atrybutów poszczególnych pól, na przykład czy można je przeszukiwać czy sortować.
 
-Poniższe fragmenty kodu z **Hotel.cs** pliku pokazują, jak można określić jedno pole i odwołania do innej klasy modelu danych.
+Poniższe fragmenty kodu z pliku **Hotel.cs** pokazują, jak można określić jedno pole i odwołanie do innej klasy modelu danych.
 
 ```csharp
 . . . 
@@ -172,7 +171,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-W **Program.cs** pliku indeksu jest zdefiniowana za pomocą nazwy i kolekcji pól generowanych przez `FieldBuilder.BuildForType<Hotel>()` metody, a następnie utworzono w następujący sposób:
+W pliku **program.cs** indeks jest zdefiniowany przy użyciu nazwy i kolekcji pól wygenerowanej przez `FieldBuilder.BuildForType<Hotel>()` metodę, a następnie utworzony w następujący sposób:
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -189,11 +188,11 @@ private static async Task CreateIndex(string indexName, SearchServiceClient sear
 }
 ```
 
-### <a name="create-azure-cosmos-db-data-source-and-indexer"></a>Tworzenie źródła danych usługi Azure Cosmos DB i indeksatora
+### <a name="create-azure-cosmos-db-data-source-and-indexer"></a>Tworzenie Azure Cosmos DB źródła danych i indeksatora
 
-Obok główny program obejmuje logiki, aby utworzyć źródło danych usługi Azure Cosmos DB dla danych hotels.
+Następny program główny zawiera logikę, aby utworzyć Azure Cosmos DB źródło danych dla danych hoteli.
 
-Najpierw łączy nazwę bazy danych Azure Cosmos DB parametry połączenia. Następnie definiuje obiekt źródła danych, w tym ustawienia specyficzne dla usługi Azure Cosmos DB źródeł, takie jak właściwości [useChangeDetection].
+Najpierw łączy nazwę bazy danych Azure Cosmos DB z parametrami połączenia. Następnie definiuje obiekt źródła danych, w tym ustawienia specyficzne dla źródeł Azure Cosmos DB, takich jak Właściwość [useChangeDetection].
 
   ```csharp
 private static async Task CreateAndRunCosmosDbIndexer(string indexName, SearchServiceClient searchService)
@@ -215,7 +214,7 @@ private static async Task CreateAndRunCosmosDbIndexer(string indexName, SearchSe
     await searchService.DataSources.CreateOrUpdateAsync(cosmosDbDataSource);
   ```
 
-Po utworzeniu źródła danych, program konfiguruje indeksator usługi Azure Cosmos DB, o nazwie **hotelu pokojów cosmos indeksator**.
+Po utworzeniu źródła danych program skonfiguruje Azure Cosmos DB indeksatora o nazwie **pokoje hotelowe-Cosmos-Indexer**.
 
 ```csharp
     Indexer cosmosDbIndexer = new Indexer(
@@ -235,13 +234,13 @@ Po utworzeniu źródła danych, program konfiguruje indeksator usługi Azure Cos
     }
     await searchService.Indexers.CreateOrUpdateAsync(cosmosDbIndexer);
 ```
-Wszelkie istniejące indeksatory o takiej samej nazwie spowoduje usunięcie przed utworzeniem nowego, w przypadku, gdy użytkownik chce uruchomić więcej niż jeden raz w tym przykładzie.
+Program usunie wszystkie istniejące indeksatory o tej samej nazwie przed utworzeniem nowego, w przypadku, gdy chcesz uruchomić ten przykład więcej niż raz.
 
-W tym przykładzie definiuje harmonogram dla indeksatora, tak aby było uruchamiane raz dziennie. Jeśli nie chcesz indeksatora, aby automatycznie uruchomić ponownie w przyszłości, możesz usunąć właściwość harmonogram tego wywołania.
+Ten przykład definiuje harmonogram dla indeksatora, tak aby był uruchamiany raz dziennie. Możesz usunąć Właściwość Schedule z tego wywołania, jeśli nie chcesz, aby indeksator został automatycznie uruchomiony ponownie w przyszłości.
 
-### <a name="index-azure-cosmos-db-data"></a>Dane do indeksu usługi Azure Cosmos DB
+### <a name="index-azure-cosmos-db-data"></a>Indeksuj Azure Cosmos DB dane
 
-Po utworzeniu źródła danych i indeksatora kod, który jest uruchamiany indeksator jest krótki opis:
+Po utworzeniu źródła danych i indeksatora kod, który uruchamia indeksator, jest krótki:
 
 ```csharp
     try
@@ -254,13 +253,13 @@ Po utworzeniu źródła danych i indeksatora kod, który jest uruchamiany indeks
     }
 ```
 
-W tym przykładzie zawiera blok try-catch — prosty do zgłaszania błędów, które mogą wystąpić podczas wykonywania.
+Ten przykład zawiera prosty blok try-catch do zgłaszania błędów, które mogą wystąpić podczas wykonywania.
 
-Po uruchomieniu indeksatora usługi Azure Cosmos DB, indeks wyszukiwania będzie zawierać pełny zestaw przykładowych hotelu dokumentów. Jednak pole pokojów dla każdego hotelu będzie pusta tablica, ponieważ źródło danych usługi Azure Cosmos DB zawiera Brak szczegółów miejsca. Następnie program będzie pobierać z usługi Blob storage do ładowania i scalanie danych w pomieszczeniu.
+Po uruchomieniu indeksatora Azure Cosmos DB indeks wyszukiwania będzie zawierał pełny zestaw przykładowych dokumentów hotelowych. Jednak pole pokojów dla każdego hotelu będzie pustą tablicę, ponieważ źródło danych Azure Cosmos DB nie zawierało szczegółów pokoju. Następnie program pobierze z usługi BLOB Storage w celu załadowania i scalenia danych pokoju.
 
-### <a name="create-blob-storage-data-source-and-indexer"></a>Tworzenie źródła danych magazynu obiektów Blob i indeksatora
+### <a name="create-blob-storage-data-source-and-indexer"></a>Tworzenie źródła danych i indeksatora magazynu obiektów BLOB
 
-Aby uzyskać szczegółowe informacje pokoju program najpierw konfiguruje źródła danych magazynu obiektów Blob można się odwoływać do zestawu pojedynczych plików obiektów blob JSON.
+Aby uzyskać szczegółowe informacje o pokoju, program najpierw konfiguruje źródło danych magazynu obiektów blob, aby odwołać się do zestawu poszczególnych plików obiektów BLOB JSON.
 
 ```csharp
 private static async Task CreateAndRunBlobIndexer(string indexName, SearchServiceClient searchService)
@@ -275,7 +274,7 @@ private static async Task CreateAndRunBlobIndexer(string indexName, SearchServic
     await searchService.DataSources.CreateOrUpdateAsync(blobDataSource);
 ```
 
-Po utworzeniu źródła danych, program konfiguruje indeksatora obiektów blob o nazwie **hotelu pokojów indeksatora obiektów blob —** .
+Po utworzeniu źródła danych program skonfiguruje obiekt BLOB indeksatora o nazwie **sale**-Indexer.
 
 ```csharp
     // Add a field mapping to match the Id field in the documents to 
@@ -301,19 +300,19 @@ Po utworzeniu źródła danych, program konfiguruje indeksatora obiektów blob o
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-Obiekty BLOB JSON zawierają pola klucza o nazwie **identyfikator** zamiast **HotelId**. Kod używa `FieldMapping` klasy, aby poinformować indeksatora w celu kierowania **identyfikator** pola wartość **HotelId** klucz dokumentu w indeksie.
+Obiekty blob JSON zawierają pole klucza o nazwie **ID** zamiast **HotelId**. Kod używa klasy, `FieldMapping` aby określić indeksator do skierowania wartości pola **ID** do klucza dokumentu **HotelId** w indeksie.
 
-Indeksatory magazynu obiektów blob, można użyć parametrów, które identyfikują podczas analizowania trybu ma być używany. Podczas analizowania trybu różni się dla obiektów blob, które reprezentują pojedynczego dokumentu lub wiele dokumentów w ramach tego samego obiektu blob. W tym przykładzie każdy obiekt blob reprezentuje dokumentu jednego indeksu, dzięki czemu kod używa `IndexingParameters.ParseJson()` parametru.
+Indeksatory magazynu obiektów BLOB mogą używać parametrów, które identyfikują tryb analizowania, który ma być używany. Tryb analizy różni się dla obiektów BLOB reprezentujących pojedynczy dokument lub wiele dokumentów w ramach tego samego obiektu BLOB. W tym przykładzie każdy obiekt BLOB reprezentuje pojedynczy dokument indeksu, więc kod używa `IndexingParameters.ParseJson()` parametru.
 
-Aby uzyskać więcej informacji na temat analizowania parametrów dla obiektów blob JSON indeksatora, zobacz [obiektów blob JSON indeksu](search-howto-index-json-blobs.md). Aby uzyskać więcej informacji na temat określania tych parametrów przy użyciu zestawu .NET SDK, zobacz [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) klasy.
+Aby uzyskać więcej informacji na temat parametrów analizy indeksatora dla obiektów BLOB JSON, zobacz [indeksowanie obiektów BLOB JSON](search-howto-index-json-blobs.md). Aby uzyskać więcej informacji na temat określania tych parametrów przy użyciu zestawu .NET SDK, zobacz Klasa [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) .
 
-Wszelkie istniejące indeksatory o takiej samej nazwie spowoduje usunięcie przed utworzeniem nowego, w przypadku, gdy użytkownik chce uruchomić więcej niż jeden raz w tym przykładzie.
+Program usunie wszystkie istniejące indeksatory o tej samej nazwie przed utworzeniem nowego, w przypadku, gdy chcesz uruchomić ten przykład więcej niż raz.
 
-W tym przykładzie definiuje harmonogram dla indeksatora, tak aby było uruchamiane raz dziennie. Jeśli nie chcesz indeksatora, aby automatycznie uruchomić ponownie w przyszłości, możesz usunąć właściwość harmonogram tego wywołania.
+Ten przykład definiuje harmonogram dla indeksatora, tak aby był uruchamiany raz dziennie. Możesz usunąć Właściwość Schedule z tego wywołania, jeśli nie chcesz, aby indeksator został automatycznie uruchomiony ponownie w przyszłości.
 
-### <a name="index-blob-data"></a>Dane obiektu blob indeksu
+### <a name="index-blob-data"></a>Indeksuj dane obiektów BLOB
 
-Po utworzeniu źródła danych magazynu obiektów Blob i indeksatora kod, który jest uruchamiany indeksator jest prosty:
+Po utworzeniu źródła danych i indeksatora magazynu obiektów BLOB kod, który uruchamia indeksator, jest prosty:
 
 ```csharp
     try
@@ -326,33 +325,33 @@ Po utworzeniu źródła danych magazynu obiektów Blob i indeksatora kod, który
     }
 ```
 
-Ponieważ indeks zawiera już wypełnione hotelu danymi z bazy danych Azure Cosmos DB, indeksatora obiektów blob aktualizacje istniejących dokumentów w indeksie i dodaje szczegóły miejsca.
+Ponieważ indeks został już wypełniony danymi hotelu z bazy danych Azure Cosmos DB, indeksator obiektu BLOB aktualizuje istniejące dokumenty w indeksie i dodaje szczegóły pokoju.
 
 > [!NOTE]
-> Jeśli masz te same pola-key w źródłach danych i danych w ramach tych pól jest niezgodny, indeksem będzie zawierać wartości z indeksatora niezależnie od ostatniego uruchomienia. W tym przykładzie oba źródła danych zawierają **HotelName** pola. Jeśli dowolnej przyczyny dane w to pole jest inna, dla dokumentów za pomocą tej samej wartości klucza, a następnie **HotelName** dane ze źródła danych, który został zindeksowany ostatnio będą wartości zapisane w indeksie.
+> Jeśli masz te same pola, które nie są kluczami w obu źródłach danych, a dane w tych polach nie są zgodne, indeks będzie zawierał wartości z dowolnego indeksatora. W naszym przykładzie oba źródła danych zawierają pole **hotelname** . Jeśli z jakiegoś powodu dane w tym polu różnią się w przypadku dokumentów o tej samej wartości klucza, dane **hoteluname** ze źródła danych, które było ostatnio indeksowane, będą wartościami przechowywanymi w indeksie.
 
 ## <a name="search-your-json-files"></a>Przeszukiwanie plików JSON
 
-Możesz zapoznać się z indeksu wyszukiwania wypełniania po uruchomieniu programu, za pomocą [ **Eksploratora wyszukiwania** ](search-explorer.md) w portalu.
+Można eksplorować wypełniony indeks wyszukiwania po uruchomieniu programu przy użyciu [**Eksploratora wyszukiwania**](search-explorer.md) w portalu.
 
-W witrynie Azure portal Otwórz usługę wyszukiwania **Przegląd** strony i Znajdź **hotelu pokojów próby** indeks w **indeksy** listy.
+W Azure Portal Otwórz stronę **Przegląd** usługi wyszukiwania i Znajdź na liście **indeksów** pozycję **Pokój** z przemieszczeń hotelowych.
 
-  ![Listy indeksów usługi Azure Search](media/tutorial-multiple-data-sources/index-list.png "indeksów wykaz usługi Azure Search")
+  ![Lista indeksów Azure Search](media/tutorial-multiple-data-sources/index-list.png "Lista indeksów Azure Search")
 
-Kliknij pozycję indeksu hotelu pokojów próbki na liście. Zostanie wyświetlony interfejs eksploratora wyszukiwania do indeksu. Wprowadź zapytanie dla okresu, takich jak "Luksusowe". Powinien zostać wyświetlony co najmniej jednego dokumentu w wynikach, a w tym dokumencie powinny pokazywać listę obiektów miejsca jego tablica pomieszczeniach.
+Na liście kliknij indeks pokojów hotelowych — przykład. Zostanie wyświetlony interfejs Eksploratora wyszukiwania dla indeksu. Wprowadź zapytanie dla terminu takiego jak "możliwość zaprojektowania". W wynikach powinien być widoczny co najmniej jeden dokument, a ten dokument powinien zawierać listę obiektów Room w tablicy pokojów.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. W portalu nazwę grupy zasobów jest na stronie Przegląd usługi Azure Search.
+Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. Nazwa grupy zasobów w portalu znajduje się na stronie Przegląd usługi Azure Search.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Istnieje kilka metod i wiele opcji indeksowanie obiektów blob JSON. Jeśli dane źródłowe zawiera zawartość JSON, możesz przejrzeć te opcje, aby zobaczyć, co sprawdza się najlepiej w przypadku danego scenariusza.
+Istnieje kilka metod i wiele opcji indeksowania obiektów BLOB JSON. Jeśli dane źródłowe zawierają zawartość JSON, możesz przejrzeć te opcje, aby zobaczyć, co najlepiej sprawdza się w danym scenariuszu.
 
 > [!div class="nextstepaction"]
-> [Jak indeksować obiektów blob JSON za pomocą indeksatora obiektów Blob platformy Azure Search](search-howto-index-json-blobs.md)
+> [Jak indeksować obiekty blob JSON przy użyciu Azure Search indeksatora obiektów BLOB](search-howto-index-json-blobs.md)
 
-Można rozszerzyć dane strukturalne indeksu z jednego źródła danych cognitively wzbogaconego danymi z obiektów blob bez struktury lub zawartości pełnego tekstu. Następującego samouczka pokazuje, jak używać usług Cognitive Services wraz z usługi Azure Search przy użyciu zestawu .NET SDK.
+Możesz chcieć rozszerzyć strukturalne dane indeksów z jednego źródła danych, dzięki czemu dane są wzbogacone z nieuporządkowanymi obiektami BLOB lub z treści pełnotekstowych. W poniższym samouczku pokazano, jak używać Cognitive Services razem z Azure Search przy użyciu zestawu .NET SDK.
 
 > [!div class="nextstepaction"]
-> [Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku](cognitive-search-tutorial-blob-dotnet.md)
+> [Wywołaj interfejsy API usług Cognitive Services w potoku indeksowania Azure Search](cognitive-search-tutorial-blob-dotnet.md)

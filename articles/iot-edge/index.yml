@@ -1,14 +1,22 @@
 ### YamlMime:Landing
-title: Azure IoT Edge
+title: Dokumentacja usługi Azure IoT Edge
 summary: Azure IoT Edge jest usługą Internetu rzeczy (IoT) opartą na usłudze IoT Hub. Ta usługa jest przeznaczona dla klientów, którzy chcą analizować dane na urządzeniach, czyli „na brzegu”, a nie w chmurze. Dzięki przeniesieniu części obciążenia na brzeg urządzenia poświęcają mniej czasu na wysyłanie komunikatów do chmury i szybciej reagują na zdarzenia.
 metadata:
+  title: Dokumentacja usługi Azure IoT Edge
+  description: Azure IoT Edge jest usługą Internetu rzeczy (IoT) opartą na usłudze IoT Hub. Ta usługa jest przeznaczona dla klientów, którzy chcą analizować dane na urządzeniach, czyli „na brzegu”, a nie w chmurze. Dzięki przeniesieniu części obciążenia na brzeg urządzenia poświęcają mniej czasu na wysyłanie komunikatów do chmury i szybciej reagują na zdarzenia.
+  services: iot-edge
+  ms.service: iot-edge
   ms.topic: landing-page
-  ms.openlocfilehash: 71589d66856b4f6d3a32da50252fadff564373ff
-  ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+  author: kgremban
+  ms.author: kgremban
+  manager: philmea
+  ms.date: 08/05/2019
+  ms.openlocfilehash: 673243b2e38b6d93091faea2e32a40d23b2a5267
+  ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 07/23/2019
-  ms.locfileid: "68414426"
+  ms.lasthandoff: 08/06/2019
+  ms.locfileid: "68815773"
 landingContent:
 - title: Opracowywanie zawartości dla urządzeń z systemem Linux
   linkLists:

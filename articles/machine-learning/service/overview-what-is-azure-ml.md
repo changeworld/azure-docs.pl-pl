@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 05/02/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1ec9db2b026dd1853eceb1f110878d6b2beb4d4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5323c996b8d974c9db11a508503f767cfee80301
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678024"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828111"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
@@ -29,7 +29,7 @@ Dzięki prognozom uzyskanym za pomocą uczenia maszynowego aplikacje mogą być 
 
 ## <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
-Usługa Azure Machine Learning zapewnia środowisko oparte na chmurze, które służy do przygotowywania danych, trenowania, testowania, wdrażania i śledzenia modeli uczenia maszynowego oraz zarządzania nimi. Rozpocznij szkolenie na komputerze lokalnym, a następnie Skaluj w poziomie do chmury. Usługa w pełni obsługuje technologie typu "open source", takie jak PyTorch, TensorFlow i scikit — uczenie się i może być używane do uczenia maszynowego, od klasycznej maszyny do uczenia głębokiego, nadzorowanych i nienadzorowanych szkoleń. 
+Usługa Azure Machine Learning zapewnia środowisko oparte na chmurze, które służy do przygotowywania danych, trenowania, testowania, wdrażania i śledzenia modeli uczenia maszynowego oraz zarządzania nimi. Rozpocznij szkolenie na komputerze lokalnym, a następnie Skaluj w poziomie do chmury. Usługa w pełni obsługuje technologie typu "open source", takie jak PyTorch, TensorFlow i scikit — uczenie się i może być używane do uczenia maszynowego, od klasycznej maszyny do uczenia głębokiego, nadzorowanych i nienadzorowanych szkoleń.
 
 Eksplorowanie i przygotowywanie danych, uczenie i testowanie modeli oraz wdrażanie ich przy użyciu bogatych narzędzi, takich jak:
 + [Interfejs wizualizacji](ui-tutorial-automobile-price-train-score.md) , w którym można przeciągać i upuszczać moduły, aby kompilować eksperymenty, a następnie wdrażać modele
@@ -55,20 +55,25 @@ Możesz również [zautomatyzować szkolenia i dostrajanie modeli](tutorial-auto
 W przypadku szkoleń bez kodu wypróbuj następujące rozwiązania:
 
 + Interfejs wizualny do eksperymentowania i wdrażania przy użyciu przeciągania i upuszczania
-    
+
     ![Interfejs wizualny usługi Azure Machine Learning](media/overview-what-is-azure-ml/visual-interface.png)
 
 + Opcja Azure Portal dla zautomatyzowanych eksperymentów ML
 
 ### <a name="operationalization-mlops"></a>Operacjonalizacji (MLOps)
 
-Jeśli dysponujesz odpowiednim modelem, możesz go łatwo używać w usłudze sieci Web, na urządzeniu IoT lub z Power BI. Aby uzyskać więcej informacji, zobacz artykuł opisujący, [jak i gdzie wdrażać](how-to-deploy-and-where.md). 
+Jeśli dysponujesz odpowiednim modelem, możesz go łatwo używać w usłudze sieci Web, na urządzeniu IoT lub z Power BI. Aby uzyskać więcej informacji, zobacz artykuł opisujący, [jak i gdzie wdrażać](how-to-deploy-and-where.md).
 
-Następnie możesz zarządzać wdrożonymi modelami przy użyciu [zestawu SDK usługi Azure Machine Learning dla języka Python](https://aka.ms/aml-sdk) lub [witryny Azure Portal](https://portal.azure.com/). 
+Następnie możesz zarządzać wdrożonymi modelami przy użyciu [zestawu SDK usługi Azure Machine Learning dla języka Python](https://aka.ms/aml-sdk) lub [witryny Azure Portal](https://portal.azure.com/).
 
 Te modele mogą być używane i zwracać przewidywania w [czasie rzeczywistym](how-to-consume-web-service.md) lub [asynchronicznie](how-to-run-batch-predictions.md) w przypadku dużych ilości danych.
 
-Dzięki zaawansowanym [potokom uczenia maszynowego](concept-ml-pipelines.md)można współpracować nad każdym krokiem w procesie przygotowywania danych, uczenia modelu i oceny, dzięki wdrożeniu.
+Dzięki zaawansowanym [potokom uczenia maszynowego](concept-ml-pipelines.md)można współpracować nad każdym krokiem w procesie przygotowywania danych, uczenia modelu i oceny, dzięki wdrożeniu. Potoki umożliwiają:
+
+* Automatyzuj kompleksowy proces uczenia maszynowego w chmurze
+* ponownie używaj składników i ponownie uruchamiaj kroki, gdy zachodzi potrzeba
+* Użyj innych zasobów obliczeniowych w każdym kroku
+* Uruchamianie zadań oceniania partii
 
 Aby rozpocząć pracę przy użyciu usługi Azure Machine Learning, zobacz [Następne kroki](#next-steps).
 
@@ -86,7 +91,7 @@ Oto krótkie porównanie.
 |Moduły dla interfejsu| Ilość | Początkowy zestaw popularnych modułów|
 |Szkoleniowe cele obliczeniowe| Własnościowy obiekt docelowy obliczeń, tylko obsługa procesora CPU| Obsługuje Azure Machine Learning obliczeń, procesora GPU i procesora CPU.<br/>(Inne obliczenia obsługiwane w zestawie SDK)|
 |Cele obliczeń wdrożenia| Własny format usługi sieci Web, niedostosowywalny | Opcje zabezpieczeń przedsiębiorstwa & usługi Azure Kubernetes. <br/>([Inne obliczenia](how-to-deploy-and-where.md) obsługiwane w zestawie SDK) |
-|Automatyczne szkolenie modelu i dostrajanie parametrów | Nie | Jeszcze nie w interfejsie wizualizacji. <br/> (Obsługiwane w zestawach SDK i Azure Portal). | 
+|Automatyczne szkolenie modelu i dostrajanie parametrów | Nie | Jeszcze nie w interfejsie wizualizacji. <br/> (Obsługiwane w zestawach SDK i Azure Portal). |
 
 Wypróbuj interfejs wizualny (wersja zapoznawcza [) z samouczkiem: Przewidywanie ceny samochodów za pomocą interfejsu](ui-tutorial-automobile-price-train-score.md)wizualnego.
 
@@ -99,12 +104,12 @@ Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bez
 
 Możesz uzyskać środki do wydania na usługi platformy Azure. Nawet po ich wyczerpaniu możesz zachować konto i korzystać z [bezpłatnych usług platformy Azure](https://azure.microsoft.com/free/). Karta kredytowa nie zostanie obciążona, chyba że jawnie zmienisz ustawienia i poprosisz o jej obciążenie. Możesz też [aktywować korzyści subskrybenta MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), dzięki którym co miesiąc otrzymasz środki do wykorzystania na płatne usługi platformy Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Utwórz obszar roboczy usługi Machine Learning](setup-create-workspace.md) , aby rozpocząć pracę.
 
-- Wykonaj kompleksowe samouczki: 
-  + [Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md) 
+- Wykonaj kompleksowe samouczki:
+  + [Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md)
   + [Prepare data and use automated machine learning to auto-train a regression model (Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego do automatycznego trenowania modelu regresji)](tutorial-data-prep.md)
 
 - Dowiedz się więcej o [potokach uczenia maszynowego](/azure/machine-learning/service/concept-ml-pipelines) w celu tworzenia i optymalizowania scenariuszy uczenia maszynowego oraz zarządzania nimi.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f0ee4a1129246cedd7899056359144cab75f9475
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782432"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827921"
 ---
 # <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 
@@ -126,9 +126,9 @@ Usługa Security Center pomaga ograniczyć narażenie na ataki siłowe. Ogranicz
 
 Usługa Security Center obejmuje funkcje, które ułatwiają wykonywanie automatycznej klasyfikacji danych w Azure SQL. Możesz także uzyskać oceny potencjalnych luk w zabezpieczeniach w usługach Azure SQL i Storage oraz zalecenia dotyczące sposobu rozwiązania tych problemów.
 
-### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>Ochrona obciążeń związanych z chmurą IoT i hybrydową (wersja zapoznawcza)
+### <a name="protect-iot-and-hybrid-cloud-workloads"></a>Ochrona obciążeń związanych z chmurą IoT i hybrydową
 
-Azure Security Center IoT (Internet rzeczy) upraszczają hybrydową ochronę obciążenia, zapewniając ujednoliconą widoczność i kontrolę, adaptacyjne zapobieganie zagrożeniom oraz Inteligentne wykrywanie zagrożeń oraz reagowanie na nie w ramach obciążeń działających na urządzeniach brzegowych, lokalnych, w Azure i w innych chmurach. Aby uzyskać więcej informacji, zobacz [Azure Security Center for IoT (wersja zapoznawcza)](https://docs.microsoft.com/azure/asc-for-iot/).
+Azure Security Center IoT (Internet rzeczy) upraszczają hybrydową ochronę obciążenia, zapewniając ujednoliconą widoczność i kontrolę, adaptacyjne zapobieganie zagrożeniom oraz Inteligentne wykrywanie zagrożeń oraz reagowanie na nie w ramach obciążeń działających na urządzeniach brzegowych, lokalnych, w Azure i w innych chmurach. Aby uzyskać więcej informacji, zobacz [Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Szybsze osiągnięcie bezpieczeństwa
 
@@ -142,7 +142,7 @@ Usługa Security Center zapewnia bezproblemową natywną integrację z platform�
 
 Rozbudowane kolekcje dzienników — dzienniki z systemów Windows i Linux są wykorzystywane przez aparat analizy zabezpieczeń i używane do tworzenia zaleceń i alertów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Do rozpoczęcia pracy z usługą Security Center jest wymagana subskrypcja platformy Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
 - Usługa Security Center w warstwie cenowej Bezpłatna jest włączona w ramach subskrypcji platformy Azure. Aby móc korzystać z zaawansowanych możliwości wykrywania zagrożeń i zarządzania zabezpieczeniami, musisz przeprowadzić uaktualnienie do warstwy cenowej Standardowa. Warstwę Standardowa można wypróbować bezpłatnie. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).

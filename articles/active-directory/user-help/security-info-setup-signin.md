@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c20256fb712d9381ba2adc90e2e68ce4fdc8911a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: d4ca21ecf7ad0707ad33220a8e8c2700638f8e25
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382782"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824832"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Konfigurowanie informacji zabezpieczających (wersja zapoznawcza) z monitu na stronie logowania
 
@@ -75,7 +75,7 @@ Wykonaj następujące kroki, aby skonfigurować informacje zabezpieczające dla 
 
 8. Zatwierdź powiadomienie w aplikacji Microsoft Authenticator, a następnie wybierz pozycję **Dalej**.
 
-    ![Powiadomienie o powodzeniu łączenia aplikacji z kontem](media/security-info/securityinfo-prompt-auth-app-success.png).
+    ![Powiadomienie o powodzeniu łączenia aplikacji z kontem](media/security-info/securityinfo-prompt-auth-app-success.png)
 
     Informacje zabezpieczające zostały zaktualizowane, tak aby aplikacja Microsoft Authenticator była domyślnie używana do weryfikowania tożsamości podczas korzystania z weryfikacji dwuetapowej lub resetowania hasła.
 
@@ -99,7 +99,41 @@ Wykonaj następujące kroki, aby skonfigurować informacje zabezpieczające dla 
 
     ![Strona pomyślnego zakończenia kreatora](media/security-info/securityinfo-prompt-setup-success.png)
 
-## <a name="next-steps"></a>Następne kroki
+    >[!Note]
+    >Jeśli Twoja organizacja wymaga używania haseł aplikacji, w tym kreatorze może zostać wyświetlona dodatkowa sekcja, w której można ją skonfigurować. Jeśli zobaczysz trzecią sekcję o nazwie **hasła aplikacji**, musisz wypełnić ją, zanim będzie można zakończyć pracę kreatora. Instrukcje dotyczące sposobu dodawania hasła aplikacji znajdują się w sekcji [Zarządzanie hasłami aplikacji](#manage-your-app-passwords) w tym artykule.
+
+### <a name="manage-your-app-passwords"></a>Zarządzanie hasłami aplikacji
+
+Niektóre aplikacje, takie jak Outlook 2010, nie obsługują weryfikacji dwuetapowej. Brak pomocy technicznej oznacza, że jeśli korzystasz z weryfikacji dwuetapowej w organizacji, aplikacja nie będzie działała. Aby obejść ten problem, możesz utworzyć automatycznie generowane hasło, które będzie używane z każdą aplikacją nie korzystającą z przeglądarki, niezależnie od normalnego hasła.
+
+>[!Note]
+>Jeśli ta opcja nie jest widoczna w kreatorze, oznacza to, że administrator nie skonfigurował tego ustawienia. Jeśli nie skonfigurowano tego ustawienia, ale wiadomo, że musisz używać haseł aplikacji, możesz wykonać czynności opisane w sekcji [Konfigurowanie haseł aplikacji na stronie informacje zabezpieczające (wersja zapoznawcza)](security-info-app-passwords.md).
+
+W przypadku korzystania z haseł aplikacji ważne jest, aby pamiętać:
+
+- Hasła aplikacji są generowane automatycznie i wprowadzane tylko raz dla każdej aplikacji.
+
+- Dla każdego użytkownika istnieje limit 40 haseł. Jeśli spróbujesz utworzyć jeden po tym limicie, zostanie wyświetlony monit o usunięcie istniejącego hasła przed utworzeniem nowego.
+
+- Użyj jednego hasła aplikacji na urządzenie, a nie na aplikację. Na przykład utwórz jedno hasło dla wszystkich aplikacji na laptopie, a następnie inne pojedyncze hasło dla wszystkich aplikacji na pulpicie.
+
+#### <a name="to-add-app-passwords-in-the-sign-in-wizard"></a>Aby dodać hasła aplikacji w Kreatorze logowania
+
+1. Po zakończeniu poprzednich sekcji kreatora wybierz pozycję **dalej** i wypełnij sekcję **hasło aplikacji** .
+
+2. Wpisz nazwę aplikacji, która wymaga hasła, na przykład `Outlook 2010`, a następnie wybierz przycisk **dalej**.
+
+    ![Dodaj nazwę hasła aplikacji w Kreatorze](media/security-info/app-password-app-password.png)
+
+3. Skopiuj kod hasła z ekranu **hasła aplikacji** i wklej go do obszaru **hasło** aplikacji (w tym przykładzie w programie Outlook 2010).
+
+    ![Strona hasła aplikacji z hasłem do kopiowania](media/security-info/app-password-copy-password.png)
+
+4. Po skopiowaniu hasła i wklejeniu go w aplikacji Wróć do tego kreatora, aby upewnić się, że wszystkie informacje o metodzie logowania są prawidłowe, a następnie wybierz pozycję **gotowe**.
+
+    ![Strona hasła aplikacji z powiadomieniem o zakończeniu](media/security-info/app-password-complete.png)
+
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby zmienić, usunąć lub zaktualizować domyślne metody informacji zabezpieczających, zobacz:
 

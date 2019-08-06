@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: 18f54e64498c7809e662ceb71d1e497a0f275ad6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 545f679b11295485567a817d144225b361a262ce
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480451"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815194"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Szybki start: Tworzenie grafowej bazy danych w usłudze Azure Cosmos DB przy użyciu języka Python i witryny Azure Portal
 
@@ -173,13 +173,13 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o połączeniu i s
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Przeglądanie i dodawanie przykładowych danych
 
-Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do grafu, a także dodać kolejne punkty danych.
+Po wstawieniu wierzchołków i krawędzi możesz teraz wrócić do Eksplorator danych i zobaczyć wierzchołki dodane do grafu i dodać kolejne punkty danych.
 
 1. Kliknij przycisk **Eksplorator danych**, rozwiń opcję **sample-graph**, kliknij pozycję **Graf**, a następnie **Zastosuj filtr**. 
 
    ![Tworzenie nowych dokumentów w Eksploratorze danych w witrynie Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
 
-2. Na liście **Wyniki** zwróć uwagę na nowych użytkowników dodanych do grafu. Wybierz **ben** i zwróć uwagę, że są one połączone z użytkownikiem robin. Możesz przenosić wierzchołki, przeciągając je i upuszczając, zmieniać powiększenie przy użyciu kółka myszy oraz powiększać rozmiar grafu przy użyciu podwójnej strzałki. 
+2. Na liście **wyników** Zwróć uwagę na to, że trzy nowe użytkownicy są dodawani do grafu. Możesz przenosić wierzchołki, przeciągając je i upuszczając, zmieniać powiększenie przy użyciu kółka myszy oraz powiększać rozmiar grafu przy użyciu podwójnej strzałki. 
 
    ![Nowe wierzchołki grafu w Eksploratorze danych w witrynie Azure Portal](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
 
@@ -193,6 +193,7 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
     key|wartość|Uwagi
     ----|----|----
+    produktu|/pk| 
     id|ashley|Unikatowy identyfikator wierzchołka. Jeśli nie określono identyfikatora, zostanie on wygenerowany.
     płeć|kobieta| 
     techniczne | java | 
@@ -210,6 +211,7 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
     key|wartość|Uwagi
     ----|----|----
+    produktu|/pk| 
     id|rakesh|Unikatowy identyfikator wierzchołka. Jeśli nie określono identyfikatora, zostanie on wygenerowany.
     płeć|mężczyzna| 
     szkoła|MIT| 

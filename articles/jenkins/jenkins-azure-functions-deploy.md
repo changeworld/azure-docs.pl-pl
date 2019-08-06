@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 02/23/2019
-ms.openlocfilehash: bd8fa10ca0a9809891efc67ff930ab01d502eda9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640965"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815737"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Wdrażanie w usłudze Azure Functions przy użyciu wtyczki serwera Jenkins usługi Azure Functions
 
@@ -50,12 +50,6 @@ W poniższych krokach pokazano, w jaki sposób utworzyć funkcję w języku Java
     ```cli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
     ```
-    
-1. Zaktualizuj środowisko uruchomieniowe do wersji 2.x, zastępując symbole zastępcze odpowiednimi wartościami.
-
-    ```cli
-    az functionapp config appsettings set --name <function_app> --resource-group <resource_group> --settings FUNCTIONS_EXTENSION_VERSION=~2
-    ```
 
 ## <a name="prepare-jenkins-server"></a>Przygotowanie serwera Jenkins
 
@@ -89,9 +83,9 @@ W poniższych krokach wyjaśniono, jak przygotować serwer Jenkins:
 
 1. Na serwerze Jenkins dodaj poświadczenia jako typ „Microsoft Azure Service Principal” („Jednostka usługi Microsoft Azure”), korzystając z jednostki usługi platformy Azure. Zapoznaj się samouczkiem [Deploy to Azure App Service (Wdrażanie w usłudze Azure App Service)](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins).
 
-## <a name="fork-the-sample-github-repo"></a>Rozwidlenia przykładowego repozytorium GitHub
+## <a name="fork-the-sample-github-repo"></a>Rozwidlenie przykładowego repozytorium GitHub
 
-1. [Zaloguj się do repozytorium GitHub dla aplikacji nieparzysta lub nawet przykładowy](https://github.com/VSChina/odd-or-even-function.git).
+1. [Zaloguj się do repozytorium GitHub dla przykładowej aplikacji nieparzystej lub](https://github.com/VSChina/odd-or-even-function.git)parzystej.
 
 1. W prawym górnym rogu ekranu usługi GitHub wybierz pozycję **Fork** (Utwórz rozwidlenie).
 
@@ -115,7 +109,7 @@ W tej sekcji utworzysz [potok serwera Jenkins](https://jenkins.io/doc/book/pipel
     
 1. W sekcji **Pipeline->Definition** (Potok > Definicja) wybierz pozycję **Pipeline script from SCM** (Skrypt potoku z narzędzia SCM).
 
-1. Wprowadź rozwidlenie usługi GitHub adresu URL i skrypt ścieżka ("doc/zasobów/jenkins/pliku Jenkins") do użycia w [przykład pliku Jenkins](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
+1. Wprowadź adres URL i ścieżkę skryptu rozwidlenia usługi GitHub ("doc/Resources/Jenkins/fragmenty"), które mają być używane w [przykładowym fragmenty](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
 
    ```
    node {
@@ -162,7 +156,7 @@ Jeśli nie planujesz już korzystać z tej aplikacji, usuń utworzone zasoby, wy
 az group delete -y --no-wait -n <resource_group>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej o usłudze Azure Functions, zobacz następujący zasób:
 > [!div class="nextstepaction"]

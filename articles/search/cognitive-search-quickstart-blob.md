@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Tworzenie indeksu wzbogacony sztucznej Inteligencji w witrynie Azure portal — usługa Azure Search'
-description: Wyodrębnianie danych, języka naturalnego oraz obrazu, przetwarzanie umiejętności w portalu indeksowania usługi Azure Search przy użyciu witryny Azure portal i przykładowe dane.
+title: 'Szybki start: Tworzenie indeksu wzbogaconego AI w Azure Portal-Azure Search'
+description: Pobieranie danych, umiejętność przetwarzania języka naturalnego i obrazów w Azure Search Portal indeksowania przy użyciu Azure Portal i przykładowych danych.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,19 +8,18 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 07/09/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 8f3a1dadaddb423a83f4c3691a4b5747a5196d2a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 0801f62bf48b5eae8eab056916334529eed5d1c1
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795329"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828416"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Szybki start: Tworzenie potoku indeksowania sztucznej Inteligencji w usłudze Azure Search przy użyciu umiejętności kognitywnych
+# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Szybki start: Tworzenie potoku indeksowania AI przy użyciu umiejętności poznawczych w Azure Search
 
-Usługa Azure Search integruje się z [usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), dodawanie wyodrębniania zawartości, przetwarzanie języka naturalnego (NLP) i umiejętności przetwarzanie obrazu do potoku indeksowania usługi Azure Search, co zawartość unsearchable lub bez struktury, więcej można wyszukiwać. 
+Azure Search integruje się z [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), dodając wyodrębnianie zawartości, przetwarzanie języka naturalnego (NLP) oraz umiejętności przetwarzania obrazów do Azure Searchego potoku indeksowania, dzięki czemu zawartość nie może być wyszukiwana lub bez struktury. 
 
-Wiele zasobów usług Cognitive Services — takich jak [optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md), [wykrywanie języka](cognitive-search-skill-language-detection.md), [rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md) kilka — można dołączyć do procesu indeksowania. Algorytmy sztucznej inteligencji usług Cognitive Services są używane do znajdowania wzorców, funkcji i cech charakterystycznych w danych źródłowych, zwracając struktury i zawartości tekstowe, które można wykorzystać w rozwiązaniach wyszukiwania pełnotekstowego opartych na usłudze Azure Search.
+Wiele zasobów Cognitive Services, takich jak [OCR](cognitive-search-skill-ocr.md), [wykrywanie języka](cognitive-search-skill-language-detection.md), [rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md) do nazwy kilku — może być dołączane do procesu indeksowania. Algorytmy sztucznej inteligencji usług Cognitive Services są używane do znajdowania wzorców, funkcji i cech charakterystycznych w danych źródłowych, zwracając struktury i zawartości tekstowe, które można wykorzystać w rozwiązaniach wyszukiwania pełnotekstowego opartych na usłudze Azure Search.
 
 W tym przewodniku Szybki start utworzysz swój pierwszy potok wzbogacania w witrynie [Azure Portal](https://portal.azure.com), zanim napiszesz jakikolwiek wiersz kodu:
 
@@ -30,28 +29,28 @@ W tym przewodniku Szybki start utworzysz swój pierwszy potok wzbogacania w witr
 > * Uruchom kreatora (umiejętność rozpoznawania jednostek wykrywa osoby, lokalizacje i organizacje).
 > * Użyj [**Eksploratora wyszukiwania**](search-explorer.md), aby wykonywać zapytania wyszukujące wzbogacone dane
 
-Ten przewodnik Szybki Start jest uruchamiany bezpłatnej usługi, ale liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów na dzień. Jeśli chcesz uruchomić ten przewodnik Szybki Start, więcej niż raz dziennie, przy użyciu pliku mniejszy ustawione, tak więc mieści się w dodatkowych uruchomień.
+Ten przewodnik Szybki Start jest uruchamiany w ramach bezpłatnej usługi, ale liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów dziennie. Jeśli chcesz uruchomić ten przewodnik Szybki Start więcej niż raz dziennie, użyj mniejszego zestawu plików, aby można było zmieścić więcej uruchomień.
 
 > [!NOTE]
-> Możesz rozwiń zakres, zwiększając częstotliwości przetwarzania, dodając więcej dokumentów lub dodanie więcej algorytmów sztucznej Inteligencji, konieczne będzie [dołączyć płatnych zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md). Opłaty są naliczane podczas wywoływania interfejsów API w usługach Cognitive Services i wyodrębniania obrazu jako część etap łamania dokumentów w usłudze Azure Search. Opłaty nie będą naliczane do wyodrębniania tekstu z dokumentów.
+> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
 >
-> Wykonanie wbudowanego umiejętności podlega opłacie za istniejącą [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/). Cennik wyodrębniania obraz został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa dla tego przewodnika Szybki Start.
+[Utwórz usługę Azure Search](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. Możesz użyć bezpłatnej usługi dla tego przewodnika Szybki Start.
 
-[Usługi cognitive Services](https://azure.microsoft.com/services/cognitive-services/) zapewnia sztucznej Inteligencji. Ten przewodnik Szybki Start zawiera kroki, aby dodać te zasoby wbudowane, określając potoku. Nie jest konieczne konfigurowanie kont z wyprzedzeniem.
+[Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) zapewnia AI. Ten przewodnik Szybki Start zawiera kroki umożliwiające dodanie tych zasobów w trybie online podczas określania potoku. Nie jest konieczne skonfigurowanie kont z góry.
 
-Usługi platformy Azure jest wymagane podanie danych wejściowych z potokiem indeksowania. Można użyć dowolnego źródła danych obsługiwane przez [indeksatorów usługi Azure Search](search-indexer-overview.md) z wyjątkiem usługi Azure Table Storage, która nie jest obsługiwana dla indeksowania sztucznej Inteligencji. Ten przewodnik Szybki Start używa [usługi Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) jako kontener dla źródła danych plików. 
+Usługi platformy Azure są wymagane do udostępnienia danych wejściowych potoku indeksowania. Można użyć dowolnego źródła danych obsługiwanego przez [Azure Search indeksatorów](search-indexer-overview.md) z wyjątkiem platformy Azure Table Storage, co nie jest obsługiwane w przypadku indeksowania AI. Ten przewodnik Szybki Start używa [usługi Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) jako kontenera plików danych źródłowych. 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Konfigurowanie usługi Azure Blob Service i ładowanie przykładowych danych
 
 1. [Pobierz przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) składające się z małego zestawu plików różnych typów. 
 
-1. [Zarejestruj się w usłudze Azure Blob storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), Utwórz konto magazynu, otwieranie stron usługi obiektów Blob i tworzenia kontenera.  Utwórz konto magazynu, w tym samym regionie co usługa Azure Search.
+1. [Zarejestruj się w usłudze Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), Utwórz konto magazynu, Otwórz strony usługi BLOB Services i Utwórz kontener.  Utwórz konto magazynu w tym samym regionie co Azure Search.
 
 1. W utworzonym kontenerze kliknij pozycję **Przekaż**, aby przekazać przykładowe pliki pobrane w poprzednim kroku.
 
@@ -168,13 +167,13 @@ Wiesz już także, że wyświetlanie wyników jest osiągane przez wykonywanie z
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Podczas pracy w ramach własnej subskrypcji jest dobrym pomysłem na końcu projektu ustalić, czy nadal potrzebujesz zasoby utworzone. Po lewej stronie umożliwia uruchamianie zasobów kosztów pieniądze. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
+Gdy pracujesz nad własną subskrypcją, dobrym pomysłem jest zakończenie projektu w celu ustalenia, czy nadal potrzebujesz utworzonych zasobów. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
 
-Możesz znaleźć i zarządzanie zasobami w portalu przy użyciu **wszystkie zasoby** lub **grup zasobów** łącze w okienku nawigacji po lewej stronie.
+Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystkie zasoby** lub **grupy zasobów** w okienku nawigacji po lewej stronie.
 
-Jeśli używasz bezpłatnej usługi, należy pamiętać, że są ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu w celu pozostania w ramach limitu. 
+Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu, aby zachować limit. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W zależności od sposobu aprowizowania zasobu usług Cognitive Services możesz eksperymentować z indeksowaniem i wzbogacaniem poprzez ponowne uruchomienie kreatora z różnymi umiejętnościami i polami danych źródłowych. Aby ponownie wykonać kroki, usuń indeks i indeksator, a następnie ponownie utwórz indeksator przy użyciu nowej kombinacji opcji.
 

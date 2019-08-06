@@ -4,14 +4,14 @@ description: Dowiedz się, jak zarządzać konfliktami w usłudze Azure Cosmos D
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 06/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 96171d4729187ca03f1e9529551a7fb6a26c6976
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 77fb0e195cee03405c4a601fe8c57d4a2690a4b2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360363"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815074"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami rozwiązywania konfliktów w usłudze Azure Cosmos DB
 
@@ -19,7 +19,7 @@ W przypadku zapisów w wielu regionach, gdy wielu klientów zapisuje do tego sam
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Tworzenie zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego
 
-Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego. Domyślną ścieżką dla ostatniego składnika zapisywania usługi WINS jest pole timestamp lub `_ts` właściwość. Może to być również ustawienie ścieżki zdefiniowanej przez użytkownika dla typu liczbowego. W konflikcie jest najwyższa wartość WINS. Jeśli ścieżka nie jest ustawiona lub jest nieprawidłowa, domyślnie `_ts`jest to. Konflikty rozwiązane z tymi zasadami nie są wyświetlane w kanale informacyjnym konfliktu. Te zasady mogą być używane przez wszystkie interfejsy API.
+Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą zasad rozwiązywania konfliktów polegających na traktowaniu ostatniego zapisu jako prawidłowego. Domyślną ścieżką dla ostatniego składnika zapisywania usługi WINS jest pole timestamp lub `_ts` właściwość. W przypadku interfejsu API SQL może to również być ustawiona jako ścieżka zdefiniowana przez użytkownika z typem liczbowym. W konflikcie jest najwyższa wartość WINS. Jeśli ścieżka nie jest ustawiona lub jest nieprawidłowa, domyślnie `_ts`jest to. Konflikty rozwiązane z tymi zasadami nie są wyświetlane w kanale informacyjnym konfliktu. Te zasady mogą być używane przez wszystkie interfejsy API.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>ZESTAW .NET SDK V2
 
@@ -114,7 +114,6 @@ Procedury składowane rozwiązywania konfliktów niestandardowych należy zaimpl
 
 > [!IMPORTANT]
 > Podobnie jak w przypadku każdej procedury składowanej, niestandardowa procedura rozwiązywania konfliktów może uzyskać dostęp do dowolnych danych z tym samym kluczem partycji i można wykonać dowolną operację wstawiania, aktualizowania lub usuwania, aby rozwiązać konflikty.
-
 
 Ta przykładowa procedura składowana rozwiązuje konflikty, wybierając najniższą wartość `/myCustomId` ze ścieżki.
 
@@ -273,7 +272,6 @@ udp_collection = self.try_create_document_collection(
 
 Po utworzeniu kontenera należy utworzyć procedurę składowaną `resolver`.
 
-
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Tworzenie niestandardowych zasad rozwiązywania konfliktów
 
 Poniższe przykłady pokazują, jak skonfigurować kontener za pomocą niestandardowych zasad rozwiązywania konfliktów. Te konflikty są widoczne w kanale informacyjnym konfliktów.
@@ -428,10 +426,10 @@ while conflict:
 
 Poznaj następujące pojęcia dotyczące usługi Azure Cosmos DB:
 
-* [Globalna dystrybucja — pod okapem](global-dist-under-the-hood.md)
-* [Jak skonfigurować wiele wzorców w aplikacjach](how-to-multi-master.md)
-* [Konfigurowanie klientów dla usługi wieloadresowości](how-to-manage-database-account.md#configure-multiple-write-regions)
-* [Dodawanie lub usuwanie regionów z konta usługi Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [How to configure multi-master in your applications (Jak skonfigurować wielowzorcowość w aplikacji)](how-to-multi-master.md).
-* [Partycjonowanie i dystrybucja danych](partition-data.md)
-* [Indeksowanie w usłudze Azure Cosmos DB](indexing-policies.md)
+- [Globalna dystrybucja — pod okapem](global-dist-under-the-hood.md)
+- [Jak skonfigurować wiele wzorców w aplikacjach](how-to-multi-master.md)
+- [Konfigurowanie klientów dla usługi wieloadresowości](how-to-manage-database-account.md#configure-multiple-write-regions)
+- [Dodawanie lub usuwanie regionów z konta usługi Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+- [How to configure multi-master in your applications (Jak skonfigurować wielowzorcowość w aplikacji)](how-to-multi-master.md).
+- [Partycjonowanie i dystrybucja danych](partition-data.md)
+- [Indeksowanie w usłudze Azure Cosmos DB](indexing-policies.md)

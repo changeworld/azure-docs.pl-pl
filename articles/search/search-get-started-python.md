@@ -8,14 +8,13 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 1c570549514ff5a5e7e598aa54d8e2ac4b5a5341
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.topic: quickstart
+ms.openlocfilehash: 8b9c6ad4560d613941e5e73e2e6b7b5abede7019
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849781"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828751"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Szybki start: Tworzenie indeksu Azure Search w języku Python przy użyciu notesów Jupyter
 > [!div class="op_single_selector"]
@@ -303,7 +302,7 @@ Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystki
 
 Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu, aby zachować limit. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jako uproszczenie, ten przewodnik Szybki Start używa skróconej wersji indeksu hoteli. Możesz utworzyć pełną wersję, aby wypróbować bardziej interesujące zapytania. Aby uzyskać pełną wersję i wszystkie 50 dokumentów, uruchom kreatora **importowania danych** , wybierając *Hotele* z wbudowanych przykładowych źródeł danych.
 
