@@ -55,8 +55,8 @@ Podobnie jak w przypadku dowolnego rozwiązania magazynu, staranna ocena wydajno
 
 StorSimple zaprojektowano w celu zapewnienia magazynu dla aplikacji, które działają na dobrze zdefiniowanym zestawie roboczym danych (gorącą dane). W tym modelu zestaw roboczy danych jest przechowywany w warstwach lokalnych, a pozostała część danych niepracujących/zimnych/zarchiwizowanych jest warstwą w chmurze. Ten model jest reprezentowany na poniższej ilustracji. Prawie płaski zielony wiersz reprezentuje dane przechowywane w warstwach lokalnych urządzenia StorSimple. Czerwona linia reprezentuje łączną ilość danych przechowywanych w rozwiązaniu StorSimple we wszystkich warstwach. Odstęp między płaską zieloną linią a wykładniczą czerwoną krzywą reprezentuje łączną ilość danych przechowywanych w chmurze.
 
-
-Diagram warstwowy![StorSimple warstw StorSimple](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
+**Diagram warstwowy**
+![StorSimple warstw StorSimple](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
 
 W tej architekturze należy zauważyć, że StorSimple idealnie nadaje się do działania jako miejsce docelowe kopii zapasowej. Możesz użyć StorSimple, aby:
 -   Wykonaj najczęstsze przywracanie z lokalnego zestawu roboczego danych.
@@ -233,7 +233,7 @@ Skonfiguruj swoje rozwiązanie zgodnie z wytycznymi w poniższych sekcjach.
 -   StorSimple obsługuje pełne i przyrostowe kopie zapasowe. Zalecamy, aby nie używać syntetycznych i różnicowych kopii zapasowych.
 -   Pliki danych kopii zapasowej powinny zawierać tylko dane dla określonego zadania. Na przykład nie można dołączać nośników między różnymi zadaniami.
 -   Wyłącz weryfikację zadania. W razie potrzeby weryfikacja powinna zostać zaplanowana po zakończeniu ostatniego zadania tworzenia kopii zapasowej. Ważne jest, aby zrozumieć, że to zadanie ma wpływ na okno kopii zapasowej.
--   Wybierz pozycję **Magazyn** > **Właściwości** **szczegóły** ****  > dysku. >  Wyłącz **wstępnie przydzielone miejsce na dysku**.
+-   Wybierz pozycję **Magazyn** > **Właściwości** **szczegóły** > dysku. >  Wyłącz **wstępnie przydzielone miejsce na dysku**.
 
 Aby zapoznać się z najnowszymi ustawieniami tworzenia kopii zapasowych i najlepszymi rozwiązaniami dotyczącymi wdrażania tych wymagań, zobacz [witrynę sieci Web firmy Veritas](https://www.veritas.com).
 

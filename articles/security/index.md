@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/11/2019
 ms.author: angrobe
-ms.openlocfilehash: d921e529140bc7446e3c9f97b33ba226431d7b91
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 7c41b09c35de7ef8694f9215b8f3dc271e243de2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143512"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780492"
 ---
 # <a name="azure-security-documentation"></a>Dokumentacja zabezpieczeń platformy Azure
 
@@ -70,7 +70,7 @@ Zabezpieczenia są zintegrowane z każdym aspektem platformy Azure. Platforma Az
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-infrastructure">
+        <a href="/azure/security/fundamentals/infrastructure">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -135,7 +135,7 @@ Zabezpieczenia są zintegrowane z każdym aspektem platformy Azure. Platforma Az
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-encryption-atrest">
+        <a href="/azure/security/fundamentals/encryption-atrest">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -192,13 +192,13 @@ Zabezpieczenia są zintegrowane z każdym aspektem platformy Azure. Platforma Az
                                 <a class="barLink" href="https://aka.ms/SecurityResponsepaper">Reagowanie na zdarzenia zabezpieczeń platformy Azure w chmurze</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-threat-detection">Zaawansowane wykrywanie zagrożeń na platformie Azure</a>
+                                <a class="barLink" href="/azure/security/fundamentals/threat-detection">Zaawansowane wykrywanie zagrożeń na platformie Azure</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-azure-network-security">Zabezpieczenia sieci na platformie Azure</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-network-security>Azure network security"</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-develop-secure-apps">Tworzenie bezpiecznych aplikacji na platformie Azure</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-develop-secure-apps">Tworzenie bezpiecznych aplikacji na platformie Azure</a>
                             </li>
                         </ul>
                     </div>
@@ -218,25 +218,25 @@ Zabezpieczenia są zintegrowane z każdym aspektem platformy Azure. Platforma Az
                                 <a class="barLink" href="https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/">Najlepsze rozwiązania dotyczące zabezpieczeń platformy Azure</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-network-security-best-practices">Bezpieczeństwo sieci</a>
+                                <a class="barLink" href="/azure/security/fundamentals/network-best-practices">Bezpieczeństwo sieci</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-data-encryption-best-practices">Bezpieczeństwo danych</a>
+                                <a class="barLink" href="/azure/security/fundamentals/data-encryption-best-practices">Bezpieczeństwo danych</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/azure-security-best-practices-vms">Zabezpieczenia maszyn wirtualnych</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-identity-management-best-practices">Tożsamość i dostęp</a>
+                                <a class="barLink" href="/azure/security/fundamentals/identity-management-best-practices">Tożsamość i dostęp</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-iaas">Zabezpieczenia IaaS</a>
+                                <a class="barLink" href="/azure/security/fundamentals/iaas">Zabezpieczenia IaaS</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/security-paas-deployments">Zabezpieczanie wdrożeń PaaS</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-global-admin">Zabezpieczanie kont administratora platformy Azure</a>
+                                <a class="barLink" href="/azure/security/fundamentals/global-admin">Zabezpieczanie kont administratora platformy Azure</a>
                             </li>
                         </ul>
                     </div>
@@ -380,7 +380,7 @@ Zabezpieczenia są zintegrowane z każdym aspektem platformy Azure. Platforma Az
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-cyber-services">
+        <a href="/azure/security/fundamentals/cyber-services">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -393,7 +393,7 @@ Zabezpieczenia są zintegrowane z każdym aspektem platformy Azure. Platforma Az
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-pen-testing">
+        <a href="/azure/security/fundamentals/pen-testing">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -424,7 +424,7 @@ Zabezpieczenia są zintegrowane z każdym aspektem platformy Azure. Platforma Az
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">W usłudze Azure Key Vault</p>
+                            <p style="font-size: 1.12rem;">Azure Key Vault</p>
                         </div>
                     </div>
                 </div>

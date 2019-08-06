@@ -52,9 +52,9 @@ Na platformie Azure Możesz przygotować zarządzany obraz z migawek systemu ope
 Jeśli tworzysz nową maszynę wirtualną dla obrazu, Użyj obrazu z witryny Azure Marketplace w pierwszej kolejności jako obrazu podstawowego dla zarządzanego obrazu. Jako obrazu podstawowego można używać tylko obrazów pierwszej strony. Aby uzyskać pełną listę odwołań do obrazów w portalu Azure Marketplace obsługiwanych przez Azure Batch, zobacz część operacji [jednostek SKU agenta węzła listy](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) .
 
 > [!NOTE]
-> Nie można użyć obrazu innej firmy, który ma dodatkową licencję i warunki zakupu jako obraz podstawowy. Aby uzyskać informacje na temat tych obrazów z portalu Marketplace, [Zobacz wskazówki [dotyczące](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) maszyn wirtualnych z systemem Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) lub Windows.
+> Nie można użyć obrazu innej firmy, który ma dodatkową licencję i warunki zakupu jako obraz podstawowy. Aby uzyskać informacje na temat tych obrazów z portalu Marketplace, [Zobacz wskazówki](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) [dotyczące](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) maszyn wirtualnych z systemem Linux lub Windows.
 
 
 * Upewnij się, że maszyna wirtualna została utworzona przy użyciu dysku zarządzanego. Jest to domyślne ustawienie magazynu podczas tworzenia maszyny wirtualnej.

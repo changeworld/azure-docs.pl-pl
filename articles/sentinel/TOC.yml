@@ -13,7 +13,7 @@
   items:
     - name: Wykrywanie podejrzanych zagrożeń
       href: tutorial-detect-threats.md
-    - name: Badanie przypadków
+    - name: Badanie zdarzeń
       href: tutorial-investigate-cases.md
     - name: Reagowanie na zagrożenia
       href: tutorial-respond-threats-playbook.md

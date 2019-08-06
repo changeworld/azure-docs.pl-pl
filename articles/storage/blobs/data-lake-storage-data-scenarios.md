@@ -87,7 +87,7 @@ Aby dowiedzieć się więcej o konfigurowaniu innych aspektów zabezpieczeń, zo
 
 W tej sekcji przedstawiono różne źródła danych oraz różne sposoby, w których dane mogą być pozyskiwane na koncie Data Lake Storage Gen2.
 
-Pozyskiwanie ![danych w Data Lake Storage Gen2] Pozyskiwanie (./media/data-lake-storage-data-scenarios/ingest-data.png "danych w Data Lake Storage Gen2")
+Pozyskiwanie ![danych w Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/ingest-data.png "Pozyskiwanie danych w Data Lake Storage Gen2")
 
 ### <a name="ad-hoc-data"></a>Dane ad hoc
 

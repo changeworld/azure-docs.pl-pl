@@ -64,6 +64,8 @@
           href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Konwertowanie certyfikatu jednostki usługi
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Problemy z pulsem usługi Apache Ambari
+          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: Instrukcje
   items:
     - name: Korzystanie z piaskownicy usługi Apache Hadoop
