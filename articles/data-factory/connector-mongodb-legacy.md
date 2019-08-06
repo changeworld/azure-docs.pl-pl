@@ -183,7 +183,7 @@ Podczas kopiowania danych z bazy danych MongoDB, następujące mapowania są uż
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| Ciąg |String |
+| String |String |
 | UUID |Guid |
 | Object |Renormalized do spłaszczenia kolumn z "_" jako separatora zagnieżdżonych |
 
