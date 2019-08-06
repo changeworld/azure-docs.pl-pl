@@ -171,7 +171,7 @@ Aby skopiować dane z protokołu HTTP w **Parquet lub format tekstu rozdzielaneg
 
 | Właściwość    | Opis                                                  | Wymagane |
 | ----------- | ------------------------------------------------------------ | -------- |
-| — typ        | Właściwość type w obszarze `location` w zestawie danych musi być równa **HttpServerLocation**. | Tak      |
+| type        | Właściwość type w obszarze `location` w zestawie danych musi być równa **HttpServerLocation**. | Tak      |
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane.       | Nie       |
 
 > [!NOTE]
