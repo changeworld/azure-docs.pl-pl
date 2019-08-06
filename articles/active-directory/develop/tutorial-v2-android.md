@@ -3,7 +3,7 @@ title: Wprowadzenie do systemu Android — platforma tożsamości firmy Microsof
 description: Jak aplikacja dla systemu Android może uzyskać token dostępu i wywoływać Microsoft Graph API lub interfejsy API, które wymagają tokenów dostępu z platformy tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: tylermsft
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd19b6094d68277130916b5cda565ba9e633c59
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 76547fd708f880bdf5167d71db121e69fc5b1d30
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334110"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823802"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Logowanie użytkowników i wywoływanie Microsoft Graph z poziomu aplikacji systemu Android
 
@@ -62,7 +62,7 @@ Ten samouczek spowoduje utworzenie nowego projektu. Jeśli chcesz zamiast tego p
 5. Ustaw **minimalny poziom interfejsu API** na **interfejs API 19** lub nowszy, a następnie kliknij przycisk **Zakończ**.
 6. W widoku Projekt wybierz **projekt** na liście rozwijanej, aby wyświetlić źródło i nieźródłowe pliki projektu, Otwórz **aplikację/Build. Gradle** `27`i ustaw `targetSdkVersion` wartość.
 
-## <a name="register-your-application"></a>Rejestrowanie aplikacji
+## <a name="register-your-application"></a>Zarejestruj swoją aplikację
 
 1. Przejdź do witryny [Azure Portal](https://aka.ms/MobileAppReg).
 2. Otwórz [blok rejestracje aplikacji](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) i kliknij pozycję **+ Nowa rejestracja**.
@@ -531,7 +531,7 @@ Kompiluj i Wdróż aplikację na urządzeniu testowym lub w emulatorze. Powinno 
 
 Po zalogowaniu aplikacja będzie wyświetlać dane zwrócone z punktu końcowego Microsoft Graph `/me` .
 
-### <a name="consent"></a>Posiadacz
+### <a name="consent"></a>Wyraź zgodę
 
 Gdy użytkownik po raz pierwszy zaloguje się do aplikacji, otrzyma monit o tożsamość firmy Microsoft, aby wyrazić zgodę na wymagane uprawnienia.  Chociaż większość użytkowników może wyrażać zgodę, niektórzy dzierżawy usługi Azure AD mają wyłączoną opcję zgody użytkownika, która wymaga od administratorów zgody w imieniu wszystkich użytkowników. Aby obsłużyć ten scenariusz, należy zarejestrować zakresy aplikacji w Azure Portal.
 

@@ -279,7 +279,7 @@ Aby skopiować dane z protokołu HTTP w **Parquet lub format tekstu rozdzielaneg
 
 | Właściwość                 | Opis                                                  | Wymagane |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| — typ                     | Właściwość type w obszarze `storeSettings` musi być równa **HttpReadSetting**. | Tak      |
+| type                     | Właściwość type w obszarze `storeSettings` musi być równa **HttpReadSetting**. | Tak      |
 | requestMethod            | Metoda HTTP. <br>Dozwolone wartości to **uzyskać** (ustawienie domyślne) i **wpis**. | Nie       |
 | addtionalHeaders         | Dodatkowe nagłówki żądania HTTP.                             | Nie       |
 | requestBody              | Treść żądania HTTP.                               | Nie       |
@@ -336,7 +336,7 @@ Aby skopiować dane z protokołu HTTP w **format ORC/Avro/JSON/dane binarne**, n
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | **Typu** właściwość źródła działania kopiowania musi być równa **HttpSource**. | Tak |
+| type | **Typu** właściwość źródła działania kopiowania musi być równa **HttpSource**. | Tak |
 | httpRequestTimeout | Limit czasu ( **TimeSpan** wartość) dla żądania HTTP można uzyskać odpowiedzi. Ta wartość jest limit czasu można uzyskać odpowiedzi nie limitu czasu można odczytać danych odpowiedzi. Wartość domyślna to **00:01:40**.  | Nie |
 
 **Przykład**
