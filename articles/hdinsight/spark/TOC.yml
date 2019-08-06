@@ -53,13 +53,7 @@
     - name: Rozwiązywanie problemów
       items:
         - name: Wyjątek OutOfMemoryError
-          items:
-            - name: Niewystarczająca ilość pamięci sterty
-              href: ./apache-spark-troubleshoot-outofmemory-heap.md
-            - name: Miejsce na stercie Java
-              href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
-            - name: Nie można uruchomić serwera Livy
-              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+          href: ./apache-spark-troubleshoot-outofmemory.md
         - name: Zadanie platformy Apache Spark kończy się niepowodzeniem — NoClassDefFoundError
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Zadanie platformy Apache Spark kończy się niepowodzeniem — InvalidClassException

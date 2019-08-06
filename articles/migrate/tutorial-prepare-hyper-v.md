@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 514905bf2db1c0c58faa131eeb916af033b2c830
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 991fbe97582279fdeb996ddebe8e982c4adf3036
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640843"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827273"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Przygotowanie do oceny i migracji maszyn wirtualnych funkcji Hyper-V na platformę Azure
 
@@ -140,10 +140,10 @@ Uruchom skrypt w następujący sposób:
     ```
     
     Wartości skrótu to:
-    Skrót | Wartość
+    Skrót | Value
     --- | ---
     **Skrót MD5** | 0ef418f31915d01f896ac42a80dc414e
-    **Skrót SHA256** | 0ef418f31915d01f896ac42a80dc414e0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
+    **Skrót SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 
 
 4.  Po zweryfikowaniu integralności skryptu Uruchom skrypt na każdym hoście funkcji Hyper-V za pomocą tego polecenia programu PowerShell:
@@ -222,7 +222,7 @@ Na maszynach wirtualnych, które mają być odnajdywane i oceniane, Włącz [us�
 2. [Zapoznaj](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) się z wymaganiami dotyczącymi maszyn wirtualnych funkcji Hyper-V, które chcesz zmigrować na platformę Azure.
 3. [Zwróć uwagę](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) na adresy URL platformy Azure, do których hosty i klastry funkcji Hyper-V potrzebują dostępu do migracji maszyny wirtualnej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
  

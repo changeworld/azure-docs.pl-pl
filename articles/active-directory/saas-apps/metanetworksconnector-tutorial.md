@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 82097b075ab86c4de5ab45e3110c9bc192ac7edb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ef49cb2e245e4af7b5d7f7d250194761cf0b375
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097347"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826350"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Meta Networks Connector
 
@@ -121,7 +121,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości, używając rzeczywistego identyfikatora, adresu URL odpowiedzi i adresu URL logowania, które zostały opisane w dalszej części tego samouczka.
 
-6. Aplikacja Meta Networks Connector oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenów języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
+6. Aplikacja Meta Networks Connector oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenów języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć okno dialogowe **atrybuty użytkownika** .
 
     ![image](common/edit-attribute.png)
     
@@ -133,7 +133,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
     | lastname | user.surname | |
     | emailaddress| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | phone | user.telephonenumber | |
+    | telefon | user.telephonenumber | |
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
@@ -172,7 +172,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
 1. Otwórz nową kartę w przeglądarce i zaloguj się na swoim koncie administratora aplikacji Meta Networks Connector.
     
     > [!NOTE]
-    > Aplikacja Meta Networks Connector to bezpieczny system. Dlatego przed uzyskaniem dostępu do ich portalu należy uzyskać swój publiczny adres IP, które są dodawane do listy dozwolonych na bok. Aby uzyskać swój publiczny adres IP, skorzystaj z [tego](https://whatismyipaddress.com/) linku. Wyślij swój adres IP, aby [zespołem pomocy technicznej klienta łącznika sieci Meta](mailto:support@metanetworks.com) można pobrać adresu IP, dodane do listy dozwolonych.
+    > Aplikacja Meta Networks Connector to bezpieczny system. Przed uzyskaniem dostępu do portalu należy uzyskać publiczny adres IP, który został dodany do listy dozwolonych. Aby uzyskać swój publiczny adres IP, skorzystaj z [tego](https://whatismyipaddress.com/) linku. Wyślij adres IP do [zespołu obsługi klienta łącznika meta Networks](mailto:support@metanetworks.com) , aby uzyskać adres IP dodany do listy dozwolonych.
     
 2. Przejdź do obszaru **Administrator**, a następnie wybierz pozycję **Settings (Ustawienia)** .
     
@@ -228,7 +228,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W **nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -280,5 +280,5 @@ Po kliknięciu kafelka Meta Networks Connector na panelu dostępu powinno nastą
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

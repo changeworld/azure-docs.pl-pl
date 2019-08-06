@@ -8,16 +8,16 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 4e28da9ab9502e2dac4fc08452a46841c4e50b66
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 172921dcb082f511d16394b7693f40edf8394821
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466805"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826049"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
-W ramach tego samouczka wykonasz operację ETL (wyodrębnianie, przekształcanie i ładowanie danych) przy użyciu usługi Azure Databricks. Wyodrębnianie danych z usługi Azure Data Lake Storage Gen2 do usługi Azure Databricks, uruchom przekształcenia na danych w usłudze Azure Databricks i ładowania przekształconych danych Azure SQL Data Warehouse.
+W ramach tego samouczka wykonasz operację ETL (wyodrębnianie, przekształcanie i ładowanie danych) przy użyciu usługi Azure Databricks. Dane z Azure Data Lake Storage Gen2 można wyodrębnić do Azure Databricks, uruchamiać przekształcenia na danych w Azure Databricks i ładować przekształcone dane do Azure SQL Data Warehouse.
 
 W procedurach opisanych w tym samouczku do przesyłania danych do usługi Azure Databricks służy łącznik SQL Data Warehouse dla usługi Azure Databricks. Ten łącznik z kolei używa usługi Azure Blob Storage jako magazynu tymczasowego dla danych przesyłanych między klastrem usługi Azure Databricks a usługą Azure SQL Data Warehouse.
 
@@ -40,30 +40,30 @@ Ten samouczek obejmuje następujące zadania:
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!Note]
-> W tym samouczku nie może być przeprowadzone przy użyciu **subskrypcji bezpłatnej wersji próbnej platformy Azure**.
-> Jeśli masz bezpłatne konto, przejdź do profilu i zmienić subskrypcję na **płatność za rzeczywiste użycie**. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Następnie [Usuń limit wydatków](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center), i [zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) dla wirtualnych procesorów CPU w Twoim regionie. Podczas tworzenia obszaru roboczego usługi Azure Databricks, możesz wybrać **wersji próbnej (Premium - 14-dni wolne Dbu)** warstwy cenowej na zapewniają dostęp do obszaru roboczego, aby zwolnić Premium usługi Azure Databricks Dbu przez 14 dni.
+> Tego samouczka nie można przeprowadzić za pomocą **subskrypcji bezpłatnej wersji próbnej platformy Azure**.
+> Jeśli masz bezpłatne konto, przejdź do swojego profilu i Zmień subskrypcję na **płatność zgodnie z rzeczywistym**użyciem. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Następnie [Usuń limit wydatków](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)i poproś o [zwiększenie limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) dla procesorów wirtualnych vCPU w Twoim regionie. Podczas tworzenia obszaru roboczego Azure Databricks możesz wybrać warstwę cenową **wersji próbnej (Premium-14-Days Free dBu)** , aby umożliwić dostęp do obszaru roboczego bezpłatnie Azure Databricks DBU przez 14 dni.
      
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem tego samouczka wykonaj następujące zadania:
 
-* Utwórz magazyn danych Azure SQL Data Warehouse, utwórz regułę zapory na poziomie serwera i nawiąż połączenie z serwerem jako administrator serwera. Zobacz [Szybki start: Tworzenie i wysyłanie zapytań usługi Azure SQL data warehouse w witrynie Azure portal](../sql-data-warehouse/create-data-warehouse-portal.md).
+* Utwórz magazyn danych Azure SQL Data Warehouse, utwórz regułę zapory na poziomie serwera i nawiąż połączenie z serwerem jako administrator serwera. Zobacz [Szybki start: Utwórz i wykonaj zapytanie do usługi Azure SQL Data Warehouse w](../sql-data-warehouse/create-data-warehouse-portal.md)Azure Portal.
 
 * Utwórz klucz główny bazy danych dla magazynu danych Azure SQL Data Warehouse. Zobacz [Tworzenie klucza głównego bazy danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-* Utwórz konto usługi Azure Blob Storage i zawarty w nim kontener. Ponadto pobierz klucz dostępu, aby uzyskać dostęp do konta magazynu. Zobacz [Szybki start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob w witrynie Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+* Utwórz konto usługi Azure Blob Storage i zawarty w nim kontener. Ponadto pobierz klucz dostępu, aby uzyskać dostęp do konta magazynu. Zobacz [Szybki start: Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB za pomocą](../storage/blobs/storage-quickstart-blobs-portal.md)Azure Portal.
 
-* Utwórz konto usługi Azure Data Lake Storage Gen2. Zobacz [Szybki start: Tworzenie konta magazynu Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+* Utwórz konto usługi Azure Data Lake Storage Gen2. Zobacz [Szybki start: Utwórz konto](../storage/blobs/data-lake-storage-quickstart-create-account.md)magazynu Azure Data Lake Storage Gen2.
 
 * Tworzenie jednostki usługi. Zobacz [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
    Jest kilka rzeczy, o których należy pamiętać podczas wykonywania kroków przedstawionych w tym artykule.
 
-   * Wykonując kroki opisane w [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) sekcji tego artykułu, upewnij się przypisać **Współautor danych obiektu Blob magazynu** roli do jednostki usługi w zakresie usługi Data Lake Konto magazynu, Gen2. Jeśli ta rola została przypisana do nadrzędnej grupy zasobów lub subskrypcji, otrzymasz błędy związane z uprawnieniami do momentu przypisania tych ról są propagowane do konta magazynu.
+   * Wykonując kroki opisane w sekcji [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) w artykule, należy się upewnić, że rola **współautor danych obiektów blob magazynu** jest przypisana do jednostki usługi w zakresie konta Data Lake Storage Gen2. Jeśli przypiszesz rolę do nadrzędnej grupy zasobów lub subskrypcji, będziesz otrzymywać błędy związane z uprawnieniami, dopóki te przydziały roli nie zostaną rozpropagowane do konta magazynu.
 
-      Jeśli wolisz używać listy kontroli dostępu (ACL) do skojarzenia z jednostki usługi przy użyciu określonego pliku lub katalogu, dokumentacja [kontrola dostępu w usługach Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
+      Jeśli wolisz używać listy kontroli dostępu (ACL) do kojarzenia jednostki usługi z określonym plikiem lub katalogiem, kontrola dostępu referencyjnego [w Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
-   * Wykonując kroki opisane w [pobieranie wartości do logowania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) części artykułu, wklej identyfikator dzierżawy, identyfikator aplikacji i wartości hasła do pliku tekstowego. Wkrótce będą potrzebne.
+   * Podczas wykonywania kroków opisanych w sekcji [pobieranie wartości dla logowania w](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) artykule wklej identyfikator dzierżawy, identyfikator aplikacji i hasło do pliku tekstowego. Wkrótce będą potrzebne.
 
 * Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
@@ -143,7 +143,7 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
 
 4. Wybierz pozycję **Utwórz**.
 
-5. Poniższy blok kodu ustawia domyślne poświadczenia nazwy głównej usługi dla dowolnego konta usługi ADLS Gen 2, dostępny w sesja platformy Spark. Drugi blok kodu dołącza nazwę konta do ustawienia, aby określić poświadczenia dla określonego konta usługi ADLS generacji 2.  Skopiuj i Wklej albo blok kodu do pierwszej komórki notesu usługi Azure Databricks.
+5. Poniższy blok kodu ustawia domyślne poświadczenia nazwy głównej usługi dla każdego konta ADLS generacji 2, do którego można uzyskać dostęp w sesji platformy Spark. Drugi blok kodu dołącza nazwę konta do ustawienia, aby określić poświadczenia dla określonego konta ADLS generacji 2.  Skopiuj i wklej blok kodu w pierwszej komórce notesu Azure Databricks.
 
    **Konfiguracja sesji**
 
@@ -204,7 +204,7 @@ W tej komórce naciśnij klawisze **SHIFT + ENTER**, aby uruchomić kod.
 
 Teraz w nowej komórce pod tą komórką wprowadź następujący kod, zastępując wartości w nawiasach tymi samymi wartościami, których użyto wcześniej:
 
-    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://" + fileSystemName + "@" + storageAccount + ".dfs.core.windows.net/")
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://" + fileSystemName + "@" + storageAccountName + ".dfs.core.windows.net/")
 
 W tej komórce naciśnij klawisze **SHIFT + ENTER**, aby uruchomić kod.
 
@@ -340,7 +340,7 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Podaj wartości, aby nawiązać połączenie z wystąpieniem usługi Azure SQL Data Warehouse. Musisz mieć magazyn danych SQL Data Warehouse utworzony w ramach wymagań wstępnych. Użyj w pełni kwalifikowaną nazwę serwera dla **dwServer**. Na przykład `<servername>.database.windows.net`.
+4. Podaj wartości, aby nawiązać połączenie z wystąpieniem usługi Azure SQL Data Warehouse. Musisz mieć magazyn danych SQL Data Warehouse utworzony w ramach wymagań wstępnych. Użyj w pełni kwalifikowanej nazwy serwera dla **dwServer**. Na przykład `<servername>.database.windows.net`.
 
    ```scala
    //SQL Data Warehouse related settings
@@ -365,9 +365,9 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
    ```
 
    > [!NOTE]
-   > W tym przykładzie użyto `forward_spark_azure_storage_credentials` flagi, co powoduje, że usługa SQL Data Warehouse na dostęp do danych z magazynu obiektów blob przy użyciu klucza dostępu. Jest to jedyna obsługiwana metoda uwierzytelniania.
+   > W tym przykładzie użyto `forward_spark_azure_storage_credentials` flagi, która powoduje, że SQL Data Warehouse dostępu do danych z usługi BLOB Storage przy użyciu klucza dostępu. Jest to jedyna obsługiwana metoda uwierzytelniania.
    >
-   > Jeśli usługi Azure Blob Storage jest ograniczone do wybrania sieci wirtualne, usługa SQL Data Warehouse wymaga [tożsamości usługi zarządzanej zamiast kluczy dostępu](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Spowoduje to błąd "to żądanie nie ma uprawnień do wykonania tej operacji."
+   > Jeśli Blob Storage platformy Azure jest ograniczone do wybranych sieci wirtualnych, SQL Data Warehouse wymaga [tożsamość usługi zarządzanej zamiast kluczy dostępu](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Spowoduje to wystąpienie błędu "to żądanie nie ma autoryzacji do wykonania tej operacji".
 
 6. Połącz się z usługą SQL Database i sprawdź, czy jest widoczna baza danych o nazwie **SampleTable**.
 
@@ -385,7 +385,7 @@ Po ukończeniu tego samouczka możesz przerwać działanie klastra. W obszarze r
 
 Jeśli nie przerwiesz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po \_\_ min nieaktywności**. W takim przypadku nieaktywny klaster automatycznie zatrzymuje się po określonym czasie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

@@ -29,7 +29,7 @@ sections:
             image:
               src: ../media/index/i_overview.svg
             title: Co to jest analiza tekstu?
-          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
+          - href: /azure/cognitive-services/cognitive-services-apis-create-account
             html: '<p>Dowiedz się, jak zarejestrować się, aby korzystać z interfejsu API analizy tekstu.</p>'
             image:
               src: ../media/index/i_get-started.svg

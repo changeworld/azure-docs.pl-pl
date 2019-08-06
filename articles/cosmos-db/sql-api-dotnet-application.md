@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: sngun
-ms.openlocfilehash: 85d9cbe7d0807ca0e7951e1e12d1edbbf7c921db
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b1d8d2539ae89dfdb8feb2e38f00bf4440411d8a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67985885"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815136"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Samouczek: Opracowywanie ASP.NET Core aplikacji sieci Web MVC z Azure Cosmos DB przy użyciu zestawu .NET SDK 
 
@@ -90,7 +90,7 @@ Teraz, gdy mamy najwięcej ASP.NET Core kodu platformy MVC dla tego rozwiązania
    
    ![Zrzut ekranu opcji dostępnych po kliknięciu prawym przyciskiem myszy dla projektu aplikacji sieci Web w Eksplorator rozwiązań, z wyróżnioną pozycją Zarządzaj pakietami NuGet.](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
    
-2. Zostanie wyświetlone okno dialogowe **Zarządzanie pakietami NuGet**. W polu **Przeglądaj** obszaru pakietów NuGet wpisz ciąg **Microsoft.Azure.Cosmos**. Na podstawie wyników Zainstaluj pakiet **Microsoft. Azure. Cosmos** . Pobiera i instaluje pakiet Azure Cosmos DB wraz z jego zależnościami. Zaznacz  opcję Akceptuję w oknie **Akceptacja licencji** , aby zakończyć instalację.
+2. Zostanie wyświetlone okno dialogowe **Zarządzanie pakietami NuGet**. W polu **Przeglądaj** obszaru pakietów NuGet wpisz ciąg **Microsoft.Azure.Cosmos**. Na podstawie wyników Zainstaluj pakiet **Microsoft. Azure. Cosmos** . Pobiera i instaluje pakiet Azure Cosmos DB wraz z jego zależnościami. Zaznacz opcję Akceptuję w oknie **Akceptacja licencji** , aby zakończyć instalację.
    
    Inna możliwość to zainstalowanie pakietu NuGet za pomocą konsoli menedżera pakietów. W tym celu w menu **Narzędzia** wybierz pozycję **Menedżer pakietów NuGet**, a następnie wybierz pozycję **Konsola menedżera pakietów**. W wierszu polecenia wpisz następujące polecenie:
    
@@ -219,24 +219,7 @@ Najpierw musisz tutaj dodać klasę, która zawiera logikę umożliwiającą po�
 
 1. W tym samym pliku definiujemy nasze metody pomocnika **InitializeCosmosClientInstanceAsync**, co spowoduje odczytanie konfiguracji i zainicjowanie klienta.
 
-    ```csharp
-    private static async Task<CosmosDbService> InitializeCosmosClientInstanceAsync(IConfigurationSection configurationSection)
-    {
-        string databaseName = configurationSection.GetSection("DatabaseName").Value;
-        string containerName = configurationSection.GetSection("ContainerName").Value;
-        string account = configurationSection.GetSection("Account").Value;
-        string key = configurationSection.GetSection("Key").Value;
-        CosmosClientBuilder clientBuilder = new CosmosClientBuilder(account, key);
-        CosmosClient client = clientBuilder
-                            .WithConnectionModeDirect()
-                            .Build();
-        CosmosDbService cosmosDbService = new CosmosDbService(client, databaseName, containerName);
-        Database database = await client.CreateDatabaseIfNotExistsAsync(databaseName);
-        await database.CreateContainerIfNotExistsAsync(containerName, "/id");
-
-        return cosmosDbService;
-    }
-    ```
+    [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)] 
 
 1. Konfiguracja jest zdefiniowana w pliku **appSettings. JSON** projektu. Otwórz go i Dodaj sekcję o nazwie **CosmosDb**:
 

@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie — przewodnik dla operatorów IT na platformie Azure | Dokumentacja firmy Microsoft
-description: Pobierz Przewodnik Wprowadzenie dla operatorów IT na platformie Azure
+title: Wprowadzenie — Przewodnik dla operatorów IT platformy Azure | Microsoft Docs
+description: Wprowadzenie — Przewodnik dla operatorów IT platformy Azure
 services: ''
 documentationcenter: ''
 author: themichaelbender-ms
@@ -15,91 +15,91 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 1f8972c89ecb0fc7d8cc7ceb9bfdeab9e905e862
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b6f5534bc4127e11d7be4b1a52b92a22b75cbb5a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570610"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828097"
 ---
-# <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
+# <a name="get-started-for-azure-it-operators"></a>Wprowadzenie do operatorów IT platformy Azure
 
-Ten przewodnik opisuje podstawowe pojęcia związane z wdrażaniem i zarządzaniem infrastrukturą Microsoft Azure. Jeśli dopiero zaczynasz do chmury obliczeniowej lub na platformie Azure, ten przewodnik pomaga szybko rozpocząć pracę z założenia, wdrożenia oraz szczegóły dotyczące zarządzania. Wiele sekcji, w tym przewodniku omówiono operacji takich jak wdrażanie maszyny wirtualnej i podajemy link do pogłębionych szczegółów technicznych.
+Ten przewodnik zawiera wprowadzenie do podstawowych pojęć związanych z wdrażaniem infrastruktury Microsoft Azure i zarządzaniem nią. Jeśli dopiero zaczynasz korzystać z chmury obliczeniowej lub platformy Azure, ten przewodnik pomaga szybko rozpocząć pracę z pojęciami, wdrażaniem i szczegółami zarządzania. Wiele sekcji tego przewodnika omawia operacje, takie jak wdrażanie maszyny wirtualnej, a następnie udostępnianie linku do szczegółowych informacji technicznych.
 
-## <a name="cloud-computing-overview"></a>Omówienie obliczeń w chmurze
+## <a name="cloud-computing-overview"></a>Omówienie chmury obliczeniowej
 
-Przetwarzanie jest nowoczesny alternatywą dla tradycyjnych w lokalnym centrum danych w chmurze. Dostawców chmury publicznej zapewniają i zarządzaj nimi cała infrastruktura obliczeniowa i podstawowe oprogramowanie do zarządzania. Tych dostawców oferują szeroki wybór usług w chmurze. W tym przypadku usługa w chmurze może być, maszynę wirtualną, serwer sieci web lub aparatu bazy danych z hostowanymi w chmurze. Jako klient dostawcy chmury dzierżawy jest tych usług w chmurze na zgodnie z potrzebami. W ten sposób nakładów inwestycyjnych konserwacji sprzętu konwertowanie koszty operacyjne. Usługa w chmurze zapewnia również następujące korzyści:
+Chmura obliczeniowa zapewnia nowoczesny alternatywę dla tradycyjnego lokalnego centrum danych. Dostawcy chmury publicznej zapewniają i zarządzają całą infrastrukturą obliczeniową oraz podstawowym oprogramowaniem do zarządzania. Ci dostawcy zapewniają szeroką gamę usług w chmurze. W tym przypadku usługa w chmurze może być maszyną wirtualną, serwerem sieci Web lub aparatem bazy danych hostowanym w chmurze. Jako klient korzystający z dostawcy usług w chmurze dzierżawy te są zależne od tego, co jest potrzebne. W tym celu należy przekonwertować koszty związane z konserwacją sprzętu na koszty operacyjne. Usługa w chmurze zapewnia również następujące korzyści:
 
-- Szybkie wdrażanie środowisk obliczeniowych duże
+- Szybkie wdrażanie dużych środowisk obliczeniowych
 
-- Szybkie dezalokacji systemów, które nie są już wymagane
+- Szybkie cofanie alokacji systemów, które nie są już wymagane
 
-- Łatwe wdrażanie tradycyjnie złożonych systemów, takich jak moduły równoważenia obciążenia
+- Łatwe wdrażanie tradycyjnie złożonych systemów takich jak moduły równoważenia obciążenia
 
-- Możliwość zapewnienia możliwości obliczeniowych elastyczne lub skalowania w razie
+- Możliwość zapewnienia elastycznej pojemności obliczeniowej lub skalowania w razie potrzeby
 
-- Bardziej ekonomiczne środowisk obliczeniowych
+- Bardziej ekonomiczne środowiska obliczeniowe
 
-- Dostęp z dowolnego miejsca za pomocą opartego na sieci web portalu lub programowy automatyzacji
+- Dostęp z dowolnego miejsca przy użyciu portalu opartego na sieci Web lub automatyzacji programistycznej
 
-- Usługi w chmurze do potrzeb większości obliczeń i aplikacji
+- Usługi oparte na chmurze, które spełniają większość potrzeb obliczeniowych i aplikacji
 
-Za pomocą infrastruktury lokalnej masz pełną kontrolę nad sprzętu i oprogramowania, które zostało wdrożone. W przeszłości doprowadziło to do decyzji dotyczących zakupów sprzętu koncentrujących się na skalowanie w górę. Przykładem jest zakup serwera za pomocą więcej rdzeni, aby spełnić szczytowe potrzeb związanych z wydajnością. Niestety infrastruktura ta może być skutkowało niewystarczającym wykorzystaniem poza oknem żądanie. Dzięki systemowi Azure wdrażania infrastruktury, które są potrzebne i dostosować to w górę lub w dół w dowolnym momencie. Prowadzi to do fokus na skalowanie w poziomie poprzez wdrożenie dodatkowych węzłów obliczeniowych do zaspokojenia potrzeb wydajności. Skalowanie usług w chmurze jest bardziej opłacalna niż skalowanie w górę za pośrednictwem drogiego sprzętu.
+Dzięki infrastrukturze lokalnej masz pełną kontrolę nad wdrożonym sprzętem i oprogramowaniem. Historycznie prowadzi do podejmowania decyzji dotyczących zaopatrzenia w sprzęt, które koncentrują się na skalowaniu w górę. Przykładem jest zakup serwera o większej liczbie rdzeni w celu spełnienia wymagań dotyczących wydajności szczytowej. Niestety, ta infrastruktura może być nieużywana poza oknem żądania. Na platformie Azure można wdrożyć tylko potrzebną infrastrukturę i dostosować ją w dowolnym momencie. Prowadzi to do skoncentrowania się na skalowaniu przez wdrożenie dodatkowych węzłów obliczeniowych w celu zaspokojenia potrzeb wydajności. Skalowanie usług w chmurze jest tańsze niż skalowanie w górę za dużo sprzętu.
 
-Microsoft wdrożono wiele centrów danych platformy Azure na całym świecie, kolejne zaplanowane. Ponadto Microsoft zwiększa się należących do suwerennej chmury w regionach, takich jak Chinach i Niemczech. Największe globalnego przedsiębiorstwa można wdrażać centrów danych w ten sposób, tak, aby korzystać z platformy Azure ułatwia przedsiębiorstwom dowolnego rozmiaru w celu wdrażania ich usług blisko swoich klientów.
+Firma Microsoft wdrożyła wiele centrów danych platformy Azure na całym świecie z zaplanowanymi planami. Ponadto firma Microsoft zwiększa suwerenne chmury w regionach, takich jak Chiny i Niemcy. Tylko największe przedsiębiorstwa globalne mogą wdrażać centra danych w ten sposób, dzięki czemu korzystanie z systemu Azure ułatwia przedsiębiorstwom dowolnego rozmiaru wdrażanie usług blisko swoich klientów.
 
-Dla małych firm platforma Azure zezwoli dla punktu wejścia niskich kosztach z możliwością skalowania w szybko, jak żądanie do zwiększenia obliczeń. Pozwala to uniknąć ponoszenia dużych inwestycji kapitałowych w infrastrukturze i zapewnia elastyczność architektury i przebudowywania systemów, zgodnie z potrzebami. Korzystanie z chmury obliczeniowej mieści się również z modelem szybkie skalowanie i bezawaryjną wzrostu uruchamiania.
+W małych firmach platforma Azure umożliwia korzystanie z niskiego punktu wejścia, dzięki czemu można skalować szybko wraz ze wzrostem zapotrzebowania na zasoby obliczeniowe. Pozwala to uniknąć dużej inwestycji kapitałowej w infrastrukturę i zapewnia elastyczność w zakresie architekta i ponownej architektury systemów w miarę potrzeb. Korzystanie z chmury obliczeniowej jest dobrze dostosowane do skalowalnego w poziomie modelu szybkiego uruchamiania oraz szybkiego niepowodzenia.
 
-Aby uzyskać więcej informacji na temat dostępnych regionów platformy Azure, zobacz [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/).
+Aby uzyskać więcej informacji na temat dostępnych regionów świadczenia usługi Azure, zobacz [regiony platformy Azure](https://azure.microsoft.com/regions/).
 
 ### <a name="cloud-computing-model"></a>Model przetwarzania w chmurze
 
-Platforma Azure używa chmurowego przetwarzania danych modelu na podstawie kategorii usługi udostępniane klientom. Trzy kategorie usług obejmują infrastruktury jako usługi (IaaS), platforma jako usługa (PaaS) i oprogramowanie jako usługa (SaaS). Dostawców udostępnić część lub całość odpowiedzialność składniki stosu obliczeń w każdej z tych kategorii. Przyjrzyjmy się każdej z kategorii dla chmury obliczeniowej.
-![Cloud Computing Stack Comparison](./media/cloud-computing-comparison.png)
+Platforma Azure korzysta z modelu przetwarzania w chmurze w oparciu o kategorie usługi udostępniane klientom. Trzy kategorie usługi obejmują infrastrukturę jako usługę (IaaS), platformę jako usługę (PaaS) i oprogramowanie jako usługa (SaaS). Dostawcy udostępniają część lub całość odpowiedzialności za składniki w stosie obliczeniowym w każdej z tych kategorii. Przyjrzyjmy się każdej kategorii w chmurze obliczeniowej.
+![Porównanie stosu obliczeń w chmurze](./media/cloud-computing-comparison.png)
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS: Infrastruktura jako usługa
 
-Dostawcy chmury IaaS działa i zarządza wszystkie zasoby obliczeniowe fizycznych oraz wymaganego oprogramowania, aby włączyć wirtualizacji komputerów. Maszyny wirtualne w tych hostowanych centrach danych jest wdrażane przez klienta tej usługi. Mimo że maszyny wirtualne znajdują się w centrum danych poza siedzibą firmy, klient IaaS ma kontrolę konfiguracji i zarządzania, pozostawiając podstawowej infrastruktury dostawcy chmury systemu operacyjnego.
+Dostawca chmury IaaS działa i zarządza wszystkimi fizycznymi zasobami obliczeniowymi oraz wymaganym oprogramowaniem, aby umożliwić wirtualizację komputera. Klient tej usługi wdraża maszyny wirtualne w tych hostowanych centrach danych. Mimo że maszyny wirtualne znajdują się w centrum danych poza siedzibą firmy, konsument IaaS ma kontrolę nad konfiguracją i zarządzaniem systemem operacyjnym, który opuszcza podstawową infrastrukturę dla dostawcy chmury.
 
-System Azure zawiera kilka rozwiązań IaaS, w tym maszyny wirtualne, zestawy skalowania maszyn wirtualnych i powiązanych infrastruktury sieci. Maszyny wirtualne są popularne wybór początkowo migracji usług na platformie Azure, ponieważ umożliwia modelu migracji "metodą lift and shift". Można skonfigurować Maszynę wirtualną infrastrukturą aktualnie uruchomione usługi w centrum danych, a następnie przeprowadzić migrację oprogramowania do nowej maszyny Wirtualnej. Może być konieczne aktualizowanie konfiguracji, takie jak adresy URL do innych usług lub magazynu, ale wiele aplikacji w ten sposób można migrować.
+Platforma Azure obejmuje kilka rozwiązań IaaS, w tym maszyn wirtualnych, zestawów skalowania maszyn wirtualnych i powiązanej infrastruktury sieciowej. Usługa Virtual Machines to popularne rozwiązanie do wstępnej migracji usług na platformę Azure, ponieważ umożliwia ona model migracji "Unieś" i "Shift". Można skonfigurować maszynę wirtualną, taką jak infrastruktura, która aktualnie działa z usługami w centrum danych, a następnie przeprowadzić migrację oprogramowania do nowej maszyny wirtualnej. Może być konieczne wprowadzenie aktualizacji konfiguracji, takich jak adresy URL do innych usług lub magazynu, ale w ten sposób można migrować wiele aplikacji.
 
-Zestawy skalowania maszyn wirtualnych są tworzone na podstawie maszyn wirtualnych platformy Azure i zapewniają łatwy sposób wdrażania klastrów identycznych maszyn wirtualnych. Zestawy skalowania maszyn wirtualnych obsługują także skalowania automatycznego, aby nowe maszyny wirtualne można wdrożyć automatycznie gdy jest to wymagane. To sprawia, że zestawy skalowania maszyn wirtualnych jest idealną platformą w klastrach hostów z wyższego poziomu mikrousług obliczeniowych, takich jak Azure Service Fabric i usługi Azure Container Service.
+Zestawy skalowania maszyn wirtualnych są tworzone na podstawie usługi Azure Virtual Machines i umożliwiają łatwe wdrażanie klastrów identycznych maszyn wirtualnych. Zestawy skalowania maszyn wirtualnych obsługują również automatyczne skalowanie, dzięki czemu nowe maszyny wirtualne mogą być wdrażane automatycznie, gdy jest to wymagane. Dzięki temu skalowanie maszyn wirtualnych ustawia idealną platformę do hostowania wielousługowych klastrów obliczeniowych, takich jak Azure Service Fabric i Azure Container Service.
 
 #### <a name="paas-platform-as-a-service"></a>PaaS: Platforma jako usługa
 
-Dzięki temu możesz wdrożyć aplikację w środowisku, które zapewnia dostawcy usług chmury. Dostawca zawiera wszystkie zarządzania infrastrukturą, dzięki czemu możesz skupić się na tworzeniu aplikacji i zarządzania danymi.
+Za pomocą usługi PaaS aplikacja jest wdrażana w środowisku udostępnianym przez dostawcę usług w chmurze. Dostawca wykonuje wszystkie zarządzanie infrastrukturą, dzięki czemu można skupić się na tworzeniu aplikacji i zarządzaniu danymi.
 
-Platforma Azure udostępnia kilka PaaS obliczeniowe ofert, łącznie z funkcji Web Apps w usłudze Azure App Service i Azure Cloud Services (role sieć web i proces roboczy). W obu przypadkach deweloperzy mają wiele sposobów, aby wdrożyć swoją aplikację bez znajomości bolt i nuts, które go obsługują. Deweloperzy nie muszą tworzyć maszyny wirtualne (VM), użyj protokołu RDP (Remote Desktop), aby zalogować się do każdego z nich lub zainstalować aplikację. One po prostu kliknij przycisk (lub Zamknij, aby ją) i narzędzi dostarczanych przez firmę Microsoft, aprowizowanie maszyn wirtualnych i wdrożyć i zainstalować aplikację na nich.
+Platforma Azure oferuje kilka ofert obliczeniowych PaaS, w tym Web Apps funkcję Azure App Service i Cloud Services platformy Azure (role sieć Web i proces roboczy). W obu przypadkach deweloperzy mają wiele sposobów wdrażania aplikacji bez znajomości orzechów i piorunów, które je obsługują. Deweloperzy nie muszą tworzyć maszyn wirtualnych, używać Remote Desktop Protocol (RDP) do logowania się do każdego z nich lub instalować aplikacji. Po prostu trafią przycisk (lub blisko niego), a Narzędzia udostępniane przez firmę Microsoft inicjują maszyny wirtualne, a następnie wdrażają i instalują na nich aplikację.
 
 #### <a name="saas-software-as-a-service"></a>SaaS: Oprogramowanie jako usługa
 
-SaaS to oprogramowanie, które centralne hostowaną i zarządzaną. Zazwyczaj jest on oparty na architektury wielodostępnej — jednej wersji aplikacji jest używany dla wszystkich klientów. Może być skalowana do wielu wystąpień, aby zapewnić najlepszą wydajność we wszystkich lokalizacjach. Oprogramowanie SaaS zwykle jest licencjonowane w ramach miesięcznej lub rocznej subskrypcji. Oprogramowanie SaaS zwykle jest licencjonowane w ramach miesięcznej lub rocznej subskrypcji. SaaS dostawców oprogramowania są odpowiedzialne za wszystkie składniki stosu oprogramowania, więc wszystko, czego możesz zarządzać świadczonych usług.
+SaaS to oprogramowanie, które jest centralnie hostowane i zarządzane. Zwykle bazują na architekturze wielodostępnym — w przypadku wszystkich klientów jest używana jedna wersja aplikacji. Można ją skalować do wielu wystąpień, aby zapewnić najlepszą wydajność we wszystkich lokalizacjach. Oprogramowanie SaaS zazwyczaj jest licencjonowane w miesięcznej lub rocznej subskrypcji. Dostawcy oprogramowania SaaS są odpowiedzialni za wszystkie składniki stosu oprogramowania, co pozwala na zarządzanie usługami.
 
-Microsoft Office 365 jest dobrym przykładem SaaS oferty. Subskrybenci zapłacić opłatę, miesięcznej lub rocznej subskrypcji i staną się Microsoft Exchange, Microsoft OneDrive i pozostałą część pakietu Microsoft Office jako usługa. Subskrybenci uzyskują zawsze najnowszej wersji i Exchange server jest zarządzana za Ciebie. W porównaniu do instalowania i uaktualniania pakietu Office, co roku, jest to mniej kosztowne i wymaga mniej wysiłku.
+Microsoft Office 365 to dobry przykład oferty SaaS. Subskrybenci zwracają miesięczną lub roczną opłatę za subskrypcję i otrzymują program Microsoft Exchange, Microsoft OneDrive i resztę pakietu Microsoft Office jako usługi. Subskrybenci zawsze uzyskują najnowszą wersję, a serwer Exchange jest zarządzany przez Ciebie. W porównaniu do instalowania i uaktualniania pakietu Office co roku jest to tańsze i wymaga mniejszego nakładu pracy.
 
-## <a name="azure-services"></a>Usługi platformy Azure
+## <a name="azure-services"></a>Usługi Azure
 
-Platforma Azure oferuje wiele usług w jej platforma obliczeniowa w chmurze. Te usługi są następujące.
+Platforma Azure oferuje wiele usług w chmurze obliczeniowej. Te usługi obejmują:
 
 ### <a name="compute-services"></a>Usługi obliczeniowe
 
-Usługi hostingu i obciążenie aplikacji:
+Usługi do hostowania i uruchamiania obciążenia aplikacji:
 
-- Usługa Azure Virtual Machines — Linux i Windows
+- Azure Virtual Machines — zarówno Linux, jak i Windows
 
-- Usługi aplikacji (aplikacje sieci Web, aplikacje mobilne, aplikacje logiki, aplikacje interfejsu API i aplikacje funkcji)
+- App Services (Web Apps, Mobile Apps, Logic Apps, API Apps i aplikacje funkcji)
 
-- Usługa Azure Batch (w przypadku dużych równoległych i wsadowych zadań obliczeniowych)
+- Azure Batch (w przypadku zadań obliczeniowych o dużej skali równoległych i wsadowych)
 
 - Azure Service Fabric
 
 - Azure Container Service
 
-### <a name="data-services"></a>Data services
+### <a name="data-services"></a>Data Services
 
-Usługi magazynowania i zarządzanie danymi:
+Usługi do przechowywania danych i zarządzania nimi:
 
-- Usługa Azure Storage (składa się z usług obiektów Blob platformy Azure, kolejki, tabela i plik)
+- Usługa Azure Storage (obejmuje obiekty blob platformy Azure, kolejki, tabele i usługi plików)
 
 - Azure SQL Database
 
@@ -111,367 +111,367 @@ Usługi magazynowania i zarządzanie danymi:
 
 ### <a name="application-services"></a>Usługi aplikacji
 
-Usługi dotyczące tworzenia i obsługi aplikacji:
+Usługi do tworzenia i obsługi aplikacji:
 
 - Azure Active Directory (Azure AD)
 
-- Usługa Azure Service Bus do łączenia z systemami rozproszonymi
+- Azure Service Bus do łączenia systemów rozproszonych
 
-- Usługa Azure HDInsight do przetwarzania danych big data
+- Usługa Azure HDInsight do przetwarzania danych Big Data
 
-- Azure Scheduler
+- Harmonogram platformy Azure
 
 - Azure Media Services
 
 ### <a name="network-services"></a>Usługi sieciowe
 
-Usługi w przypadku sieci zarówno w obrębie platformy Azure, jak i między centrami danych platformy Azure i lokalnej:
+Usługi dla sieci zarówno na platformie Azure, jak i na platformie Azure i lokalnych centrach danych:
 
 - Azure Virtual Network
 
-- Usługa ExpressRoute systemu Azure
+- Azure ExpressRoute
 
-- DNS platformy Azure
+- System DNS udostępniony przez platformę Azure
 
 - Azure Traffic Manager
 
 - Azure Content Delivery Network
 
-Aby uzyskać szczegółową dokumentację usług platformy Azure, zobacz [dokumentacja usługi Azure service](https://docs.microsoft.com/azure).
+Aby uzyskać szczegółową dokumentację dotyczącą usług platformy Azure, zobacz [dokumentację usługi platformy Azure](https://docs.microsoft.com/azure).
 
-## <a name="azure-key-concepts"></a>Kluczowe pojęcia dotyczące usługi Azure
+## <a name="azure-key-concepts"></a>Podstawowe pojęcia związane z platformą Azure
 
-### <a name="datacenters-and-regions"></a>Centra danych i regionów
+### <a name="datacenters-and-regions"></a>Centra danych i regiony
 
-Azure to platforma chmury globalnej, która jest ogólnie dostępna w wielu regionach na całym świecie. Podczas aprowizowania usługi, aplikacji lub maszyny Wirtualnej na platformie Azure, zostanie wyświetlony monit wybierz region. Wybrany region reprezentuje speciﬁc centrum danych, której działa Twoja aplikacja. Aby uzyskać więcej informacji, zobacz [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/).
+Azure to globalna platforma w chmurze, która jest ogólnie dostępna w wielu regionach na całym świecie. Podczas aprowizacji usługi, aplikacji lub maszyny wirtualnej na platformie Azure zostanie wyświetlony monit o wybranie regionu. Wybrany region reprezentuje konkretne centrum danych, w którym działa aplikacja. Aby uzyskać więcej informacji, zobacz [regiony platformy Azure](https://azure.microsoft.com/regions/).
 
-Jeden beneﬁts użycia platformy Azure jest wdrożenie aplikacji w różnych centrach danych na całym świecie. Region, który wybierzesz można aﬀect wydajność aplikacji. Jest optymalne, aby wybrać region, który jest bliżej większość klientów, aby zmniejszyć opóźnienia w żądaniach sieci. Możesz również wybrać region, aby spełnić wymagania prawne dystrybucji aplikacji w niektórych krajach/regionach.
+Jedną z zalet korzystania z platformy Azure jest możliwość wdrażania aplikacji w różnych centrach danych na całym świecie. Wybrany region może mieć wpływ na wydajność aplikacji. Najlepiej wybrać region, który jest bliżej większości klientów, aby zmniejszyć opóźnienia w żądaniach sieciowych. Możesz również wybrać region spełniający wymagania prawne dotyczące dystrybucji aplikacji w określonych krajach/regionach.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Azure portal to aplikacji sieci web, który może służyć do tworzenia, zarządzania i usuwać zasoby platformy Azure i usługi. Witryna Azure portal znajduje się w [portal.azure.com](https://portal.azure.com). Obejmuje dostosowywany pulpit nawigacyjny oraz narzędzia do zarządzania zasobami platformy Azure. Zawiera także informacje pomoc dotycząca rozliczeń i subskrypcji. Aby uzyskać więcej informacji, zobacz [omówienie portalu Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) i [zarządzanie zasobami platformy Azure za pośrednictwem portalu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+Azure Portal jest aplikacją opartą na sieci Web, która może służyć do tworzenia i usuwania zasobów i usług platformy Azure oraz zarządzania nimi. Azure Portal znajduje się w [Portal.Azure.com](https://portal.azure.com). Obejmuje to dostosowywalny pulpit nawigacyjny i narzędzia służące do zarządzania zasobami platformy Azure. Zawiera również informacje dotyczące rozliczeń i subskrypcji. Aby uzyskać więcej informacji, zobacz [Microsoft Azure Portal Omówienie](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) i [Zarządzanie zasobami platformy Azure za pomocą portalu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
 ### <a name="resources"></a>Zasoby
 
-Zasoby platformy Azure są poszczególne obliczeniowych, sieci, danych lub aplikacji hostowanie usług, które zostały wdrożone do subskrypcji platformy Azure. Niektóre typowe zasoby to maszyny wirtualne, konta magazynu lub bazy danych SQL. Usługi platformy Azure często składają się z kilku powiązanych zasobów platformy Azure. Na przykład maszynę wirtualną platformy Azure może obejmować maszyna wirtualna, konto magazynu, karta sieciowa i publiczny adres IP. Te zasoby można tworzyć, zarządzane i usuwane indywidualnie lub jako grupa. Zasoby platformy Azure zostały omówione bardziej szczegółowo w dalszej części tego przewodnika.
+Zasoby platformy Azure to pojedyncze usługi obliczeniowe, sieci, dane i aplikacje, które zostały wdrożone w ramach subskrypcji platformy Azure. Niektóre typowe zasoby to maszyny wirtualne, konta magazynu lub bazy danych SQL. Usługi platformy Azure często składają się z kilku powiązanych zasobów platformy Azure. Na przykład maszyna wirtualna platformy Azure może obejmować MASZYNę wirtualną, konto magazynu, kartę sieciową i publiczny adres IP. Te zasoby można tworzyć, zarządzać i usuwać pojedynczo lub jako grupę. Zasoby platformy Azure są omówione bardziej szczegółowo w dalszej części tego przewodnika.
 
 ### <a name="resource-groups"></a>Grupy zasobów
 
-Grupę zasobów platformy Azure jest kontenerem, który zawiera powiązane zasoby rozwiązania platformy Azure. Grupa zasobów może zawierać wszystkie zasoby dla rozwiązania lub tylko te zasoby, które mają być zarządzane jako grupa. Grupy zasobów platformy Azure zostały omówione bardziej szczegółowo w dalszej części tego przewodnika.
+Grupa zasobów platformy Azure to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Grupa zasobów może zawierać wszystkie zasoby rozwiązania lub tylko zasoby, które mają być zarządzane jako Grupa. Grupy zasobów platformy Azure zostały omówione bardziej szczegółowo w dalszej części tego przewodnika.
 
 ### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
-Szablon usługi Azure Resource Manager jest plik JavaScript Object Notation (JSON), który definiuje jeden lub więcej zasobów do wdrożenia w grupie zasobów. Definiuje również zależności między wdrożonych zasobów. Szablony usługi Resource Manager zostały omówione bardziej szczegółowo w dalszej części tego przewodnika.
+Szablon Azure Resource Manager to plik JavaScript Object Notation (JSON), który definiuje co najmniej jeden zasób do wdrożenia w grupie zasobów. Definiuje również zależności między wdrożonymi zasobami. Szablony Menedżer zasobów zostały omówione bardziej szczegółowo w dalszej części tego przewodnika.
 
 ### <a name="automation"></a>Automatyzacja
 
-Oprócz tworzenia, zarządzania i usuwanie zasobów za pomocą witryny Azure portal te działania można zautomatyzować za pomocą programu PowerShell lub interfejsu wiersza polecenia (CLI) platformy Azure.
+Oprócz tworzenia i usuwania zasobów oraz zarządzania nimi przy użyciu Azure Portal można zautomatyzować te działania przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Program Azure PowerShell to zestaw modułów, które dostarczają poleceń cmdlet do zarządzania platformy Azure. Można użyć polecenia cmdlet do tworzenia, zarządzania i usuwania usług platformy Azure. Polecenia cmdlet może pomóc osiągnąć spójną, powtarzalną i zdalne wdrożenia. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
+Azure PowerShell to zestaw modułów, które udostępniają polecenia cmdlet do zarządzania platformą Azure. Za pomocą poleceń cmdlet można tworzyć i usuwać usługi platformy Azure oraz zarządzać nimi. Polecenia cmdlet mogą pomóc w osiągnięciu spójnych, powtarzalnych i niepraktycznych wdrożeń. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 #### <a name="azure-command-line-interface"></a>interfejsu wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure jest narzędziem, które służy do tworzenia, zarządzania i usunąć zasoby platformy Azure z poziomu wiersza polecenia. Interfejs wiersza polecenia platformy Azure jest dostępna dla systemów Linux, Mac OS X i Windows. Aby uzyskać więcej informacji i szczegóły techniczne, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Interfejs wiersza polecenia platformy Azure to narzędzie, za pomocą którego można tworzyć i usuwać zasoby platformy Azure oraz zarządzać nimi z poziomu wiersza polecenia. Interfejs wiersza polecenia platformy Azure jest dostępny dla systemów Linux, Mac OS X i Windows. Aby uzyskać więcej informacji i szczegóły techniczne, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 #### <a name="rest-apis"></a>Interfejsy API REST
 
-Jest ona oparta na zestaw interfejsów API REST, która obsługuje interfejs użytkownika witryny Azure portal. Większość tych interfejsów API REST są również obsługiwane umożliwia programowe obsługi administracyjnej i zarządzanie zasobami platformy Azure i aplikacji z dowolnego urządzenia z włączoną funkcją łączności internetowej. Aby uzyskać więcej informacji, zobacz [odwołanie do zestawu SDK REST platformy Azure](https://docs.microsoft.com/rest/api/index).
+Platforma Azure jest oparta na zestawie interfejsów API REST, które obsługują interfejs użytkownika Azure Portal. Większość z tych interfejsów API REST jest również obsługiwana, aby umożliwić programistyczne udostępnianie zasobów i aplikacji platformy Azure oraz zarządzanie nimi z dowolnego urządzenia z obsługą Internetu. Aby uzyskać więcej informacji, zobacz [Dokumentacja zestawu SDK REST platformy Azure](https://docs.microsoft.com/rest/api/index).
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-Administratorzy mogą uzyskiwać dostęp do programu Azure PowerShell i wiersza polecenia platformy Azure za pośrednictwem przeglądarki dostępne środowisko o nazwie usługi Azure Cloud Shell. Ten interfejs interakcyjne zapewnia elastyczne narzędzia dla systemów Linux i Windows administratorzy mogą używać ich interfejsu wiersza polecenia, wyboru, Bash lub programu PowerShell. Usługa Azure Cloud Shell może być dostęp za pośrednictwem portalu, jako interfejs autonomicznej w sieci web w [shell.azure.com](https://shell.azure.com), lub z wielu innych punktów dostępu. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+Administratorzy mogą uzyskać dostęp do Azure PowerShell i interfejsu wiersza polecenia platformy Azure za pomocą środowiska dostępnego dla przeglądarki o nazwie Azure Cloud Shell. Ten interfejs interaktywny udostępnia elastyczne narzędzie dla administratorów systemów Linux i Windows, aby można było korzystać z wybranego interfejsu wiersza polecenia, bash lub PowerShell. Azure Cloud Shell można uzyskać dostęp za pośrednictwem portalu jako autonomiczny interfejs sieci Web w [Shell.Azure.com](https://shell.azure.com)lub z wielu innych punktów dostępu. Aby uzyskać więcej informacji, zobacz [omówienie Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 ## <a name="azure-subscriptions"></a>Subskrypcje platformy Azure
 
-Subskrypcji to logiczna grupa usług platformy Azure, która jest połączona z kontem platformy Azure. Jedno konto platformy Azure może zawierać wiele subskrypcji. Opłaty za usługi platformy Azure odbywa się na podstawie każdej subskrypcji. Subskrypcje platformy Azure ma Administrator konta, który ma pełną kontrolę nad subskrypcją, a Administrator usługi, kto ma kontrolę nad wszystkich usług w ramach subskrypcji. Aby uzyskać informacji na temat klasyczni Administratorzy, zobacz [Administratorzy subskrypcji platformy Azure Dodaj lub zmień](../../billing/billing-add-change-azure-subscription-administrator.md). Oprócz Administratorzy, mogą być udzielane indywidualnych kont szczegółową kontrolę zasobów platformy Azure przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md).
+Subskrypcja to logiczna Grupa usług platformy Azure, która jest połączona z kontem platformy Azure. Pojedyncze konto platformy Azure może zawierać wiele subskrypcji. Rozliczanie usług platformy Azure odbywa się na podstawie subskrypcji. Subskrypcje platformy Azure mają administratora konta, który ma pełną kontrolę nad subskrypcją, oraz administratora usługi, który ma kontrolę nad wszystkimi usługami w ramach subskrypcji. Aby uzyskać informacje na temat klasycznych administratorów subskrypcji, zobacz [Dodawanie lub zmienianie administratorów subskrypcji platformy Azure](../../billing/billing-add-change-azure-subscription-administrator.md). Oprócz administratorów do poszczególnych kont można udzielić szczegółowej kontroli nad zasobami platformy Azure przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md).
 
-### <a name="select-and-enable-an-azure-subscription"></a>Wybierz i Włącz subskrypcję platformy Azure
+### <a name="select-and-enable-an-azure-subscription"></a>Wybieranie i włączanie subskrypcji platformy Azure
 
-Przed rozpoczęciem pracy z usługami platformy Azure, potrzebna jest subskrypcja. Dostępnych jest kilka typów subskrypcji.
+Aby móc korzystać z usług platformy Azure, musisz mieć subskrypcję. Dostępne są kilka typów subskrypcji.
 
-**Bezpłatne konta**: Link do rejestracji dla bezpłatnego konta znajduje się na [witryny sieci Web Azure](https://azure.microsoft.com/). Dzięki temu środki w ciągu 30 dni, aby wypróbować dowolną kombinację zasobów platformy Azure. Twoje konto jest zawieszone w przypadku przekroczenia kwoty kredytu. Po zakończeniu okresu próbnego usługi jest zamknięta i nie będą już działać. Można uaktualnić do subskrypcji zgodnie z rzeczywistym użyciem w dowolnym momencie.
+**Bezpłatne konta**: Link do rejestracji w celu uzyskania bezpłatnego konta znajduje się w [witrynie sieci Web platformy Azure](https://azure.microsoft.com/). Dzięki temu możesz uzyskać środki na korzystanie z 30 dni, aby wypróbować dowolną kombinację zasobów na platformie Azure. W przypadku przekroczenia kwoty środków Twoje konto zostanie zawieszone. Na koniec okresu próbnego usługi zostały zlikwidowane i nie będą już działać. W dowolnym momencie możesz przeprowadzić uaktualnienie do subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem.
 
-**Subskrypcje MSDN**: Jeśli masz subskrypcję MSDN, możesz uzyskać określoną ilością w zawierających środki platformy Azure każdego miesiąca. Na przykład w przypadku programu Microsoft Visual Studio Enterprise z subskrypcją MSDN otrzymujesz \$150 miesięcznych środków platformy Azure.
+**Subskrypcje MSDN**: Jeśli masz subskrypcję MSDN, w każdym miesiącu otrzymasz określoną kwotę środków na korzystanie z platformy Azure. Jeśli na przykład masz Microsoft Visual Studio Enterprise z subskrypcją MSDN, otrzymasz 150 miesięcznie \$na środki na korzystanie z platformy Azure.
 
-W przypadku przekroczenia kwoty kredytu usługi są wyłączone do momentu rozpoczęcia następnego miesiąca. Możesz wyłączyć limit wydatków i dodać kartę kredytową, który ma być używany dla dodatkowych kosztów. Niektóre z tych kosztów są objęte rabatem dla kont w witrynie MSDN. Na przykład możesz wina systemu Linux dla maszyn wirtualnych z systemem Windows Server i nie ma dodatkowych opłat do serwerów firmy Microsoft, takich jak Microsoft SQL Server. To sprawia, że konta MSDN idealne rozwiązanie w przypadku opracowywania i testowania scenariuszy.
+W przypadku przekroczenia kwoty środków usługa zostanie wyłączona do momentu rozpoczęcia następnego miesiąca. Możesz wyłączyć limit wydatków i dodać kartę kredytową, która będzie używana w dodatkowych kosztach. Niektóre z tych kosztów są wliczane do kont MSDN. Na przykład opłata jest naliczana dla maszyn wirtualnych z systemem Windows Server i nie ma dodatkowej opłaty za serwery firmy Microsoft, takie jak Microsoft SQL Server. Dzięki temu konta MSDN idealnie nadają się do tworzenia i testowania scenariuszy.
 
-**Konta programu BizSpark**: W programie BizSpark firmy Microsoft oferuje wiele korzyści dla startupów. Jedną z tych korzyści jest dostęp do oprogramowania firmy Microsoft dla środowiska deweloperskie i testowe do pięciu kont MSDN. Możesz uzyskać 150 USD środki platformy Azure w każdym z tych pięciu kont MSDN i płacić według obniżonych stawek za kilka usług platformy Azure, takie jak maszyny wirtualne.
+**Konta BizSpark**: Program Microsoft BizSparke oferuje wiele korzyści, które można uruchomić. Jedną z tych korzyści jest dostęp do całego oprogramowania firmy Microsoft w środowiskach deweloperskich i testowych w przypadku maksymalnie pięciu kont MSDN. W przypadku każdego z pięciu kont MSDN uzyskasz $150 na kwotę, a opłaty są naliczone za kilka usług platformy Azure, takich jak Virtual Machines.
 
-**Płatność za rzeczywiste użycie**: Z tą subskrypcją płacisz za to, czego używasz, dołączając na koncie karty kredytowej lub debetowej. Jeśli organizacja może również zostać zatwierdzony dla fakturowania.
+**Płatność zgodnie z rzeczywistym**użyciem: W przypadku tej subskrypcji płacisz za to, czego używasz, dołączając kartę kredytową lub debetową do konta. Jeśli jesteś organizacją, możesz także zatwierdzić ją do fakturowania.
 
-**Umowy Enterprise Agreement**: Z umową enterprise agreement zdecydujesz się przy użyciu wielu usług platformy Azure w przyszłym roku, a opłaty są naliczane takimi problemami znacznie mniej wcześniej. Zobowiązanie, wprowadzone jest wykorzystywane przez cały rok. W przypadku przekroczenia kwoty zobowiązania mogą płacić za nadwyżkowe użycie w poprzednim. W zależności od kwoty zobowiązania Uzyskaj rabat na usługi platformy Azure.
+**Umowy Enterprise Agreement**: W ramach umowy Enterprise Agreement użytkownik zobowiązuje się do korzystania z pewnej liczby usług na platformie Azure w ciągu następnego roku, a ta kwota jest płacona z wyprzedzeniem. Zobowiązania, które należy wprowadzić, są używane w ciągu roku. W przypadku przekroczenia kwoty zobowiązania możesz uregulować nadwyżki w zaległościach. W zależności od ilości zobowiązania otrzymujesz rabat na usługi na platformie Azure.
 
-### <a name="grant-administrative-access-to-an-azure-subscription"></a>Przyznawaj dostęp administracyjny do subskrypcji platformy Azure
+### <a name="grant-administrative-access-to-an-azure-subscription"></a>Udzielanie dostępu administracyjnego do subskrypcji platformy Azure
 
-RBAC zawiera kilka wbudowanych ról, których można użyć, aby przypisać uprawnienia. Aby użytkownik jest administratorem subskrypcji platformy Azure, należy przypisać je [właściciela](../../role-based-access-control/built-in-roles.md#owner) rolę w zakresie subskrypcji. Rola właściciela zapewnia pełny dostęp użytkownika do wszystkich zasobów w ramach subskrypcji, łącznie z prawej strony można delegować dostępu do innych osób.
+Funkcja RBAC ma kilka wbudowanych ról, których można użyć do przypisywania uprawnień. Aby użytkownik był administratorem subskrypcji platformy Azure, przypisz im rolę [właściciela](../../role-based-access-control/built-in-roles.md#owner) w zakresie subskrypcji. Rola właściciela daje użytkownikowi pełen dostęp do wszystkich zasobów w subskrypcji, w tym prawo do delegowania dostępu do innych osób.
 
-Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
+Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
-### <a name="view-billing-information-in-the-azure-portal"></a>Wyświetlanie informacji dotyczących rozliczeń w witrynie Azure portal
+### <a name="view-billing-information-in-the-azure-portal"></a>Wyświetl informacje dotyczące rozliczeń w Azure Portal
 
-Ważnym elementem programu przy użyciu platformy Azure jest możliwość wyświetlania informacji dotyczących rozliczeń. Azure portal udostępnia szczegółowy wgląd w informacje rozliczeniowe platformy Azure.
+Ważnym składnikiem korzystania z platformy Azure jest możliwość wyświetlania informacji dotyczących rozliczeń. Azure Portal zapewnia szczegółowy wgląd w informacje dotyczące rozliczeń platformy Azure.
 
-Aby uzyskać więcej informacji, zobacz [jak pobrać faktury i dane dziennego użycia rozliczeniową za platformę Azure](../../billing/billing-download-azure-invoice-daily-usage-date.md).
+Aby uzyskać więcej informacji, zobacz [jak pobrać fakturę rozliczeń platformy Azure i dane dziennego użycia](../../billing/billing-download-azure-invoice-daily-usage-date.md).
 
-### <a name="get-billing-information-from-billing-apis"></a>Uzyskiwanie informacji o rozliczeniach interfejsy API rozliczeń
+### <a name="get-billing-information-from-billing-apis"></a>Uzyskaj informacje dotyczące rozliczeń z interfejsów API rozliczeń
 
-Oprócz wyświetlania rozliczeń w portalu, można uzyskać dostęp do informacji rozliczeń za pomocą skryptu lub program do rozliczeń REST interfejsów API usługi Azure:
+Oprócz wyświetlania rozliczeń w portalu możesz uzyskać dostęp do informacji dotyczących rozliczeń przy użyciu skryptu lub programu za pośrednictwem interfejsów API REST rozliczeń platformy Azure:
 
-- Interfejs API użycia platformy Azure umożliwia pobieranie danych użycia. Można dostosować informacje rozliczeniowe użycia, przez otagowanie powiązanych zasobów platformy Azure. Na przykład możesz oznaczyć każdy z zasobów w grupie zasobów przy użyciu nazwy działu lub nazwę projektu i śledzić koszty specjalnie do tego jeden tag.
+- Możesz użyć interfejsu API użycia platformy Azure, aby pobrać dane użycia. Informacje o użyciu rozliczeń można dostosować, dodając znaczniki związane z zasobami platformy Azure. Można na przykład oznaczyć każdy zasób w grupie zasobów przy użyciu nazwy działu lub nazwy projektu, a następnie śledzić koszty związane z tym jednym tagiem.
 
-- Można użyć interfejsu API usługi Azure szybkość karty, aby wyświetlić listę wszystkich dostępnych zasobów wraz z metadanych i ceny informacje o każdej z tych zasobów.
+- Korzystając z interfejsu API usługi Azure rate Card, można wyświetlić listę wszystkich dostępnych zasobów wraz z informacjami dotyczącymi metadanych i cen poszczególnych zasobów.
 
-Aby uzyskać więcej informacji, zobacz [wgląd w użycie zasobów usługi Microsoft Azure](../../billing/billing-usage-rate-card-overview.md).
+Aby uzyskać więcej informacji, zobacz [uzyskiwanie wglądu w dane dotyczące użycia zasobów Microsoft Azure](../../billing/billing-usage-rate-card-overview.md).
 
-### <a name="forecast-cost-with-the-pricing-calculator"></a>Prognozowane koszty za pomocą kalkulatora cen.
+### <a name="forecast-cost-with-the-pricing-calculator"></a>Prognoza kosztów za pomocą kalkulatora cen
 
-Ceny dla każdej usługi w systemie Azure jest inny. Wiele usług platformy Azure udostępniają warstw Basic, Standard i Premium. Zwykle każda warstwa ma kilka poziomów cen i wydajności. Za pomocą [online kalkulator cen](https://azure.microsoft.com/pricing/calculator), można utworzyć szacowania cen. Kalkulator zawiera elastyczność, aby oszacować koszt pojedynczego zasobu lub tej grupy zasobów.
+Cennik dla każdej usługi platformy Azure jest różny. Wiele usług platformy Azure oferuje warstwy Basic, standard i Premium. Zwykle każda warstwa ma kilka poziomów cen i wydajności. Korzystając z [kalkulatora cen online](https://azure.microsoft.com/pricing/calculator), można utworzyć oszacowania cen. Kalkulator zawiera elastyczność do oszacowania kosztów dla pojedynczego zasobu lub grupy zasobów.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Usługa Azure Resource Manager jest mechanizm wdrażania, zarządzania i organizacji dla zasobów platformy Azure. Za pomocą usługi Resource Manager, wiele poszczególne zasoby można umieścić ze sobą, w grupie zasobów.
+Azure Resource Manager to mechanizm wdrażania, zarządzania i organizacji dla zasobów platformy Azure. Za pomocą Menedżer zasobów można umieścić wiele pojedynczych zasobów w grupie zasobów.
 
-Menedżer zasobów zawiera także możliwości wdrażania, które pozwalają możliwe do dostosowania wdrożenia i konfiguracji powiązane zasoby. Na przykład za pomocą usługi Resource Manager, można wdrożyć aplikację, która składa się z wielu maszyn wirtualnych, moduł równoważenia obciążenia i bazy danych SQL jako pojedyncza jednostka. Możesz tworzyć te wdrożenia przy użyciu szablonu usługi Resource Manager.
+Menedżer zasobów obejmuje również możliwości wdrażania umożliwiające dostosowywalne wdrażanie i konfigurację powiązanych zasobów. Na przykład za pomocą Menedżer zasobów można wdrożyć aplikację, która składa się z wielu maszyn wirtualnych, modułu równoważenia obciążenia i bazy danych SQL jako pojedynczej jednostki. Te wdrożenia są opracowywane przy użyciu szablonu Menedżer zasobów.
 
 Usługa Resource Manager zapewnia kilka korzyści:
 
 - Możliwość grupowego wdrożenia i monitorowania wszystkich zasobów w ramach rozwiązania oraz zarządzania nimi (zamiast obsługiwania zasobów pojedynczo).
 
-- Można wielokrotnie wdrażać rozwiązanie podczas cyklu tworzenia oprogramowania i mieć pewność, że Twoje zasoby są wdrażane w spójnym stanie.
+- Możesz wielokrotnie wdrożyć rozwiązanie w całym cyklu projektowania i mieć pewność, że zasoby są wdrażane w spójnym stanie.
 
 - Możliwość zarządzania infrastrukturą przy użyciu szablonów deklaratywnych zamiast skryptów.
 
 - Możliwość definiowania zależności między zasobami, aby wdrażać je w odpowiedniej kolejności.
 
-- Możliwość stosowania kontroli dostępu do wszystkich usług w grupie zasobów, ponieważ RBAC natywnej integracji z platformą zarządzania.
+- Kontrolę dostępu można stosować do wszystkich usług w grupie zasobów, ponieważ RBAC jest natywnie zintegrowana z platformą zarządzania.
 
-- Znaczniki można dodawać dla zasobów w celu logicznego uporządkowania wszystkich zasobów w ramach subskrypcji.
+- Możesz zastosować Tagi do zasobów, aby logicznie organizować wszystkie zasoby w subskrypcji.
 
-- Możliwość wyjaśniania rozliczeń w organizacji przez wyświetlanie kosztów dla grupy zasobów, które mają tego samego tagu.
+- Możesz wyjaśnić rozliczenia w organizacji, wyświetlając koszty dla grupy zasobów, które współużytkują ten sam tag.
 
-### <a name="tips-for-creating-resource-groups"></a>Wskazówki dotyczące tworzenia grup zasobów
+### <a name="tips-for-creating-resource-groups"></a>Porady dotyczące tworzenia grup zasobów
 
-Gdy wprowadzasz decyzji dotyczących grup zasobów, należy wziąć pod uwagę poniższe wskazówki:
+Podczas podejmowania decyzji dotyczących grup zasobów należy wziąć pod uwagę następujące wskazówki:
 
-- Wszystkie zasoby w grupie zasobów powinny mieć taki sam cykl życia.
+- Wszystkie zasoby w grupie zasobów powinny mieć ten sam cykl życia.
 
-- Zasób można przypisać tylko do jednej grupy naraz.
+- Zasób można przypisać tylko do jednej grupy jednocześnie.
 
-- Można dodać lub usunięcie zasobu z grupy zasobów, w dowolnym momencie. Każdy zasób musi należeć do grupy zasobów. Dlatego jeśli usuniesz zasób z jednej grupy, należy dodać go do innego.
+- Możesz w dowolnym momencie dodać lub usunąć zasób z grupy zasobów. Każdy zasób musi należeć do grupy zasobów. Dlatego w przypadku usunięcia zasobu z jednej grupy należy dodać go do innej.
 
-- Większość typów zasobów można przenieść do innej grupy zasobów, w dowolnym momencie.
+- Większość typów zasobów można przenieść do innej grupy zasobów w dowolnym momencie.
 
-- Zasoby w grupie zasobów może być w różnych regionach.
+- Zasoby w grupie zasobów mogą znajdować się w różnych regionach.
 
-- Grupa zasobów służy do kontrolowania dostępu do zasobów w niej.
+- Grupy zasobów można użyć do kontrolowania dostępu do zasobów w nim.
 
-### <a name="building-resource-manager-templates"></a>Tworzenie szablonów usługi Resource Manager
+### <a name="building-resource-manager-templates"></a>Kompilowanie szablonów Menedżer zasobów
 
-Szablony usługi Resource Manager deklaratywne Definiowanie zasobów i konfiguracje zasobów, które zostaną wdrożone do pojedynczej grupy zasobów. Szablony usługi Resource Manager umożliwia organizowanie złożonych wdrożeń bez konieczności nadmiernego skryptów lub konfiguracji ręcznej. Po tworzenia szablonu można wdrożyć wiele razy — każdorazowo przy użyciu identycznych wyniku.
+Szablony Menedżer zasobów deklaratywnie definiują zasoby i konfiguracje zasobów, które zostaną wdrożone w jednej grupie zasobów. Za pomocą szablonów Menedżer zasobów można organizować złożone wdrożenia bez konieczności stosowania nadmiarowego skryptu lub konfiguracji ręcznej. Po opracowaniu szablonu można go wdrożyć wiele razy — za każdym razem z identycznym wynikiem.
 
-Szablon usługi Resource Manager obejmuje cztery sekcje:
+Szablon Menedżer zasobów składa się z czterech sekcji:
 
-- **Parametry**: Są to dane wejściowe do wdrożenia. Można podać wartości parametrów przez człowieka lub zautomatyzowane procesy. Nazwa użytkownika administratora i hasło dla maszyny Wirtualnej z systemem Windows musi być parametrem przykładu. Wartości parametrów są używane w całym wdrażaniu, gdy są one określone.
+- **Parametry**: Są to wejścia do wdrożenia. Wartości parametrów mogą być dostarczane przez człowieka lub zautomatyzowany proces. Przykładem może być nazwa użytkownika administratora i hasło dla maszyny wirtualnej z systemem Windows. Wartości parametrów są używane w całym wdrożeniu, gdy są one określone.
 
-- **Zmienne**: Są one używane do przechowywania wartości, które są używane w całym wdrożeniu. W przeciwieństwie do parametrów wartość zmiennej nie została podana w czasie wdrażania. Zamiast tego jest twardych kodowane czy generowana dynamicznie.
+- **Zmienne**: Są one używane do przechowywania wartości, które są używane w całym wdrożeniu. W przeciwieństwie do parametrów, wartość zmiennej nie jest podawana podczas wdrażania. Zamiast tego są one stałe kodowane lub dynamicznie generowane.
 
-- **Zasoby**: Ta sekcja szablon definiuje zasoby do wdrożenia, takie jak maszyny wirtualne, konta magazynu i sieci wirtualnych.
+- **Zasoby**: Ta sekcja szablonu służy do definiowania zasobów do wdrożenia, takich jak maszyny wirtualne, konta magazynu i sieci wirtualne.
 
-- **Dane wyjściowe**: Po zakończeniu wdrażania usługi Resource Manager może zwrócić dane, takie jak parametry połączenia generowanych dynamicznie.
+- **Dane wyjściowe**: Po zakończeniu wdrożenia Menedżer zasobów może zwracać dane, takie jak dynamicznie generowane parametry połączenia.
 
-Są dostępne następujące mechanizmy automatyzacji wdrażania:
+Dla automatyzacji wdrożenia dostępne są następujące mechanizmy:
 
-- **Funkcje**: Kilka funkcji można użyć w szablonach usługi Resource Manager. Obejmują one operacje, takie jak Konwersja ciągu na małe litery, wdrażanie wielu wystąpień klasy zasobem zdefiniowanych i dynamicznie zwracanie docelowej grupy zasobów. Funkcje Menedżera zasobów pomagające w tworzeniu wdrożeń dynamicznych.
+- **Funkcje**: W szablonach Menedżer zasobów można używać kilku funkcji. Obejmują one operacje, takie jak konwertowanie ciągu na małe litery, wdrażanie wielu wystąpień zdefiniowanego zasobu i dynamiczne zwracanie docelowej grupy zasobów. Menedżer zasobów funkcje ułatwiają tworzenie wdrożeń dynamicznych.
 
-- **Zależności zasobu**: Podczas wdrażania wielu zasobów, niektóre zasoby mają zależności na innych użytkowników. W celu ułatwienia wdrażania, można użyć deklaracji zależności, tak aby wdrażane zasoby zależne przed innymi.
+- **Zależności zasobów**: W przypadku wdrażania wielu zasobów niektóre zasoby będą miały zależność od innych. Aby ułatwić wdrożenie, można użyć deklaracji zależności, aby zasoby zależne zostały wdrożone przed innymi.
 
-- **Łączenie szablonu**: Z w ramach jednego szablonu usługi Resource Manager można połączyć inny szablon. Dzięki temu dekompozycji wdrożenia do zestawu szablonów specjalistyczne, określonego celu.
+- **Łączenie szablonów**: Z poziomu jednego szablonu Menedżer zasobów można połączyć się z innym szablonem. Pozwala to na dekompozycję wdrożenia do zestawu docelowych szablonów specyficznych dla celu.
 
-Możesz tworzyć szablony usługi Resource Manager w dowolnym edytorze tekstów. Zestaw Azure SDK dla programu Visual Studio zawiera jednak narzędzia pomocne. Za pomocą programu Visual Studio, możesz dodać zasoby do szablonu, za pomocą kreatora, a następnie wdrażanie i debugowanie szablon bezpośrednio z poziomu programu Visual Studio. Aby uzyskać więcej informacji, zobacz [tworzenia usługi Azure Resource Manager](../../resource-group-authoring-templates.md).
+Szablony Menedżer zasobów można tworzyć w dowolnym edytorze tekstu. Jednak zestaw Azure SDK dla programu Visual Studio zawiera narzędzia, które ułatwią Ci. Za pomocą programu Visual Studio można dodawać zasoby do szablonu za pomocą kreatora, a następnie wdrażać i debugować szablon bezpośrednio z poziomu programu Visual Studio. Aby uzyskać więcej informacji, zobacz [Tworzenie szablonów Azure Resource Manager](../../resource-group-authoring-templates.md).
 
-Na koniec można przekonwertować istniejących grup zasobów do szablonu do ponownego wykorzystania w witrynie Azure portal. Może to być przydatne, jeśli chcesz utworzyć szablon można wdrożyć istniejącą grupę zasobów lub po prostu chcesz zbadać podstawowym JSON. Aby wyeksportować grupy zasobów, wybierz **skrypt automatyzacji** przycisk Ustawienia grupy zasobów.
+Na koniec można skonwertować istniejące grupy zasobów do szablonu do wielokrotnego użytku z Azure Portal. Może to być przydatne, jeśli chcesz utworzyć szablon do wdrożenia istniejącej grupy zasobów lub po prostu chcesz przejrzeć bazowe dane JSON. Aby wyeksportować grupę zasobów, wybierz przycisk **skryptu automatyzacji** z ustawień grupy zasobów.
 
 ## <a name="security-of-azure-resources-rbac"></a>Zabezpieczenia zasobów platformy Azure (RBAC)
 
-Możesz udzielić operacyjnej dostępu do kont użytkowników w określonym zakresie: subskrypcji, grupy zasobów lub poszczególnych zasobów. Oznacza to, można wdrożyć zestaw zasobów w grupie zasobów, np. maszyna wirtualna i wszystkie pokrewne zasoby i udzielanie uprawnień do określonego użytkownika lub grupy. To podejście ogranicza dostęp do zasobów, które należą do docelowej grupy zasobów. Można również przyznać dostęp do jednego zasobu, np. maszyny wirtualnej lub sieci wirtualnej.
+Dostęp operacyjny do kont użytkowników można udzielić w określonym zakresie: subskrypcji, grupy zasobów lub poszczególnych zasobów. Oznacza to, że można wdrożyć zestaw zasobów w grupie zasobów, takiej jak maszyna wirtualna i wszystkie powiązane zasoby, a także udzielić uprawnień dla określonego użytkownika lub grupy. Takie podejście ogranicza dostęp tylko do zasobów należących do docelowej grupy zasobów. Możesz również udzielić dostępu do pojedynczego zasobu, na przykład maszyny wirtualnej lub sieci wirtualnej.
 
-Aby udzielić dostępu, możesz przypisać rolę użytkownikowi lub grupie użytkowników. Istnieje wiele wstępnie zdefiniowanych ról. Można również definiować własne niestandardowe role.
+Aby udzielić dostępu, należy przypisać rolę do użytkownika lub grupy użytkowników. Istnieje wiele wstępnie zdefiniowanych ról. Możesz również zdefiniować własne role niestandardowe.
 
-Poniżej przedstawiono przykład kilka [wbudowanych ról na platformie Azure](../../role-based-access-control/built-in-roles.md):
+Oto kilka przykładowych [wbudowanych ról na platformie Azure](../../role-based-access-control/built-in-roles.md):
 
-- **Właściciel**: Użytkownik z tą rolą mogą zarządzać wszystkim łącznie z dostępem.
+- **Właściciel**: Użytkownik z tą rolą może zarządzać wszystkimi wszystkimi, w tym dostępem.
 
-- **Czytnik**: Użytkownik z tą rolą mogą odczytywać zasoby wszystkich typów (z wyjątkiem wpisy tajne), ale nie może wprowadzać zmian.
+- **Czytelnik**: Użytkownik mający tę rolę może odczytywać zasoby wszystkich typów (z wyjątkiem wpisów tajnych), ale nie może wprowadzać zmian.
 
-- **Współautor maszyny wirtualnej**: Użytkownik z tą rolą mogą zarządzać maszynami wirtualnymi, ale nie może zarządzać sieci wirtualnej, do której są one połączone lub konta magazynu, w którym znajduje się plik wirtualnego dysku twardego.
+- **Współautor maszyny wirtualnej**: Użytkownik z tą rolą może zarządzać maszynami wirtualnymi, ale nie może zarządzać siecią wirtualną, z którą są połączone, lub kontem magazynu, na którym znajduje się plik VHD.
 
-- **Współautor bazy danych SQL**: Użytkownik z tą rolą mogą zarządzać bazami danych SQL, ale nie ich zasadami związanymi z zabezpieczeniami.
+- **Współautor bazy danych SQL**: Użytkownik z tą rolą może zarządzać bazami danych SQL, ale nie z zasadami związanymi z zabezpieczeniami.
 
-- **Menedżer zabezpieczeń SQL**: Użytkownik z tą rolą mogą zarządzać zasad związanych z zabezpieczeniami serwerów SQL i baz danych.
+- **Menedżer zabezpieczeń SQL**: Użytkownik z tą rolą może zarządzać zasadami związanymi z zabezpieczeniami serwerów SQL i baz danych.
 
-- **Współautor konta magazynu**: Użytkownik z tą rolą mogą zarządzać kontami magazynu, ale nie może zarządzać dostępem do konta magazynu.
+- **Współautor konta magazynu**: Użytkownik z tą rolą może zarządzać kontami magazynu, ale nie może zarządzać dostępem do kont magazynu.
 
-Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
+Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
-## <a name="azure-virtual-machines"></a>Azure Virtual Machines
+## <a name="azure-virtual-machines"></a>Usługa Azure Virtual Machines
 
-Maszyny wirtualne platformy Azure jest jednym z centralnego usług IaaS na platformie Azure. Usługa Azure Virtual Machines obsługuje wdrażanie maszyn wirtualnych Windows lub Linux w centrum danych Microsoft Azure. Usługa Azure Virtual Machines mają całkowitą kontrolę nad konfiguracją maszyny Wirtualnej i są zobowiązani do instalacji oprogramowania, konfiguracji i konserwacji.
+Usługa Azure Virtual Machines to jedna z centralnych usług IaaS na platformie Azure. Usługa Azure Virtual Machines obsługuje wdrażanie maszyn wirtualnych z systemem Windows lub Linux w centrum danych Microsoft Azure. Za pomocą usługi Azure Virtual Machines masz całkowitą kontrolę nad konfiguracją maszyny wirtualnej i są one odpowiedzialne za instalację, konfigurację i konserwację oprogramowania.
 
-Podczas wdrażania maszyny Wirtualnej platformy Azure, można wybrać obraz z witryny Azure Marketplace lub podasz własnych uogólnionego obrazu. Ten obraz jest używany do stosowania systemu operacyjnego i konfiguracji początkowej. Podczas wdrażania usługi Resource Manager będzie obsługiwać niektórych ustawień konfiguracji, takich jak przypisanie nazwy komputera, poświadczeń administracyjnych i konfiguracji sieci. Rozszerzenia maszyny wirtualnej platformy Azure umożliwia dalsze automatyzację konfiguracji, takich jak Instalacja oprogramowania, konfiguracji oprogramowania antywirusowego i rozwiązania do monitorowania.
+Podczas wdrażania maszyny wirtualnej platformy Azure Możesz wybrać obraz z witryny Azure Marketplace lub udostępnić uogólniony obraz. Ten obraz służy do stosowania systemu operacyjnego i konfiguracji początkowej. Podczas wdrażania Menedżer zasobów będzie obsługiwać niektóre ustawienia konfiguracji, takie jak przypisanie nazwy komputera, poświadczeń administracyjnych i konfiguracji sieci. Rozszerzenia maszyny wirtualnej platformy Azure umożliwiają dalsze Automatyzowanie konfiguracji, takich jak instalacja oprogramowania, konfiguracja programu antywirusowego i rozwiązania do monitorowania.
 
-Można utworzyć maszyny wirtualne w wielu różnych rozmiarach. Rozmiar maszyny wirtualnej decyduje o alokacji zasobów, takich jak pojemność magazynu, pamięci i przetwarzania. W niektórych przypadkach określone funkcje, takie jak karty sieciowe z obsługą funkcji RDMA i dyski SSD są dostępne tylko w przypadku określonych rozmiarów maszyn wirtualnych. Aby uzyskać pełną listę rozmiarów maszyn wirtualnych i możliwości, zobacz "Rozmiary maszyn wirtualnych na platformie Azure" dla [Windows](../../virtual-machines/windows/sizes.md) i [Linux](../../virtual-machines/linux/sizes.md).
+Można tworzyć maszyny wirtualne w wielu różnych rozmiarach. Rozmiar maszyny wirtualnej wymusza alokację zasobów, taką jak przetwarzanie, pamięć i pojemność magazynu. W niektórych przypadkach określone funkcje, takie jak karty sieciowe z obsługą funkcji RDMA i dyski SSD, są dostępne tylko w przypadku niektórych rozmiarów maszyn wirtualnych. Aby zapoznać się z pełną listą rozmiarów i możliwości maszyn wirtualnych, zobacz sekcję dotyczącą rozmiarów maszyny wirtualnej na platformie Azure dla [systemów Windows](../../virtual-machines/windows/sizes.md) i [Linux](../../virtual-machines/linux/sizes.md).
 
 ### <a name="use-cases"></a>Przypadki zastosowań
 
-Ponieważ usługa Azure virtual machines oferuje pełną kontrolę nad konfiguracją, doskonale nadają się do szerokiej gamy obciążeń serwera, które nie mieszczą się w modelu PaaS. Obciążenia serwera takich jak serwery bazy danych (SQL Server, Oracle lub bazy danych MongoDB), Windows Server Active Directory, Microsoft SharePoint i wiele więcej stanie się możliwe do uruchomienia na platformie Microsoft Azure. Jeśli to konieczne, można przenieść takich obciążeń z lokalnego centrum danych, do jednego lub więcej regionów platformy Azure, bez dużą ilość ponownej konfiguracji.
+Ponieważ usługi Azure Virtual Machines zapewniają pełną kontrolę nad konfiguracją, są idealnym rozwiązaniem dla szerokiego zakresu obciążeń serwera, które nie mieszczą się w modelu PaaS. Obciążenia serwera, takie jak serwery baz danych (SQL Server, Oracle lub MongoDB), Windows Server Active Directory, Microsoft SharePoint i wiele innych, można uruchomić na platformie Microsoft Azure. W razie potrzeby można przenieść takie obciążenia z lokalnego centrum danych do jednego lub większej liczby regionów świadczenia usługi Azure bez konieczności ponownej konfiguracji.
 
 ### <a name="deployment-of-virtual-machines"></a>Wdrażanie maszyn wirtualnych
 
-Za pomocą witryny Azure portal, za pomocą automatyzacji przy użyciu modułu Azure PowerShell lub za pomocą automatyzacji przy użyciu wieloplatformowego interfejsu wiersza polecenia, można wdrożyć maszyny wirtualne platformy Azure.
+Maszyny wirtualne platformy Azure można wdrażać przy użyciu Azure Portal przy użyciu automatyzacji z modułem Azure PowerShell lub za pomocą automatyzacji z międzyplatformowym interfejsem wiersza polecenia.
 
 #### <a name="portal"></a>Portal
 
-Wdrażanie maszyny wirtualnej przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Możesz wybrać wiele obrazów systemów operacyjnych z różnymi konfiguracjami. Wszystkie magazynu i wymagania sieciowe są konfigurowane podczas wdrażania. Aby uzyskać więcej informacji, zobacz temat "Create maszynę wirtualną w witrynie Azure portal" dla [Windows](../../virtual-machines/windows/quick-create-portal.md) i [Linux](../../virtual-machines/linux/quick-create-portal.md).
+Wdrożenie maszyny wirtualnej przy użyciu Azure Portal wymaga tylko aktywnej subskrypcji platformy Azure i dostępu do przeglądarki sieci Web. Można wybrać wiele różnych obrazów systemu operacyjnego z różnymi konfiguracjami. Wszystkie wymagania dotyczące magazynu i sieci są konfigurowane podczas wdrażania. Aby uzyskać więcej informacji, zobacz "Tworzenie maszyny wirtualnej w Azure Portal" dla [systemów Windows](../../virtual-machines/windows/quick-create-portal.md) i [Linux](../../virtual-machines/linux/quick-create-portal.md).
 
-Oprócz wdrażania maszyny wirtualnej w witrynie Azure portal, można wdrożyć szablonu usługi Azure Resource Manager z poziomu portalu. To wdroży i skonfiguruje wszystkie zasoby, zgodnie z definicją w szablonie. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Oprócz wdrożenia maszyny wirtualnej na podstawie Azure Portal można wdrożyć szablon Azure Resource Manager z poziomu portalu. Spowoduje to wdrożenie i skonfigurowanie wszystkich zasobów zgodnie z definicją w szablonie. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 #### <a name="powershell"></a>PowerShell
 
-Wdrażanie maszyny wirtualnej platformy Azure przy użyciu programu PowerShell umożliwia pełną automatyzację wszystkich zasobów powiązanych maszyny wirtualnej, w tym magazyn i sieć. Aby uzyskać więcej informacji, zobacz [Utwórz maszynę Wirtualną Windows przy użyciu usługi Resource Manager i programu PowerShell](../../virtual-machines/windows/quick-create-powershell.md).
+Wdrażanie maszyny wirtualnej platformy Azure za pomocą programu PowerShell pozwala na pełną automatyzację wdrożenia wszystkich powiązanych zasobów maszyny wirtualnej, w tym magazynu i sieci. Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej z systemem Windows przy użyciu Menedżer zasobów i programu PowerShell](../../virtual-machines/windows/quick-create-powershell.md).
 
-Oprócz indywidualnie wdrażane zasoby obliczeniowe platformy Azure, modułu Azure PowerShell można użyć do wdrożenia szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
+Oprócz wdrażania zasobów obliczeniowych platformy Azure osobno można użyć modułu Azure PowerShell, aby wdrożyć szablon Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
 
 #### <a name="command-line-interface-cli"></a>Interfejs wiersza polecenia (CLI)
 
-Podobnie jak w przypadku moduł programu PowerShell, interfejsu wiersza polecenia platformy Azure zapewnia automatyzację wdrażania i mogą być używane w systemach Windows, OS X lub Linux. Jeśli używasz interfejsu wiersza polecenia Azure **maszyna wirtualna szybkiego tworzenia** polecenia i wszystkie pokrewne zasoby maszyny wirtualnej (w tym magazynu i sieci), a samej maszyny wirtualnej są wdrażane. Aby uzyskać więcej informacji, zobacz [tworzenie maszyny Wirtualnej z systemem Linux na platformie Azure przy użyciu interfejsu wiersza polecenia](../../virtual-machines/linux/quick-create-cli.md).
+Podobnie jak w przypadku modułu programu PowerShell, interfejs wiersza polecenia platformy Azure zapewnia automatyzację wdrażania i może być używany w systemach Windows, OS X lub Linux. W przypadku korzystania z polecenia **szybkiego tworzenia maszyny** wirtualnej platformy Azure można wdrożyć wszystkie powiązane zasoby maszyn wirtualnych (w tym magazyn i sieć) oraz maszynę wirtualną. Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu interfejsu wiersza polecenia](../../virtual-machines/linux/quick-create-cli.md).
 
-Podobnie można użyć wiersza polecenia platformy Azure do wdrożenia szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md).
+Podobnie można użyć interfejsu wiersza polecenia platformy Azure, aby wdrożyć szablon Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md).
 
-### <a name="access-and-security-for-virtual-machines"></a>Dostęp i większe bezpieczeństwo dla maszyn wirtualnych
+### <a name="access-and-security-for-virtual-machines"></a>Dostęp i zabezpieczenia dla maszyn wirtualnych
 
-Uzyskiwanie dostępu do maszyny wirtualnej z Internetu wymaga skojarzonej sieciowej interfejs lub usługi load balancer, jeśli to konieczne, należy skonfigurować z publicznym adresem IP. Publiczny adres IP zawiera nazwę DNS, który będzie prowadzić do maszyny wirtualnej lub moduł równoważenia obciążenia. Aby uzyskać więcej informacji, zobacz [adresy IP na platformie Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+Dostęp do maszyny wirtualnej z Internetu wymaga skojarzonego interfejsu sieciowego lub modułu równoważenia obciążenia, jeśli ma to zastosowanie, do skonfigurowania za pomocą publicznego adresu IP. Publiczny adres IP zawiera nazwę DNS, który zostanie rozpoznany przez maszynę wirtualną lub moduł równoważenia obciążenia. Aby uzyskać więcej informacji, zobacz [adresy IP na platformie Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
 
-Zarządzanie dostępem do maszyny wirtualnej za pośrednictwem publicznego adresu IP odbywa się przy użyciu zasób Sieciowej grupy zabezpieczeń sieci. Sieciowa grupa zabezpieczeń i działa jak zapora zezwala lub nie zezwala na ruch przez interfejs sieciowy lub podsieci na zestaw zdefiniowanych portów. Na przykład aby utworzyć sesję pulpitu zdalnego z Maszyną wirtualną platformy Azure, należy skonfigurować sieciowej grupy zabezpieczeń, aby zezwolić na ruch przychodzący na porcie 3389. Aby uzyskać więcej informacji, zobacz [Otwieranie portów dla maszyny Wirtualnej na platformie Azure przy użyciu witryny Azure portal](../../virtual-machines/windows/nsg-quickstart-portal.md).
+Dostęp do maszyny wirtualnej można zarządzać za pośrednictwem publicznego adresu IP przy użyciu zasobu sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń). SIECIOWEJ grupy zabezpieczeń działa jak zapora i zezwala na ruch między interfejsem sieciowym lub podsiecią w zestawie określonych portów lub odmówi go. Na przykład aby utworzyć sesję Pulpit zdalny z maszyną wirtualną platformy Azure, należy skonfigurować sieciowej grupy zabezpieczeń tak, aby zezwalał na ruch przychodzący na porcie 3389. Aby uzyskać więcej informacji, zobacz [otwieranie portów do maszyny wirtualnej na platformie Azure przy użyciu Azure Portal](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
-Na koniec podobnie jak w przypadku zarządzania dowolnego systemu komputera, należy podać zabezpieczeń maszyny wirtualnej platformy Azure w systemie operacyjnym przy użyciu poświadczeń zabezpieczeń i zapór programowych.
+Na koniec, podobnie jak w przypadku zarządzania dowolnym systemem komputerowym, należy zapewnić zabezpieczenia maszyny wirtualnej platformy Azure w systemie operacyjnym przy użyciu poświadczeń zabezpieczeń i zapór oprogramowania.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Usługa Azure Storage jest zarządzany przez firmę Microsoft usługa, który udostępnia trwały, skalowalny i nadmiarowy magazyn. Konto magazynu platformy Azure jako zasób można dodać do dowolnej grupy zasobów przy użyciu dowolnej metody wdrażania zasobów. System Azure zawiera cztery typy magazynów: Magazyn obiektów blob, File Storage, Table storage i Queue storage. Podczas wdrażania konta magazynu, dwa typy kont są dostępne, ogólnego przeznaczenia i magazynie obiektów blob. Konto magazynu ogólnego przeznaczenia zapewnia dostęp do wszystkich czterech typów magazynów. Konta usługi blob storage są podobne do kont ogólnego przeznaczenia, ale zawiera specjalistyczne obiektów blob, które obejmują warstwy gorące i zimne dostępu. Aby uzyskać więcej informacji na temat usługi blob storage, zobacz [usługi Azure Blob storage](../../storage/blobs/storage-blob-storage-tiers.md).
+Azure Storage to usługa zarządzana przez firmę Microsoft, która zapewnia trwały, skalowalny i nadmiarowy magazyn. Konto usługi Azure Storage można dodać jako zasób do dowolnej grupy zasobów przy użyciu dowolnej metody wdrażania zasobów. Platforma Azure obejmuje cztery typy magazynów: BLOB Storage, File Storage, Table Storage i queue storage. Podczas wdrażania konta magazynu dostępne są dwa typy kont, ogólnego przeznaczenia i magazynu obiektów BLOB. Konto magazynu ogólnego przeznaczenia zapewnia dostęp do wszystkich czterech typów magazynów. Konta magazynu obiektów BLOB są podobne do kont ogólnego przeznaczenia, ale zawierają wyspecjalizowane obiekty blob, które obejmują warstwy dostępu gorąca i zimna. Aby uzyskać więcej informacji na temat usługi BLOB Storage, zobacz [Azure Blob Storage](../../storage/blobs/storage-blob-storage-tiers.md).
 
-Można skonfigurować różne poziomy nadmiarowości konta magazynu platformy Azure:
+Konta usługi Azure Storage można skonfigurować z różnymi poziomami nadmiarowości:
 
-- **Magazyn lokalnie nadmiarowy** zapewnia wysoką dostępność, zapewniając, że trzy kopie danych są wykonywane synchronicznie przed zapisu jest uznawany za pomyślne. Te kopie są przechowywane w jednym obiekcie w pojedynczym regionie. Repliki znajdują się w oddzielnych domenach błędów i uaktualnień. Oznacza to, że dane są dostępne, nawet jeśli węzeł magazynu, organizuje Twoje dane, kończy się niepowodzeniem lub do trybu offline do zaktualizowania.
+- **Magazyn lokalnie** nadmiarowy zapewnia wysoką dostępność dzięki zapewnieniu, że trzy kopie wszystkich danych są wykonywane synchronicznie, zanim zapis zostanie uznany za pomyślnie. Te kopie są przechowywane w jednej placówce w jednym regionie. Repliki znajdują się w oddzielnych domenach błędów i domenach uaktualnienia. Oznacza to, że dane są dostępne nawet wtedy, gdy węzeł magazynu przechowujący dane ulegnie awarii lub zostanie przełączony w tryb offline w celu zaktualizowania.
 
-- **Magazyn geograficznie nadmiarowy** sprawia, że trzy synchronicznych kopii danych w regionie podstawowym w celu zapewnienia wysokiej dostępności, a następnie asynchronicznie sprawia, że trzy repliki w sparowanym regionie odzyskiwania po awarii.
+- **Magazyn geograficznie** nadmiarowy tworzy trzy synchroniczne kopie danych w regionie podstawowym w celu zapewnienia wysokiej dostępności, a następnie asynchronicznie tworzy trzy repliki w sparowanym regionie na potrzeby odzyskiwania po awarii.
 
-- **Magazyn geograficznie nadmiarowy geograficznie** to magazyn geograficznie nadmiarowy, a także możliwość odczytu danych w regionie pomocniczym. Ta możliwość sprawia, że odpowiednie do odzyskiwania po awarii częściowe. Jeśli występuje problem z regionu podstawowego, możesz zmienić aplikację, aby mieć dostęp tylko do odczytu do sparowanym regionie.
+- **Magazyn Geograficznie nadmiarowy do odczytu** jest magazynem geograficznie nadmiarowym i umożliwia odczytywanie danych w regionie pomocniczym. Zapewnia to możliwość częściowego odzyskiwania po awarii. Jeśli wystąpi problem z regionem podstawowym, możesz zmienić aplikację, tak aby miała dostęp tylko do odczytu do sparowanego regionu.
 
 ### <a name="use-cases"></a>Przypadki zastosowań
 
-Każdy typ magazynu ma przypadek użycia innego.
+Każdy typ magazynu ma inny przypadek użycia.
 
 #### <a name="blob-storage"></a>Blob Storage
 
-Wyraz *blob* jest akronimem *duży obiekt binarny*. Obiekty BLOB to pliki bez struktury, takich jak te, które są przechowywane na tym komputerze. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów. Usługa Azure Blob storage przechowuje także dysków z danymi usługi Azure Virtual Machines.
+Obiekt *BLOB* słowa jest akronimem dla *dużego obiektu binarnego*. Obiekty blob są plikami bez struktury, takimi jak te, które są przechowywane na komputerze. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów. Usługa Azure Blob Storage zawiera również dyski danych Virtual Machines platformy Azure.
 
-Usługa Azure Storage obsługuje trzy typy obiektów blob:
+Usługa Azure Storage obsługuje trzy rodzaje obiektów blob:
 
-- **Blokowe obiekty BLOB** są używane do przechowywania zwykłych pliki 195 GB (4 MB x 50 000 bloków) rozmiar. Głównym zastosowaniem dla blokowych obiektów blob jest przechowywanie plików, które są odczytywane od początku do końca, np. plików multimedialnych lub plików obrazów na potrzeby witryn sieci Web. Ponieważ pliki o rozmiarze większym niż 64 MB, należy przekazać w formie małych blokach są nazywane blokowych obiektów blob. Te bloki są następnie skonsolidowane lub przydzielonej do końcowego obiektu blob.
+- **Blokowe obiekty blob** są używane do przechowywania zwykłych plików o rozmiarze do 195 GB (4 MB × 50 000 bloków). Podstawowym przypadkiem użycia dla blokowych obiektów BLOB jest przechowywanie plików odczytywanych od początku do końca, takich jak pliki multimedialne lub pliki obrazów dla witryn sieci Web. Są one nazwanymi blokami BLOB, ponieważ pliki o rozmiarze większym niż 64 MB muszą zostać przekazane jako małe bloki. Te bloki są następnie konsolidowane (lub zatwierdzane) do końcowego obiektu BLOB.
 
-- **Stronicowe obiekty BLOB** są używane do przechowywania dostępu swobodnego pliki rozmiarze do 1 TB. Stronicowe obiekty BLOB są używane przede wszystkim jako magazyn zapasowy dla wirtualnych dysków twardych, które zapewniają trwałe dyski dla maszyn wirtualnych platformy Azure, IaaS obliczeń usługa na platformie Azure. Stronicowe obiekty BLOB są nazywane ponieważ zapewniają one dostęp losowego odczytu/zapisu do stron 512-bajtowego.
+- **Stronicowe obiekty blob** są używane do przechowywania plików o dostępie losowym o rozmiarze do 1 TB. Stronicowe obiekty blob są używane głównie jako zapasowe magazyny dla wirtualnych dysków twardych, które zapewniają trwałe dyski dla Virtual Machines platformy Azure, usługi obliczeniowej IaaS na platformie Azure. Są one nazywane stronicowymi obiektami BLOB, ponieważ zapewniają losowy dostęp do odczytu i zapisu do stron 512-bajtowych.
 
-- **Uzupełnialne obiekty BLOB** składają się z bloków, takich jak obiekty BLOB typu block, ale są one zoptymalizowane pod kątem operacji dołączania. Są one często używane do rejestrowania informacji z jednego lub kilku źródeł do tego samego obiektu blob. Na przykład można napisać wszystkie swoje rejestrowanie śledzenia do tego samego uzupełnialnego obiektu blob dla aplikacji, która działa na wielu maszynach wirtualnych. Pojedynczy uzupełniany obiekt blob może być 195 GB.
+- **Dołącz obiekty blob** składają się z bloków takich jak blokowe obiekty blob, ale są one zoptymalizowane pod kątem operacji dołączania. Są one często używane do rejestrowania informacji z jednego lub kilku źródeł do tego samego obiektu BLOB. Można na przykład napisać wszystkie dzienniki śledzenia do tego samego obiektu BLOB dołączania dla aplikacji uruchomionej na wielu maszynach wirtualnych. Pojedynczy obiekt BLOB dołączania może mieć wartość do 195 GB.
 
-Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Blob storage przy użyciu platformy .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z usługą Azure Blob Storage przy użyciu platformy .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
 #### <a name="file-storage"></a>File Storage
 
-Usługa Azure File storage to usługa, która oferuje udziały plików w chmurze przy użyciu standardowego protokołu bloku komunikatów serwera (SMB). Usługa obsługuje zarówno protokół SMB 2.1, jak i protokołu SMB 3.0. Za pomocą usługi Azure File storage można migrować aplikacje korzystające z udziałów plików na platformę Azure, szybko i bez kosztownych modyfikacji oprogramowania. Aplikacje uruchomione na maszynach wirtualnych platformy Azure, w usługach w chmurze lub lokalnych klientów można zainstalować udział plików w chmurze. Jest to podobne do jak aplikacja na komputerze instalująca typowy udział SMB. Dowolna liczba składników aplikacji może następnie równocześnie zainstalować udział Magazynu plików i uzyskiwać do niego dostęp.
+Azure File Storage to usługa, która oferuje udziały plików w chmurze przy użyciu standardowego protokołu bloku komunikatów serwera (SMB). Usługa obsługuje protokoły SMB 2,1 i SMB 3,0. Usługa Azure File Storage umożliwia Migrowanie aplikacji korzystających z udziałów plików na platformę Azure szybko i bez kosztownych ponownych prób. Aplikacje działające na maszynach wirtualnych platformy Azure, w usługach w chmurze lub na klientach lokalnych mogą instalować udziały plików w chmurze. Jest to podobne do sposobu, w jaki aplikacja klasyczna instaluje typowy udział SMB. Dowolna liczba składników aplikacji może następnie równocześnie zainstalować udział Magazynu plików i uzyskiwać do niego dostęp.
 
-Ponieważ udział magazynu plików to standardowy udział plików SMB, aplikacje działające na platformie Azure można uzyskać dostęp do danych w udziale za pośrednictwem interfejsów API We/Wy systemu plików. Deweloperzy mogą więc używać istniejący kod i własne umiejętności do migrowania istniejących aplikacji. Informatycy, można użyć poleceń cmdlet programu PowerShell do tworzenia, zainstalować i zarządzać nimi udziałów usługi File storage w ramach administracji aplikacjami platformy Azure.
+Ponieważ udział magazynu plików jest standardowym udziałem plików SMB, aplikacje działające na platformie Azure mogą uzyskiwać dostęp do danych w udziale za pośrednictwem interfejsów API we/wy systemu plików. Deweloperzy mogą wykorzystać swój istniejący kod i umiejętności do migrowania istniejących aplikacji. Specjaliści IT mogą używać poleceń cmdlet programu PowerShell do tworzenia i instalowania udziałów magazynu plików oraz zarządzania nimi w ramach administrowania aplikacjami platformy Azure.
 
-Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure File storage w Windows](../../storage/files/storage-how-to-use-files-windows.md) lub [jak używać usługi Azure File storage z systemem Linux](../../storage/files/storage-how-to-use-files-linux.md).
+Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure File Storage w systemie Windows](../../storage/files/storage-how-to-use-files-windows.md) lub [jak korzystać z usługi Azure File Storage z systemem Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
 #### <a name="table-storage"></a>Magazyn tabel
 
-Magazyn tabel Azure to usługa, która przechowuje dane strukturalne NoSQL w chmurze. Magazyn tabel jest magazynem klucz atrybut z projektem bez schematu. Ponieważ Magazyn tabel jest magazynem bez schematu, to można łatwo zaadaptować dane aplikacji rozwijających się potrzeb. Dostęp do danych jest szybki i ekonomiczny dla wszystkich rodzajów aplikacji. Magazyn tabel jest zwykle znacznie tańszy niż tradycyjne bazy SQL dla podobnych ilości danych.
+Magazyn tabel Azure to usługa, która przechowuje dane strukturalne NoSQL w chmurze. Magazyn tabel jest magazynem kluczy/atrybutów z projektem bez schematu. Ponieważ magazyn tabel jest mniejszy od schematu, można łatwo dostosować dane w miarę rozwoju aplikacji. Dostęp do danych jest szybki i ekonomiczny dla wszystkich rodzajów aplikacji. Magazyn tabel jest zwykle znacznie tańszy niż tradycyjne bazy SQL dla podobnych ilości danych.
 
-Magazyn tabel umożliwia przechowywanie elastycznych zestawów danych, takich jak dane użytkownika dla aplikacji internetowych, książki adresowe, informacje o urządzeniach i wszelkie inne metadane, których wymaga Twoja usługa. Dowolną liczbę jednostek można przechowywać w tabeli. Konto magazynu może zawierać dowolną liczbę tabel w granicach pojemności konta magazynu.
+Magazyn tabel umożliwia przechowywanie elastycznych zestawów danych, takich jak dane użytkownika dla aplikacji internetowych, książki adresowe, informacje o urządzeniach i wszelkie inne metadane, których wymaga Twoja usługa. W tabeli można przechowywać dowolną liczbę jednostek. Konto magazynu może zawierać dowolną liczbę tabel z limitem pojemności dla konta magazynu.
 
-Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Table storage](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z usługą Azure Table Storage](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
 #### <a name="queue-storage"></a>Queue Storage
 
-Usługa Azure Queue Storage umożliwia przesyłanie komunikatów za pomocą chmury między składnikami aplikacji. Projektowanie aplikacji do skalowania, składniki aplikacji są często odłączane, tak aby mogły być skalowane niezależnie. Usługa Queue Storage zapewnia asynchroniczne przesyłanie komunikatów na potrzeby komunikacji między składnikami aplikacji niezależnie od tego, czy działają w chmurze, na komputerze, serwerze lokalnym czy urządzeniu przenośnym. Magazyn kolejek obsługuje również zarządzanie asynchronicznymi zadaniami oraz przepływy pracy procesu kompilacji.
+Usługa Azure Queue Storage umożliwia przesyłanie komunikatów za pomocą chmury między składnikami aplikacji. Podczas projektowania aplikacji do skalowania składniki aplikacji są często rozłączane, dzięki czemu mogą być skalowane niezależnie. Usługa Queue Storage zapewnia asynchroniczne przesyłanie komunikatów na potrzeby komunikacji między składnikami aplikacji niezależnie od tego, czy działają w chmurze, na komputerze, serwerze lokalnym czy urządzeniu przenośnym. Magazyn kolejek obsługuje również zarządzanie asynchronicznymi zadaniami oraz przepływy pracy procesu kompilacji.
 
-Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Queue storage](../../storage/queues/storage-dotnet-how-to-use-queues.md).
+Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z usługą Azure queue storage](../../storage/queues/storage-dotnet-how-to-use-queues.md).
 
-### <a name="deploying-a-storage-account"></a>Rozmieszczanie konta magazynu
+### <a name="deploying-a-storage-account"></a>Wdrażanie konta magazynu
 
-Dostępnych jest kilka opcji wdrażania konta magazynu.
+Istnieje kilka opcji wdrażania konta magazynu.
 
 #### <a name="portal"></a>Portal
 
-Wdrażanie na koncie magazynu przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Możesz wdrożyć nowe konto magazynu do nowej lub istniejącej grupy zasobów. Po utworzeniu konta magazynu można utworzyć obiektu blob kontener lub udział plików przy użyciu portalu. Można utworzyć tabelę i programowo kolejki magazynu jednostki. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](../../storage/common/storage-quickstart-create-account.md).
+Wdrożenie konta magazynu przy użyciu Azure Portal wymaga tylko aktywnej subskrypcji platformy Azure i dostępu do przeglądarki sieci Web. Nowe konto magazynu można wdrożyć w nowej lub istniejącej grupie zasobów. Po utworzeniu konta magazynu można utworzyć kontener obiektów blob lub udział plików przy użyciu portalu. Jednostki magazynu tabeli i kolejki można tworzyć programowo. Aby uzyskać więcej informacji, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md).
 
-Oprócz wdrażania konta magazynu w witrynie Azure portal, można wdrożyć szablonu usługi Azure Resource Manager z poziomu portalu. To wdroży i skonfiguruje wszystkie zasoby, zgodnie z definicją w szablonie, w tym wszystkie konta magazynu. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Oprócz wdrażania konta magazynu na podstawie Azure Portal można wdrożyć szablon Azure Resource Manager z poziomu portalu. Spowoduje to wdrożenie i skonfigurowanie wszystkich zasobów zgodnie z definicją w szablonie, w tym wszystkich kont magazynu. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 #### <a name="powershell"></a>PowerShell
 
-Wdrażanie konta usługi Azure storage przy użyciu programu PowerShell umożliwia pełną automatyzację konta magazynu. Aby uzyskać więcej informacji, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Storage](../../storage/common/storage-powershell-guide-full.md).
+Wdrożenie konta usługi Azure Storage za pomocą programu PowerShell umożliwia pełne automatyzację wdrożenia konta magazynu. Aby uzyskać więcej informacji, zobacz [używanie Azure PowerShell z usługą Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
-Oprócz wdrażania zasobów platformy Azure indywidualnie, moduł Azure PowerShell można użyć do wdrożenia szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
+Oprócz wdrażania zasobów platformy Azure za pomocą modułu Azure PowerShell można wdrożyć szablon Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
 
 #### <a name="command-line-interface-cli"></a>Interfejs wiersza polecenia (CLI)
 
-Podobnie jak w przypadku moduł programu PowerShell, interfejsu wiersza polecenia platformy Azure zapewnia automatyzację wdrażania i mogą być używane w systemach Windows, OS X lub Linux. Można użyć wiersza polecenia platformy Azure **Tworzenie konta magazynu** polecenie, aby utworzyć konto magazynu. Aby uzyskać więcej informacji, zobacz [przy użyciu wiersza polecenia platformy Azure z usługą Azure Storage.](../../storage/common/storage-azure-cli.md)
+Podobnie jak w przypadku modułu programu PowerShell, interfejs wiersza polecenia platformy Azure zapewnia automatyzację wdrażania i może być używany w systemach Windows, OS X lub Linux. Aby utworzyć konto magazynu, można użyć polecenia **Create Account Storage** CLI dla systemu Azure. Aby uzyskać więcej informacji, zobacz [Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage.](../../storage/common/storage-azure-cli.md)
 
-Podobnie można użyć wiersza polecenia platformy Azure do wdrożenia szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia Azure](../../resource-group-template-deploy-cli.md).
+Podobnie można użyć interfejsu wiersza polecenia platformy Azure, aby wdrożyć szablon Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../resource-group-template-deploy-cli.md).
 
-### <a name="access-and-security-for-azure-storage"></a>Dostęp i większe bezpieczeństwo dla usługi Azure Storage
+### <a name="access-and-security-for-azure-storage"></a>Dostęp i zabezpieczenia usługi Azure Storage
 
-Usługa Azure Storage jest dostępna na różne sposoby, w tym do witryny Azure portal podczas tworzenia maszyny Wirtualnej i operacji i z biblioteki klienta magazynu.
+Dostęp do usługi Azure Storage odbywa się na różne sposoby, w Azure Portal tym podczas tworzenia i obsługi maszyn wirtualnych oraz z bibliotek klienta magazynu.
 
 #### <a name="virtual-machine-disks"></a>Dyski maszyny wirtualnej
 
-Podczas wdrażania maszyny wirtualnej, należy utworzyć konto magazynu do przechowywania dysku systemu operacyjnego maszyny wirtualnej i dowolnego dodatkowego dysku z danymi. Można wybrać istniejące konto magazynu lub Utwórz nową. Pojedynczego dysku maszyny Wirtualnej, ponieważ maksymalny rozmiar obiektu blob to 1024 GB, ma maksymalny rozmiar 1,023 GB. Aby skonfigurować na większy dysk danych, można prezentować wiele dysków danych do maszyny wirtualnej i puli je ze sobą jako pojedynczy dysk logiczny. Aby uzyskać więcej informacji, zobacz "Zarządzanie dyskami platformy Azure" dla [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) i [Linux](../../virtual-machines/linux/tutorial-manage-disks.md).
+Podczas wdrażania maszyny wirtualnej należy również utworzyć konto magazynu w celu przechowywania dysku systemu operacyjnego maszyny wirtualnej oraz wszelkich dodatkowych dysków z danymi. Można wybrać istniejące konto magazynu lub utworzyć nowe. Ze względu na to, że maksymalny rozmiar obiektu BLOB to 1 024 GB, rozmiar pojedynczego dysku maszyny wirtualnej wynosi 1 023 GB. Aby skonfigurować większy dysk z danymi, można przedstawić wiele dysków danych do maszyny wirtualnej i wspólnie je dzielić z pojedynczym dyskiem logicznym. Aby uzyskać więcej informacji, zobacz "Zarządzanie dyskami platformy Azure" w [systemach Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) i [Linux](../../virtual-machines/linux/tutorial-manage-disks.md).
 
-#### <a name="storage-tools"></a>Narzędzia do magazynu
+#### <a name="storage-tools"></a>Narzędzia magazynu
 
-Konta usługi Azure storage są dostępne za pośrednictwem wielu eksploratory innego magazynu, takie jak Visual Studio Cloud Explorer. Te narzędzia umożliwiają przeglądanie kont usługi storage i danych. Więcej informacji oraz listę eksploratorów dostępnego magazynu, zobacz [narzędzia klienta usługi Azure Storage](../../storage/common/storage-explorers.md).
+Do kont usługi Azure Storage można uzyskać dostęp za pomocą wielu różnych Eksploratora magazynu, takich jak program Visual Studio Cloud Explorer. Te narzędzia pozwalają przeglądać konta magazynu i dane. Aby uzyskać więcej informacji i listę dostępnych Eksploratora magazynów, zobacz [narzędzia klienckie usługi Azure Storage](../../storage/common/storage-explorers.md).
 
-#### <a name="storage-api"></a>Interfejsu API usługi Storage
+#### <a name="storage-api"></a>Interfejs API usługi Storage
 
-Za pomocą dowolnego języka, który może zgłaszać żądania HTTP/HTTPS można uzyskać dostępu do zasobów magazynu. Dodatkowo Magazyn Azure oferuje biblioteki programistyczne dla kilku popularnych języków. Te biblioteki upraszczają pracę z usługą Azure Storage przy obsłudze szczegółów takich jak wywołania synchroniczne i asynchroniczne, przetwarzanie wsadowe operacji, Zarządzanie wyjątkami i Automatyczne ponawianie prób. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST usługi Azure Storage](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
+Dostęp do zasobów magazynu można uzyskać za pomocą dowolnego języka, który może wykonywać żądania HTTP/HTTPS. Dodatkowo Magazyn Azure oferuje biblioteki programistyczne dla kilku popularnych języków. Te biblioteki upraszczają pracę z usługą Azure Storage dzięki obsłudze szczegółów, takich jak synchroniczne i asynchroniczne wywoływanie, przetwarzanie wsadowe operacji, Zarządzanie wyjątkami i automatyczne ponawianie prób. Aby uzyskać więcej informacji, zobacz [Dokumentacja interfejsu API REST usługi Azure Storage](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
 
 #### <a name="storage-access-keys"></a>Klucze dostępu do magazynu
 
-Każde konto magazynu ma dwa klucze uwierzytelniania podstawowego i pomocniczego. Albo może służyć do operacji dostępu do magazynu. Te klucze magazynu są używane do zabezpieczania konta magazynu i są wymagane do uzyskiwania dostępu do danych. Istnieją dwa klucze, aby umożliwić okazjonalne przerzucania kluczy, aby zwiększyć poziom bezpieczeństwa. Koniecznie bezpieczeństwo kluczy, ponieważ posiadanie ich wraz z nazwą konta daje nieograniczony dostęp do wszystkich danych na koncie magazynu.
+Każde konto magazynu ma dwa klucze uwierzytelniania — podstawowy i pomocniczy. Może służyć do operacji dostępu do magazynu. Te klucze magazynu służą do zabezpieczania konta magazynu i są wymagane do programistycznego uzyskiwania dostępu do danych. Istnieją dwa klucze umożliwiające okazjonalne Przerzucanie kluczy w celu zwiększenia bezpieczeństwa. Ochrona kluczy jest niezwykle ważna, ponieważ ich posiadanie wraz z nazwą konta umożliwia nieograniczony dostęp do wszystkich danych na koncie magazynu.
 
 #### <a name="shared-access-signatures"></a>Sygnatury dostępu współdzielonego
 
-Jeśli potrzebujesz użytkownicy mogli mieć kontrolowany dostęp do zasobów magazynu, można utworzyć sygnaturę dostępu współdzielonego. Sygnatury dostępu współdzielonego to token, który można dołączyć do adresu URL, który pozwala na delegowany dostęp do zasobu magazynu. Każdy, kto posiada token dostępu do zasobu, który wskazuje z uprawnieniami, określa, dla okresu czasu jej prawidłowe. Aby uzyskać więcej informacji, zobacz [używanie sygnatury dostępu współdzielonego](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Jeśli musisz zezwolić użytkownikom na dostęp do zasobów magazynu, możesz utworzyć sygnaturę dostępu współdzielonego. Sygnatura dostępu współdzielonego to token, który można dołączyć do adresu URL, który umożliwia delegowany dostęp do zasobu magazynu. Każda osoba, która dysponuje tokenem, może uzyskać dostęp do zasobu, który wskazuje na określone przez niego uprawnienia, przez okres ważności. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)współdzielonego.
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
-Sieci wirtualne są niezbędne do obsługi komunikacji między maszynami wirtualnymi. Można zdefiniować niestandardowy adres IP, ustawienia DNS, filtrowania zabezpieczeń w podsieci i równoważenie obciążenia. Platforma Azure obsługuje różne przypadki: sieci tylko w chmurze lub hybrydowe sieci wirtualnych.
+Sieci wirtualne są niezbędne do obsługi komunikacji między maszynami wirtualnymi. Można definiować podsieci, niestandardowy adres IP, ustawienia DNS, filtrowanie zabezpieczeń i równoważenie obciążenia. Platforma Azure obsługuje różne przypadki użycia: sieci tylko w chmurze lub hybrydowe sieci wirtualne.
 
-### <a name="cloud-only-virtual-networks"></a>Sieci wirtualne oparte tylko na chmurze
+### <a name="cloud-only-virtual-networks"></a>Sieci wirtualne tylko w chmurze
 
-Siecią wirtualną platformy Azure, domyślnie jest dostępna tylko do zasobów przechowywanych na platformie Azure. Zasoby podłączone do tej samej sieci wirtualnej mogą komunikować się ze sobą. Można skojarzyć interfejsy sieciowe maszyny wirtualnej i obciążenia równoważenia przy użyciu publicznego adresu IP, aby udostępnić maszynę wirtualną za pośrednictwem Internetu. Za pomocą sieciowej grupy zabezpieczeń, można ułatwić ochronę dostępu do zasoby udostępnione publicznie.
+Usługa Azure Virtual Network jest domyślnie dostępna tylko dla zasobów przechowywanych na platformie Azure. Zasoby połączone z tą samą siecią wirtualną mogą komunikować się ze sobą. Można skojarzyć interfejsy sieciowe maszyny wirtualnej i moduły równoważenia obciążenia z publicznym adresem IP, aby umożliwić dostęp do maszyny wirtualnej za pośrednictwem Internetu. Można zabezpieczyć dostęp do publicznie narażonych zasobów przy użyciu sieciowej grupy zabezpieczeń.
 
-![Sieć wirtualna platformy Azure dla aplikacji sieci Web w warstwie 2](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
+![Virtual Network platformy Azure dla wielowarstwowej aplikacji sieci Web](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
 
-### <a name="hybrid-virtual-networks"></a>Wirtualne sieci hybrydowych
+### <a name="hybrid-virtual-networks"></a>Hybrydowe sieci wirtualne
 
-Przy użyciu usługi ExpressRoute lub połączenie VPN lokacja lokacja, można połączyć sieć lokalną z siecią wirtualną platformy Azure. W tej konfiguracji sieci wirtualnej platformy Azure jest zasadniczo oparte na chmurze rozszerzenie sieci lokalnej.
-![Hybrydowa sieć wirtualną przy użyciu sieci VPN](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
+Możesz połączyć sieć lokalną z siecią wirtualną platformy Azure za pomocą usługi ExpressRoute lub połączenia sieci VPN typu lokacja-lokacja. W tej konfiguracji usługa Azure Virtual Network jest zasadniczo opartym na chmurze rozszerzeniem sieci lokalnej.
+![Hybrydowe Virtual Network przy użyciu sieci VPN](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
-Ponieważ usługa Azure virtual network jest podłączony do sieci lokalnej, między środowiskami lokalnymi sieci wirtualne muszą używać unikatowy części przestrzeni adresowej, używanymi przez organizację. W ten sam sposób, który różnych lokalizacjach w firmie są przypisane do określonej podsieci IP Azure staje się inną lokalizację przy rozszerzaniu sieci.
-Istnieje kilka opcji wdrożenia sieci wirtualnej.
+Ze względu na to, że sieć wirtualna platformy Azure jest połączona z siecią lokalną, sieci wirtualne obejmujące wiele lokalizacji muszą używać unikatowej części przestrzeni adresowej używanej przez organizację. W taki sam sposób, w jaki różne lokalizacje firmowe mają przypisaną konkretną podsieć IP, platforma Azure jest kolejną lokalizacją dodaną do rozbudowanej sieci.
+Istnieje kilka opcji wdrażania sieci wirtualnej.
 
 - [Portal](../..//virtual-network/quick-create-portal.md)
 
@@ -479,17 +479,17 @@ Istnieje kilka opcji wdrożenia sieci wirtualnej.
 
 - [Interfejs wiersza polecenia (CLI)](../../virtual-network/quick-create-cli.md)
 
-- Szablony usługi Azure Resource Manager
+- Szablony Azure Resource Manager
 
-> **Kiedy należy używać**: W dowolnym momencie pracujesz z maszynami wirtualnymi na platformie Azure, będzie działać z sieciami wirtualnymi. Dzięki temu dzielenia maszyn wirtualnych w podsieci publicznych i prywatnych podobne lokalnych centrów danych.
+> **Kiedy używać**: Wszędzie, gdzie pracujesz z maszynami wirtualnymi na platformie Azure, będziesz korzystać z sieci wirtualnych. Pozwala to na segmentację maszyn wirtualnych do publicznych i prywatnych podsieci podobnych do lokalnych centrów danych.
 > 
-> **Rozpoczynanie pracy**: Wdrażanie sieci wirtualnej platformy Azure przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Można wdrożyć nową sieć wirtualną do nowej lub istniejącej grupy zasobów. Podczas tworzenia nowej maszyny wirtualnej z poziomu portalu, możesz wybrać istniejącą sieć wirtualną lub utworzyć nową. Rozpocznij pracę i [Utwórz sieć wirtualną przy użyciu witryny Azure portal](../../virtual-network/quick-create-portal.md).
+> **Rozpocznij**: Wdrożenie sieci wirtualnej platformy Azure przy użyciu Azure Portal wymaga tylko aktywnej subskrypcji platformy Azure i dostępu do przeglądarki sieci Web. Nową sieć wirtualną można wdrożyć w nowej lub istniejącej grupie zasobów. Podczas tworzenia nowej maszyny wirtualnej z poziomu portalu można wybrać istniejącą sieć wirtualną lub utworzyć nową. Rozpocznij pracę i [Utwórz sieć wirtualną przy użyciu Azure Portal](../../virtual-network/quick-create-portal.md).
 
-### <a name="access-and-security-for-virtual-networks"></a>Dostęp i większe bezpieczeństwo dla sieci wirtualnych
+### <a name="access-and-security-for-virtual-networks"></a>Dostęp i zabezpieczenia dla sieci wirtualnych
 
-Możesz pomóc bezpiecznych sieci wirtualnych platformy Azure przy użyciu sieciowej grupy zabezpieczeń. Sieciowe grupy zabezpieczeń zawierają listę reguł listę kontroli dostępu (ACL) kontroli dostępu, które blokują lub zezwalają na ruch sieciowy do wystąpień maszyn wirtualnych w sieci wirtualnej. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami lub poszczególnych wystąpień maszyn wirtualnych w danej podsieci. Po skojarzeniu sieciowej grupy zabezpieczeń z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci. Ponadto można bardziej ograniczyć ruch do poszczególnych maszyn wirtualnych przez skojarzenie sieciowej grupy zabezpieczeń bezpośrednio z tej maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](../../virtual-network/security-overview.md).
+Można zabezpieczyć sieci wirtualne platformy Azure przy użyciu sieciowej grupy zabezpieczeń. Sieciowych grup zabezpieczeń zawierają listę reguł listy kontroli dostępu (ACL), które zezwalają na ruch sieciowy do wystąpień maszyn wirtualnych w sieci wirtualnej lub go odmawiają. Można skojarzyć sieciowych grup zabezpieczeń z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w tej podsieci. Po skojarzeniu sieciowej grupy zabezpieczeń z podsiecią reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci. Ponadto można dodatkowo ograniczyć ruch do pojedynczej maszyny wirtualnej, kojarząc sieciowej grupy zabezpieczeń bezpośrednio z tą maszyną wirtualną. Aby uzyskać więcej informacji, zobacz [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](../../virtual-network/security-overview.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Utwórz Windows maszyny Wirtualnej](../../virtual-machines/windows/quick-create-portal.md)
+- [Tworzenie maszyny wirtualnej z systemem Windows](../../virtual-machines/windows/quick-create-portal.md)
 - [Tworzenie maszyny wirtualnej z systemem Linux](../../virtual-machines/linux/quick-create-portal.md)

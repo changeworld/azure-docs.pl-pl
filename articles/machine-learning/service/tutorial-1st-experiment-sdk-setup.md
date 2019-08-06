@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: baeb175c57573e557d298ff3197394ab619434ff
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772648"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828631"
 ---
 # <a name="tutorial-setup-environment-and-workspace"></a>Samouczek: Zainstaluj środowisko i obszar roboczy
 
@@ -49,14 +49,12 @@ W obszarze roboczym utworzysz zasób w chmurze, aby rozpocząć korzystanie z no
 
 1. Wybierz pozycję **+ Nowy** , aby utworzyć maszynę wirtualną notesu.
 
-     ![Wybierz nową maszynę wirtualną](./media/quickstart-run-cloud-notebook/add-workstation.png)
+     ![Wybierz nową maszynę wirtualną](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
 1. Podaj nazwę dla maszyny wirtualnej. Następnie wybierz przycisk **Utwórz**.
 
     > [!NOTE]
     > Nazwa maszyny wirtualnej notesu musi zawierać od 2 do 16 znaków. Prawidłowe znaki to litery, cyfry i znaki.  Nazwa musi również być unikatowa w ramach subskrypcji platformy Azure.
-
-    ![Utwórz nową maszynę wirtualną](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Poczekaj, aż stan zmieni się na **uruchomiony**.
 
@@ -66,7 +64,7 @@ Po uruchomieniu maszyny wirtualnej Użyj sekcji **maszyny wirtualne notesu** , a
 
 1. Wybierz pozycję **Jupyter** w kolumnie **URI** dla maszyny wirtualnej.
 
-    ![Uruchom serwer notesu Jupyter](./media/quickstart-run-cloud-notebook/start-server.png)
+    ![Uruchom serwer notesu Jupyter](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
     Link uruchamia serwer notesu i otwiera stronę sieci Web notesu Jupyter na nowej karcie przeglądarki.  Ten link będzie działał tylko dla osoby, która tworzy maszynę wirtualną. Każdy użytkownik obszaru roboczego musi utworzyć własną maszynę wirtualną.
 
@@ -87,7 +85,7 @@ Jeśli używasz serwera notesu w chmurze, Zatrzymaj maszynę wirtualną, gdy nie
 
 1. W obszarze roboczym wybierz pozycję **maszyny wirtualne Notes**.
 
-   ![Zatrzymaj serwer maszyn wirtualnych](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![Zatrzymaj serwer maszyn wirtualnych](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. Z listy wybierz maszynę wirtualną.
 
@@ -101,7 +99,7 @@ Jeśli używasz serwera notesu w chmurze, Zatrzymaj maszynę wirtualną, gdy nie
 
 Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświetl właściwości obszaru roboczego i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zostały wykonane następujące zadania:
 

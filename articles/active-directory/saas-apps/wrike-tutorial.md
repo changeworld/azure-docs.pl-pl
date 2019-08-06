@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Wrike | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Wrike.
+title: 'Samouczek: Azure Active Directory integrację z usługą Wrike | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Wrike.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,20 +16,20 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22421d88d5d0b426b641c04cd8797c26d216c502
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47af0a43e4d081f50fedf685d46347f0f36233fd
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086692"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825624"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wrike"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Wrike
+# <a name="tutorial-azure-active-directory-integration-with-wrike"></a>Samouczek: Integracja Azure Active Directory z usługą Wrike
 
-W tym samouczku dowiesz się, jak zintegrować Wrike w usłudze Azure Active Directory (Azure AD).
-Integrowanie Wrike z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę Wrike z usługą Azure Active Directory (Azure AD).
+Integracja Wrike z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Wrike.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do Wrike (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi Wrike.
+* Możesz pozwolić użytkownikom na automatyczne logowanie do Wrike (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -37,22 +37,22 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Wrike, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą Wrike, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Wrike logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja z włączonym logowaniem jednokrotnym w Wrike
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Wrike **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
+* Wrike obsługuje usługę **SP** i **dostawcy tożsamości** zainicjowano Logowanie jednokrotne
 
-* Obsługuje Wrike **Just In Time** aprowizacji użytkowników
+* Wrike obsługuje Inicjowanie obsługi użytkowników **just in Time**
 
 ## <a name="adding-wrike-from-the-gallery"></a>Dodawanie Wrike z galerii
 
-Aby skonfigurować integrację Wrike w usłudze Azure AD, należy dodać Wrike z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu Wrike z usługą Azure AD, musisz dodać Wrike z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać Wrike z galerii, wykonaj następujące czynności:**
 
@@ -68,31 +68,31 @@ Aby skonfigurować integrację Wrike w usłudze Azure AD, należy dodać Wrike z
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Wrike**, wybierz opcję **Wrike** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Wrike**, wybierz pozycję **Wrike** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
     ![Wrike na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Wrike w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Wrike musi zostać ustanowione.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą Wrike na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Wrike.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Wrike, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi Wrike, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Wrike logowania jednokrotnego](#configure-wrike-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj logowanie](#configure-wrike-single-sign-on)** jednokrotne w usłudze Wrike, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Wrike](#create-wrike-test-user)**  — aby odpowiednikiem Britta Simon w Wrike połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Utwórz użytkownika testowego Wrike](#create-wrike-test-user)** , aby uzyskać odpowiednik Britta Simon w Wrike, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Wrike, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Wrike, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Wrike** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Wrike** wybierz pozycję **Logowanie**jednokrotne.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -104,13 +104,13 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Wrike, wykonaj nast
 
     ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** trybu zainicjowane przez użytkownika nie trzeba wykonać każdy krok, ponieważ aplikacja jest już wstępnie zintegrowana za pomocą platformy Azure.
+4. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** użytkownik nie musi wykonywać żadnych kroków, ponieważ aplikacja jest już wstępnie zintegrowana z platformą Azure.
 
-    ![Wrike domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/preintegrated.png)
+    ![Wrike domenę i adresy URL Logowanie jednokrotne](common/preintegrated.png)
 
 5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Wrike domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+    ![Wrike domenę i adresy URL Logowanie jednokrotne](common/metadata-upload-additional-signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://www.wrike.com/login/`
 
@@ -118,7 +118,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Wrike, wykonaj nast
 
     ![Link pobierania certyfikatu](common/metadataxml.png)
 
-7. Na **Konfigurowanie Wrike** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W sekcji **Konfigurowanie Wrike** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -128,9 +128,9 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Wrike, wykonaj nast
 
     c. Adres URL wylogowywania
 
-### <a name="configure-wrike-single-sign-on"></a>Konfigurowanie Wrike logowanie jednokrotne
+### <a name="configure-wrike-single-sign-on"></a>Konfigurowanie logowania jednokrotnego Wrike
 
-Aby skonfigurować logowanie jednokrotne na **Wrike** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej Wrike](mailto:support@team.wrike.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne na stronie **Wrike** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej Wrike](mailto:support@team.wrike.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -150,7 +150,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
+    b. W polu **Nazwa użytkownika** wpisz `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
@@ -158,13 +158,13 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Wrike.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Wrike.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Wrike**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Wrike**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Wrike**.
+2. Na liście Aplikacje wybierz pozycję **Wrike**.
 
     ![Link Wrike na liście aplikacji](common/all-applications.png)
 
@@ -182,9 +182,9 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-wrike-test-user"></a>Tworzenie użytkownika testowego Wrike
+### <a name="create-wrike-test-user"></a>Utwórz użytkownika testowego Wrike
 
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w Wrike. Wrike obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w Wrike, nowy katalog jest tworzony podczas próby uzyskania dostępu Wrike.
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w Wrike. Wrike obsługuje obsługę just-in-Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze Wrike, zostanie utworzony nowy, gdy zostanie podjęta próba uzyskania dostępu do Wrike.
 
 >[!Note]
 >Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej Wrike](mailto:support@team.wrike.com).
@@ -193,7 +193,7 @@ W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w Wrike. Wrike obs
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Wrike w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Wrike, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Wrike w panelu dostępu należy automatycznie zalogować się do Wrike, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -201,5 +201,5 @@ Po kliknięciu kafelka Wrike w panelu dostępu, powinien zostać automatycznie z
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
