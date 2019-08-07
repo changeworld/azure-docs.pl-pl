@@ -196,7 +196,7 @@ W tym przykładzie należy zainstalować usługi IIS tylko na maszynach wirtualn
 
 Mimo że zainstalowanie usług IIS nie jest wymagane do utworzenia bramy aplikacji, zainstalowano je w ramach tego przewodnika Szybki start, aby sprawdzić, czy platforma Azure pomyślnie utworzyła bramę aplikacji. Użyj usług do przetestowania bramy aplikacji:
 
-1. Na stronie przeglądowej Znajdź publiczny adres IP bramy aplikacji.  Zarejestruj publiczny adres](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) IP bramy aplikacji lub, wybierz pozycję **wszystkie zasoby**, wpisz myAGPublicIPAddress w polu wyszukiwania, a następnie wybierz go w wynikach wyszukiwania.  ![ Platforma Azure wyświetla publiczny adres IP na stronie **Omówienie**.
+1. Znajdź publiczny adres IP bramy aplikacji. **a stronie**  przeglądowej ![Zarejestruj publiczny adres](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) wybierz pozycję **wszystkie zasoby**, wpisz *myAGPublicIPAddress* w polu wyszukiwania, a następnie wybierz go w wynikach wyszukiwania. Platforma Azure wyświetla publiczny adres IP na stronie **Omówienie**.
 2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 3. Sprawdź odpowiedź. Prawidłowa odpowiedź weryfikuje, czy Brama aplikacji została pomyślnie utworzona i może pomyślnie nawiązać połączenie z zapleczem.![Testowanie bramy aplikacji](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 

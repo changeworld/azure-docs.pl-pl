@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 07/29/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: a57089eb2cd87b08ba647afed002d90d6f14891a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 968ae62344f99edf8eb46eb62a4cf13f300c868f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846661"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815632"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Tworzenie przypisań ról i zarządzanie nimi w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -41,11 +41,11 @@ W poniższej tabeli opisano każdy atrybut:
 
 | Atrybut | Name (Nazwa) | Wymagane | Typ | Opis |
 | --- | --- | --- | --- | --- |
-| roleId | Identyfikator definicji roli | Tak | String | Unikatowy identyfikator żądanego przypisania roli. Znajdź definicje ról i ich identyfikatory, wykonując zapytania dotyczące systemowego interfejsu API lub tabeli przeglądu poniżej. |
+| roleId | Identyfikator definicji roli | Yes | String | Unikatowy identyfikator żądanego przypisania roli. Znajdź definicje ról i ich identyfikatory, wykonując zapytania dotyczące systemowego interfejsu API lub tabeli przeglądu poniżej. |
 | Identyfikator obiektu | Identyfikator obiektu | Tak | String | Identyfikator Azure Active Directory, identyfikator obiektu jednostki usługi lub nazwa domeny. Do czego jest przypisane przypisanie roli. Przypisanie roli musi być sformatowane zgodnie ze skojarzonym z nim typem. Dla obiektu `“@”` objectidtype identyfikator objectid musi rozpoczynać się od znaku. `DomainName` |
-| objectIdtype | Typ identyfikatora obiektu | Yes | Ciąg | Rodzaj używanego identyfikatora obiektu. Zobacz sekcję **obsługiwane ObjectIdTypes** poniżej. |
+| objectIdtype | Typ identyfikatora obiektu | Tak | String | Rodzaj używanego identyfikatora obiektu. Zobacz sekcję **obsługiwane ObjectIdTypes** poniżej. |
 | path | Ścieżka miejsca | Tak | String | Pełna ścieżka dostępu do `Space` obiektu. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, określ `"/"`. Ten znak określa katalog główny, ale jego użycie nie jest zalecane. Zawsze stosuj zasadę najniższych uprawnień. |
-| TenantId | Identyfikator dzierżawy | Różna | String | W większości przypadków Azure Active Directory identyfikator dzierżawy. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalne dla nazwa_domeny. |
+| tenantId | Identyfikator dzierżawy | Różna | String | W większości przypadków Azure Active Directory identyfikator dzierżawy. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalne dla nazwa_domeny. |
 
 ### <a name="supported-role-definition-identifiers"></a>Obsługiwane Identyfikatory definicji ról
 
@@ -165,7 +165,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Wartość parametru** | **Wymagane** |  **Typ** |  **Opis** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  Prawda | String |   Identyfikator obiektu dla identyfikatora obiektu UserIdtype. |
+| YOUR_USER_ID |  Prawda | Ciąg |   Identyfikator obiektu dla identyfikatora obiektu UserIdtype. |
 | YOUR_PATH | Prawda | Ciąg |   Wybrana ścieżka do sprawdzenia dostępu. |
 | YOUR_ACCESS_TYPE |  Prawda | String |   Typ dostępu, który ma zostać wyszukany. |
 | YOUR_RESOURCE_TYPE | Prawda | String |  Zasób do sprawdzenia. |
@@ -232,7 +232,7 @@ Sprawdź, czy treść JSON jest zgodna z następującym schematem:
 }
 ```
 
-Pomyślne żądanie zwróci 201 stan odpowiedzi wraz z identyfikatorem nowo utworzonego  przypisania roli:
+Pomyślne żądanie zwróci 201 stan odpowiedzi wraz z identyfikatorem nowo utworzonego przypisania roli:
 
 ```JSON
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
