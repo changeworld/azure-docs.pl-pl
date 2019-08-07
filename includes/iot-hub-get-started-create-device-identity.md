@@ -8,38 +8,32 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: b2bce9788006a564def9bd8c1375a85dc4184b67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e919f22d5dd7975f055f262ec9ba69230aebd17
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66814750"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780855"
 ---
-## <a name="create-a-device-identity"></a>Tworzenie tożsamości urządzenia
+W tej sekcji utworzysz tożsamość urządzenia dla tego artykułu przy użyciu interfejsu wiersza polecenia platformy Azure. W identyfikatorach urządzeń jest uwzględniana wielkość liter.
 
-W tej sekcji umożliwia wiersza polecenia platformy Azure tworzenie tożsamości urządzenia w ramach tego samouczka. Wiersza polecenia platformy Azure jest preinstalowany w [usługi Azure Cloud Shell](~/articles/cloud-shell/overview.md), możesz też [instalowanie interfejsu wiersza polecenia Azure lokalnie](/cli/azure/install-azure-cli). W identyfikatorach urządzeń jest uwzględniana wielkość liter.
+1. Otwórz usługę [Azure Cloud Shell](https://shell.azure.com/).
 
-1. Uruchom następujące polecenie w środowisku wiersza polecenia, w którym używasz interfejsu wiersza polecenia platformy Azure można zainstalować rozszerzenia IoT:
+1. W Azure Cloud Shell Uruchom następujące polecenie, aby zainstalować rozszerzenie IoT Microsoft Azure dla interfejsu wiersza polecenia platformy Azure:
 
-    ```cmd/sh
+    ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
     ```
 
-1. Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, użyj następującego polecenia, aby zalogować się do konta platformy Azure (Jeśli używasz powłoki Cloud, użytkownik jest zalogowany automatycznie i nie jest potrzebny do uruchomienia tego polecenia):
+2. Utwórz nową tożsamość urządzenia o nazwie `myDeviceId` i Pobierz parametry połączenia urządzenia z następującymi poleceniami:
 
-    ```cmd/sh
-    az login
-    ```
-
-1. Na koniec Utwórz nową tożsamość urządzenia o nazwie `myDeviceId` i pobieranie parametrów połączenia urządzenia przy użyciu następujących poleceń:
-
-    ```cmd/sh
+    ```azurecli-interactive
     az iot hub device-identity create --device-id myDeviceId --hub-name {Your IoT Hub name}
     az iot hub device-identity show-connection-string --device-id myDeviceId --hub-name {Your IoT Hub name} -o table
     ```
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-Zanotuj parametry połączenia urządzenia z wyników. Te parametry połączenia urządzenia jest używany przez aplikację urządzenia połączyć się z Centrum IoT Hub jako urządzenie.
+Zanotuj parametry połączenia urządzenia z wyniku. Ten ciąg połączenia urządzenia jest używany przez aplikację urządzenia do nawiązywania połączenia z IoT Hub jako urządzenie.
 
 <!-- images and links -->

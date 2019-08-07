@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2556887008ecbe081168d3fc81fa07b45cda4bcb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 369be73e2884594171419a66b94db64184582e58
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639604"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813811"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi dla kopii zapasowej maszyny wirtualnej platformy Azure
 Za pomocą [usługi Azure Backup](backup-overview.md) można tworzyć kopie zapasowe maszyn i obciążeń lokalnych oraz maszyn wirtualnych platformy Azure. Ten artykuł zawiera podsumowanie ustawień i ograniczeń pomocy technicznej podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu Azure Backup.
@@ -130,7 +130,6 @@ Przywróć w ramach subskrypcji/regionu/strefy. | Nieobsługiwane.
 Przywracanie do istniejącej maszyny wirtualnej | Użyj opcji Zamień dysk.
 Przywróć dysk z włączonym kontem magazynu dla usługi Azure szyfrowanie usługi Storage (SSE) | Nieobsługiwane.<br/><br/> Przywracanie do konta, które nie ma włączonej funkcji SSE.
 Przywracanie do mieszanych kont magazynu | Nieobsługiwane.<br/><br/> Na podstawie typu konta magazynu wszystkie przywrócone dyski będą w warstwie Premium lub standardowa, a nie mieszane.
-Przywracanie do konta magazynu przy użyciu magazynu Strefowo nadmiarowego (ZRS) | Obsługiwane (w przypadku maszyny wirtualnej, której kopia zapasowa jest wykonywana po 2019 Jan, a [strefa dostępności](https://azure.microsoft.com/global-infrastructure/availability-zones/) jest dostępna)
 Przywracanie maszyny wirtualnej bezpośrednio do zestawu dostępności | W przypadku dysków zarządzanych można przywrócić dysk i użyć opcji zestawu dostępności w szablonie.<br/><br/> Nieobsługiwane w przypadku dysków niezarządzanych. W przypadku dysków niezarządzanych Przywróć dysk, a następnie utwórz maszynę wirtualną w zestawie dostępności.
 Przywróć kopię zapasową niezarządzanych maszyn wirtualnych po uaktualnieniu do zarządzanej maszyny wirtualnej| Obsługiwane.<br/><br/> Można przywrócić dyski, a następnie utworzyć zarządzaną maszynę wirtualną.
 Przywróć maszynę wirtualną do punktu przywracania przed przeprowadzeniem migracji maszyny wirtualnej na dyski zarządzane | Obsługiwane.<br/><br/> Przywracasz do dysków niezarządzanych (domyślnie), przekonwertuj przywrócone dyski na dysk zarządzany i Utwórz maszynę wirtualną z dyskami zarządzanymi.
@@ -151,6 +150,7 @@ Tworzenie kopii zapasowych maszyn wirtualnych wdrożonych z obrazu niestandardow
 Tworzenie kopii zapasowych maszyn wirtualnych migrowanych do platformy Azure  | Obsługiwane.<br/><br/> Aby można było utworzyć kopię zapasową maszyny wirtualnej, Agent maszyny wirtualnej musi być zainstalowany na migrowanej maszynie.
 Tworzenie kopii zapasowej spójności między MASZYNami wirtualnymi | Azure Backup nie zapewnia spójności danych i aplikacji na wielu maszynach wirtualnych.
 Tworzenie kopii zapasowej przy użyciu [ustawień diagnostycznych](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Ich. <br/><br/> Jeśli przywracanie maszyny wirtualnej platformy Azure z ustawieniami diagnostycznymi jest wyzwalane przy użyciu opcji [Utwórz nową](backup-azure-arm-restore-vms.md#create-a-vm) , przywracanie nie powiedzie się.
+Przywracanie przypiętych do strefy maszyn wirtualnych | Obsługiwane (w przypadku maszyny wirtualnej, której kopia zapasowa jest wykonywana po 2019 Jan i [strefa dostępności](https://azure.microsoft.com/global-infrastructure/availability-zones/) jest dostępna).<br/><br/>Obecnie obsługujemy przywracanie do tej samej strefy, która jest przypięta do maszyn wirtualnych. Jeśli jednak strefa jest niedostępna, przywracanie nie powiedzie się.
 
 
 ## <a name="vm-storage-support"></a>Obsługa magazynu maszyn wirtualnych
@@ -158,8 +158,8 @@ Tworzenie kopii zapasowej przy użyciu [ustawień diagnostycznych](https://docs.
 **Składnik** | **Pomoc techniczna**
 --- | ---
 Dyski z danymi maszyn wirtualnych platformy Azure | Utwórz kopię zapasową maszyny wirtualnej z 16 lub mniej dyskami danych. <br/><br/> Obsługuje rozmiary dysków do 4 TB.
-Rozmiar dysku danych | Każdy dysk może mieć rozmiar do 4095 GB.<br/><br/> Jeśli magazyny korzystają z najnowszej wersji Azure Backup (nazywanej natychmiastowym przywracaniem), obsługiwane są rozmiary dysków do 4 TB. [Dowiedz się więcej](backup-instant-restore-capability.md).  
-Typ magazynu | HDD w warstwie Standardowa, standardowy dysk SSD, dysk SSD Premium. <br/><br/> SSD w warstwie Standardowa jest obsługiwana, jeśli Twoje magazyny są uaktualnione do najnowszej wersji kopii zapasowej maszyny wirtualnej platformy Azure (nazywanej natychmiastowym przywracaniem). [Dowiedz się więcej](backup-instant-restore-capability.md).
+Rozmiar dysku danych | Każdy dysk może mieć rozmiar do 4095 GB.<br/><br/>Aby zarejestrować się w celu uzyskania prywatnej wersji zapoznawczej Azure Backup duże wsparcie dla dysków o rozmiarze większym niż 4 TB do 30TB, Wróć AskAzureBackupTeam@microsoft.comdo nas.  
+Typ magazynu | HDD w warstwie Standardowa, SSD w warstwie Standardowa, SSD w warstwie Premium.
 Dyski zarządzane | Obsługiwane.
 Zaszyfrowane dyski | Obsługiwane.<br/><br/> Można utworzyć kopię zapasową maszyn wirtualnych platformy Azure z włączonym Azure Disk Encryption (z aplikacją usługi Azure AD lub bez niej).<br/><br/> Zaszyfrowane maszyny wirtualne nie mogą zostać odzyskane na poziomie plików/folderów. Należy odzyskać całą maszynę wirtualną.<br/><br/> Możesz włączyć szyfrowanie na maszynach wirtualnych, które są już chronione przez Azure Backup.
 Dyski z włączonym akcelerator zapisu | Nieobsługiwane.<br/><br/> Usługa Azure Backup automatycznie wyklucza dyski z akcelerator zapisu włączony podczas tworzenia kopii zapasowej. Ponieważ nie są one tworzone w ramach kopii zapasowej, nie będzie można przywrócić tych dysków z punktów odzyskiwania maszyny wirtualnej.
@@ -167,7 +167,6 @@ Tworzenie kopii zapasowej deduplikowanych dysków | Nieobsługiwane.
 Dodawanie dysku do chronionej maszyny wirtualnej | Obsługiwane.
 Zmień rozmiar dysku na chronionej maszynie wirtualnej | Obsługiwane.
 Magazyn udostępniony| Nie zaleca się tworzenia kopii zapasowych maszyn wirtualnych przy użyciu udostępniony wolumin klastra (CSV) lub serwera plików skalowalnego w poziomie. Podczas tworzenia kopii zapasowej mogą wystąpić błędy autorów woluminów. W przypadku przywracania dyski zawierające woluminy woluminów CSV mogą nie zostać dołączone.
-
 
 
 ## <a name="vm-network-support"></a>Obsługa sieci maszyn wirtualnych
@@ -213,10 +212,10 @@ Bezpieczeństwo danych:
 
 **Maszyna** | **Przesyłanie** | **Magazynowanie**
 --- | --- | ---
-Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | ![Yes][green] | ![Yes][green]
-Maszyny wirtualne platformy Azure | ![Tak][green] | ![Yes][green]
+Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | ![Yes][green] | ![Tak][green]
+Maszyny wirtualne platformy Azure | ![Yes][green] | ![Tak][green]
 Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Tak][green] | ![Tak][green]
-Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Tak][green] | ![Tak][green]
+Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Tak][green] | ![Yes][green]
 
 
 
@@ -229,7 +228,7 @@ Funkcja Backup obsługuje kompresję ruchu kopii zapasowej, jak przedstawiono w 
 
 **Maszyna** | **Kompresja do usługi MABS/programu DPM (TCP)** | **Kompresuj do magazynu (HTTPS)**
 --- | --- | ---
-Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | Nie dotyczy | ![Tak][green]
+Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | Nie dotyczy | ![Yes][green]
 Maszyny wirtualne platformy Azure | Nie dotyczy | Nie dotyczy
 Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Tak][green] | ![Tak][green]
 Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Tak][green] | ![Yes][green]

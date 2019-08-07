@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 40ccee7a993ce39a9b4c7a86309b0554daa56026
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f122ec2474c09cdd6c9ada4ddc59b1adb44f619f
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298271"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780000"
 ---
 # <a name="prepay-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Przedpłata za Azure App Service wydzielona sygnatura z zastrzeżoną pojemnością
 
@@ -62,13 +62,9 @@ Możesz kupić wyizolowaną pojemność zastrzeżoną dla [Azure Portal](https:/
 
 Po zakupie przejdź do pozycji [rezerwacje](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) , aby wyświetlić stan zakupu i monitorować go w dowolnym momencie.
 
-## <a name="cancellations-and-exchanges"></a>Anulowania i wymiany
+## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zastrzeżenia zwrotne
 
-Jeśli musisz anulować oddzieloną pojemność sygnatury zarezerwowanej, może istnieć 12% opłata za wczesne zakończenie. Zwroty zależą od niższej kwoty z dwóch: cena zakupu i bieżąca cena rezerwacji. Zwroty są ograniczone do $50 000,00 rocznie. Otrzymaną refundacją jest pozostała kwota proporcjonalnie do pozostałej stawki pomniejszonej o 12% opłaty za wczesne zakończenie. Aby anulować, przejdź do rezerwacji w Azure Portal i wybierz pozycję **zwrot**.
-
-Jeśli musisz przenieść oddzieloną pojemność sygnatury do innego regionu, możesz wymienić ją na inną rezerwację o wartości równej lub wyższej. Data rozpoczęcia okresu nowej rezerwacji nie jest przenoszona z wymienionej rezerwacji. Okres trzech lat jest uruchamiany podczas tworzenia nowej rezerwacji. W programie Exchange przejdź do Azure Portal, wybierz rezerwację, którą chcesz wymienić, i wybierz pozycję **Exchange**.
-
-Aby uzyskać więcej informacji na temat sposobu wymiany lub zastrzeżeń, zobacz temat [rezerwacje rezerwacji i](billing-azure-reservations-self-service-exchange-and-refund.md)zwroty.
+Można anulować, wymienić lub refundować rezerwacje z pewnymi ograniczeniami. Aby uzyskać więcej informacji, zobacz samoobsługowe [weksle i zwroty dla Azure Reservations](billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="discount-application-shown-in-usage-data"></a>Aplikacja rabatowa wyświetlana w danych użycia
 

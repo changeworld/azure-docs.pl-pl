@@ -1,41 +1,41 @@
 ---
-title: Rozwiązanie programu VMware na platformie Azure przez CloudSimple - CloudSimple zarządzania działaniami
-description: W tym artykule opisano pojęcia działania na VMware Solution by CloudSimple
+title: Rozwiązanie VMware firmy Azure według CloudSimple — zarządzanie działaniami CloudSimple
+description: Opisuje koncepcje działania w ramach rozwiązania VMware według CloudSimple
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: dd073d040e6e7f149109c9988580dcd889f7c62f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b87a4e2889e9e65a3173a4c11d9c92a33e8e70b7
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65160143"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816249"
 ---
-# <a name="activity-management-overview"></a>Omówienie zarządzania działania
+# <a name="activity-management-overview"></a>Przegląd zarządzania działaniami
 
-CloudSimple śledzi wszystkie działania, które mogą wpływać na funkcjonowanie chmur prywatnych. Te działania, w tym alerty, zdarzenia, zadania i przeprowadzanie inspekcji aktywności. [Działanie stron](https://docs.azure.cloudsimple.com/activity/) Podsumowanie bieżącego działania i umożliwiają przechodzenie do szczegółów, aby uzyskać więcej informacji.
+CloudSimple śledzi wszystkie działania, które mogą mieć wpływ na działanie chmur prywatnych. Te działania, w tym alerty, zdarzenia, zadania i działania inspekcji. [Strony działań](https://docs.azure.cloudsimple.com/activity/) podsumowują wszystkie bieżące działania i umożliwiają przechodzenie do szczegółów w celu uzyskania dodatkowych szczegółów.
 
 ## <a name="events"></a>Events
 
-Zdarzenia śledzenia użytkowników i aktywności systemu w portalu CloudSimple.  Zdarzenia pokazują działania związane z określonego zasobu i ważność wpływ.  Można wyświetlać zdarzenia z poziomu portalu CloudSimple.
+Zdarzenia śledzą aktywność użytkowników i systemu w portalu CloudSimple.  Zdarzenia pokazują działanie powiązane z określonym zasobem i ważnością wpływu.  Zdarzenia można wyświetlić w portalu CloudSimple.
 
 ## <a name="alerts"></a>Alerty
 
-Alerty to powiadomienia dowolnego znaczące działania w środowisku CloudSimple.  Zdarzenia, które mają wpływ rozliczeń lub użytkownikowi dostęp, są wyświetlane jako alerty.  Użytkownik potwierdza, alerty wywołane z poziomu portalu CloudSimple.
+Alerty są powiadomieniami o wszelkich znaczących działaniach w środowisku CloudSimple.  Zdarzenia, które mają wpływ na rozliczenia lub dostęp użytkownika, są wyświetlane jako alerty.  Zgłoszone alerty można potwierdzić w portalu CloudSimple.
 
 ## <a name="tasks"></a>Zadania
 
-Zadania śledzić każde działanie użytkownika zajmuje więcej niż 30 sekund.  Można monitorować postęp zadania z poziomu portalu CloudSimple.  Ukończone zadania Pokaż łączny czas do ukończenia zadania.
+Zadania śledzą każdą operację użytkownika, która zajmuje więcej niż 30 sekund.  Możesz monitorować postęp zadania w portalu CloudSimple.  Zadania wykonane przedstawiają łączny czas trwania zadania.
 
 ## <a name="audit"></a>Inspekcja
 
-Śledzenie operacji wykonanych przez użytkownika, dzienniki inspekcji.  Dzienniki zawierają parametry, które użytkownik podał dla tej operacji.  Dzienniki inspekcji służy do monitorowania aktywności użytkownika pod kątem wszystkich użytkowników.
+Dzienniki inspekcji śledzą operacje wykonywane przez użytkownika.  Dzienniki zawierają parametry dostarczone przez użytkownika dla operacji.  Dzienników inspekcji można użyć do monitorowania aktywności użytkowników dla wszystkich użytkowników.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Wyświetl podsumowanie konta](https://docs.azure.cloudsimple.com/account/)
-* [Wyświetl dziennik użycia](https://docs.azure.cloudsimple.com/usage/)
+* [Wyświetlanie podsumowania konta](https://docs.azure.cloudsimple.com/account/)
+* [Wyświetlanie dziennika użycia](https://docs.azure.cloudsimple.com/usage/)

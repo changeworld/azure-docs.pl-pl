@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 787bcf28a64c98f82deb0725e2362bf8144d6c4e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: da68c0ae1dc92f5b854c30c90b93856248c43281
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640853"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828357"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
 
@@ -36,14 +36,18 @@ W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych funkc
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
 Uprawnienia platformy Azure | Aby utworzyć projekt Azure Migrate, musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji.
-Maszyny wirtualne funkcji Hyper-V | Oceń do 10 000 maszyn wirtualnych funkcji Hyper-V w jednym projekcie. W ramach subskrypcji platformy Azure można mieć wiele projektów. Projekt może zawierać zarówno maszyny wirtualne VMware, jak i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
+Maszyny wirtualne funkcji Hyper-V | Oceń do 35 000 maszyn wirtualnych funkcji Hyper-V w jednym projekcie. W ramach subskrypcji platformy Azure można mieć wiele projektów. Projekt może zawierać zarówno maszyny wirtualne VMware, jak i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
 Współrzędne geograficzne | Możesz tworzyć Azure Migrate projekty w wielu lokalizacje geograficzneach. Chociaż można tworzyć projekty w określonych ographies, można ocenić lub migrować maszyny pod kątem innych lokalizacji docelowych. Lokalizacja geograficzna projektu służy tylko do przechowywania odnalezionych metadanych.
 
   **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
   --- | ---
   Azure Government | Administracja USA — Wirginia
-  Azja i Pacyfik | Azja Południowo-Wschodnia lub Azja Wschodnia
-  Europa | Europa Południowa lub Europa Zachodnia
+  Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
+  Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
+  Kanada | Kanada środkowa lub Kanada Wschodnia
+  Europa | Europa Północna lub Europa Zachodnia
+  Indie | Indie Środkowe lub Indie Południowe
+  Japonia |  Japonia Wschodnia lub Japonia Zachodnia
   Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
   Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
@@ -84,7 +88,7 @@ W celu oceny Azure Migrate uruchamia lekkie urządzenie w celu odnajdywania masz
 | **Pomoc techniczna**                | **Szczegóły**               
 | :-------------------       | :------------------- |
 | **Projekt Azure Migrate**  |  Urządzenie może być skojarzone z pojedynczym projektem.<br/> Możesz odkryć do 5000 maszyn wirtualnych funkcji Hyper-V za pomocą jednego urządzenia.
-| **Funkcja Hyper-V**    |  Urządzenie jest wdrażane jako maszyna wirtualna funkcji Hyper-V.<br/> Podana maszyna wirtualna urządzenia ma maszynę wirtualną funkcji Hyper-V w wersji 5,0.<br/> Na hoście maszyny wirtualnej musi działać system Windows Server 2012 R2 lub nowszy.<br/> Potrzebuje wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 4 procesory wirtualne i 1 Przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie wymaga statycznego lub dynamicznego adresu IP i dostępu do Internetu.
+| **Funkcja Hyper-V**    |  Urządzenie jest wdrażane jako maszyna wirtualna funkcji Hyper-V.<br/> Podana maszyna wirtualna urządzenia ma maszynę wirtualną funkcji Hyper-V w wersji 5,0.<br/> Na hoście maszyny wirtualnej musi działać system Windows Server 2012 R2 lub nowszy.<br/> Potrzebuje wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU i 1 Przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie wymaga statycznego lub dynamicznego adresu IP i dostępu do Internetu.
 
 
 ## <a name="assessment-appliance-url-access"></a>Ocena — dostęp do adresu URL urządzenia
@@ -176,6 +180,6 @@ Hosty/maszyny wirtualne funkcji Hyper-V | Połączenia wychodzące na porcie HTT
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Przygotuj się do oceny maszyn wirtualnych funkcji Hyper-V](tutorial-prepare-hyper-v.md) na potrzeby migracji.

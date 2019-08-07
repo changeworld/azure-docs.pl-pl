@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie do zarządzania usługi Office 365 na platformie Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera szczegółowe informacje dotyczące konfiguracji i użytkowania rozwiązanie usługi Office 365 na platformie Azure.  Zawiera szczegółowy opis rekordy usługi Office 365 w usłudze Azure Monitor.
+title: Rozwiązanie do zarządzania pakietem Office 365 na platformie Azure | Microsoft Docs
+description: Ten artykuł zawiera szczegółowe informacje dotyczące konfiguracji i używania rozwiązania pakietu Office 365 na platformie Azure.  Zawiera szczegółowy opis rekordów pakietu Office 365 utworzonych w Azure Monitor.
 services: operations-management-suite
 documentationcenter: ''
 author: bwren
@@ -12,124 +12,124 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 3f4b0ad8b7aad01472a76db67f2c07e03e978e41
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673040"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741659"
 ---
-# <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
+# <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania pakietem Office 365 na platformie Azure (wersja zapoznawcza)
 
-![Logo usługi Office 365](media/solution-office-365/icon.png)
+![Logo pakietu Office 365](media/solution-office-365/icon.png)
 
 
 > [!NOTE]
-> Zalecaną metodą, aby zainstalować i skonfigurować rozwiązanie usługi Office 365 jest zapewnienie [łącznik usługi Office 365](../../sentinel/connect-office-365.md) w [Azure przez wartownika](../../sentinel/overview.md) zamiast przy użyciu kroków w tym artykule. Jest to zaktualizowaną wersję rozwiązania usługi Office 365 ze środowiskiem ulepszone konfiguracji. Aby połączyć z dzienników usługi Azure AD, można użyć albo [wartownik Azure usługi Azure AD connector](../../sentinel/connect-azure-active-directory.md) lub [ustawień diagnostycznych usługi Azure AD](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), który zapewnia dokładniejsze dane dziennika niż dzienniki zarządzania usługi Office 365. 
+> Zalecaną metodą instalacji i konfiguracji rozwiązania pakietu Office 365 jest włączenie łącznika [pakietu office 365](../../sentinel/connect-office-365.md) na [platformie Azure](../../sentinel/overview.md) — zamiast korzystania z kroków opisanych w tym artykule. Jest to zaktualizowana wersja rozwiązania pakietu Office 365 z ulepszonym interfejsem konfiguracji. Aby nawiązać połączenie z dziennikami usługi Azure AD, możesz użyć łącznika usługi Azure [AD wskaźnikowego](../../sentinel/connect-azure-active-directory.md) Azure lub [skonfigurować ustawienia diagnostyczne usługi Azure AD](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), które udostępniają bogatsze dane dziennika niż dzienniki zarządzania pakietu Office 365. 
 >
-> Gdy możesz [dołączanie przez wartownika Azure](../../sentinel/quickstart-onboard.md), określ obszar roboczy usługi Log Analytics, odpowiedniego rozwiązania usługi Office 365 instalowane w. Po włączeniu łącznik rozwiązania będą dostępne w obszarze roboczym i używać dokładnie tak samo jako żadnych innych rozwiązań do monitorowania, zainstalowane.
+> Po dołączeniu [wskaźnikowego platformy Azure](../../sentinel/quickstart-onboard.md)wskaż obszar roboczy log Analytics, w którym ma zostać zainstalowane rozwiązanie pakietu Office 365. Po włączeniu łącznika rozwiązanie będzie dostępne w obszarze roboczym i używane dokładnie tak samo jak inne zainstalowane rozwiązania do monitorowania.
 >
-> Użytkownicy chmury platformy Azure dla instytucji rządowych, należy zainstalować usługi Office 365, korzystając z procedury w tym artykule, ponieważ przez wartownika Azure nie jest jeszcze dostępna w chmurze dla instytucji rządowych.
+> Użytkownicy chmury platformy Azure dla instytucji rządowych muszą zainstalować pakiet Office 365, wykonując kroki opisane w tym artykule, ponieważ wskaźnik platformy Azure nie jest jeszcze dostępny w chmurze dla instytucji rządowych.
 
-Rozwiązanie do zarządzania usługi Office 365 umożliwia monitorowanie środowiska usługi Office 365 w usłudze Azure Monitor.
+Rozwiązanie do zarządzania pakietem Office 365 umożliwia monitorowanie środowiska pakietu Office 365 w Azure Monitor.
 
-- Monitorowanie aktywności użytkowników na konta usługi Office 365, aby analizować wzorce użycia, a także trendów zachowania. Na przykład można wyodrębnić scenariusze użycia określonych, takich jak pliki, które są udostępniane poza swoją organizację lub Najpopularniejsze witryny programu SharePoint.
-- Monitorowanie działania wykonywane przez administratora do śledzenia zmian konfiguracji lub operacji na wysokim poziomie uprawnień.
-- Wykrywanie i badanie użytkownika niepożądane zachowanie, które można dostosować do potrzeb organizacji.
-- Prezentacja inspekcje i zapewniaj zgodność. Na przykład można monitorować operacji na plikach dostęp do poufnych plików, które pomogą Ci z procesem inspekcje i zapewniaj zgodność.
-- Rozwiązywać problemy operacyjne przy użyciu [rejestrowania zapytań](../log-query/log-query-overview.md) na podstawie danych aktywności usługi Office 365 w Twojej organizacji.
+- Monitoruj działania użytkowników na kontach pakietu Office 365, aby analizować wzorce użycia, a także identyfikować trendy behawioralne. Na przykład można wyodrębnić określone scenariusze użycia, takie jak pliki, które są udostępniane poza organizacją lub najpopularniejszymi witrynami programu SharePoint.
+- Monitoruj działania administratora, aby śledzić zmiany konfiguracji lub operacje o wysokim poziomie uprawnień.
+- Wykrywaj i badaj niepożądane zachowanie użytkowników, które można dostosować do potrzeb organizacji.
+- Zademonstrowanie inspekcji i zgodności. Na przykład można monitorować operacje dostępu do plików dla poufnych plików, co może ułatwić proces inspekcji i zgodności.
+- Rozwiązywanie problemów operacyjnych przy użyciu [zapytań dzienników](../log-query/log-query-overview.md) w oparciu o dane działania pakietu Office 365 w organizacji.
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowane i skonfigurowane.
+Poniższe wymagania są wymagane przed zainstalowaniem i skonfigurowaniem tego rozwiązania.
 
-- Organizacji subskrypcji usługi Office 365.
-- Poświadczenia dla konta użytkownika, który jest administratorem globalnym.
-- Aby odbierać dane inspekcji, musisz mieć [skonfigurować inspekcję](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) w ramach subskrypcji usługi Office 365.  Należy pamiętać, że [inspekcję skrzynki pocztowej](https://technet.microsoft.com/library/dn879651.aspx) skonfigurowano oddzielnie.  Można nadal zainstalować rozwiązanie i zbierać inne dane, jeśli nie skonfigurowano inspekcji.
+- Organizacja subskrypcji pakietu Office 365.
+- Poświadczenia konta użytkownika, które jest administratorem globalnym.
+- Aby otrzymywać dane inspekcji, należy [skonfigurować inspekcję](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) w subskrypcji pakietu Office 365.  Należy pamiętać, że [Inspekcja skrzynek pocztowych](https://technet.microsoft.com/library/dn879651.aspx) jest konfigurowana osobno.  Nadal można zainstalować rozwiązanie i zbierać inne dane, jeśli Inspekcja nie jest skonfigurowana.
  
 
 ## <a name="management-packs"></a>Pakiety administracyjne
 
-To rozwiązanie nie można zainstalować wszystkie pakiety administracyjne w [podłączone grupy zarządzania](../platform/om-agents.md).
+To rozwiązanie nie instaluje żadnych pakietów administracyjnych w [podłączonych grupach zarządzania](../platform/om-agents.md).
   
 
-## <a name="install-and-configure"></a>Instalowanie i konfigurowanie
+## <a name="install-and-configure"></a>Instalacja i konfiguracja
 
-Rozpocznij od dodania [rozwiązanie usługi Office 365, aby Twoja subskrypcja](solutions.md#install-a-monitoring-solution). Po dodaniu, należy wykonać kroki konfiguracji w tej sekcji, aby umożliwić dostęp do subskrypcji usługi Office 365.
+Zacznij od dodania [rozwiązania pakietu Office 365 do subskrypcji](solutions.md#install-a-monitoring-solution). Po dodaniu należy wykonać kroki konfiguracji opisane w tej sekcji, aby uzyskać dostęp do subskrypcji pakietu Office 365.
 
 ### <a name="required-information"></a>Wymagane informacje
 
-Przed rozpoczęciem tej procedury, Zbierz następujące informacje.
+Przed rozpoczęciem tej procedury Zbierz poniższe informacje.
 
-W obszarze roboczym usługi Log Analytics:
+W obszarze roboczym Log Analytics:
 
-- Nazwa obszaru roboczego: Obszar roboczy, gdzie będą zbierane dane usługi Office 365.
+- Nazwa obszaru roboczego: Obszar roboczy, w którym będą zbierane dane pakietu Office 365.
 - Nazwa grupy zasobów: Grupa zasobów, która zawiera obszar roboczy.
 - Identyfikator subskrypcji platformy Azure: Subskrypcja, która zawiera obszar roboczy.
 
-Z subskrypcji usługi Office 365:
+Z subskrypcji pakietu Office 365:
 
 - Nazwa użytkownika: Adres e-mail konta administracyjnego.
-- Identyfikator dzierżawy: Unikatowy identyfikator dla subskrypcji usługi Office 365.
-- Identyfikator klienta: 16-znakowy ciągu, który reprezentuje klienta usługi Office 365.
-- Klucz tajny klienta: Zaszyfrowanego ciągu jest niezbędne do uwierzytelniania.
+- Identyfikator dzierżawy: Unikatowy identyfikator subskrypcji pakietu Office 365.
+- Identyfikator klienta: 16-znakowy ciąg, który reprezentuje klienta pakietu Office 365.
+- Wpis tajny klienta: Zaszyfrowany ciąg niezbędny do uwierzytelnienia.
 
-### <a name="create-an-office-365-application-in-azure-active-directory"></a>Tworzenie aplikacji usługi Office 365 w usłudze Azure Active Directory
+### <a name="create-an-office-365-application-in-azure-active-directory"></a>Tworzenie aplikacji pakietu Office 365 w Azure Active Directory
 
-Pierwszym krokiem jest do tworzenia aplikacji w usłudze Azure Active Directory, który rozwiązania do zarządzania będzie używany do dostępu do rozwiązania do usługi Office 365.
+Pierwszym krokiem jest utworzenie aplikacji w Azure Active Directory, która będzie używana przez rozwiązanie do zarządzania w celu uzyskania dostępu do rozwiązania pakietu Office 365.
 
 1. Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com/).
-1. Wybierz **usługi Azure Active Directory** i następnie **rejestracje aplikacji**.
+1. Wybierz **Azure Active Directory** a następnie **rejestracje aplikacji**.
 1. Kliknij pozycję **Rejestrowanie nowej aplikacji**.
 
-    ![Dodawanie rejestracji aplikacji](media/solution-office-365/add-app-registration.png)
-1. Wprowadź aplikację **nazwa** i **adres URL logowania**.  Nazwa powinna być opisowe.  Użyj `http://localhost` dla adresu URL i Zachowaj _aplikacji sieci Web / interfejs API_ dla **typ aplikacji**
+    ![Dodaj rejestrację aplikacji](media/solution-office-365/add-app-registration.png)
+1. Wprowadź **nazwę** aplikacji i **adres URL logowania**.  Nazwa powinna być opisowa.  Użyj `http://localhost` adresu URL i Zachowaj _aplikację sieci Web/interfejs API_ dla **typu aplikacji**
     
-    ![Tworzenie aplikacji](media/solution-office-365/create-application.png)
-1. Kliknij przycisk **Utwórz** i zweryfikować informacje o aplikacji.
+    ![Utwórz aplikację](media/solution-office-365/create-application.png)
+1. Kliknij przycisk **Utwórz** i sprawdź poprawność informacji o aplikacji.
 
     ![Zarejestrowana aplikacja](media/solution-office-365/registered-app.png)
 
-### <a name="configure-application-for-office-365"></a>Konfigurowanie aplikacji dla usługi Office 365
+### <a name="configure-application-for-office-365"></a>Konfigurowanie aplikacji dla pakietu Office 365
 
-1. Kliknij przycisk **ustawienia** otworzyć **ustawienia** menu.
-1. Wybierz **właściwości**. Zmiana **wielodostępnych** do _tak_.
+1. Kliknij pozycję **Ustawienia** , aby otworzyć menu **Ustawienia** .
+1. Wybierz **właściwości**. Zmień wartość **wiele dzierżawców** na _tak_.
 
-    ![Ustawienia wielodostępnej](media/solution-office-365/settings-multitenant.png)
+    ![Ustawienia wielodostępne](media/solution-office-365/settings-multitenant.png)
 
-1. Wybierz **wymagane uprawnienia** w **ustawienia** menu, a następnie kliknij przycisk **Dodaj**.
-1. Kliknij przycisk **wybierz interfejs API** i następnie **interfejsów API zarządzania usługi Office 365**. Kliknij przycisk **interfejsów API zarządzania usługi Office 365**. Kliknij przycisk **wybierz**.
+1. W menu **Ustawienia** wybierz pozycję **wymagane uprawnienia** , a następnie kliknij przycisk **Dodaj**.
+1. Kliknij pozycję **Wybierz interfejs API** , a następnie **interfejsy API zarządzania pakietu Office 365**. Kliknij pozycję **interfejsy API zarządzania pakietu Office 365**. Kliknij przycisk **wybierz**.
 
-    ![Wybieranie interfejsu API](media/solution-office-365/select-api.png)
+    ![Wybierz interfejs API](media/solution-office-365/select-api.png)
 
-1. W obszarze **wybierz uprawnienia** wybierz następujące opcje dla obu **uprawnienia aplikacji** i **delegowane uprawnienia**:
-   - Przeczytaj informacje o kondycji usług w Twojej organizacji
+1. W obszarze **Wybierz uprawnienia** wybierz następujące opcje **uprawnień aplikacji** i delegowane **uprawnienia**:
+   - Odczytuj informacje o kondycji usług dla organizacji
    - Odczytaj dane aktywności dla Twojej organizacji
    - Odczytuj raporty aktywności dotyczące organizacji
 
-     ![Wybieranie interfejsu API](media/solution-office-365/select-permissions.png)
+     ![Wybierz interfejs API](media/solution-office-365/select-permissions.png)
 
-1. Kliknij przycisk **wybierz** i następnie **gotowe**.
-1. Kliknij przycisk **udzielić uprawnień** a następnie kliknij przycisk **tak** po wyświetleniu monitu o weryfikację.
+1. Kliknij przycisk **Wybierz** , a następnie pozycję **gotowe**.
+1. Kliknij pozycję **Udziel uprawnień** , a następnie kliknij przycisk **tak** po wyświetleniu monitu o weryfikację.
 
     ![Udzielenie uprawnień](media/solution-office-365/grant-permissions.png)
 
-### <a name="add-a-key-for-the-application"></a>Dodaj klucz aplikacji
+### <a name="add-a-key-for-the-application"></a>Dodaj klucz dla aplikacji
 
-1. Wybierz **klucze** w **ustawienia** menu.
-1. Wpisz **opis** i **czas trwania** nowego klucza.
-1. Kliknij przycisk **Zapisz** , a następnie skopiuj **wartość** generowany.
+1. Wybierz pozycję **klucze** w menu **Ustawienia** .
+1. Wpisz **Opis** i **czas trwania** nowego klucza.
+1. Kliknij przycisk **Zapisz** , a następnie skopiuj wygenerowaną **wartość** .
 
     ![Klucze](media/solution-office-365/keys.png)
 
-### <a name="add-admin-consent"></a>Dodaj zgoda administratora
+### <a name="add-admin-consent"></a>Dodawanie zgody administratora
 
-Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody administratora dla aplikacji. Można to zrobić za pomocą skryptu programu PowerShell. 
+Aby włączyć konto administracyjne po raz pierwszy, musisz podać zgodę administracyjną dla aplikacji. Można to zrobić za pomocą skryptu programu PowerShell. 
 
-1. Zapisz poniższy skrypt jako *office365_consent.ps1*.
+1. Zapisz następujący skrypt jako *office365_consent. ps1*.
 
     ```powershell
     param (
@@ -176,7 +176,7 @@ Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody admi
     AdminConsent -ErrorAction Stop
     ```
 
-2. Uruchom skrypt za pomocą następującego polecenia. Użytkownik jest monitowany dwukrotnie o poświadczenia. Najpierw podaj poświadczenia dla obszaru roboczego usługi Log Analytics, a następnie dzierżawy poświadczenia administratora globalnego usługi Office 365.
+2. Uruchom skrypt za pomocą następującego polecenia. Dwa razy zostanie wyświetlony monit o podanie poświadczeń. Podaj najpierw poświadczenia dla obszaru roboczego Log Analytics a następnie poświadczenia administratora globalnego dla dzierżawy pakietu Office 365.
 
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
@@ -188,15 +188,15 @@ Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody admi
     .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
     ```
 
-1. Użytkownik zobaczy okno podobny do przedstawionego poniżej. Kliknij przycisk **zaakceptować**.
+1. Zostanie wyświetlone okno podobne do poniższego. Kliknij przycisk **zaakceptować**.
     
-    ![zgoda administratora](media/solution-office-365/admin-consent.png)
+    ![Zgoda administratora](media/solution-office-365/admin-consent.png)
 
-### <a name="subscribe-to-log-analytics-workspace"></a>Subskrybowanie do obszaru roboczego usługi Log Analytics
+### <a name="subscribe-to-log-analytics-workspace"></a>Subskrybowanie obszaru roboczego Log Analytics
 
-Ostatnim krokiem jest do subskrybowania aplikacji do swojego obszaru roboczego usługi Log Analytics. Możesz to zrobić również za pomocą skryptu programu PowerShell.
+Ostatnim krokiem jest subskrybowanie aplikacji do obszaru roboczego Log Analytics. Można to zrobić również za pomocą skryptu programu PowerShell.
 
-1. Zapisz poniższy skrypt jako *office365_subscription.ps1*.
+1. Zapisz następujący skrypt jako *office365_subscription. ps1*.
 
     ```powershell
     param (
@@ -374,7 +374,7 @@ Ostatnim krokiem jest do subskrybowania aplikacji do swojego obszaru roboczego u
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli aplikacja jest już subskrybowana przez ten obszar roboczy lub jeśli ta dzierżawa jest subskrybentem z innym obszarem roboczym, mogą pojawić się następujący błąd.
+Jeśli aplikacja jest już subskrybowana w tym obszarze roboczym lub gdy ta dzierżawa jest subskrybowana w innym obszarze roboczym, może zostać wyświetlony następujący błąd.
 
 ```Output
 Invoke-WebRequest : {"Message":"An error has occurred."}
@@ -385,7 +385,7 @@ At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
     + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand 
 ```
 
-Może zostać wyświetlony następujący błąd, jeśli podano nieprawidłowe wartości parametrów.
+Jeśli podano nieprawidłowe wartości parametrów, może zostać wyświetlony następujący błąd.
 
 ```Output
 Select-AzSubscription : Please provide a valid tenant or a valid subscription.
@@ -397,11 +397,11 @@ At line:12 char:18
 
 ```
 
-## <a name="uninstall"></a>Dezinstalacja
+## <a name="uninstall"></a>Odinstaluj
 
-Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu procesu w [usunąć to rozwiązanie do zarządzania](solutions.md#remove-a-monitoring-solution). Zbierane dane z usługi Office 365 do usługi Azure Monitor jednak nie powoduje wstrzymania. Postępuj zgodnie z poniższą procedurą, aby anulować subskrypcję usługi Office 365 i zatrzymać zbieranie danych.
+Rozwiązanie do zarządzania pakietem Office 365 można usunąć, korzystając z procesu w temacie [usuwanie rozwiązania do zarządzania](solutions.md#remove-a-monitoring-solution). Nie spowoduje to zatrzymania zbierania danych z pakietu Office 365 do Azure Monitor. Wykonaj poniższą procedurę, aby anulować subskrypcję pakietu Office 365 i zatrzymać zbieranie danych.
 
-1. Zapisz poniższy skrypt jako *office365_unsubscribe.ps1*.
+1. Zapisz następujący skrypt jako *office365_unsubscribe. ps1*.
 
     ```powershell
     param (
@@ -502,217 +502,217 @@ Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu pro
 
 ### <a name="supported-agents"></a>Obsługiwani agenci
 
-Rozwiązania usługi Office 365 nie pobierać dane z dowolnego z [agentów usługi Log Analytics](../platform/agent-data-sources.md).  Pobiera dane bezpośrednio z usługi Office 365.
+Rozwiązanie Office 365 nie pobiera danych z żadnego z [agentów log Analytics](../platform/agent-data-sources.md).  Pobiera dane bezpośrednio z pakietu Office 365.
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
-Może upłynąć kilka godzin początkowo zbierane dane. Po uruchomieniu zbieranie, usługi Office 365 wysyła [powiadomień elementu webhook](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) szczegółowych danych do usługi Azure Monitor zawsze jest tworzony rekord. Ten rekord jest dostępna w usłudze Azure Monitor w ramach po kilku minutach od jego odebrania.
+Zebranie danych może potrwać kilka godzin. Po rozpoczęciu zbierania pakiet Office 365 wysyła [powiadomienie elementu webhook](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) z szczegółowymi danymi do Azure monitor przy każdym utworzeniu rekordu. Ten rekord jest dostępny w Azure Monitor w ciągu kilku minut od momentu odebrania.
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-Po dodaniu rozwiązania usługi Office 365 do obszaru roboczego usługi Log Analytics, **usługi Office 365** zostanie dodany Kafelek do pulpitu nawigacyjnego. Ten kafelek zawiera liczbę oraz graficzną reprezentację liczby komputerów w środowisku wraz z informacjami o ich zgodności aktualizacji.<br><br>
-![Kafelek podsumowania usługi Office 365](media/solution-office-365/tile.png)  
+Po dodaniu rozwiązania pakietu Office 365 do obszaru roboczego Log Analytics, kafelek **pakietu office 365** zostanie dodany do pulpitu nawigacyjnego. Ten kafelek zawiera liczbę oraz graficzną reprezentację liczby komputerów w środowisku wraz z informacjami o ich zgodności aktualizacji.<br><br>
+![Kafelek podsumowania pakietu Office 365](media/solution-office-365/tile.png)  
 
-Kliknij pozycję **usługi Office 365** Kafelek, aby otworzyć **usługi Office 365** pulpitu nawigacyjnego.
+Kliknij kafelek **office 365** , aby otworzyć pulpit nawigacyjny **pakietu Office 365** .
 
-![Pulpit nawigacyjny usługi Office 365](media/solution-office-365/dashboard.png)  
+![Pulpit nawigacyjny pakietu Office 365](media/solution-office-365/dashboard.png)  
 
-Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. Każda kolumna zawiera dziesięć najważniejszych alertów według liczby odpowiadającego kryteriom tej kolumny dla określonego zakresu i przedziału czasu. Możesz uruchomić przeszukiwanie dziennika, które zawiera całą listę, klikając przycisk Zobacz wszystko w dolnej części kolumny lub przez kliknięcie nagłówka kolumny.
+Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. Każda kolumna zawiera dziesięć najważniejszych alertów według liczby pasujących do kryteriów tej kolumny dla określonego zakresu i zakresu czasu. Możesz uruchomić wyszukiwanie w dzienniku, które udostępnia całą listę, klikając pozycję Zobacz wszystko u dołu kolumny lub klikając nagłówek kolumny.
 
 | Kolumna | Opis |
 |:--|:--|
-| Operacje | Zawiera informacje dotyczące aktywnych użytkowników z wszystkich monitorowanych subskrypcji usługi Office 365. Można również wyświetlić liczbę działań, które zdarzają się wraz z upływem czasu.
-| Exchange | Pokazuje podział działania serwera Exchange, takie jak uprawnienia Dodaj skrzynkę pocztową lub skrzynki pocztowej Ustaw. |
-| Program SharePoint | Pokazuje najważniejszych działań, że użytkownicy wykonać na dokumentów programu SharePoint. Podczas przechodzenia do szczegółów z tego kafelka na stronie wyszukiwania znajdują się szczegółowe informacje o tych działań, takich jak dokument docelowy i lokalizację tego działania. Na przykład w przypadku zdarzenia dostępu do pliku będzie mógł wyświetlić dokument, który jest dostępny, jego nazwa skojarzonego konta i adres IP. |
-| Usługa Azure Active Directory | Obejmuje działania użytkowników najważniejsze, takich jak zresetować hasło użytkownika i prób logowania. Podczas przechodzenia do szczegółów można wyświetlić szczegóły tych działań, takich jak stan wyniku. Najczęściej jest to przydatne, jeśli chcesz monitorować podejrzanych działań w usłudze Azure Active Directory. |
+| Operacje | Zawiera informacje o aktywnych użytkownikach ze wszystkich monitorowanych subskrypcji pakietu Office 365. Zobaczysz również liczbę działań, które wystąpiły w czasie.
+| Exchange | Pokazuje podział działań programu Exchange Server, takich jak uprawnienie Dodawanie-Skrzynka pocztowa, lub ustawienie-Skrzynka pocztowa. |
+| Program SharePoint | Przedstawia najważniejsze działania wykonywane przez użytkowników w dokumentach programu SharePoint. Podczas przechodzenia do szczegółów z tego kafelka na stronie wyszukiwania są wyświetlane szczegółowe informacje o tych działaniach, takie jak dokument docelowy i lokalizacja tego działania. Na przykład dla zdarzenia, do którego jest uzyskiwany dostęp do pliku, będzie można wyświetlić dokument, do którego jest uzyskiwany dostęp, jego nazwę skojarzonego konta i adres IP. |
+| Usługa Azure Active Directory | Obejmuje działania najważniejszych użytkowników, takie jak resetowanie hasła użytkownika i logowania. Po przejściu do szczegółów będzie można zobaczyć szczegóły tych działań, jak w przypadku stanu wyniku. Jest to szczególnie przydatne, jeśli chcesz monitorować podejrzane działania na Azure Active Directory. |
 
 
 
 
-## <a name="azure-monitor-log-records"></a>Rekordy dziennika w usłudze Azure Monitor
+## <a name="azure-monitor-log-records"></a>Azure Monitor rekordy dziennika
 
-Wszystkie rekordy utworzone w obszarze roboczym usługi Log Analytics w usłudze Azure Monitor przez rozwiązania usługi Office 365 mają **typu** z **OfficeActivity**.  **OfficeWorkload** właściwość określa, które usługi Office 365, rekord, który odwołuje się do — Exchange, usługi AzureActiveDirectory, SharePoint lub OneDrive.  **RecordType** właściwość określa typ operacji.  Właściwości różnią się dla każdego typu operacji i przedstawiono w poniższych tabelach.
+Wszystkie rekordy utworzone w obszarze roboczym Log Analytics w Azure Monitor przez rozwiązanie pakietu Office 365 mają **Typ** **biura**.  Właściwość **OfficeWorkload** określa, do której usługi Office 365 odwołuje się rekord — Exchange, usługi azureactivedirectory, SharePoint lub OneDrive.  Właściwość **recordType** określa typ operacji.  Właściwości różnią się w zależności od typu operacji i są wyświetlane w tabelach poniżej.
 
 ### <a name="common-properties"></a>Wspólne właściwości
 
-Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Office 365.
+Następujące właściwości są wspólne dla wszystkich rekordów pakietu Office 365.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Type | *OfficeActivity* |
-| ClientIP | Adres IP urządzenia, które było używane podczas zarejestrowania działania. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
-| OfficeWorkload | Usługa Office 365, która rekord, który odwołuje się do.<br><br>AzureActiveDirectory<br>Exchange<br>Program SharePoint|
+| Type | *Pakiet Office* |
+| ClientIP | Adres IP urządzenia, który został użyty podczas rejestrowania działania. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
+| OfficeWorkload | Usługa Office 365, do której odwołuje się rekord.<br><br>AzureActiveDirectory<br>Exchange<br>Program SharePoint|
 | Operacja | Nazwa działania użytkownika lub administratora.  |
-| Identyfikatora organizacji | Identyfikator GUID dzierżawy usługi Office 365 w Twojej organizacji. Tę wartość, zawsze będzie taka sama dla Twojej organizacji, niezależnie od usługi Office 365, w której występuje. |
-| RecordType | Typ operacji wykonywanej. |
-| ResultStatus | Wskazuje, czy akcja (określona we właściwości Operation) zakończyła się powodzeniem. Możliwe wartości to Succeeded, częściowe powodzenie lub niepowodzenie. Wartość dla działania administracyjnego programu Exchange, ma wartość PRAWDA lub FAŁSZ. |
-| UserId | Nazwa UPN (główna nazwa użytkownika) użytkownika, który wykonał operację powodującą zarejestrowanie rekordu na przykład my_name@my_domain_name. Należy pamiętać, że rekordy działań wykonywanych przez konta systemowe (takie jak SHAREPOINT\system lub Zarządzanie NT\System) dostępne są również. | 
-| UserKey | Alternatywnego Identyfikatora użytkownika zidentyfikowanego we właściwości identyfikatora użytkownika.  Na przykład właściwość ta jest wypełniana passport Unikatowy identyfikator (PUID) zdarzenia, wykonywane przez użytkowników w programie SharePoint, usłudze OneDrive dla firm i programem Exchange. Ta właściwość może również określić tę samą wartość jako właściwość identyfikatora użytkownika dla zdarzenia zachodzące w innych usługach i zdarzeniach wykonywanych przez konta systemowe|
-| UserType | Typ użytkownika, który wykonał operację.<br><br>Administrator<br>Aplikacja<br>DcAdmin<br>Regularne<br>Zarezerwowany<br>ServicePrincipal<br>System |
+| Identyfikatorem organizationid | Identyfikator GUID dzierżawy pakietu Office 365 w organizacji. Ta wartość będzie zawsze taka sama dla organizacji, niezależnie od usługi Office 365, w której występuje. |
+| RecordType | Typ wykonywanej operacji. |
+| ResultStatus | Wskazuje, czy akcja (określona we właściwości Operation) zakończyła się powodzeniem, czy nie. Możliwe wartości to sukces, PartiallySucceeded lub niepowodzenie. W przypadku działania administracyjnego programu Exchange wartością jest true lub false. |
+| UserId | Nazwa UPN użytkownika, który wykonał akcję, która spowodowała zarejestrowanie rekordu; na przykład my_name@my_domain_name. Należy pamiętać, że rekordy dla działania wykonywanego przez konta systemu (takie jak SHAREPOINT\system lub systemowe NTAUTHORITY\SYSTEM) również są uwzględnione. | 
+| UserKey | Alternatywny identyfikator użytkownika zidentyfikowany we właściwości UserId.  Na przykład ta właściwość jest wypełniana unikatowym IDENTYFIKATORem (PUID) usługi Passport dla zdarzeń wykonywanych przez użytkowników w usługach SharePoint, OneDrive dla firm i Exchange. Ta właściwość może również określać taką samą wartość jak Właściwość UserID dla zdarzeń występujących w innych usługach i zdarzeń wykonywanych przez konta systemowe|
+| UserType | Typ użytkownika, który wykonał operację.<br><br>Administrator<br>Aplikacja<br>DcAdmin<br>Normalna<br>Zarezerwowany<br>ServicePrincipal<br>System |
 
 
-### <a name="azure-active-directory-base"></a>Podstawowa usługi Azure Active Directory
+### <a name="azure-active-directory-base"></a>Baza Azure Active Directory
 
-Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Azure Active Directory.
+Następujące właściwości są wspólne dla wszystkich Azure Active Directory rekordów.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AzureActiveDirectory_EventType | Typ zdarzenia usługi Azure AD. |
-| ExtendedProperties | Właściwości rozszerzonych zdarzeń usługi Azure AD. |
+| Właściwości ExtendedProperties | Właściwości rozszerzone zdarzenia usługi Azure AD. |
 
 
-### <a name="azure-active-directory-account-logon"></a>Logowania konto usługi Active Directory platformy Azure
+### <a name="azure-active-directory-account-logon"></a>Azure Active Directory logowanie do konta
 
-Te rekordy są tworzone, gdy próbuje zalogować użytkownika usługi Active Directory.
+Te rekordy są tworzone, gdy użytkownik Active Directory próbuje się zalogować.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectoryAccountLogon |
-| Aplikacja | Aplikacja, która wyzwala zdarzenia logowania, konta, takie jak pakietu Office 15. |
-| Klient | Szczegółowe informacje o kliencie urządzenia, system operacyjny urządzenia i przeglądarki urządzenia, które było używane dla zdarzenia logowania konta. |
-| LoginStatus | Ta właściwość jest bezpośrednio z OrgIdLogon.LoginStatus. Mapowania różnych interesujących błędów logowania może zostać wykonana przez alerty algorytmów. |
-| UserDomain | Tożsamość informacji o dzierżawie (TII). | 
+| `OfficeWorkload` | AzureActiveDirectory |
+| `RecordType`     | AzureActiveDirectoryAccountLogon |
+| `Application` | Aplikacja, która wyzwala zdarzenie logowania do konta, takie jak Office 15. |
+| `Client` | Szczegóły dotyczące urządzenia klienckiego, systemu operacyjnego urządzenia i przeglądarki, która była używana na potrzeby zdarzenia logowania do konta. |
+| `LoginStatus` | Ta właściwość jest bezpośrednio z OrgIdLogon. stanu logowania. Mapowanie różnych niepowodzeń logowania może odbywać się przy użyciu algorytmów alertów. |
+| `UserDomain` | Informacje o tożsamości dzierżawy (TII). | 
 
 
 ### <a name="azure-active-directory"></a>Usługa Azure Active Directory
 
-Te rekordy są tworzone po dokonaniu zmiany lub dodatki do obiektów w usłudze Azure Active Directory.
+Te rekordy są tworzone w przypadku wprowadzenia zmian lub uzupełnień do Azure Active Directory obiektów.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
-| AADTarget | Użytkownik wykonanej akcji (identyfikowanych na podstawie właściwości Operation). |
-| aktora | Użytkownik lub nazwa główna usługi, który wykonał akcję. |
-| ActorContextId | Identyfikator GUID aktora należy do organizacji. |
+| AADTarget | Użytkownik wykonał akcję (identyfikowaną przez właściwość operacji). |
+| Aktor | Nazwa główna użytkownika lub usługi, która wykonał akcję. |
+| ActorContextId | Identyfikator GUID organizacji, do której należy aktor. |
 | ActorIpAddress | Adres IP aktora w formacie adresu IPV4 lub IPV6. |
-| InterSystemsId | Identyfikator GUID śledzić akcje składnikami w ramach usługi Office 365. |
-| IntraSystemId |   Identyfikator GUID, który jest generowany przez usługę Azure Active Directory do śledzenia działania. |
-| SupportTicketId | Klient obsługuje identyfikator biletu dla akcji w sytuacjach, "act w imieniu z". |
-| TargetContextId | Identyfikator GUID docelowej użytkownik należy do organizacji. |
+| InterSystemsId | Identyfikator GUID, który śledzi akcje między składnikami w ramach usługi Office 365. |
+| IntraSystemId |   Identyfikator GUID, który jest generowany przez Azure Active Directory do śledzenia akcji. |
+| SupportTicketId | Identyfikator biletu obsługi klienta dla akcji w sytuacjach "czynność-w imieniu". |
+| TargetContextId | Identyfikator GUID organizacji, do której należy użytkownik dokierowany. |
 
 
-### <a name="data-center-security"></a>Zabezpieczeń Centrum danych
+### <a name="data-center-security"></a>Zabezpieczenia centrum danych
 
-Te rekordy są tworzone na podstawie danych inspekcji zabezpieczeń w centrum danych.  
+Te rekordy są tworzone na podstawie danych inspekcji zabezpieczeń centrum danych.  
 
 | Właściwość | Opis |
 |:--- |:--- |
-| EffectiveOrganization | Nazwa dzierżawy, która była celem podniesienia uprawnień/polecenia cmdlet. |
-| ElevationApprovedTime | Znacznik czasu podczas podniesienia uprawnień zostało zatwierdzone. |
-| ElevationApprover | Nazwa menedżera firmy Microsoft. |
-| ElevationDuration | Czas trwania, dla którego była aktywna podniesienia uprawnień. |
-| ElevationRequestId |  Unikatowy identyfikator dla żądania podniesienia uprawnień. |
-| ElevationRole | Zażądano roli podniesienia uprawnień. |
+| EffectiveOrganization | Nazwa dzierżawy, w której nastąpiło podniesienie uprawnień/polecenie cmdlet. |
+| ElevationApprovedTime | Sygnatura czasowa dla momentu zatwierdzenia podniesienia uprawnień. |
+| ElevationApprover | Nazwa programu Microsoft Manager. |
+| ElevationDuration | Czas, przez który podniesienie uprawnień było aktywne. |
+| ElevationRequestId |  Unikatowy identyfikator żądania podniesienia uprawnień. |
+| ElevationRole | Rola, dla której zażądano podniesienia uprawnień. |
 | ElevationTime | Godzina rozpoczęcia podniesienia uprawnień. |
-| Godzina_rozpoczęcia | Czas rozpoczęcia wykonywania poleceń cmdlet. |
+| Start_Time | Godzina rozpoczęcia wykonywania polecenia cmdlet. |
 
 
 ### <a name="exchange-admin"></a>Administrator programu Exchange
 
-Te rekordy są tworzone, gdy zmiany zostaną wprowadzone do konfiguracji programu Exchange.
+Te rekordy są tworzone po wprowadzeniu zmian w konfiguracji programu Exchange.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
-| ExternalAccess |  Określa, czy polecenie cmdlet zostało uruchomione przez użytkownika w organizacji przez personel centrum danych firmy Microsoft lub konta usługi z centrum danych, lub administrator delegowany. Wartość False wskazuje, że polecenie cmdlet zostało uruchomione przez kogoś w organizacji. Wartość True wskazuje, że polecenie cmdlet zostało uruchomione przez personel centrum danych, konta usługi Centrum danych lub administratora delegowanego. |
-| ModifiedObjectResolvedName |  Jest to nazwa przyjazny dla użytkownika, obiektu, który został zmodyfikowany przez polecenie cmdlet. To jest rejestrowany tylko wtedy, gdy polecenie cmdlet modyfikuje obiektu. |
+| ExternalAccess |  Określa, czy polecenie cmdlet zostało uruchomione przez użytkownika w organizacji, przez personel centrum danych firmy Microsoft lub konto usługi centrum danych, czy przez administratora delegowanego. Wartość false wskazuje, że polecenie cmdlet zostało uruchomione przez kogoś w organizacji. Wartość true wskazuje, że polecenie cmdlet zostało uruchomione przez personel centrum danych, konto usługi centrum danych lub administratora delegowanego. |
+| ModifiedObjectResolvedName |  Jest to przyjazna dla użytkownika nazwa obiektu, który został zmodyfikowany przez polecenie cmdlet. Jest to rejestrowane tylko wtedy, gdy polecenie cmdlet modyfikuje obiekt. |
 | Nazwa_organizacji | Nazwa dzierżawy. |
-| OriginatingServer | Nazwa serwera, z którego wykonano polecenia cmdlet. |
-| Parametry | Nazwa i wartość dla wszystkich parametrów, które były używane z poleceniem cmdlet, który jest identyfikowany we właściwości operacji. |
+| OriginatingServer | Nazwa serwera, z którego zostało wykonane polecenie cmdlet. |
+| Parametry | Nazwa i wartość dla wszystkich parametrów, które były używane z poleceniem cmdlet, które zostały zidentyfikowane we właściwości Operations. |
 
 
 ### <a name="exchange-mailbox"></a>Skrzynka pocztowa programu Exchange
 
-Te rekordy są tworzone, gdy zmiany i dodatki, które zostaną wprowadzone do skrzynek pocztowych programu Exchange.
+Te rekordy są tworzone po wprowadzeniu zmian lub uzupełnień do skrzynek pocztowych programu Exchange.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| ClientInfoString | Informacje o kliencie poczty e-mail, który został użyty do wykonania tej operacji, takich jak wersja przeglądarki, wersja programu Outlook i informacje o urządzeniach przenośnych. |
-| Client_IPAddress | Adres IP urządzenia, które było używane podczas operacji zostało zarejestrowane. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
-| ClientMachineName | Nazwa komputera, który jest hostem klient programu Outlook. |
-| ClientProcessName | Klient poczty e-mail, który został użyty do uzyskania dostępu do skrzynki pocztowej. |
+| ClientInfoString | Informacje dotyczące klienta poczty e-mail użytego do wykonania tej operacji, takie jak wersja przeglądarki, wersja programu Outlook i informacje o urządzeniu przenośnym. |
+| Client_IPAddress | Adres IP urządzenia, który został użyty podczas rejestrowania operacji. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
+| ClientMachineName | Nazwa komputera, który hostuje klienta programu Outlook. |
+| ClientProcessName | Klient poczty e-mail, który był używany do uzyskiwania dostępu do skrzynki pocztowej. |
 | ClientVersion | Wersja klienta poczty e-mail. |
 | InternalLogonType | Zarezerwowane do użytku wewnętrznego. |
-| Logon_Type | Wskazuje typ użytkownika, który dostęp do skrzynki pocztowej i wykonać operację, która została zarejestrowana. |
-| LogonUserDisplayName |    Przyjazny dla użytkownika nazwa użytkownika, który wykonał operację. |
+| Logon_Type | Wskazuje typ użytkownika, który uzyskał dostęp do skrzynki pocztowej i wykonał operację, która została zarejestrowana. |
+| LogonUserDisplayName |    Przyjazna dla użytkownika nazwa użytkownika, który wykonał operację. |
 | LogonUserSid | Identyfikator SID użytkownika, który wykonał operację. |
-| MailboxGuid | Identyfikator GUID programu Exchange skrzynki pocztowej, która została otwarta. |
-| MailboxOwnerMasterAccountSid | Skrzynka pocztowa właściciel konta głównego identyfikatora SID konta. |
+| MailboxGuid | Identyfikator GUID programu Exchange skrzynki pocztowej, do której uzyskano dostęp. |
+| MailboxOwnerMasterAccountSid | Identyfikator SID konta właściciela skrzynki pocztowej. |
 | MailboxOwnerSid | Identyfikator SID właściciela skrzynki pocztowej. |
-| MailboxOwnerUPN | Adres e-mail osoby, która jest właścicielem skrzynki pocztowej, która została otwarta. |
+| MailboxOwnerUPN | Adres e-mail osoby będącej właścicielem skrzynki pocztowej, do której uzyskano dostęp. |
 
 
-### <a name="exchange-mailbox-audit"></a>Inspekcji skrzynki pocztowej programu Exchange
+### <a name="exchange-mailbox-audit"></a>Inspekcja skrzynek pocztowych programu Exchange
 
-Te rekordy są tworzone, gdy zostanie utworzony wpis inspekcji skrzynki pocztowej.
+Te rekordy są tworzone podczas tworzenia wpisu inspekcji skrzynki pocztowej.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
 | Element | Reprezentuje element, na którym wykonano operację | 
-| SendAsUserMailboxGuid | Skrzynka pocztowa, do którego uzyskano dostęp do wysyłania wiadomości e-mail jako identyfikator GUID programu Exchange. |
-| SendAsUserSmtp | Adres SMTP użytkownika, który jest Spersonifikowany. |
-| SendonBehalfOfUserMailboxGuid | Identyfikator GUID programu Exchange skrzynki pocztowej, która została otwarta na wysyłanie wiadomości e-mail w imieniu osób. |
-| SendOnBehalfOfUserSmtp | Adres SMTP użytkownika, w imieniu którego zostanie wysłana wiadomość e-mail. |
+| SendAsUserMailboxGuid | Identyfikator GUID programu Exchange skrzynki pocztowej, do której uzyskano dostęp do wysyłania wiadomości e-mail. |
+| SendAsUserSmtp | Adres SMTP użytkownika, który jest personifikowany. |
+| SendonBehalfOfUserMailboxGuid | Identyfikator GUID programu Exchange skrzynki pocztowej, do której uzyskano dostęp do wysyłania poczty w imieniu użytkownika. |
+| SendOnBehalfOfUserSmtp | Adres SMTP użytkownika, w którym jest wysyłana wiadomość e-mail. |
 
 
-### <a name="exchange-mailbox-audit-group"></a>Grupa inspekcji skrzynki pocztowej programu Exchange
+### <a name="exchange-mailbox-audit-group"></a>Grupa inspekcji skrzynek pocztowych programu Exchange
 
-Te rekordy są tworzone, gdy zmiany i dodatki, które zostaną wprowadzone do grupy programu Exchange.
+Te rekordy są tworzone po wprowadzeniu zmian lub uzupełnień do grup programu Exchange.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
 | AffectedItems | Informacje o każdym elemencie w grupie. |
-| CrossMailboxOperations | Wskazuje, jeśli operacja zaangażowany więcej niż jedną skrzynkę pocztową. |
-| DestMailboxId | Ustaw tylko wtedy, gdy parametr CrossMailboxOperations ma wartość True. Określa skrzynki pocztowej docelowy identyfikator GUID. |
-| DestMailboxOwnerMasterAccountSid | Ustaw tylko wtedy, gdy parametr CrossMailboxOperations ma wartość True. Określa identyfikator SID dla konta głównego identyfikator SID właściciela docelowej skrzynki pocztowej. |
-| DestMailboxOwnerSid | Ustaw tylko wtedy, gdy parametr CrossMailboxOperations ma wartość True. Określa identyfikator SID docelowej skrzynki pocztowej. |
-| DestMailboxOwnerUPN | Ustaw tylko wtedy, gdy parametr CrossMailboxOperations ma wartość True. Określa nazwę UPN właściciela do docelowej skrzynki pocztowej. |
-| DestFolder | Folder docelowy, operacje, takie jak przeniesienie. |
-| Folder | Folder, w której znajduje się grupa elementów. |
-| Foldery |     Informacji o folderach źródła uwzględnionego w operacji; na przykład, jeśli foldery są zaznaczone, a następnie usuwane. |
+| CrossMailboxOperations | Wskazuje, czy operacja dotyczyła więcej niż jednej skrzynki pocztowej. |
+| DestMailboxId | Ustawiaj tylko wtedy, gdy parametr CrossMailboxOperations ma wartość true. Określa identyfikator GUID docelowej skrzynki pocztowej. |
+| DestMailboxOwnerMasterAccountSid | Ustawiaj tylko wtedy, gdy parametr CrossMailboxOperations ma wartość true. Określa identyfikator SID konta głównego właściciela skrzynki pocztowej. |
+| DestMailboxOwnerSid | Ustawiaj tylko wtedy, gdy parametr CrossMailboxOperations ma wartość true. Określa identyfikator SID docelowej skrzynki pocztowej. |
+| DestMailboxOwnerUPN | Ustawiaj tylko wtedy, gdy parametr CrossMailboxOperations ma wartość true. Określa nazwę UPN właściciela docelowej skrzynki pocztowej. |
+| DestFolder | Folder docelowy dla operacji takich jak Przenieś. |
+| Folder | Folder, w którym znajduje się grupa elementów. |
+| Foldery |     Informacje o folderach źródłowych związanych z operacjami; na przykład jeśli foldery są zaznaczone, a następnie usunięte. |
 
 
-### <a name="sharepoint-base"></a>SharePoint Base
+### <a name="sharepoint-base"></a>Baza programu SharePoint
 
-Te właściwości są wspólne dla wszystkich rekordów z programu SharePoint.
+Te właściwości są wspólne dla wszystkich rekordów programu SharePoint.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | Program SharePoint |
 | OfficeWorkload | Program SharePoint |
-| EventSource | Określa, że wystąpiło zdarzenie w programie SharePoint. Możliwe wartości to SharePoint lub ObjectModel. |
-| ItemType | Typ obiektu, który został otwierane ani modyfikowane. Znajdują się w tabeli ItemType, aby uzyskać szczegółowe informacje na temat typów obiektów. |
-| MachineDomainInfo | Informacje o operacjach synchronizacji urządzenia. Te informacje są zgłaszane tylko wtedy, gdy jest obecny w żądaniu. |
-| MachineId |   Informacje o operacjach synchronizacji urządzenia. Te informacje są zgłaszane tylko wtedy, gdy jest obecny w żądaniu. |
-| Site_ | Identyfikator GUID lokacji, w którym znajduje się plik lub folder, dostępne przez użytkownika. |
-| Source_Name | Jednostka, która wyzwoliła inspekcji operacji. Możliwe wartości to SharePoint lub ObjectModel. |
-| UserAgent | Informacje dotyczące klienta lub przeglądarki przez użytkownika. Te informacje są dostarczane przez klienta lub przeglądarki. |
+| EventSource | Wskazuje, że zdarzenie wystąpiło w programie SharePoint. Możliwe wartości to SharePoint lub ObjectModel. |
+| ItemType | Typ obiektu, do którego uzyskano dostęp lub zmodyfikowany. Zobacz tabelę ItemType, aby uzyskać szczegółowe informacje na temat typów obiektów. |
+| MachineDomainInfo | Informacje o operacjach synchronizacji urządzeń. Te informacje są raportowane tylko wtedy, gdy znajdują się w żądaniu. |
+| MachineId |   Informacje o operacjach synchronizacji urządzeń. Te informacje są raportowane tylko wtedy, gdy znajdują się w żądaniu. |
+| Lokacji | Identyfikator GUID witryny, w której znajduje się plik lub folder, do którego użytkownik uzyskuje dostęp. |
+| Source_Name | Jednostka, która wyzwoliła operację poddane inspekcji. Możliwe wartości to SharePoint lub ObjectModel. |
+| UserAgent | Informacje na temat klienta lub przeglądarki użytkownika. Te informacje są udostępniane przez klienta lub przeglądarkę. |
 
 
 ### <a name="sharepoint-schema"></a>Schemat programu SharePoint
 
-Te rekordy są tworzone podczas zmiany konfiguracji zostały wprowadzone w programie SharePoint.
+Te rekordy są tworzone po wprowadzeniu zmian w konfiguracji programu SharePoint.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | Program SharePoint |
 | OfficeWorkload | Program SharePoint |
-| CustomEvent | Opcjonalne parametry dla niestandardowych zdarzeń. |
-| Event_Data |  Opcjonalne ładunek dla niestandardowych zdarzeń. |
-| ModifiedProperties | Właściwość jest dołączona do zdarzenia administracyjne, takie jak dodawanie użytkownika jako członka lokacji lub grupy Administrator kolekcji witryny. Właściwość zawiera nazwę właściwości, który został zmodyfikowany (na przykład grupa administratorów witryny), nowa wartość właściwości zmodyfikowany (taki użytkownik, który został dodany jako administrator witryny), a wartość poprzedniego zmodyfikowanego obiektu. |
+| CustomEvent | Opcjonalny ciąg dla zdarzeń niestandardowych. |
+| Event_Data |  Opcjonalny ładunek dla zdarzeń niestandardowych. |
+| ModifiedProperties | Właściwość jest uwzględniana dla zdarzeń administracyjnych, takich jak dodanie użytkownika jako członka lokacji lub grupy administratorów kolekcji witryn. Właściwość zawiera nazwę zmodyfikowanej właściwości (na przykład grupy administratorów lokacji), nową wartość zmodyfikowanej właściwości (takiego użytkownika, który został dodany jako administrator lokacji) i poprzednią wartość zmodyfikowanego obiektu. |
 
 
 ### <a name="sharepoint-file-operations"></a>Operacje na plikach programu SharePoint
@@ -723,15 +723,15 @@ Te rekordy są tworzone w odpowiedzi na operacje na plikach w programie SharePoi
 |:--- |:--- |
 | OfficeWorkload | Program SharePoint |
 | OfficeWorkload | SharePointFileOperation |
-| DestinationFileExtension | Rozszerzenie pliku, który jest kopiowane lub przeniesiony. Ta właściwość jest wyświetlany tylko w przypadku FileCopied i FileMoved zdarzeń. |
-| DestinationFileName | Nazwa pliku który jest kopiowane lub przeniesiony. Ta właściwość jest wyświetlany tylko w przypadku FileCopied i FileMoved zdarzeń. |
-| DestinationRelativeUrl | Adres URL folderu docelowego, gdzie plik jest kopiowane lub przeniesiony. Kombinacja wartości parametrów SiteURL DestinationRelativeURL i parametr DestinationFileName jest taka sama jak wartość właściwości identyfikator obiektu jest pełna nazwa ścieżki dla pliku, który został skopiowany. Ta właściwość jest wyświetlany tylko w przypadku FileCopied i FileMoved zdarzeń. |
-| SharingType | Typ uprawnienia, które zostały przypisane do użytkownika, który został udostępniony zasób do udostępniania. Ten użytkownik jest identyfikowany przez parametr UserSharedWith. |
-| Site_Url | Adres URL witryny, w którym znajduje się plik lub folder, dostępne przez użytkownika. |
-| SourceFileExtension | Rozszerzenie pliku, która została otwarta przez użytkownika. Ta właściwość jest pusta, jeśli obiekt, który uzyskano jest folderem. |
-| SourceFileName |  Nazwa pliku lub folderu dostępne przez użytkownika. |
-| SourceRelativeUrl | Adres URL folderu, który zawiera plik dostępne przez użytkownika. Kombinacja wartości parametrów SiteURL SourceRelativeURL i SourceFileName jest taka sama jak wartość właściwości identyfikator obiektu jest pełna nazwa ścieżki dla pliku dostępne przez użytkownika. |
-| UserSharedWith |  Użytkownik, który został udostępniony zasób. |
+| DestinationFileExtension | Rozszerzenie pliku, który jest kopiowany lub przenoszony. Ta właściwość jest wyświetlana tylko dla zdarzeń FileCopied i FileMoved. |
+| DestinationFileName | Nazwa pliku, który jest kopiowany lub przenoszony. Ta właściwość jest wyświetlana tylko dla zdarzeń FileCopied i FileMoved. |
+| DestinationRelativeUrl | Adres URL folderu docelowego, do którego plik jest kopiowany lub przenoszony. Kombinacja wartości parametrów SiteURL, DestinationRelativeURL i DestinationFileName jest taka sama jak wartość właściwości ObjectID, która jest pełną nazwą ścieżki dla pliku, który został skopiowany. Ta właściwość jest wyświetlana tylko dla zdarzeń FileCopied i FileMoved. |
+| Udostępnianietype | Typ uprawnień do udostępniania, które zostały przypisane do użytkownika, z którym udostępniono zasób. Ten użytkownik jest identyfikowany przez parametr UserSharedWith. |
+| Site_Url | Adres URL witryny, w której znajduje się plik lub folder, do którego użytkownik uzyskuje dostęp. |
+| SourceFileExtension | Rozszerzenie pliku, do którego dostęp jest uzyskiwany przez użytkownika. Ta właściwość jest pusta, jeśli obiekt, do którego uzyskano dostęp, jest folderem. |
+| SourceFileName |  Nazwa pliku lub folderu, do którego użytkownik uzyskuje dostęp. |
+| SourceRelativeUrl | Adres URL folderu, który zawiera plik, do którego użytkownik uzyskuje dostęp. Kombinacja wartości parametrów SiteURL, SourceRelativeURL i SourceFileName jest taka sama jak wartość właściwości ObjectID, która jest pełną nazwą ścieżki do pliku, do którego uzyskuje dostęp użytkownik. |
+| UserSharedWith |  Użytkownik, do którego udostępniono zasób. |
 
 
 
@@ -742,16 +742,16 @@ Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekord
 
 | Zapytanie | Opis |
 | --- | --- |
-|Liczba wszystkich operacji w ramach subskrypcji usługi Office 365 |OfficeActivity &#124; Podsumuj count() by operacji |
-|Użycie witryny programu SharePoint|OfficeActivity &#124; gdzie OfficeWorkload = ~ "sharepoint" &#124; Podsumuj count() by SiteUrl \| Sortuj według Count asc|
-|Operacje dostępu do plików według typu użytkownika|Wyszukaj w OfficeWorkload (OfficeActivity) = ~ "usługi azureactivedirectory" i "Test"|
-|Wyszukiwanie przy użyciu określonego słowa kluczowego|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
-|Monitorowanie działań zewnętrznych, na serwerze Exchange|OfficeActivity &#124; gdzie OfficeWorkload = ~ "programu exchange" i ExternalAccess == true|
+|Liczba wszystkich operacji w ramach subskrypcji pakietu Office 365 |Liczba &#124; podsumowań () według operacji () |
+|Użycie witryn programu SharePoint|Pakiet Office &#124; , gdzie OfficeWorkload = ~ "SharePoint &#124; " sumuje () przez SiteUrl \| Sort według liczby ASC|
+|Operacje dostępu do plików według typu użytkownika|Wyszukaj w (Office) OfficeWorkload = ~ "usługi azureactivedirectory" i "test"|
+|Wyszukiwanie przy użyciu określonego słowa kluczowego|Type = Office OfficeWorkload = usługi azureactivedirectory "test"|
+|Monitoruj zewnętrzne działania w programie Exchange|Pakiet Office &#124; , gdzie OfficeWorkload = ~ "Exchange" i ExternalAccess = = true|
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* Użyj [rejestrowania zapytań w usłudze Azure Monitor](../log-query/log-query-overview.md) do wyświetlania szczegółowych danych aktualizacji.
-* [Tworzenie własnych pulpitów nawigacyjnych](../learn/tutorial-logs-dashboards.md) Aby wyświetlić ulubione zapytania wyszukiwania usługi Office 365.
-* [Tworzenie alertów](../platform/alerts-overview.md) do aktywnego powiadomienia o ważnych działań usługi Office 365.  
+* Użyj [zapytań dzienników w Azure monitor](../log-query/log-query-overview.md) , aby wyświetlić szczegółowe dane aktualizacji.
+* [Utwórz własne pulpity nawigacyjne](../learn/tutorial-logs-dashboards.md) , aby wyświetlić ulubione zapytania wyszukiwania pakietu Office 365.
+* [Twórz Alerty](../platform/alerts-overview.md) , aby otrzymywać powiadomienia o ważnych działaniach związanych z pakietem Office 365.  

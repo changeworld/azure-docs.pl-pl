@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f33b69ac443a1bb8f6b7d6e1b19f2f077bf38f58
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8812ac325e6bfd5ee019f6ddd6bf86c846ed5c10
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501479"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782461"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Wykrywanie zagrożeń dla usług danych w Azure Security Center
 
@@ -44,7 +44,7 @@ Wykrywanie zagrożeń SQL wykrywa anomalie działania wskazujące nietypowe i po
 
 Aby uzyskać więcej informacji na temat alertów dotyczących wykrywania zagrożeń SQL, zobacz[Azure SQL Database wykrywanie zagrożeń](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)i przeglądanie sekcji alerty dotyczące wykrywania zagrożeń. Zobacz również [, jak Azure Security Center pomaga odsłonić cybernetycznego,](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) aby zobaczyć przykład sposobu, w jaki Security Center użyć złośliwego wykrywania działań SQL w celu odnalezienia ataku.
 
-## Azure Storage<a name="azure-storage"></a>
+## Usługa Azure Storage<a name="azure-storage"></a>
 
 >[!NOTE]
 > Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie dostępna tylko dla Blob Storage.
@@ -60,6 +60,7 @@ Security Center analizuje dzienniki diagnostyczne żądań odczytu, zapisu i usu
 |**Anomalia nietypowego dostępu do lokalizacji**|Przykładowa analiza ruchu w sieci wykryła nietypową komunikację wychodzącą Remote Desktop Protocol (RDP) pochodzącą z zasobu we wdrożeniu. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zabezpieczenia zostały naruszone i są teraz używane do rozważenia zewnętrznego punktu końcowego RDP. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
 |**Anomalia dostępu do aplikacji**|Wskazuje, że nietypowa aplikacja uzyskuje dostęp do tego konta magazynu. Potencjalną przyczyną jest to, że osoba atakująca uzyskuje dostęp do konta magazynu przy użyciu nowej aplikacji.|
 |**Anomalia dostępu anonimowego**|Wskazuje, że istnieje zmiana wzorca dostępu do konta magazynu. Na przykład konto jest uzyskiwane anonimowo (bez uwierzytelniania), które jest nieoczekiwane w porównaniu z ostatnim wzorcem dostępu na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca korzystała z publicznego dostępu do odczytu do kontenera, który przechowuje magazyn obiektów BLOB.|
+|**Anomalia tor**|Wskazuje, że do tego konta uzyskano dostęp pomyślnie z adresu IP, który jest znany jako aktywny węzeł zakończenia tor (anonymizing serwer proxy). Ważność tego alertu uwzględnia używany typ uwierzytelniania (jeśli istnieje), a także to, czy jest to pierwszy przypadek takiego dostępu. Potencjalnymi przyczynami może być osoba atakująca, która uzyskała dostęp do konta magazynu przy użyciu sieci Tor lub dostęp do konta magazynu za pośrednictwem zaufanego użytkownika przy użyciu tor.|
 |**Anomalia Eksfiltracjii danych**|Wskazuje, że nietypowo duża ilość danych została wyodrębniona w porównaniu do ostatnich działań w tym kontenerze magazynu. Potencjalną przyczyną jest to, że atakujący wyodrębnił dużą ilość danych z kontenera, który przechowuje magazyn obiektów BLOB.|
 |**Nieoczekiwana usuwanie anomalii**|Wskazuje, że co najmniej jedna Nieoczekiwana operacja usuwania została wystąpiła na koncie magazynu w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca usunęła dane z konta magazynu.|
 |**Przekaż pakiet usługi w chmurze platformy Azure**|Wskazuje, że pakiet usługi w chmurze platformy Azure (plik. cspkg) został przekazany do konta magazynu w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca przygotowuje się do wdrożenia złośliwego kodu z konta magazynu w usłudze w chmurze platformy Azure.|
@@ -70,7 +71,7 @@ Security Center analizuje dzienniki diagnostyczne żądań odczytu, zapisu i usu
 >[!NOTE]
 >Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie niedostępna w regionach w chmurze platformy Azure dla instytucji rządowych.
 
-Aby uzyskać więcej informacji na temat alertów dotyczących magazynu, zobacz artykuł [Advanced Threat Protection for Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) i zapoznaj się z sekcją alerty dotyczące ochrony.
+Aby uzyskać więcej informacji na temat alertów dotyczących magazynu, zobacz artykuł [Advanced Threat Protection for Azure Storage](../storage/common/storage-advanced-threat-protection.md) i zapoznaj się z sekcją alerty dotyczące ochrony.
 
 ## Cosmos DB<a name="cosmos-db"></a>
 

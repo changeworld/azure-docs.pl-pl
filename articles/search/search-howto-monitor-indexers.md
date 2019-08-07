@@ -1,92 +1,92 @@
 ---
-title: Jak monitorować stan indeksatora i wyniki — usługa Azure Search
-description: Monitoruj stan, postęp i wyniki indeksatorów usługi Azure Search w witrynie Azure portal przy użyciu interfejsu API REST lub zestawu .NET SDK.
+title: Jak monitorować stan i wyniki indeksatora — Azure Search
+description: Monitoruj stan, postęp i wyniki Azure Search indeksatorów w Azure Portal, przy użyciu interfejsu API REST lub zestawu .NET SDK.
 ms.date: 06/28/2019
 author: RobDixon22
 manager: HeidiSteen
-ms.author: v-rodixo
+ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 07b4fe2ef830c3ce09b655cf4b433d14923229a9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 52e9e96598f429bcd57bba23d035d0d341731a9c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486287"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840732"
 ---
-# <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Jak monitorować stan indeksatora usługi Azure Search i wyniki
+# <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Jak monitorować stan i wyniki Azure Search indeksatora
 
-Usługa Azure Search udostępnia stan i monitorowanie informacji o bieżące i historyczne uruchomień każdego indeksatora.
+Azure Search udostępnia informacje o stanie i monitorowaniu bieżących i historycznych przebiegów każdego indeksatora.
 
-Monitorowanie indeksatora jest przydatne w przypadku, gdy chcesz:
+Monitorowanie indeksatora jest przydatne, gdy chcesz:
 
-* Śledź postęp indeksatora podczas ciągłego uruchamiania.
-* Przejrzyj wyniki bieżących lub poprzednie uruchomienie indeksatora.
-* Identyfikowanie indeksatora najwyższego poziomu błędów i błędy lub ostrzeżenia dotyczące poszczególnych dokumentów indeksowane.
+* Śledź postęp indeksatora w trakcie trwającego uruchomienia.
+* Przejrzyj wyniki trwającej lub poprzedniej przebiegu indeksatora.
+* Zidentyfikuj błędy indeksatora najwyższego poziomu oraz błędy lub ostrzeżenia dotyczące indeksowanych poszczególnych dokumentów.
 
-## <a name="find-indexer-status-and-history-details"></a>Informacje indeksatora status i Historia
+## <a name="find-indexer-status-and-history-details"></a>Znajdowanie szczegółów historii i stanu indeksatora
 
-Aby uzyskać dostęp indeksatora informacji monitorowania na różne sposoby, w tym:
+Informacje o monitorowaniu indeksatora można uzyskać na różne sposoby, w tym:
 
 * W witrynie [Azure Portal](#portal)
-* Za pomocą [interfejsu API REST](#restapi)
-* Za pomocą [zestawu SDK platformy .NET](#dotnetsdk)
+* Korzystanie z [interfejsu API REST](#restapi)
+* Korzystanie z [zestawu SDK platformy .NET](#dotnetsdk)
 
-Indeksator dostępne informacje o monitorowaniu obejmuje wszystkie następujące (chociaż dane, które formaty różnią się na podstawie metody dostępu użyć):
+Dostępne informacje monitorowania indeksatora obejmują wszystkie następujące elementy (chociaż formaty danych różnią się w zależności od używanej metody dostępu):
 
-* Informacje o stanie o samego indeksatora
-* Informacje o najnowszych, ostatnio uruchomić indeksatora, w tym jego stan, rozpoczęcia i zakończenia, również szczegółowe błędy i ostrzeżenia.
-* Lista uruchomień historycznych indeksatora i ich stany, wyniki, błędy i ostrzeżenia.
+* Informacje o stanie samego indeksatora
+* Informacje na temat ostatniego przebiegu indeksatora, w tym jego stanu, godziny rozpoczęcia i zakończenia oraz szczegóły błędów i ostrzeżeń.
+* Lista przebiegów historycznego indeksatora oraz ich stan, wyniki, błędy i ostrzeżenia.
 
-Indeksatory, które przetwarzają duże ilości danych może zająć dużo czasu do uruchomienia. Na przykład indeksatory, które obsługują milionami dokumentów źródła można uruchomić przez 24 godziny i następnie ponownie uruchom niemal natychmiast. Stan dla indeksatorów mocno obciążające zawsze powiedzieć **w toku** w portalu. Nawet wtedy, gdy działa indeksatora, dostępnych szczegółów o aktualnych i poprzednich przebiegów.
+Uruchamianie indeksatorów przetwarzających duże ilości danych może zająć dużo czasu. Na przykład indeksatory obsługujące miliony dokumentów źródłowych mogą być uruchamiane przez 24 godziny, a następnie ponownie uruchomione niemal od razu. Stan indeksatorów wysokiego woluminu może zawsze być **w toku** w portalu. Nawet gdy indeksator jest uruchomiony, dostępne są szczegóły dotyczące ciągłego postępu i poprzednich przebiegów.
 
 <a name="portal"></a>
 
-## <a name="monitor-indexers-in-the-portal"></a>Monitor indeksatorów w portalu
+## <a name="monitor-indexers-in-the-portal"></a>Monitorowanie indeksatorów w portalu
 
-Można wyświetlić bieżący stan wszystkich indeksatorów usługi w **indeksatory** listy na stronie przeglądu usługi wyszukiwania.
+Bieżący stan wszystkich indeksatorów znajduje się na liście indeksatorów na stronie Przegląd usługi wyszukiwania.
 
-   ![Listę indeksatorów](media/search-monitor-indexers/indexers-list.png "listę indeksatorów")
+   ![Lista indeksatorów](media/search-monitor-indexers/indexers-list.png "Lista indeksatorów")
 
-Podczas wykonywania indeksatora, jego stan w przedstawiono listę **w toku**i **Docs zakończyło się pomyślnie** wartość jest wyświetlana liczba przetworzonych do tej pory dokumentów. Może upłynąć kilka minut, zanim portalu Aby zaktualizować wartości stanu indeksatora i liczby dokumentów.
+Gdy indeksator jest wykonywany, stan na liście jest **w toku**, a wartość w polu **Dokumentacja zakończona pomyślnie** pokazuje liczbę dokumentów przetworzonych do tej pory. Aktualizacja wartości stanu indeksatora i liczby dokumentów przez portal może potrwać kilka minut.
 
-Indeksator, którego ostatniego przebiegu został pomyślnie pokazuje **Powodzenie**. Uruchomienie indeksatora może odnieść sukces, nawet jeśli pojedyncze dokumenty zawierają błędy, jeśli liczba błędów jest mniejsza niż indeksatora **maksymalna liczba elementów zakończonych niepowodzeniem** ustawienie.
+Indeksator, którego ostatnie uruchomienie zakończyło się pomyślnie, pokazuje **powodzenie**. Uruchomienie indeksatora może się powieść, nawet jeśli pojedyncze dokumenty mają Błędy, jeśli liczba błędów jest mniejsza niż wartość ustawienia **Maksymalny element elementów zakończonych niepowodzeniem** indeksatora.
 
-Jeśli ostatnie uruchomienie zakończone z błędem, jest wyświetlany stan **niepowodzenie**. Stan **resetowania** oznacza, że zresetowano stanu śledzenia zmian indeksatora.
+Jeśli ostatnie uruchomienie zakończyło się błędem, stan wyświetli **się niepowodzeniem**. Stan resetowania oznacza, że stan śledzenia zmian indeksatora został zresetowany.
 
-Kliknij w indeksatorze, na liście, aby wyświetlić więcej szczegółowych informacji dotyczących indeksatora bieżące i ostatnie działa.
+Kliknij indeksator na liście, aby zobaczyć więcej szczegółów na temat bieżących i ostatnich przebiegów indeksatora.
 
-   ![Historia Podsumowanie i wykonywanie indeksatora](media/search-monitor-indexers/indexer-summary.png "historii Podsumowanie i wykonywanie indeksatora")
+   ![Historia indeksatora i historię wykonywania](media/search-monitor-indexers/indexer-summary.png "Historia indeksatora i historię wykonywania")
 
-**Podsumowanie indeksatora** wykres przedstawia wykres liczba przetworzonych w jego najnowszych przebiegów dokumentów.
+Na wykresie podsumowania indeksatora jest wyświetlany wykres liczby dokumentów przetworzonych w ostatnich uruchomieniach.
 
-**Szczegóły wykonania** lista zawiera maksymalnie 50 ostatnich wyników wykonania.
+Lista **szczegóły wykonania** przedstawia do 50 najnowszych wyników wykonania.
 
-Kliknij wynik wykonania na liście, aby wyświetlić szczegóły dotyczące uruchomienia. W tym swoje uruchomienie i czas zakończenia i wszelkie błędy i ostrzeżenia, które wystąpiły.
+Kliknij wynik wykonania na liście, aby zobaczyć szczegóły dotyczące tego uruchomienia. Obejmuje to czasy rozpoczęcia i zakończenia oraz wszelkie błędy i ostrzeżenia, które wystąpiły.
 
-   ![Szczegóły wykonania indeksatora](media/search-monitor-indexers/indexer-execution.png "szczegóły wykonania indeksatora")
+   ![Szczegóły wykonywania indeksatora](media/search-monitor-indexers/indexer-execution.png "Szczegóły wykonywania indeksatora")
 
-Jeśli wystąpiły problemy specyficzne dla dokumentu, podczas uruchamiania, będą one wyświetlane w polach błędy i ostrzeżenia.
+Jeśli podczas przebiegu wystąpiły problemy specyficzne dla dokumentu, zostaną one wyświetlone w polach błędy i ostrzeżenia.
 
-   ![Szczegóły indeksator z błędami](media/search-monitor-indexers/indexer-execution-error.png "szczegóły indeksator z błędami")
+   ![Szczegóły indeksatora z błędami](media/search-monitor-indexers/indexer-execution-error.png "Szczegóły indeksatora z błędami")
 
-Ostrzeżenia są wspólne w niektórych typach indeksatory i zawsze nie wskazują na problem. Na przykład indeksatorów, które używają usług cognitive services może zgłaszać ostrzeżenia, gdy obraz lub plików PDF nie zawiera tekstu w celu przetworzenia.
+Ostrzeżenia są wspólne dla niektórych typów indeksatorów i nie zawsze wskazują problem. Na przykład indeksatory korzystające z usług poznawczych mogą raportować ostrzeżenia, gdy pliki obrazów lub PDF nie zawierają żadnego tekstu do przetworzenia.
 
-Aby uzyskać więcej informacji na temat badania indeksatora błędy i ostrzeżenia, zobacz [Rozwiązywanie typowych problemów indeksatora w usłudze Azure Search](search-indexer-troubleshooting.md).
+Aby uzyskać więcej informacji na temat badania błędów i ostrzeżeń indeksatora, zobacz [Rozwiązywanie typowych problemów indeksatora w Azure Search](search-indexer-troubleshooting.md).
 
 <a name="restapi"></a>
 
-## <a name="monitor-indexers-using-the-rest-api"></a>Monitorowanie odbywać się przy użyciu interfejsu API REST
+## <a name="monitor-indexers-using-the-rest-api"></a>Monitorowanie indeksatorów za pomocą interfejsu API REST
 
-Można pobrać stanu i wykonywania historii usługi za pomocą indeksatora [polecenie pobierania stanu indeksatora](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
+Można pobrać stan i historię wykonywania indeksatora przy użyciu [polecenia Pobierz indeksator stanu](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
 
     GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
     api-key: [Search service admin key]
 
-Odpowiedź zawiera ogólny stan indeksatora, wywołanie indeksatora ostatniego (lub w toku) i historię ostatnich wywołania indeksatora.
+Odpowiedź zawiera ogólny stan indeksatora, ostatnie (lub w toku) wywołanie indeksatora i historię najnowszych wywołań indeksatora.
 
     {
         "status":"running",
@@ -114,23 +114,23 @@ Odpowiedź zawiera ogólny stan indeksatora, wywołanie indeksatora ostatniego (
         }]
     }
 
-Historia wykonywania zawiera maksymalnie 50 ostatnich przebiegów, które są sortowane w kolejności chronologicznej odwrotnej (najnowsze na początku).
+Historia wykonywania zawiera maksymalnie 50 ostatnich przebiegów, które są sortowane w odwrotnej kolejności chronologicznej (ostatnio najpierw).
 
-Należy pamiętać, że istnieją dwie wartości inny stan. Stan najwyższego poziomu jest sam indeksatora. Stan indeksatora **systemem** oznacza, że indeksator jest prawidłowo skonfigurowane i dostępna do uruchamiania, ale nie w aktualnie uruchomione.
+Należy pamiętać, że istnieją dwie różne wartości stanu. Stan najwyższego poziomu jest przeznaczony dla samego indeksatora. Stan indeksatora oznacza, że indeksator jest prawidłowo skonfigurowany i dostępny do uruchomienia, ale nie jest aktualnie uruchomiony.
 
-Każde uruchomienie indeksatora ma również swój własny stan, który wskazuje, czy tego określonego wykonania jest ciągły (**systemem**), lub już została ukończona z **Powodzenie**, **transientFailure**, lub **persistentFailure** stanu. 
+Każdy przebieg indeksatora ma również swój własny stan, który wskazuje, czy określone wykonanie jest**wykonywane (uruchomione**), czy już zakończone **powodzeniem**, **transientFailure**lub **persistentFailure** . 
 
-Gdy indeksator jest ustawiany na odświeżenie jej stanu śledzenia zmian, wpisem historii wykonywania oddzielnych zostanie dodany z **resetowania** stanu.
+Gdy indeksator zostanie zresetowany w celu odświeżenia stanu śledzenia zmian, zostanie dodany oddzielny wpis historii wykonania ze stanem **Reset** .
 
-Aby uzyskać więcej informacji na temat kodów stanu i indeksowania danych monitorowania, zobacz [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+Aby uzyskać więcej informacji na temat kodów stanu i danych monitorowania indeksatora, zobacz [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
 
 <a name="dotnetsdk"></a>
 
-## <a name="monitor-indexers-using-the-net-sdk"></a>Monitorowanie odbywać się przy użyciu zestawu .NET SDK
+## <a name="monitor-indexers-using-the-net-sdk"></a>Monitorowanie indeksatorów przy użyciu zestawu .NET SDK
 
-Można zdefiniować harmonogram dla indeksatora przy użyciu zestawu .NET SDK usługi Azure Search. Aby to zrobić, należy dołączyć **harmonogram** właściwości podczas tworzenia lub aktualizowania indeksatora.
+Można zdefiniować harmonogram dla indeksatora przy użyciu zestawu SDK platformy .NET Azure Search. W tym celu należy uwzględnić Właściwość **Schedule** podczas tworzenia lub aktualizowania indeksatora.
 
-Następujące C# przykład zapisuje informacje o stanie indeksatora, a wyniki jego ostatnich (lub stałe) uruchom w konsoli.
+Poniższy C# przykład zapisuje informacje o stanie indeksatora i wyniki jego najnowszej (lub trwającego) uruchomienia do konsoli programu.
 
 ```csharp
 static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchService)
@@ -162,7 +162,7 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
 }
 ```
 
-Dane wyjściowe w konsoli będą wyglądać mniej więcej tak:
+Dane wyjściowe w konsoli będą wyglądać następująco:
 
     Indexer has run 18 times.
     Indexer Status: Running
@@ -173,14 +173,14 @@ Dane wyjściowe w konsoli będą wyglądać mniej więcej tak:
       ErrorMessage: none
       Document Errors: 0, Warnings: 0
 
-Należy pamiętać, że istnieją dwie wartości inny stan. Stan najwyższego poziomu jest stan indeksatora, sam. Stan indeksatora **systemem** oznacza, że indeksator jest prawidłowo skonfigurowane i dostępne do wykonywania, ale nie jest w trakcie wykonywania.
+Należy pamiętać, że istnieją dwie różne wartości stanu. Stan najwyższego poziomu to stan samego indeksatora. Stan indeksatora oznacza, że indeksator jest prawidłowo skonfigurowany i dostępny do wykonania, ale nie jest aktualnie wykonywany.
 
-Każde uruchomienie indeksatora ma również swój własny stan czy trwa tego określonego wykonania (**systemem**), lub zostało już zakończone z **Powodzenie** lub **TransientError** Stan. 
+Każdy przebieg indeksatora ma również swój własny stan dla tego, czy określone wykonanie jest w toku (**uruchomione**) czy zostało już wykonane z użyciem stanu **sukcesu** lub **TransientError** . 
 
-Gdy indeksator jest ustawiany na odświeżenie jej stanu śledzenia zmian, wpis historię zostanie dodany z **resetowania** stanu.
+Gdy indeksator zostanie zresetowany w celu odświeżenia stanu śledzenia zmian, zostanie dodany oddzielny wpis historii ze stanem **Reset** .
 
-Aby uzyskać więcej informacji na temat kodów stanu i informacje o monitorowaniu indeksatora, zobacz [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) w interfejsie API REST.
+Aby uzyskać więcej informacji na temat kodów stanu i informacji dotyczących monitorowania indeksatora, zobacz [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) w interfejsie API REST.
 
-Szczegółowe informacje o specyficzne dla dokumentu błędy lub ostrzeżenia mogą być pobierane przez wyliczenie list `IndexerExecutionResult.Errors` i `IndexerExecutionResult.Warnings`.
+Szczegółowe informacje o błędach lub ostrzeżeniach specyficznych dla dokumentu można pobrać przez Wyliczenie `IndexerExecutionResult.Errors` list `IndexerExecutionResult.Warnings`i.
 
-Aby uzyskać więcej informacji na temat klasy zestawu SDK platformy .NET, służy do monitorowania indeksatorów, zobacz [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) i [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).
+Aby uzyskać więcej informacji na temat klas zestawu .NET SDK służących do monitorowania indeksatorów, zobacz [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) i [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).

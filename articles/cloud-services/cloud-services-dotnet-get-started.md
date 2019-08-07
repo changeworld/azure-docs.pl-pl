@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: gwallace
-ms.openlocfilehash: 802ece106099e8a475b83c820130c3c238d330d2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 3f2c60be29d679d0b0d30b6bf471f083c66ba93f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359213"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827662"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Wprowadzenie do usług Azure Cloud Services i programu ASP.NET
 
@@ -514,7 +514,7 @@ var imagesQueue = queueClient.GetQueueReference("images");
 imagesQueue.CreateIfNotExists();
 ```
 
-### <a name="contosoadsweb---layoutcshtml"></a>ContosoAdsWeb — \_Layout.cshtml
+### <a name="contosoadsweb---_layoutcshtml"></a>ContosoAdsWeb — \_Layout.cshtml
 Plik *_Layout.cshtml* umożliwia ustawienie nazwy aplikacji w nagłówku i stopce oraz utworzenie wpisu menu „Ads”.
 
 ### <a name="contosoadsweb---viewshomeindexcshtml"></a>ContosoAdsWeb — Views\Home\Index.cshtml
@@ -696,7 +696,7 @@ public override void Run()
 }
 ```
 
-Po każdej iteracji pętli, jeśli żaden komunikat nie zostanie znaleziony w kolejce, program zostanie uśpiony na sekundę. Zapobiega to nadmiernemu wykorzystaniu czasu procesora CPU oraz ponoszeniu zbyt wysokich kosztów transakcji magazynu powiązanych z rolą Proces roboczy. Zespół doradczy klientów firmy Microsoft opowiada historię o deweloperze, który zapomniał o tym, wdrożył aplikację i wyjechał na urlop. Po powrocie zorientował się, że dodatkowo poniesione koszty były wyższe niż koszty urlopu.
+Po każdej iteracji pętli, jeśli żaden komunikat nie zostanie znaleziony w kolejce, program zostanie uśpiony na sekundę. Zapobiega to nadmiernemu wykorzystaniu czasu procesora CPU oraz ponoszeniu zbyt wysokich kosztów transakcji magazynu powiązanych z rolą Proces roboczy. Zespół doradczy klientów firmy Microsoft opowiada historię o deweloperze, który zapomniał o tym, wdrożył aplikację i wyjechał na urlop. Po ich przekroczeniu koszt nadzoru jest wyższy niż urlop.
 
 Czasami zawartość komunikatu w kolejce może powodować wystąpienie błędu podczas przetwarzania. Jest to tzw. *skażony komunikat*. Jeśli właśnie zarejestrowano błąd i ponownie uruchomiono pętlę, można w nieskończoność ponawiać próby przetworzenia takiego komunikatu.  Z tego względu blok catch zawiera instrukcję if, która sprawdza, ile razy aplikacja próbowała przetworzyć bieżący komunikat. Jeśli ta liczba przekracza 5, komunikat jest usuwany z kolejki.
 
@@ -758,7 +758,7 @@ Aby zmienić projekt tak, aby korzystał z pełnego emulatora, kliknij prawym pr
 
 Aby można było uruchomić aplikację w pełnym emulatorze, należy otworzyć program Visual Studio z uprawnieniami administratora.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aplikacja Contoso Ads została celowo uproszczona na potrzeby samouczka wprowadzającego. Na przykład: nie implementuje [wstrzykiwania zależności](https://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) ani [wzorców repozytorium i jednostki pracy](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), nie [używa interfejsu do rejestrowania](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), nie używa [migracji Code First platformy EF](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) do zarządzania zmianami modelu danych ani [opcji elastyczności połączenia platformy EF](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) do zarządzania błędami sieci itd.
 
 Poniżej przedstawiono niektóre przykładowe aplikacje usług w chmurze, w których zastosowano więcej rzeczywistych rozwiązań dotyczących kodowania. Zostały one uporządkowane w kolejności od mniej do bardziej złożonych:

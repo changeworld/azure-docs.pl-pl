@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: 305ff610c0f8962f2b50789d8af0a5f6e2fbf046
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: e06cd77a1d46208fe0f7aa166be3ccd3b9b7dbb4
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717373"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828600"
 ---
 # <a name="service-updates-in-site-recovery"></a>Aktualizacje usługi w Site Recovery
 
@@ -72,7 +72,7 @@ Wykonaj ten sam proces dla wszystkich odpowiednich składników.
 
 1. Przed uaktualnieniem systemu operacyjnego/wersji jądra Sprawdź, czy wersja docelowa jest obsługiwana Site Recovery. 
 
-    - Obsługa [maszyn wirtualnych platformy Azure](/azure-to-azure-support-matrix.md#replicated-machine-operating-systems) .
+    - Obsługa [maszyn wirtualnych platformy Azure](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) .
     - Obsługa oprogramowania [VMware/serwera fizycznego](vmware-physical-azure-support-matrix.md#replicated-machines)
     - Obsługa [funkcji Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) .
 2. Przejrzyj [dostępne aktualizacje](site-recovery-whats-new.md) , aby dowiedzieć się, co chcesz uaktualnić.

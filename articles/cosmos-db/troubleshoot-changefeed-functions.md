@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 17fa443c3b0113d80a020f2a43c7099cf5a832d2
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335750"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772899"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 
@@ -43,7 +43,7 @@ Funkcja platformy Azure kończy się niepowodzeniem z komunikatem o błędzie "N
 
 Oznacza to, że jeden lub oba kontenery usługi Azure Cosmos wymagane do działania wyzwalacza nie istnieją lub nie są dostępne dla funkcji platformy Azure. Sam błąd informuje o tym, **które usługi Azure Cosmos Database i kontenerów są wywoływane** na podstawie konfiguracji.
 
-1. Sprawdź, czy  atrybuticzyodwołujesiędoustawienia,któreistniejewaplikacjafunkcjiplatformy`ConnectionStringSetting` Azure. Wartość w tym atrybucie nie powinna być ciągiem połączenia, ale nazwą ustawienia konfiguracji.
+1. Sprawdź, czy atrybuticzyodwołujesiędoustawienia,któreistniejewaplikacjafunkcjiplatformy`ConnectionStringSetting` Azure. Wartość w tym atrybucie nie powinna być ciągiem połączenia, ale nazwą ustawienia konfiguracji.
 2. Sprawdź, czy `databaseName` usługa `collectionName` i istnieje na koncie usługi Azure Cosmos. Jeśli używasz automatycznej wymiany wartości (przy użyciu `%settingName%` wzorców), upewnij się, że nazwa ustawienia istnieje w aplikacja funkcji platformy Azure.
 3. Jeśli nie określisz `LeaseCollectionName/leaseCollectionName`, wartość domyślna to "dzierżawy". Sprawdź, czy kontener istnieje. Opcjonalnie można ustawić `CreateLeaseCollectionIfNotExists` atrybut w wyzwalaczu na `true` , aby automatycznie go utworzyć.
 4. Sprawdź [konfigurację zapory konta usługi Azure Cosmos](how-to-configure-firewall.md) , aby zobaczyć, że nie blokuje ona funkcji platformy Azure.
@@ -88,6 +88,15 @@ Jeśli okaże się, że niektóre zmiany nie zostały odebrane w ogóle przez wy
 Ponadto można sprawdzić poprawność scenariusza, Jeśli wiesz, ile wystąpień aplikacja funkcji platformy Azure jest uruchomionych. Jeśli sprawdzisz kontener dzierżaw i policzesz liczbę elementów dzierżawy w ramach, różne wartości `Owner` właściwości w nich powinny być równe liczbie wystąpień aplikacja funkcji. Jeśli istnieje więcej właścicieli niż znane wystąpienia usługi Azure aplikacja funkcji, oznacza to, że Ci dodatkowi właściciele są "kradzieżą" zmian.
 
 Aby obejść ten problem, należy zastosować `LeaseCollectionPrefix/leaseCollectionPrefix` do funkcji nową/inną wartość lub alternatywnie test z nowym kontenerem dzierżawy.
+
+### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>Należy ponownie uruchomić i ponownie przetworzyć wszystkie elementy w moim kontenerze od początku 
+Aby ponownie przetworzyć wszystkie elementy w kontenerze od początku:
+1. Zatrzymaj funkcję platformy Azure, jeśli jest aktualnie uruchomiona. 
+1. Usuń dokumenty z kolekcji dzierżaw (lub Usuń i ponownie Utwórz kolekcję dzierżawy, aby była pusta)
+1. Ustaw atrybut [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger w funkcji na wartość true. 
+1. Uruchom ponownie funkcję platformy Azure. Teraz odczytywane i przetwarzane są wszystkie zmiany od początku. 
+
+Ustawienie [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) na wartość true spowoduje, że funkcja platformy Azure rozpocznie odczytywanie zmian od początku historii kolekcji zamiast bieżącego czasu. Działa to tylko wtedy, gdy nie zostały już utworzone dzierżawy (tj. dokumenty w kolekcji dzierżawy). Ustawienie tej właściwości na wartość true, jeśli już utworzono dzierżawy nie ma żadnego wpływu; w tym scenariuszu, gdy funkcja zostanie zatrzymana i uruchomiona ponownie, rozpocznie odczytywanie z ostatniego punktu kontrolnego zgodnie z definicją w kolekcji dzierżawy. Aby ponownie przetworzyć dane od początku, wykonaj powyższe kroki 1-4.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Powiązanie można wykonać tylko przy użyciu dokumentu\<IReadOnlyList > lub JArray
 

@@ -1,42 +1,42 @@
 ---
 title: Rozwiązywanie problemów z systemem plików HDFS w usłudze Azure HDinsight
-description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z systemem plików HDFS i Azure HDInsight.
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące pracy z systemem plików HDFS i usługą Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0a310eaeb9baf6ed2438b9f824cd6ad7eb492915
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9b9e691c0c9f26ff765ca849777c278bc3ae03b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714207"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779566"
 ---
-# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z systemem plików HDFS Apache Hadoop przy użyciu usługi Azure HDInsight
+# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hadoop HDFS przy użyciu usługi Azure HDInsight
 
-Dowiedz się więcej o najważniejszych problemach i ich rozwiązania podczas pracy z pliku System (HDFS, Hadoop Distributed) ładunków w Apache Ambari.
+Poznaj najważniejsze problemy i ich rozwiązania podczas pracy z ładunkiem rozproszony system plików (HDFS) w usłudze Apache Ambari.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Jak uzyskać dostęp do lokalnego systemu HDFS z wewnątrz klastra?
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Jak mogę uzyskać dostęp do lokalnego systemu plików HDFS z klastra?
 
 ### <a name="issue"></a>Problem
 
-Dostęp do lokalnego systemu HDFS z wiersza polecenia i kodu aplikacji, a nie za pomocą usługi Azure Blob storage lub usługi Azure Data Lake Storage z wewnątrz klastra HDInsight.   
+Dostęp do lokalnego systemu plików HDFS z poziomu wiersza polecenia i kodu aplikacji zamiast programu przy użyciu magazynu obiektów blob platformy Azure lub Azure Data Lake Storage z klastra usługi HDInsight.   
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. W wierszu polecenia użyj `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` dosłownie, tak jak w następujące polecenie:
+1. W wierszu polecenia Użyj `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` dosłownie, jak w poniższym poleceniu:
 
-    ```apache
-    hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
+    ```output
+    hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
     Found 3 items
     drwxr-xr-x   - hdiuser hdfs          0 2017-03-24 14:12 /EventCheckpoint-30-8-24-11102016-01
     drwx-wx-wx   - hive    hdfs          0 2016-11-10 18:42 /tmp
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Z kodu źródłowego, użyj identyfikatora URI `hdfs://mycluster/` dosłownie, tak jak w poniższym przykładowej aplikacji:
+2. Z kodu źródłowego Użyj identyfikatora URI `hdfs://mycluster/` dosłownie, tak jak w przypadku następującej przykładowej aplikacji:
 
     ```Java
     import java.io.IOException;
@@ -61,10 +61,10 @@ Dostęp do lokalnego systemu HDFS z wiersza polecenia i kodu aplikacji, a nie za
     }
     ```
 
-3. Uruchom plik JAR skompilowanych (na przykład plik o nazwie `java-unit-tests-1.0.jar`) w klastrze HDInsight za pomocą następującego polecenia:
+3. Uruchom skompilowany plik JAR (na przykład plik o nazwie `java-unit-tests-1.0.jar`) w klastrze usługi HDInsight przy użyciu następującego polecenia:
 
     ```apache
-    hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
+    hadoop jar java-unit-tests-1.0.jar JavaUnitTests
     hdfs://mycluster/tmp/hive/hive/5d9cf301-2503-48c7-9963-923fb5ef79a7/inuse.info
     hdfs://mycluster/tmp/hive/hive/5d9cf301-2503-48c7-9963-923fb5ef79a7/inuse.lck
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.info
@@ -72,15 +72,15 @@ Dostęp do lokalnego systemu HDFS z wiersza polecenia i kodu aplikacji, a nie za
     ```
 
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Jak I Wymuś Wyłącz tryb awaryjny systemu plików HDFS w klastrze?
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Jak mogę wymusić wyłączenie bezpiecznego trybu HDFS w klastrze?
 
 ### <a name="issue"></a>Problem
 
-Lokalny system plików HDFS została zablokowana w trybie awaryjnym w klastrze HDInsight.   
+Lokalny system plików HDFS jest zablokowany w trybie awaryjnym w klastrze usługi HDInsight.   
 
 ### <a name="detailed-description"></a>Szczegółowy opis
 
-Błąd występuje, gdy uruchom następujące polecenie, system plików HDFS:
+Wystąpił błąd podczas uruchamiania następującego polecenia HDFS:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
@@ -88,8 +88,8 @@ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 
 Po uruchomieniu polecenia zostanie wyświetlony następujący błąd:
 
-```apache
-hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
+```output
+hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
 org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
 It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
@@ -142,18 +142,18 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Prawdopodobna przyczyna
 
-Klaster HDInsight skalowania w dół do bardzo kilku węzłów. Liczba węzłów znajduje się poniżej, lub w pobliżu współczynnika replikacji systemu plików HDFS.
+Klaster usługi HDInsight został przeskalowany w dół do kilku węzłów. Liczba węzłów znajduje się poniżej lub blisko współczynnika replikacji systemu plików HDFS.
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
 
-1. Pobierz stan systemu plików HDFS w klastrze HDInsight przy użyciu następujących poleceń:
+1. Pobierz stan systemu plików HDFS w klastrze usługi HDInsight przy użyciu następujących poleceń:
 
-    ```apache
+    ```bash
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
     ```
 
-    ```apache
-    hdiuser@hn0-spark2:~$ hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
+    ```output
+    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
     Safe mode is ON
     Configured Capacity: 3372381241344 (3.07 TB)
     Present Capacity: 3138625077248 (2.85 TB)
@@ -187,13 +187,13 @@ Klaster HDInsight skalowania w dół do bardzo kilku węzłów. Liczba węzłów
     ...
     ```
 
-2. Sprawdź integralność systemu plików HDFS w klastrze HDInsight przy użyciu następujących poleceń:
+2. Sprawdź integralność systemu plików HDFS w klastrze usługi HDInsight przy użyciu następujących poleceń:
 
-    ```apache
-    hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
+    ```bash
+    hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
     ```
 
-    ```apache
+    ```output
     Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
     FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
     ....................................................................................................
@@ -220,7 +220,7 @@ Klaster HDInsight skalowania w dół do bardzo kilku węzłów. Liczba węzłów
     The filesystem under path '/' is HEALTHY
     ```
 
-3. Jeśli stwierdzisz, że nie ma żadnych brakujące, uszkodzony, lub under-replikowanych bloków lub że można zignorować te bloki, uruchom następujące polecenie do wykonania nazwy węzła z trybu awaryjnego:
+3. Jeśli okaże się, że nie ma żadnych uszkodzonych lub niereplikowanych bloków albo że te bloki można zignorować, uruchom następujące polecenie, aby przełączyć węzeł nazwy z trybu awaryjnego:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave

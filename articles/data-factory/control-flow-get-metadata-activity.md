@@ -1,6 +1,6 @@
 ---
-title: Pobieranie metadanych działania w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można użyć działaniu GetMetadata w potoku usługi fabryka danych.
+title: Działanie pobierania metadanych w Azure Data Factory | Microsoft Docs
+description: Dowiedz się, jak używać działania GetMetadata w potoku Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,81 +11,84 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 78f63b4f46fe5479d4d0fd5849ad80536d8a137c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b819a990b9f607aaf70bf2e16a5857de3f7306cc
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61346915"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827496"
 ---
-# <a name="get-metadata-activity-in-azure-data-factory"></a>Pobieranie metadanych działania w usłudze Azure Data Factory
+# <a name="get-metadata-activity-in-azure-data-factory"></a>Działanie pobierania metadanych w Azure Data Factory
 
-Działanie GetMetadata może być używane do pobierania **metadanych** dowolnych danych w usłudze Azure Data Factory. To działanie może być używane w następujących scenariuszach:
+Działanie GetMetadata może służyć do pobierania **metadanych** dowolnych danych w Azure Data Factory. To działanie może być używane w następujących scenariuszach:
 
-- Sprawdź poprawność informacji o metadanych dowolnych danych
-- Wyzwalanie potoku, gdy dane są gotowe / dostępne
+- Weryfikowanie informacji o metadanych dowolnych danych
+- Wyzwalanie potoku, gdy dane są gotowe/dostępne
 
-Następujące funkcje są dostępne w przepływie sterowania:
+W przepływie sterowania jest dostępna następująca funkcja:
 
-- Dane wyjściowe z działaniu GetMetadata może służyć w wyrażeniach warunkowych do wykonywania sprawdzania poprawności.
-- Potok może być wyzwalane, gdy warunek jest spełniony przy użyciu czy — aż do pętli
+- Dane wyjściowe z działania GetMetadata mogą być używane w wyrażeniach warunkowych do sprawdzenia poprawności.
+- Potok może być wyzwalany, gdy warunek jest spełniony przez pętlę do-until
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Działanie GetMetadata przyjmuje zestawu danych jako wymagane dane wejściowe i generuje informacje o metadanych dostępne jako dane wyjściowe działania. Obecnie są obsługiwane następujące łączniki za pomocą odpowiedniego Pobieranie metadanych i rozmiar maksymalny metadanych obsługiwanych jest maksymalnie **1MB**.
+Działanie GetMetadata przyjmuje zestaw danych jako wymaganą wartość wejściową, a informacje wyjściowe metadanych są dostępne jako dane wyjściowe działania. Obecnie obsługiwane są następujące łączniki z odpowiednimi metadanymi do pobierania, a maksymalny obsługiwany rozmiar metadanych to **1 MB**.
 
 >[!NOTE]
->Po uruchomieniu działaniu GetMetadata na własne środowisko IR najnowsze możliwości jest obsługiwana w wersji 3.6 lub nowszym. 
+>W przypadku uruchamiania działania GetMetadata na Integration Runtime samoobsługowym, najnowsza funkcja jest obsługiwana w wersji 3,6 lub nowszej. 
 
 ### <a name="supported-connectors"></a>Obsługiwane łączniki
 
 **Magazyn plików:**
 
-| Łącznik/metadanych | itemName<br>(plik/folder) | itemType<br>(plik/folder) | size<br>(file) | Utworzone<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>(folder) |contentMD5<br>(file) | structure<br/>(file) | columnCount<br>(file) | Istnieje<br>(plik/folder) |
+| Łącznik/metadane | itemName<br>(plik/folder) | itemType<br>(plik/folder) | size<br>rozszerzeniem | utworzone<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>system32\drivers\etc |contentMD5<br>rozszerzeniem | structure<br/>rozszerzeniem | Kolumn<br>rozszerzeniem | istniejący<br>(plik/folder) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| Usługa Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| Obiekt blob platformy Azure | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
-| Usługa Azure Data Lake Storage 1. generacji | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| Usługa Azure Data Lake Storage 2. generacji | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
-| System plików | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
-| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| Protokół FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Azure Blob](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
+| [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure File Storage](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| [System plików](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Dla dostawców Amazon S3 i magazynu Sloud Google `lastModified` ma zastosowanie do zasobnika i klucza, ale nie wirtualnego folderu; i `exists` odnosi się do zasobnika i klucza, ale nie do prefiksu lub folder wirtualny.
-- Dla obiektów Blob platformy Azure `lastModified` ma zastosowanie do kontenerów i obiektów blob, ale folder nie jest wirtualny.
+- W przypadku usługi Amazon S3 i usługi Google Cloud `lastModified` Storage stosuje się do zasobnika i klucza, ale nie do folderu `exists` wirtualnego; i dotyczy zasobnika i klucza, ale nie prefiks lub folderu wirtualnego.
+- W przypadku obiektów blob platformy `lastModified` Azure ma zastosowanie do kontenera i obiektu BLOB, ale nie do folderu wirtualnego.
 
 **Relacyjna baza danych:**
 
-| Łącznik/metadanych | structure | columnCount | Istnieje |
+| Łącznik/metadane | structure | Kolumn | istniejący |
 |:--- |:--- |:--- |:--- |
-| Azure SQL Database | √ | √ | √ |
-| Wystąpienie zarządzane usługi Azure SQL Database | √ | √ | √ |
-| Azure SQL Data Warehouse | √ | √ | √ |
-| Oprogramowanie SQL Server | √ | √ | √ |
+| [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
+| [Wystąpienie zarządzane usługi Azure SQL Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
+| [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
 ### <a name="metadata-options"></a>Opcje metadanych
 
-Na liście pól działanie GetMetadata do pobrania można określić następujące typy metadanych:
+Następujące typy metadanych można określić na liście pól działania GetMetadata do pobrania:
 
 | Typ metadanych | Opis |
 |:--- |:--- |
 | itemName | Nazwa pliku lub folderu. |
-| itemType | Typ pliku lub folderu. Wartość wyjściowa to `File` lub `Folder`. |
-| size | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
-| Utworzone | Data i godzina utworzonego pliku lub folderu. |
-| lastModified | Data ostatniej modyfikacji daty i godziny pliku lub folderu. |
-| childItems | Lista podfoldery i pliki znajdujące się w danym folderze. Dotyczy tylko do folderu. Wartość wyjściowa jest listę nazw i typ każdego elementu podrzędnego. |
-| contentMD5 | Algorytm MD5 pliku. Dotyczy tylko plików. |
-| structure | Struktura danych wewnątrz pliku lub tabeli w relacyjnej bazie danych. Wartość wyjściowa jest lista nazwa kolumny i typ kolumny. |
-| columnCount | Liczba kolumn w pliku lub tabeli. |
-| Istnieje| Czy plik/folder/tabeli istnieje, czy nie. Należy pamiętać, jeśli "istnieje" jest określony na liście pól GetaMetadata, działanie nie będą się nie powieść, nawet wtedy, gdy nie istnieje element (plik/folder/table); Zamiast tego zwraca `exists: false` w danych wyjściowych. |
+| itemType | Typ pliku lub folderu. Wartość wyjściowa `File` to `Folder`lub. |
+| size | Rozmiar pliku w bajtach. Dotyczy tylko pliku. |
+| utworzone | Utworzono datę i godzinę dla pliku lub folderu. |
+| lastModified | Data i godzina ostatniej modyfikacji pliku lub folderu. |
+| childItems | Lista podfolderów i plików znajdujących się w danym folderze. Dotyczy tylko folderu. Wartość wyjściowa to lista nazw i typów każdego elementu podrzędnego. |
+| contentMD5 | MD5 pliku. Dotyczy tylko pliku. |
+| structure | Struktura danych w tabeli plik lub relacyjna baza danych. Wartość wyjściowa to lista nazw kolumn i typów kolumn. |
+| Kolumn | Liczba kolumn wewnątrz pliku lub tabeli relacyjnej. |
+| istniejący| Czy plik/folder/tabela istnieje, czy nie. Uwaga Jeśli na liście pól GetaMetadata zostanie określona wartość "istnieje", działanie nie powiedzie się, nawet jeśli element (plik/folder/tabela) nie istnieje. Zamiast tego zwraca `exists: false` w danych wyjściowych. |
 
 >[!TIP]
->Aby sprawdzić, czy plik/folder/tabela istnieje lub nie, należy określić `exists` na liście pól działanie GetMetadata, można sprawdzić `exists: true/false` wynika z danych wyjściowych działania. Jeśli `exists` nie jest skonfigurowany na liście pól, GetMetadata, działanie zakończy się niepowodzeniem, gdy obiekt nie zostanie znaleziony.
+>Aby sprawdzić, czy plik/folder/tabela istnieje lub nie, określ `exists` na liście pól działanie GetMetadata, można `exists: true/false` sprawdzić wynik z danych wyjściowych działania. Jeśli `exists` nie skonfigurowano na liście pól, działanie GetMetadata zakończy się niepowodzeniem, gdy obiekt nie zostanie znaleziony.
+
+>[!NOTE]
+>Podczas pobierania metadanych z magazynów plików i konfigurowania `modifiedDatetimeStart` i/lub `modifiedDatetimeEnd`, `childItems` w danych wyjściowych zwracane są tylko pliki pod daną ścieżką, a czas ostatniej modyfikacji między zakresem, ale bez podfolderów.
 
 ## <a name="syntax"></a>Składnia
 
@@ -105,7 +108,7 @@ Na liście pól działanie GetMetadata do pobrania można określić następują
 }
 ```
 
-**Zestaw danych:**
+**Zestawu**
 
 ```json
 {
@@ -129,16 +132,18 @@ Na liście pól działanie GetMetadata do pobrania można określić następują
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Obecnie w działaniu GetMetadata można pobrać następujące rodzaje informacji o metadanych.
+Obecnie działanie GetMetadata może pobrać następujące typy informacji o metadanych.
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
-fieldList | Zawiera listę typów wymaganych informacji o metadanych. Szczegółowe informacje w [opcje metadanych](#metadata-options) sekcję dotyczącą obsługiwanych metadanych. | Yes 
-Zestaw danych | Zestaw danych odwołania, którego działania metadanych ma być pobierane przez działanie GetMetadata. Zobacz [obsługiwane możliwości](#supported-capabilities) sekcji na obsługiwanych łączników i odnoszą się do temat dotyczący łączników na potrzeby szczegółów składni zestawu danych. | Yes
+fieldList | Wyświetla listę typów wymaganych informacji metadanych. Zobacz szczegóły w sekcji [Opcje metadanych](#metadata-options) w temacie obsługiwane metadane. | Yes 
+zestawu | Zestaw danych referencyjnych, którego aktywność metadanych ma zostać pobrana przez działanie GetMetadata. Zobacz sekcję [obsługiwane możliwości](#supported-capabilities) na obsługiwanych łącznikach i zapoznaj się z tematem łącznika w temacie Szczegóły składni zestawu danych. | Tak
+formatSettings | Zastosuj przy użyciu zestawu danych typu format (Parquet, DelimitedText). | Nie
+storeSettings | Zastosuj przy użyciu zestawu danych typu format (Parquet, DelimitedText). | Nie
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
-Wynik GetMetadata jest wyświetlany w danych wyjściowych działania. Poniżej przedstawiono dwa przykłady z opcjami wyczerpujący metadanych wybrany na liście pól jako odwołanie. Aby użyć wyniku kolejne działania, użyj wzorca `@{activity('MyGetMetadataActivity').output.itemName}`.
+Wynik GetMetadata jest pokazywany w danych wyjściowych działania. Poniżej znajdują się dwa przykłady z pełnymi opcjami metadanych wybranych na liście pól jako odwołanie. Aby użyć wyniku w kolejnych działaniach, użyj wzorca `@{activity('MyGetMetadataActivity').output.itemName}`.
 
 ### <a name="get-a-files-metadata"></a>Pobierz metadane pliku
 
@@ -187,10 +192,10 @@ Wynik GetMetadata jest wyświetlany w danych wyjściowych działania. Poniżej p
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 
+## <a name="next-steps"></a>Następne kroki
+Zobacz inne działania przepływu sterowania obsługiwane przez Data Factory: 
 
 - [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
-- [Działanie internetowe](control-flow-web-activity.md)
+- [Aktywność sieci Web](control-flow-web-activity.md)

@@ -4,14 +4,14 @@ description: Używanie szablonów Azure Resource Manager do tworzenia i konfigur
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4cd66c9da0650c9eb9de5b51ce82b48fe781c6f4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: b4d121e0628512f7bbd6aedc0a9067b31d46d0ed
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500504"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814975"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejsu API Azure Cosmos DB SQL (Core) przy użyciu szablonów Azure Resource Manager
 
@@ -23,6 +23,7 @@ Tworzenie Azure Cosmos DB zasobów przy użyciu szablonu Azure Resource Manager.
 >
 > - Obecnie nie można wdrażać funkcji zdefiniowanych przez użytkownika (UDF), procedur składowanych i wyzwalaczy za pomocą szablonów Menedżer zasobów.
 > - Nie można jednocześnie dodawać ani usuwać lokalizacji do konta usługi Azure Cosmos i modyfikować innych właściwości. Należy je wykonać jako osobne operacje.
+> - Nazwy kont muszą zawierać małe litery i < 31 znaków.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 

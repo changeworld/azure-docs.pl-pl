@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 9eb03be5cd9704c3b124bfb16fd30c5c3466890d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326138"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736256"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurowanie niestandardowej nazwy domeny
 
@@ -40,17 +40,19 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Użyj Azure Portal, aby ustawić niestandardową nazwę domeny
 
 1. Przejdź do wystąpienia API Management w [Azure Portal](https://portal.azure.com/).
-1. Wybierz pozycję **domeny niestandardowe i protokół SSL**.
+1. Wybierz pozycję **domeny niestandardowe**.
 
     Istnieje kilka punktów końcowych, do których można przypisać niestandardową nazwę domeny. Obecnie dostępne są następujące punkty końcowe:
 
-    - **Serwer proxy** (wartość domyślna to `<apim-service-name>.azure-api.net`:),
+    - **Brama** (wartość domyślna to `<apim-service-name>.azure-api.net`:),
     - **Portal** (wartość domyślna to `<apim-service-name>.portal.azure-api.net`:),
     - **Zarządzanie** (wartość domyślna to `<apim-service-name>.management.azure-api.net`:),
     - **Menedżer SCM** (wartość domyślna to `<apim-service-name>.scm.azure-api.net`:).
 
     > [!NOTE]
-    > Można zaktualizować wszystkie punkty końcowe lub niektóre z nich. Często klienci aktualizują **serwer proxy** (ten adres URL jest używany do wywoływania interfejsu API uwidocznionego za pomocą API Management) i **portalu** (adres URL portalu dla deweloperów). Punkty końcowe **zarządzania** i **SCM** są używane wewnętrznie przez właścicieli wystąpień API Management i w ten sposób rzadziej przypisywana jest niestandardowa nazwa domeny. W większości przypadków można ustawić tylko jedną niestandardową nazwę domeny dla danego punktu końcowego. Jednak warstwa **Premium** obsługuje ustawianie wielu nazw hostów dla punktu końcowego **serwera proxy** .
+    > Tylko punkt końcowy **bramy** dostępny do konfiguracji w warstwie zużycia.
+    > Można zaktualizować wszystkie punkty końcowe lub niektóre z nich. Często klienci aktualizują **bramę** (ten adres URL jest używany do wywoływania interfejsu API uwidocznionego za pomocą API Management) i **portalu** (adres URL portalu dla deweloperów).
+    > Punkty końcowe **zarządzania** i **SCM** są używane wewnętrznie przez właścicieli wystąpień API Management i w ten sposób rzadziej przypisywana jest niestandardowa nazwa domeny. Warstwa **Premium** obsługuje ustawianie wielu nazw hostów dla punktu końcowego **bramy** .
 
 1. Wybierz punkt końcowy, który chcesz zaktualizować.
 1. W oknie po prawej stronie kliknij pozycję **niestandardowy**.

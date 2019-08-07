@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z DevTest Labs na platformie Azure DevOps build and Release Pipelines | Microsoft Docs
-description: Dowiedz się, jak używać Azure DevTest Labs w potokach kompilowania i wydawania DevOps na platformie Azure.
+title: Korzystanie z DevTest Labs w Azure Pipelines potoków kompilacji i wydania | Microsoft Docs
+description: Dowiedz się, jak używać Azure DevTest Labs w Azure Pipelines kompilacjach i wydaniach.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 606563cd7d7adcdd79bf9561876eb0640fb68b21
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 032f598fed765b281d4a6a124f8855abc201ee94
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620898"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774495"
 ---
-# <a name="use-devtest-labs-in-azure-devops-build-and-release-pipelines"></a>Używanie usługi DevTest Labs w potokach kompilacji i wydania usługi Azure DevOps
-Ten artykuł zawiera informacje o tym, jak DevTest Labs można używać w potokach kompilacji i wydania usługi Azure DevOps. 
+# <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Korzystanie z DevTest Labs w Azure Pipelines potoków kompilowania i wydawania
+Ten artykuł zawiera informacje dotyczące sposobu używania DevTest Labs w Azure Pipelines potoków kompilowania i wydawania. 
 
 ## <a name="overall-flow"></a>Przepływ ogólny
 Podstawowym przepływem jest utworzenie potoku **kompilacji** , który wykonuje następujące zadania:
@@ -49,7 +49,7 @@ Istnieje kilka elementów, które muszą zostać utworzone wcześniej:
 Potok kompilacji utworzy środowisko DevTest Labs i Wdróż kod do testowania.
 
 ## <a name="set-up-a-build-pipeline"></a>Konfigurowanie potoku kompilacji
-W usłudze Azure DevOps Utwórz potok kompilacji przy użyciu kodu z [samouczka: Tworzenie aplikacji internetowej platformy .NET Core i SQL Database w Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Użyj szablonu **ASP.NET Core** , który wypełni zadanie niezbędne do skompilowania, przetestowania i opublikowania kodu.
+W Azure Pipelines Utwórz potok kompilacji przy użyciu kodu z [samouczka: Tworzenie aplikacji internetowej platformy .NET Core i SQL Database w Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Użyj szablonu **ASP.NET Core** , który wypełni zadanie niezbędne do skompilowania, przetestowania i opublikowania kodu.
 
 ![Wybierz szablon ASP.NET](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 
@@ -85,7 +85,7 @@ Trzecim zadaniem jest zadanie **Azure App Service Deploy** . Typ aplikacji to **
 
 ![Zadanie wdrażania App Service](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
-## <a name="setup-release-pipeline"></a>Instalacja potoku wydania
+## <a name="set-up-release-pipeline"></a>Konfigurowanie potoku wydania
 Tworzysz potok wydania z dwoma zadaniami: **Wdrażanie na platformie Azure: Utwórz lub Zaktualizuj grupę** zasobów i **Wdróż Azure App Service**. 
 
 Dla pierwszego zadania Określ nazwę i lokalizację grupy zasobów. Lokalizacja szablonu to połączony artefakt. Jeśli szablon Menedżer zasobów obejmuje połączone szablony, należy zaimplementować wdrożenie niestandardowej grupy zasobów. Szablon znajduje się w opublikowanym artefaktie drop. Przesłoń parametry szablonu dla szablonu Menedżer zasobów. Pozostałe ustawienia można pozostawić z wartościami domyślnymi. 
@@ -95,8 +95,8 @@ W przypadku drugiego zadania **wdrażania Azure App Service**Określ subskrypcj�
 ## <a name="test-run"></a>Przebieg testowy
 Teraz, gdy oba potoki zostały skonfigurowane, należy ręcznie utworzyć w kolejce kompilację i zobaczyć jej działanie. Następnym krokiem jest ustawienie odpowiedniego wyzwalacza dla kompilacji i połączenie kompilacji z potokiem wersji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły:
 
-- [Integruj Azure DevTest Labs z potokiem ciągłej integracji i dostarczania na platformie Azure DevOps](devtest-lab-integrate-ci-cd-vsts.md)
-- [Integruj środowiska z potokami CI/DevOps na platformie Azure](integrate-environments-devops-pipeline.md)
+- [Integracja Azure DevTest Labs z Azure Pipelines ciągłą integracją i potoku dostarczania](devtest-lab-integrate-ci-cd-vsts.md)
+- [Integruj środowiska w Azure Pipelines potoki ciągłej integracji/ciągłego wdrażania](integrate-environments-devops-pipeline.md)

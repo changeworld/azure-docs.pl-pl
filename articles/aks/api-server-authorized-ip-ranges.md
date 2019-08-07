@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 6516bbcb4ea879279812d61d9fe31f1ea4268280
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7dcf962345a2453fca52825c4be33a439d25df54
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67616255"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740936"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — bezpieczny dostęp do serwera interfejsu API przy użyciu zakresów autoryzowanych adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -218,13 +218,13 @@ Aby włączyć zakres adresów IP autoryzowanych przez serwer interfejsu API, na
 
 Użyj polecenia [AZ AKS Update][az-aks-update] i określ *zakresy--API-Server-autoryzowane-IP-* allows, aby zezwolić. Te zakresy adresów IP są zwykle zakresami adresów używanymi przez sieci lokalne. Dodaj publiczny adres IP własnej zapory platformy Azure uzyskany w poprzednim kroku, na przykład *20.42.25.196/32*.
 
-Poniższy przykład umożliwia włączenie zakresów adresów IP autoryzowanych serwerów interfejsu API w klastrze o nazwie *myAKSCluster* w grupie zasobów o nazwie Moja *resourceName*. Zakresy adresów IP do autoryzacji to *20.42.25.196/32* (publiczny adres IP zapory platformy Azure), a następnie *172.0.0.10/16* i *168.10.0.10/18*:
+Poniższy przykład umożliwia włączenie zakresów adresów IP autoryzowanych serwerów interfejsu API w klastrze o nazwie *myAKSCluster* w grupie zasobów o nazwie Moja *resourceName*. Zakresy adresów IP do autoryzacji to *20.42.25.196/32* (publiczny adres IP zapory platformy Azure), a następnie *172.0.0.0/16* i *168.10.0.0/18*:
 
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.10/16,168.10.0.10/18
+    --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Aktualizowanie lub wyłączanie autoryzowanych zakresów adresów IP

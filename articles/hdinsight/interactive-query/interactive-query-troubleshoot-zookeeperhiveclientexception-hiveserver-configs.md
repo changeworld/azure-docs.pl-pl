@@ -1,39 +1,43 @@
 ---
-title: Nie można dodać węzłów do klastra usługi Azure HDInsight
-description: Nie można dodać węzłów do klastra usługi Azure HDInsight
+title: Apache Hive interpreter Zeppelin daje błąd dozorcy w usłudze Azure HDInsight
+description: Interpreter JDBCa Zeppelin Hive wskazuje na nieprawidłowy adres URL
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 07/31/2019
-ms.openlocfilehash: 6c2e2c7395fcc45fe74c50beb3624eabb1d395c9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.date: 07/30/2019
+ms.openlocfilehash: f623d2516a2cf069b6347ebe8366b9b437228a87
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828027"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781350"
 ---
-# <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>Scenariusz: Nie można dodać węzłów do klastra usługi Azure HDInsight
+# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>Scenariusz: Apache Hive interpreter Zeppelin daje błąd dozorcy w usłudze Azure HDInsight
 
-W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku współpracy z klastrami usługi Azure HDInsight.
+W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku używania interakcyjnych składników zapytań w klastrach usługi Azure HDInsight.
 
 ## <a name="issue"></a>Problem
 
-Nie można dodać węzłów do klastra usługi Azure HDInsight.
+W klastrze programu Apache Hive LLAP interpreter Zeppelin wyświetla następujący komunikat o błędzie podczas próby wykonania zapytania:
+
+```
+java.sql.SQLException: org.apache.hive.jdbc.ZooKeeperHiveClientException: Unable to read HiveServer2 configs from ZooKeeper
+```
 
 ## <a name="cause"></a>Przyczyna
 
-Przyczyny mogą się różnić.
+Interpreter JDBCa Zeppelin Hive wskazuje na nieprawidłowy adres URL.
 
 ## <a name="resolution"></a>Rozwiązanie
 
-Korzystając z funkcji [rozmiar klastra](../hdinsight-scaling-best-practices.md) , Oblicz liczbę dodatkowych rdzeni wymaganych przez klaster. Zależy to od łącznej liczby rdzeni w nowych węzłach procesów roboczych. Następnie spróbuj wykonać co najmniej jedną z następujących czynności:
+1. Przejdź do podsumowania składnika Hive i skopiuj adres URL "Hive JDBC" do Schowka.
 
-* Sprawdź, czy w lokalizacji klastra są dostępne rdzenie.
+1. Przejdź do `https://clustername.azurehdinsight.net/zeppelin/#/interpreter`
 
-* Sprawdź liczbę dostępnych rdzeni w innych lokalizacjach. Rozważ ponowne utworzenie klastra w innej lokalizacji z odpowiednią liczbą dostępnych rdzeni.
+1. Edytuj ustawienia JDBC: zaktualizuj wartość Hive. URL do adresu URL JDBC programu Hive skopiowanego w kroku 1
 
-* Aby zwiększyć limit przydziału rdzeni dla określonej lokalizacji, wyślij bilet pomocy technicznej dotyczący zwiększenia limitu przydziału rdzeni w usłudze HDInsight.
+1. Zapisz, a następnie ponów próbę wykonania zapytania
 
 ## <a name="next-steps"></a>Następne kroki
 

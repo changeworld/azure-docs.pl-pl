@@ -1,63 +1,61 @@
 ---
 title: Azure Data Catalog common scenarios (Typowe scenariusze dla usługi Azure Data Catalog)
-description: Przegląd typowe scenariusze dotyczące usługi Azure Data Catalog, łącznie z rejestracji i odnajdywania źródeł danych wysokiej wartości, umożliwiając samoobsługowa analiza biznesowa i przechwytywanie istniejących wiedzę na temat źródeł danych i procesów.
-services: data-catalog
+description: Omówienie typowych scenariuszy dotyczących Azure Data Catalog, w tym rejestracji i odnajdywania źródeł danych o wysokiej wartości, umożliwiających samoobsługową analizę biznesową oraz przechwytywanie istniejącej wiedzy o źródłach danych i procesach.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 60930d78-d2d4-4d5d-9651-bdda50b0da0e
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: e95cc64b9086a6fb4c5e2d42521a5fd3f44244ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: aeae505b510f563a6640726c384ea358983eb24f
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61003960"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736458"
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Azure Data Catalog common scenarios (Typowe scenariusze dla usługi Azure Data Catalog)
-W tym artykule przedstawiono typowe scenariusze, w którym usługi Azure Data Catalog może pomóc Twojej organizacji wydobyć więcej ze swoich istniejących źródeł danych.
+W tym artykule przedstawiono typowe scenariusze, w których Azure Data Catalog może pomóc organizacji w zwiększeniu wartości z istniejących źródeł danych.
 
-## <a name="scenario-1-registration-of-central-data-sources"></a>Scenariusz 1: Rejestracja źródeł danych w centralnej
-Organizacje często mają wiele źródeł danych wysokiej wartości. Te źródła danych obejmują line-of-business online transakcji przetwarzania systemów (OLTP), magazynów danych i baz danych analizy/analiz biznesowych. Liczba systemów i nakładanie się między nimi, zwiększa się wraz z upływem czasu zwykle w miarę ewolucji potrzeb biznesowych i samego biznesu ewoluuje za pośrednictwem, na przykład fuzje i przejęcia.
+## <a name="scenario-1-registration-of-central-data-sources"></a>Scenariusz 1: Rejestracja centralnych źródeł danych
+Organizacje często mają wiele źródeł danych o wysokiej wartości. Te źródła danych obejmują systemy biznesowe, usługi przetwarzania transakcji online (OLTP), magazyny danych i bazy danych analizy biznesowej/analityczne. Liczba systemów i nakładanie się między nimi, zazwyczaj rośnie wraz z upływem czasu w miarę rozwoju potrzeb firmy, a sama sama firma rozwija się, na przykład fuzje i przejęcia.
 
-Może być trudne dla członków organizacji wiedzieć, gdzie umieścić dane w ramach tych źródeł danych. Wszystkie zbyt popularne są pytania podobne do następującego:
+Może być trudne, aby członkowie organizacji wiedzieli, gdzie można zlokalizować dane w tych źródłach danych. Często zadawane pytania są następujące:
 
-* Systemów trzy HR używany w firmie, które należy użyć do utworzenia tego typu raportu?
-* Gdzie należy przejść do uzyskania certyfikowanych danych liczbowych sprzedaży w roku obrachunkowego, który po prostu zakończył się?
-* Kto mogę zadawać lub co to jest proces, którego należy użyć do uzyskania dostępu do magazynu danych?
-* Nie wiem, jeśli te liczby są odpowiednie. Kto mogę zadawać uzyskać wgląd w sposób te dane mają można użyć, aby udostępnić ten pulpit nawigacyjny Mój zespół?
+* Z trzech systemów kadr używanych w firmie, których należy użyć do utworzenia tego typu raportu?
+* Gdzie warto uzyskać certyfikowane numery sprzedaży dla roku obrachunkowego, który właśnie zakończył?
+* Kto powinien zadawać pytania lub jaki jest proces, którego należy użyć, aby uzyskać dostęp do magazynu danych?
+* Nie wiem, czy te liczby są odpowiednie. Kto może zadawać wgląd w szczegółowe informacje na temat tego, jak te dane powinny być używane, zanim udostępnię ten pulpit nawigacyjny mojego zespołu?
 
-Na te i inne pytania dotyczące usługi Azure Data Catalog można podać odpowiedzi. Źródła danych centralnej o wysokiej wartości, dział IT, które są używane w organizacji są często logiczne punktem wyjścia do wypełniania wykazu. Mimo że każdy użytkownik może zarejestrować źródła danych, posiadające kick-started ze źródłami danych, które są najczęściej podania wartości do największej liczbie użytkowników wykazu pomaga wspomóc przyjęcie i korzystania z systemu. 
+Na te i inne pytania Azure Data Catalog mogą zapewnić odpowiedzi. Centralne i wysoce wartości zarządzane przez nią źródła danych, które są używane w różnych organizacjach, są często logicznym punktem wyjścia do wypełniania katalogu. Mimo że każdy użytkownik może zarejestrować źródło danych, dzięki czemu wykaz rozpoczyna się od źródeł danych, które najprawdopodobniej zapewniają wartość największą liczbę użytkowników, ułatwiają wdrażanie i korzystanie z systemu. 
 
-Gdy dopiero rozpoczynasz pracę z usługą Azure Data Catalog, zidentyfikowanie i zarejestrowanie najważniejszymi źródłami danych, które są używane przez wiele różnych zespołów konsumenci danych mogą być Twoim pierwszym krokiem, tak aby wskazywał Powodzenie.
+Jeśli rozpoczynasz pracę z Azure Data Catalog, identyfikowanie i rejestrowanie najważniejszych źródeł danych, które są używane przez wielu różnych zespołów odbiorców danych, może być pierwszym krokiem do sukcesu.
 
-W tym scenariuszu prezentuje też możliwość dodawać adnotacje do źródeł danych wysokiej wartości, aby ułatwić ich zrozumienie i dostępem. Jeden kluczowe aspekty tej pracy jest zawierają informacje, w jaki sposób użytkownicy mogą żądać dostępu do źródła danych. Usługa Azure Data Catalog możesz podać adres e-mail użytkownika lub zespołu, który jest odpowiedzialny za kontrolowanie dostępu do źródła danych, linki do istniejących narzędzi lub dokumentacji lub dowolny tekst opisujący procesu żądania dostępu. Informacje te pomagają członków, którzy Odnajdywanie źródeł danych zarejestrowanych, ale który jeszcze nie masz uprawnień dostępu do danych, aby łatwo poprosić o dostęp za pomocą procesów, które są zdefiniowane i kontrolowane przez właścicieli źródła danych.
+W tym scenariuszu przedstawiono również możliwość dodawania adnotacji do źródeł danych o wysokiej wartości, które ułatwiają zrozumienie i dostęp do nich. Jednym z kluczowych aspektów tego nakładu jest dołączenie informacji na temat sposobu, w jaki użytkownicy mogą żądać dostępu do źródła danych. Za pomocą Azure Data Catalog można podać adres e-mail użytkownika lub zespołu, który jest odpowiedzialny za kontrolowanie dostępu do źródła danych, linki do istniejących narzędzi lub dokumentacji lub bezpłatny tekst opisujący proces żądania dostępu. Te informacje ułatwiają członkom, którzy odnajdują zarejestrowane źródła danych, ale którzy nie mają jeszcze uprawnień dostępu do danych w celu łatwego żądania dostępu przy użyciu procesów, które są zdefiniowane i kontrolowane przez właścicieli źródła danych.
 
 ## <a name="scenario-2-self-service-business-intelligence"></a>Scenariusz 2: Samoobsługowa analiza biznesowa
-Chociaż tradycyjne rozwiązania analizy biznesowej firmy w dalszym ciągu być bezcenne częścią krajobrazów danych w wielu organizacjach, zmiany w tempie firm podejścia biznesowego uczyniło samoobsługowego rozwiązania analizy Biznesowej bardziej ważne. Za pomocą Samoobsługowego rozwiązania analizy Biznesowej, pracowników przetwarzających informacje i analitycy można utworzyć własne raporty, skoroszyty i pulpity nawigacyjne bez polegania na centralny zespół IT lub jest ograniczone przez harmonogram i dostępności tego zespołu IT.
+Chociaż tradycyjne korporacyjne rozwiązania do analizy biznesowej w dalszym ciągu są niecenną częścią Landscapes danych organizacji, zmiana tempa biznesowego była samoobsługowa i bardziej ważna. Dzięki użyciu samoobsługowej analizy biznesowej Pracownicy przetwarzający informacje i analitycy mogą tworzyć własne raporty, skoroszyty i pulpity nawigacyjne, bez polegania na centralnym zespole IT lub ograniczonym przez ten plan i dostępność.
 
-W scenariuszach samoobsługi Power BI użytkownicy często Połącz dane z wielu źródeł, z których wiele może nie była wcześniej używana do analizy Biznesowej i analizy. Mimo że niektóre z tych źródeł danych mogą już być znane, może stanowić wyzwanie, aby dowiedzieć się, co należy zrobić, aby zlokalizować i oceniać potencjalnych źródeł danych dla danego zadania.
+W scenariuszach samoobsługowej analizy biznesowej użytkownicy często łączą dane z wielu źródeł, z których wiele mogło nie zostać wcześniej użyte do analizy biznesowej i analiz. Mimo że niektóre z tych źródeł danych mogą już być znane, może być trudne do odnalezienia, co należy zrobić, aby znaleźć i oszacować potencjalne źródła danych dla danego zadania.
 
-Tradycyjnie, ten proces odnajdywania jest ręczne: analityków umożliwia zidentyfikowanie osoby, które pracować z danymi, niestabilna przez ich połączenia sieciowe elementów równorzędnych. Po źródło danych zostanie odnaleziony i jest używany, proces powtarza się ponownie dla każdego kolejnych samoobsługi BI nakładzie pracy z wieloma użytkownikami wykonywania nadmiarowe ręczny proces odnajdowania.
+Tradycyjnie ten proces odnajdywania jest jednym z nich: analitycy używają równorzędnych połączeń sieciowych do identyfikowania osób, które współpracują z danymi. Po znalezieniu i użyciu źródła danych proces ten jest powtarzany ponownie dla każdego kolejnego wysiłku samoobsługowego analizy biznesowej z wieloma użytkownikami wykonującymi nadmiarowy ręczny proces odnajdywania.
 
-Za pomocą usługi Azure Data Catalog Twoja organizacja może przerwać ten cykl nakładu pracy. Po odnalezieniu źródła danych w sposób tradycyjny, analityk można zarejestrować ją do bardziej łatwa do przeglądania przez innych użytkowników w przyszłości. Analityk można dodać więcej korzyści przez dodawanie adnotacji do zarejestrowanych zasobów danych, ta adnotacja nie trzeba mieć miejsce, w tym samym czasie jako rejestracji. Użytkownicy mogą przyczynić się wraz z upływem czasu jako ich zezwolenie harmonogramy, stopniowo dodając wartość do źródeł danych zarejestrowanych w wykazie.
+W przypadku Azure Data Catalog organizacja może przerwać ten cykl nakładu pracy. Po znalezieniu źródła danych za pośrednictwem tradycyjnych metod analityk może go zarejestrować, aby łatwiej było go odnajdywać przez innych użytkowników w przyszłości. Chociaż analityk może dodać więcej wartości, dodając adnotację do zarejestrowanych zasobów danych, ta Adnotacja nie musi być wykonywana w tym samym czasie co rejestracja. Użytkownicy mogą w miarę upływu czasu, jak ich harmonogramy, stopniowo dodawać wartości do źródeł danych zarejestrowanych w wykazie.
 
-Ten wzrost organicznych zawartości katalogu jest naturalnym uzupełnienie ponoszonych z góry rejestracji źródła danych centralnej. Wstępne wypełnianie wykazu danych wymagających wielu użytkowników może być motivator do początkowego użycia i odnajdywania. Umożliwienie użytkownikom rejestrowania i dodawać adnotacje do źródeł dodatkowe może być sposób zachowania ich i inni członkowie organizacji zaangażowane.
+Ten organiczny wzrost zawartości katalogu jest naturalnym uzupełnieniem rejestracji centralnych źródeł danych. Wstępne wypełnianie wykazu danymi, których potrzebuje wielu użytkowników, może być motywacja do początkowego użycia i odnajdywania. Umożliwienie użytkownikom rejestrowania dodatkowych źródeł i dodawania do nich adnotacji może być sposobem na ich utrzymywanie i innym członkom organizacji.
 
-Warto zauważyć, że chociaż w tym scenariuszu przedstawiono szczegółowe informacje dotyczące samoobsługowego rozwiązania analizy Biznesowej, tych samych wzorców i wyzwania mają zastosowanie do firmowych BI projektów w dużej skali oraz. Korzystając z wykazu danych, Twoja organizacja może poprawić wszelkie nakład pracy, który obejmuje ręczny proces odnajdowania źródeł danych.
+Warto zauważyć, że mimo że ten scenariusz koncentruje się na samoobsługowym analizie biznesowej, te same wzorce i wyzwania mają zastosowanie w przypadku projektów analizy biznesowej w dużej skali. Korzystając z Data Catalog, organizacja może poprawić każdy nakład pracy, który obejmuje ręczne proces odnajdywania źródła danych.
 
-## <a name="scenario-3-capturing-tribal-knowledge"></a>Scenariusz 3: Specjalistyczna wiedza dostępna dla przechwytywania
-Skąd wiadomo, jakie dane, które należy wykonać zadania i gdzie można znaleźć te dane?
+## <a name="scenario-3-capturing-tribal-knowledge"></a>Scenariusz 3: Przechwytywanie informacji o plemienne
+Jak poznać dane potrzebne do wykonania zadania i miejsce, w którym można znaleźć te dane?
 
-Jeśli jesteś w ramach zadania od pewnego czasu, prawdopodobnie wystarczy wiedzieć. Po przeszli stopniowego procesie nauki i wraz z upływem czasu zawarto informacje o źródłach danych, które są kluczem do codziennej pracy.
+Jeśli jesteś w Twoim zadaniu przez pewien czas, prawdopodobnie wiesz. Przeszedłeś przez proces uczenia się, a w miarę upływu czasu zapoznaj się ze źródłami danych, które są kluczowe dla codziennej pracy.
 
-W przypadku nowych pracownika łączy Twój zespół, jak osoba wiedzieć, jakie dane są wymagane dla zadania i gdzie można je znaleźć?
+Po dołączeniu nowego pracownika do zespołu, w jaki sposób ta osoba wie, jakie dane są wymagane dla tego zadania i gdzie można je znaleźć?
 
-Ryzyko wystąpienia są nową osobę dołączono do Ciebie odpowiedzi na następujące pytania.
+Szanse to, że nowa osoba jest powiązana z tymi pytaniami.
 
-To bieżące przeniesienie specjalistyczna wiedza dostępna jest częścią procesu odnajdywania źródła danych w małych i dużych organizacjach. Więcej starszy i doświadczeniem członków zespołu utworzone w ciągu lat wiedzy i nowszej członków zespołu zawarto informacje na poproś go, gdy mają pytania. Najbardziej istotnych informacji często istnieje tylko w głowic garstka kluczowych pracowników, a przy tym osobom są na urlopie lub opuszczaliby zespół, niska organizacji.
+Ten ciągły transfer wiedzy plemienne jest częścią procesu odnajdywania źródła danych w dużych i małych organizacjach. Coraz więcej starszych i doświadczonych członków zespołu utworzyły wiedzę w ciągu lat, a nowsze członków zespołu zapoznają się z zapytaniem. Najważniejsze informacje często występują tylko w imieniu kilku najważniejszych osób i gdy osoby te znajdują się na urlopie lub opuszczają zespół, organizacja cierpi.
 
-Ekspertów ds. danych zazwyczaj postarać się dokumentu swojej wiedzy na temat udostępniania go za pośrednictwem poczty e-mail lub w dokumentach programu Word w witrynie zespołu programu SharePoint. Mimo że takie podejście może być przydatny, wprowadza nowy problem odnajdywania: jak użytkownicy wiedzieli, jakie dokumentacji istnieje i gdzie można go znaleźć?
+Eksperci danych zwykle podejmują wysiłki w celu udokumentowania swojej wiedzy, udostępniania jej za pośrednictwem poczty e-mail lub dokumentów programu Word w witrynie zespołu programu SharePoint. Chociaż ta metoda może być cenna, wprowadza nowy problem z odnajdywaniem: jak ludzie wiedzą, jaka dokumentacja istnieje i gdzie ją znaleźć?
 
-Za pomocą usługi Azure Data Catalog Twoja organizacja ma jednym, centralnym miejscu do przechowywania i udostępniania to specjalistyczna wiedza i składania łatwa do przeglądania. W wykazie danych ekspertów ds. usługi danych można bezpośrednio dodawać adnotacje do zasobów danych i zawierają łącza do dokumentacji istniejących. Jeśli członkowie organizacji korzystają z katalogu, aby odnaleźć źródła danych, znajdą one nie tylko źródło automatycznie, ale także wiedzę, które wcześniej istniały tylko u ekspertów w Twojej organizacji.
+W przypadku Azure Data Catalog organizacja ma jedną centralną lokalizację do przechowywania i udostępniania wiedzy plemienne oraz ułatwia jej odnajdowanie. W Data Catalog eksperci danych mogą bezpośrednio dodawać adnotacje do zasobów danych i udostępniać linki do istniejącej dokumentacji. Gdy członkowie organizacji używają wykazu do odnajdywania źródła danych, znajdą nie tylko źródło, ale również wiedzę, która wcześniej istniała tylko w zdanie ekspertów w organizacji.

@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 2695ee2751a2834466c42d224101af246b829aca
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: d50acc50880229626c847d41d9abe9a9e13d9c6e
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717619"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736110"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Opracowywanie i wdrażanie zadań WebJob za pomocą programu Visual Studio — Azure App Service
 
@@ -228,7 +228,7 @@ Po [utworzeniu zadania WebJob na podstawie Azure Portal](webjobs-create.md)zosta
 
 ### <a name="cron-expressions"></a>Wyrażenia firmy CRONUS
 
-Zadania WebJob używają tych samych wyrażeń firmy CRONUS do planowania jako wyzwalacz czasomierza w Azure Functions. Aby dowiedzieć się więcej na temat pomocy technicznej firmy CRONUS, zobacz [artykuł](../azure-functions/functions-bindings-timer.md#cron-expressions)dotyczący wyzwalacza czasomierza.
+Zadania WebJob używają tych samych wyrażeń firmy CRONUS do planowania jako wyzwalacz czasomierza w Azure Functions. Aby dowiedzieć się więcej na temat pomocy technicznej firmy CRONUS, zobacz [artykuł](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)dotyczący wyzwalacza czasomierza.
 
 ### <a name="settingjob-reference"></a>Ustawianie. odwołanie do zadania
 
@@ -238,7 +238,7 @@ Następujące ustawienia są obsługiwane przez Zadania WebJob:
 | ----------- | --------- | --------------- |
 | `is_in_place` | Wszyscy | Zezwala na uruchamianie zadania bez uprzedniego kopiowania do folderu tymczasowego. Aby dowiedzieć się więcej, zobacz [katalog roboczy usługi WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Ciągłe | W przypadku skalowania w poziomie należy uruchamiać tylko zadania WebJob w jednym wystąpieniu. Aby dowiedzieć się więcej, zobacz [Ustawianie ciągłego zadania jako pojedyncze](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
-| `schedule` | Wyzwolone | Uruchom zadanie WebJob na podstawie harmonogramu opartego na języku cronus. Aby dowiedzieć się więcej, zobacz [artykuł](../azure-functions/functions-bindings-timer.md#cron-expressions)dotyczący wyzwalacza czasomierza. |
+| `schedule` | Wyzwolone | Uruchom zadanie WebJob na podstawie harmonogramu opartego na języku cronus. Aby dowiedzieć się więcej, zobacz [artykuł](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)dotyczący wyzwalacza czasomierza. |
 | `stopping_wait_time`| Wszyscy | Umożliwia sterowanie zachowaniem zamknięcia. Aby dowiedzieć się więcej, zobacz temat [bezpieczne zamykanie](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Kolejne kroki

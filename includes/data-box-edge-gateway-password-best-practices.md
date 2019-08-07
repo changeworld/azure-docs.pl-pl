@@ -4,15 +4,15 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 86d1cf5e103bcbb13782aa7a2a84092aa426d670
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 86b18c2a6fc3fbf342f5b7a4b6b563432c605f73
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183870"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781478"
 ---
-Należy przestrzegać tych najlepszych rozwiązań:
+Należy pamiętać o następujących najlepszych rozwiązaniach:
 
-- Zaleca się przechowywać wszystkie hasła w bezpiecznym miejscu, dzięki czemu nie trzeba zresetować hasło, zapomnienia jest. Składnik Usługa zarządzania nie można pobrać istniejących haseł. Je mogą tylko je zresetować za pośrednictwem witryny Azure portal. Jeśli możesz zresetować hasła, pamiętaj powiadomić wszystkich użytkowników, zanim je zresetować.
-- Możesz zdalnie dostęp do interfejsu programu Windows PowerShell urządzenia, za pośrednictwem protokołu HTTP. Ze względów bezpieczeństwa HTTP należy używać tylko w sieciach zaufanych.
-- Upewnij się, że hasła urządzenia silnych i dobrze chronione. Postępuj zgodnie z [najlepsze rozwiązania dotyczące haseł](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management).
+- Zalecamy przechowywanie wszystkich haseł w bezpiecznym miejscu, aby nie trzeba było resetować hasła, jeśli jest ono zapomniane. Usługa zarządzania nie może pobrać istniejących haseł. Można je resetować tylko za pośrednictwem Azure Portal. W przypadku zresetowania hasła należy się upewnić, że wszyscy użytkownicy zostaną poinformowani przed zresetowaniem.
+- Możesz zdalnie uzyskać dostęp do interfejsu programu Windows PowerShell na urządzeniu za pośrednictwem protokołu HTTP. Najlepszym rozwiązaniem w zakresie zabezpieczeń jest użycie protokołu HTTP tylko w przypadku zaufanych sieci.
+- Upewnij się, że hasła urządzeń są silne i dobrze chronione. Postępuj zgodnie z [najlepszymi rozwiązaniami dotyczącymi haseł](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices#enable-password-management).

@@ -5,18 +5,19 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e60eeb601a0a5796609b9c38b7394c2de0610cdf
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423010"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841286"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzać i wyodrębniać informacje z obrazów w scenariuszach wyszukiwania poznawczego
 
@@ -39,7 +40,7 @@ Nie można wyłączyć normalizacji obrazu. Umiejętności, które iterą nad ob
 |  normalizedImageMaxHeight | Maksymalna wysokość (w pikselach) dla wygenerowanych znormalizowanych obrazów. Wartość domyślna to 2000.|
 
 > [!NOTE]
-> Jeśli ustawisz właściwość *imageAction* na inną niż "none", nie będzie można ustawić właściwości przeanalizmode na wartość  inną niż "default".  W konfiguracji indeksatora można ustawić tylko jedną z tych dwóch właściwości na wartość inną niż domyślna.
+> Jeśli ustawisz właściwość *imageAction* na inną niż "none", nie będzie można ustawić właściwości przeanalizmode na wartość inną niż "default".  W konfiguracji indeksatora można ustawić tylko jedną z tych dwóch właściwości na wartość inną niż domyślna.
 
 Ustaw parametr **analizymode** na `json` (Aby indeksować każdy obiekt BLOB jako pojedynczy dokument) lub `jsonArray` (jeśli obiekty blob zawierają tablice JSON, a każdy element tablicy ma być traktowany jako oddzielny dokument).
 
@@ -72,7 +73,8 @@ Gdy *imageAction* jest ustawiona na wartość inną niż "none", nowe pole *norm
 | originalWidth      | Oryginalna Szerokość obrazu przed normalizacją. |
 | originalHeight      | Oryginalna wysokość obrazu przed normalizacją. |
 | rotationFromOriginal |  Obrót w prawo w stopniach, które wystąpiły w celu utworzenia znormalizowanego obrazu. Wartość z przedziału od 0 stopni do 360 stopni. Ten krok odczytuje metadane z obrazu wygenerowanego przez aparat lub skaner. Zwykle jest to wielokrotność 90 stopni. |
-| contentOffset |Przesunięcie znaku w polu zawartości, z którego został wyodrębniony obraz. To pole jest stosowane tylko w przypadku plików z osadzonymi obrazami. |
+| contentOffset | Przesunięcie znaku w polu zawartości, z którego został wyodrębniony obraz. To pole jest stosowane tylko w przypadku plików z osadzonymi obrazami. |
+| pageNumber | Jeśli obraz został wyodrębniony lub renderowany z pliku PDF, to pole zawiera numer strony w pliku PDF, który został wyodrębniony lub wyrenderowany, rozpoczynając od 1.  Jeśli obraz nie został utworzony z pliku PDF, to pole będzie miało wartość 0.  |
 
  Przykładowa wartość *normalized_images*:
 ```json
@@ -84,7 +86,8 @@ Gdy *imageAction* jest ustawiona na wartość inną niż "none", nowe pole *norm
     "originalWidth": 5000,  
     "originalHeight": 3000,
     "rotationFromOriginal": 90,
-    "contentOffset": 500  
+    "contentOffset": 500,
+    "pageNumber": 2
   }
 ]
 ```

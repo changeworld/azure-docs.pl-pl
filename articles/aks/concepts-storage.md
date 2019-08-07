@@ -1,67 +1,69 @@
 ---
-title: Pojęcia — usługach magazynu w usłudze Azure Kubernetes (AKS)
-description: Informacje na temat magazynowania w usłudze Azure Kubernetes Service (AKS), w tym woluminy, trwały, klasy magazynów i oświadczenia
+title: Pojęcia — Storage w usłudze Azure Kubernetes Services (AKS)
+description: Informacje o magazynie w usłudze Azure Kubernetes Service (AKS), w tym woluminy, woluminy trwałe, klasy magazynu i oświadczenia
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: eb9141d363bdb09b5773f80dfc5a1c4b9b92728f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fb15063e41e83b4c9a9f2e01b6ad18c8afed7f5f
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615805"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741008"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje magazynu dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
-Aplikacje, które są uruchamiane w usłudze Azure Kubernetes Service (AKS) może być konieczne przechowywanie i pobieranie danych. Dla niektórych obciążeń aplikacji ten magazyn danych można użyć magazynu lokalnego, szybkie na węzeł, który nie jest już potrzebny, gdy zasobników zostaną usunięte. Inne obciążenia aplikacji może wymagać magazynu, który będzie nadal występował w bardziej regularnych danych woluminów na platformie Azure. Wielu zasobnikach może być konieczne udostępnianie tej samej ilości danych lub ponownie dołączyć ilości danych, jeśli zmiany harmonogramu zasobnik w innym węźle. Ponadto może być konieczne wstrzyknąć dane poufne lub informacje o konfiguracji aplikacji do zasobników.
+Aplikacje działające w usłudze Azure Kubernetes Service (AKS) mogą wymagać przechowywania i pobierania danych. W przypadku niektórych obciążeń aplikacji ten magazyn danych może korzystać z lokalnego, szybkiego magazynu w węźle, który nie jest już wymagany po usunięciu z nich. Inne obciążenia aplikacji mogą wymagać magazynu, który utrzymuje więcej zwykłych woluminów danych w ramach platformy Azure. Może być konieczne udostępnienie wielu zasobników z tymi samymi woluminami danych lub ponowne dołączenie woluminów danych, jeśli na innym węźle zostanie ponownie zaplanowana. Na koniec może zajść potrzeba dodania poufnych danych lub informacji konfiguracyjnych aplikacji do zasobników.
 
-![Opcje magazynu dla aplikacji w klastrze usługi Kubernetes usługi Azure (AKS)](media/concepts-storage/aks-storage-options.png)
+![Opcje magazynu dla aplikacji w klastrze usługi Azure Kubernetes Services (AKS)](media/concepts-storage/aks-storage-options.png)
 
-W tym artykule przedstawiono podstawowe pojęcia, które zapewniają magazynu do aplikacji w usłudze AKS:
+W tym artykule przedstawiono podstawowe koncepcje zapewniające magazyn dla aplikacji w AKS:
 
-- [Woluminy](#volumes)
+- [Objętości](#volumes)
 - [Trwałe woluminy](#persistent-volumes)
 - [Klasy magazynu](#storage-classes)
 - [Trwałe woluminy — oświadczenia](#persistent-volume-claims)
 
 ## <a name="volumes"></a>Woluminy
 
-Aplikacje często muszą mieć możliwość przechowywania i pobierania danych. Zgodnie z rozwiązania Kubernetes zwykle traktuje poszczególnych zasobników jako zasoby tymczasowych, możliwe do rozporządzania, różne podejścia są dostępne dla aplikacji do użycia i utrwalić dane zgodnie z potrzebami. A *woluminu* przedstawia sposób przechowywanie, pobieranie i utrwalanie danych zasobników i w całym cyklu życia aplikacji.
+Aplikacje często muszą mieć możliwość przechowywania i pobierania danych. Ponieważ Kubernetes zazwyczaj traktuje poszczególne z nich w postaci tymczasowych, jednorazowych zasobów, różne podejścia są dostępne dla aplikacji, które będą w razie potrzeby używać i utrwalać dane. *Wolumin* reprezentuje sposób przechowywania, pobierania i utrwalania danych w różnych magazynach i za pośrednictwem cyklu życia aplikacji.
 
-Tradycyjne woluminy do przechowywania i pobierania danych są tworzone jako zasoby platformy Kubernetes, wspierane przez usługi Azure Storage. Można ręcznie utworzyć te woluminy można przypisać bezpośrednio do zasobników lub mieć Kubernetes utworzyć je automatycznie. Te woluminy danych przy użyciu usługi Azure Disks lub usługi Azure Files:
+Tradycyjne woluminy do przechowywania i pobierania danych są tworzone jako zasoby Kubernetes, które są obsługiwane przez usługę Azure Storage. Można ręcznie tworzyć te woluminy danych do przypisania do zasobników bezpośrednio lub Kubernetes je automatycznie. Te woluminy danych mogą korzystać z usługi Azure disks lub Azure Files:
 
-- *Usługa Azure Disks* może służyć do tworzenia rozwiązania Kubernetes *DataDisk* zasobów. Dyski można użyć usługi Azure Premium storage obsługiwane przez dyski SSD o wysokiej wydajności, lub usługi Azure Standard storage, wspierane przez regularne dysków twardych. Dla większości celów produkcyjnych i obciążeń deweloperskich Użyj usługi Premium storage. Dyski platformy Azure są instalowane jako *ReadWriteOnce*, dlatego są dostępne tylko do jednego węzła. Woluminy magazynu, które mogą być udostępniane jednocześnie przez wiele węzłów można użyć w usłudze Azure Files.
-- *Usługa Azure Files* może służyć do instalowania udziału SMB 3.0 wspierany przez konto usługi Azure Storage do zasobników. Pliki umożliwiają udostępnianie danych w wielu węzłach i zasobników. Obecnie plików można używać tylko magazyn Standard platformy Azure przez regularne dysków twardych.
+- Za pomocą *usługi Azure disks* można utworzyć zasób Kubernetes Datadisk. Dyski mogą korzystać z usługi Azure Premium Storage, obsługiwanej przez dysków SSD o wysokiej wydajności lub magazynu w warstwie Standardowa platformy Azure, z obsługą regularnego HDD. W przypadku większości obciążeń produkcyjnych i programistycznych należy użyć usługi Premium Storage. Dyski platformy Azure są instalowane jako *ReadWriteOnce*, więc są dostępne tylko dla jednego węzła. W przypadku woluminów magazynu, do których można uzyskać dostęp przez wiele węzłów jednocześnie, użyj Azure Files.
+- *Azure Files* można użyć do zainstalowania udziału SMB 3,0 obsługiwanego przez konto usługi Azure Storage w ramach platformy. Pliki umożliwiają udostępnianie danych między wieloma węzłami i zasobnikami. Pliki mogą korzystać z usługi Azure Storage w warstwie Standardowa w ramach regularnego HDD lub Azure Premium Storage, które są obsługiwane przez dysków SSD o wysokiej wydajności.
+> [!NOTE] 
+> Azure Files obsługiwać usługę Premium Storage w klastrach AKS z systemem Kubernetes 1,13 lub nowszym.
 
-W usłudze Kubernetes woluminów może reprezentować dysku tradycyjnych więcej niż tylko gdzie można przechowywane i pobierane informacje. Woluminy Kubernetes może także służyć jako sposób, aby wstawić dane do zasobników do użytku przez kontenery. Typowe typy dodatkowe woluminu w usłudze Kubernetes:
+W Kubernetes woluminy mogą reprezentować więcej niż tradycyjny dysk, na którym można przechowywać informacje i je pobierać. Woluminy Kubernetes mogą być również używane jako sposób wstrzykiwania danych do użycia przez kontenery. Wspólne dodatkowe typy woluminów w Kubernetes obejmują:
 
-- *emptyDir* -tego woluminu jest najczęściej używana jako tymczasowego miejsca w zasobniku. Wszystkie kontenery w zasobniku można uzyskać dostęp do danych na woluminie. Dane zapisane na ten typ woluminu tylko będzie się powtarzać dla cyklem życia zasobnika — po usunięciu zasobnik wolumin zostanie usunięty. Ten wolumin zazwyczaj używa magazynu dysku lokalnego węzła usługi, jednak mogą istnieć tylko w pamięci węzła.
-- *klucz tajny* -tego woluminu jest używana iniekcję poufne dane do zasobników, takie jak hasła. Należy najpierw utworzyć wpis tajny przy użyciu interfejsu API rozwiązania Kubernetes. Podczas definiowania wdrożenia lub zasobników, można żądać określonego klucza tajnego. Klucze tajne są udostępniane tylko węzły, które mają zaplanowane zasobnik, który go wymaga i klucz tajny jest przechowywany w *tmpfs*robaków napisanych nie na dysku. Po usunięciu ostatniego zasobnik w węźle, który wymaga klucza tajnego klucza tajnego został usunięty z tmpfs węzła. Klucze tajne są przechowywane w ramach danego obszaru nazw i może zostać oceniony jedynie przez zasobników w tej samej przestrzeni nazw.
-- *configMap* — ten typ woluminu jest używany iniekcję właściwości pary klucz wartość do zasobników, takie jak informacje o konfiguracji aplikacji. Zamiast definiować informacje o konfiguracji aplikacji w postaci obrazu kontenera, można zdefiniować ją jako zasób usługi Kubernetes, który można łatwo zaktualizować i stosowane do nowych wystąpień zasobników, ponieważ są one wdrażane. Podobnie jak za pomocą klucza tajnego, należy najpierw utworzyć ConfigMap, przy użyciu interfejsu API rozwiązania Kubernetes. Następnie można żądać tej ConfigMap, podczas definiowania zasobników lub wdrożenia. ConfigMaps są przechowywane w ramach danego obszaru nazw i może zostać oceniony jedynie przez zasobników w tej samej przestrzeni nazw.
+- *emptyDir* — ten wolumin jest często używany jako miejsce tymczasowe dla pod. Wszystkie kontenery w ramach programu mogą uzyskiwać dostęp do danych w woluminie. Dane zapisywane do tego typu woluminu są utrwalane tylko dla cykl życia w miejscu — gdy zostanie usunięty, wolumin zostanie usunięty. Ten wolumin zazwyczaj używa bazowego magazynu dysku lokalnego, chociaż może również istnieć tylko w pamięci węzła.
+- *Secret* — ten wolumin służy do iniekcji danych poufnych do zasobników, takich jak hasła. Najpierw utwórz wpis tajny przy użyciu interfejsu API Kubernetes. Podczas definiowania użytkownika lub wdrożenia można żądać określonego klucza tajnego. Wpisy tajne są dostarczane tylko do węzłów, które mają zaplanowaną w tym, że wymagają, a wpis tajny jest przechowywany w *tmpfs*, a nie zapisywany na dysku. Po usunięciu ostatniego elementu na węźle, który wymaga wpisu tajnego, wpis tajny jest usuwany z tmpfs węzła. Wpisy tajne są przechowywane w danym obszarze nazw i można do nich uzyskiwać dostęp tylko w obrębie tego samego obszaru nazw.
+- *configMap* — ten typ woluminu służy do iniekcji właściwości pary klucz-wartość do zasobników, takich jak informacje o konfiguracji aplikacji. Zamiast definiować informacje o konfiguracji aplikacji w ramach obrazu kontenera, można zdefiniować go jako zasób Kubernetes, który można łatwo aktualizować i stosować do nowych wystąpień w miarę ich wdrażania. Podobnie jak przy użyciu klucza tajnego, należy najpierw utworzyć ConfigMap za pomocą interfejsu API Kubernetes. Tego ConfigMap można następnie żądać podczas definiowania wdrożenia pod lub. ConfigMaps są przechowywane w obrębie danego obszaru nazw i można do nich uzyskać dostęp tylko w obrębie tego samego obszaru nazw.
 
 ## <a name="persistent-volumes"></a>Woluminy trwałe
 
-Woluminy, które są zdefiniowane i utworzonego w ramach cyklu życia pod istnieje tylko do momentu usunięcia zasobnik. Zasobników często oczekiwać, że pozostaje jeśli Zasobnik jest ponownie zaplanować na inny host, podczas zdarzenia konserwacji, szczególnie w przypadku StatefulSets ich przechowywania. A *trwały wolumin* (PV) jest tworzony i zarządzany przez interfejs API rozwiązania Kubernetes, który może znajdować się poza okres istnienia poszczególnych zasobnika zasobu magazynu.
+Woluminy, które są zdefiniowane i tworzone w ramach cyklu życia, są dostępne tylko do momentu usunięcia elementu. W przypadku, gdy na innym hoście w ramach zdarzeń konserwacyjnych, w szczególności w StatefulSets. *Wolumin trwały* (PV) jest zasobem magazynu utworzonym i zarządzanym przez interfejs API Kubernetes, który może istnieć poza okresem istnienia poszczególnych elementów.
 
-Azure Disks lub pliki są używane do zapewnienia PersistentVolume. Jak wspomniano w poprzedniej sekcji na woluminach, wybór dysków lub pliki często jest określany przez potrzebę równoczesnego dostępu do danych lub warstwy wydajności.
+Do udostępnienia PersistentVolume są używane dyski lub pliki platformy Azure. Jak wskazano w poprzedniej sekcji woluminów, wybór dysków lub plików jest często określany na podstawie potrzeby jednoczesnego dostępu do danych lub warstwy wydajności.
 
-![Woluminy trwałe w klastrze usługi Kubernetes usługi Azure (AKS)](media/concepts-storage/persistent-volumes.png)
+![Woluminy trwałe w klastrze usługi Azure Kubernetes Services (AKS)](media/concepts-storage/persistent-volumes.png)
 
-Może być PersistentVolume *statycznie* utworzone przez administratora klastra lub *dynamicznie* utworzonych przez serwer interfejsu API rozwiązania Kubernetes. Jeśli zasobnik jest zaplanowane, żądań magazynu, który nie jest obecnie dostępna Kubernetes można Tworzenie magazynu usługi Azure Disk lub plików i dołączyć go do zasobnika ustawiany. Dynamiczne Inicjowanie obsługi administracyjnej używa *StorageClass* do identyfikowania, jakiego rodzaju magazynu platformy Azure, musi zostać utworzona.
+PersistentVolume może być *statycznie* tworzony przez administratora klastra lub tworzony *dynamicznie* przez serwer interfejsu API Kubernetes. W przypadku zaplanowania i żądania magazynu, który nie jest obecnie dostępny, Kubernetes może utworzyć podstawowy magazyn dyskowy lub plików platformy Azure i dołączyć go do usługi pod. Dynamiczna obsługa administracyjna używa *StorageClass* , aby określić, jakiego typu usługi Azure Storage należy utworzyć.
 
 ## <a name="storage-classes"></a>Klasy magazynu
 
-Aby zdefiniować różne warstwy magazynu, na przykład Premium i standardowa, można utworzyć *StorageClass*. Definiuje również StorageClass *reclaimPolicy*. Ten reclaimPolicy steruje zachowaniem bazowego zasobu usługi Azure storage, gdy Zasobnik zostanie usunięty i trwały wolumin przestaną być potrzebne. Bazowego zasobu magazynu można usunąć lub przechowywane do użytku z programem przyszłych zasobników.
+Aby zdefiniować różne warstwy magazynu, takie jak Premium i Standard, można utworzyć *StorageClass*. StorageClass również definiuje *reclaimPolicy*. Ten reclaimPolicy steruje zachowaniem bazowego zasobu usługi Azure storage, gdy Zasobnik zostanie usunięty i trwały wolumin przestaną być potrzebne. Bazowego zasobu magazynu można usunąć lub przechowywane do użytku z programem przyszłych zasobników.
 
-W usłudze AKS tworzone są dwa początkowe StorageClasses:
+W programie AKS są tworzone dwa początkowe StorageClasses:
 
-- *domyślne* -korzysta z usługi Azure Standard storage do utworzenia dysku zarządzanego. Zasady odzyskać wskazuje, że podstawowy dysk platformy Azure zostanie usunięta po usunięciu zasobnik, który jej.
-- *Managed premium* -korzysta z usługi Azure Premium storage do utworzenia dysku zarządzanego. Zasady odzyskać ponownie wskazuje, że podstawowy dysk platformy Azure zostanie usunięta po usunięciu zasobnik, który jej.
+- *default* — używa usługi Azure Standard Storage do utworzenia dysku zarządzanego. Zasady odzyskiwania wskazują, że podstawowy dysk platformy Azure jest usuwany, gdy zostanie on usunięty.
+- *Managed-Premium* — używa usługi Azure Premium Storage do tworzenia dysku zarządzanego. Zasady odzyskiwania ponownie wskazują, że podstawowy dysk platformy Azure jest usuwany, gdy zostanie on usunięty.
 
-Jeśli nie StorageClass jest określona dla trwały wolumin, używana jest domyślna StorageClass. Zachowaj ostrożność przy żądanie woluminy trwałe, tak aby używały odpowiednie magazynu, których potrzebujesz. Możesz utworzyć StorageClass dla dodatkowych wymagań przy użyciu `kubectl`. Poniższy przykład używa dysków Premium Managed Disks i określa, czy podstawowy dysk Azure powinien być *przechowywane* gdy Zasobnik zostanie usunięty:
+Jeśli dla trwałego woluminu nie określono StorageClass, zostanie użyta wartość domyślna StorageClass. Należy zachować ostrożność podczas żądania woluminów trwałych, aby korzystały z odpowiedniego magazynu, którego potrzebujesz. Można utworzyć StorageClass do dodatkowych potrzeb przy użyciu `kubectl`. Poniższy przykład używa Managed Disks Premium i określa, że podstawowy dysk platformy Azure powinien zostać *zachowany* po usunięciu:
 
 ```yaml
 kind: StorageClass
@@ -75,15 +77,15 @@ parameters:
   kind: Managed
 ```
 
-## <a name="persistent-volume-claims"></a>Oświadczenia trwały wolumin
+## <a name="persistent-volume-claims"></a>Trwałe oświadczenia woluminu
 
-PersistentVolumeClaim żądań magazynu dysku lub pliku określonego StorageClass, tryb dostępu i rozmiar. Jeśli nie istniejącego zasobu do spełnienia oświadczenie oparte na zdefiniowanych StorageClass serwera interfejsu API rozwiązania Kubernetes dynamicznie aprowizować bazowego zasobu magazynu na platformie Azure. Definicji pod obejmuje instalacji woluminu, gdy wolumin jest połączony zasobnik.
+PersistentVolumeClaim żąda dysku lub magazynu plików dla konkretnej StorageClass, trybu dostępu i rozmiaru. Serwer interfejsu API Kubernetes umożliwia dynamiczne Inicjowanie obsługi bazowego zasobu magazynu na platformie Azure, jeśli nie ma istniejącego zasobu do spełnienia tego żądania na podstawie zdefiniowanego StorageClassu. Definicja pod obejmuje instalację woluminu, gdy wolumin został połączony z pod.
 
 ![Trwały wolumin oświadczeń w klastrze usługi Kubernetes usługi Azure (AKS)](media/concepts-storage/persistent-volume-claims.png)
 
-Jest PersistentVolume *powiązany* do PersistentVolumeClaim po przypisaniu zasobu dostępnego magazynu, do zasobnika żądanie. Istnieje mapowanie 1:1 trwałego woluminów do oświadczeń.
+PersistentVolume jest *powiązany* z PersistentVolumeClaim po przypisaniu dostępnego zasobu magazynu do żądania. Istnieje 1:1 mapowanie woluminów trwałych na oświadczenia.
 
-Następujące manifest YAML przykład przedstawia oświadczenia trwały wolumin, który używa *managed premium* StorageClass i żąda dysku *5Gi* rozmiar:
+Poniższy przykład manifestu YAML przedstawia trwałe żądanie woluminu, które korzysta z StorageClass *Managed-Premium* i żąda *5Gi* dysku:
 
 ```yaml
 apiVersion: v1
@@ -99,7 +101,7 @@ spec:
       storage: 5Gi
 ```
 
-Podczas tworzenia definicji zasobnika oświadczenia trwały wolumin określono, aby zażądać potrzebnych magazynów. Można także następnie określić *volumeMount* dla aplikacji na odczytywanie i zapisywanie danych. Następujące manifest YAML przykład pokazuje, jak poprzednie oświadczenia trwały wolumin można zainstalować woluminu na */mnt/azure*:
+W przypadku tworzenia definicji na podstawie trwałego żądania woluminu jest określona w celu zażądanie żądanego magazynu. Następnie należy określić *volumeMount* dla aplikacji, aby odczytywać i zapisywać dane. Poniższy przykład manifestu YAML pokazuje, jak poprzednie trwałego żądania woluminu można użyć do zainstalowania woluminu w */mnt/Azure*:
 
 ```yaml
 kind: Pod
@@ -121,22 +123,22 @@ spec:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze AKS][operator-best-practices-storage].
+W przypadku skojarzonych najlepszych rozwiązań zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w AKS][operator-best-practices-storage].
 
-Aby zobaczyć, jak można utworzyć woluminów statycznych i dynamicznych, korzystające z usługi Azure Disks lub usługi Azure Files, zobacz następujące artykuły z poradami:
+Aby dowiedzieć się, jak tworzyć dynamiczne i statyczne woluminy korzystające z dysków lub Azure Files platformy Azure, zobacz następujące artykuły:
 
-- [Tworzenie statycznej woluminu za pomocą usługi Azure Disks][aks-static-disks]
-- [Tworzenie statycznej woluminu za pomocą usługi Azure Files][aks-static-files]
-- [Tworzenie woluminu dynamicznego przy użyciu usługi Azure Disks][aks-dynamic-disks]
-- [Tworzenie woluminu dynamicznego przy użyciu usługi Azure Files][aks-dynamic-files]
+- [Tworzenie woluminu statycznego przy użyciu dysków platformy Azure][aks-static-disks]
+- [Tworzenie woluminu statycznego przy użyciu Azure Files][aks-static-files]
+- [Tworzenie woluminu dynamicznego przy użyciu dysków platformy Azure][aks-dynamic-disks]
+- [Tworzenie woluminu dynamicznego przy użyciu Azure Files][aks-dynamic-files]
 
-Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zostały przedstawione z usługi AKS zobacz następujące artykuły:
+Aby uzyskać dodatkowe informacje na temat podstawowych pojęć związanych z Kubernetes i AKS, zobacz następujące artykuły:
 
-- [Kubernetes / klastrów usługi AKS i obciążeń][aks-concepts-clusters-workloads]
-- [Kubernetes / tożsamości AKS][aks-concepts-identity]
-- [Kubernetes / zabezpieczeń usługi AKS][aks-concepts-security]
-- [Kubernetes / sieci wirtualne w usłudze AKS][aks-concepts-network]
-- [Kubernetes / skalowanie usługi AKS][aks-concepts-scale]
+- [Kubernetes/AKS klastrów i obciążeń][aks-concepts-clusters-workloads]
+- [Kubernetes/AKS tożsamość][aks-concepts-identity]
+- [Zabezpieczenia Kubernetes/AKS][aks-concepts-security]
+- [Sieci wirtualne Kubernetes/AKS][aks-concepts-network]
+- [Skala Kubernetes/AKS][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 

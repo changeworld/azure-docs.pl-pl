@@ -1,36 +1,36 @@
 ---
-title: VMware Solution by CloudSimple - Azure publiczny adres IP
-description: Dowiedz się więcej o publicznych adresów IP i ich zalet na VMware Solution by CloudSimple
+title: Rozwiązanie VMware według CloudSimple — publiczny adres IP platformy Azure
+description: Dowiedz się więcej na temat publicznych adresów IP i ich korzyści dla rozwiązań VMware według CloudSimple
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f57b7397f4a2d288cd2b8b55cf23b2d635aa5f8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d2bdb75a7f4409e6b3ffee2608cfe7adde6b1f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209562"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812525"
 ---
-# <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple publicznych adresami IP — omówienie
+# <a name="cloudsimple-public-ip-address-overview"></a>Publiczny adres IP CloudSimple — Omówienie
 
-Publiczny adres IP umożliwia zasobom internetowym komunikowanie się dla ruchu przychodzącego do zasobów chmury prywatnej na prywatny adres IP. Prywatny adres IP jest maszyną wirtualną lub programowego modułu równoważenia obciążenia. Prywatny adres IP znajduje się na vCenter chmury prywatnej. Publiczny adres IP umożliwia udostępnianie usług działających w chmurze prywatnej do Internetu.
+Publiczny adres IP umożliwia zasobom internetowym komunikowanie się z ruchem przychodzącym do zasobów w chmurze prywatnej w prywatnym adresie IP. Prywatny adres IP to maszyna wirtualna lub programowy moduł równoważenia obciążenia. Prywatny adres IP znajduje się w prywatnej chmurze vCenter. Publiczny adres IP umożliwia udostępnianie usług uruchomionych w chmurze prywatnej w Internecie.
 
-Publiczny adres IP jest przeznaczona do prywatnego adresu IP, dopóki nie można cofnąć przypisania. Publiczny adres IP można przypisać tylko jeden prywatny adres IP.
+Publiczny adres IP jest przydzielany do prywatnego adresu IP, dopóki nie zostanie przypisany. Publiczny adres IP można przypisać tylko do jednego prywatnego adresu IP.
 
-Zasób skojarzony z publicznym adresem IP zawsze używa publicznego adresu IP, aby uzyskać dostęp do Internetu. Domyślnie tylko wychodzącego dostępu do Internetu jest dozwolona na publiczny adres IP.  Ruch przychodzący na publiczny adres IP zostanie odrzucone.  Aby zezwolić na ruch przychodzący, Utwórz regułę zapory dla publicznego adresu IP określonego portu.
+Zasób skojarzony z publicznym adresem IP zawsze używa publicznego adresu IP na potrzeby dostępu do Internetu. Domyślnie na publicznym adresie IP jest dozwolony tylko wychodzący dostęp do Internetu.  Odmowa ruchu przychodzącego na publicznym adresie IP.  Aby zezwolić na ruch przychodzący, Utwórz regułę zapory dla publicznego adresu IP na określonym porcie.
 
 ## <a name="benefits"></a>Korzyści
 
-Za pomocą publicznego adresu IP do komunikowania się ruchu przychodzącego zapewnia:
+Użycie publicznego adresu IP do komunikacji przychodzącej zapewnia następujące informacje:
 
-* Rozproszona odmowa zapobieganie atakom service (DDoS). Ta ochrona jest automatycznie włączona dla publicznego adresu IP.
-* Zawsze włączone ruchu monitorowania i w czasie rzeczywistym środki zaradcze typowych ataków na poziomie sieci. Te zabezpieczenia są tego samego mechanizmów obronnych posługują się usługi online firmy Microsoft.
-* Skalę całej sieci globalnej platformy Azure. Sieci może służyć do dystrybucji, a także zmniejszyć ruch ataku w regionach.  
+* Ochrona przed atakami typu "odmowa usługi" (DDoS). Ta ochrona jest automatycznie włączona dla publicznego adresu IP.
+* Zawsze włączone monitorowanie ruchu i łagodzenie w czasie rzeczywistym typowych ataków na poziomie sieci. Te zabezpieczenia są tymi samymi zabezpieczeniami, które są używane przez firmę Microsoft Usługi online.
+* Cała Skala sieci globalnej platformy Azure. Za pomocą tej sieci można dystrybuować i ograniczać ruch związany z atakami między regionami.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [przydzielony publiczny adres IP](https://docs.azure.cloudsimple.com/public-ips/)
+* Dowiedz się, jak [przydzielić publiczny adres IP](https://docs.azure.cloudsimple.com/public-ips/)

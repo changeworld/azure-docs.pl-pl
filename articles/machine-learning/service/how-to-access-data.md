@@ -1,32 +1,32 @@
 ---
-title: Dostęp do danych w magazynach/obiektach Blob w celu szkolenia
+title: Dostęp do danych w usługach Azure Storage
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać magazynów danych w celu uzyskiwania dostępu do usługi BLOB Data Storage podczas uczenia się z usługą Azure Machine Learning
+description: Dowiedz się, jak używać magazynów danych do uzyskiwania dostępu do usług Azure Storage podczas szkolenia przy użyciu usługi Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: minxia
-author: mx-iao
-ms.reviewer: sgilley
-ms.date: 05/24/2019
+ms.author: sihhu
+author: MayMSFT
+ms.reviewer: nibaccam
+ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 97a4bc20394553b97211763cedaa76c3711306f2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 4bc035ba061a65f6770136240d8867f82858e67e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319322"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772724"
 ---
-# <a name="access-data-from-your-datastores"></a>Dostęp do danych z Twoich magazynów
+# <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 
- W ramach usługi Azure Machine Learning magazyny danych są mechanizmami obliczeniowymi niezależnymi od lokalizacji, aby uzyskać dostęp do magazynu bez konieczności wprowadzania zmian w kodzie źródłowym. Bez względu na to, czy piszesz kod szkoleniowy, aby przyjąć ścieżkę jako parametr, czy udostępnić magazyn danych bezpośrednio do szacowania, Azure Machine Learning przepływy pracy upewnij się, że lokalizacje magazynu danych są dostępne i udostępnione dla kontekstu obliczeniowego.
+ W tym artykule dowiesz się, jak łatwo uzyskać dostęp do danych w usługach Azure Storage za pośrednictwem Azure Machine Learning magazynów zasobów. Magazyny danych służą do przechowywania informacji o połączeniu, takich jak identyfikator subskrypcji i autoryzacja tokenów, w celu uzyskania dostępu do magazynu bez konieczności podawania twardych kodów informacji w skryptach.
 
 W tym przykładzie przedstawiono przykłady następujących zadań:
-* [Wybierz magazyn danych](#access)
-* [Pobieranie danych](#get)
-* [Przekazuj i pobieraj dane do magazynów danych](#up-and-down)
-* [Dostęp do magazynu danych podczas szkolenia](#train)
+* [Rejestrowanie magazynów danych](#access)
+* [Pobierz magazyny danych z obszaru roboczego](#get)
+* [Przekazuj i pobieraj dane przy użyciu magazynów danych](#up-and-down)
+* [Uzyskiwanie dostępu do danych podczas szkoleń](#train)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -43,34 +43,8 @@ ws = Workspace.from_config()
 
 <a name="access"></a>
 
-## <a name="choose-a-datastore"></a>Wybierz magazyn danych
+## <a name="register-datastores"></a>Rejestrowanie magazynów danych
 
-Możesz użyć domyślnego magazynu danych lub wprowadzić własny.
-
-### <a name="use-the-default-datastore-in-your-workspace"></a>Używanie domyślnego magazynu danych w obszarze roboczym
-
- Każdy obszar roboczy ma zarejestrowany, domyślny magazyn danych, którego można użyć od razu.
-
-Aby uzyskać magazyn danych z domyślnego obszaru roboczego:
-
-```Python
-ds = ws.get_default_datastore()
-```
-
-### <a name="register-your-own-datastore-with-the-workspace"></a>Rejestrowanie własnego magazynu danych za pomocą obszaru roboczego
-
-Jeśli masz istniejące usługi Azure Storage, należy zarejestrować go jako magazyn danych w obszarze roboczym usługi. 
-
-<a name="store"></a>
-
-####  <a name="storage-guidance"></a>Wskazówki dotyczące magazynu
-
-Zalecamy użycie magazynu obiektów blob i magazynów danych BLOB. Magazyny w warstwie Standardowa i Premium są dostępne dla obiektów BLOB. Chociaż jest droższa, sugerujemy magazyn w warstwie Premium z powodu szybszych szybkości przepływności, które mogą zwiększyć szybkość przebiegów szkoleniowych, szczególnie w przypadku uczenia się z dużym zestawem danych. Informacje o kosztach konta magazynu można znaleźć na stronie [Kalkulator cen platformy Azure](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) .
-
->[!NOTE]
-> Usługa Azure Machine Learning obsługuje inne typy magazynów danych, które mogą być przydatne w określonych scenariuszach. Na przykład jeśli chcesz nauczyć się przy użyciu danych przechowywanych w bazie danych, możesz użyć AzureSQLDatabaseDatastore lub AzurePostgreSqlDatastore. Zapoznaj się z [tą tabelą](#matrix) dla dostępnych typów magazynu danych.
-
-#### <a name="register-your-datastore"></a>Rejestrowanie magazynu danych
 Wszystkie metody Register znajdują się na [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) klasie i mają postać register_azure_ *.
 
 W poniższych przykładach pokazano, jak zarejestrować kontener obiektów blob platformy Azure lub udział plików platformy Azure jako magazyn danych.
@@ -78,45 +52,56 @@ W poniższych przykładach pokazano, jak zarejestrować kontener obiektów blob 
 + W przypadku **magazynu danych kontenera obiektów blob platformy Azure**Użyj[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)
 
   ```Python
-  ds = Datastore.register_azure_blob_container(workspace=ws, 
-                                               datastore_name='your datastore name', 
-                                               container_name='your azure blob container name',
-                                               account_name='your storage account name', 
-                                               account_key='your storage account key',
-                                               create_if_not_exists=True)
+  datastore = Datastore.register_azure_blob_container(workspace=ws, 
+                                                      datastore_name='your datastore name', 
+                                                      container_name='your azure blob container name',
+                                                      account_name='your storage account name', 
+                                                      account_key='your storage account key',
+                                                      create_if_not_exists=True)
   ```
 
 + W przypadku **magazynu danych udziału plików platformy Azure**Użyj [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-). Na przykład: 
   ```Python
-  ds = Datastore.register_azure_file_share(workspace=ws, 
-                                           datastore_name='your datastore name', 
-                                           file_share_name='your file share name',
-                                           account_name='your storage account name', 
-                                           account_key='your storage account key',
-                                           create_if_not_exists=True)
+  datastore = Datastore.register_azure_file_share(workspace=ws, 
+                                                  datastore_name='your datastore name', 
+                                                  file_share_name='your file share name',
+                                                  account_name='your storage account name', 
+                                                  account_key='your storage account key',
+                                                  create_if_not_exists=True)
   ```
+
+####  <a name="storage-guidance"></a>Wskazówki dotyczące magazynu
+
+Zalecamy używanie kontenera obiektów blob platformy Azure. Magazyny w warstwie Standardowa i Premium są dostępne dla obiektów BLOB. Chociaż jest droższa, sugerujemy magazyn w warstwie Premium z powodu szybszych szybkości przepływności, które mogą zwiększyć szybkość przebiegów szkoleniowych, szczególnie w przypadku uczenia się z dużym zestawem danych. Informacje o kosztach konta magazynu można znaleźć na stronie [Kalkulator cen platformy Azure](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) .
 
 <a name="get"></a>
 
-## <a name="find--define-datastores"></a>Znajdowanie & Definiowanie magazynów danych
+## <a name="get-datastores-from-your-workspace"></a>Pobieranie magazynów danych z obszaru roboczego
 
-Aby uzyskać określony magazyn danych zarejestrowany w bieżącym obszarze roboczym, użyj [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) :
+Aby uzyskać określony magazyn danych zarejestrowany w bieżącym obszarze roboczym, użyj [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) metody statycznej w klasie magazynu danych:
 
 ```Python
 #get named datastore from current workspace
-ds = Datastore.get(ws, datastore_name='your datastore name')
+datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-
-Aby uzyskać listę wszystkich magazynów danych w danym obszarze roboczym, użyj tego kodu:
+Aby uzyskać listę magazynów danych zarejestrowanych w danym obszarze roboczym, możesz użyć `datastores` właściwości w obiekcie obszaru roboczego:
 
 ```Python
 #list all datastores registered in current workspace
 datastores = ws.datastores
-for name, ds in datastores.items():
-    print(name, ds.datastore_type)
+for name, datastore in datastores.items():
+    print(name, datastore.datastore_type)
 ```
 
-Aby zdefiniować inny domyślny magazyn danych dla bieżącego obszaru roboczego, użyj [`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-):
+Podczas tworzenia obszaru roboczego kontener obiektów blob platformy Azure i udział plików platformy Azure są rejestrowane w obszarze roboczym o `workspaceblobstore` nazwie `workspacefilestore` i odpowiednio. Przechowują informacje o połączeniu kontenera obiektów blob oraz udział plików, który jest zainicjowany na koncie magazynu dołączonym do obszaru roboczego. `workspaceblobstore` Jest ustawiony jako domyślny magazyn danych.
+
+Aby uzyskać magazyn danych z domyślnego obszaru roboczego:
+
+```Python
+datastore = ws.get_default_datastore()
+```
+
+Aby zdefiniować inny domyślny magazyn danych dla bieżącego obszaru roboczego, użyj [`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-) metody dla obiektu obszaru roboczego:
 
 ```Python
 #define default datastore for current workspace
@@ -131,69 +116,93 @@ Metody [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.d
 
  Przekaż katalogu lub poszczególne pliki do magazynu danych przy użyciu zestawu SDK języka Python.
 
-Aby przekazać katalogu do magazynu danych `ds`:
+Aby przekazać katalogu do magazynu danych `datastore`:
 
 ```Python
 import azureml.data
 from azureml.data.azure_storage_datastore import AzureFileDatastore, AzureBlobDatastore
 
-ds.upload(src_dir='your source directory',
-          target_path='your target path',
-          overwrite=True,
-          show_progress=True)
+datastore.upload(src_dir='your source directory',
+                 target_path='your target path',
+                 overwrite=True,
+                 show_progress=True)
 ```
 
-`target_path` Określa lokalizację w udziale plików (lub kontenera obiektów blob) do przekazania. Jego wartość domyślna to `None`, w którym to przypadku pobiera dane przekazywane do katalogu głównego. `overwrite=True` spowoduje zastąpienie istniejących danych w `target_path`.
+`target_path` Parametr określa lokalizację w udziale plików (lub kontenerze obiektów BLOB) do przekazania. Jego wartość domyślna to `None`, w którym to przypadku pobiera dane przekazywane do katalogu głównego. Gdy `overwrite=True` istniejące`target_path` dane są zastępowane.
 
-Lub przekazać listę pojedynczych plików do magazynu danych przy użyciu magazynu danych `upload_files()` metody.
+Lub Przekaż listę pojedynczych plików do magazynu danych za pomocą `upload_files()` metody.
 
 ### <a name="download"></a>Do pobrania
+
 Podobnie należy pobrać dane z magazynu danych, do lokalnego systemu plików.
 
 ```Python
-ds.download(target_path='your target path',
-            prefix='your prefix',
-            show_progress=True)
+datastore.download(target_path='your target path',
+                   prefix='your prefix',
+                   show_progress=True)
 ```
 
-`target_path` jest to lokalizacja katalogu lokalnego do pobierania danych. Aby określić ścieżkę do folderu w udziale plików (lub kontenera obiektów blob) do pobrania, należy podać tę ścieżkę, aby `prefix`. Jeśli `prefix` jest `None`, zostanie Pobierz pobrana zawartość udziału plików (lub kontenera obiektów blob).
+`target_path` Parametr jest lokalizacją katalogu lokalnego, do którego mają zostać pobrane dane. Aby określić ścieżkę do folderu w udziale plików (lub kontenera obiektów blob) do pobrania, należy podać tę ścieżkę, aby `prefix`. Jeśli `prefix` jest `None`, zostanie Pobierz pobrana zawartość udziału plików (lub kontenera obiektów blob).
 
 <a name="train"></a>
-## <a name="access-datastores-during-training"></a>Dostęp do magazynów danych podczas szkoleń
+## <a name="access-your-data-during-training"></a>Uzyskiwanie dostępu do danych podczas szkoleń
 
-Po udostępnieniu magazynu danych w miejscu docelowym obliczeń szkoleniowych możesz uzyskać do niego dostęp podczas przebiegów szkoleniowych (na przykład dane szkoleniowe lub walidacji), po prostu przekazując ścieżkę do niej jako parametr w skrypcie szkoleniowym.
+Aby uzyskać dostęp do danych podczas szkoleń, możesz pobrać lub zainstalować dane z usług Azure Storage w celu obliczeń za pośrednictwem magazynów danych.
 
-W poniższej tabeli wymieniono [`DataReference`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) metody, które poinformują element docelowy obliczeń, jak używać magazynu danych podczas uruchamiania.
+W poniższej tabeli wymieniono metody, które poinformują element docelowy obliczeń, jak używać magazynów danych podczas uruchamiania. 
 
 Możliwości|Metoda|Opis|
 ----|-----|--------
-Instalacja| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Służy do instalowania magazynu danych w elemencie docelowym obliczeń.
-Do pobrania|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Użyj, aby pobrać zawartość magazynu danych do lokalizacji określonej przez `path_on_compute`. <br> W przypadku kontekstu uruchomienia szkolenia ten proces jest wykonywany przed uruchomieniem.
-Upload|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Służy do przekazywania pliku z lokalizacji określonej przez `path_on_compute` magazyn danych. <br> W przypadku kontekstu uruchomienia szkolenia to przekazywanie odbywa się po uruchomieniu.
+Zainstaluj| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Służy do instalowania magazynu danych w elemencie docelowym obliczeń.
+Do pobrania|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Użyj, aby pobrać zawartość magazynu danych do lokalizacji określonej przez `path_on_compute`. <br> To pobieranie jest wykonywane przed uruchomieniem.
+Upload|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Służy do przekazywania pliku z lokalizacji określonej przez `path_on_compute` magazyn danych. <br> To przekazywanie jest wykonywane po uruchomieniu.
 
- ```Python
-import azureml.data
-from azureml.data.data_reference import DataReference
-
-ds.as_mount()
-ds.as_download(path_on_compute='your path on compute')
-ds.as_upload(path_on_compute='yourfilename')
-```  
-
-Aby odwołać się do określonego folderu lub pliku w magazynie danych i udostępnić go w elemencie docelowym obliczeń, użyj funkcji magazynu danych [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) .
+Aby odwołać się do określonego folderu lub pliku w magazynie danych i udostępnić go w elemencie docelowym obliczeń, użyj metody magazynu [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-) danych.
 
 ```Python
-#download the contents of the `./bar` directory in ds to the compute target
-ds.path('./bar').as_download()
+#to mount the full contents in your storage to the compute target
+datastore.as_mount()
+
+#to download the contents of the `./bar` directory in your storage to the compute target
+datastore.path('./bar').as_download()
+```
+> [!NOTE]
+> Każdy `datastore` `"$AZUREML_DATAREFERENCE_XXXX"`lub `datastore.path` obiekt jest rozpoznawany jako nazwa zmiennej środowiskowej w formacie, którego wartość reprezentuje ścieżkę instalacji/pobierania w docelowym obliczeniu. Ścieżka magazynu danych w docelowym obliczeniach może nie być taka sama jak ścieżka wykonywania skryptu szkoleniowego.
+
+### <a name="examples"></a>Przykłady 
+
+Poniższe przykłady kodu są specyficzne [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) dla klasy do uzyskiwania dostępu do danych podczas szkoleń. 
+
+`script_params`jest słownikiem zawierającym parametry do entry_script. Można go używać do przekazywania danych i określania sposobu, w jaki dane powinny być udostępniane w celu obliczenia. Dowiedz się więcej z naszego kompleksowego [samouczka](tutorial-train-models-with-aml.md).
+
+```Python
+from azureml.train.estimator import Estimator
+
+script_params = {
+    '--data_dir': datastore.path('/bar').as_mount()
+}
+
+est = Estimator(source_directory='your code directory',
+                entry_script='train.py',
+                script_params=script_params,
+                compute_target=compute_target
+                )
 ```
 
-> [!NOTE]
-> Każdy `ds` `"$AZUREML_DATAREFERENCE_XXXX"` lub `ds.path` obiekt jest rozpoznawany jako nazwa zmiennej środowiskowej w formacie, którego wartość reprezentuje ścieżkę instalacji/pobierania w docelowym obliczeniu. Ścieżka magazynu danych w docelowym obliczeniach może nie być taka sama jak ścieżka wykonywania skryptu szkoleniowego.
+Możesz również przekazać listę magazynów danych do parametru konstruktora `inputs` szacowania, aby zainstalować lub skopiować dane do/z magazynów elementów. Ten przykład kodu:
+* Pobiera całą zawartość `datastore1` do obiektu docelowego obliczeń przed uruchomieniem skryptu `train.py` szkoleniowego
+* Pobiera folder `'./foo'` `datastore2` do elementu docelowego obliczeń przed `train.py` uruchomieniem
+* Przekazuje plik `'./bar.pkl'` z elementu docelowego obliczeń `datastore3` do po uruchomieniu skryptu
 
-<a name="matrix"></a>
-### <a name="training-compute-and-datastore-matrix"></a>Szkolenie dotyczące obliczeniowych i magazynów danych
+```Python
+est = Estimator(source_directory='your code directory',
+                compute_target=compute_target,
+                entry_script='train.py',
+                inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
+```
+### <a name="compute-and-datastore-matrix"></a>Macierze obliczeniowe i magazyn danych
 
-W poniższej macierzy przedstawiono dostępne funkcje dostępu do danych dla różnych obiektów docelowych obliczeń szkoleniowych i scenariuszy magazynu danych. Dowiedz się więcej na temat [obiektów docelowych obliczeń szkoleniowych dla Azure Machine Learning](how-to-set-up-training-targets.md#compute-targets-for-training).
+Magazyny danych obsługują obecnie przechowywanie informacji o połączeniu z usługami magazynu wymienionymi w poniższej macierzy. Ta macierz przedstawia dostępne funkcje dostępu do danych dla różnych obiektów docelowych obliczeń i scenariuszy magazynu danych. Dowiedz się więcej [na temat obiektów docelowych obliczeń dla Azure Machine Learning](how-to-set-up-training-targets.md#compute-targets-for-training).
 
 |Wystąpienia obliczeniowe|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [AzureSqlDatabaseDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
 |--------------------------------|----------------------------------------------------------|----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------|
@@ -209,39 +218,7 @@ W poniższej macierzy przedstawiono dostępne funkcje dostępu do danych dla ró
 > [!NOTE]
 > Mogą istnieć scenariusze, w których wysoce iteracyjne i duże procesy danych są uruchamiane `as_download()` szybciej przy `as_mount()`użyciu zamiast programu; może to być sprawdzona eksperymentowo.
 
-### <a name="examples"></a>Przykłady 
-
-Poniższe przykłady kodu są specyficzne [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) dla klasy umożliwiającej dostęp do magazynu danych podczas szkolenia.
-
-Ten kod tworzy szacowania przy użyciu skryptu `train.py`szkoleniowego, ze wskazanego katalogu źródłowego przy użyciu parametrów zdefiniowanych w `script_params`, wszystkie w określonym miejscu docelowym obliczeń szkoleniowych.
-
-```Python
-from azureml.train.estimator import Estimator
-
-script_params = {
-    '--data_dir': ds.as_mount()
-}
-
-est = Estimator(source_directory='your code directory',
-                entry_script='train.py',
-                script_params=script_params,
-                compute_target=compute_target
-                )
-```
-
-Możesz również przekazać listę magazynów danych do parametru konstruktora `inputs` szacowania, aby zainstalować lub skopiować do/z magazynów danych. Ten przykład kodu:
-* Pobiera całą zawartość ze sklepu datastore `ds1` do obiektu docelowego obliczeń przed uruchomieniem skryptu `train.py` szkoleniowego
-* Pobiera folder `'./foo'` z magazynu `ds2` danych do elementu docelowego obliczeń przed `train.py` uruchomieniem
-* Przekazuje plik `'./bar.pkl'` z miejsca docelowego obliczeń do magazynu `ds3` danych po uruchomieniu skryptu
-
-```Python
-est = Estimator(source_directory='your code directory',
-                compute_target=compute_target,
-                entry_script='train.py',
-                inputs=[ds1.as_download(), ds2.path('./foo').as_download(), ds3.as_upload(path_on_compute='./bar.pkl')])
-```
-
-## <a name="access-datastores-during-for-scoring"></a>Dostęp do magazynów danych podczas oceniania
+## <a name="access-data-during-scoring"></a>Uzyskiwanie dostępu do danych podczas oceniania
 
 Usługa Azure Machine Learning oferuje kilka sposobów na korzystanie z modeli do oceniania. Niektóre z tych metod nie zapewniają dostępu do magazynów danych. Skorzystaj z poniższej tabeli, aby zrozumieć, które metody umożliwiają dostęp do magazynów danych podczas oceniania:
 
@@ -253,7 +230,8 @@ Usługa Azure Machine Learning oferuje kilka sposobów na korzystanie z modeli d
 
 W sytuacjach, w których zestaw SDK nie zapewnia dostępu do magazynów danych, można utworzyć niestandardowy kod przy użyciu odpowiedniego zestawu Azure SDK, aby uzyskać dostęp do tego programu. Na przykład do uzyskiwania dostępu do danych przechowywanych w obiektach Blob za pomocą [zestawu SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python) .
 
-## <a name="next-steps"></a>Następne kroki
+
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Uczenie modelu](how-to-train-ml-models.md)
 

@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 08c9f958f5103da9961f4c2d29be97f455cecc4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359264"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779983"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Przedpłata za SQL Data Warehouse opłaty z zarezerwowaną pojemnością
 
@@ -61,21 +61,17 @@ Załóżmy na przykład, że całkowite użycie SQL Data Warehouse jest DW3000c.
 8. Wybierz pozycję **Kup**.
 9. Wybierz pozycję **Wyświetl to zastrzeżenie** , aby wyświetlić stan zakupu.
 
-## <a name="cancellations-and-exchanges"></a>Anulowania i wymiany
+## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zastrzeżenia zwrotne
 
-Jeśli zachodzi potrzeba anulowania SQL Data Warehouse zarezerwowanej pojemności, może być dostępna 12% opłata za wczesne zakończenie. Zwroty zależą od niższej kwoty z dwóch: cena zakupu i bieżąca cena rezerwacji. Zwroty są ograniczone do $50 000,00 rocznie. Otrzymaną refundacją jest pozostała kwota proporcjonalnie do pozostałej stawki pomniejszonej o 12% opłaty za wczesne zakończenie. Aby anulować, przejdź do rezerwacji w Azure Portal i wybierz pozycję **zwrot**.
+Można anulować, wymienić lub refundować rezerwacje z pewnymi ograniczeniami. Aby uzyskać więcej informacji, zobacz samoobsługowe [weksle i zwroty dla Azure Reservations](billing-azure-reservations-self-service-exchange-and-refund.md).
 
-Jeśli zachodzi potrzeba zmiany SQL Data Warehouse zarezerwowanej pojemności do innego regionu lub okresu, można wymienić ją na inną rezerwację o wartości równej lub wyższej. Data rozpoczęcia okresu nowej rezerwacji nie jest przenoszona z wymienionej rezerwacji. Okres jednego lub trzech lat jest uruchamiany podczas tworzenia nowej rezerwacji. W programie Exchange Otwórz rezerwację w Azure Portal i wybierz pozycję **Exchange**.
-
-Aby uzyskać więcej informacji na temat sposobu wymiany lub zastrzeżeń, zobacz temat [rezerwacje rezerwacji i](billing-azure-reservations-self-service-exchange-and-refund.md)zwroty.
-
-Rabat zarezerwowany jest automatycznie stosowany do liczby wystąpień SQL Data Warehouse, które pasują do SQL Data Warehouse zarezerwowany zakres i region zdolności produkcyjnych. Zakres SQL Data Warehouse zarezerwowanej pojemności można zaktualizować za pomocą [Azure Portal](https://portal.azure.com/), programu PowerShell, interfejsu wiersza polecenia lub interfejsu API.
+Rabat rezerwacji jest automatycznie stosowany do liczby wystąpień SQL Data Warehouse, które pasują do SQL Data Warehouse zarezerwowanego zakresu i regionu pojemności. Zakres SQL Data Warehouse zarezerwowanej pojemności można zaktualizować za pomocą [Azure Portal](https://portal.azure.com/), programu PowerShell, interfejsu wiersza polecenia lub interfejsu API.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się więcej na temat sposobu stosowania rabatów rezerwacji do Azure SQL Data Warehouse, zobacz artykuł [jak rabaty rezerwacji mają zastosowanie do Azure SQL Data Warehouse](billing-prepay-sql-data-warehouse-charges-with-reserved-capacity.md).
 

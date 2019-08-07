@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 20ef71f98817a57f884e9c5a3cef4ceeaebe74eb
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498437"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740892"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z usługą Azure Virtual Network
 W tym dokumencie opisano funkcję integracji Azure App Service sieci wirtualnej i sposób jej konfigurowania z aplikacjami w [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure][VNETOverview] (Sieci wirtualnych) umożliwia umieszczenie wielu zasobów platformy Azure w sieci bez obsługi Internetu.  
@@ -136,11 +136,10 @@ Funkcja integracji sieci wirtualnej wymagana przez bramę:
 * Umożliwia zintegrowanie maksymalnie pięciu sieci wirtualnych z planem App Service 
 * Umożliwia korzystanie z tej samej sieci wirtualnej przez wiele aplikacji w planie App Service bez wpływu na łączną liczbę, która może być używana przez plan App Service.  Jeśli masz 6 aplikacji korzystających z tej samej sieci wirtualnej w ramach tego samego planu App Service, który jest liczony jako 1 Sieć wirtualna. 
 * Wymaga bramy Virtual Network skonfigurowanej z użyciem sieci VPN typu punkt-lokacja
-* Nie jest obsługiwane w przypadku aplikacji systemu Linux
 * Obsługuje umowę SLA na 99,9% ze względu na umowę SLA dotyczącą bramy
 
 Ta funkcja nie obsługuje:
-
+* Korzystanie z aplikacji systemu Linux
 * Uzyskiwanie dostępu do zasobów w usłudze ExpressRoute 
 * Uzyskiwanie dostępu do zasobów w obrębie punktów końcowych usługi 
 
