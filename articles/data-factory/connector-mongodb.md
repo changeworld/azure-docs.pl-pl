@@ -81,7 +81,7 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **MongoDbV2Collection** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **MongoDbV2Collection** | Tak |
 | collectionName |Nazwa kolekcji w bazie danych MongoDB. |Tak |
 
 **Przykład:**
